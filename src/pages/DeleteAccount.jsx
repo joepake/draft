@@ -47,7 +47,8 @@ export default function DeleteAccount() {
         <li>All child profiles you created.</li>
         <li>
           All activity data collected from managed devices, including app
-          usage, screen-time history, browsing activity, and location history.
+          usage, screen-time history, browsing activity, location history,
+          and Check-In and SOS photos.
         </li>
         <li>Your parental control settings and preferences.</li>
       </ul>

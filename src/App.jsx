@@ -3,6 +3,7 @@ import Home from './pages/Home.jsx'
 import PrivacyPolicy from './pages/PrivacyPolicy.jsx'
 import Terms from './pages/Terms.jsx'
 import DeleteAccount from './pages/DeleteAccount.jsx'
+import Support from './pages/Support.jsx'
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
         <nav className="nav">
           <NavLink to="/privacy-policy">Privacy Policy</NavLink>
           <NavLink to="/terms">Terms &amp; Conditions</NavLink>
+          <NavLink to="/support">Support</NavLink>
         </nav>
       </header>
       <main className="main">
@@ -22,6 +24,7 @@ export default function App() {
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/delete-account" element={<DeleteAccount />} />
+          <Route path="/support" element={<Support />} />
         </Routes>
       </main>
       <footer className="footer">

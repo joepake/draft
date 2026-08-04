@@ -58,6 +58,11 @@ export default function PrivacyPolicy() {
         <li>
           Device location, if the parent enables location features.
         </li>
+        <li>
+          Photos captured during Check-In responses and SOS alerts, if the
+          parent enables these safety features and camera permission is
+          granted on the child&apos;s device.
+        </li>
         <li>Device information, such as device model and operating system.</li>
       </ul>
       <p>
@@ -85,6 +90,11 @@ export default function PrivacyPolicy() {
         <li>
           <strong>App usage access</strong> &mdash; to measure screen time and
           generate app-usage reports.
+        </li>
+        <li>
+          <strong>Camera</strong> &mdash; to attach a photo to Check-In
+          responses and SOS alerts on the child&apos;s device, only if these
+          safety features are used.
         </li>
         <li>
           <strong>Notifications</strong> &mdash; to deliver alerts to the
@@ -183,8 +193,8 @@ export default function PrivacyPolicy() {
       <ul>
         <li>
           Your account information, child profiles, activity data, location
-          history, and settings are permanently deleted from our systems
-          within <strong>30 days</strong>.
+          history, Check-In and SOS photos, and settings are permanently
+          deleted from our systems within <strong>30 days</strong>.
         </li>
         <li>
           Copies in encrypted backups are purged within <strong>90 days</strong>.
