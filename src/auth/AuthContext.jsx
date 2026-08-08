@@ -4,6 +4,7 @@ import {
   OAuthProvider,
   onAuthStateChanged,
   sendPasswordResetEmail,
+  signInWithCustomToken,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut as fbSignOut,
@@ -14,6 +15,8 @@ const AuthContext = createContext({
   user: null,
   loading: false,
   configured: false,
+  claims: null,
+  canWrite: false,
 })
 
 /** Firebase error codes rendered as something a parent can act on. */
@@ -35,6 +38,10 @@ const MESSAGES = {
     'That sign-in method is not enabled for this project yet.',
   'auth/unauthorized-domain':
     'This domain is not authorized in Firebase Authentication settings.',
+  'auth/invalid-custom-token':
+    'That sign-in link is no longer valid. Show a new QR code.',
+  'web/rejected': 'The request was declined on the phone.',
+  'web/expired': 'The code expired. Generate a new one.',
 }
 
 export function describeAuthError(error) {
@@ -45,12 +52,28 @@ export function describeAuthError(error) {
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null)
+  const [claims, setClaims] = useState(null)
   const [loading, setLoading] = useState(isFirebaseConfigured)
 
   useEffect(() => {
     if (!isFirebaseConfigured) return
-    return onAuthStateChanged(auth, (next) => {
+    return onAuthStateChanged(auth, async (next) => {
       setUser(next)
+      // The write capability rides in the token, not in browser storage: a
+      // session approved by scanning the QR with a paired parent phone carries
+      // roleHint 'web'. Reading it here means nothing sensitive is ever stored
+      // locally, and revoking the session server-side takes effect on the next
+      // token refresh at the latest.
+      if (next) {
+        try {
+          const result = await next.getIdTokenResult()
+          setClaims(result.claims || null)
+        } catch {
+          setClaims(null)
+        }
+      } else {
+        setClaims(null)
+      }
       setLoading(false)
     })
   }, [])
@@ -58,8 +81,10 @@ export function AuthProvider({ children }) {
   const value = useMemo(
     () => ({
       user,
+      claims,
       loading,
       configured: isFirebaseConfigured,
+      canWrite: claims?.roleHint === 'web',
 
       signInWithGoogle: () => {
         const provider = new GoogleAuthProvider()
@@ -77,6 +102,10 @@ export function AuthProvider({ children }) {
       signInWithEmail: (email, password) =>
         signInWithEmailAndPassword(auth, email.trim(), password),
 
+      /** Redeems the custom token the phone's approval produced. */
+      signInWithQrToken: (customToken) =>
+        signInWithCustomToken(auth, customToken),
+
       resetPassword: (email) => sendPasswordResetEmail(auth, email.trim()),
 
       signOut: () => fbSignOut(auth),
@@ -84,7 +113,7 @@ export function AuthProvider({ children }) {
       /** Fresh ID token for the Cloud Functions control endpoints. */
       getIdToken: () => (auth.currentUser ? auth.currentUser.getIdToken() : null),
     }),
-    [user, loading],
+    [user, claims, loading],
   )
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>

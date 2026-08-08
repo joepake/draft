@@ -8,35 +8,19 @@ import { db, functionsBaseUrl } from '../lib/firebase.js'
  *
  *  - **Firestore rules** gate on `request.auth.uid` alone. Anything the rules
  *    allow a family member to write, the browser can write directly. Check-Ins
- *    are the only parent action in that category.
+ *    are the only parent action in that category, so they work from any
+ *    signed-in session.
  *
- *  - **The control Cloud Functions** additionally call `requireParentDevice`,
- *    which demands a `parentDeviceId` + `deviceCredential` pair minted by
- *    `ensureDeviceCredential` and kept in the phone's Keychain. A browser has
- *    no such credential, so locking a device, editing limits, approving time
- *    requests and resolving reward claims are unavailable from the web until
- *    someone decides how (and whether) a browser should be enrolled as a
- *    parent device. `hasDeviceCredential()` is the switch: supply a credential
- *    and every function below starts working unchanged.
+ *  - **The control Cloud Functions** call `requireParentDevice`, which on a
+ *    phone means a `deviceCredential` held in the Keychain. A browser proves
+ *    the same thing differently: a session approved by scanning the QR with an
+ *    already-paired parent phone carries `roleHint: 'web'` in its ID token,
+ *    and the server validates the backing session doc on every call. Nothing
+ *    secret is stored in the browser, and revoking the session takes effect
+ *    immediately server-side.
+ *
+ * `canWrite` therefore comes from the token claims, not from local storage.
  */
-
-const CREDENTIAL_KEY = 'kidgate.parentDeviceCredential'
-
-/** Reads an enrolled browser credential, if this deployment ever adds one. */
-export function readDeviceCredential() {
-  try {
-    const raw = sessionStorage.getItem(CREDENTIAL_KEY)
-    if (!raw) return null
-    const parsed = JSON.parse(raw)
-    return parsed?.parentDeviceId && parsed?.deviceCredential ? parsed : null
-  } catch {
-    return null
-  }
-}
-
-export function hasDeviceCredential() {
-  return readDeviceCredential() !== null
-}
 
 export class ControlError extends Error {
   constructor(message, code) {
@@ -53,14 +37,6 @@ async function callFunction(name, body, getIdToken) {
     )
   }
 
-  const credential = readDeviceCredential()
-  if (!credential) {
-    throw new ControlError(
-      'This browser is not authorized to change device settings. Use the KidGate app on your phone.',
-      'auth/no-device-credential',
-    )
-  }
-
   const token = await getIdToken()
   if (!token) {
     throw new ControlError('Your session expired. Sign in again.', 'auth/no-token')
@@ -72,7 +48,7 @@ async function callFunction(name, body, getIdToken) {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify({ ...body, ...credential }),
+    body: JSON.stringify(body),
   })
 
   const payload = await res.json().catch(() => ({}))
@@ -85,9 +61,9 @@ async function callFunction(name, body, getIdToken) {
   return payload
 }
 
-export function createActions({ familyId, getIdToken }) {
+export function createActions({ familyId, getIdToken, canWrite }) {
   return {
-    canWrite: hasDeviceCredential(),
+    canWrite: Boolean(canWrite),
 
     /**
      * Check-In is a plain Firestore write — the rules allow any family member

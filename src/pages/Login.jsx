@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { describeAuthError, useAuth } from '../auth/AuthContext.jsx'
+import QrSignIn from '../auth/QrSignIn.jsx'
 
 function GoogleMark() {
   return (
@@ -91,6 +92,22 @@ export default function Login() {
 
         {error && <div className="login-error">{error}</div>}
         {info && <div className="login-info">{info}</div>}
+
+        {configured && (
+          <>
+            <div className="qr-block">
+              <QrSignIn onError={setError} />
+              <p className="qr-why">
+                Approving from your phone is the only way to unlock the
+                controls — locking a device and changing limits stay with the
+                app. The methods below sign you in to view reports.
+              </p>
+            </div>
+            <div className="login-or">
+              <span>or view-only sign in</span>
+            </div>
+          </>
+        )}
 
         <div className="login-providers">
           <button

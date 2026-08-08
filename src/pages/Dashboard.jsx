@@ -17,6 +17,20 @@ const TABS = [
   { id: 'controls', label: 'Controls', icon: '⚙' },
 ]
 
+/**
+ * Devices disagree about whether `osVersion` already names the platform —
+ * iOS reports "iOS 18.7.8", Android often just "15" — so printing
+ * "{platform} {osVersion}" gives "iOS iOS 18.7.8" on half the fleet.
+ */
+function osLabel(platform, osVersion) {
+  const base = platform === 'ios' ? 'iOS' : 'Android'
+  const version = (osVersion || '').trim()
+  if (!version) return base
+  return version.toLowerCase().startsWith(base.toLowerCase())
+    ? version
+    : `${base} ${version}`
+}
+
 function timeAgo(iso) {
   const diff = Date.now() - new Date(iso).getTime()
   const mins = Math.round(diff / 60000)
@@ -260,7 +274,9 @@ export default function Dashboard({
               <span className={`kid-avatar av-${d.platform}`}>{d.initials}</span>
               <span className="kid-meta">
                 <strong>{d.childName}</strong>
-                <em>{d.modelName}</em>
+                {d.modelName && d.modelName !== d.childName && (
+                  <em>{d.modelName}</em>
+                )}
               </span>
               <i className={`kid-dot tone-${d.status === 'online' ? 'good' : d.status === 'locked' ? 'warning' : 'muted'}`} />
             </button>
@@ -302,7 +318,7 @@ export default function Dashboard({
               <p>
                 <StatusPill status={device.status} />
                 <span className="dot-sep">·</span>
-                {device.platform === 'ios' ? 'iOS' : 'Android'} {device.osVersion}
+                {osLabel(device.platform, device.osVersion)}
                 {device.lastActiveAt && (
                   <>
                     <span className="dot-sep">·</span>
@@ -364,10 +380,10 @@ export default function Dashboard({
 
         {live && !canWrite && (
           <div className="write-note">
-            <strong>Read-only on the web.</strong> Locking a device, changing
-            limits and approving requests are signed with a credential that only
-            lives on a paired parent phone — do those in the KidGate app.
-            Check-Ins work from here.
+            <strong>View only.</strong> To lock a device, change limits or
+            approve requests, sign out and sign in again by scanning the QR
+            code with the KidGate app — approval from a paired parent phone is
+            what unlocks the controls. Check-Ins work from here either way.
           </div>
         )}
 

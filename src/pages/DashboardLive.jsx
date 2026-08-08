@@ -53,11 +53,11 @@ function LiveGate() {
 }
 
 function LiveDashboard({ user, deviceId, onDeviceChange, signOut }) {
-  const { getIdToken } = useAuth()
+  const { getIdToken, canWrite } = useAuth()
   const { data, loading, error, familyId } = useFamilyData(user, deviceId)
   const actions = useMemo(
-    () => (familyId ? createActions({ familyId, getIdToken }) : null),
-    [familyId, getIdToken],
+    () => (familyId ? createActions({ familyId, getIdToken, canWrite }) : null),
+    [familyId, getIdToken, canWrite],
   )
 
   if (loading) {
@@ -91,7 +91,9 @@ function LiveDashboard({ user, deviceId, onDeviceChange, signOut }) {
       onDeviceChange={onDeviceChange}
       sideFooter={
         <div className="side-account">
-          <span title={user.email || ''}>{user.displayName || user.email}</span>
+          {/* Email first, matching the app's getAccountDisplayLabel — a
+              display name is often a placeholder like "Guest". */}
+          <span title={user.email || ''}>{user.email || user.displayName}</span>
           <button className="login-link" onClick={signOut}>
             Sign out
           </button>
