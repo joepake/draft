@@ -19,35 +19,38 @@ const AuthContext = createContext({
   canWrite: false,
 })
 
-/** Firebase error codes rendered as something a parent can act on. */
-const MESSAGES = {
-  'auth/invalid-email': 'That email address does not look right.',
-  'auth/user-disabled': 'This account has been disabled.',
-  'auth/user-not-found': 'No KidGate account uses that email.',
-  'auth/wrong-password': 'Wrong email or password.',
-  'auth/invalid-credential': 'Wrong email or password.',
-  'auth/too-many-requests':
-    'Too many attempts. Wait a few minutes and try again.',
-  'auth/popup-closed-by-user': 'Sign-in window was closed before finishing.',
-  'auth/cancelled-popup-request': 'Sign-in was cancelled.',
-  'auth/popup-blocked':
-    'Your browser blocked the sign-in window. Allow pop-ups for this site and try again.',
-  'auth/account-exists-with-different-credential':
-    'That email is already registered with a different sign-in method. Use the one you set up in the app.',
-  'auth/operation-not-allowed':
-    'That sign-in method is not enabled for this project yet.',
-  'auth/unauthorized-domain':
-    'This domain is not authorized in Firebase Authentication settings.',
-  'auth/invalid-custom-token':
-    'That sign-in link is no longer valid. Show a new QR code.',
-  'web/rejected': 'The request was declined on the phone.',
-  'web/expired': 'The code expired. Generate a new one.',
+/** Firebase error codes mapped to copy a parent can act on. */
+const MESSAGE_KEYS = {
+  'auth/invalid-email': 'authError.invalidEmail',
+  'auth/user-disabled': 'authError.userDisabled',
+  'auth/user-not-found': 'authError.userNotFound',
+  'auth/wrong-password': 'authError.wrongPassword',
+  'auth/invalid-credential': 'authError.wrongPassword',
+  'auth/too-many-requests': 'authError.tooManyRequests',
+  'auth/popup-closed-by-user': 'authError.popupClosed',
+  'auth/cancelled-popup-request': 'authError.popupCancelled',
+  'auth/popup-blocked': 'authError.popupBlocked',
+  'auth/account-exists-with-different-credential': 'authError.accountExists',
+  'auth/operation-not-allowed': 'authError.operationNotAllowed',
+  'auth/unauthorized-domain': 'authError.unauthorizedDomain',
+  'auth/invalid-custom-token': 'authError.invalidCustomToken',
+  'web/rejected': 'authError.webRejected',
+  'web/expired': 'authError.webExpired',
 }
 
-export function describeAuthError(error) {
+/**
+ * `t` is passed in rather than imported so the message is resolved at render
+ * time — an error raised before a language switch still reads in the language
+ * on screen after it.
+ *
+ * A code we do not recognise falls back to Firebase's own English message,
+ * which at least names the failure, rather than to a generic line that hides it.
+ */
+export function describeAuthError(error, t) {
   if (!error) return null
-  const code = error.code || ''
-  return MESSAGES[code] || error.message || 'Something went wrong. Try again.'
+  const key = MESSAGE_KEYS[error.code || '']
+  if (key) return t(key)
+  return error.message || t('authError.generic')
 }
 
 export function AuthProvider({ children }) {

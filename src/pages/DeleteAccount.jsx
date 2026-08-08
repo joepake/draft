@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom'
+import LegalNote from '../i18n/LegalNote.jsx'
 
 export default function DeleteAccount() {
   return (
     <article className="legal">
       <h1>Account &amp; Data Deletion</h1>
       <p className="updated">Last updated: August 4, 2026</p>
+      <LegalNote />
 
       <p>
         This page explains how to delete your KidGate account and the data

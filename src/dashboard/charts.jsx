@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
+import { getLocaleTag, t } from '../i18n/index.js'
+import { useT } from '../i18n/useT.js'
 
 /** Actual pixel width of a container, so SVG text renders at its real size. */
 export function useMeasure() {
@@ -19,13 +21,18 @@ export function useMeasure() {
   return [ref, width]
 }
 
+/**
+ * Reads the module-level `t` rather than the hook: it is a plain formatter
+ * called from render bodies and `useMemo`, and every caller already re-renders
+ * on a language change through the `useT()` above it.
+ */
 export function formatMinutes(min) {
-  if (min == null) return '—'
+  if (min == null) return t('viz.none')
   const h = Math.floor(min / 60)
   const m = Math.round(min % 60)
-  if (h === 0) return `${m}m`
-  if (m === 0) return `${h}h`
-  return `${h}h ${m}m`
+  if (h === 0) return t('viz.minutes', { count: m })
+  if (m === 0) return t('viz.hours', { count: h })
+  return t('viz.hoursMinutes', { hours: h, minutes: m })
 }
 
 function Tooltip({ x, y, children }) {
@@ -44,6 +51,7 @@ function Tooltip({ x, y, children }) {
 export function UsageBars({ data, limit, days = 14 }) {
   const [ref, width] = useMeasure()
   const [hover, setHover] = useState(null)
+  const { t: tr } = useT()
 
   const rows = data.slice(-days)
   const height = 240
@@ -75,7 +83,7 @@ export function UsageBars({ data, limit, days = 14 }) {
   return (
     <div className="viz" ref={ref}>
       {width > 0 && (
-        <svg width={width} height={height} role="img" aria-label="Screen time by day">
+        <svg width={width} height={height} role="img" aria-label={tr('viz.byDay')}>
           {ticks.map((v) => (
             <g key={v}>
               <line
@@ -86,7 +94,7 @@ export function UsageBars({ data, limit, days = 14 }) {
                 className="viz-grid"
               />
               <text x={pad.left - 8} y={yFor(v) + 4} className="viz-axis" textAnchor="end">
-                {v === 0 ? '0' : `${v / 60}h`}
+                {v === 0 ? '0' : tr('viz.hours', { count: v / 60 })}
               </text>
             </g>
           ))}
@@ -108,7 +116,7 @@ export function UsageBars({ data, limit, days = 14 }) {
                   textAnchor="start"
                   dominantBaseline="middle"
                 >
-                  Limit {formatMinutes(limit)}
+                  {tr('viz.limit', { value: formatMinutes(limit) })}
                 </text>
               )}
             </g>
@@ -185,7 +193,10 @@ export function UsageBars({ data, limit, days = 14 }) {
                 className="viz-axis"
                 textAnchor="middle"
               >
-                {d.getDate()}/{d.getMonth() + 1}
+                {d.toLocaleDateString(getLocaleTag(), {
+                  day: 'numeric',
+                  month: 'numeric',
+                })}
               </text>
             )
           })}
@@ -195,41 +206,43 @@ export function UsageBars({ data, limit, days = 14 }) {
       {hover && (
         <Tooltip x={Math.min(Math.max(hover.x, 82), width - 82)} y={hover.y}>
           <strong>
-            {new Date(hover.row.date).toLocaleDateString('en-GB', {
+            {new Date(hover.row.date).toLocaleDateString(getLocaleTag(), {
               weekday: 'short',
               day: 'numeric',
               month: 'short',
             })}
           </strong>
           <span>
-            <i className="dot dot-1" /> Screen time {formatMinutes(hover.row.minutes)}
+            <i className="dot dot-1" /> {tr('viz.screenTime')}{' '}
+            {formatMinutes(hover.row.minutes)}
           </span>
           {hover.row.bonusMinutes > 0 && (
             <span>
-              <i className="dot dot-2" /> Bonus {formatMinutes(hover.row.bonusMinutes)}
+              <i className="dot dot-2" /> {tr('viz.bonus')}{' '}
+              {formatMinutes(hover.row.bonusMinutes)}
             </span>
           )}
-          {hover.over && <span className="tip-warn">Over the Daily Limit</span>}
+          {hover.over && <span className="tip-warn">{tr('viz.overLimit')}</span>}
         </Tooltip>
       )}
 
       <div className="viz-legend">
         <span>
-          <i className="dot dot-1" /> Screen time
+          <i className="dot dot-1" /> {tr('viz.screenTime')}
         </span>
         {hasBonus && (
           <span>
-            <i className="dot dot-2" /> Bonus earned
+            <i className="dot dot-2" /> {tr('viz.bonusEarned')}
           </span>
         )}
         {hasOver && (
           <span>
-            <i className="dot dot-over" /> ⚠ Over the Daily Limit
+            <i className="dot dot-over" /> ⚠ {tr('viz.overLimit')}
           </span>
         )}
         {limit != null && (
           <span>
-            <i className="dashline" /> Daily Limit
+            <i className="dashline" /> {tr('viz.dailyLimit')}
           </span>
         )}
       </div>
@@ -242,6 +255,7 @@ export function UsageBars({ data, limit, days = 14 }) {
  * ---------------------------------------------------------------- */
 
 export function UsageRing({ used, limit, bonus = 0, size = 168 }) {
+  const { t: tr } = useT()
   const stroke = 13
   const r = (size - stroke) / 2
   const c = 2 * Math.PI * r
@@ -269,7 +283,9 @@ export function UsageRing({ used, limit, bonus = 0, size = 168 }) {
       <div className="ring-center">
         <strong>{formatMinutes(used)}</strong>
         <span>
-          {effectiveLimit ? `of ${formatMinutes(effectiveLimit)}` : 'no limit set'}
+          {effectiveLimit
+            ? tr('viz.ofLimit', { value: formatMinutes(effectiveLimit) })
+            : tr('viz.noLimit')}
         </span>
       </div>
     </div>
@@ -281,6 +297,7 @@ export function UsageRing({ used, limit, bonus = 0, size = 168 }) {
  * ---------------------------------------------------------------- */
 
 export function AppBars({ apps, limits = [] }) {
+  const { t: tr } = useT()
   const max = Math.max(...apps.map((a) => a.minutes), ...limits.map((l) => l.minutes), 1)
 
   return (
@@ -306,7 +323,7 @@ export function AppBars({ apps, limits = [] }) {
                 <span
                   className="hbar-cap"
                   style={{ left: `${(cap.minutes / max) * 100}%` }}
-                  title={`Limit ${formatMinutes(cap.minutes)}`}
+                  title={tr('viz.limit', { value: formatMinutes(cap.minutes) })}
                 />
               )}
             </div>
@@ -322,7 +339,7 @@ export function AppBars({ apps, limits = [] }) {
  * ranges as text is the thing parents get wrong, so it is drawn.
  * ---------------------------------------------------------------- */
 
-const DAY_LABELS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+const DAY_INDEXES = [0, 1, 2, 3, 4, 5, 6]
 const WINDOW_CLASS = ['win-1', 'win-2', 'win-3']
 
 function toMinutes(hhmm) {
@@ -332,6 +349,7 @@ function toMinutes(hhmm) {
 
 export function ScheduleGrid({ windows }) {
   const [hover, setHover] = useState(null)
+  const { t: tr } = useT()
 
   // An overnight window spills into the next day; both halves are drawn so a
   // parent sees the block that actually lands on Tuesday morning.
@@ -355,13 +373,13 @@ export function ScheduleGrid({ windows }) {
       <div className="sched-hours">
         {[0, 6, 12, 18, 24].map((h) => (
           <span key={h} style={{ left: `${(h / 24) * 100}%` }}>
-            {h === 24 ? '24h' : `${h}h`}
+            {tr('viz.hours', { count: h })}
           </span>
         ))}
       </div>
-      {DAY_LABELS.map((label, d) => (
-        <div className="sched-row" key={label}>
-          <span className="sched-day">{label}</span>
+      {DAY_INDEXES.map((d) => (
+        <div className="sched-row" key={d}>
+          <span className="sched-day">{tr(`viz.day${d}`)}</span>
           <div className="sched-track">
             {[6, 12, 18].map((h) => (
               <i key={h} className="sched-tick" style={{ left: `${(h / 24) * 100}%` }} />
@@ -387,13 +405,13 @@ export function ScheduleGrid({ windows }) {
         {windows.map((w, i) => (
           <span key={i}>
             <i className={`dot ${WINDOW_CLASS[i % 3]}-dot`} />
-            {w.label || 'Blocked'} · {w.start}–{w.end}
+            {w.label || tr('viz.blocked')} · {w.start}–{w.end}
           </span>
         ))}
       </div>
       {hover && (
         <div className="sched-hint">
-          {hover.w.label || 'Blocked Hours'} · {hover.w.start}–{hover.w.end}
+          {hover.w.label || tr('viz.blockedHours')} · {hover.w.start}–{hover.w.end}
         </div>
       )}
     </div>

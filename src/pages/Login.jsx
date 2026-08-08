@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { describeAuthError, useAuth } from '../auth/AuthContext.jsx'
 import QrSignIn from '../auth/QrSignIn.jsx'
+import LanguagePicker from '../i18n/LanguagePicker.jsx'
+import { useT } from '../i18n/useT.js'
 
 function GoogleMark() {
   return (
@@ -37,6 +39,7 @@ function AppleMark() {
 export default function Login() {
   const { configured, signInWithGoogle, signInWithApple, signInWithEmail, resetPassword } =
     useAuth()
+  const { t } = useT()
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -51,7 +54,7 @@ export default function Login() {
     try {
       await fn()
     } catch (e) {
-      setError(describeAuthError(e))
+      setError(describeAuthError(e, t))
     } finally {
       setBusy(null)
     }
@@ -59,34 +62,31 @@ export default function Login() {
 
   async function onReset() {
     if (!email.trim()) {
-      setError('Enter your email address first, then choose Forgot password.')
+      setError(t('login.resetNeedsEmail'))
       return
     }
     await run('reset', async () => {
       await resetPassword(email)
-      setInfo(`Password reset email sent to ${email.trim()}.`)
+      setInfo(t('login.resetSent', { email: email.trim() }))
     })
   }
 
   return (
     <div className="login">
       <div className="login-card">
-        <Link to="/" className="login-brand">
-          KidGate
-        </Link>
-        <h1>Parent sign in</h1>
-        <p className="login-sub">
-          Use the same account you created in the KidGate app. Signing in here
-          shows the same family, devices and settings.
-        </p>
+        <div className="login-head">
+          <Link to="/" className="login-brand">
+            KidGate
+          </Link>
+          <LanguagePicker />
+        </div>
+        <h1>{t('login.title')}</h1>
+        <p className="login-sub">{t('login.sub')}</p>
 
         {!configured && (
           <div className="login-warn">
-            <strong>Firebase is not configured on this deployment.</strong>
-            <span>
-              Set the <code>VITE_FIREBASE_*</code> environment variables to
-              enable sign-in.
-            </span>
+            <strong>{t('login.notConfiguredTitle')}</strong>
+            <span>{t('login.notConfiguredBody')}</span>
           </div>
         )}
 
@@ -97,14 +97,10 @@ export default function Login() {
           <>
             <div className="qr-block">
               <QrSignIn onError={setError} />
-              <p className="qr-why">
-                Approving from your phone is the only way to unlock the
-                controls — locking a device and changing limits stay with the
-                app. The methods below sign you in to view reports.
-              </p>
+              <p className="qr-why">{t('login.qrWhy')}</p>
             </div>
             <div className="login-or">
-              <span>or view-only sign in</span>
+              <span>{t('login.orViewOnly')}</span>
             </div>
           </>
         )}
@@ -116,7 +112,7 @@ export default function Login() {
             onClick={() => run('google', signInWithGoogle)}
           >
             <GoogleMark />
-            {busy === 'google' ? 'Opening Google…' : 'Continue with Google'}
+            {busy === 'google' ? t('login.googleBusy') : t('login.google')}
           </button>
           <button
             className="oauth-btn"
@@ -124,12 +120,12 @@ export default function Login() {
             onClick={() => run('apple', signInWithApple)}
           >
             <AppleMark />
-            {busy === 'apple' ? 'Opening Apple…' : 'Continue with Apple'}
+            {busy === 'apple' ? t('login.appleBusy') : t('login.apple')}
           </button>
         </div>
 
         <div className="login-or">
-          <span>or use your email</span>
+          <span>{t('login.orEmail')}</span>
         </div>
 
         <form
@@ -140,18 +136,18 @@ export default function Login() {
           }}
         >
           <label>
-            Email
+            {t('login.email')}
             <input
               type="email"
               autoComplete="username"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="you@example.com"
+              placeholder={t('login.emailPlaceholder')}
               required
             />
           </label>
           <label>
-            Password
+            {t('login.password')}
             <input
               type="password"
               autoComplete="current-password"
@@ -165,7 +161,7 @@ export default function Login() {
             className="btn btn-primary btn-block"
             disabled={!configured || busy}
           >
-            {busy === 'email' ? 'Signing in…' : 'Sign in'}
+            {busy === 'email' ? t('login.submitBusy') : t('login.submit')}
           </button>
           <button
             type="button"
@@ -173,15 +169,11 @@ export default function Login() {
             onClick={onReset}
             disabled={!configured || busy}
           >
-            Forgot password?
+            {t('login.forgot')}
           </button>
         </form>
 
-        <p className="login-foot">
-          KidGate accounts are created in the mobile app — the web dashboard
-          signs in to an existing family. New here? Install the app and pair a
-          child device first.
-        </p>
+        <p className="login-foot">{t('login.foot')}</p>
       </div>
     </div>
   )

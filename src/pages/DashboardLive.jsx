@@ -4,6 +4,7 @@ import Login from './Login.jsx'
 import { AuthProvider, useAuth } from '../auth/AuthContext.jsx'
 import { useFamilyData } from '../dashboard/useFamilyData.js'
 import { createActions } from '../dashboard/controlsApi.js'
+import { useT } from '../i18n/useT.js'
 
 function Splash({ children }) {
   return (
@@ -27,6 +28,7 @@ export default function DashboardLive() {
 
 function LiveGate() {
   const { user, loading, configured, signOut } = useAuth()
+  const { t } = useT()
   const [deviceId, setDeviceId] = useState(null)
   const onDeviceChange = useCallback((id) => setDeviceId(id), [])
 
@@ -37,7 +39,7 @@ function LiveGate() {
   if (loading) {
     return (
       <Splash>
-        <p className="login-sub">Checking your session…</p>
+        <p className="login-sub">{t('live.checkingSession')}</p>
       </Splash>
     )
   }
@@ -54,6 +56,7 @@ function LiveGate() {
 
 function LiveDashboard({ user, deviceId, onDeviceChange, signOut }) {
   const { getIdToken, canWrite } = useAuth()
+  const { t } = useT()
   const { data, loading, error, familyId } = useFamilyData(user, deviceId)
   const actions = useMemo(
     () => (familyId ? createActions({ familyId, getIdToken, canWrite }) : null),
@@ -63,7 +66,7 @@ function LiveDashboard({ user, deviceId, onDeviceChange, signOut }) {
   if (loading) {
     return (
       <Splash>
-        <p className="login-sub">Loading your family…</p>
+        <p className="login-sub">{t('live.loadingFamily')}</p>
       </Splash>
     )
   }
@@ -71,14 +74,12 @@ function LiveDashboard({ user, deviceId, onDeviceChange, signOut }) {
   if (error) {
     return (
       <Splash>
-        <h1>Could not load your family</h1>
+        <h1>{t('live.loadFailedTitle')}</h1>
         <p className="login-sub">
-          {error.code === 'permission-denied'
-            ? 'This account does not have access to a KidGate family. Sign in with the parent account you use in the app.'
-            : error.message}
+          {error.code === 'permission-denied' ? t('live.noAccess') : error.message}
         </p>
         <button className="btn btn-primary btn-block" onClick={signOut}>
-          Sign out
+          {t('common.signOut')}
         </button>
       </Splash>
     )
@@ -95,7 +96,7 @@ function LiveDashboard({ user, deviceId, onDeviceChange, signOut }) {
               display name is often a placeholder like "Guest". */}
           <span title={user.email || ''}>{user.email || user.displayName}</span>
           <button className="login-link" onClick={signOut}>
-            Sign out
+            {t('common.signOut')}
           </button>
         </div>
       }

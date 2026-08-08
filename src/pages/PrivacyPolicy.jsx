@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom'
+import LegalNote from '../i18n/LegalNote.jsx'
 
 export default function PrivacyPolicy() {
   return (
     <article className="legal">
       <h1>Privacy Policy</h1>
       <p className="updated">Last updated: August 4, 2026</p>
+      <LegalNote />
 
       <p>
         KidGate (&quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) provides a

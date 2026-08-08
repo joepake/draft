@@ -2,6 +2,8 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import QRCode from 'qrcode'
 import { createWebSession, waitForApproval } from './webSession.js'
 import { describeAuthError, useAuth } from './AuthContext.jsx'
+import { RichText } from '../i18n/RichText.jsx'
+import { useT } from '../i18n/useT.js'
 
 /** What the phone's scanner reads. The short code is all it needs. */
 function qrPayload(code) {
@@ -17,6 +19,7 @@ function formatCountdown(ms) {
 
 export default function QrSignIn({ onError }) {
   const { signInWithQrToken } = useAuth()
+  const { t } = useT()
   const [session, setSession] = useState(null)
   const [svg, setSvg] = useState(null)
   const [status, setStatus] = useState('idle')
@@ -58,9 +61,9 @@ export default function QrSignIn({ onError }) {
     } catch (e) {
       if (controller.signal.aborted || e?.code === 'web/cancelled') return
       setStatus('error')
-      onError?.(describeAuthError(e))
+      onError?.(describeAuthError(e, t))
     }
-  }, [onError, signInWithQrToken])
+  }, [onError, signInWithQrToken, t])
 
   useEffect(() => () => abortRef.current?.abort(), [])
 
@@ -83,7 +86,7 @@ export default function QrSignIn({ onError }) {
   if (status === 'idle') {
     return (
       <button className="btn btn-primary btn-block" onClick={start}>
-        Sign in with the KidGate app
+        {t('qr.start')}
       </button>
     )
   }
@@ -94,7 +97,7 @@ export default function QrSignIn({ onError }) {
         <div className="qr-code" dangerouslySetInnerHTML={{ __html: svg }} />
       ) : (
         <div className="qr-code qr-placeholder">
-          {status === 'starting' ? 'Generating code…' : ''}
+          {status === 'starting' ? t('qr.generating') : ''}
         </div>
       )}
 
@@ -107,29 +110,27 @@ export default function QrSignIn({ onError }) {
       {status === 'waiting' && (
         <>
           <ol className="qr-steps">
-            <li>Open KidGate on your phone.</li>
-            <li>
-              Go to <em>Settings &rarr; Sign in on the web</em>.
-            </li>
-            <li>Scan this code, then approve.</li>
+            <RichText as="li" text={t('qr.step1')} />
+            <RichText as="li" text={t('qr.step2')} />
+            <RichText as="li" text={t('qr.step3')} />
           </ol>
           <p className="qr-meta">
-            Waiting for approval · expires in {formatCountdown(remaining)}
+            {t('qr.waiting', { time: formatCountdown(remaining) })}
           </p>
         </>
       )}
 
-      {status === 'signing-in' && <p className="qr-meta">Approved. Signing in…</p>}
+      {status === 'signing-in' && <p className="qr-meta">{t('qr.signingIn')}</p>}
 
       {(status === 'expired' || status === 'error') && (
         <p className="qr-meta">
-          {status === 'expired' ? 'This code expired.' : 'Sign-in did not finish.'}
+          {status === 'expired' ? t('qr.expired') : t('qr.failed')}
         </p>
       )}
 
       {status !== 'signing-in' && (
         <button className="login-link" onClick={start}>
-          {status === 'waiting' ? 'Show a new code' : 'Try again'}
+          {status === 'waiting' ? t('qr.newCode') : t('qr.tryAgain')}
         </button>
       )}
     </div>

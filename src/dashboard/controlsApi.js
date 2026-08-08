@@ -22,10 +22,16 @@ import { db, functionsBaseUrl } from '../lib/firebase.js'
  * `canWrite` therefore comes from the token claims, not from local storage.
  */
 
+/**
+ * `messageKey` is set for failures raised here, where the wording is ours to
+ * translate. Errors relayed from the Cloud Function carry only `message` —
+ * that text comes from the server and is shown as received.
+ */
 export class ControlError extends Error {
-  constructor(message, code) {
+  constructor(message, code, messageKey) {
     super(message)
     this.code = code
+    this.messageKey = messageKey
   }
 }
 
@@ -34,12 +40,17 @@ async function callFunction(name, body, getIdToken) {
     throw new ControlError(
       'Cloud Functions URL is not configured (VITE_FIREBASE_FUNCTIONS_URL).',
       'config/missing-functions-url',
+      'authError.noFunctionsUrl',
     )
   }
 
   const token = await getIdToken()
   if (!token) {
-    throw new ControlError('Your session expired. Sign in again.', 'auth/no-token')
+    throw new ControlError(
+      'Your session expired. Sign in again.',
+      'auth/no-token',
+      'authError.sessionExpired',
+    )
   }
 
   const res = await fetch(`${functionsBaseUrl}/${name}`, {

@@ -10,6 +10,7 @@ import {
   where,
 } from 'firebase/firestore'
 import { db } from '../lib/firebase.js'
+import { t } from '../i18n/index.js'
 
 /**
  * Live family data for the parent dashboard.
@@ -67,8 +68,8 @@ function mapDevice(id, d) {
 
   return {
     id,
-    name: d.name || d.deviceLabel || 'Child device',
-    childName: d.name || d.deviceLabel || 'Child device',
+    name: d.name || d.deviceLabel || t('dash.fallbackDevice'),
+    childName: d.name || d.deviceLabel || t('dash.fallbackDevice'),
     initials: initialsOf(d.name || d.deviceLabel),
     platform: d.platform,
     modelName: d.modelName || d.deviceLabel || '',
@@ -391,8 +392,11 @@ export function useFamilyData(user, selectedDeviceId) {
     const withUsage = devices.map((d) => ({ ...d, usage: usage[d.id] || [] }))
     return {
       family: {
-        name: familyDoc?.familyName || familyDoc?.name || 'Your family',
-        plan: familyDoc?.subscriptionStatus === 'premium' ? 'Premium' : 'Trial',
+        name: familyDoc?.familyName || familyDoc?.name || t('dash.fallbackFamily'),
+        // Kept as a raw key, not a label: the pill is on screen permanently, so
+        // it has to re-read when the language changes rather than freeze at the
+        // wording captured when this snapshot arrived.
+        plan: familyDoc?.subscriptionStatus === 'premium' ? 'premium' : 'trial',
         parents: Array.from({ length: memberCount }, (_, i) => ({ id: i })),
       },
       devices: withUsage,

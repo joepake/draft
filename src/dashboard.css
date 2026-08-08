@@ -1636,3 +1636,41 @@
     display: none;
   }
 }
+
+/* ---------- Language picker: sidebar and sign-in placements ---------- */
+
+.lang-side {
+  margin-top: 0.6rem;
+}
+
+.lang-side .lang-btn {
+  width: 100%;
+  justify-content: flex-start;
+  font-size: 0.8rem;
+}
+
+/* The sidebar footer sits at the bottom of a full-height column, so the menu
+   opens upward — downward it would render below the viewport. */
+.lang-side .lang-menu {
+  top: auto;
+  bottom: calc(100% + 0.4rem);
+  left: 0;
+  right: auto;
+}
+
+.login-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.login-head .login-brand {
+  margin-bottom: 0;
+}
+
+/* Left-aligned inside a card whose slim variant centres everything. */
+.login-card-slim .login-head {
+  justify-content: center;
+}

@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import Icon from '../components/Icon.jsx'
+import { useT } from '../i18n/useT.js'
 
 /** Fades sections in as they arrive. Disabled wholesale by prefers-reduced-motion. */
 function useReveal() {
@@ -51,106 +52,45 @@ function PlayMark() {
 }
 
 function StoreButtons() {
+  const { t } = useT()
+
   return (
     <div className="store-buttons">
-      <a className="store-btn" href="#" aria-label="Download KidGate on the App Store">
+      <a className="store-btn" href="#" aria-label={t('store.appleAria')}>
         <AppleMark />
         <span>
-          <small>Download on the</small>
-          <strong>App Store</strong>
+          <small>{t('store.appleSmall')}</small>
+          <strong>{t('store.appleName')}</strong>
         </span>
       </a>
-      <a className="store-btn" href="#" aria-label="Get KidGate on Google Play">
+      <a className="store-btn" href="#" aria-label={t('store.googleAria')}>
         <PlayMark />
         <span>
-          <small>Get it on</small>
-          <strong>Google Play</strong>
+          <small>{t('store.googleSmall')}</small>
+          <strong>{t('store.googleName')}</strong>
         </span>
       </a>
     </div>
   )
 }
 
-const TRUST = [
-  { title: 'No ads, ever', text: "Children's data is never used for advertising" },
-  { title: 'Delete anytime', text: 'Erase your family account and all data on request' },
-  { title: 'iOS and Android', text: 'Native screen-time controls on both platforms' },
-  { title: 'One plan per family', text: 'Every parent and child device, one subscription' },
-]
-
+const TRUST = [1, 2, 3, 4]
 const FEATURES = [
-  {
-    icon: 'clock',
-    title: 'Screen time & daily limits',
-    text: 'Set a daily cap and Blocked Hours for school and bedtime. The device locks itself when time is up.',
-  },
-  {
-    icon: 'ban',
-    title: 'App blocking',
-    text: 'Choose exactly which apps your child can open, protected by your Parent PIN, and switch blocking on remotely.',
-  },
-  {
-    icon: 'globe',
-    title: 'Web filtering',
-    text: 'Refuse adult and gambling sites on the child device, and pair it with app blocking for stronger cover.',
-  },
-  {
-    icon: 'pin',
-    title: 'Live location & places',
-    text: "See your child's latest location, review history, and get told when they arrive at or leave a saved place.",
-  },
-  {
-    icon: 'lifebuoy',
-    title: 'Check-In & SOS',
-    text: 'Ask your child to confirm they are safe, and receive an instant SOS with location and photo in an emergency.',
-  },
-  {
-    icon: 'shieldCheck',
-    title: 'Protection alerts',
-    text: 'Know the moment an important permission is switched off, so protection never quietly fades away.',
-  },
+  { n: 1, icon: 'clock' },
+  { n: 2, icon: 'ban' },
+  { n: 3, icon: 'globe' },
+  { n: 4, icon: 'pin' },
+  { n: 5, icon: 'lifebuoy' },
+  { n: 6, icon: 'shieldCheck' },
 ]
-
-const WHY = [
-  {
-    title: 'One plan, whole family',
-    text: 'A single subscription covers every parent and child device. Only the family owner pays.',
-  },
-  {
-    title: 'Built for co-parenting',
-    text: 'Invite a second parent to manage the same children, with access the owner approves.',
-  },
-  {
-    title: 'Privacy first',
-    text: "We never sell personal data and never use children's data for advertising. Delete everything anytime.",
-  },
-  {
-    title: 'Honest about limits',
-    text: 'We tell you what each platform can and cannot enforce, instead of promising control that does not exist.',
-  },
-]
-
-const FAQ = [
-  {
-    q: 'Is there a free trial?',
-    a: 'Yes. The trial starts when your first parent and child devices are connected, and includes every Premium feature.',
-  },
-  {
-    q: 'How many devices can I manage?',
-    a: 'One subscription covers your whole family — multiple child devices and multiple parents on the same plan.',
-  },
-  {
-    q: 'Can my child uninstall or bypass KidGate?',
-    a: 'Sensitive settings sit behind your Parent PIN, and Protection Alerts tell you straight away if a key permission is turned off on the child device.',
-  },
-  {
-    q: 'Can I manage everything from a computer?',
-    a: 'You can sign in to the web dashboard to read reports. Changing limits or locking a device is approved from your phone, so a stolen password is never enough.',
-  },
-]
+const WHY = [1, 2, 3, 4]
+const STEPS = [1, 2, 3]
+const FAQ = [1, 2, 3, 4]
+const HERO_CHECKS = [1, 2, 3, 4, 5]
 
 export default function Home() {
   const root = useReveal()
+  const { t } = useT()
 
   return (
     <div className="landing" ref={root}>
@@ -159,25 +99,20 @@ export default function Home() {
           <div>
             <span className="hero-badge">
               <Icon name="shieldCheck" />
-              Parental control, done right
+              {t('home.heroBadge')}
             </span>
             <h1>
-              Protect your children{' '}
-              <span className="accent">without taking away their freedom.</span>
+              {t('home.heroTitle')}{' '}
+              <span className="accent">{t('home.heroTitleAccent')}</span>
             </h1>
-            <p className="lede">
-              KidGate gives parents calm, clear control over screen time, apps
-              and safety — while kids keep a phone that still feels like theirs.
-            </p>
+            <p className="lede">{t('home.heroLede')}</p>
             <ul className="hero-checks">
-              {['Screen Time', 'App Blocking', 'Web Filtering', 'Location', 'Family Dashboard'].map(
-                (label) => (
-                  <li key={label}>
-                    <Icon name="check" />
-                    {label}
-                  </li>
-                ),
-              )}
+              {HERO_CHECKS.map((n) => (
+                <li key={n}>
+                  <Icon name="check" />
+                  {t(`home.heroCheck${n}`)}
+                </li>
+              ))}
             </ul>
             <StoreButtons />
           </div>
@@ -186,26 +121,26 @@ export default function Home() {
             <div className="phone">
               <div className="phone-notch" />
               <div className="phone-card">
-                <div className="label">Daily limit</div>
-                <div className="value">1h 24m of 3h used</div>
+                <div className="label">{t('home.phoneDailyLimit')}</div>
+                <div className="value">{t('home.phoneDailyLimitValue')}</div>
                 <div className="phone-bar">
                   <span style={{ width: '47%' }} />
                 </div>
               </div>
               <div className="phone-card">
-                <div className="label">Blocked hours</div>
+                <div className="label">{t('home.phoneBlockedHours')}</div>
                 <div className="value">21:00 – 07:00</div>
                 <span className="phone-pill">
                   <Icon name="check" />
-                  Schedule on
+                  {t('home.phoneScheduleOn')}
                 </span>
               </div>
               <div className="phone-card">
-                <div className="label">Location</div>
-                <div className="value">At school · 5 min ago</div>
+                <div className="label">{t('home.phoneLocation')}</div>
+                <div className="value">{t('home.phoneLocationValue')}</div>
                 <span className="phone-pill">
                   <Icon name="check" />
-                  Check-In OK
+                  {t('home.phoneCheckIn')}
                 </span>
               </div>
             </div>
@@ -216,12 +151,12 @@ export default function Home() {
       <section className="trust">
         <div className="inner">
           <ul className="trust-grid reveal">
-            {TRUST.map((t) => (
-              <li className="trust-item" key={t.title}>
+            {TRUST.map((n) => (
+              <li className="trust-item" key={n}>
                 <Icon name="check" />
                 <div>
-                  <strong>{t.title}</strong>
-                  <span>{t.text}</span>
+                  <strong>{t(`home.trust${n}Title`)}</strong>
+                  <span>{t(`home.trust${n}Text`)}</span>
                 </div>
               </li>
             ))}
@@ -232,21 +167,18 @@ export default function Home() {
       <section>
         <div className="inner">
           <div className="reveal">
-            <span className="eyebrow">Features</span>
-            <h2>Everything a parent needs</h2>
-            <p className="section-sub">
-              From daily limits to emergency alerts — one app for the whole
-              family&apos;s digital wellbeing.
-            </p>
+            <span className="eyebrow">{t('home.featuresEyebrow')}</span>
+            <h2>{t('home.featuresTitle')}</h2>
+            <p className="section-sub">{t('home.featuresSub')}</p>
           </div>
           <div className="features-grid">
             {FEATURES.map((f) => (
-              <article className="feature-card reveal" key={f.title}>
+              <article className="feature-card reveal" key={f.n}>
                 <div className="feature-icon">
                   <Icon name={f.icon} size={22} />
                 </div>
-                <h3>{f.title}</h3>
-                <p>{f.text}</p>
+                <h3>{t(`home.feature${f.n}Title`)}</h3>
+                <p>{t(`home.feature${f.n}Text`)}</p>
               </article>
             ))}
           </div>
@@ -256,12 +188,9 @@ export default function Home() {
       <section className="showcase">
         <div className="inner">
           <div className="reveal">
-            <span className="eyebrow">Parent dashboard</span>
-            <h2>The whole family, on one screen</h2>
-            <p className="section-sub">
-              Screen time, blocked attempts, location and anything that needs
-              your attention — on your phone, or in any browser.
-            </p>
+            <span className="eyebrow">{t('home.showcaseEyebrow')}</span>
+            <h2>{t('home.showcaseTitle')}</h2>
+            <p className="section-sub">{t('home.showcaseSub')}</p>
           </div>
 
           <div className="showcase-frame reveal" aria-hidden="true">
@@ -274,33 +203,33 @@ export default function Home() {
             <div className="showcase-body">
               <div className="showcase-side">
                 {[
-                  ['grid', 'Overview', true],
-                  ['clock', 'Screen Time', false],
-                  ['apps', 'Apps & Web', false],
-                  ['shield', 'Safety', false],
-                  ['sliders', 'Controls', false],
-                ].map(([icon, label, active]) => (
+                  ['grid', 'dash.tabOverview', true],
+                  ['clock', 'dash.tabScreen', false],
+                  ['apps', 'dash.tabApps', false],
+                  ['shield', 'dash.tabSafety', false],
+                  ['sliders', 'dash.tabControls', false],
+                ].map(([icon, key, active]) => (
                   <div
                     className={`showcase-row${active ? ' is-active' : ''}`}
-                    key={label}
+                    key={key}
                   >
                     <Icon name={icon} />
-                    {label}
+                    {t(key)}
                   </div>
                 ))}
               </div>
               <div className="showcase-main">
                 <div className="showcase-tiles">
                   <div className="showcase-tile">
-                    <em>Screen time today</em>
+                    <em>{t('home.showcaseTile1')}</em>
                     <strong>2h 14m</strong>
                   </div>
                   <div className="showcase-tile">
-                    <em>Blocked attempts</em>
+                    <em>{t('home.showcaseTile2')}</em>
                     <strong>41</strong>
                   </div>
                   <div className="showcase-tile">
-                    <em>Needs attention</em>
+                    <em>{t('home.showcaseTile3')}</em>
                     <strong>2</strong>
                   </div>
                 </div>
@@ -324,11 +253,11 @@ export default function Home() {
           <div className="showcase-caption reveal">
             <span>
               <Icon name="eye" />
-              Read reports from any browser
+              {t('home.showcaseCaption1')}
             </span>
             <span>
               <Icon name="qr" />
-              Changes approved from your phone
+              {t('home.showcaseCaption2')}
             </span>
           </div>
         </div>
@@ -337,31 +266,16 @@ export default function Home() {
       <section>
         <div className="inner">
           <div className="reveal">
-            <span className="eyebrow">Setup</span>
-            <h2>Up and running in minutes</h2>
-            <p className="section-sub">
-              No technical skills needed — the app walks you through every step.
-            </p>
+            <span className="eyebrow">{t('home.setupEyebrow')}</span>
+            <h2>{t('home.setupTitle')}</h2>
+            <p className="section-sub">{t('home.setupSub')}</p>
           </div>
           <div className="steps">
-            {[
-              [
-                'Set up your device',
-                'Install KidGate, choose “This is a parent device”, and sign in with Google, Apple or email.',
-              ],
-              [
-                "Pair your child's device",
-                "Install KidGate on your child's phone and connect it by scanning a QR code. Under a minute.",
-              ],
-              [
-                'Set your rules',
-                'Pick a daily limit, block apps and hours, and turn on location — all from your own phone.',
-              ],
-            ].map(([title, text], i) => (
-              <article className="step reveal" key={title}>
-                <span className="step-num">{i + 1}</span>
-                <h3>{title}</h3>
-                <p>{text}</p>
+            {STEPS.map((n) => (
+              <article className="step reveal" key={n}>
+                <span className="step-num">{n}</span>
+                <h3>{t(`home.step${n}Title`)}</h3>
+                <p>{t(`home.step${n}Text`)}</p>
               </article>
             ))}
           </div>
@@ -371,21 +285,19 @@ export default function Home() {
       <section className="showcase">
         <div className="inner">
           <div className="reveal">
-            <span className="eyebrow">Why KidGate</span>
-            <h2>Built for trust, not surveillance</h2>
-            <p className="section-sub">
-              Designed to keep the conversation between parent and child open.
-            </p>
+            <span className="eyebrow">{t('home.whyEyebrow')}</span>
+            <h2>{t('home.whyTitle')}</h2>
+            <p className="section-sub">{t('home.whySub')}</p>
           </div>
           <div className="why-grid">
-            {WHY.map((w) => (
-              <article className="why-item reveal" key={w.title}>
+            {WHY.map((n) => (
+              <article className="why-item reveal" key={n}>
                 <span className="tick">
                   <Icon name="check" />
                 </span>
                 <div>
-                  <h3>{w.title}</h3>
-                  <p>{w.text}</p>
+                  <h3>{t(`home.why${n}Title`)}</h3>
+                  <p>{t(`home.why${n}Text`)}</p>
                 </div>
               </article>
             ))}
@@ -396,21 +308,21 @@ export default function Home() {
       <section>
         <div className="inner">
           <div className="reveal">
-            <span className="eyebrow">FAQ</span>
-            <h2>Questions parents ask first</h2>
-            <p className="section-sub">Quick answers before you download.</p>
+            <span className="eyebrow">{t('home.faqEyebrow')}</span>
+            <h2>{t('home.faqTitle')}</h2>
+            <p className="section-sub">{t('home.faqSub')}</p>
           </div>
           <div className="faq-list reveal">
-            {FAQ.map((item) => (
-              <details key={item.q}>
-                <summary>{item.q}</summary>
-                <p>{item.a}</p>
+            {FAQ.map((n) => (
+              <details key={n}>
+                <summary>{t(`home.faq${n}Q`)}</summary>
+                <p>{t(`home.faq${n}A`)}</p>
               </details>
             ))}
           </div>
           <p className="faq-more reveal">
             <Link to="/support">
-              More questions? Visit Support
+              {t('home.faqMore')}
               <Icon name="arrowRight" />
             </Link>
           </p>
@@ -419,14 +331,10 @@ export default function Home() {
 
       <section className="cta">
         <div className="inner reveal">
-          <h2>Start protecting your family today</h2>
-          <p className="section-sub">
-            Free trial with full access. No credit card needed to begin.
-          </p>
+          <h2>{t('home.ctaTitle')}</h2>
+          <p className="section-sub">{t('home.ctaSub')}</p>
           <StoreButtons />
-          <p className="cta-note">
-            Cancel anytime from the App Store or Google Play.
-          </p>
+          <p className="cta-note">{t('home.ctaNote')}</p>
         </div>
       </section>
     </div>

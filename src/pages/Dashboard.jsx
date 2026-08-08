@@ -1,6 +1,11 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { PERMISSION_LABELS, WEB_CATEGORY_LABELS } from '../dashboard/labels.js'
+import {
+  isKnownPermission,
+  permissionLabel,
+  WEB_CATEGORY_KEYS,
+  webCategoryLabel,
+} from '../dashboard/labels.js'
 import Icon from '../components/Icon.jsx'
 import {
   AppBars,
@@ -9,13 +14,17 @@ import {
   UsageBars,
   UsageRing,
 } from '../dashboard/charts.jsx'
+import LanguagePicker from '../i18n/LanguagePicker.jsx'
+import { RichText } from '../i18n/RichText.jsx'
+import { t as translate } from '../i18n/index.js'
+import { useT } from '../i18n/useT.js'
 
 const TABS = [
-  { id: 'overview', label: 'Overview', icon: 'grid' },
-  { id: 'screen', label: 'Screen Time', icon: 'clock' },
-  { id: 'apps', label: 'Apps & Web', icon: 'apps' },
-  { id: 'safety', label: 'Safety', icon: 'shield' },
-  { id: 'controls', label: 'Controls', icon: 'sliders' },
+  { id: 'overview', labelKey: 'dash.tabOverview', icon: 'grid' },
+  { id: 'screen', labelKey: 'dash.tabScreen', icon: 'clock' },
+  { id: 'apps', labelKey: 'dash.tabApps', icon: 'apps' },
+  { id: 'safety', labelKey: 'dash.tabSafety', icon: 'shield' },
+  { id: 'controls', labelKey: 'dash.tabControls', icon: 'sliders' },
 ]
 
 /**
@@ -39,28 +48,41 @@ function osLabel(platform, osVersion) {
  * which counts only real denials.
  */
 const PERMISSION_STATE = {
-  authorized: { label: 'Allowed', tone: 'good', icon: 'check' },
-  denied: { label: 'Turned off', tone: 'critical', icon: 'ban' },
-  notDetermined: { label: 'Not asked yet', tone: 'muted', icon: 'clock' },
-  restricted: { label: 'Restricted', tone: 'warning', icon: 'alert' },
-  unavailable: { label: 'Not available', tone: 'muted', icon: 'minus' },
-  unknown: { label: 'Unknown', tone: 'muted', icon: 'clock' },
+  authorized: { labelKey: 'dash.stateAllowed', tone: 'good', icon: 'check' },
+  denied: { labelKey: 'dash.stateDenied', tone: 'critical', icon: 'ban' },
+  notDetermined: {
+    labelKey: 'dash.stateNotDetermined',
+    tone: 'muted',
+    icon: 'clock',
+  },
+  restricted: { labelKey: 'dash.stateRestricted', tone: 'warning', icon: 'alert' },
+  unavailable: {
+    labelKey: 'dash.stateUnavailable',
+    tone: 'muted',
+    icon: 'minus',
+  },
+  unknown: { labelKey: 'dash.stateUnknown', tone: 'muted', icon: 'clock' },
 }
 
 function permissionState(value) {
   return PERMISSION_STATE[value] || PERMISSION_STATE.unknown
 }
 
+/**
+ * Reads the module-level `t`: it is called from `useMemo` bodies and from
+ * inside `map` callbacks whose component already re-renders on a language
+ * change, so threading a hook through every call site would buy nothing.
+ */
 function timeAgo(iso) {
   const at = iso ? new Date(iso).getTime() : NaN
-  if (Number.isNaN(at)) return 'never'
+  if (Number.isNaN(at)) return translate('time.never')
   const diff = Date.now() - at
   const mins = Math.round(diff / 60000)
-  if (mins < 1) return 'just now'
-  if (mins < 60) return `${mins}m ago`
+  if (mins < 1) return translate('time.justNow')
+  if (mins < 60) return translate('time.minutes', { count: mins })
   const hrs = Math.round(mins / 60)
-  if (hrs < 24) return `${hrs}h ago`
-  return `${Math.round(hrs / 24)}d ago`
+  if (hrs < 24) return translate('time.hours', { count: hrs })
+  return translate('time.days', { count: Math.round(hrs / 24) })
 }
 
 function Card({ title, subtitle, action, className = '', children }) {
@@ -93,17 +115,20 @@ function StatTile({ label, value, meta, tone = 'default', icon }) {
   )
 }
 
+const STATUS_TONE = { online: 'good', offline: 'muted', locked: 'warning' }
+const STATUS_KEY = {
+  online: 'dash.statusOnline',
+  offline: 'dash.statusOffline',
+  locked: 'dash.statusLocked',
+}
+
 function StatusPill({ status }) {
-  const map = {
-    online: { label: 'Online', tone: 'good' },
-    offline: { label: 'Offline', tone: 'muted' },
-    locked: { label: 'Locked', tone: 'warning' },
-  }
-  const s = map[status] ?? map.offline
+  const { t } = useT()
+  const known = STATUS_TONE[status] ? status : 'offline'
   return (
-    <span className={`pill tone-${s.tone}`}>
+    <span className={`pill tone-${STATUS_TONE[known]}`}>
       <i className="pill-dot" aria-hidden="true" />
-      {s.label}
+      {t(STATUS_KEY[known])}
     </span>
   )
 }
@@ -143,6 +168,7 @@ export default function Dashboard({
     webHistory,
   } = data
 
+  const { t } = useT()
   const [deviceId, setDeviceId] = useState(devices[0]?.id ?? null)
   const [tab, setTab] = useState('overview')
   const [range, setRange] = useState(14)
@@ -159,7 +185,12 @@ export default function Dashboard({
       await fn()
       if (okMessage) setToast({ tone: 'good', text: okMessage })
     } catch (e) {
-      setToast({ tone: 'critical', text: e.message })
+      // Failures raised in the browser carry a key we own; anything relayed
+      // from the Cloud Function arrives as server text and is shown as-is.
+      setToast({
+        tone: 'critical',
+        text: e.messageKey ? t(e.messageKey) : e.message,
+      })
     } finally {
       setBusy(null)
     }
@@ -203,15 +234,23 @@ export default function Dashboard({
     if (!device || !c) return []
     const items = []
     ;(timeRequests[device.id] || [])
-      .filter((t) => t.status === 'pending')
-      .forEach((t) =>
+      .filter((req) => req.status === 'pending')
+      .forEach((req) =>
         items.push({
-          id: t.id,
+          id: req.id,
           tone: 'warning',
           icon: 'clock',
-          title: `${device.childName} asked for ${t.requestedMinutes} more minutes`,
-          meta: t.reason ? `“${t.reason}” · ${timeAgo(t.createdAt)}` : timeAgo(t.createdAt),
-          cta: 'Review',
+          title: t('dash.attnMoreMinutes', {
+            name: device.childName,
+            minutes: req.requestedMinutes,
+          }),
+          meta: req.reason
+            ? t('dash.attnReason', {
+                reason: req.reason,
+                when: timeAgo(req.createdAt),
+              })
+            : timeAgo(req.createdAt),
+          action: 'review',
         }),
       )
     ;(checkIns[device.id] || [])
@@ -221,21 +260,23 @@ export default function Dashboard({
           id: ci.id,
           tone: 'serious',
           icon: 'lifebuoy',
-          title: 'Check-In was missed',
-          meta: `Sent ${timeAgo(ci.createdAt)} · no response`,
-          cta: 'Resend',
+          title: t('dash.attnCheckInMissed'),
+          meta: t('dash.attnCheckInMissedMeta', { when: timeAgo(ci.createdAt) }),
+          action: 'resend',
         }),
       )
     Object.entries(device.protectionStatus || {})
-      .filter(([k, v]) => PERMISSION_LABELS[k] && v === 'denied')
+      .filter(([k, v]) => isKnownPermission(k) && v === 'denied')
       .forEach(([k]) =>
         items.push({
           id: `perm-${k}`,
           tone: 'critical',
           icon: 'alert',
-          title: `${PERMISSION_LABELS[k]} is turned off`,
-          meta: 'Protection is weaker until this is restored on the child device',
-          cta: 'How to fix',
+          title: t('dash.attnPermissionOff', {
+            permission: permissionLabel(t, k),
+          }),
+          meta: t('dash.attnPermissionOffMeta'),
+          action: 'howToFix',
         }),
       )
     if (c.dailyLimitExceeded) {
@@ -243,9 +284,11 @@ export default function Dashboard({
         id: 'limit',
         tone: 'warning',
         icon: 'lock',
-        title: 'Daily Limit reached — device locked',
-        meta: `${formatMinutes(c.minutesUsedToday)} used today`,
-        cta: 'Unlock',
+        title: t('dash.attnLimitReached'),
+        meta: t('dash.attnLimitReachedMeta', {
+          used: formatMinutes(c.minutesUsedToday),
+        }),
+        action: 'unlock',
       })
     }
     if (device.batteryLevel != null && device.batteryLevel <= 25 && !device.batteryCharging) {
@@ -253,12 +296,12 @@ export default function Dashboard({
         id: 'batt',
         tone: 'serious',
         icon: 'battery',
-        title: `Battery is low (${device.batteryLevel}%)`,
-        meta: 'Location updates may pause if the phone dies',
+        title: t('dash.attnBatteryLow', { level: device.batteryLevel }),
+        meta: t('dash.attnBatteryLowMeta'),
       })
     }
     return items
-  }, [device, c])
+  }, [device, c, t])
 
   const web = (device && webHistory[device.id]) || []
   const blockedByCategory = useMemo(() => {
@@ -281,9 +324,9 @@ export default function Dashboard({
         </div>
 
         <div className="side-section">
-          <p className="side-title">Children</p>
+          <p className="side-title">{t('dash.children')}</p>
           {devices.length === 0 && (
-            <p className="side-empty">No child devices paired yet.</p>
+            <p className="side-empty">{t('dash.noChildren')}</p>
           )}
           {devices.map((d) => (
             <button
@@ -304,16 +347,16 @@ export default function Dashboard({
         </div>
 
         <nav className="side-section side-nav">
-          <p className="side-title">Manage</p>
-          {TABS.map((t) => (
+          <p className="side-title">{t('dash.manage')}</p>
+          {TABS.map((item) => (
             <button
-              key={t.id}
-              className={`nav-item${tab === t.id ? ' is-active' : ''}`}
-              onClick={() => setTab(t.id)}
+              key={item.id}
+              className={`nav-item${tab === item.id ? ' is-active' : ''}`}
+              onClick={() => setTab(item.id)}
             >
-              <Icon name={t.icon} size={17} />
-              {t.label}
-              {t.id === 'overview' && attention.length > 0 && (
+              <Icon name={item.icon} size={17} />
+              {t(item.labelKey)}
+              {item.id === 'overview' && attention.length > 0 && (
                 <span className="nav-badge">{attention.length}</span>
               )}
             </button>
@@ -321,11 +364,14 @@ export default function Dashboard({
         </nav>
 
         <div className="side-foot">
-          <span className="plan-pill">{family.plan}</span>
+          <span className="plan-pill">
+            {t(family.plan === 'premium' ? 'dash.planPremium' : 'dash.planTrial')}
+          </span>
           <p>
-            {family.parents.length} {family.parents.length === 1 ? 'parent' : 'parents'} ·{' '}
-            {devices.length} {devices.length === 1 ? 'child device' : 'child devices'}
+            {t('dash.parents', { count: family.parents.length })} ·{' '}
+            {t('dash.devices', { count: devices.length })}
           </p>
+          <LanguagePicker variant="side" />
           {sideFooter}
         </div>
       </aside>
@@ -342,7 +388,7 @@ export default function Dashboard({
                 {device.lastActiveAt && (
                   <>
                     <span className="dot-sep">·</span>
-                    Last active {timeAgo(device.lastActiveAt)}
+                    {t('dash.lastActive', { when: timeAgo(device.lastActiveAt) })}
                   </>
                 )}
                 {device.batteryLevel != null && (
@@ -366,30 +412,26 @@ export default function Dashboard({
                     run(
                       'checkin',
                       () => actions.sendCheckIn(device),
-                      `${device.childName} will get a Check-In request.`,
+                      t('dash.toastCheckIn', { name: device.childName }),
                     )
                   }
                 >
-                  {busy === 'checkin' ? 'Sending…' : 'Check-In'}
+                  {busy === 'checkin' ? t('dash.sending') : t('dash.checkIn')}
                 </button>
                 <button
                   className="btn btn-primary"
                   disabled={(live && !canWrite) || busy === 'lock'}
-                  title={
-                    live && !canWrite
-                      ? 'Locking requires the KidGate app on your phone'
-                      : undefined
-                  }
+                  title={live && !canWrite ? t('dash.lockNeedsApp') : undefined}
                   onClick={() =>
                     live &&
                     run('lock', () => actions.setLock(device.id, !device.isLocked))
                   }
                 >
                   {busy === 'lock'
-                    ? 'Working…'
+                    ? t('dash.working')
                     : device.isLocked
-                      ? 'Unlock'
-                      : 'Lock device'}
+                      ? t('dash.unlock')
+                      : t('dash.lockDevice')}
                 </button>
               </>
             )}
@@ -398,10 +440,7 @@ export default function Dashboard({
 
         {live && !canWrite && (
           <div className="write-note">
-            <strong>View only.</strong> To lock a device, change limits or
-            approve requests, sign out and sign in again by scanning the QR
-            code with the KidGate app — approval from a paired parent phone is
-            what unlocks the controls. Check-Ins work from here either way.
+            <strong>{t('dash.viewOnlyTitle')}</strong> {t('dash.viewOnlyBody')}
           </div>
         )}
 
@@ -409,12 +448,8 @@ export default function Dashboard({
 
         {!device && (
           <section className="card">
-            <h2>No child device yet</h2>
-            <p className="hint">
-              Open KidGate on your phone, go to <em>Family → + → Connect a child
-              device</em>, and scan the QR code shown on your child&apos;s
-              device. It will appear here within a few seconds of pairing.
-            </p>
+            <h2>{t('dash.noDeviceTitle')}</h2>
+            <RichText as="p" className="hint" text={t('dash.noDeviceBody')} />
           </section>
         )}
 
@@ -423,48 +458,56 @@ export default function Dashboard({
             <div className="tiles">
               <StatTile
                 icon="clock"
-                label="Screen time today"
+                label={t('dash.tileScreenToday')}
                 value={formatMinutes(stats.used)}
                 meta={
                   stats.delta === 0
-                    ? 'Same as the 7-day average'
-                    : `${stats.delta > 0 ? '↑' : '↓'} ${Math.abs(stats.delta)}% vs 7-day average`
+                    ? t('dash.tileSameAsAverage')
+                    : t(stats.delta > 0 ? 'dash.tileDeltaUp' : 'dash.tileDeltaDown', {
+                        percent: Math.abs(stats.delta),
+                      })
                 }
                 tone={stats.delta > 25 ? 'warning' : 'default'}
               />
               <StatTile
                 icon="ban"
-                label="Blocked attempts"
+                label={t('dash.tileBlocked')}
                 value={device.protectionCounters.appBlocked}
-                meta="Apps stopped since install"
+                meta={t('dash.tileBlockedMeta')}
               />
               <StatTile
                 icon="globe"
-                label="Sites filtered"
+                label={t('dash.tileSites')}
                 value={device.webFilterBlockedCount}
-                meta={blockedTotal ? `${blockedByCategory.length} categories hit` : 'Nothing blocked yet'}
+                meta={
+                  blockedTotal
+                    ? t('dash.tileCategoriesHit', { count: blockedByCategory.length })
+                    : t('dash.tileNothingBlocked')
+                }
               />
               <StatTile
                 icon="alert"
-                label="Needs attention"
+                label={t('dash.tileAttention')}
                 value={attention.length}
-                meta={attention.length ? 'Open items below' : 'All clear'}
+                meta={
+                  attention.length ? t('dash.tileOpenItems') : t('dash.tileAllClear')
+                }
                 tone={attention.length ? 'warning' : 'good'}
               />
             </div>
 
             <div className="cols">
               <div>
-                <Card title="Screen time" subtitle="Last 14 days, against the Daily Limit">
+                <Card
+                  title={t('dash.cardScreenTime')}
+                  subtitle={t('dash.cardScreenTimeSub')}
+                >
                   <UsageBars data={device.usage} limit={c.dailyLimitMinutes} days={14} />
                 </Card>
 
-                <Card title="Recent activity" subtitle="Newest first">
+                <Card title={t('dash.cardRecent')} subtitle={t('dash.cardRecentSub')}>
                   {(activities[device.id] || []).length === 0 && (
-                    <p className="empty">
-                      Nothing logged yet. Locks, blocked apps, place alerts and
-                      screen-time syncs from this device will appear here.
-                    </p>
+                    <p className="empty">{t('dash.cardRecentEmpty')}</p>
                   )}
                   <ul className="timeline">
                     {(activities[device.id] || []).map((a) => (
@@ -484,9 +527,12 @@ export default function Dashboard({
               </div>
 
               <div>
-                <Card title="Needs your attention" subtitle={`${attention.length} open`}>
+                <Card
+                  title={t('dash.cardAttention')}
+                  subtitle={t('dash.cardAttentionSub', { count: attention.length })}
+                >
                   {attention.length === 0 ? (
-                    <p className="empty">Nothing to review. Protections look healthy.</p>
+                    <p className="empty">{t('dash.cardAttentionEmpty')}</p>
                   ) : (
                     <ul className="attn">
                       {attention.map((a) => (
@@ -498,35 +544,47 @@ export default function Dashboard({
                             <strong>{a.title}</strong>
                             <em>{a.meta}</em>
                           </span>
-                          {a.cta && (
+                          {a.action && (
                           <button
                             className="btn btn-sm"
-                            disabled={live && !canWrite && a.cta !== 'Resend'}
+                            // Resending a Check-In is a plain Firestore write the
+                            // rules already allow, so it stays available to a
+                            // view-only session; the rest need the phone.
+                            disabled={live && !canWrite && a.action !== 'resend'}
                             title={
-                              live && !canWrite && a.cta !== 'Resend'
-                                ? 'Available in the KidGate app'
+                              live && !canWrite && a.action !== 'resend'
+                                ? t('dash.attnAppOnly')
                                 : undefined
                             }
                             onClick={() => {
                               if (!live) return
-                              if (a.cta === 'Review') {
+                              if (a.action === 'review') {
                                 run(
                                   a.id,
                                   () => actions.resolveTimeRequest(a.id, true),
-                                  'Extra time approved.',
+                                  t('dash.toastTimeApproved'),
                                 )
-                              } else if (a.cta === 'Resend') {
+                              } else if (a.action === 'resend') {
                                 run(
                                   a.id,
                                   () => actions.sendCheckIn(device),
-                                  'Check-In sent again.',
+                                  t('dash.toastCheckInResent'),
                                 )
-                              } else if (a.cta === 'Unlock') {
+                              } else if (a.action === 'unlock') {
                                 run(a.id, () => actions.setLock(device.id, false))
                               }
                             }}
                           >
-                            {busy === a.id ? '…' : a.cta}
+                            {busy === a.id
+                              ? '…'
+                              : t(
+                                  {
+                                    review: 'dash.attnReview',
+                                    resend: 'dash.attnResend',
+                                    howToFix: 'dash.attnHowToFix',
+                                    unlock: 'dash.attnUnlock',
+                                  }[a.action],
+                                )}
                           </button>
                         )}
                         </li>
@@ -536,12 +594,14 @@ export default function Dashboard({
                 </Card>
 
                 <Card
-                  title="Protection health"
-                  subtitle={`Checked ${timeAgo(device.protectionStatus.lastCheckedAt)}`}
+                  title={t('dash.cardProtection')}
+                  subtitle={t('dash.cardProtectionSub', {
+                    when: timeAgo(device.protectionStatus.lastCheckedAt),
+                  })}
                 >
                   <ul className="perms">
                     {Object.entries(device.protectionStatus)
-                      .filter(([k]) => PERMISSION_LABELS[k])
+                      .filter(([k]) => isKnownPermission(k))
                       .map(([k, v]) => {
                         const state = permissionState(v)
                         return (
@@ -549,8 +609,8 @@ export default function Dashboard({
                             <span className={`perm-state tone-${state.tone}`}>
                               <Icon name={state.icon} size={13} />
                             </span>
-                            {PERMISSION_LABELS[k]}
-                            <em>{state.label}</em>
+                            {permissionLabel(t, k)}
+                            <em>{t(state.labelKey)}</em>
                           </li>
                         )
                       })}
@@ -564,7 +624,7 @@ export default function Dashboard({
         {device && tab === 'screen' && (
           <>
             <div className="grid-2">
-              <Card title="Today" subtitle="Against the Daily Limit and any bonus earned">
+              <Card title={t('dash.todayTitle')} subtitle={t('dash.todaySub')}>
                 <div className="today">
                   <UsageRing
                     used={stats.used}
@@ -573,35 +633,43 @@ export default function Dashboard({
                   />
                   <ul className="today-stats">
                     <li>
-                      <span>Used</span>
+                      <span>{t('dash.used')}</span>
                       <strong>{formatMinutes(stats.used)}</strong>
                     </li>
                     <li>
-                      <span>Left</span>
+                      <span>{t('dash.left')}</span>
                       <strong className={stats.left === 0 ? 'tone-critical' : ''}>
-                        {stats.left == null ? '—' : formatMinutes(stats.left)}
+                        {stats.left == null ? t('viz.none') : formatMinutes(stats.left)}
                       </strong>
                     </li>
                     <li>
-                      <span>Daily Limit</span>
-                      <strong>{c.dailyLimitMinutes ? formatMinutes(c.dailyLimitMinutes) : 'Off'}</strong>
+                      <span>{t('dash.dailyLimit')}</span>
+                      <strong>
+                        {c.dailyLimitMinutes
+                          ? formatMinutes(c.dailyLimitMinutes)
+                          : t('dash.off')}
+                      </strong>
                     </li>
                     <li>
-                      <span>Bonus today</span>
-                      <strong>{c.bonusMinutesToday ? `+${formatMinutes(c.bonusMinutesToday)}` : '—'}</strong>
+                      <span>{t('dash.bonusToday')}</span>
+                      <strong>
+                        {c.bonusMinutesToday
+                          ? `+${formatMinutes(c.bonusMinutesToday)}`
+                          : t('viz.none')}
+                      </strong>
                     </li>
                   </ul>
                 </div>
               </Card>
 
-              <Card title="Top apps today" subtitle="Per-app caps shown as a marker">
+              <Card title={t('dash.topAppsTitle')} subtitle={t('dash.topAppsSub')}>
                 <AppBars apps={c.topApps} limits={c.appLimits} />
               </Card>
             </div>
 
             <Card
-              title="Screen time trend"
-              subtitle={`Last ${range} days`}
+              title={t('dash.trendTitle')}
+              subtitle={t('dash.trendSub', { count: range })}
               action={
                 <div className="seg">
                   {[7, 14, 30].map((d) => (
@@ -610,7 +678,7 @@ export default function Dashboard({
                       className={range === d ? 'is-active' : ''}
                       onClick={() => setRange(d)}
                     >
-                      {d}d
+                      {t('dash.rangeDays', { count: d })}
                     </button>
                   ))}
                 </div>
@@ -620,11 +688,11 @@ export default function Dashboard({
             </Card>
 
             <Card
-              title="Blocked Hours"
+              title={t('dash.blockedHoursTitle')}
               subtitle={
                 c.scheduleEnabled
-                  ? `${c.scheduleWindows.length} time ranges · the device stays locked inside the shaded blocks`
-                  : 'Schedule is off'
+                  ? t('dash.blockedHoursSub', { count: c.scheduleWindows.length })
+                  : t('dash.scheduleOff')
               }
             >
               <ScheduleGrid windows={c.scheduleWindows} />
@@ -635,28 +703,34 @@ export default function Dashboard({
         {device && tab === 'apps' && (
           <>
             <div className="grid-2">
-              <Card title="App usage today" subtitle="Time spent per app">
+              <Card title={t('dash.appUsageTitle')} subtitle={t('dash.appUsageSub')}>
                 <AppBars apps={c.topApps} limits={c.appLimits} />
               </Card>
 
-              <Card title="App blocking" subtitle="Chosen on the child device with the Parent PIN">
+              <Card
+                title={t('dash.appBlockingTitle')}
+                subtitle={t('dash.appBlockingSub')}
+              >
                 <div className="tiles tiles-inline">
                   <StatTile
-                    label="Blocking"
-                    value={c.appBlockingEnabled ? 'On' : 'Off'}
+                    label={t('dash.blockingLabel')}
+                    value={c.appBlockingEnabled ? t('dash.on') : t('dash.off')}
                     tone={c.appBlockingEnabled ? 'good' : 'muted'}
                   />
-                  <StatTile label="Apps blocked" value={c.blockedAppCount} />
-                  <StatTile label="Categories" value={c.blockedCategoryCount} />
+                  <StatTile label={t('dash.appsBlocked')} value={c.blockedAppCount} />
+                  <StatTile
+                    label={t('dash.categories')}
+                    value={c.blockedCategoryCount}
+                  />
                 </div>
-                <p className="hint">
-                  Per-app caps run independently of the blocklist — “30 minutes of
-                  TikTok” is a different decision from “no TikTok”.
-                </p>
+                <p className="hint">{t('dash.perAppHint')}</p>
                 <ul className="chips">
                   {c.appLimits.map((l) => (
                     <li key={l.id}>
-                      {l.label} <em>{formatMinutes(l.minutes)}/day</em>
+                      {l.label}{' '}
+                      <em>
+                        {t('dash.perDay', { value: formatMinutes(l.minutes) })}
+                      </em>
                     </li>
                   ))}
                 </ul>
@@ -664,14 +738,17 @@ export default function Dashboard({
             </div>
 
             <div className="grid-2">
-              <Card title="Web activity" subtitle="Most visited domains, last 30 days">
+              <Card
+                title={t('dash.webActivityTitle')}
+                subtitle={t('dash.webActivitySub')}
+              >
                 <table className="tbl">
                   <thead>
                     <tr>
-                      <th>Domain</th>
-                      <th className="num">Visits</th>
-                      <th className="num">Blocked</th>
-                      <th>Last seen</th>
+                      <th>{t('dash.colDomain')}</th>
+                      <th className="num">{t('dash.colVisits')}</th>
+                      <th className="num">{t('dash.colBlocked')}</th>
+                      <th>{t('dash.colLastSeen')}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -680,12 +757,14 @@ export default function Dashboard({
                         <td>
                           {w.domain}
                           {w.category && (
-                            <span className="tag">{WEB_CATEGORY_LABELS[w.category]}</span>
+                            <span className="tag">
+                              {webCategoryLabel(t, w.category)}
+                            </span>
                           )}
                         </td>
                         <td className="num">{w.visits}</td>
                         <td className={`num${w.blockedVisits ? ' tone-critical' : ''}`}>
-                          {w.blockedVisits || '—'}
+                          {w.blockedVisits || t('viz.none')}
                         </td>
                         <td>{timeAgo(w.lastAt)}</td>
                       </tr>
@@ -695,11 +774,11 @@ export default function Dashboard({
               </Card>
 
               <Card
-                title="What the filter refused"
-                subtitle={`${blockedTotal} blocked lookups, last 30 days`}
+                title={t('dash.filterRefusedTitle')}
+                subtitle={t('dash.filterRefusedSub', { count: blockedTotal })}
               >
                 {blockedByCategory.length === 0 ? (
-                  <p className="empty">Nothing has been blocked yet.</p>
+                  <p className="empty">{t('dash.nothingBlockedYet')}</p>
                 ) : (
                   <ul className="catbars">
                     {blockedByCategory.map(([cat, n], i) => (
@@ -707,7 +786,7 @@ export default function Dashboard({
                         <div className="hbar-head">
                           <span className="hbar-label">
                             <i className={`dot dot-${(i % 3) + 1}`} />
-                            {WEB_CATEGORY_LABELS[cat]}
+                            {webCategoryLabel(t, cat)}
                           </span>
                           <span className="hbar-value">{n}</span>
                         </div>
@@ -722,9 +801,11 @@ export default function Dashboard({
                   </ul>
                 )}
                 <p className="hint">
-                  {device.platform === 'ios'
-                    ? 'On iOS the filter uses Apple’s adult-content control — per-category blocking is Android only.'
-                    : 'Categories are enforced by the on-device DNS filter.'}
+                  {t(
+                    device.platform === 'ios'
+                      ? 'dash.filterHintIos'
+                      : 'dash.filterHintAndroid',
+                  )}
                 </p>
               </Card>
             </div>
@@ -735,13 +816,15 @@ export default function Dashboard({
           <div className="cols">
             <div>
               <Card
-                title="Location"
+                title={t('dash.locationTitle')}
                 subtitle={
                   !c.locationSharingEnabled
-                    ? 'Sharing is off'
+                    ? t('dash.locationSharingOff')
                     : device.lastLocation
-                      ? `Updated ${timeAgo(device.lastLocation.updatedAt)}`
-                      : 'Waiting for the first update'
+                      ? t('dash.locationUpdated', {
+                          when: timeAgo(device.lastLocation.updatedAt),
+                        })
+                      : t('dash.locationWaiting')
                 }
               >
                 <div className="map">
@@ -759,7 +842,7 @@ export default function Dashboard({
                   {device.lastLocation && (
                     <div className="map-badge">
                       <strong>
-                        {device.lastLocation.placeName || 'Last known location'}
+                        {device.lastLocation.placeName || t('dash.lastKnownLocation')}
                       </strong>
                       {device.lastLocation.address && (
                         <em>{device.lastLocation.address}</em>
@@ -768,10 +851,7 @@ export default function Dashboard({
                   )}
                 </div>
                 {(places[device.id] || []).length === 0 && (
-                  <p className="empty">
-                    No saved places yet. Add one in the app to get an alert when
-                    your child arrives or leaves.
-                  </p>
+                  <p className="empty">{t('dash.noPlaces')}</p>
                 )}
                 <ul className="places">
                   {(places[device.id] || []).map((p) => (
@@ -781,19 +861,22 @@ export default function Dashboard({
                       </span>
                       {p.name}
                       <em>
-                        {p.radius ? `${p.radius}m · ` : ''}
-                        {[p.alertOnEnter && 'arrive', p.alertOnExit && 'leave']
+                        {p.radius ? t('dash.placeRadius', { meters: p.radius }) : ''}
+                        {[
+                          p.alertOnEnter && t('dash.placeArrive'),
+                          p.alertOnExit && t('dash.placeLeave'),
+                        ]
                           .filter(Boolean)
-                          .join(' + ') || 'no alerts'}
+                          .join(' + ') || t('dash.placeNoAlerts')}
                       </em>
                     </li>
                   ))}
                 </ul>
               </Card>
 
-              <Card title="SOS alerts" subtitle="Emergency signals from the child device">
+              <Card title={t('dash.sosTitle')} subtitle={t('dash.sosSub')}>
                 {(sosAlerts[device.id] || []).length === 0 ? (
-                  <p className="empty">No SOS alerts. Test it once together so you both know how it works.</p>
+                  <p className="empty">{t('dash.sosEmpty')}</p>
                 ) : (
                   <ul className="events">
                     {sosAlerts[device.id].map((s) => (
@@ -805,7 +888,11 @@ export default function Dashboard({
                           <strong>{s.message}</strong>
                           <em>
                             {s.location?.placeName} ·{' '}
-                            {s.status === 'acknowledged' ? 'acknowledged' : 'active'}
+                            {t(
+                              s.status === 'acknowledged'
+                                ? 'dash.sosAcknowledged'
+                                : 'dash.sosActive',
+                            )}
                           </em>
                         </span>
                         <time>{timeAgo(s.createdAt)}</time>
@@ -817,7 +904,7 @@ export default function Dashboard({
             </div>
 
             <div>
-              <Card title="Check-Ins" subtitle="Ask your child to confirm they are safe">
+              <Card title={t('dash.checkInsTitle')} subtitle={t('dash.checkInsSub')}>
                 <ul className="events">
                   {(checkIns[device.id] || []).map((ci) => (
                     <li key={ci.id}>
@@ -839,23 +926,27 @@ export default function Dashboard({
                       </span>
                       <span className="ev-body">
                         <strong>
-                          {ci.status === 'safe'
-                            ? 'Confirmed safe'
-                            : ci.status === 'missed'
-                              ? 'No response'
-                              : 'Waiting'}
+                          {t(
+                            ci.status === 'safe'
+                              ? 'dash.checkInSafe'
+                              : ci.status === 'missed'
+                                ? 'dash.checkInMissed'
+                                : 'dash.checkInWaiting',
+                          )}
                         </strong>
                         <em>
                           {ci.location?.placeName ? `${ci.location.placeName} · ` : ''}
-                          {ci.status !== 'safe'
-                            ? ci.requirePhoto
-                              ? 'photo and location were requested'
-                              : 'no reply yet'
-                            : ci.photoSkipped
-                              ? 'photo skipped'
-                              : ci.requirePhoto
-                                ? 'photo attached'
-                                : 'no photo requested'}
+                          {t(
+                            ci.status !== 'safe'
+                              ? ci.requirePhoto
+                                ? 'dash.checkInPhotoRequested'
+                                : 'dash.checkInNoReply'
+                              : ci.photoSkipped
+                                ? 'dash.checkInPhotoSkipped'
+                                : ci.requirePhoto
+                                  ? 'dash.checkInPhotoAttached'
+                                  : 'dash.checkInNoPhoto',
+                          )}
                         </em>
                       </span>
                       <time>{timeAgo(ci.createdAt)}</time>
@@ -870,17 +961,19 @@ export default function Dashboard({
                     run(
                       'checkin2',
                       () => actions.sendCheckIn(device),
-                      `${device.childName} will get a Check-In request.`,
+                      t('dash.toastCheckIn', { name: device.childName }),
                     )
                   }
                 >
-                  {busy === 'checkin2' ? 'Sending…' : 'Send a Check-In now'}
+                  {busy === 'checkin2' ? t('dash.sending') : t('dash.sendCheckIn')}
                 </button>
               </Card>
 
               <Card
-                title="Protection alerts"
-                subtitle={`${device.protectionCounters.tamper} events since install`}
+                title={t('dash.protectionAlertsTitle')}
+                subtitle={t('dash.protectionAlertsSub', {
+                  count: device.protectionCounters.tamper,
+                })}
               >
                 <ul className="timeline">
                   {(activities[device.id] || [])
@@ -898,10 +991,7 @@ export default function Dashboard({
                       </li>
                     ))}
                 </ul>
-                <p className="hint">
-                  A protection alert means KidGate can enforce less than you set.
-                  Restore the permission on the child device to clear it.
-                </p>
+                <p className="hint">{t('dash.protectionAlertsHint')}</p>
               </Card>
             </div>
           </div>
@@ -922,6 +1012,7 @@ export default function Dashboard({
 /* ------------------------------------------------------------------ */
 
 function Toggle({ on, onChange, label, disabled }) {
+  const { t } = useT()
   return (
     <button
       className={`toggle${on ? ' is-on' : ''}`}
@@ -930,7 +1021,7 @@ function Toggle({ on, onChange, label, disabled }) {
       aria-checked={on}
       aria-label={label}
       disabled={disabled}
-      title={disabled ? 'Change this in the KidGate app' : undefined}
+      title={disabled ? t('dash.toggleInApp') : undefined}
     >
       <i />
     </button>
@@ -938,6 +1029,7 @@ function Toggle({ on, onChange, label, disabled }) {
 }
 
 function ControlsTab({ device, rewardTasks, readOnly }) {
+  const { t } = useT()
   const c = device.controls
   const [state, setState] = useState({
     appBlocking: c.appBlockingEnabled,
@@ -950,57 +1042,66 @@ function ControlsTab({ device, rewardTasks, readOnly }) {
   const rows = [
     {
       key: 'schedule',
-      title: 'Blocked Hours',
-      desc: `${c.scheduleWindows.length} time ranges · ${c.scheduleWindows
-        .map((w) => w.label || `${w.start}–${w.end}`)
-        .join(', ')}`,
+      title: t('dash.rowBlockedHours'),
+      desc: t('dash.rowBlockedHoursDesc', {
+        count: c.scheduleWindows.length,
+        list: c.scheduleWindows
+          .map((w) => w.label || `${w.start}–${w.end}`)
+          .join(', '),
+      }),
     },
     {
       key: 'appBlocking',
-      title: 'App Blocking',
-      desc: `${c.blockedAppCount} apps · ${c.blockedCategoryCount} categories selected on the child device`,
+      title: t('dash.rowAppBlocking'),
+      desc: t('dash.rowAppBlockingDesc', {
+        apps: c.blockedAppCount,
+        categories: c.blockedCategoryCount,
+      }),
     },
     {
       key: 'webFilter',
-      title: 'Web Filter',
-      desc: `${c.webFilterCategories.length} categories refused`,
+      title: t('dash.rowWebFilter'),
+      desc: t('dash.rowWebFilterDesc', { count: c.webFilterCategories.length }),
     },
     {
       key: 'location',
-      title: 'Location sharing',
+      title: t('dash.rowLocation'),
       desc: device.lastLocation
-        ? `Last update ${timeAgo(device.lastLocation.updatedAt)}`
-        : 'No location yet',
+        ? t('dash.rowLocationDesc', {
+            when: timeAgo(device.lastLocation.updatedAt),
+          })
+        : t('dash.rowLocationNone'),
     },
   ]
 
   return (
     <>
       <div className="grid-2">
-        <Card title="Daily Limit" subtitle="Cap the minutes available each day">
+        <Card title={t('dash.limitCardTitle')} subtitle={t('dash.limitCardSub')}>
           <div className="limit-edit">
-            <strong>{c.dailyLimitMinutes ? formatMinutes(c.dailyLimitMinutes) : 'Off'}</strong>
+            <strong>
+              {c.dailyLimitMinutes
+                ? formatMinutes(c.dailyLimitMinutes)
+                : t('dash.off')}
+            </strong>
             <input
               type="range"
               min="30"
               max="480"
               step="15"
               defaultValue={c.dailyLimitMinutes ?? 180}
-              aria-label="Daily limit minutes"
+              aria-label={t('dash.limitAria')}
               disabled={readOnly}
             />
             <div className="limit-scale">
-              <span>30m</span>
-              <span>8h</span>
+              <span>{t('dash.limitScaleMin')}</span>
+              <span>{t('dash.limitScaleMax')}</span>
             </div>
           </div>
-          <p className="hint">
-            Bonus minutes from reward tasks and approved time requests are added
-            on top, for that day only.
-          </p>
+          <p className="hint">{t('dash.limitHint')}</p>
         </Card>
 
-        <Card title="What is turned on" subtitle="Changes sync to the child device">
+        <Card title={t('dash.whatsOnTitle')} subtitle={t('dash.whatsOnSub')}>
           <ul className="ctrl-rows">
             {rows.map((r) => (
               <li key={r.key}>
@@ -1021,39 +1122,42 @@ function ControlsTab({ device, rewardTasks, readOnly }) {
       </div>
 
       <div className="grid-2">
-        <Card title="Web Filter categories" subtitle="Blocked content types">
+        <Card
+          title={t('dash.webFilterCatsTitle')}
+          subtitle={t('dash.webFilterCatsSub')}
+        >
           <ul className="chips chips-toggle">
-            {Object.entries(WEB_CATEGORY_LABELS).map(([key, label]) => {
+            {WEB_CATEGORY_KEYS.map((key) => {
               const on = c.webFilterCategories.includes(key)
               return (
                 <li key={key} className={on ? 'is-on' : ''}>
                   {on && <Icon name="check" size={13} />}
-                  {label}
+                  {webCategoryLabel(t, key)}
                 </li>
               )
             })}
           </ul>
-          <p className="hint">
-            Encrypted-DNS resolvers are always refused while the filter runs —
-            leaving them reachable is what lets a browser route around every
-            other category.
-          </p>
+          <p className="hint">{t('dash.dnsHint')}</p>
         </Card>
 
-        <Card title="Reward tasks" subtitle="Earn extra minutes by finishing tasks">
+        <Card title={t('dash.rewardTasksTitle')} subtitle={t('dash.rewardTasksSub')}>
           <ul className="events">
-            {(rewardTasks[device.id] || []).map((t) => (
-              <li key={t.id}>
+            {(rewardTasks[device.id] || []).map((task) => (
+              <li key={task.id}>
                 <span
                   className={`ev-state tone-${
-                    t.status === 'approved' ? 'good' : t.status === 'claimed' ? 'warning' : 'muted'
+                    task.status === 'approved'
+                      ? 'good'
+                      : task.status === 'claimed'
+                        ? 'warning'
+                        : 'muted'
                   }`}
                 >
                   <Icon
                     name={
-                      t.status === 'approved'
+                      task.status === 'approved'
                         ? 'check'
-                        : t.status === 'claimed'
+                        : task.status === 'claimed'
                           ? 'alert'
                           : 'clock'
                     }
@@ -1061,19 +1165,22 @@ function ControlsTab({ device, rewardTasks, readOnly }) {
                   />
                 </span>
                 <span className="ev-body">
-                  <strong>{t.title}</strong>
+                  <strong>{task.title}</strong>
                   <em>
-                    +{t.minutes} min · {t.cadence}
-                    {t.status === 'claimed' ? ' · waiting for your approval' : ''}
+                    {t('dash.rewardTaskMeta', {
+                      minutes: task.minutes,
+                      cadence: task.cadence,
+                    })}
+                    {task.status === 'claimed' ? t('dash.rewardTaskWaiting') : ''}
                   </em>
                 </span>
-                {t.status === 'claimed' && (
+                {task.status === 'claimed' && (
                   <button
                     className="btn btn-sm"
                     disabled={readOnly}
-                    title={readOnly ? 'Approve in the KidGate app' : undefined}
+                    title={readOnly ? t('dash.approveInApp') : undefined}
                   >
-                    Approve
+                    {t('dash.approve')}
                   </button>
                 )}
               </li>

@@ -1,8 +1,11 @@
+import LegalNote from '../i18n/LegalNote.jsx'
+
 export default function Terms() {
   return (
     <article className="legal">
       <h1>Terms &amp; Conditions</h1>
       <p className="updated">Last updated: August 4, 2026</p>
+      <LegalNote />
 
       <p>
         These Terms &amp; Conditions (&quot;Terms&quot;) govern your use of the
