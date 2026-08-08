@@ -5,6 +5,7 @@ import PrivacyPolicy from './pages/PrivacyPolicy.jsx'
 import Terms from './pages/Terms.jsx'
 import DeleteAccount from './pages/DeleteAccount.jsx'
 import Support from './pages/Support.jsx'
+import Icon from './components/Icon.jsx'
 import './dashboard.css'
 
 // Split out so the marketing and legal pages never download the Firebase SDK.
@@ -20,6 +21,83 @@ function RouteFallback() {
   )
 }
 
+function SiteHeader() {
+  return (
+    <header className="header">
+      <Link to="/" className="brand">
+        <span className="brand-mark" aria-hidden="true">
+          <Icon name="shield" />
+        </span>
+        KidGate
+      </Link>
+      <nav className="nav" aria-label="Main">
+        <NavLink to="/support">Support</NavLink>
+        <NavLink to="/privacy-policy">Privacy</NavLink>
+        <NavLink to="/terms">Terms</NavLink>
+        <NavLink to="/dashboard" className="nav-cta">
+          Parent sign in
+        </NavLink>
+      </nav>
+    </header>
+  )
+}
+
+function SiteFooter() {
+  return (
+    <footer className="footer">
+      <div className="footer-inner">
+        <div>
+          <Link to="/" className="brand">
+            <span className="brand-mark" aria-hidden="true">
+              <Icon name="shield" />
+            </span>
+            KidGate
+          </Link>
+          <p className="footer-blurb">
+            Parental control that helps families agree on screen time instead of
+            fighting about it.
+          </p>
+        </div>
+
+        <div>
+          <h4>Product</h4>
+          <ul>
+            <li>
+              <Link to="/dashboard">Parent dashboard</Link>
+            </li>
+            <li>
+              <Link to="/support">Support &amp; guides</Link>
+            </li>
+            <li>
+              <a href="mailto:kidgate.support@gmail.com">Contact us</a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Legal</h4>
+          <ul>
+            <li>
+              <Link to="/privacy-policy">Privacy Policy</Link>
+            </li>
+            <li>
+              <Link to="/terms">Terms &amp; Conditions</Link>
+            </li>
+            <li>
+              <Link to="/delete-account">Delete your data</Link>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="footer-base">
+        <span>&copy; {new Date().getFullYear()} KidGate. All rights reserved.</span>
+        <span>Made for families on iOS and Android.</span>
+      </div>
+    </footer>
+  )
+}
+
 export default function App() {
   // The dashboard and the sign-in screen bring their own shell — the marketing
   // header and footer would sit on top as a second, contradicting navigation.
@@ -27,20 +105,11 @@ export default function App() {
 
   return (
     <div className="app">
-      {!isDashboard && (
-        <header className="header">
-          <Link to="/" className="brand">
-            KidGate
-          </Link>
-          <nav className="nav">
-            <NavLink to="/dashboard">Dashboard</NavLink>
-            <NavLink to="/privacy-policy">Privacy Policy</NavLink>
-            <NavLink to="/terms">Terms &amp; Conditions</NavLink>
-            <NavLink to="/support">Support</NavLink>
-          </nav>
-        </header>
-      )}
-      <main className="main">
+      <a className="skip-link" href="#main">
+        Skip to content
+      </a>
+      {!isDashboard && <SiteHeader />}
+      <main className="main" id="main">
         <Suspense fallback={<RouteFallback />}>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -52,11 +121,7 @@ export default function App() {
           </Routes>
         </Suspense>
       </main>
-      {!isDashboard && (
-        <footer className="footer">
-          <p>&copy; {new Date().getFullYear()} KidGate. All rights reserved.</p>
-        </footer>
-      )}
+      {!isDashboard && <SiteFooter />}
     </div>
   )
 }

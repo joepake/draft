@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { PERMISSION_LABELS, WEB_CATEGORY_LABELS } from '../dashboard/labels.js'
+import Icon from '../components/Icon.jsx'
 import {
   AppBars,
   formatMinutes,
@@ -10,11 +11,11 @@ import {
 } from '../dashboard/charts.jsx'
 
 const TABS = [
-  { id: 'overview', label: 'Overview', icon: '◈' },
-  { id: 'screen', label: 'Screen Time', icon: '◷' },
-  { id: 'apps', label: 'Apps & Web', icon: '▤' },
-  { id: 'safety', label: 'Safety', icon: '◎' },
-  { id: 'controls', label: 'Controls', icon: '⚙' },
+  { id: 'overview', label: 'Overview', icon: 'grid' },
+  { id: 'screen', label: 'Screen Time', icon: 'clock' },
+  { id: 'apps', label: 'Apps & Web', icon: 'apps' },
+  { id: 'safety', label: 'Safety', icon: 'shield' },
+  { id: 'controls', label: 'Controls', icon: 'sliders' },
 ]
 
 /**
@@ -29,6 +30,25 @@ function osLabel(platform, osVersion) {
   return version.toLowerCase().startsWith(base.toLowerCase())
     ? version
     : `${base} ${version}`
+}
+
+/**
+ * Permission states are not binary. Lumping everything that is not
+ * `authorized` under "Turned off" accuses a parent of switching something off
+ * that was in fact never asked for, and it disagrees with the attention list,
+ * which counts only real denials.
+ */
+const PERMISSION_STATE = {
+  authorized: { label: 'Allowed', tone: 'good', icon: 'check' },
+  denied: { label: 'Turned off', tone: 'critical', icon: 'ban' },
+  notDetermined: { label: 'Not asked yet', tone: 'muted', icon: 'clock' },
+  restricted: { label: 'Restricted', tone: 'warning', icon: 'alert' },
+  unavailable: { label: 'Not available', tone: 'muted', icon: 'minus' },
+  unknown: { label: 'Unknown', tone: 'muted', icon: 'clock' },
+}
+
+function permissionState(value) {
+  return PERMISSION_STATE[value] || PERMISSION_STATE.unknown
 }
 
 function timeAgo(iso) {
@@ -64,7 +84,7 @@ function StatTile({ label, value, meta, tone = 'default', icon }) {
   return (
     <div className={`tile tone-${tone}`}>
       <span className="tile-label">
-        {icon && <i aria-hidden="true">{icon}</i>}
+        {icon && <Icon name={icon} size={15} />}
         {label}
       </span>
       <strong className="tile-value">{value}</strong>
@@ -89,17 +109,17 @@ function StatusPill({ status }) {
 }
 
 const ACTIVITY_ICON = {
-  app_blocked: '⛔',
-  app_opened: '▶',
-  app_installed: '＋',
-  app_removed: '－',
-  place_enter: '📍',
-  place_exit: '📍',
-  tamper: '⚠',
-  device_locked: '🔒',
-  device_unlocked: '🔓',
-  screen_time: '◷',
-  emergency: '🆘',
+  app_blocked: 'ban',
+  app_opened: 'play',
+  app_installed: 'plus',
+  app_removed: 'minus',
+  place_enter: 'pin',
+  place_exit: 'pin',
+  tamper: 'alert',
+  device_locked: 'lock',
+  device_unlocked: 'unlock',
+  screen_time: 'clock',
+  emergency: 'lifebuoy',
 }
 
 /* ------------------------------------------------------------------ */
@@ -188,7 +208,7 @@ export default function Dashboard({
         items.push({
           id: t.id,
           tone: 'warning',
-          icon: '⏱',
+          icon: 'clock',
           title: `${device.childName} asked for ${t.requestedMinutes} more minutes`,
           meta: t.reason ? `“${t.reason}” · ${timeAgo(t.createdAt)}` : timeAgo(t.createdAt),
           cta: 'Review',
@@ -200,7 +220,7 @@ export default function Dashboard({
         items.push({
           id: ci.id,
           tone: 'serious',
-          icon: '◎',
+          icon: 'lifebuoy',
           title: 'Check-In was missed',
           meta: `Sent ${timeAgo(ci.createdAt)} · no response`,
           cta: 'Resend',
@@ -212,7 +232,7 @@ export default function Dashboard({
         items.push({
           id: `perm-${k}`,
           tone: 'critical',
-          icon: '⚠',
+          icon: 'alert',
           title: `${PERMISSION_LABELS[k]} is turned off`,
           meta: 'Protection is weaker until this is restored on the child device',
           cta: 'How to fix',
@@ -222,7 +242,7 @@ export default function Dashboard({
       items.push({
         id: 'limit',
         tone: 'warning',
-        icon: '🔒',
+        icon: 'lock',
         title: 'Daily Limit reached — device locked',
         meta: `${formatMinutes(c.minutesUsedToday)} used today`,
         cta: 'Unlock',
@@ -232,7 +252,7 @@ export default function Dashboard({
       items.push({
         id: 'batt',
         tone: 'serious',
-        icon: '🔋',
+        icon: 'battery',
         title: `Battery is low (${device.batteryLevel}%)`,
         meta: 'Location updates may pause if the phone dies',
       })
@@ -291,7 +311,7 @@ export default function Dashboard({
               className={`nav-item${tab === t.id ? ' is-active' : ''}`}
               onClick={() => setTab(t.id)}
             >
-              <i aria-hidden="true">{t.icon}</i>
+              <Icon name={t.icon} size={17} />
               {t.label}
               {t.id === 'overview' && attention.length > 0 && (
                 <span className="nav-badge">{attention.length}</span>
@@ -328,7 +348,7 @@ export default function Dashboard({
                 {device.batteryLevel != null && (
                   <>
                     <span className="dot-sep">·</span>
-                    🔋 {device.batteryLevel}%
+                    <Icon name="battery" size={15} /> {device.batteryLevel}%
                   </>
                 )}
               </p>
@@ -402,7 +422,7 @@ export default function Dashboard({
           <>
             <div className="tiles">
               <StatTile
-                icon="◷"
+                icon="clock"
                 label="Screen time today"
                 value={formatMinutes(stats.used)}
                 meta={
@@ -413,19 +433,19 @@ export default function Dashboard({
                 tone={stats.delta > 25 ? 'warning' : 'default'}
               />
               <StatTile
-                icon="⛔"
+                icon="ban"
                 label="Blocked attempts"
                 value={device.protectionCounters.appBlocked}
                 meta="Apps stopped since install"
               />
               <StatTile
-                icon="🌐"
+                icon="globe"
                 label="Sites filtered"
                 value={device.webFilterBlockedCount}
                 meta={blockedTotal ? `${blockedByCategory.length} categories hit` : 'Nothing blocked yet'}
               />
               <StatTile
-                icon="⚠"
+                icon="alert"
                 label="Needs attention"
                 value={attention.length}
                 meta={attention.length ? 'Open items below' : 'All clear'}
@@ -440,11 +460,17 @@ export default function Dashboard({
                 </Card>
 
                 <Card title="Recent activity" subtitle="Newest first">
+                  {(activities[device.id] || []).length === 0 && (
+                    <p className="empty">
+                      Nothing logged yet. Locks, blocked apps, place alerts and
+                      screen-time syncs from this device will appear here.
+                    </p>
+                  )}
                   <ul className="timeline">
                     {(activities[device.id] || []).map((a) => (
                       <li key={a.id}>
-                        <span className={`tl-icon type-${a.type}`} aria-hidden="true">
-                          {ACTIVITY_ICON[a.type] || '•'}
+                        <span className={`tl-icon type-${a.type}`}>
+                          <Icon name={ACTIVITY_ICON[a.type] || 'clock'} size={15} />
                         </span>
                         <span className="tl-body">
                           <strong>{a.title}</strong>
@@ -465,7 +491,9 @@ export default function Dashboard({
                     <ul className="attn">
                       {attention.map((a) => (
                         <li key={a.id} className={`tone-${a.tone}`}>
-                          <span className="attn-icon" aria-hidden="true">{a.icon}</span>
+                          <span className="attn-icon">
+                            <Icon name={a.icon} size={16} />
+                          </span>
                           <span className="attn-body">
                             <strong>{a.title}</strong>
                             <em>{a.meta}</em>
@@ -515,14 +543,14 @@ export default function Dashboard({
                     {Object.entries(device.protectionStatus)
                       .filter(([k]) => PERMISSION_LABELS[k])
                       .map(([k, v]) => {
-                        const ok = v === 'authorized'
+                        const state = permissionState(v)
                         return (
                           <li key={k}>
-                            <span className={`perm-state ${ok ? 'tone-good' : 'tone-critical'}`}>
-                              {ok ? '✓' : '✕'}
+                            <span className={`perm-state tone-${state.tone}`}>
+                              <Icon name={state.icon} size={13} />
                             </span>
                             {PERMISSION_LABELS[k]}
-                            <em>{ok ? 'Allowed' : 'Turned off'}</em>
+                            <em>{state.label}</em>
                           </li>
                         )
                       })}
@@ -749,7 +777,7 @@ export default function Dashboard({
                   {(places[device.id] || []).map((p) => (
                     <li key={p.id}>
                       <span className={`perm-state ${p.inside ? 'tone-good' : 'tone-muted'}`}>
-                        {p.inside ? '●' : '○'}
+                        <Icon name={p.inside ? 'check' : 'pin'} size={13} />
                       </span>
                       {p.name}
                       <em>
@@ -770,7 +798,9 @@ export default function Dashboard({
                   <ul className="events">
                     {sosAlerts[device.id].map((s) => (
                       <li key={s.id}>
-                        <span className="ev-state tone-critical">🆘</span>
+                        <span className="ev-state tone-critical">
+                          <Icon name="lifebuoy" size={13} />
+                        </span>
                         <span className="ev-body">
                           <strong>{s.message}</strong>
                           <em>
@@ -796,7 +826,16 @@ export default function Dashboard({
                           ci.status === 'safe' ? 'good' : ci.status === 'missed' ? 'critical' : 'warning'
                         }`}
                       >
-                        {ci.status === 'safe' ? '✓' : ci.status === 'missed' ? '✕' : '…'}
+                        <Icon
+                          name={
+                            ci.status === 'safe'
+                              ? 'check'
+                              : ci.status === 'missed'
+                                ? 'ban'
+                                : 'clock'
+                          }
+                          size={13}
+                        />
                       </span>
                       <span className="ev-body">
                         <strong>
@@ -848,7 +887,9 @@ export default function Dashboard({
                     .filter((a) => a.type === 'tamper')
                     .map((a) => (
                       <li key={a.id}>
-                        <span className="tl-icon type-tamper" aria-hidden="true">⚠</span>
+                        <span className="tl-icon type-tamper">
+                          <Icon name="alert" size={15} />
+                        </span>
                         <span className="tl-body">
                           <strong>{a.title}</strong>
                           <em>{a.description}</em>
@@ -986,7 +1027,7 @@ function ControlsTab({ device, rewardTasks, readOnly }) {
               const on = c.webFilterCategories.includes(key)
               return (
                 <li key={key} className={on ? 'is-on' : ''}>
-                  {on ? '✓ ' : ''}
+                  {on && <Icon name="check" size={13} />}
                   {label}
                 </li>
               )
@@ -1008,7 +1049,16 @@ function ControlsTab({ device, rewardTasks, readOnly }) {
                     t.status === 'approved' ? 'good' : t.status === 'claimed' ? 'warning' : 'muted'
                   }`}
                 >
-                  {t.status === 'approved' ? '✓' : t.status === 'claimed' ? '!' : '○'}
+                  <Icon
+                    name={
+                      t.status === 'approved'
+                        ? 'check'
+                        : t.status === 'claimed'
+                          ? 'alert'
+                          : 'clock'
+                    }
+                    size={13}
+                  />
                 </span>
                 <span className="ev-body">
                   <strong>{t.title}</strong>

@@ -40,6 +40,32 @@
   cursor: pointer;
 }
 
+.icon {
+  display: block;
+  flex-shrink: 0;
+}
+
+.tile-label,
+.nav-item,
+.chips-toggle li {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.attn-icon .icon,
+.tl-icon .icon,
+.ev-state .icon,
+.perm-state .icon,
+.places .icon {
+  display: block;
+}
+
+.dash-top p .icon {
+  display: inline-block;
+  vertical-align: -2px;
+}
+
 /* ---------- Sidebar ---------- */
 
 .dash-side {
@@ -1243,6 +1269,22 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  min-width: 0;
+}
+
+.side-account .login-link {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.perm-state.tone-warning {
+  background: rgba(250, 178, 25, 0.16);
+  color: var(--warning);
+}
+
+.perm-state.tone-muted {
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--muted);
 }
 
 /* ---------- Sign in ---------- */
