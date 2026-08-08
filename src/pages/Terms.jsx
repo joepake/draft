@@ -148,7 +148,7 @@ export default function Terms() {
       <h2>14. Contact Us</h2>
       <p>
         If you have questions about these Terms, contact us at{' '}
-        <a href="mailto:kidgate.support@gmail.com">kidgate.support@gmail.com</a>.
+        <a href="mailto:support@kidgate.app">support@kidgate.app</a>.
       </p>
     </article>
   )

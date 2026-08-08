@@ -5,7 +5,7 @@ import PrivacyPolicy from './pages/PrivacyPolicy.jsx'
 import Terms from './pages/Terms.jsx'
 import DeleteAccount from './pages/DeleteAccount.jsx'
 import Support from './pages/Support.jsx'
-import Icon from './components/Icon.jsx'
+import BrandLogo from './components/BrandLogo.jsx'
 import LanguagePicker from './i18n/LanguagePicker.jsx'
 import { useT } from './i18n/useT.js'
 import './dashboard.css'
@@ -43,7 +43,7 @@ function SiteHeader() {
     <header className="header">
       <Link to="/" className="brand">
         <span className="brand-mark" aria-hidden="true">
-          <Icon name="shield" />
+          <BrandLogo />
         </span>
         KidGate
       </Link>
@@ -69,7 +69,7 @@ function SiteFooter() {
         <div>
           <Link to="/" className="brand">
             <span className="brand-mark" aria-hidden="true">
-              <Icon name="shield" />
+              <BrandLogo />
             </span>
             KidGate
           </Link>
@@ -86,7 +86,7 @@ function SiteFooter() {
               <Link to="/support">{t('footer.supportGuides')}</Link>
             </li>
             <li>
-              <a href="mailto:kidgate.support@gmail.com">{t('footer.contact')}</a>
+              <a href="mailto:support@kidgate.app">{t('footer.contact')}</a>
             </li>
           </ul>
         </div>

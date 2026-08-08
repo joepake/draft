@@ -56,7 +56,7 @@ export default {
   },
 
   legalNote:
-    'Bu sayfa yalnızca İngilizce olarak sunuluyor ve geçerli olan metin İngilizce olanıdır. Herhangi bir bölümü anlamakta yardıma ihtiyacınız olursa [kidgate.support@gmail.com](mailto:kidgate.support@gmail.com) adresine yazın.',
+    'Bu sayfa yalnızca İngilizce olarak sunuluyor ve geçerli olan metin İngilizce olanıdır. Herhangi bir bölümü anlamakta yardıma ihtiyacınız olursa [support@kidgate.app](mailto:support@kidgate.app) adresine yazın.',
 
   store: {
     appleAria: 'KidGate’i App Store’dan indir',
@@ -106,18 +106,27 @@ export default {
     feature2Title: 'Uygulama engelleme',
     feature2Text:
       'Çocuğunuzun hangi uygulamaları açabileceğini tam olarak seçin; ebeveyn PIN’iyle korunur ve engellemeyi uzaktan açabilirsiniz.',
-    feature3Title: 'Web filtreleme',
+    feature3Title: 'Uygulama başına süre sınırı',
     feature3Text:
-      'Çocuk cihazında yetişkin ve kumar sitelerini reddedin; daha güçlü koruma için uygulama engellemeyle birlikte kullanın.',
-    feature4Title: 'Canlı konum ve yerler',
+      'Günlük sınırın üstüne, her uygulamaya ayrı bir sınır koyun — tamamen yasaklamadan “yarım saat TikTok”.',
+    feature4Title: 'Web filtreleme ve geçmiş',
     feature4Text:
-      'Çocuğunuzun son konumunu görün, geçmişi inceleyin ve kayıtlı bir yere vardığında ya da oradan ayrıldığında haberdar olun.',
-    feature5Title: 'Yoklama ve SOS',
+      'Yetişkin ve kumar sitelerini reddedin, sonra telefonun gerçekte hangi siteleri açtığını ve hangilerinin durdurulduğunu görün.',
+    feature5Title: 'Canlı konum ve yerler',
     feature5Text:
-      'Çocuğunuzdan iyi olduğunu onaylamasını isteyin; acil durumda konum ve fotoğrafla anında SOS alın.',
-    feature6Title: 'Koruma uyarıları',
+      'Çocuğunuzun son konumunu görün, geçmişi inceleyin ve kayıtlı bir yere vardığında ya da oradan ayrıldığında haberdar olun.',
+    feature6Title: 'Yolculuk raporu',
     feature6Text:
-      'Önemli bir izin kapatıldığı anda haberiniz olsun; böylece koruma sessizce zayıflamaz.',
+      'Yolculuklar, mesafe ve iki konum noktası arasındaki en yüksek ortalama — sohbet başlatmaya yeter, radar değildir.',
+    feature7Title: 'Yoklama ve SOS',
+    feature7Text:
+      'Çocuğunuzdan iyi olduğunu onaylamasını isteyin; acil durumda konum ve fotoğrafla anında SOS alın.',
+    feature8Title: 'Koruma ve uygulama uyarıları',
+    feature8Text:
+      'Önemli bir izin kapatıldığı anda haberiniz olsun — Android’de ise bir uygulama kurulduğunda ya da kaldırıldığında.',
+    feature9Title: 'Ödül görevleri ve ek süre',
+    feature9Text:
+      'Çocuklar görevleri bitirerek ek dakika kazanır ya da daha fazla süre ister. İkisi de onayınız için telefonunuza düşer.',
 
     showcaseEyebrow: 'Ebeveyn paneli',
     showcaseTitle: 'Tüm aile tek ekranda',
@@ -527,7 +536,7 @@ export default {
 
     contactTitle: 'Bize ulaşın',
     contactEmail:
-      '**E-posta:** [kidgate.support@gmail.com](mailto:kidgate.support@gmail.com)',
+      '**E-posta:** [support@kidgate.app](mailto:support@kidgate.app)',
     contactResponse: '**Yanıt süresi:** 24 saat içinde (Pazartesi–Cuma)',
     contactNote:
       'Bize yazarken KidGate ebeveyn hesabınızın e-posta adresini ve sorunun kısa bir açıklamasını ekleyin; böylece size daha hızlı yardımcı olabiliriz.',

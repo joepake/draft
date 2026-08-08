@@ -75,13 +75,22 @@ function StoreButtons() {
 }
 
 const TRUST = [1, 2, 3, 4]
+
+/**
+ * One card per screen the parent app actually ships, in the order a parent
+ * meets them: limits, then apps and web, then where the child is, then the
+ * safety net, then the parts the child takes part in. Nine fills the 3×3 grid.
+ */
 const FEATURES = [
   { n: 1, icon: 'clock' },
   { n: 2, icon: 'ban' },
-  { n: 3, icon: 'globe' },
-  { n: 4, icon: 'pin' },
-  { n: 5, icon: 'lifebuoy' },
-  { n: 6, icon: 'shieldCheck' },
+  { n: 3, icon: 'hourglass' },
+  { n: 4, icon: 'globe' },
+  { n: 5, icon: 'pin' },
+  { n: 6, icon: 'gauge' },
+  { n: 7, icon: 'lifebuoy' },
+  { n: 8, icon: 'shieldCheck' },
+  { n: 9, icon: 'star' },
 ]
 const WHY = [1, 2, 3, 4]
 const STEPS = [1, 2, 3]

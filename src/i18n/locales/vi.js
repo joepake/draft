@@ -59,7 +59,7 @@ export default {
   },
 
   legalNote:
-    'Trang này chỉ có bản tiếng Anh, và bản tiếng Anh là bản có hiệu lực. Hãy liên hệ [kidgate.support@gmail.com](mailto:kidgate.support@gmail.com) nếu bạn cần được giải thích bất kỳ phần nào.',
+    'Trang này chỉ có bản tiếng Anh, và bản tiếng Anh là bản có hiệu lực. Hãy liên hệ [support@kidgate.app](mailto:support@kidgate.app) nếu bạn cần được giải thích bất kỳ phần nào.',
 
   store: {
     appleAria: 'Tải KidGate trên App Store',
@@ -109,18 +109,27 @@ export default {
     feature2Title: 'Chặn ứng dụng',
     feature2Text:
       'Chọn chính xác những ứng dụng con được mở, bảo vệ bằng mã PIN phụ huynh, và bật chặn từ xa.',
-    feature3Title: 'Lọc web',
+    feature3Title: 'Giới hạn giờ từng ứng dụng',
     feature3Text:
-      'Từ chối các trang người lớn và cờ bạc trên thiết bị của con, kết hợp với chặn ứng dụng để bảo vệ chặt hơn.',
-    feature4Title: 'Vị trí trực tiếp & địa điểm',
+      'Đặt hạn mức riêng cho từng ứng dụng, cộng thêm vào giới hạn ngày — “nửa tiếng TikTok” mà không cần cấm hẳn.',
+    feature4Title: 'Lọc web & lịch sử duyệt',
     feature4Text:
-      'Xem vị trí mới nhất của con, xem lại lịch sử, và được báo khi con đến hoặc rời một địa điểm đã lưu.',
-    feature5Title: 'Điểm danh & SOS',
+      'Từ chối các trang người lớn và cờ bạc, rồi xem máy đã thực sự vào những trang nào và trang nào bị chặn.',
+    feature5Title: 'Vị trí trực tiếp & địa điểm',
     feature5Text:
-      'Yêu cầu con xác nhận mình an toàn, và nhận SOS tức thì kèm vị trí và ảnh khi có việc khẩn cấp.',
-    feature6Title: 'Cảnh báo bảo vệ',
+      'Xem vị trí mới nhất của con, xem lại lịch sử, và được báo khi con đến hoặc rời một địa điểm đã lưu.',
+    feature6Title: 'Báo cáo di chuyển',
     feature6Text:
-      'Biết ngay khi một quyền quan trọng bị tắt, để lớp bảo vệ không lặng lẽ mất hiệu lực.',
+      'Số chuyến đi, quãng đường và tốc độ trung bình cao nhất giữa các điểm vị trí — đủ để mở lời với con, không phải máy bắn tốc độ.',
+    feature7Title: 'Điểm danh & SOS',
+    feature7Text:
+      'Yêu cầu con xác nhận mình an toàn, và nhận SOS tức thì kèm vị trí và ảnh khi có việc khẩn cấp.',
+    feature8Title: 'Cảnh báo bảo vệ & ứng dụng',
+    feature8Text:
+      'Biết ngay khi một quyền quan trọng bị tắt — và trên Android, khi có ứng dụng được cài hoặc gỡ.',
+    feature9Title: 'Nhiệm vụ thưởng & xin thêm giờ',
+    feature9Text:
+      'Con kiếm thêm phút bằng cách hoàn thành nhiệm vụ, hoặc xin thêm giờ. Cả hai đều về điện thoại bạn chờ duyệt.',
 
     showcaseEyebrow: 'Bảng điều khiển phụ huynh',
     showcaseTitle: 'Cả gia đình trên một màn hình',
@@ -521,7 +530,7 @@ export default {
 
     contactTitle: 'Liên hệ',
     contactEmail:
-      '**Email:** [kidgate.support@gmail.com](mailto:kidgate.support@gmail.com)',
+      '**Email:** [support@kidgate.app](mailto:support@kidgate.app)',
     contactResponse: '**Thời gian phản hồi:** trong vòng 24 giờ (Thứ Hai–Thứ Sáu)',
     contactNote:
       'Khi liên hệ, vui lòng gửi kèm địa chỉ email của tài khoản phụ huynh KidGate và mô tả ngắn về vấn đề để chúng tôi hỗ trợ nhanh hơn.',

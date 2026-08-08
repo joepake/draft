@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { describeAuthError, useAuth } from '../auth/AuthContext.jsx'
 import QrSignIn from '../auth/QrSignIn.jsx'
+import BrandLogo from '../components/BrandLogo.jsx'
 import LanguagePicker from '../i18n/LanguagePicker.jsx'
 import { useT } from '../i18n/useT.js'
 
@@ -76,6 +77,9 @@ export default function Login() {
       <div className="login-card">
         <div className="login-head">
           <Link to="/" className="login-brand">
+            <span className="brand-mark" aria-hidden="true">
+              <BrandLogo />
+            </span>
             KidGate
           </Link>
           <LanguagePicker />

@@ -187,7 +187,7 @@ export default function PrivacyPolicy() {
         </li>
         <li>
           <strong>By email:</strong> send a request to{' '}
-          <a href="mailto:kidgate.support@gmail.com">kidgate.support@gmail.com</a> from
+          <a href="mailto:support@kidgate.app">support@kidgate.app</a> from
           the email address associated with your account.
         </li>
       </ul>
@@ -263,7 +263,7 @@ export default function PrivacyPolicy() {
       <p>
         If you have questions about this Privacy Policy or our data practices,
         contact us at{' '}
-        <a href="mailto:kidgate.support@gmail.com">kidgate.support@gmail.com</a>.
+        <a href="mailto:support@kidgate.app">support@kidgate.app</a>.
       </p>
     </article>
   )

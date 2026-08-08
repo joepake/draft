@@ -56,7 +56,7 @@ export default {
   },
 
   legalNote:
-    'Diese Seite gibt es nur auf Englisch, und der englische Text ist die maßgebliche Fassung. Schreib an [kidgate.support@gmail.com](mailto:kidgate.support@gmail.com), wenn du bei einem Abschnitt Hilfe brauchst.',
+    'Diese Seite gibt es nur auf Englisch, und der englische Text ist die maßgebliche Fassung. Schreib an [support@kidgate.app](mailto:support@kidgate.app), wenn du bei einem Abschnitt Hilfe brauchst.',
 
   store: {
     appleAria: 'KidGate im App Store laden',
@@ -106,18 +106,27 @@ export default {
     feature2Title: 'App-Sperre',
     feature2Text:
       'Bestimme genau, welche Apps dein Kind öffnen darf, geschützt durch deine Eltern-PIN, und schalte die Sperre aus der Ferne ein.',
-    feature3Title: 'Webfilter',
+    feature3Title: 'Limits pro App',
     feature3Text:
-      'Blocke Erwachsenen- und Glücksspielseiten auf dem Kindergerät und kombiniere das mit der App-Sperre für besseren Schutz.',
-    feature4Title: 'Live-Standort & Orte',
+      'Begrenze jede App einzeln, zusätzlich zum Tageslimit — „eine halbe Stunde TikTok“, ohne es ganz zu verbieten.',
+    feature4Title: 'Webfilter & Verlauf',
     feature4Text:
-      'Sieh den letzten Standort deines Kindes, prüfe den Verlauf und lass dich benachrichtigen, wenn es an einem gespeicherten Ort ankommt oder ihn verlässt.',
-    feature5Title: 'Check-in & SOS',
+      'Blocke Erwachsenen- und Glücksspielseiten und sieh danach, welche Seiten das Handy wirklich aufgerufen hat und welche gestoppt wurden.',
+    feature5Title: 'Live-Standort & Orte',
     feature5Text:
-      'Bitte dein Kind zu bestätigen, dass alles in Ordnung ist, und erhalte im Notfall sofort ein SOS mit Standort und Foto.',
-    feature6Title: 'Schutzwarnungen',
+      'Sieh den letzten Standort deines Kindes, prüfe den Verlauf und lass dich benachrichtigen, wenn es an einem gespeicherten Ort ankommt oder ihn verlässt.',
+    feature6Title: 'Fahrtbericht',
     feature6Text:
-      'Erfahre sofort, wenn eine wichtige Berechtigung ausgeschaltet wird, damit der Schutz nicht unbemerkt verschwindet.',
+      'Fahrten, Strecke und der höchste Durchschnitt zwischen Standortpunkten — genug für ein Gespräch, kein Blitzer.',
+    feature7Title: 'Check-in & SOS',
+    feature7Text:
+      'Bitte dein Kind zu bestätigen, dass alles in Ordnung ist, und erhalte im Notfall sofort ein SOS mit Standort und Foto.',
+    feature8Title: 'Schutz- & App-Warnungen',
+    feature8Text:
+      'Erfahre sofort, wenn eine wichtige Berechtigung ausgeschaltet wird — und unter Android, wenn eine App installiert oder entfernt wird.',
+    feature9Title: 'Belohnungsaufgaben & Extrazeit',
+    feature9Text:
+      'Kinder verdienen Bonusminuten durch erledigte Aufgaben oder bitten um mehr Zeit. Beides landet zur Freigabe auf deinem Handy.',
 
     showcaseEyebrow: 'Eltern-Dashboard',
     showcaseTitle: 'Die ganze Familie auf einem Bildschirm',
@@ -527,7 +536,7 @@ export default {
 
     contactTitle: 'Kontakt',
     contactEmail:
-      '**E-Mail:** [kidgate.support@gmail.com](mailto:kidgate.support@gmail.com)',
+      '**E-Mail:** [support@kidgate.app](mailto:support@kidgate.app)',
     contactResponse: '**Antwortzeit:** innerhalb von 24 Stunden (Montag–Freitag)',
     contactNote:
       'Nenne uns bitte die E-Mail-Adresse deines KidGate-Elternkontos und beschreibe kurz das Problem, damit wir schneller helfen können.',

@@ -56,7 +56,7 @@ export default {
   },
 
   legalNote:
-    "Cette page n'existe qu'en anglais, et c'est le texte anglais qui fait foi. Écrivez à [kidgate.support@gmail.com](mailto:kidgate.support@gmail.com) si vous avez besoin d'aide pour comprendre un passage.",
+    "Cette page n'existe qu'en anglais, et c'est le texte anglais qui fait foi. Écrivez à [support@kidgate.app](mailto:support@kidgate.app) si vous avez besoin d'aide pour comprendre un passage.",
 
   store: {
     appleAria: "Télécharger KidGate sur l'App Store",
@@ -106,18 +106,27 @@ export default {
     feature2Title: "Blocage d'applis",
     feature2Text:
       "Choisissez exactement les applis que votre enfant peut ouvrir, protégé par votre code parent, et activez le blocage à distance.",
-    feature3Title: 'Filtrage web',
+    feature3Title: 'Limites par appli',
     feature3Text:
-      "Refusez les sites pour adultes et de jeux d'argent sur l'appareil de l'enfant, et combinez-le au blocage d'applis pour une meilleure couverture.",
-    feature4Title: 'Localisation en direct et lieux',
+      "Plafonnez chaque appli séparément, en plus de la limite quotidienne : « une demi-heure de TikTok » sans l'interdire pour autant.",
+    feature4Title: 'Filtrage web et historique',
     feature4Text:
-      "Consultez la dernière position de votre enfant, revoyez l'historique et soyez prévenu quand il arrive dans un lieu enregistré ou le quitte.",
-    feature5Title: 'Check-in et SOS',
+      "Refusez les sites pour adultes et de jeux d'argent, puis voyez quels sites le téléphone a réellement consultés et lesquels ont été bloqués.",
+    feature5Title: 'Localisation en direct et lieux',
     feature5Text:
-      "Demandez à votre enfant de confirmer qu'il va bien, et recevez un SOS immédiat avec position et photo en cas d'urgence.",
-    feature6Title: 'Alertes de protection',
+      "Consultez la dernière position de votre enfant, revoyez l'historique et soyez prévenu quand il arrive dans un lieu enregistré ou le quitte.",
+    feature6Title: 'Rapport de trajets',
     feature6Text:
-      "Sachez à l'instant où une autorisation importante est désactivée, pour que la protection ne disparaisse jamais en silence.",
+      "Trajets, distance et meilleure moyenne entre deux points de position — de quoi lancer la conversation, pas un radar.",
+    feature7Title: 'Check-in et SOS',
+    feature7Text:
+      "Demandez à votre enfant de confirmer qu'il va bien, et recevez un SOS immédiat avec position et photo en cas d'urgence.",
+    feature8Title: "Alertes de protection et d'applis",
+    feature8Text:
+      "Sachez à l'instant où une autorisation importante est désactivée — et, sur Android, quand une appli est installée ou supprimée.",
+    feature9Title: 'Tâches à récompense et temps en plus',
+    feature9Text:
+      "Les enfants gagnent des minutes bonus en accomplissant des tâches, ou demandent du temps en plus. Les deux arrivent sur votre téléphone pour validation.",
 
     showcaseEyebrow: 'Tableau de bord parent',
     showcaseTitle: 'Toute la famille sur un seul écran',
@@ -527,7 +536,7 @@ export default {
 
     contactTitle: 'Nous contacter',
     contactEmail:
-      '**E-mail :** [kidgate.support@gmail.com](mailto:kidgate.support@gmail.com)',
+      '**E-mail :** [support@kidgate.app](mailto:support@kidgate.app)',
     contactResponse: '**Délai de réponse :** sous 24 heures (du lundi au vendredi)',
     contactNote:
       "Lorsque vous nous écrivez, indiquez l'adresse e-mail de votre compte parent KidGate et une courte description du problème pour que nous puissions vous aider plus vite.",

@@ -27,8 +27,8 @@ export default function DeleteAccount() {
       <ul>
         <li>
           Send an email to{' '}
-          <a href="mailto:kidgate.support@gmail.com?subject=Account%20Deletion%20Request">
-            kidgate.support@gmail.com
+          <a href="mailto:support@kidgate.app?subject=Account%20Deletion%20Request">
+            support@kidgate.app
           </a>{' '}
           with the subject line &quot;Account Deletion Request&quot;.
         </li>
@@ -76,7 +76,7 @@ export default function DeleteAccount() {
         If you want to delete only some data (for example, a single child
         profile or activity history) without closing your account, you can do
         so in the app, or contact us at{' '}
-        <a href="mailto:kidgate.support@gmail.com">kidgate.support@gmail.com</a>.
+        <a href="mailto:support@kidgate.app">support@kidgate.app</a>.
       </p>
 
       <p>

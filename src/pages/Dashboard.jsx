@@ -6,6 +6,7 @@ import {
   WEB_CATEGORY_KEYS,
   webCategoryLabel,
 } from '../dashboard/labels.js'
+import BrandLogo from '../components/BrandLogo.jsx'
 import Icon from '../components/Icon.jsx'
 import {
   AppBars,
@@ -319,7 +320,12 @@ export default function Dashboard({
     <div className="dash">
       <aside className="dash-side">
         <div className="dash-brand">
-          <Link to="/">KidGate</Link>
+          <Link to="/">
+            <span className="brand-mark" aria-hidden="true">
+              <BrandLogo />
+            </span>
+            KidGate
+          </Link>
           <span>{family.name}</span>
         </div>
 

@@ -56,7 +56,7 @@ export default {
   },
 
   legalNote:
-    '이 페이지는 영어로만 제공되며, 효력을 갖는 것은 영어 원문입니다. 내용 이해에 도움이 필요하면 [kidgate.support@gmail.com](mailto:kidgate.support@gmail.com)으로 연락해 주세요.',
+    '이 페이지는 영어로만 제공되며, 효력을 갖는 것은 영어 원문입니다. 내용 이해에 도움이 필요하면 [support@kidgate.app](mailto:support@kidgate.app)으로 연락해 주세요.',
 
   store: {
     appleAria: 'App Store에서 KidGate 내려받기',
@@ -106,18 +106,27 @@ export default {
     feature2Title: '앱 차단',
     feature2Text:
       '아이가 열 수 있는 앱을 부모 PIN으로 보호하며 정확히 고르고, 차단은 원격으로 켤 수 있습니다.',
-    feature3Title: '웹 필터링',
+    feature3Title: '앱별 시간 제한',
     feature3Text:
-      '아이 기기에서 성인·도박 사이트를 차단하고, 앱 차단과 함께 쓰면 더 촘촘하게 보호할 수 있습니다.',
-    feature4Title: '실시간 위치와 장소',
+      '하루 한도와 별개로 앱마다 따로 제한을 둘 수 있습니다. 아예 막지 않고도 "TikTok은 30분"이 가능합니다.',
+    feature4Title: '웹 필터링과 방문 기록',
     feature4Text:
-      '아이의 최근 위치를 확인하고 기록을 살펴보며, 저장한 장소에 도착하거나 떠날 때 알림을 받으세요.',
-    feature5Title: '체크인과 SOS',
+      '성인·도박 사이트를 차단한 뒤, 그 기기가 실제로 찾아간 사이트와 막힌 사이트를 확인하세요.',
+    feature5Title: '실시간 위치와 장소',
     feature5Text:
-      '아이에게 안전을 확인해 달라고 요청하고, 비상시에는 위치와 사진이 담긴 SOS를 즉시 받습니다.',
-    feature6Title: '보호 알림',
+      '아이의 최근 위치를 확인하고 기록을 살펴보며, 저장한 장소에 도착하거나 떠날 때 알림을 받으세요.',
+    feature6Title: '이동 리포트',
     feature6Text:
-      '중요한 권한이 꺼지는 순간 바로 알 수 있어, 보호가 조용히 사라지는 일이 없습니다.',
+      '이동 횟수, 거리, 그리고 위치 지점 사이의 가장 빠른 평균 속도까지. 단속 카메라가 아니라 대화를 시작할 자료입니다.',
+    feature7Title: '체크인과 SOS',
+    feature7Text:
+      '아이에게 안전을 확인해 달라고 요청하고, 비상시에는 위치와 사진이 담긴 SOS를 즉시 받습니다.',
+    feature8Title: '보호 알림과 앱 알림',
+    feature8Text:
+      '중요한 권한이 꺼지는 순간 바로 알 수 있고, Android에서는 앱이 설치되거나 삭제될 때도 알려 줍니다.',
+    feature9Title: '보상 과제와 추가 시간',
+    feature9Text:
+      '아이는 과제를 마쳐 보너스 시간을 얻거나 시간을 더 요청할 수 있습니다. 둘 다 승인 요청으로 부모 휴대폰에 도착합니다.',
 
     showcaseEyebrow: '부모 대시보드',
     showcaseTitle: '온 가족을 한 화면에서',
@@ -517,7 +526,7 @@ export default {
 
     contactTitle: '문의하기',
     contactEmail:
-      '**이메일:** [kidgate.support@gmail.com](mailto:kidgate.support@gmail.com)',
+      '**이메일:** [support@kidgate.app](mailto:support@kidgate.app)',
     contactResponse: '**응답 시간:** 24시간 이내(월요일~금요일)',
     contactNote:
       '문의하실 때는 KidGate 부모 계정의 이메일 주소와 문제에 대한 간단한 설명을 함께 보내 주시면 더 빨리 도와드릴 수 있습니다.',

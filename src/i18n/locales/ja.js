@@ -56,7 +56,7 @@ export default {
   },
 
   legalNote:
-    'このページは英語版のみで、効力を持つのは英語の本文です。内容についてご不明な点があれば [kidgate.support@gmail.com](mailto:kidgate.support@gmail.com) までご連絡ください。',
+    'このページは英語版のみで、効力を持つのは英語の本文です。内容についてご不明な点があれば [support@kidgate.app](mailto:support@kidgate.app) までご連絡ください。',
 
   store: {
     appleAria: 'App Store で KidGate をダウンロード',
@@ -106,18 +106,27 @@ export default {
     feature2Title: 'アプリのブロック',
     feature2Text:
       '子どもが開けるアプリを保護者 PIN で守りながら細かく指定でき、ブロックは遠隔でオンにできます。',
-    feature3Title: 'ウェブフィルタ',
+    feature3Title: 'アプリごとの時間制限',
     feature3Text:
-      '子どもの端末でアダルトやギャンブルのサイトを拒否し、アプリのブロックと組み合わせてより強く守れます。',
-    feature4Title: 'リアルタイムの位置情報と場所',
+      '1 日の上限とは別に、アプリごとに上限を設定できます。「TikTok は 30 分」と、禁止せずに決められます。',
+    feature4Title: 'ウェブフィルタと閲覧履歴',
     feature4Text:
-      '子どもの最新の位置を確認し、履歴を見返し、登録した場所への到着・出発を通知で受け取れます。',
-    feature5Title: 'チェックインと SOS',
+      'アダルトやギャンブルのサイトを拒否したうえで、その端末が実際に見に行ったサイトと、止められたサイトを確認できます。',
+    feature5Title: 'リアルタイムの位置情報と場所',
     feature5Text:
-      '子どもに無事の確認を求められ、緊急時には位置情報と写真つきの SOS をすぐに受け取れます。',
-    feature6Title: '保護アラート',
+      '子どもの最新の位置を確認し、履歴を見返し、登録した場所への到着・出発を通知で受け取れます。',
+    feature6Title: '移動レポート',
     feature6Text:
-      '重要な権限がオフになった瞬間に分かるので、保護が知らないうちに弱まることがありません。',
+      '移動回数・距離、そして位置情報の点と点の間で最も速かった平均速度が分かります。会話のきっかけであって、速度取締りではありません。',
+    feature7Title: 'チェックインと SOS',
+    feature7Text:
+      '子どもに無事の確認を求められ、緊急時には位置情報と写真つきの SOS をすぐに受け取れます。',
+    feature8Title: '保護アラートとアプリ通知',
+    feature8Text:
+      '重要な権限がオフになった瞬間に分かります。Android では、アプリのインストールや削除も知らせます。',
+    feature9Title: 'ごほうびタスクと延長申請',
+    feature9Text:
+      '子どもはタスクを終えてボーナス時間を得たり、延長を申請したりできます。どちらも承認待ちとしてあなたのスマホに届きます。',
 
     showcaseEyebrow: '保護者ダッシュボード',
     showcaseTitle: '家族全員をひとつの画面で',
@@ -517,7 +526,7 @@ export default {
 
     contactTitle: 'お問い合わせ',
     contactEmail:
-      '**メール:** [kidgate.support@gmail.com](mailto:kidgate.support@gmail.com)',
+      '**メール:** [support@kidgate.app](mailto:support@kidgate.app)',
     contactResponse: '**返信の目安:** 24 時間以内（月曜〜金曜）',
     contactNote:
       'お問い合わせの際は、KidGate の保護者アカウントのメールアドレスと、問題の簡単な説明を添えてください。より早くご案内できます。',

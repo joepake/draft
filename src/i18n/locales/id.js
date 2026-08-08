@@ -56,7 +56,7 @@ export default {
   },
 
   legalNote:
-    'Halaman ini hanya tersedia dalam bahasa Inggris, dan teks bahasa Inggris adalah versi yang berlaku. Hubungi [kidgate.support@gmail.com](mailto:kidgate.support@gmail.com) jika Anda perlu bantuan memahami bagian mana pun.',
+    'Halaman ini hanya tersedia dalam bahasa Inggris, dan teks bahasa Inggris adalah versi yang berlaku. Hubungi [support@kidgate.app](mailto:support@kidgate.app) jika Anda perlu bantuan memahami bagian mana pun.',
 
   store: {
     appleAria: 'Unduh KidGate di App Store',
@@ -106,18 +106,27 @@ export default {
     feature2Title: 'Blokir aplikasi',
     feature2Text:
       'Pilih persis aplikasi apa yang boleh dibuka anak Anda, dilindungi PIN orang tua, dan nyalakan pemblokiran dari jauh.',
-    feature3Title: 'Penyaringan web',
+    feature3Title: 'Batas waktu per aplikasi',
     feature3Text:
-      'Tolak situs dewasa dan judi di perangkat anak, dan padukan dengan blokir aplikasi untuk perlindungan lebih kuat.',
-    feature4Title: 'Lokasi langsung & tempat',
+      'Batasi tiap aplikasi sendiri-sendiri, di atas batas harian — “setengah jam TikTok” tanpa harus melarangnya sama sekali.',
+    feature4Title: 'Penyaringan web & riwayat',
     feature4Text:
-      'Lihat lokasi terakhir anak Anda, telusuri riwayatnya, dan dapatkan pemberitahuan saat ia tiba di atau meninggalkan tempat tersimpan.',
-    feature5Title: 'Check-In & SOS',
+      'Tolak situs dewasa dan judi, lalu lihat situs mana yang benar-benar dibuka ponsel itu dan mana yang dihentikan.',
+    feature5Title: 'Lokasi langsung & tempat',
     feature5Text:
-      'Minta anak Anda memastikan dirinya aman, dan terima SOS seketika dengan lokasi dan foto saat darurat.',
-    feature6Title: 'Peringatan perlindungan',
+      'Lihat lokasi terakhir anak Anda, telusuri riwayatnya, dan dapatkan pemberitahuan saat ia tiba di atau meninggalkan tempat tersimpan.',
+    feature6Title: 'Laporan perjalanan',
     feature6Text:
-      'Ketahui saat sebuah izin penting dimatikan, agar perlindungan tidak diam-diam melemah.',
+      'Perjalanan, jarak, dan rata-rata tercepat antar titik lokasi — cukup untuk memulai obrolan, bukan kamera tilang.',
+    feature7Title: 'Check-In & SOS',
+    feature7Text:
+      'Minta anak Anda memastikan dirinya aman, dan terima SOS seketika dengan lokasi dan foto saat darurat.',
+    feature8Title: 'Peringatan perlindungan & aplikasi',
+    feature8Text:
+      'Ketahui saat sebuah izin penting dimatikan — dan di Android, saat sebuah aplikasi dipasang atau dihapus.',
+    feature9Title: 'Tugas berhadiah & waktu tambahan',
+    feature9Text:
+      'Anak mendapat menit tambahan dengan menyelesaikan tugas, atau meminta waktu lebih. Keduanya masuk ke ponsel Anda untuk disetujui.',
 
     showcaseEyebrow: 'Dasbor orang tua',
     showcaseTitle: 'Seluruh keluarga dalam satu layar',
@@ -518,7 +527,7 @@ export default {
 
     contactTitle: 'Hubungi kami',
     contactEmail:
-      '**Email:** [kidgate.support@gmail.com](mailto:kidgate.support@gmail.com)',
+      '**Email:** [support@kidgate.app](mailto:support@kidgate.app)',
     contactResponse: '**Waktu tanggapan:** dalam 24 jam (Senin–Jumat)',
     contactNote:
       'Saat menghubungi kami, sertakan alamat email akun orang tua KidGate Anda dan penjelasan singkat masalahnya agar kami bisa membantu lebih cepat.',
