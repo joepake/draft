@@ -7,6 +7,7 @@ import {
   onSnapshot,
   orderBy,
   query,
+  where,
 } from 'firebase/firestore'
 import { db } from '../lib/firebase.js'
 
@@ -27,6 +28,19 @@ function toIso(value) {
   if (typeof value.toDate === 'function') return value.toDate().toISOString()
   if (value instanceof Date) return value.toISOString()
   return undefined
+}
+
+/**
+ * `YYYY-MM-DD` in local time, matching the day keys the child device writes.
+ * Deliberately not `toISOString()`, which would shift the key by a day either
+ * side of UTC midnight.
+ */
+function localDateKey(daysAgo = 0) {
+  const d = new Date()
+  d.setDate(d.getDate() - daysAgo)
+  const month = String(d.getMonth() + 1).padStart(2, '0')
+  const day = String(d.getDate()).padStart(2, '0')
+  return `${d.getFullYear()}-${month}-${day}`
 }
 
 function initialsOf(name) {
@@ -292,26 +306,38 @@ export function useFamilyData(user, selectedDeviceId) {
     if (!familyId || !selectedDeviceId) return
     const base = ['users', familyId, 'childDevices', selectedDeviceId]
 
+    // A date range ordered ascending, not `orderBy('date','desc')`: the
+    // project's firestore.indexes.json deliberately withholds the
+    // COLLECTION+DESCENDING single-field index on usageDays.date, so a
+    // descending sort fails with a missing-index error. This is the same
+    // access pattern UsageDayRepository uses, and the range also bounds the
+    // read — nothing prunes usageDays, so an unbounded query would grow with
+    // the device's whole history.
     const unsubUsage = onSnapshot(
-      query(collection(db, ...base, 'usageDays'), orderBy('date', 'desc'), limit(30)),
+      query(
+        collection(db, ...base, 'usageDays'),
+        where('date', '>=', localDateKey(29)),
+        where('date', '<=', localDateKey(0)),
+        orderBy('date', 'asc'),
+      ),
       (snap) => {
-        const rows = snap.docs
-          .map((d) => {
-            const u = d.data()
-            return {
-              date: u.date || d.id,
-              minutes: u.minutes ?? 0,
-              bonusMinutes: u.bonusMinutes ?? 0,
-            }
-          })
-          .reverse()
+        const rows = snap.docs.map((d) => {
+          const u = d.data()
+          return {
+            date: u.date || d.id,
+            minutes: u.minutes ?? 0,
+            bonusMinutes: u.bonusMinutes ?? 0,
+          }
+        })
         setUsage((prev) => ({ ...prev, [selectedDeviceId]: rows }))
       },
       (e) => setError(e),
     )
 
+    // Ordered by `date`, not `lastAt`: webHistory.date is the field the
+    // project's index config explicitly keeps a descending index for.
     const unsubWeb = onSnapshot(
-      query(collection(db, ...base, 'webHistory'), orderBy('lastAt', 'desc'), limit(300)),
+      query(collection(db, ...base, 'webHistory'), orderBy('date', 'desc'), limit(300)),
       (snap) => {
         // Stored one row per domain per day; the dashboard shows one row per
         // domain across the window.
