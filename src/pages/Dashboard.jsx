@@ -287,7 +287,8 @@ export default function Dashboard({
         <div className="side-foot">
           <span className="plan-pill">{family.plan}</span>
           <p>
-            {family.parents.length} parents · {devices.length} child devices
+            {family.parents.length} {family.parents.length === 1 ? 'parent' : 'parents'} ·{' '}
+            {devices.length} {devices.length === 1 ? 'child device' : 'child devices'}
           </p>
           {sideFooter}
         </div>

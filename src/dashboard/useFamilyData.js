@@ -135,6 +135,7 @@ export function useFamilyData(user, selectedDeviceId) {
   const [error, setError] = useState(null)
 
   const [devices, setDevices] = useState([])
+  const [devicesLoaded, setDevicesLoaded] = useState(false)
   const [familyDoc, setFamilyDoc] = useState(null)
   const [memberCount, setMemberCount] = useState(1)
   const [activityRows, setActivityRows] = useState([])
@@ -183,13 +184,21 @@ export function useFamilyData(user, selectedDeviceId) {
   useEffect(() => {
     if (!familyId) return
     const root = ['users', familyId]
-    const onErr = (e) => setError(e)
+    setDevicesLoaded(false)
+
+    // Only the device list is fatal — without it there is nothing to show. A
+    // single failing side panel (a collection this account cannot read, an
+    // index that is still building) must degrade to an empty panel rather than
+    // replacing the whole dashboard with an error screen.
+    const fatal = (e) => setError(e)
+    const soft = (name) => (e) =>
+      console.warn(`[kidgate] ${name} listener failed:`, e?.code || e?.message)
 
     const subs = [
       onSnapshot(
         doc(db, ...root),
         (snap) => setFamilyDoc(snap.data() || null),
-        onErr,
+        soft('family'),
       ),
       onSnapshot(
         collection(db, ...root, 'members'),
@@ -198,8 +207,14 @@ export function useFamilyData(user, selectedDeviceId) {
       ),
       onSnapshot(
         collection(db, ...root, 'childDevices'),
-        (snap) => setDevices(snap.docs.map((d) => mapDevice(d.id, d.data()))),
-        onErr,
+        (snap) => {
+          setDevices(snap.docs.map((d) => mapDevice(d.id, d.data())))
+          setDevicesLoaded(true)
+        },
+        (e) => {
+          setDevicesLoaded(true)
+          fatal(e)
+        },
       ),
       onSnapshot(
         query(
@@ -221,7 +236,7 @@ export function useFamilyData(user, selectedDeviceId) {
               }
             }),
           ),
-        onErr,
+        soft('activities'),
       ),
       onSnapshot(
         query(
@@ -237,7 +252,7 @@ export function useFamilyData(user, selectedDeviceId) {
               createdAt: toIso(d.data().createdAt),
             })),
           ),
-        onErr,
+        soft('timeRequests'),
       ),
       onSnapshot(
         query(
@@ -259,7 +274,7 @@ export function useFamilyData(user, selectedDeviceId) {
               }
             }),
           ),
-        onErr,
+        soft('sosAlerts'),
       ),
       onSnapshot(
         query(
@@ -276,7 +291,7 @@ export function useFamilyData(user, selectedDeviceId) {
               respondedAt: toIso(d.data().respondedAt),
             })),
           ),
-        onErr,
+        soft('safetyCheckIns'),
       ),
       onSnapshot(
         collection(db, ...root, 'rewardTasks'),
@@ -294,7 +309,7 @@ export function useFamilyData(user, selectedDeviceId) {
               }
             }),
           ),
-        onErr,
+        soft('rewardTasks'),
       ),
     ]
 
@@ -402,5 +417,12 @@ export function useFamilyData(user, selectedDeviceId) {
     rewardRows,
   ])
 
-  return { data, familyId, loading: resolving, error }
+  // The device list has to have arrived before rendering, or the dashboard
+  // shows "no child device yet" for a beat on every load.
+  return {
+    data,
+    familyId,
+    loading: resolving || (Boolean(familyId) && !devicesLoaded),
+    error,
+  }
 }
