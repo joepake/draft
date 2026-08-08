@@ -1,4 +1,4 @@
-/** Static label maps shared by the demo and live dashboards. */
+/** Field-value labels the app localises and the dashboard renders in English. */
 
 export const WEB_CATEGORY_LABELS = {
   adult: 'Adult',

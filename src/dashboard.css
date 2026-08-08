@@ -328,16 +328,6 @@
   margin-top: 0.9rem;
 }
 
-.demo-note {
-  font-size: 0.82rem;
-  color: var(--ink-2);
-  background: rgba(57, 135, 229, 0.1);
-  border: 1px solid rgba(57, 135, 229, 0.28);
-  border-radius: 0.7rem;
-  padding: 0.6rem 0.9rem;
-  margin-bottom: 1.4rem;
-}
-
 /* ---------- Cards & grid ---------- */
 
 .card {
@@ -1552,25 +1542,6 @@
   margin-top: 1.4rem;
   padding-top: 1.1rem;
   border-top: 1px solid var(--line);
-}
-
-.login-demo {
-  margin-top: 0.9rem;
-  font-size: 0.85rem;
-}
-
-.login-demo a {
-  color: #7db0ff;
-  text-decoration: none;
-}
-
-.login-demo a:hover {
-  text-decoration: underline;
-}
-
-.demo-note a {
-  color: #7db0ff;
-  white-space: nowrap;
 }
 
 /* ---------- Responsive ---------- */

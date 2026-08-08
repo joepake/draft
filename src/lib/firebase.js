@@ -14,9 +14,9 @@ const config = {
 /**
  * Whether the deployment carries a Firebase web config.
  *
- * The marketing site ships without one — the demo dashboard must keep working
- * on a preview deploy that has no environment variables, so every Firebase
- * import stays behind this flag rather than throwing at module load.
+ * A preview deploy may have no environment variables set, and the marketing
+ * and legal pages must still build and serve there, so every Firebase import
+ * stays behind this flag rather than throwing at module load.
  */
 export const isFirebaseConfigured = Boolean(
   config.apiKey && config.authDomain && config.projectId && config.appId,

@@ -256,23 +256,6 @@
   line-height: 1.2;
 }
 
-.hero-link {
-  margin-top: 1.1rem;
-  font-size: 0.95rem;
-}
-
-.hero-link a {
-  color: #b9c8ff;
-  text-decoration: none;
-  border-bottom: 1px solid rgba(185, 200, 255, 0.4);
-  padding-bottom: 2px;
-}
-
-.hero-link a:hover {
-  color: #fff;
-  border-bottom-color: #fff;
-}
-
 /* Phone mockup */
 
 .phone-wrap {

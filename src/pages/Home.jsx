@@ -113,9 +113,6 @@ export default function Home() {
               <li>Family Dashboard</li>
             </ul>
             <StoreButtons />
-            <p className="hero-link">
-              <Link to="/dashboard/demo">See the parent dashboard →</Link>
-            </p>
           </div>
           <div className="phone-wrap" aria-hidden="true">
             <div className="phone">

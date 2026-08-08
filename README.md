@@ -13,7 +13,6 @@ npm run dev
 |---|---|
 | `/` | Landing page |
 | `/dashboard` | Parent dashboard — signs in against the KidGate Firebase project |
-| `/dashboard/demo` | Same dashboard with sample data, no sign-in |
 | `/support` | Support page (App Store / Play Store support URL) |
 | `/privacy-policy` | Privacy Policy |
 | `/terms` | Terms & Conditions |
@@ -22,9 +21,6 @@ npm run dev
 `vercel.json` rewrites every path to `index.html`, so deep links do not 404.
 
 ## Dashboard data
-
-`/dashboard/demo` reads `src/dashboard/demoData.js` and needs no backend — it
-stays working on a preview deploy with no environment variables.
 
 `/dashboard` reads live Firestore through `src/dashboard/useFamilyData.js`. The
 paths mirror the app's `src/constants/FirestorePaths.ts` exactly:
@@ -96,8 +92,8 @@ registered.
    (`npm run build`, output `dist`, install `npm install`), and `vercel.json`
    already rewrites all paths to `index.html` so `/dashboard` deep links work.
 
-Without any of this the dashboard still loads and shows a sign-in screen that
-says Firebase is not configured, and `/dashboard/demo` is unaffected.
+Without any of this the site still builds and serves; `/dashboard` shows a
+sign-in screen saying Firebase is not configured.
 
 ## What the web can and cannot write
 
@@ -114,10 +110,8 @@ users/{familyId}/safetyCheckIns    allow create, update: if isFamilyMember(userI
 Sending a Check-In from the dashboard works today, with no extra setup.
 
 **The control Cloud Functions** additionally call `requireParentDevice`
-(`functions/lib/authHelpers.js`), which demands a `parentDeviceId` plus a
-`deviceCredential` — a per-device secret minted by `ensureDeviceCredential` and
-kept in the phone's Keychain, with only its SHA-256 hash in Firestore. Every
-one of these needs it:
+(`functions/lib/authHelpers.js`), which on a phone means a `deviceCredential`
+kept in the Keychain. Every one of these needs it:
 
 ```
 updateDeviceControls   setDeviceLock        resolveTimeRequest
@@ -125,22 +119,24 @@ createRewardTask       updateRewardTask     resolveRewardClaim
 setParentPin
 ```
 
-A browser has no such credential, so the dashboard shows those controls as
-read-only and says so, rather than failing on click.
+### How a browser earns that
 
-### Enrolling the browser is a decision, not a task
+By QR sign-in: the browser shows a code, an already-paired parent phone scans
+and approves, and the resulting session carries `roleHint: 'web'` in its ID
+token. `src/auth/QrSignIn.jsx` drives it; `useAuth().canWrite` reads the claim.
 
-`ensureDeviceCredential` would happily mint a parent credential for a web
-session — a valid parent ID token is all it checks. The reason this repo does
-not do that: the credential is a long-lived bearer secret that can unlock a
-child's phone and clear every limit. On a phone it lives in the Keychain; in a
-browser it would live in `localStorage`/`sessionStorage`, reachable by any XSS
-on the domain, with no rotation story and no way for a parent to see or revoke
-the extra "device". The comment in `functions/http/deviceAuth.js` shows the
-same threat being reasoned about for child tokens.
+Google, Apple and email sign-in stay **view-only** on purpose, so a parent
+without their phone can still read reports and delete their account. The
+dashboard shows the controls as read-only and says why, rather than failing on
+click.
 
-If you decide a browser should be enrollable, the wiring is already in place:
-store `{ parentDeviceId, deviceCredential }` under the `kidgate.parentDeviceCredential`
-key that `readDeviceCredential()` reads, and every action in `controlsApi.js`
-starts working unchanged. Worth pairing with a short credential TTL and a
-visible "signed-in browsers" list in the app before shipping it.
+Why not simply store a device credential in the browser: it is a long-lived
+bearer secret that can unlock a child's phone and clear every limit, and in a
+browser it would sit in `localStorage` within reach of any XSS, with no
+rotation and nothing for a parent to see or revoke. The token-claim approach
+stores nothing locally, rotates hourly with the ID token, and is checked
+against a live session document on every call — so revoking is immediate.
+
+The Cloud Functions this depends on are in [`firebase/`](firebase/README.md),
+not yet in the app repo. Until they are deployed the QR button reports a
+missing endpoint and everything else works view-only.

@@ -32,7 +32,9 @@ function osLabel(platform, osVersion) {
 }
 
 function timeAgo(iso) {
-  const diff = Date.now() - new Date(iso).getTime()
+  const at = iso ? new Date(iso).getTime() : NaN
+  if (Number.isNaN(at)) return 'never'
+  const diff = Date.now() - at
   const mins = Math.round(diff / 60000)
   if (mins < 1) return 'just now'
   if (mins < 60) return `${mins}m ago`
@@ -104,7 +106,6 @@ const ACTIVITY_ICON = {
 
 export default function Dashboard({
   data,
-  notice,
   sideFooter,
   topActions,
   onDeviceChange,
@@ -128,7 +129,6 @@ export default function Dashboard({
   const [busy, setBusy] = useState(null)
   const [toast, setToast] = useState(null)
 
-  // Actions are absent in the demo, where the buttons are deliberately inert.
   const canWrite = actions?.canWrite ?? false
   const live = Boolean(actions)
 
@@ -375,8 +375,6 @@ export default function Dashboard({
             )}
           </div>
         </header>
-
-        {notice}
 
         {live && !canWrite && (
           <div className="write-note">
@@ -711,9 +709,11 @@ export default function Dashboard({
               <Card
                 title="Location"
                 subtitle={
-                  c.locationSharingEnabled
-                    ? `Updated ${timeAgo(device.lastLocation.updatedAt)}`
-                    : 'Sharing is off'
+                  !c.locationSharingEnabled
+                    ? 'Sharing is off'
+                    : device.lastLocation
+                      ? `Updated ${timeAgo(device.lastLocation.updatedAt)}`
+                      : 'Waiting for the first update'
                 }
               >
                 <div className="map">
@@ -728,11 +728,23 @@ export default function Dashboard({
                       {p.name}
                     </span>
                   ))}
-                  <div className="map-badge">
-                    <strong>{device.lastLocation.placeName}</strong>
-                    <em>{device.lastLocation.address}</em>
-                  </div>
+                  {device.lastLocation && (
+                    <div className="map-badge">
+                      <strong>
+                        {device.lastLocation.placeName || 'Last known location'}
+                      </strong>
+                      {device.lastLocation.address && (
+                        <em>{device.lastLocation.address}</em>
+                      )}
+                    </div>
+                  )}
                 </div>
+                {(places[device.id] || []).length === 0 && (
+                  <p className="empty">
+                    No saved places yet. Add one in the app to get an alert when
+                    your child arrives or leaves.
+                  </p>
+                )}
                 <ul className="places">
                   {(places[device.id] || []).map((p) => (
                     <li key={p.id}>
@@ -741,7 +753,7 @@ export default function Dashboard({
                       </span>
                       {p.name}
                       <em>
-                        {p.radius}m ·{' '}
+                        {p.radius ? `${p.radius}m · ` : ''}
                         {[p.alertOnEnter && 'arrive', p.alertOnExit && 'leave']
                           .filter(Boolean)
                           .join(' + ') || 'no alerts'}

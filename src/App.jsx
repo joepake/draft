@@ -9,7 +9,6 @@ import './dashboard.css'
 
 // Split out so the marketing and legal pages never download the Firebase SDK.
 const DashboardLive = lazy(() => import('./pages/DashboardLive.jsx'))
-const DashboardDemo = lazy(() => import('./pages/DashboardDemo.jsx'))
 
 function RouteFallback() {
   return (
@@ -50,7 +49,6 @@ export default function App() {
             <Route path="/delete-account" element={<DeleteAccount />} />
             <Route path="/support" element={<Support />} />
             <Route path="/dashboard" element={<DashboardLive />} />
-            <Route path="/dashboard/demo" element={<DashboardDemo />} />
           </Routes>
         </Suspense>
       </main>

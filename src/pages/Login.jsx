@@ -85,7 +85,7 @@ export default function Login() {
             <strong>Firebase is not configured on this deployment.</strong>
             <span>
               Set the <code>VITE_FIREBASE_*</code> environment variables to
-              enable sign-in. The demo dashboard works without them.
+              enable sign-in.
             </span>
           </div>
         )}
@@ -181,10 +181,6 @@ export default function Login() {
           KidGate accounts are created in the mobile app — the web dashboard
           signs in to an existing family. New here? Install the app and pair a
           child device first.
-        </p>
-
-        <p className="login-demo">
-          <Link to="/dashboard/demo">Just looking? View the demo dashboard →</Link>
         </p>
       </div>
     </div>
