@@ -48,9 +48,24 @@ they have in the app.
 
 ## Setup for live data
 
-1. **Firebase Console → Project settings → Your apps → Web.** Create a web app
-   if there isn't one, then copy its config into the environment variables
-   listed in `.env.example` (locally: copy it to `.env`).
+The KidGate project pair:
+
+| | Project | Sender id | Storage bucket |
+|---|---|---|---|
+| Production | `kidgate` | `847735427015` | `kidgate.firebasestorage.app` |
+| Dev | `joevideotube` | `679132409416` | `joevideotube.appspot.com` |
+
+Cloud Functions run in `asia-southeast1` (`functions/index.js`,
+overridable with `FUNCTIONS_REGION`).
+
+`.env.example` is pre-filled for production; only `VITE_FIREBASE_API_KEY` and
+`VITE_FIREBASE_APP_ID` are blank, because they only exist once a **Web** app is
+registered.
+
+1. **Firebase Console → Project settings → Your apps → Add app → Web.** Register
+   a web app in the `kidgate` project (the mobile app's Android/iOS entries do
+   not produce a usable web config). Copy `apiKey` and `appId` from the snippet
+   it shows.
 
 2. **Firebase Console → Authentication → Settings → Authorized domains.** Add
    the Vercel production domain and any preview domain that needs sign-in.
@@ -67,8 +82,19 @@ they have in the app.
    that is not ready, leave Apple disabled — the button then reports
    `auth/operation-not-allowed`, and Google plus email still work.
 
-5. **Vercel → Settings → Environment Variables.** Add the same `VITE_FIREBASE_*`
-   values. They are build-time variables, so redeploy after changing them.
+5. **Vercel → Settings → Environment Variables.** Add the `VITE_FIREBASE_*`
+   values. Vite inlines them at build time, so a redeploy is required after any
+   change — editing a variable alone does nothing to the live site.
+
+   Scope them per environment: point **Production** at `kidgate` and
+   **Preview** at `joevideotube`, so a preview build can never read or write a
+   real family's data. Every preview URL that should be able to sign in has to
+   be listed in that project's authorized domains too, which is a good reason
+   to keep sign-in on production only.
+
+   Build settings need no changes — the Vite preset's defaults are correct
+   (`npm run build`, output `dist`, install `npm install`), and `vercel.json`
+   already rewrites all paths to `index.html` so `/dashboard` deep links work.
 
 Without any of this the dashboard still loads and shows a sign-in screen that
 says Firebase is not configured, and `/dashboard/demo` is unaffected.
