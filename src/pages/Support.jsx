@@ -68,6 +68,16 @@ export default function Support() {
       <h2>Frequently Asked Questions</h2>
 
       <p>
+        <strong>Can I manage my family from a computer?</strong>
+      </p>
+      <p>
+        Yes. Open the <Link to="/dashboard">web dashboard</Link> and sign in
+        with the same account you use in the app — Google, Apple, or your email
+        and password. It shows the same family, devices, reports and settings.
+        Accounts and device pairing are still done in the mobile app.
+      </p>
+
+      <p>
         <strong>How do I pair the parent and child devices?</strong>
       </p>
       <p>
