@@ -231,7 +231,7 @@ export default function Home() {
                 <div className="showcase-tiles">
                   <div className="showcase-tile">
                     <em>{t('home.showcaseTile1')}</em>
-                    <strong>2h 14m</strong>
+                    <strong>{t('viz.hoursMinutes', { hours: 2, minutes: 14 })}</strong>
                   </div>
                   <div className="showcase-tile">
                     <em>{t('home.showcaseTile2')}</em>
