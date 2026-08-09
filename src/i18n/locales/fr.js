@@ -3,7 +3,7 @@ export default {
   meta: {
     title: 'KidGate — Un contrôle parental qui respecte votre enfant',
     description:
-      "KidGate aide les parents à gérer le temps d'écran, bloquer des applis, filtrer le web et rester en contact — sans priver l'enfant de sa liberté.",
+      "KidGate aide les parents à gérer le temps d’écran, bloquer des applis, filtrer le web et rester en contact — sans priver l'enfant de sa liberté.",
   },
 
   common: {
@@ -42,7 +42,7 @@ export default {
 
   footer: {
     blurb:
-      "Un contrôle parental qui aide les familles à s'entendre sur le temps d'écran plutôt qu'à se disputer à ce sujet.",
+      "Un contrôle parental qui aide les familles à s'entendre sur le temps d’écran plutôt qu'à se disputer à ce sujet.",
     product: 'Produit',
     dashboard: 'Tableau de bord parent',
     supportGuides: 'Assistance et guides',
@@ -72,8 +72,8 @@ export default {
     heroTitle: 'Protégez vos enfants',
     heroTitleAccent: 'sans leur retirer leur liberté.',
     heroLede:
-      "KidGate donne aux parents un contrôle calme et clair sur le temps d'écran, les applis et la sécurité — pendant que l'enfant garde un téléphone qui reste le sien.",
-    heroCheck1: "Temps d'écran",
+      "KidGate donne aux parents un contrôle calme et clair sur le temps d’écran, les applis et la sécurité — pendant que l'enfant garde un téléphone qui reste le sien.",
+    heroCheck1: "Temps d’écran",
     heroCheck2: "Blocage d'applis",
     heroCheck3: 'Filtrage web',
     heroCheck4: 'Localisation',
@@ -92,7 +92,7 @@ export default {
     trust2Title: 'Suppression à tout moment',
     trust2Text: 'Effacez votre compte familial et toutes les données sur demande',
     trust3Title: 'iOS et Android',
-    trust3Text: "Contrôles natifs du temps d'écran sur les deux plateformes",
+    trust3Text: "Contrôles natifs du temps d’écran sur les deux plateformes",
     trust4Title: 'Un forfait par famille',
     trust4Text: 'Tous les appareils parents et enfants, un seul abonnement',
 
@@ -100,7 +100,7 @@ export default {
     featuresTitle: "Tout ce dont un parent a besoin",
     featuresSub:
       "Des limites quotidiennes aux alertes d'urgence — une appli pour le bien-être numérique de toute la famille.",
-    feature1Title: "Temps d'écran et limites quotidiennes",
+    feature1Title: "Temps d’écran et limites quotidiennes",
     feature1Text:
       "Fixez un plafond quotidien et des heures bloquées pour l'école et le coucher. L'appareil se verrouille tout seul quand le temps est écoulé.",
     feature2Title: "Blocage d'applis",
@@ -131,8 +131,8 @@ export default {
     showcaseEyebrow: 'Tableau de bord parent',
     showcaseTitle: 'Toute la famille sur un seul écran',
     showcaseSub:
-      "Temps d'écran, tentatives bloquées, localisation et tout ce qui demande votre attention — sur votre téléphone ou dans n'importe quel navigateur.",
-    showcaseTile1: "Temps d'écran aujourd'hui",
+      "Temps d’écran, tentatives bloquées, localisation et tout ce qui demande votre attention — sur votre téléphone ou dans n'importe quel navigateur.",
+    showcaseTile1: "Temps d’écran aujourd'hui",
     showcaseTile2: 'Tentatives bloquées',
     showcaseTile3: 'Demande attention',
     showcaseCaption1: "Consultez les rapports depuis n'importe quel navigateur",
@@ -277,9 +277,9 @@ export default {
     minutes: '{{count}}min',
     hoursMinutes: '{{hours}}h{{minutes}}',
     none: '—',
-    byDay: "Temps d'écran par jour",
+    byDay: "Temps d’écran par jour",
     limit: 'Limite {{value}}',
-    screenTime: "Temps d'écran",
+    screenTime: "Temps d’écran",
     bonus: 'Bonus',
     bonusEarned: 'Bonus gagné',
     overLimit: 'Au-delà de la limite quotidienne',
@@ -324,7 +324,7 @@ export default {
 
   dash: {
     tabOverview: 'Vue générale',
-    tabScreen: "Temps d'écran",
+    tabScreen: "Temps d’écran",
     tabApps: 'Applis et web',
     tabSafety: 'Sécurité',
     tabControls: 'Commandes',
@@ -372,7 +372,7 @@ export default {
     toastTimeApproved: 'Temps supplémentaire accordé.',
     toastCheckInResent: 'Check-in renvoyé.',
 
-    tileScreenToday: "Temps d'écran aujourd'hui",
+    tileScreenToday: "Temps d’écran aujourd'hui",
     tileSameAsAverage: 'Identique à la moyenne sur 7 jours',
     tileDeltaUp: '↑ {{percent}} % par rapport à la moyenne sur 7 jours',
     tileDeltaDown: '↓ {{percent}} % par rapport à la moyenne sur 7 jours',
@@ -386,12 +386,12 @@ export default {
     tileOpenItems: 'Points ouverts ci-dessous',
     tileAllClear: 'Tout va bien',
 
-    cardScreenTime: "Temps d'écran",
+    cardScreenTime: "Temps d’écran",
     cardScreenTimeSub: '14 derniers jours, face à la limite quotidienne',
     cardRecent: 'Activité récente',
     cardRecentSub: 'Le plus récent en premier',
     cardRecentEmpty:
-      "Rien d'enregistré pour l'instant. Les verrouillages, applis bloquées, alertes de lieu et synchronisations du temps d'écran de cet appareil apparaîtront ici.",
+      "Rien d'enregistré pour l'instant. Les verrouillages, applis bloquées, alertes de lieu et synchronisations du temps d’écran de cet appareil apparaîtront ici.",
     cardAttention: 'Demande votre attention',
     cardAttentionSub: '{{count}} en cours',
     cardAttentionEmpty: 'Rien à examiner. Les protections ont l’air en forme.',
@@ -425,7 +425,7 @@ export default {
     on: 'Activé',
     topAppsTitle: "Applis les plus utilisées aujourd'hui",
     topAppsSub: 'Les plafonds par appli sont indiqués par un repère',
-    trendTitle: "Évolution du temps d'écran",
+    trendTitle: "Évolution du temps d’écran",
     trendSub: '{{count}} derniers jours',
     rangeDays: '{{count}} j',
     blockedHoursTitle: 'Heures bloquées',
@@ -552,7 +552,7 @@ export default {
     start3:
       "**3. Connectez l'appareil de l'enfant.** Installez KidGate sur l'appareil de votre enfant et choisissez *Ceci est un appareil enfant*. Sur l'appareil parent, ouvrez *Famille → + → Connecter un appareil enfant*, puis scannez le QR code affiché sur l'appareil de l'enfant (ou saisissez le code à 6 caractères). Confirmez la connexion sur l'appareil de l'enfant.",
     start4:
-      "**4. Accordez les autorisations sur l'appareil de l'enfant.** Ouvrez l'écran *État* sur l'appareil de l'enfant et autorisez toutes les permissions demandées par KidGate — sur Android : notifications, Accès aux données d'usage, Affichage par-dessus les autres applis, Accessibilité et batterie sans restriction ; sur iOS : *Autoriser l'utilisation des apps et des sites* (Temps d'écran). Les commandes ne fonctionneront pas complètement tant qu'elles ne sont pas actives.",
+      "**4. Accordez les autorisations sur l'appareil de l'enfant.** Ouvrez l'écran *État* sur l'appareil de l'enfant et autorisez toutes les permissions demandées par KidGate — sur Android : notifications, Accès aux données d'usage, Superposition aux autres apps, Accessibilité et batterie sans restriction ; sur iOS : *Autoriser l'utilisation des apps et des sites* (Temps d’écran). Les commandes ne fonctionneront pas complètement tant qu'elles ne sont pas actives.",
     start5:
       "**5. Configurez les commandes.** Depuis l'appareil parent, ouvrez la fiche de l'appareil de l'enfant et réglez la limite quotidienne, les heures bloquées, les applis bloquées, le filtre web et les fonctions de localisation.",
     startNote:
@@ -584,13 +584,13 @@ export default {
     faq6A:
       "Sur l'appareil parent, ouvrez l'écran *Forfaits* et touchez *Restaurer les achats*. Vérifiez que vous êtes connecté avec le même compte de boutique que lors de l'achat initial. Notez que seul le titulaire de la famille peut s'abonner ou restaurer des achats.",
 
-    faq7Q: "Pourquoi les données de temps d'écran n'apparaissent-elles pas ?",
+    faq7Q: "Pourquoi les données de temps d’écran n'apparaissent-elles pas ?",
     faq7A:
-      "Les données d'usage viennent de l'appareil de l'enfant. Vérifiez qu'il est en ligne, ouvrez-y KidGate et regardez l'écran *État* — chaque ligne d'autorisation doit être marquée comme autorisée (sur Android, l'accès aux données d'usage est nécessaire au suivi du temps d'écran). Les rapports peuvent mettre quelques minutes à se synchroniser.",
+      "Les données d'usage viennent de l'appareil de l'enfant. Vérifiez qu'il est en ligne, ouvrez-y KidGate et regardez l'écran *État* — chaque ligne d'autorisation doit être marquée comme autorisée (sur Android, l'accès aux données d'usage est nécessaire au suivi du temps d’écran). Les rapports peuvent mettre quelques minutes à se synchroniser.",
 
     faq8Q: 'Pourquoi le verrouillage ou les heures bloquées ne fonctionnent-ils pas ?',
     faq8A:
-      "Sur Android, le verrouillage nécessite *Affichage par-dessus les autres applis* et l'assistant *Accessibilité* activés, ainsi qu'une batterie sans restriction. Sur Xiaomi, Samsung, Oppo, Vivo et appareils similaires, autorisez aussi le démarrage automatique et retirez KidGate de toute liste d'« applis en veille » (voir *État → Garder KidGate actif* sur l'appareil de l'enfant). Sur iOS, le verrouillage dépend de l'autorisation Temps d'écran. Si une autorisation est désactivée plus tard, vous recevrez une alerte de protection sur l'appareil parent.",
+      "Sur Android, le verrouillage nécessite *Superposition aux autres apps* et l'assistant *Accessibilité* activés, ainsi qu'une batterie sans restriction. Sur Xiaomi, Samsung, Oppo, Vivo et appareils similaires, autorisez aussi le démarrage automatique et retirez KidGate de toute liste d'« applis en veille » (voir *État → Garder KidGate actif* sur l'appareil de l'enfant). Sur iOS, le verrouillage dépend de l'autorisation Temps d’écran. Si une autorisation est désactivée plus tard, vous recevrez une alerte de protection sur l'appareil parent.",
 
     faq9Q: 'Comment bloquer des applis précises ?',
     faq9A:

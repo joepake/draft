@@ -81,7 +81,7 @@ export default {
 
     phoneDailyLimit: 'Günlük sınır',
     phoneDailyLimitValue: '3 saatin 1 sa 24 dk’sı kullanıldı',
-    phoneBlockedHours: 'Engelli saatler',
+    phoneBlockedHours: 'Engellenen saatler',
     phoneScheduleOn: 'Program açık',
     phoneLocation: 'Konum',
     phoneLocationValue: 'Okulda · 5 dk önce',
@@ -287,7 +287,7 @@ export default {
     ofLimit: '/ {{value}}',
     noLimit: 'sınır ayarlanmadı',
     blocked: 'Engelli',
-    blockedHours: 'Engelli saatler',
+    blockedHours: 'Engellenen saatler',
     day0: 'Paz',
     day1: 'Pzt',
     day2: 'Sal',
@@ -428,7 +428,7 @@ export default {
     trendTitle: 'Ekran süresi eğilimi',
     trendSub: 'Son {{count}} gün',
     rangeDays: '{{count}} g',
-    blockedHoursTitle: 'Engelli saatler',
+    blockedHoursTitle: 'Engellenen saatler',
     blockedHoursSub_one:
       '{{count}} zaman aralığı · gölgeli bloklar içinde cihaz kilitli kalır',
     blockedHoursSub_other:
@@ -504,7 +504,7 @@ export default {
       'Ödül görevlerinden ve onaylanan süre isteklerinden gelen bonus dakikalar yalnızca o gün için üstüne eklenir.',
     whatsOnTitle: 'Neler açık',
     whatsOnSub: 'Değişiklikler çocuk cihazıyla eşitlenir',
-    rowBlockedHours: 'Engelli saatler',
+    rowBlockedHours: 'Engellenen saatler',
     rowBlockedHoursDesc_one: '{{count}} zaman aralığı · {{list}}',
     rowBlockedHoursDesc_other: '{{count}} zaman aralığı · {{list}}',
     rowAppBlocking: 'Uygulama engelleme',

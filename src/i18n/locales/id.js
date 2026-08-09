@@ -543,7 +543,7 @@ export default {
     start3:
       '**3. Sambungkan perangkat anak.** Pasang KidGate di perangkat anak Anda dan pilih *Ini perangkat anak*. Di perangkat orang tua, buka *Keluarga → + → Sambungkan perangkat anak*, lalu pindai kode QR yang tampil di perangkat anak (atau masukkan kode 6 karakter). Konfirmasi sambungan di perangkat anak.',
     start4:
-      '**4. Berikan izin di perangkat anak.** Buka layar *Status* di perangkat anak dan izinkan semua izin yang diminta KidGate — di Android: notifikasi, Akses Penggunaan, Tampilkan di atas aplikasi lain, Aksesibilitas, dan baterai tanpa batasan; di iOS: *Izinkan Penggunaan Aplikasi & Situs Web* (Waktu Layar). Kendali tidak akan berfungsi penuh sampai semuanya aktif.',
+      '**4. Berikan izin di perangkat anak.** Buka layar *Status* di perangkat anak dan izinkan semua izin yang diminta KidGate — di Android: notifikasi, Akses Penggunaan, Tampil di atas aplikasi lain, Aksesibilitas, dan baterai tanpa batasan; di iOS: *Izinkan Penggunaan Aplikasi & Situs Web* (Waktu Layar). Kendali tidak akan berfungsi penuh sampai semuanya aktif.',
     start5:
       '**5. Atur kendali.** Dari perangkat orang tua, buka kartu perangkat anak dan tetapkan Batas Harian, Jam Diblokir, Aplikasi Diblokir, Penyaring Web, dan fitur lokasi.',
     startNote:
@@ -581,7 +581,7 @@ export default {
 
     faq8Q: 'Kenapa penguncian atau Jam Diblokir tidak bekerja?',
     faq8A:
-      'Di Android, penguncian memerlukan *Tampilkan di atas aplikasi lain* dan pembantu *Aksesibilitas* yang aktif, serta baterai tanpa batasan. Di Xiaomi, Samsung, Oppo, Vivo, dan perangkat serupa, izinkan juga mulai otomatis dan keluarkan KidGate dari daftar "aplikasi tidur" mana pun (lihat *Status → Jaga KidGate tetap berjalan* di perangkat anak). Di iOS, penguncian bergantung pada otorisasi Waktu Layar. Jika sebuah izin dimatikan kemudian, Anda akan menerima Peringatan Perlindungan di perangkat orang tua.',
+      'Di Android, penguncian memerlukan *Tampil di atas aplikasi lain* dan pembantu *Aksesibilitas* yang aktif, serta baterai tanpa batasan. Di Xiaomi, Samsung, Oppo, Vivo, dan perangkat serupa, izinkan juga mulai otomatis dan keluarkan KidGate dari daftar "aplikasi tidur" mana pun (lihat *Status → Jaga KidGate tetap berjalan* di perangkat anak). Di iOS, penguncian bergantung pada otorisasi Waktu Layar. Jika sebuah izin dimatikan kemudian, Anda akan menerima Peringatan Perlindungan di perangkat orang tua.',
 
     faq9Q: 'Bagaimana cara memblokir aplikasi tertentu?',
     faq9A:

@@ -552,7 +552,7 @@ export default {
     start3:
       '**3. Collega il dispositivo del bambino.** Installa KidGate sul dispositivo di tuo figlio e scegli *Questo è un dispositivo del figlio*. Sul dispositivo del genitore apri *Famiglia → + → Collega un dispositivo del figlio*, poi scansiona il codice QR mostrato sul dispositivo del bambino (o inserisci il codice di 6 caratteri). Conferma la connessione sul dispositivo del bambino.',
     start4:
-      '**4. Concedi i permessi sul dispositivo del bambino.** Apri la schermata *Stato* sul dispositivo del bambino e consenti tutti i permessi richiesti da KidGate — su Android: notifiche, Accesso ai dati di utilizzo, Mostra sopra altre app, Accessibilità e batteria senza restrizioni; su iOS: *Consenti utilizzo di app e siti web* (Tempo di utilizzo). I comandi non funzioneranno del tutto finché non sono attivi.',
+      '**4. Concedi i permessi sul dispositivo del bambino.** Apri la schermata *Stato* sul dispositivo del bambino e consenti tutti i permessi richiesti da KidGate — su Android: notifiche, Accesso ai dati di utilizzo, Visualizza sopra altre app, Accessibilità e batteria senza restrizioni; su iOS: *Consenti utilizzo di app e siti web* (Tempo di utilizzo). I comandi non funzioneranno del tutto finché non sono attivi.',
     start5:
       '**5. Configura i comandi.** Dal dispositivo del genitore apri la scheda del dispositivo del bambino e imposta limite giornaliero, ore bloccate, app bloccate, filtro web e funzioni di posizione.',
     startNote:
@@ -590,7 +590,7 @@ export default {
 
     faq8Q: 'Perché il blocco o le ore bloccate non funzionano?',
     faq8A:
-      'Su Android il blocco richiede *Mostra sopra altre app* e l’assistente *Accessibilità* attivi, oltre alla batteria senza restrizioni. Su Xiaomi, Samsung, Oppo, Vivo e dispositivi simili consenti anche l’avvio automatico e togli KidGate da eventuali elenchi di "app in sospensione" (vedi *Stato → Mantieni KidGate attivo* sul dispositivo del bambino). Su iOS il blocco dipende dall’autorizzazione a Tempo di utilizzo. Se un permesso viene disattivato in seguito, riceverai un avviso di protezione sul dispositivo del genitore.',
+      'Su Android il blocco richiede *Visualizza sopra altre app* e l’assistente *Accessibilità* attivi, oltre alla batteria senza restrizioni. Su Xiaomi, Samsung, Oppo, Vivo e dispositivi simili consenti anche l’avvio automatico e togli KidGate da eventuali elenchi di "app in sospensione" (vedi *Stato → Mantieni KidGate attivo* sul dispositivo del bambino). Su iOS il blocco dipende dall’autorizzazione a Tempo di utilizzo. Se un permesso viene disattivato in seguito, riceverai un avviso di protezione sul dispositivo del genitore.',
 
     faq9Q: 'Come blocco app specifiche?',
     faq9A:
