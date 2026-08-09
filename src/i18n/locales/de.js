@@ -508,8 +508,11 @@ export default {
     rowBlockedHoursDesc_one: '{{count}} Zeitfenster · {{list}}',
     rowBlockedHoursDesc_other: '{{count}} Zeitfenster · {{list}}',
     rowAppBlocking: 'App-Sperre',
-    rowAppBlockingDesc:
-      '{{apps}} Apps · {{categories}} Kategorien auf dem Kindergerät ausgewählt',
+    rowAppBlockingApps: '{{count}} Apps',
+    rowAppBlockingApps_one: '{{count}} App',
+    rowAppBlockingCategories: '{{count}} Kategorien',
+    rowAppBlockingCategories_one: '{{count}} Kategorie',
+    rowAppBlockingDesc: '{{apps}} · {{categories}}',
     rowWebFilter: 'Webfilter',
     rowWebFilterDesc_one: '{{count}} Kategorie abgewiesen',
     rowWebFilterDesc_other: '{{count}} Kategorien abgewiesen',

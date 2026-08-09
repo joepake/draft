@@ -499,8 +499,11 @@ export default {
     rowBlockedHours: 'ブロック時間帯',
     rowBlockedHoursDesc: '{{count}} 個の時間帯 · {{list}}',
     rowAppBlocking: 'アプリのブロック',
-    rowAppBlockingDesc:
-      '子どもの端末で選択されたアプリ {{apps}} 個 · カテゴリ {{categories}} 個',
+    rowAppBlockingApps: '{{count}} 個のアプリ',
+    rowAppBlockingApps_one: '{{count}} 個のアプリ',
+    rowAppBlockingCategories: '{{count}} 個のカテゴリ',
+    rowAppBlockingCategories_one: '{{count}} 個のカテゴリ',
+    rowAppBlockingDesc: '{{apps}} · {{categories}}',
     rowWebFilter: 'ウェブフィルタ',
     rowWebFilterDesc: '{{count}} カテゴリを拒否',
     rowLocation: '位置情報の共有',

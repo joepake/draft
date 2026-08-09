@@ -500,8 +500,11 @@ export default {
     rowBlockedHours: 'Jam Diblokir',
     rowBlockedHoursDesc: '{{count}} rentang waktu · {{list}}',
     rowAppBlocking: 'Blokir Aplikasi',
-    rowAppBlockingDesc:
-      '{{apps}} aplikasi · {{categories}} kategori dipilih di perangkat anak',
+    rowAppBlockingApps: '{{count}} aplikasi',
+    rowAppBlockingApps_one: '{{count}} aplikasi',
+    rowAppBlockingCategories: '{{count}} kategori',
+    rowAppBlockingCategories_one: '{{count}} kategori',
+    rowAppBlockingDesc: '{{apps}} · {{categories}}',
     rowWebFilter: 'Penyaring Web',
     rowWebFilterDesc: '{{count}} kategori ditolak',
     rowLocation: 'Berbagi lokasi',

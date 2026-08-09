@@ -499,8 +499,11 @@ export default {
     rowBlockedHours: '차단 시간대',
     rowBlockedHoursDesc: '{{count}}개 시간대 · {{list}}',
     rowAppBlocking: '앱 차단',
-    rowAppBlockingDesc:
-      '아이 기기에서 선택한 앱 {{apps}}개 · 카테고리 {{categories}}개',
+    rowAppBlockingApps: '{{count}}개의 앱',
+    rowAppBlockingApps_one: '{{count}}개의 앱',
+    rowAppBlockingCategories: '{{count}}개의 카테고리',
+    rowAppBlockingCategories_one: '{{count}}개의 카테고리',
+    rowAppBlockingDesc: '{{apps}} · {{categories}}',
     rowWebFilter: '웹 필터',
     rowWebFilterDesc: '{{count}}개 카테고리 거부',
     rowLocation: '위치 공유',

@@ -507,8 +507,11 @@ export default {
     rowBlockedHoursDesc_one: '{{count}} समय-खंड · {{list}}',
     rowBlockedHoursDesc_other: '{{count}} समय-खंड · {{list}}',
     rowAppBlocking: 'ऐप ब्लॉकिंग',
-    rowAppBlockingDesc:
-      'बच्चे के डिवाइस पर चुने गए {{apps}} ऐप · {{categories}} श्रेणियाँ',
+    rowAppBlockingApps: '{{count}} ऐप्स',
+    rowAppBlockingApps_one: '{{count}} ऐप',
+    rowAppBlockingCategories: '{{count}} श्रेणियाँ',
+    rowAppBlockingCategories_one: '{{count}} श्रेणी',
+    rowAppBlockingDesc: '{{apps}} · {{categories}}',
     rowWebFilter: 'वेब फ़िल्टर',
     rowWebFilterDesc_one: '{{count}} श्रेणी रोकी गई',
     rowWebFilterDesc_other: '{{count}} श्रेणियाँ रोकी गईं',

@@ -519,8 +519,11 @@ export default {
     rowBlockedHoursDesc_one: '{{count}} time range · {{list}}',
     rowBlockedHoursDesc_other: '{{count}} time ranges · {{list}}',
     rowAppBlocking: 'App Blocking',
-    rowAppBlockingDesc:
-      '{{apps}} apps · {{categories}} categories selected on the child device',
+    rowAppBlockingApps: '{{count}} apps',
+    rowAppBlockingApps_one: '{{count}} app',
+    rowAppBlockingCategories: '{{count}} categories',
+    rowAppBlockingCategories_one: '{{count}} category',
+    rowAppBlockingDesc: '{{apps}} · {{categories}}',
     rowWebFilter: 'Web Filter',
     rowWebFilterDesc_one: '{{count}} category refused',
     rowWebFilterDesc_other: '{{count}} categories refused',

@@ -1059,9 +1059,13 @@ function ControlsTab({ device, rewardTasks, readOnly }) {
     {
       key: 'appBlocking',
       title: t('dash.rowAppBlocking'),
+      // Two independent counts, and the plural engine inflects on a single
+      // `count` — so each half is pluralised on its own and then joined.
       desc: t('dash.rowAppBlockingDesc', {
-        apps: c.blockedAppCount,
-        categories: c.blockedCategoryCount,
+        apps: t('dash.rowAppBlockingApps', { count: c.blockedAppCount }),
+        categories: t('dash.rowAppBlockingCategories', {
+          count: c.blockedCategoryCount,
+        }),
       }),
     },
     {

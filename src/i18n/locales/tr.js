@@ -508,8 +508,11 @@ export default {
     rowBlockedHoursDesc_one: '{{count}} zaman aralığı · {{list}}',
     rowBlockedHoursDesc_other: '{{count}} zaman aralığı · {{list}}',
     rowAppBlocking: 'Uygulama engelleme',
-    rowAppBlockingDesc:
-      'Çocuk cihazında seçilen {{apps}} uygulama · {{categories}} kategori',
+    rowAppBlockingApps: '{{count}} uygulama',
+    rowAppBlockingApps_one: '{{count}} uygulama',
+    rowAppBlockingCategories: '{{count}} kategori',
+    rowAppBlockingCategories_one: '{{count}} kategori',
+    rowAppBlockingDesc: '{{apps}} · {{categories}}',
     rowWebFilter: 'Web filtresi',
     rowWebFilterDesc_one: '{{count}} kategori reddedildi',
     rowWebFilterDesc_other: '{{count}} kategori reddedildi',

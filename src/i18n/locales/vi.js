@@ -517,8 +517,9 @@ export default {
     rowBlockedHours: 'Giờ khóa thiết bị',
     rowBlockedHoursDesc: '{{count}} khung giờ · {{list}}',
     rowAppBlocking: 'Chặn ứng dụng',
-    rowAppBlockingDesc:
-      '{{apps}} ứng dụng · {{categories}} danh mục được chọn trên thiết bị của con',
+    rowAppBlockingApps: '{{count}} ứng dụng',
+    rowAppBlockingCategories: '{{count}} danh mục',
+    rowAppBlockingDesc: '{{apps}} · {{categories}}',
     rowWebFilter: 'Chặn nội dung web',
     rowWebFilterDesc: 'Đã chặn {{count}} danh mục',
     rowLocation: 'Chia sẻ vị trí',

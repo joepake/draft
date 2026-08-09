@@ -508,8 +508,11 @@ export default {
     rowBlockedHoursDesc_one: '{{count}} plage horaire · {{list}}',
     rowBlockedHoursDesc_other: '{{count}} plages horaires · {{list}}',
     rowAppBlocking: "Blocage d'applis",
-    rowAppBlockingDesc:
-      "{{apps}} applis · {{categories}} catégories sélectionnées sur l'appareil de l'enfant",
+    rowAppBlockingApps: '{{count}} applications',
+    rowAppBlockingApps_one: '{{count}} application',
+    rowAppBlockingCategories: '{{count}} catégories',
+    rowAppBlockingCategories_one: '{{count}} catégorie',
+    rowAppBlockingDesc: '{{apps}} · {{categories}}',
     rowWebFilter: 'Filtre web',
     rowWebFilterDesc_one: '{{count}} catégorie refusée',
     rowWebFilterDesc_other: '{{count}} catégories refusées',
