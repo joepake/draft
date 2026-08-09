@@ -272,9 +272,9 @@ export default {
   },
 
   viz: {
-    hours: '{{count}} घं',
-    minutes: '{{count}} मि',
-    hoursMinutes: '{{hours}} घं {{minutes}} मि',
+    hours: '{{count}}घं',
+    minutes: '{{count}}मि',
+    hoursMinutes: '{{hours}}घं {{minutes}}मि',
     none: '—',
     byDay: 'दिन के हिसाब से स्क्रीन टाइम',
     limit: 'सीमा {{value}}',
@@ -298,27 +298,27 @@ export default {
 
   perm: {
     screenTime: 'स्क्रीन टाइम',
-    location: 'लोकेशन',
+    location: 'स्थान',
     notifications: 'सूचनाएँ',
     camera: 'कैमरा',
     backgroundAppRefresh: 'बैकग्राउंड ऐप रिफ़्रेश',
-    overlay: 'दूसरे ऐप के ऊपर दिखाएँ',
-    batteryOptimization: 'बिना पाबंदी बैटरी',
+    overlay: 'अन्य ऐप्स के ऊपर दिखाएँ',
+    batteryOptimization: 'बिना प्रतिबंध बैटरी',
     exactAlarm: 'सटीक अलार्म',
-    accessibility: 'सुगम्यता',
+    accessibility: 'एक्सेसिबिलिटी',
   },
 
   webCat: {
-    adult: 'वयस्क',
+    adult: 'वयस्क सामग्री',
     gambling: 'जुआ',
     dating: 'डेटिंग',
-    drugs: 'नशीले पदार्थ',
-    violence: 'हिंसा',
+    drugs: 'नशा और शराब',
+    violence: 'हिंसा और उग्रवाद',
     piracy: 'पायरेसी',
-    social: 'सोशल',
-    videoStreaming: 'वीडियो',
-    gaming: 'गेमिंग',
-    shopping: 'शॉपिंग',
+    social: 'सोशल नेटवर्क',
+    videoStreaming: 'वीडियो स्ट्रीमिंग',
+    gaming: 'गेम',
+    shopping: 'खरीदारी',
   },
 
   dash: {

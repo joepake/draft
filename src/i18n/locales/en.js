@@ -86,13 +86,13 @@ export default {
       'KidGate gives parents calm, clear control over screen time, apps and safety — while kids keep a phone that still feels like theirs.',
     heroCheck1: 'Screen Time',
     heroCheck2: 'App Blocking',
-    heroCheck3: 'Web Filtering',
+    heroCheck3: 'Web Filter',
     heroCheck4: 'Location',
     heroCheck5: 'Family Dashboard',
 
-    phoneDailyLimit: 'Daily limit',
+    phoneDailyLimit: 'Daily Limit',
     phoneDailyLimitValue: '1h 24m of 3h used',
-    phoneBlockedHours: 'Blocked hours',
+    phoneBlockedHours: 'Blocked Hours',
     phoneScheduleOn: 'Schedule on',
     phoneLocation: 'Location',
     phoneLocationValue: 'At school · 5 min ago',
@@ -111,7 +111,7 @@ export default {
     featuresTitle: 'Everything a parent needs',
     featuresSub:
       "From daily limits to emergency alerts — one app for the whole family's digital wellbeing.",
-    feature1Title: 'Screen time & daily limits',
+    feature1Title: 'Screen Time & Daily Limits',
     feature1Text:
       'Set a daily cap and Blocked Hours for school and bedtime. The device locks itself when time is up.',
     feature2Title: 'App blocking',
@@ -120,7 +120,7 @@ export default {
     feature3Title: 'Per-app time limits',
     feature3Text:
       'Cap each app on its own, on top of the daily limit — “half an hour of TikTok” without banning it outright.',
-    feature4Title: 'Web filtering & history',
+    feature4Title: 'Web Filter & history',
     feature4Text:
       'Refuse adult and gambling sites, then see which sites the phone actually looked up and which ones were stopped.',
     feature5Title: 'Live location & places',
@@ -142,8 +142,8 @@ export default {
     showcaseEyebrow: 'Parent dashboard',
     showcaseTitle: 'The whole family, on one screen',
     showcaseSub:
-      'Screen time, blocked attempts, location and anything that needs your attention — on your phone, or in any browser.',
-    showcaseTile1: 'Screen time today',
+      'Screen Time, blocked attempts, location and anything that needs your attention — on your phone, or in any browser.',
+    showcaseTile1: 'Screen Time today',
     showcaseTile2: 'Blocked attempts',
     showcaseTile3: 'Needs attention',
     showcaseCaption1: 'Read reports from any browser',
@@ -288,9 +288,9 @@ export default {
     minutes: '{{count}}m',
     hoursMinutes: '{{hours}}h {{minutes}}m',
     none: '—',
-    byDay: 'Screen time by day',
+    byDay: 'Screen Time by day',
     limit: 'Limit {{value}}',
-    screenTime: 'Screen time',
+    screenTime: 'Screen Time',
     bonus: 'Bonus',
     bonusEarned: 'Bonus earned',
     overLimit: 'Over the Daily Limit',
@@ -321,15 +321,15 @@ export default {
   },
 
   webCat: {
-    adult: 'Adult',
+    adult: 'Adult content',
     gambling: 'Gambling',
     dating: 'Dating',
-    drugs: 'Drugs',
-    violence: 'Violence',
+    drugs: 'Drugs & alcohol',
+    violence: 'Violence & extremism',
     piracy: 'Piracy',
-    social: 'Social',
-    videoStreaming: 'Video',
-    gaming: 'Gaming',
+    social: 'Social networks',
+    videoStreaming: 'Video streaming',
+    gaming: 'Games',
     shopping: 'Shopping',
   },
 
@@ -383,7 +383,7 @@ export default {
     toastTimeApproved: 'Extra time approved.',
     toastCheckInResent: 'Check-In sent again.',
 
-    tileScreenToday: 'Screen time today',
+    tileScreenToday: 'Screen Time today',
     tileSameAsAverage: 'Same as the 7-day average',
     tileDeltaUp: '↑ {{percent}}% vs 7-day average',
     tileDeltaDown: '↓ {{percent}}% vs 7-day average',
@@ -397,7 +397,7 @@ export default {
     tileOpenItems: 'Open items below',
     tileAllClear: 'All clear',
 
-    cardScreenTime: 'Screen time',
+    cardScreenTime: 'Screen Time',
     cardScreenTimeSub: 'Last 14 days, against the Daily Limit',
     cardRecent: 'Recent activity',
     cardRecentSub: 'Newest first',
@@ -436,7 +436,7 @@ export default {
     on: 'On',
     topAppsTitle: 'Top apps today',
     topAppsSub: 'Per-app caps shown as a marker',
-    trendTitle: 'Screen time trend',
+    trendTitle: 'Screen Time trend',
     trendSub: 'Last {{count}} days',
     rangeDays: '{{count}}d',
     blockedHoursTitle: 'Blocked Hours',
@@ -500,7 +500,7 @@ export default {
     checkInNoPhoto: 'no photo requested',
     sendCheckIn: 'Send a Check-In now',
 
-    protectionAlertsTitle: 'Protection alerts',
+    protectionAlertsTitle: 'Protection Alerts',
     protectionAlertsSub_one: '{{count}} event since install',
     protectionAlertsSub_other: '{{count}} events since install',
     protectionAlertsHint:
@@ -508,7 +508,7 @@ export default {
 
     limitCardTitle: 'Daily Limit',
     limitCardSub: 'Cap the minutes available each day',
-    limitAria: 'Daily limit minutes',
+    limitAria: 'Daily Limit minutes',
     limitScaleMin: '30m',
     limitScaleMax: '8h',
     limitHint:

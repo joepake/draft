@@ -276,9 +276,9 @@ export default {
   },
 
   viz: {
-    hours: '{{count}} ч',
-    minutes: '{{count}} мин',
-    hoursMinutes: '{{hours}} ч {{minutes}} мин',
+    hours: '{{count}}ч',
+    minutes: '{{count}}мин',
+    hoursMinutes: '{{hours}}ч {{minutes}}мин',
     none: '—',
     byDay: 'Экранное время по дням',
     limit: 'Лимит {{value}}',
@@ -302,10 +302,10 @@ export default {
 
   perm: {
     screenTime: 'Экранное время',
-    location: 'Геолокация',
+    location: 'Местоположение',
     notifications: 'Уведомления',
     camera: 'Камера',
-    backgroundAppRefresh: 'Фоновое обновление приложений',
+    backgroundAppRefresh: 'Обновление контента',
     overlay: 'Поверх других приложений',
     batteryOptimization: 'Батарея без ограничений',
     exactAlarm: 'Точные будильники',
@@ -313,14 +313,14 @@ export default {
   },
 
   webCat: {
-    adult: 'Для взрослых',
+    adult: 'Контент 18+',
     gambling: 'Азартные игры',
     dating: 'Знакомства',
-    drugs: 'Наркотики',
-    violence: 'Насилие',
+    drugs: 'Наркотики и алкоголь',
+    violence: 'Насилие и экстремизм',
     piracy: 'Пиратство',
     social: 'Соцсети',
-    videoStreaming: 'Видео',
+    videoStreaming: 'Видеостриминг',
     gaming: 'Игры',
     shopping: 'Покупки',
   },
