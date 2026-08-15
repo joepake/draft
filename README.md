@@ -32,4 +32,7 @@ git add -A && git commit -m "sync from monorepo"
 git push
 ```
 
-`yarn install` is what updates `yarn.lock`, the one file the sync leaves alone.
+`yarn install` is what updates `yarn.lock`, the one file the sync leaves alone,
+and **it has to be committed**. Without it Vercel finds no lockfile, falls back
+to Yarn 1.22, and fails on `workspace:*` — a protocol Yarn 1 does not implement
+— with an error that blames the npm registry.
