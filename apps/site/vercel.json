@@ -1,8 +1,8 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "vite",
-  "installCommand": "corepack enable && yarn install --immutable",
-  "buildCommand": "yarn workspace @kidgate/site build:prod",
+  "installCommand": "COREPACK_ENABLE_DOWNLOAD_PROMPT=0 corepack yarn install --immutable",
+  "buildCommand": "COREPACK_ENABLE_DOWNLOAD_PROMPT=0 corepack yarn workspace @kidgate/site build:prod",
   "outputDirectory": "dist",
   "rewrites": [
     {
