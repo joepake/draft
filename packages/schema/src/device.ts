@@ -1,7 +1,11 @@
 import type { DeviceControls, DeviceLocation } from './deviceControls';
 import type { DevicePlace } from './devicePlace';
 import type { ScreenTimeStatus } from './permissions';
-import type { DeviceFormFactor, DevicePlatform } from './capabilities';
+import type {
+  DeviceCapabilities,
+  DeviceFormFactor,
+  DevicePlatform,
+} from './capabilities';
 
 export type DeviceStatus = 'online' | 'offline' | 'locked';
 export type ProtectionPermissionStatus =
@@ -115,6 +119,17 @@ export interface Device {
   lastLocation?: DeviceLocation;
   places?: DevicePlace[];
   protectionStatus?: DeviceProtectionStatus;
+  /**
+   * The device's own capability probe — `ChildDeviceRecord.capabilities`, as a
+   * parent screen reads it.
+   *
+   * Absent means the device publishes no probe, **never** that it cannot do the
+   * thing being asked about: only the desktop agent and `apps/tv` write one, and
+   * a phone reports permission statuses in `protectionStatus` instead. Anything
+   * gating a screen on one field of this needs its own answer for the platforms
+   * that stay silent — `domain/webFilterSupport` is that shape.
+   */
+  capabilities?: DeviceCapabilities;
   parentPinFailedAttempts?: number;
   parentPinLocked?: boolean;
   /** Deduped web-filter blocked visits since install (Android child only). */

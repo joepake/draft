@@ -10,6 +10,7 @@ export default {
   },
 
   common: {
+    comingSoon: 'Скоро',
     loading: 'Загрузка…',
     signOut: 'Выйти',
   },
@@ -564,6 +565,7 @@ export default {
     rowWebFilterDesc_few: 'отклонено {{count}} категории',
     rowWebFilterDesc_many: 'отклонено {{count}} категорий',
     rowWebFilterDesc_other: 'отклонено {{count}} категорий',
+    rowNotSupported: 'Не поддерживается на этом устройстве',
     rowLocation: 'Передача местоположения',
     rowLocationDesc: 'Последнее обновление {{when}}',
     rowLocationNone: 'Местоположения пока нет',

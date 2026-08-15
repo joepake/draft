@@ -28,6 +28,7 @@ export default {
   },
 
   common: {
+    comingSoon: 'Sắp ra mắt',
     loading: 'Đang tải…',
     signOut: 'Đăng xuất',
   },
@@ -546,6 +547,7 @@ export default {
     rowAppBlockingDesc: '{{apps}} · {{categories}}',
     rowWebFilter: 'Chặn nội dung web',
     rowWebFilterDesc: 'Đã chặn {{count}} danh mục',
+    rowNotSupported: 'Thiết bị này không hỗ trợ',
     rowLocation: 'Chia sẻ vị trí',
     rowLocationDesc: 'Cập nhật lần cuối {{when}}',
     rowLocationNone: 'Chưa có vị trí',

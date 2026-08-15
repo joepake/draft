@@ -21,8 +21,8 @@ import { isRtlLanguage } from '@kidgate/i18n/web/languages';
  * too — `[web dashboard](/dashboard)` in the locale packs was resolving to a
  * route this app does not have.
  */
-import { DASHBOARD_URL } from './lib/dashboardUrl.js';
-import { IS_EMBEDDED } from './lib/embed.js';
+import { DASHBOARD_AVAILABLE, DASHBOARD_URL } from './lib/dashboardUrl.js';
+import { EMBED_INSET_TOP, IS_EMBEDDED } from './lib/embed.js';
 import '@kidgate/web-ui/dashboard.css';
 
 /**
@@ -86,9 +86,28 @@ function SiteHeader() {
           button is the way back to a dashboard they are already signed in to,
           and the label was describing a form rather than a destination.
         */}
-        <a href={DASHBOARD_URL} className="nav-cta">
-          {t('nav.dashboard')}
-        </a>
+        {/*
+          Not live yet, so it is a label rather than a control — see
+          `DASHBOARD_AVAILABLE`. It keeps the header's last slot instead of
+          disappearing: the button is the only thing on this page that names
+          the dashboard as a product a parent will get, and on a phone it is
+          the only nav item left standing (`.nav a:not(.nav-cta)` is hidden
+          under 600px). A span is not an `a`, so that rule does not reach it.
+
+          "Coming soon" is a second element rather than a longer string: the
+          two are already translated separately, and joining them would be a
+          fifteenth wording to keep in step across fourteen packs.
+        */}
+        {DASHBOARD_AVAILABLE ? (
+          <a href={DASHBOARD_URL} className="nav-cta">
+            {t('nav.dashboard')}
+          </a>
+        ) : (
+          <span className="nav-soon">
+            {t('nav.dashboard')}
+            <em>{t('common.comingSoon')}</em>
+          </span>
+        )}
       </nav>
     </header>
   );
@@ -117,7 +136,14 @@ function SiteFooter() {
               <Link to="/about">{t('footer.about')}</Link>
             </li>
             <li>
-              <a href={DASHBOARD_URL}>{t('footer.dashboard')}</a>
+              {DASHBOARD_AVAILABLE ? (
+                <a href={DASHBOARD_URL}>{t('footer.dashboard')}</a>
+              ) : (
+                <span className="footer-soon">
+                  {t('footer.dashboard')}
+                  <em>{t('common.comingSoon')}</em>
+                </span>
+              )}
             </li>
             <li>
               <Link to="/#download">{t('footer.download')}</Link>
@@ -185,7 +211,7 @@ export default function App() {
    */
   if (IS_EMBEDDED) {
     return (
-      <div className="app app--embed">
+      <div className={EMBED_INSET_TOP ? 'app app--embed app--inset' : 'app app--embed'}>
         <main className="main" id="main">
           <SiteRoutes />
         </main>

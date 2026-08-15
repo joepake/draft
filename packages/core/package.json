@@ -35,6 +35,7 @@
     "./domain/usageReportGate": "./src/domain/usageReportGate.ts",
     "./domain/usageTimeline": "./src/domain/usageTimeline.ts",
     "./domain/webDomain": "./src/domain/webDomain.ts",
+    "./domain/webFilterSupport": "./src/domain/webFilterSupport.ts",
     "./domain/webSignInQr": "./src/domain/webSignInQr.ts",
     "./repositories/timeRequest": "./src/repositories/timeRequest.ts",
     "./domain/apiFailure": "./src/domain/apiFailure.ts",

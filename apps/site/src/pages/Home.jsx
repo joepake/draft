@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import Icon from '@kidgate/web-ui/Icon';
 import { useT } from '@kidgate/web-ui/useT';
 import { trackDownloadClick } from '../lib/analytics.js';
-import { STORE_LINKS } from '../lib/storeLinks.js';
+import { isPlatformAvailable, storeHref } from '../lib/storeLinks.js';
 import { useReveal } from '../lib/useReveal.js';
 
 function AppleMark() {
@@ -43,31 +43,60 @@ function PlayMark() {
  * `STORE_LINKS` holds the real destinations; see `lib/storeLinks.js`.
  *
  * **`href` overrides where the button goes, and the desktop pair needs it.**
- * `STORE_LINKS.macos` is the `.zip` itself, and a button that starts a download
- * of an unsigned build with no Gatekeeper warning beside it is the exact
- * failure `#download` is arranged to prevent. So up here the two desktop
+ * `STORE_LINKS.macos.url` is the `.zip` itself, and a button that starts a
+ * download of an unsigned build with no Gatekeeper warning beside it is the
+ * exact failure `#download` is arranged to prevent. So up here the two desktop
  * buttons point at `#download` — the section where the file and its warning sit
  * together — and the store buttons, which have no such warning to carry, point
  * straight at their listing.
  *
+ * **An unshipped platform renders as a `<span>`, not a dimmed link.** Nothing
+ * is published on any of the four yet (`available: false`, see
+ * `lib/storeLinks.js`), and the override does not rescue the desktop pair from
+ * that: `#download` is a real anchor, but sending a parent down to a card whose
+ * button is also "coming soon" is a click that answers nothing. So the flag
+ * wins over `href` for all four, and the ground swaps to the muted
+ * `.store-btn--soon` — a button that keeps a filled, primary-action look while
+ * doing nothing reads as broken.
+ *
+ * The vendor mark and the platform name stay; only the small line above them
+ * becomes "coming soon", so the row still says which four platforms are meant
+ * and the reader is not left matching an unlabelled logo to a promise.
+ *
  * `aria` is optional: a platform with no `store.*Aria` key composes its
  * accessible name from the label and the platform, which is what the desktop
- * pair wants anyway ("Download — macOS").
+ * pair wants anyway ("Download — macOS"). The `<span>` carries no `aria-label`
+ * at all — it is not a control, and a label on a non-interactive element is
+ * announced inconsistently; its visible text already reads as a sentence.
  */
 function StoreButton({ platform, mark, aria, small, name, href: hrefOverride }) {
   const { t } = useT();
+  const available = isPlatformAvailable(platform);
+
+  const label = (
+    <span>
+      <small>{available ? t(small) : t('common.comingSoon')}</small>
+      <strong>{t(name)}</strong>
+    </span>
+  );
+
+  if (!available) {
+    return (
+      <span className="store-btn store-btn--soon">
+        {mark}
+        {label}
+      </span>
+    );
+  }
 
   return (
     <a
       className="store-btn"
-      href={hrefOverride ?? STORE_LINKS[platform]}
+      href={hrefOverride ?? storeHref(platform)}
       aria-label={aria ? t(aria) : `${t(small)} ${t(name)}`}
     >
       {mark}
-      <span>
-        <small>{t(small)}</small>
-        <strong>{t(name)}</strong>
-      </span>
+      {label}
     </a>
   );
 }
@@ -168,6 +197,7 @@ const FEATURES = [
  */
 function DesktopCard({ platform, icon }) {
   const { t } = useT();
+  const href = storeHref(platform);
 
   return (
     <article className="why-item reveal">
@@ -175,24 +205,45 @@ function DesktopCard({ platform, icon }) {
         <Icon name={icon} />
       </span>
       <div>
+        {/*
+          The pill takes the button's place while the build is not uploaded —
+          the same shape the Android TV card beside these two already uses, so
+          three unshipped platforms state it one way. `.card-soon` sits above
+          the heading everywhere else; here it replaces an action below the
+          requirement line, which is where a reader looking for the button
+          looks.
+        */}
         <h3>{t(`download.${platform}Title`)}</h3>
         <p>{t(`download.${platform}Requires`)}</p>
-        <a
-          className="store-btn store-btn--solid"
-          href={STORE_LINKS[platform]}
-          /*
-           * Counted on the click rather than on the navigation. The link may
-           * open a download that never finishes, and what this measures is
-           * intent to install — `agent_started` from the agent is the other
-           * end of that funnel.
-           */
-          onClick={() => trackDownloadClick(platform)}
-        >
-          <Icon name="arrowRight" />
-          <span>
-            <strong>{t('download.button')}</strong>
-          </span>
-        </a>
+        {href ? (
+          <a
+            className="store-btn store-btn--solid"
+            href={href}
+            /*
+             * Counted on the click rather than on the navigation. The link may
+             * open a download that never finishes, and what this measures is
+             * intent to install — `agent_started` from the agent is the other
+             * end of that funnel.
+             */
+            onClick={() => trackDownloadClick(platform)}
+          >
+            <Icon name="arrowRight" />
+            <span>
+              <strong>{t('download.button')}</strong>
+            </span>
+          </a>
+        ) : (
+          <p className="download-soon">
+            <span className="card-soon">{t('common.comingSoon')}</span>
+          </p>
+        )}
+        {/*
+          The install steps stay while the button is gone. They describe what
+          this platform does on a first launch of an unsigned build, which is
+          true of the release before it is downloadable — and a parent reading
+          ahead is exactly who this section is for. They come back beside a
+          working button on the day the flag flips, with nothing else to edit.
+        */}
         <p className="download-note">{t(`download.${platform}Steps`)}</p>
       </div>
     </article>

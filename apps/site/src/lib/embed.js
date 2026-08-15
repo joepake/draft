@@ -31,12 +31,28 @@
  * first time the reader followed an internal link. Same reason `?hl=` is
  * captured once in `@kidgate/i18n/web`.
  */
-function readEmbedFlag() {
+function readFlag(name) {
   try {
-    return new URLSearchParams(window.location.search).get('embed') === '1';
+    return new URLSearchParams(window.location.search).get(name) === '1';
   } catch {
     return false;
   }
 }
 
-export const IS_EMBEDDED = readEmbedFlag();
+export const IS_EMBEDDED = readFlag('embed');
+
+/**
+ * `?inset=1` — the embedding app floats a control over the page's top-left
+ * corner and asks the page to keep it clear.
+ *
+ * The desktop agent's back chip is that control: it overlays the frame rather
+ * than sitting in a bar above it, so without the inset it lands on the `h1`.
+ * The padding is the page's rather than the frame's because in-page padding
+ * scrolls away with the heading — the chip floats over *content* once the
+ * reader is past the top, which is the point of an overlay. The phone draws a
+ * real header above its WebView and never sends this.
+ *
+ * Meaningless without `embed=1`: the site's own header already clears every
+ * corner. `App.jsx` only reads it on the embed branch.
+ */
+export const EMBED_INSET_TOP = readFlag('inset');

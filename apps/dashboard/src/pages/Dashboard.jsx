@@ -11,6 +11,7 @@ import BrandLogo from '@kidgate/web-ui/BrandLogo';
 import Icon, { platformIcon } from '@kidgate/web-ui/Icon';
 import { readDeviceBattery } from '@kidgate/core/domain/battery';
 import { resolveTaskStars } from '@kidgate/core/domain/rewardTasks';
+import { supportsWebFiltering } from '@kidgate/core/domain/webFilterSupport';
 import {
   AppBars,
   formatMinutes,
@@ -236,12 +237,21 @@ export default function Dashboard({
   const canWrite = actions?.canWrite ?? false;
   const live = Boolean(actions);
 
+  /**
+   * Run a parent write, and say whether it landed.
+   *
+   * The boolean is for callers that showed the change before the server agreed
+   * — the control switches — and have to put it back when it did not. Every
+   * other call site ignores it, and the toast is still the only place a failure
+   * is explained.
+   */
   async function run(key, fn, okMessage) {
     setBusy(key);
     setToast(null);
     try {
       await fn();
       if (okMessage) setToast({ tone: 'good', text: okMessage });
+      return true;
     } catch (e) {
       // Failures raised in the browser carry a key we own; anything relayed
       // from the Cloud Function arrives as server text and is shown as-is.
@@ -249,6 +259,7 @@ export default function Dashboard({
         tone: 'critical',
         text: e.messageKey ? t(e.messageKey) : e.message,
       });
+      return false;
     } finally {
       setBusy(null);
     }
@@ -1193,6 +1204,9 @@ export default function Dashboard({
             rewardTasks={rewardTasks}
             leaderboard={leaderboard}
             readOnly={live && !canWrite}
+            actions={actions}
+            run={run}
+            busy={busy}
           />
         )}
       </main>
@@ -1258,16 +1272,151 @@ function StarChartCard({ leaderboard }) {
   );
 }
 
-function ControlsTab({ device, rewardTasks, leaderboard, readOnly }) {
+/**
+ * Which field of the device document each switch owns.
+ *
+ * Every one is a `PARENT_CONTROL_KEYS` entry, so the write goes through
+ * `/updateDeviceControls` and needs a session the phone approved —
+ * `firestore.rules` refuses these fields to a browser writing directly, and
+ * that is the whole reason `readOnly` exists rather than being a nicety.
+ */
+const CONTROL_FIELDS = {
+  schedule: 'scheduleEnabled',
+  appBlocking: 'appBlockingEnabled',
+  webFilter: 'webFilterEnabled',
+  location: 'locationSharingEnabled',
+};
+
+/** Where the slider sits for a family that has no daily limit set. */
+const DEFAULT_LIMIT_MINUTES = 180;
+
+function ControlsTab({
+  device,
+  rewardTasks,
+  leaderboard,
+  readOnly,
+  actions,
+  run,
+  busy,
+}) {
   const { t } = useT();
   const c = device.controls;
+  const live = Boolean(actions);
   const [state, setState] = useState({
     appBlocking: c.appBlockingEnabled,
     webFilter: c.webFilterEnabled,
     location: c.locationSharingEnabled,
     schedule: c.scheduleEnabled,
   });
-  const set = k => v => setState(s => ({ ...s, [k]: v }));
+
+  /*
+   * The document is the truth; this state is only what the parent sees while a
+   * write is in the air. Re-synced whenever the device document changes, so a
+   * rule the other parent flips on their phone moves this switch too — and so
+   * the optimistic value below is corrected by the listener rather than
+   * outliving it. Same effect `WebFilterScreen` runs on the phone.
+   */
+  useEffect(() => {
+    setState({
+      appBlocking: c.appBlockingEnabled,
+      webFilter: c.webFilterEnabled,
+      location: c.locationSharingEnabled,
+      schedule: c.scheduleEnabled,
+    });
+  }, [
+    c.appBlockingEnabled,
+    c.webFilterEnabled,
+    c.locationSharingEnabled,
+    c.scheduleEnabled,
+  ]);
+
+  /**
+   * Move the switch, then write it, then put it back if the write failed.
+   *
+   * Optimistic because the write is a Cloud Function round trip and a switch
+   * that does not move until it returns reads as a broken control. Rolled back
+   * explicitly because the alternative — leaving it where the parent put it —
+   * is a dashboard showing a protection the device was never told about.
+   *
+   * With no `actions` there is no data layer behind this rendering at all, and
+   * the switch stays a local one.
+   */
+  const set = key => async next => {
+    setState(s => ({ ...s, [key]: next }));
+    if (!live || readOnly) {
+      return;
+    }
+    const ok = await run(`ctrl-${key}`, () =>
+      actions.updateControls(device.id, { [CONTROL_FIELDS[key]]: next }),
+    );
+    if (!ok) {
+      // Back to what the document says rather than to `!next`: the two agree
+      // for a plain switch, and only one of them is still right if the
+      // listener delivered someone else's change while this was in flight.
+      setState(s => ({ ...s, [key]: c[CONTROL_FIELDS[key]] }));
+    }
+  };
+
+  /**
+   * The minutes the parent is dragging towards, or null when the slider is
+   * showing the device's own number.
+   *
+   * Null rather than a copy of the document value, because "no limit set" is a
+   * real state the slider cannot sit on — it has no zero — and a draft that
+   * started as `180` would make an untouched slider claim a three-hour limit
+   * this family never set.
+   */
+  const [limitDraft, setLimitDraft] = useState(null);
+  const limitShown = limitDraft ?? c.dailyLimitMinutes;
+  const limitValue = limitDraft ?? c.dailyLimitMinutes ?? DEFAULT_LIMIT_MINUTES;
+
+  // Cleared by the listener catching up, not by the write returning: dropping
+  // the draft the moment the Cloud Function answered would show the old number
+  // again for however long the snapshot takes to arrive.
+  useEffect(() => {
+    setLimitDraft(draft => (draft === c.dailyLimitMinutes ? null : draft));
+  }, [c.dailyLimitMinutes]);
+
+  // A different device is a different set of rules. A draft that outlived the
+  // switch would put one child's minutes on another child's slider — and this
+  // component is not remounted when the selection changes.
+  useEffect(() => {
+    setLimitDraft(null);
+  }, [device.id]);
+
+  /**
+   * Written when the drag ends, never during it.
+   *
+   * `onChange` on a range input fires per pixel of travel, and each one here
+   * would be a Cloud Function call — plus a burst of `parent_control` rows in
+   * GA describing one decision. `onKeyUp` is the same commit for a parent
+   * moving it with the arrow keys, where each press is already a whole step.
+   */
+  const commitLimit = async () => {
+    if (!live || readOnly || limitDraft === null) {
+      return;
+    }
+    if (limitDraft === c.dailyLimitMinutes) {
+      setLimitDraft(null);
+      return;
+    }
+    const ok = await run('ctrl-limit', () =>
+      actions.updateControls(device.id, { dailyLimitMinutes: limitDraft }),
+    );
+    if (!ok) {
+      setLimitDraft(null);
+    }
+  };
+
+  /*
+   * The device's own answer, not this platform's reputation — the rule and its
+   * fallback live in `@kidgate/core/domain/webFilterSupport`, shared with the
+   * phone's device-detail cards so the two surfaces cannot disagree about the
+   * same Mac. A device that filters nothing gets the row and the reason, never
+   * a switch: an operable toggle over an agent with no filter is a parent
+   * turning on a protection that was never going to run.
+   */
+  const canWebFilter = supportsWebFiltering(device);
 
   const rows = [
     {
@@ -1293,7 +1442,10 @@ function ControlsTab({ device, rewardTasks, leaderboard, readOnly }) {
     {
       key: 'webFilter',
       title: t('dash.rowWebFilter'),
-      desc: t('dash.rowWebFilterDesc', { count: c.webFilterCategories.length }),
+      desc: canWebFilter
+        ? t('dash.rowWebFilterDesc', { count: c.webFilterCategories.length })
+        : t('dash.rowNotSupported'),
+      unsupported: !canWebFilter,
     },
     {
       key: 'location',
@@ -1311,16 +1463,25 @@ function ControlsTab({ device, rewardTasks, leaderboard, readOnly }) {
       <div className="grid-2">
         <Card title={t('dash.limitCardTitle')} subtitle={t('dash.limitCardSub')}>
           <div className="limit-edit">
-            <strong>
-              {c.dailyLimitMinutes ? formatMinutes(c.dailyLimitMinutes) : t('dash.off')}
-            </strong>
+            <strong>{limitShown ? formatMinutes(limitShown) : t('dash.off')}</strong>
             <input
               type="range"
               min="30"
               max="480"
               step="15"
-              defaultValue={c.dailyLimitMinutes ?? 180}
+              value={limitValue}
+              onChange={e => setLimitDraft(Number(e.target.value))}
+              onPointerUp={commitLimit}
+              onKeyUp={commitLimit}
               aria-label={t('dash.limitAria')}
+              /*
+               * Not disabled while its own write is in flight, unlike the
+               * switches. A disabled input loses focus, so a parent stepping
+               * this with the arrow keys — one write per press — would have the
+               * slider taken out from under them mid-adjustment. A second write
+               * landing on top of the first is the same parent's later
+               * intention, which is the right answer anyway.
+               */
               disabled={readOnly}
             />
             <div className="limit-scale">
@@ -1334,17 +1495,27 @@ function ControlsTab({ device, rewardTasks, leaderboard, readOnly }) {
         <Card title={t('dash.whatsOnTitle')} subtitle={t('dash.whatsOnSub')}>
           <ul className="ctrl-rows">
             {rows.map(r => (
-              <li key={r.key}>
+              <li key={r.key} className={r.unsupported ? 'is-unsupported' : undefined}>
                 <span className="ctrl-body">
                   <strong>{r.title}</strong>
                   <em>{r.desc}</em>
                 </span>
-                <Toggle
-                  on={state[r.key]}
-                  onChange={set(r.key)}
-                  label={r.title}
-                  disabled={readOnly}
-                />
+                {/*
+                 * The row stays and the switch goes. Hiding the row entirely
+                 * would leave a parent comparing two devices unable to tell a
+                 * rule that is off from one the device cannot hold.
+                 */}
+                {!r.unsupported && (
+                  <Toggle
+                    on={state[r.key]}
+                    onChange={set(r.key)}
+                    label={r.title}
+                    // Its own write, not any write: a parent may flip Location
+                    // while Blocked hours is still saving, and the two are
+                    // independent fields on the same document.
+                    disabled={readOnly || busy === `ctrl-${r.key}`}
+                  />
+                )}
               </li>
             ))}
           </ul>
@@ -1356,18 +1527,29 @@ function ControlsTab({ device, rewardTasks, leaderboard, readOnly }) {
           title={t('dash.webFilterCatsTitle')}
           subtitle={t('dash.webFilterCatsSub')}
         >
-          <ul className="chips chips-toggle">
-            {WEB_CATEGORY_KEYS.map(key => {
-              const on = c.webFilterCategories.includes(key);
-              return (
-                <li key={key} className={on ? 'is-on' : ''}>
-                  {on && <Icon name="check" size={13} />}
-                  {webCategoryLabel(t, key)}
-                </li>
-              );
-            })}
-          </ul>
-          <p className="hint">{t('dash.dnsHint')}</p>
+          {/*
+           * Follows the row above. A category list on a device with no filter
+           * describes a policy nothing reads — and the DNS hint under it would
+           * be telling a parent how an enforcement they do not have behaves.
+           */}
+          {canWebFilter ? (
+            <>
+              <ul className="chips chips-toggle">
+                {WEB_CATEGORY_KEYS.map(key => {
+                  const on = c.webFilterCategories.includes(key);
+                  return (
+                    <li key={key} className={on ? 'is-on' : ''}>
+                      {on && <Icon name="check" size={13} />}
+                      {webCategoryLabel(t, key)}
+                    </li>
+                  );
+                })}
+              </ul>
+              <p className="hint">{t('dash.dnsHint')}</p>
+            </>
+          ) : (
+            <p className="hint">{t('dash.rowNotSupported')}</p>
+          )}
         </Card>
 
         <StarChartCard leaderboard={leaderboard} />

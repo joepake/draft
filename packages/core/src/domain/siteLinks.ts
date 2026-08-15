@@ -59,6 +59,18 @@ export interface SiteUrlOptions {
    * reader at the moment they are deciding whether to agree.
    */
   embed?: boolean;
+  /**
+   * Ask the embedded page to keep its top-left corner clear.
+   *
+   * `apps/desktop` floats its back chip *over* the frame rather than in a bar
+   * above it, and without this the chip sits on the page's own `h1`. The
+   * inset is the page's to add, not the frame's: padding on the frame side
+   * would push the whole document down and give the points back that the
+   * overlay exists to win, where in-page padding scrolls away with the
+   * heading. `apps/mobile` draws a real header above its WebView and must not
+   * pass this — the flag exists so one embed mode can serve both shapes.
+   */
+  insetTop?: boolean;
 }
 
 function buildUrl(
@@ -76,7 +88,9 @@ function buildUrl(
    * because it is what Google's own properties use for exactly this, so a
    * store listing can be pointed at these URLs without a second convention.
    */
-  const query = `hl=${encodeURIComponent(language)}${options.embed ? '&embed=1' : ''}`;
+  const query = `hl=${encodeURIComponent(language)}${options.embed ? '&embed=1' : ''}${
+    options.insetTop ? '&inset=1' : ''
+  }`;
   return `${origin}${path}?${query}`;
 }
 

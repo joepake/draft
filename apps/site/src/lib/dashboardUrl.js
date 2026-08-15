@@ -26,13 +26,34 @@
 export const DASHBOARD_URL =
   import.meta.env.VITE_DASHBOARD_URL ?? 'https://dashboard.kidgate.app';
 
+/**
+ * Whether `dashboard.kidgate.app` is serving yet.
+ *
+ * It is not, so every link to it on this site renders as "coming soon" — the
+ * same switch the four platforms have in `lib/storeLinks.js`, for the same
+ * reason: a header button that leads to a host with nothing behind it reads as
+ * a broken site rather than an unshipped one. Three places follow this flag —
+ * the header CTA, the footer's Product column, and the `[…](/dashboard)` link
+ * inside the Support copy.
+ *
+ * Deliberately a constant here rather than a `VITE_` variable: it is a fact
+ * about the product, not about the environment. A dev build pointing at
+ * `localhost:5173` still must not tell a reader the dashboard has shipped.
+ */
+export const DASHBOARD_AVAILABLE = false;
+
 /** The path the locale packs use for the dashboard. Not a route on this site. */
 const DASHBOARD_PATH = '/dashboard';
 
 /**
  * Turn `/dashboard` in translated copy into the real cross-app URL, and leave
  * every other path alone so `[…](/delete-account)` stays a router link.
+ *
+ * While `DASHBOARD_AVAILABLE` is false it answers `null`, and `RichText`
+ * renders the label as plain text — the sentence still reads, without a link
+ * to a host that answers nothing.
  */
 export function resolveDashboardHref(href) {
-  return href === DASHBOARD_PATH ? DASHBOARD_URL : href;
+  if (href !== DASHBOARD_PATH) return href;
+  return DASHBOARD_AVAILABLE ? DASHBOARD_URL : null;
 }

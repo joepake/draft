@@ -1125,6 +1125,14 @@
   margin-top: 0.12rem;
 }
 
+/* A control this device cannot hold: the reason takes the warning tone rather
+   than the muted one the other rows use for their status line. Muted would read
+   as a rule that is simply off, which is the distinction the row exists to
+   draw — the same amber register `apps/desktop`'s Status screen uses for it. */
+.ctrl-rows li.is-unsupported .ctrl-body em {
+  color: var(--warning);
+}
+
 .timeline time,
 .events time {
   font-size: 0.75rem;

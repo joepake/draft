@@ -31,6 +31,19 @@
  *
  * No `download` attribute on the desktop links: it is ignored cross-origin, and
  * what names the saved file is `Content-Disposition` on the object itself.
+ *
+ * ## `available` is the shipping switch
+ *
+ * Nothing is published on any of the four platforms yet: the two store listings
+ * are not live and neither `.zip` is uploaded. So every entry carries
+ * `available: false`, and `pages/Home` renders each of them as a non-anchor
+ * "coming soon" instead of a button — a link to a store 404 or a missing object
+ * is worse than one that says the build is not out.
+ *
+ * The URLs beside the flag are final and stay here while it is false, because
+ * they are what the flag is a switch *for*: going live is one boolean per
+ * platform, on the day that platform ships, and nothing else on this page
+ * changes with it.
  */
 
 /**
@@ -45,8 +58,37 @@ export const APP_STORE_ID = '6797071019';
 export const BUNDLE_ID = 'com.kidgate.app';
 
 export const STORE_LINKS = {
-  ios: `https://apps.apple.com/app/id${APP_STORE_ID}`,
-  android: `https://play.google.com/store/apps/details?id=${BUNDLE_ID}`,
-  macos: 'https://download.kidgate.app/KidGate-macos.zip',
-  windows: 'https://download.kidgate.app/KidGate-windows.zip',
+  ios: {
+    url: `https://apps.apple.com/app/id${APP_STORE_ID}`,
+    available: false,
+  },
+  android: {
+    url: `https://play.google.com/store/apps/details?id=${BUNDLE_ID}`,
+    available: false,
+  },
+  macos: {
+    url: 'https://download.kidgate.app/KidGate-macos.dmg',
+    available: false,
+  },
+  windows: {
+    url: 'https://download.kidgate.app/KidGate-windows.zip',
+    available: false,
+  },
 };
+
+/** Whether this platform's build can be reached at all today. */
+export function isPlatformAvailable(platform) {
+  return STORE_LINKS[platform].available;
+}
+
+/**
+ * The destination for a platform, or `null` while it has not shipped.
+ *
+ * Returning `null` rather than the URL is what keeps the two states from
+ * drifting: a caller that forgets the flag renders `href={null}`, which React
+ * drops, instead of shipping a live link to a listing that does not exist.
+ */
+export function storeHref(platform) {
+  const { url, available } = STORE_LINKS[platform];
+  return available ? url : null;
+}

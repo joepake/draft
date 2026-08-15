@@ -17,6 +17,7 @@ export default {
   },
 
   common: {
+    comingSoon: 'قريباً',
     loading: 'جارٍ التحميل…',
     signOut: 'تسجيل الخروج',
   },
@@ -582,6 +583,7 @@ export default {
     rowWebFilterDesc_few: '{{count}} فئات مرفوضة',
     rowWebFilterDesc_many: '{{count}} فئة مرفوضة',
     rowWebFilterDesc_other: '{{count}} فئة مرفوضة',
+    rowNotSupported: 'غير مدعوم على هذا الجهاز',
     rowLocation: 'مشاركة الموقع',
     rowLocationDesc: 'آخر تحديث {{when}}',
     rowLocationNone: 'لا موقع بعد',

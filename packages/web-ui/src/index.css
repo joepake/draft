@@ -216,6 +216,45 @@ label[for] {
   filter: brightness(1.08);
 }
 
+/*
+ * The dashboard slot while `dashboard.kidgate.app` is not serving.
+ *
+ * A span, so it inherits nothing from `.nav a` — every value here is one of
+ * that rule's, restated, minus the gradient `.nav-cta` adds. Keeping the pill
+ * shape and dropping the brand ground is the whole message: the header's last
+ * item is still about the dashboard, and it is no longer the page's primary
+ * action.
+ */
+.nav .nav-soon {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  color: var(--ink-3);
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.45rem 0.7rem;
+  border-radius: var(--r-sm);
+  margin-inline-start: 0.35rem;
+  cursor: default;
+}
+
+/*
+ * "Coming soon" beside a label it must not compete with — the pill reads
+ * "Dashboard" first and the state second. `normal`, because `<em>` is here for
+ * the second voice in the sentence rather than for italics.
+ */
+.nav-soon em,
+.footer-soon em {
+  font-style: normal;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
 .main {
   flex: 1;
   width: 100%;
@@ -271,6 +310,17 @@ label[for] {
   text-underline-offset: 3px;
 }
 
+/* The Product column's dashboard row, unlinked while it is not live. Dimmer
+   than the links around it by one step, which is the only thing separating a
+   row that goes somewhere from a row that does not. */
+.footer-soon {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  color: var(--ink-3);
+  font-size: 0.9rem;
+}
+
 .footer-base {
   max-width: 1120px;
   margin: 2.5rem auto 0;
@@ -312,6 +362,18 @@ label[for] {
 
 .app--embed .landing section:first-child {
   padding-top: 2rem;
+}
+
+/*
+ * `?inset=1` beside `embed=1` — the embedding app floats a control over the
+ * page's top-left corner (the desktop agent's back chip: 8px down, 44px tall)
+ * and asks the page to start below it. On `.main` so one rule covers the
+ * legal pages and About alike, and in-page rather than on the frame so the
+ * space scrolls away with the heading — past the top, the chip floats over
+ * content, which is what an overlay is for.
+ */
+.app--inset .main {
+  padding-top: 3rem;
 }
 
 /* ---------- Legal & support pages ---------- */
@@ -626,6 +688,52 @@ label[for] {
 .store-btn--solid:hover {
   color: var(--kg-textInverse);
   filter: brightness(1.08);
+}
+
+/*
+ * A platform that has not shipped: the same button shape, and none of the
+ * signals that say it can be pressed.
+ *
+ * It is a `<span>` in the markup (see `StoreButton` in `apps/site`), so the
+ * three things to undo are the ones `.store-btn` sets unconditionally — the
+ * near-black ground that marks the page's primary action, the shadow that
+ * lifts it off the section, and the hover transform, which a span still runs
+ * because the transition is on the base class. What is left reads as a label
+ * with a logo, which is what it is.
+ *
+ * Muted rather than a reduced opacity: `opacity` on the whole button would
+ * take the vendor marks down with it, and a 60%-alpha App Store logo is a
+ * dimmed brand rather than an unshipped one.
+ */
+.store-btn--soon {
+  background: var(--surface-2);
+  color: var(--ink-3);
+  border: 1px solid var(--line);
+  box-shadow: none;
+  cursor: default;
+}
+
+.store-btn--soon:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+/* `.store-btn small` is 0.7 alpha because it is a caption over a near-black
+   ground. Here it carries the only words that say the build is not out, over
+   a ground two steps lighter — 0.7 of `--ink-3` on `--surface-2` is under the
+   contrast floor for text that small. */
+.store-btn--soon small {
+  opacity: 1;
+}
+
+/* The pill stands where the download button does, so it needs the button's
+   own top margin rather than a paragraph's. */
+.download-soon {
+  margin-top: 0.9rem;
+}
+
+.download-soon .card-soon {
+  margin-bottom: 0;
 }
 
 .store-btn--solid svg {

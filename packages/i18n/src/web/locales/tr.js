@@ -7,6 +7,7 @@ export default {
   },
 
   common: {
+    comingSoon: 'Yakında',
     loading: 'Yükleniyor…',
     signOut: 'Çıkış yap',
   },
@@ -540,6 +541,7 @@ export default {
     rowWebFilter: 'Web filtresi',
     rowWebFilterDesc_one: '{{count}} kategori reddedildi',
     rowWebFilterDesc_other: '{{count}} kategori reddedildi',
+    rowNotSupported: 'Bu cihazda desteklenmiyor',
     rowLocation: 'Konum paylaşımı',
     rowLocationDesc: 'Son güncelleme {{when}}',
     rowLocationNone: 'Henüz konum yok',

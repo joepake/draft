@@ -27,6 +27,13 @@ import { Link } from 'react-router-dom';
  * starting with `/` renders as a plain `<a>` rather than a router `<Link>`.
  * `apps/site` uses it for `[…](/dashboard)`, which is a route in no app on this
  * host. Default is identity, so every other call site is unchanged.
+ *
+ * **`resolveHref` may also answer `null`, and the label then stays plain text.**
+ * A destination can be named in copy before it exists — `apps/site` links the
+ * parent dashboard from a support answer while `dashboard.kidgate.app` is not
+ * serving — and dropping the anchor is the only edit that leaves the sentence
+ * intact in fourteen packs. Without this the `null` reached `href.startsWith`
+ * and took the page down with it.
  */
 const TOKEN = /\[([^\]]+)\]\(([^)]+)\)|\*\*([^*]+)\*\*|\*([^*]+)\*/g;
 
@@ -49,17 +56,21 @@ export function RichText({
 
     if (linkLabel) {
       const href = resolveHref(rawHref);
-      nodes.push(
-        href.startsWith('/') ? (
-          <Link key={key} to={href}>
-            {linkLabel}
-          </Link>
-        ) : (
-          <a key={key} href={href}>
-            {linkLabel}
-          </a>
-        ),
-      );
+      if (!href) {
+        nodes.push(<Fragment key={key}>{linkLabel}</Fragment>);
+      } else {
+        nodes.push(
+          href.startsWith('/') ? (
+            <Link key={key} to={href}>
+              {linkLabel}
+            </Link>
+          ) : (
+            <a key={key} href={href}>
+              {linkLabel}
+            </a>
+          ),
+        );
+      }
     } else if (bold) {
       nodes.push(<strong key={key}>{bold}</strong>);
     } else {

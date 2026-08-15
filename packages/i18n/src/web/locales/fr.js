@@ -7,6 +7,7 @@ export default {
   },
 
   common: {
+    comingSoon: 'Bientôt disponible',
     loading: 'Chargement…',
     signOut: 'Se déconnecter',
   },
@@ -546,6 +547,7 @@ export default {
     rowWebFilter: 'Filtre web',
     rowWebFilterDesc_one: '{{count}} catégorie refusée',
     rowWebFilterDesc_other: '{{count}} catégories refusées',
+    rowNotSupported: 'Non pris en charge sur cet appareil',
     rowLocation: 'Partage de position',
     rowLocationDesc: 'Dernière mise à jour {{when}}',
     rowLocationNone: 'Pas encore de position',

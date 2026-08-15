@@ -7,6 +7,7 @@ export default {
   },
 
   common: {
+    comingSoon: '출시 예정',
     loading: '불러오는 중…',
     signOut: '로그아웃',
   },
@@ -528,6 +529,7 @@ export default {
     rowAppBlockingDesc: '{{apps}} · {{categories}}',
     rowWebFilter: '웹 필터',
     rowWebFilterDesc: '{{count}}개 카테고리 거부',
+    rowNotSupported: '이 기기에서는 지원되지 않습니다',
     rowLocation: '위치 공유',
     rowLocationDesc: '마지막 업데이트 {{when}}',
     rowLocationNone: '아직 위치 없음',

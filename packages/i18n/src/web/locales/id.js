@@ -7,6 +7,7 @@ export default {
   },
 
   common: {
+    comingSoon: 'Segera hadir',
     loading: 'Memuat…',
     signOut: 'Keluar',
   },
@@ -530,6 +531,7 @@ export default {
     rowAppBlockingDesc: '{{apps}} · {{categories}}',
     rowWebFilter: 'Penyaring Web',
     rowWebFilterDesc: '{{count}} kategori ditolak',
+    rowNotSupported: 'Tidak didukung di perangkat ini',
     rowLocation: 'Berbagi lokasi',
     rowLocationDesc: 'Pembaruan terakhir {{when}}',
     rowLocationNone: 'Belum ada lokasi',

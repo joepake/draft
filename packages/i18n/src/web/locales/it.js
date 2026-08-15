@@ -7,6 +7,7 @@ export default {
   },
 
   common: {
+    comingSoon: 'Prossimamente',
     loading: 'Caricamento…',
     signOut: 'Esci',
   },
@@ -544,6 +545,7 @@ export default {
     rowWebFilter: 'Filtro web',
     rowWebFilterDesc_one: '{{count}} categoria rifiutata',
     rowWebFilterDesc_other: '{{count}} categorie rifiutate',
+    rowNotSupported: 'Non supportato su questo dispositivo',
     rowLocation: 'Condivisione posizione',
     rowLocationDesc: 'Ultimo aggiornamento {{when}}',
     rowLocationNone: 'Ancora nessuna posizione',

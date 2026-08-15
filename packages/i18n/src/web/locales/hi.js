@@ -7,6 +7,7 @@ export default {
   },
 
   common: {
+    comingSoon: 'जल्द आ रहा है',
     loading: 'लोड हो रहा है…',
     signOut: 'साइन आउट',
   },
@@ -537,6 +538,7 @@ export default {
     rowWebFilter: 'वेब फ़िल्टर',
     rowWebFilterDesc_one: '{{count}} श्रेणी रोकी गई',
     rowWebFilterDesc_other: '{{count}} श्रेणियाँ रोकी गईं',
+    rowNotSupported: 'इस डिवाइस पर समर्थित नहीं',
     rowLocation: 'लोकेशन साझा करना',
     rowLocationDesc: 'आख़िरी अपडेट {{when}}',
     rowLocationNone: 'अभी कोई लोकेशन नहीं',
