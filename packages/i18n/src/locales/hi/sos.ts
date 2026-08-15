@@ -1,0 +1,76 @@
+export const sos = {
+  title: 'SOS अलर्ट',
+  subtitle: '{{deviceName}} · भेजे जाने पर फ़ोटो नीचे दिखाई देती हैं',
+  fallbackDeviceName: 'बच्चे का डिवाइस',
+  fallbackChildName: 'बच्चा',
+  locationUnavailable: 'स्थान उपलब्ध नहीं',
+  statusNeedsAttention: 'ध्यान आवश्यक',
+  statusAcknowledged: 'स्वीकार किया गया',
+  viewPhotoAccessibility: 'SOS फ़ोटो देखें',
+  photoTapHint: 'पूरी फ़ोटो देखने के लिए टैप करें',
+  photoLoadFailed:
+    'यह फ़ोटो लोड नहीं हो सकी। कृपया अपना कनेक्शन जांचें और पुनः प्रयास करें।',
+  noPhoto: 'इस अलर्ट के साथ कोई फ़ोटो नहीं जुड़ी है।',
+  acknowledgedAt: '{{time}} स्वीकार किया गया',
+  openInMaps: 'मैप्स में खोलें',
+  acknowledgeButton: 'मैं संभाल रहा हूँ',
+  acknowledgingButton: 'सहेजा जा रहा है…',
+  toastAcknowledgeFailed:
+    'स्वीकार नहीं किया जा सका। कृपया थोड़ी देर में पुनः प्रयास करें।',
+  emptyTitle: 'अभी तक कोई SOS अलर्ट नहीं',
+  emptyDescription:
+    'जब आपका बच्चा 5 सेकंड तक SOS दबाए रखता है, तो अलर्ट यहाँ फ़ोटो और स्थान के साथ दिखाई देते हैं।',
+  alertMessage: '{{childName}} को मदद चाहिए — SOS भेजा गया',
+  toastSent:
+    'SOS भेज दिया गया। हो सके तो किसी सुरक्षित जगह रहें — आपके माता-पिता को सूचित कर दिया गया है।',
+  toastSentWithoutPhoto:
+    'SOS भेज दिया गया, लेकिन बिना फ़ोटो के। कृपया सेटिंग्स में कैमरे की अनुमति दें और हो सके तो फिर से प्रयास करें।',
+  toastSendFailed:
+    'SOS भेजा नहीं जा सका। कृपया पुनः प्रयास करें, या किसी भरोसेमंद व्यक्ति को कॉल करें।',
+  sendFailedBannerTitle: 'आपका पिछला SOS नहीं भेजा जा सका',
+  sendFailedBannerBody:
+    'फिर से प्रयास करने के लिए बटन को दोबारा दबाए रखें। अगर यह बार-बार विफल हो, तो तुरंत किसी भरोसेमंद व्यक्ति को कॉल करें।',
+  headerTitle: 'आपातकालीन SOS',
+  headerSubtitle:
+    'जब आप असुरक्षित महसूस करें या तुरंत मदद चाहिए हो, तब इसका उपयोग करें।',
+  infoInstantAlertLabel: 'तुरंत अलर्ट',
+  infoInstantAlertDetail: 'आपके माता-पिता को तुरंत एक ज़रूरी सूचना मिलती है।',
+  infoYourLocationLabel: 'आपका स्थान',
+  infoYourLocationDetail:
+    'आपके माता-पिता के साथ साझा किया जाता है ताकि उन्हें पता चले कि आप कहाँ हैं।',
+  infoQuickSelfieLabel: 'एक त्वरित फ़ोटो',
+  infoQuickSelfieDetail:
+    'अलर्ट भेजे जाने के बाद जोड़ी जाती है, अगर कैमरा पहले से उपलब्ध हो।',
+  simulatorTipTitle: 'सिम्युलेटर टिप',
+  simulatorTipBody:
+    'SOS भेजने से पहले सिम्युलेटर मेनू में कैमरा (फ्रंट कैमरा) चालू करें ताकि एक टेस्ट फ़ोटो ली जा सके।',
+  guidanceTitle: 'भेजने से पहले',
+  guidanceItem1: 'मदद पहुँचने तक किसी सुरक्षित जगह रहने की कोशिश करें।',
+  guidanceItem2: 'हो सके तो किसी भरोसेमंद वयस्क या आपातकालीन सेवाओं को भी कॉल करें।',
+  whatParentsReceive: 'माता-पिता को क्या मिलता है',
+  holdToSendFiveSeconds: 'भेजने के लिए दबाए रखें · 5 सेकंड',
+  keepHolding: 'दबाए रखें',
+  pressAndHoldToCancel: 'दबाकर रखें — रद्द करने के लिए जल्दी छोड़ दें',
+  holdToSendSosAccessibility: 'SOS भेजने के लिए 5 सेकंड दबाए रखें',
+  sosEmergencyAccessibility: 'SOS आपातकाल',
+  sosEmergencyAlert: 'SOS आपातकालीन अलर्ट',
+  sosAlertSent: 'SOS अलर्ट भेजा गया',
+  sosAlertSentDescription: '{{deviceName}} ने SOS भेजा — उन्हें मदद चाहिए।',
+  deviceNeedsHelp: '{{deviceName}} को मदद चाहिए',
+  tapPhotoToEnlarge: 'फ़ोटो बड़ी करने के लिए उस पर टैप करें',
+  noPhotoAttached: 'इस अलर्ट के साथ कोई फ़ोटो नहीं जुड़ी थी।',
+  sentRelativeTime: '{{relativeTime}} भेजा गया',
+  imOnIt: 'मैं संभाल रहा हूँ',
+  acknowledging: 'स्वीकार किया जा रहा है…',
+  unableToAcknowledgeSos:
+    'स्वीकार नहीं किया जा सका। कृपया थोड़ी देर में पुनः प्रयास करें।',
+  noLocationSharedWithSos: 'इस SOS के साथ कोई स्थान साझा नहीं किया गया।',
+  emergencySos: 'आपातकालीन SOS',
+  devicePausedAccessibility: 'माता-पिता द्वारा डिवाइस लॉक किया गया',
+  openEmergencySos: 'आपातकालीन SOS खोलें',
+  sosAlertsNote: 'बच्चे के डिवाइस से आपातकालीन SOS अलर्ट, स्थान के साथ दिखाता है।',
+  openLocationInMapsAccessibility: 'मैप्स में स्थान खोलें',
+  badgeLabel: 'SOS',
+  muteAlarm: 'इस अलर्ट को म्यूट करें',
+  alertCount: '{{total}} में से {{current}}',
+} as const;

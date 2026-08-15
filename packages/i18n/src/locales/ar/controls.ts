@@ -1,0 +1,17 @@
+export const controls = {
+  dailyLimit: 'الحد اليومي',
+  dailyLimitScreenTimeNote: 'يسري بعد السماح بمدة استخدام الجهاز على جهاز الطفل.',
+  saveLimit: 'حفظ الحد',
+  removeLimit: 'إزالة الحد',
+  quickPresets: 'خيارات سريعة',
+  presetMinutes: '{{minutes}} دقيقة',
+  customMinutes: 'دقائق مخصصة',
+  customMinutesPlaceholder: 'مثال: 90',
+  dailyLimitEnterAtLeastMinutes: 'أدخل {{min}} دقيقة على الأقل.',
+  dailyLimitMaxMinutes: 'الحد اليومي الأقصى هو {{max}} دقيقة (24 ساعة).',
+  rulesSectionTitle: 'قواعد من والديك',
+  rulesSectionDescription: 'القواعد التي وضعها والداك لهذا الجهاز.',
+  blockedHoursLabel: 'ساعات الحظر',
+  dailyLimitLabel: 'الحد اليومي',
+  webFilterLabel: 'فلتر الويب',
+} as const;

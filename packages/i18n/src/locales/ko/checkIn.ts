@@ -1,0 +1,41 @@
+export const checkIn = {
+  noPhotoBadge: '사진이 첨부되지 않음',
+  historyTitle: '체크인 기록',
+  historyHint:
+    '사진을 누르면 확대됩니다. 위에서 언제든 새 체크인을 요청할 수 있습니다.',
+  historyEmpty: '아직 체크인이 없습니다.',
+  screenTitle: '체크인',
+  statusSafe: '안전',
+  statusNoResponse: '응답 없음',
+  statusWaiting: '대기 중',
+  metaWaitingForLocationAndPhoto: '위치와 사진 대기 중',
+  metaNoLocation: '위치 정보 없음',
+  viewPhotoAccessibility: '체크인 사진 보기',
+  responseMessage: '저는 안전해요.',
+  toastSuccess: '고마워요. 부모님이 안전하다는 걸 알게 되었어요.',
+  toastFailed: '체크인을 보내지 못했습니다. 다시 시도해 주세요.',
+  quickCheckInBadge: '체크인',
+  areYouOkay: '괜찮나요?',
+  checkInWithPhotoBody:
+    '부모님이 괜찮은지 알고 싶어 합니다. KidGate가 위치와 가능하면 사진을 보냅니다.',
+  checkInLocationOnlyBody:
+    '부모님이 괜찮은지 알고 싶어 합니다. KidGate가 가능하면 위치를 보냅니다.',
+  yesImOkay: '저는 괜찮아요',
+  yesImOkaySending: '보내는 중…',
+  iNeedHelp: '도움이 필요해요',
+  checkInRequested: '체크인 요청됨',
+  checkInRequestedDescription:
+    '{{deviceName}}에 위치와 사진과 함께 안전 확인을 요청했습니다.',
+  checkInRequestedDescriptionLocation:
+    '{{deviceName}}에 위치와 함께 안전 확인을 요청했습니다.',
+  checkInConfirmed: '체크인 확인됨',
+  checkInConfirmedDescription: '{{deviceName}}이(가) 안전하다고 확인했습니다.',
+  childDeviceFallback: '자녀 기기',
+  requestCheckIn: '체크인 요청',
+  requestCheckInNote: '자녀 기기에 위치와 전면 카메라 사진을 요청합니다.',
+  needHelpOpenSosAccessibility: '도움이 필요해요 — SOS 열기',
+  parentSafePopupTitle: '자녀가 안전합니다',
+  childSafePopupTitle: '부모님께 알렸어요',
+  childSafePopupBody: '부모님이 메시지를 받았어요 — 당신은 안전합니다.',
+  confirmedKicker: '체크인',
+} as const;

@@ -1,0 +1,62 @@
+export const auth = {
+  welcomeBack: 'С возвращением',
+  loginSubtitle: 'Войдите, чтобы управлять устройствами детей и защищать их.',
+  emailSignInTitle: 'Вход по электронной почте',
+  emailSignInSubtitle: 'Используйте родительскую почту и пароль.',
+  createAccountTitle: 'Создать родительский аккаунт',
+  createAccountSubtitle:
+    'Укажите почту и пароль, чтобы потом входить с любого устройства.',
+  linkEmailTitle: 'Привязать почту и пароль',
+  linkEmailSubtitle:
+    'Добавьте резервный вход по почте для этого родительского аккаунта.',
+  forgotPasswordTitle: 'Сброс пароля',
+  forgotPasswordSubtitle: 'Введите почту, и мы отправим ссылку для сброса пароля.',
+  nameLabel: 'Ваше имя',
+  namePlaceholder: 'напр. Мама, Папа',
+  emailLabel: 'Почта',
+  emailPlaceholder: 'roditel@example.com',
+  passwordLabel: 'Пароль',
+  passwordPlaceholder: 'Введите пароль',
+  showPassword: 'Показать пароль',
+  hidePassword: 'Скрыть пароль',
+  confirmPasswordLabel: 'Подтвердите пароль',
+  confirmPasswordPlaceholder: 'Введите пароль ещё раз',
+  passwordsDoNotMatch: 'Пароли не совпадают.',
+  signInWithEmail: 'Продолжить с почтой',
+  createAccountButton: 'Создать аккаунт',
+  linkEmailButton: 'Привязать почту и пароль',
+  sendResetLink: 'Отправить ссылку для сброса',
+  forgotPassword: 'Забыли пароль?',
+  forgotPasswordSent: 'Письмо для сброса пароля отправлено. Проверьте почту.',
+  emailVerificationTitle: 'Подтвердите почту',
+  emailVerificationSubtitle:
+    'Мы отправили ссылку подтверждения на {{email}}. Откройте её и вернитесь сюда, чтобы продолжить.',
+  emailVerificationPending:
+    'Прежде чем продолжить, откройте ссылку подтверждения в почте.',
+  emailVerificationSent:
+    'Письмо с подтверждением отправлено. Проверьте почту (и папку «Спам»).',
+  emailVerificationResent: 'Письмо с подтверждением отправлено повторно.',
+  emailVerificationStillPending:
+    'Почта ещё не подтверждена. Откройте ссылку в письме и попробуйте снова.',
+  emailVerificationConfirmed: 'Я подтвердил — продолжить',
+  emailVerificationResend: 'Отправить письмо ещё раз',
+  emailVerificationSignInFirst:
+    'Войдите снова, чтобы повторно отправить письмо с подтверждением.',
+  noAccountPrompt: 'Нет аккаунта?',
+  createAccountAction: 'Создать',
+  hasAccountPrompt: 'Уже есть аккаунт?',
+  signInAction: 'Войти',
+  orContinueWith: 'Или продолжить с',
+  signInWithGoogle: 'Продолжить с Google',
+  signInWithApple: 'Продолжить с Apple',
+  signInCancelled: 'Вход отменён.',
+  appleSignInNotConfigured:
+    'Вход через Apple сейчас недоступен. Попробуйте другой способ.',
+  consentPrefix: 'Продолжая, вы принимаете наши ',
+  termsOfService: 'Условия использования',
+  consentMiddle: ' и ',
+  privacyPolicy: 'Политика конфиденциальности',
+  consentSuffix:
+    '. KidGate предназначен для родителей; дети добавляются только с согласия родителей.',
+  passwordRequired: 'Введите пароль.',
+};

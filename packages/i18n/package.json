@@ -1,0 +1,22 @@
+{
+  "name": "@kidgate/i18n",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    "./translate": "./src/translate.ts",
+    "./activityFeed": "./src/activityFeed.ts",
+    "./interpolate": "./src/interpolate.ts",
+    "./languageMeta": "./src/languageMeta.ts",
+    "./types": "./src/types.ts",
+    "./locales": "./src/locales/index.ts",
+    "./legal": "./src/legal.ts",
+    "./web": "./src/web/index.js",
+    "./web/languages": "./src/web/languages.js",
+    "./web/interpolate": "./src/web/interpolate.js"
+  },
+  "dependencies": {
+    "@kidgate/schema": "workspace:*"
+  }
+}

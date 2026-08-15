@@ -1,0 +1,62 @@
+export const auth = {
+  welcomeBack: 'Selamat datang kembali',
+  loginSubtitle: 'Masuk untuk mengelola dan melindungi perangkat anak Anda.',
+  emailSignInTitle: 'Masuk dengan email',
+  emailSignInSubtitle: 'Gunakan email dan kata sandi orang tua Anda.',
+  createAccountTitle: 'Buat akun orang tua',
+  createAccountSubtitle:
+    'Gunakan email dan kata sandi agar nanti bisa masuk dari perangkat mana pun.',
+  linkEmailTitle: 'Tautkan email dan kata sandi',
+  linkEmailSubtitle: 'Tambahkan cadangan masuk lewat email untuk akun orang tua ini.',
+  forgotPasswordTitle: 'Atur ulang kata sandi',
+  forgotPasswordSubtitle:
+    'Masukkan email Anda dan kami akan mengirimkan tautan pengaturan ulang kata sandi.',
+  nameLabel: 'Nama Anda',
+  namePlaceholder: 'mis. Ibu, Ayah',
+  emailLabel: 'Email',
+  emailPlaceholder: 'orangtua@contoh.com',
+  passwordLabel: 'Kata sandi',
+  passwordPlaceholder: 'Masukkan kata sandi',
+  showPassword: 'Tampilkan kata sandi',
+  hidePassword: 'Sembunyikan kata sandi',
+  confirmPasswordLabel: 'Konfirmasi kata sandi',
+  confirmPasswordPlaceholder: 'Masukkan kata sandi sekali lagi',
+  passwordsDoNotMatch: 'Kata sandi tidak cocok.',
+  signInWithEmail: 'Lanjut dengan email',
+  createAccountButton: 'Buat akun',
+  linkEmailButton: 'Tautkan email dan kata sandi',
+  sendResetLink: 'Kirim tautan pengaturan ulang',
+  forgotPassword: 'Lupa kata sandi?',
+  forgotPasswordSent:
+    'Email pengaturan ulang kata sandi terkirim. Periksa kotak masuk Anda.',
+  emailVerificationTitle: 'Verifikasi email Anda',
+  emailVerificationSubtitle:
+    'Kami mengirim tautan verifikasi ke {{email}}. Buka tautannya, lalu kembali ke sini untuk melanjutkan.',
+  emailVerificationPending:
+    'Buka tautan verifikasi di kotak masuk Anda sebelum melanjutkan.',
+  emailVerificationSent:
+    'Email verifikasi terkirim. Periksa kotak masuk (dan folder spam).',
+  emailVerificationResent: 'Email verifikasi dikirim ulang.',
+  emailVerificationStillPending:
+    'Email Anda belum diverifikasi. Buka tautan di kotak masuk, lalu coba lagi.',
+  emailVerificationConfirmed: 'Sudah saya verifikasi — lanjutkan',
+  emailVerificationResend: 'Kirim ulang email verifikasi',
+  emailVerificationSignInFirst: 'Masuk lagi untuk mengirim ulang email verifikasi.',
+  noAccountPrompt: 'Belum punya akun?',
+  createAccountAction: 'Buat akun',
+  hasAccountPrompt: 'Sudah punya akun?',
+  signInAction: 'Masuk',
+  orContinueWith: 'Atau lanjutkan dengan',
+  signInWithGoogle: 'Lanjut dengan Google',
+  signInWithApple: 'Lanjut dengan Apple',
+  signInCancelled: 'Proses masuk dibatalkan.',
+  appleSignInNotConfigured:
+    'Masuk dengan Apple sedang tidak tersedia. Coba metode lain.',
+  consentPrefix: 'Dengan melanjutkan, Anda menyetujui ',
+  termsOfService: 'Ketentuan Layanan',
+  consentMiddle: ' dan ',
+  privacyPolicy: 'Kebijakan Privasi',
+  consentSuffix:
+    ' kami. KidGate untuk orang tua; anak hanya ditambahkan dengan persetujuan orang tua.',
+  passwordRequired: 'Masukkan kata sandi Anda.',
+};

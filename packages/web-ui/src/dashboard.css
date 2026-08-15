@@ -1,0 +1,2507 @@
+/* ==================================================================
+   Parent dashboard — dark navy surface.
+   Palette validated with the data-viz six checks against #141c33:
+   categorical blue/orange/aqua pass lightness, chroma, CVD ΔE 9.4,
+   normal-vision ΔE 20.9 and 3:1 contrast; status steps all ≥ 3.5:1.
+   ================================================================== */
+
+.dash {
+  /* Theme colours resolve to `@kidgate/tokens` (`--kg-*`, written by
+     `theme.js` — the web runs the classic pack's dark palette). Alpha
+     variants are mixed from the tokens with `color-mix`. */
+  --plane: var(--kg-background);
+  --surface: var(--kg-surface);
+  --surface-2: color-mix(in srgb, var(--kg-surface) 92%, var(--kg-text));
+  --ink: var(--kg-text);
+  --ink-2: var(--kg-textSecondary);
+  --muted: color-mix(in srgb, var(--kg-textSecondary) 78%, var(--kg-background));
+  --line: color-mix(in srgb, var(--kg-text) 9%, transparent);
+  --grid: color-mix(in srgb, var(--kg-text) 12%, var(--kg-surface));
+  --brand: var(--kg-primary);
+  --brand-2: var(--kg-secondary);
+
+  /* Chart categoricals stay literal ON PURPOSE: the trio was validated with
+     the data-viz six checks (lightness, chroma, CVD dE 9.4, 3:1 contrast)
+     against this surface family. They are data colours, not theme — remap
+     them to accent tokens and the guarantees above are silently gone. */
+  --s1: #3987e5;
+  --s2: #d95926;
+  --s3: #199e70;
+
+  --good: var(--kg-success);
+  --warning: var(--kg-warning);
+  /* A severity step between warning and danger that tokens do not carry
+     yet — the one literal status colour left, tracked as a token gap. */
+  --serious: #ec835a;
+  --critical: var(--kg-danger);
+
+  display: grid;
+  grid-template-columns: 264px minmax(0, 1fr);
+  min-height: 100vh;
+  background: var(--plane);
+  color: var(--ink);
+  font-size: 15px;
+}
+
+.dash button {
+  font: inherit;
+  color: inherit;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.icon {
+  display: block;
+  flex-shrink: 0;
+}
+
+.tile-label,
+.nav-item,
+.chips-toggle li {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.attn-icon .icon,
+.tl-icon .icon,
+.ev-state .icon,
+.perm-state .icon,
+.places .icon {
+  display: block;
+}
+
+.dash-top p .icon {
+  display: inline-block;
+  vertical-align: -2px;
+}
+
+/* ---------- Sidebar ---------- */
+
+.dash-side {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--plane) 92%, var(--ink)),
+    var(--plane)
+  );
+  border-right: 1px solid var(--line);
+  padding: 1.4rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.dash-brand {
+  padding: 0 0.5rem;
+}
+
+.dash-brand a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: color-mix(in srgb, var(--brand) 70%, var(--ink));
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+
+.dash-brand span {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 0.15rem;
+}
+
+.side-title {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--muted);
+  padding: 0 0.5rem;
+  margin-bottom: 0.55rem;
+}
+
+.kid {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.55rem 0.5rem;
+  border-radius: 0.7rem;
+  text-align: left;
+  transition: background var(--kg-motion-fast) ease;
+}
+
+.kid:hover {
+  background: color-mix(in srgb, var(--ink) 5%, transparent);
+}
+
+.kid.is-active {
+  background: color-mix(in srgb, var(--brand) 16%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--brand) 35%, transparent);
+}
+
+/*
+ * The tile carries the platform glyph, so it needs a background for every
+ * platform that can pair — a `.av-macos` that nobody wrote left the desktop
+ * agent as an unpainted square. The base rule paints the fallback; the
+ * per-platform rules tint it.
+ */
+.kid-avatar {
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 0.65rem;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--ink);
+  background: color-mix(in srgb, var(--ink) 12%, transparent);
+  flex-shrink: 0;
+}
+
+.av-ios {
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+}
+
+.av-android {
+  background: linear-gradient(
+    135deg,
+    var(--good),
+    color-mix(in srgb, var(--good) 55%, var(--brand))
+  );
+}
+
+.av-macos,
+.av-windows {
+  background: linear-gradient(
+    135deg,
+    var(--brand-2),
+    color-mix(in srgb, var(--brand-2) 55%, var(--ink))
+  );
+}
+
+.av-androidtv {
+  background: linear-gradient(
+    135deg,
+    var(--warning),
+    color-mix(in srgb, var(--warning) 55%, var(--brand))
+  );
+}
+
+.kid-meta {
+  flex: 1;
+  min-width: 0;
+}
+
+.kid-meta strong {
+  display: block;
+  font-size: 0.92rem;
+}
+
+.kid-meta em {
+  display: block;
+  font-style: normal;
+  font-size: 0.75rem;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.kid-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+.kid-dot.tone-good {
+  background: var(--good);
+}
+.kid-dot.tone-warning {
+  background: var(--warning);
+}
+.kid-dot.tone-muted {
+  background: var(--muted);
+}
+
+.side-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  border-radius: 0.6rem;
+  color: var(--ink-2);
+  font-size: 0.92rem;
+  transition:
+    background var(--kg-motion-fast) ease,
+    color var(--kg-motion-fast) ease;
+}
+
+.nav-item i {
+  font-style: normal;
+  opacity: 0.75;
+  width: 1rem;
+}
+
+.nav-item:hover {
+  background: color-mix(in srgb, var(--ink) 5%, transparent);
+  color: var(--ink);
+}
+
+.nav-item.is-active {
+  background: color-mix(in srgb, var(--ink) 8%, transparent);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.nav-badge {
+  margin-left: auto;
+  background: var(--warning);
+  color: var(--plane);
+  font-size: 0.68rem;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 0.1rem 0.4rem;
+}
+
+.side-foot {
+  margin-top: auto;
+  padding: 0.9rem 0.5rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.plan-pill {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--brand-2) 55%, var(--ink));
+  background: color-mix(in srgb, var(--brand-2) 16%, transparent);
+  border: 1px solid color-mix(in srgb, var(--brand-2) 32%, transparent);
+  border-radius: 999px;
+  padding: 0.2rem 0.6rem;
+}
+
+.side-foot p {
+  font-size: 0.76rem;
+  color: var(--muted);
+  margin-top: 0.45rem;
+}
+
+/* ---------- Main ---------- */
+
+.dash-main {
+  padding: 1.6rem 1.9rem 3rem;
+  min-width: 0;
+}
+
+.dash-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.dash-top h1 {
+  font-size: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.dash-top p {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  color: var(--ink-2);
+  font-size: 0.86rem;
+  margin-top: 0.4rem;
+}
+
+.dot-sep {
+  color: var(--muted);
+  opacity: 0.6;
+}
+
+/* Glyph and number as one unit, so the icon does not sit on the line's
+   baseline and the two never wrap apart. */
+.batt {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Low and unplugged, the one battery state worth colouring — the same rule the
+   phone paints, `readDeviceBattery().isLow`. `errorStrong` rather than `error`:
+   this is text, and the base colour fails AA at this size. */
+.batt-low {
+  color: var(--kg-errorStrong);
+  font-weight: 600;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  border-radius: 999px;
+  padding: 0.18rem 0.6rem;
+  background: color-mix(in srgb, var(--ink) 7%, transparent);
+  border: 1px solid var(--line);
+}
+
+.pill-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: currentColor;
+}
+
+.pill.tone-good {
+  color: var(--good);
+}
+.pill.tone-warning {
+  color: var(--warning);
+}
+.pill.tone-muted {
+  color: var(--muted);
+}
+
+.top-actions {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.btn {
+  border-radius: 0.6rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  background: color-mix(in srgb, var(--ink) 8%, transparent);
+  border: 1px solid var(--line);
+  transition:
+    background var(--kg-motion-fast) ease,
+    transform var(--kg-motion-fast) ease;
+}
+
+.btn:hover {
+  background: color-mix(in srgb, var(--ink) 14%, transparent);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  border-color: transparent;
+  color: var(--ink);
+}
+
+.btn-primary:hover {
+  filter: brightness(1.08);
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+}
+
+.btn-sm {
+  padding: 0.3rem 0.65rem;
+  font-size: 0.78rem;
+}
+
+.btn-block {
+  width: 100%;
+  margin-top: 0.9rem;
+}
+
+/* ---------- Cards & grid ---------- */
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  margin-bottom: 1.15rem;
+}
+
+.card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.card-head h2 {
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+}
+
+.card-head p {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 0.2rem;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: 1.15rem;
+  align-items: start;
+}
+
+/* Two independent stacks rather than aligned rows — cards of unequal height
+   would otherwise leave a hole under the shorter column. */
+.cols {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: 0 1.15rem;
+  align-items: start;
+}
+
+.cols > div {
+  min-width: 0;
+}
+
+.grid-2 .card {
+  margin-bottom: 1.15rem;
+}
+
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.9rem;
+  margin-bottom: 1.15rem;
+}
+
+.tiles-inline {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-bottom: 0.9rem;
+}
+
+.tile {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 0.9rem;
+  padding: 0.95rem 1.05rem;
+}
+
+.tile-label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.76rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tile-label i {
+  font-style: normal;
+  opacity: 0.85;
+}
+
+.tile-value {
+  display: block;
+  font-size: 1.65rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0.35rem 0 0.15rem;
+}
+
+.tile-meta {
+  font-size: 0.78rem;
+  color: var(--ink-2);
+}
+
+.tile.tone-warning .tile-value {
+  color: var(--warning);
+}
+.tile.tone-good .tile-value {
+  color: var(--good);
+}
+
+.empty,
+.hint {
+  font-size: 0.83rem;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.hint {
+  margin-top: 0.9rem;
+}
+
+/* ---------- Charts ---------- */
+
+.viz {
+  position: relative;
+}
+
+.viz-grid {
+  stroke: var(--grid);
+  stroke-width: 1;
+}
+
+.viz-baseline {
+  stroke: color-mix(in srgb, var(--ink) 22%, var(--surface));
+  stroke-width: 1;
+}
+
+.viz-axis {
+  fill: var(--muted);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+
+.viz-limit {
+  stroke: var(--ink-2);
+  stroke-width: 2;
+  stroke-dasharray: 5 4;
+  opacity: 0.75;
+}
+
+.viz-limit-label {
+  fill: var(--ink-2);
+  font-size: 11px;
+}
+
+.viz-bar {
+  fill: var(--s1);
+  transition: fill var(--kg-motion-fast) ease;
+}
+
+.viz-bar.is-over {
+  fill: var(--critical);
+}
+
+.viz-bar.is-hover,
+.viz-bar-bonus.is-hover {
+  filter: brightness(1.25);
+}
+
+.viz-bar-bonus {
+  fill: var(--s2);
+}
+
+.viz-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.1rem;
+  margin-top: 0.85rem;
+  font-size: 0.78rem;
+  color: var(--ink-2);
+}
+
+.viz-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 3px;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.dot-1 {
+  background: var(--s1);
+}
+.dot-2 {
+  background: var(--s2);
+}
+.dot-3 {
+  background: var(--s3);
+}
+.dot-over {
+  background: var(--critical);
+}
+
+.dashline {
+  width: 14px;
+  height: 2px;
+  border-radius: 0;
+  background: repeating-linear-gradient(90deg, var(--ink-2) 0 5px, transparent 5px 9px);
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.viz-tip {
+  position: absolute;
+  transform: translate(-50%, calc(-100% - 12px));
+  background: var(--plane);
+  border: 1px solid color-mix(in srgb, var(--ink) 16%, transparent);
+  border-radius: 0.6rem;
+  padding: 0.55rem 0.7rem;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  pointer-events: none;
+  white-space: nowrap;
+  box-shadow: 0 12px 30px color-mix(in srgb, var(--kg-shadow) 45%, transparent);
+  z-index: 5;
+}
+
+.viz-tip strong {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.viz-tip span {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--ink-2);
+}
+
+.viz-tip .tip-warn {
+  color: var(--critical);
+  font-weight: 600;
+}
+
+/* Ring */
+
+.ring {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.ring-track {
+  fill: none;
+  stroke: color-mix(in srgb, var(--ink) 8%, transparent);
+}
+
+.ring-value {
+  fill: none;
+  stroke: var(--s1);
+  transition: stroke-dasharray var(--kg-motion-slow) ease;
+}
+
+.ring-value.is-over {
+  stroke: var(--critical);
+}
+
+.ring-center {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  text-align: center;
+}
+
+.ring-center strong {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.ring-center span {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-top: 0.15rem;
+}
+
+.today {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.today-stats {
+  flex: 1;
+  min-width: 170px;
+  list-style: none;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.today-stats li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.86rem;
+}
+
+.today-stats li:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.today-stats span {
+  color: var(--muted);
+}
+
+.today-stats strong {
+  font-size: 1rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Horizontal bars */
+
+.hbars,
+.catbars {
+  list-style: none;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.hbar-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 0.35rem;
+  font-size: 0.85rem;
+}
+
+.hbar-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.hbar-value {
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+}
+
+.hbar-value em {
+  font-style: normal;
+  color: var(--muted);
+}
+
+.hbar-value.is-over {
+  color: var(--critical);
+  font-weight: 600;
+}
+
+.hbar-track {
+  position: relative;
+  height: 9px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--ink) 7%, transparent);
+}
+
+.hbar-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--s1);
+}
+
+.hbar-fill.is-over {
+  background: var(--critical);
+}
+
+.fill-1 {
+  background: var(--s1);
+}
+.fill-2 {
+  background: var(--s2);
+}
+.fill-3 {
+  background: var(--s3);
+}
+
+.hbar-cap {
+  position: absolute;
+  top: -3px;
+  width: 2px;
+  height: 15px;
+  border-radius: 2px;
+  background: var(--ink);
+  opacity: 0.85;
+}
+
+/* Blocked Hours grid */
+
+.sched {
+  position: relative;
+}
+
+.sched-hours {
+  position: relative;
+  height: 1.1rem;
+  margin-left: 3rem;
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+
+.sched-hours span {
+  position: absolute;
+  transform: translateX(-50%);
+  font-variant-numeric: tabular-nums;
+}
+
+.sched-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 4px;
+}
+
+.sched-day {
+  width: 2.5rem;
+  font-size: 0.75rem;
+  color: var(--muted);
+  flex-shrink: 0;
+}
+
+.sched-track {
+  position: relative;
+  flex: 1;
+  height: 20px;
+  border-radius: 5px;
+  background: color-mix(in srgb, var(--ink) 5%, transparent);
+  overflow: hidden;
+}
+
+.sched-tick {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--grid);
+}
+
+.sched-block {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-radius: 4px;
+  /* 2px surface gap so touching windows never read as one block */
+  box-shadow: 0 0 0 2px var(--surface);
+  transition: filter var(--kg-motion-fast) ease;
+}
+
+.sched-block:hover {
+  filter: brightness(1.3);
+}
+
+.win-1 {
+  background: var(--s1);
+}
+.win-2 {
+  background: var(--s2);
+}
+.win-3 {
+  background: var(--s3);
+}
+.win-1-dot {
+  background: var(--s1);
+}
+.win-2-dot {
+  background: var(--s2);
+}
+.win-3-dot {
+  background: var(--s3);
+}
+
+.sched-hint {
+  position: absolute;
+  right: 0;
+  top: -0.2rem;
+  font-size: 0.76rem;
+  color: var(--ink-2);
+}
+
+/* ---------- When the day was used ---------- */
+
+/*
+ * The same track geometry as `.sched-*` — a day is a day, and two bands in one
+ * dashboard that disagree about where noon sits are two bands a parent cannot
+ * compare. What differs is what a segment means, so only the fills are new.
+ */
+.tl-hours {
+  position: relative;
+  height: 1.1rem;
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+
+.tl-hours span {
+  position: absolute;
+  transform: translateX(-50%);
+  font-variant-numeric: tabular-nums;
+}
+
+.tl-track {
+  position: relative;
+  height: 26px;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--ink) 5%, transparent);
+  overflow: hidden;
+}
+
+.tl-tick {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--grid);
+  /* Above the runs: an hour mark that disappears under a busy afternoon stops
+     being a reference for the busy afternoon. */
+  z-index: 1;
+}
+
+.tl-run {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+
+/*
+ * No gap, no radius, no shadow between runs — the opposite of `.sched-block`.
+ * These are not separate events; they are one continuous day, and a seam
+ * between two used stretches would read as a break in usage that did not
+ * happen.
+ */
+.tl-used {
+  background: var(--good);
+}
+
+.tl-idle {
+  background: color-mix(in srgb, var(--ink) 12%, transparent);
+}
+
+/*
+ * Hatched rather than a third colour, and that is the point of the whole band.
+ * Every flat fill reads as a measurement; a hatch reads as an absence, which
+ * is what an agent that was not running actually left behind. It also survives
+ * being printed, screenshotted, and looked at by someone who cannot separate
+ * green from grey.
+ */
+.tl-unknown {
+  background: repeating-linear-gradient(
+    45deg,
+    color-mix(in srgb, var(--ink) 7%, transparent) 0 5px,
+    transparent 5px 10px
+  );
+}
+
+.tl-used-dot {
+  background: var(--good);
+}
+
+.tl-idle-dot {
+  background: color-mix(in srgb, var(--ink) 12%, transparent);
+}
+
+.tl-unknown-dot {
+  background: repeating-linear-gradient(
+    45deg,
+    color-mix(in srgb, var(--ink) 30%, transparent) 0 2px,
+    transparent 2px 4px
+  );
+}
+
+.tl-empty {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+/* ---------- Lists ---------- */
+
+.attn,
+.timeline,
+.events,
+.perms,
+.places,
+.ctrl-rows {
+  list-style: none;
+  display: grid;
+  gap: 0.1rem;
+}
+
+.attn li,
+.timeline li,
+.events li,
+.ctrl-rows li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+/* The steps for a denied permission open under their own row, so the wrap is
+   on the row rather than a panel that would cover the list. */
+.attn li {
+  flex-wrap: wrap;
+}
+
+.attn-fix {
+  flex-basis: 100%;
+  margin-top: 0.5rem;
+  padding: 0.6rem 0.7rem;
+  border-radius: 0.55rem;
+  background: color-mix(in srgb, var(--ink) 6%, transparent);
+  color: var(--ink-2);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.attn li:last-child,
+.timeline li:last-child,
+.events li:last-child,
+.ctrl-rows li:last-child {
+  border-bottom: 0;
+}
+
+.attn-icon,
+.tl-icon,
+.ev-state {
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 0.55rem;
+  display: grid;
+  place-items: center;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+  background: color-mix(in srgb, var(--ink) 7%, transparent);
+}
+
+/* Reward-task difficulty: one to three stars, read-only. Fixed width for all
+   three counts so the titles beside them stay on one left edge. */
+.reward-stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.05rem;
+  width: 2.6rem;
+  flex-shrink: 0;
+  color: var(--brand);
+}
+
+.attn-body,
+.tl-body,
+.ev-body,
+.ctrl-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.attn-body strong,
+.tl-body strong,
+.ev-body strong,
+.ctrl-body strong {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.attn-body em,
+.tl-body em,
+.ev-body em,
+.ctrl-body em {
+  display: block;
+  font-style: normal;
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-top: 0.12rem;
+}
+
+.timeline time,
+.events time {
+  font-size: 0.75rem;
+  color: var(--muted);
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.attn li.tone-warning .attn-icon {
+  background: color-mix(in srgb, var(--warning) 16%, transparent);
+  color: var(--warning);
+}
+.attn li.tone-serious .attn-icon {
+  background: color-mix(in srgb, var(--serious) 16%, transparent);
+  color: var(--serious);
+}
+.attn li.tone-critical .attn-icon {
+  background: color-mix(in srgb, var(--critical) 18%, transparent);
+  color: var(--critical);
+}
+
+.tl-icon.type-tamper {
+  background: color-mix(in srgb, var(--critical) 18%, transparent);
+}
+.tl-icon.type-app_blocked {
+  background: color-mix(in srgb, var(--warning) 16%, transparent);
+}
+.tl-icon.type-device_locked {
+  background: color-mix(in srgb, var(--brand) 16%, transparent);
+}
+
+.ev-state.tone-good {
+  background: color-mix(in srgb, var(--good) 16%, transparent);
+  color: var(--good);
+}
+.ev-state.tone-warning {
+  background: color-mix(in srgb, var(--warning) 16%, transparent);
+  color: var(--warning);
+}
+.ev-state.tone-critical {
+  background: color-mix(in srgb, var(--critical) 18%, transparent);
+  color: var(--critical);
+}
+.ev-state.tone-muted {
+  color: var(--muted);
+}
+
+.perms li,
+.places li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.87rem;
+}
+
+.perms li:last-child,
+.places li:last-child {
+  border-bottom: 0;
+}
+
+.perms em,
+.places em {
+  margin-left: auto;
+  font-style: normal;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.perm-state {
+  width: 1.35rem;
+  height: 1.35rem;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.perm-state.tone-good {
+  background: color-mix(in srgb, var(--good) 16%, transparent);
+  color: var(--good);
+}
+.perm-state.tone-critical {
+  background: color-mix(in srgb, var(--critical) 18%, transparent);
+  color: var(--critical);
+}
+.perm-state.tone-muted {
+  color: var(--muted);
+}
+
+/* ---------- Table ---------- */
+
+.tbl {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.tbl th {
+  text-align: left;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  font-weight: 600;
+  padding: 0 0.75rem 0.5rem;
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+
+.tbl td {
+  padding: 0.55rem 0.75rem;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+
+.tbl th:first-child,
+.tbl td:first-child {
+  padding-left: 0;
+  white-space: normal;
+}
+
+.tbl th:last-child,
+.tbl td:last-child {
+  padding-right: 0;
+  text-align: right;
+}
+
+.tbl tr:last-child td {
+  border-bottom: 0;
+}
+
+.tbl td:first-child {
+  color: var(--ink);
+}
+
+.tbl .num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.tbl .tone-critical {
+  color: var(--critical);
+  font-weight: 600;
+}
+
+.tag {
+  display: inline-block;
+  margin-left: 0.45rem;
+  font-size: 0.68rem;
+  color: var(--critical);
+  background: color-mix(in srgb, var(--critical) 14%, transparent);
+  border-radius: 999px;
+  padding: 0.05rem 0.45rem;
+}
+
+/* ---------- Map ---------- */
+
+.map {
+  position: relative;
+  height: 210px;
+  border-radius: 0.8rem;
+  overflow: hidden;
+  background: linear-gradient(
+    160deg,
+    color-mix(in srgb, var(--plane) 80%, var(--brand)),
+    color-mix(in srgb, var(--plane) 92%, var(--brand))
+  );
+  border: 1px solid var(--line);
+  margin-bottom: 1rem;
+}
+
+.map-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 34px 34px;
+  opacity: 0.5;
+}
+
+.map-place {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.72rem;
+  color: var(--ink-2);
+  transform: translate(-50%, -50%);
+}
+
+.map-place i {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: var(--muted);
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--muted) 16%, transparent);
+}
+
+.map-place.is-inside i {
+  background: var(--s1);
+  box-shadow: 0 0 0 8px color-mix(in srgb, var(--brand) 22%, transparent);
+}
+
+.map-place.is-inside {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.map-badge {
+  position: absolute;
+  left: 0.8rem;
+  bottom: 0.8rem;
+  background: color-mix(in srgb, var(--plane) 88%, transparent);
+  border: 1px solid var(--line);
+  border-radius: 0.6rem;
+  padding: 0.5rem 0.75rem;
+  backdrop-filter: blur(4px);
+}
+
+.map-badge strong {
+  display: block;
+  font-size: 0.85rem;
+}
+
+.map-badge em {
+  font-style: normal;
+  font-size: 0.74rem;
+  color: var(--muted);
+}
+
+/* ---------- Controls ---------- */
+
+.seg {
+  display: inline-flex;
+  background: color-mix(in srgb, var(--ink) 6%, transparent);
+  border: 1px solid var(--line);
+  border-radius: 0.55rem;
+  padding: 2px;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.seg button {
+  padding: 0.25rem 0.6rem;
+  border-radius: 0.4rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.seg button.is-active {
+  background: color-mix(in srgb, var(--ink) 12%, transparent);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.toggle {
+  width: 42px;
+  height: 24px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--ink) 13%, transparent);
+  position: relative;
+  flex-shrink: 0;
+  transition: background var(--kg-motion-fast) ease;
+}
+
+.toggle i {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: var(--ink);
+  transition: transform var(--kg-motion-fast) ease;
+}
+
+.toggle.is-on {
+  background: var(--s1);
+}
+
+.toggle.is-on i {
+  transform: translateX(18px);
+}
+
+.chips {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.9rem;
+}
+
+.chips li {
+  font-size: 0.79rem;
+  border-radius: 999px;
+  padding: 0.28rem 0.7rem;
+  background: color-mix(in srgb, var(--ink) 7%, transparent);
+  border: 1px solid var(--line);
+  color: var(--ink-2);
+}
+
+.chips li em {
+  font-style: normal;
+  color: var(--muted);
+}
+
+.chips-toggle {
+  margin-top: 0;
+}
+
+.chips-toggle li.is-on {
+  background: color-mix(in srgb, var(--brand) 16%, transparent);
+  border-color: color-mix(in srgb, var(--brand) 40%, transparent);
+  color: color-mix(in srgb, var(--brand) 25%, var(--ink));
+}
+
+.limit-edit strong {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.8rem;
+}
+
+.limit-edit input[type='range'] {
+  width: 100%;
+  accent-color: var(--s1);
+}
+
+.limit-scale {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.74rem;
+  color: var(--muted);
+  margin-top: 0.25rem;
+}
+
+.write-note,
+.toast {
+  font-size: 0.82rem;
+  line-height: 1.55;
+  border-radius: 0.7rem;
+  padding: 0.65rem 0.9rem;
+  margin-bottom: 1.15rem;
+}
+
+.write-note {
+  color: var(--ink-2);
+  background: color-mix(in srgb, var(--warning) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--warning) 30%, transparent);
+}
+
+.write-note strong {
+  color: var(--warning);
+}
+
+.toast.tone-good {
+  color: color-mix(in srgb, var(--good) 35%, var(--ink));
+  background: color-mix(in srgb, var(--good) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--good) 36%, transparent);
+}
+
+.toast.tone-critical {
+  color: color-mix(in srgb, var(--critical) 30%, var(--ink));
+  background: color-mix(in srgb, var(--critical) 15%, transparent);
+  border: 1px solid color-mix(in srgb, var(--critical) 40%, transparent);
+}
+
+.dash .btn:disabled,
+.dash .toggle:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.dash .btn:disabled:hover {
+  background: color-mix(in srgb, var(--ink) 8%, transparent);
+}
+
+.side-empty {
+  font-size: 0.8rem;
+  color: var(--muted);
+  padding: 0 0.5rem;
+  line-height: 1.5;
+}
+
+.side-account {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-top: 0.6rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--line);
+}
+
+.side-account span {
+  font-size: 0.76rem;
+  color: var(--ink-2);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+.side-account .login-link {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.perm-state.tone-warning {
+  background: color-mix(in srgb, var(--warning) 16%, transparent);
+  color: var(--warning);
+}
+
+.perm-state.tone-muted {
+  background: color-mix(in srgb, var(--ink) 7%, transparent);
+  color: var(--muted);
+}
+
+/* ---------- Sign in ---------- */
+
+.login {
+  --plane: var(--kg-background);
+  --surface: var(--kg-surface);
+  --ink: var(--kg-text);
+  --ink-2: var(--kg-textSecondary);
+  --muted: color-mix(in srgb, var(--kg-textSecondary) 78%, var(--kg-background));
+  --line: color-mix(in srgb, var(--kg-text) 9%, transparent);
+  --brand: var(--kg-primary);
+  --brand-2: var(--kg-secondary);
+  --s1: #3987e5;
+  --critical: var(--kg-danger);
+  --good: var(--kg-success);
+  --warning: var(--kg-warning);
+
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 2rem 1.25rem;
+  background:
+    radial-gradient(
+      50rem 26rem at 80% -10%,
+      color-mix(in srgb, var(--brand-2) 30%, transparent),
+      transparent 60%
+    ),
+    radial-gradient(
+      44rem 24rem at 5% 110%,
+      color-mix(in srgb, var(--brand) 34%, transparent),
+      transparent 60%
+    ),
+    linear-gradient(
+      160deg,
+      color-mix(in srgb, var(--plane) 92%, var(--brand)),
+      color-mix(in srgb, var(--plane) 78%, var(--brand)) 60%,
+      color-mix(in srgb, var(--plane) 66%, var(--brand))
+    );
+  color: var(--ink);
+}
+
+.login button {
+  font: inherit;
+  color: inherit;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  background: color-mix(in srgb, var(--surface) 82%, transparent);
+  border: 1px solid var(--line);
+  border-radius: 1.1rem;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 30px 70px color-mix(in srgb, var(--kg-shadow) 50%, transparent);
+}
+
+.login-card-slim {
+  text-align: center;
+}
+
+.login-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: color-mix(in srgb, var(--brand) 70%, var(--ink));
+  text-decoration: none;
+  margin-bottom: 1.25rem;
+}
+
+.login-card h1 {
+  font-size: 1.45rem;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+
+.login-sub {
+  font-size: 0.87rem;
+  color: var(--ink-2);
+  line-height: 1.6;
+  margin-bottom: 1.4rem;
+}
+
+.login-warn,
+.login-error,
+.login-info {
+  font-size: 0.82rem;
+  line-height: 1.55;
+  border-radius: 0.65rem;
+  padding: 0.7rem 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.login-warn {
+  background: color-mix(in srgb, var(--warning) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--warning) 35%, transparent);
+  color: color-mix(in srgb, var(--warning) 35%, var(--ink));
+}
+
+.login-warn strong {
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.login-warn code {
+  font-size: 0.95em;
+}
+
+.login-error {
+  background: color-mix(in srgb, var(--critical) 15%, transparent);
+  border: 1px solid color-mix(in srgb, var(--critical) 40%, transparent);
+  color: color-mix(in srgb, var(--critical) 30%, var(--ink));
+}
+
+.login-info {
+  background: color-mix(in srgb, var(--good) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--good) 36%, transparent);
+  color: color-mix(in srgb, var(--good) 35%, var(--ink));
+}
+
+/* QR sign-in */
+
+.qr-block {
+  margin-bottom: 0.25rem;
+}
+
+.qr-why {
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.55;
+  margin-top: 0.7rem;
+}
+
+.qr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  text-align: center;
+}
+
+.qr-code {
+  width: 190px;
+  height: 190px;
+  background: var(--ink);
+  border-radius: 0.8rem;
+  padding: 0.55rem;
+  display: grid;
+  place-items: center;
+}
+
+.qr-code svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.qr-placeholder {
+  background: color-mix(in srgb, var(--ink) 7%, transparent);
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.qr-code-text span {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  padding-left: 0.22em;
+}
+
+.qr-steps {
+  text-align: left;
+  margin: 0;
+  padding-left: 1.15rem;
+  font-size: 0.82rem;
+  color: var(--ink-2);
+  line-height: 1.7;
+}
+
+.qr-meta {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.login-providers {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.login .oauth-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border-radius: 0.7rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+  background: color-mix(in srgb, var(--ink) 94%, transparent);
+  color: var(--plane);
+  transition:
+    filter var(--kg-motion-fast) ease,
+    transform var(--kg-motion-fast) ease;
+}
+
+.login .oauth-btn:hover:not(:disabled) {
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+}
+
+.login .oauth-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.login .oauth-btn svg {
+  width: 1.15rem;
+  height: 1.15rem;
+  flex-shrink: 0;
+}
+
+.login-or {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 1.3rem 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.login-or::before,
+.login-or::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+.login-form {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.login-form label {
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.8rem;
+  color: var(--ink-2);
+}
+
+.login-form input {
+  font: inherit;
+  font-size: 0.92rem;
+  color: var(--ink);
+  background: color-mix(in srgb, var(--ink) 6%, transparent);
+  border: 1px solid var(--line);
+  border-radius: 0.6rem;
+  padding: 0.6rem 0.8rem;
+  width: 100%;
+}
+
+.login-form input:focus {
+  outline: 2px solid color-mix(in srgb, var(--brand) 60%, transparent);
+  outline-offset: 1px;
+}
+
+.login .btn {
+  border-radius: 0.6rem;
+  padding: 0.6rem 1rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+  background: color-mix(in srgb, var(--ink) 8%, transparent);
+  border: 1px solid var(--line);
+}
+
+.login .btn-primary {
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  border-color: transparent;
+}
+
+.login .btn-primary:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.login .btn-block {
+  width: 100%;
+  margin-top: 0.2rem;
+}
+
+.login .login-link,
+.side-account .login-link {
+  font-size: 0.8rem;
+  color: var(--ink-2);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  justify-self: center;
+}
+
+.login .login-link:hover:not(:disabled),
+.side-account .login-link:hover {
+  color: var(--ink);
+}
+
+.login-foot {
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-top: 1.4rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--line);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1100px) {
+  .grid-2,
+  .cols {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .tiles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 820px) {
+  .dash {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .dash-side {
+    position: static;
+    height: auto;
+    flex-direction: column;
+  }
+
+  .side-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .side-nav .side-title {
+    width: 100%;
+  }
+
+  .nav-item {
+    width: auto;
+  }
+
+  .dash-main {
+    padding: 1.2rem 1rem 2.5rem;
+  }
+
+  .tiles,
+  .tiles-inline {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .sched-hint {
+    display: none;
+  }
+}
+
+/* ---------- Language picker: sidebar and sign-in placements ---------- */
+
+.lang-side {
+  margin-top: 0.6rem;
+}
+
+.lang-side .lang-btn {
+  width: 100%;
+  justify-content: flex-start;
+  font-size: 0.8rem;
+}
+
+/* The sidebar footer sits at the bottom of a full-height column, so the menu
+   opens upward — downward it would render below the viewport. */
+.lang-side .lang-menu {
+  top: auto;
+  bottom: calc(100% + 0.4rem);
+  left: 0;
+  right: auto;
+}
+
+.login-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.login-head .login-brand {
+  margin-bottom: 0;
+}
+
+/* Left-aligned inside a card whose slim variant centres everything. */
+.login-card-slim .login-head {
+  justify-content: center;
+}
+
+/* ==================================================================
+   Weekly report
+   ------------------------------------------------------------------
+   The one surface here that leaves the dashboard. A parent saves it as
+   an image or prints it to PDF and sends it on, so the sheet carries
+   its own brand mark and its own date range, and the controls that made
+   it sit outside the frame — see `dashboard/ReportPanel.jsx`.
+
+   Two renderings exist and only this one is CSS: the share image is
+   drawn on a canvas in `dashboard/shareCard.js`, from the same figures.
+   Keep the two looking like one product; neither is the source of the
+   numbers.
+   ================================================================== */
+
+.report-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.15rem;
+}
+
+/* Pushes the share group to the right edge without a second flex row,
+   so the wrap on a narrow window is a plain stack. */
+.report-actions-gap {
+  flex: 1 1 auto;
+}
+
+.report-actions .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* ---------- The sheet ---------- */
+
+.report-sheet {
+  position: relative;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 1.15rem;
+  padding: 1.6rem 1.75rem 1.5rem;
+  margin-bottom: 1.15rem;
+}
+
+/* A band rather than a background wash: it survives being printed on a
+   monochrome office printer, where a 6% tint does not. */
+.report-sheet::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 4px;
+  background: linear-gradient(90deg, var(--brand), var(--brand-2));
+}
+
+.report-sheet-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.1rem;
+}
+
+.report-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: -0.01em;
+}
+
+.report-brand .brand-mark {
+  display: inline-flex;
+  width: 22px;
+  height: 22px;
+}
+
+.report-week {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--ink-2);
+  background: color-mix(in srgb, var(--brand) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--brand) 32%, transparent);
+  border-radius: 999px;
+  padding: 0.2rem 0.65rem;
+}
+
+.report-title {
+  font-size: 1.65rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.report-range {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.83rem;
+  color: var(--muted);
+  margin-top: 0.25rem;
+}
+
+/* ---------- Hero: the week's total, and the week before it ---------- */
+
+.report-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: 1.5rem;
+  align-items: center;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  padding: 1.25rem 1.4rem;
+  margin: 1.2rem 0 1.15rem;
+}
+
+.report-hero-label {
+  display: block;
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+}
+
+.report-hero-value {
+  display: block;
+  font-size: 2.8rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin: 0.3rem 0 0.45rem;
+}
+
+.report-trend {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.83rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+/* More screen time than last week is amber, never red: the report states
+   what happened and does not diagnose a child. Less is green because a
+   parent asked for less — that is the product working. */
+.report-trend.is-up {
+  color: var(--warning);
+}
+.report-trend.is-down {
+  color: var(--good);
+}
+
+.report-compare {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.report-bar {
+  display: grid;
+  grid-template-columns: 5.5rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 0.8rem;
+}
+
+.report-bar-label {
+  color: var(--muted);
+}
+
+.report-bar-track {
+  display: block;
+  height: 10px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--ink) 10%, transparent);
+  overflow: hidden;
+}
+
+.report-bar-fill {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: var(--brand);
+}
+
+/* Last week is the reference, not the subject — same shape, less ink. */
+.report-bar-before .report-bar-fill {
+  background: color-mix(in srgb, var(--ink-2) 55%, transparent);
+}
+
+.report-bar-value {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- The three remaining figures ---------- */
+
+.report-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.report-stat {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: 0.9rem;
+  padding: 0.95rem 1.05rem;
+}
+
+.report-stat strong {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.report-stat span {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-top: 0.15rem;
+}
+
+/* ---------- The generated sentence ---------- */
+
+.report-quote {
+  border-left: 3px solid var(--brand);
+  padding: 0.15rem 0 0.15rem 1rem;
+  margin: 1.3rem 0 0;
+}
+
+.report-quote h3,
+.report-findings h3 {
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  margin-bottom: 0.4rem;
+}
+
+.report-quote p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* ---------- Findings ---------- */
+
+.report-findings {
+  margin-top: 1.4rem;
+}
+
+.report-findings ul {
+  display: grid;
+  gap: 0.6rem;
+  list-style: none;
+}
+
+.report-findings li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: baseline;
+  gap: 0.75rem;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--muted);
+  border-radius: 0.75rem;
+  padding: 0.75rem 0.95rem;
+}
+
+.report-findings li.tone-warning {
+  border-left-color: var(--warning);
+}
+.report-findings li.tone-good {
+  border-left-color: var(--good);
+}
+
+.report-finding-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.report-findings li.tone-warning .report-finding-badge {
+  color: var(--warning);
+}
+.report-findings li.tone-good .report-finding-badge {
+  color: var(--good);
+}
+
+.report-findings p {
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+/* ---------- The per-child comparison ---------- */
+
+/*
+ * Shown only when the family has more than one child device — `reportChildren`
+ * withholds the rows otherwise, because a one-row comparison is the hero figure
+ * repeated under a heading.
+ */
+.report-children {
+  margin-top: 1.6rem;
+}
+
+.report-children h3 {
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  margin-bottom: 0.25rem;
+}
+
+.report-children .hint {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-bottom: 0.7rem;
+}
+
+/*
+ * Seven columns do not fit a phone, and the sheet must never scroll sideways as
+ * a whole — a parent reading this on a phone would lose the hero figure off the
+ * edge. The table scrolls inside its own box instead.
+ */
+.report-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 0.9rem;
+  background: var(--surface-2);
+}
+
+.report-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.84rem;
+  /* Figures line up down the column; names do not, and get `start` below. */
+  font-variant-numeric: tabular-nums;
+}
+
+.report-table th,
+.report-table td {
+  padding: 0.62rem 0.85rem;
+  /* Logical, not `left`: Arabic is a shipped locale and this table is numbers
+     in columns, which is exactly where a hardcoded side shows. */
+  text-align: start;
+  white-space: nowrap;
+}
+
+.report-table thead th {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  border-bottom: 1px solid var(--line);
+}
+
+.report-table tbody tr + tr th,
+.report-table tbody tr + tr td {
+  border-top: 1px solid var(--line);
+}
+
+/* The child's name is the row header, so it carries the weight. */
+.report-table tbody th {
+  font-weight: 650;
+  color: var(--ink);
+  white-space: normal;
+  min-width: 8rem;
+}
+
+.report-table tbody td {
+  color: var(--ink-2);
+}
+
+.report-table tbody tr.is-busiest th {
+  box-shadow: inset 3px 0 0 var(--brand);
+}
+
+.report-table-flag {
+  display: block;
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--brand);
+  margin-top: 0.1rem;
+}
+
+.report-fine {
+  font-size: 0.72rem;
+  line-height: 1.5;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+  margin-top: 1.4rem;
+  padding-top: 0.8rem;
+}
+
+/* ---------- Empty state and history ---------- */
+
+.report-empty {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+}
+
+.report-empty .icon {
+  margin: 0 auto 0.75rem;
+  color: var(--muted);
+}
+
+.report-empty h2 {
+  font-size: 1.1rem;
+}
+
+.report-empty .hint {
+  max-width: 34rem;
+  margin: 0.5rem auto 1.1rem;
+}
+
+.report-error {
+  font-size: 0.83rem;
+  color: var(--critical);
+  margin-bottom: 0.8rem;
+}
+
+.report-history-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.report-chip {
+  display: grid;
+  gap: 0.15rem;
+  text-align: left;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: 0.7rem;
+  padding: 0.55rem 0.8rem;
+}
+
+.report-chip strong {
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.report-chip span {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.report-chip.is-active {
+  border-color: color-mix(in srgb, var(--brand) 55%, transparent);
+  background: color-mix(in srgb, var(--brand) 12%, var(--surface-2));
+}
+
+@media (max-width: 820px) {
+  .report-hero {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .report-stats {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ==================================================================
+   Print — this is the "Save as PDF" path.
+   ------------------------------------------------------------------
+   The screen palette is a dark navy surface, which on paper is a full
+   page of toner and unreadable in a photocopy. The sheet flips its own
+   local variables to a light set instead of being restyled rule by
+   rule: everything above resolves through `--surface`, `--ink` and the
+   status colours, so redefining those four is the whole print theme.
+   ================================================================== */
+
+@media print {
+  .dash-side,
+  .dash-top,
+  .report-actions,
+  .report-history,
+  .write-note,
+  .toast {
+    display: none !important;
+  }
+
+  .dash {
+    display: block;
+    background: #fff;
+    color: #12182a;
+  }
+
+  .dash-main {
+    padding: 0;
+  }
+
+  .report-sheet {
+    --surface: #fff;
+    --surface-2: #f4f6fb;
+    --ink: #12182a;
+    --ink-2: #3d4b66;
+    --muted: #5a6782;
+    --line: #d7deeb;
+    border: 0;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+    break-inside: avoid;
+  }
+
+  /* Backgrounds are dropped by default in every browser's print path, so
+     the tinted panels have to ask for their ink explicitly or the
+     findings lose the only thing separating them. */
+  .report-hero,
+  .report-stat,
+  .report-findings li,
+  .report-table-wrap {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* On paper there is nowhere to scroll to, so the table has to fit — and it
+     must not be split across a page break, which would orphan a child's row
+     from the header naming the columns. */
+  .report-table-wrap {
+    overflow-x: visible;
+  }
+
+  .report-children,
+  .report-table {
+    break-inside: avoid;
+  }
+
+  .report-table th,
+  .report-table td {
+    padding: 0.45rem 0.5rem;
+    white-space: normal;
+  }
+}

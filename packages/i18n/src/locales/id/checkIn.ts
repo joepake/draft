@@ -1,0 +1,41 @@
+export const checkIn = {
+  noPhotoBadge: 'Tidak ada foto terlampir',
+  historyTitle: 'Riwayat Check-In',
+  historyHint:
+    'Ketuk foto untuk memperbesar. Anda bisa meminta Check-In baru di atas kapan saja.',
+  historyEmpty: 'Belum ada Check-In.',
+  screenTitle: 'Check-In',
+  statusSafe: 'Aman',
+  statusNoResponse: 'Tidak ada respons',
+  statusWaiting: 'Menunggu',
+  metaWaitingForLocationAndPhoto: 'Menunggu lokasi dan foto',
+  metaNoLocation: 'Tanpa lokasi',
+  viewPhotoAccessibility: 'Lihat foto Check-In',
+  responseMessage: 'Aku aman.',
+  toastSuccess: 'Terima kasih. Orang tuamu tahu kamu aman.',
+  toastFailed: 'Tidak dapat mengirim Check-In. Coba lagi.',
+  quickCheckInBadge: 'Check-In',
+  areYouOkay: 'Kamu baik-baik saja?',
+  checkInWithPhotoBody:
+    'Orang tuamu ingin tahu kamu baik-baik saja. KidGate akan mengirim lokasimu dan foto jika memungkinkan.',
+  checkInLocationOnlyBody:
+    'Orang tuamu ingin tahu kamu baik-baik saja. KidGate akan mengirim lokasimu jika memungkinkan.',
+  yesImOkay: 'Aku baik-baik saja',
+  yesImOkaySending: 'Mengirim…',
+  iNeedHelp: 'Aku butuh bantuan',
+  checkInRequested: 'Check-In diminta',
+  checkInRequestedDescription:
+    'Meminta {{deviceName}} mengonfirmasi bahwa mereka aman, dengan lokasi dan foto.',
+  checkInRequestedDescriptionLocation:
+    'Meminta {{deviceName}} mengonfirmasi bahwa mereka aman, dengan lokasi.',
+  checkInConfirmed: 'Check-In dikonfirmasi',
+  checkInConfirmedDescription: '{{deviceName}} mengonfirmasi bahwa mereka aman.',
+  childDeviceFallback: 'Perangkat anak',
+  requestCheckIn: 'Minta Check-In',
+  requestCheckInNote: 'Meminta lokasi dan foto kamera depan dari perangkat anak.',
+  needHelpOpenSosAccessibility: 'Aku butuh bantuan — buka SOS',
+  parentSafePopupTitle: 'Anak Anda aman',
+  childSafePopupTitle: 'Orang tua sudah diberi tahu',
+  childSafePopupBody: 'Orang tuamu menerima pesannya — kamu aman.',
+  confirmedKicker: 'Check-In',
+} as const;

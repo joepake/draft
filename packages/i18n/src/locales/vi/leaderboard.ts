@@ -1,0 +1,22 @@
+export const leaderboard = {
+  title: 'Bảng tích sao',
+  thisWeek: 'Tuần này',
+  resetsNote: 'Bắt đầu lại vào mỗi thứ Hai.',
+  rowA11y: 'Hạng {{rank}}, {{name}}, {{count}} sao',
+  settingsTitle: 'Bảng tích sao',
+  settingsBody: 'Cho các con thấy mỗi bạn kiếm được bao nhiêu sao trong tuần này.',
+  childrenTitle: 'Các con',
+  childrenBody: 'Nhóm thiết bị theo người dùng. Một bạn có thể dùng nhiều máy.',
+  addChild: 'Thêm một bé',
+  childNameLabel: 'Tên',
+  childNamePlaceholder: 'ví dụ: Mai',
+  unassigned: 'Chưa gán',
+  assignLabel: 'Người dùng',
+  assignNobody: 'Chưa có ai',
+  deviceCount: '{{count}} thiết bị',
+  removeChild: 'Xoá',
+  removeChildConfirmTitle: 'Xoá bé này?',
+  removeChildConfirmBody:
+    'Thiết bị vẫn ghép nối và vẫn báo cáo bình thường — chỉ là không tính cho ai cho tới khi bạn gán lại.',
+  needsTwoChildren: 'Thêm bé thứ hai để bắt đầu Bảng tích sao.',
+} as const;

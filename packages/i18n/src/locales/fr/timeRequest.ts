@@ -1,0 +1,67 @@
+export const timeRequest = {
+  alertMorePending: '{{count}} autres demandes attendent dans Famille.',
+  pauseConfirmTitle: 'Verrouiller {{deviceName}} ?',
+  pauseConfirmBody:
+    'Cela verrouille l’appareil maintenant au lieu d’accorder plus de temps. {{deviceName}} sera inutilisable jusqu’au déverrouillage.',
+  pauseConfirmAction: 'Verrouiller l’appareil',
+  alertTitle: 'Demande de temps reçue',
+  alertMessage: '{{deviceName}} a demandé {{minutes}} minutes supplémentaires.',
+  alertReasonLine: 'Motif : {{reason}}',
+  alertNotNow: 'Pas maintenant',
+  alertApprove: 'Approuver',
+  alertPauseInstead: 'Verrouiller à la place',
+  alertLater: 'Plus tard',
+  toastDeclineFailed: 'Impossible de refuser la demande. Veuillez réessayer.',
+  toastApproveFailed: 'Impossible d’approuver la demande. Veuillez réessayer.',
+  toastLockFailed: 'Impossible de verrouiller l’appareil. Veuillez réessayer.',
+  statusWaitingForApproval:
+    'En attente de la réponse de tes parents ({{minutes}} minutes demandées).',
+  statusCooldown: 'Tu peux envoyer une nouvelle demande dans {{time}}.',
+  statusDailyLimitExceeded:
+    'Tu as utilisé tout ton temps d’écran du jour. Les applications se rouvriront demain — ou plus tôt si tes parents ajoutent du temps.',
+  errorDeviceNotRegistered: 'Cet appareil n’est pas enregistré.',
+  errorMinutesRange: 'Indique entre {{min}} et {{max}} minutes.',
+  toastRequestSent: 'Demande envoyée. Tes parents vont bientôt l’examiner.',
+  toastDeviceNotRegistered: 'Cet appareil n’est pas encore enregistré.',
+  toastSendFailed: 'Impossible d’envoyer ta demande. Réessaie.',
+  askForMoreTime: 'Demander plus de temps',
+  askForMoreTimeSubtitle:
+    'Si tes parents approuvent, tu obtiens plus de temps d’écran aujourd’hui.',
+  sendToParent: 'Envoyer à tes parents',
+  howManyMinutes: 'De combien de minutes as-tu besoin ?',
+  minutesNeeded: 'Minutes nécessaires',
+  reasonOptional: 'Motif (facultatif)',
+  reasonPlaceholder: 'Devoirs, travail de groupe, etc.',
+  enterAtLeastMinutes: 'Indique au moins {{min}} minutes.',
+  requestsLimitedToMinutes: 'Chaque demande est limitée à {{max}} minutes.',
+  unableToSendRequest: 'Impossible d’envoyer ta demande pour le moment. Réessaie.',
+  needsApproval: 'Approbation requise',
+  timeRequests: 'Demandes de temps',
+  plusMinutesBadge: '+{{minutes}} min',
+  notNow: 'Pas maintenant',
+  approve: 'Approuver',
+  unableToDeclineRequest: 'Impossible de refuser la demande. Veuillez réessayer.',
+  unableToApproveRequest: 'Impossible d’approuver la demande. Veuillez réessayer.',
+  pendingRequestExists:
+    'Tu as déjà envoyé une demande. Merci d’attendre la réponse de tes parents.',
+  waitBeforeAnotherRequest:
+    'Merci d’attendre quelques minutes avant d’envoyer une autre demande.',
+  timeRequestSent: 'Demande de temps envoyée',
+  timeRequestSentDescription:
+    '{{deviceName}} a demandé {{minutes}} minutes supplémentaires.',
+  timeRequestApproved: 'Demande de temps approuvée',
+  timeRequestDenied: 'Demande de temps refusée',
+  timeRequestApprovedDescription:
+    '{{minutes}} minutes supplémentaires ajoutées pour {{deviceName}} aujourd’hui.',
+  timeRequestDeniedDescription: '{{minutes}} minutes refusées pour {{deviceName}}.',
+  needMoreTimeTitle: 'Besoin de plus de temps ?',
+  askParentForMoreTime:
+    'Tu peux demander un peu plus de temps d’écran à tes parents aujourd’hui.',
+  requestMoreTime: 'Demander plus de temps',
+  requestMoreTimeAccessibilityLabel: 'Demander plus de temps',
+  requestPendingButton: 'Demande en attente',
+  requestPendingChip: 'Demande en attente',
+  waitCooldown: 'Attendre {{cooldown}}',
+  timeRequestNote:
+    'Si tes parents approuvent, tu obtiens plus de temps d’écran aujourd’hui.',
+} as const;

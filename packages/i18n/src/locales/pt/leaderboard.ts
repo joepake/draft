@@ -1,0 +1,22 @@
+export const leaderboard = {
+  title: 'Quadro de estrelas',
+  thisWeek: 'Esta semana',
+  resetsNote: 'Recomeça toda segunda-feira.',
+  rowA11y: '{{rank}}. {{name}}, {{count}} estrelas',
+  settingsTitle: 'Quadro de estrelas',
+  settingsBody: 'Seus filhos veem quantas estrelas cada um conquistou nesta semana.',
+  childrenTitle: 'Filhos',
+  childrenBody: 'Agrupe os dispositivos por quem os usa. Um filho pode ter mais de um.',
+  addChild: 'Adicionar filho',
+  childNameLabel: 'Nome',
+  childNamePlaceholder: 'ex.: Mai',
+  unassigned: 'Sem atribuição',
+  assignLabel: 'Usado por',
+  assignNobody: 'Ainda ninguém',
+  deviceCount: '{{count}} dispositivos',
+  removeChild: 'Remover',
+  removeChildConfirmTitle: 'Remover este filho?',
+  removeChildConfirmBody:
+    'Os dispositivos continuam pareados e enviando dados — apenas deixam de contar para alguém até você atribuí-los de novo.',
+  needsTwoChildren: 'Adicione um segundo filho para começar o quadro de estrelas.',
+} as const;

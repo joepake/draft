@@ -1,0 +1,46 @@
+export const blockedApps = {
+  title: 'Chặn ứng dụng',
+  toastChooseAppsFirst:
+    'Hãy nhờ con mở Cài đặt KidGate trên máy của con và chọn ứng dụng cần chặn trước.',
+  toastSaveFailed: 'Không thể lưu. Vui lòng thử lại.',
+  statusBlockingOn: 'Đang chặn',
+  statusBlockingOff: 'Chưa chặn',
+  heroTitle: 'Ứng dụng đã chọn để chặn',
+  heroSubtitle:
+    'Danh sách ứng dụng và danh mục được chọn trên thiết bị của trẻ. KidGate đồng bộ về đây để bạn xem lại.',
+  statAppsLabel: 'Ứng dụng',
+  statCategoriesLabel: 'Danh mục',
+  toggleTitle: 'Bật chặn ứng dụng',
+  toggleSubtitleOn: 'Các ứng dụng đã chọn sẽ bị chặn trên thiết bị của trẻ.',
+  toggleSubtitleOff: 'Bật để chặn từ xa các ứng dụng đã chọn.',
+  toggleAccessibilityLabel: 'Bật chặn ứng dụng',
+  emptyTitle: 'Chưa chặn ứng dụng nào',
+  emptySubtitle:
+    'Trên thiết bị của trẻ, mở Cài đặt KidGate → Chọn ứng dụng cần chặn, nhập mã PIN phụ huynh rồi lưu lại.',
+  sectionTitle: 'Danh sách chặn',
+  privacyTitle: 'Danh sách ứng dụng được lấy từ thiết bị của trẻ',
+  privacySubtitle:
+    'Trên iOS, Apple có thể ẩn tên ứng dụng khỏi thiết bị phụ huynh. Trên các thiết bị khác, tên các ứng dụng đã chọn sẽ được đồng bộ về đây. Việc thay đổi danh sách vẫn cần mã PIN phụ huynh trên thiết bị của trẻ.',
+  infoTitle: 'Cách hoạt động',
+  infoLine1: 'Chọn ứng dụng trên thiết bị của trẻ sau khi nhập mã PIN phụ huynh.',
+  infoLine2:
+    'Khóa thiết bị, Giờ khóa thiết bị và Giới hạn hằng ngày vẫn chặn toàn bộ ứng dụng.',
+  infoLine3: 'Bật hoặc tắt chặn bất cứ lúc nào ngay tại màn hình này.',
+  appKind: 'Ứng dụng',
+  categoryKind: 'Danh mục',
+  websiteKind: 'Trang web',
+  noAppsSelectedYet: 'Chưa chọn ứng dụng',
+  blockedAppCount: '{{count}} ứng dụng',
+  blockedCategoryCount: '{{count}} danh mục',
+  blockedItemCount: '{{count}} mục bị chặn',
+  blockedListReady: 'Danh sách chặn đã sẵn sàng',
+  blockedAppsLabel: 'Chặn ứng dụng',
+  appsConfiguredChip: 'Đã chọn ứng dụng',
+  appsNotSetChip: 'Chưa chọn ứng dụng',
+  appBlockingSectionTitle: 'Chặn ứng dụng',
+  appBlockingSectionDescription:
+    'Chọn những ứng dụng mà phụ huynh có thể chặn trên thiết bị này.',
+  savedItemsForBlocking: 'Đã lưu {{count}} mục để chặn.',
+  noAppsSelected: 'Bạn chưa chọn ứng dụng nào.',
+  unableToOpenAppPicker: 'Không thể mở bảng chọn ứng dụng. Vui lòng thử lại.',
+} as const;

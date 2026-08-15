@@ -1,0 +1,62 @@
+export const auth = {
+  welcomeBack: 'Che piacere rivederti',
+  loginSubtitle: 'Accedi per gestire e proteggere i dispositivi dei tuoi figli.',
+  emailSignInTitle: 'Accedi con l’email',
+  emailSignInSubtitle: 'Usa la tua email e password da genitore.',
+  createAccountTitle: 'Crea un account genitore',
+  createAccountSubtitle:
+    'Usa email e password per poter accedere in seguito da qualsiasi dispositivo.',
+  linkEmailTitle: 'Collega email e password',
+  linkEmailSubtitle: 'Aggiungi un accesso email di riserva a questo account genitore.',
+  forgotPasswordTitle: 'Reimposta la password',
+  forgotPasswordSubtitle:
+    'Inserisci la tua email e ti invieremo un link per reimpostare la password.',
+  nameLabel: 'Il tuo nome',
+  namePlaceholder: 'es. Mamma, Papà',
+  emailLabel: 'Email',
+  emailPlaceholder: 'genitore@esempio.com',
+  passwordLabel: 'Password',
+  passwordPlaceholder: 'Inserisci la password',
+  showPassword: 'Mostra password',
+  hidePassword: 'Nascondi password',
+  confirmPasswordLabel: 'Conferma password',
+  confirmPasswordPlaceholder: 'Inserisci di nuovo la password',
+  passwordsDoNotMatch: 'Le password non coincidono.',
+  signInWithEmail: 'Continua con l’email',
+  createAccountButton: 'Crea account',
+  linkEmailButton: 'Collega email e password',
+  sendResetLink: 'Invia link di reimpostazione',
+  forgotPassword: 'Password dimenticata?',
+  forgotPasswordSent: 'Email di reimpostazione inviata. Controlla la posta in arrivo.',
+  emailVerificationTitle: 'Verifica la tua email',
+  emailVerificationSubtitle:
+    'Abbiamo inviato un link di verifica a {{email}}. Apri il link, poi torna qui per continuare.',
+  emailVerificationPending:
+    'Apri il link di verifica nella posta in arrivo prima di continuare.',
+  emailVerificationSent:
+    'Email di verifica inviata. Controlla la posta in arrivo (e lo spam).',
+  emailVerificationResent: 'Email di verifica inviata di nuovo.',
+  emailVerificationStillPending:
+    'La tua email non è ancora verificata. Apri il link nella posta e riprova.',
+  emailVerificationConfirmed: 'Ho verificato — continua',
+  emailVerificationResend: 'Invia di nuovo l’email di verifica',
+  emailVerificationSignInFirst:
+    'Accedi di nuovo per inviare nuovamente l’email di verifica.',
+  noAccountPrompt: 'Non hai un account?',
+  createAccountAction: 'Creane uno',
+  hasAccountPrompt: 'Hai già un account?',
+  signInAction: 'Accedi',
+  orContinueWith: 'Oppure continua con',
+  signInWithGoogle: 'Continua con Google',
+  signInWithApple: 'Continua con Apple',
+  signInCancelled: 'Accesso annullato.',
+  appleSignInNotConfigured:
+    'L’accesso con Apple non è disponibile al momento. Prova un altro metodo.',
+  consentPrefix: 'Continuando accetti i nostri ',
+  termsOfService: 'Termini di servizio',
+  consentMiddle: ' e la ',
+  privacyPolicy: 'Informativa sulla privacy',
+  consentSuffix:
+    '. KidGate è per i genitori; i bambini vengono aggiunti solo con il consenso dei genitori.',
+  passwordRequired: 'Inserisci la tua password.',
+};

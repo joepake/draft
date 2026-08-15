@@ -1,0 +1,257 @@
+export const userGuide = {
+  title: 'Hướng dẫn sử dụng',
+  subtitle:
+    'Hướng dẫn từng bước về cấp quyền, kết nối thiết bị, điều khiển hằng ngày và các tính năng an toàn.',
+  stepLabel: 'Bước {{n}}',
+  stepsSectionTitle: 'Các bước thực hiện',
+  tipTitle: 'Lưu ý',
+  groups: {
+    gettingStarted: {
+      title: 'Bắt đầu',
+      description: 'Thiết lập lần đầu cho thiết bị phụ huynh và thiết bị của trẻ',
+    },
+    connection: {
+      title: 'Kết nối thiết bị',
+      description: 'Ghép nối thiết bị của trẻ hoặc mời thêm phụ huynh',
+    },
+    permissions: {
+      title: 'Cấp quyền ứng dụng',
+      description: 'Bật các quyền KidGate cần trên thiết bị của trẻ',
+    },
+    controls: {
+      title: 'Điều khiển hằng ngày',
+      description: 'Giới hạn, lịch khóa, chặn ứng dụng và khóa thiết bị',
+    },
+    safety: {
+      title: 'An toàn và theo dõi',
+      description: 'Vị trí, Báo an toàn, SOS, chặn web và các tính năng bảo vệ',
+    },
+  },
+  topics: {
+    getStartedParent: {
+      title: 'Thiết lập thiết bị phụ huynh',
+      summary: 'Tạo tài khoản, tạo gia đình và kết nối thiết bị đầu tiên của trẻ.',
+      tip: 'Hãy thiết lập mã PIN phụ huynh sớm. Bạn cần mã PIN này để thay đổi các cài đặt quan trọng và mở khóa điều khiển trên thiết bị của trẻ.',
+      steps: {
+        '1': 'Cài KidGate trên thiết bị của bạn. Mở ứng dụng và chọn Đây là thiết bị của phụ huynh.',
+        '2': 'Đăng nhập bằng Google hoặc Apple, hoặc tạo tài khoản bằng email. Xác nhận bạn là chủ gia đình của hộ gia đình này.',
+        '3': 'Nếu được hỏi, hãy đặt tên gia đình (ví dụ: “Gia đình Nguyễn”). Tên này sẽ hiển thị khi các phụ huynh khác tham gia.',
+        '4': 'Thiết lập mã PIN phụ huynh (6 chữ số) trong Cài đặt → Bảo mật. Vui lòng ghi nhớ hoặc lưu giữ ở nơi an toàn và không chia sẻ với trẻ.',
+        '5': 'Khuyến nghị: bật Khóa ứng dụng và mở khóa bằng sinh trắc học trong Cài đặt để người khác không thể mở ứng dụng phụ huynh trên thiết bị của bạn.',
+        '6': 'Mở mục Gia đình (Thiết bị). Chạm + và chọn Kết nối thiết bị của trẻ. Giữ màn hình này sẵn sàng để quét mã QR hoặc nhập mã từ thiết bị của trẻ.',
+        '7': 'Sau khi thiết bị của trẻ được kết nối, mở thẻ thiết bị đó. Hãy cùng trẻ thiết lập Giới hạn hằng ngày, Giờ khóa thiết bị và hoàn tất việc cấp quyền.',
+      },
+    },
+    getStartedChild: {
+      title: 'Thiết lập thiết bị của trẻ',
+      summary: 'Cài KidGate trên thiết bị của trẻ và hoàn tất việc cấp quyền.',
+      tip: 'Nên thực hiện cùng phụ huynh. Nhiều màn hình cấp quyền chỉ xuất hiện một lần và rất dễ bỏ sót nếu tự thực hiện.',
+      steps: {
+        '1': 'Cài KidGate trên thiết bị của trẻ. Mở ứng dụng và chọn Đây là thiết bị của trẻ.',
+        '2': 'Giữ màn hình ghép nối luôn mở. Đưa mã QR cho phụ huynh hoặc đọc mã gồm 6 ký tự.',
+        '3': 'Trên thiết bị phụ huynh, quét mã QR hoặc nhập mã. Trên thiết bị của trẻ, xác nhận phụ huynh khi được hỏi — chỉ chấp nhận người mà bạn biết rõ.',
+        '4': 'Chờ đến khi màn hình chính hiển thị trạng thái đã kết nối. Không đóng KidGate trong quá trình thiết lập.',
+        '5': 'Tại màn hình Trạng thái, hãy cấp toàn bộ quyền mà KidGate yêu cầu (thông báo, vị trí, camera và các quyền riêng theo nền tảng). Chạm từng dòng cho đến khi hiển thị đã cho phép.',
+        '6': 'Vui lòng giữ KidGate được cài đặt và đăng nhập trên thiết bị của trẻ. Sau bước này, phụ huynh sẽ quản lý các giới hạn từ thiết bị của họ.',
+      },
+    },
+    connectChild: {
+      title: 'Kết nối thiết bị của trẻ',
+      summary:
+        'Ghép nối một thiết bị mới của trẻ vào gia đình bằng mã QR hoặc mã ký tự.',
+      tip: 'Mã ghép nối có thời hạn. Nếu ghép nối không thành công, hãy chạm Tạo mã mới trên thiết bị của trẻ rồi thử lại.',
+      steps: {
+        '1': 'Trên thiết bị của trẻ: mở KidGate → Đây là thiết bị của trẻ. Giữ màn hình hiển thị mã QR hoặc mã ký tự.',
+        '2': 'Trên thiết bị phụ huynh: mở Gia đình → chạm + → Kết nối thiết bị của trẻ.',
+        '3': 'Khuyến nghị dùng mã QR: chạm Quét mã QR, cấp quyền camera nếu được hỏi, sau đó đưa mã QR của trẻ vào khung hình.',
+        '4': 'Hoặc dùng mã ký tự: chạm Nhập mã thủ công, nhập 6 ký tự hiển thị trên thiết bị của trẻ rồi tiếp tục.',
+        '5': 'Trên thiết bị của trẻ, đọc kỹ màn hình xác nhận. Chỉ chạm Đồng ý kết nối khi tên phụ huynh hiển thị chính xác.',
+        '6': 'Chờ thiết bị phụ huynh báo đã kết nối. Thiết bị mới sẽ xuất hiện trong mục Gia đình.',
+        '7': 'Mở thiết bị mới và kiểm tra mục Hoạt động lần cuối đã được cập nhật. Nếu vẫn ngoại tuyến, hãy mở lại KidGate trên thiết bị của trẻ và kiểm tra kết nối mạng.',
+        '8': 'Tiếp theo, hãy cấp quyền trên thiết bị của trẻ (xem nhóm Cấp quyền ứng dụng). Các chức năng điều khiển sẽ chưa hoạt động đầy đủ nếu còn thiếu quyền.',
+      },
+    },
+    inviteParent: {
+      title: 'Mời thêm phụ huynh',
+      summary:
+        'Thêm phụ huynh thứ hai vào cùng gia đình để cùng quản lý các thiết bị của trẻ.',
+      tip: 'Chỉ chủ gia đình mới phê duyệt được yêu cầu tham gia. Vui lòng phê duyệt sớm vì yêu cầu có thể hết hạn.',
+      steps: {
+        '1': 'Trên thiết bị của chủ gia đình, mở Gia đình → chạm + → Thêm thiết bị phụ huynh (hoặc Mời phụ huynh).',
+        '2': 'Nếu chưa đặt tên gia đình, hãy nhập tên rồi chạm Tạo gia đình.',
+        '3': 'Đưa mã QR mời cho phụ huynh còn lại, hoặc gửi mã mời cho họ.',
+        '4': 'Trên thiết bị của phụ huynh đó: mở KidGate với vai trò phụ huynh → Gia đình → + → Tham gia gia đình, sau đó quét mã QR hoặc nhập mã.',
+        '5': 'Quay lại thiết bị của chủ gia đình, mở yêu cầu đang chờ và chạm Phê duyệt. Hãy từ chối nếu bạn không nhận ra người đó.',
+        '6': 'Phụ huynh mới sẽ thấy cùng các thiết bị của trẻ và có thể hỗ trợ quản lý giới hạn. Một số thao tác như đổi tên hoặc gỡ thiết bị chỉ chủ gia đình mới thực hiện được.',
+      },
+    },
+    joinFamily: {
+      title: 'Tham gia gia đình có sẵn',
+      summary: 'Dùng lời mời từ chủ gia đình để trở thành đồng phụ huynh.',
+      tip: 'Nếu yêu cầu phê duyệt hết hạn, vui lòng đề nghị chủ gia đình tạo mã QR hoặc mã mời mới.',
+      steps: {
+        '1': 'Cài KidGate và đăng nhập với vai trò phụ huynh trên thiết bị của bạn.',
+        '2': 'Mở Gia đình → chạm + → Tham gia gia đình.',
+        '3': 'Quét mã QR mời của chủ gia đình, hoặc nhập mã mời gồm 6 ký tự.',
+        '4': 'Chờ chủ gia đình phê duyệt. Vui lòng giữ ứng dụng mở đến khi thấy thông báo đã tham gia gia đình.',
+        '5': 'Kiểm tra các thiết bị của trẻ đã hiển thị trong mục Gia đình. Mở một thiết bị để xem trạng thái và các chức năng điều khiển.',
+      },
+    },
+    androidPermissions: {
+      title: 'Cấp quyền Android (thiết bị của trẻ)',
+      summary:
+        'Bật Truy cập mức sử dụng, Hiển thị trên ứng dụng khác, Trợ năng, quyền pin và các quyền liên quan.',
+      tip: 'Điều quan trọng là cấp đủ quyền, không phải thứ tự thực hiện. Mọi mục còn báo đỏ hoặc chưa cho phép trên màn hình Trạng thái của thiết bị trẻ cần được xử lý trước khi sử dụng chức năng Khóa thiết bị hoặc Giờ khóa thiết bị.',
+      steps: {
+        '1': 'Trên thiết bị của trẻ, mở KidGate → Trạng thái và thực hiện lần lượt từ trên xuống trong danh sách quyền.',
+        '2': 'Thông báo: chạm vào dòng tương ứng → Cho phép. Phụ huynh cần thông báo đẩy cho lệnh khóa và yêu cầu thêm giờ.',
+        '3': 'Truy cập mức sử dụng: mở màn hình hệ thống → tìm KidGate → bật. Quyền này cần thiết để theo dõi thời gian sử dụng và áp dụng giới hạn.',
+        '4': 'Hiển thị trên ứng dụng khác: cho phép KidGate. Quyền này cần thiết để màn hình khóa hiển thị đè lên các ứng dụng khác.',
+        '5': 'Trợ năng hỗ trợ khóa: Cài đặt → Trợ năng → Ứng dụng đã cài đặt / Đã tải xuống → KidGate → Bật. Quyền này giúp duy trì khóa ổn định.',
+        '6': 'Pin không hạn chế: chạm Cho phép khi hệ thống hỏi. Nếu hộp thoại không xuất hiện: Thông tin ứng dụng → Pin → Không hạn chế.',
+        '7': 'Báo thức chính xác: cho phép để Giờ khóa thiết bị bắt đầu và kết thúc đúng giờ.',
+        '8': 'Vị trí và Camera (nếu sử dụng Báo an toàn hoặc SOS kèm ảnh): cấp quyền theo yêu cầu của KidGate. Sau đó quay lại màn hình Trạng thái và xác nhận toàn bộ các mục đã được cho phép.',
+      },
+    },
+    iosScreenTime: {
+      title: 'Thời gian sử dụng trên iOS (thiết bị của trẻ)',
+      summary:
+        'Cho phép Sử dụng ứng dụng và Trang web để chức năng khóa, lịch trình và chọn ứng dụng hoạt động.',
+      tip: 'Nếu không thấy nút Cho phép, vui lòng mở Cài đặt iOS → Thời gian sử dụng và bật Thời gian sử dụng trên thiết bị của trẻ trước.',
+      steps: {
+        '1': 'Trên thiết bị iPhone của trẻ, mở KidGate và ở lại màn hình Trạng thái / thiết lập.',
+        '2': 'Chạm Cho phép Sử dụng ứng dụng và Trang web (hoặc chạm vào biểu ngữ Thời gian sử dụng).',
+        '3': 'Trong hộp thoại hệ thống, chạm Cho phép. Vui lòng không đóng hộp thoại khi chưa lựa chọn.',
+        '4': 'Quay lại KidGate. Biểu ngữ sẽ biến mất khi quyền được cấp thành công.',
+        '5': 'Nếu trước đó đã từ chối: mở Cài đặt iOS → tìm KidGate → bật các tùy chọn Thời gian sử dụng / Family Controls liên quan, sau đó mở lại KidGate.',
+        '6': 'Nếu muốn chọn ứng dụng cần chặn: trên thiết bị của trẻ, mở Cài đặt KidGate → nhập mã PIN phụ huynh → Chọn ứng dụng cần chặn → lưu lại.',
+        '7': 'Trên thiết bị phụ huynh, mở thiết bị → Chặn ứng dụng và kiểm tra danh sách đã đồng bộ. Bật chặn khi bạn đã sẵn sàng.',
+      },
+    },
+    oemKeepRunning: {
+      title: 'Giữ KidGate chạy nền (theo nhà sản xuất)',
+      summary:
+        'Các thiết bị Xiaomi, Samsung, Oppo, Vivo, Huawei… thường tạm dừng ứng dụng chạy nền.',
+      tip: 'Sau khi thay đổi quy tắc pin, hãy khởi động lại thiết bị của trẻ một lần, mở lại KidGate, sau đó thử chức năng Khóa thiết bị từ thiết bị phụ huynh.',
+      steps: {
+        '1': 'Trên thiết bị Android của trẻ, mở KidGate → Trạng thái → mục Giữ KidGate chạy nền.',
+        '2': 'Cho phép KidGate tự khởi động trong màn hình bảo mật của nhà sản xuất (tên mục có thể khác nhau tùy thiết bị).',
+        '3': 'Đặt mức sử dụng pin của KidGate thành Không hạn chế ở cả Cài đặt Android và menu pin của nhà sản xuất (nếu có cả hai).',
+        '4': 'Tắt các danh sách “ứng dụng ngủ”, “ngủ sâu” hoặc “đưa ứng dụng vào chế độ ngủ” nếu KidGate nằm trong danh sách đó.',
+        '5': 'Nếu lối tắt không hoạt động, vui lòng tự mở ứng dụng Bảo mật / Chăm sóc thiết bị, tìm KidGate rồi thiết lập Tự khởi động hoặc Pin.',
+        '6': 'Trong KidGate, hãy đánh dấu Đã xong cho từng mục sau khi hoàn tất để dễ theo dõi phần còn thiếu.',
+      },
+    },
+    dailyLimit: {
+      title: 'Đặt Giới hạn hằng ngày',
+      summary: 'Giới hạn số phút trẻ được sử dụng thiết bị mỗi ngày.',
+      tip: 'Dữ liệu sử dụng được cập nhật từ thiết bị của trẻ. Nếu số phút không thay đổi, vui lòng mở KidGate trên thiết bị của trẻ và chờ đồng bộ.',
+      steps: {
+        '1': 'Trên thiết bị phụ huynh, mở Gia đình → chạm vào thiết bị của trẻ.',
+        '2': 'Trong mục Điều khiển chính, chạm Giới hạn hằng ngày.',
+        '3': 'Chọn số phút cho mỗi ngày (hoặc chỉnh sửa mức hiện có), sau đó lưu lại.',
+        '4': 'Kiểm tra thẻ thiết bị hiển thị số phút đã dùng trên tổng giới hạn hôm nay sau khi thiết bị của trẻ đồng bộ.',
+        '5': 'Khi đạt giới hạn, thiết bị sẽ bị khóa theo quy tắc của nền tảng. Chạm Mở khóa trên màn hình thiết bị nếu bạn muốn cho phép sử dụng sớm hơn.',
+      },
+    },
+    blockedHours: {
+      title: 'Đặt Giờ khóa thiết bị',
+      summary: 'Lên lịch tối đa 3 khung giờ mà thiết bị phải giữ trạng thái khóa.',
+      tip: 'Nên thiết lập khung giờ đi học và giờ ngủ trước. Vui lòng tránh các khung giờ chồng lấn để dễ theo dõi.',
+      steps: {
+        '1': 'Mở thiết bị của trẻ trên thiết bị phụ huynh → Giờ khóa thiết bị.',
+        '2': 'Chạm Đặt Giờ khóa thiết bị (hoặc Sửa Giờ khóa thiết bị). Thêm khung giờ gồm giờ bắt đầu, giờ kết thúc và các ngày áp dụng.',
+        '3': 'Lưu khung giờ. Tổng cộng tối đa 3 khung giờ.',
+        '4': 'Bật lịch nếu màn hình có công tắc bật/tắt.',
+        '5': 'Trên thiết bị của trẻ, kiểm tra quyền Chuông báo và lời nhắc và quyền Thời gian sử dụng vẫn được cấp để lịch chạy đúng giờ.',
+        '6': 'Khi đang trong khung giờ khóa, thẻ thiết bị sẽ hiển thị Trong Giờ khóa thiết bị · đã khóa. Chỉ chạm Mở khóa khi bạn chủ ý bỏ qua lịch.',
+      },
+    },
+    blockedApps: {
+      title: 'Chặn từng ứng dụng cụ thể',
+      summary:
+        'Chọn ứng dụng trên thiết bị của trẻ, sau đó bật chặn từ thiết bị phụ huynh.',
+      tip: 'Trên iOS, Apple có thể ẩn tên ứng dụng khỏi thiết bị phụ huynh. Việc chọn ứng dụng vẫn được thực hiện trên thiết bị của trẻ bằng mã PIN phụ huynh.',
+      steps: {
+        '1': 'Thực hiện trực tiếp trên thiết bị của trẻ. Mở KidGate → Cài đặt.',
+        '2': 'Nhập mã PIN phụ huynh khi được yêu cầu.',
+        '3': 'Mở Chọn ứng dụng cần chặn. Chọn các ứng dụng (và danh mục nếu có), sau đó lưu lại trên thiết bị của trẻ.',
+        '4': 'Trên thiết bị phụ huynh, mở thiết bị → Chặn ứng dụng và chờ danh sách đã chọn hiển thị.',
+        '5': 'Bật Chặn ứng dụng. Trạng thái phải chuyển sang Đang chặn.',
+        '6': 'Thử mở một ứng dụng đã chặn trên thiết bị của trẻ. Ứng dụng sẽ bị hạn chế theo quy tắc của nền tảng.',
+        '7': 'Nếu muốn thay đổi danh sách về sau, hãy chọn lại trên thiết bị của trẻ bằng mã PIN phụ huynh. Thiết bị phụ huynh sẽ đồng bộ danh sách mới.',
+      },
+    },
+    lockUnlock: {
+      title: 'Khóa và mở khóa thiết bị',
+      summary: 'Khóa ngay thiết bị của trẻ hoặc khôi phục quyền sử dụng.',
+      tip: 'Trên Android, chức năng khóa hoạt động hiệu quả nhất khi đã bật quyền Hiển thị trên ứng dụng khác và Trợ năng. Trên iOS, chức năng khóa phụ thuộc vào quyền Thời gian sử dụng.',
+      steps: {
+        '1': 'Mở thiết bị của trẻ trên thiết bị phụ huynh.',
+        '2': 'Chạm Khóa thiết bị (hoặc Khóa trong KidGate, tùy tùy chọn hiển thị theo nền tảng).',
+        '3': 'Chờ vài giây. Trạng thái sẽ chuyển sang Đã khóa. Nếu trạng thái không thay đổi, vui lòng mở KidGate trên thiết bị của trẻ và kiểm tra lại các quyền.',
+        '4': 'Để cho phép sử dụng trở lại, chạm Mở khóa trên cùng màn hình thiết bị và xác nhận.',
+        '5': 'Tùy chọn: bạn cũng có thể khóa hoặc mở khóa nhanh từ mục Gia đình nếu thẻ thiết bị hiển thị lối tắt.',
+      },
+    },
+    locationSharing: {
+      title: 'Bật chia sẻ vị trí',
+      summary: 'Xem vị trí mới nhất của trẻ trên thiết bị phụ huynh.',
+      tip: 'Cần cấp quyền vị trí trên thiết bị của trẻ và có kết nối mạng ổn định. Trong nhà, độ chính xác của GPS có thể giảm.',
+      steps: {
+        '1': 'Trên thiết bị của trẻ, cấp quyền Vị trí cho KidGate khi được hỏi (hoặc trong Cài đặt hệ thống).',
+        '2': 'Trên thiết bị phụ huynh, mở thiết bị → Vị trí.',
+        '3': 'Bật chia sẻ vị trí nếu đang tắt, sau đó chờ lần cập nhật đầu tiên.',
+        '4': 'Kéo xuống để làm mới hoặc mở lại màn hình nếu vẫn hiển thị trạng thái đang chờ.',
+        '5': 'Tùy chọn: thiết lập Cảnh báo địa điểm để nhận thông báo khi trẻ đến hoặc rời khỏi một địa điểm đã lưu.',
+      },
+    },
+    checkIn: {
+      title: 'Gửi yêu cầu Báo an toàn',
+      summary: 'Yêu cầu trẻ xác nhận vẫn an toàn, kèm vị trí và ảnh nếu có thể.',
+      tip: 'Cần cấp quyền Camera trên thiết bị của trẻ nếu bạn muốn Báo an toàn có kèm ảnh.',
+      steps: {
+        '1': 'Mở thiết bị của trẻ trên thiết bị phụ huynh.',
+        '2': 'Chạm Báo an toàn (nút thao tác nhanh hoặc trong mục An toàn).',
+        '3': 'Thiết bị của trẻ sẽ nhận được thông báo và màn hình Báo an toàn. Trẻ chạm để xác nhận vẫn ổn hoặc cần trợ giúp.',
+        '4': 'Nếu quyền camera đã được cấp, KidGate sẽ gửi kèm ảnh và vị trí khi có thể.',
+        '5': 'Trên thiết bị phụ huynh, mở lịch sử Báo an toàn để xem phản hồi và ảnh mới nhất.',
+      },
+    },
+    sos: {
+      title: 'Cảnh báo khẩn cấp SOS',
+      summary: 'Tìm hiểu cách trẻ gửi SOS và cách phụ huynh xem lại cảnh báo.',
+      tip: 'Nên thử một lần tại nhà để cả phụ huynh và trẻ nắm rõ quy trình trước khi thực sự cần dùng.',
+      steps: {
+        '1': 'Trên thiết bị của trẻ, mở thẻ hoặc màn hình SOS trong KidGate.',
+        '2': 'Làm theo hướng dẫn trên màn hình để gửi SOS (vị trí và ảnh phụ thuộc vào quyền đã cấp).',
+        '3': 'Phụ huynh sẽ nhận được thông báo đẩy khi có cảnh báo SOS.',
+        '4': 'Trên thiết bị phụ huynh, mở thiết bị → Cảnh báo SOS để xem chi tiết sự kiện.',
+        '5': 'Hãy thống nhất với trẻ về thời điểm nên dùng SOS và thời điểm chỉ cần Báo an toàn thông thường.',
+      },
+    },
+    webFilter: {
+      title: 'Chặn trang web người lớn',
+      summary: 'Bật bộ lọc nội dung web người lớn khi nền tảng hỗ trợ.',
+      tip: 'Khả năng lọc web phụ thuộc vào từng nền tảng. Nên kết hợp với Chặn ứng dụng để bảo vệ hiệu quả hơn.',
+      steps: {
+        '1': 'Mở thiết bị của trẻ trên thiết bị phụ huynh → Chặn nội dung web.',
+        '2': 'Xem trạng thái hiện tại (đã chặn trang web người lớn hoặc chưa chặn).',
+        '3': 'Bật bộ lọc và lưu lại nếu màn hình có công tắc.',
+        '4': 'Kiểm tra lại sau tại cùng màn hình. Nếu vẫn hiển thị Đang chờ, vui lòng mở lại KidGate trên thiết bị của trẻ để đồng bộ.',
+      },
+    },
+    protectionAlerts: {
+      title: 'Cảnh báo bảo vệ',
+      summary: 'Nhận thông báo khi một quyền quan trọng trên thiết bị của trẻ bị tắt.',
+      tip: 'Cảnh báo bảo vệ cho biết mức độ bảo vệ của KidGate đang suy giảm. Vui lòng bật lại quyền trên thiết bị của trẻ trong thời gian sớm nhất.',
+      steps: {
+        '1': 'Mở thiết bị của trẻ → Bảo vệ (hoặc Cảnh báo bảo vệ).',
+        '2': 'Xem các sự kiện gần đây, ví dụ Hiển thị trên ứng dụng khác, Trợ năng, Truy cập mức sử dụng, Camera hoặc Vị trí bị tắt.',
+        '3': 'Trên thiết bị của trẻ, mở KidGate → Trạng thái và bật lại quyền được nêu.',
+        '4': 'Quay lại Cảnh báo bảo vệ và xác nhận không còn sự kiện bất thường mới.',
+        '5': 'Vui lòng giữ thông báo luôn bật trên thiết bị phụ huynh để nắm bắt thay đổi kịp thời.',
+      },
+    },
+  },
+} as const;

@@ -1,0 +1,55 @@
+export const appLock = {
+  toggleLabel: 'Bloqueo de la app',
+  toggleHint: 'Pide un PIN al abrir la app parental',
+  biometricToggleLabel: 'Desbloquear con {{biometryLabel}}',
+  biometricToggleHint: 'Usa biometría en lugar de escribir tu PIN',
+  fallbackBiometryLabel: 'Biometría',
+  changePinTitle: 'Cambiar el PIN de bloqueo',
+  changePinSubtitle: 'Actualiza el PIN usado en este dispositivo',
+  turnOffAlertTitle: '¿Desactivar el bloqueo de la app?',
+  turnOffAlertMessage:
+    'Se eliminarán el PIN y el desbloqueo biométrico de esta app en este dispositivo.',
+  turnOffButton: 'Desactivar',
+  toastTurnedOff: 'Bloqueo de la app desactivado en este dispositivo.',
+  toastTurnOffFailed: 'No se pudo desactivar el bloqueo. Inténtalo de nuevo.',
+  toastBiometricEnabled: '{{biometryLabel}} activado para desbloquear la app.',
+  toastBiometricEnableFailed:
+    'No se pudo activar el desbloqueo biométrico. Inténtalo de nuevo.',
+  toastBiometricDisableFailed:
+    'No se pudo desactivar el desbloqueo biométrico. Inténtalo de nuevo.',
+  toastEnabled: 'Bloqueo de la app activado en este dispositivo.',
+  createAppLockPin: 'Crear PIN de bloqueo',
+  changeAppLockPin: 'Cambiar PIN de bloqueo',
+  appLockSetupSubtitle:
+    'Elige un PIN de 6 dígitos para desbloquear la app parental en este dispositivo.',
+  appLockSetupHelper:
+    'Este PIN se guarda en este dispositivo y es distinto del PIN parental usado en los dispositivos de los niños.',
+  appLockPinMismatch: 'Los PIN no coinciden.',
+  unableToSaveAppLockPin: 'No se pudo guardar el PIN de bloqueo. Inténtalo de nuevo.',
+  kidGateLocked: 'KidGate bloqueado',
+  signInRequired: 'Se requiere iniciar sesión',
+  enterAppLockPin: 'Introduce tu PIN de bloqueo para abrir la app parental.',
+  appLockLockoutMessage:
+    'Demasiados intentos incorrectos. Se cerrará tu sesión para que vuelvas a iniciarla.',
+  appLockPinLabel: 'PIN de bloqueo (6 dígitos)',
+  attemptsRemainingShort: 'Quedan {{count}} intentos',
+  attemptsRemainingShort_one: 'Queda {{count}} intento',
+  unlockWithBiometric: 'Desbloquear con {{biometryLabel}}',
+  signInAgain: 'Iniciar sesión de nuevo',
+  tooManyPinAttemptsSignIn: 'Demasiados intentos incorrectos. Inicia sesión de nuevo.',
+  unableToVerifyPin: 'El PIN es incorrecto. Inténtalo de nuevo.',
+  appLockPinMustBeSixDigits: 'El PIN de bloqueo debe tener exactamente 6 dígitos.',
+  enterCurrentAppLockPin: 'Introduce tu PIN de bloqueo actual.',
+  currentAppLockPinIncorrect: 'El PIN de bloqueo actual es incorrecto.',
+  signInAgainToContinue:
+    'Demasiados intentos incorrectos. Inicia sesión de nuevo para continuar.',
+  incorrectPinAttemptsLeft: 'PIN incorrecto. Quedan {{count}} intentos.',
+  incorrectPinAttemptsLeft_one: 'PIN incorrecto. Queda {{count}} intento.',
+  biometricsUnavailable:
+    'El desbloqueo biométrico no está disponible en este dispositivo.',
+  unlockKidGateTitle: 'Desbloquear KidGate',
+  biometricUnlockSubtitle: 'Confirma tu identidad para abrir la app parental',
+  faceId: 'Face ID',
+  touchId: 'Touch ID',
+  fingerprint: 'Huella digital',
+} as const;

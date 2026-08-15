@@ -1,0 +1,17 @@
+export const controls = {
+  dailyLimit: 'Batas harian',
+  dailyLimitScreenTimeNote: 'Berlaku setelah Waktu Layar diizinkan di perangkat anak.',
+  saveLimit: 'Simpan batas',
+  removeLimit: 'Hapus batas',
+  quickPresets: 'Pilihan cepat',
+  presetMinutes: '{{minutes}} mnt',
+  customMinutes: 'Menit khusus',
+  customMinutesPlaceholder: 'mis. 90',
+  dailyLimitEnterAtLeastMinutes: 'Masukkan minimal {{min}} menit.',
+  dailyLimitMaxMinutes: 'Batas harian maksimal {{max}} menit (24 jam).',
+  rulesSectionTitle: 'Aturan dari orang tuamu',
+  rulesSectionDescription: 'Aturan yang ditetapkan orang tuamu untuk perangkat ini.',
+  blockedHoursLabel: 'Jam Diblokir',
+  dailyLimitLabel: 'Batas harian',
+  webFilterLabel: 'Filter web',
+} as const;

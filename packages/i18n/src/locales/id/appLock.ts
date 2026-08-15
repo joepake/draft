@@ -1,0 +1,55 @@
+export const appLock = {
+  toggleLabel: 'Kunci Aplikasi',
+  toggleHint: 'Wajibkan PIN saat membuka aplikasi orang tua',
+  biometricToggleLabel: 'Buka kunci dengan {{biometryLabel}}',
+  biometricToggleHint: 'Gunakan biometrik daripada mengetik PIN Anda',
+  fallbackBiometryLabel: 'Biometrik',
+  changePinTitle: 'Ubah PIN Kunci Aplikasi',
+  changePinSubtitle: 'Perbarui PIN yang digunakan di perangkat ini',
+  turnOffAlertTitle: 'Nonaktifkan Kunci Aplikasi?',
+  turnOffAlertMessage:
+    'PIN dan buka kunci biometrik untuk aplikasi ini akan dihapus dari perangkat ini.',
+  turnOffButton: 'Nonaktifkan',
+  toastTurnedOff: 'Kunci Aplikasi dinonaktifkan di perangkat ini.',
+  toastTurnOffFailed: 'Tidak dapat menonaktifkan Kunci Aplikasi. Silakan coba lagi.',
+  toastBiometricEnabled: '{{biometryLabel}} diaktifkan untuk membuka kunci aplikasi.',
+  toastBiometricEnableFailed:
+    'Tidak dapat mengaktifkan buka kunci biometrik. Silakan coba lagi.',
+  toastBiometricDisableFailed:
+    'Tidak dapat menonaktifkan buka kunci biometrik. Silakan coba lagi.',
+  toastEnabled: 'Kunci Aplikasi diaktifkan di perangkat ini.',
+  createAppLockPin: 'Buat PIN Kunci Aplikasi',
+  changeAppLockPin: 'Ubah PIN Kunci Aplikasi',
+  appLockSetupSubtitle:
+    'Pilih PIN 6 digit untuk membuka kunci aplikasi orang tua di perangkat ini.',
+  appLockSetupHelper:
+    'PIN ini hanya berlaku di perangkat ini dan berbeda dari PIN Orang Tua yang digunakan di perangkat anak.',
+  appLockPinMismatch: 'PIN yang dimasukkan tidak cocok.',
+  unableToSaveAppLockPin:
+    'Tidak dapat menyimpan PIN Kunci Aplikasi. Silakan coba lagi.',
+  kidGateLocked: 'KidGate terkunci',
+  signInRequired: 'Perlu masuk',
+  enterAppLockPin: 'Masukkan PIN Kunci Aplikasi Anda untuk membuka aplikasi orang tua.',
+  appLockLockoutMessage:
+    'Terlalu banyak percobaan yang salah. Anda akan keluar agar dapat masuk kembali.',
+  appLockPinLabel: 'PIN Kunci Aplikasi (6 digit)',
+  attemptsRemainingShort: '{{count}} percobaan tersisa',
+  attemptsRemainingShort_one: '{{count}} percobaan tersisa',
+  unlockWithBiometric: 'Buka kunci dengan {{biometryLabel}}',
+  signInAgain: 'Masuk lagi',
+  tooManyPinAttemptsSignIn: 'Terlalu banyak percobaan yang salah. Silakan masuk lagi.',
+  unableToVerifyPin: 'PIN tersebut salah. Silakan coba lagi.',
+  appLockPinMustBeSixDigits: 'PIN Kunci Aplikasi harus tepat 6 digit.',
+  enterCurrentAppLockPin: 'Masukkan PIN Kunci Aplikasi Anda saat ini.',
+  currentAppLockPinIncorrect: 'PIN Kunci Aplikasi saat ini salah.',
+  signInAgainToContinue:
+    'Terlalu banyak percobaan yang salah. Silakan masuk lagi untuk melanjutkan.',
+  incorrectPinAttemptsLeft: 'PIN salah. {{count}} percobaan tersisa.',
+  incorrectPinAttemptsLeft_one: 'PIN salah. {{count}} percobaan tersisa.',
+  biometricsUnavailable: 'Buka kunci biometrik tidak tersedia di perangkat ini.',
+  unlockKidGateTitle: 'Buka Kunci KidGate',
+  biometricUnlockSubtitle: 'Konfirmasi identitas Anda untuk membuka aplikasi orang tua',
+  faceId: 'Face ID',
+  touchId: 'Touch ID',
+  fingerprint: 'Sidik Jari',
+} as const;

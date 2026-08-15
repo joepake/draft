@@ -1,0 +1,22 @@
+export const leaderboard = {
+  title: 'لوحة النجوم',
+  thisWeek: 'هذا الأسبوع',
+  resetsNote: 'تبدأ من جديد كل يوم إثنين.',
+  rowA11y: '{{rank}}. {{name}}، النجوم: {{count}}',
+  settingsTitle: 'لوحة النجوم',
+  settingsBody: 'اسمح لأطفالك برؤية عدد النجوم التي جمعها كل منهم هذا الأسبوع.',
+  childrenTitle: 'الأطفال',
+  childrenBody: 'اجمع الأجهزة حسب من يستخدمها. يمكن للطفل الواحد استخدام أكثر من جهاز.',
+  addChild: 'إضافة طفل',
+  childNameLabel: 'الاسم',
+  childNamePlaceholder: 'مثال: مي',
+  unassigned: 'غير مخصص',
+  assignLabel: 'يستخدمه',
+  assignNobody: 'لا أحد بعد',
+  deviceCount: 'الأجهزة: {{count}}',
+  removeChild: 'إزالة',
+  removeChildConfirmTitle: 'إزالة هذا الطفل؟',
+  removeChildConfirmBody:
+    'تبقى أجهزته مقترنة وتواصل إرسال التقارير — لكنها لن تُحتسب لأحد حتى تخصصها من جديد.',
+  needsTwoChildren: 'أضف طفلاً ثانياً لبدء لوحة النجوم.',
+} as const;

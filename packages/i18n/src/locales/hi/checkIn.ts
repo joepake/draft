@@ -1,0 +1,41 @@
+export const checkIn = {
+  noPhotoBadge: 'फोटो संलग्न नहीं है',
+  historyTitle: 'चेक-इन इतिहास',
+  historyHint:
+    'फ़ोटो बड़ी करने के लिए उस पर टैप करें। ऊपर से कभी भी नया चेक-इन माँग सकते हैं।',
+  historyEmpty: 'अभी तक कोई चेक-इन नहीं।',
+  screenTitle: 'चेक-इन',
+  statusSafe: 'सुरक्षित',
+  statusNoResponse: 'कोई जवाब नहीं',
+  statusWaiting: 'प्रतीक्षा में',
+  metaWaitingForLocationAndPhoto: 'लोकेशन और फ़ोटो की प्रतीक्षा',
+  metaNoLocation: 'लोकेशन नहीं जुड़ी',
+  viewPhotoAccessibility: 'चेक-इन फ़ोटो देखें',
+  responseMessage: 'मैं सुरक्षित हूँ।',
+  toastSuccess: 'धन्यवाद। आपके माता-पिता जान गए हैं कि आप सुरक्षित हैं।',
+  toastFailed: 'चेक-इन नहीं भेजा जा सका। फिर से कोशिश करें।',
+  quickCheckInBadge: 'चेक-इन',
+  areYouOkay: 'क्या आप ठीक हैं?',
+  checkInWithPhotoBody:
+    'आपके माता-पिता जानना चाहते हैं कि आप ठीक हैं। KidGate आपकी लोकेशन और हो सके तो एक फ़ोटो भेजेगा।',
+  checkInLocationOnlyBody:
+    'आपके माता-पिता जानना चाहते हैं कि आप ठीक हैं। KidGate हो सके तो आपकी लोकेशन भेजेगा।',
+  yesImOkay: 'मैं ठीक हूँ',
+  yesImOkaySending: 'भेजा जा रहा है…',
+  iNeedHelp: 'मुझे मदद चाहिए',
+  checkInRequested: 'चेक-इन का अनुरोध भेजा गया',
+  checkInRequestedDescription:
+    '{{deviceName}} से लोकेशन और फ़ोटो के साथ सुरक्षित होने की पुष्टि माँगी गई।',
+  checkInRequestedDescriptionLocation:
+    '{{deviceName}} से लोकेशन के साथ सुरक्षित होने की पुष्टि माँगी गई।',
+  checkInConfirmed: 'चेक-इन की पुष्टि हुई',
+  checkInConfirmedDescription: '{{deviceName}} ने सुरक्षित होने की पुष्टि की।',
+  childDeviceFallback: 'बच्चे का डिवाइस',
+  requestCheckIn: 'चेक-इन माँगें',
+  requestCheckInNote: 'बच्चे के डिवाइस से लोकेशन और फ्रंट कैमरे की फ़ोटो माँगता है।',
+  needHelpOpenSosAccessibility: 'मुझे मदद चाहिए — SOS खोलें',
+  parentSafePopupTitle: 'आपका बच्चा सुरक्षित है',
+  childSafePopupTitle: 'माता-पिता को बता दिया गया',
+  childSafePopupBody: 'आपके माता-पिता को संदेश मिल गया — आप सुरक्षित हैं।',
+  confirmedKicker: 'चेक-इन',
+} as const;

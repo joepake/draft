@@ -1,0 +1,49 @@
+import { initializeApp } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
+
+const config = {
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  /*
+   * Required by `getAnalytics`, and by nothing else here.
+   *
+   * The `G-...` of this app's **own** data stream — not the desktop agent's.
+   * Absent is a supported state: `initAnalytics` finds no measurement id,
+   * `getAnalytics` is never called, and the dashboard runs unmeasured rather
+   * than broken.
+   */
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
+};
+
+/**
+ * Whether the deployment carries a Firebase web config.
+ *
+ * A preview deploy may have no environment variables set, and the marketing
+ * and legal pages must still build and serve there, so every Firebase import
+ * stays behind this flag rather than throwing at module load.
+ */
+export const isFirebaseConfigured = Boolean(
+  config.apiKey && config.authDomain && config.projectId && config.appId,
+);
+
+/** Base URL of the Cloud Functions region, used for the control endpoints. */
+export const functionsBaseUrl = import.meta.env.VITE_FIREBASE_FUNCTIONS_URL || '';
+
+let app = null;
+let authInstance = null;
+let dbInstance = null;
+
+if (isFirebaseConfigured) {
+  app = initializeApp(config);
+  authInstance = getAuth(app);
+  dbInstance = getFirestore(app);
+}
+
+export const auth = authInstance;
+export const db = dbInstance;
+export default app;

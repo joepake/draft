@@ -1,0 +1,126 @@
+export const plans = {
+  title: 'الخطط',
+  statusPremiumActiveTitle: 'Premium نشط',
+  statusPremiumActiveSubtitle: 'لديك وصول كامل إلى كل ميزة في KidGate.',
+  pillPremium: 'Premium',
+  statusTrialActiveTitle: 'الفترة التجريبية نشطة',
+  statusTrialActiveSubtitle:
+    'أنت تستخدم تجربة Premium الكاملة. اشترك في أي وقت للاحتفاظ بها بعد انتهاء فترتك التجريبية.',
+  pillTrialActiveFallback: 'الفترة التجريبية نشطة',
+  statusTrialEndedTitle: 'انتهت التجربة',
+  statusTrialEndedSubtitle:
+    'يظل الحد اليومي وساعات الحظر والموقع يعمل مجانًا. اشترك لاستعادة التطبيقات المحظورة وفلتر الويب والتنبيهات والتقارير.',
+  pillTrialEnded: 'انتهت التجربة',
+  statusStartTrialTitle: 'ابدأ فترتك التجريبية',
+  statusStartTrialSubtitle:
+    'اربط جهاز أحد الوالدين وجهاز طفل واحد للحصول على {{days}} أيام من الوصول الكامل.',
+  pillSetupRequired: 'يتطلب الإعداد',
+  fallbackAccountEmail: 'حساب الوالد',
+  planTrialName: 'تجريبي',
+  planTrialMeta: 'مجاني · {{days}} أيام · وصول كامل',
+  planPremiumName: 'Premium',
+  currentPlanBadge: 'الخطة الحالية',
+  planPeriod: '/ شهر',
+  planPeriodYear: '/ سنة',
+  termMonthly: 'شهري',
+  termAnnual: 'سنوي',
+  bestValueBadge: 'الأفضل قيمة',
+  premiumManageBillingNote: 'أدر الفوترة من إعدادات App Store أو Google Play.',
+  sectionIncludedFeatures: 'ما الذي يشمله',
+  sectionIncludedFeaturesSubtitle:
+    'كل ما يلي مشمول في كل من الفترة التجريبية وPremium.',
+  footerLegal:
+    'تتم الفوترة عبر App Store أو Google Play. تتجدد الاشتراكات تلقائيًا ما لم تلغِها قبل نهاية الفترة بـ24 ساعة على الأقل. أما الشراء لمرة واحدة فلا يتجدد ويظل ساريًا طوال توفر KidGate.',
+  subscribeButton: 'الاشتراك في Premium',
+  restoringPurchases: 'جارٍ الاستعادة…',
+  restorePurchases: 'استعادة المشتريات',
+  premiumDescription:
+    'واصل استخدام KidGate بعد انتهاء فترتك التجريبية بنفس الحماية الكاملة.',
+  // Title Case throughout, and worded to match the screen each feature opens —
+  // a chip that reads differently from its destination reads as a promise the
+  // app does not keep.
+  featurePausePhone: 'قفل الجهاز',
+  featureDailyLimits: 'الحد اليومي',
+  featureBlockedHours: 'ساعات الحظر',
+  featureTimeRequests: 'طلبات الوقت',
+  featureAppBlocking: 'التطبيقات المحظورة',
+  featureWebFiltering: 'فلتر الويب',
+  featureSeeLocation: 'الموقع المباشر',
+  featureLocationHistory: 'سجل المواقع',
+  featureCheckIn: 'تسجيل الوصول',
+  featureSosAlerts: 'تنبيهات SOS',
+  featurePlaceAlerts: 'تنبيهات الأماكن',
+  featureTamperAlerts: 'تنبيهات الحماية',
+  featureAppAlerts: 'تنبيهات التطبيقات',
+  featureUsageReports: 'تقارير الاستخدام',
+  featureActivityFeed: 'سجل النشاط',
+  featureParentPinProtection: 'حماية رمز PIN الوالدين',
+  trialPlanName: 'تجريبي',
+  trialDescription:
+    'تبدأ عند ربط أول جهاز لأحد الوالدين وجهاز للطفل. إزالة جهاز الطفل لا تعيد ضبط الفترة التجريبية.',
+  premiumPlanName: 'Premium',
+  subscribeBadge: 'اشترك',
+  currentPlanKicker: 'الخطة الحالية',
+  trialEnded: 'انتهت التجربة',
+  trialPending: 'لم تبدأ التجربة',
+  premiumActiveSubtitle: 'لديك وصول كامل الآن.',
+  trialActiveSubtitle: 'وصول كامل خلال فترتك التجريبية لمدة {{days}} أيام.',
+  subscribeToContinue: 'أنت الآن على الخطة المجانية. اشترك لإعادة فتح كل المزايا.',
+  connectDevicesToStartTrial: 'اربط جهاز أحد الوالدين وجهاز طفل لبدء فترتك التجريبية.',
+  premiumActiveFooter: 'Premium نشط',
+  premiumPriceFooter: 'Premium {{price}}/شهريًا',
+  viewPlans: 'عرض الخطط',
+  viewFamilyPlanStatus: 'عرض حالة الخطة',
+  onlyOwnerCanSubscribe: 'يمكن فقط لمالك العائلة الاشتراك أو استعادة المشتريات.',
+  memberSubscriptionNotice:
+    'تغطي خطة واحدة العائلة بأكملها ويدفع المالك فقط. يمكنك معرفة ما إذا كانت العائلة في فترة تجريبية أو مشتركة.',
+  memberTrialActiveSubtitle:
+    'هذه العائلة في فترة تجريبية. عند انتهائها، يحتاج المالك إلى الاشتراك لمواصلة استخدام KidGate.',
+  memberTrialEndedSubtitle:
+    'انتهت التجربة لهذه العائلة. لا يزال الحد اليومي وساعات الحظر والموقع يعمل. اطلب من المالك الاشتراك للحصول على البقية.',
+  memberSetupTrialSubtitle:
+    'تبدأ الفترة التجريبية عندما يربط المالك جهاز أحد الوالدين وجهاز طفل.',
+  premiumActivatedTitle: 'تم فتح Premium',
+  premiumActivatedSubtitle: 'أصبحت كل ميزة في KidGate متاحة الآن لعائلتك.',
+  unableToActivatePremium: 'تعذر تفعيل Premium. يرجى المحاولة مرة أخرى.',
+  purchaseAlreadyOwned:
+    'لديك هذا الاشتراك بالفعل. اضغط على استعادة المشتريات لتفعيله هنا.',
+  purchasePending:
+    'عملية الشراء في انتظار الموافقة. سيتم تفعيل Premium بمجرد اكتمالها.',
+  purchaseFailed: 'لم تكتمل عملية الشراء. يرجى المحاولة مرة أخرى.',
+  storeNotReady: 'المتجر غير جاهز بعد. يرجى المحاولة مرة أخرى بعد قليل.',
+  premiumNotAvailable: 'Premium غير متاح للشراء حاليًا.',
+  premiumProductNotFound:
+    'Premium غير متاح للشراء حاليًا. يرجى المحاولة مرة أخرى لاحقًا.',
+  subscriptionOfferNotConfigured:
+    'هذا الاشتراك غير متاح حاليًا. يرجى المحاولة مرة أخرى لاحقًا.',
+  unableToStartPurchase: 'تعذر بدء عملية الشراء. يرجى المحاولة مرة أخرى.',
+  noActiveSubscription: 'لم يتم العثور على اشتراك نشط.',
+  purchasesRestored: 'تمت استعادة المشتريات.',
+  unableToRestorePurchases: 'تعذرت استعادة المشتريات. يرجى المحاولة مرة أخرى.',
+  purchaseVerificationFailed: 'لم تنجح عملية التحقق من الشراء.',
+  unableToVerifyPurchase: 'تعذر التحقق من عملية الشراء. يرجى المحاولة مرة أخرى.',
+  // Shown to joined parents — only the family owner can subscribe, so this
+  // has to name who needs to act instead of offering a button they can't use.
+  familyPremiumEndedTitle: 'انتهى اشتراك Premium لهذه العائلة',
+  familyPremiumEndedBody:
+    'لا يزال الحد اليومي وساعات الحظر والموقع يعمل. أما التطبيقات المحظورة وفلتر الويب والتنبيهات والتقارير فمتوقفة حتى يجدد مالك العائلة اشتراك Premium.',
+  pricesUnavailable: 'تعذّر تحميل الأسعار من المتجر.',
+  pricesRetry: 'إعادة المحاولة',
+  featureRewardTasks: 'مهام المكافآت',
+  sectionChoosePlan: 'اختر خطتك',
+  saveBadge: 'وفّر {{percent}}٪',
+  billedMonthly: 'فوترة شهرية',
+  billedAnnually: 'فوترة سنوية',
+  trustCancelAnytime: 'إلغاء في أي وقت',
+  trustOnePlan: 'خطة واحدة للعائلة كلها',
+  trustNoAds: 'بدون إعلانات',
+  freePlanName: 'مجاني',
+  freeDescription: 'الأساسيات تعمل على جهاز طفل واحد، بلا حد زمني.',
+  featureOneChildDevice: 'جهاز طفل واحد',
+  termLifetime: 'مدى الحياة',
+  badgeOneTime: 'دفعة واحدة',
+  planPeriodOnce: 'مرة واحدة',
+  billedOnce:
+    'ادفع مرة واحدة لما يصل إلى {{devices}} من أجهزة الأطفال، طوال توفر KidGate',
+} as const;

@@ -1,0 +1,127 @@
+export const plans = {
+  title: 'Gói dịch vụ',
+  statusPremiumActiveTitle: 'Premium đang hoạt động',
+  statusPremiumActiveSubtitle: 'Bạn đang sử dụng đầy đủ mọi tính năng của KidGate.',
+  pillPremium: 'Premium',
+  statusTrialActiveTitle: 'Đang dùng thử',
+  statusTrialActiveSubtitle:
+    'Bạn đang trải nghiệm đầy đủ tính năng Premium. Bạn có thể đăng ký bất cứ lúc nào để tiếp tục sử dụng sau khi hết thời gian dùng thử.',
+  pillTrialActiveFallback: 'Đang dùng thử',
+  statusTrialEndedTitle: 'Hết dùng thử',
+  statusTrialEndedSubtitle:
+    'Giới hạn hằng ngày, Giờ khóa thiết bị và vị trí vẫn hoạt động miễn phí. Đăng ký để dùng lại Chặn ứng dụng, Chặn nội dung web, cảnh báo và báo cáo.',
+  pillTrialEnded: 'Hết dùng thử',
+  statusStartTrialTitle: 'Bắt đầu dùng thử',
+  statusStartTrialSubtitle:
+    'Kết nối một thiết bị phụ huynh và một thiết bị của trẻ để trải nghiệm đầy đủ trong {{days}} ngày.',
+  pillSetupRequired: 'Cần thiết lập',
+  fallbackAccountEmail: 'Tài khoản phụ huynh',
+  planTrialName: 'Dùng thử',
+  planTrialMeta: 'Miễn phí · {{days}} ngày · Đầy đủ tính năng',
+  planPremiumName: 'Premium',
+  currentPlanBadge: 'Gói hiện tại',
+  planPeriod: '/ tháng',
+  planPeriodYear: '/ năm',
+  termMonthly: 'Hàng tháng',
+  termAnnual: 'Hàng năm',
+  bestValueBadge: 'Tiết kiệm nhất',
+  premiumManageBillingNote:
+    'Quản lý thanh toán trong phần cài đặt App Store hoặc Google Play.',
+  sectionIncludedFeatures: 'Tính năng bao gồm',
+  sectionIncludedFeaturesSubtitle:
+    'Toàn bộ các mục dưới đây đều có trong cả gói Dùng thử và Premium.',
+  footerLegal:
+    'Thanh toán qua App Store hoặc Google Play. Gói đăng ký tự động gia hạn trừ khi bạn hủy trước thời điểm kết thúc chu kỳ ít nhất 24 giờ. Gói trả một lần không gia hạn và có hiệu lực chừng nào KidGate còn hoạt động.',
+  subscribeButton: 'Đăng ký Premium',
+  restoringPurchases: 'Đang khôi phục…',
+  restorePurchases: 'Khôi phục giao dịch',
+  premiumDescription:
+    'Tiếp tục sử dụng KidGate sau thời gian dùng thử với mức bảo vệ đầy đủ như cũ.',
+  featurePausePhone: 'Khóa thiết bị',
+  featureDailyLimits: 'Giới hạn hằng ngày',
+  featureBlockedHours: 'Giờ khóa thiết bị',
+  featureTimeRequests: 'Yêu cầu thêm giờ',
+  featureAppBlocking: 'Chặn ứng dụng',
+  featureWebFiltering: 'Chặn nội dung web',
+  featureSeeLocation: 'Xem vị trí',
+  featureLocationHistory: 'Lịch sử vị trí',
+  featureCheckIn: 'Báo an toàn',
+  featureSosAlerts: 'Cảnh báo SOS',
+  featurePlaceAlerts: 'Cảnh báo địa điểm',
+  featureTamperAlerts: 'Cảnh báo bảo vệ',
+  featureAppAlerts: 'Cảnh báo ứng dụng',
+  featureUsageReports: 'Báo cáo sử dụng',
+  featureActivityFeed: 'Nhật ký hoạt động',
+  featureParentPinProtection: 'Bảo vệ bằng mã PIN phụ huynh',
+  trialPlanName: 'Dùng thử',
+  trialDescription:
+    'Bắt đầu khi thiết bị phụ huynh và thiết bị đầu tiên của trẻ được kết nối. Việc gỡ thiết bị của trẻ không làm mới thời gian dùng thử.',
+  premiumPlanName: 'Premium',
+  subscribeBadge: 'Đăng ký',
+  currentPlanKicker: 'Gói hiện tại',
+  trialEnded: 'Hết dùng thử',
+  trialPending: 'Chưa bắt đầu dùng thử',
+  premiumActiveSubtitle: 'Bạn đang sử dụng đầy đủ mọi tính năng.',
+  trialActiveSubtitle: 'Sử dụng đầy đủ tính năng trong {{days}} ngày dùng thử.',
+  subscribeToContinue:
+    'Bạn đang dùng gói Miễn phí. Đăng ký để mở lại toàn bộ tính năng.',
+  connectDevicesToStartTrial:
+    'Kết nối một thiết bị phụ huynh và một thiết bị của trẻ để bắt đầu dùng thử.',
+  premiumActiveFooter: 'Premium đang hoạt động',
+  premiumPriceFooter: 'Premium {{price}}/tháng',
+  viewPlans: 'Xem các gói',
+  viewFamilyPlanStatus: 'Xem trạng thái gói',
+  onlyOwnerCanSubscribe:
+    'Chỉ chủ gia đình mới có thể đăng ký hoặc khôi phục giao dịch.',
+  memberSubscriptionNotice:
+    'Mỗi gia đình chỉ cần một gói duy nhất và chỉ chủ gia đình thực hiện thanh toán. Bạn có thể xem gia đình đang dùng thử hay đã đăng ký Premium.',
+  memberTrialActiveSubtitle:
+    'Gia đình đang trong thời gian dùng thử. Khi kết thúc, chủ gia đình cần đăng ký để tiếp tục sử dụng KidGate.',
+  memberTrialEndedSubtitle:
+    'Bản dùng thử của gia đình đã kết thúc. Giới hạn hằng ngày, Giờ khóa thiết bị và vị trí vẫn hoạt động. Hãy nhờ chủ gia đình đăng ký để dùng các tính năng còn lại.',
+  memberSetupTrialSubtitle:
+    'Thời gian dùng thử bắt đầu khi chủ gia đình kết nối một thiết bị phụ huynh và một thiết bị của trẻ.',
+  premiumActivatedTitle: 'Đã mở khóa Premium',
+  premiumActivatedSubtitle:
+    'Gia đình bạn đã có thể sử dụng toàn bộ tính năng của KidGate.',
+  unableToActivatePremium: 'Không thể kích hoạt Premium. Vui lòng thử lại.',
+  purchaseAlreadyOwned:
+    'Bạn đã có gói đăng ký này. Chọn Khôi phục giao dịch để mở khóa tại đây.',
+  purchasePending: 'Giao dịch đang chờ duyệt. Premium sẽ mở khóa ngay khi hoàn tất.',
+  purchaseFailed: 'Giao dịch không thành công. Vui lòng thử lại.',
+  storeNotReady: 'Cửa hàng chưa sẵn sàng. Vui lòng thử lại sau ít phút.',
+  premiumNotAvailable: 'Premium hiện chưa thể mua được.',
+  premiumProductNotFound: 'Premium hiện chưa thể mua được. Vui lòng thử lại sau.',
+  subscriptionOfferNotConfigured:
+    'Gói đăng ký này hiện chưa khả dụng. Vui lòng thử lại sau.',
+  unableToStartPurchase: 'Không thể bắt đầu giao dịch. Vui lòng thử lại.',
+  noActiveSubscription: 'Không tìm thấy gói đăng ký đang hoạt động.',
+  purchasesRestored: 'Đã khôi phục giao dịch.',
+  unableToRestorePurchases: 'Không thể khôi phục giao dịch. Vui lòng thử lại.',
+  purchaseVerificationFailed: 'Xác minh giao dịch không thành công.',
+  unableToVerifyPurchase: 'Không thể xác minh giao dịch. Vui lòng thử lại.',
+  // Hiển thị cho phụ huynh tham gia — chỉ chủ gia đình mới đăng ký được,
+  // nên câu chữ phải nói rõ ai cần hành động thay vì đưa nút họ không dùng được.
+  familyPremiumEndedTitle: 'Gói Premium của gia đình này đã kết thúc',
+  familyPremiumEndedBody:
+    'Giới hạn hằng ngày, Giờ khóa thiết bị và vị trí vẫn hoạt động. Chặn ứng dụng, Chặn nội dung web, cảnh báo và báo cáo tạm dừng cho đến khi chủ gia đình gia hạn Premium.',
+  pricesUnavailable: 'Không tải được giá từ cửa hàng.',
+  pricesRetry: 'Thử lại',
+  featureRewardTasks: 'Nhiệm vụ thưởng',
+  sectionChoosePlan: 'Chọn gói của bạn',
+  saveBadge: 'Tiết kiệm {{percent}}%',
+  billedMonthly: 'Thanh toán hằng tháng',
+  billedAnnually: 'Thanh toán mỗi năm một lần',
+  trustCancelAnytime: 'Hủy bất cứ lúc nào',
+  trustOnePlan: 'Một gói cho cả gia đình',
+  trustNoAds: 'Không quảng cáo',
+  freePlanName: 'Miễn phí',
+  freeDescription:
+    'Giữ những thứ cơ bản cho một thiết bị của con, không giới hạn thời gian.',
+  featureOneChildDevice: 'Một thiết bị của con',
+  termLifetime: 'Trọn đời',
+  badgeOneTime: 'Trả một lần',
+  planPeriodOnce: 'một lần',
+  billedOnce:
+    'Trả một lần cho tối đa {{devices}} thiết bị của trẻ, dùng chừng nào KidGate còn hoạt động',
+} as const;

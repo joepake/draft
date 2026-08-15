@@ -1,0 +1,17 @@
+export const controls = {
+  dailyLimit: '일일 제한',
+  dailyLimitScreenTimeNote: '자녀 기기에서 스크린 타임이 허용되면 적용됩니다.',
+  saveLimit: '제한 저장',
+  removeLimit: '제한 삭제',
+  quickPresets: '빠른 설정',
+  presetMinutes: '{{minutes}}분',
+  customMinutes: '직접 입력(분)',
+  customMinutesPlaceholder: '예: 90',
+  dailyLimitEnterAtLeastMinutes: '최소 {{min}}분을 입력하세요.',
+  dailyLimitMaxMinutes: '일일 제한은 최대 {{max}}분(24시간)입니다.',
+  rulesSectionTitle: '부모님의 규칙',
+  rulesSectionDescription: '부모님이 이 기기에 설정한 규칙입니다.',
+  blockedHoursLabel: '차단 시간',
+  dailyLimitLabel: '일일 제한',
+  webFilterLabel: '웹 필터',
+} as const;

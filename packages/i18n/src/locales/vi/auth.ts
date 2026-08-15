@@ -1,0 +1,62 @@
+export const auth = {
+  welcomeBack: 'Chào mừng bạn trở lại',
+  loginSubtitle: 'Đăng nhập để theo dõi và bảo vệ thiết bị của trẻ.',
+  emailSignInTitle: 'Đăng nhập bằng email',
+  emailSignInSubtitle: 'Sử dụng email và mật khẩu phụ huynh của bạn.',
+  createAccountTitle: 'Tạo tài khoản phụ huynh',
+  createAccountSubtitle:
+    'Sử dụng email và mật khẩu để có thể đăng nhập trên mọi thiết bị về sau.',
+  linkEmailTitle: 'Liên kết email và mật khẩu',
+  linkEmailSubtitle:
+    'Thêm phương thức đăng nhập dự phòng bằng email cho tài khoản phụ huynh này.',
+  forgotPasswordTitle: 'Đặt lại mật khẩu',
+  forgotPasswordSubtitle: 'Nhập email của bạn để nhận liên kết đặt lại mật khẩu.',
+  nameLabel: 'Tên của bạn',
+  namePlaceholder: 'ví dụ: Mẹ, Bố, Ba',
+  emailLabel: 'Email',
+  emailPlaceholder: 'phuhuynh@example.com',
+  passwordLabel: 'Mật khẩu',
+  passwordPlaceholder: 'Nhập mật khẩu',
+  showPassword: 'Hiện mật khẩu',
+  hidePassword: 'Ẩn mật khẩu',
+  confirmPasswordLabel: 'Xác nhận mật khẩu',
+  confirmPasswordPlaceholder: 'Nhập lại mật khẩu',
+  passwordsDoNotMatch: 'Mật khẩu xác nhận không khớp.',
+  signInWithEmail: 'Tiếp tục với email',
+  createAccountButton: 'Tạo tài khoản',
+  linkEmailButton: 'Liên kết email và mật khẩu',
+  sendResetLink: 'Gửi liên kết đặt lại',
+  forgotPassword: 'Quên mật khẩu?',
+  forgotPasswordSent:
+    'Đã gửi email đặt lại mật khẩu. Vui lòng kiểm tra hộp thư của bạn.',
+  emailVerificationTitle: 'Xác thực email',
+  emailVerificationSubtitle:
+    'Chúng tôi đã gửi liên kết xác thực đến {{email}}. Vui lòng mở liên kết, sau đó quay lại đây để tiếp tục.',
+  emailVerificationPending:
+    'Vui lòng mở liên kết xác thực trong hộp thư trước khi tiếp tục.',
+  emailVerificationSent:
+    'Đã gửi email xác thực. Vui lòng kiểm tra hộp thư (và mục thư rác).',
+  emailVerificationResent: 'Đã gửi lại email xác thực.',
+  emailVerificationStillPending:
+    'Email chưa được xác thực. Vui lòng mở liên kết trong hộp thư rồi thử lại.',
+  emailVerificationConfirmed: 'Tôi đã xác thực — tiếp tục',
+  emailVerificationResend: 'Gửi lại email xác thực',
+  emailVerificationSignInFirst: 'Vui lòng đăng nhập lại để gửi email xác thực.',
+  noAccountPrompt: 'Bạn chưa có tài khoản?',
+  createAccountAction: 'Tạo tài khoản',
+  hasAccountPrompt: 'Bạn đã có tài khoản?',
+  signInAction: 'Đăng nhập',
+  orContinueWith: 'Hoặc tiếp tục với',
+  signInWithGoogle: 'Tiếp tục với Google',
+  signInWithApple: 'Tiếp tục với Apple',
+  signInCancelled: 'Đã hủy đăng nhập.',
+  appleSignInNotConfigured:
+    'Đăng nhập với Apple hiện chưa khả dụng. Vui lòng thử phương thức đăng nhập khác.',
+  consentPrefix: 'Khi tiếp tục, bạn đồng ý với ',
+  termsOfService: 'Điều khoản sử dụng',
+  consentMiddle: ' và ',
+  privacyPolicy: 'Chính sách quyền riêng tư',
+  consentSuffix:
+    '. KidGate dành cho phụ huynh; trẻ em chỉ được thêm khi có sự đồng ý của phụ huynh.',
+  passwordRequired: 'Vui lòng nhập mật khẩu của bạn.',
+};

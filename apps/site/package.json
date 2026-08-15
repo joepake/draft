@@ -1,0 +1,25 @@
+{
+  "name": "@kidgate/site",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "run:dev": "vite --mode dev --port 5174",
+    "run:prod": "vite --mode prod --port 5174",
+    "build:prod": "vite build --mode prod",
+    "build:dev": "vite build --mode dev",
+    "preview": "vite preview --port 5174",
+    "lint": "eslint src"
+  },
+  "dependencies": {
+    "@kidgate/i18n": "workspace:*",
+    "@kidgate/web-ui": "workspace:*",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
+    "vite": "^5.4.0"
+  }
+}

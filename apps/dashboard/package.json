@@ -1,0 +1,29 @@
+{
+  "name": "@kidgate/dashboard",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "run:dev": "vite --mode dev --port 5173",
+    "run:prod": "vite --mode prod --port 5173",
+    "build:prod": "vite build --mode prod",
+    "build:dev": "vite build --mode dev",
+    "preview": "vite preview --port 5173",
+    "lint": "eslint src"
+  },
+  "dependencies": {
+    "@kidgate/core": "workspace:*",
+    "@kidgate/i18n": "workspace:*",
+    "@kidgate/schema": "workspace:*",
+    "@kidgate/web-ui": "workspace:*",
+    "firebase": "^12.17.1",
+    "qrcode": "^1.5.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
+    "vite": "^5.4.0"
+  }
+}

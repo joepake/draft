@@ -1,0 +1,21 @@
+{
+  "name": "@kidgate/tokens",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    "./spacing": "./src/spacing.ts",
+    "./typography": "./src/typography.ts",
+    "./styles": "./src/styles.ts",
+    "./accents": "./src/accents.ts",
+    "./palettes": "./src/palettes.ts",
+    "./colors": "./src/colors.ts",
+    "./radius": "./src/radius.ts",
+    "./shadows": "./src/shadows.ts",
+    "./motion": "./src/motion.ts",
+    "./interaction": "./src/interaction.ts",
+    "./icons": "./src/icons.ts",
+    "./sweetDecor": "./src/sweetDecor.ts"
+  }
+}

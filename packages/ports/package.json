@@ -1,0 +1,30 @@
+{
+  "name": "@kidgate/ports",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    "./firestore": "./src/firestore.ts",
+    "./auth": "./src/auth.ts",
+    "./push": "./src/push.ts",
+    "./storage": "./src/storage.ts",
+    "./clock": "./src/clock.ts",
+    "./telemetry": "./src/telemetry.ts",
+    "./enforcement/host": "./src/enforcement/host.ts",
+    "./enforcement/identity": "./src/enforcement/identity.ts",
+    "./enforcement/usage": "./src/enforcement/usage.ts",
+    "./enforcement/appPolicy": "./src/enforcement/appPolicy.ts",
+    "./enforcement/schedule": "./src/enforcement/schedule.ts",
+    "./enforcement/lock": "./src/enforcement/lock.ts",
+    "./enforcement/webFilter": "./src/enforcement/webFilter.ts",
+    "./enforcement/tamper": "./src/enforcement/tamper.ts",
+    "./enforcement/location": "./src/enforcement/location.ts",
+    "./enforcement/peripherals": "./src/enforcement/peripherals.ts",
+    "./enforcement/platformSetup": "./src/enforcement/platformSetup.ts",
+    "./api": "./src/api.ts"
+  },
+  "dependencies": {
+    "@kidgate/schema": "workspace:*"
+  }
+}

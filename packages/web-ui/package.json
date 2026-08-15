@@ -1,0 +1,33 @@
+{
+  "name": "@kidgate/web-ui",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "sideEffects": [
+    "*.css"
+  ],
+  "exports": {
+    "./useT": "./src/useT.js",
+    "./LanguagePicker": "./src/LanguagePicker.jsx",
+    "./LegalNote": "./src/LegalNote.jsx",
+    "./RichText": "./src/RichText.jsx",
+    "./BrandLogo": "./src/BrandLogo.jsx",
+    "./Icon": "./src/Icon.jsx",
+    "./index.css": "./src/index.css",
+    "./dashboard.css": "./src/dashboard.css",
+    "./theme": "./src/theme.js",
+    "./vite": "./src/vite.js"
+  },
+  "dependencies": {
+    "@kidgate/i18n": "workspace:*",
+    "@kidgate/tokens": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-router-dom": "*"
+  },
+  "devDependencies": {
+    "react": "19.2.3",
+    "react-router-dom": "^7.9.6"
+  }
+}

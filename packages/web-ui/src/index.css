@@ -1,0 +1,1704 @@
+/* ==================================================================
+   KidGate marketing site.
+
+   One dark surface across marketing, legal and the dashboard. The site
+   used to jump white → dark → white, which read as three different
+   products; the shared palette is what makes it read as one.
+   ================================================================== */
+
+:root {
+  /* Every colour below resolves to `@kidgate/tokens`, written onto `:root`
+     as `--kg-*` custom properties by `theme.js` before first paint (the web
+     runs the classic pack's dark palette — see `applyTheme` in main.jsx).
+     This block keeps the site's own vocabulary; it must contain no literal
+     colour. Alpha variants are mixed from the tokens with `color-mix`. */
+  --bg: var(--kg-background);
+  --bg-2: var(--kg-backgroundDark);
+  --surface: var(--kg-surface);
+  --surface-2: color-mix(in srgb, var(--kg-surface) 92%, var(--kg-text));
+
+  --line: color-mix(in srgb, var(--kg-text) 9%, transparent);
+  --line-strong: color-mix(in srgb, var(--kg-text) 17%, transparent);
+
+  --ink: var(--kg-text);
+  --ink-2: var(--kg-textSecondary);
+  /*
+   * The dimmest text step, and 76% is the number that makes it legible rather
+   * than a taste call.
+   *
+   * At 70% this measured **4.38:1 on `--surface`** — under WCAG AA's 4.5 for
+   * normal text, and `--surface` is the card background, so the failure landed
+   * on most of the body copy on the site: every feature card, the install notes
+   * in the download cards, the FAQ answers. On `--bg` the same token measured
+   * 5.22 and passed, which is why it looked fine everywhere anyone checked.
+   *
+   * 76% gives 5.01 on `--surface`, 5.97 on `--bg`, 6.16 on `--bg-2` — passing
+   * against all three grounds it is used on, with margin. It stays far below
+   * `--ink-2` (9.71 on `--bg`), so the three-step hierarchy is unchanged.
+   * Re-measure before lowering it; the card surface is the binding constraint.
+   */
+  --ink-3: color-mix(in srgb, var(--kg-textSecondary) 76%, var(--kg-background));
+
+  --brand: var(--kg-primary);
+  --brand-2: var(--kg-secondary);
+  --brand-soft: var(--kg-primarySoft);
+  --good: var(--kg-success);
+
+  --r-sm: var(--kg-radius-sm);
+  --r-md: var(--kg-radius-md);
+  --r-lg: var(--kg-radius-lg);
+  --r-xl: var(--kg-radius-xl);
+
+  --shadow-lg: 0 30px 70px color-mix(in srgb, var(--kg-shadow) 55%, transparent);
+  --measure: 68ch;
+
+  --font-display: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  font-family: var(--font-body);
+  color: var(--ink-2);
+  background-color: var(--bg);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  color: var(--ink);
+  line-height: 1.15;
+  letter-spacing: -0.022em;
+  font-weight: 700;
+}
+
+a {
+  color: var(--brand);
+}
+
+/* One consistent focus ring everywhere, including the dashboard. */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+button,
+[role='button'],
+summary,
+label[for] {
+  cursor: pointer;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--brand) 35%, transparent);
+  color: var(--ink);
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.skip-link {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -120%);
+  z-index: 100;
+  background: var(--brand);
+  color: var(--kg-textInverse);
+  font-weight: 600;
+  padding: 0.6rem 1.1rem;
+  border-radius: 0 0 var(--r-sm) var(--r-sm);
+  text-decoration: none;
+  transition: transform var(--kg-motion-fast) ease;
+}
+
+.skip-link:focus {
+  transform: translate(-50%, 0);
+}
+
+/* ---------- Header ---------- */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem clamp(1rem, 4vw, 2.5rem);
+  background: color-mix(in srgb, var(--bg) 78%, transparent);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.brand-mark {
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 0.5rem;
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  display: grid;
+  place-items: center;
+  color: var(--ink);
+}
+
+.brand-mark svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.nav a {
+  color: var(--ink-3);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--r-sm);
+  transition:
+    color var(--kg-motion-fast) ease,
+    background var(--kg-motion-fast) ease;
+}
+
+.nav a:hover {
+  color: var(--ink);
+  background: color-mix(in srgb, var(--ink) 6%, transparent);
+}
+
+.nav a.active {
+  color: var(--ink);
+}
+
+.nav .nav-cta {
+  color: var(--kg-textInverse);
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  font-weight: 600;
+  margin-inline-start: 0.35rem;
+}
+
+.nav .nav-cta:hover {
+  color: var(--kg-textInverse);
+  filter: brightness(1.08);
+}
+
+.main {
+  flex: 1;
+  width: 100%;
+}
+
+/* ---------- Footer ---------- */
+
+.footer {
+  border-top: 1px solid var(--line);
+  background: var(--bg-2);
+  padding: 3rem clamp(1rem, 4vw, 2.5rem) 2rem;
+}
+
+.footer-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.4fr repeat(2, minmax(0, 1fr));
+  gap: 2.5rem;
+}
+
+.footer-blurb {
+  color: var(--ink-3);
+  font-size: 0.9rem;
+  max-width: 30ch;
+  margin-top: 0.7rem;
+}
+
+.footer h4 {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink-3);
+  margin-bottom: 0.85rem;
+  font-weight: 600;
+}
+
+.footer ul {
+  list-style: none;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.footer ul a {
+  color: var(--ink-2);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.footer ul a:hover {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.footer-base {
+  max-width: 1120px;
+  margin: 2.5rem auto 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+  color: var(--ink-3);
+  font-size: 0.83rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* ---------- Embedded in one of the apps ---------- */
+
+/*
+ * `?embed=1` — `apps/mobile` and `apps/desktop` open About and the two legal
+ * documents as a screen of their own, with their own back button and title, so
+ * `App.jsx` drops this site's header and footer. What is left needs less room
+ * around it: the desktop frame is 440 design points wide and the phone's is a
+ * phone, where `clamp(2.5rem, 6vw, 4.5rem)` of air above an h1 is most of the
+ * first screenful.
+ *
+ * Padding only. Nothing here changes type, colour or layout — an embedded page
+ * that looked like a different document from the one at the same URL in a
+ * browser would defeat the point of there being one document.
+ */
+.app--embed {
+  min-height: 0;
+}
+
+.app--embed .legal {
+  padding: 1.75rem 1.25rem 3rem;
+}
+
+.app--embed .landing section {
+  padding-inline: 1.25rem;
+}
+
+.app--embed .landing section:first-child {
+  padding-top: 2rem;
+}
+
+/* ---------- Legal & support pages ---------- */
+
+.legal {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: clamp(2.5rem, 6vw, 4.5rem) 1.5rem 5rem;
+}
+
+.legal h1 {
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  margin-bottom: 0.5rem;
+}
+
+.legal .updated {
+  color: var(--ink-3);
+  font-size: 0.9rem;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.legal h2 {
+  font-size: 1.3rem;
+  margin: 2.75rem 0 0.85rem;
+  scroll-margin-top: 5rem;
+}
+
+.legal p {
+  margin-bottom: 1.15rem;
+}
+
+.legal ul {
+  margin: 0 0 1.25rem 1.35rem;
+}
+
+.legal li {
+  margin-bottom: 0.5rem;
+}
+
+.legal strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.legal em {
+  color: var(--ink);
+  font-style: normal;
+  background: color-mix(in srgb, var(--ink) 6%, transparent);
+  border-radius: 4px;
+  padding: 0.05em 0.35em;
+  font-size: 0.94em;
+}
+
+.legal a {
+  color: var(--brand);
+  text-underline-offset: 3px;
+}
+
+/* `?embed=1` prints the two typeface URLs as text instead of linking them, so
+   they carry no brand colour and must be able to wrap: a URL inside a 440pt
+   frame with nowhere to break widens the whole document. */
+.legal-link-text {
+  color: var(--ink-3);
+  overflow-wrap: anywhere;
+}
+
+/* ---------- Landing ---------- */
+
+.landing {
+  overflow-x: clip;
+}
+
+.landing section {
+  padding: clamp(3.5rem, 8vw, 6.5rem) clamp(1rem, 4vw, 2.5rem);
+}
+
+.landing .inner {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.eyebrow {
+  display: block;
+  text-align: center;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brand);
+  margin-bottom: 0.9rem;
+}
+
+.landing h2 {
+  font-size: clamp(1.7rem, 4vw, 2.5rem);
+  text-align: center;
+  margin-bottom: 0.75rem;
+}
+
+.section-sub {
+  text-align: center;
+  color: var(--ink-3);
+  max-width: 56ch;
+  margin: 0 auto clamp(2.5rem, 5vw, 3.5rem);
+}
+
+/* Hero */
+
+.hero {
+  position: relative;
+  padding-top: clamp(3rem, 7vw, 5.5rem) !important;
+  background:
+    radial-gradient(
+      58rem 30rem at 78% -12%,
+      color-mix(in srgb, var(--brand-2) 28%, transparent),
+      transparent 62%
+    ),
+    radial-gradient(
+      48rem 28rem at 8% 105%,
+      color-mix(in srgb, var(--brand) 30%, transparent),
+      transparent 62%
+    ),
+    linear-gradient(
+      168deg,
+      color-mix(in srgb, var(--bg) 94%, var(--brand)) 0%,
+      color-mix(in srgb, var(--bg) 82%, var(--brand)) 58%,
+      color-mix(in srgb, var(--bg) 72%, var(--brand)) 100%
+    );
+  border-bottom: 1px solid var(--line);
+}
+
+.hero .inner {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--brand) 30%, var(--ink));
+  background: var(--brand-soft);
+  border: 1px solid color-mix(in srgb, var(--brand) 32%, transparent);
+  border-radius: 999px;
+  padding: 0.4rem 0.95rem;
+  margin-bottom: 1.4rem;
+}
+
+.hero-badge svg {
+  width: 0.95rem;
+  height: 0.95rem;
+  color: var(--good);
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 5.6vw, 3.6rem);
+  font-weight: 800;
+  margin-bottom: 1.1rem;
+}
+
+.hero h1 .accent,
+.about-hero h1 .accent {
+  background: linear-gradient(
+    100deg,
+    color-mix(in srgb, var(--brand) 55%, var(--ink)),
+    color-mix(in srgb, var(--brand-2) 55%, var(--ink)) 70%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero .lede {
+  color: var(--ink-2);
+  font-size: clamp(1rem, 1.6vw, 1.13rem);
+  max-width: 40ch;
+  margin-bottom: 1.9rem;
+}
+
+.hero-checks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  margin-bottom: 2.1rem;
+}
+
+.hero-checks li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.87rem;
+  font-weight: 500;
+  color: color-mix(in srgb, var(--brand) 20%, var(--ink));
+  background: color-mix(in srgb, var(--ink) 6%, transparent);
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  padding: 0.42rem 0.9rem;
+}
+
+.hero-checks svg {
+  width: 0.95rem;
+  height: 0.95rem;
+  color: var(--good);
+}
+
+/*
+ * The store row in the download section, which sits under a centred heading
+ * rather than in the left column of the hero.
+ *
+ * `.cta .store-buttons` already does exactly this for the closing CTA; the
+ * modifier exists so the rule is not tied to being inside one more section
+ * class, since this row now appears in three places on one page.
+ */
+.store-buttons--center {
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+/*
+ * The install warning inside a desktop card, under the requirement line.
+ *
+ * Smaller and dimmer than the body above it, and it must stay *in* the card:
+ * it is what the operating system does to an unsigned build on first launch,
+ * and separating it from the button is the failure the old `/download` page
+ * existed to avoid. Merging that page into the home page kept the pairing by
+ * pulling the sentence in here rather than by dropping it.
+ */
+.download-note {
+  margin-top: 0.6rem;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--ink-3);
+}
+
+/* Store buttons */
+
+.store-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+/*
+ * Four platforms in the hero's left column, which is not wide enough for four
+ * on a line — flex-wrap put three up and left Windows alone underneath.
+ *
+ * A grid rather than a narrower flex row: `auto-fit` gives two even columns
+ * whenever two fit and one when they do not, and `1fr` makes all four the same
+ * width, so the block reads as a set instead of as four buttons sized by how
+ * long each store's name happens to be. The closing CTA keeps the flex row —
+ * it spans the page and fits all four across.
+ */
+.hero .store-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr));
+  max-width: 26rem;
+}
+
+.store-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  min-height: 48px;
+  background: var(--ink);
+  color: var(--bg);
+  text-decoration: none;
+  border-radius: var(--r-md);
+  padding: 0.6rem 1.15rem;
+  transition:
+    transform var(--kg-motion-fast) ease,
+    box-shadow var(--kg-motion-fast) ease;
+  box-shadow: 0 8px 22px color-mix(in srgb, var(--kg-shadow) 40%, transparent);
+}
+
+.store-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px color-mix(in srgb, var(--kg-shadow) 50%, transparent);
+}
+
+/*
+ * The download button inside a desktop card.
+ *
+ * The store buttons carry a vendor mark that does the identifying; this one has
+ * only a word, so it takes the accent as its ground rather than `--ink`. In the
+ * card it sits under a heading and a requirement line — the same near-black as
+ * the surrounding text read as a third paragraph with a box round it.
+ *
+ * Sized to its label instead of stretching: it is one action in a card, not the
+ * card's footer.
+ */
+.store-btn--solid {
+  align-self: start;
+  margin-top: 0.9rem;
+  /* Same ground as `.nav-cta`, which is the page's other filled action, so the
+     two do not read as different kinds of button. `--kg-textInverse` is the
+     token that follows the gradient; `--bg` does not, and the brand is not a
+     fixed colour across theme packs. */
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  color: var(--kg-textInverse);
+  padding: 0.55rem 1.1rem 0.55rem 0.95rem;
+  min-height: 42px;
+}
+
+.store-btn--solid:hover {
+  color: var(--kg-textInverse);
+  filter: brightness(1.08);
+}
+
+.store-btn--solid svg {
+  width: 1.05rem;
+  height: 1.05rem;
+}
+
+.store-btn svg {
+  width: 1.55rem;
+  height: 1.55rem;
+  flex-shrink: 0;
+}
+
+.store-btn small {
+  display: block;
+  font-size: 0.64rem;
+  opacity: 0.7;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+}
+
+.store-btn strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+/* Phone mockup */
+
+.phone-wrap {
+  display: flex;
+  justify-content: center;
+  perspective: 1400px;
+}
+
+.phone {
+  width: min(280px, 78vw);
+  border-radius: 2.4rem;
+  background: linear-gradient(
+    170deg,
+    color-mix(in srgb, var(--bg) 86%, var(--brand)),
+    color-mix(in srgb, var(--bg) 96%, var(--brand))
+  );
+  border: 7px solid color-mix(in srgb, var(--surface) 78%, var(--ink));
+  box-shadow:
+    var(--shadow-lg),
+    0 0 0 1px color-mix(in srgb, var(--ink) 7%, transparent);
+  padding: 1.1rem 0.95rem 1.4rem;
+  transform: rotateY(-11deg) rotateX(3deg) rotate(2deg);
+}
+
+.phone-notch {
+  width: 84px;
+  height: 7px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--surface) 72%, var(--ink));
+  margin: 0 auto 1.1rem;
+}
+
+.phone-card {
+  background: color-mix(in srgb, var(--ink) 5.5%, transparent);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: 0.85rem 0.95rem;
+  margin-bottom: 0.7rem;
+}
+
+.phone-card .label {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-3);
+  margin-bottom: 0.35rem;
+  font-weight: 600;
+}
+
+.phone-card .value {
+  font-family: var(--font-display);
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.phone-bar {
+  height: 7px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--ink) 10%, transparent);
+  margin-top: 0.6rem;
+  overflow: hidden;
+}
+
+.phone-bar span {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--brand), var(--brand-2));
+}
+
+.phone-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.62rem;
+  font-weight: 600;
+  color: var(--good);
+  background: color-mix(in srgb, var(--good) 12%, transparent);
+  border-radius: 999px;
+  padding: 0.22rem 0.55rem;
+  margin-top: 0.45rem;
+}
+
+.phone-pill svg {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+/* Trust band */
+
+.trust {
+  padding-block: clamp(2rem, 4vw, 2.75rem) !important;
+  background: var(--bg-2);
+  border-bottom: 1px solid var(--line);
+}
+
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.trust-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+}
+
+.trust-item svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  color: var(--good);
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.trust-item strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  color: var(--ink);
+}
+
+.trust-item span {
+  font-size: 0.82rem;
+  color: var(--ink-3);
+}
+
+/* Features */
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.15rem;
+}
+
+.feature-card {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: 1.6rem;
+  transition:
+    border-color var(--kg-motion-normal) ease,
+    transform var(--kg-motion-normal) ease,
+    background var(--kg-motion-normal) ease;
+}
+
+.feature-card:hover {
+  border-color: var(--line-strong);
+  background: var(--surface-2);
+  transform: translateY(-3px);
+}
+
+.feature-icon {
+  width: 2.7rem;
+  height: 2.7rem;
+  display: grid;
+  place-items: center;
+  border-radius: var(--r-md);
+  background: var(--brand-soft);
+  border: 1px solid color-mix(in srgb, var(--brand) 24%, transparent);
+  color: color-mix(in srgb, var(--brand) 70%, var(--ink));
+  margin-bottom: 1.1rem;
+}
+
+/*
+ * 1.15rem, and the jump from 1.05 is the fix for a flat page rather than a
+ * preference.
+ *
+ * The type scale runs h1 57.6px → h2 40px → h3 16.8px, so everything below a
+ * section heading landed in one undifferentiated size band: a card title at
+ * 16.8 against body at 14.7 is a ratio of **1.14**, which is close enough that
+ * bold is doing all the work of saying "this is a heading". Across a grid of
+ * twelve cards that reads as a wall of paragraphs — the problem looks like a
+ * colour problem and is a hierarchy problem.
+ *
+ * 1.15rem takes the ratio to 1.25 and gives the card a third step under the
+ * section h2, without approaching it. Applied to the three card families that
+ * share the band so a grid does not change weight between sections.
+ */
+.feature-card h3,
+.step h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.45rem;
+  letter-spacing: -0.01em;
+}
+
+.why-item h3 {
+  font-size: 1.08rem;
+  letter-spacing: -0.01em;
+}
+
+.feature-card p {
+  font-size: 0.92rem;
+  color: var(--ink-3);
+}
+
+/*
+ * The download band — the page's third plane, and the reason it needs one.
+ *
+ * `.landing` alternates a transparent section against `.showcase`'s darker
+ * `--bg-2`, which is what keeps a long page legible as a sequence of blocks.
+ * Adding the download section broke that: it landed next to the features grid,
+ * both transparent, and the two measured **1339px + 823px of one unbroken
+ * background** — over two full screens with no seam in them.
+ *
+ * Reordering could not fix it. The page has four transparent sections and three
+ * dark ones, so a fifth transparent section puts two of one kind together
+ * wherever it goes. A third plane is the answer, and it is the right one on the
+ * merits too: this is the section where a reader acts, and it should not look
+ * like a section where a reader reads.
+ *
+ * **Lighter than `--bg`, where `.showcase` is darker.** That makes it a genuine
+ * third step rather than a weaker copy of the dark one, and the brand wash is
+ * held at 10% so it stays quieter than `.cta`, which is the page's loudest
+ * moment and has to stay so.
+ */
+.section-band {
+  background:
+    radial-gradient(
+      52rem 22rem at 50% 0%,
+      color-mix(in srgb, var(--brand) 10%, transparent),
+      transparent 70%
+    ),
+    color-mix(in srgb, var(--surface) 45%, var(--bg));
+  border-block: 1px solid var(--line);
+}
+
+/* Dashboard showcase */
+
+.showcase {
+  background:
+    radial-gradient(
+      46rem 24rem at 50% -20%,
+      color-mix(in srgb, var(--brand) 20%, transparent),
+      transparent 65%
+    ),
+    var(--bg-2);
+  border-block: 1px solid var(--line);
+}
+
+.showcase-frame {
+  margin-top: 1rem;
+  border-radius: var(--r-xl);
+  border: 1px solid var(--line-strong);
+  background: linear-gradient(
+    170deg,
+    color-mix(in srgb, var(--bg) 84%, var(--brand)),
+    color-mix(in srgb, var(--bg) 95%, var(--brand))
+  );
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+.showcase-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.7rem 1rem;
+  border-bottom: 1px solid var(--line);
+  background: color-mix(in srgb, var(--ink) 3%, transparent);
+}
+
+.showcase-bar i {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--ink) 16%, transparent);
+}
+
+.showcase-bar span {
+  margin-inline-start: auto;
+  font-size: 0.72rem;
+  color: var(--ink-3);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.showcase-body {
+  display: grid;
+  grid-template-columns: 168px minmax(0, 1fr);
+  min-height: 300px;
+}
+
+.showcase-side {
+  border-inline-end: 1px solid var(--line);
+  padding: 1rem 0.8rem;
+  display: grid;
+  gap: 0.4rem;
+  align-content: start;
+}
+
+.showcase-row {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.8rem;
+  color: var(--ink-3);
+  padding: 0.42rem 0.55rem;
+  border-radius: var(--r-sm);
+}
+
+.showcase-row svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.showcase-row.is-active {
+  background: color-mix(in srgb, var(--ink) 7%, transparent);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.showcase-main {
+  padding: 1.1rem;
+  display: grid;
+  gap: 0.9rem;
+  align-content: start;
+}
+
+.showcase-tiles {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.showcase-tile {
+  background: color-mix(in srgb, var(--ink) 4%, transparent);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: 0.75rem 0.85rem;
+}
+
+.showcase-tile em {
+  display: block;
+  font-style: normal;
+  font-size: 0.64rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--ink-3);
+  margin-bottom: 0.3rem;
+}
+
+.showcase-tile strong {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--ink);
+}
+
+.showcase-chart {
+  background: color-mix(in srgb, var(--ink) 4%, transparent);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: 0.9rem;
+}
+
+.showcase-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+  height: 92px;
+}
+
+.showcase-bars i {
+  flex: 1;
+  border-radius: 3px 3px 0 0;
+  background: var(--brand);
+  opacity: 0.85;
+}
+
+.showcase-bars i.over {
+  background: var(--kg-danger);
+}
+
+.showcase-caption {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1.6rem;
+  font-size: 0.86rem;
+  color: var(--ink-3);
+}
+
+.showcase-caption span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.showcase-caption svg {
+  width: 1rem;
+  height: 1rem;
+  color: var(--good);
+}
+
+/* Steps */
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.15rem;
+}
+
+.step {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: 1.6rem;
+}
+
+.step-num {
+  display: inline-grid;
+  place-items: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+/* Size and letter-spacing come from the shared rule above `.feature-card p`. */
+.step h3 {
+  margin-bottom: 0.45rem;
+}
+
+.step p {
+  font-size: 0.92rem;
+  color: var(--ink-3);
+}
+
+/* Why */
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+/*
+ * A card heading and its status pill on one line.
+ *
+ * `.why-item` is a flex row of icon and body, so the body's first child is what
+ * the icon lines up with. A pill placed above the heading therefore took the
+ * icon's line and pushed the heading down one — in a row of three cards, two
+ * titles level with their icons and one not.
+ *
+ * `baseline` rather than `center`: the pill's cap height is much smaller than
+ * the heading's, and centring the boxes leaves the two sets of letters visibly
+ * out of line.
+ */
+.card-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.card-head .card-soon {
+  margin-bottom: 0;
+}
+
+/*
+ * A note that closes a section, under whatever grid the section holds.
+ *
+ * It was `.cta-note`, borrowed from the closing call to action, and that class
+ * carries no top margin because there it follows a button row that has its own
+ * bottom margin. Here it followed a card grid directly and sat **18px** under
+ * it — close enough to read as part of the last card rather than as a note
+ * about all of them.
+ *
+ * Width-capped and centred for the same reason the rest of the page is: full
+ * `.inner` width at this size runs past 100 characters a line, well beyond the
+ * `--measure` the body copy is set to.
+ */
+.section-note {
+  margin-top: 2.25rem;
+  max-width: 64ch;
+  margin-inline: auto;
+  text-align: center;
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: var(--ink-3);
+}
+
+/*
+ * Three across, for the download section's three platforms.
+ *
+ * The default two columns would leave Android TV alone on a second row, which
+ * reads as an afterthought rather than as the third of a set — and it is the
+ * one card whose whole job is to be read. Collapses with every other `.why-grid`
+ * at 720px.
+ */
+.why-grid--three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.why-item {
+  display: flex;
+  gap: 0.9rem;
+  align-items: flex-start;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: 1.35rem 1.5rem;
+}
+
+/*
+ * A card for something that is not here yet.
+ *
+ * A grid stretches its cards to one height, so this one sat with **153px of
+ * empty surface** below 137px of content, next to two cards that fill theirs
+ * with a button and an install note. On a solid surface that empty half reads
+ * as a card that failed to render rather than as a platform that has not
+ * shipped.
+ *
+ * Outlined and unfilled instead: the emptiness becomes reserved space, and the
+ * row reads at a glance as two things a family can take and one that is coming.
+ * The `.card-soon` pill says it in words; this says it before the words are
+ * read.
+ *
+ * **It has to sit after `.why-item`, not before it.** Both selectors are one
+ * class, so nothing but source order decides which wins; written above the base
+ * rule this had the class in the DOM, no error anywhere, and no visible effect.
+ */
+.why-item--planned {
+  background: none;
+  border-style: dashed;
+  border-color: var(--line-strong);
+}
+
+.why-item .tick {
+  flex-shrink: 0;
+  width: 1.85rem;
+  height: 1.85rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--good) 14%, transparent);
+  color: var(--good);
+  display: grid;
+  place-items: center;
+}
+
+.why-item .tick svg {
+  width: 1.05rem;
+  height: 1.05rem;
+}
+
+/* Size and letter-spacing come from the shared rule near `.feature-card h3`. */
+.why-item h3 {
+  margin-bottom: 0.3rem;
+}
+
+.why-item p {
+  font-size: 0.9rem;
+  color: var(--ink-3);
+}
+
+/* FAQ */
+
+.faq-list {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.faq-list details {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: 0 1.3rem;
+  margin-bottom: 0.7rem;
+  transition: border-color var(--kg-motion-normal) ease;
+}
+
+.faq-list details[open] {
+  border-color: var(--line-strong);
+}
+
+.faq-list summary {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--ink);
+  padding: 1.05rem 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.faq-list summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-list summary::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  /* Logical, so the chevron points into the text in both directions: in RTL
+     `border-inline-end` is the left edge and the arrow mirrors with the row. */
+  border-inline-end: 2px solid var(--ink-3);
+  border-bottom: 2px solid var(--ink-3);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+  transition: transform var(--kg-motion-normal) ease;
+}
+
+.faq-list details[open] summary::after {
+  transform: rotate(-135deg);
+}
+
+.faq-list details p {
+  padding-bottom: 1.1rem;
+  color: var(--ink-3);
+  font-size: 0.94rem;
+}
+
+.faq-more {
+  text-align: center;
+  margin-top: 1.75rem;
+}
+
+.faq-more a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--brand);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.faq-more a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.faq-more svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Bottom CTA */
+
+.cta {
+  text-align: center;
+  background:
+    radial-gradient(
+      40rem 20rem at 50% -30%,
+      color-mix(in srgb, var(--brand-2) 34%, transparent),
+      transparent 70%
+    ),
+    linear-gradient(
+      165deg,
+      color-mix(in srgb, var(--bg) 88%, var(--brand)),
+      color-mix(in srgb, var(--bg) 70%, var(--brand))
+    );
+  border-top: 1px solid var(--line);
+}
+
+.cta .store-buttons {
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.cta-note {
+  font-size: 0.85rem;
+  color: var(--ink-3);
+}
+
+/* About */
+
+/*
+ * The About page opens on a heading, not on the home page's two-column hero.
+ *
+ * Both of the rules it needs were attached to something it is not: `.landing h2`
+ * carries the centring for every other section heading and this is an `h1`, and
+ * the accent gradient was scoped to `.hero h1 .accent`. So the heading rendered
+ * left-aligned in plain white between a centred eyebrow above it and a centred
+ * lede below — three blocks, three alignments, and the accent half of the
+ * sentence indistinguishable from the rest of it.
+ *
+ * A scoped rule rather than reusing `.hero`: that class carries a two-column
+ * grid and two background gradients sized for the phone mockup beside it, none
+ * of which this page has anything to put in.
+ */
+.about-hero h1 {
+  font-size: clamp(1.9rem, 5vw, 3.2rem);
+  font-weight: 800;
+  text-align: center;
+  text-wrap: balance;
+  margin-bottom: 1.1rem;
+}
+
+/*
+ * `.section-sub`'s bottom margin exists to separate a heading block from the
+ * grid under it. Here it is the last thing in the section, so it stacks on top
+ * of `.landing section`'s own padding — up to 10rem of empty page between the
+ * lede and the next heading.
+ */
+.about-hero .section-sub {
+  margin-bottom: 0;
+}
+
+/*
+ * The pill on a card for a platform that has not shipped. Muted rather than
+ * accent-coloured: it marks an absence, and the accent is where this page puts
+ * things a family can have today.
+ */
+.card-soon {
+  display: inline-block;
+  margin-bottom: 0.55rem;
+  padding: 0.16rem 0.5rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+/*
+ * The only prose block on the landing surface, and it needed its own rule
+ * rather than one of the two that were already close. `.section-sub` is a
+ * single centred line under a heading — three paragraphs of it read as three
+ * captions — and `.legal` is a whole document shell with its own page padding
+ * and h1. This is a section of running text inside a landing section.
+ */
+.about-prose {
+  max-width: var(--measure);
+  margin: 0 auto;
+  color: var(--ink-2);
+}
+
+.about-prose p {
+  margin-bottom: 1.15rem;
+}
+
+.about-prose p:last-child {
+  margin-bottom: 0;
+}
+
+.about-facts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.15rem;
+}
+
+.about-fact {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.about-fact strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 2.6rem);
+  line-height: 1.1;
+  color: var(--ink);
+  /* Tabular figures, as every running count in the product uses — the four
+     numbers here sit in a row and must share one width. */
+  font-variant-numeric: tabular-nums;
+}
+
+.about-fact span {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--ink-3);
+}
+
+.about-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem 1.75rem;
+}
+
+.about-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--brand);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.about-links a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.about-links svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Scroll reveal */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity var(--kg-motion-slow) ease,
+    transform var(--kg-motion-slow) ease;
+}
+
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .phone {
+    transform: none;
+  }
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 980px) {
+  .hero .inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero .lede {
+    margin-inline: auto;
+  }
+
+  .hero-checks,
+  .store-buttons {
+    justify-content: center;
+  }
+
+  .phone {
+    transform: none;
+  }
+
+  .features-grid,
+  .steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .trust-grid,
+  .about-facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footer-inner {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .features-grid,
+  .steps,
+  .why-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .showcase-body {
+    grid-template-columns: 1fr;
+  }
+
+  .showcase-side {
+    border-inline-end: 0;
+    border-bottom: 1px solid var(--line);
+    grid-auto-flow: column;
+    overflow-x: auto;
+  }
+
+  .showcase-tiles {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .nav a {
+    padding: 0.45rem 0.55rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  /* Five links do not fit beside the wordmark, and wrapping them pushes the
+     header two rows deep. The footer carries the same links. */
+  .nav a:not(.nav-cta) {
+    display: none;
+  }
+
+  .nav .nav-cta {
+    margin-inline-start: 0;
+    padding: 0.55rem 0.95rem;
+  }
+
+  .trust-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+/* ---------- Language picker ---------- */
+
+.lang {
+  position: relative;
+}
+
+.lang-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  background: transparent;
+  color: var(--ink-3);
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    color var(--kg-motion-fast) ease,
+    background var(--kg-motion-fast) ease,
+    border-color var(--kg-motion-fast) ease;
+}
+
+.lang-btn:hover {
+  color: var(--ink);
+  background: color-mix(in srgb, var(--ink) 6%, transparent);
+  border-color: var(--line-strong);
+}
+
+.lang-menu {
+  position: absolute;
+  z-index: 40;
+  top: calc(100% + 0.4rem);
+  inset-inline-end: 0;
+  min-width: 14rem;
+  /* Fifteen options overflow a short viewport; the list scrolls rather than
+     running off the bottom of the screen. */
+  max-height: min(60vh, 22rem);
+  overflow-y: auto;
+  margin: 0;
+  padding: 0.35rem;
+  list-style: none;
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-lg);
+}
+
+.lang-menu li {
+  margin: 0;
+}
+
+.lang-menu button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.5rem 0.6rem;
+  border: 0;
+  border-radius: var(--r-sm);
+  background: transparent;
+  color: var(--ink-2);
+  font: inherit;
+  font-size: 0.88rem;
+  text-align: start;
+  cursor: pointer;
+}
+
+.lang-menu button:hover {
+  background: color-mix(in srgb, var(--ink) 7%, transparent);
+  color: var(--ink);
+}
+
+.lang-menu button.is-active {
+  color: var(--ink);
+}
+
+.lang-menu button span {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  min-width: 0;
+}
+
+.lang-menu button em {
+  font-style: normal;
+  font-size: 0.74rem;
+  color: var(--ink-3);
+}
+
+.lang-menu button svg {
+  flex-shrink: 0;
+  color: var(--brand);
+}
+
+/* The account-deletion page stays in English; this explains that to everyone
+   else. The Privacy Policy and the Terms are translated and carry no note. */
+.legal-note {
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--line-strong);
+  border-inline-start: 3px solid var(--brand);
+  border-radius: var(--r-sm);
+  background: var(--brand-soft);
+  font-size: 0.88rem;
+  color: var(--ink-2);
+}
+
+@media (max-width: 720px) {
+  /* The wordmark plus the sign-in button already fill the row, so the picker
+     keeps its globe and drops the language name. */
+  .lang-header .lang-btn span {
+    display: none;
+  }
+
+  .lang-header .lang-btn {
+    padding: 0.5rem;
+  }
+}

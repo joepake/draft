@@ -1,0 +1,48 @@
+export const child = {
+  pageTitle: 'स्थिति',
+  statusPaused: 'लॉक है',
+  statusActive: 'सक्रिय',
+  readyTitle: 'सब तैयार है',
+  readyBody:
+    'अगर और स्क्रीन टाइम चाहिए, तो नीचे से माता-पिता को अनुरोध भेज सकते हैं। आपातकाल में SOS बटन इस्तेमाल करें।',
+  setupCollapsedTitle: 'माता-पिता के साथ सेटअप पूरा करें',
+  setupCollapsedCount: '{{count}} पूरा करना बाकी',
+  oneMoment: 'एक पल रुकें…',
+  paused: 'लॉक है',
+  blockedHours: 'ब्लॉक किए गए समय',
+  limitReached: 'सीमा पूरी हुई',
+  active: 'सक्रिय',
+  parentPausedThisDevice: 'आपके माता-पिता ने अभी यह डिवाइस लॉक कर दिया है।',
+  blockedHoursOnPaused: 'अभी ब्लॉक किए गए घंटे चल रहे हैं। आराम करने का अच्छा समय है।',
+  outOfScreenTimeAskParent:
+    'आज का स्क्रीन टाइम खत्म हो गया है। नीचे से और माँग सकते हैं।',
+  screenTimeToday: 'आज का स्क्रीन टाइम',
+  usedOverLimitMinutes: '{{used}} / {{limit}}',
+  usedMinutesOnly: '{{used}}',
+  outOfScreenTimeToday:
+    'आज का स्क्रीन टाइम खत्म हो गया है। माता-पिता से और माँग सकते हैं।',
+  devicePaused: 'डिवाइस लॉक है',
+  devicePausedByParent: '{{deviceName}} अभी लॉक है।',
+  phonePausedByParent: 'आपके माता-पिता ने अभी यह डिवाइस लॉक कर दिया है।',
+  pausedAskParentOrSos:
+    'ज़रूरत पड़ने पर माता-पिता से अनलॉक करने को कहें। आपातकाल में आप फिर भी SOS भेज सकते हैं।',
+  blockedHoursLockTitle: 'ब्लॉक किए गए समय',
+  blockedHoursLockBody: 'अभी ब्लॉक किए गए घंटे चल रहे हैं। आराम करने का अच्छा समय है।',
+  blockedHoursLockHint:
+    'और समय चाहिए तो माता-पिता से कहें। आपातकाल में आप फिर भी SOS भेज सकते हैं।',
+  parentPausedAccess: 'आपके माता-पिता ने अभी यह डिवाइस लॉक कर दिया है।',
+  parentRestoredAccess:
+    'आपके माता-पिता ने डिवाइस अनलॉक कर दिया। आप इस्तेमाल जारी रख सकते हैं।',
+  toastDailyLimitIncreased: 'आपके माता-पिता ने {{minutes}} मिनट और स्क्रीन टाइम जोड़ा।',
+  errorDeviceNotRegistered: 'यह डिवाइस पंजीकृत नहीं है।',
+  errorScreenTimeRequired: 'स्क्रीन टाइम की अनुमति आवश्यक है।',
+  minUsed: '{{used}} उपयोग',
+  setupContinueButton: 'सेटअप जारी रखें',
+  setupWizardTitle: 'सुरक्षा सेट करें',
+  setupWizardProgress: '{{done}}/{{total}} पूर्ण',
+  setupWizardRequired: 'आवश्यक',
+  setupWizardOptional: 'वैकल्पिक',
+  setupWizardSkip: 'अभी छोड़ें',
+  setupWizardAllDoneTitle: 'हो गया!',
+  setupWizardAllDoneSubtitle: 'यह डिवाइस अब सुरक्षित है।',
+} as const;

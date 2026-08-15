@@ -1,0 +1,80 @@
+export const timeRequest = {
+  alertMorePending: 'Ещё {{count}} запросов ждут в разделе «Семья».',
+  pauseConfirmTitle: 'Заблокировать {{deviceName}}?',
+  pauseConfirmBody:
+    'Устройство будет заблокировано сейчас вместо добавления времени. {{deviceName}} нельзя будет использовать, пока вы его не разблокируете.',
+  pauseConfirmAction: 'Заблокировать устройство',
+  alertTitle: 'Запрос на время получен',
+  alertMessage: '{{deviceName}} запросил ещё {{minutes}} минут.',
+  alertMessage_one: '{{deviceName}} запросил ещё {{minutes}} минуту.',
+  alertMessage_few: '{{deviceName}} запросил ещё {{minutes}} минуты.',
+  alertReasonLine: 'Причина: {{reason}}',
+  alertNotNow: 'Не сейчас',
+  alertApprove: 'Одобрить',
+  alertPauseInstead: 'Заблокировать вместо этого',
+  alertLater: 'Позже',
+  toastDeclineFailed: 'Не удалось отклонить запрос. Попробуйте ещё раз.',
+  toastApproveFailed: 'Не удалось одобрить запрос. Попробуйте ещё раз.',
+  toastLockFailed: 'Не удалось заблокировать устройство. Попробуйте ещё раз.',
+  statusWaitingForApproval: 'Ожидание ответа родителей (запрошено {{minutes}} минут).',
+  statusWaitingForApproval_one:
+    'Ожидание ответа родителей (запрошена {{minutes}} минута).',
+  statusWaitingForApproval_few:
+    'Ожидание ответа родителей (запрошено {{minutes}} минуты).',
+  statusCooldown: 'Сможешь отправить новый запрос через {{time}}.',
+  statusDailyLimitExceeded:
+    'Экранное время на сегодня закончилось. Приложения снова откроются завтра — или раньше, если родители добавят время.',
+  errorDeviceNotRegistered: 'Это устройство не зарегистрировано.',
+  errorMinutesRange: 'Введи от {{min}} до {{max}} минут.',
+  toastRequestSent: 'Запрос отправлен. Родители скоро его рассмотрят.',
+  toastDeviceNotRegistered: 'Это устройство ещё не зарегистрировано.',
+  toastSendFailed: 'Не удалось отправить запрос. Попробуй ещё раз.',
+  askForMoreTime: 'Запросить больше времени',
+  askForMoreTimeSubtitle:
+    'Если родители одобрят, сегодня получишь больше экранного времени.',
+  sendToParent: 'Отправить родителям',
+  howManyMinutes: 'Сколько минут тебе нужно?',
+  minutesNeeded: 'Количество минут',
+  reasonOptional: 'Причина (необязательно)',
+  reasonPlaceholder: 'Домашнее задание, групповое занятие и т.д.',
+  enterAtLeastMinutes: 'Введи не менее {{min}} минут.',
+  requestsLimitedToMinutes: 'Каждый запрос ограничен {{max}} минутами.',
+  unableToSendRequest: 'Не удалось отправить запрос прямо сейчас. Попробуй ещё раз.',
+  needsApproval: 'Требуется одобрение',
+  timeRequests: 'Запросы времени',
+  plusMinutesBadge: '+{{minutes}} мин',
+  notNow: 'Не сейчас',
+  approve: 'Одобрить',
+  unableToDeclineRequest: 'Не удалось отклонить запрос. Попробуйте ещё раз.',
+  unableToApproveRequest: 'Не удалось одобрить запрос. Попробуйте ещё раз.',
+  pendingRequestExists: 'Запрос уже отправлен. Подожди ответа родителей.',
+  waitBeforeAnotherRequest:
+    'Подожди несколько минут, прежде чем отправить ещё один запрос.',
+  timeRequestSent: 'Запрос времени отправлен',
+  timeRequestSentDescription: '{{deviceName}} запросил ещё {{minutes}} минут.',
+  timeRequestSentDescription_one: '{{deviceName}} запросил ещё {{minutes}} минуту.',
+  timeRequestSentDescription_few: '{{deviceName}} запросил ещё {{minutes}} минуты.',
+  timeRequestApproved: 'Запрос времени одобрен',
+  timeRequestDenied: 'Запрос времени отклонён',
+  timeRequestApprovedDescription:
+    'Добавлено {{minutes}} дополнительных минут для {{deviceName}} на сегодня.',
+  timeRequestApprovedDescription_one:
+    'Дневной лимит для {{deviceName}} увеличен на {{minutes}} минуту.',
+  timeRequestApprovedDescription_few:
+    'Дневной лимит для {{deviceName}} увеличен на {{minutes}} минуты.',
+  timeRequestDeniedDescription:
+    'Запрос на {{minutes}} минут для {{deviceName}} отклонён.',
+  timeRequestDeniedDescription_one:
+    'Запрос на {{minutes}} минуту для {{deviceName}} отклонён.',
+  timeRequestDeniedDescription_few:
+    'Запрос на {{minutes}} минуты для {{deviceName}} отклонён.',
+  needMoreTimeTitle: 'Нужно больше времени?',
+  askParentForMoreTime:
+    'Сегодня можешь попросить у родителей немного больше экранного времени.',
+  requestMoreTime: 'Запросить больше времени',
+  requestMoreTimeAccessibilityLabel: 'Запросить больше времени',
+  requestPendingButton: 'Запрос ожидает',
+  requestPendingChip: 'Запрос ожидает',
+  waitCooldown: 'Подожди {{cooldown}}',
+  timeRequestNote: 'Если родители одобрят, сегодня получишь больше экранного времени.',
+} as const;

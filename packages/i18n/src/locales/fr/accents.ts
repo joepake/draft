@@ -1,0 +1,20 @@
+export const accents = {
+  themeColor: 'Couleur du thème',
+  themeColorSubtitle:
+    'Choisissez une couleur pour les boutons et les accents de l’app.',
+  closeThemeColorPicker: 'Fermer le sélecteur de couleur',
+  accentThemeAccessibility: 'Thème {{label}}',
+  teal: 'Bleu canard',
+  sky: 'Ciel',
+  blue: 'Bleu',
+  lime: 'Citron vert',
+  violet: 'Violet',
+  fuchsia: 'Fuchsia',
+  pink: 'Rose',
+  berry: 'Framboise',
+  orange: 'Orange',
+  rose: 'Rose poudré',
+  green: 'Vert',
+  brown: 'Marron',
+  slate: 'Neutre',
+} as const;

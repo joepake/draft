@@ -1,0 +1,41 @@
+export const checkIn = {
+  noPhotoBadge: 'Không có ảnh kèm theo',
+  historyTitle: 'Lịch sử Báo an toàn',
+  historyHint:
+    'Chạm vào ảnh để phóng to. Bạn có thể gửi yêu cầu mới ở phía trên bất cứ lúc nào.',
+  historyEmpty: 'Chưa có Báo an toàn nào.',
+  screenTitle: 'Báo an toàn',
+  statusSafe: 'An toàn',
+  statusNoResponse: 'Chưa phản hồi',
+  statusWaiting: 'Đang chờ',
+  metaWaitingForLocationAndPhoto: 'Đang chờ vị trí và ảnh',
+  metaNoLocation: 'Không kèm vị trí',
+  viewPhotoAccessibility: 'Xem ảnh Báo an toàn',
+  responseMessage: 'Con vẫn an toàn.',
+  toastSuccess: 'Cảm ơn con. Bố mẹ đã biết con vẫn an toàn.',
+  toastFailed: 'Không gửi được Báo an toàn. Vui lòng thử lại.',
+  quickCheckInBadge: 'Báo an toàn',
+  areYouOkay: 'Con vẫn ổn chứ?',
+  checkInWithPhotoBody:
+    'Bố mẹ muốn biết con có ổn không. KidGate sẽ gửi vị trí và một tấm ảnh nếu có thể.',
+  checkInLocationOnlyBody:
+    'Bố mẹ muốn biết con có ổn không. KidGate sẽ gửi vị trí nếu có thể.',
+  yesImOkay: 'Con vẫn ổn',
+  yesImOkaySending: 'Đang gửi…',
+  iNeedHelp: 'Con cần trợ giúp',
+  checkInRequested: 'Đã gửi yêu cầu Báo an toàn',
+  checkInRequestedDescription:
+    'Đã yêu cầu {{deviceName}} xác nhận an toàn kèm vị trí và ảnh.',
+  checkInRequestedDescriptionLocation:
+    'Đã yêu cầu {{deviceName}} xác nhận an toàn kèm vị trí.',
+  checkInConfirmed: 'Đã xác nhận an toàn',
+  checkInConfirmedDescription: '{{deviceName}} đã xác nhận an toàn.',
+  childDeviceFallback: 'Thiết bị của trẻ',
+  requestCheckIn: 'Gửi yêu cầu Báo an toàn',
+  requestCheckInNote: 'Yêu cầu thiết bị của trẻ gửi vị trí và một ảnh từ camera trước.',
+  needHelpOpenSosAccessibility: 'Con cần trợ giúp — mở SOS',
+  parentSafePopupTitle: 'Con bạn vẫn an toàn',
+  childSafePopupTitle: 'Đã báo cho bố mẹ',
+  childSafePopupBody: 'Bố mẹ đã nhận được tin — con vẫn an toàn.',
+  confirmedKicker: 'Báo an toàn',
+} as const;

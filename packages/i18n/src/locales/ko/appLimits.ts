@@ -1,0 +1,18 @@
+export const appLimits = {
+  title: '앱 시간 제한',
+  intro: '앱마다 하루 사용 시간을 정합니다. 기기 전체 일일 한도에 더해 적용됩니다.',
+  emptyTitle: '아직 제한이 없습니다',
+  emptySubtitle: '아래에서 앱을 골라 개별 한도를 정하세요.',
+  usedToday: '오늘 {{used}} / {{limit}}',
+  addSectionTitle: '제한 추가',
+  addSectionSubtitle: '자녀가 최근 사용한 앱.',
+  candidateUsage: '오늘 {{duration}}',
+  noUsageYet: '아직 사용 기록이 없습니다. 자녀 기기가 보고하면 여기에 표시됩니다.',
+  footnote: '제한은 자녀 기기에서 자정에 초기화됩니다.',
+  toastSaved: '앱 제한을 저장했습니다.',
+  toastSaveFailed: '저장할 수 없습니다. 다시 시도해 주세요.',
+  removeAccessibility: '{{app}} 제한 삭제',
+  increaseAccessibility: '{{app}} 제한 늘리기',
+  decreaseAccessibility: '{{app}} 제한 줄이기',
+  addAccessibility: '{{app}}에 일일 제한 추가',
+} as const;

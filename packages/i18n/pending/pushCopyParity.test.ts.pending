@@ -1,0 +1,37 @@
+import { SUPPORTED_LANGUAGES } from '../types';
+
+// Push notifications are rendered server-side from functions/lib/i18n.js,
+// not from the client locales. These tests are the guard that adding an app
+// language also adds its push copy — otherwise that language's users get
+// every notification in English.
+const backend = require('../../../functions/lib/i18n.js') as {
+  DEFAULT_LOCALE: string;
+  normalizeLocale: (value: unknown) => string;
+  MESSAGES: Record<string, Record<string, string>>;
+};
+
+describe('backend push copy parity', () => {
+  it('has push copy for every app language', () => {
+    for (const lang of SUPPORTED_LANGUAGES) {
+      expect(backend.normalizeLocale(lang)).toBe(lang);
+    }
+  });
+
+  it('every push locale defines the same keys as the default locale', () => {
+    const defaultKeys = Object.keys(
+      backend.MESSAGES[backend.DEFAULT_LOCALE],
+    ).sort();
+    for (const [lang, messages] of Object.entries(backend.MESSAGES)) {
+      expect({ lang, keys: Object.keys(messages).sort() }).toEqual({
+        lang,
+        keys: defaultKeys,
+      });
+    }
+  });
+
+  it('push locales do not drift from the app language list', () => {
+    expect(Object.keys(backend.MESSAGES).sort()).toEqual(
+      [...SUPPORTED_LANGUAGES].sort(),
+    );
+  });
+});

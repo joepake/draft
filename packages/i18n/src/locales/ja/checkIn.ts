@@ -1,0 +1,41 @@
+export const checkIn = {
+  noPhotoBadge: '写真はありません',
+  historyTitle: 'チェックイン履歴',
+  historyHint:
+    '写真をタップすると拡大できます。上からいつでも新しいチェックインを依頼できます。',
+  historyEmpty: 'チェックインはまだありません。',
+  screenTitle: 'チェックイン',
+  statusSafe: '無事',
+  statusNoResponse: '応答なし',
+  statusWaiting: '待機中',
+  metaWaitingForLocationAndPhoto: '位置情報と写真を待っています',
+  metaNoLocation: '位置情報なし',
+  viewPhotoAccessibility: 'チェックインの写真を見る',
+  responseMessage: '無事だよ。',
+  toastSuccess: 'ありがとう。無事なことが保護者に伝わりました。',
+  toastFailed: 'チェックインを送信できませんでした。もう一度お試しください。',
+  quickCheckInBadge: 'チェックイン',
+  areYouOkay: '大丈夫？',
+  checkInWithPhotoBody:
+    '保護者があなたの無事を確認したがっています。KidGateは位置情報と、可能なら写真を送ります。',
+  checkInLocationOnlyBody:
+    '保護者があなたの無事を確認したがっています。KidGateは可能なら位置情報を送ります。',
+  yesImOkay: '大丈夫だよ',
+  yesImOkaySending: '送信中…',
+  iNeedHelp: '助けてほしい',
+  checkInRequested: 'チェックインを依頼しました',
+  checkInRequestedDescription:
+    '{{deviceName}}に、位置情報と写真つきで無事の確認を依頼しました。',
+  checkInRequestedDescriptionLocation:
+    '{{deviceName}}に、位置情報つきで無事の確認を依頼しました。',
+  checkInConfirmed: 'チェックインを確認しました',
+  checkInConfirmedDescription: '{{deviceName}}が無事であることを確認しました。',
+  childDeviceFallback: '子どものデバイス',
+  requestCheckIn: 'チェックインを依頼',
+  requestCheckInNote: 'お子さまのデバイスに位置情報とフロントカメラの写真を求めます。',
+  needHelpOpenSosAccessibility: '助けてほしい — SOSを開く',
+  parentSafePopupTitle: 'お子さまは無事です',
+  childSafePopupTitle: '保護者に伝えました',
+  childSafePopupBody: '保護者にメッセージが届きました — あなたは無事です。',
+  confirmedKicker: 'チェックイン',
+} as const;

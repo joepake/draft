@@ -1,0 +1,62 @@
+export const auth = {
+  welcomeBack: 'おかえりなさい',
+  loginSubtitle: 'サインインして、お子さまのデバイスを管理・保護しましょう。',
+  emailSignInTitle: 'メールでサインイン',
+  emailSignInSubtitle: '保護者のメールアドレスとパスワードを使います。',
+  createAccountTitle: '保護者アカウントを作成',
+  createAccountSubtitle:
+    'メールとパスワードを設定しておくと、後でどのデバイスからでもサインインできます。',
+  linkEmailTitle: 'メールとパスワードを連携',
+  linkEmailSubtitle: 'この保護者アカウントに予備のメールサインインを追加します。',
+  forgotPasswordTitle: 'パスワードをリセット',
+  forgotPasswordSubtitle:
+    'メールアドレスを入力すると、パスワードリセット用のリンクをお送りします。',
+  nameLabel: 'あなたの名前',
+  namePlaceholder: '例: ママ、パパ',
+  emailLabel: 'メール',
+  emailPlaceholder: 'parent@example.com',
+  passwordLabel: 'パスワード',
+  passwordPlaceholder: 'パスワードを入力',
+  showPassword: 'パスワードを表示',
+  hidePassword: 'パスワードを非表示',
+  confirmPasswordLabel: 'パスワードの確認',
+  confirmPasswordPlaceholder: 'パスワードをもう一度入力',
+  passwordsDoNotMatch: 'パスワードが一致しません。',
+  signInWithEmail: 'メールで続ける',
+  createAccountButton: 'アカウントを作成',
+  linkEmailButton: 'メールとパスワードを連携',
+  sendResetLink: 'リセットリンクを送信',
+  forgotPassword: 'パスワードをお忘れですか？',
+  forgotPasswordSent:
+    'パスワードリセットのメールを送信しました。受信トレイをご確認ください。',
+  emailVerificationTitle: 'メールを確認してください',
+  emailVerificationSubtitle:
+    '{{email}}宛てに確認リンクを送信しました。リンクを開いてから、ここに戻って続けてください。',
+  emailVerificationPending: '続行する前に、受信トレイの確認リンクを開いてください。',
+  emailVerificationSent:
+    '確認メールを送信しました。受信トレイ（迷惑メールフォルダも）をご確認ください。',
+  emailVerificationResent: '確認メールを再送信しました。',
+  emailVerificationStillPending:
+    'メールがまだ確認されていません。受信トレイのリンクを開いてから、もう一度お試しください。',
+  emailVerificationConfirmed: '確認しました — 続ける',
+  emailVerificationResend: '確認メールを再送信',
+  emailVerificationSignInFirst:
+    '確認メールを再送するには、もう一度サインインしてください。',
+  noAccountPrompt: 'アカウントをお持ちでないですか？',
+  createAccountAction: '作成する',
+  hasAccountPrompt: 'すでにアカウントをお持ちですか？',
+  signInAction: 'ログイン',
+  orContinueWith: 'または次で続ける',
+  signInWithGoogle: 'Googleで続ける',
+  signInWithApple: 'Appleで続ける',
+  signInCancelled: 'サインインがキャンセルされました。',
+  appleSignInNotConfigured:
+    'Appleでのサインインは現在利用できません。別の方法をお試しください。',
+  consentPrefix: '続行すると、',
+  termsOfService: '利用規約',
+  consentMiddle: 'と',
+  privacyPolicy: 'プライバシーポリシー',
+  consentSuffix:
+    'に同意したことになります。KidGateは保護者向けです。お子さまは保護者の同意がある場合のみ追加されます。',
+  passwordRequired: 'パスワードを入力してください。',
+};

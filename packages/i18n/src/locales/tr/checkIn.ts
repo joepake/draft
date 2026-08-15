@@ -1,0 +1,41 @@
+export const checkIn = {
+  noPhotoBadge: 'Fotoğraf eklenmedi',
+  historyTitle: 'Yoklama geçmişi',
+  historyHint:
+    'Büyütmek için fotoğrafa dokunun. Yukarıdan istediğiniz zaman yeni bir yoklama isteyebilirsiniz.',
+  historyEmpty: 'Henüz yoklama yok.',
+  screenTitle: 'Yoklama',
+  statusSafe: 'Güvende',
+  statusNoResponse: 'Yanıt yok',
+  statusWaiting: 'Bekleniyor',
+  metaWaitingForLocationAndPhoto: 'Konum ve fotoğraf bekleniyor',
+  metaNoLocation: 'Konum eklenmedi',
+  viewPhotoAccessibility: 'Yoklama fotoğrafını gör',
+  responseMessage: 'İyiyim.',
+  toastSuccess: 'Teşekkürler. Ailen iyi olduğunu biliyor.',
+  toastFailed: 'Yoklama gönderilemedi. Lütfen tekrar dene.',
+  quickCheckInBadge: 'Yoklama',
+  areYouOkay: 'İyi misin?',
+  checkInWithPhotoBody:
+    'Ailen iyi olup olmadığını öğrenmek istiyor. KidGate mümkünse konumunu ve bir fotoğraf gönderecek.',
+  checkInLocationOnlyBody:
+    'Ailen iyi olup olmadığını öğrenmek istiyor. KidGate mümkünse konumunu gönderecek.',
+  yesImOkay: 'İyiyim',
+  yesImOkaySending: 'Gönderiliyor…',
+  iNeedHelp: 'Yardıma ihtiyacım var',
+  checkInRequested: 'Yoklama istendi',
+  checkInRequestedDescription:
+    '{{deviceName}} cihazından konum ve fotoğrafla güvende olduğunu doğrulaması istendi.',
+  checkInRequestedDescriptionLocation:
+    '{{deviceName}} cihazından konumla güvende olduğunu doğrulaması istendi.',
+  checkInConfirmed: 'Yoklama doğrulandı',
+  checkInConfirmedDescription: '{{deviceName}} güvende olduğunu doğruladı.',
+  childDeviceFallback: 'Çocuk cihazı',
+  requestCheckIn: 'Yoklama iste',
+  requestCheckInNote: 'Çocuk cihazından konum ve ön kameradan bir fotoğraf ister.',
+  needHelpOpenSosAccessibility: 'Yardıma ihtiyacım var — SOS’u aç',
+  parentSafePopupTitle: 'Çocuğunuz güvende',
+  childSafePopupTitle: 'Ailene haber verildi',
+  childSafePopupBody: 'Ailen mesajı aldı — güvendesin.',
+  confirmedKicker: 'Yoklama',
+} as const;
