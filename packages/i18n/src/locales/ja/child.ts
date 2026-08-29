@@ -42,6 +42,15 @@ export const child = {
   setupWizardRequired: '必須',
   setupWizardOptional: '任意',
   setupWizardSkip: 'あとで',
-  setupWizardAllDoneTitle: '完了!',
+  setupGrantStuckHint:
+    'オンにしても変わらない場合は、テレビを再起動してからもう一度お試しください。',
+  setupWizardAllDoneTitle: '完了！',
   setupWizardAllDoneSubtitle: 'このデバイスは保護されています。',
+  setupWizardStepDone: '完了 — この設定はオンです。',
+  setupWizardCoreDoneTitle: '基本の保護がオンになりました',
+  setupWizardCoreDoneBody:
+    '必須の権限が許可され、このデバイスは保護されています。任意の手順をいくつか追加すると、システムによって保護がオフにされにくくなります。',
+  setupWizardCoreDoneContinue: '今すぐ強化する',
+  setupWizardCoreDoneLater: 'あとで完了する',
+  setupWizardParentPinNote: '保護者PINが必要です。次の画面で保護者が入力します。',
 } as const;

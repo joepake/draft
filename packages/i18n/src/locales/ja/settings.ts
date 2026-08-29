@@ -53,6 +53,12 @@ export const settings = {
   accountNotLinked: '未連携',
   darkModeLabel: 'ダークモード',
   darkModeHint: '夜間でも目にやさしい表示',
+  addWidgetTitle: 'ウィジェットをホーム画面に追加',
+  addWidgetSubtitle: 'お子さまごとのスクリーンタイムをひと目で',
+  addWidgetStepsIos:
+    '1. ホーム画面の空いている場所を長押し\n2. 上部の「+」ボタンをタップ\n3. KidGate を検索\n4. サイズを選んで「ウィジェットを追加」をタップ',
+  addWidgetStepsAndroid:
+    '1. ホーム画面の空いている場所を長押し\n2. 「ウィジェット」をタップ\n3. KidGate を探してウィジェットをホーム画面にドラッグ',
   pushNotificationsTitle: 'プッシュ通知',
   pushNotificationsSubtitle: 'この端末に届く通知を選びます',
   inAppAlertsLabel: 'アプリ内アラート',
@@ -74,6 +80,15 @@ export const settings = {
   reportMessagePlaceholder: '不具合や問題を記入してください…',
   reportMessageRequired: '問題の簡単な説明を入力してください。',
   reportMessageTooLong: '報告内容は2000文字未満にしてください。',
+  reportAttachmentsLabel: 'スクリーンショット（任意）',
+  reportAttachmentsHint: '{{count}}/{{max}} · 1枚あたり{{limit}}まで',
+  reportAddAttachment: '画像を追加',
+  reportRemoveAttachment: '画像を削除',
+  reportAttachmentsTooMany: '画像は最大{{max}}枚まで添付できます。',
+  reportAttachmentTooLarge:
+    '縮小しても{{size}}あるため添付されませんでした。1枚あたり{{limit}}までです。',
+  reportAttachmentUnreadable:
+    'このファイルを読み込めませんでした。別の画像を選んでください。',
   reportSendButton: '報告を送信',
   reportSending: '送信中…',
   toastReportSent: 'ありがとうございます。報告を送信しました。',
@@ -119,6 +134,7 @@ export const settings = {
   languageHindi: 'ヒンディー語',
   languageRussian: 'ロシア語',
   sectionAboutTitle: 'このアプリについて',
+  sectionKidGateTitle: 'KidGate',
   aboutUsTitle: '私たちについて',
   aboutUsSubtitle: 'KidGate を作っているのは誰か、そして何をしないか',
   sectionLegalTitle: '法的情報',

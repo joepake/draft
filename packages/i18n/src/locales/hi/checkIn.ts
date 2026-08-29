@@ -34,6 +34,8 @@ export const checkIn = {
   requestCheckIn: 'चेक-इन माँगें',
   requestCheckInNote: 'बच्चे के डिवाइस से लोकेशन और फ्रंट कैमरे की फ़ोटो माँगता है।',
   needHelpOpenSosAccessibility: 'मुझे मदद चाहिए — SOS खोलें',
+  showAllDevices: 'सभी {{count}} डिवाइस दिखाएं',
+  showFewerDevices: 'कम डिवाइस दिखाएं',
   parentSafePopupTitle: 'आपका बच्चा सुरक्षित है',
   childSafePopupTitle: 'माता-पिता को बता दिया गया',
   childSafePopupBody: 'आपके माता-पिता को संदेश मिल गया — आप सुरक्षित हैं।',

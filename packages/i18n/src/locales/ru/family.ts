@@ -7,6 +7,72 @@ export const family = {
   addChildOption: 'Добавить устройство ребёнка',
   addJoinFamilyOption: 'Присоединиться к семье',
   addParentOption: 'Пригласить родителя',
+  loginWebOption: 'Войти через браузер',
+  // The "who uses this device?" assignment sheet.
+  assignSheetTitle: 'Кто пользуется {{deviceName}}?',
+  assignSheetBody: 'Экранное время и звёзды засчитываются выбранному ребёнку.',
+  assignSheetNobody: 'Никто',
+  assignSheetNobodyHint: 'Общее устройство — не засчитывается никому.',
+  assignSheetAddAndAssign: 'Добавить и назначить',
+  // The "protect this child now?" starter sheet, offered right after a fresh
+  // pairing is assigned. Content pre-exists on the device; this flips it on.
+  quickProtectTitle: 'Защитить {{childName}} сейчас?',
+  quickProtectBody:
+    'Включите стартовый набор защит. Всё можно точно настроить позже в профиле ребёнка.',
+  quickProtectBedtime: 'Заблокированные часы на ночь',
+  quickProtectBedtimeHint: 'Блокирует использование устройства ночью, с 22:00 до 7:00.',
+  quickProtectDailyLimit: 'Дневной лимит экранного времени',
+  quickProtectDailyLimitHint:
+    '{{minutes}} минут в день, суммарно по всем устройствам ребёнка.',
+  quickProtectWebFilter: 'Веб-фильтр',
+  quickProtectWebFilterHint:
+    'Блокирует контент для взрослых и другие рискованные категории.',
+  quickProtectWebFilterPremium: 'Функция Premium — входит в подписку.',
+  quickProtectApply: 'Включить защиту',
+  quickProtectSkip: 'Не сейчас',
+  quickProtectDone: 'Защита включена. Настроить можно в любой момент.',
+  quickProtectPartial:
+    'Не удалось сохранить некоторые защиты. Попробуйте снова из профиля ребёнка.',
+  pairDeviceFirstTitle: 'Устройство ещё не подключено',
+  pairDeviceFirstBody:
+    'Сначала подключите устройство для этого ребёнка — на вкладке «Семья» нажмите значок сканирования или «+» и выберите «Добавить устройство ребёнка». Этот контроль начнёт работать, как только устройство подключится.',
+  // Child-grouped family list: group header lock-all + unassigned group.
+  lockAll: 'Заблокировать все',
+  unlockAll: 'Разблокировать все',
+  lockAllA11y: 'Заблокировать все устройства {{childName}}',
+  unlockAllA11y: 'Разблокировать все устройства {{childName}}',
+  childDetailUnassignTitle: 'Убрать у ребёнка?',
+  childDetailUnassignBody:
+    '{{deviceName}} перестанет учитываться для {{childName}} и попадёт в «Не назначено». Устройство остаётся сопряжённым и защищённым.',
+  childDetailUnassignConfirm: 'Убрать',
+  childDetailUnassignA11y: 'Убрать {{deviceName}} у этого ребёнка',
+  // The fold control on a group heading.
+  collapseGroupA11y: 'Свернуть: {{name}}',
+  expandGroupA11y: 'Развернуть: {{name}}',
+  assignDeviceCta: 'Назначить ребёнку…',
+  unassignedHint: 'Эти устройства пока никому не засчитываются.',
+  unassignedHintMember: 'Эти устройства детям назначает владелец семьи.',
+  // The footer strip: children who hold no device get no group of their own.
+  childrenWithoutDeviceTitle: 'Дети без устройства',
+  // Child detail screen.
+  childDetailStarsWell: 'Звёзды за неделю',
+  childStarsA11y: 'Звёзды за эту неделю: {{count}}',
+  childDetailDevicesTitle: 'Устройства',
+  childDetailAssignMore: 'Назначить ещё устройство…',
+  childDetailAssignSheetTitle: 'Назначить устройство ребёнку {{childName}}',
+  childDetailNoDevices:
+    'Устройств пока нет. Назначьте ниже или подключите новое на вкладке «Семья».',
+  // Same screen for a joined parent, who may pair but may not assign.
+  childDetailNoDevicesMember:
+    'Устройств пока нет. Только владелец семьи решает, кому принадлежит устройство.',
+  childDetailEditNameTitle: 'Изменить имя',
+  childDetailColorLabel: 'Цвет',
+  scanButtonAccessibility: 'Сканировать код',
+  scanTitle: 'Сканировать код',
+  scanBody:
+    'Наведите камеру на устройство ребёнка, приглашение в семью или код, показанный на компьютере.',
+  manualCodeLabel: 'Введите 6-значный код',
+  manualInstructions: 'Введите 6-значный код, показанный на другом устройстве.',
 
   headerHintEmpty: 'Управляйте устройствами детей и защищайте их',
 
@@ -26,8 +92,8 @@ export const family = {
   chipSosCount: '{{count}} SOS',
 
   chipCheckInCount: '{{count}} отметок Check-In',
-  chipCheckInCount_one: '{{count}} отметка Check-In',
-  chipCheckInCount_few: '{{count}} отметки Check-In',
+  chipCheckInCount_one: '{{count}} Check-In',
+  chipCheckInCount_few: '{{count}} Check-In',
 
   chipRequestCount: '{{count}} запросов',
   chipRequestCount_one: '{{count}} запрос',
@@ -38,6 +104,8 @@ export const family = {
 
   chipProtectedCount: '{{count}} защищено',
 
+  childDevicesProtected: 'Защищено устройств: {{count}}',
+
   chipHealthWarnCount: '{{count}} требуют настройки',
   chipHealthWarnCount_one: '{{count}} требует настройки',
 
@@ -46,6 +114,7 @@ export const family = {
   chipBlockedCount: '{{count}} заблокировано',
 
   healthProtected: 'Защищено',
+  buildOutdated: 'Есть обновление',
   healthNeedsSetup: 'Требуется настройка',
   healthOffline: 'Не в сети',
 
@@ -170,6 +239,7 @@ export const family = {
   mac: 'Mac',
   windowsPc: 'ПК с Windows',
   androidTv: 'Android TV',
+  chromebook: 'Chromebook',
 
   deviceNameRequired: 'Введите имя устройства.',
 
@@ -220,7 +290,11 @@ export const family = {
 
   youPausedThisDevice: 'Вы заблокировали это устройство',
 
-  blockedHoursActiveNow: 'Сейчас действуют часы блокировки',
+  lockSentWaitingForDevice: 'Команда блокировки отправлена — ждём устройство',
+
+  lockNotAppliedOnDevice: 'Это устройство не применило блокировку',
+
+  blockedHoursActiveNow: 'Сейчас действуют Заблокированные часы',
 
   inactiveOpenKidGate: 'Неактивно — откройте KidGate на этом устройстве',
 
@@ -246,4 +320,21 @@ export const family = {
   batteryPercent: '{{percent}} %',
   batteryAccessibility: 'Батарея {{percent}} процентов',
   batteryChargingAccessibility: 'Батарея {{percent}} процентов, заряжается',
+  childDetailPerDevice: 'Для каждого устройства — выберите какое',
+  childDetailNotAvailable: 'Недоступно',
+  childDetailNotAvailableReason: 'Недоступно ни на одном из устройств',
+  childDetailProtectionOk: 'Защищено',
+  childDetailProtectionAttention: 'Требуют внимания: {{count}}',
+  childDetailProtectionSheetTitle: 'Защита по устройствам',
+  childDetailRemoveTitle: 'Удалить этого ребёнка',
+  childDetailRemovingButton: 'Удаление…',
+  childDetailOnlineCount: '{{online}} из {{total}} в сети',
+  childDetailBudgetTitle: 'Дневной лимит',
+  childDetailSectionControls: 'Правила для всех устройств ребёнка',
+  childDetailSectionSafety: 'Собрано со всех устройств',
+  childDetailSectionAlerts: 'Все устройства — одна лента',
+  childDetailScopeAll: 'Все устройства',
+  childDetailTodayWell: 'Сегодня',
+  childDetailUnassignAction: 'Открепить',
+  childDetailLimitShared: 'Суммарно по всем устройствам',
 } as const;

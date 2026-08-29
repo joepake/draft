@@ -1,6 +1,11 @@
 export const webFilter = {
   title: 'Webfilter',
   fallbackDeviceName: 'Kindergerät',
+  appliesToAll: 'Gilt für alle {{count}} Geräte von {{name}}',
+  coverageLine: 'Aktiv auf {{enforcing}} von {{total}} Geräten',
+  mergeNotice:
+    'Die Geräte von {{name}} hatten unterschiedliche Webfilter-Einstellungen. Beim Speichern gilt hier ein Satz für alle, zusammengeführt zur strengeren Wahl.',
+  mergeLoosened: 'Jetzt auf jedem Gerät erlaubt: {{domains}}',
   toastUpdateFailed:
     'Webfilter konnte nicht aktualisiert werden. Bitte versuche es erneut.',
   heroTitle: 'Websites für Erwachsene filtern',
@@ -8,10 +13,13 @@ export const webFilter = {
     'Nutzt den Webinhaltsfilter der Apple-Bildschirmzeit, um Erwachseneninhalte in Safari und In-App-Browsern auf dem Kindergerät zu begrenzen.',
   heroSubtitleAndroid:
     'Nutzt ein lokales DNS-VPN auf dem Android-Kindergerät, um bekannte Erwachsenen-Domains in Browsern und vielen Apps zu blockieren.',
-  toggleLabel: 'Webfilter aktivieren',
+  heroSubtitleMacos:
+    'Führt den Inhaltsfilter von KidGate auf dem Mac des Kindes aus, um bekannte Erwachsenenseiten in Browsern und vielen Apps zu blockieren.',
   toggleHintIos: 'Benötigt die Bildschirmzeit-Berechtigung auf dem Kindergerät.',
   toggleHintAndroid:
     'Das Kind muss die KidGate-VPN-Verbindung einmal bestätigen. Lass das VPN an, damit der Filter funktioniert.',
+  toggleHintMacos:
+    'Das Kind muss die KidGate-Filtererweiterung einmal in den Systemeinstellungen genehmigen. Lass sie genehmigt, damit der Filter funktioniert.',
   toggleAccessibilityLabel: 'Webfilter aktivieren',
   infoTitle: 'So funktioniert es',
   infoLine1Ios: 'Apple filtert Erwachsenen-Websites automatisch.',
@@ -26,6 +34,14 @@ export const webFilter = {
   infoLine3Android:
     'Das Kindergerät zeigt beim Filtern ein VPN-Symbol. VPN aus bedeutet Filter aus — öffne KidGate erneut, um ihn wiederherzustellen.',
   infoLine4Android: 'Gehe zu Einstellungen → Netzwerk & Internet → Privates DNS → Aus.',
+  infoLine1Macos:
+    'KidGate führt auf dem Mac einen Inhaltsfilter aus, der prüft, welche Websites aufgerufen werden, und blockiert die, die zu deinen Kategorien gehören.',
+  infoLine2Macos:
+    'Wird der Filter auf dem Mac des Kindes als nicht genehmigt angezeigt, öffne Systemeinstellungen → Allgemein → Anmeldeobjekte & Erweiterungen, um ihn zu genehmigen.',
+  infoLine3Macos:
+    'Der Mac des Kindes zeigt den Filter als aktiv an, sobald er genehmigt ist. Wird er dort ausgeschaltet, öffne KidGate erneut, um ihn wiederherzustellen.',
+  infoLine4Macos:
+    'Der Filter liest Website-Namen, die moderne Browser bei etwa der Hälfte der Besuche verbergen — diese Seiten werden nicht anhand deiner Kategorien geprüft. Er blockiert aber weiterhin die meisten Seiten, die Kinder auf diesem Weg erreichen.',
   privateDnsBannerTitle: 'Privates DNS deaktivieren',
   privateDnsBannerBody:
     'Privates DNS ist aktiv, daher kann der Erwachsenenfilter umgangen werden. Bitte deaktiviere es.',
@@ -36,6 +52,7 @@ export const webFilter = {
   vpnConsentBannerButton: 'VPN aktivieren',
   iosOnlyNote: 'Nutzt Bildschirmzeit auf iOS',
   androidVpnNote: 'Nutzt ein lokales DNS-VPN auf Android',
+  macosFilterNote: 'Nutzt den Inhaltsfilter von KidGate auf dem Mac',
   webFilteringNote:
     'iOS nutzt den Erwachsenenfilter der Bildschirmzeit; Android eine Blockliste über lokales DNS-VPN.',
   safeSearchAlertsNote:
@@ -71,28 +88,90 @@ export const webFilter = {
   openHistory: 'Web-Verlauf',
   openHistorySubtitle:
     'Sieh, welche Seiten dieses Gerät erreicht hat und was blockiert wurde',
+  blockedPageTitle: 'Website blockiert',
+  blockedPageBody:
+    'KidGate hat diese Website für deine Familie blockiert. Wenn du denkst, das ist ein Fehler, frag deine Eltern.',
   category: {
-    adult: 'Nur für Erwachsene',
+    adult: 'Erwachseneninhalte',
+    selfHarm: 'Selbstverletzung & Essstörungen',
+    // App-only categories, from APP_CATEGORIES in @kidgate/schema/aiApps —
+    // an app can be a school app, a browser or a code editor, and none of
+    // those has a website equivalent worth blocking. They live in this map
+    // so a parent meets ONE vocabulary: the app list and the web filter
+    // must not name the same idea two different ways. The web filter's own
+    // screen iterates WEB_FILTER_CATEGORIES and never reaches these.
+    education: 'Bildung',
+    utility: 'Werkzeuge',
+    browser: 'Webbrowser',
+    devTools: 'Programmierung & Dev-Tools',
+    messaging: 'Nachrichten & Anrufe',
+    community: 'Foren & Communitys',
+    shortVideo: 'Kurzvideo-Feeds',
+    creative: 'Foto, Video & Kunst',
+    productivity: 'Notizen & Produktivität',
+    reading: 'Bücher & Comics',
+    fileSharing: 'Dateien teilen & Downloads',
+    bypass: 'Umgehungs-Apps',
     gambling: 'Glücksspiel',
+    gameGambling: 'Lootboxen & Skin-Wetten',
     dating: 'Dating',
+    strangerChat: 'Chat mit Fremden',
     drugs: 'Drogen & Alkohol',
-    violence: 'Gewalt & Extremismus',
+    violence: 'Gewalt & verstörende Bilder',
+    extremism: 'Extremismus & Hass',
     piracy: 'Piraterie',
     social: 'Soziale Netzwerke',
     videoStreaming: 'Video-Streaming',
+    music: 'Musik',
     gaming: 'Spiele',
     shopping: 'Shopping',
+    aiCompanion: 'KI-Begleiter',
+    aiAssistant: 'KI-Assistenten',
+    cryptoTrading: 'Krypto & Trading',
+    vpn: 'VPN-Apps',
   },
   categoryHint: {
     adult: 'Explizite und Erwachsenen-Seiten',
-    gambling: 'Casinos, Wetten, Lootboxen',
-    dating: 'Dating- und Fremden-Chat-Apps',
+    selfHarm: 'Foren, die Selbstverletzung und Hungern verherrlichen',
+    gambling: 'Casinos, Sportwetten, Poker',
+    gameGambling: 'Lootboxen öffnen, Skin- und Roblox-Wetten',
+    dating: 'Dating-Apps',
+    strangerChat: 'Omegle-Klone, zufälliger Videochat',
     drugs: 'Cannabis, Vapes, Alkohol',
-    violence: 'Gore- und Extremistenforen',
-    piracy: 'Torrents und Pirate-Streaming',
+    violence: 'Schock- und Gewaltseiten',
+    extremism: 'Hassforen und extremistische Seiten',
+    piracy: 'Torrents und illegales Streaming',
     social: 'Facebook, Instagram, TikTok, Discord',
     videoStreaming: 'YouTube, Netflix, Twitch',
+    music: 'Spotify, SoundCloud, Zing MP3',
     gaming: 'Roblox, Steam, Spieleportale',
     shopping: 'Amazon, Shein, Fast Fashion',
+    aiCompanion: 'Character.AI, Replika, Rollenspiel-Bots',
+    aiAssistant: 'ChatGPT, Gemini, Copilot',
+    cryptoTrading: 'Binance, Coinbase, Trading-Apps',
+    vpn: 'VPN-Downloadseiten. Blockiert keine bereits installierte App.',
   },
+  categoryGroup: {
+    harm: 'Schädliche Inhalte',
+    contact: 'Fremde',
+    bypass: 'Filter umgehen',
+    ai: 'KI',
+    entertainment: 'Unterhaltung & Soziales',
+    money: 'Einkaufen & Geld',
+  },
+  categoriesOnCount: '{{on}} von {{total}} an',
+  askToOpen: 'Eltern fragen',
+  askToOpenSubtitle: 'Wenn sie es erlauben, öffnet sich diese Seite.',
+  askToOpenDomainLabel: 'Welche Seite?',
+  askToOpenPending: 'Du hast schon eine Seite angefragt. Warte auf die Antwort.',
+  askToOpenTooSoon: 'Du hast gerade gefragt. Versuch es in einer Minute noch einmal.',
+  requestsTitle: 'Website-Anfragen',
+  requestsSubtitle: 'Websites, für die dieses Gerät um Erlaubnis gebeten hat.',
+  siteRequestApproved: 'Website erlaubt',
+  siteRequestApprovedDescription:
+    '{{domain}} wurde auf {{deviceName}} zu „Immer erlauben“ hinzugefügt.',
+  siteRequestDenied: 'Website-Anfrage abgelehnt',
+  siteRequestDeniedDescription: '{{domain}} bleibt auf {{deviceName}} gesperrt.',
+  siteRequestReceived: 'Website-Anfrage',
+  siteRequestReceivedDescription: '{{deviceName}} möchte {{domain}} öffnen.',
 } as const;

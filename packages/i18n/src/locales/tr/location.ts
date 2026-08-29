@@ -1,12 +1,15 @@
 export const location = {
   title: 'Konum',
   fallbackDeviceName: 'Çocuk cihazı',
+  syncNote:
+    'Konumun güncellenmesi birkaç dakika sürebilir — cihazın internet bağlantısı yoksa veya beklenmedik şekilde kapandıysa bu süre daha uzun olabilir.',
   toastUpdateFailed: 'Konum paylaşımı güncellenemedi. Lütfen tekrar deneyin.',
   toggleLabel: 'Konumu paylaş',
   toggleHint:
     'Bu özelliği açtıktan sonra bu cihazda KidGate uygulamasını bir kez açın.',
   toggleAccessibilityLabel: 'Konumu paylaş',
   lastKnownLocation: 'Son bilinen konum',
+  nearPlace: '{{place}} yakınında',
   noLocationHint:
     'Konum paylaşımını açın, ardından bu cihazda KidGate uygulamasını bir kez açın.',
   waitingForLocation: 'Konum bekleniyor',
@@ -25,7 +28,7 @@ export const location = {
   toastRefreshFailed: 'Konum yenileme isteği gönderilemedi. Lütfen tekrar deneyin.',
   toastChildNeedsNotifications:
     'Konum yenileme isteklerinin ulaşabilmesi için lütfen çocuk cihazında KidGate uygulamasını açın ve Bildirimlere izin verin.',
-  checkInBadge: 'Yoklama',
+  checkInBadge: 'Check-In',
   movementHistoryTitle: 'Konum geçmişi',
   historyEmpty:
     'Henüz geçmiş yok. Konum güncellendikten veya Check-In yapıldıktan sonra noktalar görünecektir.',
@@ -36,6 +39,8 @@ export const location = {
   locationBannerTitle: 'Konumu etkinleştir',
   locationBannerBody:
     'Ebeveyniniz, güvenli bir şekilde vardığınızdan emin olmak için bu cihazın konumunu görmek istiyor.',
+  locationBannerBodySharingOff:
+    'Konum paylaşımı şu anda kapalı, yani hiçbir şey gönderilmiyor. Burada izin verirsen, ileride annen ya da baban açtığında hemen çalışır.',
   allowLocationButton: 'Konuma izin ver',
   locationNotAllowed:
     'Konum izni henüz verilmedi. Ayarlar → KidGate → Konum menüsünü açın (veya önce Konum Servislerini etkinleştirin). Konum seçeneği görünmüyorsa tekrar “Konuma izin ver” seçeneğini seçin.',
@@ -55,4 +60,18 @@ export const location = {
   mapUnavailable:
     'Harita kullanılamıyor. Lütfen internet bağlantınızı kontrol edip tekrar deneyin.',
   historyShowMore: '{{count}} yer daha göster',
+  childSharingHint: '{{childName}} adlı çocuğa atanmış her cihaz için geçerlidir.',
+  childNoCapableDevices: '{{childName}} cihazlarının hiçbiri konum bildiremiyor.',
+  childCarriedQuestion: 'Hangi cihaz {{childName}} ile birlikte?',
+  childCarriedHint:
+    'Konum o cihazdan okunur. Evde kalan tablet, çantadaki telefondan daha güncel konum bildirebilir; bu yüzden KidGate asla tahmin etmez.',
+  childDevicesOnline: '{{total}} cihazdan {{online}} tanesi çevrimiçi',
+  childNoneOnline: 'Çevrimiçi cihaz yok',
+  childPickCarried: 'Yanında',
+  childPickCarriedA11y:
+    '{{deviceName}} cihazını {{childName}} yanında taşıdığı cihaz olarak işaretle',
+  stayRange: '{{from}} – {{to}}',
+  placeTotalsTitle: 'Yerlerinizde geçen süre',
+  placeTotalsNote:
+    'Son {{count}} günlük konum geçmişinden. Yalnızca burada kayıtlı yerler sayılır.',
 } as const;

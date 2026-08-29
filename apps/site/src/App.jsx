@@ -6,6 +6,7 @@ import PrivacyPolicy from './pages/PrivacyPolicy.jsx';
 import Terms from './pages/Terms.jsx';
 import DeleteAccount from './pages/DeleteAccount.jsx';
 import Support from './pages/Support.jsx';
+import Get from './pages/Get.jsx';
 import BrandLogo from '@kidgate/web-ui/BrandLogo';
 import LanguagePicker from '@kidgate/web-ui/LanguagePicker';
 import { useT } from '@kidgate/web-ui/useT';
@@ -246,6 +247,15 @@ function SiteRoutes() {
       <Route path="/terms" element={<Terms />} />
       <Route path="/delete-account" element={<DeleteAccount />} />
       <Route path="/support" element={<Support />} />
+      {/*
+        QR landing pad — device-sniffs and forwards to the right store,
+        carrying `utm_source`/`utm_medium`/`utm_campaign` through so each
+        printed code can be told apart. Not `/download`: that route answers
+        "where do I get it" for a reader choosing among four platforms;
+        this answers it for a reader who already scanned a code on one
+        device. See `src/pages/Get.jsx`.
+      */}
+      <Route path="/get" element={<Get />} />
       {/*
         `/download` was a page and is now the download section of the home
         page — one place that answers "where do I get it" for all four

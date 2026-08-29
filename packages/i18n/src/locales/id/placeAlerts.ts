@@ -1,5 +1,8 @@
 export const placeAlerts = {
   title: 'Peringatan Tempat',
+  familyScope: 'Satu daftar untuk seluruh keluarga',
+  mergedFromDevices:
+    'Digabung dari tempat yang sudah ada di tiap perangkat. Menyimpan menerapkan satu daftar ini ke semua perangkat anak.',
   fallbackDeviceName: 'Perangkat anak',
   statusReady: 'Lokasi siap',
   statusNeedLocation: 'Menunggu lokasi perangkat anak',
@@ -21,7 +24,11 @@ export const placeAlerts = {
   radiusLabel: 'Radius peringatan',
   radiusValue: '{{meters}} m',
   radiusHint:
-    'Seberapa dekat perangkat harus berada agar tempat ini terhitung. Radius yang lebih kecil lebih presisi, tetapi lebih mudah terlewat.',
+    'Seberapa dekat perangkat harus berada agar tempat ini dihitung. Radius yang lebih kecil dari galat posisi perangkat justru memberi tahu secara acak, bukan lebih tepat.',
+  radiusAccuracyHint:
+    'Di sini perangkat ini melaporkan posisinya dengan ketelitian sekitar ±{{accuracy}} m.',
+  radiusBelowAccuracy:
+    'Di sini perangkat hanya akurat sekitar ±{{accuracy}} m. Gunakan {{minimum}} m atau lebih, atau tempat ini akan memberi tahu secara acak.',
   radiusDecrease: 'Radius lebih kecil',
   radiusIncrease: 'Radius lebih besar',
   notifyEnterLabel: 'Beri tahu saat tiba',
@@ -45,7 +52,10 @@ export const placeAlerts = {
   maxPlacesToast: 'Anda dapat menyimpan hingga {{max}} tempat.',
   nameRequiredToast: 'Silakan masukkan nama tempat.',
   duplicateNameToast: 'Tempat dengan nama ini sudah ada.',
-  duplicateLocationToast: 'Tempat sudah mencakup lokasi ini.',
+  samePinToast:
+    'Ini titik yang sama dengan “{{name}}”. Geser peta untuk memindahkan pin.',
+  overlapWarning:
+    '“{{name}}” berjarak {{meters}} m dan lingkarannya mencapai titik ini. Selama perangkat berada di keduanya, hanya yang lebih dekat yang memberi tahu. Simpan lagi untuk mempertahankannya.',
   copyTitle: 'Tambahkan ke anak lain?',
   copyMessage: 'Salin “{{name}}” ke {{count}} perangkat anak lain di keluarga ini?',
   copyMessage_one: 'Salin “{{name}}” ke perangkat anak lain di keluarga ini?',

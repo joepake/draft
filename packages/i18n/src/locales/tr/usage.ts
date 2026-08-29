@@ -13,8 +13,8 @@ export const usage = {
   insightNearDailyLimit: 'Günlük sınıra yaklaşıldı',
   insightMinutesRemaining: 'Bugün {{minutes}} dk kaldı',
   insightNoDailyLimit: 'Günlük sınır ayarlanmadı',
-  insightBlockedHoursActive: 'Engellenen saatler şu anda etkin',
-  insightBlockedHoursScheduled: 'Engellenen saatler planlandı',
+  insightBlockedHoursActive: 'Engellenen Saatler şu anda etkin',
+  insightBlockedHoursScheduled: 'Engellenen Saatler planlandı',
   insightDeviceLocked: 'Cihaz kilitli',
   insightProtectionsHealthy: 'Korumalar iyi durumda',
   insightLocationUpdatesToday: 'Bugün {{count}} konum güncellemesi',
@@ -24,7 +24,7 @@ export const usage = {
   signalLocksPeriod: 'Kilitlemeler · 30 gün',
   signalLocationsToday: 'Bugünkü konumlar',
   sectionWhatsTurnedOn: 'Neler açık',
-  rowBlockedHours: 'Engellenen saatler',
+  rowBlockedHours: 'Engellenen Saatler',
   valueOff: 'Kapalı',
   rowBlockedApps: 'Engellenen Uygulamalar',
   valueNotConfigured: 'Yapılandırılmadı',
@@ -46,10 +46,14 @@ export const usage = {
   setDailyLimitToTrack:
     'Kalan süreyi ve haftalık eğilimleri takip etmek için bir Günlük sınır belirleyin.',
   deviceLockedChip: 'Cihaz kilitli',
-  blockedHoursChip: 'Engellenen saatler',
+  blockedHoursChip: 'Engellenen Saatler',
   overLimitChip: 'Sınır aşıldı',
   usageReportsNote:
     'Bu cihazın ekran süresini, kilitlemelerini ve son etkinliğini gösterir.',
+  syncNote:
+    'Ekran süresinin bu ekrana yansıması birkaç dakika sürebilir — cihazın internet bağlantısı yoksa veya beklenmedik şekilde kapandıysa bu süre daha uzun olabilir.',
+  syncNoteTv:
+    'Bu TV yalnızca belirli aralıklarla bağlanır, bu yüzden ekran süresinin bu ekrana yansıması 30 dakikaya kadar sürebilir — internet bağlantısı yoksa bu süre daha da uzar.',
   sectionLast30Days: 'Son 30 gün',
   comparePeriodTotal: '30 günlük toplam',
   compareDayAvg: 'Günlük ortalama',
@@ -64,9 +68,18 @@ export const usage = {
   sectionTopApps: 'En çok kullanılan uygulamalar',
   topAppsHint:
     'Çocuğun cihazında bugün en çok kullanılan uygulamalar. Ekran Süresi / Kullanım Erişimi senkronize oldukça veriler birikir.',
+  topAppsExcludedNote:
+    'Ekran koruyucu, ana ekran ve KidGate’in kendi ekranı kullanım süresine sayılmaz. Cihaz açıkken kimse kullanmıyorsa, o dakikalar “Kullanılmıyor” olarak kaydedilir.',
+  topAppsAiNote:
+    'Bazı türler bilinen bir uygulamayla eşleştirilmek yerine uygulama adından çıkarıldı, bu yüzden birkaçı yanlış olabilir.',
   errorTitle: 'Kullanım verisi yüklenemedi',
   errorDescription: 'Lütfen bağlantınızı kontrol edip tekrar deneyin.',
   tryAgain: 'Tekrar dene',
+  // Shown only when the rating is known — it is 0 for much of the long
+  // tail, and 0 does not mean "suitable for everyone".
+  appMinAge: '{{age}}+ olarak derecelendirilmiş',
+  underAMinute: 'Bir dakikadan az',
+  topAppsOther: 'Diğer uygulamalar',
   topAppsEmpty:
     'Henüz uygulama bazlı veri yok. Çocuğun cihazında KidGate’in uygulama kullanımını ölçmesine izin verildiğinden emin olun ve senkronizasyonu bekleyin.',
   protectionImpactTitle: 'Koruma etkisi',

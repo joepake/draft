@@ -86,6 +86,69 @@ export const BLOCKED_SPIKE_MIN_RATIO = 2;
  */
 export const MAX_FINDINGS = 3;
 
+/**
+ * How many of those three a positive finding may take.
+ *
+ * A plain cap over a merged list loses every positive finding by construction:
+ * they are all `info`, and three concerns outrank them every time. A week that
+ * genuinely contains both then reads exactly like a week that contained only
+ * the concerns, which is the whole failure this was built to fix.
+ *
+ * One, not two. The report is a report — a week with three things wrong in it
+ * has three things wrong in it, and padding that to parity would be the
+ * flattery `docs/COPY_STYLE.md` rules out as firmly as it rules out alarm.
+ */
+export const MAX_POSITIVE_FINDINGS = 1;
+
+/** Days in the week every rule here is measured over. */
+export const DAYS_IN_WEEK = 7;
+
+/**
+ * Days of the week that must have reported before a positive finding may fire.
+ *
+ * **This is the constraint the feasibility gate closed on, and it is the
+ * difference between a report and a flattering one.** A child who quits the
+ * agent produces a week with few `usageDay` documents, a small total, no days
+ * over the limit and no late nights — arithmetically identical to a week where
+ * they simply stopped on their own. Told apart by nothing else in the data, a
+ * positive finding computed over that week congratulates a child for turning
+ * enforcement off, and a parent who catches that once has correctly concluded
+ * the report cannot be trusted.
+ *
+ * A day is "reported" when the device wrote a `usageDay` document for it —
+ * which is a signal every platform produces, iOS included, unlike `timeline`.
+ * `UsageDayRepository.subscribeDay` already documents the distinction this
+ * relies on: a missing document is "a day the child has not reported yet …
+ * a different state from reported nothing". **The matching trap is one
+ * function away**: `findRange` zero-fills the missing days, so anything reading
+ * a week through it cannot tell the two apart at all and must not be used to
+ * feed these rules.
+ *
+ * Six rather than seven, because a device legitimately misses a day — travel, a
+ * flat battery, a machine left shut. `limitRespected` is the exception and
+ * demands all seven; see the rule for why the two numbers differ.
+ */
+export const POSITIVE_MIN_REPORTED_DAYS = 6;
+
+/**
+ * Blocked attempts have to have been this high *last* week for a fall to mean
+ * anything. Mirrors `BLOCKED_SPIKE_MIN_COUNT`: below the same floor, a drop
+ * from 4 to 1 is noise in both directions.
+ */
+export const BLOCKED_DROP_MIN_PREVIOUS = BLOCKED_SPIKE_MIN_COUNT;
+
+/** And it has to have at least halved, the inverse of the spike's ratio. */
+export const BLOCKED_DROP_MAX_RATIO = 1 / BLOCKED_SPIKE_MIN_RATIO;
+
+/**
+ * Minutes of study apps before the week is worth calling out.
+ *
+ * Deliberately higher than `NEW_TOP_APP_MIN_MINUTES`: "your child spent an hour
+ * in an education app" describes a single homework session and would fire for
+ * most families most weeks, which is how a positive finding becomes wallpaper.
+ */
+export const LEARNING_MIN_MINUTES = 120;
+
 export type FindingKind =
   | 'usageUp'
   | 'usageDown'
@@ -95,7 +158,41 @@ export type FindingKind =
   | 'appSurge'
   | 'limitHitRepeatedly'
   | 'blockedSpike'
-  | 'quietWeek';
+  | 'quietWeek'
+  // The positive half. Every one of these says something the child did, with
+  // the figure behind it, and every one is gated on the week being measured —
+  // see `POSITIVE_MIN_REPORTED_DAYS`.
+  | 'limitRespected'
+  | 'lateNightGone'
+  | 'blockedDown'
+  | 'learningTime'
+  | 'tasksDone'
+  | 'askedFirst'
+  | 'checkedIn';
+
+/**
+ * The kinds that say something went well.
+ *
+ * A set rather than a severity, because severity already means something else
+ * here: `info` is "say it last", and a positive finding is `info` for exactly
+ * that reason. What a renderer needs to know separately is whether a finding
+ * belongs to the half of the report that must not be crowded out — which is
+ * what `MAX_POSITIVE_FINDINGS` reserves a slot for.
+ */
+export const POSITIVE_KINDS: ReadonlySet<FindingKind> = new Set<FindingKind>([
+  'limitRespected',
+  'lateNightGone',
+  'blockedDown',
+  'learningTime',
+  'tasksDone',
+  'askedFirst',
+  'checkedIn',
+]);
+
+/** Whether this finding is one of the good ones. */
+export function isPositiveFinding(finding: { kind: string }): boolean {
+  return POSITIVE_KINDS.has(finding.kind as FindingKind);
+}
 
 /**
  * How loudly to say it.
@@ -150,6 +247,15 @@ export interface DigestDay {
 }
 
 export interface DigestWeek {
+  /**
+   * The days the device actually reported. **Never zero-filled.**
+   *
+   * `days.length` is therefore the week's coverage, and the positive rules read
+   * it as exactly that — see `POSITIVE_MIN_REPORTED_DAYS` for why a rule that
+   * cannot tell "reported nothing" from "did not report" is a rule that
+   * congratulates a child for uninstalling the agent. A caller that pads this
+   * array to seven has silently switched that protection off.
+   */
   days: DigestDay[];
   blockedAppOpens: number;
   blockedWebVisits: number;
@@ -160,6 +266,16 @@ export interface DigestInput {
   lastWeek: DigestWeek;
   /** Null when the family has not set one — the limit rules then do not fire. */
   dailyLimitMinutes: number | null;
+  /**
+   * `packageName` → the app's category, for the apps this week used.
+   *
+   * From `appCategories/{packageName}` (`@kidgate/schema/aiApps`), which is a
+   * product-wide cache holding no family data. Absent means the caller did not
+   * look them up, and `learningTime` then does not fire — the same posture the
+   * rest of this module takes toward `timeline`: a rule skips what it cannot
+   * see rather than assuming a value for it.
+   */
+  appCategories?: ReadonlyMap<string, string>;
 }
 
 function totalMinutes(week: DigestWeek): number {
@@ -427,6 +543,191 @@ function blockedSpike(input: DigestInput): Finding | null {
   };
 }
 
+/** Days in the week that carry a timeline, which is what the late rules need. */
+function timelineDays(week: DigestWeek): number {
+  return week.days.filter(day => Boolean(day.timeline)).length;
+}
+
+/** Nights in the week whose late window carries real use. */
+function lateNightCount(week: DigestWeek): number {
+  let nights = 0;
+  for (const day of week.days) {
+    if (!day.timeline) {
+      continue;
+    }
+    if (lateNightOf(day.timeline).minutes >= LATE_NIGHT_MIN_MINUTES) {
+      nights += 1;
+    }
+  }
+  return nights;
+}
+
+/**
+ * The daily limit was set, and no day reached it.
+ *
+ * **Demands all seven days, where every other positive rule takes six.** The
+ * claim this makes is about *every* day — "never reached it" — and a week with
+ * a day nobody measured cannot support it. The trend rules below survive a
+ * missing day because a trend does; an absolute does not.
+ *
+ * Deliberately the mirror of `limitHitRepeatedly`, and the two cannot both
+ * fire: that rule needs three days at or over the limit, this one needs none.
+ */
+function limitRespected(input: DigestInput): Finding | null {
+  const limit = input.dailyLimitMinutes;
+  if (limit === null || limit <= 0) {
+    return null;
+  }
+  if (input.thisWeek.days.length < DAYS_IN_WEEK) {
+    return null;
+  }
+  // A week the child barely touched is `quietWeek`'s to report. Calling seven
+  // days of near-zero use "respecting the limit" credits a child for a week
+  // they spent somewhere else, and it is the sentence a parent would most
+  // reasonably call nonsense.
+  if (totalMinutes(input.thisWeek) < limit) {
+    return null;
+  }
+  if (input.thisWeek.days.some(day => day.minutes >= limit)) {
+    return null;
+  }
+
+  return {
+    kind: 'limitRespected',
+    severity: 'info',
+    params: { days: DAYS_IN_WEEK, limitMinutes: limit },
+  };
+}
+
+/**
+ * Late-night use stopped, after a week that had it.
+ *
+ * Needs a baseline that fired: without `lateNight`'s own threshold behind it,
+ * "no late nights this week" is true of most weeks of most families and is not
+ * an observation. What makes this one worth a sentence is that last week was
+ * different.
+ */
+function lateNightGone(input: DigestInput): Finding | null {
+  if (timelineDays(input.thisWeek) < POSITIVE_MIN_REPORTED_DAYS) {
+    return null;
+  }
+  const previousNights = lateNightCount(input.lastWeek);
+  if (previousNights < LATE_NIGHT_MIN_NIGHTS) {
+    return null;
+  }
+  if (lateNightCount(input.thisWeek) > 0) {
+    return null;
+  }
+
+  return {
+    kind: 'lateNightGone',
+    severity: 'info',
+    params: { previousNights },
+  };
+}
+
+/**
+ * Blocked attempts fell away, the inverse of `blockedSpike`.
+ *
+ * Reported as what it is — fewer attempts to reach something the filter holds
+ * back — and not as a claim about intent. A parent decides whether that means
+ * the child stopped trying or stopped wanting to.
+ */
+function blockedDown(input: DigestInput): Finding | null {
+  if (input.thisWeek.days.length < POSITIVE_MIN_REPORTED_DAYS) {
+    return null;
+  }
+
+  const candidates: { channel: 'app' | 'web'; recent: number; earlier: number }[] = [
+    {
+      channel: 'app',
+      recent: input.thisWeek.blockedAppOpens,
+      earlier: input.lastWeek.blockedAppOpens,
+    },
+    {
+      channel: 'web',
+      recent: input.thisWeek.blockedWebVisits,
+      earlier: input.lastWeek.blockedWebVisits,
+    },
+  ];
+
+  let best: { channel: 'app' | 'web'; recent: number; earlier: number } | null = null;
+
+  for (const candidate of candidates) {
+    if (candidate.earlier < BLOCKED_DROP_MIN_PREVIOUS) {
+      continue;
+    }
+    if (candidate.recent > candidate.earlier * BLOCKED_DROP_MAX_RATIO) {
+      continue;
+    }
+    if (!best || candidate.earlier - candidate.recent > best.earlier - best.recent) {
+      best = candidate;
+    }
+  }
+
+  if (!best) {
+    return null;
+  }
+
+  return {
+    kind: 'blockedDown',
+    severity: 'info',
+    params: {
+      channel: best.channel,
+      count: best.recent,
+      previousCount: best.earlier,
+    },
+  };
+}
+
+/**
+ * A real share of the week went to apps the classifier calls `education`.
+ *
+ * The one finding here that changes what a *number already in the report*
+ * means: "7 hours" reads as a verdict, and "7 hours, two of them in Khan
+ * Academy" reads as a week. The category comes from the product-wide
+ * `appCategories` cache, so this costs a lookup and no judgement of its own.
+ *
+ * `system` rows can never reach this — the app-classification gate found the
+ * #2 and #4 apps on a real Android TV were a screensaver and a launcher, and
+ * only `education` is counted here anyway.
+ */
+function learningTime(input: DigestInput): Finding | null {
+  const categories = input.appCategories;
+  if (!categories || categories.size === 0) {
+    return null;
+  }
+  if (input.thisWeek.days.length < POSITIVE_MIN_REPORTED_DAYS) {
+    return null;
+  }
+
+  let minutes = 0;
+  let best: { label: string; minutes: number } | null = null;
+
+  for (const [packageName, entry] of appMinutes(input.thisWeek)) {
+    if (categories.get(packageName) !== 'education') {
+      continue;
+    }
+    minutes += entry.minutes;
+    if (!best || entry.minutes > best.minutes) {
+      best = { label: entry.label, minutes: entry.minutes };
+    }
+  }
+
+  if (minutes < LEARNING_MIN_MINUTES || !best) {
+    return null;
+  }
+
+  return {
+    kind: 'learningTime',
+    severity: 'info',
+    // `minutes` is the week's education total and `label` the app most of it
+    // went to. The app's own minutes are deliberately absent: two figures for
+    // one fact is what turns a sentence into a list.
+    params: { minutes, label: best.label },
+  };
+}
+
 /**
  * Fixed tie-break within a severity, so two weeks that produce the same
  * findings always order them the same way.
@@ -445,6 +746,16 @@ const KIND_PRIORITY: Record<FindingKind, number> = {
   usageDown: 6,
   quietWeek: 7,
   usageFlat: 8,
+  // The positive half, ranked the same way the concerns are: what the child
+  // did deliberately first, what merely moved last. These only ever compete
+  // with each other — the reserved slot is filled before the general sort runs.
+  limitRespected: 20,
+  lateNightGone: 21,
+  tasksDone: 22,
+  askedFirst: 23,
+  checkedIn: 24,
+  learningTime: 25,
+  blockedDown: 26,
 };
 
 const SEVERITY_RANK: Record<FindingSeverity, number> = {
@@ -452,6 +763,41 @@ const SEVERITY_RANK: Record<FindingSeverity, number> = {
   notable: 1,
   info: 2,
 };
+
+function bySeverityThenKind(a: Finding, b: Finding): number {
+  return (
+    SEVERITY_RANK[a.severity] - SEVERITY_RANK[b.severity] ||
+    KIND_PRIORITY[a.kind] - KIND_PRIORITY[b.kind]
+  );
+}
+
+/**
+ * The findings that make the cut, with a slot held open for the good news.
+ *
+ * Ranking alone would drop every positive finding on any week that had two
+ * concerns in it, because they are all `info` and `info` sorts last. That is
+ * the bug this function exists to prevent, and it is not hypothetical: it is
+ * the shape the report has had since it was written.
+ *
+ * So the best positive is taken first, up to `MAX_POSITIVE_FINDINGS`, and the
+ * remaining slots are filled by rank as before. The result is re-sorted, so the
+ * reserved finding still appears in its proper place in the paragraph — held
+ * back from eviction, never promoted past a concern.
+ *
+ * Exported because the family-level assembly in `domain/familyReport` caps the
+ * same way over a list this module never sees, and two cap implementations
+ * would drift the first time one of them was corrected.
+ */
+export function pickFindings(findings: readonly Finding[]): Finding[] {
+  const ranked = findings.slice().sort(bySeverityThenKind);
+  const positives = ranked.filter(isPositiveFinding).slice(0, MAX_POSITIVE_FINDINGS);
+  const rest = ranked.filter(finding => !positives.includes(finding));
+
+  return [
+    ...positives,
+    ...rest.slice(0, Math.max(0, MAX_FINDINGS - positives.length)),
+  ].sort(bySeverityThenKind);
+}
 
 /**
  * The week, as the two or three things worth saying about it.
@@ -480,6 +826,10 @@ export function digestFindings(input: DigestInput): Finding[] {
     appSurge(input),
     newTopApp(input),
     usageTrend(input),
+    limitRespected(input),
+    lateNightGone(input),
+    blockedDown(input),
+    learningTime(input),
   ].filter((finding): finding is Finding => finding !== null);
 
   // `usageDown` is the one `notable` finding a quiet week can contain: less
@@ -500,18 +850,17 @@ export function digestFindings(input: DigestInput): Finding[] {
       week,
       // `usageFlat` says the same thing one line later; `usageDown` adds the
       // number that makes the quiet week concrete.
-      ...found.filter(finding => finding.kind !== 'usageFlat'),
+      //
+      // The cap still runs through `pickFindings` rather than a bare `slice`:
+      // a quiet week with two positives in it would otherwise keep whichever
+      // rule happened to run first, and `quietWeek` itself is not a positive —
+      // "nothing needed attention" is the absence of a complaint, which is the
+      // distinction this whole half of the module exists to draw.
+      ...pickFindings(found.filter(finding => finding.kind !== 'usageFlat')),
     ].slice(0, MAX_FINDINGS);
   }
 
-  return found
-    .slice()
-    .sort(
-      (a, b) =>
-        SEVERITY_RANK[a.severity] - SEVERITY_RANK[b.severity] ||
-        KIND_PRIORITY[a.kind] - KIND_PRIORITY[b.kind],
-    )
-    .slice(0, MAX_FINDINGS);
+  return pickFindings(found);
 }
 
 /**
@@ -543,6 +892,33 @@ export function findingNumericTokens(findings: Finding[]): Set<string> {
   };
 
   for (const finding of findings) {
+    // Both late-night rules, not only the one that reports late nights.
+    // Measured 2026-08-22: with `lateNightGone` present and `lateNight` absent,
+    // Italian and Russian wrote the window out of the prompt's own legend —
+    // "dopo le 23:00", "после 23:00" — and lost the whole sentence to
+    // `ungroundedFigure` for quoting a number the report itself supplied.
+    if (finding.kind === 'lateNight' || finding.kind === 'lateNightGone') {
+      // The window's own edges, so a sentence can name it: "after 23:00",
+      // "sau 23 giờ", "past 11 PM", "before 5 AM". The 12-hour form of 23 is
+      // included because English writes it that way, and the zero-padded forms
+      // because "23:00" and "05:00" tokenise as "00" and "05" — the guard
+      // compares digit runs, not clocks.
+      add(LATE_NIGHT_EVENING_FROM / 60);
+      add(LATE_NIGHT_EVENING_FROM / 60 - 12);
+      add(LATE_NIGHT_MORNING_TO / 60);
+      tokens.add('00');
+      tokens.add(String(LATE_NIGHT_MORNING_TO / 60).padStart(2, '0'));
+    }
+
+    // Zero, for the findings whose whole content is that something reached it.
+    // "Từ 3 đêm xuống 0 đêm" and "auf 0 gefallen" are the natural wording of
+    // `lateNightGone`, and the count is not in `params` precisely because it is
+    // always zero — which left the guard rejecting the sentence for the one
+    // digit the finding guarantees.
+    if (finding.kind === 'lateNightGone') {
+      add(0);
+    }
+
     for (const [key, value] of Object.entries(finding.params)) {
       if (typeof value !== 'number') {
         continue;
@@ -553,6 +929,18 @@ export function findingNumericTokens(findings: Finding[]): Set<string> {
         const wall = ((value % 1440) + 1440) % 1440;
         add(Math.floor(wall / 60));
         add(wall % 60);
+        // The zero-padded minute, because a wall clock is written "0:05",
+        // and the guard tokenises "05" as "05", which `add(5)` does not cover.
+        tokens.add(String(wall % 60).padStart(2, '0'));
+        // And the zero-padded hour, for the same reason one line up. This was
+        // missing, and it was not theoretical: the fourteen-locale eval
+        // (`functions/scripts/eval-digest-narrative.js`) rejected Indonesian
+        // and Turkish on a latest use of 01:35, because both write a 24-hour
+        // clock padded and "01" is a digit run no allow-list entry matched.
+        // Every locale that pads was silently losing its generated prose and
+        // falling back to the template, week after week, with the rejection
+        // recorded as `ungroundedFigure` — the model had invented nothing.
+        tokens.add(String(Math.floor(wall / 60)).padStart(2, '0'));
         continue;
       }
 

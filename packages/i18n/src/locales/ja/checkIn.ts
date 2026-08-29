@@ -34,6 +34,8 @@ export const checkIn = {
   requestCheckIn: 'チェックインを依頼',
   requestCheckInNote: 'お子さまのデバイスに位置情報とフロントカメラの写真を求めます。',
   needHelpOpenSosAccessibility: '助けてほしい — SOSを開く',
+  showAllDevices: 'すべてのデバイス（{{count}}台）を表示',
+  showFewerDevices: '表示するデバイスを減らす',
   parentSafePopupTitle: 'お子さまは無事です',
   childSafePopupTitle: '保護者に伝えました',
   childSafePopupBody: '保護者にメッセージが届きました — あなたは無事です。',

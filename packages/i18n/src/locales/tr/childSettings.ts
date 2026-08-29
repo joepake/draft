@@ -4,7 +4,7 @@ export const childSettings = {
   statusLocked: 'Ebeveyn PIN’i gerekli',
   preferencesSectionTitle: 'Tercihler',
   darkModeLabel: 'Karanlık mod',
-  darkModeHint: 'Gece gözleriniz için daha rahat',
+  darkModeHint: 'Gece gözlerin için daha rahat',
   leaveFamilyAlertTitle: 'Bu aileden ayrılsın mı?',
   leaveFamilyAlertMessage:
     'Bu cihazın aileyle bağlantısı kesilecek. Yeniden katılmak için ebeveyn davetiyle tekrar eşleştirin.',
@@ -17,4 +17,7 @@ export const childSettings = {
   uninstallProtectionHintOff: 'Kapalı. KidGate bu telefondan kaldırılabilir.',
   uninstallProtectionTurnedOff: 'Kaldırma koruması kapalı.',
   uninstallProtectionFailed: 'Kaldırma koruması değiştirilemedi.',
+  messageSafetySectionTitle: 'Mesaj güvenliği',
+  messageSafetySectionDescription:
+    'İzni buradan ver. Açık olup olmayacağına ise ebeveynin kendi telefonundan karar verir.',
 } as const;

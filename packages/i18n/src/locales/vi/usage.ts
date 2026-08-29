@@ -49,6 +49,10 @@ export const usage = {
   overLimitChip: 'Vượt giới hạn',
   usageReportsNote:
     'Hiển thị thời gian sử dụng, các lần khóa và nhật ký gần đây của thiết bị này.',
+  syncNote:
+    'Thời gian sử dụng có thể mất vài phút để hiện trên màn hình này — lâu hơn nếu thiết bị không có kết nối mạng hoặc bị đóng đột ngột.',
+  syncNoteTv:
+    'TV này chỉ kết nối theo định kỳ, nên thời gian sử dụng có thể mất tới 30 phút để hiện trên màn hình này — lâu hơn nếu không có kết nối mạng.',
   sectionLast30Days: '30 ngày gần đây',
   comparePeriodTotal: 'Tổng 30 ngày',
   compareDayAvg: 'Trung bình/ngày',
@@ -63,9 +67,18 @@ export const usage = {
   sectionTopApps: 'Ứng dụng dùng nhiều nhất',
   topAppsHint:
     'Các ứng dụng được dùng nhiều nhất hôm nay trên thiết bị của trẻ. Dữ liệu được bổ sung khi Thời gian sử dụng / Truy cập mức sử dụng đồng bộ.',
+  topAppsExcludedNote:
+    'Màn hình chờ, màn hình chính và màn hình của KidGate không được tính vào thời gian sử dụng. Khi thiết bị bật nhưng không có hoạt động sử dụng thực tế, thời gian đó được ghi nhận là “Không dùng”.',
+  topAppsAiNote:
+    'Một số mục được suy ra từ tên ứng dụng chứ không khớp với ứng dụng đã biết, nên có thể lệch đôi chút.',
   errorTitle: 'Không tải được báo cáo sử dụng',
   errorDescription: 'Vui lòng kiểm tra kết nối mạng rồi thử lại.',
   tryAgain: 'Thử lại',
+  // Shown only when the rating is known — it is 0 for much of the long
+  // tail, and 0 does not mean "suitable for everyone".
+  appMinAge: 'Nhà phát hành ghi {{age}}+',
+  underAMinute: 'Dưới 1 phút',
+  topAppsOther: 'Ứng dụng khác',
   topAppsEmpty:
     'Chưa có dữ liệu theo từng ứng dụng. Trên thiết bị của trẻ, hãy đảm bảo KidGate được phép đo mức dùng ứng dụng, sau đó chờ đồng bộ.',
   protectionImpactTitle: 'Hiệu quả bảo vệ',

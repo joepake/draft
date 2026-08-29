@@ -203,6 +203,65 @@ export function createSosAlertRepository(deps: SosAlertRepositoryDeps) {
     },
 
     /**
+     * The recent feed for one CHILD: every device they hold, one list.
+     *
+     * SOS rows carry only a `deviceId` — the join to a person happens here,
+     * against the ids the caller resolved from `Device.childId`. Chunked by
+     * ten because that is the floor every Firestore transport's `in` supports;
+     * each chunk reuses the composite index the per-device query already
+     * needs (same equality field, same ordering), so no new index ships with
+     * this. Results re-sort and re-cap after the merge — each chunk is capped
+     * alone, so the union over-fetches rather than under-reporting.
+     */
+    subscribeRecentForDevices(
+      userId: string,
+      deviceIds: readonly string[],
+      onAlerts: (alerts: SosAlert[]) => void,
+      onError: (error: Error) => void,
+    ): Unsubscribe {
+      if (deviceIds.length === 0) {
+        onAlerts([]);
+        return () => undefined;
+      }
+
+      const chunks: string[][] = [];
+      for (let start = 0; start < deviceIds.length; start += 10) {
+        chunks.push([...deviceIds.slice(start, start + 10)]);
+      }
+
+      const byChunk = new Map<number, SosAlert[]>();
+      const emit = () => {
+        const merged = [...byChunk.values()]
+          .flat()
+          .sort((a, b) => (b.createdAt ?? '').localeCompare(a.createdAt ?? ''))
+          .slice(0, SOS_ALERT_PAGE_SIZE);
+        onAlerts(merged);
+      };
+
+      const unsubscribes = chunks.map((chunk, index) =>
+        db.onQuery(
+          sosAlertsCollection(userId),
+          {
+            where: [['deviceId', 'in', chunk]],
+            orderBy: [['createdAt', 'desc']],
+            limit: SOS_ALERT_PAGE_SIZE,
+          },
+          snapshot => {
+            byChunk.set(index, snapshot.docs.map(mapSosAlert));
+            emit();
+          },
+          onError,
+        ),
+      );
+
+      return () => {
+        for (const unsubscribe of unsubscribes) {
+          unsubscribe();
+        }
+      };
+    },
+
+    /**
      * Mark an alert as answered.
      *
      * Records which parent device did it: the prompt appears on every parent

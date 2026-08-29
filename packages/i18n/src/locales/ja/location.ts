@@ -1,11 +1,14 @@
 export const location = {
   title: '位置情報',
   fallbackDeviceName: '子どものデバイス',
+  syncNote:
+    '位置情報が更新されるまで数分かかることがあります。デバイスがインターネットに接続していない場合や、予期せず終了した場合は、さらに時間がかかることがあります。',
   toastUpdateFailed: '位置情報の共有を更新できませんでした。もう一度お試しください。',
   toggleLabel: '位置情報を共有',
   toggleHint: '有効にした後、このデバイスで KidGate を一度開いてください。',
   toggleAccessibilityLabel: '位置情報を共有',
   lastKnownLocation: '最後に確認された位置',
+  nearPlace: '{{place}}の近く',
   noLocationHint:
     '位置情報の共有を有効にしてから、このデバイスで KidGate を一度開いてください。',
   waitingForLocation: '位置情報を取得中',
@@ -36,6 +39,8 @@ export const location = {
   locationBannerTitle: '位置情報を有効にする',
   locationBannerBody:
     '保護者が安全を確認できるよう、このデバイスの位置情報を共有してください。',
+  locationBannerBodySharingOff:
+    'いまは位置情報の共有がオフなので、なにも送信されません。ここで許可しておくと、あとで保護者がオンにしたときすぐに使えます。',
   allowLocationButton: '位置情報を許可',
   locationNotAllowed:
     '位置情報へのアクセスがまだ許可されていません。「設定 → KidGate → 位置情報」を開いてください（または先に位置情報サービスを有効にしてください）。「位置情報」の項目が表示されない場合は、もう一度「位置情報を許可」を選択してください。',
@@ -56,4 +61,16 @@ export const location = {
   mapUnavailable:
     '地図を表示できません。インターネット接続を確認して、もう一度お試しください。',
   historyShowMore: 'さらに{{count}}件の場所を表示',
+  childSharingHint: '{{childName}}に割り当てられたすべてのデバイスに適用されます。',
+  childNoCapableDevices: '{{childName}}のデバイスはどれも位置情報を報告できません。',
+  childCarriedQuestion: 'どのデバイスが{{childName}}と一緒ですか？',
+  childCarriedHint:
+    '位置情報はそのデバイスから読み取ります。家に置いたタブレットの方がカバンの中のスマホより新しい位置を報告することがあるため、KidGateは推測しません。',
+  childDevicesOnline: '{{total}} 台中 {{online}} 台がオンライン',
+  childNoneOnline: 'オンラインの端末はありません',
+  childPickCarried: '持ち歩き中',
+  childPickCarriedA11y: '{{deviceName}}を{{childName}}が持ち歩くデバイスに設定',
+  stayRange: '{{from}} – {{to}}',
+  placeTotalsTitle: '登録した場所での時間',
+  placeTotalsNote: '直近{{count}}日の位置履歴から。ここに保存した場所だけを数えます。',
 } as const;

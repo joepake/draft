@@ -1,5 +1,8 @@
 export const placeAlerts = {
   title: 'Yer uyarıları',
+  familyScope: 'Tüm aile için tek liste',
+  mergedFromDevices:
+    'Her cihazdaki mevcut yerlerden birleştirildi. Kaydetmek bu tek listeyi tüm çocuk cihazlarına uygular.',
   fallbackDeviceName: 'Çocuk cihazı',
   statusReady: 'Konum hazır',
   statusNeedLocation: 'Çocuk cihazının konumu bekleniyor',
@@ -21,7 +24,11 @@ export const placeAlerts = {
   radiusLabel: 'Uyarı yarıçapı',
   radiusValue: '{{meters}} m',
   radiusHint:
-    'Bu yerin sayılması için cihazın ne kadar yakın olması gerektiği. Daha küçük bir yarıçap daha hassastır ama daha kolay kaçırılır.',
+    'Bu yerin sayılması için cihazın ne kadar yakın olması gerektiği. Cihazın kendi konum hatasından küçük bir yarıçap daha hassas değil, rastgele uyarır.',
+  radiusAccuracyHint:
+    'Bu cihaz burada konumunu yaklaşık ±{{accuracy}} m hassasiyetle bildiriyor.',
+  radiusBelowAccuracy:
+    'Cihaz burada yalnızca yaklaşık ±{{accuracy}} m hassasiyetinde. {{minimum}} m veya daha fazlasını kullanın, yoksa bu yer rastgele uyarır.',
   radiusDecrease: 'Yarıçapı küçült',
   radiusIncrease: 'Yarıçapı büyüt',
   notifyEnterLabel: 'Varışta uyar',
@@ -43,7 +50,10 @@ export const placeAlerts = {
   maxPlacesToast: 'En fazla {{max}} yer kaydedebilirsiniz.',
   nameRequiredToast: 'Lütfen bir yer adı girin.',
   duplicateNameToast: 'Bu adla bir yer zaten var.',
-  duplicateLocationToast: 'Bu konum zaten başka bir yer tarafından kapsanıyor.',
+  samePinToast:
+    'Burası “{{name}}” ile aynı nokta. İşaretçiyi taşımak için haritayı sürükleyin.',
+  overlapWarning:
+    '“{{name}}” {{meters}} m uzakta ve çemberi buraya kadar uzanıyor. Cihaz her ikisindeyken yalnızca daha yakın olan uyarır. Korumak için tekrar kaydedin.',
   copyTitle: 'Diğer çocuklara eklensin mi?',
   copyMessage:
     '“{{name}}” öğesi bu ailedeki diğer {{count}} çocuk cihazına kopyalansın mı?',

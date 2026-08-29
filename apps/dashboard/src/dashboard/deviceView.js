@@ -1,4 +1,5 @@
 import { DEFAULT_DEVICE_CONTROLS } from '@kidgate/schema/deviceControls';
+import { nearestPlaceWithin } from '@kidgate/core/domain/geo';
 import { t } from '@kidgate/i18n/web';
 
 /**
@@ -24,25 +25,58 @@ export function toDeviceView(record) {
   const name = record.name || t('dash.fallbackDevice');
   const controls = { ...DEFAULT_DEVICE_CONTROLS, ...(record.controls ?? {}) };
   const currentPlace = record.lastLocation?.placeName || null;
+  /*
+   * HERE returns no `address` for plenty of real fixes, and the badge below
+   * used to just hide its second line then — no fallback to raw coordinates
+   * exists on this surface. A saved place nearby is worth naming even when
+   * the fix does not sit inside its geofence; `@kidgate/core/domain/geo`
+   * carries the same threshold `apps/mobile`'s location screens use, so the
+   * two parent surfaces cannot disagree about the same fix.
+   */
+  const nearbyPlace =
+    !currentPlace && record.lastLocation && !record.lastLocation.address
+      ? nearestPlaceWithin(
+          record.lastLocation.latitude,
+          record.lastLocation.longitude,
+          record.places ?? [],
+        )
+      : null;
+  const lastLocation = record.lastLocation
+    ? { ...record.lastLocation, nearbyPlaceName: nearbyPlace?.name ?? null }
+    : null;
 
   return {
     id: record.deviceId,
     name,
-    // Which person uses it, when a parent has said. `childName` below is the
-    // device's own label and predates children existing — the two are not the
-    // same thing and only one of them is a person.
+    // Which person uses it, when a parent has said. The name is joined on in
+    // `useFamilyData` (`child` below), which is the layer that reads the
+    // `children` collection.
+    //
+    // There used to be a `childName` here holding the *device's* name, and five
+    // call sites read it as a person — "Ask iPad Pro for a check-in". The field
+    // is gone rather than corrected, so nothing can quietly keep the old
+    // meaning.
     childId: record.childId,
-    childName: name,
+    child: null,
     initials: initialsOf(record.name),
     platform: record.platform,
     modelName: record.modelName || record.deviceLabel || '',
     osVersion: record.osVersion || '',
+    /*
+     * The build this device is running, for `domain/buildFreshness`. Spread
+     * rather than defaulted: every field here is optional on the record and
+     * absent has to survive, or a device that has never reported a version
+     * becomes indistinguishable from one running an old one.
+     */
+    ...(record.appVersion ? { appVersion: record.appVersion } : {}),
+    ...(record.appBuild ? { appBuild: record.appBuild } : {}),
+    ...(record.otaVersion !== undefined ? { otaVersion: record.otaVersion } : {}),
     status: record.isLocked ? 'locked' : record.status || 'offline',
     isLocked: record.isLocked,
     lastActiveAt: record.lastActiveAt || undefined,
     batteryLevel: record.batteryLevel,
     batteryCharging: Boolean(record.batteryCharging),
-    lastLocation: record.lastLocation ?? null,
+    lastLocation,
     controls,
     protectionStatus: record.protectionStatus ?? {},
     /*

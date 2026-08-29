@@ -36,6 +36,14 @@ export const protection = {
   lockNotReadyBodyIos:
     'KidGate chưa thể khóa iPhone này cho đến khi quyền Thời gian sử dụng được cấp trên thiết bị của trẻ. Vui lòng mở KidGate trên máy đó và hoàn tất các bước sau:',
   locationPermission: 'Quyền vị trí',
+  cameraPermission: 'Quyền camera',
+  cameraConsentPending:
+    'Camera chưa được cho phép trên thiết bị này, nên SOS hoặc Báo an toàn gửi từ đó sẽ không có ảnh.',
+  locationConsentPending:
+    'Vị trí chưa được cho phép trên thiết bị này, nên thiết bị không báo được đang ở đâu.',
+  consentStepOpenSettings: 'Mở KidGate trên thiết bị của con và vào Cài đặt.',
+  consentStepParentPin: 'Nhập PIN phụ huynh.',
+  consentStepPermissions: 'Mở “Quyền” và cho phép những mục còn thiếu.',
   notificationsPermission: 'Quyền thông báo',
   backgroundUpdates: 'Cập nhật nền',
   backgroundUpdatesRestricted: 'Cập nhật nền đang bị hạn chế trên thiết bị này.',

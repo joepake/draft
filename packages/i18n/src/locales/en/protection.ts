@@ -33,6 +33,39 @@ export const protection = {
   lockNotReadyBodyIos:
     'KidGate cannot lock this iPhone until Screen Time access is approved on the child device. Open KidGate there and complete the following:',
   locationPermission: 'Location permission',
+  cameraPermission: 'Camera permission',
+  /*
+   * A consent the child device is still waiting for, said in what it costs
+   * rather than in what the switch is called.
+   *
+   * These two are read by a parent who is not at the machine, about a device
+   * whose own setup checklist sits behind the Parent PIN — so the sentence has
+   * to be worth a walk across the house or worth ignoring, and only naming the
+   * consequence makes that decidable. No steps: the desktop agent's own screen
+   * reads the OS and offers the button, and a path through System Settings
+   * written here would be a second set of instructions free to drift.
+   */
+  cameraConsentPending:
+    'The camera has not been allowed on this device, so an SOS or Check-In from it arrives without a photo.',
+  locationConsentPending:
+    'Location has not been allowed on this device, so it cannot report where it is.',
+  /*
+   * The route, and it is through KidGate rather than through the OS.
+   *
+   * The agent has a screen that reads every consent, raises the prompt where
+   * the system still allows one and opens the right Settings pane where it does
+   * not — so "get to that screen" is the whole instruction, the same three
+   * steps on macOS and Windows. A path through Apple's Settings written here
+   * would be wrong the next time Apple moves a pane, which has happened twice
+   * since Ventura.
+   *
+   * The PIN step is listed because it is where a parent stops: the checklist
+   * sits behind that gate with the other enforcement controls, and a locked
+   * Settings screen reads as the whole screen to somebody who does not know.
+   */
+  consentStepOpenSettings: 'Open KidGate on the child’s device and go to Settings.',
+  consentStepParentPin: 'Enter the Parent PIN.',
+  consentStepPermissions: 'Open Permissions and allow what is missing.',
   notificationsPermission: 'Notifications permission',
   backgroundUpdates: 'Background updates',
   backgroundUpdatesRestricted: 'Background updates are restricted on this device.',

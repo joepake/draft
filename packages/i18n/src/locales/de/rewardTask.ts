@@ -72,7 +72,7 @@ export const rewardTask = {
   taskRejectedDescription:
     '„{{title}}“ wurde an {{deviceName}} für einen neuen Versuch zurückgegeben.',
   starsLabel: 'Schwierigkeit',
-  starsHint: 'Wie schwer diese Aufgabe ist. Ihr Kind sammelt diese Sterne.',
+  starsHint: 'Wie schwer diese Aufgabe ist. Dein Kind sammelt diese Sterne.',
   starsEasy: 'Leicht',
   starsMedium: 'Mittel',
   starsHard: 'Schwer',

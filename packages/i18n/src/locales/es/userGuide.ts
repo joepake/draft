@@ -25,7 +25,7 @@ export const userGuide = {
     },
     safety: {
       title: 'Seguridad y supervisión',
-      description: 'Ubicación, Check-In, SOS, Filtro web y protección',
+      description: 'Ubicación, Check-in, SOS, Filtro web y protección',
     },
   },
   topics: {
@@ -113,7 +113,7 @@ export const userGuide = {
         '5': 'Ayuda de bloqueo por Accesibilidad: Ajustes → Accesibilidad → Apps instaladas/descargadas → KidGate → Activado. Esto mantiene el bloqueo en vigor.',
         '6': 'Batería sin restricciones: selecciona «Permitir» cuando se solicite. Si no aparece ningún aviso: Información de la app → Batería → Sin restricciones.',
         '7': 'Alarmas y recordatorios: permítelo para que las Horas bloqueadas empiecen y terminen puntualmente.',
-        '8': 'Ubicación y Cámara (si usas Check-In o fotos de SOS): permítelas cuando KidGate lo solicite. Vuelve a Estado y confirma que todas las filas están permitidas.',
+        '8': 'Ubicación y Cámara (si usas Check-in o fotos de SOS): permítelas cuando KidGate lo solicite. Vuelve a Estado y confirma que todas las filas están permitidas.',
       },
     },
     iosScreenTime: {
@@ -212,16 +212,16 @@ export const userGuide = {
       },
     },
     checkIn: {
-      title: 'Solicita un Check-In',
+      title: 'Solicita un Check-in',
       summary:
         'Pide a tu hijo que confirme que está a salvo, con ubicación y una foto opcional.',
-      tip: 'El permiso de la cámara en el dispositivo del niño es necesario para los Check-Ins con foto.',
+      tip: 'El permiso de la cámara en el dispositivo del niño es necesario para los Check-ins con foto.',
       steps: {
         '1': 'Abre el dispositivo del niño en el dispositivo del padre.',
-        '2': 'Selecciona «Check-In» (la acción rápida o la sección Seguridad).',
-        '3': 'El dispositivo del niño recibe una notificación y una pantalla de Check-In. El niño toca para confirmar que está bien, o para pedir ayuda.',
+        '2': 'Selecciona «Check-in» (la acción rápida o la sección Seguridad).',
+        '3': 'El dispositivo del niño recibe una notificación y una pantalla de Check-in. El niño toca para confirmar que está bien, o para pedir ayuda.',
         '4': 'Si el acceso a la cámara está permitido, KidGate adjunta una foto junto con la ubicación cuando es posible.',
-        '5': 'En el dispositivo del padre, abre el historial de Check-In para revisar la última respuesta y la foto.',
+        '5': 'En el dispositivo del padre, abre el historial de Check-in para revisar la última respuesta y la foto.',
       },
     },
     sos: {
@@ -233,7 +233,7 @@ export const userGuide = {
         '2': 'Sigue los pasos que aparecen en pantalla para enviar un SOS (la ubicación y la foto dependen de los permisos concedidos).',
         '3': 'Los padres reciben una notificación push cuando se envía un SOS.',
         '4': 'En el dispositivo del padre, abre el dispositivo → Alertas SOS para revisar el evento.',
-        '5': 'Acuerda con tu hijo cuándo usar SOS y cuándo basta con un Check-In normal.',
+        '5': 'Acuerda con tu hijo cuándo usar SOS y cuándo basta con un Check-in normal.',
       },
     },
     webFilter: {

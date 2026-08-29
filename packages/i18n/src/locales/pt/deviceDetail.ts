@@ -7,6 +7,8 @@ export const deviceDetail = {
     'Remova este dispositivo da sua conta da família. Todas as solicitações de tempo e o histórico de atividades associados a este dispositivo serão excluídos.',
   removeButton: 'Remover dispositivo',
   removingButton: 'Removendo…',
+  showAllFeatures: 'Mostrar todos os recursos',
+  showAvailableFeatures: 'Mostrar apenas os recursos disponíveis',
   essentialControls: 'Controles principais',
   dailyRulesAndDeviceAccess: 'Regras diárias e acesso ao dispositivo',
   dailyLimit: 'Limite diário',
@@ -19,7 +21,7 @@ export const deviceDetail = {
   locationAndWebSafety: 'Localização e segurança na Web',
   alerts: 'Alertas',
   alertsSubtitle: 'SOS, proteção, locais e aplicativos',
-  checkIn: 'Check-In',
+  checkIn: 'Check-in',
   locationPlusSelfie: 'Localização e foto',
   webFilter: 'Filtro da web',
   limitAdultWebsites: 'Limitar sites adultos',
@@ -29,6 +31,8 @@ export const deviceDetail = {
   reviewEmergencyAlerts: 'Ver alertas de emergência',
   appAlerts: 'Aplicativos',
   reviewAppInstallAlerts: 'Ver instalações e remoções de aplicativos',
+  appInventory: 'Aplicativos instalados',
+  reviewAppInventory: 'Ver tudo neste dispositivo, não apenas o que mudou',
   placeAlerts: 'Locais',
   reviewPlaceAlerts: 'Receber alertas ao chegar ou sair',
   noPlacesYet: 'Nenhum local',
@@ -42,11 +46,17 @@ export const deviceDetail = {
   restoreAccess: 'Desbloquear',
   pausePhone: 'Bloquear dispositivo',
   quickPause: 'Bloquear',
-  quickCheckIn: 'Check-In',
+  quickCheckIn: 'Check-in',
   lastActive: 'Última atividade',
+  appVersion: 'Versão do app',
+  appVersionUpdate: '{{running}} · {{latest}} disponível',
+  appVersionRestart: '{{running}} · reabra o app para concluir',
   androidPauseNote:
     'No Android, bloquear o dispositivo também bloqueia outros aplicativos quando Acessibilidade e “Exibir sobre outros aplicativos” estão ativados.',
   notAvailableOnPlatform: 'Não disponível no {{platform}}',
+  notAvailableInExtension: 'Não disponível na extensão',
+  webFilterAwaitingApproval: 'Aguardando aprovação em {{platform}}',
+  webFilterSwitchedOffOnDevice: 'Desativado em {{platform}}',
   unableToUpdateDeviceName:
     'Não foi possível atualizar o nome do dispositivo. Tente novamente.',
   renameOwnerOnly: 'Somente o proprietário da família pode renomear dispositivos.',
@@ -56,11 +66,11 @@ export const deviceDetail = {
     '{{deviceName}} será desconectado da sua conta. Todas as solicitações de tempo e o histórico de atividades associados serão excluídos.',
   unableToRemoveDevice: 'Não foi possível remover o dispositivo. Tente novamente.',
   checkInNotificationSent: '{{deviceName}} receberá uma solicitação de Check-in.',
-  checkInOfflineTitle: 'Este aparelho parece estar off-line',
+  checkInOfflineTitle: 'Este dispositivo parece estar off-line',
   checkInOfflineBody:
-    'O KidGate não recebe sinais de {{deviceName}} desde {{lastSeen}}. O check-in só chegará quando o aparelho voltar a ficar on-line.',
+    'O KidGate não recebe sinais de {{deviceName}} desde {{lastSeen}}. O check-in só chegará quando o dispositivo voltar a ficar on-line.',
   checkInOfflineBodyNeverSeen:
-    'O KidGate nunca recebeu sinais de {{deviceName}}. O check-in só chegará quando o app for aberto nesse aparelho.',
+    'O KidGate nunca recebeu sinais de {{deviceName}}. O check-in só chegará quando o app for aberto nesse dispositivo.',
   checkInOfflineConfirm: 'Enviar mesmo assim',
   checkInQueued:
     'Check-in na fila — {{deviceName}} vai recebê-lo quando voltar a ficar on-line.',
@@ -122,4 +132,6 @@ export const deviceDetail = {
   webHistoryDescription: 'Sites acessados e bloqueados',
   webHistorySitesUnit: 'sites',
   webHistorySitesUnit_one: 'site',
+  managedAtChild:
+    'Regras, recompensas, check-ins e alertas deste dispositivo são gerenciados no perfil de {{childName}}',
 } as const;

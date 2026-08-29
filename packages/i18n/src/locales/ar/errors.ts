@@ -13,7 +13,8 @@ export const errors = {
   unableToJoinFamilyAccount: 'تعذر الانضمام إلى حساب العائلة. يرجى المحاولة مرة أخرى.',
   enterEmailAddress: 'يرجى إدخال عنوان بريدك الإلكتروني.',
   unableToCreatePairingCode: 'تعذر إنشاء رمز الاقتران. يرجى المحاولة مرة أخرى.',
-  unableToRedeemPairingCode: 'رمز الاقتران غير صحيح أو انتهت صلاحيته.',
+  unableToRedeemPairingCode:
+    'هذا الرمز غير مطابق. تحقق من الأحرف — أو اطلب رمزًا جديدًا إذا مر وقت طويل.',
   unableToClaimChildPairing: 'تعذر ربط جهاز الطفل. يرجى المحاولة مرة أخرى.',
   unableToPollChildPairing: 'تعذر التحقق من حالة الاقتران.',
   unableToConfirmChildPairing: 'تعذر تأكيد عملية الاقتران. يرجى المحاولة مرة أخرى.',
@@ -22,6 +23,7 @@ export const errors = {
   unableToOpenCamera:
     'تعذر فتح الكاميرا. يرجى السماح بالوصول إلى الكاميرا من إعدادات الجهاز.',
   noPhotoCaptured: 'لم يتم التقاط أي صورة.',
+  unableToOpenPhotoLibrary: 'تعذّر فتح صورك. اسمح بالوصول إلى الصور من إعدادات الجهاز.',
   simulatorCameraHint:
     'في المحاكي، قم أولاً بتفعيل الكاميرا من: Simulator ← Camera ← Front Camera، ثم أعد تجربة SOS. وللحصول على صورة حقيقية، اختبر التطبيق على جهاز iPhone فعلي.',
   notSignedInReopenApp:
@@ -49,7 +51,7 @@ export const errors = {
     'يحتاج هذا الجهاز إلى إعادة الاتصال. يرجى إغلاق KidGate وإعادة فتحه ثم المحاولة مرة أخرى.',
   deviceNotFound: 'لم يعد هذا الجهاز ضمن عائلتك.',
   registerParentDeviceFirst:
-    'يرجى إعداد هذا الجهاز كجهاز للوالدين أولاً ثم المحاولة مرة أخرى.',
+    'لم يُعد هذا الهاتف كجهاز للوالدين بعد. افتح KidGate هنا، واختر دور "الوالد" في شاشة البداية، ثم حاول الاقتران مرة أخرى.',
   pairingCodeFormat: 'يرجى إدخال الرمز المكون من 6 أحرف.',
   pairingCodeUsed: 'تم استخدام هذا الرمز بالفعل. يرجى طلب رمز جديد.',
   pairingCodeExpiredChild: 'انتهت صلاحية هذا الرمز. يرجى أن يطلب طفلك رمزًا جديدًا.',

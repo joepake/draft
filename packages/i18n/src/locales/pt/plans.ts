@@ -41,7 +41,7 @@ export const plans = {
   // Title Case throughout, and worded to match the screen each feature opens —
   // a chip that reads differently from its destination reads as a promise the
   // app does not keep.
-  featurePausePhone: 'Bloqueio do aparelho',
+  featurePausePhone: 'Bloqueio do dispositivo',
   featureDailyLimits: 'Limite diário',
   featureBlockedHours: 'Horários bloqueados',
   featureTimeRequests: 'Solicitações de tempo',
@@ -49,7 +49,7 @@ export const plans = {
   featureWebFiltering: 'Filtro da web',
   featureSeeLocation: 'Localização ao vivo',
   featureLocationHistory: 'Histórico de localização',
-  featureCheckIn: 'Check-In',
+  featureCheckIn: 'Check-in',
   featureSosAlerts: 'Alertas de SOS',
   featurePlaceAlerts: 'Alertas de locais',
   featureTamperAlerts: 'Alertas de proteção',
@@ -128,4 +128,28 @@ export const plans = {
   planPeriodOnce: 'uma vez',
   billedOnce:
     'Pague uma vez por até {{devices}} dispositivos, enquanto o KidGate estiver disponível',
+  sectionFreePlan: 'Se você nunca assinar',
+  devicesUnlimited: 'Dispositivos infantis ilimitados',
+  featureAppLimits: 'Limites de apps',
+  featureWebHistory: 'Histórico da web',
+  featureWeeklyReport: 'Relatório semanal',
+  featureChildReport: 'Relatórios por filho',
+  featureStarChart: 'Quadro de estrelas',
+  featureFootnoteAppLimits:
+    'Os limites de apps precisam de um dispositivo Android ou de um Mac — o Tempo de Uso da Apple não informa qual app está aberto no iPhone ou iPad.',
+  sectionPlatforms: 'Onde o KidGate funciona',
+  platformIos: 'iPhone e iPad',
+  platformIosDetail: 'Dispositivo de responsável ou de criança · iOS 16 ou posterior',
+  platformAndroid: 'Android',
+  platformAndroidDetail:
+    'Dispositivo de responsável ou de criança · Android 7 ou posterior',
+  platformMac: 'Mac',
+  platformMacDetail: 'Somente dispositivo da criança · macOS 12 ou posterior',
+  platformComingSoon: 'Em breve',
+  platformWindows: 'Windows',
+  platformWindowsDetail: 'Somente dispositivo da criança · Windows 10 ou posterior',
+  platformAndroidTv: 'Android TV',
+  platformAndroidTvDetail: 'Somente dispositivo da criança · Android TV 7 ou posterior',
+  platformChromebook: 'Chromebook',
+  platformChromebookDetail: 'Dispositivo da criança · apenas filtro web no Chrome',
 } as const;

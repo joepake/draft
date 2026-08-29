@@ -21,6 +21,16 @@ export const sos = {
   alertMessage: '{{childName}} needs help — SOS was sent',
   toastSent:
     'SOS sent. Stay somewhere safe if you can — your parent has been notified.',
+  // Shown to the child on a *desktop* only, and only when the SOS lifted a
+  // lock. The lock window closes within about a second of the press, so the
+  // line above can be gone before it is read — and the child is left with a
+  // Mac that simply unlocked, which is the one thing this escape must not
+  // teach. Says the two things that line cannot: how long, and what happens
+  // after. The phone needs neither; its escape ends when the child leaves the
+  // SOS screen, with no lock involved.
+  escapeGrantedTitle: 'SOS sent',
+  escapeGrantedBody:
+    'Your parent has been notified. This device is unlocked for 15 minutes, then it will lock again.',
   toastSentWithoutPhoto:
     'SOS sent, but without a photo. Allow Camera in Settings and try again if you can.',
   toastSendFailed: 'Unable to send the SOS. Try again, or call someone you trust.',

@@ -6,18 +6,16 @@ export const leaderboard = {
   settingsTitle: 'सितारा तालिका',
   settingsBody: 'आपके बच्चे देख सकते हैं कि इस हफ़्ते किसने कितने सितारे कमाए.',
   childrenTitle: 'बच्चे',
-  childrenBody:
-    'डिवाइस को उनके इस्तेमाल करने वाले के हिसाब से जोड़ें. एक बच्चे के पास एक से ज़्यादा हो सकते हैं.',
+  manageAccessibility: 'बच्चे और डिवाइस प्रबंधित करें',
   addChild: 'बच्चा जोड़ें',
+  childAdded: 'बच्चा जोड़ा गया।',
   childNameLabel: 'नाम',
   childNamePlaceholder: 'जैसे माई',
   unassigned: 'असाइन नहीं',
-  assignLabel: 'इस्तेमाल करता है',
-  assignNobody: 'अभी कोई नहीं',
-  deviceCount: '{{count}} डिवाइस',
   removeChild: 'हटाएँ',
   removeChildConfirmTitle: 'इस बच्चे को हटाएँ?',
   removeChildConfirmBody:
     'उनके डिवाइस जुड़े रहेंगे और रिपोर्ट भेजते रहेंगे — दोबारा असाइन करने तक वे बस किसी के लिए नहीं गिने जाएँगे.',
-  needsTwoChildren: 'सितारा तालिका शुरू करने के लिए दूसरा बच्चा जोड़ें.',
+  emptyTitle: 'अभी कोई बच्चा नहीं',
+  emptyBody: 'हर बच्चे को यहाँ जोड़ें, फिर उसके डिवाइस असाइन करें।',
 } as const;

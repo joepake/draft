@@ -346,15 +346,44 @@ export default {
 
   webCat: {
     adult: 'محتوى للبالغين',
+    selfHarm: 'إيذاء النفس واضطرابات الأكل',
     gambling: 'المقامرة',
+    gameGambling: 'صناديق الحظ ومراهنات العناصر',
     dating: 'المواعدة',
+    strangerChat: 'الدردشة مع الغرباء',
     drugs: 'المخدرات والكحول',
-    violence: 'العنف والتطرف',
+    violence: 'العنف والدماء',
+    extremism: 'التطرف والكراهية',
     piracy: 'القرصنة',
     social: 'الشبكات الاجتماعية',
     videoStreaming: 'بث الفيديو',
+    music: 'الموسيقى',
     gaming: 'الألعاب',
     shopping: 'التسوق',
+    aiCompanion: 'رفاق الذكاء الاصطناعي',
+    aiAssistant: 'مساعدو الذكاء الاصطناعي',
+    cryptoTrading: 'العملات الرقمية والتداول',
+    vpn: 'تطبيقات VPN',
+  },
+
+  appCat: {
+    adult: 'محتوى للبالغين',
+    gambling: 'المقامرة',
+    gameGambling: 'صناديق الحظ ومراهنات العناصر',
+    dating: 'المواعدة',
+    drugs: 'المخدرات والكحول',
+    violence: 'العنف والدماء',
+    piracy: 'القرصنة',
+    bypass: 'تجاوز التصفية وشبكات VPN',
+  },
+
+  webCatGroup: {
+    harm: 'محتوى ضار',
+    contact: 'الغرباء',
+    bypass: 'تجاوز المرشّح',
+    ai: 'الذكاء الاصطناعي',
+    entertainment: 'الترفيه والتواصل',
+    money: 'التسوق والمال',
   },
 
   dash: {
@@ -364,9 +393,11 @@ export default {
     tabSafety: 'الأمان',
     tabControls: 'أدوات التحكم',
     tabReport: 'التقرير الأسبوعي',
+    tabReportNew: 'تقرير أسبوعي جديد',
 
     children: 'الأطفال',
     noChildren: 'لم تُربط أي أجهزة أطفال بعد.',
+    unassignedDevices: 'غير مُسنَد',
     manage: 'الإدارة',
     parents_one: 'ولي أمر واحد',
     parents_two: 'وليّا أمر',
@@ -386,6 +417,8 @@ export default {
     statusOnline: 'متصل',
     statusOffline: 'غير متصل',
     statusLocked: 'مقفل',
+    statusLockSent: 'أُرسل القفل',
+    statusLockNotApplied: 'لم يُطبَّق القفل',
 
     stateAllowed: 'مسموح',
     stateDenied: 'مُطفأ',
@@ -395,6 +428,10 @@ export default {
     stateUnknown: 'غير معروف',
 
     lastActive: 'آخر نشاط {{when}}',
+    appVersion: 'إصدار التطبيق',
+    appVersionUpdate: '{{running}} · {{latest}} متاح',
+    appVersionRestart: '{{running}} · أعد فتح التطبيق للإكمال',
+    buildOutdated: 'يتوفر تحديث',
     checkIn: 'اطمئنان',
     sending: 'جارٍ الإرسال…',
     lockDevice: 'قفل الجهاز',
@@ -433,6 +470,10 @@ export default {
 
     cardScreenTime: 'وقت استخدام الشاشة',
     cardScreenTimeSub: 'آخر 14 يومًا، مقارنةً بالحد اليومي',
+    usageSyncNote:
+      'قد يستغرق وقت استخدام الشاشة بضع دقائق ليظهر في هذه الشاشة — وقتًا أطول إذا لم يكن الجهاز متصلاً بالإنترنت أو إذا أُغلق بشكل غير متوقع.',
+    usageSyncNoteTv:
+      'يتصل هذا التلفاز بشكل دوري فقط، لذا قد يستغرق ظهور وقت استخدام الشاشة في هذه الشاشة حتى 30 دقيقة — وقتًا أطول في حال عدم وجود اتصال بالإنترنت.',
     cardRecent: 'النشاط الأخير',
     cardRecentSub: 'الأحدث أولًا',
     cardRecentEmpty:
@@ -447,8 +488,6 @@ export default {
     attnReason: '«{{reason}}» · {{when}}',
     attnCheckInMissed: 'لم يُستجب لطلب اطمئنان',
     attnCheckInMissedMeta: 'أُرسل {{when}} · بلا رد',
-    attnPermissionOff: '{{permission}} مُطفأ',
-    attnPermissionOffMeta: 'تبقى الحماية أضعف حتى يُستعاد هذا على جهاز الطفل',
     attnLimitReached: 'بلغ الحد اليومي — أُقفل الجهاز',
     attnLimitReachedMeta: 'استُخدم {{used}} اليوم',
     attnBatteryLow: 'البطارية منخفضة ({{level}}٪)',
@@ -485,6 +524,8 @@ export default {
 
     appUsageTitle: 'استخدام التطبيقات اليوم',
     appUsageSub: 'الوقت المستغرق لكل تطبيق',
+    topAppsOther: 'تطبيقات أخرى',
+    underAMinute: 'أقل من دقيقة',
     appUsageEmpty: 'لم يُبلَّغ عن أي استخدام للتطبيقات بعد.',
     appBlockingTitle: 'حظر التطبيقات',
     appBlockingSub: 'يُختار على جهاز الطفل برمز ولي الأمر',
@@ -497,6 +538,20 @@ export default {
     webActivityTitle: 'نشاط الويب',
     webActivitySub: 'أكثر النطاقات زيارةً، آخر 30 يومًا',
     webActivityEmpty: 'لا يوجد نشاط ويب بعد.',
+    inventoryTitle: 'التطبيقات المثبّتة',
+    inventorySub: 'كل شيء على هذا الجهاز، لا ما تغيّر فقط',
+    inventoryEmpty: 'لم يرسل هذا الجهاز قائمة تطبيقاته بعد.',
+    inventoryStale: 'هذه القائمة قديمة. ستتجدّد عند اتصال الجهاز في المرة القادمة.',
+    inventoryFirstScan: 'هذا أول فحص، لذا لا يمكن تحديد متى ظهرت هذه التطبيقات.',
+    inventoryFlagged: 'تستحق النظر',
+    inventoryFlaggedLabel: 'للمراجعة',
+    inventoryOtherLabel: 'محدّدة',
+    inventoryUnknownLabel: 'غير محدّدة',
+    inventoryIncomplete: 'قد لا يظهر هنا تطبيق بلا أيقونة على الشاشة الرئيسية.',
+    webActivitySyncNote:
+      'قد يستغرق نشاط الويب بضع دقائق ليظهر في هذه الشاشة — وقتًا أطول إذا لم يكن الجهاز متصلاً بالإنترنت أو إذا أُغلق بشكل غير متوقع.',
+    webActivitySyncNoteTv:
+      'يتصل هذا التلفاز بشكل دوري فقط، لذا قد يستغرق ظهور نشاط الويب في هذه الشاشة حتى 30 دقيقة — وقتًا أطول في حال عدم وجود اتصال بالإنترنت.',
     colDomain: 'النطاق',
     colVisits: 'الزيارات',
     colBlocked: 'المحظورة',
@@ -508,15 +563,21 @@ export default {
     filterRefusedSub_many: '{{count}} استعلامًا محظورًا، آخر 30 يومًا',
     filterRefusedSub_other: '{{count}} استعلام محظور، آخر 30 يومًا',
     nothingBlockedYet: 'لم يُحظر شيء بعد.',
+    rollupNoteAi:
+      'بعض الفئات استُنتجت من اسم الموقع بدل مطابقتها بموقع معروف، لذا قد يكون بعضها غير دقيق.',
     filterHintIos:
       'على iOS يستخدم المرشِّح ضوابط Apple لمحتوى البالغين — أما الحظر حسب الفئة فمتاح على Android فقط.',
     filterHintAndroid: 'تُطبَّق الفئات عبر مرشِّح DNS داخل الجهاز.',
+    filterHintMacos: 'تُطبَّق الفئات عبر مرشِّح محتوى KidGate على جهاز Mac.',
 
     locationTitle: 'الموقع',
     locationSharingOff: 'المشاركة مُطفأة',
+    locationSyncNote:
+      'قد يستغرق تحديث الموقع بضع دقائق — وقتًا أطول إذا لم يكن الجهاز متصلاً بالإنترنت أو إذا أُغلق بشكل غير متوقع.',
     locationUpdated: 'حُدّث {{when}}',
     locationWaiting: 'بانتظار أول تحديث',
     lastKnownLocation: 'آخر موقع معروف',
+    nearPlace: 'بالقرب من {{place}}',
     noPlaces:
       'لا أماكن محفوظة بعد. أضف مكانًا في التطبيق لتصلك تنبيهات وصول طفلك أو مغادرته.',
     placeRadius: '{{meters}} م · ',
@@ -557,6 +618,10 @@ export default {
     limitScaleMax: '8 س',
     limitHint:
       'تُضاف دقائق المكافأة من المهام وطلبات الوقت المعتمدة فوق الحد، لذلك اليوم فقط.',
+    limitShared: 'مشترك بين كل الأجهزة',
+    limitSharedSpent: 'استُخدم اليوم {{used}} من {{limit}}',
+    limitSharedHint:
+      'هذا يوم الطفل بأكمله، وليس حدًّا لهذا الجهاز وحده — كل جهاز يأخذ ما لم تستخدمه الأجهزة الأخرى. يمكن تغييره من تطبيق KidGate.',
     whatsOnTitle: 'ما هو مُفعَّل',
     whatsOnSub: 'تُزامَن التغييرات مع جهاز الطفل',
     rowBlockedHours: 'ساعات الحظر',
@@ -584,6 +649,8 @@ export default {
     rowWebFilterDesc_many: '{{count}} فئة مرفوضة',
     rowWebFilterDesc_other: '{{count}} فئة مرفوضة',
     rowNotSupported: 'غير مدعوم على هذا الجهاز',
+    rowWebFilterAwaitingApproval: 'في انتظار الموافقة على الجهاز',
+    rowWebFilterSwitchedOff: 'مُعطَّل على الجهاز',
     rowLocation: 'مشاركة الموقع',
     rowLocationDesc: 'آخر تحديث {{when}}',
     rowLocationNone: 'لا موقع بعد',
@@ -604,6 +671,12 @@ export default {
     rewardTaskWaiting: ' · بانتظار اعتمادك',
     approve: 'اعتماد',
     approveInApp: 'اعتمِده في تطبيق KidGate',
+    siteRequestsTitle: 'طلبات المواقع',
+    siteRequestsSub: 'المواقع التي طلب هذا الجهاز السماح بها',
+    siteRequestAllow: 'السماح',
+    siteRequestDeny: 'ليس الآن',
+    attnSiteRequest: 'طلب {{name}} فتح {{domain}}',
+    toastSiteAllowed: 'تم السماح بالموقع',
     timelineTitle: 'متى تم الاستخدام',
     timelineSub: 'اليوم، من منتصف الليل إلى منتصف الليل. الأخضر هو وقت استخدام الجهاز.',
   },
@@ -679,8 +752,11 @@ export default {
     emptyBody:
       'يصل تقرير كل مساء أحد. ويمكن كتابة تقرير هذا الأسبوع الآن — وهو يغطي الأيام السبعة الماضية.',
     noUsage:
-      'لم يُسجَّل أي وقت شاشة خلال الأسبوعين الماضيين، لذا لا يوجد ما يُبلَّغ عنه بعد. الجهاز المُطفأ لا يبلّغ بشيء، وهذا ليس كالأسبوع الهادئ.',
+      'لم يُسجَّل أي وقت شاشة خلال الأسبوعين الماضيين، لذا لا يوجد ما يُبلَّغ عنه بعد. الجهاز غير المتصل لا يبلّغ بشيء، وهذا ليس كالأسبوع الهادئ.',
     rateLimited: 'محاولات كثيرة. انتظر دقيقة.',
+    loadFailedTitle: 'تعذّر تحميل التقارير',
+    loadFailed: 'تعذّر فتح التقارير. أعد تحميل الصفحة للمحاولة مرة أخرى.',
+    retryLoad: 'أعد المحاولة',
     failed: 'تعذّرت كتابة التقرير. أعد المحاولة بعد قليل.',
     existed: 'كان لهذا الأسبوع تقرير بالفعل — ها هو.',
     childrenTitle: 'لكل طفل',

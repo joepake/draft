@@ -46,7 +46,7 @@ export const blockedHours = {
   infoTitle: 'كيف يعمل',
   infoLine1: 'أثناء ساعات الحظر، يتم حظر التطبيقات على جهاز الطفل.',
   infoLine2: 'يتم دعم الفترات التي تمتد طوال الليل، مثل 22:00 إلى 07:00.',
-  infoLine3: 'يجب أن يدعم الجهاز ميزة وقت الشاشة.',
+  infoLine3: 'يجب أن يدعم الجهاز ميزة وقت استخدام الشاشة.',
   off: 'إيقاف',
   blockedHoursChip: 'ساعات الحظر',
   blockedHoursOnChip: 'تم إعداد ساعات الحظر',
@@ -67,4 +67,5 @@ export const blockedHours = {
   daysSchoolNights: 'ليالي الدراسة',
   daysWeekend: 'عطلة الأسبوع',
   daysOvernightHint: 'الفترات الليلية تُحسب على الليلة التي تبدأ فيها.',
+  overlapWarning: 'يتداخل هذا مع فترة حظر أخرى — كلاهما لا يزال ساري المفعول.',
 } as const;

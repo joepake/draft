@@ -2,6 +2,7 @@ export const activities = {
   title: 'アクティビティ',
   subtitleAllDevices: 'すべてのデバイスの最新イベント',
   subtitleTimelineForDevice: '{{deviceName}} のタイムライン',
+  subtitleTimelineForChild: '{{childName}}のタイムライン',
   fallbackDeviceName: 'デバイス',
   liveBadge: 'ライブ',
   errorTitle: 'アクティビティを読み込めませんでした',
@@ -34,19 +35,34 @@ export const activities = {
   activityTypeAppInstalled: 'アプリをインストールしました',
   activityTypeAppRemoved: 'アプリをアンインストールしました',
   activityTypePlaceEnter: '場所に到着',
-  activityTypePlaceExit: '場所を離れました',
+  activityTypePlaceExit: '場所を出発',
   activityTypeTamper: '保護',
   activityTypeScreenTime: 'スクリーンタイム',
+  activityTypeWebFilter: 'Webフィルター',
   activityTypeEmergency: '緊急',
   activityTypeUnknown: 'アクティビティ',
 
+  sosEscapeTitle: '緊急ロック解除',
+  sosEscapeBody: 'SOSによりこのデバイスのロックが{{minutes}}分間解除されました。',
+  sosEscapeRepeatTitle: '緊急ロック解除（本日{{count}}回目）',
+  sosEscapeRepeatBody:
+    'SOSによりこのデバイスのロックが{{minutes}}分間解除されました。本日{{count}}回目です。',
   appBlockedTitle: '{{appName}}',
   appBlockedBody: 'ブロック中のアプリが開かれ、KidGateがそのアプリを終了しました。',
-  appInstalledTitle: '{{appName}}',
-  appInstalledBody: 'お子さまのデバイスに新しいアプリがインストールされました。',
+  appInstalledTitle: 'アプリをインストールしました',
+  appInstalledBody: 'お子さまのデバイスに{{appName}}がインストールされました。',
 
-  appRemovedTitle: '{{appName}}',
-  appRemovedBody: 'お子さまのデバイスからアプリがアンインストールされました。',
+  messageAlertTitle: '気がかりなメッセージ内容',
+  messageAlertBody: '{{appName}}で注意すべき語句が検出されました。',
+  messageAlertBodyOutgoing:
+    'お子さまが{{appName}}で書いたメッセージに注意すべき語句が検出されました。',
+  activityTypeMessageAlert: 'メッセージ警告',
+  messageCheckedTitle: '確認済み、心配なし',
+  messageCheckedBody:
+    '{{appName}} で監視対象の言葉が見つかりましたが、文脈では問題ありませんでした。',
+  activityTypeMessageChecked: '確認済み',
+  appRemovedTitle: 'アプリをアンインストールしました',
+  appRemovedBody: 'お子さまのデバイスから{{appName}}がアンインストールされました。',
 
   placeEnterTitle: '{{placeName}} に到着',
   placeEnterBody: 'お子さまのデバイスが登録済みの場所に到着しました。',
@@ -103,7 +119,7 @@ export const activities = {
 
   tamperDeviceClockTitle: '日付または時刻が変更されました',
   tamperDeviceClockBody:
-    'このデバイスの時刻が正しい時刻と一致していません。スクリーンタイムとブロック時間は引き続き正しい時刻に基づいて動作します。',
+    'このデバイスの時刻が正しい時刻と一致していません。スクリーンタイムと休止時間は引き続き正しい時刻に基づいて動作します。',
 
   /** @deprecated legacy description keys — kept for old activity docs */
   tamperOverlay: '「他のアプリの上に表示」が無効になりました。',
@@ -117,10 +133,13 @@ export const activities = {
   tamperBackgroundRefresh: 'バックグラウンド更新が無効になりました。',
 
   filterAllDevices: 'すべてのデバイス',
+  // The child tier of the feed filter — "All" would read as all devices.
+  filterAllChildren: '全員',
   dateToday: '今日',
   dateYesterday: '昨日',
 
   filterByDevice: '{{label}} で絞り込む',
+  filterByChild: '{{label}}のみ表示',
 
   openFullSosHistory: 'SOS履歴をすべて表示',
 

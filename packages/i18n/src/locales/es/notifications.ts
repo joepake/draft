@@ -21,7 +21,7 @@ export const notifications = {
   alert: {
     tamperAlerts: {
       label: 'Protección desactivada',
-      hint: 'Se desactivó en el dispositivo del menor un permiso que KidGate necesita.',
+      hint: 'Se desactivó en el dispositivo del niño un permiso que KidGate necesita.',
     },
     placeAlerts: {
       label: 'Llegadas y salidas',
@@ -31,9 +31,13 @@ export const notifications = {
       label: 'Peticiones de tiempo extra',
       hint: 'Tu hijo o hija pide más tiempo de pantalla.',
     },
+    siteRequests: {
+      label: 'Peticiones de sitios',
+      hint: 'Tu hijo o hija pide abrir un sitio bloqueado.',
+    },
     checkIn: {
-      label: 'Respuestas de confirmación',
-      hint: 'Tu hijo o hija responde a una confirmación de seguridad.',
+      label: 'Respuestas de Check-in',
+      hint: 'Tu hijo o hija responde a un Check-in.',
     },
     rewardTasks: {
       label: 'Recompensas reclamadas',
@@ -41,7 +45,11 @@ export const notifications = {
     },
     appActivity: {
       label: 'Apps instaladas o eliminadas',
-      hint: 'Aparece o desaparece una app en el dispositivo del menor.',
+      hint: 'Aparece o desaparece una app en el dispositivo del niño.',
+    },
+    anomalyAlerts: {
+      label: 'Actividad inusual',
+      hint: 'Uso fuera de lo habitual en un dispositivo infantil: uso nocturno, picos, apps nuevas.',
     },
     weeklyDigest: {
       label: 'Resumen semanal',

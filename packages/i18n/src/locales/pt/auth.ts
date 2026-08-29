@@ -1,11 +1,12 @@
 export const auth = {
   welcomeBack: 'Que bom ter você de volta',
-  loginSubtitle: 'Faça login para gerenciar e proteger os aparelhos dos seus filhos.',
+  loginSubtitle:
+    'Faça login para gerenciar e proteger os dispositivos dos seus filhos.',
   emailSignInTitle: 'Entrar com e-mail',
   emailSignInSubtitle: 'Use seu e-mail e senha de responsável.',
   createAccountTitle: 'Criar conta de responsável',
   createAccountSubtitle:
-    'Use um e-mail e uma senha para poder entrar em qualquer aparelho depois.',
+    'Use um e-mail e uma senha para poder entrar em qualquer dispositivo depois.',
   linkEmailTitle: 'Vincular e-mail e senha',
   linkEmailSubtitle:
     'Adicione um acesso reserva por e-mail a esta conta de responsável.',

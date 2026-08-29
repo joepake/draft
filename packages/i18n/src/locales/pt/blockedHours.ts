@@ -10,12 +10,12 @@ export const blockedHours = {
   statusDisabled: 'Desativado',
   statusActiveNow: 'Ativo agora',
   heroSubtitle:
-    'Configure até {{max}} faixas de horário em que este aparelho não pode ser usado.',
+    'Configure até {{max}} faixas de horário em que este dispositivo não pode ser usado.',
   statTimeRangesLabel: 'Faixas',
   statMaxAllowedLabel: 'Máximo',
   toggleTitle: 'Ativar Horários bloqueados',
-  toggleSubtitleOn: 'O aparelho fica bloqueado durante os horários abaixo.',
-  toggleSubtitleOff: 'Ative para bloquear o uso do aparelho por agenda.',
+  toggleSubtitleOn: 'O dispositivo fica bloqueado durante os horários abaixo.',
+  toggleSubtitleOff: 'Ative para bloquear o uso do dispositivo por agenda.',
   toggleAccessibilityLabel: 'Ativar Horários bloqueados',
   sectionTitle: 'Faixas bloqueadas',
   sectionSubtitleConfigured: '{{current}}/{{max}} configuradas',
@@ -42,13 +42,13 @@ export const blockedHours = {
   presetStudy: 'Estudo',
   disabledTitle: 'Os Horários bloqueados estão desativados',
   disabledSubtitle:
-    'Ative a chave acima para escolher quando este aparelho deve ficar indisponível.',
+    'Ative a chave acima para escolher quando este dispositivo deve ficar indisponível.',
   infoTitle: 'Como funciona',
   infoLine1:
-    'Durante os Horários bloqueados, os apps ficam bloqueados no aparelho da criança.',
+    'Durante os Horários bloqueados, os apps ficam bloqueados no dispositivo da criança.',
   infoLine2:
     'Faixas que atravessam a noite são aceitas, por exemplo das 22:00 às 07:00.',
-  infoLine3: 'O aparelho precisa ter suporte ao Tempo de Uso.',
+  infoLine3: 'O dispositivo precisa ter suporte ao Tempo de Uso.',
   off: 'Desativado',
   blockedHoursChip: 'Horários bloqueados',
   blockedHoursOnChip: 'Horários bloqueados definidos',
@@ -69,4 +69,6 @@ export const blockedHours = {
   daysSchoolNights: 'Noites de aula',
   daysWeekend: 'Fim de semana',
   daysOvernightHint: 'Os intervalos noturnos contam pela noite em que começam.',
+  overlapWarning:
+    'Isso se sobrepõe a outro horário bloqueado — os dois continuam válidos.',
 } as const;

@@ -2,17 +2,18 @@ export const screenTime = {
   turnOnScreenTime: 'Ativar o Tempo de Uso',
   finishScreenTimeSetup: 'Concluir a configuração do Tempo de Uso',
   screenTimeNeededForControls:
-    'Bloqueio de apps, Horários bloqueados e bloqueio exigem o Tempo de Uso neste aparelho.',
+    'Bloqueio de apps, Horários bloqueados e bloqueio exigem o Tempo de Uso neste dispositivo.',
   screenTimeNeededForLimits:
     'Sem o Tempo de Uso não é possível aplicar bloqueio, Horários bloqueados nem limites de apps.',
-  screenTimeStepOpenKidGate: 'Abra o KidGate neste aparelho da criança.',
+  screenTimeStepOpenKidGate: 'Abra o KidGate neste dispositivo da criança.',
   screenTimeStepAllowUsage: 'Na tela Status, selecione Permitir uso de apps e sites.',
   screenTimeStepTapAllow: 'Quando solicitado, selecione Permitir.',
   screenTimeStepReturnHereAuto: 'Volte aqui — o status é atualizado automaticamente.',
-  screenTimeDeniedStepOpenSettings: 'No aparelho da criança, abra Ajustes → KidGate.',
+  screenTimeDeniedStepOpenSettings:
+    'No dispositivo da criança, abra Ajustes → KidGate.',
   screenTimeDeniedStepTurnOnRestrictions: 'Ative Tempo de Uso.',
   screenTimeDeniedStepOpenKidGateAgain:
-    'Abra o KidGate novamente no aparelho da criança.',
+    'Abra o KidGate novamente no dispositivo da criança.',
   screenTimeDeniedStepReturnWhenReady:
     'Volte aqui — este cartão desaparecerá quando a configuração terminar.',
   screenTimeSetupStep1: 'Selecione Permitir uso de apps e sites abaixo.',
@@ -27,7 +28,7 @@ export const screenTime = {
   screenTimeBannerBodyDenied:
     'O {{appName}} precisa do Tempo de Uso ativado nos Ajustes.',
   screenTimeBannerBodyRequest:
-    'Isso permite que seus pais bloqueiem apps e definam Horários bloqueados neste aparelho.',
+    'Isso permite que seus pais bloqueiem apps e definam Horários bloqueados neste dispositivo.',
   usageAccessBannerTitle: 'Ativar o Acesso de uso',
   usageAccessBannerBody:
     'O KidGate precisa do Acesso de uso para acompanhar o tempo de tela e aplicar limites.',

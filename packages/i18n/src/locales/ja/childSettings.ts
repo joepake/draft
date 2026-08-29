@@ -17,4 +17,7 @@ export const childSettings = {
   uninstallProtectionHintOff: 'オフ。この端末からKidGateを削除できます。',
   uninstallProtectionTurnedOff: 'アンインストール防止はオフです。',
   uninstallProtectionFailed: 'アンインストール防止を変更できませんでした。',
+  messageSafetySectionTitle: 'メッセージの安全',
+  messageSafetySectionDescription:
+    '許可はここで行います。オンにするかどうかは、保護者が自分のスマホから決めます。',
 } as const;

@@ -205,14 +205,48 @@ export function reportWeek(periodKey: string): { year: number; week: number } | 
 }
 
 export interface ReportChildRow {
-  deviceId: string;
+  /**
+   * The row's identity, for keying a list. A `childId` when the report grouped
+   * by person, a `deviceId` when it fell back to hardware.
+   */
+  id: string;
+  /**
+   * Set only on a person row. Null when this row is a device, which is what a
+   * report written before children existed, or by a family that has assigned
+   * nothing, still produces.
+   */
+  childId: string | null;
+  /** Set only on a device row, for the same reason inverted. */
+  deviceId: string | null;
   name: string | null;
+  /**
+   * Devices added up. Two screens on at once is two minutes here — which is
+   * what this column always meant, and what `share` has to be a share of.
+   */
   screenMinutes: number;
+  /**
+   * Wall-clock minutes in front of any screen, on a person row that could be
+   * measured. Null on a device row, and null on a person whose devices cannot
+   * report a timeline — never render it as zero.
+   */
+  screenOnMinutes: number | null;
+  /** The same figure for the week before, which `deltaMinutes` is derived from. */
+  previousMinutes: number;
   /** Signed: positive is more screen time than the week before. */
   deltaMinutes: number;
   /** Share of the family's week, 0–100. Zero when the family measured nothing. */
   sharePercent: number;
+  /** The device's own limit. Always null on a person row — see `hasLimit`. */
   dailyLimitMinutes: number | null;
+  /**
+   * Whether anything this row covers was measured against a Daily Limit.
+   *
+   * The column needs it because zero limit days has two meanings: a child who
+   * stayed under every limit they had, and a child who never had one. A person
+   * holds several devices with several limits, so there is no single number to
+   * check for null the way a device row does.
+   */
+  hasLimit: boolean;
   limitDays: number;
   lateNights: number;
   topApp: { packageName: string; label: string; minutes: number } | null;
@@ -238,15 +272,72 @@ export interface ReportChildRow {
  * remainder and attributing it to whichever child sorts last.
  */
 export function reportChildren(report: FamilyReport): ReportChildRow[] {
-  const rows = report.children ?? [];
+  /*
+   * People first, hardware second, and never a mix of the two.
+   *
+   * A family that has assigned its devices gets one row per child, which is the
+   * comparison the table was always meant to be: a child with a phone, a laptop
+   * and a television took three rows of the device version and won all of them.
+   * Everyone else — a family mid-setup, and every report written before
+   * `Child` existed — falls back to the device rows that week actually stored.
+   *
+   * Falling back rather than merging matters: the two are different units. A
+   * table with two person rows and one stray device row would put a child's
+   * union beside a device's total under one heading and invite the reader to
+   * add them.
+   */
+  const people = report.people ?? [];
+  const rows: ReportChildRow[] =
+    people.length >= 2
+      ? people.map(person => ({
+          id: person.childId,
+          childId: person.childId,
+          deviceId: null,
+          name: person.name ?? null,
+          screenMinutes: Math.max(0, person.deviceMinutes || 0),
+          screenOnMinutes: person.screenOnMinutes,
+          previousMinutes: Math.max(0, person.previousDeviceMinutes || 0),
+          dailyLimitMinutes: null,
+          hasLimit: (person.limitedDevices || 0) > 0,
+          limitDays: Math.max(0, person.limitDays || 0),
+          lateNights: Math.max(0, person.lateNights || 0),
+          topApp: person.topApp
+            ? {
+                // A person's top app is merged across platforms that name it
+                // differently, so it has a list of package names rather than
+                // one. The first is enough to resolve an icon.
+                packageName: person.topApp.packageNames[0] ?? '',
+                label: person.topApp.label,
+                minutes: person.topApp.minutes,
+              }
+            : null,
+          sharePercent: 0,
+          deltaMinutes: 0,
+          isBusiest: false,
+        }))
+      : (report.children ?? []).map(child => ({
+          id: child.deviceId,
+          childId: null,
+          deviceId: child.deviceId,
+          name: child.name ?? null,
+          screenMinutes: Math.max(0, child.screenMinutes || 0),
+          screenOnMinutes: null,
+          previousMinutes: Math.max(0, child.previousScreenMinutes || 0),
+          dailyLimitMinutes: child.dailyLimitMinutes ?? null,
+          hasLimit: (child.dailyLimitMinutes ?? 0) > 0,
+          limitDays: Math.max(0, child.limitDays || 0),
+          lateNights: Math.max(0, child.lateNights || 0),
+          topApp: child.topApp ?? null,
+          sharePercent: 0,
+          deltaMinutes: 0,
+          isBusiest: false,
+        }));
+
   if (rows.length < 2) {
     return [];
   }
 
-  const familyMinutes = rows.reduce(
-    (total, row) => total + Math.max(0, row.screenMinutes || 0),
-    0,
-  );
+  const familyMinutes = rows.reduce((total, row) => total + row.screenMinutes, 0);
   const busiest = rows.reduce(
     (best, row) => (row.screenMinutes > (best?.screenMinutes ?? -1) ? row : best),
     rows[0],
@@ -254,23 +345,14 @@ export function reportChildren(report: FamilyReport): ReportChildRow[] {
 
   return rows
     .slice()
-    .sort((a, b) => (b.screenMinutes || 0) - (a.screenMinutes || 0))
-    .map(row => {
-      const minutes = Math.max(0, row.screenMinutes || 0);
-      return {
-        deviceId: row.deviceId,
-        name: row.name ?? null,
-        screenMinutes: minutes,
-        deltaMinutes: minutes - Math.max(0, row.previousScreenMinutes || 0),
-        sharePercent:
-          familyMinutes > 0 ? Math.round((minutes / familyMinutes) * 100) : 0,
-        dailyLimitMinutes: row.dailyLimitMinutes ?? null,
-        limitDays: Math.max(0, row.limitDays || 0),
-        lateNights: Math.max(0, row.lateNights || 0),
-        topApp: row.topApp ?? null,
-        // Ties go to whichever sorted first; the flag only weights a row
-        // visually, and two children on identical minutes have no busiest.
-        isBusiest: familyMinutes > 0 && row.deviceId === busiest?.deviceId,
-      };
-    });
+    .sort((a, b) => b.screenMinutes - a.screenMinutes)
+    .map(row => ({
+      ...row,
+      deltaMinutes: row.screenMinutes - row.previousMinutes,
+      sharePercent:
+        familyMinutes > 0 ? Math.round((row.screenMinutes / familyMinutes) * 100) : 0,
+      // Ties go to whichever sorted first; the flag only weights a row
+      // visually, and two children on identical minutes have no busiest.
+      isBusiest: familyMinutes > 0 && row.id === busiest?.id,
+    }));
 }

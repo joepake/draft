@@ -43,6 +43,16 @@ export const child = {
   setupWizardRequired: 'مطلوب',
   setupWizardOptional: 'اختياري',
   setupWizardSkip: 'لاحقًا',
+  setupGrantStuckHint:
+    'فعّلته ولكن لم يتغير شيء؟ أعد تشغيل التلفزيون ثم حاول مرة أخرى.',
   setupWizardAllDoneTitle: 'اكتمل الإعداد!',
   setupWizardAllDoneSubtitle: 'هذا الجهاز محمي الآن.',
+  setupWizardStepDone: 'تم — هذه مفعّلة الآن.',
+  setupWizardCoreDoneTitle: 'الحماية الأساسية مفعّلة',
+  setupWizardCoreDoneBody:
+    'تم منح الأذونات الأساسية وهذا الجهاز محمي الآن. بضع خطوات اختيارية تجعل إيقاف الحماية أصعب على النظام.',
+  setupWizardCoreDoneContinue: 'تعزيز الحماية الآن',
+  setupWizardCoreDoneLater: 'الإكمال لاحقًا',
+  setupWizardParentPinNote:
+    'مطلوب رمز PIN الوالدين — يُدخله أحد الوالدين في الشاشة التالية.',
 } as const;

@@ -5,7 +5,7 @@
  * không làm được. Phần lớn namespace này tồn tại để nói rõ một chiếc Mac
  * *không* làm được gì.
  *
- * Chữ hiển thị cho trẻ khi máy bị khoá không nằm ở đây — nó dùng lại `child.*`.
+ * Chữ hiển thị cho trẻ khi máy bị khóa không nằm ở đây — nó dùng lại `child.*`.
  */
 export const macos = {
   headingNow: 'Hiện tại',
@@ -20,12 +20,12 @@ export const macos = {
   enforcingYes: 'Có',
   enforcingFailed: 'Không — {{count}} lần kiểm tra liên tiếp bị lỗi',
 
-  lockState: 'Thiết bị đang khoá',
+  lockState: 'Thiết bị đang khóa',
   lockStateNo: 'Không',
-  lockStateNotChecked: 'Chưa kiểm tra',
-  lockStateParent: 'Có — phụ huynh đã khoá',
-  lockStateSchedule: 'Có — Giờ Chặn',
-  lockStateDailyLimit: 'Có — đã hết Giới Hạn Hằng Ngày',
+  stateNotChecked: 'Chưa kiểm tra',
+  lockStateParent: 'Có — phụ huynh đã khóa',
+  lockStateSchedule: 'Có — Giờ khóa thiết bị',
+  lockStateDailyLimit: 'Có — đã hết Giới hạn hằng ngày',
 
   appBlocking: 'Chặn ứng dụng',
   appBlockingBestEffort:
@@ -34,12 +34,38 @@ export const macos = {
   webFilterLabel: 'Lọc web',
   webFilterUnavailable: 'Không dùng được trên máy Mac này',
   notSupportedOnThisDevice: 'Thiết bị này không hỗ trợ',
+  filterAwaitingApproval: 'Đang chờ phê duyệt trong System Settings',
+  filterSwitchedOff: 'Đang tắt trong System Settings',
+  filterInterrupted: 'Đã dừng sau sự cố — KidGate sẽ bật lại',
+  setupFilterApprovalBody: 'Bật KidGate trong Network Extensions để bắt đầu lọc web.',
+  setupFilterSwitchBody:
+    'Filter Network Content đang tắt với KidGate. Bật lại để tiếp tục lọc.',
+  setupOpenSettings: 'Mở Cài đặt',
+  setupTitle: 'Hoàn tất thiết lập thiết bị này',
+  setupRowLabel: 'Quyền',
+  setupRowHint: 'Xem thiết bị này còn cần bạn cho phép những gì.',
+  setupStepBlockedNoPrompt:
+    'Đã bị từ chối, và thiết bị này không hỏi lại — hãy bật KidGate trong Cài đặt → Quyền riêng tư và bảo mật.',
+  setupSubtitle:
+    'Hệ thống hỏi quyền cho từng mục dưới đây, và chỉ người đang ngồi trước thiết bị này mới đồng ý được. Làm ngay bây giờ để sau này con bạn không bị hỏi.',
+  setupStepFilterApprovalTitle: 'Phê duyệt lọc web',
+  setupStepFilterSwitchTitle: 'Filter Network Content',
+  setupStepFilterSwitchWaiting:
+    'Chỉ xuất hiện trong System Settings sau khi bước ở trên được phê duyệt.',
+  setupStepLocationBody:
+    'Cho gia đình biết thiết bị này đang ở đâu. Không có gì được chia sẻ cho tới khi bạn bật “Chia sẻ vị trí”.',
+  setupStepCameraTitle: 'Camera',
+  setupStepCameraBody:
+    'Đính kèm ảnh khi con bạn gửi SOS hoặc trả lời Báo an toàn. Bây giờ chưa chụp ảnh nào.',
+  setupStepDone: 'Đã thiết lập — không còn việc gì ở đây.',
+  setupStepBlocked:
+    'Đã bị từ chối trước đó. macOS chỉ hỏi một lần — hãy bật KidGate trong Privacy & Security.',
 
-  scheduleLabel: 'Giờ Chặn',
-  dailyLimitLabel: 'Giới Hạn Hằng Ngày',
+  scheduleLabel: 'Giờ khóa thiết bị',
+  dailyLimitLabel: 'Giới hạn hằng ngày',
   enforcedHere: 'Đang bật, do KidGate áp dụng',
 
-  screenTimeLabel: 'Thời Gian Sử Dụng',
+  screenTimeLabel: 'Thời gian sử dụng',
   screenTimeAgentMeasured:
     'Do KidGate đếm. Khoảng thời gian KidGate không chạy sẽ không được tính.',
 

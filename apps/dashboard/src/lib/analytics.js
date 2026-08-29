@@ -169,6 +169,18 @@ export function trackTimeRequest(action, result) {
   track('parent_time_request', { action, result });
 }
 
+/**
+ * A parent answering "can I open this site?".
+ *
+ * Same event name on the phone (`AnalyticsService.trackParentSiteRequest`), so
+ * one GA report answers the question across both parent surfaces rather than
+ * two nobody adds up — the rule `apps/mobile`'s CLAUDE.md states for the
+ * device-state events.
+ */
+export function trackSiteRequest(action, result) {
+  track('parent_site_request', { action, result });
+}
+
 export function trackRewardClaim(action, result) {
   track('parent_reward_task', { action, result });
 }

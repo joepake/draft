@@ -31,6 +31,10 @@ export const notifications = {
       label: 'Extra time requests',
       hint: 'Your child asks for more screen time.',
     },
+    siteRequests: {
+      label: 'Site requests',
+      hint: 'Your child asks to open a blocked site.',
+    },
     checkIn: {
       label: 'Check-In answers',
       hint: 'Your child replies to a safety Check-In.',
@@ -42,6 +46,10 @@ export const notifications = {
     appActivity: {
       label: 'Apps installed or removed',
       hint: 'An app appears or disappears on a child device.',
+    },
+    anomalyAlerts: {
+      label: 'Unusual activity',
+      hint: 'Out-of-pattern use on a child device — late nights, spikes, new apps.',
     },
     weeklyDigest: {
       label: 'Weekly summary',

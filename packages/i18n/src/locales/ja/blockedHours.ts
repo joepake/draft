@@ -54,7 +54,7 @@ export const blockedHours = {
   blockedHoursStatusActiveNow: '現在有効',
   blockedHoursStatusOn: 'オン',
   blockedHoursStatusOff: 'オフ',
-  noDailyLimitBlockedHoursStatus: '1日の利用制限なし・休止時間 {{status}}',
+  noDailyLimitBlockedHoursStatus: '1日の上限なし・休止時間 {{status}}',
   blockedHoursStatusLine: '休止時間・{{status}}',
   dayShortMon: '月',
   dayShortTue: '火',
@@ -68,4 +68,5 @@ export const blockedHours = {
   daysSchoolNights: '学校の夜',
   daysWeekend: '週末',
   daysOvernightHint: '夜をまたぐ時間帯は、開始する夜の曜日で決まります。',
+  overlapWarning: 'この時間帯は別のブロック時間と重複しています。両方とも有効です。',
 } as const;

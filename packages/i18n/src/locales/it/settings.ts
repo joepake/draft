@@ -49,6 +49,12 @@ export const settings = {
   accountNotLinked: 'Non collegato',
   darkModeLabel: 'Modalità scura',
   darkModeHint: 'Più riposante per gli occhi di sera',
+  addWidgetTitle: 'Aggiungi il widget alla schermata Home',
+  addWidgetSubtitle: 'Il tempo di utilizzo di ogni figlio a colpo d’occhio',
+  addWidgetStepsIos:
+    '1. Tieni premuto uno spazio vuoto nella schermata Home\n2. Tocca il pulsante + in alto\n3. Cerca KidGate\n4. Scegli una dimensione e tocca Aggiungi widget',
+  addWidgetStepsAndroid:
+    '1. Tieni premuto uno spazio vuoto nella schermata Home\n2. Tocca Widget\n3. Trova KidGate e trascina il widget nella schermata Home',
   pushNotificationsTitle: 'Notifiche push',
   pushNotificationsSubtitle: 'Scegli quali avvisi arrivano a questo telefono',
   inAppAlertsLabel: 'Avvisi in-app',
@@ -69,6 +75,15 @@ export const settings = {
   reportMessagePlaceholder: 'Descrivi il bug o il problema…',
   reportMessageRequired: 'Inserisci una breve descrizione del problema.',
   reportMessageTooLong: 'La segnalazione deve contenere meno di 2000 caratteri.',
+  reportAttachmentsLabel: 'Screenshot (facoltativo)',
+  reportAttachmentsHint: '{{count}} di {{max}} · fino a {{limit}} ciascuno',
+  reportAddAttachment: 'Aggiungi immagine',
+  reportRemoveAttachment: 'Rimuovi immagine',
+  reportAttachmentsTooMany: 'Puoi allegare fino a {{max}} immagini.',
+  reportAttachmentTooLarge:
+    'Dopo il ridimensionamento occupa ancora {{size}}, quindi non è stata allegata. Il limite è {{limit}} per immagine.',
+  reportAttachmentUnreadable:
+    'Impossibile leggere questo file. Scegli un’altra immagine.',
   reportSendButton: 'Invia segnalazione',
   reportSending: 'Invio…',
   toastReportSent: 'Grazie — la tua segnalazione è stata inviata.',
@@ -114,6 +129,7 @@ export const settings = {
   languageHindi: 'Hindi',
   languageRussian: 'Russo',
   sectionAboutTitle: 'Informazioni',
+  sectionKidGateTitle: 'KidGate',
   aboutUsTitle: 'Chi siamo',
   aboutUsSubtitle: 'Chi realizza KidGate e cosa non farà mai',
   sectionLegalTitle: 'Legale',

@@ -13,10 +13,13 @@ export const childSettings = {
   uninstallProtectionSectionDescription:
     'Impedisce a questo telefono di rimuovere KidGate. Android chiede il permesso una volta.',
   uninstallProtectionLabel: 'Impedisci la disinstallazione',
-  uninstallProtectionHintOn: 'Attiva. Disattivarla avvisa il tuo genitore.',
+  uninstallProtectionHintOn: 'Attiva. Disattivarla avvisa i tuoi genitori.',
   uninstallProtectionHintOff:
     'Disattivata. KidGate può essere disinstallato da questo telefono.',
   uninstallProtectionTurnedOff: 'La protezione dalla disinstallazione è disattivata.',
   uninstallProtectionFailed:
     'Impossibile modificare la protezione dalla disinstallazione.',
+  messageSafetySectionTitle: 'Sicurezza dei messaggi',
+  messageSafetySectionDescription:
+    'Concedi qui l’autorizzazione. Se sia attiva o no lo decide un tuo genitore, dal proprio telefono.',
 } as const;

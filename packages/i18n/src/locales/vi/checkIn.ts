@@ -34,6 +34,8 @@ export const checkIn = {
   requestCheckIn: 'Gửi yêu cầu Báo an toàn',
   requestCheckInNote: 'Yêu cầu thiết bị của trẻ gửi vị trí và một ảnh từ camera trước.',
   needHelpOpenSosAccessibility: 'Con cần trợ giúp — mở SOS',
+  showAllDevices: 'Xem tất cả {{count}} thiết bị',
+  showFewerDevices: 'Thu gọn danh sách thiết bị',
   parentSafePopupTitle: 'Con bạn vẫn an toàn',
   childSafePopupTitle: 'Đã báo cho bố mẹ',
   childSafePopupBody: 'Bố mẹ đã nhận được tin — con vẫn an toàn.',

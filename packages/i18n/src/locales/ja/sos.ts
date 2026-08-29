@@ -23,6 +23,9 @@ export const sos = {
   alertMessage: '{{childName}}が助けを必要としています — SOSが送信されました',
   toastSent:
     'SOSを送信しました。できれば安全な場所にとどまってください。保護者に通知されました。',
+  escapeGrantedTitle: 'SOSを送信しました',
+  escapeGrantedBody:
+    '保護者に通知されました。このデバイスは15分間ロックが解除され、その後もう一度ロックされます。',
   toastSentWithoutPhoto:
     'SOSを送信しましたが、写真は添付されませんでした。可能であれば設定でカメラへのアクセスを許可し、もう一度お試しください。',
   toastSendFailed:

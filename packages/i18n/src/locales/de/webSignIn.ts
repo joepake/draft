@@ -1,7 +1,5 @@
 export const webSignIn = {
-  // Settings section header; the row under it is `title` + `subtitle`.
-  sectionTitle: 'KidGate im Web',
-  title: 'Browser zulassen',
+  title: 'Im Web anmelden',
   subtitle: 'Familie am Computer verwalten',
 
   // The screen. The steps name the site and the button to press on the

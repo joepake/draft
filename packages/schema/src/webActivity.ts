@@ -13,44 +13,103 @@
  */
 export type WebFilterCategory =
   | 'adult'
+  | 'selfHarm'
   | 'gambling'
+  | 'gameGambling'
   | 'dating'
+  | 'strangerChat'
   | 'drugs'
   | 'violence'
+  | 'extremism'
   | 'piracy'
   | 'social'
   | 'videoStreaming'
+  | 'music'
   | 'gaming'
-  | 'shopping';
+  | 'shopping'
+  | 'aiCompanion'
+  | 'aiAssistant'
+  | 'cryptoTrading'
+  | 'vpn';
 
+/**
+ * Canonical order. `webCategoryFor` returns the FIRST entry that claims a
+ * domain, so this list decides ties — `music` sits after `videoStreaming`
+ * because a service that streams both is a video service to a parent looking
+ * for where the evening went.
+ */
 export const WEB_FILTER_CATEGORIES: WebFilterCategory[] = [
   'adult',
+  /*
+   * Each of the four added in August 2026 sits immediately beside the category
+   * it was split out of, so no pair that already existed changed precedence
+   * relative to each other. The four are split from their neighbours because
+   * a parent answers them differently, not because the domains overlap:
+   * `gambling` was casinos and loot boxes in one switch, and a family that
+   * wants neither casino nor skin betting is not the same family that plays
+   * Roblox and wants only the betting sites gone.
+   */
+  'selfHarm',
   'gambling',
+  'gameGambling',
   'dating',
+  'strangerChat',
   'drugs',
   'violence',
+  'extremism',
   'piracy',
   'social',
   'videoStreaming',
+  'music',
   'gaming',
   'shopping',
+  'aiCompanion',
+  'aiAssistant',
+  'cryptoTrading',
+  'vpn',
 ];
 
 /**
  * On for a family that has never opened the category screen.
  *
  * The line is "would a parent be upset to find this unblocked" — the first
- * six are why people buy a filter. Social, video, games and shopping are
- * ordinary parts of a teenager's day; blocking them by default would make the
- * first hour after setup look broken.
+ * six are why people buy a filter. Social, video, music, games and shopping
+ * are ordinary parts of a teenager's day; blocking them by default would make
+ * the first hour after setup look broken.
+ *
+ * `aiCompanion` joins the six for the reason `dating` is there: both are
+ * strangers talking to a child in private, and the roleplay services are built
+ * to be talked to for hours. `aiAssistant` does not — homework help is a
+ * parenting argument, not a safety one.
+ *
+ * `vpn` joins them because it is the category that decides whether the others
+ * hold. It is still a toggle rather than plumbing: a commercial VPN's website
+ * is a download page, and blocking it does nothing about an app already
+ * installed. The lookups that genuinely route around this filter — web
+ * proxies, Tor, anti-censorship tunnels — are in `DNS_BYPASS_DOMAINS`, refused
+ * whenever the filter runs at all.
+ *
+ * All four of the 2026 additions default **on**, and each inherits the answer
+ * from the category it was split out of rather than being argued afresh:
+ * `selfHarm` and `extremism` from `violence`, `gameGambling` from `gambling`,
+ * `strangerChat` from `dating`. A family that had the old switch on had these
+ * sites blocked as far as the old tables reached; defaulting any of them off
+ * would be a silent loosening on upgrade, which is the one direction a
+ * parental control must never move by itself.
  */
 export const DEFAULT_WEB_FILTER_CATEGORIES: WebFilterCategory[] = [
   'adult',
+  'selfHarm',
   'gambling',
+  'gameGambling',
   'dating',
+  'strangerChat',
   'drugs',
   'violence',
+  'extremism',
   'piracy',
+  'aiCompanion',
+  'vpn',
 ];
 
 /**
@@ -76,8 +135,26 @@ export interface WebHistoryEntry {
   visits: number;
   /** Lookups the filter refused. Zero on a domain that was only ever allowed. */
   blockedVisits: number;
-  /** Why it was blocked, when it was. Null for allowed traffic. */
+  /** What the device's own tables said. Null when they had never heard of it. */
   category: WebFilterCategory | null;
+  /**
+   * What the nightly classifier said, for a row the tables could not name.
+   *
+   * Written server-side by `functions/scheduled/classifyWebDomains` and by
+   * nothing else — `firestore.rules` refuses every client write to this
+   * collection, so a device cannot author its own label here any more than it
+   * can author the visit.
+   *
+   * **Only ever set when `category` is null**, and only from a high-confidence
+   * answer. It is the long tail, not a second opinion: a domain the tables
+   * claimed is already named by something exact, and a guess printed over that
+   * would be a downgrade wearing the same font.
+   *
+   * Read it through `webHistoryCategory` in
+   * `@kidgate/core/domain/webHistoryLabel` rather than here, so two parent
+   * surfaces cannot disagree about which one wins.
+   */
+  aiCategory?: WebFilterCategory | null;
   /** Most recent lookup, ISO string. */
   lastAt: string;
 }

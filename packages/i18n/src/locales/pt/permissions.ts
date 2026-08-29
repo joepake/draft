@@ -2,12 +2,12 @@ export const permissions = {
   cameraPermissionRequired: 'O acesso à câmera é necessário para este recurso.',
   allowCameraTitle: 'Permitir câmera',
   cameraPermissionMessage:
-    'O KidGate usa a câmera para você enviar uma foto rápida com o SOS e os Check-Ins.',
+    'O KidGate usa a câmera para você enviar uma foto rápida com o SOS e os Check-ins.',
   allow: 'Permitir',
   notNow: 'Agora não',
   cameraTurnedOffTitle: 'A câmera está desativada para o KidGate',
   cameraTurnedOffMessage:
-    'Abra os Ajustes e permita a Câmera para que seus Check-Ins e alertas de SOS possam incluir uma foto.',
+    'Abra os Ajustes e permita a Câmera para que seus Check-ins e alertas de SOS possam incluir uma foto.',
   openSettings: 'Abrir Ajustes',
   notificationsLabel: 'Notificações',
   notificationsAllowed: 'As notificações estão ativadas para o KidGate.',
@@ -34,7 +34,7 @@ export const permissions = {
     'Dispositivos {{brand}} costumam pausar apps em segundo plano. Complete estas etapas para que o bloqueio e os Horários bloqueados continuem funcionando.',
   oemAutostartLabel: 'Permitir inicialização automática',
   oemAutostartHintXiaomi:
-    'Em Inicialização automática, ative o KidGate para que a proteção seja reiniciada após reiniciar o aparelho.',
+    'Em Inicialização automática, ative o KidGate para que a proteção seja reiniciada após reiniciar o dispositivo.',
   oemAutostartHintSamsung:
     'Em Cuidados do dispositivo / Bateria, permita que o KidGate continue ativo em segundo plano.',
   oemAutostartHintOppo:
@@ -46,6 +46,8 @@ export const permissions = {
   oemAutostartHintOther:
     'Permita que o KidGate inicie automaticamente nos ajustes de segurança ou bateria do seu dispositivo.',
   markDone: 'Concluído',
+  uninstallProtectionWizardBody:
+    'Impede que este app seja desinstalado sem o PIN dos pais. O Android mostra a própria tela de confirmação.',
   notificationsWizardBody:
-    'Permita notificações para que este aparelho receba aprovações de tempo e lembretes na hora.',
+    'Permita notificações para que este dispositivo receba aprovações de tempo e lembretes na hora.',
 } as const;

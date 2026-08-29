@@ -2,6 +2,7 @@ export const activities = {
   title: 'Atividades',
   subtitleAllDevices: 'Eventos mais recentes de todos os dispositivos',
   subtitleTimelineForDevice: 'Linha do tempo de {{deviceName}}',
+  subtitleTimelineForChild: 'Linha do tempo de {{childName}}',
   fallbackDeviceName: 'dispositivo',
   liveBadge: 'Ao vivo',
   errorTitle: 'Não foi possível carregar as atividades',
@@ -38,16 +39,31 @@ export const activities = {
   activityTypePlaceExit: 'Saiu de um local',
   activityTypeTamper: 'Proteção',
   activityTypeScreenTime: 'Tempo de Uso',
+  activityTypeWebFilter: 'Filtro da web',
   activityTypeEmergency: 'Emergência',
   activityTypeUnknown: 'Atividade',
 
+  sosEscapeTitle: 'Desbloqueio de emergência',
+  sosEscapeBody: 'O SOS desbloqueou este dispositivo por {{minutes}} minutos.',
+  sosEscapeRepeatTitle: 'Desbloqueio de emergência ({{count}} vezes hoje)',
+  sosEscapeRepeatBody:
+    'O SOS desbloqueou este dispositivo por {{minutes}} minutos. Já são {{count}} vezes hoje.',
   appBlockedTitle: '{{appName}}',
   appBlockedBody: 'Um app bloqueado foi aberto e o KidGate o fechou.',
-  appInstalledTitle: '{{appName}}',
-  appInstalledBody: 'Um novo aplicativo foi instalado no dispositivo da criança.',
+  appInstalledTitle: 'Aplicativo instalado',
+  appInstalledBody: 'O aplicativo {{appName}} foi instalado no dispositivo da criança.',
 
-  appRemovedTitle: '{{appName}}',
-  appRemovedBody: 'Um aplicativo foi removido do dispositivo da criança.',
+  messageAlertTitle: 'Conteúdo de mensagem preocupante',
+  messageAlertBody: 'Uma palavra sinalizada foi vista em {{appName}}.',
+  messageAlertBodyOutgoing:
+    'Uma palavra sinalizada foi vista em uma mensagem que seu filho escreveu em {{appName}}.',
+  activityTypeMessageAlert: 'Alerta de mensagem',
+  messageCheckedTitle: 'Verificado, nada preocupante',
+  messageCheckedBody:
+    'Uma palavra monitorada apareceu em {{appName}} e se mostrou inofensiva no contexto.',
+  activityTypeMessageChecked: 'Verificado',
+  appRemovedTitle: 'Aplicativo removido',
+  appRemovedBody: 'O aplicativo {{appName}} foi removido do dispositivo da criança.',
 
   placeEnterTitle: 'Entrou em {{placeName}}',
   placeEnterBody: 'O dispositivo da criança entrou em um local salvo.',
@@ -97,7 +113,7 @@ export const activities = {
 
   tamperCameraTitle: 'A câmera foi desativada',
   tamperCameraBody:
-    'As fotos de SOS e Check-In podem não ser enviadas até que a câmera seja permitida novamente.',
+    'As fotos de SOS e Check-in podem não ser enviadas até que a câmera seja permitida novamente.',
 
   tamperBackgroundRefreshTitle: 'A Atualização em Segundo Plano foi desativada',
   tamperBackgroundRefreshBody:
@@ -105,7 +121,7 @@ export const activities = {
 
   tamperDeviceClockTitle: 'A data ou a hora foi alterada',
   tamperDeviceClockBody:
-    'O relógio deste dispositivo não corresponde mais ao horário correto. O Tempo de Uso e os Horários Bloqueados continuarão seguindo o horário correto.',
+    'O relógio deste dispositivo não corresponde mais ao horário correto. O Tempo de Uso e os Horários bloqueados continuarão seguindo o horário correto.',
 
   /** @deprecated legacy description keys — kept for old activity docs */
   tamperOverlay: 'A permissão Exibir sobre outros aplicativos foi desativada.',
@@ -119,10 +135,13 @@ export const activities = {
   tamperBackgroundRefresh: 'A Atualização em Segundo Plano foi desativada.',
 
   filterAllDevices: 'Todos os dispositivos',
+  // The child tier of the feed filter — "All" would read as all devices.
+  filterAllChildren: 'Todos',
   dateToday: 'Hoje',
   dateYesterday: 'Ontem',
 
   filterByDevice: 'Filtrar por {{label}}',
+  filterByChild: 'Mostrar apenas {{label}}',
 
   openFullSosHistory: 'Abrir histórico completo de SOS',
 

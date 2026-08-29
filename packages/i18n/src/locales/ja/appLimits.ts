@@ -1,5 +1,5 @@
 export const appLimits = {
-  title: 'App使用時間の制限',
+  title: 'アプリの利用時間制限',
   intro: 'アプリごとに1日の上限を決めます。端末全体の1日の上限に加えて適用されます。',
   emptyTitle: '上限はまだありません',
   emptySubtitle: '下からアプリを選んで、そのアプリ専用の上限を設定します。',

@@ -23,6 +23,9 @@ export const sos = {
   alertMessage: '{{childName}} braucht Hilfe — SOS wurde gesendet',
   toastSent:
     'SOS gesendet. Bleib nach Möglichkeit an einem sicheren Ort — deine Eltern wurden benachrichtigt.',
+  escapeGrantedTitle: 'SOS gesendet',
+  escapeGrantedBody:
+    'Deine Eltern wurden benachrichtigt. Dieses Gerät ist 15 Minuten lang entsperrt, danach wird es wieder gesperrt.',
   toastSentWithoutPhoto:
     'SOS gesendet, aber ohne Foto. Bitte erlaube den Kamerazugriff in den Einstellungen und versuche es nach Möglichkeit erneut.',
   toastSendFailed:

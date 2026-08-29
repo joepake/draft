@@ -34,8 +34,10 @@ export const checkIn = {
   requestCheckIn: '체크인 요청',
   requestCheckInNote: '자녀 기기에 위치와 전면 카메라 사진을 요청합니다.',
   needHelpOpenSosAccessibility: '도움이 필요해요 — SOS 열기',
+  showAllDevices: '기기 {{count}}개 모두 보기',
+  showFewerDevices: '기기 접기',
   parentSafePopupTitle: '자녀가 안전합니다',
   childSafePopupTitle: '부모님께 알렸어요',
-  childSafePopupBody: '부모님이 메시지를 받았어요 — 당신은 안전합니다.',
+  childSafePopupBody: '부모님이 메시지를 받았어요 — 이제 안심해도 돼요.',
   confirmedKicker: '체크인',
 } as const;

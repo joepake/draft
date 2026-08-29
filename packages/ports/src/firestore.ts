@@ -50,6 +50,18 @@ export type WhereOp =
  * exposes it as `FieldPath.documentId()`. Spelling it as a string keeps this
  * package free of runtime code — an adapter recognises the literal and
  * substitutes its SDK's sentinel.
+ *
+ * **Do not order by it descending.** Firestore's automatic single-field index
+ * on `__name__` is ascending only, so `orderBy('__name__', 'desc')` fails with
+ * `failed-precondition` — a missing-index error, at runtime, on real data, in
+ * a query that looks like it needs no index at all. Two repositories shipped
+ * it and both degraded to an empty collection: the weekly report history read
+ * as "no reports yet" for a family whose reports were sitting in Firestore.
+ *
+ * Order on a real field instead. Every document that is keyed by a date or a
+ * week already carries that key as a field (`date`, `periodKey`), single-field
+ * indexes cover both directions automatically, and no index has to be declared
+ * or deployed.
  */
 export type QueryField = string;
 

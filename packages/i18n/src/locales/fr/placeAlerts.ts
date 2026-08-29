@@ -1,5 +1,8 @@
 export const placeAlerts = {
   title: 'Alertes de lieux',
+  familyScope: 'Une seule liste pour toute la famille',
+  mergedFromDevices:
+    'Fusionnée à partir des lieux existants de chaque appareil. Enregistrer applique cette liste unique à tous les appareils.',
   fallbackDeviceName: 'Appareil de l’enfant',
   statusReady: 'Position prête',
   statusNeedLocation: 'En attente de la position de l’appareil de l’enfant',
@@ -21,7 +24,11 @@ export const placeAlerts = {
   radiusLabel: 'Rayon d’alerte',
   radiusValue: '{{meters}} m',
   radiusHint:
-    'À quelle distance l’appareil doit se trouver pour que ce lieu compte. Un rayon plus petit est plus précis, mais plus facile à manquer.',
+    'À quelle distance l’appareil doit se trouver pour que ce lieu compte. Un rayon plus petit que l’erreur de position de l’appareil déclenche au hasard, pas plus précisément.',
+  radiusAccuracyHint:
+    'Ici, cet appareil indique sa position à environ ±{{accuracy}} m près.',
+  radiusBelowAccuracy:
+    'Ici, cet appareil n’est précis qu’à environ ±{{accuracy}} m. Utilisez {{minimum}} m ou plus, sinon ce lieu déclenchera au hasard.',
   radiusDecrease: 'Rayon plus petit',
   radiusIncrease: 'Rayon plus grand',
   notifyEnterLabel: 'Alerter à l’arrivée',
@@ -46,7 +53,10 @@ export const placeAlerts = {
   maxPlacesToast: 'Vous pouvez enregistrer jusqu’à {{max}} lieux.',
   nameRequiredToast: 'Veuillez saisir un nom de lieu.',
   duplicateNameToast: 'Un lieu portant ce nom existe déjà.',
-  duplicateLocationToast: 'Un lieu couvre déjà cet emplacement.',
+  samePinToast:
+    'C’est le même endroit que « {{name}} ». Faites glisser la carte pour déplacer le repère.',
+  overlapWarning:
+    '« {{name}} » est à {{meters}} m et son cercle atteint ce point. Tant que l’appareil est dans les deux, seul le plus proche alerte. Enregistrez à nouveau pour le conserver.',
   copyTitle: 'Ajouter aux autres enfants ?',
   copyMessage:
     'Copier « {{name}} » vers les {{count}} autres appareils enfants de cette famille ?',

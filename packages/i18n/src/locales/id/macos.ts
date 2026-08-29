@@ -19,7 +19,7 @@ export const macos = {
 
   lockState: 'Perangkat terkunci',
   lockStateNo: 'Tidak',
-  lockStateNotChecked: 'Belum diperiksa',
+  stateNotChecked: 'Belum diperiksa',
   lockStateParent: 'Ya — dikunci orang tua',
   lockStateSchedule: 'Ya — Jam Diblokir',
   lockStateDailyLimit: 'Ya — Batas Harian tercapai',
@@ -31,6 +31,33 @@ export const macos = {
   webFilterLabel: 'Filter web',
   webFilterUnavailable: 'Tidak tersedia di Mac ini',
   notSupportedOnThisDevice: 'Tidak didukung di perangkat ini',
+  filterAwaitingApproval: 'Menunggu persetujuan di System Settings',
+  filterSwitchedOff: 'Dimatikan di System Settings',
+  filterInterrupted: 'Berhenti setelah ada masalah — KidGate akan memulihkannya',
+  setupFilterApprovalBody:
+    'Aktifkan KidGate di Network Extensions agar pemfilteran web bisa mulai.',
+  setupFilterSwitchBody:
+    'Filter Network Content mati untuk KidGate. Nyalakan lagi agar pemfilteran berlanjut.',
+  setupOpenSettings: 'Buka Pengaturan',
+  setupTitle: 'Selesaikan penyiapan perangkat ini',
+  setupRowLabel: 'Izin',
+  setupRowHint: 'Periksa apa lagi yang perlu Anda izinkan di perangkat ini.',
+  setupStepBlockedNoPrompt:
+    'Ditolak, dan perangkat ini tidak bertanya lagi — nyalakan KidGate di Setelan → Privasi & keamanan.',
+  setupSubtitle:
+    'Sistem meminta izin untuk setiap hal berikut, dan hanya orang yang sedang memakai perangkat ini yang bisa menyetujuinya. Menyelesaikannya sekarang berarti anak Anda tidak ditanyai nanti.',
+  setupStepFilterApprovalTitle: 'Setujui pemfilteran web',
+  setupStepFilterSwitchTitle: 'Filter Network Content',
+  setupStepFilterSwitchWaiting:
+    'Muncul di System Settings setelah langkah di atas disetujui.',
+  setupStepLocationBody:
+    'Membuat keluarga Anda bisa melihat lokasi perangkat ini. Tidak ada yang dibagikan sampai Anda menyalakan “Bagikan lokasi”.',
+  setupStepCameraTitle: 'Kamera',
+  setupStepCameraBody:
+    'Melampirkan foto saat anak Anda mengirim SOS atau menjawab Check-In. Sekarang tidak ada foto yang diambil.',
+  setupStepDone: 'Sudah disiapkan — tidak ada lagi yang perlu dilakukan di sini.',
+  setupStepBlocked:
+    'Sebelumnya ditolak. macOS hanya bertanya sekali — nyalakan KidGate di Privacy & Security.',
 
   scheduleLabel: 'Jam Diblokir',
   dailyLimitLabel: 'Batas Harian',

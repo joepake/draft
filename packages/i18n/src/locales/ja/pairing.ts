@@ -3,7 +3,7 @@ export const pairing = {
   shareInviteMessage:
     'KidGateで家族に参加してください。アプリを開き、家族 → 家族に参加 を選んでコード {{code}} を入力してください。コードは15分で無効になります。',
   shareChildCodeMessage:
-    'KidGateでこの子どものデバイスを接続: 保護者のデバイスでKidGateを開き → デバイス → + → 子どものデバイスを選び、QRコードをスキャンするかコード {{code}} を入力してください。コードは5分で期限切れになります。',
+    'KidGateでこの子どものデバイスを接続: 保護者のデバイスでKidGateを開き → ファミリー → コードをスキャン を選び、QRコードをスキャンするかコード {{code}} を入力してください。コードは5分で期限切れになります。',
   connectChildPhone: '子どものデバイスを接続',
   parentInstructions:
     '子どものデバイスでKidGateを開き、「これは子どものデバイスです」を選択してください。その後、画面に表示されるコードを入力してください。',
@@ -13,13 +13,22 @@ export const pairing = {
     'この画面を開いたままにしてください。保護者がKidGateアプリからこのデバイスを接続します。',
   childCodeLabel: 'またはこのコードを共有',
   childScanHint:
-    '保護者の方へ: KidGateを開く → デバイス → + → 子どものデバイス → QRコードをスキャンするか、コードを入力してください。',
+    '保護者の方へ: KidGateを開く → ファミリー → {{scan}} → QRコードをスキャンするか、コードを入力してください。',
   childConnecting: '接続しました。このデバイスを設定中…',
   childPairedTitle: '接続されました',
   childPairedSubtitle: 'このデバイスを設定中…',
   connectChild: '子どものデバイスを接続',
   waitingChildConfirm:
     'リクエストを送信しました。子どものデバイスでの確認をお待ちください。',
+  waitingChildConfirmHint:
+    '子どものデバイスで「はい、接続する」をタップすると完了します。この画面は閉じてもかまいません — ペアリングはバックグラウンドで続行されます。',
+  childConfirmedTitle: 'デバイスを接続しました',
+  childConfirmedBody:
+    '子どものデバイスがペアリングを確認しました。次に、誰が使うかを選んでください。',
+  childRejectedPairing:
+    '子どものデバイスがこのペアリングを拒否しました。そのデバイスで新しいコードを取得して、もう一度お試しください。',
+  childConfirmExpired:
+    '子どものデバイスが時間内に確認しませんでした。新しいコードを取得して、もう一度お試しください。',
   confirmParentTitle: 'この保護者を確認しますか？',
   confirmParentSubtitle:
     '{{parentLabel}}がこのデバイスを管理しようとしています。この人物を知っている場合のみ承認してください。',

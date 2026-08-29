@@ -29,15 +29,15 @@ export const rewardTask = {
   screenTitle: 'Tâches à récompense',
   fallbackDeviceName: 'Appareil de l’enfant',
   heroUnit: 'min à gagner',
-  heroCaption: '{{count}} tâches ouvertes à terminer',
-  heroCaption_one: '1 tâche ouverte à terminer',
+  heroCaption: '{{count}} tâches à faire',
+  heroCaption_one: '1 tâche à faire',
   heroCaptionEmpty:
     'Créez une tâche pour que votre enfant gagne du temps d’écran en plus.',
   noLimitHintTitle: 'Aucune limite quotidienne',
   noLimitHintBody:
     'Les minutes bonus ne s’appliquent que si l’appareil a une limite quotidienne. Définissez-la d’abord dans Limite quotidienne.',
   noLimitHintCta: 'Définir la limite quotidienne',
-  openSectionTitle: 'Tâches ouvertes',
+  openSectionTitle: 'Tâches à faire',
   tabOpen: 'À faire',
   tabDone: 'Terminées',
   doneEmptyBody: 'Les tâches approuvées apparaîtront ici.',

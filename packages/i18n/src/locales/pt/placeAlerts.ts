@@ -1,5 +1,8 @@
 export const placeAlerts = {
   title: 'Alertas de locais',
+  familyScope: 'Uma lista para toda a família',
+  mergedFromDevices:
+    'Combinada dos lugares existentes de cada dispositivo. Ao salvar, esta única lista vale para todos os dispositivos.',
   fallbackDeviceName: 'Dispositivo da criança',
   statusReady: 'Localização pronta',
   statusNeedLocation: 'Aguardando a localização do dispositivo da criança',
@@ -21,7 +24,11 @@ export const placeAlerts = {
   radiusLabel: 'Raio do alerta',
   radiusValue: '{{meters}} m',
   radiusHint:
-    'A que distância o dispositivo precisa estar para este local contar. Um raio menor é mais preciso, mas mais fácil de ser perdido.',
+    'A que distância o dispositivo precisa estar para este local contar. Um raio menor que o próprio erro de posição do dispositivo avisa ao acaso, e não com mais precisão.',
+  radiusAccuracyHint:
+    'Aqui este dispositivo informa a posição com cerca de ±{{accuracy}} m.',
+  radiusBelowAccuracy:
+    'Aqui o dispositivo só tem precisão de cerca de ±{{accuracy}} m. Use {{minimum}} m ou mais, ou este local vai avisar ao acaso.',
   radiusDecrease: 'Raio menor',
   radiusIncrease: 'Raio maior',
   notifyEnterLabel: 'Alertar ao chegar',
@@ -44,7 +51,9 @@ export const placeAlerts = {
   maxPlacesToast: 'Você pode salvar até {{max}} locais.',
   nameRequiredToast: 'Digite um nome para o local.',
   duplicateNameToast: 'Já existe um local com esse nome.',
-  duplicateLocationToast: 'Um local já cobre essa localização.',
+  samePinToast: 'É o mesmo ponto de “{{name}}”. Arraste o mapa para mover o marcador.',
+  overlapWarning:
+    '“{{name}}” está a {{meters}} m e o círculo dele chega até aqui. Enquanto o dispositivo estiver nos dois, só o mais próximo avisa. Salve de novo para manter.',
   copyTitle: 'Adicionar às outras crianças?',
   copyMessage:
     'Copiar “{{name}}” para os outros {{count}} dispositivos de crianças nesta família?',

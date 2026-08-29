@@ -2,6 +2,7 @@ export const activities = {
   title: 'Aktivitas',
   subtitleAllDevices: 'Peristiwa terbaru dari semua perangkat',
   subtitleTimelineForDevice: 'Linimasa {{deviceName}}',
+  subtitleTimelineForChild: 'Linimasa {{childName}}',
   fallbackDeviceName: 'perangkat',
   liveBadge: 'Langsung',
   errorTitle: 'Tidak dapat memuat aktivitas',
@@ -29,7 +30,7 @@ export const activities = {
     'Contoh — peristiwa asli muncul setelah Anda menghubungkan perangkat',
 
   activityTypeLocked: 'Terkunci',
-  activityTypeUnlocked: 'Tidak terkunci',
+  activityTypeUnlocked: 'Kunci dibuka',
   activityTypeAppOpened: 'Aplikasi dibuka',
   activityTypeAppBlocked: 'Aplikasi diblokir',
   activityTypeAppInstalled: 'Aplikasi dipasang',
@@ -38,16 +39,31 @@ export const activities = {
   activityTypePlaceExit: 'Keluar tempat',
   activityTypeTamper: 'Perlindungan',
   activityTypeScreenTime: 'Waktu Layar',
+  activityTypeWebFilter: 'Filter web',
   activityTypeEmergency: 'Darurat',
   activityTypeUnknown: 'Aktivitas',
 
+  sosEscapeTitle: 'Buka kunci darurat',
+  sosEscapeBody: 'SOS membuka kunci perangkat ini selama {{minutes}} menit.',
+  sosEscapeRepeatTitle: 'Buka kunci darurat ({{count}} kali hari ini)',
+  sosEscapeRepeatBody:
+    'SOS membuka kunci perangkat ini selama {{minutes}} menit. Ini kali ke-{{count}} hari ini.',
   appBlockedTitle: '{{appName}}',
   appBlockedBody: 'Aplikasi yang diblokir dibuka dan KidGate menutupnya.',
-  appInstalledTitle: '{{appName}}',
-  appInstalledBody: 'Aplikasi baru dipasang di perangkat anak.',
+  appInstalledTitle: 'Aplikasi dipasang',
+  appInstalledBody: 'Aplikasi {{appName}} dipasang di perangkat anak.',
 
-  appRemovedTitle: '{{appName}}',
-  appRemovedBody: 'Sebuah aplikasi dihapus dari perangkat anak.',
+  messageAlertTitle: 'Konten pesan mengkhawatirkan',
+  messageAlertBody: 'Kata yang ditandai terdeteksi di {{appName}}.',
+  messageAlertBodyOutgoing:
+    'Kata yang ditandai terdeteksi di pesan yang ditulis anak Anda di {{appName}}.',
+  activityTypeMessageAlert: 'Peringatan pesan',
+  messageCheckedTitle: 'Sudah diperiksa, tidak ada yang mengkhawatirkan',
+  messageCheckedBody:
+    'Kata yang dipantau muncul di {{appName}} dan dinilai tidak berbahaya dalam konteksnya.',
+  activityTypeMessageChecked: 'Diperiksa',
+  appRemovedTitle: 'Aplikasi dihapus',
+  appRemovedBody: 'Aplikasi {{appName}} dihapus dari perangkat anak.',
 
   placeEnterTitle: 'Masuk {{placeName}}',
   placeEnterBody: 'Perangkat anak memasuki tempat yang tersimpan.',
@@ -65,7 +81,7 @@ export const activities = {
 
   tamperAccessibilityTitle: 'Aksesibilitas dimatikan',
   tamperAccessibilityBody:
-    'Pemblokiran aplikasi dan penerapan kunci bisa melemah sampai Aksesibilitas diaktifkan kembali.',
+    'Pemblokiran aplikasi dan penguncian mungkin tidak berjalan penuh sampai Aksesibilitas diaktifkan kembali.',
   tamperUsageAccessTitle: 'Akses penggunaan aplikasi dimatikan',
   tamperUsageAccessBody:
     'Batas aplikasi dan Jam Diblokir mungkin berhenti bekerja sampai KidGate dapat membaca penggunaan aplikasi di perangkat anak lagi.',
@@ -118,10 +134,13 @@ export const activities = {
   tamperBackgroundRefresh: 'Penyegaran Aplikasi Latar telah dimatikan.',
 
   filterAllDevices: 'Semua perangkat',
+  // The child tier of the feed filter — "All" would read as all devices.
+  filterAllChildren: 'Semua',
   dateToday: 'Hari ini',
   dateYesterday: 'Kemarin',
 
   filterByDevice: 'Filter menurut {{label}}',
+  filterByChild: 'Tampilkan hanya {{label}}',
 
   openFullSosHistory: 'Buka riwayat SOS lengkap',
 

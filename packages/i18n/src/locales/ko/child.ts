@@ -13,7 +13,7 @@ export const child = {
   limitReached: '제한 도달',
   active: '사용 중',
   parentPausedThisDevice: '부모님이 이 기기를 잠시 잠갔습니다.',
-  blockedHoursOnPaused: '지금은 차단 시간대입니다. 쉬어 가기 좋은 시간이에요.',
+  blockedHoursOnPaused: '지금은 차단 시간대예요. 쉬어 가기 좋은 시간이에요.',
   outOfScreenTimeAskParent:
     '오늘의 스크린 타임을 모두 사용했어요. 아래에서 더 요청할 수 있어요.',
   screenTimeToday: '오늘의 스크린 타임',
@@ -27,7 +27,7 @@ export const child = {
   pausedAskParentOrSos:
     '필요할 때 부모님께 잠금 해제를 부탁하세요. 긴급 상황에는 여전히 SOS를 보낼 수 있어요.',
   blockedHoursLockTitle: '차단 시간',
-  blockedHoursLockBody: '지금은 차단 시간대입니다. 쉬어 가기 좋은 시간이에요.',
+  blockedHoursLockBody: '지금은 차단 시간대예요. 쉬어 가기 좋은 시간이에요.',
   blockedHoursLockHint:
     '시간이 더 필요하면 부모님께 말씀드리세요. 긴급 상황에는 여전히 SOS를 보낼 수 있어요.',
   parentPausedAccess: '부모님이 이 기기를 잠시 잠갔습니다.',
@@ -42,6 +42,14 @@ export const child = {
   setupWizardRequired: '필수',
   setupWizardOptional: '선택',
   setupWizardSkip: '나중에',
+  setupGrantStuckHint: '켰는데 변화가 없나요? TV를 다시 시작한 뒤 다시 시도하세요.',
   setupWizardAllDoneTitle: '완료!',
   setupWizardAllDoneSubtitle: '이 기기는 이제 보호됩니다.',
+  setupWizardStepDone: '완료 — 이 항목이 켜졌습니다.',
+  setupWizardCoreDoneTitle: '핵심 보호가 켜졌습니다',
+  setupWizardCoreDoneBody:
+    '필수 권한이 허용되어 이 기기는 보호되고 있습니다. 몇 가지 선택 단계를 진행하면 시스템이 보호를 끄기 더 어려워집니다.',
+  setupWizardCoreDoneContinue: '지금 강화하기',
+  setupWizardCoreDoneLater: '나중에 마치기',
+  setupWizardParentPinNote: '부모 PIN이 필요합니다. 다음 화면에서 부모가 입력합니다.',
 } as const;

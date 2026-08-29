@@ -7,6 +7,8 @@ export const deviceDetail = {
     'このデバイスをファミリーアカウントから削除します。このデバイスに関連する時間リクエストと利用履歴はすべて削除されます。',
   removeButton: 'デバイスを削除',
   removingButton: '削除中…',
+  showAllFeatures: 'すべての機能を表示',
+  showAvailableFeatures: '利用できる機能のみ表示',
   essentialControls: '基本コントロール',
   dailyRulesAndDeviceAccess: '毎日のルールとデバイスアクセス',
   dailyLimit: '1日の上限',
@@ -29,6 +31,8 @@ export const deviceDetail = {
   reviewEmergencyAlerts: '緊急アラートを確認',
   appAlerts: 'アプリ',
   reviewAppInstallAlerts: 'アプリのインストール・削除を確認',
+  appInventory: 'インストール済みのアプリ',
+  reviewAppInventory: '変化があったものだけでなく、この端末のすべてを見る',
   placeAlerts: '場所',
   reviewPlaceAlerts: '到着・出発時に通知',
   noPlacesYet: '場所がありません',
@@ -44,9 +48,15 @@ export const deviceDetail = {
   quickPause: 'ロック',
   quickCheckIn: 'チェックイン',
   lastActive: '最終利用',
+  appVersion: 'アプリのバージョン',
+  appVersionUpdate: '{{running}} · {{latest}} が利用可能',
+  appVersionRestart: '{{running}} · アプリを再起動して完了',
   androidPauseNote:
     'Androidでは、ユーザー補助機能と「他のアプリの上に表示」が有効な場合、ロックすると他のアプリもブロックされます。',
   notAvailableOnPlatform: '{{platform}}では利用できません',
+  notAvailableInExtension: '拡張機能では利用できません',
+  webFilterAwaitingApproval: '{{platform}} での承認待ちです',
+  webFilterSwitchedOffOnDevice: '{{platform}} でオフになっています',
   unableToUpdateDeviceName:
     'デバイス名を更新できませんでした。もう一度お試しください。',
   renameOwnerOnly: 'デバイス名を変更できるのはファミリー管理者のみです。',
@@ -119,4 +129,6 @@ export const deviceDetail = {
   webHistory: 'ウェブ履歴',
   webHistoryDescription: '到達したサイトとブロックしたサイト',
   webHistorySitesUnit: 'サイト',
+  managedAtChild:
+    'このデバイスのルール、ごほうび、チェックイン、アラートは{{childName}}のプロフィールで管理します',
 } as const;

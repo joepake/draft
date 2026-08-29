@@ -331,15 +331,44 @@ export default {
 
   webCat: {
     adult: 'वयस्क सामग्री',
+    selfHarm: 'आत्म-नुकसान और खानपान विकार',
     gambling: 'जुआ',
+    gameGambling: 'लूट बॉक्स और स्किन सट्टा',
     dating: 'डेटिंग',
+    strangerChat: 'अजनबियों से चैट',
     drugs: 'नशा और शराब',
-    violence: 'हिंसा और उग्रवाद',
+    violence: 'हिंसा और खून-खराबा',
+    extremism: 'उग्रवाद और नफ़रत',
     piracy: 'पायरेसी',
     social: 'सोशल नेटवर्क',
     videoStreaming: 'वीडियो स्ट्रीमिंग',
+    music: 'संगीत',
     gaming: 'गेम',
     shopping: 'खरीदारी',
+    aiCompanion: 'AI साथी',
+    aiAssistant: 'AI सहायक',
+    cryptoTrading: 'क्रिप्टो और ट्रेडिंग',
+    vpn: 'VPN ऐप',
+  },
+
+  appCat: {
+    adult: 'वयस्क सामग्री',
+    gambling: 'जुआ',
+    gameGambling: 'लूट बॉक्स और स्किन सट्टा',
+    dating: 'डेटिंग',
+    drugs: 'नशा और शराब',
+    violence: 'हिंसा और खून-खराबा',
+    piracy: 'पायरेसी',
+    bypass: 'फ़िल्टर बायपास और VPN',
+  },
+
+  webCatGroup: {
+    harm: 'हानिकारक सामग्री',
+    contact: 'अजनबी',
+    bypass: 'फ़िल्टर से बचाव',
+    ai: 'AI',
+    entertainment: 'मनोरंजन और सोशल',
+    money: 'खरीदारी और पैसा',
   },
 
   dash: {
@@ -349,9 +378,11 @@ export default {
     tabSafety: 'सुरक्षा',
     tabControls: 'नियंत्रण',
     tabReport: 'साप्ताहिक रिपोर्ट',
+    tabReportNew: 'नई साप्ताहिक रिपोर्ट',
 
     children: 'बच्चे',
     noChildren: 'अभी तक कोई बच्चा डिवाइस नहीं जुड़ा।',
+    unassignedDevices: 'असाइन नहीं किया गया',
     manage: 'प्रबंधन',
     parents_one: '{{count}} अभिभावक',
     parents_other: '{{count}} अभिभावक',
@@ -365,6 +396,8 @@ export default {
     statusOnline: 'ऑनलाइन',
     statusOffline: 'ऑफ़लाइन',
     statusLocked: 'लॉक',
+    statusLockSent: 'लॉक भेजा गया',
+    statusLockNotApplied: 'लॉक लागू नहीं हुआ',
 
     stateAllowed: 'अनुमति है',
     stateDenied: 'बंद है',
@@ -374,6 +407,10 @@ export default {
     stateUnknown: 'अज्ञात',
 
     lastActive: 'अंतिम सक्रियता {{when}}',
+    appVersion: 'ऐप वर्शन',
+    appVersionUpdate: '{{running}} · {{latest}} उपलब्ध',
+    appVersionRestart: '{{running}} · पूरा करने के लिए ऐप फिर से खोलें',
+    buildOutdated: 'अपडेट उपलब्ध',
     checkIn: 'चेक-इन',
     sending: 'भेजा जा रहा है…',
     lockDevice: 'डिवाइस लॉक करें',
@@ -409,6 +446,10 @@ export default {
 
     cardScreenTime: 'स्क्रीन टाइम',
     cardScreenTimeSub: 'पिछले 14 दिन, दैनिक सीमा के मुक़ाबले',
+    usageSyncNote:
+      'स्क्रीन टाइम को इस स्क्रीन तक पहुँचने में कुछ मिनट लग सकते हैं — अगर डिवाइस में इंटरनेट कनेक्शन नहीं है या यह अचानक बंद हो गया है, तो इसमें ज़्यादा समय लग सकता है।',
+    usageSyncNoteTv:
+      'यह टीवी समय-समय पर ही जानकारी भेजता है, इसलिए स्क्रीन टाइम को यहाँ पहुँचने में 30 मिनट तक का समय लग सकता है — इंटरनेट कनेक्शन न होने पर और ज़्यादा।',
     cardRecent: 'हाल की गतिविधि',
     cardRecentSub: 'नई पहले',
     cardRecentEmpty:
@@ -423,9 +464,6 @@ export default {
     attnReason: '“{{reason}}” · {{when}}',
     attnCheckInMissed: 'एक चेक-इन छूट गया',
     attnCheckInMissedMeta: '{{when}} भेजा · कोई जवाब नहीं',
-    attnPermissionOff: '{{permission}} बंद है',
-    attnPermissionOffMeta:
-      'जब तक बच्चे के डिवाइस पर इसे वापस चालू नहीं किया जाता, सुरक्षा कमज़ोर रहती है',
     attnLimitReached: 'दैनिक सीमा पूरी — डिवाइस लॉक',
     attnLimitReachedMeta: 'आज {{used}} इस्तेमाल हुआ',
     attnBatteryLow: 'बैटरी कम है ({{level}}%)',
@@ -457,6 +495,8 @@ export default {
 
     appUsageTitle: 'आज का ऐप इस्तेमाल',
     appUsageSub: 'हर ऐप पर बिताया समय',
+    topAppsOther: 'अन्य ऐप्स',
+    underAMinute: 'एक मिनट से कम',
     appUsageEmpty: 'अभी तक किसी ऐप का उपयोग रिपोर्ट नहीं हुआ है।',
     appBlockingTitle: 'ऐप ब्लॉकिंग',
     appBlockingSub: 'बच्चे के डिवाइस पर पैरेंट PIN से चुना जाता है',
@@ -469,6 +509,21 @@ export default {
     webActivityTitle: 'वेब गतिविधि',
     webActivitySub: 'सबसे ज़्यादा देखे गए डोमेन, पिछले 30 दिन',
     webActivityEmpty: 'अभी तक कोई वेब गतिविधि नहीं।',
+    inventoryTitle: 'इंस्टॉल किए गए ऐप',
+    inventorySub: 'इस डिवाइस पर सब कुछ, केवल बदलाव नहीं',
+    inventoryEmpty: 'इस डिवाइस ने अभी तक अपनी ऐप सूची नहीं भेजी है।',
+    inventoryStale:
+      'यह सूची पुरानी है। डिवाइस के अगली बार जुड़ने पर यह ताज़ा हो जाएगी।',
+    inventoryFirstScan: 'पहला स्कैन है, इसलिए KidGate नहीं बता सकता कि ये कब आए।',
+    inventoryFlagged: 'देखने लायक',
+    inventoryFlaggedLabel: 'जाँचने लायक',
+    inventoryOtherLabel: 'पहचाने गए',
+    inventoryUnknownLabel: 'अपहचाने',
+    inventoryIncomplete: 'होम स्क्रीन पर आइकॉन न रखने वाला ऐप यहाँ न दिखे, यह संभव है।',
+    webActivitySyncNote:
+      'वेब गतिविधि को इस स्क्रीन तक पहुँचने में कुछ मिनट लग सकते हैं — अगर डिवाइस में इंटरनेट कनेक्शन नहीं है या यह अचानक बंद हो गया है, तो इसमें ज़्यादा समय लग सकता है।',
+    webActivitySyncNoteTv:
+      'यह टीवी समय-समय पर ही जानकारी भेजता है, इसलिए वेब गतिविधि को यहाँ पहुँचने में 30 मिनट तक का समय लग सकता है — इंटरनेट कनेक्शन न होने पर और ज़्यादा।',
     colDomain: 'डोमेन',
     colVisits: 'विज़िट',
     colBlocked: 'रोके गए',
@@ -477,15 +532,21 @@ export default {
     filterRefusedSub_one: '{{count}} रोकी गई क्वेरी, पिछले 30 दिन',
     filterRefusedSub_other: '{{count}} रोकी गई क्वेरी, पिछले 30 दिन',
     nothingBlockedYet: 'अभी तक कुछ नहीं रोका गया।',
+    rollupNoteAi:
+      'कुछ श्रेणियाँ साइट के नाम से अनुमान लगाई गई हैं, किसी ज्ञात साइट से मिलान नहीं — इसलिए कुछ ग़लत हो सकती हैं।',
     filterHintIos:
       'iOS पर फ़िल्टर Apple के वयस्क-सामग्री नियंत्रण का उपयोग करता है — श्रेणीवार ब्लॉकिंग सिर्फ़ Android पर है।',
     filterHintAndroid: 'श्रेणियाँ डिवाइस के DNS फ़िल्टर से लागू होती हैं।',
+    filterHintMacos: 'श्रेणियाँ Mac पर KidGate के कॉन्टेंट फ़िल्टर से लागू होती हैं।',
 
     locationTitle: 'लोकेशन',
     locationSharingOff: 'साझा करना बंद है',
+    locationSyncNote:
+      'लोकेशन को अपडेट होने में कुछ मिनट लग सकते हैं — अगर डिवाइस में इंटरनेट कनेक्शन नहीं है या यह अचानक बंद हो गया है, तो इसमें ज़्यादा समय लग सकता है।',
     locationUpdated: '{{when}} अपडेट हुआ',
     locationWaiting: 'पहले अपडेट की प्रतीक्षा',
     lastKnownLocation: 'आख़िरी ज्ञात लोकेशन',
+    nearPlace: '{{place}} के पास',
     noPlaces:
       'अभी कोई जगह सहेजी नहीं गई। ऐप में एक जोड़ें ताकि बच्चा पहुँचने या निकलने पर आपको अलर्ट मिले।',
     placeRadius: '{{meters}} मी · ',
@@ -524,6 +585,10 @@ export default {
     limitScaleMax: '8 घं',
     limitHint:
       'इनाम वाले कामों और मंज़ूर किए गए समय-अनुरोधों के बोनस मिनट सिर्फ़ उसी दिन के लिए ऊपर से जुड़ते हैं।',
+    limitShared: 'सभी डिवाइस के लिए साझा',
+    limitSharedSpent: 'आज {{limit}} में से {{used}} इस्तेमाल हुआ',
+    limitSharedHint:
+      'यह इस बच्चे का पूरा दिन है, इस डिवाइस की अलग सीमा नहीं — हर डिवाइस को उतना मिलता है जितना बाकी ने इस्तेमाल नहीं किया। इसे KidGate ऐप में बदला जा सकता है।',
     whatsOnTitle: 'क्या-क्या चालू है',
     whatsOnSub: 'बदलाव बच्चे के डिवाइस से सिंक होते हैं',
     rowBlockedHours: 'ब्लॉक किए घंटे',
@@ -539,6 +604,8 @@ export default {
     rowWebFilterDesc_one: '{{count}} श्रेणी रोकी गई',
     rowWebFilterDesc_other: '{{count}} श्रेणियाँ रोकी गईं',
     rowNotSupported: 'इस डिवाइस पर समर्थित नहीं',
+    rowWebFilterAwaitingApproval: 'डिवाइस पर मंज़ूरी का इंतज़ार',
+    rowWebFilterSwitchedOff: 'डिवाइस पर बंद है',
     rowLocation: 'लोकेशन साझा करना',
     rowLocationDesc: 'आख़िरी अपडेट {{when}}',
     rowLocationNone: 'अभी कोई लोकेशन नहीं',
@@ -559,6 +626,12 @@ export default {
     rewardTaskWaiting: ' · आपकी मंज़ूरी की प्रतीक्षा',
     approve: 'मंज़ूर करें',
     approveInApp: 'KidGate ऐप में मंज़ूर करें',
+    siteRequestsTitle: 'साइट के अनुरोध',
+    siteRequestsSub: 'वे साइटें जिनके लिए इस डिवाइस ने अनुमति माँगी',
+    siteRequestAllow: 'अनुमति दें',
+    siteRequestDeny: 'अभी नहीं',
+    attnSiteRequest: '{{name}} ने {{domain}} खोलने को कहा',
+    toastSiteAllowed: 'साइट को अनुमति दी',
     timelineTitle: 'कब इस्तेमाल हुआ',
     timelineSub: 'आज, आधी रात से आधी रात तक। हरा रंग डिवाइस पर बिताया गया समय है।',
   },
@@ -627,8 +700,11 @@ export default {
     emptyBody:
       'रिपोर्ट हर रविवार शाम आती है। इस सप्ताह की अभी लिखी जा सकती है — इसमें पिछले सात दिन शामिल हैं।',
     noUsage:
-      'पिछले दो सप्ताह में कोई स्क्रीन समय दर्ज नहीं हुआ, इसलिए अभी बताने को कुछ नहीं है। बंद डिवाइस कुछ नहीं बताता, और यह शांत सप्ताह जैसा नहीं है।',
+      'पिछले दो सप्ताह में कोई स्क्रीन समय दर्ज नहीं हुआ, इसलिए अभी बताने को कुछ नहीं है। ऑफ़लाइन डिवाइस कुछ नहीं बताता, और यह शांत सप्ताह जैसा नहीं है।',
     rateLimited: 'बहुत सारे प्रयास। एक मिनट रुकें।',
+    loadFailedTitle: 'रिपोर्ट लोड नहीं हुईं',
+    loadFailed: 'रिपोर्ट नहीं खुल सकीं। दोबारा कोशिश करने के लिए पेज रीलोड करें।',
+    retryLoad: 'फिर कोशिश करें',
     failed: 'रिपोर्ट नहीं लिखी जा सकी। थोड़ी देर बाद फिर कोशिश करें।',
     existed: 'इस सप्ताह की रिपोर्ट पहले से थी — यह रही।',
     childrenTitle: 'हर बच्चा',

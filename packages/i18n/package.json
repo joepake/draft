@@ -6,6 +6,7 @@
   "sideEffects": false,
   "exports": {
     "./translate": "./src/translate.ts",
+    "./copyTokens": "./src/copyTokens.ts",
     "./activityFeed": "./src/activityFeed.ts",
     "./interpolate": "./src/interpolate.ts",
     "./languageMeta": "./src/languageMeta.ts",
@@ -14,7 +15,8 @@
     "./legal": "./src/legal.ts",
     "./web": "./src/web/index.js",
     "./web/languages": "./src/web/languages.js",
-    "./web/interpolate": "./src/web/interpolate.js"
+    "./web/interpolate": "./src/web/interpolate.js",
+    "./messageKeywords": "./src/messageKeywords/index.ts"
   },
   "dependencies": {
     "@kidgate/schema": "workspace:*"

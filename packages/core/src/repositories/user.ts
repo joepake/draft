@@ -3,10 +3,13 @@ import type { FirestorePort } from '@kidgate/ports/firestore';
 import type { DevicePlatform } from '@kidgate/schema/capabilities';
 import type { FirestoreUser } from '@kidgate/schema/firestore';
 import { supportReportsCollection, userDoc } from '@kidgate/schema/paths';
+import type { SupportReportAttachment } from '@kidgate/schema/supportReport';
+import {
+  SUPPORT_REPORT_MAX_ATTACHMENTS,
+  SUPPORT_REPORT_MAX_ATTACHMENT_BYTES,
+  SUPPORT_REPORT_MAX_MESSAGE_LENGTH,
+} from '@kidgate/schema/supportReport';
 import { timestampToIso } from '../domain/firestoreValue';
-
-/** Long enough for a real problem report; short enough not to be a payload. */
-const MAX_SUPPORT_MESSAGE_LENGTH = 2000;
 
 export interface SupportReportPayload {
   message: string;
@@ -15,6 +18,8 @@ export interface SupportReportPayload {
   deviceName: string | null;
   familyName: string | null;
   familyId: string | null;
+  /** Optional screenshots, already resized and uploaded by the caller. */
+  attachments?: SupportReportAttachment[];
 }
 
 export interface EnsureTrialStartedResult {
@@ -66,6 +71,31 @@ export function createUserRepository(deps: UserRepositoryDeps) {
         id: userId,
         email: typeof data.email === 'string' ? data.email : '',
         name: typeof data.name === 'string' ? data.name : '',
+        // Read, not dropped. The four fields below existed on the legacy
+        // mapping and went missing when it moved here — the cast on the return
+        // made every one of them look optional-and-absent rather than lost.
+        //
+        // `parentPinSet` is the one that shows: it is the only signal the app
+        // has that a PIN exists, since the hash itself is server-only. Read as
+        // absent, the Settings row says "not set", the setup modal offers
+        // "Create Parent PIN", and setParentPin is then refused with
+        // pin/current-required — the modal asks for a current PIN the parent
+        // was just told they did not have.
+        parentPinHash:
+          typeof data.parentPinHash === 'string' ? data.parentPinHash : null,
+        parentPinSet: data.parentPinSet === true,
+        planId:
+          data.planId === 'premium' || data.planId === 'trial'
+            ? data.planId
+            : undefined,
+        trialStartedAt:
+          typeof data.trialStartedAt === 'string'
+            ? data.trialStartedAt
+            : (timestampToIso(data.trialStartedAt) ?? undefined),
+        subscription:
+          data.subscription && typeof data.subscription === 'object'
+            ? (data.subscription as FirestoreUser['subscription'])
+            : undefined,
         createdAt: timestampToIso(data.createdAt) ?? '',
         updatedAt: timestampToIso(data.updatedAt) ?? '',
       } as FirestoreUser;
@@ -118,10 +148,23 @@ export function createUserRepository(deps: UserRepositoryDeps) {
       };
     },
 
+    /**
+     * The id a report will be filed under, handed out before the report is
+     * written so attachments can be uploaded to a path named after it.
+     *
+     * Same shape as `sosAlert.createAlert`: the photo lands at a path derived
+     * from the id, and a Firestore id generated client-side costs nothing and
+     * removes the round-trip that would otherwise have to happen first.
+     */
+    newSupportReportId(userId: string): string {
+      return db.newId(supportReportsCollection(userId));
+    },
+
     /** Rejects with an `ApiFailure` carrying a key — never a rendered sentence. */
     async submitSupportReport(
       userId: string,
       payload: SupportReportPayload,
+      reportId?: string,
     ): Promise<void> {
       const message = payload.message.trim();
       if (!message) {
@@ -131,7 +174,7 @@ export function createUserRepository(deps: UserRepositoryDeps) {
         };
         throw failure;
       }
-      if (message.length > MAX_SUPPORT_MESSAGE_LENGTH) {
+      if (message.length > SUPPORT_REPORT_MAX_MESSAGE_LENGTH) {
         const failure: ApiFailure = {
           code: 'conflict',
           messageKey: 'settings.reportMessageTooLong',
@@ -139,7 +182,35 @@ export function createUserRepository(deps: UserRepositoryDeps) {
         throw failure;
       }
 
-      await db.addDoc(supportReportsCollection(userId), {
+      const attachments = payload.attachments ?? [];
+      if (attachments.length > SUPPORT_REPORT_MAX_ATTACHMENTS) {
+        const failure: ApiFailure = {
+          code: 'conflict',
+          messageKey: 'settings.reportAttachmentsTooMany',
+        };
+        throw failure;
+      }
+      // The client already refused anything over the ceiling and so does
+      // `storage.rules`. Checked a third time because this is the only one of
+      // the three that decides what the *document* claims, and a record saying
+      // 4 MB about an object that could not have been 4 MB is worse than the
+      // upload failing.
+      if (
+        attachments.some(
+          attachment => attachment.bytes > SUPPORT_REPORT_MAX_ATTACHMENT_BYTES,
+        )
+      ) {
+        const failure: ApiFailure = {
+          code: 'conflict',
+          messageKey: 'settings.reportAttachmentTooLarge',
+        };
+        throw failure;
+      }
+
+      const collectionPath = supportReportsCollection(userId);
+      const id = reportId ?? db.newId(collectionPath);
+
+      await db.setDoc(`${collectionPath}/${id}`, {
         message,
         accountId: payload.accountId,
         email: payload.email,
@@ -149,6 +220,9 @@ export function createUserRepository(deps: UserRepositoryDeps) {
         platform:
           platform === 'android' || platform === 'androidtv' ? 'android' : 'ios',
         appVersion,
+        // Omitted rather than written empty, so a report with no screenshot
+        // reads the same as every report filed before attachments existed.
+        ...(attachments.length > 0 ? { attachments } : {}),
         createdAt: db.fieldValues.serverTimestamp(),
       });
     },

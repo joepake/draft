@@ -13,6 +13,7 @@ import {
   parseDeviceControls,
   parseDevicePlaces,
   parseLastLocation,
+  parseMessageMonitoring,
   parseProtectionCounters,
   parseProtectionStatus,
 } from '../domain/deviceControlsMapper';
@@ -42,6 +43,36 @@ function parseBatteryLevel(value: unknown): number | undefined {
   // a bad reading rendering as "-3%" or "740%" on the parent's card is worse
   // than rendering as nothing.
   return Math.min(100, Math.max(0, Math.round(value)));
+}
+
+/**
+ * The server's day summary, or nothing.
+ *
+ * Every field has to be there and the date has to be a date: this is the one
+ * number a family list shows without opening anything, and a half-written map
+ * would render as "0 sites" over a device that browsed all afternoon. Absent is
+ * a state the card already draws — a wrong count is not.
+ */
+function parseWebToday(data: Record<string, unknown>): ChildDeviceRecord['webToday'] {
+  const raw = data.webToday;
+  if (!raw || typeof raw !== 'object') {
+    return undefined;
+  }
+  const value = raw as Record<string, unknown>;
+  const date = text(value.date);
+  if (!date || !/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+    return undefined;
+  }
+  const count = (field: unknown): number =>
+    typeof field === 'number' && Number.isFinite(field) && field > 0
+      ? Math.floor(field)
+      : 0;
+  return {
+    date,
+    sites: count(value.sites),
+    visits: count(value.visits),
+    blocked: count(value.blocked),
+  };
 }
 
 /**
@@ -85,13 +116,27 @@ function mapChildDevice(doc: DocSnapshot): ChildDeviceRecord {
   const data = (doc.data() ?? {}) as Record<string, unknown>;
   const lastLocation = parseLastLocation(data);
   const protectionStatus = parseProtectionStatus(data);
+  const messageMonitoring = parseMessageMonitoring(data);
+  const webToday = parseWebToday(data);
 
   return {
     places: parseDevicePlaces(data),
     ...(protectionStatus ? { protectionStatus } : {}),
+    /*
+     * The next one that was dropped here, and it failed the same silent way
+     * the four above did: the child device wrote it on every heartbeat, the
+     * type declared it, `toDeviceView` spread it, and this mapper never read
+     * it — so both parent surfaces saw `undefined` forever. What that looked
+     * like on screen was a Message Alerts page permanently stuck on "waiting
+     * for your child's device" with its switches disabled, on a phone that
+     * had granted both Android consents. Absent still has to stay absent
+     * (`parseMessageMonitoring` documents why).
+     */
+    ...(messageMonitoring ? { messageMonitoring } : {}),
     protectionCounters: parseProtectionCounters(data),
     webFilterBlockedCount:
       typeof data.webFilterBlockedCount === 'number' ? data.webFilterBlockedCount : 0,
+    ...(webToday ? { webToday } : {}),
     /*
      * The device's own capability probe, passed through unparsed and absent
      * when there is none. Only the desktop agent writes one today; a phone

@@ -1,5 +1,8 @@
 export const placeAlerts = {
   title: '場所アラート',
+  familyScope: '家族全体でひとつのリスト',
+  mergedFromDevices:
+    '各デバイスの既存の場所を統合しました。保存すると、このリストがすべての子どもデバイスに適用されます。',
   fallbackDeviceName: '子どものデバイス',
   statusReady: '位置情報の準備完了',
   statusNeedLocation: '子どものデバイスの位置情報を待っています',
@@ -21,7 +24,11 @@ export const placeAlerts = {
   radiusLabel: '通知半径',
   radiusValue: '{{meters}} m',
   radiusHint:
-    'この場所として認識されるためにデバイスがどれだけ近づく必要があるかを設定します。半径を小さくするとより正確になりますが、見逃しやすくなります。',
+    'この場所として認識されるために、デバイスがどれだけ近づく必要があるかです。デバイス自身の位置誤差より小さい半径は、正確になるのではなくランダムに通知します。',
+  radiusAccuracyHint:
+    'このデバイスはここでは位置を約 ±{{accuracy}} m の精度で報告しています。',
+  radiusBelowAccuracy:
+    'ここではデバイスの精度は約 ±{{accuracy}} m しかありません。{{minimum}} m 以上にしてください。そうしないとこの場所はランダムに通知します。',
   radiusDecrease: '半径を小さくする',
   radiusIncrease: '半径を大きくする',
   notifyEnterLabel: '到着時に通知',
@@ -44,7 +51,10 @@ export const placeAlerts = {
   maxPlacesToast: '保存できる場所は最大{{max}}件までです。',
   nameRequiredToast: '場所の名前を入力してください。',
   duplicateNameToast: 'この名前の場所はすでに存在します。',
-  duplicateLocationToast: 'この位置はすでに別の場所に含まれています。',
+  samePinToast:
+    '「{{name}}」と同じ地点です。地図をドラッグしてピンを移動してください。',
+  overlapWarning:
+    '「{{name}}」は {{meters}} m 先にあり、その範囲がここまで届いています。デバイスが両方に入っている間は、近いほうだけが通知します。このまま保存するにはもう一度保存してください。',
   copyTitle: '他の子どもにも追加しますか？',
   copyMessage:
     'この家族の他の{{count}}台の子どものデバイスにも「{{name}}」をコピーしますか？',

@@ -1,5 +1,6 @@
 import type { DeviceControls, DeviceLocation } from './deviceControls';
 import type { DevicePlace } from './devicePlace';
+import type { DeviceMessageMonitoringState } from './messageMonitoringState';
 import type { ScreenTimeStatus } from './permissions';
 import type {
   DeviceCapabilities,
@@ -15,6 +16,66 @@ export type ProtectionPermissionStatus =
 export interface DeviceProtectionCounters {
   appBlocked?: number;
   tamper?: number;
+}
+
+/**
+ * One day of browsing, summarised onto the device document by the server.
+ *
+ * Written by `logChildWebActivity` as it accepts a batch, so every surface that
+ * reports web activity — the browser extension, the Mac content filter, the
+ * Android tunnel, the TV tunnel — fills it without shipping any new code. It
+ * exists so a parent list can say how much browsing happened today without
+ * reading the `webHistory` subcollection once per device: the device document
+ * is already streamed on the family screen, and the per-domain rows cost a read
+ * each.
+ *
+ * `date` is the **child device's local date**, the same key the subcollection
+ * is grouped by, and it is what makes this readable: a summary whose date is
+ * not today describes a day that has ended, and must be rendered as that day or
+ * not at all. Never treat a stale one as "today, zero".
+ *
+ * Not a replacement for `webFilterBlockedCount`, which is an all-time tally and
+ * answers a different question.
+ */
+export interface DeviceWebToday {
+  /** `YYYY-MM-DD`, on the child device's clock. */
+  date: string;
+  /**
+   * Distinct domains recorded for that date — the count of `webHistory` rows,
+   * taken after the batch landed, not a running sum of the batches.
+   */
+  sites: number;
+  /** Page loads or lookups reported for that date. */
+  visits: number;
+  /** Refused lookups for that date. */
+  blocked: number;
+}
+
+/**
+ * A Parent PIN a child device can verify offline.
+ *
+ * The escape for a locked device that cannot reach the server: an Android TV
+ * removed from its family keeps enforcing until JavaScript runs and hears about
+ * it, which on that platform can be never. `functions/lib/offlinePinVerifier.js`
+ * derives this and holds the reasoning, including why it is **not** the hash
+ * `lib/pinHash.js` produces.
+ *
+ * **Every parameter travels with the value.** Raising the cost later must not
+ * strand verifiers already sitting on devices, so a device derives with the
+ * `iterations` it was handed rather than a constant it agreed on by memory, and
+ * refuses outright on a `version` it does not know — an unlock that verifies
+ * wrongly is worse than one that is unavailable.
+ */
+export interface ParentPinVerifier {
+  /** Shape, not cost. Bumped only when the fields below change meaning. */
+  version: number;
+  /** `'pbkdf2-sha256'`. The only value emitted so far. */
+  algorithm: string;
+  iterations: number;
+  /** base64. Random per PIN, shared by every device in the family. */
+  salt: string;
+  /** base64, the derived key. */
+  hash: string;
 }
 
 export interface DeviceProtectionStatus {
@@ -63,6 +124,26 @@ export const PROTECTION_PERMISSION_KEYS = [
 
 export type ProtectionPermissionKey = (typeof PROTECTION_PERMISSION_KEYS)[number];
 
+/**
+ * A child agent's own report of whether its lock is actually applied.
+ *
+ * Only worth writing from a surface that decides its lock somewhere other than
+ * the field the parent set — see `Device.lockEnforcement`. `reason` is the
+ * agent's own, so a device locked by a schedule while a parent lock is also
+ * standing reports the reason it is enforcing rather than the one the parent
+ * asked about; both mean the screen is covered.
+ *
+ * `at` is when the agent last looked, not when the lock began: agents write
+ * this only when the answer changes, so a value hours old is a device that has
+ * been steadily locked, not a stale one. How old it is allowed to be before a
+ * parent screen stops trusting it is the reader's rule, not this shape's.
+ */
+export interface DeviceLockEnforcement {
+  locked: boolean;
+  reason?: 'parentLock' | 'schedule' | 'dailyLimit' | null;
+  at: string;
+}
+
 export interface Device {
   id: string;
   name: string;
@@ -92,6 +173,8 @@ export interface Device {
   /** User-assigned name from device Settings, e.g. "Joe's iPhone". */
   deviceLabel?: string;
   osVersion?: string;
+  /** OS user profiles on the device, reporter included. See `ChildDeviceRecord.osUserCount`. */
+  osUserCount?: number;
   /**
    * The KidGate build this device is running — `version` and `versionCode` from
    * the root `package.json`, as the device itself shipped them.
@@ -112,9 +195,60 @@ export interface Device {
    */
   appVersion?: string;
   appBuild?: string;
+  /**
+   * The OTA bundle this device has actually loaded — `config/ota`'s `version`,
+   * as the running JavaScript was published under.
+   *
+   * A **second** number, not a refinement of the two above, and the reason is
+   * the failure it exists to make visible: a phone can carry the newest native
+   * build from the store and still be running a JS bundle from three releases
+   * ago, because an OTA is applied on the next launch and a device that never
+   * relaunches never applies one. `appVersion` says "up to date" for that phone
+   * and means it — about the half of the app the store ships.
+   *
+   * Absent everywhere there is no OTA channel, which is every platform except
+   * the phones: `apps/desktop` cannot have one (`updateCheck.ts` says why),
+   * `apps/tv` has none yet, and a browser extension is updated by the store.
+   * Absent must therefore never read as "behind".
+   */
+  otaVersion?: number;
   status: DeviceStatus;
   lastActiveAt?: string;
   isLocked: boolean;
+  /**
+   * When a parent last changed `isLocked`, server-stamped by `setDeviceLock`.
+   *
+   * `isLocked` is what the parent asked for. It says nothing about whether the
+   * device ever received it, and until this field existed no parent screen
+   * could tell the two apart: a television that was switched off, unreachable,
+   * or running a build with no push handler read "Locked" the instant the write
+   * landed, exactly like one with the overlay up.
+   *
+   * This is the *request* half of that comparison; `lockEnforcement` below is
+   * the device's answer. Absent on every device locked before 2026-08-28, which
+   * `domain/lockEnforcement` reads as "compare against nothing" rather than as
+   * a lock that was never requested.
+   */
+  lockRequestedAt?: string;
+  /**
+   * What the device says about its own lock — the answer half.
+   *
+   * Written by the agents that can tell independently of the field the parent
+   * set: `apps/tv` reads `KidGateTvPolicyStore` through `lockState()`, and
+   * `apps/desktop` reads the Rust-owned lock window through `lockVisible()`.
+   * Both decide their lock in a process that keeps running while JavaScript
+   * does not, so their answer is evidence rather than a restatement.
+   *
+   * **`apps/mobile` deliberately writes none.** Its overlay is rendered from
+   * `isDeviceLocked` — the same field the parent set — so a phone publishing
+   * this would be answering "I am locked because I was told to be", which is
+   * the sentence this field exists to stop a screen from believing.
+   * `domain/lockEnforcement` falls back to the heartbeat for those surfaces.
+   *
+   * `apps/extension` publishes `lock: false` in its capabilities and has no
+   * lock to confirm.
+   */
+  lockEnforcement?: DeviceLockEnforcement;
   controls?: DeviceControls;
   lastLocation?: DeviceLocation;
   places?: DevicePlace[];
@@ -130,10 +264,56 @@ export interface Device {
    * that stay silent — `domain/webFilterSupport` is that shape.
    */
   capabilities?: DeviceCapabilities;
+  /**
+   * Whether message monitoring is running on this device right now, per half.
+   *
+   * A third structure beside `capabilities` and `protectionStatus` because it
+   * answers a third question — `messageMonitoringState.ts` sets out which is
+   * which and why an opt-in feature must not become a permission-checklist row.
+   * Written by the Android agent only; absent everywhere else and on every
+   * device paired before the field existed, where it reads as unknown.
+   */
+  messageMonitoring?: DeviceMessageMonitoringState;
+  /**
+   * The last controls policy this device actually pushed into its native
+   * enforcement layer — the acknowledgement half of the rule write path.
+   * `updateChildRules` returns a device *count* and nothing ever reported
+   * whether a device applied the result; "enforced on N of M" on the parent
+   * screens is a capability statement, not an observation.
+   *
+   * `fingerprint` covers only what a parent authors (schedule, filter policy,
+   * limits, blocking) — never volatile derived state such as "in a window
+   * right now" or the lock, which flip on their own and would bill a
+   * document write (and a no-op trigger invocation) per flip. Written by the
+   * child agent, gated on fingerprint change: at most one write per policy
+   * edit. Absent on devices paired before the field, and on agents that do
+   * not publish it yet (desktop, TV, extension — `docs/BACKLOG.md`).
+   */
+  appliedPolicy?: {
+    fingerprint: string;
+    /** Device wall-clock ms when the policy was applied natively. */
+    atMs: number;
+  };
   parentPinFailedAttempts?: number;
   parentPinLocked?: boolean;
+  /**
+   * The Parent PIN in a form this device can check with no network.
+   *
+   * Written only by `functions/http/parentPin.js` (Admin SDK) and pinned against
+   * every client in `firestore.rules` — a child device authenticates under the
+   * family owner's uid, so a writable verifier is a child planting a PIN it
+   * knows and unlocking itself.
+   *
+   * Present on every child device of a family that has a PIN; the value is the
+   * same for all of them, salt included, because it is one PIN. Absent until the
+   * PIN is next set or next verified, which is why the offline unlock is not
+   * available to a family the day it ships.
+   */
+  parentPinVerifier?: ParentPinVerifier;
   /** Deduped web-filter blocked visits since install (Android child only). */
   webFilterBlockedCount?: number;
+  /** The server's summary of the last day this device reported browsing. */
+  webToday?: DeviceWebToday;
   protectionCounters?: DeviceProtectionCounters;
   /**
    * Child phone battery, 0–100. Undefined until the device reports one —

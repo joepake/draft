@@ -8,7 +8,6 @@ export const sharePrompt = {
   laterButton: 'Позже',
   shareMessage:
     'Я использую KidGate, чтобы защитить детей в интернете: блокировка сайтов для взрослых, лимит экранного времени и геолокация. Попробуйте: {{link}}',
-  settingsSectionTitle: 'Поддержать KidGate',
   settingsShareTitle: 'Поделиться KidGate',
   settingsShareSubtitle: 'Порекомендуйте другим родителям',
   settingsRateTitle: 'Оценить приложение',

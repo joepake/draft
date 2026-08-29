@@ -48,7 +48,7 @@ export const plans = {
   featureWebFiltering: 'Webfilter',
   featureSeeLocation: 'Live-Standort',
   featureLocationHistory: 'Standortverlauf',
-  featureCheckIn: 'Check-In',
+  featureCheckIn: 'Check-in',
   featureSosAlerts: 'SOS-Alarme',
   featurePlaceAlerts: 'Ortsbenachrichtigungen',
   featureTamperAlerts: 'Schutzwarnungen',
@@ -64,10 +64,10 @@ export const plans = {
   currentPlanKicker: 'Aktueller Plan',
   trialEnded: 'Testphase beendet',
   trialPending: 'Testphase noch nicht gestartet',
-  premiumActiveSubtitle: 'Du hast gerade jetzt vollen Zugriff.',
+  premiumActiveSubtitle: 'Du hast gerade vollen Zugriff.',
   trialActiveSubtitle: 'Voller Zugriff während deiner {{days}}-tägigen Testphase.',
   subscribeToContinue:
-    'Du bist jetzt im Gratis-Tarif. Abonniere, um wieder alles freizuschalten.',
+    'Du bist jetzt im Gratis-Plan. Abonniere, um wieder alles freizuschalten.',
   connectDevicesToStartTrial:
     'Verbinde ein Elterngerät und ein Kindergerät, um deine Testphase zu starten.',
   premiumActiveFooter: 'Premium aktiv',
@@ -81,7 +81,7 @@ export const plans = {
   memberTrialActiveSubtitle:
     'Diese Familie ist in der Testphase. Wenn sie endet, muss der Inhaber abonnieren, um KidGate weiter zu nutzen.',
   memberTrialEndedSubtitle:
-    'Der Test dieser Familie ist beendet. Tageslimit, Sperrzeiten und Standort laufen weiter. Bitte den Besitzer, für den Rest zu abonnieren.',
+    'Der Test dieser Familie ist beendet. Tageslimit, Sperrzeiten und Standort laufen weiter. Bitte den Familieninhaber, für den Rest zu abonnieren.',
   memberSetupTrialSubtitle:
     'Die Testphase beginnt, sobald der Inhaber ein Elterngerät und ein Kindergerät verbindet.',
   premiumActivatedTitle: 'Premium freigeschaltet',
@@ -115,16 +115,16 @@ export const plans = {
   // has to name who needs to act instead of offering a button they can't use.
   familyPremiumEndedTitle: 'Das Premium dieser Familie ist beendet',
   familyPremiumEndedBody:
-    'Tageslimit, Sperrzeiten und Standort laufen weiter. Blockierte Apps, Webfilter, Warnungen und Berichte pausieren, bis der Familienbesitzer Premium verlängert.',
+    'Tageslimit, Sperrzeiten und Standort laufen weiter. Blockierte Apps, Webfilter, Warnungen und Berichte pausieren, bis der Familieninhaber Premium verlängert.',
   pricesUnavailable: 'Preise konnten nicht aus dem Store geladen werden.',
   pricesRetry: 'Erneut versuchen',
   featureRewardTasks: 'Belohnungsaufgaben',
-  sectionChoosePlan: 'Wähle deinen Tarif',
+  sectionChoosePlan: 'Wähle deinen Plan',
   saveBadge: '{{percent}} % sparen',
   billedMonthly: 'Monatliche Abrechnung',
   billedAnnually: 'Jährliche Abrechnung',
   trustCancelAnytime: 'Jederzeit kündbar',
-  trustOnePlan: 'Ein Tarif für die ganze Familie',
+  trustOnePlan: 'Ein Plan für die ganze Familie',
   trustNoAds: 'Keine Werbung',
   freePlanName: 'Kostenlos',
   freeDescription: 'Die Grundfunktionen für ein Kindergerät, zeitlich unbegrenzt.',
@@ -134,4 +134,27 @@ export const plans = {
   planPeriodOnce: 'einmalig',
   billedOnce:
     'Einmal zahlen für bis zu {{devices}} Kindergeräte, solange es KidGate gibt',
+  sectionFreePlan: 'Wenn du nie abonnierst',
+  devicesUnlimited: 'Unbegrenzt viele Kindergeräte',
+  featureAppLimits: 'App-Limits',
+  featureWebHistory: 'Web-Verlauf',
+  featureWeeklyReport: 'Wochenbericht',
+  featureChildReport: 'Berichte pro Kind',
+  featureStarChart: 'Sternetafel',
+  featureFootnoteAppLimits:
+    'App-Limits brauchen ein Android-Gerät oder einen Mac — Apples Bildschirmzeit verrät nicht, welche App auf iPhone oder iPad gerade offen ist.',
+  sectionPlatforms: 'Wo KidGate läuft',
+  platformIos: 'iPhone und iPad',
+  platformIosDetail: 'Eltern- oder Kindgerät · iOS 16 und neuer',
+  platformAndroid: 'Android',
+  platformAndroidDetail: 'Eltern- oder Kindgerät · Android 7 und neuer',
+  platformMac: 'Mac',
+  platformMacDetail: 'Nur Kindgerät · macOS 12 und neuer',
+  platformComingSoon: 'Demnächst',
+  platformWindows: 'Windows',
+  platformWindowsDetail: 'Nur Kindgerät · Windows 10 und neuer',
+  platformAndroidTv: 'Android TV',
+  platformAndroidTvDetail: 'Nur Kindgerät · Android TV 7 und neuer',
+  platformChromebook: 'Chromebook',
+  platformChromebookDetail: 'Kindgerät · nur Web-Filter in Chrome',
 } as const;

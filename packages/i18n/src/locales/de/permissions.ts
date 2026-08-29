@@ -2,12 +2,12 @@ export const permissions = {
   cameraPermissionRequired: 'Für diese Funktion ist Kamerazugriff erforderlich.',
   allowCameraTitle: 'Kamera erlauben',
   cameraPermissionMessage:
-    'KidGate verwendet die Kamera, damit du mit SOS und Check-Ins schnell ein Foto senden kannst.',
+    'KidGate verwendet die Kamera, damit du mit SOS und Check-ins schnell ein Foto senden kannst.',
   allow: 'Erlauben',
   notNow: 'Nicht jetzt',
   cameraTurnedOffTitle: 'Kamera ist für KidGate deaktiviert',
   cameraTurnedOffMessage:
-    'Bitte öffne die Einstellungen und erlaube die Kamera, damit deine Check-Ins und SOS-Warnungen ein Foto enthalten können.',
+    'Bitte öffne die Einstellungen und erlaube die Kamera, damit deine Check-ins und SOS-Warnungen ein Foto enthalten können.',
   openSettings: 'Einstellungen öffnen',
   notificationsLabel: 'Mitteilungen',
   notificationsAllowed: 'Mitteilungen sind für KidGate aktiviert.',
@@ -45,6 +45,8 @@ export const permissions = {
   oemAutostartHintOther:
     'Erlaube KidGate den automatischen Start in den Sicherheits- oder Akkueinstellungen deines Geräts.',
   markDone: 'Fertig',
+  uninstallProtectionWizardBody:
+    'Verhindert, dass diese App ohne die Eltern-PIN deinstalliert wird. Android zeigt dazu einen eigenen Bestätigungsbildschirm an.',
   notificationsWizardBody:
     'Erlaube Benachrichtigungen, damit dieses Gerät Zeitfreigaben und Erinnerungen sofort erhält.',
 } as const;

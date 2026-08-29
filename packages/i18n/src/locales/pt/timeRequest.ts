@@ -19,10 +19,10 @@ export const timeRequest = {
   statusCooldown: 'Você pode enviar um novo pedido em {{time}}.',
   statusDailyLimitExceeded:
     'Você usou todo o tempo de tela de hoje. Os apps abrirão novamente amanhã — ou antes, se seus pais adicionarem mais tempo.',
-  errorDeviceNotRegistered: 'Este aparelho não está registrado.',
+  errorDeviceNotRegistered: 'Este dispositivo não está registrado.',
   errorMinutesRange: 'Digite entre {{min}} e {{max}} minutos.',
   toastRequestSent: 'Pedido enviado. Seus pais vão analisar em breve.',
-  toastDeviceNotRegistered: 'Este aparelho ainda não está registrado.',
+  toastDeviceNotRegistered: 'Este dispositivo ainda não está registrado.',
   toastSendFailed: 'Não foi possível enviar seu pedido. Tente novamente.',
   askForMoreTime: 'Pedir mais tempo',
   askForMoreTimeSubtitle: 'Se seus pais aprovarem, você ganha mais tempo de tela hoje.',

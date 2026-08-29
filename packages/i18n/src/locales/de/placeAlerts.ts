@@ -1,5 +1,8 @@
 export const placeAlerts = {
   title: 'Ortsbenachrichtigungen',
+  familyScope: 'Eine Liste für die ganze Familie',
+  mergedFromDevices:
+    'Zusammengeführt aus den vorhandenen Orten jedes Geräts. Beim Speichern gilt diese eine Liste für alle Kindergeräte.',
   fallbackDeviceName: 'Kindergerät',
   statusReady: 'Standort bereit',
   statusNeedLocation: 'Warte auf den Standort des Kindergeräts',
@@ -21,7 +24,11 @@ export const placeAlerts = {
   radiusLabel: 'Alarmradius',
   radiusValue: '{{meters}} m',
   radiusHint:
-    'Wie nah das Gerät sein muss, damit dieser Ort zählt. Ein kleinerer Radius ist genauer, wird aber leichter verfehlt.',
+    'Wie nah das Gerät sein muss, damit dieser Ort zählt. Ein Radius, der kleiner ist als die Positionsungenauigkeit des Geräts, meldet zufällig statt genauer.',
+  radiusAccuracyHint:
+    'Dieses Gerät gibt seine Position hier auf etwa ±{{accuracy}} m genau an.',
+  radiusBelowAccuracy:
+    'Hier ist das Gerät nur auf etwa ±{{accuracy}} m genau. Nimm {{minimum}} m oder mehr, sonst meldet dieser Ort zufällig.',
   radiusDecrease: 'Kleinerer Radius',
   radiusIncrease: 'Größerer Radius',
   notifyEnterLabel: 'Alarm bei Ankunft',
@@ -34,7 +41,7 @@ export const placeAlerts = {
   mapHint: 'Ziehe die Karte, um die Markierung zu verschieben.',
   placesFull: 'Du hast das Maximum von {{max}} Orten gespeichert.',
   deleteConfirmTitle: 'Diesen Ort löschen?',
-  deleteConfirmMessage: '„{{name}}" aus den Ortsbenachrichtigungen entfernen.',
+  deleteConfirmMessage: '„{{name}}“ aus den Ortsbenachrichtigungen entfernen.',
   emptyEventsTitle: 'Noch keine Ortsaktivität',
   emptyEventsSubtitle:
     'Wenn dieses Gerät einen gespeicherten Ort betritt oder verlässt, erscheinen hier Ereignisse.',
@@ -45,11 +52,14 @@ export const placeAlerts = {
   maxPlacesToast: 'Du kannst bis zu {{max}} Orte speichern.',
   nameRequiredToast: 'Bitte gib einen Namen für den Ort ein.',
   duplicateNameToast: 'Ein Ort mit diesem Namen existiert bereits.',
-  duplicateLocationToast: 'Ein Ort deckt diesen Standort bereits ab.',
+  samePinToast:
+    'Das ist dieselbe Stelle wie „{{name}}“. Ziehe die Karte, um die Markierung zu verschieben.',
+  overlapWarning:
+    '„{{name}}“ ist {{meters}} m entfernt und sein Kreis reicht bis hierher. Solange das Gerät in beiden ist, meldet nur der nähere Ort. Zum Behalten erneut speichern.',
   copyTitle: 'Für andere Kinder übernehmen?',
   copyMessage:
-    '„{{name}}" auf die anderen {{count}} Kindergeräte in dieser Familie kopieren?',
-  copyMessage_one: '„{{name}}" auf das andere Kindergerät in dieser Familie kopieren?',
+    '„{{name}}“ auf die anderen {{count}} Kindergeräte in dieser Familie kopieren?',
+  copyMessage_one: '„{{name}}“ auf das andere Kindergerät in dieser Familie kopieren?',
   copyConfirm: 'Kopieren',
   copyDoneToast: 'Auf {{count}} Geräte kopiert.',
   copyDoneToast_one: 'Auf {{count}} Gerät kopiert.',

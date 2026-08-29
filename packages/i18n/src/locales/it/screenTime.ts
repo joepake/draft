@@ -2,9 +2,9 @@ export const screenTime = {
   turnOnScreenTime: 'Attiva Tempo di utilizzo',
   finishScreenTimeSetup: 'Completa la configurazione di Tempo di utilizzo',
   screenTimeNeededForControls:
-    'Blocco app, Ore bloccate e blocco richiedono Tempo di utilizzo su questo dispositivo.',
+    'Blocco app, Orari di blocco e blocco richiedono Tempo di utilizzo su questo dispositivo.',
   screenTimeNeededForLimits:
-    'Senza Tempo di utilizzo non si possono applicare blocco, Ore bloccate e limiti delle app.',
+    'Senza Tempo di utilizzo non si possono applicare blocco, Orari di blocco e limiti delle app.',
   screenTimeStepOpenKidGate: 'Apri KidGate su questo dispositivo del bambino.',
   screenTimeStepAllowUsage:
     'Nella schermata Stato, seleziona Consenti utilizzo di app e siti web.',
@@ -29,7 +29,7 @@ export const screenTime = {
   screenTimeBannerBodyDenied:
     '{{appName}} richiede Tempo di utilizzo attivo in Impostazioni.',
   screenTimeBannerBodyRequest:
-    'Questo permette ai tuoi genitori di bloccare app e impostare Ore bloccate su questo dispositivo.',
+    'Questo permette ai tuoi genitori di bloccare app e impostare Orari di blocco su questo dispositivo.',
   usageAccessBannerTitle: 'Attiva Accesso ai dati di utilizzo',
   usageAccessBannerBody:
     'KidGate ha bisogno dell’Accesso ai dati di utilizzo per monitorare il tempo e applicare i limiti.',

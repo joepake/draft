@@ -17,4 +17,6 @@ export const appAlerts = {
   infoLine3:
     'Tinjau daftarnya di sini, lalu blokir aplikasi berisiko dari Aplikasi Diblokir.',
   recentTitle: 'Perubahan terbaru',
+  statInstalled: 'Terpasang',
+  statRemoved: 'Terhapus',
 } as const;

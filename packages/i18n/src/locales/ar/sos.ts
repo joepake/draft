@@ -16,7 +16,7 @@ export const sos = {
   noPhoto: 'لا توجد صورة مرفقة بهذا التنبيه.',
   acknowledgedAt: 'تم الاطلاع {{time}}',
   openInMaps: 'فتح في الخرائط',
-  acknowledgeButton: 'أنا في الطريق',
+  acknowledgeButton: 'سأتولى الأمر',
   acknowledgingButton: 'جارٍ الحفظ…',
   toastAcknowledgeFailed: 'تعذر تأكيد الاطلاع. يرجى المحاولة مرة أخرى بعد قليل.',
   emptyTitle: 'لا توجد تنبيهات SOS بعد',
@@ -24,6 +24,9 @@ export const sos = {
     'عندما يضغط طفلك مطولاً على زر SOS لمدة 5 ثوانٍ، تظهر التنبيهات هنا مع صورة وموقع.',
   alertMessage: '\u200F{{childName}} بحاجة إلى مساعدة — تم إرسال SOS',
   toastSent: 'تم إرسال SOS. ابقَ في مكان آمن إن استطعت — تم إشعار والديك.',
+  escapeGrantedTitle: 'تم إرسال SOS',
+  escapeGrantedBody:
+    'تم إشعار والديك. هذا الجهاز مفتوح لمدة 15 دقيقة، ثم سيُقفل من جديد.',
   toastSentWithoutPhoto:
     'تم إرسال SOS، لكن بدون صورة. يرجى السماح بالوصول إلى الكاميرا من الإعدادات والمحاولة مرة أخرى إن أمكن.',
   toastSendFailed: 'تعذر إرسال SOS. يرجى المحاولة مرة أخرى، أو الاتصال بشخص تثق به.',
@@ -57,7 +60,7 @@ export const sos = {
   tapPhotoToEnlarge: 'اضغط على الصورة لتكبيرها',
   noPhotoAttached: 'لم يتم إرفاق صورة بهذا التنبيه.',
   sentRelativeTime: 'تم الإرسال {{relativeTime}}',
-  imOnIt: 'أنا في الطريق',
+  imOnIt: 'سأتولى الأمر',
   acknowledging: 'جارٍ التأكيد…',
   unableToAcknowledgeSos: 'تعذر تأكيد الاطلاع. يرجى المحاولة مرة أخرى بعد قليل.',
   noLocationSharedWithSos: 'لم تتم مشاركة أي موقع مع هذا التنبيه.',

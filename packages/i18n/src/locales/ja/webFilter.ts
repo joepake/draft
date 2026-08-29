@@ -1,16 +1,24 @@
 export const webFilter = {
   title: 'Webフィルター',
   fallbackDeviceName: '子どものデバイス',
+  appliesToAll: '{{name}}の{{count}}台すべてのデバイスに適用されます',
+  coverageLine: '{{total}}台中{{enforcing}}台で有効',
+  mergeNotice:
+    '{{name}}のデバイスごとにウェブフィルター設定が異なっていました。ここで保存すると、より厳しい設定に統合された1つの設定がすべてに適用されます。',
+  mergeLoosened: 'すべてのデバイスで許可されるようになりました: {{domains}}',
   toastUpdateFailed: 'Webフィルターを更新できませんでした。もう一度お試しください。',
   heroTitle: 'アダルトサイトをフィルタリング',
   heroSubtitleIos:
     'Appleスクリーンタイムのウェブコンテンツフィルターを使って、お子さまのデバイスのSafariやアプリ内ブラウザでアダルトコンテンツを制限します。',
   heroSubtitleAndroid:
     'お子さまのAndroidデバイスでローカルDNS VPNを使い、既知のアダルトドメインをブラウザや多くのアプリでブロックします。',
-  toggleLabel: 'Webフィルターを有効にする',
+  heroSubtitleMacos:
+    '子どものMacでKidGateのコンテンツフィルターを実行し、ブラウザや多くのアプリで既知のアダルトサイトをブロックします。',
   toggleHintIos: 'お子さまのデバイスでスクリーンタイムの権限が必要です。',
   toggleHintAndroid:
     'お子さまが一度KidGateのVPN接続を承認する必要があります。フィルターの動作にはVPNをオンのままにしてください。',
+  toggleHintMacos:
+    '子どもはシステム設定でKidGateフィルター拡張機能を一度承認する必要があります。フィルターが機能するよう承認された状態を保ってください。',
   toggleAccessibilityLabel: 'Webフィルターを有効にする',
   infoTitle: '仕組み',
   infoLine1Ios: 'Appleがアダルトサイトを自動でフィルタリングします。',
@@ -26,6 +34,14 @@ export const webFilter = {
     'フィルタリング中はお子さまのデバイスにVPNアイコンが表示されます。VPNをオフにするとフィルターも止まります — KidGateを開き直すと復旧します。',
   infoLine4Android:
     '設定 → ネットワークとインターネット → プライベートDNS → オフ に進みます。',
+  infoLine1Macos:
+    'KidGateはMac上でコンテンツフィルターを実行し、アクセスされているサイトを確認して、設定したカテゴリに該当するものをブロックします。',
+  infoLine2Macos:
+    '子どものMacでフィルターが未承認と表示される場合は、システム設定 → 一般 → ログイン項目と機能拡張を開いて承認してください。',
+  infoLine3Macos:
+    '承認されると、子どものMacはフィルターを有効と表示します。そこでオフにされた場合は、KidGateを再度開いて復元してください。',
+  infoLine4Macos:
+    'フィルターはサイト名を読み取りますが、最近のブラウザは訪問の約半分でこれを隠すため、それらのサイトはカテゴリーと照合されません。それでも、この方法で子どもがアクセスするほとんどのサイトはブロックされます。',
   privateDnsBannerTitle: 'プライベートDNSをオフにする',
   privateDnsBannerBody:
     'プライベートDNSがオンのため、アダルトフィルターが回避される可能性があります。フィルターを機能させるにはオフにしてください。',
@@ -36,6 +52,7 @@ export const webFilter = {
   vpnConsentBannerButton: 'VPNを有効にする',
   iosOnlyNote: 'iOSではスクリーンタイムを使用',
   androidVpnNote: 'AndroidではローカルDNS VPNを使用',
+  macosFilterNote: 'MacではKidGateのコンテンツフィルターを使用',
   webFilteringNote:
     'iOSはスクリーンタイムのアダルトフィルター、AndroidはローカルDNS VPNのブロックリストを使用します。',
   safeSearchAlertsNote:
@@ -68,28 +85,91 @@ export const webFilter = {
   listFull: 'このリストには最大{{max}}件まで保存できます。',
   openHistory: 'ウェブ履歴',
   openHistorySubtitle: 'この端末がどのサイトに到達し、何がブロックされたかを見る',
+  blockedPageTitle: 'サイトはブロックされました',
+  blockedPageBody:
+    'KidGate がご家族のためにこのサイトをブロックしました。間違いだと思う場合は保護者に相談してください。',
   category: {
     adult: 'アダルト',
+    selfHarm: '自傷・摂食障害',
+    // App-only categories, from APP_CATEGORIES in @kidgate/schema/aiApps —
+    // an app can be a school app, a browser or a code editor, and none of
+    // those has a website equivalent worth blocking. They live in this map
+    // so a parent meets ONE vocabulary: the app list and the web filter
+    // must not name the same idea two different ways. The web filter's own
+    // screen iterates WEB_FILTER_CATEGORIES and never reaches these.
+    education: '教育',
+    utility: 'ユーティリティ',
+    browser: 'ウェブブラウザ',
+    devTools: 'プログラミング・開発ツール',
+    messaging: 'メッセージ・通話',
+    community: 'フォーラム・コミュニティ',
+    shortVideo: 'ショート動画',
+    creative: '写真・動画・アート',
+    productivity: 'メモ・仕事効率化',
+    reading: '本・マンガ',
+    fileSharing: 'ファイル共有・ダウンロード',
+    bypass: '制限回避アプリ',
     gambling: 'ギャンブル',
+    gameGambling: 'ルートボックス・スキン賭博',
     dating: '出会い系',
+    strangerChat: '見知らぬ人とのチャット',
     drugs: '薬物・アルコール',
-    violence: '暴力・過激思想',
+    violence: '暴力・グロ',
+    extremism: '過激思想・ヘイト',
     piracy: '海賊版',
     social: 'SNS',
     videoStreaming: '動画配信',
+    music: '音楽',
     gaming: 'ゲーム',
     shopping: 'ショッピング',
+    aiCompanion: 'AIコンパニオン',
+    aiAssistant: 'AIアシスタント',
+    cryptoTrading: '暗号資産・取引',
+    vpn: 'VPNアプリ',
   },
   categoryHint: {
     adult: 'アダルト・露骨な内容のサイト',
-    gambling: 'カジノ、賭博、ガチャ',
-    dating: '出会い系・見知らぬ人とのチャット',
+    selfHarm: '自傷や自殺をあおる掲示板',
+    gambling: 'カジノ、スポーツ賭博、ポーカー',
+    gameGambling: 'ケース開封、スキンやRobloxの賭け',
+    dating: '出会い系アプリ',
+    strangerChat: 'Omegle系サイト、ランダムビデオチャット',
     drugs: '大麻、電子タバコ、酒',
-    violence: '残虐・過激思想の掲示板',
+    violence: 'グロ画像やショックサイト',
+    extremism: 'ヘイト掲示板・過激思想サイト',
     piracy: 'トレントと違法配信',
     social: 'Facebook、Instagram、TikTok、Discord',
     videoStreaming: 'YouTube、Netflix、Twitch',
+    music: 'Spotify、SoundCloud、Zing MP3',
     gaming: 'Roblox、Steam、ゲームサイト',
     shopping: 'Amazon、楽天、ファストファッション',
+    aiCompanion: 'Character.AI、Replika、ロールプレイbot',
+    aiAssistant: 'ChatGPT、Gemini、Copilot',
+    cryptoTrading: 'Binance、Coinbase、取引アプリ',
+    vpn: 'VPNのダウンロードページ。インストール済みのアプリは対象外。',
   },
+  categoryGroup: {
+    harm: '有害なコンテンツ',
+    contact: '見知らぬ相手',
+    bypass: 'フィルターの回避',
+    ai: 'AI',
+    entertainment: '娯楽・SNS',
+    money: '買い物・お金',
+  },
+  categoriesOnCount: '{{total}}件中{{on}}件がオン',
+  askToOpen: 'おうちの人に聞く',
+  askToOpenSubtitle: '許可されたら、このサイトを開けるよ。',
+  askToOpenDomainLabel: 'どのサイト？',
+  askToOpenPending: 'もうリクエストを送ってあるよ。お返事を待ってね。',
+  askToOpenTooSoon: 'いま送ったばかりだよ。1分たったらもう一度試してね。',
+  requestsTitle: 'サイトのリクエスト',
+  requestsSubtitle: 'この端末が許可を求めたサイト。',
+  siteRequestApproved: 'サイトを許可しました',
+  siteRequestApprovedDescription:
+    '{{deviceName}}の「常に許可」に{{domain}}を追加しました。',
+  siteRequestDenied: 'サイトのリクエストを却下しました',
+  siteRequestDeniedDescription:
+    '{{deviceName}}では{{domain}}は引き続きブロックされます。',
+  siteRequestReceived: 'サイトのリクエスト',
+  siteRequestReceivedDescription: '{{deviceName}}が{{domain}}を開こうとしています。',
 } as const;

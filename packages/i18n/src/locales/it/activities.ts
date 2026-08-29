@@ -2,6 +2,7 @@ export const activities = {
   title: 'Attività',
   subtitleAllDevices: 'Eventi più recenti di tutti i dispositivi',
   subtitleTimelineForDevice: 'Cronologia di {{deviceName}}',
+  subtitleTimelineForChild: 'Cronologia di {{childName}}',
   fallbackDeviceName: 'dispositivo',
   liveBadge: 'Live',
   errorTitle: 'Impossibile caricare l’attività',
@@ -38,16 +39,32 @@ export const activities = {
   activityTypePlaceExit: 'Uscita da un luogo',
   activityTypeTamper: 'Protezione',
   activityTypeScreenTime: 'Tempo di utilizzo',
+  activityTypeWebFilter: 'Filtro web',
   activityTypeEmergency: 'Emergenza',
   activityTypeUnknown: 'Attività',
 
+  sosEscapeTitle: 'Sblocco di emergenza',
+  sosEscapeBody: 'L’SOS ha sbloccato questo dispositivo per {{minutes}} minuti.',
+  sosEscapeRepeatTitle: 'Sblocco di emergenza ({{count}} volte oggi)',
+  sosEscapeRepeatBody:
+    'L’SOS ha sbloccato questo dispositivo per {{minutes}} minuti. Sono {{count}} volte oggi.',
   appBlockedTitle: '{{appName}}',
   appBlockedBody: 'Un’app bloccata è stata aperta e KidGate l’ha chiusa.',
-  appInstalledTitle: '{{appName}}',
-  appInstalledBody: 'Una nuova app è stata installata sul dispositivo del bambino.',
+  appInstalledTitle: 'App installata',
+  appInstalledBody: 'L’app {{appName}} è stata installata sul dispositivo del bambino.',
 
-  appRemovedTitle: '{{appName}}',
-  appRemovedBody: 'Un’app è stata disinstallata dal dispositivo del bambino.',
+  messageAlertTitle: 'Contenuto del messaggio preoccupante',
+  messageAlertBody: 'Una parola segnalata è stata rilevata in {{appName}}.',
+  messageAlertBodyOutgoing:
+    'Una parola segnalata è stata rilevata in un messaggio scritto da tuo figlio in {{appName}}.',
+  activityTypeMessageAlert: 'Avviso messaggio',
+  messageCheckedTitle: 'Controllato, nulla di preoccupante',
+  messageCheckedBody:
+    'Una parola sorvegliata è comparsa in {{appName}} ed è risultata innocua nel contesto.',
+  activityTypeMessageChecked: 'Controllato',
+  appRemovedTitle: 'App disinstallata',
+  appRemovedBody:
+    'L’app {{appName}} è stata disinstallata dal dispositivo del bambino.',
 
   placeEnterTitle: 'Entrato in {{placeName}}',
   placeEnterBody: 'Il dispositivo del bambino è entrato in un luogo salvato.',
@@ -84,7 +101,7 @@ export const activities = {
   tamperBatteryBody:
     'Il sistema potrebbe sospendere KidGate finché la batteria non verrà nuovamente impostata su Senza restrizioni.',
 
-  tamperExactAlarmTitle: 'Sveglie e promemoria disattivato',
+  tamperExactAlarmTitle: 'Sveglie e promemoria disattivati',
   tamperExactAlarmBody:
     'Gli Orari di blocco potrebbero iniziare o finire in ritardo finché Sveglie e promemoria non verrà di nuovo consentito.',
 
@@ -98,7 +115,7 @@ export const activities = {
 
   tamperCameraTitle: 'La fotocamera è stata disattivata',
   tamperCameraBody:
-    'Le foto SOS e Check-In potrebbero non essere inviate finché l’accesso alla fotocamera non verrà ripristinato.',
+    'Le foto SOS e Check-in potrebbero non essere inviate finché l’accesso alla fotocamera non verrà ripristinato.',
 
   tamperBackgroundRefreshTitle: 'Aggiornamento app in background disattivato',
   tamperBackgroundRefreshBody:
@@ -106,7 +123,7 @@ export const activities = {
 
   tamperDeviceClockTitle: 'La data o l’ora sono state modificate',
   tamperDeviceClockBody:
-    'L’orologio di questo dispositivo non corrisponde più all’ora corretta. Il Tempo di utilizzo e le Ore bloccate continueranno a utilizzare l’ora corretta.',
+    'L’orologio di questo dispositivo non corrisponde più all’ora corretta. Il Tempo di utilizzo e gli Orari di blocco continueranno a utilizzare l’ora corretta.',
 
   /** @deprecated legacy description keys — kept for old activity docs */
   tamperOverlay: 'È stata disattivata l’autorizzazione “Mostra sopra le altre app”.',
@@ -120,10 +137,13 @@ export const activities = {
   tamperBackgroundRefresh: 'L’aggiornamento app in background è stato disattivato.',
 
   filterAllDevices: 'Tutti i dispositivi',
+  // The child tier of the feed filter — "All" would read as all devices.
+  filterAllChildren: 'Tutti',
   dateToday: 'Oggi',
   dateYesterday: 'Ieri',
 
   filterByDevice: 'Filtra per {{label}}',
+  filterByChild: 'Mostra solo {{label}}',
 
   openFullSosHistory: 'Apri la cronologia completa degli SOS',
 

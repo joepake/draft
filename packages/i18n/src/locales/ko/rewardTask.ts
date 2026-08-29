@@ -30,10 +30,10 @@ export const rewardTask = {
   heroUnit: '분 획득 가능',
   heroCaption: '진행 가능한 과제 {{count}}개',
   heroCaptionEmpty: '과제를 만들어 자녀가 추가 시간을 얻게 해주세요.',
-  noLimitHintTitle: '일일 한도가 없어요',
+  noLimitHintTitle: '일일 제한이 없어요',
   noLimitHintBody:
-    '보너스 시간은 기기에 일일 한도가 있을 때만 적용돼요. 먼저 일일 한도에서 설정해 주세요.',
-  noLimitHintCta: '일일 한도 설정',
+    '보너스 시간은 기기에 일일 제한이 있을 때만 적용돼요. 먼저 일일 제한에서 설정해 주세요.',
+  noLimitHintCta: '일일 제한 설정',
   openSectionTitle: '진행 가능한 과제',
   tabOpen: '할 일',
   tabDone: '완료',

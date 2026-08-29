@@ -1,0 +1,25 @@
+export const appInventory = {
+  title: 'Apps on this device',
+  subtitle: 'Everything KidGate found installed, not only what changed.',
+  summaryFlagged: '{{flagged}} of {{total}} apps are worth a look',
+  summaryClear: 'Nothing flagged among {{total}} apps',
+  flaggedTitle: 'Worth a look',
+  otherTitle: 'Everything else',
+  unclassifiedTitle: 'Not identified yet',
+  scannedLabel: 'Last scan',
+  staleNote: 'This list is out of date. It refreshes when the device next checks in.',
+  truncatedNote: 'Showing {{shown}} of {{total}} apps found.',
+  firstScanNote:
+    'This is the first scan, so KidGate cannot say when any of these arrived.',
+  newBadge: 'New',
+  ageBadge: '{{age}}+',
+  emptyTitle: 'Nothing scanned yet',
+  emptySubtitle: 'The device publishes its app list the next time it checks in.',
+  unsupportedTitle: 'This device cannot list its apps',
+  unsupportedIos:
+    'Apple does not let any app read what is installed on an iPhone or iPad, so KidGate can only report apps as they are used.',
+  unsupportedGeneric: 'This device does not report the apps installed on it.',
+  incompleteNote: 'An app with no icon on the home screen may not appear here.',
+  blockHint: 'To stop an app, open Blocked Apps on the device itself.',
+  howItWorksLabel: 'How this list works',
+} as const;

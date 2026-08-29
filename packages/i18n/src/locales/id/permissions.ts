@@ -46,6 +46,8 @@ export const permissions = {
   oemAutostartHintOther:
     'Izinkan KidGate mulai otomatis di pengaturan keamanan atau baterai perangkat Anda.',
   markDone: 'Selesai',
+  uninstallProtectionWizardBody:
+    'Mencegah aplikasi ini dihapus tanpa PIN Orang Tua. Android menampilkan layar konfirmasinya sendiri.',
   notificationsWizardBody:
     'Izinkan notifikasi agar perangkat ini segera menerima persetujuan waktu dan pengingat.',
 } as const;

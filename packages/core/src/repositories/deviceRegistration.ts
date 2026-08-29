@@ -36,6 +36,70 @@ export interface DeviceIdentity {
   /** The name the owner gave the hardware. Often the only recognisable label. */
   deviceLabel?: string;
   osVersion?: string;
+  /**
+   * Which KidGate build is running here — `version` and `versionCode` from the
+   * root `package.json`, as this install shipped them, plus the OTA bundle on
+   * the platforms that have one.
+   *
+   * Travels with the hardware facts because it is written by the same calls and
+   * has the same lifetime, not because it is one: this is the only answer to
+   * "which of a family's devices are actually on the new build", and before
+   * these fields the desktop agent was the only client that reported it
+   * (`apps/mobile` sent its version on a support report and nowhere else).
+   * Every platform has some install that never updates — a Mac nobody
+   * re-downloads, a television sideloaded once, a phone whose store updates are
+   * off — and none of it is visible to a parent until the device says so.
+   *
+   * All three optional and all three **absent rather than empty**: a record
+   * written by an older build has to read as unknown, never as out of date.
+   * `appBuild` is a string because Windows has no build number to report at all
+   * (Tauri writes the semver there), and "absent" and "0" must not look alike.
+   * See `ChildDeviceRecord` in `@kidgate/schema/device` for `otaVersion`.
+   */
+  appVersion?: string;
+  appBuild?: string;
+  otaVersion?: number;
+}
+
+/**
+ * The hardware facts, as a spread.
+ *
+ * Five call sites below wrote this same four-line spread, and a sixth field
+ * added to `DeviceIdentity` had to be pasted into each of them — which is how a
+ * field comes to be written by registration and dropped by the heartbeat, so a
+ * parent's screen shows it once and then watches it go stale for reasons
+ * nothing explains.
+ *
+ * Every field is spread only when it has a value: `undefined` is rejected
+ * outright by RNFB, and writing an empty string would overwrite a good stored
+ * value with a blank on any client whose probe failed this once.
+ */
+function hardwareFields(identity: DeviceIdentity): Record<string, unknown> {
+  return {
+    ...(identity.formFactor ? { formFactor: identity.formFactor } : {}),
+    ...(identity.modelName ? { modelName: identity.modelName } : {}),
+    ...(identity.deviceLabel ? { deviceLabel: identity.deviceLabel } : {}),
+    ...(identity.osVersion ? { osVersion: identity.osVersion } : {}),
+  };
+}
+
+/**
+ * The build fields, as a spread. Child documents only.
+ *
+ * Not written to a parent device row: the question these answer is "is this
+ * child's agent enforcing an old build", and a parent's own phone tells them
+ * about itself through the store. Adding them there later is a schema change
+ * (`ParentDeviceRecord` carries neither), not a spread — say so rather than
+ * quietly widening this.
+ */
+function buildFields(identity: DeviceIdentity): Record<string, unknown> {
+  return {
+    ...(identity.appVersion ? { appVersion: identity.appVersion } : {}),
+    ...(identity.appBuild ? { appBuild: identity.appBuild } : {}),
+    ...(typeof identity.otaVersion === 'number'
+      ? { otaVersion: identity.otaVersion }
+      : {}),
+  };
 }
 
 export interface DeviceRegistrationRepositoryDeps {
@@ -91,10 +155,7 @@ export function createDeviceRegistrationRepository(
           // `createdAt` only on first write — a merge that re-stamped it would
           // make every device look newly added on the parent's device list.
           createdAt: now,
-          ...(identity.formFactor ? { formFactor: identity.formFactor } : {}),
-          ...(identity.modelName ? { modelName: identity.modelName } : {}),
-          ...(identity.deviceLabel ? { deviceLabel: identity.deviceLabel } : {}),
-          ...(identity.osVersion ? { osVersion: identity.osVersion } : {}),
+          ...hardwareFields(identity),
         },
         { merge: true },
       );
@@ -103,10 +164,22 @@ export function createDeviceRegistrationRepository(
     /**
      * Register this install as a child device.
      *
-     * Reads the existing document first and carries `isLocked` and `controls`
-     * forward: re-registering happens on every launch, and resetting either
-     * would unlock a locked phone or wipe a parent's settings simply because
-     * the child opened the app.
+     * Reads the existing document first and carries `isLocked`, `controls` and
+     * **`name`** forward: re-registering happens on every launch, and resetting
+     * any of them would unlock a locked phone, wipe a parent's settings, or
+     * rename a device back to its factory word simply because the child opened
+     * the app.
+     *
+     * `name` was the one that was not carried, and it is the one a parent
+     * touches by hand. Every agent passes a default here — "Chrome",
+     * "Chromebook", the phone's model — because at pairing there is nothing
+     * else to call the device; so every re-registration overwrote whatever the
+     * family had renamed it to. On `apps/extension` that is a 6-hourly write,
+     * which is how it was found: a device renamed in the morning was called
+     * Chrome again by lunchtime, with no event anywhere saying why.
+     *
+     * The default therefore applies **only to a document that does not have a
+     * name yet**, which is exactly the first registration.
      */
     async registerChildDevice(
       userId: string,
@@ -117,23 +190,28 @@ export function createDeviceRegistrationRepository(
       const snapshot = await db.getDoc(childDeviceDoc(userId, deviceId));
       const existing = (snapshot.data() ?? {}) as Record<string, unknown>;
       const isLocked = existing.isLocked === true;
+      const existingName =
+        typeof existing.name === 'string' ? existing.name.trim() : '';
       const now = db.fieldValues.serverTimestamp();
 
       await db.setDoc(
         childDeviceDoc(userId, deviceId),
         {
           deviceId,
-          name,
+          name: existingName || name,
           platform: identity.platform,
           status: isLocked ? 'locked' : 'online',
           isLocked,
           controls: existing.controls ?? DEFAULT_DEVICE_CONTROLS,
           lastActiveAt: now,
           ...(snapshot.exists ? {} : { createdAt: now }),
-          ...(identity.formFactor ? { formFactor: identity.formFactor } : {}),
-          ...(identity.modelName ? { modelName: identity.modelName } : {}),
-          ...(identity.deviceLabel ? { deviceLabel: identity.deviceLabel } : {}),
-          ...(identity.osVersion ? { osVersion: identity.osVersion } : {}),
+          ...hardwareFields(identity),
+          /*
+           * Rewritten on every registration, not only the first, because the
+           * event this has to notice is precisely an install being replaced by
+           * a newer one — and that does not re-register, it re-launches.
+           */
+          ...buildFields(identity),
         },
         { merge: true },
       );
@@ -151,6 +229,27 @@ export function createDeviceRegistrationRepository(
      * Does nothing when the device has never registered — a heartbeat must not
      * create a device row that registration has not written yet.
      */
+    /**
+     * Whether this parent phone has the home-screen widget placed.
+     *
+     * The server's widget-refresh push (`functions/lib/widgetPush.js`) sends
+     * only to devices where this is true — a silent push to a phone with no
+     * widget spends the family's rate-limit window on nothing. Written by
+     * `useParentWidgetSync` whenever the answer changes, including to false
+     * when the parent removes the widget, which is what stops the pushes.
+     */
+    async setParentWidgetActive(
+      userId: string,
+      deviceId: string,
+      active: boolean,
+    ): Promise<void> {
+      await db.setDoc(
+        parentDeviceDoc(userId, deviceId),
+        { parentWidgetActive: active },
+        { merge: true },
+      );
+    },
+
     async syncParentDevice(
       userId: string,
       deviceId: string,
@@ -180,10 +279,7 @@ export function createDeviceRegistrationRepository(
           lastActiveAt: db.fieldValues.serverTimestamp(),
           utcOffsetMinutes: options.utcOffsetMinutes,
           ...(options.name ? { name: options.name } : {}),
-          ...(identity.formFactor ? { formFactor: identity.formFactor } : {}),
-          ...(identity.modelName ? { modelName: identity.modelName } : {}),
-          ...(identity.deviceLabel ? { deviceLabel: identity.deviceLabel } : {}),
-          ...(identity.osVersion ? { osVersion: identity.osVersion } : {}),
+          ...hardwareFields(identity),
         },
         { merge: true },
       );
@@ -243,11 +339,58 @@ export function createDeviceRegistrationRepository(
         {
           lastActiveAt: now,
           protectionStatus: { ...status, lastCheckedAt: now },
-          ...(identity.formFactor ? { formFactor: identity.formFactor } : {}),
-          ...(identity.modelName ? { modelName: identity.modelName } : {}),
-          ...(identity.deviceLabel ? { deviceLabel: identity.deviceLabel } : {}),
-          ...(identity.osVersion ? { osVersion: identity.osVersion } : {}),
+          ...hardwareFields(identity),
+          ...buildFields(identity),
         },
+        { merge: true },
+      );
+    },
+
+    /**
+     * Report whether message monitoring is actually watching on this device.
+     *
+     * Its own write rather than a field inside `protectionStatus`, for the
+     * reason `@kidgate/schema/messageMonitoringState` sets out: that structure
+     * is the permissions every device needs, and this is an opt-in feature a
+     * family may decline. Merging them would put a permanent red row on every
+     * device whose family said no.
+     *
+     * No `lastActiveAt` here, unlike the protection write above. This one runs
+     * on the same beat, so stamping it twice buys nothing — and the heartbeat
+     * is the field a parent's "offline" reading comes from, which is not a
+     * question this write has an answer to.
+     */
+    async updateChildMessageMonitoringState(
+      userId: string,
+      deviceId: string,
+      state: Record<string, unknown>,
+    ): Promise<void> {
+      await db.setDoc(
+        childDeviceDoc(userId, deviceId),
+        {
+          messageMonitoring: {
+            ...state,
+            lastCheckedAt: db.fieldValues.serverTimestamp(),
+          },
+        },
+        { merge: true },
+      );
+    },
+
+    /**
+     * The enforcement acknowledgement: the agent applied this policy
+     * natively. Callers gate on fingerprint change — see
+     * `domain/appliedPolicy` for why an ungated write would fire the device
+     * trigger per schedule-window flip.
+     */
+    async updateAppliedPolicy(
+      userId: string,
+      deviceId: string,
+      applied: { fingerprint: string; atMs: number },
+    ): Promise<void> {
+      await db.setDoc(
+        childDeviceDoc(userId, deviceId),
+        { appliedPolicy: applied },
         { merge: true },
       );
     },
@@ -259,10 +402,8 @@ export function createDeviceRegistrationRepository(
     ): Promise<void> {
       await db.updateDoc(childDeviceDoc(userId, deviceId), {
         platform: identity.platform,
-        ...(identity.formFactor ? { formFactor: identity.formFactor } : {}),
-        ...(identity.modelName ? { modelName: identity.modelName } : {}),
-        ...(identity.deviceLabel ? { deviceLabel: identity.deviceLabel } : {}),
-        ...(identity.osVersion ? { osVersion: identity.osVersion } : {}),
+        ...hardwareFields(identity),
+        ...buildFields(identity),
       });
     },
 

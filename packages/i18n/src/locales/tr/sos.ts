@@ -12,7 +12,7 @@ export const sos = {
   noPhoto: 'Bu uyarıya fotoğraf eklenmedi.',
   acknowledgedAt: 'Onaylandı {{time}}',
   openInMaps: 'Haritalar’da aç',
-  acknowledgeButton: 'Geliyorum',
+  acknowledgeButton: 'Ben ilgileniyorum',
   acknowledgingButton: 'Kaydediliyor…',
   toastAcknowledgeFailed: 'Onaylanamadı. Lütfen birazdan tekrar deneyin.',
   emptyTitle: 'Henüz SOS uyarısı yok',
@@ -20,6 +20,9 @@ export const sos = {
     'Çocuğunuz SOS’u 5 saniye basılı tuttuğunda uyarılar burada fotoğraf ve konumla birlikte görünür.',
   alertMessage: '{{childName}} yardıma ihtiyaç duyuyor — SOS gönderildi',
   toastSent: 'SOS gönderildi. Mümkünse güvenli bir yerde kal — ailen bilgilendirildi.',
+  escapeGrantedTitle: 'SOS gönderildi',
+  escapeGrantedBody:
+    'Ailene haber verildi. Bu cihaz 15 dakika boyunca açık kalacak, sonra tekrar kilitlenecek.',
   toastSentWithoutPhoto:
     'SOS gönderildi, ancak fotoğraf olmadan. Mümkünse Ayarlar’dan Kamera’ya izin verip tekrar dene.',
   toastSendFailed: 'SOS gönderilemedi. Tekrar dene veya güvendiğin birini ara.',
@@ -55,7 +58,7 @@ export const sos = {
   tapPhotoToEnlarge: 'Büyütmek için fotoğrafa dokunun',
   noPhotoAttached: 'Bu uyarıya fotoğraf eklenmedi.',
   sentRelativeTime: 'Gönderildi {{relativeTime}}',
-  imOnIt: 'Geliyorum',
+  imOnIt: 'Ben ilgileniyorum',
   acknowledging: 'Onaylanıyor…',
   unableToAcknowledgeSos: 'Onaylanamadı. Lütfen birazdan tekrar deneyin.',
   noLocationSharedWithSos: 'Bu SOS ile konum paylaşılmadı.',

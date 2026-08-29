@@ -7,6 +7,73 @@ export const family = {
   addChildOption: 'Çocuk cihazı ekle',
   addJoinFamilyOption: 'Aileye katıl',
   addParentOption: 'Ebeveyn davet et',
+  loginWebOption: "Web'de giriş yap",
+  // The "who uses this device?" assignment sheet.
+  assignSheetTitle: '{{deviceName}} cihazını kim kullanıyor?',
+  assignSheetBody: 'Ekran süresi ve yıldızlar seçtiğiniz çocuğa sayılır.',
+  assignSheetNobody: 'Hiç kimse',
+  assignSheetNobodyHint: 'Ortak cihaz — kimseye sayılmaz.',
+  assignSheetAddAndAssign: 'Ekle ve ata',
+  // The "protect this child now?" starter sheet, offered right after a fresh
+  // pairing is assigned. Content pre-exists on the device; this flips it on.
+  quickProtectTitle: '{{childName}} şimdi korunsun mu?',
+  quickProtectBody:
+    'Başlangıç için hazır bir koruma setini açın. Her şeyi daha sonra çocuk profilinden ayrıntılı ayarlayabilirsiniz.',
+  quickProtectBedtime: 'Yatma saati için Engellenen Saatler',
+  quickProtectBedtimeHint:
+    'Cihaz kullanımını gece boyunca, 22.00–07.00 arasında engeller.',
+  quickProtectDailyLimit: 'Günlük ekran süresi sınırı',
+  quickProtectDailyLimitHint:
+    'Günde {{minutes}} dakika, tüm cihazlarında ortak sayılır.',
+  quickProtectWebFilter: 'Web filtresi',
+  quickProtectWebFilterHint:
+    'Yetişkin içeriğini ve diğer riskli kategorileri engeller.',
+  quickProtectWebFilterPremium: 'Premium özellik — bir planla birlikte gelir.',
+  quickProtectApply: 'Korumayı aç',
+  quickProtectSkip: 'Şimdi değil',
+  quickProtectDone: 'Koruma açık. İstediğiniz zaman ince ayar yapabilirsiniz.',
+  quickProtectPartial:
+    'Bazı korumalar kaydedilemedi. Çocuk profilinden tekrar deneyin.',
+  pairDeviceFirstTitle: 'Henüz eşleştirilmiş cihaz yok',
+  pairDeviceFirstBody:
+    'Önce bu çocuk için bir cihaz eşleştirin — Aile sekmesinde tarama simgesine veya "+" düğmesine dokunup Çocuk cihazı ekle’yi seçin. Bu kontrol, bir cihaz bağlanır bağlanmaz çalışmaya başlar.',
+  // Child-grouped family list: group header lock-all + unassigned group.
+  lockAll: 'Tümünü kilitle',
+  unlockAll: 'Tümünün kilidini aç',
+  lockAllA11y: '{{childName}} adlı çocuğun tüm cihazlarını kilitle',
+  unlockAllA11y: '{{childName}} adlı çocuğun tüm cihazlarının kilidini aç',
+  childDetailUnassignTitle: 'Çocuktan kaldırılsın mı?',
+  childDetailUnassignBody:
+    '{{deviceName}} artık {{childName}} için sayılmayacak ve Atanmadı bölümüne geçecek. Eşleşmiş ve korumalı kalır.',
+  childDetailUnassignConfirm: 'Kaldır',
+  childDetailUnassignA11y: '{{deviceName}} cihazını bu çocuktan kaldır',
+  // The fold control on a group heading.
+  collapseGroupA11y: '{{name}} daralt',
+  expandGroupA11y: '{{name}} genişlet',
+  assignDeviceCta: 'Bir çocuğa ata…',
+  unassignedHint: 'Bu cihazlar henüz kimseye sayılmıyor.',
+  unassignedHintMember: 'Bu cihazları çocuklara yalnızca aile sahibi atar.',
+  // The footer strip: children who hold no device get no group of their own.
+  childrenWithoutDeviceTitle: 'Cihazı olmayan çocuklar',
+  // Child detail screen.
+  childDetailStarsWell: 'Bu haftaki yıldızlar',
+  childStarsA11y: 'Bu haftaki yıldızlar: {{count}}',
+  childDetailDevicesTitle: 'Cihazlar',
+  childDetailAssignMore: 'Başka bir cihaz ata…',
+  childDetailAssignSheetTitle: '{{childName}} için cihaz ata',
+  childDetailNoDevices:
+    'Henüz cihaz yok. Aşağıdan atayın veya Aile sekmesinden yeni bir cihaz eşleyin.',
+  // Same screen for a joined parent, who may pair but may not assign.
+  childDetailNoDevicesMember:
+    'Henüz cihaz yok. Hangi cihazın kime ait olduğunu yalnızca aile sahibi belirler.',
+  childDetailEditNameTitle: 'Adı düzenle',
+  childDetailColorLabel: 'Renk',
+  scanButtonAccessibility: 'Kod tara',
+  scanTitle: 'Kod tara',
+  scanBody:
+    'Kamerayı bir çocuk cihazına, aile davetine veya bilgisayarda gösterilen koda doğrultun.',
+  manualCodeLabel: '6 haneli kodu girin',
+  manualInstructions: 'Diğer cihazda gösterilen 6 haneli kodu girin.',
 
   headerHintEmpty: 'Çocuklarınızın cihazlarını yönetin ve koruyun',
 
@@ -35,6 +102,8 @@ export const family = {
 
   chipProtectedCount: '{{count}} korumalı',
 
+  childDevicesProtected: '{{count}} cihaz korunuyor',
+
   chipHealthWarnCount: '{{count}} yapılandırma bekliyor',
   chipHealthWarnCount_one: '{{count}} yapılandırma bekliyor',
 
@@ -43,6 +112,7 @@ export const family = {
   chipBlockedCount: '{{count}} engellendi',
 
   healthProtected: 'Korunuyor',
+  buildOutdated: 'Güncelleme var',
   healthNeedsSetup: 'Kurulum gerekli',
   healthOffline: 'Çevrimdışı',
 
@@ -165,6 +235,7 @@ export const family = {
   mac: 'Mac',
   windowsPc: 'Windows PC',
   androidTv: 'Android TV',
+  chromebook: 'Chromebook',
 
   deviceNameRequired: 'Lütfen cihaz için bir ad girin.',
 
@@ -213,7 +284,11 @@ export const family = {
 
   youPausedThisDevice: 'Bu cihazı kilitlediniz',
 
-  blockedHoursActiveNow: 'Engellenen saatler şu anda etkin',
+  lockSentWaitingForDevice: 'Kilit gönderildi — cihaz bekleniyor',
+
+  lockNotAppliedOnDevice: 'Bu cihaz kilidi uygulamadı',
+
+  blockedHoursActiveNow: 'Engellenen Saatler şu anda etkin',
 
   inactiveOpenKidGate: 'Etkin değil — Bu cihazda KidGate’i açın',
 
@@ -239,4 +314,21 @@ export const family = {
   batteryPercent: '%{{percent}}',
   batteryAccessibility: 'Pil yüzde {{percent}}',
   batteryChargingAccessibility: 'Pil yüzde {{percent}}, şarj oluyor',
+  childDetailPerDevice: 'Cihaza göre — hangisini seç',
+  childDetailNotAvailable: 'Kullanılamıyor',
+  childDetailNotAvailableReason: 'Hiçbir cihazında kullanılamıyor',
+  childDetailProtectionOk: 'Korunuyor',
+  childDetailProtectionAttention: '{{count}} cihaz dikkat gerektiriyor',
+  childDetailProtectionSheetTitle: 'Cihaza göre koruma',
+  childDetailRemoveTitle: 'Bu çocuğu kaldır',
+  childDetailRemovingButton: 'Kaldırılıyor…',
+  childDetailOnlineCount: '{{total}} cihazdan {{online}} tanesi çevrimiçi',
+  childDetailBudgetTitle: 'Günlük sınır',
+  childDetailSectionControls: 'Tüm cihazlarında geçerli kurallar',
+  childDetailSectionSafety: 'Tüm cihazlarından birleştirildi',
+  childDetailSectionAlerts: 'Tüm cihazları, tek akış',
+  childDetailScopeAll: 'Tüm cihazlar',
+  childDetailTodayWell: 'Bugün kullanıldı',
+  childDetailUnassignAction: 'Kaldır',
+  childDetailLimitShared: 'Tüm cihazlarında toplam',
 } as const;

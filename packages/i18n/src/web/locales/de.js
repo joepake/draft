@@ -338,15 +338,44 @@ export default {
 
   webCat: {
     adult: 'Nur für Erwachsene',
+    selfHarm: 'Selbstverletzung & Essstörungen',
     gambling: 'Glücksspiel',
+    gameGambling: 'Lootboxen & Skin-Wetten',
     dating: 'Dating',
+    strangerChat: 'Chat mit Fremden',
     drugs: 'Drogen & Alkohol',
-    violence: 'Gewalt & Extremismus',
+    violence: 'Gewalt & Gore',
+    extremism: 'Extremismus & Hass',
     piracy: 'Piraterie',
     social: 'Soziale Netzwerke',
     videoStreaming: 'Video-Streaming',
+    music: 'Musik',
     gaming: 'Spiele',
     shopping: 'Shopping',
+    aiCompanion: 'KI-Begleiter',
+    aiAssistant: 'KI-Assistenten',
+    cryptoTrading: 'Krypto & Trading',
+    vpn: 'VPN-Apps',
+  },
+
+  appCat: {
+    adult: 'Nur für Erwachsene',
+    gambling: 'Glücksspiel',
+    gameGambling: 'Lootboxen & Skin-Wetten',
+    dating: 'Dating',
+    drugs: 'Drogen & Alkohol',
+    violence: 'Gewalt & Gore',
+    piracy: 'Piraterie',
+    bypass: 'Filterumgehung & VPN',
+  },
+
+  webCatGroup: {
+    harm: 'Schädliche Inhalte',
+    contact: 'Fremde',
+    bypass: 'Filter umgehen',
+    ai: 'KI',
+    entertainment: 'Unterhaltung & Soziales',
+    money: 'Einkaufen & Geld',
   },
 
   dash: {
@@ -356,9 +385,11 @@ export default {
     tabSafety: 'Sicherheit',
     tabControls: 'Steuerung',
     tabReport: 'Wochenbericht',
+    tabReportNew: 'Neuer Wochenbericht',
 
     children: 'Kinder',
     noChildren: 'Noch keine Kindergeräte verbunden.',
+    unassignedDevices: 'Nicht zugeordnet',
     manage: 'Verwalten',
     parents_one: '{{count}} Elternteil',
     parents_other: '{{count}} Eltern',
@@ -372,6 +403,8 @@ export default {
     statusOnline: 'Online',
     statusOffline: 'Offline',
     statusLocked: 'Gesperrt',
+    statusLockSent: 'Sperre gesendet',
+    statusLockNotApplied: 'Sperre nicht angewendet',
 
     stateAllowed: 'Erlaubt',
     stateDenied: 'Ausgeschaltet',
@@ -381,6 +414,10 @@ export default {
     stateUnknown: 'Unbekannt',
 
     lastActive: 'Zuletzt aktiv {{when}}',
+    appVersion: 'App-Version',
+    appVersionUpdate: '{{running}} · {{latest}} verfügbar',
+    appVersionRestart: '{{running}} · App neu starten, um abzuschließen',
+    buildOutdated: 'Update verfügbar',
     checkIn: 'Check-in',
     sending: 'Wird gesendet…',
     lockDevice: 'Gerät sperren',
@@ -416,6 +453,10 @@ export default {
 
     cardScreenTime: 'Bildschirmzeit',
     cardScreenTimeSub: 'Letzte 14 Tage, gemessen am Tageslimit',
+    usageSyncNote:
+      'Bildschirmzeit kann ein paar Minuten brauchen, bis sie hier angezeigt wird — länger, wenn das Gerät keine Internetverbindung hat oder unerwartet beendet wurde.',
+    usageSyncNoteTv:
+      'Dieser Fernseher meldet sich nur regelmäßig, daher kann es bis zu 30 Minuten dauern, bis die Bildschirmzeit hier angezeigt wird — länger ohne Internetverbindung.',
     cardRecent: 'Letzte Aktivität',
     cardRecentSub: 'Neueste zuerst',
     cardRecentEmpty:
@@ -430,9 +471,6 @@ export default {
     attnReason: '„{{reason}}“ · {{when}}',
     attnCheckInMissed: 'Ein Check-in wurde verpasst',
     attnCheckInMissedMeta: 'Gesendet {{when}} · keine Antwort',
-    attnPermissionOff: '{{permission}} ist ausgeschaltet',
-    attnPermissionOffMeta:
-      'Der Schutz ist schwächer, bis das auf dem Kindergerät wiederhergestellt ist',
     attnLimitReached: 'Tageslimit erreicht — Gerät gesperrt',
     attnLimitReachedMeta: 'Heute {{used}} genutzt',
     attnBatteryLow: 'Akku ist schwach ({{level}} %)',
@@ -465,6 +503,8 @@ export default {
 
     appUsageTitle: 'App-Nutzung heute',
     appUsageSub: 'Zeit pro App',
+    topAppsOther: 'Andere Apps',
+    underAMinute: 'Unter einer Minute',
     appUsageEmpty: 'Noch keine App-Nutzung gemeldet.',
     appBlockingTitle: 'App-Sperre',
     appBlockingSub: 'Auf dem Kindergerät mit der Eltern-PIN ausgewählt',
@@ -477,6 +517,23 @@ export default {
     webActivityTitle: 'Web-Aktivität',
     webActivitySub: 'Meistbesuchte Domains, letzte 30 Tage',
     webActivityEmpty: 'Noch keine Web-Aktivität.',
+    inventoryTitle: 'Installierte Apps',
+    inventorySub: 'Alles auf diesem Gerät, nicht nur die Änderungen',
+    inventoryEmpty: 'Dieses Gerät hat seine App-Liste noch nicht veröffentlicht.',
+    inventoryStale:
+      'Diese Liste ist veraltet. Sie wird erneuert, sobald sich das Gerät das nächste Mal meldet.',
+    inventoryFirstScan:
+      'Erster Scan – KidGate kann nicht sagen, wann diese Apps dazugekommen sind.',
+    inventoryFlagged: 'Einen Blick wert',
+    inventoryFlaggedLabel: 'Zu prüfen',
+    inventoryOtherLabel: 'Bestimmt',
+    inventoryUnknownLabel: 'Unbestimmt',
+    inventoryIncomplete:
+      'Eine App ohne Symbol auf dem Startbildschirm erscheint hier möglicherweise nicht.',
+    webActivitySyncNote:
+      'Die Web-Aktivität kann ein paar Minuten brauchen, bis sie hier angezeigt wird — länger, wenn das Gerät keine Internetverbindung hat oder unerwartet beendet wurde.',
+    webActivitySyncNoteTv:
+      'Dieser Fernseher meldet sich nur regelmäßig, daher kann es bis zu 30 Minuten dauern, bis die Web-Aktivität hier angezeigt wird — länger ohne Internetverbindung.',
     colDomain: 'Domain',
     colVisits: 'Besuche',
     colBlocked: 'Blockiert',
@@ -485,15 +542,22 @@ export default {
     filterRefusedSub_one: '{{count}} blockierte Anfrage, letzte 30 Tage',
     filterRefusedSub_other: '{{count}} blockierte Anfragen, letzte 30 Tage',
     nothingBlockedYet: 'Es wurde noch nichts blockiert.',
+    rollupNoteAi:
+      'Einige Arten wurden aus dem Seitennamen abgeleitet statt einer bekannten Seite zugeordnet — ein paar können daneben liegen.',
     filterHintIos:
       'Unter iOS nutzt der Filter Apples Sperre für Erwachseneninhalte — das Blocken einzelner Kategorien gibt es nur unter Android.',
     filterHintAndroid: 'Die Kategorien setzt der DNS-Filter auf dem Gerät durch.',
+    filterHintMacos:
+      'Die Kategorien setzt der KidGate-Inhaltsfilter auf dem Mac durch.',
 
     locationTitle: 'Standort',
     locationSharingOff: 'Teilen ist aus',
+    locationSyncNote:
+      'Der Standort kann ein paar Minuten brauchen, bis er aktualisiert wird — länger, wenn das Gerät keine Internetverbindung hat oder unerwartet beendet wurde.',
     locationUpdated: 'Aktualisiert {{when}}',
     locationWaiting: 'Warte auf die erste Aktualisierung',
     lastKnownLocation: 'Letzter bekannter Standort',
+    nearPlace: 'In der Nähe von {{place}}',
     noPlaces:
       'Noch keine Orte gespeichert. Füge in der App einen hinzu, um benachrichtigt zu werden, wenn dein Kind ankommt oder geht.',
     placeRadius: '{{meters}} m · ',
@@ -532,6 +596,10 @@ export default {
     limitScaleMax: '8 Std.',
     limitHint:
       'Bonusminuten aus Aufgaben und freigegebenen Zeitanfragen kommen obendrauf, nur für diesen Tag.',
+    limitShared: 'Für alle Geräte zusammen',
+    limitSharedSpent: 'Heute {{used}} von {{limit}} genutzt',
+    limitSharedHint:
+      'Das ist der ganze Tag dieses Kindes, kein Limit für dieses eine Gerät — jedes Gerät bekommt, was die anderen übrig lassen. Änderbar in der KidGate-App.',
     whatsOnTitle: 'Was aktiviert ist',
     whatsOnSub: 'Änderungen werden mit dem Kindergerät synchronisiert',
     rowBlockedHours: 'Sperrzeiten',
@@ -547,6 +615,8 @@ export default {
     rowWebFilterDesc_one: '{{count}} Kategorie abgewiesen',
     rowWebFilterDesc_other: '{{count}} Kategorien abgewiesen',
     rowNotSupported: 'Auf diesem Gerät nicht unterstützt',
+    rowWebFilterAwaitingApproval: 'Wartet auf Freigabe auf dem Gerät',
+    rowWebFilterSwitchedOff: 'Auf dem Gerät ausgeschaltet',
     rowLocation: 'Standortfreigabe',
     rowLocationDesc: 'Letzte Aktualisierung {{when}}',
     rowLocationNone: 'Noch kein Standort',
@@ -568,6 +638,12 @@ export default {
     rewardTaskWaiting: ' · wartet auf deine Freigabe',
     approve: 'Freigeben',
     approveInApp: 'In der KidGate-App freigeben',
+    siteRequestsTitle: 'Website-Anfragen',
+    siteRequestsSub: 'Websites, für die dieses Gerät um Erlaubnis gebeten hat',
+    siteRequestAllow: 'Erlauben',
+    siteRequestDeny: 'Jetzt nicht',
+    attnSiteRequest: '{{name}} möchte {{domain}} öffnen',
+    toastSiteAllowed: 'Website erlaubt',
     timelineTitle: 'Wann es genutzt wurde',
     timelineSub: 'Heute, von Mitternacht bis Mitternacht. Grün ist Zeit am Gerät.',
   },
@@ -643,8 +719,12 @@ export default {
     emptyBody:
       'Jeden Sonntagabend kommt ein Bericht. Der Bericht dieser Woche lässt sich auch jetzt schreiben — er umfasst die letzten sieben Tage.',
     noUsage:
-      'In den letzten zwei Wochen wurde keine Bildschirmzeit erfasst, daher gibt es noch nichts zu berichten. Ein ausgeschaltetes Gerät meldet nichts, und das ist nicht dasselbe wie eine ruhige Woche.',
+      'In den letzten zwei Wochen wurde keine Bildschirmzeit erfasst, daher gibt es noch nichts zu berichten. Ein Gerät ohne Verbindung meldet nichts, und das ist nicht dasselbe wie eine ruhige Woche.',
     rateLimited: 'Zu viele Versuche. Eine Minute warten.',
+    loadFailedTitle: 'Berichte nicht geladen',
+    loadFailed:
+      'Die Berichte lassen sich nicht öffnen. Seite neu laden, um es erneut zu versuchen.',
+    retryLoad: 'Erneut versuchen',
     failed:
       'Der Bericht konnte nicht geschrieben werden. Gleich noch einmal versuchen.',
     existed: 'Für diese Woche gibt es bereits einen Bericht — hier ist er.',

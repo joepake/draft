@@ -12,7 +12,7 @@ export const child = {
   blockedHours: 'Horários bloqueados',
   limitReached: 'Limite atingido',
   active: 'Ativo',
-  parentPausedThisDevice: 'Seus pais bloquearam este aparelho por enquanto.',
+  parentPausedThisDevice: 'Seus pais bloquearam este dispositivo por enquanto.',
   blockedHoursOnPaused:
     'Os Horários bloqueados estão ativos agora. É uma boa hora para descansar.',
   outOfScreenTimeAskParent:
@@ -24,7 +24,7 @@ export const child = {
     'Você usou todo o tempo de tela de hoje. Pode pedir mais aos seus pais.',
   devicePaused: 'Dispositivo bloqueado',
   devicePausedByParent: '{{deviceName}} está bloqueado agora.',
-  phonePausedByParent: 'Seus pais bloquearam este aparelho por enquanto.',
+  phonePausedByParent: 'Seus pais bloquearam este dispositivo por enquanto.',
   pausedAskParentOrSos:
     'Peça aos seus pais para desbloquear quando você precisar. Em uma emergência, você ainda pode enviar um SOS.',
   blockedHoursLockTitle: 'Horários bloqueados',
@@ -32,14 +32,14 @@ export const child = {
     'Os Horários bloqueados estão ativos agora. É uma boa hora para descansar.',
   blockedHoursLockHint:
     'Fale com seus pais se precisar de mais tempo. Em uma emergência, você ainda pode enviar um SOS.',
-  parentPausedAccess: 'Seus pais bloquearam este aparelho por enquanto.',
+  parentPausedAccess: 'Seus pais bloquearam este dispositivo por enquanto.',
   parentRestoredAccess:
-    'Seus pais desbloquearam este aparelho. Você pode continuar usando.',
+    'Seus pais desbloquearam este dispositivo. Você pode continuar usando.',
   toastDailyLimitIncreased:
     'Seus pais adicionaram mais {{minutes}} minutos de tempo de tela.',
   toastDailyLimitIncreased_one:
     'Seus pais adicionaram mais {{minutes}} minuto de tempo de tela.',
-  errorDeviceNotRegistered: 'Este aparelho não está registrado.',
+  errorDeviceNotRegistered: 'Este dispositivo não está registrado.',
   errorScreenTimeRequired: 'A autorização do Tempo de Uso é necessária.',
   minUsed: '{{used}} de uso',
   setupContinueButton: 'Continuar configuração',
@@ -48,6 +48,15 @@ export const child = {
   setupWizardRequired: 'Obrigatório',
   setupWizardOptional: 'Opcional',
   setupWizardSkip: 'Pular por enquanto',
+  setupGrantStuckHint: 'Ativou mas nada mudou? Reinicie a TV e tente novamente.',
   setupWizardAllDoneTitle: 'Tudo pronto!',
-  setupWizardAllDoneSubtitle: 'Este aparelho agora está protegido.',
+  setupWizardAllDoneSubtitle: 'Este dispositivo agora está protegido.',
+  setupWizardStepDone: 'Pronto — essa já está ativa.',
+  setupWizardCoreDoneTitle: 'A proteção principal está ativada',
+  setupWizardCoreDoneBody:
+    'As permissões essenciais foram concedidas e este dispositivo está protegido. Alguns passos opcionais tornam a proteção mais difícil de ser desativada pelo sistema.',
+  setupWizardCoreDoneContinue: 'Reforçar agora',
+  setupWizardCoreDoneLater: 'Terminar depois',
+  setupWizardParentPinNote:
+    'É necessário o PIN dos pais: um dos pais digita na próxima tela.',
 } as const;

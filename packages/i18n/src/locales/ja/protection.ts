@@ -36,6 +36,14 @@ export const protection = {
   lockNotReadyBodyIos:
     '子どものデバイスでスクリーンタイムのアクセスが許可されるまで、KidGateはこのiPhoneをロックできません。そのデバイスでKidGateを開き、次の設定を完了してください。',
   locationPermission: '位置情報の権限',
+  cameraPermission: 'カメラの許可',
+  cameraConsentPending:
+    'このデバイスでカメラが許可されていないため、ここからの SOS やチェックインは写真なしで届きます。',
+  locationConsentPending:
+    'このデバイスで位置情報が許可されていないため、どこにあるかを知らせられません。',
+  consentStepOpenSettings: 'お子さまのデバイスで KidGate を開き、設定に進みます。',
+  consentStepParentPin: '保護者用 PIN を入力します。',
+  consentStepPermissions: '「許可」を開き、足りないものを許可します。',
   notificationsPermission: '通知の権限',
   backgroundUpdates: 'バックグラウンド更新',
   backgroundUpdatesRestricted:

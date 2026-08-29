@@ -1,5 +1,8 @@
 export const placeAlerts = {
   title: 'Cảnh báo địa điểm',
+  familyScope: 'Một danh sách cho cả nhà',
+  mergedFromDevices:
+    'Gộp từ các địa điểm sẵn có trên từng thiết bị. Lưu sẽ áp dụng danh sách này cho mọi thiết bị của trẻ.',
   fallbackDeviceName: 'Thiết bị của trẻ',
   statusReady: 'Đã có vị trí',
   statusNeedLocation: 'Đang chờ vị trí từ thiết bị của trẻ',
@@ -21,7 +24,11 @@ export const placeAlerts = {
   radiusLabel: 'Bán kính cảnh báo',
   radiusValue: '{{meters}} m',
   radiusHint:
-    'Khoảng cách tối đa để thiết bị được xem là đã tới địa điểm này. Bán kính nhỏ cho kết quả chính xác hơn nhưng dễ bỏ sót cảnh báo.',
+    'Thiết bị phải ở gần mức nào thì địa điểm này mới được tính. Bán kính nhỏ hơn sai số định vị của thiết bị sẽ báo sai liên tục chứ không chính xác hơn.',
+  radiusAccuracyHint:
+    'Ở đây thiết bị này báo vị trí với sai số khoảng ±{{accuracy}} m.',
+  radiusBelowAccuracy:
+    'Ở đây thiết bị chỉ chính xác khoảng ±{{accuracy}} m. Hãy dùng {{minimum}} m trở lên, nếu không địa điểm này sẽ báo sai liên tục.',
   radiusDecrease: 'Giảm bán kính',
   radiusIncrease: 'Tăng bán kính',
   notifyEnterLabel: 'Cảnh báo khi đến',
@@ -45,7 +52,9 @@ export const placeAlerts = {
   maxPlacesToast: 'Bạn chỉ có thể lưu tối đa {{max}} địa điểm.',
   nameRequiredToast: 'Vui lòng nhập tên địa điểm.',
   duplicateNameToast: 'Đã tồn tại một địa điểm trùng tên.',
-  duplicateLocationToast: 'Đã có địa điểm bao phủ vị trí này.',
+  samePinToast: 'Đây đúng là vị trí của “{{name}}”. Kéo bản đồ để di chuyển ghim.',
+  overlapWarning:
+    '“{{name}}” cách đây {{meters}} m và vùng của nó chạm tới đây. Khi thiết bị ở trong cả hai, chỉ địa điểm gần hơn báo. Lưu lần nữa để giữ.',
   copyTitle: 'Thêm cho các trẻ khác?',
   copyMessage:
     'Sao chép “{{name}}” sang {{count}} thiết bị khác của trẻ trong gia đình này?',

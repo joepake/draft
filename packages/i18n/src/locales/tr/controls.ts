@@ -12,7 +12,7 @@ export const controls = {
   dailyLimitMaxMinutes: 'Günlük sınır en fazla {{max}} dakika (24 saat) olabilir.',
   rulesSectionTitle: 'Ebeveynlerinin kuralları',
   rulesSectionDescription: 'Ebeveynlerinin bu cihaz için belirlediği kurallar.',
-  blockedHoursLabel: 'Engellenen saatler',
+  blockedHoursLabel: 'Engellenen Saatler',
   dailyLimitLabel: 'Günlük sınır',
   webFilterLabel: 'Web filtresi',
 } as const;

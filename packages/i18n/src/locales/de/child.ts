@@ -48,6 +48,16 @@ export const child = {
   setupWizardRequired: 'Erforderlich',
   setupWizardOptional: 'Optional',
   setupWizardSkip: 'Später',
+  setupGrantStuckHint:
+    'Eingeschaltet, aber nichts passiert? Starte den Fernseher neu und versuche es erneut.',
   setupWizardAllDoneTitle: 'Fertig!',
   setupWizardAllDoneSubtitle: 'Dieses Gerät ist jetzt geschützt.',
+  setupWizardStepDone: 'Fertig — das ist jetzt aktiv.',
+  setupWizardCoreDoneTitle: 'Der Basisschutz ist aktiv',
+  setupWizardCoreDoneBody:
+    'Die wichtigsten Berechtigungen sind erteilt und dieses Gerät ist geschützt. Ein paar optionale Schritte machen es dem System schwerer, den Schutz abzuschalten.',
+  setupWizardCoreDoneContinue: 'Jetzt verstärken',
+  setupWizardCoreDoneLater: 'Später abschließen',
+  setupWizardParentPinNote:
+    'Eltern-PIN nötig — ein Elternteil gibt sie auf dem nächsten Bildschirm ein.',
 } as const;

@@ -17,4 +17,6 @@ export const appAlerts = {
   infoLine3:
     'Listeyi burada inceleyin, riskli uygulamaları Engellenen Uygulamalar’dan engelleyin.',
   recentTitle: 'Son değişiklikler',
+  statInstalled: 'Yüklendi',
+  statRemoved: 'Kaldırıldı',
 } as const;

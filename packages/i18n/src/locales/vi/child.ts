@@ -44,6 +44,16 @@ export const child = {
   setupWizardRequired: 'Bắt buộc',
   setupWizardOptional: 'Tuỳ chọn',
   setupWizardSkip: 'Để sau',
+  setupGrantStuckHint:
+    'Đã bật mà không thấy thay đổi? Hãy khởi động lại TV rồi thử lại.',
   setupWizardAllDoneTitle: 'Hoàn tất!',
   setupWizardAllDoneSubtitle: 'Thiết bị này đã được bảo vệ.',
+  setupWizardStepDone: 'Xong — mục này đã bật.',
+  setupWizardCoreDoneTitle: 'Đã bật bảo vệ cốt lõi',
+  setupWizardCoreDoneBody:
+    'Các quyền bắt buộc đã được cấp và thiết bị này đã được bảo vệ. Vài bước tuỳ chọn nữa sẽ giúp hệ thống khó tự tắt bảo vệ hơn.',
+  setupWizardCoreDoneContinue: 'Tăng cường ngay',
+  setupWizardCoreDoneLater: 'Hoàn tất sau',
+  setupWizardParentPinNote:
+    'Cần mã PIN phụ huynh — phụ huynh nhập ở màn hình tiếp theo.',
 } as const;

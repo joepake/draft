@@ -15,7 +15,8 @@ export const errors = {
   enterEmailAddress: 'Bitte gib deine E-Mail-Adresse ein.',
   unableToCreatePairingCode:
     'Kopplungscode konnte nicht erstellt werden. Bitte versuche es erneut.',
-  unableToRedeemPairingCode: 'Dieser Kopplungscode ist ungültig oder abgelaufen.',
+  unableToRedeemPairingCode:
+    'Dieser Code stimmt nicht. Prüfe die Zeichen genau — oder hole dir einen neuen Code, falls er schon älter ist.',
   unableToClaimChildPairing:
     'Das Kindergerät konnte nicht verbunden werden. Bitte versuche es erneut.',
   unableToPollChildPairing: 'Der Kopplungsstatus konnte nicht überprüft werden.',
@@ -27,6 +28,8 @@ export const errors = {
   unableToOpenCamera:
     'Die Kamera konnte nicht geöffnet werden. Bitte erlaube den Kamerazugriff in den Geräteeinstellungen.',
   noPhotoCaptured: 'Es wurde kein Foto aufgenommen.',
+  unableToOpenPhotoLibrary:
+    'Deine Fotos konnten nicht geöffnet werden. Erlaube den Zugriff auf Fotos in den Geräteeinstellungen.',
   simulatorCameraHint:
     'Aktiviere im Simulator zuerst eine Kamera: Simulator → Camera → Front Camera. Versuche danach SOS erneut. Für ein echtes Foto teste auf einem physischen iPhone.',
   notSignedInReopenApp:
@@ -50,7 +53,7 @@ export const errors = {
     'Deine kostenlose Testversion ist abgelaufen. Bitte abonniere Premium, um einer anderen Familie beizutreten.',
 
   notFamilyMember:
-    'Du gehörst nicht mehr zu dieser Familie. Bitte bitte den Familieninhaber, dich erneut einzuladen.',
+    'Du gehörst nicht mehr zu dieser Familie. Frag den Familieninhaber, ob er dich erneut einlädt.',
   familyNotCreated:
     'Erstelle zuerst deine Familie und lade danach einen weiteren Elternteil ein.',
   childDeviceNotAllowed:
@@ -59,13 +62,13 @@ export const errors = {
     'Dieses Gerät muss erneut verbunden werden. Bitte schließe KidGate und öffne es erneut.',
   deviceNotFound: 'Dieses Gerät gehört nicht mehr zu deiner Familie.',
   registerParentDeviceFirst:
-    'Richte dieses Gerät zuerst als Eltern-Gerät ein und versuche es dann erneut.',
+    'Dieses Telefon ist noch nicht als Elterngerät eingerichtet. Öffne KidGate hier, wähle auf dem Startbildschirm die Elternrolle und versuche die Kopplung dann erneut.',
   pairingCodeFormat: 'Bitte gib den 6-stelligen Code ein.',
   pairingCodeUsed: 'Dieser Code wurde bereits verwendet. Bitte fordere einen neuen an.',
   pairingCodeExpiredChild:
-    'Dieser Code ist abgelaufen. Bitte bitte dein Kind, einen neuen Code zu erstellen.',
+    'Dieser Code ist abgelaufen. Bitte dein Kind darum, einen neuen Code zu erstellen.',
   pairingCodeExpiredParent:
-    'Dieser Code ist abgelaufen. Bitte bitte den anderen Elternteil um einen neuen Code.',
+    'Dieser Code ist abgelaufen. Bitte den anderen Elternteil um einen neuen Code.',
   pairingOwnFamily:
     'Dies ist bereits deine Familie – ein Beitritt ist nicht erforderlich.',
   pairingSessionNotFound: 'Diese Kopplungsanfrage ist nicht mehr verfügbar.',

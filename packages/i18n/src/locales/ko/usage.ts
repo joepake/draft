@@ -49,6 +49,10 @@ export const usage = {
   blockedHoursChip: '차단 시간',
   overLimitChip: '제한 초과',
   usageReportsNote: '이 기기의 스크린 타임, 잠금, 최근 활동을 표시합니다.',
+  syncNote:
+    '스크린 타임이 이 화면에 반영되기까지 몇 분 정도 걸릴 수 있습니다. 기기에 인터넷 연결이 없거나 예기치 않게 종료된 경우 더 오래 걸릴 수 있습니다.',
+  syncNoteTv:
+    '이 TV는 주기적으로만 접속하므로 스크린 타임이 이 화면에 반영되기까지 최대 30분이 걸릴 수 있습니다. 인터넷 연결이 없으면 더 오래 걸립니다.',
   sectionLast30Days: '최근 30일',
   comparePeriodTotal: '30일 합계',
   compareDayAvg: '일 평균',
@@ -63,9 +67,18 @@ export const usage = {
   sectionTopApps: '가장 많이 사용한 앱',
   topAppsHint:
     '자녀 기기에서 오늘 가장 많이 사용한 앱입니다. 스크린 타임/사용 정보 접근이 동기화되면서 데이터가 쌓입니다.',
+  topAppsExcludedNote:
+    '화면 보호기, 홈 화면, KidGate 자체 화면은 사용 시간에 포함되지 않습니다. 기기가 켜져 있어도 실제로 사용하지 않은 시간은 ‘사용 안 함’으로 기록됩니다.',
+  topAppsAiNote:
+    '일부는 알려진 앱과 대조한 것이 아니라 앱 이름에서 추정한 것이라 틀릴 수 있습니다.',
   errorTitle: '사용 정보를 불러올 수 없습니다',
   errorDescription: '연결 상태를 확인한 후 다시 시도해 주세요.',
   tryAgain: '다시 시도',
+  // Shown only when the rating is known — it is 0 for much of the long
+  // tail, and 0 does not mean "suitable for everyone".
+  appMinAge: '{{age}}세 이상',
+  underAMinute: '1분 미만',
+  topAppsOther: '기타 앱',
   topAppsEmpty:
     '앱별 데이터가 아직 없습니다. 자녀 기기에서 KidGate가 앱 사용을 측정하도록 허용되어 있는지 확인한 뒤 동기화를 기다려 주세요.',
   protectionImpactTitle: '보호 효과',

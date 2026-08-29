@@ -40,7 +40,7 @@ export const userGuide = {
         '4': 'Ayarlar → Güvenlik bölümünden bir Ebeveyn PIN’i (6 haneli) belirleyin. Ezberleyin veya güvenli bir yerde saklayın, çocuklarla paylaşmayın.',
         '5': 'Önerilir: başkalarının cihazınızda ebeveyn uygulamasını açamaması için Ayarlar’dan Uygulama Kilidi’ni ve biyometrik kilit açmayı etkinleştirin.',
         '6': 'Aile (Cihazlar) bölümünü açın. + simgesine dokunun ve Bir çocuk cihazı bağla’yı seçin. Bu ekranı çocuk cihazındaki QR kodu veya kodu okutmak için hazır tutun.',
-        '7': 'Çocuk cihazı bağlandıktan sonra o cihazın kartını açın. Günlük sınırı ve Engellenen saatleri belirleyin, izinleri çocuğunuzla birlikte tamamlayın.',
+        '7': 'Çocuk cihazı bağlandıktan sonra o cihazın kartını açın. Günlük sınırı ve Engellenen Saatleri belirleyin, izinleri çocuğunuzla birlikte tamamlayın.',
       },
     },
     getStartedChild: {
@@ -101,7 +101,7 @@ export const userGuide = {
       title: 'Android izinleri (çocuk cihazı)',
       summary:
         'Kullanım Erişimi, Diğer uygulamaların üzerinde göster, Erişilebilirlik, batarya ve ilgili izinleri açın.',
-      tip: 'Eksiksizlik sıradan daha önemlidir. Kilitleme veya Engellenen saatlere güvenmeden önce çocuğun Durum ekranındaki her kırmızı veya izin verilmemiş satır düzeltilmelidir.',
+      tip: 'Eksiksizlik sıradan daha önemlidir. Kilitleme veya Engellenen Saatlere güvenmeden önce çocuğun Durum ekranındaki her kırmızı veya izin verilmemiş satır düzeltilmelidir.',
       steps: {
         '1': 'Çocuk cihazında KidGate → Durum’u açın ve izin listesini yukarıdan aşağıya doğru tamamlayın.',
         '2': 'Bildirimler: satıra dokunun → İzin ver. Kilitleme komutları ve süre istekleri için ebeveynlerin push bildirimlerine ihtiyacı vardır.',
@@ -109,7 +109,7 @@ export const userGuide = {
         '4': 'Diğer uygulamaların üzerinde göster: KidGate için izin verin. Kilit ekranının diğer uygulamaların üzerinde görünebilmesi için bu gereklidir.',
         '5': 'Erişilebilirlik kilit yardımcısı: Ayarlar → Erişilebilirlik → Yüklü / indirilen uygulamalar → KidGate → Açık. Bu, kilitlemenin etkin kalmasını sağlar.',
         '6': 'Sınırsız batarya: istendiğinde İzin ver’i seçin. İstem görünmüyorsa: Uygulama bilgisi → Batarya → Sınırsız.',
-        '7': 'Alarmlar ve hatırlatıcılar: Engellenen saatlerin zamanında başlayıp bitmesi için buna izin verin.',
+        '7': 'Alarmlar ve hatırlatıcılar: Engellenen Saatlerin zamanında başlayıp bitmesi için buna izin verin.',
         '8': 'Konum ve Kamera (Check-In veya SOS fotoğrafları kullanıyorsanız): KidGate istedikçe izin verin. Durum’a dönüp tüm satırların izinli olduğunu doğrulayın.',
       },
     },
@@ -155,16 +155,16 @@ export const userGuide = {
       },
     },
     blockedHours: {
-      title: 'Engellenen saatler belirleme',
+      title: 'Engellenen Saatler belirleme',
       summary: 'Cihazın kilitli kalması gereken en fazla 3 zaman aralığı planlayın.',
       tip: 'Önce okul saatlerini ve yatış zamanlarını belirleyin. Programı anlaşılır tutmak için çakışan aralıklardan kaçının.',
       steps: {
-        '1': 'Ebeveyn cihazında çocuk cihazını açın → Engellenen saatler.',
-        '2': 'Engellenen saatler belirle’yi (veya Engellenen saatleri düzenle’yi) seçin. Başlangıç saati, bitiş saati ve günlerle bir aralık ekleyin.',
+        '1': 'Ebeveyn cihazında çocuk cihazını açın → Engellenen Saatler.',
+        '2': 'Engellenen Saatler belirle’yi (veya Engellenen Saatleri düzenle’yi) seçin. Başlangıç saati, bitiş saati ve günlerle bir aralık ekleyin.',
         '3': 'Aralığı kaydedin. Toplamda en fazla 3 aralık ekleyebilirsiniz.',
         '4': 'Bir etkinleştirme anahtarı gösteriliyorsa programı açın.',
         '5': 'Çocuk cihazında programın zamanında çalışması için Alarmlar ve hatırlatıcılar ile Ekran Süresi izinlerinin hâlâ verili olduğunu doğrulayın.',
-        '6': 'Aktif bir aralık sırasında cihaz kartında Engellenen saatler etkin · kilitli yazar. Kilidi aç’ı yalnızca programı bilerek geçersiz kılmak istediğinizde kullanın.',
+        '6': 'Aktif bir aralık sırasında cihaz kartında Engellenen Saatler etkin · kilitli yazar. Kilidi aç’ı yalnızca programı bilerek geçersiz kılmak istediğinizde kullanın.',
       },
     },
     blockedApps: {

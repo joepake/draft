@@ -26,7 +26,7 @@ export const permissions = {
     'KidGate’in arka planda çalışabilmesi için sistem isteminde İzin ver’i seçin. İstem görünmüyorsa: Uygulama bilgisi → Pil → Sınırsız.',
   exactAlarmLabel: 'Alarmlar ve hatırlatıcılar',
   exactAlarmHint:
-    'Engellenen saatlerin zamanında başlayıp bitmesi için Alarmlar ve hatırlatıcılar iznini verin.',
+    'Engellenen Saatlerin zamanında başlayıp bitmesi için Alarmlar ve hatırlatıcılar iznini verin.',
   accessibilityLabel: 'Erişilebilirlik kilit yardımcısı',
   accessibilityHint:
     'Erişilebilirlik → Yüklü / indirilen uygulamalar altında KidGate’i açın. Kilidin diğer uygulamaların üzerinde kalması için bu gereklidir.',
@@ -46,6 +46,8 @@ export const permissions = {
   oemAutostartHintOther:
     'KidGate’in cihazınızın güvenlik veya pil ayarlarından otomatik başlamasına izin verin.',
   markDone: 'Bitti',
+  uninstallProtectionWizardBody:
+    'Ebeveyn PIN’i girilmeden bu uygulamanın kaldırılmasını engeller. Android kendi onay ekranını gösterir.',
   notificationsWizardBody:
     'Bu cihazın süre onaylarını ve hatırlatmaları hemen alması için bildirimlere izin verin.',
 } as const;

@@ -15,4 +15,6 @@ export const appAlerts = {
     'Parents receive a push notification whenever an app is installed or removed.',
   infoLine3: 'Review the list here, then block risky apps from Blocked Apps.',
   recentTitle: 'Recent changes',
+  statInstalled: 'Installed',
+  statRemoved: 'Removed',
 } as const;

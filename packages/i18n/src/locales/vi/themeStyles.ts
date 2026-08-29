@@ -1,6 +1,6 @@
 export const themeStyles = {
   themeStyle: 'Phong cách giao diện',
-  themeStyleSubtitle: 'Chọn tổng thể diện mạo của ứng dụng.',
+  themeStyleSubtitle: 'Chọn diện mạo tổng thể của ứng dụng.',
   closeThemeStylePicker: 'Đóng bộ chọn phong cách giao diện',
   styleAccessibility: 'Phong cách {{label}}',
   classic: 'Cổ điển',

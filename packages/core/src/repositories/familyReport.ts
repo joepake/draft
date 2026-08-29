@@ -2,8 +2,10 @@ import type { ApiPort } from '@kidgate/ports/api';
 import type { DocSnapshot, FirestorePort } from '@kidgate/ports/firestore';
 import type {
   FamilyReport,
+  FamilyReportAction,
   FamilyReportChild,
   FamilyReportFinding,
+  FamilyReportPerson,
   FamilyReportRejection,
   FamilyReportSource,
 } from '@kidgate/schema/familyReport';
@@ -39,8 +41,18 @@ import { familyReportsCollection } from '@kidgate/schema/paths';
  */
 export const REPORT_PAGE_SIZE = 12;
 
-/** Order by document id: `weekly_2026-W33` sorts chronologically as text. */
-const DOCUMENT_ID = '__name__';
+/**
+ * The week stamp, which is both the sort key and half the document id.
+ *
+ * This ordered by `__name__` until it turned out Firestore only indexes the
+ * document id ascending: `orderBy('__name__', 'desc')` needs a composite index
+ * nobody declared, so every read failed `failed-precondition` and the history
+ * screen rendered "no reports yet" over a year of stored weeks. `periodKey`
+ * holds the same string the id is built from (`2026-W33`), sorts identically
+ * as text, and is covered in both directions by the automatic single-field
+ * index. See `QueryField` in `@kidgate/ports/firestore`.
+ */
+const SORT_FIELD = 'periodKey';
 
 const SEVERITIES: FamilyReportFinding['severity'][] = ['info', 'notable', 'attention'];
 
@@ -136,6 +148,7 @@ function mapChildren(raw: unknown): FamilyReportChild[] {
 
       return {
         deviceId,
+        childId: typeof row.childId === 'string' && row.childId ? row.childId : null,
         name: typeof row.name === 'string' && row.name ? row.name : null,
         screenMinutes: Number(row.screenMinutes ?? 0),
         previousScreenMinutes: Number(row.previousScreenMinutes ?? 0),
@@ -148,6 +161,71 @@ function mapChildren(raw: unknown): FamilyReportChild[] {
     .filter((child): child is FamilyReportChild => child !== null);
 }
 
+/**
+ * The per-person rows, with the null that matters preserved.
+ *
+ * `screenOnMinutes` is the one field here that must not be coerced. Every other
+ * number falls back to zero because a missing count is a count of none;
+ * `Number(undefined ?? 0)` on this one would turn "no device this child holds
+ * can report when the screen was on" into "this child was never on a screen",
+ * and a parent would read the second sentence having been told the first.
+ */
+function mapPeople(raw: unknown): FamilyReportPerson[] {
+  if (!Array.isArray(raw)) {
+    return [];
+  }
+
+  return raw
+    .map(entry => {
+      if (!entry || typeof entry !== 'object') {
+        return null;
+      }
+      const row = entry as Record<string, unknown>;
+      const childId = typeof row.childId === 'string' ? row.childId : '';
+      if (!childId) {
+        return null;
+      }
+
+      const app = row.topApp as Record<string, unknown> | null | undefined;
+      const topApp =
+        app && typeof app === 'object' && typeof app.label === 'string'
+          ? {
+              label: app.label,
+              packageNames: Array.isArray(app.packageNames)
+                ? app.packageNames.filter(
+                    (name): name is string => typeof name === 'string',
+                  )
+                : [],
+              minutes: Number(app.minutes ?? 0),
+            }
+          : null;
+
+      const screenOn = row.screenOnMinutes;
+      const coverage = Number(row.coverage);
+
+      return {
+        childId,
+        name: typeof row.name === 'string' && row.name ? row.name : null,
+        colorIndex: Number(row.colorIndex ?? 0),
+        deviceIds: Array.isArray(row.deviceIds)
+          ? row.deviceIds.filter((id): id is string => typeof id === 'string')
+          : [],
+        deviceMinutes: Number(row.deviceMinutes ?? 0),
+        previousDeviceMinutes: Number(row.previousDeviceMinutes ?? 0),
+        screenOnMinutes: typeof screenOn === 'number' ? screenOn : null,
+        screenOnLowMinutes: Number(row.screenOnLowMinutes ?? 0),
+        screenOnHighMinutes: Number(row.screenOnHighMinutes ?? 0),
+        overlapMinutes: Number(row.overlapMinutes ?? 0),
+        coverage: Number.isFinite(coverage) ? coverage : null,
+        lateNights: Number(row.lateNights ?? 0),
+        limitDays: Number(row.limitDays ?? 0),
+        limitedDevices: Number(row.limitedDevices ?? 0),
+        topApp,
+      } as FamilyReportPerson;
+    })
+    .filter((person): person is FamilyReportPerson => person !== null);
+}
+
 function mapNarrative(raw: unknown): Partial<Record<AppLanguage, string>> {
   if (!raw || typeof raw !== 'object') {
     return {};
@@ -157,6 +235,45 @@ function mapNarrative(raw: unknown): Partial<Record<AppLanguage, string>> {
       ([, text]) => typeof text === 'string' && text.trim().length > 0,
     ),
   ) as Partial<Record<AppLanguage, string>>;
+}
+
+/**
+ * The week's suggested action, or null when the stored week has none.
+ *
+ * Null is the ordinary answer, not a parse failure: `reportAction` withholds an
+ * action whenever the device it would open is not arithmetic, and every report
+ * written before the field existed has no key at all.
+ *
+ * `deviceId` is what makes the field worth anything — the button navigates on
+ * it — so a row without one is dropped rather than returned as a button that
+ * goes nowhere. `minutes` is checked separately because only `dailyLimit`
+ * carries one, and a `blockedHours` row that somehow has a number must not
+ * hand a renderer a figure to print beside a window.
+ */
+function mapAction(raw: unknown): FamilyReportAction | null {
+  if (!raw || typeof raw !== 'object') {
+    return null;
+  }
+  const row = raw as Record<string, unknown>;
+  if (row.kind !== 'blockedHours' && row.kind !== 'dailyLimit') {
+    return null;
+  }
+  const deviceId = typeof row.deviceId === 'string' ? row.deviceId : '';
+  if (!deviceId) {
+    return null;
+  }
+
+  const minutes = Number(row.minutes);
+  return {
+    kind: row.kind,
+    deviceId,
+    deviceName: typeof row.deviceName === 'string' ? row.deviceName : null,
+    from: typeof row.from === 'string' ? row.from : '',
+    minutes:
+      row.kind === 'dailyLimit' && Number.isFinite(minutes) && minutes > 0
+        ? Math.round(minutes)
+        : null,
+  };
 }
 
 /**
@@ -188,6 +305,8 @@ function mapReportData(id: string, data: Record<string, unknown>): FamilyReport 
     blockedWebVisits: Number(data.blockedWebVisits ?? 0),
     findings: mapFindings(data.findings),
     children: mapChildren(data.children),
+    people: mapPeople(data.people),
+    action: mapAction(data.action),
     narrative,
     source,
     rejection: REJECTIONS.includes(data.rejection as FamilyReportRejection)
@@ -244,7 +363,7 @@ export function createFamilyReportRepository(deps: FamilyReportRepositoryDeps) {
       limit: number = REPORT_PAGE_SIZE,
     ): Promise<FamilyReport[]> {
       const snapshot = await db.getDocs(familyReportsCollection(familyId), {
-        orderBy: [[DOCUMENT_ID, 'desc']],
+        orderBy: [[SORT_FIELD, 'desc']],
         limit,
       });
       return sortReports(snapshot.docs.map(mapReport));
@@ -259,11 +378,34 @@ export function createFamilyReportRepository(deps: FamilyReportRepositoryDeps) {
      * written in; omitting it falls back to the account's language server-side,
      * which is the right answer for a scheduled send and the wrong one for a
      * parent who has just switched the dashboard to another language.
+     *
+     * `familyId` is the family root, sent as `familyOwnerUserId` — the wire
+     * name every handler in `functions/http` reads, never `familyId` (the same
+     * trap `rewardTask.ts` documents at the top of the file). It has to be the
+     * same root `fetchRecent` reads from, or the button writes a report the
+     * list it refreshes cannot see.
      */
-    async generateNow(locale?: string): Promise<GenerateReportResult> {
+    async generateNow(
+      familyId: string,
+      locale?: string,
+      options?: {
+        /**
+         * Rebuild and overwrite this week's stored report instead of getting
+         * it back. Test-phase only: the endpoint's week key deliberately makes
+         * a second press return the first wording, which is right for parents
+         * and useless while the prompt is being tuned. Goes away with the
+         * button when reports become schedule-only.
+         */
+        regenerate?: boolean;
+      },
+    ): Promise<GenerateReportResult> {
       const body = await api.post<GenerateReportBody>(
         '/generateWeeklyReport',
-        locale ? { locale } : {},
+        {
+          familyOwnerUserId: familyId,
+          ...(locale ? { locale } : {}),
+          ...(options?.regenerate ? { regenerate: true } : {}),
+        },
         { as: 'parent' },
       );
       const raw = body?.report ?? {};

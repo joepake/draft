@@ -5,6 +5,8 @@ export const deviceDetail = {
     'Entferne dieses Gerät aus deinem Familienkonto. Alle zugehörigen Zeitanfragen und der Aktivitätsverlauf dieses Geräts werden gelöscht.',
   removeButton: 'Gerät entfernen',
   removingButton: 'Wird entfernt…',
+  showAllFeatures: 'Alle Funktionen anzeigen',
+  showAvailableFeatures: 'Nur verfügbare Funktionen anzeigen',
   essentialControls: 'Wichtige Steuerungen',
   dailyRulesAndDeviceAccess: 'Tägliche Regeln und Gerätezugriff',
   dailyLimit: 'Tageslimit',
@@ -12,12 +14,12 @@ export const deviceDetail = {
   blockedHours: 'Sperrzeiten',
   manageUpToThreeTimeRanges: 'Bis zu 3 Zeitbereiche verwalten',
   blockedApps: 'Blockierte Apps',
-  viewAndManageBlockedApps: 'Gesperrte Apps anzeigen und verwalten',
+  viewAndManageBlockedApps: 'Blockierte Apps anzeigen und verwalten',
   safetyMonitoring: 'Sicherheitsüberwachung',
   locationAndWebSafety: 'Standort- und Webschutz',
   alerts: 'Benachrichtigungen',
   alertsSubtitle: 'SOS, Schutz, Orte und Apps',
-  checkIn: 'Check-In',
+  checkIn: 'Check-in',
   locationPlusSelfie: 'Standort und Foto',
   webFilter: 'Webfilter',
   limitAdultWebsites: 'Websites für Erwachsene einschränken',
@@ -27,6 +29,8 @@ export const deviceDetail = {
   reviewEmergencyAlerts: 'Notfallwarnungen anzeigen',
   appAlerts: 'Apps',
   reviewAppInstallAlerts: 'App-Installationen und -Entfernungen anzeigen',
+  appInventory: 'Installierte Apps',
+  reviewAppInventory: 'Alles auf diesem Gerät sehen, nicht nur die Änderungen',
   placeAlerts: 'Orte',
   reviewPlaceAlerts: 'Bei Ankunft oder Verlassen benachrichtigen',
   noPlacesYet: 'Keine Orte',
@@ -40,11 +44,17 @@ export const deviceDetail = {
   restoreAccess: 'Entsperren',
   pausePhone: 'Gerät sperren',
   quickPause: 'Sperren',
-  quickCheckIn: 'Check-In',
+  quickCheckIn: 'Check-in',
   lastActive: 'Zuletzt aktiv',
+  appVersion: 'App-Version',
+  appVersionUpdate: '{{running}} · {{latest}} verfügbar',
+  appVersionRestart: '{{running}} · App neu starten, um abzuschließen',
   androidPauseNote:
-    'Unter Android werden beim Sperren auch andere Apps blockiert, wenn Bedienungshilfen und “Über anderen Apps anzeigen” aktiviert sind.',
+    'Unter Android werden beim Sperren auch andere Apps blockiert, wenn Bedienungshilfen und „Über anderen Apps anzeigen“ aktiviert sind.',
   notAvailableOnPlatform: 'Auf {{platform}} nicht verfügbar',
+  notAvailableInExtension: 'In der Erweiterung nicht verfügbar',
+  webFilterAwaitingApproval: 'Wartet auf Freigabe auf {{platform}}',
+  webFilterSwitchedOffOnDevice: 'Auf {{platform}} ausgeschaltet',
   unableToUpdateDeviceName:
     'Der Gerätename konnte nicht aktualisiert werden. Bitte versuche es erneut.',
   renameOwnerOnly: 'Nur der Familieninhaber kann Gerätenamen ändern.',
@@ -54,7 +64,7 @@ export const deviceDetail = {
     '{{deviceName}} wird von deinem Konto getrennt. Alle zugehörigen Zeitanfragen und der Aktivitätsverlauf werden gelöscht.',
   unableToRemoveDevice:
     'Das Gerät konnte nicht entfernt werden. Bitte versuche es erneut.',
-  checkInNotificationSent: '{{deviceName}} erhält eine Check-In-Anfrage.',
+  checkInNotificationSent: '{{deviceName}} erhält eine Check-in-Anfrage.',
   checkInOfflineTitle: 'Dieses Gerät scheint offline zu sein',
   checkInOfflineBody:
     'KidGate hat seit {{lastSeen}} nichts von {{deviceName}} gehört. Ein Check-in kommt erst an, wenn das Gerät wieder online ist.',
@@ -64,7 +74,7 @@ export const deviceDetail = {
   checkInQueued:
     'Check-in in der Warteschlange — {{deviceName}} erhält ihn, sobald das Gerät wieder online ist.',
   unableToRequestCheckIn:
-    'Check-In-Anfrage konnte nicht gesendet werden. Bitte versuche es erneut.',
+    'Check-in-Anfrage konnte nicht gesendet werden. Bitte versuche es erneut.',
   tapToSetDailyCap: 'Tageslimit festlegen',
   usageUpdatesFromChildDevice: 'Nutzungsdaten vom Kindergerät',
   minutesUsedToday: 'Heute: {{used}} / {{limit}}',
@@ -121,4 +131,6 @@ export const deviceDetail = {
   webHistoryDescription: 'Erreichte und blockierte Seiten',
   webHistorySitesUnit: 'Seiten',
   webHistorySitesUnit_one: 'Seite',
+  managedAtChild:
+    'Regeln, Belohnungen, Check-ins und Warnungen dieses Geräts werden im Profil von {{childName}} verwaltet',
 } as const;

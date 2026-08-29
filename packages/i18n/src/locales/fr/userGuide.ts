@@ -26,7 +26,7 @@ export const userGuide = {
     },
     safety: {
       title: 'Sécurité et surveillance',
-      description: 'Localisation, Check-In, SOS, Filtre web et protection',
+      description: 'Localisation, Check-in, SOS, Filtre web et protection',
     },
   },
   topics: {
@@ -111,11 +111,11 @@ export const userGuide = {
         '1': 'Sur l’appareil de l’enfant, ouvrez KidGate → État et parcourez la liste des autorisations de haut en bas.',
         '2': 'Notifications : appuyez sur la ligne → Autoriser. Les parents ont besoin des notifications push pour les commandes de verrouillage et les demandes de temps.',
         '3': 'Accès à l’utilisation : ouvrez l’écran système → trouvez KidGate → activez-le. C’est requis pour le suivi du temps d’écran et les limites.',
-        '4': 'Affichage par-dessus les autres apps : autorisez KidGate. C’est nécessaire pour que l’écran de verrouillage puisse s’afficher par-dessus les autres apps.',
+        '4': 'Superposition aux autres apps : autorisez KidGate. C’est nécessaire pour que l’écran de verrouillage puisse s’afficher par-dessus les autres apps.',
         '5': 'Assistant d’accessibilité pour le verrouillage : Réglages → Accessibilité → Apps installées / téléchargées → KidGate → Activé. Cela garantit que le verrouillage reste appliqué.',
         '6': 'Batterie sans restriction : sélectionnez Autoriser quand demandé. Si aucune invite n’apparaît : Infos sur l’app → Batterie → Sans restriction.',
         '7': 'Alarmes et rappels : autorisez-le pour que les Heures bloquées commencent et se terminent à l’heure.',
-        '8': 'Localisation et Appareil photo (si vous utilisez le Check-In ou les photos SOS) : autorisez-les selon les demandes de KidGate. Retournez sur État et confirmez que chaque ligne est autorisée.',
+        '8': 'Localisation et Appareil photo (si vous utilisez le Check-in ou les photos SOS) : autorisez-les selon les demandes de KidGate. Retournez sur État et confirmez que chaque ligne est autorisée.',
       },
     },
     iosScreenTime: {
@@ -193,7 +193,7 @@ export const userGuide = {
       title: 'Verrouiller et déverrouiller l’appareil',
       summary:
         'Verrouillez immédiatement l’appareil de l’enfant, ou restaurez l’accès.',
-      tip: 'Sur Android, le verrouillage est le plus efficace quand Affichage par-dessus les autres apps et Accessibilité sont tous deux activés. Sur iOS, le verrouillage dépend de l’autorisation Temps d’écran.',
+      tip: 'Sur Android, le verrouillage est le plus efficace quand Superposition aux autres apps et Accessibilité sont tous deux activés. Sur iOS, le verrouillage dépend de l’autorisation Temps d’écran.',
       steps: {
         '1': 'Ouvrez l’appareil de l’enfant sur l’appareil parent.',
         '2': 'Sélectionnez Verrouiller l’appareil (ou Verrouiller dans KidGate, selon les options de la plateforme affichées).',
@@ -215,16 +215,16 @@ export const userGuide = {
       },
     },
     checkIn: {
-      title: 'Demander un Check-In',
+      title: 'Demander un Check-in',
       summary:
         'Demandez à votre enfant de confirmer qu’il est en sécurité, avec sa position et une photo facultative.',
-      tip: 'L’autorisation Appareil photo sur l’appareil de l’enfant est requise pour les Check-Ins avec photo.',
+      tip: 'L’autorisation Appareil photo sur l’appareil de l’enfant est requise pour les Check-ins avec photo.',
       steps: {
         '1': 'Ouvrez l’appareil de l’enfant sur l’appareil parent.',
-        '2': 'Sélectionnez Check-In (l’action rapide ou la section Sécurité).',
-        '3': 'L’appareil de l’enfant reçoit une notification et un écran de Check-In. L’enfant appuie pour confirmer qu’il va bien, ou pour demander de l’aide.',
+        '2': 'Sélectionnez Check-in (l’action rapide ou la section Sécurité).',
+        '3': 'L’appareil de l’enfant reçoit une notification et un écran de Check-in. L’enfant appuie pour confirmer qu’il va bien, ou pour demander de l’aide.',
         '4': 'Si l’accès à l’appareil photo est autorisé, KidGate joint une photo en plus de la position lorsque c’est possible.',
-        '5': 'Sur l’appareil parent, ouvrez l’historique des Check-Ins pour consulter la dernière réponse et la photo.',
+        '5': 'Sur l’appareil parent, ouvrez l’historique des Check-ins pour consulter la dernière réponse et la photo.',
       },
     },
     sos: {
@@ -237,7 +237,7 @@ export const userGuide = {
         '2': 'Suivez les étapes affichées à l’écran pour envoyer un SOS (la position et la photo dépendent des autorisations accordées).',
         '3': 'Les parents reçoivent une notification push lorsqu’un SOS est envoyé.',
         '4': 'Sur l’appareil parent, ouvrez l’appareil → Alertes SOS pour consulter l’événement.',
-        '5': 'Mettez-vous d’accord avec votre enfant sur quand utiliser le SOS et quand un Check-In normal suffit.',
+        '5': 'Mettez-vous d’accord avec votre enfant sur quand utiliser le SOS et quand un Check-in normal suffit.',
       },
     },
     webFilter: {
@@ -259,7 +259,7 @@ export const userGuide = {
       tip: 'Une alerte de protection signifie que la protection KidGate s’est affaiblie. Merci de rétablir l’autorisation sur l’appareil de l’enfant dès que possible.',
       steps: {
         '1': 'Ouvrez l’appareil de l’enfant → Protection (ou Alertes de protection).',
-        '2': 'Consultez les événements récents tels que Affichage par-dessus les autres apps, Accessibilité, Accès à l’utilisation, Appareil photo ou Localisation désactivés.',
+        '2': 'Consultez les événements récents tels que Superposition aux autres apps, Accessibilité, Accès à l’utilisation, Appareil photo ou Localisation désactivés.',
         '3': 'Sur l’appareil de l’enfant, ouvrez KidGate → État et réactivez l’autorisation indiquée.',
         '4': 'Retournez sur Alertes de protection et vérifiez qu’aucun nouvel événement inattendu n’apparaît.',
         '5': 'Gardez les notifications activées sur l’appareil parent afin d’être informé rapidement des changements.',

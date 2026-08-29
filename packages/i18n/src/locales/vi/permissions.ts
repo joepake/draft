@@ -45,6 +45,8 @@ export const permissions = {
   oemAutostartHintOther:
     'Cho phép KidGate tự khởi động trong phần cài đặt bảo mật hoặc pin của thiết bị.',
   markDone: 'Đã xong',
+  uninstallProtectionWizardBody:
+    'Ngăn gỡ cài đặt ứng dụng này khi chưa nhập mã PIN phụ huynh. Android sẽ hiển thị màn hình xác nhận riêng.',
   notificationsWizardBody:
     'Cho phép thông báo để thiết bị này nhận phê duyệt thời gian và nhắc nhở ngay lập tức.',
 } as const;

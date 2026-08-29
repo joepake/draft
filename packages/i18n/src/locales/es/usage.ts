@@ -2,7 +2,7 @@ export const usage = {
   title: 'Informe de uso',
   fallbackDeviceName: 'Dispositivo del niño',
   sectionToday: 'Hoy',
-  percentOfLimit: '{{percent}}% del límite',
+  percentOfLimit: '{{percent}} % del límite',
   reportedAt: 'Actualizado {{time}}',
   statUsedLabel: 'Usado',
   statLeftLabel: 'Restante',
@@ -50,6 +50,10 @@ export const usage = {
   overLimitChip: 'Límite superado',
   usageReportsNote:
     'Muestra el tiempo de pantalla, los bloqueos y la actividad reciente de este dispositivo.',
+  syncNote:
+    'El tiempo de uso puede tardar unos minutos en aparecer en esta pantalla, más si el dispositivo no tiene conexión a Internet o se cerró de forma inesperada.',
+  syncNoteTv:
+    'Este televisor solo se conecta de forma periódica, así que el tiempo de uso puede tardar hasta 30 minutos en aparecer en esta pantalla, más si no hay conexión a Internet.',
   sectionLast30Days: 'Últimos 30 días',
   comparePeriodTotal: 'Total de 30 días',
   compareDayAvg: 'Promedio diario',
@@ -64,9 +68,18 @@ export const usage = {
   sectionTopApps: 'Apps más usadas',
   topAppsHint:
     'Las apps más usadas hoy en el dispositivo del niño. Los datos se acumulan a medida que se sincronizan Tiempo de uso / Acceso de uso.',
+  topAppsExcludedNote:
+    'El salvapantallas, la pantalla de inicio y la propia pantalla de KidGate no cuentan como tiempo de uso. Cuando el dispositivo está encendido pero nadie lo está usando, esos minutos se registran como «Sin usar».',
+  topAppsAiNote:
+    'Algunos tipos se dedujeron del nombre de la app en vez de coincidir con una conocida, así que alguno puede fallar.',
   errorTitle: 'No se pudo cargar el uso',
   errorDescription: 'Comprueba tu conexión e inténtalo de nuevo.',
   tryAgain: 'Intentar de nuevo',
+  // Shown only when the rating is known — it is 0 for much of the long
+  // tail, and 0 does not mean "suitable for everyone".
+  appMinAge: 'Clasificado {{age}}+',
+  underAMinute: 'Menos de un minuto',
+  topAppsOther: 'Otras apps',
   topAppsEmpty:
     'Aún no hay datos por app. En el dispositivo del niño, asegúrate de que KidGate tenga permiso para medir el uso de apps y espera una sincronización.',
   protectionImpactTitle: 'Impacto de la protección',

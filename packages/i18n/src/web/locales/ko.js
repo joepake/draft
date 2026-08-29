@@ -333,15 +333,44 @@ export default {
 
   webCat: {
     adult: '성인 콘텐츠',
+    selfHarm: '자해·섭식장애',
     gambling: '도박',
+    gameGambling: '확률형 아이템·스킨 도박',
     dating: '데이팅',
+    strangerChat: '낯선 사람과 채팅',
     drugs: '마약·주류',
-    violence: '폭력·극단주의',
+    violence: '폭력·고어',
+    extremism: '극단주의·혐오',
     piracy: '불법 복제',
     social: '소셜 네트워크',
     videoStreaming: '동영상 스트리밍',
+    music: '음악',
     gaming: '게임',
     shopping: '쇼핑',
+    aiCompanion: 'AI 친구',
+    aiAssistant: 'AI 도우미',
+    cryptoTrading: '가상자산·거래',
+    vpn: 'VPN 앱',
+  },
+
+  appCat: {
+    adult: '성인 콘텐츠',
+    gambling: '도박',
+    gameGambling: '확률형 아이템·스킨 도박',
+    dating: '데이팅',
+    drugs: '마약·주류',
+    violence: '폭력·고어',
+    piracy: '불법 복제',
+    bypass: '필터 우회 및 VPN',
+  },
+
+  webCatGroup: {
+    harm: '유해 콘텐츠',
+    contact: '낯선 사람',
+    bypass: '필터 우회',
+    ai: 'AI',
+    entertainment: '엔터테인먼트·소셜',
+    money: '쇼핑·금융',
   },
 
   dash: {
@@ -351,9 +380,11 @@ export default {
     tabSafety: '안전',
     tabControls: '제어',
     tabReport: '주간 리포트',
+    tabReportNew: '새 주간 리포트',
 
     children: '자녀',
     noChildren: '아직 연결된 아이 기기가 없습니다.',
+    unassignedDevices: '미지정',
     manage: '관리',
     parents: '보호자 {{count}}명',
     devices: '아이 기기 {{count}}대',
@@ -365,6 +396,8 @@ export default {
     statusOnline: '온라인',
     statusOffline: '오프라인',
     statusLocked: '잠김',
+    statusLockSent: '잠금 전송됨',
+    statusLockNotApplied: '잠금 미적용',
 
     stateAllowed: '허용됨',
     stateDenied: '꺼짐',
@@ -374,6 +407,10 @@ export default {
     stateUnknown: '알 수 없음',
 
     lastActive: '마지막 활동 {{when}}',
+    appVersion: '앱 버전',
+    appVersionUpdate: '{{running}} · {{latest}} 사용 가능',
+    appVersionRestart: '{{running}} · 앱을 다시 열어 완료',
+    buildOutdated: '업데이트 있음',
     checkIn: '체크인',
     sending: '보내는 중…',
     lockDevice: '기기 잠그기',
@@ -408,6 +445,10 @@ export default {
 
     cardScreenTime: '스크린 타임',
     cardScreenTimeSub: '최근 14일, 하루 한도와 비교',
+    usageSyncNote:
+      '스크린 타임이 이 화면에 반영되기까지 몇 분 정도 걸릴 수 있습니다. 기기에 인터넷 연결이 없거나 예기치 않게 종료된 경우 더 오래 걸릴 수 있습니다.',
+    usageSyncNoteTv:
+      '이 TV는 주기적으로만 접속하므로 스크린 타임이 이 화면에 반영되기까지 최대 30분이 걸릴 수 있습니다. 인터넷 연결이 없으면 더 오래 걸립니다.',
     cardRecent: '최근 활동',
     cardRecentSub: '최신순',
     cardRecentEmpty:
@@ -422,8 +463,6 @@ export default {
     attnReason: '"{{reason}}" · {{when}}',
     attnCheckInMissed: '체크인에 응답하지 않았습니다',
     attnCheckInMissedMeta: '{{when}} 발송 · 응답 없음',
-    attnPermissionOff: '{{permission}}이(가) 꺼져 있습니다',
-    attnPermissionOffMeta: '아이 기기에서 다시 켤 때까지 보호가 약해집니다',
     attnLimitReached: '하루 한도 도달 — 기기가 잠겼습니다',
     attnLimitReachedMeta: '오늘 {{used}} 사용',
     attnBatteryLow: '배터리가 부족합니다({{level}}%)',
@@ -453,6 +492,8 @@ export default {
 
     appUsageTitle: '오늘의 앱 사용',
     appUsageSub: '앱별 사용 시간',
+    topAppsOther: '기타 앱',
+    underAMinute: '1분 미만',
     appUsageEmpty: '아직 앱 사용 기록이 없습니다.',
     appBlockingTitle: '앱 차단',
     appBlockingSub: '부모 PIN으로 아이 기기에서 선택합니다',
@@ -465,6 +506,21 @@ export default {
     webActivityTitle: '웹 활동',
     webActivitySub: '가장 많이 방문한 도메인, 최근 30일',
     webActivityEmpty: '아직 웹 활동이 없습니다.',
+    inventoryTitle: '설치된 앱',
+    inventorySub: '변경된 것만이 아니라 이 기기의 모든 것',
+    inventoryEmpty: '이 기기가 아직 앱 목록을 보내지 않았습니다.',
+    inventoryStale: '이 목록은 오래되었습니다. 기기가 다음에 연결되면 갱신됩니다.',
+    inventoryFirstScan: '첫 번째 검사이므로 언제 추가되었는지 알 수 없습니다.',
+    inventoryFlagged: '확인해 볼 만함',
+    inventoryFlaggedLabel: '확인 필요',
+    inventoryOtherLabel: '확인됨',
+    inventoryUnknownLabel: '미확인',
+    inventoryIncomplete:
+      '홈 화면에 아이콘이 없는 앱은 여기에 나타나지 않을 수 있습니다.',
+    webActivitySyncNote:
+      '웹 활동이 이 화면에 반영되기까지 몇 분 정도 걸릴 수 있습니다. 기기에 인터넷 연결이 없거나 예기치 않게 종료된 경우 더 오래 걸릴 수 있습니다.',
+    webActivitySyncNoteTv:
+      '이 TV는 주기적으로만 접속하므로 웹 활동이 이 화면에 반영되기까지 최대 30분이 걸릴 수 있습니다. 인터넷 연결이 없으면 더 오래 걸립니다.',
     colDomain: '도메인',
     colVisits: '방문',
     colBlocked: '차단',
@@ -472,15 +528,21 @@ export default {
     filterRefusedTitle: '필터가 거부한 항목',
     filterRefusedSub: '차단된 조회 {{count}}건, 최근 30일',
     nothingBlockedYet: '아직 차단된 항목이 없습니다.',
+    rollupNoteAi:
+      '일부는 알려진 사이트와 대조한 것이 아니라 사이트 이름에서 추정한 것이라 틀릴 수 있습니다.',
     filterHintIos:
       'iOS에서는 필터가 Apple의 성인 콘텐츠 제한을 사용합니다. 카테고리별 차단은 Android에서만 가능합니다.',
     filterHintAndroid: '카테고리는 기기 내 DNS 필터가 적용합니다.',
+    filterHintMacos: '카테고리는 Mac의 KidGate 콘텐츠 필터가 적용합니다.',
 
     locationTitle: '위치',
     locationSharingOff: '공유가 꺼져 있습니다',
+    locationSyncNote:
+      '위치 정보가 업데이트되기까지 몇 분 정도 걸릴 수 있습니다. 기기에 인터넷 연결이 없거나 예기치 않게 종료된 경우 더 오래 걸릴 수 있습니다.',
     locationUpdated: '{{when}} 업데이트',
     locationWaiting: '첫 업데이트를 기다리는 중',
     lastKnownLocation: '마지막으로 확인된 위치',
+    nearPlace: '{{place}} 근처',
     noPlaces:
       '저장된 장소가 없습니다. 앱에서 하나 추가하면 아이가 도착하거나 떠날 때 알림을 받을 수 있습니다.',
     placeRadius: '{{meters}}m · ',
@@ -517,6 +579,10 @@ export default {
     limitScaleMin: '30분',
     limitScaleMax: '8시간',
     limitHint: '보상 과제와 승인된 시간 요청의 보너스 시간은 그날에 한해 추가됩니다.',
+    limitShared: '모든 기기 공용',
+    limitSharedSpent: '오늘 {{limit}} 중 {{used}} 사용',
+    limitSharedHint:
+      '이 아이의 하루 전체이며 이 기기만의 한도가 아닙니다. 다른 기기가 쓰지 않은 시간이 각 기기로 돌아갑니다. 변경은 KidGate 앱에서 하세요.',
     whatsOnTitle: '켜져 있는 기능',
     whatsOnSub: '변경 사항은 아이 기기에 동기화됩니다',
     rowBlockedHours: '차단 시간대',
@@ -530,6 +596,8 @@ export default {
     rowWebFilter: '웹 필터',
     rowWebFilterDesc: '{{count}}개 카테고리 거부',
     rowNotSupported: '이 기기에서는 지원되지 않습니다',
+    rowWebFilterAwaitingApproval: '기기에서 승인 대기 중',
+    rowWebFilterSwitchedOff: '기기에서 꺼져 있음',
     rowLocation: '위치 공유',
     rowLocationDesc: '마지막 업데이트 {{when}}',
     rowLocationNone: '아직 위치 없음',
@@ -550,6 +618,12 @@ export default {
     rewardTaskWaiting: ' · 승인 대기 중',
     approve: '승인',
     approveInApp: 'KidGate 앱에서 승인하세요',
+    siteRequestsTitle: '사이트 요청',
+    siteRequestsSub: '이 기기가 허용을 요청한 사이트예요',
+    siteRequestAllow: '허용',
+    siteRequestDeny: '나중에',
+    attnSiteRequest: '{{name}}이(가) {{domain}} 접속을 요청했어요',
+    toastSiteAllowed: '사이트를 허용했어요',
     timelineTitle: '사용한 시간대',
     timelineSub: '오늘 자정부터 자정까지. 초록색은 기기를 사용한 시간입니다.',
   },
@@ -619,8 +693,11 @@ export default {
     emptyBody:
       '리포트는 매주 일요일 저녁에 도착합니다. 이번 주 리포트는 지금 작성할 수 있으며 최근 7일을 다룹니다.',
     noUsage:
-      '지난 2주 동안 사용 시간이 기록되지 않아 아직 알려 드릴 내용이 없습니다. 꺼져 있는 기기는 아무것도 보고하지 않으며, 이는 조용한 한 주와는 다릅니다.',
+      '지난 2주 동안 사용 시간이 기록되지 않아 아직 알려 드릴 내용이 없습니다. 오프라인 상태인 기기는 아무것도 보고하지 않으며, 이는 조용한 한 주와는 다릅니다.',
     rateLimited: '시도가 너무 많습니다. 1분만 기다려 주세요.',
+    loadFailedTitle: '리포트를 불러오지 못함',
+    loadFailed: '리포트를 열지 못했습니다. 페이지를 새로고침하세요.',
+    retryLoad: '다시 시도',
     failed: '리포트를 작성하지 못했습니다. 잠시 후 다시 시도해 주세요.',
     existed: '이번 주 리포트가 이미 있습니다. 여기 있습니다.',
     childrenTitle: '자녀별',

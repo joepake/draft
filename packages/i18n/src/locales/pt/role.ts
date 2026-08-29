@@ -2,7 +2,7 @@
 // restam apenas as strings de pareamento usadas por
 // PairingCodeModal/PairingQrScanner.
 export const role = {
-  enterPairingCode: 'Digite o código de 6 caracteres do aparelho da criança.',
+  enterPairingCode: 'Digite o código de 6 caracteres do dispositivo da criança.',
   unableToJoinWithCode: 'Código incorreto ou expirado.',
   connecting: 'Conectando…',
 };

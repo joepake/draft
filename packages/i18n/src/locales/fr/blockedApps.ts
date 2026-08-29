@@ -27,7 +27,7 @@ export const blockedApps = {
   infoLine1:
     'Sélectionnez les applications sur l’appareil de l’enfant après avoir saisi le code PIN parent.',
   infoLine2:
-    'Le verrouillage, les Heures de blocage et la Limite quotidienne continuent de bloquer toutes les applications.',
+    'Le verrouillage, les Heures bloquées et la Limite quotidienne continuent de bloquer toutes les applications.',
   infoLine3:
     'Vous pouvez activer ou désactiver le blocage à tout moment depuis cet écran.',
   appKind: 'Application',

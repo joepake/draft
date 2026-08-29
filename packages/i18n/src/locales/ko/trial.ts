@@ -13,5 +13,11 @@ export const trial = {
   impactScreenTime: '스크린 타임이 하루 약 {{duration}} 감소',
   impactWebBlocked: '성인 웹사이트 방문 {{count}}회 차단',
   impactTamper: '보호가 꺼진 횟수 {{count}}회 기록',
+  impactLocks: '취침 시간과 차단 시간을 {{count}}회 적용했어요',
+  impactScreenTimeTracked: '스크린 타임 {{duration}}을 측정했어요',
+  impactDevices: '기기 {{count}}대를 밤낮으로 지켰어요',
+  impactPlaceArrivals: '자녀가 안전하게 도착했다고 {{count}}회 알려드렸어요',
+  impactAppInstalled: '새 앱 {{count}}개를 설치된 당일에 찾아냈어요',
+  impactSos: 'SOS 알림 {{count}}건을 바로 전달했어요',
   impactKeepButton: '이 보호 유지하기',
 } as const;

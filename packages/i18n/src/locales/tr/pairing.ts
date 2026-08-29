@@ -3,7 +3,7 @@ export const pairing = {
   shareInviteMessage:
     'KidGate’te ailemize katıl: uygulamayı aç, Aile → Aileye katıl seçeneğini seç ve {{code}} kodunu gir. Kod 15 dakika içinde geçerliliğini yitirir.',
   shareChildCodeMessage:
-    'Bu çocuk cihazını KidGate’te bağlayın: ebeveyn cihazında KidGate’i açın → Cihazlar → + → Çocuk cihazı, ardından QR kodunu tarayın veya {{code}} kodunu girin. Kod 5 dakika içinde sona erer.',
+    'Bu çocuk cihazını KidGate’te bağlayın: ebeveyn cihazında KidGate’i açın → Aile → Kod tara, ardından QR kodunu tarayın veya {{code}} kodunu girin. Kod 5 dakika içinde sona erer.',
   connectChildPhone: 'Çocuk cihazını bağla',
   parentInstructions:
     'Çocuk cihazında KidGate’i açın ve “Bu cihaz çocuğa aittir” seçeneğini seçin. Ardından o ekranda gösterilen kodu girin.',
@@ -13,12 +13,21 @@ export const pairing = {
     'Lütfen bu ekranı açık tutun. Bir ebeveyn bu cihazı kendi KidGate uygulamasından bağlayacak.',
   childCodeLabel: 'Ya da bu kodu paylaşın',
   childScanHint:
-    'Ebeveyn: KidGate → Cihazlar → + → Çocuk cihazı → QR kodunu tarayın veya kodu girin.',
+    'Ebeveyn: KidGate → Aile → {{scan}} → QR kodunu tarayın veya kodu girin.',
   childConnecting: 'Bağlandı. Bu cihaz ayarlanıyor…',
   childPairedTitle: 'Bağlandınız',
   childPairedSubtitle: 'Bu cihaz ayarlanıyor…',
   connectChild: 'Çocuk cihazını bağla',
   waitingChildConfirm: 'İstek gönderildi. Çocuk cihazında onay bekleniyor.',
+  waitingChildConfirmHint:
+    'Bitirmek için çocuk cihazında "Evet, bağla" seçeneğine dokunun. Bu ekranı kapatabilirsiniz — eşleştirme arka planda devam eder.',
+  childConfirmedTitle: 'Cihaz bağlandı',
+  childConfirmedBody:
+    'Çocuk cihazı eşleştirmeyi onayladı. Şimdi cihazı kimin kullandığını seçin.',
+  childRejectedPairing:
+    'Çocuk cihazı bu eşleştirmeyi reddetti. O cihazdan yeni bir kod alıp tekrar deneyin.',
+  childConfirmExpired:
+    'Çocuk cihazı zamanında onay vermedi. O cihazdan yeni bir kod isteyip tekrar deneyin.',
   confirmParentTitle: 'Bu ebeveyn onaylansın mı?',
   confirmParentSubtitle:
     '{{parentLabel}} bu cihazı yönetmek istiyor. Yalnızca bu kişiyi tanıyorsanız kabul edin.',

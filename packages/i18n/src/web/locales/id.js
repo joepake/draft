@@ -332,15 +332,44 @@ export default {
 
   webCat: {
     adult: 'Konten dewasa',
+    selfHarm: 'Melukai diri & gangguan makan',
     gambling: 'Judi',
+    gameGambling: 'Kotak jarahan & taruhan skin',
     dating: 'Kencan',
+    strangerChat: 'Obrolan dengan orang asing',
     drugs: 'Narkoba & alkohol',
-    violence: 'Kekerasan & ekstremisme',
+    violence: 'Kekerasan & sadis',
+    extremism: 'Ekstremisme & kebencian',
     piracy: 'Pembajakan',
     social: 'Media sosial',
     videoStreaming: 'Streaming video',
+    music: 'Musik',
     gaming: 'Game',
     shopping: 'Belanja',
+    aiCompanion: 'Teman AI',
+    aiAssistant: 'Asisten AI',
+    cryptoTrading: 'Kripto & trading',
+    vpn: 'Aplikasi VPN',
+  },
+
+  appCat: {
+    adult: 'Konten dewasa',
+    gambling: 'Judi',
+    gameGambling: 'Kotak jarahan & taruhan skin',
+    dating: 'Kencan',
+    drugs: 'Narkoba & alkohol',
+    violence: 'Kekerasan & sadis',
+    piracy: 'Pembajakan',
+    bypass: 'Pengelakan filter & VPN',
+  },
+
+  webCatGroup: {
+    harm: 'Konten berbahaya',
+    contact: 'Orang asing',
+    bypass: 'Menembus filter',
+    ai: 'AI',
+    entertainment: 'Hiburan & sosial',
+    money: 'Belanja & uang',
   },
 
   dash: {
@@ -350,9 +379,11 @@ export default {
     tabSafety: 'Keamanan',
     tabControls: 'Kendali',
     tabReport: 'Laporan mingguan',
+    tabReportNew: 'Laporan mingguan baru',
 
     children: 'Anak',
     noChildren: 'Belum ada perangkat anak yang tersambung.',
+    unassignedDevices: 'Belum ditetapkan',
     manage: 'Kelola',
     parents: '{{count}} orang tua',
     devices: '{{count}} perangkat anak',
@@ -364,6 +395,8 @@ export default {
     statusOnline: 'Daring',
     statusOffline: 'Luring',
     statusLocked: 'Terkunci',
+    statusLockSent: 'Perintah kunci terkirim',
+    statusLockNotApplied: 'Kuncian belum diterapkan',
 
     stateAllowed: 'Diizinkan',
     stateDenied: 'Dimatikan',
@@ -373,6 +406,10 @@ export default {
     stateUnknown: 'Tidak diketahui',
 
     lastActive: 'Terakhir aktif {{when}}',
+    appVersion: 'Versi aplikasi',
+    appVersionUpdate: '{{running}} · {{latest}} tersedia',
+    appVersionRestart: '{{running}} · buka ulang aplikasi untuk menyelesaikan',
+    buildOutdated: 'Pembaruan tersedia',
     checkIn: 'Check-In',
     sending: 'Mengirim…',
     lockDevice: 'Kunci perangkat',
@@ -407,6 +444,10 @@ export default {
 
     cardScreenTime: 'Waktu layar',
     cardScreenTimeSub: '14 hari terakhir, dibanding Batas Harian',
+    usageSyncNote:
+      'Waktu layar bisa butuh beberapa menit untuk muncul di layar ini — lebih lama jika perangkat tidak memiliki koneksi internet atau ditutup secara tidak terduga.',
+    usageSyncNoteTv:
+      'TV ini hanya memeriksa secara berkala, jadi waktu layar bisa butuh waktu hingga 30 menit untuk muncul di layar ini — lebih lama jika tidak ada koneksi internet.',
     cardRecent: 'Aktivitas terbaru',
     cardRecentSub: 'Terbaru dulu',
     cardRecentEmpty:
@@ -421,9 +462,6 @@ export default {
     attnReason: '“{{reason}}” · {{when}}',
     attnCheckInMissed: 'Check-In terlewat',
     attnCheckInMissedMeta: 'Dikirim {{when}} · tanpa jawaban',
-    attnPermissionOff: '{{permission}} dimatikan',
-    attnPermissionOffMeta:
-      'Perlindungan lebih lemah sampai ini dipulihkan di perangkat anak',
     attnLimitReached: 'Batas Harian tercapai — perangkat terkunci',
     attnLimitReachedMeta: '{{used}} terpakai hari ini',
     attnBatteryLow: 'Baterai lemah ({{level}}%)',
@@ -454,6 +492,8 @@ export default {
 
     appUsageTitle: 'Penggunaan aplikasi hari ini',
     appUsageSub: 'Waktu yang dipakai per aplikasi',
+    topAppsOther: 'Aplikasi lain',
+    underAMinute: 'Kurang dari semenit',
     appUsageEmpty: 'Belum ada penggunaan aplikasi yang dilaporkan.',
     appBlockingTitle: 'Blokir aplikasi',
     appBlockingSub: 'Dipilih di perangkat anak dengan PIN orang tua',
@@ -466,6 +506,23 @@ export default {
     webActivityTitle: 'Aktivitas web',
     webActivitySub: 'Domain paling sering dikunjungi, 30 hari terakhir',
     webActivityEmpty: 'Belum ada aktivitas web.',
+    inventoryTitle: 'Aplikasi terpasang',
+    inventorySub: 'Semua di perangkat ini, bukan hanya yang berubah',
+    inventoryEmpty: 'Perangkat ini belum mengirim daftar aplikasinya.',
+    inventoryStale:
+      'Daftar ini sudah usang. Akan diperbarui saat perangkat terhubung lagi.',
+    inventoryFirstScan:
+      'Pemindaian pertama, jadi KidGate belum tahu kapan aplikasi ini muncul.',
+    inventoryFlagged: 'Perlu diperiksa',
+    inventoryFlaggedLabel: 'Perlu ditinjau',
+    inventoryOtherLabel: 'Dikenali',
+    inventoryUnknownLabel: 'Belum dikenali',
+    inventoryIncomplete:
+      'Aplikasi tanpa ikon di layar utama mungkin tidak muncul di sini.',
+    webActivitySyncNote:
+      'Aktivitas web bisa butuh beberapa menit untuk muncul di layar ini — lebih lama jika perangkat tidak memiliki koneksi internet atau ditutup secara tidak terduga.',
+    webActivitySyncNoteTv:
+      'TV ini hanya memeriksa secara berkala, jadi aktivitas web bisa butuh waktu hingga 30 menit untuk muncul di layar ini — lebih lama jika tidak ada koneksi internet.',
     colDomain: 'Domain',
     colVisits: 'Kunjungan',
     colBlocked: 'Diblokir',
@@ -473,15 +530,21 @@ export default {
     filterRefusedTitle: 'Yang ditolak penyaring',
     filterRefusedSub: '{{count}} permintaan diblokir, 30 hari terakhir',
     nothingBlockedYet: 'Belum ada yang diblokir.',
+    rollupNoteAi:
+      'Sebagian jenis disimpulkan dari nama situs, bukan dicocokkan dengan situs yang dikenal, jadi ada yang mungkin meleset.',
     filterHintIos:
       'Di iOS penyaring memakai kontrol konten dewasa milik Apple — pemblokiran per kategori hanya di Android.',
     filterHintAndroid: 'Kategori ditegakkan oleh penyaring DNS di perangkat.',
+    filterHintMacos: 'Kategori ditegakkan oleh penyaring konten KidGate di Mac.',
 
     locationTitle: 'Lokasi',
     locationSharingOff: 'Berbagi lokasi mati',
+    locationSyncNote:
+      'Lokasi bisa butuh beberapa menit untuk diperbarui — lebih lama jika perangkat tidak memiliki koneksi internet atau ditutup secara tidak terduga.',
     locationUpdated: 'Diperbarui {{when}}',
     locationWaiting: 'Menunggu pembaruan pertama',
     lastKnownLocation: 'Lokasi terakhir diketahui',
+    nearPlace: 'Dekat {{place}}',
     noPlaces:
       'Belum ada tempat tersimpan. Tambahkan satu di aplikasi untuk mendapat peringatan saat anak Anda tiba atau pergi.',
     placeRadius: '{{meters}} m · ',
@@ -519,6 +582,10 @@ export default {
     limitScaleMax: '8j',
     limitHint:
       'Menit bonus dari tugas dan permintaan waktu yang disetujui ditambahkan di atasnya, hanya untuk hari itu.',
+    limitShared: 'Dipakai bersama semua perangkat',
+    limitSharedSpent: 'Hari ini terpakai {{used}} dari {{limit}}',
+    limitSharedHint:
+      'Ini satu hari penuh untuk anak ini, bukan batas perangkat ini saja — tiap perangkat mendapat sisa yang belum dipakai perangkat lain. Ubah di aplikasi KidGate.',
     whatsOnTitle: 'Apa yang aktif',
     whatsOnSub: 'Perubahan disinkronkan ke perangkat anak',
     rowBlockedHours: 'Jam Diblokir',
@@ -532,6 +599,8 @@ export default {
     rowWebFilter: 'Penyaring Web',
     rowWebFilterDesc: '{{count}} kategori ditolak',
     rowNotSupported: 'Tidak didukung di perangkat ini',
+    rowWebFilterAwaitingApproval: 'Menunggu persetujuan di perangkat',
+    rowWebFilterSwitchedOff: 'Dimatikan di perangkat',
     rowLocation: 'Berbagi lokasi',
     rowLocationDesc: 'Pembaruan terakhir {{when}}',
     rowLocationNone: 'Belum ada lokasi',
@@ -552,6 +621,12 @@ export default {
     rewardTaskWaiting: ' · menunggu persetujuan Anda',
     approve: 'Setujui',
     approveInApp: 'Setujui di aplikasi KidGate',
+    siteRequestsTitle: 'Permintaan situs',
+    siteRequestsSub: 'Situs yang diminta perangkat ini untuk diizinkan',
+    siteRequestAllow: 'Izinkan',
+    siteRequestDeny: 'Nanti saja',
+    attnSiteRequest: '{{name}} meminta membuka {{domain}}',
+    toastSiteAllowed: 'Situs diizinkan',
     timelineTitle: 'Kapan perangkat dipakai',
     timelineSub:
       'Hari ini, dari tengah malam ke tengah malam. Hijau adalah waktu pemakaian perangkat.',
@@ -621,8 +696,11 @@ export default {
     emptyBody:
       'Laporan datang setiap Minggu malam. Laporan minggu ini bisa ditulis sekarang — mencakup tujuh hari terakhir.',
     noUsage:
-      'Tidak ada waktu layar tercatat dalam dua minggu terakhir, jadi belum ada yang bisa dilaporkan. Perangkat yang mati tidak melaporkan apa pun, dan itu berbeda dengan minggu yang tenang.',
+      'Tidak ada waktu layar tercatat dalam dua minggu terakhir, jadi belum ada yang bisa dilaporkan. Perangkat yang offline tidak melaporkan apa pun, dan itu berbeda dengan minggu yang tenang.',
     rateLimited: 'Terlalu banyak percobaan. Tunggu sebentar.',
+    loadFailedTitle: 'Laporan gagal dimuat',
+    loadFailed: 'Laporan tidak dapat dibuka. Muat ulang halaman untuk mencoba lagi.',
+    retryLoad: 'Coba lagi',
     failed: 'Laporan tidak dapat ditulis. Coba lagi sebentar.',
     existed: 'Minggu ini sudah punya laporan — ini dia.',
     childrenTitle: 'Setiap anak',

@@ -94,10 +94,13 @@ function withinWindow(task: RewardTask, window: LeaderboardWindow): boolean {
 /**
  * Stars per child for the window, keyed by child id.
  *
- * Tasks are joined to a child through the device that earned them. A task from
- * a device nobody has assigned counts for nobody rather than for a default
- * child — inventing an owner would silently credit the wrong sibling, and the
- * unassigned device is visible on the parent's own screen.
+ * A task that names its child (`childId`, the child-level shape) counts for
+ * that child directly — the join survives the claiming device being
+ * reassigned or unpaired. A legacy task is joined through the device that
+ * earned it. A device-task from a device nobody has assigned counts for
+ * nobody rather than for a default child — inventing an owner would silently
+ * credit the wrong sibling, and the unassigned device is visible on the
+ * parent's own screen.
  */
 export function starsByChild(
   tasks: RewardTask[],
@@ -116,7 +119,7 @@ export function starsByChild(
     if (task.status !== 'approved' || !withinWindow(task, window)) {
       continue;
     }
-    const childId = childIdByDevice.get(task.deviceId);
+    const childId = task.childId || childIdByDevice.get(task.deviceId);
     if (!childId) {
       continue;
     }

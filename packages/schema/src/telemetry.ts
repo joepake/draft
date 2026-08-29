@@ -15,7 +15,7 @@ export interface UsageSnapshot {
   /** Device-local day. Usage is a human-day concept, not a UTC one. */
   date: IsoDate;
   totalMinutes: Minutes;
-  /** Sorted descending. Truncated by the reporter, typically to 8 entries. */
+  /** Sorted descending. Truncated by the reporter to `USAGE_TOP_APPS_LIMIT`. */
   topApps: AppUsage[];
   /**
    * When those minutes happened, or absent on a platform that cannot say.
@@ -27,6 +27,15 @@ export interface UsageSnapshot {
    * a device that can report one still has none before its first sample.
    */
   timeline?: UsageTimeline;
+  /**
+   * Minutes subtracted from `totalMinutes` because nobody was using the device
+   * — see `UsageDay.idleMinutes`, which this becomes.
+   *
+   * Absent on a platform that excludes nothing. Present and zero is a real
+   * claim and a different one: this agent does exclude packages, and today it
+   * has seen none of them.
+   */
+  idleMinutes?: Minutes;
 }
 
 export interface DomainVisit {

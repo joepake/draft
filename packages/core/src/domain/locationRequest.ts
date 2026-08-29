@@ -42,13 +42,13 @@ import type { DevicePlatform } from '@kidgate/schema/capabilities';
  * capability probe saying `location: false`, which is what a parent's screen
  * already reads before it offers the button.
  *
- * `windows` **is** here even though that agent reports `location: false` today.
- * The endpoint refuses a request for a device whose `locationSharingEnabled` is
- * off long before it reaches this list, and that switch is what a parent's
- * screen keeps off for a platform that cannot locate — so the honest error
- * (`location/sharing-disabled`) is the one they get, rather than the push
- * branch's advice to go and open KidGate on a phone. When location lands on
- * Windows, the channel is already the right one.
+ * `windows` earned its place here before its agent could locate at all: the
+ * endpoint refuses a request for a device whose `locationSharingEnabled` is
+ * off long before it reaches this list, so the honest error
+ * (`location/sharing-disabled`) was already better than the push branch's
+ * advice to go and open KidGate on a phone. The agent reads
+ * `Windows.Devices.Geolocation` now — see `location.rs` in `apps/desktop` —
+ * and the channel was already the right one.
  */
 export const LISTENER_LOCATION_PLATFORMS: readonly DevicePlatform[] = [
   'macos',

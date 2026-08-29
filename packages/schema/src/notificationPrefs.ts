@@ -17,8 +17,11 @@ export const ALERT_PREF_KEYS = [
   'tamperAlerts',
   'checkIn',
   'timeRequests',
+  'siteRequests',
   'rewardTasks',
   'weeklyDigest',
+  'anomalyAlerts',
+  'messageAlerts',
 ] as const;
 
 export type AlertPrefKey = (typeof ALERT_PREF_KEYS)[number];

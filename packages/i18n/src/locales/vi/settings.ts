@@ -1,7 +1,7 @@
 export const settings = {
   title: 'Cài đặt',
   personNameLabel: 'Tên của bạn',
-  personNamePlaceholder: 'ví dụ: Mẹ, Bố, Ba, Bà',
+  personNamePlaceholder: 'ví dụ: Mẹ, Bố, Ông, Bà',
   personNameRequired: 'Vui lòng nhập tên của bạn.',
   personNameTooLong: 'Tên tối đa {{max}} ký tự.',
   personNameRequiredTitle: 'Bạn muốn được gọi là gì?',
@@ -50,6 +50,12 @@ export const settings = {
   accountNotLinked: 'Chưa liên kết',
   darkModeLabel: 'Giao diện tối',
   darkModeHint: 'Dễ nhìn hơn vào buổi tối',
+  addWidgetTitle: 'Thêm widget vào màn hình chính',
+  addWidgetSubtitle: 'Xem nhanh thời gian dùng máy của từng trẻ',
+  addWidgetStepsIos:
+    '1. Chạm và giữ chỗ trống trên màn hình chính\n2. Bấm nút + ở góc trên\n3. Tìm KidGate\n4. Chọn cỡ rồi bấm Thêm tiện ích',
+  addWidgetStepsAndroid:
+    '1. Chạm và giữ chỗ trống trên màn hình chính\n2. Bấm Tiện ích (Widgets)\n3. Tìm KidGate rồi kéo widget ra màn hình chính',
   pushNotificationsTitle: 'Thông báo đẩy',
   pushNotificationsSubtitle: 'Chọn cảnh báo nào gửi tới máy này',
   inAppAlertsLabel: 'Thông báo trong ứng dụng',
@@ -71,13 +77,21 @@ export const settings = {
   reportMessagePlaceholder: 'Mô tả lỗi hoặc vấn đề…',
   reportMessageRequired: 'Vui lòng nhập mô tả ngắn gọn về vấn đề.',
   reportMessageTooLong: 'Nội dung báo cáo tối đa 2000 ký tự.',
+  reportAttachmentsLabel: 'Ảnh chụp màn hình (không bắt buộc)',
+  reportAttachmentsHint: '{{count}}/{{max}} · tối đa {{limit}} mỗi ảnh',
+  reportAddAttachment: 'Thêm ảnh',
+  reportRemoveAttachment: 'Xóa ảnh',
+  reportAttachmentsTooMany: 'Bạn chỉ có thể đính kèm tối đa {{max}} ảnh.',
+  reportAttachmentTooLarge:
+    'Sau khi thu nhỏ vẫn còn {{size}} nên ảnh không được đính kèm. Giới hạn là {{limit}} mỗi ảnh.',
+  reportAttachmentUnreadable: 'Không đọc được tệp này. Vui lòng chọn ảnh khác.',
   reportSendButton: 'Gửi báo cáo',
   reportSending: 'Đang gửi…',
   toastReportSent: 'Cảm ơn bạn — báo cáo đã được gửi đi.',
   toastReportFailed: 'Không thể gửi báo cáo. Vui lòng thử lại.',
   signOutAlertTitle: 'Đăng xuất?',
   signOutAlertMessage:
-    'Bạn sẽ thoát phiên phụ huynh trên thiết bị này và quay lại màn hình chọn vai trò Phụ huynh / Trẻ em. Vui lòng đăng nhập lại để tiếp tục quản lý thiết bị. Tài khoản, gia đình và các thiết bị của trẻ vẫn được giữ nguyên.',
+    'Bạn sẽ thóat phiên phụ huynh trên thiết bị này và quay lại màn hình chọn vai trò Phụ huynh / Trẻ em. Vui lòng đăng nhập lại để tiếp tục quản lý thiết bị. Tài khoản, gia đình và các thiết bị của trẻ vẫn được giữ nguyên.',
   removeParentDeviceAlertTitle: 'Gỡ thiết bị phụ huynh?',
   removeParentDeviceAlertMessage:
     '{{deviceName}} sẽ không còn nhận được thông báo. Phụ huynh đó có thể đăng nhập lại để kết nối.',
@@ -116,6 +130,7 @@ export const settings = {
   languageHindi: 'Tiếng Hindi',
   languageRussian: 'Tiếng Nga',
   sectionAboutTitle: 'Giới thiệu',
+  sectionKidGateTitle: 'KidGate',
   aboutUsTitle: 'Về chúng tôi',
   aboutUsSubtitle: 'Ai làm KidGate, và những gì ứng dụng sẽ không làm',
   sectionLegalTitle: 'Pháp lý',

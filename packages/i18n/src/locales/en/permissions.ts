@@ -41,6 +41,8 @@ export const permissions = {
   oemAutostartHintOther:
     'Allow KidGate to start automatically in your device’s security or battery settings.',
   markDone: 'Done',
+  uninstallProtectionWizardBody:
+    'Stops this app from being uninstalled without the Parent PIN. Android shows its own confirmation screen.',
   notificationsWizardBody:
     'Allow notifications so this device gets time approvals and reminders right away.',
 } as const;

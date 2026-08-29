@@ -7,6 +7,8 @@ export const deviceDetail = {
     'Supprimez cet appareil de votre compte familial. Toutes les demandes de temps et l’historique d’activité associés à cet appareil seront supprimés.',
   removeButton: 'Supprimer l’appareil',
   removingButton: 'Suppression…',
+  showAllFeatures: 'Afficher toutes les fonctions',
+  showAvailableFeatures: 'Afficher seulement les fonctions disponibles',
   essentialControls: 'Contrôles essentiels',
   dailyRulesAndDeviceAccess: 'Règles quotidiennes et accès à l’appareil',
   dailyLimit: 'Limite quotidienne',
@@ -19,7 +21,7 @@ export const deviceDetail = {
   locationAndWebSafety: 'Localisation et sécurité Web',
   alerts: 'Alertes',
   alertsSubtitle: 'SOS, protection, lieux et applications',
-  checkIn: 'Check-In',
+  checkIn: 'Check-in',
   locationPlusSelfie: 'Localisation et photo',
   webFilter: 'Filtre web',
   limitAdultWebsites: 'Limiter les sites pour adultes',
@@ -29,6 +31,8 @@ export const deviceDetail = {
   reviewEmergencyAlerts: 'Consulter les alertes d’urgence',
   appAlerts: 'Applications',
   reviewAppInstallAlerts: 'Voir les installations et suppressions d’applications',
+  appInventory: 'Applications installées',
+  reviewAppInventory: 'Voir tout sur cet appareil, pas seulement ce qui a changé',
   placeAlerts: 'Lieux',
   reviewPlaceAlerts: 'Être averti à l’arrivée ou au départ',
   noPlacesYet: 'Aucun lieu',
@@ -42,11 +46,17 @@ export const deviceDetail = {
   restoreAccess: 'Déverrouiller',
   pausePhone: 'Verrouiller l’appareil',
   quickPause: 'Verrouiller',
-  quickCheckIn: 'Check-In',
+  quickCheckIn: 'Check-in',
   lastActive: 'Dernière activité',
+  appVersion: 'Version de l’app',
+  appVersionUpdate: '{{running}} · {{latest}} disponible',
+  appVersionRestart: '{{running}} · redémarrez l’app pour terminer',
   androidPauseNote:
-    'Sur Android, le verrouillage bloque également les autres applications lorsque les services d’accessibilité et l’option "Afficher par-dessus les autres applications" sont activés.',
+    'Sur Android, le verrouillage bloque également les autres applications lorsque les services d’accessibilité et l’option « Afficher par-dessus les autres applications » sont activés.',
   notAvailableOnPlatform: 'Indisponible sur {{platform}}',
+  notAvailableInExtension: 'Indisponible dans l’extension',
+  webFilterAwaitingApproval: 'En attente d’autorisation sur {{platform}}',
+  webFilterSwitchedOffOnDevice: 'Désactivé sur {{platform}}',
   unableToUpdateDeviceName:
     'Impossible de mettre à jour le nom de l’appareil. Veuillez réessayer.',
   renameOwnerOnly: 'Seul le propriétaire de la famille peut renommer les appareils.',
@@ -55,17 +65,17 @@ export const deviceDetail = {
   removeDeviceMessage:
     '{{deviceName}} sera déconnecté de votre compte. Toutes les demandes de temps et l’historique d’activité associés seront supprimés.',
   unableToRemoveDevice: 'Impossible de supprimer l’appareil. Veuillez réessayer.',
-  checkInNotificationSent: '{{deviceName}} recevra une demande de Check-In.',
+  checkInNotificationSent: '{{deviceName}} recevra une demande de Check-in.',
   checkInOfflineTitle: 'Cet appareil semble hors ligne',
   checkInOfflineBody:
-    'KidGate n’a aucun signe de {{deviceName}} depuis {{lastSeen}}. Une demande de nouvelles n’arrivera qu’une fois l’appareil de nouveau en ligne.',
+    'KidGate n’a aucun signe de {{deviceName}} depuis {{lastSeen}}. Un Check-in n’arrivera qu’une fois l’appareil de nouveau en ligne.',
   checkInOfflineBodyNeverSeen:
-    'KidGate n’a jamais eu de signe de {{deviceName}}. Une demande de nouvelles n’arrivera qu’une fois l’app ouverte sur cet appareil.',
+    'KidGate n’a jamais eu de signe de {{deviceName}}. Un Check-in n’arrivera qu’une fois l’app ouverte sur cet appareil.',
   checkInOfflineConfirm: 'Envoyer quand même',
   checkInQueued:
-    'Demande en attente — {{deviceName}} la recevra dès son retour en ligne.',
+    'Check-in en attente — {{deviceName}} le recevra dès son retour en ligne.',
   unableToRequestCheckIn:
-    'Impossible d’envoyer une demande de Check-In. Veuillez réessayer.',
+    'Impossible d’envoyer une demande de Check-in. Veuillez réessayer.',
   tapToSetDailyCap: 'Définissez une limite quotidienne',
   usageUpdatesFromChildDevice: 'Mises à jour d’utilisation de l’appareil de l’enfant',
   minutesUsedToday: 'Aujourd’hui : {{used}} / {{limit}}',
@@ -122,4 +132,6 @@ export const deviceDetail = {
   webHistoryDescription: 'Sites atteints et bloqués',
   webHistorySitesUnit: 'sites',
   webHistorySitesUnit_one: 'site',
+  managedAtChild:
+    'Les règles, récompenses, check-ins et alertes de cet appareil se gèrent dans le profil de {{childName}}',
 } as const;

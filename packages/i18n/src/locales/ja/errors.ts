@@ -15,7 +15,8 @@ export const errors = {
   enterEmailAddress: 'メールアドレスを入力してください。',
   unableToCreatePairingCode:
     'ペアリングコードを作成できませんでした。もう一度お試しください。',
-  unableToRedeemPairingCode: 'ペアリングコードが正しくないか、有効期限が切れています。',
+  unableToRedeemPairingCode:
+    'コードが一致しません。文字をもう一度ご確認ください — 時間が経っている場合は新しいコードを取得してください。',
   unableToClaimChildPairing:
     '子どものデバイスを接続できませんでした。もう一度お試しください。',
   unableToPollChildPairing: 'ペアリング状況を確認できませんでした。',
@@ -27,6 +28,8 @@ export const errors = {
   unableToOpenCamera:
     'カメラを開けませんでした。デバイスの設定でカメラへのアクセスを許可してください。',
   noPhotoCaptured: '写真が撮影されませんでした。',
+  unableToOpenPhotoLibrary:
+    '写真を開けませんでした。デバイスの設定で写真へのアクセスを許可してください。',
   simulatorCameraHint:
     'シミュレーターでは、Simulator → Camera → Front Cameraでカメラを有効にしてからSOSをお試しください。実際の写真は実機のiPhoneでテストしてください。',
   notSignedInReopenApp:
@@ -58,7 +61,7 @@ export const errors = {
     'このデバイスは再接続が必要です。KidGateを閉じて再度開き、もう一度お試しください。',
   deviceNotFound: 'このデバイスはファミリーから削除されています。',
   registerParentDeviceFirst:
-    'まずこのデバイスを保護者デバイスとして設定してから、もう一度お試しください。',
+    'このスマートフォンはまだ保護者デバイスとして設定されていません。このスマートフォンでKidGateを開き、開始画面で保護者を選んでから、もう一度ペアリングをお試しください。',
   pairingCodeFormat: '6文字のコードを入力してください。',
   pairingCodeUsed:
     'このコードはすでに使用されています。新しいコードを取得してください。',

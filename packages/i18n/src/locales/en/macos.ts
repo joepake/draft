@@ -27,7 +27,7 @@ export const macos = {
 
   lockState: 'Device locked',
   lockStateNo: 'No',
-  lockStateNotChecked: 'Not checked yet',
+  stateNotChecked: 'Not checked yet',
   lockStateParent: 'Yes — locked by a parent',
   lockStateSchedule: 'Yes — Blocked Hours',
   lockStateDailyLimit: 'Yes — Daily Limit reached',
@@ -45,6 +45,84 @@ export const macos = {
    * "This device" rather than "this Mac": the same string renders on Windows.
    */
   notSupportedOnThisDevice: 'Not supported on this device',
+  filterAwaitingApproval: 'Waiting for approval in System Settings',
+  /*
+   * A filter the parent DID set, that is not filtering. Neither of these may
+   * fall back to `shared.notSet`: the reader cannot tell an undone rule from a
+   * rule nobody wrote, and the grey of "not set" reads as nothing to do.
+   *
+   * `filterSwitchedOff` is short because the banner above the hero says the
+   * rest and carries the button. `filterInterrupted` is the whole sentence
+   * because nothing else on the screen mentions that state — it names no switch
+   * on purpose, since there is none to flip; the agent restores it itself.
+   */
+  filterSwitchedOff: 'Switched off in System Settings',
+  filterInterrupted: 'Stopped after a problem — KidGate will restore it',
+  setupFilterApprovalBody:
+    'Turn on KidGate in Network Extensions so web filtering can start.',
+  setupFilterSwitchBody:
+    'Filter Network Content is switched off for KidGate. Turn it back on to keep filtering.',
+  setupOpenSettings: 'Open Settings',
+
+  /*
+   * The consent checklist, shown once at the end of pairing.
+   *
+   * Parent register throughout, and the reason is the screen's whole premise:
+   * every one of these prompts can only be answered by the person at this
+   * keyboard, and this is the one moment the product knows that is a parent.
+   * The copy says why each consent is being asked for, because a parent
+   * granting four things at once is entitled to know what each one buys — and
+   * because they are the one who will explain it to the child afterwards.
+   *
+   * Each row names the switch the way System Settings names it. A parent about
+   * to go looking for "Filter Network Content" needs those three words, not a
+   * description of them.
+   *
+   * The rest of the screen is borrowed: `Allow`, `Not now` and `Done` are
+   * `permissions.*`, already translated fourteen times for the phone's own
+   * permission screens, and the two filter sentences are the ones the Status
+   * banner uses. A second wording for a button a family has already seen is a
+   * second thing to keep in step for nothing.
+   *
+   * **"This device", not "this Mac"** — the same strings render on Windows,
+   * like every other key in this namespace that names the machine.
+   */
+  setupTitle: 'Finish setting up this device',
+  setupSubtitle:
+    'The system asks permission for each of these, and only the person using this device can say yes. Doing it now means your child is not asked later.',
+  /* The row in Settings that reopens the checklist after "Not now". */
+  setupRowLabel: 'Permissions',
+  setupRowHint: 'Check what this device still needs to be allowed.',
+
+  setupStepFilterApprovalTitle: 'Approve web filtering',
+  setupStepFilterSwitchTitle: 'Filter Network Content',
+  setupStepFilterSwitchWaiting:
+    'Appears in System Settings once the step above is approved.',
+
+  setupStepLocationBody:
+    'Lets your family see where this device is. Nothing is shared until you turn Share location on.',
+
+  setupStepCameraTitle: 'Camera',
+  setupStepCameraBody:
+    'Attaches a photo when your child sends an SOS or answers a check-in. No photo is taken now.',
+
+  setupStepDone: 'Set up — nothing more to do here.',
+  /*
+   * "Only asks once" is load-bearing. macOS raises each of these prompts a
+   * single time per install and never again, so a parent reading this after a
+   * refusal is being told why the button now opens Settings instead of asking.
+   */
+  setupStepBlocked:
+    'Refused earlier. macOS only asks once — turn KidGate on in Privacy & Security.',
+  /*
+   * Windows, where there is no prompt at all: an unpackaged desktop app is
+   * governed by two switches in Settings rather than by a dialog it can raise
+   * (`location.rs`). Saying "only asks once" there would describe a prompt
+   * nobody ever saw, and there is no pane this app can open on that host, so
+   * the sentence has to carry the whole path itself.
+   */
+  setupStepBlockedNoPrompt:
+    'Refused, and this device shows no prompt to ask again — turn KidGate on in Settings → Privacy & security.',
 
   scheduleLabel: 'Blocked Hours',
   dailyLimitLabel: 'Daily Limit',

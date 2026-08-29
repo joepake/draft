@@ -3,12 +3,12 @@ export const permissions = {
     'L’accès à l’appareil photo est nécessaire pour cette fonctionnalité.',
   allowCameraTitle: 'Autoriser l’appareil photo',
   cameraPermissionMessage:
-    'KidGate utilise l’appareil photo afin que vous puissiez envoyer une photo rapide avec le SOS et les Check-Ins.',
+    'KidGate utilise l’appareil photo afin que vous puissiez envoyer une photo rapide avec le SOS et les Check-ins.',
   allow: 'Autoriser',
   notNow: 'Pas maintenant',
   cameraTurnedOffTitle: 'L’appareil photo est désactivé pour KidGate',
   cameraTurnedOffMessage:
-    'Veuillez ouvrir les Réglages et autoriser l’appareil photo afin que vos Check-Ins et alertes SOS puissent inclure une photo.',
+    'Veuillez ouvrir les Réglages et autoriser l’appareil photo afin que vos Check-ins et alertes SOS puissent inclure une photo.',
   openSettings: 'Ouvrir les Réglages',
   notificationsLabel: 'Notifications',
   notificationsAllowed: 'Les notifications sont activées pour KidGate.',
@@ -47,6 +47,8 @@ export const permissions = {
   oemAutostartHintOther:
     'Autorisez KidGate à démarrer automatiquement dans les réglages de sécurité ou de batterie de votre appareil.',
   markDone: 'Terminé',
+  uninstallProtectionWizardBody:
+    'Empêche la désinstallation de cette app sans le code PIN parent. Android affiche son propre écran de confirmation.',
   notificationsWizardBody:
     'Autorisez les notifications pour que cet appareil reçoive immédiatement les approbations de temps et les rappels.',
 } as const;

@@ -3,7 +3,7 @@ export const pairing = {
   shareInviteMessage:
     'Unisciti alla nostra famiglia su KidGate: apri l’app, scegli Famiglia → Unisciti alla famiglia e inserisci il codice {{code}}. Il codice scade tra 15 minuti.',
   shareChildCodeMessage:
-    'Collega questo dispositivo del bambino su KidGate: sul dispositivo del genitore apri KidGate → Dispositivi → + → Dispositivo del bambino, poi scansiona il codice QR o inserisci il codice {{code}}. Il codice scade tra 5 minuti.',
+    'Collega questo dispositivo del bambino su KidGate: sul dispositivo del genitore apri KidGate → Famiglia → Scansiona un codice, poi scansiona il codice QR o inserisci il codice {{code}}. Il codice scade tra 5 minuti.',
   connectChildPhone: 'Connetti un dispositivo del bambino',
   parentInstructions:
     'Sul dispositivo del bambino, apri KidGate e scegli “Questo è il dispositivo di un bambino”. Poi inserisci il codice mostrato in quella schermata.',
@@ -14,13 +14,22 @@ export const pairing = {
     'Tieni questa schermata aperta. Un genitore collegherà questo dispositivo dalla sua app KidGate.',
   childCodeLabel: 'Oppure condividi questo codice',
   childScanHint:
-    'Genitore: apri KidGate → Dispositivi → + → Dispositivo del bambino → scansiona il codice QR o inserisci il codice.',
+    'Genitore: apri KidGate → Famiglia → {{scan}} → scansiona il codice QR o inserisci il codice.',
   childConnecting: 'Connesso. Configurazione del dispositivo in corso…',
   childPairedTitle: 'Sei connesso',
   childPairedSubtitle: 'Configurazione del dispositivo in corso…',
   connectChild: 'Collega dispositivo del bambino',
   waitingChildConfirm:
     'Richiesta inviata. In attesa di conferma sul dispositivo del bambino.',
+  waitingChildConfirmHint:
+    'Sul dispositivo del bambino, tocca «Sì, connetti» per completare. Puoi chiudere questa schermata — l’associazione continua in background.',
+  childConfirmedTitle: 'Dispositivo connesso',
+  childConfirmedBody:
+    'Il dispositivo del bambino ha confermato l’associazione. Ora scegli chi lo usa.',
+  childRejectedPairing:
+    'Il dispositivo del bambino ha rifiutato questa associazione. Genera un nuovo codice da quel dispositivo e riprova.',
+  childConfirmExpired:
+    'Il dispositivo del bambino non ha confermato in tempo. Richiedi un nuovo codice da quel dispositivo e riprova.',
   confirmParentTitle: 'Confermare questo genitore?',
   confirmParentSubtitle:
     '{{parentLabel}} vuole gestire questo dispositivo. Accetta solo se conosci questa persona.',

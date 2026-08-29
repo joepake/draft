@@ -35,6 +35,8 @@ export const checkIn = {
   requestCheckInNote:
     'Asks the child device for its location and a front-camera photo.',
   needHelpOpenSosAccessibility: 'I need help — open SOS',
+  showAllDevices: 'Show all {{count}} devices',
+  showFewerDevices: 'Show fewer devices',
   parentSafePopupTitle: 'Your child is safe',
   childSafePopupTitle: 'Parents notified',
   childSafePopupBody: 'Your parents received the message — you are okay.',

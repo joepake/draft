@@ -34,7 +34,7 @@ export const userGuide = {
       tip: 'Hãy thiết lập mã PIN phụ huynh sớm. Bạn cần mã PIN này để thay đổi các cài đặt quan trọng và mở khóa điều khiển trên thiết bị của trẻ.',
       steps: {
         '1': 'Cài KidGate trên thiết bị của bạn. Mở ứng dụng và chọn Đây là thiết bị của phụ huynh.',
-        '2': 'Đăng nhập bằng Google hoặc Apple, hoặc tạo tài khoản bằng email. Xác nhận bạn là chủ gia đình của hộ gia đình này.',
+        '2': 'Đăng nhập bằng Google hoặc Apple, hoặc tạo tài khoản bằng email. Xác nhận bạn là chủ gia đình.',
         '3': 'Nếu được hỏi, hãy đặt tên gia đình (ví dụ: “Gia đình Nguyễn”). Tên này sẽ hiển thị khi các phụ huynh khác tham gia.',
         '4': 'Thiết lập mã PIN phụ huynh (6 chữ số) trong Cài đặt → Bảo mật. Vui lòng ghi nhớ hoặc lưu giữ ở nơi an toàn và không chia sẻ với trẻ.',
         '5': 'Khuyến nghị: bật Khóa ứng dụng và mở khóa bằng sinh trắc học trong Cài đặt để người khác không thể mở ứng dụng phụ huynh trên thiết bị của bạn.',
@@ -109,7 +109,7 @@ export const userGuide = {
         '4': 'Hiển thị trên ứng dụng khác: cho phép KidGate. Quyền này cần thiết để màn hình khóa hiển thị đè lên các ứng dụng khác.',
         '5': 'Trợ năng hỗ trợ khóa: Cài đặt → Trợ năng → Ứng dụng đã cài đặt / Đã tải xuống → KidGate → Bật. Quyền này giúp duy trì khóa ổn định.',
         '6': 'Pin không hạn chế: chạm Cho phép khi hệ thống hỏi. Nếu hộp thoại không xuất hiện: Thông tin ứng dụng → Pin → Không hạn chế.',
-        '7': 'Báo thức chính xác: cho phép để Giờ khóa thiết bị bắt đầu và kết thúc đúng giờ.',
+        '7': 'Chuông báo và lời nhắc: cho phép để Giờ khóa thiết bị bắt đầu và kết thúc đúng giờ.',
         '8': 'Vị trí và Camera (nếu sử dụng Báo an toàn hoặc SOS kèm ảnh): cấp quyền theo yêu cầu của KidGate. Sau đó quay lại màn hình Trạng thái và xác nhận toàn bộ các mục đã được cho phép.',
       },
     },

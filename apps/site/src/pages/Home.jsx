@@ -474,7 +474,7 @@ export default function Home() {
               <i />
               <i />
               <i />
-              <span>kidgate.app/dashboard</span>
+              <span>dashboard.kidgate.app</span>
             </div>
             <div className="showcase-body">
               <div className="showcase-side">

@@ -14,7 +14,8 @@ export const errors = {
     'Tidak dapat bergabung dengan akun keluarga. Silakan coba lagi.',
   enterEmailAddress: 'Silakan masukkan alamat email Anda.',
   unableToCreatePairingCode: 'Tidak dapat membuat kode pemasangan. Silakan coba lagi.',
-  unableToRedeemPairingCode: 'Kode pemasangan tidak benar atau telah kedaluwarsa.',
+  unableToRedeemPairingCode:
+    'Kode itu tidak cocok. Periksa kembali setiap karakternya — atau minta kode baru jika kodenya sudah agak lama.',
   unableToClaimChildPairing:
     'Tidak dapat menghubungkan perangkat anak. Silakan coba lagi.',
   unableToPollChildPairing: 'Tidak dapat memeriksa status pemasangan.',
@@ -25,6 +26,8 @@ export const errors = {
   unableToOpenCamera:
     'Tidak dapat membuka kamera. Harap izinkan akses Kamera di Pengaturan perangkat.',
   noPhotoCaptured: 'Tidak ada foto yang diambil.',
+  unableToOpenPhotoLibrary:
+    'Tidak dapat membuka foto Anda. Izinkan akses Foto di pengaturan perangkat.',
   simulatorCameraHint:
     'Di simulator, aktifkan kamera terlebih dahulu melalui Simulator → Camera → Front Camera, lalu coba SOS lagi. Untuk foto asli, uji pada iPhone fisik.',
   notSignedInReopenApp:
@@ -56,7 +59,7 @@ export const errors = {
     'Perangkat ini perlu dihubungkan kembali. Tutup lalu buka kembali KidGate, kemudian coba lagi.',
   deviceNotFound: 'Perangkat tersebut sudah tidak ada di keluarga Anda.',
   registerParentDeviceFirst:
-    'Atur perangkat ini sebagai perangkat orang tua terlebih dahulu, lalu coba lagi.',
+    'Ponsel ini belum disiapkan sebagai perangkat orang tua. Buka KidGate di sini, pilih peran orang tua di layar awal, lalu coba pasangkan lagi.',
   pairingCodeFormat: 'Masukkan kode yang terdiri dari 6 karakter.',
   pairingCodeUsed: 'Kode tersebut sudah digunakan. Silakan minta kode baru.',
   pairingCodeExpiredChild:

@@ -18,3 +18,41 @@ export function distanceMeters(
       Math.sin(dLon / 2);
   return 2 * EARTH_RADIUS_M * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 }
+
+/**
+ * How far a fix has to sit from a saved place before "Near X" would be a
+ * guess rather than a fact. Wider than `DEFAULT_PLACE_RADIUS_METERS` (a
+ * geofence answers "inside or not"; this answers "close enough to name" when
+ * HERE returned no address at all).
+ */
+export const NEARBY_PLACE_RADIUS_METERS = 2000;
+
+export interface NearbyPlace {
+  name: string;
+  distanceMeters: number;
+}
+
+/**
+ * The closest of `places` to a point, or null when none sit within
+ * `maxDistanceMeters`. Unlike a geofence check, a place here does not have to
+ * contain the point — this is the fallback label for a fix reverse geocoding
+ * could not name, not a "which place is the device in" answer (that is
+ * `placeForFix`, in `placeVisits.ts`).
+ */
+export function nearestPlaceWithin<
+  T extends { name: string; latitude: number; longitude: number },
+>(
+  lat: number,
+  lon: number,
+  places: readonly T[],
+  maxDistanceMeters: number = NEARBY_PLACE_RADIUS_METERS,
+): NearbyPlace | null {
+  let closest: NearbyPlace | null = null;
+  for (const place of places) {
+    const meters = distanceMeters(lat, lon, place.latitude, place.longitude);
+    if (meters <= maxDistanceMeters && (!closest || meters < closest.distanceMeters)) {
+      closest = { name: place.name, distanceMeters: meters };
+    }
+  }
+  return closest;
+}

@@ -7,6 +7,8 @@ export const deviceDetail = {
     'इस डिवाइस को अपने परिवार खाते से हटाएँ। इस डिवाइस से संबंधित सभी समय अनुरोध और गतिविधि इतिहास हटा दिए जाएँगे।',
   removeButton: 'डिवाइस हटाएँ',
   removingButton: 'हटाया जा रहा है…',
+  showAllFeatures: 'सभी सुविधाएं दिखाएं',
+  showAvailableFeatures: 'केवल उपलब्ध सुविधाएं दिखाएं',
   essentialControls: 'मुख्य नियंत्रण',
   dailyRulesAndDeviceAccess: 'दैनिक नियम और डिवाइस एक्सेस',
   dailyLimit: 'दैनिक सीमा',
@@ -29,6 +31,8 @@ export const deviceDetail = {
   reviewEmergencyAlerts: 'आपातकालीन अलर्ट देखें',
   appAlerts: 'ऐप्स',
   reviewAppInstallAlerts: 'ऐप इंस्टॉल और हटाने की जानकारी देखें',
+  appInventory: 'इंस्टॉल किए गए ऐप',
+  reviewAppInventory: 'इस डिवाइस पर सब कुछ देखें, केवल बदलाव नहीं',
   placeAlerts: 'स्थान',
   reviewPlaceAlerts: 'आने या जाने पर सूचना दें',
   noPlacesYet: 'कोई स्थान नहीं',
@@ -44,9 +48,15 @@ export const deviceDetail = {
   quickPause: 'लॉक करें',
   quickCheckIn: 'चेक-इन',
   lastActive: 'अंतिम सक्रियता',
+  appVersion: 'ऐप वर्शन',
+  appVersionUpdate: '{{running}} · {{latest}} उपलब्ध',
+  appVersionRestart: '{{running}} · पूरा करने के लिए ऐप फिर से खोलें',
   androidPauseNote:
     'Android पर, यदि Accessibility और Display over other apps सक्षम हैं, तो लॉक करने पर अन्य ऐप्स भी ब्लॉक हो जाएँगे।',
   notAvailableOnPlatform: '{{platform}} पर उपलब्ध नहीं',
+  notAvailableInExtension: 'एक्सटेंशन में उपलब्ध नहीं',
+  webFilterAwaitingApproval: '{{platform}} पर मंज़ूरी का इंतज़ार',
+  webFilterSwitchedOffOnDevice: '{{platform}} पर बंद है',
   unableToUpdateDeviceName:
     'डिवाइस का नाम अपडेट नहीं किया जा सका। कृपया पुनः प्रयास करें।',
   renameOwnerOnly: 'केवल परिवार का मालिक ही डिवाइस का नाम बदल सकता है।',
@@ -119,4 +129,6 @@ export const deviceDetail = {
   webHistoryDescription: 'पहुँची और ब्लॉक हुई साइटें',
   webHistorySitesUnit: 'साइटें',
   webHistorySitesUnit_one: 'साइट',
+  managedAtChild:
+    'इस डिवाइस के नियम, इनाम, चेक-इन और अलर्ट {{childName}} की प्रोफ़ाइल में प्रबंधित होते हैं',
 } as const;

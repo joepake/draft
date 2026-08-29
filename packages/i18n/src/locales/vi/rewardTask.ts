@@ -66,7 +66,7 @@ export const rewardTask = {
   taskRejected: 'Nhiệm vụ thưởng bị trả lại',
   taskRejectedDescription: '“{{title}}” được trả lại cho {{deviceName}} để thử lại.',
   starsLabel: 'Độ khó',
-  starsHint: 'Nhiệm vụ này khó tới đâu. Con sẽ sưu tầm số sao này.',
+  starsHint: 'Nhiệm vụ này khó tới đâu. Con sẽ tích được số sao này.',
   starsEasy: 'Dễ',
   starsMedium: 'Vừa',
   starsHard: 'Khó',

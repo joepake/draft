@@ -1,11 +1,14 @@
 export const location = {
   title: 'Location',
   fallbackDeviceName: 'Child device',
+  syncNote:
+    'Location can take a few minutes to update — longer if the device has no internet connection or was closed unexpectedly.',
   toastUpdateFailed: 'Unable to update location sharing. Try again.',
   toggleLabel: 'Share location',
   toggleHint: 'Open KidGate once on this device after turning this on.',
   toggleAccessibilityLabel: 'Share location',
   lastKnownLocation: 'Last known location',
+  nearPlace: 'Near {{place}}',
   noLocationHint: 'Turn on sharing, then open KidGate once on this device.',
   waitingForLocation: 'Waiting for location',
   updatedAt: 'Updated {{date}}',
@@ -33,6 +36,8 @@ export const location = {
   locationBannerTitle: 'Turn on location',
   locationBannerBody:
     'Your parent would like to see where this device is, so they know you arrived safely.',
+  locationBannerBodySharingOff:
+    'Location sharing is off right now, so nothing is sent. Allowing here means it works straight away if your parent turns it on later.',
   allowLocationButton: 'Allow location',
   locationNotAllowed:
     'Location is not allowed yet. Open Settings → KidGate → Location (or turn on Location Services first). Select Allow location again if the Location entry is missing.',
@@ -51,4 +56,19 @@ export const location = {
   mapUnavailable: 'Map unavailable. Check your connection and try again.',
   historyShowMore: 'Show {{count}} more places',
   historyShowMore_one: 'Show 1 more place',
+  childSharingHint: 'Applies to every device assigned to {{childName}}.',
+  childNoCapableDevices: 'None of {{childName}}’s devices can report location.',
+  childCarriedQuestion: 'Which device goes with {{childName}}?',
+  childCarriedHint:
+    'Their spot on the map is read from that device. A tablet left at home can report a fresher fix than the phone in their bag, so KidGate never guesses.',
+  childDevicesOnline: '{{online}} of {{total}} online',
+  childNoneOnline: 'No device online',
+  childPickCarried: 'With them',
+  childPickCarriedA11y: 'Mark {{deviceName}} as the device {{childName}} carries',
+  stayRange: '{{from}} – {{to}}',
+  placeTotalsTitle: 'Time at your places',
+  placeTotalsNote:
+    'From the last {{count}} days of location history. Only places saved here are counted.',
+  placeTotalsNote_one:
+    'From the last day of location history. Only places saved here are counted.',
 } as const;

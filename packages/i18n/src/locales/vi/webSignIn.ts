@@ -1,8 +1,6 @@
 export const webSignIn = {
-  // Settings section header; the row under it is `title` + `subtitle`.
-  sectionTitle: 'KidGate trên máy tính',
-  title: 'Cho phép trình duyệt',
-  subtitle: 'Quản lý gia đình từ máy tính',
+  title: 'Đăng nhập trên máy tính',
+  subtitle: 'Quản lý gia đình từ trình duyệt',
 
   // The screen. The steps name the site and the button to press on the
   // computer — without them the QR the parent is told to scan is nowhere

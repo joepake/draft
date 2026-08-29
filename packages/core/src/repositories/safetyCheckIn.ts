@@ -241,6 +241,62 @@ export function createSafetyCheckInRepository(deps: SafetyCheckInRepositoryDeps)
       );
     },
 
+    /**
+     * The recent feed for one CHILD: every device they hold, one list.
+     *
+     * Check-in rows carry only a `deviceId`, so the join to a person happens
+     * here against the ids the caller resolved from `Device.childId` — the
+     * same shape `sosAlert.subscribeRecentForDevices` uses, chunked by ten
+     * because that is the floor every Firestore transport's `in` supports.
+     * Each chunk reuses the composite index the per-device query already
+     * needs, so nothing new lands in `firestore.indexes.json`.
+     */
+    subscribeRecentForDevices(
+      userId: string,
+      deviceIds: readonly string[],
+      onRequests: (requests: SafetyCheckIn[]) => void,
+      onError: (error: Error) => void,
+    ): Unsubscribe {
+      if (deviceIds.length === 0) {
+        onRequests([]);
+        return () => undefined;
+      }
+
+      const chunks: string[][] = [];
+      for (let start = 0; start < deviceIds.length; start += 10) {
+        chunks.push([...deviceIds.slice(start, start + 10)]);
+      }
+
+      const byChunk = new Map<number, SafetyCheckIn[]>();
+      const emit = () => {
+        const merged = [...byChunk.values()]
+          .flat()
+          .sort((a, b) => (b.createdAt ?? '').localeCompare(a.createdAt ?? ''));
+        onRequests(merged);
+      };
+
+      const unsubscribes = chunks.map((chunk, index) =>
+        watch(
+          userId,
+          {
+            where: [['deviceId', 'in', chunk]],
+            orderBy: [['createdAt', 'desc']],
+          },
+          requests => {
+            byChunk.set(index, requests);
+            emit();
+          },
+          onError,
+        ),
+      );
+
+      return () => {
+        for (const unsubscribe of unsubscribes) {
+          unsubscribe();
+        }
+      };
+    },
+
     /** Clear pending check-ins once a child escalates to SOS, or a parent claims one. */
     async dismissPendingForDevice(userId: string, deviceId: string): Promise<void> {
       const path = safetyCheckInsCollection(userId);

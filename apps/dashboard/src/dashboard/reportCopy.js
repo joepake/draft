@@ -56,11 +56,12 @@ export function reportPresentation(report, familyName) {
 }
 
 /** The clipboard copy — the same figures and sentences the page shows. */
-export function reportSummaryText(report, familyName) {
+export function reportSummaryText(report, familyName, narrative) {
   return reportSummaryLines(
     report,
     familyName,
     deps,
     formatRange(report.fromDate, report.toDate),
+    narrative,
   ).join('\n');
 }

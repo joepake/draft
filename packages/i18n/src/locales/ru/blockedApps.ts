@@ -12,7 +12,7 @@ export const blockedApps = {
   statCategoriesLabel: 'Категории',
   toggleTitle: 'Включить блокировку приложений',
   toggleSubtitleOn: 'Выбранные приложения заблокированы на устройстве ребёнка.',
-  toggleSubtitleOff: 'Включите, чтобы удаленно блокировать выбранные приложения.',
+  toggleSubtitleOff: 'Включите, чтобы удалённо блокировать выбранные приложения.',
   toggleAccessibilityLabel: 'Включить блокировку приложений',
   emptyTitle: 'Пока нет заблокированных приложений',
   emptySubtitle:

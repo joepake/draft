@@ -1,6 +1,6 @@
 export const appLimits = {
   title: '앱 시간 제한',
-  intro: '앱마다 하루 사용 시간을 정합니다. 기기 전체 일일 한도에 더해 적용됩니다.',
+  intro: '앱마다 하루 사용 시간을 정합니다. 기기 전체 일일 제한에 더해 적용됩니다.',
   emptyTitle: '아직 제한이 없습니다',
   emptySubtitle: '아래에서 앱을 골라 개별 한도를 정하세요.',
   usedToday: '오늘 {{used}} / {{limit}}',

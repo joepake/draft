@@ -2,6 +2,7 @@ export const activities = {
   title: 'Aktivitäten',
   subtitleAllDevices: 'Neueste Ereignisse auf allen Geräten',
   subtitleTimelineForDevice: 'Zeitverlauf für {{deviceName}}',
+  subtitleTimelineForChild: 'Verlauf von {{childName}}',
   fallbackDeviceName: 'Gerät',
   liveBadge: 'Live',
   errorTitle: 'Aktivitäten konnten nicht geladen werden',
@@ -39,16 +40,31 @@ export const activities = {
   activityTypePlaceExit: 'Ort verlassen',
   activityTypeTamper: 'Schutz',
   activityTypeScreenTime: 'Bildschirmzeit',
+  activityTypeWebFilter: 'Webfilter',
   activityTypeEmergency: 'Notfall',
   activityTypeUnknown: 'Aktivität',
 
+  sosEscapeTitle: 'Notfall-Entsperrung',
+  sosEscapeBody: 'SOS hat dieses Gerät für {{minutes}} Minuten entsperrt.',
+  sosEscapeRepeatTitle: 'Notfall-Entsperrung ({{count}}× heute)',
+  sosEscapeRepeatBody:
+    'SOS hat dieses Gerät für {{minutes}} Minuten entsperrt. Das ist {{count}}× heute.',
   appBlockedTitle: '{{appName}}',
   appBlockedBody: 'Eine blockierte App wurde geöffnet und von KidGate geschlossen.',
-  appInstalledTitle: '{{appName}}',
-  appInstalledBody: 'Auf dem Gerät des Kindes wurde eine neue App installiert.',
+  appInstalledTitle: 'App installiert',
+  appInstalledBody: 'Die App {{appName}} wurde auf dem Gerät des Kindes installiert.',
 
-  appRemovedTitle: '{{appName}}',
-  appRemovedBody: 'Eine App wurde vom Gerät des Kindes entfernt.',
+  messageAlertTitle: 'Bedenklicher Nachrichteninhalt',
+  messageAlertBody: 'Ein markiertes Wort wurde in {{appName}} erkannt.',
+  messageAlertBodyOutgoing:
+    'Ein markiertes Wort wurde in einer Nachricht erkannt, die dein Kind in {{appName}} geschrieben hat.',
+  activityTypeMessageAlert: 'Nachrichtenwarnung',
+  messageCheckedTitle: 'Geprüft, nichts Bedenkliches',
+  messageCheckedBody:
+    'Ein beobachtetes Wort tauchte in {{appName}} auf und war im Zusammenhang harmlos.',
+  activityTypeMessageChecked: 'Geprüft',
+  appRemovedTitle: 'App deinstalliert',
+  appRemovedBody: 'Die App {{appName}} wurde vom Gerät des Kindes entfernt.',
 
   placeEnterTitle: '{{placeName}} betreten',
   placeEnterBody: 'Das Gerät des Kindes hat einen gespeicherten Ort betreten.',
@@ -86,7 +102,7 @@ export const activities = {
 
   tamperExactAlarmTitle: 'Wecker und Erinnerungen deaktiviert',
   tamperExactAlarmBody:
-    'Sperrzeiten starten oder enden möglicherweise zu spät, bis Wecker und Erinnerungen wieder erlaubt ist.',
+    'Sperrzeiten starten oder enden möglicherweise zu spät, bis Wecker und Erinnerungen wieder erlaubt sind.',
 
   tamperNotificationsTitle: 'Benachrichtigungen wurden deaktiviert',
   tamperNotificationsBody:
@@ -106,7 +122,7 @@ export const activities = {
 
   tamperDeviceClockTitle: 'Datum oder Uhrzeit wurden geändert',
   tamperDeviceClockBody:
-    'Die Uhrzeit dieses Geräts stimmt nicht mehr mit der tatsächlichen Zeit überein. Bildschirmzeit und Blockierte Zeiten verwenden weiterhin die korrekte Zeit.',
+    'Die Uhrzeit dieses Geräts stimmt nicht mehr mit der tatsächlichen Zeit überein. Bildschirmzeit und Sperrzeiten verwenden weiterhin die korrekte Zeit.',
 
   /** @deprecated legacy description keys — kept for old activity docs */
   tamperOverlay: '„Über anderen Apps anzeigen“ wurde deaktiviert.',
@@ -120,10 +136,13 @@ export const activities = {
   tamperBackgroundRefresh: 'Die Hintergrundaktualisierung wurde deaktiviert.',
 
   filterAllDevices: 'Alle Geräte',
+  // The child tier of the feed filter — "All" would read as all devices.
+  filterAllChildren: 'Alle',
   dateToday: 'Heute',
   dateYesterday: 'Gestern',
 
   filterByDevice: 'Filtern nach {{label}}',
+  filterByChild: 'Nur {{label}} anzeigen',
 
   openFullSosHistory: 'Vollständigen SOS-Verlauf öffnen',
 

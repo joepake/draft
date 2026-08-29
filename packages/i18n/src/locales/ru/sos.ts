@@ -13,7 +13,7 @@ export const sos = {
   noPhoto: 'К этому оповещёнию фото не приложено.',
   acknowledgedAt: 'Подтверждено {{time}}',
   openInMaps: 'Открыть в Картах',
-  acknowledgeButton: 'Уже иду',
+  acknowledgeButton: 'Я разбираюсь',
   acknowledgingButton: 'Сохранение…',
   toastAcknowledgeFailed: 'Не удалось подтвердить. Попробуйте ещё раз через минуту.',
   emptyTitle: 'Пока нет оповещёний SOS',
@@ -22,6 +22,9 @@ export const sos = {
   alertMessage: '{{childName}} нужна помощь — SOS отправлен',
   toastSent:
     'SOS отправлен. Оставайся в безопасном месте, если можешь, — родители уже знают.',
+  escapeGrantedTitle: 'SOS отправлен',
+  escapeGrantedBody:
+    'Твои родители получили уведомление. Это устройство разблокировано на 15 минут, потом снова заблокируется.',
   toastSentWithoutPhoto:
     'SOS отправлен, но без фото. Разреши доступ к камере в настройках и попробуй ещё раз, если можешь.',
   toastSendFailed:
@@ -59,7 +62,7 @@ export const sos = {
   tapPhotoToEnlarge: 'Нажмите на фото, чтобы увеличить',
   noPhotoAttached: 'К этому оповещёнию не было приложено фото.',
   sentRelativeTime: 'Отправлено {{relativeTime}}',
-  imOnIt: 'Уже иду',
+  imOnIt: 'Я разбираюсь',
   acknowledging: 'Подтверждение…',
   unableToAcknowledgeSos: 'Не удалось подтвердить. Попробуйте ещё раз через минуту.',
   noLocationSharedWithSos: 'Местоположение не было передано вместе с этим SOS.',

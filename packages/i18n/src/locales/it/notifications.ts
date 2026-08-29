@@ -21,7 +21,7 @@ export const notifications = {
   alert: {
     tamperAlerts: {
       label: 'Protezione disattivata',
-      hint: 'Sul dispositivo del figlio è stato disattivato un permesso necessario a KidGate.',
+      hint: 'Sul dispositivo del bambino è stato disattivato un permesso necessario a KidGate.',
     },
     placeAlerts: {
       label: 'Arrivi e partenze',
@@ -30,6 +30,10 @@ export const notifications = {
     timeRequests: {
       label: 'Richieste di tempo extra',
       hint: 'Tuo figlio chiede più tempo di utilizzo.',
+    },
+    siteRequests: {
+      label: 'Richieste di siti',
+      hint: 'Tuo figlio chiede di aprire un sito bloccato.',
     },
     checkIn: {
       label: 'Risposte al check-in',
@@ -41,7 +45,11 @@ export const notifications = {
     },
     appActivity: {
       label: 'App installate o rimosse',
-      hint: 'Un’app compare o sparisce sul dispositivo del figlio.',
+      hint: 'Un’app compare o sparisce sul dispositivo del bambino.',
+    },
+    anomalyAlerts: {
+      label: 'Attività insolita',
+      hint: 'Uso insolito su un dispositivo del bambino: notti fino a tardi, picchi, nuove app.',
     },
     weeklyDigest: {
       label: 'Riepilogo settimanale',

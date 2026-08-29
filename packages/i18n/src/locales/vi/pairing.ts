@@ -3,7 +3,7 @@ export const pairing = {
   shareInviteMessage:
     'Tham gia gia đình trên KidGate: mở ứng dụng, chọn Gia đình → Tham gia gia đình rồi nhập mã {{code}}. Mã hết hạn sau 15 phút.',
   shareChildCodeMessage:
-    'Kết nối thiết bị của trẻ trên KidGate: trên thiết bị phụ huynh mở KidGate → Thiết bị → + → Thiết bị của trẻ, sau đó quét mã QR hoặc nhập mã {{code}}. Mã hết hạn sau 5 phút.',
+    'Kết nối thiết bị của trẻ trên KidGate: trên thiết bị phụ huynh mở KidGate → Gia đình → Quét mã, sau đó quét mã QR hoặc nhập mã {{code}}. Mã hết hạn sau 5 phút.',
   connectChildPhone: 'Kết nối thiết bị của trẻ',
   parentInstructions:
     'Trên thiết bị của trẻ, mở KidGate và chọn Đây là thiết bị của trẻ. Sau đó nhập mã hiển thị trên màn hình.',
@@ -13,12 +13,21 @@ export const pairing = {
     'Vui lòng giữ màn hình này mở. Phụ huynh sẽ kết nối thiết bị này từ ứng dụng KidGate trên thiết bị của họ.',
   childCodeLabel: 'Hoặc chia sẻ mã này',
   childScanHint:
-    'Phụ huynh: mở KidGate → Thiết bị → + → Thiết bị của trẻ → quét mã QR hoặc nhập mã.',
+    'Phụ huynh: mở KidGate → Gia đình → {{scan}} → quét mã QR hoặc nhập mã.',
   childConnecting: 'Đã kết nối. Đang thiết lập thiết bị…',
   childPairedTitle: 'Đã kết nối thành công',
   childPairedSubtitle: 'Đang thiết lập thiết bị…',
   connectChild: 'Kết nối thiết bị của trẻ',
   waitingChildConfirm: 'Đã gửi yêu cầu. Đang chờ xác nhận trên thiết bị của trẻ.',
+  waitingChildConfirmHint:
+    'Trên thiết bị của trẻ, chạm "Đồng ý kết nối" để hoàn tất. Bạn có thể đóng màn hình này — quá trình ghép nối vẫn tiếp tục chạy nền.',
+  childConfirmedTitle: 'Đã kết nối thiết bị',
+  childConfirmedBody:
+    'Thiết bị của trẻ đã xác nhận ghép nối. Tiếp theo, hãy chọn ai sẽ dùng thiết bị này.',
+  childRejectedPairing:
+    'Thiết bị của trẻ đã từ chối ghép nối. Hãy lấy mã mới từ thiết bị đó rồi thử lại.',
+  childConfirmExpired:
+    'Thiết bị của trẻ chưa xác nhận kịp thời. Hãy nhờ thiết bị đó tạo mã mới rồi thử lại.',
   confirmParentTitle: 'Xác nhận phụ huynh này?',
   confirmParentSubtitle:
     '{{parentLabel}} muốn quản lý thiết bị này. Chỉ chấp nhận nếu bạn biết rõ người này.',

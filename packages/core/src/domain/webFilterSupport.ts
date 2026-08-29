@@ -82,3 +82,65 @@ export function supportsWebFiltering(device: WebFilterSupportInput): boolean {
 export function supportsWebHistory(device: WebFilterSupportInput): boolean {
   return supportsWebFiltering(device);
 }
+
+/**
+ * What to tell a parent about a device whose filter is off, when there is
+ * something they can do about it.
+ *
+ * Returns an i18n key or null. Null is the ordinary case and means the row
+ * should say whatever it says for a platform that cannot filter — a build with
+ * no extension, an Android TV, a Windows PC. A key means the device published
+ * `webFilterBlocker`: the filter exists on that machine and is waiting on a
+ * person who is standing next to it.
+ *
+ * **It does not make the feature available.** `supportsWebFiltering` stays
+ * false in both states, because a screen full of categories over a filter that
+ * is not running is the switch-that-flips-nothing this module exists to
+ * prevent. What changes is the sentence: "not available on Mac" is a fact about
+ * the product, and this is a fact about that Mac this afternoon.
+ */
+export function webFilterBlockerKey(device: {
+  capabilities?: { webFilterBlocker?: DeviceCapabilities['webFilterBlocker'] } | null;
+}): string | null {
+  switch (device.capabilities?.webFilterBlocker) {
+    case 'awaitingApproval':
+      return 'deviceDetail.webFilterAwaitingApproval';
+    case 'configurationDisabled':
+      return 'deviceDetail.webFilterSwitchedOffOnDevice';
+    default:
+      return null;
+  }
+}
+
+/**
+ * Whether this device's filter takes a full policy — categories, an allow
+ * list and a block list — rather than Apple's single always-on adult filter.
+ *
+ * `apps/mobile`'s Web Filter screen used to read this as `platform ===
+ * 'android'`, with every other platform, macOS included, falling into the
+ * screen's iOS branch: Apple's icon, "Uses Screen Time on iOS", and every
+ * category but `adult` shown locked. That was true of an iPhone and false of
+ * a Mac approved for the content-filter extension, which takes the exact same
+ * `WebFilterPolicy` Android's VPN does (`domain/contentFilterPolicy.ts`) — so
+ * a parent with a Mac saw a crippled iOS-shaped screen over a device that
+ * could already enforce every category and both lists.
+ *
+ * Only `android`, `androidtv` and `macos` can answer true, and only when
+ * `supportsWebFiltering` already does — Android TV's tunnel takes the same
+ * `ContentFilterRules` payload the Mac's provider does, so a probe reporting
+ * `webFilter: 'vpn'` there is a full-policy filter, while Windows still
+ * hardcodes `webFilter: false` and never reaches a screen gated on this. iOS
+ * is deliberately never a `true` here: `Device.capabilities` carries no probe
+ * for it, so nothing about its filter is a policy this function could
+ * describe.
+ */
+export function supportsWebFilterCategories(device: WebFilterSupportInput): boolean {
+  if (!supportsWebFiltering(device)) {
+    return false;
+  }
+  return (
+    device.platform === 'android' ||
+    device.platform === 'androidtv' ||
+    device.platform === 'macos'
+  );
+}

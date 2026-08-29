@@ -17,4 +17,7 @@ export const childSettings = {
   uninstallProtectionHintOff: 'متوقفة. يمكن إلغاء تثبيت KidGate من هذا الهاتف.',
   uninstallProtectionTurnedOff: 'الحماية من إلغاء التثبيت متوقفة.',
   uninstallProtectionFailed: 'تعذّر تغيير الحماية من إلغاء التثبيت.',
+  messageSafetySectionTitle: 'أمان الرسائل',
+  messageSafetySectionDescription:
+    'امنح الإذن من هنا. أما تفعيله فهو قرار والديك من هاتفهما.',
 } as const;

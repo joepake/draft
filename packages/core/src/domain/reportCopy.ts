@@ -165,6 +165,57 @@ export function findingSentence(
         total: formatDuration(Number(params.totalMinutes ?? 0)),
       });
 
+    // The positive half. Every one of these has already cleared the coverage
+    // check in `digestFindings` — the rule is that a week the agent did not
+    // measure produces none of them — so these sentences may be written as
+    // plain fact. Nothing here needs to hedge, and nothing here may praise:
+    // `docs/COPY_STYLE.md` rules out flattery as firmly as it rules out alarm,
+    // and each string states what happened and the figure behind it.
+    case 'limitRespected':
+      return t('report.findingLimitRespected', {
+        limit: formatDuration(Number(params.limitMinutes ?? 0)),
+        count: Number(params.days ?? 0),
+      });
+
+    case 'lateNightGone':
+      return t('report.findingLateNightGone', {
+        count: Number(params.previousNights ?? 0),
+      });
+
+    case 'blockedDown':
+      return t(
+        params.channel === 'web'
+          ? 'report.findingBlockedWebDown'
+          : 'report.findingBlockedAppsDown',
+        {
+          count: Number(params.count ?? 0),
+          previous: Number(params.previousCount ?? 0),
+        },
+      );
+
+    case 'learningTime':
+      return t('report.findingLearningTime', {
+        duration: formatDuration(Number(params.minutes ?? 0)),
+        app: String(params.label ?? ''),
+      });
+
+    case 'tasksDone':
+      return t('report.findingTasksDone', {
+        count: Number(params.tasks ?? 0),
+        bonus: formatDuration(Number(params.bonusMinutes ?? 0)),
+      });
+
+    case 'askedFirst':
+      return t('report.findingAskedFirst', {
+        count: Number(params.requests ?? 0),
+      });
+
+    case 'checkedIn':
+      return t('report.findingCheckedIn', {
+        count: Number(params.checkIns ?? 0),
+        asked: Number(params.asked ?? 0),
+      });
+
     default:
       return null;
   }
@@ -246,7 +297,8 @@ export interface ReportPresentation {
 }
 
 export interface ReportChildLine {
-  deviceId: string;
+  /** Key for a list. A `childId` on a person row, a `deviceId` on a device one. */
+  id: string;
   name: string;
   screenTime: string;
   share: string;
@@ -272,7 +324,7 @@ export function childLines(
   deps: ReportCopyDeps,
 ): ReportChildLine[] {
   return reportChildren(report).map(row => ({
-    deviceId: row.deviceId,
+    id: row.id,
     name: row.name || deps.t('report.unnamedChild'),
     screenTime: deps.formatDuration(row.screenMinutes),
     share: `${row.sharePercent}%`,
@@ -288,10 +340,9 @@ export function childLines(
      * measured against one, while a child who had one and stayed under it is
      * the good outcome this column exists to show.
      */
-    limit:
-      row.dailyLimitMinutes === null
-        ? deps.t('report.noLimit')
-        : deps.t('report.limitDays', { count: row.limitDays }),
+    limit: row.hasLimit
+      ? deps.t('report.limitDays', { count: row.limitDays })
+      : deps.t('report.noLimit'),
     lateNights:
       row.lateNights > 0 ? String(row.lateNights) : deps.t('report.lateNightsNone'),
     topApp: row.topApp
@@ -351,12 +402,18 @@ export function buildReportPresentation(
  * Returned as lines rather than one string so a caller can join them the way
  * its platform wants — and so a test can assert on a line instead of on
  * whitespace.
+ *
+ * `narrative` is the generated paragraph in the reader's language, passed in
+ * rather than resolved here because only the caller knows which language is
+ * being read — the same reason `reportNarrative` takes one. Absent, the shared
+ * text is the figures and findings it always was.
  */
 export function reportSummaryLines(
   report: FamilyReport,
   familyName: string,
   deps: ReportCopyDeps,
   rangeLabel: string,
+  narrative?: string | null,
 ): string[] {
   const view = buildReportPresentation(report, familyName, deps);
   const lines = [
@@ -371,9 +428,27 @@ export function reportSummaryLines(
     view.hero.trend,
   ];
 
+  if (narrative) {
+    lines.push('', narrative);
+  }
+
   if (view.findings.length > 0) {
     lines.push('', `${deps.t('report.highlights')}:`);
     view.findings.forEach(finding => lines.push(`• ${finding.text}`));
+  }
+
+  // One block per child, each on its own line pair — a share-sheet paragraph
+  // that runs every kid's figures together is unreadable past two children.
+  if (view.children.length > 0) {
+    lines.push('', `${deps.t('report.childrenTitle')}:`);
+    view.children.forEach(child => {
+      lines.push(
+        `• ${child.name}: ${child.screenTime} (${child.share}), ${child.change}`,
+      );
+      lines.push(
+        `  ${child.limit} · ${deps.t('report.colLateNights')}: ${child.lateNights} · ${child.topApp}`,
+      );
+    });
   }
 
   return lines;

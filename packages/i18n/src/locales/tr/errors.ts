@@ -13,7 +13,8 @@ export const errors = {
   unableToJoinFamilyAccount: 'Aile hesabına katılınamadı. Lütfen tekrar deneyin.',
   enterEmailAddress: 'Lütfen e-posta adresinizi girin.',
   unableToCreatePairingCode: 'Eşleştirme kodu oluşturulamadı. Lütfen tekrar deneyin.',
-  unableToRedeemPairingCode: 'Eşleştirme kodu geçersiz veya süresi dolmuş.',
+  unableToRedeemPairingCode:
+    'Bu kod eşleşmiyor. Karakterleri dikkatlice kontrol edin — kodun üzerinden zaman geçtiyse yeni bir kod isteyin.',
   unableToClaimChildPairing: 'Çocuğun cihazı bağlanamadı. Lütfen tekrar deneyin.',
   unableToPollChildPairing: 'Eşleştirme durumu kontrol edilemedi.',
   unableToConfirmChildPairing: 'Eşleştirme onaylanamadı. Lütfen tekrar deneyin.',
@@ -22,6 +23,8 @@ export const errors = {
   unableToOpenCamera:
     'Kamera açılamadı. Lütfen cihaz ayarlarından kamera erişimine izin verin.',
   noPhotoCaptured: 'Fotoğraf çekilmedi.',
+  unableToOpenPhotoLibrary:
+    'Fotoğraflarınız açılamadı. Cihaz ayarlarından Fotoğraflar erişimine izin verin.',
   simulatorCameraHint:
     'Simülatörde önce Simulator → Camera → Front Camera seçeneğini etkinleştirin ve ardından SOS özelliğini tekrar deneyin. Gerçek fotoğraf için fiziksel bir iPhone kullanın.',
   notSignedInReopenApp:
@@ -38,7 +41,7 @@ export const errors = {
   reconnect: 'Yeniden Bağlan',
   unableToUploadPhoto: 'Fotoğraf yüklenemedi. Lütfen tekrar deneyin.',
   premiumSubscriptionRequired:
-    'Bu özellik Premium gerektirir. Günlük sınır, Engellenen saatler, konum ve SOS ücretsiz kalır.',
+    'Bu özellik Premium gerektirir. Günlük sınır, Engellenen Saatler, konum ve SOS ücretsiz kalır.',
   trialEndedCannotJoinFamily:
     'Ücretsiz deneme süreniz sona erdi. Başka bir aileye katılmak için Premium’a abone olun.',
 
@@ -50,7 +53,7 @@ export const errors = {
     'Bu cihazın yeniden bağlanması gerekiyor. KidGate’i kapatıp tekrar açın ve yeniden deneyin.',
   deviceNotFound: 'Bu cihaz artık ailenize ait değil.',
   registerParentDeviceFirst:
-    'Önce bu cihazı ebeveyn cihazı olarak ayarlayın, ardından tekrar deneyin.',
+    'Bu telefon henüz ebeveyn cihazı olarak ayarlanmamış. Burada KidGate’i açın, başlangıç ekranında ebeveyn rolünü seçin ve eşleştirmeyi tekrar deneyin.',
   pairingCodeFormat: '6 karakterli kodu girin.',
   pairingCodeUsed: 'Bu kod zaten kullanılmış. Yeni bir kod isteyin.',
   pairingCodeExpiredChild:

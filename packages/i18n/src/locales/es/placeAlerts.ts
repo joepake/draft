@@ -1,5 +1,8 @@
 export const placeAlerts = {
   title: 'Alertas de lugares',
+  familyScope: 'Una lista para toda la familia',
+  mergedFromDevices:
+    'Combinada a partir de los lugares existentes de cada dispositivo. Al guardar, esta única lista se aplica a todos los dispositivos.',
   fallbackDeviceName: 'Dispositivo del niño',
   statusReady: 'Ubicación lista',
   statusNeedLocation: 'Esperando la ubicación del dispositivo del niño',
@@ -16,12 +19,16 @@ export const placeAlerts = {
   deletePlace: 'Eliminar',
   newPlaceTitle: 'Nuevo lugar',
   editPlaceTitle: 'Editar lugar',
-  addPlaceButton: 'Agregar lugar',
+  addPlaceButton: 'Añadir lugar',
   editPlaceAccessibility: 'Editar {{name}}',
   radiusLabel: 'Radio de alerta',
   radiusValue: '{{meters}} m',
   radiusHint:
-    'Qué tan cerca debe estar el dispositivo para que este lugar cuente. Un radio más pequeño es más preciso, pero es más fácil que se pase por alto.',
+    'Qué tan cerca debe estar el dispositivo para que este lugar cuente. Un radio menor que el propio error de posición del dispositivo avisa al azar, no con más precisión.',
+  radiusAccuracyHint:
+    'Aquí este dispositivo indica su posición con unos ±{{accuracy}} m.',
+  radiusBelowAccuracy:
+    'Aquí el dispositivo solo tiene una precisión de unos ±{{accuracy}} m. Usa {{minimum}} m o más, o este lugar avisará al azar.',
   radiusDecrease: 'Radio más pequeño',
   radiusIncrease: 'Radio más grande',
   notifyEnterLabel: 'Avisar al llegar',
@@ -46,8 +53,10 @@ export const placeAlerts = {
   maxPlacesToast: 'Puedes guardar hasta {{max}} lugares.',
   nameRequiredToast: 'Introduce un nombre para el lugar.',
   duplicateNameToast: 'Ya existe un lugar con este nombre.',
-  duplicateLocationToast: 'Ya hay un lugar que cubre esta ubicación.',
-  copyTitle: '¿Agregar para los demás hijos?',
+  samePinToast: 'Es el mismo punto que «{{name}}». Arrastra el mapa para mover el pin.',
+  overlapWarning:
+    '«{{name}}» está a {{meters}} m y su círculo llega hasta aquí. Mientras el dispositivo esté en ambos, solo avisa el más cercano. Guarda otra vez para conservarlo.',
+  copyTitle: '¿Copiarlo a los demás hijos?',
   copyMessage:
     '¿Copiar «{{name}}» a los otros {{count}} dispositivos de hijos en esta familia?',
   copyMessage_one: '¿Copiar «{{name}}» al otro dispositivo del hijo en esta familia?',

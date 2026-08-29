@@ -1,12 +1,15 @@
 export const location = {
   title: 'Posizione',
   fallbackDeviceName: 'Dispositivo del bambino',
+  syncNote:
+    'La posizione può richiedere alcuni minuti per aggiornarsi — più a lungo se il dispositivo non ha connessione a Internet o si è chiuso in modo imprevisto.',
   toastUpdateFailed: 'Impossibile aggiornare la condivisione della posizione. Riprova.',
   toggleLabel: 'Condividi posizione',
   toggleHint:
     'Dopo aver attivato questa opzione, apri KidGate una volta su questo dispositivo.',
   toggleAccessibilityLabel: 'Condividi posizione',
   lastKnownLocation: 'Ultima posizione nota',
+  nearPlace: 'Vicino a {{place}}',
   noLocationHint:
     'Attiva la condivisione della posizione, quindi apri KidGate una volta su questo dispositivo.',
   waitingForLocation: 'In attesa della posizione',
@@ -27,10 +30,10 @@ export const location = {
     'Impossibile richiedere l’aggiornamento della posizione. Riprova.',
   toastChildNeedsNotifications:
     'Apri KidGate sul dispositivo del bambino e consenti le notifiche affinché le richieste di aggiornamento della posizione possano essere ricevute.',
-  checkInBadge: 'Check-In',
+  checkInBadge: 'Check-in',
   movementHistoryTitle: 'Cronologia degli spostamenti',
   historyEmpty:
-    'Nessuna cronologia disponibile. I punti verranno visualizzati dopo un aggiornamento della posizione o un Check-In.',
+    'Nessuna cronologia disponibile. I punti verranno visualizzati dopo un aggiornamento della posizione o un Check-in.',
   historyHighlightAccessibility: 'Evidenzia {{place}} sulla mappa',
   historyOpenMapsAccessibility: 'Apri {{place}} in Mappe',
   latestBadge: 'Più recente',
@@ -38,7 +41,9 @@ export const location = {
     'Impossibile richiedere l’aggiornamento della posizione',
   locationBannerTitle: 'Attiva la posizione',
   locationBannerBody:
-    'Il tuo genitore desidera vedere la posizione di questo dispositivo per sapere che sei arrivato in sicurezza.',
+    'I tuoi genitori vogliono vedere la posizione di questo dispositivo per sapere che sei arrivato in sicurezza.',
+  locationBannerBodySharingOff:
+    'La condivisione della posizione è disattivata, quindi non viene inviato niente. Se dai il permesso qui, funzionerà subito se i tuoi genitori la attivano più avanti.',
   allowLocationButton: 'Consenti posizione',
   locationNotAllowed:
     'L’accesso alla posizione non è ancora consentito. Apri Impostazioni → KidGate → Posizione (oppure attiva prima i Servizi di localizzazione). Se la voce Posizione non è presente, seleziona di nuovo “Consenti posizione”.',
@@ -58,4 +63,21 @@ export const location = {
   mapUnavailable: 'Mappa non disponibile. Controlla la connessione e riprova.',
   historyShowMore: 'Mostra altri {{count}} luoghi',
   historyShowMore_one: 'Mostra 1 altro luogo',
+  childSharingHint: 'Vale per ogni dispositivo assegnato a {{childName}}.',
+  childNoCapableDevices:
+    'Nessun dispositivo di {{childName}} può segnalare la posizione.',
+  childCarriedQuestion: 'Quale dispositivo porta con sé {{childName}}?',
+  childCarriedHint:
+    'La posizione viene letta da quel dispositivo. Un tablet rimasto a casa può segnalare una posizione più recente del telefono nello zaino, quindi KidGate non tira mai a indovinare.',
+  childDevicesOnline: '{{online}} di {{total}} online',
+  childNoneOnline: 'Nessun dispositivo online',
+  childPickCarried: 'Lo porta',
+  childPickCarriedA11y:
+    'Imposta {{deviceName}} come il dispositivo che {{childName}} porta con sé',
+  stayRange: '{{from}} – {{to}}',
+  placeTotalsTitle: 'Tempo nei tuoi luoghi',
+  placeTotalsNote:
+    'Dagli ultimi {{count}} giorni di cronologia. Contano solo i luoghi salvati qui.',
+  placeTotalsNote_one:
+    'Dall’ultimo giorno di cronologia. Contano solo i luoghi salvati qui.',
 } as const;

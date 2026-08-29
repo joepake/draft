@@ -18,7 +18,7 @@ export const macos = {
 
   lockState: 'デバイスのロック',
   lockStateNo: 'いいえ',
-  lockStateNotChecked: 'まだ確認していません',
+  stateNotChecked: 'まだ確認していません',
   lockStateParent: 'はい — 保護者がロックしました',
   lockStateSchedule: 'はい — 休止時間',
   lockStateDailyLimit: 'はい — 1日の利用制限に達しました',
@@ -30,6 +30,32 @@ export const macos = {
   webFilterLabel: 'Webフィルター',
   webFilterUnavailable: 'このMacでは利用できません',
   notSupportedOnThisDevice: 'このデバイスでは対応していません',
+  filterAwaitingApproval: 'システム設定での承認を待っています',
+  filterSwitchedOff: 'システム設定でオフになっています',
+  filterInterrupted: '問題により停止 — KidGate が復元します',
+  setupFilterApprovalBody:
+    'ウェブフィルタリングを開始するには、ネットワーク機能拡張で KidGate をオンにしてください。',
+  setupFilterSwitchBody:
+    'KidGate の Filter Network Content がオフです。フィルタリングを続けるにはオンに戻してください。',
+  setupOpenSettings: '設定を開く',
+  setupTitle: 'このデバイスの設定を完了する',
+  setupRowLabel: '許可',
+  setupRowHint: 'このデバイスでまだ許可が必要なものを確認します。',
+  setupStepBlockedNoPrompt:
+    '拒否されていて、このデバイスは再び尋ねません — 設定 →「プライバシーとセキュリティ」で KidGate をオンにしてください。',
+  setupSubtitle:
+    'システムはこれらひとつひとつに許可を求めます。許可できるのはその時このデバイスを使っている人だけです。今すませておけば、あとからお子さまが尋ねられることはありません。',
+  setupStepFilterApprovalTitle: 'Webフィルターを承認',
+  setupStepFilterSwitchTitle: 'Filter Network Content',
+  setupStepFilterSwitchWaiting: '上の手順が承認されると、システム設定に表示されます。',
+  setupStepLocationBody:
+    'このデバイスの場所をご家族が確認できるようになります。「位置情報を共有」をオンにするまで、何も共有されません。',
+  setupStepCameraTitle: 'カメラ',
+  setupStepCameraBody:
+    'お子さまが SOS を送るときやチェックインに答えるときに写真を添えます。今は写真を撮りません。',
+  setupStepDone: '設定済み — ここですることはもうありません。',
+  setupStepBlocked:
+    '以前に拒否されました。macOS が尋ねるのは一度だけです — 「プライバシーとセキュリティ」で KidGate をオンにしてください。',
 
   scheduleLabel: '休止時間',
   dailyLimitLabel: '1日の利用制限',

@@ -6,18 +6,16 @@ export const leaderboard = {
   settingsTitle: 'スターボード',
   settingsBody: '今週それぞれが集めた星の数を、お子さま同士が見られるようにします。',
   childrenTitle: 'お子さま',
-  childrenBody:
-    '使う人ごとに端末をまとめます。ひとりで複数の端末を使うこともできます。',
+  manageAccessibility: 'お子さまとデバイスを管理',
   addChild: 'お子さまを追加',
+  childAdded: 'お子さまを追加しました。',
   childNameLabel: '名前',
   childNamePlaceholder: '例：マイ',
   unassigned: '未設定',
-  assignLabel: '使う人',
-  assignNobody: 'まだいません',
-  deviceCount: '端末{{count}}台',
   removeChild: '削除',
   removeChildConfirmTitle: 'このお子さまを削除しますか？',
   removeChildConfirmBody:
     '端末のペアリングと記録はそのまま続きます。もう一度設定するまで、どのお子さまの分にも数えられなくなるだけです。',
-  needsTwoChildren: 'スターボードを始めるには、もうひとり追加してください。',
+  emptyTitle: 'お子さまはまだいません',
+  emptyBody: 'ここでお子さまを追加し、使っているデバイスを割り当ててください。',
 } as const;

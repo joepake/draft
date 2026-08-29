@@ -9,6 +9,7 @@
 
 import type { Device } from '@kidgate/schema/device';
 import type { TranslationParams } from '@kidgate/i18n/types';
+import { supportsLock } from './controlSupport';
 
 const OFFLINE_THRESHOLD_MS = 3 * 60 * 1000;
 
@@ -18,7 +19,17 @@ export function getEffectiveDeviceStatus(
   device: Device,
   nowMs: number,
 ): Device['status'] {
-  if (device.isLocked) {
+  /*
+   * `isLocked` only means something on a device that can lock.
+   *
+   * A browser extension publishes `lock: false` and its worker has no handler
+   * for the field, so a row locked by an older build — or by a parent surface
+   * that has not been updated — keeps a `true` nothing will ever act on. Read
+   * literally, every one of those devices reports itself Locked forever, and
+   * the button that would clear it is now hidden precisely because it does
+   * nothing. The probe is what makes the field readable.
+   */
+  if (device.isLocked && supportsLock(device)) {
     return 'locked';
   }
 

@@ -39,7 +39,8 @@
  *   activity     activity feed          chart        reports / usage stats
  *   key          parent PIN             lock         device lock / pause
  *   shield       app lock, protection   alert        generic warning
- *   power        start with the OS
+ *   power        start with the OS      pencil       rename / edit in place
+ *   info         a note behind a tap
  *
  * Every glyph is drawn on a 24×24 grid. `strokeWidth` defaults to 2 and is
  * stated only where a glyph needs otherwise; `filled` parts take the colour as
@@ -110,6 +111,12 @@ const BATTERY_TRACK = { x: 4.5, y: 9.5, width: 11, height: 5, rx: 1.5 } as const
 const BATTERY_MIN_BAR = 1.6;
 
 /**
+ * The stroke the phone and tablet shells are drawn at, lighter than the set's
+ * `ICON_STROKE_WIDTH`. The reason is geometric and is stated once, on `phone`.
+ */
+const PHONE_STROKE_WIDTH = 1.4;
+
+/**
  * The battery glyph at a given charge, as parts.
  *
  * The bar is the whole point of the icon and it used to be a fixed rect, so a
@@ -156,17 +163,198 @@ export function batteryIcon(level: number): IconPart[] {
 }
 
 export const ICONS = {
+  /**
+   * The phone and tablet shells are drawn at `PHONE_STROKE_WIDTH`, not at the
+   * set's 2.
+   *
+   * A phone body is 10 units wide, and a stroke of 2 spends 4 of them: the
+   * remaining 6 units of screen are about 4.5 real pixels at 18px, where the
+   * child device list draws these, and the frame closed up into a solid slab.
+   * Next to a tablet — 15 wide, the same weight — the two read as one blob of
+   * ink rather than as two different machines, which is the whole job of the
+   * pair. Reviewed against 18/24/40 renders, August 2026.
+   *
+   * The marks *inside* a shell keep their own weights (`androidTablet`'s robot
+   * below, `ipad`'s filled apple): they are what a parent scans for, and the
+   * lighter frame is what gives them room.
+   */
   phone: [
-    { kind: 'rect', x: 7, y: 2, width: 10, height: 20, rx: 2 },
-    { kind: 'path', d: 'M11 18h2' },
+    {
+      kind: 'rect',
+      x: 7,
+      y: 2,
+      width: 10,
+      height: 20,
+      rx: 2,
+      strokeWidth: PHONE_STROKE_WIDTH,
+    },
+    { kind: 'path', d: 'M11 18h2', strokeWidth: PHONE_STROKE_WIDTH },
   ],
   smartphone: [
-    { kind: 'rect', x: 7, y: 2, width: 10, height: 20, rx: 2 },
-    { kind: 'path', d: 'M11 18h2' },
+    {
+      kind: 'rect',
+      x: 7,
+      y: 2,
+      width: 10,
+      height: 20,
+      rx: 2,
+      strokeWidth: PHONE_STROKE_WIDTH,
+    },
+    { kind: 'path', d: 'M11 18h2', strokeWidth: PHONE_STROKE_WIDTH },
   ],
   devices: [
     { kind: 'rect', x: 2, y: 4, width: 20, height: 14, rx: 2 },
     { kind: 'path', d: 'M8 21h8M12 18v3' },
+  ],
+  /**
+   * Tablets — the form factor `platformIcon()` alone cannot see.
+   *
+   * `DevicePlatform` says `ios` for both an iPhone and an iPad, so both drew
+   * the same bitten apple and a family with one of each read two identical
+   * rows. The fact that separates them is `DeviceFormFactor`, already stored
+   * on every device record and already resolved by
+   * `@kidgate/core/domain/deviceFormFactor` — `deviceGlyph()` below is what
+   * turns it into a picture.
+   *
+   * Same rule as `mac` and `chromebook` one block down: a shared silhouette
+   * carrying the platform's mark **on the screen**, because the silhouette
+   * alone does not separate them — a bare tablet is a bare tablet whoever
+   * made it. `tablet` is that silhouette on its own, for a tablet whose
+   * platform is unknown.
+   *
+   * The iPad reuses `APPLE_PATH` (one bitten apple in the set, as `mac`
+   * does). The Android tablet's robot is **drawn at final size rather than
+   * scaled down**: a transform scales the stroke with it, and the head is
+   * mostly stroke — at 18px, where the child device list draws these, a
+   * half-weight dome greys out and the two antennae disappear, which are the
+   * whole recognition. The eyes are what survive shrinking, so they stay
+   * proportionally large.
+   */
+  tablet: [
+    {
+      kind: 'rect',
+      x: 4.5,
+      y: 2,
+      width: 15,
+      height: 20,
+      rx: 2.5,
+      strokeWidth: PHONE_STROKE_WIDTH,
+    },
+    { kind: 'path', d: 'M10.5 19.4h3', strokeWidth: PHONE_STROKE_WIDTH },
+  ],
+  /**
+   * The iPhone: the phone silhouette carrying the apple on its screen.
+   *
+   * `ios` + `phone` drew the bare bitten apple — the *platform* mark, the one
+   * the plan rows and the marketing lists wear — so in a device list an iPhone
+   * was the only row with no machine drawn at all: a Mac was a laptop with an
+   * apple, an iPad a tablet with an apple, an iPhone just a floating fruit.
+   * Same rule as `mac` and `ipad`, applied to the form factor those two were
+   * written for. Reuses `APPLE_PATH`, centred on the 7…17 screen.
+   *
+   * **The apple is drawn to the screen it sits on, not to a fixed fraction.**
+   * It shipped at 0.45, which is 5.4 units on a 24 grid — about 3.4 real
+   * pixels where the family list draws this at 18, and 2.5 in `DeviceCard`'s
+   * 11pt avatar badge. A solid shape that small has neither a bite nor a stem
+   * left: the row read as a bare phone, and the mark that says *which* phone
+   * was a smudge. At 0.56 it fills the shell's inner 7.7…16.3 with half a unit
+   * with about 0.9 units of air each side. `ipad` is the same fraction of its
+   * own wider screen, so the two read as one family rather than as a big apple
+   * and a small one.
+   *
+   * **A shell can only ever hold so much.** `APPLE_PATH` is 12.2 units wide and
+   * a phone screen is 8.6, so at the 11pt badge the apple is about 3 real
+   * pixels whatever is done here — that size is the limit of the shell idea,
+   * not of this number. A list that must be legible at 11 wants the bare
+   * `apple` / `android` mark, which is what `deviceGlyph()` still answers for a
+   * device whose form factor is unknown.
+   */
+  iphone: [
+    {
+      kind: 'rect',
+      x: 7,
+      y: 2,
+      width: 10,
+      height: 20,
+      rx: 2,
+      strokeWidth: PHONE_STROKE_WIDTH,
+    },
+    { kind: 'path', d: 'M11 18h2', strokeWidth: PHONE_STROKE_WIDTH },
+    {
+      kind: 'path',
+      d: APPLE_PATH,
+      filled: true,
+      transform: 'translate(5.14 3.69) scale(0.56)',
+    },
+  ],
+  /**
+   * The Android phone: the same shell as `iphone`, carrying the robot.
+   *
+   * There was no such glyph. `deviceGlyph()` special-cased `ios` + `phone` and
+   * both tablets, so an Android phone fell through to `platformIcon()` and drew
+   * the bare robot head — in one device list, the iPhone was a machine and the
+   * Android was a floating mark. That is precisely the defect `iphone` was
+   * drawn to fix, left standing on the other platform for as long as `iphone`
+   * has existed.
+   *
+   * The robot is `androidTablet`'s, scaled 0.76 about its own centre to clear
+   * the 8.6-unit screen a phone shell leaves, and re-weighted: at this size the
+   * tablet's 1.6/1.5 strokes close the head into a blob. It stays heavier than
+   * the 1.4 frame — the mark is what a parent scans for, the shell is context.
+   */
+  androidPhone: [
+    {
+      kind: 'rect',
+      x: 7,
+      y: 2,
+      width: 10,
+      height: 20,
+      rx: 2,
+      strokeWidth: PHONE_STROKE_WIDTH,
+    },
+    { kind: 'path', d: 'M11 18h2', strokeWidth: PHONE_STROKE_WIDTH },
+    { kind: 'path', d: 'M8.5 12.59a3.5 3.5 0 0 1 7 0z', strokeWidth: 1.5 },
+    { kind: 'path', d: 'M9.8 9.02L9.04 7.81M14.2 9.02L14.96 7.81', strokeWidth: 1.4 },
+    { kind: 'circle', cx: 10.71, cy: 11, r: 0.72, filled: true },
+    { kind: 'circle', cx: 13.29, cy: 11, r: 0.72, filled: true },
+  ],
+  ipad: [
+    {
+      kind: 'rect',
+      x: 4.5,
+      y: 2,
+      width: 15,
+      height: 20,
+      rx: 2.5,
+      strokeWidth: PHONE_STROKE_WIDTH,
+    },
+    { kind: 'path', d: 'M10.5 19.4h3', strokeWidth: PHONE_STROKE_WIDTH },
+    {
+      kind: 'path',
+      d: APPLE_PATH,
+      filled: true,
+      transform: 'translate(1.47 0.6) scale(0.86)',
+    },
+  ],
+  androidTablet: [
+    {
+      kind: 'rect',
+      x: 4.5,
+      y: 2,
+      width: 15,
+      height: 20,
+      rx: 2.5,
+      strokeWidth: PHONE_STROKE_WIDTH,
+    },
+    { kind: 'path', d: 'M10.5 19.4h3', strokeWidth: PHONE_STROKE_WIDTH },
+    { kind: 'path', d: 'M6.25 14.79a5.75 5.75 0 0 1 11.5 0z', strokeWidth: 1.6 },
+    {
+      kind: 'path',
+      d: 'M8.38 8.91L7.13 6.91M15.63 8.91L16.88 6.91',
+      strokeWidth: 1.5,
+    },
+    { kind: 'circle', cx: 9.88, cy: 12.16, r: 1.06, filled: true },
+    { kind: 'circle', cx: 14.13, cy: 12.16, r: 1.06, filled: true },
   ],
   /**
    * The three device silhouettes `platformIcon()` needs beyond `apple`,
@@ -208,6 +396,72 @@ export const ICONS = {
   tv: [
     { kind: 'rect', x: 2, y: 7, width: 20, height: 13, rx: 2 },
     { kind: 'path', d: 'M17 2l-5 5-5-5' },
+  ],
+  /**
+   * A browser extension — the `apps/extension` device row.
+   *
+   * A jigsaw piece, the shape every browser uses for "extension", and the only
+   * glyph in this set chosen for what a device *is* rather than which platform
+   * it runs on. That is the point of it: the extension registers under the
+   * platform it was installed on, so on a Mac `platformIcon` draws the same
+   * laptop the desktop agent draws — and a family can hold both rows for one
+   * machine. Nothing else in a device list tells them apart.
+   *
+   * **The tabs are undercut, and that is the whole drawing.** A first version
+   * used half-circle dents flush with the edge — neck as wide as the head — and
+   * it read as a dented square rather than as a jigsaw. These are circles of
+   * r 3.4 whose centres sit 1.66 *outside* the edge, so each arc wraps about
+   * 230°: the neck comes out narrower than the head, which is the interlock a
+   * person recognises.
+   *
+   * **One knob out, one socket in, and the socket is not optional.** A version
+   * with two knobs — top and right — read as a video camera: a body with a lens
+   * stuck on the side. What says jigsaw is the pair, a piece that gives and
+   * takes; two bumps say something else entirely.
+   *
+   * The two are drawn to different rules because they live in different places.
+   * The knob spends the space *outside* the body, where nothing competes with
+   * it, so it keeps a true undercut (r 3.2, centre 1.5 beyond the edge, arc
+   * about 230°). The socket is cut *into* the body, and an undercut there is
+   * the first thing to close as the glyph shrinks — so it is a plain
+   * half-circle, r 3.6, which is the widest mouth obtainable at its 3.75-module
+   * depth.
+   *
+   * **Sized against the smallest place it is drawn, which is 18px**
+   * (`ChildDetailScreen`'s device list; the rest are 24–32). Both features are
+   * deliberately large relative to the body for that reason — a jigsaw drawn to
+   * "correct" proportions has a neck about a pixel wide there, and a neck that
+   * closes turns the piece into a blob with a wart. Anything that deepens the
+   * socket or shrinks the body needs re-checking at 18, not at 128.
+   */
+  extension: [
+    {
+      kind: 'path',
+      d: 'M5.4 6.8H9.17A3.2 3.2 0 1 1 14.83 6.8H18.6A2.4 2.4 0 0 1 21 9.2V10.4A3.6 3.6 0 0 0 21 17.6V18.6A2.4 2.4 0 0 1 18.6 21H5.4A2.4 2.4 0 0 1 3 18.6V9.2A2.4 2.4 0 0 1 5.4 6.8Z',
+    },
+  ],
+  /**
+   * The Chromebook as a *platform* — the marketing and plan rows.
+   *
+   * Not the extension's device row: that one takes `extension` above, because
+   * the same extension also installs on a Mac and a PC. This is the machine.
+   *
+   * `mac`'s laptop silhouette with a **globe** on the screen rather than a
+   * drawn Chrome logo, for the reason the block above states in the other
+   * direction: `apple` and `android` are grandfathered brand marks, a fourth
+   * one is a trademark this set should not carry. The globe is also the truer
+   * picture — what separates a Chromebook from the laptops either side of it in
+   * a plan list is the browser it is built around.
+   *
+   * Its `r: 3.2` circle plus two arcs are the smallest thing that still reads
+   * as a globe at 16px; the full `globe` drawing has four strokes and turns to
+   * mud inside a 12px screen.
+   */
+  chromebook: [
+    { kind: 'rect', x: 3, y: 4, width: 18, height: 12, rx: 2 },
+    { kind: 'path', d: 'M2 20h20' },
+    { kind: 'circle', cx: 12, cy: 10, r: 3.2, strokeWidth: 1.6 },
+    { kind: 'path', d: 'M8.8 10h6.4M12 6.8c1.6 1.8 1.6 4.6 0 6.4', strokeWidth: 1.6 },
   ],
   /**
    * `chart` is bars (reports, usage stats); `activity` is a pulse line
@@ -311,15 +565,57 @@ export const ICONS = {
     { kind: 'path', d: 'M4 5a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2V5z' },
     { kind: 'path', d: 'M8 7h6' },
   ],
+  // Rename / edit-in-place. The set had no edit glyph at all, so every rename
+  // affordance was a bare word ("Edit") or, worse, a hint line under the name
+  // that read as a caption rather than a button.
+  pencil: [
+    { kind: 'path', d: 'M4 20l1-4.5L16.5 4a2.5 2.5 0 0 1 3.5 3.5L8.5 19 4 20z' },
+    { kind: 'path', d: 'M14.5 6l3.5 3.5' },
+  ],
   chevronLeft: [{ kind: 'path', d: 'M15 6l-6 6 6 6' }],
   chevronRight: [{ kind: 'path', d: 'M9 6l6 6-6 6' }],
   moon: [{ kind: 'path', d: 'M20 14.5A8 8 0 1 1 9.5 4 6.5 6.5 0 0 0 20 14.5z' }],
   check: [{ kind: 'path', d: 'M5 12l4.5 4.5L19 7' }],
+  // A beamed pair rather than a single quaver: one note reads as a comma at
+  // 14px, which is the size the web-filter rows draw it at.
+  music: [
+    { kind: 'path', d: 'M9 18V6l11-2v12' },
+    { kind: 'circle', cx: 6.5, cy: 18, r: 2.5 },
+    { kind: 'circle', cx: 17.5, cy: 16, r: 2.5 },
+  ],
+  // A face with an antenna, not a speech bubble: `message` already means the
+  // social category on the same screen, and two rows drawn alike is the one
+  // thing a list of ten toggles cannot afford.
+  bot: [
+    { kind: 'rect', x: 4, y: 8, width: 16, height: 12, rx: 3 },
+    { kind: 'path', d: 'M12 4v4' },
+    { kind: 'circle', cx: 12, cy: 3, r: 1, filled: true },
+    { kind: 'circle', cx: 9, cy: 13, r: 1, filled: true },
+    { kind: 'circle', cx: 15, cy: 13, r: 1, filled: true },
+  ],
+  coins: [
+    { kind: 'path', d: 'M4 7c0-1.7 3.1-3 7-3s7 1.3 7 3-3.1 3-7 3-7-1.3-7-3z' },
+    { kind: 'path', d: 'M4 7v5c0 1.7 3.1 3 7 3s7-1.3 7-3V7' },
+    { kind: 'path', d: 'M4 12v5c0 1.7 3.1 3 7 3s7-1.3 7-3v-5' },
+  ],
   close: [{ kind: 'path', d: 'M6 6l12 12M18 6L6 18' }],
   alert: [
     { kind: 'path', d: 'M12 4l9 16H3L12 4z' },
     { kind: 'path', d: 'M12 10v4' },
     { kind: 'circle', cx: 12, cy: 17, r: 1, filled: true },
+  ],
+  /**
+   * "There is an explanation behind this tap."
+   *
+   * The set had no neutral one, so a screen with a caveat to state had only
+   * `alert` — which is the warning glyph and reads as something being wrong —
+   * or leaving the caveat on screen as prose. Deliberately not `lifebuoy`:
+   * that one is support, i.e. a person to ask, not a note to read.
+   */
+  info: [
+    { kind: 'circle', cx: 12, cy: 12, r: 9 },
+    { kind: 'path', d: 'M12 11.5v5' },
+    { kind: 'circle', cx: 12, cy: 7.8, r: 1, filled: true },
   ],
   apps: [
     { kind: 'rect', x: 4, y: 4, width: 6, height: 6, rx: 1 },
@@ -582,6 +878,17 @@ export const ICONS = {
     { kind: 'rect', x: 3.5, y: 14, width: 6.5, height: 6.5, rx: 1.4 },
     { kind: 'path', d: 'M14 14h3v3h-3zM20.5 14v6.5H14' },
   ],
+  // A scan viewfinder: four open corners and a scan line through the middle —
+  // the generic "scan a code" action, not a QR pattern. `qr` above draws the
+  // code a device *shows*; this is the button that opens a camera to *read*
+  // one, which is what the scan button beside "+" in `FamilyScreen` needs.
+  qrScan: [
+    { kind: 'path', d: 'M3 8V6a3 3 0 0 1 3-3h2' },
+    { kind: 'path', d: 'M16 3h2a3 3 0 0 1 3 3v2' },
+    { kind: 'path', d: 'M21 16v2a3 3 0 0 1-3 3h-2' },
+    { kind: 'path', d: 'M8 21H6a3 3 0 0 1-3-3v-2' },
+    { kind: 'path', d: 'M5 12h14' },
+  ],
   shieldCheck: [
     { kind: 'path', d: 'M12 3l7 3v5.5c0 4.3-2.9 8.2-7 9.5-4.1-1.3-7-5.2-7-9.5V6l7-3Z' },
     { kind: 'path', d: 'M9 12l2 2 4-4' },
@@ -646,7 +953,63 @@ export function platformIcon(
       return 'windows';
     case 'androidtv':
       return 'tv';
+    case 'chromeos':
+      // Was the caller's fallback, so a paired Chromebook drew whatever that
+      // screen happened to pass — a phone in most lists, a laptop in others.
+      return 'chromebook';
     default:
       return fallback;
   }
+}
+
+/**
+ * The glyph for a *device*, which is the platform plus its form factor.
+ *
+ * `platformIcon()` stays the platform's own picture — the plan rows and the
+ * marketing lists name a platform and hold no device, so `ios` there is the
+ * bitten apple and nothing else. A device row is the other case: an iPad and
+ * an iPhone are both `ios`, and drawing one apple for both is the same defect
+ * `extension` was drawn to fix one layer up — two rows for two real machines,
+ * telling the parent apart by name alone.
+ *
+ * The phone pair and the tablet pair are answered here. `laptop` / `desktop` on `macos` or
+ * `windows` deliberately are not: those silhouettes already differ from each
+ * other (`mac` is a laptop, `windows` a monitor), and an Android `laptop` is
+ * the ARC install on a Chromebook, which `platformLabelKey` already names
+ * Chromebook — a fourth silhouette there would say less than the mark does.
+ *
+ * Both arguments are `@kidgate/schema` unions, taken as strings because this
+ * package imports nothing.
+ */
+export function deviceGlyph(
+  platform: string | null | undefined,
+  formFactor: string | null | undefined,
+  fallback: IconName = 'smartphone',
+): IconName {
+  if (formFactor === 'phone') {
+    // A phone is a machine, not the platform's mark on its own — see `iphone`
+    // and `androidPhone`. Only when the record actually says `phone`: absent
+    // stays unknown, and the bare mark is the honest picture for a device that
+    // has not told us what it is.
+    if (platform === 'ios') {
+      return 'iphone';
+    }
+    if (platform === 'android') {
+      return 'androidPhone';
+    }
+  }
+  if (formFactor === 'tablet') {
+    if (platform === 'ios') {
+      return 'ipad';
+    }
+    if (platform === 'android') {
+      return 'androidTablet';
+    }
+    // A tablet on a platform with no drawn mark still reads as a tablet, and
+    // that is more than the phone it used to draw.
+    if (!platform) {
+      return 'tablet';
+    }
+  }
+  return platformIcon(platform, fallback);
 }

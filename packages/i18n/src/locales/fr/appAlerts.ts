@@ -17,4 +17,6 @@ export const appAlerts = {
   infoLine3:
     'Consultez la liste ici, puis bloquez les apps à risque depuis Apps bloquées.',
   recentTitle: 'Changements récents',
+  statInstalled: 'Installée',
+  statRemoved: 'Supprimée',
 } as const;

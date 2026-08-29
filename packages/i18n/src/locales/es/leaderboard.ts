@@ -7,18 +7,16 @@ export const leaderboard = {
   settingsBody:
     'Deja que tus hijos vean cuántas estrellas ha conseguido cada uno esta semana.',
   childrenTitle: 'Hijos',
-  childrenBody:
-    'Agrupa los dispositivos según quién los usa. Un hijo puede tener varios.',
+  manageAccessibility: 'Gestionar hijos y dispositivos',
   addChild: 'Añadir un hijo',
+  childAdded: 'Hijo añadido.',
   childNameLabel: 'Nombre',
   childNamePlaceholder: 'p. ej. Mai',
   unassigned: 'Sin asignar',
-  assignLabel: 'Lo usa',
-  assignNobody: 'Nadie todavía',
-  deviceCount: '{{count}} dispositivos',
   removeChild: 'Quitar',
   removeChildConfirmTitle: '¿Quitar a este hijo?',
   removeChildConfirmBody:
     'Sus dispositivos siguen vinculados y enviando información: solo dejan de contar para nadie hasta que los asignes de nuevo.',
-  needsTwoChildren: 'Añade un segundo hijo para empezar la tabla de estrellas.',
+  emptyTitle: 'Aún no hay hijos',
+  emptyBody: 'Añade aquí a cada hijo y luego asigna los dispositivos que usa.',
 } as const;

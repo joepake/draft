@@ -13,5 +13,12 @@ export const trial = {
   impactScreenTime: 'Waktu layar turun sekitar {{duration}} per hari',
   impactWebBlocked: 'Memblokir {{count}} kunjungan ke situs dewasa',
   impactTamper: 'Mencatat {{count}} kali perlindungan dimatikan',
+  impactLocks: 'Menerapkan jam tidur dan Jam Diblokir {{count}} kali',
+  impactScreenTimeTracked: 'Mengukur {{duration}} waktu layar untuk Anda',
+  impactDevices: 'Menjaga {{count}} perangkat, siang dan malam',
+  impactPlaceArrivals:
+    'Memberi tahu Anda {{count}} kali bahwa mereka tiba dengan selamat',
+  impactAppInstalled: 'Menemukan {{count}} aplikasi baru pada hari aplikasi itu muncul',
+  impactSos: 'Mengirimkan {{count}} peringatan SOS langsung kepada Anda',
   impactKeepButton: 'Pertahankan perlindungan ini',
 } as const;

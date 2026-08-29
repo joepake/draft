@@ -20,7 +20,7 @@ export const macos = {
 
   lockState: 'Dispositivo bloqueado',
   lockStateNo: 'Não',
-  lockStateNotChecked: 'Ainda não verificado',
+  stateNotChecked: 'Ainda não verificado',
   lockStateParent: 'Sim — bloqueado pelos pais',
   lockStateSchedule: 'Sim — Horários bloqueados',
   lockStateDailyLimit: 'Sim — Limite diário atingido',
@@ -32,6 +32,33 @@ export const macos = {
   webFilterLabel: 'Filtro da web',
   webFilterUnavailable: 'Não disponível neste Mac',
   notSupportedOnThisDevice: 'Não compatível com este dispositivo',
+  filterAwaitingApproval: 'Aguardando aprovação nos Ajustes do Sistema',
+  filterSwitchedOff: 'Desativado nos Ajustes do Sistema',
+  filterInterrupted: 'Parado após um problema — o KidGate vai restaurá-lo',
+  setupFilterApprovalBody:
+    'Ative o KidGate em Extensões de rede para o filtro da web começar.',
+  setupFilterSwitchBody:
+    'O Filter Network Content está desativado para o KidGate. Ative novamente para continuar filtrando.',
+  setupOpenSettings: 'Abrir Ajustes',
+  setupTitle: 'Concluir a configuração deste dispositivo',
+  setupRowLabel: 'Permissões',
+  setupRowHint: 'Veja o que este dispositivo ainda precisa que você permita.',
+  setupStepBlockedNoPrompt:
+    'Foi recusado, e este dispositivo não pergunta de novo — ative o KidGate em Configurações → Privacidade e segurança.',
+  setupSubtitle:
+    'O sistema pede permissão para cada um destes itens, e só quem está usando este dispositivo pode autorizar. Fazer isso agora evita que a pergunta chegue ao seu filho ou filha depois.',
+  setupStepFilterApprovalTitle: 'Aprovar o filtro da web',
+  setupStepFilterSwitchTitle: 'Filter Network Content',
+  setupStepFilterSwitchWaiting:
+    'Aparece nos Ajustes do Sistema assim que a etapa acima for aprovada.',
+  setupStepLocationBody:
+    'Permite que sua família veja onde este dispositivo está. Nada é compartilhado até você ativar “Compartilhar localização”.',
+  setupStepCameraTitle: 'Câmera',
+  setupStepCameraBody:
+    'Anexa uma foto quando seu filho ou filha envia um SOS ou responde a um Check-in. Nenhuma foto é tirada agora.',
+  setupStepDone: 'Configurado — não há mais nada a fazer aqui.',
+  setupStepBlocked:
+    'Foi recusado antes. O macOS só pergunta uma vez — ative o KidGate em “Privacidade e Segurança”.',
 
   scheduleLabel: 'Horários bloqueados',
   dailyLimitLabel: 'Limite diário',

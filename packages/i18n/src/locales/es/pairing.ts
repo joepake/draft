@@ -3,23 +3,32 @@ export const pairing = {
   shareInviteMessage:
     'Únete a nuestra familia en KidGate: abre la app, elige Familia → Unirse a la familia e introduce el código {{code}}. El código caduca en 15 minutos.',
   shareChildCodeMessage:
-    'Conecta este dispositivo del niño en KidGate: en el dispositivo del padre/madre abre KidGate → Dispositivos → + → Dispositivo del niño, luego escanea el código QR o introduce el código {{code}}. El código caduca en 5 minutos.',
+    'Conecta este dispositivo del niño en KidGate: en el dispositivo del padre/madre abre KidGate → Familia → Escanear código, luego escanea el código QR o introduce el código {{code}}. El código caduca en 5 minutos.',
   connectChildPhone: 'Conectar un dispositivo del niño',
   parentInstructions:
-    'En el dispositivo del niño, abre KidGate y selecciona “Este es un dispositivo del niño”. Luego introduce el código que aparece en esa pantalla.',
+    'En el dispositivo del niño, abre KidGate y selecciona «Este es un dispositivo del niño». Luego introduce el código que aparece en esa pantalla.',
   parentScanInstructions: 'Apunta tu cámara al código QR del dispositivo del niño.',
   childWaitingTitle: 'Esperando a un padre',
   childWaitingSubtitle:
     'Mantén esta pantalla abierta. Un padre conectará este dispositivo desde su app de KidGate.',
   childCodeLabel: 'O comparte este código',
   childScanHint:
-    'Padre/madre: abre KidGate → Dispositivos → + → Dispositivo del niño → escanea el código QR o introduce el código.',
+    'Padre/madre: abre KidGate → Familia → {{scan}} → escanea el código QR o introduce el código.',
   childConnecting: 'Conectado. Configurando este dispositivo…',
   childPairedTitle: 'Estás conectado',
   childPairedSubtitle: 'Configurando este dispositivo…',
   connectChild: 'Conectar dispositivo del niño',
   waitingChildConfirm:
     'Solicitud enviada. Esperando confirmación en el dispositivo del niño.',
+  waitingChildConfirmHint:
+    'En el dispositivo del niño, toca «Sí, conectar» para terminar. Puedes cerrar esta pantalla: la vinculación continúa en segundo plano.',
+  childConfirmedTitle: 'Dispositivo conectado',
+  childConfirmedBody:
+    'El dispositivo del niño confirmó la vinculación. Ahora elige quién lo usa.',
+  childRejectedPairing:
+    'El dispositivo del niño rechazó esta vinculación. Consigue un código nuevo en ese dispositivo e inténtalo de nuevo.',
+  childConfirmExpired:
+    'El dispositivo del niño no confirmó a tiempo. Pide un código nuevo en ese dispositivo e inténtalo de nuevo.',
   confirmParentTitle: '¿Confirmar a este padre?',
   confirmParentSubtitle:
     '{{parentLabel}} quiere administrar este dispositivo. Acepta solo si conoces a esta persona.',
@@ -29,7 +38,7 @@ export const pairing = {
   unknownParent: 'un padre',
   expiresIn: 'Caduca en {{countdown}}',
   autoRefreshPaused:
-    'La actualización automática del código se ha pausado para ahorrar datos móviles y batería. Selecciona “Nuevo código” cuando estés listo.',
+    'La actualización automática del código se ha pausado para ahorrar datos móviles y batería. Selecciona «Nuevo código» cuando estés listo.',
   scanQrTitle: 'Escanear código QR',
   scanQrSubtitle: 'Alinea el código QR dentro del marco.',
   enterCodeManually: 'Introducir el código manualmente',
@@ -63,7 +72,7 @@ export const pairing = {
     'Te has unido a la familia. Sus dispositivos de niños aparecen ahora aquí.',
   joinedFamilyTitle: 'Te uniste a la familia',
   joinedFamilyMessage:
-    'Te has unido a “{{familyName}}”. Sus dispositivos de niños aparecen ahora en este dispositivo.',
+    'Te has unido a «{{familyName}}». Sus dispositivos de niños aparecen ahora en este dispositivo.',
   createFamilyTitle: 'Crea tu familia',
   createFamilyInstructions:
     'Ponle un nombre a tu familia antes de invitar a otro padre o madre. Los demás padres se unirán a esta familia y verán los mismos dispositivos de niños.',

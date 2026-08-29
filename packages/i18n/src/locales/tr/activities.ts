@@ -2,6 +2,7 @@ export const activities = {
   title: 'Etkinlikler',
   subtitleAllDevices: 'Tüm cihazlardaki en son etkinlikler',
   subtitleTimelineForDevice: '{{deviceName}} zaman çizelgesi',
+  subtitleTimelineForChild: '{{childName}} zaman çizelgesi',
   fallbackDeviceName: 'cihaz',
   liveBadge: 'Canlı',
   errorTitle: 'Etkinlikler yüklenemedi',
@@ -37,16 +38,31 @@ export const activities = {
   activityTypePlaceExit: 'Konumdan ayrıldı',
   activityTypeTamper: 'Koruma',
   activityTypeScreenTime: 'Ekran Süresi',
+  activityTypeWebFilter: 'Web filtresi',
   activityTypeEmergency: 'Acil Durum',
   activityTypeUnknown: 'Etkinlik',
 
+  sosEscapeTitle: 'Acil durum kilidi açma',
+  sosEscapeBody: 'SOS bu cihazın kilidini {{minutes}} dakika açtı.',
+  sosEscapeRepeatTitle: 'Acil durum kilidi açma (bugün {{count}} kez)',
+  sosEscapeRepeatBody:
+    'SOS bu cihazın kilidini {{minutes}} dakika açtı. Bugün {{count}} kez oldu.',
   appBlockedTitle: '{{appName}}',
   appBlockedBody: 'Engellenen bir uygulama açıldı ve KidGate kapattı.',
-  appInstalledTitle: '{{appName}}',
-  appInstalledBody: 'Çocuğun cihazına yeni bir uygulama yüklendi.',
+  appInstalledTitle: 'Uygulama yüklendi',
+  appInstalledBody: '{{appName}} uygulaması çocuğun cihazına yüklendi.',
 
-  appRemovedTitle: '{{appName}}',
-  appRemovedBody: 'Çocuğun cihazından bir uygulama kaldırıldı.',
+  messageAlertTitle: 'Endişe verici mesaj içeriği',
+  messageAlertBody: '{{appName}} içinde işaretli bir kelime tespit edildi.',
+  messageAlertBodyOutgoing:
+    'Çocuğunuzun {{appName}} içinde yazdığı bir mesajda işaretli bir kelime tespit edildi.',
+  activityTypeMessageAlert: 'Mesaj uyarısı',
+  messageCheckedTitle: 'Bakıldı, endişelenecek bir şey yok',
+  messageCheckedBody:
+    '{{appName}} içinde izlenen bir kelime göründü ve bağlam içinde zararsız bulundu.',
+  activityTypeMessageChecked: 'Bakıldı',
+  appRemovedTitle: 'Uygulama kaldırıldı',
+  appRemovedBody: '{{appName}} uygulaması çocuğun cihazından kaldırıldı.',
 
   placeEnterTitle: '{{placeName}} konumuna girdi',
   placeEnterBody: 'Çocuğun cihazı kayıtlı bir konuma ulaştı.',
@@ -67,15 +83,15 @@ export const activities = {
     'Erişilebilirlik yeniden etkinleştirilene kadar uygulama engelleme ve koruma özellikleri tam olarak çalışmayabilir.',
   tamperUsageAccessTitle: 'Uygulama kullanım erişimi kapatıldı',
   tamperUsageAccessBody:
-    'KidGate çocuğun cihazında uygulama kullanımını yeniden okuyabilene kadar uygulama sınırları ve Engellenen saatler çalışmayabilir.',
+    'KidGate çocuğun cihazında uygulama kullanımını yeniden okuyabilene kadar uygulama sınırları ve Engellenen Saatler çalışmayabilir.',
   // iOS and Android name this permission differently; the neutral pair
   // above is what old events fall back to. See utils/tamperAlerts.ts.
   tamperScreenTimeIosTitle: 'Ekran Süresi erişimi kapatıldı',
   tamperScreenTimeIosBody:
-    'Çocuğun cihazında Ekran Süresi erişimine yeniden izin verilene kadar uygulama sınırları ve Engellenen saatler çalışmayabilir.',
+    'Çocuğun cihazında Ekran Süresi erişimine yeniden izin verilene kadar uygulama sınırları ve Engellenen Saatler çalışmayabilir.',
   tamperUsageAccessAndroidTitle: 'Kullanım Erişimi kapatıldı',
   tamperUsageAccessAndroidBody:
-    'Çocuğun cihazında KidGate için Kullanım Erişimi yeniden açılana kadar uygulama sınırları ve Engellenen saatler çalışmayabilir.',
+    'Çocuğun cihazında KidGate için Kullanım Erişimi yeniden açılana kadar uygulama sınırları ve Engellenen Saatler çalışmayabilir.',
 
   tamperBatteryTitle: 'Sınırsız pil kullanımı devre dışı bırakıldı',
   tamperBatteryBody:
@@ -83,7 +99,7 @@ export const activities = {
 
   tamperExactAlarmTitle: 'Alarmlar ve hatırlatıcılar kapatıldı',
   tamperExactAlarmBody:
-    'Alarmlar ve hatırlatıcılar iznine yeniden izin verilene kadar Engellenen saatler geç başlayabilir veya geç bitebilir.',
+    'Alarmlar ve hatırlatıcılar iznine yeniden izin verilene kadar Engellenen Saatler geç başlayabilir veya geç bitebilir.',
 
   tamperNotificationsTitle: 'Bildirimler devre dışı bırakıldı',
   tamperNotificationsBody:
@@ -117,10 +133,13 @@ export const activities = {
   tamperBackgroundRefresh: 'Arka Planda Uygulama Yenileme devre dışı bırakıldı.',
 
   filterAllDevices: 'Tüm cihazlar',
+  // The child tier of the feed filter — "All" would read as all devices.
+  filterAllChildren: 'Herkes',
   dateToday: 'Bugün',
   dateYesterday: 'Dün',
 
   filterByDevice: '{{label}} filtrele',
+  filterByChild: 'Yalnızca {{label}} göster',
 
   openFullSosHistory: 'Tüm SOS geçmişini aç',
 

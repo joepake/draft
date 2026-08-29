@@ -14,6 +14,10 @@
 
 import type { Device, ProtectionPermissionStatus } from '@kidgate/schema/device';
 
+import { isAndroidLike } from './platformFamily';
+import { pendingConsentCopy } from './deviceConsents';
+import { webFilterBlockerKey } from './webFilterSupport';
+
 export const INACTIVE_THRESHOLD_MS = 24 * 60 * 60 * 1000;
 
 export type ProtectionLevel = 'protected' | 'warning' | 'inactive';
@@ -22,6 +26,49 @@ export interface ProtectionIssueKeys {
   key: string;
   labelKey: string;
   detailKey: string;
+  /**
+   * `detailKey` carries a `{{platform}}` placeholder the renderer must fill.
+   *
+   * The only such copy so far is the web-filter blocker, which is worded per
+   * device — "Waiting for approval on Apple TV" — and the platform's display
+   * name is an app-side string this package cannot build. A flag rather than
+   * the value, so a renderer that forgets it fails visibly (`{{platform}}` on
+   * screen) instead of quietly dropping the device from the sentence.
+   */
+  needsPlatformName?: boolean;
+  /**
+   * How to grant it, in order, as i18n keys — empty when nobody has written it.
+   *
+   * **The summary named every problem and no fix.** A parent read "Usage
+   * access" on a device across the room and had to work out the rest
+   * themselves; the steps existed all along, in the packs the child's own setup
+   * screens render. This carries them to the other side of the wire rather than
+   * writing a second set.
+   *
+   * A list because a grant is a walk through Settings, not a sentence. Absent
+   * is honest and the renderer must handle it: iOS Screen Time, location and
+   * the television's filter consent have no written steps yet, and inventing
+   * them here would be fourteen locales of guesswork about somebody else's
+   * Settings app.
+   */
+  hintKeys?: string[];
+  /**
+   * Whether this issue is why the device's badge turns amber. Absent means yes.
+   *
+   * Every issue was a warning until consents that are not protections started
+   * arriving here. A refused camera on a Mac costs the photo on an SOS and
+   * costs nothing else: blocked hours still bite, the daily limit still bites,
+   * the filter still filters. Rendering "Needs attention" over a machine that
+   * is enforcing every rule its parent set would spend the one badge this
+   * product has on something it does not mean — and a badge that is amber on
+   * healthy devices is a badge parents stop reading, which is the failure that
+   * matters here rather than the missed photo.
+   *
+   * `'info'` issues are still **listed**. They appear in the hero's chips and
+   * in the issues sheet exactly as the others do, because being invisible is
+   * the state this field exists to end. Only the level ignores them.
+   */
+  severity?: 'warning' | 'info';
 }
 
 export interface ProtectionSummaryKeys {
@@ -45,15 +92,6 @@ export interface ProtectionSummaryKeys {
  */
 function reportsProtectionChecklist(platform: Device['platform']): boolean {
   return platform !== 'macos' && platform !== 'windows';
-}
-
-/**
- * Android TV reuses the Android agent, so when it ships it answers the
- * Android checklist — routing it through the iOS branch would ask a TV for
- * Screen Time.
- */
-function isAndroidLike(platform: Device['platform']): boolean {
-  return platform === 'android' || platform === 'androidtv';
 }
 
 function isStale(nowMs: number, timestamp?: string): boolean {
@@ -142,6 +180,22 @@ export function getProtectionSummaryKeys(
             : isAndroid
               ? 'protection.usageAccessSetupIncomplete'
               : 'protection.screenTimeSetupIncomplete',
+        /*
+         * The three steps the child's own Usage-access banner already renders,
+         * reused rather than rewritten. **Android side only**: iOS Screen Time
+         * is a different flow with no written steps, and a list that said
+         * "Find KidGate and turn on Usage access" to an iPhone owner would be
+         * worse than the sentence above it.
+         */
+        ...(isAndroid
+          ? {
+              hintKeys: [
+                'screenTime.usageAccessStepOpenSettings',
+                'screenTime.usageAccessStepFindKidGate',
+                'screenTime.usageAccessStepReturn',
+              ],
+            }
+          : {}),
       });
     }
 
@@ -160,7 +214,10 @@ export function getProtectionSummaryKeys(
       protection.notifications,
     );
     if (notifications) {
-      issues.push(notifications);
+      issues.push({
+        ...notifications,
+        hintKeys: ['permissions.notificationsOpenSettings'],
+      });
     }
 
     if (isAndroid) {
@@ -170,7 +227,14 @@ export function getProtectionSummaryKeys(
         protection.overlay,
       );
       if (overlay) {
-        issues.push({ ...overlay, detailKey: 'protection.overlayOffForLock' });
+        issues.push({
+          ...overlay,
+          detailKey: 'protection.overlayOffForLock',
+          // The same hints the child device's own permission list renders —
+          // `apps/mobile`'s child HomeScreen has shown these for as long as the
+          // grants have existed, to the one person who is not the parent.
+          hintKeys: ['permissions.overlayHint'],
+        });
       }
 
       const battery = permissionIssue(
@@ -182,6 +246,7 @@ export function getProtectionSummaryKeys(
         issues.push({
           ...battery,
           detailKey: 'protection.batteryOptimizationOff',
+          hintKeys: ['permissions.batteryOptimizationHint'],
         });
       }
 
@@ -191,7 +256,11 @@ export function getProtectionSummaryKeys(
         protection.exactAlarm,
       );
       if (exactAlarm) {
-        issues.push({ ...exactAlarm, detailKey: 'protection.exactAlarmOff' });
+        issues.push({
+          ...exactAlarm,
+          detailKey: 'protection.exactAlarmOff',
+          hintKeys: ['permissions.exactAlarmHint'],
+        });
       }
 
       const accessibility = permissionIssue(
@@ -203,6 +272,7 @@ export function getProtectionSummaryKeys(
         issues.push({
           ...accessibility,
           detailKey: 'protection.accessibilityOff',
+          hintKeys: ['permissions.accessibilityHint'],
         });
       }
     } else {
@@ -218,9 +288,95 @@ export function getProtectionSummaryKeys(
             protection.backgroundAppRefresh === 'restricted'
               ? 'protection.backgroundUpdatesRestricted'
               : 'protection.turnOnBackgroundUpdatesInSettings',
+          /*
+           * Two hints when Low Power Mode is the cause, because that one is not
+           * findable: the Background App Refresh toggle is dimmed and nothing
+           * on that screen says why.
+           */
+          hintKeys:
+            protection.backgroundAppRefresh === 'restricted'
+              ? [
+                  'permissions.backgroundRefreshLowPowerHint',
+                  'permissions.backgroundRefreshHint',
+                ]
+              : ['permissions.backgroundRefreshHint'],
         });
       }
     }
+  }
+
+  /*
+   * A grant the device is still waiting for, that no checklist row covers.
+   *
+   * **The gap this closes, reported from a real living room:** a Sony BRAVIA
+   * with three of its four grants made — usage access, overlay, accessibility —
+   * and the VPN consent behind web filtering never accepted. Every row the
+   * checklist knows about was green, so the hero said "Protected. KidGate's
+   * protections are working well." on a television filtering nothing.
+   *
+   * The consent is deliberately absent from `DeviceProtectionStatus`: the
+   * schema has no VPN row, and the device reports it as
+   * `DeviceCapabilities.webFilterBlocker` instead — see `TvPermissionFacts`.
+   * That was the right place to put the fact and the wrong place to leave it,
+   * because this summary is what a parent reads to decide the device is set up.
+   *
+   * Outside the checklist branch on purpose: it is a capability the device
+   * publishes, so it applies to a Mac awaiting extension approval exactly as it
+   * does to a television awaiting a consent dialog, and neither of those
+   * platforms answers a permission checklist at all.
+   */
+  const filterBlockerKey = webFilterBlockerKey(device);
+  if (filterBlockerKey) {
+    issues.push({
+      key: 'web-filter-blocked',
+      labelKey: 'deviceDetail.webFilter',
+      detailKey: filterBlockerKey,
+      needsPlatformName: true,
+      /*
+       * The Mac's approval is written; the television's is not.
+       *
+       * `macos.setupFilterApprovalBody` is what the agent's own setup screen
+       * says, and a parent walking to the Mac needs the same words. Android TV
+       * grants this through a `VpnService` consent dialog and nobody has
+       * written those steps in fourteen locales yet — recorded in
+       * `docs/BACKLOG.md` rather than guessed at here, because a wrong path
+       * through somebody's Settings app wastes a walk across the house.
+       */
+      ...(device.platform === 'macos'
+        ? { hintKeys: ['macos.setupFilterApprovalBody'] }
+        : {}),
+    });
+  }
+
+  /*
+   * Consents the device is waiting on that no checklist covers.
+   *
+   * The web-filter blocker above is the same gap, found first: a fact the
+   * device published, that reached no parent. These two go one further —
+   * `getProtectionSummaryKeys` skips the permission checklist for desktops
+   * entirely, so a Mac whose camera was never allowed had **no** channel to
+   * the parent at all. The child device's own checklist is behind the Parent
+   * PIN, which is exactly where a parent does not look.
+   *
+   * `'info'`, not a warning: neither consent is an enforcement rule. See
+   * `ProtectionIssueKeys.severity`.
+   */
+  for (const consent of pendingConsentCopy(device)) {
+    issues.push({
+      key: `consent-${consent.consent}`,
+      labelKey: consent.labelKey,
+      detailKey: consent.detailKey,
+      /*
+       * No `{{platform}}` here, unlike the filter blocker above. That sentence
+       * is read on a family list where one device among several is waiting;
+       * these are read on the device's own card, where naming it again is a
+       * stutter — and the dashboard has no app-side platform label to fill the
+       * placeholder with, so a shared sentence that needed one would print
+       * `{{platform}}` on one of the two surfaces.
+       */
+      hintKeys: consent.hintKeys,
+      severity: 'info',
+    });
   }
 
   if (inactive) {
@@ -233,7 +389,8 @@ export function getProtectionSummaryKeys(
     };
   }
 
-  if (issues.length > 0) {
+  // `info` issues are listed and do not colour the badge — see `severity`.
+  if (issues.some(issue => issue.severity !== 'info')) {
     return {
       level: 'warning',
       titleKey: 'protection.needsAttention',
@@ -353,6 +510,25 @@ export function getLockEnforcementIssueKeys(device: Device): ProtectionIssueKeys
   if (!reportsProtectionChecklist(device.platform)) {
     // The desktop lock is a fullscreen window the agent draws itself; no OS
     // grant precedes it, so there is never anything to list here.
+    return [];
+  }
+  /*
+   * **The device's own probe outranks this checklist**, the same precedence the
+   * device-detail cards already give it (`supportedBy` over `supportedOn` in
+   * `apps/mobile`). The checklist infers the lock from named permissions; the
+   * probe *derives* it from what the agent can actually do — and the two came
+   * apart the day the TV's lock learned to ride the accessibility service:
+   * `TYPE_ACCESSIBILITY_OVERLAY` needs no overlay permission, so a Sony whose
+   * overlay toggle writes nothing (measured — the app-op stayed untouched
+   * through a dozen presses) still locks fine, while this list would have kept
+   * the parent's Lock button behind "overlay: denied" forever.
+   *
+   * `=== true` and nothing looser: an absent probe is unknown, never a yes —
+   * phones publish no probe and stay on the permission checklist below — and a
+   * probe that says `lock: false` should fall through to the list too, because
+   * the list is what names the grants that would fix it.
+   */
+  if (device.capabilities?.lock === true) {
     return [];
   }
   return isAndroidLike(device.platform)

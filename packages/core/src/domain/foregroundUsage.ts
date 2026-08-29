@@ -15,7 +15,7 @@
 
 import type { AppRef, AppRefId, IsoDate, Millis } from '@kidgate/schema/primitives';
 import type { AppUsage, UsageSnapshot } from '@kidgate/schema/telemetry';
-import type { UsageTimeline } from '@kidgate/schema/usageDay';
+import { USAGE_TOP_APPS_LIMIT, type UsageTimeline } from '@kidgate/schema/usageDay';
 import { emptyTimeline, markTimeline, normaliseTimeline } from './usageTimeline';
 
 /**
@@ -31,6 +31,23 @@ import { emptyTimeline, markTimeline, normaliseTimeline } from './usageTimeline'
  * busy moment or a slow WebView, far too short to absorb a sleep.
  */
 export const MAX_ATTRIBUTED_GAP_MS = 90_000;
+
+/**
+ * Below this, a package was passed through rather than used.
+ *
+ * Every app the child opened belongs in the list, including the ones worth
+ * under a minute — that was the bug. But a television being driven with a
+ * remote raises a foreground event for each app the highlight lands on, and a
+ * two-second pass through a launcher row is navigation, not screen time.
+ * Without a floor, an evening of one programme reports one real row and seven
+ * blips ranked beside it.
+ *
+ * Fifteen seconds, and the number is a judgement rather than a measurement: it
+ * is long enough that somebody chose the app and short enough that "I only
+ * looked at it for a moment" still appears. The seconds are in the total
+ * either way — this decides what is worth a line, never what is counted.
+ */
+export const MIN_REPORTED_SECONDS = 15;
 
 export interface ForegroundUsageState {
   /** The child's local day these totals belong to. */
@@ -214,20 +231,35 @@ function markSpan(
  */
 export function usageSnapshot(
   state: ForegroundUsageState,
-  topAppsLimit = 8,
+  topAppsLimit = USAGE_TOP_APPS_LIMIT,
 ): UsageSnapshot {
   const entries = Object.entries(state.seconds);
 
   const totalSeconds = entries.reduce((sum, [, value]) => sum + value, 0);
 
+  /*
+   * **Ranked and filtered on seconds, rounded to minutes last.**
+   *
+   * It used to round first and drop everything that came out zero, which is how
+   * a parent read a total of three minutes above a single row of two: the app
+   * worth forty seconds was in the total and nowhere in the list. Sorting on
+   * the rounded number had the same flavour of wrongness — two apps at 89 and
+   * 91 seconds both read `1` and were then ordered by package name.
+   *
+   * A row may now say zero minutes, and the renderer is expected to show that
+   * as "under a minute" rather than as `0m`. The alternative — rounding a
+   * forty-second glance up to one minute — turns a dozen of them into twelve
+   * minutes that the total does not contain, which is the arithmetic parents
+   * actually notice.
+   */
   const topApps: AppUsage[] = entries
+    .filter(([, value]) => value >= MIN_REPORTED_SECONDS)
+    .sort(([aId, aValue], [bId, bValue]) => bValue - aValue || aId.localeCompare(bId))
+    .slice(0, topAppsLimit)
     .map(([id, value]): AppUsage => {
       const app: AppRef = { id, label: state.labels[id] ?? null };
       return { app, minutes: Math.round(value / 60) };
-    })
-    .filter(entry => entry.minutes > 0)
-    .sort((a, b) => b.minutes - a.minutes || a.app.id.localeCompare(b.app.id))
-    .slice(0, topAppsLimit);
+    });
 
   return {
     date: state.date,

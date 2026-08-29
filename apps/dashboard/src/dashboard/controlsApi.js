@@ -4,13 +4,16 @@ import {
   trackDeviceLock,
   trackParentAction,
   trackRewardClaim,
+  trackSiteRequest,
   trackTimeRequest,
 } from '../lib/analytics.js';
 import {
+  childRulesRepository,
   controlRepository,
   deviceRepository,
   rewardTaskRepository,
   safetyCheckInRepository,
+  siteRequestRepository,
   timeRequestRepository,
 } from '../adapters/repositories.js';
 
@@ -155,6 +158,26 @@ export function createActions({ familyId, canWrite }) {
       );
     },
 
+    /**
+     * The child-level half of updateControls: a device assigned to a child
+     * routes its child-rule fields here — web filter, blocked hours,
+     * location sharing — and the server fans them out to every sibling
+     * (docs/FEASIBILITY.md, 2026-08-26). Writing the one device's controls
+     * instead would be wiped by the next fan-out.
+     */
+    updateChildRules(childId, rules) {
+      return counted(
+        () => guard(() => childRulesRepository.updateRules(familyId, childId, rules)),
+        result =>
+          trackParentAction(
+            Object.keys(rules ?? {})
+              .sort()
+              .join(','),
+            result,
+          ),
+      );
+    },
+
     updateControls(deviceId, controls) {
       return counted(
         () =>
@@ -186,6 +209,21 @@ export function createActions({ familyId, canWrite }) {
             timeRequestRepository.resolveRequest(familyId, { id: requestId }, approved),
           ),
         result => trackTimeRequest(approved ? 'approve' : 'deny', result),
+      );
+    },
+
+    /**
+     * Approving appends the domain to that device's allow list, server-side —
+     * nothing here knows about it. Same `{ id }` shape as the time request
+     * above and for the same reason: only the id reaches the server.
+     */
+    resolveSiteRequest(requestId, approved) {
+      return counted(
+        () =>
+          guard(() =>
+            siteRequestRepository.resolveRequest(familyId, { id: requestId }, approved),
+          ),
+        result => trackSiteRequest(approved ? 'approve' : 'deny', result),
       );
     },
 

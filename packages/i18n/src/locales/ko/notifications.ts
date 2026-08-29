@@ -29,6 +29,10 @@ export const notifications = {
       label: '시간 연장 요청',
       hint: '자녀가 사용 시간을 더 요청할 때.',
     },
+    siteRequests: {
+      label: '사이트 요청',
+      hint: '자녀가 차단된 사이트를 열어달라고 할 때.',
+    },
     checkIn: {
       label: '안부 확인 응답',
       hint: '자녀가 안전 확인에 답할 때.',
@@ -40,6 +44,10 @@ export const notifications = {
     appActivity: {
       label: '앱 설치·삭제',
       hint: '자녀 기기에 앱이 생기거나 사라질 때.',
+    },
+    anomalyAlerts: {
+      label: '평소와 다른 사용',
+      hint: '자녀 기기에서 평소와 다른 사용이 있을 때 — 늦은 밤 사용, 급증, 새 앱.',
     },
     weeklyDigest: {
       label: '주간 요약',

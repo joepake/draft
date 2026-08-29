@@ -34,6 +34,14 @@ export const protection = {
   lockNotReadyBodyIos:
     'जब तक बच्चे के डिवाइस पर स्क्रीन टाइम एक्सेस स्वीकृत नहीं होता, KidGate इस iPhone को लॉक नहीं कर सकता। कृपया उस डिवाइस पर KidGate खोलें और निम्न पूरा करें:',
   locationPermission: 'लोकेशन अनुमति',
+  cameraPermission: 'कैमरा अनुमति',
+  cameraConsentPending:
+    'इस डिवाइस पर कैमरे की अनुमति नहीं है, इसलिए यहाँ से भेजा गया SOS या चेक-इन बिना फ़ोटो के आता है।',
+  locationConsentPending:
+    'इस डिवाइस पर लोकेशन की अनुमति नहीं है, इसलिए यह नहीं बता सकता कि कहाँ है।',
+  consentStepOpenSettings: 'बच्चे के डिवाइस पर KidGate खोलें और सेटिंग्ज़ में जाएँ।',
+  consentStepParentPin: 'पैरेंट PIN डालें।',
+  consentStepPermissions: '“अनुमतियाँ” खोलें और जो बाकी है उसे अनुमति दें।',
   notificationsPermission: 'सूचना अनुमति',
   backgroundUpdates: 'बैकग्राउंड अपडेट',
   backgroundUpdatesRestricted: 'इस डिवाइस पर बैकग्राउंड अपडेट प्रतिबंधित हैं।',

@@ -5,25 +5,25 @@ export const appLock = {
   biometricToggleHint: 'Use biometria em vez de digitar o PIN',
   fallbackBiometryLabel: 'Biometria',
   changePinTitle: 'Alterar o PIN de bloqueio',
-  changePinSubtitle: 'Atualize o PIN usado neste aparelho',
+  changePinSubtitle: 'Atualize o PIN usado neste dispositivo',
   turnOffAlertTitle: 'Desativar o bloqueio do app?',
   turnOffAlertMessage:
-    'O PIN e o desbloqueio biométrico deste app serão removidos deste aparelho.',
+    'O PIN e o desbloqueio biométrico deste app serão removidos deste dispositivo.',
   turnOffButton: 'Desativar',
-  toastTurnedOff: 'Bloqueio do app desativado neste aparelho.',
+  toastTurnedOff: 'Bloqueio do app desativado neste dispositivo.',
   toastTurnOffFailed: 'Não foi possível desativar o bloqueio. Tente novamente.',
   toastBiometricEnabled: '{{biometryLabel}} ativado para desbloquear o app.',
   toastBiometricEnableFailed:
     'Não foi possível ativar o desbloqueio biométrico. Tente novamente.',
   toastBiometricDisableFailed:
     'Não foi possível desativar o desbloqueio biométrico. Tente novamente.',
-  toastEnabled: 'Bloqueio do app ativado neste aparelho.',
+  toastEnabled: 'Bloqueio do app ativado neste dispositivo.',
   createAppLockPin: 'Criar PIN de bloqueio',
   changeAppLockPin: 'Alterar PIN de bloqueio',
   appLockSetupSubtitle:
-    'Escolha um PIN de 6 dígitos para desbloquear o app dos pais neste aparelho.',
+    'Escolha um PIN de 6 dígitos para desbloquear o app dos pais neste dispositivo.',
   appLockSetupHelper:
-    'Este PIN fica neste aparelho e é diferente do PIN dos pais usado nos aparelhos das crianças.',
+    'Este PIN fica neste dispositivo e é diferente do PIN dos pais usado nos dispositivos das crianças.',
   appLockPinMismatch: 'Os PINs não coincidem.',
   unableToSaveAppLockPin: 'Não foi possível salvar o PIN de bloqueio. Tente novamente.',
   kidGateLocked: 'KidGate bloqueado',
@@ -45,7 +45,8 @@ export const appLock = {
     'Muitas tentativas incorretas. Entre novamente para continuar.',
   incorrectPinAttemptsLeft: 'PIN incorreto. Restam {{count}} tentativas.',
   incorrectPinAttemptsLeft_one: 'PIN incorreto. Resta {{count}} tentativa.',
-  biometricsUnavailable: 'O desbloqueio biométrico não está disponível neste aparelho.',
+  biometricsUnavailable:
+    'O desbloqueio biométrico não está disponível neste dispositivo.',
   unlockKidGateTitle: 'Desbloquear o KidGate',
   biometricUnlockSubtitle: 'Confirme sua identidade para abrir o app dos pais',
   faceId: 'Face ID',

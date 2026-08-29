@@ -13,5 +13,12 @@ export const trial = {
   impactScreenTime: 'Temps d’écran réduit d’environ {{duration}} par jour',
   impactWebBlocked: '{{count}} visites de sites pour adultes bloquées',
   impactTamper: '{{count}} fois où la protection a été désactivée',
+  impactLocks: 'Heure du coucher et Heures bloquées appliquées {{count}} fois',
+  impactScreenTimeTracked: '{{duration}} de temps d’écran mesurées pour vous',
+  impactDevices: '{{count}} appareils surveillés, jour et nuit',
+  impactPlaceArrivals:
+    'Vous avez été prévenu {{count}} fois que votre enfant était bien arrivé',
+  impactAppInstalled: '{{count}} nouvelles applications repérées dès leur apparition',
+  impactSos: '{{count}} alertes SOS qui vous ont été transmises directement',
   impactKeepButton: 'Conserver cette protection',
 } as const;

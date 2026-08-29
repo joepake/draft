@@ -22,6 +22,9 @@ export const sos = {
   alertMessage: '{{childName}}에게 도움이 필요해요 — SOS가 전송되었습니다',
   toastSent:
     'SOS를 보냈어요. 가능하면 안전한 곳에 있어 주세요 — 부모님에게 알림이 전송되었습니다.',
+  escapeGrantedTitle: 'SOS를 보냈어요',
+  escapeGrantedBody:
+    '보호자에게 알림이 갔어요. 이 기기는 15분 동안 잠금이 풀리고, 그 뒤에 다시 잠겨요.',
   toastSentWithoutPhoto:
     'SOS를 보냈지만 사진은 첨부되지 않았어요. 가능하면 설정에서 카메라 접근을 허용한 후 다시 시도해 주세요.',
   toastSendFailed:
@@ -34,7 +37,7 @@ export const sos = {
   infoInstantAlertLabel: '즉시 알림',
   infoInstantAlertDetail: '부모님에게 즉시 긴급 알림이 전송돼요.',
   infoYourLocationLabel: '내 위치',
-  infoYourLocationDetail: '부모님과 공유되어 당신이 어디에 있는지 알 수 있어요.',
+  infoYourLocationDetail: '부모님과 공유되어 지금 어디에 있는지 알 수 있어요.',
   infoQuickSelfieLabel: '빠른 사진',
   infoQuickSelfieDetail:
     '알림이 전송된 후, 카메라를 이미 사용할 수 있는 경우 추가돼요.',

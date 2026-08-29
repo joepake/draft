@@ -49,6 +49,12 @@ export const settings = {
   accountNotLinked: 'Не привязано',
   darkModeLabel: 'Тёмная тема',
   darkModeHint: 'Комфортнее для глаз вечером',
+  addWidgetTitle: 'Добавить виджет на главный экран',
+  addWidgetSubtitle: 'Экранное время каждого ребёнка с одного взгляда',
+  addWidgetStepsIos:
+    '1. Удерживайте пустое место на главном экране\n2. Нажмите кнопку + в верхнем углу\n3. Найдите KidGate\n4. Выберите размер и нажмите «Добавить виджет»',
+  addWidgetStepsAndroid:
+    '1. Удерживайте пустое место на главном экране\n2. Нажмите «Виджеты»\n3. Найдите KidGate и перетащите виджет на главный экран',
   pushNotificationsTitle: 'Push-уведомления',
   pushNotificationsSubtitle: 'Выберите, какие оповещения приходят на этот телефон',
   inAppAlertsLabel: 'Уведомления в приложении',
@@ -70,6 +76,15 @@ export const settings = {
   reportMessagePlaceholder: 'Опишите ошибку или проблему…',
   reportMessageRequired: 'Введите краткое описание проблемы.',
   reportMessageTooLong: 'Отчёт должен содержать не более 2000 символов.',
+  reportAttachmentsLabel: 'Скриншоты (необязательно)',
+  reportAttachmentsHint: '{{count}} из {{max}} · до {{limit}} каждый',
+  reportAddAttachment: 'Добавить изображение',
+  reportRemoveAttachment: 'Удалить изображение',
+  reportAttachmentsTooMany: 'Можно приложить не более {{max}} изображений.',
+  reportAttachmentTooLarge:
+    'После уменьшения размер всё ещё {{size}}, поэтому изображение не приложено. Предел — {{limit}} на изображение.',
+  reportAttachmentUnreadable:
+    'Не удалось прочитать этот файл. Выберите другое изображение.',
   reportSendButton: 'Отправить отчёт',
   reportSending: 'Отправка…',
   toastReportSent: 'Спасибо — ваш отчёт отправлен.',
@@ -116,6 +131,7 @@ export const settings = {
   languageHindi: 'Хинди',
   languageRussian: 'Русский',
   sectionAboutTitle: 'О приложении',
+  sectionKidGateTitle: 'KidGate',
   aboutUsTitle: 'О нас',
   aboutUsSubtitle: 'Кто делает KidGate и чего он не делает',
   sectionLegalTitle: 'Юридическая информация',

@@ -1,11 +1,14 @@
 export const location = {
   title: 'الموقع',
   fallbackDeviceName: 'جهاز الطفل',
+  syncNote:
+    'قد يستغرق تحديث الموقع بضع دقائق — وقتًا أطول إذا لم يكن الجهاز متصلاً بالإنترنت أو إذا أُغلق بشكل غير متوقع.',
   toastUpdateFailed: 'تعذر تحديث مشاركة الموقع. يُرجى المحاولة مرة أخرى.',
   toggleLabel: 'مشاركة الموقع',
   toggleHint: 'بعد تفعيل هذا الخيار، افتح KidGate مرة واحدة على هذا الجهاز.',
   toggleAccessibilityLabel: 'مشاركة الموقع',
   lastKnownLocation: 'آخر موقع معروف',
+  nearPlace: 'بالقرب من {{place}}',
   noLocationHint: 'قم بتفعيل مشاركة الموقع، ثم افتح KidGate مرة واحدة على هذا الجهاز.',
   waitingForLocation: 'جارٍ انتظار الموقع',
   updatedAt: 'تم التحديث {{date}}',
@@ -21,9 +24,9 @@ export const location = {
   toastRefreshFailed: 'تعذر طلب تحديث الموقع. يُرجى المحاولة مرة أخرى.',
   toastChildNeedsNotifications:
     'يرجى فتح KidGate على جهاز الطفل والسماح بالإشعارات حتى يتمكن الجهاز من استلام طلبات تحديث الموقع.',
-  checkInBadge: 'تسجيل الوصول',
+  checkInBadge: 'الاطمئنان',
   movementHistoryTitle: 'سجل المواقع',
-  historyEmpty: 'لا يوجد سجل حتى الآن. ستظهر المواقع بعد تحديث الموقع أو تسجيل الوصول.',
+  historyEmpty: 'لا يوجد سجل حتى الآن. ستظهر المواقع بعد تحديث الموقع أو الاطمئنان.',
   historyHighlightAccessibility: 'تمييز {{place}} على الخريطة',
   historyOpenMapsAccessibility: 'فتح {{place}} في الخرائط',
   latestBadge: 'الأحدث',
@@ -31,6 +34,8 @@ export const location = {
   locationBannerTitle: 'تفعيل الموقع',
   locationBannerBody:
     'يرغب أحد الوالدين في معرفة موقع هذا الجهاز للتأكد من وصولك بأمان.',
+  locationBannerBodySharingOff:
+    'مشاركة الموقع مغلقة الآن، فلا يُرسَل أي شيء. السماح هنا يعني أنها ستعمل فورًا إذا شغّلها والدك أو والدتك لاحقًا.',
   allowLocationButton: 'السماح بالموقع',
   locationNotAllowed:
     'لم يتم منح إذن الموقع بعد. افتح الإعدادات ← KidGate ← الموقع (أو فعّل خدمات الموقع أولاً). إذا لم يظهر خيار "الموقع"، فاختر "السماح بالموقع" مرة أخرى.',
@@ -49,4 +54,21 @@ export const location = {
   mapUnavailable:
     'الخريطة غير متاحة. يُرجى التحقق من اتصال الإنترنت والمحاولة مرة أخرى.',
   historyShowMore: 'عرض {{count}} أماكن إضافية',
+  childSharingHint: 'ينطبق على كل جهاز مخصص لـ {{childName}}.',
+  childNoCapableDevices: 'لا يمكن لأي جهاز من أجهزة {{childName}} الإبلاغ عن الموقع.',
+  childCarriedQuestion: 'أي جهاز يرافق {{childName}}؟',
+  childCarriedHint:
+    'يُقرأ الموقع من ذلك الجهاز. قد يرسل الجهاز اللوحي المتروك في المنزل موقعًا أحدث من الهاتف في الحقيبة، لذلك لا يخمّن KidGate أبدًا.',
+  childDevicesOnline: '{{online}} من {{total}} متصل',
+  childNoneOnline: 'لا يوجد جهاز متصل',
+  childPickCarried: 'بحوزته',
+  childPickCarriedA11y: 'تعيين {{deviceName}} كالجهاز الذي يحمله {{childName}}',
+  stayRange: '{{from}} – {{to}}',
+  placeTotalsTitle: 'الوقت في أماكنك',
+  placeTotalsNote:
+    'من سجل المواقع لآخر {{count}} يومًا. تُحتسب الأماكن المحفوظة هنا فقط.',
+  placeTotalsNote_one: 'من سجل المواقع لآخر يوم واحد. تُحتسب الأماكن المحفوظة هنا فقط.',
+  placeTotalsNote_two: 'من سجل المواقع لآخر يومين. تُحتسب الأماكن المحفوظة هنا فقط.',
+  placeTotalsNote_few:
+    'من سجل المواقع لآخر {{count}} أيام. تُحتسب الأماكن المحفوظة هنا فقط.',
 } as const;

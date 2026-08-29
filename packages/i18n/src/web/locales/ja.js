@@ -335,15 +335,44 @@ export default {
 
   webCat: {
     adult: 'アダルト',
+    selfHarm: '自傷・摂食障害',
     gambling: 'ギャンブル',
+    gameGambling: 'ルートボックス・スキン賭博',
     dating: '出会い系',
+    strangerChat: '見知らぬ人とのチャット',
     drugs: '薬物・アルコール',
-    violence: '暴力・過激思想',
+    violence: '暴力・グロ',
+    extremism: '過激思想・ヘイト',
     piracy: '海賊版',
     social: 'SNS',
     videoStreaming: '動画配信',
+    music: '音楽',
     gaming: 'ゲーム',
     shopping: 'ショッピング',
+    aiCompanion: 'AIコンパニオン',
+    aiAssistant: 'AIアシスタント',
+    cryptoTrading: '暗号資産・取引',
+    vpn: 'VPNアプリ',
+  },
+
+  appCat: {
+    adult: 'アダルト',
+    gambling: 'ギャンブル',
+    gameGambling: 'ルートボックス・スキン賭博',
+    dating: '出会い系',
+    drugs: '薬物・アルコール',
+    violence: '暴力・グロ',
+    piracy: '海賊版',
+    bypass: 'フィルター回避・VPN',
+  },
+
+  webCatGroup: {
+    harm: '有害なコンテンツ',
+    contact: '見知らぬ人',
+    bypass: 'フィルターの回避',
+    ai: 'AI',
+    entertainment: '娯楽・SNS',
+    money: '買い物・お金',
   },
 
   dash: {
@@ -353,9 +382,11 @@ export default {
     tabSafety: '安全',
     tabControls: 'コントロール',
     tabReport: '週次レポート',
+    tabReportNew: '新しい週次レポート',
 
     children: '子ども',
     noChildren: 'まだ子どものデバイスが接続されていません。',
+    unassignedDevices: '未割り当て',
     manage: '管理',
     parents: '保護者 {{count}} 人',
     devices: '子どものデバイス {{count}} 台',
@@ -367,6 +398,8 @@ export default {
     statusOnline: 'オンライン',
     statusOffline: 'オフライン',
     statusLocked: 'ロック中',
+    statusLockSent: 'ロック送信済み',
+    statusLockNotApplied: 'ロック未適用',
 
     stateAllowed: '許可済み',
     stateDenied: 'オフ',
@@ -376,6 +409,10 @@ export default {
     stateUnknown: '不明',
 
     lastActive: '最終アクティブ {{when}}',
+    appVersion: 'アプリのバージョン',
+    appVersionUpdate: '{{running}} · {{latest}} が利用可能',
+    appVersionRestart: '{{running}} · アプリを再起動して完了',
+    buildOutdated: 'アップデートあり',
     checkIn: 'チェックイン',
     sending: '送信中…',
     lockDevice: 'デバイスをロック',
@@ -410,6 +447,10 @@ export default {
 
     cardScreenTime: 'スクリーンタイム',
     cardScreenTimeSub: '直近 14 日間、1 日の上限との比較',
+    usageSyncNote:
+      'スクリーンタイムがこの画面に反映されるまで数分かかることがあります。デバイスがインターネットに接続していない場合や、予期せず終了した場合は、さらに時間がかかることがあります。',
+    usageSyncNoteTv:
+      'このテレビは定期的にしか通信しないため、スクリーンタイムがこの画面に反映されるまで最大30分かかることがあります。インターネットに接続していない場合はさらに時間がかかります。',
     cardRecent: '最近のアクティビティ',
     cardRecentSub: '新しい順',
     cardRecentEmpty:
@@ -424,8 +465,6 @@ export default {
     attnReason: '「{{reason}}」· {{when}}',
     attnCheckInMissed: 'チェックインが未応答でした',
     attnCheckInMissedMeta: '送信 {{when}} · 応答なし',
-    attnPermissionOff: '{{permission}} がオフになっています',
-    attnPermissionOffMeta: '子どものデバイスで戻すまで、保護は弱いままです',
     attnLimitReached: '1 日の上限に達しました — デバイスをロックしました',
     attnLimitReachedMeta: '今日 {{used}} 使用',
     attnBatteryLow: 'バッテリー残量が少なくなっています（{{level}}%）',
@@ -456,6 +495,8 @@ export default {
 
     appUsageTitle: '今日のアプリ使用状況',
     appUsageSub: 'アプリごとの使用時間',
+    topAppsOther: 'その他のアプリ',
+    underAMinute: '1分未満',
     appUsageEmpty: 'アプリの利用はまだ報告されていません。',
     appBlockingTitle: 'アプリのブロック',
     appBlockingSub: '保護者 PIN を使って子どものデバイスで選択します',
@@ -468,6 +509,22 @@ export default {
     webActivityTitle: 'ウェブの利用状況',
     webActivitySub: '訪問の多いドメイン、直近 30 日間',
     webActivityEmpty: 'ウェブの利用履歴はまだありません。',
+    inventoryTitle: 'インストール済みのアプリ',
+    inventorySub: '変化があったものだけでなく、この端末のすべて',
+    inventoryEmpty: 'この端末はまだアプリ一覧を送信していません。',
+    inventoryStale:
+      'この一覧は古くなっています。端末が次に接続したときに更新されます。',
+    inventoryFirstScan: '初回のスキャンのため、いつ追加されたかは分かりません。',
+    inventoryFlagged: '確認する価値あり',
+    inventoryFlaggedLabel: '要確認',
+    inventoryOtherLabel: '判別済み',
+    inventoryUnknownLabel: '未判別',
+    inventoryIncomplete:
+      'ホーム画面にアイコンがないアプリはここに表示されないことがあります。',
+    webActivitySyncNote:
+      'ウェブの利用状況がこの画面に反映されるまで数分かかることがあります。デバイスがインターネットに接続していない場合や、予期せず終了した場合は、さらに時間がかかることがあります。',
+    webActivitySyncNoteTv:
+      'このテレビは定期的にしか通信しないため、ウェブの利用状況がこの画面に反映されるまで最大30分かかることがあります。インターネットに接続していない場合はさらに時間がかかります。',
     colDomain: 'ドメイン',
     colVisits: '訪問',
     colBlocked: 'ブロック',
@@ -475,15 +532,21 @@ export default {
     filterRefusedTitle: 'フィルタが拒否した内容',
     filterRefusedSub: 'ブロックした照会 {{count}} 件、直近 30 日間',
     nothingBlockedYet: 'まだ何もブロックされていません。',
+    rollupNoteAi:
+      '一部はサイト名からの推定で、既知のサイトとの照合ではありません。外れているものもあります。',
     filterHintIos:
       'iOS ではフィルタに Apple のアダルトコンテンツ制限を使います。カテゴリ別のブロックは Android のみです。',
     filterHintAndroid: 'カテゴリはデバイス内の DNS フィルタが適用します。',
+    filterHintMacos: 'カテゴリは Mac 上の KidGate コンテンツフィルタが適用します。',
 
     locationTitle: '位置情報',
     locationSharingOff: '共有はオフです',
+    locationSyncNote:
+      '位置情報が更新されるまで数分かかることがあります。デバイスがインターネットに接続していない場合や、予期せず終了した場合は、さらに時間がかかることがあります。',
     locationUpdated: '更新 {{when}}',
     locationWaiting: '最初の更新を待っています',
     lastKnownLocation: '最後に分かった位置',
+    nearPlace: '{{place}}の近く',
     noPlaces:
       '保存された場所はまだありません。アプリで追加すると、子どもの到着・出発を通知で受け取れます。',
     placeRadius: '{{meters}} m · ',
@@ -521,6 +584,10 @@ export default {
     limitScaleMax: '8 時間',
     limitHint:
       'ごほうびタスクや承認した延長申請のボーナス時間は、その日に限って上乗せされます。',
+    limitShared: 'すべてのデバイス共通',
+    limitSharedSpent: '今日は {{limit}} のうち {{used}} を使用',
+    limitSharedHint:
+      'これはお子さまの一日全体で、この端末だけの上限ではありません。ほかの端末が使わなかった分が各端末に回ります。変更は KidGate アプリから行えます。',
     whatsOnTitle: 'オンになっている機能',
     whatsOnSub: '変更は子どものデバイスに同期されます',
     rowBlockedHours: '利用禁止時間',
@@ -534,6 +601,8 @@ export default {
     rowWebFilter: 'ウェブフィルタ',
     rowWebFilterDesc: '{{count}} カテゴリを拒否',
     rowNotSupported: 'このデバイスでは対応していません',
+    rowWebFilterAwaitingApproval: 'デバイスでの承認待ちです',
+    rowWebFilterSwitchedOff: 'デバイスでオフになっています',
     rowLocation: '位置情報の共有',
     rowLocationDesc: '最終更新 {{when}}',
     rowLocationNone: 'まだ位置情報がありません',
@@ -554,6 +623,12 @@ export default {
     rewardTaskWaiting: ' · 承認待ち',
     approve: '承認',
     approveInApp: 'KidGate アプリで承認してください',
+    siteRequestsTitle: 'サイトのリクエスト',
+    siteRequestsSub: 'この端末が許可を求めたサイト',
+    siteRequestAllow: '許可',
+    siteRequestDeny: '今はしない',
+    attnSiteRequest: '{{name}}が{{domain}}を開こうとしています',
+    toastSiteAllowed: 'サイトを許可しました',
     timelineTitle: '使った時間帯',
     timelineSub: '今日の0時から24時まで。緑はデバイスを使っていた時間です。',
   },
@@ -627,8 +702,11 @@ export default {
     emptyBody:
       'レポートは毎週日曜の夜に届きます。今週分は今すぐ作成でき、直近 7 日間が対象です。',
     noUsage:
-      '過去 2 週間はスクリーンタイムが記録されていないため、まだ報告できることがありません。電源が入っていないデバイスは何も報告しませんが、それは穏やかな一週間とは異なります。',
+      '過去 2 週間はスクリーンタイムが記録されていないため、まだ報告できることがありません。オフラインのデバイスは何も報告しませんが、それは穏やかな一週間とは異なります。',
     rateLimited: '試行が多すぎます。1 分ほどお待ちください。',
+    loadFailedTitle: 'レポートを読み込めません',
+    loadFailed: 'レポートを開けませんでした。ページを再読み込みしてください。',
+    retryLoad: 'もう一度試す',
     failed: 'レポートを作成できませんでした。少し経ってからもう一度お試しください。',
     existed: '今週のレポートはすでにあります。こちらです。',
     childrenTitle: 'お子さまごと',

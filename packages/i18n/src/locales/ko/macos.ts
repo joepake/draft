@@ -18,10 +18,10 @@ export const macos = {
 
   lockState: '기기 잠금',
   lockStateNo: '아니요',
-  lockStateNotChecked: '아직 확인되지 않음',
+  stateNotChecked: '아직 확인되지 않음',
   lockStateParent: '예 — 부모가 잠갔습니다',
   lockStateSchedule: '예 — 차단 시간',
-  lockStateDailyLimit: '예 — 일일 사용 제한 도달',
+  lockStateDailyLimit: '예 — 일일 제한 도달',
 
   appBlocking: '앱 차단',
   appBlockingBestEffort:
@@ -30,9 +30,34 @@ export const macos = {
   webFilterLabel: '웹 필터',
   webFilterUnavailable: '이 Mac에서는 사용할 수 없습니다',
   notSupportedOnThisDevice: '이 기기에서는 지원되지 않습니다',
+  filterAwaitingApproval: '시스템 설정에서 승인 대기 중',
+  filterSwitchedOff: '시스템 설정에서 꺼져 있음',
+  filterInterrupted: '문제로 중지됨 — KidGate가 다시 켭니다',
+  setupFilterApprovalBody: '웹 필터링을 시작하려면 네트워크 확장에서 KidGate를 켜세요.',
+  setupFilterSwitchBody:
+    'KidGate의 Filter Network Content가 꺼져 있습니다. 계속 필터링하려면 다시 켜세요.',
+  setupOpenSettings: '설정 열기',
+  setupTitle: '이 기기 설정 마치기',
+  setupRowLabel: '권한',
+  setupRowHint: '이 기기에서 아직 허용해야 할 항목을 확인합니다.',
+  setupStepBlockedNoPrompt:
+    '거부되었고 이 기기는 다시 묻지 않습니다 — 설정 → ‘개인정보 보호 및 보안’에서 KidGate를 켜세요.',
+  setupSubtitle:
+    '시스템은 아래 항목마다 권한을 묻고, 지금 이 기기를 쓰는 사람만 허용할 수 있어요. 지금 끝내 두면 나중에 아이에게 묻지 않습니다.',
+  setupStepFilterApprovalTitle: '웹 필터 승인',
+  setupStepFilterSwitchTitle: 'Filter Network Content',
+  setupStepFilterSwitchWaiting: '위 단계가 승인되면 시스템 설정에 나타납니다.',
+  setupStepLocationBody:
+    '가족이 이 기기의 위치를 볼 수 있게 합니다. ‘위치 공유’를 켜기 전까지는 아무것도 공유되지 않습니다.',
+  setupStepCameraTitle: '카메라',
+  setupStepCameraBody:
+    '아이가 SOS를 보내거나 체크인에 답할 때 사진을 함께 보냅니다. 지금은 사진을 찍지 않습니다.',
+  setupStepDone: '설정 완료 — 여기서 더 할 일은 없습니다.',
+  setupStepBlocked:
+    '이전에 거부했습니다. macOS는 한 번만 묻습니다 — ‘개인정보 보호 및 보안’에서 KidGate를 켜세요.',
 
   scheduleLabel: '차단 시간',
-  dailyLimitLabel: '일일 사용 제한',
+  dailyLimitLabel: '일일 제한',
   enforcedHere: '켜짐, KidGate가 적용 중',
 
   screenTimeLabel: '스크린 타임',

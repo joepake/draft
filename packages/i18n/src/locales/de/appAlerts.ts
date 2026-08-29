@@ -1,7 +1,7 @@
 export const appAlerts = {
   title: 'App-Warnungen',
   fallbackDeviceName: 'Kindergerät',
-  heroTitle: 'App-Installationen und -Löschungen im Blick',
+  heroTitle: 'App-Installationen und -Deinstallationen im Blick',
   heroSubtitle:
     'KidGate überwacht App-Installationen und -Deinstallationen auf diesem Gerät und hält sie in den Aktivitäten fest.',
   statusOn: 'Überwachung aktiv',
@@ -17,4 +17,6 @@ export const appAlerts = {
   infoLine3:
     'Sieh dir die Liste hier an und blockiere riskante Apps unter Blockierte Apps.',
   recentTitle: 'Letzte Änderungen',
+  statInstalled: 'Installiert',
+  statRemoved: 'Entfernt',
 } as const;

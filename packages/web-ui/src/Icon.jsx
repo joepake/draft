@@ -21,7 +21,7 @@
 
 import { iconParts, ICON_STROKE_WIDTH, ICON_VIEWBOX } from '@kidgate/tokens/icons';
 
-export { ICON_NAMES, platformIcon } from '@kidgate/tokens/icons';
+export { ICON_NAMES, platformIcon, deviceGlyph } from '@kidgate/tokens/icons';
 
 /**
  * A filled part takes the colour as ink rather than as an outline — the

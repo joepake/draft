@@ -32,36 +32,71 @@ export function useFamilyReports(familyId) {
   const [loading, setLoading] = useState(true);
   const [generating, setGenerating] = useState(false);
   const [error, setError] = useState(null);
+  /**
+   * A failed *read*, kept apart from a failed *write* — the same split the
+   * phone's copy of this hook makes, and for the same reason.
+   *
+   * The two lead to opposite offers. A generation that failed is retried by
+   * pressing the button again. A read that failed means the panel does not
+   * know whether this week already has a report, so putting "No report yet"
+   * and a write button in front of a parent invites them to spend a model call
+   * on a week that already has one they simply cannot see. Reloading the page
+   * is the retry.
+   */
+  const [loadFailed, setLoadFailed] = useState(false);
+
+  /**
+   * `isActive` rather than a bare flag in the effect, so the retry button can
+   * call this too. A read for a family the parent has since switched away from
+   * must not land on top of the current one's.
+   */
+  const load = useCallback(
+    async (isActive = () => true) => {
+      if (!familyId) {
+        setReports([]);
+        setLoading(false);
+        return;
+      }
+      setLoading(true);
+      try {
+        const rows = await familyReportRepository.fetchRecent(familyId);
+        if (!isActive()) return;
+        setReports(rows);
+        setError(null);
+        setLoadFailed(false);
+      } catch (e) {
+        // Still soft — no error screen over the whole family. But it says a
+        // read failed rather than rendering "no report yet" over a document
+        // that is sitting in Firestore; that silence is what made a rules
+        // denial look like an empty history on both this dashboard and the
+        // phone.
+        if (!isActive()) return;
+        const reason = e?.code || e?.message || 'unknown';
+        console.warn('[kidgate] reports read failed:', reason);
+        setReports([]);
+        // The code rides along for the same reason it does on the phone: three
+        // different failures render one sentence otherwise.
+        setError(`${t('report.loadFailed')} (${reason})`);
+        setLoadFailed(true);
+      } finally {
+        if (isActive()) setLoading(false);
+      }
+    },
+    [familyId],
+  );
 
   useEffect(() => {
-    if (!familyId) {
-      setReports([]);
-      setLoading(false);
-      return undefined;
-    }
-
-    let cancelled = false;
-    setLoading(true);
-
-    familyReportRepository
-      .fetchRecent(familyId)
-      .then(rows => !cancelled && setReports(rows))
-      .catch(e => {
-        // Soft, like every other side panel in this dashboard: a collection
-        // this account cannot read yet must degrade to an empty tab, not to an
-        // error screen over the whole family.
-        if (cancelled) return;
-        console.warn('[kidgate] reports read failed:', e?.code || e?.message);
-        setReports([]);
-      })
-      .finally(() => !cancelled && setLoading(false));
-
+    let active = true;
+    void load(() => active);
     return () => {
-      cancelled = true;
+      active = false;
     };
-  }, [familyId]);
+  }, [load]);
 
   const generate = useCallback(async () => {
+    if (!familyId) {
+      return;
+    }
     setGenerating(true);
     setError(null);
     try {
@@ -70,7 +105,14 @@ export function useFamilyReports(familyId) {
       // the language they are reading. Omitting it falls back server-side to
       // whatever the account was set to, which is right for the Sunday send and
       // wrong here.
-      const { report } = await familyReportRepository.generateNow(getLanguage());
+      const { report } = await familyReportRepository.generateNow(
+        familyId,
+        getLanguage(),
+        // Test phase: every press rewrites the week, so prompt changes are
+        // visible without waiting for a new week key. Drop with the button
+        // when reports become schedule-only.
+        { regenerate: true },
+      );
       setReports(existing => {
         const rest = existing.filter(entry => entry.periodKey !== report.periodKey);
         return [report, ...rest].sort((a, b) => b.periodKey.localeCompare(a.periodKey));
@@ -80,7 +122,7 @@ export function useFamilyReports(familyId) {
     } finally {
       setGenerating(false);
     }
-  }, []);
+  }, [familyId]);
 
-  return { reports, loading, generating, error, generate };
+  return { reports, loading, generating, error, loadFailed, generate, reload: load };
 }

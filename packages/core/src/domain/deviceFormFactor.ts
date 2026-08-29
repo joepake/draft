@@ -28,6 +28,12 @@ export interface HardwareIdentity {
    * layout the device actually runs.
    */
   isTablet?: boolean | null;
+  /**
+   * Android inside ChromeOS's ARC container (`org.chromium.arc` /
+   * `android.hardware.type.pc`). Trusted over `isTablet`, which ARC answers
+   * "yes" to — the width bucket is tablet-sized, and the machine is a laptop.
+   */
+  isChromebook?: boolean | null;
 }
 
 const APPLE_TABLET = /^ipad/i;
@@ -54,6 +60,10 @@ export function resolveDeviceFormFactor(
   // The desktop agent probes that; this module has no fact to decide it with.
   if (platform === 'macos' || platform === 'windows') {
     return undefined;
+  }
+
+  if (platform === 'android' && identity.isChromebook === true) {
+    return 'laptop';
   }
 
   if (typeof isTablet === 'boolean') {
@@ -91,7 +101,12 @@ export function platformLabelKey(
     case 'android':
       // No separate word for an Android tablet: the platform name is what the
       // vendors themselves print, and "Android tablet" would be ours alone.
-      return 'family.android';
+      // A laptop form factor on Android is the ARC install on a Chromebook —
+      // "Chromebook" is the word the vendor prints on the lid.
+      return formFactor === 'laptop' ? 'family.chromebook' : 'family.android';
+    case 'chromeos':
+      // The browser-extension surface (`apps/extension`) on the same machine.
+      return 'family.chromebook';
     case 'macos':
       return 'family.mac';
     case 'windows':

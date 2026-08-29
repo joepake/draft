@@ -2,6 +2,7 @@ export const activities = {
   title: 'Actividad',
   subtitleAllDevices: 'Últimos eventos de todos los dispositivos',
   subtitleTimelineForDevice: 'Cronología de {{deviceName}}',
+  subtitleTimelineForChild: 'Cronología de {{childName}}',
   fallbackDeviceName: 'dispositivo',
   liveBadge: 'En vivo',
   errorTitle: 'No se pudo cargar la actividad',
@@ -39,27 +40,42 @@ export const activities = {
   activityTypePlaceExit: 'Salió de un lugar',
   activityTypeTamper: 'Protección',
   activityTypeScreenTime: 'Tiempo de uso',
+  activityTypeWebFilter: 'Filtro web',
   activityTypeEmergency: 'Emergencia',
   activityTypeUnknown: 'Actividad',
 
+  sosEscapeTitle: 'Desbloqueo de emergencia',
+  sosEscapeBody: 'El SOS desbloqueó este dispositivo durante {{minutes}} minutos.',
+  sosEscapeRepeatTitle: 'Desbloqueo de emergencia ({{count}} hoy)',
+  sosEscapeRepeatBody:
+    'El SOS desbloqueó este dispositivo durante {{minutes}} minutos. Van {{count}} veces hoy.',
   appBlockedTitle: '{{appName}}',
   appBlockedBody: 'Se abrió una app bloqueada y KidGate la cerró.',
-  appInstalledTitle: '{{appName}}',
-  appInstalledBody: 'Se instaló una nueva aplicación en el dispositivo del menor.',
+  appInstalledTitle: 'Aplicación instalada',
+  appInstalledBody: 'Se instaló la aplicación {{appName}} en el dispositivo del niño.',
 
-  appRemovedTitle: '{{appName}}',
-  appRemovedBody: 'Se desinstaló una aplicación del dispositivo del menor.',
+  messageAlertTitle: 'Contenido de mensaje preocupante',
+  messageAlertBody: 'Se detectó una palabra marcada en {{appName}}.',
+  messageAlertBodyOutgoing:
+    'Se detectó una palabra marcada en un mensaje que tu hijo escribió en {{appName}}.',
+  activityTypeMessageAlert: 'Alerta de mensaje',
+  messageCheckedTitle: 'Revisado, nada preocupante',
+  messageCheckedBody:
+    'Apareció una palabra vigilada en {{appName}} y resultó inofensiva en su contexto.',
+  activityTypeMessageChecked: 'Revisado',
+  appRemovedTitle: 'Aplicación desinstalada',
+  appRemovedBody: 'Se desinstaló la aplicación {{appName}} del dispositivo del niño.',
 
   placeEnterTitle: 'Entró en {{placeName}}',
-  placeEnterBody: 'El dispositivo del menor entró en un lugar guardado.',
+  placeEnterBody: 'El dispositivo del niño entró en un lugar guardado.',
 
   placeExitTitle: 'Salió de {{placeName}}',
-  placeExitBody: 'El dispositivo del menor salió de un lugar guardado.',
+  placeExitBody: 'El dispositivo del niño salió de un lugar guardado.',
 
   tamperTitle: 'Se desactivó un permiso de protección',
   tamperFallbackTitle: 'Se desactivó un permiso de protección',
   tamperFallbackBody:
-    'Se desactivó un permiso de protección en el dispositivo del menor.',
+    'Se desactivó un permiso de protección en el dispositivo del niño.',
 
   tamperOverlayTitle: 'Se desactivó el permiso Mostrar sobre otras aplicaciones',
   tamperOverlayBody:
@@ -70,15 +86,15 @@ export const activities = {
     'El bloqueo de aplicaciones y la aplicación de restricciones pueden verse afectados hasta que Accesibilidad vuelva a activarse.',
   tamperUsageAccessTitle: 'Se desactivó el acceso al uso de aplicaciones',
   tamperUsageAccessBody:
-    'Los límites de aplicaciones y las Horas bloqueadas pueden dejar de funcionar hasta que KidGate vuelva a medir el uso de aplicaciones en el dispositivo del menor.',
+    'Los límites de aplicaciones y las Horas bloqueadas pueden dejar de funcionar hasta que KidGate vuelva a medir el uso de aplicaciones en el dispositivo del niño.',
   // iOS and Android name this permission differently; the neutral pair
   // above is what old events fall back to. See utils/tamperAlerts.ts.
   tamperScreenTimeIosTitle: 'Se desactivó el acceso a Tiempo de uso',
   tamperScreenTimeIosBody:
-    'Los límites de aplicaciones y las Horas bloqueadas pueden dejar de funcionar hasta que se vuelva a permitir el acceso a Tiempo de uso en el dispositivo del menor.',
+    'Los límites de aplicaciones y las Horas bloqueadas pueden dejar de funcionar hasta que se vuelva a permitir el acceso a Tiempo de uso en el dispositivo del niño.',
   tamperUsageAccessAndroidTitle: 'Se desactivó el Acceso de uso',
   tamperUsageAccessAndroidBody:
-    'Los límites de aplicaciones y las Horas bloqueadas pueden dejar de funcionar hasta que se vuelva a activar el Acceso de uso para KidGate en el dispositivo del menor.',
+    'Los límites de aplicaciones y las Horas bloqueadas pueden dejar de funcionar hasta que se vuelva a activar el Acceso de uso para KidGate en el dispositivo del niño.',
 
   tamperBatteryTitle: 'Se desactivó el uso de batería sin restricciones',
   tamperBatteryBody:
@@ -98,7 +114,7 @@ export const activities = {
 
   tamperCameraTitle: 'Se desactivó la cámara',
   tamperCameraBody:
-    'Las fotos de SOS y Check-In pueden no enviarse hasta que se vuelva a permitir el acceso a la cámara.',
+    'Las fotos de SOS y Check-in pueden no enviarse hasta que se vuelva a permitir el acceso a la cámara.',
 
   tamperBackgroundRefreshTitle: 'Se desactivó la Actualización en segundo plano',
   tamperBackgroundRefreshBody:
@@ -106,7 +122,7 @@ export const activities = {
 
   tamperDeviceClockTitle: 'Se cambió la fecha o la hora',
   tamperDeviceClockBody:
-    'El reloj de este dispositivo ya no coincide con la hora correcta. El Tiempo de uso y las Horas Bloqueadas seguirán usando la hora correcta.',
+    'El reloj de este dispositivo ya no coincide con la hora correcta. El Tiempo de uso y las Horas bloqueadas seguirán usando la hora correcta.',
 
   /** @deprecated legacy description keys — kept for old activity docs */
   tamperOverlay: 'Se desactivó el permiso Mostrar sobre otras aplicaciones.',
@@ -120,10 +136,13 @@ export const activities = {
   tamperBackgroundRefresh: 'Se desactivó la Actualización en segundo plano.',
 
   filterAllDevices: 'Todos los dispositivos',
+  // The child tier of the feed filter — "All" would read as all devices.
+  filterAllChildren: 'Todos',
   dateToday: 'Hoy',
   dateYesterday: 'Ayer',
 
   filterByDevice: 'Filtrar por {{label}}',
+  filterByChild: 'Mostrar solo a {{label}}',
 
   openFullSosHistory: 'Abrir el historial completo de SOS',
 

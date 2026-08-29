@@ -20,7 +20,7 @@ export const macos = {
 
   lockState: 'Cihaz kilitli',
   lockStateNo: 'Hayır',
-  lockStateNotChecked: 'Henüz kontrol edilmedi',
+  stateNotChecked: 'Henüz kontrol edilmedi',
   lockStateParent: 'Evet — bir ebeveyn kilitledi',
   lockStateSchedule: 'Evet — Engellenen Saatler',
   lockStateDailyLimit: 'Evet — Günlük Limit doldu',
@@ -32,6 +32,33 @@ export const macos = {
   webFilterLabel: 'Web filtresi',
   webFilterUnavailable: 'Bu Mac’te kullanılamıyor',
   notSupportedOnThisDevice: 'Bu cihazda desteklenmiyor',
+  filterAwaitingApproval: 'System Settings’te onay bekleniyor',
+  filterSwitchedOff: 'System Settings’te kapatıldı',
+  filterInterrupted: 'Bir sorundan sonra durdu — KidGate geri yükleyecek',
+  setupFilterApprovalBody:
+    'Web filtrelemenin başlaması için Ağ Uzantıları bölümünde KidGate’i açın.',
+  setupFilterSwitchBody:
+    'KidGate için Filter Network Content kapalı. Filtrelemeye devam etmek için tekrar açın.',
+  setupOpenSettings: 'Ayarları aç',
+  setupTitle: 'Bu cihazın kurulumunu tamamlayın',
+  setupRowLabel: 'İzinler',
+  setupRowHint: 'Bu cihazda izin verilmesi gereken neler kaldığını görün.',
+  setupStepBlockedNoPrompt:
+    'Reddedildi ve bu cihaz bir daha sormuyor — KidGate’i Ayarlar → Gizlilik ve güvenlik bölümünde açın.',
+  setupSubtitle:
+    'Sistem bunların her biri için izin ister ve yalnızca bu cihazı o an kullanan kişi izin verebilir. Şimdi halletmek, sorunun sonradan çocuğunuza sorulmasını önler.',
+  setupStepFilterApprovalTitle: 'Web filtrelemeyi onaylayın',
+  setupStepFilterSwitchTitle: 'Filter Network Content',
+  setupStepFilterSwitchWaiting:
+    'Yukarıdaki adım onaylandığında System Settings’te görünür.',
+  setupStepLocationBody:
+    'Ailenizin bu cihazın nerede olduğunu görmesini sağlar. Siz “Konumu paylaş”ı açana kadar hiçbir şey paylaşılmaz.',
+  setupStepCameraTitle: 'Kamera',
+  setupStepCameraBody:
+    'Çocuğunuz SOS gönderdiğinde veya bir Check-In’i yanıtladığında fotoğraf ekler. Şimdi fotoğraf çekilmez.',
+  setupStepDone: 'Kuruldu — burada yapılacak başka bir şey yok.',
+  setupStepBlocked:
+    'Daha önce reddedildi. macOS yalnızca bir kez sorar — KidGate’i Privacy & Security bölümünde açın.',
 
   scheduleLabel: 'Engellenen Saatler',
   dailyLimitLabel: 'Günlük Limit',

@@ -6,5 +6,5 @@ export const themeStyles = {
   classic: 'Klasik',
   classicHint: 'Serin, sade ve odaklı.',
   sweet: 'Tatlı',
-  sweetHint: 'Sıcak pasteller, yumuşak ve neşeli.',
+  sweetHint: 'Sıcak pastel tonlar, yumuşak ve neşeli.',
 } as const;

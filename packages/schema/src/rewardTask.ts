@@ -39,6 +39,21 @@ export const REWARD_STARS_THRESHOLD_MINUTES = [15, 45] as const;
 
 export interface RewardTask {
   id: string;
+  /**
+   * The PERSON this task belongs to — the child-level shape (2026-08-26).
+   * Absent on tasks created per-device before it existed; those keep behaving
+   * exactly as they did. A task carrying this is visible to every device
+   * assigned to the child, and `deviceId` below is re-aimed at claim time.
+   */
+  childId?: string;
+  /** The child's name at creation, for rows and pushes. */
+  childName?: string;
+  /**
+   * For a legacy task: the one device it was created for. For a child-level
+   * task: empty until claimed, then THE DEVICE THAT CLAIMED IT — which is
+   * where the approval's bonus minutes land, since the daily limit is still
+   * per-device.
+   */
   deviceId: string;
   deviceName: string;
   title: string;

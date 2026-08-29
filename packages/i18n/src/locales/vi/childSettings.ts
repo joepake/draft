@@ -17,4 +17,7 @@ export const childSettings = {
   uninstallProtectionHintOff: 'Đang tắt. Có thể gỡ KidGate khỏi máy này.',
   uninstallProtectionTurnedOff: 'Đã tắt chống gỡ cài đặt.',
   uninstallProtectionFailed: 'Không đổi được chống gỡ cài đặt.',
+  messageSafetySectionTitle: 'Nhắn tin an toàn',
+  messageSafetySectionDescription:
+    'Cấp quyền tại đây. Việc bật hay tắt là quyết định của bố mẹ, từ máy của họ.',
 } as const;

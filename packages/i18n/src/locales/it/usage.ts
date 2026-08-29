@@ -1,5 +1,5 @@
 export const usage = {
-  title: 'Rapporto di utilizzo',
+  title: 'Report di utilizzo',
   fallbackDeviceName: 'Dispositivo del bambino',
   sectionToday: 'Oggi',
   percentOfLimit: '{{percent}}% del limite',
@@ -37,7 +37,7 @@ export const usage = {
   activityEmpty:
     'Nessuna attività registrata finora. Blocchi, sblocchi e aggiornamenti di Tempo di utilizzo appariranno qui.',
   usageReportAccessibility:
-    'Rapporto di utilizzo. {{headline}}. Apri il rapporto completo.',
+    'Report di utilizzo. {{headline}}. Apri il report completo.',
   dailyLimitReached: 'Limite giornaliero raggiunto',
   minutesLeftToday: 'Oggi restano {{remaining}}',
   minutesUsedTodayShort: '{{used}} di utilizzo oggi',
@@ -51,6 +51,10 @@ export const usage = {
   overLimitChip: 'Limite superato',
   usageReportsNote:
     'Mostra tempo di utilizzo, blocchi e attività recenti per questo dispositivo.',
+  syncNote:
+    'Il tempo di schermo può richiedere alcuni minuti per comparire in questa schermata — più a lungo se il dispositivo non ha connessione a Internet o si è chiuso in modo imprevisto.',
+  syncNoteTv:
+    'Questa TV si collega solo periodicamente, quindi il tempo di schermo può richiedere fino a 30 minuti per comparire in questa schermata — più a lungo senza connessione a Internet.',
   sectionLast30Days: 'Ultimi 30 giorni',
   comparePeriodTotal: 'Totale 30 giorni',
   compareDayAvg: 'Media giornaliera',
@@ -65,9 +69,18 @@ export const usage = {
   sectionTopApps: 'App più usate',
   topAppsHint:
     'Le app più usate oggi sul dispositivo del bambino. I dati si accumulano man mano che Tempo di utilizzo / Accesso ai dati di utilizzo si sincronizza.',
+  topAppsExcludedNote:
+    'Il salvaschermo, la schermata Home e la schermata di KidGate non contano come tempo di utilizzo. Quando il dispositivo è acceso ma nessuno lo sta usando, quei minuti vengono registrati come “Non in uso”.',
+  topAppsAiNote:
+    'Alcuni tipi sono stati dedotti dal nome dell’app invece che riconosciuti, quindi qualcuno può essere sbagliato.',
   errorTitle: 'Impossibile caricare l’utilizzo',
   errorDescription: 'Controlla la connessione e riprova.',
   tryAgain: 'Riprova',
+  // Shown only when the rating is known — it is 0 for much of the long
+  // tail, and 0 does not mean "suitable for everyone".
+  appMinAge: 'Classificato {{age}}+',
+  underAMinute: 'Meno di un minuto',
+  topAppsOther: 'Altre app',
   topAppsEmpty:
     'Ancora nessun dato per app. Sul dispositivo del bambino, assicurati che KidGate possa misurare l’utilizzo delle app, quindi attendi una sincronizzazione.',
   protectionImpactTitle: 'Impatto della protezione',

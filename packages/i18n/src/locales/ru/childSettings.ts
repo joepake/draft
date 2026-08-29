@@ -17,4 +17,7 @@ export const childSettings = {
   uninstallProtectionHintOff: 'Выключено. KidGate можно удалить с этого телефона.',
   uninstallProtectionTurnedOff: 'Защита от удаления выключена.',
   uninstallProtectionFailed: 'Не удалось изменить защиту от удаления.',
+  messageSafetySectionTitle: 'Безопасность сообщений',
+  messageSafetySectionDescription:
+    'Разрешение выдаётся здесь. А включать это или нет — решают твои родители со своего телефона.',
 } as const;

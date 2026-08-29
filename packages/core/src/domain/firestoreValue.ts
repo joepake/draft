@@ -41,3 +41,20 @@ export function timestampToIso(value: unknown): string | undefined {
   }
   return undefined;
 }
+
+/**
+ * The same value as epoch milliseconds.
+ *
+ * Undefined for the same reason `timestampToIso` returns it, plus one more that
+ * matters to its first caller: a `serverTimestamp()` this device has written but
+ * the server has not yet resolved reads back as null from the local cache, and
+ * `agent/serverTimeOffset` must not mistake that for a clock reading.
+ */
+export function timestampToMillis(value: unknown): number | undefined {
+  const iso = timestampToIso(value);
+  if (iso === undefined) {
+    return undefined;
+  }
+  const millis = Date.parse(iso);
+  return Number.isFinite(millis) ? millis : undefined;
+}

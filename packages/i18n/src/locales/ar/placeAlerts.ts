@@ -1,5 +1,8 @@
 export const placeAlerts = {
   title: 'تنبيهات الأماكن',
+  familyScope: 'قائمة واحدة للعائلة كلها',
+  mergedFromDevices:
+    'دُمجت من الأماكن الموجودة على كل جهاز. الحفظ يطبّق هذه القائمة الواحدة على كل أجهزة الأطفال.',
   fallbackDeviceName: 'جهاز الطفل',
   statusReady: 'الموقع جاهز',
   statusNeedLocation: 'بانتظار موقع جهاز الطفل',
@@ -21,7 +24,10 @@ export const placeAlerts = {
   radiusLabel: 'نطاق التنبيه',
   radiusValue: '{{meters}} م',
   radiusHint:
-    'مدى قرب الجهاز اللازم لاحتساب هذا المكان. النطاق الأصغر أكثر دقة لكن يسهل تفويته.',
+    'مدى القرب المطلوب من الجهاز حتى يُحتسب هذا المكان. النطاق الأصغر من خطأ تحديد موقع الجهاز نفسه ينبّه عشوائيًا لا بدقة أكبر.',
+  radiusAccuracyHint: 'يبلّغ هذا الجهاز عن موقعه هنا بدقة تقارب ±{{accuracy}} م.',
+  radiusBelowAccuracy:
+    'دقة الجهاز هنا لا تتجاوز نحو ±{{accuracy}} م. استخدم {{minimum}} م أو أكثر، وإلا فسينبّه هذا المكان عشوائيًا.',
   radiusDecrease: 'تصغير النطاق',
   radiusIncrease: 'تكبير النطاق',
   notifyEnterLabel: 'تنبيه عند الوصول',
@@ -43,7 +49,9 @@ export const placeAlerts = {
   maxPlacesToast: 'يمكنك حفظ حتى {{max}} أماكن.',
   nameRequiredToast: 'يرجى إدخال اسم المكان.',
   duplicateNameToast: 'يوجد بالفعل مكان بهذا الاسم.',
-  duplicateLocationToast: 'يغطي مكان آخر هذا الموقع بالفعل.',
+  samePinToast: 'هذه هي نفس نقطة «{{name}}». اسحب الخريطة لتحريك الدبوس.',
+  overlapWarning:
+    'يقع «{{name}}» على بُعد {{meters}} م ونطاقه يصل إلى هنا. أثناء وجود الجهاز في المكانين، ينبّه الأقرب وحده. احفظ مرة أخرى للإبقاء عليه.',
   copyTitle: 'إضافة للأطفال الآخرين؟',
   copyMessage:
     'نسخ "{{name}}" إلى أجهزة الأطفال الأخرى البالغ عددها {{count}} في هذه العائلة؟',

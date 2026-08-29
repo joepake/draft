@@ -7,6 +7,74 @@ export const family = {
   addChildOption: 'Ajouter un appareil d’enfant',
   addJoinFamilyOption: 'Rejoindre une famille',
   addParentOption: 'Inviter un parent',
+  loginWebOption: 'Se connecter sur le web',
+  // The "who uses this device?" assignment sheet.
+  assignSheetTitle: 'Qui utilise {{deviceName}}\u00a0?',
+  assignSheetBody:
+    'Le temps d’écran et les étoiles comptent pour l’enfant que vous choisissez.',
+  assignSheetNobody: 'Personne',
+  assignSheetNobodyHint: 'Appareil partagé — ne compte pour personne.',
+  assignSheetAddAndAssign: 'Ajouter et attribuer',
+  // The "protect this child now?" starter sheet, offered right after a fresh
+  // pairing is assigned. Content pre-exists on the device; this flips it on.
+  quickProtectTitle: 'Protéger {{childName}} maintenant ?',
+  quickProtectBody:
+    'Activez un ensemble de protections de départ. Vous pourrez tout affiner plus tard dans le profil de l’enfant.',
+  quickProtectBedtime: 'Heures bloquées pour la nuit',
+  quickProtectBedtimeHint: 'Bloque l’utilisation de l’appareil la nuit, de 22 h à 7 h.',
+  quickProtectDailyLimit: 'Limite quotidienne de temps d’écran',
+  quickProtectDailyLimitHint:
+    '{{minutes}} minutes par jour, partagées entre tous ses appareils.',
+  quickProtectWebFilter: 'Filtre web',
+  quickProtectWebFilterHint:
+    'Bloque les contenus pour adultes et d’autres catégories à risque.',
+  quickProtectWebFilterPremium: 'Fonction Premium — incluse avec un abonnement.',
+  quickProtectApply: 'Activer la protection',
+  quickProtectSkip: 'Pas maintenant',
+  quickProtectDone: 'La protection est activée. Affinez-la quand vous voulez.',
+  quickProtectPartial:
+    'Certaines protections n’ont pas pu être enregistrées. Réessayez depuis le profil de l’enfant.',
+  pairDeviceFirstTitle: 'Aucun appareil associé pour le moment',
+  pairDeviceFirstBody:
+    'Associez d’abord un appareil pour cet enfant — dans l’onglet Famille, appuyez sur l’icône de scan ou « + » et choisissez « Ajouter un appareil d’enfant ». Ce réglage prend effet dès qu’un appareil se connecte.',
+  // Child-grouped family list: group header lock-all + unassigned group.
+  lockAll: 'Tout verrouiller',
+  unlockAll: 'Tout déverrouiller',
+  lockAllA11y: 'Verrouiller tous les appareils de {{childName}}',
+  unlockAllA11y: 'Déverrouiller tous les appareils de {{childName}}',
+  childDetailUnassignTitle: 'Retirer de l’enfant ?',
+  childDetailUnassignBody:
+    '{{deviceName}} ne comptera plus pour {{childName}} et passera dans Non attribué. Il reste appairé et protégé.',
+  childDetailUnassignConfirm: 'Retirer',
+  childDetailUnassignA11y: 'Retirer {{deviceName}} de cet enfant',
+  // The fold control on a group heading.
+  collapseGroupA11y: 'Réduire {{name}}',
+  expandGroupA11y: 'Développer {{name}}',
+  assignDeviceCta: 'Attribuer à un enfant…',
+  unassignedHint: 'Ces appareils ne comptent encore pour personne.',
+  unassignedHintMember:
+    'Le propriétaire de la famille attribue ces appareils aux enfants.',
+  // The footer strip: children who hold no device get no group of their own.
+  childrenWithoutDeviceTitle: 'Enfants sans appareil',
+  // Child detail screen.
+  childDetailStarsWell: 'Étoiles cette semaine',
+  childStarsA11y: 'Étoiles cette semaine : {{count}}',
+  childDetailDevicesTitle: 'Appareils',
+  childDetailAssignMore: 'Attribuer un autre appareil…',
+  childDetailAssignSheetTitle: 'Attribuer un appareil à {{childName}}',
+  childDetailNoDevices:
+    'Pas encore d’appareil. Attribuez-en un ci-dessous ou associez-en un nouveau depuis l’onglet Famille.',
+  // Same screen for a joined parent, who may pair but may not assign.
+  childDetailNoDevicesMember:
+    'Aucun appareil pour l’instant. Seul le propriétaire de la famille décide à qui appartient un appareil.',
+  childDetailEditNameTitle: 'Modifier le nom',
+  childDetailColorLabel: 'Couleur',
+  scanButtonAccessibility: 'Scanner un code',
+  scanTitle: 'Scanner un code',
+  scanBody:
+    'Pointez la caméra vers un appareil enfant, une invitation familiale ou le code affiché sur un ordinateur.',
+  manualCodeLabel: 'Saisissez le code à 6 caractères',
+  manualInstructions: 'Saisissez le code à 6 caractères affiché sur l’autre appareil.',
   headerHintEmpty: 'Gérez et protégez les appareils de vos enfants',
   headerHintGuest:
     'Parcourez librement — connectez-vous lorsque vous êtes prêt à connecter des appareils',
@@ -16,18 +84,20 @@ export const family = {
   chipDeviceCount_one: '{{count}} appareil',
   chipOnlineCount: '{{count}} en ligne',
   chipSosCount: '{{count}} SOS',
-  chipCheckInCount: '{{count}} Check-Ins',
-  chipCheckInCount_one: '{{count}} Check-In',
+  chipCheckInCount: '{{count}} Check-ins',
+  chipCheckInCount_one: '{{count}} Check-in',
   chipRequestCount: '{{count}} demandes',
   chipRequestCount_one: '{{count}} demande',
   chipNeedsSetupCount: '{{count}} à configurer',
   chipNeedsSetupCount_one: '{{count}} à configurer',
   chipProtectedCount: '{{count}} protégés',
+  childDevicesProtected: '{{count}} appareils protégés',
   chipHealthWarnCount: '{{count}} à configurer',
   chipHealthWarnCount_one: '{{count}} à configurer',
   chipHealthInactiveCount: '{{count}} hors ligne',
   chipBlockedCount: '{{count}} bloqués',
   healthProtected: 'Protégé',
+  buildOutdated: 'Mise à jour disponible',
   healthNeedsSetup: 'Configuration requise',
   healthOffline: 'Hors ligne',
 
@@ -68,7 +138,7 @@ export const family = {
   guestBenefitAlertsBody:
     'Soyez informé immédiatement lorsqu’une intervention est nécessaire.',
 
-  guestBenefitLocationTitle: 'Position et Check-Ins',
+  guestBenefitLocationTitle: 'Position et Check-ins',
   guestBenefitLocationBody:
     'Voyez où se trouve votre enfant et demandez-lui de confirmer qu’il est en sécurité.',
 
@@ -125,6 +195,7 @@ export const family = {
   mac: 'Mac',
   windowsPc: 'PC Windows',
   androidTv: 'Android TV',
+  chromebook: 'Chromebook',
 
   deviceNameRequired: 'Veuillez saisir un nom pour l’appareil.',
 
@@ -160,13 +231,17 @@ export const family = {
 
   sosNeedsAttentionNow: 'SOS — intervention requise',
 
-  waitingForCheckIn: 'En attente du Check-In',
+  waitingForCheckIn: 'En attente du Check-in',
 
   timeRequestsWaiting: '{{count}} demandes de temps en attente',
 
   timeRequestsWaiting_one: '{{count}} demande de temps en attente',
 
   youPausedThisDevice: 'Vous avez verrouillé cet appareil',
+
+  lockSentWaitingForDevice: 'Verrouillage envoyé — en attente de l’appareil',
+
+  lockNotAppliedOnDevice: 'Cet appareil n’a pas appliqué le verrouillage',
 
   blockedHoursActiveNow: 'Heures bloquées actives',
 
@@ -194,4 +269,22 @@ export const family = {
   batteryPercent: '{{percent}} %',
   batteryAccessibility: 'Batterie à {{percent}} pour cent',
   batteryChargingAccessibility: 'Batterie à {{percent}} pour cent, en charge',
+  childDetailPerDevice: 'Par appareil — choisissez lequel',
+  childDetailNotAvailable: 'Non disponible',
+  childDetailNotAvailableReason: 'Aucun de ses appareils ne le permet',
+  childDetailProtectionOk: 'Protégé',
+  childDetailProtectionAttention: '{{count}} appareils nécessitent votre attention',
+  childDetailProtectionAttention_one: '{{count}} appareil nécessite votre attention',
+  childDetailProtectionSheetTitle: 'Protection par appareil',
+  childDetailRemoveTitle: 'Retirer cet enfant',
+  childDetailRemovingButton: 'Retrait…',
+  childDetailOnlineCount: '{{online}} sur {{total}} en ligne',
+  childDetailBudgetTitle: 'Limite quotidienne',
+  childDetailSectionControls: 'Règles sur tous ses appareils',
+  childDetailSectionSafety: 'Regroupé depuis tous ses appareils',
+  childDetailSectionAlerts: 'Tous ses appareils, un seul fil',
+  childDetailScopeAll: 'Tous les appareils',
+  childDetailTodayWell: 'Utilisé aujourd’hui',
+  childDetailUnassignAction: 'Retirer',
+  childDetailLimitShared: 'Total sur tous ses appareils',
 } as const;

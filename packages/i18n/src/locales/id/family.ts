@@ -7,6 +7,72 @@ export const family = {
   addChildOption: 'Tambahkan perangkat anak',
   addJoinFamilyOption: 'Bergabung dengan keluarga',
   addParentOption: 'Undang orang tua',
+  loginWebOption: 'Masuk di web',
+  // The "who uses this device?" assignment sheet.
+  assignSheetTitle: 'Siapa yang memakai {{deviceName}}?',
+  assignSheetBody: 'Waktu layar dan bintang dihitung untuk anak yang Anda pilih.',
+  assignSheetNobody: 'Tidak ada',
+  assignSheetNobodyHint: 'Perangkat bersama — tidak dihitung untuk siapa pun.',
+  assignSheetAddAndAssign: 'Tambah dan tetapkan',
+  // The "protect this child now?" starter sheet, offered right after a fresh
+  // pairing is assigned. Content pre-exists on the device; this flips it on.
+  quickProtectTitle: 'Lindungi {{childName}} sekarang?',
+  quickProtectBody:
+    'Aktifkan serangkaian perlindungan awal. Anda bisa menyempurnakan semuanya nanti di profil anak.',
+  quickProtectBedtime: 'Jam Diblokir waktu tidur',
+  quickProtectBedtimeHint:
+    'Memblokir penggunaan perangkat sepanjang malam, pukul 22.00 sampai 07.00.',
+  quickProtectDailyLimit: 'Batas waktu layar harian',
+  quickProtectDailyLimitHint:
+    '{{minutes}} menit sehari, dihitung bersama di semua perangkatnya.',
+  quickProtectWebFilter: 'Filter web',
+  quickProtectWebFilterHint: 'Memblokir konten dewasa dan kategori berisiko lainnya.',
+  quickProtectWebFilterPremium: 'Fitur Premium — termasuk dalam paket berlangganan.',
+  quickProtectApply: 'Aktifkan perlindungan',
+  quickProtectSkip: 'Nanti saja',
+  quickProtectDone: 'Perlindungan aktif. Sempurnakan kapan saja.',
+  quickProtectPartial:
+    'Sebagian perlindungan tidak dapat disimpan. Coba lagi dari profil anak.',
+  pairDeviceFirstTitle: 'Belum ada perangkat terpasang',
+  pairDeviceFirstBody:
+    'Pasangkan perangkat untuk anak ini terlebih dahulu — dari tab Keluarga, ketuk ikon pindai atau "+" lalu pilih Tambahkan perangkat anak. Kontrol ini mulai bekerja begitu ada perangkat yang terhubung.',
+  // Child-grouped family list: group header lock-all + unassigned group.
+  lockAll: 'Kunci semua',
+  unlockAll: 'Buka kunci semua',
+  lockAllA11y: 'Kunci semua perangkat {{childName}}',
+  unlockAllA11y: 'Buka kunci semua perangkat {{childName}}',
+  childDetailUnassignTitle: 'Lepas dari anak?',
+  childDetailUnassignBody:
+    '{{deviceName}} tidak lagi dihitung untuk {{childName}} dan pindah ke Belum ditetapkan. Tetap terpasang dan terlindungi.',
+  childDetailUnassignConfirm: 'Lepas',
+  childDetailUnassignA11y: 'Lepas {{deviceName}} dari anak ini',
+  // The fold control on a group heading.
+  collapseGroupA11y: 'Ciutkan {{name}}',
+  expandGroupA11y: 'Bentangkan {{name}}',
+  assignDeviceCta: 'Tetapkan ke anak…',
+  unassignedHint: 'Perangkat ini belum dihitung untuk siapa pun.',
+  unassignedHintMember: 'Pemilik keluarga yang menetapkan perangkat ini untuk anak.',
+  // The footer strip: children who hold no device get no group of their own.
+  childrenWithoutDeviceTitle: 'Anak tanpa perangkat',
+  // Child detail screen.
+  childDetailStarsWell: 'Bintang minggu ini',
+  childStarsA11y: 'Bintang minggu ini: {{count}}',
+  childDetailDevicesTitle: 'Perangkat',
+  childDetailAssignMore: 'Tetapkan perangkat lain…',
+  childDetailAssignSheetTitle: 'Tetapkan perangkat ke {{childName}}',
+  childDetailNoDevices:
+    'Belum ada perangkat. Tetapkan di bawah atau sambungkan perangkat baru dari tab Keluarga.',
+  // Same screen for a joined parent, who may pair but may not assign.
+  childDetailNoDevicesMember:
+    'Belum ada perangkat. Hanya pemilik keluarga yang menentukan perangkat milik siapa.',
+  childDetailEditNameTitle: 'Ubah nama',
+  childDetailColorLabel: 'Warna',
+  scanButtonAccessibility: 'Pindai kode',
+  scanTitle: 'Pindai kode',
+  scanBody:
+    'Arahkan kamera ke perangkat anak, undangan keluarga, atau kode yang ditampilkan di komputer.',
+  manualCodeLabel: 'Masukkan kode 6 karakter',
+  manualInstructions: 'Masukkan kode 6 karakter yang ditampilkan di perangkat lain.',
 
   headerHintEmpty: 'Kelola dan lindungi perangkat anak Anda',
 
@@ -35,6 +101,8 @@ export const family = {
 
   chipProtectedCount: '{{count}} terlindungi',
 
+  childDevicesProtected: '{{count}} perangkat terlindungi',
+
   chipHealthWarnCount: '{{count}} perlu disiapkan',
   chipHealthWarnCount_one: '{{count}} perlu disiapkan',
 
@@ -43,6 +111,7 @@ export const family = {
   chipBlockedCount: '{{count}} diblokir',
 
   healthProtected: 'Terlindungi',
+  buildOutdated: 'Pembaruan tersedia',
   healthNeedsSetup: 'Perlu pengaturan',
   healthOffline: 'Offline',
 
@@ -97,7 +166,7 @@ export const family = {
   guestBenefitLocationTitle: 'Lokasi dan Check-In',
 
   guestBenefitLocationBody:
-    'Lihat lokasi anak Anda dan minta mereka mengonfirmasi bahwa mereka aman.',
+    'Lihat lokasi anak Anda dan minta dia mengonfirmasi bahwa dia aman.',
 
   stepsHeading: 'Langkah pertama',
 
@@ -165,6 +234,7 @@ export const family = {
   mac: 'Mac',
   windowsPc: 'PC Windows',
   androidTv: 'Android TV',
+  chromebook: 'Chromebook',
 
   deviceNameRequired: 'Masukkan nama perangkat.',
 
@@ -213,7 +283,11 @@ export const family = {
 
   youPausedThisDevice: 'Anda telah mengunci perangkat ini',
 
-  blockedHoursActiveNow: 'Jam blokir sedang aktif',
+  lockSentWaitingForDevice: 'Perintah kunci terkirim — menunggu perangkat',
+
+  lockNotAppliedOnDevice: 'Perangkat ini belum menerapkan kuncian',
+
+  blockedHoursActiveNow: 'Jam Diblokir sedang aktif',
 
   inactiveOpenKidGate: 'Tidak aktif — buka KidGate di perangkat ini',
 
@@ -227,7 +301,7 @@ export const family = {
 
   deviceLocked: 'Perangkat terkunci',
 
-  deviceUnlocked: 'Perangkat tidak terkunci',
+  deviceUnlocked: 'Kunci perangkat dibuka',
 
   parentPausedChildDevice: '{{actorName}} mengunci perangkat anak ini.',
 
@@ -239,4 +313,21 @@ export const family = {
   batteryPercent: '{{percent}}%',
   batteryAccessibility: 'Baterai {{percent}} persen',
   batteryChargingAccessibility: 'Baterai {{percent}} persen, mengisi daya',
+  childDetailPerDevice: 'Per perangkat — pilih yang mana',
+  childDetailNotAvailable: 'Tidak tersedia',
+  childDetailNotAvailableReason: 'Tidak tersedia di perangkat mana pun milik anak ini',
+  childDetailProtectionOk: 'Terlindungi',
+  childDetailProtectionAttention: '{{count}} perangkat perlu diperhatikan',
+  childDetailProtectionSheetTitle: 'Perlindungan per perangkat',
+  childDetailRemoveTitle: 'Hapus anak ini',
+  childDetailRemovingButton: 'Menghapus…',
+  childDetailOnlineCount: '{{online}} dari {{total}} online',
+  childDetailBudgetTitle: 'Batas harian',
+  childDetailSectionControls: 'Aturan di semua perangkatnya',
+  childDetailSectionSafety: 'Digabung dari semua perangkatnya',
+  childDetailSectionAlerts: 'Semua perangkatnya, satu daftar',
+  childDetailScopeAll: 'Semua perangkat',
+  childDetailTodayWell: 'Dipakai hari ini',
+  childDetailUnassignAction: 'Lepaskan',
+  childDetailLimitShared: 'Total di semua perangkatnya',
 } as const;

@@ -9,7 +9,7 @@ export const plans = {
   pillTrialActiveFallback: 'Deneme aktif',
   statusTrialEndedTitle: 'Deneme sona erdi',
   statusTrialEndedSubtitle:
-    'Günlük sınır, Engellenen saatler ve konum ücretsiz çalışmaya devam eder. Engellenen Uygulamalar, Web filtresi, uyarılar ve raporlar için abone olun.',
+    'Günlük sınır, Engellenen Saatler ve konum ücretsiz çalışmaya devam eder. Engellenen Uygulamalar, Web filtresi, uyarılar ve raporlar için abone olun.',
   pillTrialEnded: 'Deneme sona erdi',
   statusStartTrialTitle: 'Denemenizi başlatın',
   statusStartTrialSubtitle:
@@ -42,13 +42,13 @@ export const plans = {
   // app does not keep.
   featurePausePhone: 'Cihaz Kilidi',
   featureDailyLimits: 'Günlük sınır',
-  featureBlockedHours: 'Engellenen saatler',
+  featureBlockedHours: 'Engellenen Saatler',
   featureTimeRequests: 'Süre istekleri',
   featureAppBlocking: 'Engellenen Uygulamalar',
   featureWebFiltering: 'Web filtresi',
   featureSeeLocation: 'Canlı Konum',
   featureLocationHistory: 'Konum geçmişi',
-  featureCheckIn: 'Yoklama',
+  featureCheckIn: 'Check-In',
   featureSosAlerts: 'SOS uyarıları',
   featurePlaceAlerts: 'Yer uyarıları',
   featureTamperAlerts: 'Koruma uyarıları',
@@ -81,7 +81,7 @@ export const plans = {
   memberTrialActiveSubtitle:
     'Bu aile şu anda denemede. Deneme bittiğinde KidGate’i kullanmaya devam etmek için aile sahibinin abone olması gerekir.',
   memberTrialEndedSubtitle:
-    'Bu ailenin deneme süresi bitti. Günlük sınır, Engellenen saatler ve konum çalışmaya devam ediyor. Gerisi için aile sahibinden abone olmasını isteyin.',
+    'Bu ailenin deneme süresi bitti. Günlük sınır, Engellenen Saatler ve konum çalışmaya devam ediyor. Gerisi için aile sahibinden abone olmasını isteyin.',
   memberSetupTrialSubtitle:
     'Deneme, aile sahibi bir ebeveyn cihazı ve bir çocuk cihazı bağladığında başlar.',
   premiumActivatedTitle: 'Premium açıldı',
@@ -109,7 +109,7 @@ export const plans = {
   // has to name who needs to act instead of offering a button they can't use.
   familyPremiumEndedTitle: 'Bu ailenin Premium’u sona erdi',
   familyPremiumEndedBody:
-    'Günlük sınır, Engellenen saatler ve konum çalışmaya devam ediyor. Engellenen Uygulamalar, Web filtresi, uyarılar ve raporlar, aile sahibi Premium’u yenileyene kadar duraklatıldı.',
+    'Günlük sınır, Engellenen Saatler ve konum çalışmaya devam ediyor. Engellenen Uygulamalar, Web filtresi, uyarılar ve raporlar, aile sahibi Premium’u yenileyene kadar duraklatıldı.',
   pricesUnavailable: 'Fiyatlar mağazadan yüklenemedi.',
   pricesRetry: 'Tekrar dene',
   featureRewardTasks: 'Ödül görevleri',
@@ -128,4 +128,27 @@ export const plans = {
   planPeriodOnce: 'tek sefer',
   billedOnce:
     'Bir kez öde, {{devices}} çocuk cihazına kadar; KidGate sunulduğu sürece geçerli',
+  sectionFreePlan: 'Hiç abone olmazsanız',
+  devicesUnlimited: 'Sınırsız çocuk cihazı',
+  featureAppLimits: 'Uygulama Sınırları',
+  featureWebHistory: 'Web geçmişi',
+  featureWeeklyReport: 'Haftalık rapor',
+  featureChildReport: 'Çocuk başına rapor',
+  featureStarChart: 'Yıldız tablosu',
+  featureFootnoteAppLimits:
+    'Uygulama Sınırları için Android cihaz ya da Mac gerekir — Apple’ın Ekran Süresi, iPhone veya iPad’de hangi uygulamanın açık olduğunu bildirmez.',
+  sectionPlatforms: 'KidGate nerede çalışır',
+  platformIos: 'iPhone ve iPad',
+  platformIosDetail: 'Ebeveyn veya çocuk cihazı · iOS 16 ve üzeri',
+  platformAndroid: 'Android',
+  platformAndroidDetail: 'Ebeveyn veya çocuk cihazı · Android 7 ve üzeri',
+  platformMac: 'Mac',
+  platformMacDetail: 'Yalnızca çocuk cihazı · macOS 12 ve üzeri',
+  platformComingSoon: 'Yakında',
+  platformWindows: 'Windows',
+  platformWindowsDetail: 'Yalnızca çocuk cihazı · Windows 10 ve üzeri',
+  platformAndroidTv: 'Android TV',
+  platformAndroidTvDetail: 'Yalnızca çocuk cihazı · Android TV 7 ve üzeri',
+  platformChromebook: 'Chromebook',
+  platformChromebookDetail: 'Çocuk cihazı · yalnızca Chrome web filtresi',
 } as const;

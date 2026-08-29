@@ -3,7 +3,7 @@ export const pairing = {
   shareInviteMessage:
     'Entre na nossa família no KidGate: abra o app, escolha Família → Entrar na família e digite o código {{code}}. O código expira em 15 minutos.',
   shareChildCodeMessage:
-    'Conecte este dispositivo da criança no KidGate: no dispositivo do responsável, abra o KidGate → Dispositivos → + → Dispositivo da criança, depois escaneie o código QR ou digite o código {{code}}. O código expira em 5 minutos.',
+    'Conecte este dispositivo da criança no KidGate: no dispositivo do responsável, abra o KidGate → Família → Escanear código, depois escaneie o código QR ou digite o código {{code}}. O código expira em 5 minutos.',
   connectChildPhone: 'Conectar dispositivo da criança',
   parentInstructions:
     'No dispositivo da criança, abra o KidGate e escolha Este é um dispositivo da criança. Depois digite o código exibido nessa tela.',
@@ -13,13 +13,22 @@ export const pairing = {
     'Mantenha esta tela aberta. Um responsável vai conectar este dispositivo pelo app KidGate dele.',
   childCodeLabel: 'Ou compartilhe este código',
   childScanHint:
-    'Responsável: abra o KidGate → Dispositivos → + → Dispositivo da criança → escaneie o código QR ou digite o código.',
+    'Responsável: abra o KidGate → Família → {{scan}} → escaneie o código QR ou digite o código.',
   childConnecting: 'Conectado. Configurando este dispositivo…',
   childPairedTitle: 'Você está conectado',
   childPairedSubtitle: 'Configurando este dispositivo…',
   connectChild: 'Conectar dispositivo da criança',
   waitingChildConfirm:
     'Solicitação enviada. Aguardando confirmação no dispositivo da criança.',
+  waitingChildConfirmHint:
+    'No dispositivo da criança, toque em "Sim, conectar" para concluir. Você pode fechar esta tela — o pareamento continua em segundo plano.',
+  childConfirmedTitle: 'Dispositivo conectado',
+  childConfirmedBody:
+    'O dispositivo da criança confirmou o pareamento. Agora escolha quem usa esse dispositivo.',
+  childRejectedPairing:
+    'O dispositivo da criança recusou este pareamento. Gere um novo código nele e tente novamente.',
+  childConfirmExpired:
+    'O dispositivo da criança não confirmou a tempo. Peça um novo código nele e tente novamente.',
   confirmParentTitle: 'Confirmar este responsável?',
   confirmParentSubtitle:
     '{{parentLabel}} quer gerenciar este dispositivo. Aceite somente se você conhece essa pessoa.',

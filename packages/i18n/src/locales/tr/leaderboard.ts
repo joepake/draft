@@ -6,18 +6,16 @@ export const leaderboard = {
   settingsTitle: 'Yıldız tablosu',
   settingsBody: 'Çocuklarınız bu hafta her birinin kaç yıldız topladığını görebilsin.',
   childrenTitle: 'Çocuklar',
-  childrenBody:
-    'Cihazları kullanan kişiye göre gruplayın. Bir çocuk birden fazla cihaz kullanabilir.',
+  manageAccessibility: 'Çocukları ve cihazları yönet',
   addChild: 'Çocuk ekle',
+  childAdded: 'Çocuk eklendi.',
   childNameLabel: 'Ad',
   childNamePlaceholder: 'örn. Mai',
   unassigned: 'Atanmadı',
-  assignLabel: 'Kullanan',
-  assignNobody: 'Henüz kimse',
-  deviceCount: '{{count}} cihaz',
   removeChild: 'Kaldır',
   removeChildConfirmTitle: 'Bu çocuk kaldırılsın mı?',
   removeChildConfirmBody:
     'Cihazları eşleşmiş kalır ve bildirmeye devam eder — siz yeniden atayana kadar yalnızca kimsenin hanesine yazılmaz.',
-  needsTwoChildren: 'Yıldız tablosunu başlatmak için ikinci bir çocuk ekleyin.',
+  emptyTitle: 'Henüz çocuk yok',
+  emptyBody: 'Her çocuğu buraya ekleyin, sonra kullandığı cihazları atayın.',
 } as const;

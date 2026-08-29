@@ -51,6 +51,12 @@ export const settings = {
   accountNotLinked: 'Não vinculado',
   darkModeLabel: 'Modo escuro',
   darkModeHint: 'Mais confortável para os olhos à noite',
+  addWidgetTitle: 'Adicionar widget ao ecrã principal',
+  addWidgetSubtitle: 'O tempo de ecrã de cada criança num relance',
+  addWidgetStepsIos:
+    '1. Toca sem soltar num espaço vazio do ecrã principal\n2. Toca no botão + no canto superior\n3. Procura KidGate\n4. Escolhe um tamanho e toca em Adicionar widget',
+  addWidgetStepsAndroid:
+    '1. Toca sem soltar num espaço vazio do ecrã principal\n2. Toca em Widgets\n3. Procura KidGate e arrasta o widget para o ecrã principal',
   pushNotificationsTitle: 'Notificações push',
   pushNotificationsSubtitle: 'Escolha quais alertas chegam a este telefone',
   inAppAlertsLabel: 'Alertas no app',
@@ -72,6 +78,15 @@ export const settings = {
   reportMessagePlaceholder: 'Descreva o bug ou problema…',
   reportMessageRequired: 'Digite uma breve descrição do problema.',
   reportMessageTooLong: 'O relato deve ter no máximo 2000 caracteres.',
+  reportAttachmentsLabel: 'Capturas de tela (opcional)',
+  reportAttachmentsHint: '{{count}} de {{max}} · até {{limit}} cada',
+  reportAddAttachment: 'Adicionar imagem',
+  reportRemoveAttachment: 'Remover imagem',
+  reportAttachmentsTooMany: 'Você pode anexar até {{max}} imagens.',
+  reportAttachmentTooLarge:
+    'Continua com {{size}} após o redimensionamento, então não foi anexada. O limite é {{limit}} por imagem.',
+  reportAttachmentUnreadable:
+    'Não foi possível ler esse arquivo. Escolha outra imagem.',
   reportSendButton: 'Enviar relato',
   reportSending: 'Enviando…',
   toastReportSent: 'Obrigado — seu relato foi enviado.',
@@ -116,6 +131,7 @@ export const settings = {
   languageHindi: 'Hindi',
   languageRussian: 'Russo',
   sectionAboutTitle: 'Sobre',
+  sectionKidGateTitle: 'KidGate',
   aboutUsTitle: 'Sobre nós',
   aboutUsSubtitle: 'Quem faz o KidGate e o que ele nunca vai fazer',
   sectionLegalTitle: 'Jurídico',

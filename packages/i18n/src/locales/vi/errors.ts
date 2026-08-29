@@ -11,7 +11,8 @@ export const errors = {
   unableToJoinFamilyAccount: 'Không thể tham gia tài khoản gia đình. Vui lòng thử lại.',
   enterEmailAddress: 'Vui lòng nhập địa chỉ email của bạn.',
   unableToCreatePairingCode: 'Không thể tạo mã ghép nối. Vui lòng thử lại.',
-  unableToRedeemPairingCode: 'Mã ghép nối không chính xác hoặc đã hết hạn.',
+  unableToRedeemPairingCode:
+    'Mã này không khớp. Hãy kiểm tra kỹ từng ký tự — hoặc lấy mã mới nếu mã đã tạo được một lúc.',
   unableToClaimChildPairing:
     'Không thể kết nối với thiết bị của trẻ. Vui lòng thử lại.',
   unableToPollChildPairing: 'Không thể kiểm tra trạng thái ghép nối.',
@@ -21,6 +22,8 @@ export const errors = {
   unableToOpenCamera:
     'Không thể mở camera. Vui lòng vào Cài đặt thiết bị để cấp quyền truy cập Camera.',
   noPhotoCaptured: 'Không thể chụp ảnh.',
+  unableToOpenPhotoLibrary:
+    'Không mở được thư viện ảnh. Hãy cho phép truy cập Ảnh trong Cài đặt thiết bị.',
   simulatorCameraHint:
     'Trên Simulator, vui lòng bật camera trước: menu Simulator → Camera → Front Camera, sau đó thử gửi SOS lại. Để chụp ảnh thật, hãy dùng thiết bị iPhone.',
   notSignedInReopenApp: 'Bạn chưa đăng nhập. Vui lòng đóng và mở lại ứng dụng.',
@@ -49,7 +52,7 @@ export const errors = {
     'Thiết bị này cần kết nối lại. Vui lòng đóng và mở lại KidGate, sau đó thử lại.',
   deviceNotFound: 'Thiết bị này không còn trong gia đình của bạn.',
   registerParentDeviceFirst:
-    'Vui lòng thiết lập thiết bị này là thiết bị phụ huynh trước, sau đó thử lại.',
+    'Điện thoại này chưa được thiết lập làm thiết bị phụ huynh. Hãy mở KidGate tại đây, chọn vai trò phụ huynh ở màn hình bắt đầu, sau đó thử ghép nối lại.',
   pairingCodeFormat: 'Vui lòng nhập mã gồm 6 ký tự.',
   pairingCodeUsed: 'Mã này đã được sử dụng. Vui lòng lấy mã mới.',
   pairingCodeExpiredChild:

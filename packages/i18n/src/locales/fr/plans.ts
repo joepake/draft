@@ -49,7 +49,7 @@ export const plans = {
   featureWebFiltering: 'Filtre web',
   featureSeeLocation: 'Position en direct',
   featureLocationHistory: 'Historique de position',
-  featureCheckIn: 'Check-In',
+  featureCheckIn: 'Check-in',
   featureSosAlerts: 'Alertes SOS',
   featurePlaceAlerts: 'Alertes de lieux',
   featureTamperAlerts: 'Alertes de protection',
@@ -130,4 +130,30 @@ export const plans = {
   planPeriodOnce: 'une fois',
   billedOnce:
     'Payez une fois pour jusqu’à {{devices}} appareils enfants, tant que KidGate existe',
+  sectionFreePlan: 'Si vous ne vous abonnez jamais',
+  devicesUnlimited: 'Appareils enfants illimités',
+  featureAppLimits: 'Limites d’apps',
+  featureWebHistory: 'Historique web',
+  featureWeeklyReport: 'Rapport hebdomadaire',
+  featureChildReport: 'Rapports par enfant',
+  featureStarChart: 'Tableau des étoiles',
+  featureFootnoteAppLimits:
+    'Les limites d’apps nécessitent un appareil Android ou un Mac : le Temps d’écran d’Apple n’indique pas quelle app est ouverte sur un iPhone ou un iPad.',
+  sectionPlatforms: 'Où KidGate fonctionne',
+  platformIos: 'iPhone et iPad',
+  platformIosDetail: 'Appareil parent ou enfant · iOS 16 et versions ultérieures',
+  platformAndroid: 'Android',
+  platformAndroidDetail:
+    'Appareil parent ou enfant · Android 7 et versions ultérieures',
+  platformMac: 'Mac',
+  platformMacDetail: 'Appareil enfant uniquement · macOS 12 et versions ultérieures',
+  platformComingSoon: 'Bientôt',
+  platformWindows: 'Windows',
+  platformWindowsDetail:
+    'Appareil enfant uniquement · Windows 10 et versions ultérieures',
+  platformAndroidTv: 'Android TV',
+  platformAndroidTvDetail:
+    'Appareil enfant uniquement · Android TV 7 et versions ultérieures',
+  platformChromebook: 'Chromebook',
+  platformChromebookDetail: 'Appareil enfant · filtrage web dans Chrome uniquement',
 } as const;

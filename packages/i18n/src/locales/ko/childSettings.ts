@@ -17,4 +17,7 @@ export const childSettings = {
   uninstallProtectionHintOff: '꺼짐. 이 휴대폰에서 KidGate를 삭제할 수 있습니다.',
   uninstallProtectionTurnedOff: '삭제 방지가 꺼졌습니다.',
   uninstallProtectionFailed: '삭제 방지를 변경하지 못했습니다.',
+  messageSafetySectionTitle: '메시지 안전',
+  messageSafetySectionDescription:
+    '권한은 여기서 허용해요. 켤지 말지는 부모님이 본인 휴대폰에서 정해요.',
 } as const;

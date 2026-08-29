@@ -8,7 +8,6 @@ export const sharePrompt = {
   laterButton: 'बाद में',
   shareMessage:
     'मैं बच्चों को ऑनलाइन सुरक्षित रखने के लिए KidGate इस्तेमाल करती/करता हूँ — यह वयस्क साइटें ब्लॉक करता है, स्क्रीन टाइम सीमित करता है और लोकेशन दिखाता है। आज़माएँ: {{link}}',
-  settingsSectionTitle: 'KidGate का समर्थन करें',
   settingsShareTitle: 'KidGate शेयर करें',
   settingsShareSubtitle: 'दूसरे माता-पिता को सुझाएँ',
   settingsRateTitle: 'ऐप को रेट करें',

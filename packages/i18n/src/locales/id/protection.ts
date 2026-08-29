@@ -34,6 +34,15 @@ export const protection = {
   lockNotReadyBodyIos:
     'KidGate tidak dapat mengunci iPhone ini sampai akses Waktu Layar disetujui di perangkat anak. Buka KidGate di perangkat tersebut dan selesaikan langkah berikut:',
   locationPermission: 'Izin lokasi',
+  cameraPermission: 'Izin kamera',
+  cameraConsentPending:
+    'Kamera belum diizinkan di perangkat ini, jadi SOS atau Check-In dari sana tiba tanpa foto.',
+  locationConsentPending:
+    'Lokasi belum diizinkan di perangkat ini, jadi perangkat tidak bisa melaporkan posisinya.',
+  consentStepOpenSettings:
+    'Buka KidGate di perangkat anak Anda lalu masuk ke Pengaturan.',
+  consentStepParentPin: 'Masukkan PIN orang tua.',
+  consentStepPermissions: 'Buka “Izin” dan izinkan yang masih kurang.',
   notificationsPermission: 'Izin notifikasi',
   backgroundUpdates: 'Pembaruan latar belakang',
   backgroundUpdatesRestricted: 'Pembaruan latar belakang dibatasi di perangkat ini.',

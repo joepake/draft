@@ -15,7 +15,8 @@ export const errors = {
   enterEmailAddress: 'Digite seu endereço de e-mail.',
   unableToCreatePairingCode:
     'Não foi possível criar um código de pareamento. Tente novamente.',
-  unableToRedeemPairingCode: 'Este código de pareamento é inválido ou expirou.',
+  unableToRedeemPairingCode:
+    'Este código não confere. Verifique os caracteres — ou peça um novo código se já faz um tempo.',
   unableToClaimChildPairing:
     'Não foi possível conectar o dispositivo da criança. Tente novamente.',
   unableToPollChildPairing: 'Não foi possível verificar o status do pareamento.',
@@ -27,6 +28,8 @@ export const errors = {
   unableToOpenCamera:
     'Não foi possível abrir a câmera. Permita o acesso à câmera nas configurações do dispositivo.',
   noPhotoCaptured: 'Nenhuma foto foi capturada.',
+  unableToOpenPhotoLibrary:
+    'Não foi possível abrir suas fotos. Permita o acesso a Fotos nos ajustes do dispositivo.',
   simulatorCameraHint:
     'No simulador, ative primeiro uma câmera em Simulator → Camera → Front Camera e tente o SOS novamente. Para uma foto real, teste em um iPhone físico.',
   notSignedInReopenApp:
@@ -57,7 +60,7 @@ export const errors = {
     'Este dispositivo precisa ser reconectado. Feche e abra o KidGate novamente e tente outra vez.',
   deviceNotFound: 'Este dispositivo não faz mais parte da sua família.',
   registerParentDeviceFirst:
-    'Configure este dispositivo como dispositivo dos pais primeiro e tente novamente.',
+    'Este telefone ainda não está configurado como dispositivo dos pais. Abra o KidGate aqui, escolha a função de responsável na tela inicial e tente parear novamente.',
   pairingCodeFormat: 'Digite o código de 6 caracteres.',
   pairingCodeUsed: 'Este código já foi usado. Solicite um novo código.',
   pairingCodeExpiredChild:

@@ -28,7 +28,7 @@ export const pin = {
   parentPinRequired: 'Code PIN parent requis',
   enterParentPinToContinue: 'Saisissez le code PIN parent à 6 chiffres pour continuer.',
   parentPinLockoutMessage:
-    'Trop de tentatives incorrectes. Demandez à votre parent de déverrouiller le PIN depuis les réglages parent.',
+    'Trop de tentatives incorrectes. Demande à tes parents de déverrouiller le PIN dans les réglages parent.',
   parentPinHelperText:
     'Seul un parent peut modifier les applications bloquées ou se déconnecter — c’est à cela que sert le PIN. Si tu l’oublies, un parent peut se connecter à KidGate sur n’importe quel appareil et le réinitialiser dans les réglages parent.',
   forgotPin: 'PIN oublié ?',
@@ -49,7 +49,7 @@ export const pin = {
   savePin: 'Enregistrer le PIN',
   pinLockedTitle: 'PIN verrouillé',
   pinLockedBody:
-    'Trop de tentatives incorrectes. Demandez à votre parent de déverrouiller le PIN depuis les réglages parent.',
+    'Trop de tentatives incorrectes. Demande à tes parents de déverrouiller le PIN dans les réglages parent.',
   parentAccessRequiredTitle: 'Accès parent requis',
   parentAccessRequiredBody:
     'Saisissez votre PIN pour renommer cet appareil, choisir les Applications bloquées ou vous déconnecter.',
@@ -58,12 +58,12 @@ export const pin = {
   whyPinBody:
     'Seul un parent doit pouvoir modifier les Applications bloquées ou déconnecter cet appareil de KidGate. Les couleurs du thème ne nécessitent pas de PIN.',
   pinLockedToast:
-    'Le PIN est verrouillé après trop de tentatives incorrectes. Demandez à votre parent de le déverrouiller depuis les réglages parent.',
+    'Le PIN est verrouillé après trop de tentatives incorrectes. Demande à tes parents de le déverrouiller dans les réglages parent.',
   pinNotConfiguredToast:
     'Veuillez d’abord créer un code PIN à 6 chiffres dans les réglages parent sur un appareil parent.',
   enterSixDigitParentPin: 'Saisissez le code PIN parent à 6 chiffres.',
   askParentCreatePin:
-    'Demandez d’abord à votre parent de créer un code PIN parent dans les réglages parent.',
+    'Demande d’abord à tes parents de créer un code PIN parent dans les réglages parent.',
   incorrectPinAttemptsLeft: 'PIN incorrect. {{count}} tentatives restantes.',
   incorrectPinAttemptsLeft_one: 'PIN incorrect. {{count}} tentative restante.',
   enterCurrentParentPin: 'Saisissez votre code PIN parent actuel.',

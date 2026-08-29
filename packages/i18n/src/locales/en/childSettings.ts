@@ -17,4 +17,7 @@ export const childSettings = {
   uninstallProtectionHintOff: 'Off. KidGate can be uninstalled from this phone.',
   uninstallProtectionTurnedOff: 'Uninstall protection is off.',
   uninstallProtectionFailed: 'Could not change uninstall protection.',
+  messageSafetySectionTitle: 'Message safety',
+  messageSafetySectionDescription:
+    'Grant the permission here. Whether it is switched on is your parent’s call, from their own phone.',
 } as const;

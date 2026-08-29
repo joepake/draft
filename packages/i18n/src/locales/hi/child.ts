@@ -43,6 +43,16 @@ export const child = {
   setupWizardRequired: 'आवश्यक',
   setupWizardOptional: 'वैकल्पिक',
   setupWizardSkip: 'अभी छोड़ें',
+  setupGrantStuckHint:
+    'चालू करने पर भी कुछ नहीं बदला? TV को फिर से चालू करें और दोबारा कोशिश करें।',
   setupWizardAllDoneTitle: 'हो गया!',
   setupWizardAllDoneSubtitle: 'यह डिवाइस अब सुरक्षित है।',
+  setupWizardStepDone: 'हो गया — यह चालू है।',
+  setupWizardCoreDoneTitle: 'मुख्य सुरक्षा चालू है',
+  setupWizardCoreDoneBody:
+    'ज़रूरी अनुमतियाँ मिल गई हैं और यह डिवाइस सुरक्षित है। कुछ वैकल्पिक चरणों से सुरक्षा को सिस्टम के लिए बंद करना और कठिन हो जाता है।',
+  setupWizardCoreDoneContinue: 'अभी मज़बूत करें',
+  setupWizardCoreDoneLater: 'बाद में पूरा करें',
+  setupWizardParentPinNote:
+    'Parent PIN चाहिए — अगली स्क्रीन पर माता-पिता इसे डालते हैं।',
 } as const;

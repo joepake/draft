@@ -13,7 +13,7 @@ export const sos = {
   noPhoto: 'No hay ninguna foto adjunta a esta alerta.',
   acknowledgedAt: 'Confirmado {{time}}',
   openInMaps: 'Abrir en Mapas',
-  acknowledgeButton: 'Voy para allá',
+  acknowledgeButton: 'Me ocupo yo',
   acknowledgingButton: 'Guardando…',
   toastAcknowledgeFailed: 'No se pudo confirmar. Inténtalo de nuevo en un momento.',
   emptyTitle: 'Aún no hay alertas SOS',
@@ -22,6 +22,9 @@ export const sos = {
   alertMessage: '{{childName}} necesita ayuda — se envió un SOS',
   toastSent:
     'SOS enviado. Quédate en un lugar seguro si puedes; se ha notificado a tu padre o madre.',
+  escapeGrantedTitle: 'SOS enviado',
+  escapeGrantedBody:
+    'Se ha notificado a tu padre o madre. Este dispositivo estará desbloqueado 15 minutos y luego se volverá a bloquear.',
   toastSentWithoutPhoto:
     'SOS enviado, pero sin foto. Permite el acceso a la Cámara en Ajustes e inténtalo de nuevo si puedes.',
   toastSendFailed:
@@ -59,7 +62,7 @@ export const sos = {
   tapPhotoToEnlarge: 'Toca la foto para ampliarla',
   noPhotoAttached: 'No se adjuntó ninguna foto a esta alerta.',
   sentRelativeTime: 'Enviado {{relativeTime}}',
-  imOnIt: 'Voy para allá',
+  imOnIt: 'Me ocupo yo',
   acknowledging: 'Confirmando…',
   unableToAcknowledgeSos: 'No se pudo confirmar. Inténtalo de nuevo en un momento.',
   noLocationSharedWithSos: 'No se compartió ninguna ubicación con este SOS.',
@@ -68,7 +71,7 @@ export const sos = {
   openEmergencySos: 'Abrir SOS de emergencia',
   sosAlertsNote:
     'Muestra las alertas SOS de emergencia del dispositivo del niño, con ubicación.',
-  openLocationInMapsAccessibility: 'Abrir la ubicación en Maps',
+  openLocationInMapsAccessibility: 'Abrir la ubicación en Mapas',
   badgeLabel: 'SOS',
   muteAlarm: 'Silenciar esta alerta',
   alertCount: '{{current}} de {{total}}',

@@ -228,3 +228,47 @@ export function isWithinAnyScheduleWindow(
 ): boolean {
   return windows.some(window => isWithinScheduleWindow(window, at));
 }
+
+/**
+ * Whether two windows are ever active at the same instant.
+ *
+ * Not day-set-intersect-then-time-range-compare: an overnight window can spill
+ * onto a day neither window lists (see the comment in `isWithinScheduleWindow`),
+ * so two windows with disjoint `days` can still overlap on the night between
+ * them. Walking every minute of the week through the real predicate is the only
+ * check that agrees with what actually locks the device — 7 * 1440 minutes is
+ * a few thousand comparisons, trivial next to render cost, and correctness here
+ * matters more than the constant factor.
+ */
+export function scheduleWindowsOverlap(a: ScheduleWindow, b: ScheduleWindow): boolean {
+  for (let weekday = 0; weekday < 7; weekday++) {
+    for (
+      let minutesSinceMidnight = 0;
+      minutesSinceMidnight < 1440;
+      minutesSinceMidnight++
+    ) {
+      const at = { weekday, minutesSinceMidnight };
+      if (isWithinScheduleWindow(a, at) && isWithinScheduleWindow(b, at)) {
+        return true;
+      }
+    }
+  }
+  return false;
+}
+
+/** Every pair of indices into `windows` whose windows overlap. */
+export function findOverlappingScheduleWindowPairs(
+  windows: readonly ScheduleWindow[],
+): Array<[number, number]> {
+  const pairs: Array<[number, number]> = [];
+  for (let i = 0; i < windows.length; i++) {
+    const a = windows[i];
+    for (let j = i + 1; j < windows.length; j++) {
+      const b = windows[j];
+      if (a && b && scheduleWindowsOverlap(a, b)) {
+        pairs.push([i, j]);
+      }
+    }
+  }
+  return pairs;
+}

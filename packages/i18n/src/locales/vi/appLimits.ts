@@ -6,11 +6,11 @@ export const appLimits = {
   emptySubtitle: 'Chọn một ứng dụng bên dưới để đặt hạn mức riêng.',
   usedToday: '{{used}} / {{limit}} hôm nay',
   addSectionTitle: 'Thêm giới hạn',
-  addSectionSubtitle: 'Các ứng dụng con vừa dùng.',
+  addSectionSubtitle: 'Ứng dụng trẻ vừa dùng gần đây.',
   candidateUsage: '{{duration}} hôm nay',
   noUsageYet:
     'Chưa có dữ liệu sử dụng. Khi thiết bị của trẻ báo về, danh sách ứng dụng sẽ hiện ở đây.',
-  footnote: 'Giới hạn tự đặt lại lúc nửa đêm trên máy con.',
+  footnote: 'Giới hạn tự đặt lại lúc nửa đêm trên thiết bị của trẻ.',
   toastSaved: 'Đã lưu giới hạn ứng dụng.',
   toastSaveFailed: 'Không lưu được. Vui lòng thử lại.',
   removeAccessibility: 'Bỏ giới hạn cho {{app}}',

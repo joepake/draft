@@ -1,7 +1,5 @@
 export const webSignIn = {
-  // Settings section header; the row under it is `title` + `subtitle`.
-  sectionTitle: 'ウェブ版 KidGate',
-  title: 'ブラウザを許可',
+  title: 'ウェブでログイン',
   subtitle: 'パソコンから家族を管理',
 
   // The screen. The steps name the site and the button to press on the

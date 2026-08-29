@@ -16,4 +16,6 @@ export const appAlerts = {
   infoLine3:
     'Просматривайте список здесь и блокируйте рискованные приложения в «Заблокированных приложениях».',
   recentTitle: 'Недавние изменения',
+  statInstalled: 'Установлено',
+  statRemoved: 'Удалено',
 } as const;

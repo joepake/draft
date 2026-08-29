@@ -4,7 +4,12 @@ import Icon from '@kidgate/web-ui/Icon';
 import { useT } from '@kidgate/web-ui/useT';
 import { reportNarrative, reportWeek } from '@kidgate/core/domain/reportView';
 import { formatMinutes } from './charts.jsx';
-import { formatRange, reportPresentation, reportSummaryText } from './reportCopy.js';
+import {
+  formatDayKey,
+  formatRange,
+  reportPresentation,
+  reportSummaryText,
+} from './reportCopy.js';
 import { buildShareModel, shareReportImage } from './shareCard.js';
 
 /**
@@ -43,8 +48,10 @@ export default function ReportPanel({
   familyName,
   language,
   onGenerate,
+  onReload,
   generating,
   generateError,
+  loadFailed,
 }) {
   const { t } = useT();
   const [selectedKey, setSelectedKey] = useState(null);
@@ -95,7 +102,9 @@ export default function ReportPanel({
 
   async function handleCopy() {
     try {
-      await navigator.clipboard.writeText(reportSummaryText(report, familyName));
+      await navigator.clipboard.writeText(
+        reportSummaryText(report, familyName, view?.narrative),
+      );
       setNotice({ tone: 'good', text: t('report.copied') });
     } catch {
       setNotice({ tone: 'critical', text: t('report.shareFailed') });
@@ -111,19 +120,42 @@ export default function ReportPanel({
   }
 
   if (!report) {
+    /*
+     * A failed read is not an empty history, and the two deserve opposite
+     * offers. When the reports could not be fetched this panel does not know
+     * whether the week already has one, so it does not invite a parent to
+     * spend a model call writing a second — it says the read failed and asks
+     * them to reload. Same rule the phone follows.
+     */
     return (
       <section className="card report-empty">
-        <Icon name="fileText" size={30} />
-        <h2>{t('report.emptyTitle')}</h2>
-        <p className="hint">{t('report.emptyBody')}</p>
-        {generateError && <p className="report-error">{generateError}</p>}
-        <button
-          className="btn btn-primary"
-          disabled={generating || !onGenerate}
-          onClick={onGenerate}
-        >
-          {generating ? t('report.generating') : t('report.generate')}
-        </button>
+        <Icon name={loadFailed ? 'alert' : 'fileText'} size={30} />
+        <h2>{loadFailed ? t('report.loadFailedTitle') : t('report.emptyTitle')}</h2>
+        <p className="hint">
+          {loadFailed
+            ? (generateError ?? t('report.loadFailed'))
+            : t('report.emptyBody')}
+        </p>
+        {loadFailed ? (
+          <button
+            className="btn btn-primary"
+            disabled={loading || !onReload}
+            onClick={() => onReload?.()}
+          >
+            {t('report.retryLoad')}
+          </button>
+        ) : (
+          <>
+            {generateError && <p className="report-error">{generateError}</p>}
+            <button
+              className="btn btn-primary"
+              disabled={generating || !onGenerate}
+              onClick={onGenerate}
+            >
+              {generating ? t('report.generating') : t('report.generate')}
+            </button>
+          </>
+        )}
       </section>
     );
   }
@@ -156,8 +188,15 @@ export default function ReportPanel({
         </button>
       </div>
 
-      {notice && <div className={`toast tone-${notice.tone}`}>{notice.text}</div>}
-      {generateError && <div className="toast tone-critical">{generateError}</div>}
+      {/* One at a time. Both are absolutely-positioned toasts, so a copy that
+          succeeded while a generation was failing stacked two of them on the
+          same spot. The write's failure outranks the clipboard's success —
+          it is the one the parent has to do something about. */}
+      {generateError ? (
+        <div className="toast tone-critical">{generateError}</div>
+      ) : (
+        notice && <div className={`toast tone-${notice.tone}`}>{notice.text}</div>
+      )}
 
       <article className="report-sheet">
         <header className="report-sheet-head">
@@ -224,7 +263,13 @@ export default function ReportPanel({
 
         {view.narrative && (
           <section className="report-quote">
-            <h3>{t('report.narrativeTitle')}</h3>
+            {/* Same mark the phone puts here: this paragraph is the one block
+                on the panel a model wrote, and a reader deciding how much to
+                trust the wording should be able to see that at a glance. */}
+            <h3 className="report-quote-head">
+              <Icon name="sparkles" size={14} />
+              {t('report.narrativeTitle')}
+            </h3>
             <p>{view.narrative}</p>
           </section>
         )}
@@ -263,7 +308,7 @@ export default function ReportPanel({
                 <tbody>
                   {view.children.map(row => (
                     <tr
-                      key={row.deviceId}
+                      key={row.id}
                       className={row.isBusiest ? 'is-busiest' : undefined}
                     >
                       <th scope="row">
@@ -288,8 +333,16 @@ export default function ReportPanel({
           </section>
         )}
 
+        {/* Through `formatDayKey`, not raw: `fromDate` is a storage key, and
+            the line above it already reads `10 Aug – 16 Aug`. Printing
+            `2026-08-10` underneath was the sheet quoting its own database at
+            a parent, in the one part of the product that gets forwarded to
+            somebody with no context around it. */}
         <p className="report-fine">
-          {t('report.finePrint', { from: report.fromDate, to: report.toDate })}
+          {t('report.finePrint', {
+            from: formatDayKey(report.fromDate),
+            to: formatDayKey(report.toDate),
+          })}
         </p>
       </article>
 

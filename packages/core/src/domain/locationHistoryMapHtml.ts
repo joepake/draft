@@ -212,6 +212,229 @@ export function buildLocationHistoryMapHtml(
 </html>`;
 }
 
+export interface ChildDevicesMapPoint {
+  id: string;
+  lat: number;
+  lng: number;
+  /** Device name — drawn as a chip under the dot, so N dots stay tellable. */
+  title: string;
+  /**
+   * `'carried'` is the device that travels with the child
+   * (`core/domain/childLocation`); `'other'` is any additional fix. When no
+   * carried device is chosen every point arrives `'other'` — the map then
+   * shows fixes of equal weight, which is the refusal-to-pick drawn.
+   */
+  kind: 'carried' | 'other';
+  /**
+   * The device's own colour, so a marker matches the trail it ends and the
+   * legend beside the list. Absent falls back to the carried/other greys.
+   */
+  color?: string;
+}
+
+/** One device's recent route, already windowed and capped by the caller. */
+export interface ChildDeviceTrail {
+  deviceId: string;
+  /** Oldest first — drawn in order. */
+  path: Array<{ lat: number; lng: number }>;
+  color: string;
+  /** The carried device's line is drawn heavier and above the others. */
+  carried: boolean;
+}
+
+/**
+ * The child-level map: one marker per device, plus **one route per device**.
+ *
+ * The polylines are per machine and never joined across them. A line from the
+ * phone at school to the tablet at home would draw a journey nobody made —
+ * the same refusal `domain/childLocation` makes about the current fix — but
+ * one device's own points in time order *are* a route, and drawing them is
+ * how a parent reads an afternoon. Each route wears its device's colour, the
+ * same one the history list rails and the legend use, so a line and a row are
+ * matchable at a glance.
+ *
+ * The caller windows and caps the points (`domain/locationTrail`); this
+ * function draws exactly what it is handed. The carried device gets the ring,
+ * the heavier line and the top z-index; the rest stay present but quieter.
+ */
+export function buildChildDevicesMapHtml(
+  points: ChildDevicesMapPoint[],
+  hereApiKey: string | null,
+  messages: LocationMapMessages,
+  accentColor = '#0F766E',
+  trails: ChildDeviceTrail[] = [],
+): string {
+  const softBg = `${accentColor}14`;
+  if (!hereApiKey) {
+    return missingKeyDocument(softBg, messages.mapUnavailable);
+  }
+
+  const payload = JSON.stringify(points);
+  // A single-point run is a marker, not a line — filtered here so the page
+  // script has nothing degenerate to guard against.
+  const trailPayload = JSON.stringify(trails.filter(trail => trail.path.length > 1));
+  const tileLayerScript = buildHereTileLayerScript(hereApiKey);
+  const emptyMessage = JSON.stringify(messages.mapNoLocationsEmpty);
+
+  return `<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+      html, body, #map {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        background: ${softBg};
+      }
+      .leaflet-container {
+        background: ${softBg};
+        font: 12px -apple-system, BlinkMacSystemFont, sans-serif;
+      }
+      .device-pin {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3px;
+      }
+      .device-dot {
+        border-radius: 999px;
+        border: 2px solid #fff;
+        box-shadow: 0 1px 4px rgba(15, 23, 42, 0.25);
+      }
+      .device-dot-carried {
+        width: 18px;
+        height: 18px;
+        background: ${accentColor};
+        box-shadow: 0 0 0 6px ${accentColor}33, 0 1px 4px rgba(15, 23, 42, 0.25);
+      }
+      .device-dot-other {
+        width: 12px;
+        height: 12px;
+        background: #64748B;
+      }
+      .device-chip {
+        max-width: 120px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        border-radius: 999px;
+        padding: 2px 8px;
+        font-weight: 700;
+        font-size: 11px;
+        background: rgba(255, 255, 255, 0.92);
+        color: #0F172A;
+        box-shadow: 0 1px 3px rgba(15, 23, 42, 0.2);
+      }
+      .device-chip-carried {
+        background: ${accentColor};
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      const points = ${payload};
+      const trails = ${trailPayload};
+      const mapEl = document.getElementById('map');
+
+      if (!points.length) {
+        mapEl.innerHTML =
+          '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:#475569;font:600 14px -apple-system,sans-serif;padding:16px;text-align:center;">' + ${emptyMessage} + '</div>';
+      } else {
+        const map = L.map('map', {
+          zoomControl: false,
+          attributionControl: false,
+        });
+
+        ${tileLayerScript}
+
+        // The view has to hold the routes as well as the current fixes —
+        // fitting the markers alone cropped a trail that left the frame.
+        const boundPoints = points.map(point => [point.lat, point.lng]);
+        trails.forEach(trail => {
+          trail.path.forEach(step => boundPoints.push([step.lat, step.lng]));
+        });
+        map.fitBounds(L.latLngBounds(boundPoints), {
+          padding: [48, 48],
+          maxZoom: 15,
+        });
+
+        const escapeHtml = value =>
+          String(value).replace(/[&<>"']/g, ch => ({
+            '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
+          })[ch]);
+
+        // Routes first, so a marker always sits above the line that ends at
+        // it rather than being covered by a neighbouring device's path.
+        trails.forEach(trail => {
+          const path = trail.path.map(step => [step.lat, step.lng]);
+          L.polyline(path, {
+            color: trail.color,
+            weight: trail.carried ? 4 : 3,
+            opacity: trail.carried ? 0.9 : 0.55,
+            lineJoin: 'round',
+            lineCap: 'round',
+          }).addTo(map);
+
+          // Where the route began, so a line has a readable direction without
+          // arrowheads the WebView would have to draw per segment.
+          const start = path[0];
+          if (start) {
+            L.circleMarker(start, {
+              radius: 4,
+              color: '#fff',
+              weight: 2,
+              fillColor: trail.color,
+              fillOpacity: 1,
+            }).addTo(map);
+          }
+        });
+
+        points.forEach(point => {
+          const carried = point.kind === 'carried';
+          const dotStyle = point.color
+            ? ' style="background:' + point.color + '"'
+            : '';
+          const chipStyle = point.color && carried
+            ? ' style="background:' + point.color + ';color:#fff"'
+            : '';
+          const html =
+            '<div class="device-pin">' +
+            '<div class="device-dot ' + (carried ? 'device-dot-carried' : 'device-dot-other') + '"' + dotStyle + '></div>' +
+            '<div class="device-chip' + (carried ? ' device-chip-carried' : '') + '"' + chipStyle + '>' +
+            escapeHtml(point.title) +
+            '</div>' +
+            '</div>';
+
+          L.marker([point.lat, point.lng], {
+            title: point.title,
+            icon: L.divIcon({
+              className: '',
+              html,
+              iconSize: [120, 40],
+              iconAnchor: [60, carried ? 9 : 6],
+            }),
+            zIndexOffset: carried ? 200 : 0,
+          }).addTo(map);
+        });
+      }
+    </script>
+  </body>
+</html>`;
+}
+
 export function buildPlacePickerMapHtml(
   latitude: number,
   longitude: number,

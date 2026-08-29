@@ -67,4 +67,5 @@ export const blockedHours = {
   daysSchoolNights: '등교 전날 밤',
   daysWeekend: '주말',
   daysOvernightHint: '밤을 넘기는 구간은 시작하는 날 기준입니다.',
+  overlapWarning: '이 시간이 다른 차단 시간과 겹칩니다 — 둘 다 계속 적용됩니다.',
 } as const;

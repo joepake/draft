@@ -1,11 +1,14 @@
 export const location = {
   title: 'Vị trí',
   fallbackDeviceName: 'Thiết bị của trẻ',
+  syncNote:
+    'Vị trí có thể mất vài phút để cập nhật — lâu hơn nếu thiết bị không có kết nối mạng hoặc bị đóng đột ngột.',
   toastUpdateFailed: 'Không thể cập nhật cài đặt chia sẻ vị trí. Vui lòng thử lại.',
   toggleLabel: 'Chia sẻ vị trí',
   toggleHint: 'Sau khi bật, vui lòng mở KidGate một lần trên thiết bị này.',
   toggleAccessibilityLabel: 'Chia sẻ vị trí',
   lastKnownLocation: 'Vị trí gần nhất',
+  nearPlace: 'Gần {{place}}',
   noLocationHint:
     'Hãy bật chia sẻ vị trí, sau đó mở KidGate một lần trên thiết bị này.',
   waitingForLocation: 'Đang chờ vị trí',
@@ -33,6 +36,8 @@ export const location = {
   locationBannerTitle: 'Bật vị trí',
   locationBannerBody:
     'Bố mẹ muốn biết thiết bị này đang ở đâu để yên tâm là con đã đến nơi an toàn.',
+  locationBannerBodySharingOff:
+    'Chia sẻ vị trí đang tắt nên không có gì được gửi đi. Cho phép ở đây thì sau này bố mẹ bật lên là dùng được ngay.',
   allowLocationButton: 'Cho phép vị trí',
   locationNotAllowed:
     'Quyền vị trí chưa được cấp. Vui lòng mở Cài đặt → KidGate → Vị trí (hoặc bật Dịch vụ định vị trước). Nếu chưa thấy mục Vị trí, hãy chọn Cho phép vị trí lại trong ứng dụng.',
@@ -52,4 +57,17 @@ export const location = {
   mapNoLocationsEmpty: 'Chưa có vị trí để hiển thị',
   mapUnavailable: 'Không tải được bản đồ. Vui lòng kiểm tra kết nối mạng rồi thử lại.',
   historyShowMore: 'Xem thêm {{count}} địa điểm',
+  childSharingHint: 'Áp dụng cho mọi thiết bị được gán cho {{childName}}.',
+  childNoCapableDevices: 'Không thiết bị nào của {{childName}} báo cáo được vị trí.',
+  childCarriedQuestion: 'Thiết bị nào đi cùng {{childName}}?',
+  childCarriedHint:
+    'Vị trí của bé được đọc từ thiết bị đó. Máy tính bảng để ở nhà có thể báo vị trí mới hơn điện thoại trong cặp, nên KidGate không bao giờ đoán.',
+  childDevicesOnline: '{{online}}/{{total}} thiết bị đang trực tuyến',
+  childNoneOnline: 'Không có thiết bị nào trực tuyến',
+  childPickCarried: 'Đi cùng bé',
+  childPickCarriedA11y: 'Đánh dấu {{deviceName}} là thiết bị {{childName}} mang theo',
+  stayRange: '{{from}} – {{to}}',
+  placeTotalsTitle: 'Thời gian ở các địa điểm',
+  placeTotalsNote:
+    'Tính từ lịch sử vị trí {{count}} ngày gần nhất. Chỉ tính những địa điểm bạn đã lưu.',
 } as const;

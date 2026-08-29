@@ -1,5 +1,8 @@
 export const placeAlerts = {
   title: 'Place Alerts',
+  familyScope: 'One list for the whole family',
+  mergedFromDevices:
+    'Combined from each device’s existing places. Saving applies this one list to every child device.',
   fallbackDeviceName: 'Child device',
   statusReady: 'Location ready',
   statusNeedLocation: 'Waiting for the child device location',
@@ -21,7 +24,10 @@ export const placeAlerts = {
   radiusLabel: 'Alert radius',
   radiusValue: '{{meters}} m',
   radiusHint:
-    'How close the device must be for this place to count. A smaller radius is more precise but more easily missed.',
+    'How close the device must be for this place to count. A radius smaller than the device’s own position error alerts at random rather than more precisely.',
+  radiusAccuracyHint: 'This device reports its position to about ±{{accuracy}} m here.',
+  radiusBelowAccuracy:
+    'This device is only accurate to about ±{{accuracy}} m here. Use {{minimum}} m or more, or this place will alert at random.',
   radiusDecrease: 'Smaller radius',
   radiusIncrease: 'Larger radius',
   notifyEnterLabel: 'Alert on arrival',
@@ -43,7 +49,9 @@ export const placeAlerts = {
   maxPlacesToast: 'You can save up to {{max}} places.',
   nameRequiredToast: 'Enter a place name.',
   duplicateNameToast: 'A place with this name already exists.',
-  duplicateLocationToast: 'A place already covers this location.',
+  samePinToast: 'This is the same spot as “{{name}}”. Drag the map to move the pin.',
+  overlapWarning:
+    '“{{name}}” is {{meters}} m away and its circle reaches here. While the device is in both, only the nearer one alerts. Save again to keep it.',
   copyTitle: 'Add to other children?',
   copyMessage: 'Copy “{{name}}” to the other {{count}} child devices in this family?',
   copyMessage_one: 'Copy “{{name}}” to the other child device in this family?',

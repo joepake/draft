@@ -1,5 +1,6 @@
 import type { DocSnapshot, FirestorePort, Unsubscribe } from '@kidgate/ports/firestore';
 import type { Child } from '@kidgate/schema/child';
+import type { ChildRules } from '@kidgate/schema/childRules';
 import type { Device } from '@kidgate/schema/device';
 import { childDoc, childrenCollection, childDeviceDoc } from '@kidgate/schema/paths';
 import { timestampToIso } from '../domain/firestoreValue';
@@ -25,6 +26,17 @@ function mapChild(doc: DocSnapshot): Child {
     // than as NaN, which a renderer would turn into an undefined colour.
     colorIndex: Number.isFinite(colorIndex) ? colorIndex : 0,
     createdAt: timestampToIso(data.createdAt) ?? '',
+    // Spread, not assigned: absent means "no child-level rules yet" — the
+    // per-device values are still authoritative — and under
+    // `exactOptionalPropertyTypes` an explicit undefined is a different claim.
+    ...(data.rules && typeof data.rules === 'object'
+      ? { rules: data.rules as ChildRules }
+      : {}),
+    // '' is the cleared state (updateDoc cannot delete a field through every
+    // port), and absent means never chosen; both read as "unchosen".
+    ...(typeof data.locationDeviceId === 'string' && data.locationDeviceId
+      ? { locationDeviceId: data.locationDeviceId }
+      : {}),
   };
 }
 
@@ -78,6 +90,24 @@ export function createChildRepository(deps: ChildRepositoryDeps) {
     },
 
     /**
+     * Name the device that travels with this child, or clear the choice.
+     *
+     * A view designation (`Child.locationDeviceId`), not a rule: it decides
+     * which fix answers "where are they?" on child-level screens and changes
+     * nothing any device enforces. Any family parent may set it — same class
+     * of write as rename and recolour.
+     */
+    async setLocationDevice(
+      familyId: string,
+      childId: string,
+      deviceId: string | null,
+    ): Promise<void> {
+      await db.updateDoc(childDoc(familyId, childId), {
+        locationDeviceId: deviceId ?? '',
+      });
+    },
+
+    /**
      * Point a device at a child, or at nobody.
      *
      * Reassigning moves every star that device has ever earned, because the
@@ -111,51 +141,22 @@ export function createChildRepository(deps: ChildRepositoryDeps) {
       await db.deleteDoc(childDoc(familyId, childId));
     },
 
-    /**
-     * Give every unassigned device a child, once, for families that predate
-     * this collection.
+    /*
+     * There is deliberately no `ensureChildrenForDevices` here.
      *
-     * One child per device, named after the device — which is right for the
-     * common shape (one child, one phone) and wrong for a child holding a phone
-     * and a laptop. That is a deliberate trade: the wrong version is two taps
-     * to fix (reassign the laptop, delete the spare child) and it is visible on
-     * screen, where the alternative — leaving everything unassigned — hides the
-     * feature behind setup work nobody knows to do.
+     * It used to give every unassigned device a child named after the device,
+     * so the board read as already sorted. What it actually produced was a
+     * second person: a parent who paired a phone and then added the child by
+     * name ended up with two children and one device, the spare one named
+     * after the hardware. The auto-creation raced every flow that asks the
+     * parent who a device belongs to, and the loser was whichever write landed
+     * second.
      *
-     * Runs when a parent opens a screen that needs children, not as a sweep
-     * over every family: `docs/FEASIBILITY.md` prices a cross-family sweep at
-     * paginating `users`, a per-family time band and a server-side dedupe
-     * document, which is a lot of machinery for something one screen open does
-     * correctly.
-     *
-     * Returns how many it created, so a caller can tell "nothing to do" from
-     * "just migrated this family" without re-reading.
+     * A device belonging to nobody is now a state the UI shows rather than one
+     * the client guesses its way out of: `AssignDeviceSheet` is the single
+     * writer of `Device.childId`, reached from the unassigned group's own
+     * per-card action, and armed automatically right after a pairing.
      */
-    async ensureChildrenForDevices(
-      familyId: string,
-      devices: Device[],
-      existingChildren: Child[],
-    ): Promise<number> {
-      const unassigned = devices.filter(device => !device.childId);
-      if (unassigned.length === 0) {
-        return 0;
-      }
-
-      let colorIndex = existingChildren.length;
-      let created = 0;
-
-      for (const device of unassigned) {
-        const childId = await db.addDoc(childrenCollection(familyId), {
-          name: device.name,
-          colorIndex: colorIndex++,
-          createdAt: new Date().toISOString(),
-        });
-        await db.updateDoc(childDeviceDoc(familyId, device.id), { childId });
-        created++;
-      }
-
-      return created;
-    },
   };
 }
 

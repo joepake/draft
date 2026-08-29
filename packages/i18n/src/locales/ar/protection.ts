@@ -34,6 +34,14 @@ export const protection = {
   lockNotReadyBodyIos:
     'لا يمكن لـ KidGate قفل جهاز iPhone هذا حتى تتم الموافقة على الوصول إلى «مدة استخدام الجهاز» على جهاز الطفل. يرجى فتح KidGate على ذلك الجهاز وإكمال ما يلي:',
   locationPermission: 'إذن الموقع',
+  cameraPermission: 'إذن الكاميرا',
+  cameraConsentPending:
+    'الكاميرا غير مسموح بها على هذا الجهاز، لذا يصل نداء SOS أو الاطمئنان منه بدون صورة.',
+  locationConsentPending:
+    'الموقع غير مسموح به على هذا الجهاز، لذا لا يستطيع الإبلاغ عن مكانه.',
+  consentStepOpenSettings: 'افتح KidGate على جهاز طفلك وانتقل إلى الإعدادات.',
+  consentStepParentPin: 'أدخل رمز PIN الخاص بالوالدين.',
+  consentStepPermissions: 'افتح «الأذونات» واسمح بما ينقص.',
   notificationsPermission: 'إذن الإشعارات',
   backgroundUpdates: 'التحديثات في الخلفية',
   backgroundUpdatesRestricted: 'التحديثات في الخلفية مقيّدة على هذا الجهاز.',

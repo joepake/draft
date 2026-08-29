@@ -57,6 +57,7 @@ export function isUsageControlKey(key: string): key is UsageControlKey {
 export const REPORT_ONLY_CONTROL_KEYS = [
   'topApps',
   'timeline',
+  'idleMinutes',
 ] as const satisfies ReadonlyArray<keyof DeviceControls>;
 
 export type ReportOnlyControlKey = (typeof REPORT_ONLY_CONTROL_KEYS)[number];
@@ -81,6 +82,8 @@ export const PARENT_CONTROL_KEYS = [
   'webFilterBlockList',
   'webFilterAllowListOnly',
   'appBlockingEnabled',
+  'messageMonitoringEnabled',
+  'messageMonitoringOutgoingEnabled',
 ] as const satisfies ReadonlyArray<keyof DeviceControls>;
 
 export type ParentControlKey = (typeof PARENT_CONTROL_KEYS)[number];

@@ -8,7 +8,6 @@ export const sharePrompt = {
   laterButton: '나중에',
   shareMessage:
     '아이의 온라인 안전을 위해 KidGate를 쓰고 있어요. 성인 사이트 차단, 사용 시간 제한, 위치 확인까지 가능해요. 한번 써보세요: {{link}}',
-  settingsSectionTitle: 'KidGate 응원하기',
   settingsShareTitle: 'KidGate 공유',
   settingsShareSubtitle: '다른 부모님께 추천하기',
   settingsRateTitle: '앱 평가하기',

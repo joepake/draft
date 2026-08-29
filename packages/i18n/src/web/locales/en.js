@@ -361,15 +361,44 @@ export default {
 
   webCat: {
     adult: 'Adult content',
+    selfHarm: 'Self-harm & eating disorders',
     gambling: 'Gambling',
+    gameGambling: 'Loot boxes & skin betting',
     dating: 'Dating',
+    strangerChat: 'Stranger chat',
     drugs: 'Drugs & alcohol',
-    violence: 'Violence & extremism',
+    violence: 'Violence & gore',
+    extremism: 'Extremism & hate',
     piracy: 'Piracy',
     social: 'Social networks',
     videoStreaming: 'Video streaming',
+    music: 'Music',
     gaming: 'Games',
     shopping: 'Shopping',
+    aiCompanion: 'AI companions',
+    aiAssistant: 'AI assistants',
+    cryptoTrading: 'Crypto & trading',
+    vpn: 'VPN apps',
+  },
+
+  appCat: {
+    adult: 'Adult content',
+    gambling: 'Gambling',
+    gameGambling: 'Loot boxes & skin betting',
+    dating: 'Dating',
+    drugs: 'Drugs & alcohol',
+    violence: 'Violence & gore',
+    piracy: 'Piracy',
+    bypass: 'Filter bypass & VPN',
+  },
+
+  webCatGroup: {
+    harm: 'Harmful content',
+    contact: 'Strangers',
+    bypass: 'Filter bypass',
+    ai: 'AI',
+    entertainment: 'Entertainment & social',
+    money: 'Shopping & money',
   },
 
   dash: {
@@ -379,9 +408,11 @@ export default {
     tabSafety: 'Safety',
     tabControls: 'Controls',
     tabReport: 'Weekly report',
+    tabReportNew: 'New weekly report',
 
     children: 'Children',
     noChildren: 'No child devices paired yet.',
+    unassignedDevices: 'Not assigned',
     manage: 'Manage',
     parents_one: '{{count}} parent',
     parents_other: '{{count}} parents',
@@ -395,6 +426,8 @@ export default {
     statusOnline: 'Online',
     statusOffline: 'Offline',
     statusLocked: 'Locked',
+    statusLockSent: 'Lock sent',
+    statusLockNotApplied: 'Lock not applied',
 
     stateAllowed: 'Allowed',
     stateDenied: 'Turned off',
@@ -404,6 +437,10 @@ export default {
     stateUnknown: 'Unknown',
 
     lastActive: 'Last active {{when}}',
+    appVersion: 'App version',
+    appVersionUpdate: '{{running}} · {{latest}} available',
+    appVersionRestart: '{{running}} · restart to finish updating',
+    buildOutdated: 'Update available',
     checkIn: 'Check-In',
     sending: 'Sending…',
     lockDevice: 'Lock device',
@@ -439,6 +476,10 @@ export default {
 
     cardScreenTime: 'Screen Time',
     cardScreenTimeSub: 'Last 14 days, against the Daily Limit',
+    usageSyncNote:
+      'Screen time can take a few minutes to reach this screen — longer if the device has no internet connection or was closed unexpectedly.',
+    usageSyncNoteTv:
+      'This television only checks in periodically, so screen time can take up to 30 minutes to reach this screen — longer with no internet connection.',
     cardRecent: 'Recent activity',
     cardRecentSub: 'Newest first',
     cardRecentEmpty:
@@ -453,9 +494,6 @@ export default {
     attnReason: '“{{reason}}” · {{when}}',
     attnCheckInMissed: 'Check-In was missed',
     attnCheckInMissedMeta: 'Sent {{when}} · no response',
-    attnPermissionOff: '{{permission}} is turned off',
-    attnPermissionOffMeta:
-      'Protection is weaker until this is restored on the child device',
     attnLimitReached: 'Daily Limit reached — device locked',
     attnLimitReachedMeta: '{{used}} used today',
     attnBatteryLow: 'Battery is low ({{level}}%)',
@@ -488,6 +526,8 @@ export default {
 
     appUsageTitle: 'App usage today',
     appUsageSub: 'Time spent per app',
+    topAppsOther: 'Other apps',
+    underAMinute: 'Under a minute',
     appUsageEmpty: 'No app usage reported yet.',
     appBlockingTitle: 'App blocking',
     appBlockingSub: 'Chosen on the child device with the Parent PIN',
@@ -500,6 +540,21 @@ export default {
     webActivityTitle: 'Web activity',
     webActivitySub: 'Most visited domains, last 30 days',
     webActivityEmpty: 'No web activity yet.',
+    inventoryTitle: 'Installed apps',
+    inventorySub: 'Everything on this device, not only what changed',
+    inventoryEmpty: 'This device has not published its app list yet.',
+    inventoryStale:
+      'This list is out of date. It refreshes when the device next checks in.',
+    inventoryFirstScan: 'First scan, so KidGate cannot say when any of these arrived.',
+    inventoryFlagged: 'Worth a look',
+    inventoryFlaggedLabel: 'Worth a look',
+    inventoryOtherLabel: 'Identified',
+    inventoryUnknownLabel: 'Not identified',
+    inventoryIncomplete: 'An app with no icon on the home screen may not appear here.',
+    webActivitySyncNote:
+      'Web history can take a few minutes to reach this screen — longer if the device has no internet connection or was closed unexpectedly.',
+    webActivitySyncNoteTv:
+      'This television only checks in periodically, so web history can take up to 30 minutes to reach this screen — longer with no internet connection.',
     colDomain: 'Domain',
     colVisits: 'Visits',
     colBlocked: 'Blocked',
@@ -508,15 +563,22 @@ export default {
     filterRefusedSub_one: '{{count}} blocked lookup, last 30 days',
     filterRefusedSub_other: '{{count}} blocked lookups, last 30 days',
     nothingBlockedYet: 'Nothing has been blocked yet.',
+    rollupNoteAi:
+      'Some kinds were worked out from the site name rather than matched to a known site, so a few may be off.',
     filterHintIos:
       'On iOS the filter uses Apple’s adult-content control — per-category blocking is Android only.',
     filterHintAndroid: 'Categories are enforced by the on-device DNS filter.',
+    filterHintMacos:
+      'Categories are enforced by the KidGate content filter on the Mac.',
 
     locationTitle: 'Location',
+    locationSyncNote:
+      'Location can take a few minutes to update — longer if the device has no internet connection or was closed unexpectedly.',
     locationSharingOff: 'Sharing is off',
     locationUpdated: 'Updated {{when}}',
     locationWaiting: 'Waiting for the first update',
     lastKnownLocation: 'Last known location',
+    nearPlace: 'Near {{place}}',
     noPlaces:
       'No saved places yet. Add one in the app to get an alert when your child arrives or leaves.',
     placeRadius: '{{meters}}m · ',
@@ -554,6 +616,10 @@ export default {
     limitScaleMax: '8h',
     limitHint:
       'Bonus minutes from reward tasks and approved time requests are added on top, for that day only.',
+    limitShared: 'Shared across every device',
+    limitSharedSpent: '{{used}} of {{limit}} used today',
+    limitSharedHint:
+      'This is the whole day for this child, not a cap on this device — each device gets what the others have not used. Change it in the KidGate app.',
     whatsOnTitle: 'What is turned on',
     whatsOnSub: 'Changes sync to the child device',
     rowBlockedHours: 'Blocked Hours',
@@ -569,6 +635,8 @@ export default {
     rowWebFilterDesc_one: '{{count}} category refused',
     rowWebFilterDesc_other: '{{count}} categories refused',
     rowNotSupported: 'Not supported on this device',
+    rowWebFilterAwaitingApproval: 'Waiting for approval on the device',
+    rowWebFilterSwitchedOff: 'Switched off on the device',
     rowLocation: 'Location sharing',
     rowLocationDesc: 'Last update {{when}}',
     rowLocationNone: 'No location yet',
@@ -589,6 +657,12 @@ export default {
     rewardTaskWaiting: ' · waiting for your approval',
     approve: 'Approve',
     approveInApp: 'Approve in the KidGate app',
+    siteRequestsTitle: 'Site requests',
+    siteRequestsSub: 'Sites this device asked you to allow',
+    siteRequestAllow: 'Allow',
+    siteRequestDeny: 'Not now',
+    attnSiteRequest: '{{name}} asked to open {{domain}}',
+    toastSiteAllowed: 'Site allowed',
     timelineTitle: 'When it was used',
     timelineSub: 'Today, midnight to midnight. Green is time spent on the device.',
   },
@@ -664,6 +738,9 @@ export default {
     noUsage:
       'No screen time was recorded over the last two weeks, so there is nothing to report yet. A device that is offline reports nothing, which is not the same as a quiet week.',
     rateLimited: 'Too many attempts. Give it a minute.',
+    loadFailedTitle: 'Reports did not load',
+    loadFailed: 'Could not open your reports. Reload the page to try again.',
+    retryLoad: 'Try again',
     failed: 'Could not write the report. Try again in a moment.',
     existed: 'This week already had a report — here it is.',
 

@@ -38,6 +38,15 @@ export const protection = {
   lockNotReadyBodyIos:
     'KidGate non può bloccare questo iPhone finché l’accesso a Tempo di utilizzo non viene approvato sul dispositivo del bambino. Apri KidGate su quel dispositivo e completa questi passaggi:',
   locationPermission: 'Autorizzazione alla posizione',
+  cameraPermission: 'Autorizzazione fotocamera',
+  cameraConsentPending:
+    'La fotocamera non è consentita su questo dispositivo, quindi un SOS o un Check-in inviato da lì arriva senza foto.',
+  locationConsentPending:
+    'La posizione non è consentita su questo dispositivo, quindi non può indicare dov’è.',
+  consentStepOpenSettings:
+    'Apri KidGate sul dispositivo di tuo figlio o tua figlia e vai in Impostazioni.',
+  consentStepParentPin: 'Inserisci il PIN genitore.',
+  consentStepPermissions: 'Apri «Autorizzazioni» e consenti ciò che manca.',
   notificationsPermission: 'Autorizzazione alle notifiche',
   backgroundUpdates: 'Aggiornamenti in background',
   backgroundUpdatesRestricted:
@@ -65,7 +74,7 @@ export const protection = {
   lockUnlockNote:
     'Blocca il dispositivo tramite Tempo di utilizzo dopo che il bambino ha autorizzato l’accesso.',
   scheduleNote:
-    'Fino a 3 fasce di Ore bloccate bloccano le app tramite Tempo di utilizzo.',
+    'Fino a 3 fasce di Orari di blocco bloccano le app tramite Tempo di utilizzo.',
   individualAppBlockingNote:
     'Il bambino seleziona le app dopo aver inserito il PIN genitore a 6 cifre.',
   tamperAlertsNote:

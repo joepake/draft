@@ -2,8 +2,10 @@ import type {
   DeviceProtectionCounters,
   DeviceProtectionStatus,
   DeviceStatus,
+  DeviceWebToday,
 } from './device';
 import type { DeviceControls, DeviceLocation } from './deviceControls';
+import type { DeviceMessageMonitoringState } from './messageMonitoringState';
 import type { DevicePlace } from './devicePlace';
 import type { PlanId } from './plan';
 import type { UserSubscription } from './subscription';
@@ -80,6 +82,31 @@ export interface ChildDeviceRecord {
   modelName?: string;
   deviceLabel?: string;
   osVersion?: string;
+  /**
+   * How many OS user profiles the device carries, the reporting one included.
+   *
+   * `1` is the ordinary answer. More than one matters on Android TV: a box
+   * with a child profile can misdirect the usage-access and overlay Settings
+   * toggles into the profile's app-ops table (proven on a Sony BRAVIA,
+   * `docs/FEASIBILITY.md` "K1/K2 reopened"), so this beside a `denied`
+   * `protectionStatus` row is the operator's signal that the family is stuck
+   * on a Settings defect rather than ignoring setup. Absent until a device
+   * reports one — only `apps/tv` does today.
+   */
+  osUserCount?: number;
+  /**
+   * The KidGate build running on this device, written by every child agent
+   * through `DeviceIdentity` — see `Device` in `./device` for what each field
+   * means and why `appBuild` is a string and `otaVersion` a separate number.
+   *
+   * They were on `Device` and missing here, which is exactly the gap that let
+   * the desktop agent write them through a raw `updateDoc` rather than through
+   * registration: the record type could not describe what the agent was
+   * storing.
+   */
+  appVersion?: string;
+  appBuild?: string;
+  otaVersion?: number;
   status: DeviceStatus;
   isLocked: boolean;
   lastActiveAt: string;
@@ -88,10 +115,19 @@ export interface ChildDeviceRecord {
   lastLocation?: DeviceLocation;
   places?: DevicePlace[];
   protectionStatus?: DeviceProtectionStatus;
+  /**
+   * Whether message scanning is actually running on this device, as the
+   * device itself reports it (`@kidgate/schema/messageMonitoringState`).
+   * Missing here until now — `toDeviceView` had nothing to spread, so every
+   * parent screen read `device.messageMonitoring` as permanently undefined.
+   */
+  messageMonitoring?: DeviceMessageMonitoringState;
   parentPinFailedAttempts?: number;
   parentPinLocked?: boolean;
   /** Deduped web-filter blocked visits since install (Android child only). */
   webFilterBlockedCount?: number;
+  /** Written by `logChildWebActivity`, never by a client. */
+  webToday?: DeviceWebToday;
   protectionCounters?: DeviceProtectionCounters;
   /**
    * The device's own capability probe, written at pairing and re-published when

@@ -71,4 +71,6 @@ export const blockedHours = {
   daysWeekend: 'सप्ताहांत',
   daysOvernightHint:
     'रातभर चलने वाले समय उसी रात से गिने जाते हैं जब वे शुरू होते हैं।',
+  overlapWarning:
+    'यह किसी अन्य ब्लॉक किए गए समय के साथ ओवरलैप करता है — दोनों अभी भी लागू होते हैं।',
 } as const;

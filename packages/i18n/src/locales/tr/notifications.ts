@@ -30,9 +30,13 @@ export const notifications = {
       label: 'Ek süre istekleri',
       hint: 'Çocuğunuz daha fazla ekran süresi istiyor.',
     },
+    siteRequests: {
+      label: 'Site istekleri',
+      hint: 'Çocuğunuz engellenen bir siteyi açmak istiyor.',
+    },
     checkIn: {
-      label: 'Yoklama yanıtları',
-      hint: 'Çocuğunuz güvenlik yoklamasını yanıtlıyor.',
+      label: 'Check-In yanıtları',
+      hint: 'Çocuğunuz güvenlik Check-In’ini yanıtlıyor.',
     },
     rewardTasks: {
       label: 'Ödül talepleri',
@@ -41,6 +45,10 @@ export const notifications = {
     appActivity: {
       label: 'Uygulama kuruldu veya kaldırıldı',
       hint: 'Çocuk cihazında bir uygulama beliriyor ya da kayboluyor.',
+    },
+    anomalyAlerts: {
+      label: 'Olağan dışı etkinlik',
+      hint: 'Çocuk cihazında alışılmışın dışında kullanım — gece geç saatler, ani artışlar, yeni uygulamalar.',
     },
     weeklyDigest: {
       label: 'Haftalık özet',

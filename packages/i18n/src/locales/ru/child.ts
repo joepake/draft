@@ -13,7 +13,8 @@ export const child = {
   limitReached: 'Лимит исчерпан',
   active: 'Активно',
   parentPausedThisDevice: 'Родители пока заблокировали это устройство.',
-  blockedHoursOnPaused: 'Сейчас действуют часы блокировки. Хорошее время для перерыва.',
+  blockedHoursOnPaused:
+    'Сейчас действуют Заблокированные часы. Хорошее время для перерыва.',
   outOfScreenTimeAskParent:
     'Экранное время на сегодня закончилось. Можешь запросить ещё ниже.',
   screenTimeToday: 'Экранное время сегодня',
@@ -27,7 +28,8 @@ export const child = {
   pausedAskParentOrSos:
     'Попроси родителей разблокировать, когда понадобится. В экстренной ситуации ты всё равно можешь отправить SOS.',
   blockedHoursLockTitle: 'Заблокированные часы',
-  blockedHoursLockBody: 'Сейчас действуют часы блокировки. Хорошее время для перерыва.',
+  blockedHoursLockBody:
+    'Сейчас действуют Заблокированные часы. Хорошее время для перерыва.',
   blockedHoursLockHint:
     'Попроси родителей, если нужно больше времени. В экстренной ситуации ты всё равно можешь отправить SOS.',
   parentPausedAccess: 'Родители пока заблокировали это устройство.',
@@ -48,6 +50,16 @@ export const child = {
   setupWizardRequired: 'Обязательно',
   setupWizardOptional: 'Необязательно',
   setupWizardSkip: 'Позже',
+  setupGrantStuckHint:
+    'Включил, но ничего не изменилось? Перезапусти телевизор и попробуй снова.',
   setupWizardAllDoneTitle: 'Готово!',
   setupWizardAllDoneSubtitle: 'Это устройство теперь защищено.',
+  setupWizardStepDone: 'Готово — эта уже включена.',
+  setupWizardCoreDoneTitle: 'Основная защита включена',
+  setupWizardCoreDoneBody:
+    'Обязательные разрешения выданы, и это устройство защищено. Ещё несколько необязательных шагов — и системе будет сложнее отключить защиту.',
+  setupWizardCoreDoneContinue: 'Усилить сейчас',
+  setupWizardCoreDoneLater: 'Завершить позже',
+  setupWizardParentPinNote:
+    'Нужен PIN родителя — родитель вводит его на следующем экране.',
 } as const;

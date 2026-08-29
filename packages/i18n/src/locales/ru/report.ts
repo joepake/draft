@@ -47,7 +47,37 @@ export const report = {
   findingQuietWeek:
     'Спокойная неделя — всего {{total}}, и ничего, что потребовало бы вас.',
 
+  // Положительная половина отчёта. Каждая строка называет факт и число за ним;
+  // ни одна не хвалит — `docs/COPY_STYLE.md` запрещает лесть так же, как
+  // тревогу.
+  //
+  // Формулировки именные, а не глагольные в прошедшем времени: род ребёнка
+  // продукту неизвестен, и «выполнил(а)» — именно та подсказка, которой здесь
+  // быть не должно. Согласование идёт с «лимит», «заданий», «запросов».
+  findingLimitRespected: 'Дневной лимит {{limit}} соблюдён все {{count}} дн.',
+  findingLateNightGone:
+    'На этой неделе ночных сеансов нет — на прошлой их было {{count}}.',
+  findingBlockedAppsDown:
+    'Заблокированных запусков — {{count}}, на прошлой неделе было {{previous}}.',
+  findingBlockedWebDown:
+    'Отфильтрованных сайтов — {{count}}, на прошлой неделе было {{previous}}.',
+  findingLearningTime: '{{duration}} в учебных приложениях, большая часть — {{app}}.',
+  findingTasksDone: 'Выполненных заданий — {{count}}, начислено {{bonus}}.',
+  findingAskedFirst: 'Отправлено запросов — {{count}}, вместо обхода правил.',
+  findingCheckedIn: 'На все {{asked}} Check-In получены ответы.',
+
   narrativeTitle: 'Коротко',
+
+  // Machine-written, pending a native pass. The feature names are taken
+  // verbatim from this locale's `blockedHours.title` and
+  // `controls.dailyLimit` — a button naming a screen differently from
+  // the screen it opens is the seam `docs/COPY_STYLE.md` is about.
+  actionTitle: 'Что можно сделать',
+  actionDailyLimit: 'Установить Дневной лимит {{duration}}',
+  actionDailyLimitWhy: 'Столько в среднем за день выходило на прошлой неделе.',
+  actionBlockedHours: 'Установить Заблокированные часы',
+  actionBlockedHoursLateNight: 'Заблокировать ночные часы',
+  actionOnDevice: 'На устройстве {{device}}',
   finePrint:
     'Данные охватывают период с {{from}} по {{to}} по всем устройствам семьи. Экранное время — это то, что сообщили устройства; минуты, которые они не смогли измерить, не входят ни в одну сумму.',
 
@@ -62,10 +92,62 @@ export const report = {
   emptyBody:
     'Отчёт приходит каждое воскресенье вечером. Можно составить отчёт за эту неделю прямо сейчас — он охватывает последние семь дней.',
   noUsage:
-    'За последние две недели экранное время не записывалось, поэтому сообщать пока не о чем. Выключенное устройство не сообщает ничего, и это не то же самое, что спокойная неделя.',
+    'За последние две недели экранное время не записывалось, поэтому сообщать пока не о чем. Устройство вне сети не сообщает ничего, и это не то же самое, что спокойная неделя.',
   rateLimited: 'Слишком много попыток. Подождите минуту.',
+  loadFailedTitle: 'Отчёты не загрузились',
+  loadFailed: 'Не удалось открыть отчёты. Потяните вниз, чтобы повторить.',
   failed: 'Не удалось составить отчёт. Попробуйте чуть позже.',
 
   historyTitle: 'Прошлые недели',
   historyEmpty: 'Отчёты, которые вы получите с этого момента, хранятся здесь год.',
+
+  hubToday: 'Сегодня',
+  hubTodayEmpty: 'Сегодня ещё ни одно устройство не отправило данные.',
+  hubByChild: 'По ребёнку',
+  hubByDevice: 'По устройству',
+
+  // Per-child rows. The dashboard has rendered these since the table
+  // existed; the phone could not, because the copy lived only in the web
+  // pack.
+  childrenTitle: 'По детям',
+  childrenNote: 'Те же две недели, по устройствам. Проценты — от суммы по семье.',
+  colChild: 'Ребёнок',
+  colScreenTime: 'Экранное время',
+  colShare: 'Доля',
+  colChange: 'К прошлой неделе',
+  colLimit: 'Сверх лимита',
+  colLateNights: 'Поздние вечера',
+  colTopApp: 'Чаще всего',
+  unnamedChild: 'Без имени',
+  changeUp: '+{{value}}',
+  changeDown: '−{{value}}',
+  changeFlat: 'примерно столько же',
+  noLimit: 'Без лимита',
+  noTopApp: '—',
+  limitDays_one: '{{count}} день',
+  limitDays_few: '{{count}} дня',
+  limitDays_many: '{{count}} дней',
+  limitDays_other: '{{count}} дней',
+  lateNightsNone: 'нет',
+  busiest: 'Больше всех экранного времени',
+
+  // The signed-out reports tab: a sample week, what the tab is for, and the
+  // two ways in. `guestPreviewHint` is not decoration — the chart above it is
+  // drawn from constants, and a week nobody measured has to say so.
+  guestPreviewHeading: 'Что вы увидите',
+  guestPreviewHint: 'Пример — реальные цифры появятся после подключения устройства',
+  guestTitle: 'Увидеть, куда ушла неделя',
+  guestDescription:
+    'Войдите, чтобы сравнить сегодня с обычным днём, поставить детей рядом друг с другом и получать отчёт каждое воскресенье.',
+  guestBenefitTrendTitle: 'Сегодня — против обычного',
+  guestBenefitTrendBody:
+    'Одна цифра сама по себе ничего не говорит. Сегодня всегда рисуется рядом со средним днём вашей семьи.',
+  guestBenefitChildTitle: 'Каждый ребёнок — рядом',
+  guestBenefitChildBody:
+    'Доля дня каждого ребёнка, в его собственном цвете, по всем устройствам, которыми он пользуется.',
+  guestBenefitWeeklyTitle: 'Отчёт каждое воскресенье',
+  guestBenefitWeeklyBody:
+    'Что изменилось, какие приложения выросли и поздние вечера — хранится год.',
+  guestSignInButton: 'Войти',
+  guestCreateAccount: 'Создать аккаунт родителя',
 } as const;

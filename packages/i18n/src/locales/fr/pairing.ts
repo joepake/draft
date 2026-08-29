@@ -1,9 +1,9 @@
 export const pairing = {
   shareInviteButton: 'Partager le code',
   shareInviteMessage:
-    'Rejoins notre famille sur KidGate : ouvre l’application, choisis Famille → Rejoindre la famille et saisis le code {{code}}. Le code expire dans 15 minutes.',
+    'Rejoignez notre famille sur KidGate : ouvrez l’application, choisissez Famille → Rejoindre la famille et saisissez le code {{code}}. Le code expire dans 15 minutes.',
   shareChildCodeMessage:
-    'Connectez cet appareil enfant sur KidGate : sur l’appareil parent, ouvrez KidGate → Famille (Appareils) → + → Appareil enfant, puis scannez le code QR ou saisissez le code {{code}}. Le code expire dans 5 minutes.',
+    'Connectez cet appareil enfant sur KidGate : sur l’appareil parent, ouvrez KidGate → Famille → Scanner un code, puis scannez le code QR ou saisissez le code {{code}}. Le code expire dans 5 minutes.',
   connectChildPhone: 'Connecter un appareil enfant',
   parentInstructions:
     'Sur l’appareil de l’enfant, ouvrez KidGate et choisissez Cet appareil appartient à un enfant. Saisissez ensuite le code affiché sur cet écran.',
@@ -14,13 +14,22 @@ export const pairing = {
     'Merci de garder cet écran ouvert. Un parent va connecter cet appareil depuis son app KidGate.',
   childCodeLabel: 'Ou partagez ce code',
   childScanHint:
-    'Parent : ouvrez KidGate → Famille (Appareils) → + → Appareil enfant → scannez le code QR ou saisissez le code.',
+    'Parent : ouvrez KidGate → Famille → {{scan}} → scannez le code QR ou saisissez le code.',
   childConnecting: 'Connecté. Configuration de cet appareil…',
   childPairedTitle: 'Vous êtes connecté',
   childPairedSubtitle: 'Configuration de cet appareil…',
   connectChild: 'Connecter un appareil enfant',
   waitingChildConfirm:
     'Demande envoyée. En attente de confirmation sur l’appareil de l’enfant.',
+  waitingChildConfirmHint:
+    'Sur l’appareil de l’enfant, appuyez sur « Oui, connecter » pour terminer. Vous pouvez fermer cet écran — l’association continue en arrière-plan.',
+  childConfirmedTitle: 'Appareil connecté',
+  childConfirmedBody:
+    'L’appareil de l’enfant a confirmé l’association. Choisissez maintenant qui l’utilise.',
+  childRejectedPairing:
+    'L’appareil de l’enfant a refusé cette association. Obtenez un nouveau code depuis cet appareil, puis réessayez.',
+  childConfirmExpired:
+    'L’appareil de l’enfant n’a pas confirmé à temps. Demandez-lui un nouveau code, puis réessayez.',
   confirmParentTitle: 'Confirmer ce parent ?',
   confirmParentSubtitle:
     '{{parentLabel}} souhaite gérer cet appareil. N’acceptez que si vous connaissez cette personne.',

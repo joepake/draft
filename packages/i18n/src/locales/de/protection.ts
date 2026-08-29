@@ -37,6 +37,15 @@ export const protection = {
   lockNotReadyBodyIos:
     'KidGate kann dieses iPhone erst sperren, wenn der Zugriff auf die Bildschirmzeit auf dem Kindergerät bestätigt wurde. Bitte öffne KidGate dort und schließe Folgendes ab:',
   locationPermission: 'Standort-Berechtigung',
+  cameraPermission: 'Kameraberechtigung',
+  cameraConsentPending:
+    'Die Kamera ist auf diesem Gerät nicht erlaubt, deshalb kommt ein SOS oder Check-in von dort ohne Foto an.',
+  locationConsentPending:
+    'Der Standort ist auf diesem Gerät nicht erlaubt, deshalb kann es nicht melden, wo es ist.',
+  consentStepOpenSettings:
+    'Öffne KidGate auf dem Gerät des Kindes und geh zu Einstellungen.',
+  consentStepParentPin: 'Gib die Eltern-PIN ein.',
+  consentStepPermissions: 'Öffne „Berechtigungen“ und erlaube, was fehlt.',
   notificationsPermission: 'Mitteilungs-Berechtigung',
   backgroundUpdates: 'Hintergrundaktualisierungen',
   backgroundUpdatesRestricted:

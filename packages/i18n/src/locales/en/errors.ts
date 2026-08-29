@@ -11,7 +11,11 @@ export const errors = {
   unableToJoinFamilyAccount: 'Unable to join the family account. Try again.',
   enterEmailAddress: 'Enter your email address.',
   unableToCreatePairingCode: 'Unable to create a pairing code. Try again.',
-  unableToRedeemPairingCode: 'That pairing code is incorrect or has expired.',
+  // Wrong-code first: the server answers a distinct code for a code that
+  // expired recently (pairingCodeExpiredChild / ...Parent), so by the time
+  // this one fires the code is usually mistyped, not stale.
+  unableToRedeemPairingCode:
+    'That code doesn’t match. Double-check the characters — or ask for a fresh code if it’s been a while.',
   unableToClaimChildPairing: 'Unable to connect the child device. Try again.',
   unableToPollChildPairing: 'Unable to check the pairing status.',
   unableToConfirmChildPairing: 'Unable to confirm this pairing. Try again.',
@@ -20,6 +24,8 @@ export const errors = {
   unableToOpenCamera:
     'Unable to open the camera. Allow Camera access in device Settings.',
   noPhotoCaptured: 'No photo was captured.',
+  unableToOpenPhotoLibrary:
+    'Unable to open your photos. Allow Photos access in device Settings.',
   simulatorCameraHint:
     'On the simulator, enable a camera first: Simulator menu → Camera → Front Camera, then try SOS again. For a real photo, test on a physical iPhone.',
   notSignedInReopenApp:
@@ -49,7 +55,7 @@ export const errors = {
     'This device needs to reconnect. Close and reopen KidGate, then try again.',
   deviceNotFound: 'That device is no longer in your family.',
   registerParentDeviceFirst:
-    'Set this device up as a parent device first, then try again.',
+    'This phone isn’t set up as a parent device yet. Open KidGate here, choose the parent role on the start screen, then try pairing again.',
   pairingCodeFormat: 'Enter the 6-character code.',
   pairingCodeUsed: 'That code has already been used. Ask for a new one.',
   pairingCodeExpiredChild:

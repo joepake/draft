@@ -60,6 +60,60 @@ export function getAccentIdsForStyle(styleId: ThemeStyleId): AccentId[] {
 }
 
 /**
+ * One colour per device in a chart, a map or a merged list — **ordered for
+ * separation, not for the picker.**
+ *
+ * The picker's order is a spectrum (teal, sky, blue, …) because a grid of
+ * swatches reads as a spectrum. Handing that same order out as a data key gave
+ * device 2 and device 3 `sky` #0369A1 and `blue` #2563EB — ΔE00 11.3, two blues
+ * a parent cannot tell apart on a map line, which is the whole job the colour
+ * has when a merged trail carries no other mark.
+ *
+ * This order is searched instead: at every prefix length, the worst pair is as
+ * far apart as the pack allows, measured with CIEDE2000 in three visions —
+ * normal, deuteranopia and protanopia (Viénot). Colour-vision deficiency is not
+ * a nicety here: the pure-normal optimum put `lime` beside `orange`, ΔE00 82
+ * to most eyes and **2.6** to a deuteranope, i.e. one colour.
+ *
+ * Measured worst pair, first N devices (normal / worst of the three):
+ *
+ * | N | 2     | 3     | 4    | 5    | 6    |
+ * | - | ----- | ----- | ---- | ---- | ---- |
+ * |   | 43/43 | 43/29 | 22/19 | 18/17 | 16/15 |
+ *
+ * Real families run to four or five location-capable devices, so the first six
+ * entries carry the weight; past that it degrades and the legend and the
+ * per-row labels are what keep it readable. Not style-dependent: the sweet pack
+ * offers four pinks, and four pinks cannot key five devices honestly.
+ *
+ * `packages/tokens/src/__tests__/seriesAccents.test.ts` pins the numbers —
+ * reordering this list without re-running that measurement is how the two
+ * blues came back.
+ */
+export const SERIES_ACCENT_IDS: AccentId[] = [
+  'sky',
+  'brown',
+  'green',
+  'rose',
+  'teal',
+  'orange',
+  'violet',
+  'lime',
+  'fuchsia',
+  'slate',
+  'pink',
+  'blue',
+];
+
+/** The series colour for the Nth device, wrapping past the pack's end. */
+export function getSeriesSwatch(index: number): string {
+  const safeIndex = index < 0 ? 0 : index;
+  const accentId =
+    SERIES_ACCENT_IDS[safeIndex % SERIES_ACCENT_IDS.length] ?? DEFAULT_ACCENT_ID;
+  return getAccentDefinition(accentId).swatch;
+}
+
+/**
  * Accent to land on when the active pack does not offer the current one:
  * entering sweet with a non-pink accent, or leaving it with `berry`. Pink is
  * the only accent both packs offer that is native to sweet, so it is the

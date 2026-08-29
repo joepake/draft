@@ -2,9 +2,9 @@ export const screenTime = {
   turnOnScreenTime: 'Ekran Süresi’ni aç',
   finishScreenTimeSetup: 'Ekran Süresi kurulumunu tamamla',
   screenTimeNeededForControls:
-    'Uygulama engelleme, engellenen saatler ve kilitleme bu cihazda Ekran Süresi gerektirir.',
+    'Uygulama engelleme, Engellenen Saatler ve kilitleme bu cihazda Ekran Süresi gerektirir.',
   screenTimeNeededForLimits:
-    'Ekran Süresi olmadan kilitleme, engellenen saatler ve uygulama sınırları uygulanamaz.',
+    'Ekran Süresi olmadan kilitleme, Engellenen Saatler ve uygulama sınırları uygulanamaz.',
   screenTimeStepOpenKidGate: 'Bu çocuk cihazında KidGate’i açın.',
   screenTimeStepAllowUsage:
     'Durum ekranında Uygulama ve Web Sitesi Kullanımına İzin Ver’i seçin.',
@@ -26,7 +26,7 @@ export const screenTime = {
   screenTimeBannerTitleRequest: 'Uygulama ve Web Sitesi Kullanımına İzin Ver',
   screenTimeBannerBodyDenied: '{{appName}} için Ayarlar’da Ekran Süresi açık olmalı.',
   screenTimeBannerBodyRequest:
-    'Bu, ailenin bu cihazda uygulamaları kilitlemesine ve engellenen saatler ayarlamasına olanak tanır.',
+    'Bu, ailenin bu cihazda uygulamaları kilitlemesine ve Engellenen Saatler ayarlamasına olanak tanır.',
   usageAccessBannerTitle: 'Kullanım Erişimi’ni aç',
   usageAccessBannerBody:
     'KidGate’in ekran süresini takip etmesi ve sınırları uygulaması için Kullanım Erişimi gerekir.',

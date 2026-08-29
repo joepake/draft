@@ -1,12 +1,81 @@
 export const family = {
   title: 'Familia',
   connectButton: 'Conectar',
-  connectAccessibility: 'Agregar un dispositivo de un niño o de un padre',
-  addDeviceTitle: 'Agregar un dispositivo',
+  connectAccessibility: 'Añadir un dispositivo de un niño o de un padre',
+  addDeviceTitle: 'Añadir un dispositivo',
   addDeviceMessage: '¿Qué deseas conectar?',
-  addChildOption: 'Agregar dispositivo del niño',
+  addChildOption: 'Añadir dispositivo del niño',
   addJoinFamilyOption: 'Unirse a una familia',
   addParentOption: 'Invitar a un padre',
+  loginWebOption: 'Iniciar sesión en la web',
+  // The "who uses this device?" assignment sheet.
+  assignSheetTitle: '¿Quién usa {{deviceName}}?',
+  assignSheetBody: 'El tiempo de pantalla y las estrellas cuentan para quien elijas.',
+  assignSheetNobody: 'Nadie',
+  assignSheetNobodyHint: 'Dispositivo compartido: no cuenta para nadie.',
+  assignSheetAddAndAssign: 'Añadir y asignar',
+  // The "protect this child now?" starter sheet, offered right after a fresh
+  // pairing is assigned. Content pre-exists on the device; this flips it on.
+  quickProtectTitle: '¿Proteger a {{childName}} ahora?',
+  quickProtectBody:
+    'Activa un conjunto inicial de protecciones. Podrás ajustarlo todo más adelante en el perfil del niño.',
+  quickProtectBedtime: 'Horas bloqueadas para dormir',
+  quickProtectBedtimeHint:
+    'Bloquea el uso del dispositivo por la noche, de 22:00 a 7:00.',
+  quickProtectDailyLimit: 'Límite diario de tiempo de pantalla',
+  quickProtectDailyLimitHint:
+    '{{minutes}} minutos al día, compartidos entre todos sus dispositivos.',
+  quickProtectWebFilter: 'Filtro web',
+  quickProtectWebFilterHint:
+    'Bloquea el contenido para adultos y otras categorías de riesgo.',
+  quickProtectWebFilterPremium: 'Función Premium: incluida con un plan.',
+  quickProtectApply: 'Activar protección',
+  quickProtectSkip: 'Ahora no',
+  quickProtectDone: 'La protección está activada. Ajústala cuando quieras.',
+  quickProtectPartial:
+    'Algunas protecciones no se pudieron guardar. Inténtalo de nuevo desde el perfil del niño.',
+  pairDeviceFirstTitle: 'Aún no hay ningún dispositivo vinculado',
+  pairDeviceFirstBody:
+    'Vincula primero un dispositivo para este niño: en la pestaña Familia, toca el icono de escanear o «+» y elige «Añadir dispositivo del niño». Este control empieza a funcionar en cuanto uno se conecta.',
+  // Child-grouped family list: group header lock-all + unassigned group.
+  lockAll: 'Bloquear todo',
+  unlockAll: 'Desbloquear todo',
+  lockAllA11y: 'Bloquear todos los dispositivos de {{childName}}',
+  unlockAllA11y: 'Desbloquear todos los dispositivos de {{childName}}',
+  childDetailUnassignTitle: '¿Quitar del niño?',
+  childDetailUnassignBody:
+    '{{deviceName}} dejará de contar para {{childName}} y pasará a Sin asignar. Sigue emparejado y protegido.',
+  childDetailUnassignConfirm: 'Quitar',
+  childDetailUnassignA11y: 'Quitar {{deviceName}} de este niño',
+  // The fold control on a group heading.
+  collapseGroupA11y: 'Contraer {{name}}',
+  expandGroupA11y: 'Expandir {{name}}',
+  assignDeviceCta: 'Asignar a un niño…',
+  unassignedHint: 'Estos dispositivos aún no cuentan para nadie.',
+  unassignedHintMember:
+    'El propietario de la familia asigna estos dispositivos a los hijos.',
+  // The footer strip: children who hold no device get no group of their own.
+  childrenWithoutDeviceTitle: 'Niños sin dispositivo',
+  // Child detail screen.
+  childDetailStarsWell: 'Estrellas esta semana',
+  childStarsA11y: 'Estrellas esta semana: {{count}}',
+  childDetailDevicesTitle: 'Dispositivos',
+  childDetailAssignMore: 'Asignar otro dispositivo…',
+  childDetailAssignSheetTitle: 'Asignar un dispositivo a {{childName}}',
+  childDetailNoDevices:
+    'Aún no hay dispositivos. Asigna uno abajo o empareja uno nuevo desde la pestaña Familia.',
+  // Same screen for a joined parent, who may pair but may not assign.
+  childDetailNoDevicesMember:
+    'Aún no hay dispositivos. Solo el propietario de la familia decide de quién es cada dispositivo.',
+  childDetailEditNameTitle: 'Editar nombre',
+  childDetailColorLabel: 'Color',
+  scanButtonAccessibility: 'Escanear código',
+  scanTitle: 'Escanear código',
+  scanBody:
+    'Apunta la cámara a un dispositivo infantil, una invitación familiar o el código que aparece en un ordenador.',
+  manualCodeLabel: 'Introduce el código de 6 caracteres',
+  manualInstructions:
+    'Introduce el código de 6 caracteres que aparece en el otro dispositivo.',
 
   headerHintEmpty: 'Administra y protege los dispositivos de tus hijos',
 
@@ -24,8 +93,8 @@ export const family = {
 
   chipSosCount: '{{count}} SOS',
 
-  chipCheckInCount: '{{count}} Check-Ins',
-  chipCheckInCount_one: '{{count}} Check-In',
+  chipCheckInCount: '{{count}} Check-ins',
+  chipCheckInCount_one: '{{count}} Check-in',
 
   chipRequestCount: '{{count}} solicitudes',
   chipRequestCount_one: '{{count}} solicitud',
@@ -35,6 +104,8 @@ export const family = {
 
   chipProtectedCount: '{{count}} protegidos',
 
+  childDevicesProtected: '{{count}} dispositivos protegidos',
+
   chipHealthWarnCount: '{{count}} requieren configuración',
   chipHealthWarnCount_one: '{{count}} requiere configuración',
 
@@ -43,6 +114,7 @@ export const family = {
   chipBlockedCount: '{{count}} bloqueados',
 
   healthProtected: 'Protegido',
+  buildOutdated: 'Actualización disponible',
   healthNeedsSetup: 'Requiere configuración',
   healthOffline: 'Sin conexión',
 
@@ -61,7 +133,7 @@ export const family = {
   emptyTitle: 'Aún no hay dispositivos de niños',
 
   emptyDescription:
-    'Agrega el dispositivo de tu hijo para empezar a supervisar el tiempo de pantalla y el uso de aplicaciones.',
+    'Añade el dispositivo de tu hijo para empezar a supervisar el tiempo de pantalla y el uso de aplicaciones.',
 
   setupFamilyTitle: 'Configura tu familia',
 
@@ -95,14 +167,14 @@ export const family = {
   guestBenefitAlertsBody:
     'Recibe una notificación en cuanto algo requiera tu atención.',
 
-  guestBenefitLocationTitle: 'Ubicación y Check-Ins',
+  guestBenefitLocationTitle: 'Ubicación y Check-ins',
 
   guestBenefitLocationBody:
     'Consulta dónde está tu hijo y pídele que confirme que está a salvo.',
 
   stepsHeading: 'Primeros pasos',
 
-  step1Title: 'Pulsa «Agregar dispositivo del niño»',
+  step1Title: 'Pulsa «Añadir dispositivo del niño»',
 
   step1Description: 'Aquí aparecerá un código QR de vinculación, listo para escanear.',
 
@@ -167,6 +239,7 @@ export const family = {
   mac: 'Mac',
   windowsPc: 'PC con Windows',
   androidTv: 'Android TV',
+  chromebook: 'Chromebook',
 
   deviceNameRequired: 'Introduce un nombre para el dispositivo.',
 
@@ -209,13 +282,17 @@ export const family = {
 
   sosNeedsAttentionNow: 'SOS: requiere atención inmediata',
 
-  waitingForCheckIn: 'Esperando Check-In',
+  waitingForCheckIn: 'Esperando Check-in',
 
   timeRequestsWaiting: '{{count}} solicitudes de tiempo pendientes',
 
   timeRequestsWaiting_one: '{{count}} solicitud de tiempo pendiente',
 
   youPausedThisDevice: 'Has bloqueado este dispositivo',
+
+  lockSentWaitingForDevice: 'Bloqueo enviado: esperando al dispositivo',
+
+  lockNotAppliedOnDevice: 'Este dispositivo no ha aplicado el bloqueo',
 
   blockedHoursActiveNow: 'Horas bloqueadas activas',
 
@@ -239,8 +316,26 @@ export const family = {
 
   parentFallback: 'Un padre',
 
-  formerParent: 'Un padre o madre que salió',
+  formerParent: 'Un padre o madre que salió de la familia',
   batteryPercent: '{{percent}} %',
   batteryAccessibility: 'Batería al {{percent}} por ciento',
   batteryChargingAccessibility: 'Batería al {{percent}} por ciento, cargando',
+  childDetailPerDevice: 'Por dispositivo: elige cuál',
+  childDetailNotAvailable: 'No disponible',
+  childDetailNotAvailableReason: 'No disponible en ninguno de sus dispositivos',
+  childDetailProtectionOk: 'Protegido',
+  childDetailProtectionAttention: '{{count}} dispositivos necesitan atención',
+  childDetailProtectionAttention_one: '{{count}} dispositivo necesita atención',
+  childDetailProtectionSheetTitle: 'Protección por dispositivo',
+  childDetailRemoveTitle: 'Quitar a este hijo',
+  childDetailRemovingButton: 'Quitando…',
+  childDetailOnlineCount: '{{online}} de {{total}} en línea',
+  childDetailBudgetTitle: 'Límite diario',
+  childDetailSectionControls: 'Reglas en todos sus dispositivos',
+  childDetailSectionSafety: 'Combinado de todos sus dispositivos',
+  childDetailSectionAlerts: 'Todos sus dispositivos, una sola lista',
+  childDetailScopeAll: 'Todos los dispositivos',
+  childDetailTodayWell: 'Usado hoy',
+  childDetailUnassignAction: 'Quitar',
+  childDetailLimitShared: 'Total en todos sus dispositivos',
 } as const;

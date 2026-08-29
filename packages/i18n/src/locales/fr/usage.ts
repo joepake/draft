@@ -51,6 +51,10 @@ export const usage = {
   overLimitChip: 'Limite dépassée',
   usageReportsNote:
     'Affiche le temps d’écran, les verrouillages et l’activité récente de cet appareil.',
+  syncNote:
+    'Le temps d’écran peut mettre quelques minutes à apparaître sur cet écran — plus longtemps si l’appareil n’a pas de connexion Internet ou s’est fermé de façon inattendue.',
+  syncNoteTv:
+    'Cette télévision ne se connecte que périodiquement, le temps d’écran peut donc mettre jusqu’à 30 minutes à apparaître sur cet écran — plus longtemps sans connexion Internet.',
   sectionLast30Days: 'Les 30 derniers jours',
   comparePeriodTotal: 'Total sur 30 jours',
   compareDayAvg: 'Moyenne quotidienne',
@@ -65,9 +69,18 @@ export const usage = {
   sectionTopApps: 'Applications les plus utilisées',
   topAppsHint:
     'Applications les plus utilisées aujourd’hui sur l’appareil de l’enfant. Les données s’accumulent au fur et à mesure de la synchronisation de Temps d’écran / Accès à l’utilisation.',
+  topAppsExcludedNote:
+    'L’économiseur d’écran, l’écran d’accueil et l’écran de KidGate lui-même ne comptent pas comme temps d’écran. Quand l’appareil est allumé sans que personne s’en serve, ces minutes sont enregistrées en « Non utilisé ».',
+  topAppsAiNote:
+    'Certains types ont été déduits du nom de l’application au lieu de correspondre à une application connue — quelques-uns peuvent être faux.',
   errorTitle: 'Impossible de charger l’utilisation',
   errorDescription: 'Veuillez vérifier votre connexion et réessayer.',
   tryAgain: 'Réessayer',
+  // Shown only when the rating is known — it is 0 for much of the long
+  // tail, and 0 does not mean "suitable for everyone".
+  appMinAge: 'Classé {{age}}+',
+  underAMinute: 'Moins d’une minute',
+  topAppsOther: 'Autres applications',
   topAppsEmpty:
     'Aucune donnée par application pour le moment. Sur l’appareil de l’enfant, vérifiez que KidGate est autorisé à mesurer l’utilisation des applications, puis attendez une synchronisation.',
   protectionImpactTitle: 'Impact de la protection',

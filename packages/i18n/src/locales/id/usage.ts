@@ -13,7 +13,7 @@ export const usage = {
   insightNearDailyLimit: 'Mendekati Batas Harian',
   insightMinutesRemaining: 'Sisa {{minutes}} menit hari ini',
   insightNoDailyLimit: 'Batas harian belum diatur',
-  insightBlockedHoursActive: 'Jam blokir sedang aktif',
+  insightBlockedHoursActive: 'Jam Diblokir sedang aktif',
   insightBlockedHoursScheduled: 'Jam Diblokir terjadwal',
   insightDeviceLocked: 'Perangkat terkunci',
   insightProtectionsHealthy: 'Perlindungan tampak baik',
@@ -49,6 +49,10 @@ export const usage = {
   overLimitChip: 'Melebihi batas',
   usageReportsNote:
     'Menampilkan waktu layar, kunci, dan aktivitas terbaru untuk perangkat ini.',
+  syncNote:
+    'Waktu layar bisa butuh beberapa menit untuk muncul di layar ini — lebih lama jika perangkat tidak memiliki koneksi internet atau ditutup secara tidak terduga.',
+  syncNoteTv:
+    'TV ini hanya memeriksa secara berkala, jadi waktu layar bisa butuh waktu hingga 30 menit untuk muncul di layar ini — lebih lama jika tidak ada koneksi internet.',
   sectionLast30Days: '30 hari terakhir',
   comparePeriodTotal: 'Total 30 hari',
   compareDayAvg: 'Rata-rata harian',
@@ -63,9 +67,18 @@ export const usage = {
   sectionTopApps: 'Aplikasi paling sering digunakan',
   topAppsHint:
     'Aplikasi paling sering digunakan hari ini di perangkat anak. Data bertambah seiring sinkronisasi Waktu Layar / Akses Penggunaan.',
+  topAppsExcludedNote:
+    'Screensaver, layar utama, dan layar KidGate sendiri tidak dihitung sebagai waktu penggunaan. Saat perangkat menyala tetapi tidak ada yang memakainya, menit-menit itu dicatat sebagai “Tidak dipakai”.',
+  topAppsAiNote:
+    'Sebagian jenis disimpulkan dari nama aplikasi, bukan dicocokkan dengan aplikasi yang dikenal, jadi ada yang mungkin meleset.',
   errorTitle: 'Tidak dapat memuat data penggunaan',
   errorDescription: 'Periksa koneksi Anda dan coba lagi.',
   tryAgain: 'Coba lagi',
+  // Shown only when the rating is known — it is 0 for much of the long
+  // tail, and 0 does not mean "suitable for everyone".
+  appMinAge: 'Rating {{age}}+',
+  underAMinute: 'Kurang dari semenit',
+  topAppsOther: 'Aplikasi lain',
   topAppsEmpty:
     'Belum ada data per aplikasi. Di perangkat anak, pastikan KidGate diizinkan mengukur penggunaan aplikasi, lalu tunggu sinkronisasi.',
   protectionImpactTitle: 'Dampak perlindungan',

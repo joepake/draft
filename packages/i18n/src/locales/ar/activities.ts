@@ -1,7 +1,8 @@
 export const activities = {
   title: 'الأنشطة',
   subtitleAllDevices: 'أحدث الأحداث على جميع الأجهزة',
-  subtitleTimelineForDevice: 'سجل النشاط لـ {{deviceName}}',
+  subtitleTimelineForDevice: 'المخطط الزمني لـ {{deviceName}}',
+  subtitleTimelineForChild: 'المخطط الزمني لـ {{childName}}',
   fallbackDeviceName: 'الجهاز',
   liveBadge: 'مباشر',
   errorTitle: 'تعذر تحميل النشاط',
@@ -34,19 +35,33 @@ export const activities = {
   activityTypeAppInstalled: 'تم تثبيت التطبيق',
   activityTypeAppRemoved: 'تمت إزالة التطبيق',
   activityTypePlaceEnter: 'تم الوصول إلى الموقع',
-  activityTypePlaceExit: 'تم مغادرة الموقع',
+  activityTypePlaceExit: 'تمت مغادرة الموقع',
   activityTypeTamper: 'الحماية',
   activityTypeScreenTime: 'وقت استخدام الشاشة',
+  activityTypeWebFilter: 'فلتر الويب',
   activityTypeEmergency: 'طوارئ',
   activityTypeUnknown: 'نشاط',
 
+  sosEscapeTitle: 'فتح طارئ للقفل',
+  sosEscapeBody: 'أدى SOS إلى فتح قفل هذا الجهاز لمدة {{minutes}} دقيقة.',
+  sosEscapeRepeatTitle: 'فتح طارئ للقفل ({{count}} مرات اليوم)',
+  sosEscapeRepeatBody:
+    'أدى SOS إلى فتح قفل هذا الجهاز لمدة {{minutes}} دقيقة. هذه {{count}} مرات اليوم.',
   appBlockedTitle: '{{appName}}',
   appBlockedBody: 'فُتح تطبيق محظور وأغلقه KidGate.',
-  appInstalledTitle: '{{appName}}',
-  appInstalledBody: 'تم تثبيت تطبيق جديد على جهاز الطفل.',
+  appInstalledTitle: 'تم تثبيت التطبيق',
+  appInstalledBody: 'تم تثبيت التطبيق {{appName}} على جهاز الطفل.',
 
-  appRemovedTitle: '{{appName}}',
-  appRemovedBody: 'تمت إزالة تطبيق من جهاز الطفل.',
+  messageAlertTitle: 'محتوى رسالة مقلق',
+  messageAlertBody: 'تم رصد كلمة مُعلَّمة في {{appName}}.',
+  messageAlertBodyOutgoing: 'تم رصد كلمة مُعلَّمة في رسالة كتبها طفلك في {{appName}}.',
+  activityTypeMessageAlert: 'تنبيه رسالة',
+  messageCheckedTitle: 'تم الفحص، لا شيء مقلق',
+  messageCheckedBody:
+    'ظهرت كلمة مراقَبة في {{appName}} وتبيّن أنها غير مؤذية في سياقها.',
+  activityTypeMessageChecked: 'تم الفحص',
+  appRemovedTitle: 'تمت إزالة التطبيق',
+  appRemovedBody: 'تمت إزالة التطبيق {{appName}} من جهاز الطفل.',
 
   placeEnterTitle: 'تم الوصول إلى {{placeName}}',
   placeEnterBody: 'دخل جهاز الطفل إلى موقع محفوظ.',
@@ -95,7 +110,7 @@ export const activities = {
 
   tamperCameraTitle: 'تم تعطيل الكاميرا',
   tamperCameraBody:
-    'قد يتعذر إرسال صور SOS وCheck-In حتى يتم السماح باستخدام الكاميرا مرة أخرى.',
+    'قد يتعذر إرسال صور SOS والاطمئنان حتى يتم السماح باستخدام الكاميرا مرة أخرى.',
 
   tamperBackgroundRefreshTitle: 'تم تعطيل تحديث التطبيقات في الخلفية',
   tamperBackgroundRefreshBody:
@@ -117,10 +132,13 @@ export const activities = {
   tamperBackgroundRefresh: 'تم تعطيل تحديث التطبيقات في الخلفية.',
 
   filterAllDevices: 'جميع الأجهزة',
+  // The child tier of the feed filter — "All" would read as all devices.
+  filterAllChildren: 'الجميع',
   dateToday: 'اليوم',
   dateYesterday: 'أمس',
 
   filterByDevice: 'تصفية حسب {{label}}',
+  filterByChild: 'عرض {{label}} فقط',
 
   openFullSosHistory: 'عرض سجل SOS الكامل',
 

@@ -1,7 +1,5 @@
 export const webSignIn = {
-  // Settings section header; the row under it is `title` + `subtitle`.
-  sectionTitle: '웹에서 KidGate',
-  title: '브라우저 허용',
+  title: '웹에서 로그인',
   subtitle: '컴퓨터에서 가족 관리',
 
   // The screen. The steps name the site and the button to press on the

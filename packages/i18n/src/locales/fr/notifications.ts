@@ -31,9 +31,13 @@ export const notifications = {
       label: 'Demandes de temps',
       hint: 'Votre enfant demande plus de temps d’écran.',
     },
+    siteRequests: {
+      label: 'Demandes de sites',
+      hint: 'Votre enfant demande à ouvrir un site bloqué.',
+    },
     checkIn: {
-      label: 'Réponses aux points de contrôle',
-      hint: 'Votre enfant répond à un point de contrôle de sécurité.',
+      label: 'Réponses aux Check-in',
+      hint: 'Votre enfant répond à un Check-in.',
     },
     rewardTasks: {
       label: 'Récompenses réclamées',
@@ -42,6 +46,10 @@ export const notifications = {
     appActivity: {
       label: 'Applis installées ou supprimées',
       hint: 'Une appli apparaît ou disparaît sur un appareil enfant.',
+    },
+    anomalyAlerts: {
+      label: 'Activité inhabituelle',
+      hint: 'Usage inhabituel sur un appareil enfant : usage nocturne, pics, nouvelles applis.',
     },
     weeklyDigest: {
       label: 'Bilan hebdomadaire',

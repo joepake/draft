@@ -79,24 +79,44 @@ export function createDeviceCredentialRepository(deps: DeviceCredentialRepositor
     return credential;
   }
 
+  /**
+   * Which `role:deviceId` the server has confirmed this session, or null.
+   *
+   * `ensure` probes the server so a stale keystore is caught — but it used to
+   * probe on **every** call, and `childFields` calls it on every child-scoped
+   * request, which made each usage heartbeat two round trips. One confirmation
+   * per session is enough: the failure the probe exists for (account switch,
+   * reinstall, cleared keystore) invalidates the session or the keystore, and
+   * both paths reset this. A hash rotated server-side mid-session still
+   * surfaces as `staleCredential` on the next real call, which the adapter
+   * already answers with `reissue`.
+   */
+  let confirmedFor: string | null = null;
+
   const repository = {
     async get(): Promise<string | null> {
       return deps.secure.get(CREDENTIAL_KEY);
     },
 
     async clear(): Promise<void> {
+      confirmedFor = null;
       await deps.secure.remove(CREDENTIAL_KEY);
     },
 
     /**
      * The credential for this device, obtaining or recovering one as needed.
      *
-     * Always probes the server rather than trusting the keystore alone: after
-     * an account switch a device can still hold the previous user's secret
-     * while the server has no matching hash for the current one.
+     * Probes the server rather than trusting the keystore alone — after an
+     * account switch a device can still hold the previous user's secret while
+     * the server has no matching hash for the current one — but once per
+     * session per `role:deviceId`, not per call. See `confirmedFor`.
      */
     async ensure(role: DeviceRole, deviceId: string): Promise<string | null> {
       const existing = await deps.secure.get(CREDENTIAL_KEY);
+
+      if (existing && confirmedFor === `${role}:${deviceId}`) {
+        return existing;
+      }
 
       for (let attempt = 0; attempt < REGISTRATION_RETRIES; attempt += 1) {
         let response: EnsureResponse;
@@ -120,11 +140,13 @@ export function createDeviceCredentialRepository(deps: DeviceCredentialRepositor
         }
 
         if (response.issued && response.credential) {
+          confirmedFor = `${role}:${deviceId}`;
           return store(response.credential);
         }
 
         // The server has a hash and this device has the matching secret.
         if (existing) {
+          confirmedFor = `${role}:${deviceId}`;
           return existing;
         }
 
@@ -147,6 +169,7 @@ export function createDeviceCredentialRepository(deps: DeviceCredentialRepositor
     async reissue(role: DeviceRole, deviceId: string): Promise<string | null> {
       // Dropped before asking. If the call fails halfway, the next attempt must
       // not find the rejected secret still sitting in the keystore and send it.
+      confirmedFor = null;
       await deps.secure.remove(CREDENTIAL_KEY);
 
       let response: EnsureResponse;
@@ -159,6 +182,7 @@ export function createDeviceCredentialRepository(deps: DeviceCredentialRepositor
       if (response?.ok !== true || !response.credential) {
         return null;
       }
+      confirmedFor = `${role}:${deviceId}`;
       return store(response.credential);
     },
   };

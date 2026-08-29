@@ -32,6 +32,14 @@ export const protection = {
   lockNotReadyBodyIos:
     '자녀 기기에서 스크린 타임 접근이 허용될 때까지 KidGate는 이 iPhone을 잠글 수 없습니다. 해당 기기에서 KidGate를 열고 다음을 완료해 주세요.',
   locationPermission: '위치 권한',
+  cameraPermission: '카메라 권한',
+  cameraConsentPending:
+    '이 기기에서 카메라가 허용되지 않아, 여기서 보낸 SOS나 체크인은 사진 없이 도착합니다.',
+  locationConsentPending:
+    '이 기기에서 위치가 허용되지 않아, 어디에 있는지 알릴 수 없습니다.',
+  consentStepOpenSettings: '아이 기기에서 KidGate를 열고 설정으로 이동하세요.',
+  consentStepParentPin: '보호자 PIN을 입력하세요.',
+  consentStepPermissions: '‘권한’을 열고 빠진 항목을 허용하세요.',
   notificationsPermission: '알림 권한',
   backgroundUpdates: '백그라운드 업데이트',
   backgroundUpdatesRestricted: '이 기기에서는 백그라운드 업데이트가 제한되어 있습니다.',

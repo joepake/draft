@@ -67,7 +67,18 @@ export const STORE_LINKS = {
     available: false,
   },
   macos: {
-    url: 'https://download.kidgate.app/KidGate-macos.dmg',
+    /*
+     * The `.pkg`, not the `.dmg` the release also publishes.
+     *
+     * Both are signed, notarised and stapled, and the image is the nicer
+     * artefact for anyone who wants the bundle by hand. It is the wrong one to
+     * put behind a download button: it asks the person to drag the app into
+     * `/Applications`, and a parent who instead double-clicks it where it sits
+     * gets an agent whose content filter can never activate — `sysextd`
+     * refuses a system extension outside `/Applications`, before the approval
+     * prompt, silently. The package writes the bundle there itself.
+     */
+    url: 'https://download.kidgate.app/KidGate-macos.pkg',
     available: false,
   },
   windows: {

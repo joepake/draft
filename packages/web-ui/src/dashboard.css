@@ -222,6 +222,56 @@
   flex-shrink: 0;
 }
 
+/*
+ * The sidebar is grouped by child: one heading per person, their devices
+ * indented under it, and a trailing group for devices assigned to nobody.
+ * Before this the heading said "Children" over a flat list of devices, so a
+ * family with one child and two devices read as two children.
+ */
+.kid-group + .kid-group {
+  margin-top: 0.85rem;
+}
+
+.kid-group-title {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0 0.5rem;
+  margin-bottom: 0.3rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--ink-2);
+  min-width: 0;
+}
+
+.kid-group-title span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* The devices belong to the heading above them, and the inset says so. */
+.kid-group .kid {
+  padding-left: 0.85rem;
+}
+
+/*
+ * A child's initial, filled with their accent from `@kidgate/tokens` as an
+ * inline style. White reads on every swatch in that list — they are the
+ * picker's saturated values, not the soft tints.
+ */
+.kid-initial {
+  width: 1.35rem;
+  height: 1.35rem;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: #fff;
+}
+
 .kid-dot.tone-good {
   background: var(--good);
 }
@@ -279,6 +329,17 @@
   padding: 0.1rem 0.4rem;
 }
 
+/* The same badge slot carrying a mark rather than a figure: no text, so it
+   needs its own size, and the brand colour rather than --warning because an
+   unread report is news, not something wrong. */
+.nav-badge-dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  align-self: center;
+  background: var(--brand);
+}
+
 .side-foot {
   margin-top: auto;
   padding: 0.9rem 0.5rem 0;
@@ -325,6 +386,17 @@
   letter-spacing: -0.02em;
 }
 
+/* Who this page is about, above the device it is about. */
+.dash-top-owner {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.2rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--ink-2);
+}
+
 .dash-top p {
   display: flex;
   align-items: center;
@@ -354,6 +426,29 @@
 .batt-low {
   color: var(--kg-errorStrong);
   font-weight: 600;
+}
+
+/* A device running an old build, in the same header row. `errorStrong` and the
+   same weight as the low battery beside it, and for the same reason: both are
+   one segment of a line that is otherwise plain text, and the base error colour
+   fails AA at this size. Nothing paints the current case — a device that is up
+   to date reads as an ordinary version number, because it is one. */
+.build-old {
+  color: var(--kg-errorStrong);
+  font-weight: 600;
+}
+
+/* The same fact on the device rail, where the row is a name and a model in
+   small type. `warningStrong`, not `errorStrong`: in the header it is one
+   segment among facts about a device that is otherwise fine, and here it sits
+   in a list where `errorStrong` would read as loudly as an offline dot.
+
+   Written as `em.kid-build-old` because `.kid-meta em` is (0,1,1) and sets
+   `--muted` — a bare class loses to it and the badge renders in the model
+   name's grey. */
+.kid-meta em.kid-build-old {
+  color: var(--kg-warningStrong);
+  font-weight: 700;
 }
 
 .pill {
@@ -1066,6 +1161,18 @@
   line-height: 1.5;
 }
 
+/* The same panel, when the fix is a walk through a screen rather than one
+   sentence about a switch. Numbers because the order is load-bearing: the
+   Permissions row is not reachable until the Parent PIN is in. */
+ol.attn-fix {
+  margin-inline-start: 0;
+  padding-inline-start: 1.9rem;
+}
+
+ol.attn-fix li + li {
+  margin-top: 0.25rem;
+}
+
 .attn li:last-child,
 .timeline li:last-child,
 .events li:last-child,
@@ -1455,6 +1562,20 @@
   background: color-mix(in srgb, var(--brand) 16%, transparent);
   border-color: color-mix(in srgb, var(--brand) 40%, transparent);
   color: color-mix(in srgb, var(--brand) 25%, var(--ink));
+}
+
+/* Web-filter categories, chunked under the same headings the phone draws. */
+.chip-group + .chip-group {
+  margin-top: 0.75rem;
+}
+
+.chip-group-title {
+  margin: 0 0 0.35rem;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 
 .limit-edit strong {
@@ -2129,19 +2250,32 @@
   gap: 0.65rem;
 }
 
+/*
+ * Label and figure on one line, the track on its own beneath them.
+ *
+ * Three columns across — label, track, value — sized the track against a value
+ * column that is `auto`, and each bar is its own grid: `2h 15m` and `45m` are
+ * different widths, so the two tracks were different lengths. Two bars scaled
+ * against the same peak and drawn at different lengths compare nothing, which
+ * is the one job of this pair. A full-width track cannot disagree with the one
+ * above it, and the label stops competing for room the German and Russian
+ * strings need.
+ */
 .report-bar {
   display: grid;
-  grid-template-columns: 5.5rem minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 0.7rem;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 0.25rem 0.7rem;
   font-size: 0.8rem;
 }
 
 .report-bar-label {
+  grid-area: 1 / 1;
   color: var(--muted);
 }
 
 .report-bar-track {
+  grid-area: 2 / 1 / 3 / 3;
   display: block;
   height: 10px;
   border-radius: 999px;
@@ -2162,8 +2296,10 @@
 }
 
 .report-bar-value {
+  grid-area: 1 / 2;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
+  text-align: right;
 }
 
 /* ---------- The three remaining figures ---------- */
@@ -2210,6 +2346,13 @@
   letter-spacing: 0.05em;
   color: var(--muted);
   margin-bottom: 0.4rem;
+}
+
+/* The AI mark sits on the baseline of its own heading, not above it. */
+.report-quote-head {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
 }
 
 .report-quote p {

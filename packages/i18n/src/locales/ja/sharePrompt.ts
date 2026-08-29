@@ -8,7 +8,6 @@ export const sharePrompt = {
   laterButton: 'あとで',
   shareMessage:
     '子どものネット利用を守るためにKidGateを使っています。アダルトサイトのブロック、利用時間の制限、位置情報の確認ができます。試してみてください: {{link}}',
-  settingsSectionTitle: 'KidGateを応援',
   settingsShareTitle: 'KidGateをシェア',
   settingsShareSubtitle: '他の保護者にすすめる',
   settingsRateTitle: 'アプリを評価',

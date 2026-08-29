@@ -2,9 +2,9 @@ export const screenTime = {
   turnOnScreenTime: 'Aktifkan Waktu Layar',
   finishScreenTimeSetup: 'Selesaikan penyiapan Waktu Layar',
   screenTimeNeededForControls:
-    'Pemblokiran aplikasi, jam terblokir, dan penguncian memerlukan Waktu Layar di perangkat ini.',
+    'Pemblokiran aplikasi, Jam Diblokir, dan penguncian memerlukan Waktu Layar di perangkat ini.',
   screenTimeNeededForLimits:
-    'Tanpa Waktu Layar, penguncian, jam terblokir, dan batas aplikasi tidak dapat diterapkan.',
+    'Tanpa Waktu Layar, penguncian, Jam Diblokir, dan batas aplikasi tidak dapat diterapkan.',
   screenTimeStepOpenKidGate: 'Buka KidGate di perangkat anak ini.',
   screenTimeStepAllowUsage:
     'Di layar Status, pilih Izinkan Penggunaan Aplikasi & Situs Web.',
@@ -27,7 +27,7 @@ export const screenTime = {
   screenTimeBannerBodyDenied:
     '{{appName}} memerlukan Waktu Layar yang diaktifkan di Pengaturan.',
   screenTimeBannerBodyRequest:
-    'Ini memungkinkan orang tuamu mengunci aplikasi dan mengatur jam terblokir di perangkat ini.',
+    'Ini memungkinkan orang tuamu mengunci aplikasi dan mengatur Jam Diblokir di perangkat ini.',
   usageAccessBannerTitle: 'Aktifkan Akses Penggunaan',
   usageAccessBannerBody:
     'KidGate memerlukan Akses Penggunaan untuk melacak waktu layar dan menerapkan batas.',

@@ -12,6 +12,8 @@
  * does not appear in anything that counts per person.
  */
 
+import type { ChildRules } from './childRules';
+
 export interface Child {
   id: string;
   name: string;
@@ -25,6 +27,37 @@ export interface Child {
    */
   colorIndex: number;
   createdAt: string;
+  /**
+   * The assigned device that travels with this child — the one whose fix
+   * answers "where are they?" on child-level screens.
+   *
+   * Two devices, one at home on the charger and one in the school bag, both
+   * report locations, and the stay-at-home one usually reports the fresher
+   * fix. "Latest update wins" therefore shows the child at home while they
+   * are at school — a wrong answer with a confident face, which is worse on
+   * a safety product than no answer. So no summary is ever computed: a
+   * parent names the carried device, or child-level screens show every fix
+   * with its own age and refuse to pick (`core/domain/childLocation`).
+   *
+   * A view designation, not a rule: it changes what parent screens read,
+   * never what any device enforces, which is why it lives here as an
+   * ordinary parent-writable field rather than in `ChildRules` behind the
+   * fan-out. May dangle after an unassignment — readers must check the
+   * device is still assigned and location-capable, and fall back to
+   * "unchosen" rather than trusting the stale id.
+   */
+  locationDeviceId?: string;
+  /**
+   * Rules for this person — web filter, blocked hours, location sharing —
+   * applied to every assigned device.
+   *
+   * Absent (field by field) until a parent first saves at the child level —
+   * until then each device keeps its own `controls.*` values, which also
+   * remain the fallback for devices with no `childId`. Client-immutable;
+   * written only by the `updateChildRules` Cloud Function, which fans the
+   * fields out into every assigned device's `controls`. See `childRules.ts`.
+   */
+  rules?: ChildRules;
 }
 
 /**

@@ -23,7 +23,7 @@ export const protection = {
     'KidGate’in korumaları sürdürebilmesi için lütfen sınırsız pil kullanımına izin verin.',
   exactAlarmPermission: 'Alarmlar ve hatırlatıcılar',
   exactAlarmOff:
-    'Engellenen saatlerin zamanında başlaması için Alarmlar ve hatırlatıcılar iznini verin.',
+    'Engellenen Saatlerin zamanında başlaması için Alarmlar ve hatırlatıcılar iznini verin.',
   accessibilityPermission: 'Erişilebilirlik (kilit yardımcısı)',
   accessibilityOff:
     'Kilidin diğer uygulamaların üzerinde kalması için lütfen KidGate’in Erişilebilirlik iznini açın.',
@@ -35,6 +35,14 @@ export const protection = {
   lockNotReadyBodyIos:
     'Çocuğun cihazında Ekran Süresi erişimi onaylanana kadar KidGate bu iPhone’u kilitleyemez. Lütfen o cihazda KidGate’i açın ve şunları tamamlayın:',
   locationPermission: 'Konum izni',
+  cameraPermission: 'Kamera izni',
+  cameraConsentPending:
+    'Bu cihazda kameraya izin verilmemiş, bu yüzden buradan gelen SOS veya Check-In fotoğrafsız geliyor.',
+  locationConsentPending:
+    'Bu cihazda konuma izin verilmemiş, bu yüzden nerede olduğunu bildiremiyor.',
+  consentStepOpenSettings: 'Çocuğunuzun cihazında KidGate’i açın ve Ayarlar’a gidin.',
+  consentStepParentPin: 'Ebeveyn PIN’ini girin.',
+  consentStepPermissions: '“İzinler”i açın ve eksik olanlara izin verin.',
   notificationsPermission: 'Bildirim izni',
   backgroundUpdates: 'Arka plan güncellemeleri',
   backgroundUpdatesRestricted: 'Bu cihazda arka plan güncellemeleri kısıtlanmış.',

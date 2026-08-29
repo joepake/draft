@@ -7,6 +7,72 @@ export const family = {
   addChildOption: '子どものデバイスを追加',
   addJoinFamilyOption: 'ファミリーに参加',
   addParentOption: '保護者を招待',
+  loginWebOption: 'ウェブでログイン',
+  // The "who uses this device?" assignment sheet.
+  assignSheetTitle: '{{deviceName}}は誰が使いますか？',
+  assignSheetBody: 'スクリーンタイムとスターは選んだお子さまに集計されます。',
+  assignSheetNobody: '誰も使わない',
+  assignSheetNobodyHint: '共用デバイス — 誰にも集計されません。',
+  assignSheetAddAndAssign: '追加して割り当てる',
+  // The "protect this child now?" starter sheet, offered right after a fresh
+  // pairing is assigned. Content pre-exists on the device; this flips it on.
+  quickProtectTitle: '今すぐ{{childName}}を保護しますか？',
+  quickProtectBody:
+    '基本の保護をまとめてオンにします。細かい設定は後からお子さまのプロフィールで調整できます。',
+  quickProtectBedtime: '就寝時の休止時間',
+  quickProtectBedtimeHint: '22:00〜7:00の間、デバイスの使用をブロックします。',
+  quickProtectDailyLimit: '1日のスクリーンタイム上限',
+  quickProtectDailyLimitHint:
+    '1日{{minutes}}分。お子さまのすべてのデバイスで合算されます。',
+  quickProtectWebFilter: 'Webフィルター',
+  quickProtectWebFilterHint: 'アダルトコンテンツなどの危険なカテゴリをブロックします。',
+  quickProtectWebFilterPremium: 'Premium機能 — プランに含まれています。',
+  quickProtectApply: '保護をオンにする',
+  quickProtectSkip: '後で',
+  quickProtectDone: '保護がオンになりました。設定はいつでも調整できます。',
+  quickProtectPartial:
+    '一部の保護を保存できませんでした。お子さまのプロフィールからもう一度お試しください。',
+  pairDeviceFirstTitle: 'ペアリング済みのデバイスがありません',
+  pairDeviceFirstBody:
+    'まずこのお子さまのデバイスをペアリングしてください — ファミリータブでスキャンアイコンまたは「+」をタップし、「子どものデバイスを追加」を選びます。デバイスが接続されるとすぐにこの管理機能が有効になります。',
+  // Child-grouped family list: group header lock-all + unassigned group.
+  lockAll: 'すべてロック',
+  unlockAll: 'すべてロック解除',
+  lockAllA11y: '{{childName}}のデバイスをすべてロック',
+  unlockAllA11y: '{{childName}}のデバイスをすべてロック解除',
+  childDetailUnassignTitle: 'この子から外しますか？',
+  childDetailUnassignBody:
+    '{{deviceName}}は{{childName}}の集計から外れ、「未割り当て」に移動します。ペアリングと保護はそのまま続きます。',
+  childDetailUnassignConfirm: '外す',
+  childDetailUnassignA11y: '{{deviceName}}をこの子から外す',
+  // The fold control on a group heading.
+  collapseGroupA11y: '{{name}}を折りたたむ',
+  expandGroupA11y: '{{name}}を展開する',
+  assignDeviceCta: 'お子さまに割り当てる…',
+  unassignedHint: 'これらのデバイスはまだ誰にも集計されていません。',
+  unassignedHintMember:
+    'これらのデバイスをお子さまに割り当てられるのはファミリー管理者のみです。',
+  // The footer strip: children who hold no device get no group of their own.
+  childrenWithoutDeviceTitle: 'デバイスのない子ども',
+  // Child detail screen.
+  childDetailStarsWell: '今週のスター',
+  childStarsA11y: '今週のスター: {{count}}',
+  childDetailDevicesTitle: 'デバイス',
+  childDetailAssignMore: '別のデバイスを割り当てる…',
+  childDetailAssignSheetTitle: '{{childName}}にデバイスを割り当てる',
+  childDetailNoDevices:
+    'デバイスはまだありません。下で割り当てるか、ファミリータブから新しいデバイスをペアリングしてください。',
+  // Same screen for a joined parent, who may pair but may not assign.
+  childDetailNoDevicesMember:
+    'まだデバイスがありません。どのデバイスが誰のものかは、ファミリー管理者のみが決められます。',
+  childDetailEditNameTitle: '名前を編集',
+  childDetailColorLabel: 'カラー',
+  scanButtonAccessibility: 'コードをスキャン',
+  scanTitle: 'コードをスキャン',
+  scanBody:
+    '子どものデバイス、家族への招待、またはパソコンに表示されたコードにカメラを向けてください。',
+  manualCodeLabel: '6桁のコードを入力',
+  manualInstructions: '他のデバイスに表示されている6桁のコードを入力してください。',
 
   headerHintEmpty: 'お子さまのデバイスを管理・保護しましょう',
 
@@ -35,6 +101,8 @@ export const family = {
 
   chipProtectedCount: '{{count}}台保護中',
 
+  childDevicesProtected: '{{count}}台のデバイスを保護中',
+
   chipHealthWarnCount: '{{count}}台が設定必要',
   chipHealthWarnCount_one: '{{count}}台が設定必要',
 
@@ -43,6 +111,7 @@ export const family = {
   chipBlockedCount: '{{count}}台ロック中',
 
   healthProtected: '保護中',
+  buildOutdated: 'アップデートあり',
   healthNeedsSetup: '設定が必要',
   healthOffline: 'オフライン',
 
@@ -167,6 +236,7 @@ export const family = {
   mac: 'Mac',
   windowsPc: 'Windows PC',
   androidTv: 'Android TV',
+  chromebook: 'Chromebook',
 
   deviceNameRequired: 'デバイス名を入力してください。',
 
@@ -216,6 +286,10 @@ export const family = {
 
   youPausedThisDevice: 'あなたがこのデバイスをロックしました',
 
+  lockSentWaitingForDevice: 'ロックを送信しました。デバイスの応答を待っています',
+
+  lockNotAppliedOnDevice: 'このデバイスはロックを適用していません',
+
   blockedHoursActiveNow: '現在、休止時間中です',
 
   inactiveOpenKidGate: '非アクティブ — このデバイスでKidGateを開いてください',
@@ -243,4 +317,21 @@ export const family = {
   batteryPercent: '{{percent}}%',
   batteryAccessibility: 'バッテリー {{percent}} パーセント',
   batteryChargingAccessibility: 'バッテリー {{percent}} パーセント、充電中',
+  childDetailPerDevice: 'デバイスごと — どれかを選択',
+  childDetailNotAvailable: '利用できません',
+  childDetailNotAvailableReason: 'どのデバイスでも利用できません',
+  childDetailProtectionOk: '保護済み',
+  childDetailProtectionAttention: '{{count}} 台のデバイスに注意が必要です',
+  childDetailProtectionSheetTitle: 'デバイスごとの保護状況',
+  childDetailRemoveTitle: 'このお子さまを削除',
+  childDetailRemovingButton: '削除中…',
+  childDetailOnlineCount: '{{total}} 台中 {{online}} 台がオンライン',
+  childDetailBudgetTitle: '1日の上限',
+  childDetailSectionControls: 'すべてのデバイスに適用されるルール',
+  childDetailSectionSafety: 'すべてのデバイスをまとめて表示',
+  childDetailSectionAlerts: 'すべてのデバイスを1つの一覧に',
+  childDetailScopeAll: 'すべてのデバイス',
+  childDetailTodayWell: '今日の利用',
+  childDetailUnassignAction: '割り当て解除',
+  childDetailLimitShared: 'すべてのデバイスの合計',
 } as const;

@@ -81,7 +81,26 @@ export interface HttpApiAdapterOptions {
   fetchImpl?: typeof fetch;
   /** Surface-specific copy for failures this adapter raises itself. */
   messageKeys?: { unauthenticated?: string };
+  /** Override for tests; defaults to `REQUEST_TIMEOUT_MS`. */
+  timeoutMs?: number;
 }
+
+/**
+ * How long one request may take before it fails as `network`.
+ *
+ * A `fetch` has no timeout of its own, and a promise that never settles is
+ * worse than any error: measured 2026-08-25 on a macOS agent, a WebView
+ * suspended mid-request left the request hanging forever after its CORS
+ * preflight, and every caller awaiting it — the usage heartbeat included —
+ * hung with it. The parent read 0 minutes all day from a machine that was
+ * counting them correctly.
+ *
+ * Thirty seconds is deliberately generous: a Cloud Functions cold start is
+ * 2–3 seconds and a slow mobile link adds single-digit more. Anything past
+ * this is not a slow answer, it is no answer, and `network` is already the
+ * code every caller treats as retryable.
+ */
+export const REQUEST_TIMEOUT_MS = 30_000;
 
 function failure(
   code: ApiErrorCode,
@@ -127,6 +146,7 @@ function codeFor(
 export function createHttpApiAdapter(options: HttpApiAdapterOptions): ApiPort {
   const doFetch = options.fetchImpl ?? fetch;
   const base = options.baseUrl.replace(/\/$/, '');
+  const timeoutMs = options.timeoutMs ?? REQUEST_TIMEOUT_MS;
 
   async function attempt<T>(
     path: string,
@@ -163,21 +183,55 @@ export function createHttpApiAdapter(options: HttpApiAdapterOptions): ApiPort {
 
     const payload = { ...body, ...credentialFields };
 
-    let response: Response;
-    try {
-      response = await doFetch(`${base}${path}`, {
-        method: 'POST',
-        headers,
-        body: JSON.stringify(payload),
-        ...(callOptions.signal ? { signal: callOptions.signal } : {}),
-      });
-    } catch (error) {
-      // No response at all: offline, DNS, a captive portal. Retrying a
-      // credential would not help, so this never becomes staleCredential.
-      throw failure('network', { detail: String(error) });
+    /*
+     * Every request is aborted after `timeoutMs`, caller signal or not. The
+     * controller is this adapter's own so the timeout and the caller's abort
+     * can both fire it; the timer covers the body read as well as the
+     * connection, because a suspended WebView can freeze either half.
+     */
+    const controller = new AbortController();
+    let timedOut = false;
+    const timer = setTimeout(() => {
+      timedOut = true;
+      controller.abort();
+    }, timeoutMs);
+    const onCallerAbort = () => controller.abort();
+    if (callOptions.signal?.aborted) {
+      onCallerAbort();
+    } else {
+      callOptions.signal?.addEventListener('abort', onCallerAbort, { once: true });
     }
 
-    const text = await response.text();
+    let response: Response;
+    let text: string;
+    try {
+      try {
+        response = await doFetch(`${base}${path}`, {
+          method: 'POST',
+          headers,
+          body: JSON.stringify(payload),
+          signal: controller.signal,
+        });
+      } catch (error) {
+        // No response at all: offline, DNS, a captive portal, or the timeout
+        // above. Retrying a credential would not help, so this never becomes
+        // staleCredential.
+        throw failure('network', {
+          detail: timedOut ? `Timed out after ${timeoutMs} ms` : String(error),
+        });
+      }
+
+      try {
+        text = await response.text();
+      } catch (error) {
+        throw failure('network', {
+          detail: timedOut ? `Timed out after ${timeoutMs} ms` : String(error),
+        });
+      }
+    } finally {
+      clearTimeout(timer);
+      callOptions.signal?.removeEventListener('abort', onCallerAbort);
+    }
     let parsed: unknown = null;
     try {
       parsed = text ? JSON.parse(text) : null;

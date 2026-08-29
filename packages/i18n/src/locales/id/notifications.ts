@@ -30,6 +30,10 @@ export const notifications = {
       label: 'Permintaan waktu tambahan',
       hint: 'Anak Anda meminta tambahan waktu layar.',
     },
+    siteRequests: {
+      label: 'Permintaan situs',
+      hint: 'Anak Anda meminta membuka situs yang diblokir.',
+    },
     checkIn: {
       label: 'Balasan check-in',
       hint: 'Anak Anda membalas permintaan check-in keamanan.',
@@ -41,6 +45,10 @@ export const notifications = {
     appActivity: {
       label: 'Aplikasi dipasang atau dihapus',
       hint: 'Aplikasi muncul atau hilang di perangkat anak.',
+    },
+    anomalyAlerts: {
+      label: 'Aktivitas tidak biasa',
+      hint: 'Penggunaan di luar kebiasaan pada perangkat anak — larut malam, lonjakan, aplikasi baru.',
     },
     weeklyDigest: {
       label: 'Ringkasan mingguan',

@@ -45,6 +45,8 @@ export const permissions = {
   oemAutostartHintOther:
     'お使いのデバイスのセキュリティまたはバッテリー設定で、KidGateの自動起動を許可してください。',
   markDone: '完了',
+  uninstallProtectionWizardBody:
+    '保護者PINなしでこのアプリがアンインストールされるのを防ぎます。Androidの確認画面が表示されます。',
   notificationsWizardBody:
     '通知を許可すると、時間の承認やリマインダーをすぐに受け取れます。',
 } as const;

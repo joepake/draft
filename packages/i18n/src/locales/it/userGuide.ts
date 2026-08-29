@@ -25,7 +25,7 @@ export const userGuide = {
     },
     safety: {
       title: 'Sicurezza e monitoraggio',
-      description: 'Posizione, Check-In, SOS, Filtro web e protezione',
+      description: 'Posizione, Check-in, SOS, Filtro web e protezione',
     },
   },
   topics: {
@@ -113,7 +113,7 @@ export const userGuide = {
         '5': 'Assistente di blocco Accessibilità: Impostazioni → Accessibilità → App installate/scaricate → KidGate → Attivo. Questo mantiene il blocco applicato.',
         '6': 'Batteria senza limitazioni: seleziona Consenti quando richiesto. Se non compare alcuna richiesta: Informazioni app → Batteria → Senza limitazioni.',
         '7': 'Sveglie e promemoria: consentilo affinché gli Orari di blocco inizino e finiscano puntualmente.',
-        '8': 'Posizione e Fotocamera (se usi Check-In o le foto SOS): consentile quando richiesto da KidGate. Torna a Stato e conferma che ogni voce sia consentita.',
+        '8': 'Posizione e Fotocamera (se usi Check-in o le foto SOS): consentile quando richiesto da KidGate. Torna a Stato e conferma che ogni voce sia consentita.',
       },
     },
     iosScreenTime: {
@@ -214,16 +214,16 @@ export const userGuide = {
       },
     },
     checkIn: {
-      title: 'Richiedi un Check-In',
+      title: 'Richiedi un Check-in',
       summary:
         'Chiedi a tuo figlio di confermare di essere al sicuro, con posizione e una foto facoltativa.',
-      tip: 'Il permesso della fotocamera sul dispositivo del bambino è necessario per i Check-In con foto.',
+      tip: 'Il permesso della fotocamera sul dispositivo del bambino è necessario per i Check-in con foto.',
       steps: {
         '1': 'Apri il dispositivo del bambino sul dispositivo del genitore.',
-        '2': 'Seleziona Check-In (l’azione rapida oppure la sezione Sicurezza).',
-        '3': 'Il dispositivo del bambino riceve una notifica e una schermata di Check-In. Il bambino tocca per confermare di stare bene, oppure per chiedere aiuto.',
+        '2': 'Seleziona Check-in (l’azione rapida oppure la sezione Sicurezza).',
+        '3': 'Il dispositivo del bambino riceve una notifica e una schermata di Check-in. Il bambino tocca per confermare di stare bene, oppure per chiedere aiuto.',
         '4': 'Se l’accesso alla fotocamera è consentito, KidGate allega una foto insieme alla posizione, quando possibile.',
-        '5': 'Sul dispositivo del genitore, apri la cronologia dei Check-In per rivedere l’ultima risposta e la foto.',
+        '5': 'Sul dispositivo del genitore, apri la cronologia dei Check-in per rivedere l’ultima risposta e la foto.',
       },
     },
     sos: {
@@ -236,7 +236,7 @@ export const userGuide = {
         '2': 'Segui i passaggi a schermo per inviare un SOS (posizione e foto dipendono dai permessi concessi).',
         '3': 'I genitori ricevono una notifica push quando viene inviato un SOS.',
         '4': 'Sul dispositivo del genitore, apri il dispositivo → Avvisi SOS per rivedere l’evento.',
-        '5': 'Concorda con tuo figlio quando usare l’SOS e quando è sufficiente un normale Check-In.',
+        '5': 'Concorda con tuo figlio quando usare l’SOS e quando è sufficiente un normale Check-in.',
       },
     },
     webFilter: {

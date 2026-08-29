@@ -350,15 +350,44 @@ export default {
 
   webCat: {
     adult: 'Nội dung người lớn',
+    selfHarm: 'Tự hại & rối loạn ăn uống',
     gambling: 'Cờ bạc',
+    gameGambling: 'Hộp quà & cá cược vật phẩm',
     dating: 'Hẹn hò',
+    strangerChat: 'Chat với người lạ',
     drugs: 'Ma túy & rượu bia',
-    violence: 'Bạo lực & cực đoan',
+    violence: 'Bạo lực & máu me',
+    extremism: 'Cực đoan & thù ghét',
     piracy: 'Vi phạm bản quyền',
     social: 'Mạng xã hội',
     videoStreaming: 'Xem video',
+    music: 'Âm nhạc',
     gaming: 'Trò chơi',
     shopping: 'Mua sắm',
+    aiCompanion: 'Bạn ảo AI',
+    aiAssistant: 'Trợ lý AI',
+    cryptoTrading: 'Tiền mã hoá & giao dịch',
+    vpn: 'Ứng dụng VPN',
+  },
+
+  appCat: {
+    adult: 'Nội dung người lớn',
+    gambling: 'Cờ bạc',
+    gameGambling: 'Hộp quà & cá cược vật phẩm',
+    dating: 'Hẹn hò',
+    drugs: 'Ma túy & rượu bia',
+    violence: 'Bạo lực & máu me',
+    piracy: 'Vi phạm bản quyền',
+    bypass: 'Vượt bộ lọc & VPN',
+  },
+
+  webCatGroup: {
+    harm: 'Nội dung có hại',
+    contact: 'Người lạ',
+    bypass: 'Né bộ lọc',
+    ai: 'AI',
+    entertainment: 'Giải trí & mạng xã hội',
+    money: 'Mua sắm & tiền',
   },
 
   dash: {
@@ -368,9 +397,11 @@ export default {
     tabSafety: 'An toàn',
     tabControls: 'Điều khiển',
     tabReport: 'Báo cáo tuần',
+    tabReportNew: 'Báo cáo tuần mới',
 
     children: 'Các con',
     noChildren: 'Chưa kết nối thiết bị nào của con.',
+    unassignedDevices: 'Chưa gán',
     manage: 'Quản lý',
     parents: '{{count}} phụ huynh',
     devices: '{{count}} thiết bị của con',
@@ -382,6 +413,8 @@ export default {
     statusOnline: 'Trực tuyến',
     statusOffline: 'Ngoại tuyến',
     statusLocked: 'Đã khóa',
+    statusLockSent: 'Đã gửi lệnh khóa',
+    statusLockNotApplied: 'Chưa áp dụng lệnh khóa',
 
     stateAllowed: 'Đã cho phép',
     stateDenied: 'Đã tắt',
@@ -391,6 +424,10 @@ export default {
     stateUnknown: 'Không rõ',
 
     lastActive: 'Hoạt động lần cuối {{when}}',
+    appVersion: 'Phiên bản ứng dụng',
+    appVersionUpdate: '{{running}} · đã có {{latest}}',
+    appVersionRestart: '{{running}} · mở lại ứng dụng để hoàn tất',
+    buildOutdated: 'Có bản mới',
     checkIn: 'Báo an toàn',
     sending: 'Đang gửi…',
     lockDevice: 'Khóa thiết bị',
@@ -425,6 +462,10 @@ export default {
 
     cardScreenTime: 'Thời gian sử dụng',
     cardScreenTimeSub: '14 ngày gần nhất, so với Giới hạn hằng ngày',
+    usageSyncNote:
+      'Thời gian sử dụng có thể mất vài phút để hiện trên màn hình này — lâu hơn nếu thiết bị không có kết nối mạng hoặc bị đóng đột ngột.',
+    usageSyncNoteTv:
+      'TV này chỉ kết nối theo định kỳ, nên thời gian sử dụng có thể mất tới 30 phút để hiện trên màn hình này — lâu hơn nếu không có kết nối mạng.',
     cardRecent: 'Nhật ký gần đây',
     cardRecentSub: 'Mới nhất trước',
     cardRecentEmpty:
@@ -440,9 +481,6 @@ export default {
     attnReason: '“{{reason}}” · {{when}}',
     attnCheckInMissed: 'Chưa phản hồi Báo an toàn',
     attnCheckInMissedMeta: 'Đã gửi {{when}} · chưa có phản hồi',
-    attnPermissionOff: '{{permission}} đang tắt',
-    attnPermissionOffMeta:
-      'Khả năng bảo vệ yếu đi cho tới khi quyền này được bật lại trên thiết bị của con',
     attnLimitReached: 'Đã đạt Giới hạn hằng ngày — thiết bị đã khóa',
     attnLimitReachedMeta: 'Đã dùng {{used}} hôm nay',
     attnBatteryLow: 'Pin yếu ({{level}}%)',
@@ -472,6 +510,8 @@ export default {
 
     appUsageTitle: 'Mức sử dụng ứng dụng hôm nay',
     appUsageSub: 'Thời gian dùng từng ứng dụng',
+    topAppsOther: 'Ứng dụng khác',
+    underAMinute: 'Dưới 1 phút',
     appUsageEmpty: 'Chưa có dữ liệu sử dụng ứng dụng.',
     appBlockingTitle: 'Chặn ứng dụng',
     appBlockingSub: 'Được chọn trên thiết bị của trẻ, sau mã PIN phụ huynh',
@@ -484,6 +524,23 @@ export default {
     webActivityTitle: 'Hoạt động web',
     webActivitySub: 'Tên miền vào nhiều nhất, 30 ngày gần nhất',
     webActivityEmpty: 'Chưa có hoạt động web.',
+    inventoryTitle: 'Ứng dụng đã cài',
+    inventorySub: 'Mọi thứ trên thiết bị này, không chỉ những gì thay đổi',
+    inventoryEmpty: 'Thiết bị này chưa gửi danh sách ứng dụng.',
+    inventoryStale:
+      'Danh sách này đã cũ. Nó sẽ được làm mới khi thiết bị kết nối lần tới.',
+    inventoryFirstScan:
+      'Lần quét đầu tiên, nên KidGate chưa biết các ứng dụng này xuất hiện khi nào.',
+    inventoryFlagged: 'Đáng để xem lại',
+    inventoryFlaggedLabel: 'Đáng xem lại',
+    inventoryOtherLabel: 'Đã nhận diện',
+    inventoryUnknownLabel: 'Chưa nhận diện',
+    inventoryIncomplete:
+      'Ứng dụng không có biểu tượng ngoài màn hình chính có thể không xuất hiện ở đây.',
+    webActivitySyncNote:
+      'Hoạt động web có thể mất vài phút để hiện trên màn hình này — lâu hơn nếu thiết bị không có kết nối mạng hoặc bị đóng đột ngột.',
+    webActivitySyncNoteTv:
+      'TV này chỉ kết nối theo định kỳ, nên hoạt động web có thể mất tới 30 phút để hiện trên màn hình này — lâu hơn nếu không có kết nối mạng.',
     colDomain: 'Tên miền',
     colVisits: 'Lượt vào',
     colBlocked: 'Bị chặn',
@@ -491,15 +548,22 @@ export default {
     filterRefusedTitle: 'Bộ lọc đã chặn những gì',
     filterRefusedSub: '{{count}} lượt truy cập bị chặn, 30 ngày gần nhất',
     nothingBlockedYet: 'Chưa có trang nào bị chặn.',
+    rollupNoteAi:
+      'Một số mục được suy ra từ tên trang chứ không khớp với trang đã biết, nên có thể lệch đôi chút.',
     filterHintIos:
       'Trên iOS, bộ lọc dùng cơ chế chặn nội dung người lớn của Apple — chặn theo từng danh mục chỉ có trên Android.',
     filterHintAndroid: 'Các danh mục được chặn bằng bộ lọc DNS ngay trên máy.',
+    filterHintMacos:
+      'Các danh mục được chặn bằng bộ lọc nội dung KidGate ngay trên máy Mac.',
 
     locationTitle: 'Vị trí',
     locationSharingOff: 'Chia sẻ vị trí đang tắt',
+    locationSyncNote:
+      'Vị trí có thể mất vài phút để cập nhật — lâu hơn nếu thiết bị không có kết nối mạng hoặc bị đóng đột ngột.',
     locationUpdated: 'Đã cập nhật {{when}}',
     locationWaiting: 'Đang chờ lần cập nhật đầu tiên',
     lastKnownLocation: 'Vị trí ghi nhận gần nhất',
+    nearPlace: 'Gần {{place}}',
     noPlaces:
       'Chưa lưu địa điểm nào. Hãy thêm một địa điểm trong ứng dụng để được báo khi con đến hoặc rời đi.',
     placeRadius: '{{meters}}m · ',
@@ -537,6 +601,10 @@ export default {
     limitScaleMax: '8g',
     limitHint:
       'Phút thưởng từ nhiệm vụ và các yêu cầu thêm giờ đã duyệt được cộng thêm, chỉ trong ngày hôm đó.',
+    limitShared: 'Dùng chung cho mọi thiết bị',
+    limitSharedSpent: 'Hôm nay đã dùng {{used}} trên {{limit}}',
+    limitSharedHint:
+      'Đây là cả ngày của con, không phải giới hạn riêng của thiết bị này — mỗi máy nhận phần các máy khác chưa dùng. Thay đổi trong ứng dụng KidGate.',
     whatsOnTitle: 'Các mục đang bật',
     whatsOnSub: 'Thay đổi sẽ đồng bộ về thiết bị của con',
     rowBlockedHours: 'Giờ khóa thiết bị',
@@ -548,6 +616,8 @@ export default {
     rowWebFilter: 'Chặn nội dung web',
     rowWebFilterDesc: 'Đã chặn {{count}} danh mục',
     rowNotSupported: 'Thiết bị này không hỗ trợ',
+    rowWebFilterAwaitingApproval: 'Đang chờ duyệt trên thiết bị',
+    rowWebFilterSwitchedOff: 'Đang bị tắt trên thiết bị',
     rowLocation: 'Chia sẻ vị trí',
     rowLocationDesc: 'Cập nhật lần cuối {{when}}',
     rowLocationNone: 'Chưa có vị trí',
@@ -568,6 +638,12 @@ export default {
     rewardTaskWaiting: ' · đang chờ bạn duyệt',
     approve: 'Duyệt',
     approveInApp: 'Duyệt trong ứng dụng KidGate',
+    siteRequestsTitle: 'Yêu cầu mở trang',
+    siteRequestsSub: 'Những trang thiết bị này xin bạn cho phép',
+    siteRequestAllow: 'Cho phép',
+    siteRequestDeny: 'Để sau',
+    attnSiteRequest: '{{name}} xin mở {{domain}}',
+    toastSiteAllowed: 'Đã cho phép trang',
     timelineTitle: 'Khung giờ sử dụng',
     timelineSub: 'Hôm nay, từ 0h đến 24h. Màu xanh lá là thời gian dùng thiết bị.',
   },
@@ -598,8 +674,8 @@ export default {
     statBlockedApps: 'Ứng dụng bị chặn',
     statBlockedWebVisits: 'Trang web bị lọc',
 
-    trendUp: 'nhiều hơn tuần trước {{value}}',
-    trendDown: 'ít hơn tuần trước {{value}}',
+    trendUp: 'Nhiều hơn tuần trước {{value}}',
+    trendDown: 'Ít hơn tuần trước {{value}}',
     trendFlat: 'Gần như bằng tuần trước',
     trendFirstWeek: 'Tuần đầu tiên có số liệu',
     barThisWeek: 'Tuần này',
@@ -615,7 +691,7 @@ export default {
     findingUsageDown:
       'Thời gian sử dụng giảm {{percent}}% — ít hơn tuần trước {{delta}}.',
     findingUsageFlat: 'Thời gian sử dụng giữ nguyên ở mức {{total}}.',
-    findingLateNight: '{{count}} đêm thức sau 23h — muộn nhất tới {{time}}.',
+    findingLateNight: 'Có {{count}} đêm dùng máy sau 23h — hôm muộn nhất tới {{time}}.',
     findingNewTopApp: '{{app}} mới xuất hiện tuần này và đã chiếm {{duration}}.',
     findingAppSurge: '{{app}} tăng {{delta}} so với tuần trước — tổng {{duration}}.',
     findingLimitHit: 'Có {{count}} ngày chạm Giới hạn hằng ngày ({{limit}}).',
@@ -623,7 +699,7 @@ export default {
       '{{count}} lần mở ứng dụng bị chặn, tuần trước là {{previous}}.',
     findingBlockedWeb: '{{count}} trang web bị lọc, tuần trước là {{previous}}.',
     findingQuietWeek:
-      'Một tuần yên ắng — tổng {{total}}, và không có gì cần bạn xử lý.',
+      'Một tuần yên ắng — tổng cộng {{total}}, và không có gì cần bạn xử lý.',
 
     narrativeTitle: 'Tóm lại',
     finePrint:
@@ -640,11 +716,14 @@ export default {
 
     emptyTitle: 'Chưa có báo cáo',
     emptyBody:
-      'Báo cáo sẽ đến vào tối Chủ nhật hằng tuần. Bạn cũng có thể viết báo cáo tuần này ngay — nó tính bảy ngày gần nhất.',
+      'Báo cáo mới về vào tối Chủ nhật hằng tuần. Bạn cũng có thể viết ngay báo cáo tuần này — tính bảy ngày gần nhất.',
     noUsage:
       'Hai tuần qua không ghi nhận thời gian sử dụng nào nên chưa có gì để báo cáo. Thiết bị không kết nối mạng thì không báo gì cả, và điều đó khác với một tuần yên ắng.',
-    rateLimited: 'Thử quá nhiều lần. Đợi một phút.',
-    failed: 'Không viết được báo cáo. Thử lại sau giây lát.',
+    rateLimited: 'Thử quá nhiều lần. Đợi một phút rồi thử lại.',
+    loadFailedTitle: 'Không tải được báo cáo',
+    loadFailed: 'Không mở được báo cáo. Tải lại trang để thử lại.',
+    retryLoad: 'Thử lại',
+    failed: 'Không viết được báo cáo. Thử lại trong giây lát.',
     existed: 'Tuần này đã có báo cáo — đây rồi.',
 
     childrenTitle: 'Từng con',
@@ -667,7 +746,7 @@ export default {
     busiest: 'Dùng nhiều nhất trong nhà',
 
     historyTitle: 'Các tuần trước',
-    historyEmpty: 'Báo cáo từ nay sẽ được giữ ở đây trong một năm.',
+    historyEmpty: 'Báo cáo bạn nhận từ nay sẽ được lưu ở đây trong một năm.',
   },
 
   support: {

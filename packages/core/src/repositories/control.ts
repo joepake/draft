@@ -151,6 +151,18 @@ export function createControlRepository(deps: ControlRepositoryDeps) {
            * second claim. iOS is the whole reason that distinction exists.
            */
           ...(isTimeline(usage.timeline) ? { timeline: usage.timeline } : {}),
+          /*
+           * Same omit-rather-than-zero rule as the timeline above, for the same
+           * reason pointed the other way: zero is the claim "this device
+           * excludes packages and saw none of them today", which only an agent
+           * that excludes packages may make. A platform that has never heard of
+           * idle time must not overwrite a day with it.
+           */
+          ...(typeof usage.idleMinutes === 'number' &&
+          Number.isFinite(usage.idleMinutes) &&
+          usage.idleMinutes >= 0
+            ? { idleMinutes: Math.floor(usage.idleMinutes) }
+            : {}),
         },
         { as: 'child' },
       );

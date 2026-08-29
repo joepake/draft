@@ -2,6 +2,7 @@ import type { ClockPort } from '@kidgate/ports/clock';
 import type { DocSnapshot, FirestorePort, Unsubscribe } from '@kidgate/ports/firestore';
 import { locationHistoryCollection } from '@kidgate/schema/paths';
 import { deleteAllInBatches } from '../domain/batchDelete';
+import { shouldAppendTrailPoint } from '../domain/locationTrail';
 import type { DeviceLocation } from '@kidgate/schema/deviceControls';
 import type { LocationHistoryEntry } from '@kidgate/schema/locationHistory';
 
@@ -112,12 +113,36 @@ export function createLocationHistoryRepository(deps: LocationHistoryRepositoryD
   }
 
   return {
+    /**
+     * Add a fix to the trail — unless it says nothing the newest point does
+     * not already say. `domain/locationTrail` holds the rule and the measured
+     * reason: an unconditional append wrote one identical row per background
+     * tick for a device sitting still, so a charging tablet filled the
+     * retention window with a stack of the same coordinates and pushed real
+     * movement out of it.
+     *
+     * The read that makes this possible is one document; the writes it saves
+     * are one per tick, all day, per device.
+     */
     async append(
       userId: string,
       deviceId: string,
       location: DeviceLocation,
     ): Promise<void> {
-      await db.addDoc(locationHistoryCollection(userId, deviceId), { ...location });
+      const path = locationHistoryCollection(userId, deviceId);
+
+      // A failed lookback must not lose the fix — treating "unknown" as "no
+      // previous point" appends, which is the safe direction.
+      const latest = await db
+        .getDocs(path, { orderBy: [['updatedAt', 'desc']], limit: 1 })
+        .then(snapshot => (snapshot.docs[0] ? mapEntry(snapshot.docs[0]) : null))
+        .catch(() => null);
+
+      if (!shouldAppendTrailPoint(latest, location, clock.now())) {
+        return;
+      }
+
+      await db.addDoc(path, { ...location });
 
       // A failed trim must not fail the write: losing a location point is worse
       // than briefly exceeding retention, and the next upload trims again.
@@ -142,6 +167,25 @@ export function createLocationHistoryRepository(deps: LocationHistoryRepositoryD
           );
         },
         onError,
+      );
+    },
+
+    /**
+     * Every fix this device ever reported, on removal.
+     *
+     * The retention sweep above trims by age and by count while a device is in
+     * the family; this is the other end of its life. These rows live under the
+     * device document, and Firestore deletes no subcollection when its parent
+     * goes — so an unpaired phone left its whole location history readable to
+     * anyone who could reconstruct the path.
+     */
+    async deleteForDevice(userId: string, deviceId: string): Promise<void> {
+      const path = locationHistoryCollection(userId, deviceId);
+      const snapshot = await db.getDocs(path);
+      await deleteAllInBatches(
+        db,
+        path,
+        snapshot.docs.map(doc => doc.id),
       );
     },
   };

@@ -49,6 +49,10 @@ export const usage = {
   overLimitChip: '上限超過',
   usageReportsNote:
     'このデバイスのスクリーンタイム、ロック、最近のアクティビティを表示します。',
+  syncNote:
+    'スクリーンタイムがこの画面に反映されるまで数分かかることがあります。デバイスがインターネットに接続していない場合や、予期せず終了した場合は、さらに時間がかかることがあります。',
+  syncNoteTv:
+    'このテレビは定期的にしか通信しないため、スクリーンタイムがこの画面に反映されるまで最大30分かかることがあります。インターネットに接続していない場合はさらに時間がかかります。',
   sectionLast30Days: '過去30日間',
   comparePeriodTotal: '30日間の合計',
   compareDayAvg: '1日の平均',
@@ -63,9 +67,18 @@ export const usage = {
   sectionTopApps: 'よく使うアプリ',
   topAppsHint:
     '子どものデバイスで本日最もよく使われたアプリです。スクリーンタイム／使用状況へのアクセスが同期されるとデータが蓄積されます。',
+  topAppsExcludedNote:
+    'スクリーンセーバー、ホーム画面、KidGate 自体の画面は使用時間に含まれません。デバイスがついていても実際に使われていない間は、その分が「未使用」として記録されます。',
+  topAppsAiNote:
+    '一部はアプリ名からの推定で、既知のアプリとの照合ではありません。外れているものもあります。',
   errorTitle: '利用状況を読み込めません',
   errorDescription: '接続を確認して、もう一度お試しください。',
   tryAgain: '再試行',
+  // Shown only when the rating is known — it is 0 for much of the long
+  // tail, and 0 does not mean "suitable for everyone".
+  appMinAge: '{{age}}歳以上',
+  underAMinute: '1分未満',
+  topAppsOther: 'その他のアプリ',
   topAppsEmpty:
     'アプリ別のデータはまだありません。お子さまのデバイスでKidGateがアプリ使用状況を計測できることを確認し、同期を待ってください。',
   protectionImpactTitle: '保護の効果',

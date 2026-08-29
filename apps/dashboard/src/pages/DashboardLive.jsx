@@ -111,6 +111,7 @@ function LiveDashboard({ user, deviceId, onDeviceChange, signOut }) {
       data={data}
       actions={actions}
       reports={reports}
+      familyId={familyId}
       onDeviceChange={onDeviceChange}
       sideFooter={
         <div className="side-account">

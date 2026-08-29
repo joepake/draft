@@ -13,7 +13,8 @@ export const errors = {
   unableToJoinFamilyAccount: '가족 계정에 참여할 수 없습니다. 다시 시도해 주세요.',
   enterEmailAddress: '이메일 주소를 입력해 주세요.',
   unableToCreatePairingCode: '페어링 코드를 생성할 수 없습니다. 다시 시도해 주세요.',
-  unableToRedeemPairingCode: '페어링 코드가 올바르지 않거나 만료되었습니다.',
+  unableToRedeemPairingCode:
+    '코드가 일치하지 않습니다. 문자를 다시 확인하세요 — 시간이 지났다면 새 코드를 요청하세요.',
   unableToClaimChildPairing: '자녀 기기를 연결할 수 없습니다. 다시 시도해 주세요.',
   unableToPollChildPairing: '페어링 상태를 확인할 수 없습니다.',
   unableToConfirmChildPairing: '페어링을 승인할 수 없습니다. 다시 시도해 주세요.',
@@ -22,6 +23,8 @@ export const errors = {
   unableToOpenCamera:
     '카메라를 열 수 없습니다. 기기 설정에서 카메라 권한을 허용해 주세요.',
   noPhotoCaptured: '촬영된 사진이 없습니다.',
+  unableToOpenPhotoLibrary:
+    '사진을 열 수 없습니다. 기기 설정에서 사진 접근을 허용해 주세요.',
   simulatorCameraHint:
     '시뮬레이터에서는 먼저 Simulator → Camera → Front Camera를 활성화한 후 SOS를 다시 시도하세요. 실제 사진은 iPhone 실기기에서 테스트하세요.',
   notSignedInReopenApp:
@@ -50,7 +53,8 @@ export const errors = {
   deviceCredentialMissing:
     '이 기기를 다시 연결해야 합니다. KidGate를 종료한 후 다시 열고 시도해 주세요.',
   deviceNotFound: '이 기기는 더 이상 가족에 속해 있지 않습니다.',
-  registerParentDeviceFirst: '먼저 이 기기를 부모 기기로 등록한 후 다시 시도해 주세요.',
+  registerParentDeviceFirst:
+    '이 휴대폰은 아직 부모 기기로 설정되지 않았습니다. 여기에서 KidGate를 열고 시작 화면에서 부모 역할을 선택한 뒤 다시 페어링해 보세요.',
   pairingCodeFormat: '6자리 코드를 입력해 주세요.',
   pairingCodeUsed: '이미 사용된 코드입니다. 새 코드를 요청하세요.',
   pairingCodeExpiredChild:

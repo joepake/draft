@@ -12,4 +12,6 @@ export const appAlerts = {
   infoLine2: '앱이 설치되거나 삭제될 때마다 부모에게 푸시 알림이 전송됩니다.',
   infoLine3: '여기서 목록을 확인하고, 위험한 앱은 차단된 앱에서 차단하세요.',
   recentTitle: '최근 변경',
+  statInstalled: '설치됨',
+  statRemoved: '삭제됨',
 } as const;

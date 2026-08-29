@@ -243,6 +243,72 @@ export function createFamilyRepository(deps: FamilyRepositoryDeps) {
     },
 
     /**
+     * Watch whether the family itself still exists.
+     *
+     * A different question from `subscribeOwnMembership`, and the one nothing
+     * asked. `members/{memberUid}` and `childDevices/{deviceId}` are
+     * *subcollections* of `users/{ownerUid}`, and Firestore does not delete a
+     * document's descendants with it — so a family root that goes away without
+     * `purgeScheduledDeletions` running leaves both of them behind, readable
+     * and unchanged. Every guard in the product reads one of those two
+     * documents, so all of them keep answering "still in the family": a
+     * secondary parent holds a family that is gone (and `assertUserCanJoinFamily`
+     * refuses to let them join another), and a child device keeps enforcing the
+     * last policy it was given with nothing left that could ever change it.
+     *
+     * A cache-first absence is never an answer, exactly as on the membership
+     * listener: the first snapshot after a cold start has no document yet.
+     *
+     * **A refusal is an answer for a parent and is not one for a child**, which
+     * is why `refusalMeansGone` exists rather than one behaviour for both. A
+     * revoked secondary parent sees `permissionDenied` instead of an absent
+     * document, and leaving them holding a live session is the failure
+     * `subscribeOwnMembership` documents. A child device is refused the same
+     * read whenever its token is stale — a phone opened after a night with the
+     * Wi-Fi still associating — and there, believing the refusal releases every
+     * restriction on the device. That direction is an off switch a child can
+     * reach by turning the router off, so the child agent waits for the server
+     * to say the document is gone.
+     */
+    subscribeFamilyExists(
+      familyId: string,
+      onExists: (exists: boolean) => void,
+      options?: {
+        refusalMeansGone?: boolean;
+        /**
+         * The listener was refused and the caller wants to settle it itself.
+         *
+         * For the child agent, which cannot take `refusalMeansGone` and must
+         * not be left with no signal at all: **once a deleted family stops
+         * permitting this read, a refusal is the only thing this listener will
+         * ever produce.** The caller checks it against evidence that has a
+         * definite answer and decides from there.
+         */
+        onRefused?: () => void;
+      },
+    ): Unsubscribe {
+      return db.onDoc(
+        userDoc(familyId),
+        snapshot => {
+          if (!snapshot.exists && snapshot.fromCache) {
+            return;
+          }
+          onExists(snapshot.exists);
+        },
+        error => {
+          if ((error as FirestoreError).code !== 'permissionDenied') {
+            return;
+          }
+          if (options?.refusalMeansGone) {
+            onExists(false);
+            return;
+          }
+          options?.onRefused?.();
+        },
+      );
+    },
+
+    /**
      * Forget the active family locally. Used at sign-out and when leaving one.
      *
      * `onFamilyChanged` matters here as much as on the way in: the web-history
@@ -290,9 +356,25 @@ export function createFamilyRepository(deps: FamilyRepositoryDeps) {
       const mirrored = (profile.data() as Record<string, unknown> | undefined)
         ?.memberFamilyId;
 
-      return typeof mirrored === 'string' && mirrored && mirrored !== ownUid
-        ? mirrored
-        : ownUid;
+      if (typeof mirrored !== 'string' || !mirrored || mirrored === ownUid) {
+        return ownUid;
+      }
+
+      /*
+       * The mirror is a pointer, and a pointer can outlive what it points at.
+       *
+       * Nothing deletes `memberFamilyId` when a family root goes away outside
+       * `purgeScheduledDeletions` — the membership document it mirrors is a
+       * subcollection of that root and survives it too — so this parent was
+       * sent to a family that no longer exists, where every read is refused and
+       * the screen reads as a broken dashboard rather than as an account with
+       * no family. Their own root is the honest answer.
+       *
+       * A *refused* read still propagates, which is the case the doc comment
+       * above protects: only an answer saying "absent" is treated as absent.
+       */
+      const family = await db.getDoc(userDoc(mirrored));
+      return family.exists ? mirrored : ownUid;
     },
 
     /**

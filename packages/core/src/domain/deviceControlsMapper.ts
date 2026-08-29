@@ -10,6 +10,10 @@ import type {
   DeviceProtectionCounters,
   DeviceProtectionStatus,
 } from '@kidgate/schema/device';
+import type {
+  DeviceMessageMonitoringState,
+  MessageMonitoringHalfState,
+} from '@kidgate/schema/messageMonitoringState';
 import {
   DEFAULT_PLACE_RADIUS_METERS,
   type DevicePlace,
@@ -20,6 +24,7 @@ import {
   WEB_FILTER_CATEGORIES,
   type WebFilterCategory,
 } from '@kidgate/schema/webActivity';
+import { MAX_AI_WEB_DOMAINS } from '@kidgate/schema/aiWebDomains';
 import { timestampToIso } from './firestoreValue';
 import { normalizeWebDomain } from './webDomain';
 
@@ -148,6 +153,37 @@ function parseBlockedAppPreview(value: unknown): BlockedAppPreviewItem[] {
   });
 }
 
+/**
+ * The server-classified block list off the device document root.
+ *
+ * Doc-root, not `controls.*`: the field is written by the `classifyWebDomains`
+ * Cloud Function alone and pinned immutable for clients in `firestore.rules`,
+ * and keeping it out of `DeviceControls` keeps it out of the parent's
+ * block-list editor (which would re-save it under the 50-entry cap).
+ * Normalised and capped the same way the hand-edited lists are, because the
+ * enforcement paths downstream assume normalized domains.
+ */
+export function parseAiWebDomains(data?: Record<string, unknown>): string[] {
+  const value = data?.aiWebDomains;
+  if (!Array.isArray(value)) {
+    return [];
+  }
+  const seen = new Set<string>();
+  for (const entry of value) {
+    if (typeof entry !== 'string') {
+      continue;
+    }
+    const domain = normalizeWebDomain(entry);
+    if (domain) {
+      seen.add(domain);
+    }
+    if (seen.size >= MAX_AI_WEB_DOMAINS) {
+      break;
+    }
+  }
+  return [...seen];
+}
+
 export function parseDeviceControls(data?: Record<string, unknown>): DeviceControls {
   const controls = data?.controls as Record<string, unknown> | undefined;
   if (!controls) {
@@ -176,7 +212,22 @@ export function parseDeviceControls(data?: Record<string, unknown>): DeviceContr
     webFilterBlockList: parseWebDomainList(controls.webFilterBlockList),
     webFilterAllowListOnly: controls.webFilterAllowListOnly === true,
     screenTimeAuthorized: Boolean(controls.screenTimeAuthorized),
+    // Server-stamped by reportChildUsage; absent for a child with no budget.
+    ...(controls.childBudget &&
+    typeof (controls.childBudget as { date?: unknown }).date === 'string'
+      ? {
+          childBudget: controls.childBudget as {
+            date: string;
+            usedMinutes: number;
+            limitMinutes: number;
+          },
+        }
+      : {}),
     appBlockingEnabled: Boolean(controls.appBlockingEnabled),
+    messageMonitoringEnabled: Boolean(controls.messageMonitoringEnabled),
+    messageMonitoringOutgoingEnabled: Boolean(
+      controls.messageMonitoringOutgoingEnabled,
+    ),
     blockedAppsConfigured: Boolean(controls.blockedAppsConfigured),
     blockedAppCount: num(controls.blockedAppCount, 0),
     blockedCategoryCount: num(controls.blockedCategoryCount, 0),
@@ -299,6 +350,48 @@ export function parseProtectionStatus(
   }
 
   return mapped as unknown as DeviceProtectionStatus;
+}
+
+/**
+ * What message scanning is actually doing on this device, as the device
+ * reports it (`@kidgate/schema/messageMonitoringState`).
+ *
+ * **Absent stays absent, and absent is unknown — never off.** Every device
+ * paired before the field existed publishes nothing, and so does every
+ * non-Android device; returning a `{granted:false, enabled:false}` default
+ * would turn "has not said" into "is not watching", which is the one thing
+ * `resolveMessageMonitoringNotice` exists to keep apart.
+ *
+ * A half that is present but malformed is read as `false` rather than
+ * dropped: the two booleans are what a parent screen disables a switch on,
+ * and a missing half there would read as the whole feature being unreported.
+ */
+export function parseMessageMonitoring(
+  data?: Record<string, unknown>,
+): DeviceMessageMonitoringState | undefined {
+  const state = data?.messageMonitoring as Record<string, unknown> | undefined;
+  if (!state || typeof state !== 'object') {
+    return undefined;
+  }
+
+  const half = (value: unknown): MessageMonitoringHalfState => {
+    const row = (value ?? {}) as Record<string, unknown>;
+    return { granted: row.granted === true, enabled: row.enabled === true };
+  };
+
+  // Same normalisation as `protectionStatus.lastCheckedAt`, and for the same
+  // reason: some app versions write a Firestore timestamp here and others an
+  // ISO string, and no reader should have to know which wrote the document.
+  const lastCheckedAt = timestampToIso(state.lastCheckedAt);
+
+  return {
+    incoming: half(state.incoming),
+    outgoing: half(state.outgoing),
+    ...(typeof state.minSeverity === 'number'
+      ? { minSeverity: state.minSeverity }
+      : {}),
+    ...(lastCheckedAt ? { lastCheckedAt } : {}),
+  };
 }
 
 /** All-time tallies written by the `tallyProtectionCounters` Cloud Function. */

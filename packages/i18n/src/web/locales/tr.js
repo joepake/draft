@@ -334,15 +334,44 @@ export default {
 
   webCat: {
     adult: 'Yetişkin içerik',
+    selfHarm: 'Kendine zarar verme ve yeme bozuklukları',
     gambling: 'Kumar',
+    gameGambling: 'Ganimet kutuları ve skin bahisleri',
     dating: 'Flört',
+    strangerChat: 'Yabancılarla sohbet',
     drugs: 'Uyuşturucu ve alkol',
-    violence: 'Şiddet ve aşırıcılık',
+    violence: 'Şiddet ve vahşet',
+    extremism: 'Aşırıcılık ve nefret',
     piracy: 'Korsan içerik',
     social: 'Sosyal ağlar',
     videoStreaming: 'Video yayını',
+    music: 'Müzik',
     gaming: 'Oyunlar',
     shopping: 'Alışveriş',
+    aiCompanion: 'Yapay zekâ arkadaşları',
+    aiAssistant: 'Yapay zekâ asistanları',
+    cryptoTrading: 'Kripto ve alım satım',
+    vpn: 'VPN uygulamaları',
+  },
+
+  appCat: {
+    adult: 'Yetişkin içerik',
+    gambling: 'Kumar',
+    gameGambling: 'Ganimet kutuları ve skin bahisleri',
+    dating: 'Flört',
+    drugs: 'Uyuşturucu ve alkol',
+    violence: 'Şiddet ve vahşet',
+    piracy: 'Korsan içerik',
+    bypass: 'Filtre atlatma ve VPN',
+  },
+
+  webCatGroup: {
+    harm: 'Zararlı içerik',
+    contact: 'Yabancılar',
+    bypass: 'Filtreyi atlatma',
+    ai: 'Yapay zekâ',
+    entertainment: 'Eğlence ve sosyal',
+    money: 'Alışveriş ve para',
   },
 
   dash: {
@@ -352,9 +381,11 @@ export default {
     tabSafety: 'Güvenlik',
     tabControls: 'Denetimler',
     tabReport: 'Haftalık rapor',
+    tabReportNew: 'Yeni haftalık rapor',
 
     children: 'Çocuklar',
     noChildren: 'Henüz eşleştirilmiş çocuk cihazı yok.',
+    unassignedDevices: 'Atanmadı',
     manage: 'Yönet',
     parents_one: '{{count}} ebeveyn',
     parents_other: '{{count}} ebeveyn',
@@ -368,6 +399,8 @@ export default {
     statusOnline: 'Çevrimiçi',
     statusOffline: 'Çevrimdışı',
     statusLocked: 'Kilitli',
+    statusLockSent: 'Kilit gönderildi',
+    statusLockNotApplied: 'Kilit uygulanmadı',
 
     stateAllowed: 'İzin verildi',
     stateDenied: 'Kapalı',
@@ -377,6 +410,10 @@ export default {
     stateUnknown: 'Bilinmiyor',
 
     lastActive: 'Son etkinlik {{when}}',
+    appVersion: 'Uygulama sürümü',
+    appVersionUpdate: '{{running}} · {{latest}} mevcut',
+    appVersionRestart: '{{running}} · tamamlamak için uygulamayı yeniden açın',
+    buildOutdated: 'Güncelleme var',
     checkIn: 'Yoklama',
     sending: 'Gönderiliyor…',
     lockDevice: 'Cihazı kilitle',
@@ -412,6 +449,10 @@ export default {
 
     cardScreenTime: 'Ekran süresi',
     cardScreenTimeSub: 'Son 14 gün, günlük sınıra göre',
+    usageSyncNote:
+      'Ekran süresinin bu ekrana yansıması birkaç dakika sürebilir — cihazın internet bağlantısı yoksa veya beklenmedik şekilde kapandıysa bu süre daha uzun olabilir.',
+    usageSyncNoteTv:
+      'Bu TV yalnızca belirli aralıklarla bağlanır, bu yüzden ekran süresinin bu ekrana yansıması 30 dakikaya kadar sürebilir — internet bağlantısı yoksa bu süre daha da uzar.',
     cardRecent: 'Son etkinlikler',
     cardRecentSub: 'En yeniden başlayarak',
     cardRecentEmpty:
@@ -426,8 +467,6 @@ export default {
     attnReason: '“{{reason}}” · {{when}}',
     attnCheckInMissed: 'Bir yoklama yanıtsız kaldı',
     attnCheckInMissedMeta: '{{when}} gönderildi · yanıt yok',
-    attnPermissionOff: '{{permission}} kapalı',
-    attnPermissionOffMeta: 'Çocuk cihazında geri açılana kadar koruma daha zayıf kalır',
     attnLimitReached: 'Günlük sınıra ulaşıldı — cihaz kilitlendi',
     attnLimitReachedMeta: 'Bugün {{used}} kullanıldı',
     attnBatteryLow: 'Pil düşük (%{{level}})',
@@ -460,6 +499,8 @@ export default {
 
     appUsageTitle: 'Bugünkü uygulama kullanımı',
     appUsageSub: 'Uygulama başına harcanan süre',
+    topAppsOther: 'Diğer uygulamalar',
+    underAMinute: 'Bir dakikadan az',
     appUsageEmpty: 'Henüz uygulama kullanımı bildirilmedi.',
     appBlockingTitle: 'Uygulama engelleme',
     appBlockingSub: 'Çocuk cihazında ebeveyn PIN’iyle seçilir',
@@ -472,6 +513,23 @@ export default {
     webActivityTitle: 'Web etkinliği',
     webActivitySub: 'En çok ziyaret edilen alan adları, son 30 gün',
     webActivityEmpty: 'Henüz web etkinliği yok.',
+    inventoryTitle: 'Yüklü uygulamalar',
+    inventorySub: 'Bu cihazdaki her şey, yalnızca değişenler değil',
+    inventoryEmpty: 'Bu cihaz uygulama listesini henüz göndermedi.',
+    inventoryStale:
+      'Bu liste güncel değil. Cihaz bir sonraki bağlantısında yenilenecek.',
+    inventoryFirstScan:
+      'İlk tarama, bu yüzden KidGate bunların ne zaman geldiğini söyleyemez.',
+    inventoryFlagged: 'Bakmaya değer',
+    inventoryFlaggedLabel: 'İncelenecek',
+    inventoryOtherLabel: 'Tanımlandı',
+    inventoryUnknownLabel: 'Tanımlanmadı',
+    inventoryIncomplete:
+      'Ana ekranda simgesi olmayan bir uygulama burada görünmeyebilir.',
+    webActivitySyncNote:
+      'Web etkinliğinin bu ekrana yansıması birkaç dakika sürebilir — cihazın internet bağlantısı yoksa veya beklenmedik şekilde kapandıysa bu süre daha uzun olabilir.',
+    webActivitySyncNoteTv:
+      'Bu TV yalnızca belirli aralıklarla bağlanır, bu yüzden web etkinliğinin bu ekrana yansıması 30 dakikaya kadar sürebilir — internet bağlantısı yoksa bu süre daha da uzar.',
     colDomain: 'Alan adı',
     colVisits: 'Ziyaret',
     colBlocked: 'Engellenen',
@@ -480,15 +538,22 @@ export default {
     filterRefusedSub_one: '{{count}} engellenen sorgu, son 30 gün',
     filterRefusedSub_other: '{{count}} engellenen sorgu, son 30 gün',
     nothingBlockedYet: 'Henüz hiçbir şey engellenmedi.',
+    rollupNoteAi:
+      'Bazı türler bilinen bir siteyle eşleştirilmek yerine site adından çıkarıldı, bu yüzden birkaçı yanlış olabilir.',
     filterHintIos:
       'iOS’ta filtre, Apple’ın yetişkin içerik denetimini kullanır — kategori bazlı engelleme yalnızca Android’de vardır.',
     filterHintAndroid: 'Kategoriler cihazdaki DNS filtresi tarafından uygulanır.',
+    filterHintMacos:
+      'Kategoriler Mac’teki KidGate içerik filtresi tarafından uygulanır.',
 
     locationTitle: 'Konum',
     locationSharingOff: 'Paylaşım kapalı',
+    locationSyncNote:
+      'Konumun güncellenmesi birkaç dakika sürebilir — cihazın internet bağlantısı yoksa veya beklenmedik şekilde kapandıysa bu süre daha uzun olabilir.',
     locationUpdated: '{{when}} güncellendi',
     locationWaiting: 'İlk güncelleme bekleniyor',
     lastKnownLocation: 'Bilinen son konum',
+    nearPlace: '{{place}} yakınında',
     noPlaces:
       'Henüz kayıtlı yer yok. Çocuğunuz geldiğinde ya da ayrıldığında uyarı almak için uygulamadan bir yer ekleyin.',
     placeRadius: '{{meters}} m · ',
@@ -527,6 +592,10 @@ export default {
     limitScaleMax: '8 sa',
     limitHint:
       'Ödül görevlerinden ve onaylanan süre isteklerinden gelen bonus dakikalar yalnızca o gün için üstüne eklenir.',
+    limitShared: 'Tüm cihazlar için ortak',
+    limitSharedSpent: 'Bugün {{limit}} sürenin {{used}} kadarı kullanıldı',
+    limitSharedHint:
+      'Bu, çocuğun günün tamamı; bu cihaza özel bir sınır değil — her cihaz diğerlerinden artan süreyi alır. KidGate uygulamasından değiştirilir.',
     whatsOnTitle: 'Neler açık',
     whatsOnSub: 'Değişiklikler çocuk cihazıyla eşitlenir',
     rowBlockedHours: 'Engellenen saatler',
@@ -542,6 +611,8 @@ export default {
     rowWebFilterDesc_one: '{{count}} kategori reddedildi',
     rowWebFilterDesc_other: '{{count}} kategori reddedildi',
     rowNotSupported: 'Bu cihazda desteklenmiyor',
+    rowWebFilterAwaitingApproval: 'Cihazda onay bekliyor',
+    rowWebFilterSwitchedOff: 'Cihazda kapalı',
     rowLocation: 'Konum paylaşımı',
     rowLocationDesc: 'Son güncelleme {{when}}',
     rowLocationNone: 'Henüz konum yok',
@@ -563,6 +634,12 @@ export default {
     rewardTaskWaiting: ' · onayınız bekleniyor',
     approve: 'Onayla',
     approveInApp: 'KidGate uygulamasından onaylayın',
+    siteRequestsTitle: 'Site istekleri',
+    siteRequestsSub: 'Bu cihazın izin istediği siteler',
+    siteRequestAllow: 'İzin ver',
+    siteRequestDeny: 'Şimdi değil',
+    attnSiteRequest: '{{name}} {{domain}} adresini açmak istiyor',
+    toastSiteAllowed: 'Siteye izin verildi',
     timelineTitle: 'Ne zaman kullanıldı',
     timelineSub: 'Bugün, gece yarısından gece yarısına. Yeşil, cihazda geçen süredir.',
   },
@@ -632,8 +709,11 @@ export default {
     emptyBody:
       'Her Pazar akşamı bir rapor gelir. Bu haftanınkini şimdi yazabilirsiniz — son yedi günü kapsar.',
     noUsage:
-      'Son iki haftada ekran süresi kaydedilmedi, bu yüzden henüz raporlanacak bir şey yok. Kapalı bir cihaz hiçbir şey bildirmez; bu, sakin bir haftayla aynı şey değildir.',
+      'Son iki haftada ekran süresi kaydedilmedi, bu yüzden henüz raporlanacak bir şey yok. Çevrimdışı bir cihaz hiçbir şey bildirmez; bu, sakin bir haftayla aynı şey değildir.',
     rateLimited: 'Çok fazla deneme. Bir dakika bekleyin.',
+    loadFailedTitle: 'Raporlar yüklenemedi',
+    loadFailed: 'Raporlar açılamadı. Yeniden denemek için sayfayı yenileyin.',
+    retryLoad: 'Tekrar dene',
     failed: 'Rapor yazılamadı. Birazdan yeniden deneyin.',
     existed: 'Bu haftanın raporu zaten vardı — işte burada.',
     childrenTitle: 'Her çocuk',

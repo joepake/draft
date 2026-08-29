@@ -3,7 +3,7 @@ export const pairing = {
   shareInviteMessage:
     'KidGate에서 가족에 참여하세요. 앱을 열고 가족 → 가족 참여를 선택한 뒤 코드 {{code}}를 입력하세요. 코드는 15분 후 만료됩니다.',
   shareChildCodeMessage:
-    'KidGate에서 이 자녀 기기를 연결하세요: 부모 기기에서 KidGate 열기 → 기기 → + → 자녀 기기를 선택한 뒤 QR 코드를 스캔하거나 코드 {{code}}를 입력하세요. 코드는 5분 후 만료됩니다.',
+    'KidGate에서 이 자녀 기기를 연결하세요: 부모 기기에서 KidGate 열기 → 가족 → 코드 스캔을 선택한 뒤 QR 코드를 스캔하거나 코드 {{code}}를 입력하세요. 코드는 5분 후 만료됩니다.',
   connectChildPhone: '자녀 기기 연결',
   parentInstructions:
     '자녀 기기에서 KidGate를 열고 “이 기기는 자녀의 기기입니다”를 선택하세요. 그런 다음 해당 화면에 표시된 코드를 입력하세요.',
@@ -13,12 +13,21 @@ export const pairing = {
     '이 화면을 계속 열어 두세요. 부모님이 KidGate 앱에서 이 기기를 연결할 것입니다.',
   childCodeLabel: '또는 이 코드를 공유하세요',
   childScanHint:
-    '부모님: KidGate 열기 → 기기 → + → 자녀 기기 → QR 코드를 스캔하거나 코드를 입력하세요.',
+    '부모님: KidGate 열기 → 가족 → {{scan}} → QR 코드를 스캔하거나 코드를 입력하세요.',
   childConnecting: '연결되었습니다. 이 기기를 설정하는 중…',
   childPairedTitle: '연결되었습니다',
   childPairedSubtitle: '이 기기를 설정하는 중…',
   connectChild: '자녀 기기 연결',
   waitingChildConfirm: '요청을 보냈습니다. 자녀 기기에서 확인을 기다리는 중입니다.',
+  waitingChildConfirmHint:
+    '자녀 기기에서 "예, 연결합니다"를 탭하면 완료됩니다. 이 화면은 닫아도 됩니다 — 페어링은 백그라운드에서 계속됩니다.',
+  childConfirmedTitle: '기기가 연결되었습니다',
+  childConfirmedBody:
+    '자녀 기기에서 페어링을 확인했습니다. 이제 누가 사용할지 선택하세요.',
+  childRejectedPairing:
+    '자녀 기기에서 이 페어링을 거절했습니다. 그 기기에서 새 코드를 받아 다시 시도해 주세요.',
+  childConfirmExpired:
+    '자녀 기기에서 제한 시간 내에 확인하지 않았습니다. 새 코드를 받아 다시 시도해 주세요.',
   confirmParentTitle: '이 부모님을 확인하시겠습니까?',
   confirmParentSubtitle:
     '{{parentLabel}}님이 이 기기를 관리하려고 합니다. 이 사람을 아는 경우에만 수락하세요.',

@@ -20,7 +20,7 @@ export const notifications = {
   alert: {
     tamperAlerts: {
       label: 'Bảo vệ bị tắt',
-      hint: 'Một quyền KidGate cần đã bị tắt trên máy con.',
+      hint: 'Một quyền KidGate cần đã bị tắt trên thiết bị của trẻ.',
     },
     placeAlerts: {
       label: 'Khi đến và rời địa điểm',
@@ -29,6 +29,10 @@ export const notifications = {
     timeRequests: {
       label: 'Xin thêm giờ',
       hint: 'Con xin thêm thời gian sử dụng.',
+    },
+    siteRequests: {
+      label: 'Xin mở trang',
+      hint: 'Con xin mở một trang đang bị chặn.',
     },
     checkIn: {
       label: 'Trả lời Báo an toàn',
@@ -40,7 +44,11 @@ export const notifications = {
     },
     appActivity: {
       label: 'Cài hoặc gỡ ứng dụng',
-      hint: 'Có ứng dụng xuất hiện hoặc biến mất trên máy con.',
+      hint: 'Có ứng dụng xuất hiện hoặc biến mất trên thiết bị của trẻ.',
+    },
+    anomalyAlerts: {
+      label: 'Hoạt động bất thường',
+      hint: 'Cách dùng khác thường trên thiết bị của trẻ — dùng khuya, tăng vọt, ứng dụng mới.',
     },
     weeklyDigest: {
       label: 'Tổng kết tuần',

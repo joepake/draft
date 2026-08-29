@@ -5,6 +5,36 @@ export type UsageAppBreakdown = {
 };
 
 /**
+ * How many app rows one device-day carries, everywhere.
+ *
+ * The number is a contract, not a preference: an agent truncates its own
+ * ranking before uploading, `reportChildUsage` truncates again on the way in,
+ * and the client repository truncates on the way out. Three cuts at three
+ * different numbers is a list whose length depends on which one was smallest,
+ * which is unexplainable from any screen — so they read this, and the two that
+ * cannot (Kotlin, Swift) are pinned to it by
+ * `packages/core/src/domain/__tests__/usageTopAppsLimitParity.test.ts`.
+ *
+ * **Raised from 8 to 10 on 2026-08-27.** `AppLimitsScreen` offers exactly
+ * these rows as the apps a parent may cap — a saved limit uses one up, so a
+ * family with five caps was choosing their sixth from three candidates. Ten is
+ * a judgement about that screen, not about the ranking, which nothing below
+ * row six is read for.
+ *
+ * Two things it does not do. It does not backfill: a day document written
+ * before the bump keeps its eight rows forever, and nothing re-derives them.
+ * And it reaches a phone only through a store build — Android and iOS hold two
+ * of the five copies in native code, so a server deploy alone widens what is
+ * accepted and changes nothing about what arrives.
+ *
+ * Cost of the two extra rows is not the classifier: `appCategories/{package}`
+ * is keyed product-wide, so a new row costs the model only for an identifier
+ * nobody in the product has used before, once ever. It is `classifyApps`
+ * re-reading two more cache documents per device per night, forever.
+ */
+export const USAGE_TOP_APPS_LIMIT = 10;
+
+/**
  * One character per minute of the device's local day, midnight first.
  *
  * A string rather than a bitfield, and 1440 bytes rather than the 360 a
@@ -56,5 +86,28 @@ export type UsageDay = {
    * claims the capability writes this field.
    */
   timeline?: UsageTimeline;
+  /**
+   * Minutes the device was on with nobody using it, or absent where no agent
+   * can say.
+   *
+   * The packages a platform excludes from `topApps` — a launcher, a
+   * screensaver, the agent's own window — earn no minutes in `minutes` and no
+   * row in the list, which is right and leaves the parent with a report that
+   * silently claims less than the television was on for. On the one real
+   * Android TV in the product the ambient mode was the second most-used
+   * "app" of a month at 116 minutes; subtracting that number is correct, and
+   * hiding it is not the same thing.
+   *
+   * **Counted the same way `minutes` is** — attributed seconds, rounded once —
+   * so the two are addable and a parent can read them side by side. Deriving
+   * it from `timeline` instead would have been free and wrong: the band marks
+   * every minute any part of which was used, `#` beats `.`, so its idle count
+   * disagrees with this one by however many minutes carried both states.
+   *
+   * Absent, not zero, on a platform that excludes nothing or cannot say. Zero
+   * is the honest claim "the device was in use whenever it was on", which iOS
+   * has no way to make.
+   */
+  idleMinutes?: number;
   updatedAt?: string;
 };

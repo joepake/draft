@@ -25,7 +25,7 @@ export const userGuide = {
     },
     safety: {
       title: 'Sicherheit und Überwachung',
-      description: 'Standort, Check-In, SOS, Webfilter und Schutz',
+      description: 'Standort, Check-in, SOS, Webfilter und Schutz',
     },
   },
   topics: {
@@ -36,12 +36,12 @@ export const userGuide = {
       tip: 'Lege die Eltern-PIN frühzeitig fest. Du benötigst sie, um sensible Einstellungen zu ändern und Steuerungen auf dem Kindergerät zu entsperren.',
       steps: {
         '1': 'Installiere KidGate auf deinem Gerät. Öffne die App und wähle „Dies ist ein Elterngerät“.',
-        '2': 'Melde dich mit Google oder Apple an, oder erstelle ein E-Mail-Konto. Bestätige, dass du der Familienbesitzer für diesen Haushalt bist.',
+        '2': 'Melde dich mit Google oder Apple an, oder erstelle ein E-Mail-Konto. Bestätige, dass du der Familieninhaber für diesen Haushalt bist.',
         '3': 'Falls du dazu aufgefordert wirst, gib deiner Familie einen Namen (zum Beispiel „Familie Müller“). Dieser Name wird angezeigt, wenn andere Elternteile beitreten.',
         '4': 'Lege eine Eltern-PIN (6 Ziffern) unter Einstellungen → Sicherheit fest. Merke sie dir oder bewahre sie an einem sicheren Ort auf und teile sie nicht mit Kindern.',
         '5': 'Empfohlen: Aktiviere App-Sperre und biometrische Entsperrung in den Einstellungen, damit niemand sonst die Eltern-App auf deinem Gerät öffnen kann.',
         '6': 'Öffne Familie (Geräte). Tippe auf + und wähle „Gerät des Kindes verbinden“. Halte diesen Bildschirm für den QR-Code oder Code vom Kindergerät bereit.',
-        '7': 'Sobald das Kindergerät verbunden ist, öffne die Gerätekarte. Lege gemeinsam mit deinem Kind das Tageslimit und die Sperrzeiten fest und schließt die Berechtigungen ab.',
+        '7': 'Sobald das Kindergerät verbunden ist, öffne die Gerätekarte. Lege gemeinsam mit deinem Kind das Tageslimit und die Sperrzeiten fest und schließe die Berechtigungen ab.',
       },
     },
     getStartedChild: {
@@ -78,26 +78,25 @@ export const userGuide = {
       title: 'Einen weiteren Elternteil einladen',
       summary:
         'Lass einen zweiten Elternteil derselben Familie beitreten und dieselben Kindergeräte verwalten.',
-      tip: 'Nur der Familienbesitzer kann Beitrittsanfragen genehmigen. Genehmige zeitnah, da Anfragen ablaufen können.',
+      tip: 'Nur der Familieninhaber kann Beitrittsanfragen genehmigen. Genehmige zeitnah, da Anfragen ablaufen können.',
       steps: {
-        '1': 'Öffne auf dem Gerät des Familienbesitzers Familie → tippe auf + → „Weiteres Elterngerät hinzufügen“ (oder „Elternteil einladen“).',
+        '1': 'Öffne auf dem Gerät des Familieninhabers Familie → tippe auf + → „Weiteres Elterngerät hinzufügen“ (oder „Elternteil einladen“).',
         '2': 'Falls du noch keinen Familiennamen erstellt hast, gib einen ein und wähle „Familie erstellen“.',
         '3': 'Zeige dem anderen Elternteil den Einladungs-QR-Code oder teile den Einladungscode mit ihm.',
         '4': 'Auf dem anderen Elterngerät: Öffne KidGate als Elternteil → Familie → + → „Familie beitreten“ und scanne den QR-Code oder gib den Code ein.',
-        '5': 'Öffne auf dem Gerät des Besitzers die ausstehende Anfrage und wähle „Genehmigen“. Lehne ab, wenn du die Person nicht erkennst.',
-        '6': 'Der neue Elternteil sieht dieselben Kindergeräte und kann bei der Verwaltung der Limits helfen. Manche Aktionen, wie das Umbenennen oder Entfernen von Geräten, bleiben dem Besitzer vorbehalten.',
+        '5': 'Öffne auf dem Gerät des Inhabers die ausstehende Anfrage und wähle „Genehmigen“. Lehne ab, wenn du die Person nicht erkennst.',
+        '6': 'Der neue Elternteil sieht dieselben Kindergeräte und kann bei der Verwaltung der Limits helfen. Manche Aktionen, wie das Umbenennen oder Entfernen von Geräten, bleiben dem Inhaber vorbehalten.',
       },
     },
     joinFamily: {
       title: 'Einer bestehenden Familie beitreten',
-      summary:
-        'Nutze eine Einladung des Familienbesitzers, um Mitelternteil zu werden.',
-      tip: 'Läuft die Genehmigungsanfrage ab, bitte den Besitzer um einen neuen Einladungs-QR-Code oder -Code.',
+      summary: 'Nutze eine Einladung des Familieninhabers, um Mitelternteil zu werden.',
+      tip: 'Läuft die Genehmigungsanfrage ab, bitte den Inhaber um einen neuen Einladungs-QR-Code oder -Code.',
       steps: {
         '1': 'Installiere KidGate und melde dich auf deinem Gerät als Elternteil an.',
         '2': 'Öffne Familie → tippe auf + → „Familie beitreten“.',
-        '3': 'Scanne den Einladungs-QR-Code des Besitzers oder gib den 6-stelligen Einladungscode ein.',
-        '4': 'Warte auf die Genehmigung des Besitzers. Lasse die App geöffnet, bis du siehst, dass du der Familie beigetreten bist.',
+        '3': 'Scanne den Einladungs-QR-Code des Inhabers oder gib den 6-stelligen Einladungscode ein.',
+        '4': 'Warte auf die Genehmigung des Inhabers. Lasse die App geöffnet, bis du siehst, dass du der Familie beigetreten bist.',
         '5': 'Bestätige, dass die Kindergeräte unter Familie erscheinen. Öffne ein Gerät, um dessen Status und Steuerungen anzuzeigen.',
       },
     },
@@ -114,7 +113,7 @@ export const userGuide = {
         '5': 'Bedienungshilfen-Sperrfunktion: Einstellungen → Bedienungshilfen → Installierte/Heruntergeladene Apps → KidGate → An. So bleibt die Sperre durchgesetzt.',
         '6': 'Akku ohne Einschränkung: Wähle bei Aufforderung „Erlauben“. Erscheint keine Aufforderung: App-Info → Akku → Ohne Einschränkung.',
         '7': 'Wecker und Erinnerungen: Erlaube dies, damit Sperrzeiten pünktlich beginnen und enden.',
-        '8': 'Standort und Kamera (falls du Check-In oder SOS-Fotos nutzt): Erlaube sie, wenn KidGate danach fragt. Kehre zu Status zurück und bestätige, dass jede Zeile erlaubt ist.',
+        '8': 'Standort und Kamera (falls du Check-in oder SOS-Fotos nutzt): Erlaube sie, wenn KidGate danach fragt. Kehre zu Status zurück und bestätige, dass jede Zeile erlaubt ist.',
       },
     },
     iosScreenTime: {
@@ -181,7 +180,7 @@ export const userGuide = {
         '2': 'Gib bei Aufforderung die Eltern-PIN ein.',
         '3': 'Öffne „Zu blockierende Apps auswählen“. Wähle die Apps (und Kategorien, falls angezeigt) und speichere auf dem Kindergerät.',
         '4': 'Öffne auf dem Elterngerät das Gerät → Blockierte Apps und warte, bis die ausgewählte Liste erscheint.',
-        '5': 'Schalte „App-Blockierung aktivieren“ ein. Der Status sollte „Blockierung aktiviert“ anzeigen.',
+        '5': 'Schalte „App-Blockierung aktivieren“ ein. Der Status sollte „Sperre aktiviert“ anzeigen.',
         '6': 'Teste dies, indem du eine blockierte App auf dem Kindergerät öffnest. Sie sollte gemäß Plattformregeln eingeschränkt sein.',
         '7': 'Um die Liste später zu ändern, wiederhole die Auswahl auf dem Kindergerät mit der Eltern-PIN. Das Elterngerät synchronisiert die neue Liste.',
       },
@@ -211,14 +210,14 @@ export const userGuide = {
       },
     },
     checkIn: {
-      title: 'Einen Check-In anfordern',
+      title: 'Einen Check-in anfordern',
       summary:
         'Bitte dein Kind zu bestätigen, dass es sicher ist, mit Standort und optionalem Foto.',
-      tip: 'Für Check-Ins mit Foto ist die Kameraberechtigung auf dem Kindergerät erforderlich.',
+      tip: 'Für Check-ins mit Foto ist die Kameraberechtigung auf dem Kindergerät erforderlich.',
       steps: {
         '1': 'Öffne das Kindergerät auf dem Elterngerät.',
-        '2': 'Wähle „Check-In“ (die Schnellaktion oder den Bereich Sicherheit).',
-        '3': 'Das Kindergerät erhält eine Check-In-Mitteilung und einen entsprechenden Bildschirm. Das Kind tippt, um zu bestätigen, dass alles in Ordnung ist, oder um Hilfe zu bitten.',
+        '2': 'Wähle „Check-in“ (die Schnellaktion oder den Bereich Sicherheit).',
+        '3': 'Das Kindergerät erhält eine Check-in-Mitteilung und einen entsprechenden Bildschirm. Das Kind tippt, um zu bestätigen, dass alles in Ordnung ist, oder um Hilfe zu bitten.',
         '4': 'Ist der Kamerazugriff erlaubt, fügt KidGate wenn möglich ein Foto zusammen mit dem Standort hinzu.',
         '5': 'Öffne auf dem Elterngerät den Check-in-Verlauf, um die letzte Antwort und das Foto zu prüfen.',
       },
@@ -233,7 +232,7 @@ export const userGuide = {
         '2': 'Folge den Schritten auf dem Bildschirm, um einen SOS-Alarm zu senden (Standort und Foto hängen von den erteilten Berechtigungen ab).',
         '3': 'Eltern erhalten eine Push-Mitteilung, sobald ein SOS-Alarm gesendet wird.',
         '4': 'Öffne auf dem Elterngerät das Gerät → SOS-Warnungen, um das Ereignis zu überprüfen.',
-        '5': 'Vereinbare mit deinem Kind, wann SOS verwendet werden soll und wann ein normaler Check-In ausreicht.',
+        '5': 'Vereinbare mit deinem Kind, wann SOS verwendet werden soll und wann ein normaler Check-in ausreicht.',
       },
     },
     webFilter: {

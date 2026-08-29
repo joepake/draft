@@ -29,14 +29,14 @@ export const rewardTask = {
   screenTitle: 'Задания с наградой',
   fallbackDeviceName: 'Устройство ребёнка',
   heroUnit: 'мин можно заработать',
-  heroCaption: 'Открытых заданий: {{count}}',
+  heroCaption: 'Незавершённых заданий: {{count}}',
   heroCaptionEmpty:
     'Создайте задание, чтобы ребёнок мог заработать дополнительное время.',
   noLimitHintTitle: 'Дневной лимит не задан',
   noLimitHintBody:
     'Бонусные минуты действуют только при заданном дневном лимите. Сначала настройте его в разделе «Дневной лимит».',
   noLimitHintCta: 'Настроить дневной лимит',
-  openSectionTitle: 'Открытые задания',
+  openSectionTitle: 'Незавершённые задания',
   tabOpen: 'К выполнению',
   tabDone: 'Готово',
   doneEmptyBody: 'Одобренные задания появятся здесь.',

@@ -17,4 +17,7 @@ export const childSettings = {
   uninstallProtectionHintOff: 'Nonaktif. KidGate bisa dihapus dari ponsel ini.',
   uninstallProtectionTurnedOff: 'Perlindungan hapus instal nonaktif.',
   uninstallProtectionFailed: 'Tidak bisa mengubah perlindungan hapus instal.',
+  messageSafetySectionTitle: 'Keamanan pesan',
+  messageSafetySectionDescription:
+    'Beri izin di sini. Soal menyalakannya, itu keputusan orang tuamu dari ponsel mereka.',
 } as const;

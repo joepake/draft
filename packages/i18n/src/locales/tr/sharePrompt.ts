@@ -8,7 +8,6 @@ export const sharePrompt = {
   laterButton: 'Daha sonra',
   shareMessage:
     'Çocuklarımı internette korumak için KidGate kullanıyorum: yetişkin sitelerini engelliyor, ekran süresini sınırlıyor ve konumu gösteriyor. Deneyin: {{link}}',
-  settingsSectionTitle: 'KidGate’e destek ol',
   settingsShareTitle: 'KidGate’i paylaş',
   settingsShareSubtitle: 'Diğer ebeveynlere önerin',
   settingsRateTitle: 'Uygulamayı değerlendir',

@@ -38,6 +38,15 @@ export const protection = {
   lockNotReadyBodyIos:
     'KidGate ne peut pas verrouiller cet iPhone tant que l’accès à Temps d’écran n’est pas autorisé sur l’appareil de l’enfant. Veuillez ouvrir KidGate sur cet appareil et terminer les étapes suivantes :',
   locationPermission: 'Autorisation de localisation',
+  cameraPermission: 'Autorisation caméra',
+  cameraConsentPending:
+    'La caméra n’est pas autorisée sur cet appareil : un SOS ou un Check-in envoyé depuis là arrive sans photo.',
+  locationConsentPending:
+    'La position n’est pas autorisée sur cet appareil : il ne peut pas indiquer où il se trouve.',
+  consentStepOpenSettings:
+    'Ouvre KidGate sur l’appareil de ton enfant et va dans Réglages.',
+  consentStepParentPin: 'Saisis le code parent.',
+  consentStepPermissions: 'Ouvre « Autorisations » et autorise ce qui manque.',
   notificationsPermission: 'Autorisation de notifications',
   backgroundUpdates: 'Mises à jour en arrière-plan',
   backgroundUpdatesRestricted:

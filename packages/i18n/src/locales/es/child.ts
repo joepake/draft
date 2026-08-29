@@ -48,6 +48,16 @@ export const child = {
   setupWizardRequired: 'Obligatorio',
   setupWizardOptional: 'Opcional',
   setupWizardSkip: 'Omitir por ahora',
+  setupGrantStuckHint:
+    '¿Lo activaste pero nada cambió? Reinicia el televisor y vuelve a intentarlo.',
   setupWizardAllDoneTitle: '¡Listo!',
   setupWizardAllDoneSubtitle: 'Este dispositivo ya está protegido.',
+  setupWizardStepDone: 'Listo: ese ya está activado.',
+  setupWizardCoreDoneTitle: 'La protección básica está activada',
+  setupWizardCoreDoneBody:
+    'Los permisos imprescindibles están concedidos y este dispositivo está protegido. Unos pasos opcionales hacen que al sistema le cueste más desactivar la protección.',
+  setupWizardCoreDoneContinue: 'Reforzarla ahora',
+  setupWizardCoreDoneLater: 'Terminar más tarde',
+  setupWizardParentPinNote:
+    'Se necesita el PIN parental: un padre o una madre lo introduce en la pantalla siguiente.',
 } as const;

@@ -1,7 +1,8 @@
 export const activities = {
   title: 'गतिविधियाँ',
   subtitleAllDevices: 'सभी डिवाइसों की नवीनतम गतिविधियाँ',
-  subtitleTimelineForDevice: '{{deviceName}} की गतिविधि',
+  subtitleTimelineForDevice: '{{deviceName}} की टाइमलाइन',
+  subtitleTimelineForChild: '{{childName}} की टाइमलाइन',
   fallbackDeviceName: 'डिवाइस',
   liveBadge: 'लाइव',
   errorTitle: 'गतिविधि लोड नहीं की जा सकी',
@@ -10,7 +11,7 @@ export const activities = {
   emptyTitleAll: 'अभी तक कोई गतिविधि नहीं',
   emptyTitleDevice: 'इस डिवाइस के लिए कोई गतिविधि नहीं',
   emptyDescriptionAll:
-    'आपके बच्चे के डिवाइस से लॉक, अनलॉक और SOS घटनाएँ यहाँ दिखाई देंगी.',
+    'आपके बच्चे के डिवाइस से लॉक, अनलॉक और SOS घटनाएँ यहाँ दिखाई देंगी।',
   emptyDescriptionDevice:
     'कोई अन्य डिवाइस चुनें या इस डिवाइस से लॉक, अनलॉक और SOS घटनाओं की प्रतीक्षा करें।',
 
@@ -38,16 +39,31 @@ export const activities = {
   activityTypePlaceExit: 'स्थान छोड़ा',
   activityTypeTamper: 'सुरक्षा',
   activityTypeScreenTime: 'स्क्रीन टाइम',
+  activityTypeWebFilter: 'वेब फ़िल्टर',
   activityTypeEmergency: 'आपातकाल',
   activityTypeUnknown: 'गतिविधि',
 
+  sosEscapeTitle: 'आपातकालीन अनलॉक',
+  sosEscapeBody: 'SOS ने इस डिवाइस को {{minutes}} मिनट के लिए अनलॉक किया।',
+  sosEscapeRepeatTitle: 'आपातकालीन अनलॉक (आज {{count}} बार)',
+  sosEscapeRepeatBody:
+    'SOS ने इस डिवाइस को {{minutes}} मिनट के लिए अनलॉक किया। आज यह {{count}} बार हुआ है।',
   appBlockedTitle: '{{appName}}',
   appBlockedBody: 'एक ब्लॉक किया गया ऐप खोला गया और KidGate ने उसे बंद कर दिया।',
-  appInstalledTitle: '{{appName}}',
-  appInstalledBody: 'बच्चे के डिवाइस पर एक नया ऐप इंस्टॉल किया गया है।',
+  appInstalledTitle: 'ऐप इंस्टॉल किया गया',
+  appInstalledBody: 'बच्चे के डिवाइस पर ऐप {{appName}} इंस्टॉल किया गया है।',
 
-  appRemovedTitle: '{{appName}}',
-  appRemovedBody: 'बच्चे के डिवाइस से एक ऐप हटाया गया है।',
+  messageAlertTitle: 'चिंताजनक संदेश सामग्री',
+  messageAlertBody: '{{appName}} में एक चिह्नित शब्द मिला।',
+  messageAlertBodyOutgoing:
+    '{{appName}} में आपके बच्चे के लिखे संदेश में एक चिह्नित शब्द मिला।',
+  activityTypeMessageAlert: 'संदेश चेतावनी',
+  messageCheckedTitle: 'जाँच हुई, चिंता की बात नहीं',
+  messageCheckedBody:
+    '{{appName}} में एक निगरानी वाला शब्द दिखा जो संदर्भ में हानिरहित निकला।',
+  activityTypeMessageChecked: 'जाँचा गया',
+  appRemovedTitle: 'ऐप हटाया गया',
+  appRemovedBody: 'बच्चे के डिवाइस से ऐप {{appName}} हटाया गया है।',
 
   placeEnterTitle: '{{placeName}} पहुँचा',
   placeEnterBody: 'बच्चे का डिवाइस सहेजे गए स्थान पर पहुँचा।',
@@ -64,9 +80,9 @@ export const activities = {
   tamperOverlayBody:
     'जब तक यह अनुमति दोबारा चालू नहीं होती, लॉक स्क्रीन अन्य ऐप्स के ऊपर दिखाई नहीं दे सकती।',
 
-  tamperAccessibilityTitle: 'Accessibility बंद कर दी गई',
+  tamperAccessibilityTitle: 'सुलभता बंद कर दी गई',
   tamperAccessibilityBody:
-    'Accessibility दोबारा चालू होने तक ऐप ब्लॉकिंग और सुरक्षा सुविधाएँ ठीक से काम नहीं कर सकतीं।',
+    'सुलभता दोबारा चालू होने तक ऐप ब्लॉकिंग और सुरक्षा सुविधाएँ ठीक से काम नहीं कर सकतीं।',
   tamperUsageAccessTitle: 'ऐप उपयोग की पहुँच बंद कर दी गई',
   tamperUsageAccessBody:
     'जब तक KidGate बच्चे के डिवाइस पर ऐप उपयोग दोबारा नहीं पढ़ पाता, तब तक ऐप सीमाएँ और ब्लॉक किए गए समय काम करना बंद कर सकते हैं।',
@@ -97,7 +113,7 @@ export const activities = {
 
   tamperCameraTitle: 'कैमरा बंद कर दिया गया',
   tamperCameraBody:
-    'कैमरा अनुमति वापस मिलने तक SOS और Check-In फ़ोटो भेजी नहीं जा सकतीं।',
+    'कैमरा अनुमति वापस मिलने तक SOS और चेक-इन फ़ोटो भेजी नहीं जा सकतीं।',
 
   tamperBackgroundRefreshTitle: 'बैकग्राउंड ऐप रिफ्रेश बंद कर दिया गया',
   tamperBackgroundRefreshBody:
@@ -119,10 +135,13 @@ export const activities = {
   tamperBackgroundRefresh: 'बैकग्राउंड ऐप रिफ्रेश बंद कर दिया गया।',
 
   filterAllDevices: 'सभी डिवाइस',
+  // The child tier of the feed filter — "All" would read as all devices.
+  filterAllChildren: 'सभी',
   dateToday: 'आज',
   dateYesterday: 'कल',
 
   filterByDevice: '{{label}} के अनुसार फ़िल्टर करें',
+  filterByChild: 'केवल {{label}} दिखाएँ',
 
   openFullSosHistory: 'पूरा SOS इतिहास देखें',
 

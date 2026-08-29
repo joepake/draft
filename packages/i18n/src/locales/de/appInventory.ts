@@ -1,0 +1,28 @@
+export const appInventory = {
+  title: 'Apps auf diesem Gerät',
+  subtitle:
+    'Alles, was KidGate installiert vorgefunden hat – nicht nur, was sich geändert hat.',
+  summaryFlagged: '{{flagged}} von {{total}} Apps sind einen Blick wert',
+  summaryClear: 'Nichts auffällig unter {{total}} Apps',
+  flaggedTitle: 'Einen Blick wert',
+  otherTitle: 'Alles andere',
+  unclassifiedTitle: 'Noch nicht bestimmt',
+  scannedLabel: 'Letzter Scan',
+  staleNote:
+    'Diese Liste ist veraltet. Sie wird erneuert, sobald sich das Gerät das nächste Mal meldet.',
+  truncatedNote: '{{shown}} von {{total}} gefundenen Apps werden angezeigt.',
+  firstScanNote:
+    'Dies ist der erste Scan – KidGate kann nicht sagen, wann diese Apps dazugekommen sind.',
+  newBadge: 'Neu',
+  ageBadge: 'ab {{age}}',
+  emptyTitle: 'Noch nichts gescannt',
+  emptySubtitle: 'Das Gerät veröffentlicht seine App-Liste beim nächsten Kontakt.',
+  unsupportedTitle: 'Dieses Gerät kann seine Apps nicht auflisten',
+  unsupportedIos:
+    'Apple erlaubt keiner App zu lesen, was auf einem iPhone oder iPad installiert ist. KidGate kann Apps daher nur melden, während sie genutzt werden.',
+  unsupportedGeneric: 'Dieses Gerät meldet die darauf installierten Apps nicht.',
+  incompleteNote:
+    'Eine App ohne Symbol auf dem Startbildschirm erscheint hier möglicherweise nicht.',
+  blockHint: 'Um eine App zu stoppen, öffne „Blockierte Apps“ direkt auf dem Gerät.',
+  howItWorksLabel: 'So funktioniert diese Liste',
+} as const;

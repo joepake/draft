@@ -4,7 +4,7 @@ export const checkIn = {
   historyHint:
     'Tippe auf ein Foto, um es zu vergrößern. Oben kannst du jederzeit einen neuen Check-in anfordern.',
   historyEmpty: 'Noch keine Check-ins.',
-  screenTitle: 'Check-In',
+  screenTitle: 'Check-in',
   statusSafe: 'In Sicherheit',
   statusNoResponse: 'Keine Antwort',
   statusWaiting: 'Wartet',
@@ -14,7 +14,7 @@ export const checkIn = {
   responseMessage: 'Mir geht’s gut.',
   toastSuccess: 'Danke. Deine Eltern wissen, dass es dir gut geht.',
   toastFailed: 'Check-in konnte nicht gesendet werden. Bitte versuche es erneut.',
-  quickCheckInBadge: 'Check-In',
+  quickCheckInBadge: 'Check-in',
   areYouOkay: 'Alles okay bei dir?',
   checkInWithPhotoBody:
     'Deine Eltern möchten wissen, ob es dir gut geht. KidGate sendet deinen Standort und wenn möglich ein Foto.',
@@ -35,8 +35,10 @@ export const checkIn = {
   requestCheckIn: 'Check-in anfordern',
   requestCheckInNote: 'Fragt das Kindergerät nach Standort und einem Frontkamera-Foto.',
   needHelpOpenSosAccessibility: 'Ich brauche Hilfe — SOS öffnen',
+  showAllDevices: 'Alle {{count}} Geräte anzeigen',
+  showFewerDevices: 'Weniger Geräte anzeigen',
   parentSafePopupTitle: 'Deinem Kind geht es gut',
   childSafePopupTitle: 'Eltern benachrichtigt',
   childSafePopupBody: 'Deine Eltern haben die Nachricht erhalten — dir geht es gut.',
-  confirmedKicker: 'Check-In',
+  confirmedKicker: 'Check-in',
 } as const;

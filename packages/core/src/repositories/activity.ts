@@ -1,6 +1,11 @@
 import type { DocSnapshot, FirestorePort, Unsubscribe } from '@kidgate/ports/firestore';
 import { activitiesCollection } from '@kidgate/schema/paths';
-import type { Activity, ActivityParams, ActivityType } from '@kidgate/schema/activity';
+import {
+  ACTIVITY_TYPES,
+  type Activity,
+  type ActivityParams,
+  type ActivityType,
+} from '@kidgate/schema/activity';
 import { deleteAllInBatches } from '../domain/batchDelete';
 import { timestampToIso } from '../domain/firestoreValue';
 
@@ -22,22 +27,26 @@ import { timestampToIso } from '../domain/firestoreValue';
  */
 const ACTIVITY_LIMIT = 50;
 
-const ACTIVITY_TYPES = new Set<ActivityType>([
-  'app_opened',
-  'app_blocked',
-  'app_installed',
-  'app_removed',
-  'place_enter',
-  'place_exit',
-  'tamper',
-  'device_locked',
-  'device_unlocked',
-  'screen_time',
-  'emergency',
-]);
+/**
+ * From the schema, never hand-listed again.
+ *
+ * This was a local `Set` literal, and `message_alert` was missing from it —
+ * so `parseActivityType` below turned every message alert into a
+ * `screen_time` row and the Message Alerts screen matched none of them, on
+ * both parent surfaces, for as long as the feature had shipped.
+ */
+const KNOWN_ACTIVITY_TYPES: ReadonlySet<ActivityType> = new Set(ACTIVITY_TYPES);
 
+/**
+ * The fallback is what made that silent, and it is kept deliberately: a row
+ * written by a newer server must not take out a parent's whole feed on an
+ * older app. `screen_time` is the wrong shape for that job though — it
+ * mislabels rather than admitting ignorance — so callers that care should
+ * check the raw `type` too. `ActivitiesScreen` already renders an
+ * unknown-activity row; that is where an unrecognised type belongs.
+ */
 function parseActivityType(value: unknown): ActivityType {
-  return ACTIVITY_TYPES.has(value as ActivityType)
+  return KNOWN_ACTIVITY_TYPES.has(value as ActivityType)
     ? (value as ActivityType)
     : 'screen_time';
 }

@@ -7,22 +7,22 @@ export const blockedApps = {
   statusBlockingOff: 'Sem bloqueio',
   heroTitle: 'Apps selecionados para bloquear',
   heroSubtitle:
-    'Esses apps e categorias são escolhidos no aparelho da criança. O KidGate sincroniza a lista aqui para você revisar.',
+    'Esses apps e categorias são escolhidos no dispositivo da criança. O KidGate sincroniza a lista aqui para você revisar.',
   statAppsLabel: 'Apps',
   statCategoriesLabel: 'Categorias',
   toggleTitle: 'Ativar o bloqueio de apps',
-  toggleSubtitleOn: 'Os apps selecionados estão bloqueados no aparelho da criança.',
+  toggleSubtitleOn: 'Os apps selecionados estão bloqueados no dispositivo da criança.',
   toggleSubtitleOff: 'Ative para bloquear remotamente os apps selecionados.',
   toggleAccessibilityLabel: 'Ativar o bloqueio de apps',
   emptyTitle: 'Nenhum app bloqueado ainda',
   emptySubtitle:
-    'No aparelho da criança, abra Ajustes do KidGate → Escolher apps para bloquear, digite o PIN dos pais e salve a seleção.',
+    'No dispositivo da criança, abra Ajustes do KidGate → Escolher apps para bloquear, digite o PIN dos pais e salve a seleção.',
   sectionTitle: 'Lista de bloqueio',
-  privacyTitle: 'A lista de apps vem do aparelho da criança',
+  privacyTitle: 'A lista de apps vem do dispositivo da criança',
   privacySubtitle:
-    'No iOS, a Apple pode ocultar os nomes exatos dos apps dos aparelhos dos pais. Em outros aparelhos, os nomes selecionados são sincronizados aqui. Alterar a lista continua exigindo o PIN dos pais no aparelho da criança.',
+    'No iOS, a Apple pode ocultar os nomes exatos dos apps dos dispositivos dos pais. Em outros dispositivos, os nomes selecionados são sincronizados aqui. Alterar a lista continua exigindo o PIN dos pais no dispositivo da criança.',
   infoTitle: 'Como funciona',
-  infoLine1: 'Escolha os apps no aparelho da criança após digitar o PIN dos pais.',
+  infoLine1: 'Escolha os apps no dispositivo da criança após digitar o PIN dos pais.',
   infoLine2:
     'Bloqueio, Horários bloqueados e Limite diário continuam bloqueando todos os apps.',
   infoLine3: 'Ative ou desative o bloqueio a qualquer momento nesta tela.',
@@ -42,7 +42,7 @@ export const blockedApps = {
   appsNotSetChip: 'Apps não definidos',
   appBlockingSectionTitle: 'Bloqueio de apps',
   appBlockingSectionDescription:
-    'Escolha quais apps os pais podem bloquear neste aparelho.',
+    'Escolha quais apps os pais podem bloquear neste dispositivo.',
   savedItemsForBlocking: '{{count}} itens salvos para bloqueio.',
   savedItemsForBlocking_one: '{{count}} item salvo para bloqueio.',
   noAppsSelected: 'Nenhum app foi selecionado.',

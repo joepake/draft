@@ -53,6 +53,12 @@ export const settings = {
   accountNotLinked: 'Nicht verknüpft',
   darkModeLabel: 'Dunkelmodus',
   darkModeHint: 'Abends angenehmer für die Augen',
+  addWidgetTitle: 'Widget zum Home-Bildschirm hinzufügen',
+  addWidgetSubtitle: 'Die Bildschirmzeit jedes Kindes auf einen Blick',
+  addWidgetStepsIos:
+    '1. Halte eine freie Stelle auf dem Home-Bildschirm gedrückt\n2. Tippe oben auf die Taste +\n3. Suche nach KidGate\n4. Wähle eine Größe und tippe auf Widget hinzufügen',
+  addWidgetStepsAndroid:
+    '1. Halte eine freie Stelle auf dem Startbildschirm gedrückt\n2. Tippe auf Widgets\n3. Suche KidGate und ziehe das Widget auf den Startbildschirm',
   pushNotificationsTitle: 'Push-Benachrichtigungen',
   pushNotificationsSubtitle: 'Lege fest, welche Hinweise dieses Telefon erreichen',
   inAppAlertsLabel: 'In-App-Benachrichtigungen',
@@ -74,6 +80,15 @@ export const settings = {
   reportMessagePlaceholder: 'Beschreibe den Fehler oder das Problem…',
   reportMessageRequired: 'Bitte gib eine kurze Beschreibung des Problems ein.',
   reportMessageTooLong: 'Bitte halte deinen Bericht unter 2000 Zeichen.',
+  reportAttachmentsLabel: 'Screenshots (optional)',
+  reportAttachmentsHint: '{{count}} von {{max}} · je bis zu {{limit}}',
+  reportAddAttachment: 'Bild hinzufügen',
+  reportRemoveAttachment: 'Bild entfernen',
+  reportAttachmentsTooMany: 'Du kannst bis zu {{max}} Bilder anhängen.',
+  reportAttachmentTooLarge:
+    'Nach dem Verkleinern immer noch {{size}} — daher nicht angehängt. Erlaubt sind {{limit}} pro Bild.',
+  reportAttachmentUnreadable:
+    'Diese Datei konnte nicht gelesen werden. Wähle ein anderes Bild.',
   reportSendButton: 'Bericht senden',
   reportSending: 'Wird gesendet…',
   toastReportSent: 'Danke — dein Bericht wurde gesendet.',
@@ -120,6 +135,7 @@ export const settings = {
   languageHindi: 'Hindi',
   languageRussian: 'Russisch',
   sectionAboutTitle: 'Über die App',
+  sectionKidGateTitle: 'KidGate',
   aboutUsTitle: 'Über uns',
   aboutUsSubtitle: 'Wer KidGate macht — und was es nicht tut',
   sectionLegalTitle: 'Rechtliches',

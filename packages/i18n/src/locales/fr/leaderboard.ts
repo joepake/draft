@@ -6,18 +6,16 @@ export const leaderboard = {
   settingsTitle: 'Tableau des étoiles',
   settingsBody: 'Vos enfants voient combien d’étoiles chacun a gagnées cette semaine.',
   childrenTitle: 'Enfants',
-  childrenBody:
-    'Regroupez les appareils selon qui les utilise. Un enfant peut en avoir plusieurs.',
+  manageAccessibility: 'Gérer les enfants et les appareils',
   addChild: 'Ajouter un enfant',
+  childAdded: 'Enfant ajouté.',
   childNameLabel: 'Prénom',
   childNamePlaceholder: 'p. ex. Mai',
   unassigned: 'Non attribué',
-  assignLabel: 'Utilisé par',
-  assignNobody: 'Personne pour l’instant',
-  deviceCount: '{{count}} appareils',
   removeChild: 'Retirer',
   removeChildConfirmTitle: 'Retirer cet enfant ?',
   removeChildConfirmBody:
     'Ses appareils restent associés et continuent de transmettre — ils ne comptent simplement plus pour personne tant que vous ne les attribuez pas à nouveau.',
-  needsTwoChildren: 'Ajoutez un deuxième enfant pour lancer le tableau des étoiles.',
+  emptyTitle: 'Pas encore d’enfants',
+  emptyBody: 'Ajoutez ici chaque enfant, puis attribuez-lui ses appareils.',
 } as const;

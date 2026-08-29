@@ -69,4 +69,6 @@ export const blockedHours = {
   daysSchoolNights: 'Malam sekolah',
   daysWeekend: 'Akhir pekan',
   daysOvernightHint: 'Rentang semalaman dihitung dari malam saat dimulai.',
+  overlapWarning:
+    'Ini tumpang tindih dengan waktu terblokir lainnya — keduanya tetap berlaku.',
 } as const;

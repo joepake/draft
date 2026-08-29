@@ -4,6 +4,15 @@ import type { UsageAppBreakdown, UsageTimeline } from './usageDay';
 export interface DeviceLocation {
   latitude: number;
   longitude: number;
+  /**
+   * Horizontal accuracy in metres, as the platform reported it — Android's
+   * `Location.accuracy`, iOS's `horizontalAccuracy`. Optional because a fix
+   * can arrive without one and because devices on older builds never sent it.
+   *
+   * Absent means unknown, never "exact". Place presence treats a fix it
+   * cannot trust as unknown rather than guessing (`functions/lib/placeAlerts.js`).
+   */
+  accuracy?: number | null;
   updatedAt: string;
   placeName?: string | null;
   address?: string | null;
@@ -114,8 +123,56 @@ export interface DeviceControls {
   webFilterBlockList?: string[];
   /** Allow-list-only browsing: everything else is refused. */
   webFilterAllowListOnly?: boolean;
+  /**
+   * Where the child's shared daily budget stands, stamped by
+   * `reportChildUsage` onto every assigned device whenever the child has
+   * `rules.dailyLimitMinutes` set.
+   *
+   * **This field is what parent screens read; it is not what enforces.** The
+   * same call rewrites each device's `dailyLimitMinutes` to that device's
+   * share of what the child has left, so the agents enforce the budget
+   * through the field they always locked on and this one exists to explain
+   * the number rather than to be obeyed. An agent reading `childBudget` to
+   * decide a lock would be deciding it twice.
+   *
+   * `usedMinutes` is the device-minutes sum for `date` across the child's
+   * devices; overlap between two screens used at once counts twice, which the
+   * enforcement wave will revisit (`screenOnLowMinutes`).
+   */
+  childBudget?: {
+    date: string;
+    usedMinutes: number;
+    limitMinutes: number;
+  };
   screenTimeAuthorized?: boolean;
   appBlockingEnabled: boolean;
+  /**
+   * Whether message-content scanning is switched on — decided by the PARENT,
+   * routed through `updateDeviceControls` exactly like `appBlockingEnabled`.
+   * The child device has no editor for this field (`docs/DATA_MODEL.md`'s
+   * "who configures" question landed on the parent for the same reason app
+   * blocking did: an on/off a child could flip is not a control).
+   *
+   * Independent of the Android OS consent behind it
+   * (`Device.messageMonitoring.incoming.granted`, `@kidgate/schema/messageMonitoringState`).
+   * Setting this true before the child has granted notification access is a
+   * no-op on the device until they do — native only ever reads the consent it
+   * actually holds. Two fields, two questions, same split as scheduleEnabled
+   * versus schedule windows.
+   */
+  messageMonitoringEnabled: boolean;
+  /** Same shape, gated on `Device.messageMonitoring.outgoing.granted` instead. */
+  messageMonitoringOutgoingEnabled: boolean;
+  /**
+   * Which languages' keyword packs the device scans against, chosen by the
+   * PARENT, at most `MESSAGE_KEYWORD_LANGUAGE_MAX`. Absent means "the device's
+   * own language" — resolved by
+   * `@kidgate/core/domain/messageKeywordLanguages`, which also explains why
+   * scanning all fourteen is not the default: measured, it flagged 16 of 45
+   * ordinary messages, because `rot` is German for "red" and English algospeak
+   * for decay, and `ana` and `mia` are Spanish and Italian names.
+   */
+  messageKeywordLanguages?: readonly string[];
   blockedAppsConfigured: boolean;
   blockedAppCount: number;
   blockedCategoryCount: number;
@@ -160,6 +217,16 @@ export interface DeviceControls {
    * a parent opens a day, which is the only time this is worth its size.
    */
   timeline?: UsageTimeline;
+  /**
+   * Child-to-server only, third of the three that ride a usage report onto
+   * `usageDays/{date}` — `UsageDay.idleMinutes` documents what it means.
+   *
+   * On the device document it would be actively misleading rather than merely
+   * large: every parent screen reads `controls.minutesUsedToday` from there,
+   * and a second minute count beside it with no day attached is two totals for
+   * one device again.
+   */
+  idleMinutes?: number;
 }
 
 export const DEFAULT_SCHEDULE_WINDOWS: ScheduleWindow[] = [
@@ -179,6 +246,8 @@ export const DEFAULT_DEVICE_CONTROLS: DeviceControls = {
   webFilterAllowListOnly: false,
   screenTimeAuthorized: false,
   appBlockingEnabled: false,
+  messageMonitoringEnabled: false,
+  messageMonitoringOutgoingEnabled: false,
   blockedAppsConfigured: false,
   blockedAppCount: 0,
   blockedCategoryCount: 0,

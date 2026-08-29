@@ -1,7 +1,8 @@
 export const activities = {
   title: '활동',
   subtitleAllDevices: '모든 기기의 최신 이벤트',
-  subtitleTimelineForDevice: '{{deviceName}} 활동 기록',
+  subtitleTimelineForDevice: '{{deviceName}} 타임라인',
+  subtitleTimelineForChild: '{{childName}}의 타임라인',
   fallbackDeviceName: '기기',
   liveBadge: '실시간',
   errorTitle: '활동을 불러올 수 없습니다',
@@ -36,16 +37,31 @@ export const activities = {
   activityTypePlaceExit: '장소 이탈',
   activityTypeTamper: '보호',
   activityTypeScreenTime: '스크린 타임',
+  activityTypeWebFilter: '웹 필터',
   activityTypeEmergency: '긴급',
   activityTypeUnknown: '활동',
 
+  sosEscapeTitle: '긴급 잠금 해제',
+  sosEscapeBody: 'SOS로 이 기기의 잠금이 {{minutes}}분 동안 해제되었습니다.',
+  sosEscapeRepeatTitle: '긴급 잠금 해제 (오늘 {{count}}회)',
+  sosEscapeRepeatBody:
+    'SOS로 이 기기의 잠금이 {{minutes}}분 동안 해제되었습니다. 오늘 {{count}}번째입니다.',
   appBlockedTitle: '{{appName}}',
   appBlockedBody: '차단된 앱이 열려 KidGate가 닫았습니다.',
-  appInstalledTitle: '{{appName}}',
-  appInstalledBody: '자녀의 기기에 새로운 앱이 설치되었습니다.',
+  appInstalledTitle: '앱 설치',
+  appInstalledBody: '자녀의 기기에 {{appName}} 앱이 설치되었습니다.',
 
-  appRemovedTitle: '{{appName}}',
-  appRemovedBody: '자녀의 기기에서 앱이 삭제되었습니다.',
+  messageAlertTitle: '우려되는 메시지 내용',
+  messageAlertBody: '{{appName}}에서 주의 단어가 감지되었습니다.',
+  messageAlertBodyOutgoing:
+    '자녀가 {{appName}}에서 작성한 메시지에서 주의 단어가 감지되었습니다.',
+  activityTypeMessageAlert: '메시지 경고',
+  messageCheckedTitle: '확인함, 걱정할 것 없음',
+  messageCheckedBody:
+    '{{appName}}에서 감시 대상 단어가 나왔지만 문맥상 문제가 없었습니다.',
+  activityTypeMessageChecked: '확인함',
+  appRemovedTitle: '앱 삭제',
+  appRemovedBody: '자녀의 기기에서 {{appName}} 앱이 삭제되었습니다.',
 
   placeEnterTitle: '{{placeName}} 도착',
   placeEnterBody: '자녀의 기기가 저장된 장소에 도착했습니다.',
@@ -116,10 +132,13 @@ export const activities = {
   tamperBackgroundRefresh: '백그라운드 앱 새로 고침이 비활성화되었습니다.',
 
   filterAllDevices: '모든 기기',
+  // The child tier of the feed filter — "All" would read as all devices.
+  filterAllChildren: '전체',
   dateToday: '오늘',
   dateYesterday: '어제',
 
   filterByDevice: '{{label}}별 보기',
+  filterByChild: '{{label}}만 보기',
 
   openFullSosHistory: '전체 SOS 기록 보기',
 

@@ -27,6 +27,16 @@
  */
 export type DesktopReleasePlatform = 'macos' | 'windows';
 
+/**
+ * Where the operator publishes a release. World-readable; nobody may write it.
+ *
+ * Here rather than in `apps/desktop/src/updateCheck.ts`, which declared it
+ * first: the agent reading it for itself is no longer the only reader, because
+ * a parent surface asks the same document which desktop build is current. That
+ * file re-exports this one.
+ */
+export const DESKTOP_RELEASE_DOC = 'config/desktopRelease';
+
 export interface DesktopRelease {
   /**
    * The semver of the newest published build, e.g. `"1.1.0"`. Compared against

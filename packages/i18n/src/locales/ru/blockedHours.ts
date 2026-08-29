@@ -6,7 +6,7 @@ export const blockedHours = {
   toastSaveSuccess: 'Заблокированные часы сохранены.',
   unsavedTitle: 'Отменить изменения?',
   unsavedMessage:
-    'У вас есть несохраненные изменения Заблокированных часов. Выйти без сохранения?',
+    'У вас есть несохранённые изменения Заблокированных часов. Выйти без сохранения?',
   discardChanges: 'Не сохранять',
   statusEnabled: 'Включено',
   statusDisabled: 'Отключено',
@@ -42,7 +42,7 @@ export const blockedHours = {
   quickAddTitle: 'Быстро добавить',
   presetBedtime: 'Время сна',
   presetSchool: 'Школа',
-  presetStudy: 'Учеба',
+  presetStudy: 'Учёба',
   disabledTitle: 'Заблокированные часы отключены',
   disabledSubtitle:
     'Включите переключатель выше, чтобы выбрать периоды, когда устройство будет недоступно.',
@@ -72,4 +72,6 @@ export const blockedHours = {
   daysSchoolNights: 'Учебные вечера',
   daysWeekend: 'Выходные',
   daysOvernightHint: 'Ночные интервалы считаются по ночи, в которую начинаются.',
+  overlapWarning:
+    'Это время пересекается с другим заблокированным периодом — оба продолжают действовать.',
 } as const;

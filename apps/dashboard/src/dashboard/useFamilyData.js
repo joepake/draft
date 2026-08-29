@@ -4,6 +4,7 @@ import {
   usableOwnerLabel,
 } from '@kidgate/core/domain/activityActor';
 import { resolveStoredDeviceName } from '@kidgate/core/domain/deviceName';
+import { webHistoryLabel } from '@kidgate/core/domain/webHistoryLabel';
 import { isPremiumSubscriptionActive } from '@kidgate/core/domain/subscription';
 import { t } from '@kidgate/i18n/web';
 import {
@@ -18,6 +19,7 @@ import {
   sosAlertRepository,
   subscriptionRepository,
   timeRequestRepository,
+  siteRequestRepository,
   usageDayRepository,
   webHistoryRepository,
 } from '../adapters/repositories.js';
@@ -72,6 +74,7 @@ export function useFamilyData(user, selectedDeviceId) {
 
   const [activityRows, setActivityRows] = useState([]);
   const [timeRequestRows, setTimeRequestRows] = useState([]);
+  const [siteRequestRows, setSiteRequestRows] = useState([]);
   const [sosRows, setSosRows] = useState([]);
   const [checkInRows, setCheckInRows] = useState([]);
   const [children, setChildren] = useState([]);
@@ -196,6 +199,14 @@ export function useFamilyData(user, selectedDeviceId) {
   // Family-wide before, per-device now, because every panel that consumes these
   // reads `rows[device.id]` and discards the rest — so the old queries paid for
   // reads on every other child in the family on every change.
+  // The person's reward tasks ride alongside the device's own (childId on
+  // the task, 2026-08-26) — same merged subscription the phone runs. Derived
+  // outside the effect and depended on as a string: device docs change on
+  // every heartbeat, and `devices` itself in the deps would resubscribe all
+  // eight listeners each time.
+  const selectedChildId =
+    devices.find(device => device.id === selectedDeviceId)?.childId || '';
+
   useEffect(() => {
     if (!familyId || !selectedDeviceId) return;
 
@@ -213,6 +224,14 @@ export function useFamilyData(user, selectedDeviceId) {
         familyId,
         setTimeRequestRows,
         soft('timeRequests'),
+        selectedDeviceId,
+      ),
+      // Scoped to the selected device, like the time requests above: the card
+      // that shows them sits in the Controls tab, which is about one device.
+      siteRequestRepository.subscribePending(
+        familyId,
+        setSiteRequestRows,
+        soft('siteRequests'),
         selectedDeviceId,
       ),
       sosAlertRepository.subscribeRecentForDevice(
@@ -235,12 +254,14 @@ export function useFamilyData(user, selectedDeviceId) {
         selectedDeviceId,
         setOpenTasks,
         soft('rewardTasks'),
+        selectedChildId || undefined,
       ),
       rewardTaskRepository.subscribeApprovedTasks(
         familyId,
         selectedDeviceId,
         setApprovedTasks,
         soft('rewardTasksApproved'),
+        selectedChildId || undefined,
       ),
       webHistoryRepository.subscribe(
         familyId,
@@ -251,7 +272,7 @@ export function useFamilyData(user, selectedDeviceId) {
     ];
 
     return () => subs.forEach(unsubscribe => unsubscribe());
-  }, [familyId, selectedDeviceId]);
+  }, [familyId, selectedChildId, selectedDeviceId]);
 
   // 4. The usage range: one read for the window, one listener for today.
   //
@@ -296,7 +317,7 @@ export function useFamilyData(user, selectedDeviceId) {
       cancelled = true;
       unsubscribe();
     };
-  }, [familyId, selectedDeviceId]);
+  }, [familyId, selectedChildId, selectedDeviceId]);
 
   /**
    * Stored one row per domain per day; the dashboard shows one row per domain
@@ -312,11 +333,19 @@ export function useFamilyData(user, selectedDeviceId) {
         visits: 0,
         blockedVisits: 0,
         category: null,
+        // Which of the row's two labels answered — the phone's screen needs
+        // the same thing and reads it from `webHistoryLabel` directly. Kept
+        // here because the roll-up throws the rows away.
+        categorySource: null,
         lastAt: undefined,
       };
       current.visits += entry.visits;
       current.blockedVisits += entry.blockedVisits;
-      current.category = current.category || entry.category;
+      if (!current.category) {
+        const label = webHistoryLabel(entry);
+        current.category = label.category;
+        current.categorySource = label.source;
+      }
       if (entry.lastAt && (!current.lastAt || entry.lastAt > current.lastAt)) {
         current.lastAt = entry.lastAt;
       }
@@ -354,8 +383,16 @@ export function useFamilyData(user, selectedDeviceId) {
   }, [children, leaderboard]);
 
   const data = useMemo(() => {
+    // Join each device back to the person holding it. `toDeviceView` cannot do
+    // this — it maps one record and never sees the `children` collection — and
+    // every reader that needs the name would otherwise carry its own lookup.
+    // A device pointing at a child this subscription has not delivered
+    // (deleted, or the listener still warming up) resolves to null and renders
+    // as unassigned, which is what it now is.
+    const childById = new Map(children.map(child => [child.id, child]));
     const withUsage = devices.map(device => ({
       ...device,
+      child: device.childId ? (childById.get(device.childId) ?? null) : null,
       usage: usage[device.id] || [],
     }));
 
@@ -381,6 +418,10 @@ export function useFamilyData(user, selectedDeviceId) {
         parents: Array.from({ length: memberCount }, (_, index) => ({ id: index })),
       },
       devices: withUsage,
+      // The roster itself, not only the join above: the sidebar groups by child
+      // and has to name a child whose devices are all offline the same as one
+      // whose are not.
+      children,
       actorNames: {
         familyId,
         memberNamesByUserId,
@@ -393,6 +434,7 @@ export function useFamilyData(user, selectedDeviceId) {
       },
       activities: forDevice(selectedDeviceId, activityRows),
       timeRequests: forDevice(selectedDeviceId, timeRequestRows),
+      siteRequests: forDevice(selectedDeviceId, siteRequestRows),
       sosAlerts: forDevice(selectedDeviceId, sosRows),
       checkIns: forDevice(selectedDeviceId, checkInRows),
       rewardTasks,
@@ -417,6 +459,7 @@ export function useFamilyData(user, selectedDeviceId) {
     selectedDeviceId,
     activityRows,
     timeRequestRows,
+    siteRequestRows,
     sosRows,
     checkInRows,
   ]);

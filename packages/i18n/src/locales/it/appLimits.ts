@@ -10,7 +10,7 @@ export const appLimits = {
   candidateUsage: '{{duration}} oggi',
   noUsageYet:
     'Nessun utilizzo ancora segnalato. I limiti compaiono quando il dispositivo invia i dati.',
-  footnote: 'I limiti si azzerano a mezzanotte sul dispositivo del figlio.',
+  footnote: 'I limiti si azzerano a mezzanotte sul dispositivo del bambino.',
   toastSaved: 'Limiti salvati.',
   toastSaveFailed: 'Impossibile salvare. Riprova.',
   removeAccessibility: 'Rimuovi il limite di {{app}}',

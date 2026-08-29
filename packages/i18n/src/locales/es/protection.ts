@@ -37,6 +37,15 @@ export const protection = {
   lockNotReadyBodyIos:
     'KidGate no puede bloquear este iPhone hasta que se apruebe el acceso a Tiempo de uso en el dispositivo del niño. Abre KidGate en ese dispositivo y completa lo siguiente:',
   locationPermission: 'Permiso de ubicación',
+  cameraPermission: 'Permiso de cámara',
+  cameraConsentPending:
+    'La cámara no está permitida en este dispositivo, así que un SOS o un Check-in enviado desde él llega sin foto.',
+  locationConsentPending:
+    'La ubicación no está permitida en este dispositivo, así que no puede informar dónde está.',
+  consentStepOpenSettings:
+    'Abre KidGate en el dispositivo de tu hijo o hija y ve a Ajustes.',
+  consentStepParentPin: 'Introduce el PIN de madre/padre.',
+  consentStepPermissions: 'Abre «Permisos» y permite lo que falte.',
   notificationsPermission: 'Permiso de notificaciones',
   backgroundUpdates: 'Actualizaciones en segundo plano',
   backgroundUpdatesRestricted:

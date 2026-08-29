@@ -3,7 +3,7 @@ export const pairing = {
   shareInviteMessage:
     'Join our family on KidGate: open the app, choose Family → Join family, and enter code {{code}}. The code expires in 15 minutes.',
   shareChildCodeMessage:
-    'Connect this child device on KidGate: on the parent device open KidGate → Devices → + → Child device, then scan the QR code or enter code {{code}}. The code expires in 5 minutes.',
+    'Connect this child device on KidGate: on the parent device open KidGate → Family → Scan a code, then scan the QR code or enter code {{code}}. The code expires in 5 minutes.',
   connectChildPhone: 'Connect a child device',
   parentInstructions:
     'On the child device, open KidGate and choose This is a child device. Then enter the code shown on that screen.',
@@ -13,12 +13,21 @@ export const pairing = {
     'Keep this screen open. A parent will connect this device from their KidGate app.',
   childCodeLabel: 'Or share this code',
   childScanHint:
-    'Parent: open KidGate → Devices → + → Child device → scan the QR code or enter the code.',
+    'Parent: open KidGate → Family → {{scan}} → scan the QR code or enter the code.',
   childConnecting: 'Connected. Setting up this device…',
   childPairedTitle: 'You are connected',
   childPairedSubtitle: 'Setting up this device…',
   connectChild: 'Connect child device',
   waitingChildConfirm: 'Request sent. Waiting for confirmation on the child device.',
+  waitingChildConfirmHint:
+    'On the child device, tap "Yes, connect" to finish. You can close this — pairing continues in the background.',
+  childConfirmedTitle: 'Device connected',
+  childConfirmedBody:
+    'The child device confirmed the pairing. Next, choose who uses it.',
+  childRejectedPairing:
+    'The child device declined this pairing. Get a fresh code from it and try again.',
+  childConfirmExpired:
+    'The child device did not confirm in time. Ask it for a new code and try again.',
   confirmParentTitle: 'Confirm this parent?',
   confirmParentSubtitle:
     '{{parentLabel}} wants to manage this device. Only accept if you know this person.',

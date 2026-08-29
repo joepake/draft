@@ -18,4 +18,7 @@ export const childSettings = {
     'Desactivada. KidGate se puede desinstalar de este teléfono.',
   uninstallProtectionTurnedOff: 'La protección de desinstalación está desactivada.',
   uninstallProtectionFailed: 'No se pudo cambiar la protección de desinstalación.',
+  messageSafetySectionTitle: 'Seguridad de los mensajes',
+  messageSafetySectionDescription:
+    'Concede el permiso aquí. Que esté activado o no lo decide tu padre o madre desde su propio teléfono.',
 } as const;

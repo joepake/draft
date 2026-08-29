@@ -13,7 +13,8 @@ export const child = {
   limitReached: 'Limite raggiunto',
   active: 'Attivo',
   parentPausedThisDevice: 'I tuoi genitori hanno bloccato questo dispositivo per ora.',
-  blockedHoursOnPaused: 'Le Ore bloccate sono attive. È un buon momento per una pausa.',
+  blockedHoursOnPaused:
+    'Gli Orari di blocco sono attivi. È un buon momento per una pausa.',
   outOfScreenTimeAskParent:
     'Hai usato tutto il tempo di oggi. Puoi chiederne di più qui sotto.',
   screenTimeToday: 'Tempo di utilizzo oggi',
@@ -27,7 +28,8 @@ export const child = {
   pausedAskParentOrSos:
     'Chiedi ai tuoi genitori di sbloccarlo quando ti serve. In un’emergenza puoi comunque inviare un SOS.',
   blockedHoursLockTitle: 'Orari di blocco',
-  blockedHoursLockBody: 'Le Ore bloccate sono attive. È un buon momento per una pausa.',
+  blockedHoursLockBody:
+    'Gli Orari di blocco sono attivi. È un buon momento per una pausa.',
   blockedHoursLockHint:
     'Chiedi ai tuoi genitori se ti serve più tempo. In un’emergenza puoi comunque inviare un SOS.',
   parentPausedAccess: 'I tuoi genitori hanno bloccato questo dispositivo per ora.',
@@ -46,6 +48,16 @@ export const child = {
   setupWizardRequired: 'Obbligatorio',
   setupWizardOptional: 'Facoltativo',
   setupWizardSkip: 'Salta per ora',
+  setupGrantStuckHint:
+    'Attivato ma non è cambiato nulla? Riavvia il televisore e riprova.',
   setupWizardAllDoneTitle: 'Fatto!',
   setupWizardAllDoneSubtitle: 'Questo dispositivo è ora protetto.',
+  setupWizardStepDone: 'Fatto — questa è attiva.',
+  setupWizardCoreDoneTitle: 'La protezione di base è attiva',
+  setupWizardCoreDoneBody:
+    'Le autorizzazioni indispensabili sono concesse e questo dispositivo è protetto. Alcuni passaggi facoltativi rendono la protezione più difficile da disattivare per il sistema.',
+  setupWizardCoreDoneContinue: 'Rafforzala ora',
+  setupWizardCoreDoneLater: 'Completa più tardi',
+  setupWizardParentPinNote:
+    'Serve il PIN genitore: un genitore lo inserisce nella schermata successiva.',
 } as const;

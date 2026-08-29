@@ -28,7 +28,7 @@ export const pin = {
   parentPinRequired: 'Eltern-PIN erforderlich',
   enterParentPinToContinue: 'Gib die 6-stellige Eltern-PIN ein, um fortzufahren.',
   parentPinLockoutMessage:
-    'Zu viele falsche Versuche. Bitte bitte deine Eltern, die PIN in den Eltern-Einstellungen zu entsperren.',
+    'Zu viele falsche Versuche. Frag deine Eltern, ob sie die PIN in den Eltern-Einstellungen entsperren.',
   parentPinHelperText:
     'Nur ein Elternteil kann blockierte Apps ändern oder sich abmelden — dafür ist die PIN da. Falls du sie vergisst, kann sich ein Elternteil auf jedem Gerät bei KidGate anmelden und sie in den Eltern-Einstellungen zurücksetzen.',
   forgotPin: 'PIN vergessen?',
@@ -49,7 +49,7 @@ export const pin = {
   savePin: 'PIN speichern',
   pinLockedTitle: 'PIN gesperrt',
   pinLockedBody:
-    'Zu viele falsche Versuche. Bitte bitte deine Eltern, die PIN in den Eltern-Einstellungen zu entsperren.',
+    'Zu viele falsche Versuche. Frag deine Eltern, ob sie die PIN in den Eltern-Einstellungen entsperren.',
   parentAccessRequiredTitle: 'Elternzugriff erforderlich',
   parentAccessRequiredBody:
     'Gib deine PIN ein, um dieses Gerät umzubenennen, Blockierte Apps auszuwählen oder dich abzumelden.',
@@ -58,12 +58,12 @@ export const pin = {
   whyPinBody:
     'Nur ein Elternteil sollte Blockierte Apps ändern oder dieses Gerät bei KidGate abmelden. Design-Farben benötigen keine PIN.',
   pinLockedToast:
-    'Die PIN wurde nach zu vielen falschen Versuchen gesperrt. Bitte bitte deine Eltern, sie in den Eltern-Einstellungen zu entsperren.',
+    'Die PIN wurde nach zu vielen falschen Versuchen gesperrt. Frag deine Eltern, ob sie sie in den Eltern-Einstellungen entsperren.',
   pinNotConfiguredToast:
     'Bitte erstelle zuerst eine 6-stellige PIN in den Eltern-Einstellungen auf einem Elterngerät.',
   enterSixDigitParentPin: 'Gib die 6-stellige Eltern-PIN ein.',
   askParentCreatePin:
-    'Bitte bitte deine Eltern, zuerst eine Eltern-PIN in den Eltern-Einstellungen zu erstellen.',
+    'Frag deine Eltern, ob sie zuerst eine Eltern-PIN in den Eltern-Einstellungen erstellen.',
   incorrectPinAttemptsLeft: 'Falsche PIN. Noch {{count}} Versuche.',
   incorrectPinAttemptsLeft_one: 'Falsche PIN. Noch {{count}} Versuch.',
   enterCurrentParentPin: 'Gib deine aktuelle Eltern-PIN ein.',

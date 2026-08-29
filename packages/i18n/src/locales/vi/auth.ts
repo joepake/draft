@@ -12,7 +12,7 @@ export const auth = {
   forgotPasswordTitle: 'Đặt lại mật khẩu',
   forgotPasswordSubtitle: 'Nhập email của bạn để nhận liên kết đặt lại mật khẩu.',
   nameLabel: 'Tên của bạn',
-  namePlaceholder: 'ví dụ: Mẹ, Bố, Ba',
+  namePlaceholder: 'ví dụ: Mẹ, Bố, Ông, Bà',
   emailLabel: 'Email',
   emailPlaceholder: 'phuhuynh@example.com',
   passwordLabel: 'Mật khẩu',

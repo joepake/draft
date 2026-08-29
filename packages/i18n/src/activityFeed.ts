@@ -7,6 +7,7 @@ import { protection as enProtection } from './locales/en/protection';
 import { rewardTask as enRewardTask } from './locales/en/rewardTask';
 import { sos as enSos } from './locales/en/sos';
 import { timeRequest as enTimeRequest } from './locales/en/timeRequest';
+import { webFilter as enWebFilter } from './locales/en/webFilter';
 import { translateIn, type LocaleTree } from './translateIn';
 import type { TranslationParams } from './types';
 
@@ -46,6 +47,9 @@ export interface ActivityFeedPack extends LocaleTree {
   rewardTask: unknown;
   sos: unknown;
   timeRequest: unknown;
+  /** `siteRequestApproved` and its three siblings — the parent's answer to a
+   *  child asking for one website. Written by `resolveSiteRequest`. */
+  webFilter: unknown;
 }
 
 /**
@@ -61,6 +65,7 @@ const en: ActivityFeedPack = {
   rewardTask: enRewardTask,
   sos: enSos,
   timeRequest: enTimeRequest,
+  webFilter: enWebFilter,
 };
 
 /** The namespaces a feed row can name. Anything outside them falls to `en`. */
@@ -73,6 +78,7 @@ const NAMESPACES = [
   'rewardTask',
   'sos',
   'timeRequest',
+  'webFilter',
 ] as const;
 
 type Namespace = (typeof NAMESPACES)[number];
@@ -105,6 +111,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     rewardTask: () => import('./locales/ar/rewardTask'),
     sos: () => import('./locales/ar/sos'),
     timeRequest: () => import('./locales/ar/timeRequest'),
+    webFilter: () => import('./locales/ar/webFilter'),
   },
   de: {
     activities: () => import('./locales/de/activities'),
@@ -115,6 +122,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     rewardTask: () => import('./locales/de/rewardTask'),
     sos: () => import('./locales/de/sos'),
     timeRequest: () => import('./locales/de/timeRequest'),
+    webFilter: () => import('./locales/de/webFilter'),
   },
   es: {
     activities: () => import('./locales/es/activities'),
@@ -125,6 +133,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     rewardTask: () => import('./locales/es/rewardTask'),
     sos: () => import('./locales/es/sos'),
     timeRequest: () => import('./locales/es/timeRequest'),
+    webFilter: () => import('./locales/es/webFilter'),
   },
   fr: {
     activities: () => import('./locales/fr/activities'),
@@ -135,6 +144,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     rewardTask: () => import('./locales/fr/rewardTask'),
     sos: () => import('./locales/fr/sos'),
     timeRequest: () => import('./locales/fr/timeRequest'),
+    webFilter: () => import('./locales/fr/webFilter'),
   },
   hi: {
     activities: () => import('./locales/hi/activities'),
@@ -145,6 +155,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     rewardTask: () => import('./locales/hi/rewardTask'),
     sos: () => import('./locales/hi/sos'),
     timeRequest: () => import('./locales/hi/timeRequest'),
+    webFilter: () => import('./locales/hi/webFilter'),
   },
   id: {
     activities: () => import('./locales/id/activities'),
@@ -155,6 +166,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     rewardTask: () => import('./locales/id/rewardTask'),
     sos: () => import('./locales/id/sos'),
     timeRequest: () => import('./locales/id/timeRequest'),
+    webFilter: () => import('./locales/id/webFilter'),
   },
   it: {
     activities: () => import('./locales/it/activities'),
@@ -165,6 +177,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     rewardTask: () => import('./locales/it/rewardTask'),
     sos: () => import('./locales/it/sos'),
     timeRequest: () => import('./locales/it/timeRequest'),
+    webFilter: () => import('./locales/it/webFilter'),
   },
   ja: {
     activities: () => import('./locales/ja/activities'),
@@ -175,6 +188,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     rewardTask: () => import('./locales/ja/rewardTask'),
     sos: () => import('./locales/ja/sos'),
     timeRequest: () => import('./locales/ja/timeRequest'),
+    webFilter: () => import('./locales/ja/webFilter'),
   },
   ko: {
     activities: () => import('./locales/ko/activities'),
@@ -185,6 +199,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     rewardTask: () => import('./locales/ko/rewardTask'),
     sos: () => import('./locales/ko/sos'),
     timeRequest: () => import('./locales/ko/timeRequest'),
+    webFilter: () => import('./locales/ko/webFilter'),
   },
   pt: {
     activities: () => import('./locales/pt/activities'),
@@ -195,6 +210,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     rewardTask: () => import('./locales/pt/rewardTask'),
     sos: () => import('./locales/pt/sos'),
     timeRequest: () => import('./locales/pt/timeRequest'),
+    webFilter: () => import('./locales/pt/webFilter'),
   },
   ru: {
     activities: () => import('./locales/ru/activities'),
@@ -205,6 +221,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     rewardTask: () => import('./locales/ru/rewardTask'),
     sos: () => import('./locales/ru/sos'),
     timeRequest: () => import('./locales/ru/timeRequest'),
+    webFilter: () => import('./locales/ru/webFilter'),
   },
   tr: {
     activities: () => import('./locales/tr/activities'),
@@ -215,6 +232,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     rewardTask: () => import('./locales/tr/rewardTask'),
     sos: () => import('./locales/tr/sos'),
     timeRequest: () => import('./locales/tr/timeRequest'),
+    webFilter: () => import('./locales/tr/webFilter'),
   },
   vi: {
     activities: () => import('./locales/vi/activities'),
@@ -225,6 +243,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     rewardTask: () => import('./locales/vi/rewardTask'),
     sos: () => import('./locales/vi/sos'),
     timeRequest: () => import('./locales/vi/timeRequest'),
+    webFilter: () => import('./locales/vi/webFilter'),
   },
 };
 

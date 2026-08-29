@@ -1,5 +1,5 @@
 export const blockedHours = {
-  title: 'Engellenen saatler',
+  title: 'Engellenen Saatler',
   errorInvalidTimes:
     'Her engellenen zaman aralığı için geçerli başlangıç ve bitiş saatleri (SS:dd) girin.',
   toastSaveFailed: 'Kaydedilemedi. Lütfen tekrar deneyin.',
@@ -50,7 +50,7 @@ export const blockedHours = {
   infoLine2: '22:00–07:00 gibi geceyi kapsayan zaman aralıkları desteklenir.',
   infoLine3: 'Cihazın Ekran Süresi özelliğini desteklemesi gerekir.',
   off: 'Kapalı',
-  blockedHoursChip: 'Engellenen saatler',
+  blockedHoursChip: 'Engellenen Saatler',
   blockedHoursOnChip: 'Engellenen Saatler ayarlandı',
   blockedHoursStatusActiveNow: 'Şu anda etkin',
   blockedHoursStatusOn: 'Açık',
@@ -69,4 +69,6 @@ export const blockedHours = {
   daysSchoolNights: 'Okul geceleri',
   daysWeekend: 'Hafta sonu',
   daysOvernightHint: 'Gece boyu süren aralıklar, başladıkları geceye göre sayılır.',
+  overlapWarning:
+    'Bu, başka bir engellenen saatle çakışıyor — ikisi de geçerliliğini koruyor.',
 } as const;

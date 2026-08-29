@@ -29,6 +29,10 @@ export const notifications = {
       label: '延長リクエスト',
       hint: 'お子さまが利用時間の延長を求めたとき。',
     },
+    siteRequests: {
+      label: 'サイトのリクエスト',
+      hint: 'お子さまがブロックされたサイトを開きたいとき。',
+    },
     checkIn: {
       label: 'チェックインの返信',
       hint: 'お子さまが安全確認に返信したとき。',
@@ -40,6 +44,10 @@ export const notifications = {
     appActivity: {
       label: 'アプリの追加・削除',
       hint: 'お子さまの端末でアプリが増えたり消えたりしたとき。',
+    },
+    anomalyAlerts: {
+      label: '普段と違う使い方',
+      hint: 'お子さまのデバイスでいつもと違う使い方があったとき — 深夜の利用、急増、新しいアプリ。',
     },
     weeklyDigest: {
       label: '週間サマリー',

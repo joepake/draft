@@ -21,7 +21,7 @@ export const macos = {
 
   lockState: 'الجهاز مقفل',
   lockStateNo: 'لا',
-  lockStateNotChecked: 'لم يتم التحقق بعد',
+  stateNotChecked: 'لم يتم التحقق بعد',
   lockStateParent: 'نعم — قفله أحد الوالدين',
   lockStateSchedule: 'نعم — ساعات الحظر',
   lockStateDailyLimit: 'نعم — تم بلوغ الحد اليومي',
@@ -32,6 +32,31 @@ export const macos = {
   webFilterLabel: 'تصفية الويب',
   webFilterUnavailable: 'غير متاح على هذا الـ Mac',
   notSupportedOnThisDevice: 'غير مدعوم على هذا الجهاز',
+  filterAwaitingApproval: 'في انتظار الموافقة في إعدادات النظام',
+  filterSwitchedOff: 'مُعطَّل في إعدادات النظام',
+  filterInterrupted: 'توقّف بعد مشكلة — سيعيده KidGate',
+  setupFilterApprovalBody: 'فعّل KidGate في إضافات الشبكة لتبدأ تصفية الويب.',
+  setupFilterSwitchBody:
+    'خيار Filter Network Content مُعطَّل لـ KidGate. فعّله من جديد لمتابعة التصفية.',
+  setupOpenSettings: 'فتح الإعدادات',
+  setupTitle: 'أكمل إعداد هذا الجهاز',
+  setupRowLabel: 'الأذونات',
+  setupRowHint: 'تحقّق مما لا يزال هذا الجهاز بحاجة إلى السماح به.',
+  setupStepBlockedNoPrompt:
+    'جرى الرفض، وهذا الجهاز لا يسأل مرة أخرى — فعّل KidGate من الإعدادات ← الخصوصية والأمان.',
+  setupSubtitle:
+    'يطلب النظام إذنًا لكل بند من هذه البنود، ولا يستطيع الموافقة إلا من يجلس أمام هذا الجهاز. إنهاؤها الآن يعني ألّا يُسأل طفلك لاحقًا.',
+  setupStepFilterApprovalTitle: 'اعتماد تصفية الويب',
+  setupStepFilterSwitchTitle: 'Filter Network Content',
+  setupStepFilterSwitchWaiting: 'يظهر في إعدادات النظام بمجرد اعتماد الخطوة أعلاه.',
+  setupStepLocationBody:
+    'يتيح لعائلتك معرفة مكان هذا الجهاز. لا يُشارَك أي شيء حتى تفعّل «مشاركة الموقع».',
+  setupStepCameraTitle: 'الكاميرا',
+  setupStepCameraBody:
+    'يرفق صورة عندما يرسل طفلك نداء SOS أو يردّ على الاطمئنان. لا تُلتقط أي صورة الآن.',
+  setupStepDone: 'تم الإعداد — لم يعد هنا ما تفعله.',
+  setupStepBlocked:
+    'سبق رفضه. لا يسأل macOS سوى مرة واحدة — فعّل KidGate من «الخصوصية والأمان».',
 
   scheduleLabel: 'ساعات الحظر',
   dailyLimitLabel: 'الحد اليومي',

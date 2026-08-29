@@ -19,6 +19,7 @@ import { DEFAULT_DEVICE_CONTROLS } from '@kidgate/schema/deviceControls';
 import { isWithinAnyScheduleWindow } from './scheduleWindow';
 import { getEffectiveDeviceStatus } from './deviceStatus';
 import { getProtectionSummaryKeys } from './protectionStatus';
+import { resolveLockEnforcement } from './lockEnforcement';
 
 export type DeviceListStatusTone = 'danger' | 'warning' | 'muted' | 'success';
 
@@ -26,6 +27,8 @@ export type DeviceListStatusCode =
   | 'sos'
   | 'check-in'
   | 'pending-requests'
+  | 'lock-not-applied'
+  | 'lock-sent'
   | 'paused'
   | 'blocked-hours'
   | 'inactive'
@@ -103,7 +106,47 @@ export function getDeviceListStatusKeys(
     };
   }
 
-  if (device.isLocked || effectiveStatus === 'locked') {
+  /*
+   * `effectiveStatus` alone, never `device.isLocked` beside it.
+   *
+   * The raw field was read here as a belt-and-braces and became the one place
+   * a lock could still be claimed for a device that cannot lock: a browser
+   * extension publishes `lock: false` and its worker has no handler for the
+   * field, so a row locked by an older parent build kept saying "You locked
+   * this device" on the Family card after `getEffectiveDeviceStatus` had
+   * stopped calling it locked everywhere else. One rule, one reader.
+   */
+  if (effectiveStatus === 'locked') {
+    /*
+     * A lock the parent set is not the same fact as a lock the device applied,
+     * and this row said the second while knowing only the first. A television
+     * that was switched off, out of range, or running a build with no push
+     * handler read "You paused this device" exactly like one with the overlay
+     * covering the room — the second half of a real complaint, and the half
+     * that survived the fix to delivery latency.
+     *
+     * `domain/lockEnforcement` holds which surfaces can answer and how. What
+     * matters here is the ordering: **`notApplied` outranks a plain lock**,
+     * because a device that has the policy and is not enforcing it is the one
+     * case where waiting changes nothing and the parent has to act.
+     */
+    const enforcement = resolveLockEnforcement(device);
+    if (enforcement === 'notApplied') {
+      return {
+        code: 'lock-not-applied',
+        messageKey: 'family.lockNotAppliedOnDevice',
+        tone: 'danger',
+        priority: 750,
+      };
+    }
+    if (enforcement === 'sent') {
+      return {
+        code: 'lock-sent',
+        messageKey: 'family.lockSentWaitingForDevice',
+        tone: 'warning',
+        priority: 700,
+      };
+    }
     return {
       code: 'paused',
       messageKey: 'family.youPausedThisDevice',

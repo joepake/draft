@@ -47,6 +47,16 @@ export const child = {
   setupWizardRequired: 'Required',
   setupWizardOptional: 'Optional',
   setupWizardSkip: 'Skip for now',
+  setupGrantStuckHint:
+    'Turned it on but nothing changed? Restart the TV, then try again.',
   setupWizardAllDoneTitle: 'All set!',
   setupWizardAllDoneSubtitle: 'This device is now protected.',
+  setupWizardStepDone: 'Done — that one is on.',
+  setupWizardCoreDoneTitle: 'Core protection is on',
+  setupWizardCoreDoneBody:
+    'The must-have permissions are granted and this device is protected. A few optional steps make the protection harder for the system to switch off.',
+  setupWizardCoreDoneContinue: 'Strengthen it now',
+  setupWizardCoreDoneLater: 'Finish later',
+  setupWizardParentPinNote:
+    'Parent PIN needed — a parent enters it on the next screen.',
 } as const;

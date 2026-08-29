@@ -3,7 +3,7 @@ export const tamperAlerts = {
   fallbackDeviceName: 'Dispositivo da criança',
   heroTitle: 'Saiba quando a proteção for desativada',
   heroSubtitle:
-    'Quando uma permissão importante passa de ativada para desativada neste aparelho, o KidGate registra aqui e pode avisar você.',
+    'Quando uma permissão importante passa de ativada para desativada neste dispositivo, o KidGate registra aqui e pode avisar você.',
   statusOn: 'Monitorando',
   emptyTitle: 'Nenhuma mudança de permissão ainda',
   emptySubtitle:
@@ -22,7 +22,7 @@ export const tamperAlerts = {
   watchedBackgroundRefresh: 'Atualização em Segundo Plano',
   infoTitle: 'O que fazer',
   infoLine1:
-    'Abra o KidGate no aparelho da criança e restaure a permissão indicada no alerta.',
+    'Abra o KidGate no dispositivo da criança e restaure a permissão indicada no alerta.',
   infoLine2:
-    'Mantenha a proteção completa para que os alertas continuem funcionando quando o app do aparelho da criança voltar a ativar.',
+    'Mantenha a proteção completa para que os alertas continuem funcionando quando o app do dispositivo da criança voltar a ativar.',
 } as const;

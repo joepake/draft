@@ -2,8 +2,10 @@ export const activities = {
   title: 'Activities',
   subtitleAllDevices: 'Latest events across all devices',
   subtitleTimelineForDevice: 'Timeline for {{deviceName}}',
+  subtitleTimelineForChild: 'Timeline for {{childName}}',
   fallbackDeviceName: 'device',
   liveBadge: 'Live',
+  // Header pill next to the live badge; opens the weekly report.
   errorTitle: 'Unable to load activity',
   tryAgain: 'Try again',
   emptyTitleAll: 'No activity yet',
@@ -33,21 +35,51 @@ export const activities = {
   activityTypePlaceExit: 'Place left',
   activityTypeTamper: 'Protection',
   activityTypeScreenTime: 'Screen Time',
+  activityTypeWebFilter: 'Web Filter',
   activityTypeEmergency: 'Emergency',
   activityTypeUnknown: 'Activity',
   /*
    * `app_blocked`. Written by the desktop agent, which is the first platform to
    * write one — the counter these rows feed
    * (`functions/triggers/protectionCounters.js`) had readers on every parent
-   * screen and no writer anywhere. The title is the app alone, matching the two
-   * below: the row's own type badge already says what happened.
+   * screen and no writer anywhere. The title is the app alone — the row's own
+   * type badge already says what happened.
    */
+  /*
+   * The SOS escape, in the parent's feed. Written by the child device on every
+   * granted escape — `apps/desktop`'s `sosEscapeActivity`.
+   *
+   * The feed row exists because the alert does not say this. A parent is told
+   * "SOS was sent"; nothing told them the device unlocked itself, for how long,
+   * or that the limit they set was stepped over. `apps/desktop/CLAUDE.md`
+   * defends this escape on the grounds that the parent is told — and they were
+   * being told about an emergency, not about an unlock.
+   *
+   * The repeat variant is the second half of the same honesty. The escape is
+   * never rate-limited (`sos.rs`), so it can be pressed again the moment it
+   * lapses; several in one day may still be a bad day, and a parent should be
+   * the one deciding which it is rather than reading identical rows.
+   */
+  sosEscapeTitle: 'Emergency unlock',
+  sosEscapeBody: 'SOS unlocked this device for {{minutes}} minutes.',
+  sosEscapeRepeatTitle: 'Emergency unlock ({{count}} today)',
+  sosEscapeRepeatBody:
+    'SOS unlocked this device for {{minutes}} minutes. That is {{count}} times today.',
   appBlockedTitle: '{{appName}}',
   appBlockedBody: 'A blocked app was opened and KidGate closed it.',
-  appInstalledTitle: '{{appName}}',
-  appInstalledBody: 'A new app was installed on the child device.',
-  appRemovedTitle: '{{appName}}',
-  appRemovedBody: 'An app was uninstalled from the child device.',
+  appInstalledTitle: 'App installed',
+  appInstalledBody: '{{appName}} was installed on the child device.',
+  messageAlertTitle: 'Concerning message content',
+  messageAlertBody: 'A flagged word was seen in {{appName}}.',
+  messageAlertBodyOutgoing:
+    'A flagged word was seen in a message your child wrote in {{appName}}.',
+  activityTypeMessageAlert: 'Message alert',
+  messageCheckedTitle: 'Checked, nothing concerning',
+  messageCheckedBody:
+    'A watched word appeared in {{appName}} and was judged harmless in context.',
+  activityTypeMessageChecked: 'Checked',
+  appRemovedTitle: 'App removed',
+  appRemovedBody: '{{appName}} was uninstalled from the child device.',
   placeEnterTitle: 'Entered {{placeName}}',
   placeEnterBody: 'The child device entered a saved place.',
   placeExitTitle: 'Left {{placeName}}',
@@ -104,9 +136,12 @@ export const activities = {
   tamperCamera: 'The camera permission was turned off.',
   tamperBackgroundRefresh: 'Background App Refresh was turned off.',
   filterAllDevices: 'All devices',
+  // The child tier of the feed filter — "All" would read as all devices.
+  filterAllChildren: 'Everyone',
   dateToday: 'Today',
   dateYesterday: 'Yesterday',
   filterByDevice: 'Filter by {{label}}',
+  filterByChild: 'Show only {{label}}',
   openFullSosHistory: 'Open full SOS history',
   unknownDevice: 'Unknown device',
   basicActivityNote: 'Lock, unlock, and device events are recorded in Activities.',

@@ -14,7 +14,8 @@ export const errors = {
   unableToJoinFamilyAccount: 'Impossibile entrare nell’account famiglia. Riprova.',
   enterEmailAddress: 'Inserisci il tuo indirizzo email.',
   unableToCreatePairingCode: 'Impossibile creare un codice di associazione. Riprova.',
-  unableToRedeemPairingCode: 'Il codice di associazione non è valido oppure è scaduto.',
+  unableToRedeemPairingCode:
+    'Quel codice non corrisponde. Controlla bene i caratteri — oppure richiedi un nuovo codice se è passato un po’ di tempo.',
   unableToClaimChildPairing:
     'Impossibile collegare il dispositivo del bambino. Riprova.',
   unableToPollChildPairing: 'Impossibile verificare lo stato dell’associazione.',
@@ -24,6 +25,8 @@ export const errors = {
   unableToOpenCamera:
     'Impossibile aprire la fotocamera. Consenti l’accesso alla fotocamera nelle impostazioni del dispositivo.',
   noPhotoCaptured: 'Nessuna foto acquisita.',
+  unableToOpenPhotoLibrary:
+    'Impossibile aprire le tue foto. Consenti l’accesso a Foto nelle impostazioni del dispositivo.',
   simulatorCameraHint:
     'Nel simulatore, abilita prima una fotocamera: Simulator → Camera → Front Camera, quindi riprova SOS. Per una foto reale, prova su un iPhone fisico.',
   notSignedInReopenApp:
@@ -53,7 +56,7 @@ export const errors = {
     'Questo dispositivo deve essere ricollegato. Chiudi e riapri KidGate, quindi riprova.',
   deviceNotFound: 'Questo dispositivo non appartiene più alla tua famiglia.',
   registerParentDeviceFirst:
-    'Configura prima questo dispositivo come dispositivo genitore, quindi riprova.',
+    'Questo telefono non è ancora configurato come dispositivo genitore. Apri KidGate qui, scegli il ruolo genitore nella schermata iniziale e riprova l’associazione.',
   pairingCodeFormat: 'Inserisci il codice di 6 caratteri.',
   pairingCodeUsed: 'Questo codice è già stato utilizzato. Richiedine uno nuovo.',
   pairingCodeExpiredChild:

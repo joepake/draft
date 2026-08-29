@@ -55,7 +55,50 @@ export const report = {
   findingBlockedWeb: '{{count}} sites filtered, against {{previous}} last week.',
   findingQuietWeek: 'A quiet week — {{total}} in all, and nothing that needed you.',
 
+  /*
+   * The positive findings.
+   *
+   * Each says what happened and the figure behind it, in the same register as
+   * the lines above — a parent should be able to repeat one to their child.
+   * None of them praises: `docs/COPY_STYLE.md` rules out flattery as firmly as
+   * it rules out alarm, and "well done" tells a parent nothing they can act on
+   * or repeat. "The daily limit held every day" does.
+   *
+   * These render only when the generated narrative was rejected; the sentence
+   * most families read is `digestNarrative`'s, already in their own language.
+   */
+  findingLimitRespected: 'The daily limit of {{limit}} held on all {{count}} days.',
+  findingLateNightGone_one: 'No late nights this week, after one last week.',
+  findingLateNightGone_other: 'No late nights this week, after {{count}} last week.',
+  findingBlockedAppsDown:
+    '{{count}} blocked app openings, down from {{previous}} last week.',
+  findingBlockedWebDown: '{{count}} sites filtered, down from {{previous}} last week.',
+  findingLearningTime: '{{duration}} in education apps, most of it in {{app}}.',
+  findingTasksDone_one: 'One task finished, earning {{bonus}}.',
+  findingTasksDone_other: '{{count}} tasks finished, earning {{bonus}}.',
+  findingAskedFirst_one: 'One request sent, rather than working around a rule.',
+  findingAskedFirst_other:
+    '{{count}} requests sent, rather than working around a rule.',
+  findingCheckedIn: 'All {{asked}} check-ins answered.',
+
   narrativeTitle: 'In a sentence',
+  /*
+   * The week's one suggested action, as a button.
+   *
+   * Worded for the reason rather than for the control: `reportAction` records
+   * which finding it answers, and "block the late-night hours" and "set a daily
+   * limit" are different sentences even when both open the same screen. The
+   * feature names here must match `blockedHours.title` and `controls.dailyLimit`
+   * exactly — a report that names a screen differently from the screen it opens
+   * is a support ticket, which is the same rule `digestNarrative`'s per-locale
+   * deny list enforces on the generated sentence above it.
+   */
+  actionTitle: 'One thing you could do',
+  actionDailyLimit: 'Set a Daily Limit of {{duration}}',
+  actionDailyLimitWhy: 'That was the daily pace last week.',
+  actionBlockedHours: 'Set Blocked Hours',
+  actionBlockedHoursLateNight: 'Block the late-night hours',
+  actionOnDevice: 'On {{device}}',
   finePrint:
     'Figures cover {{from}} to {{to}}, across every device in the family. Screen Time is what the devices reported; minutes they could not measure are in neither total.',
 
@@ -72,8 +115,58 @@ export const report = {
   noUsage:
     'No screen time was recorded over the last two weeks, so there is nothing to report yet. A device that is offline reports nothing, which is not the same as a quiet week.',
   rateLimited: 'Too many attempts. Give it a minute.',
+  loadFailedTitle: 'Reports did not load',
+  loadFailed: 'Could not open your reports. Pull down to try again.',
   failed: 'Could not write the report. Try again in a moment.',
 
   historyTitle: 'Earlier weeks',
   historyEmpty: 'Reports you receive from now on are kept here for a year.',
+
+  hubToday: 'Today',
+  hubTodayEmpty: 'No device has reported today yet.',
+  hubByChild: 'By child',
+  hubByDevice: 'By device',
+
+  // Per-child rows. The dashboard has rendered these since the table
+  // existed; the phone could not, because the copy lived only in the web
+  // pack.
+  childrenTitle: 'Each child',
+  childrenNote: 'Same fortnight, per device. Percentages are of the family total.',
+  colChild: 'Child',
+  colScreenTime: 'Screen Time',
+  colShare: 'Share',
+  colChange: 'vs last week',
+  colLimit: 'Over limit',
+  colLateNights: 'Late nights',
+  colTopApp: 'Most used',
+  unnamedChild: 'Unnamed',
+  changeUp: '+{{value}}',
+  changeDown: '−{{value}}',
+  changeFlat: 'about the same',
+  noLimit: 'No limit',
+  noTopApp: '—',
+  limitDays_one: '{{count}} day',
+  limitDays_other: '{{count}} days',
+  lateNightsNone: 'none',
+  busiest: 'Most screen time',
+
+  // The signed-out reports tab: a sample week, what the tab is for, and the
+  // two ways in. `guestPreviewHint` is not decoration — the chart above it is
+  // drawn from constants, and a week nobody measured has to say so.
+  guestPreviewHeading: 'What you will see',
+  guestPreviewHint: 'Sample — real figures appear once you connect a device',
+  guestTitle: 'See where the week went',
+  guestDescription:
+    'Sign in to measure today against a normal day, compare your children side by side, and get a written report every Sunday.',
+  guestBenefitTrendTitle: 'Today, against normal',
+  guestBenefitTrendBody:
+    'A figure on its own says nothing. Today is drawn against your family’s own daily average.',
+  guestBenefitChildTitle: 'Every child, side by side',
+  guestBenefitChildBody:
+    'Each child’s share of the day, in their own colour, across every device they use.',
+  guestBenefitWeeklyTitle: 'A report every Sunday',
+  guestBenefitWeeklyBody:
+    'What changed, which apps grew, and the late nights — kept for a year.',
+  guestSignInButton: 'Sign in',
+  guestCreateAccount: 'Create a parent account',
 } as const;

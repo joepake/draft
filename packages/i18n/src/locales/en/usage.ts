@@ -48,6 +48,10 @@ export const usage = {
   blockedHoursChip: 'Blocked Hours',
   overLimitChip: 'Over limit',
   usageReportsNote: 'Shows screen time, locks, and recent activity for this device.',
+  syncNote:
+    'Screen time can take a few minutes to reach this screen — longer if the device has no internet connection or was closed unexpectedly.',
+  syncNoteTv:
+    'This television only checks in periodically, so screen time can take up to an hour to reach this screen — longer with no internet connection.',
   sectionLast30Days: 'Last 30 days',
   comparePeriodTotal: '30-day total',
   compareDayAvg: 'Daily average',
@@ -62,9 +66,36 @@ export const usage = {
   sectionTopApps: 'Most used apps',
   topAppsHint:
     'Today’s most used apps on the child device. Data builds up as Screen Time / Usage Access syncs.',
+  // Said rather than left to be noticed, on every platform that excludes
+  // anything: a screensaver was this product's second most-used "app" of a
+  // month at 116 minutes and `com.apple.loginwindow` its fourth at 95, so a
+  // device that was on for an hour can report twenty — and a parent with no
+  // explanation reads that as the report being broken, or as their child having
+  // found a way around it.
+  //
+  // “Not in use” must stay word-for-word `timelineIdle` in every locale. It
+  // names a label the parent can see on the band directly above; a synonym
+  // sends them looking for something that is not there.
+  topAppsExcludedNote:
+    'Screensavers, the home screen and KidGate’s own screen do not count as screen time. When the device is on but nobody is actually using it, those minutes are recorded as “Not in use”.',
+  // Every app kind on this card is the nightly classifier's answer, so the
+  // caveat is a fact about the card rather than about a row — a badge on each
+  // line would mark every line and stop meaning anything. Same sentence, same
+  // place as `webHistory.rollupNoteAi`: this is where a parent reads a label
+  // and concludes something from it.
+  topAppsAiNote:
+    'Some kinds were worked out from the app’s name rather than matched to a known app, so a few may be off.',
   errorTitle: 'Unable to load usage',
   errorDescription: 'Check your connection and try again.',
   tryAgain: 'Try again',
+  // Shown only when the rating is known — it is 0 for much of the long
+  // tail, and 0 does not mean "suitable for everyone".
+  appMinAge: 'Rated {{age}}+',
+  underAMinute: 'Under a minute',
+  // The row under the eighth app: everything the capped list cannot show.
+  // A fact about the day, not an app — no rank, no bar, same voice as the
+  // idle row beside it.
+  topAppsOther: 'Other apps',
   topAppsEmpty:
     'No per-app data yet. On the child device, make sure KidGate is allowed to measure app usage, then wait for a sync.',
   protectionImpactTitle: 'Protection impact',

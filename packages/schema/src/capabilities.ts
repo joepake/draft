@@ -10,7 +10,17 @@
 
 import type { IsoDate, IsoDateTime, Minutes } from './primitives';
 
-export type DevicePlatform = 'ios' | 'android' | 'androidtv' | 'macos' | 'windows';
+/**
+ * `chromeos` is the browser-extension child surface (`apps/extension`) running
+ * on a Chromebook. The Android APK inside ARC still reports `android` — two
+ * rows for one physical Chromebook is the honest shape, because the two
+ * surfaces enforce different things and either can be removed without the
+ * other. An extension installed on a Mac or PC reports `macos` / `windows`
+ * with `webFilter: 'extension'`; the capability set, not the platform, is what
+ * says it is only a browser.
+ */
+export type DevicePlatform =
+  'ios' | 'android' | 'androidtv' | 'chromeos' | 'macos' | 'windows';
 
 export type DeviceFormFactor = 'phone' | 'tablet' | 'laptop' | 'desktop' | 'tv';
 
@@ -39,6 +49,17 @@ export type AppBlockStrength = false | 'strong' | 'best-effort';
 export type WebFilterMechanism = false | 'vpn' | 'contentFilter' | 'extension' | 'dns';
 
 export type LocationPrecision = false | 'gps' | 'coarse';
+
+/**
+ * A consent a person at the device gives, which the device cannot give itself.
+ *
+ * Two today, and both are safety features rather than enforcement: a refused
+ * camera costs the photo on an SOS and on a check-in, a refused location costs
+ * the position on both. Neither stops KidGate holding a rule, which is why
+ * `pendingConsents` does not turn a device's protection badge amber — see
+ * `getProtectionSummaryKeys`.
+ */
+export type DeviceConsent = 'camera' | 'location';
 
 /**
  * Who counted the minutes.
@@ -81,14 +102,116 @@ export interface DeviceCapabilities {
   usageTimeline: boolean;
   appBlock: AppBlockStrength;
   webFilter: WebFilterMechanism;
+  /**
+   * Why `webFilter` is false **when a person could change that**, and absent
+   * otherwise.
+   *
+   * `webFilter: false` has two very different causes and a parent's screen was
+   * reading them as one. A Mac that cannot filter at all and a Mac whose filter
+   * is one switch away both published `false`, so both rendered as "not
+   * supported on this device" — a sentence about the product, for a state the
+   * person standing at the machine could fix in ten seconds.
+   *
+   * - `awaitingApproval` — the extension is installed and macOS is waiting for
+   *   someone to approve it in System Settings.
+   * - `configurationDisabled` — approved, and *Filter Network Content* has been
+   *   switched off for this app.
+   *
+   * **Absent means there is nothing to tell them**, not that the filter works:
+   * read `webFilter` for that. A build carrying no extension sets nothing here,
+   * because "install a different build" is not an instruction to put in front
+   * of a parent — and neither is a provider the agent's own watchdog is already
+   * tearing down.
+   */
+  webFilterBlocker?: 'awaitingApproval' | 'configurationDisabled';
   schedule: boolean;
   dailyLimit: boolean;
   /** Can present a full-screen lock the child cannot dismiss. */
   lock: boolean;
   appInstallAlerts: boolean;
+  /**
+   * The device can watch message notifications and raise an alert when a
+   * concerning keyword appears (`@kidgate/core/domain/messageKeywords`).
+   *
+   * **Android only, and it is a platform fact rather than a permission the
+   * parent has yet to grant.** The channel is a `NotificationListenerService`,
+   * which iOS has no equivalent of — an iPhone cannot read another app's
+   * notification content at all (`docs/FEASIBILITY.md`, "Message-content
+   * monitoring"). So an iPhone publishes `false` and the parent screen says the
+   * device cannot do it, the same honest sentence a Mac gives for a filter it
+   * lacks. A browser extension and a TV report `false` too.
+   *
+   * `true` means the mechanism exists on the platform, not that the child has
+   * granted notification access yet — that grant, like accessibility, is a
+   * permission-checklist row (`protectionStatus`), not a capability. **Absent
+   * is unknown, not false**, per the rule the rest of this probe follows.
+   */
+  messageMonitoring?: boolean;
+  /**
+   * The device can enumerate what is **already** installed, not only what
+   * changes.
+   *
+   * A separate flag from `appInstallAlerts` and not derivable from it, in both
+   * directions. A browser extension reports neither. An iPhone reports neither
+   * either — but for a reason no future build fixes: FamilyControls returns
+   * opaque `ApplicationToken`s and enumerates nothing (`docs/FEASIBILITY.md`,
+   * the cliff list). The android/mac/windows agents report both today, and the
+   * pair could still separate: a device whose scan is refused at runtime keeps
+   * its install feed and loses its inventory.
+   *
+   * **Absent is unknown, not false**, per the rule the rest of this probe
+   * follows — every device shipped before the field existed publishes nothing,
+   * and `@kidgate/core/domain/appInventorySupport` answers from the platform
+   * for those.
+   */
+  appInventory?: boolean;
+  /**
+   * The device can say **when in the day** it browsed — page loads per hour,
+   * not minutes.
+   *
+   * Deliberately not `usageTimeline`, and the distinction is the whole point of
+   * having a second flag. That one is screen time: a 1440-slot band built by
+   * sampling which app was in front, and a browser extension samples nothing.
+   * This one counts navigations into 24 buckets, which is a different
+   * measurement with a different meaning — a tab left open all afternoon is one
+   * bucket entry, not four hours of it.
+   *
+   * True only where a surface timestamps each visit as it happens. The macOS
+   * content filter and the Android tunnel report cumulative per-domain counters
+   * (`webHistoryDelta` over `ContentFilterDomainRow`), which carry no per-visit
+   * time and never will without a change on the native side; they publish
+   * false, and the parent draws nothing rather than an empty chart.
+   */
+  webActivityHours: boolean;
 
   location: LocationPrecision;
   camera: boolean;
+  /**
+   * OS consents this device is still waiting for, that a person standing at it
+   * could give — and that no permission checklist covers.
+   *
+   * The same hole `webFilterBlocker` was cut to fill, one row further down.
+   * `camera: false` and `location: false` are *capability* answers: a parent
+   * screen reads them and quietly stops offering the feature, which is right
+   * for a Mac mini with no camera and wrong for a Mac whose camera was never
+   * asked about. From the parent's side those two are indistinguishable, so an
+   * SOS that will arrive without a photo looks exactly like a machine that
+   * cannot take one.
+   *
+   * Desktops are the platforms that need it: `getProtectionSummaryKeys` skips
+   * their permission checklist entirely (they have no OS grants to chase for
+   * enforcement), so before this there was no channel at all between a refused
+   * camera on a child's Mac and the parent holding the phone. Phones keep
+   * reporting through `Device.protectionStatus`; a platform may populate both,
+   * and a device that has nothing outstanding leaves this absent.
+   *
+   * **Outstanding, not refused.** A consent nobody has been asked for yet and
+   * one that was declined are both listed: to a parent they mean the same
+   * thing — the photo will not come — and only the device knows which of the
+   * two it is. What is never listed is a consent the machine cannot give: no
+   * camera in the lid, no location service.
+   */
+  pendingConsents?: readonly DeviceConsent[];
   battery: boolean;
   sos: boolean;
 

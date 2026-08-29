@@ -18,7 +18,7 @@
 
 import type { DeviceControls, ScheduleWindow } from '@kidgate/schema/deviceControls';
 import { DEFAULT_DEVICE_CONTROLS } from '@kidgate/schema/deviceControls';
-import type { AppPolicy, ShieldPolicy } from '@kidgate/schema/policy';
+import type { AppPolicy, ShieldPolicy, WebFilterPolicy } from '@kidgate/schema/policy';
 import type {
   AppRef,
   AppRefId,
@@ -26,6 +26,7 @@ import type {
   Millis,
   Minutes,
 } from '@kidgate/schema/primitives';
+import { contentFilterPolicyKey, resolveWebFilterPolicy } from './contentFilterPolicy';
 import { effectiveDailyLimitMinutes, localIsoDate } from './dailyLimit';
 import { normalizeScheduleDays } from './scheduleWindow';
 
@@ -41,6 +42,13 @@ export interface ChildPolicyInput {
    * which is exactly what `blockedAppsConfigured` records.
    */
   blockedApps: readonly AppRef[];
+  /**
+   * Server-classified serious-category domains (`aiWebDomains` on the device
+   * document, parsed by `parseAiWebDomains`). Folded into the web-filter
+   * policy's `blockedDomains` — see `resolveWebFilterPolicy` for why that
+   * channel and not a category table.
+   */
+  aiBlockedDomains?: readonly string[];
   nowMs: Millis;
   localDateOf?: (ms: Millis) => IsoDate;
 }
@@ -50,6 +58,14 @@ export interface ChildPolicy {
   windows: ScheduleWindow[];
   dailyLimitMinutes: Minutes | null;
   appPolicy: AppPolicy;
+  /**
+   * Applied only where `EnforcementHost.webFilter` exists — today the macOS
+   * agent. Derived for every host anyway, because the key below has to move
+   * when a web-filter field changes whether or not this device can act on it:
+   * a host that gains the port later must not skip the first policy it could
+   * finally enforce because the key had already been seen.
+   */
+  webFilter: WebFilterPolicy;
 }
 
 export function deriveChildPolicy(input: ChildPolicyInput): ChildPolicy {
@@ -84,6 +100,7 @@ export function deriveChildPolicy(input: ChildPolicyInput): ChildPolicy {
       blocked: [...input.blockedApps],
       limits,
     },
+    webFilter: resolveWebFilterPolicy(controls, input.aiBlockedDomains),
   };
 }
 
@@ -127,5 +144,6 @@ export function childPolicyKey(policy: ChildPolicy): string {
     policy.dailyLimitMinutes ?? 'none',
     limits,
     blocked,
+    contentFilterPolicyKey(policy.webFilter),
   ].join('|');
 }

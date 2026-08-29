@@ -95,7 +95,7 @@ export const legal = {
       },
       {
         title: '10. Exenciones de responsabilidad',
-        body: 'En la medida permitida por la ley, el servicio se proporciona “tal cual” y “según disponibilidad”, sin garantías implícitas de comerciabilidad, idoneidad, exactitud o no infracción. Nada excluye los derechos obligatorios del consumidor ni la responsabilidad que la ley no permita excluir.',
+        body: 'En la medida permitida por la ley, el servicio se proporciona «tal cual» y «según disponibilidad», sin garantías implícitas de comerciabilidad, idoneidad, exactitud o no infracción. Nada excluye los derechos obligatorios del consumidor ni la responsabilidad que la ley no permita excluir.',
       },
       {
         title: '11. Limitación de responsabilidad',

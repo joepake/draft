@@ -2,6 +2,7 @@ export const activities = {
   title: 'Activité',
   subtitleAllDevices: 'Derniers événements sur tous les appareils',
   subtitleTimelineForDevice: 'Historique de {{deviceName}}',
+  subtitleTimelineForChild: 'Chronologie de {{childName}}',
   fallbackDeviceName: 'appareil',
   liveBadge: 'En direct',
   errorTitle: 'Impossible de charger l’activité',
@@ -38,17 +39,33 @@ export const activities = {
   activityTypePlaceExit: 'Lieu quitté',
   activityTypeTamper: 'Protection',
   activityTypeScreenTime: 'Temps d’écran',
+  activityTypeWebFilter: 'Filtre web',
   activityTypeEmergency: 'Urgence',
   activityTypeUnknown: 'Activité',
 
+  sosEscapeTitle: 'Déverrouillage d’urgence',
+  sosEscapeBody: 'Le SOS a déverrouillé cet appareil pendant {{minutes}} minutes.',
+  sosEscapeRepeatTitle: 'Déverrouillage d’urgence ({{count}} fois aujourd’hui)',
+  sosEscapeRepeatBody:
+    'Le SOS a déverrouillé cet appareil pendant {{minutes}} minutes. Cela fait {{count}} fois aujourd’hui.',
   appBlockedTitle: '{{appName}}',
   appBlockedBody: 'Une application bloquée a été ouverte et KidGate l’a fermée.',
-  appInstalledTitle: '{{appName}}',
+  appInstalledTitle: 'Application installée',
   appInstalledBody:
-    'Une nouvelle application a été installée sur l’appareil de l’enfant.',
+    'L’application {{appName}} a été installée sur l’appareil de l’enfant.',
 
-  appRemovedTitle: '{{appName}}',
-  appRemovedBody: 'Une application a été désinstallée de l’appareil de l’enfant.',
+  messageAlertTitle: 'Contenu de message préoccupant',
+  messageAlertBody: 'Un mot signalé a été détecté dans {{appName}}.',
+  messageAlertBodyOutgoing:
+    'Un mot signalé a été détecté dans un message écrit par votre enfant dans {{appName}}.',
+  activityTypeMessageAlert: 'Alerte de message',
+  messageCheckedTitle: 'Vérifié, rien d’inquiétant',
+  messageCheckedBody:
+    'Un mot surveillé est apparu dans {{appName}} et s’est révélé inoffensif dans son contexte.',
+  activityTypeMessageChecked: 'Vérifié',
+  appRemovedTitle: 'Application désinstallée',
+  appRemovedBody:
+    'L’application {{appName}} a été désinstallée de l’appareil de l’enfant.',
 
   placeEnterTitle: 'Entrée dans {{placeName}}',
   placeEnterBody: 'L’appareil de l’enfant est entré dans un lieu enregistré.',
@@ -85,7 +102,7 @@ export const activities = {
   tamperBatteryBody:
     'Le système peut suspendre KidGate jusqu’à ce que l’utilisation de la batterie soit de nouveau définie sur Illimitée.',
 
-  tamperExactAlarmTitle: 'Alarmes et rappels désactivé',
+  tamperExactAlarmTitle: 'Alarmes et rappels désactivés',
   tamperExactAlarmBody:
     'Les Heures bloquées peuvent commencer ou se terminer en retard tant qu’Alarmes et rappels n’est pas de nouveau autorisé.',
 
@@ -99,7 +116,7 @@ export const activities = {
 
   tamperCameraTitle: 'La caméra a été désactivée',
   tamperCameraBody:
-    'Les photos SOS et Check-In risquent de ne plus être envoyées tant que l’accès à la caméra n’est pas rétabli.',
+    'Les photos SOS et Check-in risquent de ne plus être envoyées tant que l’accès à la caméra n’est pas rétabli.',
 
   tamperBackgroundRefreshTitle: 'L’actualisation en arrière-plan a été désactivée',
   tamperBackgroundRefreshBody:
@@ -122,17 +139,20 @@ export const activities = {
   tamperBackgroundRefresh: 'L’actualisation en arrière-plan a été désactivée.',
 
   filterAllDevices: 'Tous les appareils',
+  // The child tier of the feed filter — "All" would read as all devices.
+  filterAllChildren: 'Tout le monde',
   dateToday: 'Aujourd’hui',
   dateYesterday: 'Hier',
 
   filterByDevice: 'Filtrer par {{label}}',
+  filterByChild: 'Afficher uniquement {{label}}',
 
   openFullSosHistory: 'Ouvrir l’historique complet des alertes SOS',
 
   unknownDevice: 'Appareil inconnu',
 
   basicActivityNote:
-    'Les événements de verrouillage, déverrouillage et du système sont enregistrés dans Activités.',
+    'Les événements de verrouillage, déverrouillage et du système sont enregistrés dans Activité.',
   tamperUninstallProtectionTitle: 'Protection contre la désinstallation désactivée',
   tamperUninstallProtectionBody:
     'KidGate peut désormais être supprimé de ce téléphone.',

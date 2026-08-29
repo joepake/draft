@@ -13,5 +13,11 @@ export const trial = {
   impactScreenTime: 'انخفض وقت الشاشة بنحو {{duration}} يوميًا',
   impactWebBlocked: 'تم حظر {{count}} زيارة لمواقع للبالغين',
   impactTamper: 'تم تسجيل إيقاف الحماية {{count}} مرة',
+  impactLocks: 'تم تطبيق وقت النوم وساعات الحظر {{count}} مرة',
+  impactScreenTimeTracked: 'تم قياس {{duration}} من وقت الشاشة من أجلك',
+  impactDevices: 'تمت مراقبة {{count}} من الأجهزة ليلاً ونهاراً',
+  impactPlaceArrivals: 'تم إبلاغك {{count}} مرة بوصول طفلك بأمان',
+  impactAppInstalled: 'تم رصد {{count}} تطبيقاً جديداً يوم ظهورها',
+  impactSos: 'تم إيصال {{count}} من تنبيهات الطوارئ إليك مباشرة',
   impactKeepButton: 'الاحتفاظ بهذه الحماية',
 } as const;

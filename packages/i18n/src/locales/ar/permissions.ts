@@ -7,7 +7,7 @@ export const permissions = {
   notNow: 'ليس الآن',
   cameraTurnedOffTitle: 'الكاميرا متوقفة لـKidGate',
   cameraTurnedOffMessage:
-    'يرجى فتح الإعدادات والسماح بالكاميرا حتى تتضمن عمليات تسجيل الوصول وتنبيهات SOS صورة.',
+    'يرجى فتح الإعدادات والسماح بالكاميرا حتى تتضمن طلبات الاطمئنان وتنبيهات SOS صورة.',
   openSettings: 'فتح الإعدادات',
   notificationsLabel: 'الإشعارات',
   notificationsAllowed: 'الإشعارات مفعّلة لـKidGate.',
@@ -42,6 +42,8 @@ export const permissions = {
   oemAutostartHintOther:
     'اسمح لـKidGate بالتشغيل التلقائي من إعدادات الأمان أو البطارية على جهازك.',
   markDone: 'تم',
+  uninstallProtectionWizardBody:
+    'يمنع إلغاء تثبيت هذا التطبيق دون رمز PIN الوالدين. يعرض Android شاشة تأكيد خاصة به.',
   notificationsWizardBody:
     'اسمح بالإشعارات ليتلقى هذا الجهاز موافقات الوقت والتذكيرات فورًا.',
 } as const;

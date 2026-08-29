@@ -7,6 +7,70 @@ export const family = {
   addChildOption: 'إضافة جهاز طفل',
   addJoinFamilyOption: 'الانضمام إلى عائلة',
   addParentOption: 'دعوة أحد الوالدين',
+  loginWebOption: 'تسجيل الدخول على الويب',
+  // The "who uses this device?" assignment sheet.
+  assignSheetTitle: 'من يستخدم {{deviceName}}؟',
+  assignSheetBody: 'يُحتسب وقت الشاشة والنجوم للطفل الذي تختاره.',
+  assignSheetNobody: 'لا أحد',
+  assignSheetNobodyHint: 'جهاز مشترك — لا يُحتسب لأحد.',
+  assignSheetAddAndAssign: 'إضافة وتعيين',
+  // The "protect this child now?" starter sheet, offered right after a fresh
+  // pairing is assigned. Content pre-exists on the device; this flips it on.
+  quickProtectTitle: 'حماية {{childName}} الآن؟',
+  quickProtectBody:
+    'فعّل مجموعة أولية من الحمايات. يمكنك ضبط كل شيء بدقة لاحقًا من ملف الطفل.',
+  quickProtectBedtime: 'ساعات الحظر وقت النوم',
+  quickProtectBedtimeHint:
+    'يحظر استخدام الجهاز طوال الليل، من 10:00 مساءً إلى 7:00 صباحًا.',
+  quickProtectDailyLimit: 'الحد اليومي لوقت الشاشة',
+  quickProtectDailyLimitHint: '{{minutes}} دقيقة في اليوم، تُحتسب عبر كل أجهزته.',
+  quickProtectWebFilter: 'فلتر الويب',
+  quickProtectWebFilterHint: 'يحظر المحتوى المخصص للبالغين وفئات خطرة أخرى.',
+  quickProtectWebFilterPremium: 'ميزة Premium — مضمّنة مع الاشتراك.',
+  quickProtectApply: 'تفعيل الحماية',
+  quickProtectSkip: 'ليس الآن',
+  quickProtectDone: 'الحماية مفعّلة. يمكنك ضبطها بدقة في أي وقت.',
+  quickProtectPartial: 'تعذر حفظ بعض الحمايات. يرجى المحاولة مرة أخرى من ملف الطفل.',
+  pairDeviceFirstTitle: 'لم يُقترن أي جهاز بعد',
+  pairDeviceFirstBody:
+    'اقرن جهازًا لهذا الطفل أولاً — من تبويب العائلة، اضغط على أيقونة المسح أو "+" واختر إضافة جهاز طفل. يبدأ هذا التحكم في العمل فور اتصال جهاز.',
+  // Child-grouped family list: group header lock-all + unassigned group.
+  lockAll: 'قفل الكل',
+  unlockAll: 'إلغاء قفل الكل',
+  lockAllA11y: 'قفل جميع أجهزة {{childName}}',
+  unlockAllA11y: 'إلغاء قفل جميع أجهزة {{childName}}',
+  childDetailUnassignTitle: 'إزالته من الطفل؟',
+  childDetailUnassignBody:
+    'لن يُحتسب {{deviceName}} بعد الآن لـ {{childName}} وسينتقل إلى غير مخصص. يبقى مقترنًا ومحميًا.',
+  childDetailUnassignConfirm: 'إزالة',
+  childDetailUnassignA11y: 'إزالة {{deviceName}} من هذا الطفل',
+  // The fold control on a group heading.
+  collapseGroupA11y: 'طيّ {{name}}',
+  expandGroupA11y: 'توسيع {{name}}',
+  assignDeviceCta: 'تعيين لطفل…',
+  unassignedHint: 'هذه الأجهزة لا تُحتسب لأحد بعد.',
+  unassignedHintMember: 'مالك العائلة هو من يخصّص هذه الأجهزة للأطفال.',
+  // The footer strip: children who hold no device get no group of their own.
+  childrenWithoutDeviceTitle: 'أطفال بلا جهاز',
+  // Child detail screen.
+  childDetailStarsWell: 'نجوم هذا الأسبوع',
+  childStarsA11y: 'نجوم هذا الأسبوع: {{count}}',
+  childDetailDevicesTitle: 'الأجهزة',
+  childDetailAssignMore: 'تعيين جهاز آخر…',
+  childDetailAssignSheetTitle: 'تعيين جهاز لـ{{childName}}',
+  childDetailNoDevices:
+    'لا توجد أجهزة بعد. عيّن جهازًا أدناه أو اقرن جهازًا جديدًا من تبويب العائلة.',
+  // Same screen for a joined parent, who may pair but may not assign.
+  childDetailNoDevicesMember:
+    'لا توجد أجهزة بعد. مالك العائلة هو من يحدّد الجهاز الخاص بكل طفل.',
+  childDetailEditNameTitle: 'تعديل الاسم',
+  childDetailColorLabel: 'اللون',
+  scanButtonAccessibility: 'مسح رمز',
+  scanTitle: 'مسح رمز',
+  scanBody:
+    'وجّه الكاميرا نحو جهاز الطفل، أو دعوة عائلية، أو الرمز الظاهر على الكمبيوتر.',
+  manualCodeLabel: 'أدخل الرمز المكوّن من 6 أحرف',
+  manualInstructions: 'أدخل الرمز المكوّن من 6 أحرف الظاهر على الجهاز الآخر.',
 
   headerHintEmpty: 'إدارة أجهزة أطفالك وحمايتها',
 
@@ -44,6 +108,8 @@ export const family = {
 
   chipProtectedCount: '{{count}} محمية',
 
+  childDevicesProtected: '{{count}} أجهزة محمية',
+
   chipHealthWarnCount: '{{count}} بحاجة إلى إعداد',
   chipHealthWarnCount_one: '{{count}} بحاجة إلى إعداد',
 
@@ -52,6 +118,7 @@ export const family = {
   chipBlockedCount: '{{count}} مقفلة',
 
   healthProtected: 'محمي',
+  buildOutdated: 'يتوفر تحديث',
 
   healthNeedsSetup: 'يتطلب الإعداد',
 
@@ -104,7 +171,7 @@ export const family = {
 
   guestBenefitAlertsBody: 'تلقَّ إشعارًا فورًا عند الحاجة إلى انتباهك.',
 
-  guestBenefitLocationTitle: 'الموقع وتسجيل الوصول',
+  guestBenefitLocationTitle: 'الموقع والاطمئنان',
 
   guestBenefitLocationBody: 'اعرف مكان طفلك واطلب منه تأكيد أنه بخير.',
 
@@ -174,6 +241,7 @@ export const family = {
   mac: 'Mac',
   windowsPc: 'كمبيوتر Windows',
   androidTv: 'Android TV',
+  chromebook: 'Chromebook',
 
   deviceNameRequired: 'يرجى إدخال اسم للجهاز.',
 
@@ -217,7 +285,7 @@ export const family = {
 
   sosNeedsAttentionNow: 'SOS — يتطلب انتباهًا فوريًا',
 
-  waitingForCheckIn: 'بانتظار تسجيل الوصول',
+  waitingForCheckIn: 'بانتظار الاطمئنان',
 
   timeRequestsWaiting: '{{count}} طلبًا لوقت الشاشة قيد الانتظار',
 
@@ -230,6 +298,10 @@ export const family = {
   timeRequestsWaiting_other: '{{count}} طلب لوقت الشاشة قيد الانتظار',
 
   youPausedThisDevice: 'لقد قمت بقفل هذا الجهاز',
+
+  lockSentWaitingForDevice: 'أُرسل القفل — في انتظار الجهاز',
+
+  lockNotAppliedOnDevice: 'لم يطبّق هذا الجهاز القفل',
 
   blockedHoursActiveNow: 'ساعات الحظر مفعلة حاليًا',
 
@@ -257,4 +329,25 @@ export const family = {
   batteryPercent: '{{percent}}٪',
   batteryAccessibility: 'البطارية {{percent}} بالمئة',
   batteryChargingAccessibility: 'البطارية {{percent}} بالمئة، قيد الشحن',
+  childDetailPerDevice: 'لكل جهاز — اختر أيها',
+  childDetailNotAvailable: 'غير متاح',
+  childDetailNotAvailableReason: 'غير متاح على أي من أجهزته',
+  childDetailProtectionOk: 'محمي',
+  childDetailProtectionAttention: '{{count}} أجهزة تحتاج إلى انتباه',
+  childDetailProtectionAttention_one: 'جهاز واحد يحتاج إلى انتباه',
+  childDetailProtectionAttention_two: 'جهازان يحتاجان إلى انتباه',
+  childDetailProtectionAttention_few: '{{count}} أجهزة تحتاج إلى انتباه',
+  childDetailProtectionAttention_many: '{{count}} جهازًا يحتاج إلى انتباه',
+  childDetailProtectionSheetTitle: 'الحماية حسب الجهاز',
+  childDetailRemoveTitle: 'إزالة هذا الطفل',
+  childDetailRemovingButton: 'جارٍ الإزالة…',
+  childDetailOnlineCount: '{{online}} من {{total}} متصل',
+  childDetailBudgetTitle: 'الحد اليومي',
+  childDetailSectionControls: 'قواعد تسري على كل أجهزته',
+  childDetailSectionSafety: 'مجمَّع من كل أجهزته',
+  childDetailSectionAlerts: 'كل أجهزته في قائمة واحدة',
+  childDetailScopeAll: 'كل الأجهزة',
+  childDetailTodayWell: 'الاستخدام اليوم',
+  childDetailUnassignAction: 'إلغاء التعيين',
+  childDetailLimitShared: 'الإجمالي عبر كل أجهزته',
 } as const;

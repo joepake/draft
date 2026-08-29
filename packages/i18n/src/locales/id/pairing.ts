@@ -3,7 +3,7 @@ export const pairing = {
   shareInviteMessage:
     'Gabung ke keluarga kami di KidGate: buka aplikasi, pilih Keluarga → Gabung keluarga, lalu masukkan kode {{code}}. Kode kedaluwarsa dalam 15 menit.',
   shareChildCodeMessage:
-    'Hubungkan perangkat anak ini di KidGate: di perangkat orang tua buka KidGate → Keluarga (Perangkat) → + → Perangkat anak, lalu pindai kode QR atau masukkan kode {{code}}. Kode kedaluwarsa dalam 5 menit.',
+    'Hubungkan perangkat anak ini di KidGate: di perangkat orang tua buka KidGate → Keluarga → Pindai kode, lalu pindai kode QR atau masukkan kode {{code}}. Kode kedaluwarsa dalam 5 menit.',
   connectChildPhone: 'Sambungkan perangkat anak',
   parentInstructions:
     'Di perangkat anak, buka KidGate dan pilih Ini adalah perangkat anak. Lalu masukkan kode yang ditampilkan di layar tersebut.',
@@ -13,12 +13,21 @@ export const pairing = {
     'Mohon biarkan layar ini tetap terbuka. Orang tua akan menghubungkan perangkat ini dari aplikasi KidGate mereka.',
   childCodeLabel: 'Atau bagikan kode ini',
   childScanHint:
-    'Orang tua: buka KidGate → Keluarga (Perangkat) → + → Perangkat anak → pindai kode QR atau masukkan kodenya.',
+    'Orang tua: buka KidGate → Keluarga → {{scan}} → pindai kode QR atau masukkan kodenya.',
   childConnecting: 'Terhubung. Menyiapkan perangkat ini…',
   childPairedTitle: 'Anda telah terhubung',
   childPairedSubtitle: 'Menyiapkan perangkat ini…',
   connectChild: 'Hubungkan perangkat anak',
   waitingChildConfirm: 'Permintaan terkirim. Menunggu konfirmasi di perangkat anak.',
+  waitingChildConfirmHint:
+    'Di perangkat anak, ketuk "Ya, sambungkan" untuk menyelesaikan. Anda bisa menutup layar ini — pemasangan tetap berlanjut di latar belakang.',
+  childConfirmedTitle: 'Perangkat terhubung',
+  childConfirmedBody:
+    'Perangkat anak sudah mengonfirmasi pemasangan. Selanjutnya, pilih siapa yang memakainya.',
+  childRejectedPairing:
+    'Perangkat anak menolak pemasangan ini. Minta kode baru dari perangkat itu, lalu coba lagi.',
+  childConfirmExpired:
+    'Perangkat anak tidak mengonfirmasi tepat waktu. Minta kode baru dari perangkat itu, lalu coba lagi.',
   confirmParentTitle: 'Konfirmasi orang tua ini?',
   confirmParentSubtitle:
     '{{parentLabel}} ingin mengelola perangkat ini. Terima hanya jika Anda mengenal orang ini.',

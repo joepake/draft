@@ -15,7 +15,8 @@ export const errors = {
   enterEmailAddress: 'Veuillez saisir votre adresse e-mail.',
   unableToCreatePairingCode:
     'Impossible de créer un code d’association. Veuillez réessayer.',
-  unableToRedeemPairingCode: 'Ce code d’association est incorrect ou a expiré.',
+  unableToRedeemPairingCode:
+    'Ce code ne correspond pas. Vérifiez bien les caractères — ou demandez un nouveau code s’il date un peu.',
   unableToClaimChildPairing:
     'Impossible de connecter l’appareil de l’enfant. Veuillez réessayer.',
   unableToPollChildPairing: 'Impossible de vérifier l’état de l’association.',
@@ -27,6 +28,8 @@ export const errors = {
   unableToOpenCamera:
     'Impossible d’ouvrir l’appareil photo. Veuillez autoriser l’accès à l’appareil photo dans les paramètres de votre appareil.',
   noPhotoCaptured: 'Aucune photo n’a été prise.',
+  unableToOpenPhotoLibrary:
+    'Impossible d’ouvrir vos photos. Autorisez l’accès aux Photos dans les réglages de l’appareil.',
   simulatorCameraHint:
     'Dans le simulateur, activez d’abord une caméra : Simulator → Camera → Front Camera, puis réessayez SOS. Pour une vraie photo, testez sur un iPhone physique.',
   notSignedInReopenApp:
@@ -58,7 +61,7 @@ export const errors = {
     'Cet appareil doit être reconnecté. Fermez puis rouvrez KidGate, puis réessayez.',
   deviceNotFound: 'Cet appareil ne fait plus partie de votre famille.',
   registerParentDeviceFirst:
-    'Configurez d’abord cet appareil comme appareil parent, puis réessayez.',
+    'Ce téléphone n’est pas encore configuré comme appareil parent. Ouvrez KidGate ici, choisissez le rôle parent sur l’écran d’accueil, puis réessayez l’association.',
   pairingCodeFormat: 'Veuillez saisir le code à 6 caractères.',
   pairingCodeUsed: 'Ce code a déjà été utilisé. Veuillez en demander un nouveau.',
   pairingCodeExpiredChild:

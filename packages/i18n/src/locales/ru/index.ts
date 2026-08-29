@@ -1,6 +1,7 @@
 import { accents } from './accents';
 import { activities } from './activities';
 import { appAlerts } from './appAlerts';
+import { appInventory } from './appInventory';
 import { appLimits } from './appLimits';
 import { appLock } from './appLock';
 import { auth } from './auth';
@@ -8,6 +9,7 @@ import { blockedApps } from './blockedApps';
 import { blockedHours } from './blockedHours';
 import { checkIn } from './checkIn';
 import { child } from './child';
+import { childReport } from './childReport';
 import { childSettings } from './childSettings';
 import { common } from './common';
 import { controls } from './controls';
@@ -18,6 +20,7 @@ import { errors } from './errors';
 import { intro } from './intro';
 import { legal } from './legal';
 import { location } from './location';
+import { messageMonitoring } from './messageMonitoring';
 import { macos } from './macos';
 import { nav } from './nav';
 import { notifications } from './notifications';
@@ -50,6 +53,7 @@ export default {
   accents,
   activities,
   appAlerts,
+  appInventory,
   appLimits,
   appLock,
   auth,
@@ -57,6 +61,7 @@ export default {
   blockedHours,
   checkIn,
   child,
+  childReport,
   childSettings,
   common,
   controls,
@@ -67,6 +72,7 @@ export default {
   intro,
   legal,
   location,
+  messageMonitoring,
   macos,
   nav,
   notifications,

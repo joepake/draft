@@ -2,12 +2,12 @@ export const permissions = {
   cameraPermissionRequired: 'Se requiere acceso a la cámara para esta función.',
   allowCameraTitle: 'Permitir la cámara',
   cameraPermissionMessage:
-    'KidGate usa la cámara para que puedas enviar una foto rápida con SOS y Check-Ins.',
+    'KidGate usa la cámara para que puedas enviar una foto rápida con SOS y Check-ins.',
   allow: 'Permitir',
   notNow: 'Ahora no',
   cameraTurnedOffTitle: 'La cámara está desactivada para KidGate',
   cameraTurnedOffMessage:
-    'Abre Ajustes y permite la Cámara para que tus Check-Ins y alertas de SOS puedan incluir una foto.',
+    'Abre Ajustes y permite la Cámara para que tus Check-ins y alertas de SOS puedan incluir una foto.',
   openSettings: 'Abrir Ajustes',
   notificationsLabel: 'Notificaciones',
   notificationsAllowed: 'Las notificaciones están activadas para KidGate.',
@@ -31,7 +31,7 @@ export const permissions = {
   accessibilityHint:
     'Activa KidGate en Accesibilidad → Apps instaladas/descargadas. Esto es necesario para que el bloqueo se mantenga sobre otras apps.',
   oemSectionDescription:
-    'Los dispositivos {{brand}} suelen pausar las apps en segundo plano. Completa estos pasos para que el bloqueo y las Horas Bloqueadas sigan funcionando.',
+    'Los dispositivos {{brand}} suelen pausar las apps en segundo plano. Completa estos pasos para que el bloqueo y las Horas bloqueadas sigan funcionando.',
   oemAutostartLabel: 'Permitir el inicio automático',
   oemAutostartHintXiaomi:
     'En Inicio automático, activa KidGate para que la protección se reinicie tras un reinicio del dispositivo.',
@@ -41,10 +41,12 @@ export const permissions = {
   oemAutostartHintVivo:
     'En Inicio automático / Alto rendimiento en segundo plano, permite KidGate.',
   oemAutostartHintHuawei:
-    'En Inicio de apps / Gestor de inicio, configura KidGate en “Gestionar manualmente” y permite todas las opciones.',
+    'En Inicio de apps / Gestor de inicio, configura KidGate en «Gestionar manualmente» y permite todas las opciones.',
   oemAutostartHintOther:
     'Permite que KidGate se inicie automáticamente en los ajustes de seguridad o batería de tu dispositivo.',
   markDone: 'Listo',
+  uninstallProtectionWizardBody:
+    'Impide que esta app se desinstale sin el PIN parental. Android muestra su propia pantalla de confirmación.',
   notificationsWizardBody:
     'Permite las notificaciones para que este dispositivo reciba aprobaciones de tiempo y recordatorios al instante.',
 } as const;

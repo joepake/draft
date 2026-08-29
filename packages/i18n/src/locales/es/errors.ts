@@ -11,13 +11,14 @@ export const errors = {
   unableToCreateAccount: 'No se pudo crear tu cuenta. Inténtalo de nuevo.',
   unableToSignIn: 'No se pudo iniciar sesión. Inténtalo de nuevo.',
   unableToJoinFamilyAccount:
-    'No se pudo unirte a la cuenta familiar. Inténtalo de nuevo.',
+    'No pudimos unirte a la cuenta familiar. Inténtalo de nuevo.',
   enterEmailAddress: 'Introduce tu dirección de correo electrónico.',
   unableToCreatePairingCode:
     'No se pudo crear el código de vinculación. Inténtalo de nuevo.',
-  unableToRedeemPairingCode: 'Ese código de vinculación es incorrecto o ha caducado.',
+  unableToRedeemPairingCode:
+    'Ese código no coincide. Revisa bien los caracteres o pide un código nuevo si ha pasado un rato.',
   unableToClaimChildPairing:
-    'No se pudo conectar el dispositivo del menor. Inténtalo de nuevo.',
+    'No se pudo conectar el dispositivo del niño. Inténtalo de nuevo.',
   unableToPollChildPairing: 'No se pudo comprobar el estado de la vinculación.',
   unableToConfirmChildPairing:
     'No se pudo confirmar esta vinculación. Inténtalo de nuevo.',
@@ -27,6 +28,8 @@ export const errors = {
   unableToOpenCamera:
     'No se pudo abrir la cámara. Permite el acceso a la cámara en la configuración del dispositivo.',
   noPhotoCaptured: 'No se capturó ninguna foto.',
+  unableToOpenPhotoLibrary:
+    'No se pudieron abrir tus fotos. Permite el acceso a Fotos en los ajustes del dispositivo.',
   simulatorCameraHint:
     'En el simulador, activa primero una cámara: Simulator → Camera → Front Camera y vuelve a probar SOS. Para una foto real, prueba en un iPhone físico.',
   notSignedInReopenApp:
@@ -53,12 +56,12 @@ export const errors = {
     'Ya no formas parte de esta familia. Pide al propietario de la familia que te invite de nuevo.',
   familyNotCreated: 'Primero crea tu familia y luego invita a otro padre o madre.',
   childDeviceNotAllowed:
-    'Este es un dispositivo del menor, por lo que no puede administrar la configuración familiar.',
+    'Este es un dispositivo del niño, por lo que no puede administrar la configuración familiar.',
   deviceCredentialMissing:
     'Este dispositivo necesita volver a conectarse. Cierra y vuelve a abrir KidGate, luego inténtalo de nuevo.',
   deviceNotFound: 'Ese dispositivo ya no pertenece a tu familia.',
   registerParentDeviceFirst:
-    'Configura primero este dispositivo como dispositivo de los padres y vuelve a intentarlo.',
+    'Este teléfono aún no está configurado como dispositivo de los padres. Abre KidGate aquí, elige el rol de padre o madre en la pantalla de inicio y vuelve a intentar la vinculación.',
   pairingCodeFormat: 'Introduce el código de 6 caracteres.',
   pairingCodeUsed: 'Ese código ya ha sido utilizado. Solicita uno nuevo.',
   pairingCodeExpiredChild:
@@ -83,7 +86,7 @@ export const errors = {
   locationSharingDisabled:
     'La ubicación compartida está desactivada en este dispositivo. Actívala en la configuración del dispositivo e inténtalo de nuevo.',
   childDeviceNoPushToken:
-    'Este dispositivo del menor aún no puede recibir solicitudes. Abre KidGate en el dispositivo del menor y permite las notificaciones.',
+    'Este dispositivo del niño aún no puede recibir solicitudes. Abre KidGate en el dispositivo del niño y permite las notificaciones.',
   unableToRequestLocation:
     'No se pudo solicitar una ubicación actualizada en este momento. Inténtalo de nuevo.',
   unableToVerifyPurchase:

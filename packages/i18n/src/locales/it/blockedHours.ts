@@ -73,4 +73,6 @@ export const blockedHours = {
   daysSchoolNights: 'Sere di scuola',
   daysWeekend: 'Fine settimana',
   daysOvernightHint: 'Le fasce notturne contano per la notte in cui iniziano.',
+  overlapWarning:
+    'Questo si sovrappone a un altro orario bloccato: entrambi restano validi.',
 } as const;

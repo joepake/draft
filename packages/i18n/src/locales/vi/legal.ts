@@ -83,7 +83,7 @@ export const legal = {
       },
       {
         title: '7. Giấy phép và sở hữu',
-        body: 'KidGate cấp quyền cá nhân, có giới hạn, không độc quyền, không chuyển nhượng và có thể thu hồi để dùng ứng dụng đúng điều khoản. Không được sao chép, bán lại, đảo ngược, phá cơ chế bảo vệ, khai thác tự động hoặc dùng thương hiệu, mã nguồn hay nội dung ngoài phạm vi pháp luật cho phép.',
+        body: 'KidGate cấp quyền cá nhân, có giới hạn, không độc quyền, không chuyển nhượng và có thể thu hồi để dùng ứng dụng đúng điều khoản. Không được sao chép, bán lại, dịch ngược, phá cơ chế bảo vệ, khai thác tự động hoặc dùng thương hiệu, mã nguồn hay nội dung ngoài phạm vi pháp luật cho phép.',
       },
       {
         title: '8. Hành vi bị cấm',

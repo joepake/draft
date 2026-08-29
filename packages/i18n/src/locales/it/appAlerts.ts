@@ -16,4 +16,6 @@ export const appAlerts = {
     'I genitori ricevono una notifica push ogni volta che un’app viene installata o rimossa.',
   infoLine3: 'Controlla l’elenco qui e blocca le app a rischio da App bloccate.',
   recentTitle: 'Modifiche recenti',
+  statInstalled: 'Installata',
+  statRemoved: 'Rimossa',
 } as const;

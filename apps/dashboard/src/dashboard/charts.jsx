@@ -6,6 +6,7 @@ import {
   timelineMinutesUnmeasured,
   timelineRuns,
 } from '@kidgate/core/domain/usageTimeline';
+import { otherAppsMinutes } from '@kidgate/core/domain/childUsage';
 
 /** Actual pixel width of a container, so SVG text renders at its real size. */
 export function useMeasure() {
@@ -323,9 +324,16 @@ export function UsageRing({ used, limit, bonus = 0, size = 168 }) {
  * day, and a chart that throws takes the whole dashboard down with it — React
  * unmounts the tree and the parent gets a white page, not a missing card.
  */
-export function AppBars({ apps = [], limits = [] }) {
+export function AppBars({ apps = [], limits = [], totalMinutes = 0 }) {
   const { t: tr } = useT();
   const max = Math.max(...apps.map(a => a.minutes), ...limits.map(l => l.minutes), 1);
+  /*
+   * The day the eight rows cannot show — the server keeps eight per day and
+   * platforms drop sub-minute entries, so a busy day's rows sum to less than
+   * the headline. Same computation, same threshold and the same rounding
+   * caveat as the phone's row; `otherAppsMinutes` in core records all three.
+   */
+  const otherMinutes = otherAppsMinutes(totalMinutes, apps);
 
   if (apps.length === 0) {
     return <p className="empty">{tr('dash.appUsageEmpty')}</p>;
@@ -340,8 +348,14 @@ export function AppBars({ apps = [], limits = [] }) {
           <li key={a.packageName}>
             <div className="hbar-head">
               <span className="hbar-label">{a.label}</span>
+              {/*
+                Zero is a real row rather than a dropped one: `usageSnapshot`
+                ranks on seconds and rounds last, so an app worth forty seconds
+                arrives here as `0`. `0m` would say nothing happened, which is
+                the reading that had a parent asking where a minute went.
+              */}
               <span className={`hbar-value${over ? ' is-over' : ''}`}>
-                {formatMinutes(a.minutes)}
+                {a.minutes > 0 ? formatMinutes(a.minutes) : tr('dash.underAMinute')}
                 {cap && <em> / {formatMinutes(cap.minutes)}</em>}
               </span>
             </div>
@@ -361,6 +375,17 @@ export function AppBars({ apps = [], limits = [] }) {
           </li>
         );
       })}
+      {otherMinutes >= 1 && (
+        <li className="hbar-other">
+          <div className="hbar-head">
+            <span className="hbar-label">{tr('dash.topAppsOther')}</span>
+            <span className="hbar-value">{formatMinutes(otherMinutes)}</span>
+          </div>
+          {/* No bar on purpose: this is a fact about the day, not an app,
+              and a bar would invite comparing it against rows it is the
+              complement of. */}
+        </li>
+      )}
     </ul>
   );
 }
@@ -376,7 +401,16 @@ export function AppBars({ apps = [], limits = [] }) {
  * watching. See `usageTimeline.ts`.
  * ---------------------------------------------------------------- */
 
-const TIMELINE_TICKS = [0, 6, 12, 18, 24];
+/*
+ * Every third hour, and the phone's `UsageTimelineBand` draws the same nine.
+ * Six-hour gaps are wider than most of what the band marks, so a run that
+ * starts mid-afternoon lands between two labels with nothing to read it
+ * against. The `.sched-*` grid keeps its own quarters on purpose — a blocked
+ * window is set in whole hours and read as a shape, not off a tick.
+ */
+const TIMELINE_TICKS = [0, 3, 6, 9, 12, 15, 18, 21, 24];
+/** The gridlines, which are the labels minus the two the track's edges are. */
+const TIMELINE_GRID = TIMELINE_TICKS.slice(1, -1);
 const TIMELINE_CLASS = { used: 'tl-used', idle: 'tl-idle', unknown: 'tl-unknown' };
 
 /** `540` → `09:00`. The band's own labels, not a date format. */
@@ -425,7 +459,7 @@ export function UsageDayTimeline({ day, platform, capability }) {
       </div>
 
       <div className="tl-track">
-        {[6, 12, 18].map(h => (
+        {TIMELINE_GRID.map(h => (
           <i key={h} className="tl-tick" style={{ left: `${(h / 24) * 100}%` }} />
         ))}
         {runs.map(run => {

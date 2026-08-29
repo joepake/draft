@@ -1,7 +1,7 @@
 export const childSettings = {
   pageTitle: 'सेटिंग्स',
   statusUnlocked: 'अभिभावक पहुँच चालू',
-  statusLocked: 'अभिभावक PIN चाहिए',
+  statusLocked: 'Parent PIN चाहिए',
   preferencesSectionTitle: 'प्राथमिकताएँ',
   darkModeLabel: 'डार्क मोड',
   darkModeHint: 'रात में आँखों के लिए आरामदायक',
@@ -17,4 +17,7 @@ export const childSettings = {
   uninstallProtectionHintOff: 'बंद। इस फ़ोन से KidGate अनइंस्टॉल किया जा सकता है।',
   uninstallProtectionTurnedOff: 'अनइंस्टॉल सुरक्षा बंद है।',
   uninstallProtectionFailed: 'अनइंस्टॉल सुरक्षा नहीं बदली जा सकी।',
+  messageSafetySectionTitle: 'संदेश सुरक्षा',
+  messageSafetySectionDescription:
+    'अनुमति यहाँ दें। इसे चालू रखना है या नहीं, यह आपके माता-पिता अपने फ़ोन से तय करते हैं।',
 } as const;

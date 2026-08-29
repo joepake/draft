@@ -57,6 +57,24 @@ export interface Agent<T> {
   latest(): T | null;
   /** Consecutive failed cycles. Non-zero means enforcement is not happening. */
   failures(): number;
+  /**
+   * Run a cycle now, without waiting for the interval or disturbing it.
+   *
+   * For the moments that are known to have changed something the cycle
+   * reports — a policy landing from `controlsSync` is the one that exists —
+   * rather than for shortening the cadence, which is what `intervalMs` is for.
+   *
+   * Safe to call in a burst and safe to call while one is running: the overlap
+   * guard drops the second, and every consumer is already idempotent about an
+   * extra call because the backstop in `apps/desktop/src/nativeClock.ts`
+   * requires exactly that. `foregroundUsage` credits *elapsed* time, so a
+   * cycle moments after another credits nothing and double-counts nothing.
+   *
+   * Does not reset the interval. Re-phasing it would mean a device whose
+   * parent is actively changing settings quietly stops ticking at its own
+   * cadence, which is the opposite of what asking for a tick should do.
+   */
+  runNow(): void;
   subscribe(listener: () => void): () => void;
 }
 
@@ -77,7 +95,26 @@ export function createAgent<T>(options: AgentOptions<T>): Agent<T> {
   let handle: ReturnType<typeof setInterval> | null = null;
   let latest: T | null = null;
   let failures = 0;
-  let running = false;
+  /**
+   * The in-flight cycle: a token plus its start time, not a boolean.
+   *
+   * A boolean overlap guard assumes every cycle eventually settles, and a
+   * bridge call has no timeout — measured 2026-08-25 on the desktop's
+   * heartbeat (same latch shape), one await left hanging by a mid-request
+   * WebView suspension held the latch until the process died, and every later
+   * cycle bounced off it silently. The timestamp lets the loop abandon a hung
+   * cycle after `stuckMs`; the token keeps the abandoned cycle's `finally`
+   * from releasing the latch the replacement now holds.
+   */
+  let inFlight: symbol | null = null;
+  let inFlightSinceMs = 0;
+  /*
+   * Four intervals, floored at two minutes: long enough that a cycle merely
+   * slowed by load is never abandoned (two concurrent cycles would double-fold
+   * a sample), short enough that a genuinely hung loop admits it within
+   * minutes rather than never.
+   */
+  const stuckMs = Math.max(intervalMs * 4, 120_000);
   const listeners = new Set<() => void>();
 
   function notify() {
@@ -93,10 +130,21 @@ export function createAgent<T>(options: AgentOptions<T>): Agent<T> {
      * and two concurrent cycles both fold a sample into the usage state and
      * double-count the interval between them.
      */
-    if (running) {
-      return;
+    const nowMs = Date.now();
+    if (inFlight) {
+      if (nowMs - inFlightSinceMs < stuckMs) {
+        return;
+      }
+      // Hung, not slow. Counted as a failure so a status screen can admit
+      // the loop stalled, and surfaced so telemetry names the stuck await.
+      failures += 1;
+      options.onError?.(
+        new Error(`tick stuck for ${nowMs - inFlightSinceMs} ms; abandoning it`),
+      );
     }
-    running = true;
+    const token = Symbol('cycle');
+    inFlight = token;
+    inFlightSinceMs = nowMs;
     try {
       latest = await options.host.tick();
       failures = 0;
@@ -104,7 +152,9 @@ export function createAgent<T>(options: AgentOptions<T>): Agent<T> {
       failures += 1;
       options.onError?.(error);
     } finally {
-      running = false;
+      if (inFlight === token) {
+        inFlight = null;
+      }
       notify();
     }
   }
@@ -124,6 +174,14 @@ export function createAgent<T>(options: AgentOptions<T>): Agent<T> {
       if (handle !== null) {
         stop(handle);
         handle = null;
+      }
+    },
+
+    runNow() {
+      // Only while started. A cycle from a stopped agent would fold a
+      // foreground sample for a device that has been unpaired.
+      if (handle !== null) {
+        void cycle();
       }
     },
 

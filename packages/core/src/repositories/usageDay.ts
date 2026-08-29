@@ -2,7 +2,12 @@ import type { ClockPort } from '@kidgate/ports/clock';
 import type { FirestorePort, Unsubscribe } from '@kidgate/ports/firestore';
 import { usageDaysCollection } from '@kidgate/schema/paths';
 import type { IsoDate } from '@kidgate/schema/primitives';
-import type { UsageAppBreakdown, UsageDay } from '@kidgate/schema/usageDay';
+import {
+  USAGE_TOP_APPS_LIMIT,
+  type UsageAppBreakdown,
+  type UsageDay,
+} from '@kidgate/schema/usageDay';
+import { deleteAllInBatches } from '../domain/batchDelete';
 import { isTimeline } from '../domain/usageTimeline';
 
 /**
@@ -10,10 +15,6 @@ import { isTimeline } from '../domain/usageTimeline';
  */
 
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
-const MAX_TOP_APPS = 8;
-
-/** Order by document id — see `QueryField` in `@kidgate/ports/firestore`. */
-const DOCUMENT_ID = '__name__';
 
 function sanitizeTopApps(raw: unknown): UsageAppBreakdown[] {
   if (!Array.isArray(raw)) {
@@ -21,7 +22,7 @@ function sanitizeTopApps(raw: unknown): UsageAppBreakdown[] {
   }
 
   return raw
-    .slice(0, MAX_TOP_APPS)
+    .slice(0, USAGE_TOP_APPS_LIMIT)
     .map(entry => {
       if (!entry || typeof entry !== 'object') {
         return null;
@@ -61,6 +62,18 @@ function mapDoc(id: string, data: Record<string, unknown>): UsageDay {
      * `timelineAvailability` is what turns that distinction into copy.
      */
     ...(isTimeline(data.timeline) ? { timeline: data.timeline } : {}),
+    /*
+     * Absent for the same reason and with the same weight: a device that
+     * excludes nothing has no idle time to report, and zero would claim it
+     * looked and found none. The parent's list draws its row on a positive
+     * number, so absent and zero render alike today — they stop rendering alike
+     * the first time anything wants to say "the set was never left on".
+     */
+    ...(typeof data.idleMinutes === 'number' &&
+    Number.isFinite(data.idleMinutes) &&
+    data.idleMinutes >= 0
+      ? { idleMinutes: Math.floor(data.idleMinutes) }
+      : {}),
   };
 }
 
@@ -142,10 +155,20 @@ export function createUsageDayRepository(deps: UsageDayRepositoryDeps) {
           absorb(doc.id, (doc.data() ?? {}) as Record<string, unknown>);
         }
       } catch {
-        const snapshot = await db.getDocs(path, {
-          orderBy: [[DOCUMENT_ID, 'desc']],
-          limit: days,
-        });
+        /*
+         * No `orderBy`, and therefore no `limit`.
+         *
+         * This asked for the newest ids first, which is `orderBy('__name__',
+         * 'desc')` — and Firestore indexes the document id ascending only, so
+         * the fallback threw `failed-precondition` every time the primary read
+         * sent it here. Ordering by `date` is not the answer either: this path
+         * exists precisely for documents that have no `date` field.
+         *
+         * Reading the collection is affordable because retention bounds it —
+         * `cleanupUsageRetention` prunes `usageDays` after 30 days — and the
+         * `keySet` check below already discards everything outside the window.
+         */
+        const snapshot = await db.getDocs(path, {});
         for (const doc of snapshot.docs) {
           const data = (doc.data() ?? {}) as Record<string, unknown>;
           const dateKey =
@@ -199,6 +222,29 @@ export function createUsageDayRepository(deps: UsageDayRepositoryDeps) {
           onDay(mapDoc(date, (snapshot.data() ?? {}) as Record<string, unknown>));
         },
         onError,
+      );
+    },
+
+    /**
+     * Remove every day this device ever reported.
+     *
+     * **Part of the device-removal cascade, and it was missing.** These
+     * documents live *under* the device document — Firestore deletes no
+     * subcollection when its parent goes, so unpairing a television left the
+     * family's whole screen-time history behind: invisible to the device list,
+     * still billed for, still readable by anyone who reconstructs the path, and
+     * still feeding the parent's own Top Apps card. Reported from a living room
+     * on 2026-08-23, where a removed TV's report read `0p` beside a YouTube row
+     * of six minutes — the total came from the deleted device document and the
+     * row from these survivors.
+     */
+    async deleteForDevice(userId: string, deviceId: string): Promise<void> {
+      const path = usageDaysCollection(userId, deviceId);
+      const snapshot = await db.getDocs(path);
+      await deleteAllInBatches(
+        db,
+        path,
+        snapshot.docs.map(doc => doc.id),
       );
     },
   };

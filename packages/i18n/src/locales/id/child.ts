@@ -13,8 +13,7 @@ export const child = {
   limitReached: 'Batas tercapai',
   active: 'Aktif',
   parentPausedThisDevice: 'Orang tuamu mengunci perangkat ini untuk sementara.',
-  blockedHoursOnPaused:
-    'Sekarang sedang jam terblokir. Waktu yang pas untuk istirahat.',
+  blockedHoursOnPaused: 'Sekarang sedang Jam Diblokir. Waktu yang pas untuk istirahat.',
   outOfScreenTimeAskParent:
     'Waktu layar hari ini sudah habis. Kamu bisa meminta tambahan di bawah.',
   screenTimeToday: 'Waktu layar hari ini',
@@ -28,8 +27,7 @@ export const child = {
   pausedAskParentOrSos:
     'Minta orang tuamu membuka kunci saat kamu membutuhkannya. Dalam keadaan darurat, kamu tetap bisa mengirim SOS.',
   blockedHoursLockTitle: 'Jam Diblokir',
-  blockedHoursLockBody:
-    'Sekarang sedang jam terblokir. Waktu yang pas untuk istirahat.',
+  blockedHoursLockBody: 'Sekarang sedang Jam Diblokir. Waktu yang pas untuk istirahat.',
   blockedHoursLockHint:
     'Bicaralah dengan orang tuamu jika butuh waktu lebih. Dalam keadaan darurat, kamu tetap bisa mengirim SOS.',
   parentPausedAccess: 'Orang tuamu mengunci perangkat ini untuk sementara.',
@@ -45,6 +43,16 @@ export const child = {
   setupWizardRequired: 'Wajib',
   setupWizardOptional: 'Opsional',
   setupWizardSkip: 'Lewati dulu',
+  setupGrantStuckHint:
+    'Sudah diaktifkan tetapi tidak ada perubahan? Mulai ulang TV, lalu coba lagi.',
   setupWizardAllDoneTitle: 'Selesai!',
   setupWizardAllDoneSubtitle: 'Perangkat ini kini terlindungi.',
+  setupWizardStepDone: 'Selesai — yang itu sudah aktif.',
+  setupWizardCoreDoneTitle: 'Perlindungan inti aktif',
+  setupWizardCoreDoneBody:
+    'Izin yang wajib sudah diberikan dan perangkat ini terlindungi. Beberapa langkah opsional membuat perlindungan lebih sulit dimatikan oleh sistem.',
+  setupWizardCoreDoneContinue: 'Perkuat sekarang',
+  setupWizardCoreDoneLater: 'Selesaikan nanti',
+  setupWizardParentPinNote:
+    'Perlu PIN Orang Tua — orang tua memasukkannya di layar berikutnya.',
 } as const;

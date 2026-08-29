@@ -3,7 +3,7 @@ export const pairing = {
   shareInviteMessage:
     'Tritt unserer Familie in KidGate bei: Öffne die App, wähle Familie → Familie beitreten und gib den Code {{code}} ein. Der Code läuft in 15 Minuten ab.',
   shareChildCodeMessage:
-    'Verbinde dieses Kindergerät mit KidGate: Öffne auf dem Elterngerät KidGate → Geräte → + → Kindergerät, scanne dann den QR-Code oder gib den Code {{code}} ein. Der Code läuft in 5 Minuten ab.',
+    'Verbinde dieses Kindergerät mit KidGate: Öffne auf dem Elterngerät KidGate → Familie → Code scannen, scanne dann den QR-Code oder gib den Code {{code}} ein. Der Code läuft in 5 Minuten ab.',
   connectChildPhone: 'Ein Kindergerät verbinden',
   parentInstructions:
     'Öffne auf dem Kindergerät KidGate und wähle „Dies ist ein Kindergerät“. Gib dann den auf diesem Bildschirm angezeigten Code ein.',
@@ -13,12 +13,21 @@ export const pairing = {
     'Bitte lasse diesen Bildschirm geöffnet. Ein Elternteil verbindet dieses Gerät über die eigene KidGate-App.',
   childCodeLabel: 'Oder teile diesen Code',
   childScanHint:
-    'Elternteil: Öffne KidGate → Geräte → + → Kindergerät → scanne den QR-Code oder gib den Code ein.',
+    'Elternteil: Öffne KidGate → Familie → {{scan}} → scanne den QR-Code oder gib den Code ein.',
   childConnecting: 'Verbunden. Dieses Gerät wird eingerichtet…',
   childPairedTitle: 'Du bist verbunden',
   childPairedSubtitle: 'Dieses Gerät wird eingerichtet…',
   connectChild: 'Kindergerät verbinden',
   waitingChildConfirm: 'Anfrage gesendet. Warten auf Bestätigung auf dem Kindergerät.',
+  waitingChildConfirmHint:
+    'Tippe auf dem Kindergerät auf „Ja, verbinden“, um abzuschließen. Du kannst dies schließen — die Kopplung läuft im Hintergrund weiter.',
+  childConfirmedTitle: 'Gerät verbunden',
+  childConfirmedBody:
+    'Das Kindergerät hat die Kopplung bestätigt. Wähle als Nächstes, wer es nutzt.',
+  childRejectedPairing:
+    'Das Kindergerät hat diese Kopplung abgelehnt. Hole dir dort einen neuen Code und versuche es erneut.',
+  childConfirmExpired:
+    'Das Kindergerät hat nicht rechtzeitig bestätigt. Lass dir dort einen neuen Code anzeigen und versuche es erneut.',
   confirmParentTitle: 'Diesen Elternteil bestätigen?',
   confirmParentSubtitle:
     '{{parentLabel}} möchte dieses Gerät verwalten. Akzeptiere nur, wenn du diese Person kennst.',
@@ -57,7 +66,7 @@ export const pairing = {
   parentJoinDecline: 'Ablehnen',
   parentJoinRejected: 'Der Familieninhaber hat deine Anfrage abgelehnt.',
   parentJoinExpired:
-    'Die Genehmigungsanfrage ist abgelaufen. Bitte bitte um eine neue Einladung.',
+    'Die Genehmigungsanfrage ist abgelaufen. Bitte um eine neue Einladung.',
   unableToResolveParentJoin: 'Diese Anfrage konnte nicht bearbeitet werden.',
   joinedFamily:
     'Du bist der Familie beigetreten. Die Kindergeräte der Familie erscheinen jetzt hier.',

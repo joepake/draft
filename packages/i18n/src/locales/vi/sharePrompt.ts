@@ -8,7 +8,6 @@ export const sharePrompt = {
   laterButton: 'Để sau',
   shareMessage:
     'Mình đang dùng KidGate để bảo vệ con trên mạng: chặn web người lớn, giới hạn giờ dùng máy và xem vị trí của con. Bạn dùng thử nhé: {{link}}',
-  settingsSectionTitle: 'Ủng hộ KidGate',
   settingsShareTitle: 'Chia sẻ KidGate',
   settingsShareSubtitle: 'Giới thiệu cho phụ huynh khác',
   settingsRateTitle: 'Đánh giá ứng dụng',

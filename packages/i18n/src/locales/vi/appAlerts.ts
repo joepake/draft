@@ -16,4 +16,6 @@ export const appAlerts = {
   infoLine3:
     'Xem danh sách tại đây, sau đó chặn các ứng dụng rủi ro trong mục Chặn ứng dụng.',
   recentTitle: 'Thay đổi gần đây',
+  statInstalled: 'Đã cài đặt',
+  statRemoved: 'Đã gỡ bỏ',
 } as const;

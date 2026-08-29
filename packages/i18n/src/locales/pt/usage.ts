@@ -51,6 +51,10 @@ export const usage = {
   overLimitChip: 'Acima do limite',
   usageReportsNote:
     'Mostra o tempo de tela, os bloqueios e a atividade recente deste dispositivo.',
+  syncNote:
+    'O tempo de uso pode levar alguns minutos para aparecer nesta tela — mais tempo se o dispositivo não tiver conexão com a internet ou tiver sido fechado inesperadamente.',
+  syncNoteTv:
+    'Esta TV só se conecta periodicamente, então o tempo de uso pode levar até 30 minutos para aparecer nesta tela — mais tempo sem conexão com a internet.',
   sectionLast30Days: 'Últimos 30 dias',
   comparePeriodTotal: 'Total de 30 dias',
   compareDayAvg: 'Média diária',
@@ -65,13 +69,22 @@ export const usage = {
   sectionTopApps: 'Apps mais usados',
   topAppsHint:
     'Apps mais usados hoje no dispositivo da criança. Os dados se acumulam conforme o Tempo de tela / Acesso de uso sincroniza.',
+  topAppsExcludedNote:
+    'A proteção de tela, a tela inicial e a própria tela do KidGate não contam como tempo de uso. Quando o dispositivo está ligado mas ninguém está usando, esses minutos são registrados como “Sem uso”.',
+  topAppsAiNote:
+    'Alguns tipos foram deduzidos do nome do app em vez de corresponderem a um app conhecido, então alguns podem estar errados.',
   errorTitle: 'Não foi possível carregar o uso',
   errorDescription: 'Verifique sua conexão e tente novamente.',
   tryAgain: 'Tentar novamente',
+  // Shown only when the rating is known — it is 0 for much of the long
+  // tail, and 0 does not mean "suitable for everyone".
+  appMinAge: 'Classificado {{age}}+',
+  underAMinute: 'Menos de um minuto',
+  topAppsOther: 'Outros apps',
   topAppsEmpty:
     'Ainda não há dados por app. No dispositivo da criança, confirme que o KidGate pode medir o uso de apps e aguarde uma sincronização.',
   protectionImpactTitle: 'Impacto da proteção',
-  protectionImpactHint: 'Eventos recentes que o KidGate impediu neste aparelho.',
+  protectionImpactHint: 'Eventos recentes que o KidGate impediu neste dispositivo.',
   protectionBlockedApps: 'Aberturas de apps bloqueadas',
   protectionWebBlocked: 'Sites bloqueados',
   protectionTamper: 'Alertas de proteção',
