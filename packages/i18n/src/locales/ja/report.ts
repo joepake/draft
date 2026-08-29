@@ -79,6 +79,9 @@ export const report = {
   copySummary: '要約をコピー',
   copied: '要約をコピーしました。',
   shareFailed: '共有メニューを開けませんでした。',
+  shareFooterDesc:
+    'KidGateは保護者がスクリーンタイム、位置情報、メッセージを確認できるようにします。',
+  shareFooterCta: 'kidgate.app/get でアプリを入手',
 
   emptyTitle: 'まだレポートがありません',
   emptyBody:

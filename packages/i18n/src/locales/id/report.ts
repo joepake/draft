@@ -74,6 +74,8 @@ export const report = {
   copySummary: 'Salin ringkasan',
   copied: 'Ringkasan disalin.',
   shareFailed: 'Tidak bisa membuka menu berbagi.',
+  shareFooterDesc: 'KidGate membantu orang tua melihat waktu layar, lokasi, dan pesan.',
+  shareFooterCta: 'Unduh aplikasinya di kidgate.app/get',
 
   emptyTitle: 'Belum ada laporan',
   emptyBody:

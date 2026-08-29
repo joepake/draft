@@ -87,6 +87,9 @@ export const report = {
   copySummary: 'Скопировать сводку',
   copied: 'Сводка скопирована.',
   shareFailed: 'Не удалось открыть меню «Поделиться».',
+  shareFooterDesc:
+    'KidGate помогает родителям видеть экранное время, местоположение и сообщения.',
+  shareFooterCta: 'Скачайте приложение на kidgate.app/get',
 
   emptyTitle: 'Отчёта пока нет',
   emptyBody:

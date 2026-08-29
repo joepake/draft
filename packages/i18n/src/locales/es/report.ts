@@ -84,6 +84,9 @@ export const report = {
   copySummary: 'Copiar resumen',
   copied: 'Resumen copiado.',
   shareFailed: 'No se pudo abrir el menú de compartir.',
+  shareFooterDesc:
+    'KidGate ayuda a los padres a ver el tiempo de pantalla, la ubicación y los mensajes.',
+  shareFooterCta: 'Descarga la app en kidgate.app/get',
 
   emptyTitle: 'Todavía no hay informe',
   emptyBody:

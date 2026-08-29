@@ -71,6 +71,9 @@ export const report = {
   copySummary: 'Özeti kopyala',
   copied: 'Özet kopyalandı.',
   shareFailed: 'Paylaşım menüsü açılamadı.',
+  shareFooterDesc:
+    'KidGate, ebeveynlerin ekran süresini, konumu ve mesajları görmesine yardımcı olur.',
+  shareFooterCta: 'Uygulamayı kidgate.app/get adresinden indirin',
 
   emptyTitle: 'Henüz rapor yok',
   emptyBody:

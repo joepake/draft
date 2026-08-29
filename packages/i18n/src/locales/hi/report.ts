@@ -76,6 +76,9 @@ export const report = {
   copySummary: 'सारांश कॉपी करें',
   copied: 'सारांश कॉपी हो गया।',
   shareFailed: 'साझा करने का मेन्यू नहीं खुल सका।',
+  shareFooterDesc:
+    'KidGate माता-पिता को स्क्रीन टाइम, लोकेशन और मैसेज देखने में मदद करता है।',
+  shareFooterCta: 'kidgate.app/get से ऐप पाएं',
 
   emptyTitle: 'अभी कोई रिपोर्ट नहीं',
   emptyBody:

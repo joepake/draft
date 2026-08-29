@@ -70,6 +70,9 @@ export const report = {
   copySummary: 'Sao chép tóm tắt',
   copied: 'Đã sao chép tóm tắt.',
   shareFailed: 'Không mở được bảng chia sẻ.',
+  shareFooterDesc:
+    'KidGate giúp cha mẹ theo dõi thời gian dùng máy, vị trí và tin nhắn.',
+  shareFooterCta: 'Tải app tại kidgate.app/get',
 
   emptyTitle: 'Chưa có báo cáo',
   emptyBody:

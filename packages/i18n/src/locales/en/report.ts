@@ -108,6 +108,8 @@ export const report = {
   copySummary: 'Copy summary',
   copied: 'Summary copied.',
   shareFailed: 'Could not open the share sheet.',
+  shareFooterDesc: 'KidGate helps parents see screen time, location, and messages.',
+  shareFooterCta: 'Get the app at kidgate.app/get',
 
   emptyTitle: 'No report yet',
   emptyBody:

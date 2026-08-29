@@ -76,6 +76,9 @@ export const report = {
   copySummary: '요약 복사',
   copied: '요약을 복사했습니다.',
   shareFailed: '공유 메뉴를 열지 못했습니다.',
+  shareFooterDesc:
+    'KidGate는 부모가 사용 시간, 위치, 메시지를 확인할 수 있도록 돕습니다.',
+  shareFooterCta: 'kidgate.app/get 에서 앱 받기',
 
   emptyTitle: '아직 리포트가 없습니다',
   emptyBody:

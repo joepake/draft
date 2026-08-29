@@ -62,8 +62,7 @@ export default function Get() {
   return (
     <div className="get-redirect">
       <p>
-        {t('common.comingSoon')} —{' '}
-        <a href="/#download">{t('footer.download')}</a>
+        {t('common.comingSoon')} — <a href="/#download">{t('footer.download')}</a>
       </p>
     </div>
   );

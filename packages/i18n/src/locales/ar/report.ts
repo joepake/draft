@@ -106,6 +106,8 @@ export const report = {
   copySummary: 'نسخ الملخص',
   copied: 'تم نسخ الملخص.',
   shareFailed: 'تعذّر فتح قائمة المشاركة.',
+  shareFooterDesc: 'يساعد KidGate الوالدين على معرفة وقت الشاشة والموقع والرسائل.',
+  shareFooterCta: 'احصل على التطبيق من kidgate.app/get',
 
   emptyTitle: 'لا يوجد تقرير بعد',
   emptyBody:

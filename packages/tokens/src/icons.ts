@@ -281,10 +281,17 @@ export const ICONS = {
     },
     { kind: 'path', d: 'M11 18h2', strokeWidth: PHONE_STROKE_WIDTH },
     {
+      // `APPLE_PATH` pre-scaled and re-centred onto the phone shell's
+      // screen (translate(5.14 3.69) scale(0.56)), rather than carried at
+      // runtime via the `transform` prop — react-native-svg 15.15.5 under
+      // Fabric was silently dropping that prop on a filled `<Path>`, which
+      // is why this mark had gone missing from the device list while the
+      // untransformed `androidPhone` glyph beside it kept drawing fine.
+      // Regenerate with the same affine (never hand-edit) if `APPLE_PATH`
+      // or this glyph's placement changes.
       kind: 'path',
-      d: APPLE_PATH,
+      d: 'M14.307 10.578c0-1.064.868-1.574.907-1.602-.493-.722-1.266-.823-1.54-.834-.655-.067-1.277.386-1.607.386-.33 0-.846-.375-1.389-.364-.717.011-1.378.414-1.742 1.053-.745 1.288-.19 3.192.532 4.234.353.51.773 1.081 1.322 1.058.532-.022.734-.342 1.378-.342.638 0 .823.342 1.383.33.571-.011.935-.521 1.282-1.03.403-.588.571-1.159.582-1.187-.011-.006-1.109-.426-1.12-1.702zM13.35 7.218c.291-.353.487-.84.431-1.327-.42.017-.93.28-1.226.633-.269.314-.504.812-.442 1.294.465.034.946-.235 1.238-.599z',
       filled: true,
-      transform: 'translate(5.14 3.69) scale(0.56)',
     },
   ],
   /**
@@ -330,10 +337,12 @@ export const ICONS = {
     },
     { kind: 'path', d: 'M10.5 19.4h3', strokeWidth: PHONE_STROKE_WIDTH },
     {
+      // Pre-transformed, same reason as `iphone`'s apple above
+      // (translate(1.47 0.6) scale(0.86)) — `transform` on a filled `<Path>`
+      // was a no-op under Fabric.
       kind: 'path',
-      d: APPLE_PATH,
+      d: 'M15.548 11.178c0-1.634 1.333-2.417 1.393-2.46-.757-1.109-1.944-1.264-2.365-1.281-1.006-.103-1.961.593-2.468.593-.507 0-1.299-.576-2.133-.559-1.101.017-2.116.636-2.675 1.617-1.144 1.978-.292 4.902.817 6.502.542.783 1.187 1.66 2.03 1.625.817-.034 1.127-.525 2.116-.525.98 0 1.264.525 2.124.507.877-.017 1.436-.8 1.969-1.582.619-.903.877-1.78.894-1.823-.017-.009-1.703-.654-1.72-2.614zM14.078 6.018c.447-.542.748-1.29.662-2.038-.645.026-1.428.43-1.883.972-.413.482-.774 1.247-.679 1.987.714.052 1.453-.361 1.901-.92z',
       filled: true,
-      transform: 'translate(1.47 0.6) scale(0.86)',
     },
   ],
   androidTablet: [
@@ -379,10 +388,12 @@ export const ICONS = {
     { kind: 'rect', x: 3, y: 4, width: 18, height: 12, rx: 2 },
     { kind: 'path', d: 'M2 20h20' },
     {
+      // Pre-transformed, same reason as `iphone`'s apple above
+      // (translate(6.73 5) scale(0.43)) — `transform` on a filled `<Path>`
+      // was a no-op under Fabric.
       kind: 'path',
-      d: APPLE_PATH,
+      d: 'M13.769 10.289c0-.817.667-1.208.697-1.23-.378-.555-.972-.632-1.182-.641-.503-.052-.98.297-1.234.297-.254 0-.649-.288-1.066-.279-.55.009-1.058.318-1.337.808-.572.989-.146 2.451.409 3.251.271.391.593.83 1.015.813.409-.017.563-.262 1.058-.262.49 0 .632.262 1.062.254.439-.009.718-.4.985-.791.31-.451.439-.89.447-.912-.009-.004-.851-.327-.86-1.307zM13.034 7.709c.224-.271.374-.645.331-1.019-.322.013-.714.215-.942.486-.206.241-.387.624-.34.993.357.026.727-.181.95-.46z',
       filled: true,
-      transform: 'translate(6.73 5) scale(0.43)',
     },
   ],
   windows: [
