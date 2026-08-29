@@ -1013,7 +1013,9 @@ __metadata:
   dependencies:
     "@kidgate/ports": "workspace:*"
     "@kidgate/schema": "workspace:*"
+    "@types/qrcode": "npm:^1.5.5"
     firebase: "npm:^12.17.1"
+    qrcode: "npm:^1.5.4"
   languageName: unknown
   linkType: soft
 
@@ -1400,12 +1402,30 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/node@npm:*":
+  version: 26.4.0
+  resolution: "@types/node@npm:26.4.0"
+  dependencies:
+    undici-types: "npm:~8.3.0"
+  checksum: 10c0/e6fc94ea3b58fb8040b38c465dec1c53c1fd9d2c092c81f699d28799726baf59f12e1600318e79e8e6f985bb919dab6ae820180b942b8e38c51acaad63e8aada
+  languageName: node
+  linkType: hard
+
 "@types/node@npm:>=12.12.47, @types/node@npm:>=13.7.0":
   version: 26.2.0
   resolution: "@types/node@npm:26.2.0"
   dependencies:
     undici-types: "npm:~8.3.0"
   checksum: 10c0/f8566d88162241eb55a46f7e4ea097188eab0aaafefea7a58e63adab8c4144eb98c08b7911452c846104c339a0f82282f5e1ed4b26b578d60709614fe2843f4d
+  languageName: node
+  linkType: hard
+
+"@types/qrcode@npm:^1.5.5":
+  version: 1.5.6
+  resolution: "@types/qrcode@npm:1.5.6"
+  dependencies:
+    "@types/node": "npm:*"
+  checksum: 10c0/84844ca63e5f32bc47d44dda0f8a6f7cdcc7ce44e7b24f10f19d50796f31d12c058f702a8f7d352c9e82a023a9abc36fa1ad01ddf0a209dd8ed4562ea76481fc
   languageName: node
   linkType: hard
 
