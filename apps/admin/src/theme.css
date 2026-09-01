@@ -1,0 +1,968 @@
+/**
+ * The operator console's look, in one file.
+ *
+ * Hand-written CSS custom properties, no `@kidgate/tokens`, no
+ * `@kidgate/web-ui` — either would be this app's first `@kidgate/*`
+ * dependency, which `functions/admin`'s rule 2b calls "a decision, not a
+ * convenience". This file is the version of that decision that costs nothing
+ * to reverse.
+ *
+ * ## Where the chart colours come from
+ *
+ * The sparkline hue and the four status colours are the data-viz reference
+ * palette, not invented here. Two rules from it bind this file:
+ *
+ * - **Text never wears the data colour.** `--series` paints marks (the
+ *   sparkline stroke, the status dot); labels and values stay in
+ *   `--text-*`. A light hue is illegible as text on this surface.
+ * - **`--status-warning` measures 1.83:1 on white** — below the 3:1 floor, as
+ *   the reference palette documents. The mitigation is that a status colour
+ *   never carries meaning alone: every use pairs a coloured dot with a word.
+ *   Never render warning text *in* that colour.
+ *
+ * Desktop only, on purpose: no `@media` breakpoints, because this runs on
+ * `127.0.0.1` on whatever machine the operator sits at, never on a phone.
+ */
+
+:root {
+  /* Chrome ---------------------------------------------------------------- */
+  --plane: #f6f7f9;
+  --surface: #ffffff;
+  --sidebar: #0f1729;
+  --sidebar-hover: #1c2740;
+  --sidebar-text: #94a3b8;
+  --sidebar-text-strong: #f8fafc;
+
+  --border: #e3e8ef;
+  --border-soft: #eef1f5;
+
+  --text: #0f172a;
+  --text-secondary: #4a5568;
+  --text-muted: #8792a6;
+
+  /* Data-viz palette ------------------------------------------------------ */
+  --series: #2a78d6;
+  --series-soft: #b7d3f6;
+  --status-good: #0ca30c;
+  --status-warning: #fab219;
+  --status-serious: #ec835a;
+  --status-critical: #d03b3b;
+
+  /* Ink for status *text* — the dot wears the status hue, the words do not. */
+  --danger-ink: #b42318;
+  --danger-plane: #fef3f2;
+  --danger-border: #fecdca;
+
+  --radius: 10px;
+  --radius-sm: 7px;
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.05);
+  --shadow-lg: 0 1px 3px rgba(15, 23, 42, 0.06), 0 8px 24px -6px rgba(15, 23, 42, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  background: var(--plane);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ===== full-page states: loading, sign-in, refusal ======================== */
+
+.auth-shell {
+  align-items: center;
+  background: var(--plane);
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 24px;
+}
+
+.auth-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow-lg);
+  max-width: 372px;
+  padding: 32px;
+  width: 100%;
+}
+
+.auth-title {
+  font-size: 19px;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  margin: 0 0 4px;
+}
+
+.auth-sub {
+  color: var(--text-muted);
+  font-size: 13px;
+  margin: 0 0 24px;
+}
+
+.brand-mark {
+  align-items: center;
+  background: var(--sidebar);
+  border-radius: 9px;
+  color: #fff;
+  display: flex;
+  flex-shrink: 0;
+  font-size: 13px;
+  font-weight: 700;
+  height: 34px;
+  justify-content: center;
+  letter-spacing: -0.02em;
+  width: 34px;
+}
+
+.page-loading {
+  align-items: center;
+  color: var(--text-muted);
+  display: flex;
+  font-size: 14px;
+  height: 100vh;
+  justify-content: center;
+  margin: 0;
+}
+
+/* ===== shell ============================================================= */
+
+.shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  background: var(--sidebar);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  padding: 18px 14px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 228px;
+}
+
+.sidebar-brand {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  padding: 4px 8px 22px;
+}
+
+.sidebar-brand-name {
+  color: var(--sidebar-text-strong);
+  font-size: 14px;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.sidebar-brand-sub {
+  color: var(--sidebar-text);
+  font-size: 11.5px;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.nav-link {
+  align-items: center;
+  border-radius: var(--radius-sm);
+  color: var(--sidebar-text);
+  display: flex;
+  font-size: 13px;
+  font-weight: 500;
+  gap: 10px;
+  padding: 8px 10px;
+  text-decoration: none;
+  transition:
+    background-color 0.12s ease,
+    color 0.12s ease;
+}
+
+.nav-link:hover {
+  background: var(--sidebar-hover);
+  color: var(--sidebar-text-strong);
+}
+
+.nav-link.is-active {
+  background: var(--sidebar-hover);
+  color: var(--sidebar-text-strong);
+  font-weight: 600;
+}
+
+.nav-link.is-active .nav-icon {
+  opacity: 1;
+}
+
+.nav-icon {
+  flex-shrink: 0;
+  opacity: 0.75;
+}
+
+.sidebar-foot {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin-top: auto;
+  padding-top: 14px;
+}
+
+.sidebar-user {
+  color: var(--sidebar-text);
+  font-size: 11.5px;
+  overflow: hidden;
+  padding: 0 10px 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.main {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ===== topbar ============================================================ */
+
+.topbar {
+  align-items: center;
+  background: rgba(246, 247, 249, 0.85);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  padding: 0 32px;
+  height: 60px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.topbar-title {
+  font-size: 16px;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.content {
+  margin: 0 auto;
+  max-width: 1160px;
+  padding: 26px 32px 72px;
+}
+
+.section {
+  margin-bottom: 34px;
+  scroll-margin-top: 76px;
+}
+
+.section-head {
+  align-items: baseline;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  margin: 0;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ===== status strip ====================================================== */
+
+.status-strip {
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding: 13px 16px;
+}
+
+/*
+ * The dot carries the hue; the words carry the meaning. Never one without the
+ * other — `--status-warning` is below the 3:1 contrast floor on this surface,
+ * so colour alone would be unreadable for some operators and invisible in
+ * forced-colors mode.
+ */
+.status-dot {
+  border-radius: 50%;
+  flex-shrink: 0;
+  height: 9px;
+  width: 9px;
+}
+
+.status-dot.is-good {
+  background: var(--status-good);
+}
+
+.status-dot.is-warning {
+  background: var(--status-warning);
+}
+
+.status-dot.is-critical {
+  background: var(--status-critical);
+}
+
+.status-label {
+  font-size: 13.5px;
+  font-weight: 600;
+}
+
+.status-detail {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+/* ===== stat tiles ======================================================== */
+
+/*
+ * `auto-fill`, never `auto-fit`. `auto-fit` collapses the empty tracks, so a
+ * row of two tiles stretches each to half the content width and a big number
+ * floats in a field of nothing — the exact complaint that started this
+ * redesign. `auto-fill` keeps the empty tracks, so tiles stay tile-sized
+ * however few there are.
+ */
+.tile-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+}
+
+/* Scale tiles take the room; the plan mix sits beside them, not below. */
+.report-top {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: minmax(0, 3fr) minmax(224px, 1fr);
+  margin-bottom: 24px;
+}
+
+/* ===== plan mix ========================================================== */
+
+/*
+ * Deliberately NOT a stacked bar, and not four more tiles.
+ *
+ * A stacked bar asserts parts-of-a-whole, and these parts do not make a whole:
+ * `familiesTrialWindow` **overlaps** the plan counts rather than adding to them
+ * (a family in its trial usually carries `planId: free`), so any figure that
+ * sums them into one bar would be quietly wrong. The rule the divider draws is
+ * the honest one — three counts that do sum to Families, then the overlapping
+ * measure below the line, labelled as such.
+ */
+.plan-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding: 15px 18px;
+}
+
+.plan-row {
+  align-items: baseline;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  padding: 5px 0;
+}
+
+.plan-name {
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+.plan-value {
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 650;
+}
+
+.plan-divider {
+  border-top: 1px solid var(--border-soft);
+  margin: 8px 0 4px;
+}
+
+/*
+ * A column with the trend pinned to the bottom. The grid stretches every tile
+ * to the tallest thing in its row (the plan card), so without this the
+ * sparkline floats mid-tile with dead space under it and the tile reads as
+ * under-filled rather than deliberate.
+ */
+.tile {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  padding: 15px 16px 13px;
+}
+
+.tile-label {
+  align-items: center;
+  color: var(--text-muted);
+  display: flex;
+  font-size: 12px;
+  font-weight: 500;
+  gap: 4px;
+  margin-bottom: 6px;
+}
+
+/*
+ * Proportional figures on purpose. `tabular-nums` gives every digit the width
+ * of a zero, which makes a standalone number like 121 look loose at display
+ * sizes; it is reserved for the table below, where columns must align.
+ */
+.tile-value {
+  font-size: 25px;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.tile-spark {
+  margin-top: auto;
+  padding-top: 10px;
+}
+
+/* ===== metric rows ======================================================= */
+
+.metric-list {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.metric-row {
+  align-items: center;
+  border-bottom: 1px solid var(--border-soft);
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr 92px 168px 92px;
+  padding: 9px 16px;
+}
+
+.metric-row:last-child {
+  border-bottom: 0;
+}
+
+.metric-row:hover {
+  background: #fafbfc;
+}
+
+.metric-name {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.metric-num {
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.metric-num.is-total {
+  color: var(--text-muted);
+}
+
+.metric-head {
+  align-items: center;
+  background: #fbfcfd;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-muted);
+  display: grid;
+  font-size: 11px;
+  font-weight: 600;
+  gap: 16px;
+  grid-template-columns: 1fr 92px 168px 92px;
+  letter-spacing: 0.03em;
+  padding: 8px 16px;
+  text-transform: uppercase;
+}
+
+.metric-head span:not(:first-child) {
+  text-align: right;
+}
+
+.metric-head span:nth-child(3) {
+  text-align: left;
+}
+
+/* ===== primitives ======================================================== */
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding: 18px;
+}
+
+.muted {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.error-banner {
+  align-items: flex-start;
+  background: var(--danger-plane);
+  border: 1px solid var(--danger-border);
+  border-radius: var(--radius-sm);
+  color: var(--danger-ink);
+  display: flex;
+  font-size: 13px;
+  gap: 8px;
+  padding: 11px 14px;
+}
+
+.mark {
+  color: var(--text-muted);
+  font-size: 10px;
+  margin-left: 1px;
+}
+
+.btn {
+  align-items: center;
+  background: var(--sidebar);
+  border: 1px solid var(--sidebar);
+  border-radius: var(--radius-sm);
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 550;
+  gap: 6px;
+  justify-content: center;
+  padding: 8px 15px;
+  transition: opacity 0.12s ease;
+}
+
+.btn:hover:not(:disabled) {
+  opacity: 0.86;
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.btn-ghost {
+  background: var(--surface);
+  border-color: var(--border);
+  color: var(--text);
+}
+
+.btn-ghost:hover:not(:disabled) {
+  background: var(--plane);
+  opacity: 1;
+}
+
+.btn-sidebar {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.14);
+  color: var(--sidebar-text);
+  font-size: 12.5px;
+  padding: 7px 12px;
+  width: 100%;
+}
+
+.btn-sidebar:hover:not(:disabled) {
+  background: var(--sidebar-hover);
+  color: var(--sidebar-text-strong);
+  opacity: 1;
+}
+
+/* Segmented range control — one row, above the charts. */
+.segmented {
+  background: var(--plane);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  gap: 2px;
+  padding: 2px;
+}
+
+.segmented button {
+  background: transparent;
+  border: 0;
+  border-radius: 5px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 550;
+  padding: 5px 11px;
+  transition: background-color 0.12s ease;
+}
+
+.segmented button:hover:not(:disabled) {
+  background: rgba(15, 23, 42, 0.05);
+}
+
+.segmented button.is-active {
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  color: var(--text);
+}
+
+.field-group {
+  margin-bottom: 12px;
+}
+
+.field-label {
+  color: var(--text-secondary);
+  display: block;
+  font-size: 12.5px;
+  font-weight: 550;
+  margin-bottom: 5px;
+}
+
+.field {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  display: block;
+  font-family: inherit;
+  font-size: 13px;
+  padding: 9px 11px;
+  transition:
+    border-color 0.12s ease,
+    box-shadow 0.12s ease;
+  width: 100%;
+}
+
+.field:focus {
+  border-color: var(--series);
+  box-shadow: 0 0 0 3px rgba(42, 120, 214, 0.12);
+  outline: none;
+}
+
+.field-hint {
+  color: var(--text-muted);
+  font-size: 11.5px;
+  margin-top: 4px;
+}
+
+.code-block {
+  background: #0f1729;
+  border-radius: var(--radius-sm);
+  color: #cbd5e1;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px;
+  line-height: 1.6;
+  margin: 0;
+  overflow-x: auto;
+  padding: 14px;
+}
+
+.footnotes {
+  border-top: 1px solid var(--border-soft);
+  margin-top: 16px;
+  padding-top: 14px;
+}
+
+.footnotes p {
+  color: var(--text-muted);
+  font-size: 12px;
+  line-height: 1.6;
+  margin: 0 0 8px;
+}
+
+.footnotes p:last-child {
+  margin-bottom: 0;
+}
+
+.footnotes code {
+  background: var(--plane);
+  border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  padding: 1px 4px;
+}
+
+/* ===== support queue ===================================================== */
+
+.ticket {
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.ticket:last-child {
+  border-bottom: 0;
+}
+
+.ticket-head {
+  align-items: center;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  display: grid;
+  font-family: inherit;
+  gap: 12px;
+  grid-template-columns: 9px 74px 1fr auto;
+  padding: 11px 16px;
+  text-align: left;
+  width: 100%;
+}
+
+.ticket-head:hover {
+  background: #fafbfc;
+}
+
+.ticket-status {
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.ticket-summary {
+  color: var(--text);
+  font-size: 13px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ticket-when {
+  color: var(--text-muted);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.ticket-detail {
+  border-top: 1px solid var(--border-soft);
+  padding: 16px;
+}
+
+/* The parent's own words. Whitespace preserved — they typed line breaks. */
+.ticket-message {
+  font-size: 13.5px;
+  line-height: 1.6;
+  margin: 0 0 12px;
+  white-space: pre-wrap;
+}
+
+.ticket-account {
+  background: var(--plane);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-sm);
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  margin-bottom: 14px;
+  padding: 12px 14px;
+}
+
+.account-line {
+  font-size: 12.5px;
+  line-height: 1.5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ticket-meta {
+  color: var(--text-muted);
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 12px;
+  gap: 14px;
+}
+
+.ticket-shots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+/* Holds the row's height while the bytes are in flight, so opening a ticket
+   does not jump when each screenshot lands. */
+.shot-loading {
+  background: var(--plane);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  display: block;
+  height: 148px;
+  width: 96px;
+}
+
+.ticket-shots img {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  display: block;
+  height: 148px;
+  object-fit: cover;
+  width: auto;
+}
+
+.ticket-reply {
+  background: var(--plane);
+  border-left: 2px solid var(--series);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 13px;
+  line-height: 1.6;
+  margin-top: 14px;
+  padding: 10px 14px;
+  white-space: pre-wrap;
+}
+
+/* ===== bar chart ========================================================= */
+
+.bar-row {
+  align-items: center;
+  display: grid;
+  gap: 10px;
+}
+
+.bar-label {
+  color: var(--text-secondary);
+  font-size: 12px;
+  overflow: hidden;
+  text-align: right;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bar-track {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+}
+
+/*
+ * Square where it meets the baseline, rounded at the data end — the shape says
+ * which end is the measurement and which end is zero.
+ */
+.bar-fill {
+  background: var(--series);
+  border-radius: 0 4px 4px 0;
+  flex-shrink: 0;
+}
+
+.bar-value {
+  color: var(--text);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.bar-share {
+  color: var(--text-muted);
+}
+
+/* Two or three charts side by side, each in its own card. */
+.chart-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+}
+
+.chart-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding: 16px 18px 14px;
+}
+
+.chart-title {
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0 0 2px;
+}
+
+.chart-sub {
+  color: var(--text-muted);
+  font-size: 11.5px;
+  margin: 0 0 12px;
+}
+
+/* ===== raw table ========================================================= */
+
+.table-scroll {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow-x: auto;
+}
+
+.table {
+  border-collapse: collapse;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  width: 100%;
+  white-space: nowrap;
+}
+
+.table th {
+  background: #fbfcfd;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 8px 12px;
+  position: sticky;
+  text-align: right;
+  top: 0;
+}
+
+.table th:first-child,
+.table td:first-child {
+  text-align: left;
+}
+
+.table td {
+  border-bottom: 1px solid var(--border-soft);
+  padding: 6px 12px;
+  text-align: right;
+}
+
+.table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.table tbody tr:hover {
+  background: #fafbfc;
+}
+
+.table tr.is-gap {
+  color: var(--text-muted);
+}
+
+.disclosure {
+  background: none;
+  border: 0;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 550;
+  padding: 0;
+}
+
+.disclosure:hover {
+  color: var(--text);
+}
