@@ -41,7 +41,11 @@ import {
   type AppCategory,
   type AppCategoryEntry,
 } from '@kidgate/schema/aiApps';
-import type { AppInventory, InventoryApp } from '@kidgate/schema/appInventory';
+import {
+  isBrowserExtensionId,
+  type AppInventory,
+  type InventoryApp,
+} from '@kidgate/schema/appInventory';
 
 /**
  * Past this the inventory is stale enough to say so.
@@ -82,6 +86,22 @@ export interface InventoryRow {
   firstSeenAt: number;
   /** Appeared since the previous scan, within `INVENTORY_RECENT_MS`. */
   recent: boolean;
+  /**
+   * This row is a browser extension, not an app on the machine.
+   *
+   * Read off the identifier's own namespace (`isBrowserExtensionId`), so it
+   * needs no lookup and cannot disagree with the device that wrote it. A
+   * surface renders "Chrome Extension" and the extension glyph in place of the
+   * category chip, because these rows carry **no category and never will** —
+   * `classifyApps` skips them on purpose, and `@kidgate/schema/appInventory`
+   * says why.
+   *
+   * Which is also why they must not land in `unclassified`: that bucket means
+   * "the nightly job has not reached this yet", a claim that resolves itself
+   * in a day. Here nothing is coming, and a parent told an extension is
+   * pending classification would be waiting for an answer no job will write.
+   */
+  isExtension: boolean;
 }
 
 export interface AppInventoryReport {
@@ -140,6 +160,7 @@ function toRow(
       !isFirstScan &&
       app.firstSeenAt > scannedAt - INVENTORY_RECENT_MS &&
       nowMs - app.firstSeenAt < INVENTORY_RECENT_MS,
+    isExtension: isBrowserExtensionId(app.id),
   };
 }
 
@@ -181,7 +202,11 @@ export function buildAppInventoryReport(
     const row = toRow(app, entry, inventory.scannedAt, nowMs, isFirstScan);
     if (row.serious) {
       flagged.push(row);
-    } else if (entry) {
+    } else if (entry || row.isExtension) {
+      // An extension is `other` with no entry, which is the one place in this
+      // function where a missing classification is not a gap. Nothing will
+      // ever classify it — see `InventoryRow.isExtension` — so `unclassified`
+      // would promise an answer that is not coming.
       other.push(row);
     } else {
       unclassified.push(row);

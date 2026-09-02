@@ -154,7 +154,7 @@ export default {
       'Khóa máy ngay và mở lại khi bạn muốn — giờ ăn cơm, giờ học bài, hay khi một quy tắc bị phớt lờ.',
     feature10Title: 'Báo cáo tuần',
     feature10Text:
-      'Mỗi Chủ nhật: thời gian dùng máy, trung bình mỗi ngày, những gì đã bị chặn, và tuần này so với tuần trước.',
+      'Mỗi thứ Hai: thời gian dùng máy, trung bình mỗi ngày, những gì đã bị chặn, và tuần này so với tuần trước.',
     feature11Title: 'Bảng tích sao',
     feature11Text:
       'Các con thấy được tuần này mỗi bạn kiếm được bao nhiêu sao. Bảng bắt đầu lại vào thứ Hai, và bạn quyết định có bật hay không.',
@@ -550,6 +550,8 @@ export default {
     nothingBlockedYet: 'Chưa có trang nào bị chặn.',
     rollupNoteAi:
       'Một số mục được suy ra từ tên trang chứ không khớp với trang đã biết, nên có thể lệch đôi chút.',
+    webBackgroundNote:
+      'Khi không có ai dùng thiết bị, một số ứng dụng chạy ngầm vẫn truy cập internet — cập nhật, tải gợi ý và kiểm tra định kỳ tự chạy.',
     filterHintIos:
       'Trên iOS, bộ lọc dùng cơ chế chặn nội dung người lớn của Apple — chặn theo từng danh mục chỉ có trên Android.',
     filterHintAndroid: 'Các danh mục được chặn bằng bộ lọc DNS ngay trên máy.',
@@ -666,13 +668,14 @@ export default {
     weekOf: 'Tuần {{week}}',
     range: '{{from}} – {{to}}',
     writtenAt: 'Viết {{when}}',
-    triggerScheduled: 'Đã gửi Chủ nhật',
+    triggerScheduled: 'Đã gửi thứ Hai',
     triggerManual: 'Do bạn tạo',
 
     statScreenTime: 'Thời gian sử dụng',
     statDailyAverage: 'Trung bình mỗi ngày',
     statBlockedApps: 'Ứng dụng bị chặn',
     statBlockedWebVisits: 'Trang web bị lọc',
+    statTasksApproved: 'Việc nhà hoàn thành',
 
     trendUp: 'Nhiều hơn tuần trước {{value}}',
     trendDown: 'Ít hơn tuần trước {{value}}',
@@ -716,7 +719,7 @@ export default {
 
     emptyTitle: 'Chưa có báo cáo',
     emptyBody:
-      'Báo cáo mới về vào tối Chủ nhật hằng tuần. Bạn cũng có thể viết ngay báo cáo tuần này — tính bảy ngày gần nhất.',
+      'Báo cáo mới về vào sáng thứ Hai hằng tuần. Bạn cũng có thể viết ngay báo cáo tuần này — tính bảy ngày gần nhất.',
     noUsage:
       'Hai tuần qua không ghi nhận thời gian sử dụng nào nên chưa có gì để báo cáo. Thiết bị không kết nối mạng thì không báo gì cả, và điều đó khác với một tuần yên ắng.',
     rateLimited: 'Thử quá nhiều lần. Đợi một phút rồi thử lại.',

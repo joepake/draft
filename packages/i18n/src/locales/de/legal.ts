@@ -27,7 +27,7 @@ export const legal = {
       },
       {
         title: '6. Speicherung, Übermittlungen und Sicherheit',
-        body: 'Daten können außerhalb des Landes des Nutzers gespeichert oder verarbeitet werden. KidGate setzt angemessene technische und organisatorische Schutzmaßnahmen ein, einschließlich Zugriffskontrollen, dem Prinzip der geringsten Berechtigung und sicherer Übertragung, soweit von der Plattform unterstützt. Kein System ist vollständig sicher; KidGate kann nicht garantieren, dass Daten niemals verloren gehen, unbefugt abgerufen oder unterbrochen werden.',
+        body: 'Daten können außerhalb des Landes des Nutzers gespeichert oder verarbeitet werden. KidGate setzt angemessene technische und organisatorische Schutzmaßnahmen ein, einschließlich Zugriffskontrollen, dem Prinzip der geringsten Berechtigung und sicherer Übertragung, soweit von der Plattform unterstützt. Kein System ist vollständig sicher; KidGate kann nicht garantieren, dass Daten niemals verloren gehen, unbefugt abgerufen oder unterbrochen werden. Autorisierte KidGate-Mitarbeiter können auf die Kontokonfiguration, die Geräte und die im Konto angezeigten Aktivitätsdaten zugreifen, soweit dies zur Bearbeitung einer Supportanfrage oder zur Diagnose eines technischen Fehlers erforderlich ist. Dieser Zugriff ist auf autorisierte Personen beschränkt, dient ausschließlich Supportzwecken und wird protokolliert.',
       },
       {
         title: '7. Aufbewahrung und Löschung',

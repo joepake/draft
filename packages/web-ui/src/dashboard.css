@@ -2302,11 +2302,15 @@ ol.attn-fix li + li {
   text-align: right;
 }
 
-/* ---------- The three remaining figures ---------- */
+/* ---------- The four remaining figures ---------- */
 
 .report-stats {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  /* `auto-fit`, not a fixed count: `view.stats` is whatever
+     `reportStats()` in `@kidgate/core` returns, and a grid pinned to one
+     tile count is the next figure added silently overflowing the row
+     instead of wrapping. */
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 0.9rem;
 }
 

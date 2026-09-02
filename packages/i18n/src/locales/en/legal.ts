@@ -27,7 +27,7 @@ export const legal = {
       },
       {
         title: '6. Storage, transfers, and security',
-        body: 'Data may be stored or processed outside the user’s country. KidGate uses reasonable technical and organizational safeguards, including access controls, least-privilege practices, and secure transport where supported by the platform. No system is completely secure; KidGate cannot guarantee that data will never be lost, accessed without authorization, or interrupted.',
+        body: 'Data may be stored or processed outside the user’s country. KidGate uses reasonable technical and organizational safeguards, including access controls, least-privilege practices, and secure transport where supported by the platform. No system is completely secure; KidGate cannot guarantee that data will never be lost, accessed without authorization, or interrupted. Authorised KidGate personnel may access an account’s configuration, devices, and the activity data shown within it where necessary to respond to a support request or diagnose a technical fault. Such access is limited to authorised personnel, used solely for support purposes, and is logged.',
       },
       {
         title: '7. Retention and deletion',

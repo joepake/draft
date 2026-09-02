@@ -7,6 +7,7 @@ import type {
 import type { DeviceControls, DeviceLocation } from './deviceControls';
 import type { DeviceMessageMonitoringState } from './messageMonitoringState';
 import type { DevicePlace } from './devicePlace';
+import type { MessageAiConsent } from './messageAiConsent';
 import type { PlanId } from './plan';
 import type { UserSubscription } from './subscription';
 import type { AppLanguage } from './language';
@@ -37,9 +38,65 @@ export interface FirestoreUser {
    * rather than an argument.
    */
   leaderboardEnabled?: boolean;
+  /**
+   * Consent to the runtime AI message-analysis tier, written to this document
+   * by `functions/http/messageAiConsent.js` and read from it by
+   * `apps/mobile/src/services/messageAiConsent.ts`.
+   *
+   * It was declared only on `User` in `user.ts` — the app-facing shape — so the
+   * document type omitted a field the document has always carried.
+   */
+  messageAiConsent?: MessageAiConsent;
   createdAt: string;
   updatedAt: string;
 }
+
+/**
+ * Every field name a `users/{uid}` document carries, as a runtime list.
+ *
+ * It exists for readers that cannot see the type. `functions/` is outside the
+ * yarn workspace and cannot import `@kidgate/schema`
+ * (`functions/CLAUDE.md`), so a handler there reads `data.whatever` off an
+ * untyped object: a misspelt or invented field name compiles, lints, tests
+ * green, and returns `undefined` forever.
+ *
+ * That is not hypothetical. `functions/admin/handlers.js` read `plan`,
+ * `trialEndsAt` and `deletionState` — none of which any document has ever had.
+ * The operator's family-detail screen therefore showed "no plan" for a paying
+ * family and no deletion for a family with a purge scheduled, from the day it
+ * shipped, with nothing anywhere failing.
+ * `__tests__/operatorUserFieldParity.test.ts` reads those handlers and checks
+ * every field they take off a user document against this list.
+ *
+ * **Derive from this; never hand-copy it.** The assertions below make the list
+ * and the interface fail to compile the moment they disagree, in either
+ * direction — the same guard `ACTIVITY_TYPES` carries in `activity.ts`, added
+ * there after a missing entry silently broke a screen.
+ */
+export const FIRESTORE_USER_FIELDS = [
+  'id',
+  'email',
+  'name',
+  'parentPinHash',
+  'parentPinSet',
+  'trialStartedAt',
+  'planId',
+  'subscription',
+  'leaderboardEnabled',
+  'messageAiConsent',
+  'createdAt',
+  'updatedAt',
+] as const satisfies ReadonlyArray<keyof FirestoreUser>;
+
+/** Empty when the list is complete. A member here is a compile error below. */
+type MissingFirestoreUserField = Exclude<
+  keyof FirestoreUser,
+  (typeof FIRESTORE_USER_FIELDS)[number]
+>;
+const _firestoreUserFieldsAreExhaustive: MissingFirestoreUserField extends never
+  ? true
+  : never = true;
+void _firestoreUserFieldsAreExhaustive;
 
 export interface ParentDeviceRecord {
   deviceId: string;
@@ -54,6 +111,16 @@ export interface ParentDeviceRecord {
   createdAt: string;
   /** Language Cloud Functions render this device's push copy in. */
   locale?: AppLanguage;
+  /**
+   * Where the device says it is — ISO 3166-1 alpha-2, uppercase.
+   *
+   * The **region the OS is configured for**, not a geolocation and not derived
+   * from an IP: a family's location already lives behind a stated reason and an
+   * audit entry, and this must never become a second path to it. Absent on any
+   * platform that will not say (see `deviceRegion`), which is not the same as
+   * a device outside every country.
+   */
+  country?: string;
   /** Joined via invite code (secondary parent) — cannot remove other parents. */
 
   // Push token lifecycle. Written by the device on registration and refresh,
@@ -147,6 +214,8 @@ export interface ChildDeviceRecord {
   batteryUpdatedAt?: string;
   /** Language Cloud Functions render this device's push copy in. */
   locale?: AppLanguage;
+  /** OS region, uppercase alpha-2. Same rules as `ParentDeviceRecord.country`. */
+  country?: string;
 
   // Push token lifecycle — same three fields as ParentDeviceRecord, and see
   // the notes there.

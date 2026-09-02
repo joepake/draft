@@ -164,6 +164,31 @@ export interface DeviceControls {
   /** Same shape, gated on `Device.messageMonitoring.outgoing.granted` instead. */
   messageMonitoringOutgoingEnabled: boolean;
   /**
+   * Whether the device scans what the child **searches for** — a third switch,
+   * beside the two message ones, and off until a parent turns it on.
+   *
+   * Its own field rather than a re-use of `messageMonitoringEnabled`, because
+   * they are not the same consent: a search is not a message, nobody sent it
+   * and nobody received it, and a parent who agreed to be told about messages
+   * has not agreed to be told what their child looked up. Same reason the
+   * incoming and outgoing halves are two fields and two OS grants.
+   *
+   * **Absent is off**, so no device that predates this begins reporting
+   * searches after an update.
+   *
+   * `apps/extension` is the only surface that reads it today: a browser sees
+   * the committed URL, which is the one place the query is legible
+   * (`@kidgate/core/domain/searchQuery` sets out why the DNS tunnel and the
+   * macOS provider cannot). Android's route is a text field rather than a URL
+   * and is gated on two unrun checks — see `apps/mobile/CLAUDE.md`.
+   *
+   * **No parent surface writes this yet.** `apps/dashboard` has no message
+   * screen at all and `MessageAlertsScreen` has no third row; the field exists
+   * so that when one is built it drives something already shipped, which is the
+   * order `messageProfanityEnabled` went in too. Recorded in `docs/BACKLOG.md`.
+   */
+  searchMonitoringEnabled?: boolean;
+  /**
    * Which languages' keyword packs the device scans against, chosen by the
    * PARENT, at most `MESSAGE_KEYWORD_LANGUAGE_MAX`. Absent means "the device's
    * own language" — resolved by
@@ -173,6 +198,25 @@ export interface DeviceControls {
    * for decay, and `ana` and `mia` are Spanish and Italian names.
    */
   messageKeywordLanguages?: readonly string[];
+  /**
+   * Whether the on-device scan also fires on the `profanity` category —
+   * PARENT-set, same split as `messageMonitoringEnabled`. The device's own
+   * severity floor defaults to medium (`MessageKeywordPolicy.minSeverityDefault`,
+   * profanity is `low`), because the first thing this feature ships must not be
+   * a stream of alerts about ordinary swearing.
+   *
+   * Absent means "leave the floor at whatever the server default or a prior
+   * local override says" — this field only ever tightens or loosens it
+   * explicitly. `true` lowers the on-device floor to include `profanity`;
+   * `false` pins it back to medium. Applied through
+   * `ControlsService.setMessageMonitoringMinSeverity`
+   * (`services/native/controls.ts`), which was built and bridged
+   * (`KidGateControlsModule.setMessageMonitoringMinSeverity`,
+   * `KidGateMessageListenerService.setMinSeverity`) before any control field or
+   * parent toggle existed to drive it — this is that missing wire, not new
+   * native surface. Android only, like the rest of message-content monitoring.
+   */
+  messageProfanityEnabled?: boolean;
   blockedAppsConfigured: boolean;
   blockedAppCount: number;
   blockedCategoryCount: number;

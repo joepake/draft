@@ -23,15 +23,12 @@ import { childTopApps, childUsageTotals } from './childUsage';
 import type { DigestDay, Finding } from './digestFindings';
 import {
   DAYS_IN_WEEK,
-  LATE_NIGHT_EVENING_FROM,
-  LATE_NIGHT_MIN_MINUTES,
-  LATE_NIGHT_MORNING_TO,
   LIMIT_HIT_MIN_DAYS,
   POSITIVE_MIN_REPORTED_DAYS,
   isPositiveFinding,
+  lateNightHits,
   pickFindings,
 } from './digestFindings';
-import { USAGE_TIMELINE_USED } from '@kidgate/schema/usageDay';
 import { mergeTimelines } from './usageTimeline';
 
 const DAY_MS = 24 * 60 * 60 * 1000;
@@ -298,23 +295,7 @@ export function mergeChildWeeks(children: readonly ChildWeeks[]): {
 
 /** Nights this child used the device inside the late window. */
 function lateNights(days: readonly DigestDay[]): number {
-  let nights = 0;
-  for (const day of days) {
-    if (!day.timeline) {
-      continue;
-    }
-    let minutes = 0;
-    for (let i = LATE_NIGHT_EVENING_FROM; i < day.timeline.length; i += 1) {
-      if (day.timeline[i] === USAGE_TIMELINE_USED) minutes += 1;
-    }
-    for (let i = 0; i < LATE_NIGHT_MORNING_TO; i += 1) {
-      if (day.timeline[i] === USAGE_TIMELINE_USED) minutes += 1;
-    }
-    if (minutes >= LATE_NIGHT_MIN_MINUTES) {
-      nights += 1;
-    }
-  }
-  return nights;
+  return lateNightHits(days).length;
 }
 
 /** The app that took the most of this child's week, if any did. */

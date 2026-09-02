@@ -43,6 +43,17 @@ export interface ApiFailure {
   /** Raw server message, for logs only. Never render this. */
   detail?: string;
   status?: number;
+  /**
+   * The server's own error code (`billing/premium-required`,
+   * `usage/date-out-of-range`), verbatim, when the body carried one.
+   *
+   * `code` above is the *mapped* verdict and several server codes collapse into
+   * one of its members — a premium refusal and a scope refusal are both
+   * `forbidden`. A caller that must tell them apart (the premium-lapse latch,
+   * `@kidgate/core/domain/premiumLapse`) reads this; nothing should ever
+   * branch on `detail`, which is a sentence.
+   */
+  serverCode?: string;
 }
 
 export interface ApiCallOptions {

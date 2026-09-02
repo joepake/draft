@@ -38,6 +38,11 @@ export const activities = {
   activityTypePlaceExit: 'تمت مغادرة الموقع',
   activityTypeTamper: 'الحماية',
   activityTypeScreenTime: 'وقت استخدام الشاشة',
+  activityTypeCheckIn: 'اطمئنان',
+  activityTypeLocationRequest: 'الموقع',
+  activityTypeTimeRequest: 'طلب وقت',
+  activityTypeRewardTask: 'مهمة مكافأة',
+  activityTypeSearchAlert: 'تنبيه بحث',
   activityTypeWebFilter: 'فلتر الويب',
   activityTypeEmergency: 'طوارئ',
   activityTypeUnknown: 'نشاط',
@@ -55,6 +60,8 @@ export const activities = {
   messageAlertTitle: 'محتوى رسالة مقلق',
   messageAlertBody: 'تم رصد كلمة مُعلَّمة في {{appName}}.',
   messageAlertBodyOutgoing: 'تم رصد كلمة مُعلَّمة في رسالة كتبها طفلك في {{appName}}.',
+  messageAlertTitleSearch: 'عملية بحث مقلقة',
+  messageAlertBodySearch: 'تم رصد كلمة مُعلَّمة في عملية بحث على {{appName}}.',
   activityTypeMessageAlert: 'تنبيه رسالة',
   messageCheckedTitle: 'تم الفحص، لا شيء مقلق',
   messageCheckedBody:
@@ -62,6 +69,10 @@ export const activities = {
   activityTypeMessageChecked: 'تم الفحص',
   appRemovedTitle: 'تمت إزالة التطبيق',
   appRemovedBody: 'تمت إزالة التطبيق {{appName}} من جهاز الطفل.',
+  extensionInstalledTitle: 'تمت إضافة إضافة متصفح',
+  extensionInstalledBody: 'تمت إضافة الإضافة {{appName}} إلى متصفح الطفل.',
+  extensionRemovedTitle: 'تمت إزالة إضافة المتصفح',
+  extensionRemovedBody: 'تمت إزالة الإضافة {{appName}} من متصفح الطفل.',
 
   placeEnterTitle: 'تم الوصول إلى {{placeName}}',
   placeEnterBody: 'دخل جهاز الطفل إلى موقع محفوظ.',
@@ -141,6 +152,7 @@ export const activities = {
   filterByChild: 'عرض {{label}} فقط',
 
   openFullSosHistory: 'عرض سجل SOS الكامل',
+  openActivityDetails: 'عرض التفاصيل',
 
   unknownDevice: 'جهاز غير معروف',
 

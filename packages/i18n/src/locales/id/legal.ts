@@ -27,7 +27,7 @@ export const legal = {
       },
       {
         title: '6. Penyimpanan, transfer, dan keamanan',
-        body: 'Data dapat disimpan atau diproses di luar negara pengguna. KidGate menerapkan perlindungan teknis dan organisasi yang wajar, termasuk kontrol akses, praktik hak akses minimum (least-privilege), dan transmisi yang aman apabila didukung oleh platform. Tidak ada sistem yang sepenuhnya aman; KidGate tidak dapat menjamin bahwa data tidak akan pernah hilang, diakses tanpa izin, atau mengalami gangguan.',
+        body: 'Data dapat disimpan atau diproses di luar negara pengguna. KidGate menerapkan perlindungan teknis dan organisasi yang wajar, termasuk kontrol akses, praktik hak akses minimum (least-privilege), dan transmisi yang aman apabila didukung oleh platform. Tidak ada sistem yang sepenuhnya aman; KidGate tidak dapat menjamin bahwa data tidak akan pernah hilang, diakses tanpa izin, atau mengalami gangguan. Personel KidGate yang berwenang dapat mengakses konfigurasi akun, perangkat, dan data aktivitas yang ditampilkan di dalamnya jika diperlukan untuk menangani permintaan dukungan atau mendiagnosis gangguan teknis. Akses ini terbatas pada personel yang berwenang, digunakan semata-mata untuk keperluan dukungan, dan dicatat.',
       },
       {
         title: '7. Retensi dan penghapusan',

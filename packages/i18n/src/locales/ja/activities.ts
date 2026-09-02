@@ -38,6 +38,11 @@ export const activities = {
   activityTypePlaceExit: '場所を出発',
   activityTypeTamper: '保護',
   activityTypeScreenTime: 'スクリーンタイム',
+  activityTypeCheckIn: '安否確認',
+  activityTypeLocationRequest: '位置情報',
+  activityTypeTimeRequest: '時間リクエスト',
+  activityTypeRewardTask: 'ごほうびタスク',
+  activityTypeSearchAlert: '検索警告',
   activityTypeWebFilter: 'Webフィルター',
   activityTypeEmergency: '緊急',
   activityTypeUnknown: 'アクティビティ',
@@ -56,6 +61,8 @@ export const activities = {
   messageAlertBody: '{{appName}}で注意すべき語句が検出されました。',
   messageAlertBodyOutgoing:
     'お子さまが{{appName}}で書いたメッセージに注意すべき語句が検出されました。',
+  messageAlertTitleSearch: '注意すべき検索',
+  messageAlertBodySearch: '{{appName}}での検索に注意すべき語句が検出されました。',
   activityTypeMessageAlert: 'メッセージ警告',
   messageCheckedTitle: '確認済み、心配なし',
   messageCheckedBody:
@@ -63,6 +70,10 @@ export const activities = {
   activityTypeMessageChecked: '確認済み',
   appRemovedTitle: 'アプリをアンインストールしました',
   appRemovedBody: 'お子さまのデバイスから{{appName}}がアンインストールされました。',
+  extensionInstalledTitle: 'ブラウザ拡張機能が追加されました',
+  extensionInstalledBody: 'お子さまのブラウザに{{appName}}が追加されました。',
+  extensionRemovedTitle: 'ブラウザ拡張機能が削除されました',
+  extensionRemovedBody: 'お子さまのブラウザから{{appName}}が削除されました。',
 
   placeEnterTitle: '{{placeName}} に到着',
   placeEnterBody: 'お子さまのデバイスが登録済みの場所に到着しました。',
@@ -142,6 +153,7 @@ export const activities = {
   filterByChild: '{{label}}のみ表示',
 
   openFullSosHistory: 'SOS履歴をすべて表示',
+  openActivityDetails: '詳細を見る',
 
   unknownDevice: '不明なデバイス',
 

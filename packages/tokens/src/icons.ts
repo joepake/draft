@@ -493,6 +493,20 @@ export const ICONS = {
     },
   ],
   shield: [{ kind: 'path', d: 'M12 3l8 3v6c0 5-3.4 8.4-8 9-4.6-.6-8-4-8-9V6l8-3z' }],
+  /**
+   * The KidGate brand mark, not a feature glyph: a large open ring around a
+   * smaller one, with a dot in the smaller ring's mouth — a parent around a
+   * child. Traced from the same fit as `packages/web-ui/BrandLogo.jsx`
+   * (see that file for how) and carried here so a report snapshot on the
+   * phone can draw the real mark rather than reaching for `shield`, which
+   * already means "protection" on this set and reads as an unrelated icon
+   * standing in for the logo.
+   */
+  kidgateMark: [
+    { kind: 'path', d: 'M20.82 5.92A10.5 10.5 0 1 0 22.7 12.49', strokeWidth: 2.5 },
+    { kind: 'path', d: 'M13.84 9.68A5.01 5.01 0 1 0 16.51 11.84', strokeWidth: 2.12 },
+    { kind: 'circle', cx: 15.66, cy: 10.07, r: 0.96, filled: true },
+  ],
   shieldAlert: [
     { kind: 'path', d: 'M12 3l8 3v6c0 5-3.4 8.4-8 9-4.6-.6-8-4-8-9V6l8-3z' },
     { kind: 'path', d: 'M12 8v5' },

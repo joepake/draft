@@ -139,7 +139,9 @@ export interface DeviceCapabilities {
    * notification content at all (`docs/FEASIBILITY.md`, "Message-content
    * monitoring"). So an iPhone publishes `false` and the parent screen says the
    * device cannot do it, the same honest sentence a Mac gives for a filter it
-   * lacks. A browser extension and a TV report `false` too.
+   * lacks. A TV reports `false` too. A browser extension reports `false` for
+   * *messages* and `true` for `appInstallAlerts`, which is not a contradiction:
+   * it sees no chat app, and it does see the other extensions beside it.
    *
    * `true` means the mechanism exists on the platform, not that the child has
    * granted notification access yet — that grant, like accessibility, is a
@@ -148,11 +150,30 @@ export interface DeviceCapabilities {
    */
   messageMonitoring?: boolean;
   /**
+   * The device can see what the child **searched for**.
+   *
+   * A separate flag from `messageMonitoring` and not derivable from it in
+   * either direction, because the two are read by different mechanisms with
+   * different reach. `apps/extension` publishes `true` and no message flag at
+   * all: a browser holds the committed URL, which is where a query is legible,
+   * and sees no chat app. Android publishes both, from one accessibility
+   * service reading typed text. A Mac agent publishes neither — its filter is a
+   * network layer and the query is inside TLS.
+   *
+   * `true` means the mechanism exists on the platform, not that the parent has
+   * switched it on (`DeviceControls.searchMonitoringEnabled`) nor that the
+   * child has granted anything. **Absent is unknown, not false.**
+   */
+  searchMonitoring?: boolean;
+  /**
    * The device can enumerate what is **already** installed, not only what
    * changes.
    *
    * A separate flag from `appInstallAlerts` and not derivable from it, in both
-   * directions. A browser extension reports neither. An iPhone reports neither
+   * directions. A browser extension reports **both**, and what it enumerates is
+   * the other *extensions* in that browser rather than apps on the machine —
+   * `chrome.management`, ids namespaced by `browserExtensionId` in
+   * `./appInventory`. An iPhone reports neither
    * either — but for a reason no future build fixes: FamilyControls returns
    * opaque `ApplicationToken`s and enumerates nothing (`docs/FEASIBILITY.md`,
    * the cliff list). The android/mac/windows agents report both today, and the

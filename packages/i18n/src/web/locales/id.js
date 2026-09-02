@@ -134,7 +134,7 @@ export default {
       'Kunci perangkat sekarang dan buka lagi saat Anda siap — makan malam, PR, atau aturan yang diabaikan.',
     feature10Title: 'Laporan mingguan',
     feature10Text:
-      'Setiap Minggu: waktu layar, rata-rata harian, apa saja yang diblokir, dan perbandingan dengan pekan sebelumnya.',
+      'Setiap Senin: waktu layar, rata-rata harian, apa saja yang diblokir, dan perbandingan dengan pekan sebelumnya.',
     feature11Title: 'Papan bintang',
     feature11Text:
       'Anak-anak bisa melihat berapa bintang yang dikumpulkan masing-masing pekan ini. Dimulai lagi setiap Senin, dan Anda yang menentukan apakah dinyalakan.',
@@ -532,6 +532,8 @@ export default {
     nothingBlockedYet: 'Belum ada yang diblokir.',
     rollupNoteAi:
       'Sebagian jenis disimpulkan dari nama situs, bukan dicocokkan dengan situs yang dikenal, jadi ada yang mungkin meleset.',
+    webBackgroundNote:
+      'Saat perangkat tidak dipakai, sebagian aplikasi tetap mengakses internet di latar belakang: pembaruan, rekomendasi, dan pemeriksaan berjalan sendiri.',
     filterHintIos:
       'Di iOS penyaring memakai kontrol konten dewasa milik Apple — pemblokiran per kategori hanya di Android.',
     filterHintAndroid: 'Kategori ditegakkan oleh penyaring DNS di perangkat.',
@@ -650,12 +652,13 @@ export default {
     weekOf: 'Minggu {{week}}',
     range: '{{from}} – {{to}}',
     writtenAt: 'Ditulis {{when}}',
-    triggerScheduled: 'Dikirim Minggu',
+    triggerScheduled: 'Dikirim Senin',
     triggerManual: 'Dibuat oleh Anda',
     statScreenTime: 'Waktu layar',
     statDailyAverage: 'Rata-rata harian',
     statBlockedApps: 'Aplikasi diblokir',
     statBlockedWebVisits: 'Situs disaring',
+    statTasksApproved: 'Tugas selesai',
     trendUp: '{{value}} lebih banyak dari minggu sebelumnya',
     trendDown: '{{value}} lebih sedikit dari minggu sebelumnya',
     trendFlat: 'Kurang lebih sama dengan minggu sebelumnya',
@@ -694,7 +697,7 @@ export default {
     shareFailed: 'Peramban ini tidak bisa menyimpannya. Salin ringkasannya saja.',
     emptyTitle: 'Belum ada laporan',
     emptyBody:
-      'Laporan datang setiap Minggu malam. Laporan minggu ini bisa ditulis sekarang — mencakup tujuh hari terakhir.',
+      'Laporan datang setiap Senin pagi. Laporan minggu ini bisa ditulis sekarang — mencakup tujuh hari terakhir.',
     noUsage:
       'Tidak ada waktu layar tercatat dalam dua minggu terakhir, jadi belum ada yang bisa dilaporkan. Perangkat yang offline tidak melaporkan apa pun, dan itu berbeda dengan minggu yang tenang.',
     rateLimited: 'Terlalu banyak percobaan. Tunggu sebentar.',

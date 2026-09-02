@@ -133,7 +133,7 @@ export default {
       '지금 바로 기기를 잠그고 원할 때 풀 수 있습니다. 식사, 숙제, 지켜지지 않은 약속에.',
     feature10Title: '주간 리포트',
     feature10Text:
-      '매주 일요일에 도착합니다. 사용 시간, 하루 평균, 차단된 항목, 지난주와의 비교.',
+      '매주 월요일에 도착합니다. 사용 시간, 하루 평균, 차단된 항목, 지난주와의 비교.',
     feature11Title: '별 순위표',
     feature11Text:
       '이번 주에 각자 별을 몇 개 모았는지 아이들이 볼 수 있습니다. 매주 월요일에 다시 시작하고, 켤지 말지는 부모가 정합니다.',
@@ -530,6 +530,8 @@ export default {
     nothingBlockedYet: '아직 차단된 항목이 없습니다.',
     rollupNoteAi:
       '일부는 알려진 사이트와 대조한 것이 아니라 사이트 이름에서 추정한 것이라 틀릴 수 있습니다.',
+    webBackgroundNote:
+      '아무도 기기를 쓰지 않을 때도 일부 앱은 백그라운드에서 인터넷에 접속합니다. 업데이트, 추천 콘텐츠, 정기 확인이 저절로 실행됩니다.',
     filterHintIos:
       'iOS에서는 필터가 Apple의 성인 콘텐츠 제한을 사용합니다. 카테고리별 차단은 Android에서만 가능합니다.',
     filterHintAndroid: '카테고리는 기기 내 DNS 필터가 적용합니다.',
@@ -646,12 +648,13 @@ export default {
     weekOf: '{{week}} 주',
     range: '{{from}} – {{to}}',
     writtenAt: '{{when}} 작성',
-    triggerScheduled: '일요일에 발송',
+    triggerScheduled: '월요일에 발송',
     triggerManual: '직접 만든 리포트',
     statScreenTime: '사용 시간',
     statDailyAverage: '하루 평균',
     statBlockedApps: '차단한 앱',
     statBlockedWebVisits: '필터링한 사이트',
+    statTasksApproved: '완료한 할 일',
     trendUp: '지난주보다 {{value}} 많음',
     trendDown: '지난주보다 {{value}} 적음',
     trendFlat: '지난주와 거의 같음',
@@ -691,7 +694,7 @@ export default {
     shareFailed: '이 브라우저에서는 저장할 수 없습니다. 대신 요약을 복사해 주세요.',
     emptyTitle: '아직 리포트가 없습니다',
     emptyBody:
-      '리포트는 매주 일요일 저녁에 도착합니다. 이번 주 리포트는 지금 작성할 수 있으며 최근 7일을 다룹니다.',
+      '리포트는 매주 월요일 아침에 도착합니다. 이번 주 리포트는 지금 작성할 수 있으며 최근 7일을 다룹니다.',
     noUsage:
       '지난 2주 동안 사용 시간이 기록되지 않아 아직 알려 드릴 내용이 없습니다. 오프라인 상태인 기기는 아무것도 보고하지 않으며, 이는 조용한 한 주와는 다릅니다.',
     rateLimited: '시도가 너무 많습니다. 1분만 기다려 주세요.',

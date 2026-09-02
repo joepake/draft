@@ -252,6 +252,27 @@ export default function Fleet() {
         </div>
 
         <div className="chart-card">
+          <h3 className="chart-title">Device country</h3>
+          {/*
+            No `total`: every other chart on this page counts devices and this
+            one counts **families**, so a share against `fleet.devices` would
+            read as a percentage of something it is not. The reason it counts
+            families is the suppression — see `MIN_FAMILIES_PER_BUCKET` in
+            `functions/lib/operatorMetrics.js`. `other` is every country with
+            too few families to name; `unknown` is a device that has not
+            reported one yet, which is every device until it next launches.
+          */}
+          <p className="chart-sub">
+            Families, not devices. Countries with fewer than five fold into{' '}
+            <code>other</code> — a bucket of one names that family
+          </p>
+          <BarChart
+            data={fleet.country}
+            emptyLabel="No device has reported a country yet"
+          />
+        </div>
+
+        <div className="chart-card">
           <h3 className="chart-title">App blocking strength</h3>
           <p className="chart-sub">
             {fleet.noCapabilityProbe > 0

@@ -228,6 +228,19 @@ export function parseDeviceControls(data?: Record<string, unknown>): DeviceContr
     messageMonitoringOutgoingEnabled: Boolean(
       controls.messageMonitoringOutgoingEnabled,
     ),
+    // Off unless the parent set it: absent must not switch search reporting on
+    // for every device that predates the field.
+    searchMonitoringEnabled: controls.searchMonitoringEnabled === true,
+    // Absent stays absent rather than becoming `[]`, because the two mean
+    // opposite things to `resolveMessageKeywordLanguages`: absent is "use the
+    // device's own language", empty would be "scan nothing".
+    ...(Array.isArray(controls.messageKeywordLanguages)
+      ? {
+          messageKeywordLanguages: controls.messageKeywordLanguages.filter(
+            (code): code is string => typeof code === 'string' && code.length > 0,
+          ),
+        }
+      : {}),
     blockedAppsConfigured: Boolean(controls.blockedAppsConfigured),
     blockedAppCount: num(controls.blockedAppCount, 0),
     blockedCategoryCount: num(controls.blockedCategoryCount, 0),

@@ -38,6 +38,11 @@ export const activities = {
   activityTypePlaceExit: 'Konumdan ayrıldı',
   activityTypeTamper: 'Koruma',
   activityTypeScreenTime: 'Ekran Süresi',
+  activityTypeCheckIn: 'Durum bildirimi',
+  activityTypeLocationRequest: 'Konum',
+  activityTypeTimeRequest: 'Süre isteği',
+  activityTypeRewardTask: 'Ödül görevi',
+  activityTypeSearchAlert: 'Arama uyarısı',
   activityTypeWebFilter: 'Web filtresi',
   activityTypeEmergency: 'Acil Durum',
   activityTypeUnknown: 'Etkinlik',
@@ -56,6 +61,9 @@ export const activities = {
   messageAlertBody: '{{appName}} içinde işaretli bir kelime tespit edildi.',
   messageAlertBodyOutgoing:
     'Çocuğunuzun {{appName}} içinde yazdığı bir mesajda işaretli bir kelime tespit edildi.',
+  messageAlertTitleSearch: 'Endişe verici arama',
+  messageAlertBodySearch:
+    '{{appName}} üzerinde yapılan bir aramada işaretli bir kelime tespit edildi.',
   activityTypeMessageAlert: 'Mesaj uyarısı',
   messageCheckedTitle: 'Bakıldı, endişelenecek bir şey yok',
   messageCheckedBody:
@@ -63,6 +71,10 @@ export const activities = {
   activityTypeMessageChecked: 'Bakıldı',
   appRemovedTitle: 'Uygulama kaldırıldı',
   appRemovedBody: '{{appName}} uygulaması çocuğun cihazından kaldırıldı.',
+  extensionInstalledTitle: 'Tarayıcı uzantısı eklendi',
+  extensionInstalledBody: '{{appName}} uzantısı çocuğun tarayıcısına eklendi.',
+  extensionRemovedTitle: 'Tarayıcı uzantısı kaldırıldı',
+  extensionRemovedBody: '{{appName}} uzantısı çocuğun tarayıcısından kaldırıldı.',
 
   placeEnterTitle: '{{placeName}} konumuna girdi',
   placeEnterBody: 'Çocuğun cihazı kayıtlı bir konuma ulaştı.',
@@ -142,6 +154,7 @@ export const activities = {
   filterByChild: 'Yalnızca {{label}} göster',
 
   openFullSosHistory: 'Tüm SOS geçmişini aç',
+  openActivityDetails: 'Ayrıntıları görüntüle',
 
   unknownDevice: 'Bilinmeyen cihaz',
 

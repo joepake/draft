@@ -108,7 +108,7 @@ export const family = {
   chipHealthWarnCount: '{{count}} müssen eingerichtet werden',
   chipHealthWarnCount_one: '{{count}} muss eingerichtet werden',
 
-  chipHealthInactiveCount: '{{count}} offline',
+  chipHealthInactiveCount: '{{count}} seit über 24 Std. inaktiv',
 
   chipBlockedCount: '{{count}} blockiert',
 

@@ -39,6 +39,11 @@ export const activities = {
   activityTypePlaceExit: 'Keluar tempat',
   activityTypeTamper: 'Perlindungan',
   activityTypeScreenTime: 'Waktu Layar',
+  activityTypeCheckIn: 'Kabar aman',
+  activityTypeLocationRequest: 'Lokasi',
+  activityTypeTimeRequest: 'Permintaan waktu',
+  activityTypeRewardTask: 'Tugas hadiah',
+  activityTypeSearchAlert: 'Peringatan pencarian',
   activityTypeWebFilter: 'Filter web',
   activityTypeEmergency: 'Darurat',
   activityTypeUnknown: 'Aktivitas',
@@ -57,6 +62,9 @@ export const activities = {
   messageAlertBody: 'Kata yang ditandai terdeteksi di {{appName}}.',
   messageAlertBodyOutgoing:
     'Kata yang ditandai terdeteksi di pesan yang ditulis anak Anda di {{appName}}.',
+  messageAlertTitleSearch: 'Pencarian yang mengkhawatirkan',
+  messageAlertBodySearch:
+    'Kata yang ditandai terdeteksi dalam pencarian di {{appName}}.',
   activityTypeMessageAlert: 'Peringatan pesan',
   messageCheckedTitle: 'Sudah diperiksa, tidak ada yang mengkhawatirkan',
   messageCheckedBody:
@@ -64,6 +72,10 @@ export const activities = {
   activityTypeMessageChecked: 'Diperiksa',
   appRemovedTitle: 'Aplikasi dihapus',
   appRemovedBody: 'Aplikasi {{appName}} dihapus dari perangkat anak.',
+  extensionInstalledTitle: 'Ekstensi browser ditambahkan',
+  extensionInstalledBody: 'Ekstensi {{appName}} ditambahkan ke browser anak.',
+  extensionRemovedTitle: 'Ekstensi browser dihapus',
+  extensionRemovedBody: 'Ekstensi {{appName}} dihapus dari browser anak.',
 
   placeEnterTitle: 'Masuk {{placeName}}',
   placeEnterBody: 'Perangkat anak memasuki tempat yang tersimpan.',
@@ -143,6 +155,7 @@ export const activities = {
   filterByChild: 'Tampilkan hanya {{label}}',
 
   openFullSosHistory: 'Buka riwayat SOS lengkap',
+  openActivityDetails: 'Lihat detail',
 
   unknownDevice: 'Perangkat tidak dikenal',
 

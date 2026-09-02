@@ -39,6 +39,11 @@ export const activities = {
   activityTypePlaceExit: 'स्थान छोड़ा',
   activityTypeTamper: 'सुरक्षा',
   activityTypeScreenTime: 'स्क्रीन टाइम',
+  activityTypeCheckIn: 'सुरक्षा जाँच',
+  activityTypeLocationRequest: 'स्थान',
+  activityTypeTimeRequest: 'समय अनुरोध',
+  activityTypeRewardTask: 'इनाम कार्य',
+  activityTypeSearchAlert: 'खोज चेतावनी',
   activityTypeWebFilter: 'वेब फ़िल्टर',
   activityTypeEmergency: 'आपातकाल',
   activityTypeUnknown: 'गतिविधि',
@@ -57,6 +62,8 @@ export const activities = {
   messageAlertBody: '{{appName}} में एक चिह्नित शब्द मिला।',
   messageAlertBodyOutgoing:
     '{{appName}} में आपके बच्चे के लिखे संदेश में एक चिह्नित शब्द मिला।',
+  messageAlertTitleSearch: 'चिंताजनक खोज',
+  messageAlertBodySearch: '{{appName}} पर की गई खोज में एक चिह्नित शब्द मिला।',
   activityTypeMessageAlert: 'संदेश चेतावनी',
   messageCheckedTitle: 'जाँच हुई, चिंता की बात नहीं',
   messageCheckedBody:
@@ -64,6 +71,10 @@ export const activities = {
   activityTypeMessageChecked: 'जाँचा गया',
   appRemovedTitle: 'ऐप हटाया गया',
   appRemovedBody: 'बच्चे के डिवाइस से ऐप {{appName}} हटाया गया है।',
+  extensionInstalledTitle: 'ब्राउज़र एक्सटेंशन जोड़ा गया',
+  extensionInstalledBody: 'बच्चे के ब्राउज़र में {{appName}} एक्सटेंशन जोड़ा गया है।',
+  extensionRemovedTitle: 'ब्राउज़र एक्सटेंशन हटाया गया',
+  extensionRemovedBody: 'बच्चे के ब्राउज़र से {{appName}} एक्सटेंशन हटाया गया है।',
 
   placeEnterTitle: '{{placeName}} पहुँचा',
   placeEnterBody: 'बच्चे का डिवाइस सहेजे गए स्थान पर पहुँचा।',
@@ -144,6 +155,7 @@ export const activities = {
   filterByChild: 'केवल {{label}} दिखाएँ',
 
   openFullSosHistory: 'पूरा SOS इतिहास देखें',
+  openActivityDetails: 'विवरण देखें',
 
   unknownDevice: 'अज्ञात डिवाइस',
 

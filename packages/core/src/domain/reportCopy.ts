@@ -35,6 +35,7 @@ import {
   type ReportTrend,
   reportChildren,
 } from './reportView';
+import { isCurrentPeriod } from './familyReport';
 
 export type ReportTranslate = (key: string, params?: TranslationParams) => string;
 
@@ -43,6 +44,9 @@ export type FormatReportDuration = (minutes: number) => string;
 
 /** A minute of the day (0–1439) as a wall clock in the reader's convention. */
 export type FormatReportTime = (minuteOfDay: number) => string;
+
+/** A `2026-08-24` day key as a short local date — "24 Aug". */
+export type FormatReportDay = (dayKey: string) => string;
 
 export interface ReportCopyDeps {
   t: ReportTranslate;
@@ -53,6 +57,12 @@ export interface ReportCopyDeps {
    * that has a locale-aware formatter should pass its own.
    */
   formatTime?: FormatReportTime;
+  /**
+   * Optional for the same `Intl` reason. Needed only when the caller also
+   * passes `atMs` to `buildReportPresentation`: a stale report labels its
+   * compare bars with real date ranges, which need this to render.
+   */
+  formatDay?: FormatReportDay;
 }
 
 const STAT_LABEL_KEYS: Record<ReportStat['key'], string> = {
@@ -60,6 +70,7 @@ const STAT_LABEL_KEYS: Record<ReportStat['key'], string> = {
   dailyAverage: 'report.statDailyAverage',
   blockedApps: 'report.statBlockedApps',
   blockedWebVisits: 'report.statBlockedWebVisits',
+  tasksApproved: 'report.statTasksApproved',
 };
 
 /**
@@ -352,10 +363,68 @@ export function childLines(
   }));
 }
 
+const DAY_MS = 24 * 60 * 60 * 1000;
+
+/** `2026-08-24` shifted by whole days, or the input unchanged if it is not a day key. */
+function shiftDayKey(dayKey: string, days: number): string {
+  const at = Date.parse(`${dayKey}T00:00:00Z`);
+  if (!Number.isFinite(at)) return dayKey;
+  return new Date(at + days * DAY_MS).toISOString().slice(0, 10);
+}
+
+/**
+ * The compare-bar labels, honest about when the report is being read.
+ *
+ * A weekly report is written at the end of its week, so for the whole of the
+ * following week the freshest report a parent can open is about a week that is
+ * already over. Labelling its bars "This week" / "Last week" then is off by
+ * one — measured 2026-09-01, a report of 24–30 Aug read on 1 Sep. When the
+ * report is no longer the current ISO week, the bars carry their real date
+ * ranges instead; the relative words return only while they are true.
+ */
+export function reportBarLabels(
+  report: Pick<FamilyReport, 'periodKey' | 'fromDate' | 'toDate'>,
+  deps: ReportCopyDeps,
+  atMs?: number,
+): { thisWeek: string; lastWeek: string; dated: boolean } {
+  const stale =
+    atMs != null &&
+    deps.formatDay != null &&
+    report.fromDate &&
+    report.toDate &&
+    !isCurrentPeriod(report, atMs);
+  if (!stale) {
+    return {
+      thisWeek: deps.t('report.barThisWeek'),
+      lastWeek: deps.t('report.barLastWeek'),
+      dated: false,
+    };
+  }
+  const formatDay = deps.formatDay as FormatReportDay;
+  return {
+    thisWeek: deps.t('report.range', {
+      from: formatDay(report.fromDate),
+      to: formatDay(report.toDate),
+    }),
+    lastWeek: deps.t('report.range', {
+      from: formatDay(shiftDayKey(report.fromDate, -7)),
+      to: formatDay(shiftDayKey(report.toDate, -7)),
+    }),
+    /*
+     * For a renderer that also prints the report's range as a heading: once
+     * the bars are date-labelled, the top bar repeats that heading verbatim —
+     * the flag lets the card drop its own line rather than say it twice.
+     */
+    dated: true,
+  };
+}
+
 export function buildReportPresentation(
   report: FamilyReport,
   familyName: string,
   deps: ReportCopyDeps,
+  /** When given (with `deps.formatDay`), a stale report's bars are date-labelled. */
+  atMs?: number,
 ): ReportPresentation {
   const stats = reportStats(report);
   const trend = reportTrend(report);
@@ -363,6 +432,7 @@ export function buildReportPresentation(
   const hero = stats[0];
   const thisWeek = Math.max(0, report.screenMinutes || 0);
   const lastWeek = Math.max(0, report.previousScreenMinutes || 0);
+  const barLabels = reportBarLabels(report, deps, atMs);
 
   return {
     familyName,
@@ -376,12 +446,12 @@ export function buildReportPresentation(
     },
     compare: {
       thisWeek: {
-        label: deps.t('report.barThisWeek'),
+        label: barLabels.thisWeek,
         value: deps.formatDuration(thisWeek),
         minutes: thisWeek,
       },
       lastWeek: {
-        label: deps.t('report.barLastWeek'),
+        label: barLabels.lastWeek,
         value: deps.formatDuration(lastWeek),
         minutes: lastWeek,
       },

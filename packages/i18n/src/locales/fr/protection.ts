@@ -4,7 +4,7 @@ export const protection = {
   permissionNotSetUpYet: 'Cette autorisation n’a pas encore été configurée.',
   permissionRestrictedByIos: 'Cette autorisation est restreinte par les réglages iOS.',
   permissionStatusUnknown: 'KidGate n’a pas pu lire l’état de cette autorisation.',
-  kidGateOffline: 'KidGate hors ligne',
+  kidGateOffline: 'KidGate silencieux depuis plus de 24 h',
   childAppMayBeOffline:
     'L’app sur l’appareil de l’enfant est peut-être fermée, supprimée ou hors ligne.',
   statusNotUpdatedYet: 'État pas encore mis à jour',
@@ -65,7 +65,7 @@ export const protection = {
   protectionsLookHealthy: 'Les protections KidGate fonctionnent correctement.',
   healthBadgeProtected: 'Vert — protégé',
   healthBadgeWarning: 'Jaune — configuration requise',
-  healthBadgeInactive: 'Rouge — appareil de l’enfant hors ligne',
+  healthBadgeInactive: 'Rouge — appareil de l’enfant silencieux depuis plus de 24 h',
   iosFeatureSupportEvaluating:
     'La prise en charge de cette fonctionnalité sur iOS est en cours d’évaluation.',
   iosUpgradeRequiredNote:

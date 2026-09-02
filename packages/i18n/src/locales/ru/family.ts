@@ -109,7 +109,7 @@ export const family = {
   chipHealthWarnCount: '{{count}} требуют настройки',
   chipHealthWarnCount_one: '{{count}} требует настройки',
 
-  chipHealthInactiveCount: '{{count}} не в сети',
+  chipHealthInactiveCount: '{{count}} без связи более 24 ч',
 
   chipBlockedCount: '{{count}} заблокировано',
 

@@ -5,7 +5,7 @@ export const protection = {
   permissionRestrictedByIos: 'Questa autorizzazione è limitata dalle impostazioni iOS.',
   permissionStatusUnknown:
     'KidGate non è riuscito a leggere lo stato di questa autorizzazione.',
-  kidGateOffline: 'KidGate offline',
+  kidGateOffline: 'KidGate silenzioso da oltre 24 h',
   childAppMayBeOffline:
     'L’app sul dispositivo del bambino potrebbe essere chiusa, eliminata o offline.',
   statusNotUpdatedYet: 'Stato non ancora aggiornato',
@@ -65,7 +65,7 @@ export const protection = {
   protectionsLookHealthy: 'Le protezioni di KidGate funzionano correttamente.',
   healthBadgeProtected: 'Verde — protetto',
   healthBadgeWarning: 'Giallo — richiede configurazione',
-  healthBadgeInactive: 'Rosso — dispositivo del bambino offline',
+  healthBadgeInactive: 'Rosso — dispositivo del bambino silenzioso da oltre 24 h',
   iosFeatureSupportEvaluating:
     'Il supporto di questa funzione su iOS è in fase di valutazione.',
   iosUpgradeRequiredNote:

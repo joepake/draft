@@ -5,6 +5,7 @@ import {
   type AppCategory,
   type AppCategoryEntry,
 } from '@kidgate/schema/aiApps';
+import { isBrowserExtensionId } from '@kidgate/schema/appInventory';
 
 /**
  * What an app is, read back.
@@ -97,6 +98,13 @@ function mapEntry(snapshot: DocSnapshot): AppCategoryEntry | null {
  * Misses are cached as null too. An app the job has not classified will still
  * be missing on the next screen this session, and re-reading it per render is
  * how a list of forty apps becomes forty reads per scroll.
+ *
+ * **Browser extensions are answered null without a read.** `classifyApps` skips
+ * them, so no row can ever exist — asking would be one guaranteed miss per
+ * extension, on every surface, forever. Refused here rather than in each caller
+ * so a new one cannot forget: the identifier says what it is
+ * (`@kidgate/schema/appInventory`), and the callers still get their key in the
+ * map, mapping to null, exactly as they do for an unclassified app.
  */
 export async function getAppCategories(
   firestore: FirestorePort,
@@ -105,7 +113,7 @@ export async function getAppCategories(
   const wanted = [
     ...new Set(packageNames.filter(name => typeof name === 'string' && name)),
   ];
-  const missing = wanted.filter(name => !memo.has(name));
+  const missing = wanted.filter(name => !memo.has(name) && !isBrowserExtensionId(name));
 
   await Promise.all(
     missing.map(async name => {

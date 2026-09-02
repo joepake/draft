@@ -107,7 +107,7 @@ export const family = {
   chipHealthWarnCount: '{{count}} को सेटअप की आवश्यकता है',
   chipHealthWarnCount_one: '{{count}} को सेटअप की आवश्यकता है',
 
-  chipHealthInactiveCount: '{{count}} ऑफ़लाइन',
+  chipHealthInactiveCount: '{{count}} 24 घंटे से ज़्यादा निष्क्रिय',
 
   chipBlockedCount: '{{count}} लॉक किए गए',
 

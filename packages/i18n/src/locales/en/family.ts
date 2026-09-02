@@ -91,7 +91,7 @@ export const family = {
   childDevicesProtected: '{{count}} devices protected',
   chipHealthWarnCount: '{{count}} need setup',
   chipHealthWarnCount_one: '{{count}} needs setup',
-  chipHealthInactiveCount: '{{count}} offline',
+  chipHealthInactiveCount: '{{count}} inactive 24h+',
   chipBlockedCount: '{{count}} blocked',
   healthProtected: 'Protected',
   buildOutdated: 'Update available',

@@ -3,7 +3,7 @@ export const protection = {
   permissionNotSetUpYet: 'لم يتم إعداد هذا الإذن بعد.',
   permissionRestrictedByIos: 'هذا الإذن مقيّد بإعدادات iOS.',
   permissionStatusUnknown: 'تعذر على KidGate قراءة حالة هذا الإذن.',
-  kidGateOffline: 'KidGate غير متصل',
+  kidGateOffline: 'KidGate صامت منذ أكثر من 24 ساعة',
   childAppMayBeOffline:
     'قد يكون التطبيق على جهاز الطفل مغلقًا أو محذوفًا أو غير متصل بالإنترنت.',
   statusNotUpdatedYet: 'لم تُحدَّث الحالة بعد',
@@ -57,7 +57,7 @@ export const protection = {
   protectionsLookHealthy: 'وسائل حماية KidGate تعمل بشكل سليم.',
   healthBadgeProtected: 'أخضر — محمي',
   healthBadgeWarning: 'أصفر — يحتاج إلى إعداد',
-  healthBadgeInactive: 'أحمر — جهاز الطفل غير متصل',
+  healthBadgeInactive: 'أحمر — جهاز الطفل صامت منذ أكثر من 24 ساعة',
   iosFeatureSupportEvaluating: 'يجري حاليًا تقييم دعم هذه الميزة على iOS.',
   iosUpgradeRequiredNote:
     'يتطلب هذا iOS 16 أو أحدث. حدّث جهاز الطفل من الإعدادات › عام › تحديث البرامج. إذا لم يظهر أي تحديث، فهذا الـ iPad أو iPhone أقدم من أن تدعمه Apple.',

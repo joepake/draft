@@ -3,7 +3,7 @@ export const protection = {
   permissionNotSetUpYet: 'Bu izin henüz ayarlanmadı.',
   permissionRestrictedByIos: 'Bu izin iOS ayarları tarafından kısıtlanmış.',
   permissionStatusUnknown: 'KidGate bu iznin durumunu okuyamadı.',
-  kidGateOffline: 'KidGate çevrimdışı',
+  kidGateOffline: 'KidGate 24 saatten uzun süredir sessiz',
   childAppMayBeOffline:
     'Çocuğun cihazındaki uygulama kapatılmış, silinmiş veya çevrimdışı olabilir.',
   statusNotUpdatedYet: 'Durum henüz güncellenmedi',
@@ -59,7 +59,7 @@ export const protection = {
   protectionsLookHealthy: 'KidGate korumaları sorunsuz çalışıyor.',
   healthBadgeProtected: 'Yeşil — korunuyor',
   healthBadgeWarning: 'Sarı — kurulum gerekiyor',
-  healthBadgeInactive: 'Kırmızı — çocuğun cihazı çevrimdışı',
+  healthBadgeInactive: 'Kırmızı — çocuğun cihazı 24 saatten uzun süredir sessiz',
   iosFeatureSupportEvaluating: 'Bu özelliğin iOS desteği değerlendiriliyor.',
   iosUpgradeRequiredNote:
     'Bunun için iOS 16 veya üzeri gerekir. Çocuk cihazını Ayarlar › Genel › Yazılım Güncelleme bölümünden güncelleyin. Güncelleme sunulmuyorsa bu iPad veya iPhone, Apple’ın destekleyemeyeceği kadar eskidir.',

@@ -3,7 +3,7 @@ export const protection = {
   permissionNotSetUpYet: 'Izin ini belum disiapkan.',
   permissionRestrictedByIos: 'Izin ini dibatasi oleh pengaturan iOS.',
   permissionStatusUnknown: 'KidGate tidak dapat membaca status izin ini.',
-  kidGateOffline: 'KidGate offline',
+  kidGateOffline: 'KidGate diam lebih dari 24 jam',
   childAppMayBeOffline:
     'Aplikasi di perangkat anak mungkin tertutup, terhapus, atau offline.',
   statusNotUpdatedYet: 'Status belum diperbarui',
@@ -59,7 +59,7 @@ export const protection = {
   protectionsLookHealthy: 'Perlindungan KidGate berjalan dengan baik.',
   healthBadgeProtected: 'Hijau — terlindungi',
   healthBadgeWarning: 'Kuning — perlu penyiapan',
-  healthBadgeInactive: 'Merah — perangkat anak offline',
+  healthBadgeInactive: 'Merah — perangkat anak diam lebih dari 24 jam',
   iosFeatureSupportEvaluating: 'Dukungan fitur ini di iOS sedang dievaluasi.',
   iosUpgradeRequiredNote:
     'Ini butuh iOS 16 atau lebih baru. Perbarui perangkat anak di Pengaturan › Umum › Pembaruan Perangkat Lunak. Jika tidak ada pembaruan yang ditawarkan, iPad atau iPhone ini terlalu lama untuk didukung Apple.',

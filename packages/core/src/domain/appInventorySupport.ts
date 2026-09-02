@@ -34,8 +34,12 @@ export interface AppInventoryInput {
  * enumerated its own launcher — the box knows perfectly well what is on it and
  * simply never says when that changes.
  *
- * `chromeos` is absent for the reason `apps/extension` publishes an explicit
- * `false`: a browser cannot see one app on the machine it runs on.
+ * `chromeos` is absent, and no longer because the extension cannot enumerate:
+ * since 2026-09-01 it publishes `true` and lists the other **extensions** in
+ * the browser (`chrome.management`). It stays out because that flag is a
+ * runtime probe — a `getAll()` that throws on a supervised profile publishes
+ * `false` — and a platform default would answer yes for a browser that has
+ * been refused. Every install publishes a probe, so the list is never reached.
  *
  * **iOS is absent and stays absent.** Not an omission to be filled in later: no
  * API on that platform enumerates installed apps, FamilyControls included

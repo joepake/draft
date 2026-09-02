@@ -34,6 +34,11 @@ export const activities = {
   activityTypePlaceExit: 'Выход из места',
   activityTypeTamper: 'Защита',
   activityTypeScreenTime: 'Экранное время',
+  activityTypeCheckIn: 'Проверка связи',
+  activityTypeLocationRequest: 'Геопозиция',
+  activityTypeTimeRequest: 'Запрос времени',
+  activityTypeRewardTask: 'Бонусное задание',
+  activityTypeSearchAlert: 'Оповещение о поиске',
   activityTypeWebFilter: 'Веб-фильтр',
   activityTypeEmergency: 'Экстренная ситуация',
   activityTypeUnknown: 'Активность',
@@ -50,6 +55,9 @@ export const activities = {
   messageAlertBody: 'В {{appName}} обнаружено отмеченное слово.',
   messageAlertBodyOutgoing:
     'В сообщении, написанном вашим ребёнком в {{appName}}, обнаружено отмеченное слово.',
+  messageAlertTitleSearch: 'Тревожный поисковый запрос',
+  messageAlertBodySearch:
+    'В поисковом запросе на {{appName}} обнаружено отмеченное слово.',
   activityTypeMessageAlert: 'Оповещение о сообщении',
   messageCheckedTitle: 'Проверено, ничего тревожного',
   messageCheckedBody:
@@ -57,6 +65,10 @@ export const activities = {
   activityTypeMessageChecked: 'Проверено',
   appRemovedTitle: 'Приложение удалено',
   appRemovedBody: 'Приложение {{appName}} удалено с устройства ребёнка.',
+  extensionInstalledTitle: 'Расширение браузера добавлено',
+  extensionInstalledBody: 'Расширение {{appName}} добавлено в браузер ребёнка.',
+  extensionRemovedTitle: 'Расширение браузера удалено',
+  extensionRemovedBody: 'Расширение {{appName}} удалено из браузера ребёнка.',
   placeEnterTitle: 'Вход в {{placeName}}',
   placeEnterBody: 'Устройство ребёнка вошло в сохранённое место.',
   placeExitTitle: 'Выход из {{placeName}}',
@@ -120,6 +132,7 @@ export const activities = {
   filterByDevice: 'Фильтр: {{label}}',
   filterByChild: 'Показать только: {{label}}',
   openFullSosHistory: 'Открыть полную историю SOS',
+  openActivityDetails: 'Посмотреть подробности',
   unknownDevice: 'Неизвестное устройство',
   basicActivityNote:
     'События блокировки, разблокировки и устройства сохраняются в разделе «События».',

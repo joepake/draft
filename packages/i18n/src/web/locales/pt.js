@@ -134,7 +134,7 @@ export default {
       'Bloqueie o aparelho agora e libere quando quiser: o jantar, a lição de casa ou uma regra ignorada.',
     feature10Title: 'Relatório semanal',
     feature10Text:
-      'Todo domingo: tempo de tela, a média diária, o que foi bloqueado e como a semana ficou em relação à anterior.',
+      'Toda segunda-feira: tempo de tela, a média diária, o que foi bloqueado e como a semana ficou em relação à anterior.',
     feature11Title: 'Quadro de estrelas',
     feature11Text:
       'As crianças veem quantas estrelas cada uma ganhou nesta semana. Recomeça toda segunda-feira, e você decide se fica ligado.',
@@ -540,6 +540,8 @@ export default {
     nothingBlockedYet: 'Nada foi bloqueado ainda.',
     rollupNoteAi:
       'Alguns tipos foram deduzidos do nome do site em vez de corresponderem a um site conhecido, então alguns podem estar errados.',
+    webBackgroundNote:
+      'Quando ninguém está usando o aparelho, alguns apps continuam acessando a internet em segundo plano: atualizações, recomendações e verificações rodam sozinhas.',
     filterHintIos:
       'No iOS o filtro usa o controle de conteúdo adulto da Apple — o bloqueio por categoria é só no Android.',
     filterHintAndroid: 'As categorias são aplicadas pelo filtro DNS no aparelho.',
@@ -662,12 +664,13 @@ export default {
     weekOf: 'Semana {{week}}',
     range: '{{from}} – {{to}}',
     writtenAt: 'Escrito em {{when}}',
-    triggerScheduled: 'Enviado no domingo',
+    triggerScheduled: 'Enviado na segunda-feira',
     triggerManual: 'Criado por você',
     statScreenTime: 'Tempo de tela',
     statDailyAverage: 'Média diária',
     statBlockedApps: 'Apps bloqueados',
     statBlockedWebVisits: 'Sites filtrados',
+    statTasksApproved: 'Tarefas concluídas',
     trendUp: '{{value}} a mais que na semana anterior',
     trendDown: '{{value}} a menos que na semana anterior',
     trendFlat: 'Quase igual à semana anterior',
@@ -712,7 +715,7 @@ export default {
       'Este navegador não consegue salvar isso. Em vez disso, copie o resumo.',
     emptyTitle: 'Ainda não há relatório',
     emptyBody:
-      'O relatório chega todo domingo à noite. Você também pode criar o desta semana agora: ele cobre os últimos sete dias.',
+      'O relatório chega toda segunda-feira de manhã. Você também pode criar o desta semana agora: ele cobre os últimos sete dias.',
     noUsage:
       'Nenhum tempo de tela foi registrado nas últimas duas semanas, então ainda não há o que relatar. Um aparelho sem conexão não informa nada, e isso não é o mesmo que uma semana tranquila.',
     rateLimited: 'Tentativas demais. Espere um minuto.',

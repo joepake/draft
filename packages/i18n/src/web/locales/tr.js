@@ -134,7 +134,7 @@ export default {
       'Cihazı hemen kilitleyin, hazır olduğunuzda açın — akşam yemeği, ödev ya da uyulmayan bir kural.',
     feature10Title: 'Haftalık rapor',
     feature10Text:
-      'Her pazar: ekran süresi, günlük ortalama, engellenenler ve haftanın bir öncekiyle karşılaştırması.',
+      'Her pazartesi: ekran süresi, günlük ortalama, engellenenler ve haftanın bir öncekiyle karşılaştırması.',
     feature11Title: 'Yıldız tablosu',
     feature11Text:
       'Çocuklar bu hafta her birinin kaç yıldız kazandığını görür. Her pazartesi sıfırlanır ve açık olup olmayacağına siz karar verirsiniz.',
@@ -540,6 +540,8 @@ export default {
     nothingBlockedYet: 'Henüz hiçbir şey engellenmedi.',
     rollupNoteAi:
       'Bazı türler bilinen bir siteyle eşleştirilmek yerine site adından çıkarıldı, bu yüzden birkaçı yanlış olabilir.',
+    webBackgroundNote:
+      'Cihazı kimse kullanmazken de bazı uygulamalar arka planda internete bağlanır: güncellemeler, öneriler ve kontroller kendiliğinden çalışır.',
     filterHintIos:
       'iOS’ta filtre, Apple’ın yetişkin içerik denetimini kullanır — kategori bazlı engelleme yalnızca Android’de vardır.',
     filterHintAndroid: 'Kategoriler cihazdaki DNS filtresi tarafından uygulanır.',
@@ -663,12 +665,13 @@ export default {
     weekOf: '{{week}} haftası',
     range: '{{from}} – {{to}}',
     writtenAt: '{{when}} tarihinde yazıldı',
-    triggerScheduled: 'Pazar gönderildi',
+    triggerScheduled: 'Pazartesi gönderildi',
     triggerManual: 'Sizin oluşturduğunuz',
     statScreenTime: 'Ekran süresi',
     statDailyAverage: 'Günlük ortalama',
     statBlockedApps: 'Engellenen uygulamalar',
     statBlockedWebVisits: 'Filtrelenen siteler',
+    statTasksApproved: 'Tamamlanan görevler',
     trendUp: 'Önceki haftadan {{value}} daha fazla',
     trendDown: 'Önceki haftadan {{value}} daha az',
     trendFlat: 'Önceki haftayla hemen hemen aynı',
@@ -707,7 +710,7 @@ export default {
     shareFailed: 'Bu tarayıcı bunu kaydedemiyor. Bunun yerine özeti kopyalayın.',
     emptyTitle: 'Henüz rapor yok',
     emptyBody:
-      'Her Pazar akşamı bir rapor gelir. Bu haftanınkini şimdi yazabilirsiniz — son yedi günü kapsar.',
+      'Her Pazartesi sabahı bir rapor gelir. Bu haftanınkini şimdi yazabilirsiniz — son yedi günü kapsar.',
     noUsage:
       'Son iki haftada ekran süresi kaydedilmedi, bu yüzden henüz raporlanacak bir şey yok. Çevrimdışı bir cihaz hiçbir şey bildirmez; bu, sakin bir haftayla aynı şey değildir.',
     rateLimited: 'Çok fazla deneme. Bir dakika bekleyin.',

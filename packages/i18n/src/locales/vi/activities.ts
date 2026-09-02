@@ -34,6 +34,11 @@ export const activities = {
   activityTypePlaceExit: 'Rời địa điểm',
   activityTypeTamper: 'Bảo vệ',
   activityTypeScreenTime: 'Thời gian sử dụng',
+  activityTypeCheckIn: 'Xác nhận an toàn',
+  activityTypeLocationRequest: 'Vị trí',
+  activityTypeTimeRequest: 'Xin thêm giờ',
+  activityTypeRewardTask: 'Nhiệm vụ thưởng',
+  activityTypeSearchAlert: 'Cảnh báo tìm kiếm',
   activityTypeWebFilter: 'Chặn nội dung web',
   activityTypeEmergency: 'Khẩn cấp',
   activityTypeUnknown: 'Hoạt động',
@@ -50,6 +55,9 @@ export const activities = {
   messageAlertBody: 'Phát hiện từ ngữ đáng chú ý trong {{appName}}.',
   messageAlertBodyOutgoing:
     'Phát hiện từ ngữ đáng chú ý trong tin nhắn con bạn soạn trên {{appName}}.',
+  messageAlertTitleSearch: 'Nội dung tìm kiếm đáng chú ý',
+  messageAlertBodySearch:
+    'Phát hiện từ ngữ đáng chú ý trong nội dung con bạn tìm kiếm trên {{appName}}.',
   activityTypeMessageAlert: 'Cảnh báo tin nhắn',
   messageCheckedTitle: 'Đã kiểm tra, không có gì đáng lo',
   messageCheckedBody:
@@ -57,6 +65,10 @@ export const activities = {
   activityTypeMessageChecked: 'Đã kiểm tra',
   appRemovedTitle: 'Gỡ ứng dụng',
   appRemovedBody: 'Ứng dụng {{appName}} vừa được gỡ khỏi thiết bị của trẻ.',
+  extensionInstalledTitle: 'Đã thêm tiện ích trình duyệt',
+  extensionInstalledBody: 'Tiện ích {{appName}} vừa được thêm vào trình duyệt của trẻ.',
+  extensionRemovedTitle: 'Đã gỡ tiện ích trình duyệt',
+  extensionRemovedBody: 'Tiện ích {{appName}} vừa được gỡ khỏi trình duyệt của trẻ.',
   placeEnterTitle: 'Đã vào {{placeName}}',
   placeEnterBody: 'Thiết bị của trẻ đã vào một địa điểm đã lưu.',
   placeExitTitle: 'Đã rời {{placeName}}',
@@ -120,6 +132,7 @@ export const activities = {
   filterByDevice: 'Lọc theo {{label}}',
   filterByChild: 'Chỉ hiện {{label}}',
   openFullSosHistory: 'Xem toàn bộ lịch sử SOS',
+  openActivityDetails: 'Xem chi tiết',
   unknownDevice: 'Thiết bị không xác định',
   basicActivityNote:
     'Các sự kiện khóa, mở khóa và thiết bị đều được ghi trong Nhật ký.',

@@ -49,18 +49,16 @@
  */
 
 import type { UsageAppBreakdown, UsageTimeline } from '@kidgate/schema/usageDay';
-import { USAGE_TIMELINE_MINUTES, USAGE_TIMELINE_USED } from '@kidgate/schema/usageDay';
-import {
-  LATE_NIGHT_EVENING_FROM,
-  LATE_NIGHT_MIN_MINUTES,
-  LATE_NIGHT_MORNING_TO,
-} from './digestFindings';
+import { USAGE_TIMELINE_MINUTES } from '@kidgate/schema/usageDay';
+import { lateNightHits } from './digestFindings';
 import {
   isTimeline,
   mergeTimelines,
   timelineMinutesUnmeasured,
   timelineMinutesUsed,
 } from './usageTimeline';
+
+export { lateNightHits } from './digestFindings';
 
 /** One device-day, in the smallest shape both callers already have. */
 export interface ChildUsageDay {
@@ -176,31 +174,6 @@ export interface ChildAppTotal {
 
 function safeMinutes(value: number): number {
   return Number.isFinite(value) ? Math.max(0, Math.round(value)) : 0;
-}
-
-/**
- * Whether a day's merged timeline counts as a late night.
- *
- * The same window and threshold `digestFindings` applies per device, applied
- * once to the person: a child who watched the television until midnight and
- * then read on a tablet until one has had one late night, not two.
- */
-export function isLateNight(timeline: UsageTimeline | undefined): boolean {
-  if (!isTimeline(timeline)) {
-    return false;
-  }
-  let minutes = 0;
-  for (
-    let index = LATE_NIGHT_EVENING_FROM;
-    index < USAGE_TIMELINE_MINUTES;
-    index += 1
-  ) {
-    if (timeline[index] === USAGE_TIMELINE_USED) minutes += 1;
-  }
-  for (let index = 0; index < LATE_NIGHT_MORNING_TO; index += 1) {
-    if (timeline[index] === USAGE_TIMELINE_USED) minutes += 1;
-  }
-  return minutes >= LATE_NIGHT_MIN_MINUTES;
 }
 
 /**
@@ -320,7 +293,6 @@ export function childUsageTotals(
   let measured = 0;
   let unmeasured = 0;
   let timedDays = 0;
-  let lateNights = 0;
   let exact = true;
 
   for (const day of days) {
@@ -337,11 +309,13 @@ export function childUsageTotals(
       timedDays += 1;
       unmeasured += dark;
       measured += USAGE_TIMELINE_MINUTES - dark;
-      if (isLateNight(day.timeline)) {
-        lateNights += 1;
-      }
     }
   }
+
+  // Computed over the whole run rather than accumulated day-by-day above: a
+  // night is a pairing of one day's evening with the *next* day's morning
+  // (see `lateNightHits`), so it cannot be decided from one day in isolation.
+  const lateNights = lateNightHits(days).length;
 
   const screenOnMinutes = exact && timedDays > 0 ? unionMinutes : null;
 

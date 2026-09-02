@@ -134,7 +134,7 @@ export default {
       'Verrouillez l’appareil tout de suite et libérez-le quand vous le décidez — le dîner, les devoirs, ou une règle ignorée.',
     feature10Title: 'Rapport hebdomadaire',
     feature10Text:
-      'Chaque dimanche : temps d’écran, moyenne quotidienne, ce qui a été bloqué, et la comparaison avec la semaine précédente.',
+      'Chaque lundi : temps d’écran, moyenne quotidienne, ce qui a été bloqué, et la comparaison avec la semaine précédente.',
     feature11Title: 'Tableau des étoiles',
     feature11Text:
       'Les enfants voient combien d’étoiles chacun a gagnées cette semaine. Il repart chaque lundi, et c’est vous qui décidez s’il est activé.',
@@ -544,6 +544,8 @@ export default {
     nothingBlockedYet: "Rien n'a encore été bloqué.",
     rollupNoteAi:
       'Certains types ont été déduits du nom du site au lieu de correspondre à un site connu — quelques-uns peuvent être faux.',
+    webBackgroundNote:
+      'Quand personne n’utilise l’appareil, certaines applications accèdent quand même à Internet en arrière-plan : mises à jour, recommandations et synchronisations tournent seules.',
     filterHintIos:
       "Sur iOS, le filtre utilise le contrôle des contenus pour adultes d'Apple — le blocage par catégorie n'existe que sur Android.",
     filterHintAndroid:
@@ -668,12 +670,13 @@ export default {
     weekOf: 'Semaine {{week}}',
     range: '{{from}} – {{to}}',
     writtenAt: 'Écrit le {{when}}',
-    triggerScheduled: 'Envoyé dimanche',
+    triggerScheduled: 'Envoyé lundi',
     triggerManual: 'Créé par vous',
     statScreenTime: "Temps d'écran",
     statDailyAverage: 'Moyenne quotidienne',
     statBlockedApps: 'Applis bloquées',
     statBlockedWebVisits: 'Sites filtrés',
+    statTasksApproved: 'Tâches terminées',
     trendUp: '{{value}} de plus que la semaine précédente',
     trendDown: '{{value}} de moins que la semaine précédente',
     trendFlat: 'À peu près comme la semaine précédente',
@@ -717,7 +720,7 @@ export default {
     shareFailed: 'Ce navigateur ne peut pas enregistrer cela. Copiez plutôt le résumé.',
     emptyTitle: 'Pas encore de rapport',
     emptyBody:
-      'Un rapport arrive chaque dimanche soir. Vous pouvez écrire celui de cette semaine maintenant — il couvre les sept derniers jours.',
+      'Un rapport arrive chaque lundi matin. Vous pouvez écrire celui de cette semaine maintenant — il couvre les sept derniers jours.',
     noUsage:
       "Aucun temps d'écran n'a été enregistré ces deux dernières semaines, il n'y a donc rien à rapporter. Un appareil hors ligne ne rapporte rien, ce qui n'est pas la même chose qu'une semaine calme.",
     rateLimited: 'Trop de tentatives. Patientez une minute.',

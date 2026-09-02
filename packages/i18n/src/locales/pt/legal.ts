@@ -27,7 +27,7 @@ export const legal = {
       },
       {
         title: '6. Armazenamento, transferências e segurança',
-        body: 'Os dados podem ser armazenados ou processados fora do país do usuário. O KidGate utiliza salvaguardas técnicas e organizacionais razoáveis, incluindo controles de acesso, práticas de privilégio mínimo e transporte seguro quando suportado pela plataforma. Nenhum sistema é completamente seguro; o KidGate não pode garantir que os dados nunca serão perdidos, acessados sem autorização ou interrompidos.',
+        body: 'Os dados podem ser armazenados ou processados fora do país do usuário. O KidGate utiliza salvaguardas técnicas e organizacionais razoáveis, incluindo controles de acesso, práticas de privilégio mínimo e transporte seguro quando suportado pela plataforma. Nenhum sistema é completamente seguro; o KidGate não pode garantir que os dados nunca serão perdidos, acessados sem autorização ou interrompidos. O pessoal autorizado da KidGate pode aceder à configuração da conta, aos dispositivos e aos dados de atividade nela apresentados quando necessário para responder a um pedido de apoio ou diagnosticar uma falha técnica. Este acesso está limitado a pessoal autorizado, é utilizado exclusivamente para fins de apoio e fica registado.',
       },
       {
         title: '7. Retenção e exclusão',

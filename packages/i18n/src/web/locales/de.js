@@ -134,7 +134,7 @@ export default {
       'Sperre das Gerät sofort und gib es wieder frei, wenn du so weit bist — Abendessen, Hausaufgaben oder eine ignorierte Regel.',
     feature10Title: 'Wochenbericht',
     feature10Text:
-      'Jeden Sonntag: Bildschirmzeit, Tagesdurchschnitt, was blockiert wurde und wie die Woche im Vergleich zur letzten aussieht.',
+      'Jeden Montag: Bildschirmzeit, Tagesdurchschnitt, was blockiert wurde und wie die Woche im Vergleich zur letzten aussieht.',
     feature11Title: 'Sternetafel',
     feature11Text:
       'Kinder sehen, wie viele Sterne jedes von ihnen diese Woche verdient hat. Montags beginnt sie von vorn, und du entscheidest, ob es sie überhaupt gibt.',
@@ -544,6 +544,8 @@ export default {
     nothingBlockedYet: 'Es wurde noch nichts blockiert.',
     rollupNoteAi:
       'Einige Arten wurden aus dem Seitennamen abgeleitet statt einer bekannten Seite zugeordnet — ein paar können daneben liegen.',
+    webBackgroundNote:
+      'Wenn niemand das Gerät benutzt, gehen einige Apps im Hintergrund weiter ins Internet — Updates, Empfehlungen und Abgleiche laufen von selbst.',
     filterHintIos:
       'Unter iOS nutzt der Filter Apples Sperre für Erwachseneninhalte — das Blocken einzelner Kategorien gibt es nur unter Android.',
     filterHintAndroid: 'Die Kategorien setzt der DNS-Filter auf dem Gerät durch.',
@@ -668,12 +670,13 @@ export default {
     weekOf: 'Woche {{week}}',
     range: '{{from}} – {{to}}',
     writtenAt: 'Geschrieben am {{when}}',
-    triggerScheduled: 'Sonntag versendet',
+    triggerScheduled: 'Montag versendet',
     triggerManual: 'Selbst erstellt',
     statScreenTime: 'Bildschirmzeit',
     statDailyAverage: 'Tagesdurchschnitt',
     statBlockedApps: 'Blockierte Apps',
     statBlockedWebVisits: 'Gefilterte Seiten',
+    statTasksApproved: 'Erledigte Aufgaben',
     trendUp: '{{value}} mehr als in der Vorwoche',
     trendDown: '{{value}} weniger als in der Vorwoche',
     trendFlat: 'Etwa wie in der Vorwoche',
@@ -717,7 +720,7 @@ export default {
       'Dieser Browser kann das nicht sichern. Stattdessen die Zusammenfassung kopieren.',
     emptyTitle: 'Noch kein Bericht',
     emptyBody:
-      'Jeden Sonntagabend kommt ein Bericht. Der Bericht dieser Woche lässt sich auch jetzt schreiben — er umfasst die letzten sieben Tage.',
+      'Jeden Montagmorgen kommt ein Bericht. Der Bericht dieser Woche lässt sich auch jetzt schreiben — er umfasst die letzten sieben Tage.',
     noUsage:
       'In den letzten zwei Wochen wurde keine Bildschirmzeit erfasst, daher gibt es noch nichts zu berichten. Ein Gerät ohne Verbindung meldet nichts, und das ist nicht dasselbe wie eine ruhige Woche.',
     rateLimited: 'Zu viele Versuche. Eine Minute warten.',

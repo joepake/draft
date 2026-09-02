@@ -3,7 +3,7 @@ export const protection = {
   permissionNotSetUpYet: 'यह अनुमति अभी तक सेट नहीं की गई है।',
   permissionRestrictedByIos: 'यह अनुमति iOS सेटिंग्स द्वारा प्रतिबंधित है।',
   permissionStatusUnknown: 'KidGate इस अनुमति की स्थिति नहीं पढ़ सका।',
-  kidGateOffline: 'KidGate ऑफ़लाइन है',
+  kidGateOffline: 'KidGate 24 घंटे से ज़्यादा निष्क्रिय',
   childAppMayBeOffline: 'बच्चे के डिवाइस पर ऐप बंद, हटाया गया या ऑफ़लाइन हो सकता है।',
   statusNotUpdatedYet: 'स्थिति अभी अपडेट नहीं हुई',
   openKidGateOnChildPhone: 'कृपया बच्चे के डिवाइस पर एक बार KidGate खोलें।',
@@ -59,7 +59,7 @@ export const protection = {
   protectionsLookHealthy: 'KidGate की सुरक्षा ठीक से काम कर रही है।',
   healthBadgeProtected: 'हरा — सुरक्षित',
   healthBadgeWarning: 'पीला — सेटअप की ज़रूरत',
-  healthBadgeInactive: 'लाल — बच्चे का डिवाइस ऑफ़लाइन',
+  healthBadgeInactive: 'लाल — बच्चे का डिवाइस 24 घंटे से ज़्यादा निष्क्रिय',
   iosFeatureSupportEvaluating:
     'iOS पर इस सुविधा के समर्थन का मूल्यांकन किया जा रहा है।',
   iosUpgradeRequiredNote:

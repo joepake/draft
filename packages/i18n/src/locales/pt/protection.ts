@@ -4,7 +4,7 @@ export const protection = {
   permissionNotSetUpYet: 'Esta permissão ainda não foi configurada.',
   permissionRestrictedByIos: 'Esta permissão está restrita pelos ajustes do iOS.',
   permissionStatusUnknown: 'O KidGate não conseguiu ler o status desta permissão.',
-  kidGateOffline: 'KidGate off-line',
+  kidGateOffline: 'KidGate em silêncio há mais de 24 h',
   childAppMayBeOffline:
     'O app no dispositivo da criança pode estar fechado, excluído ou off-line.',
   statusNotUpdatedYet: 'Status ainda não atualizado',
@@ -64,7 +64,7 @@ export const protection = {
   protectionsLookHealthy: 'As proteções do KidGate estão funcionando bem.',
   healthBadgeProtected: 'Verde — protegido',
   healthBadgeWarning: 'Amarelo — precisa de configuração',
-  healthBadgeInactive: 'Vermelho — dispositivo da criança off-line',
+  healthBadgeInactive: 'Vermelho — dispositivo da criança em silêncio há mais de 24 h',
   iosFeatureSupportEvaluating: 'O suporte a este recurso no iOS está em avaliação.',
   iosUpgradeRequiredNote:
     'Isto precisa do iOS 16 ou mais recente. Atualize o dispositivo da criança em Ajustes › Geral › Atualização de Software. Se nenhuma atualização for oferecida, este iPad ou iPhone é antigo demais para o suporte da Apple.',

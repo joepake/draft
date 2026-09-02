@@ -111,14 +111,19 @@ export function periodDays(fromDate: string, toDate: string): number {
 }
 
 export interface ReportStat {
-  key: 'screenTime' | 'dailyAverage' | 'blockedApps' | 'blockedWebVisits';
-  /** Minutes for the two duration stats, a plain count for the other two. */
+  key:
+    | 'screenTime'
+    | 'dailyAverage'
+    | 'blockedApps'
+    | 'blockedWebVisits'
+    | 'tasksApproved';
+  /** Minutes for the two duration stats, a plain count for the rest. */
   value: number;
   unit: 'minutes' | 'count';
 }
 
 /**
- * The four figures every rendering of a report shows, in one order.
+ * The five figures every rendering of a report shows, in one order.
  *
  * The daily average is derived here rather than at each call site because it is
  * the one number in the set that is not stored — and a page dividing by 7 while
@@ -126,7 +131,7 @@ export interface ReportStat {
  * module header warns about. A short first week is a real case: the digest job
  * runs against whatever days exist.
  */
-export type ReportStats = [ReportStat, ReportStat, ReportStat, ReportStat];
+export type ReportStats = [ReportStat, ReportStat, ReportStat, ReportStat, ReportStat];
 
 /** A tuple, not an array: the first entry is the hero figure every renderer leads with. */
 export function reportStats(report: FamilyReport): ReportStats {
@@ -151,6 +156,14 @@ export function reportStats(report: FamilyReport): ReportStats {
     {
       key: 'blockedWebVisits',
       value: Math.max(0, report.blockedWebVisits || 0),
+      unit: 'count',
+    },
+    {
+      key: 'tasksApproved',
+      // Absent on every report predating this field, and that is "not
+      // counted" rather than a real zero — but a stat tile has no way to draw
+      // that distinction from a plain number, so it reads as zero here.
+      value: Math.max(0, report.tasksApproved || 0),
       unit: 'count',
     },
   ];

@@ -144,7 +144,7 @@ export default {
       'Lock the device now and release it when you are ready — dinner, homework, or a rule that was ignored.',
     feature10Title: 'Weekly report',
     feature10Text:
-      'Every Sunday: screen time, the daily average, what was blocked, and how the week compares with the one before.',
+      'Every Monday: screen time, the daily average, what was blocked, and how the week compares with the one before.',
     feature11Title: 'Star chart',
     feature11Text:
       'Children can see how many stars each of them earned this week. It starts again every Monday, and you decide whether it is on at all.',
@@ -565,6 +565,8 @@ export default {
     nothingBlockedYet: 'Nothing has been blocked yet.',
     rollupNoteAi:
       'Some kinds were worked out from the site name rather than matched to a known site, so a few may be off.',
+    webBackgroundNote:
+      'When nobody is using the device, some apps still reach the internet in the background — updates, recommendations and check-ins run on their own.',
     filterHintIos:
       'On iOS the filter uses Apple’s adult-content control — per-category blocking is Android only.',
     filterHintAndroid: 'Categories are enforced by the on-device DNS filter.',
@@ -683,13 +685,14 @@ export default {
     weekOf: 'Week {{week}}',
     range: '{{from}} – {{to}}',
     writtenAt: 'Written {{when}}',
-    triggerScheduled: 'Sent Sunday',
+    triggerScheduled: 'Sent Monday',
     triggerManual: 'Created by you',
 
     statScreenTime: 'Screen Time',
     statDailyAverage: 'Daily average',
     statBlockedApps: 'Apps blocked',
     statBlockedWebVisits: 'Sites filtered',
+    statTasksApproved: 'Tasks completed',
 
     trendUp: '{{value}} more than the week before',
     trendDown: '{{value}} less than the week before',
@@ -734,7 +737,7 @@ export default {
 
     emptyTitle: 'No report yet',
     emptyBody:
-      'A report arrives every Sunday evening. You can write this week’s now — it covers the last seven days.',
+      'A report arrives every Monday morning. You can write this week’s now — it covers the last seven days.',
     noUsage:
       'No screen time was recorded over the last two weeks, so there is nothing to report yet. A device that is offline reports nothing, which is not the same as a quiet week.',
     rateLimited: 'Too many attempts. Give it a minute.',

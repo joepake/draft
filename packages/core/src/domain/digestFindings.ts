@@ -307,36 +307,74 @@ function appMinutes(week: DigestWeek): Map<string, { label: string; minutes: num
   return totals;
 }
 
-/**
- * Minutes used inside the late window, and how late it ran.
- *
- * The returned minute is on a **24–29 hour clock**: 23:40 is 1420, 00:30 the
- * next morning is 1470. One number that sorts correctly across midnight is
- * what lets "the latest night this week" be a `Math.max`. Renderers take
- * `latestMinute % 1440` to get a wall clock back.
- */
-function lateNightOf(timeline: UsageTimeline): {
-  minutes: number;
+export interface LateNightHit {
+  date: string;
+  /** 24–29h clock; renderers take `% 1440` for a wall clock. */
   latestMinute: number;
-} {
-  let minutes = 0;
-  let latestMinute = -1;
+}
 
-  for (let index = LATE_NIGHT_EVENING_FROM; index < timeline.length; index += 1) {
-    if (timeline[index] === USAGE_TIMELINE_USED) {
-      minutes += 1;
-      latestMinute = Math.max(latestMinute, index);
+/**
+ * Real late nights across a run of calendar days — one entry per night,
+ * never two for one continuous session.
+ *
+ * `@kidgate/schema/usageDay` timelines are one bit per minute of **the
+ * device's local day**, so a session that runs past midnight writes minutes
+ * into two calendar days: the tail end of day N's evening, and the start of
+ * day N+1's early morning. Evaluating each day's own evening-plus-morning in
+ * isolation (the previous shape of this function) counted that one session
+ * twice — once as day N's late night, again as day N+1's. `nights: 8` for a
+ * seven-day week was the visible symptom.
+ *
+ * The fix pairs day N's evening (`LATE_NIGHT_EVENING_FROM`→end) with day
+ * N+1's morning (`0`→`LATE_NIGHT_MORNING_TO`) as **one** night, attributed to
+ * day N — every minute of a crossing session now counts toward exactly the
+ * night it started on.
+ *
+ * Two edges this leaves deliberately unresolved rather than guessed at:
+ * **the first day's own early morning** may be the tail of a night that
+ * started before this run, and there is no earlier day in `days` to pair it
+ * with — it is not counted, because attributing it to a night this array
+ * cannot see would be a fabrication, not a floor. **The last day's evening**
+ * has no following morning to confirm it ran past midnight; it is still
+ * counted on its own minutes, same as it always was for a week's final day.
+ */
+export function lateNightHits(
+  days: readonly { date: string; timeline?: UsageTimeline }[],
+): LateNightHit[] {
+  const hits: LateNightHit[] = [];
+
+  for (let i = 0; i < days.length; i += 1) {
+    const day = days[i];
+    if (!day?.timeline) {
+      continue;
+    }
+
+    let minutes = 0;
+    let latestMinute = -1;
+
+    for (let index = LATE_NIGHT_EVENING_FROM; index < day.timeline.length; index += 1) {
+      if (day.timeline[index] === USAGE_TIMELINE_USED) {
+        minutes += 1;
+        latestMinute = Math.max(latestMinute, index);
+      }
+    }
+
+    const next = days[i + 1];
+    if (next?.timeline) {
+      for (let index = 0; index < LATE_NIGHT_MORNING_TO; index += 1) {
+        if (next.timeline[index] === USAGE_TIMELINE_USED) {
+          minutes += 1;
+          latestMinute = Math.max(latestMinute, index + 1440);
+        }
+      }
+    }
+
+    if (minutes >= LATE_NIGHT_MIN_MINUTES) {
+      hits.push({ date: day.date, latestMinute });
     }
   }
 
-  for (let index = 0; index < LATE_NIGHT_MORNING_TO; index += 1) {
-    if (timeline[index] === USAGE_TIMELINE_USED) {
-      minutes += 1;
-      latestMinute = Math.max(latestMinute, index + 1440);
-    }
-  }
-
-  return { minutes, latestMinute };
+  return hits;
 }
 
 function usageTrend(input: DigestInput): Finding | null {
@@ -371,28 +409,18 @@ function usageTrend(input: DigestInput): Finding | null {
 }
 
 function lateNight(week: DigestWeek): Finding | null {
-  let nights = 0;
-  let latestMinute = -1;
+  const hits = lateNightHits(week.days);
 
-  for (const day of week.days) {
-    if (!day.timeline) {
-      continue;
-    }
-    const late = lateNightOf(day.timeline);
-    if (late.minutes >= LATE_NIGHT_MIN_MINUTES) {
-      nights += 1;
-      latestMinute = Math.max(latestMinute, late.latestMinute);
-    }
-  }
-
-  if (nights < LATE_NIGHT_MIN_NIGHTS) {
+  if (hits.length < LATE_NIGHT_MIN_NIGHTS) {
     return null;
   }
 
+  const latestMinute = Math.max(...hits.map(hit => hit.latestMinute));
+
   return {
     kind: 'lateNight',
-    severity: nights >= LATE_NIGHT_ATTENTION_NIGHTS ? 'attention' : 'notable',
-    params: { nights, latestMinute },
+    severity: hits.length >= LATE_NIGHT_ATTENTION_NIGHTS ? 'attention' : 'notable',
+    params: { nights: hits.length, latestMinute },
   };
 }
 
@@ -550,16 +578,7 @@ function timelineDays(week: DigestWeek): number {
 
 /** Nights in the week whose late window carries real use. */
 function lateNightCount(week: DigestWeek): number {
-  let nights = 0;
-  for (const day of week.days) {
-    if (!day.timeline) {
-      continue;
-    }
-    if (lateNightOf(day.timeline).minutes >= LATE_NIGHT_MIN_MINUTES) {
-      nights += 1;
-    }
-  }
-  return nights;
+  return lateNightHits(week.days).length;
 }
 
 /**

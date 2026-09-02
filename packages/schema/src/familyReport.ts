@@ -241,6 +241,18 @@ export interface FamilyReport {
   previousScreenMinutes: number;
   blockedAppOpens: number;
   blockedWebVisits: number;
+  /**
+   * Reward tasks approved this week, across every child.
+   *
+   * **Optional, and absent on every report written before this field** — same
+   * backfill rule as `children`/`people`: a renderer treats a missing value as
+   * "not counted" rather than as a real zero. Collected server-side by
+   * `collectFamilyEngagement` alongside `checkInsAnswered`/`requestsSent`,
+   * which are not stored here — this is the one of the three a parent reads as
+   * a figure rather than a finding sentence, so it is the one promoted to a
+   * stat tile. The others still reach a report only through `findings`.
+   */
+  tasksApproved?: number;
 
   findings: FamilyReportFinding[];
 

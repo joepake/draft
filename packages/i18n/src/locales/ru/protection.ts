@@ -3,7 +3,7 @@ export const protection = {
   permissionNotSetUpYet: 'Это разрешение ещё не настроено.',
   permissionRestrictedByIos: 'Это разрешение ограничено настройками iOS.',
   permissionStatusUnknown: 'KidGate не смог определить состояние этого разрешения.',
-  kidGateOffline: 'KidGate не в сети',
+  kidGateOffline: 'KidGate молчит более 24 ч',
   childAppMayBeOffline:
     'Приложение на устройстве ребёнка может быть закрыто, удалено или не в сети.',
   statusNotUpdatedYet: 'Статус ещё не обновлён',
@@ -62,7 +62,7 @@ export const protection = {
   protectionsLookHealthy: 'Защита KidGate работает исправно.',
   healthBadgeProtected: 'Зелёный — защищено',
   healthBadgeWarning: 'Жёлтый — требуется настройка',
-  healthBadgeInactive: 'Красный — устройство ребёнка не в сети',
+  healthBadgeInactive: 'Красный — устройство ребёнка молчит более 24 ч',
   iosFeatureSupportEvaluating: 'Поддержка этой функции в iOS сейчас оценивается.',
   iosUpgradeRequiredNote:
     'Для этого нужна iOS 16 или новее. Обновите устройство ребёнка в «Настройки › Основные › Обновление ПО». Если обновление не предлагается, этот iPad или iPhone слишком старый и Apple его больше не поддерживает.',

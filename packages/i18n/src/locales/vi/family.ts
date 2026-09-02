@@ -55,7 +55,7 @@ export const family = {
   // The footer strip: children who hold no device get no group of their own.
   childrenWithoutDeviceTitle: 'Trẻ chưa có thiết bị',
   // Child detail screen.
-  childDetailStarsWell: 'Sao tuần này',
+  childDetailStarsWell: 'Nhiệm vụ tuần này',
   childStarsA11y: 'Sao tuần này: {{count}}',
   childDetailDevicesTitle: 'Thiết bị',
   childDetailAssignMore: 'Gán thêm thiết bị…',
@@ -86,7 +86,7 @@ export const family = {
   chipProtectedCount: '{{count}} đang được bảo vệ',
   childDevicesProtected: '{{count}} thiết bị đang được bảo vệ',
   chipHealthWarnCount: '{{count}} cần thiết lập',
-  chipHealthInactiveCount: '{{count}} ngoại tuyến',
+  chipHealthInactiveCount: '{{count}} mất kết nối quá 24 giờ',
   chipBlockedCount: '{{count}} đang bị chặn',
   healthProtected: 'Đang được bảo vệ',
   buildOutdated: 'Có bản mới',

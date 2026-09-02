@@ -106,7 +106,7 @@ export const family = {
   chipHealthWarnCount: '{{count}}台が設定必要',
   chipHealthWarnCount_one: '{{count}}台が設定必要',
 
-  chipHealthInactiveCount: '{{count}}台オフライン',
+  chipHealthInactiveCount: '{{count}}台 24時間以上反応なし',
 
   chipBlockedCount: '{{count}}台ロック中',
 

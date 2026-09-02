@@ -3,7 +3,7 @@ export const protection = {
   permissionNotSetUpYet: 'Quyền này chưa được thiết lập.',
   permissionRestrictedByIos: 'Quyền bị hạn chế bởi cài đặt iOS.',
   permissionStatusUnknown: 'KidGate không đọc được trạng thái của quyền này.',
-  kidGateOffline: 'KidGate ngoại tuyến',
+  kidGateOffline: 'KidGate im lặng quá 24 giờ',
   childAppMayBeOffline:
     'Ứng dụng trên thiết bị của trẻ có thể đã đóng, bị gỡ bỏ hoặc đang ngoại tuyến.',
   statusNotUpdatedYet: 'Trạng thái chưa được cập nhật',
@@ -61,7 +61,7 @@ export const protection = {
   protectionsLookHealthy: 'Các tính năng bảo vệ của KidGate đang hoạt động tốt.',
   healthBadgeProtected: 'Xanh — đang được bảo vệ',
   healthBadgeWarning: 'Vàng — cần thiết lập',
-  healthBadgeInactive: 'Đỏ — thiết bị của trẻ ngoại tuyến',
+  healthBadgeInactive: 'Đỏ — thiết bị của trẻ im lặng quá 24 giờ',
   iosFeatureSupportEvaluating: 'Đang kiểm tra khả năng hỗ trợ tính năng trên iOS.',
   iosUpgradeRequiredNote:
     'Tính năng này cần iOS 16 trở lên. Hãy cập nhật thiết bị của trẻ trong Cài đặt › Cài đặt chung › Cập nhật phần mềm. Nếu không có bản cập nhật nào, thiết bị đã quá cũ để Apple hỗ trợ.',

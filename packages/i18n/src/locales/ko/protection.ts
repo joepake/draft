@@ -3,7 +3,7 @@ export const protection = {
   permissionNotSetUpYet: '이 권한은 아직 설정되지 않았습니다.',
   permissionRestrictedByIos: '이 권한은 iOS 설정에 의해 제한되어 있습니다.',
   permissionStatusUnknown: 'KidGate가 이 권한의 상태를 읽지 못했습니다.',
-  kidGateOffline: 'KidGate 오프라인',
+  kidGateOffline: 'KidGate 24시간 넘게 무응답',
   childAppMayBeOffline:
     '자녀 기기의 앱이 종료되었거나 삭제되었거나 오프라인일 수 있습니다.',
   statusNotUpdatedYet: '상태가 아직 업데이트되지 않음',
@@ -55,7 +55,7 @@ export const protection = {
   protectionsLookHealthy: 'KidGate 보호 기능이 정상적으로 작동하고 있습니다.',
   healthBadgeProtected: '초록 — 보호 중',
   healthBadgeWarning: '노랑 — 설정 필요',
-  healthBadgeInactive: '빨강 — 자녀 기기 오프라인',
+  healthBadgeInactive: '빨강 — 자녀 기기 24시간 넘게 무응답',
   iosFeatureSupportEvaluating: 'iOS에서 이 기능의 지원 여부를 검토하고 있습니다.',
   iosUpgradeRequiredNote:
     '이 기능에는 iOS 16 이상이 필요합니다. 자녀 기기를 설정 › 일반 › 소프트웨어 업데이트에서 업데이트하세요. 업데이트가 제공되지 않으면 이 iPad 또는 iPhone은 너무 오래되어 Apple이 지원하지 않습니다.',

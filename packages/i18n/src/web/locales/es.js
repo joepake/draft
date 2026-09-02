@@ -134,7 +134,7 @@ export default {
       'Bloquea el dispositivo ahora y libéralo cuando quieras: la cena, los deberes o una norma que se saltó.',
     feature10Title: 'Informe semanal',
     feature10Text:
-      'Cada domingo: tiempo de pantalla, la media diaria, lo que se bloqueó y cómo va la semana frente a la anterior.',
+      'Cada lunes: tiempo de pantalla, la media diaria, lo que se bloqueó y cómo va la semana frente a la anterior.',
     feature11Title: 'Tabla de estrellas',
     feature11Text:
       'Los niños ven cuántas estrellas ganó cada uno esta semana. Empieza de nuevo cada lunes, y tú decides si está activada.',
@@ -542,6 +542,8 @@ export default {
     nothingBlockedYet: 'Todavía no se ha bloqueado nada.',
     rollupNoteAi:
       'Algunos tipos se dedujeron del nombre del sitio en vez de coincidir con uno conocido, así que alguno puede fallar.',
+    webBackgroundNote:
+      'Cuando nadie usa el dispositivo, algunas apps siguen accediendo a Internet en segundo plano: actualizaciones, recomendaciones y comprobaciones funcionan solas.',
     filterHintIos:
       'En iOS el filtro usa el control de contenido para adultos de Apple; el bloqueo por categorías es solo para Android.',
     filterHintAndroid: 'Las categorías las aplica el filtro DNS del dispositivo.',
@@ -665,12 +667,13 @@ export default {
     weekOf: 'Semana {{week}}',
     range: '{{from}} – {{to}}',
     writtenAt: 'Escrito el {{when}}',
-    triggerScheduled: 'Enviado el domingo',
+    triggerScheduled: 'Enviado el lunes',
     triggerManual: 'Creado por ti',
     statScreenTime: 'Tiempo de pantalla',
     statDailyAverage: 'Media diaria',
     statBlockedApps: 'Apps bloqueadas',
     statBlockedWebVisits: 'Sitios filtrados',
+    statTasksApproved: 'Tareas completadas',
     trendUp: '{{value}} más que la semana anterior',
     trendDown: '{{value}} menos que la semana anterior',
     trendFlat: 'Prácticamente igual que la semana anterior',
@@ -714,7 +717,7 @@ export default {
     shareFailed: 'Este navegador no puede guardarlo. Copia el resumen en su lugar.',
     emptyTitle: 'Todavía no hay informe',
     emptyBody:
-      'Cada domingo por la tarde llega un informe. Puedes escribir el de esta semana ahora: cubre los últimos siete días.',
+      'Cada lunes por la mañana llega un informe. Puedes escribir el de esta semana ahora: cubre los últimos siete días.',
     noUsage:
       'No se registró tiempo de pantalla en las últimas dos semanas, así que todavía no hay nada que informar. Un dispositivo sin conexión no informa nada, y eso no es lo mismo que una semana tranquila.',
     rateLimited: 'Demasiados intentos. Espera un minuto.',

@@ -134,7 +134,7 @@ export default {
       'Blocca il dispositivo subito e sbloccalo quando vuoi: la cena, i compiti o una regola ignorata.',
     feature10Title: 'Report settimanale',
     feature10Text:
-      'Ogni domenica: tempo di utilizzo, media giornaliera, cosa è stato bloccato e il confronto con la settimana prima.',
+      'Ogni lunedì: tempo di utilizzo, media giornaliera, cosa è stato bloccato e il confronto con la settimana prima.',
     feature11Title: 'Tabella delle stelle',
     feature11Text:
       'I bambini vedono quante stelle ha guadagnato ciascuno questa settimana. Riparte ogni lunedì e sei tu a decidere se attivarla.',
@@ -543,6 +543,8 @@ export default {
     nothingBlockedYet: 'Non è ancora stato bloccato nulla.',
     rollupNoteAi:
       'Alcuni tipi sono stati dedotti dal nome del sito invece che riconosciuti, quindi qualcuno può essere sbagliato.',
+    webBackgroundNote:
+      'Quando nessuno usa il dispositivo, alcune app continuano ad accedere a Internet in background: aggiornamenti, consigli e controlli vanno da soli.',
     filterHintIos:
       'Su iOS il filtro usa il controllo dei contenuti per adulti di Apple — il blocco per categoria è solo su Android.',
     filterHintAndroid: 'Le categorie sono applicate dal filtro DNS sul dispositivo.',
@@ -666,12 +668,13 @@ export default {
     weekOf: 'Settimana {{week}}',
     range: '{{from}} – {{to}}',
     writtenAt: 'Scritto il {{when}}',
-    triggerScheduled: 'Inviato domenica',
+    triggerScheduled: 'Inviato lunedì',
     triggerManual: 'Creato da te',
     statScreenTime: 'Tempo di utilizzo',
     statDailyAverage: 'Media giornaliera',
     statBlockedApps: 'App bloccate',
     statBlockedWebVisits: 'Siti filtrati',
+    statTasksApproved: 'Attività completate',
     trendUp: '{{value}} in più della settimana prima',
     trendDown: '{{value}} in meno della settimana prima',
     trendFlat: 'Più o meno come la settimana prima',
@@ -716,7 +719,7 @@ export default {
     shareFailed: 'Questo browser non può salvarlo. Copia invece il riepilogo.',
     emptyTitle: 'Ancora nessun report',
     emptyBody:
-      'Un report arriva ogni domenica sera. Puoi scrivere quello di questa settimana adesso — copre gli ultimi sette giorni.',
+      'Un report arriva ogni lunedì mattina. Puoi scrivere quello di questa settimana adesso — copre gli ultimi sette giorni.',
     noUsage:
       'Nelle ultime due settimane non è stato registrato tempo di utilizzo, quindi non c’è ancora nulla da riportare. Un dispositivo offline non riporta nulla, che non è la stessa cosa di una settimana tranquilla.',
     rateLimited: 'Troppi tentativi. Aspetta un minuto.',

@@ -27,7 +27,7 @@ export const legal = {
       },
       {
         title: '6. Lưu trữ, truyền dữ liệu và bảo mật',
-        body: 'Dữ liệu có thể được lưu hoặc xử lý tại quốc gia khác nơi người dùng sinh sống. KidGate áp dụng biện pháp kỹ thuật và tổ chức hợp lý, gồm kiểm soát truy cập, giới hạn quyền và truyền dữ liệu qua kết nối bảo mật khi được nền tảng hỗ trợ. Không hệ thống nào an toàn tuyệt đối; KidGate không thể bảo đảm dữ liệu không bao giờ bị mất, truy cập trái phép hoặc gián đoạn.',
+        body: 'Dữ liệu có thể được lưu hoặc xử lý tại quốc gia khác nơi người dùng sinh sống. KidGate áp dụng biện pháp kỹ thuật và tổ chức hợp lý, gồm kiểm soát truy cập, giới hạn quyền và truyền dữ liệu qua kết nối bảo mật khi được nền tảng hỗ trợ. Không hệ thống nào an toàn tuyệt đối; KidGate không thể bảo đảm dữ liệu không bao giờ bị mất, truy cập trái phép hoặc gián đoạn. Nhân sự được ủy quyền của KidGate có thể truy cập cấu hình tài khoản, thiết bị và dữ liệu hoạt động hiển thị trong tài khoản khi cần thiết để xử lý yêu cầu hỗ trợ hoặc chẩn đoán sự cố kỹ thuật. Quyền truy cập này giới hạn ở nhân sự được ủy quyền, chỉ phục vụ mục đích hỗ trợ và được ghi nhận lại.',
       },
       {
         title: '7. Thời hạn lưu giữ và xóa',

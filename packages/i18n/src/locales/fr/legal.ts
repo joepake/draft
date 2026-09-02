@@ -27,7 +27,7 @@ export const legal = {
       },
       {
         title: '6. Stockage, transferts et sécurité',
-        body: 'Les données peuvent être stockées ou traitées en dehors du pays de l’utilisateur. KidGate applique des mesures de protection techniques et organisationnelles raisonnables, notamment des contrôles d’accès, des pratiques de moindre privilège et un transport sécurisé lorsque la plateforme le prend en charge. Aucun système n’est totalement sécurisé ; KidGate ne peut garantir que les données ne seront jamais perdues, consultées sans autorisation ou que leur traitement ne sera jamais interrompu.',
+        body: 'Les données peuvent être stockées ou traitées en dehors du pays de l’utilisateur. KidGate applique des mesures de protection techniques et organisationnelles raisonnables, notamment des contrôles d’accès, des pratiques de moindre privilège et un transport sécurisé lorsque la plateforme le prend en charge. Aucun système n’est totalement sécurisé ; KidGate ne peut garantir que les données ne seront jamais perdues, consultées sans autorisation ou que leur traitement ne sera jamais interrompu. Le personnel autorisé de KidGate peut accéder à la configuration du compte, aux appareils et aux données d’activité qui y sont affichées lorsque cela est nécessaire pour traiter une demande d’assistance ou diagnostiquer un problème technique. Cet accès est limité au personnel autorisé, utilisé uniquement à des fins d’assistance et journalisé.',
       },
       {
         title: '7. Conservation et suppression',

@@ -104,13 +104,19 @@ export const REQUEST_TIMEOUT_MS = 30_000;
 
 function failure(
   code: ApiErrorCode,
-  extra?: { messageKey?: string; detail?: string; status?: number },
+  extra?: {
+    messageKey?: string;
+    detail?: string;
+    status?: number;
+    serverCode?: string;
+  },
 ): ApiFailure {
   return {
     code,
     ...(extra?.messageKey === undefined ? {} : { messageKey: extra.messageKey }),
     ...(extra?.detail === undefined ? {} : { detail: extra.detail }),
     ...(extra?.status === undefined ? {} : { status: extra.status }),
+    ...(extra?.serverCode === undefined ? {} : { serverCode: extra.serverCode }),
   };
 }
 
@@ -262,6 +268,9 @@ export function createHttpApiAdapter(options: HttpApiAdapterOptions): ApiPort {
             : {}),
           // For logs only. Never rendered — see `ApiFailure`.
           ...(typeof envelope.error === 'string' ? { detail: envelope.error } : {}),
+          // Verbatim, for the callers that must tell two `forbidden`s apart —
+          // see `ApiFailure.serverCode`.
+          ...(typeof envelope.code === 'string' ? { serverCode: envelope.code } : {}),
         },
       );
     }

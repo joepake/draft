@@ -107,7 +107,7 @@ export const family = {
   chipHealthWarnCount: '{{count}} yapılandırma bekliyor',
   chipHealthWarnCount_one: '{{count}} yapılandırma bekliyor',
 
-  chipHealthInactiveCount: '{{count}} çevrimdışı',
+  chipHealthInactiveCount: '{{count}} 24 saatten uzun süredir yanıtsız',
 
   chipBlockedCount: '{{count}} engellendi',
 

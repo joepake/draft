@@ -37,6 +37,11 @@ export const activities = {
   activityTypePlaceExit: '장소 이탈',
   activityTypeTamper: '보호',
   activityTypeScreenTime: '스크린 타임',
+  activityTypeCheckIn: '안전 확인',
+  activityTypeLocationRequest: '위치',
+  activityTypeTimeRequest: '시간 요청',
+  activityTypeRewardTask: '보상 과제',
+  activityTypeSearchAlert: '검색 경고',
   activityTypeWebFilter: '웹 필터',
   activityTypeEmergency: '긴급',
   activityTypeUnknown: '활동',
@@ -55,6 +60,9 @@ export const activities = {
   messageAlertBody: '{{appName}}에서 주의 단어가 감지되었습니다.',
   messageAlertBodyOutgoing:
     '자녀가 {{appName}}에서 작성한 메시지에서 주의 단어가 감지되었습니다.',
+  messageAlertTitleSearch: '우려되는 검색',
+  messageAlertBodySearch:
+    '{{appName}}에서의 검색에 주의가 필요한 단어가 감지되었습니다.',
   activityTypeMessageAlert: '메시지 경고',
   messageCheckedTitle: '확인함, 걱정할 것 없음',
   messageCheckedBody:
@@ -62,6 +70,12 @@ export const activities = {
   activityTypeMessageChecked: '확인함',
   appRemovedTitle: '앱 삭제',
   appRemovedBody: '자녀의 기기에서 {{appName}} 앱이 삭제되었습니다.',
+  extensionInstalledTitle: '브라우저 확장 프로그램 추가',
+  extensionInstalledBody:
+    '자녀의 브라우저에 {{appName}} 확장 프로그램이 추가되었습니다.',
+  extensionRemovedTitle: '브라우저 확장 프로그램 삭제',
+  extensionRemovedBody:
+    '자녀의 브라우저에서 {{appName}} 확장 프로그램이 삭제되었습니다.',
 
   placeEnterTitle: '{{placeName}} 도착',
   placeEnterBody: '자녀의 기기가 저장된 장소에 도착했습니다.',
@@ -141,6 +155,7 @@ export const activities = {
   filterByChild: '{{label}}만 보기',
 
   openFullSosHistory: '전체 SOS 기록 보기',
+  openActivityDetails: '자세히 보기',
 
   unknownDevice: '알 수 없는 기기',
 

@@ -27,7 +27,7 @@ export const legal = {
       },
       {
         title: '6. Conservazione, trasferimenti e sicurezza',
-        body: 'I dati possono essere conservati o trattati al di fuori del Paese dell’utente. KidGate adotta ragionevoli misure di sicurezza tecniche e organizzative, inclusi controlli degli accessi, principi del privilegio minimo e trasmissione sicura ove supportata dalla piattaforma. Nessun sistema è completamente sicuro; KidGate non può garantire che i dati non vengano mai persi, che non vi si acceda senza autorizzazione o che il servizio non subisca interruzioni.',
+        body: 'I dati possono essere conservati o trattati al di fuori del Paese dell’utente. KidGate adotta ragionevoli misure di sicurezza tecniche e organizzative, inclusi controlli degli accessi, principi del privilegio minimo e trasmissione sicura ove supportata dalla piattaforma. Nessun sistema è completamente sicuro; KidGate non può garantire che i dati non vengano mai persi, che non vi si acceda senza autorizzazione o che il servizio non subisca interruzioni. Il personale autorizzato di KidGate può accedere alla configurazione dell’account, ai dispositivi e ai dati di attività in esso visualizzati quando necessario per gestire una richiesta di assistenza o diagnosticare un problema tecnico. Tale accesso è limitato al personale autorizzato, viene utilizzato esclusivamente per finalità di assistenza ed è registrato.',
       },
       {
         title: '7. Conservazione e cancellazione',

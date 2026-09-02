@@ -134,7 +134,7 @@ export default {
       '今すぐ端末をロックし、頃合いを見て解除できます。食事、宿題、守られなかった約束のときに。',
     feature10Title: '週次レポート',
     feature10Text:
-      '毎週日曜に届きます。使用時間、1日の平均、ブロックされたもの、前の週との比較。',
+      '毎週月曜に届きます。使用時間、1日の平均、ブロックされたもの、前の週との比較。',
     feature11Title: 'スターボード',
     feature11Text:
       '今週それぞれが何個の星を集めたかを子ども同士で見られます。毎週月曜にリセットされ、使うかどうかは保護者が決めます。',
@@ -534,6 +534,8 @@ export default {
     nothingBlockedYet: 'まだ何もブロックされていません。',
     rollupNoteAi:
       '一部はサイト名からの推定で、既知のサイトとの照合ではありません。外れているものもあります。',
+    webBackgroundNote:
+      '誰も端末を使っていないときも、一部のアプリはバックグラウンドでインターネットに接続します。更新やおすすめの取得、定期通信が自動で動きます。',
     filterHintIos:
       'iOS ではフィルタに Apple のアダルトコンテンツ制限を使います。カテゴリ別のブロックは Android のみです。',
     filterHintAndroid: 'カテゴリはデバイス内の DNS フィルタが適用します。',
@@ -653,12 +655,13 @@ export default {
     weekOf: '{{week}} の週',
     range: '{{from}} – {{to}}',
     writtenAt: '{{when}} に作成',
-    triggerScheduled: '日曜に送信',
+    triggerScheduled: '月曜に送信',
     triggerManual: 'ご自身で作成',
     statScreenTime: 'スクリーンタイム',
     statDailyAverage: '1 日あたりの平均',
     statBlockedApps: 'ブロックしたアプリ',
     statBlockedWebVisits: 'フィルタしたサイト',
+    statTasksApproved: '完了したタスク',
     trendUp: '前の週より {{value}} 多い',
     trendDown: '前の週より {{value}} 少ない',
     trendFlat: '前の週とほぼ同じ',
@@ -700,7 +703,7 @@ export default {
     shareFailed: 'このブラウザでは保存できません。代わりに概要をコピーしてください。',
     emptyTitle: 'レポートはまだありません',
     emptyBody:
-      'レポートは毎週日曜の夜に届きます。今週分は今すぐ作成でき、直近 7 日間が対象です。',
+      'レポートは毎週月曜の朝に届きます。今週分は今すぐ作成でき、直近 7 日間が対象です。',
     noUsage:
       '過去 2 週間はスクリーンタイムが記録されていないため、まだ報告できることがありません。オフラインのデバイスは何も報告しませんが、それは穏やかな一週間とは異なります。',
     rateLimited: '試行が多すぎます。1 分ほどお待ちください。',

@@ -40,6 +40,11 @@ export const activities = {
   activityTypePlaceExit: 'Ort verlassen',
   activityTypeTamper: 'Schutz',
   activityTypeScreenTime: 'Bildschirmzeit',
+  activityTypeCheckIn: 'Check-in',
+  activityTypeLocationRequest: 'Standort',
+  activityTypeTimeRequest: 'Zeitanfrage',
+  activityTypeRewardTask: 'Belohnungsaufgabe',
+  activityTypeSearchAlert: 'Suchwarnung',
   activityTypeWebFilter: 'Webfilter',
   activityTypeEmergency: 'Notfall',
   activityTypeUnknown: 'Aktivität',
@@ -58,6 +63,9 @@ export const activities = {
   messageAlertBody: 'Ein markiertes Wort wurde in {{appName}} erkannt.',
   messageAlertBodyOutgoing:
     'Ein markiertes Wort wurde in einer Nachricht erkannt, die dein Kind in {{appName}} geschrieben hat.',
+  messageAlertTitleSearch: 'Bedenkliche Suche',
+  messageAlertBodySearch:
+    'Ein markiertes Wort wurde in einer Suche auf {{appName}} erkannt.',
   activityTypeMessageAlert: 'Nachrichtenwarnung',
   messageCheckedTitle: 'Geprüft, nichts Bedenkliches',
   messageCheckedBody:
@@ -65,6 +73,12 @@ export const activities = {
   activityTypeMessageChecked: 'Geprüft',
   appRemovedTitle: 'App deinstalliert',
   appRemovedBody: 'Die App {{appName}} wurde vom Gerät des Kindes entfernt.',
+  extensionInstalledTitle: 'Browser-Erweiterung hinzugefügt',
+  extensionInstalledBody:
+    'Die Erweiterung {{appName}} wurde im Browser des Kindes installiert.',
+  extensionRemovedTitle: 'Browser-Erweiterung entfernt',
+  extensionRemovedBody:
+    'Die Erweiterung {{appName}} wurde aus dem Browser des Kindes entfernt.',
 
   placeEnterTitle: '{{placeName}} betreten',
   placeEnterBody: 'Das Gerät des Kindes hat einen gespeicherten Ort betreten.',
@@ -145,6 +159,7 @@ export const activities = {
   filterByChild: 'Nur {{label}} anzeigen',
 
   openFullSosHistory: 'Vollständigen SOS-Verlauf öffnen',
+  openActivityDetails: 'Details ansehen',
 
   unknownDevice: 'Unbekanntes Gerät',
 

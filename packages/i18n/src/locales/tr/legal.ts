@@ -27,7 +27,7 @@ export const legal = {
       },
       {
         title: '6. Depolama, aktarımlar ve güvenlik',
-        body: 'Veriler kullanıcının ülkesi dışında depolanabilir veya işlenebilir. KidGate; erişim kontrolleri, en az ayrıcalık uygulamaları ve platformun desteklediği durumlarda güvenli aktarım dahil olmak üzere makul teknik ve organizasyonel önlemler kullanır. Hiçbir sistem tamamen güvenli değildir; KidGate, verilerin asla kaybolmayacağını, yetkisiz erişime uğramayacağını veya kesintiye uğramayacağını garanti edemez.',
+        body: 'Veriler kullanıcının ülkesi dışında depolanabilir veya işlenebilir. KidGate; erişim kontrolleri, en az ayrıcalık uygulamaları ve platformun desteklediği durumlarda güvenli aktarım dahil olmak üzere makul teknik ve organizasyonel önlemler kullanır. Hiçbir sistem tamamen güvenli değildir; KidGate, verilerin asla kaybolmayacağını, yetkisiz erişime uğramayacağını veya kesintiye uğramayacağını garanti edemez. Yetkili KidGate personeli, bir destek talebini yanıtlamak veya teknik bir arızayı teşhis etmek için gerekli olduğunda hesap yapılandırmasına, cihazlara ve hesapta görüntülenen etkinlik verilerine erişebilir. Bu erişim yalnızca yetkili personelle sınırlıdır, yalnızca destek amacıyla kullanılır ve kayıt altına alınır.',
       },
       {
         title: '7. Saklama ve silme',

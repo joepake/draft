@@ -39,6 +39,11 @@ export const activities = {
   activityTypePlaceExit: 'Lieu quitté',
   activityTypeTamper: 'Protection',
   activityTypeScreenTime: 'Temps d’écran',
+  activityTypeCheckIn: 'Confirmation',
+  activityTypeLocationRequest: 'Position',
+  activityTypeTimeRequest: 'Demande de temps',
+  activityTypeRewardTask: 'Tâche bonus',
+  activityTypeSearchAlert: 'Alerte recherche',
   activityTypeWebFilter: 'Filtre web',
   activityTypeEmergency: 'Urgence',
   activityTypeUnknown: 'Activité',
@@ -58,6 +63,9 @@ export const activities = {
   messageAlertBody: 'Un mot signalé a été détecté dans {{appName}}.',
   messageAlertBodyOutgoing:
     'Un mot signalé a été détecté dans un message écrit par votre enfant dans {{appName}}.',
+  messageAlertTitleSearch: 'Recherche préoccupante',
+  messageAlertBodySearch:
+    'Un mot signalé a été détecté dans une recherche sur {{appName}}.',
   activityTypeMessageAlert: 'Alerte de message',
   messageCheckedTitle: 'Vérifié, rien d’inquiétant',
   messageCheckedBody:
@@ -66,6 +74,12 @@ export const activities = {
   appRemovedTitle: 'Application désinstallée',
   appRemovedBody:
     'L’application {{appName}} a été désinstallée de l’appareil de l’enfant.',
+  extensionInstalledTitle: 'Extension de navigateur ajoutée',
+  extensionInstalledBody:
+    'L’extension {{appName}} a été ajoutée au navigateur de l’enfant.',
+  extensionRemovedTitle: 'Extension de navigateur supprimée',
+  extensionRemovedBody:
+    'L’extension {{appName}} a été supprimée du navigateur de l’enfant.',
 
   placeEnterTitle: 'Entrée dans {{placeName}}',
   placeEnterBody: 'L’appareil de l’enfant est entré dans un lieu enregistré.',
@@ -148,6 +162,7 @@ export const activities = {
   filterByChild: 'Afficher uniquement {{label}}',
 
   openFullSosHistory: 'Ouvrir l’historique complet des alertes SOS',
+  openActivityDetails: 'Voir les détails',
 
   unknownDevice: 'Appareil inconnu',
 
