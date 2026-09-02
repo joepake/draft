@@ -13,6 +13,7 @@ import { deviceIconName } from '../dashboard/deviceIcon.js';
 import { ACCENT_IDS, getAccentDefinition } from '@kidgate/tokens/accents';
 import { readDeviceBattery } from '@kidgate/core/domain/battery';
 import { isAndroidLike } from '@kidgate/core/domain/platformFamily';
+import { resolveActivityKind } from '@kidgate/core/domain/activityKind';
 import { WEB_FILTER_CATEGORY_GROUPS } from '@kidgate/core/domain/webFilterCategoryGroups';
 import { resolveTaskStars } from '@kidgate/core/domain/rewardTasks';
 import { getProtectionSummaryKeys } from '@kidgate/core/domain/protectionStatus';
@@ -288,15 +289,29 @@ function ChildInitial({ name, colorIndex = 0 }) {
   );
 }
 
+/**
+ * Keyed on `resolveActivityKind`, not on the stored `type`.
+ *
+ * `screen_time` is the catch-all `parseActivityType` stamps on anything it does
+ * not recognise, and four features write through it — check-ins, a location
+ * refresh, time requests and reward tasks — so keying on `type` drew a clock
+ * over every one of them. `apps/mobile` renders the same feed and had the same
+ * defect; the split lives in `@kidgate/core` so the two cannot drift.
+ */
 const ACTIVITY_ICON = {
   app_blocked: 'ban',
   app_opened: 'play',
   app_installed: 'plus',
   app_removed: 'minus',
-  place_enter: 'mapPin',
+  // Entering and leaving are opposite events and shared one glyph here. The
+  // phone has drawn `home` for an arrival since the feed was written.
+  place_enter: 'home',
   place_exit: 'mapPin',
   tamper: 'alert',
   message_alert: 'message',
+  // Flagged text the child typed into a search box — the copy says
+  // "Concerning search", so a speech bubble was describing the wrong event.
+  search_alert: 'search',
   // A watched word the AI tier cleared, not an alert. The feed here renders
   // the row's own titleKey/descriptionKey, so the copy is already right; this
   // map only decides the glyph, and without an entry the row draws the
@@ -306,10 +321,26 @@ const ACTIVITY_ICON = {
   message_checked: 'message',
   device_locked: 'lock',
   device_unlocked: 'unlock',
+  // Whatever is left in the bucket once the four below are taken out of it:
+  // a legacy usage row, or a `type` this build does not know.
   screen_time: 'clock',
+  check_in: 'userCheck',
+  // `refresh`, not `mapPin`: a parent asking for a fresh fix, and `mapPin`
+  // already means "left a place" above.
+  location_request: 'refresh',
+  // Time being asked for, not time already spent — hence not the clock.
+  time_request: 'hourglass',
+  reward_task: 'star',
   web_filter: 'globe',
   emergency: 'lifebuoy',
 };
+
+/**
+ * The unknown-row glyph. It used to be `clock`, which made a row this build
+ * cannot identify indistinguishable from a screen-time one — the map's own
+ * fallback quietly asserting the same thing the overloaded `type` did.
+ */
+const ACTIVITY_ICON_FALLBACK = 'activity';
 
 /* ------------------------------------------------------------------ */
 
@@ -1118,10 +1149,19 @@ export default function Dashboard({
                   <ul className="timeline">
                     {(activities[device.id] || []).map(a => {
                       const copy = activityCopy(a, activityT, device.name, actorNames);
+                      // Glyph and tint from one answer. The tint class only has
+                      // rules for tamper/app_blocked/device_locked, all three of
+                      // which the kind passes straight through, so this changes
+                      // no colour — it just stops the class claiming a `type`
+                      // the icon beside it no longer agrees with.
+                      const kind = resolveActivityKind(a);
                       return (
                         <li key={a.id}>
-                          <span className={`tl-icon type-${a.type}`}>
-                            <Icon name={ACTIVITY_ICON[a.type] || 'clock'} size={15} />
+                          <span className={`tl-icon type-${kind}`}>
+                            <Icon
+                              name={ACTIVITY_ICON[kind] || ACTIVITY_ICON_FALLBACK}
+                              size={15}
+                            />
                           </span>
                           <span className="tl-body">
                             <strong>{copy.title}</strong>
@@ -1593,6 +1633,13 @@ export default function Dashboard({
                         : 'dash.filterHintAndroid',
                   )}
                 </p>
+                {/* Why a refusal count can be large with nobody at the
+                    device — a television nobody switched on produced 770 in
+                    a day. One sentence for every platform, and it says what
+                    devices do rather than what this card contains, which is
+                    what keeps it true where the filter counts openings
+                    (the extension) or minutes (iOS) instead of lookups. */}
+                <p className="hint">{t('dash.webBackgroundNote')}</p>
               </Card>
             </div>
           </>

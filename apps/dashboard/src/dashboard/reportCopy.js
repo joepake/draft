@@ -30,6 +30,7 @@ const deps = {
     }).format(
       new Date(Date.UTC(2000, 0, 1, Math.floor(minuteOfDay / 60), minuteOfDay % 60)),
     ),
+  formatDay: dayKey => formatDayKey(dayKey),
 };
 
 /** `2026-08-10` as a short local date, or the raw key if it is not one. */
@@ -52,7 +53,9 @@ export function formatRange(fromDate, toDate) {
 
 /** The report, worded, for both the page and the canvas beside it. */
 export function reportPresentation(report, familyName) {
-  return buildReportPresentation(report, familyName, deps);
+  // `Date.now()` so a report of a finished week, read the following week,
+  // labels its compare bars with real date ranges instead of "This week".
+  return buildReportPresentation(report, familyName, deps, Date.now());
 }
 
 /** The clipboard copy — the same figures and sentences the page shows. */

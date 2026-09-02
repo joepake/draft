@@ -4,8 +4,8 @@ Every file here except `yarn.lock` is written by `scripts/sync-web-repo.mjs`
 in the KidGate monorepo and is **overwritten on the next sync**. An edit made in
 this repo reaches no product and fails no check; it disappears silently.
 
-Change `apps/site`, `apps/dashboard` or `packages/*` in the monorepo, run the
-sync there, review the diff here, then commit.
+Change `apps/site`, `apps/dashboard`, `apps/admin` or `packages/*` in the
+monorepo, run the sync there, review the diff here, then commit.
 
 `packages/i18n` is duplicated into this repo by that script. It is a build
 artifact of the monorepo's single copy — never a second source. A wording fix
@@ -23,6 +23,11 @@ Yarn 4 workspace. Two Vercel projects build from this one repo:
 Each app's `vercel.json` carries its own build command, output directory and
 SPA rewrite. Environment variables are set per project in Vercel — none are
 committed.
+
+`apps/admin` is the third app here and is **not** one of them: internal
+operator tool, localhost only, no Vercel project, no `vercel.json`. It is
+present so its source stays in step with the packages beside it. Read
+`apps/admin/README.md` before running it.
 
 ## After a sync
 
