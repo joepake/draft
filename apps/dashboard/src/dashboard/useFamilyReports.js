@@ -21,6 +21,12 @@ import { familyReportRepository } from '../adapters/repositories.js';
  * all, and a report built from that would be the product inventing calm.
  */
 function generationMessage(failure) {
+  // Before the verdict: a premium refusal is a 403, and the generic path
+  // below would call it "could not generate" — the same class of defect as
+  // the control error that told a free family their session had broken.
+  if (failure?.serverCode === 'billing/premium-required') {
+    return t('controlError.premiumRequired');
+  }
   if (failure?.code === 'rateLimited') return t('report.rateLimited');
   if (failure?.code === 'conflict') return t('report.noUsage');
   if (failure?.messageKey) return t(failure.messageKey);

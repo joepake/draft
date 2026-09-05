@@ -58,6 +58,10 @@ export interface ChildRules {
   webFilterBlockList?: string[];
   /** Allow-list-only browsing: everything else is refused. */
   webFilterAllowListOnly?: boolean;
+  /** Forced SafeSearch / YouTube Restricted Mode. Same semantics as `DeviceControls`. */
+  safeSearchEnabled?: boolean;
+  /** Record which videos the child watched. Same semantics as `DeviceControls`. */
+  videoHistoryEnabled?: boolean;
   /**
    * Blocked hours. Wall-clock windows carry no cross-device distortion —
    * 21:00 on the phone is 21:00 on the TV — which is why these two joined
@@ -117,6 +121,8 @@ export const CHILD_RULE_KEYS = [
   'scheduleEnabled',
   'scheduleWindows',
   'locationSharingEnabled',
+  'safeSearchEnabled',
+  'videoHistoryEnabled',
 ] as const satisfies ReadonlyArray<keyof ChildRules>;
 
 export type ChildRuleKey = (typeof CHILD_RULE_KEYS)[number];

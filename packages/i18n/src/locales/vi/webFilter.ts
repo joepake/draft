@@ -20,6 +20,12 @@ export const webFilter = {
   toggleHintMacos:
     'Con cần phê duyệt tiện ích mở rộng bộ lọc của KidGate một lần trong Cài đặt hệ thống. Giữ nó được phê duyệt để bộ lọc hoạt động.',
   toggleAccessibilityLabel: 'Bật Chặn nội dung web',
+  safeSearchSectionTitle: 'Tìm kiếm an toàn & YouTube',
+  safeSearchSectionSubtitle:
+    'Ép Google, Bing và DuckDuckGo trả kết quả an toàn và khóa YouTube ở chế độ hạn chế. Cần bật bộ lọc web.',
+  safeSearchLabel: 'Bật SafeSearch bắt buộc',
+  safeSearchHint:
+    'Khóa Google SafeSearch, chế độ hạn chế YouTube, Bing và DuckDuckGo ở mức nghiêm ngặt. Android, Android TV và Chrome.',
   infoTitle: 'Cách hoạt động',
   infoLine1Ios: 'Apple tự động lọc các trang web người lớn.',
   infoLine2Ios:
@@ -159,8 +165,10 @@ export const webFilter = {
   askToOpen: 'Xin bố mẹ',
   askToOpenSubtitle: 'Nếu bố mẹ đồng ý, trang này sẽ mở được.',
   askToOpenDomainLabel: 'Trang nào?',
+  askToOpenBlockedLabel: 'Vừa bị chặn',
   askToOpenPending: 'Con đã xin một trang rồi. Chờ bố mẹ trả lời nhé.',
   askToOpenTooSoon: 'Con vừa gửi yêu cầu. Thử lại sau một phút nhé.',
+  askToOpenTooMany: 'Con chỉ xin được vài trang một lúc thôi.',
   requestsTitle: 'Yêu cầu mở trang',
   requestsSubtitle: 'Những trang thiết bị này xin bạn cho phép.',
   siteRequestApproved: 'Đã cho phép trang',

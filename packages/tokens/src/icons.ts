@@ -252,22 +252,23 @@ export const ICONS = {
    * Same rule as `mac` and `ipad`, applied to the form factor those two were
    * written for. Reuses `APPLE_PATH`, centred on the 7…17 screen.
    *
-   * **The apple is drawn to the screen it sits on, not to a fixed fraction.**
-   * It shipped at 0.45, which is 5.4 units on a 24 grid — about 3.4 real
-   * pixels where the family list draws this at 18, and 2.5 in `DeviceCard`'s
-   * 11pt avatar badge. A solid shape that small has neither a bite nor a stem
-   * left: the row read as a bare phone, and the mark that says *which* phone
-   * was a smudge. At 0.56 it fills the shell's inner 7.7…16.3 with half a unit
-   * with about 0.9 units of air each side. `ipad` is the same fraction of its
-   * own wider screen, so the two read as one family rather than as a big apple
-   * and a small one.
+   * **The apple is drawn to the screen it sits on, and it is the shell that
+   * has to stay readable.** It went 0.45 → 0.56 to stop the mark reading as a
+   * smudge, and 0.56 filled the shell's inner 7.7…16.3 so completely that the
+   * two shapes competed: at the sizes a device list actually draws, a full
+   * screen of fruit and a phone outline were one busy blob. At **0.46** the
+   * apple is 5.6 × 7.1 units on the same centre, leaving about 1.5 units of
+   * screen each side — the shell reads as a phone first, the mark answers
+   * which phone. `ipad` shrank by the same ratio on its own wider screen, so
+   * the two still read as one family. The call sites went up 2pt in the same
+   * pass; the pair is what makes both legible, not either alone.
    *
    * **A shell can only ever hold so much.** `APPLE_PATH` is 12.2 units wide and
-   * a phone screen is 8.6, so at the 11pt badge the apple is about 3 real
-   * pixels whatever is done here — that size is the limit of the shell idea,
-   * not of this number. A list that must be legible at 11 wants the bare
-   * `apple` / `android` mark, which is what `deviceGlyph()` still answers for a
-   * device whose form factor is unknown.
+   * a phone screen is 8.6, so a badge drawn at 11pt shows an apple about 2.5
+   * real pixels across whatever is done here — that size is the limit of the
+   * shell idea, not of this number. A list that must be legible that small
+   * wants the bare `apple` / `android` mark, which is what `deviceGlyph()`
+   * still answers for a device whose form factor is unknown.
    */
   iphone: [
     {
@@ -282,7 +283,7 @@ export const ICONS = {
     { kind: 'path', d: 'M11 18h2', strokeWidth: PHONE_STROKE_WIDTH },
     {
       // `APPLE_PATH` pre-scaled and re-centred onto the phone shell's
-      // screen (translate(5.14 3.69) scale(0.56)), rather than carried at
+      // screen (translate(6.37 4.85) scale(0.46)), rather than carried at
       // runtime via the `transform` prop — react-native-svg 15.15.5 under
       // Fabric was silently dropping that prop on a filled `<Path>`, which
       // is why this mark had gone missing from the device list while the
@@ -290,7 +291,7 @@ export const ICONS = {
       // Regenerate with the same affine (never hand-edit) if `APPLE_PATH`
       // or this glyph's placement changes.
       kind: 'path',
-      d: 'M14.307 10.578c0-1.064.868-1.574.907-1.602-.493-.722-1.266-.823-1.54-.834-.655-.067-1.277.386-1.607.386-.33 0-.846-.375-1.389-.364-.717.011-1.378.414-1.742 1.053-.745 1.288-.19 3.192.532 4.234.353.51.773 1.081 1.322 1.058.532-.022.734-.342 1.378-.342.638 0 .823.342 1.383.33.571-.011.935-.521 1.282-1.03.403-.588.571-1.159.582-1.187-.011-.006-1.109-.426-1.12-1.702zM13.35 7.218c.291-.353.487-.84.431-1.327-.42.017-.93.28-1.226.633-.269.314-.504.812-.442 1.294.465.034.946-.235 1.238-.599z',
+      d: 'M13.9 10.508c0-0.874 0.713-1.293 0.745-1.316-0.405-0.593-1.04-0.676-1.265-0.685-0.538-0.055-1.049 0.317-1.32 0.317-0.271 0-0.695-0.308-1.141-0.299-0.589 0.009-1.132 0.34-1.431 0.865-0.612 1.058-0.156 2.622 0.437 3.478 0.29 0.419 0.635 0.888 1.086 0.869 0.437-0.018 0.603-0.281 1.132-0.281 0.524 0 0.676 0.281 1.136 0.271 0.469-0.009 0.768-0.428 1.053-0.846 0.331-0.483 0.469-0.952 0.478-0.975-0.009-0.005-0.911-0.35-0.92-1.398zM13.114 7.748c0.239-0.29 0.4-0.69 0.354-1.09-0.345 0.014-0.764 0.23-1.007 0.52-0.221 0.258-0.414 0.667-0.363 1.063 0.382 0.028 0.777-0.193 1.017-0.492z',
       filled: true,
     },
   ],
@@ -304,10 +305,16 @@ export const ICONS = {
    * drawn to fix, left standing on the other platform for as long as `iphone`
    * has existed.
    *
-   * The robot is `androidTablet`'s, scaled 0.76 about its own centre to clear
-   * the 8.6-unit screen a phone shell leaves, and re-weighted: at this size the
+   * The robot is `androidTablet`'s, scaled about its own centre to clear the
+   * 8.6-unit screen a phone shell leaves, and re-weighted: at this size the
    * tablet's 1.6/1.5 strokes close the head into a blob. It stays heavier than
    * the 1.4 frame — the mark is what a parent scans for, the shell is context.
+   *
+   * Both robots then came down a further 0.83 about their centres, for the
+   * reason `iphone`'s apple did: a mark that fills its screen edge to edge
+   * competes with the shell instead of sitting on it, and the antennae had
+   * nowhere to end. The strokes deliberately did **not** shrink with it — they
+   * are what survives at 12pt.
    */
   androidPhone: [
     {
@@ -320,10 +327,14 @@ export const ICONS = {
       strokeWidth: PHONE_STROKE_WIDTH,
     },
     { kind: 'path', d: 'M11 18h2', strokeWidth: PHONE_STROKE_WIDTH },
-    { kind: 'path', d: 'M8.5 12.59a3.5 3.5 0 0 1 7 0z', strokeWidth: 1.5 },
-    { kind: 'path', d: 'M9.8 9.02L9.04 7.81M14.2 9.02L14.96 7.81', strokeWidth: 1.4 },
-    { kind: 'circle', cx: 10.71, cy: 11, r: 0.72, filled: true },
-    { kind: 'circle', cx: 13.29, cy: 11, r: 0.72, filled: true },
+    { kind: 'path', d: 'M9.1 12.18a2.9 2.9 0 0 1 5.8 0z', strokeWidth: 1.5 },
+    {
+      kind: 'path',
+      d: 'M10.17 9.22L9.54 8.22M13.83 9.22L14.46 8.22',
+      strokeWidth: 1.4,
+    },
+    { kind: 'circle', cx: 10.93, cy: 10.86, r: 0.6, filled: true },
+    { kind: 'circle', cx: 13.07, cy: 10.86, r: 0.6, filled: true },
   ],
   ipad: [
     {
@@ -338,10 +349,10 @@ export const ICONS = {
     { kind: 'path', d: 'M10.5 19.4h3', strokeWidth: PHONE_STROKE_WIDTH },
     {
       // Pre-transformed, same reason as `iphone`'s apple above
-      // (translate(1.47 0.6) scale(0.86)) — `transform` on a filled `<Path>`
+      // (translate(3.43 2.46) scale(0.7)) — `transform` on a filled `<Path>`
       // was a no-op under Fabric.
       kind: 'path',
-      d: 'M15.548 11.178c0-1.634 1.333-2.417 1.393-2.46-.757-1.109-1.944-1.264-2.365-1.281-1.006-.103-1.961.593-2.468.593-.507 0-1.299-.576-2.133-.559-1.101.017-2.116.636-2.675 1.617-1.144 1.978-.292 4.902.817 6.502.542.783 1.187 1.66 2.03 1.625.817-.034 1.127-.525 2.116-.525.98 0 1.264.525 2.124.507.877-.017 1.436-.8 1.969-1.582.619-.903.877-1.78.894-1.823-.017-.009-1.703-.654-1.72-2.614zM14.078 6.018c.447-.542.748-1.29.662-2.038-.645.026-1.428.43-1.883.972-.413.482-.774 1.247-.679 1.987.714.052 1.453-.361 1.901-.92z',
+      d: 'M14.889 11.07c0-1.33 1.085-1.967 1.134-2.002-0.616-0.903-1.582-1.029-1.925-1.043-0.819-0.084-1.596 0.483-2.009 0.483-0.413 0-1.057-0.469-1.736-0.455-0.896 0.014-1.722 0.518-2.177 1.316-0.931 1.61-0.238 3.99 0.665 5.292 0.441 0.637 0.966 1.351 1.652 1.323 0.665-0.028 0.917-0.427 1.722-0.427 0.798 0 1.029 0.427 1.729 0.413 0.714-0.014 1.169-0.651 1.603-1.288 0.504-0.735 0.714-1.449 0.728-1.484-0.014-0.007-1.386-0.532-1.4-2.128zM13.692 6.87c0.364-0.441 0.609-1.05 0.539-1.659-0.525 0.021-1.162 0.35-1.533 0.791-0.336 0.392-0.63 1.015-0.553 1.617 0.581 0.042 1.183-0.294 1.547-0.749z',
       filled: true,
     },
   ],
@@ -356,14 +367,14 @@ export const ICONS = {
       strokeWidth: PHONE_STROKE_WIDTH,
     },
     { kind: 'path', d: 'M10.5 19.4h3', strokeWidth: PHONE_STROKE_WIDTH },
-    { kind: 'path', d: 'M6.25 14.79a5.75 5.75 0 0 1 11.5 0z', strokeWidth: 1.6 },
+    { kind: 'path', d: 'M7.23 14.2a4.77 4.77 0 0 1 9.54 0z', strokeWidth: 1.6 },
     {
       kind: 'path',
-      d: 'M8.38 8.91L7.13 6.91M15.63 8.91L16.88 6.91',
+      d: 'M9 9.32L7.96 7.66M15.01 9.32L16.05 7.66',
       strokeWidth: 1.5,
     },
-    { kind: 'circle', cx: 9.88, cy: 12.16, r: 1.06, filled: true },
-    { kind: 'circle', cx: 14.13, cy: 12.16, r: 1.06, filled: true },
+    { kind: 'circle', cx: 10.24, cy: 12.01, r: 0.88, filled: true },
+    { kind: 'circle', cx: 13.76, cy: 12.01, r: 0.88, filled: true },
   ],
   /**
    * The three device silhouettes `platformIcon()` needs beyond `apple`,

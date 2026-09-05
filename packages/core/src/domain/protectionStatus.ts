@@ -233,7 +233,10 @@ export function getProtectionSummaryKeys(
           // The same hints the child device's own permission list renders —
           // `apps/mobile`'s child HomeScreen has shown these for as long as the
           // grants have existed, to the one person who is not the parent.
-          hintKeys: ['permissions.overlayHint'],
+          hintKeys: [
+            'permissions.overlayStepAllow',
+            'screenTime.usageAccessStepReturn',
+          ],
         });
       }
 
@@ -272,7 +275,23 @@ export function getProtectionSummaryKeys(
         issues.push({
           ...accessibility,
           detailKey: 'protection.accessibilityOff',
-          hintKeys: ['permissions.accessibilityHint'],
+          /*
+           * Four lines rather than the one this used to carry, and the fourth
+           * is the warning.
+           *
+           * This is the grant with the most frightening dialog in front of it —
+           * Android says KidGate "can observe your actions" in the largest type
+           * on the screen — and a parent walking to the child's phone with one
+           * sentence of instruction meets that cold. The child's own wizard
+           * says what it means before the button; a parent reading the same
+           * issue on a different device gets the same sentence.
+           */
+          hintKeys: [
+            'permissions.accessibilityStepOpenSettings',
+            'permissions.accessibilityStepFindKidGate',
+            'permissions.accessibilityStepTurnOn',
+            'permissions.accessibilityWarningNote',
+          ],
         });
       }
     } else {

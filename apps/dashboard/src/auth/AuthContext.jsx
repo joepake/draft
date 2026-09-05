@@ -10,7 +10,8 @@ import {
   signOut as fbSignOut,
 } from 'firebase/auth';
 import { auth, isFirebaseConfigured } from '../lib/firebase.js';
-import { trackLogin, trackLogout } from '../lib/analytics.js';
+import { trackLogin, trackLogout, trackWebStepUp } from '../lib/analytics.js';
+import { stepUpWithPin } from './webSession.js';
 
 const AuthContext = createContext({
   user: null,
@@ -139,6 +140,55 @@ export function AuthProvider({ children }) {
       /** Redeems the custom token the phone's approval produced. */
       signInWithQrToken: customToken =>
         measured('qr', () => signInWithCustomToken(auth, customToken)),
+
+      /**
+       * The same redemption, from a browser that is already signed in and
+       * reading. Separate from `signInWithQrToken` only so it is not counted
+       * as a second login by the same parent — the token and the effect are
+       * identical.
+       */
+      stepUpWithQrToken: async customToken => {
+        try {
+          const result = await signInWithCustomToken(auth, customToken);
+          trackWebStepUp('qr', 'success');
+          return result;
+        } catch (error) {
+          trackWebStepUp('qr', 'failed');
+          throw error;
+        }
+      },
+
+      /**
+       * The PIN half of the step-up. Same ending as the QR: a custom token
+       * redeemed here, after which `onAuthStateChanged` re-reads the claims
+       * and `canWrite` turns true.
+       *
+       * Not counted as a login — `trackWebStepUp` says why.
+       */
+      stepUpWithPin: async ({ pin, familyOwnerUserId }) => {
+        const idToken = auth.currentUser ? await auth.currentUser.getIdToken() : null;
+        if (!idToken) {
+          const err = new Error('Not signed in');
+          err.code = 'auth/token-missing';
+          throw err;
+        }
+        try {
+          const { customToken } = await stepUpWithPin({
+            pin,
+            familyOwnerUserId,
+            idToken,
+          });
+          const result = await signInWithCustomToken(auth, customToken);
+          trackWebStepUp('pin', 'success');
+          return result;
+        } catch (error) {
+          // A wrong PIN is the expected failure and is reported as its own
+          // result: lumping it in with a network error would hide whether
+          // parents remember the PIN at all.
+          trackWebStepUp('pin', error?.code === 'pin/wrong' ? 'wrong-pin' : 'failed');
+          throw error;
+        }
+      },
 
       resetPassword: email => sendPasswordResetEmail(auth, email.trim()),
 

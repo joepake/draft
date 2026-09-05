@@ -20,6 +20,12 @@ export const webFilter = {
   toggleHintMacos:
     'The child must approve the KidGate filter extension once in System Settings. Keep it approved for filtering to work.',
   toggleAccessibilityLabel: 'Enable Web Filter',
+  safeSearchSectionTitle: 'Safe search & YouTube',
+  safeSearchSectionSubtitle:
+    'Force Google, Bing and DuckDuckGo to safe results and lock YouTube to Restricted Mode. Needs the web filter on.',
+  safeSearchLabel: 'Force SafeSearch',
+  safeSearchHint:
+    'Locks Google SafeSearch, YouTube Restricted Mode, Bing and DuckDuckGo to their strict settings. Android, Android TV and Chrome.',
   infoTitle: 'How it works',
   infoLine1Ios: 'Apple automatically filters adult websites.',
   infoLine2Ios:
@@ -159,8 +165,10 @@ export const webFilter = {
   askToOpen: 'Ask a parent',
   askToOpenSubtitle: 'If they allow it, this site will open.',
   askToOpenDomainLabel: 'Which site?',
+  askToOpenBlockedLabel: 'Blocked recently',
   askToOpenPending: 'You already asked for a site. Wait for an answer.',
   askToOpenTooSoon: 'You just asked. Try again in a minute.',
+  askToOpenTooMany: 'You can only ask for a few sites at a time.',
   requestsTitle: 'Site requests',
   requestsSubtitle: 'Sites this device asked you to allow.',
   siteRequestApproved: 'Site allowed',

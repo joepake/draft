@@ -72,25 +72,39 @@ export function createSiteRequestRepository(deps: SiteRequestRepositoryDeps) {
 
   return {
     /**
-     * Ask for a site.
+     * Ask for one site, or for several at once.
      *
      * Through the Cloud Function, never a direct write: a child device holds
-     * the family owner's uid, so the one-pending rule and the cooldown are only
+     * the family owner's uid, so the pending ceiling and the cooldown are only
      * rules if the server owns them.
      *
-     * The domain is normalised here as well as on the server — same function
+     * Every domain is normalised here as well as on the server — same function
      * the allow list itself uses — so a surface that hands over a URL cannot
      * produce an allow-list entry matching nothing. A string that is not a
-     * hostname is refused before the call rather than after it.
+     * hostname is dropped before the call rather than after it, and an ask
+     * with nothing left is refused without a round trip.
+     *
+     * **`SITE_REQUEST_MAX_BATCH` is not checked here.** A caller that would
+     * exceed it has a list on screen and must cap the *selection*, so the child
+     * finds out while picking rather than after sending; the server refuses the
+     * over-long batch whole either way.
      */
     async createRequest(data: {
       deviceId: string;
       deviceName: string;
-      domain: string;
+      domains: string[];
       reason?: string;
-    }): Promise<SiteRequest> {
-      const domain = normalizeWebDomain(data.domain);
-      if (!domain) {
+    }): Promise<SiteRequest[]> {
+      const domains: string[] = [];
+      for (const raw of data.domains) {
+        const domain = normalizeWebDomain(raw);
+        if (domain && !domains.includes(domain)) {
+          domains.push(domain);
+        }
+      }
+
+      const [first] = domains;
+      if (!first) {
         throw {
           code: 'invalid' as const,
           messageKey: 'webFilter.toastUpdateFailed',
@@ -98,12 +112,23 @@ export function createSiteRequestRepository(deps: SiteRequestRepositoryDeps) {
       }
 
       const reason = data.reason?.trim();
-      const response = await api.post<{ request: SiteRequest }>(
+      const response = await api.post<{
+        request: SiteRequest;
+        requests?: SiteRequest[];
+      }>(
         '/createSiteRequest',
         {
           deviceId: data.deviceId,
           deviceName: data.deviceName,
-          domain,
+          domains,
+          /*
+           * The singular alongside the list, for the same reason the server
+           * still answers with `request`: a Functions deployment older than
+           * this change reads `domain` and ignores `domains`, and the surface
+           * most likely to meet one is a browser extension that updates on the
+           * Web Store's schedule rather than ours. One domain either way.
+           */
+          domain: first,
           ...(reason ? { reason } : {}),
         },
         /*
@@ -117,7 +142,8 @@ export function createSiteRequestRepository(deps: SiteRequestRepositoryDeps) {
         { as: 'session' },
       );
 
-      return response.request;
+      // An older deployment answers with `request` alone.
+      return response.requests ?? (response.request ? [response.request] : []);
     },
 
     /**

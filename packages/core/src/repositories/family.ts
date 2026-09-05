@@ -44,6 +44,8 @@ export interface FamilyMeta {
    * family with two children gets the board without hunting for a switch.
    */
   leaderboardEnabled?: boolean;
+  /** The screen-time board's switch. Absent means **off** (`@kidgate/schema/screenTimeBoard`). */
+  screenTimeBoardEnabled?: boolean;
 }
 
 function mapMember(doc: DocSnapshot): FamilyMember {
@@ -113,6 +115,9 @@ export function createFamilyRepository(deps: FamilyRepositoryDeps) {
         ...(typeof data.leaderboardEnabled === 'boolean'
           ? { leaderboardEnabled: data.leaderboardEnabled }
           : {}),
+        ...(typeof data.screenTimeBoardEnabled === 'boolean'
+          ? { screenTimeBoardEnabled: data.screenTimeBoardEnabled }
+          : {}),
       };
     },
 
@@ -149,6 +154,18 @@ export function createFamilyRepository(deps: FamilyRepositoryDeps) {
         userDoc(familyId),
         {
           leaderboardEnabled: enabled,
+          updatedAt: db.fieldValues.serverTimestamp(),
+        },
+        { merge: true },
+      );
+    },
+
+    /** Same field, same rule, same owner-only write as the star chart's switch. */
+    async setScreenTimeBoardEnabled(familyId: string, enabled: boolean): Promise<void> {
+      await db.setDoc(
+        userDoc(familyId),
+        {
+          screenTimeBoardEnabled: enabled,
           updatedAt: db.fieldValues.serverTimestamp(),
         },
         { merge: true },

@@ -9,7 +9,9 @@ import {
 import type {
   DeviceProtectionCounters,
   DeviceProtectionStatus,
+  DeviceWeekCounters,
 } from '@kidgate/schema/device';
+import type { UsageAppBreakdown } from '@kidgate/schema/usageDay';
 import type {
   DeviceMessageMonitoringState,
   MessageMonitoringHalfState,
@@ -231,6 +233,25 @@ export function parseDeviceControls(data?: Record<string, unknown>): DeviceContr
     // Off unless the parent set it: absent must not switch search reporting on
     // for every device that predates the field.
     searchMonitoringEnabled: controls.searchMonitoringEnabled === true,
+    // Same rule: absent must not begin rewriting lookups after an update.
+    safeSearchEnabled: controls.safeSearchEnabled === true,
+    // Same rule again: absent must not begin recording watched videos.
+    videoHistoryEnabled: controls.videoHistoryEnabled === true,
+    // App install quarantine: off unless the parent set it, and the "since"
+    // stamp only counts as a real number — `resolveInstallApprovalPolicy`
+    // treats anything else as "not on yet".
+    appInstallApprovalEnabled: controls.appInstallApprovalEnabled === true,
+    appInstallApprovalSinceMs:
+      typeof controls.appInstallApprovalSinceMs === 'number' &&
+      Number.isFinite(controls.appInstallApprovalSinceMs) &&
+      controls.appInstallApprovalSinceMs > 0
+        ? controls.appInstallApprovalSinceMs
+        : null,
+    approvedPackages: Array.isArray(controls.approvedPackages)
+      ? controls.approvedPackages.filter(
+          (id): id is string => typeof id === 'string' && id.trim().length > 0,
+        )
+      : [],
     // Absent stays absent rather than becoming `[]`, because the two mean
     // opposite things to `resolveMessageKeywordLanguages`: absent is "use the
     // device's own language", empty would be "scan nothing".
@@ -405,6 +426,90 @@ export function parseMessageMonitoring(
       : {}),
     ...(lastCheckedAt ? { lastCheckedAt } : {}),
   };
+}
+
+/**
+ * The trailing week's counts, as the child device published them.
+ *
+ * Null rather than zeroes for anything unusable. A zeroed shape would be the
+ * claim "nothing was blocked this week", which is exactly what a device that
+ * has never reported cannot say — and on the free tier this figure is the only
+ * thing a parent sees about the filter, so inventing it is inventing the whole
+ * feature's answer. `DeviceWeekCounters` carries the rest of the rule.
+ *
+ * `newApps` stays absent when the device omitted it: a Mac, a television and a
+ * browser extension see no installs, and zero would claim none happened.
+ */
+export function parseWeekCounters(
+  data?: Record<string, unknown>,
+): DeviceWeekCounters | null {
+  const counters = data?.weekCounters as Record<string, unknown> | undefined;
+  const date = typeof counters?.date === 'string' ? counters.date.trim() : '';
+  if (!date) {
+    return null;
+  }
+
+  const count = (value: unknown) =>
+    typeof value === 'number' && Number.isFinite(value) && value >= 0
+      ? Math.floor(value)
+      : null;
+
+  const blockedSites = count(counters?.blockedSites);
+  if (blockedSites === null) {
+    return null;
+  }
+
+  const newApps = count(counters?.newApps);
+  return {
+    date,
+    blockedSites,
+    ...(newApps === null ? {} : { newApps }),
+  };
+}
+
+/**
+ * Today's three most-used apps, as the child device published them.
+ *
+ * Null when there are none to show, so a caller renders nothing rather than an
+ * empty list — the two look identical on screen and mean different things: a
+ * device that has not reported today, against one that reported no app use.
+ * The date that tells them apart is `controls.usageDate`, which the same write
+ * sets; this parser deliberately does not read it, because a stale list is
+ * still the honest answer *for its own day* and the decision of whether to
+ * show it belongs to the screen.
+ *
+ * Entries with no package name are dropped rather than repaired: the id is
+ * what a label is looked up by, and a row without one cannot be anything but
+ * text a parent has no way to act on.
+ */
+export function parseTopAppsToday(
+  data?: Record<string, unknown>,
+): UsageAppBreakdown[] | null {
+  const raw = data?.topAppsToday;
+  if (!Array.isArray(raw)) {
+    return null;
+  }
+
+  const entries: UsageAppBreakdown[] = [];
+  for (const item of raw) {
+    const entry = item as Record<string, unknown> | undefined;
+    const packageName =
+      typeof entry?.packageName === 'string' ? entry.packageName.trim() : '';
+    const minutes = typeof entry?.minutes === 'number' ? entry.minutes : NaN;
+    if (!packageName || !Number.isFinite(minutes) || minutes < 0) {
+      continue;
+    }
+    entries.push({
+      packageName,
+      // The same fallback the agents apply at their own boundary: a parent's
+      // screen has to render something, and the id is the only other name.
+      label:
+        typeof entry?.label === 'string' && entry.label ? entry.label : packageName,
+      minutes: Math.floor(minutes),
+    });
+  }
+
+  return entries.length > 0 ? entries : null;
 }
 
 /** All-time tallies written by the `tallyProtectionCounters` Cloud Function. */

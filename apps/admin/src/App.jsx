@@ -467,6 +467,28 @@ function FamilyDetail({ family }) {
             {family.email ?? 'no email'}
           </div>
         </div>
+        {/*
+         * The per-family half of the Time-to-purchase section on Report.
+         * `firstPurchasedAt` is written once and never rewritten, so this is
+         * the conversion date — not `subscription.updatedAt`, which every
+         * renewal moves. Absent on a family that converted before the field
+         * shipped and could not be backfilled.
+         */}
+        <div className="tile">
+          <div className="tile-label">First paid</div>
+          <div className="tile-value" style={{ fontSize: 19 }}>
+            {family.firstPurchasedAt ? stamp(family.firstPurchasedAt) : 'never'}
+          </div>
+          <div className="tile-label" style={{ marginTop: 4 }}>
+            {family.firstPurchasedAt
+              ? Number.isFinite(family.daysToPurchase)
+                ? `${family.daysToPurchase} days after signup`
+                : 'no signup date to measure from'
+              : family.subscriptionStatus
+                ? 'paid before this was recorded'
+                : ''}
+          </div>
+        </div>
       </div>
 
       {family.deletionState ? (

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { buildAppInventoryReport } from '@kidgate/core/domain/appInventoryReport';
 import { getAppCategories, getAppInventory } from '../adapters/repositories';
 
@@ -15,15 +15,20 @@ import { getAppCategories, getAppInventory } from '../adapters/repositories';
  * device itself; a subscription would hold a socket open for an event that
  * almost never lands while somebody is looking.
  *
+ * `installApproval` is the device's install quarantine
+ * (`resolveInstallApprovalPolicy` off its controls), folded in at render so a
+ * parent's Allow moves a row out of the pending group the moment the device
+ * listener delivers it — the phone's hook does the same.
+ *
  * Returns `null` for a device that has published no scan, which the card
  * renders as "nothing scanned yet" rather than as "no apps".
  */
-export function useAppInventory(familyId, deviceId) {
-  const [report, setReport] = useState(null);
+export function useAppInventory(familyId, deviceId, installApproval = null) {
+  const [loaded, setLoaded] = useState(null);
 
   useEffect(() => {
     if (!familyId || !deviceId) {
-      setReport(null);
+      setLoaded(null);
       return undefined;
     }
     let cancelled = false;
@@ -33,17 +38,17 @@ export function useAppInventory(familyId, deviceId) {
         const inventory = await getAppInventory(familyId, deviceId);
         if (cancelled) return;
         if (!inventory) {
-          setReport(null);
+          setLoaded(null);
           return;
         }
         const categories = await getAppCategories(inventory.apps.map(app => app.id));
         if (cancelled) return;
-        setReport(buildAppInventoryReport(inventory, categories, Date.now()));
+        setLoaded({ inventory, categories });
       } catch {
         // Swallowed like the rest of this page's soft reads: an inventory that
         // would not load costs one card, and the tab around it still describes
         // the device correctly.
-        if (!cancelled) setReport(null);
+        if (!cancelled) setLoaded(null);
       }
     })();
 
@@ -52,5 +57,16 @@ export function useAppInventory(familyId, deviceId) {
     };
   }, [familyId, deviceId]);
 
-  return report;
+  return useMemo(
+    () =>
+      loaded
+        ? buildAppInventoryReport(
+            loaded.inventory,
+            loaded.categories,
+            Date.now(),
+            installApproval,
+          )
+        : null,
+    [loaded, installApproval],
+  );
 }

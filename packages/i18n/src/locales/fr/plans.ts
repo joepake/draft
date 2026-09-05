@@ -1,0 +1,192 @@
+export const plans = {
+  title: 'Formules',
+  statusPremiumActiveTitle: 'Premium actif',
+  statusPremiumActiveSubtitle:
+    'Vous avez un accès complet à toutes les fonctionnalités de KidGate.',
+  pillPremium: 'Premium',
+  statusTrialActiveTitle: 'Essai actif',
+  statusTrialActiveSubtitle:
+    'Vous profitez de l’expérience Premium complète. Abonnez-vous à tout moment pour la conserver après votre essai.',
+  pillTrialActiveFallback: 'Essai actif',
+  statusTrialEndedTitle: 'Essai terminé',
+  statusTrialEndedSubtitle:
+    'La Limite quotidienne, les Heures bloquées, les Applications bloquées, le Filtre web et la position continuent de fonctionner gratuitement. Abonnez-vous pour les mises à jour en direct, l’historique, les alertes et les rapports.',
+  pillTrialEnded: 'Essai terminé',
+  statusStartTrialTitle: 'Démarrez votre essai',
+  statusStartTrialSubtitle:
+    'Connectez un appareil parent et un appareil enfant pour {{days}} jours d’accès complet.',
+  pillSetupRequired: 'Configuration requise',
+  fallbackAccountEmail: 'Compte parent',
+  planTrialName: 'Essai',
+  planPremiumName: 'Premium',
+  currentPlanBadge: 'Formule actuelle',
+  planPeriod: '/ mois',
+  planPeriodYear: '/ an',
+  termMonthly: 'Mensuel',
+  termAnnual: 'Annuel',
+  bestValueBadge: 'Meilleure offre',
+  premiumManageBillingNote:
+    'Gérez la facturation dans les réglages de votre App Store ou Google Play.',
+  compareTitle: 'Gratuit et Premium, côte à côte',
+  compareColumnFree: 'Gratuit',
+  compareColumnPremium: 'Premium',
+  compareDevices: 'Appareils de l’enfant',
+  compareDevicesFree: '1',
+  compareDevicesPremium: 'Illimité',
+  compareSync: 'Mises à jour de l’appareil',
+  compareSyncFree: 'Toutes les 30 minutes',
+  compareSyncPremium: 'En direct',
+  compareScreenTime: 'Temps d’écran',
+  compareScreenTimeFree: 'Aujourd’hui, les 3 principales applications',
+  compareScreenTimePremium: 'Toutes les applications, historique de 30 jours',
+  compareLocation: 'Position',
+  compareLocationFree: 'À l’ouverture de la carte',
+  compareLocationPremium: 'En direct, avec historique et alertes de lieux',
+  compareVideo: 'Historique YouTube et vidéos',
+  compareCountOnly: 'Le nombre seulement, pas lesquels',
+  compareWeb: 'Web',
+  compareWebPremium: 'Historique complet et recherches',
+  compareNewApps: 'Applications récemment installées',
+  compareNewAppsPremium: 'Quelles applications, et validation avant installation',
+  compareMessages: 'Alertes de messages (Android)',
+  compareSafety: 'Alertes de désactivation et point de contact',
+  compareControls: 'Blocage d’applications et filtre web',
+  compareControlsFree: 'Toute application, contenu pour adultes',
+  compareControlsPremium: 'Par catégorie, limites par application, vos propres listes',
+  compareReport: 'Rapport hebdomadaire',
+  compareReportFree: 'Une fois, à la fin de l’essai',
+  compareReportPremium: 'Chaque semaine',
+  compareActivityFeed: 'Fil d’activité',
+  compareActivityFeedFree: 'Aujourd’hui',
+  compareActivityFeedPremium: '30 jours',
+  compareChildReport: 'Rapports par enfant',
+  compareIncluded:
+    'Les deux offres incluent la limite quotidienne, les heures bloquées, les applications bloquées, le filtre web, le verrouillage à distance, le SOS, les demandes de temps, les missions récompensées, iPhone, Android, Mac, Windows, TV et Chromebook dans une même famille, le tableau de bord web et plusieurs parents.',
+  sectionWhyPremium: 'Ce que Premium ajoute',
+  sectionWhyPremiumSubtitle:
+    'Toutes les règles continuent de fonctionner en Gratuit. Premium ajoute ce que vous voyez, et à quel moment.',
+  groupLiveTitle: 'En direct',
+  groupInsightTitle: 'Chaque détail',
+  groupAlertsTitle: 'Alertes',
+  groupDevicesTitle: 'Tous les appareils',
+  groupControlsTitle: 'Contrôles plus fins',
+  sectionIncludedFeatures: 'Ce qui est inclus',
+  footerLegal:
+    'Facturé via l’App Store ou Google Play. Les abonnements se renouvellent automatiquement sauf annulation au moins 24 heures avant la fin de la période. L’achat unique ne se renouvelle pas et vaut tant que KidGate existe.',
+  subscribeButton: 'S’abonner à Premium',
+  restoringPurchases: 'Restauration…',
+  restorePurchases: 'Restaurer les achats',
+  premiumDescription:
+    'Continuez à utiliser KidGate après votre essai avec la même protection complète.',
+  // Title Case throughout, and worded to match the screen each feature opens —
+  // a chip that reads differently from its destination reads as a promise the
+  // app does not keep.
+  featurePausePhone: 'Verrouillage de l’appareil',
+  featureDailyLimits: 'Limite quotidienne',
+  featureBlockedHours: 'Heures bloquées',
+  featureTimeRequests: 'Demandes de temps',
+  featureAppBlocking: 'Applications bloquées',
+  featureWebFiltering: 'Filtre web',
+  featureSeeLocation: 'Position en direct',
+  featureSosAlerts: 'Alertes SOS',
+  trialPlanName: 'Essai',
+  trialDescription:
+    'Commence dès que vos premiers appareils parent et enfant sont connectés. Retirer un appareil enfant ne réinitialise pas l’essai.',
+  premiumPlanName: 'Premium',
+  subscribeBadge: 'S’abonner',
+  currentPlanKicker: 'Formule actuelle',
+  trialEnded: 'Essai terminé',
+  trialPending: 'Essai non démarré',
+  premiumActiveSubtitle: 'Vous avez un accès complet dès maintenant.',
+  trialActiveSubtitle: 'Accès complet pendant votre essai de {{days}} jours.',
+  subscribeToContinue:
+    'Vous êtes sur l’offre gratuite. Vos règles fonctionnent toujours : abonnez-vous pour l’activité en direct, l’historique et les rapports.',
+  connectDevicesToStartTrial:
+    'Connectez un appareil parent et un appareil enfant pour démarrer votre essai.',
+  premiumActiveFooter: 'Premium actif',
+  premiumPriceFooter: 'Premium {{price}}/mois',
+  viewPlans: 'Voir les formules',
+  viewFamilyPlanStatus: 'Voir l’état de la formule',
+  onlyOwnerCanSubscribe:
+    'Seul le propriétaire de la famille peut s’abonner ou restaurer des achats.',
+  memberSubscriptionNotice:
+    'Une seule formule couvre toute la famille et seul le propriétaire paie. Vous pouvez voir si la famille est en essai ou abonnée.',
+  memberTrialActiveSubtitle:
+    'Cette famille est en période d’essai. À la fin, toutes les règles continuent de fonctionner sur un appareil ; le propriétaire peut s’abonner pour l’activité en direct, l’historique et tous les appareils.',
+  memberTrialEndedSubtitle:
+    'L’essai de cette famille est terminé. La Limite quotidienne, les Applications bloquées, le Filtre web et la position fonctionnent toujours. Demandez au propriétaire de s’abonner pour les mises à jour en direct, l’historique et les alertes.',
+  memberSetupTrialSubtitle:
+    'L’essai démarre lorsque le propriétaire connecte un appareil parent et un appareil enfant.',
+  premiumActivatedTitle: 'Premium débloqué',
+  premiumActivatedSubtitle:
+    'Toutes les fonctionnalités de KidGate sont désormais disponibles pour votre famille.',
+  unableToActivatePremium: 'Impossible d’activer Premium. Veuillez réessayer.',
+  purchaseAlreadyOwned:
+    'Vous avez déjà cet abonnement. Touchez Restaurer les achats pour le débloquer ici.',
+  purchasePending:
+    'Votre achat est en attente de validation. Premium sera débloqué dès qu’il sera confirmé.',
+  purchaseFailed: 'L’achat n’a pas abouti. Veuillez réessayer.',
+  storeNotReady:
+    'La boutique n’est pas encore prête. Veuillez réessayer dans un instant.',
+  premiumNotAvailable: 'Premium n’est pas disponible à l’achat pour le moment.',
+  premiumProductNotFound:
+    'Premium n’est pas disponible à l’achat pour le moment. Veuillez réessayer plus tard.',
+  subscriptionOfferNotConfigured:
+    'Cet abonnement n’est pas disponible pour le moment. Veuillez réessayer plus tard.',
+  unableToStartPurchase: 'Impossible de démarrer l’achat. Veuillez réessayer.',
+  noActiveSubscription: 'Aucun abonnement actif trouvé.',
+  purchasesRestored: 'Achats restaurés.',
+  unableToRestorePurchases: 'Impossible de restaurer les achats. Veuillez réessayer.',
+  purchaseVerificationFailed: 'La vérification de l’achat a échoué.',
+  unableToVerifyPurchase: 'Impossible de vérifier l’achat. Veuillez réessayer.',
+  // Shown to joined parents — only the family owner can subscribe, so this
+  // has to name who needs to act instead of offering a button they can't use.
+  familyPremiumEndedTitle: 'Le Premium de cette famille a expiré',
+  familyPremiumEndedBody:
+    'La Limite quotidienne, les Heures bloquées, les Applications bloquées, le Filtre web et la position fonctionnent toujours. Les mises à jour en direct, l’historique, les alertes et les rapports sont en pause jusqu’au renouvellement de Premium.',
+  pricesUnavailable: 'Impossible de charger les prix depuis la boutique.',
+  pricesRetry: 'Réessayer',
+  featureRewardTasks: 'Tâches à récompense',
+  sectionChoosePlan: 'Choisissez votre formule',
+  saveBadge: 'Économisez {{percent}} %',
+  billedMonthly: 'Facturation mensuelle',
+  billedAnnually: 'Facturation annuelle',
+  trustCancelAnytime: 'Annulable à tout moment',
+  trustOnePlan: 'Une formule pour toute la famille',
+  trustNoAds: 'Sans publicité',
+  freePlanName: 'Gratuit',
+  freeDescription: 'Gardez l’essentiel actif sur un appareil, sans limite de durée.',
+  featureOneChildDevice: 'Un appareil enfant',
+  termLifetime: 'À vie',
+  badgeOneTime: 'Paiement unique',
+  planPeriodOnce: 'une fois',
+  billedOnce:
+    'Payez une fois pour jusqu’à {{devices}} appareils enfants, tant que KidGate existe',
+  sectionFreePlan: 'Si vous ne vous abonnez jamais',
+  devicesUnlimited: 'Appareils enfants illimités',
+  featureFootnotePlatforms:
+    'Certaines fonctionnalités dépendent de ce que chaque plateforme autorise, donc toutes ne sont pas disponibles sur chaque appareil.',
+  sectionPlatforms: 'Où KidGate fonctionne',
+  platformIos: 'iPhone et iPad',
+  platformIosDetail: 'Appareil parent ou enfant · iOS 16 et versions ultérieures',
+  platformAndroid: 'Android',
+  platformAndroidDetail:
+    'Appareil parent ou enfant · Android 7 et versions ultérieures',
+  platformMac: 'Mac',
+  platformMacDetail: 'Appareil enfant uniquement · macOS 12 et versions ultérieures',
+  platformIosLimits: 'Pas de Limites d’apps ni d’alertes de messages.',
+  platformMacLimits: 'Pas d’alertes de messages, et la position est approximative.',
+  platformWindowsLimits: 'Pas d’alertes de messages, et la position est approximative.',
+  platformAndroidTvLimits: 'Pas d’alertes de messages ni de position.',
+  platformChromebookLimits:
+    'Pas de Limite quotidienne, d’Heures bloquées, de Verrouillage de l’appareil ni de position.',
+  platformComingSoon: 'Bientôt',
+  platformWindows: 'Windows',
+  platformWindowsDetail:
+    'Appareil enfant uniquement · Windows 10 et versions ultérieures',
+  platformAndroidTv: 'Android TV',
+  platformAndroidTvDetail:
+    'Appareil enfant uniquement · Android TV 7 et versions ultérieures',
+  platformChromebook: 'Chromebook',
+  platformChromebookDetail: 'Appareil enfant · filtrage web dans Chrome uniquement',
+} as const;

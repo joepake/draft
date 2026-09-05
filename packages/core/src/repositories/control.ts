@@ -10,6 +10,7 @@ import type { DeviceControls, DeviceLocation } from '@kidgate/schema/deviceContr
 import { childDeviceDoc } from '@kidgate/schema/paths';
 import type { BatteryStatus } from '@kidgate/schema/telemetry';
 import { toJsonBody } from '../domain/jsonBody';
+import type { BufferedUsageDay } from '../domain/parkedBuffer';
 import { isTimeline } from '../domain/usageTimeline';
 import type { LocationHistoryRepository } from './locationHistory';
 
@@ -95,6 +96,14 @@ export function createControlRepository(deps: ControlRepositoryDeps) {
           ...usageControls,
           ...(controls.topApps ? { topApps: controls.topApps } : {}),
           ...(controls.timeline ? { timeline: controls.timeline } : {}),
+          // The free tier's counters, forwarded only when the caller could
+          // count — `reportUsage` omits rather than zeroes, and so does this.
+          ...(typeof controls.blockedSitesToday === 'number'
+            ? { blockedSitesToday: controls.blockedSitesToday }
+            : {}),
+          ...(typeof controls.newAppsToday === 'number'
+            ? { newAppsToday: controls.newAppsToday }
+            : {}),
         });
       }
 
@@ -121,27 +130,75 @@ export function createControlRepository(deps: ControlRepositoryDeps) {
      * persist, and the flag is recomputed from the next full report, so it is
      * dropped rather than written as a zero.
      */
+    /**
+     * Report today's minutes, and hand back what the server answered.
+     *
+     * **The answer is the point, not a courtesy.** `reportChildUsage` is the
+     * one endpoint that stays open to a lapsed family, so its reply is the
+     * only channel that says which side of the paywall this device is on —
+     * `degraded: true` when the family has lapsed, `false` when it is paying
+     * again (`domain/premiumLapse`). An agent that discards it, as this
+     * returned `void` and every caller therefore did, has no way to learn its
+     * own cadence and keeps beating every minute on the free tier.
+     *
+     * `null` for a body that says nothing: an older Functions deployment omits
+     * the field, and a caller must leave its latch alone rather than read
+     * silence as "premium".
+     */
     async reportUsage(
       userId: string,
       deviceId: string,
       usage: Partial<DeviceControls>,
-    ): Promise<void> {
+    ): Promise<unknown> {
+      /*
+       * **A report needs a day and something to say, and minutes are no longer
+       * the only thing it can say** (`docs/FEASIBILITY.md`, "The extension's
+       * usage report").
+       *
+       * Every caller until 2026-09-05 measured screen time, so this refused
+       * anything without it. `apps/extension` cannot: a browser publishes
+       * `screenTime: false`, and the free tier's counters ride this endpoint
+       * because it is the only one a lapsed family still reaches. Sending zero
+       * minutes instead would put "zero today" in the field every parent screen
+       * reads, for a browser used all afternoon — the same absent-versus-zero
+       * rule the counters below already follow.
+       *
+       * What the original guard protected still holds: a payload carrying only
+       * `dailyLimitExceeded` has no reading to persist and is still dropped.
+       */
+      const usable = (value: unknown): value is number =>
+        typeof value === 'number' && Number.isFinite(value) && value >= 0;
+
+      const reportsMinutes = usable(usage.minutesUsedToday);
+      const reportsCounters =
+        usable(usage.blockedSitesToday) || usable(usage.newAppsToday);
+
       if (
-        typeof usage.minutesUsedToday !== 'number' ||
+        (!reportsMinutes && !reportsCounters) ||
         typeof usage.usageDate !== 'string' ||
         !usage.usageDate.trim()
       ) {
-        return;
+        return null;
       }
 
-      await api.post(
+      return api.post(
         '/reportChildUsage',
         {
           userId,
           deviceId,
           usageDate: usage.usageDate.trim(),
-          minutesUsedToday: usage.minutesUsedToday,
-          dailyLimitExceeded: usage.dailyLimitExceeded === true,
+          /*
+           * Both or neither. `dailyLimitExceeded` is a statement about a limit
+           * being reached, which a surface with no minutes cannot make either;
+           * sending a bare `false` beside absent minutes would be the one claim
+           * omitting the minutes was meant to avoid.
+           */
+          ...(reportsMinutes
+            ? {
+                minutesUsedToday: usage.minutesUsedToday,
+                dailyLimitExceeded: usage.dailyLimitExceeded === true,
+              }
+            : {}),
           topApps: (usage.topApps ?? []).map(app => ({ ...app })),
           /*
            * Omitted rather than sent empty when the device has none. The server
@@ -162,6 +219,80 @@ export function createControlRepository(deps: ControlRepositoryDeps) {
           Number.isFinite(usage.idleMinutes) &&
           usage.idleMinutes >= 0
             ? { idleMinutes: Math.floor(usage.idleMinutes) }
+            : {}),
+          /*
+           * The free tier's two counters, on the one request a free family
+           * still makes. Omitted rather than zeroed when the device cannot
+           * observe them — `DeviceControls.blockedSitesToday` carries why, and
+           * the server keeps the distinction all the way to the parent's card.
+           */
+          ...(typeof usage.blockedSitesToday === 'number' &&
+          Number.isFinite(usage.blockedSitesToday) &&
+          usage.blockedSitesToday >= 0
+            ? { blockedSitesToday: Math.floor(usage.blockedSitesToday) }
+            : {}),
+          ...(typeof usage.newAppsToday === 'number' &&
+          Number.isFinite(usage.newAppsToday) &&
+          usage.newAppsToday >= 0
+            ? { newAppsToday: Math.floor(usage.newAppsToday) }
+            : {}),
+        },
+        { as: 'child' },
+      );
+    },
+
+    /**
+     * Send one day a parked device kept, to the same endpoint under a flag.
+     *
+     * **Its own method rather than a `backfill` argument on `reportUsage`**,
+     * because the two are different acts that happen to share a URL. A report
+     * says what is true now and moves `controls.minutesUsedToday`, the number
+     * every parent surface reads as *today*; this hands over a page of history
+     * and touches nothing but that day's `usageDays` document. A boolean on the
+     * live path is one wrong argument away from a fortnight-old afternoon
+     * lifting a limit that is currently being enforced, and no test would see
+     * it — the server refuses neither.
+     *
+     * The caller is `agent/usageBufferDrain`, which owns when this may run at
+     * all (`domain/parkedBuffer`: unparked **and** paying). Nothing here
+     * re-checks that: the server does, with a 403, and an agent asking for
+     * permission it has already been refused is what the latch exists to stop.
+     */
+    async backfillUsage(
+      userId: string,
+      deviceId: string,
+      day: BufferedUsageDay,
+    ): Promise<unknown> {
+      if (
+        typeof day.minutes !== 'number' ||
+        !Number.isFinite(day.minutes) ||
+        typeof day.date !== 'string' ||
+        !day.date.trim()
+      ) {
+        return null;
+      }
+
+      return api.post(
+        '/reportChildUsage',
+        {
+          userId,
+          deviceId,
+          backfill: true,
+          usageDate: day.date.trim(),
+          minutesUsedToday: Math.max(0, Math.floor(day.minutes)),
+          topApps: (day.topApps ?? []).map(app => ({ ...app })),
+          /*
+           * The same omit-rather-than-zero rule the live report above states at
+           * length, and it binds harder here: a buffered day is written with
+           * `{ merge: true }` onto whatever that day already holds, so sending
+           * an empty timeline would erase a real one the device managed to
+           * report before it was parked.
+           */
+          ...(isTimeline(day.timeline) ? { timeline: day.timeline } : {}),
+          ...(typeof day.idleMinutes === 'number' &&
+          Number.isFinite(day.idleMinutes) &&
+          day.idleMinutes >= 0
+            ? { idleMinutes: Math.floor(day.idleMinutes) }
             : {}),
         },
         { as: 'child' },

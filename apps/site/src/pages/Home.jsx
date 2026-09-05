@@ -271,6 +271,21 @@ function useScrollToHash() {
   }, [hash]);
 }
 const WHY = [1, 2, 3, 4];
+/*
+ * Things a parent will not find in the apps they compare us against, each
+ * named with the platform it is true on. The copy carries "Android" or
+ * "Android TV" where a claim holds there alone — a card that reads true for
+ * every phone and is false on an iPhone is the failure `home.why4` promises
+ * against, on the same page.
+ */
+const ONLY = [
+  { n: 1, icon: 'tv' },
+  { n: 2, icon: 'message' },
+  { n: 3, icon: 'apps' },
+  { n: 4, icon: 'lifebuoy' },
+  { n: 5, icon: 'power' },
+  { n: 6, icon: 'star' },
+];
 const STEPS = [1, 2, 3];
 const FAQ = [1, 2, 3, 4];
 const HERO_CHECKS = [1, 2, 3, 4, 5];
@@ -574,6 +589,29 @@ export default function Home() {
                 <div>
                   <h3>{t(`home.why${n}Title`)}</h3>
                   <p>{t(`home.why${n}Text`)}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div className="inner">
+          <div className="reveal">
+            <span className="eyebrow">{t('home.onlyEyebrow')}</span>
+            <h2>{t('home.onlyTitle')}</h2>
+            <p className="section-sub">{t('home.onlySub')}</p>
+          </div>
+          <div className="why-grid">
+            {ONLY.map(o => (
+              <article className="why-item reveal" key={o.n}>
+                <span className="tick">
+                  <Icon name={o.icon} />
+                </span>
+                <div>
+                  <h3>{t(`home.only${o.n}Title`)}</h3>
+                  <p>{t(`home.only${o.n}Text`)}</p>
                 </div>
               </article>
             ))}

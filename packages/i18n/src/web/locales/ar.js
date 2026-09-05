@@ -10,6 +10,18 @@
  * the numeral, also reads correctly for zero.
  */
 export default {
+  /**
+   * Shared with the phone: `appInventorySummaryKey` in
+   * `@kidgate/core/domain/appInventoryReport` returns these key names, so the
+   * dashboard and `apps/mobile` render one sentence from one decision. Absent
+   * until 2026-09-01, which meant this card's subtitle printed the raw key.
+   */
+  appInventory: {
+    summaryFlagged: '{{flagged}} من {{total}} تطبيقًا تستحق النظر',
+    summaryClear: 'لا شيء ملحوظ بين {{total}} تطبيقًا',
+    summaryFlaggedExtension: '{{flagged}} من {{total}} إضافة Chrome تستحق النظر',
+    summaryClearExtension: 'لا شيء مقلق بين {{total}} إضافة Chrome',
+  },
   meta: {
     title: 'KidGate — رقابة أبوية تحترم طفلك',
     description:
@@ -190,12 +202,35 @@ export default {
     why4Title: 'صادقون بشأن الحدود',
     why4Text: 'نخبرك بما تستطيع كل منصة فرضه وما لا تستطيع، بدل الوعد بتحكم غير موجود.',
 
+    onlyEyebrow: 'في KidGate وحده',
+    onlyTitle: 'ما لن تجده في مكان آخر',
+    onlySub:
+      'ستة أمور راجعناها مقابل التطبيقات التي يقارننا بها الأهل. كل واحد منها يذكر المنصة التي يصحّ عليها.',
+    only1Title: 'وتلفاز غرفة الجلوس أيضًا',
+    only1Text:
+      'يحصل Android TV على ساعات الحظر نفسها وحظر التطبيقات وحدود كل تطبيق وتصفية الويب كما في الهاتف. معظم أدوات الرقابة الأبوية تتوقف عند الهاتف.',
+    only2Title: 'تنبيهات رسائل تبقى على الهاتف',
+    only2Text:
+      'على Android تُقارَن الرسائل على الجهاز نفسه بقوائم كلمات مفتاحية بـ 14 لغة. لا يُحتفظ إلا بالكلمة المطابقة — ولا تُخزَّن المحادثة نفسها أبدًا.',
+    only3Title: 'كل تطبيق، لا قائمة تطبيقات',
+    only3Text:
+      'على Android تأتي التنبيهات من الإشعارات ومما يكتبه طفلك في أي تطبيق يستخدمه — Zalo وLINE وKakaoTalk ودردشة لعبة — لا من قائمة ثابتة بالتطبيقات المدعومة.',
+    only4Title: 'مخرج للطفل',
+    only4Text:
+      'الضغط المطوّل على SOS خمس ثوانٍ يصلك فورًا مع الموقع — وعلى Android وMac يُفتح قفل الجهاز أيضًا لفترة قصيرة. الطفل الذي يستطيع طلب المساعدة دائمًا لا سبب لديه ليقاوم التطبيق.',
+    only5Title: 'قواعد تصمد بلا إنترنت',
+    only5Text:
+      'تُطبَّق ساعات الحظر والحد اليومي على الجهاز نفسه، فنزع الراوتر لا يغيّر شيئًا. حتى التلفاز يقبل رمز PIN الوالدين من دون أي اتصال.',
+    only6Title: 'تقدير حين يستحقه الأسبوع',
+    only6Text:
+      'يترك كل تقرير أسبوعي مكانًا لما سار جيدًا — حدّ جرى احترامه، سهر انتهى، مهمة أُنجزت — ولا يقوله إلا حين يكون الأسبوع قد قيس فعلًا.',
+
     faqEyebrow: 'الأسئلة الشائعة',
     faqTitle: 'ما يسأل عنه الآباء أولًا',
     faqSub: 'إجابات سريعة قبل التنزيل.',
     faq1Q: 'هل هناك فترة تجريبية مجانية؟',
     faq1A:
-      'نعم. تبدأ التجربة عند ربط أول جهازَي ولي أمر وطفل، وتشمل كل مزايا Premium. وعند انتهائها، يستمر الحد اليومي وساعات الحظر والموقع مجانًا على جهاز طفل واحد.',
+      'نعم. تبدأ الفترة التجريبية عند ربط أول جهاز ولي أمر وجهاز طفل، وتشمل كل ميزات Premium. وعند انتهائها، تستمر كل القواعد التي ضبطتها — الحد اليومي وساعات الحظر والتطبيقات المحظورة وفلتر الويب والموقع — في العمل مجانًا على جهاز طفل واحد.',
     faq2Q: 'كم جهازًا يمكنني إدارته؟',
     faq2A:
       'اشتراك واحد يغطي عائلتك بأكملها — عدة أجهزة أطفال وعدة أولياء أمور على الخطة نفسها.',
@@ -204,7 +239,7 @@ export default {
       'الإعدادات الحساسة محمية برمز ولي الأمر، وتنبيهات الحماية تخبرك فورًا إذا أُطفئ إذن أساسي على جهاز الطفل.',
     faq4Q: 'هل يمكنني إدارة كل شيء من الحاسوب؟',
     faq4A:
-      'يمكنك تسجيل الدخول إلى لوحة الويب لقراءة التقارير. أما تغيير الحدود أو قفل جهاز فيُعتمد من هاتفك، لذا لا تكفي كلمة مرور مسروقة أبدًا.',
+      'تبدأ الفترة التجريبية عند ربط أول جهاز ولي أمر وجهاز طفل، وتتيح كل الميزات. إزالة جهاز طفل لا تعيد ضبط الفترة التجريبية. وعند انتهائها، تستمر كل القواعد في العمل مجانًا على جهاز طفل واحد؛ ويحتفظ Premium بالنشاط المباشر والسجل والتقارير الأسبوعية وكل الأجهزة.',
     faqMore: 'أسئلة أخرى؟ زر صفحة الدعم',
 
     ctaTitle: 'ابدأ حماية عائلتك اليوم',
@@ -218,8 +253,8 @@ export default {
     notConfiguredTitle: 'لم تُضبط Firebase في هذا النشر.',
     notConfiguredBody: 'اضبط متغيرات البيئة ‎VITE_FIREBASE_*‎ لتفعيل تسجيل الدخول.',
     qrWhy:
-      'الاعتماد من هاتفك هو الطريقة الوحيدة لفتح أدوات التحكم — يبقى قفل الجهاز وتغيير الحدود في التطبيق. الطرق أدناه تسجّل دخولك لقراءة التقارير.',
-    orViewOnly: 'أو دخول للاطلاع فقط',
+      'المسح بهاتفك يسجّل دخولك ويفتح أدوات التحكّم في خطوة واحدة. أمّا الطرق أدناه فتسجّل دخولك للاطّلاع، ثم يلزم رمز PIN لولي الأمر لفتح أدوات التحكّم.',
+    orViewOnly: 'أو سجّل الدخول بطريقة أخرى',
     google: 'المتابعة بحساب Google',
     googleBusy: 'جارٍ فتح Google…',
     apple: 'المتابعة بحساب Apple',
@@ -409,8 +444,7 @@ export default {
     devices_few: '{{count}} أجهزة أطفال',
     devices_many: '{{count}} جهاز أطفال',
     devices_other: '{{count}} جهاز أطفال',
-    planPremium: 'Premium',
-    planTrial: 'تجربة',
+    planManageOnPhone: 'تُشترى الباقات وتُغيَّر من تطبيق KidGate على هاتفك.',
     fallbackFamily: 'عائلتك',
     fallbackDevice: 'جهاز الطفل',
 
@@ -419,6 +453,7 @@ export default {
     statusLocked: 'مقفل',
     statusLockSent: 'أُرسل القفل',
     statusLockNotApplied: 'لم يُطبَّق القفل',
+    statusPaused: 'متوقف مؤقتًا',
 
     stateAllowed: 'مسموح',
     stateDenied: 'مُطفأ',
@@ -437,11 +472,28 @@ export default {
     lockDevice: 'قفل الجهاز',
     unlock: 'إلغاء القفل',
     working: 'جارٍ التنفيذ…',
-    lockNeedsApp: 'يتطلب القفل تطبيق KidGate على هاتفك',
+    save: 'حفظ',
 
-    viewOnlyTitle: 'للاطلاع فقط.',
-    viewOnlyBody:
-      'لقفل جهاز أو تغيير الحدود أو اعتماد الطلبات، سجّل الخروج ثم ادخل من جديد بمسح رمز QR بتطبيق KidGate — فالاعتماد من هاتف ولي أمر مرتبط هو ما يفتح أدوات التحكم. أما طلبات الاطمئنان فتعمل من هنا في الحالتين.',
+    unlockTitle: 'التغييرات مقفلة.',
+    unlockBody:
+      'الاطّلاع متاح فورًا. لقفل جهاز أو تغيير الحدود أو الموافقة على الطلبات، افتح هذا المتصفّح برمز PIN لولي الأمر — أو وافق عليه بمسح رمز QR بتطبيق KidGate. أمّا طلبات الاطمئنان فتعمل في الحالتين.',
+    unlockCta: 'فتح التغييرات',
+    unlockToChange: 'افتح التغييرات أولًا',
+    pinTitle: 'أدخل رمز PIN لولي الأمر',
+    pinBody:
+      'الأرقام الستة نفسها التي تستخدمها في التطبيق. يبقى هذا المتصفّح مفتوحًا 7 أيام.',
+    pinLabel: 'رمز PIN لولي الأمر',
+    pinSubmit: 'فتح',
+    pinOrScan: 'أو وافق من هاتفك',
+    qrSaferNote:
+      'الموافقة من الهاتف أكثر أمانًا: فهي تتطلّب الهاتف المقترن نفسه، بينما رمز PIN ستة أرقام قد يكون أحد أفراد العائلة رآك تُدخلها.',
+    pinWrong: 'رمز PIN غير صحيح. المحاولات المتبقية: {{count}}.',
+    pinLocked:
+      'محاولات خاطئة كثيرة. انتظر 15 دقيقة، أو وافق على هذا المتصفّح من هاتفك.',
+    pinNotSet:
+      'لم تحدّد عائلتك رمز PIN لولي الأمر بعد. حدّده في التطبيق، أو وافق على هذا المتصفّح من هاتفك.',
+    unlockedToast: 'تم فتح التغييرات على هذا المتصفّح.',
+    close: 'إغلاق',
 
     noDeviceTitle: 'لا يوجد جهاز طفل بعد',
     noDeviceBody:
@@ -508,6 +560,7 @@ export default {
     on: 'مُفعّل',
     topAppsTitle: 'أكثر التطبيقات استخدامًا اليوم',
     topAppsSub: 'تظهر حدود كل تطبيق كعلامة',
+    topAppsFreeHint: 'أفضل 3 اليوم — القائمة الكاملة والسجل متاحان مع Premium.',
     trendTitle: 'اتجاه وقت استخدام الشاشة',
     trendSub: 'آخر {{count}} يوم',
     rangeDays: '{{count}} ي',
@@ -521,6 +574,7 @@ export default {
     blockedHoursSub_other:
       '{{count}} فترة زمنية · يبقى الجهاز مقفلًا داخل الكتل المظللة',
     scheduleOff: 'الجدول مُطفأ',
+    schedMax: 'يحتفظ الجهاز بـ {{max}} فترات كحدّ أقصى.',
 
     appUsageTitle: 'استخدام التطبيقات اليوم',
     appUsageSub: 'الوقت المستغرق لكل تطبيق',
@@ -534,6 +588,7 @@ export default {
     categories: 'الفئات',
     perAppHint:
       'تعمل حدود كل تطبيق باستقلال عن قائمة الحظر — «30 دقيقة من TikTok» قرار مختلف عن «لا TikTok».',
+    limitsMax: 'يحدّد الجهاز {{max}} تطبيقًا كحدّ أقصى.',
     perDay: '{{value}}/يوم',
     webActivityTitle: 'نشاط الويب',
     webActivitySub: 'أكثر النطاقات زيارةً، آخر 30 يومًا',
@@ -548,6 +603,21 @@ export default {
     inventoryOtherLabel: 'محدّدة',
     inventoryUnknownLabel: 'غير محدّدة',
     inventoryIncomplete: 'قد لا يظهر هنا تطبيق بلا أيقونة على الشاشة الرئيسية.',
+    inventoryPending: 'بانتظار موافقتك',
+    pendingInstallBlocked: 'محظور حتى تسمح به',
+    installAllow: 'السماح',
+    pendingInstallsTitle: 'تطبيقات جديدة بانتظار الموافقة',
+    pendingInstallsSub: 'ثُبِّتت بعد تفعيل الموافقة، وحظرها الجهاز من تلقاء نفسه',
+    pendingInstallsEmpty: 'لا تطبيقات جديدة بانتظار الموافقة.',
+    toastInstallAllowed: 'تم السماح بالتطبيق',
+    rowInstallApproval: 'الموافقة على التطبيقات الجديدة',
+    rowInstallApprovalDesc_few: '{{count}} تطبيقات بانتظار الموافقة',
+    rowInstallApprovalDesc_many: '{{count}} تطبيقًا بانتظار الموافقة',
+    rowInstallApprovalDesc_one: '{{count}} تطبيق بانتظار الموافقة',
+    rowInstallApprovalDesc_other: '{{count}} تطبيق بانتظار الموافقة',
+    rowInstallApprovalDesc_two: 'تطبيقان بانتظار الموافقة',
+    rowInstallApprovalDescIos:
+      'يخفي App Store — لا تتيح Apple الموافقة على كل تطبيق على حدة',
     webActivitySyncNote:
       'قد يستغرق نشاط الويب بضع دقائق ليظهر في هذه الشاشة — وقتًا أطول إذا لم يكن الجهاز متصلاً بالإنترنت أو إذا أُغلق بشكل غير متوقع.',
     webActivitySyncNoteTv:
@@ -556,6 +626,12 @@ export default {
     colVisits: 'الزيارات',
     colBlocked: 'المحظورة',
     colLastSeen: 'آخر ظهور',
+    videosTitle: 'مقاطع الفيديو المُشاهَدة',
+    videosSub: 'ما تمت مشاهدته على YouTube والويب',
+    videosEmpty: 'لا توجد فيديوهات بعد.',
+    colVideo: 'فيديو',
+    colChannel: 'القناة',
+    colViews: 'المشاهدات',
     filterRefusedTitle: 'ما رفضه المرشِّح',
     filterRefusedSub_one: 'استعلام محظور واحد، آخر 30 يومًا',
     filterRefusedSub_two: 'استعلامان محظوران، آخر 30 يومًا',
@@ -586,6 +662,11 @@ export default {
     placeArrive: 'الوصول',
     placeLeave: 'المغادرة',
     placeNoAlerts: 'بلا تنبيهات',
+    placeSamePin:
+      'هذا هو موضع «{{name}}» نفسه. استخدم خريطة التطبيق لوضعه في مكان آخر.',
+    placeWebHint:
+      'لا يستطيع الويب سوى إضافة مكان حيث أبلغ الجهاز عن موقعه آخر مرة. استخدم خريطة التطبيق لاختيار أي مكان آخر.',
+    placeNeedsLocation: 'في انتظار موقع من هذا الجهاز.',
     sosTitle: 'تنبيهات SOS',
     sosSub: 'إشارات طوارئ من جهاز الطفل',
     sosEmpty: 'لا تنبيهات SOS. جرّباها معًا مرة واحدة كي يعرف كلاكما كيف تعمل.',
@@ -656,7 +737,12 @@ export default {
     rowLocation: 'مشاركة الموقع',
     rowLocationDesc: 'آخر تحديث {{when}}',
     rowLocationNone: 'لا موقع بعد',
-    toggleInApp: 'غيّر هذا من تطبيق KidGate',
+    rowSearchMonitoring: 'مراقبة البحث',
+    rowSearchMonitoringDesc:
+      'المتصفحات ويوتيوب. يُبلَّغ عن الكلمة المُعلَّمة فقط، ولا يُرسل نص البحث أبدًا.',
+    rowSafeSearch: 'فرض البحث الآمن',
+    rowSafeSearchDesc:
+      'يثبّت البحث الآمن في Google، والوضع المقيّد في YouTube، وBing وDuckDuckGo على الإعداد الصارم. Android وAndroid TV وChrome.',
 
     webFilterCatsTitle: 'فئات مرشِّح الويب',
     webFilterCatsSub: 'أنواع المحتوى المحظورة',
@@ -666,13 +752,18 @@ export default {
     starChartSub: 'النجوم المكتسبة هذا الأسبوع لكل طفل',
     starChartEmpty: 'أضف طفلاً ثانياً في التطبيق لبدء لوحة النجوم.',
     starChartStars: 'النجوم: {{count}}',
+    familyScreenTimeTitle: 'وقت شاشة العائلة',
+    familyScreenTimeSub: 'الأقل وقت شاشة أولًا، هذا الأسبوع',
+    familyScreenTimeEmpty:
+      'لم يبلّغ أحد بعد هذا الأسبوع. تظهر الصفوف عندما تبلّغ الهواتف.',
+    familyScreenTimeParent: 'ولي أمر',
+    familyScreenTimeDays: 'أيام مبلَّغ عنها: {{count}}',
     rewardTasksTitle: 'مهام المكافأة',
     rewardTasksSub: 'اكسب دقائق إضافية بإنجاز المهام',
     rewardTaskMeta: '+{{minutes}} د · {{cadence}}',
     rewardTaskStars: 'الصعوبة: {{count}} من 3',
     rewardTaskWaiting: ' · بانتظار اعتمادك',
     approve: 'اعتماد',
-    approveInApp: 'اعتمِده في تطبيق KidGate',
     siteRequestsTitle: 'طلبات المواقع',
     siteRequestsSub: 'المواقع التي طلب هذا الجهاز السماح بها',
     siteRequestAllow: 'السماح',
@@ -693,6 +784,7 @@ export default {
     conflict: 'غيّر شخص آخر هذا للتو. أعد التحميل لمعرفة النتيجة.',
     rateLimited: 'تغييرات كثيرة دفعة واحدة. انتظر لحظة ثم أعد المحاولة.',
     server: 'تعذّر على KidGate إتمام ذلك. أعد المحاولة قريبًا.',
+    premiumRequired: 'هذه ميزة Premium. تُدار الخطط من تطبيق KidGate على هاتفك.',
   },
 
   report: {
@@ -830,7 +922,7 @@ export default {
 
     faq4Q: 'كيف تعمل الفترة التجريبية المجانية؟',
     faq4A:
-      'تبدأ التجربة عند ربط أول جهازَي ولي أمر وطفل، وتمنح وصولًا كاملًا لكل المزايا. إزالة جهاز طفل لا تعيد ضبط التجربة. وعند انتهائها، اشترك في Premium لمواصلة استخدام KidGate.',
+      'تبدأ الفترة التجريبية عند ربط أول جهاز ولي أمر وجهاز طفل، وتتيح كل الميزات. إزالة جهاز طفل لا تعيد ضبط الفترة التجريبية. وعند انتهائها، تستمر كل القواعد في العمل مجانًا على جهاز طفل واحد؛ ويحتفظ Premium بالنشاط المباشر والسجل والتقارير الأسبوعية وكل الأجهزة.',
 
     faq5Q: 'كيف ألغي اشتراكي؟',
     faq5A:

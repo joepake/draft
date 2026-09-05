@@ -57,6 +57,7 @@ export const family = {
   childDetailStarsWell: 'Stars this week',
   childStarsA11y: 'Stars this week: {{count}}',
   childDetailDevicesTitle: 'Devices',
+  childDetailSwipeHint: 'Swipe a device to unassign it.',
   childDetailAssignMore: 'Assign another device…',
   childDetailAssignSheetTitle: 'Assign a device to {{childName}}',
   childDetailNoDevices:
@@ -80,6 +81,8 @@ export const family = {
   chipDeviceCount: '{{count}} devices',
   chipDeviceCount_one: '{{count}} device',
   chipOnlineCount: '{{count}} online',
+  metaOnlineCount: '{{online}}/{{count}} online',
+  metaOnlineCount_one: '1 device online',
   chipSosCount: '{{count}} SOS',
   chipCheckInCount: '{{count}} Check-Ins',
   chipCheckInCount_one: '{{count}} Check-In',
@@ -97,6 +100,22 @@ export const family = {
   buildOutdated: 'Update available',
   healthNeedsSetup: 'Needs setup',
   healthOffline: 'Offline',
+  // A parked device and the choice it asks for (`docs/PRICING.md` §6).
+  // `family`, not `plans`: the dashboard reads this namespace.
+  devicePausedLabel: 'Paused',
+  devicePausedHint: 'Paused on the free plan — every rule still applies',
+  parkedBannerTitle: 'Choose the device to keep watching',
+  parkedBannerBody:
+    'Your rules run on every device. The free plan reports from one — pick it, or upgrade to keep them all.',
+  parkedBannerAction: 'Choose device',
+  chooseMonitoredTitle: 'Which device should report?',
+  chooseMonitoredBody:
+    'Every rule keeps working on all of them. Only the one you pick sends screen time and location. You can change it once every {{days}} days.',
+  chooseMonitoredConfirm: 'Watch this device',
+  chooseMonitoredUpgrade: 'Keep all devices — upgrade',
+  chooseMonitoredDone: '{{name}} is now the reporting device',
+  monitoredCooldown: 'The reporting device can only change once every {{days}} days',
+  monitoredChooseFailed: 'Could not change the reporting device',
   // Quick-glance rows on the device card — the two things parents check daily,
   // previously 3+ taps deep behind Device Detail.
   cardWhereLabel: 'Where',
@@ -216,7 +235,7 @@ export const family = {
   childDetailProtectionAttention: '{{count}} devices need attention',
   childDetailProtectionAttention_one: '{{count}} device needs attention',
   childDetailProtectionSheetTitle: 'Protection by device',
-  childDetailRemoveTitle: 'Remove this child',
+  childDetailRemoveTitle: "Remove {{childName}}'s profile",
   childDetailRemovingButton: 'Removing…',
   childDetailOnlineCount: '{{online}} of {{total}} online',
   childDetailBudgetTitle: 'Daily limit',

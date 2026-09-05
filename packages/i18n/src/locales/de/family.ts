@@ -59,6 +59,7 @@ export const family = {
   childDetailStarsWell: 'Sterne diese Woche',
   childStarsA11y: 'Sterne diese Woche: {{count}}',
   childDetailDevicesTitle: 'Geräte',
+  childDetailSwipeHint: 'Wische über ein Gerät, um die Zuordnung aufzuheben.',
   childDetailAssignMore: 'Weiteres Gerät zuweisen…',
   childDetailAssignSheetTitle: 'Gerät {{childName}} zuweisen',
   childDetailNoDevices:
@@ -89,6 +90,8 @@ export const family = {
   chipDeviceCount_one: '{{count}} Gerät',
 
   chipOnlineCount: '{{count}} online',
+  metaOnlineCount: '{{online}}/{{count}} online',
+  metaOnlineCount_one: '1 Gerät online',
 
   chipSosCount: '{{count}} SOS',
 
@@ -116,6 +119,20 @@ export const family = {
   buildOutdated: 'Update verfügbar',
   healthNeedsSetup: 'Einrichtung erforderlich',
   healthOffline: 'Offline',
+  devicePausedLabel: 'Pausiert',
+  devicePausedHint: 'Im Gratis-Tarif pausiert – alle Regeln gelten weiter',
+  parkedBannerTitle: 'Wähle das Gerät, das du weiter im Blick behältst',
+  parkedBannerBody:
+    'Deine Regeln laufen auf jedem Gerät. Der Gratis-Tarif erhält Berichte von einem – wähle es aus oder upgrade, um alle zu behalten.',
+  parkedBannerAction: 'Gerät wählen',
+  chooseMonitoredTitle: 'Welches Gerät soll berichten?',
+  chooseMonitoredBody:
+    'Alle Regeln laufen auf allen Geräten weiter. Nur das gewählte sendet Bildschirmzeit und Standort. Du kannst es alle {{days}} Tage einmal ändern.',
+  chooseMonitoredConfirm: 'Dieses Gerät beobachten',
+  chooseMonitoredUpgrade: 'Alle Geräte behalten – Upgrade',
+  chooseMonitoredDone: '{{name}} ist jetzt das berichtende Gerät',
+  monitoredCooldown: 'Das berichtende Gerät lässt sich nur alle {{days}} Tage ändern',
+  monitoredChooseFailed: 'Das berichtende Gerät konnte nicht geändert werden',
 
   // Quick-glance rows on the device card
   cardWhereLabel: 'Standort',
@@ -325,7 +342,7 @@ export const family = {
   childDetailProtectionAttention: '{{count}} Geräte brauchen Aufmerksamkeit',
   childDetailProtectionAttention_one: '{{count}} Gerät braucht Aufmerksamkeit',
   childDetailProtectionSheetTitle: 'Schutz je Gerät',
-  childDetailRemoveTitle: 'Dieses Kind entfernen',
+  childDetailRemoveTitle: 'Profil von {{childName}} entfernen',
   childDetailRemovingButton: 'Wird entfernt…',
   childDetailOnlineCount: '{{online}} von {{total}} online',
   childDetailBudgetTitle: 'Tageslimit',

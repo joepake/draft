@@ -57,6 +57,7 @@ export const family = {
   childDetailStarsWell: '이번 주 별',
   childStarsA11y: '이번 주 별: {{count}}',
   childDetailDevicesTitle: '기기',
+  childDetailSwipeHint: '기기를 밀면 할당을 해제할 수 있습니다.',
   childDetailAssignMore: '다른 기기 지정…',
   childDetailAssignSheetTitle: '{{childName}}에게 기기 지정',
   childDetailNoDevices:
@@ -84,6 +85,7 @@ export const family = {
   chipDeviceCount_one: '{{count}}개의 기기',
 
   chipOnlineCount: '{{count}}개 온라인',
+  metaOnlineCount: '{{count}}개 중 {{online}}개 온라인',
 
   chipSosCount: '{{count}}건의 SOS',
 
@@ -111,6 +113,20 @@ export const family = {
   buildOutdated: '업데이트 있음',
   healthNeedsSetup: '설정 필요',
   healthOffline: '오프라인',
+  devicePausedLabel: '일시중지',
+  devicePausedHint: '무료 플랜에서 일시중지됨 — 모든 규칙은 계속 적용됩니다',
+  parkedBannerTitle: '계속 지켜볼 기기를 선택하세요',
+  parkedBannerBody:
+    '규칙은 모든 기기에서 작동합니다. 무료 플랜은 한 기기에서만 보고를 받습니다 — 기기를 선택하거나, 업그레이드해 모두 유지하세요.',
+  parkedBannerAction: '기기 선택',
+  chooseMonitoredTitle: '어느 기기가 보고할까요?',
+  chooseMonitoredBody:
+    '모든 기기에서 규칙은 그대로 유지됩니다. 선택한 기기만 사용 시간과 위치를 보냅니다. {{days}}일에 한 번 변경할 수 있습니다.',
+  chooseMonitoredConfirm: '이 기기 지켜보기',
+  chooseMonitoredUpgrade: '모든 기기 유지 — 업그레이드',
+  chooseMonitoredDone: '이제 {{name}}이(가) 보고하는 기기입니다',
+  monitoredCooldown: '보고하는 기기는 {{days}}일에 한 번만 변경할 수 있습니다',
+  monitoredChooseFailed: '보고하는 기기를 변경할 수 없습니다',
 
   cardWhereLabel: '위치',
 
@@ -315,7 +331,7 @@ export const family = {
   childDetailProtectionOk: '보호됨',
   childDetailProtectionAttention: '기기 {{count}}대에 주의가 필요합니다',
   childDetailProtectionSheetTitle: '기기별 보호 상태',
-  childDetailRemoveTitle: '이 아이 삭제',
+  childDetailRemoveTitle: '{{childName}} 프로필 삭제',
   childDetailRemovingButton: '삭제 중…',
   childDetailOnlineCount: '{{total}}대 중 {{online}}대 온라인',
   childDetailBudgetTitle: '하루 제한',

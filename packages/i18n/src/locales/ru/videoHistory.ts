@@ -1,0 +1,28 @@
+export const videoHistory = {
+  title: 'Просмотренные видео',
+  fallbackDeviceName: 'Устройство ребёнка',
+  toggleLabel: 'Записывать просмотренные видео',
+  toggleHint: 'YouTube в браузере и приложение YouTube на Android.',
+  toggleFailed: 'Не удалось обновить историю видео. Повторите попытку.',
+  unsupportedNote:
+    'Это устройство не может сообщать о просмотренных видео. Работает на Android и в Chrome.',
+  emptyTitle: 'Пока ничего не просмотрено',
+  emptyBody: 'Видео появятся здесь, когда ребёнок смотрит с работающим KidGate.',
+  emptyBodyOff: 'Включите запись выше, чтобы видеть просмотренные видео.',
+  viewsMeta_one: '{{count}} раз',
+  viewsMeta: '{{count}} раз',
+  dayToday: 'Сегодня',
+  dayYesterday: 'Вчера',
+  dayCount_one: '{{count}} видео',
+  dayCount: '{{count}} видео',
+  heroVideos: 'Видео',
+  heroChannels: 'Каналы',
+  heroViews: 'Просмотры',
+  emptyStepEnable: 'Включите запись',
+  emptyStepWatch: 'Ребёнок смотрит YouTube',
+  emptyStepAppear: 'Видео появятся здесь',
+  unknownChannel: 'Неизвестный канал',
+  heroTopChannel: 'Чаще всего',
+  readerLayoutChanged:
+    'Shorts на этом устройстве сейчас не записываются: приложение YouTube изменилось, и KidGate нужно обновить. Остальные видео по-прежнему записываются.',
+};

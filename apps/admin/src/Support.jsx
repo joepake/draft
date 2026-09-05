@@ -322,7 +322,21 @@ function Detail({ uid, id, onChanged }) {
 
       <div className="ticket-meta">
         <span>{report.platform ?? 'unknown platform'}</span>
-        <span>app {report.appVersion ?? '—'}</span>
+        {/*
+          Version *and* build. An OTA ships a new bundle under an unchanged
+          marketing version, so "1.4.0" on two phones can be two different
+          builds — the build number is the half that identifies the code.
+          Both null on every report filed before 2026-09-02.
+        */}
+        <span>
+          app {report.appVersion ?? '—'}
+          {report.appVersionCode ? ` (${report.appVersionCode})` : ''}
+        </span>
+        {/*
+          The language to answer in. Absent is not English — it is a report
+          filed before the app recorded one.
+        */}
+        <span>{report.language ? `lang ${report.language}` : 'lang unknown'}</span>
         <span>{report.deviceName ?? 'unnamed device'}</span>
         <span>filed {when(report.createdAt)}</span>
         <span>uid {report.uid}</span>

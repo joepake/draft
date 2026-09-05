@@ -11,6 +11,19 @@
  * - The three legal pages stay English-only, so nothing from them is here.
  */
 export default {
+  /**
+   * Shared with the phone: `appInventorySummaryKey` in
+   * `@kidgate/core/domain/appInventoryReport` returns these key names, so the
+   * dashboard and `apps/mobile` render one sentence from one decision. Absent
+   * until 2026-09-01, which meant this card's subtitle printed the raw key.
+   */
+  appInventory: {
+    summaryFlagged: '{{flagged}} of {{total}} apps are worth a look',
+    summaryClear: 'Nothing flagged among {{total}} apps',
+    summaryFlaggedExtension:
+      '{{flagged}} of {{total}} Chrome extensions are worth a look',
+    summaryClearExtension: 'Nothing flagged among {{total}} Chrome extensions',
+  },
   meta: {
     title: 'KidGate — Parental control that respects your kid',
     description:
@@ -194,12 +207,35 @@ export default {
     why4Text:
       'We tell you what each platform can and cannot enforce, instead of promising control that does not exist.',
 
+    onlyEyebrow: 'Only KidGate',
+    onlyTitle: 'What you will not find elsewhere',
+    onlySub:
+      'Six things we checked against the apps parents compare us with. Each one names the platform it is true on.',
+    only1Title: 'The living-room TV, too',
+    only1Text:
+      'Android TV gets the same Blocked Hours, Blocked Apps, per-app limits and Web Filter as a phone. Most parental controls stop at the phone.',
+    only2Title: 'Message alerts that stay on the phone',
+    only2Text:
+      'On Android, messages are checked on the device against keyword lists in 14 languages. Only the matched word is kept — the conversation itself is never stored.',
+    only3Title: 'Every app, not a list of apps',
+    only3Text:
+      'On Android, alerts come from notifications and typing in whatever your child uses — Zalo, LINE, KakaoTalk, a game’s chat — not from a fixed list of supported apps.',
+    only4Title: 'A way out for the child',
+    only4Text:
+      'Holding SOS for five seconds reaches you at once, with location — and on Android and Mac it also unlocks the device for a short while. A child who can always reach help has no reason to fight the app.',
+    only5Title: 'Rules that hold without internet',
+    only5Text:
+      'Blocked Hours and Daily Limit are enforced on the device itself, so unplugging the router changes nothing. The TV even accepts your Parent PIN with no connection at all.',
+    only6Title: 'Credit where the week earned it',
+    only6Text:
+      'Every weekly report keeps room for what went well — a limit respected, a late night gone, a task finished — and says it only once the week was actually measured.',
+
     faqEyebrow: 'FAQ',
     faqTitle: 'Questions parents ask first',
     faqSub: 'Quick answers before you download.',
     faq1Q: 'Is there a free trial?',
     faq1A:
-      'Yes. The trial starts when your first parent and child devices are connected, and includes every Premium feature. When it ends, Daily Limit, Blocked Hours and location keep working for free on one child device.',
+      'Yes. The trial starts when your first parent and child devices are connected, and includes every Premium feature. When it ends, every rule you set — Daily Limit, Blocked Hours, Blocked Apps, Web Filter and location — keeps working for free on one child device.',
     faq2Q: 'How many devices can I manage?',
     faq2A:
       'One subscription covers your whole family — multiple child devices and multiple parents on the same plan.',
@@ -208,7 +244,7 @@ export default {
       'Sensitive settings sit behind your Parent PIN, and Protection Alerts tell you straight away if a key permission is turned off on the child device.',
     faq4Q: 'Can I manage everything from a computer?',
     faq4A:
-      'You can sign in to the web dashboard to read reports. Changing limits or locking a device is approved from your phone, so a stolen password is never enough.',
+      'The trial starts when your first parent and child devices are connected, and gives full access to every feature. Removing a child device does not reset the trial. When it ends, every rule keeps working for free on one child device; Premium keeps live activity, history, weekly reports and every device.',
     faqMore: 'More questions? Visit Support',
 
     ctaTitle: 'Start protecting your family today',
@@ -223,8 +259,8 @@ export default {
     notConfiguredBody:
       'Set the VITE_FIREBASE_* environment variables to enable sign-in.',
     qrWhy:
-      'Approving from your phone is the only way to unlock the controls — locking a device and changing limits stay with the app. The methods below sign you in to view reports.',
-    orViewOnly: 'or view-only sign in',
+      'Scanning with your phone signs you in and unlocks the controls in one step. The methods below sign you in to read; unlocking the controls then takes your Parent PIN.',
+    orViewOnly: 'or sign in another way',
     google: 'Continue with Google',
     googleBusy: 'Opening Google…',
     apple: 'Continue with Apple',
@@ -297,6 +333,8 @@ export default {
     conflict: 'Someone else just changed this. Reload to see where it landed.',
     rateLimited: 'Too many changes at once. Wait a moment and try again.',
     server: 'KidGate could not complete that. Try again shortly.',
+    premiumRequired:
+      'This is a Premium feature. Plans are managed in the KidGate app on your phone.',
   },
 
   live: {
@@ -418,8 +456,7 @@ export default {
     parents_other: '{{count}} parents',
     devices_one: '{{count}} child device',
     devices_other: '{{count}} child devices',
-    planPremium: 'Premium',
-    planTrial: 'Trial',
+    planManageOnPhone: 'Plans are bought and changed in the KidGate app on your phone.',
     fallbackFamily: 'Your family',
     fallbackDevice: 'Child device',
 
@@ -428,6 +465,7 @@ export default {
     statusLocked: 'Locked',
     statusLockSent: 'Lock sent',
     statusLockNotApplied: 'Lock not applied',
+    statusPaused: 'Paused',
 
     stateAllowed: 'Allowed',
     stateDenied: 'Turned off',
@@ -446,11 +484,28 @@ export default {
     lockDevice: 'Lock device',
     unlock: 'Unlock',
     working: 'Working…',
-    lockNeedsApp: 'Locking requires the KidGate app on your phone',
+    save: 'Save',
 
-    viewOnlyTitle: 'View only.',
-    viewOnlyBody:
-      'To lock a device, change limits or approve requests, sign out and sign in again by scanning the QR code with the KidGate app — approval from a paired parent phone is what unlocks the controls. Check-Ins work from here either way.',
+    unlockTitle: 'Changes are locked.',
+    unlockBody:
+      'Reading works straight away. To lock a device, change limits or approve requests, unlock this browser with your Parent PIN — or approve it by scanning the QR code with the KidGate app. Check-Ins work either way.',
+    unlockCta: 'Unlock changes',
+    unlockToChange: 'Unlock changes first',
+    pinTitle: 'Enter your Parent PIN',
+    pinBody:
+      'The same six digits you use in the app. This browser stays unlocked for 7 days.',
+    pinLabel: 'Parent PIN',
+    pinSubmit: 'Unlock',
+    pinOrScan: 'Or approve from your phone',
+    qrSaferNote:
+      'Approving from the phone is the safer of the two: it needs the paired phone in hand, while the PIN is six digits somebody in the family may have watched you type.',
+    pinWrong: 'Wrong PIN. Tries left: {{count}}.',
+    pinLocked:
+      'Too many wrong tries. Wait 15 minutes, or approve this browser from your phone.',
+    pinNotSet:
+      'Your family has no Parent PIN yet. Set one in the app, or approve this browser from your phone.',
+    unlockedToast: 'Changes unlocked on this browser.',
+    close: 'Close',
 
     noDeviceTitle: 'No child device yet',
     noDeviceBody:
@@ -514,6 +569,7 @@ export default {
     on: 'On',
     topAppsTitle: 'Top apps today',
     topAppsSub: 'Per-app caps shown as a marker',
+    topAppsFreeHint: 'Top 3 today — the full list and history come with Premium.',
     trendTitle: 'Screen Time trend',
     trendSub: 'Last {{count}} days',
     rangeDays: '{{count}}d',
@@ -523,6 +579,7 @@ export default {
     blockedHoursSub_other:
       '{{count}} time ranges · the device stays locked inside the shaded blocks',
     scheduleOff: 'Schedule is off',
+    schedMax: '{{max}} windows is the most a device can hold.',
 
     appUsageTitle: 'App usage today',
     appUsageSub: 'Time spent per app',
@@ -536,6 +593,7 @@ export default {
     categories: 'Categories',
     perAppHint:
       'Per-app caps run independently of the blocklist — “30 minutes of TikTok” is a different decision from “no TikTok”.',
+    limitsMax: '{{max}} capped apps is the most a device can hold.',
     perDay: '{{value}}/day',
     webActivityTitle: 'Web activity',
     webActivitySub: 'Most visited domains, last 30 days',
@@ -551,6 +609,18 @@ export default {
     inventoryOtherLabel: 'Identified',
     inventoryUnknownLabel: 'Not identified',
     inventoryIncomplete: 'An app with no icon on the home screen may not appear here.',
+    inventoryPending: 'Waiting for your approval',
+    pendingInstallBlocked: 'Blocked until you allow it',
+    installAllow: 'Allow',
+    pendingInstallsTitle: 'New apps waiting for approval',
+    pendingInstallsSub:
+      'Installed after you turned on approval, blocked by the device on its own',
+    pendingInstallsEmpty: 'No new apps waiting for approval.',
+    toastInstallAllowed: 'App allowed',
+    rowInstallApproval: 'Approve New Apps',
+    rowInstallApprovalDesc_one: '{{count}} app waiting for approval',
+    rowInstallApprovalDesc_other: '{{count}} apps waiting for approval',
+    rowInstallApprovalDescIos: 'Hides the App Store — Apple allows no per-app approval',
     webActivitySyncNote:
       'Web history can take a few minutes to reach this screen — longer if the device has no internet connection or was closed unexpectedly.',
     webActivitySyncNoteTv:
@@ -559,6 +629,12 @@ export default {
     colVisits: 'Visits',
     colBlocked: 'Blocked',
     colLastSeen: 'Last seen',
+    videosTitle: 'Videos watched',
+    videosSub: 'What was watched on YouTube and the web',
+    videosEmpty: 'No videos yet.',
+    colVideo: 'Video',
+    colChannel: 'Channel',
+    colViews: 'Views',
     filterRefusedTitle: 'What the filter refused',
     filterRefusedSub_one: '{{count}} blocked lookup, last 30 days',
     filterRefusedSub_other: '{{count}} blocked lookups, last 30 days',
@@ -587,6 +663,11 @@ export default {
     placeArrive: 'arrive',
     placeLeave: 'leave',
     placeNoAlerts: 'no alerts',
+    placeSamePin:
+      'This is the same spot as “{{name}}”. Use the app’s map to place it somewhere else.',
+    placeWebHint:
+      'The web can only put a place where the device last reported itself. Use the app’s map to pick anywhere else.',
+    placeNeedsLocation: 'Waiting for a location from this device.',
     sosTitle: 'SOS alerts',
     sosSub: 'Emergency signals from the child device',
     sosEmpty: 'No SOS alerts. Test it once together so you both know how it works.',
@@ -642,7 +723,12 @@ export default {
     rowLocation: 'Location sharing',
     rowLocationDesc: 'Last update {{when}}',
     rowLocationNone: 'No location yet',
-    toggleInApp: 'Change this in the KidGate app',
+    rowSearchMonitoring: 'Search monitoring',
+    rowSearchMonitoringDesc:
+      'Browsers and YouTube. Only the flagged word is reported, never the search itself.',
+    rowSafeSearch: 'Force SafeSearch',
+    rowSafeSearchDesc:
+      'Locks Google SafeSearch, YouTube Restricted Mode, Bing and DuckDuckGo to their strict settings. Android, Android TV and Chrome.',
 
     webFilterCatsTitle: 'Web Filter categories',
     webFilterCatsSub: 'Blocked content types',
@@ -652,13 +738,18 @@ export default {
     starChartSub: 'Stars earned this week, per child',
     starChartEmpty: 'Add a second child in the app to start the star chart.',
     starChartStars: '{{count}} stars',
+    familyScreenTimeTitle: 'Family screen time',
+    familyScreenTimeSub: 'Least screen time first, this week',
+    familyScreenTimeEmpty:
+      'Nobody has reported yet this week. Rows appear as phones report.',
+    familyScreenTimeParent: 'Parent',
+    familyScreenTimeDays: '{{count}} days reported',
     rewardTasksTitle: 'Reward tasks',
     rewardTasksSub: 'Earn extra minutes by finishing tasks',
     rewardTaskMeta: '+{{minutes}} min · {{cadence}}',
     rewardTaskStars: 'Difficulty: {{count}} of 3',
     rewardTaskWaiting: ' · waiting for your approval',
     approve: 'Approve',
-    approveInApp: 'Approve in the KidGate app',
     siteRequestsTitle: 'Site requests',
     siteRequestsSub: 'Sites this device asked you to allow',
     siteRequestAllow: 'Allow',
@@ -811,7 +902,7 @@ export default {
 
     faq4Q: 'How does the free trial work?',
     faq4A:
-      'The trial starts when your first parent and child devices are connected, and gives full access to every feature. Removing a child device does not reset the trial. When it ends, subscribe to Premium to keep using KidGate.',
+      'The trial starts when your first parent and child devices are connected, and gives full access to every feature. Removing a child device does not reset the trial. When it ends, every rule keeps working for free on one child device; Premium keeps live activity, history, weekly reports and every device.',
 
     faq5Q: 'How do I cancel my subscription?',
     faq5A:

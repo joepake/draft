@@ -28,14 +28,14 @@ export { ICON_NAMES, platformIcon, deviceGlyph } from '@kidgate/tokens/icons';
  * charging bolt's cut-out, the palette's dots. It must not also carry a stroke,
  * or the shape gains a rim.
  */
-function paintOf(part) {
-  return part.filled
+function paintOf(part, forceFill) {
+  return forceFill || part.filled
     ? { fill: 'currentColor', stroke: 'none' }
     : { strokeWidth: part.strokeWidth ?? ICON_STROKE_WIDTH };
 }
 
-function renderPart(part, key) {
-  const paint = paintOf(part);
+function renderPart(part, key, forceFill) {
+  const paint = paintOf(part, forceFill);
   if (part.kind === 'path') {
     return (
       <path
@@ -70,7 +70,25 @@ function renderPart(part, key) {
  * glyph instead of one fixed picture beside a number. Everything else ignores
  * it.
  */
-export default function Icon({ name, size = 24, className = '', title, level }) {
+/**
+ * `filled` inks the glyph solid instead of outlining it — a render mode, not
+ * geometry, which is why it lives here rather than in `@kidgate/tokens/icons`:
+ * the same `star` is an outline in a caption and solid on the star chart, and
+ * forking the path would be two drawings of one shape. The twin prop on
+ * `apps/mobile`'s `Icon` does the same.
+ *
+ * **Only safe on a glyph that is a single closed silhouette** (`star`,
+ * `heart`). A multi-part outline filled whole loses its interior lines, so
+ * this is opt-in per call site rather than a property of the set.
+ */
+export default function Icon({
+  name,
+  size = 24,
+  className = '',
+  title,
+  level,
+  filled = false,
+}) {
   const parts = iconParts(name, level);
   if (!parts) return null;
 
@@ -89,7 +107,7 @@ export default function Icon({ name, size = 24, className = '', title, level }) 
       focusable="false"
     >
       {title && <title>{title}</title>}
-      {parts.map(renderPart)}
+      {parts.map((part, index) => renderPart(part, index, filled))}
     </svg>
   );
 }

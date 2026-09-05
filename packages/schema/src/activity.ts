@@ -14,7 +14,9 @@ export type ActivityType =
   /**
    * A concerning keyword was seen in a message notification on the child's
    * device. Params carry `category` (`MessageAlertCategory`), `term` (the word
-   * that fired — never the child's message) and `appName`. The scan and the
+   * that fired — never the child's message), `appName`, and since 2026-09-03
+   * `termGloss_<lang>` — the term's meaning in each parent language that has
+   * one (`termGlossParamKey` in `messageAlert.ts`). The scan and the
    * Bark-shaped design live in `@kidgate/core/domain/messageKeywords`; the
    * device never uploads message content.
    */

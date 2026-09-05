@@ -58,6 +58,15 @@ export const REPORT_ONLY_CONTROL_KEYS = [
   'topApps',
   'timeline',
   'idleMinutes',
+  /*
+   * The free tier's two counters (`docs/PRICING.md` §4). They ride
+   * `reportChildUsage`, which folds them into `weekCounterBuckets`; left off
+   * this list the fan-out would write `controls.blockedSitesToday` straight
+   * onto the device document — a number nothing reads, beside a fold nothing
+   * fed.
+   */
+  'blockedSitesToday',
+  'newAppsToday',
 ] as const satisfies ReadonlyArray<keyof DeviceControls>;
 
 export type ReportOnlyControlKey = (typeof REPORT_ONLY_CONTROL_KEYS)[number];
@@ -84,6 +93,25 @@ export const PARENT_CONTROL_KEYS = [
   'appBlockingEnabled',
   'messageMonitoringEnabled',
   'messageMonitoringOutgoingEnabled',
+  // The rest of the monitoring switches. Each is documented PARENT-set on
+  // `DeviceControls`, and until they were listed here the fan-out in
+  // `repositories/control` wrote them straight to the device document as if
+  // the child owned them — so a modified child app could switch its own
+  // search scanning off, which is the exact attack the list exists to stop.
+  'searchMonitoringEnabled',
+  'messageProfanityEnabled',
+  'messageKeywordLanguages',
+  // A child rule as well (`CHILD_RULE_KEYS`): routed to `updateChildRules`
+  // for an assigned device, and here for one that has no child yet.
+  'safeSearchEnabled',
+  'videoHistoryEnabled',
+  // App install quarantine. The switch and the approved list are the parent's;
+  // `appInstallApprovalSinceMs` is listed so the fan-out routes it here rather
+  // than writing it as a child field, and the server ignores any value sent
+  // and stamps its own clock (`functions/http/controls.js`).
+  'appInstallApprovalEnabled',
+  'appInstallApprovalSinceMs',
+  'approvedPackages',
 ] as const satisfies ReadonlyArray<keyof DeviceControls>;
 
 export type ParentControlKey = (typeof PARENT_CONTROL_KEYS)[number];

@@ -20,6 +20,12 @@ export const webFilter = {
   toggleHintMacos:
     'Anak harus menyetujui ekstensi filter KidGate sekali di Pengaturan Sistem. Jaga agar tetap disetujui agar filter berfungsi.',
   toggleAccessibilityLabel: 'Aktifkan Filter web',
+  safeSearchSectionTitle: 'Penelusuran aman & YouTube',
+  safeSearchSectionSubtitle:
+    'Paksa Google, Bing, dan DuckDuckGo ke hasil aman dan kunci YouTube ke Mode Terbatas. Perlu filter web aktif.',
+  safeSearchLabel: 'Paksa SafeSearch',
+  safeSearchHint:
+    'Mengunci Google SafeSearch, Mode Terbatas YouTube, Bing, dan DuckDuckGo pada pengaturan ketat. Android, Android TV, dan Chrome.',
   infoTitle: 'Cara kerjanya',
   infoLine1Ios: 'Apple memfilter situs dewasa secara otomatis.',
   infoLine2Ios:
@@ -162,8 +168,10 @@ export const webFilter = {
   askToOpen: 'Minta izin orang tua',
   askToOpenSubtitle: 'Kalau diizinkan, situs ini akan terbuka.',
   askToOpenDomainLabel: 'Situs yang mana?',
+  askToOpenBlockedLabel: 'Baru saja diblokir',
   askToOpenPending: 'Kamu sudah meminta satu situs. Tunggu jawabannya.',
   askToOpenTooSoon: 'Kamu baru saja mengirim permintaan. Coba lagi semenit lagi.',
+  askToOpenTooMany: 'Kamu hanya bisa meminta beberapa situs sekaligus.',
   requestsTitle: 'Permintaan situs',
   requestsSubtitle: 'Situs yang diminta perangkat ini untuk diizinkan.',
   siteRequestApproved: 'Situs diizinkan',

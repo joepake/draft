@@ -60,6 +60,7 @@ export const family = {
   childDetailStarsWell: 'Estrellas esta semana',
   childStarsA11y: 'Estrellas esta semana: {{count}}',
   childDetailDevicesTitle: 'Dispositivos',
+  childDetailSwipeHint: 'Desliza un dispositivo para quitar la asignación.',
   childDetailAssignMore: 'Asignar otro dispositivo…',
   childDetailAssignSheetTitle: 'Asignar un dispositivo a {{childName}}',
   childDetailNoDevices:
@@ -90,6 +91,8 @@ export const family = {
   chipDeviceCount_one: '{{count}} dispositivo',
 
   chipOnlineCount: '{{count}} en línea',
+  metaOnlineCount: '{{online}}/{{count}} en línea',
+  metaOnlineCount_one: '1 dispositivo en línea',
 
   chipSosCount: '{{count}} SOS',
 
@@ -117,6 +120,21 @@ export const family = {
   buildOutdated: 'Actualización disponible',
   healthNeedsSetup: 'Requiere configuración',
   healthOffline: 'Sin conexión',
+  devicePausedLabel: 'En pausa',
+  devicePausedHint: 'En pausa en el plan gratis: todas las reglas siguen vigentes',
+  parkedBannerTitle: 'Elige el dispositivo que seguirás viendo',
+  parkedBannerBody:
+    'Tus reglas funcionan en todos los dispositivos. El plan gratis recibe informes de uno: elígelo, o mejora tu plan para conservarlos todos.',
+  parkedBannerAction: 'Elegir dispositivo',
+  chooseMonitoredTitle: '¿Qué dispositivo debe informar?',
+  chooseMonitoredBody:
+    'Todas las reglas siguen activas en todos. Solo el que elijas envía tiempo de pantalla y ubicación. Puedes cambiarlo una vez cada {{days}} días.',
+  chooseMonitoredConfirm: 'Ver este dispositivo',
+  chooseMonitoredUpgrade: 'Conservar todos: mejorar plan',
+  chooseMonitoredDone: '{{name}} es ahora el dispositivo que informa',
+  monitoredCooldown:
+    'El dispositivo que informa solo puede cambiarse una vez cada {{days}} días',
+  monitoredChooseFailed: 'No se pudo cambiar el dispositivo que informa',
 
   // Quick-glance rows on the device card
   cardWhereLabel: 'Ubicación',
@@ -327,7 +345,7 @@ export const family = {
   childDetailProtectionAttention: '{{count}} dispositivos necesitan atención',
   childDetailProtectionAttention_one: '{{count}} dispositivo necesita atención',
   childDetailProtectionSheetTitle: 'Protección por dispositivo',
-  childDetailRemoveTitle: 'Quitar a este hijo',
+  childDetailRemoveTitle: 'Eliminar el perfil de {{childName}}',
   childDetailRemovingButton: 'Quitando…',
   childDetailOnlineCount: '{{online}} de {{total}} en línea',
   childDetailBudgetTitle: 'Límite diario',

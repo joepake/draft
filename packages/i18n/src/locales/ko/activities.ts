@@ -55,6 +55,8 @@ export const activities = {
   appBlockedBody: '차단된 앱이 열려 KidGate가 닫았습니다.',
   appInstalledTitle: '앱 설치',
   appInstalledBody: '자녀의 기기에 {{appName}} 앱이 설치되었습니다.',
+  appInstalledPendingBody:
+    '자녀의 기기에 {{appName}} 앱이 설치되었으며, 허용할 때까지 차단됩니다.',
 
   messageAlertTitle: '우려되는 메시지 내용',
   messageAlertBody: '{{appName}}에서 주의 단어가 감지되었습니다.',

@@ -58,6 +58,7 @@ export const family = {
   childDetailStarsWell: '今週のスター',
   childStarsA11y: '今週のスター: {{count}}',
   childDetailDevicesTitle: 'デバイス',
+  childDetailSwipeHint: 'デバイスをスワイプすると割り当てを解除できます。',
   childDetailAssignMore: '別のデバイスを割り当てる…',
   childDetailAssignSheetTitle: '{{childName}}にデバイスを割り当てる',
   childDetailNoDevices:
@@ -87,6 +88,7 @@ export const family = {
   chipDeviceCount_one: '{{count}}台のデバイス',
 
   chipOnlineCount: '{{count}}台オンライン',
+  metaOnlineCount: '{{count}}台中{{online}}台オンライン',
 
   chipSosCount: '{{count}}件のSOS',
 
@@ -114,6 +116,20 @@ export const family = {
   buildOutdated: 'アップデートあり',
   healthNeedsSetup: '設定が必要',
   healthOffline: 'オフライン',
+  devicePausedLabel: '一時停止',
+  devicePausedHint: '無料プランで一時停止中 — ルールはすべて有効です',
+  parkedBannerTitle: '見守りを続ける端末を選んでください',
+  parkedBannerBody:
+    'ルールはすべての端末で働きます。無料プランで報告できるのは1台だけです。端末を選ぶか、アップグレードしてすべて残してください。',
+  parkedBannerAction: '端末を選ぶ',
+  chooseMonitoredTitle: 'どの端末が報告しますか？',
+  chooseMonitoredBody:
+    'ルールはすべての端末でそのまま働きます。選んだ端末だけが利用時間と位置情報を送ります。変更は{{days}}日に1回できます。',
+  chooseMonitoredConfirm: 'この端末を見守る',
+  chooseMonitoredUpgrade: 'すべての端末を残す — アップグレード',
+  chooseMonitoredDone: '{{name}}が報告する端末になりました',
+  monitoredCooldown: '報告する端末は{{days}}日に1回しか変更できません',
+  monitoredChooseFailed: '報告する端末を変更できませんでした',
 
   cardWhereLabel: '位置情報',
 
@@ -323,7 +339,7 @@ export const family = {
   childDetailProtectionOk: '保護済み',
   childDetailProtectionAttention: '{{count}} 台のデバイスに注意が必要です',
   childDetailProtectionSheetTitle: 'デバイスごとの保護状況',
-  childDetailRemoveTitle: 'このお子さまを削除',
+  childDetailRemoveTitle: '{{childName}}のプロフィールを削除',
   childDetailRemovingButton: '削除中…',
   childDetailOnlineCount: '{{total}} 台中 {{online}} 台がオンライン',
   childDetailBudgetTitle: '1日の上限',

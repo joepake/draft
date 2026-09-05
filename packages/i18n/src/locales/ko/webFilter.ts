@@ -20,6 +20,12 @@ export const webFilter = {
   toggleHintMacos:
     '자녀는 시스템 설정에서 KidGate 필터 확장 프로그램을 한 번 승인해야 합니다. 필터가 작동하려면 승인 상태를 유지하세요.',
   toggleAccessibilityLabel: '웹 필터 켜기',
+  safeSearchSectionTitle: '세이프서치 및 YouTube',
+  safeSearchSectionSubtitle:
+    'Google, Bing, DuckDuckGo를 안전한 결과로 강제하고 YouTube를 제한 모드로 잠급니다. 웹 필터가 켜져 있어야 합니다.',
+  safeSearchLabel: '세이프서치 강제 적용',
+  safeSearchHint:
+    'Google 세이프서치, YouTube 제한 모드, Bing, DuckDuckGo를 엄격 설정으로 고정합니다. Android, Android TV, Chrome.',
   infoTitle: '작동 방식',
   infoLine1Ios: 'Apple이 성인 웹사이트를 자동으로 필터링합니다.',
   infoLine2Ios:
@@ -160,8 +166,10 @@ export const webFilter = {
   askToOpen: '부모님께 요청하기',
   askToOpenSubtitle: '허락하면 이 사이트를 열 수 있어요.',
   askToOpenDomainLabel: '어떤 사이트인가요?',
+  askToOpenBlockedLabel: '최근에 차단된 사이트',
   askToOpenPending: '이미 사이트를 요청했어요. 답을 기다려 주세요.',
   askToOpenTooSoon: '방금 요청을 보냈어요. 1분 뒤에 다시 해 보세요.',
+  askToOpenTooMany: '한 번에 몇 개까지만 요청할 수 있어요.',
   requestsTitle: '사이트 요청',
   requestsSubtitle: '이 기기가 허용을 요청한 사이트예요.',
   siteRequestApproved: '사이트를 허용함',

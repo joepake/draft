@@ -108,6 +108,19 @@ export interface InventoryApp {
    * because they carry the previous entry forward.
    */
   firstSeenAt: number;
+  /**
+   * When the OS says the app was installed, as epoch ms — Android's
+   * `PackageInfo.firstInstallTime`. Absent where the agent cannot ask (the
+   * desktop's directory scan, a browser's extension list, anything published
+   * before the field existed).
+   *
+   * Unlike `firstSeenAt` this is true on the very first scan, which is what
+   * lets a parent screen say "installed after you switched approval on"
+   * without waiting for a second scan. It is also exactly the number the
+   * device itself compares against `appInstallApprovalSinceMs`, so the row's
+   * label and the device's refusal cannot disagree.
+   */
+  installedAt?: number;
 }
 
 /** One device's inventory, as stored. */

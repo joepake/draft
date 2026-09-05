@@ -40,6 +40,7 @@ function mapApps(raw: unknown): InventoryApp[] {
       continue;
     }
     const firstSeenAt = Number(entry.firstSeenAt);
+    const installedAt = Number(entry.installedAt);
     apps.push({
       id: entry.id,
       label:
@@ -51,6 +52,9 @@ function mapApps(raw: unknown): InventoryApp[] {
       // treats 0 as "not since the baseline", which is the safe direction:
       // it under-reports arrivals instead of announcing a decade-old app as new.
       firstSeenAt: Number.isFinite(firstSeenAt) && firstSeenAt > 0 ? firstSeenAt : 0,
+      // Absent stays absent: an unknown install time must never read as a
+      // quarantined one (`isInstallQuarantined`).
+      ...(Number.isFinite(installedAt) && installedAt > 0 ? { installedAt } : {}),
     });
   }
   return apps;
@@ -114,7 +118,7 @@ export async function getAppInventory(
  */
 export function mergeInventoryScan(
   previous: AppInventory | null,
-  scanned: readonly { id: string; label: string }[],
+  scanned: readonly { id: string; label: string; installedAt?: number }[],
   scannedAt: number,
 ): AppInventory {
   const firstSeen = new Map(
@@ -150,6 +154,13 @@ export function mergeInventoryScan(
       // looked at. 0 from an unreadable stored row stays 0 rather than becoming
       // now, for the reason `mapApps` gives.
       firstSeenAt: previouslySeen !== undefined ? previouslySeen : scannedAt,
+      // The OS's own answer, taken fresh from every scan: a reinstall really
+      // is a new install here, which is what the quarantine compares against.
+      ...(typeof app.installedAt === 'number' &&
+      Number.isFinite(app.installedAt) &&
+      app.installedAt > 0
+        ? { installedAt: app.installedAt }
+        : {}),
     });
   }
 
@@ -174,7 +185,7 @@ export async function publishAppInventory(
   firestore: FirestorePort,
   userId: string,
   deviceId: string,
-  scanned: readonly { id: string; label: string }[],
+  scanned: readonly { id: string; label: string; installedAt?: number }[],
   scannedAt: number,
 ): Promise<AppInventory> {
   const path = appInventoryDoc(userId, deviceId);

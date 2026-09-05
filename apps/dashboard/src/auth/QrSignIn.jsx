@@ -17,8 +17,14 @@ function formatCountdown(ms) {
   return `${m}:${s}`;
 }
 
-export default function QrSignIn({ onError }) {
-  const { signInWithQrToken } = useAuth();
+/**
+ * `mode` picks which redemption runs, and nothing else. `signIn` is the login
+ * screen; `stepUp` is a browser already signed in and reading, unlocking write
+ * — the same handshake, counted as a step-up rather than a second login.
+ */
+export default function QrSignIn({ onError, mode = 'signIn' }) {
+  const { signInWithQrToken, stepUpWithQrToken } = useAuth();
+  const redeem = mode === 'stepUp' ? stepUpWithQrToken : signInWithQrToken;
   const { t } = useT();
   const [session, setSession] = useState(null);
   const [svg, setSvg] = useState(null);
@@ -56,14 +62,14 @@ export default function QrSignIn({ onError }) {
       if (controller.signal.aborted) return;
 
       setStatus('signing-in');
-      await signInWithQrToken(token);
+      await redeem(token);
       // onAuthStateChanged takes it from here.
     } catch (e) {
       if (controller.signal.aborted || e?.code === 'web/cancelled') return;
       setStatus('error');
       onError?.(describeAuthError(e, t));
     }
-  }, [onError, signInWithQrToken, t]);
+  }, [onError, redeem, t]);
 
   useEffect(() => () => abortRef.current?.abort(), []);
 

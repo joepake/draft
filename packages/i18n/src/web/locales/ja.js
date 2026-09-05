@@ -1,5 +1,18 @@
 /** Japanese. No plural inflection, so counted strings keep the plain key. */
 export default {
+  /**
+   * Shared with the phone: `appInventorySummaryKey` in
+   * `@kidgate/core/domain/appInventoryReport` returns these key names, so the
+   * dashboard and `apps/mobile` render one sentence from one decision. Absent
+   * until 2026-09-01, which meant this card's subtitle printed the raw key.
+   */
+  appInventory: {
+    summaryFlagged: '{{total}} 件中 {{flagged}} 件のアプリは確認する価値があります',
+    summaryClear: '{{total}} 件のアプリに注意すべきものはありません',
+    summaryFlaggedExtension:
+      '{{total}} 件の Chrome 拡張機能のうち {{flagged}} 件は確認をおすすめします',
+    summaryClearExtension: '{{total}} 件の Chrome 拡張機能に気になるものはありません',
+  },
   meta: {
     title: 'KidGate — 子どもを尊重するペアレンタルコントロール',
     description:
@@ -184,12 +197,35 @@ export default {
     why4Text:
       '各プラットフォームで何ができて何ができないかをお伝えします。存在しないコントロールを約束することはありません。',
 
+    onlyEyebrow: 'KidGate だけ',
+    onlyTitle: 'ほかでは見つからないもの',
+    onlySub:
+      '保護者が比較する各アプリと照らし合わせて確かめた 6 つの点です。それぞれ、どのプラットフォームで当てはまるかを明記しています。',
+    only1Title: 'リビングのテレビも',
+    only1Text:
+      'Android TV でも、スマホと同じ利用禁止時間、アプリのブロック、アプリごとの上限、ウェブフィルタが使えます。ほとんどのペアレンタルコントロールはスマホで止まります。',
+    only2Title: 'スマホの中で完結するメッセージ警告',
+    only2Text:
+      'Android では、14 言語のキーワードリストとメッセージをデバイス上で照合します。残るのは一致した語句だけで、会話そのものが保存されることはありません。',
+    only3Title: 'アプリのリストではなく、すべてのアプリ',
+    only3Text:
+      'Android では、お子さまが使うどのアプリでも、通知と入力内容から警告が届きます。Zalo、LINE、KakaoTalk、ゲーム内チャットなど、対応アプリの固定リストには縛られません。',
+    only4Title: 'お子さまの逃げ道',
+    only4Text:
+      'SOS を 5 秒長押しすると、位置情報とともにすぐ保護者に届きます。Android と Mac では、デバイスのロックも少しのあいだ解除されます。いつでも助けを呼べるお子さまに、アプリと争う理由はありません。',
+    only5Title: 'ネットがなくても守られるルール',
+    only5Text:
+      '利用禁止時間と 1 日の上限はデバイス自身が守るため、ルーターを抜いても何も変わりません。テレビは接続がまったくなくても保護者 PIN を受け付けます。',
+    only6Title: 'よかった週には、その分の評価を',
+    only6Text:
+      '週次レポートには、うまくいったこと — 守られた上限、なくなった夜更かし、終えた課題 — のための欄が必ずあり、その週がきちんと計測されたときにだけ伝えます。',
+
     faqEyebrow: 'よくある質問',
     faqTitle: '保護者が最初に聞くこと',
     faqSub: 'ダウンロード前の手早い答え。',
     faq1Q: '無料トライアルはありますか？',
     faq1A:
-      'あります。最初の保護者のデバイスと子どものデバイスが接続された時点で始まり、すべての Premium 機能が使えます。 期間が終わっても、1日の上限・休止時間・位置情報は子どもの端末 1 台で無料のまま使えます。',
+      'はい。お試し期間は最初の保護者端末と子ども端末を接続した時点で始まり、Premiumのすべての機能を含みます。終了後も、設定したルール（1日の上限、休止時間、ブロックされたアプリ、Webフィルター、位置情報）は子ども端末1台で無料のまま働き続けます。',
     faq2Q: '何台まで管理できますか？',
     faq2A:
       '1 つのサブスクで家族全体をカバーします。同じプランで複数の子どものデバイスと複数の保護者を管理できます。',
@@ -198,7 +234,7 @@ export default {
       '重要な設定は保護者 PIN で守られ、子どものデバイスで主要な権限がオフになると保護アラートですぐに知らせます。',
     faq4Q: 'すべてをパソコンから管理できますか？',
     faq4A:
-      'ウェブダッシュボードにログインしてレポートを読めます。上限の変更やデバイスのロックはスマホから承認するため、パスワードが漏れただけでは操作できません。',
+      'お試し期間は最初の保護者端末と子ども端末を接続した時点で始まり、すべての機能を使えます。子ども端末を削除してもリセットされません。終了後も、ルールはすべて子ども端末1台で無料のまま働きます。Premiumではリアルタイムの利用状況、履歴、週次レポート、すべての端末が使えます。',
     faqMore: 'ほかにも質問がありますか？ サポートへ',
 
     ctaTitle: '今日から家族を守りはじめましょう',
@@ -213,8 +249,8 @@ export default {
     notConfiguredBody:
       'ログインを有効にするには VITE_FIREBASE_* 環境変数を設定してください。',
     qrWhy:
-      'コントロールのロックを解除できるのはスマホからの承認だけです。デバイスのロックや上限の変更はアプリ側に残ります。下の方法は、レポート閲覧のためのログインです。',
-    orViewOnly: 'または閲覧のみでログイン',
+      'スマホで読み取ると、ログインとコントロールのロック解除が一度に済みます。下の方法はまず閲覧用のログインで、コントロールを解除するには保護者用 PIN が必要です。',
+    orViewOnly: 'または別の方法でログイン',
     google: 'Google で続ける',
     googleBusy: 'Google を開いています…',
     apple: 'Apple で続ける',
@@ -390,8 +426,7 @@ export default {
     manage: '管理',
     parents: '保護者 {{count}} 人',
     devices: '子どものデバイス {{count}} 台',
-    planPremium: 'Premium',
-    planTrial: 'トライアル',
+    planManageOnPhone: 'プランの購入と変更は、スマホの KidGate アプリで行います。',
     fallbackFamily: 'あなたの家族',
     fallbackDevice: '子どものデバイス',
 
@@ -400,6 +435,7 @@ export default {
     statusLocked: 'ロック中',
     statusLockSent: 'ロック送信済み',
     statusLockNotApplied: 'ロック未適用',
+    statusPaused: '一時停止',
 
     stateAllowed: '許可済み',
     stateDenied: 'オフ',
@@ -418,11 +454,28 @@ export default {
     lockDevice: 'デバイスをロック',
     unlock: 'ロック解除',
     working: '処理中…',
-    lockNeedsApp: 'ロックにはスマホの KidGate アプリが必要です',
+    save: '保存',
 
-    viewOnlyTitle: '閲覧のみ。',
-    viewOnlyBody:
-      'デバイスのロック、上限の変更、リクエストの承認を行うには、いったんログアウトし、KidGate アプリで QR コードを読み取って再ログインしてください。接続済みの保護者スマホからの承認だけがコントロールのロックを解除します。チェックインはどちらの場合でもここから使えます。',
+    unlockTitle: '変更はロックされています。',
+    unlockBody:
+      '閲覧はそのまま使えます。デバイスのロック、上限の変更、リクエストの承認を行うには、保護者用 PIN でこのブラウザのロックを解除してください。KidGate アプリで QR コードを読み取って承認することもできます。チェックインはどちらの場合でも使えます。',
+    unlockCta: '変更のロックを解除',
+    unlockToChange: '先に変更のロックを解除してください',
+    pinTitle: '保護者用 PIN を入力',
+    pinBody:
+      'アプリで使うのと同じ 6 桁です。このブラウザは 7 日間解除されたままになります。',
+    pinLabel: '保護者用 PIN',
+    pinSubmit: 'ロック解除',
+    pinOrScan: 'またはスマホから承認',
+    qrSaferNote:
+      'スマホからの承認のほうが安全です。接続済みのスマホが手元にないとできないのに対し、PIN は家族の誰かが入力を見ていたかもしれない 6 桁だからです。',
+    pinWrong: 'PIN が違います。残り {{count}} 回。',
+    pinLocked:
+      '失敗が多すぎます。15 分待つか、このブラウザをスマホから承認してください。',
+    pinNotSet:
+      'ご家族の保護者用 PIN がまだ設定されていません。アプリで設定するか、このブラウザをスマホから承認してください。',
+    unlockedToast: 'このブラウザで変更のロックを解除しました。',
+    close: '閉じる',
 
     noDeviceTitle: 'まだ子どものデバイスがありません',
     noDeviceBody:
@@ -485,6 +538,7 @@ export default {
     on: 'オン',
     topAppsTitle: '今日よく使ったアプリ',
     topAppsSub: 'アプリごとの上限はマーカーで表示',
+    topAppsFreeHint: '今日のトップ3 — 全リストと履歴はPremiumで見られます。',
     trendTitle: 'スクリーンタイムの推移',
     trendSub: '直近 {{count}} 日間',
     rangeDays: '{{count}} 日',
@@ -492,6 +546,7 @@ export default {
     blockedHoursSub:
       '{{count}} 個の時間帯 · 影のついたブロック内ではデバイスはロックされたままです',
     scheduleOff: 'スケジュールはオフです',
+    schedMax: '1 台につき時間帯は最大 {{max}} 件です。',
 
     appUsageTitle: '今日のアプリ使用状況',
     appUsageSub: 'アプリごとの使用時間',
@@ -505,6 +560,7 @@ export default {
     categories: 'カテゴリ',
     perAppHint:
       'アプリごとの上限はブロックリストとは別に動きます。「TikTok を 30 分」は「TikTok は禁止」とは別の判断です。',
+    limitsMax: '1 台につき上限付きアプリは最大 {{max}} 件です。',
     perDay: '{{value}}/日',
     webActivityTitle: 'ウェブの利用状況',
     webActivitySub: '訪問の多いドメイン、直近 30 日間',
@@ -521,6 +577,19 @@ export default {
     inventoryUnknownLabel: '未判別',
     inventoryIncomplete:
       'ホーム画面にアイコンがないアプリはここに表示されないことがあります。',
+    inventoryPending: '保護者の承認待ちです',
+    pendingInstallBlocked: '許可するまでブロックされます',
+    installAllow: '許可',
+    pendingInstallsTitle: '承認待ちの新しいアプリ',
+    pendingInstallsSub:
+      '承認をオンにしたあとにインストールされ、デバイスが自動でブロックしたアプリです',
+    pendingInstallsEmpty: '承認待ちの新しいアプリはありません。',
+    toastInstallAllowed: 'アプリを許可しました',
+    rowInstallApproval: '新しいアプリの承認',
+    rowInstallApprovalDesc: '{{count}} 個のアプリが承認待ちです',
+    rowInstallApprovalDesc_one: '{{count}} 個のアプリが承認待ちです',
+    rowInstallApprovalDescIos:
+      'App Store を非表示にします。Apple はアプリごとの承認を認めていません',
     webActivitySyncNote:
       'ウェブの利用状況がこの画面に反映されるまで数分かかることがあります。デバイスがインターネットに接続していない場合や、予期せず終了した場合は、さらに時間がかかることがあります。',
     webActivitySyncNoteTv:
@@ -529,6 +598,12 @@ export default {
     colVisits: '訪問',
     colBlocked: 'ブロック',
     colLastSeen: '最終',
+    videosTitle: '視聴した動画',
+    videosSub: 'YouTube とウェブで見たもの',
+    videosEmpty: 'まだ動画はありません。',
+    colVideo: '動画',
+    colChannel: 'チャンネル',
+    colViews: '視聴回数',
     filterRefusedTitle: 'フィルタが拒否した内容',
     filterRefusedSub: 'ブロックした照会 {{count}} 件、直近 30 日間',
     nothingBlockedYet: 'まだ何もブロックされていません。',
@@ -555,6 +630,11 @@ export default {
     placeArrive: '到着',
     placeLeave: '出発',
     placeNoAlerts: '通知なし',
+    placeSamePin:
+      '「{{name}}」と同じ場所です。別の場所に置くにはアプリの地図を使ってください。',
+    placeWebHint:
+      'ウェブでは、デバイスが最後に位置を報告した場所にしか場所を作れません。ほかの場所はアプリの地図から選んでください。',
+    placeNeedsLocation: 'このデバイスからの位置情報を待っています。',
     sosTitle: 'SOS アラート',
     sosSub: '子どものデバイスからの緊急信号',
     sosEmpty:
@@ -608,7 +688,12 @@ export default {
     rowLocation: '位置情報の共有',
     rowLocationDesc: '最終更新 {{when}}',
     rowLocationNone: 'まだ位置情報がありません',
-    toggleInApp: 'これは KidGate アプリで変更してください',
+    rowSearchMonitoring: '検索のチェック',
+    rowSearchMonitoringDesc:
+      'ブラウザと YouTube。報告されるのは該当した語句だけで、検索内容そのものは送られません。',
+    rowSafeSearch: 'セーフサーチを強制',
+    rowSafeSearchDesc:
+      'Google セーフサーチ、YouTube 制限付きモード、Bing、DuckDuckGo を厳格設定に固定します。Android、Android TV、Chrome。',
 
     webFilterCatsTitle: 'ウェブフィルタのカテゴリ',
     webFilterCatsSub: 'ブロックするコンテンツの種類',
@@ -618,13 +703,18 @@ export default {
     starChartSub: '今週お子さまごとに集めた星',
     starChartEmpty: 'アプリでもうひとり追加すると、スターボードが始まります。',
     starChartStars: '星{{count}}個',
+    familyScreenTimeTitle: '家族のスクリーンタイム',
+    familyScreenTimeSub: 'スクリーンタイムが少ない順、今週',
+    familyScreenTimeEmpty:
+      '今週はまだ誰からも報告がありません。スマホが報告すると行が表示されます。',
+    familyScreenTimeParent: '保護者',
+    familyScreenTimeDays: '{{count}} 日分の報告',
     rewardTasksTitle: 'ごほうびタスク',
     rewardTasksSub: 'タスクを終えると追加の時間がもらえます',
     rewardTaskMeta: '+{{minutes}} 分 · {{cadence}}',
     rewardTaskStars: 'むずかしさ：3段階中{{count}}',
     rewardTaskWaiting: ' · 承認待ち',
     approve: '承認',
-    approveInApp: 'KidGate アプリで承認してください',
     siteRequestsTitle: 'サイトのリクエスト',
     siteRequestsSub: 'この端末が許可を求めたサイト',
     siteRequestAllow: '許可',
@@ -647,6 +737,8 @@ export default {
       '別の方がたった今これを変更しました。再読み込みして最新の状態をご確認ください。',
     rateLimited: '一度に変更が多すぎます。少し待ってからお試しください。',
     server: 'KidGate はこれを完了できませんでした。しばらくしてからお試しください。',
+    premiumRequired:
+      'これはPremiumの機能です。プランはスマートフォンのKidGateアプリで管理します。',
   },
 
   report: {
@@ -775,7 +867,7 @@ export default {
 
     faq4Q: '無料トライアルはどのように動きますか？',
     faq4A:
-      '最初の保護者のデバイスと子どものデバイスが接続された時点で始まり、すべての機能を利用できます。子どものデバイスを削除してもトライアルはリセットされません。期間が終わったら、Premium に登録すると KidGate を使い続けられます。',
+      'お試し期間は最初の保護者端末と子ども端末を接続した時点で始まり、すべての機能を使えます。子ども端末を削除してもリセットされません。終了後も、ルールはすべて子ども端末1台で無料のまま働きます。Premiumではリアルタイムの利用状況、履歴、週次レポート、すべての端末が使えます。',
 
     faq5Q: 'サブスクリプションはどう解約しますか？',
     faq5A:

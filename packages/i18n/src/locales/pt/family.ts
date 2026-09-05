@@ -59,6 +59,7 @@ export const family = {
   childDetailStarsWell: 'Estrelas desta semana',
   childStarsA11y: 'Estrelas desta semana: {{count}}',
   childDetailDevicesTitle: 'Dispositivos',
+  childDetailSwipeHint: 'Deslize um dispositivo para remover a atribuição.',
   childDetailAssignMore: 'Atribuir outro dispositivo…',
   childDetailAssignSheetTitle: 'Atribuir um dispositivo a {{childName}}',
   childDetailNoDevices:
@@ -88,6 +89,8 @@ export const family = {
   chipDeviceCount_one: '{{count}} dispositivo',
 
   chipOnlineCount: '{{count}} online',
+  metaOnlineCount: '{{online}}/{{count}} online',
+  metaOnlineCount_one: '1 dispositivo online',
 
   chipSosCount: '{{count}} SOS',
 
@@ -115,6 +118,21 @@ export const family = {
   buildOutdated: 'Atualização disponível',
   healthNeedsSetup: 'Configuração necessária',
   healthOffline: 'Offline',
+  devicePausedLabel: 'Pausado',
+  devicePausedHint: 'Pausado no plano gratuito: todas as regras continuam valendo',
+  parkedBannerTitle: 'Escolha o dispositivo que você vai continuar acompanhando',
+  parkedBannerBody:
+    'Suas regras funcionam em todos os dispositivos. O plano gratuito recebe relatórios de um: escolha qual, ou faça upgrade para manter todos.',
+  parkedBannerAction: 'Escolher dispositivo',
+  chooseMonitoredTitle: 'Qual dispositivo deve reportar?',
+  chooseMonitoredBody:
+    'Todas as regras continuam ativas em todos. Só o que você escolher envia tempo de tela e localização. Você pode trocar uma vez a cada {{days}} dias.',
+  chooseMonitoredConfirm: 'Acompanhar este dispositivo',
+  chooseMonitoredUpgrade: 'Manter todos: fazer upgrade',
+  chooseMonitoredDone: '{{name}} agora é o dispositivo que reporta',
+  monitoredCooldown:
+    'O dispositivo que reporta só pode mudar uma vez a cada {{days}} dias',
+  monitoredChooseFailed: 'Não foi possível trocar o dispositivo que reporta',
 
   cardWhereLabel: 'Localização',
   cardWhereAccessibility: 'Abrir a localização de {{deviceName}}',
@@ -322,7 +340,7 @@ export const family = {
   childDetailProtectionAttention: '{{count}} dispositivos precisam de atenção',
   childDetailProtectionAttention_one: '{{count}} dispositivo precisa de atenção',
   childDetailProtectionSheetTitle: 'Proteção por dispositivo',
-  childDetailRemoveTitle: 'Remover este filho',
+  childDetailRemoveTitle: 'Remover o perfil de {{childName}}',
   childDetailRemovingButton: 'Removendo…',
   childDetailOnlineCount: '{{online}} de {{total}} on-line',
   childDetailBudgetTitle: 'Limite diário',

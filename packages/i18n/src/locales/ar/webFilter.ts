@@ -20,6 +20,12 @@ export const webFilter = {
   toggleHintMacos:
     'يجب أن يوافق الطفل مرة واحدة على ملحق فلتر KidGate في إعدادات النظام. أبقِه موافقًا عليه ليعمل الفلتر.',
   toggleAccessibilityLabel: 'تفعيل فلتر الويب',
+  safeSearchSectionTitle: 'البحث الآمن ويوتيوب',
+  safeSearchSectionSubtitle:
+    'فرض نتائج آمنة في Google وBing وDuckDuckGo وقفل YouTube على الوضع المقيّد. يتطلب تشغيل فلتر الويب.',
+  safeSearchLabel: 'فرض البحث الآمن',
+  safeSearchHint:
+    'يثبّت البحث الآمن في Google، والوضع المقيّد في YouTube، وBing وDuckDuckGo على الإعداد الصارم. Android وAndroid TV وChrome.',
   infoTitle: 'كيف يعمل',
   infoLine1Ios: 'تفلتر Apple مواقع البالغين تلقائيًا.',
   infoLine2Ios:
@@ -159,8 +165,10 @@ export const webFilter = {
   askToOpen: 'اسأل والديك',
   askToOpenSubtitle: 'إذا سمحا لك، سيُفتح هذا الموقع.',
   askToOpenDomainLabel: 'أي موقع؟',
+  askToOpenBlockedLabel: 'محظورة مؤخرًا',
   askToOpenPending: 'لقد طلبت موقعًا بالفعل. انتظر الرد.',
   askToOpenTooSoon: 'لقد أرسلت طلبًا للتو. حاول بعد دقيقة.',
+  askToOpenTooMany: 'يمكنك طلب بضعة مواقع فقط في المرة الواحدة.',
   requestsTitle: 'طلبات المواقع',
   requestsSubtitle: 'المواقع التي طلب هذا الجهاز السماح بها.',
   siteRequestApproved: 'تم السماح بالموقع',

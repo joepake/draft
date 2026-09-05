@@ -57,6 +57,8 @@ export const activities = {
   appBlockedBody: 'Aplikasi yang diblokir dibuka dan KidGate menutupnya.',
   appInstalledTitle: 'Aplikasi dipasang',
   appInstalledBody: 'Aplikasi {{appName}} dipasang di perangkat anak.',
+  appInstalledPendingBody:
+    'Aplikasi {{appName}} dipasang di perangkat anak dan diblokir sampai Anda mengizinkannya.',
 
   messageAlertTitle: 'Konten pesan mengkhawatirkan',
   messageAlertBody: 'Kata yang ditandai terdeteksi di {{appName}}.',

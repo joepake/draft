@@ -1,5 +1,18 @@
 /** German. */
 export default {
+  /**
+   * Shared with the phone: `appInventorySummaryKey` in
+   * `@kidgate/core/domain/appInventoryReport` returns these key names, so the
+   * dashboard and `apps/mobile` render one sentence from one decision. Absent
+   * until 2026-09-01, which meant this card's subtitle printed the raw key.
+   */
+  appInventory: {
+    summaryFlagged: '{{flagged}} von {{total}} Apps sind einen Blick wert',
+    summaryClear: 'Nichts auffällig unter {{total}} Apps',
+    summaryFlaggedExtension:
+      '{{flagged}} von {{total}} Chrome-Erweiterungen sind einen Blick wert',
+    summaryClearExtension: 'Nichts Auffälliges unter {{total}} Chrome-Erweiterungen',
+  },
   meta: {
     title: 'KidGate — Kindersicherung, die dein Kind respektiert',
     description:
@@ -185,12 +198,35 @@ export default {
     why4Text:
       'Wir sagen dir, was jede Plattform durchsetzen kann und was nicht, statt eine Kontrolle zu versprechen, die es nicht gibt.',
 
+    onlyEyebrow: 'Nur bei KidGate',
+    onlyTitle: 'Was du woanders nicht findest',
+    onlySub:
+      'Sechs Punkte, geprüft gegen die Apps, mit denen Eltern uns vergleichen. Jeder nennt die Plattform, auf der er gilt.',
+    only1Title: 'Auch der Fernseher im Wohnzimmer',
+    only1Text:
+      'Android TV bekommt dieselben Sperrzeiten, App-Sperren, Limits pro App und denselben Webfilter wie ein Handy. Die meisten Kindersicherungen hören beim Handy auf.',
+    only2Title: 'Nachrichtenwarnungen, die auf dem Handy bleiben',
+    only2Text:
+      'Auf Android werden Nachrichten direkt auf dem Gerät mit Stichwortlisten in 14 Sprachen abgeglichen. Nur das gefundene Wort wird behalten — das Gespräch selbst wird nie gespeichert.',
+    only3Title: 'Jede App, keine App-Liste',
+    only3Text:
+      'Auf Android kommen Warnungen aus Benachrichtigungen und Tippeingaben in allem, was dein Kind nutzt — Zalo, LINE, KakaoTalk, der Chat eines Spiels — nicht aus einer festen Liste unterstützter Apps.',
+    only4Title: 'Ein Ausweg für das Kind',
+    only4Text:
+      'Fünf Sekunden SOS gedrückt, und du wirst sofort benachrichtigt, mit Standort — auf Android und Mac wird das Gerät zudem kurz entsperrt. Ein Kind, das immer Hilfe erreichen kann, hat keinen Grund, gegen die App zu kämpfen.',
+    only5Title: 'Regeln, die ohne Internet gelten',
+    only5Text:
+      'Sperrzeiten und Tageslimit werden auf dem Gerät selbst durchgesetzt; den Router auszustecken ändert nichts. Der Fernseher nimmt deine Eltern-PIN sogar ganz ohne Verbindung an.',
+    only6Title: 'Anerkennung, wenn die Woche sie verdient hat',
+    only6Text:
+      'Jeder Wochenbericht hält Platz für das, was gut lief — ein eingehaltenes Limit, keine späte Nacht mehr, eine erledigte Aufgabe — und sagt es erst, wenn die Woche wirklich gemessen wurde.',
+
     faqEyebrow: 'FAQ',
     faqTitle: 'Was Eltern zuerst fragen',
     faqSub: 'Schnelle Antworten vor dem Download.',
     faq1Q: 'Gibt es eine kostenlose Testphase?',
     faq1A:
-      'Ja. Die Testphase startet, sobald dein erstes Eltern- und Kindergerät verbunden sind, und enthält alle Premium-Funktionen. Danach laufen Tageslimit, Sperrzeiten und Standort auf einem Kindergerät kostenlos weiter.',
+      'Ja. Die Testphase beginnt, sobald dein erstes Eltern- und Kindgerät verbunden sind, und umfasst alle Premium-Funktionen. Danach laufen alle Regeln, die du gesetzt hast – Tageslimit, Sperrzeiten, Blockierte Apps, Webfilter und Standort – auf einem Kindgerät kostenlos weiter.',
     faq2Q: 'Wie viele Geräte kann ich verwalten?',
     faq2A:
       'Ein Abo deckt deine ganze Familie ab — mehrere Kindergeräte und mehrere Eltern im selben Tarif.',
@@ -199,7 +235,7 @@ export default {
       'Sensible Einstellungen liegen hinter deiner Eltern-PIN, und Schutzwarnungen melden sofort, wenn auf dem Kindergerät eine wichtige Berechtigung ausgeschaltet wird.',
     faq4Q: 'Kann ich alles vom Computer aus verwalten?',
     faq4A:
-      'Du kannst dich im Web-Dashboard anmelden, um Berichte zu lesen. Limits ändern oder ein Gerät sperren wird über dein Handy freigegeben — ein gestohlenes Passwort reicht also nie aus.',
+      'Die Testphase beginnt, sobald dein erstes Eltern- und Kindgerät verbunden sind, und schaltet alle Funktionen frei. Das Entfernen eines Kindgeräts setzt sie nicht zurück. Danach laufen alle Regeln auf einem Kindgerät kostenlos weiter; Premium behält Live-Aktivität, Verlauf, Wochenberichte und alle Geräte.',
     faqMore: 'Noch Fragen? Zum Support',
 
     ctaTitle: 'Schütze deine Familie ab heute',
@@ -215,8 +251,8 @@ export default {
     notConfiguredBody:
       'Setze die Umgebungsvariablen VITE_FIREBASE_*, um die Anmeldung zu aktivieren.',
     qrWhy:
-      'Die Freigabe per Handy ist der einzige Weg, die Steuerung zu entsperren — ein Gerät sperren und Limits ändern bleiben in der App. Die Methoden unten melden dich an, um Berichte zu lesen.',
-    orViewOnly: 'oder Anmeldung nur zum Lesen',
+      'Mit dem Handy zu scannen meldet dich an und entsperrt die Steuerung in einem Schritt. Die Methoden unten melden dich zum Lesen an; die Steuerung zu entsperren braucht dann deine Eltern-PIN.',
+    orViewOnly: 'oder anders anmelden',
     google: 'Weiter mit Google',
     googleBusy: 'Google wird geöffnet…',
     apple: 'Weiter mit Apple',
@@ -395,8 +431,8 @@ export default {
     parents_other: '{{count}} Eltern',
     devices_one: '{{count}} Kindergerät',
     devices_other: '{{count}} Kindergeräte',
-    planPremium: 'Premium',
-    planTrial: 'Testphase',
+    planManageOnPhone:
+      'Tarife werden in der KidGate-App auf dem Handy gekauft und geändert.',
     fallbackFamily: 'Deine Familie',
     fallbackDevice: 'Kindergerät',
 
@@ -405,6 +441,7 @@ export default {
     statusLocked: 'Gesperrt',
     statusLockSent: 'Sperre gesendet',
     statusLockNotApplied: 'Sperre nicht angewendet',
+    statusPaused: 'Pausiert',
 
     stateAllowed: 'Erlaubt',
     stateDenied: 'Ausgeschaltet',
@@ -423,11 +460,28 @@ export default {
     lockDevice: 'Gerät sperren',
     unlock: 'Entsperren',
     working: 'Wird ausgeführt…',
-    lockNeedsApp: 'Zum Sperren wird die KidGate-App auf deinem Handy gebraucht',
+    save: 'Speichern',
 
-    viewOnlyTitle: 'Nur Lesezugriff.',
-    viewOnlyBody:
-      'Um ein Gerät zu sperren, Limits zu ändern oder Anfragen freizugeben, melde dich ab und wieder an, indem du den QR-Code mit der KidGate-App scannst — erst die Freigabe von einem verbundenen Elternhandy entsperrt die Steuerung. Check-ins funktionieren hier so oder so.',
+    unlockTitle: 'Änderungen sind gesperrt.',
+    unlockBody:
+      'Ansehen geht sofort. Um ein Gerät zu sperren, Limits zu ändern oder Anfragen zu genehmigen, entsperre diesen Browser mit deiner Eltern-PIN – oder bestätige ihn, indem du den QR-Code mit der KidGate-App scannst. Check-ins funktionieren in beiden Fällen.',
+    unlockCta: 'Änderungen entsperren',
+    unlockToChange: 'Erst Änderungen entsperren',
+    pinTitle: 'Eltern-PIN eingeben',
+    pinBody:
+      'Dieselben sechs Ziffern wie in der App. Dieser Browser bleibt 7 Tage entsperrt.',
+    pinLabel: 'Eltern-PIN',
+    pinSubmit: 'Entsperren',
+    pinOrScan: 'Oder vom Handy bestätigen',
+    qrSaferNote:
+      'Die Bestätigung vom Handy ist die sicherere der beiden: Sie verlangt das gekoppelte Handy in der Hand, während die PIN sechs Ziffern sind, bei denen dir jemand in der Familie zugesehen haben kann.',
+    pinWrong: 'Falsche PIN. Verbleibende Versuche: {{count}}.',
+    pinLocked:
+      'Zu viele Fehlversuche. Warte 15 Minuten oder bestätige diesen Browser vom Handy aus.',
+    pinNotSet:
+      'Deine Familie hat noch keine Eltern-PIN. Lege in der App eine fest oder bestätige diesen Browser vom Handy aus.',
+    unlockedToast: 'Änderungen in diesem Browser entsperrt.',
+    close: 'Schließen',
 
     noDeviceTitle: 'Noch kein Kindergerät',
     noDeviceBody:
@@ -491,6 +545,8 @@ export default {
     on: 'An',
     topAppsTitle: 'Top-Apps heute',
     topAppsSub: 'App-Limits werden als Markierung angezeigt',
+    topAppsFreeHint:
+      'Top 3 heute – die vollständige Liste und der Verlauf gibt es mit Premium.',
     trendTitle: 'Bildschirmzeit-Verlauf',
     trendSub: 'Letzte {{count}} Tage',
     rangeDays: '{{count}} T',
@@ -500,6 +556,7 @@ export default {
     blockedHoursSub_other:
       '{{count}} Zeitfenster · das Gerät bleibt in den schattierten Blöcken gesperrt',
     scheduleOff: 'Zeitplan ist aus',
+    schedMax: 'Mehr als {{max}} Zeitfenster kann ein Gerät nicht halten.',
 
     appUsageTitle: 'App-Nutzung heute',
     appUsageSub: 'Zeit pro App',
@@ -513,6 +570,7 @@ export default {
     categories: 'Kategorien',
     perAppHint:
       'App-Limits laufen unabhängig von der Sperrliste — „30 Minuten TikTok“ ist eine andere Entscheidung als „kein TikTok“.',
+    limitsMax: 'Mehr als {{max}} begrenzte Apps kann ein Gerät nicht halten.',
     perDay: '{{value}}/Tag',
     webActivityTitle: 'Web-Aktivität',
     webActivitySub: 'Meistbesuchte Domains, letzte 30 Tage',
@@ -530,6 +588,19 @@ export default {
     inventoryUnknownLabel: 'Unbestimmt',
     inventoryIncomplete:
       'Eine App ohne Symbol auf dem Startbildschirm erscheint hier möglicherweise nicht.',
+    inventoryPending: 'Wartet auf deine Freigabe',
+    pendingInstallBlocked: 'Gesperrt, bis du sie erlaubst',
+    installAllow: 'Erlauben',
+    pendingInstallsTitle: 'Neue Apps warten auf Freigabe',
+    pendingInstallsSub:
+      'Nach dem Einschalten der Freigabe installiert und vom Gerät von selbst gesperrt',
+    pendingInstallsEmpty: 'Keine neuen Apps warten auf Freigabe.',
+    toastInstallAllowed: 'App erlaubt',
+    rowInstallApproval: 'Neue Apps freigeben',
+    rowInstallApprovalDesc: '{{count}} Apps warten auf Freigabe',
+    rowInstallApprovalDesc_one: '{{count}} App wartet auf Freigabe',
+    rowInstallApprovalDescIos:
+      'Blendet den App Store aus — Apple erlaubt keine Freigabe pro App',
     webActivitySyncNote:
       'Die Web-Aktivität kann ein paar Minuten brauchen, bis sie hier angezeigt wird — länger, wenn das Gerät keine Internetverbindung hat oder unerwartet beendet wurde.',
     webActivitySyncNoteTv:
@@ -538,6 +609,12 @@ export default {
     colVisits: 'Besuche',
     colBlocked: 'Blockiert',
     colLastSeen: 'Zuletzt gesehen',
+    videosTitle: 'Angesehene Videos',
+    videosSub: 'Was auf YouTube und im Web angesehen wurde',
+    videosEmpty: 'Noch keine Videos.',
+    colVideo: 'Video',
+    colChannel: 'Kanal',
+    colViews: 'Aufrufe',
     filterRefusedTitle: 'Was der Filter abgewiesen hat',
     filterRefusedSub_one: '{{count}} blockierte Anfrage, letzte 30 Tage',
     filterRefusedSub_other: '{{count}} blockierte Anfragen, letzte 30 Tage',
@@ -566,6 +643,11 @@ export default {
     placeArrive: 'Ankunft',
     placeLeave: 'Abfahrt',
     placeNoAlerts: 'keine Warnungen',
+    placeSamePin:
+      'Das ist dieselbe Stelle wie „{{name}}“. Nutze die Karte in der App, um ihn woanders zu setzen.',
+    placeWebHint:
+      'Im Web lässt sich ein Ort nur dort setzen, wo das Gerät zuletzt seine Position gemeldet hat. Für jeden anderen Ort die Karte in der App nutzen.',
+    placeNeedsLocation: 'Warte auf eine Position von diesem Gerät.',
     sosTitle: 'SOS-Alarme',
     sosSub: 'Notsignale vom Kindergerät',
     sosEmpty:
@@ -622,7 +704,12 @@ export default {
     rowLocation: 'Standortfreigabe',
     rowLocationDesc: 'Letzte Aktualisierung {{when}}',
     rowLocationNone: 'Noch kein Standort',
-    toggleInApp: 'Ändere das in der KidGate-App',
+    rowSearchMonitoring: 'Suchanfragen prüfen',
+    rowSearchMonitoringDesc:
+      'Browser und YouTube. Gemeldet wird nur das markierte Wort, nie die Suchanfrage selbst.',
+    rowSafeSearch: 'SafeSearch erzwingen',
+    rowSafeSearchDesc:
+      'Sperrt Google SafeSearch, den eingeschränkten YouTube-Modus, Bing und DuckDuckGo auf die strenge Einstellung. Android, Android TV und Chrome.',
 
     webFilterCatsTitle: 'Webfilter-Kategorien',
     webFilterCatsSub: 'Blockierte Inhaltstypen',
@@ -633,13 +720,18 @@ export default {
     starChartEmpty:
       'Fügen Sie in der App ein zweites Kind hinzu, um die Sternetafel zu starten.',
     starChartStars: '{{count}} Sterne',
+    familyScreenTimeTitle: 'Bildschirmzeit der Familie',
+    familyScreenTimeSub: 'Wenigste Bildschirmzeit zuerst, diese Woche',
+    familyScreenTimeEmpty:
+      'Diese Woche hat noch niemand gemeldet. Zeilen erscheinen, sobald Handys melden.',
+    familyScreenTimeParent: 'Elternteil',
+    familyScreenTimeDays: '{{count}} Tage gemeldet',
     rewardTasksTitle: 'Belohnungsaufgaben',
     rewardTasksSub: 'Verdiene Extraminuten durch erledigte Aufgaben',
     rewardTaskMeta: '+{{minutes}} Min. · {{cadence}}',
     rewardTaskStars: 'Schwierigkeit: {{count}} von 3',
     rewardTaskWaiting: ' · wartet auf deine Freigabe',
     approve: 'Freigeben',
-    approveInApp: 'In der KidGate-App freigeben',
     siteRequestsTitle: 'Website-Anfragen',
     siteRequestsSub: 'Websites, für die dieses Gerät um Erlaubnis gebeten hat',
     siteRequestAllow: 'Erlauben',
@@ -662,6 +754,8 @@ export default {
     rateLimited:
       'Zu viele Änderungen auf einmal. Einen Moment warten und erneut versuchen.',
     server: 'KidGate konnte das nicht abschließen. Gleich noch einmal versuchen.',
+    premiumRequired:
+      'Das ist eine Premium-Funktion. Tarife werden in der KidGate-App auf deinem Handy verwaltet.',
   },
 
   report: {
@@ -796,7 +890,7 @@ export default {
 
     faq4Q: 'Wie funktioniert die kostenlose Testphase?',
     faq4A:
-      'Die Testphase startet, sobald dein erstes Eltern- und Kindergerät verbunden sind, und gibt vollen Zugriff auf alle Funktionen. Ein Kindergerät zu entfernen setzt die Testphase nicht zurück. Wenn sie endet, schließe Premium ab, um KidGate weiter zu nutzen.',
+      'Die Testphase beginnt, sobald dein erstes Eltern- und Kindgerät verbunden sind, und schaltet alle Funktionen frei. Das Entfernen eines Kindgeräts setzt sie nicht zurück. Danach laufen alle Regeln auf einem Kindgerät kostenlos weiter; Premium behält Live-Aktivität, Verlauf, Wochenberichte und alle Geräte.',
 
     faq5Q: 'Wie kündige ich mein Abo?',
     faq5A:

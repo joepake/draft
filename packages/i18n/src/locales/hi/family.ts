@@ -59,6 +59,7 @@ export const family = {
   childDetailStarsWell: 'इस सप्ताह के सितारे',
   childStarsA11y: 'इस सप्ताह के सितारे: {{count}}',
   childDetailDevicesTitle: 'डिवाइस',
+  childDetailSwipeHint: 'असाइनमेंट हटाने के लिए डिवाइस को स्वाइप करें।',
   childDetailAssignMore: 'एक और डिवाइस असाइन करें…',
   childDetailAssignSheetTitle: '{{childName}} को डिवाइस असाइन करें',
   childDetailNoDevices:
@@ -88,6 +89,7 @@ export const family = {
   chipDeviceCount_one: '{{count}} डिवाइस',
 
   chipOnlineCount: '{{count}} ऑनलाइन',
+  metaOnlineCount: '{{count}} में से {{online}} ऑनलाइन',
 
   chipSosCount: '{{count}} SOS',
 
@@ -117,6 +119,33 @@ export const family = {
   healthNeedsSetup: 'सेटअप आवश्यक',
 
   healthOffline: 'ऑफ़लाइन',
+
+  devicePausedLabel: 'रुका हुआ',
+
+  devicePausedHint: 'फ़्री प्लान में रुका हुआ — सभी नियम अब भी लागू हैं',
+
+  parkedBannerTitle: 'वह डिवाइस चुनें जिस पर नज़र रखनी है',
+
+  parkedBannerBody:
+    'आपके नियम हर डिवाइस पर चलते हैं। फ़्री प्लान में सिर्फ़ एक डिवाइस रिपोर्ट भेजता है — उसे चुनें, या सबको रखने के लिए अपग्रेड करें।',
+
+  parkedBannerAction: 'डिवाइस चुनें',
+
+  chooseMonitoredTitle: 'कौन सा डिवाइस रिपोर्ट भेजे?',
+
+  chooseMonitoredBody:
+    'सभी डिवाइस पर सभी नियम चलते रहेंगे। सिर्फ़ चुना हुआ डिवाइस स्क्रीन टाइम और लोकेशन भेजता है। आप इसे हर {{days}} दिन में एक बार बदल सकते हैं।',
+
+  chooseMonitoredConfirm: 'इस डिवाइस पर नज़र रखें',
+
+  chooseMonitoredUpgrade: 'सभी डिवाइस रखें — अपग्रेड करें',
+
+  chooseMonitoredDone: '{{name}} अब रिपोर्ट भेजने वाला डिवाइस है',
+
+  monitoredCooldown:
+    'रिपोर्ट भेजने वाला डिवाइस हर {{days}} दिन में सिर्फ़ एक बार बदला जा सकता है',
+
+  monitoredChooseFailed: 'रिपोर्ट भेजने वाला डिवाइस नहीं बदला जा सका',
 
   cardWhereLabel: 'स्थान',
 
@@ -324,7 +353,7 @@ export const family = {
   childDetailProtectionOk: 'सुरक्षित',
   childDetailProtectionAttention: '{{count}} डिवाइस पर ध्यान चाहिए',
   childDetailProtectionSheetTitle: 'डिवाइस अनुसार सुरक्षा',
-  childDetailRemoveTitle: 'इस बच्चे को हटाएँ',
+  childDetailRemoveTitle: '{{childName}} की प्रोफ़ाइल हटाएँ',
   childDetailRemovingButton: 'हटाया जा रहा है…',
   childDetailOnlineCount: '{{total}} में से {{online}} ऑनलाइन',
   childDetailBudgetTitle: 'दैनिक सीमा',

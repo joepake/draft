@@ -58,6 +58,7 @@ export const family = {
   childDetailStarsWell: 'Bintang minggu ini',
   childStarsA11y: 'Bintang minggu ini: {{count}}',
   childDetailDevicesTitle: 'Perangkat',
+  childDetailSwipeHint: 'Geser perangkat untuk membatalkan penetapannya.',
   childDetailAssignMore: 'Tetapkan perangkat lain…',
   childDetailAssignSheetTitle: 'Tetapkan perangkat ke {{childName}}',
   childDetailNoDevices:
@@ -87,6 +88,7 @@ export const family = {
   chipDeviceCount_one: '{{count}} perangkat',
 
   chipOnlineCount: '{{count}} online',
+  metaOnlineCount: '{{online}}/{{count}} online',
 
   chipSosCount: '{{count}} SOS',
 
@@ -114,6 +116,21 @@ export const family = {
   buildOutdated: 'Pembaruan tersedia',
   healthNeedsSetup: 'Perlu pengaturan',
   healthOffline: 'Offline',
+  devicePausedLabel: 'Dijeda',
+  devicePausedHint: 'Dijeda di paket gratis — semua aturan tetap berlaku',
+  parkedBannerTitle: 'Pilih perangkat yang tetap dipantau',
+  parkedBannerBody:
+    'Aturan Anda berjalan di semua perangkat. Paket gratis menerima laporan dari satu — pilih perangkatnya, atau upgrade untuk mempertahankan semuanya.',
+  parkedBannerAction: 'Pilih perangkat',
+  chooseMonitoredTitle: 'Perangkat mana yang harus melapor?',
+  chooseMonitoredBody:
+    'Semua aturan tetap berjalan di semuanya. Hanya perangkat yang Anda pilih yang mengirim waktu layar dan lokasi. Anda bisa menggantinya sekali setiap {{days}} hari.',
+  chooseMonitoredConfirm: 'Pantau perangkat ini',
+  chooseMonitoredUpgrade: 'Pertahankan semua perangkat — upgrade',
+  chooseMonitoredDone: '{{name}} kini menjadi perangkat yang melapor',
+  monitoredCooldown:
+    'Perangkat yang melapor hanya bisa diganti sekali setiap {{days}} hari',
+  monitoredChooseFailed: 'Tidak dapat mengganti perangkat yang melapor',
 
   cardWhereLabel: 'Lokasi',
 
@@ -319,7 +336,7 @@ export const family = {
   childDetailProtectionOk: 'Terlindungi',
   childDetailProtectionAttention: '{{count}} perangkat perlu diperhatikan',
   childDetailProtectionSheetTitle: 'Perlindungan per perangkat',
-  childDetailRemoveTitle: 'Hapus anak ini',
+  childDetailRemoveTitle: 'Hapus profil {{childName}}',
   childDetailRemovingButton: 'Menghapus…',
   childDetailOnlineCount: '{{online}} dari {{total}} online',
   childDetailBudgetTitle: 'Batas harian',

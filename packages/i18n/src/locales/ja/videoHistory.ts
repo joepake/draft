@@ -1,0 +1,28 @@
+export const videoHistory = {
+  title: '視聴した動画',
+  fallbackDeviceName: '子どもの端末',
+  toggleLabel: '視聴した動画を記録',
+  toggleHint: 'ブラウザの YouTube と、Android の YouTube アプリ。',
+  toggleFailed: '動画履歴を更新できませんでした。もう一度お試しください。',
+  unsupportedNote:
+    'この端末は視聴した動画を報告できません。Android と Chrome で動作します。',
+  emptyTitle: 'まだ視聴なし',
+  emptyBody: 'KidGate が動作中にお子さんが視聴すると、動画がここに表示されます。',
+  emptyBodyOff: '視聴した動画を一覧するには、上の記録をオンにしてください。',
+  viewsMeta_one: '{{count}} 回',
+  viewsMeta: '{{count}} 回',
+  dayToday: '今日',
+  dayYesterday: '昨日',
+  dayCount_one: '{{count}} 本',
+  dayCount: '{{count}} 本',
+  heroVideos: '動画',
+  heroChannels: 'チャンネル',
+  heroViews: '再生',
+  emptyStepEnable: '記録をオンにする',
+  emptyStepWatch: 'お子さんが YouTube を視聴',
+  emptyStepAppear: '動画がここに表示',
+  unknownChannel: '不明なチャンネル',
+  heroTopChannel: '最も視聴',
+  readerLayoutChanged:
+    '現在この端末ではショート動画が記録されていません。YouTubeアプリが変更されたため、KidGateの更新が必要です。その他の動画は引き続き記録されます。',
+};

@@ -46,6 +46,8 @@ import {
   type AppInventory,
   type InventoryApp,
 } from '@kidgate/schema/appInventory';
+import type { AppInstallApprovalPolicy } from '@kidgate/schema/policy';
+import { installApprovalState, type InstallApprovalState } from './appInstallApproval';
 
 /**
  * Past this the inventory is stale enough to say so.
@@ -102,9 +104,27 @@ export interface InventoryRow {
    * pending classification would be waiting for an answer no job will write.
    */
   isExtension: boolean;
+  /** The OS's install time where the device reported one. */
+  installedAt?: number;
+  /**
+   * Where this row stands with the app install quarantine, when the parent
+   * has it on and the app arrived after the line. Absent for every other row —
+   * an app that was never in question is not "approved".
+   */
+  installState?: InstallApprovalState;
 }
 
 export interface AppInventoryReport {
+  /**
+   * Installed after the parent switched approval on and not yet approved —
+   * blocked on the device right now, waiting on the parent. Newest install
+   * first. **Removed from the three buckets below**, so a surface renders it
+   * as its own group above them rather than a pill the eye slides past: the
+   * device decided this on its own, and a parent who missed the push has to
+   * find it where they look for blocks (`docs/FEASIBILITY.md`, "App install
+   * quarantine"). Empty while the switch is off.
+   */
+  pending: InventoryRow[];
   /** High-confidence serious categories, alphabetical by label. */
   flagged: InventoryRow[];
   /** Everything else with a showable classification. */
@@ -125,6 +145,23 @@ export interface AppInventoryReport {
   truncated: boolean;
   totalSeen: number;
   /**
+   * Every shown row is a browser extension, so the whole screen should say so.
+   *
+   * `InventoryRow.isExtension` answers per row; this answers for the list, and
+   * a surface needs both. The rows carry the chip and the glyph; **the page
+   * around them carries a noun** — a title, a summary sentence, the note about
+   * what a scan cannot see — and rendering "7 apps" over a list of seven Chrome
+   * extensions is wrong in the one place a parent reads first.
+   *
+   * Derived rather than plumbed. The alternative is passing the device down and
+   * asking whether its `webFilter` is `'extension'`, which both parent surfaces
+   * would have to remember to do; the identifiers already say what they are
+   * (`@kidgate/schema/appInventory`), so a list of them says it too. An empty
+   * inventory is false — there is no vocabulary to switch to and nothing to say
+   * it about.
+   */
+  isExtensionInventory: boolean;
+  /**
    * Whether this is the device's first inventory.
    *
    * Load-bearing for copy, not decoration: on a first scan the report may not
@@ -140,8 +177,25 @@ function toRow(
   scannedAt: number,
   nowMs: number,
   isFirstScan: boolean,
+  installApproval: AppInstallApprovalPolicy | null,
 ): InventoryRow {
   const showable = isShowableAppCategory(entry);
+  /*
+   * The OS's install time is the honest number and the one the device itself
+   * compares. A row published before the field existed has none; for those,
+   * on a scan that is not the first, "first seen after the line" is the best
+   * available stand-in — it can only be later than the true install, so it
+   * never quarantines a row the device would let through, and it stops the
+   * parent's list going blank for a day after this ships. A first scan gets no
+   * stand-in: `firstSeenAt` there is the scan time, not an arrival.
+   */
+  const installedAt =
+    typeof app.installedAt === 'number'
+      ? app.installedAt
+      : !isFirstScan && app.firstSeenAt > 0
+        ? app.firstSeenAt
+        : null;
+  const installState = installApprovalState(app.id, installedAt, installApproval);
   // Spread rather than assigning `undefined`: `exactOptionalPropertyTypes` is on
   // repo-wide, so an absent classification has to be an absent key.
   return {
@@ -161,7 +215,13 @@ function toRow(
       app.firstSeenAt > scannedAt - INVENTORY_RECENT_MS &&
       nowMs - app.firstSeenAt < INVENTORY_RECENT_MS,
     isExtension: isBrowserExtensionId(app.id),
+    ...(typeof app.installedAt === 'number' ? { installedAt: app.installedAt } : {}),
+    ...(installState ? { installState } : {}),
   };
+}
+
+function byInstalledDesc(a: InventoryRow, b: InventoryRow): number {
+  return (b.installedAt ?? b.firstSeenAt) - (a.installedAt ?? a.firstSeenAt);
 }
 
 function byLabel(a: InventoryRow, b: InventoryRow): number {
@@ -180,6 +240,12 @@ export function buildAppInventoryReport(
   inventory: AppInventory,
   categories: ReadonlyMap<string, AppCategoryEntry | null>,
   nowMs: number,
+  /**
+   * The device's quarantine policy (`resolveInstallApprovalPolicy` off its
+   * controls), or null/absent while the switch is off. Optional so a caller
+   * that has no controls in hand — a test, a summary — still gets a report.
+   */
+  installApproval: AppInstallApprovalPolicy | null = null,
 ): AppInventoryReport {
   // Every entry carrying the scan's own timestamp is what a first scan looks
   // like — it is the one shape that cannot have come from a diff. An empty
@@ -188,6 +254,7 @@ export function buildAppInventoryReport(
     inventory.apps.length === 0 ||
     inventory.apps.every(app => app.firstSeenAt >= inventory.scannedAt);
 
+  const pending: InventoryRow[] = [];
   const flagged: InventoryRow[] = [];
   const other: InventoryRow[] = [];
   const unclassified: InventoryRow[] = [];
@@ -199,8 +266,19 @@ export function buildAppInventoryReport(
       hiddenCount += 1;
       continue;
     }
-    const row = toRow(app, entry, inventory.scannedAt, nowMs, isFirstScan);
-    if (row.serious) {
+    const row = toRow(
+      app,
+      entry,
+      inventory.scannedAt,
+      nowMs,
+      isFirstScan,
+      installApproval,
+    );
+    if (row.installState === 'pending') {
+      // Its own group, before any category: blocked right now, by the device,
+      // and the parent is the only thing that changes that.
+      pending.push(row);
+    } else if (row.serious) {
       flagged.push(row);
     } else if (entry || row.isExtension) {
       // An extension is `other` with no entry, which is the one place in this
@@ -213,10 +291,22 @@ export function buildAppInventoryReport(
     }
   }
 
+  const shown = pending.length + flagged.length + other.length + unclassified.length;
+
   return {
+    pending: pending.sort(byInstalledDesc),
     flagged: flagged.sort(byLabel),
     other: other.sort(byLabel),
     unclassified: unclassified.sort(byLabel),
+    // Every row, not most of them: a browser that somehow reported one real
+    // application beside its extensions is not a browser this vocabulary
+    // describes, and the app wording is the safe answer for a mixed list.
+    isExtensionInventory:
+      shown > 0 &&
+      pending.every(row => row.isExtension) &&
+      flagged.every(row => row.isExtension) &&
+      other.every(row => row.isExtension) &&
+      unclassified.every(row => row.isExtension),
     hiddenCount,
     scannedAt: inventory.scannedAt,
     stale: nowMs - inventory.scannedAt > INVENTORY_STALE_AFTER_MS,
@@ -238,6 +328,12 @@ export function buildAppInventoryReport(
  * cannot see a launcher-less app, and a classifier that has not reached every
  * row, together cannot support the sentence a parent would most like to read.
  * `docs/FEASIBILITY.md`, "What is unproven".
+ *
+ * **A browser gets its own two keys rather than a `{{noun}}` hole.** Word order
+ * and agreement differ across the fourteen packs, and a machine word posted
+ * into a sentence is the thing no translator can fix — the same reason
+ * `messageAlertBodyOutgoing` is a separate key from `messageAlertBody` rather
+ * than one string with a direction in it.
  */
 export function appInventorySummaryKey(report: AppInventoryReport): {
   key: string;
@@ -247,9 +343,16 @@ export function appInventorySummaryKey(report: AppInventoryReport): {
     report.flagged.length + report.other.length + report.unclassified.length;
   if (report.flagged.length > 0) {
     return {
-      key: 'appInventory.summaryFlagged',
+      key: report.isExtensionInventory
+        ? 'appInventory.summaryFlaggedExtension'
+        : 'appInventory.summaryFlagged',
       params: { flagged: report.flagged.length, total: shown },
     };
   }
-  return { key: 'appInventory.summaryClear', params: { total: shown } };
+  return {
+    key: report.isExtensionInventory
+      ? 'appInventory.summaryClearExtension'
+      : 'appInventory.summaryClear',
+    params: { total: shown },
+  };
 }

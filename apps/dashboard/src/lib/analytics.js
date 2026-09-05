@@ -138,6 +138,23 @@ export function trackLogout() {
 }
 
 /**
+ * Unlocking write on a browser that is already signed in.
+ *
+ * **Deliberately not `login`.** The parent was already signed in and reading;
+ * counting this as a login would inflate the login count with the same person
+ * twice and make the failure rate meaningless — a wrong PIN is not a failed
+ * sign-in. This is the one web event with no phone equivalent, because the
+ * phone has no step-up: it proves itself with a device credential.
+ *
+ * `method` separates the two proofs the dashboard accepts, which is the
+ * question the step-up was built to answer — whether parents reach for the PIN
+ * or still go and find their phone.
+ */
+export function trackWebStepUp(method, result) {
+  track('parent_web_step_up', { method, result });
+}
+
+/**
  * A parent action on a child device, and how it ended.
  *
  * One event with an `action` rather than six events, because the question worth

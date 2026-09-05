@@ -20,6 +20,12 @@ export const webFilter = {
   toggleHintMacos:
     'Çocuğun Sistem Ayarları’nda KidGate filtre uzantısını bir kez onaylaması gerekir. Filtrenin çalışması için onaylı kalmasını sağlayın.',
   toggleAccessibilityLabel: 'Web filtresini aç',
+  safeSearchSectionTitle: 'Güvenli arama ve YouTube',
+  safeSearchSectionSubtitle:
+    'Google, Bing ve DuckDuckGo’yu güvenli sonuçlara zorlar ve YouTube’u Kısıtlı Mod’a kilitler. Web filtresinin açık olmasını gerektirir.',
+  safeSearchLabel: 'Güvenli Aramayı zorunlu kıl',
+  safeSearchHint:
+    'Google SafeSearch, YouTube Kısıtlı Mod, Bing ve DuckDuckGo’yu katı ayarda kilitler. Android, Android TV ve Chrome.',
   infoTitle: 'Nasıl çalışır',
   infoLine1Ios: 'Apple yetişkin sitelerini otomatik olarak filtreler.',
   infoLine2Ios:
@@ -160,8 +166,10 @@ export const webFilter = {
   askToOpen: 'Ailene sor',
   askToOpenSubtitle: 'İzin verirlerse bu site açılır.',
   askToOpenDomainLabel: 'Hangi site?',
+  askToOpenBlockedLabel: 'Son engellenenler',
   askToOpenPending: 'Zaten bir site istedin. Cevabı bekle.',
   askToOpenTooSoon: 'Az önce istek gönderdin. Bir dakika sonra dene.',
+  askToOpenTooMany: 'Bir seferde sadece birkaç site isteyebilirsin.',
   requestsTitle: 'Site istekleri',
   requestsSubtitle: 'Bu cihazın izin istediği siteler.',
   siteRequestApproved: 'Siteye izin verildi',

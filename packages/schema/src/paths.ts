@@ -4,6 +4,8 @@ export const FirestorePaths = {
   familyMembers: 'members',
   children: 'children',
   leaderboards: 'leaderboards',
+  /** Weekly screen-time standings, sibling of `leaderboards` — `screenTimeBoard.ts`. */
+  screenTimeBoards: 'screenTimeBoards',
   childDevices: 'childDevices',
   activities: 'activities',
   timeRequests: 'timeRequests',
@@ -53,6 +55,15 @@ export function leaderboardsCollection(familyId: string) {
 /** `periodKey` is the document id, so one week cannot be written twice. */
 export function leaderboardDoc(familyId: string, periodKey: string) {
   return `${leaderboardsCollection(familyId)}/${periodKey}`;
+}
+
+export function screenTimeBoardsCollection(familyId: string) {
+  return `${FirestorePaths.users}/${familyId}/${FirestorePaths.screenTimeBoards}`;
+}
+
+/** Same week key as the star chart, so the two documents describe one week. */
+export function screenTimeBoardDoc(familyId: string, periodKey: string) {
+  return `${screenTimeBoardsCollection(familyId)}/${periodKey}`;
 }
 
 export function childDeviceDoc(userId: string, deviceId: string) {
@@ -120,6 +131,18 @@ export function webHistoryCollection(userId: string, deviceId: string) {
  */
 export function webActivityHoursCollection(userId: string, deviceId: string) {
   return `${childDeviceDoc(userId, deviceId)}/webActivityHours`;
+}
+
+/**
+ * Videos the child watched, one document per video per local day
+ * (`videoActivity.ts`). A sibling of `webHistory` — `apps/extension` fills it
+ * from the committed YouTube URL, the Android agent from the media session —
+ * so the same cascade-and-retention rules apply, and this helper is here for
+ * the same reason `webHistoryCollection` is: `deviceCascade.test.ts` reads
+ * this file to find every subcollection an unpair must delete.
+ */
+export function videoHistoryCollection(userId: string, deviceId: string) {
+  return `${childDeviceDoc(userId, deviceId)}/videoHistory`;
 }
 
 /**

@@ -74,6 +74,25 @@ export function toDeviceView(record) {
     status: record.isLocked ? 'locked' : record.status || 'offline',
     isLocked: record.isLocked,
     lastActiveAt: record.lastActiveAt || undefined,
+    /*
+     * The cadence this device keeps and the last "report now" it was sent.
+     * `getEffectiveDeviceStatus` judges `lastActiveAt` against the first — a
+     * free-tier device beats every thirty minutes, and against the live
+     * three-minute window every one of them reads permanently offline — and
+     * `requestDeviceReports` throttles on the second. This app cannot work
+     * either out for itself: it has no `TRIAL_DAYS` and so cannot tell a
+     * running trial from a lapsed one (`docs/BACKLOG.md`).
+     */
+    beatIntervalMs: record.beatIntervalMs,
+    reportRequestId: record.reportRequestId,
+    /*
+     * The free tier's whole visible output, plus whether this device is
+     * parked. Absent means something in all three — no counts yet, no report
+     * yet, active — so none is defaulted.
+     */
+    weekCounters: record.weekCounters,
+    topAppsToday: record.topAppsToday,
+    monitoringState: record.monitoringState,
     batteryLevel: record.batteryLevel,
     batteryCharging: Boolean(record.batteryCharging),
     lastLocation,
@@ -88,6 +107,16 @@ export function toDeviceView(record) {
     capabilities: record.capabilities ?? null,
     protectionCounters: record.protectionCounters ?? { appBlocked: 0, tamper: 0 },
     webFilterBlockedCount: record.webFilterBlockedCount ?? 0,
+    /*
+     * The list as stored, untouched.
+     *
+     * Places are FAMILY-level: `updateFamilyPlaces` fans one list into every
+     * child device's `places`, so any device's copy is the family's list. The
+     * editor writes the whole list back and needs the stored field names and
+     * the coordinates, both of which the renamed view below drops — and
+     * `findPlaceConflict` cannot answer `samePin` or `contained` without them.
+     */
+    familyPlaces: record.places ?? [],
     places: (record.places ?? []).map(place => ({
       id: place.id,
       name: place.name,

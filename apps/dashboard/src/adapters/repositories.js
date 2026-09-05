@@ -6,7 +6,10 @@ import { createFamilyReportRepository } from '@kidgate/core/repositories/familyR
 import { createLocationHistoryRepository } from '@kidgate/core/repositories/locationHistory';
 import { createChildRepository } from '@kidgate/core/repositories/child';
 import { createChildRulesRepository } from '@kidgate/core/repositories/childRules';
+import { createFamilyPlacesRepository } from '@kidgate/core/repositories/familyPlaces';
+import { createParentInviteRepository } from '@kidgate/core/repositories/parentInvite';
 import { createLeaderboardRepository } from '@kidgate/core/repositories/leaderboard';
+import { createScreenTimeBoardRepository } from '@kidgate/core/repositories/screenTimeBoard';
 import { createRewardTaskRepository } from '@kidgate/core/repositories/rewardTask';
 import { createSafetyCheckInRepository } from '@kidgate/core/repositories/safetyCheckIn';
 import { createSosAlertRepository } from '@kidgate/core/repositories/sosAlert';
@@ -15,12 +18,17 @@ import { createTimeRequestRepository } from '@kidgate/core/repositories/timeRequ
 import { createSiteRequestRepository } from '@kidgate/core/repositories/siteRequest';
 import { createUsageDayRepository } from '@kidgate/core/repositories/usageDay';
 import { createWebHistoryRepository } from '@kidgate/core/repositories/webHistory';
-import { getAppInventory as readAppInventory } from '@kidgate/core/repositories/appInventory';
+import { createVideoHistoryRepository } from '@kidgate/core/repositories/videoHistory';
+import {
+  createAppInventoryRepository,
+  getAppInventory as readAppInventory,
+} from '@kidgate/core/repositories/appInventory';
 import { getAppCategories as readAppCategories } from '@kidgate/core/repositories/appCategory';
 import { fetchLatestBuilds } from '@kidgate/core/repositories/releaseConfig';
 import { createApiAdapter } from './api.js';
 import { createClockAdapter } from './clock.js';
 import { createFirestoreAdapter } from './firestore.js';
+import { wrapWithReadCounter } from './readCounter.js';
 import { createStorageAdapter } from './storage.js';
 
 /**
@@ -38,7 +46,14 @@ import { createStorageAdapter } from './storage.js';
  * literals in one app and derived from `@kidgate/schema/paths` in the other.
  */
 
-const db = createFirestoreAdapter();
+/*
+ * Wrapped in dev builds only — `wrapWithReadCounter` hands the port back
+ * untouched in a production bundle. Here rather than at any call site
+ * because this is the one adapter instance: everything below takes `db`.
+ * A tab left open is this product's longest-lived reader, which is what
+ * makes this surface worth counting. `docs/DATA_RETENTION.md` §9.
+ */
+const db = wrapWithReadCounter(createFirestoreAdapter());
 const api = createApiAdapter();
 const storage = createStorageAdapter();
 
@@ -57,8 +72,28 @@ export const timeRequestRepository = createTimeRequestRepository({ db, api, cloc
 /* No `clock`: the cooldown this one obeys is the server's — see the repository. */
 export const siteRequestRepository = createSiteRequestRepository({ db, api });
 export const childRepository = createChildRepository({ db });
-export const childRulesRepository = createChildRulesRepository({ api });
+export const childRulesRepository = createChildRulesRepository({
+  api,
+  /*
+   * A thunk, not the repository itself: `controlRepository` is declared
+   * further down this file, so passing the value here would read it before
+   * its initialiser has run. The arrow defers the lookup to call time.
+   */
+  controls: {
+    updateControls: (userId, deviceId, controls) =>
+      controlRepository.updateControls(userId, deviceId, controls),
+  },
+});
+/* Places are family-level and the write is whole-list: one endpoint, no db. */
+export const familyPlacesRepository = createFamilyPlacesRepository({ api });
+/*
+ * Minting an invite and answering a join request need only a signed-in parent
+ * — no device credential, no web step-up. The code alone grants nothing: the
+ * owner still approves the request it produces.
+ */
+export const parentInviteRepository = createParentInviteRepository({ api });
 export const leaderboardRepository = createLeaderboardRepository({ db });
+export const screenTimeBoardRepository = createScreenTimeBoardRepository({ db });
 export const rewardTaskRepository = createRewardTaskRepository({ db, api });
 export const sosAlertRepository = createSosAlertRepository({ db });
 export const safetyCheckInRepository = createSafetyCheckInRepository({
@@ -67,15 +102,15 @@ export const safetyCheckInRepository = createSafetyCheckInRepository({
 });
 export const usageDayRepository = createUsageDayRepository({ db, clock });
 export const webHistoryRepository = createWebHistoryRepository({ db });
+export const videoHistoryRepository = createVideoHistoryRepository({ db });
 
 /*
  * The app inventory, read only.
  *
- * No cascade half here: this surface never unpairs a device (`cascades: []`
- * below says so for the same reason), so the factory that carries
- * `deleteForDevice` stays in `apps/mobile`. Bare functions rather than a
- * repository object because neither has a collaborator — same shape as
- * `getAppCategories` beside it.
+ * The read half. Bare functions rather than a repository object because neither
+ * has a collaborator — same shape as `getAppCategories` beside it. The cascade
+ * half is `appInventoryRepository` below, built since 2026-09-03 because this
+ * surface now unpairs devices too.
  */
 export const getAppInventory = (userId, deviceId) =>
   readAppInventory(db, userId, deviceId);
@@ -99,16 +134,37 @@ export const controlRepository = createControlRepository({
 });
 
 /**
- * No cascades. The mobile app passes nine, because removing a device there has
- * to clean up everything hanging off it — including the four subcollections
- * that live *under* the device document, which Firestore leaves behind when the
- * parent goes. The dashboard has no delete-device action, and an empty list is
- * the honest way to say so; a populated one would claim a capability this
- * surface does not offer.
+ * **The eleven cascades, and why an empty list stopped being honest.**
+ *
+ * It was empty until 2026-09-03 with a comment saying the dashboard had no
+ * delete-device action. It has one now, so the list has to be the phone's —
+ * every collection, in particular the five that live *under* the device
+ * document, which Firestore leaves behind when the parent goes. A partial list
+ * is the 2026-08-23 defect exactly: an unpaired television reporting `0p used`
+ * beside a six-minute YouTube row, the total from the deleted document and the
+ * row from the survivors (`docs/BACKLOG.md`).
+ *
+ * Kept in step with `apps/mobile`'s composition root by hand. Nothing tests
+ * that the two lists agree, which is the reason this comment names the count.
  */
+export const appInventoryRepository = createAppInventoryRepository({ db });
+
 export const deviceRepository = createDeviceRepository({
   db,
   api,
   clock,
-  cascades: [],
+  cascades: [
+    timeRequestRepository,
+    siteRequestRepository,
+    rewardTaskRepository,
+    safetyCheckInRepository,
+    sosAlertRepository,
+    activityRepository,
+    // The five under the device document itself.
+    usageDayRepository,
+    locationHistoryRepository,
+    webHistoryRepository,
+    videoHistoryRepository,
+    appInventoryRepository,
+  ],
 });

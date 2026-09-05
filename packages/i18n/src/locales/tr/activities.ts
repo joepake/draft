@@ -56,6 +56,8 @@ export const activities = {
   appBlockedBody: 'Engellenen bir uygulama açıldı ve KidGate kapattı.',
   appInstalledTitle: 'Uygulama yüklendi',
   appInstalledBody: '{{appName}} uygulaması çocuğun cihazına yüklendi.',
+  appInstalledPendingBody:
+    '{{appName}} uygulaması çocuğun cihazına yüklendi ve siz izin verene kadar engelli.',
 
   messageAlertTitle: 'Endişe verici mesaj içeriği',
   messageAlertBody: '{{appName}} içinde işaretli bir kelime tespit edildi.',

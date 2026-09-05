@@ -20,6 +20,12 @@ export const webFilter = {
   toggleHintMacos:
     '子どもはシステム設定でKidGateフィルター拡張機能を一度承認する必要があります。フィルターが機能するよう承認された状態を保ってください。',
   toggleAccessibilityLabel: 'Webフィルターを有効にする',
+  safeSearchSectionTitle: 'セーフサーチと YouTube',
+  safeSearchSectionSubtitle:
+    'Google、Bing、DuckDuckGo を安全な結果に強制し、YouTube を制限付きモードに固定します。ウェブフィルターの有効化が必要です。',
+  safeSearchLabel: 'セーフサーチを強制',
+  safeSearchHint:
+    'Google セーフサーチ、YouTube 制限付きモード、Bing、DuckDuckGo を厳格設定に固定します。Android、Android TV、Chrome。',
   infoTitle: '仕組み',
   infoLine1Ios: 'Appleがアダルトサイトを自動でフィルタリングします。',
   infoLine2Ios:
@@ -160,8 +166,10 @@ export const webFilter = {
   askToOpen: 'おうちの人に聞く',
   askToOpenSubtitle: '許可されたら、このサイトを開けるよ。',
   askToOpenDomainLabel: 'どのサイト？',
+  askToOpenBlockedLabel: '最近ブロックされたサイト',
   askToOpenPending: 'もうリクエストを送ってあるよ。お返事を待ってね。',
   askToOpenTooSoon: 'いま送ったばかりだよ。1分たったらもう一度試してね。',
+  askToOpenTooMany: '一度にお願いできるサイトは少しだけだよ。',
   requestsTitle: 'サイトのリクエスト',
   requestsSubtitle: 'この端末が許可を求めたサイト。',
   siteRequestApproved: 'サイトを許可しました',

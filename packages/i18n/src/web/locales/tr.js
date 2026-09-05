@@ -1,5 +1,19 @@
 /** Turkish. */
 export default {
+  /**
+   * Shared with the phone: `appInventorySummaryKey` in
+   * `@kidgate/core/domain/appInventoryReport` returns these key names, so the
+   * dashboard and `apps/mobile` render one sentence from one decision. Absent
+   * until 2026-09-01, which meant this card's subtitle printed the raw key.
+   */
+  appInventory: {
+    summaryFlagged: '{{total}} uygulamadan {{flagged}} tanesi bakmaya değer',
+    summaryClear: '{{total}} uygulama arasında işaretlenen yok',
+    summaryFlaggedExtension:
+      '{{total}} Chrome uzantısından {{flagged}} tanesi bakmaya değer',
+    summaryClearExtension:
+      '{{total}} Chrome uzantısı arasında dikkat çeken bir şey yok',
+  },
   meta: {
     title: 'KidGate — Çocuğunuza saygı duyan ebeveyn denetimi',
     description:
@@ -184,12 +198,35 @@ export default {
     why4Text:
       'Var olmayan bir denetim vaat etmek yerine, her platformun neyi uygulayıp neyi uygulayamadığını size söyleriz.',
 
+    onlyEyebrow: 'Yalnızca KidGate',
+    onlyTitle: 'Başka yerde bulamayacaklarınız',
+    onlySub:
+      'Ebeveynlerin bizi kıyasladığı uygulamalara karşı kontrol ettiğimiz altı madde. Her biri hangi platformda geçerli olduğunu söyler.',
+    only1Title: 'Salondaki televizyon da',
+    only1Text:
+      'Android TV bir telefonla aynı Engellenen Saatler’i, uygulama engellemeyi, uygulama başına sınırları ve web filtrelemeyi alır. Ebeveyn denetimlerinin çoğu telefonda biter.',
+    only2Title: 'Telefonda kalan mesaj uyarıları',
+    only2Text:
+      'Android’de mesajlar, 14 dildeki anahtar kelime listeleriyle cihazın kendisinde karşılaştırılır. Yalnızca eşleşen kelime tutulur — konuşmanın kendisi asla saklanmaz.',
+    only3Title: 'Uygulama listesi değil, her uygulama',
+    only3Text:
+      'Android’de uyarılar, çocuğunuzun kullandığı her uygulamadaki bildirimlerden ve yazdıklarından gelir — Zalo, LINE, KakaoTalk, bir oyunun sohbeti — sabit bir desteklenen uygulama listesinden değil.',
+    only4Title: 'Çocuk için bir çıkış yolu',
+    only4Text:
+      'SOS’a beş saniye basmak size konumla birlikte anında ulaşır; Android ve Mac’te cihazın kilidi de kısa bir süre açılır. Her zaman yardıma ulaşabilen bir çocuğun uygulamayla savaşması için sebep yoktur.',
+    only5Title: 'İnternet olmadan da geçerli kurallar',
+    only5Text:
+      'Engellenen Saatler ve günlük sınır cihazın kendisinde uygulanır; modemi çekmek hiçbir şeyi değiştirmez. Televizyon, ebeveyn PIN’inizi hiç bağlantı olmadan bile kabul eder.',
+    only6Title: 'Hafta hak ettiğinde takdir',
+    only6Text:
+      'Her haftalık rapor iyi gidenlere yer ayırır — uyulan bir sınır, biten gece geç saatler, tamamlanan bir görev — ve bunu ancak hafta gerçekten ölçüldüğünde söyler.',
+
     faqEyebrow: 'SSS',
     faqTitle: 'Ebeveynlerin ilk sorduğu sorular',
     faqSub: 'İndirmeden önce kısa yanıtlar.',
     faq1Q: 'Ücretsiz deneme var mı?',
     faq1A:
-      'Evet. Deneme, ilk ebeveyn ve çocuk cihazlarınız bağlandığında başlar ve tüm Premium özellikleri içerir. Süre bitince Günlük sınır, Engellenen saatler ve konum bir çocuk cihazında ücretsiz çalışmaya devam eder.',
+      'Evet. Deneme, ilk ebeveyn ve çocuk cihazlarınız bağlandığında başlar ve tüm Premium özellikleri içerir. Bittiğinde, belirlediğiniz tüm kurallar — Günlük sınır, Engellenen saatler, Engellenen Uygulamalar, Web filtresi ve konum — bir çocuk cihazında ücretsiz çalışmaya devam eder.',
     faq2Q: 'Kaç cihaz yönetebilirim?',
     faq2A:
       'Tek abonelik tüm ailenizi kapsar — aynı planda birden çok çocuk cihazı ve birden çok ebeveyn.',
@@ -198,7 +235,7 @@ export default {
       'Hassas ayarlar ebeveyn PIN’inizin arkasındadır ve çocuk cihazında önemli bir izin kapatılırsa koruma uyarıları size hemen haber verir.',
     faq4Q: 'Her şeyi bilgisayardan yönetebilir miyim?',
     faq4A:
-      'Raporları okumak için web paneline giriş yapabilirsiniz. Sınırları değiştirmek veya bir cihazı kilitlemek telefonunuzdan onaylanır; bu yüzden çalınan bir parola tek başına asla yetmez.',
+      'Deneme, ilk ebeveyn ve çocuk cihazlarınız bağlandığında başlar ve tüm özelliklere tam erişim verir. Bir çocuk cihazını kaldırmak denemeyi sıfırlamaz. Bittiğinde, tüm kurallar bir çocuk cihazında ücretsiz çalışmaya devam eder; Premium canlı etkinliği, geçmişi, haftalık raporları ve tüm cihazları korur.',
     faqMore: 'Başka sorunuz mu var? Destek sayfasına gidin',
 
     ctaTitle: 'Ailenizi korumaya bugün başlayın',
@@ -213,8 +250,8 @@ export default {
     notConfiguredBody:
       'Girişi etkinleştirmek için VITE_FIREBASE_* ortam değişkenlerini ayarlayın.',
     qrWhy:
-      'Denetimleri açmanın tek yolu telefonunuzdan onay vermektir — cihaz kilitleme ve sınır değiştirme uygulamada kalır. Aşağıdaki yöntemler sizi raporları görüntülemek için oturum açtırır.',
-    orViewOnly: 'veya yalnızca görüntüleme için giriş',
+      'Telefonla okutmak seni tek adımda hem oturuma alır hem de kontrolleri açar. Aşağıdaki yöntemler görüntülemek için oturum açar; kontrolleri açmak sonra ebeveyn PIN’ini ister.',
+    orViewOnly: 'ya da başka bir yolla giriş yap',
     google: 'Google ile devam et',
     googleBusy: 'Google açılıyor…',
     apple: 'Apple ile devam et',
@@ -391,8 +428,8 @@ export default {
     parents_other: '{{count}} ebeveyn',
     devices_one: '{{count}} çocuk cihazı',
     devices_other: '{{count}} çocuk cihazı',
-    planPremium: 'Premium',
-    planTrial: 'Deneme',
+    planManageOnPhone:
+      'Planlar telefonundaki KidGate uygulamasından alınır ve değiştirilir.',
     fallbackFamily: 'Aileniz',
     fallbackDevice: 'Çocuk cihazı',
 
@@ -401,6 +438,7 @@ export default {
     statusLocked: 'Kilitli',
     statusLockSent: 'Kilit gönderildi',
     statusLockNotApplied: 'Kilit uygulanmadı',
+    statusPaused: 'Duraklatıldı',
 
     stateAllowed: 'İzin verildi',
     stateDenied: 'Kapalı',
@@ -419,11 +457,28 @@ export default {
     lockDevice: 'Cihazı kilitle',
     unlock: 'Kilidi aç',
     working: 'İşleniyor…',
-    lockNeedsApp: 'Kilitleme için telefonunuzdaki KidGate uygulaması gerekir',
+    save: 'Kaydet',
 
-    viewOnlyTitle: 'Yalnızca görüntüleme.',
-    viewOnlyBody:
-      'Bir cihazı kilitlemek, sınırları değiştirmek ya da istekleri onaylamak için çıkış yapın ve KidGate uygulamasıyla QR kodu okutarak yeniden giriş yapın — denetimleri açan şey, eşleştirilmiş bir ebeveyn telefonundan gelen onaydır. Yoklamalar her durumda buradan çalışır.',
+    unlockTitle: 'Değişiklikler kilitli.',
+    unlockBody:
+      'Görüntüleme hemen çalışır. Bir cihazı kilitlemek, sınırları değiştirmek veya istekleri onaylamak için bu tarayıcıyı ebeveyn PIN’inle aç — ya da KidGate uygulamasıyla QR kodu okutarak onayla. Yoklama her iki durumda da çalışır.',
+    unlockCta: 'Değişiklikleri aç',
+    unlockToChange: 'Önce değişiklikleri aç',
+    pinTitle: 'Ebeveyn PIN’ini gir',
+    pinBody:
+      'Uygulamada kullandığın altı rakamın aynısı. Bu tarayıcı 7 gün açık kalır.',
+    pinLabel: 'Ebeveyn PIN’i',
+    pinSubmit: 'Aç',
+    pinOrScan: 'Ya da telefonundan onayla',
+    qrSaferNote:
+      'Telefondan onaylamak ikisinin daha güvenlisi: eşleştirilmiş telefonun elinde olmasını gerektirir, PIN ise ailede birinin girerken görmüş olabileceği altı rakamdır.',
+    pinWrong: 'PIN yanlış. Kalan deneme: {{count}}.',
+    pinLocked:
+      'Çok fazla yanlış deneme. 15 dakika bekle ya da bu tarayıcıyı telefonundan onayla.',
+    pinNotSet:
+      'Ailenin henüz ebeveyn PIN’i yok. Uygulamadan belirle ya da bu tarayıcıyı telefonundan onayla.',
+    unlockedToast: 'Bu tarayıcıda değişiklikler açıldı.',
+    close: 'Kapat',
 
     noDeviceTitle: 'Henüz çocuk cihazı yok',
     noDeviceBody:
@@ -487,6 +542,7 @@ export default {
     on: 'Açık',
     topAppsTitle: 'Bugün en çok kullanılan uygulamalar',
     topAppsSub: 'Uygulama başına sınırlar işaret olarak gösterilir',
+    topAppsFreeHint: 'Bugünün ilk 3’ü — tam liste ve geçmiş Premium ile gelir.',
     trendTitle: 'Ekran süresi eğilimi',
     trendSub: 'Son {{count}} gün',
     rangeDays: '{{count}} g',
@@ -496,6 +552,7 @@ export default {
     blockedHoursSub_other:
       '{{count}} zaman aralığı · gölgeli bloklar içinde cihaz kilitli kalır',
     scheduleOff: 'Program kapalı',
+    schedMax: 'Bir cihaz en fazla {{max}} aralık tutar.',
 
     appUsageTitle: 'Bugünkü uygulama kullanımı',
     appUsageSub: 'Uygulama başına harcanan süre',
@@ -509,6 +566,7 @@ export default {
     categories: 'Kategoriler',
     perAppHint:
       'Uygulama başına sınırlar engelleme listesinden bağımsız çalışır — “30 dakika TikTok”, “TikTok yok”tan farklı bir karardır.',
+    limitsMax: 'Bir cihaz en fazla {{max}} sınırlı uygulama tutar.',
     perDay: '{{value}}/gün',
     webActivityTitle: 'Web etkinliği',
     webActivitySub: 'En çok ziyaret edilen alan adları, son 30 gün',
@@ -526,6 +584,19 @@ export default {
     inventoryUnknownLabel: 'Tanımlanmadı',
     inventoryIncomplete:
       'Ana ekranda simgesi olmayan bir uygulama burada görünmeyebilir.',
+    inventoryPending: 'Onayınızı bekliyor',
+    pendingInstallBlocked: 'Siz izin verene kadar engelli',
+    installAllow: 'İzin ver',
+    pendingInstallsTitle: 'Onay bekleyen yeni uygulamalar',
+    pendingInstallsSub:
+      'Onayı açtıktan sonra yüklendi ve cihaz tarafından kendiliğinden engellendi',
+    pendingInstallsEmpty: 'Onay bekleyen yeni uygulama yok.',
+    toastInstallAllowed: 'Uygulamaya izin verildi',
+    rowInstallApproval: 'Yeni uygulamaları onaylama',
+    rowInstallApprovalDesc: '{{count}} uygulama onay bekliyor',
+    rowInstallApprovalDesc_one: '{{count}} uygulama onay bekliyor',
+    rowInstallApprovalDescIos:
+      'App Store’u gizler — Apple uygulama bazında onaya izin vermiyor',
     webActivitySyncNote:
       'Web etkinliğinin bu ekrana yansıması birkaç dakika sürebilir — cihazın internet bağlantısı yoksa veya beklenmedik şekilde kapandıysa bu süre daha uzun olabilir.',
     webActivitySyncNoteTv:
@@ -534,6 +605,12 @@ export default {
     colVisits: 'Ziyaret',
     colBlocked: 'Engellenen',
     colLastSeen: 'Son görülme',
+    videosTitle: 'İzlenen videolar',
+    videosSub: 'YouTube ve web’de ne izlendi',
+    videosEmpty: 'Henüz video yok.',
+    colVideo: 'Video',
+    colChannel: 'Kanal',
+    colViews: 'Görüntüleme',
     filterRefusedTitle: 'Filtrenin reddettikleri',
     filterRefusedSub_one: '{{count}} engellenen sorgu, son 30 gün',
     filterRefusedSub_other: '{{count}} engellenen sorgu, son 30 gün',
@@ -562,6 +639,11 @@ export default {
     placeArrive: 'varış',
     placeLeave: 'ayrılış',
     placeNoAlerts: 'uyarı yok',
+    placeSamePin:
+      '“{{name}}” ile aynı nokta. Başka bir yere koymak için uygulamadaki haritayı kullan.',
+    placeWebHint:
+      'Web’de bir yer yalnızca cihazın son konum bildirdiği noktaya eklenebilir. Başka bir yer için uygulamadaki haritayı kullan.',
+    placeNeedsLocation: 'Bu cihazdan konum bekleniyor.',
     sosTitle: 'SOS uyarıları',
     sosSub: 'Çocuk cihazından gelen acil durum sinyalleri',
     sosEmpty:
@@ -618,7 +700,12 @@ export default {
     rowLocation: 'Konum paylaşımı',
     rowLocationDesc: 'Son güncelleme {{when}}',
     rowLocationNone: 'Henüz konum yok',
-    toggleInApp: 'Bunu KidGate uygulamasından değiştirin',
+    rowSearchMonitoring: 'Arama denetimi',
+    rowSearchMonitoringDesc:
+      'Tarayıcılar ve YouTube. Yalnızca işaretli kelime bildirilir, aramanın kendisi asla.',
+    rowSafeSearch: 'Güvenli Aramayı zorunlu kıl',
+    rowSafeSearchDesc:
+      'Google SafeSearch, YouTube Kısıtlı Mod, Bing ve DuckDuckGo’yu katı ayarda kilitler. Android, Android TV ve Chrome.',
 
     webFilterCatsTitle: 'Web filtresi kategorileri',
     webFilterCatsSub: 'Engellenen içerik türleri',
@@ -629,13 +716,18 @@ export default {
     starChartEmpty:
       'Yıldız tablosunu başlatmak için uygulamada ikinci bir çocuk ekleyin.',
     starChartStars: '{{count}} yıldız',
+    familyScreenTimeTitle: 'Ailenin ekran süresi',
+    familyScreenTimeSub: 'En az ekran süresi önce, bu hafta',
+    familyScreenTimeEmpty:
+      'Bu hafta henüz kimse bildirmedi. Telefonlar bildirdikçe satırlar görünür.',
+    familyScreenTimeParent: 'Ebeveyn',
+    familyScreenTimeDays: '{{count}} gün bildirildi',
     rewardTasksTitle: 'Ödül görevleri',
     rewardTasksSub: 'Görevleri tamamlayarak ek dakika kazanın',
     rewardTaskMeta: '+{{minutes}} dk · {{cadence}}',
     rewardTaskStars: 'Zorluk: 3 üzerinden {{count}}',
     rewardTaskWaiting: ' · onayınız bekleniyor',
     approve: 'Onayla',
-    approveInApp: 'KidGate uygulamasından onaylayın',
     siteRequestsTitle: 'Site istekleri',
     siteRequestsSub: 'Bu cihazın izin istediği siteler',
     siteRequestAllow: 'İzin ver',
@@ -657,6 +749,8 @@ export default {
       'Bunu az önce başkası değiştirdi. Son durumu görmek için yeniden yükleyin.',
     rateLimited: 'Aynı anda çok fazla değişiklik. Biraz bekleyip yeniden deneyin.',
     server: 'KidGate bunu tamamlayamadı. Birazdan yeniden deneyin.',
+    premiumRequired:
+      'Bu bir Premium özelliğidir. Planlar telefonunuzdaki KidGate uygulamasından yönetilir.',
   },
 
   report: {
@@ -782,7 +876,7 @@ export default {
 
     faq4Q: 'Ücretsiz deneme nasıl çalışır?',
     faq4A:
-      'Deneme, ilk ebeveyn ve çocuk cihazlarınız bağlandığında başlar ve tüm özelliklere tam erişim verir. Bir çocuk cihazını kaldırmak denemeyi sıfırlamaz. Süre bittiğinde KidGate’i kullanmaya devam etmek için Premium’a abone olun.',
+      'Deneme, ilk ebeveyn ve çocuk cihazlarınız bağlandığında başlar ve tüm özelliklere tam erişim verir. Bir çocuk cihazını kaldırmak denemeyi sıfırlamaz. Bittiğinde, tüm kurallar bir çocuk cihazında ücretsiz çalışmaya devam eder; Premium canlı etkinliği, geçmişi, haftalık raporları ve tüm cihazları korur.',
 
     faq5Q: 'Aboneliğimi nasıl iptal ederim?',
     faq5A:

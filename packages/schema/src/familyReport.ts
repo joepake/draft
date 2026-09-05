@@ -220,6 +220,25 @@ export interface FamilyReportAction {
   minutes: number | null;
 }
 
+/**
+ * How a report came to exist.
+ *
+ * **The names are the ones already written to Firestore**, not tidier ones:
+ * `scheduled` from the Sunday job and `manual` from the on-demand button have
+ * been stored since the field appeared, and renaming either here would
+ * describe a value no document holds. Absent is a report written before it
+ * existed.
+ *
+ * `kind` stays `'weekly'` for all three — they cover the same seven days and a
+ * parent reads the same document — but *why* is a different question, and one
+ * nobody could answer from the report itself. It matters most for the third:
+ * `trialEnd` is the single report an unpaid family ever gets
+ * (`docs/PRICING.md` §7), so counting them is how an operator tells "the free
+ * tier is working" from "the digest is writing to families who stopped
+ * paying".
+ */
+export type FamilyReportTrigger = 'scheduled' | 'manual' | 'trialEnd';
+
 export interface FamilyReport {
   id: string;
   kind: FamilyReportKind;
@@ -316,6 +335,10 @@ export interface FamilyReport {
   /** Which model wrote it, so a regression can be tied to a version. */
   model: string | null;
   createdAt: string;
-  /** `scheduled` for the Sunday job, `manual` for the button. */
-  trigger: 'scheduled' | 'manual';
+  /**
+   * Why this report was written — see `FamilyReportTrigger`. Required, because
+   * every writer knows the answer and a report that cannot say where it came
+   * from is one an operator cannot count.
+   */
+  trigger: FamilyReportTrigger;
 }

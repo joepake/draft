@@ -51,6 +51,8 @@ export const activities = {
   appBlockedBody: 'Một ứng dụng bị chặn đã được mở và KidGate đã đóng lại.',
   appInstalledTitle: 'Cài ứng dụng',
   appInstalledBody: 'Ứng dụng {{appName}} vừa được cài đặt trên thiết bị của trẻ.',
+  appInstalledPendingBody:
+    'Ứng dụng {{appName}} vừa được cài đặt trên thiết bị của trẻ và bị chặn cho đến khi bạn cho phép.',
   messageAlertTitle: 'Nội dung tin nhắn đáng lo ngại',
   messageAlertBody: 'Phát hiện từ ngữ đáng chú ý trong {{appName}}.',
   messageAlertBodyOutgoing:

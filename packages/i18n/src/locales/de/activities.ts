@@ -58,6 +58,8 @@ export const activities = {
   appBlockedBody: 'Eine blockierte App wurde geöffnet und von KidGate geschlossen.',
   appInstalledTitle: 'App installiert',
   appInstalledBody: 'Die App {{appName}} wurde auf dem Gerät des Kindes installiert.',
+  appInstalledPendingBody:
+    'Die App {{appName}} wurde auf dem Gerät des Kindes installiert und ist blockiert, bis du sie erlaubst.',
 
   messageAlertTitle: 'Bedenklicher Nachrichteninhalt',
   messageAlertBody: 'Ein markiertes Wort wurde in {{appName}} erkannt.',

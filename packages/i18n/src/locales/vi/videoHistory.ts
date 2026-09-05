@@ -1,0 +1,28 @@
+export const videoHistory = {
+  title: 'Video đã xem',
+  fallbackDeviceName: 'Thiết bị của trẻ',
+  toggleLabel: 'Ghi lại video đã xem',
+  toggleHint: 'YouTube trên trình duyệt, và ứng dụng YouTube trên Android.',
+  toggleFailed: 'Không cập nhật được lịch sử video. Thử lại.',
+  unsupportedNote:
+    'Thiết bị này không báo được video đã xem. Chỉ chạy trên Android và Chrome.',
+  emptyTitle: 'Chưa xem gì',
+  emptyBody: 'Video hiện ở đây khi trẻ xem lúc KidGate đang chạy.',
+  emptyBodyOff: 'Bật ghi lại ở trên để bắt đầu liệt kê video đã xem.',
+  viewsMeta_one: '{{count}} lần',
+  viewsMeta: '{{count}} lần',
+  dayToday: 'Hôm nay',
+  dayYesterday: 'Hôm qua',
+  dayCount_one: '{{count}} video',
+  dayCount: '{{count}} video',
+  heroVideos: 'Video',
+  heroChannels: 'Kênh',
+  heroViews: 'Lượt xem',
+  emptyStepEnable: 'Bật ghi lại',
+  emptyStepWatch: 'Trẻ xem YouTube',
+  emptyStepAppear: 'Video hiện ở đây',
+  unknownChannel: 'Kênh không rõ',
+  heroTopChannel: 'Xem nhiều nhất',
+  readerLayoutChanged:
+    'Shorts hiện không được ghi lại trên thiết bị này — ứng dụng YouTube đã thay đổi và KidGate cần cập nhật. Các video khác vẫn được ghi lại.',
+};

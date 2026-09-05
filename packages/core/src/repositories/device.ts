@@ -16,7 +16,16 @@ import {
   parseMessageMonitoring,
   parseProtectionCounters,
   parseProtectionStatus,
+  parseTopAppsToday,
+  parseWeekCounters,
 } from '../domain/deviceControlsMapper';
+import { isApiFailure } from '../domain/apiFailure';
+import { isDeviceFormFactor } from '../domain/deviceFormFactor';
+import {
+  reportRequestId,
+  reportRequestedAtMs,
+  shouldRequestReport,
+} from '../domain/reportRequest';
 import { timestampToIso } from '../domain/firestoreValue';
 
 /**
@@ -32,6 +41,21 @@ import { timestampToIso } from '../domain/firestoreValue';
 
 function text(value: unknown): string | undefined {
   return typeof value === 'string' && value.trim() ? value.trim() : undefined;
+}
+
+/**
+ * The stored form factor, checked against the union rather than trusted.
+ *
+ * Dropped here until 2026-09-04, and it failed the way every other field this
+ * mapper forgot did — silently, on one platform. `resolveDisplayFormFactor`
+ * falls back to the model name when the stored field is absent, and Apple's
+ * names say "iPhone"/"iPad", so both parent surfaces still drew the framed
+ * glyph for an iPhone. Android writes `modelName` null on purpose, so an
+ * Android phone fell all the way through to the bare robot — a device that had
+ * reported `formFactor: 'phone'` on every heartbeat since it was paired.
+ */
+function formFactor(value: unknown): string | undefined {
+  return isDeviceFormFactor(value) ? value : undefined;
 }
 
 /** Clamp a percentage written by the child device. */
@@ -93,6 +117,7 @@ function mapParentDevice(doc: DocSnapshot): ParentDeviceRecord {
     deviceId: doc.id,
     name: deviceName(data),
     platform: data.platform,
+    ...(formFactor(data.formFactor) ? { formFactor: formFactor(data.formFactor) } : {}),
     modelName: text(data.modelName),
     deviceLabel: text(data.deviceLabel),
     osVersion: text(data.osVersion),
@@ -118,6 +143,8 @@ function mapChildDevice(doc: DocSnapshot): ChildDeviceRecord {
   const protectionStatus = parseProtectionStatus(data);
   const messageMonitoring = parseMessageMonitoring(data);
   const webToday = parseWebToday(data);
+  const weekCounters = parseWeekCounters(data);
+  const topAppsToday = parseTopAppsToday(data);
 
   return {
     places: parseDevicePlaces(data),
@@ -134,6 +161,16 @@ function mapChildDevice(doc: DocSnapshot): ChildDeviceRecord {
      */
     ...(messageMonitoring ? { messageMonitoring } : {}),
     protectionCounters: parseProtectionCounters(data),
+    /*
+     * The free tier's whole visible output — the week's counts and today's
+     * three apps — plus whether this device is parked. All three absent-means-
+     * something: no counts yet, no report yet, and active.
+     */
+    ...(weekCounters ? { weekCounters } : {}),
+    ...(topAppsToday ? { topAppsToday } : {}),
+    ...(data.monitoringState === 'parked'
+      ? { monitoringState: 'parked' as const }
+      : {}),
     webFilterBlockedCount:
       typeof data.webFilterBlockedCount === 'number' ? data.webFilterBlockedCount : 0,
     ...(webToday ? { webToday } : {}),
@@ -155,12 +192,43 @@ function mapChildDevice(doc: DocSnapshot): ChildDeviceRecord {
       ? { childId: data.childId }
       : {}),
     platform: data.platform,
+    // Absent stays absent: `resolveDisplayFormFactor` guesses nothing from a
+    // bare platform, and "phone" written here for a tablet is the defect
+    // `deviceFormFactor` was created to end.
+    ...(formFactor(data.formFactor) ? { formFactor: formFactor(data.formFactor) } : {}),
     modelName: text(data.modelName),
     deviceLabel: text(data.deviceLabel),
     osVersion: text(data.osVersion),
     status: data.status,
+    // The build this agent is running (`domain/buildFreshness`, the device
+    // detail hero's "App version" row). Dropped here alongside `formFactor`,
+    // so both read `undefined` for every device in the product. `otaVersion`
+    // is spread on `!== undefined` because **0 is a real answer** — an install
+    // that has never taken an OTA — and absent means the platform has no OTA
+    // channel at all.
+    ...(text(data.appVersion) ? { appVersion: text(data.appVersion) } : {}),
+    ...(text(data.appBuild) ? { appBuild: text(data.appBuild) } : {}),
+    ...(typeof data.otaVersion === 'number' ? { otaVersion: data.otaVersion } : {}),
     isLocked: data.isLocked === true,
     lastActiveAt: timestampToIso(data.lastActiveAt) ?? '',
+    /*
+     * The cadence this device says it is keeping, and the last "report now" it
+     * was sent. Both are read by a parent console off this record and nowhere
+     * else: `getEffectiveDeviceStatus` judges the age of `lastActiveAt` above
+     * against the first, and `requestDeviceReports` throttles on the second.
+     *
+     * Dropping either is the silent failure this mapper has now had five times
+     * — the field is written, the type declares it, nothing reads it, and
+     * nothing fails. Here that would mean every free-tier device painted
+     * offline forever, and a request written on every parent app open because
+     * the throttle can never see the last one.
+     */
+    ...(typeof data.beatIntervalMs === 'number'
+      ? { beatIntervalMs: data.beatIntervalMs }
+      : {}),
+    ...(typeof data.reportRequestId === 'string'
+      ? { reportRequestId: data.reportRequestId }
+      : {}),
     createdAt: timestampToIso(data.createdAt) ?? '',
     controls: parseDeviceControls(data),
     ...(lastLocation ? { lastLocation } : {}),
@@ -347,6 +415,120 @@ export function createDeviceRepository(deps: DeviceRepositoryDeps) {
       await db.updateDoc(childDeviceDoc(userId, deviceId), {
         places: (places ?? []).map(place => ({ ...place })),
       });
+    },
+
+    /**
+     * Which device a free family keeps watching (`docs/PRICING.md` §6).
+     *
+     * A Cloud Function, never a document write: `firestore.rules` pins
+     * `monitoringState` immutable for every client, parents included, because
+     * a parent who could write it could mark all five devices active on a plan
+     * that watches one. The function parks every other device in the same
+     * batch and stamps the swap cooldown — `domain/deviceParking` has the
+     * seven days and the reason.
+     *
+     * The failures a screen has to tell apart arrive as `serverCode`:
+     * `monitored/cooldown` (429 — too soon since the last swap, and the only
+     * one that needs its own sentence), `monitored/not-required` (409 — the
+     * plan now watches every device, so the sheet is stale and should close).
+     * Everything else is the generic sentence.
+     */
+    async chooseMonitoredDevice(userId: string, deviceId: string): Promise<void> {
+      try {
+        await api.post<{ ok: true; monitoredDeviceId: string }>(
+          '/chooseMonitoredDevice',
+          { deviceId, familyOwnerUserId: userId },
+          { as: 'parent' },
+        );
+      } catch (error) {
+        if (isApiFailure(error)) {
+          const failure: ApiFailure = {
+            ...error,
+            messageKey:
+              error.serverCode === 'monitored/cooldown'
+                ? 'family.monitoredCooldown'
+                : (error.messageKey ?? 'family.monitoredChooseFailed'),
+          };
+          throw failure;
+        }
+        throw error;
+      }
+    },
+
+    /**
+     * "A parent is looking" — stamp the family's presence and wake whatever the
+     * dormancy reaper parked (`docs/PRICING.md` §6, §8 item 12).
+     *
+     * Called by either console when it opens, throttled by the caller to once
+     * a day: the stamp only has to move often enough to stay inside a
+     * thirty-day window, and the wake matters only on the first open after a
+     * long absence. Opportunistic — a failure leaves the family looked-at on
+     * the next open and never blocks a screen — so it answers `null` rather
+     * than throwing.
+     */
+    async touchParentPresence(userId: string): Promise<{ woke: number } | null> {
+      try {
+        const answer = await api.post<{ ok: true; woke: number }>(
+          '/touchParentPresence',
+          { familyOwnerUserId: userId },
+          { as: 'parent' },
+        );
+        return { woke: typeof answer?.woke === 'number' ? answer.woke : 0 };
+      } catch {
+        return null;
+      }
+    },
+
+    /**
+     * Ask the devices a parent is about to look at to report now.
+     *
+     * Called when a parent console opens. Only devices that say they are on a
+     * slow cadence are asked, and only once every
+     * `REPORT_REQUEST_MIN_INTERVAL_MS` however often the console opens — both
+     * decided by `@kidgate/core/domain/reportRequest`, which both consoles
+     * share so a family with the phone and the dashboard open does not ask
+     * twice as often as either believes.
+     *
+     * **The throttle reads the device, not this process.** The last request's
+     * time is inside the id already on the document, so two consoles — and two
+     * launches of the same console — see the same answer.
+     *
+     * Failures are swallowed per device: this is an opportunistic refresh
+     * behind a screen that renders correctly without it, and one unpaired or
+     * unwritable device must not stop the others being asked. Returns how many
+     * were asked, which is what a caller would log.
+     */
+    async requestDeviceReports(
+      userId: string,
+      devices: readonly Device[],
+    ): Promise<number> {
+      const nowMs = clock.now();
+      let asked = 0;
+
+      await Promise.all(
+        devices.map(async device => {
+          if (
+            !shouldRequestReport({
+              beatIntervalMs: device.beatIntervalMs,
+              lastRequestedAtMs: reportRequestedAtMs(device.reportRequestId),
+              lastActiveAt: device.lastActiveAt,
+              nowMs,
+            })
+          ) {
+            return;
+          }
+          try {
+            await db.updateDoc(childDeviceDoc(userId, device.id), {
+              reportRequestId: reportRequestId(nowMs, device.id),
+            });
+            asked += 1;
+          } catch {
+            // See above: opportunistic.
+          }
+        }),
+      );
+
+      return asked;
     },
 
     async updateWebFilterBlockedCount(

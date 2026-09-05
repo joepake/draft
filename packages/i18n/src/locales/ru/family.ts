@@ -58,6 +58,7 @@ export const family = {
   childDetailStarsWell: 'Звёзды за неделю',
   childStarsA11y: 'Звёзды за эту неделю: {{count}}',
   childDetailDevicesTitle: 'Устройства',
+  childDetailSwipeHint: 'Проведите по устройству, чтобы отменить назначение.',
   childDetailAssignMore: 'Назначить ещё устройство…',
   childDetailAssignSheetTitle: 'Назначить устройство ребёнку {{childName}}',
   childDetailNoDevices:
@@ -88,6 +89,8 @@ export const family = {
   chipDeviceCount_few: '{{count}} устройства',
 
   chipOnlineCount: '{{count}} онлайн',
+  metaOnlineCount: '{{online}}/{{count}} онлайн',
+  metaOnlineCount_one: '1 устройство онлайн',
 
   chipSosCount: '{{count}} SOS',
 
@@ -117,6 +120,20 @@ export const family = {
   buildOutdated: 'Есть обновление',
   healthNeedsSetup: 'Требуется настройка',
   healthOffline: 'Не в сети',
+  devicePausedLabel: 'На паузе',
+  devicePausedHint: 'На паузе в бесплатном тарифе — все правила по-прежнему действуют',
+  parkedBannerTitle: 'Выберите устройство, за которым продолжите следить',
+  parkedBannerBody:
+    'Ваши правила работают на каждом устройстве. Бесплатный тариф получает отчёты с одного — выберите его или перейдите на Premium, чтобы сохранить все.',
+  parkedBannerAction: 'Выбрать устройство',
+  chooseMonitoredTitle: 'Какое устройство должно отчитываться?',
+  chooseMonitoredBody:
+    'Все правила продолжают работать на всех. Только выбранное отправляет экранное время и местоположение. Менять можно раз в {{days}} дн.',
+  chooseMonitoredConfirm: 'Следить за этим устройством',
+  chooseMonitoredUpgrade: 'Сохранить все устройства — перейти на Premium',
+  chooseMonitoredDone: '{{name}} теперь отчитывающееся устройство',
+  monitoredCooldown: 'Отчитывающееся устройство можно менять только раз в {{days}} дн.',
+  monitoredChooseFailed: 'Не удалось сменить отчитывающееся устройство',
 
   cardWhereLabel: 'Местоположение',
 
@@ -326,7 +343,7 @@ export const family = {
   childDetailProtectionOk: 'Защищено',
   childDetailProtectionAttention: 'Требуют внимания: {{count}}',
   childDetailProtectionSheetTitle: 'Защита по устройствам',
-  childDetailRemoveTitle: 'Удалить этого ребёнка',
+  childDetailRemoveTitle: 'Удалить профиль: {{childName}}',
   childDetailRemovingButton: 'Удаление…',
   childDetailOnlineCount: '{{online}} из {{total}} в сети',
   childDetailBudgetTitle: 'Дневной лимит',

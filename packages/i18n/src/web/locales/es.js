@@ -1,5 +1,18 @@
 /** Spanish. */
 export default {
+  /**
+   * Shared with the phone: `appInventorySummaryKey` in
+   * `@kidgate/core/domain/appInventoryReport` returns these key names, so the
+   * dashboard and `apps/mobile` render one sentence from one decision. Absent
+   * until 2026-09-01, which meant this card's subtitle printed the raw key.
+   */
+  appInventory: {
+    summaryFlagged: '{{flagged}} de {{total}} aplicaciones merecen una mirada',
+    summaryClear: 'Nada marcado entre {{total}} aplicaciones',
+    summaryFlaggedExtension:
+      '{{flagged}} de {{total}} extensiones de Chrome merecen un vistazo',
+    summaryClearExtension: 'Nada destacable entre {{total}} extensiones de Chrome',
+  },
   meta: {
     title: 'KidGate — Control parental que respeta a tu hijo',
     description:
@@ -184,12 +197,35 @@ export default {
     why4Text:
       'Te decimos qué puede y qué no puede aplicar cada plataforma, en vez de prometer un control que no existe.',
 
+    onlyEyebrow: 'Solo en KidGate',
+    onlyTitle: 'Lo que no encontrarás en otro sitio',
+    onlySub:
+      'Seis cosas que comprobamos frente a las apps con las que nos comparan. Cada una indica en qué plataforma es cierta.',
+    only1Title: 'También la tele del salón',
+    only1Text:
+      'Android TV tiene las mismas Horas bloqueadas, Bloqueo de apps, límites por app y Filtrado web que un móvil. La mayoría de controles parentales se quedan en el móvil.',
+    only2Title: 'Alertas de mensajes que no salen del móvil',
+    only2Text:
+      'En Android, los mensajes se cotejan en el propio dispositivo con listas de palabras clave en 14 idiomas. Solo se guarda la palabra detectada; la conversación nunca se almacena.',
+    only3Title: 'Cualquier app, no una lista de apps',
+    only3Text:
+      'En Android, las alertas salen de las notificaciones y de lo que se escribe en cualquier app que use tu hijo o hija — Zalo, LINE, KakaoTalk, el chat de un juego — no de una lista fija de apps compatibles.',
+    only4Title: 'Una salida para el niño',
+    only4Text:
+      'Mantener SOS cinco segundos te avisa al instante, con ubicación; en Android y Mac además desbloquea el dispositivo un rato. Quien siempre puede pedir ayuda no tiene motivo para pelearse con la app.',
+    only5Title: 'Reglas que se cumplen sin internet',
+    only5Text:
+      'Las Horas bloqueadas y el Límite diario se aplican en el propio dispositivo, así que desenchufar el router no cambia nada. La tele incluso acepta tu PIN parental sin ninguna conexión.',
+    only6Title: 'Reconocimiento cuando la semana lo merece',
+    only6Text:
+      'Cada informe semanal reserva espacio para lo que fue bien — un límite respetado, ninguna noche hasta tarde, una tarea terminada — y solo lo dice cuando la semana se midió de verdad.',
+
     faqEyebrow: 'Preguntas frecuentes',
     faqTitle: 'Lo que los padres preguntan primero',
     faqSub: 'Respuestas rápidas antes de descargar.',
     faq1Q: '¿Hay una prueba gratuita?',
     faq1A:
-      'Sí. La prueba empieza cuando se conectan tus primeros dispositivos de padre e hijo, e incluye todas las funciones Premium. Cuando termina, el Límite diario, las Horas bloqueadas y la ubicación siguen funcionando gratis en un dispositivo infantil.',
+      'Sí. La prueba empieza cuando conectas tu primer dispositivo de padre y de hijo, e incluye todas las funciones Premium. Cuando termina, todas las reglas que pusiste —Límite diario, Horas bloqueadas, Apps bloqueadas, Filtro web y ubicación— siguen funcionando gratis en un dispositivo infantil.',
     faq2Q: '¿Cuántos dispositivos puedo gestionar?',
     faq2A:
       'Una suscripción cubre a toda tu familia: varios dispositivos de hijos y varios padres en el mismo plan.',
@@ -198,7 +234,7 @@ export default {
       'Los ajustes sensibles están detrás de tu PIN de padre, y las Alertas de protección te avisan de inmediato si se desactiva un permiso clave en el dispositivo del niño.',
     faq4Q: '¿Puedo gestionarlo todo desde un ordenador?',
     faq4A:
-      'Puedes entrar en el panel web para leer informes. Cambiar límites o bloquear un dispositivo se aprueba desde tu móvil, así que una contraseña robada nunca basta.',
+      'La prueba empieza cuando conectas tu primer dispositivo de padre y de hijo, y da acceso completo a todas las funciones. Quitar un dispositivo infantil no reinicia la prueba. Cuando termina, todas las reglas siguen funcionando gratis en un dispositivo infantil; Premium conserva la actividad en vivo, el historial, los informes semanales y todos los dispositivos.',
     faqMore: '¿Más preguntas? Visita Soporte',
 
     ctaTitle: 'Empieza hoy a proteger a tu familia',
@@ -213,8 +249,8 @@ export default {
     notConfiguredBody:
       'Define las variables de entorno VITE_FIREBASE_* para habilitar el acceso.',
     qrWhy:
-      'Aprobar desde tu móvil es la única forma de desbloquear los controles: bloquear un dispositivo y cambiar límites siguen siendo cosa de la app. Los métodos de abajo te dan acceso para ver informes.',
-    orViewOnly: 'o acceso de solo lectura',
+      'Escanear con el móvil te identifica y desbloquea los controles en un solo paso. Los métodos de abajo te identifican para consultar; desbloquear los controles requiere después tu PIN.',
+    orViewOnly: 'o entra de otra forma',
     google: 'Continuar con Google',
     googleBusy: 'Abriendo Google…',
     apple: 'Continuar con Apple',
@@ -392,8 +428,8 @@ export default {
     parents_other: '{{count}} padres',
     devices_one: '{{count}} dispositivo de hijo',
     devices_other: '{{count}} dispositivos de hijos',
-    planPremium: 'Premium',
-    planTrial: 'Prueba',
+    planManageOnPhone:
+      'Los planes se compran y se cambian en la app de KidGate del móvil.',
     fallbackFamily: 'Tu familia',
     fallbackDevice: 'Dispositivo del hijo',
 
@@ -402,6 +438,7 @@ export default {
     statusLocked: 'Bloqueado',
     statusLockSent: 'Bloqueo enviado',
     statusLockNotApplied: 'Bloqueo no aplicado',
+    statusPaused: 'En pausa',
 
     stateAllowed: 'Permitido',
     stateDenied: 'Desactivado',
@@ -420,11 +457,28 @@ export default {
     lockDevice: 'Bloquear dispositivo',
     unlock: 'Desbloquear',
     working: 'Trabajando…',
-    lockNeedsApp: 'Bloquear requiere la app de KidGate en tu móvil',
+    save: 'Guardar',
 
-    viewOnlyTitle: 'Solo lectura.',
-    viewOnlyBody:
-      'Para bloquear un dispositivo, cambiar límites o aprobar solicitudes, cierra sesión y vuelve a entrar escaneando el código QR con la app de KidGate: la aprobación desde un móvil de padre vinculado es lo que desbloquea los controles. Los registros funcionan desde aquí en cualquier caso.',
+    unlockTitle: 'Los cambios están bloqueados.',
+    unlockBody:
+      'Consultar funciona al momento. Para bloquear un dispositivo, cambiar límites o aprobar solicitudes, desbloquea este navegador con tu PIN de madre o padre, o apruébalo escaneando el código QR con la app de KidGate. Los avisos de seguridad funcionan igual en ambos casos.',
+    unlockCta: 'Desbloquear cambios',
+    unlockToChange: 'Desbloquea los cambios primero',
+    pinTitle: 'Introduce tu PIN',
+    pinBody:
+      'Los mismos seis dígitos que usas en la app. Este navegador queda desbloqueado 7 días.',
+    pinLabel: 'PIN de madre o padre',
+    pinSubmit: 'Desbloquear',
+    pinOrScan: 'O aprueba desde el móvil',
+    qrSaferNote:
+      'Aprobar desde el móvil es lo más seguro: hace falta el móvil vinculado en la mano, mientras que el PIN son seis dígitos que alguien de la familia puede haberte visto teclear.',
+    pinWrong: 'PIN incorrecto. Intentos restantes: {{count}}.',
+    pinLocked:
+      'Demasiados intentos fallidos. Espera 15 minutos o aprueba este navegador desde el móvil.',
+    pinNotSet:
+      'Tu familia aún no tiene PIN. Configúralo en la app o aprueba este navegador desde el móvil.',
+    unlockedToast: 'Cambios desbloqueados en este navegador.',
+    close: 'Cerrar',
 
     noDeviceTitle: 'Todavía no hay dispositivos de hijos',
     noDeviceBody:
@@ -489,6 +543,8 @@ export default {
     on: 'Activado',
     topAppsTitle: 'Apps más usadas hoy',
     topAppsSub: 'Los topes por app se muestran como marca',
+    topAppsFreeHint:
+      'Top 3 de hoy: la lista completa y el historial vienen con Premium.',
     trendTitle: 'Tendencia del tiempo de uso',
     trendSub: 'Últimos {{count}} días',
     rangeDays: '{{count}} d',
@@ -498,6 +554,7 @@ export default {
     blockedHoursSub_other:
       '{{count}} franjas horarias · el dispositivo sigue bloqueado dentro de los bloques sombreados',
     scheduleOff: 'El horario está desactivado',
+    schedMax: 'Un dispositivo admite {{max}} tramos como máximo.',
 
     appUsageTitle: 'Uso de apps hoy',
     appUsageSub: 'Tiempo dedicado por app',
@@ -511,6 +568,7 @@ export default {
     categories: 'Categorías',
     perAppHint:
       'Los topes por app funcionan aparte de la lista de bloqueo: «30 minutos de TikTok» es una decisión distinta de «nada de TikTok».',
+    limitsMax: 'Un dispositivo admite {{max}} apps limitadas como máximo.',
     perDay: '{{value}}/día',
     webActivityTitle: 'Actividad web',
     webActivitySub: 'Dominios más visitados, últimos 30 días',
@@ -528,6 +586,19 @@ export default {
     inventoryUnknownLabel: 'Sin identificar',
     inventoryIncomplete:
       'Una aplicación sin icono en la pantalla de inicio puede no aparecer aquí.',
+    inventoryPending: 'Esperando tu aprobación',
+    pendingInstallBlocked: 'Bloqueada hasta que la permitas',
+    installAllow: 'Permitir',
+    pendingInstallsTitle: 'Apps nuevas esperando aprobación',
+    pendingInstallsSub:
+      'Instaladas después de activar la aprobación y bloqueadas por el propio dispositivo',
+    pendingInstallsEmpty: 'No hay apps nuevas esperando aprobación.',
+    toastInstallAllowed: 'App permitida',
+    rowInstallApproval: 'Aprobar apps nuevas',
+    rowInstallApprovalDesc: '{{count}} apps esperando aprobación',
+    rowInstallApprovalDesc_one: '{{count}} app esperando aprobación',
+    rowInstallApprovalDescIos:
+      'Oculta el App Store; Apple no permite aprobar app por app',
     webActivitySyncNote:
       'La actividad web puede tardar unos minutos en aparecer en esta pantalla, más si el dispositivo no tiene conexión a Internet o se cerró de forma inesperada.',
     webActivitySyncNoteTv:
@@ -536,6 +607,12 @@ export default {
     colVisits: 'Visitas',
     colBlocked: 'Bloqueadas',
     colLastSeen: 'Última vez',
+    videosTitle: 'Vídeos vistos',
+    videosSub: 'Qué se vio en YouTube y la web',
+    videosEmpty: 'Aún no hay vídeos.',
+    colVideo: 'Vídeo',
+    colChannel: 'Canal',
+    colViews: 'Visualizaciones',
     filterRefusedTitle: 'Lo que rechazó el filtro',
     filterRefusedSub_one: '{{count}} consulta bloqueada, últimos 30 días',
     filterRefusedSub_other: '{{count}} consultas bloqueadas, últimos 30 días',
@@ -564,6 +641,11 @@ export default {
     placeArrive: 'llegada',
     placeLeave: 'salida',
     placeNoAlerts: 'sin avisos',
+    placeSamePin:
+      'Este es el mismo punto que «{{name}}». Usa el mapa de la app para ponerlo en otro sitio.',
+    placeWebHint:
+      'En la web solo se puede crear un lugar donde el dispositivo informó su posición por última vez. Usa el mapa de la app para elegir cualquier otro sitio.',
+    placeNeedsLocation: 'Esperando una ubicación de este dispositivo.',
     sosTitle: 'Alertas SOS',
     sosSub: 'Señales de emergencia del dispositivo del niño',
     sosEmpty:
@@ -620,7 +702,12 @@ export default {
     rowLocation: 'Compartir ubicación',
     rowLocationDesc: 'Última actualización {{when}}',
     rowLocationNone: 'Todavía sin ubicación',
-    toggleInApp: 'Cambia esto en la app de KidGate',
+    rowSearchMonitoring: 'Supervisión de búsquedas',
+    rowSearchMonitoringDesc:
+      'Navegadores y YouTube. Solo se informa la palabra marcada, nunca la búsqueda en sí.',
+    rowSafeSearch: 'Forzar SafeSearch',
+    rowSafeSearchDesc:
+      'Fija Google SafeSearch, el modo restringido de YouTube, Bing y DuckDuckGo en su ajuste estricto. Android, Android TV y Chrome.',
 
     webFilterCatsTitle: 'Categorías del filtro web',
     webFilterCatsSub: 'Tipos de contenido bloqueados',
@@ -631,13 +718,18 @@ export default {
     starChartEmpty:
       'Añade un segundo hijo en la app para empezar la tabla de estrellas.',
     starChartStars: '{{count}} estrellas',
+    familyScreenTimeTitle: 'Tiempo de uso de la familia',
+    familyScreenTimeSub: 'Menos tiempo de uso primero, esta semana',
+    familyScreenTimeEmpty:
+      'Nadie ha informado todavía esta semana. Las filas aparecen cuando los móviles informan.',
+    familyScreenTimeParent: 'Padre o madre',
+    familyScreenTimeDays: '{{count}} días informados',
     rewardTasksTitle: 'Tareas con recompensa',
     rewardTasksSub: 'Gana minutos extra completando tareas',
     rewardTaskMeta: '+{{minutes}} min · {{cadence}}',
     rewardTaskStars: 'Dificultad: {{count}} de 3',
     rewardTaskWaiting: ' · esperando tu aprobación',
     approve: 'Aprobar',
-    approveInApp: 'Aprueba en la app de KidGate',
     siteRequestsTitle: 'Peticiones de sitios',
     siteRequestsSub: 'Sitios que este dispositivo pidió permitir',
     siteRequestAllow: 'Permitir',
@@ -659,6 +751,8 @@ export default {
     conflict: 'Alguien acaba de cambiar esto. Recarga para ver cómo quedó.',
     rateLimited: 'Demasiados cambios a la vez. Espera un momento e inténtalo de nuevo.',
     server: 'KidGate no pudo completar eso. Inténtalo de nuevo en breve.',
+    premiumRequired:
+      'Esta es una función Premium. Los planes se gestionan en la app de KidGate en tu teléfono.',
   },
 
   report: {
@@ -792,7 +886,7 @@ export default {
 
     faq4Q: '¿Cómo funciona la prueba gratuita?',
     faq4A:
-      'La prueba empieza cuando se conectan tus primeros dispositivos de padre e hijo y da acceso completo a todas las funciones. Quitar un dispositivo de hijo no reinicia la prueba. Cuando termine, suscríbete a Premium para seguir usando KidGate.',
+      'La prueba empieza cuando conectas tu primer dispositivo de padre y de hijo, y da acceso completo a todas las funciones. Quitar un dispositivo infantil no reinicia la prueba. Cuando termina, todas las reglas siguen funcionando gratis en un dispositivo infantil; Premium conserva la actividad en vivo, el historial, los informes semanales y todos los dispositivos.',
 
     faq5Q: '¿Cómo cancelo mi suscripción?',
     faq5A:

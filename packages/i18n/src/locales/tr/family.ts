@@ -59,6 +59,7 @@ export const family = {
   childDetailStarsWell: 'Bu haftaki yıldızlar',
   childStarsA11y: 'Bu haftaki yıldızlar: {{count}}',
   childDetailDevicesTitle: 'Cihazlar',
+  childDetailSwipeHint: 'Atamayı kaldırmak için cihazı kaydırın.',
   childDetailAssignMore: 'Başka bir cihaz ata…',
   childDetailAssignSheetTitle: '{{childName}} için cihaz ata',
   childDetailNoDevices:
@@ -88,6 +89,7 @@ export const family = {
   chipDeviceCount_one: '{{count}} cihaz',
 
   chipOnlineCount: '{{count}} çevrimiçi',
+  metaOnlineCount: '{{online}}/{{count}} çevrimiçi',
 
   chipSosCount: '{{count}} SOS',
 
@@ -115,6 +117,20 @@ export const family = {
   buildOutdated: 'Güncelleme var',
   healthNeedsSetup: 'Kurulum gerekli',
   healthOffline: 'Çevrimdışı',
+  devicePausedLabel: 'Duraklatıldı',
+  devicePausedHint: 'Ücretsiz planda duraklatıldı — tüm kurallar geçerli',
+  parkedBannerTitle: 'İzlemeye devam edeceğiniz cihazı seçin',
+  parkedBannerBody:
+    'Kurallarınız her cihazda çalışır. Ücretsiz plan yalnızca bir cihazdan rapor alır — onu seçin ya da hepsini korumak için yükseltin.',
+  parkedBannerAction: 'Cihaz seç',
+  chooseMonitoredTitle: 'Hangi cihaz raporlamalı?',
+  chooseMonitoredBody:
+    'Tüm kurallar hepsinde çalışmaya devam eder. Yalnızca seçtiğiniz cihaz ekran süresi ve konum gönderir. {{days}} günde bir değiştirebilirsiniz.',
+  chooseMonitoredConfirm: 'Bu cihazı izle',
+  chooseMonitoredUpgrade: 'Tüm cihazları koru — yükselt',
+  chooseMonitoredDone: '{{name}} artık raporlayan cihaz',
+  monitoredCooldown: 'Raporlayan cihaz yalnızca {{days}} günde bir değiştirilebilir',
+  monitoredChooseFailed: 'Raporlayan cihaz değiştirilemedi',
 
   cardWhereLabel: 'Konum',
 
@@ -320,7 +336,7 @@ export const family = {
   childDetailProtectionOk: 'Korunuyor',
   childDetailProtectionAttention: '{{count}} cihaz dikkat gerektiriyor',
   childDetailProtectionSheetTitle: 'Cihaza göre koruma',
-  childDetailRemoveTitle: 'Bu çocuğu kaldır',
+  childDetailRemoveTitle: '{{childName}} profilini kaldır',
   childDetailRemovingButton: 'Kaldırılıyor…',
   childDetailOnlineCount: '{{total}} cihazdan {{online}} tanesi çevrimiçi',
   childDetailBudgetTitle: 'Günlük sınır',

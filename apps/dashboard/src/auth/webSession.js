@@ -13,7 +13,7 @@ import { functionsBaseUrl } from '../lib/firebase.js';
 
 const POLL_INTERVAL_MS = 2000;
 
-async function post(name, body) {
+async function post(name, body, headers) {
   if (!functionsBaseUrl) {
     const err = new Error(
       'Cloud Functions URL is not configured (VITE_FIREBASE_FUNCTIONS_URL).',
@@ -24,7 +24,7 @@ async function post(name, body) {
 
   const res = await fetch(`${functionsBaseUrl}/${name}`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json', ...headers },
     body: JSON.stringify(body),
   });
 
@@ -32,6 +32,9 @@ async function post(name, body) {
   if (!res.ok || payload.ok === false) {
     const err = new Error(payload.error || `Request failed (${res.status})`);
     err.code = payload.code;
+    // The step-up needs more than the code: how many tries are left is the
+    // difference between "try again" and "you have one left".
+    err.attemptsRemaining = payload.attemptsRemaining;
     throw err;
   }
   return payload;
@@ -39,6 +42,26 @@ async function post(name, body) {
 
 export function createWebSession() {
   return post('createParentWebSession', {});
+}
+
+/**
+ * The other way to unlock this browser: the family's Parent PIN, typed here.
+ *
+ * Resolves with the same custom token `waitForApproval` produces, because the
+ * server mints the same kind of session — see `functions/http/parentWebStepUp.js`.
+ * The caller is already signed in (that is what grants read), so this one call
+ * carries the ID token; every other endpoint in this file is reached before
+ * there is a session to send.
+ *
+ * The PIN is sent once and never stored. What comes back and persists is the
+ * session, which the parent can revoke from the phone.
+ */
+export function stepUpWithPin({ pin, familyOwnerUserId, idToken }) {
+  return post(
+    'stepUpParentWebSession',
+    { pin, familyOwnerUserId },
+    { Authorization: `Bearer ${idToken}` },
+  );
 }
 
 /**

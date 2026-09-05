@@ -7,6 +7,25 @@ import {
   webCategoryLabel,
 } from '../dashboard/labels.js';
 import { activityCopy, useActivityTranslate } from '../dashboard/activityCopy.js';
+import StepUpSheet from '../auth/StepUpSheet.jsx';
+import ScheduleEditor from '../dashboard/ScheduleEditor.jsx';
+import AppLimitsEditor from '../dashboard/AppLimitsEditor.jsx';
+import RewardTaskForm from '../dashboard/RewardTaskForm.jsx';
+import PlacesEditor from '../dashboard/PlacesEditor.jsx';
+import ChildBudgetEditor from '../dashboard/ChildBudgetEditor.jsx';
+import DeviceAdmin from '../dashboard/DeviceAdmin.jsx';
+import MessageAlertsCard from '../dashboard/MessageAlertsCard.jsx';
+import Toggle from '../dashboard/Toggle.jsx';
+import { timeAgo } from '../dashboard/timeAgo.js';
+import PlanCard from '../dashboard/PlanCard.jsx';
+import ParkedDevicesCard from '../dashboard/ParkedDevicesCard.jsx';
+import { resolveTodayTopApps } from '@kidgate/core/domain/todayTopApps';
+import { localDayKey } from '@kidgate/core/domain/weeklyReportSchedule';
+import {
+  MONITORED_SWAP_COOLDOWN_MS,
+  summariseParking,
+} from '@kidgate/core/domain/deviceParking';
+import ParentsCard from '../dashboard/ParentsCard.jsx';
 import BrandLogo from '@kidgate/web-ui/BrandLogo';
 import Icon from '@kidgate/web-ui/Icon';
 import { deviceIconName } from '../dashboard/deviceIcon.js';
@@ -15,6 +34,7 @@ import { readDeviceBattery } from '@kidgate/core/domain/battery';
 import { isAndroidLike } from '@kidgate/core/domain/platformFamily';
 import { resolveActivityKind } from '@kidgate/core/domain/activityKind';
 import { WEB_FILTER_CATEGORY_GROUPS } from '@kidgate/core/domain/webFilterCategoryGroups';
+import { WEB_FILTER_CATEGORIES } from '@kidgate/schema/webActivity';
 import { resolveTaskStars } from '@kidgate/core/domain/rewardTasks';
 import { getProtectionSummaryKeys } from '@kidgate/core/domain/protectionStatus';
 import { resolveLockEnforcement } from '@kidgate/core/domain/lockEnforcement';
@@ -34,12 +54,25 @@ import {
   supportsLock,
   supportsSchedule,
   supportsScreenTime,
+  installApprovalMode,
 } from '@kidgate/core/domain/controlSupport';
 import {
-  supportsCheckIn,
-  supportsLocation,
-} from '@kidgate/core/domain/locationSupport';
+  pendingInstallsFromActivities,
+  resolveInstallApprovalPolicy,
+  withApprovedPackage,
+} from '@kidgate/core/domain/appInstallApproval';
+import { supportsLocation } from '@kidgate/core/domain/locationSupport';
+import { supportsCheckIn } from '@kidgate/core/domain/checkInSupport';
 import { supportsSos } from '@kidgate/core/domain/sosSupport';
+import {
+  supportsSearchMonitoring,
+  supportsTamperAlerts,
+} from '@kidgate/core/domain/alertSupport';
+import { supportsSafeSearch } from '@kidgate/core/domain/safeSearchSupport';
+import {
+  supportsVideoHistory,
+  videoHistoryBlockerKey,
+} from '@kidgate/core/domain/videoHistorySupport';
 import { supportsAppInventory } from '@kidgate/core/domain/appInventorySupport';
 import { appInventorySummaryKey } from '@kidgate/core/domain/appInventoryReport';
 import { useAppInventory } from '../dashboard/useAppInventory';
@@ -58,7 +91,6 @@ import {
 import LanguagePicker from '@kidgate/web-ui/LanguagePicker';
 import ReportPanel from '../dashboard/ReportPanel.jsx';
 import { RichText } from '@kidgate/web-ui/RichText';
-import { t as translate } from '@kidgate/i18n/web';
 import { useT } from '@kidgate/web-ui/useT';
 
 /**
@@ -187,18 +219,6 @@ function permissionName(t, activityT, key, platform) {
  * inside `map` callbacks whose component already re-renders on a language
  * change, so threading a hook through every call site would buy nothing.
  */
-function timeAgo(iso) {
-  const at = iso ? new Date(iso).getTime() : NaN;
-  if (Number.isNaN(at)) return translate('time.never');
-  const diff = Date.now() - at;
-  const mins = Math.round(diff / 60000);
-  if (mins < 1) return translate('time.justNow');
-  if (mins < 60) return translate('time.minutes', { count: mins });
-  const hrs = Math.round(mins / 60);
-  if (hrs < 24) return translate('time.hours', { count: hrs });
-  return translate('time.days', { count: Math.round(hrs / 24) });
-}
-
 function Card({ title, subtitle, action, className = '', children }) {
   return (
     <section className={`card ${className}`}>
@@ -229,11 +249,20 @@ function StatTile({ label, value, meta, tone = 'default', icon }) {
   );
 }
 
-const STATUS_TONE = { online: 'good', offline: 'muted', locked: 'warning' };
+// `parked` is muted, not critical: a parked device is quiet by design — the
+// free plan watching one device and this being another (`docs/PRICING.md` §6)
+// — and the pill that painted it red was reporting a plan as a fault.
+const STATUS_TONE = {
+  online: 'good',
+  offline: 'muted',
+  locked: 'warning',
+  parked: 'muted',
+};
 const STATUS_KEY = {
   online: 'dash.statusOnline',
   offline: 'dash.statusOffline',
   locked: 'dash.statusLocked',
+  parked: 'dash.statusPaused',
 };
 
 /**
@@ -373,10 +402,12 @@ export default function Dashboard({
     places,
     rewardTasks,
     leaderboard,
+    screenTimeBoard,
     sosAlerts,
     timeRequests,
     siteRequests,
     webHistory,
+    videoHistory,
   } = data;
 
   const { t, language } = useT();
@@ -393,6 +424,8 @@ export default function Dashboard({
   const [toast, setToast] = useState(null);
   /** Which attention row has its steps open. One at a time. */
   const [fixOpen, setFixOpen] = useState(null);
+  /** The PIN / QR sheet that unlocks write on this browser. */
+  const [stepUpOpen, setStepUpOpen] = useState(false);
 
   /*
    * The Reports dot.
@@ -419,7 +452,19 @@ export default function Dashboard({
   }, [tab, latestReportKey, familyId]);
   const reportUnseen = hasUnseenWeeklyReport(latestReportKey, reportSeenKey);
 
-  const canWrite = actions?.canWrite ?? false;
+  /*
+   * The write grant can expire while this page stays signed in, and the two
+   * live in different places: `canWrite` reads the token's `roleHint` claim,
+   * the expiry sits on the `parentWebSessions` document. The claim does not
+   * expire with the document, so without this flag the banner would keep
+   * saying "unlocked" while every control failed — a product that looks broken
+   * rather than one that is locked.
+   *
+   * Set by `run` when a write comes back unauthenticated, cleared by a
+   * successful step-up.
+   */
+  const [writeExpired, setWriteExpired] = useState(false);
+  const canWrite = (actions?.canWrite ?? false) && !writeExpired;
   const live = Boolean(actions);
 
   /**
@@ -434,10 +479,26 @@ export default function Dashboard({
     setBusy(key);
     setToast(null);
     try {
-      await fn();
+      /*
+       * The resolved value when there is one, `true` when there is not.
+       * Nearly every action here returns void and every one of those call
+       * sites tests `if (!ok)`, so a bare `undefined` would read as failure —
+       * while the invite mint genuinely has something to hand back.
+       */
+      const result = await fn();
       if (okMessage) setToast({ tone: 'good', text: okMessage });
-      return true;
+      return result === undefined ? true : result;
     } catch (e) {
+      /*
+       * An expired write grant, rather than a failure the parent can do
+       * anything about by retrying. Drop to read-only and reopen the step-up
+       * in place: the page, the tab and the thing they were editing all stay
+       * where they were, so re-arming is six digits rather than a dead end.
+       */
+      if (e.code === 'unauthenticated' || e.code === 'staleCredential') {
+        setWriteExpired(true);
+        setStepUpOpen(true);
+      }
       // Failures raised in the browser carry a key we own; anything relayed
       // from the Cloud Function arrives as server text and is shown as-is.
       setToast({
@@ -445,6 +506,49 @@ export default function Dashboard({
         text: e.messageKey ? t(e.messageKey) : e.message,
       });
       return false;
+    } finally {
+      setBusy(null);
+    }
+  }
+
+  /*
+   * Parking, folded once from the devices — the only thing a client can read
+   * about it (`@kidgate/core/domain/deviceParking`, `docs/PRICING.md` §6).
+   */
+  const parking = useMemo(() => summariseParking(devices), [devices]);
+
+  /*
+   * The cooldown is the one failure `run` cannot say. It arrives as a
+   * `rateLimited` whose sentence lives in the app pack
+   * (`family.monitoredCooldown`, with a `{{days}}` the web toast cannot fill),
+   * so it is said here through `activityT` rather than mapped to a `dash.*` twin.
+   */
+  async function chooseMonitored(deviceId) {
+    const chosen = devices.find(d => d.id === deviceId);
+    setBusy('monitored');
+    setToast(null);
+    try {
+      await actions.chooseMonitoredDevice(deviceId);
+      setToast({
+        tone: 'good',
+        text: activityT('family.chooseMonitoredDone', { name: chosen?.name ?? '' }),
+      });
+    } catch (e) {
+      if (e.code === 'unauthenticated' || e.code === 'staleCredential') {
+        setWriteExpired(true);
+        setStepUpOpen(true);
+      }
+      setToast({
+        tone: 'critical',
+        text:
+          e.serverCode === 'monitored/cooldown'
+            ? activityT('family.monitoredCooldown', {
+                days: Math.round(MONITORED_SWAP_COOLDOWN_MS / 86_400_000),
+              })
+            : e.messageKey
+              ? t(e.messageKey)
+              : e.message,
+      });
     } finally {
       setBusy(null);
     }
@@ -751,10 +855,21 @@ export default function Dashboard({
    * The latest day rather than "today": the same row the timeline card reads,
    * so both cards describe one day rather than two.
    */
-  const todayApps = device?.usage?.[device.usage.length - 1]?.topApps ?? [];
-  // Same row the apps came from, so the "Other apps" remainder is computed
-  // against the day it belongs to.
-  const todayMinutes = device?.usage?.[device.usage.length - 1]?.minutes ?? 0;
+  /*
+   * Since 2026-09-05 the device document is the second source: the top three
+   * ride it for everyone (`Device.topAppsToday`), which is the whole of what a
+   * free family is promised — and they have no day document at all. The
+   * resolver is `@kidgate/core/domain/todayTopApps`, shared with the phone,
+   * and it lets today on the device beat a stale latest row; the "Other apps"
+   * remainder is computed against whichever day the rows came from.
+   */
+  const todayTopApps = resolveTodayTopApps({
+    usageDay: device?.usage?.[device.usage.length - 1] ?? null,
+    device: device ?? {},
+    todayKey: localDayKey(Date.now(), -new Date().getTimezoneOffset()),
+  });
+  const todayApps = todayTopApps.apps;
+  const todayMinutes = todayTopApps.totalMinutes;
 
   /*
    * What is installed, as opposed to what was used.
@@ -763,12 +878,63 @@ export default function Dashboard({
    * in it, and neither existing app signal can see one that was already on the
    * device when the family paired. `docs/FEASIBILITY.md`, "The app inventory".
    */
-  const inventory = useAppInventory(familyId, device?.id);
+  // The device's install quarantine, folded into the inventory so a pending
+  // install renders as its own group — and re-folded the moment an approval
+  // lands, since `device.controls` is the listener's live copy.
+  const installApproval = device?.controls
+    ? resolveInstallApprovalPolicy(device.controls)
+    : null;
+  const inventory = useAppInventory(familyId, device?.id, installApproval);
   const inventorySummary = inventory ? appInventorySummaryKey(inventory) : null;
+
+  /*
+   * What a per-app limit may be put on: apps this device reported, and only
+   * those. The two signals answer different questions and both are needed —
+   * today's usage carries the app a parent just watched climb the chart, and
+   * the inventory carries one that is installed and rarely opened. Neither
+   * alone is the list a parent expects to see.
+   *
+   * A typed package name is deliberately not offered: `com.tiktok` guessed
+   * wrong writes a limit that matches nothing and reads, on this screen, as a
+   * limit that is simply not working.
+   */
+  const limitCandidates = useMemo(() => {
+    const byId = new Map();
+    for (const app of todayApps) {
+      if (app.packageName) byId.set(app.packageName, app.label || app.packageName);
+    }
+    // All four groups the report splits the scan into, flattened: a flagged
+    // app is exactly the one a parent came here to cap, and a pending install
+    // is one they may want capped before they allow it.
+    for (const group of ['pending', 'flagged', 'other', 'unclassified']) {
+      for (const app of inventory?.[group] ?? []) {
+        if (!byId.has(app.id)) byId.set(app.id, app.label || app.id);
+      }
+    }
+    return [...byId].map(([id, label]) => ({ id, label }));
+  }, [todayApps, inventory]);
+  const approveInstall = packageName =>
+    live &&
+    device &&
+    run(
+      `install-allow-${packageName}`,
+      () =>
+        actions.updateControls(device.id, {
+          approvedPackages: withApprovedPackage(
+            device.controls?.approvedPackages,
+            packageName,
+          ),
+        }),
+      t('dash.toastInstallAllowed'),
+    );
 
   const web = useMemo(
     () => (device && webHistory[device.id]) || [],
     [device, webHistory],
+  );
+  const videos = useMemo(
+    () => (device && videoHistory?.[device.id]) || [],
+    [device, videoHistory],
   );
   const blockedByCategory = useMemo(() => {
     const map = {};
@@ -807,31 +973,39 @@ export default function Dashboard({
           <span>{family.name}</span>
         </div>
 
-        <div className="side-section">
+        <div className="side-section side-kids">
           <p className="side-title">{t('dash.children')}</p>
-          {devices.length === 0 && <p className="side-empty">{t('dash.noChildren')}</p>}
-          {deviceGroups.map(group => (
-            <div key={group.key} className="kid-group">
-              <p className="kid-group-title">
-                {group.child ? (
-                  <>
-                    <ChildInitial
-                      name={group.child.name}
-                      colorIndex={group.child.colorIndex}
-                    />
-                    <span>{group.child.name}</span>
-                  </>
-                ) : (
-                  t('dash.unassignedDevices')
-                )}
-              </p>
-              {group.devices.map(d => (
-                <button
-                  key={d.id}
-                  className={`kid${d.id === deviceId ? ' is-active' : ''}`}
-                  onClick={() => setDeviceId(d.id)}
-                >
-                  {/*
+          {/*
+            Only this list scrolls, not the rail: the heading above and the
+            Manage nav below stay put however many children a family has.
+            A rail that scrolled as one hid the nav behind four children.
+          */}
+          <div className="side-kids-scroll">
+            {devices.length === 0 && (
+              <p className="side-empty">{t('dash.noChildren')}</p>
+            )}
+            {deviceGroups.map(group => (
+              <div key={group.key} className="kid-group">
+                <p className="kid-group-title">
+                  {group.child ? (
+                    <>
+                      <ChildInitial
+                        name={group.child.name}
+                        colorIndex={group.child.colorIndex}
+                      />
+                      <span>{group.child.name}</span>
+                    </>
+                  ) : (
+                    t('dash.unassignedDevices')
+                  )}
+                </p>
+                {group.devices.map(d => (
+                  <button
+                    key={d.id}
+                    className={`kid${d.id === deviceId ? ' is-active' : ''}`}
+                    onClick={() => setDeviceId(d.id)}
+                  >
+                    {/*
                     The device glyph, not the child's initial — the same call
                     the phone's device card makes (`deviceIconName`), so a Mac
                     is the same picture on both surfaces and an iPad is not
@@ -844,13 +1018,13 @@ export default function Dashboard({
                     so this rail drew a Mac and the extension running on it as
                     two identical laptops until the rule was shared.
                   */}
-                  <span className={`kid-avatar av-${d.platform}`}>
-                    <Icon name={deviceIconName(d)} size={18} />
-                  </span>
-                  <span className="kid-meta">
-                    <strong>{d.name}</strong>
-                    {d.modelName && d.modelName !== d.name && <em>{d.modelName}</em>}
-                    {/*
+                    <span className={`kid-avatar av-${d.platform}`}>
+                      <Icon name={deviceIconName(d)} size={20} />
+                    </span>
+                    <span className="kid-meta">
+                      <strong>{d.name}</strong>
+                      {d.modelName && d.modelName !== d.name && <em>{d.modelName}</em>}
+                      {/*
                       Which machine is on an old build, without opening each one
                       in turn — the rail is where "which of these" gets asked.
                       Only ever drawn on an outdated device: `unknown` is every
@@ -858,12 +1032,12 @@ export default function Dashboard({
                       with nothing published to compare against, and a mark for
                       that would sit on most rails saying nothing.
                     */}
-                    {resolveBuildFreshness(d, latestBuilds ?? {}).status ===
-                      'outdated' && (
-                      <em className="kid-build-old">{t('dash.buildOutdated')}</em>
-                    )}
-                  </span>
-                  {/*
+                      {resolveBuildFreshness(d, latestBuilds ?? {}).status ===
+                        'outdated' && (
+                        <em className="kid-build-old">{t('dash.buildOutdated')}</em>
+                      )}
+                    </span>
+                    {/*
                     `getEffectiveDeviceStatus`, not the stored `status` field.
                     Three minutes of silence is offline on every surface, and
                     the rule also refuses to call a device locked when it
@@ -871,19 +1045,20 @@ export default function Dashboard({
                     `isLocked` from before that button was gated would
                     otherwise sit amber here forever.
                   */}
-                  <i
-                    className={`kid-dot tone-${
-                      deviceStatusOf(d) === 'online'
-                        ? 'good'
-                        : deviceStatusOf(d) === 'locked'
-                          ? 'warning'
-                          : 'muted'
-                    }`}
-                  />
-                </button>
-              ))}
-            </div>
-          ))}
+                    <i
+                      className={`kid-dot tone-${
+                        deviceStatusOf(d) === 'online'
+                          ? 'good'
+                          : deviceStatusOf(d) === 'locked'
+                            ? 'warning'
+                            : 'muted'
+                      }`}
+                    />
+                  </button>
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
 
         <nav className="side-section side-nav">
@@ -915,9 +1090,12 @@ export default function Dashboard({
         </nav>
 
         <div className="side-foot">
-          <span className="plan-pill">
-            {t(family.plan === 'premium' ? 'dash.planPremium' : 'dash.planTrial')}
-          </span>
+          {/*
+            Was a bare pill reading Premium or Trial. It now says which of the
+            three states the family is in and where a plan is actually changed
+            — buying stays on the phone, by decision (`PlanCard`).
+          */}
+          <PlanCard plan={family.plan} trialStartedAt={family.trialStartedAt} />
           <p>
             {t('dash.parents', { count: family.parents.length })} ·{' '}
             {t('dash.devices', { count: devices.length })}
@@ -1018,7 +1196,7 @@ export default function Dashboard({
               <button
                 className="btn btn-primary"
                 disabled={(live && !canWrite) || busy === 'lock'}
-                title={live && !canWrite ? t('dash.lockNeedsApp') : undefined}
+                title={live && !canWrite ? t('dash.unlockToChange') : undefined}
                 onClick={() =>
                   live &&
                   run('lock', () => actions.setLock(device.id, !device.isLocked))
@@ -1036,15 +1214,64 @@ export default function Dashboard({
 
         {live && !canWrite && (
           <div className="write-note">
-            <strong>{t('dash.viewOnlyTitle')}</strong> {t('dash.viewOnlyBody')}
+            <strong>{t('dash.unlockTitle')}</strong> {t('dash.unlockBody')}
+            <button className="btn btn-sm" onClick={() => setStepUpOpen(true)}>
+              {t('dash.unlockCta')}
+            </button>
           </div>
+        )}
+
+        {stepUpOpen && (
+          <StepUpSheet
+            familyOwnerUserId={familyId}
+            onClose={() => setStepUpOpen(false)}
+            onUnlocked={() => {
+              setStepUpOpen(false);
+              // The new session is the one `canWrite` should be read against
+              // again; the claim arrives with the refreshed token.
+              setWriteExpired(false);
+              setToast({ tone: 'good', text: t('dash.unlockedToast') });
+            }}
+          />
         )}
 
         {toast && <div className={`toast tone-${toast.tone}`}>{toast.text}</div>}
 
+        {/*
+          Under the header rather than inside a tab: renaming and unpairing are
+          about the device on screen, not about one of the six things the tabs
+          divide it into. Renders nothing for a joined co-parent — both are the
+          owner's alone.
+        */}
+        {device && live && (
+          <DeviceAdmin
+            device={device}
+            actions={actions}
+            readOnly={live && !canWrite}
+            busy={busy === `rename-${device.id}` || busy === `remove-${device.id}`}
+            run={run}
+          />
+        )}
+
         {/* The report is about the family, so it survives having no device
             selected — a parent whose only device has just been removed can
             still read what the last weeks said. */}
+        {/*
+          Above everything, on every tab but the report: a family with parked
+          devices has a decision owed before any device screen means much, and
+          on a tab that happened to have a device selected the card would
+          otherwise be one click away from the four devices reading Paused.
+        */}
+        {parking.parked.length > 0 && tab !== 'report' && (
+          <ParkedDevicesCard
+            devices={devices}
+            parking={parking}
+            canWrite={canWrite}
+            busy={busy === 'monitored'}
+            onChoose={chooseMonitored}
+          />
+        )}
+
         {!device && tab !== 'report' && (
           <section className="card">
             <h2>{t('dash.noDeviceTitle')}</h2>
@@ -1068,6 +1295,25 @@ export default function Dashboard({
 
         {device && tab === 'overview' && (
           <>
+            {/*
+              Family-level, on the tab a parent lands on. It renders nothing at
+              all for a joined co-parent — inviting, approving and removing are
+              the owner's, the same rule the phone's Family screen applies.
+            */}
+            {live && actions?.isOwner && (
+              <Card title={t('dash.parents', { count: family.parents.length })}>
+                <ParentsCard
+                  members={family.members ?? []}
+                  actions={actions}
+                  run={run}
+                  busy={
+                    busy === 'parent-invite' ||
+                    busy === 'parent-join' ||
+                    busy === 'parent-remove'
+                  }
+                />
+              </Card>
+            )}
             {/*
               Two of these four are measurements, and a measurement no device
               took is the one thing a tile must not show: `0m` beside "today"
@@ -1371,6 +1617,10 @@ export default function Dashboard({
                   limits={c.appLimits}
                   totalMinutes={todayMinutes}
                 />
+                {/* Only under the device's three — never under a ten-row list. */}
+                {todayTopApps.source === 'device' && family.plan !== 'premium' && (
+                  <p className="hint">{t('dash.topAppsFreeHint')}</p>
+                )}
               </Card>
             </div>
 
@@ -1417,6 +1667,32 @@ export default function Dashboard({
               }
             >
               <ScheduleGrid windows={c.scheduleWindows} />
+              {/*
+                The grid stays: reading three overlapping ranges as text is the
+                thing parents get wrong, and that is as true while editing as
+                it was when this card was read-only. The rows below are the
+                edit surface, and the grid is what they are checked against.
+              */}
+              <ScheduleEditor
+                windows={c.scheduleWindows}
+                readOnly={live && !canWrite}
+                busy={busy === 'schedule-windows'}
+                onSave={next =>
+                  run('schedule-windows', () =>
+                    // Routed exactly like the switch above it: on an assigned
+                    // device the schedule is the CHILD's rule and the server
+                    // fans it out to every sibling. Writing this device's own
+                    // controls would be wiped by the next fan-out.
+                    device.childId
+                      ? actions.updateChildRules(device.childId, {
+                          scheduleWindows: next,
+                        })
+                      : actions.updateControls(device.id, {
+                          scheduleWindows: next,
+                        }),
+                  )
+                }
+              />
             </Card>
           </>
         )}
@@ -1459,15 +1735,28 @@ export default function Dashboard({
                       value={c.blockedCategoryCount}
                     />
                   </div>
+                  {/*
+                    The three tiles above are summaries the DEVICE writes —
+                    which apps are blocked is chosen in a native picker on the
+                    child's machine, and on iOS the selection is an opaque
+                    `ApplicationToken` that exists nowhere else. So blocking
+                    stays read-only here on purpose; per-app limits do not,
+                    because `appLimits` is a parent-owned list of package names.
+                  */}
                   <p className="hint">{t('dash.perAppHint')}</p>
-                  <ul className="chips">
-                    {c.appLimits.map(l => (
-                      <li key={l.id}>
-                        {l.label}{' '}
-                        <em>{t('dash.perDay', { value: formatMinutes(l.minutes) })}</em>
-                      </li>
-                    ))}
-                  </ul>
+                  <AppLimitsEditor
+                    limits={c.appLimits}
+                    candidates={limitCandidates}
+                    readOnly={live && !canWrite}
+                    busy={busy === 'app-limits'}
+                    onSave={next =>
+                      run('app-limits', () =>
+                        // Per-device, never routed: the package names exist on
+                        // this one machine (`docs/CHILD_HUB.md`).
+                        actions.updateControls(device.id, { appLimits: next }),
+                      )
+                    }
+                  />
                 </Card>
               )}
             </div>
@@ -1499,6 +1788,48 @@ export default function Dashboard({
                     )}
                     {inventory.isFirstScan && (
                       <p className="hint">{t('dash.inventoryFirstScan')}</p>
+                    )}
+                    {/* Blocked by the device on its own, waiting on the
+                        parent — above every category, with the answer on the
+                        row. The Controls tab carries the same list off the
+                        feed; this is the scan's copy of it. */}
+                    {inventory.pending.length > 0 && (
+                      <>
+                        <p className="hint">{t('dash.inventoryPending')}</p>
+                        <ul className="events">
+                          {inventory.pending.map(row => (
+                            <li key={row.id}>
+                              <span className="ev-state tone-serious">
+                                <Icon name="plus" size={13} />
+                              </span>
+                              <span className="ev-body">
+                                <strong>{row.label}</strong>
+                                <em>
+                                  {t('dash.pendingInstallBlocked')}
+                                  {row.installedAt
+                                    ? ` · ${timeAgo(new Date(row.installedAt).toISOString())}`
+                                    : ''}
+                                </em>
+                              </span>
+                              <button
+                                className="btn btn-sm btn-primary"
+                                disabled={
+                                  (live && !canWrite) ||
+                                  busy === `install-allow-${row.id}`
+                                }
+                                title={
+                                  live && !canWrite
+                                    ? t('dash.unlockToChange')
+                                    : undefined
+                                }
+                                onClick={() => approveInstall(row.id)}
+                              >
+                                {t('dash.installAllow')}
+                              </button>
+                            </li>
+                          ))}
+                        </ul>
+                      </>
                     )}
                     {inventory.flagged.length > 0 && (
                       <>
@@ -1641,6 +1972,38 @@ export default function Dashboard({
                     (the extension) or minutes (iOS) instead of lookups. */}
                 <p className="hint">{t('dash.webBackgroundNote')}</p>
               </Card>
+
+              {supportsVideoHistory(device) && (
+                <Card title={t('dash.videosTitle')} subtitle={t('dash.videosSub')}>
+                  {videoHistoryBlockerKey(device) ? (
+                    <p className="empty">{activityT(videoHistoryBlockerKey(device))}</p>
+                  ) : null}
+                  {videos.length === 0 ? (
+                    <p className="empty">{t('dash.videosEmpty')}</p>
+                  ) : (
+                    <table className="tbl">
+                      <thead>
+                        <tr>
+                          <th>{t('dash.colVideo')}</th>
+                          <th>{t('dash.colChannel')}</th>
+                          <th className="num">{t('dash.colViews')}</th>
+                          <th>{t('dash.colLastSeen')}</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {videos.map(v => (
+                          <tr key={`${v.date}:${v.id}`}>
+                            <td>{v.title}</td>
+                            <td>{v.channel || t('viz.none')}</td>
+                            <td className="num">{v.views}</td>
+                            <td>{timeAgo(v.lastAt)}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  )}
+                </Card>
+              )}
             </div>
           </>
         )}
@@ -1701,6 +2064,14 @@ export default function Dashboard({
                   {(places[device.id] || []).length === 0 && (
                     <p className="empty">{t('dash.noPlaces')}</p>
                   )}
+                  <PlacesEditor
+                    device={device}
+                    readOnly={live && !canWrite}
+                    busy={busy === 'places'}
+                    onSave={next =>
+                      run('places', () => actions.updateFamilyPlaces(next))
+                    }
+                  />
                   <ul className="places">
                     {(places[device.id] || []).map(p => (
                       <li key={p.id}>
@@ -1839,32 +2210,73 @@ export default function Dashboard({
                 </Card>
               )}
 
+              {/*
+                Gone entirely where nothing files a tamper row, rather than
+                struck out. This card's own rule (`apps/dashboard/CLAUDE.md`):
+                a rule that is OFF stays visible so it can be told from one the
+                device cannot hold — but a **measurement** disappears, and this
+                is a measurement. It read "0 tamper alerts" over a television
+                and a Chromebook extension until 2026-09-03: a number a parent
+                takes as reassurance about something nothing was watching,
+                which is what `.claude/rules/cross-platform.md` exists to
+                catch. The phone answers it by never listing the screen.
+              */}
+              {supportsTamperAlerts(device) && (
+                <Card
+                  title={t('dash.protectionAlertsTitle')}
+                  subtitle={t('dash.protectionAlertsSub', {
+                    count: device.protectionCounters.tamper,
+                  })}
+                >
+                  <ul className="timeline">
+                    {(activities[device.id] || [])
+                      .filter(a => a.type === 'tamper')
+                      .map(a => {
+                        const copy = activityCopy(
+                          a,
+                          activityT,
+                          device.name,
+                          actorNames,
+                        );
+                        return (
+                          <li key={a.id}>
+                            <span className="tl-icon type-tamper">
+                              <Icon name="alert" size={15} />
+                            </span>
+                            <span className="tl-body">
+                              <strong>{copy.title}</strong>
+                              <em>{copy.description}</em>
+                            </span>
+                            <time>{timeAgo(a.createdAt)}</time>
+                          </li>
+                        );
+                      })}
+                  </ul>
+                  <p className="hint">{t('dash.protectionAlertsHint')}</p>
+                </Card>
+              )}
+
+              {/*
+                Not gated on the capability, unlike the cards above it: the
+                card's own first line is the honest answer for a device that
+                cannot watch messages, and hiding it would leave the dashboard
+                silent about the one state this whole feature exists to
+                surface — a grant Android has revoked, which reads on every
+                other screen as a quiet week. Every sentence in it comes from
+                the app pack (`.claude/rules/i18n.md`).
+              */}
               <Card
-                title={t('dash.protectionAlertsTitle')}
-                subtitle={t('dash.protectionAlertsSub', {
-                  count: device.protectionCounters.tamper,
-                })}
+                title={activityT('messageMonitoring.actionTitle')}
+                subtitle={activityT('messageMonitoring.heroSubtitle')}
               >
-                <ul className="timeline">
-                  {(activities[device.id] || [])
-                    .filter(a => a.type === 'tamper')
-                    .map(a => {
-                      const copy = activityCopy(a, activityT, device.name, actorNames);
-                      return (
-                        <li key={a.id}>
-                          <span className="tl-icon type-tamper">
-                            <Icon name="alert" size={15} />
-                          </span>
-                          <span className="tl-body">
-                            <strong>{copy.title}</strong>
-                            <em>{copy.description}</em>
-                          </span>
-                          <time>{timeAgo(a.createdAt)}</time>
-                        </li>
-                      );
-                    })}
-                </ul>
-                <p className="hint">{t('dash.protectionAlertsHint')}</p>
+                <MessageAlertsCard
+                  device={device}
+                  activities={activities[device.id] || []}
+                  readOnly={live && !canWrite}
+                  actions={actions}
+                  run={run}
+                  busy={busy}
+                />
               </Card>
             </div>
           </div>
@@ -1873,13 +2285,24 @@ export default function Dashboard({
         {device && tab === 'controls' && (
           <ControlsTab
             device={device}
+            /*
+             * Every device this child holds, for the budget seed. The budget
+             * is one number shared across them, so writing it on the selected
+             * device alone would leave the siblings locking on a stale share
+             * until their next usage report.
+             */
+            siblingDeviceIds={devices
+              .filter(other => device.childId && other.childId === device.childId)
+              .map(other => other.id)}
             rewardTasks={rewardTasks}
             siteRequests={siteRequests[device.id] || []}
             leaderboard={leaderboard}
+            screenTimeBoard={screenTimeBoard}
             readOnly={live && !canWrite}
             actions={actions}
             run={run}
             busy={busy}
+            activities={activities[device.id] || []}
           />
         )}
       </main>
@@ -1888,23 +2311,6 @@ export default function Dashboard({
 }
 
 /* ------------------------------------------------------------------ */
-
-function Toggle({ on, onChange, label, disabled }) {
-  const { t } = useT();
-  return (
-    <button
-      className={`toggle${on ? ' is-on' : ''}`}
-      onClick={() => !disabled && onChange(!on)}
-      role="switch"
-      aria-checked={on}
-      aria-label={label}
-      disabled={disabled}
-      title={disabled ? t('dash.toggleInApp') : undefined}
-    >
-      <i />
-    </button>
-  );
-}
 
 /**
  * The family's star chart.
@@ -1946,6 +2352,57 @@ function StarChartCard({ leaderboard }) {
 }
 
 /**
+ * The family screen-time board — minutes per person this week, fewest
+ * first, parents beside the children where they opted in. The switch is on
+ * the phone (`FamilyDetailScreen`), owner only, like the star chart's; this
+ * surface reads. Hidden entirely while off: a card that says "turn it on in
+ * the app" would sit on every dashboard for a feature most families never
+ * asked for, whereas the star chart's empty state answers a family that
+ * already has two children and is looking for it.
+ */
+function FamilyScreenTimeCard({ board }) {
+  const { t } = useT();
+
+  if (!board?.enabled) {
+    return null;
+  }
+  if (!board.visible) {
+    return (
+      <Card
+        title={t('dash.familyScreenTimeTitle')}
+        subtitle={t('dash.familyScreenTimeSub')}
+      >
+        <p className="muted">{t('dash.familyScreenTimeEmpty')}</p>
+      </Card>
+    );
+  }
+
+  return (
+    <Card
+      title={t('dash.familyScreenTimeTitle')}
+      subtitle={t('dash.familyScreenTimeSub')}
+    >
+      <ul className="events">
+        {board.rows.map(row => (
+          <li key={row.participantId}>
+            <span className="ev-state tone-muted">{row.rank}</span>
+            <span className="ev-body">
+              <strong>{row.name || t('dash.familyScreenTimeParent')}</strong>
+              <em>
+                {row.kind === 'parent'
+                  ? t('dash.familyScreenTimeParent')
+                  : t('dash.familyScreenTimeDays', { count: row.daysReported })}
+              </em>
+            </span>
+            <span className="ev-time">{formatMinutes(row.weekMinutes)}</span>
+          </li>
+        ))}
+      </ul>
+    </Card>
+  );
+}
+
+/**
  * Which field of the device document each switch owns.
  *
  * Every one is a `PARENT_CONTROL_KEYS` entry, so the write goes through
@@ -1958,6 +2415,15 @@ const CONTROL_FIELDS = {
   appBlocking: 'appBlockingEnabled',
   webFilter: 'webFilterEnabled',
   location: 'locationSharingEnabled',
+  // Per-device like app blocking, not a child rule: an Android phone and the
+  // Chrome extension on the same child read it through different agents, and
+  // the phone's screen (`MessageAlertsScreen`) writes it per device too.
+  search: 'searchMonitoringEnabled',
+  // A child rule like the web filter it rides on: fanned out by the server.
+  safeSearch: 'safeSearchEnabled',
+  // Per-device: the approved list is package names on one machine, and the
+  // server stamps the "since" line per device (`functions/http/controls.js`).
+  installApproval: 'appInstallApprovalEnabled',
 };
 
 /** Where the slider sits for a family that has no daily limit set. */
@@ -1968,19 +2434,48 @@ function ControlsTab({
   rewardTasks,
   siteRequests,
   leaderboard,
+  screenTimeBoard,
   readOnly,
   actions,
   run,
   busy,
+  /** This device's feed rows, for the install-approval pending list. */
+  activities = [],
+  siblingDeviceIds = [],
 }) {
   const { t } = useT();
   const c = device.controls;
   const live = Boolean(actions);
+  /*
+   * App install quarantine. The pending list is read off the feed rather than
+   * the inventory because the feed is immediate — the device posts the row
+   * the moment the install lands — and it is re-read against the live
+   * `approvedPackages` so an approval from the phone empties it here too.
+   */
+  const installMode = installApprovalMode(device);
+  const installApproval = resolveInstallApprovalPolicy(c);
+  const pendingInstalls = useMemo(
+    () => pendingInstallsFromActivities(activities, installApproval, device.id),
+    [activities, installApproval, device.id],
+  );
+  const approveInstall = packageName =>
+    live &&
+    run(
+      `install-allow-${packageName}`,
+      () =>
+        actions.updateControls(device.id, {
+          approvedPackages: withApprovedPackage(c.approvedPackages, packageName),
+        }),
+      t('dash.toastInstallAllowed'),
+    );
   const [state, setState] = useState({
     appBlocking: c.appBlockingEnabled,
     webFilter: c.webFilterEnabled,
     location: c.locationSharingEnabled,
     schedule: c.scheduleEnabled,
+    search: c.searchMonitoringEnabled === true,
+    safeSearch: c.safeSearchEnabled === true,
+    installApproval: c.appInstallApprovalEnabled === true,
   });
 
   /*
@@ -1996,13 +2491,53 @@ function ControlsTab({
       webFilter: c.webFilterEnabled,
       location: c.locationSharingEnabled,
       schedule: c.scheduleEnabled,
+      search: c.searchMonitoringEnabled === true,
+      safeSearch: c.safeSearchEnabled === true,
+      installApproval: c.appInstallApprovalEnabled === true,
     });
   }, [
     c.appBlockingEnabled,
     c.webFilterEnabled,
     c.locationSharingEnabled,
     c.scheduleEnabled,
+    c.searchMonitoringEnabled,
+    c.appInstallApprovalEnabled,
+    c.safeSearchEnabled,
   ]);
+
+  /*
+   * The filter's category set, optimistic for the same reason the switches
+   * are. Kept apart from `state` above because it is a list rather than a
+   * boolean and re-syncs on its own key — joining them would re-seed every
+   * switch whenever one chip moved.
+   */
+  const [categories, setCategories] = useState(c.webFilterCategories ?? []);
+  const storedCategories = (c.webFilterCategories ?? []).join(',');
+  useEffect(() => {
+    setCategories(storedCategories ? storedCategories.split(',') : []);
+  }, [storedCategories]);
+
+  const toggleCategory = async (category, value) => {
+    const previous = categories;
+    /*
+     * Canonical order, not click order. The stored array is compared field by
+     * field by the security rules and by the child device's policy key, so two
+     * parents picking the same set must produce the same document — and one of
+     * them is on the phone, where `WebFilterScreen` builds it exactly this way.
+     */
+    const next = WEB_FILTER_CATEGORIES.filter(item =>
+      item === category ? value : previous.includes(item),
+    );
+    setCategories(next);
+    const ok = await run('web-categories', () =>
+      // A child rule, like the web-filter switch it belongs to: fanned out to
+      // every sibling device by the server.
+      device.childId
+        ? actions.updateChildRules(device.childId, { webFilterCategories: next })
+        : actions.updateControls(device.id, { webFilterCategories: next }),
+    );
+    if (!ok) setCategories(previous);
+  };
 
   /**
    * Move the switch, then write it, then put it back if the write failed.
@@ -2026,7 +2561,10 @@ function ControlsTab({
     // diverge again. App blocking stays per-device — its list of packages
     // only exists on the one machine. See docs/FEASIBILITY.md (2026-08-26).
     const childRuleSwitch =
-      key === 'webFilter' || key === 'schedule' || key === 'location';
+      key === 'webFilter' ||
+      key === 'schedule' ||
+      key === 'location' ||
+      key === 'safeSearch';
     const ok = await run(`ctrl-${key}`, () =>
       childRuleSwitch && device.childId
         ? actions.updateChildRules(device.childId, {
@@ -2186,6 +2724,20 @@ function ControlsTab({
       unsupported: !supportsAppBlocking(device),
     },
     {
+      key: 'installApproval',
+      title: t('dash.rowInstallApproval'),
+      // The platform decides the shape (`installApprovalMode`): Android and
+      // the TV quarantine, iOS hides the App Store, everything else has no
+      // switch to offer and says so like the rows around it.
+      desc:
+        installMode === 'quarantine'
+          ? t('dash.rowInstallApprovalDesc', { count: pendingInstalls.length })
+          : installMode === 'denyInstalls'
+            ? t('dash.rowInstallApprovalDescIos')
+            : t('dash.rowNotSupported'),
+      unsupported: installMode === null,
+    },
+    {
       key: 'webFilter',
       title: t('dash.rowWebFilter'),
       desc: canWebFilter
@@ -2209,10 +2761,74 @@ function ControlsTab({
           : t('dash.rowLocationNone'),
       unsupported: !supportsLocation(device),
     },
+    {
+      key: 'search',
+      title: t('dash.rowSearchMonitoring'),
+      // Same wording as the phone's third switch, because it is the same
+      // field — a parent reading both surfaces should meet one promise about
+      // what leaves the device, not two.
+      desc: supportsSearchMonitoring(device)
+        ? t('dash.rowSearchMonitoringDesc')
+        : t('dash.rowNotSupported'),
+      unsupported: !supportsSearchMonitoring(device),
+    },
+    {
+      key: 'safeSearch',
+      title: t('dash.rowSafeSearch'),
+      desc: supportsSafeSearch(device)
+        ? t('dash.rowSafeSearchDesc')
+        : t('dash.rowNotSupported'),
+      unsupported: !supportsSafeSearch(device),
+    },
   ];
 
   return (
     <>
+      {/*
+        Apps the device blocked on its own and is holding for the parent.
+
+        Always rendered while the switch is on, even empty: the device decided
+        this without a command, and a parent told "it does not open" has to be
+        able to find the answer where they look for blocks, not only in a push
+        they may have swiped away (`docs/FEASIBILITY.md`, "App install
+        quarantine"). The Installed-apps card on the Overview shows the same
+        rows from the daily scan; this one is the feed's immediate answer.
+      */}
+      {installMode === 'quarantine' && state.installApproval && (
+        <Card
+          title={t('dash.pendingInstallsTitle')}
+          subtitle={t('dash.pendingInstallsSub')}
+        >
+          {pendingInstalls.length === 0 ? (
+            <p className="empty">{t('dash.pendingInstallsEmpty')}</p>
+          ) : (
+            <ul className="events">
+              {pendingInstalls.map(app => (
+                <li key={app.packageName}>
+                  <span className="ev-state tone-serious">
+                    <Icon name="plus" size={13} />
+                  </span>
+                  <span className="ev-body">
+                    <strong>{app.label}</strong>
+                    <em>
+                      {t('dash.pendingInstallBlocked')} · {timeAgo(app.installedAt)}
+                    </em>
+                  </span>
+                  <button
+                    className="btn btn-sm btn-primary"
+                    disabled={readOnly || busy === `install-allow-${app.packageName}`}
+                    title={readOnly ? t('dash.unlockToChange') : undefined}
+                    onClick={() => approveInstall(app.packageName)}
+                  >
+                    {t('dash.installAllow')}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          )}
+        </Card>
+      )}
+
       {/*
         Sites waiting on an answer, on the tab that holds the filter they
         would be allowed by. Only rendered while something is pending: an
@@ -2241,7 +2857,7 @@ function ControlsTab({
                 <button
                   className="btn btn-sm"
                   disabled={readOnly || busy === `site-deny-${req.id}`}
-                  title={readOnly ? t('dash.approveInApp') : undefined}
+                  title={readOnly ? t('dash.unlockToChange') : undefined}
                   onClick={() =>
                     live &&
                     run(`site-deny-${req.id}`, () =>
@@ -2254,7 +2870,7 @@ function ControlsTab({
                 <button
                   className="btn btn-sm btn-primary"
                   disabled={readOnly || busy === `site-allow-${req.id}`}
-                  title={readOnly ? t('dash.approveInApp') : undefined}
+                  title={readOnly ? t('dash.unlockToChange') : undefined}
                   onClick={() =>
                     live &&
                     run(
@@ -2304,6 +2920,24 @@ function ControlsTab({
                 ) : null}
               </div>
               <p className="hint">{t('dash.limitSharedHint')}</p>
+              {/*
+                The budget itself IS editable — what stays read-only above is
+                `controls.dailyLimitMinutes`, this machine's server-computed
+                share of it. The slider was hidden in 2026-08-27 and the
+                number behind it was left with no editor on this surface at
+                all; this is that half, writing the child rule and seeding
+                every assigned device through one repository call.
+              */}
+              <ChildBudgetEditor
+                minutes={childBudgetMinutes}
+                readOnly={readOnly}
+                busy={busy === 'child-budget'}
+                onSave={next =>
+                  run('child-budget', () =>
+                    actions.setChildBudget(device.childId, next, siblingDeviceIds),
+                  )
+                }
+              />
             </>
           ) : (
             <>
@@ -2394,11 +3028,18 @@ function ControlsTab({
                   </p>
                   <ul className="chips chips-toggle">
                     {group.categories.map(key => {
-                      const on = c.webFilterCategories.includes(key);
+                      const on = categories.includes(key);
                       return (
                         <li key={key} className={on ? 'is-on' : ''}>
-                          {on && <Icon name="check" size={13} />}
-                          {webCategoryLabel(t, key)}
+                          <button
+                            disabled={readOnly || busy === 'web-categories'}
+                            aria-pressed={on}
+                            title={readOnly ? t('dash.unlockToChange') : undefined}
+                            onClick={() => toggleCategory(key, !on)}
+                          >
+                            {on && <Icon name="check" size={13} />}
+                            {webCategoryLabel(t, key)}
+                          </button>
                         </li>
                       );
                     })}
@@ -2413,6 +3054,7 @@ function ControlsTab({
         </Card>
 
         <StarChartCard leaderboard={leaderboard} />
+        <FamilyScreenTimeCard board={screenTimeBoard} />
 
         {/*
           A reward is minutes of screen time, granted on a device that can
@@ -2463,25 +3105,105 @@ function ControlsTab({
                   <span className="ev-body">
                     <strong>{task.title}</strong>
                     <em>
+                      {/*
+                        `bonusMinutes` and `repeat` are the field names the
+                        repository maps. This read `task.minutes` and
+                        `task.cadence` until 2026-09-03 and rendered
+                        "+undefined min · undefined" in fourteen languages —
+                        nothing failed, because both halves were interpolated
+                        into a string nobody asserted on.
+                      */}
                       {t('dash.rewardTaskMeta', {
-                        minutes: task.minutes,
-                        cadence: task.cadence,
+                        minutes: task.bonusMinutes,
+                        cadence: t(
+                          task.repeat === 'daily'
+                            ? 'dash.rewardDaily'
+                            : 'dash.rewardOnce',
+                        ),
                       })}
                       {task.status === 'claimed' ? t('dash.rewardTaskWaiting') : ''}
                     </em>
                   </span>
-                  {task.status === 'claimed' && (
-                    <button
-                      className="btn btn-sm"
-                      disabled={readOnly}
-                      title={readOnly ? t('dash.approveInApp') : undefined}
-                    >
-                      {t('dash.approve')}
-                    </button>
+                  {task.status === 'claimed' ? (
+                    <>
+                      {/* Both answers, and the Approve button had no `onClick`
+                          at all until 2026-09-03 — `resolveRewardClaim` was
+                          built and never called.
+
+                          The busy key names the answer, not just the task: one
+                          key for both could not say which was pressed, and a
+                          pair of buttons that only go disabled reads as a
+                          frozen card for the length of the round trip. Both go
+                          disabled, the pressed one shows the ellipsis — the
+                          same rule the phone's claims inbox follows. */}
+                      <button
+                        className="btn btn-sm"
+                        disabled={
+                          readOnly ||
+                          busy === `reward-reject-${task.id}` ||
+                          busy === `reward-approve-${task.id}`
+                        }
+                        title={readOnly ? t('dash.unlockToChange') : undefined}
+                        onClick={() =>
+                          run(`reward-reject-${task.id}`, () =>
+                            actions.resolveRewardClaim(task.id, false),
+                          )
+                        }
+                      >
+                        {busy === `reward-reject-${task.id}`
+                          ? '…'
+                          : t('dash.rewardReject')}
+                      </button>
+                      <button
+                        className="btn btn-sm btn-primary"
+                        disabled={
+                          readOnly ||
+                          busy === `reward-approve-${task.id}` ||
+                          busy === `reward-reject-${task.id}`
+                        }
+                        title={readOnly ? t('dash.unlockToChange') : undefined}
+                        onClick={() =>
+                          run(`reward-approve-${task.id}`, () =>
+                            actions.resolveRewardClaim(task.id, true),
+                          )
+                        }
+                      >
+                        {busy === `reward-approve-${task.id}` ? '…' : t('dash.approve')}
+                      </button>
+                    </>
+                  ) : (
+                    task.status === 'open' && (
+                      <button
+                        className="btn btn-sm"
+                        disabled={readOnly || busy === `reward-${task.id}`}
+                        aria-label={t('dash.rewardDelete')}
+                        title={
+                          readOnly ? t('dash.unlockToChange') : t('dash.rewardDelete')
+                        }
+                        onClick={() =>
+                          run(`reward-${task.id}`, () =>
+                            actions.deleteRewardTask(task.id),
+                          )
+                        }
+                      >
+                        <Icon name="trash" size={13} />
+                      </button>
+                    )
                   )}
                 </li>
               ))}
             </ul>
+          )}
+
+          {supportsRewardTasks(device) && (
+            <RewardTaskForm
+              device={device}
+              readOnly={readOnly}
+              busy={busy === 'reward-create'}
+              onCreate={input =>
+                run('reward-create', () => actions.createRewardTask(input))
+              }
+            />
           )}
         </Card>
       </div>

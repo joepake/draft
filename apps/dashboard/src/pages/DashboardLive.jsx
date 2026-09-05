@@ -77,9 +77,16 @@ function LiveDashboard({ user, deviceId, onDeviceChange, signOut }) {
   // No `getIdToken`: the API adapter reads the current session itself, which is
   // what lets a repository ask for `{ as: 'parent' }` and learn nothing about
   // how this platform proves it.
+  /*
+   * A joined co-parent signs in with their own uid and reads the owner's
+   * family, so "am I the owner" is exactly whether the two match — the same
+   * comparison `resolveFamilyRootForParent` makes server-side. Renaming and
+   * unpairing are the owner's alone.
+   */
+  const isOwner = Boolean(familyId && user?.uid === familyId);
   const actions = useMemo(
-    () => (familyId ? createActions({ familyId, canWrite }) : null),
-    [familyId, canWrite],
+    () => (familyId ? createActions({ familyId, canWrite, isOwner }) : null),
+    [familyId, canWrite, isOwner],
   );
 
   if (loading) {

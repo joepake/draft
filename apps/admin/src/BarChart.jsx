@@ -18,6 +18,13 @@
  * Horizontal rather than vertical because these categories have words for
  * names — `androidtv`, `configurationDisabled`, `vi` — and vertical columns
  * would force them to rotate or truncate.
+ *
+ * **`order` turns it into a histogram.** Without it the bars sort by size and
+ * empty categories vanish, which is right for a platform mix: an unlisted
+ * platform is one nobody runs. It is wrong for a distribution over buckets that
+ * have a sequence — "0 families converted in week two" is a fact about the
+ * curve, and a chart that silently closes the gap draws a different curve. Pass
+ * the bucket keys in their own order and every one is drawn, zero included.
  */
 
 const BAR_HEIGHT = 10;
@@ -25,12 +32,21 @@ const ROW_HEIGHT = 26;
 const LABEL_WIDTH = 116;
 const VALUE_WIDTH = 44;
 
-export default function BarChart({ data, total, emptyLabel = 'No data' }) {
-  const rows = Object.entries(data || {})
-    .filter(([, value]) => Number.isFinite(value) && value > 0)
-    .sort((a, b) => b[1] - a[1]);
+export default function BarChart({
+  data,
+  total,
+  order,
+  emptyLabel = 'No data',
+  labels,
+}) {
+  const source = data || {};
+  const rows = order
+    ? order.map(key => [key, Number(source[key]) || 0])
+    : Object.entries(source)
+        .filter(([, value]) => Number.isFinite(value) && value > 0)
+        .sort((a, b) => b[1] - a[1]);
 
-  if (rows.length === 0) {
+  if (rows.length === 0 || rows.every(([, value]) => value === 0)) {
     return <p className="muted">{emptyLabel}</p>;
   }
 
@@ -48,8 +64,8 @@ export default function BarChart({ data, total, emptyLabel = 'No data' }) {
           className="bar-row"
           style={{ height: ROW_HEIGHT, gridTemplateColumns: `${LABEL_WIDTH}px 1fr` }}
         >
-          <span className="bar-label" title={label}>
-            {label}
+          <span className="bar-label" title={labels?.[label] ?? label}>
+            {labels?.[label] ?? label}
           </span>
           <div className="bar-track">
             <div

@@ -56,6 +56,8 @@ export const activities = {
   appBlockedBody: 'فُتح تطبيق محظور وأغلقه KidGate.',
   appInstalledTitle: 'تم تثبيت التطبيق',
   appInstalledBody: 'تم تثبيت التطبيق {{appName}} على جهاز الطفل.',
+  appInstalledPendingBody:
+    'تم تثبيت التطبيق {{appName}} على جهاز الطفل، وهو محظور حتى تسمح به.',
 
   messageAlertTitle: 'محتوى رسالة مقلق',
   messageAlertBody: 'تم رصد كلمة مُعلَّمة في {{appName}}.',

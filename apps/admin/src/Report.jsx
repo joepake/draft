@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import BarChart from './BarChart.jsx';
 import Sparkline from './Sparkline.jsx';
 import { dateKey, useRollup } from './useRollup.js';
 
@@ -33,13 +34,15 @@ const RANGES = [7, 30, 90];
 /**
  * Per-day metrics, one row each.
  *
- * `note` is not decoration. Three of these measure a narrower population than
+ * `note` is not decoration. Four of these measure a narrower population than
  * their names suggest, and an operator reading `Screen minutes: 0` as "nobody
  * used their phone" would be drawing the wrong conclusion from a correct
- * number — the marker and the footnote are what stop that.
+ * number — the marker and the footnote are what stop that. `true` means the
+ * premium-only footnote; a string is its own marker.
  */
 const DAY_METRICS = [
   { key: 'newFamilies', label: 'New families' },
+  { key: 'conversions', label: 'First purchases', note: '‡' },
   { key: 'activities', label: 'Activities, all types' },
   { key: 'tamper', label: 'Tamper', from: 'activityTypes' },
   { key: 'app_blocked', label: 'App blocked', from: 'activityTypes' },
@@ -81,6 +84,41 @@ const PLAN_ROWS = [
   { key: 'familiesPlanFree', label: 'Free' },
   { key: 'familiesPlanMissing', label: 'Plan missing', note: true },
 ];
+
+/**
+ * The conversion histogram's buckets, in time order rather than by size.
+ *
+ * The keys and their edges are `CONVERSION_BUCKETS` in
+ * `functions/lib/conversionStats.js`; the labels are here because they are
+ * prose for one operator, not data. Order is the whole point — a distribution
+ * sorted by height is not a curve.
+ */
+const CONVERSION_BUCKETS = [
+  'd0',
+  'd1',
+  'd2_3',
+  'd4_7',
+  'd8_14',
+  'd15_30',
+  'd31_60',
+  'd61_plus',
+];
+
+const CONVERSION_LABELS = {
+  d0: 'Same day',
+  d1: 'Next day',
+  d2_3: '2–3 days',
+  d4_7: '4–7 days',
+  d8_14: '8–14 days',
+  d15_30: '15–30 days',
+  d31_60: '31–60 days',
+  d61_plus: '61+ days',
+};
+
+/** `null` reads as "not measurable", never as zero days. */
+function dayCount(value) {
+  return Number.isFinite(value) ? `${value}d` : '—';
+}
 
 function valueOf(row, metric) {
   if (!row) {
@@ -240,6 +278,102 @@ export default function Report() {
             </div>
           ) : null}
 
+          {latest?.conversion ? (
+            <>
+              <div className="section-head">
+                <h2 className="section-title">Time to purchase</h2>
+                <span className="muted">
+                  Every family that has ever paid, as of {latest.date} — not a range
+                </span>
+              </div>
+
+              <div className="tile-grid" style={{ marginBottom: 12 }}>
+                <div className="tile">
+                  <div className="tile-label">Families ever paid</div>
+                  <div className="tile-value">{format(latest.conversion.families)}</div>
+                </div>
+                <div className="tile">
+                  <div className="tile-label">Median, signup → paid</div>
+                  <div className="tile-value">
+                    {dayCount(latest.conversion.fromSignup?.medianDays)}
+                  </div>
+                </div>
+                <div className="tile">
+                  <div className="tile-label">Median, trial → paid</div>
+                  <div className="tile-value">
+                    {dayCount(latest.conversion.fromTrial?.medianDays)}
+                  </div>
+                </div>
+                <div className="tile">
+                  <div className="tile-label">Conversion of all families</div>
+                  <div className="tile-value">
+                    {Number.isFinite(latest.families) && latest.families > 0
+                      ? `${Math.round((latest.conversion.families / latest.families) * 100)}%`
+                      : '—'}
+                  </div>
+                </div>
+              </div>
+
+              {latest.conversion.families > 0 && latest.conversion.families < 5 ? (
+                <div className="status-strip" style={{ marginBottom: 12 }}>
+                  <span className="status-dot is-warning" />
+                  <span className="status-label">
+                    {latest.conversion.families} paying{' '}
+                    {latest.conversion.families === 1 ? 'family' : 'families'}
+                  </span>
+                  <span className="status-detail">
+                    A median over this few is one family&rsquo;s purchase, not a trend.
+                    Read the bars as anecdotes until the count reaches double figures.
+                  </span>
+                </div>
+              ) : null}
+
+              <div className="chart-grid">
+                {[
+                  {
+                    key: 'fromSignup',
+                    title: 'From signup',
+                    sub: 'Days between the account being created and its first payment',
+                    unknown:
+                      'no createdAt on the family — a signup that predates the field',
+                  },
+                  {
+                    key: 'fromTrial',
+                    title: 'From trial start',
+                    sub: 'Days between the first parent + child device pairing and the first payment',
+                    unknown:
+                      'never started a trial clock, or paired before the field existed',
+                  },
+                ].map(cut => {
+                  const stats = latest.conversion[cut.key] ?? {};
+                  return (
+                    <div key={cut.key} className="chart-card">
+                      <h3 className="chart-title">{cut.title}</h3>
+                      <p className="chart-sub">{cut.sub}</p>
+                      <BarChart
+                        data={stats.buckets}
+                        order={CONVERSION_BUCKETS}
+                        labels={CONVERSION_LABELS}
+                        total={stats.families}
+                        emptyLabel="No family has converted with this measurable yet."
+                      />
+                      <p className="chart-sub" style={{ marginTop: 10 }}>
+                        n = {format(stats.families)} · mean {dayCount(stats.meanDays)} ·
+                        p25 {dayCount(stats.p25Days)} · p75 {dayCount(stats.p75Days)}
+                        {stats.unknown > 0
+                          ? ` · ${stats.unknown} not measurable (${cut.unknown})`
+                          : ''}
+                        {stats.invalid > 0
+                          ? ` · ${stats.invalid} dated before the start — clock skew or a wrong backfill guess`
+                          : ''}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
+            </>
+          ) : null}
+
           <div className="section-head">
             <h2 className="section-title">Daily activity</h2>
           </div>
@@ -259,7 +393,11 @@ export default function Report() {
                 <div key={metric.key} className="metric-row">
                   <span className="metric-name">
                     {metric.label}
-                    {metric.note ? <sup className="mark">*</sup> : null}
+                    {metric.note ? (
+                      <sup className="mark">
+                        {metric.note === true ? '*' : metric.note}
+                      </sup>
+                    ) : null}
                   </span>
                   <span className="metric-num">{format(valueOf(latest, metric))}</span>
                   <Sparkline values={series} />
@@ -318,6 +456,15 @@ export default function Report() {
               one usually carries <code>planId: free</code>. <b>Plan missing</b> should
               stay at zero; a number that climbs is a signup path that stopped writing
               the field.
+            </p>
+            <p>
+              <b>‡</b> <b>First purchases</b> counts families paying for the{' '}
+              <i>first time ever</i>, from <code>firstPurchasedAt</code>, which is
+              written once and never rewritten. A renewal, a restore and a re-subscribe
+              after a lapse are all invisible here — deliberately, since this is the
+              number the <b>Time to purchase</b> section is built on. Families that
+              converted before the field shipped (2026-09-05) count only if the backfill
+              could date them.
             </p>
             <p>
               A dash is a day with no row, and the trend line breaks across it. A zero

@@ -1,9 +1,12 @@
 import type {
+  DeviceMonitoringState,
   DeviceProtectionCounters,
   DeviceProtectionStatus,
   DeviceStatus,
   DeviceWebToday,
+  DeviceWeekCounters,
 } from './device';
+import type { UsageAppBreakdown } from './usageDay';
 import type { DeviceControls, DeviceLocation } from './deviceControls';
 import type { DeviceMessageMonitoringState } from './messageMonitoringState';
 import type { DevicePlace } from './devicePlace';
@@ -29,6 +32,21 @@ export interface FirestoreUser {
   planId?: PlanId;
   subscription?: UserSubscription | null;
   /**
+   * The moment this family first paid, ever. **Written once and never
+   * overwritten**, including by a renewal, a re-verify, a store notification or
+   * a re-subscribe after a lapse.
+   *
+   * `subscription.updatedAt` cannot answer "how long did they take to buy":
+   * every renewal, RTDN sync and expiry sweep rewrites it
+   * (`functions/lib/subscriptions.js`), so a year-old customer looks like they
+   * converted last Tuesday. This field exists because that question is
+   * unanswerable after the fact — a family that converts before it is deployed
+   * is permanently missing from the conversion series, which is why the
+   * backfill script guesses (and marks its guesses) rather than leaving them
+   * blank. `docs/ADMIN_REPORTING.md`.
+   */
+  firstPurchasedAt?: string | null;
+  /**
    * Whether siblings see each other's star standings.
    *
    * Absent means on, so a family that already has two children does not have to
@@ -38,6 +56,12 @@ export interface FirestoreUser {
    * rather than an argument.
    */
   leaderboardEnabled?: boolean;
+  /**
+   * The family screen-time board (`screenTimeBoard.ts`). Unlike the star
+   * chart, **absent means off**: minutes compare a parent against a child, and
+   * a family should ask for that rather than find it.
+   */
+  screenTimeBoardEnabled?: boolean;
   /**
    * Consent to the runtime AI message-analysis tier, written to this document
    * by `functions/http/messageAiConsent.js` and read from it by
@@ -82,7 +106,9 @@ export const FIRESTORE_USER_FIELDS = [
   'trialStartedAt',
   'planId',
   'subscription',
+  'firstPurchasedAt',
   'leaderboardEnabled',
+  'screenTimeBoardEnabled',
   'messageAiConsent',
   'createdAt',
   'updatedAt',
@@ -177,6 +203,20 @@ export interface ChildDeviceRecord {
   status: DeviceStatus;
   isLocked: boolean;
   lastActiveAt: string;
+  /**
+   * How often this device is currently beating — what `lastActiveAt` above is
+   * to be judged against. See `Device.beatIntervalMs`; absent is the live
+   * cadence.
+   */
+  beatIntervalMs?: number;
+  /** The last "report now" a parent console sent. See `Device.reportRequestId`. */
+  reportRequestId?: string;
+  /** Monitored or parked. Absent means active — see `DeviceMonitoringState`. */
+  monitoringState?: DeviceMonitoringState;
+  /** The trailing week's counts, child-written. See `DeviceWeekCounters`. */
+  weekCounters?: DeviceWeekCounters;
+  /** Today's three most-used apps, for the free tier. See `Device.topAppsToday`. */
+  topAppsToday?: UsageAppBreakdown[];
   createdAt: string;
   controls?: DeviceControls;
   lastLocation?: DeviceLocation;

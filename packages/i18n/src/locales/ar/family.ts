@@ -56,6 +56,7 @@ export const family = {
   childDetailStarsWell: 'نجوم هذا الأسبوع',
   childStarsA11y: 'نجوم هذا الأسبوع: {{count}}',
   childDetailDevicesTitle: 'الأجهزة',
+  childDetailSwipeHint: 'اسحب الجهاز لإلغاء تعيينه.',
   childDetailAssignMore: 'تعيين جهاز آخر…',
   childDetailAssignSheetTitle: 'تعيين جهاز لـ{{childName}}',
   childDetailNoDevices:
@@ -88,6 +89,8 @@ export const family = {
   chipDeviceCount_other: '{{count}} جهاز',
 
   chipOnlineCount: '{{count}} متصل',
+  metaOnlineCount: '{{online}} من {{count}} متصل',
+  metaOnlineCount_one: 'جهاز واحد متصل',
 
   chipSosCount: '{{count}} SOS',
 
@@ -123,6 +126,32 @@ export const family = {
   healthNeedsSetup: 'يتطلب الإعداد',
 
   healthOffline: 'غير متصل',
+
+  devicePausedLabel: 'متوقف مؤقتًا',
+
+  devicePausedHint: 'متوقف مؤقتًا في الخطة المجانية — كل القواعد لا تزال سارية',
+
+  parkedBannerTitle: 'اختر الجهاز الذي ستواصل متابعته',
+
+  parkedBannerBody:
+    'قواعدك تعمل على كل جهاز. الخطة المجانية تتلقى التقارير من جهاز واحد — اختره، أو قم بالترقية للاحتفاظ بها كلها.',
+
+  parkedBannerAction: 'اختيار الجهاز',
+
+  chooseMonitoredTitle: 'أي جهاز يجب أن يُبلغ؟',
+
+  chooseMonitoredBody:
+    'كل القواعد لا تزال تعمل على جميعها. الجهاز الذي تختاره فقط يرسل وقت الشاشة والموقع. يمكنك تغييره مرة كل {{days}} أيام.',
+
+  chooseMonitoredConfirm: 'متابعة هذا الجهاز',
+
+  chooseMonitoredUpgrade: 'الاحتفاظ بكل الأجهزة — الترقية',
+
+  chooseMonitoredDone: '\u200F{{name}} هو الآن الجهاز الذي يُبلغ',
+
+  monitoredCooldown: 'لا يمكن تغيير الجهاز الذي يُبلغ إلا مرة كل {{days}} أيام',
+
+  monitoredChooseFailed: 'تعذر تغيير الجهاز الذي يُبلغ',
 
   cardWhereLabel: 'الموقع',
 
@@ -339,7 +368,7 @@ export const family = {
   childDetailProtectionAttention_few: '{{count}} أجهزة تحتاج إلى انتباه',
   childDetailProtectionAttention_many: '{{count}} جهازًا يحتاج إلى انتباه',
   childDetailProtectionSheetTitle: 'الحماية حسب الجهاز',
-  childDetailRemoveTitle: 'إزالة هذا الطفل',
+  childDetailRemoveTitle: 'حذف ملف {{childName}}',
   childDetailRemovingButton: 'جارٍ الإزالة…',
   childDetailOnlineCount: '{{online}} من {{total}} متصل',
   childDetailBudgetTitle: 'الحد اليومي',

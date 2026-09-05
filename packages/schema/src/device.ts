@@ -7,8 +7,17 @@ import type {
   DeviceFormFactor,
   DevicePlatform,
 } from './capabilities';
+import type { UsageAppBreakdown } from './usageDay';
 
-export type DeviceStatus = 'online' | 'offline' | 'locked';
+/**
+ * `parked` is derived, never stored: `getEffectiveDeviceStatus` answers it for
+ * a device whose `monitoringState` is `'parked'` (`docs/PRICING.md` §6). It is
+ * in this union because that device is neither online nor offline — it is
+ * quiet **by design**, still enforcing every rule, and a parent surface that
+ * painted it red as "Offline" would be reporting a plan decision as a fault.
+ * Nothing writes `status: 'parked'` to Firestore.
+ */
+export type DeviceStatus = 'online' | 'offline' | 'locked' | 'parked';
 export type ProtectionPermissionStatus =
   'authorized' | 'denied' | 'notDetermined' | 'restricted' | 'unavailable' | 'unknown';
 
@@ -17,6 +26,135 @@ export interface DeviceProtectionCounters {
   appBlocked?: number;
   tamper?: number;
 }
+
+/**
+ * Whether this device is being watched, or kept and quiet.
+ *
+ * A family leaving the trial with more devices than its plan monitors does not
+ * lose them: the parent chooses one to keep, and the rest are **parked**
+ * (`docs/PRICING.md` §6). A parked device keeps enforcing every rule it holds —
+ * the rules are already on it, and the device-document listener still delivers
+ * any the parent changes — and stops reporting: no heartbeat, no usage, no
+ * location, no counters. **SOS is the one exception, always.**
+ *
+ * What it buffers instead is uploaded when the family buys premium, and only
+ * then. A device merely becoming the free tier's monitored one does not
+ * backfill, or swapping the monitored device around the set would drain every
+ * buffer for nothing.
+ *
+ * **Server-written, client-immutable.** Set by the trial-end sweep, by
+ * `verifyPurchase` on renewal, and by the choose-a-device endpoint. A child
+ * device could otherwise un-park itself, which is the one thing here worth
+ * anything to it.
+ *
+ * **Absent means active**, which is what every device paired before this
+ * existed is, and what a family inside its plan's allowance always is.
+ */
+export type DeviceMonitoringState = 'active' | 'parked';
+
+/**
+ * `users/{uid}/private/deviceParking` — the family's parking bookkeeping.
+ *
+ * **Server-only.** `firestore.rules` keeps `private/` from every client, so
+ * nothing here is read by an app; the shape lives in this package because rule
+ * 2 says shapes live here, and because `functions/lib/deviceParking.js` is not
+ * the only writer any more (`scheduled/dormancyReaper.js`,
+ * `http/parentPresence.js`). Every field is optional: the document is created
+ * by whichever of them gets there first.
+ */
+export interface DeviceParkingState {
+  /** The device a free family keeps watching. Absent until a parent chooses. */
+  monitoredDeviceId?: string;
+  /**
+   * When the monitored slot was last moved by a parent — the swap cooldown's
+   * anchor. Absent after an auto-pick, so the first correction is free.
+   */
+  changedAtMs?: number;
+  /**
+   * When a parent console last opened for this family, as
+   * `touchParentPresence` stamps it. The dormancy reaper's only input.
+   */
+  lastParentOpenAtMs?: number;
+  /**
+   * Set by the reaper on its first visit to a family that predates the stamp,
+   * so the thirty days count from rollout rather than parking every free
+   * family on the day it shipped.
+   */
+  presenceSeededAtMs?: number;
+  /** The devices the reaper parked, in the order it found them. */
+  dormantDeviceIds?: string[];
+  dormantSinceMs?: number;
+}
+
+/**
+ * Counts over the trailing week — the free tier's whole answer to "what
+ * happened", and the paid tier's tease.
+ *
+ * **Count free, detail paid** (`docs/PRICING.md` §4). A free family sees "12
+ * sites blocked, 3 new apps this week" and cannot see which; a filter whose
+ * effect a parent cannot observe gives them no reason to upgrade, and this is
+ * the cheapest possible observation of it — two integers riding a write the
+ * device already makes.
+ *
+ * **Why not the counters that already exist.** `webToday` is written by
+ * `logChildWebActivity` as it accepts a batch, and that endpoint is
+ * premium-gated: a free family never posts, so it never fills. Neither does it
+ * span a week. `webFilterBlockedCount` is a child-written all-time tally, which
+ * is the right writer and the wrong number — "blocked 12,483 sites" says
+ * nothing a parent can act on, and a week is what makes it a sentence.
+ * `protectionCounters` is all-time too, and about tampering.
+ *
+ * Rolling seven days, not a calendar week: a calendar week reads zero on
+ * Monday morning, which is exactly when a parent opens the app.
+ *
+ * The device keeps the daily ring locally and publishes the sum
+ * (`@kidgate/core/domain/weekCounters`). `date` is the last local day folded
+ * in, and a console must render the window as of that date or not at all — the
+ * same rule `DeviceWebToday` states, for the same reason: a stale count shown
+ * as "this week" is a filter that looks like it stopped.
+ */
+export interface DeviceWeekCounters {
+  /** `YYYY-MM-DD`, the last local day included, on the child device's clock. */
+  date: string;
+  /** Refused web lookups across the window. */
+  blockedSites: number;
+  /**
+   * Apps first seen across the window.
+   *
+   * Absent where the platform cannot tell — a Mac, a television and a browser
+   * extension see no installs — rather than zero, which claims none happened.
+   */
+  newApps?: number;
+}
+
+/**
+ * The daily buckets `weekCounters` is summed from — bookkeeping, not a reading.
+ *
+ * **Server-written, from counts the child sends on its usage report.** The ring
+ * could have lived on each device instead, and the schema comment above once
+ * said it would; keeping it here is what makes the feature reach five child
+ * surfaces without five copies of the same fold. An agent only has to count
+ * what it already observes and put two integers on a request it already makes
+ * (`reportChildUsage`, the one endpoint a free family still reaches) —
+ * `@kidgate/core/domain/weekCounters` does the rest in one place.
+ *
+ * Seven entries at most, oldest first, keyed by the **child device's** local
+ * date. Never read by a parent surface: `weekCounters` above is what a console
+ * renders, and this is how that number is kept honest across a device that
+ * spends most of a week asleep.
+ *
+ * **What a device sends is a reading of its day, not a batch of events**, and
+ * today's bucket therefore takes the larger of the two rather than their sum.
+ * Every counter on every surface is a running per-day total; the fold added
+ * them until 2026-09-05, so a phone that refused twelve sites by noon added
+ * twelve again on every report for the rest of the day. `foldWeekCounters`
+ * carries the correction and why it belongs there rather than in four agents.
+ */
+export type DeviceWeekCounterBuckets = ReadonlyArray<{
+  date: string;
+  blockedSites: number;
+  newApps: number;
+}>;
 
 /**
  * One day of browsing, summarised onto the device document by the server.
@@ -314,7 +452,43 @@ export interface Device {
   webFilterBlockedCount?: number;
   /** The server's summary of the last day this device reported browsing. */
   webToday?: DeviceWebToday;
+  /**
+   * The trailing week's counts, child-written. See `DeviceWeekCounters` for
+   * why the three counters beside it could not answer this.
+   */
+  weekCounters?: DeviceWeekCounters;
+  /**
+   * Server bookkeeping behind `weekCounters`. Not for a parent surface — see
+   * `DeviceWeekCounterBuckets`.
+   */
+  weekCounterBuckets?: DeviceWeekCounterBuckets;
   protectionCounters?: DeviceProtectionCounters;
+  /**
+   * The three apps used most today, for a parent on the free tier.
+   *
+   * **Deliberately not `usageDays`.** `controls.topApps` travels to
+   * `reportChildUsage` and is stored on `usageDays/{date}`, which is the
+   * premium Usage Reports screen and the document the weekly digest reads — a
+   * free family must never have one, or the Sunday job starts spending a model
+   * call on them (`docs/PRICING.md` §7). Three labels on the device document
+   * cost nothing extra: the write that carries them is the usage report the
+   * device already makes.
+   *
+   * Three, not ten. This is the taste of the paid tier, not a smaller copy of
+   * it — the full ranking, the timeline and the history are what a parent
+   * upgrades for, and `USAGE_TOP_APPS_LIMIT` is the contract for that list, not
+   * for this one.
+   *
+   * Rewritten whole on each report, and stamped by `usageDate` in `controls`,
+   * which the same write sets. A reader must check that date: "today" on a
+   * device that last reported on Sunday is Sunday's answer.
+   */
+  topAppsToday?: UsageAppBreakdown[];
+  /**
+   * Whether this device is monitored or parked. Absent means active — see
+   * `DeviceMonitoringState`.
+   */
+  monitoringState?: DeviceMonitoringState;
   /**
    * Child phone battery, 0–100. Undefined until the device reports one —
    * never defaulted to 0, which would read as a dead phone.
@@ -356,4 +530,51 @@ export interface Device {
    * fix, which the rules already cannot prevent.
    */
   locationRequestId?: string | null;
+
+  /**
+   * "Report now" — set when a parent opens a console, so a free-tier device on
+   * a thirty-minute cadence answers while somebody is actually looking.
+   *
+   * The id is compared against the last one the agent answered, exactly as
+   * `locationRequestId` is, and for the same reason: a listener re-delivers
+   * the current snapshot on reconnect, and a request that cannot be told from
+   * its own echo is one the device performs twice.
+   *
+   * **Written by a parent client, not by a Cloud Function**, which is the one
+   * way it differs from the field above. There is nothing here for the Admin
+   * SDK to decide: the console already knows the plan and holds the device
+   * document it is about to write, and the alternative — an HTTPS function per
+   * app open — is a Cloud Run service, a deploy and an invocation to carry a
+   * value the client already has. The phone half of the delivery still needs a
+   * server, and it already has one: `notifyChildDeviceCommand` fires on this
+   * write and turns it into a silent wake for `ios` and `android`
+   * (`@kidgate/core/domain/reportRequest` decides which platforms need that).
+   *
+   * Not under `controls` — it is a request, not a rule, and `controls` is
+   * pinned against child writes by `parentControlsUnchanged()`.
+   */
+  reportRequestId?: string | null;
+
+  /**
+   * How often this device is currently beating, in milliseconds — what it is
+   * doing, not what its plan entitles it to.
+   *
+   * Written on the heartbeat it already makes, so it costs no write of its
+   * own. It exists because the parent surfaces must judge silence against the
+   * cadence the device actually keeps: a free-tier device speaks every thirty
+   * minutes (`@kidgate/core/domain/reportCadence`), and against the live
+   * three-minute window every one of them reads permanently offline.
+   *
+   * **The device answers this and no console works it out.** The dashboard
+   * cannot — it has no `TRIAL_DAYS` and so cannot tell a running trial from a
+   * lapsed one — and even the phone, which can read its own subscription,
+   * would be wrong about a device whose lapse latch has not cleared yet, about
+   * a parked device, and about a device still on an older build.
+   *
+   * **Absent means the live cadence**, which is what an older build keeps and
+   * what `offlineThresholdForBeat` returns for it. Consumers clamp rather than
+   * trust: the writer is the child device, and one that could name its own
+   * offline window could name one it never misses.
+   */
+  beatIntervalMs?: number;
 }

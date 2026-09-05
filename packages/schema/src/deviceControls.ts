@@ -99,6 +99,17 @@ export const MAX_APP_LIMITS = 20;
 export const APP_LIMIT_MIN_MINUTES = 5;
 export const APP_LIMIT_MAX_MINUTES = 480;
 
+/**
+ * Most package names `approvedPackages` may hold.
+ *
+ * The list is parent-supplied and lands in every window-state callback on the
+ * child device, so it is capped at the server (`functions/http/controls.js`)
+ * rather than trusted as typed. Two hundred is far past what a family
+ * approves in a year and small enough that the document every parent screen
+ * reads does not grow by it.
+ */
+export const MAX_APPROVED_PACKAGES = 200;
+
 export interface DeviceControls {
   dailyLimitMinutes: number | null;
   /**
@@ -123,6 +134,28 @@ export interface DeviceControls {
   webFilterBlockList?: string[];
   /** Allow-list-only browsing: everything else is refused. */
   webFilterAllowListOnly?: boolean;
+  /**
+   * Force the search engines' safe modes — Google SafeSearch, YouTube
+   * Restricted Mode, Bing strict, DuckDuckGo safe — by answering the child's
+   * lookups of those hosts with the engines' own enforcement addresses
+   * (`@kidgate/core/domain/safeSearch`). PARENT-set, a child rule fanned out
+   * like `webFilterEnabled`, and it rides the same tunnel: off whenever the
+   * web filter is off. Gated 2026-09-02 in `docs/FEASIBILITY.md`.
+   *
+   * **Absent is off**, so no device that predates the field begins
+   * rewriting answers after an update.
+   */
+  safeSearchEnabled?: boolean;
+  /**
+   * Whether the device records which videos the child watched
+   * (`videoHistory`). PARENT-set, a child rule fanned out like
+   * `webFilterEnabled`. On the browser extension it needs no OS grant; on the
+   * Android app it reads the media session behind the notification-listener
+   * consent the message monitor already holds, so switching it on before that
+   * grant is a no-op until the child gives it. **Absent is off**, so no device
+   * that predates the field starts reporting watched videos after an update.
+   */
+  videoHistoryEnabled?: boolean;
   /**
    * Where the child's shared daily budget stands, stamped by
    * `reportChildUsage` onto every assigned device whenever the child has
@@ -176,16 +209,15 @@ export interface DeviceControls {
    * **Absent is off**, so no device that predates this begins reporting
    * searches after an update.
    *
-   * `apps/extension` is the only surface that reads it today: a browser sees
-   * the committed URL, which is the one place the query is legible
-   * (`@kidgate/core/domain/searchQuery` sets out why the DNS tunnel and the
-   * macOS provider cannot). Android's route is a text field rather than a URL
-   * and is gated on two unrun checks — see `apps/mobile/CLAUDE.md`.
+   * Read by `apps/extension`, where a browser sees the committed URL — the one
+   * place the query is legible (`@kidgate/core/domain/searchQuery` sets out why
+   * the DNS tunnel and the macOS provider cannot) — and by Android's typing
+   * monitor through `childControlsEnforcement`, whose route is a text field
+   * rather than a URL and is gated on two unrun checks (`apps/mobile/CLAUDE.md`).
    *
-   * **No parent surface writes this yet.** `apps/dashboard` has no message
-   * screen at all and `MessageAlertsScreen` has no third row; the field exists
-   * so that when one is built it drives something already shipped, which is the
-   * order `messageProfanityEnabled` went in too. Recorded in `docs/BACKLOG.md`.
+   * Written by `MessageAlertsScreen`'s third switch and the dashboard's
+   * "What's on" row, both through `updateDeviceControls`: it is a
+   * `PARENT_CONTROL_KEYS` entry, so a child device cannot flip it.
    */
   searchMonitoringEnabled?: boolean;
   /**
@@ -217,6 +249,48 @@ export interface DeviceControls {
    * native surface. Android only, like the rest of message-content monitoring.
    */
   messageProfanityEnabled?: boolean;
+  /**
+   * App install quarantine — PARENT-set, `PARENT_CONTROL_KEYS`, default off.
+   *
+   * While on, an app installed **after** `appInstallApprovalSinceMs` and not
+   * listed in `approvedPackages` cannot be opened on the child device. The
+   * device decides at launch time from the OS's own install timestamp
+   * (`PackageManager.firstInstallTime` on Android), so nothing here depends
+   * on the install having been observed live — a package installed while
+   * KidGate's process was dead is still caught the first time it opens.
+   * `docs/FEASIBILITY.md`, "App install quarantine".
+   *
+   * Its own switch rather than a mode of `appBlockingEnabled`: that one is
+   * gated on the child having picked something (`blockedAppsConfigured`), and
+   * a family that never opened the picker must still get this.
+   *
+   * On iOS there is no per-app answer (no `ApplicationToken` from a bundle
+   * id), so the same switch means "hide the App Store" —
+   * `ManagedSettingsStore.application.denyAppInstallation`. The parent screen
+   * says so at the switch.
+   *
+   * **Absent is off**, so no device that predates this begins refusing
+   * launches after an update.
+   */
+  appInstallApprovalEnabled?: boolean;
+  /**
+   * Epoch ms at which the quarantine was switched on, **stamped by
+   * `updateDeviceControls`** from the server clock — a client never sends it.
+   * Cleared to `null` when the switch goes off, so switching on again starts
+   * a fresh line: an app installed during the off period is not retroactively
+   * quarantined. Null or absent while off.
+   */
+  appInstallApprovalSinceMs?: number | null;
+  /**
+   * Package names a parent has approved, so they open despite being installed
+   * after `appInstallApprovalSinceMs`. Written by the parent through
+   * `updateDeviceControls`, which caps it at `MAX_APPROVED_PACKAGES`: a
+   * client-supplied list that every accessibility callback reads.
+   *
+   * "Deny" is not a state — a package that is not here is blocked, and a
+   * parent who declines simply leaves it out.
+   */
+  approvedPackages?: string[];
   blockedAppsConfigured: boolean;
   blockedAppCount: number;
   blockedCategoryCount: number;
@@ -271,6 +345,48 @@ export interface DeviceControls {
    * one device again.
    */
   idleMinutes?: number;
+
+  /**
+   * Refused web lookups this device has seen **today**, on its own clock.
+   *
+   * Child-to-server only, and the two counts below it are the free tier's
+   * whole visible answer to what happened (`docs/PRICING.md` §4). They ride a
+   * usage report because that is the only request a free family still makes:
+   * `logChildWebActivity` and `logChildPackageActivity` are both premium-gated,
+   * so the events themselves never reach the server for the families that need
+   * these numbers most.
+   *
+   * `reportChildUsage` folds them into a seven-day ring
+   * (`Device.weekCounterBuckets`) and publishes the sum as
+   * `Device.weekCounters`. Neither is stored on `controls`.
+   *
+   * **Send it on every report once the device can count at all, zero
+   * included.** Absent means "this platform does not observe that" — an iPhone
+   * runs no filter — and a field that appeared only on days with a non-zero
+   * count would make the summary flip between having an answer and having
+   * none.
+   */
+  blockedSitesToday?: number;
+
+  /**
+   * Apps first seen on this device today, on its own clock. Same transport,
+   * same rule, same fold as `blockedSitesToday`.
+   *
+   * Absent on every surface that cannot see an installation — a browser
+   * extension and an iPhone. Zero from those would be the claim that none
+   * happened. A television **can**: it has no install receiver, but
+   * `PackageInfo.firstInstallTime` is on every launchable package, and a count
+   * of the ones installed since local midnight is the same number a receiver
+   * would have reached — the quarantine already trusts that clock.
+   *
+   * A desktop **does**, by a third route: `appscan::installed_apps` has no
+   * install date to read, so the agent keeps a tally of what each snapshot diff
+   * found new. That undercounts by design — an install while the agent was dead
+   * lands in the next baseline instead of the count — which is the same
+   * direction `usageSource: 'agent'` is already wrong in, and never an
+   * invention.
+   */
+  newAppsToday?: number;
 }
 
 export const DEFAULT_SCHEDULE_WINDOWS: ScheduleWindow[] = [
@@ -290,6 +406,9 @@ export const DEFAULT_DEVICE_CONTROLS: DeviceControls = {
   webFilterAllowListOnly: false,
   screenTimeAuthorized: false,
   appBlockingEnabled: false,
+  appInstallApprovalEnabled: false,
+  appInstallApprovalSinceMs: null,
+  approvedPackages: [],
   messageMonitoringEnabled: false,
   messageMonitoringOutgoingEnabled: false,
   blockedAppsConfigured: false,

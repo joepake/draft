@@ -62,6 +62,42 @@ export function supportsAppBlocking(device: ControlSupportFacts): boolean {
   return probe === undefined ? true : probe !== false;
 }
 
+export interface InstallApprovalSupportFacts extends ControlSupportFacts {
+  platform?: DevicePlatform | null;
+}
+
+/**
+ * What the app-install-approval switch does on this device, or `null` when
+ * the switch has nothing to do.
+ *
+ * - `quarantine` — Android and Android TV: an app installed after the switch
+ *   went on will not open until a parent approves it. Needs the same
+ *   accessibility service app blocking runs on, so a probe saying
+ *   `appBlock: false` means no.
+ * - `denyInstalls` — iOS: no per-app answer exists (`docs/FEASIBILITY.md`,
+ *   "App install quarantine", K5), so the switch hides the App Store instead.
+ *   Coarser, and the parent screen says so at the switch.
+ * - `null` — desktop and the browser extension: installs are reported there
+ *   and nothing can hold them (`docs/BACKLOG.md`).
+ *
+ * The platform decides the *shape* and the probe decides *whether*, which is
+ * the same split `webFilterSupport` makes: a platform list alone would promise
+ * a quarantine to a Chromebook, and a probe alone cannot say what iOS does.
+ */
+export function installApprovalMode(
+  device: InstallApprovalSupportFacts,
+): 'quarantine' | 'denyInstalls' | null {
+  switch (device.platform ?? null) {
+    case 'android':
+    case 'androidtv':
+      return supportsAppBlocking(device) ? 'quarantine' : null;
+    case 'ios':
+      return 'denyInstalls';
+    default:
+      return null;
+  }
+}
+
 /**
  * A full-screen lock the child cannot dismiss.
  *

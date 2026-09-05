@@ -37,6 +37,24 @@ export const REWARD_STARS_MAX = 3;
  */
 export const REWARD_STARS_THRESHOLD_MINUTES = [15, 45] as const;
 
+/**
+ * What `createRewardTask` and `updateRewardTask` accept.
+ *
+ * Here since 2026-09-03, when a second parent surface needed them. They lived
+ * in `apps/mobile/src/constants/RewardTask.ts` under a comment admitting the
+ * duplication — the exact shape rule 2 of the root `CLAUDE.md` exists to end,
+ * and `apps/dashboard` would have been the third copy.
+ *
+ * **Out of range is rejected, not clamped**, so a client that lets a parent
+ * type 300 minutes shows them a refusal rather than silently writing 240.
+ * `functions/http/rewardTasks.js` is the enforcement and mirrors these by hand
+ * (that directory cannot import this package); `serverConstantParity` fails
+ * when the two drift.
+ */
+export const REWARD_TITLE_MAX_LENGTH = 80;
+export const REWARD_MIN_MINUTES = 5;
+export const REWARD_MAX_MINUTES = 240;
+
 export interface RewardTask {
   id: string;
   /**

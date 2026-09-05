@@ -56,6 +56,8 @@ export const activities = {
   appBlockedBody: 'ブロック中のアプリが開かれ、KidGateがそのアプリを終了しました。',
   appInstalledTitle: 'アプリをインストールしました',
   appInstalledBody: 'お子さまのデバイスに{{appName}}がインストールされました。',
+  appInstalledPendingBody:
+    'お子さまのデバイスに{{appName}}がインストールされ、許可するまでブロックされています。',
 
   messageAlertTitle: '気がかりなメッセージ内容',
   messageAlertBody: '{{appName}}で注意すべき語句が検出されました。',

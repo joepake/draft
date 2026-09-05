@@ -126,6 +126,71 @@ export function coerceAccentForStyle(
   return getAccentIdsForStyle(styleId).includes(accentId) ? accentId : 'pink';
 }
 
+export interface AccentPackSwitch {
+  /** Accent in force at the moment of the switch. */
+  accentId: AccentId;
+  /** Pack being switched to. */
+  styleId: ThemeStyleId;
+  /** Accent an earlier switch displaced and the user has not overridden since. */
+  displacedAccentId?: AccentId | null;
+}
+
+export interface AccentPackSwitchResult {
+  accentId: AccentId;
+  /** Record to persist beside the accent. `null` clears it. */
+  displacedAccentId: AccentId | null;
+}
+
+/**
+ * The whole accent side of a pack switch, in one place because two apps make
+ * it and a third is scaffolded.
+ *
+ * A pack switch changes the accent **on the user's behalf** in two ways, and
+ * both have to be undoable when a pack that offers the old accent comes back:
+ *
+ * 1. **Coercion** — sweet offers four pinks, so Blue cannot survive it.
+ * 2. **Suggestion** — an accent still at its factory value moves to the pack's
+ *    own, because a pack only swaps neutrals and a pink-cream page driving teal
+ *    buttons looks half-applied on the one tap that has to sell it.
+ *
+ * The second was missed on the phone and had never existed on the desktop:
+ * `accentId === DEFAULT_ACCENT_ID` cannot tell "never chose" from "chose that
+ * swatch", so classic → sweet → classic stranded the user on sweet's pink with
+ * no way back but picking the accent again. Recording the displacement in both
+ * cases is what makes the round trip land where it started.
+ *
+ * The restore runs first: an accent the user picked themselves outranks a
+ * suggestion, and the record only ever holds a hand-picked or factory accent —
+ * choosing any accent clears it, which is the caller's job.
+ */
+export function resolveAccentForPackSwitch({
+  accentId,
+  styleId,
+  displacedAccentId = null,
+}: AccentPackSwitch): AccentPackSwitchResult {
+  if (displacedAccentId && getAccentIdsForStyle(styleId).includes(displacedAccentId)) {
+    return { accentId: displacedAccentId, displacedAccentId: null };
+  }
+
+  if (accentId === DEFAULT_ACCENT_ID) {
+    const suggested = normalizeAccentId(
+      getThemeStyleDefinition(styleId).suggestedAccentId,
+    );
+    if (suggested !== accentId) {
+      return { accentId: suggested, displacedAccentId: displacedAccentId ?? accentId };
+    }
+  }
+
+  const coerced = coerceAccentForStyle(accentId, styleId);
+  return {
+    accentId: coerced,
+    // The older record wins: it is the accent the user actually picked, and
+    // what a second switch displaces is already something applied for them.
+    displacedAccentId:
+      coerced === accentId ? displacedAccentId : (displacedAccentId ?? accentId),
+  };
+}
+
 /** Map retired picker IDs → nearest kept accent. */
 const LEGACY_ACCENT_MAP: Record<string, AccentId> = {
   cyan: 'sky',

@@ -61,6 +61,7 @@ export const family = {
   childDetailStarsWell: 'Stelle questa settimana',
   childStarsA11y: 'Stelle questa settimana: {{count}}',
   childDetailDevicesTitle: 'Dispositivi',
+  childDetailSwipeHint: 'Scorri un dispositivo per rimuovere l’assegnazione.',
   childDetailAssignMore: 'Assegna un altro dispositivo…',
   childDetailAssignSheetTitle: 'Assegna un dispositivo a {{childName}}',
   childDetailNoDevices:
@@ -91,6 +92,8 @@ export const family = {
   chipDeviceCount_one: '{{count}} dispositivo',
 
   chipOnlineCount: '{{count}} online',
+  metaOnlineCount: '{{online}}/{{count}} online',
+  metaOnlineCount_one: '1 dispositivo online',
 
   chipSosCount: '{{count}} SOS',
 
@@ -118,6 +121,21 @@ export const family = {
   buildOutdated: 'Aggiornamento disponibile',
   healthNeedsSetup: 'Configurazione richiesta',
   healthOffline: 'Offline',
+  devicePausedLabel: 'In pausa',
+  devicePausedHint: 'In pausa con il piano gratuito: tutte le regole restano attive',
+  parkedBannerTitle: 'Scegli il dispositivo che continuerai a seguire',
+  parkedBannerBody:
+    'Le tue regole funzionano su ogni dispositivo. Il piano gratuito riceve i report da uno solo: sceglilo, o passa a Premium per tenerli tutti.',
+  parkedBannerAction: 'Scegli dispositivo',
+  chooseMonitoredTitle: 'Quale dispositivo deve inviare i report?',
+  chooseMonitoredBody:
+    'Tutte le regole restano attive su tutti. Solo quello che scegli invia tempo di utilizzo e posizione. Puoi cambiarlo una volta ogni {{days}} giorni.',
+  chooseMonitoredConfirm: 'Segui questo dispositivo',
+  chooseMonitoredUpgrade: 'Tieni tutti i dispositivi: passa a Premium',
+  chooseMonitoredDone: '{{name}} è ora il dispositivo che invia i report',
+  monitoredCooldown:
+    'Il dispositivo che invia i report può cambiare solo una volta ogni {{days}} giorni',
+  monitoredChooseFailed: 'Impossibile cambiare il dispositivo che invia i report',
 
   cardWhereLabel: 'Posizione',
   cardWhereAccessibility: 'Apri la posizione di {{deviceName}}',
@@ -327,7 +345,7 @@ export const family = {
   childDetailProtectionAttention: '{{count}} dispositivi richiedono attenzione',
   childDetailProtectionAttention_one: '{{count}} dispositivo richiede attenzione',
   childDetailProtectionSheetTitle: 'Protezione per dispositivo',
-  childDetailRemoveTitle: 'Rimuovere questo bambino',
+  childDetailRemoveTitle: 'Rimuovi il profilo di {{childName}}',
   childDetailRemovingButton: 'Rimozione…',
   childDetailOnlineCount: '{{online}} di {{total}} online',
   childDetailBudgetTitle: 'Limite giornaliero',

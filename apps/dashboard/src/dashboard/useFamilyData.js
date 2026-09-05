@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { CONSOLE_HIDDEN_GRACE_MS } from '@kidgate/core/domain/consoleVisibility';
 import {
   buildMemberActorNames,
   usableOwnerLabel,
@@ -14,6 +15,7 @@ import {
   familyRepository,
   childRepository,
   leaderboardRepository,
+  screenTimeBoardRepository,
   rewardTaskRepository,
   safetyCheckInRepository,
   sosAlertRepository,
@@ -22,13 +24,20 @@ import {
   siteRequestRepository,
   usageDayRepository,
   webHistoryRepository,
+  videoHistoryRepository,
 } from '../adapters/repositories.js';
 import {
   isLeaderboardVisible,
   leaderboardWindow,
   rankChildren,
 } from '@kidgate/core/domain/leaderboard';
+import {
+  foldScreenTimeBoard,
+  isScreenTimeBoardVisible,
+  screenTimeBoardWindow,
+} from '@kidgate/core/domain/screenTimeBoard';
 import { toDeviceView } from './deviceView.js';
+import { touchParentPresenceIfDue } from './parentPresence.js';
 
 /**
  * Live family data for the parent dashboard.
@@ -55,7 +64,58 @@ function forDevice(deviceId, rows) {
   return deviceId ? { [deviceId]: rows } : {};
 }
 
+/**
+ * Whether this tab is on screen, with the grace from `@kidgate/core`.
+ *
+ * **Only the device list is gated on it, and the asymmetry is the point.**
+ * Detaching a listener saves the reads its documents would have caused while
+ * nobody was looking, and costs one read per document to re-attach — so it pays
+ * on `childDevices`, three documents that change every minute of every day, and
+ * loses badly on the history panels, which hold three hundred documents that
+ * change almost never. A parent flicking between tabs would pay six hundred
+ * reads to save none.
+ *
+ * `docs/DATA_RETENTION.md` §9 has the measurement that decides which is which.
+ */
+function useConsoleVisible() {
+  const [visible, setVisible] = useState(
+    () => typeof document === 'undefined' || document.visibilityState !== 'hidden',
+  );
+
+  useEffect(() => {
+    if (typeof document === 'undefined') return undefined;
+    let timer = null;
+    const onChange = () => {
+      if (document.visibilityState !== 'hidden') {
+        if (timer) {
+          clearTimeout(timer);
+          timer = null;
+        }
+        setVisible(true);
+        return;
+      }
+      if (timer) return;
+      timer = setTimeout(() => {
+        timer = null;
+        // Re-checked rather than assumed: the tab may have come back and gone
+        // again inside the grace, and this timer is the older of the two.
+        if (document.visibilityState === 'hidden') setVisible(false);
+      }, CONSOLE_HIDDEN_GRACE_MS);
+    };
+    document.addEventListener('visibilitychange', onChange);
+    return () => {
+      if (timer) clearTimeout(timer);
+      document.removeEventListener('visibilitychange', onChange);
+    };
+  }, []);
+
+  return visible;
+}
+
 export function useFamilyData(user, selectedDeviceId) {
+  const visible = useConsoleVisible();
+  /** Guards the skeleton against a re-run caused by the tab coming back. */
+  const lastLoadedFamilyRef = useRef(null);
   const [familyId, setFamilyId] = useState(null);
   const [resolving, setResolving] = useState(true);
   const [error, setError] = useState(null);
@@ -65,6 +125,12 @@ export function useFamilyData(user, selectedDeviceId) {
   const [familyName, setFamilyName] = useState('');
   const [billing, setBilling] = useState(null);
   const [memberCount, setMemberCount] = useState(1);
+  /*
+   * The membership list itself, not only its length. The count answers the
+   * sidebar; removing a co-parent needs the rows — a uid and a label — and
+   * re-deriving them from the actor-name map would be the same data twice.
+   */
+  const [members, setMembers] = useState([]);
   // Who wrote each activity row. Rows store `actorUserId` /
   // `actorParentDeviceId` and never a name, so the feed's `{{actorName}}` is
   // resolved at render — see `dashboard/activityCopy.js`.
@@ -79,10 +145,15 @@ export function useFamilyData(user, selectedDeviceId) {
   const [checkInRows, setCheckInRows] = useState([]);
   const [children, setChildren] = useState([]);
   const [leaderboard, setLeaderboard] = useState(null);
+  const [screenTimeBoardDoc, setScreenTimeBoardDoc] = useState(null);
+  // The family switch, read once with the rest of the family-level data:
+  // absent means off, so a family that never asked sees no card.
+  const [screenTimeBoardEnabled, setScreenTimeBoardEnabled] = useState(undefined);
   const [openTasks, setOpenTasks] = useState([]);
   const [approvedTasks, setApprovedTasks] = useState([]);
   const [usage, setUsage] = useState({});
   const [web, setWeb] = useState({});
+  const [videos, setVideos] = useState({});
 
   // 1. Resolve the family root.
   useEffect(() => {
@@ -115,9 +186,17 @@ export function useFamilyData(user, selectedDeviceId) {
 
   // 2. Family-level data.
   useEffect(() => {
-    if (!familyId) return;
+    if (!familyId || !visible) return;
     let cancelled = false;
-    setDevicesLoaded(false);
+    /*
+     * Only when the family actually changed. This effect also re-runs when the
+     * tab comes back on screen, and a skeleton over a list this page already
+     * has would make coming back look like loading it for the first time.
+     */
+    if (lastLoadedFamilyRef.current !== familyId) {
+      lastLoadedFamilyRef.current = familyId;
+      setDevicesLoaded(false);
+    }
 
     // Only the device list is fatal — without it there is nothing to show. A
     // single failing side panel (a collection this account cannot read, an
@@ -125,6 +204,17 @@ export function useFamilyData(user, selectedDeviceId) {
     // replacing the whole dashboard with an error screen.
     const soft = name => e =>
       console.warn(`[kidgate] ${name} listener failed:`, e?.code || e?.message);
+
+    /** One "report now" per page open, not one per snapshot. See its use below. */
+    let devicesAsked = false;
+
+    /*
+     * And one "a parent is looking" per day: the dormancy reaper's input, and
+     * the call that wakes a family the reaper parked while nobody opened a
+     * console for a month (`./parentPresence.js`). Not awaited and not part
+     * of the loading state — a family that could not be stamped still renders.
+     */
+    touchParentPresenceIfDue(familyId).catch(() => undefined);
 
     // One read, not a listener: a family is renamed roughly once in its life,
     // and the alternative is a permanent second subscription to the same
@@ -146,6 +236,7 @@ export function useFamilyData(user, selectedDeviceId) {
           // The owner is not a member document — they are the family root — so
           // the parent count is the membership list plus one.
           setMemberCount(members.length + 1);
+          setMembers(members);
           setMemberNamesByUserId(buildMemberActorNames(members));
         },
         () => setMemberCount(1),
@@ -168,7 +259,22 @@ export function useFamilyData(user, selectedDeviceId) {
       deviceRepository.subscribeChildDevices(
         familyId,
         records => {
-          setDevices(records.map(toDeviceView));
+          const views = records.map(toDeviceView);
+          /*
+           * The first list after this page opened is "a parent opened the
+           * console" — what a free-tier device's thirty-minute cadence trades
+           * against (`@kidgate/core/domain/reportRequest`). Later snapshots are
+           * the device answering, and asking from those would be asking again
+           * about the reply just received.
+           *
+           * Not awaited, and failures are swallowed inside: the answer arrives
+           * down this same listener, and the page is correct without it.
+           */
+          if (!devicesAsked) {
+            devicesAsked = true;
+            void deviceRepository.requestDeviceReports(familyId, views);
+          }
+          setDevices(views);
           setDevicesLoaded(true);
         },
         e => {
@@ -186,13 +292,27 @@ export function useFamilyData(user, selectedDeviceId) {
         setLeaderboard,
         soft('leaderboard'),
       ),
+      // Sibling of the star chart: minutes per person this week, parents
+      // included where they opted in. Server-written, family-readable.
+      screenTimeBoardRepository.subscribe(
+        familyId,
+        screenTimeBoardWindow(new Date()).periodKey,
+        setScreenTimeBoardDoc,
+        soft('screenTimeBoard'),
+      ),
     ];
+    familyRepository
+      .getFamilyMeta(familyId)
+      .then(meta => {
+        if (!cancelled) setScreenTimeBoardEnabled(meta?.screenTimeBoardEnabled);
+      })
+      .catch(soft('familyMeta'));
 
     return () => {
       cancelled = true;
       subs.forEach(unsubscribe => unsubscribe());
     };
-  }, [familyId]);
+  }, [familyId, visible]);
 
   // 3. Everything scoped to the device on screen.
   //
@@ -268,6 +388,12 @@ export function useFamilyData(user, selectedDeviceId) {
         selectedDeviceId,
         entries => setWeb({ [selectedDeviceId]: entries }),
         soft('webHistory'),
+      ),
+      videoHistoryRepository.subscribe(
+        familyId,
+        selectedDeviceId,
+        entries => setVideos({ [selectedDeviceId]: entries }),
+        soft('videoHistory'),
       ),
     ];
 
@@ -397,6 +523,17 @@ export function useFamilyData(user, selectedDeviceId) {
     }));
 
     return {
+      screenTimeBoard: (() => {
+        const rows = foldScreenTimeBoard(
+          screenTimeBoardDoc,
+          new Date().toISOString().slice(0, 10),
+        );
+        return {
+          rows,
+          enabled: screenTimeBoardEnabled === true,
+          visible: isScreenTimeBoardVisible(screenTimeBoardEnabled, rows),
+        };
+      })(),
       leaderboard: {
         rows: leaderboardRows,
         // The family flag lives on the family document, which this hook does
@@ -415,7 +552,14 @@ export function useFamilyData(user, selectedDeviceId) {
         plan: isPremiumSubscriptionActive(billing?.subscription ?? null, Date.now())
           ? 'premium'
           : 'trial',
+        /*
+         * Passed through so the plan card can tell a family that has never
+         * paired a device from one whose trial is running: the trial clock
+         * starts at pairing, so an absent stamp means not set up yet.
+         */
+        trialStartedAt: billing?.trialStartedAt ?? null,
         parents: Array.from({ length: memberCount }, (_, index) => ({ id: index })),
+        members,
       },
       devices: withUsage,
       // The roster itself, not only the join above: the sidebar groups by child
@@ -440,17 +584,20 @@ export function useFamilyData(user, selectedDeviceId) {
       rewardTasks,
       places: Object.fromEntries(withUsage.map(device => [device.id, device.places])),
       webHistory,
+      videoHistory: videos,
     };
   }, [
     devices,
     usage,
     webHistory,
+    videos,
     rewardTasks,
     leaderboardRows,
     children,
     familyName,
     billing,
     memberCount,
+    members,
     familyId,
     memberNamesByUserId,
     parentNamesByDeviceId,

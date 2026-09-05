@@ -166,6 +166,32 @@ export interface DeviceCapabilities {
    */
   searchMonitoring?: boolean;
   /**
+   * The device can force the search engines' safe modes
+   * (`DeviceControls.safeSearchEnabled`): a DNS tunnel that rewrites answers,
+   * or a browser extension that rewrites the search URL. The Mac's content
+   * filter can do neither and publishes nothing, so the platform list in
+   * `@kidgate/core/domain/safeSearchSupport` answers no for it.
+   * **Absent is unknown, not false.**
+   */
+  safeSearch?: boolean;
+  /**
+   * The device can report which videos the child watched
+   * (`videoHistory`): a browser holding the YouTube URL, or the Android agent
+   * reading the media session. The Mac/Windows filters see a domain, not a
+   * video, and iOS neither — `@kidgate/core/domain/videoHistorySupport`
+   * answers no for them. **Absent is unknown, not false.**
+   */
+  videoHistory?: boolean;
+  /**
+   * Why the app-side video reader is not delivering, when a person could not
+   * fix it: `layoutChanged` is the Android Shorts reader's watchdog finding a
+   * Shorts page on screen for a minute with no title readable — YouTube
+   * changed its layout under `KidGateShortsReader`. Absent means healthy or
+   * unknown. Same shape and reason as `webFilterBlocker`: the card must say
+   * "not reading Shorts right now" rather than show a list that stopped.
+   */
+  videoHistoryBlocker?: 'layoutChanged';
+  /**
    * The device can enumerate what is **already** installed, not only what
    * changes.
    *

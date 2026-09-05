@@ -58,6 +58,8 @@ export const activities = {
   appInstalledTitle: 'Application installée',
   appInstalledBody:
     'L’application {{appName}} a été installée sur l’appareil de l’enfant.',
+  appInstalledPendingBody:
+    'L’application {{appName}} a été installée sur l’appareil de l’enfant et reste bloquée jusqu’à ce que vous l’autorisiez.',
 
   messageAlertTitle: 'Contenu de message préoccupant',
   messageAlertBody: 'Un mot signalé a été détecté dans {{appName}}.',

@@ -60,6 +60,7 @@ export const family = {
   childDetailStarsWell: 'Étoiles cette semaine',
   childStarsA11y: 'Étoiles cette semaine : {{count}}',
   childDetailDevicesTitle: 'Appareils',
+  childDetailSwipeHint: 'Balayez un appareil pour annuler son attribution.',
   childDetailAssignMore: 'Attribuer un autre appareil…',
   childDetailAssignSheetTitle: 'Attribuer un appareil à {{childName}}',
   childDetailNoDevices:
@@ -83,6 +84,8 @@ export const family = {
   chipDeviceCount: '{{count}} appareils',
   chipDeviceCount_one: '{{count}} appareil',
   chipOnlineCount: '{{count}} en ligne',
+  metaOnlineCount: '{{online}}/{{count}} en ligne',
+  metaOnlineCount_one: '1 appareil en ligne',
   chipSosCount: '{{count}} SOS',
   chipCheckInCount: '{{count}} Check-ins',
   chipCheckInCount_one: '{{count}} Check-in',
@@ -100,6 +103,22 @@ export const family = {
   buildOutdated: 'Mise à jour disponible',
   healthNeedsSetup: 'Configuration requise',
   healthOffline: 'Hors ligne',
+  devicePausedLabel: 'En pause',
+  devicePausedHint:
+    'En pause avec l’offre gratuite : toutes les règles restent actives',
+  parkedBannerTitle: 'Choisissez l’appareil que vous continuez à suivre',
+  parkedBannerBody:
+    'Vos règles s’appliquent sur tous les appareils. L’offre gratuite reçoit les rapports d’un seul : choisissez-le, ou passez à Premium pour les garder tous.',
+  parkedBannerAction: 'Choisir l’appareil',
+  chooseMonitoredTitle: 'Quel appareil doit envoyer ses rapports ?',
+  chooseMonitoredBody:
+    'Toutes les règles restent actives sur tous. Seul celui que vous choisissez envoie le temps d’écran et la position. Vous pouvez en changer une fois tous les {{days}} jours.',
+  chooseMonitoredConfirm: 'Suivre cet appareil',
+  chooseMonitoredUpgrade: 'Garder tous les appareils : passer à Premium',
+  chooseMonitoredDone: '{{name}} est désormais l’appareil qui envoie ses rapports',
+  monitoredCooldown:
+    'L’appareil qui envoie ses rapports ne peut changer qu’une fois tous les {{days}} jours',
+  monitoredChooseFailed: 'Impossible de changer l’appareil qui envoie ses rapports',
 
   // Quick-glance rows on the device card
   cardWhereLabel: 'Position',
@@ -276,7 +295,7 @@ export const family = {
   childDetailProtectionAttention: '{{count}} appareils nécessitent votre attention',
   childDetailProtectionAttention_one: '{{count}} appareil nécessite votre attention',
   childDetailProtectionSheetTitle: 'Protection par appareil',
-  childDetailRemoveTitle: 'Retirer cet enfant',
+  childDetailRemoveTitle: 'Supprimer le profil de {{childName}}',
   childDetailRemovingButton: 'Retrait…',
   childDetailOnlineCount: '{{online}} sur {{total}} en ligne',
   childDetailBudgetTitle: 'Limite quotidienne',

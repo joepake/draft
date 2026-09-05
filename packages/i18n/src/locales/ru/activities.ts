@@ -51,6 +51,8 @@ export const activities = {
   appBlockedBody: 'Заблокированное приложение было открыто, и KidGate закрыл его.',
   appInstalledTitle: 'Приложение установлено',
   appInstalledBody: 'На устройстве ребёнка установлено приложение {{appName}}.',
+  appInstalledPendingBody:
+    'На устройстве ребёнка установлено приложение {{appName}}, оно заблокировано, пока вы его не разрешите.',
   messageAlertTitle: 'Тревожное содержание сообщения',
   messageAlertBody: 'В {{appName}} обнаружено отмеченное слово.',
   messageAlertBodyOutgoing:

@@ -20,6 +20,12 @@ export const webFilter = {
   toggleHintMacos:
     'बच्चे को सिस्टम सेटिंग्स में एक बार KidGate फ़िल्टर एक्सटेंशन को मंज़ूरी देनी होगी। फ़िल्टर काम करते रहने के लिए इसे मंज़ूर रखें।',
   toggleAccessibilityLabel: 'वेब फ़िल्टर चालू करें',
+  safeSearchSectionTitle: 'सुरक्षित खोज और YouTube',
+  safeSearchSectionSubtitle:
+    'Google, Bing और DuckDuckGo को सुरक्षित परिणामों के लिए बाध्य करें और YouTube को प्रतिबंधित मोड में लॉक करें। वेब फ़िल्टर चालू होना आवश्यक है।',
+  safeSearchLabel: 'SafeSearch लागू करें',
+  safeSearchHint:
+    'Google SafeSearch, YouTube प्रतिबंधित मोड, Bing और DuckDuckGo को सख्त सेटिंग पर लॉक करता है। Android, Android TV और Chrome।',
   infoTitle: 'यह कैसे काम करता है',
   infoLine1Ios: 'Apple वयस्क वेबसाइटें अपने आप फ़िल्टर करता है।',
   infoLine2Ios:
@@ -159,8 +165,10 @@ export const webFilter = {
   askToOpen: 'माता-पिता से पूछें',
   askToOpenSubtitle: 'अगर वे इजाज़त दें, तो यह साइट खुल जाएगी।',
   askToOpenDomainLabel: 'कौन सी साइट?',
+  askToOpenBlockedLabel: 'हाल में ब्लॉक हुईं',
   askToOpenPending: 'तुमने पहले ही एक साइट माँगी है। जवाब का इंतज़ार करो।',
   askToOpenTooSoon: 'तुमने अभी-अभी अनुरोध भेजा है। एक मिनट बाद कोशिश करो।',
+  askToOpenTooMany: 'तुम एक बार में कुछ ही साइटें माँग सकते हो।',
   requestsTitle: 'साइट के अनुरोध',
   requestsSubtitle: 'वे साइटें जिनके लिए इस डिवाइस ने अनुमति माँगी।',
   siteRequestApproved: 'साइट की अनुमति दी',

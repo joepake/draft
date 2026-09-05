@@ -1,5 +1,6 @@
 import { deviceGlyph } from '@kidgate/web-ui/Icon';
 import { isBrowserOnlySurface } from '@kidgate/core/domain/deviceSurface';
+import { resolveDisplayFormFactor } from '@kidgate/core/domain/deviceFormFactor';
 
 /**
  * Which glyph stands for a device in the device rail.
@@ -20,9 +21,15 @@ import { isBrowserOnlySurface } from '@kidgate/core/domain/deviceSurface';
  * the two surfaces cannot drift apart again. Only the mapping from that answer
  * to a glyph name lives per app: `packages/tokens` imports nothing, so it cannot
  * be taught what a capability is.
+ *
+ * The form factor is `resolveDisplayFormFactor`, not the stored field: a record
+ * written before that field existed — or by a device that has not been online
+ * since — carries none, and both parent surfaces drew the bare platform mark
+ * for a machine whose model name said "iPhone 15". Shared for the same reason
+ * `isBrowserOnlySurface` is.
  */
 export function deviceIconName(device) {
   return isBrowserOnlySurface(device)
     ? 'extension'
-    : deviceGlyph(device.platform, device.formFactor);
+    : deviceGlyph(device.platform, resolveDisplayFormFactor(device));
 }
