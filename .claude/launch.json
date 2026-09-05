@@ -7,6 +7,13 @@
       "runtimeArgs": ["run", "dev"],
       "port": 5173,
       "autoPort": true
+    },
+    {
+      "name": "dashboard-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "apps/dashboard", "run", "run:dev"],
+      "port": 5173,
+      "autoPort": true
     }
   ]
 }

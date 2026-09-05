@@ -36,7 +36,7 @@
   --critical: var(--kg-danger);
 
   display: grid;
-  grid-template-columns: 264px minmax(0, 1fr);
+  grid-template-columns: 272px minmax(0, 1fr);
   min-height: 100vh;
   background: var(--plane);
   color: var(--ink);
@@ -77,28 +77,39 @@
   vertical-align: -2px;
 }
 
-/* ---------- Sidebar ---------- */
+/* ---------- Sidebar ----------
+ *
+ * Four bands stacked: the brand, the child/device picker, the Manage nav,
+ * and the account footer. Only the picker grows with the family, so it is
+ * the only band that scrolls — the other three keep their place whether a
+ * family has one child or six.
+ *
+ * **One selection idiom, not two.** A chosen device used to be drawn as a
+ * brand ring and a chosen tab as a flat grey wash, so the rail taught two
+ * different pictures of "you are here" and neither read as the louder one.
+ * Both are now a brand bar down the leading edge over a brand-tinted
+ * ground (`.is-active`), which is learned once and read in both lists.
+ */
 
 .dash-side {
-  background: linear-gradient(
-    180deg,
-    color-mix(in srgb, var(--plane) 92%, var(--ink)),
-    var(--plane)
-  );
+  /* Flat, not a gradient. The old top-to-bottom lift made the brand band
+     read as a separate header bar floating over the list below it; the rail
+     is one surface and the hairline is what separates it from the page. */
+  background: color-mix(in srgb, var(--plane) 94%, var(--ink));
   border-right: 1px solid var(--line);
-  padding: 1.4rem 1rem;
+  padding: 1.1rem 0.75rem 0.9rem;
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: 1rem;
   position: sticky;
   top: 0;
   height: 100vh;
   /*
-   * The rail itself no longer scrolls. It used to, and a family with four
+   * The rail itself does not scroll. It used to, and a family with four
    * children pushed Manage and the plan footer below the fold: the nav a
    * parent came for was reachable only by scrolling past every device.
-   * Only the child list scrolls now (`.side-kids-scroll`), so the brand
-   * stays at the top and the nav stays on screen at any family size.
+   * Only the child list scrolls (`.side-kids-scroll`), so the brand stays
+   * at the top and the nav stays on screen at any family size.
    *
    * `auto` rather than `hidden`: on a short window (measured at 1280×640)
    * the nav and the footer alone fill the rail, and hiding the overflow
@@ -110,17 +121,21 @@
   overflow-y: auto;
 }
 
+/*
+ * Left-aligned, like every row under it. Centring the wordmark over a
+ * left-aligned rail put the one fixed element on a different axis from the
+ * eleven scannable ones, which is what made the top of the rail read as
+ * unrelated to the rest of it.
+ */
 .dash-brand {
-  padding: 0 0.5rem;
-  text-align: center;
+  padding: 0.15rem 0.55rem 0;
 }
 
 .dash-brand a {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 0.5rem;
-  font-size: 1.25rem;
+  font-size: 1.08rem;
   font-weight: 700;
   /* The wordmark is white, not brand-tinted: the mark beside it carries the
      colour, and two teals stacked read as one dim shape on this plane. */
@@ -129,29 +144,33 @@
   letter-spacing: -0.01em;
 }
 
-.dash-brand span {
+.dash-brand > span {
   display: block;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: var(--muted);
-  margin-top: 0.15rem;
+  margin-top: 0.05rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 /*
  * The child list is the one part of the rail that grows without bound — one
  * heading per child, one row per device — so it is the one part that scrolls.
- * It shrinks to the floor its inner scroller declares and no further: writing
- * The floor is declared here, in pixels, and the scroller inside is free to
- * shrink to it. Both other arrangements were measured at 1280×640 and both
- * failed: `min-height: 0` here collapsed this box to nothing and the rows
- * painted over the nav, while leaving it `auto` and putting the floor on the
- * scroller stopped it shrinking at all and pushed the nav below the fold — a
- * scroll container's declared floor does not reach its parent's automatic
- * minimum size.
+ * It shrinks to the floor declared here and no further. Both other
+ * arrangements were measured at 1280×640 and both failed: `min-height: 0`
+ * collapsed this box to nothing and the rows painted over the nav, while
+ * leaving it `auto` and putting the floor on the scroller stopped it
+ * shrinking at all and pushed the nav below the fold — a scroll container's
+ * declared floor does not reach its parent's automatic minimum size.
+ *
+ * The floor is four rows rather than three now that the footer is a plan
+ * chip instead of a comparison table: the space the table used to take
+ * belongs to the list this rail exists to drive.
  */
 .side-kids {
   flex: 1 1 auto;
-  /* Roughly the heading plus three device rows. */
-  min-height: 11rem;
+  min-height: 14rem;
   display: flex;
   flex-direction: column;
 }
@@ -166,6 +185,20 @@
   padding-right: 0.4rem;
   scrollbar-width: thin;
   scrollbar-color: color-mix(in srgb, var(--ink) 20%, transparent) transparent;
+  /*
+   * Scroll shadows, and only while there is something past the edge: the
+   * two `local` layers are painted on the content and slide away with it,
+   * uncovering the two `scroll` layers that are fixed to the box. A list cut
+   * off at the fold used to look exactly like a list that had ended, which
+   * is how a third child goes unnoticed.
+   */
+  background:
+    linear-gradient(var(--plane), transparent) top / 100% 1.2rem no-repeat local,
+    linear-gradient(transparent, var(--plane)) bottom / 100% 1.2rem no-repeat local,
+    linear-gradient(color-mix(in srgb, var(--ink) 12%, transparent), transparent) top /
+      100% 0.55rem no-repeat scroll,
+    linear-gradient(transparent, color-mix(in srgb, var(--ink) 12%, transparent))
+      bottom / 100% 0.55rem no-repeat scroll;
 }
 
 /* Whose devices these are stays readable while scrolling through them. */
@@ -173,9 +206,9 @@
   position: sticky;
   top: 0;
   z-index: 1;
-  padding-top: 0.2rem;
-  padding-bottom: 0.2rem;
-  background: var(--plane);
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  background: color-mix(in srgb, var(--plane) 94%, var(--ink));
 }
 
 .side-nav,
@@ -184,32 +217,59 @@
 }
 
 .side-title {
-  font-size: 0.68rem;
+  font-size: 0.66rem;
   text-transform: uppercase;
-  letter-spacing: 0.09em;
+  letter-spacing: 0.1em;
+  font-weight: 700;
   color: var(--muted);
-  padding: 0 0.5rem;
-  margin-bottom: 0.55rem;
+  padding: 0 0.55rem;
+  margin-bottom: 0.4rem;
 }
 
-.kid {
+/*
+ * Rows in both lists share their geometry — same height, same leading edge,
+ * same radius — so the eye tracks one column down the rail instead of two
+ * lists that happen to sit above each other.
+ */
+.kid,
+.nav-item {
+  position: relative;
   width: 100%;
   display: flex;
   align-items: center;
-  gap: 0.7rem;
-  padding: 0.55rem 0.5rem;
-  border-radius: 0.7rem;
+  gap: 0.6rem;
+  min-height: 2.5rem;
+  padding: 0.4rem 0.55rem;
+  border-radius: 0.6rem;
   text-align: left;
-  transition: background var(--kg-motion-fast) ease;
+  transition:
+    background var(--kg-motion-fast) ease,
+    color var(--kg-motion-fast) ease;
 }
 
-.kid:hover {
-  background: color-mix(in srgb, var(--ink) 5%, transparent);
+.kid:hover,
+.nav-item:hover {
+  background: color-mix(in srgb, var(--ink) 6%, transparent);
 }
 
-.kid.is-active {
-  background: color-mix(in srgb, var(--brand) 16%, transparent);
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--brand) 35%, transparent);
+.kid.is-active,
+.nav-item.is-active {
+  background: color-mix(in srgb, var(--brand) 14%, transparent);
+  color: var(--ink);
+}
+
+/* The bar, not a border: a border would move the row's contents by a pixel
+   on selection and the whole list would shuffle as a parent clicked down it. */
+.kid.is-active::before,
+.nav-item.is-active::before {
+  content: '';
+  position: absolute;
+  inset-inline-start: 0;
+  top: 0.45rem;
+  bottom: 0.45rem;
+  width: 3px;
+  border-radius: 999px;
+  background: var(--brand);
 }
 
 /*
@@ -217,47 +277,51 @@
  * platform that can pair — a `.av-macos` that nobody wrote left the desktop
  * agent as an unpainted square. The base rule paints the fallback; the
  * per-platform rules tint it.
+ *
+ * Tints rather than the saturated gradients this used to draw. Six rows of
+ * full-strength gradient competed with the one row that was actually
+ * selected, and the platform is the least important thing on a row that
+ * already names the device and its model.
  */
 .kid-avatar {
-  width: 2.1rem;
-  height: 2.1rem;
-  border-radius: 0.65rem;
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 0.55rem;
   display: grid;
   place-items: center;
   font-weight: 700;
   font-size: 0.9rem;
-  color: var(--ink);
-  background: color-mix(in srgb, var(--ink) 12%, transparent);
+  color: var(--ink-2);
+  background: color-mix(in srgb, var(--ink) 10%, transparent);
   flex-shrink: 0;
 }
 
 .av-ios {
-  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  color: var(--brand);
+  background: color-mix(in srgb, var(--brand) 16%, transparent);
 }
 
 .av-android {
-  background: linear-gradient(
-    135deg,
-    var(--good),
-    color-mix(in srgb, var(--good) 55%, var(--brand))
-  );
+  color: var(--good);
+  background: color-mix(in srgb, var(--good) 16%, transparent);
 }
 
 .av-macos,
 .av-windows {
-  background: linear-gradient(
-    135deg,
-    var(--brand-2),
-    color-mix(in srgb, var(--brand-2) 55%, var(--ink))
-  );
+  color: var(--brand-2);
+  background: color-mix(in srgb, var(--brand-2) 16%, transparent);
 }
 
 .av-androidtv {
-  background: linear-gradient(
-    135deg,
-    var(--warning),
-    color-mix(in srgb, var(--warning) 55%, var(--brand))
-  );
+  color: var(--warning);
+  background: color-mix(in srgb, var(--warning) 16%, transparent);
+}
+
+/* The selected row's tile goes solid: on a brand-tinted ground a tinted tile
+   all but disappears, and the tile is the row's anchor. */
+.kid.is-active .kid-avatar {
+  color: var(--kg-onPrimary, var(--plane));
+  background: var(--brand);
 }
 
 .kid-meta {
@@ -267,17 +331,34 @@
 
 .kid-meta strong {
   display: block;
-  font-size: 0.92rem;
+  font-size: 0.87rem;
+  font-weight: 600;
+  color: var(--ink-2);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.kid.is-active .kid-meta strong {
+  color: var(--ink);
+  font-weight: 700;
 }
 
 .kid-meta em {
   display: block;
   font-style: normal;
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   color: var(--muted);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+/* Which machine is on an old build, said in the row's own words rather than
+   as a third grey line that reads like more model number. */
+.kid-build-old {
+  color: var(--warning);
+  font-weight: 600;
 }
 
 .kid-dot {
@@ -285,6 +366,9 @@
   height: 8px;
   border-radius: 999px;
   flex-shrink: 0;
+  /* A ring in the row's own ground, so the dot keeps its edge on the tinted
+     selected row as well as on the plain ones. */
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--plane) 94%, var(--ink));
 }
 
 /*
@@ -294,18 +378,20 @@
  * family with one child and two devices read as two children.
  */
 .kid-group + .kid-group {
-  margin-top: 0.85rem;
+  margin-top: 0.7rem;
+  padding-top: 0.7rem;
+  border-top: 1px solid var(--line);
 }
 
 .kid-group-title {
   display: flex;
   align-items: center;
   gap: 0.45rem;
-  padding: 0 0.5rem;
-  margin-bottom: 0.3rem;
-  font-size: 0.78rem;
+  padding: 0 0.55rem;
+  margin-bottom: 0.15rem;
+  font-size: 0.76rem;
   font-weight: 700;
-  color: var(--ink-2);
+  color: var(--ink);
   min-width: 0;
 }
 
@@ -317,7 +403,7 @@
 
 /* The devices belong to the heading above them, and the inset says so. */
 .kid-group .kid {
-  padding-left: 0.85rem;
+  padding-left: 0.8rem;
 }
 
 /*
@@ -326,13 +412,13 @@
  * picker's saturated values, not the soft tints.
  */
 .kid-initial {
-  width: 1.35rem;
-  height: 1.35rem;
+  width: 1.3rem;
+  height: 1.3rem;
   border-radius: 999px;
   display: grid;
   place-items: center;
   flex-shrink: 0;
-  font-size: 0.68rem;
+  font-size: 0.66rem;
   font-weight: 800;
   color: #fff;
 }
@@ -344,44 +430,40 @@
   background: var(--warning);
 }
 .kid-dot.tone-muted {
-  background: var(--muted);
+  background: color-mix(in srgb, var(--muted) 70%, transparent);
 }
 
+/* A rule above Manage, because the two lists answer different questions —
+   which device, then what about it — and ran together as one column. */
 .side-nav {
   display: flex;
   flex-direction: column;
-  gap: 0.15rem;
+  gap: 0.1rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--line);
 }
 
 .nav-item {
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
-  width: 100%;
-  padding: 0.55rem 0.75rem;
-  border-radius: 0.6rem;
   color: var(--ink-2);
-  font-size: 0.92rem;
-  transition:
-    background var(--kg-motion-fast) ease,
-    color var(--kg-motion-fast) ease;
+  font-size: 0.88rem;
+  font-weight: 500;
 }
 
-.nav-item i {
-  font-style: normal;
-  opacity: 0.75;
-  width: 1rem;
+.nav-item .icon {
+  opacity: 0.7;
 }
 
 .nav-item:hover {
-  background: color-mix(in srgb, var(--ink) 5%, transparent);
   color: var(--ink);
 }
 
 .nav-item.is-active {
-  background: color-mix(in srgb, var(--ink) 8%, transparent);
-  color: var(--ink);
   font-weight: 600;
+}
+
+.nav-item.is-active .icon {
+  opacity: 1;
+  color: var(--brand);
 }
 
 .nav-badge {
@@ -390,16 +472,20 @@
   color: var(--plane);
   font-size: 0.68rem;
   font-weight: 700;
+  line-height: 1.5;
+  min-width: 1.15rem;
+  text-align: center;
   border-radius: 999px;
-  padding: 0.1rem 0.4rem;
+  padding: 0 0.35rem;
 }
 
 /* The same badge slot carrying a mark rather than a figure: no text, so it
    needs its own size, and the brand colour rather than --warning because an
    unread report is news, not something wrong. */
 .nav-badge-dot {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
+  min-width: 0;
   padding: 0;
   align-self: center;
   background: var(--brand);
@@ -407,7 +493,9 @@
 
 .side-foot {
   margin-top: auto;
-  padding: 0.9rem 0.5rem 0;
+  display: grid;
+  gap: 0.5rem;
+  padding: 0.85rem 0.55rem 0;
   border-top: 1px solid var(--line);
 }
 
@@ -425,9 +513,19 @@
 }
 
 .side-foot p {
-  font-size: 0.76rem;
+  font-size: 0.74rem;
   color: var(--muted);
-  margin-top: 0.45rem;
+  margin: 0;
+}
+
+/* The footer is a grid now, so the two blocks that used to space themselves
+   with their own margins would double the gap it already declares. */
+.side-foot .lang-side {
+  margin-top: 0;
+}
+
+.side-foot .side-account {
+  margin-top: 0;
 }
 
 /* ---------- Main ---------- */
@@ -1766,6 +1864,20 @@ ol.attn-fix li + li {
   box-shadow: var(--kg-shadow-lg, 0 18px 48px rgb(0 0 0 / 35%));
 }
 
+/* The step-up sheet is a six-digit box and fits in 24rem. A three-column
+   comparison does not, and squeezing it into that width would repeat the
+   mistake of drawing it in the rail. */
+.sheet-wide {
+  width: min(34rem, 100%);
+}
+
+.sheet-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
 .sheet-title {
   margin: 0;
   font-size: 1.05rem;
@@ -1776,6 +1888,14 @@ ol.attn-fix li + li {
   font-size: 0.82rem;
   line-height: 1.55;
   color: var(--ink-2);
+}
+
+/* Only where the line starts with a glyph — the step-up sheet's body is a
+   paragraph and must stay one. */
+.sheet-wide .sheet-body {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
 }
 
 .sheet-label {
@@ -2387,6 +2507,7 @@ ol.attn-fix li + li {
 
 .login .login-link,
 .side-account .login-link,
+.plan-card-row .login-link,
 .sheet .login-link {
   font-size: 0.8rem;
   color: var(--ink-2);
@@ -2397,8 +2518,16 @@ ol.attn-fix li + li {
 
 .login .login-link:hover:not(:disabled),
 .side-account .login-link:hover,
+.plan-card-row .login-link:hover,
 .sheet .login-link:hover {
   color: var(--ink);
+}
+
+/* In the rail this sits beside the plan pill, where 0.8rem is the loudest
+   thing in the footer. It is a way in, not the footer's headline. */
+.plan-card-row .login-link {
+  font-size: 0.74rem;
+  text-align: start;
 }
 
 .login-foot {
@@ -2428,34 +2557,73 @@ ol.attn-fix li + li {
     grid-template-columns: minmax(0, 1fr);
   }
 
+  /*
+   * Stacked above the content, the rail is a header band rather than a
+   * column: everything below it is a page-length scroll away, so the band
+   * has to stay short enough that Manage is still on the first screen.
+   */
   .dash-side {
     position: static;
     height: auto;
     flex-direction: column;
     overflow: visible;
+    padding: 1rem 0.9rem;
+    gap: 0.85rem;
   }
 
-  /* Stacked above the content there is no fixed height to divide up, so the
-     list runs at full length and the page scrolls, as it did before. */
+  /*
+   * The list keeps its own scroller here too. Letting it run at full length
+   * was the desktop bug in a second place: on a phone, a family with three
+   * children pushed Manage and the account footer a screen and a half down,
+   * so the tabs a parent came for were below every device they own.
+   */
+  .side-kids {
+    min-height: 0;
+  }
+
+  /* Roughly half the first screen, so the band that sits above the content
+     never costs the whole of it. */
   .side-kids-scroll {
-    overflow: visible;
+    max-height: 38vh;
   }
 
-  .side-kids-scroll .kid-group-title {
-    position: static;
-  }
-
+  /* One row that scrolls sideways, not a wrapped block that grows a line per
+     tab: the band's height must not depend on how many tabs this device has. */
   .side-nav {
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    gap: 0.35rem;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    padding-bottom: 0.15rem;
+  }
+
+  .side-nav::-webkit-scrollbar {
+    display: none;
   }
 
   .side-nav .side-title {
-    width: 100%;
+    display: none;
   }
 
   .nav-item {
     width: auto;
+    flex: 0 0 auto;
+    padding-inline: 0.7rem;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+
+  /* A pill has no leading edge to hang the bar on, so the chip fills instead —
+     the same brand ground, read as a chip rather than as a row. */
+  .nav-item.is-active::before {
+    display: none;
+  }
+
+  .nav-item.is-active {
+    background: color-mix(in srgb, var(--brand) 20%, transparent);
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--brand) 40%, transparent);
   }
 
   .dash-main {
@@ -3143,6 +3311,15 @@ ol.attn-fix li + li {
   justify-items: start;
 }
 
+/* The pill and the way in to the comparison on one line: two stacked blocks
+   spent three rows of the rail's footer saying what fits on one. */
+.plan-card-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
 .plan-card .hint {
   display: flex;
   align-items: center;
@@ -3212,23 +3389,19 @@ ol.attn-fix li + li {
 
 /* Free against Premium. Buying stays on the phone; deciding does not, and a
    card that shows only the pill sends a parent elsewhere to find out what they
-   would be paying for. Rows: `@kidgate/core/domain/planComparison`. */
+   would be paying for. Rows: `@kidgate/core/domain/planComparison`.
+   It is drawn in the dialog the rail's plan chip opens (`PlanCard`), which is
+   where it gets a width the three columns can actually be read at. */
 .plan-compare {
   width: 100%;
-  margin-top: 0.5rem;
-}
-
-.plan-compare-title {
-  margin: 0 0 0.4rem;
-  font-size: 0.78rem;
-  font-weight: 700;
+  margin-top: 0.25rem;
 }
 
 .plan-compare table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.72rem;
-  line-height: 1.35;
+  font-size: 0.78rem;
+  line-height: 1.4;
 }
 
 .plan-compare th,

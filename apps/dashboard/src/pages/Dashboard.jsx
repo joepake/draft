@@ -999,80 +999,107 @@ export default function Dashboard({
                     t('dash.unassignedDevices')
                   )}
                 </p>
-                {group.devices.map(d => (
-                  <button
-                    key={d.id}
-                    className={`kid${d.id === deviceId ? ' is-active' : ''}`}
-                    onClick={() => setDeviceId(d.id)}
-                  >
-                    {/*
-                    The device glyph, not the child's initial — the same call
-                    the phone's device card makes (`deviceIconName`), so a Mac
-                    is the same picture on both surfaces and an iPad is not
-                    drawn as an iPhone here while the phone app draws the
-                    tablet. The initial belongs to the group heading now, where
-                    it names a person once instead of once per row.
-
-                    It reads the surface rule, not `deviceGlyph` alone: the
-                    extension registers under the platform it was installed on,
-                    so this rail drew a Mac and the extension running on it as
-                    two identical laptops until the rule was shared.
-                  */}
-                    <span className={`kid-avatar av-${d.platform}`}>
-                      <Icon name={deviceIconName(d)} size={20} />
-                    </span>
-                    <span className="kid-meta">
-                      <strong>{d.name}</strong>
-                      {d.modelName && d.modelName !== d.name && <em>{d.modelName}</em>}
+                {group.devices.map(d => {
+                  /*
+                   * `getEffectiveDeviceStatus`, not the stored `status` field.
+                   * Three minutes of silence is offline on every surface, and
+                   * the rule also refuses to call a device locked when it
+                   * cannot lock — a browser extension carrying a stale
+                   * `isLocked` from before that button was gated would
+                   * otherwise sit amber here forever.
+                   */
+                  const status = deviceStatusOf(d);
+                  return (
+                    <button
+                      key={d.id}
+                      className={`kid${d.id === deviceId ? ' is-active' : ''}`}
+                      onClick={() => setDeviceId(d.id)}
+                      aria-current={d.id === deviceId ? 'true' : undefined}
+                    >
                       {/*
-                      Which machine is on an old build, without opening each one
-                      in turn — the rail is where "which of these" gets asked.
-                      Only ever drawn on an outdated device: `unknown` is every
-                      row that has not reported a build yet and every platform
-                      with nothing published to compare against, and a mark for
-                      that would sit on most rails saying nothing.
+                      The device glyph, not the child's initial — the same call
+                      the phone's device card makes (`deviceIconName`), so a Mac
+                      is the same picture on both surfaces and an iPad is not
+                      drawn as an iPhone here while the phone app draws the
+                      tablet. The initial belongs to the group heading now, where
+                      it names a person once instead of once per row.
+
+                      It reads the surface rule, not `deviceGlyph` alone: the
+                      extension registers under the platform it was installed on,
+                      so this rail drew a Mac and the extension running on it as
+                      two identical laptops until the rule was shared.
                     */}
-                      {resolveBuildFreshness(d, latestBuilds ?? {}).status ===
-                        'outdated' && (
-                        <em className="kid-build-old">{t('dash.buildOutdated')}</em>
-                      )}
-                    </span>
-                    {/*
-                    `getEffectiveDeviceStatus`, not the stored `status` field.
-                    Three minutes of silence is offline on every surface, and
-                    the rule also refuses to call a device locked when it
-                    cannot lock — a browser extension carrying a stale
-                    `isLocked` from before that button was gated would
-                    otherwise sit amber here forever.
-                  */}
-                    <i
-                      className={`kid-dot tone-${
-                        deviceStatusOf(d) === 'online'
-                          ? 'good'
-                          : deviceStatusOf(d) === 'locked'
-                            ? 'warning'
-                            : 'muted'
-                      }`}
-                    />
-                  </button>
-                ))}
+                      <span className={`kid-avatar av-${d.platform}`}>
+                        <Icon name={deviceIconName(d)} size={20} />
+                      </span>
+                      <span className="kid-meta">
+                        <strong>{d.name}</strong>
+                        {d.modelName && d.modelName !== d.name && (
+                          <em>{d.modelName}</em>
+                        )}
+                        {/*
+                        Which machine is on an old build, without opening each one
+                        in turn — the rail is where "which of these" gets asked.
+                        Only ever drawn on an outdated device: `unknown` is every
+                        row that has not reported a build yet and every platform
+                        with nothing published to compare against, and a mark for
+                        that would sit on most rails saying nothing.
+                      */}
+                        {resolveBuildFreshness(d, latestBuilds ?? {}).status ===
+                          'outdated' && (
+                          <em className="kid-build-old">{t('dash.buildOutdated')}</em>
+                        )}
+                      </span>
+                      {/*
+                      The dot is the only thing on the row that says whether the
+                      device is reachable, and it said it in colour alone — a
+                      parent who cannot separate amber from grey read six
+                      identical rows. The label is the same sentence `StatusPill`
+                      prints in the header, from the same map.
+                    */}
+                      <i
+                        className={`kid-dot tone-${
+                          status === 'online'
+                            ? 'good'
+                            : status === 'locked'
+                              ? 'warning'
+                              : 'muted'
+                        }`}
+                        role="img"
+                        aria-label={t(STATUS_KEY[status] ?? STATUS_KEY.offline)}
+                        title={t(STATUS_KEY[status] ?? STATUS_KEY.offline)}
+                      />
+                    </button>
+                  );
+                })}
               </div>
             ))}
           </div>
         </div>
 
-        <nav className="side-section side-nav">
+        <nav className="side-section side-nav" aria-label={t('dash.manage')}>
           <p className="side-title">{t('dash.manage')}</p>
           {visibleTabs.map(item => (
             <button
               key={item.id}
               className={`nav-item${tab === item.id ? ' is-active' : ''}`}
               onClick={() => setTab(item.id)}
+              /* Which tab is showing, said to a screen reader as well as in
+                 the brand bar the stylesheet draws down the row's edge. */
+              aria-current={tab === item.id ? 'page' : undefined}
             >
               <Icon name={item.icon} size={17} />
               {t(item.labelKey)}
+              {/* A bare figure beside "Overview" says nothing about what was
+                  counted. `cardAttentionSub` is the sentence the Overview card
+                  itself uses for the same number. */}
               {item.id === 'overview' && attention.length > 0 && (
-                <span className="nav-badge">{attention.length}</span>
+                <span
+                  className="nav-badge"
+                  title={t('dash.cardAttentionSub', { count: attention.length })}
+                >
+                  {attention.length}
+                </span>
               )}
               {/* A dot, where the Attention badge beside it is a count: what is
                   behind this one is a single report, and `1` would invite the
