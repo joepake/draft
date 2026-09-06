@@ -189,11 +189,15 @@ const FEATURES = [
  * warnings had to travel with the buttons. Inside the card is tighter than the
  * page ever was: a parent cannot reach the button without the sentence.
  *
- * KidGate ships **unsigned** on both desktops — no Developer ID certificate,
- * no Authenticode certificate — so macOS refuses the first launch outright and
- * Windows raises SmartScreen, on every install, forever, not once per release.
- * A `.zip` changes neither: macOS carries the quarantine flag through the
- * unzip and Windows stamps the extracted `.exe` with the same Mark of the Web.
+ * **The two desktops no longer warn the same way, which is why each card holds
+ * its own sentence rather than sharing one.** macOS has been signed with a
+ * Developer ID and notarised since 2026-08-15 (`docs/SITE_ROUTES.md`), so the
+ * `.pkg` installs with no Gatekeeper refusal — what its card has to say instead
+ * is that the system extension needs approving once, because the Web Filter is
+ * silently absent until it is. Windows has no Authenticode certificate, so
+ * SmartScreen warns on every install, forever, not once per release, and the
+ * `.zip` does not soften it: the extracted `.exe` carries the same Mark of the
+ * Web. `download.warningSub` under the grid is therefore about Windows alone.
  */
 function DesktopCard({ platform, icon }) {
   const { t } = useT();
@@ -466,11 +470,13 @@ export default function Home() {
           </div>
 
           {/*
-            Why both computers warn, once, under the two cards that each carry
-            their own steps. Written as an explanation of the operating system's
-            behaviour rather than as reassurance — "this is safe" is exactly
-            what malware says, and a parent who meets a Gatekeeper refusal with
-            no warning concludes the app is broken rather than unsigned.
+            Why Windows warns, once, under the cards that each carry their own
+            steps. Written as an explanation of the operating system's behaviour
+            rather than as reassurance — "this is safe" is exactly what malware
+            says, and a parent who meets SmartScreen with no warning concludes
+            the app is broken rather than unsigned. It names the Mac only to say
+            it does not warn; a note that read "both systems" outlived the
+            Developer ID by three weeks.
           */}
           <p className="section-note reveal">{t('download.warningSub')}</p>
         </div>

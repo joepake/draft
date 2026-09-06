@@ -7,6 +7,8 @@ import {
   type ScheduleWindow,
 } from '@kidgate/schema/deviceControls';
 import type {
+  DeviceOtaRequestResult,
+  DeviceOtaRequestStatus,
   DeviceProtectionCounters,
   DeviceProtectionStatus,
   DeviceWeekCounters,
@@ -511,6 +513,47 @@ export function parseTopAppsToday(
 
   return entries.length > 0 ? entries : null;
 }
+
+/**
+ * What the device answered a parent's "Update now" with, or null.
+ *
+ * Null for a partial row rather than a half-filled object: the three fields are
+ * one answer, and a result with no `requestId` cannot be matched to the press
+ * it belongs to — a console would show a parent yesterday's failure under the
+ * button they just tapped. An unrecognised `status` is dropped for the same
+ * reason: this union grows on the agent before it grows on a console, and an
+ * older parent build must read "no answer yet", never a raw key.
+ */
+export function parseOtaRequestResult(
+  data?: Record<string, unknown>,
+): DeviceOtaRequestResult | null {
+  const raw = data?.otaRequestResult as Record<string, unknown> | undefined;
+  if (!raw) {
+    return null;
+  }
+
+  const requestId = typeof raw.requestId === 'string' ? raw.requestId.trim() : '';
+  const status = raw.status as DeviceOtaRequestStatus;
+  const atMs = raw.atMs;
+
+  if (
+    !requestId ||
+    !OTA_REQUEST_STATUSES.includes(status) ||
+    typeof atMs !== 'number' ||
+    !Number.isFinite(atMs)
+  ) {
+    return null;
+  }
+
+  return { requestId, status, atMs };
+}
+
+const OTA_REQUEST_STATUSES: readonly DeviceOtaRequestStatus[] = [
+  'up_to_date',
+  'skipped',
+  'store_update_required',
+  'failed',
+];
 
 /** All-time tallies written by the `tallyProtectionCounters` Cloud Function. */
 export function parseProtectionCounters(

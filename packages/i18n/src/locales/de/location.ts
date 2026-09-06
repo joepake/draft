@@ -2,7 +2,7 @@ export const location = {
   title: 'Standort',
   fallbackDeviceName: 'Kindergerät',
   syncNote:
-    'Der Standort kann ein paar Minuten brauchen, bis er aktualisiert wird — länger, wenn das Gerät keine Internetverbindung hat oder unerwartet beendet wurde.',
+    'Der Standort kann ein paar Minuten brauchen, bis er aktualisiert wird – länger, wenn das Gerät keine Internetverbindung hat oder unerwartet beendet wurde.',
   toastUpdateFailed:
     'Die Standortfreigabe konnte nicht aktualisiert werden. Bitte versuche es erneut.',
   toggleLabel: 'Standort teilen',

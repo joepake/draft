@@ -109,8 +109,8 @@ export default {
     trust1Text: 'Çocuk verileri hiçbir zaman reklam için kullanılmaz',
     trust2Title: 'İstediğiniz zaman silin',
     trust2Text: 'Talebiniz üzerine aile hesabınızı ve tüm verileri sileriz',
-    trust3Title: 'Telefon ve bilgisayar',
-    trust3Text: 'iPhone, Android, Mac ve Windows tek bir aile hesabında',
+    trust3Title: 'Telefon, bilgisayar ve tarayıcı',
+    trust3Text: 'iPhone, Android, Mac, Windows ve Chrome tek bir aile hesabında',
     trust4Title: 'Aile başına tek plan',
     trust4Text: 'Tüm ebeveyn ve çocuk cihazları, tek abonelik',
 
@@ -120,7 +120,7 @@ export default {
       'Günlük sınırlardan acil durum uyarılarına — tüm ailenin dijital iyiliği için tek uygulama.',
     feature1Title: 'Ekran süresi ve günlük sınırlar',
     feature1Text:
-      'Okul ve uyku saatleri için günlük bir üst sınır ve engelli saatler belirleyin. Süre dolduğunda cihaz kendini kilitler.',
+      'Okul ve uyku saatleri için günlük bir üst sınır ve engellenen saatler belirleyin. Süre dolduğunda cihaz kendini kilitler.',
     feature2Title: 'Uygulama engelleme',
     feature2Text:
       'Çocuğunuzun hangi uygulamaları açabileceğini tam olarak seçin; ebeveyn PIN’iyle korunur ve engellemeyi uzaktan açabilirsiniz.',
@@ -129,7 +129,7 @@ export default {
       'Günlük sınırın üstüne, her uygulamaya ayrı bir sınır koyun — tamamen yasaklamadan “yarım saat TikTok”.',
     feature4Title: 'Web filtreleme ve geçmiş',
     feature4Text:
-      'Yetişkin ve kumar sitelerini reddedin, sonra telefonun gerçekte hangi siteleri açtığını ve hangilerinin durdurulduğunu görün.',
+      'Yetişkin ve kumar sitelerini telefonda, bilgisayarda ve Chrome’da reddedin, sonra hangi sitelerin arandığını ve hangilerinin durdurulduğunu görün.',
     feature5Title: 'Canlı konum ve yerler',
     feature5Text:
       'Çocuğunuzun son konumunu görün, geçmişi inceleyin ve kayıtlı bir yere vardığında ya da oradan ayrıldığında haberdar olun.',
@@ -138,7 +138,7 @@ export default {
       'Çocuğunuzdan iyi olduğunu onaylamasını isteyin; acil durumda konum ve fotoğrafla anında SOS alın.',
     feature7Title: 'Koruma ve uygulama uyarıları',
     feature7Text:
-      'Önemli bir izin kapatıldığı anda haberiniz olsun — Android’de ise bir uygulama kurulduğunda ya da kaldırıldığında.',
+      'Önemli bir izin kapatıldığı anda haberiniz olsun — Android, Mac ve Windows’ta ise yeni bir uygulama belirip onayınızı beklediğinde.',
     feature8Title: 'Ödül görevleri ve ek süre',
     feature8Text:
       'Çocuklar görevleri bitirerek ek dakika kazanır ya da daha fazla süre ister. İkisi de onayınız için telefonunuza düşer.',
@@ -157,7 +157,7 @@ export default {
       'Olan biten her şey, sırasıyla — kilidi açılan bir cihaz, filtrelenen bir site, tamamlanan bir görev, gönderilen bir uyarı.',
     platformsTitle: 'Ekran neredeyse orada olan tek bir KidGate',
     platformsSub:
-      'Telefonda da bilgisayarda da aynı kurallar ve aynı aile hesabı. Masaüstü uygulaması bir mağazadan değil, bu siteden kurulur.',
+      'Telefonda da bilgisayarda da Chrome’da da aynı kurallar ve aynı aile hesabı. Masaüstü uygulaması bir mağazadan değil, bu siteden kurulur.',
 
     showcaseEyebrow: 'Ebeveyn paneli',
     showcaseTitle: 'Tüm aile tek ekranda',
@@ -204,10 +204,10 @@ export default {
       'Ebeveynlerin bizi kıyasladığı uygulamalara karşı kontrol ettiğimiz altı madde. Her biri hangi platformda geçerli olduğunu söyler.',
     only1Title: 'Salondaki televizyon da',
     only1Text:
-      'Android TV bir telefonla aynı Engellenen Saatler’i, uygulama engellemeyi, uygulama başına sınırları ve web filtrelemeyi alır. Ebeveyn denetimlerinin çoğu telefonda biter.',
+      'Android TV bir telefonla aynı Engellenen Saatler’i, uygulama engellemeyi, uygulama başına sınırları ve web filtrelemeyi alır. Uygulama bugün gerçek donanımda çalışıyor ve mağazada yayınlanmayı bekliyor; platform listesinde Planlanıyor yazmasının nedeni budur. Ebeveyn denetimlerinin çoğu telefonda biter.',
     only2Title: 'Telefonda kalan mesaj uyarıları',
     only2Text:
-      'Android’de mesajlar, 14 dildeki anahtar kelime listeleriyle cihazın kendisinde karşılaştırılır. Yalnızca eşleşen kelime tutulur — konuşmanın kendisi asla saklanmaz.',
+      'Android’de mesajlar, 14 dildeki anahtar kelime listeleriyle cihazın kendisinde karşılaştırılır ve telefondan çıkan şey eşleşen kelimedir, asla konuşmanın kendisi değil. Bunu değiştiren tek bir şey var ve yalnızca siz isterseniz devreye girer: yapay zekâ onayını açtığınızda, anahtar kelime eşleşmesi belirsiz olan gelen bir mesaj değerlendirilmek üzere gönderilir; böylece sıradan bir kelime yüzünden uykunuzdan uyandırılmazsınız.',
     only3Title: 'Uygulama listesi değil, her uygulama',
     only3Text:
       'Android’de uyarılar, çocuğunuzun kullandığı her uygulamadaki bildirimlerden ve yazdıklarından gelir — Zalo, LINE, KakaoTalk, bir oyunun sohbeti — sabit bir desteklenen uygulama listesinden değil.',
@@ -226,16 +226,16 @@ export default {
     faqSub: 'İndirmeden önce kısa yanıtlar.',
     faq1Q: 'Ücretsiz deneme var mı?',
     faq1A:
-      'Evet. Deneme, ilk ebeveyn ve çocuk cihazlarınız bağlandığında başlar ve tüm Premium özellikleri içerir. Bittiğinde, belirlediğiniz tüm kurallar — Günlük sınır, Engellenen saatler, Engellenen Uygulamalar, Web filtresi ve konum — bir çocuk cihazında ücretsiz çalışmaya devam eder.',
+      'Evet. Deneme, ilk ebeveyn ve çocuk cihazlarınız bağlandığında başlar ve tüm Premium özellikleri içerir. Bittiğinde, belirlediğiniz kurallar — Günlük sınır, Engellenen Saatler, Engellenen Uygulamalar, Web filtresi, Cihaz Kilidi, ek süre istekleri ve ödül görevleri — bir çocuk cihazında ücretsiz çalışmaya devam eder ve o cihaza nerede olduğunu yine de sorabilirsiniz. Premium’un geri getirdikleri ise canlı etkinlik, geçmiş, haftalık raporlar ve konum takibidir.',
     faq2Q: 'Kaç cihaz yönetebilirim?',
     faq2A:
-      'Tek abonelik tüm ailenizi kapsar — aynı planda birden çok çocuk cihazı ve birden çok ebeveyn.',
+      'Tek abonelik tüm ailenizi kapsar — aynı planda her çocuk cihazı ve her ebeveyn. Ücretsiz planda bir çocuk cihazı izlenmeye devam eder ve hangisi olacağını siz seçersiniz; diğerleri hâlihazırda belirlediğiniz kuralları uygulamayı sürdürür ve etkinlik göndermeyi bırakır.',
     faq3Q: 'Çocuğum KidGate’i kaldırabilir veya atlatabilir mi?',
     faq3A:
       'Hassas ayarlar ebeveyn PIN’inizin arkasındadır ve çocuk cihazında önemli bir izin kapatılırsa koruma uyarıları size hemen haber verir.',
     faq4Q: 'Her şeyi bilgisayardan yönetebilir miyim?',
     faq4A:
-      'Deneme, ilk ebeveyn ve çocuk cihazlarınız bağlandığında başlar ve tüm özelliklere tam erişim verir. Bir çocuk cihazını kaldırmak denemeyi sıfırlamaz. Bittiğinde, tüm kurallar bir çocuk cihazında ücretsiz çalışmaya devam eder; Premium canlı etkinliği, geçmişi, haftalık raporları ve tüm cihazları korur.',
+      'Evet. Ebeveyn paneli her tarayıcıda açılır — telefonunuzdan aldığınız bir kodla giriş yapın, aynı aileyi, cihazları ve ayarları görün. Okuma hemen çalışır; bir cihazı kilitlemek ya da bir sınırı değiştirmek Ebeveyn PIN’inizi veya uygulamadan bir onayı ister.',
     faqMore: 'Başka sorunuz mu var? Destek sayfasına gidin',
 
     ctaTitle: 'Ailenizi korumaya bugün başlayın',
@@ -507,7 +507,7 @@ export default {
     usageSyncNote:
       'Ekran süresinin bu ekrana yansıması birkaç dakika sürebilir — cihazın internet bağlantısı yoksa veya beklenmedik şekilde kapandıysa bu süre daha uzun olabilir.',
     usageSyncNoteTv:
-      'Bu TV yalnızca belirli aralıklarla bağlanır, bu yüzden ekran süresinin bu ekrana yansıması 30 dakikaya kadar sürebilir — internet bağlantısı yoksa bu süre daha da uzar.',
+      'Bu TV yalnızca belirli aralıklarla bağlanır, bu yüzden ekran süresinin bu ekrana yansıması bir saate kadar sürebilir — internet bağlantısı yoksa bu süre daha da uzar.',
     cardRecent: 'Son etkinlikler',
     cardRecentSub: 'En yeniden başlayarak',
     cardRecentEmpty:
@@ -600,7 +600,7 @@ export default {
     webActivitySyncNote:
       'Web etkinliğinin bu ekrana yansıması birkaç dakika sürebilir — cihazın internet bağlantısı yoksa veya beklenmedik şekilde kapandıysa bu süre daha uzun olabilir.',
     webActivitySyncNoteTv:
-      'Bu TV yalnızca belirli aralıklarla bağlanır, bu yüzden web etkinliğinin bu ekrana yansıması 30 dakikaya kadar sürebilir — internet bağlantısı yoksa bu süre daha da uzar.',
+      'Bu TV yalnızca belirli aralıklarla bağlanır, bu yüzden web etkinliğinin bu ekrana yansıması bir saate kadar sürebilir — internet bağlantısı yoksa bu süre daha da uzar.',
     colDomain: 'Alan adı',
     colVisits: 'Ziyaret',
     colBlocked: 'Engellenen',
@@ -856,7 +856,7 @@ export default {
     start4:
       '**4. Çocuk cihazında izinleri verin.** Çocuk cihazında *Durum* ekranını açın ve KidGate’in istediği tüm izinleri verin — Android’de: bildirimler, Kullanım Erişimi, Diğer uygulamaların üzerinde göster, Erişilebilirlik ve kısıtlamasız pil; iOS’ta: *Uygulama ve Web Sitesi Kullanımına İzin Ver* (Ekran Süresi). Bunlar açılmadan denetimler tam olarak çalışmaz.',
     start5:
-      '**5. Denetimleri yapılandırın.** Ebeveyn cihazından çocuğun cihaz kartını açın ve günlük sınır, engelli saatler, engellenen uygulamalar, web filtresi ve konum özelliklerini ayarlayın.',
+      '**5. Denetimleri yapılandırın.** Ebeveyn cihazından çocuğun cihaz kartını açın ve günlük sınır, engellenen saatler, engellenen uygulamalar, web filtresi ve konum özelliklerini ayarlayın.',
     startNote:
       'Uygulamada adım adım bir rehber de var: *Ayarlar → Kullanım rehberi*. Cihaz eşleştirme, izinler, günlük denetimler ve güvenlik özelliklerini ayrıntılı anlatır.',
 
@@ -890,7 +890,7 @@ export default {
     faq7A:
       'Kullanım verileri çocuk cihazından gelir. Çocuk cihazının çevrimiçi olduğunu doğrulayın, sonra o cihazda KidGate’i açıp *Durum* ekranına bakın — her izin satırı izin verildi olarak görünmelidir (Android’de ekran süresi takibi için Kullanım Erişimi gerekir). Raporların eşitlenmesi birkaç dakika sürebilir.',
 
-    faq8Q: 'Kilitleme veya engelli saatler neden çalışmıyor?',
+    faq8Q: 'Kilitleme veya engellenen saatler neden çalışmıyor?',
     faq8A:
       'Android’de kilitleme için *Diğer uygulamaların üzerinde göster* ve *Erişilebilirlik* yardımcısının açık olması, ayrıca kısıtlamasız pil gerekir. Xiaomi, Samsung, Oppo, Vivo ve benzeri cihazlarda otomatik başlatmaya da izin verin ve KidGate’i "uyuyan uygulamalar" listelerinden çıkarın (çocuk cihazında *Durum → KidGate’i çalışır tut* bölümüne bakın). iOS’ta kilitleme Ekran Süresi yetkisine bağlıdır. Bir izin sonradan kapatılırsa ebeveyn cihazınıza bir koruma uyarısı gelir.',
 
@@ -922,9 +922,9 @@ export default {
     windowsRequires: 'Windows 10 veya üzeri, 64 bit.',
     button: 'İndir',
     warningSub:
-      'Her iki sistem de kendi mağazaları dışından, henüz doğrulanmış listelerinde olmayan bir geliştirici tarafından kurulan her uygulama için bu uyarıyı gösterir — KidGate’te bulunan bir şeyi işaret etmez. Yukarıdaki her kart ilk açılışa nasıl izin verileceğini anlatır. Yalnızca kidgate.app üzerinden indirin.',
+      'Windows, kendi mağazası dışından, henüz doğrulanmış listesinde olmayan bir geliştirici tarafından kurulan her uygulama için bu uyarıyı gösterir — KidGate’te bulunan bir şeyi işaret etmez. Yukarıdaki Windows kartı buna nasıl izin verileceğini anlatır. Mac paketi Apple tarafından imzalanıp onaylanmıştır ve hiçbir uyarı vermez. Yalnızca kidgate.app üzerinden indirin.',
     macosSteps:
-      'Uygulamayı bir kez açın ve reddedilmesine izin verin. Ardından Sistem Ayarları, Gizlilik ve Güvenlik’e gidin, aşağı kaydırıp Yine de Aç’ı seçin.',
+      'İndirdiğiniz paketi açın ve yükleyiciyi izleyin. Ardından macOS, Oturum Açma Öğeleri ve Uzantılar altında KidGate sistem uzantısına izin vermenizi bir kez ister — siz izin verene kadar Web filtresi çalışmaz.',
     windowsSteps:
       'Windows bilgisayarınızı koruduğunu söylediğinde Ek bilgi’yi, ardından Yine de çalıştır’ı seçin.',
   },
@@ -940,7 +940,7 @@ export default {
     storyP2:
       'Biz de evde istediğimiz sürümü yaptık. Ebeveyn günlük sınırı, Engellenen saatleri, Uygulama engellemeyi ve Web filtrelemeyi bir kez ayarlıyor, cihaz da bunlara uyuyor. Çocuk ebeveynin gördüğü aynı sayıları görüyor, daha fazla süre isteyebiliyor ve SOS ile her an ebeveynine ulaşabiliyor. KidGate orada değilmiş gibi yapmıyor.',
     storyP3:
-      'iPhone, Android, Mac ve Windows üzerinde çalışıyor; ayrıca her tarayıcıda açılan bir panel var. Tek aile, tek plan, bütün cihazlar.',
+      'iPhone, Android, Mac ve Windows üzerinde çalışıyor; ayrıca Chrome için bir uzantı ve her tarayıcıda açılan bir panel var. Tek aile, tek plan, bütün cihazlar.',
     valuesEyebrow: 'Neye inanıyoruz',
     valuesTitle: 'Çiğnemediğimiz dört kural',
     valuesSub: 'En çok sorulan sorular, siz sormak zorunda kalmadan yanıtlandı.',
@@ -975,9 +975,12 @@ export default {
     make5Soon: 'Planlanıyor',
     make5Title: 'Android TV',
     make5Text:
-      'Oturma odasındaki ekran; tek bir çocuğun değil, ailenin ortak cihazı olarak ele alınır — telefonlardaki aynı sınırlar ve aynı program ile.',
-    make6Title: 'Ebeveyn paneli',
+      'Oturma odasındaki ekran; tek bir çocuğun değil, ailenin ortak cihazı olarak ele alınır — telefonlardaki aynı sınırlar ve aynı program ile. Gerçek donanımda çalıştı, şimdi mağaza yayımını bekliyor.',
+    make6Title: 'Chrome',
     make6Text:
+      'KidGate’in kurulu olduğu bir bilgisayarda da, kurulamadığı bir bilgisayarda da Chrome içinde aynı Web filtrelemeyi taşıyan bir tarayıcı uzantısı. Hazır ve eşleştirildi; şimdi Chrome Web Store incelemesini bekliyor.',
+    make7Title: 'Ebeveyn paneli',
+    make7Text:
       'Tarayıcı, ebeveynin ikinci ekranıdır. Telefonunuzdaki kodla herhangi bir bilgisayardan giriş yapın; kurulacak bir şey yok.',
     factsEyebrow: 'Bugün KidGate',
     factsTitle: 'Dört sayı',

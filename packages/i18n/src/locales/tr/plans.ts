@@ -48,7 +48,7 @@ export const plans = {
   compareNewApps: 'Yeni yüklenen uygulamalar',
   compareNewAppsPremium: 'Hangi uygulamalar ve yüklemeden önce onay',
   compareMessages: 'Mesaj uyarıları (Android)',
-  compareSafety: 'Kurcalama uyarıları ve durum bildirimi',
+  compareSafety: 'Koruma uyarıları ve Check-In',
   compareControls: 'Uygulama engelleme ve web filtresi',
   compareControlsFree: 'Her uygulama, yetişkin içeriği',
   compareControlsPremium: 'Kategoriye göre, uygulama başına limit, kendi listeleriniz',
@@ -141,7 +141,7 @@ export const plans = {
   // has to name who needs to act instead of offering a button they can't use.
   familyPremiumEndedTitle: 'Bu ailenin Premium’u sona erdi',
   familyPremiumEndedBody:
-    'Günlük sınır, Engellenen Saatler, Engellenen Uygulamalar, Web filtresi ve konum çalışmaya devam ediyor. Canlı güncellemeler, geçmiş, uyarılar ve raporlar Premium yenilenene kadar duraklatıldı.',
+    'Günlük sınır, Engellenen Saatler, Engellenen Uygulamalar, Web filtresi ve konum çalışmaya devam ediyor. Canlı güncellemeler, geçmiş, uyarılar ve raporlar aile sahibi Premium’u yenileyene kadar duraklatıldı.',
   pricesUnavailable: 'Fiyatlar mağazadan yüklenemedi.',
   pricesRetry: 'Tekrar dene',
   featureRewardTasks: 'Ödül görevleri',
@@ -153,7 +153,7 @@ export const plans = {
   trustOnePlan: 'Tüm aile için tek plan',
   trustNoAds: 'Reklam yok',
   freePlanName: 'Ücretsiz',
-  freeDescription: 'Tek bir çocuk cihazında temel özellikler, süre sınırı yok.',
+  freeDescription: 'Tek bir çocuk cihazında temel özellikler, süresi dolmaz.',
   featureOneChildDevice: 'Bir çocuk cihazı',
   termLifetime: 'Ömür boyu',
   badgeOneTime: 'Tek seferlik',

@@ -51,6 +51,12 @@ export const deviceDetail = {
   appVersion: 'Version de l’app',
   appVersionUpdate: '{{running}} · {{latest}} disponible',
   appVersionRestart: '{{running}} · redémarrez l’app pour terminer',
+  otaUpdateNow: 'Mettre à jour',
+  otaAsked: 'Mise à jour demandée à cet appareil',
+  otaUpToDate: 'Déjà à jour',
+  otaSkipped: 'Les mises à jour sont désactivées sur cet appareil',
+  otaStoreUpdate: "Nécessite d'abord une mise à jour depuis le store",
+  otaFailed: "La mise à jour ne s'est pas installée",
   androidPauseNote:
     'Sur Android, le verrouillage bloque également les autres applications lorsque les services d’accessibilité et l’option « Afficher par-dessus les autres applications » sont activés.',
   notAvailableOnPlatform: 'Indisponible sur {{platform}}',

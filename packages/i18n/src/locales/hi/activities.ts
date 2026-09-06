@@ -39,7 +39,7 @@ export const activities = {
   activityTypePlaceExit: 'स्थान छोड़ा',
   activityTypeTamper: 'सुरक्षा',
   activityTypeScreenTime: 'स्क्रीन टाइम',
-  activityTypeCheckIn: 'सुरक्षा जाँच',
+  activityTypeCheckIn: 'चेक-इन',
   activityTypeLocationRequest: 'स्थान',
   activityTypeTimeRequest: 'समय अनुरोध',
   activityTypeRewardTask: 'इनाम कार्य',

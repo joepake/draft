@@ -49,6 +49,12 @@ export const deviceDetail = {
   appVersion: 'App-Version',
   appVersionUpdate: '{{running}} · {{latest}} verfügbar',
   appVersionRestart: '{{running}} · App neu starten, um abzuschließen',
+  otaUpdateNow: 'Jetzt aktualisieren',
+  otaAsked: 'Dieses Gerät wurde zum Aktualisieren aufgefordert',
+  otaUpToDate: 'Bereits aktuell',
+  otaSkipped: 'Updates sind auf diesem Gerät deaktiviert',
+  otaStoreUpdate: 'Benötigt zuerst ein Store-Update',
+  otaFailed: 'Das Update wurde nicht installiert',
   androidPauseNote:
     'Unter Android werden beim Sperren auch andere Apps blockiert, wenn Bedienungshilfen und „Über anderen Apps anzeigen“ aktiviert sind.',
   notAvailableOnPlatform: 'Auf {{platform}} nicht verfügbar',
@@ -72,7 +78,7 @@ export const deviceDetail = {
     'KidGate hat noch nie etwas von {{deviceName}} gehört. Ein Check-in kommt erst an, wenn die App auf diesem Gerät geöffnet wird.',
   checkInOfflineConfirm: 'Trotzdem senden',
   checkInQueued:
-    'Check-in in der Warteschlange — {{deviceName}} erhält ihn, sobald das Gerät wieder online ist.',
+    'Check-in in der Warteschlange – {{deviceName}} erhält ihn, sobald das Gerät wieder online ist.',
   unableToRequestCheckIn:
     'Check-in-Anfrage konnte nicht gesendet werden. Bitte versuche es erneut.',
   tapToSetDailyCap: 'Tageslimit festlegen',

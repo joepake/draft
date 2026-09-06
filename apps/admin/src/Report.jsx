@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import BarChart from './BarChart.jsx';
 import Sparkline from './Sparkline.jsx';
+import { useT } from './i18n.js';
 import { dateKey, useRollup } from './useRollup.js';
 
 /**
@@ -39,26 +40,29 @@ const RANGES = [7, 30, 90];
  * used their phone" would be drawing the wrong conclusion from a correct
  * number — the marker and the footnote are what stop that. `true` means the
  * premium-only footnote; a string is its own marker.
+ *
+ * The label is a key rather than a sentence, read at render time, so the
+ * language switch reaches the metric list and the raw grid's headers alike.
  */
 const DAY_METRICS = [
-  { key: 'newFamilies', label: 'New families' },
-  { key: 'conversions', label: 'First purchases', note: '‡' },
-  { key: 'activities', label: 'Activities, all types' },
-  { key: 'tamper', label: 'Tamper', from: 'activityTypes' },
-  { key: 'app_blocked', label: 'App blocked', from: 'activityTypes' },
-  { key: 'message_alert', label: 'Message alerts', from: 'activityTypes' },
-  { key: 'message_checked', label: 'Message cleared by AI', from: 'activityTypes' },
-  { key: 'emergency', label: 'Emergency', from: 'activityTypes' },
-  { key: 'sosAlerts', label: 'SOS alerts' },
-  { key: 'safetyCheckIns', label: 'Safety check-ins' },
-  { key: 'timeRequests', label: 'Time requests' },
-  { key: 'siteRequests', label: 'Site requests' },
-  { key: 'rewardTasksResolved', label: 'Reward tasks resolved' },
-  { key: 'reportingDeviceDays', label: 'Reporting device-days', note: true },
-  { key: 'screenMinutes', label: 'Screen minutes', note: true },
-  { key: 'bonusMinutes', label: 'Bonus minutes', note: true },
-  { key: 'webVisits', label: 'Web visits' },
-  { key: 'webBlockedVisits', label: 'Web visits blocked' },
+  { key: 'newFamilies' },
+  { key: 'conversions', note: '‡' },
+  { key: 'activities' },
+  { key: 'tamper', from: 'activityTypes' },
+  { key: 'app_blocked', from: 'activityTypes' },
+  { key: 'message_alert', from: 'activityTypes' },
+  { key: 'message_checked', from: 'activityTypes' },
+  { key: 'emergency', from: 'activityTypes' },
+  { key: 'sosAlerts' },
+  { key: 'safetyCheckIns' },
+  { key: 'timeRequests' },
+  { key: 'siteRequests' },
+  { key: 'rewardTasksResolved' },
+  { key: 'reportingDeviceDays', note: true },
+  { key: 'screenMinutes', note: true },
+  { key: 'bonusMinutes', note: true },
+  { key: 'webVisits' },
+  { key: 'webBlockedVisits' },
 ];
 
 /**
@@ -67,9 +71,9 @@ const DAY_METRICS = [
  * tiles and the plan mix below is not.
  */
 const SCALE_TILES = [
-  { key: 'families', label: 'Families' },
-  { key: 'childDevices', label: 'Child devices' },
-  { key: 'parentDevices', label: 'Parent devices' },
+  { key: 'families', labelKey: 'report.families' },
+  { key: 'childDevices', labelKey: 'report.childDevices' },
+  { key: 'parentDevices', labelKey: 'report.parentDevices' },
 ];
 
 /**
@@ -80,18 +84,18 @@ const SCALE_TILES = [
  * than beside them, and nothing here is ever drawn as one stacked bar.
  */
 const PLAN_ROWS = [
-  { key: 'familiesPlanPremium', label: 'Premium' },
-  { key: 'familiesPlanFree', label: 'Free' },
-  { key: 'familiesPlanMissing', label: 'Plan missing', note: true },
+  { key: 'familiesPlanPremium', labelKey: 'report.planPremium' },
+  { key: 'familiesPlanFree', labelKey: 'report.planFree' },
+  { key: 'familiesPlanMissing', labelKey: 'report.planMissing', note: true },
 ];
 
 /**
  * The conversion histogram's buckets, in time order rather than by size.
  *
  * The keys and their edges are `CONVERSION_BUCKETS` in
- * `functions/lib/conversionStats.js`; the labels are here because they are
- * prose for one operator, not data. Order is the whole point — a distribution
- * sorted by height is not a curve.
+ * `functions/lib/conversionStats.js`; the labels live in `i18n.js` because
+ * they are prose for one operator, not data. Order is the whole point — a
+ * distribution sorted by height is not a curve.
  */
 const CONVERSION_BUCKETS = [
   'd0',
@@ -104,20 +108,9 @@ const CONVERSION_BUCKETS = [
   'd61_plus',
 ];
 
-const CONVERSION_LABELS = {
-  d0: 'Same day',
-  d1: 'Next day',
-  d2_3: '2–3 days',
-  d4_7: '4–7 days',
-  d8_14: '8–14 days',
-  d15_30: '15–30 days',
-  d31_60: '31–60 days',
-  d61_plus: '61+ days',
-};
-
 /** `null` reads as "not measurable", never as zero days. */
-function dayCount(value) {
-  return Number.isFinite(value) ? `${value}d` : '—';
+function dayCount(value, t) {
+  return Number.isFinite(value) ? t('report.dayCount', { count: value }) : '—';
 }
 
 function valueOf(row, metric) {
@@ -128,10 +121,6 @@ function valueOf(row, metric) {
   return Number.isFinite(value) ? value : null;
 }
 
-function format(value) {
-  return Number.isFinite(value) ? value.toLocaleString() : '—';
-}
-
 /**
  * How healthy is the pipeline? The one question this page has to answer before
  * any number on it can be trusted.
@@ -140,14 +129,13 @@ function format(value) {
  * means it is not running, and every metric below is stale rather than quiet —
  * which looks identical unless something says so.
  */
-function health(rows) {
+function health(rows, t) {
   const newest = rows.find(entry => entry.row);
   if (!newest) {
     return {
       tone: 'critical',
-      label: 'No data',
-      detail:
-        'No rollup rows in this range. Deploy operatorMetricsDaily, or run scripts/run-operator-metrics.js --write.',
+      label: t('report.noData'),
+      detail: t('report.noDataDetail'),
     };
   }
   const ageDays = Math.round(
@@ -158,23 +146,34 @@ function health(rows) {
   if (ageDays <= 1) {
     return {
       tone: 'good',
-      label: 'Rollup healthy',
-      detail: `Latest row ${newest.date}, written ${newest.row.writtenAt?.slice(0, 16).replace('T', ' ') ?? 'unknown'}.`,
+      label: t('report.healthy'),
+      detail: t('report.healthyDetail', {
+        date: newest.date,
+        writtenAt:
+          newest.row.writtenAt?.slice(0, 16).replace('T', ' ') ?? t('common.unknown'),
+      }),
     };
   }
   return {
     tone: ageDays >= 3 ? 'critical' : 'warning',
-    label: `Rollup ${ageDays} days behind`,
-    detail: `Latest row ${newest.date}. The nightly job has not written since — every number below is stale, not quiet.`,
+    label: t('report.behind', { count: ageDays }),
+    detail: t('report.behindDetail', { date: newest.date }),
   };
 }
 
 export default function Report() {
+  const { t, language, formatNumber } = useT();
   const [days, setDays] = useState(30);
   const [showRaw, setShowRaw] = useState(false);
   // Shared with the Fleet page through `useRollup`, so moving between the two
   // costs no request and writes no extra audit row.
   const { data, error, busy, load } = useRollup(days);
+
+  const bucketLabels = useMemo(
+    () => Object.fromEntries(CONVERSION_BUCKETS.map(key => [key, t(`bucket.${key}`)])),
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- `t` reads `language`
+    [language],
+  );
 
   /**
    * Every date in the requested range, oldest first, whether or not the job
@@ -193,14 +192,18 @@ export default function Report() {
   }, [data]);
 
   const newestFirst = useMemo(() => [...rows].reverse(), [rows]);
-  const status = useMemo(() => health(newestFirst), [newestFirst]);
+  const status = useMemo(
+    () => health(newestFirst, t),
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- `t` reads `language`
+    [newestFirst, language],
+  );
   const latest = newestFirst.find(entry => entry.row)?.row ?? null;
   const missing = rows.filter(entry => !entry.row).length;
 
   return (
     <>
       <div className="section-head">
-        <h2 className="section-title">Report</h2>
+        <h2 className="section-title">{t('report.title')}</h2>
         <div style={{ alignItems: 'center', display: 'flex', gap: 8 }}>
           <div className="segmented">
             {RANGES.map(range => (
@@ -209,12 +212,12 @@ export default function Report() {
                 className={range === days ? 'is-active' : undefined}
                 onClick={() => setDays(range)}
               >
-                {range}d
+                {t('report.rangeDays', { count: range })}
               </button>
             ))}
           </div>
           <button className="btn btn-ghost" disabled={busy} onClick={() => load(days)}>
-            {busy ? 'Loading…' : 'Refresh'}
+            {busy ? t('common.loading') : t('common.refresh')}
           </button>
         </div>
       </div>
@@ -225,7 +228,7 @@ export default function Report() {
         </div>
       ) : null}
 
-      {!data && !error ? <p className="muted">Loading…</p> : null}
+      {!data && !error ? <p className="muted">{t('common.loading')}</p> : null}
 
       {data ? (
         <>
@@ -235,7 +238,7 @@ export default function Report() {
             <span className="status-detail">{status.detail}</span>
             {missing > 0 ? (
               <span className="status-detail" style={{ marginLeft: 'auto' }}>
-                {missing} of {rows.length} days have no row
+                {t('report.missingDays', { missing, total: rows.length })}
               </span>
             ) : null}
           </div>
@@ -245,8 +248,8 @@ export default function Report() {
               <div className="tile-grid">
                 {SCALE_TILES.map(tile => (
                   <div key={tile.key} className="tile">
-                    <div className="tile-label">{tile.label}</div>
-                    <div className="tile-value">{format(latest[tile.key])}</div>
+                    <div className="tile-label">{t(tile.labelKey)}</div>
+                    <div className="tile-value">{formatNumber(latest[tile.key])}</div>
                     <div className="tile-spark">
                       <Sparkline values={rows.map(entry => valueOf(entry.row, tile))} />
                     </div>
@@ -255,23 +258,24 @@ export default function Report() {
               </div>
 
               <div className="plan-card">
-                <div className="tile-label">Plan mix</div>
+                <div className="tile-label">{t('report.planMix')}</div>
                 {PLAN_ROWS.map(row => (
                   <div key={row.key} className="plan-row">
                     <span className="plan-name">
-                      {row.label}
+                      {t(row.labelKey)}
                       {row.note ? <sup className="mark">†</sup> : null}
                     </span>
-                    <span className="plan-value">{format(latest[row.key])}</span>
+                    <span className="plan-value">{formatNumber(latest[row.key])}</span>
                   </div>
                 ))}
                 <div className="plan-divider" />
                 <div className="plan-row">
                   <span className="plan-name">
-                    In trial<sup className="mark">†</sup>
+                    {t('report.inTrial')}
+                    <sup className="mark">†</sup>
                   </span>
                   <span className="plan-value">
-                    {format(latest.familiesTrialWindow)}
+                    {formatNumber(latest.familiesTrialWindow)}
                   </span>
                 </div>
               </div>
@@ -281,31 +285,33 @@ export default function Report() {
           {latest?.conversion ? (
             <>
               <div className="section-head">
-                <h2 className="section-title">Time to purchase</h2>
+                <h2 className="section-title">{t('report.timeToPurchase')}</h2>
                 <span className="muted">
-                  Every family that has ever paid, as of {latest.date} — not a range
+                  {t('report.timeToPurchaseSub', { date: latest.date })}
                 </span>
               </div>
 
               <div className="tile-grid" style={{ marginBottom: 12 }}>
                 <div className="tile">
-                  <div className="tile-label">Families ever paid</div>
-                  <div className="tile-value">{format(latest.conversion.families)}</div>
-                </div>
-                <div className="tile">
-                  <div className="tile-label">Median, signup → paid</div>
+                  <div className="tile-label">{t('report.familiesEverPaid')}</div>
                   <div className="tile-value">
-                    {dayCount(latest.conversion.fromSignup?.medianDays)}
+                    {formatNumber(latest.conversion.families)}
                   </div>
                 </div>
                 <div className="tile">
-                  <div className="tile-label">Median, trial → paid</div>
+                  <div className="tile-label">{t('report.medianSignup')}</div>
                   <div className="tile-value">
-                    {dayCount(latest.conversion.fromTrial?.medianDays)}
+                    {dayCount(latest.conversion.fromSignup?.medianDays, t)}
                   </div>
                 </div>
                 <div className="tile">
-                  <div className="tile-label">Conversion of all families</div>
+                  <div className="tile-label">{t('report.medianTrial')}</div>
+                  <div className="tile-value">
+                    {dayCount(latest.conversion.fromTrial?.medianDays, t)}
+                  </div>
+                </div>
+                <div className="tile">
+                  <div className="tile-label">{t('report.conversionRate')}</div>
                   <div className="tile-value">
                     {Number.isFinite(latest.families) && latest.families > 0
                       ? `${Math.round((latest.conversion.families / latest.families) * 100)}%`
@@ -318,13 +324,9 @@ export default function Report() {
                 <div className="status-strip" style={{ marginBottom: 12 }}>
                   <span className="status-dot is-warning" />
                   <span className="status-label">
-                    {latest.conversion.families} paying{' '}
-                    {latest.conversion.families === 1 ? 'family' : 'families'}
+                    {t('report.fewPayers', { count: latest.conversion.families })}
                   </span>
-                  <span className="status-detail">
-                    A median over this few is one family&rsquo;s purchase, not a trend.
-                    Read the bars as anecdotes until the count reaches double figures.
-                  </span>
+                  <span className="status-detail">{t('report.fewPayersDetail')}</span>
                 </div>
               ) : null}
 
@@ -332,39 +334,44 @@ export default function Report() {
                 {[
                   {
                     key: 'fromSignup',
-                    title: 'From signup',
-                    sub: 'Days between the account being created and its first payment',
-                    unknown:
-                      'no createdAt on the family — a signup that predates the field',
+                    titleKey: 'report.fromSignup',
+                    subKey: 'report.fromSignupSub',
+                    unknownKey: 'report.fromSignupUnknown',
                   },
                   {
                     key: 'fromTrial',
-                    title: 'From trial start',
-                    sub: 'Days between the first parent + child device pairing and the first payment',
-                    unknown:
-                      'never started a trial clock, or paired before the field existed',
+                    titleKey: 'report.fromTrial',
+                    subKey: 'report.fromTrialSub',
+                    unknownKey: 'report.fromTrialUnknown',
                   },
                 ].map(cut => {
                   const stats = latest.conversion[cut.key] ?? {};
                   return (
                     <div key={cut.key} className="chart-card">
-                      <h3 className="chart-title">{cut.title}</h3>
-                      <p className="chart-sub">{cut.sub}</p>
+                      <h3 className="chart-title">{t(cut.titleKey)}</h3>
+                      <p className="chart-sub">{t(cut.subKey)}</p>
                       <BarChart
                         data={stats.buckets}
                         order={CONVERSION_BUCKETS}
-                        labels={CONVERSION_LABELS}
+                        labels={bucketLabels}
                         total={stats.families}
-                        emptyLabel="No family has converted with this measurable yet."
+                        emptyLabel={t('report.noConversion')}
                       />
                       <p className="chart-sub" style={{ marginTop: 10 }}>
-                        n = {format(stats.families)} · mean {dayCount(stats.meanDays)} ·
-                        p25 {dayCount(stats.p25Days)} · p75 {dayCount(stats.p75Days)}
+                        {t('report.stats', {
+                          n: formatNumber(stats.families),
+                          mean: dayCount(stats.meanDays, t),
+                          p25: dayCount(stats.p25Days, t),
+                          p75: dayCount(stats.p75Days, t),
+                        })}
                         {stats.unknown > 0
-                          ? ` · ${stats.unknown} not measurable (${cut.unknown})`
+                          ? t('report.statsUnknown', {
+                              count: stats.unknown,
+                              reason: t(cut.unknownKey),
+                            })
                           : ''}
                         {stats.invalid > 0
-                          ? ` · ${stats.invalid} dated before the start — clock skew or a wrong backfill guess`
+                          ? t('report.statsInvalid', { count: stats.invalid })
                           : ''}
                       </p>
                     </div>
@@ -375,15 +382,15 @@ export default function Report() {
           ) : null}
 
           <div className="section-head">
-            <h2 className="section-title">Daily activity</h2>
+            <h2 className="section-title">{t('report.dailyActivity')}</h2>
           </div>
 
           <div className="metric-list">
             <div className="metric-head">
-              <span>Metric</span>
-              <span>Latest</span>
-              <span>Last {days} days</span>
-              <span>Total</span>
+              <span>{t('report.colMetric')}</span>
+              <span>{t('report.colLatest')}</span>
+              <span>{t('report.colWindow', { count: days })}</span>
+              <span>{t('report.colTotal')}</span>
             </div>
             {DAY_METRICS.map(metric => {
               const series = rows.map(entry => valueOf(entry.row, metric));
@@ -392,17 +399,19 @@ export default function Report() {
               return (
                 <div key={metric.key} className="metric-row">
                   <span className="metric-name">
-                    {metric.label}
+                    {t(`metric.${metric.key}`)}
                     {metric.note ? (
                       <sup className="mark">
                         {metric.note === true ? '*' : metric.note}
                       </sup>
                     ) : null}
                   </span>
-                  <span className="metric-num">{format(valueOf(latest, metric))}</span>
+                  <span className="metric-num">
+                    {formatNumber(valueOf(latest, metric))}
+                  </span>
                   <Sparkline values={series} />
                   <span className="metric-num is-total">
-                    {real.length > 0 ? total.toLocaleString() : '—'}
+                    {real.length > 0 ? formatNumber(total) : '—'}
                   </span>
                 </div>
               );
@@ -411,7 +420,7 @@ export default function Report() {
 
           <div style={{ marginTop: 14 }}>
             <button className="disclosure" onClick={() => setShowRaw(value => !value)}>
-              {showRaw ? '▾ Hide raw daily values' : '▸ Show raw daily values'}
+              {showRaw ? t('report.hideRaw') : t('report.showRaw')}
             </button>
           </div>
 
@@ -420,9 +429,9 @@ export default function Report() {
               <table className="table">
                 <thead>
                   <tr>
-                    <th>Date</th>
+                    <th>{t('report.colDate')}</th>
                     {DAY_METRICS.map(metric => (
-                      <th key={metric.key}>{metric.label}</th>
+                      <th key={metric.key}>{t(`metric.${metric.key}`)}</th>
                     ))}
                   </tr>
                 </thead>
@@ -431,7 +440,9 @@ export default function Report() {
                     <tr key={entry.date} className={entry.row ? undefined : 'is-gap'}>
                       <td>{entry.date}</td>
                       {DAY_METRICS.map(metric => (
-                        <td key={metric.key}>{format(valueOf(entry.row, metric))}</td>
+                        <td key={metric.key}>
+                          {formatNumber(valueOf(entry.row, metric))}
+                        </td>
                       ))}
                     </tr>
                   ))}
@@ -440,36 +451,46 @@ export default function Report() {
             </div>
           ) : null}
 
+          {/*
+            Each footnote is a run of translated prose with `<code>`, `<b>` and
+            `<i>` between the pieces. The markup stays in JSX and the sentence
+            is split where it interrupts, rather than putting tags inside a
+            translated string where a translator can break the render.
+          */}
           <div className="footnotes">
             <p>
-              <b>*</b> Premium only. <code>packageActivity.js</code> writes a{' '}
-              <code>usageDays</code> document only for a family with premium access, so
-              devices belonging to free families are absent from these three rows while
-              being perfectly active. Read them as usage{' '}
-              <i>among families entitled to usage reporting</i>, never as a
-              device-active count.
+              <b>*</b>
+              {t('footnote.premiumA')}
+              <code>packageActivity.js</code>
+              {t('footnote.premiumB')}
+              <code>usageDays</code>
+              {t('footnote.premiumC')}
+              <i>{t('footnote.premiumD')}</i>
+              {t('footnote.premiumE')}
             </p>
             <p>
-              <b>†</b> <b>In trial</b> overlaps the plan counts rather than adding to
-              them — trial is not a <code>planId</code>, it is{' '}
-              <code>trialStartedAt</code> still inside the trial length, and a family in
-              one usually carries <code>planId: free</code>. <b>Plan missing</b> should
-              stay at zero; a number that climbs is a signup path that stopped writing
-              the field.
+              <b>†</b> <b>{t('report.inTrial')}</b>
+              {t('footnote.trialA')}
+              <code>planId</code>
+              {t('footnote.trialB')}
+              <code>trialStartedAt</code>
+              {t('footnote.trialC')}
+              <code>planId: free</code>
+              {t('footnote.trialD')}
+              <b>{t('report.planMissing')}</b>
+              {t('footnote.trialE')}
             </p>
             <p>
-              <b>‡</b> <b>First purchases</b> counts families paying for the{' '}
-              <i>first time ever</i>, from <code>firstPurchasedAt</code>, which is
-              written once and never rewritten. A renewal, a restore and a re-subscribe
-              after a lapse are all invisible here — deliberately, since this is the
-              number the <b>Time to purchase</b> section is built on. Families that
-              converted before the field shipped (2026-09-05) count only if the backfill
-              could date them.
+              <b>‡</b> <b>{t('metric.conversions')}</b>
+              {t('footnote.firstA')}
+              <i>{t('footnote.firstB')}</i>
+              {t('footnote.firstC')}
+              <code>firstPurchasedAt</code>
+              {t('footnote.firstD')}
+              <b>{t('report.timeToPurchase')}</b>
+              {t('footnote.firstE')}
             </p>
-            <p>
-              A dash is a day with no row, and the trend line breaks across it. A zero
-              is a day the job ran and counted nothing.
-            </p>
+            <p>{t('footnote.gap')}</p>
           </div>
         </>
       ) : null}

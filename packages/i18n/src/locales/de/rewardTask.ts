@@ -45,7 +45,7 @@ export const rewardTask = {
   doneEmptyBody: 'Genehmigte Aufgaben erscheinen hier.',
   openSectionSubtitle: 'Tippe auf eine Aufgabe, um sie zu bearbeiten oder zu löschen.',
   editTaskA11y: 'Aufgabe {{title}} bearbeiten',
-  sentBackNote: 'Zurückgegeben — wartet auf neuen Versuch.',
+  sentBackNote: 'Zurückgegeben – wartet auf neuen Versuch.',
   emptyTitle: 'Mach aus Pflichten Bildschirmzeit',
   emptyBody:
     'Erstelle kleine Aufgaben, mit denen dein Kind heute Extra-Minuten verdienen kann. Starte mit einer Vorlage:',
@@ -62,7 +62,7 @@ export const rewardTask = {
   childClaiming: 'Wird gesendet…',
   childClaimA11y: 'Aufgabe {{title}} als erledigt melden',
   childClaimSentToast: 'Stark! Deine Eltern prüfen es bald.',
-  childSentBackToast: '„{{title}}“ wurde zurückgegeben — versuch es nochmal.',
+  childSentBackToast: '„{{title}}“ wurde zurückgegeben – versuch es nochmal.',
   childApprovedTitle: 'Aufgabe genehmigt! 🎉',
   childApprovedSubtitle: 'Du hast {{minutes}} Extra-Minuten für heute verdient.',
   taskApproved: 'Belohnungsaufgabe genehmigt',
@@ -83,6 +83,6 @@ export const rewardTask = {
   repeatOnceHint: 'Nach der Genehmigung ist die Aufgabe erledigt.',
   repeatDailyHint: 'Nach der Genehmigung kommt die Aufgabe morgen wieder.',
   repeatDailyBadge: 'Täglich',
-  repeatBackTomorrow: 'Heute geschafft — morgen wieder',
+  repeatBackTomorrow: 'Heute geschafft – morgen wieder',
   childBackTomorrow: 'Morgen wieder',
 } as const;

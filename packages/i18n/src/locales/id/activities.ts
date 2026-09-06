@@ -39,7 +39,7 @@ export const activities = {
   activityTypePlaceExit: 'Keluar tempat',
   activityTypeTamper: 'Perlindungan',
   activityTypeScreenTime: 'Waktu Layar',
-  activityTypeCheckIn: 'Kabar aman',
+  activityTypeCheckIn: 'Check-In',
   activityTypeLocationRequest: 'Lokasi',
   activityTypeTimeRequest: 'Permintaan waktu',
   activityTypeRewardTask: 'Tugas hadiah',

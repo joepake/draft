@@ -48,7 +48,7 @@ export const plans = {
   compareNewApps: 'Aplikasi yang baru dipasang',
   compareNewAppsPremium: 'Aplikasi mana, dan persetujuan sebelum dipasang',
   compareMessages: 'Peringatan pesan (Android)',
-  compareSafety: 'Peringatan gangguan dan lapor diri',
+  compareSafety: 'Peringatan perlindungan dan Check-In',
   compareControls: 'Pemblokiran aplikasi dan filter web',
   compareControlsFree: 'Aplikasi apa pun, konten dewasa',
   compareControlsPremium: 'Per kategori, batas tiap aplikasi, daftar Anda sendiri',
@@ -140,7 +140,7 @@ export const plans = {
   // has to name who needs to act instead of offering a button they can't use.
   familyPremiumEndedTitle: 'Premium keluarga ini telah berakhir',
   familyPremiumEndedBody:
-    'Batas harian, Jam Diblokir, Aplikasi yang Diblokir, Filter web, dan lokasi masih berjalan. Pembaruan langsung, riwayat, peringatan, dan laporan dijeda sampai Premium diperpanjang.',
+    'Batas harian, Jam Diblokir, Aplikasi yang Diblokir, Filter web, dan lokasi masih berjalan. Pembaruan langsung, riwayat, peringatan, dan laporan dijeda sampai pemilik keluarga memperpanjang Premium.',
   pricesUnavailable: 'Tidak dapat memuat harga dari toko.',
   pricesRetry: 'Coba lagi',
   featureRewardTasks: 'Tugas hadiah',

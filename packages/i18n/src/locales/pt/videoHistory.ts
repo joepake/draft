@@ -2,7 +2,8 @@ export const videoHistory = {
   title: 'Vídeos assistidos',
   fallbackDeviceName: 'Dispositivo da criança',
   toggleLabel: 'Registrar vídeos assistidos',
-  toggleHint: 'YouTube no navegador e o app do YouTube no Android.',
+  toggleHint:
+    'YouTube no navegador e o app do YouTube no Android e na TV. Na TV, os Shorts não aparecem porque o app de TV não os identifica como Shorts.',
   toggleFailed: 'Não foi possível atualizar o histórico de vídeos. Tente novamente.',
   unsupportedNote:
     'Este dispositivo não consegue relatar vídeos assistidos. Funciona no Android e no Chrome.',

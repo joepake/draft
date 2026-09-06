@@ -119,8 +119,8 @@ export default {
     trust1Text: "Children's data is never used for advertising",
     trust2Title: 'Delete anytime',
     trust2Text: 'Erase your family account and all data on request',
-    trust3Title: 'Phone and computer',
-    trust3Text: 'iPhone, Android, Mac and Windows on one family account',
+    trust3Title: 'Phone, computer and browser',
+    trust3Text: 'iPhone, Android, Mac, Windows and Chrome on one family account',
     trust4Title: 'One plan per family',
     trust4Text: 'Every parent and child device, one subscription',
 
@@ -139,7 +139,7 @@ export default {
       'Cap each app on its own, on top of the daily limit — “half an hour of TikTok” without banning it outright.',
     feature4Title: 'Web Filter & history',
     feature4Text:
-      'Refuse adult and gambling sites, then see which sites the phone actually looked up and which ones were stopped.',
+      'Refuse adult and gambling sites on the phone, the computer and in Chrome, then see which sites were looked up and which ones were stopped.',
     feature5Title: 'Live location & places',
     feature5Text:
       "See your child's latest location, review history, and get told when they arrive at or leave a saved place.",
@@ -148,7 +148,7 @@ export default {
       'Ask your child to confirm they are safe, and receive an instant SOS with location and photo in an emergency.',
     feature7Title: 'Protection & app alerts',
     feature7Text:
-      'Know the moment an important permission is switched off — and on Android, when an app is installed or removed.',
+      'Know the moment an important permission is switched off — and on Android, Mac and Windows, when a new app appears and is waiting for your approval.',
     feature8Title: 'Reward tasks & extra time',
     feature8Text:
       'Children earn bonus minutes by finishing tasks, or ask for more time. Both land on your phone for approval.',
@@ -166,7 +166,7 @@ export default {
       'Everything that happened, in order — a device unlocked, a site filtered, a task finished, an alert raised.',
     platformsTitle: 'One KidGate, wherever the screen is',
     platformsSub:
-      'The same rules and the same family account on a phone and on a computer. The desktop app is installed from this site, not from a store.',
+      'The same rules and the same family account on a phone, on a computer and in Chrome. The desktop app is installed from this site, not from a store.',
 
     showcaseEyebrow: 'Parent dashboard',
     showcaseTitle: 'The whole family, on one screen',
@@ -213,10 +213,10 @@ export default {
       'Six things we checked against the apps parents compare us with. Each one names the platform it is true on.',
     only1Title: 'The living-room TV, too',
     only1Text:
-      'Android TV gets the same Blocked Hours, Blocked Apps, per-app limits and Web Filter as a phone. Most parental controls stop at the phone.',
+      'Android TV gets the same Blocked Hours, Blocked Apps, per-app limits and Web Filter as a phone. The build runs on real hardware today and is waiting on its store release, which is why the platform list says Planned. Most parental controls stop at the phone.',
     only2Title: 'Message alerts that stay on the phone',
     only2Text:
-      'On Android, messages are checked on the device against keyword lists in 14 languages. Only the matched word is kept — the conversation itself is never stored.',
+      'On Android, messages are checked on the device against keyword lists in 14 languages, and what leaves the phone is the matched word, never the conversation. One thing changes that, and only if you ask for it: turn on AI confirmation and an ambiguous incoming message is sent to be judged, so you are not woken by an ordinary word.',
     only3Title: 'Every app, not a list of apps',
     only3Text:
       'On Android, alerts come from notifications and typing in whatever your child uses — Zalo, LINE, KakaoTalk, a game’s chat — not from a fixed list of supported apps.',
@@ -235,16 +235,16 @@ export default {
     faqSub: 'Quick answers before you download.',
     faq1Q: 'Is there a free trial?',
     faq1A:
-      'Yes. The trial starts when your first parent and child devices are connected, and includes every Premium feature. When it ends, every rule you set — Daily Limit, Blocked Hours, Blocked Apps, Web Filter and location — keeps working for free on one child device.',
+      'Yes. The trial starts when your first parent and child devices are connected, and includes every Premium feature. When it ends, the rules you set — Daily Limit, Blocked Hours, Blocked Apps, Web Filter, Device Lock, extra-time requests and reward tasks — keep working for free on one child device, and you can still ask that device where it is. Live activity, history, weekly reports and location tracking are what Premium adds back.',
     faq2Q: 'How many devices can I manage?',
     faq2A:
-      'One subscription covers your whole family — multiple child devices and multiple parents on the same plan.',
+      'One subscription covers your whole family — every child device and every parent on the same plan. On the free plan one child device stays monitored and you choose which; the others keep enforcing the rules you already set and stop sending activity.',
     faq3Q: 'Can my child uninstall or bypass KidGate?',
     faq3A:
       'Sensitive settings sit behind your Parent PIN, and Protection Alerts tell you straight away if a key permission is turned off on the child device.',
     faq4Q: 'Can I manage everything from a computer?',
     faq4A:
-      'The trial starts when your first parent and child devices are connected, and gives full access to every feature. Removing a child device does not reset the trial. When it ends, every rule keeps working for free on one child device; Premium keeps live activity, history, weekly reports and every device.',
+      'Yes. The parent dashboard opens in any browser — sign in with a code from your phone and you see the same family, devices and settings. Reading works straight away; locking a device or changing a limit asks for your Parent PIN, or an approval from the app.',
     faqMore: 'More questions? Visit Support',
 
     ctaTitle: 'Start protecting your family today',
@@ -534,7 +534,7 @@ export default {
     usageSyncNote:
       'Screen time can take a few minutes to reach this screen — longer if the device has no internet connection or was closed unexpectedly.',
     usageSyncNoteTv:
-      'This television only checks in periodically, so screen time can take up to 30 minutes to reach this screen — longer with no internet connection.',
+      'This television only checks in periodically, so screen time can take up to an hour to reach this screen — longer with no internet connection.',
     cardRecent: 'Recent activity',
     cardRecentSub: 'Newest first',
     cardRecentEmpty:
@@ -624,7 +624,7 @@ export default {
     webActivitySyncNote:
       'Web history can take a few minutes to reach this screen — longer if the device has no internet connection or was closed unexpectedly.',
     webActivitySyncNoteTv:
-      'This television only checks in periodically, so web history can take up to 30 minutes to reach this screen — longer with no internet connection.',
+      'This television only checks in periodically, so web history can take up to an hour to reach this screen — longer with no internet connection.',
     colDomain: 'Domain',
     colVisits: 'Visits',
     colBlocked: 'Blocked',
@@ -948,9 +948,9 @@ export default {
     windowsRequires: 'Windows 10 or later, 64-bit.',
     button: 'Download',
     warningSub:
-      'Both systems show this warning for any app installed from outside their own stores by a developer not yet on their verified lists — it is not something found in KidGate. Each card above says how to allow the first launch. Download only from kidgate.app.',
+      'Windows shows that warning for any app installed from outside its own store by a developer not yet on its verified list — it is not something found in KidGate. The Windows card above says how to allow it. The Mac package is signed and notarised by Apple and raises no warning. Download only from kidgate.app.',
     macosSteps:
-      'Open the app once and let it be refused. Then go to System Settings, Privacy & Security, scroll down and choose Open Anyway.',
+      'Open the downloaded package and follow the installer. macOS then asks you once to allow the KidGate system extension, under Login Items & Extensions — the Web Filter does not run until you do.',
     windowsSteps:
       'When Windows says it protected your PC, choose More info, then Run anyway.',
   },
@@ -978,7 +978,7 @@ export default {
     storyP2:
       'So we built the version we wanted at home. A parent sets a Daily Limit, Blocked Hours, Blocked Apps and a Web Filter once, and the device holds them. The child sees the same numbers the parent sees, can ask for more time, and can always reach a parent with SOS. KidGate does not pretend not to be there.',
     storyP3:
-      'It runs on iPhone, Android, Mac and Windows, with a dashboard parents open in any browser. One family, one subscription, every device.',
+      'It runs on iPhone, Android, Mac and Windows, with an extension for Chrome and a dashboard parents open in any browser. One family, one subscription, every device.',
 
     valuesEyebrow: 'What we believe',
     valuesTitle: 'Four rules we do not break',
@@ -1017,9 +1017,12 @@ export default {
     make5Soon: 'Planned',
     make5Title: 'Android TV',
     make5Text:
-      'The living-room screen, treated as a shared family device rather than one child’s — the same limits and the same schedule as the phones.',
-    make6Title: 'Parent dashboard',
+      'The living-room screen, treated as a shared family device rather than one child’s — the same limits and the same schedule as the phones. It has run on real hardware and is waiting on its store release.',
+    make6Title: 'Chrome',
     make6Text:
+      'A browser extension carrying the same Web Filter inside Chrome, on a computer that already has KidGate and on one that cannot. It is built and paired, and is waiting on Chrome Web Store review.',
+    make7Title: 'Parent dashboard',
+    make7Text:
       'A browser is a parent’s second screen. Sign in from any computer with a code from your phone; nothing to install.',
 
     factsEyebrow: 'KidGate today',

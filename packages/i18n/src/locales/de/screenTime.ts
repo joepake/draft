@@ -10,19 +10,19 @@ export const screenTime = {
     'Wähle auf dem Status-Bildschirm „App- & Websitenutzung erlauben“.',
   screenTimeStepTapAllow: 'Wähle „Erlauben“, wenn du gefragt wirst.',
   screenTimeStepReturnHereAuto:
-    'Kehre hierher zurück — der Status aktualisiert sich automatisch.',
+    'Kehre hierher zurück – der Status aktualisiert sich automatisch.',
   screenTimeDeniedStepOpenSettings:
     'Öffne auf dem Kindergerät Einstellungen → KidGate.',
   screenTimeDeniedStepTurnOnRestrictions: 'Aktiviere Bildschirmzeit.',
   screenTimeDeniedStepOpenKidGateAgain: 'Öffne KidGate erneut auf dem Kindergerät.',
   screenTimeDeniedStepReturnWhenReady:
-    'Kehre hierher zurück — diese Karte verschwindet, sobald die Einrichtung fertig ist.',
+    'Kehre hierher zurück – diese Karte verschwindet, sobald die Einrichtung fertig ist.',
   screenTimeSetupStep1: 'Wähle unten „App- & Websitenutzung erlauben“.',
   screenTimeSetupStep2: 'Wähle im Dialog zur App- & Websitenutzung „Erlauben“.',
   screenTimeSetupStep3: 'Kehre zurück, sobald der Dialog geschlossen ist.',
   screenTimeDeniedStep1: 'Wähle unten „App-Einstellungen öffnen“.',
   screenTimeDeniedStep2: 'Aktiviere auf der {{appName}}-Seite Bildschirmzeit.',
-  screenTimeDeniedStep3: 'Kehre zu {{appName}} zurück — diese Karte verschwindet.',
+  screenTimeDeniedStep3: 'Kehre zu {{appName}} zurück – diese Karte verschwindet.',
   screenTimeBannerTitleDenied: 'Bildschirmzeit aktivieren',
   screenTimeBannerTitleRequest: 'App- & Websitenutzung erlauben',
   screenTimeBannerBodyDenied:
@@ -35,7 +35,7 @@ export const screenTime = {
   usageAccessStepOpenSettings: 'Wähle unten „Einstellungen öffnen“.',
   usageAccessStepFindKidGate: 'Suche KidGate und aktiviere den Nutzungszugriff.',
   usageAccessStepReturn:
-    'Kehre hierher zurück — der Status aktualisiert sich automatisch.',
+    'Kehre hierher zurück – der Status aktualisiert sich automatisch.',
   noDailyLimitSet: 'Kein Tageslimit festgelegt',
   limitReachedStatus: '{{used}} / {{limit}} · Limit erreicht',
   minutesUsedStatus: '{{used}} / {{limit}} genutzt',

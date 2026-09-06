@@ -12,7 +12,7 @@ export const family = {
   assignSheetTitle: 'Wer nutzt {{deviceName}}?',
   assignSheetBody: 'Bildschirmzeit und Sterne zählen für das ausgewählte Kind.',
   assignSheetNobody: 'Niemand',
-  assignSheetNobodyHint: 'Geteiltes Gerät — zählt für niemanden.',
+  assignSheetNobodyHint: 'Geteiltes Gerät – zählt für niemanden.',
   assignSheetAddAndAssign: 'Hinzufügen und zuweisen',
   // The "protect this child now?" starter sheet, offered right after a fresh
   // pairing is assigned. Content pre-exists on the device; this flips it on.
@@ -28,7 +28,7 @@ export const family = {
   quickProtectWebFilter: 'Webfilter',
   quickProtectWebFilterHint:
     'Blockiert nicht jugendfreie Inhalte und andere riskante Kategorien.',
-  quickProtectWebFilterPremium: 'Premium-Funktion — in einem Abo enthalten.',
+  quickProtectWebFilterPremium: 'Premium-Funktion – in einem Abo enthalten.',
   quickProtectApply: 'Schutz einschalten',
   quickProtectSkip: 'Nicht jetzt',
   quickProtectDone: 'Der Schutz ist aktiv. Du kannst alles jederzeit anpassen.',
@@ -36,7 +36,7 @@ export const family = {
     'Einige Schutzfunktionen konnten nicht gespeichert werden. Versuche es im Kinderprofil erneut.',
   pairDeviceFirstTitle: 'Noch kein Gerät gekoppelt',
   pairDeviceFirstBody:
-    'Kopple zuerst ein Gerät für dieses Kind — tippe im Tab „Familie“ auf das Scan-Symbol oder „+“ und wähle „Gerät eines Kindes hinzufügen“. Diese Einstellung greift, sobald ein Gerät verbunden ist.',
+    'Kopple zuerst ein Gerät für dieses Kind – tippe im Tab „Familie“ auf das Scan-Symbol oder „+“ und wähle „Gerät eines Kindes hinzufügen“. Diese Einstellung greift, sobald ein Gerät verbunden ist.',
   // Child-grouped family list: group header lock-all + unassigned group.
   lockAll: 'Alle sperren',
   unlockAll: 'Alle entsperren',

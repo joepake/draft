@@ -1,4 +1,5 @@
 import { getAuth } from 'firebase/auth';
+import { t } from './i18n.js';
 
 /**
  * The only way this app reaches data.
@@ -8,6 +9,11 @@ import { getAuth } from 'firebase/auth';
  * before it reads anything — see `functions/admin/`. `firestore.rules` stays
  * unaware that operators exist, so a broadened rule cannot hand this access to
  * anything else holding the claim.
+ *
+ * Messages are translated where the `Error` is built, so one already sitting in
+ * a component's state keeps the language it was thrown in until the next
+ * attempt. Threading a code through every `catch` to fix that would buy a
+ * retranslated sentence on a screen the operator is about to refresh anyway.
  */
 
 const BASE_URL = import.meta.env.VITE_FUNCTIONS_URL;
@@ -38,13 +44,7 @@ const BASE_URL = import.meta.env.VITE_FUNCTIONS_URL;
  */
 function describeNetworkFailure(error, path) {
   if (error instanceof TypeError) {
-    return new Error(
-      `Could not reach ${path}. Either it is not deployed, or its Cloud Run ` +
-        'service is missing the allUsers invoker binding (a CORS preflight ' +
-        'sends no Authorization header, so IAM rejects it before the handler ' +
-        `runs). Check: gcloud run services get-iam-policy ${path.toLowerCase()} ` +
-        '--region asia-southeast1 --project kidgate',
-    );
+    return new Error(t('api.unreachable', { path, service: path.toLowerCase() }));
   }
   return error;
 }
@@ -52,7 +52,7 @@ function describeNetworkFailure(error, path) {
 async function post(path, body) {
   const user = getAuth().currentUser;
   if (!user) {
-    throw new Error('Not signed in.');
+    throw new Error(t('api.notSignedIn'));
   }
   const token = await user.getIdToken(true);
   const response = await fetch(`${BASE_URL}/${path}`, {
@@ -67,7 +67,9 @@ async function post(path, body) {
   });
   if (!response.ok) {
     const payload = await response.json().catch(() => ({}));
-    throw new Error(payload.message || `Request failed (${response.status})`);
+    throw new Error(
+      payload.message || t('api.requestFailed', { status: response.status }),
+    );
   }
   return response.json();
 }
@@ -75,7 +77,7 @@ async function post(path, body) {
 async function call(path, params = {}) {
   const user = getAuth().currentUser;
   if (!user) {
-    throw new Error('Not signed in.');
+    throw new Error(t('api.notSignedIn'));
   }
 
   // `true` forces a refresh: the operator claim is granted out of band, and a
@@ -90,7 +92,9 @@ async function call(path, params = {}) {
 
   if (!response.ok) {
     const body = await response.json().catch(() => ({}));
-    throw new Error(body.message || `Request failed (${response.status})`);
+    throw new Error(
+      body.message || t('api.requestFailed', { status: response.status }),
+    );
   }
   return response.json();
 }
@@ -137,7 +141,7 @@ export function fetchSupportReport(uid, id) {
 export async function fetchSupportAttachment(uid, id, index) {
   const user = getAuth().currentUser;
   if (!user) {
-    throw new Error('Not signed in.');
+    throw new Error(t('api.notSignedIn'));
   }
   const token = await user.getIdToken(true);
   const query = new URLSearchParams({ uid, id, index: String(index) });
@@ -150,7 +154,9 @@ export async function fetchSupportAttachment(uid, id, index) {
     const payload = await response.json().catch(() => ({}));
     // The error *code* is thrown here, not a sentence: `Attachment` renders
     // `object-empty` and `object-missing` as their own explanations.
-    throw new Error(payload.error || `Request failed (${response.status})`);
+    throw new Error(
+      payload.error || t('api.requestFailed', { status: response.status }),
+    );
   }
   return response.blob();
 }

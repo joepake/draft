@@ -28,10 +28,10 @@ export default {
    * until 2026-09-01, which meant this card's subtitle printed the raw key.
    */
   appInventory: {
-    summaryFlagged: '{{flagged}} trong {{total}} ứng dụng đáng để xem lại',
+    summaryFlagged: '{{flagged}} trong {{total}} ứng dụng cần xem lại',
     summaryClear: 'Không có gì đáng ngại trong {{total}} ứng dụng',
     summaryFlaggedExtension:
-      '{{flagged}} trong {{total}} tiện ích mở rộng của Chrome đáng để xem lại',
+      '{{flagged}} trong {{total}} tiện ích mở rộng của Chrome cần xem lại',
     summaryClearExtension:
       'Không có gì đáng ngại trong {{total}} tiện ích mở rộng của Chrome',
   },
@@ -129,8 +129,9 @@ export default {
     trust1Text: 'Dữ liệu của trẻ không bao giờ được dùng cho quảng cáo',
     trust2Title: 'Xóa bất cứ lúc nào',
     trust2Text: 'Xóa tài khoản gia đình và toàn bộ dữ liệu bất cứ khi nào bạn muốn',
-    trust3Title: 'Điện thoại và máy tính',
-    trust3Text: 'iPhone, Android, Mac và Windows trong cùng một tài khoản gia đình',
+    trust3Title: 'Điện thoại, máy tính và trình duyệt',
+    trust3Text:
+      'iPhone, Android, Mac, Windows và Chrome trong cùng một tài khoản gia đình',
     trust4Title: 'Một gói cho cả gia đình',
     trust4Text: 'Một gói dùng cho mọi thiết bị của phụ huynh và của con',
 
@@ -149,7 +150,7 @@ export default {
       'Đặt giới hạn riêng cho từng ứng dụng, tính thêm ngoài Giới hạn hằng ngày — “nửa tiếng TikTok” mà không cần cấm hẳn.',
     feature4Title: 'Chặn nội dung web & lịch sử duyệt',
     feature4Text:
-      'Chặn các trang người lớn và cờ bạc, rồi xem con đã vào những trang nào và trang nào đã bị chặn.',
+      'Chặn các trang người lớn và cờ bạc trên điện thoại, máy tính và trong Chrome, rồi xem con đã vào những trang nào và trang nào đã bị chặn.',
     feature5Title: 'Vị trí trực tiếp & địa điểm',
     feature5Text:
       'Xem vị trí mới nhất của con, xem lại lịch sử, và được báo khi con đến hoặc rời một địa điểm đã lưu.',
@@ -158,7 +159,7 @@ export default {
       'Yêu cầu con xác nhận mình vẫn an toàn, và nhận SOS tức thì kèm vị trí và ảnh khi có việc khẩn cấp.',
     feature7Title: 'Cảnh báo bảo vệ & cảnh báo ứng dụng',
     feature7Text:
-      'Biết ngay khi một quyền quan trọng bị tắt — và trên Android, khi có ứng dụng được cài thêm hoặc gỡ đi.',
+      'Biết ngay khi một quyền quan trọng bị tắt — và trên Android, Mac và Windows, khi có ứng dụng mới xuất hiện và đang chờ bạn duyệt.',
     feature8Title: 'Nhiệm vụ thưởng & yêu cầu thêm giờ',
     feature8Text:
       'Con làm xong nhiệm vụ để được cộng phút, hoặc gửi yêu cầu thêm giờ. Cả hai đều gửi về điện thoại của bạn để bạn duyệt.',
@@ -177,7 +178,7 @@ export default {
       'Mọi việc đã xảy ra, theo thứ tự — máy được mở khóa, một trang bị lọc, một nhiệm vụ hoàn thành, một cảnh báo được gửi.',
     platformsTitle: 'Một KidGate, ở mọi màn hình',
     platformsSub:
-      'Cùng bộ quy tắc và cùng một tài khoản gia đình trên cả điện thoại lẫn máy tính. Bản máy tính tải từ trang này, không qua cửa hàng ứng dụng.',
+      'Cùng bộ quy tắc và cùng một tài khoản gia đình trên điện thoại, máy tính và trong Chrome. Bản máy tính tải từ trang này, không qua cửa hàng ứng dụng.',
 
     showcaseEyebrow: 'Bảng điều khiển phụ huynh',
     showcaseTitle: 'Cả gia đình trên một màn hình',
@@ -224,10 +225,10 @@ export default {
       'Sáu điểm chúng tôi đã đối chiếu với các ứng dụng mà phụ huynh hay so sánh. Mỗi điểm ghi rõ nền tảng nào đúng.',
     only1Title: 'Cả chiếc TV ngoài phòng khách',
     only1Text:
-      'Android TV có Giờ khóa thiết bị, Chặn ứng dụng, giới hạn từng ứng dụng và Chặn nội dung web y như điện thoại. Hầu hết ứng dụng kiểm soát dừng lại ở chiếc điện thoại.',
+      'Android TV có Giờ khóa thiết bị, Chặn ứng dụng, giới hạn từng ứng dụng và Chặn nội dung web y như điện thoại. Bản dựng đã chạy trên thiết bị thật và đang chờ phát hành lên cửa hàng, nên danh sách nền tảng ở trên ghi là Sắp có. Hầu hết ứng dụng kiểm soát dừng lại ở chiếc điện thoại.',
     only2Title: 'Cảnh báo tin nhắn nằm lại trên máy',
     only2Text:
-      'Trên Android, tin nhắn được đối chiếu ngay trên thiết bị với danh sách từ khóa của 14 ngôn ngữ. Chỉ từ khớp được giữ lại — nội dung cuộc trò chuyện không bao giờ được lưu.',
+      'Trên Android, tin nhắn được đối chiếu ngay trên thiết bị với danh sách từ khóa của 14 ngôn ngữ, và thứ rời khỏi máy chỉ là từ đã khớp, không phải cuộc trò chuyện. Chỉ một điều thay đổi được điều đó, và chỉ khi bạn yêu cầu: bật xác nhận bằng AI thì một tin nhắn đến chưa rõ ràng sẽ được gửi đi để đánh giá, để bạn không bị đánh thức vì một từ bình thường.',
     only3Title: 'Mọi ứng dụng, không phải một danh sách',
     only3Text:
       'Trên Android, cảnh báo đến từ thông báo và từ những gì con gõ trong bất kỳ ứng dụng nào con dùng — Zalo, LINE, KakaoTalk, chat trong game — không phụ thuộc vào danh sách ứng dụng được hỗ trợ.',
@@ -246,16 +247,16 @@ export default {
     faqSub: 'Trả lời nhanh trước khi bạn tải về.',
     faq1Q: 'Có dùng thử miễn phí không?',
     faq1A:
-      'Có. Bản dùng thử bắt đầu khi thiết bị phụ huynh và thiết bị trẻ đầu tiên được kết nối, và bao gồm mọi tính năng Premium. Khi hết hạn, mọi quy tắc bạn đặt — Giới hạn hằng ngày, Giờ khóa thiết bị, Chặn ứng dụng, Chặn nội dung web và vị trí — vẫn hoạt động miễn phí trên một thiết bị trẻ.',
+      'Có. Bản dùng thử bắt đầu khi thiết bị phụ huynh và thiết bị trẻ đầu tiên được kết nối, và bao gồm mọi tính năng Premium. Khi hết hạn, các quy tắc bạn đặt — Giới hạn hằng ngày, Giờ khóa thiết bị, Chặn ứng dụng, Chặn nội dung web, Khóa thiết bị, Yêu cầu thêm giờ và Nhiệm vụ thưởng — vẫn hoạt động miễn phí trên một thiết bị trẻ, và bạn vẫn hỏi được thiết bị đó đang ở đâu. Hoạt động trực tiếp, lịch sử, báo cáo tuần và theo dõi vị trí là phần Premium mang lại.',
     faq2Q: 'Tôi quản lý được bao nhiêu thiết bị?',
     faq2A:
-      'Một gói dùng cho cả nhà — nhiều thiết bị của con và nhiều phụ huynh trên cùng một gói.',
+      'Một gói dùng cho cả nhà — mọi thiết bị của con và mọi phụ huynh trên cùng một gói. Ở gói miễn phí, một thiết bị trẻ được theo dõi và bạn chọn thiết bị nào; các thiết bị còn lại vẫn thực thi quy tắc bạn đã đặt và ngừng gửi hoạt động.',
     faq3Q: 'Con tôi có gỡ hoặc vượt qua KidGate được không?',
     faq3A:
       'Các thiết lập nhạy cảm nằm sau mã PIN phụ huynh, và Cảnh báo bảo vệ sẽ báo cho bạn ngay khi một quyền quan trọng bị tắt trên thiết bị của con.',
     faq4Q: 'Tôi quản lý mọi thứ từ máy tính được không?',
     faq4A:
-      'Bản dùng thử bắt đầu khi thiết bị phụ huynh và thiết bị trẻ đầu tiên được kết nối, và mở toàn bộ tính năng. Gỡ một thiết bị trẻ không đặt lại thời gian dùng thử. Khi hết hạn, mọi quy tắc vẫn hoạt động miễn phí trên một thiết bị trẻ; Premium giữ hoạt động trực tiếp, lịch sử, báo cáo tuần và tất cả thiết bị.',
+      'Được. Bảng điều khiển phụ huynh mở trong mọi trình duyệt — đăng nhập bằng mã lấy từ điện thoại và bạn thấy đúng gia đình, thiết bị và cài đặt đó. Xem thì được ngay; khóa một thiết bị hay đổi giới hạn thì cần mã PIN phụ huynh, hoặc một lượt duyệt từ ứng dụng.',
     faqMore: 'Còn câu hỏi khác? Xem trang Hỗ trợ',
 
     ctaTitle: 'Bắt đầu bảo vệ gia đình bạn hôm nay',
@@ -269,7 +270,7 @@ export default {
     notConfiguredTitle: 'Firebase chưa được cấu hình cho bản triển khai này.',
     notConfiguredBody: 'Hãy đặt các biến môi trường VITE_FIREBASE_* để bật đăng nhập.',
     qrWhy:
-      'Quét bằng điện thoại thì vừa đăng nhập vừa mở khoá điều khiển trong một bước. Các cách bên dưới đăng nhập để xem; muốn mở khoá điều khiển thì cần mã PIN phụ huynh.',
+      'Quét bằng điện thoại thì vừa đăng nhập vừa mở khóa điều khiển trong một bước. Các cách bên dưới đăng nhập để xem; muốn mở khóa điều khiển thì cần mã PIN phụ huynh.',
     orViewOnly: 'hoặc đăng nhập cách khác',
     google: 'Tiếp tục với Google',
     googleBusy: 'Đang mở Google…',
@@ -380,20 +381,20 @@ export default {
     camera: 'Camera',
     backgroundAppRefresh: 'Làm mới ứng dụng nền',
     overlay: 'Hiển thị trên ứng dụng khác',
-    batteryOptimization: 'Pin không hạn chế',
-    exactAlarm: 'Báo thức chính xác',
+    batteryOptimization: 'Pin không bị hạn chế',
+    exactAlarm: 'Chuông báo và lời nhắc',
     accessibility: 'Trợ năng',
   },
 
   webCat: {
     adult: 'Nội dung người lớn',
-    selfHarm: 'Tự hại & rối loạn ăn uống',
+    selfHarm: 'Tự làm hại bản thân & rối loạn ăn uống',
     gambling: 'Cờ bạc',
-    gameGambling: 'Hộp quà & cá cược vật phẩm',
+    gameGambling: 'Hộp vật phẩm & cá cược vật phẩm',
     dating: 'Hẹn hò',
     strangerChat: 'Chat với người lạ',
     drugs: 'Ma túy & rượu bia',
-    violence: 'Bạo lực & máu me',
+    violence: 'Bạo lực & hình ảnh ghê rợn',
     extremism: 'Cực đoan & thù ghét',
     piracy: 'Vi phạm bản quyền',
     social: 'Mạng xã hội',
@@ -403,19 +404,19 @@ export default {
     shopping: 'Mua sắm',
     aiCompanion: 'Bạn ảo AI',
     aiAssistant: 'Trợ lý AI',
-    cryptoTrading: 'Tiền mã hoá & giao dịch',
+    cryptoTrading: 'Tiền mã hóa & giao dịch',
     vpn: 'Ứng dụng VPN',
   },
 
   appCat: {
     adult: 'Nội dung người lớn',
     gambling: 'Cờ bạc',
-    gameGambling: 'Hộp quà & cá cược vật phẩm',
+    gameGambling: 'Hộp vật phẩm & cá cược vật phẩm',
     dating: 'Hẹn hò',
     drugs: 'Ma túy & rượu bia',
-    violence: 'Bạo lực & máu me',
+    violence: 'Bạo lực & hình ảnh ghê rợn',
     piracy: 'Vi phạm bản quyền',
-    bypass: 'Vượt bộ lọc & VPN',
+    bypass: 'Công cụ lách kiểm soát',
   },
 
   webCatGroup: {
@@ -441,7 +442,7 @@ export default {
     unassignedDevices: 'Chưa gán',
     manage: 'Quản lý',
     parents: '{{count}} phụ huynh',
-    devices: '{{count}} thiết bị của con',
+    devices: '{{count}} thiết bị của trẻ',
     planManageOnPhone:
       'Gói được mua và thay đổi trong ứng dụng KidGate trên điện thoại.',
     fallbackFamily: 'Gia đình của bạn',
@@ -452,7 +453,7 @@ export default {
     statusLocked: 'Đã khóa',
     statusLockSent: 'Đã gửi lệnh khóa',
     statusLockNotApplied: 'Chưa áp dụng lệnh khóa',
-    statusPaused: 'Tạm dừng',
+    statusPaused: 'Ngừng báo cáo',
 
     stateAllowed: 'Đã cho phép',
     stateDenied: 'Đã tắt',
@@ -499,7 +500,7 @@ export default {
       'Mở KidGate trên điện thoại của bạn, vào *Gia đình → chạm + → Kết nối thiết bị của trẻ*, rồi quét mã QR hiện trên thiết bị của con. Thiết bị sẽ xuất hiện ở đây vài giây sau khi kết nối.',
 
     toastCheckIn: '{{name}} sẽ nhận được yêu cầu Báo an toàn.',
-    toastTimeApproved: 'Đã phê duyệt yêu cầu thêm giờ.',
+    toastTimeApproved: 'Đã duyệt yêu cầu thêm giờ.',
     toastCheckInResent: 'Đã gửi lại Báo an toàn.',
 
     tileScreenToday: 'Thời gian sử dụng hôm nay',
@@ -520,7 +521,7 @@ export default {
     usageSyncNote:
       'Thời gian sử dụng có thể mất vài phút để hiện trên màn hình này — lâu hơn nếu thiết bị không có kết nối mạng hoặc bị đóng đột ngột.',
     usageSyncNoteTv:
-      'TV này chỉ kết nối theo định kỳ, nên thời gian sử dụng có thể mất tới 30 phút để hiện trên màn hình này — lâu hơn nếu không có kết nối mạng.',
+      'TV này chỉ kết nối theo định kỳ, nên thời gian sử dụng có thể mất tới một giờ để hiện trên màn hình này — lâu hơn nếu không có kết nối mạng.',
     cardRecent: 'Nhật ký gần đây',
     cardRecentSub: 'Mới nhất trước',
     cardRecentEmpty:
@@ -584,18 +585,18 @@ export default {
     webActivitySub: 'Tên miền vào nhiều nhất, 30 ngày gần nhất',
     webActivityEmpty: 'Chưa có hoạt động web.',
     inventoryTitle: 'Ứng dụng đã cài',
-    inventorySub: 'Mọi thứ trên thiết bị này, không chỉ những gì thay đổi',
+    inventorySub: 'Mọi ứng dụng trên thiết bị này, không chỉ những gì thay đổi',
     inventoryEmpty: 'Thiết bị này chưa gửi danh sách ứng dụng.',
     inventoryStale:
-      'Danh sách này đã cũ. Nó sẽ được làm mới khi thiết bị kết nối lần tới.',
+      'Danh sách này đã cũ, sẽ được cập nhật khi thiết bị kết nối lần tới.',
     inventoryFirstScan:
       'Lần quét đầu tiên, nên KidGate chưa biết các ứng dụng này xuất hiện khi nào.',
-    inventoryFlagged: 'Đáng để xem lại',
-    inventoryFlaggedLabel: 'Đáng xem lại',
+    inventoryFlagged: 'Cần xem lại',
+    inventoryFlaggedLabel: 'Cần xem lại',
     inventoryOtherLabel: 'Đã nhận diện',
     inventoryUnknownLabel: 'Chưa nhận diện',
     inventoryIncomplete:
-      'Ứng dụng không có biểu tượng ngoài màn hình chính có thể không xuất hiện ở đây.',
+      'Những ứng dụng không có biểu tượng trên màn hình chính có thể không xuất hiện trong danh sách này.',
     inventoryPending: 'Đang chờ bạn duyệt',
     pendingInstallBlocked: 'Bị chặn cho đến khi bạn cho phép',
     installAllow: 'Cho phép',
@@ -610,7 +611,7 @@ export default {
     webActivitySyncNote:
       'Hoạt động web có thể mất vài phút để hiện trên màn hình này — lâu hơn nếu thiết bị không có kết nối mạng hoặc bị đóng đột ngột.',
     webActivitySyncNoteTv:
-      'TV này chỉ kết nối theo định kỳ, nên hoạt động web có thể mất tới 30 phút để hiện trên màn hình này — lâu hơn nếu không có kết nối mạng.',
+      'TV này chỉ kết nối theo định kỳ, nên hoạt động web có thể mất tới một giờ để hiện trên màn hình này — lâu hơn nếu không có kết nối mạng.',
     colDomain: 'Tên miền',
     colVisits: 'Lượt vào',
     colBlocked: 'Bị chặn',
@@ -706,7 +707,7 @@ export default {
     rowLocationNone: 'Chưa có vị trí',
     rowSearchMonitoring: 'Giám sát tìm kiếm',
     rowSearchMonitoringDesc:
-      'Trình duyệt và YouTube. Chỉ từ bị gắn cờ được báo, không bao giờ báo nội dung tìm kiếm.',
+      'Trình duyệt và YouTube. Chỉ từ bị đánh dấu được báo, không bao giờ báo nội dung tìm kiếm.',
     rowSafeSearch: 'Bật SafeSearch bắt buộc',
     rowSafeSearchDesc:
       'Khóa Google SafeSearch, chế độ hạn chế YouTube, Bing và DuckDuckGo ở mức nghiêm ngặt. Android, Android TV và Chrome.',
@@ -863,7 +864,7 @@ export default {
     start3:
       '**3. Kết nối thiết bị của con.** Cài KidGate trên thiết bị của con và chọn *Đây là thiết bị của trẻ*. Trên thiết bị phụ huynh, mở *Gia đình → chạm + → Kết nối thiết bị của trẻ*, rồi quét mã QR hiện trên thiết bị của con (hoặc nhập mã gồm 6 ký tự). Xác nhận kết nối trên thiết bị của con.',
     start4:
-      '**4. Cấp quyền trên thiết bị của con.** Mở màn hình *Trạng thái* trên thiết bị của con và cho phép mọi quyền KidGate yêu cầu — trên Android: Thông báo, Truy cập mức sử dụng, Hiển thị trên ứng dụng khác, Trợ năng và Pin không hạn chế; trên iOS: *Cho phép Sử dụng ứng dụng và Trang web* (Thời gian sử dụng). Các tính năng điều khiển chỉ hoạt động đầy đủ sau khi bật xong những quyền này.',
+      '**4. Cấp quyền trên thiết bị của con.** Mở màn hình *Trạng thái* trên thiết bị của con và cho phép mọi quyền KidGate yêu cầu — trên Android: Thông báo, Truy cập mức sử dụng, Hiển thị trên ứng dụng khác, Trợ năng và Pin không bị hạn chế; trên iOS: *Cho phép Sử dụng ứng dụng và Trang web* (Thời gian sử dụng). Các tính năng điều khiển chỉ hoạt động đầy đủ sau khi bật xong những quyền này.',
     start5:
       '**5. Thiết lập điều khiển.** Từ thiết bị phụ huynh, mở thẻ thiết bị của con và đặt Giới hạn hằng ngày, Giờ khóa thiết bị, Chặn ứng dụng, Chặn nội dung web và các tính năng vị trí.',
     startNote:
@@ -885,7 +886,7 @@ export default {
 
     faq4Q: 'Bản dùng thử miễn phí hoạt động thế nào?',
     faq4A:
-      'Bản dùng thử bắt đầu khi thiết bị phụ huynh và thiết bị trẻ đầu tiên được kết nối, và mở toàn bộ tính năng. Gỡ một thiết bị trẻ không đặt lại thời gian dùng thử. Khi hết hạn, mọi quy tắc vẫn hoạt động miễn phí trên một thiết bị trẻ; Premium giữ hoạt động trực tiếp, lịch sử, báo cáo tuần và tất cả thiết bị.',
+      'Được. Bảng điều khiển phụ huynh mở trong mọi trình duyệt — đăng nhập bằng mã lấy từ điện thoại và bạn thấy đúng gia đình, thiết bị và cài đặt đó. Xem thì được ngay; khóa một thiết bị hay đổi giới hạn thì cần mã PIN phụ huynh, hoặc một lượt duyệt từ ứng dụng.',
 
     faq5Q: 'Hủy gói đăng ký thế nào?',
     faq5A:
@@ -901,7 +902,7 @@ export default {
 
     faq8Q: 'Vì sao khóa thiết bị hoặc Giờ khóa thiết bị không hoạt động?',
     faq8A:
-      'Trên Android, chức năng khóa cần bật *Hiển thị trên ứng dụng khác* và trình trợ giúp *Trợ năng*, cùng với *Pin không hạn chế*. Trên Xiaomi, Samsung, Oppo, Vivo và các máy tương tự, hãy cho phép tự khởi động và gỡ KidGate khỏi mọi danh sách “ứng dụng ngủ” (xem *Trạng thái → Giữ KidGate chạy nền* trên thiết bị của con). Trên iOS, chức năng khóa phụ thuộc vào quyền Thời gian sử dụng. Nếu một quyền bị tắt sau đó, bạn sẽ nhận được Cảnh báo bảo vệ trên thiết bị phụ huynh.',
+      'Trên Android, chức năng khóa cần bật *Hiển thị trên ứng dụng khác* và trình trợ giúp *Trợ năng*, cùng với *Pin không bị hạn chế*. Trên Xiaomi, Samsung, Oppo, Vivo và các máy tương tự, hãy cho phép tự khởi động và gỡ KidGate khỏi mọi danh sách “ứng dụng ngủ” (xem *Trạng thái → Giữ KidGate chạy nền* trên thiết bị của con). Trên iOS, chức năng khóa phụ thuộc vào quyền Thời gian sử dụng. Nếu một quyền bị tắt sau đó, bạn sẽ nhận được Cảnh báo bảo vệ trên thiết bị phụ huynh.',
 
     faq9Q: 'Chặn ứng dụng cụ thể thế nào?',
     faq9A:
@@ -931,9 +932,9 @@ export default {
     windowsRequires: 'Windows 10 trở lên, 64-bit.',
     button: 'Tải về',
     warningSub:
-      'Cả hai hệ điều hành đều hiện cảnh báo này với mọi ứng dụng cài từ ngoài cửa hàng của họ, do nhà phát triển chưa nằm trong danh sách đã xác minh — không phải do phát hiện điều gì trong KidGate. Mỗi thẻ ở trên ghi cách cho phép lần chạy đầu tiên. Chỉ tải từ kidgate.app.',
+      'Windows hiện cảnh báo đó với mọi ứng dụng cài từ ngoài cửa hàng của mình, do nhà phát triển chưa nằm trong danh sách đã xác minh — không phải do phát hiện điều gì trong KidGate. Thẻ Windows ở trên ghi cách cho phép. Gói cài cho Mac đã được Apple ký và công chứng nên không hiện cảnh báo nào. Chỉ tải từ kidgate.app.',
     macosSteps:
-      'Mở ứng dụng một lần; macOS sẽ chặn lại. Sau đó vào Cài đặt hệ thống (System Settings), Quyền riêng tư & Bảo mật (Privacy & Security), kéo xuống và chọn Vẫn mở (Open Anyway).',
+      'Mở gói cài đã tải và làm theo trình cài đặt. Sau đó macOS hỏi bạn một lần để cho phép tiện ích hệ thống của KidGate, trong mục Login Items & Extensions — Chặn nội dung web chưa chạy cho tới khi bạn cho phép.',
     windowsSteps:
       'Khi Windows báo đã bảo vệ máy, chọn Thông tin thêm (More info), rồi Vẫn chạy (Run anyway).',
   },
@@ -949,7 +950,7 @@ export default {
     storyP2:
       'Nên chúng tôi làm ra thứ mà chính mình muốn dùng ở nhà. Phụ huynh đặt Giới hạn hằng ngày, Giờ khóa thiết bị, Chặn ứng dụng và Chặn nội dung web một lần, thiết bị giữ đúng như vậy. Con nhìn thấy đúng những con số bố mẹ nhìn thấy, xin thêm giờ được, và lúc nào cũng gọi được bố mẹ bằng SOS. KidGate không giả vờ như mình không có ở đó.',
     storyP3:
-      'Ứng dụng chạy trên iPhone, Android, Mac và Windows, cùng một bảng điều khiển mở bằng trình duyệt bất kỳ. Một gia đình, một gói, mọi thiết bị.',
+      'Ứng dụng chạy trên iPhone, Android, Mac và Windows, cùng một tiện ích mở rộng cho Chrome và một bảng điều khiển mở bằng trình duyệt bất kỳ. Một gia đình, một gói, mọi thiết bị.',
     valuesEyebrow: 'Điều chúng tôi tin',
     valuesTitle: 'Bốn nguyên tắc chúng tôi không phá vỡ',
     valuesSub:
@@ -985,9 +986,12 @@ export default {
     make5Soon: 'Sắp có',
     make5Title: 'Android TV',
     make5Text:
-      'Màn hình phòng khách, được coi là thiết bị chung của cả nhà chứ không phải của riêng một đứa trẻ — cùng giới hạn và cùng lịch như trên điện thoại.',
-    make6Title: 'Bảng điều khiển phụ huynh',
+      'Màn hình phòng khách, được coi là thiết bị chung của cả nhà chứ không phải của riêng một đứa trẻ — cùng giới hạn và cùng lịch như trên điện thoại. Bản này đã chạy trên thiết bị thật và đang chờ phát hành lên cửa hàng ứng dụng.',
+    make6Title: 'Chrome',
     make6Text:
+      'Một tiện ích mở rộng mang đúng Chặn nội dung web đó vào trong Chrome, trên máy tính đã có KidGate và cả trên máy không cài được. Bản này đã dựng xong và đã kết nối được, đang chờ Chrome Web Store duyệt.',
+    make7Title: 'Bảng điều khiển phụ huynh',
+    make7Text:
       'Trình duyệt là màn hình thứ hai của phụ huynh. Đăng nhập từ máy tính bất kỳ bằng mã trên điện thoại; không cần cài gì.',
     factsEyebrow: 'KidGate hôm nay',
     factsTitle: 'Bốn con số',

@@ -39,7 +39,7 @@ export const settings = {
     'Bạn sẽ không thể đăng nhập bằng {{provider}} trên tài khoản này nữa.',
   accountUnlinkConfirm: 'Gỡ liên kết',
   accountLinkCredentialInUse:
-    'Email hoặc nhà cung cấp này đang được sử dụng bởi một tài khoản KidGate khác.',
+    'Một tài khoản KidGate khác đang dùng email hoặc cách đăng nhập này.',
   accountLinkRequiresRecentLogin:
     'Vì lý do bảo mật, vui lòng đăng xuất và đăng nhập lại trước khi liên kết phương thức này.',
   accountLinkActionLink: 'Liên kết',
@@ -51,12 +51,12 @@ export const settings = {
   darkModeLabel: 'Giao diện tối',
   darkModeHint: 'Dễ nhìn hơn vào buổi tối',
   addWidgetTitle: 'Thêm widget vào màn hình chính',
-  addWidgetSubtitle: 'Xem nhanh thời gian dùng máy của từng trẻ',
+  addWidgetSubtitle: 'Xem nhanh thời gian sử dụng của từng trẻ',
   addWidgetStepsIos:
     '1. Chạm và giữ chỗ trống trên màn hình chính\n2. Bấm nút + ở góc trên\n3. Tìm KidGate\n4. Chọn cỡ rồi bấm Thêm tiện ích',
   addWidgetStepsAndroid:
     '1. Chạm và giữ chỗ trống trên màn hình chính\n2. Bấm Tiện ích (Widgets)\n3. Tìm KidGate rồi kéo widget ra màn hình chính',
-  pushNotificationsTitle: 'Thông báo đẩy',
+  pushNotificationsTitle: 'Thông báo trên máy này',
   pushNotificationsSubtitle: 'Chọn cảnh báo nào gửi tới máy này',
   inAppAlertsLabel: 'Thông báo trong ứng dụng',
   inAppAlertsHint:
@@ -94,7 +94,7 @@ export const settings = {
   toastReportFailed: 'Không thể gửi báo cáo. Vui lòng thử lại.',
   signOutAlertTitle: 'Đăng xuất?',
   signOutAlertMessage:
-    'Bạn sẽ thóat phiên phụ huynh trên thiết bị này và quay lại màn hình chọn vai trò Phụ huynh / Trẻ em. Vui lòng đăng nhập lại để tiếp tục quản lý thiết bị. Tài khoản, gia đình và các thiết bị của trẻ vẫn được giữ nguyên.',
+    'Bạn sẽ đăng xuất khỏi thiết bị này, và KidGate sẽ hỏi lại thiết bị này dành cho ai. Vui lòng đăng nhập lại để tiếp tục quản lý thiết bị. Tài khoản, gia đình và các thiết bị của trẻ vẫn được giữ nguyên.',
   removeParentDeviceAlertTitle: 'Gỡ thiết bị phụ huynh?',
   removeParentDeviceAlertMessage:
     '{{deviceName}} sẽ không còn nhận được thông báo. Phụ huynh đó có thể đăng nhập lại để kết nối.',
@@ -146,7 +146,7 @@ export const settings = {
   termsOfServiceSubtitle: 'Quyền, trách nhiệm và giới hạn của dịch vụ',
   sectionFamilyTitle: 'Gia đình',
   familyNameFallback: 'Gia đình của tôi',
-  familyDetailSubtitle: 'Quyền quản lý thành viên và thiết bị của chủ gia đình',
+  familyDetailSubtitle: 'Chủ gia đình quản lý thành viên và thiết bị tại đây',
   familyOwnerBadge: 'Chủ gia đình',
   familyOtherDevices: 'Thiết bị khác của bạn',
   sectionFamilyParentsTitle: 'Phụ huynh',
@@ -181,12 +181,12 @@ export const settings = {
   toastLeaveFamilyFailed: 'Không thể rời khỏi gia đình. Vui lòng thử lại.',
   familyRemovedAlertTitle: 'Đã bị gỡ khỏi gia đình',
   familyRemovedAlertMessage:
-    'Chủ gia đình đã gỡ bạn khỏi gia đình. Bạn vẫn đăng nhập, nhưng không còn thấy các thiết bị của gia đình này. Vui lòng xin mã mời mới để tham gia lại.',
+    'Chủ gia đình đã gỡ bạn khỏi gia đình. Bạn vẫn đăng nhập, nhưng không còn thấy các thiết bị của gia đình này. Vui lòng đề nghị họ gửi mã mời mới để tham gia lại.',
   familyDetailSubtitleMember: 'Thành viên và thiết bị trong gia đình này',
   familyMembersSection: 'Thành viên',
   deleteAccountSubtitleScheduled: 'Đã lên lịch xóa. Đăng nhập để hủy.',
   deleteAccountImpact:
-    'Số phụ huynh mất quyền truy cập: {{parents}}. Số thiết bị của trẻ mất quyền truy cập: {{devices}}.',
+    '{{parents}} phụ huynh và {{devices}} thiết bị của trẻ sẽ mất quyền truy cập.',
   deleteAccountGraceNotice:
     'Tài khoản vẫn hoạt động bình thường trong {{days}} ngày, sau đó bị xóa vĩnh viễn.',
   deleteAccountReauthNotice: 'Bạn sẽ được yêu cầu đăng nhập lại để xác nhận.',

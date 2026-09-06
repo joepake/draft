@@ -13,7 +13,7 @@ export const checkIn = {
   viewPhotoAccessibility: '체크인 사진 보기',
   responseMessage: '저는 안전해요.',
   toastSuccess: '고마워요. 부모님이 안전하다는 걸 알게 되었어요.',
-  toastFailed: '체크인을 보내지 못했습니다. 다시 시도해 주세요.',
+  toastFailed: '체크인을 보내지 못했어요. 다시 시도해 주세요.',
   quickCheckInBadge: '체크인',
   areYouOkay: '괜찮나요?',
   checkInWithPhotoBody:

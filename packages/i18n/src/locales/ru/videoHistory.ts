@@ -2,7 +2,8 @@ export const videoHistory = {
   title: 'Просмотренные видео',
   fallbackDeviceName: 'Устройство ребёнка',
   toggleLabel: 'Записывать просмотренные видео',
-  toggleHint: 'YouTube в браузере и приложение YouTube на Android.',
+  toggleHint:
+    'YouTube в браузере и приложение YouTube на Android-телефонах и телевизорах. На телевизоре Shorts не отображаются, потому что приложение для ТВ не распознаёт их как Shorts.',
   toggleFailed: 'Не удалось обновить историю видео. Повторите попытку.',
   unsupportedNote:
     'Это устройство не может сообщать о просмотренных видео. Работает на Android и в Chrome.',

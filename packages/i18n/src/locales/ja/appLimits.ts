@@ -1,6 +1,7 @@
 export const appLimits = {
   title: 'アプリの利用時間制限',
-  intro: 'アプリごとに1日の上限を決めます。端末全体の1日の上限に加えて適用されます。',
+  intro:
+    'アプリごとに1日の上限を決めます。デバイス全体の1日の上限に加えて適用されます。',
   emptyTitle: '上限はまだありません',
   emptySubtitle: '下からアプリを選んで、そのアプリ専用の上限を設定します。',
   usedToday: '本日 {{used}} / {{limit}}',
@@ -8,8 +9,8 @@ export const appLimits = {
   addSectionSubtitle: 'お子さまが最近使ったアプリ。',
   candidateUsage: '本日 {{duration}}',
   noUsageYet:
-    '利用記録がまだありません。お子さまの端末から届き次第、ここに表示されます。',
-  footnote: '上限はお子さまの端末で深夜0時にリセットされます。',
+    '利用記録がまだありません。お子さまのデバイスから届き次第、ここに表示されます。',
+  footnote: '上限はお子さまのデバイスで深夜0時にリセットされます。',
   toastSaved: 'アプリの上限を保存しました。',
   toastSaveFailed: '保存できませんでした。もう一度お試しください。',
   removeAccessibility: '{{app}} の上限を削除',

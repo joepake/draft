@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useT } from '@kidgate/web-ui/useT';
+import { MAX_DEVICE_NAME_LENGTH } from '@kidgate/schema/deviceName';
 import { useActivityTranslate } from './activityCopy.js';
 import Icon from '@kidgate/web-ui/Icon';
 
@@ -42,8 +43,13 @@ export default function DeviceAdmin({ device, actions, readOnly, busy, run }) {
   }
 
   const trimmed = name.trim();
+  // The cap is the document contract (`@kidgate/schema/deviceName`), not this
+  // screen's taste — the phone and the desktop agent read the same number, and
+  // this input used to carry a hand-typed 60. `maxLength` stops it being typed;
+  // the length check is for a name already stored over the cap by that input.
+  const tooLong = trimmed.length > MAX_DEVICE_NAME_LENGTH;
   const renameDisabled =
-    readOnly || busy || trimmed.length === 0 || trimmed === device.name;
+    readOnly || busy || trimmed.length === 0 || tooLong || trimmed === device.name;
 
   return (
     <div className="device-admin">
@@ -55,7 +61,7 @@ export default function DeviceAdmin({ device, actions, readOnly, busy, run }) {
           id="device-name"
           className="reward-input"
           value={name}
-          maxLength={60}
+          maxLength={MAX_DEVICE_NAME_LENGTH}
           disabled={readOnly || busy}
           onChange={event => setName(event.target.value)}
         />
@@ -70,6 +76,12 @@ export default function DeviceAdmin({ device, actions, readOnly, busy, run }) {
           {t('dash.save')}
         </button>
       </div>
+
+      {tooLong ? (
+        <p className="hint">
+          {appT('family.deviceNameTooLong', { max: MAX_DEVICE_NAME_LENGTH })}
+        </p>
+      ) : null}
 
       {confirming ? (
         <div className="device-admin-confirm">

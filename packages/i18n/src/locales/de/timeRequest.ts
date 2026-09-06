@@ -20,7 +20,7 @@ export const timeRequest = {
     'Warte auf Antwort deiner Eltern ({{minutes}} Minuten angefragt).',
   statusCooldown: 'Du kannst in {{time}} eine neue Anfrage senden.',
   statusDailyLimitExceeded:
-    'Du hast deine gesamte Bildschirmzeit für heute aufgebraucht. Apps öffnen sich morgen wieder — oder früher, wenn deine Eltern mehr Zeit hinzufügen.',
+    'Du hast deine gesamte Bildschirmzeit für heute aufgebraucht. Apps öffnen sich morgen wieder – oder früher, wenn deine Eltern mehr Zeit hinzufügen.',
   errorDeviceNotRegistered: 'Dieses Gerät ist nicht registriert.',
   errorMinutesRange: 'Gib einen Wert zwischen {{min}} und {{max}} Minuten ein.',
   toastRequestSent: 'Anfrage gesendet. Deine Eltern werden sie in Kürze prüfen.',

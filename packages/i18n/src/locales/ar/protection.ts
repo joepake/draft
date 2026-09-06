@@ -3,7 +3,7 @@ export const protection = {
   permissionNotSetUpYet: 'لم يتم إعداد هذا الإذن بعد.',
   permissionRestrictedByIos: 'هذا الإذن مقيّد بإعدادات iOS.',
   permissionStatusUnknown: 'تعذر على KidGate قراءة حالة هذا الإذن.',
-  kidGateOffline: 'KidGate صامت منذ أكثر من 24 ساعة',
+  kidGateOffline: '\u200FKidGate صامت منذ أكثر من 24 ساعة',
   childAppMayBeOffline:
     'قد يكون التطبيق على جهاز الطفل مغلقًا أو محذوفًا أو غير متصل بالإنترنت.',
   statusNotUpdatedYet: 'لم تُحدَّث الحالة بعد',

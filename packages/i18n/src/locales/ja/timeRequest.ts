@@ -2,8 +2,8 @@ export const timeRequest = {
   alertMorePending: 'ほかに{{count}}件のリクエストが「家族」で待っています。',
   pauseConfirmTitle: '{{deviceName}}をロックしますか？',
   pauseConfirmBody:
-    '時間を追加する代わりに、今すぐ端末をロックします。ロックを解除するまで{{deviceName}}は使えません。',
-  pauseConfirmAction: '端末をロック',
+    '時間を追加する代わりに、今すぐデバイスをロックします。ロックを解除するまで{{deviceName}}は使えません。',
+  pauseConfirmAction: 'デバイスをロック',
   alertTitle: '時間延長リクエストを受信',
   alertMessage: '{{deviceName}}が追加で{{minutes}}分をリクエストしました。',
   alertReasonLine: '理由: {{reason}}',

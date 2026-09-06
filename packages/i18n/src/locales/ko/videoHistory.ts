@@ -2,7 +2,8 @@ export const videoHistory = {
   title: '시청한 동영상',
   fallbackDeviceName: '자녀 기기',
   toggleLabel: '시청한 동영상 기록',
-  toggleHint: '브라우저의 YouTube와 Android의 YouTube 앱.',
+  toggleHint:
+    '브라우저의 YouTube와 Android 휴대폰 및 TV의 YouTube 앱. TV에서는 Shorts가 표시되지 않습니다. TV 앱에서는 Shorts라는 이름이 표시되지 않기 때문입니다.',
   toggleFailed: '동영상 기록을 업데이트하지 못했습니다. 다시 시도하세요.',
   unsupportedNote:
     '이 기기는 시청한 동영상을 보고할 수 없습니다. Android와 Chrome에서 작동합니다.',

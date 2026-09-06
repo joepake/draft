@@ -1,12 +1,19 @@
 /**
  * What the newest published build is, per platform, for a **parent** screen.
  *
- * Reads the documents that already answer this — `config/ota` for the phones,
+ * Reads the documents that already answer this — `config/appReleases` first,
+ * then the three it replaces (`config/ota` for the phones,
  * `config/desktopRelease` for the Mac and the PC, `config/tvRelease` for the
- * television — rather than one restating the others. A "latest version"
+ * television) — rather than one restating the others. A "latest version"
  * written in two places is the failure the root `CLAUDE.md` opens with, and it
  * would be worse here than usual: the copy that drifted would be the one a
  * parent is shown.
+ *
+ * **Four reads, and the fourth wins per platform.** During the transition an
+ * operator writes both, so a platform that has moved must be judged against the
+ * row rather than a legacy field nobody updates any more; a platform that has
+ * not keeps working unchanged. When the last build reading the old documents
+ * has aged out, three of these reads go.
  *
  * **`config/tvRelease` is what a television has instead of an update channel.**
  * OTA was gated for that platform on 2026-08-28 and turned down, so the set
@@ -27,10 +34,13 @@
  */
 
 import type { FirestorePort } from '@kidgate/ports/firestore';
+import { APP_RELEASES_DOC } from '@kidgate/schema/appRelease';
+import type { DevicePlatform } from '@kidgate/schema/capabilities';
 import {
   DESKTOP_RELEASE_DOC,
   type DesktopRelease,
 } from '@kidgate/schema/desktopRelease';
+import { parseAppReleases } from '../domain/appRelease';
 import { OTA_CONFIG_DOC, type OtaConfig } from '@kidgate/schema/otaConfig';
 import { TV_RELEASE_DOC, type TvRelease } from '@kidgate/schema/tvRelease';
 import type { LatestBuilds } from '../domain/buildFreshness';
@@ -51,11 +61,13 @@ async function readDoc<T>(db: FirestorePort, path: string): Promise<T | null> {
 }
 
 export async function fetchLatestBuilds(db: FirestorePort): Promise<LatestBuilds> {
-  const [ota, desktop, tv] = await Promise.all([
+  const [ota, desktop, tv, appReleases] = await Promise.all([
     readDoc<OtaConfig>(db, OTA_CONFIG_DOC),
     readDoc<DesktopRelease>(db, DESKTOP_RELEASE_DOC),
     readDoc<TvRelease>(db, TV_RELEASE_DOC),
+    readDoc<unknown>(db, APP_RELEASES_DOC),
   ]);
+  const releases = parseAppReleases(appReleases);
 
   const latest: LatestBuilds = {};
 
@@ -117,6 +129,32 @@ export async function fetchLatestBuilds(db: FirestorePort): Promise<LatestBuilds
     latest.androidtv = {
       ...(tv.version ? { version: tv.version } : {}),
       ...(typeof tv.versionCode === 'number' ? { versionCode: tv.versionCode } : {}),
+    };
+  }
+
+  /*
+   * `config/appReleases` last, because it **wins**.
+   *
+   * It is the per-platform document the three above should have been, and
+   * during the transition an operator writes both — so a platform migrated
+   * there must not be judged against a legacy field somebody stopped updating.
+   * The bundle number is not its concern and is preserved from `config/ota`:
+   * a row describes the installed build, and overwriting `otaVersion` here
+   * would tell every phone its bundle is unknown.
+   *
+   * `enabled: false` drops the platform back to whatever the legacy documents
+   * said rather than to nothing, which is what a kill switch on a bad *release*
+   * means — the older published build is still the truth about that platform.
+   */
+  for (const [platform, row] of Object.entries(releases.platforms ?? {})) {
+    if (row.enabled === false) {
+      continue;
+    }
+    const key = platform as DevicePlatform;
+    latest[key] = {
+      ...latest[key],
+      ...(row.versionName ? { version: row.versionName } : {}),
+      ...(typeof row.versionCode === 'number' ? { versionCode: row.versionCode } : {}),
     };
   }
 

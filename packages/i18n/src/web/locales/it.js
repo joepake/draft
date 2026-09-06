@@ -108,8 +108,8 @@ export default {
     trust1Text: 'I dati dei bambini non vengono mai usati per la pubblicità',
     trust2Title: 'Elimina quando vuoi',
     trust2Text: 'Cancelliamo account famiglia e tutti i dati su richiesta',
-    trust3Title: 'Telefono e computer',
-    trust3Text: 'iPhone, Android, Mac e Windows su un unico account famiglia',
+    trust3Title: 'Telefono, computer e browser',
+    trust3Text: 'iPhone, Android, Mac, Windows e Chrome su un unico account famiglia',
     trust4Title: 'Un piano per famiglia',
     trust4Text: 'Tutti i dispositivi di genitori e figli, un solo abbonamento',
 
@@ -128,7 +128,7 @@ export default {
       'Limita ogni app per conto suo, oltre al limite giornaliero: «mezz’ora di TikTok» senza doverlo vietare del tutto.',
     feature4Title: 'Filtro web e cronologia',
     feature4Text:
-      'Blocca i siti per adulti e di gioco d’azzardo, poi guarda quali siti il telefono ha davvero cercato e quali sono stati fermati.',
+      'Blocca i siti per adulti e di gioco d’azzardo sul telefono, sul computer e in Chrome, poi guarda quali siti sono stati cercati e quali sono stati fermati.',
     feature5Title: 'Posizione in tempo reale e luoghi',
     feature5Text:
       'Vedi l’ultima posizione di tuo figlio, consulta lo storico e ricevi un avviso quando arriva o lascia un luogo salvato.',
@@ -137,7 +137,7 @@ export default {
       'Chiedi a tuo figlio di confermare che sta bene e ricevi un SOS immediato con posizione e foto in caso di emergenza.',
     feature7Title: 'Avvisi di protezione e sulle app',
     feature7Text:
-      'Scopri nell’istante in cui un permesso importante viene disattivato — e su Android, quando un’app viene installata o rimossa.',
+      'Scopri nell’istante in cui un permesso importante viene disattivato — e su Android, Mac e Windows, quando compare una nuova app in attesa della tua approvazione.',
     feature8Title: 'Compiti con premio e tempo extra',
     feature8Text:
       'I ragazzi guadagnano minuti extra completando compiti, o chiedono più tempo. Entrambe le cose arrivano sul tuo telefono da approvare.',
@@ -156,7 +156,7 @@ export default {
       'Tutto quello che è successo, in ordine: un dispositivo sbloccato, un sito filtrato, un compito completato, un avviso inviato.',
     platformsTitle: 'Un solo KidGate, ovunque ci sia uno schermo',
     platformsSub:
-      'Le stesse regole e lo stesso account famiglia su telefono e su computer. L’app desktop si installa da questo sito, non da uno store.',
+      'Le stesse regole e lo stesso account famiglia su telefono, su computer e in Chrome. L’app desktop si installa da questo sito, non da uno store.',
 
     showcaseEyebrow: 'Dashboard genitori',
     showcaseTitle: 'Tutta la famiglia su un solo schermo',
@@ -203,10 +203,10 @@ export default {
       'Sei cose verificate rispetto alle app con cui i genitori ci confrontano. Ognuna indica la piattaforma su cui è vera.',
     only1Title: 'Anche la TV del salotto',
     only1Text:
-      'Android TV ha le stesse ore bloccate, lo stesso blocco app, gli stessi limiti per app e lo stesso filtro web di un telefono. La maggior parte dei parental control si ferma al telefono.',
+      'Android TV ha le stesse ore bloccate, lo stesso blocco app, gli stessi limiti per app e lo stesso filtro web di un telefono. La versione gira già oggi su hardware reale ed è in attesa della pubblicazione sullo store: per questo l’elenco delle piattaforme dice In programma. La maggior parte dei parental control si ferma al telefono.',
     only2Title: 'Avvisi sui messaggi che restano sul telefono',
     only2Text:
-      'Su Android i messaggi vengono confrontati sul dispositivo stesso con liste di parole chiave in 14 lingue. Si conserva solo la parola rilevata: la conversazione non viene mai salvata.',
+      'Su Android i messaggi vengono confrontati sul dispositivo stesso con liste di parole chiave in 14 lingue, e ciò che lascia il telefono è la parola rilevata, mai la conversazione. Una sola cosa lo cambia, e solo se lo chiedi tu: attiva la conferma con IA e un messaggio in arrivo ambiguo viene inviato per essere valutato, così non vieni svegliato per una parola comune.',
     only3Title: 'Ogni app, non una lista di app',
     only3Text:
       'Su Android gli avvisi nascono dalle notifiche e da ciò che tuo figlio o tua figlia digita in qualsiasi app — Zalo, LINE, KakaoTalk, la chat di un gioco — non da una lista fissa di app supportate.',
@@ -225,16 +225,16 @@ export default {
     faqSub: 'Risposte rapide prima di scaricare.',
     faq1Q: 'C’è una prova gratuita?',
     faq1A:
-      'Sì. La prova inizia quando colleghi il primo dispositivo genitore e il primo dispositivo figlio, e include tutte le funzioni Premium. Alla fine, tutte le regole che hai impostato — Limite giornaliero, Orari di blocco, App bloccate, Filtro web e posizione — continuano a funzionare gratis su un dispositivo figlio.',
+      'Sì. La prova inizia quando colleghi il primo dispositivo genitore e il primo dispositivo figlio, e include tutte le funzioni Premium. Alla fine, le regole che hai impostato — Limite giornaliero, Orari di blocco, App bloccate, Filtro web, Blocco dispositivo, richieste di tempo extra e compiti premio — continuano a funzionare gratis su un dispositivo figlio, e puoi ancora chiedere a quel dispositivo dove si trova. Attività in tempo reale, cronologia, report settimanali e tracciamento della posizione sono ciò che Premium riporta.',
     faq2Q: 'Quanti dispositivi posso gestire?',
     faq2A:
-      'Un abbonamento copre tutta la famiglia — più dispositivi dei figli e più genitori sullo stesso piano.',
+      'Un abbonamento copre tutta la famiglia — ogni dispositivo figlio e ogni genitore sullo stesso piano. Nel piano gratuito resta monitorato un solo dispositivo figlio e scegli tu quale; gli altri continuano ad applicare le regole che hai già impostato e smettono di inviare attività.',
     faq3Q: 'Mio figlio può disinstallare o aggirare KidGate?',
     faq3A:
       'Le impostazioni sensibili sono protette dal PIN genitore e gli avvisi di protezione ti segnalano subito se un permesso chiave viene disattivato sul dispositivo del bambino.',
     faq4Q: 'Posso gestire tutto dal computer?',
     faq4A:
-      'La prova inizia quando colleghi il primo dispositivo genitore e il primo dispositivo figlio, e dà accesso completo a tutte le funzioni. Rimuovere un dispositivo figlio non azzera la prova. Alla fine, tutte le regole continuano a funzionare gratis su un dispositivo figlio; Premium mantiene attività in tempo reale, cronologia, report settimanali e tutti i dispositivi.',
+      'Sì. La dashboard genitori si apre in qualsiasi browser: accedi con un codice dal tuo telefono e vedi la stessa famiglia, gli stessi dispositivi e le stesse impostazioni. La consultazione funziona subito; bloccare un dispositivo o modificare un limite richiede il PIN genitore oppure un’approvazione dall’app.',
     faqMore: 'Altre domande? Vai all’assistenza',
 
     ctaTitle: 'Inizia oggi a proteggere la tua famiglia',
@@ -508,7 +508,7 @@ export default {
     usageSyncNote:
       'Il tempo di schermo può richiedere alcuni minuti per comparire in questa schermata — più a lungo se il dispositivo non ha connessione a Internet o si è chiuso in modo imprevisto.',
     usageSyncNoteTv:
-      'Questa TV si collega solo periodicamente, quindi il tempo di schermo può richiedere fino a 30 minuti per comparire in questa schermata — più a lungo senza connessione a Internet.',
+      'Questa TV si collega solo periodicamente, quindi il tempo di schermo può richiedere fino a un’ora per comparire in questa schermata — più a lungo senza connessione a Internet.',
     cardRecent: 'Attività recente',
     cardRecentSub: 'Dalla più recente',
     cardRecentEmpty:
@@ -603,7 +603,7 @@ export default {
     webActivitySyncNote:
       'L’attività web può richiedere alcuni minuti per comparire in questa schermata — più a lungo se il dispositivo non ha connessione a Internet o si è chiuso in modo imprevisto.',
     webActivitySyncNoteTv:
-      'Questa TV si collega solo periodicamente, quindi l’attività web può richiedere fino a 30 minuti per comparire in questa schermata — più a lungo senza connessione a Internet.',
+      'Questa TV si collega solo periodicamente, quindi l’attività web può richiedere fino a un’ora per comparire in questa schermata — più a lungo senza connessione a Internet.',
     colDomain: 'Dominio',
     colVisits: 'Visite',
     colBlocked: 'Bloccate',
@@ -934,9 +934,9 @@ export default {
     windowsRequires: 'Windows 10 o successivo, 64 bit.',
     button: 'Scarica',
     warningSub:
-      'Entrambi i sistemi mostrano questo avviso per qualsiasi app installata fuori dai loro store da uno sviluppatore non ancora presente nei loro elenchi verificati: non segnala nulla trovato in KidGate. Ogni scheda qui sopra spiega come consentire il primo avvio. Scarica solo da kidgate.app.',
+      'Windows mostra questo avviso per qualsiasi app installata fuori dal suo store da uno sviluppatore non ancora presente nel suo elenco verificato: non segnala nulla trovato in KidGate. La scheda Windows qui sopra spiega come consentirlo. Il pacchetto per Mac è firmato e autenticato da Apple e non genera alcun avviso. Scarica solo da kidgate.app.',
     macosSteps:
-      'Apri l’app una volta e lascia che venga rifiutata. Poi vai in Impostazioni di Sistema, Privacy e sicurezza, scorri in basso e scegli Apri comunque.',
+      'Apri il pacchetto scaricato e segui l’installazione. Poi macOS ti chiede una volta di consentire l’estensione di sistema KidGate, in Elementi login ed estensioni: il Filtro web non funziona finché non lo fai.',
     windowsSteps:
       'Quando Windows dice di aver protetto il PC, scegli Ulteriori informazioni e poi Esegui comunque.',
   },
@@ -952,7 +952,7 @@ export default {
     storyP2:
       'Così abbiamo costruito la versione che volevamo a casa nostra. Il genitore imposta una volta il limite giornaliero, le Ore bloccate, il Blocco app e il Filtro web, e il dispositivo li rispetta. Il figlio vede gli stessi numeri del genitore, può chiedere altro tempo e può sempre raggiungere un genitore con l’SOS. KidGate non finge di non esserci.',
     storyP3:
-      'Funziona su iPhone, Android, Mac e Windows, con una dashboard che si apre in qualsiasi browser. Una famiglia, un piano, tutti i dispositivi.',
+      'Funziona su iPhone, Android, Mac e Windows, con un’estensione per Chrome e una dashboard che si apre in qualsiasi browser. Una famiglia, un piano, tutti i dispositivi.',
     valuesEyebrow: 'In cosa crediamo',
     valuesTitle: 'Quattro regole che non infrangiamo',
     valuesSub: 'Le domande che ci fanno più spesso, con la risposta già pronta.',
@@ -987,9 +987,12 @@ export default {
     make5Soon: 'In programma',
     make5Title: 'Android TV',
     make5Text:
-      'Lo schermo del soggiorno, trattato come un dispositivo condiviso della famiglia e non di un solo figlio: gli stessi limiti e gli stessi orari dei telefoni.',
-    make6Title: 'Dashboard genitori',
+      'Lo schermo del soggiorno, trattato come un dispositivo condiviso della famiglia e non di un solo figlio: gli stessi limiti e gli stessi orari dei telefoni. Questa versione ha già girato su hardware reale ed è in attesa della pubblicazione sullo store.',
+    make6Title: 'Chrome',
     make6Text:
+      'Un’estensione del browser che porta lo stesso Filtro web dentro Chrome, su un computer che ha già KidGate e su uno che non può averlo. È pronta e associata, ed è in attesa della revisione del Chrome Web Store.',
+    make7Title: 'Dashboard genitori',
+    make7Text:
       'Il browser è il secondo schermo di un genitore. Accedi da qualsiasi computer con un codice dal telefono; niente da installare.',
     factsEyebrow: 'KidGate oggi',
     factsTitle: 'Quattro numeri',

@@ -20,9 +20,9 @@ export const sos = {
   emptyTitle: 'Noch keine SOS-Alarme',
   emptyDescription:
     'Wenn dein Kind SOS 5 Sekunden lang gedrückt hält, erscheinen hier Alarme mit Foto und Standort.',
-  alertMessage: '{{childName}} braucht Hilfe — SOS wurde gesendet',
+  alertMessage: '{{childName}} braucht Hilfe – SOS wurde gesendet',
   toastSent:
-    'SOS gesendet. Bleib nach Möglichkeit an einem sicheren Ort — deine Eltern wurden benachrichtigt.',
+    'SOS gesendet. Bleib nach Möglichkeit an einem sicheren Ort – deine Eltern wurden benachrichtigt.',
   escapeGrantedTitle: 'SOS gesendet',
   escapeGrantedBody:
     'Deine Eltern wurden benachrichtigt. Dieses Gerät ist 15 Minuten lang entsperrt, danach wird es wieder gesperrt.',
@@ -56,13 +56,13 @@ export const sos = {
   whatParentsReceive: 'Was die Eltern erhalten',
   holdToSendFiveSeconds: 'Gedrückt halten zum Senden · 5 Sekunden',
   keepHolding: 'Weiter gedrückt halten',
-  pressAndHoldToCancel: 'Gedrückt halten — vorzeitig loslassen zum Abbrechen',
+  pressAndHoldToCancel: 'Gedrückt halten – vorzeitig loslassen zum Abbrechen',
   holdToSendSosAccessibility: '5 Sekunden gedrückt halten, um SOS zu senden',
   sosEmergencyAccessibility: 'SOS-Notfall',
   sosEmergencyAlert: 'SOS-Notfallalarm',
   sosAlertSent: 'SOS-Alarm gesendet',
   sosAlertSentDescription:
-    '{{deviceName}} hat einen SOS-Alarm gesendet — Hilfe wird benötigt.',
+    '{{deviceName}} hat einen SOS-Alarm gesendet – Hilfe wird benötigt.',
   deviceNeedsHelp: '{{deviceName}} braucht Hilfe',
   tapPhotoToEnlarge: 'Tippe auf das Foto, um es zu vergrößern',
   noPhotoAttached: 'Diesem Alarm wurde kein Foto angehängt.',

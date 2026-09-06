@@ -52,7 +52,7 @@ export const plans = {
   compareNewApps: 'New apps installed',
   compareNewAppsPremium: 'Which apps, and approval before install',
   compareMessages: 'Message alerts (Android)',
-  compareSafety: 'Tamper alerts and check-in',
+  compareSafety: 'Protection alerts and Check-In',
   compareControls: 'App blocking and web filter',
   compareControlsFree: 'Any app, adult content',
   compareControlsPremium: 'By category, per-app limits, your own lists',

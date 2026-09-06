@@ -73,5 +73,5 @@ export const blockedHours = {
   daysWeekend: 'Wochenende',
   daysOvernightHint: 'Nachtfenster zählen zu der Nacht, in der sie beginnen.',
   overlapWarning:
-    'Diese Zeit überschneidet sich mit einer anderen gesperrten Zeit — beide gelten weiterhin.',
+    'Diese Zeit überschneidet sich mit einer anderen gesperrten Zeit – beide gelten weiterhin.',
 } as const;

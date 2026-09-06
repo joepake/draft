@@ -2,7 +2,8 @@ export const videoHistory = {
   title: 'Video yang ditonton',
   fallbackDeviceName: 'Perangkat anak',
   toggleLabel: 'Rekam video yang ditonton',
-  toggleHint: 'YouTube di peramban, dan aplikasi YouTube di Android.',
+  toggleHint:
+    'YouTube di peramban, dan aplikasi YouTube di ponsel Android dan TV. Di TV, Shorts tidak dicantumkan karena aplikasi TV tidak mengenalinya sebagai Shorts.',
   toggleFailed: 'Tidak dapat memperbarui riwayat video. Coba lagi.',
   unsupportedNote:
     'Perangkat ini tidak dapat melaporkan video yang ditonton. Berfungsi di Android dan Chrome.',

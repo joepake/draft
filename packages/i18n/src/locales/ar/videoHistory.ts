@@ -2,7 +2,8 @@ export const videoHistory = {
   title: 'مقاطع تمت مشاهدتها',
   fallbackDeviceName: 'جهاز الطفل',
   toggleLabel: 'تسجيل المقاطع المُشاهَدة',
-  toggleHint: 'يوتيوب في المتصفح وتطبيق يوتيوب على أندرويد.',
+  toggleHint:
+    '\u200FYouTube في المتصفح، وتطبيق YouTube على هواتف Android والتلفزيون. على التلفزيون لا تظهر مقاطع Shorts في القائمة، لأن تطبيق التلفزيون لا يعرّفها على أنها Shorts.',
   toggleFailed: 'تعذّر تحديث سجل الفيديو. حاول مرة أخرى.',
   unsupportedNote:
     'لا يمكن لهذا الجهاز الإبلاغ عن المقاطع المُشاهَدة. يعمل على أندرويد وChrome.',

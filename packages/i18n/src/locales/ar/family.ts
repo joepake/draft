@@ -250,17 +250,17 @@ export const family = {
   android: 'Android',
   ipad: 'iPad',
 
-  parentIphone: 'iPhone لولي الأمر',
+  parentIphone: '\u200FiPhone لولي الأمر',
 
-  parentAndroid: 'Android لولي الأمر',
+  parentAndroid: '\u200FAndroid لولي الأمر',
 
-  childIphone: 'iPhone للطفل',
+  childIphone: '\u200FiPhone للطفل',
 
-  parentIpad: 'iPad لولي الأمر',
+  parentIpad: '\u200FiPad لولي الأمر',
 
-  childIpad: 'iPad للطفل',
+  childIpad: '\u200FiPad للطفل',
 
-  childAndroid: 'Android للطفل',
+  childAndroid: '\u200FAndroid للطفل',
 
   deviceFallbackName: 'الجهاز',
 
@@ -302,7 +302,7 @@ export const family = {
 
   deviceNameInputLabel: 'اسم الجهاز',
 
-  deviceNamePlaceholder: 'iPhone الخاص بسارة',
+  deviceNamePlaceholder: '\u200FiPhone الخاص بسارة',
 
   unableToUpdateDeviceName: 'تعذر تحديث اسم الجهاز. يرجى المحاولة مرة أخرى.',
 
@@ -312,7 +312,7 @@ export const family = {
 
   androidLabel: 'Android',
 
-  sosNeedsAttentionNow: 'SOS — يتطلب انتباهًا فوريًا',
+  sosNeedsAttentionNow: '\u200FSOS — يتطلب انتباهًا فوريًا',
 
   waitingForCheckIn: 'بانتظار الاطمئنان',
 

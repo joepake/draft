@@ -2,7 +2,8 @@ export const videoHistory = {
   title: 'İzlenen videolar',
   fallbackDeviceName: 'Çocuk cihazı',
   toggleLabel: 'İzlenen videoları kaydet',
-  toggleHint: 'Tarayıcıda YouTube ve Android’de YouTube uygulaması.',
+  toggleHint:
+    'Tarayıcıda YouTube ve Android telefonlardaki ve TV’deki YouTube uygulaması. TV’de Shorts listelenmez; TV uygulaması bunları Shorts olarak tanımlamaz.',
   toggleFailed: 'Video geçmişi güncellenemedi. Tekrar deneyin.',
   unsupportedNote:
     'Bu cihaz izlenen videoları bildiremez. Android ve Chrome’da çalışır.',

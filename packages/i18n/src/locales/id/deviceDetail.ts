@@ -51,6 +51,12 @@ export const deviceDetail = {
   appVersion: 'Versi aplikasi',
   appVersionUpdate: '{{running}} · {{latest}} tersedia',
   appVersionRestart: '{{running}} · buka ulang aplikasi untuk menyelesaikan',
+  otaUpdateNow: 'Perbarui sekarang',
+  otaAsked: 'Perangkat ini diminta memperbarui',
+  otaUpToDate: 'Sudah versi terbaru',
+  otaSkipped: 'Pembaruan dimatikan di perangkat ini',
+  otaStoreUpdate: 'Perlu pembaruan dari toko dulu',
+  otaFailed: 'Pembaruan gagal dipasang',
   androidPauseNote:
     'Di Android, mengunci perangkat juga akan memblokir aplikasi lain jika Aksesibilitas dan Tampil di atas aplikasi lain diaktifkan.',
   notAvailableOnPlatform: 'Tidak tersedia di {{platform}}',

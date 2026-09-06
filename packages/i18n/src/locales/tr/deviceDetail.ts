@@ -51,6 +51,12 @@ export const deviceDetail = {
   appVersion: 'Uygulama sürümü',
   appVersionUpdate: '{{running}} · {{latest}} mevcut',
   appVersionRestart: '{{running}} · tamamlamak için uygulamayı yeniden açın',
+  otaUpdateNow: 'Şimdi güncelle',
+  otaAsked: 'Bu cihazdan güncelleme istendi',
+  otaUpToDate: 'Zaten güncel',
+  otaSkipped: 'Bu cihazda güncellemeler kapalı',
+  otaStoreUpdate: 'Önce mağazadan güncelleme gerekiyor',
+  otaFailed: 'Güncelleme yüklenmedi',
   androidPauseNote:
     'Android’de Erişilebilirlik ve “Diğer uygulamaların üzerinde göster” izinleri etkinse, kilitleme diğer uygulamaları da engeller.',
   notAvailableOnPlatform: '{{platform}} için kullanılamaz',

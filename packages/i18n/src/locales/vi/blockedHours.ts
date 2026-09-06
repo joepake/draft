@@ -67,8 +67,8 @@ export const blockedHours = {
   dayShortSun: 'CN',
   daysLabel: 'Ngày',
   daysEveryDay: 'Mỗi ngày',
-  daysSchoolNights: 'Tối đi học',
+  daysSchoolNights: 'Tối trong tuần',
   daysWeekend: 'Cuối tuần',
   daysOvernightHint: 'Khung qua đêm tính theo đêm bắt đầu.',
-  overlapWarning: 'Khung giờ này trùng với khung giờ khoá khác — cả hai vẫn áp dụng.',
+  overlapWarning: 'Khung giờ này trùng với khung giờ khóa khác — cả hai vẫn áp dụng.',
 } as const;

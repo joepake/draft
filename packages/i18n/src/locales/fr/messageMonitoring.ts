@@ -81,7 +81,7 @@ export const messageMonitoring = {
     'Des mots surveillés sont apparus mais se sont révélés inoffensifs dans leur contexte, donc aucune alerte ne t’a été envoyée. Affichés ici pour que tu voies ce qui est filtré à ta place — dis-le-nous si l’un d’eux aurait dû te parvenir.',
   consentTitle: 'Analyse des messages par IA',
   consentBody:
-    'Lorsqu’elle est activée, les messages qu’un mot-clé signale comme limites sont envoyés — sans noms, numéros ni liens — à un service d’IA pour confirmer s’ils sont réellement préoccupants avant de vous alerter. Les mots à haut risque alertent toujours immédiatement sans rien envoyer.',
+    'Lorsqu’elle est activée, les messages qu’un mot-clé signale comme ambigus sont envoyés — sans noms, numéros ni liens — à un service d’IA pour confirmer s’ils sont réellement préoccupants avant de vous alerter. Les mots à haut risque alertent toujours immédiatement sans rien envoyer.',
   consentEnable: 'Activer l’analyse par IA',
   consentConfirmTitle: 'Activer l’analyse des messages par IA ?',
   consentConfirmBody:

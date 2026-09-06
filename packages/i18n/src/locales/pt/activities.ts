@@ -39,7 +39,7 @@ export const activities = {
   activityTypePlaceExit: 'Saiu de um local',
   activityTypeTamper: 'Proteção',
   activityTypeScreenTime: 'Tempo de Uso',
-  activityTypeCheckIn: 'Confirmação',
+  activityTypeCheckIn: 'Check-in',
   activityTypeLocationRequest: 'Localização',
   activityTypeTimeRequest: 'Pedido de tempo',
   activityTypeRewardTask: 'Tarefa de recompensa',

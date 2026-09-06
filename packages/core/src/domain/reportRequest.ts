@@ -24,6 +24,7 @@
  */
 
 import type { DevicePlatform } from '@kidgate/schema/capabilities';
+import { deviceRequestId, deviceRequestedAtMs } from './deviceRequestId';
 import { ALIVE_MIN_INTERVAL_MS } from './reportCadence';
 
 /**
@@ -62,7 +63,7 @@ export function usesReportRequestField(platform: unknown): boolean {
  * nothing here needs to be unguessable.
  */
 export function reportRequestId(nowMs: number, deviceId: string): string {
-  return `${nowMs}-${deviceId}`;
+  return deviceRequestId(nowMs, deviceId);
 }
 
 /**
@@ -84,15 +85,7 @@ export function reportRequestId(nowMs: number, deviceId: string): string {
  * that is not a fault.
  */
 export function reportRequestedAtMs(requestId: unknown): number | null {
-  if (typeof requestId !== 'string') {
-    return null;
-  }
-  const [stamp] = requestId.split('-');
-  if (!stamp) {
-    return null;
-  }
-  const ms = Number(stamp);
-  return Number.isFinite(ms) && ms > 0 ? ms : null;
+  return deviceRequestedAtMs(requestId);
 }
 
 /**

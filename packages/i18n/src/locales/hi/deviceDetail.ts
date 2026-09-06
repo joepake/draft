@@ -51,6 +51,12 @@ export const deviceDetail = {
   appVersion: 'ऐप वर्शन',
   appVersionUpdate: '{{running}} · {{latest}} उपलब्ध',
   appVersionRestart: '{{running}} · पूरा करने के लिए ऐप फिर से खोलें',
+  otaUpdateNow: 'अभी अपडेट करें',
+  otaAsked: 'इस डिवाइस से अपडेट करने को कहा गया',
+  otaUpToDate: 'पहले से नवीनतम',
+  otaSkipped: 'इस डिवाइस पर अपडेट बंद हैं',
+  otaStoreUpdate: 'पहले स्टोर से अपडेट चाहिए',
+  otaFailed: 'अपडेट इंस्टॉल नहीं हुआ',
   androidPauseNote:
     'Android पर, यदि Accessibility और Display over other apps सक्षम हैं, तो लॉक करने पर अन्य ऐप्स भी ब्लॉक हो जाएँगे।',
   notAvailableOnPlatform: '{{platform}} पर उपलब्ध नहीं',

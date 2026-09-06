@@ -71,5 +71,5 @@ export const placeAlerts = {
   enteredLabel: 'Betreten',
   exitedLabel: 'Verlassen',
   footerNote:
-    'Wird bei jeder Standortsynchronisierung geprüft — nicht immer im Hintergrund.',
+    'Wird bei jeder Standortsynchronisierung geprüft – nicht immer im Hintergrund.',
 } as const;

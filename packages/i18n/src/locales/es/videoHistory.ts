@@ -2,7 +2,8 @@ export const videoHistory = {
   title: 'Vídeos vistos',
   fallbackDeviceName: 'Dispositivo del niño',
   toggleLabel: 'Registrar vídeos vistos',
-  toggleHint: 'YouTube en el navegador y la app de YouTube en Android.',
+  toggleHint:
+    'YouTube en el navegador y la app de YouTube en Android y TV. En la TV, los Shorts no aparecen porque la app de TV no los identifica como Shorts.',
   toggleFailed: 'No se pudo actualizar el historial de vídeos. Inténtalo de nuevo.',
   unsupportedNote:
     'Este dispositivo no puede informar de los vídeos vistos. Funciona en Android y en Chrome.',

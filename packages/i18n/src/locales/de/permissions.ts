@@ -17,7 +17,7 @@ export const permissions = {
   backgroundRefreshHint:
     'Aktiviere zuerst Einstellungen → Allgemein → Hintergrundaktualisierung, und schalte sie dann für KidGate ein. Ist der Schalter ausgegraut, ist die allgemeine Hintergrundaktualisierung noch deaktiviert.',
   backgroundRefreshLowPowerHint:
-    'Der Stromsparmodus ist aktiviert — iOS deaktiviert dadurch die Hintergrundaktualisierung. Bitte schalte den Stromsparmodus aus und aktiviere dann die Hintergrundaktualisierung.',
+    'Der Stromsparmodus ist aktiviert – iOS deaktiviert dadurch die Hintergrundaktualisierung. Bitte schalte den Stromsparmodus aus und aktiviere dann die Hintergrundaktualisierung.',
   overlayLabel: 'Über anderen Apps anzeigen',
   overlayHint:
     'Erlaube KidGate, bei aktiven Limits einen Sperrbildschirm über anderen Apps anzuzeigen.',
@@ -47,13 +47,13 @@ export const permissions = {
   markDone: 'Fertig',
   overlayStepAllow: 'Aktiviere „Über anderen Apps anzeigen“ für KidGate.',
   accessibilityStepOpenSettings:
-    'Wähle unten Einstellungen — das öffnet direkt die Bedienungshilfen-Seite von KidGate.',
+    'Wähle unten Einstellungen – das öffnet direkt die Bedienungshilfen-Seite von KidGate.',
   accessibilityStepFindKidGate:
     'Öffnet sich stattdessen die vollständige Liste, wähle KidGate unter „Heruntergeladene Apps“.',
   accessibilityStepTurnOn:
     'Schalte den Regler ein und wähle dann in Androids Abfrage „Erlauben“.',
   accessibilityWarningNote:
-    'Android warnt, dass KidGate deine Aktionen beobachten kann. So bleibt die Sperre über anderen Apps — KidGate liest keine Passwörter und keine persönlichen Nachrichten.',
+    'Android warnt, dass KidGate deine Aktionen beobachten kann. So bleibt die Sperre über anderen Apps – KidGate liest keine Passwörter und keine persönlichen Nachrichten.',
   uninstallProtectionWizardBody:
     'Verhindert, dass diese App ohne die Eltern-PIN deinstalliert wird. Android zeigt dazu einen eigenen Bestätigungsbildschirm an.',
   notificationsWizardBody:

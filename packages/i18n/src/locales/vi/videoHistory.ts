@@ -2,12 +2,13 @@ export const videoHistory = {
   title: 'Video đã xem',
   fallbackDeviceName: 'Thiết bị của trẻ',
   toggleLabel: 'Ghi lại video đã xem',
-  toggleHint: 'YouTube trên trình duyệt, và ứng dụng YouTube trên Android.',
-  toggleFailed: 'Không cập nhật được lịch sử video. Thử lại.',
+  toggleHint:
+    'YouTube trên trình duyệt, và ứng dụng YouTube trên điện thoại Android lẫn TV. Riêng trên TV, Shorts không hiện trong danh sách vì ứng dụng TV không nhận diện chúng là Shorts.',
+  toggleFailed: 'Không cập nhật được lịch sử video. Vui lòng thử lại.',
   unsupportedNote:
-    'Thiết bị này không báo được video đã xem. Chỉ chạy trên Android và Chrome.',
-  emptyTitle: 'Chưa xem gì',
-  emptyBody: 'Video hiện ở đây khi trẻ xem lúc KidGate đang chạy.',
+    'Thiết bị này không báo được video đã xem. Tính năng này chỉ hoạt động trên Android và Chrome.',
+  emptyTitle: 'Chưa có video nào',
+  emptyBody: 'Video sẽ hiện ở đây khi trẻ xem trong lúc KidGate đang chạy.',
   emptyBodyOff: 'Bật ghi lại ở trên để bắt đầu liệt kê video đã xem.',
   viewsMeta_one: '{{count}} lần',
   viewsMeta: '{{count}} lần',

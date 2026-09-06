@@ -27,18 +27,20 @@
  * the bucket keys in their own order and every one is drawn, zero included.
  */
 
+import { formatNumber, t } from './i18n.js';
+
 const BAR_HEIGHT = 10;
 const ROW_HEIGHT = 26;
 const LABEL_WIDTH = 116;
 const VALUE_WIDTH = 44;
 
-export default function BarChart({
-  data,
-  total,
-  order,
-  emptyLabel = 'No data',
-  labels,
-}) {
+/**
+ * `t` and `formatNumber` are read straight from the module rather than through
+ * `useT()`: this chart holds no state of its own, and every page that draws
+ * one already subscribes, so a language change re-renders the parent and this
+ * with it. A hook here would only add a second subscription per chart.
+ */
+export default function BarChart({ data, total, order, emptyLabel, labels }) {
   const source = data || {};
   const rows = order
     ? order.map(key => [key, Number(source[key]) || 0])
@@ -47,7 +49,7 @@ export default function BarChart({
         .sort((a, b) => b[1] - a[1]);
 
   if (rows.length === 0 || rows.every(([, value]) => value === 0)) {
-    return <p className="muted">{emptyLabel}</p>;
+    return <p className="muted">{emptyLabel ?? t('common.noData')}</p>;
   }
 
   // Bars are proportional to the largest bar, not to the total: with one
@@ -77,7 +79,7 @@ export default function BarChart({
               }}
             />
             <span className="bar-value">
-              {value.toLocaleString()}
+              {formatNumber(value)}
               {Number.isFinite(total) && total > 0 ? (
                 <span className="bar-share"> {Math.round((value / total) * 100)}%</span>
               ) : null}

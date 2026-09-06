@@ -69,7 +69,7 @@ export const webFilter = {
     'KidGateは独自のドメインリストを使います。子どもが実際にたどり着くサイトを対象にしており、ウェブ全体ではありません。下のリストと組み合わせてください。',
   androidOnlyCategory: 'Androidのみ — iOSにはカテゴリ別のウェブ制御がありません',
   iosCategoryNote:
-    'iPhoneは{{category}}のみ対応し、Apple独自のフィルターを使います。他のカテゴリはAndroid端末に適用されます。',
+    'iPhoneは{{category}}のみ対応し、Apple独自のフィルターを使います。他のカテゴリはAndroidデバイスに適用されます。',
   allowListTitle: '常に許可',
   allowListSubtitle: 'カテゴリがブロックする場合でもアクセスできるサイト。',
   allowListEmpty: '例外はまだありません。',
@@ -90,7 +90,7 @@ export const webFilter = {
   invalidDomain: 'example.com のようにサイトのアドレスを入力してください',
   listFull: 'このリストには最大{{max}}件まで保存できます。',
   openHistory: 'ウェブ履歴',
-  openHistorySubtitle: 'この端末がどのサイトに到達し、何がブロックされたかを見る',
+  openHistorySubtitle: 'このデバイスがどのサイトに到達し、何がブロックされたかを見る',
   blockedPageTitle: 'サイトはブロックされました',
   blockedPageBody:
     'KidGate がご家族のためにこのサイトをブロックしました。間違いだと思う場合は保護者に相談してください。',
@@ -171,7 +171,7 @@ export const webFilter = {
   askToOpenTooSoon: 'いま送ったばかりだよ。1分たったらもう一度試してね。',
   askToOpenTooMany: '一度にお願いできるサイトは少しだけだよ。',
   requestsTitle: 'サイトのリクエスト',
-  requestsSubtitle: 'この端末が許可を求めたサイト。',
+  requestsSubtitle: 'このデバイスが許可を求めたサイト。',
   siteRequestApproved: 'サイトを許可しました',
   siteRequestApprovedDescription:
     '{{deviceName}}の「常に許可」に{{domain}}を追加しました。',

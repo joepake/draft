@@ -2,7 +2,7 @@ export const placeAlerts = {
   title: 'Cảnh báo địa điểm',
   familyScope: 'Một danh sách cho cả nhà',
   mergedFromDevices:
-    'Gộp từ các địa điểm sẵn có trên từng thiết bị. Lưu sẽ áp dụng danh sách này cho mọi thiết bị của trẻ.',
+    'Gộp từ các địa điểm sẵn có trên từng thiết bị. Khi bạn lưu, danh sách này sẽ áp dụng cho mọi thiết bị của trẻ.',
   fallbackDeviceName: 'Thiết bị của trẻ',
   statusReady: 'Đã có vị trí',
   statusNeedLocation: 'Đang chờ vị trí từ thiết bị của trẻ',
@@ -53,13 +53,13 @@ export const placeAlerts = {
   duplicateNameToast: 'Đã tồn tại một địa điểm trùng tên.',
   samePinToast: 'Đây đúng là vị trí của “{{name}}”. Kéo bản đồ để di chuyển ghim.',
   overlapWarning:
-    '“{{name}}” cách đây {{meters}} m và vùng của nó chạm tới đây. Khi thiết bị ở trong cả hai, chỉ địa điểm gần hơn báo. Lưu lần nữa để giữ.',
-  copyTitle: 'Thêm cho các trẻ khác?',
+    '“{{name}}” cách đây {{meters}} m và vùng của địa điểm đó chạm tới đây. Khi thiết bị nằm trong cả hai vùng, chỉ địa điểm gần hơn gửi cảnh báo. Bấm Lưu lần nữa nếu bạn vẫn muốn giữ.',
+  copyTitle: 'Thêm cho các con khác?',
   copyMessage:
     'Sao chép “{{name}}” sang {{count}} thiết bị khác của trẻ trong gia đình này?',
   copyConfirm: 'Sao chép',
   copyDoneToast: 'Đã sao chép sang {{count}} thiết bị.',
-  copySkippedToast: 'Các trẻ khác đã có địa điểm này hoặc đã đạt số lượng tối đa.',
+  copySkippedToast: 'Các con khác đã có địa điểm này hoặc đã đạt số lượng tối đa.',
   savedToast: 'Đã lưu địa điểm.',
   updatedToast: 'Đã cập nhật địa điểm.',
   removedToast: 'Đã xóa địa điểm.',
@@ -67,5 +67,5 @@ export const placeAlerts = {
   enteredLabel: 'Đã vào',
   exitedLabel: 'Đã rời',
   footerNote:
-    'Được kiểm tra mỗi khi vị trí đồng bộ — không phải lúc nào cũng chạy ở chế độ nền.',
+    'KidGate kiểm tra mỗi khi vị trí đồng bộ — việc này không phải lúc nào cũng chạy được ở chế độ nền.',
 } as const;

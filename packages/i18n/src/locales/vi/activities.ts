@@ -34,9 +34,9 @@ export const activities = {
   activityTypePlaceExit: 'Rời địa điểm',
   activityTypeTamper: 'Bảo vệ',
   activityTypeScreenTime: 'Thời gian sử dụng',
-  activityTypeCheckIn: 'Xác nhận an toàn',
+  activityTypeCheckIn: 'Báo an toàn',
   activityTypeLocationRequest: 'Vị trí',
-  activityTypeTimeRequest: 'Xin thêm giờ',
+  activityTypeTimeRequest: 'Yêu cầu thêm giờ',
   activityTypeRewardTask: 'Nhiệm vụ thưởng',
   activityTypeSearchAlert: 'Cảnh báo tìm kiếm',
   activityTypeWebFilter: 'Chặn nội dung web',
@@ -48,7 +48,7 @@ export const activities = {
   sosEscapeRepeatBody:
     'SOS đã mở khóa thiết bị này trong {{minutes}} phút. Đây là lần thứ {{count}} hôm nay.',
   appBlockedTitle: '{{appName}}',
-  appBlockedBody: 'Một ứng dụng bị chặn đã được mở và KidGate đã đóng lại.',
+  appBlockedBody: 'Một ứng dụng bị chặn đã được mở và KidGate đã đóng ứng dụng đó lại.',
   appInstalledTitle: 'Cài ứng dụng',
   appInstalledBody: 'Ứng dụng {{appName}} vừa được cài đặt trên thiết bị của trẻ.',
   appInstalledPendingBody:
@@ -95,15 +95,15 @@ export const activities = {
   tamperUsageAccessAndroidTitle: 'Đã tắt quyền Truy cập mức sử dụng',
   tamperUsageAccessAndroidBody:
     'Giới hạn ứng dụng và Giờ khóa thiết bị có thể ngừng hoạt động cho đến khi bật lại quyền Truy cập mức sử dụng cho KidGate trên thiết bị của trẻ.',
-  tamperBatteryTitle: 'Đã tắt chế độ pin không hạn chế',
+  tamperBatteryTitle: 'Pin của KidGate đã bị hạn chế lại',
   tamperBatteryBody:
-    'Hệ thống có thể tạm dừng KidGate cho đến khi đặt mức sử dụng pin thành Không hạn chế.',
+    'Hệ thống có thể tạm dừng KidGate cho đến khi đặt mức dùng pin thành Không bị hạn chế.',
   tamperExactAlarmTitle: 'Đã tắt Chuông báo và lời nhắc',
   tamperExactAlarmBody:
     'Giờ khóa thiết bị có thể bắt đầu hoặc kết thúc trễ cho đến khi cấp lại quyền Chuông báo và lời nhắc.',
   tamperNotificationsTitle: 'Đã tắt thông báo',
   tamperNotificationsBody:
-    'Lệnh điều khiển và cảnh báo từ phụ huynh có thể không đến được thiết bị này một cách ổn định.',
+    'Các thay đổi cài đặt và cảnh báo từ phụ huynh có thể không đến được thiết bị này.',
   tamperLocationTitle: 'Đã tắt vị trí',
   tamperLocationBody:
     'Phụ huynh sẽ không nhận được cập nhật vị trí cho đến khi cấp lại quyền Vị trí.',
@@ -120,7 +120,7 @@ export const activities = {
   tamperOverlay: 'Quyền Hiển thị trên ứng dụng khác đã bị tắt.',
   tamperAccessibility: 'Dịch vụ Trợ năng đã bị tắt.',
   tamperUsageAccess: 'Quyền Truy cập mức sử dụng đã bị tắt.',
-  tamperBattery: 'Chế độ pin không hạn chế đã bị tắt.',
+  tamperBattery: 'Mức dùng pin của KidGate không còn ở Không bị hạn chế.',
   tamperExactAlarm: 'Quyền Chuông báo và lời nhắc đã bị tắt.',
   tamperNotifications: 'Quyền thông báo đã bị tắt.',
   tamperLocation: 'Quyền vị trí đã bị tắt.',

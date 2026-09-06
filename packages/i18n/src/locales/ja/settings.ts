@@ -60,13 +60,13 @@ export const settings = {
   addWidgetStepsAndroid:
     '1. ホーム画面の空いている場所を長押し\n2. 「ウィジェット」をタップ\n3. KidGate を探してウィジェットをホーム画面にドラッグ',
   pushNotificationsTitle: 'プッシュ通知',
-  pushNotificationsSubtitle: 'この端末に届く通知を選びます',
+  pushNotificationsSubtitle: 'このデバイスに届く通知を選びます',
   inAppAlertsLabel: 'アプリ内アラート',
   inAppAlertsHint:
     '時間延長リクエストのアプリ内アラートを表示します。SOSアラートは常に表示されます。',
   sosSoundLabel: 'SOSサイレン',
   sosSoundHint:
-    'お子さまがSOSを送信したとき、この端末で大きなサイレンを鳴らします。バイブレーションは常に作動します。',
+    'お子さまがSOSを送信したとき、このデバイスで大きなサイレンを鳴らします。バイブレーションは常に作動します。',
   shareScreenTimeLabel: '自分のスクリーンタイムを共有',
   shareScreenTimeHint:
     'このスマホのスクリーンタイムを、お子さまと並べて家族のボードに表示します。使用状況へのアクセスが必要です。',

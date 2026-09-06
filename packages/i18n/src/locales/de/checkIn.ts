@@ -25,20 +25,20 @@ export const checkIn = {
   iNeedHelp: 'Ich brauche Hilfe',
   checkInRequested: 'Check-in angefordert',
   checkInRequestedDescription:
-    '{{deviceName}} wurde gebeten zu bestätigen, dass alles in Ordnung ist — mit Standort und Foto.',
+    '{{deviceName}} wurde gebeten zu bestätigen, dass alles in Ordnung ist – mit Standort und Foto.',
   checkInRequestedDescriptionLocation:
-    '{{deviceName}} wurde gebeten zu bestätigen, dass alles in Ordnung ist — mit Standort.',
+    '{{deviceName}} wurde gebeten zu bestätigen, dass alles in Ordnung ist – mit Standort.',
   checkInConfirmed: 'Check-in bestätigt',
   checkInConfirmedDescription:
     '{{deviceName}} hat bestätigt, dass alles in Ordnung ist.',
   childDeviceFallback: 'Kindergerät',
   requestCheckIn: 'Check-in anfordern',
   requestCheckInNote: 'Fragt das Kindergerät nach Standort und einem Frontkamera-Foto.',
-  needHelpOpenSosAccessibility: 'Ich brauche Hilfe — SOS öffnen',
+  needHelpOpenSosAccessibility: 'Ich brauche Hilfe – SOS öffnen',
   showAllDevices: 'Alle {{count}} Geräte anzeigen',
   showFewerDevices: 'Weniger Geräte anzeigen',
   parentSafePopupTitle: 'Deinem Kind geht es gut',
   childSafePopupTitle: 'Eltern benachrichtigt',
-  childSafePopupBody: 'Deine Eltern haben die Nachricht erhalten — dir geht es gut.',
+  childSafePopupBody: 'Deine Eltern haben die Nachricht erhalten – dir geht es gut.',
   confirmedKicker: 'Check-in',
 } as const;

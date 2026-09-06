@@ -2,7 +2,8 @@ export const videoHistory = {
   title: 'Angesehene Videos',
   fallbackDeviceName: 'Kindergerät',
   toggleLabel: 'Angesehene Videos aufzeichnen',
-  toggleHint: 'YouTube im Browser und die YouTube-App auf Android.',
+  toggleHint:
+    'YouTube im Browser und die YouTube-App auf Android-Handys und Fernsehern. Auf dem Fernseher werden Shorts nicht aufgeführt, weil die TV-App sie nicht als Shorts erkennt.',
   toggleFailed: 'Videoverlauf konnte nicht aktualisiert werden. Erneut versuchen.',
   unsupportedNote:
     'Dieses Gerät kann keine angesehenen Videos melden. Funktioniert auf Android und in Chrome.',

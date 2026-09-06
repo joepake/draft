@@ -21,14 +21,14 @@ export const sos = {
     '자녀가 SOS를 5초간 길게 누르면 사진과 위치 정보가 담긴 알림이 여기에 표시돼요.',
   alertMessage: '{{childName}}에게 도움이 필요해요 — SOS가 전송되었습니다',
   toastSent:
-    'SOS를 보냈어요. 가능하면 안전한 곳에 있어 주세요 — 부모님에게 알림이 전송되었습니다.',
+    'SOS를 보냈어요. 가능하면 안전한 곳에 있어 주세요 — 부모님에게 알림이 갔어요.',
   escapeGrantedTitle: 'SOS를 보냈어요',
   escapeGrantedBody:
     '보호자에게 알림이 갔어요. 이 기기는 15분 동안 잠금이 풀리고, 그 뒤에 다시 잠겨요.',
   toastSentWithoutPhoto:
     'SOS를 보냈지만 사진은 첨부되지 않았어요. 가능하면 설정에서 카메라 접근을 허용한 후 다시 시도해 주세요.',
   toastSendFailed:
-    'SOS를 보내지 못했습니다. 다시 시도하거나 믿을 수 있는 사람에게 연락하세요.',
+    'SOS를 보내지 못했어요. 다시 시도하거나 믿을 수 있는 사람에게 연락하세요.',
   sendFailedBannerTitle: '마지막 SOS가 전송되지 않았어요',
   sendFailedBannerBody:
     '버튼을 다시 길게 눌러 재시도하세요. 계속 실패하면 즉시 믿을 수 있는 사람에게 연락하세요.',

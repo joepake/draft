@@ -18,24 +18,23 @@ export const family = {
   // pairing is assigned. Content pre-exists on the device; this flips it on.
   quickProtectTitle: 'Bật bảo vệ cho {{childName}} ngay?',
   quickProtectBody:
-    'Bật sẵn một bộ bảo vệ cơ bản. Bạn có thể tinh chỉnh mọi thứ sau trong hồ sơ của bé.',
+    'Bật sẵn một bộ bảo vệ cơ bản. Bạn có thể tinh chỉnh mọi thứ sau trong hồ sơ của con.',
   quickProtectBedtime: 'Giờ khóa thiết bị buổi đêm',
   quickProtectBedtimeHint: 'Khóa thiết bị qua đêm, từ 22:00 đến 07:00.',
   quickProtectDailyLimit: 'Giới hạn thời gian sử dụng hằng ngày',
   quickProtectDailyLimitHint:
-    '{{minutes}} phút mỗi ngày, tính chung trên mọi thiết bị của bé.',
+    '{{minutes}} phút mỗi ngày, tính chung trên mọi thiết bị của con.',
   quickProtectWebFilter: 'Chặn nội dung web',
   quickProtectWebFilterHint:
     'Chặn nội dung người lớn và các nhóm nội dung rủi ro khác.',
-  quickProtectWebFilterPremium: 'Tính năng Premium — đã bao gồm trong gói đăng ký.',
+  quickProtectWebFilterPremium: 'Tính năng Premium — có trong gói đăng ký.',
   quickProtectApply: 'Bật bảo vệ',
   quickProtectSkip: 'Để sau',
   quickProtectDone: 'Đã bật bảo vệ. Bạn có thể tinh chỉnh bất cứ lúc nào.',
-  quickProtectPartial:
-    'Một số mục bảo vệ chưa lưu được. Hãy thử lại trong hồ sơ của bé.',
+  quickProtectPartial: 'Một số mục bảo vệ chưa lưu được. Thử lại trong hồ sơ của con.',
   pairDeviceFirstTitle: 'Chưa ghép nối thiết bị nào',
   pairDeviceFirstBody:
-    'Hãy ghép nối một thiết bị cho bé trước — trong tab Gia đình, chạm biểu tượng quét hoặc "+" rồi chọn Thêm thiết bị của trẻ. Tính năng này bắt đầu hoạt động ngay khi có thiết bị kết nối.',
+    'Hãy ghép nối một thiết bị cho con trước — trong tab Gia đình, chạm biểu tượng quét hoặc “+” rồi chọn Thêm thiết bị của trẻ. Tính năng này bắt đầu hoạt động ngay khi có thiết bị kết nối.',
   // Child-grouped family list: group header lock-all + unassigned group.
   lockAll: 'Khóa tất cả',
   unlockAll: 'Mở khóa tất cả',
@@ -51,7 +50,7 @@ export const family = {
   expandGroupA11y: 'Mở rộng {{name}}',
   assignDeviceCta: 'Gán cho con…',
   unassignedHint: 'Những thiết bị này chưa được tính cho ai.',
-  unassignedHintMember: 'Chỉ chủ gia đình mới gán được các thiết bị này cho bé.',
+  unassignedHintMember: 'Chỉ chủ gia đình mới gán được các thiết bị này cho các con.',
   // The footer strip: children who hold no device get no group of their own.
   childrenWithoutDeviceTitle: 'Trẻ chưa có thiết bị',
   // Child detail screen.
@@ -94,8 +93,8 @@ export const family = {
   buildOutdated: 'Có bản mới',
   healthNeedsSetup: 'Cần thiết lập',
   healthOffline: 'Ngoại tuyến',
-  devicePausedLabel: 'Tạm dừng',
-  devicePausedHint: 'Tạm dừng trên gói miễn phí — mọi quy tắc vẫn áp dụng',
+  devicePausedLabel: 'Ngừng báo cáo',
+  devicePausedHint: 'Ngừng báo cáo trên gói miễn phí — mọi quy tắc vẫn áp dụng',
   parkedBannerTitle: 'Chọn thiết bị để tiếp tục theo dõi',
   parkedBannerBody:
     'Quy tắc của bạn chạy trên mọi thiết bị. Gói miễn phí chỉ nhận báo cáo từ một máy — hãy chọn, hoặc nâng cấp để giữ tất cả.',
@@ -156,7 +155,7 @@ export const family = {
   deviceNotFoundError: 'Không tìm thấy thiết bị',
   deviceRemovedAlertTitle: 'Thiết bị đã bị gỡ',
   deviceRemovedAlertMessage:
-    'Phụ huynh đã gỡ thiết bị này khỏi tài khoản gia đình. Vui lòng chọn lại vai trò Trẻ em để kết nối lại.',
+    'Bố mẹ đã gỡ thiết bị này khỏi tài khoản gia đình. Vui lòng chọn lại Đây là thiết bị của trẻ để kết nối lại.',
   deviceNotRegistered: 'Thiết bị này chưa được đăng ký.',
   defaultDeviceName: 'Thiết bị của trẻ',
   fallbackDeviceName: 'Thiết bị của trẻ',
@@ -218,19 +217,19 @@ export const family = {
   batteryChargingAccessibility: 'Pin {{percent}} phần trăm, đang sạc',
   childDetailPerDevice: 'Theo từng thiết bị — chọn máy',
   childDetailNotAvailable: 'Không khả dụng',
-  childDetailNotAvailableReason: 'Không thiết bị nào của bé hỗ trợ tính năng này',
+  childDetailNotAvailableReason: 'Không thiết bị nào của con hỗ trợ tính năng này',
   childDetailProtectionOk: 'Được bảo vệ',
   childDetailProtectionAttention: '{{count}} thiết bị cần chú ý',
   childDetailProtectionSheetTitle: 'Bảo vệ theo thiết bị',
   childDetailRemoveTitle: 'Xóa hồ sơ của {{childName}}',
   childDetailRemovingButton: 'Đang xóa…',
-  childDetailOnlineCount: '{{online}}/{{total}} thiết bị đang online',
+  childDetailOnlineCount: '{{online}}/{{total}} thiết bị đang trực tuyến',
   childDetailBudgetTitle: 'Giới hạn hằng ngày',
-  childDetailSectionControls: 'Quy tắc áp dụng trên mọi thiết bị của bé',
-  childDetailSectionSafety: 'Tổng hợp từ mọi thiết bị của bé',
-  childDetailSectionAlerts: 'Gộp cảnh báo từ mọi thiết bị của bé',
+  childDetailSectionControls: 'Quy tắc áp dụng trên mọi thiết bị của con',
+  childDetailSectionSafety: 'Tổng hợp từ mọi thiết bị của con',
+  childDetailSectionAlerts: 'Gộp cảnh báo từ mọi thiết bị của con',
   childDetailScopeAll: 'Tất cả thiết bị',
   childDetailTodayWell: 'Dùng hôm nay',
   childDetailUnassignAction: 'Bỏ gán',
-  childDetailLimitShared: 'Tính tổng trên mọi thiết bị của bé',
+  childDetailLimitShared: 'Tính tổng trên mọi thiết bị của con',
 } as const;

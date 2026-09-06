@@ -51,6 +51,12 @@ export const deviceDetail = {
   appVersion: '앱 버전',
   appVersionUpdate: '{{running}} · {{latest}} 사용 가능',
   appVersionRestart: '{{running}} · 앱을 다시 열어 완료',
+  otaUpdateNow: '지금 업데이트',
+  otaAsked: '이 기기에 업데이트를 요청했습니다',
+  otaUpToDate: '이미 최신 버전입니다',
+  otaSkipped: '이 기기에서 업데이트가 꺼져 있습니다',
+  otaStoreUpdate: '먼저 스토어 업데이트가 필요합니다',
+  otaFailed: '업데이트를 설치하지 못했습니다',
   androidPauseNote:
     'Android에서는 접근성 및 “다른 앱 위에 표시” 권한이 활성화되어 있으면 잠금 시 다른 앱도 차단됩니다.',
   notAvailableOnPlatform: '{{platform}}에서는 사용할 수 없습니다',

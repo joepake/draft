@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { auth } from './firebase.js';
 import { fetchFamilyDetail, fetchMetrics } from './api.js';
+import { LANGUAGES, useT } from './i18n.js';
 import Report from './Report.jsx';
 import Fleet from './Fleet.jsx';
 import Support from './Support.jsx';
@@ -16,6 +17,9 @@ import ErrorBoundary from './ErrorBoundary.jsx';
  * rather than navigating), no state library, no `@kidgate/*` UI dependency,
  * three sections on one page. Every screen added here is still another way to
  * reach family data.
+ *
+ * Copy is English and Vietnamese, from `i18n.js` — local to this app rather
+ * than `@kidgate/i18n`, for the four reasons that file states.
  */
 
 const MIN_REASON_LENGTH = 12;
@@ -76,6 +80,36 @@ const ICONS = {
 };
 
 /**
+ * English / Tiếng Việt, on `.segmented` so it costs no new CSS.
+ *
+ * It appears on the sign-in screen as well as the console, because a language
+ * that can only be chosen after signing in is not available to the one person
+ * reading the sign-in screen.
+ *
+ * Each option is written in its own language — a Vietnamese reader looks for
+ * "Tiếng Việt", not for whatever the current UI language calls it.
+ */
+function LanguageSwitch() {
+  const { t, language, setLanguage } = useT();
+  return (
+    <div className="segmented" aria-label={t('common.language')}>
+      {LANGUAGES.map(entry => (
+        <button
+          key={entry.code}
+          type="button"
+          lang={entry.code}
+          className={language === entry.code ? 'is-active' : undefined}
+          aria-pressed={language === entry.code}
+          onClick={() => setLanguage(entry.code)}
+        >
+          {entry.name}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+/**
  * Email/password rather than Google Sign-In — decided 2026-09-01.
  *
  * The tradeoff, stated exactly rather than understated: this account is
@@ -101,16 +135,17 @@ const ICONS = {
  * through a script, so no password ever passes through this codebase.
  */
 function SignIn() {
+  const { t } = useT();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(false);
   const [busy, setBusy] = useState(false);
 
   const submit = useCallback(
     event => {
       event.preventDefault();
       setBusy(true);
-      setError(null);
+      setError(false);
       signInWithEmailAndPassword(auth, email.trim(), password)
         .catch(signInError => {
           // Firebase's own codes distinguish "no such user" from "wrong
@@ -125,7 +160,10 @@ function SignIn() {
             signInError.code,
             signInError.message,
           );
-          setError('Wrong email or password.');
+          // A flag rather than the sentence: the sentence is read at render
+          // time, so switching language re-renders it instead of leaving the
+          // previous language's error standing.
+          setError(true);
         })
         .finally(() => setBusy(false));
     },
@@ -138,12 +176,12 @@ function SignIn() {
         <div className="brand-mark" style={{ marginBottom: 18 }}>
           KG
         </div>
-        <h1 className="auth-title">KidGate operator</h1>
-        <p className="auth-sub">Everything you open here is logged.</p>
+        <h1 className="auth-title">{t('auth.title')}</h1>
+        <p className="auth-sub">{t('auth.subtitle')}</p>
         <form onSubmit={submit}>
           <div className="field-group">
             <label className="field-label" htmlFor="op-email">
-              Email
+              {t('auth.email')}
             </label>
             <input
               className="field"
@@ -156,7 +194,7 @@ function SignIn() {
           </div>
           <div className="field-group">
             <label className="field-label" htmlFor="op-password">
-              Password
+              {t('auth.password')}
             </label>
             <input
               className="field"
@@ -173,14 +211,17 @@ function SignIn() {
             type="submit"
             disabled={busy || !email.trim() || !password}
           >
-            {busy ? 'Signing in…' : 'Sign in'}
+            {busy ? t('auth.signingIn') : t('auth.signIn')}
           </button>
         </form>
         {error ? (
           <div className="error-banner" style={{ marginTop: 14 }}>
-            <span>{error}</span>
+            <span>{t('auth.wrongCredentials')}</span>
           </div>
         ) : null}
+        <div style={{ display: 'flex', justifyContent: 'center', marginTop: 18 }}>
+          <LanguageSwitch />
+        </div>
       </main>
     </div>
   );
@@ -241,23 +282,22 @@ function useOperatorStatus(user) {
  * which is not an operator.
  */
 function NotOperator({ email, status, onRetry }) {
+  const { t } = useT();
   const couldNotConfirm = status === 'error';
   return (
     <div className="auth-shell">
       <main className="auth-card">
         <h1 className="auth-title">
-          {couldNotConfirm ? 'Could not confirm access' : 'Not an operator account'}
+          {couldNotConfirm ? t('auth.couldNotConfirm') : t('auth.notOperator')}
         </h1>
         <p className="auth-sub">
-          {couldNotConfirm
-            ? 'The operator claim could not be read for '
-            : 'This account does not hold the operator claim: '}
+          {couldNotConfirm ? t('auth.claimUnreadable') : t('auth.claimAbsent')}
           <b>{email}</b>.
         </p>
         <div style={{ display: 'flex', gap: 8 }}>
           {couldNotConfirm ? (
             <button className="btn" style={{ flex: 1 }} onClick={onRetry}>
-              Try again
+              {t('common.tryAgain')}
             </button>
           ) : null}
           <button
@@ -265,8 +305,11 @@ function NotOperator({ email, status, onRetry }) {
             style={{ flex: 1 }}
             onClick={() => signOut(auth)}
           >
-            Sign out
+            {t('common.signOut')}
           </button>
+        </div>
+        <div style={{ display: 'flex', justifyContent: 'center', marginTop: 18 }}>
+          <LanguageSwitch />
         </div>
       </main>
     </div>
@@ -274,6 +317,7 @@ function NotOperator({ email, status, onRetry }) {
 }
 
 function Metrics() {
+  const { t, formatNumber } = useT();
   const [metrics, setMetrics] = useState(null);
   const [error, setError] = useState(null);
 
@@ -291,7 +335,7 @@ function Metrics() {
     );
   }
   if (!metrics) {
-    return <p className="muted">Loading…</p>;
+    return <p className="muted">{t('common.loading')}</p>;
   }
 
   /*
@@ -303,8 +347,14 @@ function Metrics() {
    */
   return (
     <div className="tile-grid">
-      <Tile label="Pending pairing codes" value={metrics.pendingPairingCodes} />
-      <Tile label="Support reports" value={metrics.supportReports} />
+      <Tile
+        label={t('overview.pendingPairingCodes')}
+        value={formatNumber(metrics.pendingPairingCodes)}
+      />
+      <Tile
+        label={t('overview.supportReports')}
+        value={formatNumber(metrics.supportReports)}
+      />
     </div>
   );
 }
@@ -313,9 +363,7 @@ function Tile({ label, value }) {
   return (
     <div className="tile">
       <div className="tile-label">{label}</div>
-      <div className="tile-value">
-        {typeof value === 'number' ? value.toLocaleString() : '—'}
-      </div>
+      <div className="tile-value">{value}</div>
     </div>
   );
 }
@@ -328,6 +376,7 @@ function Tile({ label, value }) {
  * the only thing that makes the audit log answerable months later.
  */
 function FamilyLookup() {
+  const { t } = useT();
   const [uid, setUid] = useState('');
   const [reason, setReason] = useState('');
   const [result, setResult] = useState(null);
@@ -352,7 +401,7 @@ function FamilyLookup() {
       <div style={{ display: 'flex', gap: 12 }}>
         <div className="field-group" style={{ flex: 1 }}>
           <label className="field-label" htmlFor="lookup-uid">
-            Family owner uid
+            {t('lookup.uid')}
           </label>
           <input
             className="field"
@@ -363,7 +412,7 @@ function FamilyLookup() {
         </div>
         <div className="field-group" style={{ flex: 2 }}>
           <label className="field-label" htmlFor="lookup-reason">
-            Reason
+            {t('lookup.reason')}
           </label>
           <input
             className="field"
@@ -373,14 +422,14 @@ function FamilyLookup() {
           />
           <div className="field-hint">
             {remaining > 0
-              ? `${remaining} more character${remaining === 1 ? '' : 's'} — stored in the audit log beside your name and the time.`
-              : 'Stored in the audit log beside your name and the time.'}
+              ? t('lookup.reasonRemaining', { count: remaining })
+              : t('lookup.reasonStored')}
           </div>
         </div>
       </div>
 
       <button className="btn" disabled={!ready || busy} onClick={look}>
-        {busy ? 'Looking up…' : 'Look up'}
+        {busy ? t('lookup.lookingUp') : t('lookup.lookUp')}
       </button>
 
       {error ? (
@@ -393,7 +442,7 @@ function FamilyLookup() {
   );
 }
 
-function ago(iso) {
+function ago(iso, t) {
   if (!iso) {
     return null;
   }
@@ -403,12 +452,12 @@ function ago(iso) {
   }
   const hours = (Date.now() - parsed) / 3600000;
   if (hours < 1) {
-    return 'just now';
+    return t('time.justNow');
   }
   if (hours < 48) {
-    return `${Math.round(hours)}h ago`;
+    return t('time.hoursAgo', { count: Math.round(hours) });
   }
-  return `${Math.round(hours / 24)}d ago`;
+  return t('time.daysAgo', { count: Math.round(hours / 24) });
 }
 
 function stamp(iso) {
@@ -424,47 +473,55 @@ function stamp(iso) {
  * and which permissions they report as denied; those get their own place here.
  */
 function FamilyDetail({ family }) {
+  const { t } = useT();
   const devices = [...(family.childDevices ?? []), ...(family.parentDevices ?? [])];
 
   return (
     <div style={{ marginTop: 16 }}>
       <div className="tile-grid" style={{ marginBottom: 12 }}>
         <div className="tile">
-          <div className="tile-label">Plan</div>
+          <div className="tile-label">{t('family.plan')}</div>
           <div className="tile-value" style={{ fontSize: 19 }}>
-            {family.planId ?? 'none'}
+            {family.planId ?? t('family.noPlan')}
           </div>
           <div className="tile-label" style={{ marginTop: 4 }}>
             {family.subscriptionStatus
-              ? `subscription ${family.subscriptionStatus}`
-              : 'never purchased'}
+              ? t('family.subscription', { status: family.subscriptionStatus })
+              : t('family.neverPurchased')}
           </div>
         </div>
         <div className="tile">
-          <div className="tile-label">Trial</div>
+          <div className="tile-label">{t('family.trial')}</div>
           <div className="tile-value" style={{ fontSize: 19 }}>
-            {family.trialStartedAt ? stamp(family.trialEndsAt) : 'not started'}
+            {family.trialStartedAt
+              ? stamp(family.trialEndsAt)
+              : t('family.trialNotStarted')}
           </div>
           <div className="tile-label" style={{ marginTop: 4 }}>
-            {family.trialStartedAt ? `started ${stamp(family.trialStartedAt)}` : ''}
+            {family.trialStartedAt
+              ? t('family.trialStarted', { date: stamp(family.trialStartedAt) })
+              : ''}
           </div>
         </div>
         <div className="tile">
-          <div className="tile-label">Children</div>
+          <div className="tile-label">{t('family.children')}</div>
           <div className="tile-value" style={{ fontSize: 19 }}>
             {family.childCount ?? 0}
           </div>
           <div className="tile-label" style={{ marginTop: 4 }}>
-            {family.childDeviceCount} child · {family.parentDeviceCount} parent devices
+            {t('family.deviceSplit', {
+              child: family.childDeviceCount,
+              parent: family.parentDeviceCount,
+            })}
           </div>
         </div>
         <div className="tile">
-          <div className="tile-label">Signed up</div>
+          <div className="tile-label">{t('family.signedUp')}</div>
           <div className="tile-value" style={{ fontSize: 19 }}>
             {stamp(family.createdAt)}
           </div>
           <div className="tile-label" style={{ marginTop: 4 }}>
-            {family.email ?? 'no email'}
+            {family.email ?? t('family.noEmail')}
           </div>
         </div>
         {/*
@@ -475,17 +532,19 @@ function FamilyDetail({ family }) {
          * shipped and could not be backfilled.
          */}
         <div className="tile">
-          <div className="tile-label">First paid</div>
+          <div className="tile-label">{t('family.firstPaid')}</div>
           <div className="tile-value" style={{ fontSize: 19 }}>
-            {family.firstPurchasedAt ? stamp(family.firstPurchasedAt) : 'never'}
+            {family.firstPurchasedAt
+              ? stamp(family.firstPurchasedAt)
+              : t('family.neverPaid')}
           </div>
           <div className="tile-label" style={{ marginTop: 4 }}>
             {family.firstPurchasedAt
               ? Number.isFinite(family.daysToPurchase)
-                ? `${family.daysToPurchase} days after signup`
-                : 'no signup date to measure from'
+                ? t('family.daysAfterSignup', { count: family.daysToPurchase })
+                : t('family.noSignupDate')
               : family.subscriptionStatus
-                ? 'paid before this was recorded'
+                ? t('family.paidBeforeRecorded')
                 : ''}
           </div>
         </div>
@@ -495,46 +554,46 @@ function FamilyDetail({ family }) {
         <div className="status-strip" style={{ marginBottom: 12 }}>
           <span className="status-dot is-critical" />
           <span className="status-label">
-            Account deletion {family.deletionState.status}
+            {t('family.deletionState', { status: family.deletionState.status })}
           </span>
           <span className="status-detail">
-            Purge after {stamp(family.deletionState.purgeAfter)} —{' '}
-            <code>purgeScheduledDeletions</code> carries it out for real.
+            {t('family.purgeAfter', { date: stamp(family.deletionState.purgeAfter) })}
+            <code>purgeScheduledDeletions</code>
+            {t('family.purgeBy')}
           </span>
         </div>
       ) : null}
 
       <div className="ticket-meta" style={{ marginBottom: 12 }}>
-        <span>{family.name ?? 'no family name'}</span>
-        <span>parent PIN {family.parentPinSet ? 'set' : 'not set'}</span>
+        <span>{family.name ?? t('family.noName')}</span>
+        <span>{family.parentPinSet ? t('family.pinSet') : t('family.pinNotSet')}</span>
         <span>
-          AI message consent{' '}
           {family.messageAiConsent === null
-            ? 'never asked'
+            ? t('family.aiConsentNeverAsked')
             : family.messageAiConsent
-              ? 'on'
-              : 'off'}
+              ? t('family.aiConsentOn')
+              : t('family.aiConsentOff')}
         </span>
-        <span>uid {family.uid}</span>
+        <span>{t('family.uid', { uid: family.uid })}</span>
       </div>
 
       {devices.length === 0 ? (
-        <p className="muted">No devices.</p>
+        <p className="muted">{t('family.noDevices')}</p>
       ) : (
         <div className="table-scroll">
           <table className="table">
             <thead>
               <tr>
-                <th>Device</th>
-                <th>Role</th>
-                <th>Platform</th>
-                <th>OS</th>
-                <th>App</th>
-                <th>Build</th>
-                <th>OTA</th>
-                <th>Lang</th>
-                <th>Last seen</th>
-                <th>Denied</th>
+                <th>{t('family.colDevice')}</th>
+                <th>{t('family.colRole')}</th>
+                <th>{t('family.colPlatform')}</th>
+                <th>{t('family.colOs')}</th>
+                <th>{t('family.colApp')}</th>
+                <th>{t('family.colBuild')}</th>
+                <th>{t('family.colOta')}</th>
+                <th>{t('family.colLang')}</th>
+                <th>{t('family.colLastSeen')}</th>
+                <th>{t('family.colDenied')}</th>
               </tr>
             </thead>
             <tbody>
@@ -550,15 +609,15 @@ function FamilyDetail({ family }) {
                   <td>{device.appBuild ?? '—'}</td>
                   <td>{device.otaVersion ?? '—'}</td>
                   <td>{device.locale ?? '—'}</td>
-                  <td>{ago(device.lastActiveAt) ?? '—'}</td>
+                  <td>{ago(device.lastActiveAt, t) ?? '—'}</td>
                   <td>
                     {device.deniedPermissions?.length > 0 ? (
                       <b>{device.deniedPermissions.join(', ')}</b>
                     ) : device.hasCapabilityProbe ? (
-                      'none'
+                      t('family.deniedNone')
                     ) : (
                       // Absent probe is unknown, never "nothing denied".
-                      <span className="faint">no probe</span>
+                      <span className="faint">{t('family.noProbe')}</span>
                     )}
                   </td>
                 </tr>
@@ -580,13 +639,16 @@ function FamilyDetail({ family }) {
  * three `operatorAuditLog` rows before the operator had clicked anything. The
  * log exists to answer "what did this account do"; three rows per page load is
  * how that answer gets buried. One page, one fetch, one row.
+ *
+ * `labelKey`, not `label`: the sidebar and the topbar title both read it at
+ * render time, so the language switch reaches both.
  */
 const PAGES = [
-  { key: 'overview', label: 'Overview', icon: 'overview' },
-  { key: 'report', label: 'Report', icon: 'report' },
-  { key: 'fleet', label: 'Fleet', icon: 'fleet' },
-  { key: 'support', label: 'Support queue', icon: 'support' },
-  { key: 'lookup', label: 'Family lookup', icon: 'lookup' },
+  { key: 'overview', labelKey: 'nav.overview', icon: 'overview' },
+  { key: 'report', labelKey: 'nav.report', icon: 'report' },
+  { key: 'fleet', labelKey: 'nav.fleet', icon: 'fleet' },
+  { key: 'support', labelKey: 'nav.support', icon: 'support' },
+  { key: 'lookup', labelKey: 'nav.lookup', icon: 'lookup' },
 ];
 
 /**
@@ -615,6 +677,7 @@ function useHashRoute() {
 }
 
 export default function App() {
+  const { t } = useT();
   const [user, setUser] = useState(undefined);
   const [operatorStatus, retryOperatorCheck] = useOperatorStatus(user || null);
   const route = useHashRoute();
@@ -622,7 +685,7 @@ export default function App() {
   useEffect(() => onAuthStateChanged(auth, setUser), []);
 
   if (user === undefined) {
-    return <p className="page-loading">Loading…</p>;
+    return <p className="page-loading">{t('common.loading')}</p>;
   }
   if (!user) {
     return <SignIn />;
@@ -632,7 +695,7 @@ export default function App() {
   // otherwise a non-operator briefly sees this app's layout and three
   // separately-failing panels before anything says why.
   if (operatorStatus === 'checking') {
-    return <p className="page-loading">Checking access…</p>;
+    return <p className="page-loading">{t('common.checkingAccess')}</p>;
   }
   if (operatorStatus !== 'operator') {
     return (
@@ -651,7 +714,7 @@ export default function App() {
           <div className="brand-mark">KG</div>
           <div>
             <div className="sidebar-brand-name">KidGate</div>
-            <div className="sidebar-brand-sub">Operator console</div>
+            <div className="sidebar-brand-sub">{t('nav.consoleName')}</div>
           </div>
         </div>
         <nav className="nav">
@@ -663,14 +726,14 @@ export default function App() {
               aria-current={route === page.key ? 'page' : undefined}
             >
               <Icon path={ICONS[page.icon]} />
-              {page.label}
+              {t(page.labelKey)}
             </a>
           ))}
         </nav>
         <div className="sidebar-foot">
           <div className="sidebar-user">{user.email}</div>
           <button className="btn btn-sidebar" onClick={() => signOut(auth)}>
-            Sign out
+            {t('common.signOut')}
           </button>
         </div>
       </aside>
@@ -678,9 +741,12 @@ export default function App() {
       <div className="main">
         <header className="topbar">
           <h1 className="topbar-title">
-            {PAGES.find(page => page.key === route)?.label}
+            {t(PAGES.find(page => page.key === route)?.labelKey ?? 'nav.overview')}
           </h1>
-          <span className="muted">Production · kidgate</span>
+          <div style={{ alignItems: 'center', display: 'flex', gap: 10 }}>
+            <span className="muted">{t('nav.environment')}</span>
+            <LanguageSwitch />
+          </div>
         </header>
 
         {/*
@@ -699,7 +765,7 @@ export default function App() {
             {route === 'overview' ? (
               <>
                 <div className="section-head">
-                  <h2 className="section-title">Waiting for you</h2>
+                  <h2 className="section-title">{t('overview.waitingForYou')}</h2>
                 </div>
                 <Metrics />
               </>
@@ -710,7 +776,7 @@ export default function App() {
             {route === 'lookup' ? (
               <>
                 <div className="section-head">
-                  <h2 className="section-title">Family lookup</h2>
+                  <h2 className="section-title">{t('nav.lookup')}</h2>
                 </div>
                 <FamilyLookup />
               </>

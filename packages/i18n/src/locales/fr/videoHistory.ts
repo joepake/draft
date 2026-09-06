@@ -2,7 +2,8 @@ export const videoHistory = {
   title: 'Vidéos regardées',
   fallbackDeviceName: 'Appareil de l’enfant',
   toggleLabel: 'Enregistrer les vidéos regardées',
-  toggleHint: 'YouTube dans le navigateur et l’appli YouTube sur Android.',
+  toggleHint:
+    'YouTube dans le navigateur, ainsi que l’appli YouTube sur les téléphones Android et les téléviseurs. Sur TV, les Shorts ne sont pas listés, car l’appli TV ne les identifie pas comme des Shorts.',
   toggleFailed: 'Impossible de mettre à jour l’historique vidéo. Réessayez.',
   unsupportedNote:
     'Cet appareil ne peut pas signaler les vidéos regardées. Fonctionne sur Android et dans Chrome.',

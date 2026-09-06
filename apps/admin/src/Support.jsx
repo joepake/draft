@@ -5,6 +5,7 @@ import {
   fetchSupportReports,
   respondToSupportReport,
 } from './api.js';
+import { useT } from './i18n.js';
 
 /**
  * One screenshot, fetched with the operator's token and shown from a blob.
@@ -16,6 +17,7 @@ import {
  * nothing that survives a copy-paste.
  */
 function Attachment({ uid, id, index, width, height, bytes }) {
+  const { t } = useT();
   const [url, setUrl] = useState(null);
   const [error, setError] = useState(null);
 
@@ -47,17 +49,21 @@ function Attachment({ uid, id, index, width, height, bytes }) {
     // `object-empty` is the one worth a sentence rather than a code: the
     // upload created the object and wrote nothing, so there is no screenshot
     // to show and no admin-side fix. See `docs/BACKLOG.md`.
+    //
+    // The code is kept in state and the sentence built here, so the language
+    // switch reaches an error already on screen.
     const message =
       error === 'object-empty'
-        ? `Uploaded empty — 0 bytes stored, though the report claims ${
-            bytes ? `${Math.round(bytes / 1024)} KB` : 'a size'
-          }. The app's upload failed.`
+        ? bytes
+          ? t('support.shotEmptyKnown', { size: `${Math.round(bytes / 1024)} KB` })
+          : t('support.shotEmptyUnknown')
         : error === 'object-missing'
-          ? 'The stored file is gone.'
+          ? t('support.shotMissing')
           : error;
     return (
       <span className="muted" style={{ maxWidth: 260 }}>
-        Screenshot {index + 1}: {message}
+        {t('support.shotPrefix', { index: index + 1 })}
+        {message}
       </span>
     );
   }
@@ -66,7 +72,7 @@ function Attachment({ uid, id, index, width, height, bytes }) {
   }
   return (
     <a href={url} target="_blank" rel="noreferrer" title={`${width}×${height}`}>
-      <img src={url} alt={`Screenshot ${index + 1}`} />
+      <img src={url} alt={t('support.shotNumber', { index: index + 1 })} />
     </a>
   );
 }
@@ -88,6 +94,11 @@ function Attachment({ uid, id, index, width, height, bytes }) {
  * you already answered in another channel is the ordinary case, so the refusal
  * was a workflow opinion imposed on the tool's only user.
  *
+ * **The reply itself is not translated by this app.** The console's own copy is
+ * English or Vietnamese for the operator; what gets typed into the reply box
+ * travels verbatim to a parent whose language is on the ticket
+ * (`report.language`), and nothing here should imply otherwise.
+ *
  * ## Absent status means pending
  *
  * `supportReport.ts` says a report with no `status` field — every one filed
@@ -98,11 +109,11 @@ function Attachment({ uid, id, index, width, height, bytes }) {
  */
 
 const FILTERS = [
-  { key: 'open', label: 'Open' },
-  { key: 'pending', label: 'Pending' },
-  { key: 'in_review', label: 'In review' },
-  { key: 'resolved', label: 'Resolved' },
-  { key: 'all', label: 'All' },
+  { key: 'open', labelKey: 'support.filterOpen' },
+  { key: 'pending', labelKey: 'support.filterPending' },
+  { key: 'in_review', labelKey: 'support.filterInReview' },
+  { key: 'resolved', labelKey: 'support.filterResolved' },
+  { key: 'all', labelKey: 'support.filterAll' },
 ];
 
 const STATUS_TONE = {
@@ -111,10 +122,10 @@ const STATUS_TONE = {
   resolved: 'good',
 };
 
-const STATUS_LABEL = {
-  pending: 'Pending',
-  in_review: 'In review',
-  resolved: 'Resolved',
+const STATUS_LABEL_KEY = {
+  pending: 'support.statusPending',
+  in_review: 'support.statusInReview',
+  resolved: 'support.statusResolved',
 };
 
 /**
@@ -133,10 +144,13 @@ const STATUS_LABEL = {
  * `String()` is here anyway, because a render helper that can return a
  * non-renderable value is a blank page waiting for the next field that
  * changes shape.
+ *
+ * The timestamp itself stays ISO in both languages: it is the value an
+ * operator pastes into a log query, not prose.
  */
-function when(value) {
+function when(value, t) {
   if (!value) {
-    return 'unknown';
+    return t('common.unknown');
   }
   const parsed = Date.parse(value);
   return Number.isFinite(parsed)
@@ -145,6 +159,7 @@ function when(value) {
 }
 
 function Reply({ report, onDone }) {
+  const { t } = useT();
   const [text, setText] = useState(report.response ?? '');
   const [status, setStatus] = useState(
     report.status === 'resolved' ? 'resolved' : 'in_review',
@@ -169,7 +184,7 @@ function Reply({ report, onDone }) {
   return (
     <div style={{ marginTop: 14 }}>
       <label className="field-label" htmlFor={`reply-${report.id}`}>
-        Reply to the family
+        {t('support.replyLabel')}
       </label>
       <textarea
         className="field"
@@ -179,9 +194,7 @@ function Reply({ report, onDone }) {
         onChange={event => setText(event.target.value)}
         style={{ fontFamily: 'inherit', resize: 'vertical' }}
       />
-      <div className="field-hint">
-        The parent reads this in their own app, beside the report they filed.
-      </div>
+      <div className="field-hint">{t('support.replyHint')}</div>
 
       <div style={{ alignItems: 'center', display: 'flex', gap: 10, marginTop: 12 }}>
         <div className="segmented">
@@ -189,17 +202,21 @@ function Reply({ report, onDone }) {
             className={status === 'in_review' ? 'is-active' : undefined}
             onClick={() => setStatus('in_review')}
           >
-            In review
+            {t('support.statusInReview')}
           </button>
           <button
             className={status === 'resolved' ? 'is-active' : undefined}
             onClick={() => setStatus('resolved')}
           >
-            Resolved
+            {t('support.statusResolved')}
           </button>
         </div>
         <button className="btn" disabled={busy} onClick={send}>
-          {busy ? 'Saving…' : text.trim() ? 'Send to family' : 'Update status only'}
+          {busy
+            ? t('support.saving')
+            : text.trim()
+              ? t('support.sendToFamily')
+              : t('support.updateStatusOnly')}
         </button>
         {/*
           The label carries the difference instead of a validation rule:
@@ -218,6 +235,7 @@ function Reply({ report, onDone }) {
 }
 
 function Detail({ uid, id, onChanged }) {
+  const { t } = useT();
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
 
@@ -249,7 +267,7 @@ function Detail({ uid, id, onChanged }) {
     );
   }
   if (!data) {
-    return <p className="muted">Loading…</p>;
+    return <p className="muted">{t('common.loading')}</p>;
   }
 
   const { report, family } = data;
@@ -268,60 +286,70 @@ function Detail({ uid, id, onChanged }) {
       {family ? (
         <div className="ticket-account">
           <div>
-            <div className="tile-label">Account</div>
-            <div className="account-line">{family.name || 'no family name'}</div>
-            <div className="account-line faint">{family.email || 'no email'}</div>
+            <div className="tile-label">{t('support.account')}</div>
+            <div className="account-line">
+              {family.name || t('support.noFamilyName')}
+            </div>
+            <div className="account-line faint">
+              {family.email || t('support.noEmail')}
+            </div>
           </div>
           <div>
-            <div className="tile-label">Plan</div>
+            <div className="tile-label">{t('support.plan')}</div>
             <div className="account-line">
               {plan}
               {family.subscriptionStatus ? ` · ${family.subscriptionStatus}` : ''}
             </div>
             <div className="account-line faint">
               {family.trialStartedAt
-                ? `trial from ${String(family.trialStartedAt).slice(0, 10)}`
-                : 'no trial started'}
+                ? t('support.trialFrom', {
+                    date: String(family.trialStartedAt).slice(0, 10),
+                  })
+                : t('support.noTrial')}
             </div>
           </div>
           <div>
-            <div className="tile-label">Customer since</div>
+            <div className="tile-label">{t('support.customerSince')}</div>
             <div className="account-line">
-              {family.createdAt ? String(family.createdAt).slice(0, 10) : 'unknown'}
+              {family.createdAt
+                ? String(family.createdAt).slice(0, 10)
+                : t('common.unknown')}
             </div>
             <div className="account-line faint">
-              {family.childDeviceCount} child · {family.parentDeviceCount} parent
-              devices
+              {t('support.deviceSplit', {
+                child: family.childDeviceCount,
+                parent: family.parentDeviceCount,
+              })}
             </div>
           </div>
           <div>
-            <div className="tile-label">Settings</div>
+            <div className="tile-label">{t('support.settings')}</div>
             <div className="account-line">
-              PIN {family.parentPinSet ? 'set' : 'not set'}
+              {family.parentPinSet ? t('support.pinSet') : t('support.pinNotSet')}
             </div>
             <div className="account-line faint">
-              AI consent{' '}
               {family.messageAiConsent === null
-                ? 'never asked'
+                ? t('support.aiConsentNeverAsked')
                 : family.messageAiConsent
-                  ? 'on'
-                  : 'off'}
+                  ? t('support.aiConsentOn')
+                  : t('support.aiConsentOff')}
             </div>
           </div>
         </div>
       ) : (
         <div className="status-strip" style={{ marginBottom: 12 }}>
           <span className="status-dot is-warning" />
-          <span className="status-label">Account no longer exists</span>
+          <span className="status-label">{t('support.accountGone')}</span>
           <span className="status-detail">
-            The report outlived the family document — deleted, or purged by{' '}
-            <code>purgeScheduledDeletions</code>.
+            {t('support.accountGoneDetailBefore')}
+            <code>purgeScheduledDeletions</code>
+            {t('support.accountGoneDetailAfter')}
           </span>
         </div>
       )}
 
       <div className="ticket-meta">
-        <span>{report.platform ?? 'unknown platform'}</span>
+        <span>{report.platform ?? t('support.unknownPlatform')}</span>
         {/*
           Version *and* build. An OTA ships a new bundle under an unchanged
           marketing version, so "1.4.0" on two phones can be two different
@@ -329,17 +357,25 @@ function Detail({ uid, id, onChanged }) {
           Both null on every report filed before 2026-09-02.
         */}
         <span>
-          app {report.appVersion ?? '—'}
-          {report.appVersionCode ? ` (${report.appVersionCode})` : ''}
+          {t('support.appVersion', {
+            version: `${report.appVersion ?? '—'}${
+              report.appVersionCode ? ` (${report.appVersionCode})` : ''
+            }`,
+          })}
         </span>
         {/*
           The language to answer in. Absent is not English — it is a report
-          filed before the app recorded one.
+          filed before the app recorded one. It is also the language the reply
+          typed below has to be written in, whatever this console is set to.
         */}
-        <span>{report.language ? `lang ${report.language}` : 'lang unknown'}</span>
-        <span>{report.deviceName ?? 'unnamed device'}</span>
-        <span>filed {when(report.createdAt)}</span>
-        <span>uid {report.uid}</span>
+        <span>
+          {report.language
+            ? t('support.langKnown', { code: report.language })
+            : t('support.langUnknown')}
+        </span>
+        <span>{report.deviceName ?? t('support.unnamedDevice')}</span>
+        <span>{t('support.filed', { when: when(report.createdAt, t) })}</span>
+        <span>{t('support.uid', { uid: report.uid })}</span>
       </div>
 
       {report.attachments?.length > 0 ? (
@@ -357,7 +393,7 @@ function Detail({ uid, id, onChanged }) {
               />
             ) : (
               <span key={attachment.index} className="muted">
-                Screenshot {attachment.index + 1} has no stored path
+                {t('support.shotNoPath', { index: attachment.index + 1 })}
               </span>
             ),
           )}
@@ -367,7 +403,9 @@ function Detail({ uid, id, onChanged }) {
       {report.response ? (
         <div className="ticket-reply">
           <div className="tile-label">
-            Sent {report.respondedAt ? when(report.respondedAt) : ''}
+            {report.respondedAt
+              ? t('support.sentAt', { when: when(report.respondedAt, t) })
+              : ''}
           </div>
           {report.response}
         </div>
@@ -379,6 +417,7 @@ function Detail({ uid, id, onChanged }) {
 }
 
 export default function Support() {
+  const { t } = useT();
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [busy, setBusy] = useState(false);
@@ -420,7 +459,7 @@ export default function Support() {
   return (
     <>
       <div className="section-head">
-        <h2 className="section-title">Support queue</h2>
+        <h2 className="section-title">{t('support.title')}</h2>
         <div style={{ alignItems: 'center', display: 'flex', gap: 8 }}>
           <div className="segmented">
             {FILTERS.map(entry => (
@@ -429,12 +468,12 @@ export default function Support() {
                 className={filter === entry.key ? 'is-active' : undefined}
                 onClick={() => setFilter(entry.key)}
               >
-                {entry.label}
+                {t(entry.labelKey)}
               </button>
             ))}
           </div>
           <button className="btn btn-ghost" disabled={busy} onClick={load}>
-            {busy ? 'Loading…' : 'Refresh'}
+            {busy ? t('common.loading') : t('common.refresh')}
           </button>
         </div>
       </div>
@@ -445,7 +484,7 @@ export default function Support() {
         </div>
       ) : null}
 
-      {!data && !error ? <p className="muted">Loading…</p> : null}
+      {!data && !error ? <p className="muted">{t('common.loading')}</p> : null}
 
       {data ? (
         <>
@@ -454,14 +493,15 @@ export default function Support() {
               className={`status-dot is-${counts.pending > 0 ? 'critical' : 'good'}`}
             />
             <span className="status-label">
-              {counts.pending} pending, {counts.in_review} in review
+              {t('support.queueCounts', {
+                pending: counts.pending,
+                inReview: counts.in_review,
+              })}
             </span>
-            <span className="status-detail">
-              A reply here is the only operator action a family ever sees.
-            </span>
+            <span className="status-detail">{t('support.queueDetail')}</span>
             {data.truncated ? (
               <span className="status-detail" style={{ marginLeft: 'auto' }}>
-                Showing the newest {reports.length} — older reports not listed
+                {t('support.truncated', { count: reports.length })}
               </span>
             ) : null}
           </div>
@@ -469,7 +509,7 @@ export default function Support() {
           {reports.length === 0 ? (
             <div className="card">
               <p className="muted" style={{ margin: 0 }}>
-                Nothing in this filter.
+                {t('support.emptyFilter')}
               </p>
             </div>
           ) : (
@@ -485,14 +525,14 @@ export default function Support() {
                     >
                       <span className={`status-dot is-${STATUS_TONE[report.status]}`} />
                       <span className="ticket-status">
-                        {STATUS_LABEL[report.status]}
+                        {t(STATUS_LABEL_KEY[report.status] ?? 'support.statusPending')}
                       </span>
                       <span className="ticket-summary">{report.message}</span>
                       <span className="ticket-when">
                         {report.attachmentCount > 0
-                          ? `${report.attachmentCount} shot${report.attachmentCount === 1 ? '' : 's'} · `
+                          ? t('support.shotCount', { count: report.attachmentCount })
                           : ''}
-                        {when(report.createdAt)}
+                        {when(report.createdAt, t)}
                       </span>
                     </button>
                     {isOpen ? (

@@ -20,7 +20,7 @@ export const pairing = {
   connectChild: 'Kindergerät verbinden',
   waitingChildConfirm: 'Anfrage gesendet. Warten auf Bestätigung auf dem Kindergerät.',
   waitingChildConfirmHint:
-    'Tippe auf dem Kindergerät auf „Ja, verbinden“, um abzuschließen. Du kannst dies schließen — die Kopplung läuft im Hintergrund weiter.',
+    'Tippe auf dem Kindergerät auf „Ja, verbinden“, um abzuschließen. Du kannst dies schließen – die Kopplung läuft im Hintergrund weiter.',
   childConfirmedTitle: 'Gerät verbunden',
   childConfirmedBody:
     'Das Kindergerät hat die Kopplung bestätigt. Wähle als Nächstes, wer es nutzt.',

@@ -51,6 +51,12 @@ export const deviceDetail = {
   appVersion: 'Versión de la app',
   appVersionUpdate: '{{running}} · {{latest}} disponible',
   appVersionRestart: '{{running}} · reinicia la app para terminar',
+  otaUpdateNow: 'Actualizar ahora',
+  otaAsked: 'Se pidió a este dispositivo que se actualice',
+  otaUpToDate: 'Ya está actualizado',
+  otaSkipped: 'Las actualizaciones están desactivadas en este dispositivo',
+  otaStoreUpdate: 'Primero necesita una actualización de la tienda',
+  otaFailed: 'La actualización no se instaló',
   androidPauseNote:
     'En Android, al bloquear también se bloquean otras aplicaciones cuando Accesibilidad y Mostrar sobre otras aplicaciones están habilitados.',
   notAvailableOnPlatform: 'No disponible en {{platform}}',

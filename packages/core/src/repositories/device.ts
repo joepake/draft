@@ -13,6 +13,7 @@ import {
   parseDeviceControls,
   parseDevicePlaces,
   parseLastLocation,
+  parseOtaRequestResult,
   parseMessageMonitoring,
   parseProtectionCounters,
   parseProtectionStatus,
@@ -20,7 +21,13 @@ import {
   parseWeekCounters,
 } from '../domain/deviceControlsMapper';
 import { isApiFailure } from '../domain/apiFailure';
+import type { BuildFreshness } from '../domain/buildFreshness';
 import { isDeviceFormFactor } from '../domain/deviceFormFactor';
+import {
+  otaRequestId,
+  otaRequestedAtMs,
+  shouldRequestOtaCheck,
+} from '../domain/otaRequest';
 import {
   reportRequestId,
   reportRequestedAtMs,
@@ -140,6 +147,7 @@ function mapParentDevice(doc: DocSnapshot): ParentDeviceRecord {
 function mapChildDevice(doc: DocSnapshot): ChildDeviceRecord {
   const data = (doc.data() ?? {}) as Record<string, unknown>;
   const lastLocation = parseLastLocation(data);
+  const otaRequestResult = parseOtaRequestResult(data);
   const protectionStatus = parseProtectionStatus(data);
   const messageMonitoring = parseMessageMonitoring(data);
   const webToday = parseWebToday(data);
@@ -229,6 +237,16 @@ function mapChildDevice(doc: DocSnapshot): ChildDeviceRecord {
     ...(typeof data.reportRequestId === 'string'
       ? { reportRequestId: data.reportRequestId }
       : {}),
+    /*
+     * "Update now" and the device's answer to it. Same pair, same reason as
+     * the two above: `shouldRequestOtaCheck` throttles on the id, and the
+     * button renders the result — dropping either leaves a parent pressing a
+     * button that reports nothing and re-asks on every tap.
+     */
+    ...(typeof data.otaRequestId === 'string'
+      ? { otaRequestId: data.otaRequestId }
+      : {}),
+    ...(otaRequestResult ? { otaRequestResult } : {}),
     createdAt: timestampToIso(data.createdAt) ?? '',
     controls: parseDeviceControls(data),
     ...(lastLocation ? { lastLocation } : {}),
@@ -529,6 +547,51 @@ export function createDeviceRepository(deps: DeviceRepositoryDeps) {
       );
 
       return asked;
+    },
+
+    /**
+     * Ask one device to pick up the newest JS bundle now.
+     *
+     * A parent pressed a button, which is the whole difference from
+     * `requestDeviceReports` above and why this one **throws**: that is an
+     * opportunistic refresh behind a screen that renders correctly without it,
+     * this is the only thing that happened when somebody tapped. A swallowed
+     * failure here is a button that does nothing and says nothing.
+     *
+     * Returns false — without writing — when `shouldRequestOtaCheck` refuses:
+     * a platform with no OTA channel, a device that is not behind on its
+     * bundle, or one asked inside the throttle. The caller should already be
+     * hiding the button in the first two cases; the check is here as well
+     * because the throttle is a fact about the document rather than about the
+     * screen, and two consoles share it.
+     *
+     * **The previous answer is not cleared.** `otaRequestResult` carries the
+     * id it answered, so a console compares the two and shows nothing while a
+     * new request is outstanding — one field write instead of two, and no
+     * moment where the device's last answer has been erased but the new one
+     * has not arrived.
+     */
+    async requestDeviceOtaCheck(
+      userId: string,
+      device: Device,
+      freshness: BuildFreshness,
+    ): Promise<boolean> {
+      const nowMs = clock.now();
+      if (
+        !shouldRequestOtaCheck({
+          platform: device.platform,
+          freshness,
+          lastRequestedAtMs: otaRequestedAtMs(device.otaRequestId),
+          nowMs,
+        })
+      ) {
+        return false;
+      }
+
+      await db.updateDoc(childDeviceDoc(userId, device.id), {
+        otaRequestId: otaRequestId(nowMs, device.id),
+      });
+      return true;
     },
 
     async updateWebFilterBlockedCount(

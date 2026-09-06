@@ -32,7 +32,7 @@ export const pairing = {
     'L’appareil de l’enfant n’a pas confirmé à temps. Demandez-lui un nouveau code, puis réessayez.',
   confirmParentTitle: 'Confirmer ce parent ?',
   confirmParentSubtitle:
-    '{{parentLabel}} souhaite gérer cet appareil. N’acceptez que si vous connaissez cette personne.',
+    '{{parentLabel}} souhaite gérer cet appareil. N’accepte que si tu connais cette personne.',
   confirmParentButton: 'Oui, connecter',
   rejectParentButton: 'Ce n’est pas ce parent',
   parentAccount: 'Compte parent',

@@ -61,10 +61,10 @@ export const location = {
   childNoCapableDevices: 'Không thiết bị nào của {{childName}} báo cáo được vị trí.',
   childCarriedQuestion: 'Thiết bị nào đi cùng {{childName}}?',
   childCarriedHint:
-    'Vị trí của bé được đọc từ thiết bị đó. Máy tính bảng để ở nhà có thể báo vị trí mới hơn điện thoại trong cặp, nên KidGate không bao giờ đoán.',
+    'Vị trí của con được đọc từ thiết bị đó. Máy tính bảng để ở nhà có thể báo vị trí mới hơn điện thoại trong cặp, nên KidGate không bao giờ đoán.',
   childDevicesOnline: '{{online}}/{{total}} thiết bị đang trực tuyến',
   childNoneOnline: 'Không có thiết bị nào trực tuyến',
-  childPickCarried: 'Đi cùng bé',
+  childPickCarried: 'Đi cùng con',
   childPickCarriedA11y: 'Đánh dấu {{deviceName}} là thiết bị {{childName}} mang theo',
   stayRange: '{{from}} – {{to}}',
   placeTotalsTitle: 'Thời gian ở các địa điểm',

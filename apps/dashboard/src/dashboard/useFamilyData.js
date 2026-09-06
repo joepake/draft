@@ -593,6 +593,8 @@ export function useFamilyData(user, selectedDeviceId) {
     videos,
     rewardTasks,
     leaderboardRows,
+    screenTimeBoardDoc,
+    screenTimeBoardEnabled,
     children,
     familyName,
     billing,

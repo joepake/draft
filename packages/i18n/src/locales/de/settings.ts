@@ -89,12 +89,12 @@ export const settings = {
   reportRemoveAttachment: 'Bild entfernen',
   reportAttachmentsTooMany: 'Du kannst bis zu {{max}} Bilder anhängen.',
   reportAttachmentTooLarge:
-    'Nach dem Verkleinern immer noch {{size}} — daher nicht angehängt. Erlaubt sind {{limit}} pro Bild.',
+    'Nach dem Verkleinern immer noch {{size}} – daher nicht angehängt. Erlaubt sind {{limit}} pro Bild.',
   reportAttachmentUnreadable:
     'Diese Datei konnte nicht gelesen werden. Wähle ein anderes Bild.',
   reportSendButton: 'Bericht senden',
   reportSending: 'Wird gesendet…',
-  toastReportSent: 'Danke — dein Bericht wurde gesendet.',
+  toastReportSent: 'Danke – dein Bericht wurde gesendet.',
   toastReportFailed:
     'Der Bericht konnte nicht gesendet werden. Bitte versuche es erneut.',
   signOutAlertTitle: 'Abmelden?',
@@ -140,12 +140,12 @@ export const settings = {
   sectionAboutTitle: 'Über die App',
   sectionKidGateTitle: 'KidGate',
   aboutUsTitle: 'Über uns',
-  aboutUsSubtitle: 'Wer KidGate macht — und was es nicht tut',
+  aboutUsSubtitle: 'Wer KidGate macht – und was es nicht tut',
   sectionLegalTitle: 'Rechtliches',
   sectionHelpTitle: 'Hilfe',
   userGuideTitle: 'Anleitung',
   userGuideSubtitle:
-    'Berechtigungen, Kopplung, Steuerungen und Sicherheit — Schritt für Schritt',
+    'Berechtigungen, Kopplung, Steuerungen und Sicherheit – Schritt für Schritt',
   privacyPolicyTitle: 'Datenschutzerklärung',
   privacyPolicySubtitle: 'Wie KidGate mit Daten umgeht und sie schützt',
   termsOfServiceTitle: 'Nutzungsbedingungen',

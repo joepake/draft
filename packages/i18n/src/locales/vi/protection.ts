@@ -1,9 +1,9 @@
 export const protection = {
   permissionOffOnChildDevice: 'Quyền đang tắt trên thiết bị của trẻ.',
   permissionNotSetUpYet: 'Quyền này chưa được thiết lập.',
-  permissionRestrictedByIos: 'Quyền bị hạn chế bởi cài đặt iOS.',
+  permissionRestrictedByIos: 'Cài đặt iOS đang hạn chế quyền này.',
   permissionStatusUnknown: 'KidGate không đọc được trạng thái của quyền này.',
-  kidGateOffline: 'KidGate im lặng quá 24 giờ',
+  kidGateOffline: 'Không có tín hiệu quá 24 giờ',
   childAppMayBeOffline:
     'Ứng dụng trên thiết bị của trẻ có thể đã đóng, bị gỡ bỏ hoặc đang ngoại tuyến.',
   statusNotUpdatedYet: 'Trạng thái chưa được cập nhật',
@@ -19,9 +19,9 @@ export const protection = {
   usageAccessSetupIncomplete:
     'Vui lòng bật quyền Truy cập mức sử dụng cho KidGate trong cài đặt Android.',
   overlayPermission: 'Hiển thị trên ứng dụng khác',
-  batteryOptimizationPermission: 'Pin không hạn chế',
+  batteryOptimizationPermission: 'Pin không bị hạn chế',
   batteryOptimizationOff:
-    'Vui lòng cho phép pin không hạn chế để KidGate duy trì các tính năng bảo vệ khi chạy nền.',
+    'Vui lòng đặt mức dùng pin của KidGate thành Không bị hạn chế để ứng dụng duy trì bảo vệ khi chạy nền.',
   exactAlarmPermission: 'Chuông báo và lời nhắc',
   exactAlarmOff:
     'Vui lòng bật Chuông báo và lời nhắc để Giờ khóa thiết bị bắt đầu đúng giờ.',
@@ -61,18 +61,19 @@ export const protection = {
   protectionsLookHealthy: 'Các tính năng bảo vệ của KidGate đang hoạt động tốt.',
   healthBadgeProtected: 'Xanh — đang được bảo vệ',
   healthBadgeWarning: 'Vàng — cần thiết lập',
-  healthBadgeInactive: 'Đỏ — thiết bị của trẻ im lặng quá 24 giờ',
-  iosFeatureSupportEvaluating: 'Đang kiểm tra khả năng hỗ trợ tính năng trên iOS.',
+  healthBadgeInactive: 'Đỏ — thiết bị của trẻ không có tín hiệu quá 24 giờ',
+  iosFeatureSupportEvaluating: 'Đang kiểm tra xem iOS có hỗ trợ tính năng này không.',
   iosUpgradeRequiredNote:
     'Tính năng này cần iOS 16 trở lên. Hãy cập nhật thiết bị của trẻ trong Cài đặt › Cài đặt chung › Cập nhật phần mềm. Nếu không có bản cập nhật nào, thiết bị đã quá cũ để Apple hỗ trợ.',
   iosUpgradeActionLabel: 'Cần iOS 16',
-  lockUnlockNote: 'Khóa thiết bị thông qua Thời gian sử dụng khi trẻ đã cấp quyền.',
+  lockUnlockNote:
+    'Khóa thiết bị bằng quyền Thời gian sử dụng, sau khi trẻ đã cấp quyền đó.',
   scheduleNote:
-    'Tối đa 3 khung Giờ khóa thiết bị chặn ứng dụng thông qua Thời gian sử dụng.',
+    'Đặt tối đa 3 khung Giờ khóa thiết bị; trong các khung này ứng dụng bị chặn qua Thời gian sử dụng.',
   individualAppBlockingNote:
-    'Trẻ chọn ứng dụng sau khi nhập mã PIN phụ huynh 6 chữ số.',
+    'Danh sách ứng dụng được chọn ngay trên thiết bị của trẻ, sau khi nhập mã PIN phụ huynh 6 chữ số.',
   tamperAlertsNote:
     'Thông báo khi có thay đổi về quyền hoặc khi ứng dụng trên thiết bị của trẻ lâu chưa cập nhật.',
   appReviewRemindersNote:
-    'iOS không cung cấp sự kiện cài đặt ứng dụng; vui lòng rà soát ứng dụng định kỳ cùng thiết bị của trẻ.',
+    'iOS không báo cho KidGate biết khi có ứng dụng mới được cài, nên vui lòng xem lại danh sách ứng dụng cùng con theo định kỳ.',
 } as const;

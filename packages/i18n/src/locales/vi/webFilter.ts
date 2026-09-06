@@ -5,27 +5,27 @@ export const webFilter = {
   coverageLine: 'Đang chặn trên {{enforcing}}/{{total}} thiết bị',
   mergeNotice:
     'Các thiết bị của {{name}} đang có cài đặt bộ lọc web khác nhau. Lưu tại đây sẽ áp dụng một bộ cài đặt cho tất cả, gộp theo hướng chặt chẽ hơn.',
-  mergeLoosened: 'Nay được phép trên mọi thiết bị: {{domains}}',
+  mergeLoosened: 'Từ giờ được phép trên mọi thiết bị: {{domains}}',
   toastUpdateFailed: 'Không thể cập nhật Chặn nội dung web. Vui lòng thử lại.',
   heroTitle: 'Chặn các trang web người lớn',
   heroSubtitleIos:
     'Sử dụng bộ lọc nội dung web trong Thời gian sử dụng của Apple để hạn chế nội dung người lớn trên Safari và trình duyệt trong ứng dụng trên thiết bị của trẻ.',
   heroSubtitleAndroid:
-    'Sử dụng VPN DNS cục bộ trên thiết bị Android của trẻ để chặn các tên miền người lớn đã biết trong trình duyệt và nhiều ứng dụng.',
+    'KidGate lọc ngay trên thiết bị Android của trẻ để chặn các trang người lớn đã biết, trong trình duyệt và nhiều ứng dụng.',
   heroSubtitleMacos:
     'Chạy bộ lọc nội dung của KidGate trên Mac của con để chặn các trang web người lớn đã biết trong trình duyệt và nhiều ứng dụng.',
   toggleHintIos: 'Cần quyền Thời gian sử dụng trên thiết bị của trẻ.',
   toggleHintAndroid:
     'Thiết bị của trẻ cần chấp nhận kết nối VPN của KidGate một lần. Vui lòng giữ VPN luôn bật để bộ lọc hoạt động.',
   toggleHintMacos:
-    'Con cần phê duyệt tiện ích mở rộng bộ lọc của KidGate một lần trong Cài đặt hệ thống. Giữ nó được phê duyệt để bộ lọc hoạt động.',
+    'Trẻ cần phê duyệt bộ lọc của KidGate một lần trong Cài đặt hệ thống, và giữ nguyên phê duyệt đó để bộ lọc hoạt động.',
   toggleAccessibilityLabel: 'Bật Chặn nội dung web',
   safeSearchSectionTitle: 'Tìm kiếm an toàn & YouTube',
   safeSearchSectionSubtitle:
     'Ép Google, Bing và DuckDuckGo trả kết quả an toàn và khóa YouTube ở chế độ hạn chế. Cần bật bộ lọc web.',
-  safeSearchLabel: 'Bật SafeSearch bắt buộc',
+  safeSearchLabel: 'Bắt buộc tìm kiếm an toàn',
   safeSearchHint:
-    'Khóa Google SafeSearch, chế độ hạn chế YouTube, Bing và DuckDuckGo ở mức nghiêm ngặt. Android, Android TV và Chrome.',
+    'Khóa Tìm kiếm an toàn của Google, chế độ hạn chế của YouTube, và đặt Bing cùng DuckDuckGo ở mức nghiêm ngặt. Áp dụng cho Android, Android TV và Chrome.',
   infoTitle: 'Cách hoạt động',
   infoLine1Ios: 'Apple tự động lọc các trang web người lớn.',
   infoLine2Ios:
@@ -33,7 +33,7 @@ export const webFilter = {
   infoLine3Ios:
     'KidGate áp dụng cài đặt này tự động khi ứng dụng trên thiết bị của trẻ đồng bộ các điều khiển.',
   infoLine1Android:
-    'KidGate khởi chạy một VPN cục bộ để kiểm tra DNS và chặn các tên miền người lớn (đồng thời chặn một số dịch vụ DNS mã hóa).',
+    'KidGate lập một kết nối VPN ngay trên máy để kiểm tra từng địa chỉ trang web và chặn các trang người lớn (đồng thời chặn một số dịch vụ DNS mã hóa dùng để né bộ lọc).',
   infoLine2Android:
     'Vui lòng tắt DNS riêng tư trên thiết bị của trẻ. Nếu DNS riêng tư đang bật, trình duyệt có thể bỏ qua bộ lọc.',
   infoLine3Android:
@@ -46,7 +46,7 @@ export const webFilter = {
   infoLine3Macos:
     'Mac của con sẽ hiện bộ lọc đang hoạt động khi được phê duyệt. Nếu bị tắt ở đó, hãy mở lại KidGate để khôi phục.',
   infoLine4Macos:
-    'Bộ lọc đọc tên trang web, nhưng trình duyệt hiện đại ẩn tên này ở khoảng một nửa lượt truy cập — những trang đó sẽ không được kiểm tra theo danh mục của bạn. Dù vậy, bộ lọc vẫn chặn được hầu hết các trang mà trẻ tiếp cận theo cách này.',
+    'Bộ lọc đọc tên trang web, nhưng trình duyệt đời mới giấu tên này ở khoảng một nửa số lượt truy cập, nên những lượt đó không đối chiếu được với danh mục bạn chọn. Dù vậy, bộ lọc vẫn chặn được phần lớn các trang trẻ có thể vào.',
   privateDnsBannerTitle: 'Tắt DNS riêng tư',
   privateDnsBannerBody:
     'DNS riêng tư đang bật nên Chặn nội dung web có thể bị bỏ qua. Vui lòng tắt để bộ lọc hoạt động.',
@@ -65,8 +65,8 @@ export const webFilter = {
   webHistoryNote: 'Cần trình duyệt có bộ lọc hoặc cơ chế báo cáo qua DNS/VPN.',
   categoriesTitle: 'Chặn những gì',
   categoriesSubtitle:
-    'KidGate dùng danh sách tên miền riêng. Chúng bao phủ những trang trẻ thực sự vào tới, không phải toàn bộ web — hãy kết hợp với danh sách bên dưới.',
-  androidOnlyCategory: 'Chỉ Android — iOS không có điều khiển web theo danh mục',
+    'KidGate dùng danh sách trang web riêng. Danh sách này bao phủ những trang trẻ thực sự hay vào, không phải toàn bộ Internet — hãy kết hợp thêm với danh sách bên dưới.',
+  androidOnlyCategory: 'Chỉ Android — iOS không chặn web theo danh mục được',
   iosCategoryNote:
     'iPhone chỉ hỗ trợ {{category}}, dùng bộ lọc của Apple. Các danh mục còn lại áp dụng cho thiết bị Android.',
   allowListTitle: 'Luôn cho phép',
@@ -79,7 +79,7 @@ export const webFilter = {
   blockListInputAccessibility: 'Thêm trang luôn bị chặn',
   allowListOnlyLabel: 'Chỉ các trang được phép',
   allowListOnlyHintAndroid:
-    'Mọi thứ ngoài danh sách cho phép đều bị từ chối. Cơ chế này chạy ở tầng DNS nên các ứng dụng khác cũng mất kết nối.',
+    'Mọi trang ngoài danh sách cho phép đều bị từ chối. Bộ lọc chặn ở mức toàn máy, nên các ứng dụng khác cũng sẽ mất kết nối.',
   allowListOnlyHintIos:
     'Safari và trình duyệt trong ứng dụng chỉ mở được các trang trong danh sách cho phép.',
   allowListOnlyNeedsEntries: 'Thêm ít nhất một trang được phép trước khi bật.',
@@ -170,7 +170,7 @@ export const webFilter = {
   askToOpenTooSoon: 'Con vừa gửi yêu cầu. Thử lại sau một phút nhé.',
   askToOpenTooMany: 'Con chỉ xin được vài trang một lúc thôi.',
   requestsTitle: 'Yêu cầu mở trang',
-  requestsSubtitle: 'Những trang thiết bị này xin bạn cho phép.',
+  requestsSubtitle: 'Những trang con xin bạn cho phép mở trên thiết bị này.',
   siteRequestApproved: 'Đã cho phép trang',
   siteRequestApprovedDescription:
     'Đã thêm {{domain}} vào Luôn cho phép trên {{deviceName}}.',

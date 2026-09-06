@@ -38,7 +38,7 @@ export const activities = {
   activityTypePlaceExit: '場所を出発',
   activityTypeTamper: '保護',
   activityTypeScreenTime: 'スクリーンタイム',
-  activityTypeCheckIn: '安否確認',
+  activityTypeCheckIn: 'チェックイン',
   activityTypeLocationRequest: '位置情報',
   activityTypeTimeRequest: '時間リクエスト',
   activityTypeRewardTask: 'ごほうびタスク',
@@ -162,5 +162,5 @@ export const activities = {
   basicActivityNote:
     'ロック、ロック解除、デバイスイベントは「アクティビティ」に記録されます。',
   tamperUninstallProtectionTitle: 'アンインストール防止がオフになりました',
-  tamperUninstallProtectionBody: 'この端末からKidGateを削除できる状態です。',
+  tamperUninstallProtectionBody: 'このデバイスからKidGateを削除できる状態です。',
 } as const;

@@ -6,6 +6,7 @@ import type {
 } from '@kidgate/ports/firestore';
 import type { StoragePort } from '@kidgate/ports/storage';
 import type { ApiFailure } from '@kidgate/ports/api';
+import type { DeviceFormFactor } from '@kidgate/schema/capabilities';
 import {
   familyMemberDoc,
   familyMembersCollection,
@@ -31,6 +32,13 @@ export interface FamilyMember {
   addedAt: string;
   lastActiveAt: string | null;
   platform: 'ios' | 'android' | null;
+  /**
+   * Phone or tablet, so `deviceGlyph` can draw a co-parent's iPad as an iPad.
+   * Null means the member document has not carried one yet — every row written
+   * before 2026-09-06, and every device whose probe could not say. Absent is
+   * unknown, never `phone`.
+   */
+  formFactor: DeviceFormFactor | null;
   deviceName: string | null;
   osVersion: string | null;
 }
@@ -60,6 +68,10 @@ function mapMember(doc: DocSnapshot): FamilyMember {
     lastActiveAt: timestampToIso(data.lastActiveAt) ?? null,
     platform:
       data.platform === 'ios' || data.platform === 'android' ? data.platform : null,
+    formFactor:
+      data.formFactor === 'phone' || data.formFactor === 'tablet'
+        ? data.formFactor
+        : null,
     deviceName: text(data.deviceName),
     osVersion: text(data.osVersion),
   };

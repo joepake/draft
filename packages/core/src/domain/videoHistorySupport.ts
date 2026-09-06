@@ -18,9 +18,12 @@
  * answers for are the ones running the build that has no reader, where `false`
  * is the truth. `docs/FEASIBILITY.md`, "Videos watched on Android TV".
  *
- * Every other platform answers no: the Mac and Windows filters see a domain,
- * never a video, and iOS's Screen Time report names apps and domains, not the
- * clip inside one. Recorded in `docs/FEASIBILITY.md` ("Videos watched").
+ * Every other platform answers no: the Mac's content filter sees a domain and
+ * never a video, Windows has no filter at all and its window titles name the
+ * page rather than the clip — a search reads `<query> - YouTube`, measured —
+ * and iOS's Screen Time report names apps and domains, not the clip inside
+ * one. Recorded in `docs/FEASIBILITY.md` ("Videos watched", "Videos watched on
+ * Windows").
  */
 
 import type { DeviceCapabilities, DevicePlatform } from '@kidgate/schema/capabilities';

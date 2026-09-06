@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { t } from './i18n.js';
 
 /**
  * Turns a render crash into a readable message instead of a blank page.
@@ -50,10 +51,9 @@ export default class ErrorBoundary extends Component {
 
     return (
       <div className="card" style={{ margin: 24 }}>
-        <h2 className="chart-title">This screen crashed</h2>
+        <h2 className="chart-title">{t('crash.title')}</h2>
         <p className="muted" style={{ marginTop: 0 }}>
-          The rest of the console still works — pick another page in the sidebar. Full
-          stack is in the browser console.
+          {t('crash.body')}
         </p>
         <pre className="code-block" style={{ marginTop: 12, whiteSpace: 'pre-wrap' }}>
           {error?.stack || String(error)}
@@ -63,7 +63,7 @@ export default class ErrorBoundary extends Component {
           style={{ marginTop: 12 }}
           onClick={() => this.setState({ error: null })}
         >
-          Try rendering again
+          {t('crash.retry')}
         </button>
       </div>
     );

@@ -49,7 +49,7 @@ export const plans = {
   compareNewApps: 'App appena installate',
   compareNewAppsPremium: 'Quali app, e approvazione prima dell’installazione',
   compareMessages: 'Avvisi sui messaggi (Android)',
-  compareSafety: 'Avvisi di manomissione e check-in',
+  compareSafety: 'Avvisi di protezione e Check-in',
   compareControls: 'Blocco app e filtro web',
   compareControlsFree: 'Qualsiasi app, contenuti per adulti',
   compareControlsPremium: 'Per categoria, limiti per app, elenchi personali',
@@ -142,7 +142,7 @@ export const plans = {
   // has to name who needs to act instead of offering a button they can't use.
   familyPremiumEndedTitle: 'Il Premium di questa famiglia è terminato',
   familyPremiumEndedBody:
-    'Limite giornaliero, Orari di blocco, App bloccate, Filtro web e posizione funzionano ancora. Aggiornamenti in tempo reale, cronologia, avvisi e report restano sospesi finché Premium non viene rinnovato.',
+    'Limite giornaliero, Orari di blocco, App bloccate, Filtro web e posizione funzionano ancora. Aggiornamenti in tempo reale, cronologia, avvisi e report restano sospesi finché il proprietario della famiglia non rinnova Premium.',
   pricesUnavailable: 'Impossibile caricare i prezzi dallo store.',
   pricesRetry: 'Riprova',
   featureRewardTasks: 'Compiti premio',

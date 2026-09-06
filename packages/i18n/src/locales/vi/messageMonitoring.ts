@@ -20,7 +20,7 @@ export const messageMonitoring = {
   checkedSubtitle:
     'Những từ nằm trong danh sách theo dõi đã xuất hiện nhưng xét trong ngữ cảnh là vô hại, nên bạn không được báo. Hiển thị ở đây để bạn thấy những gì đang được lọc thay mình — và báo lại nếu có mục nào đáng lẽ phải đến tay bạn.',
   categoryPredator: 'Nghi ngờ dụ dỗ',
-  categorySelfHarm: 'Nghi ngờ tự làm hại',
+  categorySelfHarm: 'Nghi ngờ tự làm hại bản thân',
   categoryExplicit: 'Nội dung nhạy cảm',
   categoryViolence: 'Đe dọa hoặc bạo lực',
   categoryBullying: 'Bắt nạt',
@@ -69,7 +69,7 @@ export const messageMonitoring = {
   parentOutgoingLabel: 'Quét tin nhắn con gõ',
   parentSearchLabel: 'Quét nội dung con tìm kiếm',
   parentSearchHint:
-    'Trình duyệt và YouTube. Chỉ từ bị gắn cờ được báo, không bao giờ báo nội dung tìm kiếm.',
+    'Trình duyệt và YouTube. Chỉ từ bị đánh dấu được báo, không bao giờ báo nội dung tìm kiếm.',
   parentToggleHintGranted: 'Trên máy này.',
   parentToggleHintNotGranted:
     'Máy này chưa cấp quyền — mở KidGate trên máy của con để cấp.',
@@ -88,7 +88,7 @@ export const messageMonitoring = {
   consentAgree: 'Tôi đồng ý',
   outgoingTitle: 'Tin nhắn con viết',
   outgoingBody:
-    'KidGate có thể kiểm tra cả những gì con gõ trong ứng dụng chat. Nó tìm đúng những từ cảnh báo đó, ngay trên máy này. Nội dung tin nhắn không bao giờ được gửi đi đâu.',
+    'KidGate có thể kiểm tra cả những gì con gõ trong ứng dụng chat. Việc tìm từ ngữ cảnh báo diễn ra ngay trên máy này. Nội dung tin nhắn không bao giờ được gửi đi đâu.',
   outgoingEnable: 'Kiểm tra tin nhắn con viết',
   outgoingGrant: 'Cho phép',
   directionIncoming: 'Nhận được',
@@ -101,10 +101,10 @@ export const messageMonitoring = {
   setupRevoked:
     'Android đã tắt quyền mà mục này cần. Hãy cấp lại để tiếp tục kiểm tra tin nhắn.',
   outgoingRevoked:
-    'Android đã tắt mục này. Hãy cấp lại để tiếp tục kiểm tra những gì bạn viết.',
-  outgoingDisclosureTitle: 'Trước khi bạn cho phép',
+    'Android đã tắt mục này. Hãy cấp lại để tiếp tục kiểm tra những gì con viết.',
+  outgoingDisclosureTitle: 'Trước khi con cho phép',
   outgoingDisclosureBody:
-    'KidGate chỉ đọc những gì bạn gõ trong ứng dụng nhắn tin — không đọc trong bất kỳ ứng dụng nào khác, và không bao giờ đọc ô mật khẩu. Việc tìm từ ngữ cảnh báo diễn ra ngay trên điện thoại này. Tin nhắn của bạn không được gửi đi đâu cả; chỉ từ bị đánh dấu mới đến bố mẹ.',
+    'KidGate chỉ đọc những gì con gõ trong ứng dụng nhắn tin — không đọc trong bất kỳ ứng dụng nào khác, và không bao giờ đọc ô mật khẩu. Việc tìm từ ngữ cảnh báo diễn ra ngay trên điện thoại này. Tin nhắn của con không được gửi đi đâu cả; chỉ từ bị đánh dấu mới đến bố mẹ.',
   outgoingRestrictedHint:
     'Nếu nút gạt bị mờ, hãy mở Cài đặt › Ứng dụng › KidGate, nhấn menu ⋮ rồi chọn “Cho phép cài đặt bị hạn chế”, sau đó quay lại.',
   notice: {

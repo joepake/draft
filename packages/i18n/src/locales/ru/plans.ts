@@ -48,7 +48,7 @@ export const plans = {
   compareNewApps: 'Недавно установленные приложения',
   compareNewAppsPremium: 'Какие приложения и подтверждение перед установкой',
   compareMessages: 'Оповещения о сообщениях (Android)',
-  compareSafety: 'Оповещения о вмешательстве и отметка «я на месте»',
+  compareSafety: 'Оповещения защиты и Check-In',
   compareControls: 'Блокировка приложений и веб-фильтр',
   compareControlsFree: 'Любое приложение, контент для взрослых',
   compareControlsPremium: 'По категориям, лимиты на приложения, собственные списки',
@@ -152,8 +152,7 @@ export const plans = {
   trustOnePlan: 'Один тариф на всю семью',
   trustNoAds: 'Без рекламы',
   freePlanName: 'Бесплатно',
-  freeDescription:
-    'Базовые функции для одного устройства ребёнка, без ограничения по времени.',
+  freeDescription: 'Базовые функции для одного устройства ребёнка, бессрочно.',
   featureOneChildDevice: 'Одно устройство ребёнка',
   termLifetime: 'Навсегда',
   badgeOneTime: 'Разовый платёж',

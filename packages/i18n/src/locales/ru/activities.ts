@@ -34,7 +34,7 @@ export const activities = {
   activityTypePlaceExit: 'Выход из места',
   activityTypeTamper: 'Защита',
   activityTypeScreenTime: 'Экранное время',
-  activityTypeCheckIn: 'Проверка связи',
+  activityTypeCheckIn: 'Check-In',
   activityTypeLocationRequest: 'Геопозиция',
   activityTypeTimeRequest: 'Запрос времени',
   activityTypeRewardTask: 'Бонусное задание',

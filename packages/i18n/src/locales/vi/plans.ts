@@ -21,8 +21,8 @@ export const plans = {
   currentPlanBadge: 'Gói hiện tại',
   planPeriod: '/ tháng',
   planPeriodYear: '/ năm',
-  termMonthly: 'Hàng tháng',
-  termAnnual: 'Hàng năm',
+  termMonthly: 'Hằng tháng',
+  termAnnual: 'Hằng năm',
   bestValueBadge: 'Tiết kiệm nhất',
   premiumManageBillingNote:
     'Quản lý thanh toán trong phần cài đặt App Store hoặc Google Play.',
@@ -44,11 +44,11 @@ export const plans = {
   compareVideo: 'Lịch sử YouTube và video',
   compareCountOnly: 'Chỉ số lượng, không xem được chi tiết',
   compareWeb: 'Web',
-  compareWebPremium: 'Đầy đủ lịch sử và từ khoá tìm kiếm',
+  compareWebPremium: 'Đầy đủ lịch sử và từ khóa tìm kiếm',
   compareNewApps: 'Ứng dụng mới cài',
   compareNewAppsPremium: 'Tên ứng dụng, và duyệt trước khi cài',
   compareMessages: 'Cảnh báo tin nhắn (Android)',
-  compareSafety: 'Cảnh báo gỡ ứng dụng và điểm danh',
+  compareSafety: 'Cảnh báo bảo vệ và Báo an toàn',
   compareControls: 'Chặn ứng dụng và chặn nội dung web',
   compareControlsFree: 'Mọi ứng dụng, nội dung người lớn',
   compareControlsPremium: 'Theo nhóm, giới hạn từng ứng dụng, danh sách riêng',
@@ -110,7 +110,7 @@ export const plans = {
   memberTrialActiveSubtitle:
     'Gia đình này đang dùng thử. Khi hết hạn, mọi quy tắc vẫn hoạt động trên một thiết bị; chủ gia đình có thể đăng ký để có hoạt động trực tiếp, lịch sử và tất cả thiết bị.',
   memberTrialEndedSubtitle:
-    'Bản dùng thử của gia đình này đã kết thúc. Giới hạn hằng ngày, Chặn ứng dụng, Chặn nội dung web và vị trí vẫn hoạt động. Hãy nhờ chủ tài khoản đăng ký để có cập nhật trực tiếp, lịch sử và cảnh báo.',
+    'Bản dùng thử của gia đình này đã kết thúc. Giới hạn hằng ngày, Chặn ứng dụng, Chặn nội dung web và vị trí vẫn hoạt động. Hãy nhờ chủ gia đình đăng ký để có cập nhật trực tiếp, lịch sử và cảnh báo.',
   memberSetupTrialSubtitle:
     'Thời gian dùng thử bắt đầu khi chủ gia đình kết nối một thiết bị phụ huynh và một thiết bị của trẻ.',
   premiumActivatedTitle: 'Đã mở khóa Premium',
@@ -136,7 +136,7 @@ export const plans = {
   // nên câu chữ phải nói rõ ai cần hành động thay vì đưa nút họ không dùng được.
   familyPremiumEndedTitle: 'Gói Premium của gia đình này đã kết thúc',
   familyPremiumEndedBody:
-    'Giới hạn hằng ngày, Giờ khóa thiết bị, Chặn ứng dụng, Chặn nội dung web và vị trí vẫn hoạt động. Cập nhật trực tiếp, lịch sử, cảnh báo và báo cáo tạm dừng cho tới khi chủ tài khoản gia hạn Premium.',
+    'Giới hạn hằng ngày, Giờ khóa thiết bị, Chặn ứng dụng, Chặn nội dung web và vị trí vẫn hoạt động. Cập nhật trực tiếp, lịch sử, cảnh báo và báo cáo tạm dừng cho tới khi chủ gia đình gia hạn Premium.',
   pricesUnavailable: 'Không tải được giá từ cửa hàng.',
   pricesRetry: 'Thử lại',
   featureRewardTasks: 'Nhiệm vụ thưởng',
@@ -149,7 +149,7 @@ export const plans = {
   trustNoAds: 'Không quảng cáo',
   freePlanName: 'Miễn phí',
   freeDescription:
-    'Giữ những thứ cơ bản cho một thiết bị của con, không giới hạn thời gian.',
+    'Giữ những thứ cơ bản cho một thiết bị của trẻ, và không bao giờ hết hạn.',
   featureOneChildDevice: 'Một thiết bị của con',
   termLifetime: 'Trọn đời',
   badgeOneTime: 'Trả một lần',

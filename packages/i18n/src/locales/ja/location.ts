@@ -67,7 +67,7 @@ export const location = {
   childCarriedHint:
     '位置情報はそのデバイスから読み取ります。家に置いたタブレットの方がカバンの中のスマホより新しい位置を報告することがあるため、KidGateは推測しません。',
   childDevicesOnline: '{{total}} 台中 {{online}} 台がオンライン',
-  childNoneOnline: 'オンラインの端末はありません',
+  childNoneOnline: 'オンラインのデバイスはありません',
   childPickCarried: '持ち歩き中',
   childPickCarriedA11y: '{{deviceName}}を{{childName}}が持ち歩くデバイスに設定',
   stayRange: '{{from}} – {{to}}',

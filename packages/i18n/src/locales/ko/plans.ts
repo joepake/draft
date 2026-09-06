@@ -47,7 +47,7 @@ export const plans = {
   compareNewApps: '새로 설치된 앱',
   compareNewAppsPremium: '어떤 앱인지, 설치 전 승인까지',
   compareMessages: '메시지 알림 (Android)',
-  compareSafety: '보호 해제 알림과 체크인',
+  compareSafety: '보호 알림과 체크인',
   compareControls: '앱 차단과 웹 필터',
   compareControlsFree: '모든 앱, 성인 콘텐츠',
   compareControlsPremium: '카테고리별, 앱별 한도, 직접 만든 목록',

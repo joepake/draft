@@ -37,7 +37,7 @@ export const activities = {
   activityTypePlaceExit: '장소 이탈',
   activityTypeTamper: '보호',
   activityTypeScreenTime: '스크린 타임',
-  activityTypeCheckIn: '안전 확인',
+  activityTypeCheckIn: '체크인',
   activityTypeLocationRequest: '위치',
   activityTypeTimeRequest: '시간 요청',
   activityTypeRewardTask: '보상 과제',

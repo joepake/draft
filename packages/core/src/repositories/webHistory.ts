@@ -9,6 +9,10 @@ import {
   type WebFilterCategory,
   type WebHistoryEntry,
 } from '@kidgate/schema/webActivity';
+import {
+  WEB_ACTIVITY_HOUR_BANDS,
+  type WebActivityHoursDoc,
+} from '@kidgate/schema/webActivityHours';
 
 /**
  * Rows fetched for the history screen.
@@ -61,10 +65,20 @@ function mapEntry(doc: DocSnapshot): WebHistoryEntry | null {
   };
 }
 
-/** One day's page loads by hour, index 0 = the device's local midnight. */
+/**
+ * One day's page loads by hour, index 0 = the device's local midnight.
+ *
+ * The decoded counterpart of `WebActivityHoursDoc`, and it stays here rather
+ * than in `@kidgate/schema` because nothing crosses a process boundary in this
+ * shape: it is the dense array a chart iterates, built out of the sparse map
+ * Firestore actually stores.
+ */
 export interface WebActivityHoursDay {
   date: string;
-  /** 24 counts. Always length 24, zero-filled — a chart must not read holes. */
+  /**
+   * Always `WEB_ACTIVITY_HOUR_BANDS` long, zero-filled — a chart must not read
+   * holes, and the stored map is sparse.
+   */
   hours: number[];
   blockedHours: number[];
 }
@@ -74,9 +88,9 @@ export interface WebActivityHoursDay {
  * `hours.13` and cannot increment an array element, and increments are what let
  * a five-minute upload cadence add up instead of overwrite.
  */
-function mapHours(raw: unknown): number[] {
-  const source = (raw ?? {}) as Record<string, unknown>;
-  return Array.from({ length: 24 }, (_, hour) => {
+function mapHours(raw: WebActivityHoursDoc['hours']): number[] {
+  const source = raw ?? {};
+  return Array.from({ length: WEB_ACTIVITY_HOUR_BANDS }, (_, hour) => {
     const value = Number(source[String(hour)]);
     return Number.isFinite(value) && value > 0 ? Math.floor(value) : 0;
   });
@@ -153,7 +167,7 @@ export function createWebHistoryRepository(deps: WebHistoryRepositoryDeps) {
           onDays(
             snapshot.docs
               .map(doc => {
-                const data = (doc.data() ?? {}) as Record<string, unknown>;
+                const data = (doc.data() ?? {}) as Partial<WebActivityHoursDoc>;
                 const date = typeof data.date === 'string' ? data.date.trim() : doc.id;
                 return date
                   ? {

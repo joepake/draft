@@ -13,9 +13,10 @@ import { useReveal } from '../lib/useReveal.js';
  * class of bug this monorepo exists to end. `/about` is therefore a route two
  * shipped apps point at; renaming it breaks a row a parent has already tapped.
  *
- * Every claim below is one the product can be held to — the four platforms, the
- * free tier, the ads, the deletion route, and the two places KidGate is only
- * best-effort. Nothing about a company, a founding year, a location or a team
+ * Every claim below is one the product can be held to — the four platforms a
+ * family can install, the free tier, the ads, the deletion route, and the two
+ * places KidGate is only best-effort. Nothing about a company, a founding year,
+ * a location or a team
  * size appears anywhere, because none of that is known in this repo. If a store
  * listing or a jurisdiction needs those, they are strings to add, not sentences
  * to guess at.
@@ -32,13 +33,25 @@ const VALUES = [1, 2, 3, 4];
  * service the Mac has no need for, and a parent choosing between them is
  * choosing between those, not between a single row's two nouns.
  *
- * **Android TV no longer carries `soon`, by the operator's decision, and the
- * risk that came with it is stated rather than hidden.** `apps/tv/CLAUDE.md`
- * and `docs/MIGRATION.md` both still read "No code. Not started.", so a card
- * with no badge sitting between four that have shipped will be read as a fifth
- * platform a family can install. Nothing here fails when that is wrong; a
- * parent finds out on the television. Ship the TV build, or bring the badge
- * back — those are the two states this row has.
+ * **Seven cards, and two of them cannot be installed today — the card text says
+ * so, because this page draws no badge.** The `soon` pill was dropped from here
+ * by the operator's decision and its renderer now lives on `pages/Home`'s
+ * `#download`; reinstating it here is a decision, not a fix. What is left is the
+ * sentence inside the card, and both unshipped rows carry it: Android TV has run
+ * on real hardware since 19 Aug 2026 (`apps/tv/CLAUDE.md`) but has no keystore,
+ * release track or Play submission, and the Chrome extension paired from a real
+ * browser on 2026-08-20 and is waiting on a Web Store review that
+ * `apps/extension/CLAUDE.md` measures in months. A card with no badge and no
+ * such sentence sitting beside four that shipped reads as installable, nothing
+ * in this repo fails when that is wrong, and a parent finds out on the
+ * television or in the store.
+ *
+ * **Order is card order, so the keys were renumbered rather than appended.**
+ * Chrome is `make6` and the dashboard moved to `make7`: `MAKE.map` uses one
+ * index for both the position and the key, and a 7 rendering above a 6 is the
+ * kind of mismatch that survives review. The dashboard stays last and stands
+ * alone on the third row of a three-column grid, which is the right card to
+ * leave there — it is the one that is not a device.
  */
 const MAKE = [
   { n: 1, icon: 'phone' },
@@ -46,7 +59,8 @@ const MAKE = [
   { n: 3, icon: 'mac' },
   { n: 4, icon: 'windows' },
   { n: 5, icon: 'tv' },
-  { n: 6, icon: 'grid' },
+  { n: 6, icon: 'extension' },
+  { n: 7, icon: 'grid' },
 ];
 
 /*
@@ -55,14 +69,16 @@ const MAKE = [
  * to carry "14" into fourteen files is a translator who can mistype it. Only
  * the label beside each one is translated.
  *
- * **The second one is 4 while the grid above has six cards, and that is not a
+ * **The second one is 4 while the grid above has seven cards, and that is not a
  * mistake to correct.** It counts platforms a family can install today — iOS,
  * Android, macOS, Windows. The dashboard is named separately in its own label
- * because a browser is not an install, and Android TV is not counted because
- * there is no build to install. That last part used to be tied to the card's
- * `soon` badge; the badge is gone and the count is not, because what decides
- * this number is whether a family can install the thing, not how the card is
- * labelled. Ship the TV build and this becomes 5.
+ * because a browser is not an install; Android TV and the Chrome extension are
+ * not counted because neither has a build a family can reach — no Play
+ * submission for one, no Web Store listing for the other. What decides this
+ * number is whether a family can install the thing, not how many cards the grid
+ * has and not how a card is labelled: the `soon` badge that used to carry the TV
+ * half of this argument is gone and the count did not move. Ship either and this
+ * becomes 5; ship both and it is 6.
  */
 const FACTS = [
   { n: 1, value: '14' },

@@ -282,6 +282,33 @@ export interface DeviceLockEnforcement {
   at: string;
 }
 
+/**
+ * What a device answered a parent's "Update now" with.
+ *
+ * `OtaUpdateService.checkAndApply` returns one more value than this —
+ * `'updated'` — and it is missing on purpose: see `Device.otaRequestResult`.
+ * The rest map straight across, deliberately, so the value a parent reads is
+ * the one the agent's own code path produced rather than a second vocabulary
+ * translated into the first.
+ */
+export type DeviceOtaRequestStatus =
+  /** The bundle on the device is already the published one. */
+  | 'up_to_date'
+  /** OTA is switched off for this build — a debug build, or `enabled: false`. */
+  | 'skipped'
+  /** The installed app is behind the store build; a bundle cannot fix that. */
+  | 'store_update_required'
+  /** Refused or threw. The reason is a Crashlytics non-fatal, not this field. */
+  | 'failed';
+
+export interface DeviceOtaRequestResult {
+  /** Which request this answers — the `otaRequestId` the agent read. */
+  requestId: string;
+  status: DeviceOtaRequestStatus;
+  /** Epoch ms, from the device's own clock. */
+  atMs: number;
+}
+
 export interface Device {
   id: string;
   name: string;
@@ -554,6 +581,45 @@ export interface Device {
    * pinned against child writes by `parentControlsUnchanged()`.
    */
   reportRequestId?: string | null;
+
+  /**
+   * "Update now" — a parent asking this device to pick up the newest JS bundle
+   * rather than waiting for its next launch.
+   *
+   * Compared against the last id the agent answered, exactly as the two fields
+   * above are, and written by a parent client for the same reason
+   * `reportRequestId` is: the console already holds this document and there is
+   * nothing here for a server to decide. The phone half of the delivery is
+   * `notifyChildDeviceCommand`, which turns the write into a silent
+   * `ota_request` wake — `@kidgate/core/domain/otaRequest` decides which
+   * platforms may be asked at all and which need that push.
+   *
+   * **It names no bundle.** No URL, no version, no hash: the device reads
+   * `config/ota` exactly as it does unprompted, so the allow-listed Storage
+   * host and the published sha256 still stand between this field and the code
+   * that runs. A request that could name a download would make a compromised
+   * parent account into arbitrary code on a child's phone.
+   *
+   * Not under `controls` — a request is not a rule.
+   */
+  otaRequestId?: string | null;
+
+  /**
+   * What the device did about the request above. Written by the child agent.
+   *
+   * It exists because the failure is otherwise invisible: every refusal in
+   * `OtaUpdateService` is a Crashlytics non-fatal, which nobody but an operator
+   * can read, so a parent who pressed the button would watch a spinner forever
+   * on a device whose install cannot succeed.
+   *
+   * **`updated` is deliberately not one of the values.** That outcome ends in a
+   * restart — on Android through `ProcessPhoenix`, which exits the process hard
+   * enough that a `SharedPreferences.apply()` can die with it
+   * (`docs/SETUP_GOLIVE.md`, H2a) — so a write racing it is a write that
+   * sometimes lands. `otaVersion` moving is the durable signal for success, and
+   * both parent consoles already render it.
+   */
+  otaRequestResult?: DeviceOtaRequestResult | null;
 
   /**
    * How often this device is currently beating, in milliseconds — what it is

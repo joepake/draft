@@ -2,7 +2,8 @@ export const videoHistory = {
   title: 'देखे गए वीडियो',
   fallbackDeviceName: 'बच्चे का डिवाइस',
   toggleLabel: 'देखे गए वीडियो रिकॉर्ड करें',
-  toggleHint: 'ब्राउज़र में YouTube, और Android पर YouTube ऐप।',
+  toggleHint:
+    'ब्राउज़र में YouTube, और Android फ़ोन तथा TV पर YouTube ऐप। TV पर Shorts सूची में नहीं दिखते, क्योंकि TV ऐप उन्हें Shorts के रूप में नहीं पहचानता।',
   toggleFailed: 'वीडियो इतिहास अपडेट नहीं हो सका। फिर कोशिश करें।',
   unsupportedNote:
     'यह डिवाइस देखे गए वीडियो नहीं बता सकता। यह Android और Chrome पर काम करता है।',

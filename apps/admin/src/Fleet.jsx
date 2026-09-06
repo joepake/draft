@@ -1,4 +1,6 @@
+import { useMemo } from 'react';
 import BarChart from './BarChart.jsx';
+import { useT } from './i18n.js';
 import { useRollup } from './useRollup.js';
 
 /**
@@ -33,6 +35,10 @@ import { useRollup } from './useRollup.js';
  *   counted as denied.
  */
 
+/**
+ * Platform names are the OS vendors' own spelling and do not translate — the
+ * only label map on this page that stays a constant.
+ */
 const PLATFORM_LABELS = {
   ios: 'iOS',
   android: 'Android',
@@ -42,41 +48,68 @@ const PLATFORM_LABELS = {
   chromeos: 'ChromeOS',
 };
 
-const ACTIVE_LABELS = {
-  hour: 'Within the hour',
-  day: 'Within a day',
-  week: 'Within a week',
-  month: 'Within a month',
-  stale: 'Over a month',
-};
+/**
+ * The shipped locale packs, by the name a person calls the language — in the
+ * language currently on screen.
+ *
+ * The list is hard-coded rather than imported from `@kidgate/schema` because
+ * this app has no dependency on the workspace packages (`CLAUDE.md` rule 2b).
+ * A code the list does not know still draws, under its own key: a new language
+ * reads as unlabelled here, never as missing.
+ */
+const LOCALE_CODES = [
+  'en',
+  'vi',
+  'es',
+  'pt',
+  'de',
+  'fr',
+  'ja',
+  'ko',
+  'ar',
+  'id',
+  'it',
+  'tr',
+  'hi',
+  'ru',
+  'unknown',
+];
+
+/**
+ * `AppBlockStrength` and `WebFilterMechanism` both carry `false` as a real
+ * member — "this device cannot do it at all" — and a bucket key is a string, so
+ * the chart was drawing the word `false` beside a bar. Read as a broken value
+ * rather than as the answer it is, which is the one reading this screen must
+ * not invite: a device that cannot block apps is the most important row here.
+ *
+ * `unknown` is the third state and stays distinct from both. It is a device
+ * that published no capability probe, which the schema is repeatedly explicit
+ * about: **absent is unknown, never false.**
+ *
+ * Every label is kept inside the chart's 116px label column — in both packs.
+ * What `strong` and `best-effort` cost a family belongs in the subtitle, where
+ * there is room to say it, rather than in a label that would arrive truncated.
+ */
 
 /** The permissions worth their own row. All nine are collected; these are the
  * ones whose loss stops enforcement rather than degrading a nicety. */
-const PROTECTION_ROWS = [
-  ['screenTime', 'Screen time'],
-  ['accessibility', 'Accessibility'],
-  ['overlay', 'Overlay'],
-  ['location', 'Location'],
-  ['notifications', 'Notifications'],
-  ['batteryOptimization', 'Battery exemption'],
+const PROTECTION_KEYS = [
+  'screenTime',
+  'accessibility',
+  'overlay',
+  'location',
+  'notifications',
+  'batteryOptimization',
 ];
 
-function relabel(table, labels) {
-  const out = {};
-  for (const [key, value] of Object.entries(table || {})) {
-    out[labels[key] ?? key] = value;
-  }
-  return out;
-}
-
 /** Devices reporting each status for one permission, worst first. */
-function permissionSummary(protection) {
-  return PROTECTION_ROWS.map(([key, label]) => {
+function permissionSummary(protection, t) {
+  return PROTECTION_KEYS.map(key => {
     const table = protection?.[key] || {};
     const reported = Object.values(table).reduce((sum, value) => sum + value, 0);
     return {
       key,
-      label,
+      label: t(`permission.${key}`),
       denied: table.denied || 0,
       authorized: (table.authorized || 0) + (table.approved || 0),
       unavailable: table.unavailable || 0,
@@ -87,6 +120,7 @@ function permissionSummary(protection) {
 }
 
 export default function Fleet() {
+  const { t, language, formatNumber } = useT();
   /*
    * Reads the same rollup Report does. The range is irrelevant here — every
    * number on this page is point-in-time, taken from the newest row — but
@@ -95,16 +129,60 @@ export default function Fleet() {
    */
   const { data, error, busy, load } = useRollup(30);
 
+  // Rebuilt when the language changes and not on every render: each of these
+  // is a whole map handed to a chart, and a new object identity per render
+  // would defeat any memoisation `BarChart` grows later.
+  const labels = useMemo(
+    () => ({
+      active: {
+        hour: t('active.hour'),
+        day: t('active.day'),
+        week: t('active.week'),
+        month: t('active.month'),
+        stale: t('active.stale'),
+      },
+      formFactor: {
+        phone: t('formFactor.phone'),
+        tablet: t('formFactor.tablet'),
+        laptop: t('formFactor.laptop'),
+        desktop: t('formFactor.desktop'),
+        tv: t('formFactor.tv'),
+        unknown: t('formFactor.unknown'),
+      },
+      locale: Object.fromEntries(LOCALE_CODES.map(code => [code, t(`lang.${code}`)])),
+      appBlock: {
+        false: t('appBlock.false'),
+        strong: t('appBlock.strong'),
+        'best-effort': t('appBlock.bestEffort'),
+        unknown: t('appBlock.unknown'),
+      },
+      webFilter: {
+        false: t('webFilter.false'),
+        vpn: t('webFilter.vpn'),
+        contentFilter: t('webFilter.contentFilter'),
+        extension: t('webFilter.extension'),
+        dns: t('webFilter.dns'),
+        unknown: t('webFilter.unknown'),
+      },
+      /** Absent `appBuild` / `osVersion`, which is an old install, not a version. */
+      unknown: { unknown: t('value.unknown') },
+      /** A platform with no OTA channel at all — desktop, TV, the extension. */
+      ota: { unknown: t('value.noOtaChannel') },
+    }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- `t` reads `language`
+    [language],
+  );
+
   const latest = [...(data?.days ?? [])].reverse().find(Boolean) ?? null;
   const fleet = latest?.fleet;
 
   const header = (
     <div className="section-head">
-      <h2 className="section-title">Fleet</h2>
+      <h2 className="section-title">{t('fleet.title')}</h2>
       <div style={{ alignItems: 'center', display: 'flex', gap: 10 }}>
-        <span className="muted">As of {latest?.date ?? '—'}, not a range</span>
+        <span className="muted">{t('fleet.asOf', { date: latest?.date ?? '—' })}</span>
         <button className="btn btn-ghost" disabled={busy} onClick={() => load(30)}>
-          {busy ? 'Loading…' : 'Refresh'}
+          {busy ? t('common.loading') : t('common.refresh')}
         </button>
       </div>
     </div>
@@ -125,7 +203,7 @@ export default function Fleet() {
     return (
       <>
         {header}
-        <p className="muted">Loading…</p>
+        <p className="muted">{t('common.loading')}</p>
       </>
     );
   }
@@ -136,16 +214,14 @@ export default function Fleet() {
         {header}
         <div className="card">
           <p className="muted" style={{ margin: 0 }}>
-            No fleet data in the latest rollup row. Deploy{' '}
-            <code>operatorMetricsDaily</code> and run it once — this page arrives with
-            the next row.
+            {t('fleet.noRollup', { job: 'operatorMetricsDaily' })}
           </p>
         </div>
       </>
     );
   }
 
-  const permissions = permissionSummary(fleet.protection);
+  const permissions = permissionSummary(fleet.protection, t);
   const active = fleet.lastActive || {};
   const reachable = (active.hour || 0) + (active.day || 0) + (active.week || 0);
 
@@ -154,26 +230,24 @@ export default function Fleet() {
       {header}
       <div className="tile-grid" style={{ marginBottom: 12 }}>
         <div className="tile">
-          <div className="tile-label">Child devices</div>
-          <div className="tile-value">{fleet.devices.toLocaleString()}</div>
+          <div className="tile-label">{t('fleet.childDevices')}</div>
+          <div className="tile-value">{formatNumber(fleet.devices)}</div>
         </div>
         <div className="tile">
-          <div className="tile-label">Seen this week</div>
-          <div className="tile-value">{reachable.toLocaleString()}</div>
+          <div className="tile-label">{t('fleet.seenThisWeek')}</div>
+          <div className="tile-value">{formatNumber(reachable)}</div>
         </div>
         <div className="tile">
-          <div className="tile-label">Protection degraded</div>
-          <div className="tile-value">{(fleet.degraded || 0).toLocaleString()}</div>
+          <div className="tile-label">{t('fleet.degraded')}</div>
+          <div className="tile-value">{formatNumber(fleet.degraded || 0)}</div>
         </div>
         <div className="tile">
-          <div className="tile-label">Dead push token</div>
-          <div className="tile-value">
-            {(fleet.pushTokenDead || 0).toLocaleString()}
-          </div>
+          <div className="tile-label">{t('fleet.pushTokenDead')}</div>
+          <div className="tile-value">{formatNumber(fleet.pushTokenDead || 0)}</div>
         </div>
         <div className="tile">
-          <div className="tile-label">Unassigned to a child</div>
-          <div className="tile-value">{(fleet.unassigned || 0).toLocaleString()}</div>
+          <div className="tile-label">{t('fleet.unassigned')}</div>
+          <div className="tile-value">{formatNumber(fleet.unassigned || 0)}</div>
         </div>
       </div>
 
@@ -181,78 +255,87 @@ export default function Fleet() {
         <div className="status-strip" style={{ marginBottom: 12 }}>
           <span className="status-dot is-critical" />
           <span className="status-label">
-            {fleet.multiProfile} device{fleet.multiProfile === 1 ? '' : 's'} stuck
-            behind a second OS profile
+            {t('fleet.multiProfile', { count: fleet.multiProfile })}
           </span>
           <span className="status-detail">
-            A permission reads granted in Settings while the app sees nothing. The
-            family cannot diagnose this and the app cannot fix it — the only cure is
-            removing the second install. <code>docs/FEASIBILITY.md</code>, K1/K2.
+            {t('fleet.multiProfileDetail')}
+            <code>docs/FEASIBILITY.md</code>
+            {t('fleet.multiProfileRef')}
           </span>
         </div>
       ) : null}
 
       <div className="chart-grid">
         <div className="chart-card">
-          <h3 className="chart-title">Platform</h3>
-          <p className="chart-sub">Child devices, by the OS they run</p>
+          <h3 className="chart-title">{t('fleet.platform')}</h3>
+          <p className="chart-sub">{t('fleet.platformSub')}</p>
           <BarChart
-            data={relabel(fleet.platform, PLATFORM_LABELS)}
+            data={fleet.platform}
+            labels={PLATFORM_LABELS}
             total={fleet.devices}
           />
         </div>
 
         <div className="chart-card">
-          <h3 className="chart-title">Form factor</h3>
-          <p className="chart-sub">Absent on devices that predate the field</p>
-          <BarChart data={fleet.formFactor} total={fleet.devices} />
+          <h3 className="chart-title">{t('fleet.formFactor')}</h3>
+          <p className="chart-sub">{t('fleet.formFactorSub')}</p>
+          <BarChart
+            data={fleet.formFactor}
+            labels={labels.formFactor}
+            total={fleet.devices}
+          />
         </div>
 
         <div className="chart-card">
-          <h3 className="chart-title">Last seen</h3>
-          <p className="chart-sub">
-            Over a month is the closest signal to an uninstall the product has
-          </p>
-          <BarChart data={relabel(active, ACTIVE_LABELS)} total={fleet.devices} />
+          <h3 className="chart-title">{t('fleet.lastSeen')}</h3>
+          <p className="chart-sub">{t('fleet.lastSeenSub')}</p>
+          <BarChart data={active} labels={labels.active} total={fleet.devices} />
         </div>
 
         <div className="chart-card">
-          <h3 className="chart-title">App version</h3>
-          <p className="chart-sub">The name a person reads — `1.0.0`</p>
+          <h3 className="chart-title">{t('fleet.appVersion')}</h3>
+          <p className="chart-sub">{t('fleet.appVersionSub')}</p>
           <BarChart data={fleet.appVersion} total={fleet.devices} />
         </div>
 
         <div className="chart-card">
-          <h3 className="chart-title">Build number</h3>
+          <h3 className="chart-title">{t('fleet.appBuild')}</h3>
+          <p className="chart-sub">{t('fleet.appBuildSub')}</p>
+          <BarChart
+            data={fleet.appBuild}
+            labels={labels.unknown}
+            total={fleet.devices}
+          />
+        </div>
+
+        <div className="chart-card">
+          <h3 className="chart-title">{t('fleet.ota')}</h3>
           <p className="chart-sub">
-            A string, not a number — Windows has none, so the field could not be numeric
+            {t('fleet.otaSubBefore')}
+            <code>config/ota</code>
+            {t('fleet.otaSubAfter')}
           </p>
-          <BarChart data={fleet.appBuild} total={fleet.devices} />
+          <BarChart data={fleet.otaVersion} labels={labels.ota} total={fleet.devices} />
         </div>
 
         <div className="chart-card">
-          <h3 className="chart-title">OTA bundle</h3>
-          <p className="chart-sub">
-            Compare against <code>config/ota</code>. Unknown is desktop, TV and the
-            extension, which have no OTA channel — not "behind"
-          </p>
-          <BarChart data={fleet.otaVersion} total={fleet.devices} />
+          <h3 className="chart-title">{t('fleet.osVersion')}</h3>
+          <p className="chart-sub">{t('fleet.osVersionSub')}</p>
+          <BarChart
+            data={fleet.osVersion}
+            labels={labels.unknown}
+            total={fleet.devices}
+          />
         </div>
 
         <div className="chart-card">
-          <h3 className="chart-title">OS version</h3>
-          <p className="chart-sub">Decides what a build may drop support for</p>
-          <BarChart data={fleet.osVersion} total={fleet.devices} />
+          <h3 className="chart-title">{t('fleet.locale')}</h3>
+          <p className="chart-sub">{t('fleet.localeSub')}</p>
+          <BarChart data={fleet.locale} labels={labels.locale} total={fleet.devices} />
         </div>
 
         <div className="chart-card">
-          <h3 className="chart-title">Device language</h3>
-          <p className="chart-sub">Which of the 14 locale packs earn their keep</p>
-          <BarChart data={fleet.locale} total={fleet.devices} />
-        </div>
-
-        <div className="chart-card">
-          <h3 className="chart-title">Device country</h3>
+          <h3 className="chart-title">{t('fleet.country')}</h3>
           {/*
             No `total`: every other chart on this page counts devices and this
             one counts **families**, so a share against `fleet.devices` would
@@ -263,74 +346,72 @@ export default function Fleet() {
             reported one yet, which is every device until it next launches.
           */}
           <p className="chart-sub">
-            Families, not devices. Countries with fewer than five fold into{' '}
-            <code>other</code> — a bucket of one names that family
+            {t('fleet.countrySubBefore')}
+            <code>other</code>
+            {t('fleet.countrySubAfter')}
           </p>
-          <BarChart
-            data={fleet.country}
-            emptyLabel="No device has reported a country yet"
-          />
+          <BarChart data={fleet.country} emptyLabel={t('fleet.countryEmpty')} />
         </div>
 
         <div className="chart-card">
-          <h3 className="chart-title">App blocking strength</h3>
+          <h3 className="chart-title">{t('fleet.appBlock')}</h3>
           <p className="chart-sub">
+            {t('fleet.appBlockSub')}
             {fleet.noCapabilityProbe > 0
-              ? `${fleet.noCapabilityProbe} device${fleet.noCapabilityProbe === 1 ? '' : 's'} published no probe — unknown, not "cannot"`
-              : 'From the capability probe each device publishes'}
+              ? t('fleet.noProbeCount', { count: fleet.noCapabilityProbe })
+              : t('fleet.fromProbe')}
           </p>
           <BarChart
             data={fleet.appBlock}
-            emptyLabel="No device has published a probe"
+            labels={labels.appBlock}
+            emptyLabel={t('fleet.noProbePublished')}
           />
         </div>
 
         <div className="chart-card">
-          <h3 className="chart-title">Web filter mechanism</h3>
-          <p className="chart-sub">VPN, content filter, extension or DNS</p>
+          <h3 className="chart-title">{t('fleet.webFilter')}</h3>
+          <p className="chart-sub">{t('fleet.webFilterSub')}</p>
           <BarChart
             data={fleet.webFilter}
-            emptyLabel="No device has published a probe"
+            labels={labels.webFilter}
+            emptyLabel={t('fleet.noProbePublished')}
           />
         </div>
       </div>
 
       <div className="card" style={{ marginTop: 12 }}>
-        <h3 className="chart-title">Permission status</h3>
-        <p className="chart-sub">
-          Only devices that reported each permission are counted — one the device never
-          mentioned is unknown, not denied.
-        </p>
+        <h3 className="chart-title">{t('fleet.permissionStatus')}</h3>
+        <p className="chart-sub">{t('fleet.permissionSub')}</p>
         {permissions.length === 0 ? (
-          <p className="muted">No device has reported a protection status.</p>
+          <p className="muted">{t('fleet.noProtectionReported')}</p>
         ) : (
           <div className="table-scroll">
             <table className="table">
               <thead>
                 <tr>
-                  <th>Permission</th>
-                  <th>Granted</th>
-                  <th>Denied</th>
-                  <th>Not asked</th>
-                  <th>Unavailable</th>
-                  <th>Reported by</th>
+                  <th>{t('fleet.colPermission')}</th>
+                  <th>{t('fleet.colGranted')}</th>
+                  <th>{t('fleet.colDenied')}</th>
+                  <th>{t('fleet.colNotAsked')}</th>
+                  <th>{t('fleet.colUnavailable')}</th>
+                  <th>{t('fleet.colReportedBy')}</th>
                 </tr>
               </thead>
               <tbody>
                 {permissions.map(row => (
                   <tr key={row.key}>
                     <td>{row.label}</td>
-                    <td>{row.authorized.toLocaleString()}</td>
+                    <td>{formatNumber(row.authorized)}</td>
                     <td>
                       {row.denied > 0 ? (
-                        <b>{row.denied.toLocaleString()}</b>
+                        <b>{formatNumber(row.denied)}</b>
                       ) : (
-                        row.denied.toLocaleString()
+                        formatNumber(row.denied)
                       )}
                     </td>
-                    <td>{row.notDetermined.toLocaleString()}</td>
-                    <td>{row.unavailable.toLocaleString()}</td>
-                    <td>{row.reported.toLocaleString()}</td>
+                    <td>{formatNumber(row.notDetermined)}</td>
+                    <td>{formatNumber(row.unavailable)}</td>
+                    <td>{formatNumber(row.reported)}</td>
                   </tr>
                 ))}
               </tbody>

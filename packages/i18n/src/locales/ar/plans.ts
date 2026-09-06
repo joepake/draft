@@ -1,6 +1,6 @@
 export const plans = {
   title: 'الخطط',
-  statusPremiumActiveTitle: 'Premium نشط',
+  statusPremiumActiveTitle: '\u200FPremium نشط',
   statusPremiumActiveSubtitle: 'لديك وصول كامل إلى كل ميزة في KidGate.',
   pillPremium: 'Premium',
   statusTrialActiveTitle: 'الفترة التجريبية نشطة',
@@ -47,7 +47,7 @@ export const plans = {
   compareNewApps: 'التطبيقات المثبَّتة حديثًا',
   compareNewAppsPremium: 'أي التطبيقات، والموافقة قبل التثبيت',
   compareMessages: 'تنبيهات الرسائل (Android)',
-  compareSafety: 'تنبيهات العبث وتسجيل الوصول',
+  compareSafety: 'تنبيهات الحماية والاطمئنان',
   compareControls: 'حظر التطبيقات وفلتر الويب',
   compareControlsFree: 'أي تطبيق، محتوى البالغين',
   compareControlsPremium: 'حسب الفئة، حدود لكل تطبيق، قوائمك الخاصة',
@@ -100,8 +100,8 @@ export const plans = {
   subscribeToContinue:
     'أنت الآن على الخطة المجانية. قواعدك لا تزال تعمل — اشترك للحصول على النشاط المباشر والسجل والتقارير.',
   connectDevicesToStartTrial: 'اربط جهاز أحد الوالدين وجهاز طفل لبدء فترتك التجريبية.',
-  premiumActiveFooter: 'Premium نشط',
-  premiumPriceFooter: 'Premium {{price}}/شهريًا',
+  premiumActiveFooter: '\u200FPremium نشط',
+  premiumPriceFooter: '\u200FPremium {{price}}/شهريًا',
   viewPlans: 'عرض الخطط',
   viewFamilyPlanStatus: 'عرض حالة الخطة',
   onlyOwnerCanSubscribe: 'يمكن فقط لمالك العائلة الاشتراك أو استعادة المشتريات.',
@@ -122,9 +122,9 @@ export const plans = {
     'عملية الشراء في انتظار الموافقة. سيتم تفعيل Premium بمجرد اكتمالها.',
   purchaseFailed: 'لم تكتمل عملية الشراء. يرجى المحاولة مرة أخرى.',
   storeNotReady: 'المتجر غير جاهز بعد. يرجى المحاولة مرة أخرى بعد قليل.',
-  premiumNotAvailable: 'Premium غير متاح للشراء حاليًا.',
+  premiumNotAvailable: '\u200FPremium غير متاح للشراء حاليًا.',
   premiumProductNotFound:
-    'Premium غير متاح للشراء حاليًا. يرجى المحاولة مرة أخرى لاحقًا.',
+    '\u200FPremium غير متاح للشراء حاليًا. يرجى المحاولة مرة أخرى لاحقًا.',
   subscriptionOfferNotConfigured:
     'هذا الاشتراك غير متاح حاليًا. يرجى المحاولة مرة أخرى لاحقًا.',
   unableToStartPurchase: 'تعذر بدء عملية الشراء. يرجى المحاولة مرة أخرى.',
@@ -149,7 +149,7 @@ export const plans = {
   trustOnePlan: 'خطة واحدة للعائلة كلها',
   trustNoAds: 'بدون إعلانات',
   freePlanName: 'مجاني',
-  freeDescription: 'الأساسيات تعمل على جهاز طفل واحد، بلا حد زمني.',
+  freeDescription: 'الأساسيات تعمل على جهاز طفل واحد، بلا تاريخ انتهاء.',
   featureOneChildDevice: 'جهاز طفل واحد',
   termLifetime: 'مدى الحياة',
   badgeOneTime: 'دفعة واحدة',
@@ -161,7 +161,7 @@ export const plans = {
   featureFootnotePlatforms:
     'تعتمد بعض الميزات على ما تسمح به كل منصة، لذا لا تتوفر جميعها على كل جهاز.',
   sectionPlatforms: 'أين يعمل KidGate',
-  platformIos: 'iPhone وiPad',
+  platformIos: '\u200FiPhone وiPad',
   platformIosDetail: 'جهاز ولي أمر أو طفل · iOS 16 أو أحدث',
   platformAndroid: 'Android',
   platformAndroidDetail: 'جهاز ولي أمر أو طفل · Android 7 أو أحدث',

@@ -14,7 +14,7 @@ export const timeRequest = {
   toastDeclineFailed: '요청을 거절하지 못했습니다. 다시 시도해 주세요.',
   toastApproveFailed: '요청을 승인하지 못했습니다. 다시 시도해 주세요.',
   toastLockFailed: '기기를 잠그지 못했습니다. 다시 시도해 주세요.',
-  statusWaitingForApproval: '부모님의 응답을 기다리는 중입니다 ({{minutes}}분 요청함).',
+  statusWaitingForApproval: '부모님의 응답을 기다리고 있어요 ({{minutes}}분 요청함).',
   statusCooldown: '{{time}} 후에 새 요청을 보낼 수 있어요.',
   statusDailyLimitExceeded:
     '오늘의 스크린 타임을 모두 사용했어요. 앱은 내일 다시 열리며, 부모님이 시간을 추가하면 더 일찍 열려요.',

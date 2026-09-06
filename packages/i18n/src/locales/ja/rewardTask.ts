@@ -32,7 +32,7 @@ export const rewardTask = {
   heroCaptionEmpty: 'タスクを作って、お子さまが追加時間を獲得できるようにしましょう。',
   noLimitHintTitle: '1日の上限が未設定です',
   noLimitHintBody:
-    'ボーナス分は端末に1日の上限があるときだけ有効です。まず「1日の上限」で設定してください。',
+    'ボーナス分はデバイスに1日の上限があるときだけ有効です。まず「1日の上限」で設定してください。',
   noLimitHintCta: '1日の上限を設定',
   openSectionTitle: '挑戦できるタスク',
   tabOpen: '未完了',

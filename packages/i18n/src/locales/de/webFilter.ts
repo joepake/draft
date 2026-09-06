@@ -38,7 +38,7 @@ export const webFilter = {
   infoLine2Android:
     'Bitte deaktiviere privates DNS auf dem Kindergerät. Ist es aktiv, können Browser den Filter umgehen.',
   infoLine3Android:
-    'Das Kindergerät zeigt beim Filtern ein VPN-Symbol. VPN aus bedeutet Filter aus — öffne KidGate erneut, um ihn wiederherzustellen.',
+    'Das Kindergerät zeigt beim Filtern ein VPN-Symbol. VPN aus bedeutet Filter aus – öffne KidGate erneut, um ihn wiederherzustellen.',
   infoLine4Android: 'Gehe zu Einstellungen → Netzwerk & Internet → Privates DNS → Aus.',
   infoLine1Macos:
     'KidGate führt auf dem Mac einen Inhaltsfilter aus, der prüft, welche Websites aufgerufen werden, und blockiert die, die zu deinen Kategorien gehören.',
@@ -47,7 +47,7 @@ export const webFilter = {
   infoLine3Macos:
     'Der Mac des Kindes zeigt den Filter als aktiv an, sobald er genehmigt ist. Wird er dort ausgeschaltet, öffne KidGate erneut, um ihn wiederherzustellen.',
   infoLine4Macos:
-    'Der Filter liest Website-Namen, die moderne Browser bei etwa der Hälfte der Besuche verbergen — diese Seiten werden nicht anhand deiner Kategorien geprüft. Er blockiert aber weiterhin die meisten Seiten, die Kinder auf diesem Weg erreichen.',
+    'Der Filter liest Website-Namen, die moderne Browser bei etwa der Hälfte der Besuche verbergen – diese Seiten werden nicht anhand deiner Kategorien geprüft. Er blockiert aber weiterhin die meisten Seiten, die Kinder auf diesem Weg erreichen.',
   privateDnsBannerTitle: 'Privates DNS deaktivieren',
   privateDnsBannerBody:
     'Privates DNS ist aktiv, daher kann der Erwachsenenfilter umgangen werden. Bitte deaktiviere es.',
@@ -66,8 +66,8 @@ export const webFilter = {
   webHistoryNote: 'Erfordert einen gefilterten Browser oder DNS/VPN-Berichte.',
   categoriesTitle: 'Was blockiert wird',
   categoriesSubtitle:
-    'KidGate bringt eigene Domain-Listen mit. Sie decken die Seiten ab, die Kinder wirklich erreichen, nicht das ganze Web — ergänze sie mit den Listen unten.',
-  androidOnlyCategory: 'Nur Android — iOS hat keine Websteuerung pro Kategorie',
+    'KidGate bringt eigene Domain-Listen mit. Sie decken die Seiten ab, die Kinder wirklich erreichen, nicht das ganze Web – ergänze sie mit den Listen unten.',
+  androidOnlyCategory: 'Nur Android – iOS hat keine Websteuerung pro Kategorie',
   iosCategoryNote:
     'Das iPhone unterstützt nur {{category}}, über Apples eigenen Filter. Die übrigen Kategorien gelten für Android-Geräte.',
   allowListTitle: 'Immer erlauben',

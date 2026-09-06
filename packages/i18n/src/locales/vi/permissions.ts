@@ -5,7 +5,7 @@ export const permissions = {
     'KidGate sử dụng camera để gửi kèm một ảnh nhanh cùng SOS và Báo an toàn.',
   allow: 'Cho phép',
   notNow: 'Để sau',
-  cameraTurnedOffTitle: 'Camera đang tắt đối với KidGate',
+  cameraTurnedOffTitle: 'KidGate chưa được dùng camera',
   cameraTurnedOffMessage:
     'Vui lòng mở Cài đặt và bật Camera để Báo an toàn và SOS có thể gửi kèm ảnh.',
   openSettings: 'Mở Cài đặt',
@@ -21,13 +21,13 @@ export const permissions = {
   overlayLabel: 'Hiển thị trên ứng dụng khác',
   overlayHint:
     'Cho phép KidGate hiển thị màn hình khóa đè lên ứng dụng khác khi giới hạn được áp dụng.',
-  batteryOptimizationLabel: 'Pin không hạn chế',
+  batteryOptimizationLabel: 'Pin không bị hạn chế',
   batteryOptimizationHint:
-    'Chọn Cho phép trên hộp thoại hệ thống để KidGate có thể chạy nền. Nếu hộp thoại không xuất hiện: Thông tin ứng dụng → Pin → Không hạn chế.',
+    'Chọn Cho phép trên hộp thoại hệ thống để KidGate có thể chạy nền. Nếu hộp thoại không xuất hiện: Thông tin ứng dụng → Pin → Không bị hạn chế.',
   exactAlarmLabel: 'Chuông báo và lời nhắc',
   exactAlarmHint:
     'Cho phép Chuông báo và lời nhắc để Giờ khóa thiết bị bắt đầu và kết thúc đúng giờ.',
-  accessibilityLabel: 'Trợ năng hỗ trợ khóa',
+  accessibilityLabel: 'Trợ năng (hỗ trợ khóa)',
   accessibilityHint:
     'Bật KidGate trong Trợ năng → Ứng dụng đã cài đặt / Đã tải xuống. Quyền này cần thiết để màn hình khóa luôn hiển thị đè lên ứng dụng khác.',
   oemSectionDescription:
@@ -36,10 +36,10 @@ export const permissions = {
   oemAutostartHintXiaomi:
     'Trong mục Tự khởi động, hãy bật KidGate để tính năng bảo vệ được khôi phục sau khi khởi động lại thiết bị.',
   oemAutostartHintSamsung:
-    'Trong Device care / Pin, hãy cho phép KidGate hoạt động ở chế độ nền.',
-  oemAutostartHintOppo: 'Trong Khởi động tự động / Auto-launch, hãy cho phép KidGate.',
+    'Trong Chăm sóc thiết bị (Device care) → Pin, hãy cho phép KidGate chạy nền.',
+  oemAutostartHintOppo: 'Trong Khởi động tự động (Auto-launch), hãy cho phép KidGate.',
   oemAutostartHintVivo:
-    'Trong Tự khởi động / Tiêu thụ điện nền cao, hãy cho phép KidGate.',
+    'Trong Tự khởi động, và trong mục cảnh báo ứng dụng hao pin nền, hãy cho phép KidGate.',
   oemAutostartHintHuawei:
     'Trong Quản lý khởi động, hãy đặt KidGate ở chế độ Quản lý thủ công và bật toàn bộ quyền.',
   oemAutostartHintOther:
@@ -57,5 +57,5 @@ export const permissions = {
   uninstallProtectionWizardBody:
     'Ngăn gỡ cài đặt ứng dụng này khi chưa nhập mã PIN phụ huynh. Android sẽ hiển thị màn hình xác nhận riêng.',
   notificationsWizardBody:
-    'Cho phép thông báo để thiết bị này nhận phê duyệt thời gian và nhắc nhở ngay lập tức.',
+    'Cho phép thông báo để thiết bị này nhận ngay kết quả duyệt yêu cầu thêm giờ và các lời nhắc.',
 } as const;

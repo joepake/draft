@@ -108,8 +108,8 @@ export default {
     trust1Text: 'Data anak tidak pernah dipakai untuk iklan',
     trust2Title: 'Hapus kapan saja',
     trust2Text: 'Hapus akun keluarga dan semua data atas permintaan Anda',
-    trust3Title: 'Ponsel dan komputer',
-    trust3Text: 'iPhone, Android, Mac, dan Windows dalam satu akun keluarga',
+    trust3Title: 'Ponsel, komputer, dan browser',
+    trust3Text: 'iPhone, Android, Mac, Windows, dan Chrome dalam satu akun keluarga',
     trust4Title: 'Satu paket per keluarga',
     trust4Text: 'Semua perangkat orang tua dan anak, satu langganan',
 
@@ -128,7 +128,7 @@ export default {
       'Batasi tiap aplikasi sendiri-sendiri, di atas batas harian — “setengah jam TikTok” tanpa harus melarangnya sama sekali.',
     feature4Title: 'Penyaringan web & riwayat',
     feature4Text:
-      'Tolak situs dewasa dan judi, lalu lihat situs mana yang benar-benar dibuka ponsel itu dan mana yang dihentikan.',
+      'Tolak situs dewasa dan judi di ponsel, di komputer, dan di Chrome, lalu lihat situs mana yang dicoba dibuka dan mana yang dihentikan.',
     feature5Title: 'Lokasi langsung & tempat',
     feature5Text:
       'Lihat lokasi terakhir anak Anda, telusuri riwayatnya, dan dapatkan pemberitahuan saat ia tiba di atau meninggalkan tempat tersimpan.',
@@ -137,7 +137,7 @@ export default {
       'Minta anak Anda memastikan dirinya aman, dan terima SOS seketika dengan lokasi dan foto saat darurat.',
     feature7Title: 'Peringatan perlindungan & aplikasi',
     feature7Text:
-      'Ketahui saat sebuah izin penting dimatikan — dan di Android, saat sebuah aplikasi dipasang atau dihapus.',
+      'Ketahui saat sebuah izin penting dimatikan — dan di Android, Mac, serta Windows, saat aplikasi baru muncul dan menunggu persetujuan Anda.',
     feature8Title: 'Tugas berhadiah & waktu tambahan',
     feature8Text:
       'Anak mendapat menit tambahan dengan menyelesaikan tugas, atau meminta waktu lebih. Keduanya masuk ke ponsel Anda untuk disetujui.',
@@ -156,7 +156,7 @@ export default {
       'Semua yang terjadi, berurutan — perangkat dibuka, situs difilter, tugas selesai, peringatan dikirim.',
     platformsTitle: 'Satu KidGate, di mana pun layarnya',
     platformsSub:
-      'Aturan yang sama dan akun keluarga yang sama di ponsel maupun komputer. Aplikasi desktop dipasang dari situs ini, bukan dari toko aplikasi.',
+      'Aturan yang sama dan akun keluarga yang sama di ponsel, di komputer, dan di Chrome. Aplikasi desktop dipasang dari situs ini, bukan dari toko aplikasi.',
 
     showcaseEyebrow: 'Dasbor orang tua',
     showcaseTitle: 'Seluruh keluarga dalam satu layar',
@@ -203,10 +203,10 @@ export default {
       'Enam hal yang kami periksa terhadap aplikasi pembanding pilihan orang tua. Masing-masing menyebut platform tempat hal itu berlaku.',
     only1Title: 'TV ruang keluarga juga',
     only1Text:
-      'Android TV mendapat Jam Diblokir, Blokir aplikasi, batas per aplikasi, dan Penyaringan web yang sama seperti ponsel. Kebanyakan kontrol orang tua berhenti di ponsel.',
+      'Android TV mendapat Jam Diblokir, Blokir aplikasi, batas per aplikasi, dan Penyaringan web yang sama seperti ponsel. Versinya sudah berjalan di perangkat sungguhan hari ini dan sedang menunggu rilis di toko aplikasi, itulah sebabnya daftar platform menulis “Direncanakan”. Kebanyakan kontrol orang tua berhenti di ponsel.',
     only2Title: 'Peringatan pesan yang tetap di ponsel',
     only2Text:
-      'Di Android, pesan dicocokkan di perangkat itu sendiri dengan daftar kata kunci dalam 14 bahasa. Hanya kata yang cocok yang disimpan — isi percakapan tidak pernah disimpan.',
+      'Di Android, pesan dicocokkan di perangkat itu sendiri dengan daftar kata kunci dalam 14 bahasa, dan yang keluar dari ponsel hanyalah kata yang cocok, tidak pernah isi percakapannya. Satu hal saja yang mengubahnya, dan hanya jika Anda memintanya: aktifkan konfirmasi AI, maka pesan masuk yang ambigu dikirim untuk dinilai, sehingga Anda tidak terbangun karena sebuah kata biasa.',
     only3Title: 'Semua aplikasi, bukan daftar aplikasi',
     only3Text:
       'Di Android, peringatan datang dari notifikasi dan ketikan di aplikasi apa pun yang dipakai anak Anda — Zalo, LINE, KakaoTalk, obrolan dalam game — bukan dari daftar tetap aplikasi yang didukung.',
@@ -225,16 +225,16 @@ export default {
     faqSub: 'Jawaban singkat sebelum Anda mengunduh.',
     faq1Q: 'Apakah ada uji coba gratis?',
     faq1A:
-      'Ya. Uji coba dimulai saat perangkat orang tua dan anak pertama Anda terhubung, dan mencakup semua fitur Premium. Setelah berakhir, semua aturan yang Anda buat — Batas harian, Jam Diblokir, Aplikasi yang Diblokir, Filter web, dan lokasi — tetap berjalan gratis di satu perangkat anak.',
+      'Ya. Uji coba dimulai saat perangkat orang tua dan anak pertama Anda terhubung, dan mencakup semua fitur Premium. Setelah berakhir, aturan yang Anda buat — Batas harian, Jam Diblokir, Aplikasi yang Diblokir, Filter web, Kunci perangkat, permintaan waktu tambahan, dan tugas berhadiah — tetap berjalan gratis di satu perangkat anak, dan Anda masih bisa menanyakan posisi perangkat itu. Aktivitas langsung, riwayat, laporan mingguan, dan pelacakan lokasi adalah yang dikembalikan oleh Premium.',
     faq2Q: 'Berapa perangkat yang bisa saya kelola?',
     faq2A:
-      'Satu langganan mencakup seluruh keluarga Anda — beberapa perangkat anak dan beberapa orang tua dalam paket yang sama.',
+      'Satu langganan mencakup seluruh keluarga Anda — setiap perangkat anak dan setiap orang tua dalam paket yang sama. Pada paket gratis, satu perangkat anak tetap dipantau dan Anda yang memilih yang mana; perangkat lainnya tetap menerapkan aturan yang sudah Anda atur dan berhenti mengirim aktivitas.',
     faq3Q: 'Bisakah anak saya menghapus atau mengakali KidGate?',
     faq3A:
       'Pengaturan sensitif berada di balik PIN orang tua, dan Peringatan Perlindungan langsung memberi tahu Anda jika izin penting dimatikan di perangkat anak.',
     faq4Q: 'Bisakah saya mengelola semuanya dari komputer?',
     faq4A:
-      'Uji coba dimulai saat perangkat orang tua dan anak pertama Anda terhubung, dan memberi akses penuh ke semua fitur. Menghapus perangkat anak tidak mengatur ulang uji coba. Setelah berakhir, semua aturan tetap berjalan gratis di satu perangkat anak; Premium mempertahankan aktivitas langsung, riwayat, laporan mingguan, dan semua perangkat.',
+      'Bisa. Dasbor orang tua terbuka di browser mana pun — masuk dengan kode dari ponsel Anda dan Anda melihat keluarga, perangkat, serta pengaturan yang sama. Membaca langsung bisa; mengunci perangkat atau mengubah sebuah batas akan meminta PIN orang tua Anda, atau persetujuan dari aplikasi.',
     faqMore: 'Masih ada pertanyaan? Kunjungi Dukungan',
 
     ctaTitle: 'Mulai lindungi keluarga Anda hari ini',
@@ -500,7 +500,7 @@ export default {
     usageSyncNote:
       'Waktu layar bisa butuh beberapa menit untuk muncul di layar ini — lebih lama jika perangkat tidak memiliki koneksi internet atau ditutup secara tidak terduga.',
     usageSyncNoteTv:
-      'TV ini hanya memeriksa secara berkala, jadi waktu layar bisa butuh waktu hingga 30 menit untuk muncul di layar ini — lebih lama jika tidak ada koneksi internet.',
+      'TV ini hanya memeriksa secara berkala, jadi waktu layar bisa butuh waktu hingga satu jam untuk muncul di layar ini — lebih lama jika tidak ada koneksi internet.',
     cardRecent: 'Aktivitas terbaru',
     cardRecentSub: 'Terbaru dulu',
     cardRecentEmpty:
@@ -592,7 +592,7 @@ export default {
     webActivitySyncNote:
       'Aktivitas web bisa butuh beberapa menit untuk muncul di layar ini — lebih lama jika perangkat tidak memiliki koneksi internet atau ditutup secara tidak terduga.',
     webActivitySyncNoteTv:
-      'TV ini hanya memeriksa secara berkala, jadi aktivitas web bisa butuh waktu hingga 30 menit untuk muncul di layar ini — lebih lama jika tidak ada koneksi internet.',
+      'TV ini hanya memeriksa secara berkala, jadi aktivitas web bisa butuh waktu hingga satu jam untuk muncul di layar ini — lebih lama jika tidak ada koneksi internet.',
     colDomain: 'Domain',
     colVisits: 'Kunjungan',
     colBlocked: 'Diblokir',
@@ -910,9 +910,9 @@ export default {
     windowsRequires: 'Windows 10 atau lebih baru, 64-bit.',
     button: 'Unduh',
     warningSub:
-      'Kedua sistem menampilkan peringatan ini untuk aplikasi apa pun yang dipasang di luar toko mereka oleh pengembang yang belum masuk daftar terverifikasi — bukan karena menemukan sesuatu di KidGate. Tiap kartu di atas menjelaskan cara mengizinkan peluncuran pertama. Unduh hanya dari kidgate.app.',
+      'Windows menampilkan peringatan itu untuk aplikasi apa pun yang dipasang di luar tokonya sendiri oleh pengembang yang belum masuk daftar terverifikasi — bukan karena menemukan sesuatu di KidGate. Kartu Windows di atas menjelaskan cara mengizinkannya. Paket Mac sudah ditandatangani dan dinotarisasi oleh Apple sehingga tidak memunculkan peringatan. Unduh hanya dari kidgate.app.',
     macosSteps:
-      'Buka aplikasi sekali dan biarkan ditolak. Lalu buka System Settings, Privacy & Security, gulir ke bawah dan pilih Open Anyway.',
+      'Buka paket yang telah diunduh lalu ikuti pemasangnya. Setelah itu macOS meminta Anda sekali untuk mengizinkan ekstensi sistem KidGate, di Login Items & Extensions — Penyaringan web belum berjalan sebelum Anda mengizinkannya.',
     windowsSteps:
       'Saat Windows berkata telah melindungi PC Anda, pilih More info, lalu Run anyway.',
   },
@@ -928,7 +928,7 @@ export default {
     storyP2:
       'Jadi kami membuat versi yang kami inginkan di rumah sendiri. Orang tua mengatur batas harian, Jam diblokir, Blokir aplikasi, dan Penyaringan web sekali, lalu perangkat mematuhinya. Anak melihat angka yang sama dengan orang tuanya, bisa meminta tambahan waktu, dan selalu bisa menghubungi orang tua lewat SOS. KidGate tidak berpura-pura tidak ada.',
     storyP3:
-      'Ia berjalan di iPhone, Android, Mac, dan Windows, dengan dasbor yang dibuka di peramban mana pun. Satu keluarga, satu paket, semua perangkat.',
+      'Ia berjalan di iPhone, Android, Mac, dan Windows, dengan ekstensi untuk Chrome dan dasbor yang dibuka di peramban mana pun. Satu keluarga, satu paket, semua perangkat.',
     valuesEyebrow: 'Yang kami percayai',
     valuesTitle: 'Empat aturan yang tidak kami langgar',
     valuesSub:
@@ -964,9 +964,12 @@ export default {
     make5Soon: 'Direncanakan',
     make5Title: 'Android TV',
     make5Text:
-      'Layar ruang keluarga, diperlakukan sebagai perangkat bersama keluarga dan bukan milik satu anak — dengan batas dan jadwal yang sama seperti di ponsel.',
-    make6Title: 'Dasbor orang tua',
+      'Layar ruang keluarga, diperlakukan sebagai perangkat bersama keluarga dan bukan milik satu anak — dengan batas dan jadwal yang sama seperti di ponsel. Sudah berjalan di perangkat sungguhan dan kini menunggu perilisannya di toko.',
+    make6Title: 'Chrome',
     make6Text:
+      'Ekstensi peramban yang membawa Penyaringan web yang sama ke dalam Chrome, di komputer yang sudah memasang KidGate maupun di komputer yang tidak bisa. Sudah jadi dan tersambung, tinggal menunggu peninjauan Chrome Web Store.',
+    make7Title: 'Dasbor orang tua',
+    make7Text:
       'Peramban adalah layar kedua orang tua. Masuk dari komputer mana pun dengan kode dari ponsel Anda; tidak ada yang perlu dipasang.',
     factsEyebrow: 'KidGate hari ini',
     factsTitle: 'Empat angka',

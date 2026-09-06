@@ -48,7 +48,7 @@ export const plans = {
   compareNewApps: '新しくインストールされたアプリ',
   compareNewAppsPremium: 'アプリ名と、インストール前の承認',
   compareMessages: 'メッセージの通知（Android）',
-  compareSafety: '保護解除の通知とチェックイン',
+  compareSafety: '保護の通知とチェックイン',
   compareControls: 'アプリのブロックとWebフィルター',
   compareControlsFree: 'すべてのアプリ、成人向けコンテンツ',
   compareControlsPremium: 'カテゴリ別、アプリごとの上限、独自のリスト',
@@ -111,7 +111,7 @@ export const plans = {
   memberSubscriptionNotice:
     '1つのプランで家族全員をカバーし、支払いを行うのは管理者のみです。家族がトライアル中か登録済みかを確認できます。',
   memberTrialActiveSubtitle:
-    'この家族はお試し期間中です。終了後もルールはすべて1台の端末で働き続けます。オーナーが登録するとリアルタイムの利用状況、履歴、すべての端末が使えます。',
+    'この家族はお試し期間中です。終了後もルールはすべて1台のデバイスで働き続けます。オーナーが登録するとリアルタイムの利用状況、履歴、すべてのデバイスが使えます。',
   memberTrialEndedSubtitle:
     'このご家族のお試しは終了しました。1日の上限、ブロックされたアプリ、Webフィルター、位置情報はそのまま使えます。リアルタイムの更新、履歴、通知は管理者の登録が必要です。',
   memberSetupTrialSubtitle:
@@ -153,18 +153,18 @@ export const plans = {
   trustOnePlan: '1つのプランで家族全員',
   trustNoAds: '広告なし',
   freePlanName: '無料',
-  freeDescription: 'お子さまの端末1台で基本機能を期限なく使えます。',
-  featureOneChildDevice: 'お子さまの端末1台',
+  freeDescription: 'お子さまのデバイス1台で基本機能を期限なく使えます。',
+  featureOneChildDevice: 'お子さまのデバイス1台',
   termLifetime: '買い切り',
   badgeOneTime: '一回のみ',
   planPeriodOnce: '一回',
   billedOnce:
-    '一度の支払いで、お子さまの端末{{devices}}台まで。KidGateが提供されている間ご利用いただけます',
+    '一度の支払いで、お子さまのデバイス{{devices}}台まで。KidGateが提供されている間ご利用いただけます',
   sectionFreePlan: 'ご登録されない場合',
-  devicesUnlimited: 'お子さまの端末は無制限',
+  devicesUnlimited: 'お子さまのデバイスは無制限',
   featureFootnotePlatforms:
     '一部の機能はプラットフォームが許可する範囲に左右されるため、すべてのデバイスで使えるわけではありません。',
-  sectionPlatforms: 'KidGateが使える端末',
+  sectionPlatforms: 'KidGateが使えるデバイス',
   platformIos: 'iPhone・iPad',
   platformIosDetail: '保護者用・お子さま用 · iOS 16以降',
   platformAndroid: 'Android',

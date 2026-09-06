@@ -38,7 +38,7 @@ export const activities = {
   activityTypePlaceExit: 'Konumdan ayrıldı',
   activityTypeTamper: 'Koruma',
   activityTypeScreenTime: 'Ekran Süresi',
-  activityTypeCheckIn: 'Durum bildirimi',
+  activityTypeCheckIn: 'Check-In',
   activityTypeLocationRequest: 'Konum',
   activityTypeTimeRequest: 'Süre isteği',
   activityTypeRewardTask: 'Ödül görevi',
@@ -53,7 +53,7 @@ export const activities = {
   sosEscapeRepeatBody:
     'SOS bu cihazın kilidini {{minutes}} dakika açtı. Bugün {{count}} kez oldu.',
   appBlockedTitle: '{{appName}}',
-  appBlockedBody: 'Engellenen bir uygulama açıldı ve KidGate kapattı.',
+  appBlockedBody: 'Engellenen bir uygulama açıldı ve KidGate onu kapattı.',
   appInstalledTitle: 'Uygulama yüklendi',
   appInstalledBody: '{{appName}} uygulaması çocuğun cihazına yüklendi.',
   appInstalledPendingBody:

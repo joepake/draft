@@ -49,7 +49,7 @@ export const plans = {
   compareNewApps: 'Applications récemment installées',
   compareNewAppsPremium: 'Quelles applications, et validation avant installation',
   compareMessages: 'Alertes de messages (Android)',
-  compareSafety: 'Alertes de désactivation et point de contact',
+  compareSafety: 'Alertes de protection et Check-in',
   compareControls: 'Blocage d’applications et filtre web',
   compareControlsFree: 'Toute application, contenu pour adultes',
   compareControlsPremium: 'Par catégorie, limites par application, vos propres listes',
@@ -143,7 +143,7 @@ export const plans = {
   // has to name who needs to act instead of offering a button they can't use.
   familyPremiumEndedTitle: 'Le Premium de cette famille a expiré',
   familyPremiumEndedBody:
-    'La Limite quotidienne, les Heures bloquées, les Applications bloquées, le Filtre web et la position fonctionnent toujours. Les mises à jour en direct, l’historique, les alertes et les rapports sont en pause jusqu’au renouvellement de Premium.',
+    'La Limite quotidienne, les Heures bloquées, les Applications bloquées, le Filtre web et la position fonctionnent toujours. Les mises à jour en direct, l’historique, les alertes et les rapports sont en pause jusqu’à ce que le propriétaire de la famille renouvelle Premium.',
   pricesUnavailable: 'Impossible de charger les prix depuis la boutique.',
   pricesRetry: 'Réessayer',
   featureRewardTasks: 'Tâches à récompense',
@@ -155,7 +155,7 @@ export const plans = {
   trustOnePlan: 'Une formule pour toute la famille',
   trustNoAds: 'Sans publicité',
   freePlanName: 'Gratuit',
-  freeDescription: 'Gardez l’essentiel actif sur un appareil, sans limite de durée.',
+  freeDescription: 'Gardez l’essentiel actif sur un appareil, sans date d’expiration.',
   featureOneChildDevice: 'Un appareil enfant',
   termLifetime: 'À vie',
   badgeOneTime: 'Paiement unique',

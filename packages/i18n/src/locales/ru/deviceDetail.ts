@@ -51,6 +51,12 @@ export const deviceDetail = {
   appVersion: 'Версия приложения',
   appVersionUpdate: '{{running}} · доступна {{latest}}',
   appVersionRestart: '{{running}} · перезапустите приложение, чтобы завершить',
+  otaUpdateNow: 'Обновить сейчас',
+  otaAsked: 'Запрос на обновление отправлен',
+  otaUpToDate: 'Уже последняя версия',
+  otaSkipped: 'Обновления отключены на этом устройстве',
+  otaStoreUpdate: 'Сначала нужно обновление из магазина',
+  otaFailed: 'Обновление не установилось',
   androidPauseNote:
     'На Android блокировка также блокирует другие приложения, если включены Службы специальных возможностей и отображение поверх других приложений.',
   notAvailableOnPlatform: 'Недоступно на {{platform}}',

@@ -177,9 +177,10 @@ export interface DeviceCapabilities {
   /**
    * The device can report which videos the child watched
    * (`videoHistory`): a browser holding the YouTube URL, or the Android agent
-   * reading the media session. The Mac/Windows filters see a domain, not a
-   * video, and iOS neither — `@kidgate/core/domain/videoHistorySupport`
-   * answers no for them. **Absent is unknown, not false.**
+   * reading the media session. The Mac's filter sees a domain, not a video;
+   * Windows has no filter and its window titles name the page, not the clip;
+   * iOS has neither — `@kidgate/core/domain/videoHistorySupport` answers no
+   * for all three. **Absent is unknown, not false.**
    */
   videoHistory?: boolean;
   /**

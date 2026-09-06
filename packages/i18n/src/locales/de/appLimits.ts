@@ -1,7 +1,7 @@
 export const appLimits = {
   title: 'App-Limits',
   intro:
-    'Lege fest, wie lange jede App pro Tag laufen darf — zusätzlich zum Tageslimit des Geräts.',
+    'Lege fest, wie lange jede App pro Tag laufen darf – zusätzlich zum Tageslimit des Geräts.',
   emptyTitle: 'Noch keine Limits',
   emptySubtitle: 'Wähle unten eine App und gib ihr ein eigenes Tageslimit.',
   usedToday: '{{used}} von {{limit}} heute',

@@ -30,7 +30,7 @@ export const pairing = {
     'Perangkat anak tidak mengonfirmasi tepat waktu. Minta kode baru dari perangkat itu, lalu coba lagi.',
   confirmParentTitle: 'Konfirmasi orang tua ini?',
   confirmParentSubtitle:
-    '{{parentLabel}} ingin mengelola perangkat ini. Terima hanya jika Anda mengenal orang ini.',
+    '{{parentLabel}} ingin mengelola perangkat ini. Terima hanya jika kamu mengenal orang ini.',
   confirmParentButton: 'Ya, sambungkan',
   rejectParentButton: 'Bukan orang tua ini',
   parentAccount: 'Akun orang tua',

@@ -8,19 +8,18 @@ export const pairing = {
   parentInstructions:
     'Trên thiết bị của trẻ, mở KidGate và chọn Đây là thiết bị của trẻ. Sau đó nhập mã hiển thị trên màn hình.',
   parentScanInstructions: 'Hướng camera vào mã QR trên thiết bị của trẻ.',
-  childWaitingTitle: 'Đang chờ phụ huynh kết nối',
+  childWaitingTitle: 'Đang chờ bố mẹ kết nối',
   childWaitingSubtitle:
-    'Vui lòng giữ màn hình này mở. Phụ huynh sẽ kết nối thiết bị này từ ứng dụng KidGate trên thiết bị của họ.',
+    'Con giữ nguyên màn hình này nhé. Bố mẹ sẽ kết nối thiết bị này từ ứng dụng KidGate trên máy của họ.',
   childCodeLabel: 'Hoặc chia sẻ mã này',
-  childScanHint:
-    'Phụ huynh: mở KidGate → Gia đình → {{scan}} → quét mã QR hoặc nhập mã.',
+  childScanHint: 'Bố mẹ: mở KidGate → Gia đình → {{scan}} → quét mã QR hoặc nhập mã.',
   childConnecting: 'Đã kết nối. Đang thiết lập thiết bị…',
   childPairedTitle: 'Đã kết nối thành công',
   childPairedSubtitle: 'Đang thiết lập thiết bị…',
   connectChild: 'Kết nối thiết bị của trẻ',
   waitingChildConfirm: 'Đã gửi yêu cầu. Đang chờ xác nhận trên thiết bị của trẻ.',
   waitingChildConfirmHint:
-    'Trên thiết bị của trẻ, chạm "Đồng ý kết nối" để hoàn tất. Bạn có thể đóng màn hình này — quá trình ghép nối vẫn tiếp tục chạy nền.',
+    'Trên thiết bị của trẻ, chạm “Đồng ý kết nối” để hoàn tất. Bạn có thể đóng màn hình này — quá trình ghép nối vẫn tiếp tục chạy nền.',
   childConfirmedTitle: 'Đã kết nối thiết bị',
   childConfirmedBody:
     'Thiết bị của trẻ đã xác nhận ghép nối. Tiếp theo, hãy chọn ai sẽ dùng thiết bị này.',
@@ -28,9 +27,9 @@ export const pairing = {
     'Thiết bị của trẻ đã từ chối ghép nối. Hãy lấy mã mới từ thiết bị đó rồi thử lại.',
   childConfirmExpired:
     'Thiết bị của trẻ chưa xác nhận kịp thời. Hãy nhờ thiết bị đó tạo mã mới rồi thử lại.',
-  confirmParentTitle: 'Xác nhận phụ huynh này?',
+  confirmParentTitle: 'Đây có đúng là bố mẹ con không?',
   confirmParentSubtitle:
-    '{{parentLabel}} muốn quản lý thiết bị này. Chỉ chấp nhận nếu bạn biết rõ người này.',
+    '{{parentLabel}} muốn quản lý thiết bị này. Con chỉ đồng ý nếu con biết rõ người này.',
   confirmParentButton: 'Đồng ý kết nối',
   rejectParentButton: 'Không phải người này',
   parentAccount: 'Tài khoản phụ huynh',
@@ -39,7 +38,7 @@ export const pairing = {
   autoRefreshPaused:
     'Đã tạm dừng tự động tải lại mã để tiết kiệm dữ liệu di động và pin. Vui lòng chọn Tạo mã mới khi bạn đã sẵn sàng.',
   scanQrTitle: 'Quét mã QR',
-  scanQrSubtitle: 'Vui lòng đưa mã QR vào trong khung hình.',
+  scanQrSubtitle: 'Vui lòng đưa mã QR vào giữa khung hình.',
   enterCodeManually: 'Nhập mã thủ công',
   manualCodeLabel: 'Mã từ thiết bị của trẻ',
   openingScanner: 'Đang mở camera…',
@@ -62,7 +61,8 @@ export const pairing = {
   parentJoinApprove: 'Phê duyệt',
   parentJoinDecline: 'Từ chối',
   parentJoinRejected: 'Chủ gia đình đã từ chối yêu cầu của bạn.',
-  parentJoinExpired: 'Yêu cầu phê duyệt đã hết hạn. Vui lòng xin lời mời mới.',
+  parentJoinExpired:
+    'Yêu cầu phê duyệt đã hết hạn. Vui lòng đề nghị chủ gia đình gửi lời mời mới.',
   unableToResolveParentJoin: 'Không thể xử lý yêu cầu này.',
   joinedFamily: 'Bạn đã tham gia gia đình. Các thiết bị của trẻ sẽ hiển thị tại đây.',
   joinedFamilyTitle: 'Đã tham gia gia đình',

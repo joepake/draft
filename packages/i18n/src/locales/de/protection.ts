@@ -11,12 +11,12 @@ export const protection = {
   openKidGateOnChildPhone: 'Bitte öffne KidGate einmal auf dem Kindergerät.',
   screenTimePermission: 'Bildschirmzeit-Berechtigung',
   screenTimeAccessOff:
-    'Der Bildschirmzeit-Zugriff ist deaktiviert — App-Blockierung und Limits funktionieren daher möglicherweise nicht mehr.',
+    'Der Bildschirmzeit-Zugriff ist deaktiviert – App-Blockierung und Limits funktionieren daher möglicherweise nicht mehr.',
   screenTimeSetupIncomplete:
     'Die Bildschirmzeit-Einrichtung auf dem Kindergerät ist unvollständig.',
   usageAccessPermission: 'Nutzungszugriff',
   usageAccessOff:
-    'Der Nutzungszugriff ist deaktiviert — KidGate kann die Bildschirmzeit nicht erfassen und keine Limits durchsetzen.',
+    'Der Nutzungszugriff ist deaktiviert – KidGate kann die Bildschirmzeit nicht erfassen und keine Limits durchsetzen.',
   usageAccessSetupIncomplete:
     'Bitte aktiviere den Nutzungszugriff für KidGate in den Android-Einstellungen.',
   overlayPermission: 'Über anderen Apps anzeigen',
@@ -62,9 +62,9 @@ export const protection = {
     'Einige Schutzfunktionen müssen auf dem Kindergerät eingerichtet werden.',
   protected: 'Geschützt',
   protectionsLookHealthy: 'Die KidGate-Schutzfunktionen sind in gutem Zustand.',
-  healthBadgeProtected: 'Grün — geschützt',
-  healthBadgeWarning: 'Gelb — Einrichtung erforderlich',
-  healthBadgeInactive: 'Rot — Kindergerät seit über 24 Std. stumm',
+  healthBadgeProtected: 'Grün – geschützt',
+  healthBadgeWarning: 'Gelb – Einrichtung erforderlich',
+  healthBadgeInactive: 'Rot – Kindergerät seit über 24 Std. stumm',
   iosFeatureSupportEvaluating:
     'Die Unterstützung dieser Funktion unter iOS wird derzeit geprüft.',
   iosUpgradeRequiredNote:
@@ -79,5 +79,5 @@ export const protection = {
   tamperAlertsNote:
     'Meldet Berechtigungsänderungen und wenn sich die App auf dem Kindergerät längere Zeit nicht aktualisiert hat.',
   appReviewRemindersNote:
-    'iOS stellt keine Installationsereignisse bereit — prüfe die Apps regelmäßig gemeinsam mit dem Kindergerät.',
+    'iOS stellt keine Installationsereignisse bereit – prüfe die Apps regelmäßig gemeinsam mit dem Kindergerät.',
 } as const;
