@@ -71,6 +71,16 @@ export const activities = {
   messageCheckedBody:
     '{{appName}} içinde izlenen bir kelime göründü ve bağlam içinde zararsız bulundu.',
   activityTypeMessageChecked: 'Bakıldı',
+  callAlertTitle: 'Rehberde olmayan bir numarayla görüşme',
+  callAlertBodyOutgoing:
+    'Çocuğunuz {{localTime}} saatinde rehberinde olmayan bir numarayı aradı.',
+  callAlertBodyOutgoingTimed:
+    'Çocuğunuz {{localTime}} saatinde rehberinde olmayan bir numarayı aradı — {{durationMinutes}} dk.',
+  callAlertBodyIncoming:
+    'Çocuğunuzun rehberinde olmayan bir numara {{localTime}} saatinde onu aradı.',
+  callAlertBodyIncomingTimed:
+    'Çocuğunuzun rehberinde olmayan bir numara {{localTime}} saatinde onu aradı — {{durationMinutes}} dk.',
+  activityTypeCallAlert: 'Arama uyarısı',
   appRemovedTitle: 'Uygulama kaldırıldı',
   appRemovedBody: '{{appName}} uygulaması çocuğun cihazından kaldırıldı.',
   extensionInstalledTitle: 'Tarayıcı uzantısı eklendi',

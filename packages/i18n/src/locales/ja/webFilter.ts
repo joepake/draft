@@ -59,6 +59,26 @@ export const webFilter = {
   iosOnlyNote: 'iOSではスクリーンタイムを使用',
   androidVpnNote: 'AndroidではローカルDNS VPNを使用',
   macosFilterNote: 'MacではKidGateのコンテンツフィルターを使用',
+
+  heroSubtitleWindows:
+    'お子さまのPCでKidGate独自のリゾルバーを動かし、既知のアダルトサイトをすべてのブラウザーでブロックします。',
+
+  toggleHintWindows:
+    'PC側で承認する操作はありません。KidGateのバックグラウンドサービスが数秒でフィルターを有効にします。',
+
+  infoLine1Windows:
+    'KidGateはPC上でリゾルバーを動かし、どのサイトが参照されたかを確認して、選んだカテゴリーのサイトをブロックします。',
+
+  infoLine2Windows:
+    'Chrome、Edge、FirefoxはKidGateが適用する設定によってこれに従います。お子さまが何かを承認する必要はありません。',
+
+  infoLine3Windows:
+    'KidGateのバックグラウンドサービスが必要です。Webフィルターが有効にならない場合は、管理者としてPCにKidGateを再インストールしてください。',
+
+  infoLine4Windows:
+    'フィルターが読むのはサイト名だけです。ページの中身は見えず、直前に参照されたサイトは数分間開けることがあります。',
+
+  windowsFilterNote: 'WindowsではKidGate独自のリゾルバーを使用',
   webFilteringNote:
     'iOSはスクリーンタイムのアダルトフィルター、AndroidはローカルDNS VPNのブロックリストを使用します。',
   safeSearchAlertsNote:

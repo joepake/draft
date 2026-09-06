@@ -16,6 +16,7 @@ export interface AppInstallAlertInput {
   capabilities?: {
     appInstallAlerts?: DeviceCapabilities['appInstallAlerts'];
     messageMonitoring?: DeviceCapabilities['messageMonitoring'];
+    callAlerts?: DeviceCapabilities['callAlerts'];
     searchMonitoring?: DeviceCapabilities['searchMonitoring'];
     /*
      * Read only by `supportsTamperAlerts`, through `isBrowserOnlySurface`: a
@@ -34,6 +35,18 @@ export interface AppInstallAlertInput {
  * watch, so they publish nothing here and the platform list answers no for them.
  */
 export const MESSAGE_MONITORING_PLATFORMS: DevicePlatform[] = ['android'];
+
+/**
+ * Platforms whose child agent can report a call with a party it could not name.
+ *
+ * Android alone, and the reason is not effort: iOS discloses nothing about a
+ * call to another app at any entitlement level, and the TV, the desktop agents
+ * and the extension have no telephony to observe (`docs/FEASIBILITY.md`, "Call
+ * monitoring"). Kept separate from `MESSAGE_MONITORING_PLATFORMS` even though
+ * the two lists match today — they are two mechanisms behind two grants, and a
+ * shared constant would tie a change in one to the other.
+ */
+export const CALL_ALERT_PLATFORMS: DevicePlatform[] = ['android'];
 
 /**
  * Platforms whose child agent reports app install events, for devices that
@@ -82,6 +95,22 @@ export function supportsMessageMonitoring(device: AppInstallAlertInput): boolean
     return probe;
   }
   return MESSAGE_MONITORING_PLATFORMS.includes(device.platform ?? 'ios');
+}
+
+/**
+ * Night call alerts — the `call_alert` feed. Android only.
+ *
+ * Same probe-outranks-list shape as the others, and a separate question from
+ * `supportsMessageMonitoring` despite both being notification listeners: a
+ * device can hold one grant and not the other, so a parent screen that read one
+ * answer for both would offer a switch the OS has not permitted.
+ */
+export function supportsCallAlerts(device: AppInstallAlertInput): boolean {
+  const probe = device.capabilities?.callAlerts;
+  if (probe !== undefined) {
+    return probe;
+  }
+  return CALL_ALERT_PLATFORMS.includes(device.platform ?? 'ios');
 }
 
 /**

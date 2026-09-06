@@ -49,8 +49,6 @@ export const deviceDetail = {
   quickCheckIn: 'チェックイン',
   lastActive: '最終利用',
   appVersion: 'アプリのバージョン',
-  appVersionUpdate: '{{running}} · {{latest}} が利用可能',
-  appVersionRestart: '{{running}} · アプリを再起動して完了',
   otaUpdateNow: '今すぐ更新',
   otaAsked: 'この端末に更新を依頼しました',
   otaUpToDate: 'すでに最新です',

@@ -58,6 +58,26 @@ export const webFilter = {
   iosOnlyNote: 'Menggunakan Waktu Layar di iOS',
   androidVpnNote: 'Menggunakan VPN DNS lokal di Android',
   macosFilterNote: 'Menggunakan filter konten KidGate di Mac',
+
+  heroSubtitleWindows:
+    'Menjalankan resolver milik KidGate di PC anak untuk memblokir situs dewasa yang dikenal di semua browser.',
+
+  toggleHintWindows:
+    'Tidak ada yang perlu disetujui di PC. Layanan latar belakang KidGate menyalakan filter dalam beberapa detik.',
+
+  infoLine1Windows:
+    'KidGate menjalankan resolver di PC yang memeriksa situs mana yang sedang dicari, dan memblokir yang masuk kategori Anda.',
+
+  infoLine2Windows:
+    'Chrome, Edge, dan Firefox diikat padanya lewat setelan yang diterapkan KidGate. Anak Anda tidak diminta menyetujui apa pun.',
+
+  infoLine3Windows:
+    'Ini memerlukan layanan latar belakang KidGate. Jika pemfilteran web tetap mati, instal ulang KidGate di PC sebagai administrator.',
+
+  infoLine4Windows:
+    'Filter hanya membaca nama situs. Ia tidak melihat isi halaman, dan situs yang baru saja dicari browser bisa tetap terbuka beberapa menit.',
+
+  windowsFilterNote: 'Memakai resolver milik KidGate di Windows',
   webFilteringNote:
     'iOS memakai filter dewasa Waktu Layar; Android memakai daftar blokir via VPN DNS lokal.',
   safeSearchAlertsNote:

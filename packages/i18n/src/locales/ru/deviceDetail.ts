@@ -49,8 +49,6 @@ export const deviceDetail = {
   quickCheckIn: 'Check-In',
   lastActive: 'Последняя активность',
   appVersion: 'Версия приложения',
-  appVersionUpdate: '{{running}} · доступна {{latest}}',
-  appVersionRestart: '{{running}} · перезапустите приложение, чтобы завершить',
   otaUpdateNow: 'Обновить сейчас',
   otaAsked: 'Запрос на обновление отправлен',
   otaUpToDate: 'Уже последняя версия',

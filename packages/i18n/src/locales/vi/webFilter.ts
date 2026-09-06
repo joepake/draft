@@ -58,6 +58,26 @@ export const webFilter = {
   iosOnlyNote: 'Sử dụng Thời gian sử dụng trên iOS',
   androidVpnNote: 'Sử dụng VPN DNS cục bộ trên Android',
   macosFilterNote: 'Dùng bộ lọc nội dung của KidGate trên Mac',
+
+  heroSubtitleWindows:
+    'Chạy trình phân giải riêng của KidGate trên máy tính của trẻ để chặn các trang người lớn đã biết trên mọi trình duyệt.',
+
+  toggleHintWindows:
+    'Không cần phê duyệt gì trên máy tính. Dịch vụ nền của KidGate bật bộ lọc trong vài giây.',
+
+  infoLine1Windows:
+    'KidGate chạy một trình phân giải trên máy, kiểm tra những trang đang được tra cứu và chặn các trang thuộc danh mục bạn chọn.',
+
+  infoLine2Windows:
+    'Chrome, Edge và Firefox bị ràng buộc theo bằng một thiết lập KidGate áp dụng. Trẻ không phải phê duyệt điều gì.',
+
+  infoLine3Windows:
+    'Việc này cần dịch vụ nền của KidGate. Nếu lọc web vẫn tắt, hãy cài lại KidGate trên máy bằng quyền quản trị viên.',
+
+  infoLine4Windows:
+    'Bộ lọc chỉ đọc tên trang. Nó không thấy bên trong một trang, và trang vừa được tra cứu có thể còn mở được vài phút.',
+
+  windowsFilterNote: 'Dùng trình phân giải riêng của KidGate trên Windows',
   webFilteringNote:
     'iOS dùng bộ lọc nội dung người lớn của Thời gian sử dụng; Android dùng danh sách chặn qua VPN DNS cục bộ.',
   safeSearchAlertsNote:

@@ -70,6 +70,14 @@ export const activities = {
   messageCheckedBody:
     '{{appName}}에서 감시 대상 단어가 나왔지만 문맥상 문제가 없었습니다.',
   activityTypeMessageChecked: '확인함',
+  callAlertTitle: '연락처에 없는 번호와의 통화',
+  callAlertBodyOutgoing: '자녀가 {{localTime}}에 연락처에 없는 번호로 전화했습니다.',
+  callAlertBodyOutgoingTimed:
+    '자녀가 {{localTime}}에 연락처에 없는 번호로 전화했습니다 ({{durationMinutes}}분).',
+  callAlertBodyIncoming: '연락처에 없는 번호가 {{localTime}}에 자녀에게 전화했습니다.',
+  callAlertBodyIncomingTimed:
+    '연락처에 없는 번호가 {{localTime}}에 자녀에게 전화했습니다 ({{durationMinutes}}분).',
+  activityTypeCallAlert: '통화 알림',
   appRemovedTitle: '앱 삭제',
   appRemovedBody: '자녀의 기기에서 {{appName}} 앱이 삭제되었습니다.',
   extensionInstalledTitle: '브라우저 확장 프로그램 추가',

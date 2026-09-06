@@ -72,6 +72,16 @@ export const activities = {
   messageCheckedBody:
     'Una parola sorvegliata è comparsa in {{appName}} ed è risultata innocua nel contesto.',
   activityTypeMessageChecked: 'Controllato',
+  callAlertTitle: 'Chiamata con un numero non in rubrica',
+  callAlertBodyOutgoing:
+    'Tuo figlio ha chiamato un numero non presente in rubrica, alle {{localTime}}.',
+  callAlertBodyOutgoingTimed:
+    'Tuo figlio ha chiamato un numero non presente in rubrica alle {{localTime}}, per {{durationMinutes}} min.',
+  callAlertBodyIncoming:
+    'Un numero non presente nella rubrica di tuo figlio lo ha chiamato alle {{localTime}}.',
+  callAlertBodyIncomingTimed:
+    'Un numero non presente nella rubrica di tuo figlio lo ha chiamato alle {{localTime}}, per {{durationMinutes}} min.',
+  activityTypeCallAlert: 'Avviso chiamata',
   appRemovedTitle: 'App disinstallata',
   appRemovedBody:
     'L’app {{appName}} è stata disinstallata dal dispositivo del bambino.',

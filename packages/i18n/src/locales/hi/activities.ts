@@ -71,6 +71,16 @@ export const activities = {
   messageCheckedBody:
     '{{appName}} में एक निगरानी वाला शब्द दिखा जो संदर्भ में हानिरहित निकला।',
   activityTypeMessageChecked: 'जाँचा गया',
+  callAlertTitle: 'संपर्कों में न मौजूद नंबर से कॉल',
+  callAlertBodyOutgoing:
+    'आपके बच्चे ने {{localTime}} बजे ऐसे नंबर पर कॉल किया जो उनके संपर्कों में नहीं है।',
+  callAlertBodyOutgoingTimed:
+    'आपके बच्चे ने {{localTime}} बजे ऐसे नंबर पर कॉल किया जो उनके संपर्कों में नहीं है — {{durationMinutes}} मिनट।',
+  callAlertBodyIncoming:
+    'आपके बच्चे के संपर्कों में न मौजूद एक नंबर से {{localTime}} बजे कॉल आई।',
+  callAlertBodyIncomingTimed:
+    'आपके बच्चे के संपर्कों में न मौजूद एक नंबर से {{localTime}} बजे कॉल आई — {{durationMinutes}} मिनट।',
+  activityTypeCallAlert: 'कॉल अलर्ट',
   appRemovedTitle: 'ऐप हटाया गया',
   appRemovedBody: 'बच्चे के डिवाइस से ऐप {{appName}} हटाया गया है।',
   extensionInstalledTitle: 'ब्राउज़र एक्सटेंशन जोड़ा गया',

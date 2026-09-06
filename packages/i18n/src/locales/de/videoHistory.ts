@@ -7,6 +7,9 @@ export const videoHistory = {
   toggleFailed: 'Videoverlauf konnte nicht aktualisiert werden. Erneut versuchen.',
   unsupportedNote:
     'Dieses Gerät kann keine angesehenen Videos melden. Funktioniert auf Android und in Chrome.',
+
+  unsupportedNeedsExtension:
+    'KidGate kann auf diesem Computer nicht sehen, welche Videos angesehen werden – es liest Seitennamen, nicht den Inhalt einer Seite. Installieren Sie dort die KidGate-Erweiterung für Chrome, dann erscheinen angesehene Videos hier.',
   emptyTitle: 'Noch nichts angesehen',
   emptyBody: 'Videos erscheinen hier, sobald Ihr Kind mit laufendem KidGate zusieht.',
   emptyBodyOff:
@@ -27,4 +30,7 @@ export const videoHistory = {
   heroTopChannel: 'Meistgesehen',
   readerLayoutChanged:
     'Shorts werden auf diesem Gerät gerade nicht aufgezeichnet – die YouTube-App hat sich geändert und KidGate braucht ein Update. Andere Videos werden weiter aufgezeichnet.',
+  openAction: 'Auf YouTube öffnen',
+  searchAction: 'Dieses Video auf YouTube suchen',
+  openFailed: 'YouTube konnte nicht geöffnet werden.',
 };

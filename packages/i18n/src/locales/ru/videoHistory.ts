@@ -7,6 +7,9 @@ export const videoHistory = {
   toggleFailed: 'Не удалось обновить историю видео. Повторите попытку.',
   unsupportedNote:
     'Это устройство не может сообщать о просмотренных видео. Работает на Android и в Chrome.',
+
+  unsupportedNeedsExtension:
+    'KidGate на этом компьютере не видит, какие видео смотрят: он читает имена сайтов, а не содержимое страницы. Установите на нём расширение KidGate для Chrome, и просмотренные видео появятся здесь.',
   emptyTitle: 'Пока ничего не просмотрено',
   emptyBody: 'Видео появятся здесь, когда ребёнок смотрит с работающим KidGate.',
   emptyBodyOff: 'Включите запись выше, чтобы видеть просмотренные видео.',
@@ -26,4 +29,7 @@ export const videoHistory = {
   heroTopChannel: 'Чаще всего',
   readerLayoutChanged:
     'Shorts на этом устройстве сейчас не записываются: приложение YouTube изменилось, и KidGate нужно обновить. Остальные видео по-прежнему записываются.',
+  openAction: 'Открыть на YouTube',
+  searchAction: 'Найти это видео на YouTube',
+  openFailed: 'Не удалось открыть YouTube.',
 };

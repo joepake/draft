@@ -31,7 +31,7 @@ import Icon from '@kidgate/web-ui/Icon';
 import { deviceIconName } from '../dashboard/deviceIcon.js';
 import { ACCENT_IDS, getAccentDefinition } from '@kidgate/tokens/accents';
 import { readDeviceBattery } from '@kidgate/core/domain/battery';
-import { isAndroidLike } from '@kidgate/core/domain/platformFamily';
+import { isAndroidLike, isDesktopLike } from '@kidgate/core/domain/platformFamily';
 import { resolveActivityKind } from '@kidgate/core/domain/activityKind';
 import { WEB_FILTER_CATEGORY_GROUPS } from '@kidgate/core/domain/webFilterCategoryGroups';
 import { WEB_FILTER_CATEGORIES } from '@kidgate/schema/webActivity';
@@ -72,7 +72,9 @@ import { supportsSafeSearch } from '@kidgate/core/domain/safeSearchSupport';
 import {
   supportsVideoHistory,
   videoHistoryBlockerKey,
+  videoHistoryUnavailableKey,
 } from '@kidgate/core/domain/videoHistorySupport';
+import { youtubeOpenTarget } from '@kidgate/core/domain/youtubeUrl';
 import { supportsAppInventory } from '@kidgate/core/domain/appInventorySupport';
 import { appInventorySummaryKey } from '@kidgate/core/domain/appInventoryReport';
 import { useAppInventory } from '../dashboard/useAppInventory';
@@ -315,6 +317,150 @@ function ChildInitial({ name, colorIndex = 0 }) {
     <span className="kid-initial" style={{ background: accent.swatch }}>
       {(name || '?').trim().charAt(0).toUpperCase()}
     </span>
+  );
+}
+
+/**
+ * The dot that says whether one device is reachable.
+ *
+ * It said it in colour alone once — a parent who cannot separate amber from
+ * grey read six identical rows — so the sentence rides along as the label. It
+ * is the same sentence `StatusPill` prints in the header, from the same map,
+ * and the status is `getEffectiveDeviceStatus` rather than the stored field:
+ * three minutes of silence is offline on every surface, and the rule also
+ * refuses to call a device locked when it cannot lock, so a browser extension
+ * carrying a stale `isLocked` from before that button was gated does not sit
+ * amber here forever.
+ */
+function DeviceDot({ device }) {
+  const { t } = useT();
+  const status = deviceStatusOf(device);
+  const label = t(STATUS_KEY[status] ?? STATUS_KEY.offline);
+  return (
+    <i
+      className={`kid-dot tone-${
+        status === 'online' ? 'good' : status === 'locked' ? 'warning' : 'muted'
+      }`}
+      role="img"
+      aria-label={label}
+      title={label}
+    />
+  );
+}
+
+/**
+ * One selectable device in the rail.
+ *
+ * `child` is passed only on the **solo** shape — a child who owns exactly one
+ * device, drawn as a single row instead of a heading over one row. The person
+ * is still named once, which is the whole point of grouping (a flat list of
+ * devices made a family with one child and two devices read as two children);
+ * the row just stops spending two lines to say it. The device keeps its own
+ * glyph on the second line, because that glyph is the only thing separating a
+ * Mac from the extension running on it.
+ *
+ * Everywhere else the leading tile is the device glyph from `deviceIconName` —
+ * the same call the phone's device card makes, so a Mac is the same picture on
+ * both surfaces and an iPad is not drawn as an iPhone here.
+ */
+function DeviceRow({ device, child, active, onSelect, latestBuilds }) {
+  const { t } = useT();
+  const outdated =
+    resolveBuildFreshness(device, latestBuilds ?? {}).status === 'outdated';
+  const solo = Boolean(child);
+  return (
+    <button
+      className={`kid${solo ? ' kid-solo' : ''}${active ? ' is-active' : ''}`}
+      onClick={onSelect}
+      aria-current={active ? 'true' : undefined}
+    >
+      {solo ? (
+        <span className="kid-avatar kid-avatar-child">
+          <ChildInitial name={child.name} colorIndex={child.colorIndex} />
+        </span>
+      ) : (
+        <span className={`kid-avatar av-${device.platform}`}>
+          <Icon name={deviceIconName(device)} size={20} />
+        </span>
+      )}
+      <span className="kid-meta">
+        <strong>{solo ? child.name : device.name}</strong>
+        {solo ? (
+          <em className="kid-sub">
+            <Icon name={deviceIconName(device)} size={12} className="kid-sub-glyph" />
+            <span>{device.name}</span>
+          </em>
+        ) : (
+          device.modelName &&
+          device.modelName !== device.name && <em>{device.modelName}</em>
+        )}
+        {/*
+          Which machine is on an old build, without opening each one in turn —
+          the rail is where "which of these" gets asked. Only ever drawn on an
+          outdated device: `unknown` is every row that has not reported a build
+          yet and every platform with nothing published to compare against, and
+          a mark for that would sit on most rails saying nothing.
+        */}
+        {outdated && <em className="kid-build-old">{t('dash.buildOutdated')}</em>}
+      </span>
+      <DeviceDot device={device} />
+    </button>
+  );
+}
+
+/**
+ * The header of a child who owns more than one device — a disclosure, not a
+ * label.
+ *
+ * The rail used to render every device of every child at once, so its height
+ * was children × devices while the scroller it lives in is fixed. A family of
+ * five hunted for one machine through a 14rem window. A parent works on one
+ * child at a time, so only one group is open and the rest cost a row each.
+ *
+ * What a collapsed group must not lose is the answer the rail exists to give at
+ * a glance — is anything wrong over there. So the closed row carries one dot
+ * per device, exact rather than rolled up into a worst-of verdict that would
+ * need a sentence of its own to be honest. Past four it stops drawing and
+ * counts, because five dots in a 272px rail is a texture, not a reading.
+ */
+const GROUP_DOTS_SHOWN = 4;
+
+function KidGroupHead({ group, open, containsActive, onToggle }) {
+  const { t } = useT();
+  const shown = group.devices.slice(0, GROUP_DOTS_SHOWN);
+  const rest = group.devices.length - shown.length;
+  return (
+    <button
+      className={`kid-group-head${open ? ' is-open' : ''}${
+        containsActive && !open ? ' is-active' : ''
+      }`}
+      onClick={onToggle}
+      aria-expanded={open}
+    >
+      {group.child ? (
+        <>
+          <ChildInitial name={group.child.name} colorIndex={group.child.colorIndex} />
+          <span className="kid-group-name">{group.child.name}</span>
+        </>
+      ) : (
+        <span className="kid-group-name">{t('dash.unassignedDevices')}</span>
+      )}
+      {/*
+        Hidden from the reader that already hears every device: the rows are one
+        `aria-expanded` away and each carries the same sentence on its own dot,
+        so announcing the fold's summary as well says everything twice.
+      */}
+      <span className="kid-group-dots" aria-hidden="true">
+        {shown.map(d => (
+          <DeviceDot key={d.id} device={d} />
+        ))}
+        {rest > 0 && <span className="kid-group-more">+{rest}</span>}
+      </span>
+      {/* `chevronRight` turned by the stylesheet — the set has no down-chevron,
+          and a second drawing of one arrow is what the shared icon set exists
+          to prevent. */}
+      <Icon name="chevronRight" size={14} className="kid-group-chevron" />
+    </button>
   );
 }
 
@@ -649,6 +795,26 @@ export default function Dashboard({
     }
     return groups;
   }, [devices, children]);
+
+  /*
+   * One group open at a time, and by default it is the one holding the selected
+   * device — the rail's height is then children + one child's devices instead
+   * of every device the family owns.
+   *
+   * Selection drives it rather than the other way round: opening a group must
+   * not switch the device, because switching costs a pane of Firestore reads
+   * for a machine the parent was only looking for. So a parent can open a
+   * sibling's group, read its rows, and pick one — and the moment they pick,
+   * this snaps back to following the selection.
+   *
+   * A group holding the selection can still be closed by hand. The header keeps
+   * the brand bar while it is, so "you are here" never disappears from the rail.
+   */
+  const activeGroupKey = device ? (device.child?.id ?? 'unassigned') : null;
+  const [openGroupKey, setOpenGroupKey] = useState(null);
+  useEffect(() => {
+    if (activeGroupKey) setOpenGroupKey(activeGroupKey);
+  }, [activeGroupKey]);
   // Same reading the phone shows, from the same function: the bar in the glyph
   // and the red under 20% are one rule, not one per surface.
   const battery = readDeviceBattery(device);
@@ -884,8 +1050,74 @@ export default function Dashboard({
   const installApproval = device?.controls
     ? resolveInstallApprovalPolicy(device.controls)
     : null;
-  const inventory = useAppInventory(familyId, device?.id, installApproval);
+  const {
+    report: inventory,
+    markSafe,
+    restoreFlag,
+    savingAppId,
+  } = useAppInventory(
+    familyId,
+    device?.id,
+    installApproval,
+    // The scope is the child when this device has one — a parent deciding an
+    // app is fine has decided it about a person, not about a machine.
+    device?.childId ?? null,
+  );
   const inventorySummary = inventory ? appInventorySummaryKey(inventory) : null;
+  /**
+   * "How to block" — a sentence, not an act.
+   *
+   * No parent-set remote block exists on any platform in this product
+   * (`docs/FEASIBILITY.md`, "Parent-set app blocking" and the Chromebook
+   * gate's E2), so the button names the answer it shows rather than an act it
+   * cannot perform. The copy is the app pack's existing hint, said the same
+   * way on both parent surfaces.
+   */
+  const blockHelp = row =>
+    setToast({
+      tone: 'info',
+      text: activityT(
+        row.isExtension ? 'appInventory.blockHintExtension' : 'appInventory.blockHint',
+      ),
+    });
+  /**
+   * One flagged app, with the two answers a parent has to it.
+   *
+   * Both groups render through this — the classifier's flags and the ones
+   * already answered — because they differ by a verb and a colour, and two
+   * copies would drift the day one of them gains a third button. Every
+   * sentence comes from the **app pack** through `activityT`: the phone says
+   * all four already (`.claude/rules/i18n.md`).
+   */
+  const renderFlaggedRow = (row, isDismissed) => (
+    <li key={row.id}>
+      <span className={`ev-state ${isDismissed ? 'tone-good' : 'tone-serious'}`}>
+        <Icon name={isDismissed ? 'shieldCheck' : 'shieldAlert'} size={13} />
+      </span>
+      <span className="ev-body">
+        <strong>{row.label}</strong>
+        {/* `appCat`, never `webCat`: that namespace is pinned to
+            WEB_FILTER_CATEGORIES and carries no `bypass`, so a VPN would
+            have rendered its raw key here. */}
+        <em>{t(`appCat.${row.category}`)}</em>
+      </span>
+      <button className="btn btn-sm" onClick={() => blockHelp(row)}>
+        {activityT('appInventory.howToBlock')}
+      </button>
+      <button
+        className="btn btn-sm btn-primary"
+        disabled={(live && !canWrite) || savingAppId === row.id}
+        title={live && !canWrite ? t('dash.unlockToChange') : undefined}
+        onClick={() =>
+          run(`app-flag-${row.id}`, () =>
+            isDismissed ? restoreFlag(row.id) : markSafe(row),
+          )
+        }
+      >
+        {activityT(isDismissed ? 'appInventory.undoSafe' : 'appInventory.markSafe')}
+      </button>
+    </li>
+  );
 
   /*
    * What a per-app limit may be put on: apps this device reported, and only
@@ -984,96 +1216,59 @@ export default function Dashboard({
             {devices.length === 0 && (
               <p className="side-empty">{t('dash.noChildren')}</p>
             )}
-            {deviceGroups.map(group => (
-              <div key={group.key} className="kid-group">
-                <p className="kid-group-title">
-                  {group.child ? (
-                    <>
-                      <ChildInitial
-                        name={group.child.name}
-                        colorIndex={group.child.colorIndex}
-                      />
-                      <span>{group.child.name}</span>
-                    </>
+            {deviceGroups.map(group => {
+              /*
+               * A child with one device is a row, not a group: a heading over a
+               * single row spent two of the rail's lines saying one thing. The
+               * failure that grouping fixed does not come back — the person is
+               * still named once, on the row itself (`DeviceRow`'s solo shape).
+               *
+               * Unassigned devices always keep the heading. There is no person
+               * to name there, and the heading is the only thing on those rows
+               * that says whose they are not.
+               */
+              const solo = Boolean(group.child) && group.devices.length === 1;
+              // A solo group is never open — it has no fold. Selecting its
+              // device still points `openGroupKey` at it, and without this the
+              // group would take the open block's air and indent its one row
+              // away from the rows it sits between.
+              const open = !solo && openGroupKey === group.key;
+              const containsActive = group.devices.some(d => d.id === deviceId);
+              return (
+                <div key={group.key} className={`kid-group${open ? ' is-open' : ''}`}>
+                  {solo ? (
+                    <DeviceRow
+                      device={group.devices[0]}
+                      child={group.child}
+                      active={group.devices[0].id === deviceId}
+                      onSelect={() => setDeviceId(group.devices[0].id)}
+                      latestBuilds={latestBuilds}
+                    />
                   ) : (
-                    t('dash.unassignedDevices')
-                  )}
-                </p>
-                {group.devices.map(d => {
-                  /*
-                   * `getEffectiveDeviceStatus`, not the stored `status` field.
-                   * Three minutes of silence is offline on every surface, and
-                   * the rule also refuses to call a device locked when it
-                   * cannot lock — a browser extension carrying a stale
-                   * `isLocked` from before that button was gated would
-                   * otherwise sit amber here forever.
-                   */
-                  const status = deviceStatusOf(d);
-                  return (
-                    <button
-                      key={d.id}
-                      className={`kid${d.id === deviceId ? ' is-active' : ''}`}
-                      onClick={() => setDeviceId(d.id)}
-                      aria-current={d.id === deviceId ? 'true' : undefined}
-                    >
-                      {/*
-                      The device glyph, not the child's initial — the same call
-                      the phone's device card makes (`deviceIconName`), so a Mac
-                      is the same picture on both surfaces and an iPad is not
-                      drawn as an iPhone here while the phone app draws the
-                      tablet. The initial belongs to the group heading now, where
-                      it names a person once instead of once per row.
-
-                      It reads the surface rule, not `deviceGlyph` alone: the
-                      extension registers under the platform it was installed on,
-                      so this rail drew a Mac and the extension running on it as
-                      two identical laptops until the rule was shared.
-                    */}
-                      <span className={`kid-avatar av-${d.platform}`}>
-                        <Icon name={deviceIconName(d)} size={20} />
-                      </span>
-                      <span className="kid-meta">
-                        <strong>{d.name}</strong>
-                        {d.modelName && d.modelName !== d.name && (
-                          <em>{d.modelName}</em>
-                        )}
-                        {/*
-                        Which machine is on an old build, without opening each one
-                        in turn — the rail is where "which of these" gets asked.
-                        Only ever drawn on an outdated device: `unknown` is every
-                        row that has not reported a build yet and every platform
-                        with nothing published to compare against, and a mark for
-                        that would sit on most rails saying nothing.
-                      */}
-                        {resolveBuildFreshness(d, latestBuilds ?? {}).status ===
-                          'outdated' && (
-                          <em className="kid-build-old">{t('dash.buildOutdated')}</em>
-                        )}
-                      </span>
-                      {/*
-                      The dot is the only thing on the row that says whether the
-                      device is reachable, and it said it in colour alone — a
-                      parent who cannot separate amber from grey read six
-                      identical rows. The label is the same sentence `StatusPill`
-                      prints in the header, from the same map.
-                    */}
-                      <i
-                        className={`kid-dot tone-${
-                          status === 'online'
-                            ? 'good'
-                            : status === 'locked'
-                              ? 'warning'
-                              : 'muted'
-                        }`}
-                        role="img"
-                        aria-label={t(STATUS_KEY[status] ?? STATUS_KEY.offline)}
-                        title={t(STATUS_KEY[status] ?? STATUS_KEY.offline)}
+                    <>
+                      <KidGroupHead
+                        group={group}
+                        open={open}
+                        containsActive={containsActive}
+                        onToggle={() =>
+                          setOpenGroupKey(key => (key === group.key ? null : group.key))
+                        }
                       />
-                    </button>
-                  );
-                })}
-              </div>
-            ))}
+                      {open &&
+                        group.devices.map(d => (
+                          <DeviceRow
+                            key={d.id}
+                            device={d}
+                            active={d.id === deviceId}
+                            onSelect={() => setDeviceId(d.id)}
+                            latestBuilds={latestBuilds}
+                          />
+                        ))}
+                    </>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
 
@@ -1123,7 +1318,10 @@ export default function Dashboard({
             — buying stays on the phone, by decision (`PlanCard`).
           */}
           <PlanCard plan={family.plan} trialStartedAt={family.trialStartedAt} />
-          <p>
+          {/* Classed because it is the one line in the footer a short rail can
+              afford to drop — it counts what the list above it already shows,
+              and nothing is done from it. */}
+          <p className="side-count">
             {t('dash.parents', { count: family.parents.length })} ·{' '}
             {t('dash.devices', { count: devices.length })}
           </p>
@@ -1861,16 +2059,22 @@ export default function Dashboard({
                     {inventory.flagged.length > 0 && (
                       <>
                         <p className="hint">{t('dash.inventoryFlagged')}</p>
-                        <ul className="chips">
-                          {inventory.flagged.map(row => (
-                            <li key={row.id}>
-                              {/* `appCat`, never `webCat`: that namespace is
-                                  pinned to WEB_FILTER_CATEGORIES and carries
-                                  no `bypass`, so a VPN would have rendered its
-                                  raw key here. */}
-                              {row.label} <em>{t(`appCat.${row.category}`)}</em>
-                            </li>
-                          ))}
+                        <ul className="events">
+                          {inventory.flagged.map(row => renderFlaggedRow(row, false))}
+                        </ul>
+                      </>
+                    )}
+                    {/* Directly under the flags it answers: a dismissal has to
+                        stay findable and reversible, or the summary above
+                        reports "nothing flagged" as the classifier's verdict
+                        when it is the parent's. */}
+                    {inventory.dismissed.length > 0 && (
+                      <>
+                        <p className="hint">
+                          {activityT('appInventory.dismissedTitle')}
+                        </p>
+                        <ul className="events">
+                          {inventory.dismissed.map(row => renderFlaggedRow(row, true))}
                         </ul>
                       </>
                     )}
@@ -2000,12 +2204,23 @@ export default function Dashboard({
                 <p className="hint">{t('dash.webBackgroundNote')}</p>
               </Card>
 
-              {supportsVideoHistory(device) && (
+              {/* The card is drawn for a desktop too, and that is the change:
+                  hiding it left a parent with a Mac or a PC no place to be told
+                  the Chrome extension already reports this. The phone shows the
+                  same sentence from the same key — `videoHistoryUnavailableKey`
+                  in `domain/videoHistorySupport`, so the two consoles cannot
+                  describe one machine differently. */}
+              {(supportsVideoHistory(device) || isDesktopLike(device?.platform)) && (
                 <Card title={t('dash.videosTitle')} subtitle={t('dash.videosSub')}>
+                  {!supportsVideoHistory(device) ? (
+                    <p className="empty">
+                      {activityT(videoHistoryUnavailableKey(device))}
+                    </p>
+                  ) : null}
                   {videoHistoryBlockerKey(device) ? (
                     <p className="empty">{activityT(videoHistoryBlockerKey(device))}</p>
                   ) : null}
-                  {videos.length === 0 ? (
+                  {!supportsVideoHistory(device) ? null : videos.length === 0 ? (
                     <p className="empty">{t('dash.videosEmpty')}</p>
                   ) : (
                     <table className="tbl">
@@ -2018,14 +2233,51 @@ export default function Dashboard({
                         </tr>
                       </thead>
                       <tbody>
-                        {videos.map(v => (
-                          <tr key={`${v.date}:${v.id}`}>
-                            <td>{v.title}</td>
-                            <td>{v.channel || t('viz.none')}</td>
-                            <td className="num">{v.views}</td>
-                            <td>{timeAgo(v.lastAt)}</td>
-                          </tr>
-                        ))}
+                        {/*
+                          The title opens YouTube, and the mark says whether it
+                          opens the video or a search for it. Only the browser
+                          extension knows a `videoId`; a row from the Android
+                          app or the television has none and never will, so
+                          `youtubeOpenTarget` falls back to a search on the
+                          title and channel. Same rule, same copy, as the phone.
+                        */}
+                        {videos.map(v => {
+                          const target = youtubeOpenTarget(v);
+                          const openLabel = activityT(
+                            target?.exact
+                              ? 'videoHistory.openAction'
+                              : 'videoHistory.searchAction',
+                          );
+                          return (
+                            <tr key={`${v.date}:${v.id}`}>
+                              <td>
+                                {target ? (
+                                  <a
+                                    className="video-link"
+                                    href={target.url}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    title={openLabel}
+                                    aria-label={`${v.title} — ${openLabel}`}
+                                  >
+                                    {v.title}
+                                    <span
+                                      className="video-link-mark"
+                                      aria-hidden="true"
+                                    >
+                                      {target.exact ? '↗' : '⌕'}
+                                    </span>
+                                  </a>
+                                ) : (
+                                  v.title
+                                )}
+                              </td>
+                              <td>{v.channel || t('viz.none')}</td>
+                              <td className="num">{v.views}</td>
+                              <td>{timeAgo(v.lastAt)}</td>
+                            </tr>
+                          );
+                        })}
                       </tbody>
                     </table>
                   )}

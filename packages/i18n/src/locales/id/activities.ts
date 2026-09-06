@@ -72,6 +72,16 @@ export const activities = {
   messageCheckedBody:
     'Kata yang dipantau muncul di {{appName}} dan dinilai tidak berbahaya dalam konteksnya.',
   activityTypeMessageChecked: 'Diperiksa',
+  callAlertTitle: 'Panggilan dengan nomor di luar kontak',
+  callAlertBodyOutgoing:
+    'Anak Anda menelepon nomor yang tidak ada di kontaknya, pukul {{localTime}}.',
+  callAlertBodyOutgoingTimed:
+    'Anak Anda menelepon nomor yang tidak ada di kontaknya pukul {{localTime}}, selama {{durationMinutes}} mnt.',
+  callAlertBodyIncoming:
+    'Nomor yang tidak ada di kontak anak Anda meneleponnya pukul {{localTime}}.',
+  callAlertBodyIncomingTimed:
+    'Nomor yang tidak ada di kontak anak Anda meneleponnya pukul {{localTime}}, selama {{durationMinutes}} mnt.',
+  activityTypeCallAlert: 'Peringatan panggilan',
   appRemovedTitle: 'Aplikasi dihapus',
   appRemovedBody: 'Aplikasi {{appName}} dihapus dari perangkat anak.',
   extensionInstalledTitle: 'Ekstensi browser ditambahkan',

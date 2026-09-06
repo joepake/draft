@@ -87,6 +87,16 @@ export const activities = {
   messageCheckedBody:
     'A watched word appeared in {{appName}} and was judged harmless in context.',
   activityTypeMessageChecked: 'Checked',
+  callAlertTitle: 'Call with a number not in contacts',
+  callAlertBodyOutgoing:
+    'Your child called a number that is not in their contacts, at {{localTime}}.',
+  callAlertBodyOutgoingTimed:
+    'Your child called a number that is not in their contacts at {{localTime}}, for {{durationMinutes}} min.',
+  callAlertBodyIncoming:
+    'A number that is not in your child’s contacts called them at {{localTime}}.',
+  callAlertBodyIncomingTimed:
+    'A number that is not in your child’s contacts called them at {{localTime}}, for {{durationMinutes}} min.',
+  activityTypeCallAlert: 'Call alert',
   appRemovedTitle: 'App removed',
   appRemovedBody: '{{appName}} was uninstalled from the child device.',
   extensionInstalledTitle: 'Browser extension added',

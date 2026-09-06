@@ -7,6 +7,9 @@ export const videoHistory = {
   toggleFailed: 'Video geçmişi güncellenemedi. Tekrar deneyin.',
   unsupportedNote:
     'Bu cihaz izlenen videoları bildiremez. Android ve Chrome’da çalışır.',
+
+  unsupportedNeedsExtension:
+    'Bu bilgisayardaki KidGate hangi videoların izlendiğini göremez — site adlarını okur, sayfanın içeriğini değil. O bilgisayara Chrome için KidGate uzantısını kurun, izlenen videolar burada görünsün.',
   emptyTitle: 'Henüz izlenen yok',
   emptyBody: 'KidGate çalışırken çocuğunuz izlediğinde videolar burada görünür.',
   emptyBodyOff: 'İzlenen videoları listelemek için yukarıdan kaydı açın.',
@@ -26,4 +29,7 @@ export const videoHistory = {
   heroTopChannel: 'En çok izlenen',
   readerLayoutChanged:
     'Bu cihazda Shorts şu anda kaydedilmiyor: YouTube uygulaması değişti ve KidGate’in güncellenmesi gerekiyor. Diğer videolar kaydedilmeye devam ediyor.',
+  openAction: 'YouTube’da aç',
+  searchAction: 'Bu videoyu YouTube’da ara',
+  openFailed: 'YouTube açılamadı.',
 };

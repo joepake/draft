@@ -35,3 +35,19 @@ import type { DevicePlatform } from '@kidgate/schema/capabilities';
 export function isAndroidLike(platform?: DevicePlatform | string | null): boolean {
   return platform === 'android' || platform === 'androidtv';
 }
+
+/**
+ * macOS and Windows, which share `apps/desktop` — one codebase, one child
+ * agent, and the same two answers to the question this was added for: neither
+ * can name a video the child watched, and both run the Chrome the extension
+ * that can is installed into.
+ *
+ * They are **not** the same on everything, and this must not be used as if
+ * they were: the Mac filters with a content filter and Windows with its own
+ * resolver, the Mac asks the child to approve an extension and Windows asks
+ * nothing, and only Windows has a watchdog service. Where the sentence differs
+ * per platform, branch per platform — `WebFilterScreen` does, deliberately.
+ */
+export function isDesktopLike(platform?: DevicePlatform | string | null): boolean {
+  return platform === 'macos' || platform === 'windows';
+}

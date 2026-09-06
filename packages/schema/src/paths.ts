@@ -22,6 +22,15 @@ export const FirestorePaths = {
    * sitting one line apart is exactly how a wrong constant gets picked.
    */
   familyReports: 'reports',
+  /**
+   * A parent's own judgement on a flagged app — `appFlagDismissal.ts`.
+   *
+   * A family subcollection rather than a device one, because the scope is the
+   * child: an app a parent has decided is fine is fine on both of that child's
+   * machines. A device with no `childId` gets a document of its own here, keyed
+   * the same way, so there is one home and one writer for the fact.
+   */
+  appFlagDismissals: 'appFlagDismissals',
 } as const;
 
 export function userDoc(userId: string) {
@@ -157,6 +166,18 @@ export function videoHistoryCollection(userId: string, deviceId: string) {
  */
 export function appInventoryCollection(userId: string, deviceId: string) {
   return `${childDeviceDoc(userId, deviceId)}/appInventory`;
+}
+
+/**
+ * Flags a parent has answered — one document per scope (`appFlagDismissal.ts`).
+ *
+ * Deliberately **not** under `childDevices/{deviceId}`, which is why it is not
+ * beside `appInventoryCollection` above: the answer belongs to the child, and a
+ * device-scoped copy would be the same sentence stored twice for a family whose
+ * child carries a phone and a tablet.
+ */
+export function appFlagDismissalsCollection(userId: string) {
+  return `${FirestorePaths.users}/${userId}/${FirestorePaths.appFlagDismissals}`;
 }
 
 export function accountDeletionRequestsCollection(userId: string) {

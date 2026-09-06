@@ -125,14 +125,27 @@ export function webFilterBlockerKey(device: {
  * a parent with a Mac saw a crippled iOS-shaped screen over a device that
  * could already enforce every category and both lists.
  *
- * Only `android`, `androidtv` and `macos` can answer true, and only when
- * `supportsWebFiltering` already does — Android TV's tunnel takes the same
- * `ContentFilterRules` payload the Mac's provider does, so a probe reporting
- * `webFilter: 'vpn'` there is a full-policy filter, while Windows still
- * hardcodes `webFilter: false` and never reaches a screen gated on this. iOS
- * is deliberately never a `true` here: `Device.capabilities` carries no probe
- * for it, so nothing about its filter is a policy this function could
- * describe.
+ * `android`, `androidtv`, `macos` and `windows` can answer true, and only when
+ * `supportsWebFiltering` already does. What they share is the payload: Android
+ * TV's tunnel, the Mac's provider and the Windows resolver are all handed the
+ * same `ContentFilterRules` built by `domain/contentFilterPolicy`, so each one
+ * enforces every category and both lists.
+ *
+ * **Windows was added 2026-09-06 and its absence was a real outage, not a
+ * pending nicety.** This list is what opens the screen a parent uses to switch
+ * web filtering on. With `windows` missing, a PC could publish
+ * `webFilter: 'dns'`, run a resolver, and still never be given a policy with
+ * `enabled: true` — so `controlsSync` called `setEnabled(false)` forever and
+ * the filter never started on any Windows machine. The child screen read "not
+ * set" and the parent's read "not available", both correctly describing a
+ * feature nothing could turn on.
+ *
+ * Safe-search is **not** part of what this opens, and must not be folded in:
+ * `supportsSafeSearch` gates it separately and answers no for Windows, whose
+ * resolver forwards rather than synthesising the A/AAAA answer that rewrite
+ * needs. iOS is deliberately never a `true` here either: `Device.capabilities`
+ * carries no probe for it, so nothing about its filter is a policy this
+ * function could describe.
  */
 export function supportsWebFilterCategories(device: WebFilterSupportInput): boolean {
   if (!supportsWebFiltering(device)) {
@@ -141,6 +154,7 @@ export function supportsWebFilterCategories(device: WebFilterSupportInput): bool
   return (
     device.platform === 'android' ||
     device.platform === 'androidtv' ||
-    device.platform === 'macos'
+    device.platform === 'macos' ||
+    device.platform === 'windows'
   );
 }

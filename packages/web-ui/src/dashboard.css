@@ -202,12 +202,10 @@
 }
 
 /* Whose devices these are stays readable while scrolling through them. */
-.side-kids-scroll .kid-group-title {
+.side-kids-scroll .kid-group-head {
   position: sticky;
   top: 0;
   z-index: 1;
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
   background: color-mix(in srgb, var(--plane) 94%, var(--ink));
 }
 
@@ -232,7 +230,8 @@
  * lists that happen to sit above each other.
  */
 .kid,
-.nav-item {
+.nav-item,
+.kid-group-head {
   position: relative;
   width: 100%;
   display: flex;
@@ -248,12 +247,14 @@
 }
 
 .kid:hover,
-.nav-item:hover {
+.nav-item:hover,
+.kid-group-head:hover {
   background: color-mix(in srgb, var(--ink) 6%, transparent);
 }
 
 .kid.is-active,
-.nav-item.is-active {
+.nav-item.is-active,
+.kid-group-head.is-active {
   background: color-mix(in srgb, var(--brand) 14%, transparent);
   color: var(--ink);
 }
@@ -261,7 +262,8 @@
 /* The bar, not a border: a border would move the row's contents by a pixel
    on selection and the whole list would shuffle as a parent clicked down it. */
 .kid.is-active::before,
-.nav-item.is-active::before {
+.nav-item.is-active::before,
+.kid-group-head.is-active::before {
   content: '';
   position: absolute;
   inset-inline-start: 0;
@@ -372,38 +374,150 @@
 }
 
 /*
- * The sidebar is grouped by child: one heading per person, their devices
- * indented under it, and a trailing group for devices assigned to nobody.
+ * The rail is grouped by child: one row per person, their devices under the
+ * one that is open, and a trailing group for devices assigned to nobody.
  * Before this the heading said "Children" over a flat list of devices, so a
  * family with one child and two devices read as two children.
+ *
+ * **The groups fold.** Rendering every device of every child at once made the
+ * rail's height children × devices inside a scroller whose height is fixed, so
+ * a family of five hunted through a 14rem window for one machine. Only the
+ * group holding the selection is open; the rest are one row each.
+ *
+ * The rule that used to separate every group is gone with it. It was drawn for
+ * a list of multi-row blocks and, over a column that is now mostly single
+ * rows, it read as a divider per child — six hairlines in a rail that already
+ * has one down its edge. Open groups are told apart by the indent of their
+ * device rows instead, which says the same thing and paints nothing.
  */
 .kid-group + .kid-group {
-  margin-top: 0.7rem;
-  padding-top: 0.7rem;
-  border-top: 1px solid var(--line);
+  margin-top: 0.1rem;
 }
 
-.kid-group-title {
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
-  padding: 0 0.55rem;
-  margin-bottom: 0.15rem;
-  font-size: 0.76rem;
-  font-weight: 700;
-  color: var(--ink);
+/* An open group is a block, so it gets air above and below that the collapsed
+   rows do not need. */
+.kid-group.is-open {
+  margin-block: 0.4rem;
+}
+
+/* The devices belong to the row above them, and the inset says so. Only inside
+   an open group: a solo child's row is top-level and must line up with the
+   group rows it sits between, not with the devices under one of them. */
+.kid-group.is-open .kid {
+  padding-inline-start: 1.35rem;
+}
+
+.kid-group-name {
+  flex: 1;
   min-width: 0;
-}
-
-.kid-group-title span {
+  font-size: 0.87rem;
+  font-weight: 600;
+  color: var(--ink-2);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-/* The devices belong to the heading above them, and the inset says so. */
-.kid-group .kid {
-  padding-left: 0.8rem;
+.kid-group-head.is-open .kid-group-name,
+.kid-group-head.is-active .kid-group-name {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+/*
+ * What the fold must not cost: whether anything over there needs attention.
+ * One dot per device, not a worst-of verdict — a rolled-up tone cannot say
+ * "two online, one offline" without a sentence, and the sentence is the thing
+ * a rail has no room for.
+ */
+.kid-group-dots {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  flex-shrink: 0;
+}
+
+/* Tighter than the row dot's ring, which is sized to survive the selected
+   row's tint; these sit on the plain ground and only need to not touch. */
+.kid-group-dots .kid-dot {
+  width: 7px;
+  height: 7px;
+  box-shadow: none;
+}
+
+.kid-group-more {
+  font-size: 0.66rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+/* The open group's dots are the rows themselves; leaving them here would say
+   every status twice, once folded and once not. */
+.kid-group-head.is-open .kid-group-dots {
+  display: none;
+}
+
+.kid-group-chevron {
+  flex-shrink: 0;
+  color: var(--muted);
+  transition: transform var(--kg-motion-fast) ease;
+}
+
+.kid-group-head.is-open .kid-group-chevron {
+  transform: rotate(90deg);
+}
+
+/* Turned the other way in a right-to-left rail, and then turned again when
+   open — the fold points down in both directions. */
+[dir='rtl'] .kid-group-chevron {
+  transform: rotate(180deg);
+}
+
+[dir='rtl'] .kid-group-head.is-open .kid-group-chevron {
+  transform: rotate(90deg);
+}
+
+/*
+ * A child who owns one device is one row, not a heading over a single row.
+ * The tile carries the person and the sub-line carries the machine, glyph
+ * included: the glyph is the only thing that separates a Mac from the
+ * extension running on it, and dropping it to save a line would have made
+ * those two rows identical.
+ */
+.kid-avatar-child {
+  background: none;
+}
+
+.kid.is-active .kid-avatar-child {
+  background: none;
+}
+
+.kid-avatar-child .kid-initial {
+  width: 1.6rem;
+  height: 1.6rem;
+  font-size: 0.78rem;
+}
+
+/* `.kid-meta em` is (0,1,1) and sets `display: block`, so the element carries
+   its own tag here for the same reason `em.kid-build-old` does below. */
+.kid-meta em.kid-sub {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  min-width: 0;
+  overflow: visible;
+}
+
+.kid-sub > span {
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.kid-sub-glyph {
+  flex-shrink: 0;
+  opacity: 0.8;
 }
 
 /*
@@ -526,6 +640,33 @@
 
 .side-foot .side-account {
   margin-top: 0;
+}
+
+/*
+ * A laptop at 1280×640 — a real window, not a contrived one — leaves the rail
+ * about 24rem between the brand and the footer, and the brand, Manage and the
+ * footer take most of it. The list this rail exists to drive gets what is left,
+ * which is how a family of four ended up scrolling three rows at a time.
+ *
+ * So the fixed furniture gives ground before the list does. The count line goes
+ * first (the list above it is the count), then the footer's own air. Nothing
+ * actionable is removed at any height: the plan card, the language picker and
+ * the account row are the reasons the footer exists.
+ */
+@media (min-width: 821px) and (max-height: 760px) {
+  .side-foot .side-count {
+    display: none;
+  }
+
+  .side-foot {
+    gap: 0.4rem;
+    padding-top: 0.6rem;
+  }
+
+  .dash-side {
+    gap: 0.7rem;
+    padding-top: 0.8rem;
+  }
 }
 
 /* ---------- Main ---------- */
@@ -1573,6 +1714,27 @@ ol.attn-fix li + li {
 .tbl .tone-critical {
   color: var(--critical);
   font-weight: 600;
+}
+
+/* A watched video's title, opening YouTube. Underlined on hover only: every
+   row in the table is one, so a permanent rule would draw the whole column.
+   The mark carries the promise — ↗ is the video, ⌕ is a search standing in
+   for it, which is all a row without a `videoId` can offer. */
+.video-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.video-link:hover,
+.video-link:focus-visible {
+  color: var(--brand);
+  text-decoration: underline;
+}
+
+.video-link-mark {
+  margin-left: 0.35rem;
+  color: var(--muted);
+  font-size: 0.85em;
 }
 
 .tag {

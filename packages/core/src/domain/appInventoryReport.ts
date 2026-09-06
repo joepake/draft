@@ -46,6 +46,10 @@ import {
   type AppInventory,
   type InventoryApp,
 } from '@kidgate/schema/appInventory';
+import {
+  appFlagDismissed,
+  type AppFlagDismissal,
+} from '@kidgate/schema/appFlagDismissal';
 import type { AppInstallApprovalPolicy } from '@kidgate/schema/policy';
 import { installApprovalState, type InstallApprovalState } from './appInstallApproval';
 
@@ -63,10 +67,12 @@ export const INVENTORY_STALE_AFTER_MS = 48 * 60 * 60 * 1000;
 /**
  * How recently an app must have appeared to be called new.
  *
- * Only ever true on a device's *second* or later scan. Everything in a first
- * inventory carries `firstSeenAt === scannedAt` and is deliberately not "new" —
- * see `InventoryApp.firstSeenAt`, and `isFirstScan` below, which is what stops
- * a freshly paired phone reporting its entire contents as recent arrivals.
+ * Only ever true on a device's *second* or later scan, and only for a row that
+ * arrived after the baseline. Everything in a first inventory carries
+ * `firstSeenAt === scannedAt` and is deliberately not "new" — see
+ * `InventoryApp.firstSeenAt`, `isFirstScan` below, and `baselineAt` in
+ * `buildAppInventoryReport`, which together are what stop a freshly paired
+ * device reporting its entire contents as recent arrivals.
  */
 export const INVENTORY_RECENT_MS = 7 * 24 * 60 * 60 * 1000;
 
@@ -86,7 +92,7 @@ export interface InventoryRow {
    */
   minAge?: number;
   firstSeenAt: number;
-  /** Appeared since the previous scan, within `INVENTORY_RECENT_MS`. */
+  /** Appeared after the baseline scan, within `INVENTORY_RECENT_MS`. */
   recent: boolean;
   /**
    * This row is a browser extension, not an app on the machine.
@@ -127,6 +133,20 @@ export interface AppInventoryReport {
   pending: InventoryRow[];
   /** High-confidence serious categories, alphabetical by label. */
   flagged: InventoryRow[];
+  /**
+   * Flagged, and the parent has said it is fine.
+   *
+   * Its own group rather than a merge into `other`, and that is the whole
+   * design: a dismissal must stay **visible and reversible**. Folded into the
+   * ordinary list, the summary above would report "nothing flagged" — the
+   * parent's claim, said in the classifier's voice — with no way back to what
+   * was waved off. The same argument as "there is no all-clear key" below.
+   *
+   * A row leaves this group on its own when the classifier changes its mind:
+   * the dismissal records the category it answered, so a reclassified app is a
+   * new claim and lands back in `flagged`.
+   */
+  dismissed: InventoryRow[];
   /** Everything else with a showable classification. */
   other: InventoryRow[];
   /** Not classified yet. Never merged into `other`. */
@@ -174,7 +194,7 @@ export interface AppInventoryReport {
 function toRow(
   app: InventoryApp,
   entry: AppCategoryEntry | null,
-  scannedAt: number,
+  baselineAt: number,
   nowMs: number,
   isFirstScan: boolean,
   installApproval: AppInstallApprovalPolicy | null,
@@ -206,13 +226,14 @@ function toRow(
     ...(entry && entry.minAge > 0 ? { minAge: entry.minAge } : {}),
     firstSeenAt: app.firstSeenAt,
     // Three separate gates, and dropping any one produces a wrong sentence.
-    // Not the first scan (it knows nothing about arrival); seen after the scan
-    // that established the baseline; and recently, measured against now rather
-    // than against the scan, so an inventory nobody refreshed for a month does
-    // not keep calling the same app new.
+    // Not the first scan (it knows nothing about arrival); seen *after* the
+    // scan that established the baseline, which is what `baselineAt` is; and
+    // recently, measured against now rather than against the scan, so an
+    // inventory nobody refreshed for a month does not keep calling the same
+    // app new.
     recent:
       !isFirstScan &&
-      app.firstSeenAt > scannedAt - INVENTORY_RECENT_MS &&
+      app.firstSeenAt > baselineAt &&
       nowMs - app.firstSeenAt < INVENTORY_RECENT_MS,
     isExtension: isBrowserExtensionId(app.id),
     ...(typeof app.installedAt === 'number' ? { installedAt: app.installedAt } : {}),
@@ -246,6 +267,13 @@ export function buildAppInventoryReport(
    * that has no controls in hand — a test, a summary — still gets a report.
    */
   installApproval: AppInstallApprovalPolicy | null = null,
+  /**
+   * Flags this scope's parent has already answered
+   * (`@kidgate/core/repositories/appFlagDismissal`). Optional and empty by
+   * default, so every existing caller and every test keeps the classifier's
+   * own answer.
+   */
+  dismissals: readonly AppFlagDismissal[] = [],
 ): AppInventoryReport {
   // Every entry carrying the scan's own timestamp is what a first scan looks
   // like — it is the one shape that cannot have come from a diff. An empty
@@ -254,8 +282,42 @@ export function buildAppInventoryReport(
     inventory.apps.length === 0 ||
     inventory.apps.every(app => app.firstSeenAt >= inventory.scannedAt);
 
+  /*
+   * When the baseline was taken — the earliest `firstSeenAt` in the list.
+   *
+   * **This is what "new" is measured against, and reading it off the current
+   * scan instead was a bug a parent saw.** Every row of a device's first scan
+   * is stamped with that scan's time and carried forward unchanged; from the
+   * *second* scan onwards `isFirstScan` is false, so the old gate — "first
+   * seen inside the last seven days" — was true for the entire baseline, and
+   * a browser paired yesterday showed New against every extension it has,
+   * for a week. Measured 2026-09-06 on a real Chrome row: 7 of 7.
+   *
+   * Derived rather than stored. It is the same class of answer `isFirstScan`
+   * already derives from the same field, it needs no schema change, and it
+   * corrects every document already written — a stored `baselineAt` would fix
+   * only devices that scanned again. Its one soft edge is a device whose
+   * entire baseline has since been uninstalled: the floor moves up and the
+   * oldest survivors stop being called new. That under-reports an arrival,
+   * which is the direction `mapApps` already chose for an unreadable row.
+   *
+   * Zeroes are skipped — a row written before `firstSeenAt` existed reads 0
+   * and would drag the floor to the epoch, making everything look new again.
+   */
+  let baselineAt = Number.POSITIVE_INFINITY;
+  for (const app of inventory.apps) {
+    if (app.firstSeenAt > 0 && app.firstSeenAt < baselineAt) {
+      baselineAt = app.firstSeenAt;
+    }
+  }
+  if (!Number.isFinite(baselineAt)) {
+    // Nothing usable to compare against: no row may claim to be an arrival.
+    baselineAt = inventory.scannedAt;
+  }
+
   const pending: InventoryRow[] = [];
   const flagged: InventoryRow[] = [];
+  const dismissed: InventoryRow[] = [];
   const other: InventoryRow[] = [];
   const unclassified: InventoryRow[] = [];
   let hiddenCount = 0;
@@ -266,20 +328,21 @@ export function buildAppInventoryReport(
       hiddenCount += 1;
       continue;
     }
-    const row = toRow(
-      app,
-      entry,
-      inventory.scannedAt,
-      nowMs,
-      isFirstScan,
-      installApproval,
-    );
+    const row = toRow(app, entry, baselineAt, nowMs, isFirstScan, installApproval);
     if (row.installState === 'pending') {
       // Its own group, before any category: blocked right now, by the device,
       // and the parent is the only thing that changes that.
       pending.push(row);
     } else if (row.serious) {
-      flagged.push(row);
+      // A flag the parent has already answered leaves the warning group —
+      // still classified, still serious, still listed, but under their own
+      // heading rather than under the classifier's. `appFlagDismissed` compares
+      // the category, so an app reclassified since is flagged again.
+      if (row.category && appFlagDismissed(dismissals, row.id, row.category)) {
+        dismissed.push(row);
+      } else {
+        flagged.push(row);
+      }
     } else if (entry || row.isExtension) {
       // An extension is `other` with no entry, which is the one place in this
       // function where a missing classification is not a gap. Nothing will
@@ -291,11 +354,17 @@ export function buildAppInventoryReport(
     }
   }
 
-  const shown = pending.length + flagged.length + other.length + unclassified.length;
+  const shown =
+    pending.length +
+    flagged.length +
+    dismissed.length +
+    other.length +
+    unclassified.length;
 
   return {
     pending: pending.sort(byInstalledDesc),
     flagged: flagged.sort(byLabel),
+    dismissed: dismissed.sort(byLabel),
     other: other.sort(byLabel),
     unclassified: unclassified.sort(byLabel),
     // Every row, not most of them: a browser that somehow reported one real
@@ -305,6 +374,7 @@ export function buildAppInventoryReport(
       shown > 0 &&
       pending.every(row => row.isExtension) &&
       flagged.every(row => row.isExtension) &&
+      dismissed.every(row => row.isExtension) &&
       other.every(row => row.isExtension) &&
       unclassified.every(row => row.isExtension),
     hiddenCount,
@@ -339,8 +409,14 @@ export function appInventorySummaryKey(report: AppInventoryReport): {
   key: string;
   params: Record<string, number>;
 } {
+  // Dismissed rows are counted, never dropped: the total says how many apps
+  // are on the device, and an app does not leave the phone because a parent
+  // decided it was fine.
   const shown =
-    report.flagged.length + report.other.length + report.unclassified.length;
+    report.flagged.length +
+    report.dismissed.length +
+    report.other.length +
+    report.unclassified.length;
   if (report.flagged.length > 0) {
     return {
       key: report.isExtensionInventory

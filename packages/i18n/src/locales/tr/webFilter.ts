@@ -58,6 +58,26 @@ export const webFilter = {
   iosOnlyNote: 'iOS’ta Ekran Süresi kullanır',
   androidVpnNote: 'Android’de yerel DNS VPN kullanır',
   macosFilterNote: 'Mac’te KidGate’in içerik filtresini kullanır',
+
+  heroSubtitleWindows:
+    'Çocuğun bilgisayarında KidGate’in kendi çözümleyicisini çalıştırarak bilinen yetişkin sitelerini her tarayıcıda engeller.',
+
+  toggleHintWindows:
+    'Bilgisayarda onaylanacak bir şey yok. KidGate’in arka plan hizmeti filtreyi birkaç saniye içinde açar.',
+
+  infoLine1Windows:
+    'KidGate bilgisayarda, hangi sitelerin sorgulandığını denetleyen ve kategorilerinizdekileri engelleyen bir çözümleyici çalıştırır.',
+
+  infoLine2Windows:
+    'Chrome, Edge ve Firefox buna KidGate’in uyguladığı bir ayarla bağlanır. Çocuğunuzdan hiçbir onay istenmez.',
+
+  infoLine3Windows:
+    'Bunun için KidGate arka plan hizmeti gerekir. Web filtreleme kapalı kalıyorsa KidGate’i bilgisayara yönetici olarak yeniden yükleyin.',
+
+  infoLine4Windows:
+    'Filtre yalnızca site adlarını okur. Sayfanın içini göremez ve az önce sorgulanan bir site birkaç dakika daha açılabilir.',
+
+  windowsFilterNote: 'Windows’ta KidGate’in kendi çözümleyicisini kullanır',
   webFilteringNote:
     'iOS, Ekran Süresi yetişkin filtresini; Android, yerel DNS VPN engel listesini kullanır.',
   safeSearchAlertsNote:

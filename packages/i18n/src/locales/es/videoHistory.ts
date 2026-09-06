@@ -7,6 +7,9 @@ export const videoHistory = {
   toggleFailed: 'No se pudo actualizar el historial de vídeos. Inténtalo de nuevo.',
   unsupportedNote:
     'Este dispositivo no puede informar de los vídeos vistos. Funciona en Android y en Chrome.',
+
+  unsupportedNeedsExtension:
+    'KidGate no puede ver en este ordenador qué vídeos se ven: lee nombres de sitios, no el contenido de una página. Instala en él la extensión de KidGate para Chrome y los vídeos vistos aparecerán aquí.',
   emptyTitle: 'Nada visto aún',
   emptyBody: 'Los vídeos aparecen aquí cuando tu hijo ve algo con KidGate activo.',
   emptyBodyOff: 'Activa el registro arriba para empezar a listar los vídeos vistos.',
@@ -26,4 +29,7 @@ export const videoHistory = {
   heroTopChannel: 'Más visto',
   readerLayoutChanged:
     'Ahora mismo no se registran los Shorts en este dispositivo: la app de YouTube ha cambiado y KidGate necesita una actualización. Los demás vídeos se siguen registrando.',
+  openAction: 'Abrir en YouTube',
+  searchAction: 'Buscar este vídeo en YouTube',
+  openFailed: 'No se pudo abrir YouTube.',
 };

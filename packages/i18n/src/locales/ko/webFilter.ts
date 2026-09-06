@@ -59,6 +59,26 @@ export const webFilter = {
   iosOnlyNote: 'iOS에서는 스크린 타임 사용',
   androidVpnNote: 'Android에서는 로컬 DNS VPN 사용',
   macosFilterNote: 'Mac에서는 KidGate 콘텐츠 필터 사용',
+
+  heroSubtitleWindows:
+    '아이의 PC에서 KidGate 자체 리졸버를 실행해 모든 브라우저에서 알려진 성인 사이트를 차단합니다.',
+
+  toggleHintWindows:
+    'PC에서 승인할 것은 없습니다. KidGate 백그라운드 서비스가 몇 초 안에 필터를 켭니다.',
+
+  infoLine1Windows:
+    'KidGate는 PC에서 리졸버를 실행해 어떤 사이트를 조회하는지 확인하고, 선택한 카테고리의 사이트를 차단합니다.',
+
+  infoLine2Windows:
+    'Chrome, Edge, Firefox는 KidGate가 적용하는 설정으로 여기에 묶입니다. 아이에게 승인을 요청하지 않습니다.',
+
+  infoLine3Windows:
+    'KidGate 백그라운드 서비스가 필요합니다. 웹 필터링이 계속 꺼져 있으면 PC에서 관리자 권한으로 KidGate를 다시 설치하세요.',
+
+  infoLine4Windows:
+    '필터는 사이트 이름만 읽습니다. 페이지 내부는 볼 수 없고, 방금 조회한 사이트는 몇 분 동안 계속 열릴 수 있습니다.',
+
+  windowsFilterNote: 'Windows에서 KidGate 자체 리졸버 사용',
   webFilteringNote:
     'iOS는 스크린 타임 성인 필터를, Android는 로컬 DNS VPN 차단 목록을 사용합니다.',
   safeSearchAlertsNote:

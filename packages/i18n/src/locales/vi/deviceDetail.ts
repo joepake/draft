@@ -46,8 +46,6 @@ export const deviceDetail = {
   quickCheckIn: 'Báo an toàn',
   lastActive: 'Hoạt động lần cuối',
   appVersion: 'Phiên bản ứng dụng',
-  appVersionUpdate: '{{running}} · đã có {{latest}}',
-  appVersionRestart: '{{running}} · mở lại ứng dụng để hoàn tất',
   otaUpdateNow: 'Cập nhật ngay',
   otaAsked: 'Đã yêu cầu thiết bị này cập nhật',
   otaUpToDate: 'Đã là bản mới nhất',

@@ -73,6 +73,16 @@ export const activities = {
   messageCheckedBody:
     'Ein beobachtetes Wort tauchte in {{appName}} auf und war im Zusammenhang harmlos.',
   activityTypeMessageChecked: 'Geprüft',
+  callAlertTitle: 'Anruf mit einer Nummer außerhalb der Kontakte',
+  callAlertBodyOutgoing:
+    'Ihr Kind hat um {{localTime}} eine Nummer angerufen, die nicht in seinen Kontakten steht.',
+  callAlertBodyOutgoingTimed:
+    'Ihr Kind hat um {{localTime}} eine Nummer angerufen, die nicht in seinen Kontakten steht — {{durationMinutes}} Min.',
+  callAlertBodyIncoming:
+    'Eine Nummer, die nicht in den Kontakten Ihres Kindes steht, hat es um {{localTime}} angerufen.',
+  callAlertBodyIncomingTimed:
+    'Eine Nummer, die nicht in den Kontakten Ihres Kindes steht, hat es um {{localTime}} angerufen — {{durationMinutes}} Min.',
+  activityTypeCallAlert: 'Anruf-Hinweis',
   appRemovedTitle: 'App deinstalliert',
   appRemovedBody: 'Die App {{appName}} wurde vom Gerät des Kindes entfernt.',
   extensionInstalledTitle: 'Browser-Erweiterung hinzugefügt',

@@ -49,8 +49,6 @@ export const deviceDetail = {
   quickCheckIn: 'Check-In',
   lastActive: 'Son etkinlik',
   appVersion: 'Uygulama sürümü',
-  appVersionUpdate: '{{running}} · {{latest}} mevcut',
-  appVersionRestart: '{{running}} · tamamlamak için uygulamayı yeniden açın',
   otaUpdateNow: 'Şimdi güncelle',
   otaAsked: 'Bu cihazdan güncelleme istendi',
   otaUpToDate: 'Zaten güncel',

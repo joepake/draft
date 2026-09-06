@@ -65,6 +65,16 @@ export const activities = {
   messageCheckedBody:
     'Một từ trong danh sách theo dõi đã xuất hiện trong {{appName}} và được xét là vô hại trong ngữ cảnh.',
   activityTypeMessageChecked: 'Đã kiểm tra',
+  callAlertTitle: 'Cuộc gọi với số không có trong danh bạ',
+  callAlertBodyOutgoing:
+    'Con bạn đã gọi tới một số không có trong danh bạ, lúc {{localTime}}.',
+  callAlertBodyOutgoingTimed:
+    'Con bạn đã gọi tới một số không có trong danh bạ lúc {{localTime}}, kéo dài {{durationMinutes}} phút.',
+  callAlertBodyIncoming:
+    'Một số không có trong danh bạ đã gọi cho con bạn lúc {{localTime}}.',
+  callAlertBodyIncomingTimed:
+    'Một số không có trong danh bạ đã gọi cho con bạn lúc {{localTime}}, kéo dài {{durationMinutes}} phút.',
+  activityTypeCallAlert: 'Cảnh báo cuộc gọi',
   appRemovedTitle: 'Gỡ ứng dụng',
   appRemovedBody: 'Ứng dụng {{appName}} vừa được gỡ khỏi thiết bị của trẻ.',
   extensionInstalledTitle: 'Đã thêm tiện ích trình duyệt',

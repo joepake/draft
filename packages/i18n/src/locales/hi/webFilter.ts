@@ -58,6 +58,26 @@ export const webFilter = {
   iosOnlyNote: 'iOS पर स्क्रीन टाइम इस्तेमाल करता है',
   androidVpnNote: 'Android पर लोकल DNS VPN इस्तेमाल करता है',
   macosFilterNote: 'Mac पर KidGate का कॉन्टेंट फ़िल्टर इस्तेमाल करता है',
+
+  heroSubtitleWindows:
+    'बच्चे के PC पर KidGate का अपना रिज़ॉल्वर चलाता है ताकि हर ब्राउज़र में जानी-पहचानी वयस्क साइटें रोकी जा सकें.',
+
+  toggleHintWindows:
+    'PC पर कुछ भी मंज़ूर नहीं करना होता. KidGate की बैकग्राउंड सेवा कुछ ही सेकंड में फ़िल्टर चालू कर देती है.',
+
+  infoLine1Windows:
+    'KidGate PC पर एक रिज़ॉल्वर चलाता है जो देखता है कि कौन-सी साइटें खोजी जा रही हैं और आपकी श्रेणियों वाली साइटें रोक देता है.',
+
+  infoLine2Windows:
+    'Chrome, Edge और Firefox को KidGate की लागू की गई सेटिंग इससे बाँधती है. आपके बच्चे से कुछ भी मंज़ूर नहीं कराया जाता.',
+
+  infoLine3Windows:
+    'इसके लिए KidGate की बैकग्राउंड सेवा चाहिए. अगर वेब फ़िल्टरिंग बंद ही रहे, तो PC पर KidGate को व्यवस्थापक के रूप में दोबारा इंस्टॉल करें.',
+
+  infoLine4Windows:
+    'फ़िल्टर सिर्फ़ साइट के नाम पढ़ता है. वह पेज के अंदर नहीं देख सकता, और अभी-अभी खोजी गई साइट कुछ मिनट तक खुलती रह सकती है.',
+
+  windowsFilterNote: 'Windows पर KidGate का अपना रिज़ॉल्वर',
   webFilteringNote:
     'iOS स्क्रीन टाइम का वयस्क फ़िल्टर इस्तेमाल करता है; Android लोकल DNS VPN ब्लॉकलिस्ट।',
   safeSearchAlertsNote:

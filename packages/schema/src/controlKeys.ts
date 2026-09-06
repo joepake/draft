@@ -101,6 +101,11 @@ export const PARENT_CONTROL_KEYS = [
   'searchMonitoringEnabled',
   'messageProfanityEnabled',
   'messageKeywordLanguages',
+  // Night call alerts. Parent-set for the same reason every other monitoring
+  // switch is: an on/off the child can flip is not a control. The windows are
+  // here too, so the fan-out never writes them as a child field.
+  'callAlertsEnabled',
+  'callAlertWindows',
   // A child rule as well (`CHILD_RULE_KEYS`): routed to `updateChildRules`
   // for an assigned device, and here for one that has no child yet.
   'safeSearchEnabled',

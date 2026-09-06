@@ -14,11 +14,15 @@ export const webFilter = {
     'Runs a private connection on the child Android device to block known adult sites in browsers and many apps.',
   heroSubtitleMacos:
     'Runs KidGate’s content filter on the child’s Mac to block known adult sites in browsers and many apps.',
+  heroSubtitleWindows:
+    'Runs KidGate’s own resolver on the child’s PC to block known adult sites in every browser.',
   toggleHintIos: 'Requires the Screen Time permission on the child device.',
   toggleHintAndroid:
     'The child must approve the KidGate VPN connection once. Keep the VPN on for filtering to work.',
   toggleHintMacos:
     'The child must approve the KidGate filter extension once in System Settings. Keep it approved for filtering to work.',
+  toggleHintWindows:
+    'Nothing to approve on the PC. KidGate’s background service switches the filter on within a few seconds.',
   toggleAccessibilityLabel: 'Enable Web Filter',
   safeSearchSectionTitle: 'Safe search & YouTube',
   safeSearchSectionSubtitle:
@@ -47,6 +51,14 @@ export const webFilter = {
     'The child’s Mac shows the filter as active once approved. If it gets switched off there, reopen KidGate to restore it.',
   infoLine4Macos:
     'The filter reads site names, which modern browsers hide on roughly half of visits — those sites are not checked against your categories. It still stops most sites children reach this way.',
+  infoLine1Windows:
+    'KidGate runs a resolver on the PC that checks which sites are being looked up, and blocks the ones on your categories.',
+  infoLine2Windows:
+    'Chrome, Edge and Firefox are held to it by a setting KidGate applies. Your child is not asked to approve anything.',
+  infoLine3Windows:
+    'It needs KidGate’s background service. If web filtering stays off, reinstall KidGate on the PC as an administrator.',
+  infoLine4Windows:
+    'The filter reads site names only. It cannot see inside a page, and a site the browser looked up a moment ago may keep opening for a few minutes.',
   privateDnsBannerTitle: 'Turn off Private DNS',
   privateDnsBannerBody:
     'Private DNS is on, so adult web filtering may be bypassed. Turn it off for the filter to work.',
@@ -58,8 +70,9 @@ export const webFilter = {
   iosOnlyNote: 'Uses Screen Time on iOS',
   androidVpnNote: 'Uses a private connection on Android',
   macosFilterNote: 'Uses KidGate’s content filter on Mac',
+  windowsFilterNote: 'Uses KidGate’s own resolver on Windows',
   webFilteringNote:
-    'iOS uses the Screen Time adult filter. Android and Mac use KidGate’s own blocklist.',
+    'iOS uses the Screen Time adult filter. Android, Mac and Windows use KidGate’s own blocklist.',
   safeSearchAlertsNote:
     'Safari does not share search terms; keyword alerts require a managed safe browser.',
   webHistoryNote: 'Requires a filtered browser or DNS/VPN-style reporting.',

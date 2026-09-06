@@ -49,8 +49,6 @@ export const deviceDetail = {
   quickCheckIn: 'Check-in',
   lastActive: 'Ultima attività',
   appVersion: 'Versione app',
-  appVersionUpdate: '{{running}} · {{latest}} disponibile',
-  appVersionRestart: '{{running}} · riavvia l’app per completare',
   otaUpdateNow: 'Aggiorna ora',
   otaAsked: 'Aggiornamento richiesto a questo dispositivo',
   otaUpToDate: 'Già aggiornato',

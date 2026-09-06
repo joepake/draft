@@ -73,6 +73,16 @@ export const activities = {
   messageCheckedBody:
     'Apareció una palabra vigilada en {{appName}} y resultó inofensiva en su contexto.',
   activityTypeMessageChecked: 'Revisado',
+  callAlertTitle: 'Llamada con un número que no está en contactos',
+  callAlertBodyOutgoing:
+    'Tu hijo llamó a un número que no está en sus contactos, a las {{localTime}}.',
+  callAlertBodyOutgoingTimed:
+    'Tu hijo llamó a un número que no está en sus contactos a las {{localTime}}, durante {{durationMinutes}} min.',
+  callAlertBodyIncoming:
+    'Un número que no está en los contactos de tu hijo lo llamó a las {{localTime}}.',
+  callAlertBodyIncomingTimed:
+    'Un número que no está en los contactos de tu hijo lo llamó a las {{localTime}}, durante {{durationMinutes}} min.',
+  activityTypeCallAlert: 'Alerta de llamada',
   appRemovedTitle: 'Aplicación desinstalada',
   appRemovedBody: 'Se desinstaló la aplicación {{appName}} del dispositivo del niño.',
   extensionInstalledTitle: 'Extensión del navegador añadida',

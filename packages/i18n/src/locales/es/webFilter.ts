@@ -58,6 +58,26 @@ export const webFilter = {
   iosOnlyNote: 'Usa Tiempo de uso en iOS',
   androidVpnNote: 'Usa una VPN DNS local en Android',
   macosFilterNote: 'Usa el filtro de contenido de KidGate en Mac',
+
+  heroSubtitleWindows:
+    'Ejecuta el propio resolutor de KidGate en el PC del menor para bloquear sitios para adultos conocidos en todos los navegadores.',
+
+  toggleHintWindows:
+    'No hay nada que aprobar en el PC. El servicio en segundo plano de KidGate activa el filtro en unos segundos.',
+
+  infoLine1Windows:
+    'KidGate ejecuta un resolutor en el PC que comprueba qué sitios se consultan y bloquea los de tus categorías.',
+
+  infoLine2Windows:
+    'Chrome, Edge y Firefox quedan sujetos a él mediante una configuración que aplica KidGate. No se pide nada al menor.',
+
+  infoLine3Windows:
+    'Necesita el servicio en segundo plano de KidGate. Si el filtrado sigue desactivado, reinstala KidGate en el PC como administrador.',
+
+  infoLine4Windows:
+    'El filtro solo lee nombres de sitios. No ve el interior de una página, y un sitio consultado hace un momento puede seguir abriéndose unos minutos.',
+
+  windowsFilterNote: 'Usa el propio resolutor de KidGate en Windows',
   webFilteringNote:
     'iOS usa el filtro de adultos de Tiempo de uso; Android usa una lista de bloqueo por VPN DNS local.',
   safeSearchAlertsNote:

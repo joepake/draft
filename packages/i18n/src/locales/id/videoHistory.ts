@@ -7,6 +7,9 @@ export const videoHistory = {
   toggleFailed: 'Tidak dapat memperbarui riwayat video. Coba lagi.',
   unsupportedNote:
     'Perangkat ini tidak dapat melaporkan video yang ditonton. Berfungsi di Android dan Chrome.',
+
+  unsupportedNeedsExtension:
+    'KidGate di komputer ini tidak bisa melihat video apa yang ditonton — ia membaca nama situs, bukan isi halaman. Pasang ekstensi KidGate untuk Chrome di komputer itu, dan video yang ditonton akan muncul di sini.',
   emptyTitle: 'Belum ada yang ditonton',
   emptyBody: 'Video muncul di sini saat anak Anda menonton dengan KidGate berjalan.',
   emptyBodyOff:
@@ -27,4 +30,7 @@ export const videoHistory = {
   heroTopChannel: 'Paling sering',
   readerLayoutChanged:
     'Shorts saat ini tidak direkam di perangkat ini — aplikasi YouTube berubah dan KidGate perlu diperbarui. Video lain tetap direkam.',
+  openAction: 'Buka di YouTube',
+  searchAction: 'Cari video ini di YouTube',
+  openFailed: 'Tidak dapat membuka YouTube.',
 };

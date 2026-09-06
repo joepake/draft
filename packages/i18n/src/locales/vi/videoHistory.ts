@@ -7,6 +7,9 @@ export const videoHistory = {
   toggleFailed: 'Không cập nhật được lịch sử video. Vui lòng thử lại.',
   unsupportedNote:
     'Thiết bị này không báo được video đã xem. Tính năng này chỉ hoạt động trên Android và Chrome.',
+
+  unsupportedNeedsExtension:
+    'KidGate trên máy tính này không thấy được video nào đang được xem — nó đọc tên trang, không đọc nội dung bên trong. Hãy cài tiện ích KidGate cho Chrome trên máy đó, video đã xem sẽ hiện ở đây.',
   emptyTitle: 'Chưa có video nào',
   emptyBody: 'Video sẽ hiện ở đây khi trẻ xem trong lúc KidGate đang chạy.',
   emptyBodyOff: 'Bật ghi lại ở trên để bắt đầu liệt kê video đã xem.',
@@ -26,4 +29,7 @@ export const videoHistory = {
   heroTopChannel: 'Xem nhiều nhất',
   readerLayoutChanged:
     'Shorts hiện không được ghi lại trên thiết bị này — ứng dụng YouTube đã thay đổi và KidGate cần cập nhật. Các video khác vẫn được ghi lại.',
+  openAction: 'Mở trên YouTube',
+  searchAction: 'Tìm video này trên YouTube',
+  openFailed: 'Không mở được YouTube.',
 };

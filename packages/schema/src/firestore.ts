@@ -10,6 +10,7 @@ import type { UsageAppBreakdown } from './usageDay';
 import type { DeviceControls, DeviceLocation } from './deviceControls';
 import type { DeviceMessageMonitoringState } from './messageMonitoringState';
 import type { DevicePlace } from './devicePlace';
+import type { CallAlertConsent } from './callAlertConsent';
 import type { MessageAiConsent } from './messageAiConsent';
 import type { PlanId } from './plan';
 import type { UserSubscription } from './subscription';
@@ -71,6 +72,15 @@ export interface FirestoreUser {
    * document type omitted a field the document has always carried.
    */
   messageAiConsent?: MessageAiConsent;
+  /**
+   * Consent to night call alerts (`callAlertConsent.ts`), written by
+   * `functions/http/callAlertConsent.js` and never by a client.
+   *
+   * Beside `messageAiConsent` and deliberately not folded into it: two
+   * disclosures, two versions, and widening one to cover the other is the
+   * failure both are versioned to prevent.
+   */
+  callAlertConsent?: CallAlertConsent;
   createdAt: string;
   updatedAt: string;
 }
@@ -110,6 +120,7 @@ export const FIRESTORE_USER_FIELDS = [
   'leaderboardEnabled',
   'screenTimeBoardEnabled',
   'messageAiConsent',
+  'callAlertConsent',
   'createdAt',
   'updatedAt',
 ] as const satisfies ReadonlyArray<keyof FirestoreUser>;

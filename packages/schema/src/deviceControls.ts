@@ -197,6 +197,33 @@ export interface DeviceControls {
   /** Same shape, gated on `Device.messageMonitoring.outgoing.granted` instead. */
   messageMonitoringOutgoingEnabled: boolean;
   /**
+   * Whether the device reports a call with an unnamed party inside
+   * `callAlertWindows`. Parent-set, off until someone turns it on.
+   *
+   * **The switch alone does not start it.** Call reporting is additionally
+   * gated on the family's `callAlertConsent` (`@kidgate/schema/callAlertConsent`),
+   * which is a recorded consent rather than a control, and on the child having
+   * granted notification access to the call listener. Three separate gates, on
+   * purpose — `@kidgate/core/domain/callAlert.shouldRaiseCallAlert` is the one
+   * place they are read together.
+   */
+  callAlertsEnabled: boolean;
+  /**
+   * The hours a call is worth telling a parent about — a `ScheduleWindow[]`,
+   * the same shape and the same overnight rule as `scheduleWindows`.
+   *
+   * Its own field rather than a re-use of the schedule: those windows say when
+   * the device is *blocked*, and a family whose curfew is school hours would
+   * otherwise be alerted about calls at 10am and told nothing about 3am. They
+   * share a default (`DEFAULT_SCHEDULE_WINDOWS`, 22:00–07:00) because that is
+   * what "night" already meant in this product, not because they are the same
+   * setting.
+   *
+   * An empty list means the feature can never fire, and the parent screen says
+   * so rather than showing an armed switch over a window that does not exist.
+   */
+  callAlertWindows: ScheduleWindow[];
+  /**
    * Whether the device scans what the child **searches for** — a third switch,
    * beside the two message ones, and off until a parent turns it on.
    *
@@ -411,6 +438,8 @@ export const DEFAULT_DEVICE_CONTROLS: DeviceControls = {
   approvedPackages: [],
   messageMonitoringEnabled: false,
   messageMonitoringOutgoingEnabled: false,
+  callAlertsEnabled: false,
+  callAlertWindows: DEFAULT_SCHEDULE_WINDOWS,
   blockedAppsConfigured: false,
   blockedAppCount: 0,
   blockedCategoryCount: 0,

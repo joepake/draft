@@ -7,6 +7,9 @@ export const videoHistory = {
   toggleFailed: '동영상 기록을 업데이트하지 못했습니다. 다시 시도하세요.',
   unsupportedNote:
     '이 기기는 시청한 동영상을 보고할 수 없습니다. Android와 Chrome에서 작동합니다.',
+
+  unsupportedNeedsExtension:
+    '이 컴퓨터의 KidGate는 어떤 동영상을 봤는지 알 수 없습니다. 사이트 이름은 읽지만 페이지 내용은 읽지 않기 때문입니다. 그 컴퓨터에 Chrome용 KidGate 확장 프로그램을 설치하면 시청한 동영상이 여기에 표시됩니다.',
   emptyTitle: '아직 시청 없음',
   emptyBody: 'KidGate가 실행 중일 때 자녀가 시청하면 동영상이 여기에 표시됩니다.',
   emptyBodyOff: '시청한 동영상을 나열하려면 위에서 기록을 켜세요.',
@@ -26,4 +29,7 @@ export const videoHistory = {
   heroTopChannel: '가장 많이 시청',
   readerLayoutChanged:
     '현재 이 기기에서는 Shorts가 기록되지 않습니다. YouTube 앱이 변경되어 KidGate 업데이트가 필요합니다. 다른 동영상은 계속 기록됩니다.',
+  openAction: 'YouTube에서 열기',
+  searchAction: '이 동영상을 YouTube에서 검색',
+  openFailed: 'YouTube를 열 수 없습니다.',
 };

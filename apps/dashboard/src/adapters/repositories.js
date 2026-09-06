@@ -19,6 +19,7 @@ import { createSiteRequestRepository } from '@kidgate/core/repositories/siteRequ
 import { createUsageDayRepository } from '@kidgate/core/repositories/usageDay';
 import { createWebHistoryRepository } from '@kidgate/core/repositories/webHistory';
 import { createVideoHistoryRepository } from '@kidgate/core/repositories/videoHistory';
+import { createAppFlagDismissalRepository } from '@kidgate/core/repositories/appFlagDismissal';
 import {
   createAppInventoryRepository,
   getAppInventory as readAppInventory,
@@ -148,6 +149,14 @@ export const controlRepository = createControlRepository({
  * that the two lists agree, which is the reason this comment names the count.
  */
 export const appInventoryRepository = createAppInventoryRepository({ db });
+/**
+ * The parent's answers to flagged apps — read AND written here, unlike the
+ * inventory beside it, because the list is the parent's own opinion and no
+ * agent publishes or reads it (`@kidgate/schema/appFlagDismissal`).
+ */
+export const appFlagDismissalRepository = createAppFlagDismissalRepository({
+  db,
+});
 
 export const deviceRepository = createDeviceRepository({
   db,
@@ -166,5 +175,8 @@ export const deviceRepository = createDeviceRepository({
     webHistoryRepository,
     videoHistoryRepository,
     appInventoryRepository,
+    // Device-scoped answers only — a child-scoped document outlives the
+    // machine on purpose (`createAppFlagDismissalRepository`).
+    appFlagDismissalRepository,
   ],
 });

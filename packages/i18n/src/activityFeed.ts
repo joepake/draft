@@ -1,5 +1,6 @@
 import type { AppLanguage } from '@kidgate/schema/language';
 import { activities as enActivities } from './locales/en/activities';
+import { appInventory as enAppInventory } from './locales/en/appInventory';
 import { appLimits as enAppLimits } from './locales/en/appLimits';
 import { blockedHours as enBlockedHours } from './locales/en/blockedHours';
 import { checkIn as enCheckIn } from './locales/en/checkIn';
@@ -27,8 +28,9 @@ import type { TranslationParams } from './types';
  * **The name is narrower than the job, since 2026-09-03.** It began as the feed
  * translator and is now also the door `apps/dashboard`'s parent editors read
  * their labels through — `appLimits`, `blockedHours` and `placeAlerts` were
- * added the day those editors were built. Renaming the module and its three
- * exports would touch every call site for nothing a comment cannot say.
+ * added the day those editors were built, `appInventory` on 2026-09-06 with the
+ * flagged-app actions. Renaming the module and its three exports would touch
+ * every call site for nothing a comment cannot say.
  *
  * ## Why the web reads the app's key space here
  *
@@ -85,6 +87,7 @@ import type { TranslationParams } from './types';
 export interface ActivityFeedPack extends LocaleTree {
   activities: unknown;
   /** Not feed rows — parent-editor labels. See the note above. */
+  appInventory: unknown;
   appLimits: unknown;
   blockedHours: unknown;
   placeAlerts: unknown;
@@ -135,6 +138,7 @@ export interface ActivityFeedPack extends LocaleTree {
  */
 const en: ActivityFeedPack = {
   activities: enActivities,
+  appInventory: enAppInventory,
   appLimits: enAppLimits,
   blockedHours: enBlockedHours,
   placeAlerts: enPlaceAlerts,
@@ -159,6 +163,7 @@ const en: ActivityFeedPack = {
 const NAMESPACES = [
   'activities',
   'videoHistory',
+  'appInventory',
   'appLimits',
   'blockedHours',
   'placeAlerts',
@@ -202,6 +207,7 @@ async function loadFrom(lang: Exclude<AppLanguage, 'en'>): Promise<ActivityFeedP
 const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
   ar: {
     activities: () => import('./locales/ar/activities'),
+    appInventory: () => import('./locales/ar/appInventory'),
     appLimits: () => import('./locales/ar/appLimits'),
     blockedHours: () => import('./locales/ar/blockedHours'),
     placeAlerts: () => import('./locales/ar/placeAlerts'),
@@ -224,6 +230,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
   },
   de: {
     activities: () => import('./locales/de/activities'),
+    appInventory: () => import('./locales/de/appInventory'),
     appLimits: () => import('./locales/de/appLimits'),
     blockedHours: () => import('./locales/de/blockedHours'),
     placeAlerts: () => import('./locales/de/placeAlerts'),
@@ -246,6 +253,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
   },
   es: {
     activities: () => import('./locales/es/activities'),
+    appInventory: () => import('./locales/es/appInventory'),
     appLimits: () => import('./locales/es/appLimits'),
     blockedHours: () => import('./locales/es/blockedHours'),
     placeAlerts: () => import('./locales/es/placeAlerts'),
@@ -268,6 +276,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
   },
   fr: {
     activities: () => import('./locales/fr/activities'),
+    appInventory: () => import('./locales/fr/appInventory'),
     appLimits: () => import('./locales/fr/appLimits'),
     blockedHours: () => import('./locales/fr/blockedHours'),
     placeAlerts: () => import('./locales/fr/placeAlerts'),
@@ -290,6 +299,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
   },
   hi: {
     activities: () => import('./locales/hi/activities'),
+    appInventory: () => import('./locales/hi/appInventory'),
     appLimits: () => import('./locales/hi/appLimits'),
     blockedHours: () => import('./locales/hi/blockedHours'),
     placeAlerts: () => import('./locales/hi/placeAlerts'),
@@ -312,6 +322,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
   },
   id: {
     activities: () => import('./locales/id/activities'),
+    appInventory: () => import('./locales/id/appInventory'),
     appLimits: () => import('./locales/id/appLimits'),
     blockedHours: () => import('./locales/id/blockedHours'),
     placeAlerts: () => import('./locales/id/placeAlerts'),
@@ -334,6 +345,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
   },
   it: {
     activities: () => import('./locales/it/activities'),
+    appInventory: () => import('./locales/it/appInventory'),
     appLimits: () => import('./locales/it/appLimits'),
     blockedHours: () => import('./locales/it/blockedHours'),
     placeAlerts: () => import('./locales/it/placeAlerts'),
@@ -356,6 +368,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
   },
   ja: {
     activities: () => import('./locales/ja/activities'),
+    appInventory: () => import('./locales/ja/appInventory'),
     appLimits: () => import('./locales/ja/appLimits'),
     blockedHours: () => import('./locales/ja/blockedHours'),
     placeAlerts: () => import('./locales/ja/placeAlerts'),
@@ -378,6 +391,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
   },
   ko: {
     activities: () => import('./locales/ko/activities'),
+    appInventory: () => import('./locales/ko/appInventory'),
     appLimits: () => import('./locales/ko/appLimits'),
     blockedHours: () => import('./locales/ko/blockedHours'),
     placeAlerts: () => import('./locales/ko/placeAlerts'),
@@ -400,6 +414,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
   },
   pt: {
     activities: () => import('./locales/pt/activities'),
+    appInventory: () => import('./locales/pt/appInventory'),
     appLimits: () => import('./locales/pt/appLimits'),
     blockedHours: () => import('./locales/pt/blockedHours'),
     placeAlerts: () => import('./locales/pt/placeAlerts'),
@@ -422,6 +437,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
   },
   ru: {
     activities: () => import('./locales/ru/activities'),
+    appInventory: () => import('./locales/ru/appInventory'),
     appLimits: () => import('./locales/ru/appLimits'),
     blockedHours: () => import('./locales/ru/blockedHours'),
     placeAlerts: () => import('./locales/ru/placeAlerts'),
@@ -444,6 +460,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
   },
   tr: {
     activities: () => import('./locales/tr/activities'),
+    appInventory: () => import('./locales/tr/appInventory'),
     appLimits: () => import('./locales/tr/appLimits'),
     blockedHours: () => import('./locales/tr/blockedHours'),
     placeAlerts: () => import('./locales/tr/placeAlerts'),
@@ -466,6 +483,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
   },
   vi: {
     activities: () => import('./locales/vi/activities'),
+    appInventory: () => import('./locales/vi/appInventory'),
     appLimits: () => import('./locales/vi/appLimits'),
     blockedHours: () => import('./locales/vi/blockedHours'),
     placeAlerts: () => import('./locales/vi/placeAlerts'),

@@ -70,6 +70,15 @@ export const activities = {
   messageCheckedBody:
     '{{appName}} で監視対象の言葉が見つかりましたが、文脈では問題ありませんでした。',
   activityTypeMessageChecked: '確認済み',
+  callAlertTitle: '連絡先にない番号との通話',
+  callAlertBodyOutgoing: 'お子様が {{localTime}} に連絡先にない番号へ発信しました。',
+  callAlertBodyOutgoingTimed:
+    'お子様が {{localTime}} に連絡先にない番号へ発信しました（{{durationMinutes}} 分）。',
+  callAlertBodyIncoming:
+    '連絡先にない番号から {{localTime}} にお子様へ着信がありました。',
+  callAlertBodyIncomingTimed:
+    '連絡先にない番号から {{localTime}} にお子様へ着信がありました（{{durationMinutes}} 分）。',
+  activityTypeCallAlert: '通話アラート',
   appRemovedTitle: 'アプリをアンインストールしました',
   appRemovedBody: 'お子さまのデバイスから{{appName}}がアンインストールされました。',
   extensionInstalledTitle: 'ブラウザ拡張機能が追加されました',

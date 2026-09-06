@@ -69,6 +69,14 @@ export const activities = {
   messageCheckedBody:
     'ظهرت كلمة مراقَبة في {{appName}} وتبيّن أنها غير مؤذية في سياقها.',
   activityTypeMessageChecked: 'تم الفحص',
+  callAlertTitle: 'مكالمة مع رقم غير موجود في جهات الاتصال',
+  callAlertBodyOutgoing: 'اتصل طفلك برقم غير موجود في جهات اتصاله، في {{localTime}}.',
+  callAlertBodyOutgoingTimed:
+    'اتصل طفلك برقم غير موجود في جهات اتصاله في {{localTime}}، لمدة {{durationMinutes}} دقيقة.',
+  callAlertBodyIncoming: 'اتصل برقم غير موجود في جهات اتصال طفلك به في {{localTime}}.',
+  callAlertBodyIncomingTimed:
+    'اتصل برقم غير موجود في جهات اتصال طفلك به في {{localTime}}، لمدة {{durationMinutes}} دقيقة.',
+  activityTypeCallAlert: 'تنبيه مكالمة',
   appRemovedTitle: 'تمت إزالة التطبيق',
   appRemovedBody: 'تمت إزالة التطبيق {{appName}} من جهاز الطفل.',
   extensionInstalledTitle: 'تمت إضافة إضافة متصفح',

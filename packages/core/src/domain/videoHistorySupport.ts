@@ -18,9 +18,12 @@
  * answers for are the ones running the build that has no reader, where `false`
  * is the truth. `docs/FEASIBILITY.md`, "Videos watched on Android TV".
  *
- * Every other platform answers no: the Mac's content filter sees a domain and
- * never a video, Windows has no filter at all and its window titles name the
- * page rather than the clip — a search reads `<query> - YouTube`, measured —
+ * Every other platform answers no, and for the same reason on both desktops:
+ * a filter sees a domain and never a video. The Mac's content filter sees the
+ * connection, Windows' resolver sees the resolved name, and `youtube.com` is
+ * all either of them can say. Windows fails a second time besides — its window
+ * titles name the page rather than the clip, and a search reads
+ * `<query> - YouTube`, measured, which is the exact shape of a watch —
  * and iOS's Screen Time report names apps and domains, not the clip inside
  * one. Recorded in `docs/FEASIBILITY.md` ("Videos watched", "Videos watched on
  * Windows").
@@ -51,6 +54,32 @@ export function videoHistoryBlockerKey(device: {
     default:
       return null;
   }
+}
+
+/**
+ * What to tell a parent about a device that cannot report watched videos.
+ *
+ * Returns an i18n key, always — this is the sentence under a feature that is
+ * off, not a decision about whether it is available. `supportsVideoHistory`
+ * stays false either way.
+ *
+ * **The desktops get a different sentence because they have an answer.** A Mac
+ * or a PC cannot do this from the agent — `docs/FEASIBILITY.md`'s two gates
+ * say why, and neither is a gap waiting to be closed — but the Chrome
+ * extension already ships it on both, reading the real video id out of the URL.
+ * The flat "this device cannot" hid that: the same gate that refused the
+ * agent-side reader wrote down that **the gap a parent hits is onboarding, not
+ * platform — the agent never mentions the extension**. This is that sentence.
+ *
+ * Only the desktops. iOS runs no Chrome extension, and an Android phone or TV
+ * already reports through its own reader, so neither would be told to install
+ * something that changes nothing for them.
+ */
+export function videoHistoryUnavailableKey(device: VideoHistorySupportInput): string {
+  if (device.platform === 'macos' || device.platform === 'windows') {
+    return 'videoHistory.unsupportedNeedsExtension';
+  }
+  return 'videoHistory.unsupportedNote';
 }
 
 export function supportsVideoHistory(device: VideoHistorySupportInput): boolean {

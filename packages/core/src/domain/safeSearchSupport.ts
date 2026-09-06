@@ -10,8 +10,15 @@
  *
  * Every other platform answers no, and each for a reason recorded in
  * `docs/FEASIBILITY.md` ("Forced SafeSearch"): the Mac's shipped filter is a
- * content filter that cannot rewrite a lookup, Windows ships no filter, and
- * iOS has no DNS layer and no Screen Time key for this.
+ * content filter that cannot rewrite a lookup, and iOS has no DNS layer and no
+ * Screen Time key for this.
+ *
+ * **Windows is the one whose reason changed, on 2026-09-06.** It used to be
+ * "ships no filter"; it now ships a DNS one. The answer is still no, for a
+ * narrower reason: that resolver forwards queries and synthesises no records
+ * at all, and forcing safe search means *answering* a lookup with the
+ * addresses of an engine's enforcement name. Being a forwarder is most of what
+ * makes it safe, so this stays false until that changes.
  */
 
 import type { DeviceCapabilities, DevicePlatform } from '@kidgate/schema/capabilities';

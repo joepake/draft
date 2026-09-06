@@ -232,6 +232,18 @@ export function parseDeviceControls(data?: Record<string, unknown>): DeviceContr
     messageMonitoringOutgoingEnabled: Boolean(
       controls.messageMonitoringOutgoingEnabled,
     ),
+    // Off unless the parent set it, like every other monitoring switch.
+    callAlertsEnabled: controls.callAlertsEnabled === true,
+    // Falls back to the night default rather than to an empty list: an empty
+    // list means "the feature can never fire", which is the right answer for a
+    // parent who cleared their windows and the wrong one for a device whose
+    // document predates the field.
+    callAlertWindows: ((): DeviceControls['callAlertWindows'] => {
+      const windows = parseScheduleWindows(controls.callAlertWindows);
+      return controls.callAlertWindows === undefined
+        ? DEFAULT_DEVICE_CONTROLS.callAlertWindows
+        : windows;
+    })(),
     // Off unless the parent set it: absent must not switch search reporting on
     // for every device that predates the field.
     searchMonitoringEnabled: controls.searchMonitoringEnabled === true,

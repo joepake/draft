@@ -58,6 +58,26 @@ export const webFilter = {
   iosOnlyNote: 'يستخدم مدة استخدام الجهاز على iOS',
   androidVpnNote: 'يستخدم VPN DNS محليًا على Android',
   macosFilterNote: 'يستخدم فلتر محتوى KidGate على Mac',
+
+  heroSubtitleWindows:
+    'يشغّل محلل KidGate الخاص على كمبيوتر الطفل لحظر المواقع الإباحية المعروفة في كل المتصفحات.',
+
+  toggleHintWindows:
+    'لا شيء للموافقة عليه على الكمبيوتر. تشغّل خدمة KidGate في الخلفية التصفية خلال ثوانٍ.',
+
+  infoLine1Windows:
+    'يشغّل KidGate محللاً على الكمبيوتر يتحقق من المواقع التي يجري البحث عنها ويحظر ما يقع ضمن فئاتك.',
+
+  infoLine2Windows:
+    'يُلزم KidGate متصفحات Chrome وEdge وFirefox بذلك عبر إعداد يطبّقه. لا يُطلب من طفلك الموافقة على شيء.',
+
+  infoLine3Windows:
+    'يحتاج إلى خدمة KidGate في الخلفية. إذا ظلت تصفية الويب متوقفة، أعد تثبيت KidGate على الكمبيوتر كمسؤول.',
+
+  infoLine4Windows:
+    'تقرأ التصفية أسماء المواقع فقط. لا ترى ما بداخل الصفحة، وقد يظل موقع بحث عنه المتصفح قبل قليل يفتح لبضع دقائق.',
+
+  windowsFilterNote: 'يستخدم محلل KidGate الخاص على Windows',
   webFilteringNote:
     'يستخدم iOS فلتر البالغين في مدة استخدام الجهاز؛ ويستخدم Android قائمة حظر عبر VPN DNS محلي.',
   safeSearchAlertsNote:

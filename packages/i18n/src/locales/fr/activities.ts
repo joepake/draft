@@ -73,6 +73,16 @@ export const activities = {
   messageCheckedBody:
     'Un mot surveillé est apparu dans {{appName}} et s’est révélé inoffensif dans son contexte.',
   activityTypeMessageChecked: 'Vérifié',
+  callAlertTitle: 'Appel avec un numéro absent des contacts',
+  callAlertBodyOutgoing:
+    'Votre enfant a appelé un numéro absent de ses contacts, à {{localTime}}.',
+  callAlertBodyOutgoingTimed:
+    'Votre enfant a appelé un numéro absent de ses contacts à {{localTime}}, pendant {{durationMinutes}} min.',
+  callAlertBodyIncoming:
+    'Un numéro absent des contacts de votre enfant l’a appelé à {{localTime}}.',
+  callAlertBodyIncomingTimed:
+    'Un numéro absent des contacts de votre enfant l’a appelé à {{localTime}}, pendant {{durationMinutes}} min.',
+  activityTypeCallAlert: 'Alerte d’appel',
   appRemovedTitle: 'Application désinstallée',
   appRemovedBody:
     'L’application {{appName}} a été désinstallée de l’appareil de l’enfant.',
