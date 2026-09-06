@@ -9,7 +9,11 @@ export const videoHistory = {
     '이 기기는 시청한 동영상을 보고할 수 없습니다. Android와 Chrome에서 작동합니다.',
 
   unsupportedNeedsExtension:
-    '이 컴퓨터의 KidGate는 어떤 동영상을 봤는지 알 수 없습니다. 사이트 이름은 읽지만 페이지 내용은 읽지 않기 때문입니다. 그 컴퓨터에 Chrome용 KidGate 확장 프로그램을 설치하면 시청한 동영상이 여기에 표시됩니다.',
+    '이 컴퓨터의 KidGate는 어떤 동영상을 봤는지 알 수 없습니다. 사이트 이름은 읽지만 페이지 내용은 읽지 않기 때문입니다. Chrome용 KidGate 확장 프로그램은 알 수 있습니다. 이 컴퓨터에 추가하면 시청한 동영상을 별도의 기기로 보고합니다.',
+  viaExtension: '확장 프로그램으로',
+  extensionStepInstall: '이 컴퓨터의 Chrome에 KidGate 확장 프로그램 추가',
+  extensionStepPair: '페어링하기 — 별도의 기기로 표시됩니다',
+  extensionStepEnable: '해당 기기에서 “시청한 동영상 기록” 켜기',
   emptyTitle: '아직 시청 없음',
   emptyBody: 'KidGate가 실행 중일 때 자녀가 시청하면 동영상이 여기에 표시됩니다.',
   emptyBodyOff: '시청한 동영상을 나열하려면 위에서 기록을 켜세요.',

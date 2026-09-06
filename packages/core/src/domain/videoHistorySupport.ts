@@ -30,6 +30,7 @@
  */
 
 import type { DeviceCapabilities, DevicePlatform } from '@kidgate/schema/capabilities';
+import { isDesktopLike } from './platformFamily';
 
 export const VIDEO_HISTORY_PLATFORMS: readonly DevicePlatform[] = ['android'];
 
@@ -88,4 +89,25 @@ export function supportsVideoHistory(device: VideoHistorySupportInput): boolean 
     return probe;
   }
   return VIDEO_HISTORY_PLATFORMS.includes(device.platform ?? 'ios');
+}
+
+/**
+ * Whether a parent surface draws the video card for this device at all.
+ *
+ * Wider than `supportsVideoHistory`, and on purpose: a Mac or a PC cannot
+ * record videos itself, but the card is where a parent is told that the
+ * Chrome extension can — `videoHistoryUnavailableKey` and the three
+ * `videoHistory.extensionStep*` lines. Hiding the card, or drawing it struck
+ * out as "Not available on Mac", is how a parent came to believe the product
+ * had no answer for a computer when it has one they were never shown.
+ *
+ * Every other platform keeps the narrow rule. iOS has no extension to offer,
+ * and a phone or television that cannot record has nothing to be told.
+ *
+ * One rule for both consoles — `apps/dashboard` drew the card from an inline
+ * `|| isDesktopLike(...)` first, and the phone's device grid still hid it, so
+ * the same Mac had a video section on the web and none in the app.
+ */
+export function showsVideoHistoryCard(device: VideoHistorySupportInput): boolean {
+  return supportsVideoHistory(device) || isDesktopLike(device.platform);
 }

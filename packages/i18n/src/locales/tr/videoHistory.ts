@@ -9,7 +9,11 @@ export const videoHistory = {
     'Bu cihaz izlenen videoları bildiremez. Android ve Chrome’da çalışır.',
 
   unsupportedNeedsExtension:
-    'Bu bilgisayardaki KidGate hangi videoların izlendiğini göremez — site adlarını okur, sayfanın içeriğini değil. O bilgisayara Chrome için KidGate uzantısını kurun, izlenen videolar burada görünsün.',
+    'Bu bilgisayardaki KidGate hangi videoların izlendiğini göremez — site adlarını okur, sayfanın içeriğini değil. Chrome için KidGate uzantısı görebilir: bu bilgisayara ekleyin, izlenen videoları ayrı bir cihaz olarak bildirir.',
+  viaExtension: 'Uzantı ile',
+  extensionStepInstall: 'Bu bilgisayarda Chrome’a KidGate uzantısını ekleyin',
+  extensionStepPair: 'Eşleştirin — ayrı bir cihaz olarak görünür',
+  extensionStepEnable: 'O cihaz için “İzlenen videoları kaydet” seçeneğini açın',
   emptyTitle: 'Henüz izlenen yok',
   emptyBody: 'KidGate çalışırken çocuğunuz izlediğinde videolar burada görünür.',
   emptyBodyOff: 'İzlenen videoları listelemek için yukarıdan kaydı açın.',

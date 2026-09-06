@@ -9,7 +9,11 @@ export const videoHistory = {
     'Questo dispositivo non può segnalare i video guardati. Funziona su Android e in Chrome.',
 
   unsupportedNeedsExtension:
-    'Su questo computer KidGate non può vedere quali video vengono guardati: legge i nomi dei siti, non il contenuto di una pagina. Installaci l’estensione KidGate per Chrome e i video guardati compariranno qui.',
+    'Su questo computer KidGate non può vedere quali video vengono guardati: legge i nomi dei siti, non il contenuto di una pagina. L’estensione KidGate per Chrome sì: aggiungila su questo computer e segnalerà i video guardati come un dispositivo a sé.',
+  viaExtension: 'Tramite estensione',
+  extensionStepInstall: 'Aggiungi l’estensione KidGate a Chrome su questo computer',
+  extensionStepPair: 'Associala: compare come un dispositivo a sé',
+  extensionStepEnable: 'Attiva «Registra i video guardati» per quel dispositivo',
   emptyTitle: 'Ancora niente guardato',
   emptyBody: 'I video appaiono qui quando tuo figlio guarda con KidGate attivo.',
   emptyBodyOff: 'Attiva la registrazione sopra per elencare i video guardati.',

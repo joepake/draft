@@ -9,7 +9,11 @@ export const videoHistory = {
     'Thiết bị này không báo được video đã xem. Tính năng này chỉ hoạt động trên Android và Chrome.',
 
   unsupportedNeedsExtension:
-    'KidGate trên máy tính này không thấy được video nào đang được xem — nó đọc tên trang, không đọc nội dung bên trong. Hãy cài tiện ích KidGate cho Chrome trên máy đó, video đã xem sẽ hiện ở đây.',
+    'KidGate trên máy tính này không thấy được video nào đang được xem — nó đọc tên trang, không đọc nội dung bên trong. Tiện ích KidGate cho Chrome thì thấy được: cài nó trên máy này, nó sẽ báo video đã xem như một thiết bị riêng.',
+  viaExtension: 'Qua tiện ích',
+  extensionStepInstall: 'Thêm tiện ích KidGate vào Chrome trên máy tính này',
+  extensionStepPair: 'Ghép nối tiện ích — nó hiện như một thiết bị riêng',
+  extensionStepEnable: 'Bật “Ghi lại video đã xem” cho thiết bị đó',
   emptyTitle: 'Chưa có video nào',
   emptyBody: 'Video sẽ hiện ở đây khi trẻ xem trong lúc KidGate đang chạy.',
   emptyBodyOff: 'Bật ghi lại ở trên để bắt đầu liệt kê video đã xem.',

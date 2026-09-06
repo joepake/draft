@@ -9,7 +9,12 @@ export const videoHistory = {
     'Dieses Gerät kann keine angesehenen Videos melden. Funktioniert auf Android und in Chrome.',
 
   unsupportedNeedsExtension:
-    'KidGate kann auf diesem Computer nicht sehen, welche Videos angesehen werden – es liest Seitennamen, nicht den Inhalt einer Seite. Installieren Sie dort die KidGate-Erweiterung für Chrome, dann erscheinen angesehene Videos hier.',
+    'KidGate kann auf diesem Computer nicht sehen, welche Videos angesehen werden – es liest Seitennamen, nicht den Inhalt einer Seite. Die KidGate-Erweiterung für Chrome kann es: Fügen Sie sie auf diesem Computer hinzu, dann meldet sie angesehene Videos als eigenes Gerät.',
+  viaExtension: 'Über Erweiterung',
+  extensionStepInstall:
+    'Die KidGate-Erweiterung in Chrome auf diesem Computer hinzufügen',
+  extensionStepPair: 'Koppeln – sie erscheint als eigenes Gerät',
+  extensionStepEnable: '„Angesehene Videos aufzeichnen“ für dieses Gerät einschalten',
   emptyTitle: 'Noch nichts angesehen',
   emptyBody: 'Videos erscheinen hier, sobald Ihr Kind mit laufendem KidGate zusieht.',
   emptyBodyOff:

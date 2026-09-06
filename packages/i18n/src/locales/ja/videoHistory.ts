@@ -9,7 +9,11 @@ export const videoHistory = {
     'このデバイスは視聴した動画を報告できません。Android と Chrome で動作します。',
 
   unsupportedNeedsExtension:
-    'このコンピューターのKidGateは、どの動画が視聴されたかを見ることができません。サイト名は読みますが、ページの中身は読まないためです。そのコンピューターにChrome用のKidGate拡張機能をインストールすると、視聴した動画がここに表示されます。',
+    'このコンピューターのKidGateは、どの動画が視聴されたかを見ることができません。サイト名は読みますが、ページの中身は読まないためです。Chrome用のKidGate拡張機能なら可能です。このコンピューターに追加すると、視聴した動画を独立したデバイスとして報告します。',
+  viaExtension: '拡張機能で',
+  extensionStepInstall: 'このコンピューターのChromeにKidGate拡張機能を追加',
+  extensionStepPair: 'ペアリングする — 独立したデバイスとして表示されます',
+  extensionStepEnable: 'そのデバイスで「視聴した動画を記録」をオンにする',
   emptyTitle: 'まだ視聴なし',
   emptyBody: 'KidGate が動作中にお子さんが視聴すると、動画がここに表示されます。',
   emptyBodyOff: '視聴した動画を一覧するには、上の記録をオンにしてください。',

@@ -9,7 +9,11 @@ export const videoHistory = {
     'Este dispositivo não consegue relatar vídeos assistidos. Funciona no Android e no Chrome.',
 
   unsupportedNeedsExtension:
-    'O KidGate neste computador não consegue ver que vídeos são vistos — lê nomes de sites, não o conteúdo de uma página. Instale nele a extensão do KidGate para o Chrome e os vídeos vistos aparecem aqui.',
+    'O KidGate neste computador não consegue ver que vídeos são vistos — lê nomes de sites, não o conteúdo de uma página. A extensão do KidGate para o Chrome consegue: adicione-a neste computador e ela reporta os vídeos vistos como um dispositivo próprio.',
+  viaExtension: 'Via extensão',
+  extensionStepInstall: 'Adicione a extensão do KidGate ao Chrome neste computador',
+  extensionStepPair: 'Emparelhe-a — aparece como um dispositivo próprio',
+  extensionStepEnable: 'Ative «Registrar vídeos assistidos» nesse dispositivo',
   emptyTitle: 'Nada assistido ainda',
   emptyBody:
     'Os vídeos aparecem aqui quando seu filho assiste com o KidGate em execução.',

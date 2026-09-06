@@ -70,6 +70,7 @@ import {
 } from '@kidgate/core/domain/alertSupport';
 import { supportsSafeSearch } from '@kidgate/core/domain/safeSearchSupport';
 import {
+  showsVideoHistoryCard,
   supportsVideoHistory,
   videoHistoryBlockerKey,
   videoHistoryUnavailableKey,
@@ -2206,16 +2207,30 @@ export default function Dashboard({
 
               {/* The card is drawn for a desktop too, and that is the change:
                   hiding it left a parent with a Mac or a PC no place to be told
-                  the Chrome extension already reports this. The phone shows the
-                  same sentence from the same key — `videoHistoryUnavailableKey`
-                  in `domain/videoHistorySupport`, so the two consoles cannot
-                  describe one machine differently. */}
-              {(supportsVideoHistory(device) || isDesktopLike(device?.platform)) && (
+                  the Chrome extension already reports this. The phone draws
+                  the same card from the same rule (`showsVideoHistoryCard`),
+                  the same sentence from the same key and the same three
+                  steps, so the two consoles cannot describe one machine
+                  differently. */}
+              {showsVideoHistoryCard(device) && (
                 <Card title={t('dash.videosTitle')} subtitle={t('dash.videosSub')}>
                   {!supportsVideoHistory(device) ? (
-                    <p className="empty">
-                      {activityT(videoHistoryUnavailableKey(device))}
-                    </p>
+                    <>
+                      <p className="empty">
+                        {activityT(videoHistoryUnavailableKey(device))}
+                      </p>
+                      {isDesktopLike(device?.platform) ? (
+                        /* The Attention feed's numbered fix list, reused:
+                           the order is load-bearing here too, since the
+                           switch in step three exists only once step two
+                           has produced a device to hold it. */
+                        <ol className="attn-fix">
+                          <li>{activityT('videoHistory.extensionStepInstall')}</li>
+                          <li>{activityT('videoHistory.extensionStepPair')}</li>
+                          <li>{activityT('videoHistory.extensionStepEnable')}</li>
+                        </ol>
+                      ) : null}
+                    </>
                   ) : null}
                   {videoHistoryBlockerKey(device) ? (
                     <p className="empty">{activityT(videoHistoryBlockerKey(device))}</p>
