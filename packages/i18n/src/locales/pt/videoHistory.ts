@@ -11,8 +11,13 @@ export const videoHistory = {
   unsupportedNeedsExtension:
     'O KidGate neste computador não consegue ver que vídeos são vistos — lê nomes de sites, não o conteúdo de uma página. A extensão do KidGate para o Chrome consegue: adicione-a neste computador e ela reporta os vídeos vistos como um dispositivo próprio.',
   viaExtension: 'Via extensão',
-  extensionStepInstall: 'Adicione a extensão do KidGate ao Chrome neste computador',
-  extensionStepPair: 'Emparelhe-a — aparece como um dispositivo próprio',
+  extensionGuideTitle: 'Configure no Chrome',
+  extensionStepOpenChrome: 'Abra o Chrome neste computador',
+  extensionStepStore: 'Vá até a Chrome Web Store',
+  extensionStepSearch: 'Pesquise “KidGate”',
+  extensionStepInstall: 'Clique em “Usar no Chrome”',
+  extensionStepConnect:
+    'Abra o KidGate no Chrome e conecte: ele aparece como um dispositivo próprio',
   extensionStepEnable: 'Ative «Registrar vídeos assistidos» nesse dispositivo',
   emptyTitle: 'Nada assistido ainda',
   emptyBody:

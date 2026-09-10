@@ -11,8 +11,13 @@ export const videoHistory = {
   unsupportedNeedsExtension:
     'KidGate на этом компьютере не видит, какие видео смотрят: он читает имена сайтов, а не содержимое страницы. Расширение KidGate для Chrome видит: добавьте его на этом компьютере, и оно будет сообщать о просмотренных видео как отдельное устройство.',
   viaExtension: 'Через расширение',
-  extensionStepInstall: 'Добавьте расширение KidGate в Chrome на этом компьютере',
-  extensionStepPair: 'Подключите его — оно появится как отдельное устройство',
+  extensionGuideTitle: 'Настройте в Chrome',
+  extensionStepOpenChrome: 'Откройте Chrome на этом компьютере',
+  extensionStepStore: 'Перейдите в Интернет-магазин Chrome',
+  extensionStepSearch: 'Найдите «KidGate»',
+  extensionStepInstall: 'Нажмите «Установить»',
+  extensionStepConnect:
+    'Откройте KidGate в Chrome и подключите — он появится как отдельное устройство',
   extensionStepEnable: 'Включите «Записывать просмотренные видео» для этого устройства',
   emptyTitle: 'Пока ничего не просмотрено',
   emptyBody: 'Видео появятся здесь, когда ребёнок смотрит с работающим KidGate.',

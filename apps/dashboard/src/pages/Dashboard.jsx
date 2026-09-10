@@ -2222,13 +2222,24 @@ export default function Dashboard({
                       {isDesktopLike(device?.platform) ? (
                         /* The Attention feed's numbered fix list, reused:
                            the order is load-bearing here too, since the
-                           switch in step three exists only once step two
-                           has produced a device to hold it. */
-                        <ol className="attn-fix">
-                          <li>{activityT('videoHistory.extensionStepInstall')}</li>
-                          <li>{activityT('videoHistory.extensionStepPair')}</li>
-                          <li>{activityT('videoHistory.extensionStepEnable')}</li>
-                        </ol>
+                           switch in the last step exists only once the one
+                           before it has produced a device to hold it. Six
+                           steps rather than three, matching the phone — the
+                           short version never said where the extension comes
+                           from, which is the step a parent was stuck on. */
+                        <>
+                          <p className="hint">
+                            {activityT('videoHistory.extensionGuideTitle')}
+                          </p>
+                          <ol className="attn-fix">
+                            <li>{activityT('videoHistory.extensionStepOpenChrome')}</li>
+                            <li>{activityT('videoHistory.extensionStepStore')}</li>
+                            <li>{activityT('videoHistory.extensionStepSearch')}</li>
+                            <li>{activityT('videoHistory.extensionStepInstall')}</li>
+                            <li>{activityT('videoHistory.extensionStepConnect')}</li>
+                            <li>{activityT('videoHistory.extensionStepEnable')}</li>
+                          </ol>
+                        </>
                       ) : null}
                     </>
                   ) : null}
@@ -2585,9 +2596,9 @@ export default function Dashboard({
              * device alone would leave the siblings locking on a stale share
              * until their next usage report.
              */
-            siblingDeviceIds={devices
-              .filter(other => device.childId && other.childId === device.childId)
-              .map(other => other.id)}
+            siblingDevices={devices.filter(
+              other => device.childId && other.childId === device.childId,
+            )}
             rewardTasks={rewardTasks}
             siteRequests={siteRequests[device.id] || []}
             leaderboard={leaderboard}
@@ -2735,8 +2746,9 @@ function ControlsTab({
   busy,
   /** This device's feed rows, for the install-approval pending list. */
   activities = [],
-  siblingDeviceIds = [],
+  siblingDevices = [],
 }) {
+  const siblingDeviceIds = siblingDevices.map(other => other.id);
   const { t } = useT();
   const c = device.controls;
   const live = Boolean(actions);
@@ -2908,17 +2920,33 @@ function ControlsTab({
   const childBudgetMinutes = device.child?.rules?.dailyLimitMinutes ?? null;
   const budgetShared = Boolean(childBudgetMinutes && childBudgetMinutes > 0);
   /*
-   * How much of the budget the child has spent, summed server-side across
-   * their devices by the same call that stamped it.
+   * How much of the budget the child has spent — summed here from the same
+   * device documents on screen, never from `controls.childBudget`.
    *
-   * Carries the same freshness caveat as `minutesUsedToday` beside it on the
-   * Screen tab — both are stamped by a report, so a family whose devices have
-   * all been off since yesterday reads yesterday's figure under a heading that
-   * says today. That is a property of this whole screen rather than of this
-   * card, and fixing it in one place would leave two cards disagreeing about
-   * the same day (`docs/TODO.md`).
+   * That stamp is this same arithmetic (`functions/lib/childBudget.js`) one
+   * report earlier, and nothing invalidates it when the child's device set
+   * changes: a device unassigned or moved to a sibling leaves its minutes in
+   * every remaining stamp until the next report. Measured on the phone
+   * 2026-09-06 — a child's family card read 18h40 against 16h43 on their own
+   * screen. `getChildScreenTimeUsage` in `apps/mobile` is the same fold.
+   *
+   * Only a device whose stored day IS today counts, so a family whose devices
+   * have all been off since yesterday reads nothing rather than yesterday's
+   * figure under a heading that says today.
    */
-  const budgetStamp = c.childBudget ?? null;
+  const budgetSpentMinutes = useMemo(() => {
+    if (!budgetShared) return null;
+    const today = localDayKey(Date.now(), -new Date().getTimezoneOffset());
+    let used = 0;
+    let reported = false;
+    for (const other of siblingDevices) {
+      const controls = other.controls;
+      if (!controls || controls.usageDate !== today) continue;
+      used += Math.max(0, controls.minutesUsedToday ?? 0);
+      reported = true;
+    }
+    return reported ? used : null;
+  }, [budgetShared, siblingDevices]);
 
   // Cleared by the listener catching up, not by the write returning: dropping
   // the draft the moment the Cloud Function answered would show the old number
@@ -3204,11 +3232,11 @@ function ControlsTab({
               <div className="limit-edit">
                 <strong>{formatMinutes(childBudgetMinutes)}</strong>
                 <p className="hint">{t('dash.limitShared')}</p>
-                {budgetStamp ? (
+                {budgetSpentMinutes !== null ? (
                   <p className="hint">
                     {t('dash.limitSharedSpent', {
-                      used: formatMinutes(budgetStamp.usedMinutes),
-                      limit: formatMinutes(budgetStamp.limitMinutes),
+                      used: formatMinutes(budgetSpentMinutes),
+                      limit: formatMinutes(childBudgetMinutes),
                     })}
                   </p>
                 ) : null}

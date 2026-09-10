@@ -96,8 +96,10 @@ export function supportsVideoHistory(device: VideoHistorySupportInput): boolean 
  *
  * Wider than `supportsVideoHistory`, and on purpose: a Mac or a PC cannot
  * record videos itself, but the card is where a parent is told that the
- * Chrome extension can — `videoHistoryUnavailableKey` and the three
- * `videoHistory.extensionStep*` lines. Hiding the card, or drawing it struck
+ * Chrome extension can — `videoHistoryUnavailableKey` and the six
+ * `videoHistory.extensionStep*` lines, which both consoles draw as a numbered
+ * install guide **in place of** the empty state, never above it. Hiding the
+ * card, or drawing it struck
  * out as "Not available on Mac", is how a parent came to believe the product
  * had no answer for a computer when it has one they were never shown.
  *

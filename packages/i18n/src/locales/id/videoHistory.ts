@@ -11,8 +11,13 @@ export const videoHistory = {
   unsupportedNeedsExtension:
     'KidGate di komputer ini tidak bisa melihat video apa yang ditonton — ia membaca nama situs, bukan isi halaman. Ekstensi KidGate untuk Chrome bisa: pasang di komputer ini, dan ia melaporkan video yang ditonton sebagai perangkat tersendiri.',
   viaExtension: 'Lewat ekstensi',
-  extensionStepInstall: 'Tambahkan ekstensi KidGate ke Chrome di komputer ini',
-  extensionStepPair: 'Pasangkan — ia muncul sebagai perangkat tersendiri',
+  extensionGuideTitle: 'Siapkan di Chrome',
+  extensionStepOpenChrome: 'Buka Chrome di komputer ini',
+  extensionStepStore: 'Buka Chrome Web Store',
+  extensionStepSearch: 'Cari “KidGate”',
+  extensionStepInstall: 'Klik “Tambahkan ke Chrome”',
+  extensionStepConnect:
+    'Buka KidGate di Chrome lalu hubungkan — muncul sebagai perangkat tersendiri',
   extensionStepEnable: 'Nyalakan “Rekam video yang ditonton” untuk perangkat itu',
   emptyTitle: 'Belum ada yang ditonton',
   emptyBody: 'Video muncul di sini saat anak Anda menonton dengan KidGate berjalan.',
