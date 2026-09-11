@@ -95,8 +95,9 @@ export const settings = {
     'ستغادر جلسة الوالد هذه وتعود إلى شاشة اختيار الوالد / الطفل. سجّل الدخول مرة أخرى لإدارة الأجهزة. يبقى حسابك وعائلتك وأجهزة أطفالك دون تغيير.',
   removeParentDeviceAlertTitle: 'إزالة جهاز الوالد؟',
   removeParentDeviceAlertMessage:
-    'سيتوقف {{deviceName}} عن تلقي الإشعارات. يمكن لذلك الوالد تسجيل الدخول مرة أخرى لإعادة الاتصال.',
+    'سيتم تسجيل خروج {{deviceName}} من هذا الحساب وسيتوقف عن تلقي الإشعارات. يمكن لمن يحمله تسجيل الدخول مجددًا بكلمة المرور.',
   toastParentDeviceRemoved: 'تمت إزالة {{deviceName}}.',
+  signedOutByAnotherDevice: 'تم تسجيل خروج هذا الجهاز من حساب الوالدين عبر جهاز آخر.',
   deleteAccountTitle: 'حذف الحساب',
   deleteAccountSubtitleDefault: 'حذف حسابك وجميع بياناتك نهائيًا',
   deleteAccountAlertTitle: 'حذف الحساب نهائيًا؟',

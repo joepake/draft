@@ -128,4 +128,6 @@ export const messageMonitoring = {
   languagesHint:
     'Thiết bị sẽ tìm từ đáng lo trong những ngôn ngữ này. Chọn tối đa {{max}}.',
   languagesDefaultHint: 'Mặc định theo ngôn ngữ của thiết bị.',
+  setupStepFindKidGate:
+    'Tìm KidGate trong danh sách quyền truy cập thông báo rồi bật. KidGate có thể hiện hai lần — mục còn lại là cảnh báo cuộc gọi đêm, nên nếu quay lại mà bước này vẫn chưa xong thì bật mục kia.',
 } as const;

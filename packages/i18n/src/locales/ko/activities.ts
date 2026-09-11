@@ -51,6 +51,18 @@ export const activities = {
   sosEscapeRepeatTitle: '긴급 잠금 해제 (오늘 {{count}}회)',
   sosEscapeRepeatBody:
     'SOS로 이 기기의 잠금이 {{minutes}}분 동안 해제되었습니다. 오늘 {{count}}번째입니다.',
+  sosEscapeLimitedTitle: '긴급 앱 열림',
+  sosEscapeLimitedBody:
+    'SOS로 이 기기에서 전화, 지도, 메시지가 {{minutes}}분 동안 열렸습니다. 나머지 앱은 계속 잠겨 있었습니다.',
+  sosEscapeLimitedRepeatTitle: '긴급 앱 열림 (오늘 {{count}}회)',
+  sosEscapeLimitedRepeatBody:
+    'SOS로 이 기기에서 전화, 지도, 메시지가 {{minutes}}분 동안 열렸습니다. 오늘 {{count}}번째입니다.',
+  sosPressLockHeldTitle: '잠금 상태에서 SOS를 눌렀습니다',
+  sosPressLockHeldBody:
+    '이 기기에서 SOS를 눌렀습니다. 알림이 전송되었고 기기는 계속 잠겨 있었습니다.',
+  sosPressLockHeldRepeatTitle: '잠금 상태에서 SOS를 눌렀습니다 (오늘 {{count}}회)',
+  sosPressLockHeldRepeatBody:
+    '이 기기에서 SOS를 눌렀고 기기는 계속 잠겨 있었습니다. 오늘 {{count}}번째입니다.',
   appBlockedTitle: '{{appName}}',
   appBlockedBody: '차단된 앱이 열려 KidGate가 닫았습니다.',
   appInstalledTitle: '앱 설치',
@@ -70,14 +82,6 @@ export const activities = {
   messageCheckedBody:
     '{{appName}}에서 감시 대상 단어가 나왔지만 문맥상 문제가 없었습니다.',
   activityTypeMessageChecked: '확인함',
-  callAlertTitle: '연락처에 없는 번호와의 통화',
-  callAlertBodyOutgoing: '자녀가 {{localTime}}에 연락처에 없는 번호로 전화했습니다.',
-  callAlertBodyOutgoingTimed:
-    '자녀가 {{localTime}}에 연락처에 없는 번호로 전화했습니다 ({{durationMinutes}}분).',
-  callAlertBodyIncoming: '연락처에 없는 번호가 {{localTime}}에 자녀에게 전화했습니다.',
-  callAlertBodyIncomingTimed:
-    '연락처에 없는 번호가 {{localTime}}에 자녀에게 전화했습니다 ({{durationMinutes}}분).',
-  activityTypeCallAlert: '통화 알림',
   appRemovedTitle: '앱 삭제',
   appRemovedBody: '자녀의 기기에서 {{appName}} 앱이 삭제되었습니다.',
   extensionInstalledTitle: '브라우저 확장 프로그램 추가',

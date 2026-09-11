@@ -92,7 +92,11 @@ export function toDeviceView(record) {
      */
     weekCounters: record.weekCounters,
     topAppsToday: record.topAppsToday,
+    // What those three leave out — the tail row's number. Absent means the
+    // server has not measured it, never zero.
+    topAppsOtherToday: record.topAppsOtherToday,
     monitoringState: record.monitoringState,
+    monitoredChangedAt: record.monitoredChangedAt,
     batteryLevel: record.batteryLevel,
     batteryCharging: Boolean(record.batteryCharging),
     lastLocation,

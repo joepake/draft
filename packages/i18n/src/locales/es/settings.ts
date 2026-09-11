@@ -99,8 +99,10 @@ export const settings = {
     'Saldrás de esta sesión de padre o madre y volverás al selector Padre / Niño. Vuelve a iniciar sesión para gestionar dispositivos. Tu cuenta, tu familia y los dispositivos de los niños no se ven afectados.',
   removeParentDeviceAlertTitle: '¿Eliminar el dispositivo de este padre o madre?',
   removeParentDeviceAlertMessage:
-    '{{deviceName}} dejará de recibir notificaciones. Ese padre o madre puede volver a iniciar sesión para reconectarse.',
+    '{{deviceName}} cerrará sesión en esta cuenta y dejará de recibir notificaciones. Quien lo tenga podrá volver a iniciar sesión con la contraseña.',
   toastParentDeviceRemoved: 'Se eliminó {{deviceName}}.',
+  signedOutByAnotherDevice:
+    'Se cerró la sesión de este dispositivo en la cuenta de padre/madre desde otro dispositivo.',
   deleteAccountTitle: 'Eliminar cuenta',
   deleteAccountSubtitleDefault: 'Elimina permanentemente tu cuenta y todos los datos',
   deleteAccountAlertTitle: '¿Eliminar la cuenta de forma permanente?',

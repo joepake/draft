@@ -62,6 +62,22 @@ export function supportsAppBlocking(device: ControlSupportFacts): boolean {
   return probe === undefined ? true : probe !== false;
 }
 
+/**
+ * The sentence a parent surface owes when blocking is `'best-effort'`.
+ *
+ * `supportsAppBlocking` says yes for that probe on purpose, so nothing read
+ * it and the weakness the agents report reached no screen — a parent picked
+ * apps to block on a Mac and was never told the app opens first and is then
+ * closed. Same shape as `webFilterBlockerKey`: the key is the app pack's
+ * (`deviceDetail`), which both consoles can render, and `null` means there is
+ * nothing to add. The i18n rule wants the key resolved where it is rendered.
+ */
+export function appBlockingNoteKey(device: ControlSupportFacts): string | null {
+  return device.capabilities?.appBlock === 'best-effort'
+    ? 'deviceDetail.appBlockingBestEffort'
+    : null;
+}
+
 export interface InstallApprovalSupportFacts extends ControlSupportFacts {
   platform?: DevicePlatform | null;
 }
@@ -70,15 +86,16 @@ export interface InstallApprovalSupportFacts extends ControlSupportFacts {
  * What the app-install-approval switch does on this device, or `null` when
  * the switch has nothing to do.
  *
- * - `quarantine` — Android and Android TV: an app installed after the switch
- *   went on will not open until a parent approves it. Needs the same
- *   accessibility service app blocking runs on, so a probe saying
- *   `appBlock: false` means no.
+ * - `quarantine` — Android, Android TV, macOS and Windows: an app installed
+ *   after the switch went on will not open until a parent approves it. Needs
+ *   the same mechanism app blocking runs on (the accessibility service, or
+ *   the desktop's best-effort quit), so a probe saying `appBlock: false`
+ *   means no.
  * - `denyInstalls` — iOS: no per-app answer exists (`docs/FEASIBILITY.md`,
  *   "App install quarantine", K5), so the switch hides the App Store instead.
  *   Coarser, and the parent screen says so at the switch.
- * - `null` — desktop and the browser extension: installs are reported there
- *   and nothing can hold them (`docs/BACKLOG.md`).
+ * - `null` — the browser extension: installs are reported there and nothing
+ *   can hold them (`docs/BACKLOG.md`).
  *
  * The platform decides the *shape* and the probe decides *whether*, which is
  * the same split `webFilterSupport` makes: a platform list alone would promise
@@ -87,9 +104,16 @@ export interface InstallApprovalSupportFacts extends ControlSupportFacts {
 export function installApprovalMode(
   device: InstallApprovalSupportFacts,
 ): 'quarantine' | 'denyInstalls' | null {
+  // macOS and Windows since 2026-09-10: the same "installed after the line"
+  // rule, compared against the bundle's or executable's creation stamp by the
+  // enforcement thread (`apps/desktop`, `policy.rs`). Weaker than Android —
+  // best-effort quit after launch, and a portable app run from Downloads is
+  // dated by that file — and the gate entry says so.
   switch (device.platform ?? null) {
     case 'android':
     case 'androidtv':
+    case 'macos':
+    case 'windows':
       return supportsAppBlocking(device) ? 'quarantine' : null;
     case 'ios':
       return 'denyInstalls';

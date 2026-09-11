@@ -35,6 +35,7 @@
  * every page load.
  */
 
+import type { UsageHourlyApps } from '@kidgate/schema/usageDay';
 import { WEB_ACTIVITY_DATE_WINDOW_MS } from './webActivityWindow';
 
 /**
@@ -87,6 +88,7 @@ export interface BufferedUsageDay {
   minutes: number;
   topApps?: { packageName: string; label: string; minutes: number }[];
   timeline?: string;
+  hourlyApps?: UsageHourlyApps;
   idleMinutes?: number;
 }
 

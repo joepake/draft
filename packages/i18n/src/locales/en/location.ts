@@ -71,4 +71,13 @@ export const location = {
     'From the last {{count}} days of location history. Only places saved here are counted.',
   placeTotalsNote_one:
     'From the last day of location history. Only places saved here are counted.',
+  wizardStepAllow:
+    'Select Allow, then choose Always so updates keep coming in the background.',
+  requestNoFix:
+    'This device could not get a position. Location may not be allowed on it yet.',
+  requestSharingOff: 'Location sharing is off for this device.',
+  requestUnsupported: 'This device cannot report a position.',
+  cardSharingOff: 'Location sharing is off',
+  cardPermissionOff: 'Location is not allowed on this device',
+  cardNotUpdating: 'Location has stopped updating',
 } as const;

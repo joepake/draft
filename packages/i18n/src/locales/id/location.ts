@@ -74,4 +74,13 @@ export const location = {
   placeTotalsTitle: 'Waktu di tempat Anda',
   placeTotalsNote:
     'Dari riwayat {{count}} hari terakhir. Hanya tempat yang tersimpan di sini yang dihitung.',
+  wizardStepAllow:
+    'Pilih Izinkan, lalu Selalu agar pembaruan tetap berjalan di latar belakang.',
+  requestNoFix:
+    'Perangkat ini tidak bisa mendapatkan posisi. Lokasi mungkin belum diizinkan di perangkat ini.',
+  requestSharingOff: 'Berbagi lokasi nonaktif untuk perangkat ini.',
+  requestUnsupported: 'Perangkat ini tidak dapat melaporkan posisi.',
+  cardSharingOff: 'Berbagi lokasi nonaktif',
+  cardPermissionOff: 'Lokasi belum diizinkan di perangkat ini',
+  cardNotUpdating: 'Lokasi berhenti diperbarui',
 } as const;

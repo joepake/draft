@@ -14,29 +14,26 @@ export const permissions = {
   notificationsOpenSettings:
     'Abra os Ajustes do dispositivo para permitir notificações do KidGate.',
   backgroundRefreshLabel: 'Atualização em Segundo Plano',
-  backgroundRefreshHint:
-    'Primeiro ative Ajustes → Geral → Atualização em Segundo Plano e depois ative para o KidGate. Se a chave estiver acinzentada, o ajuste geral de Atualização em Segundo Plano ainda está desativado.',
+  backgroundRefreshHint: 'Permite que o KidGate continue funcionando em segundo plano.',
   backgroundRefreshLowPowerHint:
     'O Modo de Baixo Consumo está ativado — o iOS desativa a Atualização em Segundo Plano. Desative o Modo de Baixo Consumo e depois ative a Atualização em Segundo Plano.',
   overlayLabel: 'Exibir sobre outros apps',
   overlayHint:
     'Permita que o KidGate mostre uma tela de bloqueio sobre outros apps quando os limites forem aplicados.',
   batteryOptimizationLabel: 'Bateria sem restrições',
-  batteryOptimizationHint:
-    'Selecione Permitir na solicitação do sistema para que o KidGate possa funcionar em segundo plano. Se nenhuma solicitação aparecer: Informações do app → Bateria → Sem restrições.',
+  batteryOptimizationHint: 'Impede que o Android pause o KidGate em segundo plano.',
   exactAlarmLabel: 'Alarmes e lembretes',
   exactAlarmHint:
     'Permita Alarmes e lembretes para que os Horários bloqueados comecem e terminem na hora certa.',
   accessibilityLabel: 'Assistente de bloqueio por Acessibilidade',
-  accessibilityHint:
-    'Ative o KidGate em Acessibilidade → Apps instalados / baixados. Isso é necessário para que o bloqueio continue sobre outros apps.',
+  accessibilityHint: 'Mantém o bloqueio do KidGate sobre outros apps.',
   oemSectionDescription:
     'Dispositivos {{brand}} costumam pausar apps em segundo plano. Complete estas etapas para que o bloqueio e os Horários bloqueados continuem funcionando.',
   oemAutostartLabel: 'Permitir inicialização automática',
   oemAutostartHintXiaomi:
     'Em Inicialização automática, ative o KidGate para que a proteção seja reiniciada após reiniciar o dispositivo.',
   oemAutostartHintSamsung:
-    'Em Cuidados do dispositivo / Bateria, permita que o KidGate continue ativo em segundo plano.',
+    'Em Bateria → Limites de uso em segundo plano → Apps que nunca dormem, adicione o KidGate. Se o KidGate não estiver na lista, já está permitido e esta etapa está concluída.',
   oemAutostartHintOppo:
     'Em Apps de inicialização / Início automático, permita o KidGate.',
   oemAutostartHintVivo:
@@ -59,4 +56,15 @@ export const permissions = {
     'Impede que este app seja desinstalado sem o PIN dos pais. O Android mostra a própria tela de confirmação.',
   notificationsWizardBody:
     'Permita notificações para que este dispositivo receba aprovações de tempo e lembretes na hora.',
+  backgroundRefreshStepOpen: 'Abra a página do KidGate nos Ajustes.',
+  backgroundRefreshStepTurnOn: 'Ative a Atualização em Segundo Plano para o KidGate.',
+  backgroundRefreshStepGeneral:
+    'Se a chave estiver acinzentada, abra Ajustes, depois Geral, depois Atualização em Segundo Plano e ative.',
+  batteryStepAllow: 'Selecione Permitir na solicitação do Android.',
+  batteryStepAppInfo:
+    'Se nenhuma solicitação aparecer, abra Informações do app, depois Bateria, e escolha Sem restrições.',
+  notificationsStepAllow: 'Selecione Permitir na solicitação.',
+  exactAlarmStepTurnOn: 'Ative Alarmes e lembretes para o KidGate.',
+  cameraStepTurnOn: 'Ative Câmera para o KidGate.',
+  uninstallProtectionStepConfirm: 'Selecione Ativar na tela de confirmação do Android.',
 } as const;

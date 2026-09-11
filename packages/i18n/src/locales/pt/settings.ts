@@ -99,8 +99,10 @@ export const settings = {
     'Você sairá desta sessão de responsável e voltará à seleção Responsável / Criança. Entre novamente para gerenciar os dispositivos. Sua conta, família e dispositivos das crianças continuam inalterados.',
   removeParentDeviceAlertTitle: 'Remover dispositivo do responsável?',
   removeParentDeviceAlertMessage:
-    '{{deviceName}} deixará de receber notificações. Esse responsável pode entrar novamente para se reconectar.',
+    '{{deviceName}} será desconectado desta conta e deixará de receber notificações. Quem estiver com ele pode entrar de novo com a senha.',
   toastParentDeviceRemoved: '{{deviceName}} removido.',
+  signedOutByAnotherDevice:
+    'Este dispositivo foi desconectado da conta de responsável a partir de outro dispositivo.',
   deleteAccountTitle: 'Excluir conta',
   deleteAccountSubtitleDefault: 'Exclui permanentemente sua conta e todos os dados',
   deleteAccountAlertTitle: 'Excluir a conta permanentemente?',

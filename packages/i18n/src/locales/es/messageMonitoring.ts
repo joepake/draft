@@ -129,4 +129,6 @@ export const messageMonitoring = {
   languagesHint:
     'Los idiomas en los que este dispositivo busca palabras preocupantes. Elige hasta {{max}}.',
   languagesDefaultHint: 'Por defecto, el idioma del dispositivo.',
+  setupStepFindKidGate:
+    'Busca KidGate en la lista de acceso a notificaciones y actívalo. KidGate puede aparecer dos veces: la otra entrada es la de alertas de llamadas nocturnas, así que si al volver este paso sigue pendiente, activa la otra.',
 } as const;

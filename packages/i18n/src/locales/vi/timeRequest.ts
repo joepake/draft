@@ -51,6 +51,8 @@ export const timeRequest = {
   timeRequestApprovedDescription:
     'Đã cộng thêm {{minutes}} phút cho {{deviceName}} trong hôm nay.',
   timeRequestDeniedDescription: 'Đã từ chối {{minutes}} phút cho {{deviceName}}.',
+  bonusGranted: 'Đã cộng thêm phút',
+  bonusGrantedDescription: 'Đã cho {{deviceName}} thêm {{minutes}} phút trong hôm nay.',
   needMoreTimeTitle: 'Cần thêm thời gian?',
   askParentForMoreTime: 'Con có thể xin bố mẹ thêm thời gian sử dụng cho hôm nay.',
   requestMoreTime: 'Yêu cầu thêm giờ',

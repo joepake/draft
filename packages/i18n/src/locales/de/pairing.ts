@@ -52,7 +52,7 @@ export const pairing = {
     'Ein Code konnte nicht erstellt werden. Bitte versuche es erneut.',
   inviteParentTitle: 'Weiteres Elterngerät hinzufügen',
   inviteParentInstructions:
-    'Öffne auf dem anderen Gerät KidGate → Familie → + → Familie beitreten, und scanne dann diesen QR-Code oder gib den Code ein. Genehmige die Anfrage hier, um diesen Elternteil zu verbinden.',
+    'Öffne auf dem anderen Gerät KidGate → Familie → + → Familie beitreten, und scanne dann innerhalb von 15 Minuten diesen QR-Code oder gib den Code ein. Genehmige die Anfrage hier, um diesen Elternteil zu verbinden.',
   inviteCodeLabel: 'Oder teile diesen Code',
   joinFamilyTitle: 'Familie beitreten',
   joinFamilyScanInstructions:

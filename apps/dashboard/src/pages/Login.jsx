@@ -29,6 +29,51 @@ function GoogleMark() {
   );
 }
 
+function Chevron({ open }) {
+  return (
+    <svg
+      className={`login-alt-chevron${open ? ' is-open' : ''}`}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="m6 9 6 6 6-6" />
+    </svg>
+  );
+}
+
+/*
+ * Which way in this browser used last, so the fold does not become a tax on the
+ * parent who never uses the QR.
+ *
+ * A method, not a credential: the value is one of the four words below and
+ * nothing about the account. `localStorage`, not `sessionStorage`, because the
+ * whole point is the *next* visit — and unlike the web session in
+ * `webSession.js`, a preference that leaks tells an attacker nothing they could
+ * not learn by looking at the screen.
+ */
+const LAST_METHOD_KEY = 'kg.lastSignInMethod';
+
+function readLastMethod() {
+  try {
+    return localStorage.getItem(LAST_METHOD_KEY);
+  } catch {
+    return null;
+  }
+}
+
+function rememberMethod(method) {
+  try {
+    localStorage.setItem(LAST_METHOD_KEY, method);
+  } catch {
+    /* private modes throw; the fold just starts closed next time */
+  }
+}
+
 function AppleMark() {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -53,12 +98,27 @@ export default function Login() {
   const [error, setError] = useState(null);
   const [info, setInfo] = useState(null);
 
+  /*
+   * Folded by default, and open for the two parents the fold would otherwise
+   * punish: the one who signed in here with a password last time, and the one
+   * whose deployment has no Firebase config, where the QR above renders nothing
+   * and a closed fold would be an empty page.
+   */
+  const [altOpen, setAltOpen] = useState(() => {
+    if (!configured) return true;
+    const last = readLastMethod();
+    return last != null && last !== 'qr';
+  });
+
   async function run(kind, fn) {
     setBusy(kind);
     setError(null);
     setInfo(null);
     try {
       await fn();
+      // Resolving is the sign-in landing. `reset` is not a way in and must not
+      // be remembered as one — it leaves the parent on this screen.
+      if (kind !== 'reset') rememberMethod(kind);
     } catch (e) {
       setError(describeAuthError(e, t));
     } finally {
@@ -102,85 +162,107 @@ export default function Login() {
         {error && <div className="login-error">{error}</div>}
         {info && <div className="login-info">{info}</div>}
 
+        {/*
+          The QR is the screen, not one option on it. `autoStart` puts the code
+          up without a press; `webSession.js` caches it per tab so arriving here
+          is one `createParentWebSession`, however many times this remounts.
+        */}
         {configured && (
-          <>
-            <div className="qr-block">
-              <QrSignIn onError={setError} />
-              <p className="qr-why">{t('login.qrWhy')}</p>
-            </div>
-            <div className="login-or">
-              <span>{t('login.orViewOnly')}</span>
-            </div>
-          </>
+          <div className="qr-hero">
+            <QrSignIn autoStart onError={setError} />
+            <p className="qr-why">{t('login.qrWhy')}</p>
+          </div>
         )}
 
-        <div className="login-providers">
-          <button
-            className="oauth-btn"
-            disabled={!configured || busy}
-            onClick={() => run('google', signInWithGoogle)}
-          >
-            <GoogleMark />
-            {busy === 'google' ? t('login.googleBusy') : t('login.google')}
-          </button>
-          <button
-            className="oauth-btn"
-            disabled={!configured || busy}
-            onClick={() => run('apple', signInWithApple)}
-          >
-            <AppleMark />
-            {busy === 'apple' ? t('login.appleBusy') : t('login.apple')}
-          </button>
-        </div>
-
-        <div className="login-or">
-          <span>{t('login.orEmail')}</span>
-        </div>
-
-        <form
-          className="login-form"
-          onSubmit={e => {
-            e.preventDefault();
-            run('email', () => signInWithEmail(email, password));
-          }}
-        >
-          <label>
-            {t('login.email')}
-            <input
-              type="email"
-              autoComplete="username"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-              placeholder={t('login.emailPlaceholder')}
-              required
-            />
-          </label>
-          <label>
-            {t('login.password')}
-            <input
-              type="password"
-              autoComplete="current-password"
-              value={password}
-              onChange={e => setPassword(e.target.value)}
-              required
-            />
-          </label>
-          <button
-            type="submit"
-            className="btn btn-primary btn-block"
-            disabled={!configured || busy}
-          >
-            {busy === 'email' ? t('login.submitBusy') : t('login.submit')}
-          </button>
+        {/*
+          The other three stay — a parent whose phone is lost, flat or not yet
+          installed still has a way in, and `docs/BACKLOG.md` (2026-09-03)
+          rejected removing them for exactly that. Folded, not deleted: they
+          sign in to read, and unlocking the controls then takes the PIN.
+        */}
+        <div className="login-alt">
           <button
             type="button"
-            className="login-link"
-            onClick={onReset}
-            disabled={!configured || busy}
+            className="login-alt-toggle"
+            aria-expanded={altOpen}
+            onClick={() => setAltOpen(open => !open)}
           >
-            {t('login.forgot')}
+            <span>{t('login.orViewOnly')}</span>
+            <Chevron open={altOpen} />
           </button>
-        </form>
+
+          {altOpen && (
+            <div className="login-alt-body">
+              <div className="login-providers">
+                <button
+                  className="oauth-btn"
+                  disabled={!configured || busy}
+                  onClick={() => run('google', signInWithGoogle)}
+                >
+                  <GoogleMark />
+                  {busy === 'google' ? t('login.googleBusy') : t('login.google')}
+                </button>
+                <button
+                  className="oauth-btn"
+                  disabled={!configured || busy}
+                  onClick={() => run('apple', signInWithApple)}
+                >
+                  <AppleMark />
+                  {busy === 'apple' ? t('login.appleBusy') : t('login.apple')}
+                </button>
+              </div>
+
+              <div className="login-or">
+                <span>{t('login.orEmail')}</span>
+              </div>
+
+              <form
+                className="login-form"
+                onSubmit={e => {
+                  e.preventDefault();
+                  run('email', () => signInWithEmail(email, password));
+                }}
+              >
+                <label>
+                  {t('login.email')}
+                  <input
+                    type="email"
+                    autoComplete="username"
+                    value={email}
+                    onChange={e => setEmail(e.target.value)}
+                    placeholder={t('login.emailPlaceholder')}
+                    required
+                  />
+                </label>
+                <label>
+                  {t('login.password')}
+                  <input
+                    type="password"
+                    autoComplete="current-password"
+                    value={password}
+                    onChange={e => setPassword(e.target.value)}
+                    required
+                  />
+                </label>
+                <button
+                  type="submit"
+                  className="btn btn-primary btn-block"
+                  disabled={!configured || busy}
+                >
+                  {busy === 'email' ? t('login.submitBusy') : t('login.submit')}
+                </button>
+                <button
+                  type="button"
+                  className="login-link"
+                  onClick={onReset}
+                  disabled={!configured || busy}
+                >
+                  {t('login.forgot')}
+                </button>
+              </form>
+            </div>
+          )}
+        </div>
 
         <p className="login-foot">{t('login.foot')}</p>
       </div>

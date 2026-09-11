@@ -60,7 +60,7 @@ export const plans = {
   compareActivityFeedPremium: '30 дней',
   compareChildReport: 'Отчёты по ребёнку',
   compareIncluded:
-    'Оба тарифа включают дневной лимит, заблокированные часы, заблокированные приложения, веб-фильтр, удалённую блокировку, SOS, запросы времени, задания с наградой, iPhone, Android, Mac, Windows, TV и Chromebook в одной семье, веб-панель и нескольких родителей.',
+    'Оба тарифа включают дневной лимит, заблокированные часы, заблокированные приложения, веб-фильтр, удалённую блокировку, SOS, запросы времени и задания с наградой на iPhone, Android, Mac и Windows в одной семье, а также веб-панель и нескольких родителей. Android TV и Chromebook уже на подходе, но функций на них меньше.',
   sectionWhyPremium: 'Что добавляет Premium',
   sectionWhyPremiumSubtitle:
     'Все правила продолжают работать бесплатно. Premium добавляет то, что вы видите, и как скоро.',
@@ -169,12 +169,14 @@ export const plans = {
   platformAndroidDetail: 'Устройство родителя или ребёнка · Android 7 и новее',
   platformMac: 'Mac',
   platformMacDetail: 'Только устройство ребёнка · macOS 12 и новее',
-  platformIosLimits: 'Нет Лимитов приложений и оповещений о сообщениях.',
+  platformIosLimits:
+    'Нет Лимитов приложений и оповещений о сообщениях. Веб-фильтр охватывает только сайты для взрослых, а заблокированные приложения выбираются на самом iPhone.',
   platformMacLimits: 'Нет оповещений о сообщениях, местоположение приблизительное.',
   platformWindowsLimits: 'Нет оповещений о сообщениях, местоположение приблизительное.',
-  platformAndroidTvLimits: 'Нет оповещений о сообщениях и местоположения.',
+  platformAndroidTvLimits:
+    'Нет оповещений о сообщениях, местоположения, SOS и запросов времени. Блокировка приложений работает по возможности.',
   platformChromebookLimits:
-    'Нет Дневного лимита, Заблокированных часов, Блокировки устройства и местоположения.',
+    'Только веб-фильтр — нет Дневного лимита, Заблокированных часов, Блокировки приложений, Блокировки устройства, SOS и местоположения.',
   platformComingSoon: 'Скоро',
   platformWindows: 'Windows',
   platformWindowsDetail: 'Только устройство ребёнка · Windows 10 и новее',
@@ -182,4 +184,22 @@ export const plans = {
   platformAndroidTvDetail: 'Только устройство ребёнка · Android TV 7 и новее',
   platformChromebook: 'Chromebook',
   platformChromebookDetail: 'Устройство ребёнка · только веб-фильтр в Chrome',
+  teaserCta: 'Посмотреть Premium',
+  teaserProofOtherApps: 'Другие приложения: {{count}} · {{minutes}}',
+  teaserProofOtherMinutes: 'Другие приложения: {{minutes}}',
+  teaserProofBlocked: 'Заблокировано за неделю: {{count}}',
+  teaserTopApps: 'Premium называет каждое приложение, поминутно, и хранит 30 дней.',
+  teaserWebHistory:
+    'Premium показывает, какие сайты были заблокированы и что искал ребёнок.',
+  teaserVideoHistory:
+    'Premium хранит каждое видео и Short на YouTube, которое он смотрел.',
+  teaserLocationTrail:
+    'Premium хранит маршрут и сообщает, когда ребёнок приходит домой или в школу и когда уходит.',
+  teaserActivityWindow: 'Бесплатный план показывает сегодня. Premium хранит 30 дней.',
+  teaserChildReport:
+    'Premium добавляет отчёт по каждому ребёнку и новый каждую неделю.',
+  teaserMessageAlerts:
+    'Premium сообщает, когда сообщение требует вашего внимания. Только Android.',
+  teaserLiveNote:
+    'Бесплатный план обновляется раз в 30 минут. Premium — в реальном времени.',
 } as const;

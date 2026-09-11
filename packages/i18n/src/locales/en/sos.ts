@@ -29,8 +29,7 @@ export const sos = {
   // after. The phone needs neither; its escape ends when the child leaves the
   // SOS screen, with no lock involved.
   escapeGrantedTitle: 'SOS sent',
-  escapeGrantedBody:
-    'Your parent has been notified. This device is unlocked for 15 minutes, then it will lock again.',
+  escapeGrantedBody: 'Your parent has been notified. This device stays locked.',
   toastSentWithoutPhoto:
     'SOS sent, but without a photo. Allow Camera in Settings and try again if you can.',
   toastSendFailed: 'Unable to send the SOS. Try again, or call someone you trust.',

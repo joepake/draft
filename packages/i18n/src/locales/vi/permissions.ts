@@ -14,29 +14,26 @@ export const permissions = {
   notificationsOpenSettings:
     'Vui lòng mở Cài đặt thiết bị để cho phép thông báo cho KidGate.',
   backgroundRefreshLabel: 'Làm mới ứng dụng nền',
-  backgroundRefreshHint:
-    'Trước tiên hãy bật Cài đặt → Cài đặt chung → Làm mới ứng dụng nền, sau đó bật cho KidGate. Nếu nút bị mờ, nghĩa là Làm mới ứng dụng nền ở Cài đặt chung vẫn đang tắt.',
+  backgroundRefreshHint: 'Cho phép KidGate tiếp tục hoạt động khi chạy nền.',
   backgroundRefreshLowPowerHint:
     'Chế độ nguồn điện thấp đang bật — iOS sẽ tắt Làm mới ứng dụng nền. Vui lòng tắt Chế độ nguồn điện thấp, sau đó bật lại Làm mới ứng dụng nền.',
   overlayLabel: 'Hiển thị trên ứng dụng khác',
   overlayHint:
     'Cho phép KidGate hiển thị màn hình khóa đè lên ứng dụng khác khi giới hạn được áp dụng.',
   batteryOptimizationLabel: 'Pin không bị hạn chế',
-  batteryOptimizationHint:
-    'Chọn Cho phép trên hộp thoại hệ thống để KidGate có thể chạy nền. Nếu hộp thoại không xuất hiện: Thông tin ứng dụng → Pin → Không bị hạn chế.',
+  batteryOptimizationHint: 'Ngăn Android tạm dừng KidGate khi chạy nền.',
   exactAlarmLabel: 'Chuông báo và lời nhắc',
   exactAlarmHint:
     'Cho phép Chuông báo và lời nhắc để Giờ khóa thiết bị bắt đầu và kết thúc đúng giờ.',
   accessibilityLabel: 'Trợ năng (hỗ trợ khóa)',
-  accessibilityHint:
-    'Bật KidGate trong Trợ năng → Ứng dụng đã cài đặt / Đã tải xuống. Quyền này cần thiết để màn hình khóa luôn hiển thị đè lên ứng dụng khác.',
+  accessibilityHint: 'Giữ màn hình khóa KidGate hiển thị đè lên ứng dụng khác.',
   oemSectionDescription:
     'Thiết bị {{brand}} thường tạm dừng các ứng dụng chạy nền. Vui lòng hoàn tất các bước sau để chức năng khóa và Giờ khóa thiết bị hoạt động ổn định.',
   oemAutostartLabel: 'Cho phép tự khởi động',
   oemAutostartHintXiaomi:
     'Trong mục Tự khởi động, hãy bật KidGate để tính năng bảo vệ được khôi phục sau khi khởi động lại thiết bị.',
   oemAutostartHintSamsung:
-    'Trong Chăm sóc thiết bị (Device care) → Pin, hãy cho phép KidGate chạy nền.',
+    'Trong Pin → Giới hạn sử dụng dưới nền → Ứng dụng không bao giờ ngủ, hãy thêm KidGate. Nếu không thấy KidGate trong danh sách thì máy đã cho phép sẵn và bước này xong rồi.',
   oemAutostartHintOppo: 'Trong Khởi động tự động (Auto-launch), hãy cho phép KidGate.',
   oemAutostartHintVivo:
     'Trong Tự khởi động, và trong mục cảnh báo ứng dụng hao pin nền, hãy cho phép KidGate.',
@@ -58,4 +55,15 @@ export const permissions = {
     'Ngăn gỡ cài đặt ứng dụng này khi chưa nhập mã PIN phụ huynh. Android sẽ hiển thị màn hình xác nhận riêng.',
   notificationsWizardBody:
     'Cho phép thông báo để thiết bị này nhận ngay kết quả duyệt yêu cầu thêm giờ và các lời nhắc.',
+  backgroundRefreshStepOpen: 'Mở trang KidGate trong Cài đặt.',
+  backgroundRefreshStepTurnOn: 'Bật Làm mới ứng dụng nền cho KidGate.',
+  backgroundRefreshStepGeneral:
+    'Nếu nút bị mờ, hãy mở Cài đặt, chọn Cài đặt chung, rồi bật Làm mới ứng dụng nền.',
+  batteryStepAllow: 'Chọn Cho phép trên hộp thoại của Android.',
+  batteryStepAppInfo:
+    'Nếu không thấy hộp thoại, mở Thông tin ứng dụng, chọn Pin, rồi chọn Không bị hạn chế.',
+  notificationsStepAllow: 'Chạm Cho phép trên hộp thoại.',
+  exactAlarmStepTurnOn: 'Bật Chuông báo và lời nhắc cho KidGate.',
+  cameraStepTurnOn: 'Bật Máy ảnh cho KidGate.',
+  uninstallProtectionStepConfirm: 'Chạm Kích hoạt trên màn hình xác nhận của Android.',
 } as const;

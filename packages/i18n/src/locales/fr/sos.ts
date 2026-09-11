@@ -24,8 +24,7 @@ export const sos = {
   toastSent:
     'SOS envoyé. Reste dans un endroit sûr si tu peux — tes parents ont été prévenus.',
   escapeGrantedTitle: 'SOS envoyé',
-  escapeGrantedBody:
-    'Tes parents ont été prévenus. Cet appareil est déverrouillé pendant 15 minutes, puis il se verrouillera à nouveau.',
+  escapeGrantedBody: 'Tes parents ont été prévenus. Cet appareil reste verrouillé.',
   toastSentWithoutPhoto:
     'SOS envoyé, mais sans photo. Autorise l’appareil photo dans les Réglages et réessaie si tu peux.',
   toastSendFailed:

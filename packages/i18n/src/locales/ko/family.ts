@@ -19,13 +19,23 @@ export const family = {
   quickProtectTitle: '지금 {{childName}}을(를) 보호할까요?',
   quickProtectBody:
     '기본 보호 설정을 한 번에 켭니다. 세부 설정은 나중에 자녀 프로필에서 조정할 수 있습니다.',
+  quickProtectSourceLabel: '시작 기준',
+  quickProtectAllOnBody:
+    '{{childName}}은(는) 이미 이 보호 기능이 켜져 있습니다. 다른 자녀를 선택하면 그 자녀의 시간대, 한도, 사이트 목록을 복사합니다.',
+  quickProtectReplaces: '{{childName}}의 현재 설정을 대체합니다.',
+  quickProtectWebFilterCopyHint:
+    '{{childName}}의 카테고리와 허용 사이트 {{allowed}}개, 차단 사이트 {{blocked}}개를 복사합니다.',
+  quickProtectSourceDefault: 'KidGate 기본값',
+  quickProtectSourceBody:
+    '{{childName}}의 규칙을 허용 및 차단한 사이트까지 함께 복사합니다.',
   quickProtectBedtime: '야간 차단 시간',
   quickProtectBedtimeHint: '밤 10시부터 오전 7시까지 기기 사용을 차단합니다.',
   quickProtectDailyLimit: '일일 스크린 타임 제한',
   quickProtectDailyLimitHint:
     '하루 {{minutes}}분, 자녀의 모든 기기에서 함께 집계됩니다.',
   quickProtectWebFilter: '웹 필터',
-  quickProtectWebFilterHint: '성인 콘텐츠와 기타 위험 카테고리를 차단합니다.',
+  quickProtectWebFilterHint:
+    '부적절한 콘텐츠를 차단하고 세이프서치와 YouTube 제한 모드를 켭니다.',
   quickProtectWebFilterPremium: 'Premium 기능 — 플랜에 포함되어 있습니다.',
   quickProtectApply: '보호 켜기',
   quickProtectSkip: '나중에',
@@ -106,6 +116,7 @@ export const family = {
   chipHealthWarnCount_one: '{{count}}개 설정 필요',
 
   chipHealthInactiveCount: '{{count}}대 24시간 넘게 무응답',
+  chipLocationBlocked: '위치 없음',
 
   chipBlockedCount: '{{count}}개 차단됨',
 

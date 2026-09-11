@@ -177,6 +177,24 @@ export function buildDeviceTrails<P extends DeviceTrailPoint>(
   return trails;
 }
 
+/**
+ * How long a hole in the trail may be before a run stops being one stay.
+ *
+ * Twice `TRAIL_HEARTBEAT_MS`, because that is the cadence this fold reads: a
+ * stationary device writes a point every thirty minutes by design, so two
+ * points an hour apart is already a heartbeat that never arrived. Same
+ * argument `DEFAULT_PLACE_VISIT_MAX_GAP_MS` makes in `placeVisits` — an
+ * unobserved stretch is one the device could have left and come back in — but
+ * keyed to the write-side heartbeat rather than to a parent's sense of "left
+ * at lunch", since the heartbeat is what this fold's input is made of.
+ *
+ * Measured 2026-09-10: a Mac that lost its location grant stopped writing, and
+ * with no cap here every point back to its last fix folded into one stay. The
+ * list rendered that as `HH:mm – HH:mm` with no date, badged Latest, so four
+ * days of silence read as a device sitting at Home this morning.
+ */
+export const TRAIL_STAY_MAX_GAP_MS = 2 * TRAIL_HEARTBEAT_MS;
+
 /** One place, and the run of consecutive points the device spent there. */
 export interface TrailStay<P extends DeviceTrailPoint = DeviceTrailPoint> {
   /** The first point of the run — its place name is the one to show. */
@@ -208,11 +226,18 @@ export interface TrailStay<P extends DeviceTrailPoint = DeviceTrailPoint> {
  * with a gap — collapsing by place rather than by run would erase the trip
  * between them, which is the part of the day worth reading.
  *
+ * **And close enough in time to have been observed throughout.** A run broken
+ * by more than `maxGapMs` is two stays even at identical coordinates: the
+ * device was not reporting across the hole, so one row spanning it would be a
+ * claim about minutes nobody saw. `TRAIL_STAY_MAX_GAP_MS` carries the measured
+ * failure this rule exists for.
+ *
  * Input must be newest-first (the order the list renders); output keeps it.
  */
 export function foldTrailStays<P extends DeviceTrailPoint>(
   entries: readonly P[],
   minMoveMeters = TRAIL_MIN_MOVE_METERS,
+  maxGapMs = TRAIL_STAY_MAX_GAP_MS,
 ): TrailStay<P>[] {
   const stays: TrailStay<P>[] = [];
 
@@ -226,7 +251,12 @@ export function foldTrailStays<P extends DeviceTrailPoint>(
         open.point.longitude,
         entry.latitude,
         entry.longitude,
-      ) < minMoveMeters;
+      ) < minMoveMeters &&
+      // Newest-first, so `open.firstAt` is the oldest point kept so far and
+      // this entry is older still. An unreadable stamp on either side breaks
+      // the run rather than joining it: continuity that cannot be shown must
+      // not be asserted, the same direction `buildPlaceVisits` errs in.
+      withinGap(entry.updatedAt, open.firstAt, maxGapMs);
 
     if (open && sameRun) {
       open.count += 1;
@@ -245,4 +275,14 @@ export function foldTrailStays<P extends DeviceTrailPoint>(
   }
 
   return stays;
+}
+
+/** Whether `olderIso` and `newerIso` are close enough to be one observed run. */
+function withinGap(olderIso: string, newerIso: string, maxGapMs: number): boolean {
+  const olderMs = new Date(olderIso).getTime();
+  const newerMs = new Date(newerIso).getTime();
+  if (!Number.isFinite(olderMs) || !Number.isFinite(newerMs)) {
+    return false;
+  }
+  return newerMs - olderMs <= maxGapMs;
 }

@@ -7,13 +7,13 @@ export const webFilter = {
     '{{name}}のデバイスごとにウェブフィルター設定が異なっていました。ここで保存すると、より厳しい設定に統合された1つの設定がすべてに適用されます。',
   mergeLoosened: 'すべてのデバイスで許可されるようになりました: {{domains}}',
   toastUpdateFailed: 'Webフィルターを更新できませんでした。もう一度お試しください。',
-  heroTitle: 'アダルトサイトをフィルタリング',
+  heroTitle: '不適切なサイトをフィルタリング',
   heroSubtitleIos:
     'Appleスクリーンタイムのウェブコンテンツフィルターを使って、お子さまのデバイスのSafariやアプリ内ブラウザでアダルトコンテンツを制限します。',
   heroSubtitleAndroid:
-    'お子さまのAndroidデバイスでローカルDNS VPNを使い、既知のアダルトドメインをブラウザや多くのアプリでブロックします。',
+    'お子さまのAndroidデバイスでローカルDNS VPNを使い、既知の不適切なドメインをブラウザや多くのアプリでブロックします。',
   heroSubtitleMacos:
-    '子どものMacでKidGateのコンテンツフィルターを実行し、ブラウザや多くのアプリで既知のアダルトサイトをブロックします。',
+    '子どものMacでKidGateのコンテンツフィルターを実行し、ブラウザや多くのアプリで既知の不適切なサイトをブロックします。',
   toggleHintIos: 'お子さまのデバイスでスクリーンタイムの権限が必要です。',
   toggleHintAndroid:
     'お子さまが一度KidGateのVPN接続を承認する必要があります。フィルターの動作にはVPNをオンのままにしてください。',
@@ -26,6 +26,8 @@ export const webFilter = {
   safeSearchLabel: 'セーフサーチを強制',
   safeSearchHint:
     'Google セーフサーチ、YouTube 制限付きモード、Bing、DuckDuckGo を厳格設定に固定します。Android、Android TV、Chrome。',
+  safeSearchStrictNote:
+    'YouTube は最も厳しいレベルで動作します。コメントは非表示になり、ふつうの動画も一部ブロックされます。子どもが自分のアカウントで解除することはできません。',
   infoTitle: '仕組み',
   infoLine1Ios: 'Appleがアダルトサイトを自動でフィルタリングします。',
   infoLine2Ios:
@@ -39,7 +41,7 @@ export const webFilter = {
   infoLine3Android:
     'フィルタリング中はお子さまのデバイスにVPNアイコンが表示されます。VPNをオフにするとフィルターも止まります — KidGateを開き直すと復旧します。',
   infoLine4Android:
-    '設定 → ネットワークとインターネット → プライベートDNS → オフ に進みます。',
+    '設定で「ネットワークとインターネット」、「プライベートDNS」の順に開き、「オフ」を選びます。',
   infoLine1Macos:
     'KidGateはMac上でコンテンツフィルターを実行し、アクセスされているサイトを確認して、設定したカテゴリに該当するものをブロックします。',
   infoLine2Macos:
@@ -50,7 +52,7 @@ export const webFilter = {
     'フィルターはサイト名を読み取りますが、最近のブラウザは訪問の約半分でこれを隠すため、それらのサイトはカテゴリーと照合されません。それでも、この方法で子どもがアクセスするほとんどのサイトはブロックされます。',
   privateDnsBannerTitle: 'プライベートDNSをオフにする',
   privateDnsBannerBody:
-    'プライベートDNSがオンのため、アダルトフィルターが回避される可能性があります。フィルターを機能させるにはオフにしてください。',
+    'プライベートDNSがオンのため、Webフィルターが回避される可能性があります。フィルターを機能させるにはオフにしてください。',
   privateDnsBannerButton: 'DNS設定を開く',
   vpnConsentBannerTitle: 'WebフィルターのVPNを復旧',
   vpnConsentBannerBody:
@@ -61,7 +63,7 @@ export const webFilter = {
   macosFilterNote: 'MacではKidGateのコンテンツフィルターを使用',
 
   heroSubtitleWindows:
-    'お子さまのPCでKidGate独自のリゾルバーを動かし、既知のアダルトサイトをすべてのブラウザーでブロックします。',
+    'お子さまのPCでKidGate独自のリゾルバーを動かし、既知の不適切なサイトをすべてのブラウザーでブロックします。',
 
   toggleHintWindows:
     'PC側で承認する操作はありません。KidGateのバックグラウンドサービスが数秒でフィルターを有効にします。',
@@ -200,4 +202,9 @@ export const webFilter = {
     '{{deviceName}}では{{domain}}は引き続きブロックされます。',
   siteRequestReceived: 'サイトのリクエスト',
   siteRequestReceivedDescription: '{{deviceName}}が{{domain}}を開こうとしています。',
+  privateDnsStep1: 'この端末で設定を開いてください。',
+  privateDnsStep2: '「ネットワークとインターネット」を選びます。',
+  privateDnsStep3: '「プライベートDNS」を開き、「オフ」を選びます。',
+  vpnConsentStepAllow:
+    'AndroidのVPN確認で「OK」を選びます。フィルターの動作中はステータスバーに鍵アイコンが表示されます。',
 } as const;

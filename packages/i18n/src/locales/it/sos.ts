@@ -24,7 +24,7 @@ export const sos = {
     'SOS inviato. Se puoi, resta in un luogo sicuro — i tuoi genitori sono stati avvisati.',
   escapeGrantedTitle: 'SOS inviato',
   escapeGrantedBody:
-    'I tuoi genitori sono stati avvisati. Questo dispositivo è sbloccato per 15 minuti, poi si bloccherà di nuovo.',
+    'I tuoi genitori sono stati avvisati. Questo dispositivo resta bloccato.',
   toastSentWithoutPhoto:
     'SOS inviato, ma senza foto. Se puoi, consenti l’accesso alla fotocamera nelle impostazioni e riprova.',
   toastSendFailed:

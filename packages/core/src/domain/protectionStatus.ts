@@ -249,7 +249,11 @@ export function getProtectionSummaryKeys(
         issues.push({
           ...battery,
           detailKey: 'protection.batteryOptimizationOff',
-          hintKeys: ['permissions.batteryOptimizationHint'],
+          // Steps, not the one sentence this used to carry: the hint list is
+          // rendered a line per entry on every parent surface, and the
+          // "App info → Battery → Unrestricted" tail was a second instruction
+          // hiding inside the first.
+          hintKeys: ['permissions.batteryStepAllow', 'permissions.batteryStepAppInfo'],
         });
       }
 
@@ -316,9 +320,15 @@ export function getProtectionSummaryKeys(
             protection.backgroundAppRefresh === 'restricted'
               ? [
                   'permissions.backgroundRefreshLowPowerHint',
-                  'permissions.backgroundRefreshHint',
+                  'permissions.backgroundRefreshStepOpen',
+                  'permissions.backgroundRefreshStepTurnOn',
+                  'permissions.backgroundRefreshStepGeneral',
                 ]
-              : ['permissions.backgroundRefreshHint'],
+              : [
+                  'permissions.backgroundRefreshStepOpen',
+                  'permissions.backgroundRefreshStepTurnOn',
+                  'permissions.backgroundRefreshStepGeneral',
+                ],
         });
       }
     }

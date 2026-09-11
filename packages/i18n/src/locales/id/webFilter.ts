@@ -7,13 +7,13 @@ export const webFilter = {
     'Perangkat {{name}} memiliki pengaturan filter web yang berbeda. Menyimpan di sini menerapkan satu pengaturan ke semuanya, digabungkan ke pilihan yang lebih ketat.',
   mergeLoosened: 'Kini diizinkan di setiap perangkat: {{domains}}',
   toastUpdateFailed: 'Tidak dapat memperbarui Filter web. Coba lagi.',
-  heroTitle: 'Filter situs web dewasa',
+  heroTitle: 'Filter situs web tidak pantas',
   heroSubtitleIos:
     'Menggunakan filter konten web Waktu Layar Apple untuk membatasi konten dewasa di Safari dan browser dalam aplikasi di perangkat anak.',
   heroSubtitleAndroid:
-    'Menggunakan VPN DNS lokal di perangkat Android anak untuk memblokir domain dewasa yang dikenal di browser dan banyak aplikasi.',
+    'Menggunakan VPN DNS lokal di perangkat Android anak untuk memblokir domain tidak pantas yang dikenal di browser dan banyak aplikasi.',
   heroSubtitleMacos:
-    'Menjalankan filter konten KidGate di Mac anak untuk memblokir situs dewasa yang dikenal di browser dan banyak aplikasi.',
+    'Menjalankan filter konten KidGate di Mac anak untuk memblokir situs tidak pantas yang dikenal di browser dan banyak aplikasi.',
   toggleHintIos: 'Memerlukan izin Waktu Layar di perangkat anak.',
   toggleHintAndroid:
     'Anak perlu menyetujui koneksi VPN KidGate sekali. Biarkan VPN aktif agar filter bekerja.',
@@ -26,6 +26,8 @@ export const webFilter = {
   safeSearchLabel: 'Paksa SafeSearch',
   safeSearchHint:
     'Mengunci Google SafeSearch, Mode Terbatas YouTube, Bing, dan DuckDuckGo pada pengaturan ketat. Android, Android TV, dan Chrome.',
+  safeSearchStrictNote:
+    'YouTube berjalan di level paling ketat: komentar disembunyikan dan sebagian video biasa ikut diblokir. Anak tidak bisa mematikannya dari akunnya sendiri.',
   infoTitle: 'Cara kerjanya',
   infoLine1Ios: 'Apple memfilter situs dewasa secara otomatis.',
   infoLine2Ios:
@@ -38,7 +40,8 @@ export const webFilter = {
     'Matikan DNS Pribadi di perangkat anak. Jika aktif, browser bisa melewati filter.',
   infoLine3Android:
     'Perangkat anak menampilkan ikon VPN selama pemfilteran. Mematikan VPN menghentikan filter — buka lagi KidGate untuk memulihkannya.',
-  infoLine4Android: 'Buka Pengaturan → Jaringan & internet → DNS Pribadi → Nonaktif.',
+  infoLine4Android:
+    'Di Pengaturan, buka Jaringan & internet, lalu DNS Pribadi, dan pilih Nonaktif.',
   infoLine1Macos:
     'KidGate menjalankan filter konten di Mac yang memeriksa situs mana yang sedang dicari, dan memblokir yang termasuk kategori Anda.',
   infoLine2Macos:
@@ -49,7 +52,7 @@ export const webFilter = {
     'Filter membaca nama situs, yang disembunyikan browser modern pada sekitar separuh kunjungan — situs tersebut tidak diperiksa terhadap kategori Anda. Filter tetap memblokir sebagian besar situs yang dijangkau anak dengan cara ini.',
   privateDnsBannerTitle: 'Matikan DNS Pribadi',
   privateDnsBannerBody:
-    'DNS Pribadi aktif, jadi filter web dewasa bisa dilewati. Matikan agar filter bekerja.',
+    'DNS Pribadi aktif, jadi filter web bisa dilewati. Matikan agar filter bekerja.',
   privateDnsBannerButton: 'Buka pengaturan DNS',
   vpnConsentBannerTitle: 'Pulihkan VPN Filter web',
   vpnConsentBannerBody:
@@ -60,7 +63,7 @@ export const webFilter = {
   macosFilterNote: 'Menggunakan filter konten KidGate di Mac',
 
   heroSubtitleWindows:
-    'Menjalankan resolver milik KidGate di PC anak untuk memblokir situs dewasa yang dikenal di semua browser.',
+    'Menjalankan resolver milik KidGate di PC anak untuk memblokir situs tidak pantas yang dikenal di semua browser.',
 
   toggleHintWindows:
     'Tidak ada yang perlu disetujui di PC. Layanan latar belakang KidGate menyalakan filter dalam beberapa detik.',
@@ -201,4 +204,9 @@ export const webFilter = {
   siteRequestDeniedDescription: '{{domain}} tetap diblokir di {{deviceName}}.',
   siteRequestReceived: 'Permintaan situs',
   siteRequestReceivedDescription: '{{deviceName}} meminta membuka {{domain}}.',
+  privateDnsStep1: 'Buka Pengaturan di perangkat ini.',
+  privateDnsStep2: 'Pilih Jaringan & internet.',
+  privateDnsStep3: 'Buka DNS Pribadi dan pilih Nonaktif.',
+  vpnConsentStepAllow:
+    'Pilih OK pada permintaan VPN Android. Ikon kunci tetap di bilah status selama filter berjalan.',
 } as const;

@@ -81,4 +81,13 @@ export const location = {
     'Sur les {{count}} derniers jours d’historique. Seuls les lieux enregistrés ici sont comptés.',
   placeTotalsNote_one:
     'Sur le dernier jour d’historique. Seuls les lieux enregistrés ici sont comptés.',
+  wizardStepAllow:
+    'Sélectionnez Autoriser, puis Toujours pour que les mises à jour continuent en arrière-plan.',
+  requestNoFix:
+    'Cet appareil n’a pas pu obtenir de position. La localisation n’y est peut-être pas encore autorisée.',
+  requestSharingOff: 'Le partage de position est désactivé sur cet appareil.',
+  requestUnsupported: 'Cet appareil ne peut pas signaler sa position.',
+  cardSharingOff: 'Le partage de position est désactivé',
+  cardPermissionOff: 'La position n’est pas autorisée sur cet appareil',
+  cardNotUpdating: 'La position ne se met plus à jour',
 } as const;

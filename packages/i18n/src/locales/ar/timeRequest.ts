@@ -54,6 +54,10 @@ export const timeRequest = {
   timeRequestApprovedDescription_few:
     'تمت زيادة الحد اليومي بمقدار {{minutes}} دقائق لـ {{deviceName}}.',
   timeRequestDeniedDescription: 'تم رفض {{minutes}} دقيقة لـ {{deviceName}}.',
+  bonusGranted: 'تمت إضافة دقائق إضافية',
+  bonusGrantedDescription: 'تم منح {{deviceName}} {{minutes}} دقيقة إضافية لهذا اليوم.',
+  bonusGrantedDescription_few:
+    'تم منح {{deviceName}} {{minutes}} دقائق إضافية لهذا اليوم.',
   timeRequestDeniedDescription_few: 'تم رفض {{minutes}} دقائق لـ {{deviceName}}.',
   needMoreTimeTitle: 'بحاجة إلى وقت إضافي؟',
   askParentForMoreTime: 'يمكنك طلب مزيد من وقت الشاشة من والديك اليوم.',

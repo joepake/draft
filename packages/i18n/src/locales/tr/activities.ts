@@ -52,6 +52,18 @@ export const activities = {
   sosEscapeRepeatTitle: 'Acil durum kilidi açma (bugün {{count}} kez)',
   sosEscapeRepeatBody:
     'SOS bu cihazın kilidini {{minutes}} dakika açtı. Bugün {{count}} kez oldu.',
+  sosEscapeLimitedTitle: 'Acil durum uygulamaları açıldı',
+  sosEscapeLimitedBody:
+    'SOS bu cihazda telefon, haritalar ve mesajları {{minutes}} dakika açtı. Diğer her şey kilitli kaldı.',
+  sosEscapeLimitedRepeatTitle: 'Acil durum uygulamaları açıldı (bugün {{count}} kez)',
+  sosEscapeLimitedRepeatBody:
+    'SOS bu cihazda telefon, haritalar ve mesajları {{minutes}} dakika açtı. Bugün {{count}} kez oldu.',
+  sosPressLockHeldTitle: 'Cihaz kilitliyken SOS’a basıldı',
+  sosPressLockHeldBody:
+    'Bu cihazda SOS’a basıldı. Uyarı gönderildi ve cihaz kilitli kaldı.',
+  sosPressLockHeldRepeatTitle: 'Cihaz kilitliyken SOS’a basıldı (bugün {{count}} kez)',
+  sosPressLockHeldRepeatBody:
+    'Bu cihazda SOS’a basıldı ve cihaz kilitli kaldı. Bugün {{count}} kez oldu.',
   appBlockedTitle: '{{appName}}',
   appBlockedBody: 'Engellenen bir uygulama açıldı ve KidGate onu kapattı.',
   appInstalledTitle: 'Uygulama yüklendi',
@@ -71,16 +83,6 @@ export const activities = {
   messageCheckedBody:
     '{{appName}} içinde izlenen bir kelime göründü ve bağlam içinde zararsız bulundu.',
   activityTypeMessageChecked: 'Bakıldı',
-  callAlertTitle: 'Rehberde olmayan bir numarayla görüşme',
-  callAlertBodyOutgoing:
-    'Çocuğunuz {{localTime}} saatinde rehberinde olmayan bir numarayı aradı.',
-  callAlertBodyOutgoingTimed:
-    'Çocuğunuz {{localTime}} saatinde rehberinde olmayan bir numarayı aradı — {{durationMinutes}} dk.',
-  callAlertBodyIncoming:
-    'Çocuğunuzun rehberinde olmayan bir numara {{localTime}} saatinde onu aradı.',
-  callAlertBodyIncomingTimed:
-    'Çocuğunuzun rehberinde olmayan bir numara {{localTime}} saatinde onu aradı — {{durationMinutes}} dk.',
-  activityTypeCallAlert: 'Arama uyarısı',
   appRemovedTitle: 'Uygulama kaldırıldı',
   appRemovedBody: '{{appName}} uygulaması çocuğun cihazından kaldırıldı.',
   extensionInstalledTitle: 'Tarayıcı uzantısı eklendi',

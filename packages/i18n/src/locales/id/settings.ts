@@ -97,8 +97,10 @@ export const settings = {
     'Anda akan keluar dari sesi orang tua ini dan kembali ke pemilihan Orang Tua / Anak. Masuk lagi untuk mengelola perangkat. Akun, keluarga, dan perangkat anak Anda tidak akan berubah.',
   removeParentDeviceAlertTitle: 'Hapus perangkat orang tua?',
   removeParentDeviceAlertMessage:
-    '{{deviceName}} akan berhenti menerima notifikasi. Orang tua tersebut dapat masuk lagi untuk terhubung kembali.',
+    '{{deviceName}} akan dikeluarkan dari akun ini dan berhenti menerima notifikasi. Siapa pun yang memegangnya dapat masuk lagi dengan kata sandi.',
   toastParentDeviceRemoved: '{{deviceName}} dihapus.',
+  signedOutByAnotherDevice:
+    'Perangkat ini telah dikeluarkan dari akun orang tua melalui perangkat lain.',
   deleteAccountTitle: 'Hapus akun',
   deleteAccountSubtitleDefault: 'Hapus permanen akun dan semua data Anda',
   deleteAccountAlertTitle: 'Hapus akun secara permanen?',

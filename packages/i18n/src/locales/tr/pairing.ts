@@ -50,7 +50,7 @@ export const pairing = {
   unableToCreateCode: 'Kod oluşturulamadı. Lütfen tekrar deneyin.',
   inviteParentTitle: 'Başka bir ebeveyn cihazı ekle',
   inviteParentInstructions:
-    'Diğer cihazda KidGate → Aile → + → Aileye katıl’ı açın, ardından bu QR kodunu tarayın veya kodu girin. O ebeveyni bağlamak için isteği burada onaylayın.',
+    'Diğer cihazda KidGate → Aile → + → Aileye katıl’ı açın, ardından 15 dakika içinde bu QR kodunu tarayın veya kodu girin. O ebeveyni bağlamak için isteği burada onaylayın.',
   inviteCodeLabel: 'Ya da bu kodu paylaşın',
   joinFamilyTitle: 'Aileye katıl',
   joinFamilyScanInstructions:

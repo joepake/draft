@@ -19,13 +19,23 @@ export const family = {
   quickProtectTitle: 'حماية {{childName}} الآن؟',
   quickProtectBody:
     'فعّل مجموعة أولية من الحمايات. يمكنك ضبط كل شيء بدقة لاحقًا من ملف الطفل.',
+  quickProtectSourceLabel: 'ابدأ من',
+  quickProtectAllOnBody:
+    'لدى {{childName}} هذه الحمايات مفعّلة بالفعل. اختر طفلاً آخر لنسخ ساعاته وحدّه اليومي وقوائم المواقع.',
+  quickProtectReplaces: 'يحل محل الإعداد الحالي لـ {{childName}}.',
+  quickProtectWebFilterCopyHint:
+    'ينسخ فئات {{childName}}، مع {{allowed}} موقعاً مسموحاً و{{blocked}} موقعاً مرفوضاً.',
+  quickProtectSourceDefault: 'الإعدادات الافتراضية لـ KidGate',
+  quickProtectSourceBody:
+    'ينسخ قواعد {{childName}}، بما في ذلك المواقع المسموح بها والمحظورة.',
   quickProtectBedtime: 'ساعات الحظر وقت النوم',
   quickProtectBedtimeHint:
     'يحظر استخدام الجهاز طوال الليل، من 10:00 مساءً إلى 7:00 صباحًا.',
   quickProtectDailyLimit: 'الحد اليومي لوقت الشاشة',
   quickProtectDailyLimitHint: '{{minutes}} دقيقة في اليوم، تُحتسب عبر كل أجهزته.',
   quickProtectWebFilter: 'فلتر الويب',
-  quickProtectWebFilterHint: 'يحظر المحتوى المخصص للبالغين وفئات خطرة أخرى.',
+  quickProtectWebFilterHint:
+    'يحظر المحتوى غير المناسب، ويفعّل البحث الآمن وقيود يوتيوب.',
   quickProtectWebFilterPremium: 'ميزة Premium — مضمّنة مع الاشتراك.',
   quickProtectApply: 'تفعيل الحماية',
   quickProtectSkip: 'ليس الآن',
@@ -117,6 +127,7 @@ export const family = {
   chipHealthWarnCount_one: '{{count}} بحاجة إلى إعداد',
 
   chipHealthInactiveCount: '{{count}} غير نشط منذ أكثر من 24 ساعة',
+  chipLocationBlocked: 'لا يوجد موقع',
 
   chipBlockedCount: '{{count}} مقفلة',
 

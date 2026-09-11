@@ -19,12 +19,22 @@ export const family = {
   quickProtectTitle: 'Protect {{childName}} now?',
   quickProtectBody:
     'Turn on a starter set of protections. You can fine-tune everything later in the child profile.',
+  quickProtectSourceLabel: 'Start from',
+  quickProtectAllOnBody:
+    '{{childName}} already has these protections on. Pick another child to copy their hours, limit and site lists.',
+  quickProtectReplaces: 'Replaces what {{childName}} has now.',
+  quickProtectWebFilterCopyHint:
+    'Copies {{childName}}’s categories, plus {{allowed}} allowed and {{blocked}} refused sites.',
+  quickProtectSourceDefault: 'KidGate defaults',
+  quickProtectSourceBody:
+    'Copies {{childName}}’s rules, including the sites they are allowed and refused.',
   quickProtectBedtime: 'Bedtime blocked hours',
   quickProtectBedtimeHint: 'Blocks device use overnight, 10:00 PM to 7:00 AM.',
   quickProtectDailyLimit: 'Daily screen-time limit',
   quickProtectDailyLimitHint: '{{minutes}} minutes a day, shared across their devices.',
   quickProtectWebFilter: 'Web filter',
-  quickProtectWebFilterHint: 'Blocks adult content and other risky categories.',
+  quickProtectWebFilterHint:
+    'Blocks inappropriate content, and turns on safe search and YouTube restrictions.',
   quickProtectWebFilterPremium: 'Premium feature — included with a plan.',
   quickProtectApply: 'Turn on protection',
   quickProtectSkip: 'Not now',
@@ -95,6 +105,7 @@ export const family = {
   chipHealthWarnCount: '{{count}} need setup',
   chipHealthWarnCount_one: '{{count}} needs setup',
   chipHealthInactiveCount: '{{count}} inactive 24h+',
+  chipLocationBlocked: 'No location',
   chipBlockedCount: '{{count}} blocked',
   healthProtected: 'Protected',
   buildOutdated: 'Update available',

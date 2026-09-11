@@ -7,13 +7,13 @@ export const webFilter = {
     'Các thiết bị của {{name}} đang có cài đặt bộ lọc web khác nhau. Lưu tại đây sẽ áp dụng một bộ cài đặt cho tất cả, gộp theo hướng chặt chẽ hơn.',
   mergeLoosened: 'Từ giờ được phép trên mọi thiết bị: {{domains}}',
   toastUpdateFailed: 'Không thể cập nhật Chặn nội dung web. Vui lòng thử lại.',
-  heroTitle: 'Chặn các trang web người lớn',
+  heroTitle: 'Chặn nội dung không phù hợp',
   heroSubtitleIos:
     'Sử dụng bộ lọc nội dung web trong Thời gian sử dụng của Apple để hạn chế nội dung người lớn trên Safari và trình duyệt trong ứng dụng trên thiết bị của trẻ.',
   heroSubtitleAndroid:
-    'KidGate lọc ngay trên thiết bị Android của trẻ để chặn các trang người lớn đã biết, trong trình duyệt và nhiều ứng dụng.',
+    'KidGate lọc ngay trên thiết bị Android của trẻ để chặn các trang có nội dung không phù hợp đã biết, trong trình duyệt và nhiều ứng dụng.',
   heroSubtitleMacos:
-    'Chạy bộ lọc nội dung của KidGate trên Mac của con để chặn các trang web người lớn đã biết trong trình duyệt và nhiều ứng dụng.',
+    'Chạy bộ lọc nội dung của KidGate trên Mac của con để chặn các trang có nội dung không phù hợp đã biết trong trình duyệt và nhiều ứng dụng.',
   toggleHintIos: 'Cần quyền Thời gian sử dụng trên thiết bị của trẻ.',
   toggleHintAndroid:
     'Thiết bị của trẻ cần chấp nhận kết nối VPN của KidGate một lần. Vui lòng giữ VPN luôn bật để bộ lọc hoạt động.',
@@ -26,6 +26,8 @@ export const webFilter = {
   safeSearchLabel: 'Bắt buộc tìm kiếm an toàn',
   safeSearchHint:
     'Khóa Tìm kiếm an toàn của Google, chế độ hạn chế của YouTube, và đặt Bing cùng DuckDuckGo ở mức nghiêm ngặt. Áp dụng cho Android, Android TV và Chrome.',
+  safeSearchStrictNote:
+    'YouTube chạy ở mức nghiêm ngặt nhất: bình luận bị ẩn và một số video bình thường cũng bị chặn. Trẻ không thể tắt chế độ này trong tài khoản của mình.',
   infoTitle: 'Cách hoạt động',
   infoLine1Ios: 'Apple tự động lọc các trang web người lớn.',
   infoLine2Ios:
@@ -38,7 +40,8 @@ export const webFilter = {
     'Vui lòng tắt DNS riêng tư trên thiết bị của trẻ. Nếu DNS riêng tư đang bật, trình duyệt có thể bỏ qua bộ lọc.',
   infoLine3Android:
     'Thiết bị của trẻ sẽ hiển thị biểu tượng VPN trong lúc lọc. Tắt VPN đồng nghĩa với tắt bộ lọc — hãy mở lại KidGate để khôi phục.',
-  infoLine4Android: 'Vào Cài đặt → Mạng và Internet → DNS riêng tư → Tắt.',
+  infoLine4Android:
+    'Trong Cài đặt, mở Mạng và Internet, chọn DNS riêng tư rồi chọn Tắt.',
   infoLine1Macos:
     'KidGate chạy bộ lọc nội dung trên Mac để kiểm tra những trang web đang được truy cập và chặn những trang thuộc danh mục bạn đã chọn.',
   infoLine2Macos:
@@ -60,7 +63,7 @@ export const webFilter = {
   macosFilterNote: 'Dùng bộ lọc nội dung của KidGate trên Mac',
 
   heroSubtitleWindows:
-    'Chạy trình phân giải riêng của KidGate trên máy tính của trẻ để chặn các trang người lớn đã biết trên mọi trình duyệt.',
+    'Chạy trình phân giải riêng của KidGate trên máy tính của trẻ để chặn các trang có nội dung không phù hợp đã biết trên mọi trình duyệt.',
 
   toggleHintWindows:
     'Không cần phê duyệt gì trên máy tính. Dịch vụ nền của KidGate bật bộ lọc trong vài giây.',
@@ -198,4 +201,9 @@ export const webFilter = {
   siteRequestDeniedDescription: '{{domain}} vẫn bị chặn trên {{deviceName}}.',
   siteRequestReceived: 'Yêu cầu mở trang',
   siteRequestReceivedDescription: '{{deviceName}} xin mở {{domain}}.',
+  privateDnsStep1: 'Mở Cài đặt trên thiết bị này.',
+  privateDnsStep2: 'Chọn Mạng và Internet.',
+  privateDnsStep3: 'Mở DNS riêng tư và chọn Tắt.',
+  vpnConsentStepAllow:
+    'Chạm OK trên yêu cầu VPN của Android. Biểu tượng chìa khóa sẽ hiển thị trên thanh trạng thái khi bộ lọc đang chạy.',
 } as const;

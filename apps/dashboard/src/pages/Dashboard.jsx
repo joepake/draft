@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   isKnownPermission,
@@ -13,13 +13,18 @@ import AppLimitsEditor from '../dashboard/AppLimitsEditor.jsx';
 import RewardTaskForm from '../dashboard/RewardTaskForm.jsx';
 import PlacesEditor from '../dashboard/PlacesEditor.jsx';
 import ChildBudgetEditor from '../dashboard/ChildBudgetEditor.jsx';
+import QuickProtectCard from '../dashboard/QuickProtectCard.jsx';
 import DeviceAdmin from '../dashboard/DeviceAdmin.jsx';
 import MessageAlertsCard from '../dashboard/MessageAlertsCard.jsx';
 import Toggle from '../dashboard/Toggle.jsx';
 import { timeAgo } from '../dashboard/timeAgo.js';
 import PlanCard from '../dashboard/PlanCard.jsx';
 import ParkedDevicesCard from '../dashboard/ParkedDevicesCard.jsx';
+import { waitForParentPresence } from '../dashboard/parentPresence.js';
+import { hasQuickProtectOffer } from '@kidgate/core/domain/quickProtect';
 import { resolveTodayTopApps } from '@kidgate/core/domain/todayTopApps';
+import { resolveTopAppsTeaser } from '@kidgate/core/domain/premiumTeaser';
+import PremiumTeaser from '../dashboard/PremiumTeaser.jsx';
 import { localDayKey } from '@kidgate/core/domain/weeklyReportSchedule';
 import {
   MONITORED_SWAP_COOLDOWN_MS,
@@ -32,6 +37,7 @@ import { deviceIconName } from '../dashboard/deviceIcon.js';
 import { ACCENT_IDS, getAccentDefinition } from '@kidgate/tokens/accents';
 import { readDeviceBattery } from '@kidgate/core/domain/battery';
 import { isAndroidLike, isDesktopLike } from '@kidgate/core/domain/platformFamily';
+import { isKidGateOwnApp } from '@kidgate/core/domain/ownApp';
 import { resolveActivityKind } from '@kidgate/core/domain/activityKind';
 import { WEB_FILTER_CATEGORY_GROUPS } from '@kidgate/core/domain/webFilterCategoryGroups';
 import { WEB_FILTER_CATEGORIES } from '@kidgate/schema/webActivity';
@@ -48,6 +54,7 @@ import {
   webFilterBlockerKey,
 } from '@kidgate/core/domain/webFilterSupport';
 import {
+  appBlockingNoteKey,
   supportsAppBlocking,
   supportsAppLimits,
   supportsDailyLimit,
@@ -91,10 +98,10 @@ import {
   UsageDayTimeline,
   UsageRing,
 } from '../dashboard/charts.jsx';
-import LanguagePicker from '@kidgate/web-ui/LanguagePicker';
 import ReportPanel from '../dashboard/ReportPanel.jsx';
 import { RichText } from '@kidgate/web-ui/RichText';
 import { useT } from '@kidgate/web-ui/useT';
+import { getLocaleTag } from '@kidgate/i18n/web';
 
 /**
  * The stored `status` field recomputed, which is what every other surface
@@ -549,7 +556,7 @@ export default function Dashboard({
     places,
     rewardTasks,
     leaderboard,
-    screenTimeBoard,
+    // screenTimeBoard, — board dropped 2026-09-08 (docs/FEASIBILITY.md, D4)
     sosAlerts,
     timeRequests,
     siteRequests,
@@ -663,6 +670,53 @@ export default function Dashboard({
    * about it (`@kidgate/core/domain/deviceParking`, `docs/PRICING.md` §6).
    */
   const parking = useMemo(() => summariseParking(devices), [devices]);
+
+  /*
+   * The sheet opens **unprompted** when `choicePending` — every device parked
+   * and no survivor chosen, which is exactly what trial end leaves behind.
+   * Same rule as `apps/mobile`'s `FamilyScreen`, deliberately: a parent
+   * answers on whichever console they have open, and a phone that asks while
+   * the browser only mentions it is two answers about one plan.
+   *
+   * Once per parked set, keyed by the ids rather than a boolean, so a family
+   * parked again months later is asked again and a parent who closed it today
+   * is not asked on every render. The inline card stays as the way back in.
+   */
+  const [monitoredSheetOpen, setMonitoredSheetOpen] = useState(false);
+  const promptedParkedSetRef = useRef(null);
+  useEffect(() => {
+    if (parking.parked.length === 0) {
+      promptedParkedSetRef.current = null;
+      setMonitoredSheetOpen(false);
+      return undefined;
+    }
+    if (!parking.choicePending) {
+      // Somebody answered — from here, from a phone, from the other parent.
+      setMonitoredSheetOpen(false);
+      return undefined;
+    }
+    const key = [...parking.parked].sort().join(',');
+    if (promptedParkedSetRef.current === key) {
+      return undefined;
+    }
+    promptedParkedSetRef.current = key;
+    /*
+     * After the presence call, not off this snapshot. A family the dormancy
+     * reaper parked looks exactly like a pending choice, and that call is the
+     * one that wakes them; opening on the first snapshot would ask a
+     * returning parent to choose a device a second before they get them all
+     * back. `apps/mobile` waits on the same call for the same reason.
+     */
+    let cancelled = false;
+    void waitForParentPresence(familyId).then(() => {
+      if (!cancelled) {
+        setMonitoredSheetOpen(true);
+      }
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [familyId, parking]);
 
   /*
    * The cooldown is the one failure `run` cannot say. It arrives as a
@@ -1030,13 +1084,76 @@ export default function Dashboard({
    * and it lets today on the device beat a stale latest row; the "Other apps"
    * remainder is computed against whichever day the rows came from.
    */
+  const todayKey = localDayKey(Date.now(), -new Date().getTimezoneOffset());
   const todayTopApps = resolveTodayTopApps({
     usageDay: device?.usage?.[device.usage.length - 1] ?? null,
     device: device ?? {},
-    todayKey: localDayKey(Date.now(), -new Date().getTimezoneOffset()),
+    todayKey,
   });
   const todayApps = todayTopApps.apps;
   const todayMinutes = todayTopApps.totalMinutes;
+
+  /*
+   * The day the Screen Time tab is about — whichever bar was clicked in the
+   * trend chart, and today until one is.
+   *
+   * That tab only: the Apps tab has no chart to pick from, and its ranking
+   * sits beside the per-app caps, which are enforced against today. A list
+   * quietly following a selection made on another tab would be read as
+   * today's and compared against them.
+   */
+  const [selectedUsageDate, setSelectedUsageDate] = useState(null);
+  const visibleUsage = useMemo(
+    () => (device?.usage ?? []).slice(-range),
+    [device?.usage, range],
+  );
+  /*
+   * A selection the chart no longer draws — the range was narrowed, or the
+   * parent switched device — would leave the card describing a day with no bar
+   * to point at. Null is today, which is what the chart opens on.
+   */
+  useEffect(() => {
+    if (
+      selectedUsageDate &&
+      !visibleUsage.some(day => day.date === selectedUsageDate)
+    ) {
+      setSelectedUsageDate(null);
+    }
+  }, [selectedUsageDate, visibleUsage]);
+
+  const screenDay =
+    (selectedUsageDate
+      ? visibleUsage.find(day => day.date === selectedUsageDate)
+      : null) ?? null;
+  const screenDayIsToday = !screenDay || screenDay.date === todayKey;
+  /*
+   * `resolveTodayTopApps` answers today's question — it falls back to
+   * `Device.topAppsToday`, which carries no date beyond `controls.usageDate`.
+   * Handed an older day it would answer with today's three under that day's
+   * heading, so an older day reads its own document or shows nothing.
+   */
+  const screenTopApps = screenDayIsToday
+    ? todayTopApps
+    : {
+        apps: screenDay.topApps ?? [],
+        totalMinutes: screenDay.minutes ?? 0,
+        source: screenDay.topApps?.length ? 'usageDay' : 'none',
+      };
+  /*
+   * The tail row under those three, for a free family.
+   *
+   * `family.plan === 'premium'` rather than a trial-aware answer, because this
+   * surface has no `VITE_TRIAL_DAYS` and cannot tell a running trial from an
+   * ended one (`PlanCard` records why guessing is worse than not knowing). The
+   * cost of being wrong is one extra sentence under three apps during a trial,
+   * which is the harmless direction: the other way round, a paying family would
+   * be sold what they already have.
+   */
+  const screenTopAppsTeaser = resolveTopAppsTeaser({
+    hasFullAccess: family.plan === 'premium',
+    source: screenTopApps.source,
+    other: device?.topAppsOtherToday,
+  });
 
   /*
    * What is installed, as opposed to what was used.
@@ -1130,18 +1247,27 @@ export default function Dashboard({
    * A typed package name is deliberately not offered: `com.tiktok` guessed
    * wrong writes a limit that matches nothing and reads, on this screen, as a
    * limit that is simply not working.
+   *
+   * KidGate itself is dropped from both signals (`isKidGateOwnApp`). The
+   * inventory is where it got in: the macOS scan walks `/Applications` and the
+   * Windows one reads the registry, so this product's own bundle is in the list
+   * like any other — offered here as an app to put a daily cap on.
    */
   const limitCandidates = useMemo(() => {
     const byId = new Map();
     for (const app of todayApps) {
-      if (app.packageName) byId.set(app.packageName, app.label || app.packageName);
+      if (app.packageName && !isKidGateOwnApp(app.packageName)) {
+        byId.set(app.packageName, app.label || app.packageName);
+      }
     }
     // All four groups the report splits the scan into, flattened: a flagged
     // app is exactly the one a parent came here to cap, and a pending install
     // is one they may want capped before they allow it.
     for (const group of ['pending', 'flagged', 'other', 'unclassified']) {
       for (const app of inventory?.[group] ?? []) {
-        if (!byId.has(app.id)) byId.set(app.id, app.label || app.id);
+        if (!byId.has(app.id) && !isKidGateOwnApp(app.id)) {
+          byId.set(app.id, app.label || app.id);
+        }
       }
     }
     return [...byId].map(([id, label]) => ({ id, label }));
@@ -1326,7 +1452,8 @@ export default function Dashboard({
             {t('dash.parents', { count: family.parents.length })} ·{' '}
             {t('dash.devices', { count: devices.length })}
           </p>
-          <LanguagePicker variant="side" />
+          {/* The language picker moved into `sideFooter`'s account block, where
+              it shares a row with Sign out. */}
           {sideFooter}
         </div>
       </aside>
@@ -1498,6 +1625,23 @@ export default function Dashboard({
           />
         )}
 
+        {/*
+          The same card over the page while nothing at all is reporting. It
+          renders on the report tab too — a family with no device reporting is
+          owed the question wherever they happen to be standing, and the card
+          above is the only thing the report tab hides.
+        */}
+        {monitoredSheetOpen && (
+          <ParkedDevicesCard
+            devices={devices}
+            parking={parking}
+            canWrite={canWrite}
+            busy={busy === 'monitored'}
+            onChoose={chooseMonitored}
+            onDismiss={() => setMonitoredSheetOpen(false)}
+          />
+        )}
+
         {!device && tab !== 'report' && (
           <section className="card">
             <h2>{t('dash.noDeviceTitle')}</h2>
@@ -1511,10 +1655,8 @@ export default function Dashboard({
             loading={Boolean(reports?.loading)}
             familyName={family.name}
             language={language}
-            generating={Boolean(reports?.generating)}
-            generateError={reports?.error ?? null}
+            loadError={reports?.error ?? null}
             loadFailed={Boolean(reports?.loadFailed)}
-            onGenerate={reports?.generate}
             onReload={reports?.reload}
           />
         )}
@@ -1837,15 +1979,48 @@ export default function Dashboard({
                 </div>
               </Card>
 
-              <Card title={t('dash.topAppsTitle')} subtitle={t('dash.topAppsSub')}>
+              <Card
+                title={
+                  screenDayIsToday
+                    ? t('dash.topAppsTitle')
+                    : t('dash.topAppsTitleDay', {
+                        date: new Date(screenDay.date).toLocaleDateString(
+                          getLocaleTag(),
+                          { day: 'numeric', month: 'short' },
+                        ),
+                      })
+                }
+                subtitle={t('dash.topAppsSub')}
+              >
                 <AppBars
-                  apps={todayApps}
+                  apps={screenTopApps.apps}
                   limits={c.appLimits}
-                  totalMinutes={todayMinutes}
+                  totalMinutes={screenTopApps.totalMinutes}
                 />
-                {/* Only under the device's three — never under a ten-row list. */}
-                {todayTopApps.source === 'device' && family.plan !== 'premium' && (
-                  <p className="hint">{t('dash.topAppsFreeHint')}</p>
+                {/*
+                  Two reasons for the same sentence. Under today's three it
+                  says where the other seven are; under an empty older day it
+                  says why there is nothing — a free family's history was never
+                  written (`docs/PRICING.md` §4), and `appUsageEmpty` above
+                  would otherwise read as data having gone missing. Never under
+                  a ten-row list.
+                */}
+                {/*
+                  The teaser replaces the hint wherever it fires — both say
+                  "top 3, the rest is Premium" and only one of them measures
+                  the rest. The hint stays for the case the teaser declines:
+                  an older day with no rows, where there is no remainder to
+                  count and the sentence is explaining an empty card rather
+                  than a capped list.
+                */}
+                {screenTopAppsTeaser ? (
+                  <PremiumTeaser teaser={screenTopAppsTeaser} appT={activityT} />
+                ) : (
+                  family.plan !== 'premium' &&
+                  (screenTopApps.source === 'device' ||
+                    (!screenDayIsToday && screenTopApps.apps.length === 0)) && (
+                    <p className="hint">{t('dash.topAppsFreeHint')}</p>
+                  )
                 )}
               </Card>
             </div>
@@ -1881,7 +2056,23 @@ export default function Dashboard({
                 </div>
               }
             >
-              <UsageBars data={device.usage} limit={c.dailyLimitMinutes} days={range} />
+              {/*
+                The bars are also the day picker for the Top apps card above.
+                Above, not below, because the card order answers "what did they
+                use" before "how has it been trending" — so the picked day
+                carries its date in that card's own heading rather than relying
+                on the parent connecting a highlighted bar to a card they have
+                to scroll back to.
+              */}
+              <UsageBars
+                data={device.usage}
+                limit={c.dailyLimitMinutes}
+                days={range}
+                selectedDate={selectedUsageDate ?? todayKey}
+                onSelectDate={date =>
+                  setSelectedUsageDate(prev => (prev === date ? null : date))
+                }
+              />
             </Card>
 
             <Card
@@ -1961,6 +2152,14 @@ export default function Dashboard({
                       value={c.blockedCategoryCount}
                     />
                   </div>
+                  {/*
+                    Best-effort blocking (desktop, TV) says so here, from the
+                    same probe and the same app key the phone's card reads —
+                    `supportsAppBlocking` counts that probe as yes on purpose.
+                  */}
+                  {appBlockingNoteKey(device) && (
+                    <p className="hint">{activityT(appBlockingNoteKey(device))}</p>
+                  )}
                   {/*
                     The three tiles above are summaries the DEVICE writes —
                     which apps are blocked is chosen in a native picker on the
@@ -2601,8 +2800,8 @@ export default function Dashboard({
             )}
             rewardTasks={rewardTasks}
             siteRequests={siteRequests[device.id] || []}
+            familyChildren={children}
             leaderboard={leaderboard}
-            screenTimeBoard={screenTimeBoard}
             readOnly={live && !canWrite}
             actions={actions}
             run={run}
@@ -2656,56 +2855,57 @@ function StarChartCard({ leaderboard }) {
   );
 }
 
-/**
- * The family screen-time board — minutes per person this week, fewest
- * first, parents beside the children where they opted in. The switch is on
- * the phone (`FamilyDetailScreen`), owner only, like the star chart's; this
- * surface reads. Hidden entirely while off: a card that says "turn it on in
- * the app" would sit on every dashboard for a feature most families never
- * asked for, whereas the star chart's empty state answers a family that
- * already has two children and is looking for it.
- */
-function FamilyScreenTimeCard({ board }) {
-  const { t } = useT();
-
-  if (!board?.enabled) {
-    return null;
-  }
-  if (!board.visible) {
-    return (
-      <Card
-        title={t('dash.familyScreenTimeTitle')}
-        subtitle={t('dash.familyScreenTimeSub')}
-      >
-        <p className="muted">{t('dash.familyScreenTimeEmpty')}</p>
-      </Card>
-    );
-  }
-
-  return (
-    <Card
-      title={t('dash.familyScreenTimeTitle')}
-      subtitle={t('dash.familyScreenTimeSub')}
-    >
-      <ul className="events">
-        {board.rows.map(row => (
-          <li key={row.participantId}>
-            <span className="ev-state tone-muted">{row.rank}</span>
-            <span className="ev-body">
-              <strong>{row.name || t('dash.familyScreenTimeParent')}</strong>
-              <em>
-                {row.kind === 'parent'
-                  ? t('dash.familyScreenTimeParent')
-                  : t('dash.familyScreenTimeDays', { count: row.daysReported })}
-              </em>
-            </span>
-            <span className="ev-time">{formatMinutes(row.weekMinutes)}</span>
-          </li>
-        ))}
-      </ul>
-    </Card>
-  );
-}
+// Dropped 2026-09-08 with the board itself (docs/FEASIBILITY.md, D4).
+// /**
+//  * The family screen-time board — minutes per person this week, fewest
+//  * first, parents beside the children where they opted in. The switch is on
+//  * the phone (`FamilyDetailScreen`), owner only, like the star chart's; this
+//  * surface reads. Hidden entirely while off: a card that says "turn it on in
+//  * the app" would sit on every dashboard for a feature most families never
+//  * asked for, whereas the star chart's empty state answers a family that
+//  * already has two children and is looking for it.
+//  */
+// function FamilyScreenTimeCard({ board }) {
+//   const { t } = useT();
+//
+//   if (!board?.enabled) {
+//     return null;
+//   }
+//   if (!board.visible) {
+//     return (
+//       <Card
+//         title={t('dash.familyScreenTimeTitle')}
+//         subtitle={t('dash.familyScreenTimeSub')}
+//       >
+//         <p className="muted">{t('dash.familyScreenTimeEmpty')}</p>
+//       </Card>
+//     );
+//   }
+//
+//   return (
+//     <Card
+//       title={t('dash.familyScreenTimeTitle')}
+//       subtitle={t('dash.familyScreenTimeSub')}
+//     >
+//       <ul className="events">
+//         {board.rows.map(row => (
+//           <li key={row.participantId}>
+//             <span className="ev-state tone-muted">{row.rank}</span>
+//             <span className="ev-body">
+//               <strong>{row.name || t('dash.familyScreenTimeParent')}</strong>
+//               <em>
+//                 {row.kind === 'parent'
+//                   ? t('dash.familyScreenTimeParent')
+//                   : t('dash.familyScreenTimeDays', { count: row.daysReported })}
+//               </em>
+//             </span>
+//             <span className="ev-time">{formatMinutes(row.weekMinutes)}</span>
+//           </li>
+//         ))}
+//       </ul>
+//     </Card>
+//   );
+// }
 
 /**
  * Which field of the device document each switch owns.
@@ -2739,7 +2939,7 @@ function ControlsTab({
   rewardTasks,
   siteRequests,
   leaderboard,
-  screenTimeBoard,
+  // screenTimeBoard, — dropped 2026-09-08 with the board
   readOnly,
   actions,
   run,
@@ -2747,9 +2947,12 @@ function ControlsTab({
   /** This device's feed rows, for the install-approval pending list. */
   activities = [],
   siblingDevices = [],
+  /** The family's children, as a source the starter card can copy rules from. */
+  familyChildren = [],
 }) {
   const siblingDeviceIds = siblingDevices.map(other => other.id);
   const { t } = useT();
+  const activityT = useActivityTranslate();
   const c = device.controls;
   const live = Boolean(actions);
   /*
@@ -3107,6 +3310,50 @@ function ControlsTab({
   return (
     <>
       {/*
+        The starter set, for an assigned child nothing has ever been turned on
+        for. The phone hangs this off the fresh-pairing hand-off; this surface
+        has no pairing at all (`docs/BACKLOG.md`, "The web cannot add a
+        device"), so the card reads the state instead of an event and
+        disappears the moment all five are on.
+
+        `canUsePremiumControls` is left at its default: this app cannot tell a
+        running trial from a lapsed plan (`apps/dashboard/CLAUDE.md`, plans),
+        so the server's refusal is the gate — greying a switch here would hide
+        it from a family whose trial is still running.
+      */}
+      {device.childId &&
+        device.child &&
+        hasQuickProtectOffer(device.child, familyChildren) && (
+          <Card
+            title={activityT('family.quickProtectTitle', {
+              childName: device.child.name ?? '',
+            })}
+          >
+            <QuickProtectCard
+              child={device.child}
+              siblings={familyChildren}
+              disabled={readOnly || !live}
+              onApply={async ({ rules, budget }) => {
+                if (Object.keys(rules).length > 0) {
+                  await run('quick-protect', () =>
+                    actions.updateChildRules(device.childId, rules),
+                  );
+                }
+                if (budget !== null) {
+                  // Never `updateChildRules({ dailyLimitMinutes })`: that writes
+                  // the rule and leaves every assigned device locking on a stale
+                  // share until its next usage report. Same call the budget
+                  // editor below makes.
+                  await run('quick-protect-budget', () =>
+                    actions.setChildBudget(device.childId, budget, siblingDeviceIds),
+                  );
+                }
+              }}
+            />
+          </Card>
+        )}
+
+      {/*
         Apps the device blocked on its own and is holding for the parent.
 
         Always rendered while the switch is on, even empty: the device decided
@@ -3376,7 +3623,12 @@ function ControlsTab({
         </Card>
 
         <StarChartCard leaderboard={leaderboard} />
+        {/* The family screen-time board is dropped, here as on the phone —
+            decided 2026-09-08 (docs/FEASIBILITY.md, D4). The switch that fed it
+            is gone from Family detail, so this card could only draw a board
+            nobody can turn on. Commented, not deleted.
         <FamilyScreenTimeCard board={screenTimeBoard} />
+        */}
 
         {/*
           A reward is minutes of screen time, granted on a device that can

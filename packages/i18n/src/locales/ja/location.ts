@@ -73,4 +73,13 @@ export const location = {
   stayRange: '{{from}} – {{to}}',
   placeTotalsTitle: '登録した場所での時間',
   placeTotalsNote: '直近{{count}}日の位置履歴から。ここに保存した場所だけを数えます。',
+  wizardStepAllow:
+    '「許可」を選び、続いて「常に許可」を選ぶと、バックグラウンドでも更新が続きます。',
+  requestNoFix:
+    'この端末は位置情報を取得できませんでした。位置情報の許可がまだされていない可能性があります。',
+  requestSharingOff: 'この端末の位置情報の共有はオフです。',
+  requestUnsupported: 'この端末は位置情報を報告できません。',
+  cardSharingOff: '位置情報の共有がオフです',
+  cardPermissionOff: 'この端末では位置情報が許可されていません',
+  cardNotUpdating: '位置情報の更新が止まっています',
 } as const;

@@ -52,6 +52,18 @@ export const activities = {
   sosEscapeRepeatTitle: 'فتح طارئ للقفل ({{count}} مرات اليوم)',
   sosEscapeRepeatBody:
     'أدى SOS إلى فتح قفل هذا الجهاز لمدة {{minutes}} دقيقة. هذه {{count}} مرات اليوم.',
+  sosEscapeLimitedTitle: 'فتح تطبيقات الطوارئ',
+  sosEscapeLimitedBody:
+    'أدى SOS إلى فتح الهاتف والخرائط والرسائل على هذا الجهاز لمدة {{minutes}} دقيقة. وبقي كل شيء آخر مقفلاً.',
+  sosEscapeLimitedRepeatTitle: 'فتح تطبيقات الطوارئ ({{count}} مرات اليوم)',
+  sosEscapeLimitedRepeatBody:
+    'أدى SOS إلى فتح الهاتف والخرائط والرسائل على هذا الجهاز لمدة {{minutes}} دقيقة. هذه {{count}} مرات اليوم.',
+  sosPressLockHeldTitle: 'تم الضغط على SOS والجهاز مقفل',
+  sosPressLockHeldBody:
+    'تم الضغط على SOS على هذا الجهاز. أُرسل التنبيه وبقي الجهاز مقفلاً.',
+  sosPressLockHeldRepeatTitle: 'تم الضغط على SOS والجهاز مقفل ({{count}} مرات اليوم)',
+  sosPressLockHeldRepeatBody:
+    'تم الضغط على SOS على هذا الجهاز وبقي مقفلاً. هذه {{count}} مرات اليوم.',
   appBlockedTitle: '{{appName}}',
   appBlockedBody: 'فُتح تطبيق محظور وأغلقه KidGate.',
   appInstalledTitle: 'تم تثبيت التطبيق',
@@ -69,14 +81,6 @@ export const activities = {
   messageCheckedBody:
     'ظهرت كلمة مراقَبة في {{appName}} وتبيّن أنها غير مؤذية في سياقها.',
   activityTypeMessageChecked: 'تم الفحص',
-  callAlertTitle: 'مكالمة مع رقم غير موجود في جهات الاتصال',
-  callAlertBodyOutgoing: 'اتصل طفلك برقم غير موجود في جهات اتصاله، في {{localTime}}.',
-  callAlertBodyOutgoingTimed:
-    'اتصل طفلك برقم غير موجود في جهات اتصاله في {{localTime}}، لمدة {{durationMinutes}} دقيقة.',
-  callAlertBodyIncoming: 'اتصل برقم غير موجود في جهات اتصال طفلك به في {{localTime}}.',
-  callAlertBodyIncomingTimed:
-    'اتصل برقم غير موجود في جهات اتصال طفلك به في {{localTime}}، لمدة {{durationMinutes}} دقيقة.',
-  activityTypeCallAlert: 'تنبيه مكالمة',
   appRemovedTitle: 'تمت إزالة التطبيق',
   appRemovedBody: 'تمت إزالة التطبيق {{appName}} من جهاز الطفل.',
   extensionInstalledTitle: 'تمت إضافة إضافة متصفح',

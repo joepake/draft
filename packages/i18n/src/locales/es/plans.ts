@@ -61,7 +61,7 @@ export const plans = {
   compareActivityFeedPremium: '30 días',
   compareChildReport: 'Informes por hijo',
   compareIncluded:
-    'Ambos planes incluyen el límite diario, las horas bloqueadas, las apps bloqueadas, el filtro web, el bloqueo remoto, SOS, solicitudes de tiempo, tareas con recompensa, iPhone, Android, Mac, Windows, TV y Chromebook en una familia, el panel web y varios padres.',
+    'Ambos planes incluyen el límite diario, las horas bloqueadas, las apps bloqueadas, el filtro web, el bloqueo remoto, SOS, las solicitudes de tiempo y las tareas con recompensa en iPhone, Android, Mac y Windows dentro de una misma familia, además del panel web y varios padres. Android TV y Chromebook están en camino y tienen menos controles.',
   sectionWhyPremium: 'Qué añade Premium',
   sectionWhyPremiumSubtitle:
     'Todas las reglas siguen funcionando en Gratis. Premium añade lo que puedes ver, y cuándo.',
@@ -173,12 +173,14 @@ export const plans = {
   platformAndroidDetail: 'Dispositivo parental o infantil · Android 7 o posterior',
   platformMac: 'Mac',
   platformMacDetail: 'Solo dispositivo infantil · macOS 12 o posterior',
-  platformIosLimits: 'Sin Límites de apps ni avisos de mensajes.',
+  platformIosLimits:
+    'Sin Límites de apps ni avisos de mensajes. El filtro web solo cubre sitios para adultos, y las apps bloqueadas se eligen en el propio iPhone.',
   platformMacLimits: 'Sin avisos de mensajes, y la ubicación es aproximada.',
   platformWindowsLimits: 'Sin avisos de mensajes, y la ubicación es aproximada.',
-  platformAndroidTvLimits: 'Sin avisos de mensajes ni ubicación.',
+  platformAndroidTvLimits:
+    'Sin avisos de mensajes, ubicación, SOS ni solicitudes de tiempo. El bloqueo de apps se aplica en la medida de lo posible.',
   platformChromebookLimits:
-    'Sin Límite diario, Horas bloqueadas, Bloqueo de dispositivo ni ubicación.',
+    'Solo filtro web — sin Límite diario, Horas bloqueadas, Bloqueo de apps, Bloqueo de dispositivo, SOS ni ubicación.',
   platformComingSoon: 'Muy pronto',
   platformWindows: 'Windows',
   platformWindowsDetail: 'Solo dispositivo infantil · Windows 10 o posterior',
@@ -186,4 +188,18 @@ export const plans = {
   platformAndroidTvDetail: 'Solo dispositivo infantil · Android TV 7 o posterior',
   platformChromebook: 'Chromebook',
   platformChromebookDetail: 'Dispositivo infantil · solo filtro web en Chrome',
+  teaserCta: 'Ver Premium',
+  teaserProofOtherApps: 'Otras apps: {{count}} · {{minutes}}',
+  teaserProofOtherMinutes: 'Otras apps: {{minutes}}',
+  teaserProofBlocked: 'Bloqueado esta semana: {{count}}',
+  teaserTopApps: 'Premium nombra cada app, minuto a minuto, y guarda 30 días.',
+  teaserWebHistory: 'Premium muestra qué sitios se bloquearon y qué buscó tu hijo.',
+  teaserVideoHistory: 'Premium guarda cada vídeo y Short de YouTube que vio.',
+  teaserLocationTrail:
+    'Premium guarda por dónde estuvo y te avisa cuando llega o sale de casa y del colegio.',
+  teaserActivityWindow: 'Gratis muestra hoy. Premium guarda 30 días.',
+  teaserChildReport: 'Premium añade un informe por cada hijo, y uno nuevo cada semana.',
+  teaserMessageAlerts:
+    'Premium te avisa cuando un mensaje necesita tu atención. Solo en Android.',
+  teaserLiveNote: 'Gratis se actualiza cada 30 minutos. Premium es en directo.',
 } as const;

@@ -608,8 +608,8 @@
 .side-foot {
   margin-top: auto;
   display: grid;
-  gap: 0.5rem;
-  padding: 0.85rem 0.55rem 0;
+  gap: 0.45rem;
+  padding: 0.75rem 0.55rem 0;
   border-top: 1px solid var(--line);
 }
 
@@ -632,13 +632,9 @@
   margin: 0;
 }
 
-/* The footer is a grid now, so the two blocks that used to space themselves
-   with their own margins would double the gap it already declares. */
+/* The footer is a grid, so a block that spaces itself with its own margin
+   would double the gap the grid already declares. */
 .side-foot .lang-side {
-  margin-top: 0;
-}
-
-.side-foot .side-account {
   margin-top: 0;
 }
 
@@ -948,6 +944,38 @@
   margin-top: 0.9rem;
 }
 
+/*
+ * The premium teaser — the tail row under a free family's three apps.
+ *
+ * A row inside the card, not a banner beside it: it is the end of the list it
+ * follows (`@kidgate/core/domain/premiumTeaser` carries the reasoning), so it
+ * takes a rule above it rather than a border all round, which would read as a
+ * second card and therefore as an advert.
+ */
+.premium-teaser {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+  margin-top: 0.9rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--line);
+}
+
+.premium-teaser strong {
+  display: block;
+  font-size: 0.92rem;
+}
+
+.premium-teaser .hint {
+  margin-top: 0.2rem;
+}
+
+.premium-teaser-mark {
+  color: var(--warning);
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
 /* ---------- Charts ---------- */
 
 .viz {
@@ -994,6 +1022,30 @@
 .viz-bar.is-hover,
 .viz-bar-bonus.is-hover {
   filter: brightness(1.25);
+}
+
+/* The column is the target, not the bar: a four-minute day is 2px of colour
+   and what is being picked is the day. */
+.viz-pick {
+  cursor: pointer;
+}
+
+.viz-pick:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+/* Brightness is what hover already says, so the picked bar is outlined
+   instead — the two states stack on the bar the pointer is over. */
+.viz-bar.is-selected {
+  stroke: var(--ink);
+  stroke-width: 2;
+  paint-order: stroke;
+}
+
+.viz-axis.is-selected {
+  fill: var(--ink);
+  font-weight: 700;
 }
 
 .viz-bar-bonus {
@@ -2336,19 +2388,27 @@ ol.attn-fix li + li {
   line-height: 1.5;
 }
 
+/*
+ * Two rows, and no rule of its own: `.side-foot` already draws one, and a
+ * second inside a five-row footer divided a column 264px wide into pieces
+ * smaller than the things in them.
+ */
 .side-account {
+  display: grid;
+  gap: 0.3rem;
+}
+
+/* Language and the way out — the two controls, side by side. */
+.side-account-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 0.5rem;
-  margin-top: 0.6rem;
-  padding-top: 0.6rem;
-  border-top: 1px solid var(--line);
 }
 
-.side-account span {
-  font-size: 0.76rem;
-  color: var(--ink-2);
+.side-account-email {
+  font-size: 0.74rem;
+  color: var(--muted);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -2560,6 +2620,72 @@ ol.attn-fix li + li {
   font-variant-numeric: tabular-nums;
 }
 
+/* QR-first sign-in: the code is the screen, the other three fold beneath it. */
+
+.qr-hero {
+  background: color-mix(in srgb, var(--ink) 5%, transparent);
+  border: 1px solid var(--line);
+  border-radius: 0.95rem;
+  padding: 1.3rem 1.1rem 1.15rem;
+  margin-bottom: 1.1rem;
+}
+
+/* Bigger here than in the step-up sheet — this one is the page's subject. */
+.qr-hero .qr-code {
+  width: 216px;
+  height: 216px;
+}
+
+.qr-hero .qr-why {
+  margin-top: 0.95rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--line);
+  text-align: center;
+}
+
+.login-alt-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  width: 100%;
+  padding: 0.6rem 0.5rem;
+  border-radius: 0.6rem;
+  font-size: 0.82rem;
+  color: var(--ink-2);
+  transition:
+    color var(--kg-motion-fast) ease,
+    background var(--kg-motion-fast) ease;
+}
+
+.login-alt-toggle:hover {
+  color: var(--ink);
+  background: color-mix(in srgb, var(--ink) 5%, transparent);
+}
+
+.login-alt-chevron {
+  width: 0.95rem;
+  height: 0.95rem;
+  flex-shrink: 0;
+  transition: transform var(--kg-motion-fast) ease;
+}
+
+.login-alt-chevron.is-open {
+  transform: rotate(180deg);
+}
+
+/* The fold's own top rule; the divider above it is the toggle. */
+.login-alt-body {
+  margin-top: 0.85rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--line);
+}
+
+/* Inside the fold the first divider would sit directly under that rule. */
+.login-alt-body .login-or:first-child {
+  margin-top: 0;
+}
+
 .login-providers {
   display: grid;
   gap: 0.6rem;
@@ -2686,10 +2812,26 @@ ol.attn-fix li + li {
 }
 
 /* In the rail this sits beside the plan pill, where 0.8rem is the loudest
-   thing in the footer. It is a way in, not the footer's headline. */
+   thing in the footer. It is a way in, not the footer's headline — so the
+   chevron carries the affordance and the underline waits for hover. */
 .plan-card-row .login-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
   font-size: 0.74rem;
   text-align: start;
+  text-decoration: none;
+  color: var(--muted);
+}
+
+.plan-card-row .login-link:hover span {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.plan-card-row .login-link svg {
+  flex-shrink: 0;
+  opacity: 0.75;
 }
 
 .login-foot {
@@ -2814,6 +2956,13 @@ ol.attn-fix li + li {
   font-size: 0.8rem;
 }
 
+/* In the account row it shares the line with Sign out, so it takes the width
+   its label needs and no more. */
+.side-account-row .lang-side .lang-btn {
+  width: auto;
+  font-size: 0.76rem;
+}
+
 /* The sidebar footer sits at the bottom of a full-height column, so the menu
    opens upward — downward it would render below the viewport. */
 .lang-side .lang-menu {
@@ -2860,12 +3009,6 @@ ol.attn-fix li + li {
   align-items: center;
   gap: 0.5rem;
   margin-bottom: 1.15rem;
-}
-
-/* Pushes the share group to the right edge without a second flex row,
-   so the wrap on a narrow window is a plain stack. */
-.report-actions-gap {
-  flex: 1 1 auto;
 }
 
 .report-actions .btn {
@@ -3473,8 +3616,11 @@ ol.attn-fix li + li {
   justify-items: start;
 }
 
-/* The pill and the way in to the comparison on one line: two stacked blocks
-   spent three rows of the rail's footer saying what fits on one. */
+/* The pill and the way in to the comparison share a row where they fit, and
+   the link wraps under it where they do not — which at this rail's 264px and
+   `plans.compareTitle`'s length is every language. It wraps to a second line,
+   never a third: shortening it would take a compare label neither pack has,
+   and that is a new string in fourteen of them. */
 .plan-card-row {
   display: flex;
   align-items: center;

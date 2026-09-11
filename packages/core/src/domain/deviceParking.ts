@@ -41,6 +41,8 @@ export interface ParkableDevice {
   monitoringState?: 'active' | 'parked';
   /** `Device.lastActiveAt`, ISO. Absent for a device that never reported. */
   lastActiveAt?: string | null;
+  /** `Device.monitoredChangedAt`, ISO. Absent until this device is chosen. */
+  monitoredChangedAt?: string | null;
 }
 
 /**
@@ -133,6 +135,15 @@ export interface ParkingSummary {
    */
   monitoredId: string | null;
   /**
+   * When the monitored device was chosen, epoch ms, or null.
+   *
+   * Feeds `canChooseMonitored` / `swapCooldownRemainingMs` on the clients.
+   * The server decides the cooldown from its own copy in `private/`; this is
+   * the same moment, republished on the device so a console can say a swap is
+   * not available yet instead of offering one the endpoint will refuse.
+   */
+  monitoredChangedAtMs: number | null;
+  /**
    * Whether the parent still has to pick.
    *
    * True when every device is parked — which is what trial end leaves behind
@@ -144,18 +155,37 @@ export interface ParkingSummary {
 }
 
 export function summariseParking(
-  devices: readonly Pick<ParkableDevice, 'id' | 'monitoringState'>[],
+  devices: readonly Pick<
+    ParkableDevice,
+    'id' | 'monitoringState' | 'monitoredChangedAt'
+  >[],
 ): ParkingSummary {
   const parked = devices.filter(isDeviceParked).map(device => device.id);
   if (parked.length === 0) {
-    return { parked, monitoredId: null, choicePending: false };
+    return {
+      parked,
+      monitoredId: null,
+      monitoredChangedAtMs: null,
+      choicePending: false,
+    };
   }
   const active = devices.filter(device => !isDeviceParked(device));
+  const monitored = active.length === 1 ? (active[0] ?? null) : null;
   return {
     parked,
-    monitoredId: active.length === 1 ? (active[0]?.id ?? null) : null,
+    monitoredId: monitored?.id ?? null,
+    monitoredChangedAtMs: toMillis(monitored?.monitoredChangedAt),
     choicePending: active.length === 0,
   };
+}
+
+/** ISO to epoch ms, and null for anything that is not a readable date. */
+function toMillis(value: string | null | undefined): number | null {
+  if (!value) {
+    return null;
+  }
+  const ms = new Date(value).getTime();
+  return Number.isFinite(ms) ? ms : null;
 }
 
 /**

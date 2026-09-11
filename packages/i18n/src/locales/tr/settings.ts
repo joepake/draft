@@ -96,8 +96,10 @@ export const settings = {
     'Bu ebeveyn oturumundan çıkacak ve Ebeveyn / Çocuk seçim ekranına döneceksiniz. Cihazları yönetmek için tekrar giriş yapın. Hesabınız, aileniz ve çocuk cihazlarınız değişmeden kalır.',
   removeParentDeviceAlertTitle: 'Ebeveyn cihazı kaldırılsın mı?',
   removeParentDeviceAlertMessage:
-    '{{deviceName}} bildirim almayı durduracak. O ebeveyn yeniden bağlanmak için tekrar giriş yapabilir.',
+    '{{deviceName}} bu hesaptan çıkış yapacak ve artık bildirim almayacak. Cihazı elinde bulunduran kişi şifreyle yeniden giriş yapabilir.',
   toastParentDeviceRemoved: '{{deviceName}} kaldırıldı.',
+  signedOutByAnotherDevice:
+    'Bu cihazın ebeveyn hesabı oturumu başka bir cihazdan kapatıldı.',
   deleteAccountTitle: 'Hesabı sil',
   deleteAccountSubtitleDefault: 'Hesabınızı ve tüm verilerinizi kalıcı olarak siler',
   deleteAccountAlertTitle: 'Hesap kalıcı olarak silinsin mi?',

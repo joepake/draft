@@ -171,9 +171,21 @@ export default function PlanCard({ plan, trialStartedAt }) {
         {/* Only for a family that has not bought: buying stays on the phone,
             but deciding does not, and a family already on Premium has nothing
             left to compare. */}
+        {/*
+          `plans.compareTitle` is the dialog's heading, and it is the only
+          compare string either pack has — so the rail borrows a full sentence
+          for a link label. Underlined at 0.74rem beside the pill it read as
+          body copy and was the loudest thing in the footer. The chevron says
+          "this opens something" without a second string, so the underline can
+          wait for hover.
+        */}
         {!premium && (
-          <button className="login-link" onClick={() => setComparing(true)}>
-            {appT('plans.compareTitle')}
+          <button
+            className="login-link plan-compare-link"
+            onClick={() => setComparing(true)}
+          >
+            <span>{appT('plans.compareTitle')}</span>
+            <Icon name="chevronRight" size={12} />
           </button>
         )}
       </div>

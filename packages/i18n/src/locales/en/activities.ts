@@ -70,6 +70,32 @@ export const activities = {
   sosEscapeRepeatTitle: 'Emergency unlock ({{count}} today)',
   sosEscapeRepeatBody:
     'SOS unlocked this device for {{minutes}} minutes. That is {{count}} times today.',
+  /*
+   * The same row for an agent whose escape opens the emergency apps and keeps
+   * kicking the rest — `apps/mobile` Android since 2026-09-09. Separate keys
+   * rather than one sentence with a clause bolted on: to a parent reading one
+   * line in a feed, a phone that unlocked itself and a phone that opened its
+   * dialer are different events.
+   */
+  sosEscapeLimitedTitle: 'Emergency apps opened',
+  sosEscapeLimitedBody:
+    'SOS opened calls, maps and messages on this device for {{minutes}} minutes. Everything else stayed locked.',
+  sosEscapeLimitedRepeatTitle: 'Emergency apps opened ({{count}} today)',
+  sosEscapeLimitedRepeatBody:
+    'SOS opened calls, maps and messages on this device for {{minutes}} minutes. That is {{count}} times today.',
+  /*
+   * And the row for an agent whose press opens nothing at all — `apps/desktop`
+   * since 2026-09-10. The alert already says a child asked for help; what this
+   * adds is that the machine did not move, which is the half a parent would
+   * otherwise have to assume either way. No `{{minutes}}`: nothing was granted
+   * for any length of time.
+   */
+  sosPressLockHeldTitle: 'SOS pressed while locked',
+  sosPressLockHeldBody:
+    'SOS was pressed on this device. The alert was sent and the device stayed locked.',
+  sosPressLockHeldRepeatTitle: 'SOS pressed while locked ({{count}} today)',
+  sosPressLockHeldRepeatBody:
+    'SOS was pressed on this device and it stayed locked. That is {{count}} times today.',
   appBlockedTitle: '{{appName}}',
   appBlockedBody: 'A blocked app was opened and KidGate closed it.',
   appInstalledTitle: 'App installed',
@@ -87,16 +113,6 @@ export const activities = {
   messageCheckedBody:
     'A watched word appeared in {{appName}} and was judged harmless in context.',
   activityTypeMessageChecked: 'Checked',
-  callAlertTitle: 'Call with a number not in contacts',
-  callAlertBodyOutgoing:
-    'Your child called a number that is not in their contacts, at {{localTime}}.',
-  callAlertBodyOutgoingTimed:
-    'Your child called a number that is not in their contacts at {{localTime}}, for {{durationMinutes}} min.',
-  callAlertBodyIncoming:
-    'A number that is not in your child’s contacts called them at {{localTime}}.',
-  callAlertBodyIncomingTimed:
-    'A number that is not in your child’s contacts called them at {{localTime}}, for {{durationMinutes}} min.',
-  activityTypeCallAlert: 'Call alert',
   appRemovedTitle: 'App removed',
   appRemovedBody: '{{appName}} was uninstalled from the child device.',
   extensionInstalledTitle: 'Browser extension added',

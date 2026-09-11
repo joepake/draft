@@ -13,10 +13,12 @@ import {
   parseDeviceControls,
   parseDevicePlaces,
   parseLastLocation,
+  parseLocationRequestResult,
   parseOtaRequestResult,
   parseMessageMonitoring,
   parseProtectionCounters,
   parseProtectionStatus,
+  parseTopAppsOtherToday,
   parseTopAppsToday,
   parseWeekCounters,
 } from '../domain/deviceControlsMapper';
@@ -118,6 +120,10 @@ function deviceName(data: Record<string, unknown>): string {
   return text(data.name) ?? text(data.deviceLabel) ?? text(data.modelName) ?? '';
 }
 
+function isLiveParentDevice(device: ParentDeviceRecord): boolean {
+  return !device.revokedAt;
+}
+
 function mapParentDevice(doc: DocSnapshot): ParentDeviceRecord {
   const data = (doc.data() ?? {}) as Record<string, unknown>;
   return {
@@ -130,6 +136,9 @@ function mapParentDevice(doc: DocSnapshot): ParentDeviceRecord {
     osVersion: text(data.osVersion),
     lastActiveAt: timestampToIso(data.lastActiveAt) ?? '',
     createdAt: timestampToIso(data.createdAt) ?? '',
+    ...(timestampToIso(data.revokedAt)
+      ? { revokedAt: timestampToIso(data.revokedAt) }
+      : {}),
   } as ParentDeviceRecord;
 }
 
@@ -148,11 +157,13 @@ function mapChildDevice(doc: DocSnapshot): ChildDeviceRecord {
   const data = (doc.data() ?? {}) as Record<string, unknown>;
   const lastLocation = parseLastLocation(data);
   const otaRequestResult = parseOtaRequestResult(data);
+  const locationRequestResult = parseLocationRequestResult(data);
   const protectionStatus = parseProtectionStatus(data);
   const messageMonitoring = parseMessageMonitoring(data);
   const webToday = parseWebToday(data);
   const weekCounters = parseWeekCounters(data);
   const topAppsToday = parseTopAppsToday(data);
+  const topAppsOtherToday = parseTopAppsOtherToday(data);
 
   return {
     places: parseDevicePlaces(data),
@@ -176,8 +187,20 @@ function mapChildDevice(doc: DocSnapshot): ChildDeviceRecord {
      */
     ...(weekCounters ? { weekCounters } : {}),
     ...(topAppsToday ? { topAppsToday } : {}),
+    /*
+     * The remainder those three leave out. Absent means the server has not
+     * measured it — a report with no minutes reading, or an older deployment —
+     * and a console must then say nothing about the rest of the day rather
+     * than treat silence as zero.
+     */
+    ...(topAppsOtherToday ? { topAppsOtherToday } : {}),
     ...(data.monitoringState === 'parked'
       ? { monitoringState: 'parked' as const }
+      : {}),
+    // The swap cooldown's readable half, absent on every device that has
+    // never been the chosen one.
+    ...(data.monitoredChangedAt
+      ? { monitoredChangedAt: timestampToIso(data.monitoredChangedAt) ?? '' }
       : {}),
     webFilterBlockedCount:
       typeof data.webFilterBlockedCount === 'number' ? data.webFilterBlockedCount : 0,
@@ -247,6 +270,7 @@ function mapChildDevice(doc: DocSnapshot): ChildDeviceRecord {
       ? { otaRequestId: data.otaRequestId }
       : {}),
     ...(otaRequestResult ? { otaRequestResult } : {}),
+    ...(locationRequestResult ? { locationRequestResult } : {}),
     createdAt: timestampToIso(data.createdAt) ?? '',
     controls: parseDeviceControls(data),
     ...(lastLocation ? { lastLocation } : {}),
@@ -328,9 +352,15 @@ export function createDeviceRepository(deps: DeviceRepositoryDeps) {
 
     async fetchParentDevices(userId: string): Promise<ParentDeviceRecord[]> {
       const snapshot = await db.getDocs(parentDevicesCollection(userId));
-      return snapshot.docs.map(mapParentDevice);
+      return snapshot.docs.map(mapParentDevice).filter(isLiveParentDevice);
     },
 
+    /**
+     * Revoked devices are dropped here and in `fetchParentDevices`, so every
+     * list reader — the family screen, activity authorship — agrees the
+     * device is gone. `subscribeParentDevice` keeps the raw record: the
+     * revoked device itself reads that one to learn it has been signed out.
+     */
     subscribeParentDevices(
       userId: string,
       onDevices: (devices: ParentDeviceRecord[]) => void,
@@ -339,7 +369,8 @@ export function createDeviceRepository(deps: DeviceRepositoryDeps) {
       return db.onQuery(
         parentDevicesCollection(userId),
         {},
-        snapshot => onDevices(snapshot.docs.map(mapParentDevice)),
+        snapshot =>
+          onDevices(snapshot.docs.map(mapParentDevice).filter(isLiveParentDevice)),
         onError,
       );
     },
@@ -416,6 +447,25 @@ export function createDeviceRepository(deps: DeviceRepositoryDeps) {
         status: locked ? 'locked' : 'online',
         lastActiveAt: new Date(clock.now()).toISOString(),
       };
+    },
+
+    /**
+     * Parent-initiated extra minutes for today — no child request involved.
+     * Same grant `resolveTimeRequest` makes on approval, same 5–180 bounds
+     * (`@kidgate/schema/timeRequest`), gone at the child's midnight. Siri's
+     * "give Minh fifteen minutes" is the first caller; no parent screen offers
+     * it yet (`docs/BACKLOG.md`).
+     */
+    async grantBonusMinutes(
+      userId: string,
+      deviceId: string,
+      minutes: number,
+    ): Promise<{ bonusMinutesToday: number }> {
+      return api.post<{ bonusMinutesToday: number }>(
+        '/grantBonusMinutes',
+        { deviceId, minutes, familyOwnerUserId: userId },
+        { as: 'parent' },
+      );
     },
 
     async resetParentPinLockout(userId: string, deviceId: string): Promise<void> {
@@ -606,6 +656,22 @@ export function createDeviceRepository(deps: DeviceRepositoryDeps) {
 
     async deleteParentDevice(userId: string, deviceId: string): Promise<void> {
       await db.deleteDoc(parentDeviceDoc(userId, deviceId));
+    },
+
+    /**
+     * Sign another of this account's devices out.
+     *
+     * A stamp, not a delete — `ParentDeviceRecord.revokedAt` says why. The
+     * FCM token goes with it so the device stops receiving the family's
+     * alerts in the same write, before the phone has even noticed. The
+     * credential hash stays: rules make it immutable, and
+     * `requireParentDevice` refuses the device on the stamp instead.
+     */
+    async revokeParentDevice(userId: string, deviceId: string): Promise<void> {
+      await db.updateDoc(parentDeviceDoc(userId, deviceId), {
+        revokedAt: db.fieldValues.serverTimestamp(),
+        fcmToken: db.fieldValues.delete(),
+      });
     },
 
     /**

@@ -79,23 +79,30 @@ export async function fetchLatestBuilds(db: FirestorePort): Promise<LatestBuilds
      * here, so no phone is called out of date for a release the stores are still
      * reviewing.
      */
-    const phone = {
+    const store = {
       ...(ota.appVersion ? { version: ota.appVersion } : {}),
       ...(typeof ota.appVersionCode === 'number'
         ? { versionCode: ota.appVersionCode }
         : {}),
-      /*
-       * The bundle number only counts while OTA delivery is on. With `enabled`
-       * false nothing will ever be sent, so a device on an older bundle is not
-       * behind in any sense a parent could act on — it is exactly where the
-       * operator left it.
-       */
-      ...(ota.enabled !== false && typeof ota.version === 'number'
-        ? { otaVersion: ota.version }
-        : {}),
     };
-    latest.ios = phone;
-    latest.android = phone;
+    /*
+     * The bundle number only counts while OTA delivery is on. With `enabled`
+     * false nothing will ever be sent, so a device on an older bundle is not
+     * behind in any sense a parent could act on — it is exactly where the
+     * operator left it.
+     *
+     * Per platform, because the zips are published separately: one shared
+     * number called every Android phone behind each time iOS shipped alone
+     * (2026-09-08). A document from before the split carries only `version`.
+     */
+    const bundle = (platformVersion: number | undefined) => {
+      const published = platformVersion ?? ota.version;
+      return ota.enabled !== false && typeof published === 'number'
+        ? { otaVersion: published }
+        : {};
+    };
+    latest.ios = { ...store, ...bundle(ota.versionIos) };
+    latest.android = { ...store, ...bundle(ota.versionAndroid) };
   }
 
   /*

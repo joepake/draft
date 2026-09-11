@@ -129,4 +129,6 @@ export const messageMonitoring = {
   languagesHint:
     'Bu cihazın endişe verici kelimeleri hangi dillerde aradığı. En fazla {{max}} tane seçin.',
   languagesDefaultHint: 'Varsayılan olarak cihazın dili kullanılır.',
+  setupStepFindKidGate:
+    'Bildirim erişimi listesinde KidGate’i bulun ve açın. KidGate listede iki kez görünebilir — diğeri gece arama uyarıları içindir. Geri döndüğünüzde bu adım hâlâ tamamlanmadıysa diğerini açın.',
 } as const;

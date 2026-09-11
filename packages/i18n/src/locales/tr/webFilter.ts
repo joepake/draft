@@ -7,13 +7,13 @@ export const webFilter = {
     '{{name}} adlı çocuğun cihazlarında farklı web filtresi ayarları vardı. Burada kaydetmek, daha katı seçeneğe göre birleştirilmiş tek bir ayarı tümüne uygular.',
   mergeLoosened: 'Artık her cihazda izinli: {{domains}}',
   toastUpdateFailed: 'Web filtresi güncellenemedi. Lütfen tekrar deneyin.',
-  heroTitle: 'Yetişkin sitelerini filtrele',
+  heroTitle: 'Uygunsuz siteleri filtrele',
   heroSubtitleIos:
     'Çocuğun cihazındaki Safari ve uygulama içi tarayıcılarda yetişkin içeriği sınırlamak için Apple Ekran Süresi web içerik filtresini kullanır.',
   heroSubtitleAndroid:
-    'Bilinen yetişkin alan adlarını tarayıcılarda ve birçok uygulamada engellemek için çocuğun Android cihazında yerel bir DNS VPN kullanır.',
+    'Bilinen uygunsuz alan adlarını tarayıcılarda ve birçok uygulamada engellemek için çocuğun Android cihazında yerel bir DNS VPN kullanır.',
   heroSubtitleMacos:
-    'Tarayıcılarda ve birçok uygulamada bilinen yetişkin sitelerini engellemek için çocuğun Mac’inde KidGate’in içerik filtresini çalıştırır.',
+    'Tarayıcılarda ve birçok uygulamada bilinen uygunsuz siteleri engellemek için çocuğun Mac’inde KidGate’in içerik filtresini çalıştırır.',
   toggleHintIos: 'Çocuk cihazında Ekran Süresi izni gerektirir.',
   toggleHintAndroid:
     'Çocuğun KidGate VPN bağlantısını bir kez onaylaması gerekir. Filtrenin çalışması için VPN’i açık tutun.',
@@ -26,6 +26,8 @@ export const webFilter = {
   safeSearchLabel: 'Güvenli Aramayı zorunlu kıl',
   safeSearchHint:
     'Google SafeSearch, YouTube Kısıtlı Mod, Bing ve DuckDuckGo’yu katı ayarda kilitler. Android, Android TV ve Chrome.',
+  safeSearchStrictNote:
+    'YouTube en katı seviyede çalışır: yorumlar gizlenir ve bazı sıradan videolar da engellenir. Çocuk bunu kendi hesabından kapatamaz.',
   infoTitle: 'Nasıl çalışır',
   infoLine1Ios: 'Apple yetişkin sitelerini otomatik olarak filtreler.',
   infoLine2Ios:
@@ -38,7 +40,8 @@ export const webFilter = {
     'Çocuk cihazında Özel DNS’i kapatın. Açıksa tarayıcılar filtreyi atlayabilir.',
   infoLine3Android:
     'Filtreleme sırasında çocuk cihazında bir VPN simgesi görünür. VPN’i kapatmak filtreyi durdurur — geri getirmek için KidGate’i yeniden açın.',
-  infoLine4Android: 'Ayarlar → Ağ ve internet → Özel DNS → Kapalı yolunu izleyin.',
+  infoLine4Android:
+    'Ayarlar’da Ağ ve internet’i, ardından Özel DNS’i açın ve Kapalı’yı seçin.',
   infoLine1Macos:
     'KidGate, Mac’te hangi sitelerin arandığını kontrol eden bir içerik filtresi çalıştırır ve kategorilerinize giren siteleri engeller.',
   infoLine2Macos:
@@ -49,7 +52,7 @@ export const webFilter = {
     'Filtre site adlarını okur, ancak modern tarayıcılar ziyaretlerin yaklaşık yarısında bunu gizler — bu siteler kategorilerinize göre denetlenmez. Yine de filtre, çocukların bu yolla ulaştığı çoğu siteyi engellemeye devam eder.',
   privateDnsBannerTitle: 'Özel DNS’i kapatın',
   privateDnsBannerBody:
-    'Özel DNS açık olduğundan yetişkin web filtresi atlanabilir. Filtrenin çalışması için kapatın.',
+    'Özel DNS açık olduğundan web filtresi atlanabilir. Filtrenin çalışması için kapatın.',
   privateDnsBannerButton: 'DNS ayarlarını aç',
   vpnConsentBannerTitle: 'Web filtresi VPN’ini geri getir',
   vpnConsentBannerBody:
@@ -60,7 +63,7 @@ export const webFilter = {
   macosFilterNote: 'Mac’te KidGate’in içerik filtresini kullanır',
 
   heroSubtitleWindows:
-    'Çocuğun bilgisayarında KidGate’in kendi çözümleyicisini çalıştırarak bilinen yetişkin sitelerini her tarayıcıda engeller.',
+    'Çocuğun bilgisayarında KidGate’in kendi çözümleyicisini çalıştırarak bilinen uygunsuz siteleri her tarayıcıda engeller.',
 
   toggleHintWindows:
     'Bilgisayarda onaylanacak bir şey yok. KidGate’in arka plan hizmeti filtreyi birkaç saniye içinde açar.',
@@ -200,4 +203,9 @@ export const webFilter = {
     '{{domain}} {{deviceName}} cihazında engelli kalmaya devam ediyor.',
   siteRequestReceived: 'Site isteği',
   siteRequestReceivedDescription: '{{deviceName}} {{domain}} adresini açmak istiyor.',
+  privateDnsStep1: 'Bu cihazda Ayarlar’ı açın.',
+  privateDnsStep2: 'Ağ ve internet’i seçin.',
+  privateDnsStep3: 'Özel DNS’i açın ve Kapalı’yı seçin.',
+  vpnConsentStepAllow:
+    'Android’in VPN isteğinde Tamam’ı seçin. Filtre çalışırken durum çubuğunda anahtar simgesi kalır.',
 } as const;

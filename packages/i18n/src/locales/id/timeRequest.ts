@@ -52,6 +52,8 @@ export const timeRequest = {
   timeRequestApprovedDescription:
     'Menambahkan {{minutes}} menit ekstra untuk {{deviceName}} hari ini.',
   timeRequestDeniedDescription: 'Menolak {{minutes}} menit untuk {{deviceName}}.',
+  bonusGranted: 'Menit ekstra ditambahkan',
+  bonusGrantedDescription: 'Memberi {{deviceName}} {{minutes}} menit ekstra hari ini.',
   needMoreTimeTitle: 'Butuh waktu tambahan?',
   askParentForMoreTime:
     'Kamu bisa meminta sedikit tambahan waktu layar dari orang tuamu hari ini.',

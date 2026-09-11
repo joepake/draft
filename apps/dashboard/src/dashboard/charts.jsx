@@ -54,10 +54,17 @@ function Tooltip({ x, y, children }) {
  * dashed reference line for the daily limit.
  * ---------------------------------------------------------------- */
 
-export function UsageBars({ data, limit, days = 14 }) {
+/**
+ * `selectedDate` / `onSelectDate` turn the bars into the day picker the Top
+ * apps card reads. Both optional: the Overview card draws this same chart with
+ * nothing under it to change, and there a bar that highlighted on click would
+ * be a control that does nothing.
+ */
+export function UsageBars({ data, limit, days = 14, selectedDate, onSelectDate }) {
   const [ref, width] = useMeasure();
   const [hover, setHover] = useState(null);
   const { t: tr } = useT();
+  const selectable = typeof onSelectDate === 'function';
 
   const rows = data.slice(-days);
   const height = 240;
@@ -142,10 +149,34 @@ export function UsageBars({ data, limit, days = 14 }) {
             const bonusTop = baseTop - bonusH - (bonusH ? 2 : 0);
             const over = limit != null && total > limit;
             const isHover = hover?.i === i;
+            const isSelected = selectable && r.date === selectedDate;
+            // The whole column, not the bar: a day with four minutes is a
+            // 2px target, and it is the day being picked rather than the bar.
+            const pick = selectable
+              ? {
+                  role: 'button',
+                  tabIndex: 0,
+                  'aria-pressed': isSelected,
+                  'aria-label': `${new Date(r.date).toLocaleDateString(getLocaleTag(), {
+                    weekday: 'short',
+                    day: 'numeric',
+                    month: 'short',
+                  })}, ${formatMinutes(r.minutes)}`,
+                  className: 'viz-pick',
+                  onClick: () => onSelectDate(r.date),
+                  onKeyDown: e => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      onSelectDate(r.date);
+                    }
+                  },
+                }
+              : null;
 
             return (
               <g
                 key={r.date}
+                {...pick}
                 onMouseEnter={() =>
                   setHover({
                     i,
@@ -171,7 +202,9 @@ export function UsageBars({ data, limit, days = 14 }) {
                   width={barW}
                   height={baseH}
                   rx="4"
-                  className={`viz-bar${over ? ' is-over' : ''}${isHover ? ' is-hover' : ''}`}
+                  className={`viz-bar${over ? ' is-over' : ''}${isHover ? ' is-hover' : ''}${
+                    isSelected ? ' is-selected' : ''
+                  }`}
                 />
                 {bonusH > 0 && (
                   <rect
@@ -199,14 +232,19 @@ export function UsageBars({ data, limit, days = 14 }) {
             // Counted back from the newest day, so the last label is always
             // shown and never lands next to its neighbour.
             const showEvery = rows.length > 20 ? 5 : 2;
-            if ((rows.length - 1 - i) % showEvery !== 0) return null;
+            // The picked day keeps its label whatever the interval says: on a
+            // quiet day the bar is 2px of colour, and without the date under
+            // it the only confirmation of what was picked is a card further up
+            // the page.
+            const isSelected = selectable && r.date === selectedDate;
+            if (!isSelected && (rows.length - 1 - i) % showEvery !== 0) return null;
             const d = new Date(r.date);
             return (
               <text
                 key={r.date}
                 x={pad.left + step * i + step / 2}
                 y={height - 10}
-                className="viz-axis"
+                className={`viz-axis${isSelected ? ' is-selected' : ''}`}
                 textAnchor="middle"
               >
                 {d.toLocaleDateString(getLocaleTag(), {

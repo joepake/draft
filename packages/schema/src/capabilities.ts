@@ -150,22 +150,6 @@ export interface DeviceCapabilities {
    */
   messageMonitoring?: boolean;
   /**
-   * The device can report a call whose other party it could not name.
-   *
-   * A separate flag from `messageMonitoring` even though both ride a
-   * notification listener, because they are two services, two grants and two
-   * consents (`docs/FEASIBILITY.md`, "Call monitoring" — one Play objection
-   * must not take both down). A device can legitimately publish `true` for one
-   * and `false` for the other.
-   *
-   * `false` on iOS forever: no API discloses a call to another app, and no
-   * entitlement changes that. `false` on the TV, the desktop agents and the
-   * extension — none of them has telephony. `true` on Android means the
-   * platform can, not that the child has granted the listener nor that a parent
-   * switched it on. **Absent is unknown, not false.**
-   */
-  callAlerts?: boolean;
-  /**
    * The device can see what the child **searched for**.
    *
    * A separate flag from `messageMonitoring` and not derivable from it in

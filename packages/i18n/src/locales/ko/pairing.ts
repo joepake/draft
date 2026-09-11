@@ -50,7 +50,7 @@ export const pairing = {
   unableToCreateCode: '코드를 생성할 수 없습니다. 다시 시도해 주세요.',
   inviteParentTitle: '다른 부모 기기 추가',
   inviteParentInstructions:
-    '다른 기기에서 KidGate → 가족 → + → 가족에 참여를 열고, 이 QR 코드를 스캔하거나 코드를 입력하세요. 여기에서 요청을 승인하면 해당 부모가 연결됩니다.',
+    '다른 기기에서 KidGate → 가족 → + → 가족에 참여를 열고, 15분 안에 이 QR 코드를 스캔하거나 코드를 입력하세요. 여기에서 요청을 승인하면 해당 부모가 연결됩니다.',
   inviteCodeLabel: '또는 이 코드를 공유하세요',
   joinFamilyTitle: '가족에 참여',
   joinFamilyScanInstructions: '이미 해당 가족에 속한 부모의 초대 QR 코드를 스캔하세요.',

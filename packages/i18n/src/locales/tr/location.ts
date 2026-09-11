@@ -74,4 +74,13 @@ export const location = {
   placeTotalsTitle: 'Yerlerinizde geçen süre',
   placeTotalsNote:
     'Son {{count}} günlük konum geçmişinden. Yalnızca burada kayıtlı yerler sayılır.',
+  wizardStepAllow:
+    'İzin ver’i, ardından Her zaman’ı seçin; böylece güncellemeler arka planda sürer.',
+  requestNoFix:
+    'Bu cihaz konum alamadı. Konum izni bu cihazda henüz verilmemiş olabilir.',
+  requestSharingOff: 'Bu cihaz için konum paylaşımı kapalı.',
+  requestUnsupported: 'Bu cihaz konum bildiremez.',
+  cardSharingOff: 'Konum paylaşımı kapalı',
+  cardPermissionOff: 'Bu cihazda konuma izin verilmiyor',
+  cardNotUpdating: 'Konum güncellenmeyi durdurdu',
 } as const;

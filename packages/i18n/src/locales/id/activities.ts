@@ -53,6 +53,19 @@ export const activities = {
   sosEscapeRepeatTitle: 'Buka kunci darurat ({{count}} kali hari ini)',
   sosEscapeRepeatBody:
     'SOS membuka kunci perangkat ini selama {{minutes}} menit. Ini kali ke-{{count}} hari ini.',
+  sosEscapeLimitedTitle: 'Aplikasi darurat dibuka',
+  sosEscapeLimitedBody:
+    'SOS membuka telepon, peta, dan pesan di perangkat ini selama {{minutes}} menit. Aplikasi lain tetap terkunci.',
+  sosEscapeLimitedRepeatTitle: 'Aplikasi darurat dibuka ({{count}} kali hari ini)',
+  sosEscapeLimitedRepeatBody:
+    'SOS membuka telepon, peta, dan pesan di perangkat ini selama {{minutes}} menit. Ini kali ke-{{count}} hari ini.',
+  sosPressLockHeldTitle: 'SOS ditekan saat perangkat terkunci',
+  sosPressLockHeldBody:
+    'SOS ditekan di perangkat ini. Peringatan terkirim dan perangkat tetap terkunci.',
+  sosPressLockHeldRepeatTitle:
+    'SOS ditekan saat perangkat terkunci ({{count}} kali hari ini)',
+  sosPressLockHeldRepeatBody:
+    'SOS ditekan di perangkat ini dan perangkat tetap terkunci. Ini kali ke-{{count}} hari ini.',
   appBlockedTitle: '{{appName}}',
   appBlockedBody: 'Aplikasi yang diblokir dibuka dan KidGate menutupnya.',
   appInstalledTitle: 'Aplikasi dipasang',
@@ -72,16 +85,6 @@ export const activities = {
   messageCheckedBody:
     'Kata yang dipantau muncul di {{appName}} dan dinilai tidak berbahaya dalam konteksnya.',
   activityTypeMessageChecked: 'Diperiksa',
-  callAlertTitle: 'Panggilan dengan nomor di luar kontak',
-  callAlertBodyOutgoing:
-    'Anak Anda menelepon nomor yang tidak ada di kontaknya, pukul {{localTime}}.',
-  callAlertBodyOutgoingTimed:
-    'Anak Anda menelepon nomor yang tidak ada di kontaknya pukul {{localTime}}, selama {{durationMinutes}} mnt.',
-  callAlertBodyIncoming:
-    'Nomor yang tidak ada di kontak anak Anda meneleponnya pukul {{localTime}}.',
-  callAlertBodyIncomingTimed:
-    'Nomor yang tidak ada di kontak anak Anda meneleponnya pukul {{localTime}}, selama {{durationMinutes}} mnt.',
-  activityTypeCallAlert: 'Peringatan panggilan',
   appRemovedTitle: 'Aplikasi dihapus',
   appRemovedBody: 'Aplikasi {{appName}} dihapus dari perangkat anak.',
   extensionInstalledTitle: 'Ekstensi browser ditambahkan',

@@ -54,6 +54,8 @@ export const timeRequest = {
     'Aggiunti {{minutes}} minuti extra per {{deviceName}} oggi.',
   timeRequestDeniedDescription:
     'Richiesta di {{minutes}} minuti rifiutata per {{deviceName}}.',
+  bonusGranted: 'Minuti extra aggiunti',
+  bonusGrantedDescription: 'Concessi {{minutes}} minuti extra a {{deviceName}} oggi.',
   needMoreTimeTitle: 'Ti serve più tempo?',
   askParentForMoreTime:
     'Puoi chiedere ai tuoi genitori un po’ più di tempo di utilizzo oggi.',

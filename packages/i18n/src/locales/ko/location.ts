@@ -70,4 +70,13 @@ export const location = {
   stayRange: '{{from}} – {{to}}',
   placeTotalsTitle: '저장한 장소에서 보낸 시간',
   placeTotalsNote: '최근 {{count}}일 위치 기록 기준. 여기에 저장한 장소만 계산합니다.',
+  wizardStepAllow:
+    '허용을 선택한 뒤 항상 허용을 선택하면 백그라운드에서도 업데이트됩니다.',
+  requestNoFix:
+    '이 기기가 위치를 가져오지 못했습니다. 아직 위치 권한이 허용되지 않았을 수 있습니다.',
+  requestSharingOff: '이 기기의 위치 공유가 꺼져 있습니다.',
+  requestUnsupported: '이 기기는 위치를 보고할 수 없습니다.',
+  cardSharingOff: '위치 공유가 꺼져 있습니다',
+  cardPermissionOff: '이 기기에서 위치 권한이 허용되지 않았습니다',
+  cardNotUpdating: '위치가 더 이상 업데이트되지 않습니다',
 } as const;

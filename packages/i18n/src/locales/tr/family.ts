@@ -19,6 +19,15 @@ export const family = {
   quickProtectTitle: '{{childName}} şimdi korunsun mu?',
   quickProtectBody:
     'Başlangıç için hazır bir koruma setini açın. Her şeyi daha sonra çocuk profilinden ayrıntılı ayarlayabilirsiniz.',
+  quickProtectSourceLabel: 'Şuradan başla',
+  quickProtectAllOnBody:
+    '{{childName}} için bu korumalar zaten açık. Saatlerini, sınırını ve site listelerini kopyalamak için başka bir çocuk seçin.',
+  quickProtectReplaces: '{{childName}} için şu anki ayarın yerine geçer.',
+  quickProtectWebFilterCopyHint:
+    '{{childName}} kategorilerini, ayrıca {{allowed}} izinli ve {{blocked}} reddedilen siteyi kopyalar.',
+  quickProtectSourceDefault: 'KidGate varsayılanları',
+  quickProtectSourceBody:
+    '{{childName}} adlı çocuğun kurallarını, izin verilen ve engellenen siteler dahil kopyalar.',
   quickProtectBedtime: 'Yatma saati için Engellenen Saatler',
   quickProtectBedtimeHint:
     'Cihaz kullanımını gece boyunca, 22.00–07.00 arasında engeller.',
@@ -27,7 +36,7 @@ export const family = {
     'Günde {{minutes}} dakika, tüm cihazlarında ortak sayılır.',
   quickProtectWebFilter: 'Web filtresi',
   quickProtectWebFilterHint:
-    'Yetişkin içeriğini ve diğer riskli kategorileri engeller.',
+    'Uygunsuz içeriği engeller, güvenli aramayı ve YouTube kısıtlamalarını açar.',
   quickProtectWebFilterPremium: 'Premium özellik — bir planla birlikte gelir.',
   quickProtectApply: 'Korumayı aç',
   quickProtectSkip: 'Şimdi değil',
@@ -110,6 +119,7 @@ export const family = {
   chipHealthWarnCount_one: '{{count}} yapılandırma bekliyor',
 
   chipHealthInactiveCount: '{{count}} 24 saatten uzun süredir yanıtsız',
+  chipLocationBlocked: 'Konum yok',
 
   chipBlockedCount: '{{count}} engellendi',
 

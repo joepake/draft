@@ -52,6 +52,8 @@ export const timeRequest = {
   timeRequestApprovedDescription: '{{deviceName}}に本日{{minutes}}分を追加しました。',
   timeRequestDeniedDescription:
     '{{deviceName}}への{{minutes}}分のリクエストを却下しました。',
+  bonusGranted: '追加時間を付与',
+  bonusGrantedDescription: '{{deviceName}}に本日{{minutes}}分を追加しました。',
   needMoreTimeTitle: 'もっと時間が必要ですか？',
   askParentForMoreTime:
     '今日はもう少し多くのスクリーンタイムを保護者にリクエストできます。',

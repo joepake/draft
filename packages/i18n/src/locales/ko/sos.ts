@@ -23,8 +23,7 @@ export const sos = {
   toastSent:
     'SOS를 보냈어요. 가능하면 안전한 곳에 있어 주세요 — 부모님에게 알림이 갔어요.',
   escapeGrantedTitle: 'SOS를 보냈어요',
-  escapeGrantedBody:
-    '보호자에게 알림이 갔어요. 이 기기는 15분 동안 잠금이 풀리고, 그 뒤에 다시 잠겨요.',
+  escapeGrantedBody: '보호자에게 알림이 갔어요. 이 기기는 계속 잠겨 있어요.',
   toastSentWithoutPhoto:
     'SOS를 보냈지만 사진은 첨부되지 않았어요. 가능하면 설정에서 카메라 접근을 허용한 후 다시 시도해 주세요.',
   toastSendFailed:

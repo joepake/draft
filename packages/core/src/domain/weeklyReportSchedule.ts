@@ -167,24 +167,33 @@ export function writeAnchorOffsetMinutes(
 }
 
 /**
- * Midnight, local time, on the next Monday strictly after `nowMs`.
+ * Midnight, local time, on the Monday that will report the week `nowMs` is in.
  *
- * What the phone's "current week" tab counts towards. Deliberately a *date* and
- * not an instant inside the push window: the parent is told "Monday morning",
- * which stays true across a daylight-saving shift, where a printed "08:00" would
- * be an hour wrong twice a year in every country that observes one.
+ * What the phone's "current week" tab counts towards, and the tab is about the
+ * week *in progress* — the one with no report behind it yet. That week ends on
+ * the coming Sunday, so its report is written on the Monday **strictly after**
+ * `nowMs`, never today: on a Monday the week that just started has six more
+ * days to run, whatever the job does that same morning.
  *
- * Monday itself, before the push has gone out, still counts as "next Monday" —
- * the report for the week just ended has not arrived yet, and pointing a parent
- * at a date eight days away would be worse than pointing at today.
+ * Which is what an earlier version got wrong. It answered "when is the next
+ * push?" instead, and on a Monday before 09:00 that is today — so a parent who
+ * had already been pushed last week's report at 08:00 opened the tab at 08:54
+ * and was told *this* week's report would arrive today. Two different weeks,
+ * one date, and the two questions differ only inside that one morning window,
+ * which is exactly when a parent opens the screen.
+ *
+ * Deliberately a *date* and not an instant inside the push window: the parent
+ * is told "Monday morning", which stays true across a daylight-saving shift,
+ * where a printed "08:00" would be an hour wrong twice a year in every country
+ * that observes one.
  */
-export function nextReportPushDate(nowMs: number, utcOffsetMinutes: number): Date {
+export function currentWeekReportDate(nowMs: number, utcOffsetMinutes: number): Date {
   const local = localDate(nowMs, utcOffsetMinutes);
   const day = local.getUTCDay();
-  const isMondayBeforePush = day === MONDAY && local.getUTCHours() < PUSH_HOUR_TO;
   // Sunday is 0, so `(8 - day) % 7` lands on the following Monday for every
-  // other day of the week and gives 0 for Monday itself.
-  const daysAhead = isMondayBeforePush ? 0 : (MONDAY + 7 - day) % 7 || 7;
+  // other day of the week and gives 0 for Monday itself — which `|| 7` turns
+  // into the Monday a full week ahead, the one that reports the week just begun.
+  const daysAhead = (MONDAY + 7 - day) % 7 || 7;
   const target = new Date(local.getTime());
   target.setUTCDate(target.getUTCDate() + daysAhead);
   target.setUTCHours(0, 0, 0, 0);

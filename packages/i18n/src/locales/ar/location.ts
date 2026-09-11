@@ -71,4 +71,12 @@ export const location = {
   placeTotalsNote_two: 'من سجل المواقع لآخر يومين. تُحتسب الأماكن المحفوظة هنا فقط.',
   placeTotalsNote_few:
     'من سجل المواقع لآخر {{count}} أيام. تُحتسب الأماكن المحفوظة هنا فقط.',
+  wizardStepAllow: 'اختر "سماح" ثم "دائمًا" حتى تستمر التحديثات في الخلفية.',
+  requestNoFix:
+    'لم يتمكن هذا الجهاز من تحديد موقعه. قد لا يكون الوصول إلى الموقع مسموحًا عليه بعد.',
+  requestSharingOff: 'مشاركة الموقع معطّلة على هذا الجهاز.',
+  requestUnsupported: 'لا يمكن لهذا الجهاز الإبلاغ عن موقعه.',
+  cardSharingOff: 'مشاركة الموقع متوقفة',
+  cardPermissionOff: 'الموقع غير مسموح به على هذا الجهاز',
+  cardNotUpdating: 'توقف تحديث الموقع',
 } as const;

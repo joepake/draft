@@ -50,7 +50,7 @@ export const pairing = {
   unableToCreateCode: 'Unable to create a code. Try again.',
   inviteParentTitle: 'Add another parent device',
   inviteParentInstructions:
-    'On the other device, open KidGate → Family → + → Join family, then scan this QR code or enter the code. Approve the request here to connect that parent.',
+    'On the other device, open KidGate → Family → + → Join family, then scan this QR code or enter the code within 15 minutes. Approve the request here to connect that parent.',
   inviteCodeLabel: 'Or share this code',
   joinFamilyTitle: 'Join family',
   joinFamilyScanInstructions:

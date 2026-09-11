@@ -60,7 +60,7 @@ export const plans = {
   compareActivityFeedPremium: '30 gün',
   compareChildReport: 'Çocuk başına rapor',
   compareIncluded:
-    'Her iki plan da günlük sınır, engellenen saatler, engellenen uygulamalar, web filtresi, uzaktan kilit, SOS, süre istekleri, ödül görevleri, tek ailede iPhone, Android, Mac, Windows, TV ve Chromebook, web paneli ve birden fazla ebeveyni içerir.',
+    'Her iki plan da tek ailede iPhone, Android, Mac ve Windows’ta günlük sınır, engellenen saatler, engellenen uygulamalar, web filtresi, uzaktan kilit, SOS, süre istekleri ve ödül görevlerini, ayrıca web panelini ve birden fazla ebeveyni içerir. Android TV ve Chromebook yakında geliyor ve daha az kontrol sunar.',
   sectionWhyPremium: 'Premium neler ekler',
   sectionWhyPremiumSubtitle:
     'Her kural Ücretsiz planda çalışmaya devam eder. Premium, neyi ne kadar erken gördüğünüzü ekler.',
@@ -171,12 +171,14 @@ export const plans = {
   platformAndroidDetail: 'Ebeveyn veya çocuk cihazı · Android 7 ve üzeri',
   platformMac: 'Mac',
   platformMacDetail: 'Yalnızca çocuk cihazı · macOS 12 ve üzeri',
-  platformIosLimits: 'Uygulama Sınırları ve mesaj uyarıları yok.',
+  platformIosLimits:
+    'Uygulama Sınırları ve mesaj uyarıları yok. Web filtresi yalnızca yetişkin sitelerini kapsar ve engellenen uygulamalar iPhone’un kendisinde seçilir.',
   platformMacLimits: 'Mesaj uyarıları yok, konum yaklaşıktır.',
   platformWindowsLimits: 'Mesaj uyarıları yok, konum yaklaşıktır.',
-  platformAndroidTvLimits: 'Mesaj uyarıları ve konum yok.',
+  platformAndroidTvLimits:
+    'Mesaj uyarıları, konum, SOS ve süre istekleri yok. Uygulama engelleme elden geldiğince çalışır.',
   platformChromebookLimits:
-    'Günlük sınır, Engellenen Saatler, Cihaz Kilidi ve konum yok.',
+    'Yalnızca web filtresi — Günlük sınır, Engellenen Saatler, Uygulama engelleme, Cihaz Kilidi, SOS ve konum yok.',
   platformComingSoon: 'Yakında',
   platformWindows: 'Windows',
   platformWindowsDetail: 'Yalnızca çocuk cihazı · Windows 10 ve üzeri',
@@ -184,4 +186,19 @@ export const plans = {
   platformAndroidTvDetail: 'Yalnızca çocuk cihazı · Android TV 7 ve üzeri',
   platformChromebook: 'Chromebook',
   platformChromebookDetail: 'Çocuk cihazı · yalnızca Chrome web filtresi',
+  teaserCta: 'Premium’u gör',
+  teaserProofOtherApps: 'Diğer uygulamalar: {{count}} · {{minutes}}',
+  teaserProofOtherMinutes: 'Diğer uygulamalar: {{minutes}}',
+  teaserProofBlocked: 'Bu hafta engellenen: {{count}}',
+  teaserTopApps: 'Premium her uygulamayı dakika dakika adlandırır ve 30 gün saklar.',
+  teaserWebHistory:
+    'Premium hangi sitelerin engellendiğini ve çocuğunuzun ne aradığını gösterir.',
+  teaserVideoHistory: 'Premium izlediği her YouTube videosunu ve Short’u saklar.',
+  teaserLocationTrail:
+    'Premium nerede olduğunu saklar; eve ve okula varınca ya da ayrılınca haber verir.',
+  teaserActivityWindow: 'Ücretsiz plan bugünü gösterir. Premium 30 günü saklar.',
+  teaserChildReport: 'Premium her çocuk için ayrı rapor ekler, her hafta da yenisini.',
+  teaserMessageAlerts:
+    'Premium bir mesaj dikkatinizi gerektirdiğinde haber verir. Yalnızca Android.',
+  teaserLiveNote: 'Ücretsiz plan 30 dakikada bir güncellenir. Premium canlıdır.',
 } as const;

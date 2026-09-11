@@ -80,4 +80,13 @@ export const location = {
   placeTotalsNote:
     'Dos últimos {{count}} dias de histórico. Só contam os lugares salvos aqui.',
   placeTotalsNote_one: 'Do último dia de histórico. Só contam os lugares salvos aqui.',
+  wizardStepAllow:
+    'Selecione Permitir e depois Sempre para que as atualizações continuem em segundo plano.',
+  requestNoFix:
+    'Este dispositivo não conseguiu obter uma posição. A localização pode ainda não estar permitida nele.',
+  requestSharingOff: 'A partilha de localização está desativada neste dispositivo.',
+  requestUnsupported: 'Este dispositivo não pode informar a posição.',
+  cardSharingOff: 'O compartilhamento de localização está desativado',
+  cardPermissionOff: 'A localização não é permitida neste dispositivo',
+  cardNotUpdating: 'A localização parou de atualizar',
 } as const;

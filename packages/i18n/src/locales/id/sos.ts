@@ -22,8 +22,7 @@ export const sos = {
   toastSent:
     'SOS terkirim. Tetaplah di tempat yang aman jika bisa — orang tuamu sudah diberi tahu.',
   escapeGrantedTitle: 'SOS terkirim',
-  escapeGrantedBody:
-    'Orang tuamu sudah diberi tahu. Perangkat ini terbuka selama 15 menit, lalu akan terkunci lagi.',
+  escapeGrantedBody: 'Orang tuamu sudah diberi tahu. Perangkat ini tetap terkunci.',
   toastSentWithoutPhoto:
     'SOS terkirim, tapi tanpa foto. Izinkan akses Kamera di Pengaturan dan coba lagi jika bisa.',
   toastSendFailed:

@@ -53,6 +53,19 @@ export const activities = {
   sosEscapeRepeatTitle: 'Desbloqueio de emergência ({{count}} vezes hoje)',
   sosEscapeRepeatBody:
     'O SOS desbloqueou este dispositivo por {{minutes}} minutos. Já são {{count}} vezes hoje.',
+  sosEscapeLimitedTitle: 'Apps de emergência abertos',
+  sosEscapeLimitedBody:
+    'O SOS abriu telefone, mapas e mensagens neste dispositivo por {{minutes}} minutos. Todo o resto continuou bloqueado.',
+  sosEscapeLimitedRepeatTitle: 'Apps de emergência abertos ({{count}} vezes hoje)',
+  sosEscapeLimitedRepeatBody:
+    'O SOS abriu telefone, mapas e mensagens neste dispositivo por {{minutes}} minutos. Já são {{count}} vezes hoje.',
+  sosPressLockHeldTitle: 'SOS pressionado com o dispositivo bloqueado',
+  sosPressLockHeldBody:
+    'O SOS foi pressionado neste dispositivo. O alerta foi enviado e o dispositivo continuou bloqueado.',
+  sosPressLockHeldRepeatTitle:
+    'SOS pressionado com o dispositivo bloqueado ({{count}} vezes hoje)',
+  sosPressLockHeldRepeatBody:
+    'O SOS foi pressionado neste dispositivo e ele continuou bloqueado. Já são {{count}} vezes hoje.',
   appBlockedTitle: '{{appName}}',
   appBlockedBody: 'Um app bloqueado foi aberto e o KidGate o fechou.',
   appInstalledTitle: 'Aplicativo instalado',
@@ -72,16 +85,6 @@ export const activities = {
   messageCheckedBody:
     'Uma palavra monitorada apareceu em {{appName}} e se mostrou inofensiva no contexto.',
   activityTypeMessageChecked: 'Verificado',
-  callAlertTitle: 'Chamada com um número fora dos contactos',
-  callAlertBodyOutgoing:
-    'O seu filho ligou para um número que não está nos contactos, às {{localTime}}.',
-  callAlertBodyOutgoingTimed:
-    'O seu filho ligou para um número que não está nos contactos às {{localTime}}, durante {{durationMinutes}} min.',
-  callAlertBodyIncoming:
-    'Um número que não está nos contactos do seu filho ligou-lhe às {{localTime}}.',
-  callAlertBodyIncomingTimed:
-    'Um número que não está nos contactos do seu filho ligou-lhe às {{localTime}}, durante {{durationMinutes}} min.',
-  activityTypeCallAlert: 'Alerta de chamada',
   appRemovedTitle: 'Aplicativo removido',
   appRemovedBody: 'O aplicativo {{appName}} foi removido do dispositivo da criança.',
   extensionInstalledTitle: 'Extensão do navegador adicionada',

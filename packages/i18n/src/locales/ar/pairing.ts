@@ -49,7 +49,7 @@ export const pairing = {
   unableToCreateCode: 'تعذر إنشاء رمز. يرجى المحاولة مرة أخرى.',
   inviteParentTitle: 'إضافة جهاز والد آخر',
   inviteParentInstructions:
-    'على الجهاز الآخر، افتح KidGate ← العائلة ← + ← الانضمام إلى عائلة، ثم امسح رمز QR هذا أو أدخل الرمز. وافق على الطلب هنا لربط ذلك الوالد.',
+    'على الجهاز الآخر، افتح KidGate ← العائلة ← + ← الانضمام إلى عائلة، ثم امسح رمز QR هذا أو أدخل الرمز خلال 15 دقيقة. وافق على الطلب هنا لربط ذلك الوالد.',
   inviteCodeLabel: 'أو شارك هذا الرمز',
   joinFamilyTitle: 'الانضمام إلى عائلة',
   joinFamilyScanInstructions:

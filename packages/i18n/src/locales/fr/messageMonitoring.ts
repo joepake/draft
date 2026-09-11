@@ -130,4 +130,6 @@ export const messageMonitoring = {
   languagesHint:
     'Les langues dans lesquelles cet appareil recherche des mots inquiétants. Choisissez-en jusqu’à {{max}}.',
   languagesDefaultHint: 'Par défaut, la langue de l’appareil.',
+  setupStepFindKidGate:
+    'Trouvez KidGate dans la liste d’accès aux notifications et activez-le. KidGate peut y figurer deux fois : l’autre ligne correspond aux alertes d’appels nocturnes. Si cette étape n’est toujours pas validée à votre retour, activez l’autre ligne.',
 } as const;

@@ -50,9 +50,25 @@ export default function ParentsCard({ members, actions, run, busy }) {
     }
   }, [owner]);
 
+  /*
+   * Polled, not loaded once. The invitee redeems the code minutes after the
+   * owner shares it, and a single mount-time read meant the request only
+   * appeared if the owner happened to reload — the same gap the phone had
+   * before `redeemPairingCode` started pushing (`functions/http/pairing.js`).
+   * Eight seconds matches `FamilyDetailScreen`, and a hidden tab polls
+   * nothing: the owner is not looking, and the request survives until they
+   * come back or it expires.
+   */
   useEffect(() => {
+    if (!owner) return undefined;
     refreshPending();
-  }, [refreshPending]);
+    const interval = setInterval(() => {
+      if (document.visibilityState === 'visible') {
+        refreshPending();
+      }
+    }, 8_000);
+    return () => clearInterval(interval);
+  }, [owner, refreshPending]);
 
   if (!owner) {
     return null;

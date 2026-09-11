@@ -83,4 +83,13 @@ export const location = {
     'Aus den letzten {{count}} Tagen des Verlaufs. Gezählt werden nur hier gespeicherte Orte.',
   placeTotalsNote_one:
     'Aus dem letzten Tag des Verlaufs. Gezählt werden nur hier gespeicherte Orte.',
+  wizardStepAllow:
+    'Wähle „Erlauben“ und dann „Immer“, damit Updates im Hintergrund weiterlaufen.',
+  requestNoFix:
+    'Dieses Gerät konnte keine Position ermitteln. Der Standort ist dort möglicherweise noch nicht erlaubt.',
+  requestSharingOff: 'Die Standortfreigabe ist für dieses Gerät ausgeschaltet.',
+  requestUnsupported: 'Dieses Gerät kann keine Position melden.',
+  cardSharingOff: 'Standortfreigabe ist aus',
+  cardPermissionOff: 'Standort ist auf diesem Gerät nicht erlaubt',
+  cardNotUpdating: 'Standort wird nicht mehr aktualisiert',
 } as const;

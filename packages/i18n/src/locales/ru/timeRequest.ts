@@ -64,6 +64,13 @@ export const timeRequest = {
     'Дневной лимит для {{deviceName}} увеличен на {{minutes}} минуты.',
   timeRequestDeniedDescription:
     'Запрос на {{minutes}} минут для {{deviceName}} отклонён.',
+  bonusGranted: 'Добавлены дополнительные минуты',
+  bonusGrantedDescription:
+    '{{deviceName}} получил {{minutes}} дополнительных минут на сегодня.',
+  bonusGrantedDescription_one:
+    '{{deviceName}} получил {{minutes}} дополнительную минуту на сегодня.',
+  bonusGrantedDescription_few:
+    '{{deviceName}} получил {{minutes}} дополнительные минуты на сегодня.',
   timeRequestDeniedDescription_one:
     'Запрос на {{minutes}} минуту для {{deviceName}} отклонён.',
   timeRequestDeniedDescription_few:

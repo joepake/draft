@@ -97,8 +97,10 @@ export const settings = {
     '이 부모 세션을 종료하고 부모/자녀 선택 화면으로 돌아갑니다. 기기를 관리하려면 다시 로그인하세요. 계정, 가족, 자녀 기기는 변경되지 않습니다.',
   removeParentDeviceAlertTitle: '부모 기기를 삭제하시겠습니까?',
   removeParentDeviceAlertMessage:
-    '{{deviceName}}은(는) 더 이상 알림을 받지 않습니다. 해당 부모는 다시 로그인하면 재연결할 수 있습니다.',
+    '{{deviceName}}이(가) 이 계정에서 로그아웃되고 알림을 더 이상 받지 않습니다. 기기를 가진 사람은 비밀번호로 다시 로그인할 수 있습니다.',
   toastParentDeviceRemoved: '{{deviceName}}이(가) 삭제되었습니다.',
+  signedOutByAnotherDevice:
+    '이 기기는 다른 기기에서 부모 계정으로부터 로그아웃되었습니다.',
   deleteAccountTitle: '계정 삭제',
   deleteAccountSubtitleDefault: '계정과 모든 데이터를 영구적으로 삭제합니다',
   deleteAccountAlertTitle: '계정을 영구적으로 삭제하시겠습니까?',

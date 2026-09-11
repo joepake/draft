@@ -21,8 +21,7 @@ export const sos = {
   alertMessage: '{{childName}} yardıma ihtiyaç duyuyor — SOS gönderildi',
   toastSent: 'SOS gönderildi. Mümkünse güvenli bir yerde kal — ailen bilgilendirildi.',
   escapeGrantedTitle: 'SOS gönderildi',
-  escapeGrantedBody:
-    'Ailene haber verildi. Bu cihaz 15 dakika boyunca açık kalacak, sonra tekrar kilitlenecek.',
+  escapeGrantedBody: 'Ailene haber verildi. Bu cihaz kilitli kalacak.',
   toastSentWithoutPhoto:
     'SOS gönderildi, ancak fotoğraf olmadan. Mümkünse Ayarlar’dan Kamera’ya izin verip tekrar dene.',
   toastSendFailed: 'SOS gönderilemedi. Tekrar dene veya güvendiğin birini ara.',

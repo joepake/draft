@@ -930,6 +930,25 @@ label[for] {
 }
 
 /*
+ * The paywall, said on the card. Same materials as `.feature-icon` so it reads
+ * as part of the card rather than a sticker on it; the card is already
+ * `position: relative`.
+ */
+.feature-tag {
+  position: absolute;
+  top: 1.1rem;
+  right: 1.1rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: color-mix(in srgb, var(--brand) 70%, var(--ink));
+  background: var(--brand-soft);
+  border: 1px solid color-mix(in srgb, var(--brand) 24%, transparent);
+  border-radius: 999px;
+  padding: 0.2rem 0.6rem;
+}
+
+/*
  * 1.15rem, and the jump from 1.05 is the fix for a flat page rather than a
  * preference.
  *

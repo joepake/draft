@@ -15,8 +15,7 @@ export const permissions = {
   notificationsOpenSettings:
     'Apri le Impostazioni del dispositivo per consentire le notifiche di KidGate.',
   backgroundRefreshLabel: 'Aggiornamento in background',
-  backgroundRefreshHint:
-    'Attiva prima Impostazioni → Generali → Aggiornamento app in background, poi abilitalo per KidGate. Se l’interruttore è disattivato in grigio, l’impostazione generale di Aggiornamento app in background è ancora disattivata.',
+  backgroundRefreshHint: 'Consente a KidGate di continuare a funzionare in background.',
   backgroundRefreshLowPowerHint:
     'La Modalità risparmio energetico è attiva — iOS disattiva l’Aggiornamento app in background. Disattiva la Modalità risparmio energetico, quindi abilita l’Aggiornamento app in background.',
   overlayLabel: 'Mostra sopra le altre app',
@@ -24,20 +23,19 @@ export const permissions = {
     'Consenti a KidGate di mostrare una schermata di blocco sopra altre app quando i limiti sono attivi.',
   batteryOptimizationLabel: 'Batteria senza limitazioni',
   batteryOptimizationHint:
-    'Seleziona Consenti nella richiesta di sistema in modo che KidGate possa funzionare in background. Se non compare alcuna richiesta: Informazioni app → Batteria → Senza limitazioni.',
+    'Impedisce ad Android di mettere in pausa KidGate in background.',
   exactAlarmLabel: 'Sveglie e promemoria',
   exactAlarmHint:
     'Consenti Sveglie e promemoria così gli Orari di blocco iniziano e finiscono in orario.',
   accessibilityLabel: 'Assistente di blocco Accessibilità',
-  accessibilityHint:
-    'Attiva KidGate in Accessibilità → App installate/scaricate. Questo è necessario affinché il blocco resti sopra le altre app.',
+  accessibilityHint: 'Mantiene il blocco di KidGate sopra le altre app.',
   oemSectionDescription:
     'I dispositivi {{brand}} spesso mettono in pausa le app in background. Completa questi passaggi affinché il blocco e gli Orari di blocco continuino a funzionare.',
   oemAutostartLabel: 'Consenti l’avvio automatico',
   oemAutostartHintXiaomi:
     'In Avvio automatico, attiva KidGate in modo che la protezione riparta dopo un riavvio.',
   oemAutostartHintSamsung:
-    'In Cura del dispositivo / Batteria, consenti a KidGate di restare attivo in background.',
+    'In Batteria → Limiti di utilizzo in background → App mai in sospensione, aggiungi KidGate. Se KidGate non è nell’elenco è già consentito e questo passaggio è completato.',
   oemAutostartHintOppo: 'In App di avvio / Avvio automatico, consenti KidGate.',
   oemAutostartHintVivo:
     'In Avvio automatico / Alta potenza in background, consenti KidGate.',
@@ -59,4 +57,16 @@ export const permissions = {
     'Impedisce di disinstallare questa app senza il PIN genitore. Android mostra la sua schermata di conferma.',
   notificationsWizardBody:
     'Consenti le notifiche così questo dispositivo riceve subito approvazioni di tempo e promemoria.',
+  backgroundRefreshStepOpen: 'Apri la pagina di KidGate in Impostazioni.',
+  backgroundRefreshStepTurnOn: 'Attiva Aggiornamento app in background per KidGate.',
+  backgroundRefreshStepGeneral:
+    'Se l’interruttore è in grigio, apri Impostazioni, poi Generali, poi Aggiornamento app in background e attivalo.',
+  batteryStepAllow: 'Seleziona Consenti nella richiesta di Android.',
+  batteryStepAppInfo:
+    'Se non compare alcuna richiesta, apri Informazioni app, poi Batteria, poi scegli Senza limitazioni.',
+  notificationsStepAllow: 'Seleziona Consenti nella richiesta.',
+  exactAlarmStepTurnOn: 'Attiva Sveglie e promemoria per KidGate.',
+  cameraStepTurnOn: 'Attiva Fotocamera per KidGate.',
+  uninstallProtectionStepConfirm:
+    'Seleziona Attiva nella schermata di conferma di Android.',
 } as const;

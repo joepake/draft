@@ -70,6 +70,23 @@ export const USAGE_TIMELINE_UNKNOWN = '-';
 export const USAGE_TIMELINE_IDLE = '.';
 export const USAGE_TIMELINE_USED = '#';
 
+/**
+ * Which apps were in front during each hour of a day — hour `"0"`…`"23"` on
+ * the child's clock, most foreground time first, at most
+ * `USAGE_HOURLY_APPS_MAX_PER_HOUR` per hour. Hours with nothing in front are
+ * absent, never an empty list.
+ *
+ * Packages, not labels: `UsageDay.topApps` on the same document carries the
+ * label of anything that earned a minute, and a reader joins the two.
+ */
+export type UsageHourlyApps = Record<string, string[]>;
+
+/**
+ * Hand-copied into `functions/lib/usageTimeline.js` and
+ * `KidGateUsageTimeline.kt`, pinned by `usageTimelineServerParity.test.ts`.
+ */
+export const USAGE_HOURLY_APPS_MAX_PER_HOUR = 6;
+
 export type UsageDay = {
   id: string;
   date: string;
@@ -109,5 +126,18 @@ export type UsageDay = {
    * has no way to make.
    */
   idleMinutes?: number;
+  /**
+   * What was in front, hour by hour — `UsageHourlyApps`.
+   *
+   * `timeline` says *when* and nothing about *what*; `topApps` says what for
+   * the whole day and nothing about when. This is the join, and it exists so a
+   * push about the small hours can name the app ("Zalo at 02:40") rather than
+   * the fact ("in use for 6 minutes"): `scheduled/anomalyAlerts.js`.
+   *
+   * Absent on a device that cannot say and on every day written before the
+   * field existed. The Android agent writes it; the desktop agent's gap is in
+   * `docs/BACKLOG.md`.
+   */
+  hourlyApps?: UsageHourlyApps;
   updatedAt?: string;
 };

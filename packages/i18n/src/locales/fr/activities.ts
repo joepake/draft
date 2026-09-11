@@ -53,6 +53,20 @@ export const activities = {
   sosEscapeRepeatTitle: 'Déverrouillage d’urgence ({{count}} fois aujourd’hui)',
   sosEscapeRepeatBody:
     'Le SOS a déverrouillé cet appareil pendant {{minutes}} minutes. Cela fait {{count}} fois aujourd’hui.',
+  sosEscapeLimitedTitle: 'Applications d’urgence ouvertes',
+  sosEscapeLimitedBody:
+    'Le SOS a ouvert le téléphone, les cartes et les messages sur cet appareil pendant {{minutes}} minutes. Tout le reste est resté verrouillé.',
+  sosEscapeLimitedRepeatTitle:
+    'Applications d’urgence ouvertes ({{count}} fois aujourd’hui)',
+  sosEscapeLimitedRepeatBody:
+    'Le SOS a ouvert le téléphone, les cartes et les messages sur cet appareil pendant {{minutes}} minutes. Cela fait {{count}} fois aujourd’hui.',
+  sosPressLockHeldTitle: 'SOS appuyé sur un appareil verrouillé',
+  sosPressLockHeldBody:
+    'Le SOS a été appuyé sur cet appareil. L’alerte a été envoyée et l’appareil est resté verrouillé.',
+  sosPressLockHeldRepeatTitle:
+    'SOS appuyé sur un appareil verrouillé ({{count}} fois aujourd’hui)',
+  sosPressLockHeldRepeatBody:
+    'Le SOS a été appuyé sur cet appareil et il est resté verrouillé. Cela fait {{count}} fois aujourd’hui.',
   appBlockedTitle: '{{appName}}',
   appBlockedBody: 'Une application bloquée a été ouverte et KidGate l’a fermée.',
   appInstalledTitle: 'Application installée',
@@ -73,16 +87,6 @@ export const activities = {
   messageCheckedBody:
     'Un mot surveillé est apparu dans {{appName}} et s’est révélé inoffensif dans son contexte.',
   activityTypeMessageChecked: 'Vérifié',
-  callAlertTitle: 'Appel avec un numéro absent des contacts',
-  callAlertBodyOutgoing:
-    'Votre enfant a appelé un numéro absent de ses contacts, à {{localTime}}.',
-  callAlertBodyOutgoingTimed:
-    'Votre enfant a appelé un numéro absent de ses contacts à {{localTime}}, pendant {{durationMinutes}} min.',
-  callAlertBodyIncoming:
-    'Un numéro absent des contacts de votre enfant l’a appelé à {{localTime}}.',
-  callAlertBodyIncomingTimed:
-    'Un numéro absent des contacts de votre enfant l’a appelé à {{localTime}}, pendant {{durationMinutes}} min.',
-  activityTypeCallAlert: 'Alerte d’appel',
   appRemovedTitle: 'Application désinstallée',
   appRemovedBody:
     'L’application {{appName}} a été désinstallée de l’appareil de l’enfant.',

@@ -19,6 +19,15 @@ export const family = {
   quickProtectTitle: 'Lindungi {{childName}} sekarang?',
   quickProtectBody:
     'Aktifkan serangkaian perlindungan awal. Anda bisa menyempurnakan semuanya nanti di profil anak.',
+  quickProtectSourceLabel: 'Mulai dari',
+  quickProtectAllOnBody:
+    '{{childName}} sudah mengaktifkan perlindungan ini. Pilih anak lain untuk menyalin jam, batas, dan daftar situsnya.',
+  quickProtectReplaces: 'Menggantikan pengaturan {{childName}} saat ini.',
+  quickProtectWebFilterCopyHint:
+    'Menyalin kategori {{childName}}, plus {{allowed}} situs diizinkan dan {{blocked}} ditolak.',
+  quickProtectSourceDefault: 'Default KidGate',
+  quickProtectSourceBody:
+    'Menyalin aturan {{childName}}, termasuk situs yang diizinkan dan diblokir.',
   quickProtectBedtime: 'Jam Diblokir waktu tidur',
   quickProtectBedtimeHint:
     'Memblokir penggunaan perangkat sepanjang malam, pukul 22.00 sampai 07.00.',
@@ -26,7 +35,8 @@ export const family = {
   quickProtectDailyLimitHint:
     '{{minutes}} menit sehari, dihitung bersama di semua perangkatnya.',
   quickProtectWebFilter: 'Filter web',
-  quickProtectWebFilterHint: 'Memblokir konten dewasa dan kategori berisiko lainnya.',
+  quickProtectWebFilterHint:
+    'Memblokir konten tidak pantas serta mengaktifkan penelusuran aman dan pembatasan YouTube.',
   quickProtectWebFilterPremium: 'Fitur Premium — termasuk dalam paket berlangganan.',
   quickProtectApply: 'Aktifkan perlindungan',
   quickProtectSkip: 'Nanti saja',
@@ -109,6 +119,7 @@ export const family = {
   chipHealthWarnCount_one: '{{count}} perlu disiapkan',
 
   chipHealthInactiveCount: '{{count}} tidak aktif lebih dari 24 jam',
+  chipLocationBlocked: 'Tanpa lokasi',
 
   chipBlockedCount: '{{count}} diblokir',
 

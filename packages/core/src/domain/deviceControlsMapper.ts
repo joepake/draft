@@ -7,10 +7,13 @@ import {
   type ScheduleWindow,
 } from '@kidgate/schema/deviceControls';
 import type {
+  DeviceLocationRequestResult,
+  DeviceLocationRequestStatus,
   DeviceOtaRequestResult,
   DeviceOtaRequestStatus,
   DeviceProtectionCounters,
   DeviceProtectionStatus,
+  DeviceTopAppsOther,
   DeviceWeekCounters,
 } from '@kidgate/schema/device';
 import type { UsageAppBreakdown } from '@kidgate/schema/usageDay';
@@ -232,18 +235,6 @@ export function parseDeviceControls(data?: Record<string, unknown>): DeviceContr
     messageMonitoringOutgoingEnabled: Boolean(
       controls.messageMonitoringOutgoingEnabled,
     ),
-    // Off unless the parent set it, like every other monitoring switch.
-    callAlertsEnabled: controls.callAlertsEnabled === true,
-    // Falls back to the night default rather than to an empty list: an empty
-    // list means "the feature can never fire", which is the right answer for a
-    // parent who cleared their windows and the wrong one for a device whose
-    // document predates the field.
-    callAlertWindows: ((): DeviceControls['callAlertWindows'] => {
-      const windows = parseScheduleWindows(controls.callAlertWindows);
-      return controls.callAlertWindows === undefined
-        ? DEFAULT_DEVICE_CONTROLS.callAlertWindows
-        : windows;
-    })(),
     // Off unless the parent set it: absent must not switch search reporting on
     // for every device that predates the field.
     searchMonitoringEnabled: controls.searchMonitoringEnabled === true,
@@ -527,6 +518,41 @@ export function parseTopAppsToday(
 }
 
 /**
+ * The size of what those three leave out, as the server wrote it.
+ *
+ * Null for anything unusable, and — like `parseWeekCounters` beside it — it
+ * **refuses to default**. A zero here is the claim "those three were the whole
+ * day", which decides whether a free family is shown a tail row at all; a
+ * device that has not reported cannot make that claim, and inventing it would
+ * either hide a remainder that exists or offer one that does not.
+ *
+ * `apps` stays absent when the server omitted it. That happens when the ranking
+ * arrived capped and the true count of the remainder is unknowable — see
+ * `DeviceTopAppsOther`. Absent means "cannot say how many", so a screen states
+ * the minutes alone rather than guessing a number.
+ */
+export function parseTopAppsOtherToday(
+  data?: Record<string, unknown>,
+): DeviceTopAppsOther | null {
+  const raw = data?.topAppsOtherToday as Record<string, unknown> | undefined;
+  const count = (value: unknown) =>
+    typeof value === 'number' && Number.isFinite(value) && value >= 0
+      ? Math.floor(value)
+      : null;
+
+  const minutes = count(raw?.minutes);
+  if (minutes === null) {
+    return null;
+  }
+
+  const apps = count(raw?.apps);
+  return {
+    minutes,
+    ...(apps === null ? {} : { apps }),
+  };
+}
+
+/**
  * What the device answered a parent's "Update now" with, or null.
  *
  * Null for a partial row rather than a half-filled object: the three fields are
@@ -536,6 +562,45 @@ export function parseTopAppsToday(
  * reason: this union grows on the agent before it grows on a console, and an
  * older parent build must read "no answer yet", never a raw key.
  */
+/**
+ * `Device.locationRequestResult`, or null for anything unreadable.
+ *
+ * Same validation as `parseOtaRequestResult` below and the same posture: a
+ * malformed answer is no answer. An unknown `status` is rejected rather than
+ * passed through, because the parent's sentence is chosen by that string and a
+ * value this build has never heard of has no sentence.
+ */
+export function parseLocationRequestResult(
+  data?: Record<string, unknown>,
+): DeviceLocationRequestResult | null {
+  const raw = data?.locationRequestResult as Record<string, unknown> | undefined;
+  if (!raw) {
+    return null;
+  }
+
+  const requestId = typeof raw.requestId === 'string' ? raw.requestId.trim() : '';
+  const status = raw.status as DeviceLocationRequestStatus;
+  const atMs = raw.atMs;
+
+  if (
+    !requestId ||
+    !LOCATION_REQUEST_STATUSES.includes(status) ||
+    typeof atMs !== 'number' ||
+    !Number.isFinite(atMs)
+  ) {
+    return null;
+  }
+
+  return { requestId, status, atMs };
+}
+
+const LOCATION_REQUEST_STATUSES: readonly DeviceLocationRequestStatus[] = [
+  'answered',
+  'noFix',
+  'sharingOff',
+  'unsupported',
+];
+
 export function parseOtaRequestResult(
   data?: Record<string, unknown>,
 ): DeviceOtaRequestResult | null {

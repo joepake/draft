@@ -47,6 +47,19 @@ export const activities = {
   sosEscapeRepeatTitle: 'Экстренная разблокировка ({{count}} раз сегодня)',
   sosEscapeRepeatBody:
     'SOS разблокировал это устройство на {{minutes}} минут. Это {{count}} раз за сегодня.',
+  sosEscapeLimitedTitle: 'Открыты экстренные приложения',
+  sosEscapeLimitedBody:
+    'SOS открыл на этом устройстве телефон, карты и сообщения на {{minutes}} минут. Всё остальное осталось заблокированным.',
+  sosEscapeLimitedRepeatTitle: 'Открыты экстренные приложения ({{count}} раз сегодня)',
+  sosEscapeLimitedRepeatBody:
+    'SOS открыл на этом устройстве телефон, карты и сообщения на {{minutes}} минут. Это {{count}} раз за сегодня.',
+  sosPressLockHeldTitle: 'SOS нажат на заблокированном устройстве',
+  sosPressLockHeldBody:
+    'На этом устройстве нажали SOS. Оповещение отправлено, устройство осталось заблокированным.',
+  sosPressLockHeldRepeatTitle:
+    'SOS нажат на заблокированном устройстве ({{count}} раз сегодня)',
+  sosPressLockHeldRepeatBody:
+    'На этом устройстве нажали SOS, и оно осталось заблокированным. Это {{count}} раз за сегодня.',
   appBlockedTitle: '{{appName}}',
   appBlockedBody: 'Заблокированное приложение было открыто, и KidGate закрыл его.',
   appInstalledTitle: 'Приложение установлено',
@@ -65,16 +78,6 @@ export const activities = {
   messageCheckedBody:
     'В {{appName}} встретилось отслеживаемое слово, но в контексте оно оказалось безобидным.',
   activityTypeMessageChecked: 'Проверено',
-  callAlertTitle: 'Звонок с номера, которого нет в контактах',
-  callAlertBodyOutgoing:
-    'Ваш ребёнок позвонил на номер, которого нет в его контактах, в {{localTime}}.',
-  callAlertBodyOutgoingTimed:
-    'Ваш ребёнок позвонил на номер, которого нет в его контактах, в {{localTime}} — {{durationMinutes}} мин.',
-  callAlertBodyIncoming:
-    'Номер, которого нет в контактах вашего ребёнка, позвонил ему в {{localTime}}.',
-  callAlertBodyIncomingTimed:
-    'Номер, которого нет в контактах вашего ребёнка, позвонил ему в {{localTime}} — {{durationMinutes}} мин.',
-  activityTypeCallAlert: 'Оповещение о звонке',
   appRemovedTitle: 'Приложение удалено',
   appRemovedBody: 'Приложение {{appName}} удалено с устройства ребёнка.',
   extensionInstalledTitle: 'Расширение браузера добавлено',

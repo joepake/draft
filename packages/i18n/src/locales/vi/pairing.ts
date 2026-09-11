@@ -49,7 +49,7 @@ export const pairing = {
   unableToCreateCode: 'Không thể tạo mã. Vui lòng thử lại.',
   inviteParentTitle: 'Thêm thiết bị phụ huynh khác',
   inviteParentInstructions:
-    'Trên thiết bị còn lại, mở KidGate → Gia đình → + → Tham gia gia đình, sau đó quét mã QR hoặc nhập mã này. Hãy duyệt yêu cầu tại đây để kết nối phụ huynh đó.',
+    'Trên thiết bị còn lại, mở KidGate → Gia đình → + → Tham gia gia đình, sau đó quét mã QR hoặc nhập mã này trong vòng 15 phút. Hãy duyệt yêu cầu tại đây để kết nối phụ huynh đó.',
   inviteCodeLabel: 'Hoặc chia sẻ mã này',
   joinFamilyTitle: 'Tham gia gia đình',
   joinFamilyScanInstructions: 'Quét mã QR mời từ một phụ huynh đã thuộc gia đình đó.',

@@ -31,7 +31,16 @@ export const isFirebaseConfigured = Boolean(
   config.apiKey && config.authDomain && config.projectId && config.appId,
 );
 
-/** Base URL of the Cloud Functions region, used for the control endpoints. */
+/**
+ * Base URL of the Cloud Functions region, used for the control endpoints.
+ *
+ * The **dev server** rewrites this to its own same-origin proxy path — the
+ * substitution is in `vite.config.js`, on `command === 'serve'` alone, and that
+ * file carries why. Nothing here branches on the environment: `import.meta.env.DEV`
+ * would have been the obvious test and is the wrong one, because every build script
+ * in `package.json` passes `--mode prod` or `--mode dev` and neither is Vite's
+ * `production`.
+ */
 export const functionsBaseUrl = import.meta.env.VITE_FIREBASE_FUNCTIONS_URL || '';
 
 let app = null;

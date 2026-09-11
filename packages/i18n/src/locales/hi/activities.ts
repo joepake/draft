@@ -53,6 +53,18 @@ export const activities = {
   sosEscapeRepeatTitle: 'आपातकालीन अनलॉक (आज {{count}} बार)',
   sosEscapeRepeatBody:
     'SOS ने इस डिवाइस को {{minutes}} मिनट के लिए अनलॉक किया। आज यह {{count}} बार हुआ है।',
+  sosEscapeLimitedTitle: 'आपातकालीन ऐप खोले गए',
+  sosEscapeLimitedBody:
+    'SOS ने इस डिवाइस पर {{minutes}} मिनट के लिए फ़ोन, मैप और संदेश खोले। बाकी सब लॉक ही रहा।',
+  sosEscapeLimitedRepeatTitle: 'आपातकालीन ऐप खोले गए (आज {{count}} बार)',
+  sosEscapeLimitedRepeatBody:
+    'SOS ने इस डिवाइस पर {{minutes}} मिनट के लिए फ़ोन, मैप और संदेश खोले। आज यह {{count}} बार हुआ है।',
+  sosPressLockHeldTitle: 'लॉक होने पर SOS दबाया गया',
+  sosPressLockHeldBody:
+    'इस डिवाइस पर SOS दबाया गया। अलर्ट भेज दिया गया और डिवाइस लॉक ही रहा।',
+  sosPressLockHeldRepeatTitle: 'लॉक होने पर SOS दबाया गया (आज {{count}} बार)',
+  sosPressLockHeldRepeatBody:
+    'इस डिवाइस पर SOS दबाया गया और डिवाइस लॉक ही रहा। आज यह {{count}} बार हुआ है।',
   appBlockedTitle: '{{appName}}',
   appBlockedBody: 'एक ब्लॉक किया गया ऐप खोला गया और KidGate ने उसे बंद कर दिया।',
   appInstalledTitle: 'ऐप इंस्टॉल किया गया',
@@ -71,16 +83,6 @@ export const activities = {
   messageCheckedBody:
     '{{appName}} में एक निगरानी वाला शब्द दिखा जो संदर्भ में हानिरहित निकला।',
   activityTypeMessageChecked: 'जाँचा गया',
-  callAlertTitle: 'संपर्कों में न मौजूद नंबर से कॉल',
-  callAlertBodyOutgoing:
-    'आपके बच्चे ने {{localTime}} बजे ऐसे नंबर पर कॉल किया जो उनके संपर्कों में नहीं है।',
-  callAlertBodyOutgoingTimed:
-    'आपके बच्चे ने {{localTime}} बजे ऐसे नंबर पर कॉल किया जो उनके संपर्कों में नहीं है — {{durationMinutes}} मिनट।',
-  callAlertBodyIncoming:
-    'आपके बच्चे के संपर्कों में न मौजूद एक नंबर से {{localTime}} बजे कॉल आई।',
-  callAlertBodyIncomingTimed:
-    'आपके बच्चे के संपर्कों में न मौजूद एक नंबर से {{localTime}} बजे कॉल आई — {{durationMinutes}} मिनट।',
-  activityTypeCallAlert: 'कॉल अलर्ट',
   appRemovedTitle: 'ऐप हटाया गया',
   appRemovedBody: 'बच्चे के डिवाइस से ऐप {{appName}} हटाया गया है।',
   extensionInstalledTitle: 'ब्राउज़र एक्सटेंशन जोड़ा गया',

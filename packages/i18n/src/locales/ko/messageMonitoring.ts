@@ -128,4 +128,6 @@ export const messageMonitoring = {
   languagesHint:
     '이 기기가 우려되는 단어를 찾을 언어입니다. 최대 {{max}}개까지 선택할 수 있습니다.',
   languagesDefaultHint: '기본값은 기기의 언어입니다.',
+  setupStepFindKidGate:
+    '알림 접근 목록에서 KidGate를 찾아 켜세요. KidGate가 두 번 표시될 수 있습니다. 다른 하나는 야간 통화 알림용이므로, 돌아온 뒤에도 이 단계가 완료되지 않으면 다른 하나를 켜세요.',
 } as const;

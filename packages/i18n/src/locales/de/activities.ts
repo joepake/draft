@@ -54,6 +54,18 @@ export const activities = {
   sosEscapeRepeatTitle: 'Notfall-Entsperrung ({{count}}× heute)',
   sosEscapeRepeatBody:
     'SOS hat dieses Gerät für {{minutes}} Minuten entsperrt. Das ist {{count}}× heute.',
+  sosEscapeLimitedTitle: 'Notfall-Apps geöffnet',
+  sosEscapeLimitedBody:
+    'SOS hat auf diesem Gerät für {{minutes}} Minuten Telefon, Karten und Nachrichten geöffnet. Alles andere blieb gesperrt.',
+  sosEscapeLimitedRepeatTitle: 'Notfall-Apps geöffnet ({{count}}× heute)',
+  sosEscapeLimitedRepeatBody:
+    'SOS hat auf diesem Gerät für {{minutes}} Minuten Telefon, Karten und Nachrichten geöffnet. Das ist {{count}}× heute.',
+  sosPressLockHeldTitle: 'SOS bei gesperrtem Gerät gedrückt',
+  sosPressLockHeldBody:
+    'Auf diesem Gerät wurde SOS gedrückt. Der Alarm wurde gesendet und das Gerät blieb gesperrt.',
+  sosPressLockHeldRepeatTitle: 'SOS bei gesperrtem Gerät gedrückt ({{count}}× heute)',
+  sosPressLockHeldRepeatBody:
+    'Auf diesem Gerät wurde SOS gedrückt und das Gerät blieb gesperrt. Das ist {{count}}× heute.',
   appBlockedTitle: '{{appName}}',
   appBlockedBody: 'Eine blockierte App wurde geöffnet und von KidGate geschlossen.',
   appInstalledTitle: 'App installiert',
@@ -73,16 +85,6 @@ export const activities = {
   messageCheckedBody:
     'Ein beobachtetes Wort tauchte in {{appName}} auf und war im Zusammenhang harmlos.',
   activityTypeMessageChecked: 'Geprüft',
-  callAlertTitle: 'Anruf mit einer Nummer außerhalb der Kontakte',
-  callAlertBodyOutgoing:
-    'Ihr Kind hat um {{localTime}} eine Nummer angerufen, die nicht in seinen Kontakten steht.',
-  callAlertBodyOutgoingTimed:
-    'Ihr Kind hat um {{localTime}} eine Nummer angerufen, die nicht in seinen Kontakten steht — {{durationMinutes}} Min.',
-  callAlertBodyIncoming:
-    'Eine Nummer, die nicht in den Kontakten Ihres Kindes steht, hat es um {{localTime}} angerufen.',
-  callAlertBodyIncomingTimed:
-    'Eine Nummer, die nicht in den Kontakten Ihres Kindes steht, hat es um {{localTime}} angerufen — {{durationMinutes}} Min.',
-  activityTypeCallAlert: 'Anruf-Hinweis',
   appRemovedTitle: 'App deinstalliert',
   appRemovedBody: 'Die App {{appName}} wurde vom Gerät des Kindes entfernt.',
   extensionInstalledTitle: 'Browser-Erweiterung hinzugefügt',

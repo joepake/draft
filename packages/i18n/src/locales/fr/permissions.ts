@@ -15,8 +15,7 @@ export const permissions = {
   notificationsOpenSettings:
     'Veuillez ouvrir les Réglages de l’appareil pour autoriser les notifications pour KidGate.',
   backgroundRefreshLabel: 'Actualisation en arrière-plan',
-  backgroundRefreshHint:
-    'Activez d’abord Réglages → Général → Actualisation en arrière-plan, puis activez-la pour KidGate. Si l’interrupteur est grisé, l’Actualisation en arrière-plan générale est encore désactivée.',
+  backgroundRefreshHint: 'Permet à KidGate de continuer à fonctionner en arrière-plan.',
   backgroundRefreshLowPowerHint:
     'Le mode Économie d’énergie est activé — iOS désactive l’Actualisation en arrière-plan. Veuillez désactiver le mode Économie d’énergie, puis activer l’Actualisation en arrière-plan.',
   overlayLabel: 'Superposition aux autres apps',
@@ -24,20 +23,19 @@ export const permissions = {
     'Autorisez KidGate à afficher un écran de verrouillage par-dessus les autres apps lorsque des limites s’appliquent.',
   batteryOptimizationLabel: 'Batterie sans restriction',
   batteryOptimizationHint:
-    'Sélectionnez Autoriser dans la fenêtre système afin que KidGate puisse s’exécuter en arrière-plan. Si aucune fenêtre n’apparaît : Infos sur l’app → Batterie → Sans restriction.',
+    'Empêche Android de mettre KidGate en pause en arrière-plan.',
   exactAlarmLabel: 'Alarmes et rappels',
   exactAlarmHint:
     'Autorise Alarmes et rappels pour que les Heures bloquées commencent et se terminent à l’heure.',
   accessibilityLabel: 'Assistant d’accessibilité pour le verrouillage',
-  accessibilityHint:
-    'Activez KidGate dans Accessibilité → Apps installées / téléchargées. Cela est nécessaire pour que le verrouillage reste actif par-dessus les autres apps.',
+  accessibilityHint: 'Maintient le verrouillage KidGate au-dessus des autres apps.',
   oemSectionDescription:
     'Les appareils {{brand}} suspendent souvent les apps en arrière-plan. Veuillez suivre ces étapes pour que le verrouillage et les Heures bloquées continuent de fonctionner.',
   oemAutostartLabel: 'Autoriser le démarrage automatique',
   oemAutostartHintXiaomi:
     'Dans Démarrage automatique, activez KidGate afin que la protection redémarre après un redémarrage de l’appareil.',
   oemAutostartHintSamsung:
-    'Dans Maintenance de l’appareil / Batterie, autorisez KidGate à rester actif en arrière-plan.',
+    'Dans Batterie → Limites d’utilisation en arrière-plan → Applications jamais en veille, ajoutez KidGate. Si KidGate n’apparaît pas dans la liste, il est déjà autorisé et cette étape est terminée.',
   oemAutostartHintOppo:
     'Dans Apps au démarrage / Lancement automatique, autorisez KidGate.',
   oemAutostartHintVivo:
@@ -60,4 +58,16 @@ export const permissions = {
     'Empêche la désinstallation de cette app sans le code PIN parent. Android affiche son propre écran de confirmation.',
   notificationsWizardBody:
     'Autorisez les notifications pour que cet appareil reçoive immédiatement les approbations de temps et les rappels.',
+  backgroundRefreshStepOpen: 'Ouvrez la page KidGate dans les Réglages.',
+  backgroundRefreshStepTurnOn: 'Activez l’Actualisation en arrière-plan pour KidGate.',
+  backgroundRefreshStepGeneral:
+    'Si l’interrupteur est grisé, ouvrez Réglages, puis Général, puis Actualisation en arrière-plan et activez-la.',
+  batteryStepAllow: 'Sélectionnez Autoriser dans la fenêtre d’Android.',
+  batteryStepAppInfo:
+    'Si aucune fenêtre n’apparaît, ouvrez Infos sur l’app, puis Batterie, puis choisissez Sans restriction.',
+  notificationsStepAllow: 'Sélectionnez Autoriser dans la demande.',
+  exactAlarmStepTurnOn: 'Activez Alarmes et rappels pour KidGate.',
+  cameraStepTurnOn: 'Activez Appareil photo pour KidGate.',
+  uninstallProtectionStepConfirm:
+    'Sélectionnez Activer sur l’écran de confirmation d’Android.',
 } as const;

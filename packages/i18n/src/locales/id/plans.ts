@@ -60,7 +60,7 @@ export const plans = {
   compareActivityFeedPremium: '30 hari',
   compareChildReport: 'Laporan per anak',
   compareIncluded:
-    'Kedua paket mencakup batas harian, jam diblokir, aplikasi yang diblokir, filter web, kunci jarak jauh, SOS, permintaan waktu, tugas hadiah, iPhone, Android, Mac, Windows, TV, dan Chromebook dalam satu keluarga, dasbor web, dan beberapa orang tua.',
+    'Kedua paket mencakup batas harian, jam diblokir, aplikasi yang diblokir, filter web, kunci jarak jauh, SOS, permintaan waktu, dan tugas hadiah di iPhone, Android, Mac, dan Windows dalam satu keluarga, ditambah dasbor web dan beberapa orang tua. Android TV dan Chromebook segera hadir dengan kontrol yang lebih sedikit.',
   sectionWhyPremium: 'Apa yang ditambahkan Premium',
   sectionWhyPremiumSubtitle:
     'Semua aturan tetap berjalan di paket Gratis. Premium menambahkan apa yang bisa Anda lihat, dan seberapa cepat.',
@@ -171,12 +171,14 @@ export const plans = {
   platformAndroidDetail: 'Perangkat orang tua atau anak · Android 7 ke atas',
   platformMac: 'Mac',
   platformMacDetail: 'Hanya perangkat anak · macOS 12 ke atas',
-  platformIosLimits: 'Tidak ada Batas Aplikasi atau peringatan pesan.',
+  platformIosLimits:
+    'Tidak ada Batas Aplikasi atau peringatan pesan. Filter web hanya mencakup situs dewasa, dan aplikasi yang diblokir dipilih di iPhone itu sendiri.',
   platformMacLimits: 'Tidak ada peringatan pesan, dan lokasi bersifat perkiraan.',
   platformWindowsLimits: 'Tidak ada peringatan pesan, dan lokasi bersifat perkiraan.',
-  platformAndroidTvLimits: 'Tidak ada peringatan pesan atau lokasi.',
+  platformAndroidTvLimits:
+    'Tidak ada peringatan pesan, lokasi, SOS, atau permintaan waktu. Pemblokiran aplikasi berjalan sebisanya.',
   platformChromebookLimits:
-    'Tidak ada Batas harian, Jam Diblokir, Kunci perangkat, atau lokasi.',
+    'Hanya filter web — tidak ada Batas harian, Jam Diblokir, Pemblokiran aplikasi, Kunci perangkat, SOS, atau lokasi.',
   platformComingSoon: 'Segera hadir',
   platformWindows: 'Windows',
   platformWindowsDetail: 'Hanya perangkat anak · Windows 10 ke atas',
@@ -184,4 +186,22 @@ export const plans = {
   platformAndroidTvDetail: 'Hanya perangkat anak · Android TV 7 ke atas',
   platformChromebook: 'Chromebook',
   platformChromebookDetail: 'Perangkat anak · hanya filter web di Chrome',
+  teaserCta: 'Lihat Premium',
+  teaserProofOtherApps: 'Aplikasi lain: {{count}} · {{minutes}}',
+  teaserProofOtherMinutes: 'Aplikasi lain: {{minutes}}',
+  teaserProofBlocked: 'Diblokir minggu ini: {{count}}',
+  teaserTopApps:
+    'Premium menyebut setiap aplikasi, menit demi menit, dan menyimpannya 30 hari.',
+  teaserWebHistory:
+    'Premium menunjukkan situs mana yang diblokir dan apa yang dicari anak Anda.',
+  teaserVideoHistory:
+    'Premium menyimpan setiap video dan Short YouTube yang ia tonton.',
+  teaserLocationTrail:
+    'Premium menyimpan ke mana ia pergi dan memberi tahu saat ia tiba atau pergi dari rumah dan sekolah.',
+  teaserActivityWindow: 'Paket gratis menampilkan hari ini. Premium menyimpan 30 hari.',
+  teaserChildReport:
+    'Premium menambah laporan untuk tiap anak, dan yang baru tiap minggu.',
+  teaserMessageAlerts:
+    'Premium memberi tahu saat sebuah pesan perlu perhatian Anda. Hanya Android.',
+  teaserLiveNote: 'Paket gratis diperbarui tiap 30 menit. Premium bersifat langsung.',
 } as const;

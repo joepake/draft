@@ -127,4 +127,6 @@ export const messageMonitoring = {
   languagesLabel: '検索する言語',
   languagesHint: 'このデバイスが心配な言葉を探す言語です。最大{{max}}件まで選べます。',
   languagesDefaultHint: '既定ではデバイスの言語が使われます。',
+  setupStepFindKidGate:
+    '通知へのアクセス一覧でKidGateを見つけてオンにします。KidGateは2つ表示されることがあります。もう一方は夜間の通話アラート用なので、戻ってきてもこのステップが完了しない場合はもう一方をオンにしてください。',
 } as const;

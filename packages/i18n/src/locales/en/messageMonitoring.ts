@@ -136,4 +136,6 @@ export const messageMonitoring = {
   languagesHint:
     'Which languages of concerning words this device looks for. Pick up to {{max}}.',
   languagesDefaultHint: 'Defaults to the language this device is set to.',
+  setupStepFindKidGate:
+    'Find KidGate in the notification access list and turn it on. KidGate can be listed twice — the other one is night call alerts, so if this step is still not done when you come back, turn the other one on.',
 } as const;

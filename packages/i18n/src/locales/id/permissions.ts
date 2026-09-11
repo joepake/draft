@@ -15,28 +15,26 @@ export const permissions = {
     'Silakan buka Pengaturan perangkat untuk mengizinkan notifikasi untuk KidGate.',
   backgroundRefreshLabel: 'Penyegaran latar belakang',
   backgroundRefreshHint:
-    'Aktifkan dahulu Pengaturan → Umum → Penyegaran latar belakang, lalu aktifkan untuk KidGate. Jika sakelarnya berwarna abu-abu, pengaturan Penyegaran latar belakang secara umum masih nonaktif.',
+    'Membuat KidGate tetap bekerja saat berjalan di latar belakang.',
   backgroundRefreshLowPowerHint:
     'Mode Hemat Daya aktif — iOS menonaktifkan Penyegaran latar belakang. Silakan matikan Mode Hemat Daya, lalu aktifkan Penyegaran latar belakang.',
   overlayLabel: 'Tampil di atas aplikasi lain',
   overlayHint:
     'Izinkan KidGate menampilkan layar kunci di atas aplikasi lain saat batasan berlaku.',
   batteryOptimizationLabel: 'Baterai tanpa batasan',
-  batteryOptimizationHint:
-    'Pilih Izinkan pada permintaan sistem agar KidGate dapat berjalan di latar belakang. Jika tidak ada permintaan yang muncul: Info aplikasi → Baterai → Tanpa batasan.',
+  batteryOptimizationHint: 'Mencegah Android menjeda KidGate di latar belakang.',
   exactAlarmLabel: 'Alarm & pengingat',
   exactAlarmHint:
     'Izinkan Alarm & pengingat agar Jam Diblokir mulai dan berakhir tepat waktu.',
   accessibilityLabel: 'Bantuan kunci Aksesibilitas',
-  accessibilityHint:
-    'Aktifkan KidGate di Aksesibilitas → Aplikasi terpasang / diunduh. Ini diperlukan agar kunci tetap tampil di atas aplikasi lain.',
+  accessibilityHint: 'Menjaga kunci KidGate tetap di atas aplikasi lain.',
   oemSectionDescription:
     'Perangkat {{brand}} sering menjeda aplikasi latar belakang. Selesaikan langkah-langkah ini agar penguncian dan Jam Diblokir tetap berfungsi.',
   oemAutostartLabel: 'Izinkan mulai otomatis',
   oemAutostartHintXiaomi:
     'Di Mulai otomatis, aktifkan KidGate agar perlindungan mulai lagi setelah perangkat dinyalakan ulang.',
   oemAutostartHintSamsung:
-    'Di Perawatan perangkat / Baterai, izinkan KidGate tetap aktif di latar belakang.',
+    'Di Baterai → Batas penggunaan latar belakang → Aplikasi yang tidak pernah tidur, tambahkan KidGate. Jika KidGate tidak ada di daftar, berarti sudah diizinkan dan langkah ini selesai.',
   oemAutostartHintOppo:
     'Di Aplikasi saat mulai / Peluncuran otomatis, izinkan KidGate.',
   oemAutostartHintVivo:
@@ -59,4 +57,15 @@ export const permissions = {
     'Mencegah aplikasi ini dihapus tanpa PIN Orang Tua. Android menampilkan layar konfirmasinya sendiri.',
   notificationsWizardBody:
     'Izinkan notifikasi agar perangkat ini segera menerima persetujuan waktu dan pengingat.',
+  backgroundRefreshStepOpen: 'Buka halaman KidGate di Pengaturan.',
+  backgroundRefreshStepTurnOn: 'Aktifkan Penyegaran latar belakang untuk KidGate.',
+  backgroundRefreshStepGeneral:
+    'Jika sakelarnya abu-abu, buka Pengaturan, lalu Umum, lalu Penyegaran latar belakang dan aktifkan.',
+  batteryStepAllow: 'Pilih Izinkan pada permintaan Android.',
+  batteryStepAppInfo:
+    'Jika tidak ada permintaan, buka Info aplikasi, lalu Baterai, lalu pilih Tanpa batasan.',
+  notificationsStepAllow: 'Pilih Izinkan pada permintaan.',
+  exactAlarmStepTurnOn: 'Aktifkan Alarm & pengingat untuk KidGate.',
+  cameraStepTurnOn: 'Aktifkan Kamera untuk KidGate.',
+  uninstallProtectionStepConfirm: 'Pilih Aktifkan pada layar konfirmasi Android.',
 } as const;

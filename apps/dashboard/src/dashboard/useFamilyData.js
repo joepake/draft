@@ -15,7 +15,7 @@ import {
   familyRepository,
   childRepository,
   leaderboardRepository,
-  screenTimeBoardRepository,
+  // screenTimeBoardRepository, — board dropped 2026-09-08 (D4)
   rewardTaskRepository,
   safetyCheckInRepository,
   sosAlertRepository,
@@ -31,11 +31,12 @@ import {
   leaderboardWindow,
   rankChildren,
 } from '@kidgate/core/domain/leaderboard';
-import {
-  foldScreenTimeBoard,
-  isScreenTimeBoardVisible,
-  screenTimeBoardWindow,
-} from '@kidgate/core/domain/screenTimeBoard';
+// Dropped 2026-09-08 with the board (docs/FEASIBILITY.md, D4).
+// import {
+//   foldScreenTimeBoard,
+//   isScreenTimeBoardVisible,
+//   screenTimeBoardWindow,
+// } from '@kidgate/core/domain/screenTimeBoard';
 import { toDeviceView } from './deviceView.js';
 import { touchParentPresenceIfDue } from './parentPresence.js';
 
@@ -122,6 +123,7 @@ export function useFamilyData(user, selectedDeviceId) {
 
   const [devices, setDevices] = useState([]);
   const [devicesLoaded, setDevicesLoaded] = useState(false);
+  const [metaLoaded, setMetaLoaded] = useState(false);
   const [familyName, setFamilyName] = useState('');
   const [billing, setBilling] = useState(null);
   const [memberCount, setMemberCount] = useState(1);
@@ -145,10 +147,10 @@ export function useFamilyData(user, selectedDeviceId) {
   const [checkInRows, setCheckInRows] = useState([]);
   const [children, setChildren] = useState([]);
   const [leaderboard, setLeaderboard] = useState(null);
-  const [screenTimeBoardDoc, setScreenTimeBoardDoc] = useState(null);
+  // const [screenTimeBoardDoc, setScreenTimeBoardDoc] = useState(null);
   // The family switch, read once with the rest of the family-level data:
-  // absent means off, so a family that never asked sees no card.
-  const [screenTimeBoardEnabled, setScreenTimeBoardEnabled] = useState(undefined);
+  // absent means off. Dropped with the board 2026-09-08.
+  // const [screenTimeBoardEnabled, setScreenTimeBoardEnabled] = useState(undefined);
   const [openTasks, setOpenTasks] = useState([]);
   const [approvedTasks, setApprovedTasks] = useState([]);
   const [usage, setUsage] = useState({});
@@ -196,6 +198,7 @@ export function useFamilyData(user, selectedDeviceId) {
     if (lastLoadedFamilyRef.current !== familyId) {
       lastLoadedFamilyRef.current = familyId;
       setDevicesLoaded(false);
+      setMetaLoaded(false);
     }
 
     // Only the device list is fatal — without it there is nothing to show. A
@@ -225,6 +228,16 @@ export function useFamilyData(user, selectedDeviceId) {
         if (cancelled) return;
         setFamilyName(meta?.name || '');
         setOwnerLabel(usableOwnerLabel(meta?.ownerLabel));
+        /*
+         * Stamped on success only, and deliberately not in the `catch`.
+         *
+         * It is the half of `unknownAccount` that says "this family root was
+         * actually read and had nothing in it", as opposed to "we do not know
+         * yet". A failed meta read leaves it false, so a parent whose fetch
+         * broke keeps today's screen rather than being told they are in the
+         * wrong account — the expensive direction of that mistake.
+         */
+        setMetaLoaded(true);
       })
       .catch(soft('familyMeta'));
 
@@ -292,21 +305,24 @@ export function useFamilyData(user, selectedDeviceId) {
         setLeaderboard,
         soft('leaderboard'),
       ),
-      // Sibling of the star chart: minutes per person this week, parents
-      // included where they opted in. Server-written, family-readable.
+      /* The screen-time board is dropped (docs/FEASIBILITY.md, D4,
+         2026-09-08). Unsubscribed rather than left running: it is a listener
+         plus a family-document read per dashboard open, for a card nothing
+         renders any more.
       screenTimeBoardRepository.subscribe(
         familyId,
         screenTimeBoardWindow(new Date()).periodKey,
         setScreenTimeBoardDoc,
         soft('screenTimeBoard'),
       ),
+      */
     ];
-    familyRepository
-      .getFamilyMeta(familyId)
-      .then(meta => {
-        if (!cancelled) setScreenTimeBoardEnabled(meta?.screenTimeBoardEnabled);
-      })
-      .catch(soft('familyMeta'));
+    // familyRepository
+    //   .getFamilyMeta(familyId)
+    //   .then(meta => {
+    //     if (!cancelled) setScreenTimeBoardEnabled(meta?.screenTimeBoardEnabled);
+    //   })
+    //   .catch(soft('familyMeta'));
 
     return () => {
       cancelled = true;
@@ -523,6 +539,7 @@ export function useFamilyData(user, selectedDeviceId) {
     }));
 
     return {
+      /* Dropped 2026-09-08 with the board (docs/FEASIBILITY.md, D4).
       screenTimeBoard: (() => {
         const rows = foldScreenTimeBoard(
           screenTimeBoardDoc,
@@ -534,6 +551,7 @@ export function useFamilyData(user, selectedDeviceId) {
           visible: isScreenTimeBoardVisible(screenTimeBoardEnabled, rows),
         };
       })(),
+      */
       leaderboard: {
         rows: leaderboardRows,
         // The family flag lives on the family document, which this hook does
@@ -593,8 +611,6 @@ export function useFamilyData(user, selectedDeviceId) {
     videos,
     rewardTasks,
     leaderboardRows,
-    screenTimeBoardDoc,
-    screenTimeBoardEnabled,
     children,
     familyName,
     billing,
@@ -613,6 +629,40 @@ export function useFamilyData(user, selectedDeviceId) {
     checkInRows,
   ]);
 
+  /**
+   * A sign-in that landed on a family root nobody ever built.
+   *
+   * `resolveFamilyRootFromProfile` answers the caller's own uid whenever the
+   * profile mirror names no other family, and that is the right answer for a
+   * parent who owns their family — but it is also what a stranger gets. Only a
+   * `permissionDenied` was told apart before, so signing in with the wrong
+   * Google account produced a working, empty dashboard reading "No child
+   * device yet", which is advice to go and pair a device into a family that is
+   * not theirs.
+   *
+   * Every term is here to keep a *real* family out of it, and the expensive
+   * mistake is the false positive:
+   *
+   *  - `metaLoaded` — the root was read and answered, not merely unread yet.
+   *    Set on success only, so a failed read keeps today's screen.
+   *  - `familyName` absent — a family named on the phone has one.
+   *  - `trialStartedAt` absent — the trial clock starts at pairing, so a stamp
+   *    means this family paired something once, however long ago.
+   *  - no devices and no children — nothing was ever set up here.
+   *
+   * A parent who created an account on the phone and has not paired yet keeps
+   * the pairing instructions, because their family carries a name.
+   */
+  const unknownAccount =
+    metaLoaded &&
+    devicesLoaded &&
+    Boolean(user) &&
+    familyId === user.uid &&
+    !familyName &&
+    !billing?.trialStartedAt &&
+    devices.length === 0 &&
+    children.length === 0;
+
   // The device list has to have arrived before rendering, or the dashboard
   // shows "no child device yet" for a beat on every load.
   return {
@@ -620,5 +670,6 @@ export function useFamilyData(user, selectedDeviceId) {
     familyId,
     loading: resolving || (Boolean(familyId) && !devicesLoaded),
     error,
+    unknownAccount,
   };
 }

@@ -14,29 +14,26 @@ export const permissions = {
   notificationsOpenSettings:
     'KidGate için bildirimlere izin vermek üzere cihaz Ayarları’nı açın.',
   backgroundRefreshLabel: 'Arka Planda Yenileme',
-  backgroundRefreshHint:
-    'Önce Ayarlar → Genel → Arka Planda Yenileme’yi açın, ardından KidGate için etkinleştirin. Anahtar gri görünüyorsa genel Arka Planda Yenileme ayarı hâlâ kapalıdır.',
+  backgroundRefreshHint: 'KidGate’in arka planda çalışmayı sürdürmesini sağlar.',
   backgroundRefreshLowPowerHint:
     'Düşük Güç Modu açık — iOS, Arka Planda Yenileme’yi devre dışı bırakır. Lütfen Düşük Güç Modu’nu kapatın, ardından Arka Planda Yenileme’yi etkinleştirin.',
   overlayLabel: 'Diğer uygulamaların üzerinde göster',
   overlayHint:
     'Sınırlar uygulandığında KidGate’in diğer uygulamaların üzerinde bir kilit ekranı göstermesine izin verin.',
   batteryOptimizationLabel: 'Sınırsız pil',
-  batteryOptimizationHint:
-    'KidGate’in arka planda çalışabilmesi için sistem isteminde İzin ver’i seçin. İstem görünmüyorsa: Uygulama bilgisi → Pil → Sınırsız.',
+  batteryOptimizationHint: 'Android’in KidGate’i arka planda duraklatmasını engeller.',
   exactAlarmLabel: 'Alarmlar ve hatırlatıcılar',
   exactAlarmHint:
     'Engellenen Saatlerin zamanında başlayıp bitmesi için Alarmlar ve hatırlatıcılar iznini verin.',
   accessibilityLabel: 'Erişilebilirlik kilit yardımcısı',
-  accessibilityHint:
-    'Erişilebilirlik → Yüklü / indirilen uygulamalar altında KidGate’i açın. Kilidin diğer uygulamaların üzerinde kalması için bu gereklidir.',
+  accessibilityHint: 'KidGate kilidini diğer uygulamaların üzerinde tutar.',
   oemSectionDescription:
     '{{brand}} cihazları genellikle arka plan uygulamalarını duraklatır. Kilitleme ve Engellenen Saatler’in çalışmaya devam etmesi için lütfen bu adımları tamamlayın.',
   oemAutostartLabel: 'Otomatik başlatmaya izin ver',
   oemAutostartHintXiaomi:
     'Otomatik başlatma’da, yeniden başlatmadan sonra korumanın yeniden başlaması için KidGate’i açın.',
   oemAutostartHintSamsung:
-    'Cihaz bakımı / Pil bölümünde KidGate’in arka planda etkin kalmasına izin verin.',
+    'Pil → Arka planda kullanım sınırları → Hiç uyumayan uygulamalar bölümüne KidGate’i ekleyin. KidGate listede yoksa zaten izinlidir ve bu adım tamamlanmıştır.',
   oemAutostartHintOppo:
     'Başlangıç uygulamaları / Otomatik başlatma bölümünde KidGate’e izin verin.',
   oemAutostartHintVivo:
@@ -60,4 +57,18 @@ export const permissions = {
     'Ebeveyn PIN’i girilmeden bu uygulamanın kaldırılmasını engeller. Android kendi onay ekranını gösterir.',
   notificationsWizardBody:
     'Bu cihazın süre onaylarını ve hatırlatmaları hemen alması için bildirimlere izin verin.',
+  backgroundRefreshStepOpen: 'Ayarlar’da KidGate sayfasını açın.',
+  backgroundRefreshStepTurnOn: 'KidGate için Arka Planda Yenileme’yi açın.',
+  backgroundRefreshStepGeneral:
+    'Anahtar griyse Ayarlar’ı açın, Genel’e, ardından Arka Planda Yenileme’ye gidip açın.',
+  batteryStepAllow: 'Android isteminde İzin ver’i seçin.',
+  batteryStepAppInfo:
+    'İstem görünmezse Uygulama bilgisi’ni açın, Pil’e gidin ve Sınırsız’ı seçin.',
+  notificationsStepAllow: 'İstemde İzin ver’i seçin.',
+  exactAlarmStepTurnOn: 'KidGate için Alarmlar ve hatırlatıcılar’ı açın.',
+  // Not "Kamera'yı açın": that is the predator pack's own `kamerayı aç`, and
+  // `messageKeywordCorpus` refuses a UI string that reads like the phrase it
+  // watches for. The keyword is right; the copy moved.
+  cameraStepTurnOn: 'KidGate için Kamera erişimini etkinleştirin.',
+  uninstallProtectionStepConfirm: 'Android’in onay ekranında Etkinleştir’i seçin.',
 } as const;

@@ -21,11 +21,21 @@ export function distanceMeters(
 
 /**
  * How far a fix has to sit from a saved place before "Near X" would be a
- * guess rather than a fact. Wider than `DEFAULT_PLACE_RADIUS_METERS` (a
- * geofence answers "inside or not"; this answers "close enough to name" when
- * HERE returned no address at all).
+ * guess rather than a fact. A different question from
+ * `DEFAULT_PLACE_RADIUS_METERS` — a geofence answers "inside or not", this
+ * answers "close enough to name" when HERE returned no address at all.
+ *
+ * **A hundred metres, not two kilometres, since 2026-09-10.** Two kilometres
+ * was set while this was the only place-naming fallback there was, and it does
+ * not survive being read as a sentence: a fix 1.8 km from Home is a different
+ * neighbourhood, and "Near **Home**" on it is a guess in the clothes of a
+ * fact. What made the wide radius look necessary was that the alternative was
+ * a raw coordinate pair — and `savedPlaceForHistoryEntry`
+ * (`domain/locationHistory`) now titles a fix from the place it is *inside*.
+ * So this is no longer the only thing between a parent and a number; it is the
+ * narrow band just outside a fence, which is all "near" ever meant.
  */
-export const NEARBY_PLACE_RADIUS_METERS = 2000;
+export const NEARBY_PLACE_RADIUS_METERS = 100;
 
 export interface NearbyPlace {
   name: string;

@@ -53,7 +53,7 @@ export const pairing = {
   unableToCreateCode: 'Impossibile creare un codice. Riprova.',
   inviteParentTitle: 'Aggiungi un altro dispositivo genitore',
   inviteParentInstructions:
-    'Sull’altro dispositivo, apri KidGate → Famiglia → + → Unisciti a una famiglia, quindi scansiona questo codice QR o inserisci il codice. Approva la richiesta qui per connettere quel genitore.',
+    'Sull’altro dispositivo, apri KidGate → Famiglia → + → Unisciti a una famiglia, quindi scansiona questo codice QR o inserisci il codice entro 15 minuti. Approva la richiesta qui per connettere quel genitore.',
   inviteCodeLabel: 'Oppure condividi questo codice',
   joinFamilyTitle: 'Unisciti a una famiglia',
   joinFamilyScanInstructions:

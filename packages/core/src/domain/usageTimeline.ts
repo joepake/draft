@@ -32,10 +32,12 @@
  */
 
 import {
+  USAGE_HOURLY_APPS_MAX_PER_HOUR,
   USAGE_TIMELINE_IDLE,
   USAGE_TIMELINE_MINUTES,
   USAGE_TIMELINE_UNKNOWN,
   USAGE_TIMELINE_USED,
+  type UsageHourlyApps,
   type UsageTimeline,
 } from '@kidgate/schema/usageDay';
 
@@ -63,6 +65,51 @@ const STATE_OF: Record<string, TimelineState> = {
 
 /** Higher wins when two marks land on one minute. */
 const RANK: Record<TimelineState, number> = { unknown: 0, idle: 1, used: 2 };
+
+/**
+ * What a package name may look like on any agent — Android's dotted
+ * identifiers, and room for a desktop bundle id or executable name later.
+ */
+const HOURLY_APPS_PACKAGE_PATTERN = /^[A-Za-z0-9_.:-]{1,200}$/;
+const HOURLY_APPS_HOUR_PATTERN = /^(?:[0-9]|1[0-9]|2[0-3])$/;
+
+/**
+ * The hourly app map exactly as `UsageHourlyApps` describes it, or null.
+ *
+ * Same stance as `isTimeline`: a device-reported field is untrusted input, and
+ * anything that is not hour keys 0–23 holding short lists of package-shaped
+ * strings is dropped whole rather than stored in part. Read on the phone
+ * before the upload and by the Cloud Function on arrival
+ * (`functions/lib/usageTimeline.js` hand-copies the limits, pinned by
+ * `usageTimelineServerParity.test.ts`). Null for an empty map too: absent is
+ * "cannot say", and there is no day on which nothing was ever in front that
+ * still earned a report.
+ */
+export function parseHourlyApps(value: unknown): UsageHourlyApps | null {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) {
+    return null;
+  }
+  const hourlyApps: UsageHourlyApps = {};
+  for (const [hour, apps] of Object.entries(value as Record<string, unknown>)) {
+    if (!HOURLY_APPS_HOUR_PATTERN.test(hour) || !Array.isArray(apps)) {
+      return null;
+    }
+    if (apps.length > USAGE_HOURLY_APPS_MAX_PER_HOUR) {
+      return null;
+    }
+    const packages: string[] = [];
+    for (const app of apps) {
+      if (typeof app !== 'string' || !HOURLY_APPS_PACKAGE_PATTERN.test(app)) {
+        return null;
+      }
+      packages.push(app);
+    }
+    if (packages.length > 0) {
+      hourlyApps[hour] = packages;
+    }
+  }
+  return Object.keys(hourlyApps).length > 0 ? hourlyApps : null;
+}
 
 export function emptyTimeline(): UsageTimeline {
   return USAGE_TIMELINE_UNKNOWN.repeat(USAGE_TIMELINE_MINUTES);

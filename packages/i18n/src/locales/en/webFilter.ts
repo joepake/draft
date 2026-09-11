@@ -7,15 +7,15 @@ export const webFilter = {
     '{{name}}’s devices had different web filter settings. Saving here applies one set to all of them, combined toward the stricter choice.',
   mergeLoosened: 'Now allowed on every device: {{domains}}',
   toastUpdateFailed: 'Unable to update the Web Filter. Try again.',
-  heroTitle: 'Filter adult websites',
+  heroTitle: 'Filter inappropriate websites',
   heroSubtitleIos:
     'Uses Apple’s Screen Time content filter to limit adult content in Safari and in-app browsers on the child device.',
   heroSubtitleAndroid:
-    'Runs a private connection on the child Android device to block known adult sites in browsers and many apps.',
+    'Runs a private connection on the child Android device to block known inappropriate sites in browsers and many apps.',
   heroSubtitleMacos:
-    'Runs KidGate’s content filter on the child’s Mac to block known adult sites in browsers and many apps.',
+    'Runs KidGate’s content filter on the child’s Mac to block known inappropriate sites in browsers and many apps.',
   heroSubtitleWindows:
-    'Runs KidGate’s own resolver on the child’s PC to block known adult sites in every browser.',
+    'Runs KidGate’s own resolver on the child’s PC to block known inappropriate sites in every browser.',
   toggleHintIos: 'Requires the Screen Time permission on the child device.',
   toggleHintAndroid:
     'The child must approve the KidGate VPN connection once. Keep the VPN on for filtering to work.',
@@ -30,6 +30,8 @@ export const webFilter = {
   safeSearchLabel: 'Force SafeSearch',
   safeSearchHint:
     'Locks Google SafeSearch, YouTube Restricted Mode, Bing and DuckDuckGo to their strict settings. Android, Android TV and Chrome.',
+  safeSearchStrictNote:
+    'YouTube runs at its strictest level: comments are hidden and some ordinary videos are blocked too. A child cannot switch it off from their account.',
   infoTitle: 'How it works',
   infoLine1Ios: 'Apple automatically filters adult websites.',
   infoLine2Ios:
@@ -42,7 +44,8 @@ export const webFilter = {
     'Turn off Private DNS on the child device. If Private DNS is on, browsers can bypass the filter.',
   infoLine3Android:
     'The child device shows a VPN icon while filtering. Turning the VPN off stops the filter — reopen KidGate to restore it.',
-  infoLine4Android: 'Go to Settings → Network & internet → Private DNS → Off.',
+  infoLine4Android:
+    'In Settings, open Network & internet, then Private DNS, and choose Off.',
   infoLine1Macos:
     'KidGate runs a content filter on the Mac that checks which sites are being looked up, and blocks the ones on your categories.',
   infoLine2Macos:
@@ -61,7 +64,7 @@ export const webFilter = {
     'The filter reads site names only. It cannot see inside a page, and a site the browser looked up a moment ago may keep opening for a few minutes.',
   privateDnsBannerTitle: 'Turn off Private DNS',
   privateDnsBannerBody:
-    'Private DNS is on, so adult web filtering may be bypassed. Turn it off for the filter to work.',
+    'Private DNS is on, so web filtering may be bypassed. Turn it off for the filter to work.',
   privateDnsBannerButton: 'Open DNS settings',
   vpnConsentBannerTitle: 'Restore the Web Filter VPN',
   vpnConsentBannerBody:
@@ -191,4 +194,9 @@ export const webFilter = {
   siteRequestDeniedDescription: '{{domain}} stays blocked on {{deviceName}}.',
   siteRequestReceived: 'Site request',
   siteRequestReceivedDescription: '{{deviceName}} asked to open {{domain}}.',
+  privateDnsStep1: 'Open Settings on this device.',
+  privateDnsStep2: 'Select Network & internet.',
+  privateDnsStep3: 'Open Private DNS and choose Off.',
+  vpnConsentStepAllow:
+    'Select OK on Android’s VPN request. A key icon stays in the status bar while the filter runs.',
 } as const;

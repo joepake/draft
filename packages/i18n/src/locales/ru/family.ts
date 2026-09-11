@@ -19,6 +19,15 @@ export const family = {
   quickProtectTitle: 'Защитить {{childName}} сейчас?',
   quickProtectBody:
     'Включите стартовый набор защит. Всё можно точно настроить позже в профиле ребёнка.',
+  quickProtectSourceLabel: 'За основу',
+  quickProtectAllOnBody:
+    'У {{childName}} эти виды защиты уже включены. Выберите другого ребёнка, чтобы скопировать его часы, лимит и списки сайтов.',
+  quickProtectReplaces: 'Заменит текущую настройку {{childName}}.',
+  quickProtectWebFilterCopyHint:
+    'Копирует категории {{childName}}, а также {{allowed}} разрешённых и {{blocked}} запрещённых сайтов.',
+  quickProtectSourceDefault: 'Настройки KidGate по умолчанию',
+  quickProtectSourceBody:
+    'Копирует правила {{childName}}, включая разрешённые и заблокированные сайты.',
   quickProtectBedtime: 'Заблокированные часы на ночь',
   quickProtectBedtimeHint: 'Блокирует использование устройства ночью, с 22:00 до 7:00.',
   quickProtectDailyLimit: 'Дневной лимит экранного времени',
@@ -26,7 +35,7 @@ export const family = {
     '{{minutes}} минут в день, суммарно по всем устройствам ребёнка.',
   quickProtectWebFilter: 'Веб-фильтр',
   quickProtectWebFilterHint:
-    'Блокирует контент для взрослых и другие рискованные категории.',
+    'Блокирует нежелательный контент и включает безопасный поиск и ограничения YouTube.',
   quickProtectWebFilterPremium: 'Функция Premium — входит в подписку.',
   quickProtectApply: 'Включить защиту',
   quickProtectSkip: 'Не сейчас',
@@ -113,6 +122,7 @@ export const family = {
   chipHealthWarnCount_one: '{{count}} требует настройки',
 
   chipHealthInactiveCount: '{{count}} без связи более 24 ч',
+  chipLocationBlocked: 'Нет местоположения',
 
   chipBlockedCount: '{{count}} заблокировано',
 

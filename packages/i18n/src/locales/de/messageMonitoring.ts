@@ -130,4 +130,6 @@ export const messageMonitoring = {
   languagesHint:
     'In welchen Sprachen dieses Gerät nach besorgniserregenden Wörtern sucht. Bis zu {{max}} auswählen.',
   languagesDefaultHint: 'Standardmäßig die Sprache des Geräts.',
+  setupStepFindKidGate:
+    'Finde KidGate in der Liste für Benachrichtigungszugriff und aktiviere es. KidGate kann zweimal in der Liste stehen — der andere Eintrag ist für nächtliche Anruf-Hinweise. Wenn dieser Schritt nach der Rückkehr noch offen ist, aktiviere den anderen Eintrag.',
 } as const;

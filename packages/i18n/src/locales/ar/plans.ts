@@ -59,7 +59,7 @@ export const plans = {
   compareActivityFeedPremium: '30 يومًا',
   compareChildReport: 'تقارير لكل طفل',
   compareIncluded:
-    'تشمل الخطتان الحد اليومي وساعات الحظر وحظر التطبيقات وفلتر الويب والقفل عن بُعد وSOS وطلبات الوقت ومهام المكافآت، وأجهزة iPhone وAndroid وMac وWindows وTV وChromebook في عائلة واحدة، ولوحة الويب وعدة أولياء أمور.',
+    'تشمل الخطتان الحد اليومي وساعات الحظر وحظر التطبيقات وفلتر الويب والقفل عن بُعد وSOS وطلبات الوقت ومهام المكافآت على أجهزة iPhone وAndroid وMac وWindows في عائلة واحدة، إضافة إلى لوحة الويب وعدة أولياء أمور. أما Android TV وChromebook فسيتوفران قريبًا مع عناصر تحكم أقل.',
   sectionWhyPremium: 'ما الذي يضيفه Premium',
   sectionWhyPremiumSubtitle:
     'كل القواعد تستمر في العمل في الخطة المجانية. يضيف Premium ما يمكنك رؤيته، ومتى.',
@@ -167,12 +167,14 @@ export const plans = {
   platformAndroidDetail: 'جهاز ولي أمر أو طفل · Android 7 أو أحدث',
   platformMac: 'Mac',
   platformMacDetail: 'جهاز طفل فقط · macOS 12 أو أحدث',
-  platformIosLimits: 'لا تتوفر حدود التطبيقات ولا تنبيهات الرسائل.',
+  platformIosLimits:
+    'لا تتوفر حدود التطبيقات ولا تنبيهات الرسائل. يغطي فلتر الويب مواقع البالغين فقط، وتُختار التطبيقات المحظورة على جهاز iPhone نفسه.',
   platformMacLimits: 'لا تتوفر تنبيهات الرسائل، والموقع تقريبي.',
   platformWindowsLimits: 'لا تتوفر تنبيهات الرسائل، والموقع تقريبي.',
-  platformAndroidTvLimits: 'لا تتوفر تنبيهات الرسائل ولا الموقع.',
+  platformAndroidTvLimits:
+    'لا تتوفر تنبيهات الرسائل ولا الموقع ولا SOS ولا طلبات الوقت. ويعمل حظر التطبيقات قدر الإمكان.',
   platformChromebookLimits:
-    'لا يتوفر الحد اليومي ولا ساعات الحظر ولا قفل الجهاز ولا الموقع.',
+    'فلتر الويب فقط — لا يتوفر الحد اليومي ولا ساعات الحظر ولا حظر التطبيقات ولا قفل الجهاز ولا SOS ولا الموقع.',
   platformComingSoon: 'قريبًا',
   platformWindows: 'Windows',
   platformWindowsDetail: 'جهاز طفل فقط · Windows 10 أو أحدث',
@@ -180,4 +182,17 @@ export const plans = {
   platformAndroidTvDetail: 'جهاز طفل فقط · Android TV 7 أو أحدث',
   platformChromebook: 'Chromebook',
   platformChromebookDetail: 'جهاز طفل · تصفية الويب في Chrome فقط',
+  teaserCta: 'اطّلع على Premium',
+  teaserProofOtherApps: 'تطبيقات أخرى: {{count}} · {{minutes}}',
+  teaserProofOtherMinutes: 'تطبيقات أخرى: {{minutes}}',
+  teaserProofBlocked: 'المحظور هذا الأسبوع: {{count}}',
+  teaserTopApps: 'يذكر Premium اسم كل تطبيق، دقيقة بدقيقة، ويحتفظ بـ 30 يومًا.',
+  teaserWebHistory: 'يعرض Premium المواقع التي حُظرت وما بحث عنه طفلك.',
+  teaserVideoHistory: 'يحتفظ Premium بكل فيديو ومقطع Short شاهده على YouTube.',
+  teaserLocationTrail:
+    'يحتفظ Premium بالمسار الذي سلكه، وينبّهك عند وصوله إلى المنزل أو المدرسة أو مغادرته.',
+  teaserActivityWindow: 'الخطة المجانية تعرض اليوم. Premium يحتفظ بـ 30 يومًا.',
+  teaserChildReport: 'يضيف Premium تقريرًا لكل طفل، وتقريرًا جديدًا كل أسبوع.',
+  teaserMessageAlerts: 'ينبّهك Premium عندما تحتاج رسالة إلى انتباهك. على Android فقط.',
+  teaserLiveNote: 'يجري تحديث الخطة المجانية كل 30 دقيقة. Premium مباشر.',
 } as const;

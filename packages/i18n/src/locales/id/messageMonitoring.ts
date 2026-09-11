@@ -130,4 +130,6 @@ export const messageMonitoring = {
   languagesHint:
     'Bahasa yang digunakan perangkat ini untuk mencari kata yang mengkhawatirkan. Pilih maksimal {{max}}.',
   languagesDefaultHint: 'Bawaan mengikuti bahasa perangkat.',
+  setupStepFindKidGate:
+    'Temukan KidGate di daftar akses notifikasi lalu aktifkan. KidGate bisa muncul dua kali — yang satunya untuk peringatan panggilan malam, jadi kalau setelah kembali langkah ini masih belum selesai, aktifkan yang satunya.',
 } as const;

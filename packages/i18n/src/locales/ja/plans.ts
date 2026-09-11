@@ -60,7 +60,7 @@ export const plans = {
   compareActivityFeedPremium: '30日分',
   compareChildReport: 'お子さまごとのレポート',
   compareIncluded:
-    'どちらのプランにも、1日の上限、休止時間、アプリのブロック、Webフィルター、遠隔ロック、SOS、時間のリクエスト、ごほうびタスク、1つの家族でのiPhone・Android・Mac・Windows・TV・Chromebook、Webダッシュボード、複数の保護者が含まれます。',
+    'どちらのプランにも、1つの家族のiPhone・Android・Mac・Windowsでの1日の上限、休止時間、アプリのブロック、Webフィルター、遠隔ロック、SOS、時間のリクエスト、ごほうびタスクに加え、Webダッシュボードと複数の保護者が含まれます。Android TVとChromebookは近日対応で、使える管理機能は少なめです。',
   sectionWhyPremium: 'Premiumで加わるもの',
   sectionWhyPremiumSubtitle:
     'ルールはすべて無料版でも動き続けます。Premiumでは、見えるものと、それがどれだけ早く届くかが加わります。',
@@ -171,12 +171,14 @@ export const plans = {
   platformAndroidDetail: '保護者用・お子さま用 · Android 7以降',
   platformMac: 'Mac',
   platformMacDetail: 'お子さま用のみ · macOS 12以降',
-  platformIosLimits: 'App使用時間の制限とメッセージの通知はありません。',
+  platformIosLimits:
+    'App使用時間の制限とメッセージの通知はありません。Webフィルターはアダルトサイトのみが対象で、ブロックするアプリはiPhone本体で選びます。',
   platformMacLimits: 'メッセージの通知はなく、位置情報はおおよそです。',
   platformWindowsLimits: 'メッセージの通知はなく、位置情報はおおよそです。',
-  platformAndroidTvLimits: 'メッセージの通知と位置情報はありません。',
+  platformAndroidTvLimits:
+    'メッセージの通知、位置情報、SOS、時間のリクエストはありません。アプリのブロックはベストエフォートです。',
   platformChromebookLimits:
-    '1日の上限、休止時間、デバイスロック、位置情報はありません。',
+    'Webフィルターのみ — 1日の上限、休止時間、アプリのブロック、デバイスロック、SOS、位置情報はありません。',
   platformComingSoon: '近日対応',
   platformWindows: 'Windows',
   platformWindowsDetail: 'お子さま用のみ · Windows 10以降',
@@ -184,4 +186,20 @@ export const plans = {
   platformAndroidTvDetail: 'お子さま用のみ · Android TV 7以降',
   platformChromebook: 'Chromebook',
   platformChromebookDetail: 'お子さま用 · Chromeのウェブフィルタのみ',
+  teaserCta: 'Premium を見る',
+  teaserProofOtherApps: 'その他のアプリ: {{count}} · {{minutes}}',
+  teaserProofOtherMinutes: 'その他のアプリ: {{minutes}}',
+  teaserProofBlocked: '今週のブロック数: {{count}}',
+  teaserTopApps: 'Premium ならすべてのアプリを分単位で表示し、30日分を保存します。',
+  teaserWebHistory:
+    'Premium ならどのサイトがブロックされたか、お子さまが何を検索したかが分かります。',
+  teaserVideoHistory: 'Premium なら視聴した YouTube 動画とショートをすべて保存します。',
+  teaserLocationTrail:
+    'Premium なら移動の記録を保存し、自宅や学校に着いたとき・出たときに通知します。',
+  teaserActivityWindow: '無料プランは今日の分だけです。Premium は30日分を保存します。',
+  teaserChildReport:
+    'Premium ならお子さまごとのレポートが増え、毎週新しいものが届きます。',
+  teaserMessageAlerts:
+    'Premium はメッセージに注意が必要なときに知らせます。Android のみ。',
+  teaserLiveNote: '無料プランは30分ごとの更新です。Premium はリアルタイムです。',
 } as const;

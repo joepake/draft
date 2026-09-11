@@ -109,8 +109,8 @@ export default {
     trust1Text: 'Çocuk verileri hiçbir zaman reklam için kullanılmaz',
     trust2Title: 'İstediğiniz zaman silin',
     trust2Text: 'Talebiniz üzerine aile hesabınızı ve tüm verileri sileriz',
-    trust3Title: 'Telefon, bilgisayar ve tarayıcı',
-    trust3Text: 'iPhone, Android, Mac, Windows ve Chrome tek bir aile hesabında',
+    trust3Title: 'Telefon ve bilgisayar',
+    trust3Text: 'iPhone, Android, Mac ve Windows tek bir aile hesabında',
     trust4Title: 'Aile başına tek plan',
     trust4Text: 'Tüm ebeveyn ve çocuk cihazları, tek abonelik',
 
@@ -129,7 +129,7 @@ export default {
       'Günlük sınırın üstüne, her uygulamaya ayrı bir sınır koyun — tamamen yasaklamadan “yarım saat TikTok”.',
     feature4Title: 'Web filtreleme ve geçmiş',
     feature4Text:
-      'Yetişkin ve kumar sitelerini telefonda, bilgisayarda ve Chrome’da reddedin, sonra hangi sitelerin arandığını ve hangilerinin durdurulduğunu görün.',
+      'Yetişkin ve kumar sitelerini telefonda ve bilgisayarda reddedin. Premium ile hangi sitelerin arandığını ve hangilerinin durdurulduğunu görün.',
     feature5Title: 'Canlı konum ve yerler',
     feature5Text:
       'Çocuğunuzun son konumunu görün, geçmişi inceleyin ve kayıtlı bir yere vardığında ya da oradan ayrıldığında haberdar olun.',
@@ -138,7 +138,7 @@ export default {
       'Çocuğunuzdan iyi olduğunu onaylamasını isteyin; acil durumda konum ve fotoğrafla anında SOS alın.',
     feature7Title: 'Koruma ve uygulama uyarıları',
     feature7Text:
-      'Önemli bir izin kapatıldığı anda haberiniz olsun — Android, Mac ve Windows’ta ise yeni bir uygulama belirip onayınızı beklediğinde.',
+      'Önemli bir izin kapatıldığı anda haberiniz olsun. Premium ile Android’deki yeni bir uygulama açılmadan önce onayınızı bekler.',
     feature8Title: 'Ödül görevleri ve ek süre',
     feature8Text:
       'Çocuklar görevleri bitirerek ek dakika kazanır ya da daha fazla süre ister. İkisi de onayınız için telefonunuza düşer.',
@@ -154,10 +154,11 @@ export default {
       'Çocuklar bu hafta her birinin kaç yıldız kazandığını görür. Her pazartesi sıfırlanır ve açık olup olmayacağına siz karar verirsiniz.',
     feature12Title: 'Etkinlik Akışı',
     feature12Text:
-      'Olan biten her şey, sırasıyla — kilidi açılan bir cihaz, filtrelenen bir site, tamamlanan bir görev, gönderilen bir uyarı.',
+      'Olan biten her şey, sırasıyla — kilidi açılan bir cihaz, filtrelenen bir site, tamamlanan bir görev, gönderilen bir uyarı. Bugün ücretsizdir; Premium 30 günü saklar.',
+    featurePremium: 'Premium',
     platformsTitle: 'Ekran neredeyse orada olan tek bir KidGate',
     platformsSub:
-      'Telefonda da bilgisayarda da Chrome’da da aynı kurallar ve aynı aile hesabı. Masaüstü uygulaması bir mağazadan değil, bu siteden kurulur.',
+      'Telefonda da bilgisayarda da aynı kurallar ve aynı aile hesabı. Masaüstü uygulaması bir mağazadan değil, bu siteden kurulur; Chrome ve Android TV mağaza incelemelerini bekliyor.',
 
     showcaseEyebrow: 'Ebeveyn paneli',
     showcaseTitle: 'Tüm aile tek ekranda',
@@ -187,7 +188,7 @@ export default {
     whySub: 'Ebeveyn ile çocuk arasındaki konuşmayı açık tutmak için tasarlandı.',
     why1Title: 'Tek plan, tüm aile',
     why1Text:
-      'Tek abonelik tüm ebeveyn ve çocuk cihazlarını kapsar. Yalnızca aile sahibi öder.',
+      'Tek bir Premium aboneliği tüm ebeveyn ve çocuk cihazlarını kapsar ve yalnızca aile sahibi öder. Ücretsiz planda bir çocuk cihazı izlenmeye devam eder.',
     why2Title: 'Ortak ebeveynlik için tasarlandı',
     why2Text:
       'Aynı çocukları yönetmesi için ikinci bir ebeveyni davet edin; erişimi aile sahibi onaylar.',
@@ -204,7 +205,7 @@ export default {
       'Ebeveynlerin bizi kıyasladığı uygulamalara karşı kontrol ettiğimiz altı madde. Her biri hangi platformda geçerli olduğunu söyler.',
     only1Title: 'Salondaki televizyon da',
     only1Text:
-      'Android TV bir telefonla aynı Engellenen Saatler’i, uygulama engellemeyi, uygulama başına sınırları ve web filtrelemeyi alır. Uygulama bugün gerçek donanımda çalışıyor ve mağazada yayınlanmayı bekliyor; platform listesinde Planlanıyor yazmasının nedeni budur. Ebeveyn denetimlerinin çoğu telefonda biter.',
+      'Android TV’ye Günlük sınır, Engellenen Saatler, uygulama engelleme ve Web filtresi gelir. Televizyonda engelleme yalnızca elden geleni yapar — engellenen bir uygulama ana ekrana geri gönderilir — ve koltuktan SOS ya da ek süre isteği gönderilemez. Uygulama bugün gerçek donanımda çalışıyor ve mağazada yayınlanmayı bekliyor; platform listesinde Planlanıyor yazmasının nedeni budur. Ebeveyn denetimlerinin çoğu telefonda biter.',
     only2Title: 'Telefonda kalan mesaj uyarıları',
     only2Text:
       'Android’de mesajlar, 14 dildeki anahtar kelime listeleriyle cihazın kendisinde karşılaştırılır ve telefondan çıkan şey eşleşen kelimedir, asla konuşmanın kendisi değil. Bunu değiştiren tek bir şey var ve yalnızca siz isterseniz devreye girer: yapay zekâ onayını açtığınızda, anahtar kelime eşleşmesi belirsiz olan gelen bir mesaj değerlendirilmek üzere gönderilir; böylece sıradan bir kelime yüzünden uykunuzdan uyandırılmazsınız.',
@@ -226,7 +227,7 @@ export default {
     faqSub: 'İndirmeden önce kısa yanıtlar.',
     faq1Q: 'Ücretsiz deneme var mı?',
     faq1A:
-      'Evet. Deneme, ilk ebeveyn ve çocuk cihazlarınız bağlandığında başlar ve tüm Premium özellikleri içerir. Bittiğinde, belirlediğiniz kurallar — Günlük sınır, Engellenen Saatler, Engellenen Uygulamalar, Web filtresi, Cihaz Kilidi, ek süre istekleri ve ödül görevleri — bir çocuk cihazında ücretsiz çalışmaya devam eder ve o cihaza nerede olduğunu yine de sorabilirsiniz. Premium’un geri getirdikleri ise canlı etkinlik, geçmiş, haftalık raporlar ve konum takibidir.',
+      'Evet. 7 günlük deneme, ilk ebeveyn ve çocuk cihazlarınız bağlandığında başlar ve tüm Premium özellikleri içerir. Bittiğinde, belirlediğiniz kurallar — Günlük sınır, Engellenen Saatler, Engellenen Uygulamalar, Web filtresi, Cihaz Kilidi, ek süre istekleri ve ödül görevleri — bir çocuk cihazında ücretsiz çalışmaya devam eder ve o cihaza nerede olduğunu yine de sorabilirsiniz. Premium’un geri getirdikleri ise canlı etkinlik, geçmiş, haftalık raporlar ve konum takibidir.',
     faq2Q: 'Kaç cihaz yönetebilirim?',
     faq2A:
       'Tek abonelik tüm ailenizi kapsar — aynı planda her çocuk cihazı ve her ebeveyn. Ücretsiz planda bir çocuk cihazı izlenmeye devam eder ve hangisi olacağını siz seçersiniz; diğerleri hâlihazırda belirlediğiniz kuralları uygulamayı sürdürür ve etkinlik göndermeyi bırakır.',
@@ -236,10 +237,14 @@ export default {
     faq4Q: 'Her şeyi bilgisayardan yönetebilir miyim?',
     faq4A:
       'Evet. Ebeveyn paneli her tarayıcıda açılır — telefonunuzdan aldığınız bir kodla giriş yapın, aynı aileyi, cihazları ve ayarları görün. Okuma hemen çalışır; bir cihazı kilitlemek ya da bir sınırı değiştirmek Ebeveyn PIN’inizi veya uygulamadan bir onayı ister.',
+    faq5Q: 'Premium’un ücreti ne kadar?',
+    faq5A:
+      'Premium’un ABD fiyatı ayda $6.99 veya yılda $39.99; App Store ya da Google Play üzerinden faturalandırılır ve orada kendi para biriminizde gösterilir. Tek seferlik ödenen Lifetime planı en fazla üç çocuk cihazını kapsar. Ücretsiz planın süresi hiç dolmaz.',
     faqMore: 'Başka sorunuz mu var? Destek sayfasına gidin',
 
     ctaTitle: 'Ailenizi korumaya bugün başlayın',
-    ctaSub: 'Tam erişimli ücretsiz deneme. Başlamak için kredi kartı gerekmez.',
+    ctaSub:
+      'Tam erişimli 7 günlük ücretsiz deneme. Başlamak için kredi kartı gerekmez.',
     ctaNote: 'App Store veya Google Play üzerinden istediğiniz zaman iptal edin.',
   },
 
@@ -289,6 +294,8 @@ export default {
     userDisabled: 'Bu hesap devre dışı bırakıldı.',
     userNotFound: 'Bu e-postayı kullanan bir KidGate hesabı yok.',
     wrongPassword: 'E-posta veya parola yanlış.',
+    rateLimited:
+      'Bu ağdan çok fazla giriş kodu alındı. {{minutes}} dk sonra tekrar deneyin.',
     tooManyRequests: 'Çok fazla deneme. Birkaç dakika bekleyip tekrar deneyin.',
     popupClosed: 'Giriş penceresi tamamlanmadan kapatıldı.',
     popupCancelled: 'Giriş iptal edildi.',
@@ -312,6 +319,7 @@ export default {
     checkingSession: 'Oturumunuz denetleniyor…',
     loadingFamily: 'Aileniz yükleniyor…',
     loadFailedTitle: 'Aileniz yüklenemedi',
+    noAccessTitle: 'Bu hesapta aile yok',
     noAccess:
       'Bu hesabın herhangi bir KidGate ailesine erişimi yok. Uygulamada kullandığınız ebeveyn hesabıyla giriş yapın.',
   },
@@ -466,7 +474,7 @@ export default {
     unlockToChange: 'Önce değişiklikleri aç',
     pinTitle: 'Ebeveyn PIN’ini gir',
     pinBody:
-      'Uygulamada kullandığın altı rakamın aynısı. Bu tarayıcı 7 gün açık kalır.',
+      'Uygulamada kullandığın altı rakamın aynısı. Bu tarayıcı 8 saat açık kalır; uygulamadan onaylamak oturumu 7 gün açık tutar.',
     pinLabel: 'Ebeveyn PIN’i',
     pinSubmit: 'Aç',
     pinOrScan: 'Ya da telefonundan onayla',
@@ -541,6 +549,7 @@ export default {
     off: 'Kapalı',
     on: 'Açık',
     topAppsTitle: 'Bugün en çok kullanılan uygulamalar',
+    topAppsTitleDay: 'En çok kullanılan uygulamalar · {{date}}',
     topAppsSub: 'Uygulama başına sınırlar işaret olarak gösterilir',
     topAppsFreeHint: 'Bugünün ilk 3’ü — tam liste ve geçmiş Premium ile gelir.',
     trendTitle: 'Ekran süresi eğilimi',
@@ -705,7 +714,7 @@ export default {
       'Tarayıcılar ve YouTube. Yalnızca işaretli kelime bildirilir, aramanın kendisi asla.',
     rowSafeSearch: 'Güvenli Aramayı zorunlu kıl',
     rowSafeSearchDesc:
-      'Google SafeSearch, YouTube Kısıtlı Mod, Bing ve DuckDuckGo’yu katı ayarda kilitler. Android, Android TV ve Chrome.',
+      'Google SafeSearch, YouTube Kısıtlı Mod, Bing ve DuckDuckGo’yu katı ayarda kilitler. Android, Android TV ve Chrome. Bu seviyede YouTube yorumları da gizler ve bazı sıradan videoları engeller.',
 
     webFilterCatsTitle: 'Web filtresi kategorileri',
     webFilterCatsSub: 'Engellenen içerik türleri',
@@ -794,8 +803,6 @@ export default {
     narrativeTitle: 'Tek cümleyle',
     finePrint:
       'Rakamlar {{from}} – {{to}} arasını, ailedeki tüm cihazları kapsar. Ekran süresi cihazların bildirdiğidir; ölçülemeyen dakikalar hiçbir toplama dahil değildir.',
-    generate: 'Bu haftanın raporunu yaz',
-    generating: 'Yazılıyor…',
     shareImage: 'Görsel olarak kaydet',
     sharePdf: 'PDF olarak kaydet',
     copySummary: 'Özeti kopyala',
@@ -803,8 +810,7 @@ export default {
     imageSaved: 'Görsel kaydedildi.',
     shareFailed: 'Bu tarayıcı bunu kaydedemiyor. Bunun yerine özeti kopyalayın.',
     emptyTitle: 'Henüz rapor yok',
-    emptyBody:
-      'Her Pazartesi sabahı bir rapor gelir. Bu haftanınkini şimdi yazabilirsiniz — son yedi günü kapsar.',
+    emptyBody: 'Her Pazartesi sabahı bir rapor gelir ve önceki yedi günü kapsar.',
     noUsage:
       'Son iki haftada ekran süresi kaydedilmedi, bu yüzden henüz raporlanacak bir şey yok. Çevrimdışı bir cihaz hiçbir şey bildirmez; bu, sakin bir haftayla aynı şey değildir.',
     rateLimited: 'Çok fazla deneme. Bir dakika bekleyin.',
@@ -876,7 +882,7 @@ export default {
 
     faq4Q: 'Ücretsiz deneme nasıl çalışır?',
     faq4A:
-      'Deneme, ilk ebeveyn ve çocuk cihazlarınız bağlandığında başlar ve tüm özelliklere tam erişim verir. Bir çocuk cihazını kaldırmak denemeyi sıfırlamaz. Bittiğinde, tüm kurallar bir çocuk cihazında ücretsiz çalışmaya devam eder; Premium canlı etkinliği, geçmişi, haftalık raporları ve tüm cihazları korur.',
+      '7 günlük deneme, ilk ebeveyn ve çocuk cihazlarınız bağlandığında başlar ve tüm özelliklere tam erişim verir. Bir çocuk cihazını kaldırmak denemeyi sıfırlamaz. Bittiğinde, tüm kurallar bir çocuk cihazında ücretsiz çalışmaya devam eder; Premium canlı etkinliği, geçmişi, haftalık raporları ve tüm cihazları korur.',
 
     faq5Q: 'Aboneliğimi nasıl iptal ederim?',
     faq5A:
@@ -955,7 +961,7 @@ export default {
       'Her platform, bir uygulamanın neyi zorunlu kılabileceğini sınırlar. KidGate’in yalnızca elinden geleni yaptığı yerlerde — bilgisayarda engellenen bir uygulamayı açılmadan durdurmak yerine kapatmak gibi — ekran yeşil bir onay işareti göstermek yerine bunu açıkça yazar.',
     value4Title: 'Tek aile, tek plan',
     value4Text:
-      'Tek abonelik bütün ebeveynleri ve bütün çocuk cihazlarını kapsar. Günlük sınır, Engellenen saatler ve konum ücretsiz çalışmaya devam eder; güvenlik özellikleri asla ödeme duvarının arkasında kalmaz.',
+      'Tek bir Premium aboneliği bütün ebeveynleri ve bütün çocuk cihazlarını kapsar. Günlük sınır, Engellenen Saatler, Engellenen Uygulamalar ve Web filtresi bir çocuk cihazında ücretsiz çalışmaya devam eder; güvenlik kuralları asla ödeme duvarının arkasında kalmaz.',
     makeEyebrow: 'Ne yapıyoruz',
     makeTitle: 'Ekran neredeyse orada tek bir KidGate',
     makeSub:

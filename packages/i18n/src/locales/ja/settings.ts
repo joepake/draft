@@ -101,8 +101,10 @@ export const settings = {
     'この保護者セッションを終了し、保護者／子どもの選択画面に戻ります。デバイスを管理するには再度サインインしてください。アカウント、ファミリー、子どものデバイスは変更されません。',
   removeParentDeviceAlertTitle: '保護者のデバイスを削除しますか？',
   removeParentDeviceAlertMessage:
-    '{{deviceName}}は通知を受け取らなくなります。その保護者は再度サインインすれば再接続できます。',
+    '{{deviceName}} はこのアカウントからログアウトされ、通知を受け取らなくなります。端末を持っている人はパスワードで再度ログインできます。',
   toastParentDeviceRemoved: '{{deviceName}}を削除しました。',
+  signedOutByAnotherDevice:
+    'この端末は、別の端末から保護者アカウントをログアウトされました。',
   deleteAccountTitle: 'アカウントを削除',
   deleteAccountSubtitleDefault: 'アカウントとすべてのデータを完全に削除します',
   deleteAccountAlertTitle: 'アカウントを完全に削除しますか？',

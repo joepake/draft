@@ -14,8 +14,6 @@ import '@kidgate/web-ui/dashboard.css';
  * The public pages live in `apps/site` and are linked to by absolute URL.
  */
 
-const SITE_URL = import.meta.env.VITE_SITE_URL ?? 'https://kidgate.app';
-
 export default function App() {
   const { t } = useT();
 
@@ -32,9 +30,6 @@ export default function App() {
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
-      <footer className="footer footer-slim">
-        <a href={SITE_URL}>{t('nav.backToSite') ?? 'kidgate.app'}</a>
-      </footer>
     </div>
   );
 }

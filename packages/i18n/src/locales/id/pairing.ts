@@ -50,7 +50,7 @@ export const pairing = {
   unableToCreateCode: 'Tidak dapat membuat kode. Silakan coba lagi.',
   inviteParentTitle: 'Tambahkan perangkat orang tua lain',
   inviteParentInstructions:
-    'Di perangkat lain, buka KidGate → Keluarga → + → Gabung keluarga, lalu pindai kode QR ini atau masukkan kodenya. Setujui permintaan di sini untuk menyambungkan orang tua tersebut.',
+    'Di perangkat lain, buka KidGate → Keluarga → + → Gabung keluarga, lalu pindai kode QR ini atau masukkan kodenya dalam 15 menit. Setujui permintaan di sini untuk menyambungkan orang tua tersebut.',
   inviteCodeLabel: 'Atau bagikan kode ini',
   joinFamilyTitle: 'Bergabung dengan keluarga',
   joinFamilyScanInstructions:

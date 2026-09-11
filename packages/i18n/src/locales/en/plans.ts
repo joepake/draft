@@ -64,7 +64,7 @@ export const plans = {
   compareActivityFeedPremium: '30 days',
   compareChildReport: 'Per-child reports',
   compareIncluded:
-    'Both plans include the daily limit, blocked hours, blocked apps, the web filter, remote lock, SOS, time requests, reward tasks, iPhone, Android, Mac, Windows, TV and Chromebook in one family, the web dashboard and several parents.',
+    'Both plans include the daily limit, blocked hours, blocked apps, the web filter, remote lock, SOS, time requests and reward tasks on iPhone, Android, Mac and Windows in one family, plus the web dashboard and several parents. Android TV and Chromebook are on the way and carry fewer controls.',
   // The rows above, folded into the five reasons Premium sells
   // (`docs/PRICING.md` §5). Groups and their order: `planComparison` in
   // `@kidgate/core/domain`. A headline is one or two words; a tagline is one
@@ -177,11 +177,14 @@ export const plans = {
   platformAndroidDetail: 'Parent or child device · Android 7 and later',
   platformMac: 'Mac',
   platformMacDetail: 'Child device only · macOS 12 and later',
-  platformIosLimits: 'No App Limits or message alerts.',
+  platformIosLimits:
+    'No App Limits or message alerts. The web filter covers adult sites only, and blocked apps are chosen on the iPhone itself.',
   platformMacLimits: 'No message alerts, and location is approximate.',
   platformWindowsLimits: 'No message alerts, and location is approximate.',
-  platformAndroidTvLimits: 'No message alerts or location.',
-  platformChromebookLimits: 'No Daily Limit, Blocked Hours, Device Lock or location.',
+  platformAndroidTvLimits:
+    'No message alerts, location, SOS or time requests. App blocking is best-effort.',
+  platformChromebookLimits:
+    'Web filter only — no Daily Limit, Blocked Hours, App Blocking, Device Lock, SOS or location.',
   platformComingSoon: 'Coming soon',
   platformWindows: 'Windows',
   platformWindowsDetail: 'Child device only · Windows 10 and later',
@@ -189,4 +192,26 @@ export const plans = {
   platformAndroidTvDetail: 'Child device only · Android TV 7 and later',
   platformChromebook: 'Chromebook',
   platformChromebookDetail: 'Child device · web filtering in Chrome only',
+  // The premium teasers (`@kidgate/core/domain/premiumTeaser`). Each body is
+  // its `docs/PRICING.md` §4 row, said at the moment a parent misses it: a
+  // comparison table asks them to imagine the gap, these measure it.
+  teaserCta: 'See Premium',
+  // A label with a value, never a counted noun ("7 apps"), which is what keeps
+  // these three out of the plural machinery in fourteen packs — the shape
+  // `usage.protectionWebBlocked` already uses.
+  teaserProofOtherApps: 'Other apps: {{count}} · {{minutes}}',
+  teaserProofOtherMinutes: 'Other apps: {{minutes}}',
+  teaserProofBlocked: 'Blocked this week: {{count}}',
+  teaserTopApps: 'Premium names every app, minute by minute, and keeps 30 days of it.',
+  teaserWebHistory:
+    'Premium shows which sites were blocked, and what your child searched for.',
+  teaserVideoHistory: 'Premium keeps every YouTube video and Short they watched.',
+  teaserLocationTrail:
+    'Premium keeps where they went, and tells you when they arrive at or leave home and school.',
+  teaserActivityWindow: 'Free shows today. Premium keeps 30 days.',
+  teaserChildReport: 'Premium adds a report for each child, and a new one every week.',
+  teaserMessageAlerts:
+    'Premium tells you when a message needs your attention. Android only.',
+  // §3's axis, for a surface comparing plans rather than missing a feature.
+  teaserLiveNote: 'Free updates every 30 minutes. Premium is live.',
 } as const;

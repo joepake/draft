@@ -37,8 +37,8 @@ export default function DeleteAccount() {
           so we can verify your identity.
         </li>
         <li>
-          We will confirm your request and complete the deletion, normally within 30
-          days.
+          We will confirm your request and schedule the deletion. It holds for 14 days,
+          during which you can cancel it; after that it runs and cannot be undone.
         </li>
       </ul>
 
@@ -54,12 +54,16 @@ export default function DeleteAccount() {
         </li>
         <li>Your parental control settings and preferences.</li>
       </ul>
+      <p>
+        Messages and screenshots you sent to support are kept separately and are not
+        removed by account deletion today; closing that gap is planned.
+      </p>
 
       <h2>Retention timelines</h2>
       <ul>
         <li>
-          Data is deleted from our active systems within <strong>30 days</strong> of a
-          verified request.
+          Data is deleted from our active systems when the <strong>14-day</strong> hold
+          on a verified request ends.
         </li>
         <li>
           Copies in encrypted backups are purged within <strong>90 days</strong>.

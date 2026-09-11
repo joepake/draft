@@ -39,6 +39,35 @@ function writeTouched(familyId, atMs) {
   }
 }
 
+/**
+ * The call in flight for a family, so a second caller can wait on the first.
+ *
+ * `useFamilyData` fires this and does not await it, which is right — nothing
+ * on the page should wait for a presence stamp. But the choose-a-device sheet
+ * has to: a family the dormancy reaper parked looks exactly like a family owed
+ * a choice, and this call is what wakes it. Asking first and waking a second
+ * later is a question the parent had no reason to be asked. `apps/mobile`
+ * waits on the same call for the same reason.
+ */
+const inFlight = new Map();
+
+/**
+ * Settles when this family's presence call does, or at once if none is due.
+ *
+ * Named and shaped after `apps/mobile`'s `waitForParentPresence`, and swallows
+ * the failure the same way: a caller waiting on the wake has nothing to do
+ * about a stamp that did not land.
+ */
+export function waitForParentPresence(familyId) {
+  const call = inFlight.get(familyId);
+  return call
+    ? call.then(
+        () => undefined,
+        () => undefined,
+      )
+    : Promise.resolve();
+}
+
 export function touchParentPresenceIfDue(familyId, nowMs = Date.now()) {
   if (!familyId) {
     return Promise.resolve(null);
@@ -47,6 +76,10 @@ export function touchParentPresenceIfDue(familyId, nowMs = Date.now()) {
   if (typeof last === 'number' && nowMs - last < ONCE_A_DAY_MS) {
     return Promise.resolve(null);
   }
+  const pending = inFlight.get(familyId);
+  if (pending) {
+    return pending;
+  }
   /*
    * Stamped only once the server has answered. The load this matters most on
    * — the first after a month away, the one that wakes a dormant family — is
@@ -54,10 +87,20 @@ export function touchParentPresenceIfDue(familyId, nowMs = Date.now()) {
    * tabs opening together may both pay for one call; that is a cheaper mistake
    * than the other one. The repository answers `null` on failure.
    */
-  return deviceRepository.touchParentPresence(familyId).then(result => {
-    if (result) {
-      writeTouched(familyId, nowMs);
-    }
-    return result;
-  });
+  const call = deviceRepository
+    .touchParentPresence(familyId)
+    .then(result => {
+      if (result) {
+        writeTouched(familyId, nowMs);
+      }
+      return result;
+    })
+    .finally(() => {
+      // Cleared either way: a failed call must be retried by the next load,
+      // not remembered as settled for the life of the tab.
+      inFlight.delete(familyId);
+    });
+
+  inFlight.set(familyId, call);
+  return call;
 }

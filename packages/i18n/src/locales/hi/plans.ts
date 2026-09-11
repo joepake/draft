@@ -60,7 +60,7 @@ export const plans = {
   compareActivityFeedPremium: '30 दिन',
   compareChildReport: 'हर बच्चे की रिपोर्ट',
   compareIncluded:
-    'दोनों प्लान में दैनिक सीमा, ब्लॉक किए गए समय, ब्लॉक किए गए ऐप्स, वेब फ़िल्टर, रिमोट लॉक, SOS, समय के अनुरोध, इनाम वाले काम, एक परिवार में iPhone, Android, Mac, Windows, TV और Chromebook, वेब डैशबोर्ड और कई पैरेंट शामिल हैं।',
+    'दोनों प्लान में एक परिवार के iPhone, Android, Mac और Windows पर दैनिक सीमा, ब्लॉक किए गए समय, ब्लॉक किए गए ऐप्स, वेब फ़िल्टर, रिमोट लॉक, SOS, समय अनुरोध और इनाम वाले टास्क शामिल हैं, साथ ही वेब डैशबोर्ड और कई पैरेंट भी। Android TV और Chromebook जल्द आ रहे हैं और उन पर कम नियंत्रण उपलब्ध हैं।',
   sectionWhyPremium: 'Premium में क्या जुड़ता है',
   sectionWhyPremiumSubtitle:
     'हर नियम मुफ़्त में भी चलता रहता है। Premium में यह जुड़ता है कि आप क्या देख सकते हैं, और कितनी जल्दी।',
@@ -169,12 +169,14 @@ export const plans = {
   platformAndroidDetail: 'माता-पिता या बच्चे का डिवाइस · Android 7 या बाद का',
   platformMac: 'Mac',
   platformMacDetail: 'सिर्फ़ बच्चे का डिवाइस · macOS 12 या बाद का',
-  platformIosLimits: 'ऐप सीमाएँ और संदेश सूचनाएँ उपलब्ध नहीं हैं।',
+  platformIosLimits:
+    'ऐप सीमाएँ और संदेश सूचनाएँ उपलब्ध नहीं हैं। वेब फ़िल्टर सिर्फ़ वयस्क साइटों को कवर करता है, और ब्लॉक किए जाने वाले ऐप्स iPhone पर ही चुने जाते हैं।',
   platformMacLimits: 'संदेश सूचनाएँ नहीं हैं, और स्थान अनुमानित है।',
   platformWindowsLimits: 'संदेश सूचनाएँ नहीं हैं, और स्थान अनुमानित है।',
-  platformAndroidTvLimits: 'संदेश सूचनाएँ और स्थान उपलब्ध नहीं हैं।',
+  platformAndroidTvLimits:
+    'संदेश सूचनाएँ, स्थान, SOS और समय अनुरोध उपलब्ध नहीं हैं। ऐप ब्लॉकिंग यथासंभव ही काम करती है।',
   platformChromebookLimits:
-    'दैनिक सीमा, ब्लॉक किए गए समय, डिवाइस लॉक और स्थान उपलब्ध नहीं हैं।',
+    'सिर्फ़ वेब फ़िल्टर — दैनिक सीमा, ब्लॉक किए गए समय, ऐप ब्लॉकिंग, डिवाइस लॉक, SOS और स्थान उपलब्ध नहीं हैं।',
   platformComingSoon: 'जल्द आ रहा है',
   platformWindows: 'Windows',
   platformWindowsDetail: 'सिर्फ़ बच्चे का डिवाइस · Windows 10 या बाद का',
@@ -182,4 +184,19 @@ export const plans = {
   platformAndroidTvDetail: 'सिर्फ़ बच्चे का डिवाइस · Android TV 7 या बाद का',
   platformChromebook: 'Chromebook',
   platformChromebookDetail: 'बच्चे का डिवाइस · सिर्फ़ Chrome में वेब फ़िल्टर',
+  teaserCta: 'Premium देखें',
+  teaserProofOtherApps: 'अन्य ऐप: {{count}} · {{minutes}}',
+  teaserProofOtherMinutes: 'अन्य ऐप: {{minutes}}',
+  teaserProofBlocked: 'इस हफ़्ते ब्लॉक किए गए: {{count}}',
+  teaserTopApps: 'Premium हर ऐप का नाम बताता है, मिनट दर मिनट, और 30 दिन तक रखता है।',
+  teaserWebHistory:
+    'Premium बताता है कि कौन-सी साइटें ब्लॉक हुईं और आपके बच्चे ने क्या खोजा।',
+  teaserVideoHistory: 'Premium उसके देखे हर YouTube वीडियो और Short को रखता है।',
+  teaserLocationTrail:
+    'Premium उसका रास्ता रखता है और बताता है कि वह घर या स्कूल कब पहुँचा और कब निकला।',
+  teaserActivityWindow: 'मुफ़्त प्लान आज दिखाता है। Premium 30 दिन रखता है।',
+  teaserChildReport: 'Premium हर बच्चे के लिए अलग रिपोर्ट देता है, और हर हफ़्ते नई।',
+  teaserMessageAlerts:
+    'Premium तब बताता है जब किसी संदेश पर आपका ध्यान चाहिए। सिर्फ़ Android पर।',
+  teaserLiveNote: 'मुफ़्त प्लान हर 30 मिनट में अपडेट होता है। Premium लाइव है।',
 } as const;

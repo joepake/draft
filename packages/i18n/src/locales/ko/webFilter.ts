@@ -7,13 +7,13 @@ export const webFilter = {
     '{{name}}의 기기마다 웹 필터 설정이 달랐습니다. 여기서 저장하면 더 엄격한 쪽으로 합쳐진 하나의 설정이 모든 기기에 적용됩니다.',
   mergeLoosened: '이제 모든 기기에서 허용됨: {{domains}}',
   toastUpdateFailed: '웹 필터를 업데이트하지 못했습니다. 다시 시도해 주세요.',
-  heroTitle: '성인 웹사이트 필터링',
+  heroTitle: '부적절한 웹사이트 필터링',
   heroSubtitleIos:
     'Apple 스크린 타임의 웹 콘텐츠 필터를 사용해 자녀 기기의 Safari와 앱 내 브라우저에서 성인 콘텐츠를 제한합니다.',
   heroSubtitleAndroid:
-    '자녀의 Android 기기에서 로컬 DNS VPN을 사용해 알려진 성인 도메인을 브라우저와 여러 앱에서 차단합니다.',
+    '자녀의 Android 기기에서 로컬 DNS VPN을 사용해 알려진 부적절한 도메인을 브라우저와 여러 앱에서 차단합니다.',
   heroSubtitleMacos:
-    '브라우저와 여러 앱에서 알려진 성인 사이트를 차단하기 위해 자녀의 Mac에서 KidGate 콘텐츠 필터를 실행합니다.',
+    '브라우저와 여러 앱에서 알려진 부적절한 사이트를 차단하기 위해 자녀의 Mac에서 KidGate 콘텐츠 필터를 실행합니다.',
   toggleHintIos: '자녀 기기에서 스크린 타임 권한이 필요합니다.',
   toggleHintAndroid:
     '자녀가 KidGate VPN 연결을 한 번 승인해야 합니다. 필터가 작동하려면 VPN을 켜 두세요.',
@@ -26,6 +26,8 @@ export const webFilter = {
   safeSearchLabel: '세이프서치 강제 적용',
   safeSearchHint:
     'Google 세이프서치, YouTube 제한 모드, Bing, DuckDuckGo를 엄격 설정으로 고정합니다. Android, Android TV, Chrome.',
+  safeSearchStrictNote:
+    'YouTube가 가장 엄격한 수준으로 작동합니다. 댓글이 숨겨지고 일반 동영상도 일부 차단됩니다. 아이가 자기 계정에서 끌 수 없습니다.',
   infoTitle: '작동 방식',
   infoLine1Ios: 'Apple이 성인 웹사이트를 자동으로 필터링합니다.',
   infoLine2Ios:
@@ -39,7 +41,7 @@ export const webFilter = {
   infoLine3Android:
     '필터링 중에는 자녀 기기에 VPN 아이콘이 표시됩니다. VPN을 끄면 필터도 중단됩니다 — KidGate를 다시 열면 복원됩니다.',
   infoLine4Android:
-    '설정 → 네트워크 및 인터넷 → 프라이빗 DNS → 사용 안 함으로 이동하세요.',
+    '설정에서 네트워크 및 인터넷, 비공개 DNS 순으로 열고 사용 안 함을 선택하세요.',
   infoLine1Macos:
     'KidGate는 Mac에서 콘텐츠 필터를 실행하여 조회 중인 사이트를 확인하고, 설정한 카테고리에 해당하는 사이트를 차단합니다.',
   infoLine2Macos:
@@ -50,7 +52,7 @@ export const webFilter = {
     '필터는 사이트 이름을 읽지만, 최신 브라우저는 방문의 약 절반에서 이를 숨기므로 해당 사이트는 카테고리에 따라 확인되지 않습니다. 그래도 이 방식으로 자녀가 접근하는 대부분의 사이트는 계속 차단됩니다.',
   privateDnsBannerTitle: '프라이빗 DNS 끄기',
   privateDnsBannerBody:
-    '프라이빗 DNS가 켜져 있어 성인 웹 필터가 우회될 수 있습니다. 필터가 작동하도록 꺼 주세요.',
+    '프라이빗 DNS가 켜져 있어 웹 필터가 우회될 수 있습니다. 필터가 작동하도록 꺼 주세요.',
   privateDnsBannerButton: 'DNS 설정 열기',
   vpnConsentBannerTitle: '웹 필터 VPN 복원',
   vpnConsentBannerBody:
@@ -61,7 +63,7 @@ export const webFilter = {
   macosFilterNote: 'Mac에서는 KidGate 콘텐츠 필터 사용',
 
   heroSubtitleWindows:
-    '아이의 PC에서 KidGate 자체 리졸버를 실행해 모든 브라우저에서 알려진 성인 사이트를 차단합니다.',
+    '아이의 PC에서 KidGate 자체 리졸버를 실행해 모든 브라우저에서 알려진 부적절한 사이트를 차단합니다.',
 
   toggleHintWindows:
     'PC에서 승인할 것은 없습니다. KidGate 백그라운드 서비스가 몇 초 안에 필터를 켭니다.',
@@ -199,4 +201,9 @@ export const webFilter = {
   siteRequestDeniedDescription: '{{deviceName}}에서 {{domain}}은(는) 계속 차단됩니다.',
   siteRequestReceived: '사이트 요청',
   siteRequestReceivedDescription: '{{deviceName}}이(가) {{domain}} 접속을 요청했어요.',
+  privateDnsStep1: '이 기기에서 설정을 여세요.',
+  privateDnsStep2: '네트워크 및 인터넷을 선택하세요.',
+  privateDnsStep3: '비공개 DNS를 열고 사용 안 함을 선택하세요.',
+  vpnConsentStepAllow:
+    'Android VPN 요청에서 확인을 선택하세요. 필터가 켜져 있는 동안 상태 표시줄에 열쇠 아이콘이 남습니다.',
 } as const;

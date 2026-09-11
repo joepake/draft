@@ -20,6 +20,15 @@ export const family = {
   quickProtectTitle: 'Proteggere {{childName}} adesso?',
   quickProtectBody:
     'Attiva un set iniziale di protezioni. Potrai regolare tutto in seguito nel profilo del bambino.',
+  quickProtectSourceLabel: 'Parti da',
+  quickProtectAllOnBody:
+    '{{childName}} ha già queste protezioni attive. Scegli un altro figlio per copiarne orari, limite ed elenchi di siti.',
+  quickProtectReplaces: 'Sostituisce l’impostazione attuale di {{childName}}.',
+  quickProtectWebFilterCopyHint:
+    'Copia le categorie di {{childName}}, più {{allowed}} siti consentiti e {{blocked}} rifiutati.',
+  quickProtectSourceDefault: 'Impostazioni predefinite di KidGate',
+  quickProtectSourceBody:
+    'Copia le regole di {{childName}}, inclusi i siti consentiti e bloccati.',
   quickProtectBedtime: 'Orari di blocco per la notte',
   quickProtectBedtimeHint:
     'Blocca l’uso del dispositivo di notte, dalle 22:00 alle 7:00.',
@@ -28,7 +37,7 @@ export const family = {
     '{{minutes}} minuti al giorno, condivisi tra tutti i suoi dispositivi.',
   quickProtectWebFilter: 'Filtro web',
   quickProtectWebFilterHint:
-    'Blocca i contenuti per adulti e altre categorie a rischio.',
+    'Blocca i contenuti inappropriati e attiva la ricerca sicura e le restrizioni di YouTube.',
   quickProtectWebFilterPremium: 'Funzione Premium — inclusa con un piano.',
   quickProtectApply: 'Attiva protezione',
   quickProtectSkip: 'Non ora',
@@ -114,6 +123,7 @@ export const family = {
   chipHealthWarnCount_one: '{{count}} da configurare',
 
   chipHealthInactiveCount: '{{count}} inattivi da oltre 24 h',
+  chipLocationBlocked: 'Nessuna posizione',
 
   chipBlockedCount: '{{count}} bloccati',
 

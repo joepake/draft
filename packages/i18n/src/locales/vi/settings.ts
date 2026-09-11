@@ -97,8 +97,10 @@ export const settings = {
     'Bạn sẽ đăng xuất khỏi thiết bị này, và KidGate sẽ hỏi lại thiết bị này dành cho ai. Vui lòng đăng nhập lại để tiếp tục quản lý thiết bị. Tài khoản, gia đình và các thiết bị của trẻ vẫn được giữ nguyên.',
   removeParentDeviceAlertTitle: 'Gỡ thiết bị phụ huynh?',
   removeParentDeviceAlertMessage:
-    '{{deviceName}} sẽ không còn nhận được thông báo. Phụ huynh đó có thể đăng nhập lại để kết nối.',
+    '{{deviceName}} sẽ bị đăng xuất khỏi tài khoản này và không còn nhận thông báo. Người giữ máy có thể đăng nhập lại bằng mật khẩu.',
   toastParentDeviceRemoved: 'Đã gỡ {{deviceName}}.',
+  signedOutByAnotherDevice:
+    'Thiết bị này đã bị đăng xuất khỏi tài khoản phụ huynh từ một thiết bị khác.',
   deleteAccountTitle: 'Xóa tài khoản',
   deleteAccountSubtitleDefault: 'Xóa vĩnh viễn tài khoản và toàn bộ dữ liệu',
   deleteAccountAlertTitle: 'Xóa vĩnh viễn tài khoản?',

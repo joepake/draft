@@ -6,13 +6,21 @@ import {
   isReportOnlyControlKey,
   isUsageControlKey,
 } from '@kidgate/schema/controlKeys';
+import type { DeviceLocationRequestResult } from '@kidgate/schema/device';
 import type { DeviceControls, DeviceLocation } from '@kidgate/schema/deviceControls';
 import { childDeviceDoc } from '@kidgate/schema/paths';
 import type { BatteryStatus } from '@kidgate/schema/telemetry';
 import { toJsonBody } from '../domain/jsonBody';
 import type { BufferedUsageDay } from '../domain/parkedBuffer';
-import { isTimeline } from '../domain/usageTimeline';
+import { isTimeline, parseHourlyApps } from '../domain/usageTimeline';
 import type { LocationHistoryRepository } from './locationHistory';
+import type { UsageHourlyApps } from '@kidgate/schema/usageDay';
+
+/** The field to spread onto a usage upload, or nothing — never an empty map. */
+function hourlyAppsField(value: unknown): { hourlyApps?: UsageHourlyApps } {
+  const hourlyApps = parseHourlyApps(value);
+  return hourlyApps ? { hourlyApps } : {};
+}
 
 /**
  * Writing device controls — the fan-out that decides *who* may write what.
@@ -96,6 +104,7 @@ export function createControlRepository(deps: ControlRepositoryDeps) {
           ...usageControls,
           ...(controls.topApps ? { topApps: controls.topApps } : {}),
           ...(controls.timeline ? { timeline: controls.timeline } : {}),
+          ...(controls.hourlyApps ? { hourlyApps: controls.hourlyApps } : {}),
           // The free tier's counters, forwarded only when the caller could
           // count — `reportUsage` omits rather than zeroes, and so does this.
           ...(typeof controls.blockedSitesToday === 'number'
@@ -208,6 +217,10 @@ export function createControlRepository(deps: ControlRepositoryDeps) {
            * second claim. iOS is the whole reason that distinction exists.
            */
           ...(isTimeline(usage.timeline) ? { timeline: usage.timeline } : {}),
+          // Validated on the way out like the timeline: the server drops a
+          // malformed map whole, so sending one would cost the upload and
+          // store nothing.
+          ...hourlyAppsField(usage.hourlyApps),
           /*
            * Same omit-rather-than-zero rule as the timeline above, for the same
            * reason pointed the other way: zero is the claim "this device
@@ -289,6 +302,7 @@ export function createControlRepository(deps: ControlRepositoryDeps) {
            * report before it was parked.
            */
           ...(isTimeline(day.timeline) ? { timeline: day.timeline } : {}),
+          ...hourlyAppsField(day.hourlyApps),
           ...(typeof day.idleMinutes === 'number' &&
           Number.isFinite(day.idleMinutes) &&
           day.idleMinutes >= 0
@@ -342,6 +356,30 @@ export function createControlRepository(deps: ControlRepositoryDeps) {
     async clearLocationRequest(userId: string, deviceId: string): Promise<void> {
       await db.updateDoc(childDeviceDoc(userId, deviceId), {
         locationRequestId: null,
+      });
+    },
+
+    /**
+     * Clear the request **and** say what came of it, in one write.
+     *
+     * One write rather than two, because they are one fact: a request cleared
+     * with nothing said is the state this exists to end. Measured 2026-09-10
+     * on a real Mac — request taken and cleared, no fix written, device online
+     * — and from the parent's side that was indistinguishable from success.
+     * `Device.locationRequestResult` carries the whole argument.
+     *
+     * A plain document write, like `clearLocationRequest` above and for the
+     * same reason: neither field is a control, so `parentControlsUnchanged()`
+     * does not pin them and the child's own session may write both.
+     */
+    async answerLocationRequest(
+      userId: string,
+      deviceId: string,
+      result: DeviceLocationRequestResult,
+    ): Promise<void> {
+      await db.updateDoc(childDeviceDoc(userId, deviceId), {
+        locationRequestId: null,
+        locationRequestResult: { ...result },
       });
     },
 

@@ -20,6 +20,15 @@ export const family = {
   quickProtectTitle: 'क्या {{childName}} को अभी सुरक्षित करें?',
   quickProtectBody:
     'सुरक्षा का एक शुरुआती सेट चालू करें। बाद में बच्चे की प्रोफ़ाइल में आप हर सेटिंग बदल सकते हैं।',
+  quickProtectSourceLabel: 'यहाँ से शुरू करें',
+  quickProtectAllOnBody:
+    '{{childName}} के लिए ये सुरक्षाएँ पहले से चालू हैं। किसी दूसरे बच्चे के घंटे, सीमा और साइट सूचियाँ कॉपी करने के लिए उसे चुनें।',
+  quickProtectReplaces: '{{childName}} की मौजूदा सेटिंग की जगह लेगा।',
+  quickProtectWebFilterCopyHint:
+    '{{childName}} की श्रेणियाँ कॉपी करता है, साथ में {{allowed}} अनुमत और {{blocked}} अस्वीकृत साइटें।',
+  quickProtectSourceDefault: 'KidGate डिफ़ॉल्ट',
+  quickProtectSourceBody:
+    '{{childName}} के नियम कॉपी करता है, जिनमें अनुमत और अवरुद्ध साइटें भी शामिल हैं।',
   quickProtectBedtime: 'रात के ब्लॉक किए गए समय',
   quickProtectBedtimeHint:
     'रात 10:00 बजे से सुबह 7:00 बजे तक डिवाइस का उपयोग ब्लॉक रहेगा।',
@@ -27,7 +36,8 @@ export const family = {
   quickProtectDailyLimitHint:
     'प्रति दिन {{minutes}} मिनट, बच्चे के सभी डिवाइस पर साझा।',
   quickProtectWebFilter: 'वेब फ़िल्टर',
-  quickProtectWebFilterHint: 'वयस्क सामग्री और अन्य जोखिम भरी श्रेणियाँ ब्लॉक करता है।',
+  quickProtectWebFilterHint:
+    'अनुपयुक्त सामग्री ब्लॉक करता है और सुरक्षित खोज व YouTube प्रतिबंध चालू करता है।',
   quickProtectWebFilterPremium: 'Premium सुविधा — प्लान के साथ शामिल।',
   quickProtectApply: 'सुरक्षा चालू करें',
   quickProtectSkip: 'अभी नहीं',
@@ -110,6 +120,7 @@ export const family = {
   chipHealthWarnCount_one: '{{count}} को सेटअप की आवश्यकता है',
 
   chipHealthInactiveCount: '{{count}} 24 घंटे से ज़्यादा निष्क्रिय',
+  chipLocationBlocked: 'स्थान नहीं',
 
   chipBlockedCount: '{{count}} लॉक किए गए',
 

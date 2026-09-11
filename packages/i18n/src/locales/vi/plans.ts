@@ -60,7 +60,7 @@ export const plans = {
   compareActivityFeedPremium: '30 ngày',
   compareChildReport: 'Báo cáo từng trẻ',
   compareIncluded:
-    'Cả hai gói đều có giới hạn hằng ngày, giờ khóa thiết bị, chặn ứng dụng, chặn nội dung web, khóa từ xa, SOS, yêu cầu thêm giờ, nhiệm vụ thưởng, iPhone, Android, Mac, Windows, TV và Chromebook trong một gia đình, bảng điều khiển web và nhiều phụ huynh.',
+    'Cả hai gói đều có giới hạn hằng ngày, giờ khóa thiết bị, chặn ứng dụng, chặn nội dung web, khóa từ xa, SOS, yêu cầu thêm giờ và nhiệm vụ thưởng trên iPhone, Android, Mac và Windows trong một gia đình, cùng với bảng điều khiển web và nhiều phụ huynh. Android TV và Chromebook sắp có, với ít tính năng kiểm soát hơn.',
   sectionWhyPremium: 'Premium thêm gì',
   sectionWhyPremiumSubtitle:
     'Mọi quy tắc vẫn hoạt động ở gói Miễn phí. Premium thêm những gì bạn thấy được, và thấy sớm đến đâu.',
@@ -167,12 +167,14 @@ export const plans = {
   platformAndroidDetail: 'Thiết bị phụ huynh hoặc trẻ · Android 7 trở lên',
   platformMac: 'Mac',
   platformMacDetail: 'Chỉ thiết bị của trẻ · macOS 12 trở lên',
-  platformIosLimits: 'Không có Giới hạn ứng dụng và cảnh báo tin nhắn.',
+  platformIosLimits:
+    'Không có Giới hạn ứng dụng và cảnh báo tin nhắn. Chặn nội dung web chỉ áp dụng cho trang web người lớn, còn ứng dụng bị chặn được chọn ngay trên iPhone.',
   platformMacLimits: 'Không có cảnh báo tin nhắn, vị trí chỉ ở mức tương đối.',
   platformWindowsLimits: 'Không có cảnh báo tin nhắn, vị trí chỉ ở mức tương đối.',
-  platformAndroidTvLimits: 'Không có cảnh báo tin nhắn và vị trí.',
+  platformAndroidTvLimits:
+    'Không có cảnh báo tin nhắn, vị trí, SOS và yêu cầu thêm giờ. Chặn ứng dụng chỉ ở mức tương đối.',
   platformChromebookLimits:
-    'Không có Giới hạn hằng ngày, Giờ khóa thiết bị, Khóa thiết bị và vị trí.',
+    'Chỉ có chặn nội dung web — không có Giới hạn hằng ngày, Giờ khóa thiết bị, Chặn ứng dụng, Khóa thiết bị, SOS và vị trí.',
   platformComingSoon: 'Sắp có',
   platformWindows: 'Windows',
   platformWindowsDetail: 'Chỉ thiết bị của trẻ · Windows 10 trở lên',
@@ -180,4 +182,18 @@ export const plans = {
   platformAndroidTvDetail: 'Chỉ thiết bị của trẻ · Android TV 7 trở lên',
   platformChromebook: 'Chromebook',
   platformChromebookDetail: 'Thiết bị của trẻ · chỉ lọc web trong Chrome',
+  teaserCta: 'Xem Premium',
+  teaserProofOtherApps: 'Ứng dụng khác: {{count}} · {{minutes}}',
+  teaserProofOtherMinutes: 'Ứng dụng khác: {{minutes}}',
+  teaserProofBlocked: 'Đã chặn tuần này: {{count}}',
+  teaserTopApps: 'Premium cho biết tên từng ứng dụng, từng phút, và giữ lại 30 ngày.',
+  teaserWebHistory: 'Premium cho biết trang nào bị chặn và con đã tìm gì.',
+  teaserVideoHistory: 'Premium lưu mọi video và Short trên YouTube mà con đã xem.',
+  teaserLocationTrail:
+    'Premium lưu lộ trình của con và báo khi con đến hoặc rời nhà, trường.',
+  teaserActivityWindow: 'Bản miễn phí hiện hôm nay. Premium giữ 30 ngày.',
+  teaserChildReport: 'Premium có báo cáo riêng cho từng con, và mỗi tuần một bản mới.',
+  teaserMessageAlerts:
+    'Premium báo cho bạn khi có tin nhắn cần để ý. Chỉ trên Android.',
+  teaserLiveNote: 'Bản miễn phí cập nhật 30 phút một lần. Premium là trực tiếp.',
 } as const;

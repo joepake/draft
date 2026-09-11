@@ -102,8 +102,10 @@ export const settings = {
     'Du verlässt diese Elternsitzung und kehrst zur Auswahl Eltern / Kind zurück. Melde dich erneut an, um Geräte zu verwalten. Dein Konto, deine Familie und die Kindergeräte bleiben unverändert.',
   removeParentDeviceAlertTitle: 'Elterngerät entfernen?',
   removeParentDeviceAlertMessage:
-    '{{deviceName}} erhält keine Benachrichtigungen mehr. Dieser Elternteil kann sich erneut anmelden, um die Verbindung wiederherzustellen.',
+    '{{deviceName}} wird von diesem Konto abgemeldet und erhält keine Benachrichtigungen mehr. Wer das Gerät hat, kann sich mit dem Passwort erneut anmelden.',
   toastParentDeviceRemoved: '{{deviceName}} entfernt.',
+  signedOutByAnotherDevice:
+    'Dieses Gerät wurde von einem anderen Gerät aus vom Elternkonto abgemeldet.',
   deleteAccountTitle: 'Konto löschen',
   deleteAccountSubtitleDefault: 'Lösche dein Konto und alle Daten dauerhaft',
   deleteAccountAlertTitle: 'Konto dauerhaft löschen?',

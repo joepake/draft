@@ -11,8 +11,10 @@
  *
  * Two versions in one document, and they answer different questions:
  *
- * - `version` is the **OTA bundle** — the JavaScript, swapped at runtime by
- *   `OtaUpdateService`, applied on the next launch.
+ * - `versionIos` / `versionAndroid` are the **OTA bundle** per platform — the
+ *   JavaScript, swapped at runtime by `OtaUpdateService`, applied on the next
+ *   launch. `version` is the shared number every install read before the
+ *   split; the release script keeps it at the max of the two.
  * - `appVersion` / `appVersionCode` are the **store build**, and are set only
  *   once that build is actually live on the App Store or Play. Setting them
  *   early prompts (and with `isForceUpdate`, blocks) every install in the
@@ -26,7 +28,16 @@
 export const OTA_CONFIG_DOC = 'config/ota';
 
 export type OtaConfig = {
+  /** Shared bundle number; only read where the platform field is absent. */
   version: number;
+  /**
+   * Bundle number per platform. The zips are published separately, so one
+   * shared number told every Android device its unchanged 2026-09-02 zip was
+   * new each time iOS shipped alone (measured 2026-09-08). A client reads its
+   * own field and falls back to `version` for a document written before these.
+   */
+  versionAndroid?: number;
+  versionIos?: number;
   enabled: boolean;
   downloadAndroidUrl: string;
   downloadIosUrl: string;

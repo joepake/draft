@@ -47,6 +47,18 @@ export const activities = {
   sosEscapeRepeatTitle: 'Mở khóa khẩn cấp ({{count}} lần hôm nay)',
   sosEscapeRepeatBody:
     'SOS đã mở khóa thiết bị này trong {{minutes}} phút. Đây là lần thứ {{count}} hôm nay.',
+  sosEscapeLimitedTitle: 'Đã mở ứng dụng khẩn cấp',
+  sosEscapeLimitedBody:
+    'SOS đã mở điện thoại, bản đồ và tin nhắn trên thiết bị này trong {{minutes}} phút. Mọi ứng dụng khác vẫn bị khóa.',
+  sosEscapeLimitedRepeatTitle: 'Đã mở ứng dụng khẩn cấp ({{count}} lần hôm nay)',
+  sosEscapeLimitedRepeatBody:
+    'SOS đã mở điện thoại, bản đồ và tin nhắn trên thiết bị này trong {{minutes}} phút. Đây là lần thứ {{count}} hôm nay.',
+  sosPressLockHeldTitle: 'Bấm SOS khi máy đang khóa',
+  sosPressLockHeldBody:
+    'SOS đã được bấm trên thiết bị này. Cảnh báo đã được gửi và thiết bị vẫn khóa.',
+  sosPressLockHeldRepeatTitle: 'Bấm SOS khi máy đang khóa ({{count}} lần hôm nay)',
+  sosPressLockHeldRepeatBody:
+    'SOS đã được bấm trên thiết bị này và thiết bị vẫn khóa. Đây là lần thứ {{count}} hôm nay.',
   appBlockedTitle: '{{appName}}',
   appBlockedBody: 'Một ứng dụng bị chặn đã được mở và KidGate đã đóng ứng dụng đó lại.',
   appInstalledTitle: 'Cài ứng dụng',
@@ -65,16 +77,6 @@ export const activities = {
   messageCheckedBody:
     'Một từ trong danh sách theo dõi đã xuất hiện trong {{appName}} và được xét là vô hại trong ngữ cảnh.',
   activityTypeMessageChecked: 'Đã kiểm tra',
-  callAlertTitle: 'Cuộc gọi với số không có trong danh bạ',
-  callAlertBodyOutgoing:
-    'Con bạn đã gọi tới một số không có trong danh bạ, lúc {{localTime}}.',
-  callAlertBodyOutgoingTimed:
-    'Con bạn đã gọi tới một số không có trong danh bạ lúc {{localTime}}, kéo dài {{durationMinutes}} phút.',
-  callAlertBodyIncoming:
-    'Một số không có trong danh bạ đã gọi cho con bạn lúc {{localTime}}.',
-  callAlertBodyIncomingTimed:
-    'Một số không có trong danh bạ đã gọi cho con bạn lúc {{localTime}}, kéo dài {{durationMinutes}} phút.',
-  activityTypeCallAlert: 'Cảnh báo cuộc gọi',
   appRemovedTitle: 'Gỡ ứng dụng',
   appRemovedBody: 'Ứng dụng {{appName}} vừa được gỡ khỏi thiết bị của trẻ.',
   extensionInstalledTitle: 'Đã thêm tiện ích trình duyệt',

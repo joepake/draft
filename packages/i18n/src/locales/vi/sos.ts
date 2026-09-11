@@ -21,8 +21,7 @@ export const sos = {
   alertMessage: '{{childName}} cần trợ giúp — đã gửi SOS',
   toastSent: 'Đã gửi SOS. Hãy ở nơi an toàn nếu có thể — bố mẹ đã nhận được tin.',
   escapeGrantedTitle: 'Đã gửi SOS',
-  escapeGrantedBody:
-    'Bố mẹ đã nhận được tin. Thiết bị này được mở khóa trong 15 phút, sau đó sẽ khóa lại.',
+  escapeGrantedBody: 'Bố mẹ đã nhận được tin. Thiết bị này vẫn khóa.',
   toastSentWithoutPhoto:
     'Đã gửi SOS nhưng không kèm ảnh. Vui lòng cấp quyền Camera trong Cài đặt rồi thử lại nếu có thể.',
   toastSendFailed:

@@ -94,8 +94,10 @@ export const settings = {
     'You will be signed out on this device and asked again who this device is for. Sign in to manage devices. Your account, family, and child devices are unchanged.',
   removeParentDeviceAlertTitle: 'Remove parent device?',
   removeParentDeviceAlertMessage:
-    '{{deviceName}} will stop receiving notifications. That parent can sign in again to reconnect.',
+    '{{deviceName}} will be signed out of this account and stop receiving notifications. Whoever has it can sign in again with the password.',
   toastParentDeviceRemoved: '{{deviceName}} removed.',
+  signedOutByAnotherDevice:
+    'This device was signed out of the parent account from another device.',
   deleteAccountTitle: 'Delete account',
   deleteAccountSubtitleDefault: 'Permanently delete your account and all data',
   deleteAccountAlertTitle: 'Delete account permanently?',

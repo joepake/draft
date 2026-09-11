@@ -61,7 +61,7 @@ export const plans = {
   compareActivityFeedPremium: '30 jours',
   compareChildReport: 'Rapports par enfant',
   compareIncluded:
-    'Les deux offres incluent la limite quotidienne, les heures bloquées, les applications bloquées, le filtre web, le verrouillage à distance, le SOS, les demandes de temps, les missions récompensées, iPhone, Android, Mac, Windows, TV et Chromebook dans une même famille, le tableau de bord web et plusieurs parents.',
+    'Les deux offres incluent la limite quotidienne, les heures bloquées, les applications bloquées, le filtre web, le verrouillage à distance, le SOS, les demandes de temps et les tâches à récompense sur iPhone, Android, Mac et Windows dans une même famille, ainsi que le tableau de bord web et plusieurs parents. Android TV et Chromebook arrivent bientôt et proposent moins de contrôles.',
   sectionWhyPremium: 'Ce que Premium ajoute',
   sectionWhyPremiumSubtitle:
     'Toutes les règles continuent de fonctionner en Gratuit. Premium ajoute ce que vous voyez, et à quel moment.',
@@ -174,12 +174,14 @@ export const plans = {
     'Appareil parent ou enfant · Android 7 et versions ultérieures',
   platformMac: 'Mac',
   platformMacDetail: 'Appareil enfant uniquement · macOS 12 et versions ultérieures',
-  platformIosLimits: 'Pas de Limites d’apps ni d’alertes de messages.',
+  platformIosLimits:
+    'Pas de Limites d’apps ni d’alertes de messages. Le filtre web ne couvre que les sites pour adultes, et les applications bloquées se choisissent sur l’iPhone lui-même.',
   platformMacLimits: 'Pas d’alertes de messages, et la position est approximative.',
   platformWindowsLimits: 'Pas d’alertes de messages, et la position est approximative.',
-  platformAndroidTvLimits: 'Pas d’alertes de messages ni de position.',
+  platformAndroidTvLimits:
+    'Pas d’alertes de messages, de position, de SOS ni de demandes de temps. Le blocage d’applications se fait au mieux.',
   platformChromebookLimits:
-    'Pas de Limite quotidienne, d’Heures bloquées, de Verrouillage de l’appareil ni de position.',
+    'Filtre web uniquement — pas de Limite quotidienne, d’Heures bloquées, de Blocage d’applications, de Verrouillage de l’appareil, de SOS ni de position.',
   platformComingSoon: 'Bientôt',
   platformWindows: 'Windows',
   platformWindowsDetail:
@@ -189,4 +191,24 @@ export const plans = {
     'Appareil enfant uniquement · Android TV 7 et versions ultérieures',
   platformChromebook: 'Chromebook',
   platformChromebookDetail: 'Appareil enfant · filtrage web dans Chrome uniquement',
+  teaserCta: 'Voir Premium',
+  teaserProofOtherApps: 'Autres applis : {{count}} · {{minutes}}',
+  teaserProofOtherMinutes: 'Autres applis : {{minutes}}',
+  teaserProofBlocked: 'Bloqué cette semaine : {{count}}',
+  teaserTopApps:
+    'Premium nomme chaque application, minute par minute, et en garde 30 jours.',
+  teaserWebHistory:
+    'Premium montre quels sites ont été bloqués et ce que votre enfant a recherché.',
+  teaserVideoHistory:
+    'Premium garde chaque vidéo et chaque Short YouTube qu’il a regardé.',
+  teaserLocationTrail:
+    'Premium garde son trajet et vous prévient quand il arrive ou quitte la maison et l’école.',
+  teaserActivityWindow:
+    'La version gratuite montre aujourd’hui. Premium garde 30 jours.',
+  teaserChildReport:
+    'Premium ajoute un rapport par enfant, et un nouveau chaque semaine.',
+  teaserMessageAlerts:
+    'Premium vous prévient quand un message mérite votre attention. Android uniquement.',
+  teaserLiveNote:
+    'La version gratuite se met à jour toutes les 30 minutes. Premium est en direct.',
 } as const;

@@ -119,8 +119,8 @@ export default {
     trust1Text: "Children's data is never used for advertising",
     trust2Title: 'Delete anytime',
     trust2Text: 'Erase your family account and all data on request',
-    trust3Title: 'Phone, computer and browser',
-    trust3Text: 'iPhone, Android, Mac, Windows and Chrome on one family account',
+    trust3Title: 'Phone and computer',
+    trust3Text: 'iPhone, Android, Mac and Windows on one family account',
     trust4Title: 'One plan per family',
     trust4Text: 'Every parent and child device, one subscription',
 
@@ -139,7 +139,7 @@ export default {
       'Cap each app on its own, on top of the daily limit — “half an hour of TikTok” without banning it outright.',
     feature4Title: 'Web Filter & history',
     feature4Text:
-      'Refuse adult and gambling sites on the phone, the computer and in Chrome, then see which sites were looked up and which ones were stopped.',
+      'Refuse adult and gambling sites on the phone and the computer. With Premium, see which sites were looked up and which ones were stopped.',
     feature5Title: 'Live location & places',
     feature5Text:
       "See your child's latest location, review history, and get told when they arrive at or leave a saved place.",
@@ -148,7 +148,7 @@ export default {
       'Ask your child to confirm they are safe, and receive an instant SOS with location and photo in an emergency.',
     feature7Title: 'Protection & app alerts',
     feature7Text:
-      'Know the moment an important permission is switched off — and on Android, Mac and Windows, when a new app appears and is waiting for your approval.',
+      'Know the moment an important permission is switched off. With Premium, a new app on Android waits for your approval before it opens.',
     feature8Title: 'Reward tasks & extra time',
     feature8Text:
       'Children earn bonus minutes by finishing tasks, or ask for more time. Both land on your phone for approval.',
@@ -163,10 +163,11 @@ export default {
       'Children can see how many stars each of them earned this week. It starts again every Monday, and you decide whether it is on at all.',
     feature12Title: 'Activity feed',
     feature12Text:
-      'Everything that happened, in order — a device unlocked, a site filtered, a task finished, an alert raised.',
+      'Everything that happened, in order — a device unlocked, a site filtered, a task finished, an alert raised. Today is free; Premium keeps 30 days.',
+    featurePremium: 'Premium',
     platformsTitle: 'One KidGate, wherever the screen is',
     platformsSub:
-      'The same rules and the same family account on a phone, on a computer and in Chrome. The desktop app is installed from this site, not from a store.',
+      'The same rules and the same family account on a phone and on a computer. The desktop app is installed from this site, not from a store; Chrome and Android TV are waiting on their store reviews.',
 
     showcaseEyebrow: 'Parent dashboard',
     showcaseTitle: 'The whole family, on one screen',
@@ -196,7 +197,7 @@ export default {
     whySub: 'Designed to keep the conversation between parent and child open.',
     why1Title: 'One plan, whole family',
     why1Text:
-      'A single subscription covers every parent and child device. Only the family owner pays.',
+      'One Premium subscription covers every parent and every child device, and only the family owner pays. The free plan keeps one child device monitored.',
     why2Title: 'Built for co-parenting',
     why2Text:
       'Invite a second parent to manage the same children, with access the owner approves.',
@@ -213,7 +214,7 @@ export default {
       'Six things we checked against the apps parents compare us with. Each one names the platform it is true on.',
     only1Title: 'The living-room TV, too',
     only1Text:
-      'Android TV gets the same Blocked Hours, Blocked Apps, per-app limits and Web Filter as a phone. The build runs on real hardware today and is waiting on its store release, which is why the platform list says Planned. Most parental controls stop at the phone.',
+      'Android TV gets a Daily Limit, Blocked Hours, app blocking and a Web Filter. Blocking is best-effort on a TV — a blocked app is sent back to the home screen — and there is no SOS or extra-time request from the sofa. The build runs on real hardware today and is waiting on its store release, which is why the platform list says Planned. Most parental controls stop at the phone.',
     only2Title: 'Message alerts that stay on the phone',
     only2Text:
       'On Android, messages are checked on the device against keyword lists in 14 languages, and what leaves the phone is the matched word, never the conversation. One thing changes that, and only if you ask for it: turn on AI confirmation and an ambiguous incoming message is sent to be judged, so you are not woken by an ordinary word.',
@@ -235,7 +236,7 @@ export default {
     faqSub: 'Quick answers before you download.',
     faq1Q: 'Is there a free trial?',
     faq1A:
-      'Yes. The trial starts when your first parent and child devices are connected, and includes every Premium feature. When it ends, the rules you set — Daily Limit, Blocked Hours, Blocked Apps, Web Filter, Device Lock, extra-time requests and reward tasks — keep working for free on one child device, and you can still ask that device where it is. Live activity, history, weekly reports and location tracking are what Premium adds back.',
+      'Yes. The 7-day trial starts when your first parent and child devices are connected, and includes every Premium feature. When it ends, the rules you set — Daily Limit, Blocked Hours, Blocked Apps, Web Filter, Device Lock, extra-time requests and reward tasks — keep working for free on one child device, and you can still ask that device where it is. Live activity, history, weekly reports and location tracking are what Premium adds back.',
     faq2Q: 'How many devices can I manage?',
     faq2A:
       'One subscription covers your whole family — every child device and every parent on the same plan. On the free plan one child device stays monitored and you choose which; the others keep enforcing the rules you already set and stop sending activity.',
@@ -245,10 +246,13 @@ export default {
     faq4Q: 'Can I manage everything from a computer?',
     faq4A:
       'Yes. The parent dashboard opens in any browser — sign in with a code from your phone and you see the same family, devices and settings. Reading works straight away; locking a device or changing a limit asks for your Parent PIN, or an approval from the app.',
+    faq5Q: 'What does Premium cost?',
+    faq5A:
+      'Premium is $6.99 a month or $39.99 a year in the US, billed through the App Store or Google Play and shown in your own currency there. A one-time Lifetime plan covers up to three child devices. The free plan never expires.',
     faqMore: 'More questions? Visit Support',
 
     ctaTitle: 'Start protecting your family today',
-    ctaSub: 'Free trial with full access. No credit card needed to begin.',
+    ctaSub: '7-day free trial with full access. No credit card needed to begin.',
     ctaNote: 'Cancel anytime from the App Store or Google Play.',
   },
 
@@ -297,6 +301,8 @@ export default {
     userDisabled: 'This account has been disabled.',
     userNotFound: 'No KidGate account uses that email.',
     wrongPassword: 'Wrong email or password.',
+    rateLimited:
+      'Too many sign-in codes from this network. Try again in {{minutes}} min.',
     tooManyRequests: 'Too many attempts. Wait a few minutes and try again.',
     popupClosed: 'Sign-in window was closed before finishing.',
     popupCancelled: 'Sign-in was cancelled.',
@@ -341,6 +347,7 @@ export default {
     checkingSession: 'Checking your session…',
     loadingFamily: 'Loading your family…',
     loadFailedTitle: 'Could not load your family',
+    noAccessTitle: 'No family on this account',
     noAccess:
       'This account does not have access to a KidGate family. Sign in with the parent account you use in the app.',
   },
@@ -493,7 +500,7 @@ export default {
     unlockToChange: 'Unlock changes first',
     pinTitle: 'Enter your Parent PIN',
     pinBody:
-      'The same six digits you use in the app. This browser stays unlocked for 7 days.',
+      'The same six digits you use in the app. This browser stays unlocked for 8 hours; approving from the app keeps it signed in for 7 days.',
     pinLabel: 'Parent PIN',
     pinSubmit: 'Unlock',
     pinOrScan: 'Or approve from your phone',
@@ -568,6 +575,7 @@ export default {
     off: 'Off',
     on: 'On',
     topAppsTitle: 'Top apps today',
+    topAppsTitleDay: 'Top apps · {{date}}',
     topAppsSub: 'Per-app caps shown as a marker',
     topAppsFreeHint: 'Top 3 today — the full list and history come with Premium.',
     trendTitle: 'Screen Time trend',
@@ -728,7 +736,7 @@ export default {
       'Browsers and YouTube. Only the flagged word is reported, never the search itself.',
     rowSafeSearch: 'Force SafeSearch',
     rowSafeSearchDesc:
-      'Locks Google SafeSearch, YouTube Restricted Mode, Bing and DuckDuckGo to their strict settings. Android, Android TV and Chrome.',
+      'Locks Google SafeSearch, YouTube Restricted Mode, Bing and DuckDuckGo to their strict settings. Android, Android TV and Chrome. At this level YouTube also hides comments and blocks some ordinary videos.',
 
     webFilterCatsTitle: 'Web Filter categories',
     webFilterCatsSub: 'Blocked content types',
@@ -817,8 +825,6 @@ export default {
     finePrint:
       'Figures cover {{from}} to {{to}}, across every device in the family. Screen Time is what the devices reported; minutes they could not measure are in neither total.',
 
-    generate: 'Write this week’s report',
-    generating: 'Writing…',
     shareImage: 'Save as image',
     sharePdf: 'Save as PDF',
     copySummary: 'Copy summary',
@@ -828,7 +834,7 @@ export default {
 
     emptyTitle: 'No report yet',
     emptyBody:
-      'A report arrives every Monday morning. You can write this week’s now — it covers the last seven days.',
+      'A report arrives every Monday morning and covers the seven days before it.',
     noUsage:
       'No screen time was recorded over the last two weeks, so there is nothing to report yet. A device that is offline reports nothing, which is not the same as a quiet week.',
     rateLimited: 'Too many attempts. Give it a minute.',
@@ -902,7 +908,7 @@ export default {
 
     faq4Q: 'How does the free trial work?',
     faq4A:
-      'The trial starts when your first parent and child devices are connected, and gives full access to every feature. Removing a child device does not reset the trial. When it ends, every rule keeps working for free on one child device; Premium keeps live activity, history, weekly reports and every device.',
+      'The 7-day trial starts when your first parent and child devices are connected, and gives full access to every feature. Removing a child device does not reset the trial. When it ends, every rule keeps working for free on one child device; Premium keeps live activity, history, weekly reports and every device.',
 
     faq5Q: 'How do I cancel my subscription?',
     faq5A:
@@ -994,7 +1000,7 @@ export default {
       'Every platform limits what an app is allowed to enforce. Where KidGate is best-effort — quitting a blocked app on a computer rather than refusing to launch it — the screen says so instead of showing a green tick.',
     value4Title: 'One family, one plan',
     value4Text:
-      'A single subscription covers every parent and every child device. Daily Limit, Blocked Hours and location keep working for free, so the safety features are never the thing behind the paywall.',
+      'One Premium subscription covers every parent and every child device. Daily Limit, Blocked Hours, Blocked Apps and the Web Filter keep working for free on one child device, so the safety rules are never the thing behind the paywall.',
 
     makeEyebrow: 'What we make',
     makeTitle: 'One KidGate, wherever the screen is',

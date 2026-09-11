@@ -52,6 +52,18 @@ export const activities = {
   sosEscapeRepeatTitle: '緊急ロック解除（本日{{count}}回目）',
   sosEscapeRepeatBody:
     'SOSによりこのデバイスのロックが{{minutes}}分間解除されました。本日{{count}}回目です。',
+  sosEscapeLimitedTitle: '緊急アプリを開放',
+  sosEscapeLimitedBody:
+    'SOSによりこのデバイスで電話・地図・メッセージが{{minutes}}分間だけ使えるようになりました。他のアプリはロックされたままです。',
+  sosEscapeLimitedRepeatTitle: '緊急アプリを開放（本日{{count}}回目）',
+  sosEscapeLimitedRepeatBody:
+    'SOSによりこのデバイスで電話・地図・メッセージが{{minutes}}分間だけ使えるようになりました。本日{{count}}回目です。',
+  sosPressLockHeldTitle: 'ロック中にSOSが押されました',
+  sosPressLockHeldBody:
+    'このデバイスでSOSが押されました。通知は送信され、デバイスはロックされたままです。',
+  sosPressLockHeldRepeatTitle: 'ロック中にSOSが押されました（本日{{count}}回目）',
+  sosPressLockHeldRepeatBody:
+    'このデバイスでSOSが押され、デバイスはロックされたままでした。本日{{count}}回目です。',
   appBlockedTitle: '{{appName}}',
   appBlockedBody: 'ブロック中のアプリが開かれ、KidGateがそのアプリを終了しました。',
   appInstalledTitle: 'アプリをインストールしました',
@@ -70,15 +82,6 @@ export const activities = {
   messageCheckedBody:
     '{{appName}} で監視対象の言葉が見つかりましたが、文脈では問題ありませんでした。',
   activityTypeMessageChecked: '確認済み',
-  callAlertTitle: '連絡先にない番号との通話',
-  callAlertBodyOutgoing: 'お子様が {{localTime}} に連絡先にない番号へ発信しました。',
-  callAlertBodyOutgoingTimed:
-    'お子様が {{localTime}} に連絡先にない番号へ発信しました（{{durationMinutes}} 分）。',
-  callAlertBodyIncoming:
-    '連絡先にない番号から {{localTime}} にお子様へ着信がありました。',
-  callAlertBodyIncomingTimed:
-    '連絡先にない番号から {{localTime}} にお子様へ着信がありました（{{durationMinutes}} 分）。',
-  activityTypeCallAlert: '通話アラート',
   appRemovedTitle: 'アプリをアンインストールしました',
   appRemovedBody: 'お子さまのデバイスから{{appName}}がアンインストールされました。',
   extensionInstalledTitle: 'ブラウザ拡張機能が追加されました',

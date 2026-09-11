@@ -108,8 +108,8 @@ export default {
     trust1Text: 'Os dados das crianças nunca são usados para publicidade',
     trust2Title: 'Exclua quando quiser',
     trust2Text: 'Apague sua conta familiar e todos os dados quando pedir',
-    trust3Title: 'Celular, computador e navegador',
-    trust3Text: 'iPhone, Android, Mac, Windows e Chrome em uma conta de família',
+    trust3Title: 'Celular e computador',
+    trust3Text: 'iPhone, Android, Mac e Windows em uma conta de família',
     trust4Title: 'Um plano por família',
     trust4Text: 'Todos os aparelhos de pais e filhos, uma assinatura',
 
@@ -128,7 +128,7 @@ export default {
       'Limite cada app separadamente, além do limite diário — “meia hora de TikTok” sem precisar proibir de vez.',
     feature4Title: 'Filtro da web e histórico',
     feature4Text:
-      'Recuse sites adultos e de apostas no celular, no computador e no Chrome, e depois veja quais sites foram consultados e quais foram barrados.',
+      'Recuse sites adultos e de apostas no celular e no computador. Com o Premium, veja quais sites foram consultados e quais foram barrados.',
     feature5Title: 'Localização ao vivo e lugares',
     feature5Text:
       'Veja a última localização do seu filho, revise o histórico e seja avisado quando ele chega ou sai de um lugar salvo.',
@@ -137,7 +137,7 @@ export default {
       'Peça ao seu filho para confirmar que está bem e receba um SOS imediato com localização e foto numa emergência.',
     feature7Title: 'Alertas de proteção e de apps',
     feature7Text:
-      'Saiba na hora em que uma permissão importante é desligada — e, no Android, no Mac e no Windows, quando um novo app aparece e fica esperando sua aprovação.',
+      'Saiba na hora em que uma permissão importante é desligada. Com o Premium, um novo app no Android espera sua aprovação antes de abrir.',
     feature8Title: 'Tarefas com recompensa e tempo extra',
     feature8Text:
       'As crianças ganham minutos extras concluindo tarefas, ou pedem mais tempo. Os dois chegam ao seu celular para aprovação.',
@@ -153,10 +153,11 @@ export default {
       'As crianças veem quantas estrelas cada uma ganhou nesta semana. Recomeça toda segunda-feira, e você decide se fica ligado.',
     feature12Title: 'Feed de atividades',
     feature12Text:
-      'Tudo o que aconteceu, em ordem: um aparelho desbloqueado, um site filtrado, uma tarefa concluída, um alerta enviado.',
+      'Tudo o que aconteceu, em ordem: um aparelho desbloqueado, um site filtrado, uma tarefa concluída, um alerta enviado. Hoje é grátis; o Premium guarda 30 dias.',
+    featurePremium: 'Premium',
     platformsTitle: 'Um só KidGate, onde estiver a tela',
     platformsSub:
-      'As mesmas regras e a mesma conta de família no celular, no computador e no Chrome. O app de computador é instalado por este site, não por uma loja.',
+      'As mesmas regras e a mesma conta de família no celular e no computador. O app de computador é instalado por este site, não por uma loja; o Chrome e a Android TV estão esperando a revisão das suas lojas.',
 
     showcaseEyebrow: 'Painel dos pais',
     showcaseTitle: 'A família inteira em uma tela',
@@ -186,7 +187,7 @@ export default {
     whySub: 'Pensado para manter aberta a conversa entre pais e filhos.',
     why1Title: 'Um plano, a família toda',
     why1Text:
-      'Uma única assinatura cobre todos os aparelhos de pais e filhos. Só o titular da família paga.',
+      'Uma única assinatura Premium cobre todos os aparelhos de pais e filhos, e só o titular da família paga. O plano gratuito mantém um dispositivo infantil monitorado.',
     why2Title: 'Feito para criar em dupla',
     why2Text:
       'Convide um segundo responsável para cuidar das mesmas crianças, com o acesso que o titular aprovar.',
@@ -203,7 +204,7 @@ export default {
       'Seis pontos conferidos contra os apps com que os pais nos comparam. Cada um diz em qual plataforma é verdade.',
     only1Title: 'A TV da sala também',
     only1Text:
-      'A Android TV recebe os mesmos Horários bloqueados, Bloqueio de apps, limites por app e Filtro da web de um celular. A versão já roda em hardware real hoje e está esperando o lançamento na loja, e por isso a lista de plataformas diz Planejado. A maioria dos controles parentais para no celular.',
+      'A Android TV recebe Limite diário, Horários bloqueados, bloqueio de apps e Filtro da web. Na TV, o bloqueio faz o melhor possível — um app bloqueado é mandado de volta para a tela inicial — e não há SOS nem pedido de tempo extra a partir do sofá. A versão já roda em hardware real hoje e está esperando o lançamento na loja, e por isso a lista de plataformas diz Planejado. A maioria dos controles parentais para no celular.',
     only2Title: 'Alertas de mensagens que ficam no celular',
     only2Text:
       'No Android, as mensagens são conferidas no próprio aparelho contra listas de palavras-chave em 14 idiomas, e o que sai do celular é a palavra encontrada, nunca a conversa. Só uma coisa muda isso, e apenas se você pedir: ligue a confirmação por IA e uma mensagem recebida ambígua é enviada para ser avaliada, para que você não seja acordado por uma palavra comum.',
@@ -225,7 +226,7 @@ export default {
     faqSub: 'Respostas rápidas antes de baixar.',
     faq1Q: 'Existe teste gratuito?',
     faq1A:
-      'Sim. O teste começa quando seu primeiro dispositivo de responsável e de criança são conectados, e inclui todos os recursos Premium. Quando termina, as regras que você definiu — Limite diário, Horários bloqueados, Apps bloqueados, Filtro da web, Bloqueio do dispositivo, pedidos de tempo extra e tarefas com recompensa — continuam funcionando de graça em um dispositivo infantil, e você ainda pode perguntar a esse dispositivo onde ele está. A atividade ao vivo, o histórico, os relatórios semanais e o rastreamento de localização são o que o Premium devolve.',
+      'Sim. O teste de 7 dias começa quando seu primeiro dispositivo de responsável e de criança são conectados, e inclui todos os recursos Premium. Quando termina, as regras que você definiu — Limite diário, Horários bloqueados, Apps bloqueados, Filtro da web, Bloqueio do dispositivo, pedidos de tempo extra e tarefas com recompensa — continuam funcionando de graça em um dispositivo infantil, e você ainda pode perguntar a esse dispositivo onde ele está. A atividade ao vivo, o histórico, os relatórios semanais e o rastreamento de localização são o que o Premium devolve.',
     faq2Q: 'Quantos aparelhos posso gerenciar?',
     faq2A:
       'Uma assinatura cobre a família inteira — todos os aparelhos de filhos e todos os responsáveis no mesmo plano. No plano gratuito, um dispositivo infantil continua monitorado e você escolhe qual; os outros seguem aplicando as regras que você já definiu e param de enviar atividade.',
@@ -235,10 +236,14 @@ export default {
     faq4Q: 'Posso gerenciar tudo pelo computador?',
     faq4A:
       'Sim. O painel dos pais abre em qualquer navegador — entre com um código do seu celular e você vê a mesma família, os mesmos aparelhos e as mesmas configurações. A consulta funciona na hora; bloquear um aparelho ou mudar um limite pede o seu PIN de responsável, ou uma aprovação pelo app.',
+    faq5Q: 'Quanto custa o Premium?',
+    faq5A:
+      'O Premium custa $6.99 por mês ou $39.99 por ano nos Estados Unidos, cobrado pela App Store ou pelo Google Play e mostrado lá na sua moeda. Um plano Lifetime de pagamento único cobre até três dispositivos infantis. O plano gratuito nunca expira.',
     faqMore: 'Mais dúvidas? Veja o Suporte',
 
     ctaTitle: 'Comece a proteger sua família hoje',
-    ctaSub: 'Teste gratuito com acesso completo. Sem cartão de crédito para começar.',
+    ctaSub:
+      'Teste gratuito de 7 dias com acesso completo. Sem cartão de crédito para começar.',
     ctaNote: 'Cancele quando quiser pela App Store ou pelo Google Play.',
   },
 
@@ -287,6 +292,8 @@ export default {
     userDisabled: 'Esta conta foi desativada.',
     userNotFound: 'Nenhuma conta do KidGate usa esse e-mail.',
     wrongPassword: 'E-mail ou senha incorretos.',
+    rateLimited:
+      'Muitos códigos de acesso nesta rede. Tente novamente em {{minutes}} min.',
     tooManyRequests: 'Tentativas demais. Espere alguns minutos e tente de novo.',
     popupClosed: 'A janela de login foi fechada antes de terminar.',
     popupCancelled: 'O login foi cancelado.',
@@ -310,6 +317,7 @@ export default {
     checkingSession: 'Verificando sua sessão…',
     loadingFamily: 'Carregando sua família…',
     loadFailedTitle: 'Não foi possível carregar sua família',
+    noAccessTitle: 'Nenhuma família nesta conta',
     noAccess:
       'Esta conta não tem acesso a nenhuma família do KidGate. Entre com a conta de responsável que você usa no app.',
   },
@@ -463,7 +471,7 @@ export default {
     unlockToChange: 'Desbloqueie as alterações primeiro',
     pinTitle: 'Digite seu PIN de responsável',
     pinBody:
-      'Os mesmos seis dígitos que você usa no app. Este navegador fica desbloqueado por 7 dias.',
+      'Os mesmos seis dígitos que você usa no app. Este navegador fica desbloqueado por 8 horas; aprovar pelo app o mantém conectado por 7 dias.',
     pinLabel: 'PIN de responsável',
     pinSubmit: 'Desbloquear',
     pinOrScan: 'Ou aprove pelo celular',
@@ -539,6 +547,7 @@ export default {
     off: 'Desligado',
     on: 'Ligado',
     topAppsTitle: 'Apps mais usados hoje',
+    topAppsTitleDay: 'Apps mais usados · {{date}}',
     topAppsSub: 'Os limites por app aparecem como marcador',
     topAppsFreeHint: 'Top 3 de hoje: a lista completa e o histórico vêm com o Premium.',
     trendTitle: 'Tendência do tempo de uso',
@@ -703,7 +712,7 @@ export default {
       'Navegadores e YouTube. Só a palavra sinalizada é informada, nunca a busca em si.',
     rowSafeSearch: 'Forçar SafeSearch',
     rowSafeSearchDesc:
-      'Fixa o Google SafeSearch, o Modo restrito do YouTube, o Bing e o DuckDuckGo na configuração rigorosa. Android, Android TV e Chrome.',
+      'Fixa o Google SafeSearch, o Modo restrito do YouTube, o Bing e o DuckDuckGo na configuração rigorosa. Android, Android TV e Chrome. Nesse nível o YouTube também oculta os comentários e bloqueia alguns vídeos comuns.',
 
     webFilterCatsTitle: 'Categorias do filtro da web',
     webFilterCatsSub: 'Tipos de conteúdo bloqueados',
@@ -796,8 +805,6 @@ export default {
     narrativeTitle: 'Em uma frase',
     finePrint:
       'Os números cobrem de {{from}} a {{to}}, em todos os aparelhos da família. O tempo de tela é o que os aparelhos informaram; os minutos que eles não conseguiram medir não entram em nenhum total.',
-    generate: 'Criar o relatório desta semana',
-    generating: 'Criando…',
     shareImage: 'Salvar como imagem',
     sharePdf: 'Salvar como PDF',
     copySummary: 'Copiar resumo',
@@ -807,7 +814,7 @@ export default {
       'Este navegador não consegue salvar isso. Em vez disso, copie o resumo.',
     emptyTitle: 'Ainda não há relatório',
     emptyBody:
-      'O relatório chega toda segunda-feira de manhã. Você também pode criar o desta semana agora: ele cobre os últimos sete dias.',
+      'O relatório chega toda segunda-feira de manhã e cobre os sete dias anteriores.',
     noUsage:
       'Nenhum tempo de tela foi registrado nas últimas duas semanas, então ainda não há o que relatar. Um aparelho sem conexão não informa nada, e isso não é o mesmo que uma semana tranquila.',
     rateLimited: 'Tentativas demais. Espere um minuto.',
@@ -883,7 +890,7 @@ export default {
 
     faq4Q: 'Como funciona o teste gratuito?',
     faq4A:
-      'O teste começa quando seu primeiro dispositivo de responsável e de criança são conectados, e dá acesso completo a todos os recursos. Remover um dispositivo infantil não reinicia o teste. Quando termina, todas as regras continuam funcionando de graça em um dispositivo infantil; o Premium mantém a atividade ao vivo, o histórico, os relatórios semanais e todos os dispositivos.',
+      'O teste de 7 dias começa quando seu primeiro dispositivo de responsável e de criança são conectados, e dá acesso completo a todos os recursos. Remover um dispositivo infantil não reinicia o teste. Quando termina, todas as regras continuam funcionando de graça em um dispositivo infantil; o Premium mantém a atividade ao vivo, o histórico, os relatórios semanais e todos os dispositivos.',
 
     faq5Q: 'Como cancelo minha assinatura?',
     faq5A:
@@ -963,7 +970,7 @@ export default {
       'Cada plataforma limita o que um app pode impor. Onde o KidGate faz o melhor possível — fechar um app bloqueado no computador em vez de impedir que ele abra — a tela diz isso, em vez de mostrar um sinal verde.',
     value4Title: 'Uma família, um plano',
     value4Text:
-      'Uma assinatura cobre todos os responsáveis e todos os aparelhos das crianças. Limite diário, Horários bloqueados e localização continuam funcionando de graça, então os recursos de segurança nunca ficam atrás do paywall.',
+      'Uma assinatura Premium cobre todos os responsáveis e todos os aparelhos das crianças. Limite diário, Horários bloqueados, Apps bloqueados e o Filtro da web continuam funcionando de graça em um dispositivo infantil, então as regras de segurança nunca ficam atrás do paywall.',
     makeEyebrow: 'O que fazemos',
     makeTitle: 'Um KidGate, onde quer que esteja a tela',
     makeSub:

@@ -1,5 +1,5 @@
 import { DEFAULT_WEB_FILTER_CATEGORIES, type WebFilterCategory } from './webActivity';
-import type { UsageAppBreakdown, UsageTimeline } from './usageDay';
+import type { UsageAppBreakdown, UsageHourlyApps, UsageTimeline } from './usageDay';
 
 export interface DeviceLocation {
   latitude: number;
@@ -197,33 +197,6 @@ export interface DeviceControls {
   /** Same shape, gated on `Device.messageMonitoring.outgoing.granted` instead. */
   messageMonitoringOutgoingEnabled: boolean;
   /**
-   * Whether the device reports a call with an unnamed party inside
-   * `callAlertWindows`. Parent-set, off until someone turns it on.
-   *
-   * **The switch alone does not start it.** Call reporting is additionally
-   * gated on the family's `callAlertConsent` (`@kidgate/schema/callAlertConsent`),
-   * which is a recorded consent rather than a control, and on the child having
-   * granted notification access to the call listener. Three separate gates, on
-   * purpose — `@kidgate/core/domain/callAlert.shouldRaiseCallAlert` is the one
-   * place they are read together.
-   */
-  callAlertsEnabled: boolean;
-  /**
-   * The hours a call is worth telling a parent about — a `ScheduleWindow[]`,
-   * the same shape and the same overnight rule as `scheduleWindows`.
-   *
-   * Its own field rather than a re-use of the schedule: those windows say when
-   * the device is *blocked*, and a family whose curfew is school hours would
-   * otherwise be alerted about calls at 10am and told nothing about 3am. They
-   * share a default (`DEFAULT_SCHEDULE_WINDOWS`, 22:00–07:00) because that is
-   * what "night" already meant in this product, not because they are the same
-   * setting.
-   *
-   * An empty list means the feature can never fire, and the parent screen says
-   * so rather than showing an armed switch over a window that does not exist.
-   */
-  callAlertWindows: ScheduleWindow[];
-  /**
    * Whether the device scans what the child **searches for** — a third switch,
    * beside the two message ones, and off until a parent turns it on.
    *
@@ -363,6 +336,11 @@ export interface DeviceControls {
    */
   timeline?: UsageTimeline;
   /**
+   * Child-to-server only, beside `timeline` and for the same reason kept off
+   * the device document — `UsageDay.hourlyApps` documents what it means.
+   */
+  hourlyApps?: UsageHourlyApps;
+  /**
    * Child-to-server only, third of the three that ride a usage report onto
    * `usageDays/{date}` — `UsageDay.idleMinutes` documents what it means.
    *
@@ -425,7 +403,24 @@ export const DEFAULT_DEVICE_CONTROLS: DeviceControls = {
   appLimits: [],
   scheduleEnabled: false,
   scheduleWindows: DEFAULT_SCHEDULE_WINDOWS,
-  locationSharingEnabled: false,
+  /**
+   * The one control that ships **on**, and the exception is deliberate.
+   *
+   * Every other default here is off because it takes something away — a
+   * blocked app, a curfew, a refused site — and a product that arrives already
+   * restricting is a product nobody agreed to. Location takes nothing away: it
+   * is the answer to "did they get there", it is a free-tier key, and the OS
+   * grant is still a separate ask the person at the device sees and can
+   * refuse, so `true` here promises nothing they have not allowed. Off by
+   * default meant a freshly paired phone showed the parent an empty map and no
+   * sentence saying why — the ambiguity `resolveChildLocationBlocker` now
+   * names on the family card.
+   *
+   * Applies to a device's FIRST registration only
+   * (`core/repositories/deviceRegistration` carries `existing.controls`
+   * forward), so a family that has since switched it off keeps it off.
+   */
+  locationSharingEnabled: true,
   webFilterEnabled: false,
   webFilterCategories: DEFAULT_WEB_FILTER_CATEGORIES,
   webFilterAllowList: [],
@@ -438,8 +433,6 @@ export const DEFAULT_DEVICE_CONTROLS: DeviceControls = {
   approvedPackages: [],
   messageMonitoringEnabled: false,
   messageMonitoringOutgoingEnabled: false,
-  callAlertsEnabled: false,
-  callAlertWindows: DEFAULT_SCHEDULE_WINDOWS,
   blockedAppsConfigured: false,
   blockedAppCount: 0,
   blockedCategoryCount: 0,

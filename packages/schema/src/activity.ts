@@ -41,19 +41,6 @@ export type ActivityType =
    * believable.
    */
   | 'message_checked'
-  /**
-   * A call to or from a number the child's device could not name, inside the
-   * window a parent marked as night. Params are `CallAlertParams` in
-   * `callAlert.ts`: `direction`, `party`, `localTime`, and where they are
-   * knowable `durationSeconds` and `outcome`.
-   *
-   * **There is no number and no name on this row, and no field to put one in.**
-   * It reports that an unknown party was on the line at an hour a parent cares
-   * about, which is the whole of what the feature promises. The gate record is
-   * `docs/FEASIBILITY.md`, "Call monitoring"; the decision against an actual
-   * call log is `docs/TODO.md` §E and still stands.
-   */
-  | 'call_alert'
   | 'emergency';
 
 /**
@@ -88,7 +75,6 @@ export const ACTIVITY_TYPES = [
   'web_filter',
   'message_alert',
   'message_checked',
-  'call_alert',
   'emergency',
 ] as const satisfies ReadonlyArray<ActivityType>;
 

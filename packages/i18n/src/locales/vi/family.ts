@@ -19,6 +19,15 @@ export const family = {
   quickProtectTitle: 'Bật bảo vệ cho {{childName}} ngay?',
   quickProtectBody:
     'Bật sẵn một bộ bảo vệ cơ bản. Bạn có thể tinh chỉnh mọi thứ sau trong hồ sơ của con.',
+  quickProtectSourceLabel: 'Bắt đầu từ',
+  quickProtectAllOnBody:
+    '{{childName}} đã bật sẵn những mục này. Chọn một trẻ khác để chép giờ khóa, giới hạn và danh sách trang web của trẻ đó.',
+  quickProtectReplaces: 'Thay cho thiết lập hiện tại của {{childName}}.',
+  quickProtectWebFilterCopyHint:
+    'Chép nhóm nội dung của {{childName}}, kèm {{allowed}} trang cho phép và {{blocked}} trang chặn.',
+  quickProtectSourceDefault: 'Mặc định KidGate',
+  quickProtectSourceBody:
+    'Chép quy tắc của {{childName}}, gồm cả các trang được phép và bị chặn.',
   quickProtectBedtime: 'Giờ khóa thiết bị buổi đêm',
   quickProtectBedtimeHint: 'Khóa thiết bị qua đêm, từ 22:00 đến 07:00.',
   quickProtectDailyLimit: 'Giới hạn thời gian sử dụng hằng ngày',
@@ -26,7 +35,7 @@ export const family = {
     '{{minutes}} phút mỗi ngày, tính chung trên mọi thiết bị của con.',
   quickProtectWebFilter: 'Chặn nội dung web',
   quickProtectWebFilterHint:
-    'Chặn nội dung người lớn và các nhóm nội dung rủi ro khác.',
+    'Chặn nội dung không phù hợp, bật tìm kiếm an toàn và giới hạn YouTube.',
   quickProtectWebFilterPremium: 'Tính năng Premium — có trong gói đăng ký.',
   quickProtectApply: 'Bật bảo vệ',
   quickProtectSkip: 'Để sau',
@@ -88,6 +97,7 @@ export const family = {
   childDevicesProtected: '{{count}} thiết bị đang được bảo vệ',
   chipHealthWarnCount: '{{count}} cần thiết lập',
   chipHealthInactiveCount: '{{count}} mất kết nối quá 24 giờ',
+  chipLocationBlocked: 'Không có vị trí',
   chipBlockedCount: '{{count}} đang bị chặn',
   healthProtected: 'Đang được bảo vệ',
   buildOutdated: 'Có bản mới',

@@ -59,7 +59,7 @@ export const plans = {
   compareActivityFeedPremium: '30일',
   compareChildReport: '자녀별 리포트',
   compareIncluded:
-    '두 플랜 모두 일일 제한, 차단 시간, 앱 차단, 웹 필터, 원격 잠금, SOS, 시간 요청, 보상 과제, 한 가족 안의 iPhone·Android·Mac·Windows·TV·Chromebook, 웹 대시보드, 여러 부모를 포함합니다.',
+    '두 플랜 모두 한 가족 안의 iPhone·Android·Mac·Windows에서 일일 제한, 차단 시간, 앱 차단, 웹 필터, 원격 잠금, SOS, 시간 요청, 보상 과제를 제공하며, 웹 대시보드와 여러 부모도 포함합니다. Android TV와 Chromebook은 출시 예정이며 제공되는 제어 기능이 더 적습니다.',
   sectionWhyPremium: 'Premium이 더하는 것',
   sectionWhyPremiumSubtitle:
     '모든 규칙은 무료에서도 계속 작동합니다. Premium은 무엇을, 얼마나 빨리 볼 수 있는지를 더합니다.',
@@ -166,12 +166,14 @@ export const plans = {
   platformAndroidDetail: '보호자 또는 자녀 기기 · Android 7 이상',
   platformMac: 'Mac',
   platformMacDetail: '자녀 기기 전용 · macOS 12 이상',
-  platformIosLimits: '앱 시간 제한과 메시지 알림은 제공되지 않습니다.',
+  platformIosLimits:
+    '앱 시간 제한과 메시지 알림은 제공되지 않습니다. 웹 필터는 성인 사이트만 차단하며, 차단할 앱은 iPhone에서 직접 선택합니다.',
   platformMacLimits: '메시지 알림이 없고, 위치는 대략적입니다.',
   platformWindowsLimits: '메시지 알림이 없고, 위치는 대략적입니다.',
-  platformAndroidTvLimits: '메시지 알림과 위치가 제공되지 않습니다.',
+  platformAndroidTvLimits:
+    '메시지 알림, 위치, SOS, 시간 요청은 제공되지 않습니다. 앱 차단은 최선 노력 방식으로 동작합니다.',
   platformChromebookLimits:
-    '일일 제한, 차단 시간, 기기 잠금, 위치가 제공되지 않습니다.',
+    '웹 필터만 제공 — 일일 제한, 차단 시간, 앱 차단, 기기 잠금, SOS, 위치는 제공되지 않습니다.',
   platformComingSoon: '출시 예정',
   platformWindows: 'Windows',
   platformWindowsDetail: '자녀 기기 전용 · Windows 10 이상',
@@ -179,4 +181,19 @@ export const plans = {
   platformAndroidTvDetail: '자녀 기기 전용 · Android TV 7 이상',
   platformChromebook: 'Chromebook',
   platformChromebookDetail: '자녀 기기 · Chrome 웹 필터만',
+  teaserCta: 'Premium 보기',
+  teaserProofOtherApps: '다른 앱: {{count}} · {{minutes}}',
+  teaserProofOtherMinutes: '다른 앱: {{minutes}}',
+  teaserProofBlocked: '이번 주 차단: {{count}}',
+  teaserTopApps: 'Premium은 모든 앱을 분 단위로 알려주고 30일간 보관합니다.',
+  teaserWebHistory:
+    'Premium은 어떤 사이트가 차단됐는지, 아이가 무엇을 검색했는지 보여줍니다.',
+  teaserVideoHistory: 'Premium은 아이가 본 YouTube 동영상과 Shorts를 모두 보관합니다.',
+  teaserLocationTrail:
+    'Premium은 이동 경로를 보관하고, 집과 학교에 도착하거나 떠날 때 알려줍니다.',
+  teaserActivityWindow: '무료는 오늘만 보여줍니다. Premium은 30일을 보관합니다.',
+  teaserChildReport: 'Premium은 자녀별 리포트를 추가하고 매주 새로 만들어 줍니다.',
+  teaserMessageAlerts:
+    'Premium은 주의가 필요한 메시지가 있을 때 알려줍니다. Android만 지원합니다.',
+  teaserLiveNote: '무료는 30분마다 업데이트됩니다. Premium은 실시간입니다.',
 } as const;

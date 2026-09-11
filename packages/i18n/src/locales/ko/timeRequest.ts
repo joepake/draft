@@ -48,6 +48,8 @@ export const timeRequest = {
   timeRequestDenied: '시간 연장 요청이 거절되었습니다',
   timeRequestApprovedDescription: '오늘 {{deviceName}}에 {{minutes}}분을 추가했습니다.',
   timeRequestDeniedDescription: '{{deviceName}}의 {{minutes}}분 요청을 거절했습니다.',
+  bonusGranted: '추가 시간 지급',
+  bonusGrantedDescription: '오늘 {{deviceName}}에 {{minutes}}분을 추가했습니다.',
   needMoreTimeTitle: '시간이 더 필요하신가요?',
   askParentForMoreTime: '오늘 부모님께 스크린 타임을 조금 더 요청할 수 있어요.',
   requestMoreTime: '시간 더 요청하기',

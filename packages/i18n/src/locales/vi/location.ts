@@ -70,4 +70,13 @@ export const location = {
   placeTotalsTitle: 'Thời gian ở các địa điểm',
   placeTotalsNote:
     'Tính từ lịch sử vị trí {{count}} ngày gần nhất. Chỉ tính những địa điểm bạn đã lưu.',
+  wizardStepAllow:
+    'Chạm Cho phép, rồi chọn Luôn luôn để vị trí vẫn cập nhật khi chạy nền.',
+  requestNoFix:
+    'Thiết bị này không lấy được vị trí. Có thể quyền vị trí chưa được cho phép.',
+  requestSharingOff: 'Chia sẻ vị trí đang tắt trên thiết bị này.',
+  requestUnsupported: 'Thiết bị này không thể báo vị trí.',
+  cardSharingOff: 'Chia sẻ vị trí đang tắt',
+  cardPermissionOff: 'Thiết bị này chưa cho phép truy cập vị trí',
+  cardNotUpdating: 'Vị trí đã ngừng cập nhật',
 } as const;

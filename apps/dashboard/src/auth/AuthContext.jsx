@@ -76,6 +76,23 @@ async function measured(method, run) {
  */
 export function describeAuthError(error, t) {
   if (!error) return null;
+  /*
+   * A refusal that ends by itself is the one error worth putting a number on.
+   * Everything else in this map is a state the parent has to change; this one
+   * only needs waiting out, and "too many attempts" with no figure reads as a
+   * dead end — so it is said with the minutes the server sent, rounded up,
+   * never below one. Without a figure the wording falls back to the generic
+   * sentence rather than promising `NaN` minutes.
+   */
+  if (error.code === 'rate/too-many-attempts') {
+    const ms = error.retryAfterMs;
+    if (typeof ms === 'number' && ms > 0) {
+      return t('authError.rateLimited', {
+        minutes: Math.max(1, Math.ceil(ms / 60000)),
+      });
+    }
+    return t('authError.tooManyRequests');
+  }
   const key = MESSAGE_KEYS[error.code || ''];
   if (key) return t(key);
   return error.message || t('authError.generic');

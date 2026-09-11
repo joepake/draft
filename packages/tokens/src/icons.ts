@@ -925,6 +925,18 @@ export const ICONS = {
     { kind: 'path', d: 'M8 21H6a3 3 0 0 1-3-3v-2' },
     { kind: 'path', d: 'M5 12h14' },
   ],
+  // `qrScan` without its scan line — the four corners alone.
+  //
+  // Not a second drawing of the same glyph: `FamilyScreen`'s header button
+  // draws that line itself, as a plain view it can translate on the native
+  // driver, so the sweep that teaches the button exists costs no SVG path
+  // re-record per frame. The corners stay data; only the part that moves left.
+  qrScanFrame: [
+    { kind: 'path', d: 'M3 8V6a3 3 0 0 1 3-3h2' },
+    { kind: 'path', d: 'M16 3h2a3 3 0 0 1 3 3v2' },
+    { kind: 'path', d: 'M21 16v2a3 3 0 0 1-3 3h-2' },
+    { kind: 'path', d: 'M8 21H6a3 3 0 0 1-3-3v-2' },
+  ],
   shieldCheck: [
     { kind: 'path', d: 'M12 3l7 3v5.5c0 4.3-2.9 8.2-7 9.5-4.1-1.3-7-5.2-7-9.5V6l7-3Z' },
     { kind: 'path', d: 'M9 12l2 2 4-4' },

@@ -80,4 +80,14 @@ export const location = {
     'Dagli ultimi {{count}} giorni di cronologia. Contano solo i luoghi salvati qui.',
   placeTotalsNote_one:
     'Dall’ultimo giorno di cronologia. Contano solo i luoghi salvati qui.',
+  wizardStepAllow:
+    'Seleziona Consenti, poi Sempre così gli aggiornamenti continuano in background.',
+  requestNoFix:
+    'Questo dispositivo non ha ottenuto una posizione. La localizzazione potrebbe non essere ancora consentita.',
+  requestSharingOff:
+    'La condivisione della posizione è disattivata su questo dispositivo.',
+  requestUnsupported: 'Questo dispositivo non può comunicare la posizione.',
+  cardSharingOff: 'La condivisione della posizione è disattivata',
+  cardPermissionOff: 'La posizione non è consentita su questo dispositivo',
+  cardNotUpdating: 'La posizione non si aggiorna più',
 } as const;

@@ -101,8 +101,10 @@ export const settings = {
     'Vous quitterez cette session parent et reviendrez à l’écran de sélection Parent / Enfant. Reconnectez-vous pour gérer les appareils. Votre compte, votre famille et les appareils enfants restent inchangés.',
   removeParentDeviceAlertTitle: 'Supprimer cet appareil parent ?',
   removeParentDeviceAlertMessage:
-    '{{deviceName}} cessera de recevoir des notifications. Ce parent pourra se reconnecter pour rejoindre à nouveau.',
+    '{{deviceName}} sera déconnecté de ce compte et ne recevra plus de notifications. La personne qui l’a pourra se reconnecter avec le mot de passe.',
   toastParentDeviceRemoved: '{{deviceName}} supprimé.',
+  signedOutByAnotherDevice:
+    'Cet appareil a été déconnecté du compte parent depuis un autre appareil.',
   deleteAccountTitle: 'Supprimer le compte',
   deleteAccountSubtitleDefault:
     'Supprimez définitivement votre compte et toutes les données',

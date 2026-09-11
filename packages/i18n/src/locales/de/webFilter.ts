@@ -8,13 +8,13 @@ export const webFilter = {
   mergeLoosened: 'Jetzt auf jedem Gerät erlaubt: {{domains}}',
   toastUpdateFailed:
     'Webfilter konnte nicht aktualisiert werden. Bitte versuche es erneut.',
-  heroTitle: 'Websites für Erwachsene filtern',
+  heroTitle: 'Ungeeignete Websites filtern',
   heroSubtitleIos:
     'Nutzt den Webinhaltsfilter der Apple-Bildschirmzeit, um Erwachseneninhalte in Safari und In-App-Browsern auf dem Kindergerät zu begrenzen.',
   heroSubtitleAndroid:
-    'Nutzt ein lokales DNS-VPN auf dem Android-Kindergerät, um bekannte Erwachsenen-Domains in Browsern und vielen Apps zu blockieren.',
+    'Nutzt ein lokales DNS-VPN auf dem Android-Kindergerät, um bekannte ungeeignete Domains in Browsern und vielen Apps zu blockieren.',
   heroSubtitleMacos:
-    'Führt den Inhaltsfilter von KidGate auf dem Mac des Kindes aus, um bekannte Erwachsenenseiten in Browsern und vielen Apps zu blockieren.',
+    'Führt den Inhaltsfilter von KidGate auf dem Mac des Kindes aus, um bekannte ungeeignete Seiten in Browsern und vielen Apps zu blockieren.',
   toggleHintIos: 'Benötigt die Bildschirmzeit-Berechtigung auf dem Kindergerät.',
   toggleHintAndroid:
     'Das Kind muss die KidGate-VPN-Verbindung einmal bestätigen. Lass das VPN an, damit der Filter funktioniert.',
@@ -27,6 +27,8 @@ export const webFilter = {
   safeSearchLabel: 'SafeSearch erzwingen',
   safeSearchHint:
     'Sperrt Google SafeSearch, den eingeschränkten YouTube-Modus, Bing und DuckDuckGo auf die strenge Einstellung. Android, Android TV und Chrome.',
+  safeSearchStrictNote:
+    'YouTube läuft in der strengsten Stufe: Kommentare werden ausgeblendet und manche harmlosen Videos ebenfalls blockiert. Ein Kind kann das im eigenen Konto nicht abschalten.',
   infoTitle: 'So funktioniert es',
   infoLine1Ios: 'Apple filtert Erwachsenen-Websites automatisch.',
   infoLine2Ios:
@@ -39,7 +41,8 @@ export const webFilter = {
     'Bitte deaktiviere privates DNS auf dem Kindergerät. Ist es aktiv, können Browser den Filter umgehen.',
   infoLine3Android:
     'Das Kindergerät zeigt beim Filtern ein VPN-Symbol. VPN aus bedeutet Filter aus – öffne KidGate erneut, um ihn wiederherzustellen.',
-  infoLine4Android: 'Gehe zu Einstellungen → Netzwerk & Internet → Privates DNS → Aus.',
+  infoLine4Android:
+    'Öffne in den Einstellungen „Netzwerk & Internet“, dann „Privates DNS“, und wähle „Aus“.',
   infoLine1Macos:
     'KidGate führt auf dem Mac einen Inhaltsfilter aus, der prüft, welche Websites aufgerufen werden, und blockiert die, die zu deinen Kategorien gehören.',
   infoLine2Macos:
@@ -50,7 +53,7 @@ export const webFilter = {
     'Der Filter liest Website-Namen, die moderne Browser bei etwa der Hälfte der Besuche verbergen – diese Seiten werden nicht anhand deiner Kategorien geprüft. Er blockiert aber weiterhin die meisten Seiten, die Kinder auf diesem Weg erreichen.',
   privateDnsBannerTitle: 'Privates DNS deaktivieren',
   privateDnsBannerBody:
-    'Privates DNS ist aktiv, daher kann der Erwachsenenfilter umgangen werden. Bitte deaktiviere es.',
+    'Privates DNS ist aktiv, daher kann der Inhaltsfilter umgangen werden. Bitte deaktiviere es.',
   privateDnsBannerButton: 'DNS-Einstellungen öffnen',
   vpnConsentBannerTitle: 'Webfilter-VPN wiederherstellen',
   vpnConsentBannerBody:
@@ -61,7 +64,7 @@ export const webFilter = {
   macosFilterNote: 'Nutzt den Inhaltsfilter von KidGate auf dem Mac',
 
   heroSubtitleWindows:
-    'Führt KidGates eigenen Resolver auf dem PC des Kindes aus, um bekannte Erwachsenenseiten in jedem Browser zu blockieren.',
+    'Führt KidGates eigenen Resolver auf dem PC des Kindes aus, um bekannte ungeeignete Seiten in jedem Browser zu blockieren.',
 
   toggleHintWindows:
     'Auf dem PC ist nichts zu bestätigen. Der KidGate-Hintergrunddienst schaltet den Filter binnen Sekunden ein.',
@@ -202,4 +205,9 @@ export const webFilter = {
   siteRequestDeniedDescription: '{{domain}} bleibt auf {{deviceName}} gesperrt.',
   siteRequestReceived: 'Website-Anfrage',
   siteRequestReceivedDescription: '{{deviceName}} möchte {{domain}} öffnen.',
+  privateDnsStep1: 'Öffne die Einstellungen auf diesem Gerät.',
+  privateDnsStep2: 'Wähle „Netzwerk & Internet“.',
+  privateDnsStep3: 'Öffne „Privates DNS“ und wähle „Aus“.',
+  vpnConsentStepAllow:
+    'Wähle „OK“ bei Androids VPN-Anfrage. Ein Schlüsselsymbol bleibt in der Statusleiste, solange der Filter läuft.',
 } as const;

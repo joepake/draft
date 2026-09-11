@@ -164,17 +164,24 @@ const TRUST = [1, 2, 3, 4];
  * did. Twelve also fills the 3-column grid exactly; renumber the
  * `home.feature*` keys rather than leaving a gap when one goes.
  */
+/**
+ * `premium` marks a card whose whole feature sits behind the paywall
+ * (`docs/PRICING.md` §4: live location and the weekly report). Cards that are
+ * half free — the filter is free, its history is not — say so in their own
+ * sentence instead. Before this the grid sold every row as included while the
+ * FAQ two sections down said otherwise, on the same page.
+ */
 const FEATURES = [
   { n: 1, icon: 'clock' },
   { n: 2, icon: 'ban' },
   { n: 3, icon: 'hourglass' },
   { n: 4, icon: 'globe' },
-  { n: 5, icon: 'mapPin' },
+  { n: 5, icon: 'mapPin', premium: true },
   { n: 6, icon: 'lifebuoy' },
   { n: 7, icon: 'shieldCheck' },
   { n: 8, icon: 'star' },
   { n: 9, icon: 'lock' },
-  { n: 10, icon: 'fileText' },
+  { n: 10, icon: 'fileText', premium: true },
   { n: 11, icon: 'crown' },
   { n: 12, icon: 'activity' },
 ];
@@ -291,7 +298,8 @@ const ONLY = [
   { n: 6, icon: 'star' },
 ];
 const STEPS = [1, 2, 3];
-const FAQ = [1, 2, 3, 4];
+// 5 is the price question — the one number the page did not state anywhere.
+const FAQ = [1, 2, 3, 4, 5];
 const HERO_CHECKS = [1, 2, 3, 4, 5];
 
 export default function Home() {
@@ -381,6 +389,9 @@ export default function Home() {
           <div className="features-grid">
             {FEATURES.map(f => (
               <article className="feature-card reveal" key={f.n}>
+                {f.premium && (
+                  <span className="feature-tag">{t('home.featurePremium')}</span>
+                )}
                 <div className="feature-icon">
                   <Icon name={f.icon} size={22} />
                 </div>

@@ -53,6 +53,19 @@ export const activities = {
   sosEscapeRepeatTitle: 'Sblocco di emergenza ({{count}} volte oggi)',
   sosEscapeRepeatBody:
     'L’SOS ha sbloccato questo dispositivo per {{minutes}} minuti. Sono {{count}} volte oggi.',
+  sosEscapeLimitedTitle: 'App di emergenza aperte',
+  sosEscapeLimitedBody:
+    'L’SOS ha aperto telefono, mappe e messaggi su questo dispositivo per {{minutes}} minuti. Tutto il resto è rimasto bloccato.',
+  sosEscapeLimitedRepeatTitle: 'App di emergenza aperte ({{count}} volte oggi)',
+  sosEscapeLimitedRepeatBody:
+    'L’SOS ha aperto telefono, mappe e messaggi su questo dispositivo per {{minutes}} minuti. Sono {{count}} volte oggi.',
+  sosPressLockHeldTitle: 'SOS premuto a dispositivo bloccato',
+  sosPressLockHeldBody:
+    'L’SOS è stato premuto su questo dispositivo. L’avviso è stato inviato e il dispositivo è rimasto bloccato.',
+  sosPressLockHeldRepeatTitle:
+    'SOS premuto a dispositivo bloccato ({{count}} volte oggi)',
+  sosPressLockHeldRepeatBody:
+    'L’SOS è stato premuto su questo dispositivo ed è rimasto bloccato. Sono {{count}} volte oggi.',
   appBlockedTitle: '{{appName}}',
   appBlockedBody: 'Un’app bloccata è stata aperta e KidGate l’ha chiusa.',
   appInstalledTitle: 'App installata',
@@ -72,16 +85,6 @@ export const activities = {
   messageCheckedBody:
     'Una parola sorvegliata è comparsa in {{appName}} ed è risultata innocua nel contesto.',
   activityTypeMessageChecked: 'Controllato',
-  callAlertTitle: 'Chiamata con un numero non in rubrica',
-  callAlertBodyOutgoing:
-    'Tuo figlio ha chiamato un numero non presente in rubrica, alle {{localTime}}.',
-  callAlertBodyOutgoingTimed:
-    'Tuo figlio ha chiamato un numero non presente in rubrica alle {{localTime}}, per {{durationMinutes}} min.',
-  callAlertBodyIncoming:
-    'Un numero non presente nella rubrica di tuo figlio lo ha chiamato alle {{localTime}}.',
-  callAlertBodyIncomingTimed:
-    'Un numero non presente nella rubrica di tuo figlio lo ha chiamato alle {{localTime}}, per {{durationMinutes}} min.',
-  activityTypeCallAlert: 'Avviso chiamata',
   appRemovedTitle: 'App disinstallata',
   appRemovedBody:
     'L’app {{appName}} è stata disinstallata dal dispositivo del bambino.',

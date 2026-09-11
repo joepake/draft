@@ -7,13 +7,13 @@ export const webFilter = {
     'Os dispositivos de {{name}} tinham configurações de filtro da web diferentes. Salvar aqui aplica um único conjunto a todos, combinado para a opção mais rígida.',
   mergeLoosened: 'Agora permitido em todos os dispositivos: {{domains}}',
   toastUpdateFailed: 'Não foi possível atualizar o Filtro da web. Tente novamente.',
-  heroTitle: 'Filtrar sites adultos',
+  heroTitle: 'Filtrar sites inadequados',
   heroSubtitleIos:
     'Usa o filtro de conteúdo da web do Tempo de Uso da Apple para limitar conteúdo adulto no Safari e nos navegadores dentro dos apps do dispositivo da criança.',
   heroSubtitleAndroid:
-    'Usa uma VPN DNS local no dispositivo Android da criança para bloquear domínios adultos conhecidos em navegadores e muitos apps.',
+    'Usa uma VPN DNS local no dispositivo Android da criança para bloquear domínios inadequados conhecidos em navegadores e muitos apps.',
   heroSubtitleMacos:
-    'Executa o filtro de conteúdo do KidGate no Mac do filho para bloquear sites adultos conhecidos em navegadores e muitos apps.',
+    'Executa o filtro de conteúdo do KidGate no Mac do filho para bloquear sites inadequados conhecidos em navegadores e muitos apps.',
   toggleHintIos: 'Requer a permissão do Tempo de Uso no dispositivo da criança.',
   toggleHintAndroid:
     'A criança precisa aprovar a conexão VPN do KidGate uma vez. Mantenha a VPN ativa para o filtro funcionar.',
@@ -26,6 +26,8 @@ export const webFilter = {
   safeSearchLabel: 'Forçar SafeSearch',
   safeSearchHint:
     'Fixa o Google SafeSearch, o Modo restrito do YouTube, o Bing e o DuckDuckGo na configuração rigorosa. Android, Android TV e Chrome.',
+  safeSearchStrictNote:
+    'O YouTube fica no nível mais restrito: os comentários são ocultados e alguns vídeos comuns também são bloqueados. Uma criança não consegue desativar isso na conta dela.',
   infoTitle: 'Como funciona',
   infoLine1Ios: 'A Apple filtra sites adultos automaticamente.',
   infoLine2Ios:
@@ -38,7 +40,8 @@ export const webFilter = {
     'Desative o DNS particular no dispositivo da criança. Se estiver ativo, os navegadores podem contornar o filtro.',
   infoLine3Android:
     'O dispositivo da criança mostra um ícone de VPN durante a filtragem. Desligar a VPN interrompe o filtro — reabra o KidGate para restaurar.',
-  infoLine4Android: 'Vá em Ajustes → Rede e internet → DNS particular → Desativado.',
+  infoLine4Android:
+    'Nos Ajustes, abra Rede e Internet, depois DNS privado, e escolha Desativado.',
   infoLine1Macos:
     'O KidGate executa um filtro de conteúdo no Mac que verifica quais sites estão sendo acessados e bloqueia os que estão nas suas categorias.',
   infoLine2Macos:
@@ -49,7 +52,7 @@ export const webFilter = {
     'O filtro lê os nomes dos sites, que os navegadores modernos ocultam em cerca de metade das visitas — esses sites não são verificados de acordo com suas categorias. Mesmo assim, ele bloqueia a maioria dos sites que os filhos alcançam dessa forma.',
   privateDnsBannerTitle: 'Desative o DNS particular',
   privateDnsBannerBody:
-    'O DNS particular está ativo, então o filtro de sites adultos pode ser contornado. Desative-o para o filtro funcionar.',
+    'O DNS particular está ativo, então o filtro da web pode ser contornado. Desative-o para o filtro funcionar.',
   privateDnsBannerButton: 'Abrir ajustes de DNS',
   vpnConsentBannerTitle: 'Restaurar a VPN do Filtro da web',
   vpnConsentBannerBody:
@@ -60,7 +63,7 @@ export const webFilter = {
   macosFilterNote: 'Usa o filtro de conteúdo do KidGate no Mac',
 
   heroSubtitleWindows:
-    'Executa o resolvedor do próprio KidGate no PC da criança para bloquear sites adultos conhecidos em todos os navegadores.',
+    'Executa o resolvedor do próprio KidGate no PC da criança para bloquear sites inadequados conhecidos em todos os navegadores.',
 
   toggleHintWindows:
     'Não há nada a aprovar no PC. O serviço em segundo plano do KidGate liga o filtro em poucos segundos.',
@@ -200,4 +203,9 @@ export const webFilter = {
   siteRequestDeniedDescription: '{{domain}} continua bloqueado em {{deviceName}}.',
   siteRequestReceived: 'Pedido de site',
   siteRequestReceivedDescription: '{{deviceName}} pediu para abrir {{domain}}.',
+  privateDnsStep1: 'Abra os Ajustes neste dispositivo.',
+  privateDnsStep2: 'Selecione Rede e Internet.',
+  privateDnsStep3: 'Abra DNS privado e escolha Desativado.',
+  vpnConsentStepAllow:
+    'Selecione OK na solicitação de VPN do Android. Um ícone de chave fica na barra de status enquanto o filtro funciona.',
 } as const;

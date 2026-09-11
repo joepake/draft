@@ -96,8 +96,10 @@ export const settings = {
     'Uscirai da questa sessione genitore e tornerai alla scelta Genitore / Bambino. Accedi di nuovo per gestire i dispositivi. Il tuo account, la famiglia e i dispositivi dei bambini non verranno modificati.',
   removeParentDeviceAlertTitle: 'Rimuovere il dispositivo del genitore?',
   removeParentDeviceAlertMessage:
-    '{{deviceName}} smetterà di ricevere notifiche. Quel genitore potrà accedere di nuovo per riconnettersi.',
+    '{{deviceName}} verrà disconnesso da questo account e smetterà di ricevere notifiche. Chi lo ha potrà accedere di nuovo con la password.',
   toastParentDeviceRemoved: '{{deviceName}} rimosso.',
+  signedOutByAnotherDevice:
+    'Questo dispositivo è stato disconnesso dall’account genitore da un altro dispositivo.',
   deleteAccountTitle: 'Elimina account',
   deleteAccountSubtitleDefault: 'Elimina definitivamente il tuo account e tutti i dati',
   deleteAccountAlertTitle: 'Eliminare definitivamente l’account?',

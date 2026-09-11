@@ -157,6 +157,41 @@ export type DeviceWeekCounterBuckets = ReadonlyArray<{
 }>;
 
 /**
+ * What `topAppsToday`'s three leave out — the size of the rest of the day.
+ *
+ * The free tier is "count free, detail paid" (`docs/PRICING.md` §5), and until
+ * this existed the top-3 card was the one place that rule was not applied: a
+ * parent saw three apps and had no way to tell whether they were the whole day
+ * or a quarter of it. A row saying "and two hours across seven more apps"
+ * measures the gap the paid tier fills, which is what makes it possible to
+ * judge whether Premium is worth buying rather than merely being told it is.
+ *
+ * Server-written on the same usage report as `topAppsToday`, stamped by the
+ * same `controls.usageDate`, and written for **everyone** for the same reason
+ * that field is: a family that lapses tomorrow finds the card already whole.
+ *
+ * **`minutes` is exact; `apps` is not always knowable, so it is optional.**
+ * The report carries at most `MAX_TOP_APPS` rows, so a device with more than
+ * ten apps in a day sends a list that was already truncated and the true
+ * count of the remainder is not in it. Omitted there rather than understated:
+ * absent means "cannot say how many", the same omit-rather-than-guess rule
+ * `DeviceWeekCounters.newApps` follows.
+ */
+export interface DeviceTopAppsOther {
+  /**
+   * Minutes today outside the three, `controls.minutesUsedToday` less their
+   * sum. Zero when the three are the whole day, which is a measurement and is
+   * why a console must check it before drawing a row.
+   */
+  minutes: number;
+  /**
+   * How many apps those minutes are spread across, when the report's own list
+   * was short enough to say. Absent when it was capped.
+   */
+  apps?: number;
+}
+
+/**
  * One day of browsing, summarised onto the device document by the server.
  *
  * Written by `logChildWebActivity` as it accepts a batch, so every surface that
@@ -300,6 +335,41 @@ export type DeviceOtaRequestStatus =
   | 'store_update_required'
   /** Refused or threw. The reason is a Crashlytics non-fatal, not this field. */
   | 'failed';
+
+/**
+ * Why a "Locate now" produced no new position — or that it produced one.
+ *
+ * Every value but `answered` is a state the device can be in while perfectly
+ * healthy, which is the reason the field exists: none of them is an error a
+ * log would carry, and all of them look identical to a parent watching a
+ * request disappear.
+ */
+export type DeviceLocationRequestStatus =
+  /** A fix was taken and uploaded. `lastLocation.updatedAt` is the durable proof. */
+  | 'answered'
+  /**
+   * The OS held no position to give. On a Mac this is the ordinary shape of a
+   * missing or refused grant — `CLLocationManager.location` is nil until
+   * something is authorised *and* has produced a fix — and it is also a laptop
+   * in a basement, which is why it is not called `denied`.
+   */
+  | 'noFix'
+  /**
+   * The parent's Location Sharing switch is off, so nothing was even asked of
+   * the OS. Distinct from `noFix` because the fix is on the parent's own
+   * screen rather than on the child's device.
+   */
+  | 'sharingOff'
+  /** This build or platform cannot report a position at all. */
+  | 'unsupported';
+
+export interface DeviceLocationRequestResult {
+  /** Which request this answers — the `locationRequestId` the agent read. */
+  requestId: string;
+  status: DeviceLocationRequestStatus;
+  /** Epoch ms, from the device's own clock. */
+  atMs: number;
+}
 
 export interface DeviceOtaRequestResult {
   /** Which request this answers — the `otaRequestId` the agent read. */
@@ -512,10 +582,26 @@ export interface Device {
    */
   topAppsToday?: UsageAppBreakdown[];
   /**
+   * What the three above leave out. See `DeviceTopAppsOther`.
+   */
+  topAppsOtherToday?: DeviceTopAppsOther;
+  /**
    * Whether this device is monitored or parked. Absent means active — see
    * `DeviceMonitoringState`.
    */
   monitoringState?: DeviceMonitoringState;
+  /**
+   * When this device became the monitored one, ISO. Absent on every device
+   * that has never been chosen, which is most of them.
+   *
+   * The seven-day swap cooldown's readable half. The cooldown itself is
+   * decided from `private/deviceParking.changedAtMs`, which no client may
+   * read, so `chooseMonitoredDevice` stamps the same moment here — on the
+   * document both parent consoles already listen to — and the sheet can say
+   * so before a parent taps rather than after (`docs/PRICING.md` §6).
+   * Server-written; `firestore.rules` pins it.
+   */
+  monitoredChangedAt?: string;
   /**
    * Child phone battery, 0–100. Undefined until the device reports one —
    * never defaulted to 0, which would read as a dead phone.
@@ -557,6 +643,35 @@ export interface Device {
    * fix, which the rules already cannot prevent.
    */
   locationRequestId?: string | null;
+
+  /**
+   * What the device did about the request above. Written by the child agent.
+   *
+   * The request is cleared whether or not a fix was obtained, on purpose — one
+   * left standing is re-delivered by every later snapshot for as long as it
+   * stands. The cost was that clearing it is *all* a parent ever saw:
+   * "answered with a fix" and "could not answer" both showed up as the request
+   * disappearing while the map kept its old position.
+   *
+   * Measured 2026-09-10 on a real Mac: `locationRequestId` null,
+   * `lastActiveAt` 10:25, `lastLocation.updatedAt` 09:32. The device was
+   * online, took the request, cleared it, and wrote no fix — CoreLocation had
+   * none to give, the grant never having been made. `capabilities.location`
+   * read `'coarse'` throughout, which is correct and unhelpful:
+   * `undetermined` deliberately reads as capable so the switch that raises the
+   * prompt stays reachable. So the one surface that could have said "this Mac
+   * cannot answer" said nothing at all.
+   *
+   * Same shape and same argument as `otaRequestResult`, including what it does
+   * **not** claim: `answered` is a *reported* success and
+   * `lastLocation.updatedAt` moving is the durable one, so a console that
+   * trusted only this field would call a fix lost whenever the write racing it
+   * failed to land.
+   *
+   * **A previous answer is not cleared** when a new request arrives; the
+   * `requestId` is what says which press it belongs to.
+   */
+  locationRequestResult?: DeviceLocationRequestResult | null;
 
   /**
    * "Report now" — set when a parent opens a console, so a free-tier device on

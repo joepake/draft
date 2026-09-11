@@ -14,29 +14,26 @@ export const permissions = {
   notificationsOpenSettings:
     'Bitte öffne die Geräteeinstellungen, um Mitteilungen für KidGate zu erlauben.',
   backgroundRefreshLabel: 'Hintergrundaktualisierung',
-  backgroundRefreshHint:
-    'Aktiviere zuerst Einstellungen → Allgemein → Hintergrundaktualisierung, und schalte sie dann für KidGate ein. Ist der Schalter ausgegraut, ist die allgemeine Hintergrundaktualisierung noch deaktiviert.',
+  backgroundRefreshHint: 'Lässt KidGate im Hintergrund weiterarbeiten.',
   backgroundRefreshLowPowerHint:
     'Der Stromsparmodus ist aktiviert – iOS deaktiviert dadurch die Hintergrundaktualisierung. Bitte schalte den Stromsparmodus aus und aktiviere dann die Hintergrundaktualisierung.',
   overlayLabel: 'Über anderen Apps anzeigen',
   overlayHint:
     'Erlaube KidGate, bei aktiven Limits einen Sperrbildschirm über anderen Apps anzuzeigen.',
   batteryOptimizationLabel: 'Akku ohne Einschränkung',
-  batteryOptimizationHint:
-    'Wähle in der Systemabfrage „Erlauben“, damit KidGate im Hintergrund laufen kann. Erscheint keine Abfrage: App-Info → Akku → Ohne Einschränkung.',
+  batteryOptimizationHint: 'Verhindert, dass Android KidGate im Hintergrund pausiert.',
   exactAlarmLabel: 'Wecker und Erinnerungen',
   exactAlarmHint:
     'Erlaube Wecker und Erinnerungen, damit Sperrzeiten pünktlich starten und enden.',
   accessibilityLabel: 'Bedienungshilfen-Sperrfunktion',
-  accessibilityHint:
-    'Aktiviere KidGate unter Bedienungshilfen → Installierte/Heruntergeladene Apps. Dies ist erforderlich, damit die Sperre über anderen Apps bestehen bleibt.',
+  accessibilityHint: 'Hält die KidGate-Sperre über anderen Apps.',
   oemSectionDescription:
     '{{brand}}-Geräte pausieren häufig Hintergrund-Apps. Bitte führe diese Schritte aus, damit Sperre und Sperrzeiten weiter funktionieren.',
   oemAutostartLabel: 'Autostart erlauben',
   oemAutostartHintXiaomi:
     'Schalte KidGate unter Autostart ein, damit der Schutz nach einem Neustart wieder startet.',
   oemAutostartHintSamsung:
-    'Erlaube KidGate unter Geräteschutz / Akku, im Hintergrund aktiv zu bleiben.',
+    'Füge KidGate unter Akku → Grenzwerte für Hintergrundnutzung → Nie inaktive Apps hinzu. Fehlt KidGate in der Liste, ist es bereits erlaubt und dieser Schritt ist erledigt.',
   oemAutostartHintOppo: 'Erlaube KidGate unter Startup-Apps / Auto-Start.',
   oemAutostartHintVivo:
     'Erlaube KidGate unter Autostart / Hintergrund mit hoher Leistung.',
@@ -58,4 +55,16 @@ export const permissions = {
     'Verhindert, dass diese App ohne die Eltern-PIN deinstalliert wird. Android zeigt dazu einen eigenen Bestätigungsbildschirm an.',
   notificationsWizardBody:
     'Erlaube Benachrichtigungen, damit dieses Gerät Zeitfreigaben und Erinnerungen sofort erhält.',
+  backgroundRefreshStepOpen: 'Öffne die KidGate-Seite in den Einstellungen.',
+  backgroundRefreshStepTurnOn: 'Aktiviere die Hintergrundaktualisierung für KidGate.',
+  backgroundRefreshStepGeneral:
+    'Ist der Schalter ausgegraut: Einstellungen öffnen, dann Allgemein, dann Hintergrundaktualisierung einschalten.',
+  batteryStepAllow: 'Wähle in der Android-Abfrage „Erlauben“.',
+  batteryStepAppInfo:
+    'Erscheint keine Abfrage: App-Info öffnen, dann Akku, dann „Ohne Einschränkung“ wählen.',
+  notificationsStepAllow: 'Wähle in der Abfrage „Zulassen“.',
+  exactAlarmStepTurnOn: 'Aktiviere „Wecker und Erinnerungen“ für KidGate.',
+  cameraStepTurnOn: 'Aktiviere „Kamera“ für KidGate.',
+  uninstallProtectionStepConfirm:
+    'Wähle „Aktivieren“ auf Androids Bestätigungsbildschirm.',
 } as const;

@@ -13,27 +13,24 @@ export const permissions = {
   notificationsAllowed: 'Notifications are on for KidGate.',
   notificationsOpenSettings: 'Open device Settings to allow notifications for KidGate.',
   backgroundRefreshLabel: 'Background App Refresh',
-  backgroundRefreshHint:
-    'First turn on Settings → General → Background App Refresh, then enable it for KidGate. If the toggle is dimmed, the general Background App Refresh setting is still off.',
+  backgroundRefreshHint: 'Lets KidGate keep working while it runs in the background.',
   backgroundRefreshLowPowerHint:
     'Low Power Mode is on — iOS disables Background App Refresh. Turn off Low Power Mode, then enable Background App Refresh.',
   overlayLabel: 'Display over other apps',
   overlayHint: 'Allow KidGate to show a lock screen over other apps when limits apply.',
   batteryOptimizationLabel: 'Unrestricted battery',
-  batteryOptimizationHint:
-    'Select Allow on the system prompt so KidGate can run in the background. If no prompt appears: App info → Battery → Unrestricted.',
+  batteryOptimizationHint: 'Stops Android pausing KidGate in the background.',
   exactAlarmLabel: 'Alarms & reminders',
   exactAlarmHint: 'Allow Alarms & reminders so Blocked Hours start and end on time.',
   accessibilityLabel: 'Accessibility (lock helper)',
-  accessibilityHint:
-    'Turn on KidGate under Accessibility → Installed / Downloaded apps. This is required so the lock stays over other apps.',
+  accessibilityHint: 'Keeps the KidGate lock on top of other apps.',
   oemSectionDescription:
     '{{brand}} devices often pause background apps. Complete these steps so locking and Blocked Hours keep working.',
   oemAutostartLabel: 'Allow autostart',
   oemAutostartHintXiaomi:
     'In Autostart, turn KidGate on so protection restarts after a reboot.',
   oemAutostartHintSamsung:
-    'In Device care / Battery, allow KidGate to stay active in the background.',
+    'In Battery → Background usage limits → Never sleeping apps, add KidGate. If KidGate is not on that list it is already allowed, and this step is done.',
   oemAutostartHintOppo: 'In Startup apps / Auto-launch, allow KidGate.',
   oemAutostartHintVivo: 'In Autostart / Background high power, allow KidGate.',
   oemAutostartHintHuawei:
@@ -54,4 +51,15 @@ export const permissions = {
     'Stops this app from being uninstalled without the Parent PIN. Android shows its own confirmation screen.',
   notificationsWizardBody:
     'Allow notifications so this device gets time approvals and reminders right away.',
+  backgroundRefreshStepOpen: 'Open the KidGate page in Settings.',
+  backgroundRefreshStepTurnOn: 'Turn on Background App Refresh for KidGate.',
+  backgroundRefreshStepGeneral:
+    'If the switch is dimmed, open Settings, then General, then Background App Refresh, and turn it on.',
+  batteryStepAllow: 'Select Allow on the Android prompt.',
+  batteryStepAppInfo:
+    'If no prompt appears, open App info, then Battery, then choose Unrestricted.',
+  notificationsStepAllow: 'Select Allow on the prompt.',
+  exactAlarmStepTurnOn: 'Turn on Alarms & reminders for KidGate.',
+  cameraStepTurnOn: 'Turn on Camera for KidGate.',
+  uninstallProtectionStepConfirm: 'Select Activate on Android’s confirmation screen.',
 } as const;

@@ -47,10 +47,8 @@ export default function ReportPanel({
   loading,
   familyName,
   language,
-  onGenerate,
   onReload,
-  generating,
-  generateError,
+  loadError,
   loadFailed,
 }) {
   const { t } = useT();
@@ -58,8 +56,8 @@ export default function ReportPanel({
   const [notice, setNotice] = useState(null);
 
   // The newest report is the one to open, and "newest" changes under the
-  // screen: the Sunday job can land while the tab is open, and pressing
-  // generate adds a week in front of the one being read.
+  // screen: the weekly job can land while the tab is open and adds a week in
+  // front of the one being read.
   const report = useMemo(() => {
     if (reports.length === 0) return null;
     return reports.find(entry => entry.periodKey === selectedKey) ?? reports[0];
@@ -122,21 +120,19 @@ export default function ReportPanel({
   if (!report) {
     /*
      * A failed read is not an empty history, and the two deserve opposite
-     * offers. When the reports could not be fetched this panel does not know
-     * whether the week already has one, so it does not invite a parent to
-     * spend a model call writing a second — it says the read failed and asks
-     * them to reload. Same rule the phone follows.
+     * sentences: an empty week says when the next report arrives; a failed
+     * read says so and offers a reload, because "No report yet" over a
+     * document that is sitting in Firestore would be the product inventing
+     * calm. Same rule the phone follows.
      */
     return (
       <section className="card report-empty">
         <Icon name={loadFailed ? 'alert' : 'fileText'} size={30} />
         <h2>{loadFailed ? t('report.loadFailedTitle') : t('report.emptyTitle')}</h2>
         <p className="hint">
-          {loadFailed
-            ? (generateError ?? t('report.loadFailed'))
-            : t('report.emptyBody')}
+          {loadFailed ? (loadError ?? t('report.loadFailed')) : t('report.emptyBody')}
         </p>
-        {loadFailed ? (
+        {loadFailed && (
           <button
             className="btn btn-primary"
             disabled={loading || !onReload}
@@ -144,17 +140,6 @@ export default function ReportPanel({
           >
             {t('report.retryLoad')}
           </button>
-        ) : (
-          <>
-            {generateError && <p className="report-error">{generateError}</p>}
-            <button
-              className="btn btn-primary"
-              disabled={generating || !onGenerate}
-              onClick={onGenerate}
-            >
-              {generating ? t('report.generating') : t('report.generate')}
-            </button>
-          </>
         )}
       </section>
     );
@@ -165,15 +150,6 @@ export default function ReportPanel({
   return (
     <div className="report">
       <div className="report-actions">
-        <button
-          className="btn"
-          disabled={generating || !onGenerate}
-          onClick={onGenerate}
-        >
-          <Icon name="sparkles" size={16} />
-          {generating ? t('report.generating') : t('report.generate')}
-        </button>
-        <span className="report-actions-gap" />
         <button className="btn" onClick={handleCopy}>
           <Icon name="fileText" size={16} />
           {t('report.copySummary')}
@@ -188,15 +164,9 @@ export default function ReportPanel({
         </button>
       </div>
 
-      {/* One at a time. Both are absolutely-positioned toasts, so a copy that
-          succeeded while a generation was failing stacked two of them on the
-          same spot. The write's failure outranks the clipboard's success —
-          it is the one the parent has to do something about. */}
-      {generateError ? (
-        <div className="toast tone-critical">{generateError}</div>
-      ) : (
-        notice && <div className={`toast tone-${notice.tone}`}>{notice.text}</div>
-      )}
+      {/* One toast at a time — copy and share each set `notice`, and a later
+          one replaces an earlier one rather than stacking on the same spot. */}
+      {notice && <div className={`toast tone-${notice.tone}`}>{notice.text}</div>}
 
       <article className="report-sheet">
         <header className="report-sheet-head">
