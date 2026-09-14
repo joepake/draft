@@ -70,4 +70,21 @@ export const sos = {
   badgeLabel: 'SOS',
   muteAlarm: 'Tắt âm cảnh báo',
   alertCount: '{{current}} / {{total}}',
+  trustedContactsTitle: 'Liên hệ tin cậy',
+  trustedContactsSubtitle: 'Nhận email mỗi khi có SOS kèm vị trí gần nhất',
+  trustedContactsRowSubtitle: 'Người nhận email khi con gửi SOS',
+  trustedContactsListSection: 'Ai nhận SOS',
+  trustedContactsEmpty: 'Chưa có ai. Thêm ông bà, hàng xóm hoặc người thân.',
+  trustedContactsAddSection: 'Thêm liên hệ',
+  trustedContactsAddHint:
+    'Tối đa {{max}} người. Báo trước cho họ — email đến không báo trước.',
+  trustedContactsNameLabel: 'Tên',
+  trustedContactsEmailLabel: 'Email',
+  trustedContactsAddButton: 'Thêm liên hệ',
+  trustedContactsFull: 'Danh sách đã đầy. Xóa một người để thêm người khác.',
+  trustedContactsInvalid: 'Nhập tên và địa chỉ email hợp lệ.',
+  trustedContactsSaveFailed: 'Không lưu được. Thử lại sau giây lát.',
+  trustedContactsRemoveAccessibility: 'Xóa {{name}}',
+  trustedContactsPrivacyNote:
+    'Mỗi liên hệ nhận tên thiết bị và vị trí gần nhất qua email. Không gửi ảnh.',
 } as const;

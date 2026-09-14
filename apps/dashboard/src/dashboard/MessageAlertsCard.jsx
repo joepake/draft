@@ -9,6 +9,7 @@ import {
 } from '@kidgate/schema/messageAlert';
 import { useT } from '@kidgate/web-ui/useT';
 import { useActivityTranslate } from './activityCopy.js';
+import PremiumTeaser from './PremiumTeaser.jsx';
 import { timeAgo } from './timeAgo.js';
 import Toggle from './Toggle.jsx';
 
@@ -63,6 +64,13 @@ export default function MessageAlertsCard({
   actions,
   run,
   busy,
+  /**
+   * The free tier's offer, resolved by the page (`premiumTeaser`, id
+   * `messageAlerts`). It replaces the empty sentence and never a list of
+   * alerts: monitoring is premium in all three layers, so a free family's feed
+   * here is empty for a reason neither of the two sentences below can give.
+   */
+  lockedTeaser = null,
 }) {
   const { language } = useT();
   const appT = useActivityTranslate();
@@ -231,7 +239,11 @@ export default function MessageAlertsCard({
         ))}
       </ul>
 
-      {alerts.length === 0 ? (
+      {alerts.length === 0 && lockedTeaser ? (
+        // A third empty, and the only one the other two cannot describe: the
+        // plan, not the grant and not a quiet week.
+        <PremiumTeaser teaser={lockedTeaser} appT={appT} />
+      ) : alerts.length === 0 ? (
         /*
          * Which empty this is has already been answered above: with a notice on
          * screen the list is empty because nothing was watching, and without one

@@ -75,4 +75,5 @@ export const blockedHours = {
   daysOvernightHint: 'Les plages de nuit comptent pour la nuit où elles commencent.',
   overlapWarning:
     'Cette période chevauche une autre plage bloquée : les deux restent actives.',
+  weekPreviewTitle: 'Votre semaine',
 } as const;

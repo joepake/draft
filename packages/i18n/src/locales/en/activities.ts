@@ -1,4 +1,12 @@
 export const activities = {
+  // A KidGate operator entered the family account for support — the row
+  // `functions/admin/impersonate.js` writes at session start.
+  activityTypeSupportSession: 'Support',
+  supportSessionTitle: 'Support access',
+  supportSessionBody:
+    'A KidGate support agent opened your family account to help with a request.',
+  supportSessionBodyTicket:
+    'A KidGate support agent opened your family account to help with request {{ticketRef}}.',
   title: 'Activities',
   subtitleAllDevices: 'Latest events across all devices',
   subtitleTimelineForDevice: 'Timeline for {{deviceName}}',

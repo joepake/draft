@@ -1,4 +1,6 @@
 export const family = {
+  // `Device.appliedPolicy` — the agent's acknowledgement, rendered as a time.
+  settingsReachedDevice: 'Settings reached this device {{when}}',
   title: 'Family',
   connectButton: 'Connect',
   connectAccessibility: 'Add a child or parent device',

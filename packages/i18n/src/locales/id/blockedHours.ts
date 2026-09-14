@@ -71,4 +71,5 @@ export const blockedHours = {
   daysOvernightHint: 'Rentang semalaman dihitung dari malam saat dimulai.',
   overlapWarning:
     'Ini tumpang tindih dengan waktu terblokir lainnya — keduanya tetap berlaku.',
+  weekPreviewTitle: 'Minggu Anda',
 } as const;

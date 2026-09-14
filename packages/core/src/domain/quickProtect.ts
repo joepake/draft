@@ -231,7 +231,13 @@ export function buildQuickProtectRules(
     }
   }
 
-  if (wanted('webFilter') && canUsePremiumControls) {
+  if (wanted('webFilter')) {
+    // The switch and safe search are free-tier keys since 2026-09-04, so they
+    // go through on any plan: the server's `FREE_CHILD_RULE_KEYS` is the
+    // intersection of the stored rules with `FREE_TIER_CONTROL_KEYS`
+    // (`functions/lib/childRules.js`), and the whole-row premium gate that used
+    // to sit here meant a free family ticked the row and had nothing written.
+    //
     // Field by field rather than on the row's own "already on": that flag is
     // true only when both halves are on, so a child holding one of them must
     // still receive the other.
@@ -241,21 +247,27 @@ export function buildQuickProtectRules(
     if (childRules?.safeSearchEnabled !== true) {
       rules.safeSearchEnabled = true;
     }
+    // Everything deciding *what* the filter blocks stays paid, so the copied
+    // lists are the half the gate still covers — sent beside the free switches
+    // they would make the server refuse the whole patch.
+    //
     // The sibling's own lists, including the sites they were allowed and
     // refused. Both surfaces say so on the row before the button rather than
     // after: an older child's approved list on a younger child is the one part
     // of a copy a parent could not have predicted from the row labels.
-    if (sourceRules?.webFilterCategories?.length) {
-      rules.webFilterCategories = sourceRules.webFilterCategories;
-    }
-    if (sourceRules?.webFilterAllowList?.length) {
-      rules.webFilterAllowList = sourceRules.webFilterAllowList;
-    }
-    if (sourceRules?.webFilterBlockList?.length) {
-      rules.webFilterBlockList = sourceRules.webFilterBlockList;
-    }
-    if (typeof sourceRules?.webFilterAllowListOnly === 'boolean') {
-      rules.webFilterAllowListOnly = sourceRules.webFilterAllowListOnly;
+    if (canUsePremiumControls) {
+      if (sourceRules?.webFilterCategories?.length) {
+        rules.webFilterCategories = sourceRules.webFilterCategories;
+      }
+      if (sourceRules?.webFilterAllowList?.length) {
+        rules.webFilterAllowList = sourceRules.webFilterAllowList;
+      }
+      if (sourceRules?.webFilterBlockList?.length) {
+        rules.webFilterBlockList = sourceRules.webFilterBlockList;
+      }
+      if (typeof sourceRules?.webFilterAllowListOnly === 'boolean') {
+        rules.webFilterAllowListOnly = sourceRules.webFilterAllowListOnly;
+      }
     }
   }
 

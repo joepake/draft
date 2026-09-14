@@ -1,4 +1,9 @@
-import type { DocSnapshot, FirestorePort, Unsubscribe } from '@kidgate/ports/firestore';
+import type {
+  DocSnapshot,
+  FirestorePort,
+  QuerySpec,
+  Unsubscribe,
+} from '@kidgate/ports/firestore';
 import type { DeviceLocation } from '@kidgate/schema/deviceControls';
 import { sosAlertsCollection } from '@kidgate/schema/paths';
 import type { SosAlert, SosAlertParams } from '@kidgate/schema/sosAlert';
@@ -66,6 +71,7 @@ function mapSosAlert(doc: DocSnapshot): SosAlert {
   return {
     id: doc.id,
     deviceId: typeof data.deviceId === 'string' ? data.deviceId : '',
+    ...(text(data.childId) ? { childId: text(data.childId) } : {}),
     // Empty rather than a rendered fallback: the UI knows which language to
     // apologise in, this file does not.
     deviceName: typeof data.deviceName === 'string' ? data.deviceName : '',
@@ -203,51 +209,62 @@ export function createSosAlertRepository(deps: SosAlertRepositoryDeps) {
     },
 
     /**
-     * The recent feed for one CHILD: every device they hold, one list.
+     * The recent feed for one CHILD: every device they hold, one list, plus
+     * every row stamped with the child's id — which is how an alert outlives
+     * the phone that raised it (`SosAlert.childId`).
      *
-     * SOS rows carry only a `deviceId` — the join to a person happens here,
-     * against the ids the caller resolved from `Device.childId`. Chunked by
-     * ten because that is the floor every Firestore transport's `in` supports;
-     * each chunk reuses the composite index the per-device query already
-     * needs (same equality field, same ordering), so no new index ships with
-     * this. Results re-sort and re-cap after the merge — each chunk is capped
-     * alone, so the union over-fetches rather than under-reporting.
+     * Two joins because rows before 2026-09-11 carry only a `deviceId`, so the
+     * person-join still happens here against the ids the caller resolved from
+     * `Device.childId`. Chunked by ten because that is the floor every
+     * Firestore transport's `in` supports; each chunk reuses the composite
+     * index the per-device query already needs. The `childId` query needs its
+     * own (`childId` + `createdAt`). Results dedupe, re-sort and re-cap after
+     * the merge — a row matches both joins while its device is still paired,
+     * and each query is capped alone, so the union over-fetches rather than
+     * under-reporting.
      */
-    subscribeRecentForDevices(
+    subscribeRecentForChild(
       userId: string,
+      childId: string,
       deviceIds: readonly string[],
       onAlerts: (alerts: SosAlert[]) => void,
       onError: (error: Error) => void,
     ): Unsubscribe {
-      if (deviceIds.length === 0) {
-        onAlerts([]);
-        return () => undefined;
-      }
-
       const chunks: string[][] = [];
       for (let start = 0; start < deviceIds.length; start += 10) {
         chunks.push([...deviceIds.slice(start, start + 10)]);
       }
+      const queries: QuerySpec[] = [
+        ...chunks.map((chunk): QuerySpec => ({
+          where: [['deviceId', 'in', chunk]],
+          orderBy: [['createdAt', 'desc']],
+          limit: SOS_ALERT_PAGE_SIZE,
+        })),
+        {
+          where: [['childId', '==', childId]],
+          orderBy: [['createdAt', 'desc']],
+          limit: SOS_ALERT_PAGE_SIZE,
+        },
+      ];
 
-      const byChunk = new Map<number, SosAlert[]>();
+      const byQuery = new Map<number, SosAlert[]>();
       const emit = () => {
-        const merged = [...byChunk.values()]
-          .flat()
+        const byId = new Map<string, SosAlert>();
+        for (const alert of [...byQuery.values()].flat()) {
+          byId.set(alert.id, alert);
+        }
+        const merged = [...byId.values()]
           .sort((a, b) => (b.createdAt ?? '').localeCompare(a.createdAt ?? ''))
           .slice(0, SOS_ALERT_PAGE_SIZE);
         onAlerts(merged);
       };
 
-      const unsubscribes = chunks.map((chunk, index) =>
+      const unsubscribes = queries.map((options, index) =>
         db.onQuery(
           sosAlertsCollection(userId),
-          {
-            where: [['deviceId', 'in', chunk]],
-            orderBy: [['createdAt', 'desc']],
-            limit: SOS_ALERT_PAGE_SIZE,
-          },
+          options,
           snapshot => {
-            byChunk.set(index, snapshot.docs.map(mapSosAlert));
+            byQuery.set(index, snapshot.docs.map(mapSosAlert));
             emit();
           },
           onError,
@@ -285,10 +302,15 @@ export function createSosAlertRepository(deps: SosAlertRepositoryDeps) {
         where: [['deviceId', '==', deviceId]],
       });
 
+      // A row stamped with the child it belonged to is the family's safety
+      // history, not the phone's: it stays, and `subscribeRecentForChild`
+      // keeps finding it. Same rule as `leaveChildDevice` server-side.
       await deleteAllInBatches(
         db,
         path,
-        snapshot.docs.map(doc => doc.id),
+        snapshot.docs
+          .filter(doc => !text((doc.data() ?? {}).childId))
+          .map(doc => doc.id),
       );
     },
   };

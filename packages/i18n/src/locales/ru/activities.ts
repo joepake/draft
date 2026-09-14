@@ -1,4 +1,10 @@
 export const activities = {
+  activityTypeSupportSession: 'Поддержка',
+  supportSessionTitle: 'Доступ поддержки',
+  supportSessionBody:
+    'Сотрудник поддержки KidGate открыл ваш семейный аккаунт, чтобы обработать обращение.',
+  supportSessionBodyTicket:
+    'Сотрудник поддержки KidGate открыл ваш семейный аккаунт, чтобы обработать обращение {{ticketRef}}.',
   title: 'События',
   subtitleAllDevices: 'Последние события на всех устройствах',
   subtitleTimelineForDevice: 'Хронология для {{deviceName}}',
@@ -35,7 +41,7 @@ export const activities = {
   activityTypeTamper: 'Защита',
   activityTypeScreenTime: 'Экранное время',
   activityTypeCheckIn: 'Check-In',
-  activityTypeLocationRequest: 'Геопозиция',
+  activityTypeLocationRequest: 'Местоположение',
   activityTypeTimeRequest: 'Запрос времени',
   activityTypeRewardTask: 'Бонусное задание',
   activityTypeSearchAlert: 'Оповещение о поиске',

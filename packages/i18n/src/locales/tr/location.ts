@@ -34,7 +34,6 @@ export const location = {
     'Henüz geçmiş yok. Konum güncellendikten veya Check-In yapıldıktan sonra noktalar görünecektir.',
   historyHighlightAccessibility: '{{place}} konumunu haritada vurgula',
   historyOpenMapsAccessibility: '{{place}} konumunu Haritalar’da aç',
-  latestBadge: 'En son',
   unableToRequestLocationRefresh: 'Konum yenileme isteği gönderilemedi',
   locationBannerTitle: 'Konumu etkinleştir',
   locationBannerBody:
@@ -71,9 +70,6 @@ export const location = {
   childPickCarriedA11y:
     '{{deviceName}} cihazını {{childName}} yanında taşıdığı cihaz olarak işaretle',
   stayRange: '{{from}} – {{to}}',
-  placeTotalsTitle: 'Yerlerinizde geçen süre',
-  placeTotalsNote:
-    'Son {{count}} günlük konum geçmişinden. Yalnızca burada kayıtlı yerler sayılır.',
   wizardStepAllow:
     'İzin ver’i, ardından Her zaman’ı seçin; böylece güncellemeler arka planda sürer.',
   requestNoFix:
@@ -83,4 +79,21 @@ export const location = {
   cardSharingOff: 'Konum paylaşımı kapalı',
   cardPermissionOff: 'Bu cihazda konuma izin verilmiyor',
   cardNotUpdating: 'Konum güncellenmeyi durdurdu',
+  namesNeedPremium: 'Yer adları ücretli bir plan gerektirir',
+  namesNeedPremiumTrialEnded:
+    'Deneme süreniz sona erdi. Yer adlarını tam olarak görmek için yükseltin.',
+  namesNeedPremiumStill:
+    'Konumlar hâlâ kaydediliyor ve kaydettiğiniz yerler adlarını göstermeye devam ediyor.',
+  awayFromPlace: '{{place}} konumunun {{distance}} {{direction}}',
+  distanceKm: '{{value}} km',
+  distanceMeters: '{{value}} m',
+  compassN: 'kuzeyinde',
+  compassNe: 'kuzeydoğusunda',
+  compassE: 'doğusunda',
+  compassSe: 'güneydoğusunda',
+  compassS: 'güneyinde',
+  compassSw: 'güneybatısında',
+  compassW: 'batısında',
+  compassNw: 'kuzeybatısında',
+  areaLabel: '{{area}} içinde bir yerde',
 } as const;

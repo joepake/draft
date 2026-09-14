@@ -7,6 +7,14 @@ export type SosAlertParams = Record<string, string | number>;
 export interface SosAlert {
   id: string;
   deviceId: string;
+  /**
+   * The PERSON who raised it, stamped server-side by `notifyParentSosAlert`
+   * from the device's assignment at the moment of the alert. Absent on rows
+   * older than 2026-09-11 and on a device that had no child. A row carrying
+   * this survives the device's unpair: `leaveChildDevice` skips stamped rows,
+   * and the child feed joins by it as well as by `deviceId`.
+   */
+  childId?: string;
   /** May be empty when the device never reported one; the UI supplies a fallback. */
   deviceName: string;
   status: SosAlertStatus;

@@ -14,6 +14,8 @@ export const FirestorePaths = {
   rewardTasks: 'rewardTasks',
   safetyCheckIns: 'safetyCheckIns',
   sosAlerts: 'sosAlerts',
+  /** People emailed on an SOS — `trustedContact.ts`. */
+  trustedContacts: 'trustedContacts',
   accountDeletionRequests: 'accountDeletionRequests',
   supportReports: 'supportReports',
   /**
@@ -117,6 +119,10 @@ export function sosAlertsCollection(userId: string) {
 
 export function sosAlertDoc(userId: string, alertId: string) {
   return `${sosAlertsCollection(userId)}/${alertId}`;
+}
+
+export function trustedContactsCollection(userId: string) {
+  return `${FirestorePaths.users}/${userId}/${FirestorePaths.trustedContacts}`;
 }
 
 export function locationHistoryCollection(userId: string, deviceId: string) {

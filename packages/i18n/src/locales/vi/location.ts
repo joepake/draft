@@ -31,7 +31,6 @@ export const location = {
     'Chưa có lịch sử. Các điểm sẽ hiển thị sau mỗi lần cập nhật vị trí hoặc Báo an toàn.',
   historyHighlightAccessibility: 'Đánh dấu {{place}} trên bản đồ',
   historyOpenMapsAccessibility: 'Mở {{place}} trong Bản đồ',
-  latestBadge: 'Mới nhất',
   unableToRequestLocationRefresh: 'Không thể gửi yêu cầu làm mới vị trí',
   locationBannerTitle: 'Bật vị trí',
   locationBannerBody:
@@ -67,9 +66,6 @@ export const location = {
   childPickCarried: 'Đi cùng con',
   childPickCarriedA11y: 'Đánh dấu {{deviceName}} là thiết bị {{childName}} mang theo',
   stayRange: '{{from}} – {{to}}',
-  placeTotalsTitle: 'Thời gian ở các địa điểm',
-  placeTotalsNote:
-    'Tính từ lịch sử vị trí {{count}} ngày gần nhất. Chỉ tính những địa điểm bạn đã lưu.',
   wizardStepAllow:
     'Chạm Cho phép, rồi chọn Luôn luôn để vị trí vẫn cập nhật khi chạy nền.',
   requestNoFix:
@@ -79,4 +75,21 @@ export const location = {
   cardSharingOff: 'Chia sẻ vị trí đang tắt',
   cardPermissionOff: 'Thiết bị này chưa cho phép truy cập vị trí',
   cardNotUpdating: 'Vị trí đã ngừng cập nhật',
+  namesNeedPremium: 'Tên địa chỉ cần gói trả phí',
+  namesNeedPremiumTrialEnded:
+    'Bản dùng thử của bạn đã kết thúc. Nâng cấp để xem tên địa điểm chi tiết.',
+  namesNeedPremiumStill:
+    'Vị trí vẫn được ghi lại, và những nơi bạn đã lưu vẫn hiện tên.',
+  awayFromPlace: 'Cách {{place}} {{distance}} về phía {{direction}}',
+  distanceKm: '{{value}} km',
+  distanceMeters: '{{value}} m',
+  compassN: 'bắc',
+  compassNe: 'đông bắc',
+  compassE: 'đông',
+  compassSe: 'đông nam',
+  compassS: 'nam',
+  compassSw: 'tây nam',
+  compassW: 'tây',
+  compassNw: 'tây bắc',
+  areaLabel: 'Đâu đó ở {{area}}',
 } as const;

@@ -1,5 +1,10 @@
 import { DEFAULT_DEVICE_CONTROLS } from '@kidgate/schema/deviceControls';
 import { nearestPlaceWithin } from '@kidgate/core/domain/geo';
+import {
+  relativePlaceCopy,
+  relativePlaceForHistoryEntry,
+  savedPlaceForHistoryEntry,
+} from '@kidgate/core/domain/locationHistory';
 import { t } from '@kidgate/i18n/web';
 
 /**
@@ -26,15 +31,53 @@ export function toDeviceView(record) {
   const controls = { ...DEFAULT_DEVICE_CONTROLS, ...(record.controls ?? {}) };
   const currentPlace = record.lastLocation?.placeName || null;
   /*
-   * HERE returns no `address` for plenty of real fixes, and the badge below
-   * used to just hide its second line then — no fallback to raw coordinates
-   * exists on this surface. A saved place nearby is worth naming even when
-   * the fix does not sit inside its geofence; `@kidgate/core/domain/geo`
-   * carries the same threshold `apps/mobile`'s location screens use, so the
-   * two parent surfaces cannot disagree about the same fix.
+   * Three answers before a coordinate pair, in falling order of what they
+   * claim — and the middle one was missing here until 2026-09-10.
+   *
+   * `placeName` is HERE's and wins: it is the street the child was actually
+   * on. `savedPlaceForHistoryEntry` is next — the place the fix sits *inside*,
+   * named by the family, free of any geocoding request, and the answer
+   * `apps/mobile` renders. `nearestPlaceWithin` is last and the weakest, since
+   * "near" is not "at".
+   *
+   * Skipping the middle one was a regression this file inherited rather than
+   * made: `NEARBY_PLACE_RADIUS_METERS` tightened from 2 km to 100 m on the
+   * same day, which is safe on the phone precisely *because* the containing
+   * place answers first there. Here it meant a fix inside a 150 m Home fence —
+   * up to 150 m from the centre, so outside the new band — rendered as raw
+   * coordinates on the web while the phone said "Home". One fix, two parent
+   * surfaces, two answers, which `.claude/rules/cross-platform.md` exists to
+   * stop.
    */
+  const savedPlace =
+    !currentPlace && record.lastLocation
+      ? savedPlaceForHistoryEntry(record.lastLocation, record.places ?? [])
+      : null;
+  /*
+   * The free tier's own name for the fix, written by the **child** device
+   * (`DeviceLocation.areaName`). Nothing is looked up here: the child asked a
+   * free provider as it uploaded, so both parent consoles read one field and
+   * this surface needs no geocoder of its own.
+   */
+  const areaName =
+    !currentPlace && !savedPlace ? record.lastLocation?.areaName?.trim() || null : null;
+  /*
+   * And the last thing before a coordinate pair: how far, and which way, from
+   * the nearest place the family named. Computed from what is already here —
+   * `relativePlaceCopy` hands over keys so this renders the same sentence
+   * `apps/mobile` does rather than a second wording of it.
+   */
+  const relative =
+    !currentPlace && !savedPlace && !areaName && record.lastLocation
+      ? relativePlaceForHistoryEntry(record.lastLocation, record.places ?? [])
+      : null;
   const nearbyPlace =
-    !currentPlace && record.lastLocation && !record.lastLocation.address
+    !currentPlace &&
+    !savedPlace &&
+    !areaName &&
+    !relative &&
+    record.lastLocation &&
+    !record.lastLocation.address
       ? nearestPlaceWithin(
           record.lastLocation.latitude,
           record.lastLocation.longitude,
@@ -42,7 +85,32 @@ export function toDeviceView(record) {
         )
       : null;
   const lastLocation = record.lastLocation
-    ? { ...record.lastLocation, nearbyPlaceName: nearbyPlace?.name ?? null }
+    ? {
+        ...record.lastLocation,
+        /*
+         * The containing place travels as the row's own name rather than as a
+         * "near" label: `Dashboard.jsx` wraps `nearbyPlaceName` in the
+         * "Near {{place}}" sentence, and that sentence would be wrong for a
+         * fix that is not near the place but in it.
+         */
+        ...(savedPlace ? { placeName: savedPlace.name } : {}),
+        /*
+         * Both travel as the row's own name rather than as a "near" label:
+         * `Dashboard.jsx` wraps `nearbyPlaceName` in "Near {{place}}", and
+         * that sentence is wrong for an area the fix is *in* and wrong again
+         * for one that already states its own distance.
+         */
+        ...(areaName ? { placeName: areaName } : {}),
+        /*
+         * The distance travels as a **shape**, not a sentence: this file only
+         * renames and derives, and `t()` belongs where a component can reach
+         * the app pack (`Dashboard.jsx`, through `useActivityTranslate`). The
+         * keys are `relativePlaceCopy`'s, shared with `apps/mobile` so one fix
+         * cannot read two ways on two parent consoles.
+         */
+        ...(relative ? { relativePlace: relativePlaceCopy(relative) } : {}),
+        nearbyPlaceName: nearbyPlace?.name ?? null,
+      }
     : null;
 
   return {

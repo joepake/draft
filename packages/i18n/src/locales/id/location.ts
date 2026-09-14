@@ -33,7 +33,6 @@ export const location = {
     'Belum ada riwayat. Titik lokasi akan muncul setelah pembaruan lokasi atau Check-In.',
   historyHighlightAccessibility: 'Sorot {{place}} di peta',
   historyOpenMapsAccessibility: 'Buka {{place}} di Maps',
-  latestBadge: 'Terbaru',
   unableToRequestLocationRefresh: 'Tidak dapat meminta pembaruan lokasi',
   locationBannerTitle: 'Aktifkan lokasi',
   locationBannerBody:
@@ -71,9 +70,6 @@ export const location = {
   childPickCarriedA11y:
     'Tandai {{deviceName}} sebagai perangkat yang dibawa {{childName}}',
   stayRange: '{{from}} – {{to}}',
-  placeTotalsTitle: 'Waktu di tempat Anda',
-  placeTotalsNote:
-    'Dari riwayat {{count}} hari terakhir. Hanya tempat yang tersimpan di sini yang dihitung.',
   wizardStepAllow:
     'Pilih Izinkan, lalu Selalu agar pembaruan tetap berjalan di latar belakang.',
   requestNoFix:
@@ -83,4 +79,21 @@ export const location = {
   cardSharingOff: 'Berbagi lokasi nonaktif',
   cardPermissionOff: 'Lokasi belum diizinkan di perangkat ini',
   cardNotUpdating: 'Lokasi berhenti diperbarui',
+  namesNeedPremium: 'Nama tempat memerlukan paket berbayar',
+  namesNeedPremiumTrialEnded:
+    'Masa uji coba Anda telah berakhir. Tingkatkan paket untuk melihat nama tempat selengkapnya.',
+  namesNeedPremiumStill:
+    'Lokasi tetap dicatat, dan tempat yang Anda simpan tetap menampilkan namanya.',
+  awayFromPlace: '{{distance}} di sebelah {{direction}} {{place}}',
+  distanceKm: '{{value}} km',
+  distanceMeters: '{{value}} m',
+  compassN: 'utara',
+  compassNe: 'timur laut',
+  compassE: 'timur',
+  compassSe: 'tenggara',
+  compassS: 'selatan',
+  compassSw: 'barat daya',
+  compassW: 'barat',
+  compassNw: 'barat laut',
+  areaLabel: 'Di suatu tempat di {{area}}',
 } as const;

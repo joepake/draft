@@ -25,6 +25,7 @@ export const deviceDetail = {
   alertsSubtitle: 'SOS, 보호, 장소 및 앱',
   checkIn: '체크인',
   locationPlusSelfie: '위치 및 사진',
+  locationOnly: '위치만',
   webFilter: '웹 필터',
   limitAdultWebsites: '부적절한 사이트 제한',
   location: '위치',

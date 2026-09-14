@@ -17,6 +17,31 @@ export interface DeviceLocation {
   placeName?: string | null;
   address?: string | null;
   addressDetail?: 'basic' | 'detailed' | null;
+  /**
+   * The commune or district this fix is in — the **free tier's** name for it.
+   *
+   * `placeName` and `address` come from `/reverseGeocodeLocation`, which is
+   * premium-gated, so a lapsed family's rows carried coordinates and nothing
+   * else. This is the coarse answer the child device works out for itself from
+   * a free reverse geocoder when that endpoint refuses
+   * (`@kidgate/core/domain/areaName`).
+   *
+   * **A separate field, and that is the point.** One writer per field: the
+   * endpoint owns `placeName`, the child owns this. Putting a free provider's
+   * answer into `placeName` would mix two vintages of administrative boundary
+   * in one field — measured 2026-09-11, two providers disagreed about the
+   * province for one set of coordinates — and would hand a free family the
+   * field the paid tier sells.
+   *
+   * **Coarser than an address, deliberately.** A commune or a district, never
+   * a street and never a business: it makes the free tier readable without
+   * giving away what premium is for.
+   *
+   * Absent means nobody has named it: a premium family (whose rows carry
+   * `placeName` instead), a device that has not looked yet, or a place the
+   * provider could not name.
+   */
+  areaName?: string | null;
 }
 
 export interface ScheduleWindow {

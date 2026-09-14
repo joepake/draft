@@ -71,4 +71,5 @@ export const blockedHours = {
   daysOvernightHint: 'Os intervalos noturnos contam pela noite em que começam.',
   overlapWarning:
     'Isso se sobrepõe a outro horário bloqueado — os dois continuam válidos.',
+  weekPreviewTitle: 'Sua semana',
 } as const;

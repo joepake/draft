@@ -44,9 +44,9 @@ export const protection = {
   locationConsentPending:
     'La position n’est pas autorisée sur cet appareil : il ne peut pas indiquer où il se trouve.',
   consentStepOpenSettings:
-    'Ouvre KidGate sur l’appareil de ton enfant et va dans Réglages.',
-  consentStepParentPin: 'Saisis le code parent.',
-  consentStepPermissions: 'Ouvre « Autorisations » et autorise ce qui manque.',
+    'Ouvrez KidGate sur l’appareil de votre enfant et allez dans Réglages.',
+  consentStepParentPin: 'Saisissez le code parent.',
+  consentStepPermissions: 'Ouvrez « Autorisations » et autorisez ce qui manque.',
   notificationsPermission: 'Autorisation de notifications',
   backgroundUpdates: 'Mises à jour en arrière-plan',
   backgroundUpdatesRestricted:

@@ -43,7 +43,7 @@ export const webFilter = {
   infoLine4Android:
     'Dans les Réglages, ouvrez Réseau et Internet, puis DNS privé, et choisissez Désactivé.',
   infoLine1Macos:
-    'KidGate exécute un filtre de contenu sur le Mac qui vérifie les sites consultés et bloque ceux qui relèvent de tes catégories.',
+    'KidGate exécute un filtre de contenu sur le Mac qui vérifie les sites consultés et bloque ceux qui relèvent de vos catégories.',
   infoLine2Macos:
     'Si le filtre apparaît comme non approuvé sur le Mac de l’enfant, ouvre Réglages Système → Général → Éléments de connexion et extensions pour l’approuver.',
   infoLine3Macos:

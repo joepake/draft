@@ -3,6 +3,7 @@ import { useT } from '@kidgate/web-ui/useT';
 import { useActivityTranslate } from './activityCopy.js';
 import Icon from '@kidgate/web-ui/Icon';
 import { groupPlanComparisonRows } from '@kidgate/core/domain/planComparison';
+import { getPlanState } from '../lib/trial.js';
 
 /*
  * `appT` reads the APP key space through `@kidgate/i18n/activityFeed`. The
@@ -137,15 +138,21 @@ function PlanCompareSheet({ onClose }) {
  * between the plans is still a thing a parent does on a laptop, so nothing is
  * dropped; it opens at a width it can be read at.
  *
- * ## Two states, not the phone's four, and the reason is a missing constant
+ * ## Four states where the build was told the trial length, two where it was not
  *
  * `PlansScreen` distinguishes trial-active from trial-ended by counting
- * against `TRIAL_DAYS`, which reaches the phone through `react-native-config`
- * and reaches this app through nothing — there is no `VITE_TRIAL_DAYS`, and
- * `@kidgate/core/domain/trial` refuses to assume a duration precisely because
- * a wrong one shows a family a trial the server already refuses. So this says
- * "Premium" or "Trial" and does not claim to know which side of the line a
- * trial sits on. `docs/BACKLOG.md` carries what closing that would take.
+ * against `TRIAL_DAYS`, which reaches the phone through `react-native-config`.
+ * It reached this app through **nothing** until 2026-09-10, so this card said
+ * "Premium" or "Trial" and a family whose trial had run out read "Trial"
+ * indefinitely.
+ *
+ * `VITE_TRIAL_DAYS` and `lib/trial.js` closed that. What has not changed is
+ * the reason the gap was left open rather than guessed at:
+ * `@kidgate/core/domain/trial` refuses to assume a duration because a wrong
+ * one shows a family a trial the server already refuses. So `getPlanState`
+ * answers **null** for a build that declared nothing, and this card falls back
+ * to exactly the two states it had. A deployment without the variable is not
+ * broken; it is coarse, which is the honest half of the trade.
  */
 export default function PlanCard({ plan, trialStartedAt }) {
   const { t } = useT();
@@ -157,6 +164,20 @@ export default function PlanCard({ plan, trialStartedAt }) {
   // No trial start means no child device has ever paired — the trial clock
   // starts at pairing, so this is "not set up yet", not "trial over".
   const started = Boolean(trialStartedAt);
+  /*
+   * The fourth state, once this build has been told the trial length.
+   *
+   * `VITE_TRIAL_DAYS` arrived on 2026-09-10 (`lib/trial.js`), which is what
+   * the paragraph above was waiting for: a family whose trial has run out read
+   * "Trial" here, indefinitely, because counting against a duration was the
+   * one thing this surface could not do.
+   *
+   * **Null keeps the two states.** `getPlanState` answers null when the
+   * environment declared nothing, and a wrong duration is worse than a coarse
+   * label — it tells a family a trial the server has already stopped
+   * honouring is still running.
+   */
+  const planState = getPlanState(premium, trialStartedAt);
 
   return (
     <div className="plan-card">
@@ -164,9 +185,11 @@ export default function PlanCard({ plan, trialStartedAt }) {
         <span className={`plan-pill${premium ? ' is-premium' : ''}`}>
           {premium
             ? appT('plans.pillPremium')
-            : started
-              ? appT('plans.planTrialName')
-              : appT('plans.pillSetupRequired')}
+            : planState === 'trialEnded'
+              ? appT('plans.trialEnded')
+              : started
+                ? appT('plans.planTrialName')
+                : appT('plans.pillSetupRequired')}
         </span>
         {/* Only for a family that has not bought: buying stays on the phone,
             but deciding does not, and a family already on Premium has nothing

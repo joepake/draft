@@ -26,7 +26,7 @@ export const permissions = {
     'Empêche Android de mettre KidGate en pause en arrière-plan.',
   exactAlarmLabel: 'Alarmes et rappels',
   exactAlarmHint:
-    'Autorise Alarmes et rappels pour que les Heures bloquées commencent et se terminent à l’heure.',
+    'Autorisez Alarmes et rappels pour que les Heures bloquées commencent et se terminent à l’heure.',
   accessibilityLabel: 'Assistant d’accessibilité pour le verrouillage',
   accessibilityHint: 'Maintient le verrouillage KidGate au-dessus des autres apps.',
   oemSectionDescription:

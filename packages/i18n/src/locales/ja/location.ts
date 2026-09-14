@@ -34,7 +34,6 @@ export const location = {
     'まだ履歴はありません。位置情報の更新またはチェックイン後に表示されます。',
   historyHighlightAccessibility: '地図上で {{place}} を強調表示',
   historyOpenMapsAccessibility: '{{place}} をマップで開く',
-  latestBadge: '最新',
   unableToRequestLocationRefresh: '位置情報の更新をリクエストできませんでした',
   locationBannerTitle: '位置情報を有効にする',
   locationBannerBody:
@@ -71,8 +70,6 @@ export const location = {
   childPickCarried: '持ち歩き中',
   childPickCarriedA11y: '{{deviceName}}を{{childName}}が持ち歩くデバイスに設定',
   stayRange: '{{from}} – {{to}}',
-  placeTotalsTitle: '登録した場所での時間',
-  placeTotalsNote: '直近{{count}}日の位置履歴から。ここに保存した場所だけを数えます。',
   wizardStepAllow:
     '「許可」を選び、続いて「常に許可」を選ぶと、バックグラウンドでも更新が続きます。',
   requestNoFix:
@@ -82,4 +79,21 @@ export const location = {
   cardSharingOff: '位置情報の共有がオフです',
   cardPermissionOff: 'この端末では位置情報が許可されていません',
   cardNotUpdating: '位置情報の更新が止まっています',
+  namesNeedPremium: '地名の表示には有料プランが必要です',
+  namesNeedPremiumTrialEnded:
+    '無料トライアルは終了しました。地名を詳しく見るにはアップグレードしてください。',
+  namesNeedPremiumStill:
+    '位置情報は引き続き記録され、保存した場所は名前が表示されます。',
+  awayFromPlace: '{{place}}から{{direction}}へ{{distance}}',
+  distanceKm: '{{value}} km',
+  distanceMeters: '{{value}} m',
+  compassN: '北',
+  compassNe: '北東',
+  compassE: '東',
+  compassSe: '南東',
+  compassS: '南',
+  compassSw: '南西',
+  compassW: '西',
+  compassNw: '北西',
+  areaLabel: '{{area}}のどこか',
 } as const;

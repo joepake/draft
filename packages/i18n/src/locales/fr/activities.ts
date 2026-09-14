@@ -1,4 +1,10 @@
 export const activities = {
+  activityTypeSupportSession: 'Assistance',
+  supportSessionTitle: 'Accès de l’assistance',
+  supportSessionBody:
+    'Un agent d’assistance KidGate a ouvert votre compte familial pour traiter une demande.',
+  supportSessionBodyTicket:
+    'Un agent d’assistance KidGate a ouvert votre compte familial pour traiter la demande {{ticketRef}}.',
   title: 'Activité',
   subtitleAllDevices: 'Derniers événements sur tous les appareils',
   subtitleTimelineForDevice: 'Historique de {{deviceName}}',
@@ -40,7 +46,7 @@ export const activities = {
   activityTypeTamper: 'Protection',
   activityTypeScreenTime: 'Temps d’écran',
   activityTypeCheckIn: 'Check-in',
-  activityTypeLocationRequest: 'Position',
+  activityTypeLocationRequest: 'Localisation',
   activityTypeTimeRequest: 'Demande de temps',
   activityTypeRewardTask: 'Tâche bonus',
   activityTypeSearchAlert: 'Alerte recherche',

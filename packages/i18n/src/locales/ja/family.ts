@@ -1,4 +1,5 @@
 export const family = {
+  settingsReachedDevice: '設定がこのデバイスに届きました（{{when}}）',
   title: 'ファミリー',
   connectButton: '接続',
   connectAccessibility: '子どもまたは保護者のデバイスを追加',

@@ -174,12 +174,26 @@ export const PLAN_COMPARISON_ROWS: readonly PlanComparisonRow[] = [
     freeKey: null,
     premiumKey: null,
   },
+  /*
+   * Both cells since 2026-09-13, and premium-only until then — wrong about
+   * both halves it names.
+   *
+   * Check-In has always been free without a photo (`docs/PRICING.md` §4's
+   * "every plan includes" line), and the protection alert was never gated in
+   * code at all: `logChildTamperActivity` carries no plan check, so free
+   * families have received it since that endpoint shipped and the table said
+   * `—` against something they had. Family Link gives the same alert away on
+   * every Android phone, which is the §5 parity argument that already made
+   * Device Lock and app blocking free — so the row moves, no gate is added.
+   *
+   * What is left to sell here is the photo.
+   */
   {
     id: 'safety',
     group: 'alerts',
     labelKey: 'plans.compareSafety',
-    freeKey: null,
-    premiumKey: null,
+    freeKey: 'plans.compareSafetyFree',
+    premiumKey: 'plans.compareSafetyPremium',
   },
   {
     id: 'controls',

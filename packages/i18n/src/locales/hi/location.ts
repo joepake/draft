@@ -35,7 +35,6 @@ export const location = {
     'अभी तक कोई इतिहास उपलब्ध नहीं है। स्थान अपडेट या चेक-इन के बाद स्थान दिखाई देंगे।',
   historyHighlightAccessibility: 'मानचित्र पर {{place}} को हाइलाइट करें',
   historyOpenMapsAccessibility: '{{place}} को मैप्स में खोलें',
-  latestBadge: 'नवीनतम',
   unableToRequestLocationRefresh: 'स्थान रीफ़्रेश का अनुरोध भेजा नहीं जा सका',
   locationBannerTitle: 'स्थान सेवा चालू करें',
   locationBannerBody:
@@ -72,11 +71,6 @@ export const location = {
   childPickCarriedA11y:
     '{{deviceName}} को वह डिवाइस चिह्नित करें जो {{childName}} साथ रखता है',
   stayRange: '{{from}} – {{to}}',
-  placeTotalsTitle: 'आपकी जगहों पर बिताया समय',
-  placeTotalsNote:
-    'पिछले {{count}} दिनों के इतिहास से। सिर्फ़ यहाँ सहेजी गई जगहें गिनी जाती हैं।',
-  placeTotalsNote_one:
-    'पिछले एक दिन के इतिहास से। सिर्फ़ यहाँ सहेजी गई जगहें गिनी जाती हैं।',
   wizardStepAllow:
     'अनुमति दें चुनें, फिर हमेशा चुनें ताकि बैकग्राउंड में भी अपडेट आते रहें।',
   requestNoFix: 'यह डिवाइस स्थान नहीं ले सका। इस पर स्थान की अनुमति अभी न दी गई हो।',
@@ -85,4 +79,21 @@ export const location = {
   cardSharingOff: 'स्थान साझाकरण बंद है',
   cardPermissionOff: 'इस डिवाइस पर स्थान की अनुमति नहीं है',
   cardNotUpdating: 'स्थान अपडेट होना बंद हो गया है',
+  namesNeedPremium: 'स्थान के नाम के लिए सशुल्क योजना चाहिए',
+  namesNeedPremiumTrialEnded:
+    'आपका ट्रायल समाप्त हो गया है। स्थानों के नाम पूरे देखने के लिए अपग्रेड करें।',
+  namesNeedPremiumStill:
+    'स्थान अब भी दर्ज होते हैं, और आपने जो जगहें सहेजी हैं उनके नाम अब भी दिखते हैं।',
+  awayFromPlace: '{{place}} से {{distance}} {{direction}}',
+  distanceKm: '{{value}} किमी',
+  distanceMeters: '{{value}} मी',
+  compassN: 'उत्तर',
+  compassNe: 'उत्तर-पूर्व',
+  compassE: 'पूर्व',
+  compassSe: 'दक्षिण-पूर्व',
+  compassS: 'दक्षिण',
+  compassSw: 'दक्षिण-पश्चिम',
+  compassW: 'पश्चिम',
+  compassNw: 'उत्तर-पश्चिम',
+  areaLabel: '{{area}} में कहीं',
 } as const;

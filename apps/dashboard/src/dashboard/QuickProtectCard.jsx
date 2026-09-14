@@ -119,19 +119,22 @@ export default function QuickProtectCard({
         // Counted rather than described: an older child's approved list on a
         // younger child is the one part of a copy a parent could not have
         // predicted from the row label.
-        hint: !canUsePremiumControls
-          ? activityT('family.quickProtectWebFilterPremium')
-          : withReplaces(
-              source
-                ? activityT('family.quickProtectWebFilterCopyHint', {
-                    childName: source.name,
-                    allowed: source.rules?.webFilterAllowList?.length ?? 0,
-                    blocked: source.rules?.webFilterBlockList?.length ?? 0,
-                  })
-                : activityT('family.quickProtectWebFilterHint'),
-              replaces,
-            ),
-        premium: true,
+        //
+        // Not `premium`: the filter's switch and safe search are free-tier
+        // keys, and only the copied lists need the plan. A free family that
+        // does not get those lists reads the plain description rather than the
+        // count, which would promise a copy that is not made.
+        hint: withReplaces(
+          source && canUsePremiumControls
+            ? activityT('family.quickProtectWebFilterCopyHint', {
+                childName: source.name,
+                allowed: source.rules?.webFilterAllowList?.length ?? 0,
+                blocked: source.rules?.webFilterBlockList?.length ?? 0,
+              })
+            : activityT('family.quickProtectWebFilterHint'),
+          replaces,
+        ),
+        premium: false,
       };
     }
     if (key === 'location') {

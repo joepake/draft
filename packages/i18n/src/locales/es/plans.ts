@@ -50,6 +50,8 @@ export const plans = {
   compareNewAppsPremium: 'Qué apps, y aprobación antes de instalar',
   compareMessages: 'Avisos de mensajes (Android)',
   compareSafety: 'Alertas de protección y Check-in',
+  compareSafetyFree: 'Avisos + Check-In',
+  compareSafetyPremium: 'Añade una foto a cada Check-In',
   compareControls: 'Bloqueo de apps y filtro web',
   compareControlsFree: 'Cualquier app, contenido para adultos',
   compareControlsPremium: 'Por categoría, límites por app, tus propias listas',
@@ -84,10 +86,13 @@ export const plans = {
   featurePausePhone: 'Bloqueo de dispositivo',
   featureDailyLimits: 'Límite diario',
   featureBlockedHours: 'Horas bloqueadas',
+  featureAppLimits: 'Límite de tiempo por app',
+  featureInstallApproval: 'Aprobar nuevas instalaciones',
   featureTimeRequests: 'Solicitudes de tiempo',
   featureAppBlocking: 'Apps bloqueadas',
   featureWebFiltering: 'Filtro web',
   featureSeeLocation: 'Ubicación en vivo',
+  featureTamperAlerts: 'Aviso si se elimina KidGate',
   featureSosAlerts: 'Alertas SOS',
   trialPlanName: 'Prueba',
   trialDescription:
@@ -201,5 +206,14 @@ export const plans = {
   teaserChildReport: 'Premium añade un informe por cada hijo, y uno nuevo cada semana.',
   teaserMessageAlerts:
     'Premium te avisa cuando un mensaje necesita tu atención. Solo en Android.',
+  teaserWebFilterAdvanced:
+    'Premium filtra por categoría, admite tus propias listas de permitidos y bloqueados, y deja que tu hijo pida desbloquear un sitio.',
+  teaserWeeklyReport:
+    'Gratis envía un informe al terminar la prueba. Premium envía uno cada semana.',
+  teaserProofRewardTasks: 'Tareas activas: {{count}}',
+  teaserRewardTasks:
+    'Es todo lo que el plan gratuito mantiene a la vez. Premium lo duplica.',
   teaserLiveNote: 'Gratis se actualiza cada 30 minutos. Premium es en directo.',
+  teaserUsageTimeline: 'Premium muestra a qué horas del día se usó el dispositivo.',
+  teaserDeviceNote: 'Solo informa el dispositivo supervisado.',
 } as const;

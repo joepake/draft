@@ -50,6 +50,8 @@ export const plans = {
   compareNewAppsPremium: 'Quais apps, e aprovação antes de instalar',
   compareMessages: 'Avisos de mensagens (Android)',
   compareSafety: 'Alertas de proteção e Check-in',
+  compareSafetyFree: 'Alertas + Check-In',
+  compareSafetyPremium: 'Adiciona uma foto a cada Check-In',
   compareControls: 'Bloqueio de apps e filtro da web',
   compareControlsFree: 'Qualquer app, conteúdo adulto',
   compareControlsPremium: 'Por categoria, limites por app, suas próprias listas',
@@ -84,10 +86,13 @@ export const plans = {
   featurePausePhone: 'Bloqueio do dispositivo',
   featureDailyLimits: 'Limite diário',
   featureBlockedHours: 'Horários bloqueados',
+  featureAppLimits: 'Limite de tempo por app',
+  featureInstallApproval: 'Aprovar novas instalações',
   featureTimeRequests: 'Solicitações de tempo',
   featureAppBlocking: 'Apps bloqueados',
   featureWebFiltering: 'Filtro da web',
   featureSeeLocation: 'Localização ao vivo',
+  featureTamperAlerts: 'Alerta se o KidGate for removido',
   featureSosAlerts: 'Alertas de SOS',
   trialPlanName: 'Teste',
   trialDescription:
@@ -204,5 +209,14 @@ export const plans = {
     'O Premium adiciona um relatório por filho, e um novo a cada semana.',
   teaserMessageAlerts:
     'O Premium avisa quando uma mensagem precisa da sua atenção. Só no Android.',
+  teaserWebFilterAdvanced:
+    'O Premium filtra por categoria, aceita as suas próprias listas de permitidos e bloqueados e deixa o seu filho pedir para desbloquear um site.',
+  teaserWeeklyReport:
+    'O plano gratuito envia um relatório quando o teste termina. O Premium envia um por semana.',
+  teaserProofRewardTasks: 'Tarefas ativas: {{count}}',
+  teaserRewardTasks:
+    'É tudo o que o plano gratuito mantém ao mesmo tempo. O Premium duplica.',
   teaserLiveNote: 'O plano gratuito atualiza a cada 30 minutos. O Premium é ao vivo.',
+  teaserUsageTimeline: 'O Premium mostra em que horas do dia o dispositivo foi usado.',
+  teaserDeviceNote: 'Apenas o dispositivo monitorado envia dados.',
 } as const;

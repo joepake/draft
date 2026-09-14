@@ -53,6 +53,8 @@ export const plans = {
   compareNewAppsPremium: 'Which apps, and approval before install',
   compareMessages: 'Message alerts (Android)',
   compareSafety: 'Protection alerts and Check-In',
+  compareSafetyFree: 'Alerts + Check-In',
+  compareSafetyPremium: 'Adds a photo to every Check-In',
   compareControls: 'App blocking and web filter',
   compareControlsFree: 'Any app, adult content',
   compareControlsPremium: 'By category, per-app limits, your own lists',
@@ -91,10 +93,13 @@ export const plans = {
   featurePausePhone: 'Device Lock',
   featureDailyLimits: 'Daily Limit',
   featureBlockedHours: 'Blocked Hours',
+  featureAppLimits: 'A time limit per app',
+  featureInstallApproval: 'Approve new installs',
   featureTimeRequests: 'Time Requests',
   featureAppBlocking: 'Blocked Apps',
   featureWebFiltering: 'Web Filter',
   featureSeeLocation: 'Live Location',
+  featureTamperAlerts: 'Alerts if KidGate is removed',
   featureSosAlerts: 'SOS Alerts',
   trialPlanName: 'Trial',
   trialDescription:
@@ -213,5 +218,15 @@ export const plans = {
   teaserMessageAlerts:
     'Premium tells you when a message needs your attention. Android only.',
   // §3's axis, for a surface comparing plans rather than missing a feature.
+  teaserWebFilterAdvanced:
+    'Premium filters by category, takes your own allow and block lists, and lets your child ask to unblock a site.',
+  teaserWeeklyReport:
+    'Free sends one report when the trial ends. Premium sends one every week.',
+  teaserProofRewardTasks: 'Active tasks: {{count}}',
+  teaserRewardTasks:
+    'That is every task the free plan runs at once. Premium doubles it.',
   teaserLiveNote: 'Free updates every 30 minutes. Premium is live.',
+  teaserUsageTimeline:
+    'Premium shows when in the day the device was used, hour by hour.',
+  teaserDeviceNote: 'Only your one monitored device reports.',
 } as const;

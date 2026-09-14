@@ -70,13 +70,13 @@ export const webFilter = {
     'Auf dem PC ist nichts zu bestätigen. Der KidGate-Hintergrunddienst schaltet den Filter binnen Sekunden ein.',
 
   infoLine1Windows:
-    'KidGate betreibt auf dem PC einen Resolver, der prüft, welche Seiten nachgeschlagen werden, und die aus Ihren Kategorien blockiert.',
+    'KidGate betreibt auf dem PC einen Resolver, der prüft, welche Seiten nachgeschlagen werden, und die aus deinen Kategorien blockiert.',
 
   infoLine2Windows:
-    'Chrome, Edge und Firefox werden über eine von KidGate gesetzte Richtlinie daran gebunden. Ihr Kind muss nichts bestätigen.',
+    'Chrome, Edge und Firefox werden über eine von KidGate gesetzte Richtlinie daran gebunden. Dein Kind muss nichts bestätigen.',
 
   infoLine3Windows:
-    'Dafür wird der KidGate-Hintergrunddienst benötigt. Bleibt der Webfilter aus, installieren Sie KidGate auf dem PC als Administrator neu.',
+    'Dafür wird der KidGate-Hintergrunddienst benötigt. Bleibt der Webfilter aus, installiere KidGate auf dem PC als Administrator neu.',
 
   infoLine4Windows:
     'Der Filter liest nur Seitennamen. Er sieht nicht in eine Seite hinein, und eine gerade nachgeschlagene Seite kann noch einige Minuten laden.',

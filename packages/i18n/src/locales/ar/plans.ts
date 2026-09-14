@@ -48,6 +48,8 @@ export const plans = {
   compareNewAppsPremium: 'أي التطبيقات، والموافقة قبل التثبيت',
   compareMessages: 'تنبيهات الرسائل (Android)',
   compareSafety: 'تنبيهات الحماية والاطمئنان',
+  compareSafetyFree: 'تنبيهات + تسجيل الوصول',
+  compareSafetyPremium: 'يضيف صورة إلى كل تسجيل وصول',
   compareControls: 'حظر التطبيقات وفلتر الويب',
   compareControlsFree: 'أي تطبيق، محتوى البالغين',
   compareControlsPremium: 'حسب الفئة، حدود لكل تطبيق، قوائمك الخاصة',
@@ -82,10 +84,13 @@ export const plans = {
   featurePausePhone: 'قفل الجهاز',
   featureDailyLimits: 'الحد اليومي',
   featureBlockedHours: 'ساعات الحظر',
+  featureAppLimits: 'حد زمني لكل تطبيق',
+  featureInstallApproval: 'الموافقة على عمليات التثبيت الجديدة',
   featureTimeRequests: 'طلبات الوقت',
   featureAppBlocking: 'التطبيقات المحظورة',
   featureWebFiltering: 'فلتر الويب',
   featureSeeLocation: 'الموقع المباشر',
+  featureTamperAlerts: 'تنبيه عند إزالة KidGate',
   featureSosAlerts: 'تنبيهات SOS',
   trialPlanName: 'تجريبي',
   trialDescription:
@@ -194,5 +199,14 @@ export const plans = {
   teaserActivityWindow: 'الخطة المجانية تعرض اليوم. Premium يحتفظ بـ 30 يومًا.',
   teaserChildReport: 'يضيف Premium تقريرًا لكل طفل، وتقريرًا جديدًا كل أسبوع.',
   teaserMessageAlerts: 'ينبّهك Premium عندما تحتاج رسالة إلى انتباهك. على Android فقط.',
+  teaserWebFilterAdvanced:
+    'يفلتر Premium حسب الفئة، ويقبل قوائم السماح والحظر الخاصة بك، ويتيح لطفلك طلب فتح موقع.',
+  teaserWeeklyReport:
+    'الخطة المجانية ترسل تقريرًا واحدًا عند انتهاء التجربة. Premium يرسل تقريرًا كل أسبوع.',
+  teaserProofRewardTasks: 'المهام النشطة: {{count}}',
+  teaserRewardTasks:
+    'هذا كل ما تشغّله الخطة المجانية في وقت واحد. Premium يضاعف العدد.',
   teaserLiveNote: 'يجري تحديث الخطة المجانية كل 30 دقيقة. Premium مباشر.',
+  teaserUsageTimeline: 'يعرض Premium ساعات اليوم التي استُخدم فيها الجهاز.',
+  teaserDeviceNote: 'الجهاز الذي تراقبه هو وحده الذي يرسل التقارير.',
 } as const;

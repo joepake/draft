@@ -71,4 +71,5 @@ export const blockedHours = {
   daysOvernightHint: 'Gece boyu süren aralıklar, başladıkları geceye göre sayılır.',
   overlapWarning:
     'Bu, başka bir engellenen saatle çakışıyor — ikisi de geçerliliğini koruyor.',
+  weekPreviewTitle: 'Haftanız',
 } as const;

@@ -41,7 +41,8 @@ export const appInventory = {
   unsupportedGeneric: 'Thiết bị này không báo cáo các ứng dụng đã cài trên nó.',
   incompleteNote:
     'Những ứng dụng không có biểu tượng trên màn hình chính có thể không xuất hiện trong danh sách này.',
-  blockHint: 'Để chặn một ứng dụng, hãy mở Ứng dụng bị chặn ngay trên thiết bị đó.',
+  blockHint:
+    'Để không cho con dùng một ứng dụng, hãy mở mục Chặn ứng dụng ngay trên thiết bị đó.',
   howItWorksLabel: 'Danh sách này hoạt động thế nào',
   markSafe: 'An toàn',
   dismissedTitle: 'Bạn đã đánh dấu an toàn',

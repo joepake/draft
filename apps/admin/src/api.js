@@ -174,3 +174,37 @@ export function respondToSupportReport({ uid, id, status, response }) {
 export function fetchFamilyDetail(uid, reason) {
   return call('adminFamilyDetail', { uid, reason });
 }
+
+/**
+ * One page of families, oldest uid first.
+ *
+ * Browsing returns rows nobody asked for by name, so it carries a stated reason
+ * like any other personal read and **returns no email addresses** — the server
+ * comment on `getFamilyList` has both arguments. `cursor` is the previous
+ * page's `nextCursor`; absent means the first page.
+ *
+ * One page is `limit` document reads (50 by default), so paging costs what it
+ * shows. The whole-collection scan is `searchFamilies`, not this.
+ */
+export function fetchFamilyList(reason, cursor) {
+  return call('adminFamilyList', cursor ? { reason, cursor } : { reason });
+}
+
+/**
+ * Find the family whose uid nobody has written down.
+ *
+ * **No stated reason, and that is the endpoint's rule rather than a shortcut
+ * taken here**: `apps/mobile` ships operator mode in the App Store build and
+ * sends none, so demanding one would break every phone already installed
+ * (`functions/admin/CLAUDE.md` rule 2). It is still audited — the query itself
+ * is what the entry records, since a name scan has no single target. Opening a
+ * family is `fetchFamilyDetail`, which does demand a reason; this only says
+ * which uid to type there.
+ *
+ * Three shapes, and which one the caller sends decides what the request costs:
+ * `uid` and a full `email` resolve in one document read each, `q` scans up to
+ * 5,000 family documents. `familyQuery` in `App.jsx` picks between them.
+ */
+export function searchFamilies(query) {
+  return call('adminFamilySearch', query);
+}

@@ -71,4 +71,21 @@ export const sos = {
   badgeLabel: 'SOS',
   muteAlarm: '이 알림 소리 끄기',
   alertCount: '{{current}} / {{total}}',
+  trustedContactsTitle: '신뢰할 수 있는 연락처',
+  trustedContactsSubtitle: 'SOS마다 마지막 위치와 함께 이메일을 받습니다',
+  trustedContactsRowSubtitle: '자녀가 SOS를 보내면 이메일을 받는 사람',
+  trustedContactsListSection: 'SOS를 받는 사람',
+  trustedContactsEmpty: '아직 없습니다. 조부모, 이웃, 가족의 친구를 추가하세요.',
+  trustedContactsAddSection: '연락처 추가',
+  trustedContactsAddHint:
+    '최대 {{max}}명. 미리 알려 주세요. 이메일은 예고 없이 도착합니다.',
+  trustedContactsNameLabel: '이름',
+  trustedContactsEmailLabel: '이메일',
+  trustedContactsAddButton: '연락처 추가',
+  trustedContactsFull: '목록이 가득 찼습니다. 하나를 삭제한 뒤 추가하세요.',
+  trustedContactsInvalid: '이름과 올바른 이메일 주소를 입력하세요.',
+  trustedContactsSaveFailed: '저장하지 못했습니다. 잠시 후 다시 시도하세요.',
+  trustedContactsRemoveAccessibility: '{{name}} 삭제',
+  trustedContactsPrivacyNote:
+    '각 연락처는 기기 이름과 마지막 확인 위치를 이메일로 받습니다. 사진은 전송되지 않습니다.',
 } as const;

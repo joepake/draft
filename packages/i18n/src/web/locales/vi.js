@@ -564,8 +564,6 @@ export default {
     topAppsTitle: 'Ứng dụng dùng nhiều nhất hôm nay',
     topAppsTitleDay: 'Ứng dụng dùng nhiều nhất · {{date}}',
     topAppsSub: 'Giới hạn của từng ứng dụng được đánh dấu bằng vạch',
-    topAppsFreeHint:
-      'Top 3 hôm nay — danh sách đầy đủ và lịch sử có trong gói Premium.',
     trendTitle: 'Xu hướng thời gian sử dụng',
     trendSub: '{{count}} ngày gần nhất',
     rangeDays: '{{count}} ngày',

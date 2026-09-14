@@ -116,9 +116,9 @@ export const messageMonitoring = {
     offTitle: 'La sécurité des messages n’est pas activée',
     offBody:
       'Rien n’est analysé sur l’appareil de votre enfant, aucune alerte ne peut donc apparaître ici. Ouvrez KidGate sur son appareil pour la configurer.',
-    pendingTitle: 'En attente de l’appareil de ton enfant',
+    pendingTitle: 'En attente de l’appareil de votre enfant',
     pendingBody:
-      'Tu viens d’activer cette option. L’appareil de ton enfant la prendra en compte à sa prochaine connexion, en général en quelques minutes — plus vite si le téléphone est allumé. Rien d’autre à faire.',
+      'Vous venez d’activer cette option. L’appareil de votre enfant la prendra en compte à sa prochaine connexion, en général en quelques minutes — plus vite si le téléphone est allumé. Rien d’autre à faire.',
     unknownTitle: 'En attente de l’appareil',
     unknownBody:
       'Cet appareil n’a pas encore indiqué si la sécurité des messages fonctionne : une liste vide ne veut donc pas dire grand-chose. Elle devrait se mettre à jour à la prochaine connexion.',

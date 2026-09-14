@@ -49,6 +49,8 @@ export const plans = {
   compareNewAppsPremium: 'Hangi uygulamalar ve yüklemeden önce onay',
   compareMessages: 'Mesaj uyarıları (Android)',
   compareSafety: 'Koruma uyarıları ve Check-In',
+  compareSafetyFree: 'Uyarılar + Check-In',
+  compareSafetyPremium: 'Her Check-In’e fotoğraf ekler',
   compareControls: 'Uygulama engelleme ve web filtresi',
   compareControlsFree: 'Her uygulama, yetişkin içeriği',
   compareControlsPremium: 'Kategoriye göre, uygulama başına limit, kendi listeleriniz',
@@ -83,10 +85,13 @@ export const plans = {
   featurePausePhone: 'Cihaz Kilidi',
   featureDailyLimits: 'Günlük sınır',
   featureBlockedHours: 'Engellenen Saatler',
+  featureAppLimits: 'Uygulama başına süre sınırı',
+  featureInstallApproval: 'Yeni kurulumları onayla',
   featureTimeRequests: 'Süre istekleri',
   featureAppBlocking: 'Engellenen Uygulamalar',
   featureWebFiltering: 'Web filtresi',
   featureSeeLocation: 'Canlı Konum',
+  featureTamperAlerts: 'KidGate kaldırılırsa uyarı',
   featureSosAlerts: 'SOS uyarıları',
   trialPlanName: 'Deneme',
   trialDescription:
@@ -200,5 +205,15 @@ export const plans = {
   teaserChildReport: 'Premium her çocuk için ayrı rapor ekler, her hafta da yenisini.',
   teaserMessageAlerts:
     'Premium bir mesaj dikkatinizi gerektirdiğinde haber verir. Yalnızca Android.',
+  teaserWebFilterAdvanced:
+    'Premium kategoriye göre filtreler, kendi izin ve engelleme listelerinizi alır ve çocuğunuzun bir siteyi açma isteği göndermesine izin verir.',
+  teaserWeeklyReport:
+    'Ücretsiz plan deneme bitince tek rapor gönderir. Premium her hafta bir tane gönderir.',
+  teaserProofRewardTasks: 'Etkin görevler: {{count}}',
+  teaserRewardTasks:
+    'Ücretsiz planın aynı anda yürüttüğü görev sayısı bu kadar. Premium bunu ikiye katlar.',
   teaserLiveNote: 'Ücretsiz plan 30 dakikada bir güncellenir. Premium canlıdır.',
+  teaserUsageTimeline:
+    'Premium, cihazın gün içinde hangi saatlerde kullanıldığını gösterir.',
+  teaserDeviceNote: 'Yalnızca izlenen cihaz rapor gönderir.',
 } as const;

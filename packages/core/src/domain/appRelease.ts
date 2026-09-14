@@ -30,7 +30,7 @@ import type {
   AppReleaseNotes,
   AppReleases,
 } from '@kidgate/schema/appRelease';
-import { compareVersionStrings } from './buildFreshness';
+import { compareVersionStrings, formatBuildLabel } from './buildFreshness';
 
 /**
  * Platforms where a forced update is a door rather than a wall.
@@ -271,8 +271,13 @@ export function resolveUpdatePrompt(input: UpdatePromptInput): UpdatePrompt | nu
     return null;
   }
 
+  /*
+   * `1.1.0.130`, the same shape the Settings screen and the parent's device
+   * card print — a parent comparing the two should not have to work out that
+   * they are the same pair of numbers written two ways.
+   */
   const targetVersion =
-    publishedName ||
+    formatBuildLabel(publishedName, publishedCode) ||
     (typeof publishedCode === 'number' ? `build ${publishedCode}` : '');
   const notes = pickReleaseNote(release.notes, input.language);
 

@@ -49,6 +49,8 @@ export const plans = {
   compareNewAppsPremium: 'कौन-से ऐप, और इंस्टॉल से पहले मंज़ूरी',
   compareMessages: 'संदेश सूचनाएँ (Android)',
   compareSafety: 'सुरक्षा अलर्ट और चेक-इन',
+  compareSafetyFree: 'अलर्ट + चेक-इन',
+  compareSafetyPremium: 'हर चेक-इन के साथ फ़ोटो जोड़ता है',
   compareControls: 'ऐप ब्लॉक और वेब फ़िल्टर',
   compareControlsFree: 'कोई भी ऐप, वयस्क सामग्री',
   compareControlsPremium: 'श्रेणी के अनुसार, हर ऐप की सीमा, अपनी सूचियाँ',
@@ -83,10 +85,13 @@ export const plans = {
   featurePausePhone: 'डिवाइस लॉक',
   featureDailyLimits: 'दैनिक सीमा',
   featureBlockedHours: 'ब्लॉक किए गए समय',
+  featureAppLimits: 'हर ऐप के लिए समय सीमा',
+  featureInstallApproval: 'नए इंस्टॉल मंज़ूर करें',
   featureTimeRequests: 'समय अनुरोध',
   featureAppBlocking: 'ब्लॉक किए गए ऐप्स',
   featureWebFiltering: 'वेब फ़िल्टर',
   featureSeeLocation: 'लाइव स्थान',
+  featureTamperAlerts: 'KidGate हटाए जाने पर अलर्ट',
   featureSosAlerts: 'SOS अलर्ट',
   trialPlanName: 'ट्रायल',
   trialDescription:
@@ -198,5 +203,14 @@ export const plans = {
   teaserChildReport: 'Premium हर बच्चे के लिए अलग रिपोर्ट देता है, और हर हफ़्ते नई।',
   teaserMessageAlerts:
     'Premium तब बताता है जब किसी संदेश पर आपका ध्यान चाहिए। सिर्फ़ Android पर।',
+  teaserWebFilterAdvanced:
+    'Premium श्रेणी के अनुसार फ़िल्टर करता है, आपकी अपनी अनुमति और ब्लॉक सूचियाँ लेता है, और बच्चे को किसी साइट को खोलने का अनुरोध भेजने देता है।',
+  teaserWeeklyReport:
+    'मुफ़्त प्लान ट्रायल खत्म होने पर एक रिपोर्ट भेजता है। Premium हर हफ़्ते एक भेजता है।',
+  teaserProofRewardTasks: 'चालू काम: {{count}}',
+  teaserRewardTasks:
+    'मुफ़्त प्लान एक साथ इतने ही काम चलाता है। Premium इसे दोगुना कर देता है।',
   teaserLiveNote: 'मुफ़्त प्लान हर 30 मिनट में अपडेट होता है। Premium लाइव है।',
+  teaserUsageTimeline: 'Premium दिखाता है कि दिन के किन घंटों में डिवाइस इस्तेमाल हुआ।',
+  teaserDeviceNote: 'रिपोर्ट सिर्फ़ आपके मॉनिटर किए गए डिवाइस से आती है।',
 } as const;

@@ -90,7 +90,7 @@ export default {
     heroTitleAccent: 'senza togliere loro la libertà.',
     heroLede:
       'KidGate dà ai genitori un controllo sereno e chiaro su tempo di schermo, app e sicurezza — mentre i ragazzi tengono un telefono che continua a sembrare loro.',
-    heroCheck1: 'Tempo di schermo',
+    heroCheck1: 'Tempo di utilizzo',
     heroCheck2: 'Blocco app',
     heroCheck3: 'Filtro web',
     heroCheck4: 'Posizione',
@@ -98,7 +98,7 @@ export default {
 
     phoneDailyLimit: 'Limite giornaliero',
     phoneDailyLimitValue: '1h 24m usate su 3h',
-    phoneBlockedHours: 'Ore bloccate',
+    phoneBlockedHours: 'Orari di blocco',
     phoneScheduleOn: 'Programmazione attiva',
     phoneLocation: 'Posizione',
     phoneLocationValue: 'A scuola · 5 min fa',
@@ -339,7 +339,7 @@ export default {
     none: '—',
     byDay: 'Tempo di schermo per giorno',
     limit: 'Limite {{value}}',
-    screenTime: 'Tempo di schermo',
+    screenTime: 'Tempo di utilizzo',
     bonus: 'Bonus',
     bonusEarned: 'Bonus guadagnato',
     overLimit: 'Oltre il limite giornaliero',
@@ -347,7 +347,7 @@ export default {
     ofLimit: 'su {{value}}',
     noLimit: 'nessun limite impostato',
     blocked: 'Bloccato',
-    blockedHours: 'Ore bloccate',
+    blockedHours: 'Orari di blocco',
     day0: 'dom',
     day1: 'lun',
     day2: 'mar',
@@ -421,7 +421,7 @@ export default {
 
   dash: {
     tabOverview: 'Panoramica',
-    tabScreen: 'Tempo di schermo',
+    tabScreen: 'Tempo di utilizzo',
     tabApps: 'App e web',
     tabSafety: 'Sicurezza',
     tabControls: 'Comandi',
@@ -510,7 +510,7 @@ export default {
     tileOpenItems: 'Elementi aperti qui sotto',
     tileAllClear: 'Tutto a posto',
 
-    cardScreenTime: 'Tempo di schermo',
+    cardScreenTime: 'Tempo di utilizzo',
     cardScreenTimeSub: 'Ultimi 14 giorni, rispetto al limite giornaliero',
     usageSyncNote:
       'Il tempo di schermo può richiedere alcuni minuti per comparire in questa schermata — più a lungo se il dispositivo non ha connessione a Internet o si è chiuso in modo imprevisto.',
@@ -552,12 +552,10 @@ export default {
     topAppsTitle: 'App più usate oggi',
     topAppsTitleDay: 'App più usate · {{date}}',
     topAppsSub: 'I limiti per app sono indicati da un marcatore',
-    topAppsFreeHint:
-      'Top 3 di oggi: l’elenco completo e la cronologia arrivano con Premium.',
     trendTitle: 'Andamento del tempo di schermo',
     trendSub: 'Ultimi {{count}} giorni',
     rangeDays: '{{count}} g',
-    blockedHoursTitle: 'Ore bloccate',
+    blockedHoursTitle: 'Orari di blocco',
     blockedHoursSub_one:
       '{{count}} fascia oraria · il dispositivo resta bloccato dentro i blocchi ombreggiati',
     blockedHoursSub_other:
@@ -693,7 +691,7 @@ export default {
       'È l’intera giornata di questo bambino, non un limite di questo dispositivo: ogni dispositivo riceve ciò che gli altri non hanno usato. Si modifica nell’app KidGate.',
     whatsOnTitle: 'Cosa è attivo',
     whatsOnSub: 'Le modifiche si sincronizzano con il dispositivo del bambino',
-    rowBlockedHours: 'Ore bloccate',
+    rowBlockedHours: 'Orari di blocco',
     rowBlockedHoursDesc_one: '{{count}} fascia oraria · {{list}}',
     rowBlockedHoursDesc_other: '{{count}} fasce orarie · {{list}}',
     rowAppBlocking: 'Blocco app',

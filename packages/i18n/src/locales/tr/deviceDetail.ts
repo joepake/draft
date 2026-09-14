@@ -25,6 +25,7 @@ export const deviceDetail = {
   alertsSubtitle: 'SOS, koruma, yerler ve uygulamalar',
   checkIn: 'Check-In',
   locationPlusSelfie: 'Konum ve fotoğraf',
+  locationOnly: 'Yalnızca konum',
   webFilter: 'Web filtresi',
   limitAdultWebsites: 'Uygunsuz siteleri sınırla',
   location: 'Konum',

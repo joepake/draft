@@ -1,4 +1,10 @@
 export const activities = {
+  activityTypeSupportSession: '지원',
+  supportSessionTitle: '고객지원 접근',
+  supportSessionBody:
+    'KidGate 고객지원 담당자가 문의 처리를 위해 가족 계정을 열었습니다.',
+  supportSessionBodyTicket:
+    'KidGate 고객지원 담당자가 문의 {{ticketRef}} 처리를 위해 가족 계정을 열었습니다.',
   title: '활동',
   subtitleAllDevices: '모든 기기의 최신 이벤트',
   subtitleTimelineForDevice: '{{deviceName}} 타임라인',

@@ -75,4 +75,22 @@ export const sos = {
   badgeLabel: 'SOS',
   muteAlarm: 'Отключить звук оповещения',
   alertCount: '{{current}} из {{total}}',
+  trustedContactsTitle: 'Доверенные контакты',
+  trustedContactsSubtitle: 'Получают письмо при каждом SOS с последним местоположением',
+  trustedContactsRowSubtitle:
+    'Люди, которым приходит письмо, когда ребёнок отправляет SOS',
+  trustedContactsListSection: 'Кто получает SOS',
+  trustedContactsEmpty: 'Пока никого. Добавьте бабушку, соседа или друга семьи.',
+  trustedContactsAddSection: 'Добавить контакт',
+  trustedContactsAddHint:
+    'До {{max}}. Предупредите их заранее — письмо приходит без предупреждения.',
+  trustedContactsNameLabel: 'Имя',
+  trustedContactsEmailLabel: 'Эл. почта',
+  trustedContactsAddButton: 'Добавить контакт',
+  trustedContactsFull: 'Список заполнен. Удалите один контакт, чтобы добавить другой.',
+  trustedContactsInvalid: 'Введите имя и корректный адрес эл. почты.',
+  trustedContactsSaveFailed: 'Не удалось сохранить. Попробуйте ещё раз через минуту.',
+  trustedContactsRemoveAccessibility: 'Удалить {{name}}',
+  trustedContactsPrivacyNote:
+    'Каждый контакт получает по эл. почте имя устройства и последнее известное местоположение. Фото не отправляется.',
 } as const;

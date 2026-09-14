@@ -73,4 +73,23 @@ export const sos = {
   badgeLabel: 'SOS',
   muteAlarm: 'Silenzia questo avviso',
   alertCount: '{{current}} / {{total}}',
+  trustedContactsTitle: 'Contatti fidati',
+  trustedContactsSubtitle: 'Ricevono un’email a ogni SOS con l’ultima posizione',
+  trustedContactsRowSubtitle:
+    'Persone avvisate via email quando tuo figlio invia un SOS',
+  trustedContactsListSection: 'Chi riceve l’SOS',
+  trustedContactsEmpty:
+    'Ancora nessuno. Aggiungi un nonno, un vicino o un amico di famiglia.',
+  trustedContactsAddSection: 'Aggiungi un contatto',
+  trustedContactsAddHint:
+    'Fino a {{max}}. Avvisali prima: l’email arriva senza preavviso.',
+  trustedContactsNameLabel: 'Nome',
+  trustedContactsEmailLabel: 'Email',
+  trustedContactsAddButton: 'Aggiungi contatto',
+  trustedContactsFull: 'La lista è piena. Rimuovine uno per aggiungerne un altro.',
+  trustedContactsInvalid: 'Inserisci un nome e un indirizzo email valido.',
+  trustedContactsSaveFailed: 'Impossibile salvare. Riprova tra un momento.',
+  trustedContactsRemoveAccessibility: 'Rimuovi {{name}}',
+  trustedContactsPrivacyNote:
+    'Ogni contatto riceve via email il nome del dispositivo e l’ultima posizione nota. Nessuna foto viene inviata.',
 } as const;

@@ -76,4 +76,21 @@ export const sos = {
   badgeLabel: 'SOS',
   muteAlarm: 'इस अलर्ट को म्यूट करें',
   alertCount: '{{total}} में से {{current}}',
+  trustedContactsTitle: 'भरोसेमंद संपर्क',
+  trustedContactsSubtitle: 'हर SOS पर आख़िरी स्थान के साथ ईमेल पाते हैं',
+  trustedContactsRowSubtitle: 'आपके बच्चे के SOS भेजने पर जिन्हें ईमेल मिलता है',
+  trustedContactsListSection: 'SOS किसे मिलता है',
+  trustedContactsEmpty: 'अभी कोई नहीं। दादा-दादी, पड़ोसी या पारिवारिक मित्र जोड़ें।',
+  trustedContactsAddSection: 'संपर्क जोड़ें',
+  trustedContactsAddHint:
+    'अधिकतम {{max}}। उन्हें पहले बता दें — ईमेल बिना चेतावनी के आता है।',
+  trustedContactsNameLabel: 'नाम',
+  trustedContactsEmailLabel: 'ईमेल',
+  trustedContactsAddButton: 'संपर्क जोड़ें',
+  trustedContactsFull: 'सूची भर गई है। दूसरा जोड़ने के लिए एक हटाएँ।',
+  trustedContactsInvalid: 'नाम और मान्य ईमेल पता दर्ज करें।',
+  trustedContactsSaveFailed: 'सहेजा नहीं जा सका। थोड़ी देर बाद फिर कोशिश करें।',
+  trustedContactsRemoveAccessibility: '{{name}} को हटाएँ',
+  trustedContactsPrivacyNote:
+    'हर संपर्क को ईमेल से डिवाइस का नाम और आख़िरी ज्ञात स्थान मिलता है। कोई फ़ोटो नहीं भेजी जाती।',
 } as const;

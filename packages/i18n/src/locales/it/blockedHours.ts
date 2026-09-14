@@ -75,4 +75,5 @@ export const blockedHours = {
   daysOvernightHint: 'Le fasce notturne contano per la notte in cui iniziano.',
   overlapWarning:
     'Questo si sovrappone a un altro orario bloccato: entrambi restano validi.',
+  weekPreviewTitle: 'La tua settimana',
 } as const;

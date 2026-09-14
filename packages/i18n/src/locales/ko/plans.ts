@@ -48,6 +48,8 @@ export const plans = {
   compareNewAppsPremium: '어떤 앱인지, 설치 전 승인까지',
   compareMessages: '메시지 알림 (Android)',
   compareSafety: '보호 알림과 체크인',
+  compareSafetyFree: '알림 + 체크인',
+  compareSafetyPremium: '체크인마다 사진을 추가',
   compareControls: '앱 차단과 웹 필터',
   compareControlsFree: '모든 앱, 성인 콘텐츠',
   compareControlsPremium: '카테고리별, 앱별 한도, 직접 만든 목록',
@@ -82,10 +84,13 @@ export const plans = {
   featurePausePhone: '기기 잠금',
   featureDailyLimits: '일일 제한',
   featureBlockedHours: '차단 시간',
+  featureAppLimits: '앱별 사용 시간 제한',
+  featureInstallApproval: '새 설치 승인',
   featureTimeRequests: '시간 연장 요청',
   featureAppBlocking: '차단된 앱',
   featureWebFiltering: '웹 필터',
   featureSeeLocation: '실시간 위치',
+  featureTamperAlerts: 'KidGate가 삭제되면 알림',
   featureSosAlerts: 'SOS 알림',
   trialPlanName: '체험',
   trialDescription:
@@ -195,5 +200,14 @@ export const plans = {
   teaserChildReport: 'Premium은 자녀별 리포트를 추가하고 매주 새로 만들어 줍니다.',
   teaserMessageAlerts:
     'Premium은 주의가 필요한 메시지가 있을 때 알려줍니다. Android만 지원합니다.',
+  teaserWebFilterAdvanced:
+    'Premium은 카테고리로 필터링하고, 직접 만든 허용·차단 목록을 쓰며, 아이가 사이트 차단 해제를 요청할 수 있습니다.',
+  teaserWeeklyReport:
+    '무료 플랜은 체험이 끝날 때 리포트를 한 번 보냅니다. Premium은 매주 보냅니다.',
+  teaserProofRewardTasks: '진행 중인 과제: {{count}}',
+  teaserRewardTasks:
+    '무료 플랜이 동시에 유지하는 과제는 여기까지입니다. Premium은 두 배입니다.',
   teaserLiveNote: '무료는 30분마다 업데이트됩니다. Premium은 실시간입니다.',
+  teaserUsageTimeline: 'Premium은 하루 중 어느 시간대에 기기를 사용했는지 보여 줍니다.',
+  teaserDeviceNote: '보고는 모니터링 중인 기기 1대에서만 옵니다.',
 } as const;

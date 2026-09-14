@@ -359,7 +359,7 @@ function Detail({ uid, id, onChanged }) {
         <span>
           {t('support.appVersion', {
             version: `${report.appVersion ?? '—'}${
-              report.appVersionCode ? ` (${report.appVersionCode})` : ''
+              report.appVersionCode ? `.${report.appVersionCode}` : ''
             }`,
           })}
         </span>

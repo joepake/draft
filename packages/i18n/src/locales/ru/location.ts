@@ -37,7 +37,6 @@ export const location = {
     'История пока отсутствует. Точки появятся после обновления местоположения или Check-In.',
   historyHighlightAccessibility: 'Показать {{place}} на карте',
   historyOpenMapsAccessibility: 'Открыть {{place}} в Картах',
-  latestBadge: 'Последнее',
   unableToRequestLocationRefresh: 'Не удалось запросить обновление местоположения',
   locationBannerTitle: 'Включите геолокацию',
   locationBannerBody:
@@ -78,13 +77,6 @@ export const location = {
   childPickCarriedA11y:
     'Отметить {{deviceName}} как устройство, которое {{childName}} носит с собой',
   stayRange: '{{from}} – {{to}}',
-  placeTotalsTitle: 'Время в ваших местах',
-  placeTotalsNote:
-    'За последние {{count}} дней истории. Учитываются только сохранённые здесь места.',
-  placeTotalsNote_one:
-    'За последний {{count}} день истории. Учитываются только сохранённые здесь места.',
-  placeTotalsNote_few:
-    'За последние {{count}} дня истории. Учитываются только сохранённые здесь места.',
   wizardStepAllow:
     'Выберите «Разрешить», затем «Всегда», чтобы обновления приходили в фоне.',
   requestNoFix:
@@ -94,4 +86,21 @@ export const location = {
   cardSharingOff: 'Доступ к местоположению выключен',
   cardPermissionOff: 'Местоположение не разрешено на этом устройстве',
   cardNotUpdating: 'Местоположение перестало обновляться',
+  namesNeedPremium: 'Названия мест доступны в платном тарифе',
+  namesNeedPremiumTrialEnded:
+    'Ваш пробный период закончился. Оформите подписку, чтобы видеть названия мест полностью.',
+  namesNeedPremiumStill:
+    'Местоположения по-прежнему записываются, а сохранённые места по-прежнему показывают свои названия.',
+  awayFromPlace: '{{distance}} к {{direction}} от {{place}}',
+  distanceKm: '{{value}} км',
+  distanceMeters: '{{value}} м',
+  compassN: 'северу',
+  compassNe: 'северо-востоку',
+  compassE: 'востоку',
+  compassSe: 'юго-востоку',
+  compassS: 'югу',
+  compassSw: 'юго-западу',
+  compassW: 'западу',
+  compassNw: 'северо-западу',
+  areaLabel: 'Где-то в {{area}}',
 } as const;

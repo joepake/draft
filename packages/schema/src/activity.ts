@@ -41,7 +41,16 @@ export type ActivityType =
    * believable.
    */
   | 'message_checked'
-  | 'emergency';
+  | 'emergency'
+  /**
+   * A KidGate operator entered the family account for support. Written by
+   * `functions/admin/impersonate.js` at session start — the one copy of the
+   * entry log the family can read (Privacy Policy §10). `deviceId` is empty:
+   * no device was involved. Params carry `ticketRef` when the operator named
+   * one. It records the entry only; nothing records what a session changed
+   * (`docs/OPERATOR_ACCESS.md`).
+   */
+  | 'support_session';
 
 /**
  * Every activity type, as a runtime list — the one a reader may iterate.
@@ -76,6 +85,7 @@ export const ACTIVITY_TYPES = [
   'message_alert',
   'message_checked',
   'emergency',
+  'support_session',
 ] as const satisfies ReadonlyArray<ActivityType>;
 
 /** Empty when the list is complete. A member here is a compile error below. */

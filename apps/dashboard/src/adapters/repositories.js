@@ -13,6 +13,7 @@ import { createScreenTimeBoardRepository } from '@kidgate/core/repositories/scre
 import { createRewardTaskRepository } from '@kidgate/core/repositories/rewardTask';
 import { createSafetyCheckInRepository } from '@kidgate/core/repositories/safetyCheckIn';
 import { createSosAlertRepository } from '@kidgate/core/repositories/sosAlert';
+import { createTrustedContactRepository } from '@kidgate/core/repositories/trustedContact';
 import { createSubscriptionRepository } from '@kidgate/core/repositories/subscription';
 import { createTimeRequestRepository } from '@kidgate/core/repositories/timeRequest';
 import { createSiteRequestRepository } from '@kidgate/core/repositories/siteRequest';
@@ -97,6 +98,7 @@ export const leaderboardRepository = createLeaderboardRepository({ db });
 export const screenTimeBoardRepository = createScreenTimeBoardRepository({ db });
 export const rewardTaskRepository = createRewardTaskRepository({ db, api });
 export const sosAlertRepository = createSosAlertRepository({ db });
+export const trustedContactRepository = createTrustedContactRepository({ db });
 export const safetyCheckInRepository = createSafetyCheckInRepository({
   db,
   activities: activityRepository,

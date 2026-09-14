@@ -87,3 +87,35 @@ export function supportsCheckIn(device: CheckInSupportInput): boolean {
   }
   return CHECK_IN_PLATFORMS.includes(device.platform ?? 'ios');
 }
+
+/**
+ * Whether this answer carries the selfie — the free tier's one Check-In limit.
+ *
+ * Free is location only; the photo is premium (`docs/PRICING.md` §4). The
+ * parent app already sends `requirePhoto` from the plan it knows, so this is
+ * the second line, and it is the one that holds: **no Cloud Function touches a
+ * check-in** and `storage.rules` cannot read a plan, so the request document is
+ * whatever a client chose to write. `apps/dashboard` is the honest case — it
+ * cannot tell a running trial from a lapsed plan, so it always asks — and a
+ * modified parent client is the other.
+ *
+ * **This does not latch a person-triggered action.** The rule in
+ * `.claude/rules/child-agent-shared.md` is that SOS and check-in responses go
+ * through, and they do: the answer, its message and its position are sent
+ * exactly as before. What is dropped is a paid attachment, which the schema has
+ * always modelled as absent (`photoUrl` optional, `markPhotoSkipped`), so the
+ * parent reads a check-in answered without a photo rather than one that failed.
+ *
+ * **Fail-open on a cold start, deliberately.** Every agent's latch answers "not
+ * lapsed" until something has been tried — memory everywhere but the extension
+ * (same rules file) — so a device that has just booted uploads one photo for a
+ * family that turns out to be free. That costs one small image; reading an
+ * unknown plan as lapsed would instead deny a paying parent the photo they are
+ * owed, on the one feature they reach for when they are worried.
+ */
+export function answersCheckInWithPhoto(
+  requirePhoto: boolean | undefined,
+  premiumLapsed: boolean,
+): boolean {
+  return requirePhoto === true && !premiumLapsed;
+}

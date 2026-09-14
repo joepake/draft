@@ -31,7 +31,6 @@ export const location = {
   historyEmpty: 'No history yet. Points appear after location updates or Check-Ins.',
   historyHighlightAccessibility: 'Highlight {{place}} on the map',
   historyOpenMapsAccessibility: 'Open {{place}} in Maps',
-  latestBadge: 'Latest',
   unableToRequestLocationRefresh: 'Unable to request a location refresh',
   locationBannerTitle: 'Turn on location',
   locationBannerBody:
@@ -66,11 +65,6 @@ export const location = {
   childPickCarried: 'With them',
   childPickCarriedA11y: 'Mark {{deviceName}} as the device {{childName}} carries',
   stayRange: '{{from}} – {{to}}',
-  placeTotalsTitle: 'Time at your places',
-  placeTotalsNote:
-    'From the last {{count}} days of location history. Only places saved here are counted.',
-  placeTotalsNote_one:
-    'From the last day of location history. Only places saved here are counted.',
   wizardStepAllow:
     'Select Allow, then choose Always so updates keep coming in the background.',
   requestNoFix:
@@ -80,4 +74,21 @@ export const location = {
   cardSharingOff: 'Location sharing is off',
   cardPermissionOff: 'Location is not allowed on this device',
   cardNotUpdating: 'Location has stopped updating',
+  namesNeedPremium: 'Place names need a paid plan',
+  namesNeedPremiumTrialEnded:
+    'Your trial has ended. Upgrade to see place names in full.',
+  namesNeedPremiumStill:
+    'Locations are still recorded, and places you have saved still show their names.',
+  awayFromPlace: '{{distance}} {{direction}} of {{place}}',
+  distanceKm: '{{value}} km',
+  distanceMeters: '{{value}} m',
+  compassN: 'north',
+  compassNe: 'north-east',
+  compassE: 'east',
+  compassSe: 'south-east',
+  compassS: 'south',
+  compassSw: 'south-west',
+  compassW: 'west',
+  compassNw: 'north-west',
+  areaLabel: 'Somewhere in {{area}}',
 } as const;

@@ -2236,6 +2236,79 @@ ol.attn-fix li + li {
   color: var(--critical);
 }
 
+/* ---------- Blocked-hours week preview ---------- */
+
+/* A reading, not a control: no hover, no focus ring, nothing to press. The
+   grid column is fixed so every row's track starts at the same x — bars that
+   do not line up down the column cannot be compared, which is the whole job. */
+.sched-week {
+  display: grid;
+  gap: 0.2rem;
+  margin-top: 1rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--line);
+}
+
+.sched-week-title,
+.sched-quick-title {
+  margin: 0 0 0.2rem;
+  font-size: 0.78rem;
+  color: var(--ink-2);
+}
+
+.sched-days-head {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.sched-days-label {
+  font-size: 0.72rem;
+  color: var(--ink-2);
+}
+
+.sched-quick {
+  margin-top: 0.7rem;
+}
+
+.sched-week-hours,
+.sched-week-row {
+  display: grid;
+  grid-template-columns: 2.2rem 1fr;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.sched-week-hours > span:last-child {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.66rem;
+  color: var(--ink-2);
+}
+
+.sched-week-day {
+  font-size: 0.7rem;
+  color: var(--ink-2);
+}
+
+.sched-week-track {
+  position: relative;
+  display: block;
+  height: 0.8rem;
+  border-radius: 0.3rem;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  overflow: hidden;
+}
+
+.sched-week-run {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: var(--brand);
+}
+
 /* ---------- Per-app limits editor ---------- *
  * Shares the row frame and the stepper with nothing else on purpose: the
  * preset chips below each row are `.chips-toggle`, which is the same control

@@ -54,9 +54,9 @@ export const webFilter = {
   privateDnsBannerBody:
     'DNS riêng tư đang bật nên Chặn nội dung web có thể bị bỏ qua. Vui lòng tắt để bộ lọc hoạt động.',
   privateDnsBannerButton: 'Mở cài đặt DNS',
-  vpnConsentBannerTitle: 'Khôi phục VPN lọc web',
+  vpnConsentBannerTitle: 'Bật lại VPN cho tính năng Chặn nội dung web',
   vpnConsentBannerBody:
-    'VPN của KidGate đang tắt. Chặn nội dung web cần VPN duy trì kết nối để hoạt động.',
+    'VPN của KidGate đang tắt. Tính năng Chặn nội dung web cần VPN duy trì kết nối để hoạt động.',
   vpnConsentBannerButton: 'Bật VPN',
   iosOnlyNote: 'Sử dụng Thời gian sử dụng trên iOS',
   androidVpnNote: 'Sử dụng VPN DNS cục bộ trên Android',

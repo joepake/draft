@@ -1,7 +1,12 @@
 import { useCallback, useEffect, useState } from 'react';
 import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { auth } from './firebase.js';
-import { fetchFamilyDetail, fetchMetrics } from './api.js';
+import {
+  fetchFamilyDetail,
+  fetchFamilyList,
+  fetchMetrics,
+  searchFamilies,
+} from './api.js';
 import { LANGUAGES, useT } from './i18n.js';
 import Report from './Report.jsx';
 import Fleet from './Fleet.jsx';
@@ -23,6 +28,9 @@ import ErrorBoundary from './ErrorBoundary.jsx';
  */
 
 const MIN_REASON_LENGTH = 12;
+
+/** What `searchByName` refuses below, so the button refuses it first. */
+const MIN_QUERY_LENGTH = 2;
 
 /** Inline so the app keeps its zero-dependency rule; 16px, 1.5px stroke. */
 function Icon({ path }) {
@@ -75,6 +83,14 @@ const ICONS = {
     <>
       <circle cx="11" cy="11" r="7" />
       <path d="M20 20l-3.5-3.5" />
+    </>
+  ),
+  families: (
+    <>
+      <path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2" />
+      <circle cx="9" cy="7" r="4" />
+      <path d="M22 21v-2a4 4 0 00-3-3.87" />
+      <path d="M16 3.13a4 4 0 010 7.75" />
     </>
   ),
 };
@@ -375,8 +391,201 @@ function Tile({ label, value }) {
  * colleague to ask "why are you looking at this family?" — the stated reason is
  * the only thing that makes the audit log answerable months later.
  */
+/**
+ * Every family, a page at a time.
+ *
+ * The reason is typed once and travels with every page **and** with every
+ * detail opened from a row, so the audit log answers "why was this browse
+ * happening" for each entry it wrote rather than once at the start.
+ *
+ * Rows carry no email address — `getFamilyList` explains why the server leaves
+ * it out. Opening a row is `fetchFamilyDetail`, the same reasoned, separately
+ * logged read the lookup page performs, so nothing here is a shortcut around a
+ * control; it only saves retyping the uid.
+ */
+function Families() {
+  const { t } = useT();
+  const [reason, setReason] = useState('');
+  const [rows, setRows] = useState(null);
+  const [cursor, setCursor] = useState(null);
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState(null);
+  const [detail, setDetail] = useState(null);
+  const [opening, setOpening] = useState(null);
+
+  const remaining = MIN_REASON_LENGTH - reason.trim().length;
+  const ready = remaining <= 0;
+
+  const load = useCallback(
+    next => {
+      setBusy(true);
+      setError(null);
+      fetchFamilyList(reason.trim(), next)
+        .then(page => {
+          // Appended rather than replaced: paging forward is reading more of
+          // one list, and a cursor-based API has no way back to a page it has
+          // already handed over.
+          setRows(existing =>
+            next ? [...(existing ?? []), ...page.families] : page.families,
+          );
+          setCursor(page.nextCursor ?? null);
+        })
+        .catch(listError => setError(listError.message))
+        .finally(() => setBusy(false));
+    },
+    [reason],
+  );
+
+  const open = useCallback(
+    uid => {
+      setOpening(uid);
+      setError(null);
+      setDetail(null);
+      fetchFamilyDetail(uid, reason.trim())
+        .then(setDetail)
+        .catch(detailError => setError(detailError.message))
+        .finally(() => setOpening(null));
+    },
+    [reason],
+  );
+
+  return (
+    <div className="card">
+      <div className="field-group">
+        <label className="field-label" htmlFor="families-reason">
+          {t('lookup.reason')}
+        </label>
+        <input
+          className="field"
+          id="families-reason"
+          value={reason}
+          onChange={event => setReason(event.target.value)}
+        />
+        <div className="field-hint">
+          {remaining > 0
+            ? t('lookup.reasonRemaining', { count: remaining })
+            : t('families.reasonStored')}
+        </div>
+      </div>
+
+      <button className="btn" disabled={!ready || busy} onClick={() => load(null)}>
+        {busy && !rows ? t('families.loading') : t('families.load')}
+      </button>
+
+      {error ? (
+        <div className="error-banner" style={{ marginTop: 14 }}>
+          <span>{error}</span>
+        </div>
+      ) : null}
+
+      {rows && rows.length === 0 ? (
+        <p className="muted" style={{ marginTop: 14 }}>
+          {t('families.empty')}
+        </p>
+      ) : null}
+
+      {rows && rows.length > 0 ? (
+        <>
+          <div className="table-scroll" style={{ marginTop: 14 }}>
+            <table className="table">
+              <thead>
+                <tr>
+                  <th>{t('search.colName')}</th>
+                  <th>{t('search.colPlan')}</th>
+                  <th>{t('families.colCreated')}</th>
+                  <th>{t('search.colUid')}</th>
+                  <th />
+                </tr>
+              </thead>
+              <tbody>
+                {rows.map(family => (
+                  <tr key={family.uid}>
+                    <td>{family.name ?? t('family.noName')}</td>
+                    <td>
+                      {family.planId ?? t('family.noPlan')}
+                      {family.subscriptionStatus
+                        ? ` · ${family.subscriptionStatus}`
+                        : ''}
+                    </td>
+                    <td>{stamp(family.createdAt)}</td>
+                    <td>
+                      <code>{family.uid}</code>
+                    </td>
+                    <td>
+                      <button
+                        className="btn-ghost"
+                        disabled={opening !== null}
+                        onClick={() => open(family.uid)}
+                      >
+                        {opening === family.uid
+                          ? t('families.opening')
+                          : t('families.open')}
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <div className="ticket-meta" style={{ marginTop: 12 }}>
+            <span>{t('families.shown', { count: rows.length })}</span>
+            {cursor ? (
+              <button
+                className="btn-ghost"
+                disabled={busy}
+                onClick={() => load(cursor)}
+              >
+                {busy ? t('families.loading') : t('families.loadMore')}
+              </button>
+            ) : (
+              <span>{t('families.end')}</span>
+            )}
+          </div>
+        </>
+      ) : null}
+
+      {detail ? <FamilyDetail family={detail} /> : null}
+    </div>
+  );
+}
+
+/**
+ * Pick the cheapest lookup the input can support.
+ *
+ * A full email address and a uid each resolve in one document read; anything
+ * else is a scan of the family collection, which is what makes searching by
+ * name possible at all — Firestore matches neither substrings nor folded
+ * diacritics. Sending `q` for a complete email would turn a one-read lookup
+ * into a few thousand for no gain.
+ *
+ * A uid is 28 alphanumeric characters from Firebase Auth; the length test is
+ * what stops a short name like "Minh" being sent as one and coming back 404
+ * instead of finding the family.
+ *
+ * The same three branches as `OperatorHomeScreen.asQuery` on the phone, copied
+ * rather than shared: an operator API client lives in the app that uses it
+ * (`apps/admin/CLAUDE.md` rule 2b), so there is nowhere both surfaces could
+ * reach these eight lines from.
+ */
+function familyQuery(raw) {
+  const value = raw.trim();
+  if (value.includes('@') && !value.endsWith('@')) {
+    return { email: value };
+  }
+  if (/^[A-Za-z0-9]{20,128}$/.test(value)) {
+    return { uid: value };
+  }
+  return { q: value };
+}
+
 function FamilyLookup() {
   const { t } = useT();
+  const [query, setQuery] = useState('');
+  const [results, setResults] = useState(null);
+  const [truncated, setTruncated] = useState(false);
+  const [searching, setSearching] = useState(false);
+  const [searchError, setSearchError] = useState(null);
   const [uid, setUid] = useState('');
   const [reason, setReason] = useState('');
   const [result, setResult] = useState(null);
@@ -385,6 +594,41 @@ function FamilyLookup() {
 
   const remaining = MIN_REASON_LENGTH - reason.trim().length;
   const ready = uid.trim().length > 0 && remaining <= 0;
+  const canSearch = query.trim().length >= MIN_QUERY_LENGTH;
+
+  /**
+   * Deliberately not wired to `onChange`.
+   *
+   * A name search reads up to `NAME_SCAN_LIMIT` family documents per call, so a
+   * type-ahead would spend one scan per keystroke — ten characters is tens of
+   * thousands of reads for a single lookup. The button and Enter are the only
+   * triggers, and the result stays in state until the next one.
+   */
+  const search = useCallback(() => {
+    const value = query.trim();
+    if (value.length < MIN_QUERY_LENGTH) {
+      return;
+    }
+    setSearching(true);
+    setSearchError(null);
+    setResults(null);
+    setTruncated(false);
+    searchFamilies(familyQuery(value))
+      .then(found => {
+        const rows = found.results ?? [];
+        setResults(rows);
+        setTruncated(found.truncated === true);
+        if (rows.length === 0) {
+          setSearchError(t('search.noMatch'));
+        }
+      })
+      // A uid or email branch that matched nothing answers 404 with no message,
+      // so it arrives here as `Request failed (404)` rather than as an empty
+      // result set. Same meaning to the operator; not worth threading a status
+      // code through `api.js` to say it twice.
+      .catch(searchFailure => setSearchError(searchFailure.message))
+      .finally(() => setSearching(false));
+  }, [query, t]);
 
   const look = useCallback(() => {
     setBusy(true);
@@ -398,6 +642,76 @@ function FamilyLookup() {
 
   return (
     <div className="card">
+      <div className="field-group">
+        <label className="field-label" htmlFor="family-search">
+          {t('search.label')}
+        </label>
+        <div style={{ display: 'flex', gap: 12 }}>
+          <input
+            className="field"
+            id="family-search"
+            value={query}
+            onChange={event => setQuery(event.target.value)}
+            onKeyDown={event => {
+              if (event.key === 'Enter') {
+                search();
+              }
+            }}
+          />
+          <button className="btn" disabled={!canSearch || searching} onClick={search}>
+            {searching ? t('search.searching') : t('search.search')}
+          </button>
+        </div>
+        <div className="field-hint">{t('search.hint')}</div>
+      </div>
+
+      {searchError ? (
+        <div className="error-banner" style={{ marginBottom: 14 }}>
+          <span>{searchError}</span>
+        </div>
+      ) : null}
+
+      {results && results.length > 0 ? (
+        <div className="table-scroll" style={{ marginBottom: 14 }}>
+          <table className="table">
+            <thead>
+              <tr>
+                <th>{t('search.colName')}</th>
+                <th>{t('search.colEmail')}</th>
+                <th>{t('search.colPlan')}</th>
+                <th>{t('search.colUid')}</th>
+                <th />
+              </tr>
+            </thead>
+            <tbody>
+              {results.map(family => (
+                <tr key={family.uid}>
+                  <td>{family.name ?? t('family.noName')}</td>
+                  <td>{family.email ?? t('family.noEmail')}</td>
+                  <td>{family.plan ?? t('family.noPlan')}</td>
+                  <td>
+                    <code>{family.uid}</code>
+                  </td>
+                  <td>
+                    {/* Fills the field below and nothing else. Opening the
+                        family is still a separate, reasoned, audited act. */}
+                    <button className="btn-ghost" onClick={() => setUid(family.uid)}>
+                      {t('search.use')}
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ) : null}
+
+      {truncated ? (
+        <p className="muted" style={{ marginBottom: 14 }}>
+          {t('search.truncated')}
+        </p>
+      ) : null}
+
       <div style={{ display: 'flex', gap: 12 }}>
         <div className="field-group" style={{ flex: 1 }}>
           <label className="field-label" htmlFor="lookup-uid">
@@ -475,6 +789,11 @@ function stamp(iso) {
 function FamilyDetail({ family }) {
   const { t } = useT();
   const devices = [...(family.childDevices ?? []), ...(family.parentDevices ?? [])];
+  // Absent on a response from before `getFamilyDetail` returned them, which is
+  // not the same as a family with no secondary parent — but the console and the
+  // function deploy together, so the two cases cannot coexist for long.
+  const members = family.members ?? [];
+  const children = family.children ?? [];
 
   return (
     <div style={{ marginTop: 16 }}>
@@ -626,6 +945,91 @@ function FamilyDetail({ family }) {
           </table>
         </div>
       )}
+
+      {/*
+        The people, above the hardware that belongs to them. A child with no
+        assigned device is the row a support case is usually about — nothing
+        was ever enforced for that child — so the count is a column rather
+        than something to derive from the device table above.
+      */}
+      {children.length > 0 ? (
+        <>
+          {/*
+            Its own key, not the tile's `family.children`: that one labels a
+            number ("Số trẻ" in Vietnamese) and reads wrong over a list of
+            people.
+          */}
+          <div className="field-label" style={{ marginTop: 18 }}>
+            {t('family.childrenList')}
+          </div>
+          <div className="table-scroll">
+            <table className="table">
+              <thead>
+                <tr>
+                  <th>{t('search.colName')}</th>
+                  <th>{t('family.colChildDevices')}</th>
+                  <th>{t('families.colCreated')}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {children.map(child => (
+                  <tr key={child.childId}>
+                    <td>{child.name ?? t('family.noName')}</td>
+                    <td>
+                      {child.deviceCount === 0 ? (
+                        <b>{t('family.childNoDevice')}</b>
+                      ) : (
+                        child.deviceCount
+                      )}
+                    </td>
+                    <td>{stamp(child.createdAt)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </>
+      ) : null}
+
+      {/*
+        Secondary parents, and the empty case says so rather than rendering
+        nothing. A member holds the same read access to location and web
+        history the owner does, so "this family has none" is an answer a
+        support case wants, not an absence to hide.
+      */}
+      <div className="field-label" style={{ marginTop: 18 }}>
+        {t('family.members')}
+      </div>
+      {members.length === 0 ? (
+        <p className="muted">{t('family.noMembers')}</p>
+      ) : (
+        <div className="table-scroll">
+          <table className="table">
+            <thead>
+              <tr>
+                <th>{t('family.colMember')}</th>
+                <th>{t('family.colPlatform')}</th>
+                <th>{t('family.colMemberAdded')}</th>
+                <th>{t('family.colLastSeen')}</th>
+                <th>{t('search.colUid')}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {members.map(member => (
+                <tr key={member.uid}>
+                  <td>{member.label ?? t('family.noName')}</td>
+                  <td>{member.platform ?? '—'}</td>
+                  <td>{stamp(member.addedAt)}</td>
+                  <td>{ago(member.lastActiveAt, t) ?? '—'}</td>
+                  <td>
+                    <code>{member.uid}</code>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
     </div>
   );
 }
@@ -648,6 +1052,7 @@ const PAGES = [
   { key: 'report', labelKey: 'nav.report', icon: 'report' },
   { key: 'fleet', labelKey: 'nav.fleet', icon: 'fleet' },
   { key: 'support', labelKey: 'nav.support', icon: 'support' },
+  { key: 'families', labelKey: 'nav.families', icon: 'families' },
   { key: 'lookup', labelKey: 'nav.lookup', icon: 'lookup' },
 ];
 
@@ -773,6 +1178,14 @@ export default function App() {
             {route === 'report' ? <Report /> : null}
             {route === 'fleet' ? <Fleet /> : null}
             {route === 'support' ? <Support /> : null}
+            {route === 'families' ? (
+              <>
+                <div className="section-head">
+                  <h2 className="section-title">{t('nav.families')}</h2>
+                </div>
+                <Families />
+              </>
+            ) : null}
             {route === 'lookup' ? (
               <>
                 <div className="section-head">

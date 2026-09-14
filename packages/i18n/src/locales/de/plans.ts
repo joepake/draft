@@ -49,6 +49,8 @@ export const plans = {
   compareNewAppsPremium: 'Welche Apps, und Freigabe vor der Installation',
   compareMessages: 'Nachrichtenhinweise (Android)',
   compareSafety: 'Schutzwarnungen und Check-in',
+  compareSafetyFree: 'Warnungen + Check-in',
+  compareSafetyPremium: 'Fügt jedem Check-in ein Foto hinzu',
   compareControls: 'App-Blockierung und Webfilter',
   compareControlsFree: 'Jede App, Inhalte für Erwachsene',
   compareControlsPremium: 'Nach Kategorie, App-Limits, eigene Listen',
@@ -83,10 +85,13 @@ export const plans = {
   featurePausePhone: 'Gerätesperre',
   featureDailyLimits: 'Tageslimit',
   featureBlockedHours: 'Sperrzeiten',
+  featureAppLimits: 'Zeitlimit pro App',
+  featureInstallApproval: 'Neue Installationen freigeben',
   featureTimeRequests: 'Zeitanfragen',
   featureAppBlocking: 'Blockierte Apps',
   featureWebFiltering: 'Webfilter',
   featureSeeLocation: 'Live-Standort',
+  featureTamperAlerts: 'Warnung, wenn KidGate entfernt wird',
   featureSosAlerts: 'SOS-Alarme',
   trialPlanName: 'Testphase',
   trialDescription:
@@ -199,7 +204,7 @@ export const plans = {
   teaserTopApps:
     'Premium nennt jede App, Minute für Minute, und bewahrt 30 Tage davon auf.',
   teaserWebHistory:
-    'Premium zeigt, welche Seiten blockiert wurden und wonach Ihr Kind gesucht hat.',
+    'Premium zeigt, welche Seiten blockiert wurden und wonach dein Kind gesucht hat.',
   teaserVideoHistory:
     'Premium bewahrt jedes YouTube-Video und jeden Short auf, den es gesehen hat.',
   teaserLocationTrail:
@@ -208,6 +213,15 @@ export const plans = {
   teaserChildReport:
     'Premium fügt einen Bericht je Kind hinzu, und jede Woche einen neuen.',
   teaserMessageAlerts:
-    'Premium meldet Ihnen, wenn eine Nachricht Ihre Aufmerksamkeit braucht. Nur Android.',
+    'Premium meldet dir, wenn eine Nachricht deine Aufmerksamkeit braucht. Nur Android.',
+  teaserWebFilterAdvanced:
+    'Premium filtert nach Kategorie, übernimmt deine eigenen Erlaubt- und Sperrlisten und lässt dein Kind um die Freigabe einer Seite bitten.',
+  teaserWeeklyReport:
+    'Gratis sendet einen Bericht zum Ende der Testphase. Premium sendet jede Woche einen.',
+  teaserProofRewardTasks: 'Aktive Aufgaben: {{count}}',
+  teaserRewardTasks:
+    'Mehr laufen im Gratis-Plan nicht gleichzeitig. Premium verdoppelt das.',
   teaserLiveNote: 'Kostenlos aktualisiert alle 30 Minuten. Premium ist live.',
+  teaserUsageTimeline: 'Premium zeigt, zu welchen Tageszeiten das Gerät genutzt wurde.',
+  teaserDeviceNote: 'Nur dein überwachtes Gerät meldet Daten.',
 } as const;

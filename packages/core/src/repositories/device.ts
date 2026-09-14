@@ -63,6 +63,18 @@ function text(value: unknown): string | undefined {
  * Android phone fell all the way through to the bare robot — a device that had
  * reported `formFactor: 'phone'` on every heartbeat since it was paired.
  */
+function appliedPolicy(
+  value: unknown,
+): { fingerprint: string; atMs: number } | undefined {
+  if (!value || typeof value !== 'object') {
+    return undefined;
+  }
+  const { fingerprint, atMs } = value as { fingerprint?: unknown; atMs?: unknown };
+  return typeof fingerprint === 'string' && typeof atMs === 'number' && atMs > 0
+    ? { fingerprint, atMs }
+    : undefined;
+}
+
 function formFactor(value: unknown): string | undefined {
   return isDeviceFormFactor(value) ? value : undefined;
 }
@@ -214,6 +226,12 @@ function mapChildDevice(doc: DocSnapshot): ChildDeviceRecord {
      */
     ...(data.capabilities && typeof data.capabilities === 'object'
       ? { capabilities: data.capabilities as ChildDeviceRecord['capabilities'] }
+      : {}),
+    // The agent's acknowledgement that the parent's rules reached it
+    // (`Device.appliedPolicy`). Parent surfaces print the time and nothing
+    // else — never compare the fingerprint against a recompute of "current".
+    ...(appliedPolicy(data.appliedPolicy)
+      ? { appliedPolicy: appliedPolicy(data.appliedPolicy) }
       : {}),
     deviceId: doc.id,
     name: deviceName(data),

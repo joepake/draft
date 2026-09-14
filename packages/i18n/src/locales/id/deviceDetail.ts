@@ -25,6 +25,7 @@ export const deviceDetail = {
   alertsSubtitle: 'SOS, perlindungan, lokasi, dan aplikasi',
   checkIn: 'Check-In',
   locationPlusSelfie: 'Lokasi dan foto',
+  locationOnly: 'Hanya lokasi',
   webFilter: 'Filter web',
   limitAdultWebsites: 'Batasi situs web tidak pantas',
   location: 'Lokasi',

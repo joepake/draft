@@ -50,6 +50,8 @@ export const plans = {
   compareNewAppsPremium: 'Quali app, e approvazione prima dell’installazione',
   compareMessages: 'Avvisi sui messaggi (Android)',
   compareSafety: 'Avvisi di protezione e Check-in',
+  compareSafetyFree: 'Avvisi + Check-In',
+  compareSafetyPremium: 'Aggiunge una foto a ogni Check-In',
   compareControls: 'Blocco app e filtro web',
   compareControlsFree: 'Qualsiasi app, contenuti per adulti',
   compareControlsPremium: 'Per categoria, limiti per app, elenchi personali',
@@ -84,10 +86,13 @@ export const plans = {
   featurePausePhone: 'Blocco dispositivo',
   featureDailyLimits: 'Limite giornaliero',
   featureBlockedHours: 'Orari di blocco',
+  featureAppLimits: 'Un limite di tempo per app',
+  featureInstallApproval: 'Approvare le nuove installazioni',
   featureTimeRequests: 'Richieste di tempo',
   featureAppBlocking: 'App bloccate',
   featureWebFiltering: 'Filtro web',
   featureSeeLocation: 'Posizione in tempo reale',
+  featureTamperAlerts: 'Avviso se KidGate viene rimosso',
   featureSosAlerts: 'Avvisi SOS',
   trialPlanName: 'Prova',
   trialDescription:
@@ -202,6 +207,16 @@ export const plans = {
     'Premium aggiunge un report per ogni figlio, e uno nuovo ogni settimana.',
   teaserMessageAlerts:
     'Premium ti avvisa quando un messaggio richiede attenzione. Solo Android.',
+  teaserWebFilterAdvanced:
+    'Premium filtra per categoria, accetta le tue liste di siti consentiti e bloccati e permette a tuo figlio di chiedere di sbloccare un sito.',
+  teaserWeeklyReport:
+    'La versione gratuita invia un report alla fine della prova. Premium ne invia uno ogni settimana.',
+  teaserProofRewardTasks: 'Attività attive: {{count}}',
+  teaserRewardTasks:
+    'È tutto ciò che il piano gratuito tiene attivo insieme. Premium raddoppia.',
   teaserLiveNote:
     'La versione gratuita si aggiorna ogni 30 minuti. Premium è in tempo reale.',
+  teaserUsageTimeline:
+    'Premium mostra in quali ore della giornata il dispositivo è stato usato.',
+  teaserDeviceNote: 'Solo il dispositivo monitorato invia dati.',
 } as const;

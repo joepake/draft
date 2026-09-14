@@ -9,7 +9,7 @@ export const videoHistory = {
     'Dieses Gerät kann keine angesehenen Videos melden. Funktioniert auf Android und in Chrome.',
 
   unsupportedNeedsExtension:
-    'KidGate kann auf diesem Computer nicht sehen, welche Videos angesehen werden – es liest Seitennamen, nicht den Inhalt einer Seite. Die KidGate-Erweiterung für Chrome kann es: Fügen Sie sie auf diesem Computer hinzu, dann meldet sie angesehene Videos als eigenes Gerät.',
+    'KidGate kann auf diesem Computer nicht sehen, welche Videos angesehen werden – es liest Seitennamen, nicht den Inhalt einer Seite. Die KidGate-Erweiterung für Chrome kann es: Füge sie auf diesem Computer hinzu, dann meldet sie angesehene Videos als eigenes Gerät.',
   viaExtension: 'Über Erweiterung',
   extensionGuideTitle: 'In Chrome einrichten',
   extensionStepOpenChrome: 'Chrome auf diesem Computer öffnen',
@@ -20,9 +20,8 @@ export const videoHistory = {
     'KidGate in Chrome öffnen und verbinden – sie erscheint als eigenes Gerät',
   extensionStepEnable: '„Angesehene Videos aufzeichnen“ für dieses Gerät einschalten',
   emptyTitle: 'Noch nichts angesehen',
-  emptyBody: 'Videos erscheinen hier, sobald Ihr Kind mit laufendem KidGate zusieht.',
-  emptyBodyOff:
-    'Aktivieren Sie oben die Aufzeichnung, um angesehene Videos aufzulisten.',
+  emptyBody: 'Videos erscheinen hier, sobald dein Kind mit laufendem KidGate zusieht.',
+  emptyBodyOff: 'Aktiviere oben die Aufzeichnung, um angesehene Videos aufzulisten.',
   viewsMeta_one: '{{count}} Mal',
   viewsMeta: '{{count}} Mal',
   dayToday: 'Heute',
@@ -33,7 +32,7 @@ export const videoHistory = {
   heroChannels: 'Kanäle',
   heroViews: 'Aufrufe',
   emptyStepEnable: 'Aufzeichnung einschalten',
-  emptyStepWatch: 'Ihr Kind schaut YouTube',
+  emptyStepWatch: 'Dein Kind schaut YouTube',
   emptyStepAppear: 'Videos erscheinen hier',
   unknownChannel: 'Unbekannter Kanal',
   heroTopChannel: 'Meistgesehen',

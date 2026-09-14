@@ -70,4 +70,22 @@ export const sos = {
   badgeLabel: 'SOS',
   muteAlarm: 'Bu uyarıyı sessize al',
   alertCount: '{{current}} / {{total}}',
+  trustedContactsTitle: 'Güvenilir kişiler',
+  trustedContactsSubtitle: 'Her SOS’ta son konumla birlikte e-posta alırlar',
+  trustedContactsRowSubtitle: 'Çocuğunuz SOS gönderdiğinde e-posta alan kişiler',
+  trustedContactsListSection: 'SOS’u kim alır',
+  trustedContactsEmpty:
+    'Henüz kimse yok. Bir büyükanne/büyükbaba, komşu veya aile dostu ekleyin.',
+  trustedContactsAddSection: 'Kişi ekle',
+  trustedContactsAddHint:
+    'En fazla {{max}}. Önceden haber verin — e-posta uyarı olmadan gelir.',
+  trustedContactsNameLabel: 'Ad',
+  trustedContactsEmailLabel: 'E-posta',
+  trustedContactsAddButton: 'Kişi ekle',
+  trustedContactsFull: 'Liste dolu. Yeni birini eklemek için birini kaldırın.',
+  trustedContactsInvalid: 'Bir ad ve geçerli bir e-posta adresi girin.',
+  trustedContactsSaveFailed: 'Kaydedilemedi. Birazdan tekrar deneyin.',
+  trustedContactsRemoveAccessibility: '{{name}} kişisini kaldır',
+  trustedContactsPrivacyNote:
+    'Her kişi cihaz adını ve bilinen son konumu e-postayla alır. Fotoğraf gönderilmez.',
 } as const;

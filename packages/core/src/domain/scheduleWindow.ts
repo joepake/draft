@@ -19,7 +19,10 @@
  */
 
 import type { ScheduleWindow } from '@kidgate/schema/deviceControls';
-import { SCHEDULE_LABEL_MAX_LENGTH } from '@kidgate/schema/deviceControls';
+import {
+  ALL_SCHEDULE_DAYS,
+  SCHEDULE_LABEL_MAX_LENGTH,
+} from '@kidgate/schema/deviceControls';
 import type { IsoDate } from '@kidgate/schema/primitives';
 
 export const MAX_SCHEDULE_WINDOWS = 5;
@@ -113,6 +116,19 @@ export function normalizeScheduleLabel(value: unknown): string | null {
 
 export function scheduleWindowRunsEveryDay(window: ScheduleWindow): boolean {
   return normalizeScheduleDays(window.days) === null;
+}
+
+/**
+ * Whether the window crosses midnight.
+ *
+ * Both parent surfaces mark it, because it is the one property of a window that
+ * changes which *day* the rest of the editor means: `days` is stamped by the
+ * night the window starts on. Written once here rather than as a `split(':')`
+ * in each, which is also how the phone's copy came to disagree with the lenient
+ * parsing every other reader of these fields uses.
+ */
+export function isOvernightScheduleWindow(window: ScheduleWindow): boolean {
+  return parseTimeToMinutes(window.start) > parseTimeToMinutes(window.end);
 }
 
 /**
@@ -271,4 +287,96 @@ export function findOverlappingScheduleWindowPairs(
     }
   }
   return pairs;
+}
+
+const MINUTES_IN_DAY = 1440;
+
+/** A stretch of one weekday during which at least one window is active. */
+export interface ScheduleDaySegment {
+  /** Minutes since local midnight, 0–1439. */
+  readonly startMinutes: number;
+  /** Exclusive end, 1–1440. Midnight at the far end is 1440, never 0. */
+  readonly endMinutes: number;
+}
+
+/**
+ * Each weekday's blocked stretches, merged and sorted. Index is `Date.getDay()`
+ * — 0 = Sunday … 6 = Saturday — and a day with nothing on it is an empty array.
+ *
+ * What a parent editing day chips and an overnight time pair cannot see is the
+ * *week*: `days` is stamped by the night a window starts on, so a Friday curfew
+ * blocks Saturday morning on a day the chips do not show ticked. Both parent
+ * surfaces draw this under their editor for that one reason.
+ *
+ * Derived from the same two facts `isWithinScheduleWindow` decides on, in the
+ * same order, rather than by walking the week a minute at a time the way
+ * `scheduleWindowsOverlap` does — this recomputes on every keystroke in a time
+ * field, and the brute-force form is tens of thousands of predicate calls per
+ * render. The duplication that buys is **pinned**: `scheduleWindow.test.ts`
+ * asserts these segments agree with `isWithinAnyScheduleWindow` for all
+ * 7 × 1440 minutes of the week, so a preview cannot drift from what actually
+ * locks the device.
+ *
+ * Out-of-range times are clamped rather than rejected, matching the lenient
+ * parsing above: a stored `25:00` is already fail-open in the predicate, and a
+ * preview that drew a bar past the end of the day would be the one screen
+ * disagreeing about it.
+ */
+export function scheduleWeekSegments(
+  windows: readonly ScheduleWindow[],
+): ScheduleDaySegment[][] {
+  const byDay: ScheduleDaySegment[][] = [[], [], [], [], [], [], []];
+
+  const add = (day: number, from: number, to: number) => {
+    const startMinutes = Math.max(0, Math.min(MINUTES_IN_DAY, from));
+    const endMinutes = Math.max(0, Math.min(MINUTES_IN_DAY, to));
+    if (endMinutes > startMinutes) {
+      byDay[day]?.push({ startMinutes, endMinutes });
+    }
+  };
+
+  for (const window of windows) {
+    const start = parseTimeToMinutes(window.start);
+    const end = parseTimeToMinutes(window.end);
+    // The predicate's own answer for an empty range: never active.
+    if (start === end) {
+      continue;
+    }
+
+    const days = normalizeScheduleDays(window.days) ?? ALL_SCHEDULE_DAYS;
+    for (const day of days) {
+      if (start < end) {
+        add(day, start, end);
+        continue;
+      }
+      // Overnight. The evening leg belongs to the day the window names; the
+      // morning leg belongs to the day *after* it, which `days` may omit.
+      add(day, start, MINUTES_IN_DAY);
+      add((day + 1) % 7, 0, end);
+    }
+  }
+
+  return byDay.map(mergeDaySegments);
+}
+
+function mergeDaySegments(
+  segments: readonly ScheduleDaySegment[],
+): ScheduleDaySegment[] {
+  const sorted = [...segments].sort((a, b) => a.startMinutes - b.startMinutes);
+
+  const merged: ScheduleDaySegment[] = [];
+  for (const segment of sorted) {
+    const last = merged[merged.length - 1];
+    // Touching counts as one run: two windows that meet at 07:00 are a single
+    // uninterrupted block to the child, and drawing a seam there invents one.
+    if (last && segment.startMinutes <= last.endMinutes) {
+      merged[merged.length - 1] = {
+        startMinutes: last.startMinutes,
+        endMinutes: Math.max(last.endMinutes, segment.endMinutes),
+      };
+      continue;
+    }
+    merged.push(segment);
+  }
+  return merged;
 }

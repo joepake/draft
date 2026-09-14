@@ -71,7 +71,7 @@ export const settings = {
   themeColorLabel: 'Màu giao diện',
   signOutButton: 'Đăng xuất',
   signInButton: 'Đăng nhập',
-  switchToChildDevice: 'Thiết lập máy này thành thiết bị của trẻ',
+  switchToChildDevice: 'Chuyển điện thoại này thành thiết bị của trẻ',
   guestAccountHint:
     'Đăng nhập để đồng bộ thiết bị, cảnh báo và gói dịch vụ của gia đình.',
   reportTitle: 'Báo cáo sự cố',

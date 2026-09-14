@@ -458,7 +458,7 @@ function clockAt(minute) {
   return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`;
 }
 
-export function UsageDayTimeline({ day, platform, capability }) {
+export function UsageDayTimeline({ day, platform, capability, lockedSlot }) {
   const { t: tr } = useT();
   const availability = timelineAvailability({
     platform,
@@ -473,6 +473,16 @@ export function UsageDayTimeline({ day, platform, capability }) {
    * pointed the other way.
    */
   if (availability !== 'available') {
+    /*
+     * The third silence, and the only one a parent can do something about: a
+     * free family has no `usageDays` document to hold a timeline
+     * (`docs/PRICING.md` §4), so "no sample yet" is a wait with no end. The
+     * offer goes in its place, and only here — an iPhone keeps the sentence
+     * above, since Premium buys it no band.
+     */
+    if (availability === 'pending' && lockedSlot) {
+      return lockedSlot;
+    }
     return (
       <p className="tl-empty">
         {availability === 'unsupported'

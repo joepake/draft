@@ -74,6 +74,7 @@ const en = {
   'nav.report': 'Report',
   'nav.fleet': 'Fleet',
   'nav.support': 'Support queue',
+  'nav.families': 'Families',
   'nav.lookup': 'Family lookup',
   'nav.consoleName': 'Operator console',
   'nav.environment': 'Production · kidgate',
@@ -98,6 +99,34 @@ const en = {
   'lookup.reasonStored': 'Stored in the audit log beside your name and the time.',
   'lookup.lookingUp': 'Looking up…',
   'lookup.lookUp': 'Look up',
+
+  // ---------------------------------------------------------------- search
+  'search.label': 'Find a family',
+  'search.hint':
+    'Name, email or uid — press Enter. A full email or a uid costs one read; a name scans the family collection, so search on what the customer gave you rather than as you type.',
+  'search.search': 'Search',
+  'search.searching': 'Searching…',
+  'search.noMatch': 'No family matched.',
+  'search.truncated':
+    'The scan hit its ceiling, so a match may be missing. Narrow the query.',
+  'search.colName': 'Name',
+  'search.colEmail': 'Email',
+  'search.colPlan': 'Plan',
+  'search.colUid': 'Uid',
+  'search.use': 'Use',
+
+  // -------------------------------------------------------------- families
+  'families.reasonStored': 'Stored with every page you load and every family you open.',
+  'families.load': 'List families',
+  'families.loading': 'Loading…',
+  'families.loadMore': 'Load 50 more',
+  'families.open': 'Open',
+  'families.opening': 'Opening…',
+  'families.empty': 'No families.',
+  'families.end': 'End of the list.',
+  'families.shown_one': '{count} family listed',
+  'families.shown_other': '{count} families listed',
+  'families.colCreated': 'Created',
 
   // ---------------------------------------------------------------- family
   'family.plan': 'Plan',
@@ -139,6 +168,13 @@ const en = {
   'family.colDenied': 'Denied',
   'family.deniedNone': 'none',
   'family.noProbe': 'no probe',
+  'family.members': 'Secondary parents',
+  'family.noMembers': 'None — the owner is the only adult in this family.',
+  'family.colMember': 'Label',
+  'family.colMemberAdded': 'Joined',
+  'family.childrenList': 'Children',
+  'family.colChildDevices': 'Devices',
+  'family.childNoDevice': 'none assigned',
 
   // ----------------------------------------------------------------- crash
   'crash.title': 'This screen crashed',
@@ -463,6 +499,7 @@ const vi = {
   'nav.report': 'Báo cáo',
   'nav.fleet': 'Thiết bị',
   'nav.support': 'Hàng đợi hỗ trợ',
+  'nav.families': 'Gia đình',
   'nav.lookup': 'Tra cứu gia đình',
   'nav.consoleName': 'Bảng điều hành operator',
   'nav.environment': 'Production · kidgate',
@@ -485,6 +522,33 @@ const vi = {
   'lookup.reasonStored': 'Sẽ lưu vào nhật ký kiểm toán cùng tên bạn và thời điểm.',
   'lookup.lookingUp': 'Đang tra cứu…',
   'lookup.lookUp': 'Tra cứu',
+
+  // ---------------------------------------------------------------- search
+  'search.label': 'Tìm gia đình',
+  'search.hint':
+    'Tên, email hoặc uid — nhấn Enter. Email đầy đủ hoặc uid chỉ tốn một lượt đọc; tìm theo tên sẽ quét cả bộ sưu tập gia đình, nên hãy tìm bằng thông tin khách đưa thay vì tìm theo từng ký tự đang gõ.',
+  'search.search': 'Tìm',
+  'search.searching': 'Đang tìm…',
+  'search.noMatch': 'Không có gia đình nào khớp.',
+  'search.truncated':
+    'Lượt quét đã chạm trần nên có thể sót kết quả. Hãy thu hẹp từ khoá.',
+  'search.colName': 'Tên',
+  'search.colEmail': 'Email',
+  'search.colPlan': 'Gói',
+  'search.colUid': 'Uid',
+  'search.use': 'Dùng',
+
+  // -------------------------------------------------------------- families
+  'families.reasonStored': 'Sẽ lưu kèm mỗi trang bạn tải và mỗi gia đình bạn mở.',
+  'families.load': 'Liệt kê gia đình',
+  'families.loading': 'Đang tải…',
+  'families.loadMore': 'Tải thêm 50',
+  'families.open': 'Mở',
+  'families.opening': 'Đang mở…',
+  'families.empty': 'Không có gia đình nào.',
+  'families.end': 'Hết danh sách.',
+  'families.shown': 'Đã liệt kê {count} gia đình',
+  'families.colCreated': 'Tạo ngày',
 
   // ---------------------------------------------------------------- family
   'family.plan': 'Gói',
@@ -526,6 +590,13 @@ const vi = {
   'family.colDenied': 'Bị từ chối',
   'family.deniedNone': 'không có',
   'family.noProbe': 'chưa dò',
+  'family.members': 'Phụ huynh phụ',
+  'family.noMembers': 'Không có — chủ gia đình là người lớn duy nhất.',
+  'family.colMember': 'Nhãn',
+  'family.colMemberAdded': 'Tham gia',
+  'family.childrenList': 'Các con',
+  'family.colChildDevices': 'Thiết bị',
+  'family.childNoDevice': 'chưa gán',
 
   // ----------------------------------------------------------------- crash
   'crash.title': 'Màn hình này gặp lỗi',

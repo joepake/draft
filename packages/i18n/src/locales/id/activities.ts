@@ -1,4 +1,10 @@
 export const activities = {
+  activityTypeSupportSession: 'Dukungan',
+  supportSessionTitle: 'Akses dukungan',
+  supportSessionBody:
+    'Seorang agen dukungan KidGate membuka akun keluarga Anda untuk menangani sebuah permintaan.',
+  supportSessionBodyTicket:
+    'Seorang agen dukungan KidGate membuka akun keluarga Anda untuk menangani permintaan {{ticketRef}}.',
   title: 'Aktivitas',
   subtitleAllDevices: 'Peristiwa terbaru dari semua perangkat',
   subtitleTimelineForDevice: 'Linimasa {{deviceName}}',

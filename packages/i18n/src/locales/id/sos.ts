@@ -73,4 +73,22 @@ export const sos = {
   badgeLabel: 'SOS',
   muteAlarm: 'Bisukan peringatan ini',
   alertCount: '{{current}} dari {{total}}',
+  trustedContactsTitle: 'Kontak tepercaya',
+  trustedContactsSubtitle: 'Menerima email setiap SOS beserta lokasi terakhir',
+  trustedContactsRowSubtitle: 'Orang yang menerima email saat anak mengirim SOS',
+  trustedContactsListSection: 'Siapa yang menerima SOS',
+  trustedContactsEmpty:
+    'Belum ada. Tambahkan kakek-nenek, tetangga, atau teman keluarga.',
+  trustedContactsAddSection: 'Tambah kontak',
+  trustedContactsAddHint:
+    'Maksimal {{max}}. Beri tahu mereka dulu — email datang tanpa pemberitahuan.',
+  trustedContactsNameLabel: 'Nama',
+  trustedContactsEmailLabel: 'Email',
+  trustedContactsAddButton: 'Tambah kontak',
+  trustedContactsFull: 'Daftar penuh. Hapus satu untuk menambah yang lain.',
+  trustedContactsInvalid: 'Masukkan nama dan alamat email yang valid.',
+  trustedContactsSaveFailed: 'Tidak dapat menyimpan. Coba lagi sebentar lagi.',
+  trustedContactsRemoveAccessibility: 'Hapus {{name}}',
+  trustedContactsPrivacyNote:
+    'Setiap kontak menerima nama perangkat dan lokasi terakhir melalui email. Tidak ada foto yang dikirim.',
 } as const;

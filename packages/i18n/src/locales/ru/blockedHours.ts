@@ -74,4 +74,5 @@ export const blockedHours = {
   daysOvernightHint: 'Ночные интервалы считаются по ночи, в которую начинаются.',
   overlapWarning:
     'Это время пересекается с другим заблокированным периодом — оба продолжают действовать.',
+  weekPreviewTitle: 'Ваша неделя',
 } as const;

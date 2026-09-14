@@ -48,6 +48,7 @@
     "./supportReport": "./src/supportReport.ts",
     "./telemetry": "./src/telemetry.ts",
     "./timeRequest": "./src/timeRequest.ts",
+    "./trustedContact": "./src/trustedContact.ts",
     "./siteRequest": "./src/siteRequest.ts",
     "./usageDay": "./src/usageDay.ts",
     "./user": "./src/user.ts",

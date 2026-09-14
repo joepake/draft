@@ -67,4 +67,5 @@ export const blockedHours = {
   daysWeekend: 'Weekend',
   daysOvernightHint: 'Overnight windows are set by the night they start on.',
   overlapWarning: 'This overlaps with another blocked time — both still apply.',
+  weekPreviewTitle: 'Your week',
 } as const;

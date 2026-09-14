@@ -25,6 +25,7 @@ export const deviceDetail = {
   alertsSubtitle: 'SOS, सुरक्षा, स्थान और ऐप्स',
   checkIn: 'चेक-इन',
   locationPlusSelfie: 'स्थान और फ़ोटो',
+  locationOnly: 'केवल स्थान',
   webFilter: 'वेब फ़िल्टर',
   limitAdultWebsites: 'अनुपयुक्त वेबसाइटों को सीमित करें',
   location: 'स्थान',

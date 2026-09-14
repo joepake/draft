@@ -1,4 +1,9 @@
 export const activities = {
+  activityTypeSupportSession: 'الدعم',
+  supportSessionTitle: 'دخول فريق الدعم',
+  supportSessionBody: 'فتح أحد موظفي دعم KidGate حساب عائلتك لمعالجة طلب.',
+  supportSessionBodyTicket:
+    'فتح أحد موظفي دعم KidGate حساب عائلتك لمعالجة الطلب {{ticketRef}}.',
   title: 'الأنشطة',
   subtitleAllDevices: 'أحدث الأحداث على جميع الأجهزة',
   subtitleTimelineForDevice: 'المخطط الزمني لـ {{deviceName}}',
@@ -38,7 +43,7 @@ export const activities = {
   activityTypePlaceExit: 'تمت مغادرة الموقع',
   activityTypeTamper: 'الحماية',
   activityTypeScreenTime: 'وقت استخدام الشاشة',
-  activityTypeCheckIn: 'اطمئنان',
+  activityTypeCheckIn: 'الاطمئنان',
   activityTypeLocationRequest: 'الموقع',
   activityTypeTimeRequest: 'طلب وقت',
   activityTypeRewardTask: 'مهمة مكافأة',

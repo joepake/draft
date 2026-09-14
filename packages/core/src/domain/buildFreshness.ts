@@ -58,6 +58,32 @@ export interface RunningBuildRow {
   otaVersion?: number;
 }
 
+/**
+ * The build as every screen prints it: `1.0` build `125` reads `1.0.125`.
+ *
+ * **One function because two parent surfaces ask the same question.** The phone's
+ * `DeviceDetailHero` and the dashboard's device card render this string about the
+ * same machine, and the child agents print the same shape about themselves — a
+ * label assembled per screen is how they come to disagree.
+ *
+ * The code is appended only when it is an integer, which is what keeps Windows
+ * readable: Tauri has no build number to report there, so the agent writes the
+ * semver into `appBuild` and a blind join would read `1.0.1.0`. A device that has
+ * reported no version at all answers null rather than a lone build number — the
+ * caller decides what to draw in that hole.
+ */
+export function formatBuildLabel(
+  version: string | null | undefined,
+  build: string | number | null | undefined,
+): string | null {
+  const name = typeof version === 'string' ? version.trim() : '';
+  if (!name) {
+    return null;
+  }
+  const code = typeof build === 'number' ? String(build) : (build ?? '').trim();
+  return /^\d+$/.test(code) ? `${name}.${code}` : name;
+}
+
 export type BuildFreshness =
   | { status: 'unknown' }
   | { status: 'current' }
@@ -171,8 +197,12 @@ export function resolveBuildFreshness(
        * and better than a sentence with a hole in it — the same fallback
        * `resolveDesktopUpdate` makes for the child's own banner.
        */
-      running: row.appVersion?.trim() || `build ${row.appBuild ?? '?'}`,
-      latest: published.version?.trim() || `build ${published.versionCode ?? '?'}`,
+      running:
+        formatBuildLabel(row.appVersion, row.appBuild) ||
+        `build ${row.appBuild ?? '?'}`,
+      latest:
+        formatBuildLabel(published.version, published.versionCode) ||
+        `build ${published.versionCode ?? '?'}`,
     };
   }
 

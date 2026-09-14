@@ -37,7 +37,6 @@ export const location = {
     'Todavía no hay historial. Los puntos aparecerán después de una actualización de ubicación o un Check-in.',
   historyHighlightAccessibility: 'Resaltar {{place}} en el mapa',
   historyOpenMapsAccessibility: 'Abrir {{place}} en Mapas',
-  latestBadge: 'Más reciente',
   unableToRequestLocationRefresh:
     'No se pudo solicitar la actualización de la ubicación',
   locationBannerTitle: 'Activar ubicación',
@@ -77,11 +76,6 @@ export const location = {
   childPickCarriedA11y:
     'Marcar {{deviceName}} como el dispositivo que lleva {{childName}}',
   stayRange: '{{from}} – {{to}}',
-  placeTotalsTitle: 'Tiempo en tus lugares',
-  placeTotalsNote:
-    'De los últimos {{count}} días de historial. Solo se cuentan los lugares guardados aquí.',
-  placeTotalsNote_one:
-    'Del último día de historial. Solo se cuentan los lugares guardados aquí.',
   wizardStepAllow:
     'Selecciona Permitir y luego Siempre para que las actualizaciones sigan en segundo plano.',
   requestNoFix:
@@ -92,4 +86,21 @@ export const location = {
   cardSharingOff: 'El uso compartido de la ubicación está desactivado',
   cardPermissionOff: 'La ubicación no está permitida en este dispositivo',
   cardNotUpdating: 'La ubicación ha dejado de actualizarse',
+  namesNeedPremium: 'Los nombres de lugares requieren un plan de pago',
+  namesNeedPremiumTrialEnded:
+    'Tu prueba ha terminado. Mejora tu plan para ver los nombres de los lugares completos.',
+  namesNeedPremiumStill:
+    'Las ubicaciones se siguen registrando y los lugares que has guardado siguen mostrando su nombre.',
+  awayFromPlace: 'A {{distance}} al {{direction}} de {{place}}',
+  distanceKm: '{{value}} km',
+  distanceMeters: '{{value}} m',
+  compassN: 'norte',
+  compassNe: 'noreste',
+  compassE: 'este',
+  compassSe: 'sureste',
+  compassS: 'sur',
+  compassSw: 'suroeste',
+  compassW: 'oeste',
+  compassNw: 'noroeste',
+  areaLabel: 'En algún lugar de {{area}}',
 } as const;

@@ -36,9 +36,24 @@ function mapEntry(doc: DocSnapshot): LocationHistoryEntry | null {
     id: doc.id,
     latitude: data.latitude,
     longitude: data.longitude,
+    /*
+     * Metres, and a row without it is not a row that was exact — every reader
+     * that judges a fix against a fence treats absent as unknown
+     * (`isFixPlaceable`). Dropped here until 2026-09-11, which silently made
+     * every stored fix look precise to anything reading the trail.
+     */
+    accuracy: typeof data.accuracy === 'number' ? data.accuracy : null,
     updatedAt: typeof data.updatedAt === 'string' ? data.updatedAt : '',
     placeName: text(data.placeName),
     address: text(data.address),
+    /*
+     * The free tier's name for this fix. `append` spreads the whole location
+     * in, so it was always *written*; this function builds its result field by
+     * field, so anything not listed here is lost on the way back out — which
+     * is how a name the child device had worked out reached Firestore and
+     * still left every row on the parent's screen unnamed.
+     */
+    areaName: text(data.areaName),
     addressDetail:
       data.addressDetail === 'basic' || data.addressDetail === 'detailed'
         ? data.addressDetail

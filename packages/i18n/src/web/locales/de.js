@@ -553,8 +553,6 @@ export default {
     topAppsTitle: 'Top-Apps heute',
     topAppsTitleDay: 'Top-Apps · {{date}}',
     topAppsSub: 'App-Limits werden als Markierung angezeigt',
-    topAppsFreeHint:
-      'Top 3 heute – die vollständige Liste und der Verlauf gibt es mit Premium.',
     trendTitle: 'Bildschirmzeit-Verlauf',
     trendSub: 'Letzte {{count}} Tage',
     rangeDays: '{{count}} T',

@@ -26,11 +26,16 @@
  *    measurement, and selling web history to a family whose filter has refused
  *    nothing is selling detail about an empty week. Those ids answer `null`
  *    until there is a number, and the screen keeps its ordinary empty state.
- * 3. **One per screen.** Enforced by construction — a screen calls this once —
- *    rather than by a rule this module could check. It is also why the two
- *    chart surfaces have no id: the hour band and the 30-day trend sit on the
- *    same scroll as the app ranking, which already carries the offer, and a
- *    page selling three times is an advert whatever each line says.
+ * 3. **One per screen, and the hour band is the stated exception.** Enforced by
+ *    construction — a screen calls this once — rather than by a rule this
+ *    module could check. The 30-day trend still has no id: it sits on the same
+ *    scroll as the app ranking, which already carries the offer, and a page
+ *    selling three times is an advert whatever each line says. The band was in
+ *    that sentence until 2026-09-12 and could not stay. An empty band renders
+ *    `timelinePending` — "no sample yet" — to a family the server writes no
+ *    `usageDays` for at all (`docs/PRICING.md` §4), so the sentence promises a
+ *    reading that is never coming. A second offer on one scroll is worse than
+ *    nothing; a wait that never ends is worse than both.
  *
  * ## Structural versus proof-backed
  *
@@ -59,7 +64,11 @@ export type PremiumTeaserId =
   | 'locationTrail'
   | 'activityWindow'
   | 'childReport'
-  | 'messageAlerts';
+  | 'messageAlerts'
+  | 'webFilterAdvanced'
+  | 'weeklyReport'
+  | 'usageTimeline'
+  | 'rewardTaskCap';
 
 /**
  * The free-tier reading the offer leads with, or `null` on a structural id.
@@ -100,6 +109,35 @@ const BODY_KEYS: Record<PremiumTeaserId, string> = {
   activityWindow: 'plans.teaserActivityWindow',
   childReport: 'plans.teaserChildReport',
   messageAlerts: 'plans.teaserMessageAlerts',
+  /*
+   * The two ids whose screen a free family *can* open and act on, which is why
+   * they are here rather than absent like per-app limits or place alerts: those
+   * sit behind a locked device-detail card that already carries the crown and
+   * the route to Plans, so a teaser inside them would never be drawn. These two
+   * are reachable — the web filter is a free control key (`FreeTier.ts`) whose
+   * categories and lists are not, and the weekly report is a Reports-tab row
+   * whose generate button is refused by `requirePremiumAccess`
+   * (`functions/http/familyReport.js`). Both were a control that bounced or a
+   * button that failed, with nothing on screen saying why.
+   */
+  webFilterAdvanced: 'plans.teaserWebFilterAdvanced',
+  weeklyReport: 'plans.teaserWeeklyReport',
+  /*
+   * The hour band, and the one id refused on a **capability** as well as on a
+   * plan. An iPhone can never report a timeline whatever the family pays —
+   * Screen Time hands out cumulative thresholds and nothing finer
+   * (`./usageTimeline`) — so the two band components draw this only where
+   * `timelineAvailability` answers `pending`, and leave `unsupported` its own
+   * sentence. Selling a band to a family whose device cannot draw one is the
+   * one thing worse than the empty wait this replaces.
+   */
+  usageTimeline: 'plans.teaserUsageTimeline',
+  /*
+   * The only id that is a **cap** rather than a feature the free tier lacks.
+   * Reward tasks are free; the eleventh active one is not
+   * (`resolveRewardTaskCapTeaser`).
+   */
+  rewardTaskCap: 'plans.teaserRewardTasks',
 };
 
 /**
@@ -114,7 +152,8 @@ const BODY_KEYS: Record<PremiumTeaserId, string> = {
 export const PREMIUM_LIVE_NOTE_KEY = 'plans.teaserLiveNote';
 
 /**
- * The tail row under a free family's top three.
+ * The tail row under a free family's top three — and the whole card on a day
+ * the free tier was never promised.
  *
  * Four conditions, each removing a way of lying:
  *
@@ -128,23 +167,82 @@ export const PREMIUM_LIVE_NOTE_KEY = 'plans.teaserLiveNote';
  * - **`apps > 0` decides which sentence.** A remainder spread across apps too
  *   small to rank is real time and no countable list; `apps` absent (a capped
  *   ranking) takes the same minutes-only sentence rather than guessing.
+ *
+ * ## The older day, which has no tail at all
+ *
+ * `dayIsToday: false` is the second shape, and it is structural rather than
+ * proof-backed: the free tier's three ride the device document and carry only
+ * today (`docs/PRICING.md` §4), so a past day has no counter to lead with and
+ * no rows to sit under — the card is empty, and until this existed both parent
+ * surfaces filled it with a bare sentence and no way to act on it.
+ *
+ * **`rowCount` is what keeps rule 1 true.** A family that downgraded still has
+ * its old `usageDays` documents, and those rows are a reading they are entitled
+ * to; offering over them would be selling detail already on screen. A teaser
+ * only ever replaces an empty card.
  */
 export function resolveTopAppsTeaser(input: {
   hasFullAccess: boolean;
   source: TodayTopAppsSource;
   other: DeviceTopAppsOther | null | undefined;
+  /** The day on screen. Defaults to today — the tail-row case. */
+  dayIsToday?: boolean;
+  /** Rows the card is already drawing. A teaser never covers a reading. */
+  rowCount?: number;
+  /**
+   * The remainder the **card itself** is already drawing, for a device whose
+   * document carries no `topAppsOtherToday`.
+   *
+   * Read only when that field is absent, never when it says zero: absent means
+   * nothing measured it — a `reportChildUsage` older than 2026-09-10 wrote no
+   * such field, so every device it has not reported to since carries none —
+   * while zero is a measurement, and the three really were the whole day.
+   *
+   * Not an invention. Both parent surfaces already print this number as an
+   * "Other apps" row from `otherAppsMinutes(total, rows)` — the day's total
+   * less the listed rows — which left the screen in exactly the state this fold
+   * exists to prevent: a visible remainder the parent cannot see inside, with
+   * nothing saying why or offering the way in. The teaser takes that row's
+   * place and says both. Minutes only: subtraction cannot say how many apps are
+   * behind it, and `apps` absent already means "cannot say how many".
+   */
+  fallbackOtherMinutes?: number;
 }): PremiumTeaser | null {
-  const { hasFullAccess, source, other } = input;
-  if (hasFullAccess || source !== 'device') {
+  const {
+    hasFullAccess,
+    source,
+    other,
+    dayIsToday = true,
+    rowCount = 0,
+    fallbackOtherMinutes = 0,
+  } = input;
+  if (hasFullAccess) {
     return null;
   }
 
-  const minutes = other?.minutes ?? 0;
+  if (!dayIsToday) {
+    return rowCount > 0
+      ? null
+      : { id: 'topApps', proof: null, bodyKey: BODY_KEYS.topApps, ctaKey: CTA_KEY };
+  }
+
+  if (source !== 'device') {
+    return null;
+  }
+
+  /*
+   * The server's number when there is one, the card's own subtraction when the
+   * field was never written. `measured` is what keeps the two apart: a stored
+   * zero ends the offer here, an absent field falls through to the row the
+   * screen is already showing.
+   */
+  const measured = typeof other?.minutes === 'number';
+  const minutes = measured ? other!.minutes : Math.round(fallbackOtherMinutes);
   if (!Number.isFinite(minutes) || minutes <= 0) {
     return null;
   }
 
-  const apps = other?.apps;
+  const apps = measured ? other?.apps : undefined;
   const countable = typeof apps === 'number' && apps > 0;
 
   return {
@@ -154,6 +252,50 @@ export function resolveTopAppsTeaser(input: {
       params: countable ? { count: apps, minutes } : { minutes },
     },
     bodyKey: BODY_KEYS.topApps,
+    ctaKey: CTA_KEY,
+  };
+}
+
+/**
+ * The one teaser drawn over a screen **full** of the family's own data, and the
+ * only one with a wall behind it rather than an absence.
+ *
+ * Reward tasks are free (`docs/PRICING.md` §5 — a child who experiences KidGate
+ * only as punishment is what makes a family uninstall rather than lapse), and
+ * capped instead: ten active, twenty on Premium. `functions/http/rewardTasks.js`
+ * enforces it and refuses the eleventh create with `rewardTask/too-many` — a
+ * refusal both consoles rendered as a toast *after* the parent had typed the
+ * task, with nothing beforehand saying a limit existed.
+ *
+ * **Only at the wall.** Below the cap there is nothing true to say: a family
+ * with three tasks is missing nothing, and a standing "Premium allows more" over
+ * a working screen is an advert. `activeCount` is `open` plus `claimed` — the
+ * two statuses the server counts; including `approved` would draw the wall at a
+ * number nothing refuses at.
+ *
+ * The proof carries the count, not the cap: it is the family's own measurement,
+ * and a sentence naming "10" would need re-translating in fourteen packs the day
+ * the cap moves.
+ */
+export function resolveRewardTaskCapTeaser(input: {
+  hasFullAccess: boolean;
+  /** Tasks `open` or `claimed` right now. */
+  activeCount: number;
+  /** The free cap — `REWARD_FREE_MAX_ACTIVE_TASKS_PER_DEVICE`. */
+  freeCap: number;
+}): PremiumTeaser | null {
+  const { hasFullAccess, activeCount, freeCap } = input;
+  if (hasFullAccess || activeCount < freeCap) {
+    return null;
+  }
+
+  return {
+    id: 'rewardTaskCap',
+    proof: {
+      key: 'plans.teaserProofRewardTasks',
+      params: { count: activeCount },
+    },
+    bodyKey: BODY_KEYS.rewardTaskCap,
     ctaKey: CTA_KEY,
   };
 }

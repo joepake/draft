@@ -25,6 +25,7 @@ export const deviceDetail = {
   alertsSubtitle: 'SOS, protection, lieux et applications',
   checkIn: 'Check-in',
   locationPlusSelfie: 'Localisation et photo',
+  locationOnly: 'Localisation uniquement',
   webFilter: 'Filtre web',
   limitAdultWebsites: 'Limiter les sites inappropriés',
   location: 'Localisation',

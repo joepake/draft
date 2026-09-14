@@ -25,6 +25,7 @@ export const deviceDetail = {
   alertsSubtitle: '\u200FSOS والحماية والأماكن والتطبيقات',
   checkIn: 'الاطمئنان',
   locationPlusSelfie: 'الموقع والصورة',
+  locationOnly: 'الموقع فقط',
   webFilter: 'فلتر الويب',
   limitAdultWebsites: 'تقييد المواقع غير المناسبة',
   location: 'الموقع',

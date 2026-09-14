@@ -165,6 +165,34 @@ export function createActivityRepository(deps: ActivityRepositoryDeps) {
     },
 
     /**
+     * The newest row, or `null` where the family has none.
+     *
+     * One document, not the fifty `subscribe` attaches: the Activities tab's
+     * dot asks only whether anything has happened since the parent last
+     * looked, and a listener answering that must not cost a screen's worth of
+     * reads to every parent who never opens the tab. No `deviceId` filter —
+     * the dot is about the family, and the screen narrows client-side.
+     */
+    subscribeLatest(
+      userId: string,
+      onActivity: (activity: Activity | null) => void,
+      onError: (error: Error) => void,
+    ): Unsubscribe {
+      return db.onQuery(
+        activitiesCollection(userId),
+        {
+          orderBy: [['createdAt', 'desc']],
+          limit: 1,
+        },
+        snapshot => {
+          const doc = snapshot.docs[0];
+          onActivity(doc ? mapActivity(doc) : null);
+        },
+        onError,
+      );
+    },
+
+    /**
      * Remove every row for a device.
      *
      * Part of the device-removal cascade: an activity feed that outlives its

@@ -71,4 +71,5 @@ export const blockedHours = {
   daysWeekend: 'Cuối tuần',
   daysOvernightHint: 'Khung qua đêm tính theo đêm bắt đầu.',
   overlapWarning: 'Khung giờ này trùng với khung giờ khóa khác — cả hai vẫn áp dụng.',
+  weekPreviewTitle: 'Cả tuần',
 } as const;

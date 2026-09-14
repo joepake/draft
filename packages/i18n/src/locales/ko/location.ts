@@ -31,13 +31,12 @@ export const location = {
   historyEmpty: '아직 기록이 없습니다. 위치가 업데이트되거나 체크인을 하면 표시됩니다.',
   historyHighlightAccessibility: '지도에서 {{place}} 강조 표시',
   historyOpenMapsAccessibility: '{{place}}를 지도에서 열기',
-  latestBadge: '최신',
   unableToRequestLocationRefresh: '위치 새로고침을 요청할 수 없습니다',
   locationBannerTitle: '위치 정보 켜기',
   locationBannerBody:
     '부모가 자녀가 안전하게 도착했는지 확인할 수 있도록 이 기기의 위치를 공유해 주세요.',
   locationBannerBodySharingOff:
-    '지금은 위치 공유가 꺼져 있어서 아무것도 전송되지 않아. 여기서 허용해 두면 나중에 부모님이 켰을 때 바로 작동해.',
+    '지금은 위치 공유가 꺼져 있어서 아무것도 전송되지 않아요. 여기서 허용해 두면 나중에 부모님이 켰을 때 바로 작동해요.',
   allowLocationButton: '위치 허용',
   locationNotAllowed:
     '위치 권한이 아직 허용되지 않았습니다. 설정 → KidGate → 위치를 열거나 먼저 위치 서비스를 켜세요. 위치 항목이 보이지 않으면 “위치 허용”을 다시 선택하세요.',
@@ -68,8 +67,6 @@ export const location = {
   childPickCarriedA11y:
     '{{deviceName}}을(를) {{childName}}이(가) 가지고 다니는 기기로 지정',
   stayRange: '{{from}} – {{to}}',
-  placeTotalsTitle: '저장한 장소에서 보낸 시간',
-  placeTotalsNote: '최근 {{count}}일 위치 기록 기준. 여기에 저장한 장소만 계산합니다.',
   wizardStepAllow:
     '허용을 선택한 뒤 항상 허용을 선택하면 백그라운드에서도 업데이트됩니다.',
   requestNoFix:
@@ -79,4 +76,20 @@ export const location = {
   cardSharingOff: '위치 공유가 꺼져 있습니다',
   cardPermissionOff: '이 기기에서 위치 권한이 허용되지 않았습니다',
   cardNotUpdating: '위치가 더 이상 업데이트되지 않습니다',
+  namesNeedPremium: '장소 이름은 유료 플랜에서 제공됩니다',
+  namesNeedPremiumTrialEnded:
+    '무료 체험이 종료되었습니다. 장소 이름을 자세히 보려면 업그레이드하세요.',
+  namesNeedPremiumStill: '위치는 계속 기록되며, 저장한 장소는 이름이 계속 표시됩니다.',
+  awayFromPlace: '{{place}}에서 {{direction}}쪽으로 {{distance}}',
+  distanceKm: '{{value}} km',
+  distanceMeters: '{{value}} m',
+  compassN: '북',
+  compassNe: '북동',
+  compassE: '동',
+  compassSe: '남동',
+  compassS: '남',
+  compassSw: '남서',
+  compassW: '서',
+  compassNw: '북서',
+  areaLabel: '{{area}} 어딘가',
 } as const;

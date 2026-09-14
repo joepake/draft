@@ -49,6 +49,8 @@ export const plans = {
   compareNewAppsPremium: 'Aplikasi mana, dan persetujuan sebelum dipasang',
   compareMessages: 'Peringatan pesan (Android)',
   compareSafety: 'Peringatan perlindungan dan Check-In',
+  compareSafetyFree: 'Peringatan + Check-In',
+  compareSafetyPremium: 'Menambahkan foto di setiap Check-In',
   compareControls: 'Pemblokiran aplikasi dan filter web',
   compareControlsFree: 'Aplikasi apa pun, konten dewasa',
   compareControlsPremium: 'Per kategori, batas tiap aplikasi, daftar Anda sendiri',
@@ -83,10 +85,13 @@ export const plans = {
   featurePausePhone: 'Kunci perangkat',
   featureDailyLimits: 'Batas harian',
   featureBlockedHours: 'Jam Diblokir',
+  featureAppLimits: 'Batas waktu tiap aplikasi',
+  featureInstallApproval: 'Setujui pemasangan baru',
   featureTimeRequests: 'Permintaan waktu',
   featureAppBlocking: 'Aplikasi yang Diblokir',
   featureWebFiltering: 'Filter web',
   featureSeeLocation: 'Lokasi Langsung',
+  featureTamperAlerts: 'Peringatan jika KidGate dihapus',
   featureSosAlerts: 'Peringatan SOS',
   trialPlanName: 'Uji coba',
   trialDescription:
@@ -203,5 +208,14 @@ export const plans = {
     'Premium menambah laporan untuk tiap anak, dan yang baru tiap minggu.',
   teaserMessageAlerts:
     'Premium memberi tahu saat sebuah pesan perlu perhatian Anda. Hanya Android.',
+  teaserWebFilterAdvanced:
+    'Premium memfilter per kategori, menerima daftar izin dan blokir milik Anda sendiri, dan membiarkan anak meminta membuka satu situs.',
+  teaserWeeklyReport:
+    'Versi gratis mengirim satu laporan saat masa coba berakhir. Premium mengirim satu setiap minggu.',
+  teaserProofRewardTasks: 'Tugas aktif: {{count}}',
+  teaserRewardTasks:
+    'Itu batas tugas yang berjalan bersamaan di versi gratis. Premium melipatgandakannya.',
   teaserLiveNote: 'Paket gratis diperbarui tiap 30 menit. Premium bersifat langsung.',
+  teaserUsageTimeline: 'Premium menunjukkan pada jam berapa saja perangkat dipakai.',
+  teaserDeviceNote: 'Hanya perangkat yang dipantau yang mengirim laporan.',
 } as const;

@@ -7,6 +7,7 @@ import {
   webCategoryLabel,
 } from '../dashboard/labels.js';
 import { activityCopy, useActivityTranslate } from '../dashboard/activityCopy.js';
+import { getPlanState, getTrialEndsAt } from '../lib/trial.js';
 import StepUpSheet from '../auth/StepUpSheet.jsx';
 import ScheduleEditor from '../dashboard/ScheduleEditor.jsx';
 import AppLimitsEditor from '../dashboard/AppLimitsEditor.jsx';
@@ -23,7 +24,13 @@ import ParkedDevicesCard from '../dashboard/ParkedDevicesCard.jsx';
 import { waitForParentPresence } from '../dashboard/parentPresence.js';
 import { hasQuickProtectOffer } from '@kidgate/core/domain/quickProtect';
 import { resolveTodayTopApps } from '@kidgate/core/domain/todayTopApps';
-import { resolveTopAppsTeaser } from '@kidgate/core/domain/premiumTeaser';
+import {
+  resolveLockedTeaser,
+  resolveRewardTaskCapTeaser,
+  resolveTopAppsTeaser,
+} from '@kidgate/core/domain/premiumTeaser';
+import { REWARD_FREE_MAX_ACTIVE_TASKS_PER_DEVICE } from '@kidgate/schema/rewardTask';
+import { otherAppsMinutes } from '@kidgate/core/domain/childUsage';
 import PremiumTeaser from '../dashboard/PremiumTeaser.jsx';
 import { localDayKey } from '@kidgate/core/domain/weeklyReportSchedule';
 import {
@@ -31,6 +38,7 @@ import {
   summariseParking,
 } from '@kidgate/core/domain/deviceParking';
 import ParentsCard from '../dashboard/ParentsCard.jsx';
+import TrustedContactsCard from '../dashboard/TrustedContactsCard.jsx';
 import BrandLogo from '@kidgate/web-ui/BrandLogo';
 import Icon from '@kidgate/web-ui/Icon';
 import { deviceIconName } from '../dashboard/deviceIcon.js';
@@ -87,7 +95,10 @@ import { supportsAppInventory } from '@kidgate/core/domain/appInventorySupport';
 import { appInventorySummaryKey } from '@kidgate/core/domain/appInventoryReport';
 import { useAppInventory } from '../dashboard/useAppInventory';
 import { useLatestBuilds } from '../dashboard/useLatestBuilds.js';
-import { resolveBuildFreshness } from '@kidgate/core/domain/buildFreshness';
+import {
+  formatBuildLabel,
+  resolveBuildFreshness,
+} from '@kidgate/core/domain/buildFreshness';
 import { supportsRewardTasks } from '@kidgate/core/domain/rewardTaskSupport';
 import { getEffectiveDeviceStatus } from '@kidgate/core/domain/deviceStatus';
 import {
@@ -516,6 +527,8 @@ const ACTIVITY_ICON = {
   reward_task: 'star',
   web_filter: 'globe',
   emergency: 'lifebuoy',
+  // A KidGate operator entered the account (`functions/admin/impersonate.js`).
+  support_session: 'user',
 };
 
 /**
@@ -885,7 +898,7 @@ export default function Dashboard({
    */
   const latestBuilds = useLatestBuilds();
   const buildLine = useMemo(() => {
-    const running = device?.appVersion?.trim() || '';
+    const running = formatBuildLabel(device?.appVersion, device?.appBuild) || '';
     const freshness = resolveBuildFreshness(device, latestBuilds ?? {});
     if (freshness.status === 'outdated') {
       return {
@@ -1140,19 +1153,106 @@ export default function Dashboard({
         source: screenDay.topApps?.length ? 'usageDay' : 'none',
       };
   /*
+   * Which of the four plan states this family is in, or null.
+   *
+   * `VITE_TRIAL_DAYS` arrived on 2026-09-10 (`lib/trial.js`); before it, this
+   * surface could not tell a running trial from an ended one and every gate
+   * below asked `plan === 'premium'` instead. Null still means it cannot say —
+   * a build with no declared duration — and each caller keeps its old
+   * question in that case rather than assuming a length the server would not
+   * honour.
+   */
+  const planState = getPlanState(family.plan === 'premium', family.trialStartedAt);
+
+  /*
+   * When this family's trial ran out, or null.
+   *
+   * Null covers three different things and every one of them means "do not put
+   * a date on screen": no `VITE_TRIAL_DAYS` in this build, no
+   * `trialStartedAt` (the clock starts at the first child pairing), or a
+   * trial still running. `lib/trial.js` carries why a missing duration is
+   * never assumed to be seven.
+   */
+  const trialEndsAt = (() => {
+    const endsAt = getTrialEndsAt(family.trialStartedAt);
+    if (!endsAt) {
+      return null;
+    }
+    return endsAt.getTime() <= Date.now() ? endsAt : null;
+  })();
+
+  /*
    * The tail row under those three, for a free family.
    *
-   * `family.plan === 'premium'` rather than a trial-aware answer, because this
-   * surface has no `VITE_TRIAL_DAYS` and cannot tell a running trial from an
-   * ended one (`PlanCard` records why guessing is worse than not knowing). The
-   * cost of being wrong is one extra sentence under three apps during a trial,
-   * which is the harmless direction: the other way round, a paying family would
-   * be sold what they already have.
+   * Only `trialEnded` lacks full access, matching the phone's
+   * `isPremiumActive || !trialStartedAt || trialActive`. The fallback when the
+   * state is unknown is the old coarse question, and it is chosen rather than
+   * tolerated: being wrong that way costs one extra sentence under three apps
+   * during a trial, while the other direction sells a paying family what they
+   * already have.
    */
+  const hasFullAccess = planState
+    ? planState !== 'trialEnded'
+    : family.plan === 'premium';
+  /*
+   * The band's offer, resolved beside the ranking's because both read the same
+   * plan. `UsageDayTimeline` decides whether to draw it: a free family whose
+   * device *cannot* report a timeline at all keeps the unsupported sentence,
+   * since Premium would not buy them a band either.
+   */
+  const timelineTeaser = resolveLockedTeaser({ id: 'usageTimeline', hasFullAccess });
+
+  /*
+   * The teasers the phone had and this surface did not (rule 10, 2026-09-13).
+   * Every one of these screens exists here too, and a free family opening them
+   * on the web read an empty card with no sentence — the exact state the fold
+   * was written for, left standing on one of the two parent consoles.
+   *
+   * **One per tab, not one per page.** The phone's "one per screen" rule maps
+   * onto tabs here: a tab is what a parent has in front of them. So the apps
+   * tab carries the web-history offer and falls back to video history only
+   * when the filter has refused nothing this week — `resolveLockedTeaser`
+   * declines `webHistory` without a number, and a tab with no offer beats a tab
+   * with two. The screen tab already carries the ranking's and the band's; the
+   * controls tab carries the filter's and the reward cap's.
+   */
+  const activityWindowTeaser = resolveLockedTeaser({
+    id: 'activityWindow',
+    hasFullAccess,
+  });
+  const webHistoryTeaser = resolveLockedTeaser({
+    id: 'webHistory',
+    hasFullAccess,
+    weekCounters: device?.weekCounters,
+    // The same server-corrected key the rest of this component reads, never a
+    // fresh one: `isWeekCountersCurrent` compares against it, and two "todays"
+    // in one render is how a stale week comes to be drawn as this one.
+    todayKey,
+  });
+  const videoHistoryTeaser = webHistoryTeaser
+    ? null
+    : resolveLockedTeaser({ id: 'videoHistory', hasFullAccess });
+  const messageAlertsTeaser = resolveLockedTeaser({
+    id: 'messageAlerts',
+    hasFullAccess,
+  });
   const screenTopAppsTeaser = resolveTopAppsTeaser({
-    hasFullAccess: family.plan === 'premium',
+    hasFullAccess,
     source: screenTopApps.source,
     other: device?.topAppsOtherToday,
+    dayIsToday: screenDayIsToday,
+    rowCount: screenTopApps.apps.length,
+    /*
+     * The same subtraction `AppBars` draws as its "Other apps" row, for a
+     * device the server never wrote `topAppsOtherToday` for — every one whose
+     * `reportChildUsage` predates 2026-09-10. Without it this card printed a
+     * remainder with no way to see inside it, the state the fold exists to
+     * prevent.
+     */
+    fallbackOtherMinutes: otherAppsMinutes(
+      screenTopApps.totalMinutes,
+      screenTopApps.apps,
+    ),
   });
 
   /*
@@ -1485,6 +1585,16 @@ export default function Dashboard({
                     {t('dash.lastActive', { when: timeAgo(device.lastActiveAt) })}
                   </>
                 )}
+                {/* The agent's own word that the rules reached it — read from
+                    the app pack, the same sentence the phone's child hub says. */}
+                {device.appliedPolicy && (
+                  <>
+                    <span className="dot-sep">·</span>
+                    {activityT('family.settingsReachedDevice', {
+                      when: timeAgo(new Date(device.appliedPolicy.atMs).toISOString()),
+                    })}
+                  </>
+                )}
                 {battery && (
                   <>
                     <span className="dot-sep">·</span>
@@ -1657,6 +1767,7 @@ export default function Dashboard({
             language={language}
             loadError={reports?.error ?? null}
             loadFailed={Boolean(reports?.loadFailed)}
+            hasFullAccess={hasFullAccess}
             onReload={reports?.reload}
           />
         )}
@@ -1680,6 +1791,19 @@ export default function Dashboard({
                     busy === 'parent-remove'
                   }
                 />
+              </Card>
+            )}
+            {/*
+              Family-level too, and for both parents — the rules and the phone
+              let a joined co-parent name a contact. Title from the app pack:
+              the phone's Settings row says the same words.
+            */}
+            {live && familyId && (
+              <Card
+                title={activityT('sos.trustedContactsTitle')}
+                subtitle={activityT('sos.trustedContactsRowSubtitle')}
+              >
+                <TrustedContactsCard familyId={familyId} />
               </Card>
             )}
             {/*
@@ -1786,6 +1910,12 @@ export default function Dashboard({
                       );
                     })}
                   </ul>
+                  {/* Where the list stops, not over it: a free feed ends at
+                      today — a client query limit, since `firestore.rules`
+                      cannot read the plan — and a parent reaching the bottom
+                      could not tell a quiet week from a window that ends
+                      there. The phone puts it in the same place. */}
+                  <PremiumTeaser teaser={activityWindowTeaser} appT={activityT} />
                 </Card>
               </div>
 
@@ -1977,6 +2107,24 @@ export default function Dashboard({
                     </li>
                   </ul>
                 </div>
+                {/*
+                  Why this total is not live, said where the total is read.
+                  Both halves are the free tier as built: the device beats every
+                  thirty minutes rather than every one
+                  (`@kidgate/core/domain/reportCadence`), and every other child
+                  device is parked and reporting nothing at all (§6). Without
+                  it a stale number is indistinguishable from a dead agent, on
+                  the tier with the least reason to give us the benefit of the
+                  doubt. App pack, not `dash.*`: the phone says both sentences
+                  already (`.claude/rules/i18n.md`).
+                */}
+                {!hasFullAccess && (
+                  <p className="hint">
+                    {`${activityT('plans.teaserLiveNote')} ${activityT(
+                      'plans.teaserDeviceNote',
+                    )}`}
+                  </p>
+                )}
               </Card>
 
               <Card
@@ -1998,46 +2146,19 @@ export default function Dashboard({
                   totalMinutes={screenTopApps.totalMinutes}
                 />
                 {/*
-                  Two reasons for the same sentence. Under today's three it
-                  says where the other seven are; under an empty older day it
-                  says why there is nothing — a free family's history was never
-                  written (`docs/PRICING.md` §4), and `appUsageEmpty` above
-                  would otherwise read as data having gone missing. Never under
-                  a ten-row list.
+                  The teaser carries both free cases now — under today's three
+                  it measures the other seven, and on an empty older day it
+                  says why there is nothing (a free family's history was never
+                  written, `docs/PRICING.md` §4) with a way to act on it. The
+                  bare `topAppsFreeHint` it replaced explained the same card
+                  and gave the parent nothing to press. Never under a ten-row
+                  list: `resolveTopAppsTeaser` declines on `rowCount`.
                 */}
-                {/*
-                  The teaser replaces the hint wherever it fires — both say
-                  "top 3, the rest is Premium" and only one of them measures
-                  the rest. The hint stays for the case the teaser declines:
-                  an older day with no rows, where there is no remainder to
-                  count and the sentence is explaining an empty card rather
-                  than a capped list.
-                */}
-                {screenTopAppsTeaser ? (
+                {screenTopAppsTeaser && (
                   <PremiumTeaser teaser={screenTopAppsTeaser} appT={activityT} />
-                ) : (
-                  family.plan !== 'premium' &&
-                  (screenTopApps.source === 'device' ||
-                    (!screenDayIsToday && screenTopApps.apps.length === 0)) && (
-                    <p className="hint">{t('dash.topAppsFreeHint')}</p>
-                  )
                 )}
               </Card>
             </div>
-
-            {/*
-              Above the trend, because it answers the question the trend
-              raises. A bar that reads 28 minutes is a number a parent cannot
-              interrogate; the band under it says whether that was half an hour
-              of use or a day nobody was measuring.
-            */}
-            <Card title={t('dash.timelineTitle')} subtitle={t('dash.timelineSub')}>
-              <UsageDayTimeline
-                day={device.usage[device.usage.length - 1]}
-                platform={device.platform}
-                capability={device.capabilities?.usageTimeline}
-              />
-            </Card>
 
             <Card
               title={t('dash.trendTitle')}
@@ -2071,6 +2192,26 @@ export default function Dashboard({
                 selectedDate={selectedUsageDate ?? todayKey}
                 onSelectDate={date =>
                   setSelectedUsageDate(prev => (prev === date ? null : date))
+                }
+              />
+            </Card>
+
+            {/*
+              Under the bars, because it is about the bar that was picked. A bar
+              reading 28 minutes is a number a parent cannot interrogate; the
+              band says whether that was half an hour of use or a day nobody was
+              measuring — of that day, so it reads `screenDay` and falls back to
+              the newest only when no bar is picked.
+            */}
+            <Card title={t('dash.timelineTitle')} subtitle={t('dash.timelineSub')}>
+              <UsageDayTimeline
+                day={screenDay ?? device.usage[device.usage.length - 1]}
+                platform={device.platform}
+                capability={device.capabilities?.usageTimeline}
+                lockedSlot={
+                  timelineTeaser ? (
+                    <PremiumTeaser teaser={timelineTeaser} appT={activityT} />
+                  ) : null
                 }
               />
             </Card>
@@ -2307,7 +2448,15 @@ export default function Dashboard({
                 title={t('dash.webActivityTitle')}
                 subtitle={t('dash.webActivitySub')}
               >
-                {web.length === 0 ? (
+                {web.length === 0 && webHistoryTeaser ? (
+                  /* `logChildWebActivity` is premium-gated, so this list is
+                     empty for a free family forever, and "no sites yet" over a
+                     running filter reads as a filter that stopped — on the tier
+                     where the filter is most of what they can see. The week's
+                     refusals are the number they do have, and the fold stays
+                     silent until there is one. */
+                  <PremiumTeaser teaser={webHistoryTeaser} appT={activityT} />
+                ) : web.length === 0 ? (
                   <p className="empty">{t('dash.webActivityEmpty')}</p>
                 ) : (
                   <table className="tbl">
@@ -2445,7 +2594,13 @@ export default function Dashboard({
                   {videoHistoryBlockerKey(device) ? (
                     <p className="empty">{activityT(videoHistoryBlockerKey(device))}</p>
                   ) : null}
-                  {!supportsVideoHistory(device) ? null : videos.length === 0 ? (
+                  {!supportsVideoHistory(device) ? null : videos.length === 0 &&
+                    videoHistoryTeaser ? (
+                    /* Structural: no free family has a video history to be
+                       missing. Drawn only when the web-history offer above
+                       declined, so this tab never sells twice. */
+                    <PremiumTeaser teaser={videoHistoryTeaser} appT={activityT} />
+                  ) : videos.length === 0 ? (
                     <p className="empty">{t('dash.videosEmpty')}</p>
                   ) : (
                     <table className="tbl">
@@ -2553,15 +2708,80 @@ export default function Dashboard({
                       <div className="map-badge">
                         <strong>
                           {device.lastLocation.placeName ||
-                            (device.lastLocation.nearbyPlaceName
-                              ? t('dash.nearPlace', {
-                                  place: device.lastLocation.nearbyPlaceName,
+                            (device.lastLocation.relativePlace
+                              ? /* "12 km south of Home" — the shape comes from
+                                   `relativePlaceCopy` so this reads exactly as
+                                   the phone does. */
+                                activityT(device.lastLocation.relativePlace.key, {
+                                  place: device.lastLocation.relativePlace.place,
+                                  distance: activityT(
+                                    device.lastLocation.relativePlace.distanceKey,
+                                    {
+                                      value:
+                                        device.lastLocation.relativePlace.distanceValue,
+                                    },
+                                  ),
+                                  direction: activityT(
+                                    device.lastLocation.relativePlace.compassKey,
+                                  ),
                                 })
-                              : t('dash.lastKnownLocation'))}
+                              : device.lastLocation.nearbyPlaceName
+                                ? t('dash.nearPlace', {
+                                    place: device.lastLocation.nearbyPlaceName,
+                                  })
+                                : t('dash.lastKnownLocation'))}
                         </strong>
                         {device.lastLocation.address && (
                           <em>{device.lastLocation.address}</em>
                         )}
+                        {/*
+                          Why this badge is a coordinate pair, when the reason
+                          is the paywall.
+
+                          `placeName` and `address` both come from
+                          `/reverseGeocodeLocation`, which is premium-gated: a
+                          lapsed family gets a 403 and the client writes the
+                          coordinates alone. Measured 2026-09-10 — every
+                          request that day refused, on a family whose trial had
+                          ended two days earlier — and this row said nothing
+                          about it.
+
+                          **Two conditions, and the second does the work the
+                          missing constant cannot.** `family.plan !== 'premium'`
+                          is all this surface has: there is no
+                          `VITE_TRIAL_DAYS`, so it cannot tell a running trial
+                          from an ended one and `PlanCard` records why guessing
+                          is worse than not knowing. But a trial that is still
+                          running has its fixes *named*, so requiring an unnamed
+                          badge is what keeps this off a trial family's screen
+                          without knowing the date.
+
+                          Sentences from the app pack through `activityT`, never
+                          a `dash.*` twin — `.claude/rules/i18n.md`. The phone
+                          adds a dated sentence between these two; this surface
+                          cannot date it, so it says the half it can.
+                        */}
+                        {family.plan !== 'premium' &&
+                          !device.lastLocation.placeName &&
+                          !device.lastLocation.address && (
+                            <em>
+                              {activityT('location.namesNeedPremium')} ·{' '}
+                              {/*
+                                The date only when this build was told the
+                                trial length — `VITE_TRIAL_DAYS`, read through
+                                `lib/trial.js`, which answers null rather than
+                                assuming 7. Absent, the notice is the two
+                                sentences it was before the constant existed;
+                                present, it says the day like the phone does.
+                              */}
+                              {trialEndsAt
+                                ? `${activityT('location.namesNeedPremiumTrialEnded', {
+                                    date: trialEndsAt.toLocaleDateString(),
+                                  })} `
+                                : ''}
+                              {activityT('location.namesNeedPremiumStill')}
+                            </em>
+                          )}
                       </div>
                     )}
                   </div>
@@ -2780,6 +3000,7 @@ export default function Dashboard({
                   actions={actions}
                   run={run}
                   busy={busy}
+                  lockedTeaser={messageAlertsTeaser}
                 />
               </Card>
             </div>
@@ -2803,6 +3024,7 @@ export default function Dashboard({
             familyChildren={children}
             leaderboard={leaderboard}
             readOnly={live && !canWrite}
+            hasFullAccess={hasFullAccess}
             actions={actions}
             run={run}
             busy={busy}
@@ -2941,6 +3163,8 @@ function ControlsTab({
   leaderboard,
   // screenTimeBoard, — dropped 2026-09-08 with the board
   readOnly,
+  /** Premium. The filter's switch is free; its categories are not. */
+  hasFullAccess = true,
   actions,
   run,
   busy,
@@ -3020,6 +3244,24 @@ function ControlsTab({
    * boolean and re-syncs on its own key — joining them would re-seed every
    * switch whenever one chip moved.
    */
+  const webFilterTeaser = resolveLockedTeaser({
+    id: 'webFilterAdvanced',
+    hasFullAccess,
+  });
+
+  /*
+   * `open` + `claimed` is what the server counts, and this card lists every
+   * status: filtering to those two here rather than taking the array's length
+   * keeps the wall at the number `rewardTask/too-many` actually refuses at.
+   */
+  const rewardCapTeaser = resolveRewardTaskCapTeaser({
+    hasFullAccess,
+    activeCount: (rewardTasks[device.id] || []).filter(
+      task => task.status === 'open' || task.status === 'claimed',
+    ).length,
+    freeCap: REWARD_FREE_MAX_ACTIVE_TASKS_PER_DEVICE,
+  });
+
   const [categories, setCategories] = useState(c.webFilterCategories ?? []);
   const storedCategories = (c.webFilterCategories ?? []).join(',');
   useEffect(() => {
@@ -3586,6 +3828,12 @@ function ControlsTab({
            */}
           {canWebFilter ? (
             <>
+              {/* Free filters on `DEFAULT_WEB_FILTER_CATEGORIES` and cannot
+                  narrow or widen it: `functions/lib/freeTier.js` drops
+                  `webFilterCategories` from the write rather than refusing it,
+                  so a chip tapped here used to turn green, report no error and
+                  be back the way it was on the next listener tick. */}
+              <PremiumTeaser teaser={webFilterTeaser} appT={activityT} />
               {/* The same headings, in the same order, as the phone's Web
                   Filter screen — `WEB_FILTER_CATEGORY_GROUPS` is shared so a
                   family that sets a policy on the phone reads it back here
@@ -3601,7 +3849,9 @@ function ControlsTab({
                       return (
                         <li key={key} className={on ? 'is-on' : ''}>
                           <button
-                            disabled={readOnly || busy === 'web-categories'}
+                            disabled={
+                              readOnly || busy === 'web-categories' || !hasFullAccess
+                            }
                             aria-pressed={on}
                             title={readOnly ? t('dash.unlockToChange') : undefined}
                             onClick={() => toggleCategory(key, !on)}
@@ -3640,46 +3890,50 @@ function ControlsTab({
           {!supportsRewardTasks(device) ? (
             <p className="hint">{t('dash.rowNotSupported')}</p>
           ) : (
-            <ul className="events">
-              {(rewardTasks[device.id] || []).map(task => (
-                <li key={task.id}>
-                  <span
-                    className={`ev-state tone-${
-                      task.status === 'approved'
-                        ? 'good'
-                        : task.status === 'claimed'
-                          ? 'warning'
-                          : 'muted'
-                    }`}
-                  >
-                    <Icon
-                      name={
+            <>
+              {/* The same wall as the phone's, from the same fold: the server
+                refuses the eleventh active task and nothing said so first. */}
+              <PremiumTeaser teaser={rewardCapTeaser} appT={activityT} />
+              <ul className="events">
+                {(rewardTasks[device.id] || []).map(task => (
+                  <li key={task.id}>
+                    <span
+                      className={`ev-state tone-${
                         task.status === 'approved'
-                          ? 'check'
+                          ? 'good'
                           : task.status === 'claimed'
-                            ? 'alert'
-                            : 'clock'
-                      }
-                      size={13}
-                    />
-                  </span>
-                  <span
-                    className="reward-stars"
-                    title={t('dash.rewardTaskStars', {
-                      count: resolveTaskStars(task),
-                    })}
-                    aria-label={t('dash.rewardTaskStars', {
-                      count: resolveTaskStars(task),
-                    })}
-                  >
-                    {Array.from({ length: resolveTaskStars(task) }, (_, index) => (
-                      <Icon key={index} name="star" size={11} />
-                    ))}
-                  </span>
-                  <span className="ev-body">
-                    <strong>{task.title}</strong>
-                    <em>
-                      {/*
+                            ? 'warning'
+                            : 'muted'
+                      }`}
+                    >
+                      <Icon
+                        name={
+                          task.status === 'approved'
+                            ? 'check'
+                            : task.status === 'claimed'
+                              ? 'alert'
+                              : 'clock'
+                        }
+                        size={13}
+                      />
+                    </span>
+                    <span
+                      className="reward-stars"
+                      title={t('dash.rewardTaskStars', {
+                        count: resolveTaskStars(task),
+                      })}
+                      aria-label={t('dash.rewardTaskStars', {
+                        count: resolveTaskStars(task),
+                      })}
+                    >
+                      {Array.from({ length: resolveTaskStars(task) }, (_, index) => (
+                        <Icon key={index} name="star" size={11} />
+                      ))}
+                    </span>
+                    <span className="ev-body">
+                      <strong>{task.title}</strong>
+                      <em>
+                        {/*
                         `bonusMinutes` and `repeat` are the field names the
                         repository maps. This read `task.minutes` and
                         `task.cadence` until 2026-09-03 and rendered
@@ -3687,20 +3941,20 @@ function ControlsTab({
                         nothing failed, because both halves were interpolated
                         into a string nobody asserted on.
                       */}
-                      {t('dash.rewardTaskMeta', {
-                        minutes: task.bonusMinutes,
-                        cadence: t(
-                          task.repeat === 'daily'
-                            ? 'dash.rewardDaily'
-                            : 'dash.rewardOnce',
-                        ),
-                      })}
-                      {task.status === 'claimed' ? t('dash.rewardTaskWaiting') : ''}
-                    </em>
-                  </span>
-                  {task.status === 'claimed' ? (
-                    <>
-                      {/* Both answers, and the Approve button had no `onClick`
+                        {t('dash.rewardTaskMeta', {
+                          minutes: task.bonusMinutes,
+                          cadence: t(
+                            task.repeat === 'daily'
+                              ? 'dash.rewardDaily'
+                              : 'dash.rewardOnce',
+                          ),
+                        })}
+                        {task.status === 'claimed' ? t('dash.rewardTaskWaiting') : ''}
+                      </em>
+                    </span>
+                    {task.status === 'claimed' ? (
+                      <>
+                        {/* Both answers, and the Approve button had no `onClick`
                           at all until 2026-09-03 — `resolveRewardClaim` was
                           built and never called.
 
@@ -3710,63 +3964,66 @@ function ControlsTab({
                           frozen card for the length of the round trip. Both go
                           disabled, the pressed one shows the ellipsis — the
                           same rule the phone's claims inbox follows. */}
-                      <button
-                        className="btn btn-sm"
-                        disabled={
-                          readOnly ||
-                          busy === `reward-reject-${task.id}` ||
-                          busy === `reward-approve-${task.id}`
-                        }
-                        title={readOnly ? t('dash.unlockToChange') : undefined}
-                        onClick={() =>
-                          run(`reward-reject-${task.id}`, () =>
-                            actions.resolveRewardClaim(task.id, false),
-                          )
-                        }
-                      >
-                        {busy === `reward-reject-${task.id}`
-                          ? '…'
-                          : t('dash.rewardReject')}
-                      </button>
-                      <button
-                        className="btn btn-sm btn-primary"
-                        disabled={
-                          readOnly ||
-                          busy === `reward-approve-${task.id}` ||
-                          busy === `reward-reject-${task.id}`
-                        }
-                        title={readOnly ? t('dash.unlockToChange') : undefined}
-                        onClick={() =>
-                          run(`reward-approve-${task.id}`, () =>
-                            actions.resolveRewardClaim(task.id, true),
-                          )
-                        }
-                      >
-                        {busy === `reward-approve-${task.id}` ? '…' : t('dash.approve')}
-                      </button>
-                    </>
-                  ) : (
-                    task.status === 'open' && (
-                      <button
-                        className="btn btn-sm"
-                        disabled={readOnly || busy === `reward-${task.id}`}
-                        aria-label={t('dash.rewardDelete')}
-                        title={
-                          readOnly ? t('dash.unlockToChange') : t('dash.rewardDelete')
-                        }
-                        onClick={() =>
-                          run(`reward-${task.id}`, () =>
-                            actions.deleteRewardTask(task.id),
-                          )
-                        }
-                      >
-                        <Icon name="trash" size={13} />
-                      </button>
-                    )
-                  )}
-                </li>
-              ))}
-            </ul>
+                        <button
+                          className="btn btn-sm"
+                          disabled={
+                            readOnly ||
+                            busy === `reward-reject-${task.id}` ||
+                            busy === `reward-approve-${task.id}`
+                          }
+                          title={readOnly ? t('dash.unlockToChange') : undefined}
+                          onClick={() =>
+                            run(`reward-reject-${task.id}`, () =>
+                              actions.resolveRewardClaim(task.id, false),
+                            )
+                          }
+                        >
+                          {busy === `reward-reject-${task.id}`
+                            ? '…'
+                            : t('dash.rewardReject')}
+                        </button>
+                        <button
+                          className="btn btn-sm btn-primary"
+                          disabled={
+                            readOnly ||
+                            busy === `reward-approve-${task.id}` ||
+                            busy === `reward-reject-${task.id}`
+                          }
+                          title={readOnly ? t('dash.unlockToChange') : undefined}
+                          onClick={() =>
+                            run(`reward-approve-${task.id}`, () =>
+                              actions.resolveRewardClaim(task.id, true),
+                            )
+                          }
+                        >
+                          {busy === `reward-approve-${task.id}`
+                            ? '…'
+                            : t('dash.approve')}
+                        </button>
+                      </>
+                    ) : (
+                      task.status === 'open' && (
+                        <button
+                          className="btn btn-sm"
+                          disabled={readOnly || busy === `reward-${task.id}`}
+                          aria-label={t('dash.rewardDelete')}
+                          title={
+                            readOnly ? t('dash.unlockToChange') : t('dash.rewardDelete')
+                          }
+                          onClick={() =>
+                            run(`reward-${task.id}`, () =>
+                              actions.deleteRewardTask(task.id),
+                            )
+                          }
+                        >
+                          <Icon name="trash" size={13} />
+                        </button>
+                      )
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </>
           )}
 
           {supportsRewardTasks(device) && (

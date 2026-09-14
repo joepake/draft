@@ -39,7 +39,7 @@ export const plans = {
   compareScreenTime: 'Temps d’écran',
   compareScreenTimeFree: 'Aujourd’hui, les 3 principales applications',
   compareScreenTimePremium: 'Toutes les applications, historique de 30 jours',
-  compareLocation: 'Position',
+  compareLocation: 'Localisation',
   compareLocationFree: 'À l’ouverture de la carte',
   compareLocationPremium: 'En direct, avec historique et alertes de lieux',
   compareVideo: 'Historique YouTube et vidéos',
@@ -50,6 +50,8 @@ export const plans = {
   compareNewAppsPremium: 'Quelles applications, et validation avant installation',
   compareMessages: 'Alertes de messages (Android)',
   compareSafety: 'Alertes de protection et Check-in',
+  compareSafetyFree: 'Alertes + Check-In',
+  compareSafetyPremium: 'Ajoute une photo à chaque Check-In',
   compareControls: 'Blocage d’applications et filtre web',
   compareControlsFree: 'Toute application, contenu pour adultes',
   compareControlsPremium: 'Par catégorie, limites par application, vos propres listes',
@@ -84,10 +86,13 @@ export const plans = {
   featurePausePhone: 'Verrouillage de l’appareil',
   featureDailyLimits: 'Limite quotidienne',
   featureBlockedHours: 'Heures bloquées',
+  featureAppLimits: 'Une limite de temps par app',
+  featureInstallApproval: 'Approuver les nouvelles installations',
   featureTimeRequests: 'Demandes de temps',
   featureAppBlocking: 'Applications bloquées',
   featureWebFiltering: 'Filtre web',
   featureSeeLocation: 'Position en direct',
+  featureTamperAlerts: 'Alerte si KidGate est supprimé',
   featureSosAlerts: 'Alertes SOS',
   trialPlanName: 'Essai',
   trialDescription:
@@ -209,6 +214,16 @@ export const plans = {
     'Premium ajoute un rapport par enfant, et un nouveau chaque semaine.',
   teaserMessageAlerts:
     'Premium vous prévient quand un message mérite votre attention. Android uniquement.',
+  teaserWebFilterAdvanced:
+    'Premium filtre par catégorie, accepte vos propres listes d’autorisation et de blocage, et permet à votre enfant de demander le déblocage d’un site.',
+  teaserWeeklyReport:
+    'La version gratuite envoie un rapport à la fin de l’essai. Premium en envoie un chaque semaine.',
+  teaserProofRewardTasks: 'Tâches actives : {{count}}',
+  teaserRewardTasks:
+    'C’est tout ce que la version gratuite garde en cours. Premium double ce nombre.',
   teaserLiveNote:
     'La version gratuite se met à jour toutes les 30 minutes. Premium est en direct.',
+  teaserUsageTimeline:
+    'Premium montre à quelles heures de la journée l’appareil a été utilisé.',
+  teaserDeviceNote: 'Seul l’appareil surveillé envoie des données.',
 } as const;

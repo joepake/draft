@@ -2,7 +2,7 @@ export const checkIn = {
   noPhotoBadge: 'Không có ảnh kèm theo',
   historyTitle: 'Lịch sử Báo an toàn',
   historyHint:
-    'Chạm vào ảnh để phóng to. Bạn có thể gửi yêu cầu mới ở phía trên bất cứ lúc nào.',
+    'Chạm vào ảnh để phóng to. Ở phần phía trên, bạn có thể gửi yêu cầu Báo an toàn mới bất cứ lúc nào.',
   historyEmpty: 'Chưa có Báo an toàn nào.',
   screenTitle: 'Báo an toàn',
   statusSafe: 'An toàn',

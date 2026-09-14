@@ -49,6 +49,8 @@ export const plans = {
   compareNewAppsPremium: 'Tên ứng dụng, và duyệt trước khi cài',
   compareMessages: 'Cảnh báo tin nhắn (Android)',
   compareSafety: 'Cảnh báo bảo vệ và Báo an toàn',
+  compareSafetyFree: 'Cảnh báo + Báo an toàn',
+  compareSafetyPremium: 'Thêm ảnh cho mỗi lần Báo an toàn',
   compareControls: 'Chặn ứng dụng và chặn nội dung web',
   compareControlsFree: 'Mọi ứng dụng, nội dung người lớn',
   compareControlsPremium: 'Theo nhóm, giới hạn từng ứng dụng, danh sách riêng',
@@ -80,10 +82,13 @@ export const plans = {
   featurePausePhone: 'Khóa thiết bị',
   featureDailyLimits: 'Giới hạn hằng ngày',
   featureBlockedHours: 'Giờ khóa thiết bị',
+  featureAppLimits: 'Giới hạn giờ cho từng ứng dụng',
+  featureInstallApproval: 'Duyệt ứng dụng mới cài',
   featureTimeRequests: 'Yêu cầu thêm giờ',
   featureAppBlocking: 'Chặn ứng dụng',
   featureWebFiltering: 'Chặn nội dung web',
   featureSeeLocation: 'Xem vị trí',
+  featureTamperAlerts: 'Báo khi KidGate bị gỡ',
   featureSosAlerts: 'Cảnh báo SOS',
   trialPlanName: 'Dùng thử',
   trialDescription:
@@ -195,5 +200,15 @@ export const plans = {
   teaserChildReport: 'Premium có báo cáo riêng cho từng con, và mỗi tuần một bản mới.',
   teaserMessageAlerts:
     'Premium báo cho bạn khi có tin nhắn cần để ý. Chỉ trên Android.',
+  teaserWebFilterAdvanced:
+    'Premium lọc theo danh mục và cho bạn tự chọn trang nào luôn vào được, trang nào luôn bị chặn. Con cũng có thể xin bạn mở một trang đang bị chặn.',
+  teaserWeeklyReport:
+    'Bản miễn phí gửi một báo cáo khi hết dùng thử. Premium gửi mỗi tuần một bản.',
+  teaserProofRewardTasks: 'Nhiệm vụ đang bật: {{count}}',
+  teaserRewardTasks:
+    'Đó là số nhiệm vụ tối đa bản miễn phí chạy cùng lúc. Premium gấp đôi.',
   teaserLiveNote: 'Bản miễn phí cập nhật 30 phút một lần. Premium là trực tiếp.',
+  teaserUsageTimeline:
+    'Premium cho biết thiết bị được dùng vào những khung giờ nào trong ngày.',
+  teaserDeviceNote: 'Chỉ thiết bị đang được giám sát mới gửi báo cáo.',
 } as const;

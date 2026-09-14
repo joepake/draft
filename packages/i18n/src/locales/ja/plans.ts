@@ -49,6 +49,8 @@ export const plans = {
   compareNewAppsPremium: 'アプリ名と、インストール前の承認',
   compareMessages: 'メッセージの通知（Android）',
   compareSafety: '保護の通知とチェックイン',
+  compareSafetyFree: '通知 + チェックイン',
+  compareSafetyPremium: 'チェックインごとに写真を追加',
   compareControls: 'アプリのブロックとWebフィルター',
   compareControlsFree: 'すべてのアプリ、成人向けコンテンツ',
   compareControlsPremium: 'カテゴリ別、アプリごとの上限、独自のリスト',
@@ -83,10 +85,13 @@ export const plans = {
   featurePausePhone: 'デバイスロック',
   featureDailyLimits: '1日の上限',
   featureBlockedHours: '休止時間',
+  featureAppLimits: 'アプリごとの時間制限',
+  featureInstallApproval: '新しいインストールを承認',
   featureTimeRequests: '時間延長リクエスト',
   featureAppBlocking: 'ブロックされたアプリ',
   featureWebFiltering: 'Webフィルター',
   featureSeeLocation: 'リアルタイム位置情報',
+  featureTamperAlerts: 'KidGate が削除されたら通知',
   featureSosAlerts: 'SOSアラート',
   trialPlanName: 'トライアル',
   trialDescription:
@@ -201,5 +206,14 @@ export const plans = {
     'Premium ならお子さまごとのレポートが増え、毎週新しいものが届きます。',
   teaserMessageAlerts:
     'Premium はメッセージに注意が必要なときに知らせます。Android のみ。',
+  teaserWebFilterAdvanced:
+    'Premium はカテゴリで絞り込み、独自の許可リストとブロックリストを使え、お子さまがサイトの解除を申請できます。',
+  teaserWeeklyReport:
+    '無料プランは体験終了時に 1 回だけレポートを送ります。Premium は毎週送ります。',
+  teaserProofRewardTasks: '進行中のタスク: {{count}}',
+  teaserRewardTasks:
+    '無料プランが同時に持てるタスクはここまでです。Premium はこの 2 倍になります。',
   teaserLiveNote: '無料プランは30分ごとの更新です。Premium はリアルタイムです。',
+  teaserUsageTimeline: 'Premium なら、その日のどの時間帯に使われたかがわかります。',
+  teaserDeviceNote: '報告するのは監視中の 1 台だけです。',
 } as const;

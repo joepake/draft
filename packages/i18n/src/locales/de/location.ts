@@ -37,7 +37,6 @@ export const location = {
     'Noch kein Verlauf vorhanden. Standorte werden nach einer Standortaktualisierung oder einem Check-in angezeigt.',
   historyHighlightAccessibility: '{{place}} auf der Karte hervorheben',
   historyOpenMapsAccessibility: '{{place}} in Karten öffnen',
-  latestBadge: 'Neueste',
   unableToRequestLocationRefresh:
     'Die Standortaktualisierung konnte nicht angefordert werden',
   locationBannerTitle: 'Standort aktivieren',
@@ -78,11 +77,6 @@ export const location = {
   childPickCarriedA11y:
     '{{deviceName}} als das Gerät markieren, das {{childName}} dabei hat',
   stayRange: '{{from}} – {{to}}',
-  placeTotalsTitle: 'Zeit an deinen Orten',
-  placeTotalsNote:
-    'Aus den letzten {{count}} Tagen des Verlaufs. Gezählt werden nur hier gespeicherte Orte.',
-  placeTotalsNote_one:
-    'Aus dem letzten Tag des Verlaufs. Gezählt werden nur hier gespeicherte Orte.',
   wizardStepAllow:
     'Wähle „Erlauben“ und dann „Immer“, damit Updates im Hintergrund weiterlaufen.',
   requestNoFix:
@@ -92,4 +86,21 @@ export const location = {
   cardSharingOff: 'Standortfreigabe ist aus',
   cardPermissionOff: 'Standort ist auf diesem Gerät nicht erlaubt',
   cardNotUpdating: 'Standort wird nicht mehr aktualisiert',
+  namesNeedPremium: 'Ortsnamen erfordern einen bezahlten Tarif',
+  namesNeedPremiumTrialEnded:
+    'Deine Testphase ist beendet. Führe ein Upgrade durch, um Ortsnamen vollständig zu sehen.',
+  namesNeedPremiumStill:
+    'Standorte werden weiterhin aufgezeichnet, und gespeicherte Orte zeigen weiterhin ihren Namen.',
+  awayFromPlace: '{{distance}} {{direction}} von {{place}}',
+  distanceKm: '{{value}} km',
+  distanceMeters: '{{value}} m',
+  compassN: 'nördlich',
+  compassNe: 'nordöstlich',
+  compassE: 'östlich',
+  compassSe: 'südöstlich',
+  compassS: 'südlich',
+  compassSw: 'südwestlich',
+  compassW: 'westlich',
+  compassNw: 'nordwestlich',
+  areaLabel: 'Irgendwo in {{area}}',
 } as const;

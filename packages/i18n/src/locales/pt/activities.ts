@@ -1,4 +1,10 @@
 export const activities = {
+  activityTypeSupportSession: 'Suporte',
+  supportSessionTitle: 'Acesso do suporte',
+  supportSessionBody:
+    'Um agente de suporte da KidGate abriu sua conta familiar para atender uma solicitação.',
+  supportSessionBodyTicket:
+    'Um agente de suporte da KidGate abriu sua conta familiar para atender a solicitação {{ticketRef}}.',
   title: 'Atividades',
   subtitleAllDevices: 'Eventos mais recentes de todos os dispositivos',
   subtitleTimelineForDevice: 'Linha do tempo de {{deviceName}}',

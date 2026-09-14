@@ -3,6 +3,9 @@ import BrandLogo from '@kidgate/web-ui/BrandLogo';
 import Icon from '@kidgate/web-ui/Icon';
 import { useT } from '@kidgate/web-ui/useT';
 import { reportNarrative, reportWeek } from '@kidgate/core/domain/reportView';
+import { resolveLockedTeaser } from '@kidgate/core/domain/premiumTeaser';
+import { useActivityTranslate } from './activityCopy.js';
+import PremiumTeaser from './PremiumTeaser.jsx';
 import { formatMinutes } from './charts.jsx';
 import {
   formatDayKey,
@@ -50,8 +53,11 @@ export default function ReportPanel({
   onReload,
   loadError,
   loadFailed,
+  /** Free keeps the one report the trial end wrote, and gets no new ones. */
+  hasFullAccess = true,
 }) {
   const { t } = useT();
+  const appT = useActivityTranslate();
   const [selectedKey, setSelectedKey] = useState(null);
   const [notice, setNotice] = useState(null);
 
@@ -124,7 +130,23 @@ export default function ReportPanel({
      * read says so and offers a reload, because "No report yet" over a
      * document that is sitting in Firestore would be the product inventing
      * calm. Same rule the phone follows.
+     *
+     * The third case is a free family, for whom "the next one arrives Monday"
+     * is simply untrue — the weekly job writes for premium. Checked after
+     * `loadFailed`, because a read that failed says nothing about the plan.
      */
+    const lockedTeaser = loadFailed
+      ? null
+      : resolveLockedTeaser({ id: 'weeklyReport', hasFullAccess });
+    if (lockedTeaser) {
+      return (
+        <section className="card report-empty">
+          <Icon name="fileText" size={30} />
+          <h2>{t('report.emptyTitle')}</h2>
+          <PremiumTeaser teaser={lockedTeaser} appT={appT} />
+        </section>
+      );
+    }
     return (
       <section className="card report-empty">
         <Icon name={loadFailed ? 'alert' : 'fileText'} size={30} />
@@ -146,6 +168,27 @@ export default function ReportPanel({
   }
 
   const peak = Math.max(report.screenMinutes, report.previousScreenMinutes, 1);
+
+  /*
+   * The history card's own free-tier answer.
+   *
+   * A free family is not always empty-handed here: `trialLifecycle` writes one
+   * report at trial end, so this panel renders in full for them and the locked
+   * teaser above — which only runs when there is no report at all — never
+   * does. They then read `historyEmpty`, "no other reports yet", about a
+   * history that will never gain one: the weekly job returns at the plan check
+   * before it writes (`functions/scheduled/weeklyDigest.js`). The phone says
+   * this on its week-in-progress tab, and this card is the surface here with
+   * the same sentence to replace (rule 10).
+   *
+   * `reports.length > 1` declines, the way `rowCount` does on the app ranking:
+   * a family that downgraded keeps the reports it paid for, and an offer over
+   * a list they are reading is selling them their own data.
+   */
+  const historyTeaser =
+    reports.length > 1
+      ? null
+      : resolveLockedTeaser({ id: 'weeklyReport', hasFullAccess });
 
   return (
     <div className="report">
@@ -322,7 +365,11 @@ export default function ReportPanel({
             <h2>{t('report.historyTitle')}</h2>
           </div>
         </header>
-        {reports.length === 1 && <p className="hint">{t('report.historyEmpty')}</p>}
+        {historyTeaser ? (
+          <PremiumTeaser teaser={historyTeaser} appT={appT} />
+        ) : (
+          reports.length === 1 && <p className="hint">{t('report.historyEmpty')}</p>
+        )}
         <div className="report-history-list">
           {reports.map(entry => {
             const week = reportWeek(entry.periodKey);

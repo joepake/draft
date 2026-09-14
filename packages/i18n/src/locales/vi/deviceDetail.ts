@@ -23,6 +23,7 @@ export const deviceDetail = {
   alertsSubtitle: 'SOS, bảo vệ, địa điểm và ứng dụng',
   checkIn: 'Báo an toàn',
   locationPlusSelfie: 'Vị trí và ảnh',
+  locationOnly: 'Chỉ vị trí',
   webFilter: 'Chặn nội dung web',
   limitAdultWebsites: 'Hạn chế trang web không phù hợp',
   location: 'Vị trí',

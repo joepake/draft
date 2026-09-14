@@ -1,4 +1,10 @@
 export const activities = {
+  activityTypeSupportSession: 'Destek',
+  supportSessionTitle: 'Destek erişimi',
+  supportSessionBody:
+    'Bir KidGate destek görevlisi, bir talebi çözmek için aile hesabınızı açtı.',
+  supportSessionBodyTicket:
+    'Bir KidGate destek görevlisi, {{ticketRef}} talebini çözmek için aile hesabınızı açtı.',
   title: 'Etkinlikler',
   subtitleAllDevices: 'Tüm cihazlardaki en son etkinlikler',
   subtitleTimelineForDevice: '{{deviceName}} zaman çizelgesi',

@@ -55,6 +55,23 @@ export const REWARD_TITLE_MAX_LENGTH = 80;
 export const REWARD_MIN_MINUTES = 5;
 export const REWARD_MAX_MINUTES = 240;
 
+/**
+ * How many tasks may be `open` or `claimed` at once — per child, or per device
+ * on an unassigned one. The free cap and the paid one.
+ *
+ * Here rather than in either console because both draw the wall and neither
+ * enforces it: `functions/http/rewardTasks.js` refuses the create with
+ * `rewardTask/too-many`, and until 2026-09-13 nothing warned a parent before
+ * that refusal. The server spells the free one `FREE_MAX_ACTIVE_TASKS_PER_DEVICE`;
+ * the prefix is added here because "free max" alone says nothing in a package
+ * this wide, and `serverConstantParity` pins the values across the rename.
+ *
+ * **Twenty is a safety net, ten is the product line** (`docs/PRICING.md` §5), so
+ * a paying family reaching 20 is a bug to look at rather than an upsell to draw.
+ */
+export const REWARD_MAX_ACTIVE_TASKS_PER_DEVICE = 20;
+export const REWARD_FREE_MAX_ACTIVE_TASKS_PER_DEVICE = 10;
+
 export interface RewardTask {
   id: string;
   /**

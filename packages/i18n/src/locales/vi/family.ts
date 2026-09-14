@@ -1,4 +1,5 @@
 export const family = {
+  settingsReachedDevice: 'Cài đặt đã tới thiết bị này {{when}}',
   title: 'Gia đình',
   connectButton: 'Kết nối',
   connectAccessibility: 'Thêm thiết bị của trẻ hoặc thiết bị phụ huynh',
@@ -225,7 +226,7 @@ export const family = {
   batteryPercent: '{{percent}}%',
   batteryAccessibility: 'Pin {{percent}} phần trăm',
   batteryChargingAccessibility: 'Pin {{percent}} phần trăm, đang sạc',
-  childDetailPerDevice: 'Theo từng thiết bị — chọn máy',
+  childDetailPerDevice: 'Theo từng thiết bị — chọn thiết bị cần chỉnh',
   childDetailNotAvailable: 'Không khả dụng',
   childDetailNotAvailableReason: 'Không thiết bị nào của con hỗ trợ tính năng này',
   childDetailProtectionOk: 'Được bảo vệ',

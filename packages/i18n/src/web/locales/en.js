@@ -577,7 +577,6 @@ export default {
     topAppsTitle: 'Top apps today',
     topAppsTitleDay: 'Top apps · {{date}}',
     topAppsSub: 'Per-app caps shown as a marker',
-    topAppsFreeHint: 'Top 3 today — the full list and history come with Premium.',
     trendTitle: 'Screen Time trend',
     trendSub: 'Last {{count}} days',
     rangeDays: '{{count}}d',

@@ -92,7 +92,7 @@ export default {
       "KidGate donne aux parents un contrôle calme et clair sur le temps d’écran, les applis et la sécurité — pendant que l'enfant garde un téléphone qui reste le sien.",
     heroCheck1: 'Temps d’écran',
     heroCheck2: "Blocage d'applis",
-    heroCheck3: 'Filtrage web',
+    heroCheck3: 'Filtre web',
     heroCheck4: 'Localisation',
     heroCheck5: 'Tableau de bord familial',
 
@@ -553,8 +553,6 @@ export default {
     topAppsTitle: "Applis les plus utilisées aujourd'hui",
     topAppsTitleDay: 'Applis les plus utilisées · {{date}}',
     topAppsSub: 'Les plafonds par appli sont indiqués par un repère',
-    topAppsFreeHint:
-      'Top 3 du jour : la liste complète et l’historique sont inclus dans Premium.',
     trendTitle: 'Évolution du temps d’écran',
     trendSub: '{{count}} derniers jours',
     rangeDays: '{{count}} j',
@@ -774,7 +772,7 @@ export default {
     writtenAt: 'Écrit le {{when}}',
     triggerScheduled: 'Envoyé lundi',
     triggerManual: 'Créé par vous',
-    statScreenTime: "Temps d'écran",
+    statScreenTime: 'Temps d’écran',
     statDailyAverage: 'Moyenne quotidienne',
     statBlockedApps: 'Applis bloquées',
     statBlockedWebVisits: 'Sites filtrés',
@@ -833,7 +831,7 @@ export default {
     childrenNote:
       'La même quinzaine, par appareil. Les pourcentages portent sur le total de la famille.',
     colChild: 'Enfant',
-    colScreenTime: "Temps d'écran",
+    colScreenTime: 'Temps d’écran',
     colShare: 'Part',
     colChange: 'Vs semaine dernière',
     colLimit: 'Au-delà de la limite',

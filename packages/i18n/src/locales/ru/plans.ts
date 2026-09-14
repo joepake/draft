@@ -49,6 +49,8 @@ export const plans = {
   compareNewAppsPremium: 'Какие приложения и подтверждение перед установкой',
   compareMessages: 'Оповещения о сообщениях (Android)',
   compareSafety: 'Оповещения защиты и Check-In',
+  compareSafetyFree: 'Оповещения + отметка «Я на месте»',
+  compareSafetyPremium: 'Добавляет фото к каждой отметке',
   compareControls: 'Блокировка приложений и веб-фильтр',
   compareControlsFree: 'Любое приложение, контент для взрослых',
   compareControlsPremium: 'По категориям, лимиты на приложения, собственные списки',
@@ -83,10 +85,13 @@ export const plans = {
   featurePausePhone: 'Блокировка устройства',
   featureDailyLimits: 'Дневной лимит',
   featureBlockedHours: 'Заблокированные часы',
+  featureAppLimits: 'Лимит времени для каждого приложения',
+  featureInstallApproval: 'Подтверждение новых установок',
   featureTimeRequests: 'Запросы времени',
   featureAppBlocking: 'Заблокированные приложения',
   featureWebFiltering: 'Веб-фильтр',
   featureSeeLocation: 'Местоположение в реальном времени',
+  featureTamperAlerts: 'Оповещение, если KidGate удалили',
   featureSosAlerts: 'Оповещения SOS',
   trialPlanName: 'Пробный период',
   trialDescription:
@@ -200,6 +205,15 @@ export const plans = {
     'Premium добавляет отчёт по каждому ребёнку и новый каждую неделю.',
   teaserMessageAlerts:
     'Premium сообщает, когда сообщение требует вашего внимания. Только Android.',
+  teaserWebFilterAdvanced:
+    'Premium фильтрует по категориям, принимает ваши списки разрешённых и заблокированных сайтов и позволяет ребёнку попросить разблокировать сайт.',
+  teaserWeeklyReport:
+    'На бесплатном плане отчёт приходит один раз — в конце пробного периода. На Premium — каждую неделю.',
+  teaserProofRewardTasks: 'Активных заданий: {{count}}',
+  teaserRewardTasks:
+    'Столько заданий бесплатный план держит одновременно. Premium удваивает это число.',
   teaserLiveNote:
     'Бесплатный план обновляется раз в 30 минут. Premium — в реальном времени.',
+  teaserUsageTimeline: 'Premium показывает, в какие часы дня пользовались устройством.',
+  teaserDeviceNote: 'Отчёты присылает только отслеживаемое устройство.',
 } as const;

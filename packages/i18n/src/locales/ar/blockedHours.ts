@@ -68,4 +68,5 @@ export const blockedHours = {
   daysWeekend: 'عطلة الأسبوع',
   daysOvernightHint: 'الفترات الليلية تُحسب على الليلة التي تبدأ فيها.',
   overlapWarning: 'يتداخل هذا مع فترة حظر أخرى — كلاهما لا يزال ساري المفعول.',
+  weekPreviewTitle: 'أسبوعك',
 } as const;

@@ -4,7 +4,7 @@
  */
 
 import type { AppRef, IsoDate, IsoDateTime, Minutes } from './primitives';
-import type { UsageTimeline } from './usageDay';
+import type { UsageHourlyApps, UsageTimeline } from './usageDay';
 
 export interface AppUsage {
   app: AppRef;
@@ -27,6 +27,13 @@ export interface UsageSnapshot {
    * a device that can report one still has none before its first sample.
    */
   timeline?: UsageTimeline;
+  /**
+   * Which apps were in front in each hour — `UsageDay.hourlyApps`, which this
+   * becomes. Absent where the band is absent, and on the desktop, whose
+   * Rust thread fills it into the request itself rather than through this
+   * shape (`cloud.rs`). Present only with at least one hour in it.
+   */
+  hourlyApps?: UsageHourlyApps;
   /**
    * Minutes subtracted from `totalMinutes` because nobody was using the device
    * — see `UsageDay.idleMinutes`, which this becomes.

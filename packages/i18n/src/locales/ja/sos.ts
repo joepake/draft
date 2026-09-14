@@ -72,4 +72,23 @@ export const sos = {
   badgeLabel: 'SOS',
   muteAlarm: 'この通知の音を止める',
   alertCount: '{{current}} / {{total}}',
+  trustedContactsTitle: '信頼できる連絡先',
+  trustedContactsSubtitle: 'SOSのたびに最後の位置情報付きでメールが届きます',
+  trustedContactsRowSubtitle: 'お子さんがSOSを送ったときにメールが届く人',
+  trustedContactsListSection: 'SOSを受け取る人',
+  trustedContactsEmpty:
+    'まだ誰もいません。祖父母、ご近所、家族の友人を追加しましょう。',
+  trustedContactsAddSection: '連絡先を追加',
+  trustedContactsAddHint:
+    '最大{{max}}人。事前に伝えておいてください。メールは予告なく届きます。',
+  trustedContactsNameLabel: '名前',
+  trustedContactsEmailLabel: 'メール',
+  trustedContactsAddButton: '連絡先を追加',
+  trustedContactsFull: 'リストがいっぱいです。1人削除してから追加してください。',
+  trustedContactsInvalid: '名前と有効なメールアドレスを入力してください。',
+  trustedContactsSaveFailed:
+    '保存できませんでした。しばらくしてからもう一度お試しください。',
+  trustedContactsRemoveAccessibility: '{{name}}を削除',
+  trustedContactsPrivacyNote:
+    '各連絡先には端末名と最後に確認された位置がメールで届きます。写真は送られません。',
 } as const;

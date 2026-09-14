@@ -29,7 +29,6 @@ export const location = {
   historyEmpty: 'لا يوجد سجل حتى الآن. ستظهر المواقع بعد تحديث الموقع أو الاطمئنان.',
   historyHighlightAccessibility: 'تمييز {{place}} على الخريطة',
   historyOpenMapsAccessibility: 'فتح {{place}} في الخرائط',
-  latestBadge: 'الأحدث',
   unableToRequestLocationRefresh: 'تعذر طلب تحديث الموقع',
   locationBannerTitle: 'تفعيل الموقع',
   locationBannerBody:
@@ -64,13 +63,6 @@ export const location = {
   childPickCarried: 'بحوزته',
   childPickCarriedA11y: 'تعيين {{deviceName}} كالجهاز الذي يحمله {{childName}}',
   stayRange: '{{from}} – {{to}}',
-  placeTotalsTitle: 'الوقت في أماكنك',
-  placeTotalsNote:
-    'من سجل المواقع لآخر {{count}} يومًا. تُحتسب الأماكن المحفوظة هنا فقط.',
-  placeTotalsNote_one: 'من سجل المواقع لآخر يوم واحد. تُحتسب الأماكن المحفوظة هنا فقط.',
-  placeTotalsNote_two: 'من سجل المواقع لآخر يومين. تُحتسب الأماكن المحفوظة هنا فقط.',
-  placeTotalsNote_few:
-    'من سجل المواقع لآخر {{count}} أيام. تُحتسب الأماكن المحفوظة هنا فقط.',
   wizardStepAllow: 'اختر "سماح" ثم "دائمًا" حتى تستمر التحديثات في الخلفية.',
   requestNoFix:
     'لم يتمكن هذا الجهاز من تحديد موقعه. قد لا يكون الوصول إلى الموقع مسموحًا عليه بعد.',
@@ -79,4 +71,21 @@ export const location = {
   cardSharingOff: 'مشاركة الموقع متوقفة',
   cardPermissionOff: 'الموقع غير مسموح به على هذا الجهاز',
   cardNotUpdating: 'توقف تحديث الموقع',
+  namesNeedPremium: 'تتطلب أسماء الأماكن خطة مدفوعة',
+  namesNeedPremiumTrialEnded:
+    'انتهت فترتك التجريبية. قم بالترقية لعرض أسماء الأماكن كاملة.',
+  namesNeedPremiumStill:
+    'لا تزال المواقع تُسجَّل، ولا تزال الأماكن التي حفظتها تظهر بأسمائها.',
+  awayFromPlace: '{{distance}} إلى {{direction}} من {{place}}',
+  distanceKm: '{{value}} كم',
+  distanceMeters: '{{value}} م',
+  compassN: 'الشمال',
+  compassNe: 'الشمال الشرقي',
+  compassE: 'الشرق',
+  compassSe: 'الجنوب الشرقي',
+  compassS: 'الجنوب',
+  compassSw: 'الجنوب الغربي',
+  compassW: 'الغرب',
+  compassNw: 'الشمال الغربي',
+  areaLabel: 'في مكان ما في {{area}}',
 } as const;
