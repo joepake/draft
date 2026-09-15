@@ -1207,6 +1207,7 @@ __metadata:
   dependencies:
     "@kidgate/ports": "workspace:*"
     "@kidgate/schema": "workspace:*"
+    "@kidgate/tokens": "workspace:*"
     "@types/qrcode": "npm:^1.5.5"
     firebase: "npm:^12.17.1"
     qrcode: "npm:^1.5.4"
