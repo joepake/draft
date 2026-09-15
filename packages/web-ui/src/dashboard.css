@@ -39,7 +39,13 @@
   --dash-radius-3: 1rem;
 }
 
-.dash {
+/*
+ * One palette for both roots. `.login` used to declare its own copy of these,
+ * which is how the sign-in page came to be a version behind on every contrast
+ * fix the dashboard made. Layout stays on `.dash` alone, below.
+ */
+.dash,
+.login {
   /* Theme colours resolve to `@kidgate/tokens` (`--kg-*`, written by
      `theme.js`). Alpha variants are mixed from the tokens with `color-mix`. */
   --plane: var(--kg-background);
@@ -94,7 +100,9 @@
      dark card. */
   --serious: color-mix(in srgb, var(--kg-errorStrong) 55%, var(--kg-warningStrong));
   --critical: var(--kg-errorStrong);
+}
 
+.dash {
   display: grid;
   grid-template-columns: 272px minmax(0, 1fr);
   min-height: 100vh;
@@ -145,7 +153,7 @@
   display: block;
 }
 
-.dash-top p .icon {
+.dash-top-facts .icon {
   display: inline-block;
   vertical-align: -2px;
 }
@@ -571,28 +579,6 @@
   font-size: var(--dash-text-2);
 }
 
-/* `.kid-meta em` is (0,1,1) and sets `display: block`, so the element carries
-   its own tag here for the same reason `em.kid-build-old` does below. */
-.kid-meta em.kid-sub {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  min-width: 0;
-  overflow: visible;
-}
-
-.kid-sub > span {
-  min-width: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.kid-sub-glyph {
-  flex-shrink: 0;
-  opacity: 0.8;
-}
-
 /*
  * A child's initial, filled with their accent from `@kidgate/tokens` as an
  * inline style. White reads on every swatch in that list — they are the
@@ -730,8 +716,10 @@
 
 /* ---------- Main ---------- */
 
+/* The top padding is tighter than the sides on purpose: the rail's brand band
+   already sits above this, so a full 1.6rem read as a second one. */
 .dash-main {
-  padding: 1.6rem 1.9rem 3rem;
+  padding: 1.1rem 1.9rem 3rem;
   min-width: 0;
 }
 
@@ -741,11 +729,14 @@
   justify-content: space-between;
   gap: 1rem;
   flex-wrap: wrap;
-  margin-bottom: 1rem;
+  margin-bottom: 0.6rem;
 }
 
+/* One step down the scale from where it started. The device name is the page's
+   subject, not its banner — the rail already says which device is selected,
+   and 1.5rem of it pushed the first number below the fold on a laptop. */
 .dash-top h1 {
-  font-size: var(--dash-text-6);
+  font-size: var(--dash-text-5);
   letter-spacing: -0.02em;
 }
 
@@ -774,8 +765,8 @@
   /* The pane's own ground, so the bar is not a second surface floating over
      the page — and opaque, or the cards show through it while scrolling. */
   background: var(--plane);
-  margin: 0 -1.9rem 1.1rem;
-  padding: 0.5rem 1.9rem 0.6rem;
+  margin: 0 -1.9rem 0.85rem;
+  padding: 0.35rem 1.9rem 0.45rem;
   border-bottom: 1px solid var(--line);
 }
 
@@ -803,24 +794,37 @@
 }
 
 /* Who this page is about, above the device it is about. */
+/* The person and the machine share the h1's row — the chip is shorter than the
+   heading beside it, so it costs no height at all. It wraps to its own line
+   only where the two genuinely do not fit. */
+.dash-top-name {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.6rem;
+}
+
 .dash-top-owner {
   display: flex;
   align-items: center;
   gap: 0.35rem;
-  margin-bottom: 0.2rem;
   font-size: var(--dash-text-3);
   font-weight: 700;
   color: var(--ink-2);
 }
 
-.dash-top p {
+/* Classed rather than `.dash-top p`: the facts moved out of the header and sit
+   under the tab bar now, as the first line of the pane rather than the last of
+   the title block. A descendant selector would have stopped applying, and
+   quietly — the row would still render, just unstyled. */
+.dash-top-facts {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   flex-wrap: wrap;
   color: var(--ink-2);
   font-size: var(--dash-text-3);
-  margin-top: 0.4rem;
+  margin-bottom: 0.7rem;
 }
 
 /*
@@ -829,12 +833,12 @@
  * between two of them says they belong to one sentence — these three are read
  * one at a time, when something already looks wrong.
  *
- * Classed under `.dash-top` because `.dash-top p` is a class and a type, and
- * would otherwise outrank a bare class here.
+ * A bare class is enough now that the row it modifies is `.dash-top-facts`
+ * rather than `.dash-top p`; it follows it in the file, so it wins on order.
  */
-.dash-top .dash-top-facts-quiet {
+.dash-top-facts-quiet {
   gap: 1rem;
-  margin-top: 0.25rem;
+  margin-top: -0.35rem;
   color: var(--muted);
   font-size: var(--dash-text-3);
 }
@@ -2761,19 +2765,14 @@ ol.attn-fix li + li {
 /* ---------- Sign in ---------- */
 
 .login {
-  --plane: var(--kg-background);
-  --surface: var(--kg-surface);
-  --ink: var(--kg-text);
-  --ink-2: var(--kg-textSecondary);
-  --muted: color-mix(in srgb, var(--kg-textSecondary) 78%, var(--kg-background));
-  --line: color-mix(in srgb, var(--kg-text) 9%, transparent);
-  --brand: var(--kg-primary);
-  --brand-2: var(--kg-secondary);
-  --s1: #3987e5;
-  --critical: var(--kg-danger);
-  --good: var(--kg-success);
-  --warning: var(--kg-warning);
-
+  /*
+   * No palette of its own. This block held a second copy of the variables
+   * `.dash` declares, and the two drifted: the copy kept `--muted` at 78% and
+   * the base status tokens after the dashboard moved to 95% and the `*Strong`
+   * pair, so every AA fix measured on 2026-09-15 stopped at the dashboard's
+   * edge and the sign-in page — the first screen a parent sees — kept failing.
+   * The definitions live once now, on `.dash, .login`.
+   */
   min-height: 100vh;
   display: grid;
   place-items: center;
@@ -3989,6 +3988,42 @@ ol.attn-fix li + li {
   background: var(--critical);
   border-color: var(--critical);
   color: var(--kg-onPrimary, #fff);
+}
+
+/* ---------- Anything that removes something ----------
+ *
+ * These read as destructive at rest, not only under the pointer. Every one of
+ * them was a neutral grey square that turned red on `:hover` — which says
+ * nothing to a parent scanning the row, nothing on a touchscreen, and nothing
+ * to a keyboard. The fill is a tint rather than the solid red `.btn-danger`
+ * wears: `.btn-danger` is the confirmation, one button at a time, while these
+ * are one per row in a list of rules, and five solid red squares would read as
+ * five errors rather than five ways to remove a rule.
+ */
+.dash .sched-remove,
+.dash .limit-remove,
+.dash .place-remove,
+.dash .device-admin-remove {
+  color: var(--critical);
+  background: color-mix(in srgb, var(--critical) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--critical) 30%, transparent);
+}
+
+.dash .sched-remove:hover:not(:disabled),
+.dash .limit-remove:hover:not(:disabled),
+.dash .place-remove:hover:not(:disabled),
+.dash .device-admin-remove:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--critical) 22%, transparent);
+  border-color: color-mix(in srgb, var(--critical) 55%, transparent);
+}
+
+/* The unpair trigger is a word, not a glyph, so it takes the padding a word
+   needs — the shared rule above only gave it the colour. `.dash` again: the
+   `.limit-controls > button` rule that sizes its siblings is a class and a
+   type, and would outrank a bare class here. */
+.dash .device-admin-remove {
+  padding: 0.35rem 0.7rem;
+  border-radius: var(--dash-radius-1);
 }
 
 /* ---------- Plan status ---------- */

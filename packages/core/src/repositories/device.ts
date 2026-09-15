@@ -459,12 +459,20 @@ export function createDeviceRepository(deps: DeviceRepositoryDeps) {
         { as: 'parent' },
       );
 
-      return {
-        ...current,
-        isLocked: locked,
-        status: locked ? 'locked' : 'online',
-        lastActiveAt: new Date(clock.now()).toISOString(),
-      };
+      /*
+       * `isLocked` and nothing else. The request is the only thing this call
+       * learned; the two fields that used to ride along were both claims about
+       * the device, which said nothing back.
+       *
+       * `lastActiveAt` was the worse of them — a beat this client invented for
+       * a machine that may have been silent for a week, so `apps/mobile` (which
+       * feeds this record straight into its store, `hooks/useDevice`) painted
+       * the row Online the moment Lock was pressed. `status` is derived on every
+       * surface now, which is why `setDeviceLock` stopped writing it on
+       * 2026-09-15 (`functions/http/controls.js`); the client copy kept the same
+       * lie one layer up.
+       */
+      return { ...current, isLocked: locked };
     },
 
     /**

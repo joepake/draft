@@ -103,16 +103,18 @@ function deviceStatusOf(device) {
   return getEffectiveDeviceStatus(device, Date.now());
 }
 
+// No `icon` field: the bar draws words alone. Six glyphs beside six labels
+// that already named the thing cost header height and said nothing twice.
 const TABS = [
-  { id: 'overview', labelKey: 'dash.tabOverview', icon: 'grid' },
-  { id: 'screen', labelKey: 'dash.tabScreen', icon: 'clock' },
-  { id: 'apps', labelKey: 'dash.tabApps', icon: 'apps' },
-  { id: 'safety', labelKey: 'dash.tabSafety', icon: 'shield' },
-  { id: 'controls', labelKey: 'dash.tabControls', icon: 'sliders' },
+  { id: 'overview', labelKey: 'dash.tabOverview' },
+  { id: 'screen', labelKey: 'dash.tabScreen' },
+  { id: 'apps', labelKey: 'dash.tabApps' },
+  { id: 'safety', labelKey: 'dash.tabSafety' },
+  { id: 'controls', labelKey: 'dash.tabControls' },
   // Last, and the only tab that is about the family rather than the device on
   // screen: the report sums every device in the family, which is why it stays
   // rendered when no device is selected.
-  { id: 'report', labelKey: 'dash.tabReport', icon: 'fileText' },
+  { id: 'report', labelKey: 'dash.tabReport' },
 ];
 
 /**
@@ -344,50 +346,35 @@ function DeviceDot({ device }) {
 }
 
 /**
- * One selectable device in the rail.
+ * One selectable device in the rail, always under its child's heading.
  *
- * `child` is passed only on the **solo** shape — a child who owns exactly one
- * device, drawn as a single row instead of a heading over one row. The person
- * is still named once, which is the whole point of grouping (a flat list of
- * devices made a family with one child and two devices read as two children);
- * the row just stops spending two lines to say it. The device keeps its own
- * glyph on the second line, because that glyph is the only thing separating a
- * Mac from the extension running on it.
+ * It carried a second shape until 2026-09-15 — a child who owned exactly one
+ * device was drawn as this row with the person's name and avatar on it,
+ * instead of a heading over one row. It saved a line and cost the column its
+ * consistency: two row shapes in one list, one of them with no chevron, and a
+ * parent scanning the rail had to work out which rows were people.
  *
- * Everywhere else the leading tile is the device glyph from `deviceIconName` —
- * the same call the phone's device card makes, so a Mac is the same picture on
- * both surfaces and an iPad is not drawn as an iPhone here.
+ * The leading tile is the device glyph from `deviceIconName` — the same call
+ * the phone's device card makes, so a Mac is the same picture on both surfaces
+ * and an iPad is not drawn as an iPhone here.
  */
-function DeviceRow({ device, child, active, onSelect, latestBuilds }) {
+function DeviceRow({ device, active, onSelect, latestBuilds }) {
   const { t } = useT();
   const outdated =
     resolveBuildFreshness(device, latestBuilds ?? {}).status === 'outdated';
-  const solo = Boolean(child);
   return (
     <button
-      className={`kid${solo ? ' kid-solo' : ''}${active ? ' is-active' : ''}`}
+      className={`kid${active ? ' is-active' : ''}`}
       onClick={onSelect}
       aria-current={active ? 'true' : undefined}
     >
-      {solo ? (
-        <span className="kid-avatar kid-avatar-child">
-          <ChildInitial name={child.name} colorIndex={child.colorIndex} />
-        </span>
-      ) : (
-        <span className={`kid-avatar av-${device.platform}`}>
-          <Icon name={deviceIconName(device)} size={20} />
-        </span>
-      )}
+      <span className={`kid-avatar av-${device.platform}`}>
+        <Icon name={deviceIconName(device)} size={20} />
+      </span>
       <span className="kid-meta">
-        <strong>{solo ? child.name : device.name}</strong>
-        {solo ? (
-          <em className="kid-sub">
-            <Icon name={deviceIconName(device)} size={12} className="kid-sub-glyph" />
-            <span>{device.name}</span>
-          </em>
-        ) : (
-          device.modelName &&
-          device.modelName !== device.name && <em>{device.modelName}</em>
+        <strong>{device.name}</strong>
+        {device.modelName && device.modelName !== device.name && (
+          <em>{device.modelName}</em>
         )}
         {/*
           Which machine is on an old build, without opening each one in turn —
@@ -905,6 +892,47 @@ export default function Dashboard({
     }
     return running ? { outdated: false, text: running } : null;
   }, [device, latestBuilds, t]);
+
+  /*
+   * The header's second line — settings reached, battery, build — built here
+   * so the page can count it before deciding whether it is a line at all.
+   *
+   * With one fact on it, it is not: a Windows machine that reports a build and
+   * neither a battery nor an applied policy left `1.0.0.39` sitting alone under
+   * the status row, reading as a stray number rather than as a second line.
+   * One joins the row above, two or more earn their own.
+   */
+  const quietFacts = !device
+    ? []
+    : [
+        device.appliedPolicy && (
+          // The agent's own word that the rules reached it, from the app pack —
+          // the same sentence the phone's child hub says.
+          <span key="policy">
+            {activityT('family.settingsReachedDevice', {
+              when: timeAgo(new Date(device.appliedPolicy.atMs).toISOString()),
+            })}
+          </span>
+        ),
+        battery && (
+          <span key="battery" className={battery.isLow ? 'batt batt-low' : 'batt'}>
+            <Icon
+              name={battery.charging ? 'batteryCharging' : 'battery'}
+              size={15}
+              level={battery.level}
+            />{' '}
+            {battery.level}%
+          </span>
+        ),
+        buildLine && (
+          // Last: the one a parent goes looking for rather than reads. Drawn at
+          // all only once the device has reported a version, so records written
+          // before agents did stay silent instead of showing an empty field.
+          <span key="build" className={buildLine.outdated ? 'build-old' : undefined}>
+            {buildLine.text}
+          </span>
+        ),
+      ].filter(Boolean);
 
   const stats = useMemo(() => {
     if (!device || !c) return null;
@@ -1435,54 +1463,38 @@ export default function Dashboard({
             )}
             {deviceGroups.map(group => {
               /*
-               * A child with one device is a row, not a group: a heading over a
-               * single row spent two of the rail's lines saying one thing. The
-               * failure that grouping fixed does not come back — the person is
-               * still named once, on the row itself (`DeviceRow`'s solo shape).
-               *
-               * Unassigned devices always keep the heading. There is no person
-               * to name there, and the heading is the only thing on those rows
-               * that says whose they are not.
+               * Every child is a group, including one who owns a single
+               * device. It used to be a bare row — two rail lines saving one —
+               * and the saving cost more than it bought: that row carried a
+               * different avatar, a different first line and no chevron, so a
+               * rail of four children showed two shapes and a parent had to
+               * work out which of them were people. Consistency down the
+               * column beats one line of height.
                */
-              const solo = Boolean(group.child) && group.devices.length === 1;
-              // A solo group is never open — it has no fold. Selecting its
-              // device still points `openGroupKey` at it, and without this the
-              // group would take the open block's air and indent its one row
-              // away from the rows it sits between.
-              const open = !solo && openGroupKey === group.key;
+              const open = openGroupKey === group.key;
               const containsActive = group.devices.some(d => d.id === deviceId);
               return (
                 <div key={group.key} className={`kid-group${open ? ' is-open' : ''}`}>
-                  {solo ? (
-                    <DeviceRow
-                      device={group.devices[0]}
-                      child={group.child}
-                      active={group.devices[0].id === deviceId}
-                      onSelect={() => setDeviceId(group.devices[0].id)}
-                      latestBuilds={latestBuilds}
+                  <>
+                    <KidGroupHead
+                      group={group}
+                      open={open}
+                      containsActive={containsActive}
+                      onToggle={() =>
+                        setOpenGroupKey(key => (key === group.key ? null : group.key))
+                      }
                     />
-                  ) : (
-                    <>
-                      <KidGroupHead
-                        group={group}
-                        open={open}
-                        containsActive={containsActive}
-                        onToggle={() =>
-                          setOpenGroupKey(key => (key === group.key ? null : group.key))
-                        }
-                      />
-                      {open &&
-                        group.devices.map(d => (
-                          <DeviceRow
-                            key={d.id}
-                            device={d}
-                            active={d.id === deviceId}
-                            onSelect={() => setDeviceId(d.id)}
-                            latestBuilds={latestBuilds}
-                          />
-                        ))}
-                    </>
-                  )}
+                    {open &&
+                      group.devices.map(d => (
+                        <DeviceRow
+                          key={d.id}
+                          device={d}
+                          active={d.id === deviceId}
+                          onSelect={() => setDeviceId(d.id)}
+                          latestBuilds={latestBuilds}
+                        />
+                      ))}
+                  </>
                 </div>
               );
             })}
@@ -1512,90 +1524,25 @@ export default function Dashboard({
       <main className="dash-main">
         <header className="dash-top">
           <div>
-            {/* Whose, then which. Every number below this line is about one
-                child's device, and the page used to name only the hardware —
-                so two iPads read as the same page twice. */}
-            {device?.child && (
-              <p className="dash-top-owner">
-                <ChildInitial
-                  name={device.child.name}
-                  colorIndex={device.child.colorIndex}
-                />
-                <span>{device.child.name}</span>
-              </p>
-            )}
-            <h1>{device ? device.name : family.name}</h1>
             {/*
-              Two lines, because these are two kinds of fact and there were six
-              of them in one grey run: is it working and is it here — read at a
-              glance — then the three a parent reads deliberately, and only
-              when something looks wrong. One line of six wrapped into a
-              paragraph on any narrow window and none of the six was findable.
+              Whose and which on one line. Stacked, the person spent a whole
+              row saying one word and the header ran four rows deep before the
+              first number on the page. What the stacking was for is unchanged:
+              every figure below is about one child's device, and naming only
+              the hardware made two iPads read as the same page twice.
             */}
-            {device && (
-              <p className="dash-top-facts">
-                {/* `deviceStatusOf`, never the stored `status` — the same rule
-                    the sidebar dot follows. This header read the field straight
-                    off the document, and `setDeviceLock` used to write
-                    `'online'` into it on every unlock, so a machine dead for a
-                    week said Online here for as long as the row existed. */}
-                <StatusPill status={deviceStatusOf(device)} device={device} />
-                <span className="dot-sep">·</span>
-                {osLabel(device.platform, device.osVersion)}
-                {device.lastActiveAt && (
-                  <>
-                    <span className="dot-sep">·</span>
-                    {t('dash.lastActive', { when: timeAgo(device.lastActiveAt) })}
-                  </>
-                )}
-                {/* Why that "last seen" is half an hour old on a working
-                    device. The app pack's sentence, the one the phone's family
-                    card now carries too — `docs/PRICING.md` §8 item 7. */}
-                {slowBeatMinutes(device.beatIntervalMs) !== null && (
-                  <>
-                    <span className="dot-sep">·</span>
-                    {activityT('family.freeTierCadenceHint', {
-                      minutes: slowBeatMinutes(device.beatIntervalMs),
-                    })}
-                  </>
-                )}
-              </p>
-            )}
-            {device && (device.appliedPolicy || battery || buildLine) && (
-              <p className="dash-top-facts dash-top-facts-quiet">
-                {/* The agent's own word that the rules reached it — read from
-                    the app pack, the same sentence the phone's child hub says. */}
-                {device.appliedPolicy && (
-                  <span>
-                    {activityT('family.settingsReachedDevice', {
-                      when: timeAgo(new Date(device.appliedPolicy.atMs).toISOString()),
-                    })}
-                  </span>
-                )}
-                {battery && (
-                  <span className={battery.isLow ? 'batt batt-low' : 'batt'}>
-                    <Icon
-                      name={battery.charging ? 'batteryCharging' : 'battery'}
-                      size={15}
-                      level={battery.level}
-                    />{' '}
-                    {battery.level}%
-                  </span>
-                )}
-                {/*
-                  The build, and whether it is the current one. Last because it
-                  is the one a parent goes looking for rather than reads — and
-                  drawn at all only once the device has reported a version, so
-                  the rows written before agents did stay silent instead of
-                  showing an empty field.
-                */}
-                {buildLine && (
-                  <span className={buildLine.outdated ? 'build-old' : undefined}>
-                    {buildLine.text}
-                  </span>
-                )}
-              </p>
-            )}
+            <div className="dash-top-name">
+              {device?.child && (
+                <p className="dash-top-owner">
+                  <ChildInitial
+                    name={device.child.name}
+                    colorIndex={device.child.colorIndex}
+                  />
+                  <span>{device.child.name}</span>
+                </p>
+              )}
+              <h1>{device ? device.name : family.name}</h1>
+            </div>
           </div>
           <div className="top-actions">
             {topActions}
@@ -1664,7 +1611,6 @@ export default function Dashboard({
                  the brand ground the stylesheet fills the chip with. */
               aria-current={tab === item.id ? 'page' : undefined}
             >
-              <Icon name={item.icon} size={17} />
               {t(item.labelKey)}
               {/* A bare figure beside "Overview" says nothing about what was
                   counted. `cardAttentionSub` is the sentence the Overview card
@@ -1691,6 +1637,57 @@ export default function Dashboard({
             </button>
           ))}
         </nav>
+
+        {/*
+          Under the bar, not above it: these are the pane's first line rather
+          than the title's last. In the header they were a third row inside a
+          block that already ran four deep, and none of the three facts is one
+          a parent reads before choosing a tab.
+
+          Two lines still, when there is enough to fill both: is it working and
+          is it here — read at a glance — then the ones a parent reads
+          deliberately, and only once something looks wrong.
+        */}
+        {device && (
+          <p className="dash-top-facts">
+            {/* `deviceStatusOf`, never the stored `status` — the same rule the
+                sidebar dot follows. This header read the field straight off the
+                document, and `setDeviceLock` used to write `'online'` into it
+                on every unlock, so a machine dead for a week said Online here
+                for as long as the row existed. */}
+            <StatusPill status={deviceStatusOf(device)} device={device} />
+            <span className="dot-sep">·</span>
+            {osLabel(device.platform, device.osVersion)}
+            {device.lastActiveAt && (
+              <>
+                <span className="dot-sep">·</span>
+                {t('dash.lastActive', { when: timeAgo(device.lastActiveAt) })}
+              </>
+            )}
+            {/* Why that "last seen" is half an hour old on a working device.
+                The app pack's sentence, the one the phone's family card now
+                carries too — `docs/PRICING.md` §8 item 7. */}
+            {slowBeatMinutes(device.beatIntervalMs) !== null && (
+              <>
+                <span className="dot-sep">·</span>
+                {activityT('family.freeTierCadenceHint', {
+                  minutes: slowBeatMinutes(device.beatIntervalMs),
+                })}
+              </>
+            )}
+            {/* A lone quiet fact joins this row rather than standing as a line
+                of its own — `quietFacts` says why. */}
+            {quietFacts.length === 1 && (
+              <>
+                <span className="dot-sep">·</span>
+                {quietFacts[0]}
+              </>
+            )}
+          </p>
+        )}
+        {device && quietFacts.length > 1 && (
+          <p className="dash-top-facts dash-top-facts-quiet">{quietFacts}</p>
+        )}
 
         {live && !canWrite && (
           <div className="write-note">
