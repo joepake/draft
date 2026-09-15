@@ -22,7 +22,7 @@ export const permissions = {
   batteryOptimizationHint: 'يمنع Android من إيقاف KidGate مؤقتًا في الخلفية.',
   exactAlarmLabel: 'المنبهات والتذكيرات',
   exactAlarmHint: 'اسمح بالمنبهات والتذكيرات حتى تبدأ ساعات الحظر وتنتهي في وقتها.',
-  accessibilityLabel: 'مساعد قفل إمكانية الوصول',
+  accessibilityLabel: 'إمكانية الوصول (مساعد القفل)',
   accessibilityHint: 'يُبقي قفل KidGate فوق التطبيقات الأخرى.',
   oemSectionDescription:
     'غالبًا ما توقف أجهزة {{brand}} التطبيقات العاملة في الخلفية. يرجى إكمال هذه الخطوات حتى يستمر عمل القفل وساعات الحظر.',

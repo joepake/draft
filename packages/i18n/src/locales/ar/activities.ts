@@ -39,7 +39,7 @@ export const activities = {
   activityTypeAppBlocked: 'تم حظر التطبيق',
   activityTypeAppInstalled: 'تم تثبيت التطبيق',
   activityTypeAppRemoved: 'تمت إزالة التطبيق',
-  activityTypePlaceEnter: 'تم الوصول إلى الموقع',
+  activityTypePlaceEnter: 'تم الوصول إلى المكان',
   activityTypePlaceExit: 'تمت مغادرة الموقع',
   activityTypeTamper: 'الحماية',
   activityTypeScreenTime: 'وقت استخدام الشاشة',
@@ -115,7 +115,7 @@ export const activities = {
     'قد تتوقف حدود التطبيقات وساعات الحظر حتى يتمكن KidGate من قراءة استخدام التطبيقات على جهاز الطفل مرة أخرى.',
   // iOS and Android name this permission differently; the neutral pair
   // above is what old events fall back to. See utils/tamperAlerts.ts.
-  tamperScreenTimeIosTitle: 'تم إيقاف الوصول إلى وقت استخدام الشاشة',
+  tamperScreenTimeIosTitle: 'تم إيقاف الوصول إلى مدة استخدام الجهاز',
   tamperScreenTimeIosBody:
     'قد تتوقف حدود التطبيقات وساعات الحظر حتى يُسمح بالوصول إلى وقت استخدام الشاشة على جهاز الطفل مرة أخرى.',
   tamperUsageAccessAndroidTitle: 'تم إيقاف الوصول إلى الاستخدام',

@@ -62,7 +62,7 @@ export const activities = {
     'El SOS desbloqueó este dispositivo durante {{minutes}} minutos. Van {{count}} veces hoy.',
   sosEscapeLimitedTitle: 'Apps de emergencia abiertas',
   sosEscapeLimitedBody:
-    'El SOS abrió el teléfono, los mapas y los mensajes en este dispositivo durante {{minutes}} minutos. Todo lo demás siguió bloqueado.',
+    'El SOS abrió las llamadas, los mapas y los mensajes en este dispositivo durante {{minutes}} minutos. Todo lo demás siguió bloqueado.',
   sosEscapeLimitedRepeatTitle: 'Apps de emergencia abiertas ({{count}} hoy)',
   sosEscapeLimitedRepeatBody:
     'El SOS abrió el teléfono, los mapas y los mensajes en este dispositivo durante {{minutes}} minutos. Van {{count}} veces hoy.',
@@ -116,7 +116,7 @@ export const activities = {
 
   tamperAccessibilityTitle: 'Se desactivó Accesibilidad',
   tamperAccessibilityBody:
-    'El bloqueo de aplicaciones y la aplicación de restricciones pueden verse afectados hasta que Accesibilidad vuelva a activarse.',
+    'El bloqueo de aplicaciones y el cumplimiento del bloqueo pueden debilitarse hasta que Accesibilidad vuelva a activarse.',
   tamperUsageAccessTitle: 'Se desactivó el acceso al uso de aplicaciones',
   tamperUsageAccessBody:
     'Los límites de aplicaciones y las Horas bloqueadas pueden dejar de funcionar hasta que KidGate vuelva a medir el uso de aplicaciones en el dispositivo del niño.',

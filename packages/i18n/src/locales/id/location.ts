@@ -36,7 +36,7 @@ export const location = {
   unableToRequestLocationRefresh: 'Tidak dapat meminta pembaruan lokasi',
   locationBannerTitle: 'Aktifkan lokasi',
   locationBannerBody:
-    'Orang tua Anda ingin melihat lokasi perangkat ini agar mengetahui bahwa Anda telah tiba dengan selamat.',
+    'Orang tuamu ingin melihat lokasi perangkat ini agar tahu kamu sudah tiba dengan selamat.',
   locationBannerBodySharingOff:
     'Berbagi lokasi sedang mati, jadi tidak ada yang dikirim. Kalau kamu izinkan di sini, fiturnya langsung jalan saat orang tuamu menyalakannya nanti.',
   allowLocationButton: 'Izinkan lokasi',

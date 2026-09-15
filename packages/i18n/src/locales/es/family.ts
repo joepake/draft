@@ -133,14 +133,14 @@ export const family = {
   healthOffline: 'Sin conexión',
   devicePausedLabel: 'En pausa',
   devicePausedHint: 'En pausa en el plan gratis: todas las reglas siguen vigentes',
-  parkedBannerTitle: 'Elige el dispositivo que seguirás viendo',
+  parkedBannerTitle: 'Elige el dispositivo que seguirás supervisando',
   parkedBannerBody:
     'Tus reglas funcionan en todos los dispositivos. El plan gratis recibe informes de uno: elígelo, o mejora tu plan para conservarlos todos.',
   parkedBannerAction: 'Elegir dispositivo',
   chooseMonitoredTitle: '¿Qué dispositivo debe informar?',
   chooseMonitoredBody:
     'Todas las reglas siguen activas en todos. Solo el que elijas envía tiempo de pantalla y ubicación. Puedes cambiarlo una vez cada {{days}} días.',
-  chooseMonitoredConfirm: 'Ver este dispositivo',
+  chooseMonitoredConfirm: 'Supervisar este dispositivo',
   chooseMonitoredUpgrade: 'Conservar todos: mejorar plan',
   chooseMonitoredDone: '{{name}} es ahora el dispositivo que informa',
   monitoredCooldown:
@@ -205,7 +205,8 @@ export const family = {
 
   step1Title: 'Pulsa «Añadir dispositivo del niño»',
 
-  step1Description: 'Aquí aparecerá un código QR de vinculación, listo para escanear.',
+  step1Description:
+    'Aquí aparecerá un código QR de vinculación, listo para que lo escanee el dispositivo del niño.',
 
   step2Title: 'Escanéalo desde el dispositivo del niño',
 

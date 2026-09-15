@@ -6,6 +6,7 @@ import { reportNarrative, reportWeek } from '@kidgate/core/domain/reportView';
 import { resolveLockedTeaser } from '@kidgate/core/domain/premiumTeaser';
 import { useActivityTranslate } from './activityCopy.js';
 import PremiumTeaser from './PremiumTeaser.jsx';
+import Toast from './Toast.jsx';
 import { formatMinutes } from './charts.jsx';
 import {
   formatDayKey,
@@ -208,8 +209,11 @@ export default function ReportPanel({
       </div>
 
       {/* One toast at a time — copy and share each set `notice`, and a later
-          one replaces an earlier one rather than stacking on the same spot. */}
-      {notice && <div className={`toast tone-${notice.tone}`}>{notice.text}</div>}
+          one replaces an earlier one rather than stacking on the same spot.
+          Drawn by the shared module, so the sentence is announced here too:
+          the share result is the only word a parent gets that the image
+          reached their clipboard. */}
+      <Toast toast={notice} />
 
       <article className="report-sheet">
         <header className="report-sheet-head">

@@ -35,7 +35,7 @@ export const plans = {
   compareSyncFree: 'كل 30 دقيقة',
   compareSyncPremium: 'مباشر',
   compareScreenTime: 'وقت الشاشة',
-  compareScreenTimeFree: 'اليوم، أكثر 3 تطبيقات',
+  compareScreenTimeFree: 'اليوم، أكثر 3 تطبيقات استخدامًا',
   compareScreenTimePremium: 'كل التطبيقات، سجل 30 يومًا',
   compareLocation: 'الموقع',
   compareLocationFree: 'عند فتح الخريطة',
@@ -195,7 +195,7 @@ export const plans = {
   teaserWebHistory: 'يعرض Premium المواقع التي حُظرت وما بحث عنه طفلك.',
   teaserVideoHistory: 'يحتفظ Premium بكل فيديو ومقطع Short شاهده على YouTube.',
   teaserLocationTrail:
-    'يحتفظ Premium بالمسار الذي سلكه، وينبّهك عند وصوله إلى المنزل أو المدرسة أو مغادرته.',
+    'يحتفظ Premium بالأماكن التي ذهب إليها، وينبّهك عند وصوله إلى المنزل أو المدرسة وعند مغادرته لهما.',
   teaserActivityWindow: 'الخطة المجانية تعرض اليوم. Premium يحتفظ بـ 30 يومًا.',
   teaserChildReport: 'يضيف Premium تقريرًا لكل طفل، وتقريرًا جديدًا كل أسبوع.',
   teaserMessageAlerts: 'ينبّهك Premium عندما تحتاج رسالة إلى انتباهك. على Android فقط.',

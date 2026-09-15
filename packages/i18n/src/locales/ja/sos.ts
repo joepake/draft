@@ -45,7 +45,8 @@ export const sos = {
     'SOSを送信する前に、SimulatorメニューでCamera（Front Camera）をオンにしておくと、テスト用の写真を撮影できます。',
   guidanceTitle: '送信する前に',
   guidanceItem1: '助けが来るまで、できるだけ安全な場所にいるようにしてください。',
-  guidanceItem2: '可能であれば、信頼できる大人や緊急サービスにも連絡してください。',
+  guidanceItem2:
+    'できれば、信頼できる大人に連絡するか、110番（警察）や119番（救急・消防）に電話してください。',
   whatParentsReceive: '保護者に届く内容',
   holdToSendFiveSeconds: '長押しで送信・5秒',
   keepHolding: '押し続けてください',
@@ -74,7 +75,7 @@ export const sos = {
   alertCount: '{{current}} / {{total}}',
   trustedContactsTitle: '信頼できる連絡先',
   trustedContactsSubtitle: 'SOSのたびに最後の位置情報付きでメールが届きます',
-  trustedContactsRowSubtitle: 'お子さんがSOSを送ったときにメールが届く人',
+  trustedContactsRowSubtitle: 'お子さまがSOSを送ったときにメールが届く人',
   trustedContactsListSection: 'SOSを受け取る人',
   trustedContactsEmpty:
     'まだ誰もいません。祖父母、ご近所、家族の友人を追加しましょう。',
@@ -90,5 +91,5 @@ export const sos = {
     '保存できませんでした。しばらくしてからもう一度お試しください。',
   trustedContactsRemoveAccessibility: '{{name}}を削除',
   trustedContactsPrivacyNote:
-    '各連絡先には端末名と最後に確認された位置がメールで届きます。写真は送られません。',
+    '各連絡先にはデバイス名と最後に確認された位置がメールで届きます。写真は送られません。',
 } as const;

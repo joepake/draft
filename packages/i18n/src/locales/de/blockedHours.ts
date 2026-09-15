@@ -69,9 +69,9 @@ export const blockedHours = {
   dayShortSun: 'So',
   daysLabel: 'Tage',
   daysEveryDay: 'Täglich',
-  daysSchoolNights: 'Schulnächte',
+  daysSchoolNights: 'Vor Schultagen',
   daysWeekend: 'Wochenende',
-  daysOvernightHint: 'Nachtfenster zählen zu der Nacht, in der sie beginnen.',
+  daysOvernightHint: 'Zeiträume über Nacht zählen zu der Nacht, in der sie beginnen.',
   overlapWarning:
     'Diese Zeit überschneidet sich mit einer anderen gesperrten Zeit – beide gelten weiterhin.',
   weekPreviewTitle: 'Deine Woche',

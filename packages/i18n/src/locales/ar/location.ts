@@ -31,8 +31,7 @@ export const location = {
   historyOpenMapsAccessibility: 'فتح {{place}} في الخرائط',
   unableToRequestLocationRefresh: 'تعذر طلب تحديث الموقع',
   locationBannerTitle: 'تفعيل الموقع',
-  locationBannerBody:
-    'يرغب أحد الوالدين في معرفة موقع هذا الجهاز للتأكد من وصولك بأمان.',
+  locationBannerBody: 'يريد والداك معرفة مكان هذا الجهاز ليطمئنّا إلى وصولك بأمان.',
   locationBannerBodySharingOff:
     'مشاركة الموقع مغلقة الآن، فلا يُرسَل أي شيء. السماح هنا يعني أنها ستعمل فورًا إذا شغّلها والدك أو والدتك لاحقًا.',
   allowLocationButton: 'السماح بالموقع',

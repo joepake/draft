@@ -178,16 +178,30 @@ export function fetchFamilyDetail(uid, reason) {
 /**
  * One page of families, oldest uid first.
  *
- * Browsing returns rows nobody asked for by name, so it carries a stated reason
- * like any other personal read and **returns no email addresses** — the server
- * comment on `getFamilyList` has both arguments. `cursor` is the previous
- * page's `nextCursor`; absent means the first page.
+ * Browsing returns rows nobody asked for by name, so it **returns no email
+ * addresses** — the server comment on `getFamilyList` has the argument.
+ * `cursor` is the previous page's `nextCursor`; absent means the first page.
+ *
+ * `reason` is optional here and mandatory on `fetchFamilyDetail`: the list is
+ * what the page opens with, and a reason demanded before the first row appears
+ * is a password, not an account of anything. Typed, it is validated and stored.
+ *
+ * `planId` and `status` filter server-side, so a filtered page is a page of
+ * matches rather than 50 rows with the misses hidden — the distinction matters
+ * the moment there is a second page.
  *
  * One page is `limit` document reads (50 by default), so paging costs what it
  * shows. The whole-collection scan is `searchFamilies`, not this.
  */
-export function fetchFamilyList(reason, cursor) {
-  return call('adminFamilyList', cursor ? { reason, cursor } : { reason });
+export function fetchFamilyList({ reason, cursor, planId, status } = {}) {
+  const params = {};
+  // Omitted rather than sent empty: the server tests `req.query.reason` for
+  // presence, and `reason=` would ask it to validate a string nobody typed.
+  if (reason) params.reason = reason;
+  if (cursor) params.cursor = cursor;
+  if (planId) params.planId = planId;
+  if (status) params.status = status;
+  return call('adminFamilyList', params);
 }
 
 /**

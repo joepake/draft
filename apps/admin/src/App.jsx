@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { auth } from './firebase.js';
 import {
@@ -31,6 +31,34 @@ const MIN_REASON_LENGTH = 12;
 
 /** What `searchByName` refuses below, so the button refuses it first. */
 const MIN_QUERY_LENGTH = 2;
+
+/**
+ * The filters a browse may apply, mirroring `PlanId` and `SubscriptionStatus`
+ * in `packages/schema` — this app imports no `@kidgate/*` package (rule 2b), and
+ * `getFamilyList` validates the value anyway, so a stale copy here refuses
+ * server-side rather than returning a page that looks empty.
+ *
+ * Values are rendered raw on purpose: the table already prints `planId` and the
+ * subscription status raw, so a translated option would name the filter one way
+ * and the row it matched another.
+ */
+const FAMILY_PLAN_IDS = ['free', 'trial', 'premium'];
+const FAMILY_STATUSES = ['active', 'expired', 'cancelled'];
+
+/**
+ * The same fold `searchByName` applies server-side, including the `đ` that NFD
+ * leaves alone — "Dung" has to find "Đũng" here exactly as it does there, or the
+ * two ways of narrowing a list disagree about the same family.
+ */
+function fold(value) {
+  return String(value || '')
+    .normalize('NFD')
+    .replace(/\p{Diacritic}/gu, '')
+    .replace(/đ/g, 'd')
+    .replace(/Đ/g, 'D')
+    .toLowerCase()
+    .trim();
+}
 
 /** Inline so the app keeps its zero-dependency rule; 16px, 1.5px stroke. */
 function Icon({ path }) {
@@ -394,9 +422,12 @@ function Tile({ label, value }) {
 /**
  * Every family, a page at a time.
  *
- * The reason is typed once and travels with every page **and** with every
- * detail opened from a row, so the audit log answers "why was this browse
- * happening" for each entry it wrote rather than once at the start.
+ * **The first page loads on arrival, since 2026-09-14.** It used to wait behind
+ * a twelve-character reason, which made the reason a password typed to get past
+ * a form rather than an account of why a browse happened. A reason is still
+ * sent and still stored when one is typed, and `fetchFamilyDetail` — the read
+ * that returns an address, a device list and who else can see the children —
+ * still refuses without one. `getFamilyList` carries the decision.
  *
  * Rows carry no email address — `getFamilyList` explains why the server leaves
  * it out. Opening a row is `fetchFamilyDetail`, the same reasoned, separately
@@ -406,6 +437,9 @@ function Tile({ label, value }) {
 function Families() {
   const { t } = useT();
   const [reason, setReason] = useState('');
+  const [planId, setPlanId] = useState('');
+  const [status, setStatus] = useState('');
+  const [nameFilter, setNameFilter] = useState('');
   const [rows, setRows] = useState(null);
   const [cursor, setCursor] = useState(null);
   const [busy, setBusy] = useState(false);
@@ -416,11 +450,25 @@ function Families() {
   const remaining = MIN_REASON_LENGTH - reason.trim().length;
   const ready = remaining <= 0;
 
+  /**
+   * The reason travels with the list when one is typed, but typing it must not
+   * re-fetch a page per keystroke — so it is read through a ref and `load`
+   * depends on the filters alone, which are exactly the changes that invalidate
+   * the rows already on screen.
+   */
+  const reasonRef = useRef(reason);
+  reasonRef.current = reason;
+
   const load = useCallback(
     next => {
       setBusy(true);
       setError(null);
-      fetchFamilyList(reason.trim(), next)
+      fetchFamilyList({
+        reason: reasonRef.current.trim(),
+        cursor: next,
+        planId,
+        status,
+      })
         .then(page => {
           // Appended rather than replaced: paging forward is reading more of
           // one list, and a cursor-based API has no way back to a page it has
@@ -433,8 +481,30 @@ function Families() {
         .catch(listError => setError(listError.message))
         .finally(() => setBusy(false));
     },
-    [reason],
+    [planId, status],
   );
+
+  // The first page on arrival, and a fresh first page whenever a filter
+  // changes — `load`'s identity changes with exactly those two.
+  useEffect(() => {
+    load(null);
+  }, [load]);
+
+  /**
+   * The name box narrows the rows already fetched and reads no document.
+   *
+   * It cannot do more: matching a name across the whole collection is a scan
+   * Firestore will not do, which is what `adminFamilySearch` exists for — so
+   * this one says "in what is loaded" on the label rather than implying it
+   * searched every family and found nothing.
+   */
+  const needle = fold(nameFilter);
+  const visible = needle
+    ? (rows ?? []).filter(
+        family =>
+          fold(family.name).includes(needle) || fold(family.uid).includes(needle),
+      )
+    : (rows ?? []);
 
   const open = useCallback(
     uid => {
@@ -451,7 +521,60 @@ function Families() {
 
   return (
     <div className="card">
-      <div className="field-group">
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}>
+        <div className="field-group" style={{ flex: '1 1 180px' }}>
+          <label className="field-label" htmlFor="families-plan">
+            {t('families.filterPlan')}
+          </label>
+          <select
+            className="field"
+            id="families-plan"
+            value={planId}
+            onChange={event => setPlanId(event.target.value)}
+          >
+            <option value="">{t('families.filterAny')}</option>
+            {FAMILY_PLAN_IDS.map(plan => (
+              <option key={plan} value={plan}>
+                {plan}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div className="field-group" style={{ flex: '1 1 180px' }}>
+          <label className="field-label" htmlFor="families-status">
+            {t('families.filterStatus')}
+          </label>
+          <select
+            className="field"
+            id="families-status"
+            value={status}
+            onChange={event => setStatus(event.target.value)}
+          >
+            <option value="">{t('families.filterAny')}</option>
+            {FAMILY_STATUSES.map(value => (
+              <option key={value} value={value}>
+                {value}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div className="field-group" style={{ flex: '1 1 220px' }}>
+          <label className="field-label" htmlFor="families-name">
+            {t('families.filterName')}
+          </label>
+          <input
+            className="field"
+            id="families-name"
+            value={nameFilter}
+            onChange={event => setNameFilter(event.target.value)}
+          />
+        </div>
+      </div>
+      <div className="field-hint">{t('families.filterNameHint')}</div>
+
+      <div className="field-group" style={{ marginTop: 14 }}>
         <label className="field-label" htmlFor="families-reason">
           {t('lookup.reason')}
         </label>
@@ -463,13 +586,13 @@ function Families() {
         />
         <div className="field-hint">
           {remaining > 0
-            ? t('lookup.reasonRemaining', { count: remaining })
+            ? t('families.reasonForOpening', { count: remaining })
             : t('families.reasonStored')}
         </div>
       </div>
 
-      <button className="btn" disabled={!ready || busy} onClick={() => load(null)}>
-        {busy && !rows ? t('families.loading') : t('families.load')}
+      <button className="btn" disabled={busy} onClick={() => load(null)}>
+        {busy && !rows ? t('families.loading') : t('families.reload')}
       </button>
 
       {error ? (
@@ -484,7 +607,13 @@ function Families() {
         </p>
       ) : null}
 
-      {rows && rows.length > 0 ? (
+      {rows && rows.length > 0 && visible.length === 0 ? (
+        <p className="muted" style={{ marginTop: 14 }}>
+          {t('families.noneMatchLoaded')}
+        </p>
+      ) : null}
+
+      {visible.length > 0 ? (
         <>
           <div className="table-scroll" style={{ marginTop: 14 }}>
             <table className="table">
@@ -498,7 +627,7 @@ function Families() {
                 </tr>
               </thead>
               <tbody>
-                {rows.map(family => (
+                {visible.map(family => (
                   <tr key={family.uid}>
                     <td>{family.name ?? t('family.noName')}</td>
                     <td>
@@ -512,9 +641,15 @@ function Families() {
                       <code>{family.uid}</code>
                     </td>
                     <td>
+                      {/*
+                        Opening a family is the read that still demands a
+                        reason, so the button waits for one — the list above it
+                        does not.
+                      */}
                       <button
                         className="btn-ghost"
-                        disabled={opening !== null}
+                        disabled={opening !== null || !ready}
+                        title={ready ? undefined : t('families.reasonToOpen')}
                         onClick={() => open(family.uid)}
                       >
                         {opening === family.uid
@@ -529,7 +664,14 @@ function Families() {
           </div>
 
           <div className="ticket-meta" style={{ marginTop: 12 }}>
-            <span>{t('families.shown', { count: rows.length })}</span>
+            <span>
+              {needle
+                ? t('families.shownFiltered', {
+                    count: visible.length,
+                    loaded: rows.length,
+                  })
+                : t('families.shown', { count: rows.length })}
+            </span>
             {cursor ? (
               <button
                 className="btn-ghost"
@@ -1186,12 +1328,24 @@ export default function App() {
                 <Families />
               </>
             ) : null}
+            {/*
+              Search first, then the same browse the Families page renders — one
+              component, not a copy, so the two pages cannot drift into
+              disagreeing about what a page of families is. Lookup answers "this
+              family, by name"; the list below answers "which families are
+              there", and an operator arriving with neither has something to
+              click either way.
+            */}
             {route === 'lookup' ? (
               <>
                 <div className="section-head">
                   <h2 className="section-title">{t('nav.lookup')}</h2>
                 </div>
                 <FamilyLookup />
+                <div className="section-head" style={{ marginTop: 24 }}>
+                  <h2 className="section-title">{t('nav.families')}</h2>
+                </div>
+                <Families />
               </>
             ) : null}
           </ErrorBoundary>

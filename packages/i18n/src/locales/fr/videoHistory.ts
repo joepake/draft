@@ -6,7 +6,7 @@ export const videoHistory = {
     'YouTube dans le navigateur, ainsi que l’appli YouTube sur les téléphones Android et les téléviseurs. Sur TV, les Shorts ne sont pas listés, car l’appli TV ne les identifie pas comme des Shorts.',
   toggleFailed: 'Impossible de mettre à jour l’historique vidéo. Réessayez.',
   unsupportedNote:
-    'Cet appareil ne peut pas signaler les vidéos regardées. Fonctionne sur Android et dans Chrome.',
+    'Cet appareil ne peut pas signaler les vidéos regardées. Cette fonction est disponible sur Android, Android TV et dans Chrome.',
 
   unsupportedNeedsExtension:
     'KidGate ne peut pas voir sur cet ordinateur quelles vidéos sont regardées : il lit des noms de sites, pas le contenu d’une page. L’extension KidGate pour Chrome le peut : ajoutez-la sur cet ordinateur et elle signalera les vidéos regardées comme un appareil à part.',
@@ -36,7 +36,7 @@ export const videoHistory = {
   emptyStepWatch: 'Votre enfant regarde YouTube',
   emptyStepAppear: 'Les vidéos s’affichent ici',
   unknownChannel: 'Chaîne inconnue',
-  heroTopChannel: 'Le plus regardé',
+  heroTopChannel: 'Chaîne la plus regardée',
   readerLayoutChanged:
     'Les Shorts ne sont pas enregistrés sur cet appareil pour le moment : l’application YouTube a changé et KidGate doit être mis à jour. Les autres vidéos sont toujours enregistrées.',
   openAction: 'Ouvrir sur YouTube',

@@ -15,7 +15,7 @@ export const appInventory = {
     'Questo elenco non è aggiornato. Si rinnoverà al prossimo collegamento del dispositivo.',
   truncatedNote: 'Vengono mostrate {{shown}} app su {{total}} trovate.',
   firstScanNote:
-    'Questa è la prima scansione, quindi KidGate non può dire quando siano arrivate.',
+    'Questa è la prima scansione, quindi KidGate non può dire quando queste app sono state installate.',
   newBadge: 'Nuova',
   ageBadge: '{{age}}+',
   browserExtension: 'Estensione Chrome',

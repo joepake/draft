@@ -27,7 +27,7 @@ export const permissions = {
   exactAlarmLabel: 'Sveglie e promemoria',
   exactAlarmHint:
     'Consenti Sveglie e promemoria così gli Orari di blocco iniziano e finiscono in orario.',
-  accessibilityLabel: 'Assistente di blocco Accessibilità',
+  accessibilityLabel: 'Accessibilità (assistente di blocco)',
   accessibilityHint: 'Mantiene il blocco di KidGate sopra le altre app.',
   oemSectionDescription:
     'I dispositivi {{brand}} spesso mettono in pausa le app in background. Completa questi passaggi affinché il blocco e gli Orari di blocco continuino a funzionare.',

@@ -52,7 +52,7 @@ export const timeRequest = {
   timeRequestApprovedDescription:
     'تمت إضافة {{minutes}} دقيقة إضافية لجهاز {{deviceName}} لهذا اليوم.',
   timeRequestApprovedDescription_few:
-    'تمت زيادة الحد اليومي بمقدار {{minutes}} دقائق لـ {{deviceName}}.',
+    'تمت إضافة {{minutes}} دقائق إضافية لجهاز {{deviceName}} لهذا اليوم.',
   timeRequestDeniedDescription: 'تم رفض {{minutes}} دقيقة لـ {{deviceName}}.',
   bonusGranted: 'تمت إضافة دقائق إضافية',
   bonusGrantedDescription: 'تم منح {{deviceName}} {{minutes}} دقيقة إضافية لهذا اليوم.',

@@ -34,13 +34,13 @@ export const appInventory = {
   emptyTitle: 'Belum ada pemindaian',
   emptySubtitle:
     'Perangkat akan mengirim daftar aplikasinya saat terhubung berikutnya.',
-  unsupportedTitle: 'Perangkat ini tidak dapat mendaftar aplikasinya',
+  unsupportedTitle: 'Perangkat ini tidak dapat menampilkan daftar aplikasinya',
   unsupportedIos:
     'Apple tidak mengizinkan aplikasi mana pun membaca apa yang terpasang di iPhone atau iPad, jadi KidGate hanya bisa melaporkan aplikasi saat digunakan.',
   unsupportedGeneric: 'Perangkat ini tidak melaporkan aplikasi yang terpasang padanya.',
   incompleteNote: 'Aplikasi tanpa ikon di layar utama mungkin tidak muncul di sini.',
   blockHint:
-    'Untuk menghentikan aplikasi, buka Aplikasi Diblokir di perangkat itu sendiri.',
+    'Untuk menghentikan aplikasi, buka Aplikasi yang Diblokir di perangkat itu sendiri.',
   howItWorksLabel: 'Cara kerja daftar ini',
   markSafe: 'Aman',
   dismissedTitle: 'Ditandai aman oleh Anda',

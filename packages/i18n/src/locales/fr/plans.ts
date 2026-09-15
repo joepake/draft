@@ -30,7 +30,7 @@ export const plans = {
   compareTitle: 'Gratuit et Premium, côte à côte',
   compareColumnFree: 'Gratuit',
   compareColumnPremium: 'Premium',
-  compareDevices: 'Appareils de l’enfant',
+  compareDevices: 'Appareils enfants',
   compareDevicesFree: '1',
   compareDevicesPremium: 'Illimité',
   compareSync: 'Mises à jour de l’appareil',
@@ -207,7 +207,7 @@ export const plans = {
   teaserVideoHistory:
     'Premium garde chaque vidéo et chaque Short YouTube qu’il a regardé.',
   teaserLocationTrail:
-    'Premium garde son trajet et vous prévient quand il arrive ou quitte la maison et l’école.',
+    'Premium conserve ses trajets et vous prévient quand votre enfant arrive à la maison ou à l’école, et quand il en repart.',
   teaserActivityWindow:
     'La version gratuite montre aujourd’hui. Premium garde 30 jours.',
   teaserChildReport:

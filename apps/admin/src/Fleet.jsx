@@ -164,10 +164,8 @@ export default function Fleet() {
         dns: t('webFilter.dns'),
         unknown: t('webFilter.unknown'),
       },
-      /** Absent `appBuild` / `osVersion`, which is an old install, not a version. */
+      /** Absent `osVersion`, which is an old install, not a version. */
       unknown: { unknown: t('value.unknown') },
-      /** A platform with no OTA channel at all — desktop, TV, the extension. */
-      ota: { unknown: t('value.noOtaChannel') },
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps -- `t` reads `language`
     [language],
@@ -296,26 +294,6 @@ export default function Fleet() {
           <h3 className="chart-title">{t('fleet.appVersion')}</h3>
           <p className="chart-sub">{t('fleet.appVersionSub')}</p>
           <BarChart data={fleet.appVersion} total={fleet.devices} />
-        </div>
-
-        <div className="chart-card">
-          <h3 className="chart-title">{t('fleet.appBuild')}</h3>
-          <p className="chart-sub">{t('fleet.appBuildSub')}</p>
-          <BarChart
-            data={fleet.appBuild}
-            labels={labels.unknown}
-            total={fleet.devices}
-          />
-        </div>
-
-        <div className="chart-card">
-          <h3 className="chart-title">{t('fleet.ota')}</h3>
-          <p className="chart-sub">
-            {t('fleet.otaSubBefore')}
-            <code>config/ota</code>
-            {t('fleet.otaSubAfter')}
-          </p>
-          <BarChart data={fleet.otaVersion} labels={labels.ota} total={fleet.devices} />
         </div>
 
         <div className="chart-card">

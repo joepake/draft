@@ -40,12 +40,12 @@ export const protection = {
   locationPermission: 'Autorisation de localisation',
   cameraPermission: 'Autorisation caméra',
   cameraConsentPending:
-    'La caméra n’est pas autorisée sur cet appareil : un SOS ou un Check-in envoyé depuis là arrive sans photo.',
+    'L’appareil photo n’est pas autorisé sur cet appareil : un SOS ou un Check-in envoyé depuis cet appareil arrivera sans photo.',
   locationConsentPending:
     'La position n’est pas autorisée sur cet appareil : il ne peut pas indiquer où il se trouve.',
   consentStepOpenSettings:
     'Ouvrez KidGate sur l’appareil de votre enfant et allez dans Réglages.',
-  consentStepParentPin: 'Saisissez le code parent.',
+  consentStepParentPin: 'Saisissez le code PIN parent.',
   consentStepPermissions: 'Ouvrez « Autorisations » et autorisez ce qui manque.',
   notificationsPermission: 'Autorisation de notifications',
   backgroundUpdates: 'Mises à jour en arrière-plan',

@@ -35,7 +35,7 @@ export const pairing = {
   rejectParentButton: 'Nicht dieser Elternteil',
   parentAccount: 'Elternkonto',
   unknownParent: 'ein Elternteil',
-  expiresIn: 'Läuft ab in {{countdown}}',
+  expiresIn: 'Läuft in {{countdown}} ab',
   autoRefreshPaused:
     'Die automatische Code-Aktualisierung wurde pausiert, um mobile Daten und Akku zu sparen. Wähle „Neuer Code“, wenn du bereit bist.',
   scanQrTitle: 'QR-Code scannen',

@@ -50,7 +50,7 @@ export const messageMonitoring = {
     tobacco:
       'El vapeo se extiende por el grupo de amigos y suele ser social más que secreto. Pregunta qué usan sus amigos: nombrar la cosa concreta funciona mejor que una advertencia general.',
     gambling:
-      'Las cajas de recompensas, los sobres de cartas y las apuestas de objetos cuentan, y rara vez le parecen juego de azar. Mira en qué gasta dentro de los juegos antes de tratarlo como un problema de dinero.',
+      'Las cajas de botín, los sobres de cartas y las apuestas de skins cuentan, y rara vez le parecen juego de azar a un niño. Mira en qué gasta dentro de los juegos antes de tratarlo como un problema de dinero.',
     profanity:
       'El lenguaje soez por sí solo es común y casi nunca dice nada sobre su seguridad. Si estos avisos son ruido para tu familia, desactiva “Marcar también el lenguaje soez” en los ajustes de esta pantalla.',
     unknown:

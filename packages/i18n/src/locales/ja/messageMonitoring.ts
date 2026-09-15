@@ -111,7 +111,7 @@ export const messageMonitoring = {
     revokedTitle: 'メッセージのチェックが停止しています',
     revokedBody:
       'KidGateに必要な権限がAndroidによってオフにされたため、メッセージはチェックされていません。お子さまのデバイスでKidGateを開き、もう一度許可してください。',
-    offTitle: 'メッセージ保護がオンになっていません',
+    offTitle: 'メッセージの安全がオンになっていません',
     offBody:
       'お子さまのデバイスでは何もチェックされていないため、ここに通知が出ることはありません。設定するにはお子さまのデバイスでKidGateを開いてください。',
     pendingTitle: 'お子さまのデバイスへの反映を待っています',

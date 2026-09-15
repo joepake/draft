@@ -6,7 +6,7 @@ export const videoHistory = {
     'YouTube im Browser und die YouTube-App auf Android-Handys und Fernsehern. Auf dem Fernseher werden Shorts nicht aufgeführt, weil die TV-App sie nicht als Shorts erkennt.',
   toggleFailed: 'Videoverlauf konnte nicht aktualisiert werden. Erneut versuchen.',
   unsupportedNote:
-    'Dieses Gerät kann keine angesehenen Videos melden. Funktioniert auf Android und in Chrome.',
+    'Dieses Gerät kann keine angesehenen Videos melden. Das geht auf Android, Android TV und in Chrome.',
 
   unsupportedNeedsExtension:
     'KidGate kann auf diesem Computer nicht sehen, welche Videos angesehen werden – es liest Seitennamen, nicht den Inhalt einer Seite. Die KidGate-Erweiterung für Chrome kann es: Füge sie auf diesem Computer hinzu, dann meldet sie angesehene Videos als eigenes Gerät.',

@@ -18,7 +18,7 @@ export const webFilter = {
   toggleHintAndroid:
     'お子さまが一度KidGateのVPN接続を承認する必要があります。フィルターの動作にはVPNをオンのままにしてください。',
   toggleHintMacos:
-    '子どもはシステム設定でKidGateフィルター拡張機能を一度承認する必要があります。フィルターが機能するよう承認された状態を保ってください。',
+    'お子さまがシステム設定でKidGateフィルター拡張機能を一度承認する必要があります。フィルターが機能するよう承認された状態を保ってください。',
   toggleAccessibilityLabel: 'Webフィルターを有効にする',
   safeSearchSectionTitle: 'セーフサーチと YouTube',
   safeSearchSectionSubtitle:
@@ -35,7 +35,7 @@ export const webFilter = {
   infoLine3Ios:
     'お子さまのデバイスのアプリが設定を同期すると、KidGateが自動で適用します。',
   infoLine1Android:
-    'KidGateはローカルVPNを起動してDNSを検査し、アダルトドメインと一部の暗号化DNSリゾルバをブロックします。',
+    'KidGateはデバイス上でプライベート接続を動かし、どのサイトが参照されているかを確認して、選んだカテゴリーに該当するサイトをブロックします。',
   infoLine2Android:
     'お子さまのデバイスでプライベートDNSをオフにしてください。オンのままだと、ブラウザがフィルターを回避できる場合があります。',
   infoLine3Android:
@@ -82,14 +82,14 @@ export const webFilter = {
 
   windowsFilterNote: 'WindowsではKidGate独自のリゾルバーを使用',
   webFilteringNote:
-    'iOSはスクリーンタイムのアダルトフィルター、AndroidはローカルDNS VPNのブロックリストを使用します。',
+    'iOSはスクリーンタイムのアダルトフィルターを使い、Android・Mac・WindowsはKidGate独自のブロックリストを使用します。',
   safeSearchAlertsNote:
     'Safariは検索語を共有しません。キーワード通知には管理されたセーフブラウザが必要です。',
   webHistoryNote: 'フィルター付きブラウザまたはDNS/VPN型のレポートが必要です。',
   categoriesTitle: 'ブロックする内容',
   categoriesSubtitle:
     'KidGateは独自のドメインリストを使います。子どもが実際にたどり着くサイトを対象にしており、ウェブ全体ではありません。下のリストと組み合わせてください。',
-  androidOnlyCategory: 'Androidのみ — iOSにはカテゴリ別のウェブ制御がありません',
+  androidOnlyCategory: 'iPhoneでは利用できません — AndroidとMacで動作します',
   iosCategoryNote:
     'iPhoneは{{category}}のみ対応し、Apple独自のフィルターを使います。他のカテゴリはAndroidデバイスに適用されます。',
   allowListTitle: '常に許可',
@@ -115,7 +115,7 @@ export const webFilter = {
   openHistorySubtitle: 'このデバイスがどのサイトに到達し、何がブロックされたかを見る',
   blockedPageTitle: 'サイトはブロックされました',
   blockedPageBody:
-    'KidGate がご家族のためにこのサイトをブロックしました。間違いだと思う場合は保護者に相談してください。',
+    'KidGate がこのサイトをブロックしたよ。まちがいだと思ったら、おうちの人に聞いてみてね。',
   category: {
     adult: 'アダルト',
     selfHarm: '自傷・摂食障害',
@@ -201,7 +201,8 @@ export const webFilter = {
   siteRequestDeniedDescription:
     '{{deviceName}}では{{domain}}は引き続きブロックされます。',
   siteRequestReceived: 'サイトのリクエスト',
-  siteRequestReceivedDescription: '{{deviceName}}が{{domain}}を開こうとしています。',
+  siteRequestReceivedDescription:
+    '{{deviceName}}から{{domain}}を開きたいというリクエストが届きました。',
   privateDnsStep1: 'この端末で設定を開いてください。',
   privateDnsStep2: '「ネットワークとインターネット」を選びます。',
   privateDnsStep3: '「プライベートDNS」を開き、「オフ」を選びます。',

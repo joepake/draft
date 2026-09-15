@@ -4,7 +4,7 @@ export const webFilter = {
   appliesToAll: 'Gilt für alle {{count}} Geräte von {{name}}',
   coverageLine: 'Aktiv auf {{enforcing}} von {{total}} Geräten',
   mergeNotice:
-    'Die Geräte von {{name}} hatten unterschiedliche Webfilter-Einstellungen. Beim Speichern gilt hier ein Satz für alle, zusammengeführt zur strengeren Wahl.',
+    'Die Geräte von {{name}} hatten unterschiedliche Webfilter-Einstellungen. Wenn du hier speicherst, gilt für alle Geräte dieselbe Einstellung – bei Unterschieden jeweils die strengere.',
   mergeLoosened: 'Jetzt auf jedem Gerät erlaubt: {{domains}}',
   toastUpdateFailed:
     'Webfilter konnte nicht aktualisiert werden. Bitte versuche es erneut.',
@@ -36,7 +36,7 @@ export const webFilter = {
   infoLine3Ios:
     'KidGate übernimmt die Einstellung automatisch, sobald die App auf dem Kindergerät die Steuerungen synchronisiert.',
   infoLine1Android:
-    'KidGate startet ein lokales VPN, das DNS auf Erwachsenen-Domains prüft und einige verschlüsselte DNS-Resolver blockiert.',
+    'KidGate startet auf dem Gerät eine private Verbindung, die prüft, welche Seiten aufgerufen werden, und die aus deinen Kategorien blockiert.',
   infoLine2Android:
     'Bitte deaktiviere privates DNS auf dem Kindergerät. Ist es aktiv, können Browser den Filter umgehen.',
   infoLine3Android:
@@ -79,7 +79,7 @@ export const webFilter = {
     'Dafür wird der KidGate-Hintergrunddienst benötigt. Bleibt der Webfilter aus, installiere KidGate auf dem PC als Administrator neu.',
 
   infoLine4Windows:
-    'Der Filter liest nur Seitennamen. Er sieht nicht in eine Seite hinein, und eine gerade nachgeschlagene Seite kann noch einige Minuten laden.',
+    'Der Filter liest nur Seitennamen. Er sieht nicht in eine Seite hinein, und eine Seite, die der Browser gerade nachgeschlagen hat, lässt sich noch einige Minuten öffnen.',
 
   windowsFilterNote: 'Nutzt KidGates eigenen Resolver unter Windows',
   webFilteringNote:
@@ -90,7 +90,7 @@ export const webFilter = {
   categoriesTitle: 'Was blockiert wird',
   categoriesSubtitle:
     'KidGate bringt eigene Domain-Listen mit. Sie decken die Seiten ab, die Kinder wirklich erreichen, nicht das ganze Web – ergänze sie mit den Listen unten.',
-  androidOnlyCategory: 'Nur Android – iOS hat keine Websteuerung pro Kategorie',
+  androidOnlyCategory: 'Nicht auf dem iPhone – funktioniert auf Android und Mac',
   iosCategoryNote:
     'Das iPhone unterstützt nur {{category}}, über Apples eigenen Filter. Die übrigen Kategorien gelten für Android-Geräte.',
   allowListTitle: 'Immer erlauben',

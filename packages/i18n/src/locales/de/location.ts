@@ -41,7 +41,7 @@ export const location = {
     'Die Standortaktualisierung konnte nicht angefordert werden',
   locationBannerTitle: 'Standort aktivieren',
   locationBannerBody:
-    'Deine Eltern möchten den Standort dieses Geräts sehen, um sicherzustellen, dass du sicher angekommen bist.',
+    'Deine Eltern möchten den Standort dieses Geräts sehen, damit sie wissen, dass du gut angekommen bist.',
   locationBannerBodySharingOff:
     'Die Standortfreigabe ist gerade aus, es wird also nichts gesendet. Wenn du sie hier erlaubst, funktioniert sie sofort, falls deine Eltern sie später einschalten.',
   allowLocationButton: 'Standort erlauben',

@@ -7,7 +7,7 @@ export const appInventory = {
   allowApp: '許可',
   subtitle:
     '変化があったものだけでなく、KidGate がインストール済みとして見つけたすべて。',
-  summaryFlagged: '{{total}} 件中 {{flagged}} 件のアプリは確認する価値があります',
+  summaryFlagged: '{{total}} 件中 {{flagged}} 件のアプリに確認が必要です',
   summaryClear: '{{total}} 件のアプリに注意すべきものはありません',
   flaggedTitle: '確認する価値あり',
   otherTitle: 'その他',

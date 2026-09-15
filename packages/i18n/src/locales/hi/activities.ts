@@ -48,7 +48,7 @@ export const activities = {
   activityTypeCheckIn: 'चेक-इन',
   activityTypeLocationRequest: 'स्थान',
   activityTypeTimeRequest: 'समय अनुरोध',
-  activityTypeRewardTask: 'इनाम कार्य',
+  activityTypeRewardTask: 'इनाम वाला टास्क',
   activityTypeSearchAlert: 'खोज चेतावनी',
   activityTypeWebFilter: 'वेब फ़िल्टर',
   activityTypeEmergency: 'आपातकाल',

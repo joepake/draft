@@ -40,7 +40,8 @@ export const rewardTask = {
   openSectionTitle: 'Tâches à faire',
   tabOpen: 'À faire',
   tabDone: 'Terminées',
-  doneEmptyBody: 'Les tâches approuvées apparaîtront ici.',
+  doneEmptyBody:
+    'Les tâches approuvées apparaîtront ici une fois que vous les aurez vérifiées.',
   openSectionSubtitle: 'Touchez une tâche pour la modifier ou la supprimer.',
   editTaskA11y: 'Modifier la tâche {{title}}',
   sentBackNote: 'Renvoyée — en attente d’un nouvel essai.',
@@ -70,7 +71,7 @@ export const rewardTask = {
     '« {{title}} » a été renvoyée à {{deviceName}} pour un nouvel essai.',
   starsLabel: 'Difficulté',
   starsHint:
-    'À quel point cette tâche est difficile. Votre enfant collectionne ces étoiles.',
+    'Le niveau de difficulté de la tâche. Votre enfant collectionne ces étoiles.',
   starsEasy: 'Facile',
   starsMedium: 'Moyenne',
   starsHard: 'Difficile',

@@ -35,7 +35,7 @@ export const webFilter = {
   infoLine3Ios:
     'KidGate menerapkan pengaturan secara otomatis saat aplikasi di perangkat anak menyinkronkan kontrol.',
   infoLine1Android:
-    'KidGate menjalankan VPN lokal yang memeriksa DNS untuk domain dewasa dan memblokir beberapa resolver DNS terenkripsi.',
+    'KidGate menjalankan koneksi privat di perangkat yang memeriksa situs mana yang sedang dibuka, lalu memblokir situs yang masuk kategori pilihan Anda.',
   infoLine2Android:
     'Matikan DNS Pribadi di perangkat anak. Jika aktif, browser bisa melewati filter.',
   infoLine3Android:
@@ -82,16 +82,16 @@ export const webFilter = {
 
   windowsFilterNote: 'Memakai resolver milik KidGate di Windows',
   webFilteringNote:
-    'iOS memakai filter dewasa Waktu Layar; Android memakai daftar blokir via VPN DNS lokal.',
+    'iOS memakai filter dewasa Waktu Layar. Android, Mac, dan Windows memakai daftar blokir milik KidGate.',
   safeSearchAlertsNote:
     'Safari tidak membagikan kata pencarian; peringatan kata kunci memerlukan browser aman terkelola.',
   webHistoryNote: 'Memerlukan browser terfilter atau pelaporan gaya DNS/VPN.',
   categoriesTitle: 'Apa yang diblokir',
   categoriesSubtitle:
     'KidGate memakai daftar domainnya sendiri. Daftar ini mencakup situs yang benar-benar dijangkau anak, bukan seluruh web — padukan dengan daftar di bawah.',
-  androidOnlyCategory: 'Hanya Android — iOS tidak punya kontrol web per kategori',
+  androidOnlyCategory: 'Tidak tersedia di iPhone — berfungsi di Android dan Mac',
   iosCategoryNote:
-    'iPhone hanya mendukung {{category}}, memakai filter Apple. Kategori lain berlaku untuk perangkat Android.',
+    'iPhone hanya mendukung {{category}}, memakai filter Apple. Kategori lain berlaku untuk perangkat anak Android dan Mac.',
   allowListTitle: 'Selalu izinkan',
   allowListSubtitle:
     'Situs yang tetap bisa dibuka meski sebuah kategori akan memblokirnya.',
@@ -105,7 +105,7 @@ export const webFilter = {
   allowListOnlyHintAndroid:
     'Semua di luar daftar izin ditolak. Ini bekerja di lapisan DNS, jadi aplikasi lain juga kehilangan koneksi.',
   allowListOnlyHintIos:
-    'Safari dan peramban dalam aplikasi hanya bisa membuka situs di daftar Anda.',
+    'Safari dan browser dalam aplikasi hanya bisa membuka situs di daftar “Selalu izinkan”.',
   allowListOnlyNeedsEntries:
     'Tambahkan minimal satu situs yang diizinkan sebelum mengaktifkan.',
   domainPlaceholder: 'contoh.com',

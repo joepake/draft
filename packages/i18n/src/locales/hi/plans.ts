@@ -157,12 +157,14 @@ export const plans = {
   trustOnePlan: 'पूरे परिवार के लिए एक प्लान',
   trustNoAds: 'कोई विज्ञापन नहीं',
   freePlanName: 'मुफ़्त',
-  freeDescription: 'एक बच्चे के डिवाइस पर बुनियादी सुविधाएँ, बिना किसी समय सीमा के।',
+  freeDescription:
+    'एक बच्चे के डिवाइस पर बुनियादी सुविधाएँ चलती रहती हैं — यह प्लान कभी खत्म नहीं होता।',
   featureOneChildDevice: 'एक बच्चे का डिवाइस',
   termLifetime: 'आजीवन',
   badgeOneTime: 'एक बार',
   planPeriodOnce: 'एक बार',
-  billedOnce: 'एक बार भुगतान, {{devices}} बच्चों के डिवाइस तक; जब तक KidGate उपलब्ध है',
+  billedOnce:
+    '{{devices}} बच्चों के डिवाइस तक के लिए एक बार भुगतान — जब तक KidGate उपलब्ध है, तब तक के लिए',
   sectionFreePlan: 'अगर आप कभी सदस्यता न लें',
   devicesUnlimited: 'बच्चों के असीमित डिवाइस',
   featureFootnotePlatforms:
@@ -198,7 +200,7 @@ export const plans = {
     'Premium बताता है कि कौन-सी साइटें ब्लॉक हुईं और आपके बच्चे ने क्या खोजा।',
   teaserVideoHistory: 'Premium उसके देखे हर YouTube वीडियो और Short को रखता है।',
   teaserLocationTrail:
-    'Premium उसका रास्ता रखता है और बताता है कि वह घर या स्कूल कब पहुँचा और कब निकला।',
+    'Premium यह रिकॉर्ड रखता है कि बच्चा कहाँ-कहाँ गया, और घर या स्कूल पहुँचने और वहाँ से निकलने पर आपको बताता है।',
   teaserActivityWindow: 'मुफ़्त प्लान आज दिखाता है। Premium 30 दिन रखता है।',
   teaserChildReport: 'Premium हर बच्चे के लिए अलग रिपोर्ट देता है, और हर हफ़्ते नई।',
   teaserMessageAlerts:

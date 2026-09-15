@@ -25,7 +25,7 @@ export const permissions = {
   exactAlarmLabel: 'Wecker und Erinnerungen',
   exactAlarmHint:
     'Erlaube Wecker und Erinnerungen, damit Sperrzeiten pünktlich starten und enden.',
-  accessibilityLabel: 'Bedienungshilfen-Sperrfunktion',
+  accessibilityLabel: 'Bedienungshilfen (Sperrfunktion)',
   accessibilityHint: 'Hält die KidGate-Sperre über anderen Apps.',
   oemSectionDescription:
     '{{brand}}-Geräte pausieren häufig Hintergrund-Apps. Bitte führe diese Schritte aus, damit Sperre und Sperrzeiten weiter funktionieren.',
@@ -59,7 +59,7 @@ export const permissions = {
   backgroundRefreshStepTurnOn: 'Aktiviere die Hintergrundaktualisierung für KidGate.',
   backgroundRefreshStepGeneral:
     'Ist der Schalter ausgegraut: Einstellungen öffnen, dann Allgemein, dann Hintergrundaktualisierung einschalten.',
-  batteryStepAllow: 'Wähle in der Android-Abfrage „Erlauben“.',
+  batteryStepAllow: 'Wähle in der Android-Abfrage „Zulassen“.',
   batteryStepAppInfo:
     'Erscheint keine Abfrage: App-Info öffnen, dann Akku, dann „Ohne Einschränkung“ wählen.',
   notificationsStepAllow: 'Wähle in der Abfrage „Zulassen“.',

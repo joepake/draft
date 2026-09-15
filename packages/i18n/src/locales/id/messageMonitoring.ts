@@ -17,7 +17,7 @@ export const messageMonitoring = {
   flaggedTermSuffix: '”',
   flaggedTermMeaning: 'Arti: {{gloss}}',
   aiConfirmed: 'Dikonfirmasi oleh AI',
-  categoryPredator: 'Dugaan perdayaan',
+  categoryPredator: 'Dugaan pendekatan predator',
   categorySelfHarm: 'Dugaan melukai diri',
   categoryExplicit: 'Konten eksplisit',
   categoryViolence: 'Ancaman atau kekerasan',
@@ -90,7 +90,7 @@ export const messageMonitoring = {
   outgoingTitle: 'Pesan yang kamu tulis',
   outgoingBody:
     'KidGate juga bisa memeriksa apa yang kamu ketik di aplikasi obrolan. Ia mencari kata peringatan yang sama, di ponsel ini. Isi pesanmu tidak pernah dikirim ke mana pun.',
-  outgoingEnable: 'Periksa yang saya tulis',
+  outgoingEnable: 'Periksa yang aku tulis',
   outgoingGrant: 'Izinkan',
   directionIncoming: 'Diterima',
   directionOutgoing: 'Dikirim',

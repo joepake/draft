@@ -6,7 +6,7 @@ export const videoHistory = {
     'YouTube en el navegador y la app de YouTube en Android y TV. En la TV, los Shorts no aparecen porque la app de TV no los identifica como Shorts.',
   toggleFailed: 'No se pudo actualizar el historial de vídeos. Inténtalo de nuevo.',
   unsupportedNote:
-    'Este dispositivo no puede informar de los vídeos vistos. Funciona en Android y en Chrome.',
+    'Este dispositivo no puede informar de los vídeos vistos. Funciona en Android, Android TV y en Chrome.',
 
   unsupportedNeedsExtension:
     'KidGate no puede ver en este ordenador qué vídeos se ven: lee nombres de sitios, no el contenido de una página. La extensión de KidGate para Chrome sí puede: añádela en este ordenador y registrará los vídeos vistos como un dispositivo propio.',
@@ -19,7 +19,7 @@ export const videoHistory = {
   extensionStepConnect:
     'Abre KidGate en Chrome y conéctala: aparece como un dispositivo propio',
   extensionStepEnable: 'Activa «Registrar vídeos vistos» en ese dispositivo',
-  emptyTitle: 'Nada visto aún',
+  emptyTitle: 'Todavía no hay vídeos vistos',
   emptyBody: 'Los vídeos aparecen aquí cuando tu hijo ve algo con KidGate activo.',
   emptyBodyOff: 'Activa el registro arriba para empezar a listar los vídeos vistos.',
   viewsMeta_one: '{{count}} vez',

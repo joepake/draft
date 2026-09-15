@@ -96,7 +96,7 @@ export const family = {
 
   familyCardManage: 'Gestisci famiglia, genitori e dispositivi',
 
-  familyCardJoined: 'Entrato come genitore',
+  familyCardJoined: 'Fai parte della famiglia come genitore',
 
   chipDeviceCount: '{{count}} dispositivi',
   chipDeviceCount_one: '{{count}} dispositivo',
@@ -361,10 +361,10 @@ export const family = {
   childDetailOnlineCount: '{{online}} di {{total}} online',
   childDetailBudgetTitle: 'Limite giornaliero',
   childDetailSectionControls: 'Regole su tutti i suoi dispositivi',
-  childDetailSectionSafety: 'Unito da tutti i suoi dispositivi',
+  childDetailSectionSafety: 'Dati combinati da tutti i dispositivi che usa',
   childDetailSectionAlerts: 'Tutti i suoi dispositivi, un unico elenco',
   childDetailScopeAll: 'Tutti i dispositivi',
   childDetailTodayWell: 'Usato oggi',
-  childDetailUnassignAction: 'Rimuovi',
+  childDetailUnassignAction: 'Annulla assegnazione',
   childDetailLimitShared: 'Totale su tutti i suoi dispositivi',
 } as const;

@@ -50,7 +50,7 @@ export const plans = {
   compareNewAppsPremium: 'Qué apps, y aprobación antes de instalar',
   compareMessages: 'Avisos de mensajes (Android)',
   compareSafety: 'Alertas de protección y Check-in',
-  compareSafetyFree: 'Avisos + Check-In',
+  compareSafetyFree: 'Alertas + Check-in',
   compareSafetyPremium: 'Añade una foto a cada Check-In',
   compareControls: 'Bloqueo de apps y filtro web',
   compareControlsFree: 'Cualquier app, contenido para adultos',
@@ -166,7 +166,7 @@ export const plans = {
   badgeOneTime: 'Pago único',
   planPeriodOnce: 'una vez',
   billedOnce:
-    'Paga una vez por hasta {{devices}} dispositivos, mientras KidGate esté disponible',
+    'Paga una vez por hasta {{devices}} dispositivos de niños, mientras KidGate esté disponible',
   sectionFreePlan: 'Si nunca te suscribes',
   devicesUnlimited: 'Dispositivos infantiles ilimitados',
   featureFootnotePlatforms:
@@ -212,8 +212,8 @@ export const plans = {
     'Gratis envía un informe al terminar la prueba. Premium envía uno cada semana.',
   teaserProofRewardTasks: 'Tareas activas: {{count}}',
   teaserRewardTasks:
-    'Es todo lo que el plan gratuito mantiene a la vez. Premium lo duplica.',
-  teaserLiveNote: 'Gratis se actualiza cada 30 minutos. Premium es en directo.',
+    'Son todas las tareas que el plan gratuito mantiene activas a la vez. Premium duplica ese número.',
+  teaserLiveNote: 'Gratis se actualiza cada 30 minutos. Premium, en vivo.',
   teaserUsageTimeline: 'Premium muestra a qué horas del día se usó el dispositivo.',
   teaserDeviceNote: 'Solo informa el dispositivo supervisado.',
 } as const;

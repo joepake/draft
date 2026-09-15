@@ -1,7 +1,7 @@
 export const pairing = {
   shareInviteButton: 'コードを共有',
   shareInviteMessage:
-    'KidGateで家族に参加してください。アプリを開き、家族 → 家族に参加 を選んでコード {{code}} を入力してください。コードは15分で無効になります。',
+    'KidGateでファミリーに参加してください。アプリを開き、「ファミリー」→「ファミリーに参加」を選んでコード {{code}} を入力してください。コードは15分で無効になります。',
   shareChildCodeMessage:
     'KidGateでこの子どものデバイスを接続: 保護者のデバイスでKidGateを開き → ファミリー → コードをスキャン を選び、QRコードをスキャンするかコード {{code}} を入力してください。コードは5分で期限切れになります。',
   connectChildPhone: '子どものデバイスを接続',
@@ -29,7 +29,7 @@ export const pairing = {
     '子どものデバイスがこのペアリングを拒否しました。そのデバイスで新しいコードを取得して、もう一度お試しください。',
   childConfirmExpired:
     '子どものデバイスが時間内に確認しませんでした。新しいコードを取得して、もう一度お試しください。',
-  confirmParentTitle: 'この保護者を確認しますか？',
+  confirmParentTitle: 'この保護者と接続しますか？',
   confirmParentSubtitle:
     '{{parentLabel}}がこのデバイスを管理しようとしています。この人物を知っている場合のみ承認してください。',
   confirmParentButton: 'はい、接続する',

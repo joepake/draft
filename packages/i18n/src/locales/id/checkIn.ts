@@ -1,5 +1,5 @@
 export const checkIn = {
-  noPhotoBadge: 'Tidak ada foto terlampir',
+  noPhotoBadge: 'Foto dilewati',
   historyTitle: 'Riwayat Check-In',
   historyHint:
     'Ketuk foto untuk memperbesar. Anda bisa meminta Check-In baru di atas kapan saja.',

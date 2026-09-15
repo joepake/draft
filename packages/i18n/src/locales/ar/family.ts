@@ -130,7 +130,7 @@ export const family = {
   chipHealthInactiveCount: '{{count}} غير نشط منذ أكثر من 24 ساعة',
   chipLocationBlocked: 'لا يوجد موقع',
 
-  chipBlockedCount: '{{count}} مقفلة',
+  chipBlockedCount: '{{count}} ضمن ساعات الحظر',
 
   healthProtected: 'محمي',
   buildOutdated: 'يتوفر تحديث',

@@ -125,7 +125,7 @@ export const plans = {
   premiumActivatedSubtitle: 'Setiap fitur KidGate kini tersedia untuk keluarga Anda.',
   unableToActivatePremium: 'Tidak dapat mengaktifkan Premium. Silakan coba lagi.',
   purchaseAlreadyOwned:
-    'Kamu sudah memiliki langganan ini. Ketuk Pulihkan pembelian untuk membukanya di sini.',
+    'Anda sudah memiliki langganan ini. Ketuk Pulihkan pembelian untuk membukanya di sini.',
   purchasePending:
     'Pembelianmu menunggu persetujuan. Premium aktif begitu pembelian selesai.',
   purchaseFailed: 'Pembelian tidak berhasil. Silakan coba lagi.',
@@ -202,7 +202,7 @@ export const plans = {
   teaserVideoHistory:
     'Premium menyimpan setiap video dan Short YouTube yang ia tonton.',
   teaserLocationTrail:
-    'Premium menyimpan ke mana ia pergi dan memberi tahu saat ia tiba atau pergi dari rumah dan sekolah.',
+    'Premium menyimpan ke mana anak Anda pergi, dan memberi tahu Anda saat ia sampai di rumah atau sekolah dan saat meninggalkannya.',
   teaserActivityWindow: 'Paket gratis menampilkan hari ini. Premium menyimpan 30 hari.',
   teaserChildReport:
     'Premium menambah laporan untuk tiap anak, dan yang baru tiap minggu.',
@@ -211,11 +211,11 @@ export const plans = {
   teaserWebFilterAdvanced:
     'Premium memfilter per kategori, menerima daftar izin dan blokir milik Anda sendiri, dan membiarkan anak meminta membuka satu situs.',
   teaserWeeklyReport:
-    'Versi gratis mengirim satu laporan saat masa coba berakhir. Premium mengirim satu setiap minggu.',
+    'Paket gratis mengirim satu laporan saat masa uji coba berakhir. Premium mengirim satu setiap minggu.',
   teaserProofRewardTasks: 'Tugas aktif: {{count}}',
   teaserRewardTasks:
-    'Itu batas tugas yang berjalan bersamaan di versi gratis. Premium melipatgandakannya.',
+    'Itu batas tugas yang bisa berjalan bersamaan di paket gratis. Premium menggandakannya.',
   teaserLiveNote: 'Paket gratis diperbarui tiap 30 menit. Premium bersifat langsung.',
   teaserUsageTimeline: 'Premium menunjukkan pada jam berapa saja perangkat dipakai.',
-  teaserDeviceNote: 'Hanya perangkat yang dipantau yang mengirim laporan.',
+  teaserDeviceNote: 'Hanya satu perangkat yang Anda pantau yang mengirim laporan.',
 } as const;

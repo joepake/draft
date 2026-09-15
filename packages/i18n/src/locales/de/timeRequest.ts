@@ -17,7 +17,7 @@ export const timeRequest = {
     'Anfrage konnte nicht genehmigt werden. Bitte versuche es erneut.',
   toastLockFailed: 'Gerät konnte nicht gesperrt werden. Bitte versuche es erneut.',
   statusWaitingForApproval:
-    'Warte auf Antwort deiner Eltern ({{minutes}} Minuten angefragt).',
+    'Warten auf Antwort deiner Eltern ({{minutes}} Minuten angefragt).',
   statusCooldown: 'Du kannst in {{time}} eine neue Anfrage senden.',
   statusDailyLimitExceeded:
     'Du hast deine gesamte Bildschirmzeit für heute aufgebraucht. Apps öffnen sich morgen wieder – oder früher, wenn deine Eltern mehr Zeit hinzufügen.',

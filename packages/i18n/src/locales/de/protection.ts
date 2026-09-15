@@ -4,7 +4,7 @@ export const protection = {
   permissionRestrictedByIos:
     'Diese Berechtigung ist durch iOS-Einstellungen eingeschränkt.',
   permissionStatusUnknown: 'KidGate konnte den Status dieser Berechtigung nicht lesen.',
-  kidGateOffline: 'KidGate seit über 24 Std. stumm',
+  kidGateOffline: 'KidGate meldet sich seit über 24 Std. nicht',
   childAppMayBeOffline:
     'Die App auf dem Kindergerät ist möglicherweise geschlossen, gelöscht oder offline.',
   statusNotUpdatedYet: 'Status noch nicht aktualisiert',
@@ -72,12 +72,11 @@ export const protection = {
   iosUpgradeActionLabel: 'Benötigt iOS 16',
   lockUnlockNote:
     'Sperrt das Gerät über die Bildschirmzeit, sobald das Kind den Zugriff erlaubt hat.',
-  scheduleNote:
-    'Bis zu 3 Sperrzeiten-Zeiträume blockieren Apps über die Bildschirmzeit.',
+  scheduleNote: 'Bis zu 3 Sperrzeiten blockieren Apps über die Bildschirmzeit.',
   individualAppBlockingNote:
     'Das Kind wählt die Apps aus, nachdem die 6-stellige Eltern-PIN eingegeben wurde.',
   tamperAlertsNote:
     'Meldet Berechtigungsänderungen und wenn sich die App auf dem Kindergerät längere Zeit nicht aktualisiert hat.',
   appReviewRemindersNote:
-    'iOS stellt keine Installationsereignisse bereit – prüfe die Apps regelmäßig gemeinsam mit dem Kindergerät.',
+    'iOS stellt keine Installationsereignisse bereit – prüfe die Apps regelmäßig direkt auf dem Kindergerät.',
 } as const;

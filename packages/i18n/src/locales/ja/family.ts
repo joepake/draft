@@ -83,7 +83,7 @@ export const family = {
   scanTitle: 'コードをスキャン',
   scanBody:
     '子どものデバイス、家族への招待、またはパソコンに表示されたコードにカメラを向けてください。',
-  manualCodeLabel: '6桁のコードを入力',
+  manualCodeLabel: '6文字のコードを入力',
   manualInstructions: '他のデバイスに表示されている6桁のコードを入力してください。',
 
   headerHintEmpty: 'お子さまのデバイスを管理・保護しましょう',
@@ -122,7 +122,7 @@ export const family = {
   chipHealthInactiveCount: '{{count}}台 24時間以上反応なし',
   chipLocationBlocked: '位置情報なし',
 
-  chipBlockedCount: '{{count}}台ロック中',
+  chipBlockedCount: '{{count}}台が休止時間中',
 
   healthProtected: '保護中',
   buildOutdated: 'アップデートあり',
@@ -172,7 +172,7 @@ export const family = {
   switchToJoinTitle: '別のファミリーに参加しますか？',
 
   switchToJoinMessage:
-    '現在の空のファミリーは削除され、招待コードを使って別のファミリーに参加できます。すでに子どものデバイスが接続されている場合は、先にそのデバイスを管理してください。',
+    '現在の空のファミリーは削除され、招待コードを使って別のファミリーに参加できます。すでに子どものデバイスが接続されている場合は、先にそのデバイスの接続を解除してください。',
 
   guestEmptyTitle: 'ここからファミリーを始めましょう',
 
@@ -289,7 +289,7 @@ export const family = {
   editDeviceNameTitle: 'デバイス名を変更',
 
   editDeviceNameSubtitle:
-    'デバイス名を変更できるのはファミリーのオーナーのみです。{{maxLength}}文字まで入力できます。',
+    'デバイス名を変更できるのはファミリー管理者のみです。{{maxLength}}文字まで入力できます。',
 
   deviceNameInputLabel: 'デバイス名',
 

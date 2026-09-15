@@ -27,7 +27,7 @@ export const permissions = {
   exactAlarmLabel: 'Alarmes et rappels',
   exactAlarmHint:
     'Autorisez Alarmes et rappels pour que les Heures bloquées commencent et se terminent à l’heure.',
-  accessibilityLabel: 'Assistant d’accessibilité pour le verrouillage',
+  accessibilityLabel: 'Accessibilité (assistant de verrouillage)',
   accessibilityHint: 'Maintient le verrouillage KidGate au-dessus des autres apps.',
   oemSectionDescription:
     'Les appareils {{brand}} suspendent souvent les apps en arrière-plan. Veuillez suivre ces étapes pour que le verrouillage et les Heures bloquées continuent de fonctionner.',

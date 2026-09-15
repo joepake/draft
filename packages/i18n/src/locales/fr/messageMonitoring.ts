@@ -50,7 +50,7 @@ export const messageMonitoring = {
     tobacco:
       'La vape circule dans le groupe d’amis et relève plus du social que du secret. Demandez ce que ses amis utilisent : nommer la chose précise porte mieux qu’un avertissement général.',
     gambling:
-      'Coffres à butin, paquets de cartes et paris d’objets comptent, et ressemblent rarement à un jeu d’argent pour un enfant. Regardez ce qu’il dépense dans les jeux avant d’en faire un problème d’argent.',
+      'Loot boxes, paquets de cartes et paris de skins comptent, et ressemblent rarement à un jeu d’argent pour un enfant. Regardez ce qu’il dépense dans les jeux avant d’en faire un problème d’argent.',
     profanity:
       'Les grossièretés seules sont courantes et ne disent presque rien sur sa sécurité. Si ces alertes ne sont que du bruit pour votre famille, désactivez « Signaler aussi les grossièretés » dans les réglages de cet écran.',
     unknown:
@@ -70,7 +70,7 @@ export const messageMonitoring = {
     'Navigateurs et YouTube. Seul le mot signalé est rapporté, jamais la recherche elle-même.',
   parentToggleHintGranted: 'Sur ce téléphone.',
   parentToggleHintNotGranted:
-    'Pas encore autorisé sur ce téléphone — ouvre KidGate sur son appareil pour l’autoriser.',
+    'Pas encore autorisé sur ce téléphone — ouvrez KidGate sur son appareil pour l’autoriser.',
   parentProfanityLabel: 'Signaler aussi les grossièretés',
   parentProfanityHint:
     'Désactivé par défaut — les jurons ordinaires sont courants, ceci en fait aussi une alerte.',
@@ -78,7 +78,7 @@ export const messageMonitoring = {
   settingsTitle: 'Réglages des alertes de messages',
   checkedTitle: 'Vérifié, rien à signaler',
   checkedSubtitle:
-    'Des mots surveillés sont apparus mais se sont révélés inoffensifs dans leur contexte, donc aucune alerte ne t’a été envoyée. Affichés ici pour que tu voies ce qui est filtré à ta place — dis-le-nous si l’un d’eux aurait dû te parvenir.',
+    'Des mots surveillés sont apparus mais se sont révélés inoffensifs dans leur contexte : aucune alerte ne vous a été envoyée. Ils sont affichés ici pour que vous voyiez ce qui est filtré à votre place — dites-le-nous si l’un d’eux aurait dû vous parvenir.',
   consentTitle: 'Analyse des messages par IA',
   consentBody:
     'Lorsqu’elle est activée, les messages qu’un mot-clé signale comme ambigus sont envoyés — sans noms, numéros ni liens — à un service d’IA pour confirmer s’ils sont réellement préoccupants avant de vous alerter. Les mots à haut risque alertent toujours immédiatement sans rien envoyer.',

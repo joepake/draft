@@ -18,6 +18,52 @@ function Splash({ children }) {
 }
 
 /**
+ * The page's own frame while the family is still arriving.
+ *
+ * A centred card reading "Loading your family" stood here, which made the way
+ * in three unrelated pictures in a row — sign-in card, sentence card, full
+ * dashboard — each replacing the last. The rail, the header and the first
+ * screen of cards are drawn empty instead, so the layout a parent is waiting
+ * for is the layout they are looking at.
+ *
+ * It carries `.dash`, so the grid, the rail and every theme variable are the
+ * real ones; only the blocks are its own. `role="status"` with the sentence
+ * the splash used to show is what a screen reader gets — nothing here is
+ * readable, and the key already exists in all fourteen packs.
+ */
+function DashboardSkeleton({ label }) {
+  return (
+    <div className="dash dash-skel" role="status" aria-label={label}>
+      <aside className="dash-side">
+        <div className="skel skel-brand" />
+        <div className="skel-rows">
+          {[0, 1, 2, 3].map(i => (
+            <div key={i} className="skel skel-row" />
+          ))}
+        </div>
+      </aside>
+      <main className="dash-main">
+        <div className="skel skel-title" />
+        <div className="skel skel-meta" />
+        <div className="tiles">
+          {[0, 1, 2, 3].map(i => (
+            <div key={i} className="skel skel-tile" />
+          ))}
+        </div>
+        <div className="cols">
+          <div>
+            <div className="skel skel-card" />
+          </div>
+          <div>
+            <div className="skel skel-card skel-card-short" />
+          </div>
+        </div>
+      </main>
+    </div>
+  );
+}
+
+/**
  * Auth lives here rather than around the whole app so the Firebase SDK stays
  * inside this lazily-loaded route — the marketing pages must not pay for it.
  */
@@ -94,11 +140,7 @@ function LiveDashboard({ user, deviceId, onDeviceChange, signOut }) {
   );
 
   if (loading) {
-    return (
-      <Splash>
-        <p className="login-sub">{t('live.loadingFamily')}</p>
-      </Splash>
-    );
+    return <DashboardSkeleton label={t('live.loadingFamily')} />;
   }
 
   if (error) {

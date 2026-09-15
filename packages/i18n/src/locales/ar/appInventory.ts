@@ -7,7 +7,7 @@ export const appInventory = {
   allowApp: 'سماح',
   subtitle: 'كل ما وجده KidGate مثبّتًا، وليس ما تغيّر فقط.',
   summaryFlagged: '{{flagged}} من {{total}} تطبيقًا تستحق النظر',
-  summaryClear: 'لا شيء ملحوظ بين {{total}} تطبيقًا',
+  summaryClear: 'لا شيء يستحق النظر بين {{total}} تطبيقًا',
   flaggedTitle: 'تستحق النظر',
   otherTitle: 'كل ما عدا ذلك',
   scannedLabel: 'آخر فحص',

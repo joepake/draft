@@ -41,14 +41,14 @@ export const location = {
     'No se pudo solicitar la actualización de la ubicación',
   locationBannerTitle: 'Activar ubicación',
   locationBannerBody:
-    'Tu padre o madre quiere ver la ubicación de este dispositivo para saber que has llegado sano y salvo.',
+    'Tu padre o madre quiere ver la ubicación de este dispositivo para saber que has llegado bien.',
   locationBannerBodySharingOff:
     'Ahora mismo compartir la ubicación está desactivado, así que no se envía nada. Si lo permites aquí, funcionará enseguida si tu padre o madre lo activa más adelante.',
   allowLocationButton: 'Permitir ubicación',
   locationNotAllowed:
     'La ubicación aún no está permitida. Abre Ajustes → KidGate → Ubicación (o activa primero los Servicios de ubicación). Si la opción Ubicación no aparece, selecciona nuevamente «Permitir ubicación».',
   locationServicesOff:
-    'Los Servicios de ubicación están desactivados en este dispositivo. Abre Ajustes → Privacidad y seguridad → Servicios de ubicación, actívalos y vuelve a KidGate para seleccionar «Permitir ubicación».',
+    'La Localización está desactivada en todo el dispositivo. Abre Ajustes → Privacidad y seguridad → Localización, actívala y vuelve a KidGate para seleccionar «Permitir ubicación».',
   locationDeniedInSettings:
     'El acceso a la ubicación para KidGate fue denegado. Abre Ajustes → KidGate → Ubicación y selecciona «Mientras se usa la app» o «Siempre».',
   locationEnabled:

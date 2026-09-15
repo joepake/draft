@@ -1,7 +1,7 @@
 export const appLimits = {
   title: 'Limiti app',
   intro:
-    'Imposta quanto può durare ogni app al giorno, oltre al limite giornaliero del dispositivo.',
+    'Imposta per quanto tempo si può usare ogni app al giorno, oltre al limite giornaliero del dispositivo.',
   emptyTitle: 'Ancora nessun limite',
   emptySubtitle: 'Scegli un’app qui sotto per darle un limite giornaliero suo.',
   usedToday: '{{used}} su {{limit}} oggi',

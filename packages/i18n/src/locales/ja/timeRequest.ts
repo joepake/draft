@@ -1,5 +1,5 @@
 export const timeRequest = {
-  alertMorePending: 'ほかに{{count}}件のリクエストが「家族」で待っています。',
+  alertMorePending: 'ほかに{{count}}件のリクエストが「ファミリー」タブで待っています。',
   pauseConfirmTitle: '{{deviceName}}をロックしますか？',
   pauseConfirmBody:
     '時間を追加する代わりに、今すぐデバイスをロックします。ロックを解除するまで{{deviceName}}は使えません。',
@@ -18,7 +18,7 @@ export const timeRequest = {
     '保護者の返信を待っています（{{minutes}}分をリクエスト中）。',
   statusCooldown: '{{time}}後に新しいリクエストを送信できます。',
   statusDailyLimitExceeded:
-    '今日のスクリーンタイムをすべて使い切りました。アプリは明日また使えるようになります。保護者が時間を追加すれば、それより早く使えます。',
+    '今日の利用時間をすべて使い切りました。アプリは明日また使えるようになります。保護者が時間を追加すれば、それより早く使えます。',
   errorDeviceNotRegistered: 'このデバイスは登録されていません。',
   errorMinutesRange: '{{min}}〜{{max}}分の範囲で入力してください。',
   toastRequestSent: 'リクエストを送信しました。保護者がまもなく確認します。',

@@ -48,7 +48,7 @@ export const activities = {
   activityTypeCheckIn: 'Check-in',
   activityTypeLocationRequest: 'Localisation',
   activityTypeTimeRequest: 'Demande de temps',
-  activityTypeRewardTask: 'Tâche bonus',
+  activityTypeRewardTask: 'Tâche à récompense',
   activityTypeSearchAlert: 'Alerte recherche',
   activityTypeWebFilter: 'Filtre web',
   activityTypeEmergency: 'Urgence',
@@ -61,7 +61,7 @@ export const activities = {
     'Le SOS a déverrouillé cet appareil pendant {{minutes}} minutes. Cela fait {{count}} fois aujourd’hui.',
   sosEscapeLimitedTitle: 'Applications d’urgence ouvertes',
   sosEscapeLimitedBody:
-    'Le SOS a ouvert le téléphone, les cartes et les messages sur cet appareil pendant {{minutes}} minutes. Tout le reste est resté verrouillé.',
+    'Le SOS a ouvert les appels, les cartes et les messages sur cet appareil pendant {{minutes}} minutes. Tout le reste est resté verrouillé.',
   sosEscapeLimitedRepeatTitle:
     'Applications d’urgence ouvertes ({{count}} fois aujourd’hui)',
   sosEscapeLimitedRepeatBody:
@@ -136,7 +136,7 @@ export const activities = {
 
   tamperBatteryTitle: 'L’utilisation illimitée de la batterie a été désactivée',
   tamperBatteryBody:
-    'Le système peut suspendre KidGate jusqu’à ce que l’utilisation de la batterie soit de nouveau définie sur Illimitée.',
+    'Le système peut suspendre KidGate jusqu’à ce que l’utilisation de la batterie soit de nouveau réglée sur « Sans restriction ».',
 
   tamperExactAlarmTitle: 'Alarmes et rappels désactivés',
   tamperExactAlarmBody:

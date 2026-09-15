@@ -8,7 +8,7 @@ export const appInventory = {
   subtitle: 'Todo lo que KidGate encontró instalado, no solo lo que cambió.',
   summaryFlagged: '{{flagged}} de {{total}} aplicaciones merecen una mirada',
   summaryClear: 'Nada marcado entre {{total}} aplicaciones',
-  flaggedTitle: 'Merecen una mirada',
+  flaggedTitle: 'Conviene revisarlas',
   otherTitle: 'Todo lo demás',
   scannedLabel: 'Último análisis',
   staleNote:
@@ -43,7 +43,7 @@ export const appInventory = {
   incompleteNote:
     'Una aplicación sin icono en la pantalla de inicio puede no aparecer aquí.',
   blockHint:
-    'Para detener una aplicación, abre Aplicaciones bloqueadas en el propio dispositivo.',
+    'Para detener una aplicación, abre Apps bloqueadas en el propio dispositivo.',
   howItWorksLabel: 'Cómo funciona esta lista',
   markSafe: 'Segura',
   dismissedTitle: 'Marcadas como seguras por ti',

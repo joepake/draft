@@ -38,6 +38,6 @@ export const checkIn = {
   showFewerDevices: '表示するデバイスを減らす',
   parentSafePopupTitle: 'お子さまは無事です',
   childSafePopupTitle: '保護者に伝えました',
-  childSafePopupBody: '保護者にメッセージが届きました — あなたは無事です。',
+  childSafePopupBody: '保護者にメッセージが届きました。あなたが無事だと伝わりました。',
   confirmedKicker: 'チェックイン',
 } as const;

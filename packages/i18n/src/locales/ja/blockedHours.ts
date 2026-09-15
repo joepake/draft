@@ -68,6 +68,6 @@ export const blockedHours = {
   daysSchoolNights: '学校の夜',
   daysWeekend: '週末',
   daysOvernightHint: '夜をまたぐ時間帯は、開始する夜の曜日で決まります。',
-  overlapWarning: 'この時間帯は別のブロック時間と重複しています。両方とも有効です。',
+  overlapWarning: 'この時間帯は別の休止時間と重複しています。両方とも有効です。',
   weekPreviewTitle: '1週間の予定',
 } as const;

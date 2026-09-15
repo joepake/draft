@@ -18,6 +18,7 @@ import QuickProtectCard from '../dashboard/QuickProtectCard.jsx';
 import DeviceAdmin from '../dashboard/DeviceAdmin.jsx';
 import MessageAlertsCard from '../dashboard/MessageAlertsCard.jsx';
 import Toggle from '../dashboard/Toggle.jsx';
+import Toast from '../dashboard/Toast.jsx';
 import { timeAgo } from '../dashboard/timeAgo.js';
 import PlanCard from '../dashboard/PlanCard.jsx';
 import ParkedDevicesCard from '../dashboard/ParkedDevicesCard.jsx';
@@ -589,6 +590,20 @@ export default function Dashboard({
   const [range, setRange] = useState(14);
   const [busy, setBusy] = useState(null);
   const [toast, setToast] = useState(null);
+  /*
+   * A toast clears itself. It used to stay until the next write started, so a
+   * success from ten minutes ago sat over the page reading as the answer to
+   * whatever had just been done. A failure gets twice as long: it is the only
+   * place the reason is said, and it is read rather than glanced at.
+   */
+  useEffect(() => {
+    if (!toast) return undefined;
+    const timer = setTimeout(
+      () => setToast(null),
+      toast.tone === 'critical' ? 9000 : 4500,
+    );
+    return () => clearTimeout(timer);
+  }, [toast]);
   /** Which attention row has its steps open. One at a time. */
   const [fixOpen, setFixOpen] = useState(null);
   /** The PIN / QR sheet that unlocks write on this browser. */
@@ -1432,12 +1447,12 @@ export default function Dashboard({
           <span>{family.name}</span>
         </div>
 
-        <div className="side-section side-kids">
+        <div className="side-kids">
           <p className="side-title">{t('dash.children')}</p>
           {/*
             Only this list scrolls, not the rail: the heading above and the
-            Manage nav below stay put however many children a family has.
-            A rail that scrolled as one hid the nav behind four children.
+            account footer below stay put however many children a family has.
+            A rail that scrolled as one hid the footer behind four children.
           */}
           <div className="side-kids-scroll">
             {devices.length === 0 && (
@@ -1498,45 +1513,6 @@ export default function Dashboard({
             })}
           </div>
         </div>
-
-        <nav className="side-section side-nav" aria-label={t('dash.manage')}>
-          <p className="side-title">{t('dash.manage')}</p>
-          {visibleTabs.map(item => (
-            <button
-              key={item.id}
-              className={`nav-item${tab === item.id ? ' is-active' : ''}`}
-              onClick={() => setTab(item.id)}
-              /* Which tab is showing, said to a screen reader as well as in
-                 the brand bar the stylesheet draws down the row's edge. */
-              aria-current={tab === item.id ? 'page' : undefined}
-            >
-              <Icon name={item.icon} size={17} />
-              {t(item.labelKey)}
-              {/* A bare figure beside "Overview" says nothing about what was
-                  counted. `cardAttentionSub` is the sentence the Overview card
-                  itself uses for the same number. */}
-              {item.id === 'overview' && attention.length > 0 && (
-                <span
-                  className="nav-badge"
-                  title={t('dash.cardAttentionSub', { count: attention.length })}
-                >
-                  {attention.length}
-                </span>
-              )}
-              {/* A dot, where the Attention badge beside it is a count: what is
-                  behind this one is a single report, and `1` would invite the
-                  reader to work out what the other numbers meant. */}
-              {item.id === 'report' && reportUnseen && (
-                <span
-                  className="nav-badge nav-badge-dot"
-                  role="img"
-                  aria-label={t('dash.tabReportNew')}
-                  title={t('dash.tabReportNew')}
-                />
-              )}
-            </button>
-          ))}
-        </nav>
 
         <div className="side-foot">
           {/*
@@ -1675,6 +1651,52 @@ export default function Dashboard({
           </div>
         </header>
 
+        {/*
+          The rail asks which device; this row asks what about it. They were one
+          column, so a parent scanning the rail read eleven rows that answered
+          two different questions and had to learn which half they were in.
+          Sticky, because the nav was on screen at any scroll depth while it
+          lived in the rail and a tab bar that scrolls away is a worse nav than
+          the one it replaced.
+        */}
+        <nav className="dash-tabs" aria-label={t('dash.manage')}>
+          {visibleTabs.map(item => (
+            <button
+              key={item.id}
+              className={`nav-item${tab === item.id ? ' is-active' : ''}`}
+              onClick={() => setTab(item.id)}
+              /* Which tab is showing, said to a screen reader as well as in
+                 the brand ground the stylesheet fills the chip with. */
+              aria-current={tab === item.id ? 'page' : undefined}
+            >
+              <Icon name={item.icon} size={17} />
+              {t(item.labelKey)}
+              {/* A bare figure beside "Overview" says nothing about what was
+                  counted. `cardAttentionSub` is the sentence the Overview card
+                  itself uses for the same number. */}
+              {item.id === 'overview' && attention.length > 0 && (
+                <span
+                  className="nav-badge"
+                  title={t('dash.cardAttentionSub', { count: attention.length })}
+                >
+                  {attention.length}
+                </span>
+              )}
+              {/* A dot, where the Attention badge beside it is a count: what is
+                  behind this one is a single report, and `1` would invite the
+                  reader to work out what the other numbers meant. */}
+              {item.id === 'report' && reportUnseen && (
+                <span
+                  className="nav-badge nav-badge-dot"
+                  role="img"
+                  aria-label={t('dash.tabReportNew')}
+                  title={t('dash.tabReportNew')}
+                />
+              )}
+            </button>
+          ))}
+        </nav>
+
         {live && !canWrite && (
           <div className="write-note">
             <strong>{t('dash.unlockTitle')}</strong> {t('dash.unlockBody')}
@@ -1698,23 +1720,8 @@ export default function Dashboard({
           />
         )}
 
-        {toast && <div className={`toast tone-${toast.tone}`}>{toast.text}</div>}
-
-        {/*
-          Under the header rather than inside a tab: renaming and unpairing are
-          about the device on screen, not about one of the six things the tabs
-          divide it into. Renders nothing for a joined co-parent — both are the
-          owner's alone.
-        */}
-        {device && live && (
-          <DeviceAdmin
-            device={device}
-            actions={actions}
-            readOnly={live && !canWrite}
-            busy={busy === `rename-${device.id}` || busy === `remove-${device.id}`}
-            run={run}
-          />
-        )}
+        {/* The live region and the box are one module — `Toast` says why. */}
+        <Toast toast={toast} />
 
         {/* The report is about the family, so it survives having no device
             selected — a parent whose only device has just been removed can
@@ -1774,38 +1781,6 @@ export default function Dashboard({
 
         {device && tab === 'overview' && (
           <>
-            {/*
-              Family-level, on the tab a parent lands on. It renders nothing at
-              all for a joined co-parent — inviting, approving and removing are
-              the owner's, the same rule the phone's Family screen applies.
-            */}
-            {live && actions?.isOwner && (
-              <Card title={t('dash.parents', { count: family.parents.length })}>
-                <ParentsCard
-                  members={family.members ?? []}
-                  actions={actions}
-                  run={run}
-                  busy={
-                    busy === 'parent-invite' ||
-                    busy === 'parent-join' ||
-                    busy === 'parent-remove'
-                  }
-                />
-              </Card>
-            )}
-            {/*
-              Family-level too, and for both parents — the rules and the phone
-              let a joined co-parent name a contact. Title from the app pack:
-              the phone's Settings row says the same words.
-            */}
-            {live && familyId && (
-              <Card
-                title={activityT('sos.trustedContactsTitle')}
-                subtitle={activityT('sos.trustedContactsRowSubtitle')}
-              >
-                <TrustedContactsCard familyId={familyId} />
-              </Card>
-            )}
             {/*
               Two of these four are measurements, and a measurement no device
               took is the one thing a tile must not show: `0m` beside "today"
@@ -2065,6 +2040,43 @@ export default function Dashboard({
                 )}
               </div>
             </div>
+
+            {/*
+              Below the device, not above it. Both cards are about the family,
+              and they opened this tab: a parent who had just picked a child's
+              phone met "Parents (2)" and a contact list before one number
+              about the phone. The tab a parent lands on is still where they
+              live — there is no family screen on this surface — but they are
+              read after the thing that was selected, not instead of it.
+
+              Parents renders nothing at all for a joined co-parent: inviting,
+              approving and removing are the owner's, the same rule the phone's
+              Family screen applies. Trusted contacts is for both — the rules
+              and the phone let a joined co-parent name one — and its title is
+              the app pack's, the words the phone's Settings row says.
+            */}
+            {live && actions?.isOwner && (
+              <Card title={t('dash.parents', { count: family.parents.length })}>
+                <ParentsCard
+                  members={family.members ?? []}
+                  actions={actions}
+                  run={run}
+                  busy={
+                    busy === 'parent-invite' ||
+                    busy === 'parent-join' ||
+                    busy === 'parent-remove'
+                  }
+                />
+              </Card>
+            )}
+            {live && familyId && (
+              <Card
+                title={activityT('sos.trustedContactsTitle')}
+                subtitle={activityT('sos.trustedContactsRowSubtitle')}
+              >
+                <TrustedContactsCard familyId={familyId} />
+              </Card>
+            )}
           </>
         )}
 
@@ -3029,6 +3041,24 @@ export default function Dashboard({
             run={run}
             busy={busy}
             activities={activities[device.id] || []}
+          />
+        )}
+
+        {/*
+          Last on the page, below whichever tab is open, and outside all six:
+          renaming and unpairing are about the device the header names, not
+          about one of the things the tabs divide it into. It sat above the tab
+          bar until 2026-09-14, where a rename form a parent opens twice a year
+          was the first card on every tab and read as that tab's own. Renders
+          nothing for a joined co-parent — both are the owner's alone.
+        */}
+        {device && live && (
+          <DeviceAdmin
+            device={device}
+            actions={actions}
+            readOnly={live && !canWrite}
+            busy={busy === `rename-${device.id}` || busy === `remove-${device.id}`}
+            run={run}
           />
         )}
       </main>

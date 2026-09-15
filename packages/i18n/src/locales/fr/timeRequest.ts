@@ -43,7 +43,7 @@ export const timeRequest = {
   unableToDeclineRequest: 'Impossible de refuser la demande. Veuillez réessayer.',
   unableToApproveRequest: 'Impossible d’approuver la demande. Veuillez réessayer.',
   pendingRequestExists:
-    'Tu as déjà envoyé une demande. Merci d’attendre la réponse de tes parents.',
+    'Tu as déjà envoyé une demande. Attends la réponse de tes parents.',
   waitBeforeAnotherRequest:
     'Merci d’attendre quelques minutes avant d’envoyer une autre demande.',
   timeRequestSent: 'Demande de temps envoyée',

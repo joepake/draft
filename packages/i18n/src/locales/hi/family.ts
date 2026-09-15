@@ -123,7 +123,7 @@ export const family = {
   chipHealthInactiveCount: '{{count}} 24 घंटे से ज़्यादा निष्क्रिय',
   chipLocationBlocked: 'स्थान नहीं',
 
-  chipBlockedCount: '{{count}} लॉक किए गए',
+  chipBlockedCount: '{{count}} अभी ब्लॉक',
 
   healthProtected: 'सुरक्षित',
   buildOutdated: 'अपडेट उपलब्ध',
@@ -167,7 +167,7 @@ export const family = {
 
   cardTodayUsed: '{{used}} उपयोग',
 
-  cardTodayNoData: 'आज का उपयोग डेटा उपलब्ध नहीं है',
+  cardTodayNoData: 'अभी कोई उपयोग नहीं',
 
   cardTodayAccessibility: '{{deviceName}} की उपयोग रिपोर्ट खोलें',
 

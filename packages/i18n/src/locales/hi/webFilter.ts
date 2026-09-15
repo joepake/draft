@@ -35,7 +35,7 @@ export const webFilter = {
   infoLine3Ios:
     'बच्चे के डिवाइस का ऐप कंट्रोल सिंक करते ही KidGate सेटिंग अपने आप लागू कर देता है।',
   infoLine1Android:
-    'KidGate एक लोकल VPN चलाता है जो वयस्क डोमेन के लिए DNS जाँचता है और कुछ एन्क्रिप्टेड DNS रिज़ॉल्वर ब्लॉक करता है।',
+    'KidGate डिवाइस पर एक निजी कनेक्शन चलाता है जो देखता है कि कौन-सी साइटें खोजी जा रही हैं, और आपकी चुनी हुई श्रेणियों वाली साइटें ब्लॉक करता है।',
   infoLine2Android:
     'बच्चे के डिवाइस पर प्राइवेट DNS बंद करें। चालू रहने पर ब्राउज़र फ़िल्टर को बायपास कर सकते हैं।',
   infoLine3Android:
@@ -45,7 +45,7 @@ export const webFilter = {
   infoLine1Macos:
     'KidGate Mac पर एक कॉन्टेंट फ़िल्टर चलाता है जो देखता है कि कौन-सी साइटें खोजी जा रही हैं, और आपकी श्रेणियों वाली साइटों को ब्लॉक करता है।',
   infoLine2Macos:
-    'अगर बच्चे के Mac पर फ़िल्टर मंज़ूर नहीं दिखता, तो उसे मंज़ूर करने के लिए सिस्टम सेटिंग्स → जनरल → लॉगिन आइटम और एक्सटेंशन खोलें।',
+    'अगर बच्चे के Mac पर फ़िल्टर मंज़ूर नहीं दिखता, तो उसे मंज़ूर करने के लिए System Settings → General → Login Items & Extensions खोलें।',
   infoLine3Macos:
     'मंज़ूरी मिलते ही बच्चे का Mac फ़िल्टर को सक्रिय दिखाता है। अगर वहाँ इसे बंद कर दिया जाए, तो इसे फिर से चालू करने के लिए KidGate दोबारा खोलें।',
   infoLine4Macos:
@@ -82,14 +82,14 @@ export const webFilter = {
 
   windowsFilterNote: 'Windows पर KidGate का अपना रिज़ॉल्वर',
   webFilteringNote:
-    'iOS स्क्रीन टाइम का वयस्क फ़िल्टर इस्तेमाल करता है; Android लोकल DNS VPN ब्लॉकलिस्ट।',
+    'iOS स्क्रीन टाइम का वयस्क फ़िल्टर इस्तेमाल करता है। Android, Mac और Windows पर KidGate की अपनी ब्लॉकलिस्ट चलती है।',
   safeSearchAlertsNote:
     'Safari खोज शब्द साझा नहीं करता; कीवर्ड अलर्ट के लिए प्रबंधित सुरक्षित ब्राउज़र चाहिए।',
   webHistoryNote: 'फ़िल्टर वाला ब्राउज़र या DNS/VPN-शैली की रिपोर्टिंग चाहिए।',
   categoriesTitle: 'क्या ब्लॉक करें',
   categoriesSubtitle:
     'KidGate अपनी डोमेन सूचियाँ इस्तेमाल करता है। ये वे साइटें कवर करती हैं जहाँ बच्चे सचमुच पहुँचते हैं, पूरा वेब नहीं — नीचे की सूचियों के साथ मिलाकर उपयोग करें।',
-  androidOnlyCategory: 'सिर्फ़ Android — iOS में श्रेणी-वार वेब नियंत्रण नहीं है',
+  androidOnlyCategory: 'iPhone पर उपलब्ध नहीं — Android और Mac पर काम करता है',
   iosCategoryNote:
     'iPhone केवल {{category}} का समर्थन करता है, Apple के अपने फ़िल्टर से। बाकी श्रेणियाँ Android डिवाइस पर लागू होती हैं।',
   allowListTitle: 'हमेशा अनुमति दें',
@@ -113,7 +113,7 @@ export const webFilter = {
   listFull: 'इस सूची में अधिकतम {{max}} साइटें सहेजी जा सकती हैं।',
   openHistory: 'वेब इतिहास',
   openHistorySubtitle: 'देखें यह डिवाइस किन साइटों तक पहुँचा और क्या ब्लॉक हुआ',
-  blockedPageTitle: 'साइट अवरुद्ध है',
+  blockedPageTitle: 'यह साइट ब्लॉक है',
   blockedPageBody:
     'KidGate ने आपके परिवार के लिए यह साइट अवरुद्ध कर दी है। अगर आपको लगता है कि यह गलती है, तो अपने माता-पिता से पूछें।',
   category: {
@@ -189,7 +189,7 @@ export const webFilter = {
   askToOpenSubtitle: 'अगर वे इजाज़त दें, तो यह साइट खुल जाएगी।',
   askToOpenDomainLabel: 'कौन सी साइट?',
   askToOpenBlockedLabel: 'हाल में ब्लॉक हुईं',
-  askToOpenPending: 'तुमने पहले ही एक साइट माँगी है। जवाब का इंतज़ार करो।',
+  askToOpenPending: 'आपने पहले ही एक साइट माँगी है। जवाब का इंतज़ार करें।',
   askToOpenTooSoon: 'तुमने अभी-अभी अनुरोध भेजा है। एक मिनट बाद कोशिश करो।',
   askToOpenTooMany: 'तुम एक बार में कुछ ही साइटें माँग सकते हो।',
   requestsTitle: 'साइट के अनुरोध',

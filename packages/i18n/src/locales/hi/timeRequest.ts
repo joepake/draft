@@ -2,7 +2,7 @@ export const timeRequest = {
   alertMorePending: 'परिवार में {{count}} और अनुरोध प्रतीक्षा में हैं।',
   pauseConfirmTitle: '{{deviceName}} को लॉक करें?',
   pauseConfirmBody:
-    'इससे अधिक समय देने के बजाय डिवाइस अभी लॉक हो जाएगा। जब तक आप अनलॉक नहीं करते, {{deviceName}} उपयोग नहीं हो पाएगा।',
+    'अतिरिक्त समय देने के बजाय डिवाइस अभी लॉक हो जाएगा। जब तक आप इसे अनलॉक नहीं करते, {{deviceName}} का इस्तेमाल नहीं हो पाएगा।',
   pauseConfirmAction: 'डिवाइस लॉक करें',
   alertTitle: 'समय अनुरोध प्राप्त हुआ',
   alertMessage: '{{deviceName}} ने {{minutes}} अतिरिक्त मिनट का अनुरोध किया।',
@@ -18,7 +18,7 @@ export const timeRequest = {
     'आपके माता-पिता के जवाब की प्रतीक्षा है ({{minutes}} मिनट का अनुरोध किया गया)।',
   statusCooldown: 'आप {{time}} में नया अनुरोध भेज सकते हैं।',
   statusDailyLimitExceeded:
-    'आपने आज का पूरा स्क्रीन टाइम इस्तेमाल कर लिया है। ऐप्स कल फिर से खुलेंगे — या जल्दी, अगर आपके माता-पिता और समय जोड़ दें।',
+    'आपने आज का पूरा स्क्रीन टाइम इस्तेमाल कर लिया है। ऐप्स कल फिर से खुलेंगे — और अगर आपके माता-पिता और समय जोड़ दें, तो उससे भी पहले।',
   errorDeviceNotRegistered: 'यह डिवाइस पंजीकृत नहीं है।',
   errorMinutesRange: '{{min}} से {{max}} मिनट के बीच दर्ज करें।',
   toastRequestSent: 'अनुरोध भेज दिया गया। आपके माता-पिता जल्द ही इसकी समीक्षा करेंगे।',
@@ -60,7 +60,7 @@ export const timeRequest = {
   askParentForMoreTime: 'आप आज अपने माता-पिता से थोड़ा और स्क्रीन टाइम माँग सकते हैं।',
   requestMoreTime: 'और समय माँगें',
   requestMoreTimeAccessibilityLabel: 'और समय माँगें',
-  requestPendingButton: 'अनुरोध लंबित है',
+  requestPendingButton: 'जवाब का इंतज़ार',
   requestPendingChip: 'अनुरोध लंबित है',
   waitCooldown: '{{cooldown}} प्रतीक्षा करें',
   timeRequestNote:

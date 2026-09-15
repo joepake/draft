@@ -1,5 +1,5 @@
 export const checkIn = {
-  noPhotoBadge: 'Nessuna foto allegata',
+  noPhotoBadge: 'Foto saltata',
   historyTitle: 'Cronologia check-in',
   historyHint:
     'Tocca una foto per ingrandirla. Puoi richiedere un nuovo check-in qui sopra in qualsiasi momento.',
@@ -25,7 +25,7 @@ export const checkIn = {
   iNeedHelp: 'Ho bisogno di aiuto',
   checkInRequested: 'Check-in richiesto',
   checkInRequestedDescription:
-    'Abbiamo chiesto a {{deviceName}} di confermare che è al sicuro, con posizione e foto.',
+    'Chiesto a {{deviceName}} di confermare che è al sicuro, con posizione e foto.',
   checkInRequestedDescriptionLocation:
     'Abbiamo chiesto a {{deviceName}} di confermare che è al sicuro, con posizione.',
   checkInConfirmed: 'Check-in confermato',

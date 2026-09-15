@@ -72,5 +72,5 @@ export const protection = {
   tamperAlertsNote:
     'Melaporkan perubahan izin dan saat aplikasi di perangkat anak sudah lama tidak diperbarui.',
   appReviewRemindersNote:
-    'iOS tidak menyediakan info pemasangan aplikasi; tinjau aplikasi secara berkala bersama perangkat anak.',
+    'iOS tidak menyediakan info pemasangan aplikasi; tinjau aplikasi secara berkala langsung di perangkat anak.',
 } as const;

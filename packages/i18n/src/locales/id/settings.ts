@@ -4,7 +4,7 @@ export const settings = {
   personNamePlaceholder: 'mis. Ibu, Ayah, Nenek',
   personNameRequired: 'Masukkan nama Anda.',
   personNameTooLong: 'Nama Anda maksimal {{max}} karakter.',
-  personNameRequiredTitle: 'Harus kami panggil apa?',
+  personNameRequiredTitle: 'Anda ingin kami panggil apa?',
   personNameRequiredSubtitle:
     'Nama ini muncul di aktivitas keluarga dan peringatan. Maksimal {{max}} karakter.',
   personNameEditTitle: 'Nama Anda',

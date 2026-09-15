@@ -38,13 +38,13 @@ export const settings = {
     'Non potrai più accedere con {{provider}} su questo account.',
   accountUnlinkConfirm: 'Scollega',
   accountLinkCredentialInUse:
-    'Questa email o provider è già usata da un altro account KidGate.',
+    'Questa email o questo provider è già in uso in un altro account KidGate.',
   accountLinkRequiresRecentLogin:
     'Per motivi di sicurezza, esci e accedi di nuovo prima di collegare questo metodo.',
   accountLinkActionLink: 'Collega',
   accountLinkActionUnlink: 'Scollega',
   accountLinkActionVerify: 'Verifica',
-  accountLinkSummary: 'Accedi con {{methods}}',
+  accountLinkSummary: 'Accesso con {{methods}}',
   accountLinked: 'Collegato',
   accountNotLinked: 'Non collegato',
   darkModeLabel: 'Modalità scura',

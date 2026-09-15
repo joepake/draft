@@ -65,7 +65,7 @@ export const plans = {
     'Beide Tarife enthalten Tageslimit, Sperrzeiten, blockierte Apps, den Webfilter, Fernsperre, SOS, Zeitanfragen und Belohnungsaufgaben auf iPhone, Android, Mac und Windows in einer Familie, dazu das Web-Dashboard und mehrere Eltern. Android TV und Chromebook kommen demnächst und bieten weniger Funktionen.',
   sectionWhyPremium: 'Was Premium dazugibt',
   sectionWhyPremiumSubtitle:
-    'Jede Regel läuft auch kostenlos weiter. Premium bringt dazu, was du siehst und wie schnell.',
+    'Jede Regel läuft auch kostenlos weiter. Premium erweitert, was du siehst – und wie schnell du es siehst.',
   groupLiveTitle: 'Live',
   groupInsightTitle: 'Jedes Detail',
   groupAlertsTitle: 'Hinweise',
@@ -118,7 +118,7 @@ export const plans = {
   memberTrialActiveSubtitle:
     'Diese Familie ist in der Testphase. Danach laufen alle Regeln auf einem Gerät weiter; der Inhaber kann für Live-Aktivität, Verlauf und alle Geräte abonnieren.',
   memberTrialEndedSubtitle:
-    'Die Testphase dieser Familie ist beendet. Tageslimit, Blockierte Apps, Webfilter und Standort funktionieren weiterhin. Bitte die Inhaberin oder den Inhaber, für Live-Updates, Verlauf und Warnungen zu abonnieren.',
+    'Die Testphase dieser Familie ist beendet. Tageslimit, Blockierte Apps, Webfilter und Standort funktionieren weiterhin. Bitte den Familieninhaber, Premium für Live-Updates, Verlauf und Warnungen zu abonnieren.',
   memberSetupTrialSubtitle:
     'Die Testphase beginnt, sobald der Inhaber ein Elterngerät und ein Kindergerät verbindet.',
   premiumActivatedTitle: 'Premium freigeschaltet',
@@ -196,7 +196,7 @@ export const plans = {
   platformAndroidTv: 'Android TV',
   platformAndroidTvDetail: 'Nur Kindgerät · Android TV 7 und neuer',
   platformChromebook: 'Chromebook',
-  platformChromebookDetail: 'Kindgerät · nur Web-Filter in Chrome',
+  platformChromebookDetail: 'Kindergerät · nur Webfilter in Chrome',
   teaserCta: 'Premium ansehen',
   teaserProofOtherApps: 'Andere Apps: {{count}} · {{minutes}}',
   teaserProofOtherMinutes: 'Andere Apps: {{minutes}}',
@@ -208,7 +208,7 @@ export const plans = {
   teaserVideoHistory:
     'Premium bewahrt jedes YouTube-Video und jeden Short auf, den es gesehen hat.',
   teaserLocationTrail:
-    'Premium bewahrt auf, wo es war, und meldet, wenn es zu Hause oder in der Schule ankommt oder geht.',
+    'Premium speichert, wo dein Kind unterwegs war, und meldet dir, wenn es zu Hause oder in der Schule ankommt oder wieder geht.',
   teaserActivityWindow: 'Kostenlos zeigt heute. Premium bewahrt 30 Tage auf.',
   teaserChildReport:
     'Premium fügt einen Bericht je Kind hinzu, und jede Woche einen neuen.',
@@ -220,7 +220,7 @@ export const plans = {
     'Gratis sendet einen Bericht zum Ende der Testphase. Premium sendet jede Woche einen.',
   teaserProofRewardTasks: 'Aktive Aufgaben: {{count}}',
   teaserRewardTasks:
-    'Mehr laufen im Gratis-Plan nicht gleichzeitig. Premium verdoppelt das.',
+    'Mehr Aufgaben laufen im Gratis-Tarif nicht gleichzeitig. Premium verdoppelt die Zahl.',
   teaserLiveNote: 'Kostenlos aktualisiert alle 30 Minuten. Premium ist live.',
   teaserUsageTimeline: 'Premium zeigt, zu welchen Tageszeiten das Gerät genutzt wurde.',
   teaserDeviceNote: 'Nur dein überwachtes Gerät meldet Daten.',

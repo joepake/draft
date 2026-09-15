@@ -1,7 +1,7 @@
 export const pairing = {
   shareInviteButton: 'Condividi codice',
   shareInviteMessage:
-    'Unisciti alla nostra famiglia su KidGate: apri l’app, scegli Famiglia → Unisciti alla famiglia e inserisci il codice {{code}}. Il codice scade tra 15 minuti.',
+    'Unisciti alla nostra famiglia su KidGate: apri l’app, scegli Famiglia → Unisciti a una famiglia e inserisci il codice {{code}}. Il codice scade tra 15 minuti.',
   shareChildCodeMessage:
     'Collega questo dispositivo del bambino su KidGate: sul dispositivo del genitore apri KidGate → Famiglia → Scansiona un codice, poi scansiona il codice QR o inserisci il codice {{code}}. Il codice scade tra 5 minuti.',
   connectChildPhone: 'Connetti un dispositivo del bambino',
@@ -69,7 +69,7 @@ export const pairing = {
   parentJoinExpired: 'La richiesta di approvazione è scaduta. Chiedi un nuovo invito.',
   unableToResolveParentJoin: 'Impossibile risolvere questa richiesta.',
   joinedFamily:
-    'Ti sei unito alla famiglia. I suoi dispositivi dei bambini ora compaiono qui.',
+    'Ora fai parte della famiglia. Qui compaiono i dispositivi dei suoi bambini.',
   joinedFamilyTitle: 'Sei entrato nella famiglia',
   joinedFamilyMessage:
     'Ti sei unito a “{{familyName}}”. I suoi dispositivi dei bambini ora compaiono su questo dispositivo.',

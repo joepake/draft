@@ -147,7 +147,7 @@ export const activities = {
   tamperCameraBody:
     'Foto SOS dan Check-In mungkin gagal terkirim sampai Kamera diizinkan kembali.',
 
-  tamperBackgroundRefreshTitle: 'Penyegaran Aplikasi Latar dimatikan',
+  tamperBackgroundRefreshTitle: 'Segarkan App di Latar Belakang dimatikan',
   tamperBackgroundRefreshBody:
     'KidGate mungkin lebih jarang memperbarui di latar belakang sampai Penyegaran Aplikasi Latar diaktifkan kembali.',
 

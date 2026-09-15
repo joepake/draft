@@ -71,7 +71,7 @@ export const family = {
   childDetailDevicesTitle: 'Geräte',
   childDetailSwipeHint: 'Wische über ein Gerät, um die Zuordnung aufzuheben.',
   childDetailAssignMore: 'Weiteres Gerät zuweisen…',
-  childDetailAssignSheetTitle: 'Gerät {{childName}} zuweisen',
+  childDetailAssignSheetTitle: '{{childName}} ein Gerät zuweisen',
   childDetailNoDevices:
     'Noch keine Geräte. Unten zuweisen oder im Familien-Tab ein neues Gerät koppeln.',
   // Same screen for a joined parent, who may pair but may not assign.
@@ -362,6 +362,6 @@ export const family = {
   childDetailSectionAlerts: 'Alle Geräte, ein Verlauf',
   childDetailScopeAll: 'Alle Geräte',
   childDetailTodayWell: 'Heute genutzt',
-  childDetailUnassignAction: 'Entfernen',
+  childDetailUnassignAction: 'Zuordnung aufheben',
   childDetailLimitShared: 'Gesamt über alle Geräte',
 } as const;

@@ -42,7 +42,7 @@ export const rewardTask = {
   openSectionTitle: 'Offene Aufgaben',
   tabOpen: 'Offen',
   tabDone: 'Erledigt',
-  doneEmptyBody: 'Genehmigte Aufgaben erscheinen hier.',
+  doneEmptyBody: 'Genehmigte Aufgaben erscheinen hier, sobald du sie geprüft hast.',
   openSectionSubtitle: 'Tippe auf eine Aufgabe, um sie zu bearbeiten oder zu löschen.',
   editTaskA11y: 'Aufgabe {{title}} bearbeiten',
   sentBackNote: 'Zurückgegeben – wartet auf neuen Versuch.',

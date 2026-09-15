@@ -4,7 +4,7 @@ export const webFilter = {
   appliesToAll: 'Se aplica a los {{count}} dispositivos de {{name}}',
   coverageLine: 'Activo en {{enforcing}} de {{total}} dispositivos',
   mergeNotice:
-    'Los dispositivos de {{name}} tenían ajustes de filtro web distintos. Al guardar aquí se aplica un solo conjunto a todos, combinado hacia la opción más estricta.',
+    'Los dispositivos de {{name}} tenían ajustes de filtro web distintos. Al guardar aquí se aplica un solo conjunto a todos, y en cada ajuste se conserva la opción más estricta.',
   mergeLoosened: 'Ahora permitido en todos los dispositivos: {{domains}}',
   toastUpdateFailed: 'No se pudo actualizar el Filtro web. Inténtalo de nuevo.',
   heroTitle: 'Filtrar sitios web inapropiados',
@@ -22,7 +22,7 @@ export const webFilter = {
   toggleAccessibilityLabel: 'Activar Filtro web',
   safeSearchSectionTitle: 'Búsqueda segura y YouTube',
   safeSearchSectionSubtitle:
-    'Fuerza resultados seguros en Google, Bing y DuckDuckGo y bloquea YouTube en modo restringido. Requiere el filtro web activado.',
+    'Fuerza resultados seguros en Google, Bing y DuckDuckGo y fija YouTube en el modo restringido. Requiere el filtro web activado.',
   safeSearchLabel: 'Forzar SafeSearch',
   safeSearchHint:
     'Fija Google SafeSearch, el modo restringido de YouTube, Bing y DuckDuckGo en su ajuste estricto. Android, Android TV y Chrome.',
@@ -35,7 +35,7 @@ export const webFilter = {
   infoLine3Ios:
     'KidGate aplica el ajuste automáticamente cuando la app del dispositivo del niño sincroniza los controles.',
   infoLine1Android:
-    'KidGate inicia una VPN local que inspecciona el DNS en busca de dominios de adultos y bloquea algunos resolutores DNS cifrados.',
+    'KidGate mantiene una conexión privada en el dispositivo que comprueba qué sitios se consultan y bloquea los de tus categorías.',
   infoLine2Android:
     'Desactiva el DNS privado en el dispositivo del niño. Si está activo, los navegadores pueden saltarse el filtro.',
   infoLine3Android:
@@ -56,14 +56,14 @@ export const webFilter = {
   privateDnsBannerButton: 'Abrir ajustes de DNS',
   vpnConsentBannerTitle: 'Restaurar la VPN del Filtro web',
   vpnConsentBannerBody:
-    'La VPN de KidGate está desactivada. El filtro web para adultos necesita que la VPN siga conectada.',
+    'La VPN de KidGate está desactivada. El filtrado de contenido adulto necesita que la VPN siga conectada.',
   vpnConsentBannerButton: 'Activar VPN',
   iosOnlyNote: 'Usa Tiempo de uso en iOS',
   androidVpnNote: 'Usa una VPN DNS local en Android',
   macosFilterNote: 'Usa el filtro de contenido de KidGate en Mac',
 
   heroSubtitleWindows:
-    'Ejecuta el propio resolutor de KidGate en el PC del menor para bloquear sitios inapropiados conocidos en todos los navegadores.',
+    'Ejecuta el propio resolutor de KidGate en el PC del niño para bloquear sitios inapropiados conocidos en todos los navegadores.',
 
   toggleHintWindows:
     'No hay nada que aprobar en el PC. El servicio en segundo plano de KidGate activa el filtro en unos segundos.',
@@ -82,16 +82,16 @@ export const webFilter = {
 
   windowsFilterNote: 'Usa el propio resolutor de KidGate en Windows',
   webFilteringNote:
-    'iOS usa el filtro de adultos de Tiempo de uso; Android usa una lista de bloqueo por VPN DNS local.',
+    'iOS usa el filtro de contenido adulto de Tiempo de uso. Android, Mac y Windows usan la lista de bloqueo propia de KidGate.',
   safeSearchAlertsNote:
     'Safari no comparte los términos de búsqueda; las alertas por palabras clave requieren un navegador seguro gestionado.',
   webHistoryNote: 'Requiere un navegador con filtro o informes tipo DNS/VPN.',
   categoriesTitle: 'Qué bloquear',
   categoriesSubtitle:
     'KidGate usa sus propias listas de dominios. Cubren los sitios a los que los niños realmente llegan, no toda la web: combínalas con las listas de abajo.',
-  androidOnlyCategory: 'Solo Android: iOS no tiene control web por categoría',
+  androidOnlyCategory: 'No disponible en iPhone: funciona en Android y Mac',
   iosCategoryNote:
-    'El iPhone solo admite {{category}}, usando el filtro de Apple. Las demás categorías se aplican a dispositivos Android.',
+    'El iPhone solo admite {{category}}, usando el filtro de Apple. Las demás categorías se aplican a los dispositivos Android y Mac del niño.',
   allowListTitle: 'Permitir siempre',
   allowListSubtitle:
     'Sitios que siguen accesibles aunque una categoría los bloquearía.',
@@ -103,7 +103,7 @@ export const webFilter = {
   blockListInputAccessibility: 'Añadir un sitio siempre bloqueado',
   allowListOnlyLabel: 'Solo sitios permitidos',
   allowListOnlyHintAndroid:
-    'Se rechaza todo salvo tu lista de permitidos. Funciona en la capa DNS, así que otras apps también pierden conexión.',
+    'Se rechaza todo salvo tu lista de permitidos. Se aplica a todo el dispositivo, así que otras apps también pierden la conexión.',
   allowListOnlyHintIos:
     'Safari y los navegadores dentro de apps solo pueden abrir los sitios de tu lista.',
   allowListOnlyNeedsEntries: 'Añade al menos un sitio permitido antes de activarlo.',
@@ -116,7 +116,7 @@ export const webFilter = {
   openHistorySubtitle: 'Mira a qué sitios llegó este dispositivo y qué se bloqueó',
   blockedPageTitle: 'Sitio bloqueado',
   blockedPageBody:
-    'KidGate bloqueó este sitio para tu familia. Si crees que es un error, pregunta a tus padres.',
+    'KidGate bloqueó este sitio para tu familia. Si crees que es un error, pregunta a tu padre o madre.',
   category: {
     adult: 'Contenido adulto',
     selfHarm: 'Autolesiones y trastornos alimentarios',

@@ -107,7 +107,7 @@ export const deviceDetail = {
   blocksAdultSites: '不適切なサイトを制限',
   waiting: '待機中',
   noResponseYet: 'まだ応答がありません',
-  waitingForChild: '子どもを待っています',
+  waitingForChild: 'お子さまの返信待ち',
   needsAttention: '要確認',
   noAlertsYet: 'アラートはありません',
   sosAllClear: '問題ありません',

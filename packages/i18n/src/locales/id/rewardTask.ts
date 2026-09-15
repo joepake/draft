@@ -42,7 +42,7 @@ export const rewardTask = {
   openSectionSubtitle: 'Ketuk tugas untuk mengedit atau menghapus.',
   editTaskA11y: 'Edit tugas {{title}}',
   sentBackNote: 'Dikembalikan — menunggu percobaan lagi.',
-  emptyTitle: 'Ubah pekerjaan rumah jadi waktu layar',
+  emptyTitle: 'Ubah tugas rumah jadi waktu layar',
   emptyBody:
     'Buat tugas kecil yang bisa diselesaikan anak untuk mendapat menit ekstra hari ini. Mulai dengan templat:',
   templateReadBook: 'Membaca buku 20 menit',

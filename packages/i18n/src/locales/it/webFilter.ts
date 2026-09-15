@@ -4,7 +4,7 @@ export const webFilter = {
   appliesToAll: 'Si applica a tutti i {{count}} dispositivi di {{name}}',
   coverageLine: 'Attivo su {{enforcing}} dispositivi su {{total}}',
   mergeNotice:
-    'I dispositivi di {{name}} avevano impostazioni del filtro web diverse. Salvando qui si applica un unico insieme a tutti, combinato verso la scelta più rigida.',
+    'I dispositivi di {{name}} avevano impostazioni del filtro web diverse. Salvando qui si applica a tutti un unico insieme di impostazioni, scegliendo ogni volta l’opzione più restrittiva.',
   mergeLoosened: 'Ora consentito su ogni dispositivo: {{domains}}',
   toastUpdateFailed: 'Impossibile aggiornare il Filtro web. Riprova.',
   heroTitle: 'Filtra i siti inappropriati',
@@ -36,7 +36,7 @@ export const webFilter = {
   infoLine3Ios:
     'KidGate applica l’impostazione automaticamente quando l’app sul dispositivo del bambino sincronizza i controlli.',
   infoLine1Android:
-    'KidGate avvia una VPN locale che ispeziona il DNS alla ricerca di domini per adulti e blocca alcuni resolver DNS cifrati.',
+    'KidGate usa una connessione privata sul dispositivo che controlla quali siti vengono cercati e blocca quelli delle categorie che hai scelto.',
   infoLine2Android:
     'Disattiva il DNS privato sul dispositivo del bambino. Se è attivo, i browser possono aggirare il filtro.',
   infoLine3Android:
@@ -83,16 +83,16 @@ export const webFilter = {
 
   windowsFilterNote: 'Usa il resolver di KidGate su Windows',
   webFilteringNote:
-    'iOS usa il filtro per adulti di Tempo di utilizzo; Android una lista di blocco via VPN DNS locale.',
+    'iOS usa il filtro per adulti di Tempo di utilizzo. Android, Mac e Windows usano l’elenco di blocco di KidGate.',
   safeSearchAlertsNote:
     'Safari non condivide i termini di ricerca; gli avvisi per parole chiave richiedono un browser sicuro gestito.',
   webHistoryNote: 'Richiede un browser filtrato o report di tipo DNS/VPN.',
   categoriesTitle: 'Cosa bloccare',
   categoriesSubtitle:
     'KidGate usa i propri elenchi di domini. Coprono i siti che i bambini raggiungono davvero, non tutto il web: affiancali agli elenchi qui sotto.',
-  androidOnlyCategory: 'Solo Android: iOS non ha un controllo web per categoria',
+  androidOnlyCategory: 'Non disponibile su iPhone — funziona su Android e Mac',
   iosCategoryNote:
-    'iPhone supporta solo {{category}}, tramite il filtro di Apple. Le altre categorie valgono per i dispositivi Android.',
+    'iPhone supporta solo {{category}}, tramite il filtro di Apple. Le altre categorie valgono per i dispositivi Android e Mac dei bambini.',
   allowListTitle: 'Consenti sempre',
   allowListSubtitle:
     'Siti che restano raggiungibili anche se una categoria li bloccherebbe.',
@@ -160,7 +160,7 @@ export const webFilter = {
   },
   categoryHint: {
     adult: 'Siti espliciti e per adulti',
-    selfHarm: 'Forum che incoraggiano autolesionismo e digiuno',
+    selfHarm: 'Forum pro-ana e forum che incoraggiano il suicidio',
     gambling: 'Casinò, scommesse sportive, poker',
     gameGambling: 'Apertura di loot box, scommesse skin e Roblox',
     dating: 'App di incontri',
@@ -199,7 +199,7 @@ export const webFilter = {
   requestsSubtitle: 'Siti che questo dispositivo ha chiesto di permettere.',
   siteRequestApproved: 'Sito permesso',
   siteRequestApprovedDescription:
-    '{{domain}} è stato aggiunto a «Permetti sempre» su {{deviceName}}.',
+    '{{domain}} è stato aggiunto a «Consenti sempre» su {{deviceName}}.',
   siteRequestDenied: 'Richiesta di sito rifiutata',
   siteRequestDeniedDescription: '{{domain}} resta bloccato su {{deviceName}}.',
   siteRequestReceived: 'Richiesta sito',

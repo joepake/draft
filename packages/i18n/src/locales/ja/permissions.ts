@@ -43,11 +43,11 @@ export const permissions = {
   oemAutostartHintOther:
     'お使いのデバイスのセキュリティまたはバッテリー設定で、KidGateの自動起動を許可してください。',
   markDone: '完了',
-  overlayStepAllow: 'KidGateの「他のアプリの上に表示」をオンにしてください。',
+  overlayStepAllow: 'KidGateの「他のアプリの上に重ねて表示」をオンにしてください。',
   accessibilityStepOpenSettings:
     '下の設定を選ぶと、KidGateのユーザー補助ページが直接開きます。',
   accessibilityStepFindKidGate:
-    '一覧全体が開いた場合は、インストール済み/ダウンロード済みアプリからKidGateを選んでください。',
+    '一覧全体が開いた場合は、「ダウンロードしたアプリ」からKidGateを選んでください。',
   accessibilityStepTurnOn:
     'スイッチをオンにし、Androidの確認画面で許可を選んでください。',
   accessibilityWarningNote:
@@ -63,7 +63,7 @@ export const permissions = {
     'スイッチがグレーの場合は、設定を開き、「一般」、「Appのバックグラウンド更新」の順に進んでオンにしてください。',
   batteryStepAllow: 'Androidの確認画面で「許可」を選んでください。',
   batteryStepAppInfo:
-    '画面が表示されない場合は、アプリ情報を開き、「バッテリー」、「無制限」の順に選んでください。',
+    '画面が表示されない場合は、アプリ情報を開き、「バッテリー」、「制限なし」の順に選んでください。',
   notificationsStepAllow: '表示された確認画面で「許可」を選びます。',
   exactAlarmStepTurnOn: 'KidGateの「アラームとリマインダー」をオンにします。',
   cameraStepTurnOn: 'KidGateの「カメラ」をオンにします。',

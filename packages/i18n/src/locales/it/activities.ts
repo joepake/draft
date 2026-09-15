@@ -79,7 +79,7 @@ export const activities = {
   appInstalledPendingBody:
     'L’app {{appName}} è stata installata sul dispositivo del bambino ed è bloccata finché non la consenti.',
 
-  messageAlertTitle: 'Contenuto del messaggio preoccupante',
+  messageAlertTitle: 'Contenuto preoccupante in un messaggio',
   messageAlertBody: 'Una parola segnalata è stata rilevata in {{appName}}.',
   messageAlertBodyOutgoing:
     'Una parola segnalata è stata rilevata in un messaggio scritto da tuo figlio in {{appName}}.',
@@ -101,7 +101,7 @@ export const activities = {
   extensionRemovedBody:
     'L’estensione {{appName}} è stata rimossa dal browser del bambino.',
 
-  placeEnterTitle: 'Entrato in {{placeName}}',
+  placeEnterTitle: 'Ingresso in {{placeName}}',
   placeEnterBody: 'Il dispositivo del bambino è entrato in un luogo salvato.',
 
   placeExitTitle: 'Uscito da {{placeName}}',
@@ -113,13 +113,13 @@ export const activities = {
     'Un’autorizzazione di protezione è stata disattivata sul dispositivo del bambino.',
 
   tamperOverlayTitle:
-    'È stata disattivata l’autorizzazione “Mostra sopra le altre app”',
+    'È stata disattivata l’autorizzazione “Visualizza sopra altre app”',
   tamperOverlayBody:
     'La schermata di blocco potrebbe non essere più visualizzata sopra le altre app finché questa autorizzazione non verrà riattivata.',
 
   tamperAccessibilityTitle: 'L’Accessibilità è stata disattivata',
   tamperAccessibilityBody:
-    'Il blocco delle app e le restrizioni potrebbero non funzionare correttamente finché l’Accessibilità non verrà riattivata.',
+    'Il blocco delle app e il blocco del dispositivo potrebbero non funzionare correttamente finché l’Accessibilità non verrà riattivata.',
   tamperUsageAccessTitle: 'L’accesso all’utilizzo delle app è stato disattivato',
   tamperUsageAccessBody:
     'I limiti delle app e gli Orari di blocco potrebbero smettere di funzionare finché KidGate non potrà di nuovo leggere l’utilizzo delle app sul dispositivo del bambino.',
@@ -161,7 +161,7 @@ export const activities = {
     'L’orologio di questo dispositivo non corrisponde più all’ora corretta. Il Tempo di utilizzo e gli Orari di blocco continueranno a utilizzare l’ora corretta.',
 
   /** @deprecated legacy description keys — kept for old activity docs */
-  tamperOverlay: 'È stata disattivata l’autorizzazione “Mostra sopra le altre app”.',
+  tamperOverlay: 'È stata disattivata l’autorizzazione “Visualizza sopra altre app”.',
   tamperAccessibility: 'Il servizio Accessibilità è stato disattivato.',
   tamperUsageAccess: 'L’accesso all’utilizzo è stato disattivato.',
   tamperBattery: 'La modalità Batteria senza restrizioni è stata disattivata.',

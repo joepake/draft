@@ -44,7 +44,7 @@ export const protection = {
     'La ubicación no está permitida en este dispositivo, así que no puede informar dónde está.',
   consentStepOpenSettings:
     'Abre KidGate en el dispositivo de tu hijo o hija y ve a Ajustes.',
-  consentStepParentPin: 'Introduce el PIN de madre/padre.',
+  consentStepParentPin: 'Introduce el PIN parental.',
   consentStepPermissions: 'Abre «Permisos» y permite lo que falte.',
   notificationsPermission: 'Permiso de notificaciones',
   backgroundUpdates: 'Actualizaciones en segundo plano',
@@ -61,7 +61,7 @@ export const protection = {
   protectionsNeedSetupIos:
     'Algunas protecciones necesitan configuración en el dispositivo del niño.',
   protected: 'Protegido',
-  protectionsLookHealthy: 'Las protecciones de KidGate funcionan correctamente.',
+  protectionsLookHealthy: 'Las protecciones de KidGate parecen estar en orden.',
   healthBadgeProtected: 'Verde — protegido',
   healthBadgeWarning: 'Amarillo — requiere configuración',
   healthBadgeInactive: 'Rojo — dispositivo del niño en silencio más de 24 h',

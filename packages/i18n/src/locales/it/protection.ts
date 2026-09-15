@@ -42,7 +42,7 @@ export const protection = {
   cameraConsentPending:
     'La fotocamera non è consentita su questo dispositivo, quindi un SOS o un Check-in inviato da lì arriva senza foto.',
   locationConsentPending:
-    'La posizione non è consentita su questo dispositivo, quindi non può indicare dov’è.',
+    'Su questo dispositivo la posizione non è consentita, quindi il dispositivo non può comunicare dove si trova.',
   consentStepOpenSettings:
     'Apri KidGate sul dispositivo di tuo figlio o tua figlia e vai in Impostazioni.',
   consentStepParentPin: 'Inserisci il PIN genitore.',

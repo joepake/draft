@@ -33,7 +33,8 @@ export const screenTime = {
   usageAccessBannerBody:
     'KidGate braucht den Nutzungszugriff, um Bildschirmzeit zu erfassen und Limits durchzusetzen.',
   usageAccessStepOpenSettings: 'Wähle unten „Einstellungen öffnen“.',
-  usageAccessStepFindKidGate: 'Suche KidGate und aktiviere den Nutzungszugriff.',
+  usageAccessStepFindKidGate:
+    'Suche KidGate und aktiviere den Zugriff auf Nutzungsdaten.',
   usageAccessStepReturn:
     'Kehre hierher zurück – der Status aktualisiert sich automatisch.',
   noDailyLimitSet: 'Kein Tageslimit festgelegt',

@@ -75,7 +75,7 @@ export const sos = {
     'Affiche les alertes SOS d’urgence envoyées depuis l’appareil de l’enfant, avec la position.',
   openLocationInMapsAccessibility: 'Ouvrir la position dans Plans',
   badgeLabel: 'SOS',
-  muteAlarm: 'Couper cette alerte',
+  muteAlarm: 'Couper l’alarme',
   alertCount: '{{current}} sur {{total}}',
   trustedContactsTitle: 'Contacts de confiance',
   trustedContactsSubtitle: 'Reçoivent un e-mail à chaque SOS avec la dernière position',

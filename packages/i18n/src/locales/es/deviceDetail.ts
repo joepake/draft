@@ -95,7 +95,7 @@ export const deviceDetail = {
   setLimit: 'Fijar límite',
   timeRanges: 'franjas horarias',
   timeRanges_one: 'franja horaria',
-  activeNowLocked: 'Horario activo · bloqueado',
+  activeNowLocked: 'Horas bloqueadas activas · bloqueado',
   editHours: 'Editar',
   setHours: 'Configurar',
   items: 'seleccionados',

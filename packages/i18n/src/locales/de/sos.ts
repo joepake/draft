@@ -90,7 +90,7 @@ export const sos = {
     'Noch niemand. Füge Großeltern, Nachbarn oder Freunde der Familie hinzu.',
   trustedContactsAddSection: 'Kontakt hinzufügen',
   trustedContactsAddHint:
-    'Bis zu {{max}}. Sag vorher Bescheid – die E-Mail kommt ohne Vorwarnung.',
+    'Bis zu {{max}}. Sag ihnen vorher Bescheid – die E-Mail kommt ohne Vorwarnung.',
   trustedContactsNameLabel: 'Name',
   trustedContactsEmailLabel: 'E-Mail',
   trustedContactsAddButton: 'Kontakt hinzufügen',

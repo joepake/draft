@@ -18,7 +18,7 @@ export const deviceDetail = {
   blockedApps: 'App bloccate',
   viewAndManageBlockedApps: 'Visualizza e gestisci le app bloccate',
   appBlockingBestEffort:
-    'Su questo dispositivo un’app bloccata viene chiusa dopo l’apertura, non impedita prima.',
+    'Su questo dispositivo un’app bloccata viene chiusa dopo l’apertura: non ne viene impedito l’avvio.',
   safetyMonitoring: 'Monitoraggio della sicurezza',
   locationAndWebSafety: 'Posizione e sicurezza sul Web',
   alerts: 'Avvisi',
@@ -83,7 +83,7 @@ export const deviceDetail = {
   tapToSetDailyCap: 'Imposta un limite giornaliero',
   usageUpdatesFromChildDevice: 'Aggiornamenti di utilizzo dal dispositivo del bambino',
   minutesUsedToday: 'Oggi: {{used}} / {{limit}}',
-  noBlockedHours: 'Nessun orario impostato',
+  noBlockedHours: 'Nessun orario di blocco impostato',
   sharingIsOff: 'Condivisione disattivata',
   waitingForUpdate: 'In attesa di aggiornamento',
   minsPerDay: 'min/giorno',
@@ -112,7 +112,7 @@ export const deviceDetail = {
   includedWithPremium: 'Incluso con Premium',
   featureIncludedInPremium: '{{actionTitle}} è incluso in Premium.',
   featureOnRoadmap:
-    '{{actionTitle}} sarà disponibile a breve. Posizione, Filtro Web e i controlli sopra sono già disponibili.',
+    '{{actionTitle}} sarà disponibile a breve. Posizione, Filtro web e i controlli sopra sono già disponibili.',
   chooseAppsOnChildIphone: 'Scegli le app sul dispositivo del bambino',
   appPickerMustOpenOnChildIphone:
     'Apri le Impostazioni di KidGate sul dispositivo del bambino, inserisci il PIN genitore e scegli le app da bloccare.',

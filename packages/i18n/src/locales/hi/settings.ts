@@ -65,7 +65,7 @@ export const settings = {
     'जब बच्चा SOS भेजता है तो इस फ़ोन पर तेज़ सायरन बजाएँ। कंपन हर हाल में चालू रहता है।',
   shareScreenTimeLabel: 'मेरा स्क्रीन टाइम साझा करें',
   shareScreenTimeHint:
-    'इस फ़ोन का स्क्रीन टाइम परिवार के बोर्ड पर, बच्चों के बगल में दिखाता है। उपयोग एक्सेस ज़रूरी है।',
+    'इस फ़ोन का स्क्रीन टाइम परिवार के बोर्ड पर, आपके बच्चों के स्क्रीन टाइम के बगल में दिखाया जाता है। इसके लिए उपयोग एक्सेस ज़रूरी है।',
   themeStyleLabel: 'थीम शैली',
   themeColorLabel: 'थीम रंग',
   signOutButton: 'साइन आउट',
@@ -143,7 +143,7 @@ export const settings = {
   userGuideSubtitle: 'अनुमतियाँ, डिवाइस पेयरिंग, नियंत्रण और सुरक्षा — चरण दर चरण',
   privacyPolicyTitle: 'गोपनीयता नीति',
   privacyPolicySubtitle: 'KidGate डेटा को कैसे संभालता और सुरक्षित रखता है',
-  termsOfServiceTitle: 'सेवा की शर्तों',
+  termsOfServiceTitle: 'सेवा की शर्तें',
   termsOfServiceSubtitle: 'अधिकार, ज़िम्मेदारियाँ और सेवा की सीमाएँ',
   sectionFamilyTitle: 'परिवार',
   familyNameFallback: 'मेरा परिवार',

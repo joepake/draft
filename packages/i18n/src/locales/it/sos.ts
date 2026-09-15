@@ -1,6 +1,6 @@
 export const sos = {
   title: 'Avvisi SOS',
-  subtitle: '{{deviceName}} · le foto appariranno qui sotto quando inviate',
+  subtitle: '{{deviceName}} · le foto compaiono qui sotto dopo l’invio',
   fallbackDeviceName: 'Dispositivo del bambino',
   fallbackChildName: 'Bambino',
   locationUnavailable: 'Posizione non disponibile',

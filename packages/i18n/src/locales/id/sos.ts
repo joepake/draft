@@ -55,7 +55,7 @@ export const sos = {
   sosEmergencyAccessibility: 'Darurat SOS',
   sosEmergencyAlert: 'Peringatan darurat SOS',
   sosAlertSent: 'Peringatan SOS terkirim',
-  sosAlertSentDescription: '{{deviceName}} mengirim SOS — mereka butuh bantuan.',
+  sosAlertSentDescription: '{{deviceName}} mengirim SOS — dia butuh bantuan.',
   deviceNeedsHelp: '{{deviceName}} butuh bantuan',
   tapPhotoToEnlarge: 'Ketuk foto untuk memperbesarnya',
   noPhotoAttached: 'Tidak ada foto yang dilampirkan pada peringatan ini.',
@@ -74,7 +74,8 @@ export const sos = {
   muteAlarm: 'Bisukan peringatan ini',
   alertCount: '{{current}} dari {{total}}',
   trustedContactsTitle: 'Kontak tepercaya',
-  trustedContactsSubtitle: 'Menerima email setiap SOS beserta lokasi terakhir',
+  trustedContactsSubtitle:
+    'Menerima email setiap kali ada SOS, beserta lokasi terakhir yang diketahui',
   trustedContactsRowSubtitle: 'Orang yang menerima email saat anak mengirim SOS',
   trustedContactsListSection: 'Siapa yang menerima SOS',
   trustedContactsEmpty:

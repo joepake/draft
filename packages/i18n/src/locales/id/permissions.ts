@@ -26,7 +26,7 @@ export const permissions = {
   exactAlarmLabel: 'Alarm & pengingat',
   exactAlarmHint:
     'Izinkan Alarm & pengingat agar Jam Diblokir mulai dan berakhir tepat waktu.',
-  accessibilityLabel: 'Bantuan kunci Aksesibilitas',
+  accessibilityLabel: 'Aksesibilitas (bantuan kunci)',
   accessibilityHint: 'Menjaga kunci KidGate tetap di atas aplikasi lain.',
   oemSectionDescription:
     'Perangkat {{brand}} sering menjeda aplikasi latar belakang. Selesaikan langkah-langkah ini agar penguncian dan Jam Diblokir tetap berfungsi.',

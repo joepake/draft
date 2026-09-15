@@ -75,7 +75,7 @@ export const deviceDetail = {
   checkInNotificationSent: '{{deviceName}} recevra une demande de Check-in.',
   checkInOfflineTitle: 'Cet appareil semble hors ligne',
   checkInOfflineBody:
-    'KidGate n’a aucun signe de {{deviceName}} depuis {{lastSeen}}. Un Check-in n’arrivera qu’une fois l’appareil de nouveau en ligne.',
+    'KidGate est sans nouvelles de {{deviceName}} depuis {{lastSeen}}. Un Check-in n’arrivera qu’une fois l’appareil de nouveau en ligne.',
   checkInOfflineBodyNeverSeen:
     'KidGate n’a jamais eu de signe de {{deviceName}}. Un Check-in n’arrivera qu’une fois l’app ouverte sur cet appareil.',
   checkInOfflineConfirm: 'Envoyer quand même',
@@ -95,7 +95,7 @@ export const deviceDetail = {
   setLimit: 'Définir la limite',
   timeRanges: 'plages horaires',
   timeRanges_one: 'plage horaire',
-  activeNowLocked: 'Heures bloquées · verrouillé',
+  activeNowLocked: 'Heures bloquées actives · verrouillé',
   editHours: 'Modifier',
   setHours: 'Configurer',
   items: 'sélectionnés',

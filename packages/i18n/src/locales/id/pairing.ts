@@ -15,7 +15,7 @@ export const pairing = {
   childScanHint:
     'Orang tua: buka KidGate → Keluarga → {{scan}} → pindai kode QR atau masukkan kodenya.',
   childConnecting: 'Terhubung. Menyiapkan perangkat ini…',
-  childPairedTitle: 'Anda telah terhubung',
+  childPairedTitle: 'Kamu sudah terhubung',
   childPairedSubtitle: 'Menyiapkan perangkat ini…',
   connectChild: 'Hubungkan perangkat anak',
   waitingChildConfirm: 'Permintaan terkirim. Menunggu konfirmasi di perangkat anak.',

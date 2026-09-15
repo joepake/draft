@@ -66,7 +66,7 @@ export const blockedHours = {
   dayShortSun: 'Min',
   daysLabel: 'Hari',
   daysEveryDay: 'Setiap hari',
-  daysSchoolNights: 'Malam sekolah',
+  daysSchoolNights: 'Malam sebelum sekolah',
   daysWeekend: 'Akhir pekan',
   daysOvernightHint: 'Rentang semalaman dihitung dari malam saat dimulai.',
   overlapWarning:

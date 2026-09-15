@@ -5,7 +5,7 @@ export const sos = {
   fallbackChildName: 'बच्चा',
   locationUnavailable: 'स्थान उपलब्ध नहीं',
   statusNeedsAttention: 'ध्यान आवश्यक',
-  statusAcknowledged: 'स्वीकार किया गया',
+  statusAcknowledged: 'जवाब दिया',
   viewPhotoAccessibility: 'SOS फ़ोटो देखें',
   photoTapHint: 'पूरी फ़ोटो देखने के लिए टैप करें',
   photoLoadFailed:
@@ -13,7 +13,7 @@ export const sos = {
   noPhoto: 'इस अलर्ट के साथ कोई फ़ोटो नहीं जुड़ी है।',
   acknowledgedAt: '{{time}} स्वीकार किया गया',
   openInMaps: 'मैप्स में खोलें',
-  acknowledgeButton: 'मैं संभाल रहा हूँ',
+  acknowledgeButton: 'मैंने संभाल लिया',
   acknowledgingButton: 'सहेजा जा रहा है…',
   toastAcknowledgeFailed:
     'स्वीकार नहीं किया जा सका। कृपया थोड़ी देर में पुनः प्रयास करें।',
@@ -24,8 +24,7 @@ export const sos = {
   toastSent:
     'SOS भेज दिया गया। हो सके तो किसी सुरक्षित जगह रहें — आपके माता-पिता को सूचित कर दिया गया है।',
   escapeGrantedTitle: 'SOS भेजा गया',
-  escapeGrantedBody:
-    'तुम्हारे माता-पिता को सूचित कर दिया गया है। यह डिवाइस लॉक ही रहेगा।',
+  escapeGrantedBody: 'आपके माता-पिता को सूचित कर दिया गया है। यह डिवाइस लॉक ही रहेगा।',
   toastSentWithoutPhoto:
     'SOS भेज दिया गया, लेकिन बिना फ़ोटो के। कृपया सेटिंग्स में कैमरे की अनुमति दें और हो सके तो फिर से प्रयास करें।',
   toastSendFailed:
@@ -35,7 +34,7 @@ export const sos = {
     'फिर से प्रयास करने के लिए बटन को दोबारा दबाए रखें। अगर यह बार-बार विफल हो, तो तुरंत किसी भरोसेमंद व्यक्ति को कॉल करें।',
   headerTitle: 'आपातकालीन SOS',
   headerSubtitle:
-    'जब आप असुरक्षित महसूस करें या तुरंत मदद चाहिए हो, तब इसका उपयोग करें।',
+    'जब आप असुरक्षित महसूस करें या आपको तुरंत मदद की ज़रूरत हो, तब इसका इस्तेमाल करें।',
   infoInstantAlertLabel: 'तुरंत अलर्ट',
   infoInstantAlertDetail: 'आपके माता-पिता को तुरंत एक ज़रूरी सूचना मिलती है।',
   infoYourLocationLabel: 'आपका स्थान',
@@ -64,7 +63,7 @@ export const sos = {
   noPhotoAttached: 'इस अलर्ट के साथ कोई फ़ोटो नहीं जुड़ी थी।',
   sentRelativeTime: '{{relativeTime}} भेजा गया',
   imOnIt: 'मैं संभाल रहा हूँ',
-  acknowledging: 'स्वीकार किया जा रहा है…',
+  acknowledging: 'सहेजा जा रहा है…',
   unableToAcknowledgeSos:
     'स्वीकार नहीं किया जा सका। कृपया थोड़ी देर में पुनः प्रयास करें।',
   noLocationSharedWithSos: 'इस SOS के साथ कोई स्थान साझा नहीं किया गया।',

@@ -23,7 +23,7 @@ export const location = {
     'Veuillez d’abord activer le partage de position avant de demander une actualisation.',
   activityTitleRefreshRequested: 'Actualisation de la position demandée',
   activityDescriptionRefreshRequested:
-    'Une demande a été envoyée à {{deviceName}} pour transmettre sa position la plus récente.',
+    'KidGate a demandé à {{deviceName}} d’envoyer une position à jour.',
   toastRefreshSent:
     '{{deviceName}} mettra à jour sa position dès que la demande sera reçue.',
   toastRefreshFailed:
@@ -40,7 +40,7 @@ export const location = {
     'Impossible de demander une actualisation de la position',
   locationBannerTitle: 'Activer la localisation',
   locationBannerBody:
-    'Tes parents veulent savoir où est cet appareil, pour être sûrs que tu es bien arrivé.',
+    'Tes parents veulent savoir où est cet appareil, pour être sûrs que tout va bien.',
   locationBannerBodySharingOff:
     'Le partage de position est désactivé pour le moment, donc rien n’est envoyé. En autorisant ici, tout fonctionnera tout de suite si tes parents l’activent plus tard.',
   allowLocationButton: 'Autoriser la localisation',
@@ -89,7 +89,7 @@ export const location = {
     'Votre essai est terminé. Passez à l’offre supérieure pour voir les noms de lieux en entier.',
   namesNeedPremiumStill:
     'Les positions sont toujours enregistrées, et les lieux que vous avez enregistrés affichent toujours leur nom.',
-  awayFromPlace: 'À {{distance}} au {{direction}} de {{place}}',
+  awayFromPlace: 'À {{distance}} de {{place}}, direction {{direction}}',
   distanceKm: '{{value}} km',
   distanceMeters: '{{value}} m',
   compassN: 'nord',

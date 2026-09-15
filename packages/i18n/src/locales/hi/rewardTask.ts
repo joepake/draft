@@ -33,10 +33,10 @@ export const rewardTask = {
   heroCaptionEmpty: 'टास्क बनाएं ताकि बच्चा अतिरिक्त स्क्रीन टाइम कमा सके।',
   noLimitHintTitle: 'दैनिक सीमा सेट नहीं है',
   noLimitHintBody:
-    'बोनस मिनट तभी लागू होते हैं जब डिवाइस पर दैनिक सीमा हो। पहले दैनिक सीमा में सेट करें।',
+    'बोनस मिनट तभी लागू होते हैं जब इस डिवाइस पर दैनिक सीमा तय हो। पहले “दैनिक सीमा” में जाकर एक सीमा तय करें।',
   noLimitHintCta: 'दैनिक सीमा सेट करें',
   openSectionTitle: 'बाकी टास्क',
-  tabOpen: 'करने के लिए',
+  tabOpen: 'करने बाकी',
   tabDone: 'पूरे हुए',
   doneEmptyBody: 'मंज़ूर हुए टास्क यहाँ दिखाई देंगे।',
   openSectionSubtitle: 'बदलने या हटाने के लिए टास्क पर टैप करें।',
@@ -67,7 +67,7 @@ export const rewardTask = {
   taskRejectedDescription:
     '“{{title}}” को दोबारा कोशिश के लिए {{deviceName}} को वापस भेजा गया।',
   starsLabel: 'कठिनाई',
-  starsHint: 'यह काम कितना मुश्किल है. आपका बच्चा ये सितारे जमा करता है.',
+  starsHint: 'यह टास्क कितना मुश्किल है। आपका बच्चा ये सितारे जमा करता है।',
   starsEasy: 'आसान',
   starsMedium: 'मध्यम',
   starsHard: 'मुश्किल',

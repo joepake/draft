@@ -4,7 +4,7 @@ export const webFilter = {
   appliesToAll: 'S’applique aux {{count}} appareils de {{name}}',
   coverageLine: 'Actif sur {{enforcing}} appareil(s) sur {{total}}',
   mergeNotice:
-    'Les appareils de {{name}} avaient des réglages de filtre web différents. Enregistrer ici applique un seul ensemble à tous, combiné vers le choix le plus strict.',
+    'Les appareils de {{name}} avaient des réglages de filtre web différents. Enregistrer ici applique un seul jeu de réglages à tous, en retenant à chaque fois le choix le plus strict.',
   mergeLoosened: 'Désormais autorisé sur chaque appareil : {{domains}}',
   toastUpdateFailed: 'Impossible de mettre à jour le Filtre web. Veuillez réessayer.',
   heroTitle: 'Filtrer les sites inappropriés',
@@ -18,7 +18,7 @@ export const webFilter = {
   toggleHintAndroid:
     'L’enfant doit approuver une fois la connexion VPN de KidGate. Gardez le VPN actif pour que le filtre fonctionne.',
   toggleHintMacos:
-    'L’enfant doit approuver une fois l’extension de filtre KidGate dans Réglages Système. Laisse-la approuvée pour que le filtre fonctionne.',
+    'L’enfant doit approuver une fois l’extension de filtre KidGate dans Réglages Système. Laissez-la approuvée pour que le filtre fonctionne.',
   toggleAccessibilityLabel: 'Activer le Filtre web',
   safeSearchSectionTitle: 'Recherche sécurisée et YouTube',
   safeSearchSectionSubtitle:
@@ -35,7 +35,7 @@ export const webFilter = {
   infoLine3Ios:
     'KidGate applique le réglage automatiquement quand l’app de l’appareil de l’enfant synchronise les contrôles.',
   infoLine1Android:
-    'KidGate lance un VPN local qui inspecte le DNS à la recherche de domaines adultes et bloque certains résolveurs DNS chiffrés.',
+    'KidGate établit une connexion privée sur l’appareil : elle vérifie les sites consultés et bloque ceux qui relèvent des catégories que vous avez choisies.',
   infoLine2Android:
     'Désactivez le DNS privé sur l’appareil de l’enfant. S’il est actif, les navigateurs peuvent contourner le filtre.',
   infoLine3Android:
@@ -45,7 +45,7 @@ export const webFilter = {
   infoLine1Macos:
     'KidGate exécute un filtre de contenu sur le Mac qui vérifie les sites consultés et bloque ceux qui relèvent de vos catégories.',
   infoLine2Macos:
-    'Si le filtre apparaît comme non approuvé sur le Mac de l’enfant, ouvre Réglages Système → Général → Éléments de connexion et extensions pour l’approuver.',
+    'Si le filtre apparaît comme non approuvé sur le Mac de l’enfant, ouvrez Réglages Système → Général → Éléments de connexion et extensions pour l’approuver.',
   infoLine3Macos:
     'Le Mac de l’enfant affiche le filtre comme actif une fois approuvé. S’il est désactivé là-bas, rouvre KidGate pour le restaurer.',
   infoLine4Macos:
@@ -82,16 +82,16 @@ export const webFilter = {
 
   windowsFilterNote: 'Utilise le résolveur de KidGate sous Windows',
   webFilteringNote:
-    'iOS utilise le filtre adulte de Temps d’écran ; Android une liste de blocage via VPN DNS local.',
+    'iOS utilise le filtre adulte de Temps d’écran ; Android, Mac et Windows utilisent la liste de blocage de KidGate.',
   safeSearchAlertsNote:
     'Safari ne partage pas les termes de recherche ; les alertes par mots-clés nécessitent un navigateur sécurisé géré.',
   webHistoryNote: 'Nécessite un navigateur filtré ou des rapports de type DNS/VPN.',
   categoriesTitle: 'Que bloquer',
   categoriesSubtitle:
     'KidGate utilise ses propres listes de domaines. Elles couvrent les sites que les enfants atteignent vraiment, pas tout le web — complétez-les avec les listes ci-dessous.',
-  androidOnlyCategory: 'Android uniquement : iOS n’a pas de contrôle web par catégorie',
+  androidOnlyCategory: 'Indisponible sur iPhone — fonctionne sur Android et sur Mac',
   iosCategoryNote:
-    'L’iPhone ne gère que {{category}}, via le filtre d’Apple. Les autres catégories s’appliquent aux appareils Android.',
+    'L’iPhone ne gère que {{category}}, via le filtre d’Apple. Les autres catégories s’appliquent aux appareils Android et Mac de l’enfant.',
   allowListTitle: 'Toujours autoriser',
   allowListSubtitle:
     'Sites qui restent accessibles même si une catégorie les bloquerait.',
@@ -106,7 +106,8 @@ export const webFilter = {
     'Tout ce qui n’est pas dans votre liste est refusé. Cela agit au niveau DNS, donc les autres apps perdent aussi leurs connexions.',
   allowListOnlyHintIos:
     'Safari et les navigateurs intégrés ne peuvent ouvrir que les sites de votre liste.',
-  allowListOnlyNeedsEntries: 'Ajoutez au moins un site autorisé avant d’activer.',
+  allowListOnlyNeedsEntries:
+    'Ajoutez au moins un site autorisé avant d’activer cette option.',
   domainPlaceholder: 'exemple.com',
   addDomain: 'Ajouter un site',
   removeDomain: 'Retirer {{domain}}',
@@ -163,7 +164,7 @@ export const webFilter = {
     gambling: 'Casinos, paris sportifs, poker',
     gameGambling: 'Ouverture de caisses, paris skins et Roblox',
     dating: 'Applis de rencontre',
-    strangerChat: 'Clones dOmegle, chat vidéo aléatoire',
+    strangerChat: 'Clones d’Omegle, chat vidéo aléatoire',
     drugs: 'Cannabis, vapotage, alcool',
     violence: 'Sites gore et images choc',
     extremism: 'Forums haineux et sites extrémistes',

@@ -71,7 +71,7 @@ export const deviceDetail = {
   removeDeviceMessage:
     'سيتم فصل {{deviceName}} عن حسابك. وسيتم حذف جميع طلبات الوقت وسجل النشاط المرتبطين به.',
   unableToRemoveDevice: 'تعذر إزالة الجهاز. يرجى المحاولة مرة أخرى.',
-  checkInNotificationSent: 'سيتلقى {{deviceName}} طلب تسجيل وصول.',
+  checkInNotificationSent: 'سيتلقى {{deviceName}} طلب اطمئنان.',
   checkInOfflineTitle: 'يبدو أن هذا الجهاز غير متصل',
   checkInOfflineBody:
     'لم يصل KidGate أي إشارة من {{deviceName}} منذ {{lastSeen}}. لن يصل طلب الاطمئنان إلا عند عودة الجهاز للاتصال.',

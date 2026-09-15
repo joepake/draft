@@ -57,7 +57,7 @@ export const placeAlerts = {
     '«{{name}}» está a {{meters}} m y su círculo llega hasta aquí. Mientras el dispositivo esté en ambos, solo avisa el más cercano. Guarda otra vez para conservarlo.',
   copyTitle: '¿Copiarlo a los demás hijos?',
   copyMessage:
-    '¿Copiar «{{name}}» a los otros {{count}} dispositivos de hijos en esta familia?',
+    '¿Copiar «{{name}}» a los otros {{count}} dispositivos infantiles de esta familia?',
   copyMessage_one: '¿Copiar «{{name}}» al otro dispositivo del hijo en esta familia?',
   copyConfirm: 'Copiar',
   copyDoneToast: 'Copiado a {{count}} dispositivos.',

@@ -9,7 +9,7 @@ export const appLimits = {
   addSectionSubtitle: 'お子さまが最近使ったアプリ。',
   candidateUsage: '本日 {{duration}}',
   noUsageYet:
-    '利用記録がまだありません。お子さまのデバイスから届き次第、ここに表示されます。',
+    '利用記録がまだありません。お子さまのデバイスから利用状況が届くと、アプリごとの上限を設定できるようになります。',
   footnote: '上限はお子さまのデバイスで深夜0時にリセットされます。',
   toastSaved: 'アプリの上限を保存しました。',
   toastSaveFailed: '保存できませんでした。もう一度お試しください。',

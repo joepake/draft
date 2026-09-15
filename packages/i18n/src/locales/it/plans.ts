@@ -213,7 +213,7 @@ export const plans = {
     'La versione gratuita invia un report alla fine della prova. Premium ne invia uno ogni settimana.',
   teaserProofRewardTasks: 'Attività attive: {{count}}',
   teaserRewardTasks:
-    'È tutto ciò che il piano gratuito tiene attivo insieme. Premium raddoppia.',
+    'Sono tutti i compiti che il piano gratuito tiene attivi insieme. Premium ne raddoppia il numero.',
   teaserLiveNote:
     'La versione gratuita si aggiorna ogni 30 minuti. Premium è in tempo reale.',
   teaserUsageTimeline:

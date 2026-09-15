@@ -2,7 +2,7 @@ export const screenTime = {
   turnOnScreenTime: 'Activer Temps d’écran',
   finishScreenTimeSetup: 'Terminer la configuration de Temps d’écran',
   screenTimeNeededForControls:
-    'Le blocage d’apps, les Heures bloquées et le verrouillage nécessitent Temps d’écran sur cet appareil.',
+    'Le Blocage des applications, les Heures bloquées et le verrouillage nécessitent Temps d’écran sur cet appareil.',
   screenTimeNeededForLimits:
     'Sans Temps d’écran, le verrouillage, les Heures bloquées et les limites d’apps ne peuvent pas s’appliquer.',
   screenTimeStepOpenKidGate: 'Ouvrez KidGate sur cet appareil de l’enfant.',
@@ -34,7 +34,8 @@ export const screenTime = {
   usageAccessBannerBody:
     'KidGate a besoin de l’Accès à l’utilisation pour suivre le temps d’écran et appliquer les limites.',
   usageAccessStepOpenSettings: 'Sélectionnez Ouvrir les Réglages ci-dessous.',
-  usageAccessStepFindKidGate: 'Trouvez KidGate et activez l’Accès à l’utilisation.',
+  usageAccessStepFindKidGate:
+    'Trouvez KidGate et activez l’accès aux données d’utilisation.',
   usageAccessStepReturn: 'Revenez ici — l’état se met à jour automatiquement.',
   noDailyLimitSet: 'Aucune Limite quotidienne définie',
   limitReachedStatus: '{{used}} / {{limit}} · Limite atteinte',

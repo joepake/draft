@@ -9,7 +9,7 @@ export const timeRequest = {
   alertReasonLine: 'Motivo: {{reason}}',
   alertNotNow: 'Non ora',
   alertApprove: 'Approva',
-  alertPauseInstead: 'Blocca invece',
+  alertPauseInstead: 'Blocca il dispositivo',
   alertLater: 'Più tardi',
   toastDeclineFailed: 'Impossibile rifiutare la richiesta. Riprova.',
   toastApproveFailed: 'Impossibile approvare la richiesta. Riprova.',

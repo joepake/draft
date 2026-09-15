@@ -116,8 +116,14 @@ const en = {
   'search.use': 'Use',
 
   // -------------------------------------------------------------- families
-  'families.reasonStored': 'Stored with every page you load and every family you open.',
-  'families.load': 'List families',
+  'families.reasonStored':
+    'Stored with every family you open, and with the pages loaded while it is typed.',
+  'families.reasonForOpening_one':
+    '{count} more character before a family can be opened. The list itself needs none.',
+  'families.reasonForOpening_other':
+    '{count} more characters before a family can be opened. The list itself needs none.',
+  'families.reasonToOpen': 'Type a reason of at least 12 characters first.',
+  'families.reload': 'Reload',
   'families.loading': 'Loading…',
   'families.loadMore': 'Load 50 more',
   'families.open': 'Open',
@@ -126,7 +132,17 @@ const en = {
   'families.end': 'End of the list.',
   'families.shown_one': '{count} family listed',
   'families.shown_other': '{count} families listed',
+  'families.shownFiltered_one': '{count} of {loaded} loaded families matches',
+  'families.shownFiltered_other': '{count} of {loaded} loaded families match',
   'families.colCreated': 'Created',
+  'families.filterPlan': 'Plan',
+  'families.filterStatus': 'Subscription',
+  'families.filterName': 'Name or uid',
+  'families.filterAny': 'Any',
+  'families.filterNameHint':
+    'Plan and subscription filter the whole collection. Name narrows only the rows already loaded — to search every family, use Family lookup.',
+  'families.noneMatchLoaded':
+    'No loaded row matches that name. Load more, or search every family in Family lookup.',
 
   // ---------------------------------------------------------------- family
   'family.plan': 'Plan',
@@ -212,13 +228,6 @@ const en = {
     'Over a month is the closest signal to an uninstall the product has',
   'fleet.appVersion': 'App version',
   'fleet.appVersionSub': 'The name a person reads — `1.0.0`',
-  'fleet.appBuild': 'Build number',
-  'fleet.appBuildSub':
-    'A string, not a number — Windows has none, so the field could not be numeric',
-  'fleet.ota': 'OTA bundle',
-  'fleet.otaSubBefore': 'Compare against ',
-  'fleet.otaSubAfter':
-    '. Unknown is desktop, TV and the extension, which have no OTA channel — not "behind"',
   'fleet.osVersion': 'OS version',
   'fleet.osVersionSub': 'Decides what a build may drop support for',
   'fleet.locale': 'Device language',
@@ -275,7 +284,6 @@ const en = {
   'webFilter.unknown': 'No probe yet',
 
   'value.unknown': 'Unknown',
-  'value.noOtaChannel': 'No OTA channel',
 
   'permission.screenTime': 'Screen time',
   'permission.accessibility': 'Accessibility',
@@ -539,8 +547,12 @@ const vi = {
   'search.use': 'Dùng',
 
   // -------------------------------------------------------------- families
-  'families.reasonStored': 'Sẽ lưu kèm mỗi trang bạn tải và mỗi gia đình bạn mở.',
-  'families.load': 'Liệt kê gia đình',
+  'families.reasonStored':
+    'Sẽ lưu kèm mỗi gia đình bạn mở, và kèm các trang tải khi đã nhập lý do.',
+  'families.reasonForOpening':
+    'Còn {count} ký tự nữa mới mở được một gia đình. Danh sách thì không cần lý do.',
+  'families.reasonToOpen': 'Nhập lý do ít nhất 12 ký tự trước đã.',
+  'families.reload': 'Tải lại',
   'families.loading': 'Đang tải…',
   'families.loadMore': 'Tải thêm 50',
   'families.open': 'Mở',
@@ -548,7 +560,16 @@ const vi = {
   'families.empty': 'Không có gia đình nào.',
   'families.end': 'Hết danh sách.',
   'families.shown': 'Đã liệt kê {count} gia đình',
+  'families.shownFiltered': 'Khớp {count}/{loaded} gia đình đã tải',
   'families.colCreated': 'Tạo ngày',
+  'families.filterPlan': 'Gói',
+  'families.filterStatus': 'Đăng ký',
+  'families.filterName': 'Tên hoặc uid',
+  'families.filterAny': 'Tất cả',
+  'families.filterNameHint':
+    'Gói và đăng ký lọc trên toàn bộ collection. Tên chỉ lọc trong các dòng đã tải — muốn tìm mọi gia đình thì dùng Tra cứu gia đình.',
+  'families.noneMatchLoaded':
+    'Không dòng đã tải nào khớp tên đó. Tải thêm, hoặc tìm mọi gia đình ở Tra cứu gia đình.',
 
   // ---------------------------------------------------------------- family
   'family.plan': 'Gói',
@@ -633,13 +654,6 @@ const vi = {
     'Quá một tháng là tín hiệu gần nhất với việc gỡ cài đặt mà sản phẩm có được',
   'fleet.appVersion': 'Phiên bản ứng dụng',
   'fleet.appVersionSub': 'Tên người dùng đọc được — `1.0.0`',
-  'fleet.appBuild': 'Số bản dựng',
-  'fleet.appBuildSub':
-    'Là chuỗi, không phải số — Windows không có, nên trường này không thể là kiểu số',
-  'fleet.ota': 'Gói OTA',
-  'fleet.otaSubBefore': 'So sánh với ',
-  'fleet.otaSubAfter':
-    '. Không rõ là desktop, TV và tiện ích mở rộng — những nền tảng không có kênh OTA, chứ không phải "tụt hậu"',
   'fleet.osVersion': 'Phiên bản hệ điều hành',
   'fleet.osVersionSub': 'Quyết định bản dựng được phép bỏ hỗ trợ tới đâu',
   'fleet.locale': 'Ngôn ngữ thiết bị',
@@ -696,7 +710,6 @@ const vi = {
   'webFilter.unknown': 'Chưa dò',
 
   'value.unknown': 'Không rõ',
-  'value.noOtaChannel': 'Không có kênh OTA',
 
   'permission.screenTime': 'Thời gian sử dụng',
   'permission.accessibility': 'Trợ năng',

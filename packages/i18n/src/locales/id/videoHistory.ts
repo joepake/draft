@@ -6,7 +6,7 @@ export const videoHistory = {
     'YouTube di peramban, dan aplikasi YouTube di ponsel Android dan TV. Di TV, Shorts tidak dicantumkan karena aplikasi TV tidak mengenalinya sebagai Shorts.',
   toggleFailed: 'Tidak dapat memperbarui riwayat video. Coba lagi.',
   unsupportedNote:
-    'Perangkat ini tidak dapat melaporkan video yang ditonton. Berfungsi di Android dan Chrome.',
+    'Perangkat ini tidak dapat melaporkan video yang ditonton. Fitur ini berfungsi di Android, Android TV, dan Chrome.',
 
   unsupportedNeedsExtension:
     'KidGate di komputer ini tidak bisa melihat video apa yang ditonton — ia membaca nama situs, bukan isi halaman. Ekstensi KidGate untuk Chrome bisa: pasang di komputer ini, dan ia melaporkan video yang ditonton sebagai perangkat tersendiri.',
@@ -32,7 +32,7 @@ export const videoHistory = {
   heroVideos: 'Video',
   heroChannels: 'Kanal',
   heroViews: 'Diputar',
-  emptyStepEnable: 'Nyalakan pencatatan',
+  emptyStepEnable: 'Nyalakan perekaman',
   emptyStepWatch: 'Anak menonton YouTube',
   emptyStepAppear: 'Video muncul di sini',
   unknownChannel: 'Kanal tidak diketahui',

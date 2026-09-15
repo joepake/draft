@@ -38,7 +38,7 @@ export const rewardTask = {
   openSectionTitle: 'المهام المتبقية',
   tabOpen: 'قيد التنفيذ',
   tabDone: 'منجزة',
-  doneEmptyBody: 'تظهر المهام المعتمدة هنا.',
+  doneEmptyBody: 'تظهر المهام المعتمدة هنا بعد أن تراجعها.',
   openSectionSubtitle: 'اضغط على مهمة لتعديلها أو حذفها.',
   editTaskA11y: 'تعديل المهمة {{title}}',
   sentBackNote: 'أُعيدت — بانتظار محاولة أخرى.',

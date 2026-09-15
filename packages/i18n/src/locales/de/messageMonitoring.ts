@@ -34,7 +34,7 @@ export const messageMonitoring = {
     'KidGate hat die Nachricht nicht gespeichert – nur dieses Wort. Alles Weitere muss von deinem Kind kommen.',
   guidance: {
     predator:
-      'Anbahnung beginnt fast immer freundlich, von jemandem, den dein Kind für gleichaltrig hält. Frage, mit wem es zurzeit schreibt und wie die beiden sich kennengelernt haben, bevor du die Warnung erwähnst – ein Kind, das sich erwischt fühlt, antwortet nicht mehr.',
+      'Grooming beginnt fast immer freundlich, von jemandem, den dein Kind für gleichaltrig hält. Frage, mit wem es zurzeit schreibt und wie die beiden sich kennengelernt haben, bevor du die Warnung erwähnst – ein Kind, das sich erwischt fühlt, antwortet nicht mehr.',
     selfHarm:
       'Solche Wörter sind viel häufiger ein Signal als ein Plan, und direkt danach zu fragen bringt niemanden auf die Idee. Sage, was du gesehen hast, und dass du nicht wütend bist; wenn dich die Antwort erschreckt, rufe noch am selben Tag eine Krisenhotline an.',
     explicit:
@@ -85,7 +85,7 @@ export const messageMonitoring = {
   consentEnable: 'KI-Analyse aktivieren',
   consentConfirmTitle: 'KI-Nachrichtenanalyse aktivieren?',
   consentConfirmBody:
-    'Grenzwertige Nachrichten, ohne persönliche Daten, werden zur Prüfung an einen KI-Dienst gesendet. Du bestätigst, dass du dieser Verarbeitung zustimmst.',
+    'Grenzwertige Nachrichten werden – von persönlichen Daten befreit – zur Prüfung an einen KI-Dienst gesendet. Du bestätigst, dass du dieser Verarbeitung zustimmst.',
   consentAgree: 'Ich stimme zu',
   outgoingTitle: 'Nachrichten, die du schreibst',
   outgoingBody:

@@ -163,7 +163,7 @@ export const settings = {
   familyChildrenEmpty:
     'Ajoutez un appareil enfant pour définir des limites et consulter l’activité.',
   familyChildDeviceSubtitle: 'Appareil de l’enfant',
-  familyPendingSection: 'En attente de rejoindre',
+  familyPendingSection: 'En attente d’adhésion',
   familyYouSection: 'Vous',
   familyOtherParentsSection: 'Autres parents',
   familyOpenChildHint: 'Ouvrir les détails de l’appareil',

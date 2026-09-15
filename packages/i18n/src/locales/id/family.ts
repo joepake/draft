@@ -126,7 +126,7 @@ export const family = {
 
   healthProtected: 'Terlindungi',
   buildOutdated: 'Pembaruan tersedia',
-  healthNeedsSetup: 'Perlu pengaturan',
+  healthNeedsSetup: 'Perlu disiapkan',
   healthOffline: 'Offline',
   devicePausedLabel: 'Dijeda',
   devicePausedHint: 'Dijeda di paket gratis — semua aturan tetap berlaku',
@@ -173,7 +173,7 @@ export const family = {
   switchToJoinTitle: 'Bergabung ke keluarga lain?',
 
   switchToJoinMessage:
-    'Keluarga kosong Anda akan dihapus sehingga Anda dapat bergabung ke keluarga lain menggunakan kode undangan. Jika sudah ada perangkat anak yang terhubung, selesaikan terlebih dahulu.',
+    'Keluarga kosong Anda akan dihapus sehingga Anda dapat bergabung ke keluarga lain menggunakan kode undangan. Jika sudah ada perangkat anak yang terhubung, tangani dulu perangkat itu.',
 
   guestEmptyTitle: 'Mulai keluarga Anda di sini',
 

@@ -8,7 +8,7 @@ export const pairing = {
   parentInstructions:
     'बच्चे के डिवाइस पर, KidGate खोलें और यह बच्चे का डिवाइस है चुनें। फिर उस स्क्रीन पर दिखाया गया कोड दर्ज करें।',
   parentScanInstructions: 'बच्चे के डिवाइस पर मौजूद QR कोड पर अपना कैमरा फ़ोकस करें।',
-  childWaitingTitle: 'अभिभावक की प्रतीक्षा में',
+  childWaitingTitle: 'माता-पिता का इंतज़ार',
   childWaitingSubtitle:
     'कृपया इस स्क्रीन को खुला रखें। कोई अभिभावक अपने KidGate ऐप से इस डिवाइस को कनेक्ट करेगा।',
   childCodeLabel: 'या यह कोड साझा करें',

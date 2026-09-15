@@ -25,7 +25,7 @@ export const permissions = {
   exactAlarmLabel: 'अलार्म और रिमाइंडर',
   exactAlarmHint:
     'अलार्म और रिमाइंडर की अनुमति दें ताकि ब्लॉक किए गए समय सही समय पर शुरू और खत्म हों।',
-  accessibilityLabel: 'एक्सेसिबिलिटी लॉक हेल्पर',
+  accessibilityLabel: 'एक्सेसिबिलिटी (लॉक हेल्पर)',
   accessibilityHint: 'KidGate का लॉक दूसरे ऐप्स के ऊपर बनाए रखता है।',
   oemSectionDescription:
     '{{brand}} डिवाइस अक्सर बैकग्राउंड ऐप्स को रोक देते हैं। कृपया ये चरण पूरे करें ताकि लॉकिंग और ब्लॉक किए गए समय काम करते रहें।',
