@@ -417,21 +417,19 @@
   padding-inline-start: 1.35rem;
 }
 
-.kid-group-name {
-  flex: 1;
-  min-width: 0;
-  font-size: var(--dash-text-3);
-  font-weight: 600;
-  color: var(--ink-2);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+/*
+ * The group head reads as a person now, not a rail label: `.kid-meta` gives it
+ * the same two lines a device row has — the name, then how many machines are
+ * behind it — so a family of four is four distinguishable rows rather than
+ * four identical ones with a different word in each.
+ */
+.kid-group-head {
+  min-height: 3.1rem;
 }
 
-.kid-group-head.is-open .kid-group-name,
-.kid-group-head.is-active .kid-group-name {
+.kid-group-head.is-open .kid-meta strong,
+.kid-group-head.is-active .kid-meta strong {
   color: var(--ink);
-  font-weight: 700;
 }
 
 /*
@@ -647,9 +645,25 @@
 
 /* The top padding is tighter than the sides on purpose: the rail's brand band
    already sits above this, so a full 1.6rem read as a second one. */
+/*
+ * A reading column, not the whole window.
+ *
+ * Every card in here is a list or a figure with a label, and both stop being
+ * readable somewhere around 60 characters. Unbounded, a 1400px browser drew a
+ * device name against two feet of empty card with its status a whole screen
+ * away — which is what made this page read as a spreadsheet next to the phone
+ * it mirrors. Left-aligned rather than centred, the way `.kid-list` already
+ * caps itself: the menu is the page's leading edge and the content should
+ * start where the menu ends.
+ */
 .dash-main {
+  --dash-column: 54rem;
   padding: 1.1rem 1.9rem 3rem;
   min-width: 0;
+}
+
+.dash-main > * {
+  max-width: var(--dash-column);
 }
 
 .dash-top {
@@ -870,10 +884,26 @@
   transform: translateY(1px);
 }
 
+/*
+ * The page's ink is the wrong colour on a filled button, and it failed in BOTH
+ * palettes — measured 2026-09-15 against the resolved teal accent:
+ *
+ *   light  #0F172A on #0F766E → 3.26:1   dark  #F8FAFC on #2DD4BF → 1.78:1
+ *   light  --plane on #0F766E → 4.83:1   dark  --plane on #2DD4BF → 10.38:1
+ *
+ * `--ink` is the colour of text ON THE PAGE, and this button is not the page —
+ * it is a solid brand fill, so its label belongs to the brand. `--plane` is
+ * that colour by construction: the ground the brand was chosen to sit on. The
+ * far end of the gradient is checked too (light 5.24:1, dark 9.02:1), because
+ * a label crossing a 135° gradient sits on both.
+ *
+ * `--kg-onPrimary` first, so a pack that ships an explicit on-brand colour
+ * wins; the same fallback `.kid.is-active .kid-avatar` already uses.
+ */
 .btn-primary {
   background: linear-gradient(135deg, var(--brand), var(--brand-2));
   border-color: transparent;
-  color: var(--ink);
+  color: var(--kg-onPrimary, var(--plane));
 }
 
 .btn-primary:hover {
@@ -920,9 +950,19 @@
   margin-top: 0.2rem;
 }
 
+/*
+ * One column, at every width, since 2026-09-15.
+ *
+ * Both of these were two-column grids that collapsed at 1100px. The phone has
+ * never had a second column, and the two consoles reading the same device in
+ * two different orders is the thing this surface is being brought in line on:
+ * a parent who learned where Blocked Hours sits on their phone should find it
+ * in the same place here. The cap on the pane (`--dash-column`) is what stops
+ * one column becoming one very wide row.
+ */
 .grid-2 {
   display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr);
   gap: 1rem;
   align-items: start;
 }
@@ -931,8 +971,8 @@
    would otherwise leave a hole under the shorter column. */
 .cols {
   display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
-  gap: 0 1.15rem;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
   align-items: start;
 }
 
@@ -944,16 +984,41 @@
   margin-bottom: 1.15rem;
 }
 
+/*
+ * Four figures in ONE card, not four cards in a row.
+ *
+ * As a strip they were the only thing on the page that was not a card, and a
+ * row of four across a desk is a dashboard's shape rather than the summary
+ * card the phone opens with. The tiles inside lose their own frame — one
+ * border around four numbers, which is what they are.
+ */
 .tiles {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem 1.15rem;
   margin-bottom: 1.15rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--dash-radius-3);
+  padding: 1.25rem;
 }
 
+.tiles .tile {
+  background: none;
+  border: 0;
+  padding: 0;
+}
+
+/*
+ * The inline variant is already inside a card and must not gain a second
+ * frame — it resets every property the block above added.
+ */
 .tiles-inline {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   margin-bottom: 0.9rem;
+  background: none;
+  border: 0;
+  padding: 0;
 }
 
 .tile {
@@ -3105,16 +3170,11 @@ ol.attn-fix li + li {
 
 /* ---------- Responsive ---------- */
 
-@media (max-width: 1100px) {
-  .grid-2,
-  .cols {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .tiles {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
+/*
+ * Nothing at 1100px any more. This band existed to collapse the two-column
+ * grids and drop the stat strip from four across to two; both are the base
+ * now, at every width.
+ */
 
 /*
  * A tablet. The rail stays a rail — there is room for it — but it is the part
@@ -3122,6 +3182,436 @@ ol.attn-fix li + li {
  * the browser, and every one of these columns is a card the content has to
  * lay out inside.
  */
+/* ---------- The four sections ----------
+ *
+ * The left menu, the Family list that used to be the rail, the family feed and
+ * the Settings page. The rail's row geometry is shared, not re-declared:
+ * `.nav-item` is already grouped with `.kid` and `.kid-group-head` at the top
+ * of this file, so a menu item and a device row line up down the same column
+ * at every width.
+ */
+
+.side-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  /* Takes the height the child list used to, so the footer stays pinned to the
+     bottom of the rail whatever the family size. */
+  flex: 1 1 auto;
+}
+
+/* The label is what gives way at a narrow rail, never the glyph. */
+.side-nav .nav-item-label {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/*
+ * The way out of a device, above its name.
+ *
+ * Its own row rather than an icon beside the heading: at phone width the menu
+ * is a bottom bar that cannot show which section you are in, so this is the
+ * only thing on screen that says a device is stacked on top of the Family
+ * list — and a 15px chevron tucked against a heading is not a target.
+ */
+.dash-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-bottom: 0.35rem;
+  padding: 0.25rem 0.4rem 0.25rem 0.2rem;
+  margin-inline-start: -0.2rem;
+  border-radius: var(--dash-radius-1);
+  font-size: var(--dash-text-2);
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.dash-back:hover {
+  background: color-mix(in srgb, var(--ink) 6%, transparent);
+  color: var(--ink);
+}
+
+/* The chevron points the way the language runs, so it flips under RTL with
+   everything else rather than pointing back into the page. */
+[dir='rtl'] .dash-back .icon {
+  transform: scaleX(-1);
+}
+
+.family-home,
+.settings-home,
+.feed {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/*
+ * The child list, at page width rather than rail width.
+ *
+ * Capped, and left-aligned inside the cap: a row is a name, a glyph and a
+ * status, and at 1400px it drew a device name against two feet of empty card
+ * with the chevron a whole screen away from it.
+ */
+.kid-list {
+  max-width: 34rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--dash-radius-2);
+  padding: 0.5rem;
+}
+
+.settings-account {
+  /* The rail's footer block, re-homed. It keeps the footer's own rules — the
+     picker and Sign out share a row, the address truncates under them — so
+     this only has to give it a card to sit in. */
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--dash-radius-2);
+  padding: 1rem;
+}
+
+/* ---------- The control centre ----------
+ *
+ * `apps/mobile`'s `DeviceControlCenter` in a browser: one card, a section per
+ * heading, a two-up grid of action cards inside each, and the reveal/hide
+ * button floating in the first section's top corner. The geometry is the
+ * phone's — what changes is that a pointer has hover and a browser window can
+ * be 1400px wide, so the grid takes a third and fourth column when there is
+ * room rather than stretching two cards across a desk.
+ */
+
+.control-center {
+  position: relative;
+  /* Narrower than the default card padding: this card's own padding is the
+     second one the grid inside it pays for, and the grid needs the width. */
+  padding-inline: 0.75rem;
+}
+
+.control-filter {
+  position: absolute;
+  top: 0.75rem;
+  inset-inline-end: 0.75rem;
+  width: 2rem;
+  height: 2rem;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  color: var(--brand);
+  background: color-mix(in srgb, var(--brand) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--brand) 30%, transparent);
+  z-index: 1;
+}
+
+.control-filter:hover {
+  background: color-mix(in srgb, var(--brand) 22%, transparent);
+}
+
+.control-section + .control-section {
+  margin-top: 1.4rem;
+}
+
+.control-section-title {
+  margin: 0;
+  font-size: var(--dash-text-3);
+  font-weight: 800;
+  color: var(--ink);
+  /* Clear of the filter button, which floats over this corner. Held on every
+     section so a long title wraps the same way wherever it sits. */
+  padding-inline-end: 2.5rem;
+}
+
+.control-section-sub {
+  margin: 0.1rem 0 0.7rem;
+  font-size: var(--dash-text-2);
+  color: var(--muted);
+}
+
+.control-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+  gap: 0.5rem;
+}
+
+.control-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.15rem;
+  padding: 0.75rem;
+  text-align: start;
+  border-radius: var(--dash-radius-2);
+  border: 1px solid var(--line);
+  background: var(--plane);
+  transition:
+    background var(--kg-motion-fast) ease,
+    border-color var(--kg-motion-fast) ease;
+}
+
+.control-card:hover:not(:disabled) {
+  border-color: color-mix(in srgb, var(--brand) 45%, var(--line));
+  background: color-mix(in srgb, var(--brand) 7%, var(--plane));
+}
+
+.control-card-icon {
+  display: grid;
+  place-items: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  margin-bottom: 0.3rem;
+  border-radius: var(--dash-radius-1);
+  color: var(--brand);
+  background: color-mix(in srgb, var(--brand) 12%, transparent);
+}
+
+.control-card strong {
+  font-size: var(--dash-text-3);
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.control-card em {
+  font-style: normal;
+  font-size: var(--dash-text-1);
+  line-height: 1.35;
+  color: var(--muted);
+}
+
+/*
+ * The struck-out card: readable, and inert. It is not a disabled control — it
+ * is a sentence about this machine, which is why the copy stays legible rather
+ * than dropping to the 40% a disabled button would take.
+ */
+.control-card:disabled {
+  cursor: default;
+  background: transparent;
+  border-style: dashed;
+}
+
+.control-card:disabled .control-card-icon {
+  color: var(--muted);
+  background: color-mix(in srgb, var(--ink) 7%, transparent);
+}
+
+.control-card:disabled strong {
+  color: var(--ink-2);
+}
+
+/* ---------- The child hub ----------
+ *
+ * The person, between the Family list and one of their machines. Its cards are
+ * the page's ordinary `.card`; what is its own is the hero and the two lists
+ * that carry a row plus a trailing action.
+ */
+
+.child-hub {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.child-hero {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+}
+
+.child-hero-body {
+  flex: 1 1 14rem;
+  min-width: 0;
+}
+
+/* The field and its Save share the row — a name is short, and a full-width
+   input beside a button that has nowhere to go reads as a form. */
+.child-hero-name {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.child-hero-name .reward-input {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.child-hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin: 0.4rem 0 0;
+  font-size: var(--dash-text-2);
+  color: var(--muted);
+}
+
+/*
+ * A row plus a trailing action, twice: a device and its Unassign, a child and
+ * the chevron into their hub. The row itself is `.kid`, so the geometry is the
+ * Family list's — one column, whichever list a parent is reading.
+ */
+.child-device-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.child-device-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.child-device-list li .kid {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.child-assign {
+  margin-top: 0.8rem;
+}
+
+/* A label and its switch, ends of the same line. Used by every child-rule
+   card — the switch is the control, the words are what it does. */
+.row-between-label {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* The sentence under the label. Its own rule rather than `.tl-where`, which
+   this borrowed for an afternoon and which is an italic feed line — a
+   preference row is not a feed row. */
+.row-between-hint {
+  display: block;
+  margin-top: 0.1rem;
+  font-size: var(--dash-text-1);
+  line-height: 1.35;
+  color: var(--muted);
+}
+
+.row-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  min-height: 2.5rem;
+  /* Two rows of preferences need a line between them; one row in a card of
+     its own does not notice this. */
+  padding-block: 0.35rem;
+}
+
+.row-between + .row-between {
+  border-top: 1px solid var(--line);
+}
+
+/* A filed support report: the row is the summary, the reply drops below it. */
+.support-row {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.support-detail {
+  padding: 0 0.55rem 0.5rem;
+  font-size: var(--dash-text-2);
+}
+
+.support-detail p {
+  margin: 0.2rem 0 0;
+}
+
+/* ---------- The family feed ---------- */
+
+.feed-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  /* The glyph and the label are one object, not two things that happen to be
+     adjacent — without the gap the mark reads as a prefix character. */
+  gap: 0.35rem;
+  min-height: 2rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--muted);
+  font-size: var(--dash-text-2);
+  font-weight: 600;
+  transition:
+    background var(--kg-motion-fast) ease,
+    color var(--kg-motion-fast) ease;
+}
+
+.chip:hover {
+  color: var(--ink);
+}
+
+.chip.is-active {
+  background: color-mix(in srgb, var(--brand) 16%, transparent);
+  border-color: color-mix(in srgb, var(--brand) 40%, transparent);
+  color: var(--ink);
+}
+
+.feed-day {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+/*
+ * Sticky, and on the page's own ground rather than a card's: a feed is read by
+ * scrolling, and a day that scrolls away takes with it the only thing saying
+ * what "9:40" means.
+ */
+.feed-day-head {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  margin: 0;
+  padding: 0.4rem 0;
+  background: var(--plane);
+  font-size: var(--dash-text-1);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.feed-empty {
+  text-align: center;
+}
+
+/* Which device a row came from — the third line, under the sentence, because
+   it is what a parent reads only after something has caught their eye. */
+.tl-where {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: 0.15rem;
+  font-size: var(--dash-text-1);
+  color: var(--muted);
+}
+
+/* The glyph takes the line's colour rather than the ink's: it is part of the
+   quiet third line, not a second emphasis on it. */
+.tl-where .icon {
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+
 @media (min-width: 821px) and (max-width: 1100px) {
   .dash {
     grid-template-columns: 208px minmax(0, 1fr);
@@ -3237,9 +3727,16 @@ ol.attn-fix li + li {
     padding-inline: 1rem;
   }
 
-  .tiles,
+  /* `.tiles` is already two across everywhere; only the inline variant,
+     which sits at three inside a card, has to give one up here. */
   .tiles-inline {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* The reading cap is the window at this width — the pane's padding is the
+     only margin there is room for. */
+  .dash-main > * {
+    max-width: none;
   }
 
   /* Edge to edge: a 26rem card pinned right on a 390px screen is a margin on
@@ -3327,275 +3824,6 @@ ol.attn-fix li + li {
   .top-actions .btn {
     flex: 1 1 auto;
   }
-}
-
-/* ---------- The four sections ----------
- *
- * The left menu, the Family list that used to be the rail, the family feed and
- * the Settings page. The rail's row geometry is shared, not re-declared:
- * `.nav-item` is already grouped with `.kid` and `.kid-group-head` at the top
- * of this file, so a menu item and a device row line up down the same column
- * at every width.
- */
-
-.side-nav {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-  /* Takes the height the child list used to, so the footer stays pinned to the
-     bottom of the rail whatever the family size. */
-  flex: 1 1 auto;
-}
-
-/* The label is what gives way at a narrow rail, never the glyph. */
-.side-nav .nav-item-label {
-  flex: 1 1 auto;
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-/*
- * The way out of a device, above its name.
- *
- * Its own row rather than an icon beside the heading: at phone width the menu
- * is a bottom bar that cannot show which section you are in, so this is the
- * only thing on screen that says a device is stacked on top of the Family
- * list — and a 15px chevron tucked against a heading is not a target.
- */
-.dash-back {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-  margin-bottom: 0.35rem;
-  padding: 0.25rem 0.4rem 0.25rem 0.2rem;
-  margin-inline-start: -0.2rem;
-  border-radius: var(--dash-radius-1);
-  font-size: var(--dash-text-2);
-  font-weight: 600;
-  color: var(--muted);
-}
-
-.dash-back:hover {
-  background: color-mix(in srgb, var(--ink) 6%, transparent);
-  color: var(--ink);
-}
-
-/* The chevron points the way the language runs, so it flips under RTL with
-   everything else rather than pointing back into the page. */
-[dir='rtl'] .dash-back .icon {
-  transform: scaleX(-1);
-}
-
-.family-home,
-.settings-home,
-.feed {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-/*
- * The child list, at page width rather than rail width.
- *
- * Capped, and left-aligned inside the cap: a row is a name, a glyph and a
- * status, and at 1400px it drew a device name against two feet of empty card
- * with the chevron a whole screen away from it.
- */
-.kid-list {
-  max-width: 34rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: var(--dash-radius-2);
-  padding: 0.5rem;
-}
-
-.settings-account {
-  /* The rail's footer block, re-homed. It keeps the footer's own rules — the
-     picker and Sign out share a row, the address truncates under them — so
-     this only has to give it a card to sit in. */
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: var(--dash-radius-2);
-  padding: 1rem;
-}
-
-/* ---------- The child hub ----------
- *
- * The person, between the Family list and one of their machines. Its cards are
- * the page's ordinary `.card`; what is its own is the hero and the two lists
- * that carry a row plus a trailing action.
- */
-
-.child-hub {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.child-hero {
-  display: flex;
-  align-items: center;
-  gap: 0.9rem;
-  flex-wrap: wrap;
-}
-
-.child-hero-body {
-  flex: 1 1 14rem;
-  min-width: 0;
-}
-
-/* The field and its Save share the row — a name is short, and a full-width
-   input beside a button that has nowhere to go reads as a form. */
-.child-hero-name {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-}
-
-.child-hero-name .reward-input {
-  flex: 1 1 auto;
-  min-width: 0;
-}
-
-.child-hero-meta {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  flex-wrap: wrap;
-  margin: 0.4rem 0 0;
-  font-size: var(--dash-text-2);
-  color: var(--muted);
-}
-
-/*
- * A row plus a trailing action, twice: a device and its Unassign, a child and
- * the chevron into their hub. The row itself is `.kid`, so the geometry is the
- * Family list's — one column, whichever list a parent is reading.
- */
-.child-device-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-}
-
-.child-device-list li {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.child-device-list li .kid {
-  flex: 1 1 auto;
-  min-width: 0;
-}
-
-.child-assign {
-  margin-top: 0.8rem;
-}
-
-/* A label and its switch, ends of the same line. Used by every child-rule
-   card — the switch is the control, the words are what it does. */
-.row-between {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  min-height: 2.5rem;
-}
-
-/* A filed support report: the row is the summary, the reply drops below it. */
-.support-row {
-  flex-direction: column;
-  align-items: stretch;
-}
-
-.support-detail {
-  padding: 0 0.55rem 0.5rem;
-  font-size: var(--dash-text-2);
-}
-
-.support-detail p {
-  margin: 0.2rem 0 0;
-}
-
-/* ---------- The family feed ---------- */
-
-.feed-filter {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem;
-}
-
-.chip {
-  display: inline-flex;
-  align-items: center;
-  min-height: 2rem;
-  padding: 0.3rem 0.7rem;
-  border-radius: 999px;
-  border: 1px solid var(--line);
-  background: var(--card);
-  color: var(--muted);
-  font-size: var(--dash-text-2);
-  font-weight: 600;
-  transition:
-    background var(--kg-motion-fast) ease,
-    color var(--kg-motion-fast) ease;
-}
-
-.chip:hover {
-  color: var(--ink);
-}
-
-.chip.is-active {
-  background: color-mix(in srgb, var(--brand) 16%, transparent);
-  border-color: color-mix(in srgb, var(--brand) 40%, transparent);
-  color: var(--ink);
-}
-
-.feed-day {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-
-/*
- * Sticky, and on the page's own ground rather than a card's: a feed is read by
- * scrolling, and a day that scrolls away takes with it the only thing saying
- * what "9:40" means.
- */
-.feed-day-head {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  margin: 0;
-  padding: 0.4rem 0;
-  background: var(--plane);
-  font-size: var(--dash-text-1);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-weight: 700;
-  color: var(--muted);
-}
-
-.feed-empty {
-  text-align: center;
-}
-
-/* Which device a row came from — the third line, under the sentence, because
-   it is what a parent reads only after something has caught their eye. */
-.tl-where {
-  display: block;
-  margin-top: 0.15rem;
-  font-size: var(--dash-text-1);
-  color: var(--muted);
 }
 
 /* ---------- Language picker: sidebar and sign-in placements ---------- */

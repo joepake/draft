@@ -59,6 +59,7 @@
     "./domain/deepLink": "./src/domain/deepLink.ts",
     "./domain/deviceConsents": "./src/domain/deviceConsents.ts",
     "./domain/deviceControlsMapper": "./src/domain/deviceControlsMapper.ts",
+    "./domain/deviceDetailActions": "./src/domain/deviceDetailActions.ts",
     "./domain/deviceFormFactor": "./src/domain/deviceFormFactor.ts",
     "./domain/deviceListPriority": "./src/domain/deviceListPriority.ts",
     "./domain/deviceName": "./src/domain/deviceName.ts",
@@ -200,6 +201,7 @@
   "dependencies": {
     "@kidgate/ports": "workspace:*",
     "@kidgate/schema": "workspace:*",
+    "@kidgate/tokens": "workspace:*",
     "firebase": "^12.17.1",
     "qrcode": "^1.5.4"
   },

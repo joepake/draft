@@ -1,17 +1,18 @@
 import { useEffect, useState } from 'react';
-import Icon from '@kidgate/web-ui/Icon';
 import { useT } from '@kidgate/web-ui/useT';
 import Card from './Card.jsx';
-import ChildInitial from './ChildInitial.jsx';
 import Toggle from './Toggle.jsx';
 
 /**
  * The family itself: its name, the people in it, the star chart.
  *
- * The web half of `FamilyDetailScreen`'s family card and kids tab. Its parents
- * tab is `ParentsCard`, which this surface already had, and its devices tab is
- * the Family section's own list — three tabs on a phone are three cards on a
- * page that has the height for them.
+ * The web half of `FamilyDetailScreen`'s family card. It sits under the Family
+ * list rather than in Settings, because that list is the family — a parent who
+ * wants to rename it or add a child is already looking at it. Settings keeps
+ * what is about the ACCOUNT: the plan, the parents, notifications, support.
+ *
+ * Its kids tab and devices tab are the list above; its parents tab is
+ * `ParentsCard`, which this surface already had.
  *
  * **Owner-only on all three writes**, matching the phone: renaming the family,
  * adding a child and the star-chart switch are the owner's. `controlsApi`
@@ -21,7 +22,6 @@ import Toggle from './Toggle.jsx';
 export default function FamilySettingsCard({
   family,
   children,
-  devices,
   leaderboardEnabled,
   actions,
   run,
@@ -29,7 +29,6 @@ export default function FamilySettingsCard({
   canWrite,
   live,
   appT,
-  onOpenChild,
 }) {
   const { t } = useT();
   const isOwner = Boolean(actions?.isOwner);
@@ -85,36 +84,12 @@ export default function FamilySettingsCard({
       </Card>
 
       <Card title={appT('leaderboard.childrenTitle')}>
-        {children.length === 0 ? (
-          <>
-            <p className="empty">{appT('leaderboard.emptyTitle')}</p>
-            <p className="hint">{appT('leaderboard.emptyBody')}</p>
-          </>
-        ) : (
-          <ul className="child-device-list">
-            {children.map(child => {
-              const count = devices.filter(d => d.childId === child.id).length;
-              return (
-                <li key={child.id}>
-                  <button className="kid" onClick={() => onOpenChild(child.id)}>
-                    <ChildInitial name={child.name} colorIndex={child.colorIndex} />
-                    <span className="kid-meta">
-                      <strong>{child.name}</strong>
-                      {/* The web pack's own count sentence, the one the rail
-                          footer already prints — this is a number of devices,
-                          not a phone-screen label. */}
-                      <em>{t('dash.devices', { count })}</em>
-                    </span>
-                    <Icon name="chevronRight" size={14} />
-                  </button>
-                </li>
-              );
-            })}
-          </ul>
-        )}
-
-        {/* Adding a child is bookkeeping — a row to assign devices to — and
-            is separate from pairing one, which stays on the phone. */}
+        {/* No roster here: the Family list above IS the roster, and a second,
+            shorter copy of it is two places a parent opens a child from that
+            disagree about what a row shows. This card is only the thing the
+            list cannot do — add one. That is bookkeeping, a row to assign
+            devices to, and is separate from PAIRING a device, which stays on
+            the phone. */}
         {isOwner && (
           <div className="child-assign">
             <label className="sheet-label" htmlFor="new-child">
@@ -164,7 +139,8 @@ export default function FamilySettingsCard({
           <div className="row-between">
             <span>{appT('leaderboard.resetsNote')}</span>
             <Toggle
-              checked={leaderboardEnabled}
+              on={leaderboardEnabled}
+              label={appT('leaderboard.settingsTitle')}
               disabled={readOnly || busy}
               onChange={next =>
                 run('leaderboard-toggle', () => actions.setLeaderboardEnabled(next))

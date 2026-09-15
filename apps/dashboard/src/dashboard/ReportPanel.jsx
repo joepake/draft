@@ -193,6 +193,45 @@ export default function ReportPanel({
 
   return (
     <div className="report">
+      {/*
+        The week picker, above the sheet it picks.
+        
+        It closed the page until 2026-09-15, which put the control AFTER the
+        thing it steers: a parent reading last week's report had to scroll
+        past the whole sheet to find out another week existed, and scroll back
+        up to read the one they chose. A chooser belongs in front of its
+        subject.
+      */}
+      <section className="card report-history">
+        <header className="card-head">
+          <div>
+            <h2>{t('report.historyTitle')}</h2>
+          </div>
+        </header>
+        {historyTeaser ? (
+          <PremiumTeaser teaser={historyTeaser} appT={appT} />
+        ) : (
+          reports.length === 1 && <p className="hint">{t('report.historyEmpty')}</p>
+        )}
+        <div className="report-history-list">
+          {reports.map(entry => {
+            const week = reportWeek(entry.periodKey);
+            return (
+              <button
+                key={entry.periodKey}
+                className={`report-chip${entry.periodKey === report.periodKey ? ' is-active' : ''}`}
+                onClick={() => setSelectedKey(entry.periodKey)}
+              >
+                <strong>
+                  {week ? t('report.weekOf', { week: week.week }) : entry.periodKey}
+                </strong>
+                <span>{formatMinutes(entry.screenMinutes)}</span>
+              </button>
+            );
+          })}
+        </div>
+      </section>
+
       <div className="report-actions">
         <button className="btn" onClick={handleCopy}>
           <Icon name="fileText" size={16} />
@@ -362,36 +401,6 @@ export default function ReportPanel({
           })}
         </p>
       </article>
-
-      <section className="card report-history">
-        <header className="card-head">
-          <div>
-            <h2>{t('report.historyTitle')}</h2>
-          </div>
-        </header>
-        {historyTeaser ? (
-          <PremiumTeaser teaser={historyTeaser} appT={appT} />
-        ) : (
-          reports.length === 1 && <p className="hint">{t('report.historyEmpty')}</p>
-        )}
-        <div className="report-history-list">
-          {reports.map(entry => {
-            const week = reportWeek(entry.periodKey);
-            return (
-              <button
-                key={entry.periodKey}
-                className={`report-chip${entry.periodKey === report.periodKey ? ' is-active' : ''}`}
-                onClick={() => setSelectedKey(entry.periodKey)}
-              >
-                <strong>
-                  {week ? t('report.weekOf', { week: week.week }) : entry.periodKey}
-                </strong>
-                <span>{formatMinutes(entry.screenMinutes)}</span>
-              </button>
-            );
-          })}
-        </div>
-      </section>
     </div>
   );
 }

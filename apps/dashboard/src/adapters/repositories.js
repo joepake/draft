@@ -35,6 +35,7 @@ import { createClockAdapter } from './clock.js';
 import { createFirestoreAdapter } from './firestore.js';
 import { wrapWithReadCounter } from './readCounter.js';
 import { createStorageAdapter } from './storage.js';
+import { APP_VERSION, APP_VERSION_CODE } from '../lib/appVersion.js';
 
 /**
  * Composition root: the one place this app decides which implementation each
@@ -205,15 +206,14 @@ export const accountDeletionRepository = createAccountDeletionRepository({
 });
 
 /**
- * `appVersion` and `appVersionCode` come from the ROOT manifest, injected by
- * `vite.config.js` — this package's own `"version": "0.0.0"` is a field
- * `yarn version:sync` does not write. They reach only `SupportReport`, which is
- * what ties a filed bug to a build.
+ * `appVersion` / `appVersionCode` are the ROOT manifest's — `lib/appVersion.js`
+ * says why they are imported rather than injected. They reach only
+ * `SupportReport`, which is what ties a filed bug to a build.
  */
 export const userRepository = createUserRepository({
   db,
   api,
-  appVersion: import.meta.env.VITE_APP_VERSION ?? '0.0.0',
-  appVersionCode: Number(import.meta.env.VITE_APP_VERSION_CODE ?? 0),
+  appVersion: APP_VERSION,
+  appVersionCode: APP_VERSION_CODE,
   platform: 'web',
 });

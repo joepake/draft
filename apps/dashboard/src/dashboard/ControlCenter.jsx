@@ -1,0 +1,177 @@
+import { useMemo, useState } from 'react';
+import Icon from '@kidgate/web-ui/Icon';
+import { useT } from '@kidgate/web-ui/useT';
+import { isBrowserOnlySurface } from '@kidgate/core/domain/deviceSurface';
+import { platformLabelKey } from '@kidgate/core/domain/deviceFormFactor';
+import { resolveDisplayFormFactor } from '@kidgate/core/domain/deviceFormFactor';
+import {
+  defaultShowsAllControls,
+  getVisibleActionSections,
+  getVisibleActionSectionsForDevices,
+  isActionSupported,
+  isActionSupportedByAnyDevice,
+} from '@kidgate/core/domain/deviceDetailActions';
+
+/**
+ * The control centre — the phone's grid, drawn in a browser.
+ *
+ * **Nothing about which cards exist is decided here.** The sections, their
+ * order, their copy, their icons and the rule that greys one out all come from
+ * `@kidgate/core/domain/deviceDetailActions`, which is
+ * `apps/mobile/src/features/deviceDetail/deviceDetailConfig.ts` moved up so
+ * both consoles read one list. A component that assembled its own is how a
+ * browser extension came to be offered a daily limit on the phone, and it is
+ * the same mistake either surface can make alone.
+ *
+ * What IS this file's: the two-column grid, the struck-out card, and where a
+ * click lands.
+ *
+ * ## Two modes, one grid
+ *
+ * Given a `device`, a card is lit when that machine can do it. Given `devices`
+ * — the child hub — a card is lit when ANY of the child's can, which is the
+ * rule `docs/CHILD_HUB.md` states and `isActionSupportedByAnyDevice` holds.
+ */
+
+/**
+ * Which of the five per-device tabs holds the screen a card opens.
+ *
+ * This mapping is the web's own and belongs nowhere else: the phone pushes a
+ * screen per action, and this surface divides the same material into five
+ * panels. Anything absent falls to Overview rather than doing nothing — a card
+ * that does not respond is worse than one that lands a panel away.
+ */
+const ACTION_TAB = {
+  'daily-limit': 'screen',
+  schedule: 'screen',
+  'app-blocking': 'apps',
+  'app-limits': 'apps',
+  'reward-tasks': 'controls',
+  'request-check-in': 'overview',
+  'web-filter': 'controls',
+  'web-history': 'apps',
+  'video-history': 'apps',
+  location: 'safety',
+  'sos-alerts': 'safety',
+  'tamper-alerts': 'overview',
+  'place-alerts': 'safety',
+  apps: 'apps',
+  'message-alerts': 'safety',
+};
+
+export default function ControlCenter({
+  device = null,
+  devices = null,
+  appT,
+  canUsePremiumControls = true,
+  onOpen,
+}) {
+  const { t } = useT();
+
+  /*
+   * Seeded from the device's own default and then owned by the parent, per
+   * visit — the same shape the phone's header switch has. A surface that hides
+   * what it cannot do opens narrow; everything else opens wide, because "Not
+   * available on iPhone" teaches a parent something about their phone while a
+   * row that silently vanished reads as a feature KidGate lost.
+   */
+  const [showAll, setShowAll] = useState(
+    device ? defaultShowsAllControls(device) : true,
+  );
+
+  const sections = useMemo(
+    () =>
+      devices
+        ? getVisibleActionSectionsForDevices(
+            appT,
+            devices,
+            showAll,
+            canUsePremiumControls,
+          )
+        : getVisibleActionSections(appT, device, showAll, canUsePremiumControls),
+    [devices, device, appT, showAll, canUsePremiumControls],
+  );
+
+  const supported = action =>
+    devices
+      ? isActionSupportedByAnyDevice(action, devices)
+      : isActionSupported(action, device);
+
+  /*
+   * What a struck-out card says, and it is not one sentence.
+   *
+   * On the child hub the honest statement is about the SET — none of their
+   * machines can. On one device it is about that machine, and the phone words
+   * it by platform, with one exception `useDeviceDetailScreen` already
+   * carries: the extension on a Mac is a `platform: 'macos'` row, so "Not
+   * available on Mac" would be false about the machine — the desktop agent
+   * beside it caps the day fine, only the surface cannot. `isBrowserOnlySurface`
+   * is the same test the eye button is seeded from, so the two always agree.
+   */
+  const unavailableLabel = devices
+    ? appT('family.childDetailNotAvailableReason')
+    : isBrowserOnlySurface(device)
+      ? appT('deviceDetail.notAvailableInExtension')
+      : appT('deviceDetail.notAvailableOnPlatform', {
+          platform: appT(
+            platformLabelKey(device?.platform, resolveDisplayFormFactor(device ?? {})),
+          ),
+        });
+
+  return (
+    <section className="card control-center">
+      {/* The glyph names the ACTION, not the state — `eye` reveals, `eyeOff`
+          hides. No label: the effect is the grid itself growing or shrinking,
+          in view at the moment of the click. */}
+      <button
+        className="control-filter"
+        aria-label={appT(
+          showAll
+            ? 'deviceDetail.showAvailableFeatures'
+            : 'deviceDetail.showAllFeatures',
+        )}
+        title={appT(
+          showAll
+            ? 'deviceDetail.showAvailableFeatures'
+            : 'deviceDetail.showAllFeatures',
+        )}
+        onClick={() => setShowAll(current => !current)}
+      >
+        <Icon name={showAll ? 'eyeOff' : 'eye'} size={16} />
+      </button>
+
+      {sections.map(section => (
+        <div className="control-section" key={section.title}>
+          <h3 className="control-section-title">{section.title}</h3>
+          <p className="control-section-sub">{section.subtitle}</p>
+          <div className="control-grid">
+            {section.actions.map(action => {
+              const can = supported(action);
+              return (
+                <button
+                  key={action.id}
+                  className={`control-card${can ? '' : ' is-muted'}`}
+                  /* A card this device cannot carry is readable and inert: the
+                     copy on it is the point — it says what the feature is and,
+                     by being struck out, that this machine is not where it
+                     happens. Clicking through to a panel that would be empty
+                     teaches the opposite. */
+                  disabled={!can}
+                  onClick={() => onOpen(ACTION_TAB[action.id] ?? 'overview', action)}
+                >
+                  <span className="control-card-icon">
+                    <Icon name={action.icon} size={18} />
+                  </span>
+                  <strong>{action.title}</strong>
+                  <em>{can ? action.description : unavailableLabel}</em>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      ))}
+
+      {sections.length === 0 && <p className="empty">{t('dash.noDeviceBody')}</p>}
+    </section>
+  );
+}

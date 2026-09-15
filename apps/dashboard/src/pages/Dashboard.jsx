@@ -88,7 +88,9 @@ import {
 } from '../dashboard/charts.jsx';
 import ReportPanel from '../dashboard/ReportPanel.jsx';
 import ChildInitial from '../dashboard/ChildInitial.jsx';
+import DeviceDot, { STATUS_KEY, STATUS_TONE } from '../dashboard/DeviceDot.jsx';
 import ChildHub from '../dashboard/ChildHub.jsx';
+import ControlCenter from '../dashboard/ControlCenter.jsx';
 import FamilySettingsCard from '../dashboard/FamilySettingsCard.jsx';
 import NotificationPrefsCard from '../dashboard/NotificationPrefsCard.jsx';
 import SupportCard from '../dashboard/SupportCard.jsx';
@@ -299,22 +301,6 @@ function StatTile({ label, value, meta, tone = 'default', icon }) {
   );
 }
 
-// `parked` is muted, not critical: a parked device is quiet by design — the
-// free plan watching one device and this being another (`docs/PRICING.md` §6)
-// — and the pill that painted it red was reporting a plan as a fault.
-const STATUS_TONE = {
-  online: 'good',
-  offline: 'muted',
-  locked: 'warning',
-  parked: 'muted',
-};
-const STATUS_KEY = {
-  online: 'dash.statusOnline',
-  offline: 'dash.statusOffline',
-  locked: 'dash.statusLocked',
-  parked: 'dash.statusPaused',
-};
-
 /**
  * What a locked device is actually doing, as three different sentences.
  *
@@ -357,34 +343,6 @@ function StatusPill({ status, device }) {
       <i className="pill-dot" aria-hidden="true" />
       {t(labelKey)}
     </span>
-  );
-}
-
-/**
- * The dot that says whether one device is reachable.
- *
- * It said it in colour alone once — a parent who cannot separate amber from
- * grey read six identical rows — so the sentence rides along as the label. It
- * is the same sentence `StatusPill` prints in the header, from the same map,
- * and the status is `getEffectiveDeviceStatus` rather than the stored field:
- * three minutes of silence is offline on every surface, and the rule also
- * refuses to call a device locked when it cannot lock, so a browser extension
- * carrying a stale `isLocked` from before that button was gated does not sit
- * amber here forever.
- */
-function DeviceDot({ device }) {
-  const { t } = useT();
-  const status = deviceStatusOf(device);
-  const label = t(STATUS_KEY[status] ?? STATUS_KEY.offline);
-  return (
-    <i
-      className={`kid-dot tone-${
-        status === 'online' ? 'good' : status === 'locked' ? 'warning' : 'muted'
-      }`}
-      role="img"
-      aria-label={label}
-      title={label}
-    />
   );
 }
 
@@ -472,10 +430,20 @@ function KidGroupHead({ group, open, containsActive, onActivate, expandable }) {
       {group.child ? (
         <>
           <ChildInitial name={group.child.name} colorIndex={group.child.colorIndex} />
-          <span className="kid-group-name">{group.child.name}</span>
+          {/* Two lines since this row stopped being a rail entry and became
+              the Family list itself: at rail width a name was all that fitted,
+              and on a page it left every row identical except for one word.
+              The count is what a parent is actually choosing between. */}
+          <span className="kid-meta">
+            <strong>{group.child.name}</strong>
+            <em>{t('dash.devices', { count: group.devices.length })}</em>
+          </span>
         </>
       ) : (
-        <span className="kid-group-name">{t('dash.unassignedDevices')}</span>
+        <span className="kid-meta">
+          <strong>{t('dash.unassignedDevices')}</strong>
+          <em>{t('dash.devices', { count: group.devices.length })}</em>
+        </span>
       )}
       {/*
         Hidden from the reader that already hears every device: the rows are one
@@ -1864,6 +1832,25 @@ export default function Dashboard({
         )}
 
         {/*
+          The control centre, directly under the device it is about — the shape
+          `apps/mobile`'s device detail has: a hero, then the grid. The cards
+          and the rule greying each one out are `@kidgate/core/domain/
+          deviceDetailActions`, the phone's own list moved up, so neither
+          console can grow a card the other does not have.
+
+          The tab bar below is not a second navigation for it: a card lands a
+          panel, and the bar is how a parent gets back to another one.
+        */}
+        {deviceView && (
+          <ControlCenter
+            device={deviceView}
+            appT={activityT}
+            canUsePremiumControls={hasFullAccess}
+            onOpen={next => setTab(next)}
+          />
+        )}
+
+        {/*
           The Family landing: the child list that used to be the sidebar rail.
           It is the first thing a parent is shown, the way the phone's Family
           tab is — pick a person, then one of their devices, then what about
@@ -1936,6 +1923,22 @@ export default function Dashboard({
                 })}
               </div>
             )}
+
+            {/* The family itself, under the list it is about: its name, the
+                way to add a child, the star chart. It lived in Settings for
+                one afternoon, which put "rename the family" two sections away
+                from the only screen that shows the family. */}
+            <FamilySettingsCard
+              family={family}
+              children={children ?? []}
+              leaderboardEnabled={leaderboard?.enabled ?? true}
+              actions={actions}
+              run={run}
+              busy={Boolean(busy)}
+              canWrite={canWrite}
+              live={live}
+              appT={activityT}
+            />
           </section>
         )}
 
@@ -1957,8 +1960,13 @@ export default function Dashboard({
             canWrite={canWrite}
             live={live}
             appT={activityT}
-            onOpenDevice={id => {
+            /* A grid card names the panel it wants as well as the machine —
+               the hub's cards are the same actions the device detail draws,
+               and landing on Overview every time would make one click into
+               two. */
+            onOpenDevice={(id, tab) => {
               setDeviceId(id);
+              if (tab) setTab(tab);
               setDeviceOpen(true);
             }}
             onLeave={() => setOpenChildId(null)}
@@ -2006,27 +2014,6 @@ export default function Dashboard({
             <Card title={activityT('plans.title')}>
               <PlanCard plan={family.plan} trialStartedAt={family.trialStartedAt} />
             </Card>
-
-            {/* The family itself — name, roster, star chart. A child row here
-                opens the same hub the Family section does, rather than a
-                second, shallower copy of it. */}
-            <FamilySettingsCard
-              family={family}
-              children={children ?? []}
-              devices={devices}
-              leaderboardEnabled={leaderboard?.enabled ?? true}
-              actions={actions}
-              run={run}
-              busy={Boolean(busy)}
-              canWrite={canWrite}
-              live={live}
-              appT={activityT}
-              onOpenChild={id => {
-                setOpenChildId(id);
-                setDeviceOpen(false);
-                setSection('family');
-              }}
-            />
 
             {/* Nothing at all for a joined co-parent: inviting, approving and
                 removing are the owner's, the same rule the phone's Family
@@ -3337,14 +3324,18 @@ export default function Dashboard({
         )}
 
         {/*
-          Last on the page, below whichever tab is open, and outside all six:
+          Last on the page, below whichever tab is open, and outside all five:
           renaming and unpairing are about the device the header names, not
-          about one of the things the tabs divide it into. It sat above the tab
-          bar until 2026-09-14, where a rename form a parent opens twice a year
-          was the first card on every tab and read as that tab's own. Renders
-          nothing for a joined co-parent — both are the owner's alone.
+          about one of the things the tabs divide it into. Renders nothing for
+          a joined co-parent — both are the owner's alone.
+
+          **`deviceView`, not `device`.** `device` stays resolved while the
+          Family list, Activity, Reports and Settings are open — it is the
+          selection, not the thing on screen — so this card was drawn under the
+          child list, under the weekly report, and under the account settings,
+          each time naming a machine the page was not about.
         */}
-        {device && live && (
+        {deviceView && live && (
           <DeviceAdmin
             device={device}
             actions={actions}

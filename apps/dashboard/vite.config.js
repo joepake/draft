@@ -1,13 +1,6 @@
-import { readFileSync } from 'node:fs';
-import { fileURLToPath } from 'node:url';
 import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 import { kidgateHead, SHARED_PUBLIC_DIR } from '@kidgate/web-ui/vite';
-
-/** The repo root's manifest — the only place `version`/`versionCode` is edited. */
-const rootManifest = JSON.parse(
-  readFileSync(fileURLToPath(new URL('../../package.json', import.meta.url)), 'utf8'),
-);
 
 /**
  * The dev server's way to the Cloud Functions, and why it is not a CORS entry.
@@ -65,35 +58,18 @@ export default defineConfig(({ command, mode }) => {
       }),
     ],
     publicDir: SHARED_PUBLIC_DIR,
-    define: {
-      /*
-       * The build this bundle came from, for the support report a parent files
-       * from here — `SupportReport.appVersion` is what ties a bug to a build,
-       * and an operator reading "0.0.0" learns nothing.
-       *
-       * Read from the ROOT manifest, which is the only place either number is
-       * edited (`.claude/rules/versioning.md`), rather than from this app's
-       * own — `yarn version:sync` does not write this package, so its
-       * `"version": "0.0.0"` is the honest state of a field nobody maintains.
-       * Reading the root needs no sync step and cannot drift.
-       *
-       * `import.meta.env.*` rather than a bare global: a global would be
-       * `no-undef` in every file that reads it, and this file already speaks
-       * in that namespace for the functions URL below.
-       */
-      'import.meta.env.VITE_APP_VERSION': JSON.stringify(rootManifest.version),
-      'import.meta.env.VITE_APP_VERSION_CODE': JSON.stringify(rootManifest.versionCode),
-      /*
-       * The one place the proxy swap happens, so `src/` reads the same variable
-       * in every environment and no module has to know a dev server exists.
-       */
-      ...(proxied
-        ? {
+    /*
+     * The one place the swap happens, so `src/` reads the same variable in every
+     * environment and no module has to know a dev server exists.
+     */
+    ...(proxied
+      ? {
+          define: {
             'import.meta.env.VITE_FIREBASE_FUNCTIONS_URL':
               JSON.stringify(FUNCTIONS_PROXY_PATH),
-          }
-        : {}),
-    },
+          },
+        }
+      : {}),
     // Vite ignores $PORT on its own and just walks up from 5173 when the port is
     // taken, which leaves tooling that assigned a port pointing at nothing.
     server: {

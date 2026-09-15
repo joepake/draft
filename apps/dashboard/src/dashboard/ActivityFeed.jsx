@@ -1,8 +1,10 @@
 import { useMemo, useState } from 'react';
 import Icon from '@kidgate/web-ui/Icon';
+import ChildInitial from './ChildInitial.jsx';
 import { resolveActivityKind } from '@kidgate/core/domain/activityKind';
 import { activityCopy } from './activityCopy.js';
 import { activityIconName } from './activityIcon.js';
+import { deviceIconName } from './deviceIcon.js';
 import { timeAgo } from './timeAgo.js';
 
 /**
@@ -119,6 +121,10 @@ export default function ActivityFeed({
                 setDeviceId('');
               }}
             >
+              {/* The child's own accent, the same one the Family list and the
+                  hub draw. A row of names in one colour is a list; a row of
+                  names each in their own is a family. */}
+              <ChildInitial name={child.name} colorIndex={child.colorIndex} size={18} />
               {child.name}
             </button>
           ))}
@@ -146,6 +152,10 @@ export default function ActivityFeed({
                 setDeviceId(current => (current === device.id ? '' : device.id))
               }
             >
+              {/* The same glyph the Family list puts on that device. A chip
+                  reading "iPad" beside one reading "MacBook" is two words; the
+                  marks are what a parent picks from at a glance. */}
+              <Icon name={deviceIconName(device)} size={14} />
               {device.name}
             </button>
           ))}
@@ -197,6 +207,11 @@ export default function ActivityFeed({
                           above it names one, and this list cannot. */}
                       {devices.length > 1 && (
                         <span className="tl-where">
+                          {/* Which machine, as a mark and a name — the phone's
+                              feed row carries both, and on a family feed the
+                              mark is what separates two children's iPads
+                              without reading either label. */}
+                          {device && <Icon name={deviceIconName(device)} size={12} />}
                           {device?.name || appT('activities.unknownDevice')}
                         </span>
                       )}

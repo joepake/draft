@@ -109,15 +109,22 @@ export default function NotificationPrefsCard({
 
       {ALERT_PREF_KEYS.map(key => (
         <div className="row-between" key={key}>
-          <span>
+          <span className="row-between-label">
             {/* A template, like the phone's: the labels are nested two levels
                 deep under `alert`, and a literal key would be reported missing
                 by `yarn i18n:missing`, which reads top-level entries only. */}
             <strong>{appT(`notifications.alert.${key}.label`)}</strong>
-            <em className="tl-where">{appT(`notifications.alert.${key}.hint`)}</em>
+            <span className="row-between-hint">
+              {appT(`notifications.alert.${key}.hint`)}
+            </span>
           </span>
           <Toggle
-            checked={prefs.alerts?.[key] !== false}
+            /* `on`, not `checked` — this switch is a `<button role="switch">`,
+               not an `<input type="checkbox">`, and the wrong prop name leaves
+               it permanently off with `aria-checked="false"` under a document
+               that says true. Caught in the browser 2026-09-15. */
+            on={prefs.alerts?.[key] !== false}
+            label={appT(`notifications.alert.${key}.label`)}
             disabled={disabled}
             onChange={next =>
               write(() =>
@@ -138,7 +145,8 @@ export default function NotificationPrefsCard({
       <div className="row-between">
         <span>{appT('notifications.quietHoursLabel')}</span>
         <Toggle
-          checked={Boolean(prefs.quietHours?.enabled)}
+          on={Boolean(prefs.quietHours?.enabled)}
+          label={appT('notifications.quietHoursLabel')}
           disabled={disabled}
           onChange={next =>
             write(() =>

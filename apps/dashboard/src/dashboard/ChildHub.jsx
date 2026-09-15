@@ -3,12 +3,13 @@ import Icon from '@kidgate/web-ui/Icon';
 import { useT } from '@kidgate/web-ui/useT';
 import { resolveChildPresence } from '@kidgate/core/domain/childPresence';
 import { supportsLock } from '@kidgate/core/domain/controlSupport';
-import { supportsLocation } from '@kidgate/core/domain/locationSupport';
+import { isActionSupported } from '@kidgate/core/domain/deviceDetailActions';
 import Card from './Card.jsx';
+import DeviceDot from './DeviceDot.jsx';
+import { deviceIconName } from './deviceIcon.js';
+import ControlCenter from './ControlCenter.jsx';
 import ChildBudgetEditor from './ChildBudgetEditor.jsx';
 import ChildInitial from './ChildInitial.jsx';
-import ScheduleEditor from './ScheduleEditor.jsx';
-import Toggle from './Toggle.jsx';
 import { childMinutesUsedToday } from './childBudgetSpent.js';
 import { formatMinutes } from './charts.jsx';
 import { timeAgo } from './timeAgo.js';
@@ -82,10 +83,6 @@ export default function ChildHub({
   const deviceIds = useMemo(() => childDevices.map(d => d.id), [childDevices]);
   const lockable = useMemo(() => childDevices.filter(supportsLock), [childDevices]);
   const allLocked = lockable.length > 0 && lockable.every(d => d.isLocked);
-  const locatable = childDevices.some(supportsLocation);
-
-  const saveRules = patch =>
-    run(`child-rules-${child.id}`, () => actions.updateChildRules(child.id, patch));
 
   return (
     <section className="child-hub">
@@ -134,14 +131,16 @@ export default function ChildHub({
                   total: presence.totalCount,
                 })}
               </span>
-              {presence.lastActiveAt && (
-                <>
-                  <span className="dot-sep">·</span>
-                  {appT('deviceDetail.lastActive', {
-                    when: timeAgo(presence.lastActiveAt),
-                  })}
-                </>
-              )}
+              {/* `family.lastActiveDate`, not `deviceDetail.lastActive` — the
+                  latter is a bare row LABEL on the phone with no placeholder,
+                  so it printed "Last active" with the time silently dropped.
+                  Measured in the browser 2026-09-15. */}
+              <span className="dot-sep">·</span>
+              {presence.lastActiveAt
+                ? appT('family.lastActiveDate', {
+                    date: timeAgo(presence.lastActiveAt),
+                  })
+                : appT('family.lastActiveUnknown')}
             </p>
           )}
         </div>
@@ -193,40 +192,18 @@ export default function ChildHub({
         />
       </Card>
 
-      {/* ---- Blocked hours: a wall-clock window, so it fans out ---- */}
-      <Card title={appT('blockedHours.title')}>
-        <div className="row-between">
-          <span>{appT('blockedHours.toggleTitle')}</span>
-          <Toggle
-            checked={Boolean(rules.scheduleEnabled)}
-            disabled={readOnly || busy}
-            onChange={next => saveRules({ scheduleEnabled: next })}
-          />
-        </div>
-        <ScheduleEditor
-          windows={rules.scheduleWindows ?? []}
-          readOnly={readOnly}
-          busy={busy}
-          onSave={windows => saveRules({ scheduleWindows: windows })}
-        />
-      </Card>
+      {/*
+        Blocked hours, the web filter and location sharing used to be three
+        hand-built cards here. They are grid cards now: `ControlsTab` already
+        routes a child-rule field to `updateChildRules` whenever the device it
+        is open on has a `childId`, so opening any of this child's machines
+        edits the CHILD's rule and fans out — the same write, through the
+        screen that already knew how to make it, instead of a second editor
+        per rule that would drift from it.
 
-      {/* ---- Location sharing ----
-          Hidden where no device can do it: a switch that flips nothing is
-          worse than an absence, and `supportsLocation` is the probe both
-          consoles read. */}
-      {locatable && (
-        <Card title={appT('location.title')}>
-          <div className="row-between">
-            <span>{appT('location.toggleLabel')}</span>
-            <Toggle
-              checked={rules.locationSharingEnabled !== false}
-              disabled={readOnly || busy}
-              onChange={next => saveRules({ locationSharingEnabled: next })}
-            />
-          </div>
-        </Card>
-      )}
+        The budget above stays, because no device tab holds it: it is the one
+        control that is the person's rather than a machine's.
+      */}
 
       {/* ---- Their machines ---- */}
       <Card title={appT('family.childDetailDevicesTitle')}>
@@ -241,9 +218,17 @@ export default function ChildHub({
             {childDevices.map(device => (
               <li key={device.id}>
                 <button className="kid" onClick={() => onOpenDevice(device.id)}>
+                  {/* The same glyph and the same status dot the Family list
+                      puts on this machine. A row here carrying only a name was
+                      the one place in the product a device appeared without
+                      saying whether it was reachable. */}
+                  <span className="kid-avatar">
+                    <Icon name={deviceIconName(device)} size={15} />
+                  </span>
                   <span className="kid-meta">
                     <strong>{device.name}</strong>
                   </span>
+                  <DeviceDot device={device} />
                   <Icon name="chevronRight" size={14} />
                 </button>
                 {/* A button, not a swipe: this is a pointer, and unassigning
@@ -304,6 +289,30 @@ export default function ChildHub({
           </div>
         )}
       </Card>
+
+      {/*
+        The same control centre the device detail draws, asked of the person:
+        a card is lit when ANY of this child's machines can carry it
+        (`isActionSupportedByAnyDevice`, the rule `docs/CHILD_HUB.md` states).
+
+        A card opens the first of their devices that can actually do it. The
+        phone opens a CHILD-scoped screen that merges every device instead —
+        this surface has no merged screens yet, so it lands the parent on a
+        machine that can, which is honest but not the same. Written down in
+        `apps/dashboard/CLAUDE.md`.
+      */}
+      {childDevices.length > 0 && (
+        <ControlCenter
+          devices={childDevices}
+          appT={appT}
+          onOpen={(tab, action) => {
+            const target =
+              childDevices.find(device => isActionSupported(action, device)) ??
+              childDevices[0];
+            onOpenDevice(target.id, tab);
+          }}
+        />
+      )}
 
       {/* ---- Removing the person ----
           Owner only, and it is bookkeeping: the devices stay paired and keep
