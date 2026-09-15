@@ -1,0 +1,16 @@
+export const nav = {
+  family: 'Family',
+  activities: 'Activities',
+  reports: 'Reports',
+  settings: 'Settings',
+  status: 'Status',
+  sos: 'SOS',
+  familyTab: 'Family tab',
+  activitiesTab: 'Activities tab',
+  activitiesTabNew: 'Activities tab, new activity',
+  reportsTab: 'Reports tab',
+  reportsTabNew: 'Reports tab, new report',
+  settingsTab: 'Settings tab',
+  statusTab: 'Status tab',
+  sosEmergencyTab: 'SOS emergency tab',
+};

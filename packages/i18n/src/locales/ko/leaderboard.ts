@@ -1,0 +1,31 @@
+export const leaderboard = {
+  title: '별 순위표',
+  thisWeek: '이번 주',
+  resetsNote: '매주 월요일에 다시 시작해요.',
+  rowA11y: '{{rank}}위 {{name}}, 별 {{count}}개',
+  settingsTitle: '별 순위표',
+  settingsBody: '이번 주에 각자 모은 별 개수를 아이들이 서로 볼 수 있게 합니다.',
+  screenTimeTitle: '가족 스크린 타임',
+  screenTimeSub: '스크린 타임 적은 순 · 이번 주',
+  screenTimeRowA11y: '{{rank}}. {{name}}, {{duration}}',
+  screenTimeParentBadge: '부모',
+  screenTimeParentFallbackName: '부모',
+  screenTimeSettingsTitle: '가족 스크린 타임',
+  screenTimeSettingsBody:
+    '이번 주 자녀 각자가 스크린 타임을 얼마나 썼는지 보여 줍니다. 켜기 전까지는 꺼져 있습니다.',
+  screenTimeNote:
+    '한 사람이 쓰는 모든 기기를 합산합니다. 매주 월요일에 새로 시작합니다.',
+  childrenTitle: '아이',
+  manageAccessibility: '자녀 및 기기 관리',
+  addChild: '아이 추가',
+  childAdded: '아이가 추가되었습니다.',
+  childNameLabel: '이름',
+  childNamePlaceholder: '예: 마이',
+  unassigned: '지정 안 됨',
+  removeChild: '삭제',
+  removeChildConfirmTitle: '{{childName}} 프로필을 삭제할까요?',
+  removeChildConfirmBody:
+    '기기는 연결된 채로 계속 기록합니다. 다시 지정하기 전까지 누구의 몫으로도 집계되지 않을 뿐입니다.',
+  emptyTitle: '아직 등록된 아이가 없습니다',
+  emptyBody: '여기에서 아이를 추가한 다음, 사용하는 기기를 지정하세요.',
+} as const;

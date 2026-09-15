@@ -1,0 +1,16 @@
+export const nav = {
+  family: 'Gia đình',
+  activities: 'Nhật ký',
+  reports: 'Báo cáo',
+  settings: 'Cài đặt',
+  status: 'Trạng thái',
+  sos: 'SOS',
+  familyTab: 'Gia đình',
+  activitiesTab: 'Nhật ký',
+  activitiesTabNew: 'Nhật ký, có hoạt động mới',
+  reportsTab: 'Báo cáo',
+  reportsTabNew: 'Báo cáo, có báo cáo mới',
+  settingsTab: 'Cài đặt',
+  statusTab: 'Trạng thái',
+  sosEmergencyTab: 'SOS khẩn cấp',
+};

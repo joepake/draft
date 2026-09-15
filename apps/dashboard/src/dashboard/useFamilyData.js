@@ -138,9 +138,26 @@ export function useFamilyData(user, selectedDeviceId) {
   // resolved at render — see `dashboard/activityCopy.js`.
   const [memberNamesByUserId, setMemberNamesByUserId] = useState({});
   const [parentNamesByDeviceId, setParentNamesByDeviceId] = useState({});
+  /*
+   * The records themselves, not only their names. The notification card edits
+   * one phone's push preferences, so it needs the id and the name together —
+   * and the name map is keyed the other way round.
+   */
+  const [parentDevices, setParentDevices] = useState([]);
   const [ownerLabel, setOwnerLabel] = useState(null);
+  /** The star chart's family switch, read with the rest of the meta. */
+  const [leaderboardEnabled, setLeaderboardEnabled] = useState(true);
 
   const [activityRows, setActivityRows] = useState([]);
+  /*
+   * The same collection, unscoped: the Activity section is about the family,
+   * the way the phone's Activities tab is, so it cannot read the per-device
+   * rows below — those are filtered to whichever device the Family section
+   * happens to have open, and a feed that changes when you pick a device is
+   * not a family feed. `subscribe`'s `deviceId` argument is optional for
+   * exactly this, so no new repository method is needed.
+   */
+  const [familyActivityRows, setFamilyActivityRows] = useState([]);
   const [timeRequestRows, setTimeRequestRows] = useState([]);
   const [siteRequestRows, setSiteRequestRows] = useState([]);
   const [sosRows, setSosRows] = useState([]);
@@ -228,6 +245,10 @@ export function useFamilyData(user, selectedDeviceId) {
         if (cancelled) return;
         setFamilyName(meta?.name || '');
         setOwnerLabel(usableOwnerLabel(meta?.ownerLabel));
+        /* Absent is on, matching `isLeaderboardVisible` and the phone: the
+           star chart ships on and the flag only ever records a family
+           deliberately turning it off. */
+        setLeaderboardEnabled(meta?.leaderboardEnabled !== false);
         /*
          * Stamped on success only, and deliberately not in the `catch`.
          *
@@ -266,6 +287,12 @@ export function useFamilyData(user, selectedDeviceId) {
             next[record.deviceId] = resolveStoredDeviceName(record) ?? '';
           }
           setParentNamesByDeviceId(next);
+          setParentDevices(
+            records.map(record => ({
+              deviceId: record.deviceId,
+              name: resolveStoredDeviceName(record) || record.deviceId,
+            })),
+          );
         },
         soft('parentDevices'),
       ),
@@ -342,6 +369,20 @@ export function useFamilyData(user, selectedDeviceId) {
   // eight listeners each time.
   const selectedChildId =
     devices.find(device => device.id === selectedDeviceId)?.childId || '';
+
+  /*
+   * Keyed on the family alone, so picking a device does not tear it down and
+   * rebuild it — the rows are the same rows whichever device is open.
+   */
+  useEffect(() => {
+    if (!familyId) return undefined;
+    return activityRepository.subscribe(familyId, setFamilyActivityRows, e =>
+      console.warn(
+        '[kidgate] familyActivities listener failed:',
+        e?.code || e?.message,
+      ),
+    );
+  }, [familyId]);
 
   useEffect(() => {
     if (!familyId || !selectedDeviceId) return;
@@ -554,9 +595,12 @@ export function useFamilyData(user, selectedDeviceId) {
       */
       leaderboard: {
         rows: leaderboardRows,
-        // The family flag lives on the family document, which this hook does
-        // not read; absent means on, matching the app.
-        visible: isLeaderboardVisible(children, undefined),
+        visible: isLeaderboardVisible(children, leaderboardEnabled),
+        /* The raw switch as well as the verdict: `visible` also folds in how
+           many children there are — a one-child family has no standings to
+           show — and the Settings toggle has to render the family's own
+           answer, not that fold. */
+        enabled: leaderboardEnabled,
       },
       family: {
         name: familyName || t('dash.fallbackFamily'),
@@ -595,6 +639,17 @@ export function useFamilyData(user, selectedDeviceId) {
           user && familyId && user.uid === familyId ? user.displayName : null,
       },
       activities: forDevice(selectedDeviceId, activityRows),
+      /** Every device's rows, newest first — what the Activity section reads. */
+      familyActivities: familyActivityRows,
+      /**
+       * The signed-in account's own phones.
+       *
+       * Only ever the OWNER's: this listener reads `users/{familyId}` and
+       * `firestore.rules` gates that path on `request.auth.uid == familyId`,
+       * so for a joined co-parent it is refused and this stays empty — which
+       * is the honest answer, since their phones live under their own root.
+       */
+      parentDevices,
       timeRequests: forDevice(selectedDeviceId, timeRequestRows),
       siteRequests: forDevice(selectedDeviceId, siteRequestRows),
       sosAlerts: forDevice(selectedDeviceId, sosRows),
@@ -611,6 +666,7 @@ export function useFamilyData(user, selectedDeviceId) {
     videos,
     rewardTasks,
     leaderboardRows,
+    leaderboardEnabled,
     children,
     familyName,
     billing,
@@ -619,10 +675,12 @@ export function useFamilyData(user, selectedDeviceId) {
     familyId,
     memberNamesByUserId,
     parentNamesByDeviceId,
+    parentDevices,
     ownerLabel,
     user,
     selectedDeviceId,
     activityRows,
+    familyActivityRows,
     timeRequestRows,
     siteRequestRows,
     sosRows,

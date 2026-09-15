@@ -325,7 +325,7 @@ export const family = {
 
   protectionNeedsSetup: '{{issueLabel}} precisa de configuração',
 
-  freeTierCadenceHint: 'Plano gratuito: atualiza a cada {{minutes}} min',
+  freeTierCadenceHint: 'Plano gratuito: última atividade: {{date}}',
   dailyLimitOn: 'Limite diário ativado',
 
   deviceReady: 'Pronto',

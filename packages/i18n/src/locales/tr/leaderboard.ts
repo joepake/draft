@@ -1,0 +1,31 @@
+export const leaderboard = {
+  title: 'Yıldız tablosu',
+  thisWeek: 'Bu hafta',
+  resetsNote: 'Her pazartesi yeniden başlar.',
+  rowA11y: '{{rank}}. {{name}}, {{count}} yıldız',
+  settingsTitle: 'Yıldız tablosu',
+  settingsBody: 'Çocuklarınız bu hafta her birinin kaç yıldız topladığını görebilsin.',
+  screenTimeTitle: 'Ailenin ekran süresi',
+  screenTimeSub: 'En az ekran süresi önce · bu hafta',
+  screenTimeRowA11y: '{{rank}}. {{name}}, {{duration}}',
+  screenTimeParentBadge: 'Ebeveyn',
+  screenTimeParentFallbackName: 'Ebeveyn',
+  screenTimeSettingsTitle: 'Ailenin ekran süresi',
+  screenTimeSettingsBody:
+    'Çocuklarınıza bu hafta her birinin ne kadar ekran süresi kullandığını gösterin. Siz açana kadar kapalı.',
+  screenTimeNote:
+    'Bir kişinin kullandığı her cihazı sayar. Her pazartesi yeniden başlar.',
+  childrenTitle: 'Çocuklar',
+  manageAccessibility: 'Çocukları ve cihazları yönet',
+  addChild: 'Çocuk ekle',
+  childAdded: 'Çocuk eklendi.',
+  childNameLabel: 'Ad',
+  childNamePlaceholder: 'örn. Mai',
+  unassigned: 'Atanmadı',
+  removeChild: 'Kaldır',
+  removeChildConfirmTitle: '{{childName}} profili kaldırılsın mı?',
+  removeChildConfirmBody:
+    'Cihazları eşleşmiş kalır ve bildirmeye devam eder — siz yeniden atayana kadar yalnızca kimsenin hanesine yazılmaz.',
+  emptyTitle: 'Henüz çocuk yok',
+  emptyBody: 'Her çocuğu buraya ekleyin, sonra kullandığı cihazları atayın.',
+} as const;

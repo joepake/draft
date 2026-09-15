@@ -194,7 +194,9 @@ export const plans = {
   teaserProofOtherApps: 'अन्य ऐप: {{count}} · {{minutes}}',
   teaserProofOtherMinutes: 'अन्य ऐप: {{minutes}}',
   teaserProofBlocked: 'इस हफ़्ते ब्लॉक किए गए: {{count}}',
-  teaserTopApps: 'Premium हर ऐप का नाम बताता है, मिनट दर मिनट, और 30 दिन तक रखता है।',
+  premiumHistoryNote: 'Premium पिछले 30 दिनों का पूरा उपयोग इतिहास रखता है।',
+  teaserTopApps:
+    'फ़्री में सिर्फ़ टॉप तीन ऐप दिखते हैं। Premium हर ऐप का नाम बताता है, मिनट दर मिनट, और 30 दिन तक रखता है।',
   teaserWebHistory:
     'Premium बताता है कि कौन-सी साइटें ब्लॉक हुईं और आपके बच्चे ने क्या खोजा।',
   teaserVideoHistory: 'Premium उसके देखे हर YouTube वीडियो और Short को रखता है।',

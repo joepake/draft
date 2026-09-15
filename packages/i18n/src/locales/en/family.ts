@@ -229,7 +229,7 @@ export const family = {
   blockedHoursActiveNow: 'Blocked Hours active now',
   inactiveOpenKidGate: 'Inactive — please open KidGate on this device',
   protectionNeedsSetup: '{{issueLabel}} needs setup',
-  freeTierCadenceHint: 'Free plan — updates every {{minutes}} min',
+  freeTierCadenceHint: 'Free plan — last active: {{date}}',
   dailyLimitOn: 'Daily Limit on',
   deviceReady: 'Ready',
   sos: 'SOS',

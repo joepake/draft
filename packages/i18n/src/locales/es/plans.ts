@@ -196,7 +196,10 @@ export const plans = {
   teaserProofOtherApps: 'Otras apps: {{count}} · {{minutes}}',
   teaserProofOtherMinutes: 'Otras apps: {{minutes}}',
   teaserProofBlocked: 'Bloqueado esta semana: {{count}}',
-  teaserTopApps: 'Premium nombra cada app, minuto a minuto, y guarda 30 días.',
+  premiumHistoryNote:
+    'Premium guarda el historial de uso completo de los últimos 30 días.',
+  teaserTopApps:
+    'La versión gratis muestra las tres apps principales. Premium nombra cada app, minuto a minuto, y guarda 30 días.',
   teaserWebHistory: 'Premium muestra qué sitios se bloquearon y qué buscó tu hijo.',
   teaserVideoHistory: 'Premium guarda cada vídeo y Short de YouTube que vio.',
   teaserLocationTrail:

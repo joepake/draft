@@ -1,0 +1,31 @@
+export const leaderboard = {
+  title: 'Tableau des étoiles',
+  thisWeek: 'Cette semaine',
+  resetsNote: 'Tout repart chaque lundi.',
+  rowA11y: '{{rank}}. {{name}}, {{count}} étoiles',
+  settingsTitle: 'Tableau des étoiles',
+  settingsBody: 'Vos enfants voient combien d’étoiles chacun a gagnées cette semaine.',
+  screenTimeTitle: 'Temps d’écran de la famille',
+  screenTimeSub: 'Le moins de temps d’écran d’abord · cette semaine',
+  screenTimeRowA11y: '{{rank}}. {{name}}, {{duration}}',
+  screenTimeParentBadge: 'Parent',
+  screenTimeParentFallbackName: 'Parent',
+  screenTimeSettingsTitle: 'Temps d’écran de la famille',
+  screenTimeSettingsBody:
+    'Montrez à vos enfants le temps d’écran de chacun d’eux cette semaine. Désactivé tant que vous ne l’activez pas.',
+  screenTimeNote:
+    'Compte tous les appareils d’une personne. Repart à zéro chaque lundi.',
+  childrenTitle: 'Enfants',
+  manageAccessibility: 'Gérer les enfants et les appareils',
+  addChild: 'Ajouter un enfant',
+  childAdded: 'Enfant ajouté.',
+  childNameLabel: 'Prénom',
+  childNamePlaceholder: 'p. ex. Mai',
+  unassigned: 'Non attribué',
+  removeChild: 'Retirer',
+  removeChildConfirmTitle: 'Supprimer le profil de {{childName}} ?',
+  removeChildConfirmBody:
+    'Ses appareils restent associés et continuent de transmettre — leur activité n’est simplement plus rattachée à personne tant que vous ne les attribuez pas de nouveau.',
+  emptyTitle: 'Pas encore d’enfants',
+  emptyBody: 'Ajoutez ici chaque enfant, puis attribuez-lui ses appareils.',
+} as const;

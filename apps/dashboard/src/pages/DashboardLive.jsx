@@ -187,6 +187,15 @@ function LiveDashboard({ user, deviceId, onDeviceChange, signOut }) {
       actions={actions}
       reports={reports}
       familyId={familyId}
+      /*
+       * The signed-in account, which is NOT `familyId` for a joined co-parent.
+       * Three documents hang off `users/{uid}` under `isParentAccount(userId)`
+       * — push preferences, the deletion request, support reports — and every
+       * one of them is about the person at the keyboard rather than about the
+       * family they are reading.
+       */
+      accountId={user.uid}
+      accountEmail={user.email ?? null}
       onDeviceChange={onDeviceChange}
       sideFooter={
         <div className="side-account">

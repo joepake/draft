@@ -1,0 +1,20 @@
+export const supportReports = {
+  title: 'Yêu cầu & báo cáo sự cố',
+  subtitleCount: '{{count}} báo cáo đang xử lý',
+  emptyTitle: 'Chưa có báo cáo nào',
+  emptyDescription: 'Khi bạn báo cáo sự cố, báo cáo sẽ hiện ở đây để bạn theo dõi.',
+  emptyAction: 'Báo cáo sự cố',
+  newReportButton: 'Báo cáo mới',
+  attachmentCount: 'Đính kèm {{count}} ảnh chụp màn hình',
+  responseLabel: 'Phản hồi từ KidGate',
+  waitingNote: 'Chúng tôi sẽ phản hồi tại đây sau khi có người xem xét.',
+  expandLabel: 'Xem thêm',
+  collapseLabel: 'Thu gọn',
+  expandHint: 'Xem toàn bộ báo cáo',
+  unreadBadge: 'Có phản hồi mới',
+  status: {
+    pending: 'Đã nhận',
+    in_review: 'Đang xem xét',
+    resolved: 'Đã xử lý',
+  },
+};

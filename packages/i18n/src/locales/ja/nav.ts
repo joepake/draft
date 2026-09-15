@@ -1,0 +1,16 @@
+export const nav = {
+  family: 'ファミリー',
+  activities: 'アクティビティ',
+  reports: 'レポート',
+  settings: '設定',
+  status: 'ステータス',
+  sos: 'SOS',
+  familyTab: 'ファミリータブ',
+  activitiesTab: 'アクティビティタブ',
+  activitiesTabNew: 'アクティビティタブ、新しいアクティビティ',
+  reportsTab: 'レポートタブ',
+  reportsTabNew: 'レポートタブ、新しいレポート',
+  settingsTab: '設定タブ',
+  statusTab: 'ステータスタブ',
+  sosEmergencyTab: '緊急SOSタブ',
+};

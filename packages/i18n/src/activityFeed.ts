@@ -8,6 +8,10 @@ import { deviceDetail as enDeviceDetail } from './locales/en/deviceDetail';
 import { family as enFamily } from './locales/en/family';
 import { location as enLocation } from './locales/en/location';
 import { messageMonitoring as enMessageMonitoring } from './locales/en/messageMonitoring';
+import { leaderboard as enLeaderboard } from './locales/en/leaderboard';
+import { nav as enNav } from './locales/en/nav';
+import { notifications as enNotifications } from './locales/en/notifications';
+import { supportReports as enSupportReports } from './locales/en/supportReports';
 import { permissions as enPermissions } from './locales/en/permissions';
 import { placeAlerts as enPlaceAlerts } from './locales/en/placeAlerts';
 import { pairing as enPairing } from './locales/en/pairing';
@@ -60,12 +64,29 @@ import type { TranslationParams } from './types';
  * would be edited next time. That is the drift this file was built against,
  * arriving through the other door.
  *
- * **What must NOT come through**: anything whose reader differs. `common` and
- * `nav` are the standing example — the web's are genuinely different copy, not
- * a translation of the app's (`packages/i18n/CLAUDE.md`). The test is whether
- * the sentence stays true when it crosses; `samePinToast` ends "Drag the map
- * to move the pin", the dashboard has no map, and that one stayed behind as a
+ * **What must NOT come through**: anything whose reader differs. `common` is
+ * the standing example — the web's is genuinely different copy, not a
+ * translation of the app's (`packages/i18n/CLAUDE.md`), and `shared.edit` /
+ * `shared.cancel` belong to it rather than here. The test is whether the
+ * sentence stays true when it crosses; `samePinToast` ends "Drag the map to
+ * move the pin", the dashboard has no map, and that one stayed behind as a
  * `dash.*` key.
+ *
+ * **`nav` was the second standing example and stopped being one on
+ * 2026-09-15.** Both packs still have a namespace by that name and they are
+ * still different readers — the web's is marketing chrome (`nav.skip`,
+ * `nav.privacy`), the app's is the parent tab bar — so a `nav.*` key is now
+ * the one case where WHICH TRANSLATOR you call decides what you get. The four
+ * section names cross because the dashboard's left menu is that same tab bar:
+ * `nav.family` and its three siblings name the same four parts of the same
+ * product, and copying them into fourteen web packs is the twin-sentence
+ * drift this door exists to stop. The rest of the app's `nav` — `status`,
+ * `sos`, every `*Tab` label — is phone anatomy and no web surface may read it.
+ *
+ * The hazard that leaves is reaching for the wrong translator: `t('nav.family')`
+ * is the web pack, which has no such key. It renders the raw key, and
+ * `yarn i18n:missing` is what fails on it — it checks every `t()` call against
+ * the pack that call actually reads.
  *
  * ## Why not `@kidgate/i18n/locales`
  *
@@ -110,6 +131,19 @@ export interface ActivityFeedPack extends LocaleTree {
    * here in fourteen languages.
    */
   messageMonitoring: unknown;
+  /** The star chart: the same feature, and the same words, on both consoles. */
+  leaderboard: unknown;
+  /** The push-preference screen: eight alert rows, quiet hours, the footnote. */
+  notifications: unknown;
+  /** A parent's own filed reports, and the form that files one. */
+  supportReports: unknown;
+  /**
+   * The four section names only — `family`, `activities`, `reports`,
+   * `settings`. The dashboard's left menu is the phone's tab bar; the rest of
+   * this namespace is phone anatomy. See the note above on why this one
+   * crosses when `common` does not.
+   */
+  nav: unknown;
   /**
    * Not feed rows either — the **steps** a protection issue carries.
    *
@@ -158,6 +192,10 @@ const en: ActivityFeedPack = {
   family: enFamily,
   location: enLocation,
   messageMonitoring: enMessageMonitoring,
+  leaderboard: enLeaderboard,
+  nav: enNav,
+  notifications: enNotifications,
+  supportReports: enSupportReports,
   permissions: enPermissions,
   protection: enProtection,
   report: enReport,
@@ -184,6 +222,18 @@ const NAMESPACES = [
   'family',
   'location',
   'messageMonitoring',
+  /* The star chart — the same feature on both parent surfaces, so the same
+     sentences. */
+  'leaderboard',
+  /* The four section names the dashboard's left menu renders. The phone
+     already says them in fourteen languages (`nav.family` and its three
+     siblings drive the tab bar), and two parent surfaces naming the same
+     section differently is exactly the drift this door exists to stop. */
+  'nav',
+  /* Push preferences and the support form — two whole screens `apps/dashboard`
+     now renders, every sentence of which the phone already says. */
+  'notifications',
+  'supportReports',
   'permissions',
   'protection',
   'report',
@@ -237,6 +287,10 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     sos: () => import('./locales/ar/sos'),
     timeRequest: () => import('./locales/ar/timeRequest'),
     webFilter: () => import('./locales/ar/webFilter'),
+    nav: () => import('./locales/ar/nav'),
+    notifications: () => import('./locales/ar/notifications'),
+    supportReports: () => import('./locales/ar/supportReports'),
+    leaderboard: () => import('./locales/ar/leaderboard'),
     videoHistory: () => import('./locales/ar/videoHistory'),
   },
   de: {
@@ -261,6 +315,10 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     sos: () => import('./locales/de/sos'),
     timeRequest: () => import('./locales/de/timeRequest'),
     webFilter: () => import('./locales/de/webFilter'),
+    nav: () => import('./locales/de/nav'),
+    notifications: () => import('./locales/de/notifications'),
+    supportReports: () => import('./locales/de/supportReports'),
+    leaderboard: () => import('./locales/de/leaderboard'),
     videoHistory: () => import('./locales/de/videoHistory'),
   },
   es: {
@@ -285,6 +343,10 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     sos: () => import('./locales/es/sos'),
     timeRequest: () => import('./locales/es/timeRequest'),
     webFilter: () => import('./locales/es/webFilter'),
+    nav: () => import('./locales/es/nav'),
+    notifications: () => import('./locales/es/notifications'),
+    supportReports: () => import('./locales/es/supportReports'),
+    leaderboard: () => import('./locales/es/leaderboard'),
     videoHistory: () => import('./locales/es/videoHistory'),
   },
   fr: {
@@ -309,6 +371,10 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     sos: () => import('./locales/fr/sos'),
     timeRequest: () => import('./locales/fr/timeRequest'),
     webFilter: () => import('./locales/fr/webFilter'),
+    nav: () => import('./locales/fr/nav'),
+    notifications: () => import('./locales/fr/notifications'),
+    supportReports: () => import('./locales/fr/supportReports'),
+    leaderboard: () => import('./locales/fr/leaderboard'),
     videoHistory: () => import('./locales/fr/videoHistory'),
   },
   hi: {
@@ -333,6 +399,10 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     sos: () => import('./locales/hi/sos'),
     timeRequest: () => import('./locales/hi/timeRequest'),
     webFilter: () => import('./locales/hi/webFilter'),
+    nav: () => import('./locales/hi/nav'),
+    notifications: () => import('./locales/hi/notifications'),
+    supportReports: () => import('./locales/hi/supportReports'),
+    leaderboard: () => import('./locales/hi/leaderboard'),
     videoHistory: () => import('./locales/hi/videoHistory'),
   },
   id: {
@@ -357,6 +427,10 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     sos: () => import('./locales/id/sos'),
     timeRequest: () => import('./locales/id/timeRequest'),
     webFilter: () => import('./locales/id/webFilter'),
+    nav: () => import('./locales/id/nav'),
+    notifications: () => import('./locales/id/notifications'),
+    supportReports: () => import('./locales/id/supportReports'),
+    leaderboard: () => import('./locales/id/leaderboard'),
     videoHistory: () => import('./locales/id/videoHistory'),
   },
   it: {
@@ -381,6 +455,10 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     sos: () => import('./locales/it/sos'),
     timeRequest: () => import('./locales/it/timeRequest'),
     webFilter: () => import('./locales/it/webFilter'),
+    nav: () => import('./locales/it/nav'),
+    notifications: () => import('./locales/it/notifications'),
+    supportReports: () => import('./locales/it/supportReports'),
+    leaderboard: () => import('./locales/it/leaderboard'),
     videoHistory: () => import('./locales/it/videoHistory'),
   },
   ja: {
@@ -405,6 +483,10 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     sos: () => import('./locales/ja/sos'),
     timeRequest: () => import('./locales/ja/timeRequest'),
     webFilter: () => import('./locales/ja/webFilter'),
+    nav: () => import('./locales/ja/nav'),
+    notifications: () => import('./locales/ja/notifications'),
+    supportReports: () => import('./locales/ja/supportReports'),
+    leaderboard: () => import('./locales/ja/leaderboard'),
     videoHistory: () => import('./locales/ja/videoHistory'),
   },
   ko: {
@@ -429,6 +511,10 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     sos: () => import('./locales/ko/sos'),
     timeRequest: () => import('./locales/ko/timeRequest'),
     webFilter: () => import('./locales/ko/webFilter'),
+    nav: () => import('./locales/ko/nav'),
+    notifications: () => import('./locales/ko/notifications'),
+    supportReports: () => import('./locales/ko/supportReports'),
+    leaderboard: () => import('./locales/ko/leaderboard'),
     videoHistory: () => import('./locales/ko/videoHistory'),
   },
   pt: {
@@ -453,6 +539,10 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     sos: () => import('./locales/pt/sos'),
     timeRequest: () => import('./locales/pt/timeRequest'),
     webFilter: () => import('./locales/pt/webFilter'),
+    nav: () => import('./locales/pt/nav'),
+    notifications: () => import('./locales/pt/notifications'),
+    supportReports: () => import('./locales/pt/supportReports'),
+    leaderboard: () => import('./locales/pt/leaderboard'),
     videoHistory: () => import('./locales/pt/videoHistory'),
   },
   ru: {
@@ -477,6 +567,10 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     sos: () => import('./locales/ru/sos'),
     timeRequest: () => import('./locales/ru/timeRequest'),
     webFilter: () => import('./locales/ru/webFilter'),
+    nav: () => import('./locales/ru/nav'),
+    notifications: () => import('./locales/ru/notifications'),
+    supportReports: () => import('./locales/ru/supportReports'),
+    leaderboard: () => import('./locales/ru/leaderboard'),
     videoHistory: () => import('./locales/ru/videoHistory'),
   },
   tr: {
@@ -501,6 +595,10 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     sos: () => import('./locales/tr/sos'),
     timeRequest: () => import('./locales/tr/timeRequest'),
     webFilter: () => import('./locales/tr/webFilter'),
+    nav: () => import('./locales/tr/nav'),
+    notifications: () => import('./locales/tr/notifications'),
+    supportReports: () => import('./locales/tr/supportReports'),
+    leaderboard: () => import('./locales/tr/leaderboard'),
     videoHistory: () => import('./locales/tr/videoHistory'),
   },
   vi: {
@@ -525,6 +623,10 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     sos: () => import('./locales/vi/sos'),
     timeRequest: () => import('./locales/vi/timeRequest'),
     webFilter: () => import('./locales/vi/webFilter'),
+    nav: () => import('./locales/vi/nav'),
+    notifications: () => import('./locales/vi/notifications'),
+    supportReports: () => import('./locales/vi/supportReports'),
+    leaderboard: () => import('./locales/vi/leaderboard'),
     videoHistory: () => import('./locales/vi/videoHistory'),
   },
 };

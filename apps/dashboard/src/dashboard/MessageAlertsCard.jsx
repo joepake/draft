@@ -369,6 +369,10 @@ export default function MessageAlertsCard({
 
       {checked.length > 0 && (
         <>
+          {/* The heading the phone draws and this card was missing. Without it
+              the cleared rows ran straight on from the alerts above under one
+              title, which read as more alerts — the opposite of what they are. */}
+          <h3 className="feed-day-head">{appT('messageMonitoring.checkedTitle')}</h3>
           <p className="hint">{appT('messageMonitoring.checkedSubtitle')}</p>
           <ul className="events">
             {checked.map(row => {

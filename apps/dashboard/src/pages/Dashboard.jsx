@@ -35,7 +35,6 @@ import TrustedContactsCard from '../dashboard/TrustedContactsCard.jsx';
 import BrandLogo from '@kidgate/web-ui/BrandLogo';
 import Icon from '@kidgate/web-ui/Icon';
 import { deviceIconName } from '../dashboard/deviceIcon.js';
-import { ACCENT_IDS, getAccentDefinition } from '@kidgate/tokens/accents';
 import { readDeviceBattery } from '@kidgate/core/domain/battery';
 import { isAndroidLike, isDesktopLike } from '@kidgate/core/domain/platformFamily';
 import { isKidGateOwnApp } from '@kidgate/core/domain/ownApp';
@@ -88,11 +87,53 @@ import {
   UsageRing,
 } from '../dashboard/charts.jsx';
 import ReportPanel from '../dashboard/ReportPanel.jsx';
+import ChildInitial from '../dashboard/ChildInitial.jsx';
+import ChildHub from '../dashboard/ChildHub.jsx';
+import FamilySettingsCard from '../dashboard/FamilySettingsCard.jsx';
+import NotificationPrefsCard from '../dashboard/NotificationPrefsCard.jsx';
+import SupportCard from '../dashboard/SupportCard.jsx';
+import AccountCard from '../dashboard/AccountCard.jsx';
+import ActivityFeed from '../dashboard/ActivityFeed.jsx';
+import { activityIconName } from '../dashboard/activityIcon.js';
 import { RichText } from '@kidgate/web-ui/RichText';
 import { useT } from '@kidgate/web-ui/useT';
 import { getLocaleTag } from '@kidgate/i18n/web';
 import Card from '../dashboard/Card.jsx';
 import ControlsTab from '../dashboard/ControlsTab.jsx';
+
+/**
+ * Phone width, where the left menu is a bottom bar.
+ *
+ * **In JavaScript, not only in CSS, because one block has to MOVE rather than
+ * hide.** The rail's footer — plan, language, palette, sign out — has no place
+ * in a four-icon bottom bar, and it is the Settings section that owns those
+ * facts on a phone. CSS can hide it in one place and cannot re-parent it into
+ * the other, and rendering it twice would put two language pickers on the page
+ * for one setting. So the breakpoint is read here and the block is handed to
+ * whichever of the two is on screen.
+ *
+ * 820px is the width the stylesheet already collapses the grid at; the two are
+ * the same decision and must not drift.
+ */
+const COMPACT_QUERY = '(max-width: 820px)';
+
+function useCompactLayout() {
+  const [compact, setCompact] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia(COMPACT_QUERY).matches,
+  );
+  useEffect(() => {
+    if (typeof window === 'undefined') return undefined;
+    const mq = window.matchMedia(COMPACT_QUERY);
+    const onChange = event => setCompact(event.matches);
+    // Not only on change: a browser resized across the breakpoint before this
+    // mounted, and a device rotated during the first paint, both land here
+    // with the initial value already stale.
+    setCompact(mq.matches);
+    mq.addEventListener('change', onChange);
+    return () => mq.removeEventListener('change', onChange);
+  }, []);
+  return compact;
+}
 
 /**
  * The stored `status` field recomputed, which is what every other surface
@@ -103,18 +144,40 @@ function deviceStatusOf(device) {
   return getEffectiveDeviceStatus(device, Date.now());
 }
 
-// No `icon` field: the bar draws words alone. Six glyphs beside six labels
+// No `icon` field: the bar draws words alone. Five glyphs beside five labels
 // that already named the thing cost header height and said nothing twice.
+//
+// These are about ONE DEVICE and live inside the Family section, under the
+// device a parent picked. `report` used to be the sixth and was the only one
+// that was not — it sums every device in the family — which is why it is a
+// section of its own now rather than a tab that ignored the header above it.
 const TABS = [
   { id: 'overview', labelKey: 'dash.tabOverview' },
   { id: 'screen', labelKey: 'dash.tabScreen' },
   { id: 'apps', labelKey: 'dash.tabApps' },
   { id: 'safety', labelKey: 'dash.tabSafety' },
   { id: 'controls', labelKey: 'dash.tabControls' },
-  // Last, and the only tab that is about the family rather than the device on
-  // screen: the report sums every device in the family, which is why it stays
-  // rendered when no device is selected.
-  { id: 'report', labelKey: 'dash.tabReport' },
+];
+
+/**
+ * The left menu: the same four the phone's tab bar draws, in the same order,
+ * named by the same keys.
+ *
+ * Two parent surfaces, one product — a parent who learned the phone should not
+ * have to learn a second information architecture to read the same family on a
+ * laptop. The labels come from the app pack (`nav.*`) rather than a `dash.*`
+ * twin, so the two can never disagree about what a section is called; the
+ * namespace is opened for the web in `packages/i18n/src/activityFeed.ts`.
+ *
+ * The phone's bar is capped at four by a 375pt screen. This one is not, and it
+ * still carries four: the cap is what forced the phone to decide what the top
+ * level *is*, and that decision is the part worth sharing.
+ */
+const SECTIONS = [
+  { id: 'family', labelKey: 'nav.family', icon: 'home' },
+  { id: 'activity', labelKey: 'nav.activities', icon: 'activity' },
+  { id: 'report', labelKey: 'nav.reports', icon: 'chart' },
+  { id: 'settings', labelKey: 'nav.settings', icon: 'settings' },
 ];
 
 /**
@@ -298,26 +361,6 @@ function StatusPill({ status, device }) {
 }
 
 /**
- * A child's initial in their own accent — the browser's `ChildAvatar`.
- *
- * The colour comes from `@kidgate/tokens` rather than from a palette invented
- * here, and `colorIndex` is taken modulo the list exactly as the schema says,
- * so a child is the same colour on the phone and in this tab. Two surfaces
- * inventing their own child colours is worse than neither having any: a parent
- * would learn one mapping and read the other one wrong.
- */
-function ChildInitial({ name, colorIndex = 0 }) {
-  const accent = getAccentDefinition(
-    ACCENT_IDS[colorIndex % ACCENT_IDS.length] ?? ACCENT_IDS[0],
-  );
-  return (
-    <span className="kid-initial" style={{ background: accent.swatch }}>
-      {(name || '?').trim().charAt(0).toUpperCase()}
-    </span>
-  );
-}
-
-/**
  * The dot that says whether one device is reachable.
  *
  * It said it in colour alone once — a parent who cannot separate amber from
@@ -407,7 +450,14 @@ function DeviceRow({ device, active, onSelect, latestBuilds }) {
  */
 const GROUP_DOTS_SHOWN = 4;
 
-function KidGroupHead({ group, open, containsActive, onToggle }) {
+/**
+ * @param expandable A group with no child behind it — the unassigned devices.
+ *   It stays a disclosure, because there is no person to open a hub for.
+ *   A child's row is a link into their hub instead, the way the phone's
+ *   Family list is, so `aria-expanded` would be describing a fold that does
+ *   not happen.
+ */
+function KidGroupHead({ group, open, containsActive, onActivate, expandable }) {
   const { t } = useT();
   const shown = group.devices.slice(0, GROUP_DOTS_SHOWN);
   const rest = group.devices.length - shown.length;
@@ -416,8 +466,8 @@ function KidGroupHead({ group, open, containsActive, onToggle }) {
       className={`kid-group-head${open ? ' is-open' : ''}${
         containsActive && !open ? ' is-active' : ''
       }`}
-      onClick={onToggle}
-      aria-expanded={open}
+      onClick={onActivate}
+      aria-expanded={expandable ? open : undefined}
     >
       {group.child ? (
         <>
@@ -446,61 +496,6 @@ function KidGroupHead({ group, open, containsActive, onToggle }) {
   );
 }
 
-/**
- * Keyed on `resolveActivityKind`, not on the stored `type`.
- *
- * `screen_time` is the catch-all `parseActivityType` stamps on anything it does
- * not recognise, and four features write through it — check-ins, a location
- * refresh, time requests and reward tasks — so keying on `type` drew a clock
- * over every one of them. `apps/mobile` renders the same feed and had the same
- * defect; the split lives in `@kidgate/core` so the two cannot drift.
- */
-const ACTIVITY_ICON = {
-  app_blocked: 'ban',
-  app_opened: 'play',
-  app_installed: 'plus',
-  app_removed: 'minus',
-  // Entering and leaving are opposite events and shared one glyph here. The
-  // phone has drawn `home` for an arrival since the feed was written.
-  place_enter: 'home',
-  place_exit: 'mapPin',
-  tamper: 'alert',
-  message_alert: 'message',
-  // Flagged text the child typed into a search box — the copy says
-  // "Concerning search", so a speech bubble was describing the wrong event.
-  search_alert: 'search',
-  // A watched word the AI tier cleared, not an alert. The feed here renders
-  // the row's own titleKey/descriptionKey, so the copy is already right; this
-  // map only decides the glyph, and without an entry the row draws the
-  // unknown-activity fallback. The dedicated "checked and cleared" section
-  // lives on `apps/mobile`'s Message Alerts screen, which this app has no
-  // equivalent of — recorded in docs/BACKLOG.md beside the rest of that gap.
-  message_checked: 'message',
-  device_locked: 'lock',
-  device_unlocked: 'unlock',
-  // Whatever is left in the bucket once the four below are taken out of it:
-  // a legacy usage row, or a `type` this build does not know.
-  screen_time: 'clock',
-  check_in: 'userCheck',
-  // `refresh`, not `mapPin`: a parent asking for a fresh fix, and `mapPin`
-  // already means "left a place" above.
-  location_request: 'refresh',
-  // Time being asked for, not time already spent — hence not the clock.
-  time_request: 'hourglass',
-  reward_task: 'star',
-  web_filter: 'globe',
-  emergency: 'lifebuoy',
-  // A KidGate operator entered the account (`functions/admin/impersonate.js`).
-  support_session: 'user',
-};
-
-/**
- * The unknown-row glyph. It used to be `clock`, which made a row this build
- * cannot identify indistinguishable from a screen-time one — the map's own
- * fallback quietly asserting the same thing the overloaded `type` did.
- */
-const ACTIVITY_ICON_FALLBACK = 'activity';
-
 /* ------------------------------------------------------------------ */
 
 export default function Dashboard({
@@ -521,12 +516,17 @@ export default function Dashboard({
    * which is right: there is no week to have missed.
    */
   familyId = null,
+  /** The signed-in uid — see `DashboardLive`. Null in a rendering with no auth. */
+  accountId = null,
+  accountEmail = null,
 }) {
   const {
     family,
     devices,
     children,
     activities,
+    familyActivities = [],
+    parentDevices = [],
     actorNames,
     checkIns,
     places,
@@ -548,6 +548,30 @@ export default function Dashboard({
    */
   const activityT = useActivityTranslate();
   const [deviceId, setDeviceId] = useState(devices[0]?.id ?? null);
+  /**
+   * Which of the four left-menu sections is open. `family` is the landing, the
+   * way the phone opens on its Family tab.
+   */
+  const [section, setSection] = useState('family');
+  const compact = useCompactLayout();
+  /**
+   * Whether the Family section is showing the child list or one device.
+   *
+   * List first, device second — the phone's own shape: a parent is shown their
+   * family and picks from it, rather than landing inside whichever device
+   * happened to sort first. `deviceId` stays set while the list is open so
+   * coming back re-opens the same device.
+   */
+  const [deviceOpen, setDeviceOpen] = useState(false);
+  /**
+   * The child whose hub is open, or null for the list.
+   *
+   * A third level rather than a flag, because the Family section is the
+   * phone's stack: children, then one person, then one of their machines.
+   * Leaving it set while a device is open is what lets Back land on the hub a
+   * parent came through rather than at the top of the list.
+   */
+  const [openChildId, setOpenChildId] = useState(null);
   const [tab, setTab] = useState('overview');
   const [range, setRange] = useState(14);
   const [busy, setBusy] = useState(null);
@@ -590,10 +614,10 @@ export default function Dashboard({
   useEffect(() => {
     // Opening the tab is being shown the report: the panel behind it renders
     // the week itself, not a link to it.
-    if (tab !== 'report' || !latestReportKey) return;
+    if (section !== 'report' || !latestReportKey) return;
     writeWeeklyReportSeen(familyId, latestReportKey);
     setReportSeenKey(latestReportKey);
-  }, [tab, latestReportKey, familyId]);
+  }, [section, latestReportKey, familyId]);
   const reportUnseen = hasUnseenWeeklyReport(latestReportKey, reportSeenKey);
 
   /*
@@ -761,6 +785,61 @@ export default function Dashboard({
 
   const device = devices.find(d => d.id === deviceId) ?? null;
   const c = device?.controls ?? null;
+  /**
+   * The device the main pane is actually showing, or null.
+   *
+   * `device` alone is not that question: it stays resolved while the Family
+   * list is open (so returning re-opens the same one) and while a parent is
+   * reading Activity, Reports or Settings, none of which are about a device.
+   * Every device-scoped block downstream is gated on this instead — the header
+   * name, the two header buttons, the tab bar and the five panels — so none of
+   * them can draw one device's facts under another section's heading.
+   */
+  const deviceView = section === 'family' && deviceOpen ? device : null;
+  /**
+   * The child whose hub the pane is showing, or null.
+   *
+   * A device open beats a hub: the stack is children → person → machine, and
+   * the deepest frame is the one on screen.
+   */
+  const childView = useMemo(() => {
+    if (section !== 'family' || deviceOpen || !openChildId) return null;
+    return (children ?? []).find(item => item.id === openChildId) ?? null;
+  }, [section, deviceOpen, openChildId, children]);
+  /** The child's own devices, which is what every card on the hub folds. */
+  const childDevices = useMemo(
+    () => (childView ? devices.filter(d => d.childId === childView.id) : []),
+    [childView, devices],
+  );
+
+  /**
+   * One frame up the Family stack, named by where it lands.
+   *
+   * A device opened from a child's hub goes back to that child, not to the top
+   * of the list — the parent walked through them and undoing one step at a
+   * time is what a stack means. A device with no child behind it, and the hub
+   * itself, both go back to the list.
+   */
+  const back = useMemo(() => {
+    if (deviceView) {
+      const parent = deviceView.childId
+        ? (children ?? []).find(item => item.id === deviceView.childId)
+        : null;
+      return {
+        label: parent ? parent.name : activityT('nav.family'),
+        go: () => {
+          setDeviceOpen(false);
+          // Only when there is no person to land on: clearing it otherwise is
+          // what would skip the hub the parent came through.
+          if (!parent) setOpenChildId(null);
+        },
+      };
+    }
+    if (childView) {
+      return { label: activityT('nav.family'), go: () => setOpenChildId(null) };
+    }
+    return null;
+  }, [deviceView, childView, children, activityT]);
 
   /**
    * The tabs this device has anything to put in.
@@ -776,9 +855,8 @@ export default function Dashboard({
    * breakdown in it are this surface's *only* real data; it is the app-shaped
    * cards inside that are gated.
    *
-   * `report` and `overview` are never dropped: the first is about the family,
-   * and the second is where a device with nothing else still says whether it
-   * is online.
+   * `overview` is never dropped: it is where a device with nothing else still
+   * says whether it is online.
    */
   const visibleTabs = useMemo(() => {
     if (!device) {
@@ -1450,98 +1528,129 @@ export default function Dashboard({
           <span>{family.name}</span>
         </div>
 
-        <div className="side-kids">
-          <p className="side-title">{t('dash.children')}</p>
-          {/*
-            Only this list scrolls, not the rail: the heading above and the
-            account footer below stay put however many children a family has.
-            A rail that scrolled as one hid the footer behind four children.
-          */}
-          <div className="side-kids-scroll">
-            {devices.length === 0 && (
-              <p className="side-empty">{t('dash.noChildren')}</p>
-            )}
-            {deviceGroups.map(group => {
-              /*
-               * Every child is a group, including one who owns a single
-               * device. It used to be a bare row — two rail lines saving one —
-               * and the saving cost more than it bought: that row carried a
-               * different avatar, a different first line and no chevron, so a
-               * rail of four children showed two shapes and a parent had to
-               * work out which of them were people. Consistency down the
-               * column beats one line of height.
-               */
-              const open = openGroupKey === group.key;
-              const containsActive = group.devices.some(d => d.id === deviceId);
-              return (
-                <div key={group.key} className={`kid-group${open ? ' is-open' : ''}`}>
-                  <>
-                    <KidGroupHead
-                      group={group}
-                      open={open}
-                      containsActive={containsActive}
-                      onToggle={() =>
-                        setOpenGroupKey(key => (key === group.key ? null : group.key))
-                      }
-                    />
-                    {open &&
-                      group.devices.map(d => (
-                        <DeviceRow
-                          key={d.id}
-                          device={d}
-                          active={d.id === deviceId}
-                          onSelect={() => setDeviceId(d.id)}
-                          latestBuilds={latestBuilds}
-                        />
-                      ))}
-                  </>
-                </div>
-              );
-            })}
-          </div>
-        </div>
+        {/*
+          The four sections, and nothing else. The child list used to be here
+          and is the Family section's own content now: the rail asked "which
+          device" at the same level as the page asked "what about the family",
+          so a parent read one column that answered two questions — the same
+          defect the per-device tab bar was pulled out of this rail to fix.
 
-        <div className="side-foot">
-          {/*
-            Was a bare pill reading Premium or Trial. It now says which of the
-            three states the family is in and where a plan is actually changed
-            — buying stays on the phone, by decision (`PlanCard`).
-          */}
-          <PlanCard plan={family.plan} trialStartedAt={family.trialStartedAt} />
-          {/* Classed because it is the one line in the footer a short rail can
-              afford to drop — it counts what the list above it already shows,
-              and nothing is done from it. */}
-          <p className="side-count">
-            {t('dash.parents', { count: family.parents.length })} ·{' '}
-            {t('dash.devices', { count: devices.length })}
-          </p>
-          {/* The language picker moved into `sideFooter`'s account block, where
-              it shares a row with Sign out. */}
-          {sideFooter}
-        </div>
+          A glyph beside each label, unlike `.dash-tabs`, which draws words
+          alone: this bar is also the phone-width bottom bar, where the icon is
+          what stays legible once the label is two lines of Vietnamese.
+        */}
+        <nav className="side-nav" aria-label={t('dash.manage')}>
+          {SECTIONS.map(item => (
+            <button
+              key={item.id}
+              className={`nav-item${section === item.id ? ' is-active' : ''}`}
+              onClick={() => setSection(item.id)}
+              aria-current={section === item.id ? 'page' : undefined}
+            >
+              <Icon name={item.icon} size={17} />
+              <span className="nav-item-label">{activityT(item.labelKey)}</span>
+              {/* A dot, not a count: what is behind it is a single report, and
+                  `1` would invite the reader to work out what it counted. The
+                  phone puts the same dot on the same tab. */}
+              {item.id === 'report' && reportUnseen && (
+                <span
+                  className="nav-badge nav-badge-dot"
+                  role="img"
+                  aria-label={t('dash.tabReportNew')}
+                  title={t('dash.tabReportNew')}
+                />
+              )}
+              {/* No Attention count beside Family, deliberately. `attention` is
+                  one device's open items — it returns `[]` with no device
+                  resolved — so a number here would count whichever device was
+                  last opened and call it the family's, and it would keep
+                  counting it while a parent stood in Activity or Settings. It
+                  stays on the Overview tab, under the device it is about. A
+                  family-level count needs a family-level derivation first. */}
+            </button>
+          ))}
+        </nav>
+
+        {/* Unchanged, and not rendered at all once the rail is a bottom bar:
+            the Settings section takes the same block there rather than a
+            second copy of it being drawn where nobody can reach it. */}
+        {!compact && (
+          <div className="side-foot">
+            {/*
+              Was a bare pill reading Premium or Trial. It now says which of the
+              three states the family is in and where a plan is actually changed
+              — buying stays on the phone, by decision (`PlanCard`).
+            */}
+            <PlanCard plan={family.plan} trialStartedAt={family.trialStartedAt} />
+            {/* Classed because it is the one line in the footer a short rail can
+                afford to drop — it counts what the list above it already shows,
+                and nothing is done from it. */}
+            <p className="side-count">
+              {t('dash.parents', { count: family.parents.length })} ·{' '}
+              {t('dash.devices', { count: devices.length })}
+            </p>
+            {/* The language picker moved into `sideFooter`'s account block, where
+                it shares a row with Sign out. */}
+            {sideFooter}
+          </div>
+        )}
       </aside>
 
       <main className="dash-main">
         <header className="dash-top">
           <div>
             {/*
+              The way back out of a device, and only there. It is the phone's
+              own affordance — Family lists the children, a device is pushed on
+              top of it — and at phone width it is the only one, since the left
+              menu is a bottom bar by then and cannot show where you are.
+            */}
+            {back && (
+              <button
+                className="dash-back"
+                onClick={back.go}
+                /* The destination, not the direction: "Back" says nothing to a
+                   parent who arrived from a bookmark, and one frame up from a
+                   device is usually a person rather than the list. */
+                aria-label={back.label}
+              >
+                <Icon name="chevronLeft" size={15} />
+                <span>{back.label}</span>
+              </button>
+            )}
+            {/*
               Whose and which on one line. Stacked, the person spent a whole
               row saying one word and the header ran four rows deep before the
               first number on the page. What the stacking was for is unchanged:
               every figure below is about one child's device, and naming only
               the hardware made two iPads read as the same page twice.
+
+              Off a device the heading is the section's own name — the same
+              word the menu item beside it is lit with, so a parent who
+              arrived by keyboard or came back to a tab knows where they are.
             */}
             <div className="dash-top-name">
-              {device?.child && (
+              {deviceView?.child && (
                 <p className="dash-top-owner">
                   <ChildInitial
-                    name={device.child.name}
-                    colorIndex={device.child.colorIndex}
+                    name={deviceView.child.name}
+                    colorIndex={deviceView.child.colorIndex}
                   />
-                  <span>{device.child.name}</span>
+                  <span>{deviceView.child.name}</span>
                 </p>
               )}
-              <h1>{device ? device.name : family.name}</h1>
+              <h1>
+                {deviceView
+                  ? deviceView.name
+                  : childView
+                    ? childView.name
+                    : section === 'family'
+                      ? family.name
+                      : activityT(
+                          SECTIONS.find(item => item.id === section)?.labelKey ??
+                            'nav.family',
+                        )}
+              </h1>
             </div>
           </div>
           <div className="top-actions">
@@ -1555,7 +1664,7 @@ export default function Dashboard({
               where "this device cannot" is said, because a parent comparing
               two devices needs to read it there.
             */}
-            {device && supportsCheckIn(device) && (
+            {deviceView && supportsCheckIn(device) && (
               <button
                 className="btn"
                 disabled={busy === 'checkin'}
@@ -1573,7 +1682,7 @@ export default function Dashboard({
                 {busy === 'checkin' ? t('dash.sending') : t('dash.checkIn')}
               </button>
             )}
-            {device && supportsLock(device) && (
+            {deviceView && supportsLock(device) && (
               <button
                 className="btn btn-primary"
                 disabled={(live && !canWrite) || busy === 'lock'}
@@ -1594,49 +1703,43 @@ export default function Dashboard({
         </header>
 
         {/*
-          The rail asks which device; this row asks what about it. They were one
-          column, so a parent scanning the rail read eleven rows that answered
-          two different questions and had to learn which half they were in.
+          The left menu asks which section; this row asks what about the device
+          a parent opened. It only exists inside one, which is why it is gated
+          rather than merely empty — a tab bar over a child list is a second
+          navigation for a page that has nothing for it to steer.
+
           Sticky, because the nav was on screen at any scroll depth while it
           lived in the rail and a tab bar that scrolls away is a worse nav than
           the one it replaced.
         */}
-        <nav className="dash-tabs" aria-label={t('dash.manage')}>
-          {visibleTabs.map(item => (
-            <button
-              key={item.id}
-              className={`nav-item${tab === item.id ? ' is-active' : ''}`}
-              onClick={() => setTab(item.id)}
-              /* Which tab is showing, said to a screen reader as well as in
-                 the brand ground the stylesheet fills the chip with. */
-              aria-current={tab === item.id ? 'page' : undefined}
-            >
-              {t(item.labelKey)}
-              {/* A bare figure beside "Overview" says nothing about what was
-                  counted. `cardAttentionSub` is the sentence the Overview card
-                  itself uses for the same number. */}
-              {item.id === 'overview' && attention.length > 0 && (
-                <span
-                  className="nav-badge"
-                  title={t('dash.cardAttentionSub', { count: attention.length })}
-                >
-                  {attention.length}
-                </span>
-              )}
-              {/* A dot, where the Attention badge beside it is a count: what is
-                  behind this one is a single report, and `1` would invite the
-                  reader to work out what the other numbers meant. */}
-              {item.id === 'report' && reportUnseen && (
-                <span
-                  className="nav-badge nav-badge-dot"
-                  role="img"
-                  aria-label={t('dash.tabReportNew')}
-                  title={t('dash.tabReportNew')}
-                />
-              )}
-            </button>
-          ))}
-        </nav>
+        {deviceView && (
+          <nav className="dash-tabs" aria-label={t('dash.manage')}>
+            {visibleTabs.map(item => (
+              <button
+                key={item.id}
+                className={`nav-item${tab === item.id ? ' is-active' : ''}`}
+                onClick={() => setTab(item.id)}
+                /* Which tab is showing, said to a screen reader as well as in
+                   the brand ground the stylesheet fills the chip with. */
+                aria-current={tab === item.id ? 'page' : undefined}
+              >
+                {t(item.labelKey)}
+                {/* A bare figure beside "Overview" says nothing about what was
+                    counted. `cardAttentionSub` is the sentence the Overview
+                    card itself uses for the same number. It is this device's
+                    count, which is why it is on this bar and not the menu. */}
+                {item.id === 'overview' && attention.length > 0 && (
+                  <span
+                    className="nav-badge"
+                    title={t('dash.cardAttentionSub', { count: attention.length })}
+                  >
+                    {attention.length}
+                  </span>
+                )}
+              </button>
+            ))}
+          </nav>
+        )}
 
         {/*
           Under the bar, not above it: these are the pane's first line rather
@@ -1648,7 +1751,7 @@ export default function Dashboard({
           is it here — read at a glance — then the ones a parent reads
           deliberately, and only once something looks wrong.
         */}
-        {device && (
+        {deviceView && (
           <p className="dash-top-facts">
             {/* `deviceStatusOf`, never the stored `status` — the same rule the
                 sidebar dot follows. This header read the field straight off the
@@ -1658,21 +1761,26 @@ export default function Dashboard({
             <StatusPill status={deviceStatusOf(device)} device={device} />
             <span className="dot-sep">·</span>
             {osLabel(device.platform, device.osVersion)}
+            {/* One "last seen", worded by the plan.
+
+                A free device is on the thirty-minute beat, so this line is
+                routinely old on a machine that is working perfectly, and
+                "Last active 52 minutes ago" beside a green Online pill reads as
+                a fault. The app pack's sentence names the plan instead — the
+                same one the phone's family card carries, no `dash.*` twin
+                (`docs/PRICING.md` §8 item 7). It **states the age and does not
+                promise a cadence**: a laptop that sleeps reports nothing at
+                all, and a card claiming "every 30 minutes" over an hour-old
+                reading was the first version of this and was wrong within a
+                day. */}
             {device.lastActiveAt && (
               <>
                 <span className="dot-sep">·</span>
-                {t('dash.lastActive', { when: timeAgo(device.lastActiveAt) })}
-              </>
-            )}
-            {/* Why that "last seen" is half an hour old on a working device.
-                The app pack's sentence, the one the phone's family card now
-                carries too — `docs/PRICING.md` §8 item 7. */}
-            {slowBeatMinutes(device.beatIntervalMs) !== null && (
-              <>
-                <span className="dot-sep">·</span>
-                {activityT('family.freeTierCadenceHint', {
-                  minutes: slowBeatMinutes(device.beatIntervalMs),
-                })}
+                {slowBeatMinutes(device.beatIntervalMs) !== null
+                  ? activityT('family.freeTierCadenceHint', {
+                      date: timeAgo(device.lastActiveAt),
+                    })
+                  : t('dash.lastActive', { when: timeAgo(device.lastActiveAt) })}
               </>
             )}
             {/* A lone quiet fact joins this row rather than standing as a line
@@ -1685,7 +1793,7 @@ export default function Dashboard({
             )}
           </p>
         )}
-        {device && quietFacts.length > 1 && (
+        {deviceView && quietFacts.length > 1 && (
           <p className="dash-top-facts dash-top-facts-quiet">{quietFacts}</p>
         )}
 
@@ -1715,14 +1823,11 @@ export default function Dashboard({
         {/* The live region and the box are one module — `Toast` says why. */}
         <Toast toast={toast} />
 
-        {/* The report is about the family, so it survives having no device
-            selected — a parent whose only device has just been removed can
-            still read what the last weeks said. */}
         {/*
-          A banner, on every tab but the report: a family with parked devices
-          is owed the fact before any device screen means much, and on a tab
-          that happened to have a device selected it would otherwise be one
-          click away from the devices reading Paused.
+          A banner, in every section but the report: a family with parked
+          devices is owed the fact before any device screen means much, and in
+          a section that happened to have a device open it would otherwise be
+          one click away from the devices reading Paused.
 
           A banner rather than the sheet it used to draw here. On the free plan
           one device reports and the rest stay parked for good, so this is not
@@ -1730,7 +1835,7 @@ export default function Dashboard({
           a confirm button over every screen kept asking a question that had
           already been answered. The sheet is one click away.
         */}
-        {parking.parked.length > 0 && tab !== 'report' && (
+        {parking.parked.length > 0 && section !== 'report' && (
           <ParkedDevicesCard
             devices={devices}
             parking={parking}
@@ -1758,14 +1863,122 @@ export default function Dashboard({
           />
         )}
 
-        {!device && tab !== 'report' && (
-          <section className="card">
-            <h2>{t('dash.noDeviceTitle')}</h2>
-            <RichText as="p" className="hint" text={t('dash.noDeviceBody')} />
+        {/*
+          The Family landing: the child list that used to be the sidebar rail.
+          It is the first thing a parent is shown, the way the phone's Family
+          tab is — pick a person, then one of their devices, then what about
+          it. The rail answered the first two questions in a column beside a
+          page that was already answering the third.
+        */}
+        {section === 'family' && !deviceView && !childView && (
+          <section className="family-home">
+            {devices.length === 0 ? (
+              <div className="card">
+                <h2>{t('dash.noDeviceTitle')}</h2>
+                <RichText as="p" className="hint" text={t('dash.noDeviceBody')} />
+              </div>
+            ) : (
+              <div className="kid-list">
+                {deviceGroups.map(group => {
+                  /*
+                   * Every child is a group, including one who owns a single
+                   * device. It used to be a bare row — two lines saving one —
+                   * and the saving cost more than it bought: that row carried
+                   * a different avatar, a different first line and no chevron,
+                   * so a list of four children showed two shapes and a parent
+                   * had to work out which of them were people.
+                   *
+                   * A child's row opens their hub; only the unassigned group
+                   * still folds, because there is no person behind it to open
+                   * one for.
+                   */
+                  const expandable = !group.child;
+                  const open = expandable && openGroupKey === group.key;
+                  const containsActive = group.devices.some(d => d.id === deviceId);
+                  return (
+                    <div
+                      key={group.key}
+                      className={`kid-group${open ? ' is-open' : ''}`}
+                    >
+                      <KidGroupHead
+                        group={group}
+                        open={open}
+                        containsActive={containsActive}
+                        expandable={expandable}
+                        onActivate={() =>
+                          expandable
+                            ? setOpenGroupKey(key =>
+                                key === group.key ? null : group.key,
+                              )
+                            : setOpenChildId(group.child.id)
+                        }
+                      />
+                      {open &&
+                        group.devices.map(d => (
+                          <DeviceRow
+                            key={d.id}
+                            device={d}
+                            active={d.id === deviceId}
+                            /* Selecting and opening are one gesture here, not
+                               two: on the phone a device row IS the way into
+                               the device, and a row that only highlighted
+                               itself would be a control that does nothing a
+                               parent can see. */
+                            onSelect={() => {
+                              setDeviceId(d.id);
+                              setDeviceOpen(true);
+                            }}
+                            latestBuilds={latestBuilds}
+                          />
+                        ))}
+                    </div>
+                  );
+                })}
+              </div>
+            )}
           </section>
         )}
 
-        {tab === 'report' && (
+        {/*
+          The person, between the list and the machine. `docs/CHILD_HUB.md`
+          holds the model both consoles share; what this call site owns is the
+          stack — opening a device from here keeps `openChildId` set, so Back
+          lands on the hub the parent came through rather than at the top.
+        */}
+        {childView && (
+          <ChildHub
+            child={childView}
+            childDevices={childDevices}
+            unassignedDevices={devices.filter(d => !d.childId)}
+            allDevices={devices}
+            actions={actions}
+            run={run}
+            busy={Boolean(busy)}
+            canWrite={canWrite}
+            live={live}
+            appT={activityT}
+            onOpenDevice={id => {
+              setDeviceId(id);
+              setDeviceOpen(true);
+            }}
+            onLeave={() => setOpenChildId(null)}
+          />
+        )}
+
+        {section === 'activity' && (
+          <ActivityFeed
+            activities={familyActivities}
+            devices={devices}
+            children={children}
+            actorNames={actorNames}
+            appT={activityT}
+            teaserSlot={
+              <PremiumTeaser teaser={activityWindowTeaser} appT={activityT} />
+            }
+          />
+        )}
+
+        {section === 'report' && (
           <ReportPanel
             reports={reports?.reports ?? []}
             loading={Boolean(reports?.loading)}
@@ -1778,7 +1991,108 @@ export default function Dashboard({
           />
         )}
 
-        {device && tab === 'overview' && (
+        {section === 'settings' && (
+          <section className="settings-home">
+            {/*
+              The plan first, then the people, then the contacts — the phone's
+              own order on its Settings tab. What is deliberately NOT here:
+              anything about this browser rather than about the family. The
+              language picker, the palette and Sign out live in the rail's
+              footer and are rendered there once; on a phone-width screen the
+              rail is a bottom bar with no footer, so the same block is handed
+              to this section instead (`sideFooter`, below) rather than drawn
+              twice and allowed to disagree.
+            */}
+            <Card title={activityT('plans.title')}>
+              <PlanCard plan={family.plan} trialStartedAt={family.trialStartedAt} />
+            </Card>
+
+            {/* The family itself — name, roster, star chart. A child row here
+                opens the same hub the Family section does, rather than a
+                second, shallower copy of it. */}
+            <FamilySettingsCard
+              family={family}
+              children={children ?? []}
+              devices={devices}
+              leaderboardEnabled={leaderboard?.enabled ?? true}
+              actions={actions}
+              run={run}
+              busy={Boolean(busy)}
+              canWrite={canWrite}
+              live={live}
+              appT={activityT}
+              onOpenChild={id => {
+                setOpenChildId(id);
+                setDeviceOpen(false);
+                setSection('family');
+              }}
+            />
+
+            {/* Nothing at all for a joined co-parent: inviting, approving and
+                removing are the owner's, the same rule the phone's Family
+                screen applies. */}
+            {live && actions?.isOwner && (
+              <Card title={t('dash.parents', { count: family.parents.length })}>
+                <ParentsCard
+                  members={family.members ?? []}
+                  actions={actions}
+                  run={run}
+                  busy={
+                    busy === 'parent-invite' ||
+                    busy === 'parent-join' ||
+                    busy === 'parent-remove'
+                  }
+                />
+              </Card>
+            )}
+
+            {/* For both roles — the rules and the phone let a joined co-parent
+                name one — and its title is the app pack's, the words the
+                phone's Settings row says. */}
+            {live && familyId && (
+              <Card
+                title={activityT('sos.trustedContactsTitle')}
+                subtitle={activityT('sos.trustedContactsRowSubtitle')}
+              >
+                <TrustedContactsCard familyId={familyId} />
+              </Card>
+            )}
+
+            {/* Push preferences for the account's own phones. Renders nothing
+                for a co-parent, whose devices live under their own root. */}
+            <NotificationPrefsCard
+              accountId={accountId}
+              parentDevices={parentDevices}
+              appT={activityT}
+              canWrite={canWrite}
+              live={live}
+            />
+
+            <SupportCard
+              accountId={accountId}
+              accountEmail={accountEmail}
+              familyId={familyId}
+              familyName={family.name}
+              appT={activityT}
+            />
+
+            <AccountCard
+              accountId={accountId}
+              accountEmail={accountEmail}
+              parentCount={family.parents.length}
+              deviceCount={devices.length}
+              appT={activityT}
+            />
+
+            {/* The account block, only where the footer that normally carries
+                it is not on screen. One instance either way: two copies of a
+                language picker is two places to change the language and one
+                of them wrong. */}
+            {compact && <div className="settings-account">{sideFooter}</div>}
+          </section>
+        )}
+
+        {deviceView && tab === 'overview' && (
           <>
             {/*
               Two of these four are measurements, and a measurement no device
@@ -1870,10 +2184,7 @@ export default function Dashboard({
                       return (
                         <li key={a.id}>
                           <span className={`tl-icon type-${kind}`}>
-                            <Icon
-                              name={ACTIVITY_ICON[kind] || ACTIVITY_ICON_FALLBACK}
-                              size={15}
-                            />
+                            <Icon name={activityIconName(kind)} size={15} />
                           </span>
                           <span className="tl-body">
                             <strong>{copy.title}</strong>
@@ -2041,45 +2352,16 @@ export default function Dashboard({
             </div>
 
             {/*
-              Below the device, not above it. Both cards are about the family,
-              and they opened this tab: a parent who had just picked a child's
-              phone met "Parents (2)" and a contact list before one number
-              about the phone. The tab a parent lands on is still where they
-              live — there is no family screen on this surface — but they are
-              read after the thing that was selected, not instead of it.
-
-              Parents renders nothing at all for a joined co-parent: inviting,
-              approving and removing are the owner's, the same rule the phone's
-              Family screen applies. Trusted contacts is for both — the rules
-              and the phone let a joined co-parent name one — and its title is
-              the app pack's, the words the phone's Settings row says.
+              Parents and Trusted contacts used to close this tab. Both are
+              about the family, and they sat under one child's phone because
+              there was no family screen on this surface to put them on. There
+              is one now — they are the Settings section's, where the phone
+              keeps them.
             */}
-            {live && actions?.isOwner && (
-              <Card title={t('dash.parents', { count: family.parents.length })}>
-                <ParentsCard
-                  members={family.members ?? []}
-                  actions={actions}
-                  run={run}
-                  busy={
-                    busy === 'parent-invite' ||
-                    busy === 'parent-join' ||
-                    busy === 'parent-remove'
-                  }
-                />
-              </Card>
-            )}
-            {live && familyId && (
-              <Card
-                title={activityT('sos.trustedContactsTitle')}
-                subtitle={activityT('sos.trustedContactsRowSubtitle')}
-              >
-                <TrustedContactsCard familyId={familyId} />
-              </Card>
-            )}
           </>
         )}
 
-        {device && tab === 'screen' && (
+        {deviceView && tab === 'screen' && (
           <>
             <div className="grid-2">
               <Card title={t('dash.todayTitle')} subtitle={t('dash.todaySub')}>
@@ -2205,6 +2487,17 @@ export default function Dashboard({
                   setSelectedUsageDate(prev => (prev === date ? null : date))
                 }
               />
+              {/*
+                A free family has no `usageDays` at all (`docs/PRICING.md` §4),
+                so these bars are empty for them and an empty chart reads as one
+                that failed rather than as the edge of the plan. A sentence and
+                no button: the hour band below already carries this column's
+                offer. App pack, like the two notes above — the phone says the
+                same thing on its own 30-day card (`.claude/rules/i18n.md`).
+              */}
+              {!hasFullAccess && (
+                <p className="hint">{activityT('plans.premiumHistoryNote')}</p>
+              )}
             </Card>
 
             {/*
@@ -2266,7 +2559,7 @@ export default function Dashboard({
           </>
         )}
 
-        {device && tab === 'apps' && (
+        {deviceView && tab === 'apps' && (
           <>
             {/*
               The two app-shaped cards, on a tab that also holds the web ones.
@@ -2678,7 +2971,7 @@ export default function Dashboard({
           </>
         )}
 
-        {device && tab === 'safety' && (
+        {deviceView && tab === 'safety' && (
           <div className="cols">
             <div>
               {/*
@@ -3018,7 +3311,7 @@ export default function Dashboard({
           </div>
         )}
 
-        {device && tab === 'controls' && (
+        {deviceView && tab === 'controls' && (
           <ControlsTab
             device={device}
             /*

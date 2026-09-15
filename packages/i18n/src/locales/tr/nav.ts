@@ -1,0 +1,16 @@
+export const nav = {
+  family: 'Aile',
+  activities: 'Etkinlikler',
+  reports: 'Raporlar',
+  settings: 'Ayarlar',
+  status: 'Durum',
+  sos: 'SOS',
+  familyTab: 'Aile sekmesi',
+  activitiesTab: 'Etkinlikler sekmesi',
+  activitiesTabNew: 'Etkinlikler sekmesi, yeni etkinlik',
+  reportsTab: 'Raporlar sekmesi',
+  reportsTabNew: 'Raporlar sekmesi, yeni rapor',
+  settingsTab: 'Ayarlar sekmesi',
+  statusTab: 'Durum sekmesi',
+  sosEmergencyTab: 'Acil SOS sekmesi',
+};

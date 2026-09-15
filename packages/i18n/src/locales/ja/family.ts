@@ -324,7 +324,7 @@ export const family = {
 
   protectionNeedsSetup: '{{issueLabel}}の設定が必要です',
 
-  freeTierCadenceHint: '無料プラン — {{minutes}}分ごとに更新',
+  freeTierCadenceHint: '無料プラン — 最終アクティブ: {{date}}',
   dailyLimitOn: '1日の利用時間オン',
 
   deviceReady: '準備完了',

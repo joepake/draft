@@ -13,7 +13,7 @@ import {
 } from '@kidgate/core/domain/premiumTeaser';
 import { REWARD_FREE_MAX_ACTIVE_TASKS_PER_DEVICE } from '@kidgate/schema/rewardTask';
 import PremiumTeaser from './PremiumTeaser.jsx';
-import { localDayKey } from '@kidgate/core/domain/weeklyReportSchedule';
+import { childMinutesUsedToday } from './childBudgetSpent.js';
 import Icon from '@kidgate/web-ui/Icon';
 import { WEB_FILTER_CATEGORY_GROUPS } from '@kidgate/core/domain/webFilterCategoryGroups';
 import { WEB_FILTER_CATEGORIES } from '@kidgate/schema/webActivity';
@@ -341,19 +341,10 @@ export default function ControlsTab({
    * have all been off since yesterday reads nothing rather than yesterday's
    * figure under a heading that says today.
    */
-  const budgetSpentMinutes = useMemo(() => {
-    if (!budgetShared) return null;
-    const today = localDayKey(Date.now(), -new Date().getTimezoneOffset());
-    let used = 0;
-    let reported = false;
-    for (const other of siblingDevices) {
-      const controls = other.controls;
-      if (!controls || controls.usageDate !== today) continue;
-      used += Math.max(0, controls.minutesUsedToday ?? 0);
-      reported = true;
-    }
-    return reported ? used : null;
-  }, [budgetShared, siblingDevices]);
+  const budgetSpentMinutes = useMemo(
+    () => (budgetShared ? childMinutesUsedToday(siblingDevices) : null),
+    [budgetShared, siblingDevices],
+  );
 
   // Cleared by the listener catching up, not by the write returning: dropping
   // the draft the moment the Cloud Function answered would show the old number

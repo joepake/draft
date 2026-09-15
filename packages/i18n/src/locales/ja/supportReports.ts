@@ -1,0 +1,20 @@
+export const supportReports = {
+  title: 'リクエストと問題の報告',
+  subtitleCount: '未対応 {{count}} 件',
+  emptyTitle: 'まだ報告はありません',
+  emptyDescription: '問題を報告すると、ここに表示されて経過を確認できます。',
+  emptyAction: '問題を報告',
+  newReportButton: '新しい報告',
+  attachmentCount: 'スクリーンショット{{count}}枚を添付',
+  responseLabel: 'KidGateからの返信',
+  waitingNote: '確認され次第、ここに返信します。',
+  expandLabel: 'もっと見る',
+  collapseLabel: '閉じる',
+  expandHint: '報告の全文を見る',
+  unreadBadge: '新しい返信',
+  status: {
+    pending: '受付済み',
+    in_review: '確認中',
+    resolved: '解決済み',
+  },
+};

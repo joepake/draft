@@ -1,0 +1,31 @@
+export const leaderboard = {
+  title: 'Sternetafel',
+  thisWeek: 'Diese Woche',
+  resetsNote: 'Beginnt jeden Montag neu.',
+  rowA11y: '{{rank}}. {{name}}, {{count}} Sterne',
+  settingsTitle: 'Sternetafel',
+  settingsBody:
+    'Deine Kinder sehen, wie viele Sterne jedes von ihnen diese Woche gesammelt hat.',
+  screenTimeTitle: 'Bildschirmzeit der Familie',
+  screenTimeSub: 'Wenigste Bildschirmzeit zuerst · diese Woche',
+  screenTimeRowA11y: '{{rank}}. {{name}}, {{duration}}',
+  screenTimeParentBadge: 'Elternteil',
+  screenTimeParentFallbackName: 'Elternteil',
+  screenTimeSettingsTitle: 'Bildschirmzeit der Familie',
+  screenTimeSettingsBody:
+    'Zeige deinen Kindern, wie viel Bildschirmzeit jedes von ihnen diese Woche genutzt hat. Aus, bis du es einschaltest.',
+  screenTimeNote: 'Zählt jedes Gerät einer Person. Beginnt jeden Montag neu.',
+  childrenTitle: 'Kinder',
+  manageAccessibility: 'Kinder und Geräte verwalten',
+  addChild: 'Kind hinzufügen',
+  childAdded: 'Kind hinzugefügt.',
+  childNameLabel: 'Name',
+  childNamePlaceholder: 'z. B. Mai',
+  unassigned: 'Nicht zugeordnet',
+  removeChild: 'Entfernen',
+  removeChildConfirmTitle: 'Profil von {{childName}} entfernen?',
+  removeChildConfirmBody:
+    'Die Geräte bleiben gekoppelt und melden weiter – ihre Nutzung wird aber niemandem mehr zugerechnet, bis du sie erneut zuordnest.',
+  emptyTitle: 'Noch keine Kinder',
+  emptyBody: 'Füge hier jedes Kind hinzu und weise ihm dann seine Geräte zu.',
+} as const;

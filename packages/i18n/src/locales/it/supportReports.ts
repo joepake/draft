@@ -1,0 +1,20 @@
+export const supportReports = {
+  title: 'Richieste e segnalazioni',
+  subtitleCount: '{{count}} aperte',
+  emptyTitle: 'Nessuna segnalazione ancora',
+  emptyDescription: 'Quando segnali un problema, comparirà qui per poterlo seguire.',
+  emptyAction: 'Segnala un problema',
+  newReportButton: 'Nuova segnalazione',
+  attachmentCount: '{{count}} screenshot allegati',
+  responseLabel: 'Risposta da KidGate',
+  waitingNote: 'Risponderemo qui non appena qualcuno l’avrà esaminata.',
+  expandLabel: 'Mostra altro',
+  collapseLabel: 'Mostra meno',
+  expandHint: 'Mostra la segnalazione completa',
+  unreadBadge: 'Nuova risposta',
+  status: {
+    pending: 'Ricevuta',
+    in_review: 'In revisione',
+    resolved: 'Risolta',
+  },
+};

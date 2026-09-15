@@ -1,0 +1,16 @@
+export const nav = {
+  family: 'Família',
+  activities: 'Atividades',
+  reports: 'Relatórios',
+  settings: 'Ajustes',
+  status: 'Status',
+  sos: 'SOS',
+  familyTab: 'Aba Família',
+  activitiesTab: 'Aba Atividades',
+  activitiesTabNew: 'Aba Atividades, nova atividade',
+  reportsTab: 'Aba Relatórios',
+  reportsTabNew: 'Aba Relatórios, novo relatório',
+  settingsTab: 'Aba Ajustes',
+  statusTab: 'Aba Status',
+  sosEmergencyTab: 'Aba SOS de emergência',
+};

@@ -1,0 +1,16 @@
+export const nav = {
+  family: 'Семья',
+  activities: 'События',
+  reports: 'Отчёты',
+  settings: 'Настройки',
+  status: 'Статус',
+  sos: 'SOS',
+  familyTab: 'Вкладка «Семья»',
+  activitiesTab: 'Вкладка «События»',
+  activitiesTabNew: 'Вкладка «События», новое событие',
+  reportsTab: 'Вкладка «Отчёты»',
+  reportsTabNew: 'Вкладка «Отчёты», новый отчёт',
+  settingsTab: 'Вкладка «Настройки»',
+  statusTab: 'Вкладка «Статус»',
+  sosEmergencyTab: 'Вкладка экстренного SOS',
+};

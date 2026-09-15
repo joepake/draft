@@ -194,8 +194,10 @@ export const plans = {
   teaserProofOtherApps: 'Aplikasi lain: {{count}} · {{minutes}}',
   teaserProofOtherMinutes: 'Aplikasi lain: {{minutes}}',
   teaserProofBlocked: 'Diblokir minggu ini: {{count}}',
+  premiumHistoryNote:
+    'Premium menyimpan riwayat penggunaan lengkap selama 30 hari terakhir.',
   teaserTopApps:
-    'Premium menyebut setiap aplikasi, menit demi menit, dan menyimpannya 30 hari.',
+    'Versi gratis menampilkan tiga aplikasi teratas. Premium menyebut setiap aplikasi, menit demi menit, dan menyimpannya 30 hari.',
   teaserWebHistory:
     'Premium menunjukkan situs mana yang diblokir dan apa yang dicari anak Anda.',
   teaserVideoHistory:

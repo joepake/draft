@@ -1,0 +1,16 @@
+export const nav = {
+  family: 'العائلة',
+  activities: 'الأنشطة',
+  reports: 'التقارير',
+  settings: 'الإعدادات',
+  status: 'الحالة',
+  sos: 'SOS',
+  familyTab: 'تبويب العائلة',
+  activitiesTab: 'تبويب الأنشطة',
+  activitiesTabNew: 'تبويب الأنشطة، نشاط جديد',
+  reportsTab: 'تبويب التقارير',
+  reportsTabNew: 'تبويب التقارير، تقرير جديد',
+  settingsTab: 'تبويب الإعدادات',
+  statusTab: 'تبويب الحالة',
+  sosEmergencyTab: 'تبويب طوارئ SOS',
+};

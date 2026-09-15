@@ -18,6 +18,9 @@ import { createSubscriptionRepository } from '@kidgate/core/repositories/subscri
 import { createTimeRequestRepository } from '@kidgate/core/repositories/timeRequest';
 import { createSiteRequestRepository } from '@kidgate/core/repositories/siteRequest';
 import { createUsageDayRepository } from '@kidgate/core/repositories/usageDay';
+import { createUserRepository } from '@kidgate/core/repositories/user';
+import { createNotificationPrefsRepository } from '@kidgate/core/repositories/notificationPrefs';
+import { createAccountDeletionRepository } from '@kidgate/core/repositories/accountDeletion';
 import { createWebHistoryRepository } from '@kidgate/core/repositories/webHistory';
 import { createVideoHistoryRepository } from '@kidgate/core/repositories/videoHistory';
 import { createAppFlagDismissalRepository } from '@kidgate/core/repositories/appFlagDismissal';
@@ -181,4 +184,36 @@ export const deviceRepository = createDeviceRepository({
     // machine on purpose (`createAppFlagDismissalRepository`).
     appFlagDismissalRepository,
   ],
+});
+
+/**
+ * Push preferences for one PARENT device, and the two account-level documents.
+ *
+ * All three hang off `users/{uid}` and their rule is `isParentAccount(userId)`,
+ * which is `request.auth.uid == userId` — the signed-in account's OWN root, not
+ * the family's. Every call site therefore passes the signed-in uid, never
+ * `familyId`: for the owner those are the same string, and for a joined
+ * co-parent they are not. A co-parent's parent devices live under their own
+ * root, which this app does not subscribe to, so the notification card is the
+ * owner's (`docs/BACKLOG.md`).
+ */
+export const notificationPrefsRepository = createNotificationPrefsRepository({ db });
+
+export const accountDeletionRepository = createAccountDeletionRepository({
+  db,
+  platform: 'web',
+});
+
+/**
+ * `appVersion` and `appVersionCode` come from the ROOT manifest, injected by
+ * `vite.config.js` — this package's own `"version": "0.0.0"` is a field
+ * `yarn version:sync` does not write. They reach only `SupportReport`, which is
+ * what ties a filed bug to a build.
+ */
+export const userRepository = createUserRepository({
+  db,
+  api,
+  appVersion: import.meta.env.VITE_APP_VERSION ?? '0.0.0',
+  appVersionCode: Number(import.meta.env.VITE_APP_VERSION_CODE ?? 0),
+  platform: 'web',
 });

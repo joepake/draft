@@ -189,7 +189,9 @@ export const plans = {
   teaserProofOtherApps: '다른 앱: {{count}} · {{minutes}}',
   teaserProofOtherMinutes: '다른 앱: {{minutes}}',
   teaserProofBlocked: '이번 주 차단: {{count}}',
-  teaserTopApps: 'Premium은 모든 앱을 분 단위로 알려주고 30일간 보관합니다.',
+  premiumHistoryNote: 'Premium은 최근 30일간의 사용 기록을 모두 보관합니다.',
+  teaserTopApps:
+    '무료는 상위 앱 3개만 보여줍니다. Premium은 모든 앱을 분 단위로 알려주고 30일간 보관합니다.',
   teaserWebHistory:
     'Premium은 어떤 사이트가 차단됐는지, 아이가 무엇을 검색했는지 보여줍니다.',
   teaserVideoHistory: 'Premium은 아이가 본 YouTube 동영상과 Shorts를 모두 보관합니다.',

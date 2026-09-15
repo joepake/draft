@@ -1,0 +1,16 @@
+export const nav = {
+  family: 'Keluarga',
+  activities: 'Aktivitas',
+  reports: 'Laporan',
+  settings: 'Pengaturan',
+  status: 'Status',
+  sos: 'SOS',
+  familyTab: 'Tab Keluarga',
+  activitiesTab: 'Tab Aktivitas',
+  activitiesTabNew: 'Tab Aktivitas, aktivitas baru',
+  reportsTab: 'Tab Laporan',
+  reportsTabNew: 'Tab Laporan, laporan baru',
+  settingsTab: 'Tab Pengaturan',
+  statusTab: 'Tab Status',
+  sosEmergencyTab: 'Tab SOS darurat',
+};

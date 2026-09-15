@@ -8,6 +8,7 @@ import {
   trackTimeRequest,
 } from '../lib/analytics.js';
 import {
+  childRepository,
   childRulesRepository,
   controlRepository,
   deviceRepository,
@@ -337,6 +338,105 @@ export function createActions({ familyId, canWrite, isOwner = false }) {
             childRulesRepository.setDailyBudget(familyId, childId, minutes, deviceIds),
           ),
         result => trackParentAction('child_budget', result),
+      );
+    },
+
+    /**
+     * The child as a person: their name, who owns a machine, whether they
+     * exist at all.
+     *
+     * **These are direct Firestore writes, not endpoints**, the same ones
+     * `ChildDetailScreen` and `FamilyDetailScreen` make. `firestore.rules`
+     * allows `children/{childId}` to any `isFamilyParent` for an update and
+     * any `isParentAccount` for a create or delete, and pins `rules` out of
+     * all three (`childRulesUnchanged()`) — the premium gate and the fan-out
+     * live behind `updateChildRules`, which is why a child's *rules* can never
+     * ride one of these calls.
+     *
+     * Owner-only on four of the five, matching the phone: renaming is any
+     * parent's, while adding, deleting and moving a device between children
+     * are the owner's. As with `renameDevice`, the database does not enforce
+     * that split — a joined co-parent passes `isParentAccount` — so the check
+     * here IS the rule, not a convenience.
+     */
+    renameChild(childId, name) {
+      return counted(
+        () => guard(() => childRepository.rename(familyId, childId, name)),
+        result => trackParentAction('child_rename', result),
+      );
+    },
+
+    createChild(name, colorIndex) {
+      if (!isOwner) {
+        return Promise.reject(new ControlError('forbidden', 'controlError.forbidden'));
+      }
+      return counted(
+        () => guard(() => childRepository.create(familyId, { name, colorIndex })),
+        result => trackParentAction('child_create', result),
+      );
+    },
+
+    /**
+     * Deleting a child leaves their devices paired and enforcing, assigned to
+     * nobody — `childRepository.remove` unassigns them as it goes. It is
+     * bookkeeping, not an unpairing, which is why the screen says so and does
+     * not dress the button as destructively as device removal.
+     *
+     * `devices` is the family's whole list: the repository picks the ones
+     * pointing at this child itself, so a caller cannot hand it a stale subset
+     * and leave an orphan pointing at a row that no longer exists.
+     */
+    removeChild(childId, devices) {
+      if (!isOwner) {
+        return Promise.reject(new ControlError('forbidden', 'controlError.forbidden'));
+      }
+      return counted(
+        () => guard(() => childRepository.remove(familyId, childId, devices)),
+        result => trackParentAction('child_remove', result),
+      );
+    },
+
+    /**
+     * Point a device at a child, or at nobody.
+     *
+     * Reassigning moves every star that device earned — the standings are
+     * recomputed from the reward tasks rather than from a stored total — and
+     * it changes which rules the device obeys, because an assigned device
+     * takes its child-rule fields from the next fan-out.
+     */
+    assignDevice(deviceId, childId) {
+      if (!isOwner) {
+        return Promise.reject(new ControlError('forbidden', 'controlError.forbidden'));
+      }
+      return counted(
+        () => guard(() => childRepository.assignDevice(familyId, deviceId, childId)),
+        result =>
+          trackParentAction(childId ? 'device_assign' : 'device_unassign', result),
+      );
+    },
+
+    setFamilyName(name) {
+      if (!isOwner) {
+        return Promise.reject(new ControlError('forbidden', 'controlError.forbidden'));
+      }
+      return counted(
+        () => guard(() => familyRepository.setFamilyName(familyId, name)),
+        result => trackParentAction('family_rename', result),
+      );
+    },
+
+    /**
+     * The star chart. Off is the shipped state for a family that never asked
+     * for it: `isLeaderboardVisible` reads an absent flag as off, so this only
+     * ever writes a deliberate answer.
+     */
+    setLeaderboardEnabled(enabled) {
+      if (!isOwner) {
+        return Promise.reject(new ControlError('forbidden', 'controlError.forbidden'));
+      }
+      return counted(
+        () => guard(() => familyRepository.setLeaderboardEnabled(familyId, enabled)),
+        result => trackParentAction('leaderboard_toggle', result),
       );
     },
 

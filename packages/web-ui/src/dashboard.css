@@ -160,18 +160,19 @@
 
 /* ---------- Sidebar ----------
  *
- * Three bands stacked: the brand, the child/device picker, and the account
- * footer. Only the picker grows with the family, so it is the only band that
- * scrolls — the other two keep their place whether a family has one child or
- * six.
+ * Three bands stacked: the brand, the four sections, and the account footer.
+ * None of them grows with the family any more, which is why nothing in this
+ * column scrolls — the child/device picker that used to live here is the
+ * Family section's own content (`.kid-list`).
  *
- * **The rail asks one question.** Manage used to sit under the picker, so the
- * column ran two lists together — which device, then what about it — and the
- * eleven rows read as one list. It is `.dash-tabs` at the top of the pane now.
+ * **The rail asks one question**, and it is now the same question the phone's
+ * tab bar asks: which of the four. Which device, and what about that device,
+ * are answered inside the Family section — the first by the list, the second
+ * by `.dash-tabs` at the top of the pane.
  *
- * A chosen device is a brand bar down the leading edge over a brand-tinted
- * ground (`.is-active`); the tab bar says the same thing as a filled chip,
- * because a chip in a row has no leading edge to hang a bar on.
+ * A chosen section is a brand bar down the leading edge over a brand-tinted
+ * ground (`.is-active`). Below 820px the whole column becomes that tab bar;
+ * the rules are at the bottom of this file with the rest of the breakpoints.
  */
 
 .dash-side {
@@ -188,16 +189,10 @@
   top: 0;
   height: 100vh;
   /*
-   * The rail itself does not scroll. It used to, and a family with four
-   * children pushed the plan footer below the fold. Only the child list
-   * scrolls (`.side-kids-scroll`), so the brand stays at the top and the
-   * footer stays on screen at any family size.
-   *
-   * `auto` rather than `hidden`: on a short window (measured at 1280×640)
-   * hiding the overflow cut the child list off entirely rather than letting
-   * it scroll. The list's own `min-height` keeps three rows on screen and the
-   * rail scrolls past whatever is left — the old behaviour, but only where
-   * there is genuinely no room.
+   * Four items and a footer have a fixed height, so this only matters on a
+   * short window (measured at 1280×640) where the footer's plan card is what
+   * runs past the bottom. `auto` rather than `hidden`: hidden cut it off with
+   * no way to reach it.
    */
   overflow-y: auto;
 }
@@ -235,74 +230,8 @@
   white-space: nowrap;
 }
 
-/*
- * The child list is the one part of the rail that grows without bound — one
- * heading per child, one row per device — so it is the one part that scrolls.
- * It shrinks to the floor declared here and no further. Both other
- * arrangements were measured at 1280×640 and both failed: `min-height: 0`
- * collapsed this box to nothing and the rows painted over the footer, while
- * leaving it `auto` and putting the floor on the scroller stopped it
- * shrinking at all and pushed the footer below the fold — a scroll
- * container's declared floor does not reach its parent's automatic minimum
- * size.
- *
- * The floor is four rows rather than three now that the footer is a plan
- * chip instead of a comparison table: the space the table used to take
- * belongs to the list this rail exists to drive.
- */
-.side-kids {
-  flex: 1 1 auto;
-  min-height: 14rem;
-  display: flex;
-  flex-direction: column;
-}
-
-.side-kids-scroll {
-  flex: 1 1 auto;
-  min-height: 0;
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  /* The bar sits in the gutter, not on top of the rows. */
-  margin-right: -0.4rem;
-  padding-right: 0.4rem;
-  scrollbar-width: thin;
-  scrollbar-color: color-mix(in srgb, var(--ink) 20%, transparent) transparent;
-  /*
-   * Scroll shadows, and only while there is something past the edge: the
-   * two `local` layers are painted on the content and slide away with it,
-   * uncovering the two `scroll` layers that are fixed to the box. A list cut
-   * off at the fold used to look exactly like a list that had ended, which
-   * is how a third child goes unnoticed.
-   */
-  background:
-    linear-gradient(var(--plane), transparent) top / 100% 1.2rem no-repeat local,
-    linear-gradient(transparent, var(--plane)) bottom / 100% 1.2rem no-repeat local,
-    linear-gradient(color-mix(in srgb, var(--ink) 12%, transparent), transparent) top /
-      100% 0.55rem no-repeat scroll,
-    linear-gradient(transparent, color-mix(in srgb, var(--ink) 12%, transparent))
-      bottom / 100% 0.55rem no-repeat scroll;
-}
-
-/* Whose devices these are stays readable while scrolling through them. */
-.side-kids-scroll .kid-group-head {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  background: color-mix(in srgb, var(--plane) 94%, var(--ink));
-}
-
 .side-foot {
   flex: 0 0 auto;
-}
-
-.side-title {
-  font-size: var(--dash-text-1);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-weight: 700;
-  color: var(--muted);
-  padding: 0 0.55rem;
-  margin-bottom: 0.4rem;
 }
 
 /*
@@ -3187,43 +3116,118 @@ ol.attn-fix li + li {
   }
 }
 
+/*
+ * A tablet. The rail stays a rail — there is room for it — but it is the part
+ * of the page that gives up width first: an iPad in portrait is 768px inside
+ * the browser, and every one of these columns is a card the content has to
+ * lay out inside.
+ */
+@media (min-width: 821px) and (max-width: 1100px) {
+  .dash {
+    grid-template-columns: 208px minmax(0, 1fr);
+  }
+
+  .dash-side {
+    padding-inline: 0.5rem;
+  }
+}
+
 @media (max-width: 820px) {
   .dash {
     grid-template-columns: minmax(0, 1fr);
   }
 
   /*
-   * Stacked above the content, the rail is a header band rather than a
-   * column: everything below it is a page-length scroll away, so the band has
-   * to stay short enough that the device header is still on the first screen.
+   * The phone's tab bar, which is what this menu has been all along.
+   *
+   * Stacked above the content it was a header band, and a band of four
+   * sections at the top of a scrolling page is a navigation a thumb cannot
+   * reach and a page that starts one screen down. Pinned to the bottom it is
+   * the control `apps/mobile` draws, in the same place, with the same four
+   * items — which is the whole point of the two surfaces agreeing.
+   *
+   * `fixed`, not `sticky`: sticky needs a scroll container it is inside, and
+   * this is a grid cell beside the one that scrolls.
    */
   .dash-side {
-    position: static;
+    position: fixed;
+    inset: auto 0 0 0;
+    z-index: 30;
     height: auto;
-    flex-direction: column;
+    flex-direction: row;
     overflow: visible;
-    padding: 1rem 0.9rem;
-    gap: 0.75rem;
+    gap: 0;
+    padding: 0.3rem 0.4rem;
+    padding-bottom: max(0.3rem, env(safe-area-inset-bottom));
+    border-right: 0;
+    border-top: 1px solid var(--line);
+    /* Opaque: the page scrolls under it. The rail's own mix is against
+       `--plane`, which is the ground it is now floating over. */
+    background: color-mix(in srgb, var(--plane) 94%, var(--ink));
+  }
+
+  /* The wordmark is the one thing a bottom bar has no room for, and the family
+     name it carries is already the page's heading on the Family section. */
+  .dash-brand {
+    display: none;
+  }
+
+  .side-nav {
+    flex-direction: row;
+    width: 100%;
   }
 
   /*
-   * The list keeps its own scroller here too. Letting it run at full length
-   * was the desktop bug in a second place: on a phone, a family with three
-   * children pushed the account footer and the whole device page a screen and
-   * a half down, below every device they own.
+   * A tab, not a row: glyph over label, four equal shares of the width. The
+   * leading-edge bar that marks a selected row in a column would be a hairline
+   * down the side of a tab, so the active tab is the brand-tinted ground and
+   * the brand-coloured glyph instead — what the phone does.
    */
-  .side-kids {
-    min-height: 0;
+  .side-nav .nav-item {
+    flex: 1 1 0;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.15rem;
+    min-height: 3.1rem;
+    padding: 0.35rem 0.2rem;
+    text-align: center;
   }
 
-  /* Roughly half the first screen, so the band that sits above the content
-     never costs the whole of it. */
-  .side-kids-scroll {
-    max-height: 38vh;
+  .side-nav .nav-item.is-active::before {
+    display: none;
   }
 
+  .side-nav .nav-item.is-active .icon {
+    color: var(--brand);
+  }
+
+  .side-nav .nav-item-label {
+    flex: 0 0 auto;
+    width: 100%;
+    font-size: var(--dash-text-1);
+    font-weight: 600;
+    line-height: 1.15;
+  }
+
+  /* On a tab the badge cannot sit after the label — it would push a two-line
+     Vietnamese label off centre. It rides the glyph, the way a phone's does. */
+  .side-nav .nav-badge {
+    position: absolute;
+    top: 0.3rem;
+    inset-inline-start: 50%;
+    margin-inline-start: 0.35rem;
+  }
+
+  /* Clear of the bar: the last card of a long page was otherwise under it,
+     and on the Settings section that card is the way out of the account. */
   .dash-main {
-    padding: 1.2rem 1rem 2.5rem;
+    padding: 1.2rem 1rem calc(4.5rem + env(safe-area-inset-bottom));
+  }
+
+  /* Full width — the cap is for a desktop page, and here the list IS the
+     page. */
+  .kid-list {
+    max-width: none;
   }
 
   /* The bleed follows the pane's padding, or the bar stops short of the edge
@@ -3285,8 +3289,11 @@ ol.attn-fix li + li {
  * glance that scrolls is not one.
  */
 @media (max-width: 520px) {
+  /* The bottom clearance is the bar's, not this band's, so it is repeated
+     rather than shortened: a `2rem` floor here would put the last card back
+     under the tab bar the 820px block just made room for. */
   .dash-main {
-    padding: 1rem 0.8rem 2rem;
+    padding: 1rem 0.8rem calc(4.5rem + env(safe-area-inset-bottom));
   }
 
   .dash-tabs {
@@ -3320,6 +3327,275 @@ ol.attn-fix li + li {
   .top-actions .btn {
     flex: 1 1 auto;
   }
+}
+
+/* ---------- The four sections ----------
+ *
+ * The left menu, the Family list that used to be the rail, the family feed and
+ * the Settings page. The rail's row geometry is shared, not re-declared:
+ * `.nav-item` is already grouped with `.kid` and `.kid-group-head` at the top
+ * of this file, so a menu item and a device row line up down the same column
+ * at every width.
+ */
+
+.side-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  /* Takes the height the child list used to, so the footer stays pinned to the
+     bottom of the rail whatever the family size. */
+  flex: 1 1 auto;
+}
+
+/* The label is what gives way at a narrow rail, never the glyph. */
+.side-nav .nav-item-label {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/*
+ * The way out of a device, above its name.
+ *
+ * Its own row rather than an icon beside the heading: at phone width the menu
+ * is a bottom bar that cannot show which section you are in, so this is the
+ * only thing on screen that says a device is stacked on top of the Family
+ * list — and a 15px chevron tucked against a heading is not a target.
+ */
+.dash-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-bottom: 0.35rem;
+  padding: 0.25rem 0.4rem 0.25rem 0.2rem;
+  margin-inline-start: -0.2rem;
+  border-radius: var(--dash-radius-1);
+  font-size: var(--dash-text-2);
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.dash-back:hover {
+  background: color-mix(in srgb, var(--ink) 6%, transparent);
+  color: var(--ink);
+}
+
+/* The chevron points the way the language runs, so it flips under RTL with
+   everything else rather than pointing back into the page. */
+[dir='rtl'] .dash-back .icon {
+  transform: scaleX(-1);
+}
+
+.family-home,
+.settings-home,
+.feed {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/*
+ * The child list, at page width rather than rail width.
+ *
+ * Capped, and left-aligned inside the cap: a row is a name, a glyph and a
+ * status, and at 1400px it drew a device name against two feet of empty card
+ * with the chevron a whole screen away from it.
+ */
+.kid-list {
+  max-width: 34rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--dash-radius-2);
+  padding: 0.5rem;
+}
+
+.settings-account {
+  /* The rail's footer block, re-homed. It keeps the footer's own rules — the
+     picker and Sign out share a row, the address truncates under them — so
+     this only has to give it a card to sit in. */
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--dash-radius-2);
+  padding: 1rem;
+}
+
+/* ---------- The child hub ----------
+ *
+ * The person, between the Family list and one of their machines. Its cards are
+ * the page's ordinary `.card`; what is its own is the hero and the two lists
+ * that carry a row plus a trailing action.
+ */
+
+.child-hub {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.child-hero {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+}
+
+.child-hero-body {
+  flex: 1 1 14rem;
+  min-width: 0;
+}
+
+/* The field and its Save share the row — a name is short, and a full-width
+   input beside a button that has nowhere to go reads as a form. */
+.child-hero-name {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.child-hero-name .reward-input {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.child-hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin: 0.4rem 0 0;
+  font-size: var(--dash-text-2);
+  color: var(--muted);
+}
+
+/*
+ * A row plus a trailing action, twice: a device and its Unassign, a child and
+ * the chevron into their hub. The row itself is `.kid`, so the geometry is the
+ * Family list's — one column, whichever list a parent is reading.
+ */
+.child-device-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.child-device-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.child-device-list li .kid {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.child-assign {
+  margin-top: 0.8rem;
+}
+
+/* A label and its switch, ends of the same line. Used by every child-rule
+   card — the switch is the control, the words are what it does. */
+.row-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  min-height: 2.5rem;
+}
+
+/* A filed support report: the row is the summary, the reply drops below it. */
+.support-row {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.support-detail {
+  padding: 0 0.55rem 0.5rem;
+  font-size: var(--dash-text-2);
+}
+
+.support-detail p {
+  margin: 0.2rem 0 0;
+}
+
+/* ---------- The family feed ---------- */
+
+.feed-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--muted);
+  font-size: var(--dash-text-2);
+  font-weight: 600;
+  transition:
+    background var(--kg-motion-fast) ease,
+    color var(--kg-motion-fast) ease;
+}
+
+.chip:hover {
+  color: var(--ink);
+}
+
+.chip.is-active {
+  background: color-mix(in srgb, var(--brand) 16%, transparent);
+  border-color: color-mix(in srgb, var(--brand) 40%, transparent);
+  color: var(--ink);
+}
+
+.feed-day {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+/*
+ * Sticky, and on the page's own ground rather than a card's: a feed is read by
+ * scrolling, and a day that scrolls away takes with it the only thing saying
+ * what "9:40" means.
+ */
+.feed-day-head {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  margin: 0;
+  padding: 0.4rem 0;
+  background: var(--plane);
+  font-size: var(--dash-text-1);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.feed-empty {
+  text-align: center;
+}
+
+/* Which device a row came from — the third line, under the sentence, because
+   it is what a parent reads only after something has caught their eye. */
+.tl-where {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: var(--dash-text-1);
+  color: var(--muted);
 }
 
 /* ---------- Language picker: sidebar and sign-in placements ---------- */

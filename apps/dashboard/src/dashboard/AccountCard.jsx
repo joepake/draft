@@ -1,0 +1,190 @@
+import { useEffect, useState } from 'react';
+import Icon from '@kidgate/web-ui/Icon';
+import { useT } from '@kidgate/web-ui/useT';
+import { legalDocumentUrl } from '@kidgate/core/domain/siteLinks';
+import { accountDeletionRepository } from '../adapters/repositories.js';
+import Card from './Card.jsx';
+
+/**
+ * The portable half of the phone's Settings screen: the legal documents, and
+ * deleting the account.
+ *
+ * **What is deliberately absent, and why it is absent rather than disabled.**
+ * The phone's Security and Preferences sections are device-local: the app-lock
+ * PIN and its biometric unlock live in the phone's secure storage, the widget
+ * row asks the launcher, the SOS sound asks the audio system. None of those
+ * describe anything a browser has, and a greyed row saying "not available"
+ * teaches a parent to look for a setting that will never appear here. The
+ * Parent PIN is different again: `setParentPin` requires `requireParentDevice`
+ * server-side, so a browser session cannot change it without a Cloud Functions
+ * change — that one is a gap rather than a decision.
+ *
+ * Language, palette and sign-out are this browser's and live in the rail's
+ * account block, which is where they already were.
+ *
+ * `accountId` is the signed-in uid: `accountDeletionRequests` hangs off
+ * `users/{uid}` under `isParentAccount(userId)`, so a co-parent schedules the
+ * deletion of their OWN account, not the family's.
+ */
+export default function AccountCard({
+  accountId,
+  accountEmail,
+  parentCount,
+  deviceCount,
+  appT,
+}) {
+  const { t, language } = useT();
+  const [request, setRequest] = useState(null);
+  const [confirming, setConfirming] = useState(false);
+  const [busy, setBusy] = useState(false);
+
+  /*
+   * Live: the phone can schedule or cancel the same deletion, and this card is
+   * the only thing on the page that would otherwise keep offering an action
+   * that has already been taken.
+   */
+  useEffect(() => {
+    if (!accountId) return undefined;
+    return accountDeletionRepository.subscribeActiveRequest(
+      accountId,
+      setRequest,
+      /* Required, and swallowed on purpose: a dropped listener must leave the
+         card showing what it last showed. Turning a refused read into "no
+         request" would offer Delete to someone who already scheduled one. */
+      () => undefined,
+    );
+  }, [accountId]);
+
+  const run = async work => {
+    setBusy(true);
+    try {
+      await work();
+      setConfirming(false);
+    } catch {
+      // The listener is the source of truth; a refused write leaves the card
+      // saying what the document still says.
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  /** Whole days left of the grace window, floored — never a negative. */
+  const daysLeft = request?.purgeAfter
+    ? Math.max(
+        0,
+        Math.ceil((new Date(request.purgeAfter).getTime() - Date.now()) / 86400000),
+      )
+    : null;
+
+  return (
+    <>
+      <Card title={appT('settings.sectionLegalTitle')}>
+        {/* Absolute URLs into `apps/site`, built by the shared helper so the
+            path and the `?hl=` are the phone's. A second copy of either would
+            be a link that breaks on a route rename nobody tested twice. */}
+        <ul className="child-device-list">
+          {['privacyPolicy', 'termsOfService'].map(key => (
+            <li key={key}>
+              <a
+                className="kid"
+                href={legalDocumentUrl(key, language)}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span className="kid-meta">
+                  <strong>
+                    {key === 'privacyPolicy'
+                      ? appT('settings.privacyPolicyTitle')
+                      : appT('settings.termsOfServiceTitle')}
+                  </strong>
+                  <em>
+                    {key === 'privacyPolicy'
+                      ? appT('settings.privacyPolicySubtitle')
+                      : appT('settings.termsOfServiceSubtitle')}
+                  </em>
+                </span>
+                <Icon name="chevronRight" size={14} />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </Card>
+
+      <Card
+        title={appT('settings.deleteAccountTitle')}
+        subtitle={
+          request
+            ? appT('settings.deleteAccountSubtitleScheduled')
+            : appT('settings.deleteAccountSubtitleDefault')
+        }
+      >
+        {request ? (
+          <>
+            <strong>{appT('settings.deletionGateTitle')}</strong>
+            {/* Two sentences, because a request whose `purgeAfter` the trigger
+                has not stamped yet has no date to name — and inventing one
+                would be a promise about when the data goes. */}
+            <p className="hint">
+              {request.purgeAfter
+                ? appT('settings.deletionGateBody', {
+                    date: new Date(request.purgeAfter).toLocaleDateString(),
+                    days: daysLeft,
+                  })
+                : appT('settings.deletionGateBodyPending')}
+            </p>
+            <p className="hint">{appT('settings.deletionGateNote')}</p>
+            <button
+              className="btn btn-primary"
+              disabled={busy}
+              onClick={() =>
+                run(() => accountDeletionRepository.cancelRequest(accountId))
+              }
+            >
+              {busy ? t('dash.working') : appT('settings.deletionGateCancelButton')}
+            </button>
+          </>
+        ) : confirming ? (
+          <>
+            <strong>{appT('settings.deleteAccountAlertTitle')}</strong>
+            <p className="hint">{appT('settings.deleteAccountAlertMessage')}</p>
+            {/* What actually goes, counted from the family on screen rather
+                than described in the abstract — the phone shows the same two
+                numbers before the button. */}
+            <p className="hint">
+              {appT('settings.deleteAccountImpact', {
+                parents: parentCount,
+                devices: deviceCount,
+              })}
+            </p>
+            <div className="reward-actions">
+              <button className="login-link" onClick={() => setConfirming(false)}>
+                {t('dash.close')}
+              </button>
+              <button
+                className="btn btn-sm btn-danger"
+                disabled={busy}
+                onClick={() =>
+                  run(() =>
+                    accountDeletionRepository.submitRequest(
+                      accountId,
+                      accountEmail ?? '',
+                    ),
+                  )
+                }
+              >
+                {busy ? t('dash.working') : appT('settings.deleteAccountTitle')}
+              </button>
+            </div>
+          </>
+        ) : (
+          <button
+            className="login-link device-admin-remove"
+            onClick={() => setConfirming(true)}
+          >
+            <Icon name="trash" size={13} /> {appT('settings.deleteAccountTitle')}
+          </button>
+        )}
+      </Card>
+    </>
+  );
+}

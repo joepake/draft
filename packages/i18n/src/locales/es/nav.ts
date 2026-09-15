@@ -1,0 +1,16 @@
+export const nav = {
+  family: 'Familia',
+  activities: 'Actividad',
+  reports: 'Informes',
+  settings: 'Ajustes',
+  status: 'Estado',
+  sos: 'SOS',
+  familyTab: 'Pestaña Familia',
+  activitiesTab: 'Pestaña Actividad',
+  activitiesTabNew: 'Pestaña Actividad, actividad nueva',
+  reportsTab: 'Pestaña Informes',
+  reportsTabNew: 'Pestaña Informes, informe nuevo',
+  settingsTab: 'Pestaña Ajustes',
+  statusTab: 'Pestaña Estado',
+  sosEmergencyTab: 'Pestaña SOS de emergencia',
+};

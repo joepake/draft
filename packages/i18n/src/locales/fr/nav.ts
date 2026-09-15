@@ -1,0 +1,16 @@
+export const nav = {
+  family: 'Famille',
+  activities: 'Activité',
+  reports: 'Rapports',
+  settings: 'Réglages',
+  status: 'État',
+  sos: 'SOS',
+  familyTab: 'Onglet Famille',
+  activitiesTab: 'Onglet Activité',
+  activitiesTabNew: 'Onglet Activité, nouvelle activité',
+  reportsTab: 'Onglet Rapports',
+  reportsTabNew: 'Onglet Rapports, nouveau rapport',
+  settingsTab: 'Onglet Réglages',
+  statusTab: 'Onglet État',
+  sosEmergencyTab: 'Onglet SOS urgence',
+};

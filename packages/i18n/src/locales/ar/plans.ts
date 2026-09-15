@@ -190,7 +190,9 @@ export const plans = {
   teaserProofOtherApps: 'تطبيقات أخرى: {{count}} · {{minutes}}',
   teaserProofOtherMinutes: 'تطبيقات أخرى: {{minutes}}',
   teaserProofBlocked: 'المحظور هذا الأسبوع: {{count}}',
-  teaserTopApps: 'يذكر Premium اسم كل تطبيق، دقيقة بدقيقة، ويحتفظ بـ 30 يومًا.',
+  premiumHistoryNote: 'يحتفظ Premium بسجل الاستخدام الكامل لآخر 30 يومًا.',
+  teaserTopApps:
+    'تعرض النسخة المجانية أعلى ثلاثة تطبيقات. يرتّب Premium كل تطبيق، دقيقة بدقيقة، ويحتفظ بـ 30 يومًا.',
   teaserWebHistory: 'يعرض Premium المواقع التي حُظرت وما بحث عنه طفلك.',
   teaserVideoHistory: 'يحتفظ Premium بكل فيديو ومقطع Short شاهده على YouTube.',
   teaserLocationTrail:

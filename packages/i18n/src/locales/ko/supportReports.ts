@@ -1,0 +1,20 @@
+export const supportReports = {
+  title: '요청 및 신고',
+  subtitleCount: '{{count}}건 진행 중',
+  emptyTitle: '아직 신고 내역이 없습니다',
+  emptyDescription: '문제를 신고하면 여기에서 진행 상황을 확인할 수 있습니다.',
+  emptyAction: '문제 신고',
+  newReportButton: '새 신고',
+  attachmentCount: '스크린샷 {{count}}장 첨부됨',
+  responseLabel: 'KidGate의 답변',
+  waitingNote: '확인 후 이곳에 답변을 남겨드릴게요.',
+  expandLabel: '더 보기',
+  collapseLabel: '접기',
+  expandHint: '전체 신고 내용 보기',
+  unreadBadge: '새 답변',
+  status: {
+    pending: '접수됨',
+    in_review: '검토 중',
+    resolved: '해결됨',
+  },
+};

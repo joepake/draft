@@ -1,0 +1,31 @@
+export const leaderboard = {
+  title: 'सितारा तालिका',
+  thisWeek: 'इस हफ़्ते',
+  resetsNote: 'हर सोमवार को फिर से शुरू होती है।',
+  rowA11y: '{{rank}}. {{name}}, {{count}} सितारे',
+  settingsTitle: 'सितारा तालिका',
+  settingsBody: 'आपके बच्चे देख सकते हैं कि इस हफ़्ते किसने कितने सितारे कमाए.',
+  screenTimeTitle: 'परिवार का स्क्रीन टाइम',
+  screenTimeSub: 'सबसे कम स्क्रीन टाइम पहले · इस हफ़्ते',
+  screenTimeRowA11y: '{{rank}}. {{name}}, {{duration}}',
+  screenTimeParentBadge: 'पैरेंट',
+  screenTimeParentFallbackName: 'पैरेंट',
+  screenTimeSettingsTitle: 'परिवार का स्क्रीन टाइम',
+  screenTimeSettingsBody:
+    'अपने बच्चों को दिखाएँ कि इस हफ़्ते उनमें से हर एक ने कितना स्क्रीन टाइम इस्तेमाल किया। जब तक आप चालू न करें, बंद रहता है।',
+  screenTimeNote:
+    'हर व्यक्ति के सभी डिवाइस गिने जाते हैं। हर सोमवार फिर से शुरू होता है।',
+  childrenTitle: 'बच्चे',
+  manageAccessibility: 'बच्चे और डिवाइस प्रबंधित करें',
+  addChild: 'बच्चा जोड़ें',
+  childAdded: 'बच्चा जोड़ा गया।',
+  childNameLabel: 'नाम',
+  childNamePlaceholder: 'जैसे, आरव',
+  unassigned: 'असाइन नहीं',
+  removeChild: 'हटाएँ',
+  removeChildConfirmTitle: '{{childName}} की प्रोफ़ाइल हटाएँ?',
+  removeChildConfirmBody:
+    'उनके डिवाइस जुड़े रहेंगे और रिपोर्ट भेजते रहेंगे — दोबारा असाइन करने तक वे बस किसी के लिए नहीं गिने जाएँगे.',
+  emptyTitle: 'अभी कोई बच्चा नहीं',
+  emptyBody: 'हर बच्चे को यहाँ जोड़ें, फिर उसके डिवाइस असाइन करें।',
+} as const;

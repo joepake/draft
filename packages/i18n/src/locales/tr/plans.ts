@@ -194,7 +194,9 @@ export const plans = {
   teaserProofOtherApps: 'Diğer uygulamalar: {{count}} · {{minutes}}',
   teaserProofOtherMinutes: 'Diğer uygulamalar: {{minutes}}',
   teaserProofBlocked: 'Bu hafta engellenen: {{count}}',
-  teaserTopApps: 'Premium her uygulamayı dakika dakika adlandırır ve 30 gün saklar.',
+  premiumHistoryNote: 'Premium son 30 günün tüm kullanım geçmişini saklar.',
+  teaserTopApps:
+    'Ücretsiz sürüm ilk üç uygulamayı gösterir. Premium her uygulamayı dakika dakika adlandırır ve 30 gün saklar.',
   teaserWebHistory:
     'Premium hangi sitelerin engellendiğini ve çocuğunuzun ne aradığını gösterir.',
   teaserVideoHistory: 'Premium izlediği her YouTube videosunu ve Short’u saklar.',

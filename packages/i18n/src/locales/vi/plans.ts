@@ -190,7 +190,9 @@ export const plans = {
   teaserProofOtherApps: 'Ứng dụng khác: {{count}} · {{minutes}}',
   teaserProofOtherMinutes: 'Ứng dụng khác: {{minutes}}',
   teaserProofBlocked: 'Đã chặn tuần này: {{count}}',
-  teaserTopApps: 'Premium cho biết tên từng ứng dụng, từng phút, và giữ lại 30 ngày.',
+  premiumHistoryNote: 'Premium lưu đầy đủ lịch sử sử dụng của 30 ngày gần nhất.',
+  teaserTopApps:
+    'Bản miễn phí xếp hạng 3 ứng dụng. Premium xếp hạng mọi ứng dụng, từng phút, và giữ 30 ngày.',
   teaserWebHistory: 'Premium cho biết trang nào bị chặn và con đã tìm gì.',
   teaserVideoHistory: 'Premium lưu mọi video và Short trên YouTube mà con đã xem.',
   teaserLocationTrail:
