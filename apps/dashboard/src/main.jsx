@@ -5,13 +5,15 @@ import App from './App.jsx';
 import { initI18n } from '@kidgate/i18n/web';
 import { initAnalytics, installErrorReporting } from './lib/analytics';
 import { applyTheme } from '@kidgate/web-ui/theme';
+import { isDarkPreferred } from './lib/theme.js';
 import '@kidgate/web-ui/index.css';
 
 // Tokens onto `:root` before the first paint — the stylesheets hold only
 // `var(--kg-…)`, so a frame drawn before this is a frame with no colours.
-// `dark: true`: the web surfaces are designed dark, so they run the classic
-// pack's dark palette — same tokens as a phone whose family chose dark.
-applyTheme(undefined, true);
+// Light unless this browser asked for dark: the phone's default and the
+// phone's rule, so the OS is never consulted (`src/lib/theme.js`). Read
+// synchronously here — a light frame that flips to dark is worse than either.
+applyTheme(undefined, isDarkPreferred());
 
 /*
  * Analytics starts alongside the app and is never awaited.

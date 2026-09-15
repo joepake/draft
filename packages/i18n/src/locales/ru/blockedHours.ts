@@ -69,7 +69,7 @@ export const blockedHours = {
   dayShortSun: 'Вс',
   daysLabel: 'Дни',
   daysEveryDay: 'Каждый день',
-  daysSchoolNights: 'Учебные вечера',
+  daysSchoolNights: 'Перед учебным днём',
   daysWeekend: 'Выходные',
   daysOvernightHint: 'Ночные интервалы считаются по ночи, в которую начинаются.',
   overlapWarning:

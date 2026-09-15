@@ -7,7 +7,8 @@ export const appLimits = {
   addSectionTitle: '제한 추가',
   addSectionSubtitle: '자녀가 최근 사용한 앱.',
   candidateUsage: '오늘 {{duration}}',
-  noUsageYet: '아직 사용 기록이 없습니다. 자녀 기기가 보고하면 여기에 표시됩니다.',
+  noUsageYet:
+    '아직 보고된 앱 사용 기록이 없습니다. 자녀 기기가 사용 기록을 보고하면 사용 시간 제한을 설정할 수 있습니다.',
   footnote: '제한은 자녀 기기에서 자정에 초기화됩니다.',
   toastSaved: '앱 제한을 저장했습니다.',
   toastSaveFailed: '저장할 수 없습니다. 다시 시도해 주세요.',

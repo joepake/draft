@@ -116,8 +116,6 @@ export const settings = {
   toastDeletionRequestFailed:
     'Die Kontolöschung konnte nicht gestartet werden. Bitte versuche es erneut.',
   deletionRequestAlreadyPending: 'Für dieses Konto läuft bereits eine Löschung.',
-  signOutToRemoveParentDevice:
-    'Bitte melde dich auf diesem Gerät ab, um es von deinem Konto zu entfernen.',
   languageLabel: 'Sprache',
   languageHint: 'Wähle die Anzeigesprache für KidGate',
   languageScreenTitle: 'Sprache',

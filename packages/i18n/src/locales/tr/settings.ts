@@ -110,8 +110,6 @@ export const settings = {
   toastDeletionRequestFailed:
     'Hesap silme işlemi başlatılamadı. Lütfen tekrar deneyin.',
   deletionRequestAlreadyPending: 'Bu hesap için silme işlemi zaten sürüyor.',
-  signOutToRemoveParentDevice:
-    'O cihazı hesabınızdan kaldırmak için o cihazda çıkış yapın.',
   languageLabel: 'Dil',
   languageHint: 'KidGate için görüntüleme dilini seçin',
   languageScreenTitle: 'Dil',

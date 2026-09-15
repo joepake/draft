@@ -142,7 +142,6 @@ export const plans = {
   purchasesRestored: 'Acquisti ripristinati.',
   unableToRestorePurchases: 'Impossibile ripristinare gli acquisti. Riprova.',
   purchaseVerificationFailed: 'La verifica dell’acquisto non è riuscita.',
-  unableToVerifyPurchase: 'Impossibile verificare l’acquisto. Riprova.',
   // Shown to joined parents — only the family owner can subscribe, so this
   // has to name who needs to act instead of offering a button they can't use.
   familyPremiumEndedTitle: 'Il Premium di questa famiglia è terminato',

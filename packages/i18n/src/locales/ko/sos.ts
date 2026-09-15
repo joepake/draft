@@ -60,7 +60,7 @@ export const sos = {
   noPhotoAttached: '이 알림에는 사진이 첨부되지 않았습니다.',
   sentRelativeTime: '{{relativeTime}} 전송됨',
   imOnIt: '제가 확인할게요',
-  acknowledging: '확인하는 중…',
+  acknowledging: '확인 처리 중…',
   unableToAcknowledgeSos: '확인하지 못했습니다. 잠시 후 다시 시도해 주세요.',
   noLocationSharedWithSos: '이 SOS에는 위치 정보가 공유되지 않았습니다.',
   emergencySos: '긴급 SOS',

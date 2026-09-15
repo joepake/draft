@@ -3,7 +3,6 @@ export const appInventory = {
   pendingTitle: 'Onayınız bekleniyor',
   pendingBadge: 'İzin verene kadar engelli',
   approvedBadge: 'Sizin tarafınızdan izin verildi',
-  installedAtLabel: '{{when}} yüklendi',
   allowApp: 'İzin ver',
   subtitle: 'KidGate’in kurulu bulduğu her şey; yalnızca değişenler değil.',
   summaryFlagged: '{{total}} uygulamadan {{flagged}} tanesi bakmaya değer',
@@ -13,8 +12,6 @@ export const appInventory = {
   scannedLabel: 'Son tarama',
   staleNote: 'Bu liste güncel değil. Cihaz bir sonraki bağlantısında yenilenecek.',
   truncatedNote: 'Bulunan {{total}} uygulamadan {{shown}} tanesi gösteriliyor.',
-  firstScanNote:
-    'Bu ilk tarama, bu yüzden KidGate bunların ne zaman geldiğini söyleyemez.',
   newBadge: 'Yeni',
   ageBadge: '{{age}}+',
   browserExtension: 'Chrome uzantısı',
@@ -39,7 +36,7 @@ export const appInventory = {
   unsupportedGeneric: 'Bu cihaz üzerinde kurulu uygulamaları bildirmiyor.',
   incompleteNote: 'Ana ekranda simgesi olmayan bir uygulama burada görünmeyebilir.',
   blockHint:
-    'Bir uygulamayı durdurmak için cihazın kendisinde Engellenen Uygulamalar’ı açın.',
+    'Bir uygulamayı engellemek için cihazın kendisinde Engellenen Uygulamalar’ı açın.',
   howItWorksLabel: 'Bu liste nasıl çalışır',
   markSafe: 'Güvenli',
   dismissedTitle: 'Güvenli olarak işaretledikleriniz',

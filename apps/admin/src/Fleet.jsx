@@ -174,6 +174,25 @@ export default function Fleet() {
   const latest = [...(data?.days ?? [])].reverse().find(Boolean) ?? null;
   const fleet = latest?.fleet;
 
+  /**
+   * Alpha-2 rendered in the operator's language by `Intl.DisplayNames` — no
+   * 250-row table to ship or translate. Built from the keys actually present,
+   * which is why it is not in the `labels` memo above: `unknown` is the absence
+   * of a region rather than one, and anything that is not two letters is left
+   * as it came so a bad value is visible instead of guessed at.
+   */
+  const countryLabels = useMemo(() => {
+    if (!fleet?.country) return undefined;
+    const names = new Intl.DisplayNames([language], { type: 'region' });
+    return Object.fromEntries(
+      Object.keys(fleet.country).map(code => [
+        code,
+        /^[A-Z]{2}$/.test(code) ? (names.of(code) ?? code) : t('value.unknown'),
+      ]),
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- `t` reads `language`
+  }, [fleet?.country, language]);
+
   const header = (
     <div className="section-head">
       <h2 className="section-title">{t('fleet.title')}</h2>
@@ -318,17 +337,18 @@ export default function Fleet() {
             No `total`: every other chart on this page counts devices and this
             one counts **families**, so a share against `fleet.devices` would
             read as a percentage of something it is not. The reason it counts
-            families is the suppression — see `MIN_FAMILIES_PER_BUCKET` in
-            `functions/lib/operatorMetrics.js`. `other` is every country with
-            too few families to name; `unknown` is a device that has not
+            families is the suppression that used to fold small buckets into
+            `other` — off today, see `COUNTRY_MIN_FAMILIES` in
+            `functions/lib/operatorMetrics.js`, so every country is named and a
+            bucket of one names that family. `unknown` is a device that has not
             reported one yet, which is every device until it next launches.
           */}
-          <p className="chart-sub">
-            {t('fleet.countrySubBefore')}
-            <code>other</code>
-            {t('fleet.countrySubAfter')}
-          </p>
-          <BarChart data={fleet.country} emptyLabel={t('fleet.countryEmpty')} />
+          <p className="chart-sub">{t('fleet.countrySub')}</p>
+          <BarChart
+            data={fleet.country}
+            emptyLabel={t('fleet.countryEmpty')}
+            labels={countryLabels}
+          />
         </div>
 
         <div className="chart-card">

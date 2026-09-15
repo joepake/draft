@@ -146,8 +146,6 @@ export const plans = {
   unableToRestorePurchases:
     'Käufe konnten nicht wiederhergestellt werden. Bitte versuche es erneut.',
   purchaseVerificationFailed: 'Die Kaufüberprüfung war nicht erfolgreich.',
-  unableToVerifyPurchase:
-    'Der Kauf konnte nicht überprüft werden. Bitte versuche es erneut.',
   // Shown to joined parents — only the family owner can subscribe, so this
   // has to name who needs to act instead of offering a button they can't use.
   familyPremiumEndedTitle: 'Das Premium dieser Familie ist beendet',

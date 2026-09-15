@@ -34,7 +34,7 @@ export const location = {
   unableToRequestLocationRefresh: '위치 새로고침을 요청할 수 없습니다',
   locationBannerTitle: '위치 정보 켜기',
   locationBannerBody:
-    '부모가 자녀가 안전하게 도착했는지 확인할 수 있도록 이 기기의 위치를 공유해 주세요.',
+    '안전하게 도착했는지 부모님이 알 수 있도록 이 기기의 위치를 공유해 주세요.',
   locationBannerBodySharingOff:
     '지금은 위치 공유가 꺼져 있어서 아무것도 전송되지 않아요. 여기서 허용해 두면 나중에 부모님이 켰을 때 바로 작동해요.',
   allowLocationButton: '위치 허용',
@@ -63,7 +63,6 @@ export const location = {
     '위치는 그 기기에서 읽습니다. 집에 둔 태블릿이 가방 속 휴대폰보다 더 최신 위치를 보고할 수 있어 KidGate는 추측하지 않습니다.',
   childDevicesOnline: '{{total}}대 중 {{online}}대 온라인',
   childNoneOnline: '온라인 기기 없음',
-  childPickCarried: '휴대 중',
   childPickCarriedA11y:
     '{{deviceName}}을(를) {{childName}}이(가) 가지고 다니는 기기로 지정',
   stayRange: '{{from}} – {{to}}',
@@ -71,8 +70,6 @@ export const location = {
     '허용을 선택한 뒤 항상 허용을 선택하면 백그라운드에서도 업데이트됩니다.',
   requestNoFix:
     '이 기기가 위치를 가져오지 못했습니다. 아직 위치 권한이 허용되지 않았을 수 있습니다.',
-  requestSharingOff: '이 기기의 위치 공유가 꺼져 있습니다.',
-  requestUnsupported: '이 기기는 위치를 보고할 수 없습니다.',
   cardSharingOff: '위치 공유가 꺼져 있습니다',
   cardPermissionOff: '이 기기에서 위치 권한이 허용되지 않았습니다',
   cardNotUpdating: '위치가 더 이상 업데이트되지 않습니다',

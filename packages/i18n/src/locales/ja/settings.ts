@@ -115,8 +115,6 @@ export const settings = {
   toastDeletionRequestFailed:
     'アカウントの削除を開始できませんでした。もう一度お試しください。',
   deletionRequestAlreadyPending: 'このアカウントの削除はすでに処理中です。',
-  signOutToRemoveParentDevice:
-    'そのデバイスをアカウントから削除するには、そのデバイスでサインアウトしてください。',
   languageLabel: '言語',
   languageHint: 'KidGateの表示言語を選択してください',
   languageScreenTitle: '言語',

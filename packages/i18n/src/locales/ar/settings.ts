@@ -107,7 +107,6 @@ export const settings = {
   toastDeletionAlreadyPending: 'حذف الحساب قيد التنفيذ بالفعل.',
   toastDeletionRequestFailed: 'تعذر بدء حذف الحساب. يرجى المحاولة مرة أخرى.',
   deletionRequestAlreadyPending: 'حذف هذا الحساب قيد التنفيذ بالفعل.',
-  signOutToRemoveParentDevice: 'يرجى تسجيل الخروج على ذلك الجهاز لإزالته من حسابك.',
   languageLabel: 'اللغة',
   languageHint: 'اختر لغة العرض لتطبيق KidGate',
   languageScreenTitle: 'اللغة',

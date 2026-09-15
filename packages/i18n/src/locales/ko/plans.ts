@@ -137,7 +137,6 @@ export const plans = {
   purchasesRestored: '구매가 복원되었습니다.',
   unableToRestorePurchases: '구매를 복원할 수 없습니다. 다시 시도해 주세요.',
   purchaseVerificationFailed: '구매 확인에 실패했습니다.',
-  unableToVerifyPurchase: '구매를 확인할 수 없습니다. 다시 시도해 주세요.',
   // Shown to joined parents — only the family owner can subscribe, so this
   // has to name who needs to act instead of offering a button they can't use.
   familyPremiumEndedTitle: '이 가족의 Premium이 종료되었습니다',

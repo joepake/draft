@@ -35,7 +35,7 @@ export const webFilter = {
   infoLine3Ios:
     'O KidGate aplica a configuração automaticamente quando o app no dispositivo da criança sincroniza os controles.',
   infoLine1Android:
-    'O KidGate inicia uma VPN local que inspeciona o DNS em busca de domínios adultos e bloqueia alguns resolvedores DNS criptografados.',
+    'O KidGate mantém uma conexão privada no dispositivo, que verifica quais sites estão sendo acessados e bloqueia os que estão nas categorias que você escolheu.',
   infoLine2Android:
     'Desative o DNS particular no dispositivo da criança. Se estiver ativo, os navegadores podem contornar o filtro.',
   infoLine3Android:
@@ -82,16 +82,16 @@ export const webFilter = {
 
   windowsFilterNote: 'Usa o resolvedor do próprio KidGate no Windows',
   webFilteringNote:
-    'O iOS usa o filtro adulto do Tempo de Uso; o Android usa uma lista de bloqueio via VPN DNS local.',
+    'O iOS usa o filtro de conteúdo adulto do Tempo de Uso. Android, Mac e Windows usam a lista de bloqueio do próprio KidGate.',
   safeSearchAlertsNote:
     'O Safari não compartilha termos de busca; alertas por palavra-chave exigem um navegador seguro gerenciado.',
   webHistoryNote: 'Requer um navegador com filtro ou relatórios via DNS/VPN.',
   categoriesTitle: 'O que bloquear',
   categoriesSubtitle:
     'O KidGate usa suas próprias listas de domínios. Elas cobrem os sites que as crianças realmente alcançam, não a web inteira — combine com as listas abaixo.',
-  androidOnlyCategory: 'Só Android: o iOS não tem controle web por categoria',
+  androidOnlyCategory: 'Indisponível no iPhone — funciona no Android e no Mac',
   iosCategoryNote:
-    'O iPhone só suporta {{category}}, usando o filtro da Apple. As outras categorias valem para dispositivos Android.',
+    'O iPhone só suporta {{category}}, usando o filtro da Apple. As outras categorias valem para dispositivos Android e Mac da criança.',
   allowListTitle: 'Sempre permitir',
   allowListSubtitle:
     'Sites que continuam acessíveis mesmo quando uma categoria os bloquearia.',
@@ -170,7 +170,7 @@ export const webFilter = {
     piracy: 'Torrents e streaming pirata',
     social: 'Facebook, Instagram, TikTok, Discord',
     videoStreaming: 'YouTube, Netflix, Twitch',
-    music: 'Spotify, SoundCloud, Zing MP3',
+    music: 'Spotify, Deezer, SoundCloud',
     gaming: 'Roblox, Steam, portais de jogos',
     shopping: 'Amazon, Shopee, moda rápida',
     aiCompanion: 'Character.AI, Replika, bots de roleplay',

@@ -25,7 +25,7 @@ export const permissions = {
   exactAlarmLabel: 'Alarmlar ve hatırlatıcılar',
   exactAlarmHint:
     'Engellenen Saatlerin zamanında başlayıp bitmesi için Alarmlar ve hatırlatıcılar iznini verin.',
-  accessibilityLabel: 'Erişilebilirlik kilit yardımcısı',
+  accessibilityLabel: 'Erişilebilirlik (kilit yardımcısı)',
   accessibilityHint: 'KidGate kilidini diğer uygulamaların üzerinde tutar.',
   oemSectionDescription:
     '{{brand}} cihazları genellikle arka plan uygulamalarını duraklatır. Kilitleme ve Engellenen Saatler’in çalışmaya devam etmesi için lütfen bu adımları tamamlayın.',

@@ -110,8 +110,6 @@ export const settings = {
   toastDeletionAlreadyPending: 'Tài khoản đang trong quá trình xóa.',
   toastDeletionRequestFailed: 'Không thể bắt đầu xóa tài khoản. Vui lòng thử lại.',
   deletionRequestAlreadyPending: 'Tài khoản này đang trong quá trình xóa.',
-  signOutToRemoveParentDevice:
-    'Vui lòng đăng xuất trên thiết bị đó để gỡ khỏi tài khoản của bạn.',
   languageLabel: 'Ngôn ngữ',
   languageHint: 'Chọn ngôn ngữ hiển thị của KidGate',
   languageScreenTitle: 'Ngôn ngữ',

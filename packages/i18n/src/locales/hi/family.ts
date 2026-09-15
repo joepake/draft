@@ -339,6 +339,7 @@ export const family = {
 
   protectionNeedsSetup: '{{issueLabel}} के लिए सेटअप आवश्यक है',
 
+  freeTierCadenceHint: 'फ़्री प्लान — हर {{minutes}} मिनट में अपडेट',
   dailyLimitOn: 'दैनिक सीमा सक्रिय है',
 
   deviceReady: 'तैयार',

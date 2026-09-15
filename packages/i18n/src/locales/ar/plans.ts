@@ -137,7 +137,6 @@ export const plans = {
   purchasesRestored: 'تمت استعادة المشتريات.',
   unableToRestorePurchases: 'تعذرت استعادة المشتريات. يرجى المحاولة مرة أخرى.',
   purchaseVerificationFailed: 'لم تنجح عملية التحقق من الشراء.',
-  unableToVerifyPurchase: 'تعذر التحقق من عملية الشراء. يرجى المحاولة مرة أخرى.',
   // Shown to joined parents — only the family owner can subscribe, so this
   // has to name who needs to act instead of offering a button they can't use.
   familyPremiumEndedTitle: 'انتهى اشتراك Premium لهذه العائلة',

@@ -67,15 +67,12 @@ export const location = {
     '位置情報はそのデバイスから読み取ります。家に置いたタブレットの方がカバンの中のスマホより新しい位置を報告することがあるため、KidGateは推測しません。',
   childDevicesOnline: '{{total}} 台中 {{online}} 台がオンライン',
   childNoneOnline: 'オンラインのデバイスはありません',
-  childPickCarried: '持ち歩き中',
   childPickCarriedA11y: '{{deviceName}}を{{childName}}が持ち歩くデバイスに設定',
   stayRange: '{{from}} – {{to}}',
   wizardStepAllow:
     '「許可」を選び、続いて「常に許可」を選ぶと、バックグラウンドでも更新が続きます。',
   requestNoFix:
     'この端末は位置情報を取得できませんでした。位置情報の許可がまだされていない可能性があります。',
-  requestSharingOff: 'この端末の位置情報の共有はオフです。',
-  requestUnsupported: 'この端末は位置情報を報告できません。',
   cardSharingOff: '位置情報の共有がオフです',
   cardPermissionOff: 'この端末では位置情報が許可されていません',
   cardNotUpdating: '位置情報の更新が止まっています',

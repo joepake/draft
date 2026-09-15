@@ -91,7 +91,7 @@ export const webFilter = {
     'KidGateは独自のドメインリストを使います。子どもが実際にたどり着くサイトを対象にしており、ウェブ全体ではありません。下のリストと組み合わせてください。',
   androidOnlyCategory: 'iPhoneでは利用できません — AndroidとMacで動作します',
   iosCategoryNote:
-    'iPhoneは{{category}}のみ対応し、Apple独自のフィルターを使います。他のカテゴリはAndroidデバイスに適用されます。',
+    'iPhoneは{{category}}のみ対応し、Apple独自のフィルターを使います。他のカテゴリはAndroidとMacのお子さまのデバイスに適用されます。',
   allowListTitle: '常に許可',
   allowListSubtitle: 'カテゴリがブロックする場合でもアクセスできるサイト。',
   allowListEmpty: '例外はまだありません。',

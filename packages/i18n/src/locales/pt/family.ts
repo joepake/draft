@@ -124,7 +124,7 @@ export const family = {
   chipHealthInactiveCount: '{{count}} inativos há mais de 24 h',
   chipLocationBlocked: 'Sem localização',
 
-  chipBlockedCount: '{{count}} bloqueados',
+  chipBlockedCount: '_one: "{{count}} bloqueado" / _other: "{{count}} bloqueados"',
 
   healthProtected: 'Protegido',
   buildOutdated: 'Atualização disponível',
@@ -325,6 +325,7 @@ export const family = {
 
   protectionNeedsSetup: '{{issueLabel}} precisa de configuração',
 
+  freeTierCadenceHint: 'Plano gratuito: atualiza a cada {{minutes}} min',
   dailyLimitOn: 'Limite diário ativado',
 
   deviceReady: 'Pronto',

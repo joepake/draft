@@ -6,7 +6,7 @@ export const videoHistory = {
     'YouTube no navegador e o app do YouTube no Android e na TV. Na TV, os Shorts não aparecem porque o app de TV não os identifica como Shorts.',
   toggleFailed: 'Não foi possível atualizar o histórico de vídeos. Tente novamente.',
   unsupportedNote:
-    'Este dispositivo não consegue relatar vídeos assistidos. Funciona no Android e no Chrome.',
+    'Este dispositivo não consegue informar os vídeos assistidos. Funciona no Android, no Android TV e no Chrome.',
 
   unsupportedNeedsExtension:
     'O KidGate neste computador não consegue ver que vídeos são vistos — lê nomes de sites, não o conteúdo de uma página. A extensão do KidGate para o Chrome consegue: adicione-a neste computador e ela reporta os vídeos vistos como um dispositivo próprio.',

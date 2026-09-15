@@ -62,15 +62,12 @@ export const location = {
     'Their spot on the map is read from that device. A tablet left at home can report a fresher fix than the phone in their bag, so KidGate never guesses.',
   childDevicesOnline: '{{online}} of {{total}} online',
   childNoneOnline: 'No device online',
-  childPickCarried: 'With them',
   childPickCarriedA11y: 'Mark {{deviceName}} as the device {{childName}} carries',
   stayRange: '{{from}} – {{to}}',
   wizardStepAllow:
     'Select Allow, then choose Always so updates keep coming in the background.',
   requestNoFix:
     'This device could not get a position. Location may not be allowed on it yet.',
-  requestSharingOff: 'Location sharing is off for this device.',
-  requestUnsupported: 'This device cannot report a position.',
   cardSharingOff: 'Location sharing is off',
   cardPermissionOff: 'Location is not allowed on this device',
   cardNotUpdating: 'Location has stopped updating',

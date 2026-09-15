@@ -73,7 +73,6 @@ export const location = {
     'Der Standort wird von diesem Gerät gelesen. Ein Tablet zu Hause kann einen aktuelleren Standort melden als das Handy in der Tasche – KidGate rät deshalb nie.',
   childDevicesOnline: '{{online}} von {{total}} online',
   childNoneOnline: 'Kein Gerät online',
-  childPickCarried: 'Ist dabei',
   childPickCarriedA11y:
     '{{deviceName}} als das Gerät markieren, das {{childName}} dabei hat',
   stayRange: '{{from}} – {{to}}',
@@ -81,8 +80,6 @@ export const location = {
     'Wähle „Erlauben“ und dann „Immer“, damit Updates im Hintergrund weiterlaufen.',
   requestNoFix:
     'Dieses Gerät konnte keine Position ermitteln. Der Standort ist dort möglicherweise noch nicht erlaubt.',
-  requestSharingOff: 'Die Standortfreigabe ist für dieses Gerät ausgeschaltet.',
-  requestUnsupported: 'Dieses Gerät kann keine Position melden.',
   cardSharingOff: 'Standortfreigabe ist aus',
   cardPermissionOff: 'Standort ist auf diesem Gerät nicht erlaubt',
   cardNotUpdating: 'Standort wird nicht mehr aktualisiert',

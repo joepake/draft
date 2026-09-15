@@ -573,18 +573,12 @@ export default {
     inventoryTitle: 'Aplikasi terpasang',
     inventorySub: 'Semua di perangkat ini, bukan hanya yang berubah',
     inventoryEmpty: 'Perangkat ini belum mengirim daftar aplikasinya.',
-    inventoryStale:
-      'Daftar ini sudah usang. Akan diperbarui saat perangkat terhubung lagi.',
     inventoryFirstScan:
       'Pemindaian pertama, jadi KidGate belum tahu kapan aplikasi ini muncul.',
     inventoryFlagged: 'Perlu diperiksa',
     inventoryFlaggedLabel: 'Perlu ditinjau',
     inventoryOtherLabel: 'Dikenali',
     inventoryUnknownLabel: 'Belum dikenali',
-    inventoryIncomplete:
-      'Aplikasi tanpa ikon di layar utama mungkin tidak muncul di sini.',
-    inventoryPending: 'Menunggu persetujuan Anda',
-    pendingInstallBlocked: 'Diblokir sampai Anda mengizinkannya',
     installAllow: 'Izinkan',
     pendingInstallsTitle: 'Aplikasi baru menunggu persetujuan',
     pendingInstallsSub:
@@ -624,8 +618,6 @@ export default {
 
     locationTitle: 'Lokasi',
     locationSharingOff: 'Berbagi lokasi mati',
-    locationSyncNote:
-      'Lokasi bisa butuh beberapa menit untuk diperbarui — lebih lama jika perangkat tidak memiliki koneksi internet atau ditutup secara tidak terduga.',
     locationUpdated: 'Diperbarui {{when}}',
     locationWaiting: 'Menunggu pembaruan pertama',
     lastKnownLocation: 'Lokasi terakhir diketahui',
@@ -695,8 +687,6 @@ export default {
     rowLocationDesc: 'Pembaruan terakhir {{when}}',
     rowLocationNone: 'Belum ada lokasi',
     rowSearchMonitoring: 'Pemantauan pencarian',
-    rowSearchMonitoringDesc:
-      'Peramban dan YouTube. Hanya kata yang ditandai yang dilaporkan, bukan isi pencarian.',
     rowSafeSearch: 'Paksa SafeSearch',
     rowSafeSearchDesc:
       'Mengunci Google SafeSearch, Mode Terbatas YouTube, Bing, dan DuckDuckGo pada pengaturan ketat. Android, Android TV, dan Chrome. Pada level ini YouTube juga menyembunyikan komentar dan memblokir sebagian video biasa.',
@@ -750,40 +740,10 @@ export default {
     title: 'Laporan mingguan',
     subtitle: 'Yang diperhatikan KidGate sepanjang minggu ini.',
     weekOf: 'Minggu {{week}}',
-    range: '{{from}} – {{to}}',
     writtenAt: 'Ditulis {{when}}',
     triggerScheduled: 'Dikirim Senin',
     triggerManual: 'Dibuat oleh Anda',
-    statScreenTime: 'Waktu Layar',
-    statDailyAverage: 'Rata-rata harian',
-    statBlockedApps: 'Aplikasi diblokir',
-    statBlockedWebVisits: 'Situs disaring',
-    statTasksApproved: 'Tugas selesai',
-    trendUp: '{{value}} lebih banyak dari minggu sebelumnya',
-    trendDown: '{{value}} lebih sedikit dari minggu sebelumnya',
-    trendFlat: 'Kurang lebih sama dengan minggu sebelumnya',
-    trendFirstWeek: 'Minggu pertama yang terukur',
-    barThisWeek: 'Minggu ini',
-    barLastWeek: 'Minggu lalu',
     highlights: 'Perlu diketahui',
-    sevAttention: 'Perlu dilihat',
-    sevNotable: 'Perlu dicatat',
-    sevInfo: 'Sekadar informasi',
-    findingUsageUp:
-      'Waktu layar naik {{percent}}% — {{delta}} lebih banyak dari minggu lalu.',
-    findingUsageDown:
-      'Waktu layar turun {{percent}}% — {{delta}} lebih sedikit dari minggu lalu.',
-    findingUsageFlat: 'Waktu layar tetap di {{total}}.',
-    findingLateNight:
-      '{{count}} malam setelah pukul 23.00 — paling larut sampai {{time}}.',
-    findingNewTopApp: '{{app}} baru minggu ini dan sudah mencapai {{duration}}.',
-    findingAppSurge: '{{app}} naik {{delta}} dari minggu lalu — total {{duration}}.',
-    findingLimitHit: 'Batas harian {{limit}} tercapai pada {{count}} hari.',
-    findingBlockedApps:
-      '{{count}} pembukaan aplikasi diblokir, dibanding {{previous}} minggu lalu.',
-    findingBlockedWeb: '{{count}} situs disaring, dibanding {{previous}} minggu lalu.',
-    findingQuietWeek:
-      'Minggu yang tenang — total {{total}}, dan tidak ada yang membutuhkan perhatian Anda.',
     narrativeTitle: 'Dalam satu kalimat',
     finePrint:
       'Angka mencakup {{from}} sampai {{to}}, di seluruh perangkat keluarga. Waktu layar adalah yang dilaporkan perangkat; menit yang tidak terukur tidak masuk ke total mana pun.',
@@ -813,14 +773,7 @@ export default {
     colLimit: 'Melewati batas',
     colLateNights: 'Malam larut',
     colTopApp: 'Paling banyak dipakai',
-    unnamedChild: 'Perangkat tanpa nama',
-    changeUp: '+{{value}}',
-    changeDown: '−{{value}}',
-    changeFlat: 'kurang lebih sama',
     noLimit: 'Tanpa batas',
-    noTopApp: '—',
-    limitDays: '{{count}} hari',
-    lateNightsNone: 'tidak ada',
     busiest: 'Waktu layar terbanyak',
 
     historyTitle: 'Minggu sebelumnya',

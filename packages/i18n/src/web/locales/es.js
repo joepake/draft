@@ -583,18 +583,12 @@ export default {
     inventoryTitle: 'Aplicaciones instaladas',
     inventorySub: 'Todo en este dispositivo, no solo lo que cambió',
     inventoryEmpty: 'Este dispositivo aún no ha publicado su lista de aplicaciones.',
-    inventoryStale:
-      'Esta lista está desactualizada. Se renovará cuando el dispositivo vuelva a conectarse.',
     inventoryFirstScan:
       'Primer análisis, así que KidGate no puede decir cuándo llegó cada una.',
     inventoryFlagged: 'Merecen una mirada',
     inventoryFlaggedLabel: 'A revisar',
     inventoryOtherLabel: 'Identificadas',
     inventoryUnknownLabel: 'Sin identificar',
-    inventoryIncomplete:
-      'Una aplicación sin icono en la pantalla de inicio puede no aparecer aquí.',
-    inventoryPending: 'Esperando tu aprobación',
-    pendingInstallBlocked: 'Bloqueada hasta que la permitas',
     installAllow: 'Permitir',
     pendingInstallsTitle: 'Apps nuevas esperando aprobación',
     pendingInstallsSub:
@@ -636,8 +630,6 @@ export default {
 
     locationTitle: 'Ubicación',
     locationSharingOff: 'El uso compartido está desactivado',
-    locationSyncNote:
-      'La ubicación puede tardar unos minutos en actualizarse, más si el dispositivo no tiene conexión a Internet o se cerró de forma inesperada.',
     locationUpdated: 'Actualizado {{when}}',
     locationWaiting: 'Esperando la primera actualización',
     lastKnownLocation: 'Última ubicación conocida',
@@ -710,8 +702,6 @@ export default {
     rowLocationDesc: 'Última actualización {{when}}',
     rowLocationNone: 'Todavía sin ubicación',
     rowSearchMonitoring: 'Supervisión de búsquedas',
-    rowSearchMonitoringDesc:
-      'Navegadores y YouTube. Solo se informa la palabra marcada, nunca la búsqueda en sí.',
     rowSafeSearch: 'Forzar SafeSearch',
     rowSafeSearchDesc:
       'Fija Google SafeSearch, el modo restringido de YouTube, Bing y DuckDuckGo en su ajuste estricto. Android, Android TV y Chrome. En este nivel YouTube también oculta los comentarios y bloquea algunos vídeos normales.',
@@ -766,45 +756,10 @@ export default {
     title: 'Informe semanal',
     subtitle: 'Lo que KidGate observó durante la semana.',
     weekOf: 'Semana {{week}}',
-    range: '{{from}} – {{to}}',
     writtenAt: 'Escrito el {{when}}',
     triggerScheduled: 'Enviado el lunes',
     triggerManual: 'Creado por ti',
-    statScreenTime: 'Tiempo de uso',
-    statDailyAverage: 'Media diaria',
-    statBlockedApps: 'Apps bloqueadas',
-    statBlockedWebVisits: 'Sitios filtrados',
-    statTasksApproved: 'Tareas completadas',
-    trendUp: '{{value}} más que la semana anterior',
-    trendDown: '{{value}} menos que la semana anterior',
-    trendFlat: 'Prácticamente igual que la semana anterior',
-    trendFirstWeek: 'Primera semana medida',
-    barThisWeek: 'Esta semana',
-    barLastWeek: 'La semana pasada',
     highlights: 'Conviene saber',
-    sevAttention: 'Merece una mirada',
-    sevNotable: 'Destacado',
-    sevInfo: 'Bueno saberlo',
-    findingUsageUp:
-      'El tiempo de pantalla subió un {{percent}}%: {{delta}} más que la semana pasada.',
-    findingUsageDown:
-      'El tiempo de pantalla bajó un {{percent}}%: {{delta}} menos que la semana pasada.',
-    findingUsageFlat: 'El tiempo de pantalla se mantuvo en {{total}}.',
-    findingLateNight_one: 'Una noche después de las 23:00, hasta las {{time}}.',
-    findingLateNight_other:
-      '{{count}} noches después de las 23:00; la más tardía, hasta las {{time}}.',
-    findingNewTopApp: '{{app}} es nueva esta semana y ya suma {{duration}}.',
-    findingAppSurge:
-      '{{app}} sube {{delta}} respecto a la semana pasada: {{duration}} en total.',
-    findingLimitHit_one: 'Se alcanzó el límite diario de {{limit}} un día.',
-    findingLimitHit_other:
-      'Se alcanzó el límite diario de {{limit}} en {{count}} días.',
-    findingBlockedApps:
-      '{{count}} aperturas de apps bloqueadas, frente a {{previous}} la semana pasada.',
-    findingBlockedWeb:
-      '{{count}} sitios filtrados, frente a {{previous}} la semana pasada.',
-    findingQuietWeek:
-      'Una semana tranquila: {{total}} en total y nada que requiriera tu atención.',
     narrativeTitle: 'En una frase',
     finePrint:
       'Las cifras cubren del {{from}} al {{to}}, en todos los dispositivos de la familia. El tiempo de pantalla es lo que informaron los dispositivos; los minutos que no pudieron medir no están en ningún total.',
@@ -835,15 +790,7 @@ export default {
     colLimit: 'Sobre el límite',
     colLateNights: 'Noches tarde',
     colTopApp: 'Más usada',
-    unnamedChild: 'Dispositivo sin nombre',
-    changeUp: '+{{value}}',
-    changeDown: '−{{value}}',
-    changeFlat: 'prácticamente igual',
     noLimit: 'Sin límite',
-    noTopApp: '—',
-    limitDays_one: '{{count}} día',
-    limitDays_other: '{{count}} días',
-    lateNightsNone: 'ninguna',
     busiest: 'Más tiempo de pantalla',
 
     historyTitle: 'Semanas anteriores',

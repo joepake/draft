@@ -98,6 +98,32 @@ export function offlineThresholdMs(premiumLapsed: boolean): Millis {
 }
 
 /**
+ * This device's cadence in whole minutes, **when it is slower than live** —
+ * otherwise `null`, meaning there is nothing worth telling the parent.
+ *
+ * The sentence it feeds is the one §8 item 7 of `docs/PRICING.md` has been
+ * owed since the cadence landed: a card that says only "Online" over a number
+ * twenty minutes old is the plan working as sold and an app that has stopped
+ * syncing, drawn identically. Reading `Device.beatIntervalMs` rather than the
+ * family's plan is the same decision `offlineThresholdForBeat` makes below,
+ * for the same three reasons: an uncleared lapse latch, a parked device, and
+ * an older build that publishes nothing.
+ *
+ * Clamped at the free tier's cadence so a device claiming an hour cannot print
+ * an hour, and floored at the live one so a premium device never draws the
+ * line at all.
+ */
+export function slowBeatMinutes(beatIntervalMs: unknown): number | null {
+  if (typeof beatIntervalMs !== 'number' || !Number.isFinite(beatIntervalMs)) {
+    return null;
+  }
+  if (beatIntervalMs <= ALIVE_MIN_INTERVAL_MS) {
+    return null;
+  }
+  return Math.round(Math.min(beatIntervalMs, LAPSED_ALIVE_INTERVAL_MS) / 60_000);
+}
+
+/**
  * The window to judge **this** device by, from the cadence it says it is
  * keeping (`Device.beatIntervalMs`).
  *

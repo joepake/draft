@@ -141,7 +141,6 @@ export const plans = {
   purchasesRestored: 'Compras restauradas.',
   unableToRestorePurchases: 'Não foi possível restaurar as compras. Tente novamente.',
   purchaseVerificationFailed: 'A verificação da compra não foi concluída com sucesso.',
-  unableToVerifyPurchase: 'Não foi possível verificar a compra. Tente novamente.',
   // Shown to joined parents — only the family owner can subscribe, so this
   // has to name who needs to act instead of offering a button they can't use.
   familyPremiumEndedTitle: 'O Premium desta família terminou',
@@ -203,7 +202,7 @@ export const plans = {
   teaserVideoHistory:
     'O Premium guarda cada vídeo e Short do YouTube que ele assistiu.',
   teaserLocationTrail:
-    'O Premium guarda por onde ele andou e avisa quando chega ou sai de casa e da escola.',
+    'O Premium guarda o trajeto da criança e avisa quando ela chega ou sai de casa e da escola.',
   teaserActivityWindow: 'O plano gratuito mostra hoje. O Premium guarda 30 dias.',
   teaserChildReport:
     'O Premium adiciona um relatório por filho, e um novo a cada semana.',
@@ -215,7 +214,7 @@ export const plans = {
     'O plano gratuito envia um relatório quando o teste termina. O Premium envia um por semana.',
   teaserProofRewardTasks: 'Tarefas ativas: {{count}}',
   teaserRewardTasks:
-    'É tudo o que o plano gratuito mantém ao mesmo tempo. O Premium duplica.',
+    'Esse é o número de tarefas que o plano gratuito mantém ao mesmo tempo. O Premium dobra esse limite.',
   teaserLiveNote: 'O plano gratuito atualiza a cada 30 minutos. O Premium é ao vivo.',
   teaserUsageTimeline: 'O Premium mostra em que horas do dia o dispositivo foi usado.',
   teaserDeviceNote: 'Apenas o dispositivo monitorado envia dados.',

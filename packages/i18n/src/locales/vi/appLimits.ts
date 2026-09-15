@@ -9,7 +9,7 @@ export const appLimits = {
   addSectionSubtitle: 'Ứng dụng trẻ vừa dùng gần đây.',
   candidateUsage: '{{duration}} hôm nay',
   noUsageYet:
-    'Chưa có dữ liệu sử dụng. Khi thiết bị của trẻ báo về, danh sách ứng dụng sẽ hiện ở đây.',
+    'Chưa có dữ liệu sử dụng ứng dụng. Khi thiết bị của trẻ báo về, bạn sẽ đặt được giới hạn cho từng ứng dụng ở đây.',
   footnote: 'Giới hạn được đặt lại lúc nửa đêm, theo giờ trên thiết bị của trẻ.',
   toastSaved: 'Đã lưu giới hạn ứng dụng.',
   toastSaveFailed: 'Không lưu được. Vui lòng thử lại.',

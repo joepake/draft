@@ -141,7 +141,6 @@ export const plans = {
   purchasesRestored: '購入を復元しました。',
   unableToRestorePurchases: '購入を復元できませんでした。もう一度お試しください。',
   purchaseVerificationFailed: '購入の確認に失敗しました。',
-  unableToVerifyPurchase: '購入を確認できませんでした。もう一度お試しください。',
   // Shown to joined parents — only the family owner can subscribe, so this
   // has to name who needs to act instead of offering a button they can't use.
   familyPremiumEndedTitle: 'このファミリーのPremiumは終了しました',

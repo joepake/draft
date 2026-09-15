@@ -143,7 +143,6 @@ export const plans = {
   purchasesRestored: 'Achats restaurés.',
   unableToRestorePurchases: 'Impossible de restaurer les achats. Veuillez réessayer.',
   purchaseVerificationFailed: 'La vérification de l’achat a échoué.',
-  unableToVerifyPurchase: 'Impossible de vérifier l’achat. Veuillez réessayer.',
   // Shown to joined parents — only the family owner can subscribe, so this
   // has to name who needs to act instead of offering a button they can't use.
   familyPremiumEndedTitle: 'Le Premium de cette famille a expiré',

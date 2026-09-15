@@ -1,20 +1,67 @@
 /* ==================================================================
-   Parent dashboard — dark navy surface.
+   Parent dashboard. Light by default, dark when the parent asks for it
+   (`apps/dashboard/src/lib/theme.js`); `apps/site` renders these same
+   rules always-dark. Every colour resolves from `--kg-*`, which is what
+   lets one stylesheet draw both palettes.
+   The chart trio below is validated against the DARK surface only:
    Palette validated with the data-viz six checks against #141c33:
    categorical blue/orange/aqua pass lightness, chroma, CVD ΔE 9.4,
    normal-vision ΔE 20.9 and 3:1 contrast; status steps all ≥ 3.5:1.
    ================================================================== */
 
+/* ---------- The two scales this file is allowed to use ----------
+ *
+ * Measured 2026-09-15, before this block existed: 34 distinct `font-size`
+ * values and 20 distinct `border-radius` values across 3,900 lines — a
+ * surface with no scale at all, which is what "it looks cheap" is made of.
+ *
+ * The steps are anchored on the values already most used, so almost nothing
+ * moved: the exception is the five sizes below 11px, which went up to 11.5px
+ * and are the only reason a parent reading a tile label had to lean in.
+ *
+ * `.dash`'s own `font-size: 15px` is deliberately not one of these. It is the
+ * base that unstyled text inherits; everything here is `rem` and measured
+ * against the root's 16px instead, which is its own inconsistency and is
+ * recorded in `apps/dashboard/CLAUDE.md` rather than quietly changed.
+ */
+:root {
+  --dash-text-1: 0.72rem;
+  --dash-text-2: 0.78rem;
+  --dash-text-3: 0.86rem;
+  --dash-text-4: 1rem;
+  --dash-text-5: 1.2rem;
+  --dash-text-6: 1.5rem;
+  --dash-text-7: 2rem;
+
+  /* Under 0.5rem stays literal — those are chart geometry, not boxes. */
+  --dash-radius-1: 0.6rem;
+  --dash-radius-2: 0.75rem;
+  --dash-radius-3: 1rem;
+}
+
 .dash {
   /* Theme colours resolve to `@kidgate/tokens` (`--kg-*`, written by
-     `theme.js` — the web runs the classic pack's dark palette). Alpha
-     variants are mixed from the tokens with `color-mix`. */
+     `theme.js`). Alpha variants are mixed from the tokens with `color-mix`. */
   --plane: var(--kg-background);
   --surface: var(--kg-surface);
   --surface-2: color-mix(in srgb, var(--kg-surface) 92%, var(--kg-text));
   --ink: var(--kg-text);
   --ink-2: var(--kg-textSecondary);
-  --muted: color-mix(in srgb, var(--kg-textSecondary) 78%, var(--kg-background));
+  /*
+   * The dimmest text step, and 95% is a measurement rather than a taste call.
+   *
+   * It was 78%, chosen while the web only ran the dark palette. Mixing toward
+   * the ground dims by moving *at* it, so the same number that measured
+   * 5.21:1 on the dark card measured **3.74:1 on the light one** — under AA,
+   * on the token 63 declarations use for every hint, caption and meta line
+   * this surface draws. Measured 2026-09-15, the day the theme toggle landed.
+   *
+   * 95% gives 5.25 on the light card and 4.64 on the light page, 7.38 and
+   * 8.81 on the dark ones, and stays dimmer than `--ink-2` in both (5.82 /
+   * 8.14), so the three-step hierarchy survives the fix. The page ground is
+   * the binding constraint — re-measure against it before lowering this.
+   */
+  --muted: color-mix(in srgb, var(--kg-textSecondary) 95%, var(--kg-background));
   --line: color-mix(in srgb, var(--kg-text) 9%, transparent);
   --grid: color-mix(in srgb, var(--kg-text) 12%, var(--kg-surface));
   --brand: var(--kg-primary);
@@ -28,12 +75,25 @@
   --s2: #d95926;
   --s3: #199e70;
 
-  --good: var(--kg-success);
-  --warning: var(--kg-warning);
-  /* A severity step between warning and danger that tokens do not carry
-     yet — the one literal status colour left, tracked as a token gap. */
-  --serious: #ec835a;
-  --critical: var(--kg-danger);
+  /*
+   * The `*Strong` variants, which are the text-safe ones — this surface paints
+   * all three as words far more often than as fills (33 `color:` declarations
+   * against a handful of dots and borders).
+   *
+   * In the dark palette they are byte-identical to the base tokens, so nothing
+   * about the dark surface moves. In the light one the base tokens fail AA as
+   * text on a white card — `success` 3.77:1, `warning` 3.19:1 — and the Strong
+   * pair measures 7.68 and 7.09. `.batt-low` already reached past `--critical`
+   * to `--kg-errorStrong` for exactly this reason; now it does not have to.
+   */
+  --good: var(--kg-successStrong);
+  --warning: var(--kg-warningStrong);
+  /* A severity step between warning and danger that tokens do not carry yet.
+     Mixed from the two text-safe ends rather than written as one literal, so
+     it follows the palette instead of staying an orange that only reads on a
+     dark card. */
+  --serious: color-mix(in srgb, var(--kg-errorStrong) 55%, var(--kg-warningStrong));
+  --critical: var(--kg-errorStrong);
 
   display: grid;
   grid-template-columns: 272px minmax(0, 1fr);
@@ -43,7 +103,20 @@
   font-size: 15px;
 }
 
-.dash button {
+/*
+ * The browser's button chrome, taken off — through `:where()`, which is the
+ * whole point of the selector.
+ *
+ * Written as `.dash button` it was a class **and** a type, which outranks the
+ * single class every button component is styled with: `.btn`, `.btn-primary`,
+ * `.btn-danger` and the `.toggle` track all lost their `background` and
+ * `border` to this reset, and only came back on `:hover` — a class plus a
+ * pseudo-class, which outranks it again. So every button on this surface was
+ * flat text until the pointer touched it, and a switch that was off had no
+ * track at all. `:where()` weighs nothing, so the reset now ties with those
+ * classes and loses to them on order, while a bare `<button>` still gets it.
+ */
+.dash :where(button) {
   font: inherit;
   color: inherit;
   border: 0;
@@ -61,7 +134,7 @@
 .chips-toggle li {
   display: flex;
   align-items: center;
-  gap: 0.45rem;
+  gap: 0.5rem;
 }
 
 .attn-icon .icon,
@@ -135,7 +208,7 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 1.08rem;
+  font-size: var(--dash-text-4);
   font-weight: 700;
   /* The wordmark is white, not brand-tinted: the mark beside it carries the
      colour, and two teals stacked read as one dim shape on this plane. */
@@ -146,7 +219,7 @@
 
 .dash-brand > span {
   display: block;
-  font-size: 0.78rem;
+  font-size: var(--dash-text-2);
   color: var(--muted);
   margin-top: 0.05rem;
   overflow: hidden;
@@ -215,7 +288,7 @@
 }
 
 .side-title {
-  font-size: 0.66rem;
+  font-size: var(--dash-text-1);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-weight: 700;
@@ -236,10 +309,10 @@
   width: 100%;
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.5rem;
   min-height: 2.5rem;
   padding: 0.4rem 0.55rem;
-  border-radius: 0.6rem;
+  border-radius: var(--dash-radius-1);
   text-align: left;
   transition:
     background var(--kg-motion-fast) ease,
@@ -288,11 +361,11 @@
 .kid-avatar {
   width: 1.9rem;
   height: 1.9rem;
-  border-radius: 0.55rem;
+  border-radius: var(--dash-radius-1);
   display: grid;
   place-items: center;
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: var(--dash-text-4);
   color: var(--ink-2);
   background: color-mix(in srgb, var(--ink) 10%, transparent);
   flex-shrink: 0;
@@ -333,7 +406,7 @@
 
 .kid-meta strong {
   display: block;
-  font-size: 0.87rem;
+  font-size: var(--dash-text-3);
   font-weight: 600;
   color: var(--ink-2);
   white-space: nowrap;
@@ -349,7 +422,7 @@
 .kid-meta em {
   display: block;
   font-style: normal;
-  font-size: 0.72rem;
+  font-size: var(--dash-text-2);
   color: var(--muted);
   white-space: nowrap;
   overflow: hidden;
@@ -410,7 +483,7 @@
 .kid-group-name {
   flex: 1;
   min-width: 0;
-  font-size: 0.87rem;
+  font-size: var(--dash-text-3);
   font-weight: 600;
   color: var(--ink-2);
   white-space: nowrap;
@@ -433,7 +506,7 @@
 .kid-group-dots {
   display: flex;
   align-items: center;
-  gap: 0.2rem;
+  gap: 0.25rem;
   flex-shrink: 0;
 }
 
@@ -446,7 +519,7 @@
 }
 
 .kid-group-more {
-  font-size: 0.66rem;
+  font-size: var(--dash-text-1);
   font-weight: 700;
   color: var(--muted);
 }
@@ -495,7 +568,7 @@
 .kid-avatar-child .kid-initial {
   width: 1.6rem;
   height: 1.6rem;
-  font-size: 0.78rem;
+  font-size: var(--dash-text-2);
 }
 
 /* `.kid-meta em` is (0,1,1) and sets `display: block`, so the element carries
@@ -532,7 +605,7 @@
   display: grid;
   place-items: center;
   flex-shrink: 0;
-  font-size: 0.66rem;
+  font-size: var(--dash-text-1);
   font-weight: 800;
   color: #fff;
 }
@@ -549,7 +622,7 @@
 
 .nav-item {
   color: var(--ink-2);
-  font-size: 0.88rem;
+  font-size: var(--dash-text-3);
   font-weight: 500;
 }
 
@@ -574,7 +647,7 @@
   margin-left: auto;
   background: var(--warning);
   color: var(--plane);
-  font-size: 0.68rem;
+  font-size: var(--dash-text-1);
   font-weight: 700;
   line-height: 1.5;
   min-width: 1.15rem;
@@ -598,14 +671,14 @@
 .side-foot {
   margin-top: auto;
   display: grid;
-  gap: 0.45rem;
+  gap: 0.5rem;
   padding: 0.75rem 0.55rem 0;
   border-top: 1px solid var(--line);
 }
 
 .plan-pill {
   display: inline-block;
-  font-size: 0.7rem;
+  font-size: var(--dash-text-1);
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -617,7 +690,7 @@
 }
 
 .side-foot p {
-  font-size: 0.74rem;
+  font-size: var(--dash-text-2);
   color: var(--muted);
   margin: 0;
 }
@@ -645,12 +718,12 @@
   }
 
   .side-foot {
-    gap: 0.4rem;
+    gap: 0.35rem;
     padding-top: 0.6rem;
   }
 
   .dash-side {
-    gap: 0.7rem;
+    gap: 0.75rem;
     padding-top: 0.8rem;
   }
 }
@@ -672,7 +745,7 @@
 }
 
 .dash-top h1 {
-  font-size: 1.5rem;
+  font-size: var(--dash-text-6);
   letter-spacing: -0.02em;
 }
 
@@ -733,9 +806,9 @@
 .dash-top-owner {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.35rem;
   margin-bottom: 0.2rem;
-  font-size: 0.82rem;
+  font-size: var(--dash-text-3);
   font-weight: 700;
   color: var(--ink-2);
 }
@@ -746,8 +819,24 @@
   gap: 0.5rem;
   flex-wrap: wrap;
   color: var(--ink-2);
-  font-size: 0.86rem;
+  font-size: var(--dash-text-3);
   margin-top: 0.4rem;
+}
+
+/*
+ * The second line of facts: same row, quieter, and separated by air rather
+ * than by dots. Six segments in one grey run read as a paragraph, and a dot
+ * between two of them says they belong to one sentence — these three are read
+ * one at a time, when something already looks wrong.
+ *
+ * Classed under `.dash-top` because `.dash-top p` is a class and a type, and
+ * would otherwise outrank a bare class here.
+ */
+.dash-top .dash-top-facts-quiet {
+  gap: 1rem;
+  margin-top: 0.25rem;
+  color: var(--muted);
+  font-size: var(--dash-text-3);
 }
 
 .dot-sep {
@@ -764,10 +853,10 @@
 }
 
 /* Low and unplugged, the one battery state worth colouring — the same rule the
-   phone paints, `readDeviceBattery().isLow`. `errorStrong` rather than `error`:
-   this is text, and the base colour fails AA at this size. */
+   phone paints, `readDeviceBattery().isLow`. This reached past `--critical` to
+   the text-safe token on its own; `--critical` is that token now. */
 .batt-low {
-  color: var(--kg-errorStrong);
+  color: var(--critical);
   font-weight: 600;
 }
 
@@ -798,7 +887,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  font-size: 0.78rem;
+  font-size: var(--dash-text-2);
   font-weight: 600;
   border-radius: 999px;
   padding: 0.18rem 0.6rem;
@@ -825,13 +914,13 @@
 
 .top-actions {
   display: flex;
-  gap: 0.6rem;
+  gap: 0.5rem;
 }
 
 .btn {
-  border-radius: 0.6rem;
+  border-radius: var(--dash-radius-1);
   padding: 0.5rem 1rem;
-  font-size: 0.88rem;
+  font-size: var(--dash-text-3);
   font-weight: 600;
   background: color-mix(in srgb, var(--ink) 8%, transparent);
   border: 1px solid var(--line);
@@ -861,7 +950,7 @@
 
 .btn-sm {
   padding: 0.3rem 0.65rem;
-  font-size: 0.78rem;
+  font-size: var(--dash-text-2);
 }
 
 .btn-block {
@@ -874,7 +963,7 @@
 .card {
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 1rem;
+  border-radius: var(--dash-radius-3);
   padding: 1.25rem;
   margin-bottom: 1.15rem;
 }
@@ -888,12 +977,12 @@
 }
 
 .card-head h2 {
-  font-size: 1rem;
+  font-size: var(--dash-text-4);
   letter-spacing: -0.01em;
 }
 
 .card-head p {
-  font-size: 0.8rem;
+  font-size: var(--dash-text-3);
   color: var(--muted);
   margin-top: 0.2rem;
 }
@@ -901,7 +990,7 @@
 .grid-2 {
   display: grid;
   grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
-  gap: 1.15rem;
+  gap: 1rem;
   align-items: start;
 }
 
@@ -925,7 +1014,7 @@
 .tiles {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0.9rem;
+  gap: 1rem;
   margin-bottom: 1.15rem;
 }
 
@@ -937,15 +1026,15 @@
 .tile {
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 0.9rem;
+  border-radius: var(--dash-radius-3);
   padding: 0.95rem 1.05rem;
 }
 
 .tile-label {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
-  font-size: 0.76rem;
+  gap: 0.35rem;
+  font-size: var(--dash-text-2);
   color: var(--muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -958,14 +1047,14 @@
 
 .tile-value {
   display: block;
-  font-size: 1.65rem;
+  font-size: var(--dash-text-6);
   font-weight: 700;
   letter-spacing: -0.02em;
   margin: 0.35rem 0 0.15rem;
 }
 
 .tile-meta {
-  font-size: 0.78rem;
+  font-size: var(--dash-text-2);
   color: var(--ink-2);
 }
 
@@ -978,7 +1067,7 @@
 
 .empty,
 .hint {
-  font-size: 0.83rem;
+  font-size: var(--dash-text-3);
   color: var(--muted);
   line-height: 1.55;
 }
@@ -997,7 +1086,7 @@
  */
 .premium-teaser {
   display: flex;
-  gap: 0.6rem;
+  gap: 0.5rem;
   align-items: flex-start;
   margin-top: 0.9rem;
   padding-top: 0.8rem;
@@ -1006,7 +1095,7 @@
 
 .premium-teaser strong {
   display: block;
-  font-size: 0.92rem;
+  font-size: var(--dash-text-4);
 }
 
 .premium-teaser .hint {
@@ -1015,7 +1104,7 @@
 
 .premium-teaser-mark {
   color: var(--warning);
-  font-size: 1rem;
+  font-size: var(--dash-text-4);
   line-height: 1.4;
 }
 
@@ -1037,7 +1126,7 @@
 
 .viz-axis {
   fill: var(--muted);
-  font-size: 11px;
+  font-size: var(--dash-text-1);
   font-variant-numeric: tabular-nums;
 }
 
@@ -1050,7 +1139,7 @@
 
 .viz-limit-label {
   fill: var(--ink-2);
-  font-size: 11px;
+  font-size: var(--dash-text-1);
 }
 
 .viz-bar {
@@ -1100,14 +1189,14 @@
   flex-wrap: wrap;
   gap: 0.4rem 1.1rem;
   margin-top: 0.85rem;
-  font-size: 0.78rem;
+  font-size: var(--dash-text-2);
   color: var(--ink-2);
 }
 
 .viz-legend span {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.35rem;
 }
 
 .dot {
@@ -1145,9 +1234,9 @@
   transform: translate(-50%, calc(-100% - 12px));
   background: var(--plane);
   border: 1px solid color-mix(in srgb, var(--ink) 16%, transparent);
-  border-radius: 0.6rem;
+  border-radius: var(--dash-radius-1);
   padding: 0.55rem 0.7rem;
-  font-size: 0.78rem;
+  font-size: var(--dash-text-2);
   line-height: 1.5;
   pointer-events: none;
   white-space: nowrap;
@@ -1163,7 +1252,7 @@
 .viz-tip span {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.35rem;
   color: var(--ink-2);
 }
 
@@ -1203,14 +1292,14 @@
 }
 
 .ring-center strong {
-  font-size: 1.5rem;
+  font-size: var(--dash-text-6);
   font-weight: 700;
   letter-spacing: -0.02em;
 }
 
 .ring-center span {
   display: block;
-  font-size: 0.75rem;
+  font-size: var(--dash-text-2);
   color: var(--muted);
   margin-top: 0.15rem;
 }
@@ -1218,7 +1307,7 @@
 .today {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
   flex-wrap: wrap;
 }
 
@@ -1227,7 +1316,7 @@
   min-width: 170px;
   list-style: none;
   display: grid;
-  gap: 0.55rem;
+  gap: 0.5rem;
 }
 
 .today-stats li {
@@ -1237,7 +1326,7 @@
   gap: 1rem;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid var(--line);
-  font-size: 0.86rem;
+  font-size: var(--dash-text-3);
 }
 
 .today-stats li:last-child {
@@ -1250,7 +1339,7 @@
 }
 
 .today-stats strong {
-  font-size: 1rem;
+  font-size: var(--dash-text-4);
   font-variant-numeric: tabular-nums;
 }
 
@@ -1260,7 +1349,7 @@
 .catbars {
   list-style: none;
   display: grid;
-  gap: 0.85rem;
+  gap: 0.75rem;
 }
 
 .hbar-head {
@@ -1269,13 +1358,13 @@
   align-items: baseline;
   gap: 0.75rem;
   margin-bottom: 0.35rem;
-  font-size: 0.85rem;
+  font-size: var(--dash-text-3);
 }
 
 .hbar-label {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
+  gap: 0.5rem;
 }
 
 .hbar-value {
@@ -1341,7 +1430,7 @@
   position: relative;
   height: 1.1rem;
   margin-left: 3rem;
-  font-size: 0.7rem;
+  font-size: var(--dash-text-1);
   color: var(--muted);
 }
 
@@ -1360,7 +1449,7 @@
 
 .sched-day {
   width: 2.5rem;
-  font-size: 0.75rem;
+  font-size: var(--dash-text-2);
   color: var(--muted);
   flex-shrink: 0;
 }
@@ -1419,7 +1508,7 @@
   position: absolute;
   right: 0;
   top: -0.2rem;
-  font-size: 0.76rem;
+  font-size: var(--dash-text-2);
   color: var(--ink-2);
 }
 
@@ -1433,7 +1522,7 @@
 .tl-hours {
   position: relative;
   height: 1.1rem;
-  font-size: 0.7rem;
+  font-size: var(--dash-text-1);
   color: var(--muted);
 }
 
@@ -1516,7 +1605,7 @@
 .tl-empty {
   margin: 0;
   color: var(--muted);
-  font-size: 0.85rem;
+  font-size: var(--dash-text-3);
 }
 
 /* ---------- Lists ---------- */
@@ -1529,7 +1618,7 @@
 .ctrl-rows {
   list-style: none;
   display: grid;
-  gap: 0.1rem;
+  gap: 0.25rem;
 }
 
 .attn li,
@@ -1553,10 +1642,10 @@
   flex-basis: 100%;
   margin-top: 0.5rem;
   padding: 0.6rem 0.7rem;
-  border-radius: 0.55rem;
+  border-radius: var(--dash-radius-1);
   background: color-mix(in srgb, var(--ink) 6%, transparent);
   color: var(--ink-2);
-  font-size: 0.82rem;
+  font-size: var(--dash-text-3);
   line-height: 1.5;
 }
 
@@ -1584,10 +1673,10 @@ ol.attn-fix li + li {
 .ev-state {
   width: 1.9rem;
   height: 1.9rem;
-  border-radius: 0.55rem;
+  border-radius: var(--dash-radius-1);
   display: grid;
   place-items: center;
-  font-size: 0.85rem;
+  font-size: var(--dash-text-3);
   flex-shrink: 0;
   background: color-mix(in srgb, var(--ink) 7%, transparent);
 }
@@ -1597,7 +1686,7 @@ ol.attn-fix li + li {
 .reward-stars {
   display: inline-flex;
   align-items: center;
-  gap: 0.05rem;
+  gap: 0.25rem;
   width: 2.6rem;
   flex-shrink: 0;
   color: var(--brand);
@@ -1616,7 +1705,7 @@ ol.attn-fix li + li {
 .ev-body strong,
 .ctrl-body strong {
   display: block;
-  font-size: 0.88rem;
+  font-size: var(--dash-text-3);
   font-weight: 600;
 }
 
@@ -1626,7 +1715,7 @@ ol.attn-fix li + li {
 .ctrl-body em {
   display: block;
   font-style: normal;
-  font-size: 0.78rem;
+  font-size: var(--dash-text-2);
   color: var(--muted);
   margin-top: 0.12rem;
 }
@@ -1644,7 +1733,7 @@ ol.attn-fix li + li {
 .attn time,
 .timeline time,
 .events time {
-  font-size: 0.75rem;
+  font-size: var(--dash-text-2);
   color: var(--muted);
   flex-shrink: 0;
   font-variant-numeric: tabular-nums;
@@ -1656,7 +1745,7 @@ ol.attn-fix li + li {
    its own list. The gap is what keeps them from reading as one long feed. */
 .msg-alerts {
   display: grid;
-  gap: 0.9rem;
+  gap: 1rem;
 }
 
 /* The promise, repeated where the advice is read: only the flagged word was
@@ -1666,7 +1755,7 @@ ol.attn-fix li + li {
   display: block;
   margin-top: 0.4rem;
   color: var(--muted);
-  font-size: 0.76rem;
+  font-size: var(--dash-text-2);
 }
 
 .attn li.tone-warning .attn-icon {
@@ -1712,10 +1801,10 @@ ol.attn-fix li + li {
 .places li {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.5rem;
   padding: 0.5rem 0;
   border-bottom: 1px solid var(--line);
-  font-size: 0.87rem;
+  font-size: var(--dash-text-3);
 }
 
 .perms li:last-child,
@@ -1727,7 +1816,7 @@ ol.attn-fix li + li {
 .places em {
   margin-left: auto;
   font-style: normal;
-  font-size: 0.78rem;
+  font-size: var(--dash-text-2);
   color: var(--muted);
 }
 
@@ -1737,7 +1826,7 @@ ol.attn-fix li + li {
   border-radius: 999px;
   display: grid;
   place-items: center;
-  font-size: 0.72rem;
+  font-size: var(--dash-text-2);
   font-weight: 700;
   flex-shrink: 0;
 }
@@ -1759,12 +1848,12 @@ ol.attn-fix li + li {
 .tbl {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.85rem;
+  font-size: var(--dash-text-3);
 }
 
 .tbl th {
   text-align: left;
-  font-size: 0.72rem;
+  font-size: var(--dash-text-2);
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--muted);
@@ -1835,7 +1924,7 @@ ol.attn-fix li + li {
 .tag {
   display: inline-block;
   margin-left: 0.45rem;
-  font-size: 0.68rem;
+  font-size: var(--dash-text-1);
   color: var(--critical);
   background: color-mix(in srgb, var(--critical) 14%, transparent);
   border-radius: 999px;
@@ -1847,7 +1936,7 @@ ol.attn-fix li + li {
 .map {
   position: relative;
   height: 210px;
-  border-radius: 0.8rem;
+  border-radius: var(--dash-radius-2);
   overflow: hidden;
   background: linear-gradient(
     160deg,
@@ -1873,8 +1962,8 @@ ol.attn-fix li + li {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.3rem;
-  font-size: 0.72rem;
+  gap: 0.25rem;
+  font-size: var(--dash-text-2);
   color: var(--ink-2);
   transform: translate(-50%, -50%);
 }
@@ -1903,19 +1992,19 @@ ol.attn-fix li + li {
   bottom: 0.8rem;
   background: color-mix(in srgb, var(--plane) 88%, transparent);
   border: 1px solid var(--line);
-  border-radius: 0.6rem;
+  border-radius: var(--dash-radius-1);
   padding: 0.5rem 0.75rem;
   backdrop-filter: blur(4px);
 }
 
 .map-badge strong {
   display: block;
-  font-size: 0.85rem;
+  font-size: var(--dash-text-3);
 }
 
 .map-badge em {
   font-style: normal;
-  font-size: 0.74rem;
+  font-size: var(--dash-text-2);
   color: var(--muted);
 }
 
@@ -1925,7 +2014,7 @@ ol.attn-fix li + li {
   display: inline-flex;
   background: color-mix(in srgb, var(--ink) 6%, transparent);
   border: 1px solid var(--line);
-  border-radius: 0.55rem;
+  border-radius: var(--dash-radius-1);
   padding: 2px;
   gap: 2px;
   flex-shrink: 0;
@@ -1934,7 +2023,7 @@ ol.attn-fix li + li {
 .seg button {
   padding: 0.25rem 0.6rem;
   border-radius: 0.4rem;
-  font-size: 0.78rem;
+  font-size: var(--dash-text-2);
   color: var(--muted);
   font-variant-numeric: tabular-nums;
 }
@@ -1978,12 +2067,12 @@ ol.attn-fix li + li {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.45rem;
+  gap: 0.5rem;
   margin-top: 0.9rem;
 }
 
 .chips li {
-  font-size: 0.79rem;
+  font-size: var(--dash-text-2);
   border-radius: 999px;
   padding: 0.28rem 0.7rem;
   background: color-mix(in srgb, var(--ink) 7%, transparent);
@@ -2011,7 +2100,7 @@ ol.attn-fix li + li {
   padding: 0.28rem 0.7rem;
   display: flex;
   align-items: center;
-  gap: 0.45rem;
+  gap: 0.5rem;
   width: calc(100% + 1.4rem);
   border: 0;
   border-radius: 999px;
@@ -2038,7 +2127,7 @@ ol.attn-fix li + li {
 
 .chip-group-title {
   margin: 0 0 0.35rem;
-  font-size: 0.7rem;
+  font-size: var(--dash-text-1);
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -2047,7 +2136,7 @@ ol.attn-fix li + li {
 
 .limit-edit strong {
   display: block;
-  font-size: 2rem;
+  font-size: var(--dash-text-7);
   font-weight: 700;
   letter-spacing: -0.02em;
   margin-bottom: 0.8rem;
@@ -2061,15 +2150,15 @@ ol.attn-fix li + li {
 .limit-scale {
   display: flex;
   justify-content: space-between;
-  font-size: 0.74rem;
+  font-size: var(--dash-text-2);
   color: var(--muted);
   margin-top: 0.25rem;
 }
 
 .write-note {
-  font-size: 0.82rem;
+  font-size: var(--dash-text-3);
   line-height: 1.55;
-  border-radius: 0.7rem;
+  border-radius: var(--dash-radius-2);
   padding: 0.65rem 0.9rem;
   margin-bottom: 1.15rem;
 }
@@ -2103,9 +2192,9 @@ ol.attn-fix li + li {
   /* Over the sticky tab bar and the chart tooltip, both 5. */
   z-index: 40;
   max-width: min(26rem, calc(100vw - 2.5rem));
-  font-size: 0.82rem;
+  font-size: var(--dash-text-3);
   line-height: 1.55;
-  border-radius: 0.7rem;
+  border-radius: var(--dash-radius-2);
   padding: 0.7rem 0.95rem;
   box-shadow: 0 14px 34px color-mix(in srgb, var(--kg-shadow) 55%, transparent);
   animation: toast-in var(--kg-motion-fast) ease-out;
@@ -2133,7 +2222,7 @@ ol.attn-fix li + li {
  * the real ones and nothing here re-declares them.
  */
 .skel {
-  border-radius: 0.7rem;
+  border-radius: var(--dash-radius-2);
   background: color-mix(in srgb, var(--ink) 7%, transparent);
   animation: skel-pulse 1.4s ease-in-out infinite;
 }
@@ -2221,14 +2310,14 @@ ol.attn-fix li + li {
 
 .sheet {
   display: grid;
-  gap: 0.7rem;
+  gap: 0.75rem;
   width: min(24rem, 100%);
   /* The QR half makes this the tallest thing on a short laptop screen, and a
      dialog that cannot reach its own close button is a trap. */
   max-height: 100%;
   overflow-y: auto;
   padding: 1.3rem;
-  border-radius: 1rem;
+  border-radius: var(--dash-radius-3);
   border: 1px solid var(--line);
   background: var(--plane);
   box-shadow: var(--kg-shadow-lg, 0 18px 48px rgb(0 0 0 / 35%));
@@ -2250,12 +2339,12 @@ ol.attn-fix li + li {
 
 .sheet-title {
   margin: 0;
-  font-size: 1.05rem;
+  font-size: var(--dash-text-4);
 }
 
 .sheet-body {
   margin: 0;
-  font-size: 0.82rem;
+  font-size: var(--dash-text-3);
   line-height: 1.55;
   color: var(--ink-2);
 }
@@ -2270,7 +2359,7 @@ ol.attn-fix li + li {
 
 .sheet-label {
   display: block;
-  font-size: 0.78rem;
+  font-size: var(--dash-text-2);
   color: var(--ink-2);
   margin-bottom: 0.3rem;
 }
@@ -2279,19 +2368,19 @@ ol.attn-fix li + li {
   width: 100%;
   margin-bottom: 0.6rem;
   padding: 0.6rem 0.7rem;
-  border-radius: 0.6rem;
+  border-radius: var(--dash-radius-1);
   border: 1px solid var(--line);
   background: var(--bg);
   color: var(--ink);
   /* Six digits read as six digits, not as a word. */
-  font-size: 1.15rem;
+  font-size: var(--dash-text-5);
   letter-spacing: 0.35em;
   text-align: center;
 }
 
 .sheet-error {
   margin: 0;
-  font-size: 0.8rem;
+  font-size: var(--dash-text-3);
   color: var(--critical);
 }
 
@@ -2299,8 +2388,8 @@ ol.attn-fix li + li {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  gap: 0.6rem;
-  font-size: 0.76rem;
+  gap: 0.5rem;
+  font-size: var(--dash-text-2);
   color: var(--muted);
 }
 
@@ -2313,7 +2402,7 @@ ol.attn-fix li + li {
 
 .sheet-note {
   margin: 0;
-  font-size: 0.76rem;
+  font-size: var(--dash-text-2);
   line-height: 1.5;
   color: var(--muted);
 }
@@ -2322,7 +2411,7 @@ ol.attn-fix li + li {
 
 .sched-editor {
   display: grid;
-  gap: 0.7rem;
+  gap: 0.75rem;
   margin-top: 0.9rem;
   padding-top: 0.9rem;
   border-top: 1px solid var(--line);
@@ -2330,10 +2419,10 @@ ol.attn-fix li + li {
 
 .sched-edit-row {
   display: grid;
-  gap: 0.45rem;
+  gap: 0.5rem;
   padding: 0.6rem 0.7rem;
   border: 1px solid var(--line);
-  border-radius: 0.7rem;
+  border-radius: var(--dash-radius-2);
 }
 
 /* Advisory, so it is tinted rather than marked as an error — both windows do
@@ -2346,23 +2435,23 @@ ol.attn-fix li + li {
 .sched-times {
   display: flex;
   align-items: flex-end;
-  gap: 0.6rem;
+  gap: 0.5rem;
 }
 
 .sched-times label {
   display: grid;
-  gap: 0.2rem;
-  font-size: 0.72rem;
+  gap: 0.25rem;
+  font-size: var(--dash-text-2);
   color: var(--ink-2);
 }
 
 .sched-times input {
   padding: 0.35rem 0.45rem;
-  border-radius: 0.5rem;
+  border-radius: var(--dash-radius-1);
   border: 1px solid var(--line);
   background: var(--bg);
   color: var(--ink);
-  font-size: 0.86rem;
+  font-size: var(--dash-text-3);
 }
 
 .sched-remove {
@@ -2371,7 +2460,7 @@ ol.attn-fix li + li {
   place-items: center;
   width: 2rem;
   height: 2rem;
-  border-radius: 0.5rem;
+  border-radius: var(--dash-radius-1);
   border: 1px solid var(--line);
   background: transparent;
   color: var(--ink-2);
@@ -2388,7 +2477,7 @@ ol.attn-fix li + li {
 
 .sched-error {
   margin: 0;
-  font-size: 0.78rem;
+  font-size: var(--dash-text-2);
   color: var(--critical);
 }
 
@@ -2399,7 +2488,7 @@ ol.attn-fix li + li {
    do not line up down the column cannot be compared, which is the whole job. */
 .sched-week {
   display: grid;
-  gap: 0.2rem;
+  gap: 0.25rem;
   margin-top: 1rem;
   padding-top: 0.8rem;
   border-top: 1px solid var(--line);
@@ -2408,7 +2497,7 @@ ol.attn-fix li + li {
 .sched-week-title,
 .sched-quick-title {
   margin: 0 0 0.2rem;
-  font-size: 0.78rem;
+  font-size: var(--dash-text-2);
   color: var(--ink-2);
 }
 
@@ -2416,11 +2505,11 @@ ol.attn-fix li + li {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 0.4rem;
+  gap: 0.35rem;
 }
 
 .sched-days-label {
-  font-size: 0.72rem;
+  font-size: var(--dash-text-2);
   color: var(--ink-2);
 }
 
@@ -2433,18 +2522,18 @@ ol.attn-fix li + li {
   display: grid;
   grid-template-columns: 2.2rem 1fr;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.35rem;
 }
 
 .sched-week-hours > span:last-child {
   display: flex;
   justify-content: space-between;
-  font-size: 0.66rem;
+  font-size: var(--dash-text-1);
   color: var(--ink-2);
 }
 
 .sched-week-day {
-  font-size: 0.7rem;
+  font-size: var(--dash-text-1);
   color: var(--ink-2);
 }
 
@@ -2473,27 +2562,27 @@ ol.attn-fix li + li {
 
 .limits-editor {
   display: grid;
-  gap: 0.6rem;
+  gap: 0.5rem;
   margin-top: 0.6rem;
 }
 
 .limit-row {
   display: grid;
-  gap: 0.4rem;
+  gap: 0.35rem;
   padding: 0.55rem 0.7rem;
   border: 1px solid var(--line);
-  border-radius: 0.7rem;
+  border-radius: var(--dash-radius-2);
 }
 
 .limit-name {
-  font-size: 0.85rem;
+  font-size: var(--dash-text-3);
   font-weight: 600;
 }
 
 .limit-controls {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.35rem;
 }
 
 .limit-controls > button {
@@ -2516,7 +2605,7 @@ ol.attn-fix li + li {
 .limit-value {
   min-width: 4.5rem;
   text-align: center;
-  font-size: 0.85rem;
+  font-size: var(--dash-text-3);
   font-variant-numeric: tabular-nums;
 }
 
@@ -2545,7 +2634,7 @@ ol.attn-fix li + li {
 
 .reward-form {
   display: grid;
-  gap: 0.6rem;
+  gap: 0.5rem;
   margin-top: 0.8rem;
   padding-top: 0.8rem;
   border-top: 1px solid var(--line);
@@ -2554,7 +2643,7 @@ ol.attn-fix li + li {
 .reward-input {
   width: 100%;
   padding: 0.5rem 0.6rem;
-  border-radius: 0.55rem;
+  border-radius: var(--dash-radius-1);
   border: 1px solid var(--line);
   background: var(--bg);
   color: var(--ink);
@@ -2564,8 +2653,8 @@ ol.attn-fix li + li {
 .reward-repeat {
   display: flex;
   align-items: center;
-  gap: 0.45rem;
-  font-size: 0.8rem;
+  gap: 0.5rem;
+  font-size: var(--dash-text-3);
   color: var(--ink-2);
 }
 
@@ -2573,7 +2662,7 @@ ol.attn-fix li + li {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 0.7rem;
+  gap: 0.75rem;
 }
 
 .limit-add-list li > button {
@@ -2614,7 +2703,7 @@ ol.attn-fix li + li {
 }
 
 .side-empty {
-  font-size: 0.8rem;
+  font-size: var(--dash-text-3);
   color: var(--muted);
   padding: 0 0.5rem;
   line-height: 1.5;
@@ -2627,7 +2716,7 @@ ol.attn-fix li + li {
  */
 .side-account {
   display: grid;
-  gap: 0.3rem;
+  gap: 0.25rem;
 }
 
 /* Language and the way out — the two controls, side by side. */
@@ -2639,7 +2728,7 @@ ol.attn-fix li + li {
 }
 
 .side-account-email {
-  font-size: 0.74rem;
+  font-size: var(--dash-text-2);
   color: var(--muted);
   overflow: hidden;
   text-overflow: ellipsis;
@@ -2650,6 +2739,13 @@ ol.attn-fix li + li {
 .side-account .login-link {
   white-space: nowrap;
   flex-shrink: 0;
+}
+
+/* The palette switch. The row's own label names it, so the switch carries the
+   name only for a screen reader. */
+.side-account-theme {
+  font-size: var(--dash-text-2);
+  color: var(--ink-2);
 }
 
 .perm-state.tone-warning {
@@ -2702,7 +2798,11 @@ ol.attn-fix li + li {
   color: var(--ink);
 }
 
-.login button {
+/* `:where()` for the same reason `.dash` uses it: written as a class and a
+   type this outranked `.btn`, `.btn-primary` and `.login-alt-toggle`, so the
+   sign-in page — the first screen a parent ever sees — drew its buttons as
+   bare text until the pointer was over them. */
+.login :where(button) {
   font: inherit;
   color: inherit;
   border: 0;
@@ -2715,7 +2815,7 @@ ol.attn-fix li + li {
   max-width: 420px;
   background: color-mix(in srgb, var(--surface) 82%, transparent);
   border: 1px solid var(--line);
-  border-radius: 1.1rem;
+  border-radius: var(--dash-radius-3);
   padding: 2rem;
   backdrop-filter: blur(10px);
   box-shadow: 0 30px 70px color-mix(in srgb, var(--kg-shadow) 50%, transparent);
@@ -2729,7 +2829,7 @@ ol.attn-fix li + li {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 1.2rem;
+  font-size: var(--dash-text-5);
   font-weight: 700;
   color: color-mix(in srgb, var(--brand) 70%, var(--ink));
   text-decoration: none;
@@ -2737,13 +2837,13 @@ ol.attn-fix li + li {
 }
 
 .login-card h1 {
-  font-size: 1.45rem;
+  font-size: var(--dash-text-6);
   letter-spacing: -0.02em;
   margin-bottom: 0.5rem;
 }
 
 .login-sub {
-  font-size: 0.87rem;
+  font-size: var(--dash-text-3);
   color: var(--ink-2);
   line-height: 1.6;
   margin-bottom: 1.4rem;
@@ -2752,9 +2852,9 @@ ol.attn-fix li + li {
 .login-warn,
 .login-error,
 .login-info {
-  font-size: 0.82rem;
+  font-size: var(--dash-text-3);
   line-height: 1.55;
-  border-radius: 0.65rem;
+  border-radius: var(--dash-radius-1);
   padding: 0.7rem 0.85rem;
   margin-bottom: 1rem;
 }
@@ -2793,7 +2893,7 @@ ol.attn-fix li + li {
 }
 
 .qr-why {
-  font-size: 0.78rem;
+  font-size: var(--dash-text-2);
   color: var(--muted);
   line-height: 1.55;
   margin-top: 0.7rem;
@@ -2803,7 +2903,7 @@ ol.attn-fix li + li {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.7rem;
+  gap: 0.75rem;
   text-align: center;
 }
 
@@ -2811,7 +2911,7 @@ ol.attn-fix li + li {
   width: 190px;
   height: 190px;
   background: var(--ink);
-  border-radius: 0.8rem;
+  border-radius: var(--dash-radius-2);
   padding: 0.55rem;
   display: grid;
   place-items: center;
@@ -2826,12 +2926,12 @@ ol.attn-fix li + li {
 .qr-placeholder {
   background: color-mix(in srgb, var(--ink) 7%, transparent);
   color: var(--muted);
-  font-size: 0.8rem;
+  font-size: var(--dash-text-3);
 }
 
 .qr-code-text span {
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 1.15rem;
+  font-size: var(--dash-text-5);
   font-weight: 700;
   letter-spacing: 0.22em;
   padding-left: 0.22em;
@@ -2841,13 +2941,13 @@ ol.attn-fix li + li {
   text-align: left;
   margin: 0;
   padding-left: 1.15rem;
-  font-size: 0.82rem;
+  font-size: var(--dash-text-3);
   color: var(--ink-2);
   line-height: 1.7;
 }
 
 .qr-meta {
-  font-size: 0.78rem;
+  font-size: var(--dash-text-2);
   color: var(--muted);
   font-variant-numeric: tabular-nums;
 }
@@ -2857,7 +2957,7 @@ ol.attn-fix li + li {
 .qr-hero {
   background: color-mix(in srgb, var(--ink) 5%, transparent);
   border: 1px solid var(--line);
-  border-radius: 0.95rem;
+  border-radius: var(--dash-radius-3);
   padding: 1.3rem 1.1rem 1.15rem;
   margin-bottom: 1.1rem;
 }
@@ -2879,11 +2979,11 @@ ol.attn-fix li + li {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.4rem;
+  gap: 0.35rem;
   width: 100%;
   padding: 0.6rem 0.5rem;
-  border-radius: 0.6rem;
-  font-size: 0.82rem;
+  border-radius: var(--dash-radius-1);
+  font-size: var(--dash-text-3);
   color: var(--ink-2);
   transition:
     color var(--kg-motion-fast) ease,
@@ -2920,18 +3020,18 @@ ol.attn-fix li + li {
 
 .login-providers {
   display: grid;
-  gap: 0.6rem;
+  gap: 0.5rem;
 }
 
 .login .oauth-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.65rem;
+  gap: 0.75rem;
   width: 100%;
   padding: 0.7rem 1rem;
-  border-radius: 0.7rem;
-  font-size: 0.92rem;
+  border-radius: var(--dash-radius-2);
+  font-size: var(--dash-text-4);
   font-weight: 600;
   background: color-mix(in srgb, var(--ink) 94%, transparent);
   color: var(--plane);
@@ -2962,7 +3062,7 @@ ol.attn-fix li + li {
   gap: 0.75rem;
   margin: 1.3rem 0;
   color: var(--muted);
-  font-size: 0.78rem;
+  font-size: var(--dash-text-2);
 }
 
 .login-or::before,
@@ -2975,23 +3075,23 @@ ol.attn-fix li + li {
 
 .login-form {
   display: grid;
-  gap: 0.85rem;
+  gap: 0.75rem;
 }
 
 .login-form label {
   display: grid;
   gap: 0.35rem;
-  font-size: 0.8rem;
+  font-size: var(--dash-text-3);
   color: var(--ink-2);
 }
 
 .login-form input {
   font: inherit;
-  font-size: 0.92rem;
+  font-size: var(--dash-text-4);
   color: var(--ink);
   background: color-mix(in srgb, var(--ink) 6%, transparent);
   border: 1px solid var(--line);
-  border-radius: 0.6rem;
+  border-radius: var(--dash-radius-1);
   padding: 0.6rem 0.8rem;
   width: 100%;
 }
@@ -3002,9 +3102,9 @@ ol.attn-fix li + li {
 }
 
 .login .btn {
-  border-radius: 0.6rem;
+  border-radius: var(--dash-radius-1);
   padding: 0.6rem 1rem;
-  font-size: 0.92rem;
+  font-size: var(--dash-text-4);
   font-weight: 600;
   background: color-mix(in srgb, var(--ink) 8%, transparent);
   border: 1px solid var(--line);
@@ -3029,7 +3129,7 @@ ol.attn-fix li + li {
 .side-account .login-link,
 .plan-card-row .login-link,
 .sheet .login-link {
-  font-size: 0.8rem;
+  font-size: var(--dash-text-3);
   color: var(--ink-2);
   text-decoration: underline;
   text-underline-offset: 3px;
@@ -3049,8 +3149,8 @@ ol.attn-fix li + li {
 .plan-card-row .login-link {
   display: inline-flex;
   align-items: center;
-  gap: 0.2rem;
-  font-size: 0.74rem;
+  gap: 0.25rem;
+  font-size: var(--dash-text-2);
   text-align: start;
   text-decoration: none;
   color: var(--muted);
@@ -3067,7 +3167,7 @@ ol.attn-fix li + li {
 }
 
 .login-foot {
-  font-size: 0.78rem;
+  font-size: var(--dash-text-2);
   color: var(--muted);
   line-height: 1.6;
   margin-top: 1.4rem;
@@ -3104,7 +3204,7 @@ ol.attn-fix li + li {
     flex-direction: column;
     overflow: visible;
     padding: 1rem 0.9rem;
-    gap: 0.85rem;
+    gap: 0.75rem;
   }
 
   /*
@@ -3175,6 +3275,54 @@ ol.attn-fix li + li {
   }
 }
 
+/*
+ * A phone held in one hand. The band above it is a tablet's: card padding that
+ * frames a desktop card takes a fifth of a 390px row, the header's name and
+ * its two buttons want the same line, and a stat tile's own padding leaves the
+ * number less room than the label above it.
+ *
+ * The tiles stay two across. One column reads better and costs four screens of
+ * scrolling before the first card — the four numbers are a glance, and a
+ * glance that scrolls is not one.
+ */
+@media (max-width: 520px) {
+  .dash-main {
+    padding: 1rem 0.8rem 2rem;
+  }
+
+  .dash-tabs {
+    margin-inline: -0.8rem;
+    padding-inline: 0.8rem;
+  }
+
+  .card {
+    padding: 1rem;
+  }
+
+  .tile {
+    padding: 0.8rem 0.85rem;
+  }
+
+  .dash-top {
+    gap: 0.75rem;
+  }
+
+  .dash-top h1 {
+    font-size: var(--dash-text-5);
+  }
+
+  /* The pair takes the row rather than crowding the name: at this width
+     "Check in" and "Lock device" beside a device called "Mai's iPad" left the
+     name two characters. */
+  .top-actions {
+    width: 100%;
+  }
+
+  .top-actions .btn {
+    flex: 1 1 auto;
+  }
+}
+
 /* ---------- Language picker: sidebar and sign-in placements ---------- */
 
 .lang-side {
@@ -3184,14 +3332,14 @@ ol.attn-fix li + li {
 .lang-side .lang-btn {
   width: 100%;
   justify-content: flex-start;
-  font-size: 0.8rem;
+  font-size: var(--dash-text-3);
 }
 
 /* In the account row it shares the line with Sign out, so it takes the width
    its label needs and no more. */
 .side-account-row .lang-side .lang-btn {
   width: auto;
-  font-size: 0.76rem;
+  font-size: var(--dash-text-2);
 }
 
 /* The sidebar footer sits at the bottom of a full-height column, so the menu
@@ -3245,7 +3393,7 @@ ol.attn-fix li + li {
 .report-actions .btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.35rem;
 }
 
 /* ---------- The sheet ---------- */
@@ -3255,7 +3403,7 @@ ol.attn-fix li + li {
   overflow: hidden;
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 1.15rem;
+  border-radius: var(--dash-radius-3);
   padding: 1.6rem 1.75rem 1.5rem;
   margin-bottom: 1.15rem;
 }
@@ -3281,9 +3429,9 @@ ol.attn-fix li + li {
 .report-brand {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
+  gap: 0.5rem;
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: var(--dash-text-4);
   letter-spacing: -0.01em;
 }
 
@@ -3294,7 +3442,7 @@ ol.attn-fix li + li {
 }
 
 .report-week {
-  font-size: 0.78rem;
+  font-size: var(--dash-text-2);
   font-weight: 600;
   color: var(--ink-2);
   background: color-mix(in srgb, var(--brand) 14%, transparent);
@@ -3304,7 +3452,7 @@ ol.attn-fix li + li {
 }
 
 .report-title {
-  font-size: 1.65rem;
+  font-size: var(--dash-text-6);
   font-weight: 700;
   letter-spacing: -0.02em;
 }
@@ -3314,7 +3462,7 @@ ol.attn-fix li + li {
   flex-wrap: wrap;
   align-items: center;
   gap: 0.35rem;
-  font-size: 0.83rem;
+  font-size: var(--dash-text-3);
   color: var(--muted);
   margin-top: 0.25rem;
 }
@@ -3324,18 +3472,18 @@ ol.attn-fix li + li {
 .report-hero {
   display: grid;
   grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
-  gap: 1.5rem;
+  gap: 1rem;
   align-items: center;
   background: var(--surface-2);
   border: 1px solid var(--line);
-  border-radius: 1rem;
+  border-radius: var(--dash-radius-3);
   padding: 1.25rem 1.4rem;
   margin: 1.2rem 0 1.15rem;
 }
 
 .report-hero-label {
   display: block;
-  font-size: 0.76rem;
+  font-size: var(--dash-text-2);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--muted);
@@ -3354,7 +3502,7 @@ ol.attn-fix li + li {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  font-size: 0.83rem;
+  font-size: var(--dash-text-3);
   font-weight: 600;
   color: var(--muted);
 }
@@ -3371,7 +3519,7 @@ ol.attn-fix li + li {
 
 .report-compare {
   display: grid;
-  gap: 0.65rem;
+  gap: 0.75rem;
 }
 
 /*
@@ -3390,7 +3538,7 @@ ol.attn-fix li + li {
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: baseline;
   gap: 0.25rem 0.7rem;
-  font-size: 0.8rem;
+  font-size: var(--dash-text-3);
 }
 
 .report-bar-label {
@@ -3435,26 +3583,26 @@ ol.attn-fix li + li {
      tile count is the next figure added silently overflowing the row
      instead of wrapping. */
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 0.9rem;
+  gap: 1rem;
 }
 
 .report-stat {
   background: var(--surface-2);
   border: 1px solid var(--line);
-  border-radius: 0.9rem;
+  border-radius: var(--dash-radius-3);
   padding: 0.95rem 1.05rem;
 }
 
 .report-stat strong {
   display: block;
-  font-size: 1.5rem;
+  font-size: var(--dash-text-6);
   font-weight: 700;
   letter-spacing: -0.02em;
 }
 
 .report-stat span {
   display: block;
-  font-size: 0.78rem;
+  font-size: var(--dash-text-2);
   color: var(--muted);
   margin-top: 0.15rem;
 }
@@ -3469,7 +3617,7 @@ ol.attn-fix li + li {
 
 .report-quote h3,
 .report-findings h3 {
-  font-size: 0.76rem;
+  font-size: var(--dash-text-2);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--muted);
@@ -3484,7 +3632,7 @@ ol.attn-fix li + li {
 }
 
 .report-quote p {
-  font-size: 1rem;
+  font-size: var(--dash-text-4);
   line-height: 1.6;
 }
 
@@ -3496,7 +3644,7 @@ ol.attn-fix li + li {
 
 .report-findings ul {
   display: grid;
-  gap: 0.6rem;
+  gap: 0.5rem;
   list-style: none;
 }
 
@@ -3508,7 +3656,7 @@ ol.attn-fix li + li {
   background: var(--surface-2);
   border: 1px solid var(--line);
   border-left: 3px solid var(--muted);
-  border-radius: 0.75rem;
+  border-radius: var(--dash-radius-2);
   padding: 0.75rem 0.95rem;
 }
 
@@ -3520,7 +3668,7 @@ ol.attn-fix li + li {
 }
 
 .report-finding-badge {
-  font-size: 0.68rem;
+  font-size: var(--dash-text-1);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -3536,7 +3684,7 @@ ol.attn-fix li + li {
 }
 
 .report-findings p {
-  font-size: 0.9rem;
+  font-size: var(--dash-text-4);
   line-height: 1.55;
 }
 
@@ -3552,7 +3700,7 @@ ol.attn-fix li + li {
 }
 
 .report-children h3 {
-  font-size: 0.76rem;
+  font-size: var(--dash-text-2);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--muted);
@@ -3560,7 +3708,7 @@ ol.attn-fix li + li {
 }
 
 .report-children .hint {
-  font-size: 0.75rem;
+  font-size: var(--dash-text-2);
   color: var(--muted);
   margin-bottom: 0.7rem;
 }
@@ -3573,14 +3721,14 @@ ol.attn-fix li + li {
 .report-table-wrap {
   overflow-x: auto;
   border: 1px solid var(--line);
-  border-radius: 0.9rem;
+  border-radius: var(--dash-radius-3);
   background: var(--surface-2);
 }
 
 .report-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.84rem;
+  font-size: var(--dash-text-3);
   /* Figures line up down the column; names do not, and get `start` below. */
   font-variant-numeric: tabular-nums;
 }
@@ -3595,7 +3743,7 @@ ol.attn-fix li + li {
 }
 
 .report-table thead th {
-  font-size: 0.68rem;
+  font-size: var(--dash-text-1);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -3626,7 +3774,7 @@ ol.attn-fix li + li {
 
 .report-table-flag {
   display: block;
-  font-size: 0.62rem;
+  font-size: var(--dash-text-1);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -3635,7 +3783,7 @@ ol.attn-fix li + li {
 }
 
 .report-fine {
-  font-size: 0.72rem;
+  font-size: var(--dash-text-2);
   line-height: 1.5;
   color: var(--muted);
   border-top: 1px solid var(--line);
@@ -3656,7 +3804,7 @@ ol.attn-fix li + li {
 }
 
 .report-empty h2 {
-  font-size: 1.1rem;
+  font-size: var(--dash-text-5);
 }
 
 .report-empty .hint {
@@ -3665,7 +3813,7 @@ ol.attn-fix li + li {
 }
 
 .report-error {
-  font-size: 0.83rem;
+  font-size: var(--dash-text-3);
   color: var(--critical);
   margin-bottom: 0.8rem;
 }
@@ -3678,21 +3826,21 @@ ol.attn-fix li + li {
 
 .report-chip {
   display: grid;
-  gap: 0.15rem;
+  gap: 0.25rem;
   text-align: left;
   background: var(--surface-2);
   border: 1px solid var(--line);
-  border-radius: 0.7rem;
+  border-radius: var(--dash-radius-2);
   padding: 0.55rem 0.8rem;
 }
 
 .report-chip strong {
-  font-size: 0.82rem;
+  font-size: var(--dash-text-3);
   font-weight: 600;
 }
 
 .report-chip span {
-  font-size: 0.75rem;
+  font-size: var(--dash-text-2);
   color: var(--muted);
 }
 
@@ -3797,7 +3945,7 @@ ol.attn-fix li + li {
   padding: 0.8rem 0.9rem;
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 1rem;
+  border-radius: var(--dash-radius-3);
 }
 
 .device-admin-row {
@@ -3824,12 +3972,12 @@ ol.attn-fix li + li {
    panel every time a parent opens the device page would be noise. */
 .device-admin-confirm {
   display: grid;
-  gap: 0.4rem;
+  gap: 0.35rem;
   padding: 0.7rem 0.8rem;
-  border-radius: 0.6rem;
+  border-radius: var(--dash-radius-1);
   border: 1px solid color-mix(in srgb, var(--critical) 35%, transparent);
   background: color-mix(in srgb, var(--critical) 7%, transparent);
-  font-size: 0.82rem;
+  font-size: var(--dash-text-3);
 }
 
 .device-admin-confirm p {
@@ -3866,17 +4014,75 @@ ol.attn-fix li + li {
 .plan-card .hint {
   display: flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.25rem;
   margin: 0;
-  font-size: 0.72rem;
+  font-size: var(--dash-text-2);
   line-height: 1.4;
 }
 
 /* The parked-devices choice — `ParkedDevicesCard`, the phone's sheet inline. */
+/*
+ * The parked state as one row, which is what it is: on the free plan one
+ * device reports and the rest stay parked for months, so what stands above
+ * every tab is a fact, not a question. The sheet with the radio group is
+ * behind it. Drawn as the phone's `FamilyPremiumEndedBanner`, because both
+ * consoles are describing the same plan.
+ */
+.parked-banner {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  text-align: left;
+  padding: 0.7rem 0.9rem;
+  margin-bottom: 1.15rem;
+  border-radius: var(--dash-radius-2);
+  background: color-mix(in srgb, var(--warning) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--warning) 30%, transparent);
+  transition: background var(--kg-motion-fast) ease;
+}
+
+.parked-banner:hover {
+  background: color-mix(in srgb, var(--warning) 16%, transparent);
+}
+
+.parked-banner > .icon:first-child {
+  color: var(--warning);
+  margin-top: 0.1rem;
+}
+
+.parked-banner > .icon:last-child {
+  color: var(--muted);
+  margin-top: 0.15rem;
+}
+
+.parked-banner-copy {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  gap: 0.25rem;
+}
+
+.parked-banner-copy strong {
+  color: var(--ink);
+  font-size: var(--dash-text-3);
+  font-weight: 700;
+}
+
+/* `--ink-2`, not `--muted`: the dimmest step measures 4.21:1 on this banner's
+   tinted ground in the light palette, which is the one place it lands under
+   AA after the 95% fix. */
+.parked-banner-copy em {
+  color: var(--ink-2);
+  font-size: var(--dash-text-2);
+  font-style: normal;
+  line-height: 1.5;
+}
+
 .parked-card h2 {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.35rem;
 }
 
 .parked-options {
@@ -3888,7 +4094,7 @@ ol.attn-fix li + li {
 .parked-option {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.5rem;
   padding: 0.55rem 0.7rem;
   border-radius: var(--kg-radius-md);
   border: 1px solid var(--kg-border);
@@ -3919,9 +4125,9 @@ ol.attn-fix li + li {
 .parked-actions .hint {
   display: flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.25rem;
   margin: 0;
-  font-size: 0.72rem;
+  font-size: var(--dash-text-2);
 }
 
 .plan-pill.is-premium {
@@ -3943,7 +4149,7 @@ ol.attn-fix li + li {
 .plan-compare table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.78rem;
+  font-size: var(--dash-text-2);
   line-height: 1.4;
 }
 
@@ -3969,7 +4175,7 @@ ol.attn-fix li + li {
   padding-top: 0.55rem;
   padding-bottom: 0.2rem;
   text-align: start;
-  font-size: 0.66rem;
+  font-size: var(--dash-text-1);
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -3983,7 +4189,7 @@ ol.attn-fix li + li {
 
 .plan-compare thead th {
   border-top: 0;
-  font-size: 0.68rem;
+  font-size: var(--dash-text-1);
   letter-spacing: 0.03em;
   text-transform: uppercase;
   color: var(--muted);
@@ -4005,7 +4211,7 @@ ol.attn-fix li + li {
 
 .plan-compare-included {
   margin: 0.5rem 0 0;
-  font-size: 0.7rem;
+  font-size: var(--dash-text-1);
   line-height: 1.45;
   color: var(--muted);
 }
@@ -4014,20 +4220,20 @@ ol.attn-fix li + li {
 
 .parents-card {
   display: grid;
-  gap: 0.6rem;
+  gap: 0.5rem;
 }
 
 .invite-code {
   display: grid;
-  gap: 0.3rem;
+  gap: 0.25rem;
   justify-items: center;
   padding: 0.8rem;
-  border-radius: 0.7rem;
+  border-radius: var(--dash-radius-2);
   border: 1px dashed var(--line);
 }
 
 .invite-code strong {
-  font-size: 1.5rem;
+  font-size: var(--dash-text-6);
   letter-spacing: 0.25em;
   font-variant-numeric: tabular-nums;
 }

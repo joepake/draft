@@ -6,7 +6,7 @@ export const videoHistory = {
     'Tarayıcıda YouTube ve Android telefonlardaki ve TV’deki YouTube uygulaması. TV’de Shorts listelenmez; TV uygulaması bunları Shorts olarak tanımlamaz.',
   toggleFailed: 'Video geçmişi güncellenemedi. Tekrar deneyin.',
   unsupportedNote:
-    'Bu cihaz izlenen videoları bildiremez. Android ve Chrome’da çalışır.',
+    'Bu cihaz izlenen videoları bildiremez. Android, Android TV ve Chrome’da çalışır.',
 
   unsupportedNeedsExtension:
     'Bu bilgisayardaki KidGate hangi videoların izlendiğini göremez — site adlarını okur, sayfanın içeriğini değil. Chrome için KidGate uzantısı görebilir: bu bilgisayara ekleyin, izlenen videoları ayrı bir cihaz olarak bildirir.',

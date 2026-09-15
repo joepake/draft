@@ -37,7 +37,7 @@ export const location = {
   unableToRequestLocationRefresh: 'Konum yenileme isteği gönderilemedi',
   locationBannerTitle: 'Konumu etkinleştir',
   locationBannerBody:
-    'Ebeveyniniz, güvenli bir şekilde vardığınızdan emin olmak için bu cihazın konumunu görmek istiyor.',
+    'Ebeveynin, güvenle vardığından emin olmak için bu cihazın konumunu görmek istiyor.',
   locationBannerBodySharingOff:
     'Konum paylaşımı şu anda kapalı, yani hiçbir şey gönderilmiyor. Burada izin verirsen, ileride annen ya da baban açtığında hemen çalışır.',
   allowLocationButton: 'Konuma izin ver',
@@ -66,7 +66,6 @@ export const location = {
     'Konum o cihazdan okunur. Evde kalan tablet, çantadaki telefondan daha güncel konum bildirebilir; bu yüzden KidGate asla tahmin etmez.',
   childDevicesOnline: '{{total}} cihazdan {{online}} tanesi çevrimiçi',
   childNoneOnline: 'Çevrimiçi cihaz yok',
-  childPickCarried: 'Yanında',
   childPickCarriedA11y:
     '{{deviceName}} cihazını {{childName}} yanında taşıdığı cihaz olarak işaretle',
   stayRange: '{{from}} – {{to}}',
@@ -74,8 +73,6 @@ export const location = {
     'İzin ver’i, ardından Her zaman’ı seçin; böylece güncellemeler arka planda sürer.',
   requestNoFix:
     'Bu cihaz konum alamadı. Konum izni bu cihazda henüz verilmemiş olabilir.',
-  requestSharingOff: 'Bu cihaz için konum paylaşımı kapalı.',
-  requestUnsupported: 'Bu cihaz konum bildiremez.',
   cardSharingOff: 'Konum paylaşımı kapalı',
   cardPermissionOff: 'Bu cihazda konuma izin verilmiyor',
   cardNotUpdating: 'Konum güncellenmeyi durdurdu',

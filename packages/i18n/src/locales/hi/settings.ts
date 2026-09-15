@@ -110,8 +110,6 @@ export const settings = {
   toastDeletionRequestFailed:
     'खाता हटाना शुरू नहीं किया जा सका। कृपया पुनः प्रयास करें।',
   deletionRequestAlreadyPending: 'इस खाते के लिए हटाना पहले से ही जारी है।',
-  signOutToRemoveParentDevice:
-    'कृपया उस डिवाइस को अपने खाते से हटाने के लिए वहाँ साइन आउट करें।',
   languageLabel: 'भाषा',
   languageHint: 'KidGate के लिए प्रदर्शन भाषा चुनें',
   languageScreenTitle: 'भाषा',

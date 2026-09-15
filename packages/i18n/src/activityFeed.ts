@@ -14,6 +14,7 @@ import { pairing as enPairing } from './locales/en/pairing';
 import { plans as enPlans } from './locales/en/plans';
 import { settings as enSettings } from './locales/en/settings';
 import { protection as enProtection } from './locales/en/protection';
+import { report as enReport } from './locales/en/report';
 import { rewardTask as enRewardTask } from './locales/en/rewardTask';
 import { screenTime as enScreenTime } from './locales/en/screenTime';
 import { sos as enSos } from './locales/en/sos';
@@ -122,6 +123,13 @@ export interface ActivityFeedPack extends LocaleTree {
    */
   permissions: unknown;
   protection: unknown;
+  /**
+   * The weekly report, because `packages/core/domain/reportCopy` is shared and
+   * the phone already says every finding. The dashboard used to hand that module
+   * a translator over the web pack, which meant the same sentence in two packs —
+   * and eleven findings that existed only on the phone printed as raw keys.
+   */
+  report: unknown;
   rewardTask: unknown;
   /** `usageAccessStep*` — the other half of the same `hintKeys` lists. */
   screenTime: unknown;
@@ -152,6 +160,7 @@ const en: ActivityFeedPack = {
   messageMonitoring: enMessageMonitoring,
   permissions: enPermissions,
   protection: enProtection,
+  report: enReport,
   rewardTask: enRewardTask,
   screenTime: enScreenTime,
   sos: enSos,
@@ -177,6 +186,7 @@ const NAMESPACES = [
   'messageMonitoring',
   'permissions',
   'protection',
+  'report',
   'rewardTask',
   'screenTime',
   'sos',
@@ -221,6 +231,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     messageMonitoring: () => import('./locales/ar/messageMonitoring'),
     permissions: () => import('./locales/ar/permissions'),
     protection: () => import('./locales/ar/protection'),
+    report: () => import('./locales/ar/report'),
     screenTime: () => import('./locales/ar/screenTime'),
     rewardTask: () => import('./locales/ar/rewardTask'),
     sos: () => import('./locales/ar/sos'),
@@ -244,6 +255,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     messageMonitoring: () => import('./locales/de/messageMonitoring'),
     permissions: () => import('./locales/de/permissions'),
     protection: () => import('./locales/de/protection'),
+    report: () => import('./locales/de/report'),
     screenTime: () => import('./locales/de/screenTime'),
     rewardTask: () => import('./locales/de/rewardTask'),
     sos: () => import('./locales/de/sos'),
@@ -267,6 +279,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     messageMonitoring: () => import('./locales/es/messageMonitoring'),
     permissions: () => import('./locales/es/permissions'),
     protection: () => import('./locales/es/protection'),
+    report: () => import('./locales/es/report'),
     screenTime: () => import('./locales/es/screenTime'),
     rewardTask: () => import('./locales/es/rewardTask'),
     sos: () => import('./locales/es/sos'),
@@ -290,6 +303,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     messageMonitoring: () => import('./locales/fr/messageMonitoring'),
     permissions: () => import('./locales/fr/permissions'),
     protection: () => import('./locales/fr/protection'),
+    report: () => import('./locales/fr/report'),
     screenTime: () => import('./locales/fr/screenTime'),
     rewardTask: () => import('./locales/fr/rewardTask'),
     sos: () => import('./locales/fr/sos'),
@@ -313,6 +327,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     messageMonitoring: () => import('./locales/hi/messageMonitoring'),
     permissions: () => import('./locales/hi/permissions'),
     protection: () => import('./locales/hi/protection'),
+    report: () => import('./locales/hi/report'),
     screenTime: () => import('./locales/hi/screenTime'),
     rewardTask: () => import('./locales/hi/rewardTask'),
     sos: () => import('./locales/hi/sos'),
@@ -336,6 +351,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     messageMonitoring: () => import('./locales/id/messageMonitoring'),
     permissions: () => import('./locales/id/permissions'),
     protection: () => import('./locales/id/protection'),
+    report: () => import('./locales/id/report'),
     screenTime: () => import('./locales/id/screenTime'),
     rewardTask: () => import('./locales/id/rewardTask'),
     sos: () => import('./locales/id/sos'),
@@ -359,6 +375,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     messageMonitoring: () => import('./locales/it/messageMonitoring'),
     permissions: () => import('./locales/it/permissions'),
     protection: () => import('./locales/it/protection'),
+    report: () => import('./locales/it/report'),
     screenTime: () => import('./locales/it/screenTime'),
     rewardTask: () => import('./locales/it/rewardTask'),
     sos: () => import('./locales/it/sos'),
@@ -382,6 +399,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     messageMonitoring: () => import('./locales/ja/messageMonitoring'),
     permissions: () => import('./locales/ja/permissions'),
     protection: () => import('./locales/ja/protection'),
+    report: () => import('./locales/ja/report'),
     screenTime: () => import('./locales/ja/screenTime'),
     rewardTask: () => import('./locales/ja/rewardTask'),
     sos: () => import('./locales/ja/sos'),
@@ -405,6 +423,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     messageMonitoring: () => import('./locales/ko/messageMonitoring'),
     permissions: () => import('./locales/ko/permissions'),
     protection: () => import('./locales/ko/protection'),
+    report: () => import('./locales/ko/report'),
     screenTime: () => import('./locales/ko/screenTime'),
     rewardTask: () => import('./locales/ko/rewardTask'),
     sos: () => import('./locales/ko/sos'),
@@ -428,6 +447,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     messageMonitoring: () => import('./locales/pt/messageMonitoring'),
     permissions: () => import('./locales/pt/permissions'),
     protection: () => import('./locales/pt/protection'),
+    report: () => import('./locales/pt/report'),
     screenTime: () => import('./locales/pt/screenTime'),
     rewardTask: () => import('./locales/pt/rewardTask'),
     sos: () => import('./locales/pt/sos'),
@@ -451,6 +471,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     messageMonitoring: () => import('./locales/ru/messageMonitoring'),
     permissions: () => import('./locales/ru/permissions'),
     protection: () => import('./locales/ru/protection'),
+    report: () => import('./locales/ru/report'),
     screenTime: () => import('./locales/ru/screenTime'),
     rewardTask: () => import('./locales/ru/rewardTask'),
     sos: () => import('./locales/ru/sos'),
@@ -474,6 +495,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     messageMonitoring: () => import('./locales/tr/messageMonitoring'),
     permissions: () => import('./locales/tr/permissions'),
     protection: () => import('./locales/tr/protection'),
+    report: () => import('./locales/tr/report'),
     screenTime: () => import('./locales/tr/screenTime'),
     rewardTask: () => import('./locales/tr/rewardTask'),
     sos: () => import('./locales/tr/sos'),
@@ -497,6 +519,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     messageMonitoring: () => import('./locales/vi/messageMonitoring'),
     permissions: () => import('./locales/vi/permissions'),
     protection: () => import('./locales/vi/protection'),
+    report: () => import('./locales/vi/report'),
     screenTime: () => import('./locales/vi/screenTime'),
     rewardTask: () => import('./locales/vi/rewardTask'),
     sos: () => import('./locales/vi/sos'),

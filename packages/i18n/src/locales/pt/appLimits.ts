@@ -9,7 +9,7 @@ export const appLimits = {
   addSectionSubtitle: 'Apps que seu filho usou recentemente.',
   candidateUsage: '{{duration}} hoje',
   noUsageYet:
-    'Ainda sem uso registrado. Os limites aparecem quando o dispositivo reportar.',
+    'Ainda sem uso de apps registrado. Os limites ficam disponíveis quando o dispositivo da criança enviar os dados de uso.',
   footnote: 'Os limites reiniciam à meia-noite no dispositivo da criança.',
   toastSaved: 'Limites salvos.',
   toastSaveFailed: 'Não foi possível salvar. Tente novamente.',

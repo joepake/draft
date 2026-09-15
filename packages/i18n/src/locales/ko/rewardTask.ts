@@ -37,7 +37,7 @@ export const rewardTask = {
   openSectionTitle: '진행 가능한 과제',
   tabOpen: '할 일',
   tabDone: '완료',
-  doneEmptyBody: '승인한 과제가 여기에 표시돼요.',
+  doneEmptyBody: '승인한 과제가 여기에 표시됩니다.',
   openSectionSubtitle: '과제를 눌러 수정하거나 삭제하세요.',
   editTaskA11y: '{{title}} 과제 수정',
   sentBackNote: '돌려보냈어요 — 재도전을 기다리는 중.',

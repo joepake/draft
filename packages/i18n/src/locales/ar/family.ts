@@ -350,6 +350,7 @@ export const family = {
 
   protectionNeedsSetup: '{{issueLabel}} يحتاج إلى إعداد',
 
+  freeTierCadenceHint: 'الخطة المجانية — يُحدَّث كل {{minutes}} دقيقة',
   dailyLimitOn: 'الحد اليومي مفعّل',
 
   deviceReady: 'جاهز',

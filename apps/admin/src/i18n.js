@@ -233,9 +233,8 @@ const en = {
   'fleet.locale': 'Device language',
   'fleet.localeSub': 'Which of the 14 locale packs earn their keep',
   'fleet.country': 'Device country',
-  'fleet.countrySubBefore':
-    'Families, not devices. Countries with fewer than five fold into ',
-  'fleet.countrySubAfter': ' — a bucket of one names that family',
+  'fleet.countrySub':
+    'Families, not devices — four televisions in one home count once. Every country is named, so a bucket of one names that family',
   'fleet.countryEmpty': 'No device has reported a country yet',
   'fleet.appBlock': 'App blocking strength',
   'fleet.appBlockSub':
@@ -659,10 +658,8 @@ const vi = {
   'fleet.locale': 'Ngôn ngữ thiết bị',
   'fleet.localeSub': 'Trong 14 gói ngôn ngữ, gói nào thực sự có người dùng',
   'fleet.country': 'Quốc gia thiết bị',
-  'fleet.countrySubBefore':
-    'Đếm gia đình, không phải thiết bị. Quốc gia có dưới năm gia đình gộp vào ',
-  'fleet.countrySubAfter':
-    ' — một nhóm chỉ có một gia đình là chỉ đích danh gia đình đó',
+  'fleet.countrySub':
+    'Đếm gia đình, không phải thiết bị — bốn TV trong một nhà chỉ tính một lần. Mọi quốc gia đều hiện tên, nên nhóm chỉ có một gia đình là chỉ đích danh gia đình đó',
   'fleet.countryEmpty': 'Chưa thiết bị nào báo quốc gia',
   'fleet.appBlock': 'Mức chặn ứng dụng',
   'fleet.appBlockSub':

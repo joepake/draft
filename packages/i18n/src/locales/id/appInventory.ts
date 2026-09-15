@@ -3,7 +3,6 @@ export const appInventory = {
   pendingTitle: 'Menunggu persetujuan Anda',
   pendingBadge: 'Diblokir sampai Anda mengizinkannya',
   approvedBadge: 'Diizinkan oleh Anda',
-  installedAtLabel: 'Dipasang {{when}}',
   allowApp: 'Izinkan',
   subtitle: 'Semua yang ditemukan KidGate terpasang, bukan hanya yang berubah.',
   summaryFlagged: '{{flagged}} dari {{total}} aplikasi perlu diperiksa',
@@ -13,8 +12,6 @@ export const appInventory = {
   scannedLabel: 'Pemindaian terakhir',
   staleNote: 'Daftar ini sudah usang. Akan diperbarui saat perangkat terhubung lagi.',
   truncatedNote: 'Menampilkan {{shown}} dari {{total}} aplikasi yang ditemukan.',
-  firstScanNote:
-    'Ini pemindaian pertama, jadi KidGate belum tahu kapan aplikasi ini muncul.',
   newBadge: 'Baru',
   ageBadge: '{{age}}+',
   browserExtension: 'Ekstensi Chrome',

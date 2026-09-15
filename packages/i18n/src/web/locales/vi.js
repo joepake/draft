@@ -592,18 +592,12 @@ export default {
     inventoryTitle: 'Ứng dụng đã cài',
     inventorySub: 'Mọi ứng dụng trên thiết bị này, không chỉ những gì thay đổi',
     inventoryEmpty: 'Thiết bị này chưa gửi danh sách ứng dụng.',
-    inventoryStale:
-      'Danh sách này đã cũ, sẽ được cập nhật khi thiết bị kết nối lần tới.',
     inventoryFirstScan:
       'Lần quét đầu tiên, nên KidGate chưa biết các ứng dụng này xuất hiện khi nào.',
     inventoryFlagged: 'Cần xem lại',
     inventoryFlaggedLabel: 'Cần xem lại',
     inventoryOtherLabel: 'Đã nhận diện',
     inventoryUnknownLabel: 'Chưa nhận diện',
-    inventoryIncomplete:
-      'Những ứng dụng không có biểu tượng trên màn hình chính có thể không xuất hiện trong danh sách này.',
-    inventoryPending: 'Đang chờ bạn duyệt',
-    pendingInstallBlocked: 'Bị chặn cho đến khi bạn cho phép',
     installAllow: 'Cho phép',
     pendingInstallsTitle: 'Ứng dụng mới đang chờ duyệt',
     pendingInstallsSub: 'Được cài sau khi bạn bật duyệt, thiết bị tự chặn',
@@ -642,8 +636,6 @@ export default {
 
     locationTitle: 'Vị trí',
     locationSharingOff: 'Chia sẻ vị trí đang tắt',
-    locationSyncNote:
-      'Vị trí có thể mất vài phút để cập nhật — lâu hơn nếu thiết bị không có kết nối mạng hoặc bị đóng đột ngột.',
     locationUpdated: 'Đã cập nhật {{when}}',
     locationWaiting: 'Đang chờ lần cập nhật đầu tiên',
     lastKnownLocation: 'Vị trí ghi nhận gần nhất',
@@ -711,8 +703,6 @@ export default {
     rowLocationDesc: 'Cập nhật lần cuối {{when}}',
     rowLocationNone: 'Chưa có vị trí',
     rowSearchMonitoring: 'Giám sát tìm kiếm',
-    rowSearchMonitoringDesc:
-      'Trình duyệt và YouTube. Chỉ từ bị đánh dấu được báo, không bao giờ báo nội dung tìm kiếm.',
     rowSafeSearch: 'Bật SafeSearch bắt buộc',
     rowSafeSearchDesc:
       'Khóa Google SafeSearch, chế độ hạn chế YouTube, Bing và DuckDuckGo ở mức nghiêm ngặt. Android, Android TV và Chrome. Ở mức này YouTube còn ẩn bình luận và chặn một số video bình thường.',
@@ -765,43 +755,11 @@ export default {
     title: 'Báo cáo tuần',
     subtitle: 'Những gì KidGate ghi nhận trong tuần.',
     weekOf: 'Tuần {{week}}',
-    range: '{{from}} – {{to}}',
     writtenAt: 'Viết {{when}}',
     triggerScheduled: 'Đã gửi thứ Hai',
     triggerManual: 'Do bạn tạo',
 
-    statScreenTime: 'Thời gian sử dụng',
-    statDailyAverage: 'Trung bình mỗi ngày',
-    statBlockedApps: 'Ứng dụng bị chặn',
-    statBlockedWebVisits: 'Trang web bị lọc',
-    statTasksApproved: 'Việc nhà hoàn thành',
-
-    trendUp: 'Nhiều hơn tuần trước {{value}}',
-    trendDown: 'Ít hơn tuần trước {{value}}',
-    trendFlat: 'Gần như bằng tuần trước',
-    trendFirstWeek: 'Tuần đầu tiên có số liệu',
-    barThisWeek: 'Tuần này',
-    barLastWeek: 'Tuần trước',
-
     highlights: 'Điểm nổi bật',
-    sevAttention: 'Nên xem',
-    sevNotable: 'Đáng chú ý',
-    sevInfo: 'Để bạn biết',
-
-    findingUsageUp:
-      'Thời gian sử dụng tăng {{percent}}% — nhiều hơn tuần trước {{delta}}.',
-    findingUsageDown:
-      'Thời gian sử dụng giảm {{percent}}% — ít hơn tuần trước {{delta}}.',
-    findingUsageFlat: 'Thời gian sử dụng giữ nguyên ở mức {{total}}.',
-    findingLateNight: 'Có {{count}} đêm dùng máy sau 23h — hôm muộn nhất tới {{time}}.',
-    findingNewTopApp: '{{app}} mới xuất hiện tuần này và đã chiếm {{duration}}.',
-    findingAppSurge: '{{app}} tăng {{delta}} so với tuần trước — tổng {{duration}}.',
-    findingLimitHit: 'Có {{count}} ngày chạm Giới hạn hằng ngày ({{limit}}).',
-    findingBlockedApps:
-      '{{count}} lần mở ứng dụng bị chặn, tuần trước là {{previous}}.',
-    findingBlockedWeb: '{{count}} trang web bị lọc, tuần trước là {{previous}}.',
-    findingQuietWeek:
-      'Một tuần yên ắng — tổng cộng {{total}}, và không có gì cần bạn xử lý.',
 
     narrativeTitle: 'Tóm lại',
     finePrint:
@@ -834,14 +792,7 @@ export default {
     colLimit: 'Vượt giới hạn',
     colLateNights: 'Đêm muộn',
     colTopApp: 'Dùng nhiều nhất',
-    unnamedChild: 'Thiết bị chưa đặt tên',
-    changeUp: '+{{value}}',
-    changeDown: '−{{value}}',
-    changeFlat: 'gần như không đổi',
     noLimit: 'Không đặt',
-    noTopApp: '—',
-    limitDays: '{{count}} ngày',
-    lateNightsNone: 'không có',
     busiest: 'Dùng nhiều nhất trong nhà',
 
     historyTitle: 'Các tuần trước',

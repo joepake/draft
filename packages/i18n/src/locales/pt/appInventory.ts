@@ -3,7 +3,6 @@ export const appInventory = {
   pendingTitle: 'Aguardando sua aprovação',
   pendingBadge: 'Bloqueado até você permitir',
   approvedBadge: 'Permitido por você',
-  installedAtLabel: 'Instalado {{when}}',
   allowApp: 'Permitir',
   subtitle: 'Tudo o que o KidGate encontrou instalado, não apenas o que mudou.',
   summaryFlagged: '{{flagged}} de {{total}} aplicativos merecem atenção',
@@ -14,8 +13,6 @@ export const appInventory = {
   staleNote:
     'Esta lista está desatualizada. Ela é renovada quando o dispositivo se conectar de novo.',
   truncatedNote: 'Mostrando {{shown}} de {{total}} aplicativos encontrados.',
-  firstScanNote:
-    'Esta é a primeira verificação, então o KidGate não sabe quando cada um chegou.',
   newBadge: 'Novo',
   ageBadge: '{{age}}+',
   browserExtension: 'Extensão do Chrome',
@@ -40,7 +37,7 @@ export const appInventory = {
   unsupportedGeneric: 'Este dispositivo não relata os aplicativos instalados nele.',
   incompleteNote: 'Um aplicativo sem ícone na tela inicial pode não aparecer aqui.',
   blockHint:
-    'Para bloquear um aplicativo, abra Aplicativos bloqueados no próprio dispositivo.',
+    'Para bloquear um aplicativo, abra a tela Aplicativos bloqueados no próprio dispositivo.',
   howItWorksLabel: 'Como esta lista funciona',
   markSafe: 'Segura',
   dismissedTitle: 'Marcadas como seguras por você',

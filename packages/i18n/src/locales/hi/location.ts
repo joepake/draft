@@ -67,7 +67,6 @@ export const location = {
     'लोकेशन उसी डिवाइस से पढ़ी जाती है। घर पर रखा टैबलेट बैग में रखे फ़ोन से ज़्यादा ताज़ा लोकेशन भेज सकता है, इसलिए KidGate कभी अंदाज़ा नहीं लगाता।',
   childDevicesOnline: '{{total}} में से {{online}} ऑनलाइन',
   childNoneOnline: 'कोई डिवाइस ऑनलाइन नहीं',
-  childPickCarried: 'साथ में',
   childPickCarriedA11y:
     '{{deviceName}} को वह डिवाइस चिह्नित करें जो {{childName}} साथ रखता है',
   stayRange: '{{from}} – {{to}}',
@@ -75,8 +74,6 @@ export const location = {
     'अनुमति दें चुनें, फिर हमेशा चुनें ताकि बैकग्राउंड में भी अपडेट आते रहें।',
   requestNoFix:
     'यह डिवाइस स्थान नहीं ले सका। हो सकता है कि इस पर स्थान की अनुमति अभी न दी गई हो।',
-  requestSharingOff: 'इस डिवाइस के लिए स्थान साझा करना बंद है।',
-  requestUnsupported: 'यह डिवाइस स्थान की रिपोर्ट नहीं कर सकता।',
   cardSharingOff: 'स्थान साझाकरण बंद है',
   cardPermissionOff: 'इस डिवाइस पर स्थान की अनुमति नहीं है',
   cardNotUpdating: 'स्थान अपडेट होना बंद हो गया है',

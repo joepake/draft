@@ -51,12 +51,12 @@ export const settings = {
   accountNotLinked: 'Não vinculado',
   darkModeLabel: 'Modo escuro',
   darkModeHint: 'Mais confortável para os olhos à noite',
-  addWidgetTitle: 'Adicionar widget ao ecrã principal',
-  addWidgetSubtitle: 'O tempo de ecrã de cada criança num relance',
+  addWidgetTitle: 'Adicionar widget à tela de início',
+  addWidgetSubtitle: 'Veja rapidamente o tempo de tela de cada criança',
   addWidgetStepsIos:
-    '1. Toca sem soltar num espaço vazio do ecrã principal\n2. Toca no botão + no canto superior\n3. Procura KidGate\n4. Escolhe um tamanho e toca em Adicionar widget',
+    '1. Toque e segure um espaço vazio na Tela de Início\n2. Toque no botão + no canto superior\n3. Procure KidGate\n4. Escolha um tamanho e toque em Adicionar Widget',
   addWidgetStepsAndroid:
-    '1. Toca sem soltar num espaço vazio do ecrã principal\n2. Toca em Widgets\n3. Procura KidGate e arrasta o widget para o ecrã principal',
+    '1. Toque e segure um espaço vazio na tela inicial\n2. Toque em Widgets\n3. Encontre KidGate e arraste o widget para a tela inicial',
   pushNotificationsTitle: 'Notificações push',
   pushNotificationsSubtitle: 'Escolha quais alertas chegam a este telefone',
   inAppAlertsLabel: 'Alertas no app',
@@ -113,7 +113,6 @@ export const settings = {
   toastDeletionRequestFailed:
     'Não foi possível iniciar a exclusão da conta. Tente novamente.',
   deletionRequestAlreadyPending: 'A exclusão já está em andamento para esta conta.',
-  signOutToRemoveParentDevice: 'Saia nesse dispositivo para removê-lo da sua conta.',
   languageLabel: 'Idioma',
   languageHint: 'Escolha o idioma de exibição do KidGate',
   languageScreenTitle: 'Idioma',

@@ -110,8 +110,6 @@ export const settings = {
   toastDeletionRequestFailed:
     'Impossibile avviare l’eliminazione dell’account. Riprova.',
   deletionRequestAlreadyPending: 'L’eliminazione è già in corso per questo account.',
-  signOutToRemoveParentDevice:
-    'Esci da quel dispositivo per rimuoverlo dal tuo account.',
   languageLabel: 'Lingua',
   languageHint: 'Scegli la lingua di visualizzazione di KidGate',
   languageScreenTitle: 'Lingua',

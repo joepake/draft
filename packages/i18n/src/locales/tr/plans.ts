@@ -141,7 +141,6 @@ export const plans = {
   purchasesRestored: 'Satın alımlar geri yüklendi.',
   unableToRestorePurchases: 'Satın alımlar geri yüklenemedi. Lütfen tekrar deneyin.',
   purchaseVerificationFailed: 'Satın alma doğrulaması başarısız oldu.',
-  unableToVerifyPurchase: 'Satın alma doğrulanamadı. Lütfen tekrar deneyin.',
   // Shown to joined parents — only the family owner can subscribe, so this
   // has to name who needs to act instead of offering a button they can't use.
   familyPremiumEndedTitle: 'Bu ailenin Premium’u sona erdi',
@@ -200,7 +199,7 @@ export const plans = {
     'Premium hangi sitelerin engellendiğini ve çocuğunuzun ne aradığını gösterir.',
   teaserVideoHistory: 'Premium izlediği her YouTube videosunu ve Short’u saklar.',
   teaserLocationTrail:
-    'Premium nerede olduğunu saklar; eve ve okula varınca ya da ayrılınca haber verir.',
+    'Premium, nerelere gittiğini kaydeder; eve ve okula varınca ya da oradan ayrılınca haber verir.',
   teaserActivityWindow: 'Ücretsiz plan bugünü gösterir. Premium 30 günü saklar.',
   teaserChildReport: 'Premium her çocuk için ayrı rapor ekler, her hafta da yenisini.',
   teaserMessageAlerts:

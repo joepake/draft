@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useT } from '@kidgate/web-ui/useT';
 import Icon from '@kidgate/web-ui/Icon';
 import {
@@ -15,7 +15,8 @@ const COOLDOWN_DAYS = Math.round(MONITORED_SWAP_COOLDOWN_MS / 86_400_000);
  * The devices the free plan is not watching, and the choice of which one it
  * should.
  *
- * The phone's `ChooseMonitoredDeviceSheet`, drawn inline: at trial end every
+ * The phone's `FamilyPremiumEndedBanner` and the `ChooseMonitoredDeviceSheet`
+ * it opens, in one component: at trial end every
  * device is parked and nothing picks a survivor (`docs/PRICING.md` §6), so a
  * family that opens this tab instead of the app would otherwise find every
  * device reading "Paused" with no way to change it. Both consoles have to be
@@ -39,6 +40,7 @@ export default function ParkedDevicesCard({
   busy,
   onChoose,
   onDismiss,
+  onOpen,
 }) {
   const { t } = useT();
   const appT = useActivityTranslate();
@@ -49,6 +51,17 @@ export default function ParkedDevicesCard({
   useEffect(() => {
     setSelected(parking.monitoredId);
   }, [parking.monitoredId]);
+
+  /*
+   * Focus lands inside the dialog, on the way out of it — the rule the step-up
+   * sheet and the plan sheet already follow. This one opens *unprompted* at
+   * trial end, so without it a keyboard is left behind on the page underneath
+   * a dialog that says `aria-modal`, with no way to reach the question.
+   */
+  const closeRef = useRef(null);
+  useEffect(() => {
+    if (onDismiss) closeRef.current?.focus();
+  }, [onDismiss]);
 
   // Escape closes the sheet form, like the step-up one. Inline there is
   // nothing to close, so the listener is not attached at all.
@@ -81,13 +94,39 @@ export default function ParkedDevicesCard({
     devices.find(device => device.id === parking.monitoredId)?.name ?? null;
 
   /*
-   * One component, two placements, because it is the same question at two
-   * moments. Inline while anything is parked — and the way back in after a
-   * dismissal — and over the page when *everything* is parked with nobody
-   * chosen, which is what trial end leaves behind and what `apps/mobile`
-   * opens `ChooseMonitoredDeviceSheet` for unprompted. A card a parent has to
-   * notice is not the same as a question they have to answer.
+   * One component, two shapes, because a free family is in this state for
+   * good: on the free plan one device reports and the rest stay parked, so
+   * whatever stands above every tab stands there for months.
+   *
+   * So the page carries the **banner** — the phone's
+   * `FamilyPremiumEndedBanner`, one row that names the reporting device and
+   * opens the question — and the sheet is what the question is asked in, over
+   * the page, when everything is parked with nobody chosen. The full sheet
+   * used to be drawn inline instead: a radio group, a confirm button and a
+   * cooldown sentence over every screen, asking a question that had already
+   * been answered.
    */
+  if (onOpen) {
+    return (
+      <button className="parked-banner" onClick={onOpen}>
+        <Icon name="crown" size={18} />
+        <span className="parked-banner-copy">
+          {/* Chosen or not the banner stays, because the upgrade is still the
+              way to get every device back — but it stops asking once there is
+              an answer. Both sentences are the phone's, said in the same
+              order, so the two consoles describe one state. */}
+          <strong>
+            {monitoredName
+              ? appT('family.chooseMonitoredDone', { name: monitoredName })
+              : appT('family.parkedBannerTitle')}
+          </strong>
+          <em>{appT('family.parkedBannerBody')}</em>
+        </span>
+        <Icon name="chevronRight" size={16} />
+      </button>
+    );
+  }
+
   const body = (
     <>
       <h2>
@@ -153,10 +192,6 @@ export default function ParkedDevicesCard({
     </>
   );
 
-  if (!onDismiss) {
-    return <section className="card parked-card">{body}</section>;
-  }
-
   return (
     <div className="sheet-backdrop" onClick={onDismiss}>
       <section
@@ -173,7 +208,7 @@ export default function ParkedDevicesCard({
           way out over a page that is still readable would be worse than the
           state it is describing.
         */}
-        <button className="login-link" onClick={onDismiss}>
+        <button className="login-link" ref={closeRef} onClick={onDismiss}>
           {t('dash.close')}
         </button>
       </section>

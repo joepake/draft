@@ -3,7 +3,6 @@ export const appInventory = {
   pendingTitle: 'En attente de votre approbation',
   pendingBadge: 'Bloquée jusqu’à ce que vous l’autorisiez',
   approvedBadge: 'Autorisée par vous',
-  installedAtLabel: 'Installée {{when}}',
   allowApp: 'Autoriser',
   subtitle: 'Tout ce que KidGate a trouvé installé, pas seulement ce qui a changé.',
   summaryFlagged: '{{flagged}} applications sur {{total}} méritent un coup d’œil',
@@ -14,8 +13,6 @@ export const appInventory = {
   staleNote:
     'Cette liste n’est plus à jour. Elle se rafraîchira à la prochaine connexion de l’appareil.',
   truncatedNote: 'Affichage de {{shown}} applications sur {{total}} trouvées.',
-  firstScanNote:
-    'C’est la première analyse : KidGate ne peut pas dire quand chacune est arrivée.',
   newBadge: 'Nouveau',
   ageBadge: '{{age}}+',
   browserExtension: 'Extension Chrome',

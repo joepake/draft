@@ -140,7 +140,6 @@ export const plans = {
   purchasesRestored: 'Pembelian berhasil dipulihkan.',
   unableToRestorePurchases: 'Tidak dapat memulihkan pembelian. Silakan coba lagi.',
   purchaseVerificationFailed: 'Verifikasi pembelian tidak berhasil.',
-  unableToVerifyPurchase: 'Tidak dapat memverifikasi pembelian. Silakan coba lagi.',
   // Shown to joined parents — only the family owner can subscribe, so this
   // has to name who needs to act instead of offering a button they can't use.
   familyPremiumEndedTitle: 'Premium keluarga ini telah berakhir',

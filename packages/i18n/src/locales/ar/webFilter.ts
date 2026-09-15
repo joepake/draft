@@ -89,9 +89,9 @@ export const webFilter = {
   categoriesTitle: 'ما الذي يُحظر',
   categoriesSubtitle:
     'يستخدم KidGate قوائم نطاقات خاصة به. تغطي المواقع التي يصل إليها الأطفال فعلًا، وليس الويب بأكمله — استخدمها مع القوائم أدناه.',
-  androidOnlyCategory: '\u200FAndroid فقط — لا يوجد في iOS تحكّم بالويب حسب الفئة',
+  androidOnlyCategory: 'غير متاح على iPhone — يعمل على Android وMac',
   iosCategoryNote:
-    'يدعم iPhone فئة {{category}} فقط، عبر مرشّح Apple نفسه. أما بقية الفئات فتنطبق على أجهزة Android.',
+    'يدعم iPhone فئة {{category}} فقط، عبر مرشّح Apple نفسه. أما بقية الفئات فتنطبق على أجهزة Android وMac الخاصة بالأطفال.',
   allowListTitle: 'السماح دائمًا',
   allowListSubtitle: 'مواقع تبقى متاحة حتى لو كانت إحدى الفئات ستحظرها.',
   allowListEmpty: 'لا استثناءات بعد.',

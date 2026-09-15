@@ -140,7 +140,6 @@ export const plans = {
   purchasesRestored: 'खरीदारी पुनर्स्थापित हो गई।',
   unableToRestorePurchases: 'खरीदारी पुनर्स्थापित नहीं हो सकी। कृपया पुनः प्रयास करें।',
   purchaseVerificationFailed: 'खरीदारी की पुष्टि नहीं हो सकी।',
-  unableToVerifyPurchase: 'खरीदारी सत्यापित नहीं हो सकी। कृपया पुनः प्रयास करें।',
   // Shown to joined parents — only the family owner can subscribe, so this
   // has to name who needs to act instead of offering a button they can't use.
   familyPremiumEndedTitle: 'इस परिवार का Premium समाप्त हो गया है',

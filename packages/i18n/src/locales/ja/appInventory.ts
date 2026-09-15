@@ -3,7 +3,6 @@ export const appInventory = {
   pendingTitle: '承認待ち',
   pendingBadge: '許可するまでブロック',
   approvedBadge: 'あなたが許可済み',
-  installedAtLabel: '{{when}}にインストール',
   allowApp: '許可',
   subtitle:
     '変化があったものだけでなく、KidGate がインストール済みとして見つけたすべて。',
@@ -14,7 +13,6 @@ export const appInventory = {
   scannedLabel: '最終スキャン',
   staleNote: 'この一覧は古くなっています。デバイスが次に接続したときに更新されます。',
   truncatedNote: '見つかった {{total}} 件のうち {{shown}} 件を表示しています。',
-  firstScanNote: 'これは初回のスキャンのため、いつ追加されたかは分かりません。',
   newBadge: '新規',
   ageBadge: '{{age}}+',
   browserExtension: 'Chrome 拡張機能',

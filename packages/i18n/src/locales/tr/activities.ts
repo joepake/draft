@@ -32,7 +32,7 @@ export const activities = {
   guestPreviewLock: 'Cihaz kilitli',
   guestPreviewSos: 'SOS uyarısı',
   guestPreviewScreenTime: 'Ekran Süresi güncellemesi',
-  guestPreviewHint: 'Örnek — Gerçek etkinlikler cihaz bağlandıktan sonra görüntülenir.',
+  guestPreviewHint: 'Örnek — gerçek etkinlikler cihaz bağlandıktan sonra görüntülenir.',
 
   activityTypeLocked: 'Kilitlendi',
   activityTypeUnlocked: 'Kilidi açıldı',

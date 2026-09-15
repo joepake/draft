@@ -321,6 +321,7 @@ export const family = {
 
   protectionNeedsSetup: '{{issueLabel}} için kurulum gerekiyor',
 
+  freeTierCadenceHint: 'Ücretsiz plan — her {{minutes}} dakikada güncellenir',
   dailyLimitOn: 'Günlük sınır etkin',
 
   deviceReady: 'Hazır',

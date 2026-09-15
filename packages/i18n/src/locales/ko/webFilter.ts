@@ -35,7 +35,7 @@ export const webFilter = {
   infoLine3Ios:
     '자녀 기기의 앱이 제어를 동기화하면 KidGate가 설정을 자동으로 적용합니다.',
   infoLine1Android:
-    'KidGate는 로컬 VPN을 시작해 DNS에서 성인 도메인을 검사하고 일부 암호화된 DNS 리졸버를 차단합니다.',
+    'KidGate는 기기에서 비공개 연결을 실행해 어떤 사이트에 접속하려는지 확인하고, 선택한 카테고리에 해당하는 사이트를 차단합니다.',
   infoLine2Android:
     '자녀 기기에서 프라이빗 DNS를 꺼 주세요. 켜져 있으면 브라우저가 필터를 우회할 수 있습니다.',
   infoLine3Android:
@@ -82,16 +82,16 @@ export const webFilter = {
 
   windowsFilterNote: 'Windows에서 KidGate 자체 리졸버 사용',
   webFilteringNote:
-    'iOS는 스크린 타임 성인 필터를, Android는 로컬 DNS VPN 차단 목록을 사용합니다.',
+    'iOS는 스크린 타임 성인 필터를 사용하고, Android, Mac, Windows는 KidGate 자체 차단 목록을 사용합니다.',
   safeSearchAlertsNote:
     'Safari는 검색어를 공유하지 않습니다. 키워드 알림에는 관리형 안전 브라우저가 필요합니다.',
   webHistoryNote: '필터링 브라우저 또는 DNS/VPN 방식 보고가 필요합니다.',
   categoriesTitle: '차단할 항목',
   categoriesSubtitle:
     'KidGate는 자체 도메인 목록을 사용합니다. 아이가 실제로 접근하는 사이트를 다루며, 웹 전체는 아닙니다. 아래 목록과 함께 쓰세요.',
-  androidOnlyCategory: 'Android 전용 — iOS에는 카테고리별 웹 제어가 없습니다',
+  androidOnlyCategory: 'iPhone에서는 사용할 수 없음 — Android와 Mac에서 사용 가능',
   iosCategoryNote:
-    'iPhone은 Apple 자체 필터로 {{category}}만 지원합니다. 나머지 카테고리는 Android 기기에 적용됩니다.',
+    'iPhone은 Apple 자체 필터로 {{category}}만 지원합니다. 나머지 카테고리는 Android와 Mac 자녀 기기에 적용됩니다.',
   allowListTitle: '항상 허용',
   allowListSubtitle: '카테고리가 차단하더라도 계속 접속할 수 있는 사이트입니다.',
   allowListEmpty: '아직 예외가 없습니다.',

@@ -23,7 +23,7 @@ export const permissions = {
   batteryOptimizationHint: 'Android가 백그라운드에서 KidGate를 멈추지 않도록 합니다.',
   exactAlarmLabel: '알람 및 리마인더',
   exactAlarmHint: '차단 시간이 제때 시작하고 끝나도록 알람 및 리마인더를 허용하세요.',
-  accessibilityLabel: '접근성 잠금 도우미',
+  accessibilityLabel: '접근성(잠금 도우미)',
   accessibilityHint: 'KidGate 잠금이 다른 앱 위에 유지되도록 합니다.',
   oemSectionDescription:
     '{{brand}} 기기는 백그라운드 앱을 자주 일시 중지합니다. 잠금과 차단 시간이 계속 작동하도록 다음 단계를 완료하세요.',

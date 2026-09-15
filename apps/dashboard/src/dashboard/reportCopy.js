@@ -1,4 +1,5 @@
-import { t as translate, getLocaleTag } from '@kidgate/i18n/web';
+import { getLanguage, getLocaleTag } from '@kidgate/i18n/web';
+import { activityTranslator, peekActivityFeed } from '@kidgate/i18n/activityFeed';
 import {
   buildReportPresentation,
   reportSummaryLines,
@@ -19,8 +20,31 @@ import { formatMinutes } from './charts.jsx';
  * formatter and the phone passes its own.
  */
 
+/**
+ * The findings are the *app* key space, not this one.
+ *
+ * `reportCopy` is shared with the phone, so its keys are the phone's. Handing
+ * it `t` from `@kidgate/i18n/web` meant every sentence had to exist twice, and
+ * eleven of them never made the second trip — a report whose findings included
+ * a finished task or an answered check-in printed the raw key, in every
+ * language. It reads the same pack the feed does now.
+ *
+ * English until the language's chunk lands, for the reason
+ * `useActivityTranslate` gives: `ReportPanel` mounts that hook, so the pack is
+ * already on its way, and a sentence that settles a moment later beats a blank
+ * panel. Keys this panel owns rather than shares still go through `translate`.
+ */
+function appTranslate(key, params) {
+  const language = getLanguage();
+  const pack = peekActivityFeed(language);
+  return activityTranslator(pack ?? peekActivityFeed('en'), pack ? language : 'en')(
+    key,
+    params,
+  );
+}
+
 const deps = {
-  t: translate,
+  t: appTranslate,
   formatDuration: formatMinutes,
   formatTime: minuteOfDay =>
     new Intl.DateTimeFormat(getLocaleTag(), {
@@ -45,7 +69,7 @@ export function formatDayKey(dayKey) {
 }
 
 export function formatRange(fromDate, toDate) {
-  return translate('report.range', {
+  return appTranslate('report.range', {
     from: formatDayKey(fromDate),
     to: formatDayKey(toDate),
   });

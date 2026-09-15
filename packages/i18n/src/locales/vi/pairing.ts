@@ -1,7 +1,7 @@
 export const pairing = {
   shareInviteButton: 'Chia sẻ mã',
   shareInviteMessage:
-    'Tham gia gia đình trên KidGate: mở ứng dụng, chọn Gia đình → Tham gia gia đình rồi nhập mã {{code}}. Mã hết hạn sau 15 phút.',
+    'Tham gia gia đình của tôi trên KidGate: mở ứng dụng, chọn Gia đình → Tham gia gia đình rồi nhập mã {{code}}. Mã hết hạn sau 15 phút.',
   shareChildCodeMessage:
     'Kết nối thiết bị của trẻ trên KidGate: trên thiết bị phụ huynh mở KidGate → Gia đình → Quét mã, sau đó quét mã QR hoặc nhập mã {{code}}. Mã hết hạn sau 5 phút.',
   connectChildPhone: 'Kết nối thiết bị của trẻ',

@@ -573,16 +573,11 @@ export default {
     inventoryTitle: '설치된 앱',
     inventorySub: '변경된 것만이 아니라 이 기기의 모든 것',
     inventoryEmpty: '이 기기가 아직 앱 목록을 보내지 않았습니다.',
-    inventoryStale: '이 목록은 오래되었습니다. 기기가 다음에 연결되면 갱신됩니다.',
     inventoryFirstScan: '첫 번째 검사이므로 언제 추가되었는지 알 수 없습니다.',
     inventoryFlagged: '확인해 볼 만함',
     inventoryFlaggedLabel: '확인 필요',
     inventoryOtherLabel: '확인됨',
     inventoryUnknownLabel: '미확인',
-    inventoryIncomplete:
-      '홈 화면에 아이콘이 없는 앱은 여기에 나타나지 않을 수 있습니다.',
-    inventoryPending: '보호자 승인 대기 중',
-    pendingInstallBlocked: '허용할 때까지 차단됨',
     installAllow: '허용',
     pendingInstallsTitle: '승인을 기다리는 새 앱',
     pendingInstallsSub: '승인을 켠 뒤에 설치되어 기기가 스스로 차단한 앱이에요',
@@ -621,8 +616,6 @@ export default {
 
     locationTitle: '위치',
     locationSharingOff: '공유가 꺼져 있습니다',
-    locationSyncNote:
-      '위치 정보가 업데이트되기까지 몇 분 정도 걸릴 수 있습니다. 기기에 인터넷 연결이 없거나 예기치 않게 종료된 경우 더 오래 걸릴 수 있습니다.',
     locationUpdated: '{{when}} 업데이트',
     locationWaiting: '첫 업데이트를 기다리는 중',
     lastKnownLocation: '마지막으로 확인된 위치',
@@ -691,8 +684,6 @@ export default {
     rowLocationDesc: '마지막 업데이트 {{when}}',
     rowLocationNone: '아직 위치 없음',
     rowSearchMonitoring: '검색 모니터링',
-    rowSearchMonitoringDesc:
-      '브라우저와 YouTube. 감지된 단어만 알려 드리며 검색어 자체는 전송되지 않습니다.',
     rowSafeSearch: '세이프서치 강제 적용',
     rowSafeSearchDesc:
       'Google 세이프서치, YouTube 제한 모드, Bing, DuckDuckGo를 엄격 설정으로 고정합니다. Android, Android TV, Chrome. 이 수준에서는 YouTube가 댓글도 숨기고 일반 동영상도 일부 차단합니다.',
@@ -744,41 +735,10 @@ export default {
     title: '주간 리포트',
     subtitle: 'KidGate가 이번 주에 살펴본 내용입니다.',
     weekOf: '{{week}} 주',
-    range: '{{from}} – {{to}}',
     writtenAt: '{{when}} 작성',
     triggerScheduled: '월요일에 발송',
     triggerManual: '직접 만든 리포트',
-    statScreenTime: '스크린 타임',
-    statDailyAverage: '하루 평균',
-    statBlockedApps: '차단한 앱',
-    statBlockedWebVisits: '필터링한 사이트',
-    statTasksApproved: '완료한 할 일',
-    trendUp: '지난주보다 {{value}} 많음',
-    trendDown: '지난주보다 {{value}} 적음',
-    trendFlat: '지난주와 거의 같음',
-    trendFirstWeek: '측정된 첫 주',
-    barThisWeek: '이번 주',
-    barLastWeek: '지난주',
     highlights: '알아 두면 좋은 점',
-    sevAttention: '살펴볼 만함',
-    sevNotable: '눈여겨볼 점',
-    sevInfo: '참고',
-    findingUsageUp: '사용 시간이 {{percent}}% 늘어 지난주보다 {{delta}} 많았습니다.',
-    findingUsageDown: '사용 시간이 {{percent}}% 줄어 지난주보다 {{delta}} 적었습니다.',
-    findingUsageFlat: '사용 시간은 {{total}}로 비슷했습니다.',
-    findingLateNight:
-      '밤 11시 이후 사용한 밤이 {{count}}번 있었고, 가장 늦게는 {{time}}까지였습니다.',
-    findingNewTopApp:
-      '{{app}}은(는) 이번 주에 처음 등장해 벌써 {{duration}}을 차지했습니다.',
-    findingAppSurge:
-      '{{app}}이(가) 지난주보다 {{delta}} 늘어 총 {{duration}}이 되었습니다.',
-    findingLimitHit: '하루 한도 {{limit}}에 도달한 날이 {{count}}일 있었습니다.',
-    findingBlockedApps:
-      '앱 실행 {{count}}건을 차단했습니다. 지난주는 {{previous}}건입니다.',
-    findingBlockedWeb:
-      '사이트 {{count}}건을 필터링했습니다. 지난주는 {{previous}}건입니다.',
-    findingQuietWeek:
-      '조용한 한 주였습니다. 모두 합쳐 {{total}}이고, 살펴볼 일은 없었습니다.',
     narrativeTitle: '한 문장으로',
     finePrint:
       '수치는 {{from}}부터 {{to}}까지, 가족의 모든 기기를 포함합니다. 사용 시간은 기기가 보고한 값이며, 측정하지 못한 시간은 어느 합계에도 들어가지 않습니다.',
@@ -807,14 +767,7 @@ export default {
     colLimit: '한도 초과',
     colLateNights: '늦은 밤',
     colTopApp: '가장 많이 사용',
-    unnamedChild: '이름 없는 기기',
-    changeUp: '+{{value}}',
-    changeDown: '−{{value}}',
-    changeFlat: '거의 같음',
     noLimit: '한도 없음',
-    noTopApp: '—',
-    limitDays: '{{count}}일',
-    lateNightsNone: '없음',
     busiest: '사용 시간 최다',
 
     historyTitle: '지난 주간',

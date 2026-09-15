@@ -35,7 +35,7 @@ export const webFilter = {
   infoLine3Ios:
     'KidGate áp dụng cài đặt này tự động khi ứng dụng trên thiết bị của trẻ đồng bộ các điều khiển.',
   infoLine1Android:
-    'KidGate lập một kết nối VPN ngay trên máy để kiểm tra từng địa chỉ trang web và chặn các trang người lớn (đồng thời chặn một số dịch vụ DNS mã hóa dùng để né bộ lọc).',
+    'KidGate lập một kết nối riêng ngay trên máy để kiểm tra những trang web đang được truy cập và chặn các trang thuộc danh mục bạn đã chọn.',
   infoLine2Android:
     'Vui lòng tắt DNS riêng tư trên thiết bị của trẻ. Nếu DNS riêng tư đang bật, trình duyệt có thể bỏ qua bộ lọc.',
   infoLine3Android:
@@ -82,16 +82,16 @@ export const webFilter = {
 
   windowsFilterNote: 'Dùng trình phân giải riêng của KidGate trên Windows',
   webFilteringNote:
-    'iOS dùng bộ lọc nội dung người lớn của Thời gian sử dụng; Android dùng danh sách chặn qua VPN DNS cục bộ.',
+    'iOS dùng bộ lọc nội dung người lớn của Thời gian sử dụng. Android, Mac và Windows dùng danh sách chặn riêng của KidGate.',
   safeSearchAlertsNote:
     'Safari không chia sẻ từ khóa tìm kiếm; cảnh báo theo từ khóa cần một trình duyệt an toàn được quản lý riêng.',
   webHistoryNote: 'Cần trình duyệt có bộ lọc hoặc cơ chế báo cáo qua DNS/VPN.',
   categoriesTitle: 'Chặn những gì',
   categoriesSubtitle:
     'KidGate dùng danh sách trang web riêng. Danh sách này bao phủ những trang trẻ thực sự hay vào, không phải toàn bộ Internet — hãy kết hợp thêm với danh sách bên dưới.',
-  androidOnlyCategory: 'Chỉ Android — iOS không chặn web theo danh mục được',
+  androidOnlyCategory: 'Không dùng được trên iPhone — hoạt động trên Android và Mac',
   iosCategoryNote:
-    'iPhone chỉ hỗ trợ {{category}}, dùng bộ lọc của Apple. Các danh mục còn lại áp dụng cho thiết bị Android.',
+    'iPhone chỉ hỗ trợ {{category}}, dùng bộ lọc của Apple. Các danh mục còn lại áp dụng cho thiết bị Android và Mac.',
   allowListTitle: 'Luôn cho phép',
   allowListSubtitle: 'Những trang vẫn vào được kể cả khi một danh mục sẽ chặn chúng.',
   allowListEmpty: 'Chưa có ngoại lệ nào.',

@@ -66,7 +66,6 @@ export const location = {
     'Lokasi dibaca dari perangkat itu. Tablet yang ditinggal di rumah bisa melaporkan lokasi lebih baru daripada ponsel di tas, jadi KidGate tidak pernah menebak.',
   childDevicesOnline: '{{online}} dari {{total}} online',
   childNoneOnline: 'Tidak ada perangkat online',
-  childPickCarried: 'Dibawa',
   childPickCarriedA11y:
     'Tandai {{deviceName}} sebagai perangkat yang dibawa {{childName}}',
   stayRange: '{{from}} – {{to}}',
@@ -74,8 +73,6 @@ export const location = {
     'Pilih Izinkan, lalu Selalu agar pembaruan tetap berjalan di latar belakang.',
   requestNoFix:
     'Perangkat ini tidak bisa mendapatkan posisi. Lokasi mungkin belum diizinkan di perangkat ini.',
-  requestSharingOff: 'Berbagi lokasi nonaktif untuk perangkat ini.',
-  requestUnsupported: 'Perangkat ini tidak dapat melaporkan posisi.',
   cardSharingOff: 'Berbagi lokasi nonaktif',
   cardPermissionOff: 'Lokasi belum diizinkan di perangkat ini',
   cardNotUpdating: 'Lokasi berhenti diperbarui',

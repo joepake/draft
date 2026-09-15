@@ -110,8 +110,6 @@ export const settings = {
   toastDeletionAlreadyPending: '계정 삭제가 이미 진행 중입니다.',
   toastDeletionRequestFailed: '계정 삭제를 시작하지 못했습니다. 다시 시도해 주세요.',
   deletionRequestAlreadyPending: '이 계정의 삭제가 이미 진행 중입니다.',
-  signOutToRemoveParentDevice:
-    '해당 기기를 계정에서 삭제하려면 그 기기에서 로그아웃해 주세요.',
   languageLabel: '언어',
   languageHint: 'KidGate의 표시 언어를 선택하세요',
   languageScreenTitle: '언어',

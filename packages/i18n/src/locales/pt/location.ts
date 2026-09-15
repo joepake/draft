@@ -71,7 +71,6 @@ export const location = {
     'A localização é lida desse dispositivo. Um tablet em casa pode informar uma posição mais recente que o celular na mochila, então o KidGate nunca adivinha.',
   childDevicesOnline: '{{online}} de {{total}} online',
   childNoneOnline: 'Nenhum dispositivo online',
-  childPickCarried: 'Anda junto',
   childPickCarriedA11y:
     'Marcar {{deviceName}} como o dispositivo que {{childName}} leva',
   stayRange: '{{from}} – {{to}}',
@@ -79,8 +78,6 @@ export const location = {
     'Selecione Permitir e depois Sempre para que as atualizações continuem em segundo plano.',
   requestNoFix:
     'Este dispositivo não conseguiu obter uma posição. A localização pode ainda não estar permitida nele.',
-  requestSharingOff: 'A partilha de localização está desativada neste dispositivo.',
-  requestUnsupported: 'Este dispositivo não pode informar a posição.',
   cardSharingOff: 'O compartilhamento de localização está desativado',
   cardPermissionOff: 'A localização não é permitida neste dispositivo',
   cardNotUpdating: 'A localização parou de atualizar',

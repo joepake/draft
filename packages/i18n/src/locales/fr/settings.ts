@@ -116,8 +116,6 @@ export const settings = {
   toastDeletionRequestFailed:
     'Impossible de lancer la suppression du compte. Veuillez réessayer.',
   deletionRequestAlreadyPending: 'La suppression est déjà en cours pour ce compte.',
-  signOutToRemoveParentDevice:
-    'Veuillez vous déconnecter sur cet appareil pour le supprimer de votre compte.',
   languageLabel: 'Langue',
   languageHint: 'Choisissez la langue d’affichage de KidGate',
   languageScreenTitle: 'Langue',

@@ -111,8 +111,6 @@ export const settings = {
   toastDeletionRequestFailed:
     'Penghapusan akun tidak dapat dimulai. Silakan coba lagi.',
   deletionRequestAlreadyPending: 'Penghapusan akun ini sudah sedang berlangsung.',
-  signOutToRemoveParentDevice:
-    'Silakan keluar di perangkat tersebut untuk menghapusnya dari akun Anda.',
   languageLabel: 'Bahasa',
   languageHint: 'Pilih bahasa tampilan untuk KidGate',
   languageScreenTitle: 'Bahasa',

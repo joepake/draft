@@ -83,7 +83,7 @@ export const webFilter = {
 
   windowsFilterNote: 'Nutzt KidGates eigenen Resolver unter Windows',
   webFilteringNote:
-    'iOS nutzt den Erwachsenenfilter der Bildschirmzeit; Android eine Blockliste über lokales DNS-VPN.',
+    'iOS nutzt den Erwachsenenfilter der Bildschirmzeit. Android, Mac und Windows nutzen die eigene Sperrliste von KidGate.',
   safeSearchAlertsNote:
     'Safari teilt keine Suchbegriffe; Stichwort-Warnungen erfordern einen verwalteten sicheren Browser.',
   webHistoryNote: 'Erfordert einen gefilterten Browser oder DNS/VPN-Berichte.',
@@ -92,7 +92,7 @@ export const webFilter = {
     'KidGate bringt eigene Domain-Listen mit. Sie decken die Seiten ab, die Kinder wirklich erreichen, nicht das ganze Web – ergänze sie mit den Listen unten.',
   androidOnlyCategory: 'Nicht auf dem iPhone – funktioniert auf Android und Mac',
   iosCategoryNote:
-    'Das iPhone unterstützt nur {{category}}, über Apples eigenen Filter. Die übrigen Kategorien gelten für Android-Geräte.',
+    'Das iPhone unterstützt nur {{category}}, über Apples eigenen Filter. Die übrigen Kategorien gelten für Android- und Mac-Kindergeräte.',
   allowListTitle: 'Immer erlauben',
   allowListSubtitle:
     'Seiten, die erreichbar bleiben, auch wenn eine Kategorie sie blockieren würde.',

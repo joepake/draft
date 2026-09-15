@@ -582,18 +582,12 @@ export default {
     inventoryTitle: 'Yüklü uygulamalar',
     inventorySub: 'Bu cihazdaki her şey, yalnızca değişenler değil',
     inventoryEmpty: 'Bu cihaz uygulama listesini henüz göndermedi.',
-    inventoryStale:
-      'Bu liste güncel değil. Cihaz bir sonraki bağlantısında yenilenecek.',
     inventoryFirstScan:
       'İlk tarama, bu yüzden KidGate bunların ne zaman geldiğini söyleyemez.',
     inventoryFlagged: 'Bakmaya değer',
     inventoryFlaggedLabel: 'İncelenecek',
     inventoryOtherLabel: 'Tanımlandı',
     inventoryUnknownLabel: 'Tanımlanmadı',
-    inventoryIncomplete:
-      'Ana ekranda simgesi olmayan bir uygulama burada görünmeyebilir.',
-    inventoryPending: 'Onayınızı bekliyor',
-    pendingInstallBlocked: 'Siz izin verene kadar engelli',
     installAllow: 'İzin ver',
     pendingInstallsTitle: 'Onay bekleyen yeni uygulamalar',
     pendingInstallsSub:
@@ -635,8 +629,6 @@ export default {
 
     locationTitle: 'Konum',
     locationSharingOff: 'Paylaşım kapalı',
-    locationSyncNote:
-      'Konumun güncellenmesi birkaç dakika sürebilir — cihazın internet bağlantısı yoksa veya beklenmedik şekilde kapandıysa bu süre daha uzun olabilir.',
     locationUpdated: '{{when}} güncellendi',
     locationWaiting: 'İlk güncelleme bekleniyor',
     lastKnownLocation: 'Bilinen son konum',
@@ -709,8 +701,6 @@ export default {
     rowLocationDesc: 'Son güncelleme {{when}}',
     rowLocationNone: 'Henüz konum yok',
     rowSearchMonitoring: 'Arama denetimi',
-    rowSearchMonitoringDesc:
-      'Tarayıcılar ve YouTube. Yalnızca işaretli kelime bildirilir, aramanın kendisi asla.',
     rowSafeSearch: 'Güvenli Aramayı zorunlu kıl',
     rowSafeSearchDesc:
       'Google SafeSearch, YouTube Kısıtlı Mod, Bing ve DuckDuckGo’yu katı ayarda kilitler. Android, Android TV ve Chrome. Bu seviyede YouTube yorumları da gizler ve bazı sıradan videoları engeller.',
@@ -765,40 +755,10 @@ export default {
     title: 'Haftalık rapor',
     subtitle: 'KidGate’in bu hafta fark ettikleri.',
     weekOf: '{{week}} haftası',
-    range: '{{from}} – {{to}}',
     writtenAt: '{{when}} tarihinde yazıldı',
     triggerScheduled: 'Pazartesi gönderildi',
     triggerManual: 'Sizin oluşturduğunuz',
-    statScreenTime: 'Ekran Süresi',
-    statDailyAverage: 'Günlük ortalama',
-    statBlockedApps: 'Engellenen uygulamalar',
-    statBlockedWebVisits: 'Filtrelenen siteler',
-    statTasksApproved: 'Tamamlanan görevler',
-    trendUp: 'Önceki haftadan {{value}} daha fazla',
-    trendDown: 'Önceki haftadan {{value}} daha az',
-    trendFlat: 'Önceki haftayla hemen hemen aynı',
-    trendFirstWeek: 'Ölçülen ilk hafta',
-    barThisWeek: 'Bu hafta',
-    barLastWeek: 'Geçen hafta',
     highlights: 'Bilmekte fayda var',
-    sevAttention: 'Bakmaya değer',
-    sevNotable: 'Dikkat çekici',
-    sevInfo: 'Bilgi olsun',
-    findingUsageUp:
-      'Ekran süresi %{{percent}} arttı — geçen haftadan {{delta}} daha fazla.',
-    findingUsageDown:
-      'Ekran süresi %{{percent}} azaldı — geçen haftadan {{delta}} daha az.',
-    findingUsageFlat: 'Ekran süresi {{total}} düzeyinde kaldı.',
-    findingLateNight: '23.00’ten sonra {{count}} gece — en geç {{time}} saatine kadar.',
-    findingNewTopApp: '{{app}} bu hafta yeni ve şimdiden {{duration}} sürdü.',
-    findingAppSurge:
-      '{{app}} geçen haftaya göre {{delta}} arttı — toplam {{duration}}.',
-    findingLimitHit: '{{limit}} olan günlük sınıra {{count}} gün ulaşıldı.',
-    findingBlockedApps:
-      '{{count}} uygulama açılışı engellendi, geçen hafta {{previous}} idi.',
-    findingBlockedWeb: '{{count}} site filtrelendi, geçen hafta {{previous}} idi.',
-    findingQuietWeek:
-      'Sakin bir hafta — toplam {{total}} ve sizi gerektiren bir şey yok.',
     narrativeTitle: 'Tek cümleyle',
     finePrint:
       'Rakamlar {{from}} – {{to}} arasını, ailedeki tüm cihazları kapsar. Ekran süresi cihazların bildirdiğidir; ölçülemeyen dakikalar hiçbir toplama dahil değildir.',
@@ -827,14 +787,7 @@ export default {
     colLimit: 'Sınırın üzerinde',
     colLateNights: 'Geç geceler',
     colTopApp: 'En çok kullanılan',
-    unnamedChild: 'Adsız cihaz',
-    changeUp: '+{{value}}',
-    changeDown: '−{{value}}',
-    changeFlat: 'hemen hemen aynı',
     noLimit: 'Sınır yok',
-    noTopApp: '—',
-    limitDays: '{{count}} gün',
-    lateNightsNone: 'yok',
     busiest: 'En çok ekran süresi',
 
     historyTitle: 'Önceki haftalar',

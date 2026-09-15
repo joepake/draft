@@ -7,6 +7,7 @@ import { useFamilyReports } from '../dashboard/useFamilyReports.js';
 import { createActions } from '../dashboard/controlsApi.js';
 import { useT } from '@kidgate/web-ui/useT';
 import LanguagePicker from '@kidgate/web-ui/LanguagePicker';
+import ThemeToggle from '../dashboard/ThemeToggle.jsx';
 import { trackScreen } from '../lib/analytics.js';
 
 function Splash({ children }) {
@@ -203,6 +204,10 @@ function LiveDashboard({ user, deviceId, onDeviceChange, signOut }) {
               {t('common.signOut')}
             </button>
           </div>
+          {/* The palette is a fourth fact about this browser, so it joins the
+              other three rather than opening a settings screen the dashboard
+              does not have. */}
+          <ThemeToggle />
           {/* Email first, matching the app's getAccountDisplayLabel — a
               display name is often a placeholder like "Guest". Its own row:
               an address long enough to matter is one that truncates, and it

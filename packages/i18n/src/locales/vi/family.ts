@@ -214,6 +214,7 @@ export const family = {
   blockedHoursActiveNow: 'Đang trong Giờ khóa thiết bị',
   inactiveOpenKidGate: 'Không hoạt động — vui lòng mở KidGate trên thiết bị này',
   protectionNeedsSetup: '{{issueLabel}} cần thiết lập',
+  freeTierCadenceHint: 'Gói miễn phí — cập nhật mỗi {{minutes}} phút',
   dailyLimitOn: 'Giới hạn hằng ngày đang bật',
   deviceReady: 'Sẵn sàng',
   sos: 'SOS',

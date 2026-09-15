@@ -136,7 +136,6 @@ export const plans = {
   purchasesRestored: 'Đã khôi phục giao dịch.',
   unableToRestorePurchases: 'Không thể khôi phục giao dịch. Vui lòng thử lại.',
   purchaseVerificationFailed: 'Xác minh giao dịch không thành công.',
-  unableToVerifyPurchase: 'Không thể xác minh giao dịch. Vui lòng thử lại.',
   // Hiển thị cho phụ huynh tham gia — chỉ chủ gia đình mới đăng ký được,
   // nên câu chữ phải nói rõ ai cần hành động thay vì đưa nút họ không dùng được.
   familyPremiumEndedTitle: 'Gói Premium của gia đình này đã kết thúc',
@@ -206,7 +205,7 @@ export const plans = {
     'Bản miễn phí gửi một báo cáo khi hết dùng thử. Premium gửi mỗi tuần một bản.',
   teaserProofRewardTasks: 'Nhiệm vụ đang bật: {{count}}',
   teaserRewardTasks:
-    'Đó là số nhiệm vụ tối đa bản miễn phí chạy cùng lúc. Premium gấp đôi.',
+    'Đó là số nhiệm vụ tối đa bản miễn phí chạy cùng lúc. Premium tăng gấp đôi số này.',
   teaserLiveNote: 'Bản miễn phí cập nhật 30 phút một lần. Premium là trực tiếp.',
   teaserUsageTimeline:
     'Premium cho biết thiết bị được dùng vào những khung giờ nào trong ngày.',

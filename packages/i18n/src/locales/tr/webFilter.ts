@@ -35,7 +35,7 @@ export const webFilter = {
   infoLine3Ios:
     'Çocuk cihazındaki uygulama denetimleri eşitlediğinde KidGate ayarı otomatik uygular.',
   infoLine1Android:
-    'KidGate, DNS’i yetişkin alan adlarına karşı denetleyen ve bazı şifreli DNS çözümleyicilerini engelleyen yerel bir VPN başlatır.',
+    'KidGate, cihazda özel bir bağlantı çalıştırır; hangi sitelere girilmek istendiğini görür ve seçtiğiniz kategorilerdeki siteleri engeller.',
   infoLine2Android:
     'Çocuk cihazında Özel DNS’i kapatın. Açıksa tarayıcılar filtreyi atlayabilir.',
   infoLine3Android:
@@ -82,16 +82,16 @@ export const webFilter = {
 
   windowsFilterNote: 'Windows’ta KidGate’in kendi çözümleyicisini kullanır',
   webFilteringNote:
-    'iOS, Ekran Süresi yetişkin filtresini; Android, yerel DNS VPN engel listesini kullanır.',
+    'iOS, Ekran Süresi yetişkin filtresini kullanır. Android, Mac ve Windows ise KidGate’in kendi engel listesini kullanır.',
   safeSearchAlertsNote:
     'Safari arama terimlerini paylaşmaz; anahtar kelime uyarıları yönetilen güvenli bir tarayıcı gerektirir.',
   webHistoryNote: 'Filtreli bir tarayıcı veya DNS/VPN tarzı raporlama gerektirir.',
   categoriesTitle: 'Neler engellensin',
   categoriesSubtitle:
     'KidGate kendi alan adı listelerini kullanır. Çocukların gerçekten ulaştığı siteleri kapsar, tüm web’i değil — aşağıdaki listelerle birlikte kullanın.',
-  androidOnlyCategory: 'Yalnızca Android — iOS’ta kategori bazlı web denetimi yok',
+  androidOnlyCategory: 'iPhone’da kullanılamaz — Android ve Mac’te çalışır',
   iosCategoryNote:
-    'iPhone yalnızca {{category}} destekler, Apple’ın kendi filtresiyle. Diğer kategoriler Android cihazlar için geçerlidir.',
+    'iPhone, Apple’ın kendi filtresiyle yalnızca {{category}} kategorisini destekler. Diğer kategoriler Android ve Mac çocuk cihazları için geçerlidir.',
   allowListTitle: 'Her zaman izin ver',
   allowListSubtitle: 'Bir kategori engelleyecek olsa bile erişilebilir kalan siteler.',
   allowListEmpty: 'Henüz istisna yok.',

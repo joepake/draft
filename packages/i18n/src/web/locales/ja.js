@@ -69,7 +69,7 @@ export default {
     terms: '利用規約',
     deleteData: 'データを削除する',
     rights: '© {{year}} KidGate. All rights reserved.',
-    madeFor: 'iPhone、Android の家族のために。',
+    madeFor: 'iPhone、Android、Mac、Windows をお使いのご家族のために。',
   },
 
   legalNote:
@@ -576,17 +576,11 @@ export default {
     inventoryTitle: 'インストール済みのアプリ',
     inventorySub: '変化があったものだけでなく、この端末のすべて',
     inventoryEmpty: 'この端末はまだアプリ一覧を送信していません。',
-    inventoryStale:
-      'この一覧は古くなっています。端末が次に接続したときに更新されます。',
     inventoryFirstScan: '初回のスキャンのため、いつ追加されたかは分かりません。',
     inventoryFlagged: '確認する価値あり',
     inventoryFlaggedLabel: '要確認',
     inventoryOtherLabel: '判別済み',
     inventoryUnknownLabel: '未判別',
-    inventoryIncomplete:
-      'ホーム画面にアイコンがないアプリはここに表示されないことがあります。',
-    inventoryPending: '保護者の承認待ちです',
-    pendingInstallBlocked: '許可するまでブロックされます',
     installAllow: '許可',
     pendingInstallsTitle: '承認待ちの新しいアプリ',
     pendingInstallsSub:
@@ -626,8 +620,6 @@ export default {
 
     locationTitle: '位置情報',
     locationSharingOff: '共有はオフです',
-    locationSyncNote:
-      '位置情報が更新されるまで数分かかることがあります。デバイスがインターネットに接続していない場合や、予期せず終了した場合は、さらに時間がかかることがあります。',
     locationUpdated: '更新 {{when}}',
     locationWaiting: '最初の更新を待っています',
     lastKnownLocation: '最後に分かった位置',
@@ -697,8 +689,6 @@ export default {
     rowLocationDesc: '最終更新 {{when}}',
     rowLocationNone: 'まだ位置情報がありません',
     rowSearchMonitoring: '検索のチェック',
-    rowSearchMonitoringDesc:
-      'ブラウザと YouTube。報告されるのは該当した語句だけで、検索内容そのものは送られません。',
     rowSafeSearch: 'セーフサーチを強制',
     rowSafeSearchDesc:
       'Google セーフサーチ、YouTube 制限付きモード、Bing、DuckDuckGo を厳格設定に固定します。Android、Android TV、Chrome。 このレベルでは YouTube はコメントも非表示にし、ふつうの動画も一部ブロックします。',
@@ -753,43 +743,10 @@ export default {
     title: '週次レポート',
     subtitle: 'KidGate が今週気づいたこと。',
     weekOf: '{{week}} の週',
-    range: '{{from}} – {{to}}',
     writtenAt: '{{when}} に作成',
     triggerScheduled: '月曜に送信',
     triggerManual: 'ご自身で作成',
-    statScreenTime: 'スクリーンタイム',
-    statDailyAverage: '1 日あたりの平均',
-    statBlockedApps: 'ブロックしたアプリ',
-    statBlockedWebVisits: 'フィルタしたサイト',
-    statTasksApproved: '完了したタスク',
-    trendUp: '前の週より {{value}} 多い',
-    trendDown: '前の週より {{value}} 少ない',
-    trendFlat: '前の週とほぼ同じ',
-    trendFirstWeek: '計測できた最初の週',
-    barThisWeek: '今週',
-    barLastWeek: '先週',
     highlights: '知っておきたいこと',
-    sevAttention: '目を通したい',
-    sevNotable: '注目',
-    sevInfo: '参考まで',
-    findingUsageUp:
-      'スクリーンタイムは {{percent}}% 増加し、先週より {{delta}} 長くなりました。',
-    findingUsageDown:
-      'スクリーンタイムは {{percent}}% 減少し、先週より {{delta}} 短くなりました。',
-    findingUsageFlat: 'スクリーンタイムは {{total}} で横ばいでした。',
-    findingLateNight:
-      '23 時以降の夜が {{count}} 回あり、最も遅い日は {{time}} まででした。',
-    findingNewTopApp:
-      '{{app}} は今週から使われ始め、すでに {{duration}} に達しています。',
-    findingAppSurge:
-      '{{app}} は先週より {{delta}} 増え、合計 {{duration}} になりました。',
-    findingLimitHit: '1 日の上限 {{limit}} に達した日が {{count}} 日ありました。',
-    findingBlockedApps:
-      'アプリの起動を {{count}} 件ブロックしました（先週は {{previous}} 件）。',
-    findingBlockedWeb:
-      'サイトを {{count}} 件フィルタしました（先週は {{previous}} 件）。',
-    findingQuietWeek:
-      '穏やかな一週間でした。合計 {{total}} で、確認が必要なことはありません。',
     narrativeTitle: 'ひとことで',
     finePrint:
       '数値は {{from}} から {{to}} まで、ご家族のすべてのデバイスが対象です。スクリーンタイムはデバイスが報告した値で、計測できなかった時間はどの合計にも含まれません。',
@@ -818,14 +775,7 @@ export default {
     colLimit: '上限超え',
     colLateNights: '深夜',
     colTopApp: '最も使用',
-    unnamedChild: '名称未設定のデバイス',
-    changeUp: '+{{value}}',
-    changeDown: '−{{value}}',
-    changeFlat: 'ほぼ同じ',
     noLimit: '上限なし',
-    noTopApp: '—',
-    limitDays: '{{count}} 日',
-    lateNightsNone: 'なし',
     busiest: 'スクリーンタイム最多',
 
     historyTitle: '過去の週',

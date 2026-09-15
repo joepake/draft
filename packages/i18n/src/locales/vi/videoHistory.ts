@@ -6,7 +6,7 @@ export const videoHistory = {
     'YouTube trên trình duyệt, và ứng dụng YouTube trên điện thoại Android lẫn TV. Riêng trên TV, Shorts không hiện trong danh sách vì ứng dụng TV không nhận diện chúng là Shorts.',
   toggleFailed: 'Không cập nhật được lịch sử video. Vui lòng thử lại.',
   unsupportedNote:
-    'Thiết bị này không báo được video đã xem. Tính năng này chỉ hoạt động trên Android và Chrome.',
+    'Thiết bị này không báo được video đã xem. Tính năng này chỉ hoạt động trên Android, Android TV và Chrome.',
 
   unsupportedNeedsExtension:
     'KidGate trên máy tính này không thấy được video nào đang được xem — nó đọc tên trang, không đọc nội dung bên trong. Tiện ích KidGate cho Chrome thì thấy được: cài nó trên máy này, nó sẽ báo video đã xem như một thiết bị riêng.',

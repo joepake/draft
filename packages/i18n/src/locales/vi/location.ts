@@ -63,15 +63,12 @@ export const location = {
     'Vị trí của con được đọc từ thiết bị đó. Máy tính bảng để ở nhà có thể báo vị trí mới hơn điện thoại trong cặp, nên KidGate không bao giờ đoán.',
   childDevicesOnline: '{{online}}/{{total}} thiết bị đang trực tuyến',
   childNoneOnline: 'Không có thiết bị nào trực tuyến',
-  childPickCarried: 'Đi cùng con',
   childPickCarriedA11y: 'Đánh dấu {{deviceName}} là thiết bị {{childName}} mang theo',
   stayRange: '{{from}} – {{to}}',
   wizardStepAllow:
     'Chạm Cho phép, rồi chọn Luôn luôn để vị trí vẫn cập nhật khi chạy nền.',
   requestNoFix:
     'Thiết bị này không lấy được vị trí. Có thể quyền vị trí chưa được cho phép.',
-  requestSharingOff: 'Chia sẻ vị trí đang tắt trên thiết bị này.',
-  requestUnsupported: 'Thiết bị này không thể báo vị trí.',
   cardSharingOff: 'Chia sẻ vị trí đang tắt',
   cardPermissionOff: 'Thiết bị này chưa cho phép truy cập vị trí',
   cardNotUpdating: 'Vị trí đã ngừng cập nhật',

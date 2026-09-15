@@ -608,16 +608,11 @@ export default {
     inventoryTitle: 'Installed apps',
     inventorySub: 'Everything on this device, not only what changed',
     inventoryEmpty: 'This device has not published its app list yet.',
-    inventoryStale:
-      'This list is out of date. It refreshes when the device next checks in.',
     inventoryFirstScan: 'First scan, so KidGate cannot say when any of these arrived.',
     inventoryFlagged: 'Worth a look',
     inventoryFlaggedLabel: 'Worth a look',
     inventoryOtherLabel: 'Identified',
     inventoryUnknownLabel: 'Not identified',
-    inventoryIncomplete: 'An app with no icon on the home screen may not appear here.',
-    inventoryPending: 'Waiting for your approval',
-    pendingInstallBlocked: 'Blocked until you allow it',
     installAllow: 'Allow',
     pendingInstallsTitle: 'New apps waiting for approval',
     pendingInstallsSub:
@@ -657,8 +652,6 @@ export default {
       'Categories are enforced by the KidGate content filter on the Mac.',
 
     locationTitle: 'Location',
-    locationSyncNote:
-      'Location can take a few minutes to update — longer if the device has no internet connection or was closed unexpectedly.',
     locationSharingOff: 'Sharing is off',
     locationUpdated: 'Updated {{when}}',
     locationWaiting: 'Waiting for the first update',
@@ -731,8 +724,6 @@ export default {
     rowLocationDesc: 'Last update {{when}}',
     rowLocationNone: 'No location yet',
     rowSearchMonitoring: 'Search monitoring',
-    rowSearchMonitoringDesc:
-      'Browsers and YouTube. Only the flagged word is reported, never the search itself.',
     rowSafeSearch: 'Force SafeSearch',
     rowSafeSearchDesc:
       'Locks Google SafeSearch, YouTube Restricted Mode, Bing and DuckDuckGo to their strict settings. Android, Android TV and Chrome. At this level YouTube also hides comments and blocks some ordinary videos.',
@@ -781,44 +772,11 @@ export default {
     title: 'Weekly report',
     subtitle: 'What KidGate noticed about the week.',
     weekOf: 'Week {{week}}',
-    range: '{{from}} – {{to}}',
     writtenAt: 'Written {{when}}',
     triggerScheduled: 'Sent Monday',
     triggerManual: 'Created by you',
 
-    statScreenTime: 'Screen Time',
-    statDailyAverage: 'Daily average',
-    statBlockedApps: 'Apps blocked',
-    statBlockedWebVisits: 'Sites filtered',
-    statTasksApproved: 'Tasks completed',
-
-    trendUp: '{{value}} more than the week before',
-    trendDown: '{{value}} less than the week before',
-    trendFlat: 'About the same as the week before',
-    trendFirstWeek: 'First week measured',
-    barThisWeek: 'This week',
-    barLastWeek: 'Last week',
-
     highlights: 'Worth knowing',
-    sevAttention: 'Worth a look',
-    sevNotable: 'Notable',
-    sevInfo: 'Good to know',
-
-    findingUsageUp: 'Screen time was up {{percent}}% — {{delta}} more than last week.',
-    findingUsageDown:
-      'Screen time was down {{percent}}% — {{delta}} less than last week.',
-    findingUsageFlat: 'Screen time held steady at {{total}}.',
-    findingLateNight_one: 'One night past 11pm — it ran to {{time}}.',
-    findingLateNight_other: '{{count}} nights past 11pm — the latest ran to {{time}}.',
-    findingNewTopApp: '{{app}} is new this week and already took {{duration}}.',
-    findingAppSurge: '{{app}} is up {{delta}} on last week — {{duration}} in total.',
-    findingLimitHit_one: 'The daily limit of {{limit}} was reached on one day.',
-    findingLimitHit_other:
-      'The daily limit of {{limit}} was reached on {{count}} days.',
-    findingBlockedApps:
-      '{{count}} blocked app openings, against {{previous}} last week.',
-    findingBlockedWeb: '{{count}} sites filtered, against {{previous}} last week.',
-    findingQuietWeek: 'A quiet week — {{total}} in all, and nothing that needed you.',
 
     narrativeTitle: 'In a sentence',
     finePrint:
@@ -852,15 +810,7 @@ export default {
     colLimit: 'Over limit',
     colLateNights: 'Late nights',
     colTopApp: 'Most used',
-    unnamedChild: 'Unnamed device',
-    changeUp: '+{{value}}',
-    changeDown: '−{{value}}',
-    changeFlat: 'about the same',
     noLimit: 'No limit',
-    noTopApp: '—',
-    limitDays_one: '{{count}} day',
-    limitDays_other: '{{count}} days',
-    lateNightsNone: 'none',
     busiest: 'Most screen time',
 
     historyTitle: 'Earlier weeks',

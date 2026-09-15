@@ -52,21 +52,20 @@ export function getEffectiveDeviceStatus(
    * the button that would clear it is now hidden precisely because it does
    * nothing. The probe is what makes the field readable.
    */
-  if (device.isLocked && supportsLock(device)) {
-    return 'locked';
-  }
+  const locked = device.isLocked && supportsLock(device);
 
   /*
-   * After the lock and ahead of the clock. A parked device sends no beat at
-   * all (`docs/PRICING.md` §6), so read against `lastActiveAt` it is "offline"
-   * within the hour and stays that way — every parked device, on both consoles,
-   * painted red for a plan decision. It is not offline: it is enforcing every
-   * rule it holds and has been told not to report. The lock still wins above,
-   * because a parent who locked a parked device wants to see that it took, and
-   * the field it is read from is one the device honours whether parked or not.
+   * Ahead of the clock, and the only place the lock still is. A parked device
+   * sends no beat at all (`docs/PRICING.md` §6), so read against `lastActiveAt`
+   * it is "offline" within the hour and stays that way — every parked device,
+   * on both consoles, painted red for a plan decision. It is not offline: it is
+   * enforcing every rule it holds and has been told not to report. The lock
+   * wins here for the same reason: silence is a plan decision on this device,
+   * so it is not evidence about the lock, and a parent who locked a parked
+   * device wants to see that it took.
    */
   if (device.monitoringState === 'parked') {
-    return 'parked';
+    return locked ? 'locked' : 'parked';
   }
 
   if (!device.lastActiveAt) {
@@ -76,6 +75,27 @@ export function getEffectiveDeviceStatus(
   const age = nowMs - new Date(device.lastActiveAt).getTime();
   if (age > thresholdMs) {
     return 'offline';
+  }
+
+  /*
+   * **Behind the clock since 2026-09-15, and it used to be ahead of it.**
+   *
+   * `isLocked` is what the parent asked for, never what the device did, so a
+   * device that had said nothing for a day flipped from Offline to Locked the
+   * instant the button was pressed — a chip claiming the thing was reachable
+   * while the protection summary on the same screen said it had not checked in
+   * for 24 hours (`domain/protectionStatus`, `INACTIVE_THRESHOLD_MS`). One of
+   * the two was lying and it was this one: silence is the only evidence either
+   * of them has, and `setDeviceLock` writes no beat precisely so that it stays
+   * that way (`functions/http/controls.js`).
+   *
+   * The lock is not lost by moving it down here. `domain/deviceListPriority`
+   * reads `resolveLockEnforcement` off the raw fields, so a silent locked
+   * device still carries **"Lock sent — waiting for the device"**, which is the
+   * true sentence this chip had no way to say.
+   */
+  if (locked) {
+    return 'locked';
   }
 
   return 'online';

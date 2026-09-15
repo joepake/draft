@@ -38,7 +38,7 @@ export const rewardTask = {
   openSectionTitle: 'Bekleyen görevler',
   tabOpen: 'Yapılacak',
   tabDone: 'Tamamlandı',
-  doneEmptyBody: 'Onayladığın görevler burada görünür.',
+  doneEmptyBody: 'Onayladığınız görevler burada görünür.',
   openSectionSubtitle: 'Düzenlemek veya silmek için bir göreve dokun.',
   editTaskA11y: '{{title}} görevini düzenle',
   sentBackNote: 'Geri gönderildi — yeni deneme bekleniyor.',

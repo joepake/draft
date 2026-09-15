@@ -3,7 +3,6 @@ export const appInventory = {
   pendingTitle: 'Đang chờ bạn duyệt',
   pendingBadge: 'Bị chặn cho đến khi bạn cho phép',
   approvedBadge: 'Đã được bạn cho phép',
-  installedAtLabel: 'Đã cài {{when}}',
   allowApp: 'Cho phép',
   subtitle:
     'Tất cả ứng dụng KidGate thấy đã cài trên máy, không chỉ những thay đổi gần đây.',
@@ -14,8 +13,6 @@ export const appInventory = {
   scannedLabel: 'Lần quét gần nhất',
   staleNote: 'Danh sách này đã cũ, sẽ được cập nhật khi thiết bị kết nối lần tới.',
   truncatedNote: 'Đang hiện {{shown}} trong {{total}} ứng dụng tìm được.',
-  firstScanNote:
-    'Đây là lần quét đầu tiên, nên KidGate chưa biết các ứng dụng này xuất hiện khi nào.',
   newBadge: 'Mới',
   ageBadge: '{{age}}+',
   browserExtension: 'Tiện ích Chrome',
