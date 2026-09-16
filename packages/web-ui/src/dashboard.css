@@ -62,10 +62,15 @@
    * on the token 63 declarations use for every hint, caption and meta line
    * this surface draws. Measured 2026-09-15, the day the theme toggle landed.
    *
-   * 95% gives 5.25 on the light card and 4.64 on the light page, 7.38 and
-   * 8.81 on the dark ones, and stays dimmer than `--ink-2` in both (5.82 /
+   * 95% gives 5.25 on the light card and 4.64 on the light page, 7.40 and
+   * 8.84 on the dark ones, and stays dimmer than `--ink-2` in both (5.82 /
    * 8.14), so the three-step hierarchy survives the fix. The page ground is
    * the binding constraint — re-measure against it before lowering this.
+   *
+   * Re-measured 2026-09-16 and all four still hold. The one ground this token
+   * fails on is a SELECTED row (`--brand` at 14%), where it reads 4.31 in
+   * light; that is fixed where it happens, on `.is-active`, rather than by
+   * darkening every hint in the product to suit one tint.
    */
   --muted: color-mix(in srgb, var(--kg-textSecondary) 95%, var(--kg-background));
   --line: color-mix(in srgb, var(--kg-text) 9%, transparent);
@@ -423,13 +428,31 @@
  * behind it — so a family of four is four distinguishable rows rather than
  * four identical ones with a different word in each.
  */
-.kid-group-head {
-  min-height: 3.1rem;
-}
-
 .kid-group-head.is-open .kid-meta strong,
 .kid-group-head.is-active .kid-meta strong {
   color: var(--ink);
+}
+
+/*
+ * The selected row's secondary lines step up one level.
+ *
+ * `--muted` is correct everywhere else and was re-measured on 2026-09-16
+ * before this was written — 4.64 on the light page, 5.25 on the light card,
+ * 8.84 and 7.40 on the dark ones. The one ground it fails on is THIS one: a
+ * selected row is `--brand` at 14%, and muted text over that measures 4.31 in
+ * light, under AA on the meta line and the last-active line the Family list
+ * exists to be read from.
+ *
+ * `--ink-2` on the same tint measures 4.79 light and 6.10 dark. Lifting the
+ * text rather than thinning the tint keeps the selection as visible as it was
+ * — dropping the tint to 10% would have cleared AA too (4.57) and cost the
+ * one cue that says which row is open.
+ */
+.kid.is-active .kid-meta em,
+.kid.is-active .kid-last-active,
+.kid-group-head.is-active .kid-meta em,
+.kid-group-head.is-active .kid-last-active {
+  color: var(--ink-2);
 }
 
 /*
@@ -1842,6 +1865,22 @@ ol.attn-fix li + li {
 }
 
 /* ---------- Table ---------- */
+
+/*
+ * A table gets its own horizontal scroller, and the page body never does.
+ *
+ * `.tbl` is `width: 100%` but its headers are `white-space: nowrap`, so at
+ * 375px the four columns of Web activity measured 377px and pushed the whole
+ * document 32px sideways — which on this layout drags the fixed bottom tab bar
+ * out of the viewport with it. Measured 2026-09-16. `.report-table-wrap` is
+ * the same container around the weekly report's table, for the same reason.
+ */
+.tbl-wrap {
+  overflow-x: auto;
+  /* Only the table scrolls; a stray vertical scroller here would trap the
+     page's own. */
+  overflow-y: visible;
+}
 
 .tbl {
   width: 100%;
@@ -3261,7 +3300,12 @@ ol.attn-fix li + li {
   display: flex;
   flex-direction: column;
   gap: 0.15rem;
-  background: var(--card);
+  /* `--surface`, the token every other card on this page uses. This said
+     `var(--card)`, which is not a variable this stylesheet defines — the
+     declaration was invalid and dropped, so the child list rendered as a bare
+     bordered box on the page ground while every card beside it was white.
+     Measured in the browser 2026-09-16. */
+  background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--dash-radius-2);
   padding: 0.5rem;
@@ -3270,8 +3314,9 @@ ol.attn-fix li + li {
 .settings-account {
   /* The rail's footer block, re-homed. It keeps the footer's own rules — the
      picker and Sign out share a row, the address truncates under them — so
-     this only has to give it a card to sit in. */
-  background: var(--card);
+     this only has to give it a card to sit in. `--surface`, not the
+     `var(--card)` this used to say — that token does not exist. */
+  background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--dash-radius-2);
   padding: 1rem;
@@ -3403,6 +3448,166 @@ ol.attn-fix li + li {
   color: var(--ink-2);
 }
 
+/* ---------- The Family summary row ----------
+ *
+ * The phone scrolls this row horizontally because a 375pt screen has no other
+ * option; a browser wraps instead, so nothing is ever clipped and the urgency
+ * ordering matters slightly less here than it does there. It is kept anyway —
+ * two consoles listing the same counts in two orders is the drift the shared
+ * rule exists to stop.
+ */
+
+.family-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+/* `.chip` is the feed filter's; these two tones are this row's. A reading
+   renders as a `<span>` and an action as a `<button>`, so the pointer only
+   changes where a click does something. */
+.chip.tone-danger {
+  color: var(--kg-errorStrong);
+  background: color-mix(in srgb, var(--kg-errorStrong) 13%, transparent);
+  border-color: color-mix(in srgb, var(--kg-errorStrong) 35%, transparent);
+}
+
+.chip.tone-warning {
+  color: var(--kg-warningStrong);
+  background: color-mix(in srgb, var(--kg-warningStrong) 14%, transparent);
+  border-color: color-mix(in srgb, var(--kg-warningStrong) 35%, transparent);
+}
+
+.chip.is-action {
+  cursor: pointer;
+}
+
+.chip:not(.is-action) {
+  cursor: default;
+}
+
+/*
+ * The per-child pills. Smaller than the row's chips and never interactive:
+ * the whole row is already the door into that child, so a pill that could be
+ * clicked separately would be a second target inside the first.
+ */
+.kid-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin-top: 0.25rem;
+}
+
+.kid-pill {
+  padding: 0.05rem 0.4rem;
+  border-radius: 999px;
+  font-size: var(--dash-text-1);
+  font-weight: 600;
+  font-style: normal;
+}
+
+.kid-pill.tone-danger {
+  color: var(--kg-errorStrong);
+  background: color-mix(in srgb, var(--kg-errorStrong) 13%, transparent);
+}
+
+.kid-pill.tone-warning {
+  color: var(--kg-warningStrong);
+  background: color-mix(in srgb, var(--kg-warningStrong) 14%, transparent);
+}
+
+/* Name and stars share the line; the stars never push the name off it. */
+.kid-name-row {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.kid-name-row strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/*
+ * The number and a star, not the word — a count beside a name reads at a
+ * glance, and `childStarsA11y` is the sentence a screen reader gets instead.
+ * `warningStrong` because a plain `warning` fails AA as text on a light card,
+ * which is the rule the whole surface follows for a colour used as words.
+ */
+.kid-stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
+  flex-shrink: 0;
+  padding: 0.05rem 0.35rem;
+  border-radius: 999px;
+  font-size: var(--dash-text-1);
+  font-weight: 700;
+  color: var(--kg-warningStrong);
+  background: color-mix(in srgb, var(--kg-warningStrong) 14%, transparent);
+}
+
+/*
+ * The SOS badge. Loudest thing on the row by design — `error`, not the
+ * `warningStrong` the stars pill takes, because this is the one item here
+ * about a person rather than a machine's health.
+ */
+.kid-sos {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
+  flex-shrink: 0;
+  padding: 0.05rem 0.4rem;
+  border-radius: 999px;
+  font-size: var(--dash-text-1);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--kg-errorStrong);
+  background: color-mix(in srgb, var(--kg-errorStrong) 15%, transparent);
+}
+
+/* The third line: when we last heard from any of their machines. */
+.kid-last-active {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: 0.15rem;
+  font-size: var(--dash-text-1);
+  color: var(--muted);
+}
+
+.kid-last-active .icon {
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+
+/*
+ * A glyph-only control: the rename pencil beside a child's name, and anything
+ * that follows it. Sized past the 32px a pointer needs while drawing at 14 —
+ * the padding is the target, not the icon.
+ */
+.icon-button {
+  display: inline-grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  color: var(--muted);
+}
+
+.icon-button:hover {
+  color: var(--ink);
+  background: color-mix(in srgb, var(--ink) 8%, transparent);
+}
+
+/* The row grew a third line, so it can no longer be a fixed height. */
+.kid-group-head {
+  align-items: flex-start;
+  padding-block: 0.55rem;
+}
+
 /* ---------- The child hub ----------
  *
  * The person, between the Family list and one of their machines. Its cards are
@@ -3430,10 +3635,23 @@ ol.attn-fix li + li {
 
 /* The field and its Save share the row — a name is short, and a full-width
    input beside a button that has nowhere to go reads as a form. */
+/* A heading and its pencil while reading; a field, Save and Cancel while
+   editing. Both states are one row, so the card does not jump height. */
 .child-hero-name {
   display: flex;
   gap: 0.5rem;
   align-items: center;
+  min-height: 2.25rem;
+}
+
+.child-hero-name h2 {
+  margin: 0;
+  font-size: var(--dash-text-5);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .child-hero-name .reward-input {
@@ -3546,7 +3764,7 @@ ol.attn-fix li + li {
   padding: 0.3rem 0.7rem;
   border-radius: 999px;
   border: 1px solid var(--line);
-  background: var(--card);
+  background: var(--surface);
   color: var(--muted);
   font-size: var(--dash-text-2);
   font-weight: 600;
@@ -3668,7 +3886,7 @@ ol.attn-fix li + li {
   }
 
   /*
-   * A tab, not a row: glyph over label, equal shares of the width. The
+   * A tab, not a row: glyph over label, four equal shares of the width. The
    * leading-edge bar that marks a selected row in a column would be a hairline
    * down the side of a tab, so the active tab is the brand-tinted ground and
    * the brand-coloured glyph instead — what the phone does.
@@ -3697,15 +3915,6 @@ ol.attn-fix li + li {
     font-size: var(--dash-text-1);
     font-weight: 600;
     line-height: 1.15;
-    /* Two lines, then an ellipsis. A fifth of 375px is 75px, and the longest
-       section name ("Yêu cầu & báo cáo sự cố") wraps to four lines there —
-       which makes the bar twice its height and pushes the page under it. The
-       glyph beside a truncated word is what the phone leans on for the same
-       reason. */
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    overflow: hidden;
   }
 
   /* On a tab the badge cannot sit after the label — it would push a two-line
@@ -3764,11 +3973,28 @@ ol.attn-fix li + li {
    * keeps its full width under it.
    */
   .btn,
-  .btn-sm {
+  .btn-sm,
+  /*
+   * The four that were missed when this rule was written, measured at 375px on
+   * 2026-09-16: the budget presets a parent taps to set tonight's limit (30px),
+   * the way back out of a device (29px), the rename pencil, and `.login-link`,
+   * which is Sign out and every "remove" confirmation (25px).
+   */
+  .chips-toggle button,
+  .dash-back,
+  .icon-button,
+  .login-link,
+  /* The 7d / 14d / 30d range picker on Screen Time, measured at 29px. */
+  .seg button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     min-height: 2.75rem;
+  }
+
+  /* The glyph-only ones stay square rather than becoming 44×44 lozenges. */
+  .icon-button {
+    width: 2.75rem;
   }
 
   /* The switch keeps its drawn size — a 44px-tall track reads as a different
@@ -4627,40 +4853,16 @@ ol.attn-fix li + li {
   line-height: 1.5;
 }
 
-/*
- * The title wraps at this width — "MacBook is now the reporting device" is two
- * lines in a 24rem sheet — and a crown centred on a two-line heading sits
- * beside the gap between the lines rather than beside the sentence. It belongs
- * on the first line, which is what `flex-start` plus the optical nudge gives.
- *
- * The margins go because `.sheet` is a grid with its own `gap`: the browser's
- * default `h2` margin, that gap and `.hint`'s `margin-top` stacked to ~44px
- * between the title and the line explaining it, which read as two unrelated
- * blocks. The size drops to the scale's step-5 for the same reason
- * `.sheet-title` is step-4 — an unstyled `h2` is 1.5em of the page's 15px and
- * was the largest type on the dashboard.
- */
 .parked-card h2 {
   display: flex;
-  align-items: flex-start;
-  gap: 0.4rem;
-  margin: 0;
-  font-size: var(--dash-text-5);
-  line-height: 1.35;
-}
-
-.parked-card h2 > .icon {
-  margin-top: 0.22rem;
-}
-
-.parked-card > .hint {
-  margin-top: 0;
+  align-items: center;
+  gap: 0.35rem;
 }
 
 .parked-options {
   display: grid;
   gap: 0.35rem;
-  margin: 0;
+  margin: 0.75rem 0;
 }
 
 .parked-option {
@@ -4671,14 +4873,6 @@ ol.attn-fix li + li {
   border-radius: var(--kg-radius-md);
   border: 1px solid var(--kg-border);
   cursor: pointer;
-}
-
-/* A long device name must not eat the status it is being compared against —
-   `DESKTOP-NEQUQ1U` is already wider than the column at this sheet width. */
-.parked-option > .icon,
-.parked-option > input,
-.parked-option > .pill {
-  flex-shrink: 0;
 }
 
 .parked-option.is-checked {
@@ -4695,33 +4889,19 @@ ol.attn-fix li + li {
   font-weight: 700;
 }
 
-/*
- * Stacked, not a wrapping row. The sheet is `min(24rem, 100%)` at every size,
- * so the row never had the width to sit side by side: it wrapped on every
- * screen, leaving a half-width button with the hint under it starting at a
- * different left edge than the button's own label. One column lines both up
- * with the radios above them.
- */
 .parked-actions {
-  display: grid;
-  gap: 0.6rem;
-}
-
-.parked-actions .btn {
-  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
 }
 
 .parked-actions .hint {
   display: flex;
-  align-items: flex-start;
-  gap: 0.35rem;
+  align-items: center;
+  gap: 0.25rem;
   margin: 0;
   font-size: var(--dash-text-2);
-}
-
-/* The sentence wraps; the phone beside it marks the first line. */
-.parked-actions .hint > .icon {
-  margin-top: 0.2rem;
 }
 
 .plan-pill.is-premium {

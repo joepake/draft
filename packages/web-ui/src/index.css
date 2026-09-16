@@ -161,6 +161,23 @@ label[for] {
   gap: 0.5rem;
 }
 
+/*
+ * The mark sits on a solid brand tile, so its glyph belongs to the brand and
+ * not to the page. `--ink` is the colour of text ON THE PAGE, and using it
+ * here failed in both palettes — measured 2026-09-16 against the resolved teal
+ * accent, at both ends of the 135° gradient:
+ *
+ *   light  ink 3.26 / 3.01      plane 4.83 / 5.24
+ *   dark   ink 1.78 / 2.05      plane 10.38 / 9.02
+ *
+ * Dark was the worse of the two at 1.78:1 — a near-white glyph on a light
+ * teal tile, which is the one `apps/site` has always shown.
+ *
+ * `--plane` is the ground the brand was picked to sit on: near-white in the
+ * light palette, which is the white-on-teal this should have been, and dark
+ * in the dark one, where the tile itself is the light thing. Same fix, same
+ * fallback chain, as `.btn-primary` in `dashboard.css`.
+ */
 .brand-mark {
   width: 1.6rem;
   height: 1.6rem;
@@ -168,7 +185,7 @@ label[for] {
   background: linear-gradient(135deg, var(--brand), var(--brand-2));
   display: grid;
   place-items: center;
-  color: var(--ink);
+  color: var(--kg-onPrimary, var(--plane));
 }
 
 .brand-mark svg {

@@ -50,6 +50,7 @@ export default function ChildHub({
   const readOnly = live && !canWrite;
 
   const [nameDraft, setNameDraft] = useState(child.name ?? '');
+  const [editingName, setEditingName] = useState(false);
   const [confirmRemove, setConfirmRemove] = useState(false);
   const [assignTo, setAssignTo] = useState('');
 
@@ -57,6 +58,7 @@ export default function ChildHub({
   // outlived either would put one child's name in another's field.
   useEffect(() => {
     setNameDraft(child.name ?? '');
+    setEditingName(false);
     setConfirmRemove(false);
     setAssignTo('');
   }, [child.id, child.name]);
@@ -90,34 +92,70 @@ export default function ChildHub({
       <div className="card child-hero">
         <ChildInitial name={child.name} colorIndex={child.colorIndex} size={56} />
         <div className="child-hero-body">
+          {/*
+            A heading, not a permanently-open text field.
+            
+            The field was always on screen and full width, which made the top
+            of the page read as a form to fill in rather than as a person's
+            name — and put a disabled Save beside every child a parent merely
+            wanted to look at. The phone shows the name and an Edit affordance
+            and opens a modal; this opens the field in place, which is the
+            same two states without a second layer.
+            
+            Renaming is any parent's, unlike every other write on this screen.
+          */}
           <div className="child-hero-name">
-            {/* Renaming is any parent's, unlike every other write on this
-                screen — the phone draws the pencil for a joined co-parent
-                too. */}
-            <input
-              className="reward-input"
-              aria-label={appT('leaderboard.childNameLabel')}
-              value={nameDraft}
-              disabled={readOnly || busy}
-              onChange={event => setNameDraft(event.target.value)}
-            />
-            <button
-              className="btn btn-sm"
-              disabled={
-                readOnly ||
-                busy ||
-                nameDraft.trim().length === 0 ||
-                nameDraft.trim() === child.name
-              }
-              title={readOnly ? t('dash.unlockToChange') : undefined}
-              onClick={() =>
-                run(`child-rename-${child.id}`, () =>
-                  actions.renameChild(child.id, nameDraft.trim()),
-                )
-              }
-            >
-              {t('dash.save')}
-            </button>
+            {editingName ? (
+              <>
+                <input
+                  className="reward-input"
+                  aria-label={appT('leaderboard.childNameLabel')}
+                  value={nameDraft}
+                  autoFocus
+                  disabled={busy}
+                  onChange={event => setNameDraft(event.target.value)}
+                />
+                <button
+                  className="btn btn-sm btn-primary"
+                  disabled={
+                    busy ||
+                    nameDraft.trim().length === 0 ||
+                    nameDraft.trim() === child.name
+                  }
+                  onClick={async () => {
+                    const ok = await run(`child-rename-${child.id}`, () =>
+                      actions.renameChild(child.id, nameDraft.trim()),
+                    );
+                    if (ok) setEditingName(false);
+                  }}
+                >
+                  {t('dash.save')}
+                </button>
+                <button
+                  className="login-link"
+                  onClick={() => {
+                    setNameDraft(child.name ?? '');
+                    setEditingName(false);
+                  }}
+                >
+                  {t('dash.close')}
+                </button>
+              </>
+            ) : (
+              <>
+                <h2>{child.name}</h2>
+                {!readOnly && (
+                  <button
+                    className="icon-button"
+                    aria-label={appT('shared.edit')}
+                    title={appT('shared.edit')}
+                    onClick={() => setEditingName(true)}
+                  >
+                    <Icon name="pencil" size={14} />
+                  </button>
+                )}
+              </>
+            )}
           </div>
           {/* A count, not a word: "Online" over a child with three devices and
               one answering is the reading `resolveChildPresence` exists to
@@ -176,8 +214,15 @@ export default function ChildHub({
             reads where the day already stands first. `null` is "no device
             reported today", which is not the same as none used. */}
         {budgetMinutes && spentMinutes !== null && (
+          /* `dash.limitSharedSpent` — the sentence `ControlsTab` already
+             prints for the same two numbers. Bare, they were "1h 33m /
+             16h 30m" with nothing saying which was which or that it meant
+             today. */
           <p className="hint">
-            {formatMinutes(spentMinutes)} / {formatMinutes(budgetMinutes)}
+            {t('dash.limitSharedSpent', {
+              used: formatMinutes(spentMinutes),
+              limit: formatMinutes(budgetMinutes),
+            })}
           </p>
         )}
         <ChildBudgetEditor

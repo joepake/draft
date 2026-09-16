@@ -71,6 +71,7 @@
     "./domain/digestFindings": "./src/domain/digestFindings.ts",
     "./domain/email": "./src/domain/email.ts",
     "./domain/familyReport": "./src/domain/familyReport.ts",
+    "./domain/familySummary": "./src/domain/familySummary.ts",
     "./domain/familySetup": "./src/domain/familySetup.ts",
     "./domain/firestoreError": "./src/domain/firestoreError.ts",
     "./domain/firestoreValue": "./src/domain/firestoreValue.ts",

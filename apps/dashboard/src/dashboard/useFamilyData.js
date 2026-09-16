@@ -158,6 +158,18 @@ export function useFamilyData(user, selectedDeviceId) {
    * exactly this, so no new repository method is needed.
    */
   const [familyActivityRows, setFamilyActivityRows] = useState([]);
+  /*
+   * The three counts the Family screen's chip row needs, family-wide.
+   *
+   * Every other number on that row folds out of `devices`, which this hook
+   * already holds for the whole family. These three do not: the per-device
+   * subscriptions further down are scoped to whichever device is open, and a
+   * summary that changed when a parent picked a phone would be describing one
+   * machine while claiming to describe the family.
+   */
+  const [familyTimeRequests, setFamilyTimeRequests] = useState([]);
+  const [familyCheckIns, setFamilyCheckIns] = useState([]);
+  const [familySos, setFamilySos] = useState([]);
   const [timeRequestRows, setTimeRequestRows] = useState([]);
   const [siteRequestRows, setSiteRequestRows] = useState([]);
   const [sosRows, setSosRows] = useState([]);
@@ -376,13 +388,55 @@ export function useFamilyData(user, selectedDeviceId) {
    */
   useEffect(() => {
     if (!familyId) return undefined;
-    return activityRepository.subscribe(familyId, setFamilyActivityRows, e =>
-      console.warn(
-        '[kidgate] familyActivities listener failed:',
-        e?.code || e?.message,
+    const soft = name => e =>
+      console.warn(`[kidgate] ${name} listener failed:`, e?.code || e?.message);
+    const subs = [
+      activityRepository.subscribe(
+        familyId,
+        setFamilyActivityRows,
+        soft('familyActivities'),
       ),
-    );
+      /* No `deviceId` argument: that optional last parameter is what scopes
+         the per-device copy further down, and its absence is what makes this
+         one the family's. */
+      timeRequestRepository.subscribePending(
+        familyId,
+        setFamilyTimeRequests,
+        soft('familyTimeRequests'),
+      ),
+      sosAlertRepository.subscribeActive(familyId, setFamilySos, soft('familySos')),
+    ];
+    return () => subs.forEach(unsubscribe => unsubscribe());
   }, [familyId]);
+
+  /*
+   * Check-ins have no family-wide query — a row carries a `deviceId` and
+   * nothing else, so the join to a family happens against the ids resolved
+   * here. `subscribeRecentForDevices` chunks by ten and reuses the composite
+   * index the per-device query already needs, so nothing new lands in
+   * `firestore.indexes.json`.
+   *
+   * Keyed on the id STRING rather than the array: `devices` is a new array on
+   * every heartbeat, and depending on it would tear this listener down and
+   * rebuild it several times a minute.
+   */
+  const childDeviceIdKey = devices.map(device => device.id).join(',');
+  useEffect(() => {
+    if (!familyId || !childDeviceIdKey) {
+      setFamilyCheckIns([]);
+      return undefined;
+    }
+    return safetyCheckInRepository.subscribeRecentForDevices(
+      familyId,
+      childDeviceIdKey.split(','),
+      setFamilyCheckIns,
+      e =>
+        console.warn(
+          '[kidgate] familyCheckIns listener failed:',
+          e?.code || e?.message,
+        ),
+    );
+  }, [familyId, childDeviceIdKey]);
 
   useEffect(() => {
     if (!familyId || !selectedDeviceId) return;
@@ -641,6 +695,10 @@ export function useFamilyData(user, selectedDeviceId) {
       activities: forDevice(selectedDeviceId, activityRows),
       /** Every device's rows, newest first — what the Activity section reads. */
       familyActivities: familyActivityRows,
+      /** The family-wide counts the Family screen's summary row folds. */
+      familyTimeRequests,
+      familyCheckIns,
+      familySos,
       /**
        * The signed-in account's own phones.
        *
@@ -681,6 +739,9 @@ export function useFamilyData(user, selectedDeviceId) {
     selectedDeviceId,
     activityRows,
     familyActivityRows,
+    familyTimeRequests,
+    familyCheckIns,
+    familySos,
     timeRequestRows,
     siteRequestRows,
     sosRows,

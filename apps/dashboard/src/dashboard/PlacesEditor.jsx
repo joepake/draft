@@ -140,7 +140,11 @@ export default function PlacesEditor({ device, readOnly, busy, onSave }) {
           <div key={place.id} className="place-row">
             <span className="place-name">{place.name}</span>
             <em>{t('dash.placeRadius', { meters: place.radiusMeters })}</em>
+            {/* `icon-button` gives both of these a real target: they were a
+                bare 14px glyph each, and on a phone Delete sat one thumb-width
+                from Edit — a mis-tap that removes a geofence. */}
             <button
+              className="icon-button"
               disabled={readOnly || busy}
               aria-label={appT('placeAlerts.editPlaceAccessibility', {
                 name: place.name,
@@ -151,7 +155,7 @@ export default function PlacesEditor({ device, readOnly, busy, onSave }) {
               <Icon name="sliders" size={14} />
             </button>
             <button
-              className="place-remove"
+              className="icon-button place-remove"
               disabled={readOnly || busy}
               aria-label={appT('placeAlerts.deletePlace', { name: place.name })}
               title={readOnly ? t('dash.unlockToChange') : undefined}

@@ -77,6 +77,8 @@ import {
   resolveBuildFreshness,
 } from '@kidgate/core/domain/buildFreshness';
 import { getEffectiveDeviceStatus } from '@kidgate/core/domain/deviceStatus';
+import { resolveChildPresence } from '@kidgate/core/domain/childPresence';
+import { resolveChipTargetDevice } from '@kidgate/core/domain/familySummary';
 import { slowBeatMinutes } from '@kidgate/core/domain/reportCadence';
 import {
   AppBars,
@@ -91,6 +93,11 @@ import ChildInitial from '../dashboard/ChildInitial.jsx';
 import DeviceDot, { STATUS_KEY, STATUS_TONE } from '../dashboard/DeviceDot.jsx';
 import ChildHub from '../dashboard/ChildHub.jsx';
 import ControlCenter from '../dashboard/ControlCenter.jsx';
+import FamilySummaryRow, {
+  ChildPills,
+  childPills,
+  useFamilyCounts,
+} from '../dashboard/FamilySummary.jsx';
 import FamilySettingsCard from '../dashboard/FamilySettingsCard.jsx';
 import NotificationPrefsCard from '../dashboard/NotificationPrefsCard.jsx';
 import SupportCard from '../dashboard/SupportCard.jsx';
@@ -171,19 +178,14 @@ const TABS = [
  * twin, so the two can never disagree about what a section is called; the
  * namespace is opened for the web in `packages/i18n/src/activityFeed.ts`.
  *
- * The phone's bar is capped at four by a 375pt screen. This one is not, which
- * is the one place the two are allowed to differ: Requests & reports is a fifth
- * here. On the phone it is a row inside Settings because there is no fifth slot
- * to give it; a laptop has the width, and a parent waiting on a reply should
- * not have to open Settings to find the thread. Its label is the card's own key
- * rather than a `nav.*` twin — one string, already translated, so the menu and
- * the heading it opens cannot disagree.
+ * The phone's bar is capped at four by a 375pt screen. This one is not, and it
+ * still carries four: the cap is what forced the phone to decide what the top
+ * level *is*, and that decision is the part worth sharing.
  */
 const SECTIONS = [
   { id: 'family', labelKey: 'nav.family', icon: 'home' },
   { id: 'activity', labelKey: 'nav.activities', icon: 'activity' },
   { id: 'report', labelKey: 'nav.reports', icon: 'chart' },
-  { id: 'support', labelKey: 'supportReports.title', icon: 'lifebuoy' },
   { id: 'settings', labelKey: 'nav.settings', icon: 'settings' },
 ];
 
@@ -420,8 +422,51 @@ const GROUP_DOTS_SHOWN = 4;
  *   Family list is, so `aria-expanded` would be describing a fold that does
  *   not happen.
  */
-function KidGroupHead({ group, open, containsActive, onActivate, expandable }) {
+function KidGroupHead({
+  group,
+  open,
+  containsActive,
+  onActivate,
+  expandable,
+  appT,
+  pills = [],
+  onlineCount = 0,
+  stars = 0,
+  hasActiveSos = false,
+}) {
   const { t } = useT();
+  /*
+   * Last active is worth a line in both states — online it is the proof behind
+   * the green dot, offline it is the whole question. Its own row rather than
+   * joined onto the meta line above: that one already carries two facts and a
+   * translated sentence clips mid-word when a third is appended.
+   *
+   * Folded across the set, never per device: `resolveChildPresence` answers
+   * the most recent `lastActiveAt` of every machine the child holds, which is
+   * the only honest reading of "when did we last hear from them".
+   */
+  const presence = resolveChildPresence(group.devices, Date.now());
+  const lastActiveLabel = presence.lastActiveAt
+    ? appT('family.lastActiveDate', { date: timeAgo(presence.lastActiveAt) })
+    : presence.online
+      ? null
+      : appT('family.lastActiveUnknown');
+  /*
+   * "2 devices · 1 online", or "2 devices · Offline" — the phone's own meta
+   * line, and the reason it is one sentence rather than two: a count of
+   * machines says nothing about whether any of them is answering, which is
+   * the question the row exists for.
+   */
+  const meta =
+    onlineCount > 0
+      ? appT('family.metaOnlineCount', {
+          count: group.devices.length,
+          online: onlineCount,
+        })
+      : [
+          appT('family.chipDeviceCount', { count: group.devices.length }),
+          appT('family.healthOffline'),
+        ].join(' · ');
   const shown = group.devices.slice(0, GROUP_DOTS_SHOWN);
   const rest = group.devices.length - shown.length;
   return (
@@ -440,14 +485,51 @@ function KidGroupHead({ group, open, containsActive, onActivate, expandable }) {
               and on a page it left every row identical except for one word.
               The count is what a parent is actually choosing between. */}
           <span className="kid-meta">
-            <strong>{group.child.name}</strong>
-            <em>{t('dash.devices', { count: group.devices.length })}</em>
+            <span className="kid-name-row">
+              <strong>{group.child.name}</strong>
+              {/* The number and a star, not the word: a count of stars beside
+                  a name reads at a glance, and the sentence is the label a
+                  screen reader gets instead. Hidden at zero — a child who has
+                  earned none is not being told off about it. */}
+              {/* SOS first, and loudest. It is the one thing on this row that
+                  is about a person in trouble rather than a machine's health,
+                  which is why it sits beside the name instead of joining the
+                  urgency pills below — those are a list, and this must not be
+                  read as the fourth item in one. */}
+              {hasActiveSos && (
+                <span className="kid-sos">
+                  <Icon name="shieldAlert" size={12} />
+                  {appT('family.sos')}
+                </span>
+              )}
+              {stars > 0 && (
+                <span
+                  className="kid-stars"
+                  aria-label={appT('family.childStarsA11y', { count: stars })}
+                  title={appT('family.childStarsA11y', { count: stars })}
+                >
+                  <Icon name="star" size={12} />
+                  {stars}
+                </span>
+              )}
+            </span>
+            <em>{meta}</em>
+            {lastActiveLabel && (
+              <span className="kid-last-active">
+                <Icon name="activity" size={11} />
+                {lastActiveLabel}
+              </span>
+            )}
+            {/* What needs doing about this child, in the same order the row
+                above the list uses — a parent should not have to re-learn the
+                sequence between the summary and the card it summarises. */}
+            <ChildPills pills={pills} appT={appT} />
           </span>
         </>
       ) : (
         <span className="kid-meta">
           <strong>{t('dash.unassignedDevices')}</strong>
-          <em>{t('dash.devices', { count: group.devices.length })}</em>
+          <em>{meta}</em>
         </span>
       )}
       {/*
@@ -499,6 +581,9 @@ export default function Dashboard({
     children,
     activities,
     familyActivities = [],
+    familyTimeRequests = [],
+    familyCheckIns = [],
+    familySos = [],
     parentDevices = [],
     actorNames,
     checkIns,
@@ -871,6 +956,61 @@ export default function Dashboard({
    * Children with no device are left out — this list is a device picker, and a
    * heading with nothing selectable under it is a dead end.
    */
+  /*
+   * Everything the Family summary row and the per-child pills count, folded
+   * once for the whole family. The rule for WHICH chips and in what order is
+   * `@kidgate/core/domain/familySummary`, shared with the phone.
+   */
+  const familyCounts = useFamilyCounts({
+    devices,
+    timeRequests: familyTimeRequests,
+    checkIns: familyCheckIns,
+    sosAlerts: familySos,
+  });
+
+  /**
+   * Where a summary chip lands on this surface.
+   *
+   * The rule itself is shared — `resolveChipTargetDevice` deep-links only when
+   * the chip is about exactly ONE device, and refuses to pick one of many,
+   * because opening the first of two SOS alerts sends a parent to one
+   * emergency and silently drops the other. What "no single target" means is
+   * this surface's: the phone scrolls its list to the top, and here the list
+   * is already on screen, so the chip simply does not move the page.
+   *
+   * `requests` never deep-links at all: the approve/deny inbox is the
+   * Attention feed on a device's Overview, so one pending request opens that
+   * device and several leave the parent where the list already is.
+   */
+  const openSummaryChip = key => {
+    const idsFor = () => {
+      if (key === 'sos') return [...familyCounts.sosDeviceIds];
+      if (key === 'check-in') return [...familyCounts.pendingCheckInDeviceIds];
+      if (key === 'requests') return [...familyCounts.pendingRequestsByDevice.keys()];
+      const wanted = key === 'health-inactive' ? 'inactive' : 'warning';
+      return devices
+        .filter(device => familyCounts.byDevice.get(device.id)?.level === wanted)
+        .map(device => device.id);
+    };
+    const target = resolveChipTargetDevice(idsFor());
+    if (!target) return;
+    setDeviceId(target);
+    /* SOS and check-ins are read on Safety and Overview respectively — the
+       same two panels `ControlCenter`'s own mapping sends those cards to. */
+    setTab(key === 'sos' ? 'safety' : 'overview');
+    setDeviceOpen(true);
+  };
+
+  /*
+   * This week's stars per child, for the pill beside the name. `leaderboard`
+   * is already ranked and memoised by the hook, so this only rebuilds when the
+   * standings themselves do.
+   */
+  const starsByChild = useMemo(
+    () => new Map((leaderboard?.rows ?? []).map(row => [row.childId, row.stars])),
+    [leaderboard],
+  );
+
   const deviceGroups = useMemo(() => {
     const byChild = new Map();
     const unassigned = [];
@@ -1502,7 +1642,7 @@ export default function Dashboard({
         </div>
 
         {/*
-          The five sections, and nothing else. The child list used to be here
+          The four sections, and nothing else. The child list used to be here
           and is the Family section's own content now: the rail asked "which
           device" at the same level as the page asked "what about the family",
           so a parent read one column that answered two questions — the same
@@ -1517,7 +1657,19 @@ export default function Dashboard({
             <button
               key={item.id}
               className={`nav-item${section === item.id ? ' is-active' : ''}`}
-              onClick={() => setSection(item.id)}
+              /*
+               * Pressing the section you are already in returns to its root —
+               * the phone's tab bar has always done this, and without it a
+               * parent three levels into a device pressed Family and nothing
+               * moved. Only Family has a stack to pop.
+               */
+              onClick={() => {
+                if (section === item.id && item.id === 'family') {
+                  setDeviceOpen(false);
+                  setOpenChildId(null);
+                }
+                setSection(item.id);
+              }}
               aria-current={section === item.id ? 'page' : undefined}
             >
               <Icon name={item.icon} size={17} />
@@ -1864,6 +2016,20 @@ export default function Dashboard({
         */}
         {section === 'family' && !deviceView && !childView && (
           <section className="family-home">
+            {/*
+              What needs doing, before the list of who. The phone puts this
+              row in the same place for the same reason: a parent opening the
+              app is asking "is anything wrong", and a list of names answers
+              that only after they have read every row.
+
+              An actionable chip opens the section that answers it. The three
+              healthy counts are readings and open nothing.
+            */}
+            <FamilySummaryRow
+              chips={familyCounts.chips}
+              appT={activityT}
+              onChipPress={openSummaryChip}
+            />
             {devices.length === 0 ? (
               <div className="card">
                 <h2>{t('dash.noDeviceTitle')}</h2>
@@ -1897,6 +2063,19 @@ export default function Dashboard({
                         open={open}
                         containsActive={containsActive}
                         expandable={expandable}
+                        appT={activityT}
+                        pills={childPills(familyCounts, group.devices)}
+                        onlineCount={
+                          group.devices.filter(
+                            d => familyCounts.byDevice.get(d.id)?.online,
+                          ).length
+                        }
+                        stars={
+                          group.child ? (starsByChild.get(group.child.id) ?? 0) : 0
+                        }
+                        hasActiveSos={group.devices.some(d =>
+                          familyCounts.sosDeviceIds.has(d.id),
+                        )}
                         onActivate={() =>
                           expandable
                             ? setOpenGroupKey(key =>
@@ -1944,42 +2123,6 @@ export default function Dashboard({
               live={live}
               appT={activityT}
             />
-
-            {/* The other people in the family, under the family they belong to.
-                They sat in Settings, which asked a parent to look for "who else
-                is in this family" two sections away from the only screen that
-                lists the family — the same defect that moved the family's own
-                name here.
-
-                Nothing at all for a joined co-parent: inviting, approving and
-                removing are the owner's, the same rule the phone's Family
-                screen applies. */}
-            {live && actions?.isOwner && (
-              <Card title={t('dash.parents', { count: family.parents.length })}>
-                <ParentsCard
-                  members={family.members ?? []}
-                  actions={actions}
-                  run={run}
-                  busy={
-                    busy === 'parent-invite' ||
-                    busy === 'parent-join' ||
-                    busy === 'parent-remove'
-                  }
-                />
-              </Card>
-            )}
-
-            {/* For both roles — the rules and the phone let a joined co-parent
-                name one — and its title is the app pack's, the words the
-                phone's Settings row says. */}
-            {live && familyId && (
-              <Card
-                title={activityT('sos.trustedContactsTitle')}
-                subtitle={activityT('sos.trustedContactsRowSubtitle')}
-              >
-                <TrustedContactsCard familyId={familyId} />
-              </Card>
-            )}
           </section>
         )}
 
@@ -2040,38 +2183,51 @@ export default function Dashboard({
           />
         )}
 
-        {/* A section of its own, not a card at the bottom of Settings. It is
-            the only place on the page a parent is waiting to be answered —
-            everything else here is a control they operate — and a thread with
-            a reply on it should be reachable by the same click that tells them
-            there is one. */}
-        {section === 'support' && (
-          <SupportCard
-            accountId={accountId}
-            accountEmail={accountEmail}
-            familyId={familyId}
-            familyName={family.name}
-            appT={activityT}
-            titled={false}
-          />
-        )}
-
         {section === 'settings' && (
           <section className="settings-home">
             {/*
-              What is left once the people moved to Family and the support
-              thread became a section: the plan, this account's notifications,
-              the account itself. What is deliberately NOT here: anything about
-              this browser rather than about the family. The language picker,
-              the palette and Sign out live in the rail's footer and are
-              rendered there once; on a phone-width screen the rail is a bottom
-              bar with no footer, so the same block is handed to this section
-              instead (`sideFooter`, below) rather than drawn twice and allowed
-              to disagree.
+              The plan first, then the people, then the contacts — the phone's
+              own order on its Settings tab. What is deliberately NOT here:
+              anything about this browser rather than about the family. The
+              language picker, the palette and Sign out live in the rail's
+              footer and are rendered there once; on a phone-width screen the
+              rail is a bottom bar with no footer, so the same block is handed
+              to this section instead (`sideFooter`, below) rather than drawn
+              twice and allowed to disagree.
             */}
             <Card title={activityT('plans.title')}>
               <PlanCard plan={family.plan} trialStartedAt={family.trialStartedAt} />
             </Card>
+
+            {/* Nothing at all for a joined co-parent: inviting, approving and
+                removing are the owner's, the same rule the phone's Family
+                screen applies. */}
+            {live && actions?.isOwner && (
+              <Card title={t('dash.parents', { count: family.parents.length })}>
+                <ParentsCard
+                  members={family.members ?? []}
+                  actions={actions}
+                  run={run}
+                  busy={
+                    busy === 'parent-invite' ||
+                    busy === 'parent-join' ||
+                    busy === 'parent-remove'
+                  }
+                />
+              </Card>
+            )}
+
+            {/* For both roles — the rules and the phone let a joined co-parent
+                name one — and its title is the app pack's, the words the
+                phone's Settings row says. */}
+            {live && familyId && (
+              <Card
+                title={activityT('sos.trustedContactsTitle')}
+                subtitle={activityT('sos.trustedContactsRowSubtitle')}
+              >
+                <TrustedContactsCard familyId={familyId} />
+              </Card>
+            )}
 
             {/* Push preferences for the account's own phones. Renders nothing
                 for a co-parent, whose devices live under their own root. */}
@@ -2081,6 +2237,14 @@ export default function Dashboard({
               appT={activityT}
               canWrite={canWrite}
               live={live}
+            />
+
+            <SupportCard
+              accountId={accountId}
+              accountEmail={accountEmail}
+              familyId={familyId}
+              familyName={family.name}
+              appT={activityT}
             />
 
             <AccountCard
@@ -2770,37 +2934,39 @@ export default function Dashboard({
                 ) : web.length === 0 ? (
                   <p className="empty">{t('dash.webActivityEmpty')}</p>
                 ) : (
-                  <table className="tbl">
-                    <thead>
-                      <tr>
-                        <th>{t('dash.colDomain')}</th>
-                        <th className="num">{t('dash.colVisits')}</th>
-                        <th className="num">{t('dash.colBlocked')}</th>
-                        <th>{t('dash.colLastSeen')}</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {web.map(w => (
-                        <tr key={w.domain}>
-                          <td>
-                            {w.domain}
-                            {w.category && (
-                              <span className="tag">
-                                {webCategoryLabel(t, w.category)}
-                              </span>
-                            )}
-                          </td>
-                          <td className="num">{w.visits}</td>
-                          <td
-                            className={`num${w.blockedVisits ? ' tone-critical' : ''}`}
-                          >
-                            {w.blockedVisits || t('viz.none')}
-                          </td>
-                          <td>{timeAgo(w.lastAt)}</td>
+                  <div className="tbl-wrap">
+                    <table className="tbl">
+                      <thead>
+                        <tr>
+                          <th>{t('dash.colDomain')}</th>
+                          <th className="num">{t('dash.colVisits')}</th>
+                          <th className="num">{t('dash.colBlocked')}</th>
+                          <th>{t('dash.colLastSeen')}</th>
                         </tr>
-                      ))}
-                    </tbody>
-                  </table>
+                      </thead>
+                      <tbody>
+                        {web.map(w => (
+                          <tr key={w.domain}>
+                            <td>
+                              {w.domain}
+                              {w.category && (
+                                <span className="tag">
+                                  {webCategoryLabel(t, w.category)}
+                                </span>
+                              )}
+                            </td>
+                            <td className="num">{w.visits}</td>
+                            <td
+                              className={`num${w.blockedVisits ? ' tone-critical' : ''}`}
+                            >
+                              {w.blockedVisits || t('viz.none')}
+                            </td>
+                            <td>{timeAgo(w.lastAt)}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
                 )}
                 <p className="hint">
                   {t(
@@ -2914,17 +3080,18 @@ export default function Dashboard({
                   ) : videos.length === 0 ? (
                     <p className="empty">{t('dash.videosEmpty')}</p>
                   ) : (
-                    <table className="tbl">
-                      <thead>
-                        <tr>
-                          <th>{t('dash.colVideo')}</th>
-                          <th>{t('dash.colChannel')}</th>
-                          <th className="num">{t('dash.colViews')}</th>
-                          <th>{t('dash.colLastSeen')}</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {/*
+                    <div className="tbl-wrap">
+                      <table className="tbl">
+                        <thead>
+                          <tr>
+                            <th>{t('dash.colVideo')}</th>
+                            <th>{t('dash.colChannel')}</th>
+                            <th className="num">{t('dash.colViews')}</th>
+                            <th>{t('dash.colLastSeen')}</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {/*
                           The title opens YouTube, and the mark says whether it
                           opens the video or a search for it. Only the browser
                           extension knows a `videoId`; a row from the Android
@@ -2932,45 +3099,46 @@ export default function Dashboard({
                           `youtubeOpenTarget` falls back to a search on the
                           title and channel. Same rule, same copy, as the phone.
                         */}
-                        {videos.map(v => {
-                          const target = youtubeOpenTarget(v);
-                          const openLabel = activityT(
-                            target?.exact
-                              ? 'videoHistory.openAction'
-                              : 'videoHistory.searchAction',
-                          );
-                          return (
-                            <tr key={`${v.date}:${v.id}`}>
-                              <td>
-                                {target ? (
-                                  <a
-                                    className="video-link"
-                                    href={target.url}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    title={openLabel}
-                                    aria-label={`${v.title} — ${openLabel}`}
-                                  >
-                                    {v.title}
-                                    <span
-                                      className="video-link-mark"
-                                      aria-hidden="true"
+                          {videos.map(v => {
+                            const target = youtubeOpenTarget(v);
+                            const openLabel = activityT(
+                              target?.exact
+                                ? 'videoHistory.openAction'
+                                : 'videoHistory.searchAction',
+                            );
+                            return (
+                              <tr key={`${v.date}:${v.id}`}>
+                                <td>
+                                  {target ? (
+                                    <a
+                                      className="video-link"
+                                      href={target.url}
+                                      target="_blank"
+                                      rel="noreferrer"
+                                      title={openLabel}
+                                      aria-label={`${v.title} — ${openLabel}`}
                                     >
-                                      {target.exact ? '↗' : '⌕'}
-                                    </span>
-                                  </a>
-                                ) : (
-                                  v.title
-                                )}
-                              </td>
-                              <td>{v.channel || t('viz.none')}</td>
-                              <td className="num">{v.views}</td>
-                              <td>{timeAgo(v.lastAt)}</td>
-                            </tr>
-                          );
-                        })}
-                      </tbody>
-                    </table>
+                                      {v.title}
+                                      <span
+                                        className="video-link-mark"
+                                        aria-hidden="true"
+                                      >
+                                        {target.exact ? '↗' : '⌕'}
+                                      </span>
+                                    </a>
+                                  ) : (
+                                    v.title
+                                  )}
+                                </td>
+                                <td>{v.channel || t('viz.none')}</td>
+                                <td className="num">{v.views}</td>
+                                <td>{timeAgo(v.lastAt)}</td>
+                              </tr>
+                            );
+                          })}
+                        </tbody>
+                      </table>
+                    </div>
                   )}
                 </Card>
               )}

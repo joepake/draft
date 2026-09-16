@@ -10,6 +10,7 @@ import { location as enLocation } from './locales/en/location';
 import { messageMonitoring as enMessageMonitoring } from './locales/en/messageMonitoring';
 import { leaderboard as enLeaderboard } from './locales/en/leaderboard';
 import { nav as enNav } from './locales/en/nav';
+import { shared as enShared } from './locales/en/shared';
 import { notifications as enNotifications } from './locales/en/notifications';
 import { supportReports as enSupportReports } from './locales/en/supportReports';
 import { permissions as enPermissions } from './locales/en/permissions';
@@ -66,8 +67,10 @@ import type { TranslationParams } from './types';
  *
  * **What must NOT come through**: anything whose reader differs. `common` is
  * the standing example — the web's is genuinely different copy, not a
- * translation of the app's (`packages/i18n/CLAUDE.md`), and `shared.edit` /
- * `shared.cancel` belong to it rather than here. The test is whether the
+ * translation of the app's (`packages/i18n/CLAUDE.md`). An earlier note here
+ * put `shared.edit` / `shared.cancel` in that camp and was wrong on the facts:
+ * the web's `common` carries three keys, none of them those, so there was
+ * nothing for them to disagree with. `shared` crosses. The test is whether the
  * sentence stays true when it crosses; `samePinToast` ends "Drag the map to
  * move the pin", the dashboard has no map, and that one stayed behind as a
  * `dash.*` key.
@@ -137,6 +140,9 @@ export interface ActivityFeedPack extends LocaleTree {
   notifications: unknown;
   /** A parent's own filed reports, and the form that files one. */
   supportReports: unknown;
+  /** Edit, Cancel, Set, Not set — the words neither `dash.*` nor the web's
+   *  `common` carries. */
+  shared: unknown;
   /**
    * The four section names only — `family`, `activities`, `reports`,
    * `settings`. The dashboard's left menu is the phone's tab bar; the rest of
@@ -194,6 +200,7 @@ const en: ActivityFeedPack = {
   messageMonitoring: enMessageMonitoring,
   leaderboard: enLeaderboard,
   nav: enNav,
+  shared: enShared,
   notifications: enNotifications,
   supportReports: enSupportReports,
   permissions: enPermissions,
@@ -233,6 +240,9 @@ const NAMESPACES = [
   /* Push preferences and the support form — two whole screens `apps/dashboard`
      now renders, every sentence of which the phone already says. */
   'notifications',
+  /* Generic UI words the web pack simply does not have — Edit, Cancel, Set,
+     Not set, the compact duration labels. */
+  'shared',
   'supportReports',
   'permissions',
   'protection',
@@ -288,6 +298,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     timeRequest: () => import('./locales/ar/timeRequest'),
     webFilter: () => import('./locales/ar/webFilter'),
     nav: () => import('./locales/ar/nav'),
+    shared: () => import('./locales/ar/shared'),
     notifications: () => import('./locales/ar/notifications'),
     supportReports: () => import('./locales/ar/supportReports'),
     leaderboard: () => import('./locales/ar/leaderboard'),
@@ -316,6 +327,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     timeRequest: () => import('./locales/de/timeRequest'),
     webFilter: () => import('./locales/de/webFilter'),
     nav: () => import('./locales/de/nav'),
+    shared: () => import('./locales/de/shared'),
     notifications: () => import('./locales/de/notifications'),
     supportReports: () => import('./locales/de/supportReports'),
     leaderboard: () => import('./locales/de/leaderboard'),
@@ -344,6 +356,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     timeRequest: () => import('./locales/es/timeRequest'),
     webFilter: () => import('./locales/es/webFilter'),
     nav: () => import('./locales/es/nav'),
+    shared: () => import('./locales/es/shared'),
     notifications: () => import('./locales/es/notifications'),
     supportReports: () => import('./locales/es/supportReports'),
     leaderboard: () => import('./locales/es/leaderboard'),
@@ -372,6 +385,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     timeRequest: () => import('./locales/fr/timeRequest'),
     webFilter: () => import('./locales/fr/webFilter'),
     nav: () => import('./locales/fr/nav'),
+    shared: () => import('./locales/fr/shared'),
     notifications: () => import('./locales/fr/notifications'),
     supportReports: () => import('./locales/fr/supportReports'),
     leaderboard: () => import('./locales/fr/leaderboard'),
@@ -400,6 +414,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     timeRequest: () => import('./locales/hi/timeRequest'),
     webFilter: () => import('./locales/hi/webFilter'),
     nav: () => import('./locales/hi/nav'),
+    shared: () => import('./locales/hi/shared'),
     notifications: () => import('./locales/hi/notifications'),
     supportReports: () => import('./locales/hi/supportReports'),
     leaderboard: () => import('./locales/hi/leaderboard'),
@@ -428,6 +443,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     timeRequest: () => import('./locales/id/timeRequest'),
     webFilter: () => import('./locales/id/webFilter'),
     nav: () => import('./locales/id/nav'),
+    shared: () => import('./locales/id/shared'),
     notifications: () => import('./locales/id/notifications'),
     supportReports: () => import('./locales/id/supportReports'),
     leaderboard: () => import('./locales/id/leaderboard'),
@@ -456,6 +472,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     timeRequest: () => import('./locales/it/timeRequest'),
     webFilter: () => import('./locales/it/webFilter'),
     nav: () => import('./locales/it/nav'),
+    shared: () => import('./locales/it/shared'),
     notifications: () => import('./locales/it/notifications'),
     supportReports: () => import('./locales/it/supportReports'),
     leaderboard: () => import('./locales/it/leaderboard'),
@@ -484,6 +501,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     timeRequest: () => import('./locales/ja/timeRequest'),
     webFilter: () => import('./locales/ja/webFilter'),
     nav: () => import('./locales/ja/nav'),
+    shared: () => import('./locales/ja/shared'),
     notifications: () => import('./locales/ja/notifications'),
     supportReports: () => import('./locales/ja/supportReports'),
     leaderboard: () => import('./locales/ja/leaderboard'),
@@ -512,6 +530,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     timeRequest: () => import('./locales/ko/timeRequest'),
     webFilter: () => import('./locales/ko/webFilter'),
     nav: () => import('./locales/ko/nav'),
+    shared: () => import('./locales/ko/shared'),
     notifications: () => import('./locales/ko/notifications'),
     supportReports: () => import('./locales/ko/supportReports'),
     leaderboard: () => import('./locales/ko/leaderboard'),
@@ -540,6 +559,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     timeRequest: () => import('./locales/pt/timeRequest'),
     webFilter: () => import('./locales/pt/webFilter'),
     nav: () => import('./locales/pt/nav'),
+    shared: () => import('./locales/pt/shared'),
     notifications: () => import('./locales/pt/notifications'),
     supportReports: () => import('./locales/pt/supportReports'),
     leaderboard: () => import('./locales/pt/leaderboard'),
@@ -568,6 +588,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     timeRequest: () => import('./locales/ru/timeRequest'),
     webFilter: () => import('./locales/ru/webFilter'),
     nav: () => import('./locales/ru/nav'),
+    shared: () => import('./locales/ru/shared'),
     notifications: () => import('./locales/ru/notifications'),
     supportReports: () => import('./locales/ru/supportReports'),
     leaderboard: () => import('./locales/ru/leaderboard'),
@@ -596,6 +617,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     timeRequest: () => import('./locales/tr/timeRequest'),
     webFilter: () => import('./locales/tr/webFilter'),
     nav: () => import('./locales/tr/nav'),
+    shared: () => import('./locales/tr/shared'),
     notifications: () => import('./locales/tr/notifications'),
     supportReports: () => import('./locales/tr/supportReports'),
     leaderboard: () => import('./locales/tr/leaderboard'),
@@ -624,6 +646,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     timeRequest: () => import('./locales/vi/timeRequest'),
     webFilter: () => import('./locales/vi/webFilter'),
     nav: () => import('./locales/vi/nav'),
+    shared: () => import('./locales/vi/shared'),
     notifications: () => import('./locales/vi/notifications'),
     supportReports: () => import('./locales/vi/supportReports'),
     leaderboard: () => import('./locales/vi/leaderboard'),

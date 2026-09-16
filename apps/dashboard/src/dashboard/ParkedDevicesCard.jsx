@@ -129,11 +129,8 @@ export default function ParkedDevicesCard({
 
   const body = (
     <>
-      {/* No space between the glyph and the sentence: the heading is a flex row
-          with its own `gap`, and a whitespace text node there becomes a second
-          flex item, so the crown sat a space plus a gap from the title. */}
       <h2>
-        <Icon name="crown" size={18} />
+        <Icon name="crown" size={16} />{' '}
         {monitoredName
           ? appT('family.chooseMonitoredDone', { name: monitoredName })
           : appT('family.parkedBannerTitle')}
@@ -189,7 +186,7 @@ export default function ParkedDevicesCard({
           {appT('family.chooseMonitoredConfirm')}
         </button>
         <p className="hint">
-          <Icon name="phone" size={14} /> {t('dash.planManageOnPhone')}
+          <Icon name="phone" size={12} /> {t('dash.planManageOnPhone')}
         </p>
       </div>
     </>
