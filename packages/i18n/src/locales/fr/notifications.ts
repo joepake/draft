@@ -55,5 +55,9 @@ export const notifications = {
       label: 'Bilan hebdomadaire',
       hint: 'Récapitulatif du lundi sur le temps d’écran et les blocages.',
     },
+    messageAlerts: {
+      label: 'Alertes de messages',
+      hint: 'Soyez averti lorsque des mots préoccupants apparaissent dans les messages',
+    },
   },
 };

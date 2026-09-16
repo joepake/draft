@@ -259,6 +259,24 @@ export function timelineMinutesUnmeasured(timeline: UsageTimeline): number {
 }
 
 /**
+ * Past this much darkness a band stops being honest and starts looking broken.
+ *
+ * A strip that is almost entirely "not measured" reads as a rendering failure
+ * rather than as a report, so both consoles replace it with a sentence instead
+ * of drawing 24 hours of nothing. Shared because a threshold each surface chose
+ * for itself would have one drawing a band the other refused, for the same day.
+ */
+export const BAND_TOO_THIN = 0.85;
+
+/** Whether this day is too dark to draw. Absent is not too thin — it is absent. */
+export function isBandTooThin(timeline: UsageTimeline | undefined | null): boolean {
+  if (!timeline) {
+    return false;
+  }
+  return timelineMinutesUnmeasured(timeline) / USAGE_TIMELINE_MINUTES > BAND_TOO_THIN;
+}
+
+/**
  * The day as stretches, for drawing.
  *
  * A renderer wants runs, not 1440 nodes: a typical day is a few dozen of them,

@@ -73,7 +73,6 @@ export const settings = {
   switchToChildDevice: 'Bu telefonu çocuk cihazı olarak ayarla',
   guestAccountHint:
     'Cihazları, uyarıları ve aile planınızı senkronize etmek için giriş yapın.',
-  reportTitle: 'Sorun bildir',
   reportModalTitle: 'Sorun bildir',
   reportMessageLabel: 'Yaşadığınız sorunu açıklayın.',
   reportMessagePlaceholder: 'Hatayı veya sorunu açıklayın…',

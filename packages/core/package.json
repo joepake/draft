@@ -59,6 +59,8 @@
     "./domain/deepLink": "./src/domain/deepLink.ts",
     "./domain/deviceConsents": "./src/domain/deviceConsents.ts",
     "./domain/deviceControlsMapper": "./src/domain/deviceControlsMapper.ts",
+    "./domain/deviceControlState": "./src/domain/deviceControlState.ts",
+    "./domain/reportHub": "./src/domain/reportHub.ts",
     "./domain/deviceDetailActions": "./src/domain/deviceDetailActions.ts",
     "./domain/deviceFormFactor": "./src/domain/deviceFormFactor.ts",
     "./domain/deviceListPriority": "./src/domain/deviceListPriority.ts",

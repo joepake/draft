@@ -55,5 +55,9 @@ export const notifications = {
       label: 'Weekly summary',
       hint: 'A Monday recap of screen time and blocks.',
     },
+    messageAlerts: {
+      label: 'Message Alerts',
+      hint: 'Get alerted when concerning words appear in messages',
+    },
   },
 };

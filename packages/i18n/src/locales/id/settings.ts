@@ -74,7 +74,6 @@ export const settings = {
   switchToChildDevice: 'Gunakan ponsel ini sebagai perangkat anak',
   guestAccountHint:
     'Masuk untuk menyinkronkan perangkat, peringatan, dan paket keluarga Anda.',
-  reportTitle: 'Laporkan masalah',
   reportModalTitle: 'Laporkan masalah',
   reportMessageLabel: 'Jelaskan masalah yang Anda alami.',
   reportMessagePlaceholder: 'Jelaskan bug atau masalahnya…',

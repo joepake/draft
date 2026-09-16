@@ -73,7 +73,6 @@ export const settings = {
   signInButton: '로그인',
   switchToChildDevice: '이 휴대폰을 자녀 기기로 설정',
   guestAccountHint: '로그인하면 기기, 알림, 가족 플랜을 동기화할 수 있어요.',
-  reportTitle: '문제 신고',
   reportModalTitle: '문제 신고',
   reportMessageLabel: '겪고 있는 문제를 설명해 주세요.',
   reportMessagePlaceholder: '버그나 문제를 설명해 주세요…',

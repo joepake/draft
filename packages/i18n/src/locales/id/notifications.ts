@@ -54,5 +54,9 @@ export const notifications = {
       label: 'Ringkasan mingguan',
       hint: 'Rekap hari Senin tentang waktu layar dan pemblokiran.',
     },
+    messageAlerts: {
+      label: 'Peringatan pesan',
+      hint: 'Dapatkan peringatan saat kata yang mengkhawatirkan muncul di pesan',
+    },
   },
 };

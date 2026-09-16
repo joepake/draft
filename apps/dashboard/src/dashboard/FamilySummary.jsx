@@ -3,6 +3,10 @@ import { getEffectiveDeviceStatus } from '@kidgate/core/domain/deviceStatus';
 import { getProtectionSummaryKeys } from '@kidgate/core/domain/protectionStatus';
 import { isWithinAnyScheduleWindow } from '@kidgate/core/domain/scheduleWindow';
 import {
+  resolveChildLocationBlocker,
+  resolveChildLocationView,
+} from '@kidgate/core/domain/childLocation';
+import {
   buildChildUrgencyPills,
   buildFamilySummaryChips,
 } from '@kidgate/core/domain/familySummary';
@@ -122,7 +126,7 @@ export function useFamilyCounts({ devices, timeRequests, checkIns, sosAlerts }) 
 }
 
 /** One child's share of those counts, as the pills the phone draws. */
-export function childPills(counts, childDevices) {
+export function childPills(counts, childDevices, child = null) {
   let inactive = 0;
   let warn = 0;
   let requests = 0;
@@ -134,16 +138,38 @@ export function childPills(counts, childDevices) {
     requests += counts.pendingRequestsByDevice.get(device.id) ?? 0;
     if (counts.pendingCheckInDeviceIds.has(device.id)) checkIn += 1;
   }
+  /*
+   * Something is stopping this child's position from arriving.
+   *
+   * `resolveChildLocationBlocker` answers WHICH of the four causes it is —
+   * sharing off, a refused permission, waiting for a first fix, or a device
+   * plainly awake whose fix has gone stale. The pill says none of them: four
+   * causes, none of which this card can fix, and spelling out which one made
+   * the one hopeless line the loudest thing on it. The location screen is
+   * where the reason and the remedy live.
+   *
+   * `sharingEnabled` follows the seed order every location surface uses — the
+   * child's rule when one was saved, else what the devices themselves say. No
+   * carried device is deliberately NOT a blocker: either nothing of theirs can
+   * report a position, or several could and nobody has said which, and that is
+   * a question rather than a fault.
+   */
+  const carried = child ? resolveChildLocationView(child, childDevices).carried : null;
+  const sharingEnabled =
+    child?.rules?.locationSharingEnabled ??
+    childDevices.some(device => device.controls?.locationSharingEnabled === true);
+  const blocker = resolveChildLocationBlocker({
+    sharingEnabled,
+    carried,
+    nowMs: Date.now(),
+  });
+
   return buildChildUrgencyPills({
     inactive,
     requests,
     checkIn,
     warn,
-    /* Left to the phone for now: the four causes behind a missing position
-       need `childLocation`'s resolution and the carried-device designation,
-       neither of which this surface reads yet
-       (`apps/dashboard/CLAUDE.md`). */
-    locationBlocked: false,
+    locationBlocked: blocker !== null,
   });
 }
 

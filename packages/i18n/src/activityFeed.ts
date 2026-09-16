@@ -5,6 +5,10 @@ import { appLimits as enAppLimits } from './locales/en/appLimits';
 import { blockedHours as enBlockedHours } from './locales/en/blockedHours';
 import { checkIn as enCheckIn } from './locales/en/checkIn';
 import { deviceDetail as enDeviceDetail } from './locales/en/deviceDetail';
+import { childReport as enChildReport } from './locales/en/childReport';
+import { videoHistory as enVideoHistory } from './locales/en/videoHistory';
+import { appAlerts as enAppAlerts } from './locales/en/appAlerts';
+import { tamperAlerts as enTamperAlerts } from './locales/en/tamperAlerts';
 import { family as enFamily } from './locales/en/family';
 import { location as enLocation } from './locales/en/location';
 import { messageMonitoring as enMessageMonitoring } from './locales/en/messageMonitoring';
@@ -125,6 +129,23 @@ export interface ActivityFeedPack extends LocaleTree {
   checkIn: unknown;
   /** Rename and unpair, said once for both parent surfaces. */
   deviceDetail: unknown;
+  /**
+   * The two alert-log screens' own status words. Both consoles draw the
+   * same control cards, and the card's VALUE comes from
+   * `@kidgate/core/domain/deviceControlState` as a key — so a namespace the
+   * web cannot see renders `appAlerts.statusOn` to a parent in every
+   * language rather than falling back to English.
+   */
+  /**
+   * The per-child report: the hero's two totals, the period switch, the day
+   * bars, the device split and the app ranking. `apps/dashboard` renders that
+   * screen since 2026-09-16 and every sentence on it already exists here.
+   */
+  childReport: unknown;
+  /** The Chrome-extension route a Mac's card names instead of saying Off. */
+  videoHistory: unknown;
+  appAlerts: unknown;
+  tamperAlerts: unknown;
   family: unknown;
   location: unknown;
   /**
@@ -195,6 +216,10 @@ const en: ActivityFeedPack = {
   settings: enSettings,
   checkIn: enCheckIn,
   deviceDetail: enDeviceDetail,
+  childReport: enChildReport,
+  videoHistory: enVideoHistory,
+  appAlerts: enAppAlerts,
+  tamperAlerts: enTamperAlerts,
   family: enFamily,
   location: enLocation,
   messageMonitoring: enMessageMonitoring,
@@ -216,6 +241,7 @@ const en: ActivityFeedPack = {
 /** The namespaces a feed row can name. Anything outside them falls to `en`. */
 const NAMESPACES = [
   'activities',
+  'childReport',
   'videoHistory',
   'appInventory',
   'appLimits',
@@ -226,6 +252,8 @@ const NAMESPACES = [
   'settings',
   'checkIn',
   'deviceDetail',
+  'appAlerts',
+  'tamperAlerts',
   'family',
   'location',
   'messageMonitoring',
@@ -286,6 +314,8 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     settings: () => import('./locales/ar/settings'),
     checkIn: () => import('./locales/ar/checkIn'),
     deviceDetail: () => import('./locales/ar/deviceDetail'),
+    appAlerts: () => import('./locales/ar/appAlerts'),
+    tamperAlerts: () => import('./locales/ar/tamperAlerts'),
     family: () => import('./locales/ar/family'),
     location: () => import('./locales/ar/location'),
     messageMonitoring: () => import('./locales/ar/messageMonitoring'),
@@ -303,6 +333,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     supportReports: () => import('./locales/ar/supportReports'),
     leaderboard: () => import('./locales/ar/leaderboard'),
     videoHistory: () => import('./locales/ar/videoHistory'),
+    childReport: () => import('./locales/ar/childReport'),
   },
   de: {
     activities: () => import('./locales/de/activities'),
@@ -315,6 +346,8 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     settings: () => import('./locales/de/settings'),
     checkIn: () => import('./locales/de/checkIn'),
     deviceDetail: () => import('./locales/de/deviceDetail'),
+    appAlerts: () => import('./locales/de/appAlerts'),
+    tamperAlerts: () => import('./locales/de/tamperAlerts'),
     family: () => import('./locales/de/family'),
     location: () => import('./locales/de/location'),
     messageMonitoring: () => import('./locales/de/messageMonitoring'),
@@ -332,6 +365,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     supportReports: () => import('./locales/de/supportReports'),
     leaderboard: () => import('./locales/de/leaderboard'),
     videoHistory: () => import('./locales/de/videoHistory'),
+    childReport: () => import('./locales/de/childReport'),
   },
   es: {
     activities: () => import('./locales/es/activities'),
@@ -344,6 +378,8 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     settings: () => import('./locales/es/settings'),
     checkIn: () => import('./locales/es/checkIn'),
     deviceDetail: () => import('./locales/es/deviceDetail'),
+    appAlerts: () => import('./locales/es/appAlerts'),
+    tamperAlerts: () => import('./locales/es/tamperAlerts'),
     family: () => import('./locales/es/family'),
     location: () => import('./locales/es/location'),
     messageMonitoring: () => import('./locales/es/messageMonitoring'),
@@ -361,6 +397,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     supportReports: () => import('./locales/es/supportReports'),
     leaderboard: () => import('./locales/es/leaderboard'),
     videoHistory: () => import('./locales/es/videoHistory'),
+    childReport: () => import('./locales/es/childReport'),
   },
   fr: {
     activities: () => import('./locales/fr/activities'),
@@ -373,6 +410,8 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     settings: () => import('./locales/fr/settings'),
     checkIn: () => import('./locales/fr/checkIn'),
     deviceDetail: () => import('./locales/fr/deviceDetail'),
+    appAlerts: () => import('./locales/fr/appAlerts'),
+    tamperAlerts: () => import('./locales/fr/tamperAlerts'),
     family: () => import('./locales/fr/family'),
     location: () => import('./locales/fr/location'),
     messageMonitoring: () => import('./locales/fr/messageMonitoring'),
@@ -390,6 +429,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     supportReports: () => import('./locales/fr/supportReports'),
     leaderboard: () => import('./locales/fr/leaderboard'),
     videoHistory: () => import('./locales/fr/videoHistory'),
+    childReport: () => import('./locales/fr/childReport'),
   },
   hi: {
     activities: () => import('./locales/hi/activities'),
@@ -402,6 +442,8 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     settings: () => import('./locales/hi/settings'),
     checkIn: () => import('./locales/hi/checkIn'),
     deviceDetail: () => import('./locales/hi/deviceDetail'),
+    appAlerts: () => import('./locales/hi/appAlerts'),
+    tamperAlerts: () => import('./locales/hi/tamperAlerts'),
     family: () => import('./locales/hi/family'),
     location: () => import('./locales/hi/location'),
     messageMonitoring: () => import('./locales/hi/messageMonitoring'),
@@ -419,6 +461,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     supportReports: () => import('./locales/hi/supportReports'),
     leaderboard: () => import('./locales/hi/leaderboard'),
     videoHistory: () => import('./locales/hi/videoHistory'),
+    childReport: () => import('./locales/hi/childReport'),
   },
   id: {
     activities: () => import('./locales/id/activities'),
@@ -431,6 +474,8 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     settings: () => import('./locales/id/settings'),
     checkIn: () => import('./locales/id/checkIn'),
     deviceDetail: () => import('./locales/id/deviceDetail'),
+    appAlerts: () => import('./locales/id/appAlerts'),
+    tamperAlerts: () => import('./locales/id/tamperAlerts'),
     family: () => import('./locales/id/family'),
     location: () => import('./locales/id/location'),
     messageMonitoring: () => import('./locales/id/messageMonitoring'),
@@ -448,6 +493,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     supportReports: () => import('./locales/id/supportReports'),
     leaderboard: () => import('./locales/id/leaderboard'),
     videoHistory: () => import('./locales/id/videoHistory'),
+    childReport: () => import('./locales/id/childReport'),
   },
   it: {
     activities: () => import('./locales/it/activities'),
@@ -460,6 +506,8 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     settings: () => import('./locales/it/settings'),
     checkIn: () => import('./locales/it/checkIn'),
     deviceDetail: () => import('./locales/it/deviceDetail'),
+    appAlerts: () => import('./locales/it/appAlerts'),
+    tamperAlerts: () => import('./locales/it/tamperAlerts'),
     family: () => import('./locales/it/family'),
     location: () => import('./locales/it/location'),
     messageMonitoring: () => import('./locales/it/messageMonitoring'),
@@ -477,6 +525,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     supportReports: () => import('./locales/it/supportReports'),
     leaderboard: () => import('./locales/it/leaderboard'),
     videoHistory: () => import('./locales/it/videoHistory'),
+    childReport: () => import('./locales/it/childReport'),
   },
   ja: {
     activities: () => import('./locales/ja/activities'),
@@ -489,6 +538,8 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     settings: () => import('./locales/ja/settings'),
     checkIn: () => import('./locales/ja/checkIn'),
     deviceDetail: () => import('./locales/ja/deviceDetail'),
+    appAlerts: () => import('./locales/ja/appAlerts'),
+    tamperAlerts: () => import('./locales/ja/tamperAlerts'),
     family: () => import('./locales/ja/family'),
     location: () => import('./locales/ja/location'),
     messageMonitoring: () => import('./locales/ja/messageMonitoring'),
@@ -506,6 +557,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     supportReports: () => import('./locales/ja/supportReports'),
     leaderboard: () => import('./locales/ja/leaderboard'),
     videoHistory: () => import('./locales/ja/videoHistory'),
+    childReport: () => import('./locales/ja/childReport'),
   },
   ko: {
     activities: () => import('./locales/ko/activities'),
@@ -518,6 +570,8 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     settings: () => import('./locales/ko/settings'),
     checkIn: () => import('./locales/ko/checkIn'),
     deviceDetail: () => import('./locales/ko/deviceDetail'),
+    appAlerts: () => import('./locales/ko/appAlerts'),
+    tamperAlerts: () => import('./locales/ko/tamperAlerts'),
     family: () => import('./locales/ko/family'),
     location: () => import('./locales/ko/location'),
     messageMonitoring: () => import('./locales/ko/messageMonitoring'),
@@ -535,6 +589,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     supportReports: () => import('./locales/ko/supportReports'),
     leaderboard: () => import('./locales/ko/leaderboard'),
     videoHistory: () => import('./locales/ko/videoHistory'),
+    childReport: () => import('./locales/ko/childReport'),
   },
   pt: {
     activities: () => import('./locales/pt/activities'),
@@ -547,6 +602,8 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     settings: () => import('./locales/pt/settings'),
     checkIn: () => import('./locales/pt/checkIn'),
     deviceDetail: () => import('./locales/pt/deviceDetail'),
+    appAlerts: () => import('./locales/pt/appAlerts'),
+    tamperAlerts: () => import('./locales/pt/tamperAlerts'),
     family: () => import('./locales/pt/family'),
     location: () => import('./locales/pt/location'),
     messageMonitoring: () => import('./locales/pt/messageMonitoring'),
@@ -564,6 +621,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     supportReports: () => import('./locales/pt/supportReports'),
     leaderboard: () => import('./locales/pt/leaderboard'),
     videoHistory: () => import('./locales/pt/videoHistory'),
+    childReport: () => import('./locales/pt/childReport'),
   },
   ru: {
     activities: () => import('./locales/ru/activities'),
@@ -576,6 +634,8 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     settings: () => import('./locales/ru/settings'),
     checkIn: () => import('./locales/ru/checkIn'),
     deviceDetail: () => import('./locales/ru/deviceDetail'),
+    appAlerts: () => import('./locales/ru/appAlerts'),
+    tamperAlerts: () => import('./locales/ru/tamperAlerts'),
     family: () => import('./locales/ru/family'),
     location: () => import('./locales/ru/location'),
     messageMonitoring: () => import('./locales/ru/messageMonitoring'),
@@ -593,6 +653,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     supportReports: () => import('./locales/ru/supportReports'),
     leaderboard: () => import('./locales/ru/leaderboard'),
     videoHistory: () => import('./locales/ru/videoHistory'),
+    childReport: () => import('./locales/ru/childReport'),
   },
   tr: {
     activities: () => import('./locales/tr/activities'),
@@ -605,6 +666,8 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     settings: () => import('./locales/tr/settings'),
     checkIn: () => import('./locales/tr/checkIn'),
     deviceDetail: () => import('./locales/tr/deviceDetail'),
+    appAlerts: () => import('./locales/tr/appAlerts'),
+    tamperAlerts: () => import('./locales/tr/tamperAlerts'),
     family: () => import('./locales/tr/family'),
     location: () => import('./locales/tr/location'),
     messageMonitoring: () => import('./locales/tr/messageMonitoring'),
@@ -622,6 +685,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     supportReports: () => import('./locales/tr/supportReports'),
     leaderboard: () => import('./locales/tr/leaderboard'),
     videoHistory: () => import('./locales/tr/videoHistory'),
+    childReport: () => import('./locales/tr/childReport'),
   },
   vi: {
     activities: () => import('./locales/vi/activities'),
@@ -634,6 +698,8 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     settings: () => import('./locales/vi/settings'),
     checkIn: () => import('./locales/vi/checkIn'),
     deviceDetail: () => import('./locales/vi/deviceDetail'),
+    appAlerts: () => import('./locales/vi/appAlerts'),
+    tamperAlerts: () => import('./locales/vi/tamperAlerts'),
     family: () => import('./locales/vi/family'),
     location: () => import('./locales/vi/location'),
     messageMonitoring: () => import('./locales/vi/messageMonitoring'),
@@ -651,6 +717,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     supportReports: () => import('./locales/vi/supportReports'),
     leaderboard: () => import('./locales/vi/leaderboard'),
     videoHistory: () => import('./locales/vi/videoHistory'),
+    childReport: () => import('./locales/vi/childReport'),
   },
 };
 

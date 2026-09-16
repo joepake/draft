@@ -55,5 +55,9 @@ export const notifications = {
       label: 'Resumo semanal',
       hint: 'Uma retrospectiva de segunda-feira do tempo de tela e dos bloqueios.',
     },
+    messageAlerts: {
+      label: 'Alertas de mensagens',
+      hint: 'Receba um aviso quando palavras preocupantes aparecerem nas mensagens',
+    },
   },
 };

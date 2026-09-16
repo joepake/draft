@@ -83,14 +83,18 @@ export default function SupportCard({
   };
 
   return (
-    <Card
-      title={appT('supportReports.title')}
-      subtitle={
-        reports.length > 0
-          ? appT('supportReports.subtitleCount', { count: open })
-          : null
-      }
-    >
+    /*
+     * No title of its own: this card IS the section since 2026-09-16, and the
+     * page header above it already says "Requests & reports" — printed twice,
+     * forty pixels apart, it read as two headings for two things. The open
+     * count survives as a line inside, because `Card` drops its whole header
+     * when there is no title, subtitle included, so it cannot stay in that
+     * slot.
+     */
+    <Card>
+      {reports.length > 0 && (
+        <p className="hint">{appT('supportReports.subtitleCount', { count: open })}</p>
+      )}
       {reports.length === 0 ? (
         <>
           <p className="empty">{appT('supportReports.emptyTitle')}</p>

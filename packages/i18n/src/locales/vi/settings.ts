@@ -74,7 +74,6 @@ export const settings = {
   switchToChildDevice: 'Chuyển điện thoại này thành thiết bị của trẻ',
   guestAccountHint:
     'Đăng nhập để đồng bộ thiết bị, cảnh báo và gói dịch vụ của gia đình.',
-  reportTitle: 'Báo cáo sự cố',
   reportModalTitle: 'Báo cáo sự cố',
   reportMessageLabel: 'Vui lòng mô tả vấn đề bạn đang gặp phải.',
   reportMessagePlaceholder: 'Mô tả lỗi hoặc vấn đề…',

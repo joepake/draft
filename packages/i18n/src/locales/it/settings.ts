@@ -72,7 +72,6 @@ export const settings = {
   signInButton: 'Accedi',
   switchToChildDevice: 'Configura invece questo telefono come dispositivo del bambino',
   guestAccountHint: 'Accedi per sincronizzare dispositivi, avvisi e il piano famiglia.',
-  reportTitle: 'Segnala un problema',
   reportModalTitle: 'Segnala un problema',
   reportMessageLabel: 'Descrivi il problema che stai riscontrando.',
   reportMessagePlaceholder: 'Descrivi il bug o il problema…',

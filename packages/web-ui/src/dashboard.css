@@ -461,7 +461,12 @@
  * "two online, one offline" without a sentence, and the sentence is the thing
  * a rail has no room for.
  */
+/* Chips wrap now that they carry names; the cluster stays out of the meta
+   column's way rather than squeezing it. */
 .kid-group-dots {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  max-width: 45%;
   display: flex;
   align-items: center;
   gap: 0.25rem;
@@ -1551,6 +1556,24 @@
   position: absolute;
   transform: translateX(-50%);
   font-variant-numeric: tabular-nums;
+}
+
+/*
+ * The two end labels anchor to the track's edges instead of centring on them.
+ *
+ * Every label is centred on its tick, which for `0h` at `left: 0` and `24h` at
+ * `left: 100%` puts half of each outside the container — about 11px of overflow
+ * at phone width, measured 2026-09-16 on the child report's per-device bands,
+ * where the card is narrower than the device tab this component was built for.
+ * The seven interior labels still centre, because their ticks have room on
+ * both sides.
+ */
+.tl-hours span:first-child {
+  transform: none;
+}
+
+.tl-hours span:last-child {
+  transform: translateX(-100%);
 }
 
 .tl-track {
@@ -3299,16 +3322,15 @@ ol.attn-fix li + li {
   max-width: 34rem;
   display: flex;
   flex-direction: column;
-  gap: 0.15rem;
-  /* `--surface`, the token every other card on this page uses. This said
+  gap: 0.75rem;
+  /* No frame of its own any more: each child is a card and this is the stack
+     they sit in. The token note below is kept because the same mistake is
+     one edit away.
+     `--surface`, the token every other card on this page uses. This said
      `var(--card)`, which is not a variable this stylesheet defines — the
      declaration was invalid and dropped, so the child list rendered as a bare
      bordered box on the page ground while every card beside it was white.
      Measured in the browser 2026-09-16. */
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--dash-radius-2);
-  padding: 0.5rem;
 }
 
 .settings-account {
@@ -3428,6 +3450,59 @@ ol.attn-fix li + li {
   color: var(--muted);
 }
 
+/* ---------- What the card says it is set to ----------
+ *
+ * The figure, then the unit beside it on the same baseline — "120 min/day",
+ * "2 time ranges", "Off". The phone puts the number at display size for the
+ * same reason: a parent scanning twelve cards is reading the numbers, and the
+ * feature names are what they already know.
+ */
+.control-card-state {
+  display: flex;
+  align-items: baseline;
+  gap: 0.3rem;
+  margin: 0.15rem 0 0.1rem;
+  min-width: 0;
+}
+
+.control-card-state b {
+  font-size: var(--dash-text-5);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--ink);
+}
+
+.control-card-state i {
+  font-style: normal;
+  font-size: var(--dash-text-1);
+  color: var(--muted);
+}
+
+/* Attention is the only tone that colours the figure. `active` is the ordinary
+   case — a limit that is set, a filter that is on — and colouring that too
+   would light every card and leave the one asking for something with nothing
+   to stand out against. Same rule as the family chips. */
+.control-card-state.tone-attention b {
+  color: var(--warning);
+}
+
+.control-card-state.tone-roadmap b {
+  color: var(--muted);
+}
+
+/* The verb, last — where the phone's card ends. Text rather than a button: the
+   whole card is already the target, and a button inside a button is a nesting
+   no browser accepts. */
+.control-card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
+  margin-top: 0.35rem;
+  font-size: var(--dash-text-1);
+  font-weight: 700;
+  color: var(--brand);
+}
+
 /*
  * The struck-out card: readable, and inert. It is not a disabled control — it
  * is a sentence about this machine, which is why the copy stays legible rather
@@ -3446,6 +3521,186 @@ ol.attn-fix li + li {
 
 .control-card:disabled strong {
   color: var(--ink-2);
+}
+
+/* ---------- A child's card ----------
+ *
+ * One card per person, with a gap between — not rows sharing one card. The
+ * phone has always drawn it this way and the reason shows at four children:
+ * rows in a single card read as a table to scan down, and a card reads as a
+ * person to look at. Everything on it describes the same child, so the whole
+ * card opens them; the nested controls stop the click.
+ */
+
+.kid-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--dash-radius-3);
+  padding: 1rem;
+  cursor: pointer;
+  transition:
+    border-color var(--kg-motion-fast) ease,
+    background var(--kg-motion-fast) ease;
+}
+
+.kid-card:hover {
+  border-color: color-mix(in srgb, var(--brand) 40%, var(--line));
+}
+
+.kid-card.is-active {
+  border-color: color-mix(in srgb, var(--brand) 55%, transparent);
+  background: color-mix(in srgb, var(--brand) 6%, var(--surface));
+}
+
+.kid-card-head {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.kid-card-head .kid-meta {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.kid-card-head .kid-meta strong {
+  font-size: var(--dash-text-4);
+  font-weight: 700;
+}
+
+/* The avatar carries the presence dot on its corner — one glance answers who,
+   and whether. */
+.kid-avatar-wrap {
+  position: relative;
+  flex-shrink: 0;
+  line-height: 0;
+}
+
+.kid-avatar-wrap .kid-dot {
+  position: absolute;
+  right: -1px;
+  bottom: -1px;
+  width: 0.7rem;
+  height: 0.7rem;
+  border: 2px solid var(--surface);
+}
+
+.kid-card .kid-last-active {
+  margin: 0.55rem 0 0;
+}
+
+/* The figures above, the bar below: the numbers are the reading and the bar is
+   the picture of it. */
+.kid-usage {
+  margin-top: 0.55rem;
+}
+
+.kid-usage strong {
+  display: block;
+  font-size: var(--dash-text-2);
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.3rem;
+}
+
+.kid-card .kid-pills {
+  margin-top: 0.55rem;
+}
+
+.kid-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.55rem;
+}
+
+/* A chip whose device is not answering is tinted, so the card says WHICH one
+   without being opened. */
+.kid-device-chip.is-alert {
+  color: var(--kg-errorStrong);
+  border-color: color-mix(in srgb, var(--kg-errorStrong) 35%, transparent);
+  background: color-mix(in srgb, var(--kg-errorStrong) 8%, transparent);
+}
+
+/*
+ * The family itself, as the first row of the list — the phone puts a card
+ * here that opens family management, and without it the only way in was a
+ * section away in Settings.
+ */
+.family-row {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--dash-radius-3);
+  padding: 0.9rem 1rem;
+  text-align: start;
+}
+
+.family-row:hover {
+  border-color: color-mix(in srgb, var(--brand) 40%, var(--line));
+}
+
+.family-row-icon {
+  display: grid;
+  place-items: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  flex-shrink: 0;
+  border-radius: var(--dash-radius-2);
+  color: var(--brand);
+  background: color-mix(in srgb, var(--brand) 12%, transparent);
+}
+
+/* ---------- The family screen ---------- */
+
+.family-card-head {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.family-card-head .kid-meta {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.family-card-head .kid-meta strong {
+  font-size: var(--dash-text-4);
+}
+
+.family-card-rename {
+  margin-top: 0.75rem;
+}
+
+/*
+ * The three groups, as a segmented row. `.chip` already draws the shape; what
+ * is its own here is the count, which is why a parent can tell "Parents 3"
+ * from "Parents" without opening it.
+ */
+.family-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 1.15rem;
+}
+
+.family-tab-count {
+  min-width: 1.15rem;
+  padding: 0 0.3rem;
+  border-radius: 999px;
+  font-size: var(--dash-text-1);
+  font-weight: 700;
+  text-align: center;
+  color: var(--muted);
+  background: color-mix(in srgb, var(--ink) 9%, transparent);
+}
+
+.family-tabs .chip.is-active .family-tab-count {
+  color: var(--ink);
+  background: color-mix(in srgb, var(--brand) 22%, transparent);
 }
 
 /* ---------- The Family summary row ----------
@@ -3566,6 +3821,100 @@ ol.attn-fix li + li {
   letter-spacing: 0.02em;
   color: var(--kg-errorStrong);
   background: color-mix(in srgb, var(--kg-errorStrong) 15%, transparent);
+}
+
+/*
+ * Today's screen time on a child row: a bar and the two figures, or a plain
+ * sentence when there is no budget to measure against.
+ *
+ * The bar is the phone's `ScreenTimeProgress` in its compact form. It fills to
+ * the used share and stops at 100% — a child who ran 20 minutes over does not
+ * get a bar out of its own track; `is-over` recolours it instead, which is the
+ * one thing a bar at full width cannot say on its own.
+ */
+.kid-usage {
+  display: block;
+  margin-top: 0.3rem;
+}
+
+.kid-usage-track {
+  display: block;
+  height: 5px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--ink) 10%, transparent);
+  overflow: hidden;
+}
+
+.kid-usage-fill {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: var(--brand);
+}
+
+.kid-usage-fill.is-over {
+  background: var(--kg-errorStrong);
+}
+
+.kid-usage em {
+  display: block;
+  margin-top: 0.15rem;
+  font-style: normal;
+  font-size: var(--dash-text-1);
+  color: var(--muted);
+}
+
+.kid.is-active .kid-usage em,
+.kid-group-head.is-active .kid-usage em {
+  color: var(--ink-2);
+}
+
+/*
+ * A device chip: the mark, the name, the dot. It replaced four anonymous dots
+ * — those said how many machines were reachable and never which one was not.
+ */
+.kid-device-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  /* No width cap. The row wraps, so a long machine name takes its own line
+     rather than being cut — `DESKTOP-NEQUQ1U` truncating to `DESKTOP-NEQ…`
+     told a parent nothing the dot beside it had not already said. */
+  padding: 0.1rem 0.4rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  font-size: var(--dash-text-1);
+  color: var(--muted);
+}
+
+.kid-device-chip > span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.kid-device-chip .icon {
+  flex-shrink: 0;
+}
+
+/* Where they were, when the family has a fix to show. Shares the geometry of
+   the last-active line below — both are quiet third-line facts. */
+.kid-place {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin: 0.55rem 0 0;
+  font-size: var(--dash-text-1);
+  color: var(--muted);
+}
+
+.kid-place .icon {
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+
+.kid-card.is-active .kid-place {
+  color: var(--ink-2);
 }
 
 /* The third line: when we last heard from any of their machines. */
@@ -3747,6 +4096,125 @@ ol.attn-fix li + li {
 }
 
 /* ---------- The family feed ---------- */
+
+/*
+ * A feed row is a card on a rail, not a list item.
+ *
+ * The phone draws the glyph outside the card, on the day's vertical rail, so a
+ * column of rows is skimmable by mark alone and the cards keep one left edge.
+ * The tone comes from the activity KIND — an emergency is the one row that
+ * must be readable as urgent before any of its words are.
+ */
+.feed-rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.feed-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+
+.feed-row-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  margin-top: 0.35rem;
+  border-radius: 999px;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.feed-row-card {
+  flex: 1 1 auto;
+  min-width: 0;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--dash-radius-2);
+  padding: 0.7rem 0.85rem;
+}
+
+/* Who, and on what. One chip rather than two lines: a family feed is read by
+   person first, and the machine is what tells a child's two iPads apart. */
+.feed-row-who {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  max-width: 100%;
+  margin-bottom: 0.25rem;
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  font-size: var(--dash-text-1);
+  color: var(--brand);
+  background: color-mix(in srgb, var(--brand) 12%, transparent);
+}
+
+.feed-row-who strong {
+  font-weight: 700;
+}
+
+.feed-row-who > span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.feed-row-title {
+  display: block;
+  font-size: var(--dash-text-3);
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.feed-row-card p {
+  margin: 0.1rem 0 0;
+  font-size: var(--dash-text-2);
+  color: var(--muted);
+}
+
+.feed-row-foot {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+  font-size: var(--dash-text-1);
+  color: var(--muted);
+}
+
+.feed-row-foot em {
+  font-style: normal;
+  font-weight: 600;
+}
+
+/*
+ * An emergency is the one row that has to read as urgent before any of its
+ * words are. Everything else keeps the plain card — a feed where several
+ * kinds shouted would have nothing left to shout with.
+ */
+.feed-row.type-emergency .feed-row-card {
+  border-color: color-mix(in srgb, var(--kg-errorStrong) 35%, transparent);
+  background: color-mix(in srgb, var(--kg-errorStrong) 7%, var(--surface));
+}
+
+.feed-row.type-emergency .feed-row-icon,
+.feed-row.type-tamper .feed-row-icon {
+  color: var(--kg-errorStrong);
+  border-color: color-mix(in srgb, var(--kg-errorStrong) 35%, transparent);
+}
+
+.feed-row.type-emergency .feed-row-who {
+  color: var(--kg-errorStrong);
+  background: color-mix(in srgb, var(--kg-errorStrong) 12%, transparent);
+}
 
 .feed-filter {
   display: flex;
@@ -3943,6 +4411,29 @@ ol.attn-fix li + li {
   .dash-tabs {
     margin-inline: -1rem;
     padding-inline: 1rem;
+  }
+
+  /*
+   * The device chips drop to a row of their own, which is where the phone
+   * draws them. Beside the meta column they took 45% of a 375px screen and
+   * left "Last active: just now" wrapping onto two lines with the screen-time
+   * sentence truncated — the two things the row exists to say.
+   */
+  .kid-group-head {
+    flex-wrap: wrap;
+  }
+
+  .kid-group-dots {
+    order: 3;
+    width: 100%;
+    max-width: none;
+    justify-content: flex-start;
+    margin-top: 0.35rem;
+  }
+
+  /* The chevron stays on the first line, against the name. */
+  .kid-group-chevron {
+    order: 2;
   }
 
   /* `.tiles` is already two across everywhere; only the inline variant,
@@ -4271,6 +4762,655 @@ ol.attn-fix li + li {
  * above it, and the label stops competing for room the German and Russian
  * strings need.
  */
+/* ---------- The Reports landing ----------
+ *
+ * Four blocks in front of the stored weekly sheet, the order the phone puts
+ * them in: today, the week, by child, by device. The sheet is one click behind
+ * the week card rather than the thing the tab opens on, because a report
+ * written once a week cannot answer "how much today".
+ */
+.report-hub {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.rhub-label {
+  display: block;
+  font-size: var(--dash-text-1);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* The one figure the whole tab exists to show. */
+.rhub-hero-value {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: var(--dash-text-7);
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.rhub-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  margin-top: 0.8rem;
+}
+
+/* Same three-part shape as the weekly sheet's bars: label and figure on one
+   line, the track spanning both columns under them. Kept as its own class
+   rather than reusing `.report-bar` — that one lives inside a printable sheet
+   and is sized for it. */
+.rhub-bar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 0.2rem 0.7rem;
+  font-size: var(--dash-text-2);
+}
+
+.rhub-bar-label {
+  grid-area: 1 / 1;
+  color: var(--muted);
+  min-width: 0;
+}
+
+.rhub-bar-value {
+  grid-area: 1 / 2;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  text-align: end;
+  color: var(--ink);
+}
+
+.rhub-bar-track {
+  grid-area: 2 / 1 / 3 / 3;
+  display: block;
+  width: 100%;
+  height: 8px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--ink) 10%, transparent);
+  overflow: hidden;
+}
+
+.rhub-bar-fill {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: var(--brand);
+}
+
+/* The reference, not the subject — same shape, less ink. */
+.rhub-bar.is-muted .rhub-bar-fill {
+  background: color-mix(in srgb, var(--ink-2) 55%, transparent);
+}
+
+/* The week card is a button; it must not read as one. */
+.rhub-week {
+  display: block;
+  width: 100%;
+  text-align: start;
+  cursor: pointer;
+}
+
+.rhub-week:hover {
+  border-color: color-mix(in srgb, var(--brand) 45%, var(--line));
+}
+
+.rhub-week-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+  color: var(--muted);
+}
+
+.rhub-week-copy {
+  min-width: 0;
+}
+
+.rhub-week-range {
+  display: block;
+  font-style: normal;
+  font-size: var(--dash-text-2);
+  color: var(--ink-2);
+}
+
+.rhub-section-title {
+  margin: 0.4rem 0 0.35rem;
+  font-size: var(--dash-text-1);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.rhub-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--dash-radius-2);
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.rhub-list li + li .rhub-row {
+  border-top: 1px solid var(--line);
+}
+
+.rhub-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  /* The 44px floor every row control on this surface keeps. */
+  min-height: 44px;
+  padding: 0.6rem 0.75rem;
+  text-align: start;
+  background: transparent;
+}
+
+.rhub-row:hover {
+  background: color-mix(in srgb, var(--brand) 6%, transparent);
+}
+
+.rhub-row-icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--dash-radius-1);
+  color: var(--muted);
+  background: color-mix(in srgb, var(--ink) 7%, transparent);
+}
+
+.rhub-row-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.rhub-row-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.rhub-row-head strong {
+  font-size: var(--dash-text-3);
+  font-weight: 700;
+  color: var(--ink);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rhub-row-head em {
+  flex: none;
+  font-style: normal;
+  font-size: var(--dash-text-2);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-2);
+}
+
+/* ---------- A Settings row that opens a page ----------
+ *
+ * Only on a bottom bar, where the rail's fifth item has nowhere to sit. Built
+ * as a card so it reads as one of the blocks around it rather than as a button
+ * dropped between them — what changes is the chevron, which is the whole
+ * promise: this one goes somewhere.
+ */
+.settings-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  /* The 44px floor every row control on this surface keeps. */
+  min-height: 44px;
+  text-align: start;
+  cursor: pointer;
+}
+
+.settings-row:hover {
+  border-color: color-mix(in srgb, var(--brand) 45%, var(--line));
+}
+
+.settings-row-icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: var(--dash-radius-1);
+  color: var(--brand);
+  background: color-mix(in srgb, var(--brand) 12%, transparent);
+}
+
+.settings-row-copy {
+  flex: 1;
+  min-width: 0;
+  font-size: var(--dash-text-3);
+  font-weight: 700;
+  color: var(--ink);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ---------- One child's report ----------
+ *
+ * The hero is a dark slab, as on the phone and for the same reason: the figure
+ * on it is a total no single device could report, and the honesty lines that
+ * qualify it sit inside the slab rather than two scrolls below, where a caveat
+ * stops being one.
+ */
+.creport {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.creport-head {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.creport-head-copy {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.creport-head-copy strong,
+.creport-head-copy em {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.creport-head-copy strong {
+  font-size: var(--dash-text-4);
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.creport-head-copy em {
+  font-style: normal;
+  font-size: var(--dash-text-1);
+  color: var(--muted);
+}
+
+/* Pushed to the end of the row, and it stays there at phone width — the name
+   beside it truncates rather than wrapping the button onto its own line. */
+.creport-share {
+  margin-inline-start: auto;
+  flex: none;
+  gap: 0.3rem;
+}
+
+.creport-hero {
+  background: var(--ink);
+  border-color: transparent;
+  color: var(--plane);
+}
+
+/* Label left, figure right, one baseline. Stacked they read as two
+   left-anchored lines of different sizes; as a ledger row the eye gets one
+   column of names and one of numbers, which is how the bars below already
+   read. */
+.creport-figure-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.creport-figure-label {
+  font-size: var(--dash-text-2);
+  color: color-mix(in srgb, var(--plane) 70%, transparent);
+}
+
+.creport-figure {
+  font-size: var(--dash-text-7);
+  font-weight: 800;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+  color: var(--plane);
+}
+
+.creport-hero-note,
+.creport-hero-empty {
+  margin: 0.2rem 0 0;
+  font-size: var(--dash-text-1);
+  line-height: 1.45;
+  color: color-mix(in srgb, var(--plane) 62%, transparent);
+}
+
+.creport-split {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.7rem;
+}
+
+/* The shared bar, inverted for the slab. Both bars keep the same hue and
+   separate by weight — a muted second bar drawn in a border colour is 1.06:1
+   against its own track, which means a short bar is not there at all. */
+.creport-hero .rhub-bar-label {
+  color: color-mix(in srgb, var(--plane) 65%, transparent);
+}
+
+.creport-hero .rhub-bar-value {
+  color: var(--plane);
+}
+
+.creport-hero .rhub-bar-track {
+  background: color-mix(in srgb, var(--plane) 18%, transparent);
+}
+
+.creport-hero .rhub-bar-fill {
+  background: color-mix(in srgb, var(--plane) 92%, transparent);
+}
+
+.creport-hero .rhub-bar.is-muted .rhub-bar-fill {
+  background: color-mix(in srgb, var(--plane) 42%, transparent);
+}
+
+/* Value over label, one well each — two numbers scannable in a sweep, rather
+   than two sentences stacked under the hero. */
+.creport-stats {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+}
+
+.creport-stat {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 0.1rem;
+  padding: 0.5rem 0.6rem;
+  border-radius: var(--dash-radius-1);
+  background: color-mix(in srgb, var(--plane) 12%, transparent);
+}
+
+.creport-stat strong {
+  font-size: var(--dash-text-5);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: var(--plane);
+}
+
+.creport-stat strong.is-warning {
+  color: var(--warning);
+}
+
+.creport-stat em {
+  font-style: normal;
+  font-size: var(--dash-text-1);
+  color: color-mix(in srgb, var(--plane) 62%, transparent);
+}
+
+.creport-nights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.6rem;
+}
+
+.creport-coverage {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0.6rem 0 0;
+  font-size: var(--dash-text-1);
+  color: var(--warning);
+}
+
+.creport-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+}
+
+.creport-card-head h3 {
+  margin: 0;
+  font-size: var(--dash-text-1);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.creport-scope {
+  font-style: normal;
+  font-size: var(--dash-text-1);
+  color: var(--ink-2);
+}
+
+/* ---- Day by day ----
+ *
+ * Columns rather than rows: a month of dates down the page is a list to read,
+ * and the shape of a week is what a parent is actually looking for. Scrolls
+ * sideways at 30 days on a phone rather than shrinking each bar to a hairline.
+ */
+.creport-days {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0.2rem;
+  overflow-x: auto;
+}
+
+.creport-day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  /* Wide enough to hit, narrow enough that a month fits a laptop. */
+  min-width: 1.6rem;
+  padding: 0;
+  background: transparent;
+}
+
+.creport-day-track {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  height: 4.5rem;
+  border-radius: var(--dash-radius-1);
+  background: color-mix(in srgb, var(--ink) 8%, transparent);
+  overflow: hidden;
+}
+
+.creport-day-fill {
+  display: block;
+  width: 100%;
+  border-radius: var(--dash-radius-1);
+  background: color-mix(in srgb, var(--brand) 70%, transparent);
+}
+
+.creport-day:hover .creport-day-fill,
+.creport-day.is-active .creport-day-fill {
+  background: var(--brand);
+}
+
+.creport-day-label {
+  font-size: 0.65rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+}
+
+.creport-day.is-active .creport-day-label {
+  font-weight: 800;
+  color: var(--ink);
+}
+
+/* ---- Which device ---- */
+.creport-donut {
+  /* The ring is the gradient; the hole is punched by the inner disc below.
+     No library, and it scales with the font. */
+  display: grid;
+  place-items: center;
+  width: 8.5rem;
+  height: 8.5rem;
+  margin: 0.2rem auto 0.9rem;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--ink) 8%, transparent);
+}
+
+.creport-donut-hole {
+  display: grid;
+  place-items: center;
+  width: 64%;
+  height: 64%;
+  border-radius: 50%;
+  background: var(--surface);
+}
+
+.creport-donut-hole strong {
+  font-size: var(--dash-text-3);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+
+.creport-rows,
+.creport-apps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.creport-rows .rhub-row {
+  padding-inline: 0;
+}
+
+/* The device's colour, carried by the glyph that says which KIND of machine it
+   is. A bare swatch names the slice but not the device. */
+.creport-swatch {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: var(--dash-radius-1);
+  color: var(--kg-onPrimary, var(--plane));
+}
+
+.creport-totals-only {
+  font-style: normal;
+  font-size: var(--dash-text-1);
+  color: var(--muted);
+}
+
+/* ---- When the screens were on ----
+ *
+ * The merged strip, then one per device under it. Each device block is spaced
+ * rather than ruled: the bands are already strong horizontals, and a border
+ * between them would read as a fourth state in a chart whose whole point is
+ * that it has exactly three.
+ */
+.creport-band-label,
+.creport-band-head {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0 0 0.3rem;
+  font-size: var(--dash-text-1);
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 0;
+}
+
+.creport-band-head {
+  /* The name can be long and the strip below it cannot shrink — truncate the
+     label rather than let the row push the band out of the card. */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.creport-band-block {
+  margin-top: 0.9rem;
+}
+
+/* The device's own colour at label size, so the strip and the split ring below
+   it read as the same device. */
+.creport-swatch-sm {
+  width: 1.15rem;
+  height: 1.15rem;
+  border-radius: 0.3rem;
+}
+
+/* ---- Most used ---- */
+.creport-apps > li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.45rem 0;
+}
+
+.creport-apps > li + li {
+  border-top: 1px solid var(--line);
+}
+
+.creport-app-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.creport-app-head strong {
+  font-size: var(--dash-text-3);
+  font-weight: 700;
+  color: var(--ink);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.creport-app-head em {
+  flex: none;
+  font-style: normal;
+  font-size: var(--dash-text-2);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-2);
+}
+
+.creport-app-devices {
+  font-style: normal;
+  font-size: var(--dash-text-1);
+  color: var(--muted);
+}
+
+/* A fact about the period, not an app — so no bar. One would invite comparing
+   it against the rows it is the complement of. */
+.creport-app-other .creport-app-head strong {
+  color: var(--muted);
+  font-weight: 600;
+}
+
 .report-bar {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;

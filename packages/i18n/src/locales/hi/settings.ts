@@ -73,7 +73,6 @@ export const settings = {
   switchToChildDevice: 'इस फ़ोन को बच्चे के डिवाइस के रूप में सेट करें',
   guestAccountHint:
     'डिवाइस, अलर्ट और अपनी फ़ैमिली प्लान सिंक करने के लिए साइन इन करें।',
-  reportTitle: 'समस्या की रिपोर्ट करें',
   reportModalTitle: 'समस्या की रिपोर्ट करें',
   reportMessageLabel: 'कृपया आपको आ रही समस्या का वर्णन करें।',
   reportMessagePlaceholder: 'बग या समस्या का वर्णन करें…',

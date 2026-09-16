@@ -53,5 +53,9 @@ export const notifications = {
       label: '주간 요약',
       hint: '월요일에 오는 사용 시간과 차단 횟수 정리.',
     },
+    messageAlerts: {
+      label: '메시지 경고',
+      hint: '메시지에 우려되는 단어가 나타나면 알림을 받으세요',
+    },
   },
 };

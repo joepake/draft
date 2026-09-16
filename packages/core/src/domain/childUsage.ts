@@ -142,6 +142,17 @@ export interface ChildUsageTotals {
   days: ChildUsageDayTotal[];
 }
 
+/**
+ * Below this, `coverage` changes how the figures above it should be read, and
+ * both consoles say so on the report.
+ *
+ * Above it the number is the normal case — 97% is what a healthy week looks
+ * like — and printing it there puts a fourth hedge under a figure that already
+ * carries three. The warning is an exception, not a status line, which only
+ * works if the two parent surfaces draw the line in the same place.
+ */
+export const THIN_COVERAGE = 0.75;
+
 /** One slice of the device split bar. */
 export interface ChildDeviceShare {
   deviceId: string;

@@ -53,5 +53,9 @@ export const notifications = {
       label: '週間サマリー',
       hint: '月曜日に届く利用時間とブロック回数のまとめ。',
     },
+    messageAlerts: {
+      label: 'メッセージ警告',
+      hint: 'メッセージに気がかりな語句が現れたら通知します',
+    },
   },
 };

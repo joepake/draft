@@ -71,7 +71,6 @@ export const settings = {
   signInButton: 'Sign in',
   switchToChildDevice: 'Set this phone up as a child device instead',
   guestAccountHint: 'Sign in to sync devices, alerts, and your family plan.',
-  reportTitle: 'Report a problem',
   reportModalTitle: 'Report a problem',
   reportMessageLabel: 'Describe the issue you are experiencing.',
   reportMessagePlaceholder: 'Describe the bug or problem…',

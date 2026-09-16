@@ -77,7 +77,6 @@ export const settings = {
   switchToChildDevice: 'Utiliser ce téléphone comme appareil enfant',
   guestAccountHint:
     'Connectez-vous pour synchroniser les appareils, les alertes et votre formule familiale.',
-  reportTitle: 'Signaler un problème',
   reportModalTitle: 'Signaler un problème',
   reportMessageLabel: 'Veuillez décrire le problème que vous rencontrez.',
   reportMessagePlaceholder: 'Décrivez le bug ou le problème…',

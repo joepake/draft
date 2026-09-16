@@ -73,7 +73,6 @@ export const settings = {
   switchToChildDevice: 'Настроить этот телефон как устройство ребёнка',
   guestAccountHint:
     'Войдите, чтобы синхронизировать устройства, оповещёния и семейный план.',
-  reportTitle: 'Сообщить о проблеме',
   reportModalTitle: 'Сообщить о проблеме',
   reportMessageLabel: 'Опишите проблему, с которой вы столкнулись.',
   reportMessagePlaceholder: 'Опишите ошибку или проблему…',

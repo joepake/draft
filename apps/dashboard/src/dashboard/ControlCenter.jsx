@@ -11,6 +11,7 @@ import {
   isActionSupported,
   isActionSupportedByAnyDevice,
 } from '@kidgate/core/domain/deviceDetailActions';
+import { resolveControlCardStatus } from '@kidgate/core/domain/deviceControlState';
 
 /**
  * The control centre — the phone's grid, drawn in a browser.
@@ -31,6 +32,17 @@ import {
  * Given a `device`, a card is lit when that machine can do it. Given `devices`
  * — the child hub — a card is lit when ANY of the child's can, which is the
  * rule `docs/CHILD_HUB.md` states and `isActionSupportedByAnyDevice` holds.
+ *
+ * ## What each card says it is set to
+ *
+ * `facts` is this surface's fold of the documents; the STATE read off it is
+ * `@kidgate/core/domain/deviceControlState`, shared with the phone. Until that
+ * existed these cards showed the feature's description and nothing about the
+ * machine, so a parent in a browser could not tell a two-hour daily limit from
+ * no limit at all.
+ *
+ * Absent `facts`, or an action the resolver has no state for, falls back to
+ * exactly that description — which is what both consoles showed before.
  */
 
 /**
@@ -62,6 +74,7 @@ const ACTION_TAB = {
 export default function ControlCenter({
   device = null,
   devices = null,
+  facts = null,
   appT,
   canUsePremiumControls = true,
   onOpen,
@@ -147,6 +160,12 @@ export default function ControlCenter({
           <div className="control-grid">
             {section.actions.map(action => {
               const can = supported(action);
+              /* Only for a card that is lit. A machine that cannot carry the
+                 feature has no state to report, and "Off" over a struck-out
+                 card reads as a switch somebody forgot rather than as a thing
+                 this device never had. */
+              const status =
+                can && facts ? resolveControlCardStatus(action.id, facts) : null;
               return (
                 <button
                   key={action.id}
@@ -163,7 +182,26 @@ export default function ControlCenter({
                     <Icon name={action.icon} size={18} />
                   </span>
                   <strong>{action.title}</strong>
+                  {status && (
+                    <span className={`control-card-state tone-${status.tone}`}>
+                      <b>
+                        {status.count !== null
+                          ? /* A floor, not a total — see `countCapped`. */
+                            `${status.count}${status.countCapped ? '+' : ''}`
+                          : appT(status.valueKey)}
+                      </b>
+                      {status.unitKey && (
+                        <i>{appT(status.unitKey, { count: status.count ?? 0 })}</i>
+                      )}
+                    </span>
+                  )}
                   <em>{can ? action.description : unavailableLabel}</em>
+                  {status && (
+                    <span className="control-card-cta">
+                      {appT(status.actionLabelKey)}
+                      <Icon name="chevronRight" size={12} />
+                    </span>
+                  )}
                 </button>
               );
             })}

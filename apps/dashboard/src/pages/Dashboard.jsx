@@ -30,11 +30,11 @@ import {
   MONITORED_SWAP_COOLDOWN_MS,
   summariseParking,
 } from '@kidgate/core/domain/deviceParking';
-import ParentsCard from '../dashboard/ParentsCard.jsx';
 import TrustedContactsCard from '../dashboard/TrustedContactsCard.jsx';
 import BrandLogo from '@kidgate/web-ui/BrandLogo';
 import Icon from '@kidgate/web-ui/Icon';
 import { deviceIconName } from '../dashboard/deviceIcon.js';
+import { childMinutesUsedToday } from '../dashboard/childBudgetSpent.js';
 import { readDeviceBattery } from '@kidgate/core/domain/battery';
 import { isAndroidLike, isDesktopLike } from '@kidgate/core/domain/platformFamily';
 import { isKidGateOwnApp } from '@kidgate/core/domain/ownApp';
@@ -60,7 +60,12 @@ import {
 import { supportsLocation } from '@kidgate/core/domain/locationSupport';
 import { supportsCheckIn } from '@kidgate/core/domain/checkInSupport';
 import { supportsSos } from '@kidgate/core/domain/sosSupport';
-import { supportsTamperAlerts } from '@kidgate/core/domain/alertSupport';
+import {
+  supportsAppInstallAlerts,
+  supportsTamperAlerts,
+} from '@kidgate/core/domain/alertSupport';
+import { resolveMessageMonitoringSummary } from '@kidgate/core/domain/messageMonitoringStatus';
+import { LOCATION_STALE_AFTER_MS } from '@kidgate/core/domain/childLocation';
 import {
   showsVideoHistoryCard,
   supportsVideoHistory,
@@ -78,6 +83,7 @@ import {
 } from '@kidgate/core/domain/buildFreshness';
 import { getEffectiveDeviceStatus } from '@kidgate/core/domain/deviceStatus';
 import { resolveChildPresence } from '@kidgate/core/domain/childPresence';
+import { resolveChildLocationView } from '@kidgate/core/domain/childLocation';
 import { resolveChipTargetDevice } from '@kidgate/core/domain/familySummary';
 import { slowBeatMinutes } from '@kidgate/core/domain/reportCadence';
 import {
@@ -93,6 +99,8 @@ import ChildInitial from '../dashboard/ChildInitial.jsx';
 import DeviceDot, { STATUS_KEY, STATUS_TONE } from '../dashboard/DeviceDot.jsx';
 import ChildHub from '../dashboard/ChildHub.jsx';
 import ControlCenter from '../dashboard/ControlCenter.jsx';
+import ReportHub from '../dashboard/ReportHub.jsx';
+import ChildReport from '../dashboard/ChildReport.jsx';
 import FamilySummaryRow, {
   ChildPills,
   childPills,
@@ -182,12 +190,35 @@ const TABS = [
  * still carries four: the cap is what forced the phone to decide what the top
  * level *is*, and that decision is the part worth sharing.
  */
+/**
+ * The left menu, and it is one item shorter on a phone.
+ *
+ * **Requests & reports is a section on a rail and a row inside Settings on a
+ * bottom bar** — the same content reached two ways, not two designs. A vertical
+ * rail has room to name a fifth destination; a four-icon bottom bar does not,
+ * and a fifth tab there would shrink every label to fit the one a parent opens
+ * least.
+ *
+ * The phone resolves it the same way and always has: its Settings screen
+ * carries a row that pushes `Routes.SupportReports`, glyph `mail`. So the
+ * compact branch is not a fallback — it is what the other console does.
+ */
+const SUPPORT_SECTION = {
+  id: 'support',
+  labelKey: 'supportReports.title',
+  icon: 'mail',
+};
+
 const SECTIONS = [
   { id: 'family', labelKey: 'nav.family', icon: 'home' },
   { id: 'activity', labelKey: 'nav.activities', icon: 'activity' },
   { id: 'report', labelKey: 'nav.reports', icon: 'chart' },
+  SUPPORT_SECTION,
   { id: 'settings', labelKey: 'nav.settings', icon: 'settings' },
 ];
+
+/** The bottom bar's four. Support moves inside Settings, it does not vanish. */
+const COMPACT_SECTIONS = SECTIONS.filter(item => item.id !== SUPPORT_SECTION.id);
 
 /**
  * Devices disagree about whether `osVersion` already names the platform —
@@ -413,7 +444,6 @@ function DeviceRow({ device, active, onSelect, latestBuilds }) {
  * need a sentence of its own to be honest. Past four it stops drawing and
  * counts, because five dots in a 272px rail is a texture, not a reading.
  */
-const GROUP_DOTS_SHOWN = 4;
 
 /**
  * @param expandable A group with no child behind it — the unassigned devices.
@@ -433,17 +463,18 @@ function KidGroupHead({
   onlineCount = 0,
   stars = 0,
   hasActiveSos = false,
+  usedMinutes = null,
+  limitMinutes = null,
+  onLockAll = null,
+  lockBusy = false,
+  readOnly = false,
 }) {
   const { t } = useT();
   /*
    * Last active is worth a line in both states — online it is the proof behind
-   * the green dot, offline it is the whole question. Its own row rather than
-   * joined onto the meta line above: that one already carries two facts and a
-   * translated sentence clips mid-word when a third is appended.
-   *
-   * Folded across the set, never per device: `resolveChildPresence` answers
-   * the most recent `lastActiveAt` of every machine the child holds, which is
-   * the only honest reading of "when did we last hear from them".
+   * the green dot, offline it is the whole question. Folded across the set,
+   * never per device: the most recent `lastActiveAt` of every machine the
+   * child holds is the only honest reading of "when did we last hear".
    */
   const presence = resolveChildPresence(group.devices, Date.now());
   const lastActiveLabel = presence.lastActiveAt
@@ -451,12 +482,7 @@ function KidGroupHead({
     : presence.online
       ? null
       : appT('family.lastActiveUnknown');
-  /*
-   * "2 devices · 1 online", or "2 devices · Offline" — the phone's own meta
-   * line, and the reason it is one sentence rather than two: a count of
-   * machines says nothing about whether any of them is answering, which is
-   * the question the row exists for.
-   */
+
   const meta =
     onlineCount > 0
       ? appT('family.metaOnlineCount', {
@@ -467,87 +493,198 @@ function KidGroupHead({
           appT('family.chipDeviceCount', { count: group.devices.length }),
           appT('family.healthOffline'),
         ].join(' · ');
-  const shown = group.devices.slice(0, GROUP_DOTS_SHOWN);
-  const rest = group.devices.length - shown.length;
+
+  /*
+   * The carried device's last fix, as one sentence: the place when we can name
+   * one, the coordinates when we cannot, and the age of the fix either way —
+   * a position with no time on it is the thing a parent most often misreads.
+   */
+  const carried = group.child
+    ? resolveChildLocationView(group.child, group.devices).carried
+    : null;
+  const fix = carried?.lastLocation ?? null;
+  const placeLabel = fix
+    ? [
+        fix.placeName ||
+          (fix.nearbyPlaceName
+            ? t('dash.nearPlace', { place: fix.nearbyPlaceName })
+            : fix.latitude != null && fix.longitude != null
+              ? `${fix.latitude.toFixed(5)}, ${fix.longitude.toFixed(5)}`
+              : t('dash.lastKnownLocation')),
+        fix.updatedAt ? timeAgo(fix.updatedAt) : null,
+      ]
+        .filter(Boolean)
+        .join(' · ')
+    : null;
+
+  const lockable = group.devices.filter(supportsLock);
+  const allLocked = lockable.length > 0 && lockable.every(d => d.isLocked);
+
+  /*
+   * The whole card opens the child, not just the name row: everything on it —
+   * presence, screen time, the alert pills — describes the person, so a click
+   * anywhere that is not one of the nested controls reads as "tell me more
+   * about them". `apps/mobile`'s card carries the same note.
+   *
+   * A `div` with a role rather than a `button`, because a button may not
+   * contain one and this card holds Lock all.
+   */
+  const activate = event => {
+    if (event.target.closest('button')) return;
+    onActivate();
+  };
+
   return (
-    <button
-      className={`kid-group-head${open ? ' is-open' : ''}${
+    <div
+      className={`kid-card${open ? ' is-open' : ''}${
         containsActive && !open ? ' is-active' : ''
       }`}
-      onClick={onActivate}
+      role="button"
+      tabIndex={0}
       aria-expanded={expandable ? open : undefined}
+      onClick={activate}
+      onKeyDown={event => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          onActivate();
+        }
+      }}
     >
-      {group.child ? (
-        <>
-          <ChildInitial name={group.child.name} colorIndex={group.child.colorIndex} />
-          {/* Two lines since this row stopped being a rail entry and became
-              the Family list itself: at rail width a name was all that fitted,
-              and on a page it left every row identical except for one word.
-              The count is what a parent is actually choosing between. */}
-          <span className="kid-meta">
-            <span className="kid-name-row">
-              <strong>{group.child.name}</strong>
-              {/* The number and a star, not the word: a count of stars beside
-                  a name reads at a glance, and the sentence is the label a
-                  screen reader gets instead. Hidden at zero — a child who has
-                  earned none is not being told off about it. */}
-              {/* SOS first, and loudest. It is the one thing on this row that
-                  is about a person in trouble rather than a machine's health,
-                  which is why it sits beside the name instead of joining the
-                  urgency pills below — those are a list, and this must not be
-                  read as the fourth item in one. */}
-              {hasActiveSos && (
-                <span className="kid-sos">
-                  <Icon name="shieldAlert" size={12} />
-                  {appT('family.sos')}
-                </span>
-              )}
-              {stars > 0 && (
-                <span
-                  className="kid-stars"
-                  aria-label={appT('family.childStarsA11y', { count: stars })}
-                  title={appT('family.childStarsA11y', { count: stars })}
-                >
-                  <Icon name="star" size={12} />
-                  {stars}
-                </span>
-              )}
-            </span>
-            <em>{meta}</em>
-            {lastActiveLabel && (
-              <span className="kid-last-active">
-                <Icon name="activity" size={11} />
-                {lastActiveLabel}
+      <div className="kid-card-head">
+        {group.child ? (
+          <span className="kid-avatar-wrap">
+            <ChildInitial
+              name={group.child.name}
+              colorIndex={group.child.colorIndex}
+              size={44}
+            />
+            {/* The presence dot rides the avatar's corner, the way the phone
+                draws it — one glance answers who, and whether. */}
+            {/* The dot answers the PERSON, not a machine, so it reads
+                `resolveChildPresence` rather than any one device's status. */}
+            <i
+              className={`kid-dot tone-${presence.online ? 'good' : 'muted'}`}
+              aria-hidden="true"
+            />
+          </span>
+        ) : null}
+        <span className="kid-meta">
+          <span className="kid-name-row">
+            <strong>
+              {group.child ? group.child.name : t('dash.unassignedDevices')}
+            </strong>
+            {hasActiveSos && (
+              <span className="kid-sos">
+                <Icon name="shieldAlert" size={12} />
+                {appT('family.sos')}
               </span>
             )}
-            {/* What needs doing about this child, in the same order the row
-                above the list uses — a parent should not have to re-learn the
-                sequence between the summary and the card it summarises. */}
-            <ChildPills pills={pills} appT={appT} />
+            {stars > 0 && (
+              <span
+                className="kid-stars"
+                aria-label={appT('family.childStarsA11y', { count: stars })}
+                title={appT('family.childStarsA11y', { count: stars })}
+              >
+                <Icon name="star" size={12} />
+                {stars}
+              </span>
+            )}
           </span>
-        </>
-      ) : (
-        <span className="kid-meta">
-          <strong>{t('dash.unassignedDevices')}</strong>
           <em>{meta}</em>
         </span>
-      )}
+        {/* Lock all sits in the card's header, where the phone puts it: it is
+            about the person, and the card below it is what it acts on. */}
+        {onLockAll && lockable.length > 0 && (
+          <button
+            className="btn btn-sm"
+            disabled={readOnly || lockBusy}
+            title={readOnly ? t('dash.unlockToChange') : undefined}
+            aria-label={
+              allLocked
+                ? appT('family.unlockAllA11y', { childName: group.child?.name ?? '' })
+                : appT('family.lockAllA11y', { childName: group.child?.name ?? '' })
+            }
+            onClick={() => onLockAll(lockable, allLocked)}
+          >
+            {allLocked ? appT('family.unlockAll') : appT('family.lockAll')}
+          </button>
+        )}
+        <Icon name="chevronRight" size={16} className="kid-group-chevron" />
+      </div>
+
       {/*
-        Hidden from the reader that already hears every device: the rows are one
-        `aria-expanded` away and each carries the same sentence on its own dot,
-        so announcing the fold's summary as well says everything twice.
+        Where they were. `resolveChildLocationView` picks WHICH machine answers
+        — the designated carried device beats the freshest one, because "latest
+        update wins" is the bug that makes the home tablet out-report the phone
+        at school (`docs/CHILD_HUB.md`). A child with no capable device, or no
+        fix yet, gets no line rather than a placeholder.
       */}
-      <span className="kid-group-dots" aria-hidden="true">
-        {shown.map(d => (
-          <DeviceDot key={d.id} device={d} />
+      {placeLabel && (
+        <p className="kid-place">
+          <Icon name="mapPin" size={12} />
+          {placeLabel}
+        </p>
+      )}
+
+      {lastActiveLabel && (
+        <p className="kid-last-active">
+          <Icon name="activity" size={12} />
+          {lastActiveLabel}
+        </p>
+      )}
+
+      {/*
+        Today's screen time — the number this product is about, and the one the
+        phone's card leads with. The figures sit ABOVE the bar rather than
+        under it: they are the reading, and the bar is the picture of it.
+        Nothing at all when no device reported today, because `0m` beside
+        "today" reads as a quiet afternoon rather than as silence.
+      */}
+      {usedMinutes !== null && (
+        <div className="kid-usage">
+          <strong>
+            {limitMinutes
+              ? t('dash.limitSharedSpent', {
+                  used: formatMinutes(usedMinutes),
+                  limit: formatMinutes(limitMinutes),
+                })
+              : `${t('dash.todayTitle')} · ${formatMinutes(usedMinutes)}`}
+          </strong>
+          {limitMinutes ? (
+            <span className="kid-usage-track">
+              <span
+                className={`kid-usage-fill${usedMinutes > limitMinutes ? ' is-over' : ''}`}
+                style={{
+                  width: `${Math.min(100, Math.round((usedMinutes / limitMinutes) * 100))}%`,
+                }}
+              />
+            </span>
+          ) : null}
+        </div>
+      )}
+
+      <ChildPills pills={pills} appT={appT} />
+
+      {/*
+        Named chips, not anonymous dots: those said how many machines were
+        reachable and never which. A chip whose device needs attention is
+        tinted, so the card answers "which one" without being opened.
+      */}
+      <div className="kid-chips">
+        {group.devices.map(d => (
+          <span
+            className={`kid-device-chip${
+              getEffectiveDeviceStatus(d, Date.now()) === 'online' ? '' : ' is-alert'
+            }`}
+            key={d.id}
+          >
+            <Icon name={deviceIconName(d)} size={12} />
+            <span>{d.name}</span>
+            <DeviceDot device={d} />
+          </span>
         ))}
-        {rest > 0 && <span className="kid-group-more">+{rest}</span>}
-      </span>
-      {/* `chevronRight` turned by the stylesheet — the set has no down-chevron,
-          and a second drawing of one arrow is what the shared icon set exists
-          to prevent. */}
-      <Icon name="chevronRight" size={14} className="kid-group-chevron" />
-    </button>
+      </div>
+    </div>
   );
 }
 
@@ -630,6 +767,34 @@ export default function Dashboard({
    * parent came through rather than at the top of the list.
    */
   const [openChildId, setOpenChildId] = useState(null);
+  /** Whether the family-management cards are open, behind the family row. */
+  const [familyOpen, setFamilyOpen] = useState(false);
+  /** Whether Reports is showing the stored weekly sheet rather than its landing. */
+  const [weekOpen, setWeekOpen] = useState(false);
+  /** The child whose report is open, or null for the Reports landing. */
+  const [reportChildId, setReportChildId] = useState(null);
+  /** Whether Settings is showing Requests & reports. Compact widths only. */
+  const [supportOpen, setSupportOpen] = useState(false);
+
+  /*
+   * A resize across the breakpoint keeps the parent on the page they were
+   * reading, rather than on whichever container happens to survive.
+   *
+   * Without this, narrowing the window while Requests & reports is open leaves
+   * `section` naming a menu item the bottom bar no longer has: no tab lights,
+   * and the section renders with nothing to go back to. Widening has the
+   * mirror problem — the row inside Settings would keep the page mounted while
+   * a rail item for it sits right there, unhighlighted.
+   */
+  useEffect(() => {
+    if (compact && section === SUPPORT_SECTION.id) {
+      setSection('settings');
+      setSupportOpen(true);
+    } else if (!compact && supportOpen) {
+      setSection(SUPPORT_SECTION.id);
+      setSupportOpen(false);
+    }
+  }, [compact, section, supportOpen]);
   const [tab, setTab] = useState('overview');
   const [range, setRange] = useState(14);
   const [busy, setBusy] = useState(null);
@@ -662,7 +827,24 @@ export default function Dashboard({
    * costs nothing: `useFamilyReports` has already read the history by the time
    * the sidebar renders.
    */
-  const latestReportKey = reports?.reports?.[0]?.periodKey ?? null;
+  /**
+   * The child whose report is open, resolved against the live roster.
+   *
+   * Resolved rather than stored whole, so a child removed by the other parent
+   * while this page was open drops the report instead of rendering a name that
+   * no longer exists — the same rule `childView` follows in the Family stack.
+   */
+  const reportChildView = useMemo(
+    () =>
+      reportChildId
+        ? ((children ?? []).find(item => item.id === reportChildId) ?? null)
+        : null,
+    [reportChildId, children],
+  );
+
+  /** The newest stored week — the hub's compare card, and what Back returns to. */
+  const latestReport = reports?.reports?.[0] ?? null;
+  const latestReportKey = latestReport?.periodKey ?? null;
   const [reportSeenKey, setReportSeenKey] = useState(() =>
     readWeeklyReportSeen(familyId),
   );
@@ -896,8 +1078,45 @@ export default function Dashboard({
     if (childView) {
       return { label: activityT('nav.family'), go: () => setOpenChildId(null) };
     }
+    if (familyOpen) {
+      return { label: activityT('nav.family'), go: () => setFamilyOpen(false) };
+    }
+    /* Compact only: on a rail this is its own menu item, and a Back out of a
+       top-level section would be a step to nowhere. */
+    if (section === 'settings' && supportOpen) {
+      return {
+        label: activityT('nav.settings'),
+        go: () => setSupportOpen(false),
+      };
+    }
+    if (section === 'report' && reportChildView) {
+      return {
+        label: activityT('nav.reports'),
+        go: () => setReportChildId(null),
+      };
+    }
+    /* Only when there is a landing to go back TO: with no stored report the
+       sheet IS the section, and a Back that returned to an empty hub would be
+       a step out of the only screen with the Generate button on it. */
+    if (section === 'report' && weekOpen && latestReport) {
+      return {
+        label: activityT('nav.reports'),
+        go: () => setWeekOpen(false),
+      };
+    }
     return null;
-  }, [deviceView, childView, children, activityT]);
+  }, [
+    deviceView,
+    childView,
+    familyOpen,
+    children,
+    activityT,
+    section,
+    weekOpen,
+    latestReport,
+    reportChildView,
+    supportOpen,
+  ]);
 
   /**
    * The tabs this device has anything to put in.
@@ -1600,6 +1819,61 @@ export default function Dashboard({
     () => (device && webHistory[device.id]) || [],
     [device, webHistory],
   );
+  /**
+   * What the open device's control cards say they are set to.
+   *
+   * Every figure here is already on this page; the **reading** of each one —
+   * "120 min/day", "Off", "Not set", and the verb under it — is
+   * `@kidgate/core/domain/deviceControlState`, the phone's own switch moved up
+   * so the two consoles cannot answer "is the filter on" differently.
+   *
+   * Null without a device: the child hub builds its own, over the set.
+   */
+  const controlFacts = useMemo(() => {
+    if (!deviceView) return null;
+
+    /* The newest recorded day, the way the phone's card reads it — "17 sites
+       yesterday" is a fact a parent can act on, while a sum over whatever the
+       page happened to fetch moves for reasons nobody can explain. Never
+       capped here: this surface subscribes to the history document rather than
+       to a card-sized page, so the count is the day's whole total. */
+    const latestDate = web[0]?.date ?? null;
+    const day = latestDate ? web.filter(entry => entry.date === latestDate) : [];
+
+    const fixAt = deviceView.lastLocation?.updatedAt
+      ? new Date(deviceView.lastLocation.updatedAt).getTime()
+      : null;
+
+    /* These four arrive as `{ [deviceId]: rows }`, not as arrays — the shape
+       `useFamilyData.forDevice` publishes, and the one every other reader on
+       this page indexes. */
+    const deviceSos = sosAlerts[deviceView.id] ?? [];
+    const deviceCheckIns = checkIns[deviceView.id] ?? [];
+
+    return {
+      controls: deviceView.controls ?? {},
+      rewardTaskCount: (rewardTasks[deviceView.id] ?? []).length,
+      sosActiveCount: deviceSos.filter(alert => alert.status === 'active').length,
+      sosTotalCount: deviceSos.length,
+      placeCount: (places[deviceView.id] ?? []).length,
+      checkInStatus: deviceCheckIns[0]?.status ?? null,
+      webHistory: day.length > 0 ? { sites: day.length, capped: false } : null,
+      hasLocationFix: fixAt !== null,
+      /* A day, from `@kidgate/core/domain/childLocation` — the same threshold
+         every location surface here judges a fix by. The phone uses twice the
+         background update interval it negotiated with the device, which no
+         browser is told; this is the shared rule, and it is the conservative
+         one. */
+      locationStale: fixAt !== null && Date.now() - fixAt > LOCATION_STALE_AFTER_MS,
+      reportsAppInstalls: supportsAppInstallAlerts(deviceView),
+      listsInstalledApps: supportsAppInventory(deviceView),
+      // One device, so the set is one long — the same resolver the phone's card
+      // and this app's own Message Alerts banner read.
+      messageSummary: resolveMessageMonitoringSummary([deviceView]),
+      supportsVideoHistory: supportsVideoHistory(deviceView),
+    };
+  }, [checkIns, deviceView, places, rewardTasks, sosAlerts, web]);
+
   const videos = useMemo(
     () => (device && videoHistory?.[device.id]) || [],
     [device, videoHistory],
@@ -1642,18 +1916,20 @@ export default function Dashboard({
         </div>
 
         {/*
-          The four sections, and nothing else. The child list used to be here
-          and is the Family section's own content now: the rail asked "which
-          device" at the same level as the page asked "what about the family",
-          so a parent read one column that answered two questions — the same
-          defect the per-device tab bar was pulled out of this rail to fix.
+          The sections, and nothing else. The child list used to be here and is
+          the Family section's own content now: the rail asked "which device" at
+          the same level as the page asked "what about the family", so a parent
+          read one column that answered two questions — the same defect the
+          per-device tab bar was pulled out of this rail to fix.
+
+          Five on a rail, four on a bottom bar — see `SUPPORT_SECTION`.
 
           A glyph beside each label, unlike `.dash-tabs`, which draws words
           alone: this bar is also the phone-width bottom bar, where the icon is
           what stays legible once the label is two lines of Vietnamese.
         */}
         <nav className="side-nav" aria-label={t('dash.manage')}>
-          {SECTIONS.map(item => (
+          {(compact ? COMPACT_SECTIONS : SECTIONS).map(item => (
             <button
               key={item.id}
               className={`nav-item${section === item.id ? ' is-active' : ''}`}
@@ -1661,12 +1937,20 @@ export default function Dashboard({
                * Pressing the section you are already in returns to its root —
                * the phone's tab bar has always done this, and without it a
                * parent three levels into a device pressed Family and nothing
-               * moved. Only Family has a stack to pop.
+               * moved. Family and Reports are the two with a stack to pop.
                */
               onClick={() => {
                 if (section === item.id && item.id === 'family') {
                   setDeviceOpen(false);
                   setOpenChildId(null);
+                  setFamilyOpen(false);
+                }
+                if (section === item.id && item.id === 'report') {
+                  setWeekOpen(false);
+                  setReportChildId(null);
+                }
+                if (section === item.id && item.id === 'settings') {
+                  setSupportOpen(false);
                 }
                 setSection(item.id);
               }}
@@ -1769,12 +2053,17 @@ export default function Dashboard({
                   ? deviceView.name
                   : childView
                     ? childView.name
-                    : section === 'family'
-                      ? family.name
-                      : activityT(
-                          SECTIONS.find(item => item.id === section)?.labelKey ??
-                            'nav.family',
-                        )}
+                    : /* Compact only: the page is inside Settings, and the
+                         section's own label would head it "Settings" while the
+                         Back button beside it also said Settings. */
+                      supportOpen
+                      ? activityT(SUPPORT_SECTION.labelKey)
+                      : section === 'family'
+                        ? family.name
+                        : activityT(
+                            SECTIONS.find(item => item.id === section)?.labelKey ??
+                              'nav.family',
+                          )}
               </h1>
             </div>
           </div>
@@ -2001,6 +2290,7 @@ export default function Dashboard({
         {deviceView && (
           <ControlCenter
             device={deviceView}
+            facts={controlFacts}
             appT={activityT}
             canUsePremiumControls={hasFullAccess}
             onOpen={next => setTab(next)}
@@ -2014,7 +2304,7 @@ export default function Dashboard({
           it. The rail answered the first two questions in a column beside a
           page that was already answering the third.
         */}
-        {section === 'family' && !deviceView && !childView && (
+        {section === 'family' && !deviceView && !childView && !familyOpen && (
           <section className="family-home">
             {/*
               What needs doing, before the list of who. The phone puts this
@@ -2037,6 +2327,22 @@ export default function Dashboard({
               </div>
             ) : (
               <div className="kid-list">
+                {/*
+                  The family itself, first — the phone opens its list with this
+                  row, and without it the only way into "rename the family, add
+                  a child, the star chart" was a section away in Settings while
+                  the thing those act on was on screen here.
+                */}
+                <button className="family-row" onClick={() => setFamilyOpen(true)}>
+                  <span className="family-row-icon">
+                    <Icon name="home" size={20} />
+                  </span>
+                  <span className="kid-meta">
+                    <strong>{family.name}</strong>
+                    <em>{activityT('settings.familyDetailSubtitle')}</em>
+                  </span>
+                  <Icon name="chevronRight" size={16} />
+                </button>
                 {deviceGroups.map(group => {
                   /*
                    * Every child is a group, including one who owns a single
@@ -2064,7 +2370,7 @@ export default function Dashboard({
                         containsActive={containsActive}
                         expandable={expandable}
                         appT={activityT}
-                        pills={childPills(familyCounts, group.devices)}
+                        pills={childPills(familyCounts, group.devices, group.child)}
                         onlineCount={
                           group.devices.filter(
                             d => familyCounts.byDevice.get(d.id)?.online,
@@ -2076,6 +2382,23 @@ export default function Dashboard({
                         hasActiveSos={group.devices.some(d =>
                           familyCounts.sosDeviceIds.has(d.id),
                         )}
+                        usedMinutes={childMinutesUsedToday(group.devices)}
+                        limitMinutes={group.child?.rules?.dailyLimitMinutes ?? null}
+                        readOnly={live && !canWrite}
+                        lockBusy={busy === `lock-all-${group.key}`}
+                        onLockAll={
+                          live
+                            ? (lockable, allLocked) =>
+                                run(`lock-all-${group.key}`, async () => {
+                                  /* Each device in turn: `setLock` is per
+                                     machine, and there is no child-level lock
+                                     field an agent reads. */
+                                  for (const device of lockable) {
+                                    await actions.setLock(device.id, !allLocked);
+                                  }
+                                })
+                            : null
+                        }
                         onActivate={() =>
                           expandable
                             ? setOpenGroupKey(key =>
@@ -2107,14 +2430,27 @@ export default function Dashboard({
                 })}
               </div>
             )}
+          </section>
+        )}
 
-            {/* The family itself, under the list it is about: its name, the
-                way to add a child, the star chart. It lived in Settings for
-                one afternoon, which put "rename the family" two sections away
-                from the only screen that shows the family. */}
+        {/* Behind the row above, not under the list: the phone pushes a screen
+            for this, and shown inline it was three cards a parent had to
+            scroll past every time they wanted a child. */}
+        {section === 'family' && !deviceView && !childView && familyOpen && (
+          <section className="family-home">
             <FamilySettingsCard
               family={family}
               children={children ?? []}
+              devices={devices}
+              onOpenChild={id => {
+                setFamilyOpen(false);
+                setOpenChildId(id);
+              }}
+              onOpenDevice={id => {
+                setFamilyOpen(false);
+                setDeviceId(id);
+                setDeviceOpen(true);
+              }}
               leaderboardEnabled={leaderboard?.enabled ?? true}
               actions={actions}
               run={run}
@@ -2170,20 +2506,102 @@ export default function Dashboard({
           />
         )}
 
-        {section === 'report' && (
-          <ReportPanel
-            reports={reports?.reports ?? []}
-            loading={Boolean(reports?.loading)}
-            familyName={family.name}
-            language={language}
-            loadError={reports?.error ?? null}
-            loadFailed={Boolean(reports?.loadFailed)}
-            hasFullAccess={hasFullAccess}
-            onReload={reports?.reload}
-          />
+        {/*
+          Reports is a stack, like Family: the landing answers "how much today,
+          and is that a lot", and the stored weekly sheet is one step behind it.
+          The tab used to open on the sheet — written once a week, about a week
+          already over — so the question a parent actually came with had no
+          answer on this surface at all.
+
+          The sheet still renders on its own whenever there is no stored report
+          to land on: that empty state is where Generate lives, and hiding it
+          behind a door a family cannot see would leave them no way in.
+        */}
+        {section === 'report' &&
+          (reportChildView ? (
+            <ChildReport
+              child={reportChildView}
+              childDevices={devices.filter(item => item.childId === reportChildView.id)}
+              familyId={familyId}
+              appT={activityT}
+              /* The device's own report is one more step down, and it is the
+                 same panel the Family section opens — a second copy scoped to
+                 this stack would be the same three thousand lines twice. */
+              onOpenDevice={id => {
+                setDeviceId(id);
+                setSection('family');
+                setDeviceOpen(true);
+                setTab('screen');
+              }}
+              onAssignDevice={() => {
+                setSection('family');
+                setOpenChildId(reportChildView.id);
+                setDeviceOpen(false);
+              }}
+            />
+          ) : weekOpen || !latestReport ? (
+            <ReportPanel
+              reports={reports?.reports ?? []}
+              loading={Boolean(reports?.loading)}
+              familyName={family.name}
+              language={language}
+              loadError={reports?.error ?? null}
+              loadFailed={Boolean(reports?.loadFailed)}
+              hasFullAccess={hasFullAccess}
+              onReload={reports?.reload}
+            />
+          ) : (
+            <ReportHub
+              devices={devices}
+              children={children}
+              latest={latestReport}
+              loading={Boolean(reports?.loading)}
+              appT={activityT}
+              onOpenWeek={() => setWeekOpen(true)}
+              /*
+                A child WITH devices opens their report, one step deeper in
+                this section. One WITHOUT goes to their Family hub instead,
+                where the assign row is — a report there could only ever say
+                "no data". The phone splits the two destinations the same way.
+              */
+              onOpenChild={(childId, hasDevice) => {
+                if (hasDevice) {
+                  setReportChildId(childId);
+                  return;
+                }
+                setSection('family');
+                setOpenChildId(childId);
+                setDeviceOpen(false);
+              }}
+              onOpenDevice={id => {
+                setDeviceId(id);
+                setSection('family');
+                setDeviceOpen(true);
+                setTab('screen');
+              }}
+            />
+          ))}
+
+        {/*
+          Requests & reports, on its own. One mount, two ways in: the rail's
+          fifth item on a wide screen, the Settings row on a bottom bar. A
+          second copy behind the second door would be two subscriptions to one
+          collection and two forms filing into it.
+        */}
+        {(section === SUPPORT_SECTION.id ||
+          (section === 'settings' && supportOpen)) && (
+          <section className="settings-home">
+            <SupportCard
+              accountId={accountId}
+              accountEmail={accountEmail}
+              familyId={familyId}
+              familyName={family.name}
+              appT={activityT}
+            />
+          </section>
         )}
 
-        {section === 'settings' && (
+        {section === 'settings' && !supportOpen && (
           <section className="settings-home">
             {/*
               The plan first, then the people, then the contacts — the phone's
@@ -2199,27 +2617,22 @@ export default function Dashboard({
               <PlanCard plan={family.plan} trialStartedAt={family.trialStartedAt} />
             </Card>
 
-            {/* Nothing at all for a joined co-parent: inviting, approving and
-                removing are the owner's, the same rule the phone's Family
-                screen applies. */}
-            {live && actions?.isOwner && (
-              <Card title={t('dash.parents', { count: family.parents.length })}>
-                <ParentsCard
-                  members={family.members ?? []}
-                  actions={actions}
-                  run={run}
-                  busy={
-                    busy === 'parent-invite' ||
-                    busy === 'parent-join' ||
-                    busy === 'parent-remove'
-                  }
-                />
-              </Card>
-            )}
+            {/*
+              Managing parents is NOT here. It lives on the Family section's
+              Parents tab (`FamilySettingsCard`), and it was drawn in both
+              places until 2026-09-16 — one roster, two doors, each with its
+              own invite form. Family is the right one: a co-parent is a member
+              of the family, and the tab beside them lists the children and
+              their devices.
 
-            {/* For both roles — the rules and the phone let a joined co-parent
-                name one — and its title is the app pack's, the words the
-                phone's Settings row says. */}
+              Trusted contacts stay, and the distinction is the reason. A parent
+              has an account and can change what KidGate does; a trusted contact
+              is a name and an email that gets told when a child presses SOS,
+              with no account and no access at all. Grouping the two because
+              both are people would have a parent expecting a contact to open
+              the dashboard. The phone files it the same way — its row sits in
+              Settings next to the SOS sound, among the alert routing.
+            */}
             {live && familyId && (
               <Card
                 title={activityT('sos.trustedContactsTitle')}
@@ -2239,13 +2652,29 @@ export default function Dashboard({
               live={live}
             />
 
-            <SupportCard
-              accountId={accountId}
-              accountEmail={accountEmail}
-              familyId={familyId}
-              familyName={family.name}
-              appT={activityT}
-            />
+            {/*
+              A row, not the card, and ONLY on a bottom bar. A rail already has
+              its own menu item for this, and drawing the row as well would put
+              two doors to one page on screen at once — which is the duplicate
+              the Parents card was just removed for.
+            */}
+            {compact && (
+              <button
+                className="card settings-row"
+                onClick={() => setSupportOpen(true)}
+              >
+                <span className="settings-row-icon">
+                  <Icon name={SUPPORT_SECTION.icon} size={17} />
+                </span>
+                {/* The rail's label, verbatim. The phone's row says "Report a
+                  problem" and its screen says "Requests & reports", which is
+                  two names for one destination — not a drift worth copying. */}
+                <strong className="settings-row-copy">
+                  {activityT('supportReports.title')}
+                </strong>
+                <Icon name="chevronRight" size={15} />
+              </button>
+            )}
 
             <AccountCard
               accountId={accountId}

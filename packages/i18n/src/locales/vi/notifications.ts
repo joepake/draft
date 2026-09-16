@@ -54,5 +54,9 @@ export const notifications = {
       label: 'Tổng kết tuần',
       hint: 'Bản tóm tắt gửi vào thứ Hai hằng tuần về thời gian sử dụng và số lần chặn.',
     },
+    messageAlerts: {
+      label: 'Cảnh báo tin nhắn',
+      hint: 'Nhận cảnh báo khi tin nhắn có từ ngữ đáng lo ngại',
+    },
   },
 };

@@ -55,5 +55,9 @@ export const notifications = {
       label: 'Riepilogo settimanale',
       hint: 'Il resoconto del lunedì su tempo di utilizzo e blocchi.',
     },
+    messageAlerts: {
+      label: 'Avvisi messaggi',
+      hint: 'Ricevi un avviso quando nei messaggi compaiono parole preoccupanti',
+    },
   },
 };

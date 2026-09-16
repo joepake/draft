@@ -77,7 +77,6 @@ export const settings = {
   switchToChildDevice: 'このデバイスを子どものデバイスとして設定する',
   guestAccountHint:
     'サインインしてデバイス、アラート、ファミリープランを同期しましょう。',
-  reportTitle: '問題を報告',
   reportModalTitle: '問題を報告',
   reportMessageLabel: '発生している問題を説明してください。',
   reportMessagePlaceholder: '不具合や問題を記入してください…',

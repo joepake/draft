@@ -108,6 +108,7 @@ export default function ActivityFeed({
             }}
           >
             {appT('activities.filterAllChildren')}
+            <span className="family-tab-count">{activities.length}</span>
           </button>
           {children.map(child => (
             <button
@@ -126,6 +127,15 @@ export default function ActivityFeed({
                   names each in their own is a family. */}
               <ChildInitial name={child.name} colorIndex={child.colorIndex} size={18} />
               {child.name}
+              {/* The count is what makes a chip worth reading before it is
+                  pressed — the phone puts it on every one. */}
+              <span className="family-tab-count">
+                {
+                  activities.filter(
+                    a => deviceById.get(a.deviceId)?.childId === child.id,
+                  ).length
+                }
+              </span>
             </button>
           ))}
         </div>
@@ -182,9 +192,12 @@ export default function ActivityFeed({
         groups.map(group => (
           <div className="feed-day" key={group.key}>
             <h2 className="feed-day-head">{dayHeading(group.at)}</h2>
-            <ul className="timeline">
+            <ul className="feed-rows">
               {group.rows.map(activity => {
                 const device = deviceById.get(activity.deviceId);
+                const child = device?.childId
+                  ? children.find(c => c.id === device.childId)
+                  : null;
                 const copy = activityCopy(
                   activity,
                   appT,
@@ -194,29 +207,41 @@ export default function ActivityFeed({
                   actorNames,
                 );
                 const kind = resolveActivityKind(activity);
+                const at = new Date(activity.createdAt);
                 return (
-                  <li key={activity.id}>
-                    <span className={`tl-icon type-${kind}`}>
+                  <li className={`feed-row type-${kind}`} key={activity.id}>
+                    {/* The glyph sits OUTSIDE the card, on the day's rail —
+                        the phone draws it that way so a column of rows can be
+                        skimmed by mark alone without the cards shifting. */}
+                    <span className={`feed-row-icon type-${kind}`}>
                       <Icon name={activityIconName(kind)} size={15} />
                     </span>
-                    <span className="tl-body">
-                      <strong>{copy.title}</strong>
-                      <em>{copy.description}</em>
-                      {/* Which device, on every row: the per-device feed on the
-                          Family section can leave it out because the header
-                          above it names one, and this list cannot. */}
-                      {devices.length > 1 && (
-                        <span className="tl-where">
-                          {/* Which machine, as a mark and a name — the phone's
-                              feed row carries both, and on a family feed the
-                              mark is what separates two children's iPads
-                              without reading either label. */}
-                          {device && <Icon name={deviceIconName(device)} size={12} />}
-                          {device?.name || appT('activities.unknownDevice')}
-                        </span>
-                      )}
-                    </span>
-                    <time>{timeAgo(activity.createdAt)}</time>
+                    <div className="feed-row-card">
+                      {/* Who and on what, as one chip: a family feed is read
+                          by person first, and the machine is what tells two of
+                          a child's apart. */}
+                      <span className="feed-row-who">
+                        {child && <strong>{child.name}</strong>}
+                        {device && <Icon name={deviceIconName(device)} size={12} />}
+                        <span>{device?.name || appT('activities.unknownDevice')}</span>
+                      </span>
+                      <strong className="feed-row-title">{copy.title}</strong>
+                      {copy.description && <p>{copy.description}</p>}
+                      <span className="feed-row-foot">
+                        <em>{timeAgo(activity.createdAt)}</em>
+                        {/* The clock time as well as the age: "13 minutes ago"
+                            answers how fresh, and "12:19" is what a parent
+                            matches against their own memory of the evening. */}
+                        <time>
+                          {Number.isNaN(at.getTime())
+                            ? ''
+                            : at.toLocaleTimeString(undefined, {
+                                hour: '2-digit',
+                                minute: '2-digit',
+                              })}
+                        </time>
+                      </span>
+                    </div>
                   </li>
                 );
               })}

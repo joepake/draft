@@ -4,6 +4,11 @@ import { useT } from '@kidgate/web-ui/useT';
 import { resolveChildPresence } from '@kidgate/core/domain/childPresence';
 import { supportsLock } from '@kidgate/core/domain/controlSupport';
 import { isActionSupported } from '@kidgate/core/domain/deviceDetailActions';
+import { supportsVideoHistory } from '@kidgate/core/domain/videoHistorySupport';
+import {
+  LOCATION_STALE_AFTER_MS,
+  resolveChildLocationView,
+} from '@kidgate/core/domain/childLocation';
 import Card from './Card.jsx';
 import DeviceDot from './DeviceDot.jsx';
 import { deviceIconName } from './deviceIcon.js';
@@ -75,12 +80,72 @@ export default function ChildHub({
     [childDevices],
   );
 
-  const rules = child.rules ?? {};
+  // Memoised, not a bare `?? {}`: the fallback is a fresh object every render,
+  // and `controlFacts` below depends on it.
+  const rules = useMemo(() => child.rules ?? {}, [child.rules]);
   const budgetMinutes = rules.dailyLimitMinutes ?? null;
   const spentMinutes = useMemo(
     () => childMinutesUsedToday(childDevices),
     [childDevices],
   );
+
+  /**
+   * What the control cards say, asked of the PERSON.
+   *
+   * The readings come from `@kidgate/core/domain/deviceControlState`, shared
+   * with the phone; what is folded here is the set. Three rules the hub obeys
+   * and a single device's page does not:
+   *
+   * - **the budget is one shared total** (`Child.rules.dailyLimitMinutes`), not
+   *   any one machine's `controls.dailyLimitMinutes`, which the server rewrites
+   *   per device as the child spends it;
+   * - **blocked hours and the web filter are child rules**, fanned out to every
+   *   device, so the child's own copy is the truth;
+   * - **app limits and blocked apps are per device** (`docs/CHILD_HUB.md`), so
+   *   the cards report the sum, and blocking counts as on when any machine has
+   *   it on.
+   *
+   * Everything else — SOS, check-ins, web history, places — is a feed this
+   * surface does not subscribe to per child, so it is left out and those cards
+   * keep the description they have always shown rather than reporting a zero
+   * that really means "not asked".
+   */
+  const controlFacts = useMemo(() => {
+    const sum = read =>
+      childDevices.reduce((total, item) => total + (read(item) ?? 0), 0);
+    /* Location never merges: `Child.locationDeviceId` names the machine the
+       child carries, and "latest update wins" is the bug — the home tablet
+       out-reports the phone at school. */
+    const carried = resolveChildLocationView(child, childDevices).carried;
+    const fixAt = carried?.lastLocation?.updatedAt
+      ? new Date(carried.lastLocation.updatedAt).getTime()
+      : null;
+
+    return {
+      controls: {
+        dailyLimitMinutes: budgetMinutes,
+        scheduleEnabled: rules.scheduleEnabled === true,
+        scheduleWindows: rules.scheduleWindows ?? [],
+        appLimits: new Array(sum(item => item.controls?.appLimits?.length)),
+        blockedAppsConfigured: childDevices.some(
+          item => item.controls?.blockedAppsConfigured === true,
+        ),
+        blockedAppCount: sum(item => item.controls?.blockedAppCount),
+        blockedCategoryCount: sum(item => item.controls?.blockedCategoryCount),
+        appBlockingEnabled: childDevices.some(
+          item => item.controls?.appBlockingEnabled === true,
+        ),
+        webFilterEnabled: rules.webFilterEnabled === true,
+        locationSharingEnabled: rules.locationSharingEnabled === true,
+        videoHistoryEnabled: childDevices.some(
+          item => item.controls?.videoHistoryEnabled === true,
+        ),
+      },
+      hasLocationFix: fixAt !== null,
+      locationStale: fixAt !== null && Date.now() - fixAt > LOCATION_STALE_AFTER_MS,
+      supportsVideoHistory: childDevices.some(supportsVideoHistory),
+    };
+  }, [budgetMinutes, child, childDevices, rules]);
 
   const deviceIds = useMemo(() => childDevices.map(d => d.id), [childDevices]);
   const lockable = useMemo(() => childDevices.filter(supportsLock), [childDevices]);
@@ -349,6 +414,7 @@ export default function ChildHub({
       {childDevices.length > 0 && (
         <ControlCenter
           devices={childDevices}
+          facts={controlFacts}
           appT={appT}
           onOpen={(tab, action) => {
             const target =

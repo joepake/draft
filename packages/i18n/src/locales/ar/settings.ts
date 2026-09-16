@@ -72,7 +72,6 @@ export const settings = {
   signInButton: 'تسجيل الدخول',
   switchToChildDevice: 'إعداد هذا الهاتف كجهاز طفل',
   guestAccountHint: 'سجّل الدخول لمزامنة الأجهزة والتنبيهات وخطة عائلتك.',
-  reportTitle: 'الإبلاغ عن مشكلة',
   reportModalTitle: 'الإبلاغ عن مشكلة',
   reportMessageLabel: 'يرجى وصف المشكلة التي تواجهها.',
   reportMessagePlaceholder: 'صِف الخطأ أو المشكلة…',

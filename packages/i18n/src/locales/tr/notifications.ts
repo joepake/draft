@@ -54,5 +54,9 @@ export const notifications = {
       label: 'Haftalık özet',
       hint: 'Pazartesi günü gelen ekran süresi ve engelleme özeti.',
     },
+    messageAlerts: {
+      label: 'Mesaj uyarıları',
+      hint: 'Mesajlarda endişe verici kelimeler göründüğünde uyarı alın',
+    },
   },
 };

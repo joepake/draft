@@ -43,7 +43,14 @@ const TONE_TOKEN = {
   muted: 'textSecondary',
 };
 
-function readPalette() {
+/*
+ * The helpers below are exported because the child report draws its own card
+ * (`childShareCard.js`) and must not grow a second palette, a second font
+ * stack or a second word-wrapper. What differs between the two images is the
+ * layout; everything under it is one implementation.
+ */
+
+export function readPalette() {
   if (typeof window === 'undefined') return { ...FALLBACK };
   const root = window.getComputedStyle(document.documentElement);
   const read = (name, fallback) => {
@@ -63,17 +70,17 @@ function readPalette() {
   };
 }
 
-function readFontStack() {
+export function readFontStack() {
   if (typeof window === 'undefined') return 'system-ui, sans-serif';
   const family = window.getComputedStyle(document.body).fontFamily;
   return family || 'system-ui, sans-serif';
 }
 
-function font(stack, size, weight = 400) {
+export function font(stack, size, weight = 400) {
   return `${weight} ${size}px ${stack}`;
 }
 
-function roundRect(ctx, x, y, width, height, radius) {
+export function roundRect(ctx, x, y, width, height, radius) {
   ctx.beginPath();
   ctx.moveTo(x + radius, y);
   ctx.arcTo(x + width, y, x + width, y + height, radius);
@@ -88,7 +95,7 @@ function roundRect(ctx, x, y, width, height, radius) {
  * wider than the column — a package name or a URL, which the alternative would
  * run off the edge of the image.
  */
-function wrapLines(ctx, text, maxWidth, maxLines) {
+export function wrapLines(ctx, text, maxWidth, maxLines) {
   const words = String(text ?? '')
     .split(/\s+/)
     .filter(Boolean);
@@ -307,7 +314,7 @@ export function drawShareCard(model) {
   return canvas;
 }
 
-function canvasBlob(canvas) {
+export function canvasBlob(canvas) {
   return new Promise((resolve, reject) => {
     canvas.toBlob(
       blob => (blob ? resolve(blob) : reject(new Error('toBlob failed'))),
@@ -325,14 +332,13 @@ function canvasBlob(canvas) {
  * it to the other parent in two taps. `canShare` has to be asked about the
  * actual file: a browser can have `share` for links and refuse attachments.
  */
-export async function shareReportImage(model, fileName) {
-  const canvas = drawShareCard(model);
+export async function shareCanvasImage(canvas, fileName, title) {
   const blob = await canvasBlob(canvas);
   const file = new File([blob], fileName, { type: 'image/png' });
 
   if (navigator.canShare?.({ files: [file] })) {
     try {
-      await navigator.share({ files: [file], title: model.familyName });
+      await navigator.share({ files: [file], title });
       return 'shared';
     } catch (error) {
       // A cancelled share sheet is a decision, not a failure to fall back from.
@@ -351,4 +357,9 @@ export async function shareReportImage(model, fileName) {
   // click() returns, and a URL revoked too early downloads an empty file.
   requestAnimationFrame(() => URL.revokeObjectURL(url));
   return 'downloaded';
+}
+
+/** The weekly report, drawn and handed over. */
+export function shareReportImage(model, fileName) {
+  return shareCanvasImage(drawShareCard(model), fileName, model.familyName);
 }

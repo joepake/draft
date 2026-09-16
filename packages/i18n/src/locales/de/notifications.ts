@@ -55,5 +55,9 @@ export const notifications = {
       label: 'Wochenrückblick',
       hint: 'Montägliche Übersicht über Bildschirmzeit und Sperren.',
     },
+    messageAlerts: {
+      label: 'Nachrichtenwarnungen',
+      hint: 'Werde benachrichtigt, wenn bedenkliche Wörter in Nachrichten auftauchen',
+    },
   },
 };
