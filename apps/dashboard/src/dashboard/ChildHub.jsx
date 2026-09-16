@@ -6,6 +6,10 @@ import { supportsLock } from '@kidgate/core/domain/controlSupport';
 import { isActionSupported } from '@kidgate/core/domain/deviceDetailActions';
 import { supportsVideoHistory } from '@kidgate/core/domain/videoHistorySupport';
 import {
+  platformLabelKey,
+  resolveDisplayFormFactor,
+} from '@kidgate/core/domain/deviceFormFactor';
+import {
   LOCATION_STALE_AFTER_MS,
   resolveChildLocationView,
 } from '@kidgate/core/domain/childLocation';
@@ -13,21 +17,18 @@ import Card from './Card.jsx';
 import DeviceDot from './DeviceDot.jsx';
 import { deviceIconName } from './deviceIcon.js';
 import ControlCenter from './ControlCenter.jsx';
-import ChildBudgetEditor from './ChildBudgetEditor.jsx';
 import ChildInitial from './ChildInitial.jsx';
-import { childMinutesUsedToday } from './childBudgetSpent.js';
-import { formatMinutes } from './charts.jsx';
 import { timeAgo } from './timeAgo.js';
 
 /**
  * The child hub — the person, not one of their machines.
  *
- * `docs/CHILD_HUB.md` is the reasoning; the two rules this file exists to obey
- * are that **a child-rule field is never written to a device's own controls**
- * (the next fan-out wipes it, so blocked hours and location sharing both go
- * through `actions.updateChildRules`) and that **the daily budget is one
- * shared total**, written through `actions.setChildBudget`, which does the
- * rule plus the per-device seed.
+ * `docs/CHILD_HUB.md` is the reasoning; the rule this file exists to obey is
+ * that **a child-rule field is never written to a device's own controls** (the
+ * next fan-out wipes it, so blocked hours and location sharing both go through
+ * `actions.updateChildRules`). The daily budget is one shared total and is
+ * only READ here — it is reported on the Daily limit card and edited where
+ * that card lands, `ControlsTab`.
  *
  * Every sentence is the app pack's, read through `appT`: the phone has said
  * all of this in fourteen languages since the hub was built there, and a
@@ -84,10 +85,6 @@ export default function ChildHub({
   // and `controlFacts` below depends on it.
   const rules = useMemo(() => child.rules ?? {}, [child.rules]);
   const budgetMinutes = rules.dailyLimitMinutes ?? null;
-  const spentMinutes = useMemo(
-    () => childMinutesUsedToday(childDevices),
-    [childDevices],
-  );
 
   /**
    * What the control cards say, asked of the PERSON.
@@ -147,7 +144,6 @@ export default function ChildHub({
     };
   }, [budgetMinutes, child, childDevices, rules]);
 
-  const deviceIds = useMemo(() => childDevices.map(d => d.id), [childDevices]);
   const lockable = useMemo(() => childDevices.filter(supportsLock), [childDevices]);
   const allLocked = lockable.length > 0 && lockable.every(d => d.isLocked);
 
@@ -273,46 +269,20 @@ export default function ChildHub({
         )}
       </div>
 
-      {/* ---- One budget, one place ---- */}
-      <Card title={appT('deviceDetail.dailyLimit')}>
-        {/* The figure above the control: a parent choosing tonight's number
-            reads where the day already stands first. `null` is "no device
-            reported today", which is not the same as none used. */}
-        {budgetMinutes && spentMinutes !== null && (
-          /* `dash.limitSharedSpent` — the sentence `ControlsTab` already
-             prints for the same two numbers. Bare, they were "1h 33m /
-             16h 30m" with nothing saying which was which or that it meant
-             today. */
-          <p className="hint">
-            {t('dash.limitSharedSpent', {
-              used: formatMinutes(spentMinutes),
-              limit: formatMinutes(budgetMinutes),
-            })}
-          </p>
-        )}
-        <ChildBudgetEditor
-          minutes={budgetMinutes}
-          readOnly={readOnly}
-          busy={busy}
-          onSave={minutes =>
-            run(`child-budget-${child.id}`, () =>
-              actions.setChildBudget(child.id, minutes, deviceIds),
-            )
-          }
-        />
-      </Card>
-
       {/*
-        Blocked hours, the web filter and location sharing used to be three
-        hand-built cards here. They are grid cards now: `ControlsTab` already
-        routes a child-rule field to `updateChildRules` whenever the device it
-        is open on has a `childId`, so opening any of this child's machines
-        edits the CHILD's rule and fans out — the same write, through the
-        screen that already knew how to make it, instead of a second editor
+        Blocked hours, the web filter, location sharing and the daily budget
+        used to be hand-built cards here. They are grid cards now: `ControlsTab`
+        already routes a child-rule field to `updateChildRules` whenever the
+        device it is open on has a `childId`, so opening any of this child's
+        machines edits the CHILD's rule and fans out — the same write, through
+        the screen that already knew how to make it, instead of a second editor
         per rule that would drift from it.
 
-        The budget above stays, because no device tab holds it: it is the one
-        control that is the person's rather than a machine's.
+        The budget was the last holdout and went on 2026-09-16: the Daily limit
+        card below already reads the child's number out (`controlFacts` feeds it
+        `Child.rules.dailyLimitMinutes`), and it lands on the screen tab, which
+        renders the same `ChildBudgetEditor` for an assigned device. Two chip
+        rows for one number, one of them above the card naming it.
       */}
 
       {/* ---- Their machines ---- */}
@@ -337,6 +307,18 @@ export default function ChildHub({
                   </span>
                   <span className="kid-meta">
                     <strong>{device.name}</strong>
+                    {/* The second line the Family list's rows already carry.
+                        No new key: `platformLabelKey` is the one both consoles
+                        name a machine's platform with. A single-line row left
+                        the tile taller than the words beside it. */}
+                    <em>
+                      {appT(
+                        platformLabelKey(
+                          device.platform,
+                          resolveDisplayFormFactor(device),
+                        ),
+                      )}
+                    </em>
                   </span>
                   <DeviceDot device={device} />
                   <Icon name="chevronRight" size={14} />
@@ -346,7 +328,7 @@ export default function ChildHub({
                     is not dressed red the way unpairing is. */}
                 {isOwner && (
                   <button
-                    className="login-link"
+                    className="child-device-unassign"
                     disabled={readOnly || busy}
                     title={readOnly ? t('dash.unlockToChange') : undefined}
                     onClick={() =>
@@ -429,42 +411,64 @@ export default function ChildHub({
           Owner only, and it is bookkeeping: the devices stay paired and keep
           enforcing, pointing at nobody. The confirmation names the child,
           because a parent with three on screen has to see which one goes. */}
+      {/*
+        A danger zone, not a card like the ones above it: the sentence and the
+        button share the header row, so the whole block is two lines rather than
+        a full-height white card with a lone pink button under it. The tinted
+        ground and the glyph say what it is before the title is read — this is
+        the last thing on the page and a parent scrolls past it far more often
+        than they use it.
+      */}
       {isOwner && (
-        <Card title={appT('family.childDetailRemoveTitle', { childName: child.name })}>
-          <p className="hint">{appT('leaderboard.removeChildConfirmBody')}</p>
-          {confirmRemove ? (
-            <div className="reward-actions">
-              <button className="login-link" onClick={() => setConfirmRemove(false)}>
-                {t('dash.close')}
-              </button>
+        <Card
+          className="danger-zone"
+          title={
+            <span className="danger-zone-title">
+              <span className="danger-zone-glyph">
+                <Icon name="trash" size={14} />
+              </span>
+              {appT('family.childDetailRemoveTitle', { childName: child.name })}
+            </span>
+          }
+          subtitle={appT('leaderboard.removeChildConfirmBody')}
+          action={
+            confirmRemove ? (
+              <span className="danger-zone-actions">
+                <button className="btn btn-sm" onClick={() => setConfirmRemove(false)}>
+                  {t('dash.close')}
+                </button>
+                <button
+                  className="btn btn-sm btn-danger"
+                  disabled={busy}
+                  onClick={async () => {
+                    const ok = await run(`child-remove-${child.id}`, () =>
+                      actions.removeChild(child.id, allDevices),
+                    );
+                    // Back to the list: staying would leave the pane rendering a
+                    // person the family no longer has.
+                    if (ok) onLeave();
+                  }}
+                >
+                  {busy
+                    ? appT('family.childDetailRemovingButton')
+                    : appT('leaderboard.removeChild')}
+                </button>
+              </span>
+            ) : (
+              /* A tint at rest, never solid: solid red is the confirmation, and
+                 this button only asks the question. Same rule as the row
+                 removers, same class carrying it. */
               <button
-                className="btn btn-sm btn-danger"
-                disabled={busy}
-                onClick={async () => {
-                  const ok = await run(`child-remove-${child.id}`, () =>
-                    actions.removeChild(child.id, allDevices),
-                  );
-                  // Back to the list: staying would leave the pane rendering a
-                  // person the family no longer has.
-                  if (ok) onLeave();
-                }}
+                className="btn btn-sm device-admin-remove"
+                disabled={readOnly || busy}
+                title={readOnly ? t('dash.unlockToChange') : undefined}
+                onClick={() => setConfirmRemove(true)}
               >
-                {busy
-                  ? appT('family.childDetailRemovingButton')
-                  : appT('leaderboard.removeChild')}
+                <Icon name="trash" size={13} /> {appT('leaderboard.removeChild')}
               </button>
-            </div>
-          ) : (
-            <button
-              className="login-link device-admin-remove"
-              disabled={readOnly || busy}
-              title={readOnly ? t('dash.unlockToChange') : undefined}
-              onClick={() => setConfirmRemove(true)}
-            >
-              <Icon name="trash" size={13} /> {appT('leaderboard.removeChild')}
-            </button>
-          )}
-        </Card>
+            )
+          }
+        />
       )}
     </section>
   );

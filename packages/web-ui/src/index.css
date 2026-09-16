@@ -1766,6 +1766,15 @@ label[for] {
      running off the bottom of the screen. */
   max-height: min(60vh, 22rem);
   overflow-y: auto;
+  /*
+   * And it SAYS it scrolls. macOS hides overlay scrollbars until something
+   * moves, so a menu cut off mid-list looked like the whole list — fourteen
+   * languages with the last four unreachable unless a parent guessed. A thin
+   * always-drawn bar is the only affordance a mouse user gets here; the track
+   * stays transparent so it reads as part of the menu.
+   */
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--ink) 30%, transparent) transparent;
   margin: 0;
   padding: 0.35rem;
   list-style: none;
@@ -1773,6 +1782,25 @@ label[for] {
   border: 1px solid var(--line-strong);
   border-radius: var(--r-md);
   box-shadow: var(--shadow-lg);
+}
+
+/* Safari and Chrome ignore `scrollbar-width`, so the same bar again in their
+   own dialect. Both are declared: one of the two applies in every browser. */
+.lang-menu::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+.lang-menu::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--ink) 28%, transparent);
+}
+
+.lang-menu::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--ink) 45%, transparent);
+}
+
+.lang-menu::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 .lang-menu li {

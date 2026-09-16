@@ -75,6 +75,31 @@
   --muted: color-mix(in srgb, var(--kg-textSecondary) 95%, var(--kg-background));
   --line: color-mix(in srgb, var(--kg-text) 9%, transparent);
   --grid: color-mix(in srgb, var(--kg-text) 12%, var(--kg-surface));
+
+  /*
+   * How an ELEVATED surface separates itself from the page — a card, a sheet,
+   * a popover. Not the same job as `--line`, and this file had been doing both
+   * with `--line` since it was written.
+   *
+   * The tokens already answered this and the browser was the one surface not
+   * listening (`packages/tokens/src/accents.ts`, `cardOutline`): in light a
+   * card separates by FILL — #FFFFFF on a #EEF1F6 page, which is the whole
+   * reason that page was deepened from #F7F8FA — plus `shadows.sm`, and it
+   * carries no outline at all. In dark a shadow is invisible on a near-black
+   * page and the card clears it by ~1.1:1 of fill, so the hairline is the only
+   * edge there is and `cardOutline` draws it.
+   *
+   * Painting a grey outline in BOTH, and lifting in neither, is what made this
+   * page read flat beside the phone rendering the same tokens: the light card
+   * got an outline it was designed not to need and never got the lift that was
+   * meant to replace it.
+   *
+   * `--line` keeps its own job, unchanged, on lines that MEAN something —
+   * dividers, input edges, unselected chips, the rail's right edge. Only the
+   * ten frames that are a card reach for these two.
+   */
+  --card-line: var(--kg-cardOutline);
+  --card-lift: var(--kg-shadow-sm);
   --brand: var(--kg-primary);
   --brand-2: var(--kg-secondary);
 
@@ -105,6 +130,36 @@
      dark card. */
   --serious: color-mix(in srgb, var(--kg-errorStrong) 55%, var(--kg-warningStrong));
   --critical: var(--kg-errorStrong);
+
+  /*
+   * The same three severities as a FILL, which is a different token and was
+   * not being used as one.
+   *
+   * Twenty-six backgrounds on this surface are `color-mix(var(--warning) 16%,
+   * transparent)` and friends — a status tint behind a badge, a row, a banner.
+   * Every one of them was mixing from the `*Strong` variant above, and Strong
+   * is the colour picked to be READ AT 4.5:1 on a pale ground: in light that is
+   * `#92400E`, a dark brown. Diluted to a tenth it does not become amber, it
+   * becomes taupe — and red and green go the same way, which is why every
+   * status on the light page came out the same dusty non-colour and why the
+   * parked banner read as a smudge rather than a warning.
+   *
+   * The base tokens are the fills. `warning` is `#D97706`, `error` `#DC2626`,
+   * `success` `#059669` — tuned as fill and border colours, exactly the job
+   * here, and the reason the comment above says Strong exists for the 33
+   * `color:` declarations rather than for these.
+   *
+   * Contrast moves the right way, so no pair needs re-measuring: a vivid mid
+   * tone at 16% lands LIGHTER than a dark brown at 16% on the same ground, and
+   * the Strong text still sitting on top gains against it. And in dark nothing
+   * moves at all — `warningStrong`/`successStrong`/`errorStrong` are already
+   * byte-identical to their base tokens there (`accents.ts`, `STATUS_DARK`),
+   * so this is a light-mode correction only.
+   */
+  --good-fill: var(--kg-success);
+  --warning-fill: var(--kg-warning);
+  --serious-fill: color-mix(in srgb, var(--kg-error) 55%, var(--kg-warning));
+  --critical-fill: var(--kg-error);
 }
 
 .dash {
@@ -135,6 +190,43 @@
   border: 0;
   background: none;
   cursor: pointer;
+}
+
+/*
+ * Anything else that answers a click says so under the pointer.
+ *
+ * `<button>` above was the only element that did, and several controls here are
+ * not buttons: a child row is a `div[role="button"]`, the daily limit is a
+ * range, a day picker is a select, a chart legend is a label. Each of them
+ * moves the page, and the only way to learn the child row was clickable was to
+ * click it.
+ *
+ * `:where()` again — weightless, so any component that wants `default` (a
+ * struck-out control card, a disabled row) still wins on a single class.
+ */
+.dash
+  :where(
+    a[href],
+    [role='button'],
+    [role='option'],
+    [role='switch'],
+    [role='tab'],
+    summary,
+    label:has(input[type='checkbox']),
+    label:has(input[type='radio']),
+    select,
+    input[type='checkbox'],
+    input[type='radio'],
+    input[type='range']
+  ) {
+  cursor: pointer;
+}
+
+/* And anything switched off says THAT instead — the same word `.btn:disabled`
+   has always used, extended to the controls that are not buttons. */
+.dash :where(button, [role='button'], select, input, label):disabled,
+.dash :where([aria-disabled='true']) {
+  cursor: not-allowed;
 }
 
 .icon {
@@ -173,7 +265,7 @@
  * **The rail asks one question**, and it is now the same question the phone's
  * tab bar asks: which of the four. Which device, and what about that device,
  * are answered inside the Family section — the first by the list, the second
- * by `.dash-tabs` at the top of the pane.
+ * by the control-centre grid on the device's own page.
  *
  * A chosen section is a brand bar down the leading edge over a brand-tinted
  * ground (`.is-active`). Below 820px the whole column becomes that tab bar;
@@ -320,7 +412,7 @@
 
 .av-android {
   color: var(--good);
-  background: color-mix(in srgb, var(--good) 16%, transparent);
+  background: color-mix(in srgb, var(--good-fill) 16%, transparent);
 }
 
 .av-macos,
@@ -331,7 +423,7 @@
 
 .av-androidtv {
   color: var(--warning);
-  background: color-mix(in srgb, var(--warning) 16%, transparent);
+  background: color-mix(in srgb, var(--warning-fill) 16%, transparent);
 }
 
 /* The selected row's tile goes solid: on a brand-tinted ground a tinted tile
@@ -551,11 +643,22 @@
   color: #fff;
 }
 
+/*
+ * The presence dot is a 6px FILL and nothing is read off it, so it takes the
+ * fill tokens: `#059669` is 3.77:1 on a white card and 3.5:1 on the rail,
+ * `#D97706` 3.19:1 — both clear the 3:1 a non-text graphic owes, and both are
+ * unmistakably green and amber. `--good`/`--warning` are the 4.5:1 *text*
+ * colours, and at this size #065F46 and #92400E read as two dark smudges that
+ * a parent has to compare against each other to tell apart.
+ *
+ * `.nav-badge` a few rules down deliberately keeps `--warning`: that one is a
+ * fill with `--plane` PRINTED ON IT, so its ground has to stay the dark end.
+ */
 .kid-dot.tone-good {
-  background: var(--good);
+  background: var(--good-fill);
 }
 .kid-dot.tone-warning {
-  background: var(--warning);
+  background: var(--warning-fill);
 }
 .kid-dot.tone-muted {
   background: color-mix(in srgb, var(--muted) 70%, transparent);
@@ -694,6 +797,37 @@
   max-width: var(--dash-column);
 }
 
+/*
+ * The Attention rail — what needs a parent, beside the Family list.
+ *
+ * A third grid column rather than a float or a fixed panel: the content column
+ * is capped at 54rem because a list stops being readable past sixty characters,
+ * and on a desk browser that cap left the right third of the page empty while
+ * the notices it could have carried were stacked over the list instead.
+ *
+ * The page decides whether it exists at all (`WIDE_QUERY`, 1180px) — the
+ * parked-device banner has to MOVE between the rail and the flow, and a copy in
+ * both places would be one question asked twice. So there is no `display: none`
+ * here: no rail in the DOM, no column.
+ *
+ * Sticky and scrolling on its own: the list beside it is as long as the family
+ * is, and a column of open items that scrolled away would be read once.
+ */
+.dash:has(.dash-attn) {
+  grid-template-columns: 272px minmax(0, 1fr) 23rem;
+}
+
+.dash-attn {
+  padding: 1.1rem 1.9rem 3rem 0;
+  min-width: 0;
+  align-self: start;
+  position: sticky;
+  top: 0;
+  max-height: 100vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
 .dash-top {
   display: flex;
   align-items: flex-start;
@@ -709,59 +843,6 @@
 .dash-top h1 {
   font-size: var(--dash-text-5);
   letter-spacing: -0.02em;
-}
-
-/*
- * Manage, moved out of the rail. The rail answers "which device" and this row
- * answers "what about it"; stacked in one column they read as a single
- * eleven-row list and a parent had to learn which half they were in.
- *
- * Sticky, because the rail kept the nav on screen at any scroll depth — a tab
- * bar that scrolls away would be a worse nav than the one it replaced. Full
- * bleed across the pane's padding so cards pass under it, not beside it.
- */
-.dash-tabs {
-  position: sticky;
-  top: 0;
-  /* Under the chart tooltip (also 5, and later in the DOM), over the cards. */
-  z-index: 5;
-  display: flex;
-  /* One row that scrolls sideways, never a wrapped block: the bar's height
-     must not depend on how many tabs this device reports. */
-  flex-wrap: nowrap;
-  gap: 0.35rem;
-  overflow-x: auto;
-  overscroll-behavior-x: contain;
-  scrollbar-width: none;
-  /* The pane's own ground, so the bar is not a second surface floating over
-     the page — and opaque, or the cards show through it while scrolling. */
-  background: var(--plane);
-  margin: 0 -1.9rem 0.85rem;
-  padding: 0.35rem 1.9rem 0.45rem;
-  border-bottom: 1px solid var(--line);
-}
-
-.dash-tabs::-webkit-scrollbar {
-  display: none;
-}
-
-/* A chip, not a rail row: there is no leading edge to hang the selection bar
-   on, so the brand ground fills instead. */
-.dash-tabs .nav-item {
-  width: auto;
-  flex: 0 0 auto;
-  padding-inline: 0.7rem;
-  border-radius: 999px;
-  white-space: nowrap;
-}
-
-.dash-tabs .nav-item.is-active::before {
-  display: none;
-}
-
-.dash-tabs .nav-item.is-active {
-  background: color-mix(in srgb, var(--brand) 20%, transparent);
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--brand) 40%, transparent);
 }
 
 /* Who this page is about, above the device it is about. */
@@ -784,8 +865,162 @@
   color: var(--ink-2);
 }
 
+/* ---------- The device hero ----------
+ *
+ * `apps/mobile`'s `DeviceDetailHero`, drawn in a browser. The page opened with
+ * two grey paragraphs — status, OS, last seen, then battery and build — and
+ * then a grid of cards, so the machine the page is about had no face at all
+ * while every card below it did.
+ *
+ * The glyph takes the status tone, which is the one fact read from across the
+ * room; the protection row under it is the phone's verdict and the way into
+ * what is wrong, and it is what keeps those items reachable under 1180px where
+ * there is no Attention rail.
+ */
+.dev-hero {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.dev-hero-top {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.dev-hero-glyph,
+.dev-hero-protect {
+  --tone-fill: var(--ink);
+  --tone-ink: var(--ink-2);
+}
+
+.dev-hero-glyph.tone-good,
+.dev-hero-protect.tone-good {
+  --tone-fill: var(--good-fill);
+  --tone-ink: var(--good);
+}
+
+.dev-hero-glyph.tone-warning,
+.dev-hero-protect.tone-warning {
+  --tone-fill: var(--warning-fill);
+  --tone-ink: var(--warning);
+}
+
+.dev-hero-glyph.tone-critical,
+.dev-hero-protect.tone-critical {
+  --tone-fill: var(--critical-fill);
+  --tone-ink: var(--critical);
+}
+
+.dev-hero-glyph.tone-muted,
+.dev-hero-protect.tone-muted {
+  --tone-fill: var(--ink);
+  --tone-ink: var(--muted);
+}
+
+.dev-hero-glyph {
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--dash-radius-2);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  color: var(--tone-ink);
+  background: color-mix(in srgb, var(--tone-fill) 12%, transparent);
+}
+
+.dev-hero-facts {
+  min-width: 0;
+  display: grid;
+  gap: 0.1rem;
+}
+
+/* The paragraphs keep their own type and colour — they are the same two lines
+   they were under the header — and lose only the margin the header gave them. */
+.dev-hero .dash-top-facts {
+  margin: 0;
+}
+
+/* The verdict. A row rather than a pill: the subtitle is the half that says
+   what to do about it, and a pill would have dropped it. */
+.dev-hero-protect {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  border-radius: var(--dash-radius-2);
+  text-align: start;
+  color: inherit;
+  border: 1px solid color-mix(in srgb, var(--tone-fill) 26%, transparent);
+  background: color-mix(in srgb, var(--tone-fill) 7%, transparent);
+}
+
+/* A device with nothing open is a statement, not a control: the row still says
+   Protected, and the cursor says there is nothing behind it. */
+.dev-hero-protect:disabled {
+  cursor: default;
+}
+
+.dev-hero-protect:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--tone-fill) 12%, transparent);
+}
+
+.dev-hero-protect-icon {
+  color: var(--tone-ink);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.dev-hero-protect-body {
+  min-width: 0;
+  flex: 1;
+}
+
+.dev-hero-protect-body strong {
+  display: block;
+  font-size: var(--dash-text-3);
+  font-weight: 600;
+  color: var(--tone-ink);
+}
+
+.dev-hero-protect-body em {
+  display: block;
+  font-style: normal;
+  font-size: var(--dash-text-2);
+  color: var(--muted);
+  margin-top: 0.1rem;
+}
+
+.dev-hero-protect-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex-shrink: 0;
+  font-size: var(--dash-text-3);
+  font-weight: 700;
+  color: var(--tone-ink);
+}
+
+/* There is no up/down pair in `@kidgate/tokens/icons` — one drawing per glyph,
+   shared with the phone — so the chevron turns instead. */
+.dev-hero-protect-count .icon {
+  transition: transform var(--kg-motionFast, 120ms) ease;
+}
+
+.dev-hero-protect-count.is-open .icon {
+  transform: rotate(90deg);
+}
+
+/* Inside the hero the rows need no card of their own: the disclosure they open
+   under is the frame. */
+.dev-hero-issues {
+  padding-inline: 0.2rem;
+}
+
 /* Classed rather than `.dash-top p`: the facts moved out of the header and sit
-   under the tab bar now, as the first line of the pane rather than the last of
+   in the hero now, as the first line of the pane rather than the last of
    the title block. A descendant selector would have stopped applying, and
    quietly — the row would still render, just unstyled. */
 .dash-top-facts {
@@ -953,8 +1188,9 @@
 
 .card {
   background: var(--surface);
-  border: 1px solid var(--line);
+  border: 1px solid var(--card-line);
   border-radius: var(--dash-radius-3);
+  box-shadow: var(--card-lift);
   padding: 1.25rem;
   margin-bottom: 1.15rem;
 }
@@ -1026,14 +1262,18 @@
   gap: 0.9rem 1.15rem;
   margin-bottom: 1.15rem;
   background: var(--surface);
-  border: 1px solid var(--line);
+  border: 1px solid var(--card-line);
   border-radius: var(--dash-radius-3);
+  box-shadow: var(--card-lift);
   padding: 1.25rem;
 }
 
+/* One frame around four numbers means one LIFT too — a tile that kept its own
+   shadow would cast it inside the card holding it. */
 .tiles .tile {
   background: none;
   border: 0;
+  box-shadow: none;
   padding: 0;
 }
 
@@ -1046,13 +1286,15 @@
   margin-bottom: 0.9rem;
   background: none;
   border: 0;
+  box-shadow: none;
   padding: 0;
 }
 
 .tile {
   background: var(--surface);
-  border: 1px solid var(--line);
+  border: 1px solid var(--card-line);
   border-radius: var(--dash-radius-3);
+  box-shadow: var(--card-lift);
   padding: 0.95rem 1.05rem;
 }
 
@@ -1802,39 +2044,78 @@ ol.attn-fix li + li {
   font-size: var(--dash-text-2);
 }
 
+/*
+ * Which machine, and the door to it. A device-scoped row never had to say it; a
+ * family-wide one always does, and the name carries the navigation so the row's
+ * one button stays the answer — Allow, Resend, the steps — rather than two
+ * controls competing for the same corner.
+ */
+.attn-where {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
+  margin-top: 0.15rem;
+  margin-inline-start: -0.3rem;
+  padding: 0.1rem 0.3rem;
+  border-radius: var(--dash-radius-1);
+  font-size: var(--dash-text-2);
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+.attn-where:hover {
+  background: color-mix(in srgb, var(--ink) 6%, transparent);
+  color: var(--ink);
+}
+
+/*
+ * In a 23rem column the answer goes under the sentence, not beside it. Sharing
+ * the row, "Cách khắc phục" left the title about four words wide and every row
+ * ran five lines deep. The body claims the whole width left of the glyph, which
+ * is what pushes the button to a line of its own — measured, not a breakpoint.
+ */
+.attn-rail .attn-body {
+  flex-basis: calc(100% - 2.65rem);
+}
+
+.attn-rail .btn {
+  margin-inline-start: auto;
+  margin-top: 0.4rem;
+}
+
 .attn li.tone-warning .attn-icon {
-  background: color-mix(in srgb, var(--warning) 16%, transparent);
+  background: color-mix(in srgb, var(--warning-fill) 16%, transparent);
   color: var(--warning);
 }
 .attn li.tone-serious .attn-icon {
-  background: color-mix(in srgb, var(--serious) 16%, transparent);
+  background: color-mix(in srgb, var(--serious-fill) 16%, transparent);
   color: var(--serious);
 }
 .attn li.tone-critical .attn-icon {
-  background: color-mix(in srgb, var(--critical) 18%, transparent);
+  background: color-mix(in srgb, var(--critical-fill) 18%, transparent);
   color: var(--critical);
 }
 
 .tl-icon.type-tamper {
-  background: color-mix(in srgb, var(--critical) 18%, transparent);
+  background: color-mix(in srgb, var(--critical-fill) 18%, transparent);
 }
 .tl-icon.type-app_blocked {
-  background: color-mix(in srgb, var(--warning) 16%, transparent);
+  background: color-mix(in srgb, var(--warning-fill) 16%, transparent);
 }
 .tl-icon.type-device_locked {
   background: color-mix(in srgb, var(--brand) 16%, transparent);
 }
 
 .ev-state.tone-good {
-  background: color-mix(in srgb, var(--good) 16%, transparent);
+  background: color-mix(in srgb, var(--good-fill) 16%, transparent);
   color: var(--good);
 }
 .ev-state.tone-warning {
-  background: color-mix(in srgb, var(--warning) 16%, transparent);
+  background: color-mix(in srgb, var(--warning-fill) 16%, transparent);
   color: var(--warning);
 }
 .ev-state.tone-critical {
-  background: color-mix(in srgb, var(--critical) 18%, transparent);
+  background: color-mix(in srgb, var(--critical-fill) 18%, transparent);
   color: var(--critical);
 }
 .ev-state.tone-muted {
@@ -1876,11 +2157,11 @@ ol.attn-fix li + li {
 }
 
 .perm-state.tone-good {
-  background: color-mix(in srgb, var(--good) 16%, transparent);
+  background: color-mix(in srgb, var(--good-fill) 16%, transparent);
   color: var(--good);
 }
 .perm-state.tone-critical {
-  background: color-mix(in srgb, var(--critical) 18%, transparent);
+  background: color-mix(in srgb, var(--critical-fill) 18%, transparent);
   color: var(--critical);
 }
 .perm-state.tone-muted {
@@ -1986,7 +2267,7 @@ ol.attn-fix li + li {
   margin-left: 0.45rem;
   font-size: var(--dash-text-1);
   color: var(--critical);
-  background: color-mix(in srgb, var(--critical) 14%, transparent);
+  background: color-mix(in srgb, var(--critical-fill) 14%, transparent);
   border-radius: 999px;
   padding: 0.05rem 0.45rem;
 }
@@ -2339,8 +2620,8 @@ ol.attn-fix li + li {
 
 .write-note {
   color: var(--ink-2);
-  background: color-mix(in srgb, var(--warning) 10%, transparent);
-  border: 1px solid color-mix(in srgb, var(--warning) 30%, transparent);
+  background: color-mix(in srgb, var(--warning-fill) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--warning-fill) 30%, transparent);
 }
 
 .write-note strong {
@@ -2488,8 +2769,8 @@ ol.attn-fix li + li {
 /* Advisory, so it is tinted rather than marked as an error — both windows do
    still apply, and a red row would read as "this one is not working". */
 .sched-edit-row.is-overlap {
-  border-color: color-mix(in srgb, var(--warning) 40%, transparent);
-  background: color-mix(in srgb, var(--warning) 6%, transparent);
+  border-color: color-mix(in srgb, var(--warning-fill) 40%, transparent);
+  background: color-mix(in srgb, var(--warning-fill) 6%, transparent);
 }
 
 .sched-times {
@@ -2528,7 +2809,7 @@ ol.attn-fix li + li {
 
 .sched-remove:hover:not(:disabled) {
   color: var(--critical);
-  border-color: color-mix(in srgb, var(--critical) 40%, transparent);
+  border-color: color-mix(in srgb, var(--critical-fill) 40%, transparent);
 }
 
 .sched-days {
@@ -2675,7 +2956,7 @@ ol.attn-fix li + li {
 
 .limit-remove:hover:not(:disabled) {
   color: var(--critical);
-  border-color: color-mix(in srgb, var(--critical) 40%, transparent);
+  border-color: color-mix(in srgb, var(--critical-fill) 40%, transparent);
 }
 
 .limit-presets,
@@ -2742,14 +3023,14 @@ ol.attn-fix li + li {
    floating toast over a chart with a see-through ground is unreadable. */
 .toast.tone-good {
   color: color-mix(in srgb, var(--good) 35%, var(--ink));
-  background: color-mix(in srgb, var(--good) 14%, var(--surface));
-  border: 1px solid color-mix(in srgb, var(--good) 36%, transparent);
+  background: color-mix(in srgb, var(--good-fill) 14%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--good-fill) 36%, transparent);
 }
 
 .toast.tone-critical {
   color: color-mix(in srgb, var(--critical) 30%, var(--ink));
-  background: color-mix(in srgb, var(--critical) 15%, var(--surface));
-  border: 1px solid color-mix(in srgb, var(--critical) 40%, transparent);
+  background: color-mix(in srgb, var(--critical-fill) 15%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--critical-fill) 40%, transparent);
 }
 
 .dash .btn:disabled,
@@ -2779,11 +3060,14 @@ ol.attn-fix li + li {
   gap: 0.25rem;
 }
 
-/* Language and the way out — the two controls, side by side. */
+/* Language and the way out — the two controls, side by side. The row gives way
+   before the language pill does: a narrow rail puts Sign out on its own line
+   rather than breaking "Tiếng Việt" across two. */
 .side-account-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
   gap: 0.5rem;
 }
 
@@ -2809,7 +3093,7 @@ ol.attn-fix li + li {
 }
 
 .perm-state.tone-warning {
-  background: color-mix(in srgb, var(--warning) 16%, transparent);
+  background: color-mix(in srgb, var(--warning-fill) 16%, transparent);
   color: var(--warning);
 }
 
@@ -2915,8 +3199,8 @@ ol.attn-fix li + li {
 }
 
 .login-warn {
-  background: color-mix(in srgb, var(--warning) 12%, transparent);
-  border: 1px solid color-mix(in srgb, var(--warning) 35%, transparent);
+  background: color-mix(in srgb, var(--warning-fill) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--warning-fill) 35%, transparent);
   color: color-mix(in srgb, var(--warning) 35%, var(--ink));
 }
 
@@ -2930,14 +3214,14 @@ ol.attn-fix li + li {
 }
 
 .login-error {
-  background: color-mix(in srgb, var(--critical) 15%, transparent);
-  border: 1px solid color-mix(in srgb, var(--critical) 40%, transparent);
+  background: color-mix(in srgb, var(--critical-fill) 15%, transparent);
+  border: 1px solid color-mix(in srgb, var(--critical-fill) 40%, transparent);
   color: color-mix(in srgb, var(--critical) 30%, var(--ink));
 }
 
 .login-info {
-  background: color-mix(in srgb, var(--good) 14%, transparent);
-  border: 1px solid color-mix(in srgb, var(--good) 36%, transparent);
+  background: color-mix(in srgb, var(--good-fill) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--good-fill) 36%, transparent);
   color: color-mix(in srgb, var(--good) 35%, var(--ink));
 }
 
@@ -3339,8 +3623,9 @@ ol.attn-fix li + li {
      this only has to give it a card to sit in. `--surface`, not the
      `var(--card)` this used to say — that token does not exist. */
   background: var(--surface);
-  border: 1px solid var(--line);
+  border: 1px solid var(--card-line);
   border-radius: var(--dash-radius-2);
+  box-shadow: var(--card-lift);
   padding: 1rem;
 }
 
@@ -3534,17 +3819,27 @@ ol.attn-fix li + li {
 
 .kid-card {
   background: var(--surface);
-  border: 1px solid var(--line);
+  border: 1px solid var(--card-line);
   border-radius: var(--dash-radius-3);
+  box-shadow: var(--card-lift);
   padding: 1rem;
   cursor: pointer;
   transition:
     border-color var(--kg-motion-fast) ease,
+    box-shadow var(--kg-motion-fast) ease,
     background var(--kg-motion-fast) ease;
 }
 
+/*
+ * A card that opens a person says so under the pointer — this is the one place
+ * the desk gets a state the phone has no way to draw, and `shadows.md` is the
+ * step the tokens already reserve for "raised". The tint answers in dark, where
+ * the lift cannot be seen; the mix is against `--card-line` rather than `--line`
+ * so in light it resolves over transparent and reads as brand rather than grey.
+ */
 .kid-card:hover {
-  border-color: color-mix(in srgb, var(--brand) 40%, var(--line));
+  border-color: color-mix(in srgb, var(--brand) 40%, var(--card-line));
+  box-shadow: var(--kg-shadow-md);
 }
 
 .kid-card.is-active {
@@ -3618,8 +3913,8 @@ ol.attn-fix li + li {
    without being opened. */
 .kid-device-chip.is-alert {
   color: var(--kg-errorStrong);
-  border-color: color-mix(in srgb, var(--kg-errorStrong) 35%, transparent);
-  background: color-mix(in srgb, var(--kg-errorStrong) 8%, transparent);
+  border-color: color-mix(in srgb, var(--critical-fill) 35%, transparent);
+  background: color-mix(in srgb, var(--critical-fill) 8%, transparent);
 }
 
 /*
@@ -3633,14 +3928,20 @@ ol.attn-fix li + li {
   gap: 0.65rem;
   width: 100%;
   background: var(--surface);
-  border: 1px solid var(--line);
+  border: 1px solid var(--card-line);
   border-radius: var(--dash-radius-3);
+  box-shadow: var(--card-lift);
   padding: 0.9rem 1rem;
   text-align: start;
+  transition:
+    border-color var(--kg-motion-fast) ease,
+    box-shadow var(--kg-motion-fast) ease;
 }
 
+/* Clickable, so it takes the same raised state `.kid-card` does. */
 .family-row:hover {
-  border-color: color-mix(in srgb, var(--brand) 40%, var(--line));
+  border-color: color-mix(in srgb, var(--brand) 40%, var(--card-line));
+  box-shadow: var(--kg-shadow-md);
 }
 
 .family-row-icon {
@@ -3723,14 +4024,14 @@ ol.attn-fix li + li {
    changes where a click does something. */
 .chip.tone-danger {
   color: var(--kg-errorStrong);
-  background: color-mix(in srgb, var(--kg-errorStrong) 13%, transparent);
-  border-color: color-mix(in srgb, var(--kg-errorStrong) 35%, transparent);
+  background: color-mix(in srgb, var(--critical-fill) 13%, transparent);
+  border-color: color-mix(in srgb, var(--critical-fill) 35%, transparent);
 }
 
 .chip.tone-warning {
   color: var(--kg-warningStrong);
-  background: color-mix(in srgb, var(--kg-warningStrong) 14%, transparent);
-  border-color: color-mix(in srgb, var(--kg-warningStrong) 35%, transparent);
+  background: color-mix(in srgb, var(--warning-fill) 14%, transparent);
+  border-color: color-mix(in srgb, var(--warning-fill) 35%, transparent);
 }
 
 .chip.is-action {
@@ -3763,12 +4064,12 @@ ol.attn-fix li + li {
 
 .kid-pill.tone-danger {
   color: var(--kg-errorStrong);
-  background: color-mix(in srgb, var(--kg-errorStrong) 13%, transparent);
+  background: color-mix(in srgb, var(--critical-fill) 13%, transparent);
 }
 
 .kid-pill.tone-warning {
   color: var(--kg-warningStrong);
-  background: color-mix(in srgb, var(--kg-warningStrong) 14%, transparent);
+  background: color-mix(in srgb, var(--warning-fill) 14%, transparent);
 }
 
 /* Name and stars share the line; the stars never push the name off it. */
@@ -3801,7 +4102,7 @@ ol.attn-fix li + li {
   font-size: var(--dash-text-1);
   font-weight: 700;
   color: var(--kg-warningStrong);
-  background: color-mix(in srgb, var(--kg-warningStrong) 14%, transparent);
+  background: color-mix(in srgb, var(--warning-fill) 14%, transparent);
 }
 
 /*
@@ -3820,7 +4121,7 @@ ol.attn-fix li + li {
   font-weight: 800;
   letter-spacing: 0.02em;
   color: var(--kg-errorStrong);
-  background: color-mix(in srgb, var(--kg-errorStrong) 15%, transparent);
+  background: color-mix(in srgb, var(--critical-fill) 15%, transparent);
 }
 
 /*
@@ -3852,8 +4153,20 @@ ol.attn-fix li + li {
   background: var(--brand);
 }
 
+/*
+ * The fill token, unlike the three `is-over` marks inside the charts.
+ *
+ * This is a lone bar on a child's card with no categorical series beside it,
+ * so the only thing it has to be told apart from is the teal above it — and
+ * `#DC2626` is 4.53:1 on the track, well past the 3:1 a graphic owes.
+ * `.hbar-fill.is-over`, `.viz-bar.is-over` and `.dot-over` deliberately keep
+ * `--critical`: those sit among `--s1/--s2/--s3`, and `--s2` is an orange the
+ * data-viz checks separated from the rest by a measured CVD ΔE. Moving them
+ * toward a brighter red is a change to a validated palette, not a tidy-up, so
+ * it is not made here on the way past.
+ */
 .kid-usage-fill.is-over {
-  background: var(--kg-errorStrong);
+  background: var(--critical-fill);
 }
 
 .kid-usage em {
@@ -4022,6 +4335,11 @@ ol.attn-fix li + li {
  * A row plus a trailing action, twice: a device and its Unassign, a child and
  * the chevron into their hub. The row itself is `.kid`, so the geometry is the
  * Family list's — one column, whichever list a parent is reading.
+ *
+ * The FRAME is the `li`, not the `.kid` inside it (2026-09-16). Unframed, the
+ * two halves read as a row and a loose link that happened to land beside it,
+ * and the hover lit only the left half — the half a parent was not pointing at
+ * when they went for Unassign.
  */
 .child-device-list {
   list-style: none;
@@ -4029,13 +4347,21 @@ ol.attn-fix li + li {
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.15rem;
+  gap: 0.4rem;
 }
 
 .child-device-list li {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.4rem;
+  padding-inline-end: 0.4rem;
+  border: 1px solid var(--line);
+  border-radius: var(--dash-radius-2);
+  transition: border-color var(--kg-motion-fast) ease;
+}
+
+.child-device-list li:hover {
+  border-color: color-mix(in srgb, var(--brand) 30%, var(--line));
 }
 
 .child-device-list li .kid {
@@ -4043,8 +4369,51 @@ ol.attn-fix li + li {
   min-width: 0;
 }
 
+/* The frame is the row's, so the button inside it must not paint a second
+   one — two nested tints on hover is what made this list look doubled. */
+.child-device-list li .kid:hover {
+  background: transparent;
+}
+
+/*
+ * One line, always. Unassign is `.login-link` no longer: that class is styled
+ * only inside `.login`, `.side-account`, `.plan-card-row` and `.sheet`, so
+ * here it inherited `.dash`'s 15px and wrapped to two lines in every locale
+ * that spells it in two words — measured in vi ("Bỏ gán"), 2026-09-16.
+ *
+ * Not red, and not `.btn`: unassigning leaves the device paired and enforcing,
+ * so it is quieter than the removers and quieter than Save.
+ */
+.child-device-unassign {
+  flex-shrink: 0;
+  white-space: nowrap;
+  padding: 0.3rem 0.6rem;
+  font-size: var(--dash-text-2);
+  color: var(--muted);
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: var(--dash-radius-1);
+  transition:
+    color var(--kg-motion-fast) ease,
+    border-color var(--kg-motion-fast) ease;
+}
+
+.child-device-unassign:hover:not(:disabled) {
+  color: var(--ink);
+  border-color: color-mix(in srgb, var(--ink) 24%, transparent);
+}
+
+.child-device-unassign:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* A rule between the list and the picker: adding a machine is a different
+   question from reading the ones already there. */
 .child-assign {
-  margin-top: 0.8rem;
+  margin-top: 0.9rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--line);
 }
 
 /* A label and its switch, ends of the same line. Used by every child-rule
@@ -4137,8 +4506,9 @@ ol.attn-fix li + li {
   flex: 1 1 auto;
   min-width: 0;
   background: var(--surface);
-  border: 1px solid var(--line);
+  border: 1px solid var(--card-line);
   border-radius: var(--dash-radius-2);
+  box-shadow: var(--card-lift);
   padding: 0.7rem 0.85rem;
 }
 
@@ -4201,19 +4571,19 @@ ol.attn-fix li + li {
  * kinds shouted would have nothing left to shout with.
  */
 .feed-row.type-emergency .feed-row-card {
-  border-color: color-mix(in srgb, var(--kg-errorStrong) 35%, transparent);
-  background: color-mix(in srgb, var(--kg-errorStrong) 7%, var(--surface));
+  border-color: color-mix(in srgb, var(--critical-fill) 35%, transparent);
+  background: color-mix(in srgb, var(--critical-fill) 7%, var(--surface));
 }
 
 .feed-row.type-emergency .feed-row-icon,
 .feed-row.type-tamper .feed-row-icon {
   color: var(--kg-errorStrong);
-  border-color: color-mix(in srgb, var(--kg-errorStrong) 35%, transparent);
+  border-color: color-mix(in srgb, var(--critical-fill) 35%, transparent);
 }
 
 .feed-row.type-emergency .feed-row-who {
   color: var(--kg-errorStrong);
-  background: color-mix(in srgb, var(--kg-errorStrong) 12%, transparent);
+  background: color-mix(in srgb, var(--critical-fill) 12%, transparent);
 }
 
 .feed-filter {
@@ -4406,13 +4776,6 @@ ol.attn-fix li + li {
     max-width: none;
   }
 
-  /* The bleed follows the pane's padding, or the bar stops short of the edge
-     and cards pass beside it. */
-  .dash-tabs {
-    margin-inline: -1rem;
-    padding-inline: 1rem;
-  }
-
   /*
    * The device chips drop to a row of their own, which is where the phone
    * draws them. Beside the meta column they took 45% of a 375px screen and
@@ -4519,11 +4882,6 @@ ol.attn-fix li + li {
     padding: 1rem 0.8rem calc(4.5rem + env(safe-area-inset-bottom));
   }
 
-  .dash-tabs {
-    margin-inline: -0.8rem;
-    padding-inline: 0.8rem;
-  }
-
   .card {
     padding: 1rem;
   }
@@ -4564,11 +4922,23 @@ ol.attn-fix li + li {
   font-size: var(--dash-text-3);
 }
 
-/* In the account row it shares the line with Sign out, so it takes the width
-   its label needs and no more. */
+/*
+ * In the account row it shares the line with Sign out, so it takes the width
+ * its label needs and no more — and NEVER wraps.
+ *
+ * It did: in a 272px rail beside "Đăng xuất" the label broke after "Tiếng" and
+ * the bordered box grew to two lines, twice the height of the link beside it
+ * and the tallest thing in the footer. A picker nobody opens more than once
+ * was the loudest control on the page. A pill that keeps its line and lets the
+ * row wrap instead reads as what it is: a quiet setting.
+ */
 .side-account-row .lang-side .lang-btn {
   width: auto;
   font-size: var(--dash-text-2);
+  white-space: nowrap;
+  gap: 0.3rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
 }
 
 /* The sidebar footer sits at the bottom of a full-height column, so the menu
@@ -4631,8 +5001,9 @@ ol.attn-fix li + li {
   position: relative;
   overflow: hidden;
   background: var(--surface);
-  border: 1px solid var(--line);
+  border: 1px solid var(--card-line);
   border-radius: var(--dash-radius-3);
+  box-shadow: var(--card-lift);
   padding: 1.6rem 1.75rem 1.5rem;
   margin-bottom: 1.15rem;
 }
@@ -4894,8 +5265,9 @@ ol.attn-fix li + li {
   list-style: none;
   margin: 0;
   padding: 0;
-  border: 1px solid var(--line);
+  border: 1px solid var(--card-line);
   border-radius: var(--dash-radius-2);
+  box-shadow: var(--card-lift);
   background: var(--surface);
   overflow: hidden;
 }
@@ -5767,6 +6139,17 @@ ol.attn-fix li + li {
     padding: 0;
   }
 
+  /*
+   * Paper has no depth to lift off, and Chrome prints a `box-shadow` even
+   * though it drops the background behind it — so a card that is not reset
+   * here comes out of the printer as a grey smudge around nothing. Blanket
+   * rather than per-class: the elevation is a screen affordance, and there is
+   * no card on this surface that wants one on paper.
+   */
+  .dash * {
+    box-shadow: none !important;
+  }
+
   .report-sheet {
     --surface: #fff;
     --surface-2: #f4f6fb;
@@ -5822,8 +6205,9 @@ ol.attn-fix li + li {
   gap: 0.5rem;
   padding: 0.8rem 0.9rem;
   background: var(--surface);
-  border: 1px solid var(--line);
+  border: 1px solid var(--card-line);
   border-radius: var(--dash-radius-3);
+  box-shadow: var(--card-lift);
 }
 
 .device-admin-row {
@@ -5853,8 +6237,8 @@ ol.attn-fix li + li {
   gap: 0.35rem;
   padding: 0.7rem 0.8rem;
   border-radius: var(--dash-radius-1);
-  border: 1px solid color-mix(in srgb, var(--critical) 35%, transparent);
-  background: color-mix(in srgb, var(--critical) 7%, transparent);
+  border: 1px solid color-mix(in srgb, var(--critical-fill) 35%, transparent);
+  background: color-mix(in srgb, var(--critical-fill) 7%, transparent);
   font-size: var(--dash-text-3);
 }
 
@@ -5867,6 +6251,78 @@ ol.attn-fix li + li {
   background: var(--critical);
   border-color: var(--critical);
   color: var(--kg-onPrimary, #fff);
+}
+
+/* ---------- The danger zone ----------
+ *
+ * One destructive action, closing a page of reads. It was a full white card
+ * with the weight of the working cards above it — a heading, a grey sentence,
+ * and a pink button alone on a third line — so the one block a parent should
+ * pass by drew more attention than the controls they came for.
+ *
+ * Now the whole thing IS the header row: glyph, title, sentence, button. The
+ * ground carries the meaning so the title does not have to shout, and the
+ * button keeps the tint-at-rest rule — solid red belongs to the confirmation.
+ */
+.dash .danger-zone {
+  border-color: color-mix(in srgb, var(--critical-fill) 26%, var(--card-line));
+  background: color-mix(in srgb, var(--critical-fill) 5%, var(--surface));
+  box-shadow: none;
+}
+
+.danger-zone .card-head {
+  align-items: center;
+  /* Nothing follows it: the card's own padding is the bottom margin. */
+  margin-bottom: 0;
+}
+
+/*
+ * The sentence yields, the button does not.
+ *
+ * `.card-head` wraps — the rule is in `index.css`, the other stylesheet this
+ * app loads, which is why grepping this file for it finds nothing. With the
+ * title block at its content width the sentence claimed the whole row and the
+ * button wrapped under it, which is the stacked card this was taken out of. A
+ * basis it can shrink below puts them back on one line, and the wrap still
+ * happens where it should: under about 16rem of sentence.
+ */
+.danger-zone .card-head > div {
+  min-width: 0;
+  flex: 1 1 16rem;
+}
+
+.danger-zone .card-head > .btn,
+.danger-zone .card-head > .danger-zone-actions {
+  flex-shrink: 0;
+}
+
+/* A step down from a working card's heading — the ground already says this is
+   the destructive block, and a 1.05rem title said it a second time. */
+.danger-zone .card-head h2 {
+  font-size: var(--dash-text-3);
+}
+
+.danger-zone-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.danger-zone-glyph {
+  width: 1.65rem;
+  height: 1.65rem;
+  border-radius: var(--dash-radius-1);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  color: var(--critical);
+  background: color-mix(in srgb, var(--critical-fill) 14%, transparent);
+}
+
+.danger-zone-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 /* ---------- Anything that removes something ----------
@@ -5884,16 +6340,16 @@ ol.attn-fix li + li {
 .dash .place-remove,
 .dash .device-admin-remove {
   color: var(--critical);
-  background: color-mix(in srgb, var(--critical) 12%, transparent);
-  border: 1px solid color-mix(in srgb, var(--critical) 30%, transparent);
+  background: color-mix(in srgb, var(--critical-fill) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--critical-fill) 30%, transparent);
 }
 
 .dash .sched-remove:hover:not(:disabled),
 .dash .limit-remove:hover:not(:disabled),
 .dash .place-remove:hover:not(:disabled),
 .dash .device-admin-remove:hover:not(:disabled) {
-  background: color-mix(in srgb, var(--critical) 22%, transparent);
-  border-color: color-mix(in srgb, var(--critical) 55%, transparent);
+  background: color-mix(in srgb, var(--critical-fill) 22%, transparent);
+  border-color: color-mix(in srgb, var(--critical-fill) 55%, transparent);
 }
 
 /* The unpair trigger is a word, not a glyph, so it takes the padding a word
@@ -5951,13 +6407,30 @@ ol.attn-fix li + li {
   padding: 0.7rem 0.9rem;
   margin-bottom: 1.15rem;
   border-radius: var(--dash-radius-2);
-  background: color-mix(in srgb, var(--warning) 10%, transparent);
-  border: 1px solid color-mix(in srgb, var(--warning) 30%, transparent);
-  transition: background var(--kg-motion-fast) ease;
+  /*
+   * `warningSoft`, not a tenth of the amber over the page.
+   *
+   * This banner is the only full-bleed element on the pane and the one thing
+   * still sitting flat on the ground now the cards lift off it, so a 10% wash
+   * left it reading as a dent rather than a notice. `warningSoft` is the token
+   * that exists for a status GROUND — `#FEF3C7` in light, `#451A03` in dark —
+   * and the copy above it survives both: `--ink` 15.0:1 and `--ink-2` 4.71:1
+   * on the light one, 16.1 and 7.9 on the dark. The `--ink-2` note below it
+   * still holds; this ground is a shade kinder than the wash it replaces.
+   */
+  background: var(--kg-warningSoft);
+  border: 1px solid color-mix(in srgb, var(--warning-fill) 35%, transparent);
+  box-shadow: var(--card-lift);
+  transition:
+    background var(--kg-motion-fast) ease,
+    box-shadow var(--kg-motion-fast) ease;
 }
 
+/* It opens the parked sheet, so it takes the same raised hover the other
+   clickable cards do. */
 .parked-banner:hover {
-  background: color-mix(in srgb, var(--warning) 16%, transparent);
+  background: color-mix(in srgb, var(--warning-fill) 16%, var(--kg-warningSoft));
+  box-shadow: var(--kg-shadow-md);
 }
 
 .parked-banner > .icon:first-child {

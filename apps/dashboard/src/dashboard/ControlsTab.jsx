@@ -325,7 +325,15 @@ export default function ControlsTab({
    * yet. Reading stays — a parent still needs to see where the day stands.
    */
   const childBudgetMinutes = device.child?.rules?.dailyLimitMinutes ?? null;
-  const budgetShared = Boolean(childBudgetMinutes && childBudgetMinutes > 0);
+  /*
+   * ASSIGNED, not "already has a budget" (2026-09-16). It read the latter, so
+   * a child with no budget yet got the per-device slider — a number the next
+   * report overwrites — and the only editor that could CREATE the budget was
+   * the child hub's card, which is gone: the hub now reports the figure on the
+   * Daily limit card and lands here, so here has to be able to set it from
+   * nothing.
+   */
+  const budgetShared = Boolean(device.childId && device.child);
   /*
    * How much of the budget the child has spent — summed here from the same
    * device documents on screen, never from `controls.childBudget`.
@@ -673,9 +681,16 @@ export default function ControlsTab({
             */
             <>
               <div className="limit-edit">
-                <strong>{formatMinutes(childBudgetMinutes)}</strong>
+                {/* `dash.off` when the child has no budget yet — the same word
+                    the per-device branch prints for an absent limit, rather
+                    than a dash a parent has to interpret. */}
+                <strong>
+                  {childBudgetMinutes
+                    ? formatMinutes(childBudgetMinutes)
+                    : t('dash.off')}
+                </strong>
                 <p className="hint">{t('dash.limitShared')}</p>
-                {budgetSpentMinutes !== null ? (
+                {childBudgetMinutes && budgetSpentMinutes !== null ? (
                   <p className="hint">
                     {t('dash.limitSharedSpent', {
                       used: formatMinutes(budgetSpentMinutes),

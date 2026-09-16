@@ -5,6 +5,7 @@ import {
   childUsageTotals,
 } from '@kidgate/core/domain/childUsage';
 import { USAGE_TOP_APPS_LIMIT } from '@kidgate/schema/usageDay';
+import { resolveTodayTopApps } from '@kidgate/core/domain/todayTopApps';
 import { localDayKey } from '@kidgate/core/domain/weeklyReportSchedule';
 import { usageDayRepository } from '../adapters/repositories.js';
 
@@ -162,11 +163,26 @@ export function useChildUsage(familyId, childDevices, days) {
           deviceId: device.id,
           name: device.name ?? null,
           platform: device.platform ?? null,
-          days: rows.map(row =>
-            row.date === todayKey && live > 0
-              ? { ...row, minutes: Math.max(row.minutes, live) }
-              : row,
-          ),
+          days: rows.map(row => {
+            if (row.date !== todayKey) return row;
+            /*
+             * A free family has no `usageDays` document at all since
+             * 2026-09-05 (`functions/http/packageActivity.js` gates the write
+             * on `hasPremium`), so this fold ranked nothing for today or the
+             * week while the month still held the rows written before that
+             * date. `Device.topAppsToday` is written for everyone, and
+             * `resolveTodayTopApps` is the same resolver the per-device cards
+             * already read it through.
+             */
+            const today = resolveTodayTopApps({ usageDay: row, device, todayKey });
+            return {
+              ...row,
+              minutes: Math.max(row.minutes, live),
+              ...(row.topApps.length === 0 && today.apps.length > 0
+                ? { topApps: today.apps }
+                : {}),
+            };
+          }),
         };
       }),
     // `liveKey` rather than the object, so a re-render with equal live minutes

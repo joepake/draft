@@ -39,6 +39,9 @@ import { readDeviceBattery } from '@kidgate/core/domain/battery';
 import { isAndroidLike, isDesktopLike } from '@kidgate/core/domain/platformFamily';
 import { isKidGateOwnApp } from '@kidgate/core/domain/ownApp';
 import { resolveActivityKind } from '@kidgate/core/domain/activityKind';
+import { buildAttention, buildFamilyAttention } from '../dashboard/attentionItems.js';
+import AttentionRail from '../dashboard/AttentionRail.jsx';
+import AttentionList from '../dashboard/AttentionList.jsx';
 import { getProtectionSummaryKeys } from '@kidgate/core/domain/protectionStatus';
 import { resolveLockEnforcement } from '@kidgate/core/domain/lockEnforcement';
 import { hasUnseenWeeklyReport } from '@kidgate/core/domain/weeklyReportBadge';
@@ -134,22 +137,32 @@ import ControlsTab from '../dashboard/ControlsTab.jsx';
  */
 const COMPACT_QUERY = '(max-width: 820px)';
 
-function useCompactLayout() {
-  const [compact, setCompact] = useState(
-    () => typeof window !== 'undefined' && window.matchMedia(COMPACT_QUERY).matches,
+/**
+ * Where the Attention rail fits beside the 54rem content column.
+ *
+ * Read here rather than only in CSS for the same reason as the rail's content:
+ * the parked-device banner has to MOVE — into the rail where there is one, back
+ * into the flow where there is not — and a copy in both places would be two
+ * banners answering one question on a browser mid-resize.
+ */
+const WIDE_QUERY = '(min-width: 1180px)';
+
+function useMediaQuery(query) {
+  const [matches, setMatches] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia(query).matches,
   );
   useEffect(() => {
     if (typeof window === 'undefined') return undefined;
-    const mq = window.matchMedia(COMPACT_QUERY);
-    const onChange = event => setCompact(event.matches);
+    const mq = window.matchMedia(query);
+    const onChange = event => setMatches(event.matches);
     // Not only on change: a browser resized across the breakpoint before this
     // mounted, and a device rotated during the first paint, both land here
     // with the initial value already stale.
-    setCompact(mq.matches);
+    setMatches(mq.matches);
     mq.addEventListener('change', onChange);
     return () => mq.removeEventListener('change', onChange);
-  }, []);
-  return compact;
+  }, [query]);
+  return matches;
 }
 
 /**
@@ -161,13 +174,29 @@ function deviceStatusOf(device) {
   return getEffectiveDeviceStatus(device, Date.now());
 }
 
-// No `icon` field: the bar draws words alone. Five glyphs beside five labels
-// that already named the thing cost header height and said nothing twice.
+// No `icon` field, and no bar to draw them in since 2026-09-16: the
+// control-centre grid is the navigation, the way it is on the phone, and these
+// are the five panels a card can push. The label still heads the panel it
+// opens, which is the only place one of these words is read now.
 //
 // These are about ONE DEVICE and live inside the Family section, under the
 // device a parent picked. `report` used to be the sixth and was the only one
 // that was not — it sums every device in the family — which is why it is a
 // section of its own now rather than a tab that ignored the header above it.
+/**
+ * The protection verdict's tone on the hero row.
+ *
+ * `warning` for a device that has gone quiet rather than `critical`: the level
+ * says nothing was heard, not that something was refused, and the status pill
+ * beside it already carries that fact in the register the whole page uses.
+ */
+const PROTECTION_TONE = {
+  protected: 'good',
+  warning: 'warning',
+  inactive: 'warning',
+  critical: 'critical',
+};
+
 const TABS = [
   { id: 'overview', labelKey: 'dash.tabOverview' },
   { id: 'screen', labelKey: 'dash.tabScreen' },
@@ -269,33 +298,6 @@ const PERMISSION_STATE = {
 function permissionState(value) {
   return PERMISSION_STATE[value] || PERMISSION_STATE.unknown;
 }
-
-/**
- * Issues the attention feed leaves to the part of this page that already
- * answers them — see the filter in `attention` for why each one.
- */
-const PROTECTION_ISSUES_SHOWN_ELSEWHERE = new Set(['inactive', 'web-filter-blocked']);
-
-/**
- * A glyph per issue, so the feed reads as a list of different problems rather
- * than a column of identical warning triangles. `alert` is the fallback and is
- * correct for anything new: a row with no icon of its own is still a row.
- */
-const PROTECTION_ISSUE_ICON = {
-  'screen-time': 'clock',
-  'missing-status': 'alert',
-  location: 'mapPin',
-  notifications: 'bell',
-  overlay: 'lock',
-  batteryOptimization: 'battery',
-  exactAlarm: 'clock',
-  // No accessibility glyph in `@kidgate/tokens/icons`; a hand is what the
-  // grant is about and `userCheck` is the nearest honest one.
-  accessibility: 'userCheck',
-  backgroundAppRefresh: 'refresh',
-  'consent-camera': 'camera',
-  'consent-location': 'mapPin',
-};
 
 /**
  * One permission, two names — the split `@kidgate/core/domain/protectionStatus`
@@ -748,7 +750,8 @@ export default function Dashboard({
    * way the phone opens on its Family tab.
    */
   const [section, setSection] = useState('family');
-  const compact = useCompactLayout();
+  const compact = useMediaQuery(COMPACT_QUERY);
+  const wide = useMediaQuery(WIDE_QUERY);
   /**
    * Whether the Family section is showing the child list or one device.
    *
@@ -796,6 +799,8 @@ export default function Dashboard({
     }
   }, [compact, section, supportOpen]);
   const [tab, setTab] = useState('overview');
+  /** Whether the hero's protection row has this device's items open. */
+  const [heroIssuesOpen, setHeroIssuesOpen] = useState(false);
   const [range, setRange] = useState(14);
   const [busy, setBusy] = useState(null);
   const [toast, setToast] = useState(null);
@@ -813,8 +818,6 @@ export default function Dashboard({
     );
     return () => clearTimeout(timer);
   }, [toast]);
-  /** Which attention row has its steps open. One at a time. */
-  const [fixOpen, setFixOpen] = useState(null);
   /** The PIN / QR sheet that unlocks write on this browser. */
   const [stepUpOpen, setStepUpOpen] = useState(false);
 
@@ -1062,6 +1065,15 @@ export default function Dashboard({
    */
   const back = useMemo(() => {
     if (deviceView) {
+      /*
+       * A panel is one frame deeper than the device, now that the tab bar is
+       * gone: the control-centre grid IS the navigation, the way it is on the
+       * phone, and a card pushes the panel it opens. Without this step Back
+       * would skip the device a parent was reading and land on the list.
+       */
+      if (tab !== 'overview') {
+        return { label: deviceView.name, go: () => setTab('overview') };
+      }
       const parent = deviceView.childId
         ? (children ?? []).find(item => item.id === deviceView.childId)
         : null;
@@ -1107,6 +1119,7 @@ export default function Dashboard({
     return null;
   }, [
     deviceView,
+    tab,
     childView,
     familyOpen,
     children,
@@ -1363,149 +1376,57 @@ export default function Dashboard({
     };
   }, [device, c]);
 
-  const attention = useMemo(() => {
-    if (!device || !c) return [];
-    const items = [];
-    (timeRequests[device.id] || [])
-      .filter(req => req.status === 'pending')
-      .forEach(req =>
-        items.push({
-          id: req.id,
-          tone: 'warning',
-          icon: 'clock',
-          title: t('dash.attnMoreMinutes', {
-            // The person if a parent has named one, the hardware otherwise —
-            // "Bí asked for 15 more minutes" beats "iPad asked", and neither is
-            // available for a device assigned to nobody.
-            name: device.child?.name || device.name,
-            minutes: req.requestedMinutes,
-          }),
-          meta: req.reason
-            ? t('dash.attnReason', {
-                reason: req.reason,
-                when: timeAgo(req.createdAt),
-              })
-            : timeAgo(req.createdAt),
-          action: 'review',
-        }),
-      );
-    /*
-      One action, and it is Allow — the same call the time-request row above
-      makes with `review`, which approves. Declining lives in the Controls
-      tab's card, where both answers sit side by side; this list is for the
-      one move a parent most often wants, not for a decision surface.
-    */
-    (siteRequests[device.id] || []).forEach(req =>
-      items.push({
-        id: req.id,
-        tone: 'warning',
-        icon: 'globe',
-        title: t('dash.attnSiteRequest', {
-          name: device.child?.name || device.name,
-          domain: req.domain,
-        }),
-        meta: req.reason
-          ? t('dash.attnReason', {
-              reason: req.reason,
-              when: timeAgo(req.createdAt),
-            })
-          : timeAgo(req.createdAt),
-        action: 'siteAllow',
+  /*
+   * This device's open items. The fold itself is `dashboard/attentionItems.js`
+   * — the rail beside the Family list runs the same one over every device, and
+   * two derivations of "what needs a parent" is the drift `CLAUDE.md` names.
+   */
+  const attention = useMemo(
+    () =>
+      buildAttention({
+        device,
+        t,
+        activityT,
+        timeRequests: (device && timeRequests[device.id]) || [],
+        siteRequests: (device && siteRequests[device.id]) || [],
+        checkIns: (device && checkIns[device.id]) || [],
       }),
-    );
-    (checkIns[device.id] || [])
-      .filter(ci => ci.status === 'missed')
-      .forEach(ci =>
-        items.push({
-          id: ci.id,
-          tone: 'serious',
-          icon: 'lifebuoy',
-          title: t('dash.attnCheckInMissed'),
-          meta: t('dash.attnCheckInMissedMeta', { when: timeAgo(ci.createdAt) }),
-          action: 'resend',
-        }),
-      );
-    /*
-     * Everything wrong with this device's protection, from the fold the phone
-     * reads — `@kidgate/core/domain/protectionStatus`.
-     *
-     * This page used to derive its own: denied permissions off
-     * `protectionStatus` with a local `PERMISSION_FIX_KEY` table for the fix
-     * sentence, plus `pendingConsentCopy` beside it. That was a second opinion
-     * about one question, and it was a narrower one in three ways a parent
-     * could feel — it only ever saw `denied`, so a permission that was never
-     * asked for (`notDetermined`) or refused by iOS (`restricted`) reached
-     * nobody on the web; it had one sentence where the phone has the **steps**
-     * (`hintKeys`, the ones the child's own setup screens render); and it knew
-     * nothing about the issues that come from the capability probe rather than
-     * from the checklist, which is every issue a Mac, a PC or a television can
-     * have.
-     *
-     * Two issue keys are dropped, both because this page already answers them
-     * better in their own place, and dropping them here is what keeps one
-     * answer per question:
-     *
-     * - `inactive` — the device's own status dot and its "last seen" line say
-     *   this at the top of the page, on every tab.
-     * - `web-filter-blocked` — the Web filter row on the Controls tab carries
-     *   it in this key space's own words. It is also the one issue that sets
-     *   `needsPlatformName`, and a `{{platform}}` placeholder has no app-side
-     *   label to fill it with here.
-     */
-    getProtectionSummaryKeys(device, Date.now())
-      .issues.filter(issue => !PROTECTION_ISSUES_SHOWN_ELSEWHERE.has(issue.key))
-      .forEach(issue =>
-        items.push({
-          id: `protection-${issue.key}`,
-          // `info` is an issue that costs a feature and no enforcement — a
-          // refused camera on a Mac. Listed, never dressed as a broken rule.
-          tone: issue.severity === 'info' ? 'warning' : 'critical',
-          icon: PROTECTION_ISSUE_ICON[issue.key] ?? 'alert',
-          // The app key space, through `activityT`: the same sentences the
-          // phone's issues sheet shows for the same device, already in
-          // fourteen packs.
-          title: activityT(issue.labelKey),
-          meta: activityT(issue.detailKey),
-          action: 'howToFix',
-          /*
-           * Absent for the issues nobody has written steps for — iOS Screen
-           * Time, location, the television's filter consent. The renderer
-           * falls back to the one sentence it can honestly say, which is where
-           * to go and look. Guessing a path through somebody else's Settings
-           * app costs a walk across the house and the trust in the next
-           * instruction.
-           */
-          fixKeys: issue.hintKeys,
-        }),
-      );
-    if (c.dailyLimitExceeded) {
-      items.push({
-        id: 'limit',
-        tone: 'warning',
-        icon: 'lock',
-        title: t('dash.attnLimitReached'),
-        meta: t('dash.attnLimitReachedMeta', {
-          used: formatMinutes(c.minutesUsedToday),
-        }),
-        action: 'unlock',
-      });
-    }
-    // `readDeviceBattery` rather than a threshold written here: this row said
-    // "battery low" at 25% while the reading beside the device name only went
-    // red under 20, so the page disagreed with itself about the same phone.
-    const batt = readDeviceBattery(device);
-    if (batt?.isLow) {
-      items.push({
-        id: 'batt',
-        tone: 'serious',
-        icon: 'battery',
-        level: batt.level,
-        title: t('dash.attnBatteryLow', { level: batt.level }),
-        meta: t('dash.attnBatteryLowMeta'),
-      });
-    }
-    return items;
-  }, [device, c, t, activityT, checkIns, timeRequests, siteRequests]);
+    [device, t, activityT, checkIns, timeRequests, siteRequests],
+  );
+
+  /*
+   * The hero's verdict — `@kidgate/core/domain/protectionStatus`, the same fold
+   * the phone's hero reads and the same one the rows below it come from, so the
+   * row cannot say "Protected" over a list of three problems.
+   */
+  const protectionSummary = useMemo(
+    () => (device ? getProtectionSummaryKeys(device, Date.now()) : null),
+    [device],
+  );
+
+  /* A panel opened about one machine, left open onto another's list. */
+  useEffect(() => setHeroIssuesOpen(false), [deviceId]);
+
+  /*
+   * The same question asked of the whole family, for the rail.
+   *
+   * Only the feeds that ARE family-wide go in: `familyTimeRequests` and
+   * `familyCheckIns` carry every device's rows, while site requests are
+   * subscribed per device (`useFamilyData`), so a pending domain on a machine
+   * nobody has opened is invisible here. Recorded as a gap in this app's
+   * `CLAUDE.md` rather than papered over with the open device's rows.
+   */
+  const familyAttention = useMemo(
+    () =>
+      buildFamilyAttention({
+        devices,
+        t,
+        activityT,
+        timeRequests: familyTimeRequests,
+        checkIns: familyCheckIns,
+      }),
+    [devices, t, activityT, familyTimeRequests, familyCheckIns],
+  );
 
   /*
    * The per-app breakdown lives on `usageDays/{date}`, never on the device
@@ -1902,6 +1823,72 @@ export default function Dashboard({
   );
   const blockedTotal = blockedByCategory.reduce((s, [, v]) => s + v, 0);
 
+  /*
+   * Where the Attention rail is drawn: every section and every depth, wherever
+   * the page is wide enough to hold a third column.
+   *
+   * It was the Family section's alone at first, on the argument that an open
+   * device already carries its own items. That argument holds for the rows and
+   * not for the column — what needs a parent does not stop being true while
+   * they read a report, and a rail that appeared and vanished as they walked
+   * the stack moved the page under them on every step. The overlap with a
+   * device's own Attention card is a device's items inside the family's, which
+   * is what a rail beside a page is for.
+   */
+  const railOpen = wide;
+
+  /*
+   * What a rail row's button does, and it is the device card's own wiring —
+   * that card was the only place a time request could be approved on this
+   * surface, so removing it moved the answers here rather than dropping them.
+   *
+   * `sourceId`, never the row's `id`: the rail prefixes ids with the device to
+   * keep two phones' identical protection issues apart, and the endpoints take
+   * the document's own id. The busy key stays the prefixed one — it is a spinner
+   * on a row, not an argument.
+   */
+  const runAttentionAction = (item, known = null) => {
+    // The hero passes the machine it is about; a rail row names one instead.
+    const target = known ?? devices.find(d => d.id === item.deviceId);
+    if (!live || !target) return;
+    // A hero row is the device's own, so its id IS the document's.
+    const documentId = item.sourceId ?? item.id;
+    if (item.action === 'review') {
+      run(
+        item.id,
+        () => actions.resolveTimeRequest(documentId, true),
+        t('dash.toastTimeApproved'),
+      );
+    } else if (item.action === 'siteAllow') {
+      run(
+        item.id,
+        () => actions.resolveSiteRequest(documentId, true),
+        t('dash.toastSiteAllowed'),
+      );
+    } else if (item.action === 'resend') {
+      run(item.id, () => actions.sendCheckIn(target), t('dash.toastCheckInResent'));
+    } else if (item.action === 'unlock') {
+      run(item.id, () => actions.setLock(target.id, false));
+    }
+  };
+
+  /*
+   * One banner, rendered in one of two places. On the free plan a family is
+   * parked for months, so this is a state rather than a question — the rail is
+   * where a state belongs; in the flow it pushed the list down on every visit.
+   */
+  const parkedBanner =
+    parking.parked.length > 0 && section !== 'report' ? (
+      <ParkedDevicesCard
+        devices={devices}
+        parking={parking}
+        canWrite={canWrite}
+        busy={busy === 'monitored'}
+        onChoose={chooseMonitored}
+        onOpen={() => setMonitoredSheetOpen(true)}
+      />
+    ) : null;
+
   return (
     <div className="dash">
       <aside className="dash-side">
@@ -1924,9 +1911,9 @@ export default function Dashboard({
 
           Five on a rail, four on a bottom bar — see `SUPPORT_SECTION`.
 
-          A glyph beside each label, unlike `.dash-tabs`, which draws words
-          alone: this bar is also the phone-width bottom bar, where the icon is
-          what stays legible once the label is two lines of Vietnamese.
+          A glyph beside each label: this bar is also the phone-width bottom
+          bar, where the icon is what stays legible once the label is two lines
+          of Vietnamese.
         */}
         <nav className="side-nav" aria-label={t('dash.manage')}>
           {(compact ? COMPACT_SECTIONS : SECTIONS).map(item => (
@@ -1969,13 +1956,12 @@ export default function Dashboard({
                   title={t('dash.tabReportNew')}
                 />
               )}
-              {/* No Attention count beside Family, deliberately. `attention` is
-                  one device's open items — it returns `[]` with no device
-                  resolved — so a number here would count whichever device was
-                  last opened and call it the family's, and it would keep
-                  counting it while a parent stood in Activity or Settings. It
-                  stays on the Overview tab, under the device it is about. A
-                  family-level count needs a family-level derivation first. */}
+              {/* No Attention count beside Family, deliberately. The rail says
+                  it in words one column away, and a badge that counted the
+                  family's open items would keep counting them at a parent
+                  standing in Activity or Settings — sections those items are
+                  not about. `familyAttention` exists now; putting a number on
+                  this menu is still a separate decision. */}
             </button>
           ))}
         </nav>
@@ -2049,8 +2035,14 @@ export default function Dashboard({
                 </p>
               )}
               <h1>
+                {/* A panel is a pushed screen now that the tab bar is gone, so
+                    the heading is the panel's own name and the Back button
+                    beside it carries the device's — the phone's stack, where
+                    the title always names what is on screen. */}
                 {deviceView
-                  ? deviceView.name
+                  ? tab === 'overview'
+                    ? deviceView.name
+                    : t(TABS.find(item => item.id === tab)?.labelKey ?? 'dash.manage')
                   : childView
                     ? childView.name
                     : /* Compact only: the page is inside Settings, and the
@@ -2117,98 +2109,155 @@ export default function Dashboard({
         </header>
 
         {/*
-          The left menu asks which section; this row asks what about the device
-          a parent opened. It only exists inside one, which is why it is gated
-          rather than merely empty — a tab bar over a child list is a second
-          navigation for a page that has nothing for it to steer.
-
-          Sticky, because the nav was on screen at any scroll depth while it
-          lived in the rail and a tab bar that scrolls away is a worse nav than
-          the one it replaced.
+          No tab bar. The control-centre grid below is the navigation — the
+          shape `apps/mobile`'s device detail has, where a card pushes the
+          screen it opens and Back pops it. The bar was a second navigation for
+          the same material: five words at the top of the pane, and under them a
+          grid of cards landing on those same five panels.
         */}
-        {deviceView && (
-          <nav className="dash-tabs" aria-label={t('dash.manage')}>
-            {visibleTabs.map(item => (
-              <button
-                key={item.id}
-                className={`nav-item${tab === item.id ? ' is-active' : ''}`}
-                onClick={() => setTab(item.id)}
-                /* Which tab is showing, said to a screen reader as well as in
-                   the brand ground the stylesheet fills the chip with. */
-                aria-current={tab === item.id ? 'page' : undefined}
-              >
-                {t(item.labelKey)}
-                {/* A bare figure beside "Overview" says nothing about what was
-                    counted. `cardAttentionSub` is the sentence the Overview
-                    card itself uses for the same number. It is this device's
-                    count, which is why it is on this bar and not the menu. */}
-                {item.id === 'overview' && attention.length > 0 && (
-                  <span
-                    className="nav-badge"
-                    title={t('dash.cardAttentionSub', { count: attention.length })}
-                  >
-                    {attention.length}
-                  </span>
-                )}
-              </button>
-            ))}
-          </nav>
-        )}
 
         {/*
-          Under the bar, not above it: these are the pane's first line rather
-          than the title's last. In the header they were a third row inside a
-          block that already ran four deep, and none of the three facts is one
-          a parent reads before choosing a tab.
+          The hero — the phone's `DeviceDetailHero`, drawn in a browser.
 
-          Two lines still, when there is enough to fill both: is it working and
-          is it here — read at a glance — then the ones a parent reads
-          deliberately, and only once something looks wrong.
+          It was two grey paragraphs under the title: a status pill, an OS, a
+          "last active", then a battery and a build on a second line. Every fact
+          was there and none of them was looked at, because a page about one
+          machine opened with a run of 13px text and then a grid of cards.
+
+          What the phone does and this now does too: the machine gets a face —
+          its own glyph, the status beside it, the battery as a chip, and the
+          protection verdict as a row a parent can open. What it deliberately
+          does NOT repeat is the name: the header above already carries the
+          child and the device, and the phone's hero is the only title on its
+          screen.
         */}
         {deviceView && (
-          <p className="dash-top-facts">
-            {/* `deviceStatusOf`, never the stored `status` — the same rule the
-                sidebar dot follows. This header read the field straight off the
-                document, and `setDeviceLock` used to write `'online'` into it
-                on every unlock, so a machine dead for a week said Online here
-                for as long as the row existed. */}
-            <StatusPill status={deviceStatusOf(device)} device={device} />
-            <span className="dot-sep">·</span>
-            {osLabel(device.platform, device.osVersion)}
-            {/* One "last seen", worded by the plan.
+          <section className="card dev-hero">
+            <div className="dev-hero-top">
+              <span
+                className={`dev-hero-glyph tone-${STATUS_TONE[deviceStatusOf(device)] ?? 'muted'}`}
+              >
+                <Icon name={deviceIconName(device)} size={24} />
+              </span>
+              <div className="dev-hero-facts">
+                <p className="dash-top-facts">
+                  {/* `deviceStatusOf`, never the stored `status` — the same rule
+                      the sidebar dot follows. This header read the field
+                      straight off the document, and `setDeviceLock` used to
+                      write `'online'` into it on every unlock, so a machine dead
+                      for a week said Online here for as long as the row
+                      existed. */}
+                  <StatusPill status={deviceStatusOf(device)} device={device} />
+                  <span className="dot-sep">·</span>
+                  {osLabel(device.platform, device.osVersion)}
+                  {/* One "last seen", worded by the plan.
 
-                A free device is on the thirty-minute beat, so this line is
-                routinely old on a machine that is working perfectly, and
-                "Last active 52 minutes ago" beside a green Online pill reads as
-                a fault. The app pack's sentence names the plan instead — the
-                same one the phone's family card carries, no `dash.*` twin
-                (`docs/PRICING.md` §8 item 7). It **states the age and does not
-                promise a cadence**: a laptop that sleeps reports nothing at
-                all, and a card claiming "every 30 minutes" over an hour-old
-                reading was the first version of this and was wrong within a
-                day. */}
-            {device.lastActiveAt && (
+                      A free device is on the thirty-minute beat, so this line is
+                      routinely old on a machine that is working perfectly, and
+                      "Last active 52 minutes ago" beside a green Online pill
+                      reads as a fault. The app pack's sentence names the plan
+                      instead — the same one the phone's family card carries, no
+                      `dash.*` twin (`docs/PRICING.md` §8 item 7). It **states
+                      the age and does not promise a cadence**: a laptop that
+                      sleeps reports nothing at all, and a card claiming "every
+                      30 minutes" over an hour-old reading was the first version
+                      of this and was wrong within a day. */}
+                  {device.lastActiveAt && (
+                    <>
+                      <span className="dot-sep">·</span>
+                      {slowBeatMinutes(device.beatIntervalMs) !== null
+                        ? activityT('family.freeTierCadenceHint', {
+                            date: timeAgo(device.lastActiveAt),
+                          })
+                        : t('dash.lastActive', {
+                            when: timeAgo(device.lastActiveAt),
+                          })}
+                    </>
+                  )}
+                </p>
+                {/* Settings reached, battery, build — the ones a parent reads
+                    deliberately, and only once something looks wrong. They keep
+                    their own line here at any count: the hero has the room the
+                    bare header did not, so the rule about a lone fact joining
+                    the row above went with the paragraphs. */}
+                {quietFacts.length > 0 && (
+                  <p className="dash-top-facts dash-top-facts-quiet">{quietFacts}</p>
+                )}
+              </div>
+            </div>
+
+            {/*
+              The protection verdict, and the way into what is wrong with it.
+
+              `getProtectionSummaryKeys` is the phone's own fold, so the two
+              consoles cannot grade the same television differently. Open, it
+              lists this device's items through the same renderer the rail uses
+              — which is also what keeps them reachable under 1180px, where
+              there is no rail at all.
+
+              A device with nothing wrong still draws the row: "Protected" is
+              the answer a parent came for, and a verdict that only appears when
+              it is bad teaches them to read its absence.
+            */}
+            {protectionSummary && (
               <>
-                <span className="dot-sep">·</span>
-                {slowBeatMinutes(device.beatIntervalMs) !== null
-                  ? activityT('family.freeTierCadenceHint', {
-                      date: timeAgo(device.lastActiveAt),
-                    })
-                  : t('dash.lastActive', { when: timeAgo(device.lastActiveAt) })}
+                <button
+                  className={`dev-hero-protect tone-${PROTECTION_TONE[protectionSummary.level] ?? 'muted'}`}
+                  aria-expanded={heroIssuesOpen}
+                  disabled={attention.length === 0}
+                  onClick={() => setHeroIssuesOpen(open => !open)}
+                >
+                  <span className="dev-hero-protect-icon">
+                    <Icon
+                      name={
+                        protectionSummary.level === 'protected'
+                          ? 'shieldCheck'
+                          : 'shieldAlert'
+                      }
+                      size={16}
+                    />
+                  </span>
+                  <span className="dev-hero-protect-body">
+                    <strong>{activityT(protectionSummary.titleKey)}</strong>
+                    <em>{activityT(protectionSummary.subtitleKey)}</em>
+                  </span>
+                  {attention.length > 0 && (
+                    /* `chevronRight` turned by the stylesheet: there is no
+                       up/down pair in `@kidgate/tokens/icons`, and inventing
+                       one here would be a second drawing of a glyph the phone
+                       renders from the same file. */
+                    <span
+                      className={`dev-hero-protect-count${heroIssuesOpen ? ' is-open' : ''}`}
+                      /* What the number counts, because the words beside it
+                         count something else: the verdict is about protection
+                         and this is every open item on the machine, so a green
+                         "Protected · 1" is two true facts and needs to say
+                         which is which. Same sentence the rail's subtitle
+                         uses. */
+                      title={t('dash.cardAttentionSub', { count: attention.length })}
+                    >
+                      {attention.length}
+                      <Icon name="chevronRight" size={14} />
+                    </span>
+                  )}
+                </button>
+                {heroIssuesOpen && attention.length > 0 && (
+                  <AttentionList
+                    items={attention}
+                    appT={activityT}
+                    /* The device is known here, so the row's raw id is the
+                       document's own — `runAttentionAction` takes the machine
+                       rather than looking one up by a row that has no
+                       `deviceId`. */
+                    onAction={item => runAttentionAction(item, device)}
+                    busyId={busy}
+                    readOnly={live && !canWrite}
+                    className="dev-hero-issues"
+                  />
+                )}
               </>
             )}
-            {/* A lone quiet fact joins this row rather than standing as a line
-                of its own — `quietFacts` says why. */}
-            {quietFacts.length === 1 && (
-              <>
-                <span className="dot-sep">·</span>
-                {quietFacts[0]}
-              </>
-            )}
-          </p>
-        )}
-        {deviceView && quietFacts.length > 1 && (
-          <p className="dash-top-facts dash-top-facts-quiet">{quietFacts}</p>
+          </section>
         )}
 
         {live && !canWrite && (
@@ -2249,16 +2298,7 @@ export default function Dashboard({
           a confirm button over every screen kept asking a question that had
           already been answered. The sheet is one click away.
         */}
-        {parking.parked.length > 0 && section !== 'report' && (
-          <ParkedDevicesCard
-            devices={devices}
-            parking={parking}
-            canWrite={canWrite}
-            busy={busy === 'monitored'}
-            onChoose={chooseMonitored}
-            onOpen={() => setMonitoredSheetOpen(true)}
-          />
-        )}
+        {!railOpen && parkedBanner}
 
         {/*
           The same card over the page while nothing at all is reporting. It
@@ -2284,10 +2324,12 @@ export default function Dashboard({
           deviceDetailActions`, the phone's own list moved up, so neither
           console can grow a card the other does not have.
 
-          The tab bar below is not a second navigation for it: a card lands a
-          panel, and the bar is how a parent gets back to another one.
+          It IS the navigation, which is why it is gated on the device's own
+          frame: a card pushes a panel, Back pops it, and the grid is what a
+          parent returns to. Drawn above an open panel as well, it was a menu
+          repeating the screen already below it.
         */}
-        {deviceView && (
+        {deviceView && tab === 'overview' && (
           <ControlCenter
             device={deviceView}
             facts={controlFacts}
@@ -2805,121 +2847,11 @@ export default function Dashboard({
               </div>
 
               <div>
-                <Card
-                  title={t('dash.cardAttention')}
-                  subtitle={t('dash.cardAttentionSub', { count: attention.length })}
-                >
-                  {attention.length === 0 ? (
-                    <p className="empty">{t('dash.cardAttentionEmpty')}</p>
-                  ) : (
-                    <ul className="attn">
-                      {attention.map(a => (
-                        <li key={a.id} className={`tone-${a.tone}`}>
-                          <span className="attn-icon">
-                            {/* `level` is the battery row's alone; every other
-                                item leaves it undefined and draws as before. */}
-                            <Icon name={a.icon} size={16} level={a.level} />
-                          </span>
-                          <span className="attn-body">
-                            <strong>{a.title}</strong>
-                            <em>{a.meta}</em>
-                          </span>
-                          {a.action && (
-                            <button
-                              className="btn btn-sm"
-                              // Resending a Check-In is a plain Firestore write the
-                              // rules already allow, so it stays available to a
-                              // view-only session; the rest need the phone. So do
-                              // the steps for a denied permission: they are text,
-                              // and a parent who cannot write still has to read
-                              // them to fix the device in their hand.
-                              disabled={
-                                live &&
-                                !canWrite &&
-                                a.action !== 'resend' &&
-                                a.action !== 'howToFix'
-                              }
-                              title={
-                                live &&
-                                !canWrite &&
-                                a.action !== 'resend' &&
-                                a.action !== 'howToFix'
-                                  ? t('dash.attnAppOnly')
-                                  : undefined
-                              }
-                              aria-expanded={
-                                a.action === 'howToFix' ? fixOpen === a.id : undefined
-                              }
-                              onClick={() => {
-                                // Reads its own state and writes nothing, so it
-                                // works in a rendering with no data layer too.
-                                if (a.action === 'howToFix') {
-                                  setFixOpen(fixOpen === a.id ? null : a.id);
-                                  return;
-                                }
-                                if (!live) return;
-                                if (a.action === 'review') {
-                                  run(
-                                    a.id,
-                                    () => actions.resolveTimeRequest(a.id, true),
-                                    t('dash.toastTimeApproved'),
-                                  );
-                                } else if (a.action === 'siteAllow') {
-                                  run(
-                                    a.id,
-                                    () => actions.resolveSiteRequest(a.id, true),
-                                    t('dash.toastSiteAllowed'),
-                                  );
-                                } else if (a.action === 'resend') {
-                                  run(
-                                    a.id,
-                                    () => actions.sendCheckIn(device),
-                                    t('dash.toastCheckInResent'),
-                                  );
-                                } else if (a.action === 'unlock') {
-                                  run(a.id, () => actions.setLock(device.id, false));
-                                }
-                              }}
-                            >
-                              {busy === a.id
-                                ? '…'
-                                : t(
-                                    {
-                                      review: 'dash.attnReview',
-                                      siteAllow: 'dash.siteRequestAllow',
-                                      resend: 'dash.attnResend',
-                                      howToFix: 'dash.attnHowToFix',
-                                      unlock: 'dash.attnUnlock',
-                                    }[a.action],
-                                  )}
-                            </button>
-                          )}
-                          {fixOpen === a.id &&
-                            (a.fixKeys ? (
-                              /* Steps carried on the item: a walk through a
-                                 screen, numbered, rather than one sentence
-                                 about a switch. */
-                              <ol className="attn-fix">
-                                {a.fixKeys.map(key => (
-                                  <li key={key}>{activityT(key)}</li>
-                                ))}
-                              </ol>
-                            ) : (
-                              /* No steps written for this one. The row's own
-                                 `meta` already says what is wrong, so the only
-                                 thing left to add is where to go — never a
-                                 guessed path through somebody else's Settings
-                                 app. */
-                              <p className="attn-fix">
-                                {activityT('protection.openKidGateOnChildPhone')}
-                              </p>
-                            ))}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </Card>
-
+                {/* The Attention card stood here until 2026-09-16. It is the
+                    rail's list now — one place per question, and the rail is on
+                    screen on every section rather than one tab deep. The count
+                    stays as a tile above, which is a reading rather than a
+                    second copy of the rows. */}
                 {/* Only the phone apps sync a permission checklist; a Mac or
                     PC never writes one, and an empty card with a blank
                     "last checked" would read as something being wrong. */}
@@ -3962,6 +3894,27 @@ export default function Dashboard({
           />
         )}
       </main>
+
+      {/*
+        The third column, and it is a column of the page's own grid rather than
+        something floating over the content: the pane is capped at 54rem for
+        readability and the cap left the right third of a desk browser empty.
+      */}
+      {railOpen && (
+        <AttentionRail
+          items={familyAttention}
+          banner={parkedBanner}
+          appT={activityT}
+          onAction={runAttentionAction}
+          busyId={busy}
+          readOnly={live && !canWrite}
+          onOpenDevice={id => {
+            setDeviceId(id);
+            setTab('overview');
+            setDeviceOpen(true);
+          }}
+        />
+      )}
     </div>
   );
 }
