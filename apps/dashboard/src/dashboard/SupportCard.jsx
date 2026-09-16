@@ -30,6 +30,11 @@ export default function SupportCard({
   familyId,
   familyName,
   appT,
+  /* Off where this card IS the section: the page heading above it already says
+     "Requests & reports", and saying it twice made the form below read as
+     something else's. The open count stays either way — it is the subtitle,
+     and the heading does not carry it. */
+  titled = true,
 }) {
   const { t, language } = useT();
   const [reports, setReports] = useState([]);
@@ -84,7 +89,7 @@ export default function SupportCard({
 
   return (
     <Card
-      title={appT('supportReports.title')}
+      title={titled ? appT('supportReports.title') : null}
       subtitle={
         reports.length > 0
           ? appT('supportReports.subtitleCount', { count: open })

@@ -3668,7 +3668,7 @@ ol.attn-fix li + li {
   }
 
   /*
-   * A tab, not a row: glyph over label, four equal shares of the width. The
+   * A tab, not a row: glyph over label, equal shares of the width. The
    * leading-edge bar that marks a selected row in a column would be a hairline
    * down the side of a tab, so the active tab is the brand-tinted ground and
    * the brand-coloured glyph instead — what the phone does.
@@ -3697,6 +3697,15 @@ ol.attn-fix li + li {
     font-size: var(--dash-text-1);
     font-weight: 600;
     line-height: 1.15;
+    /* Two lines, then an ellipsis. A fifth of 375px is 75px, and the longest
+       section name ("Yêu cầu & báo cáo sự cố") wraps to four lines there —
+       which makes the bar twice its height and pushes the page under it. The
+       glyph beside a truncated word is what the phone leans on for the same
+       reason. */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
   }
 
   /* On a tab the badge cannot sit after the label — it would push a two-line
@@ -4618,16 +4627,40 @@ ol.attn-fix li + li {
   line-height: 1.5;
 }
 
+/*
+ * The title wraps at this width — "MacBook is now the reporting device" is two
+ * lines in a 24rem sheet — and a crown centred on a two-line heading sits
+ * beside the gap between the lines rather than beside the sentence. It belongs
+ * on the first line, which is what `flex-start` plus the optical nudge gives.
+ *
+ * The margins go because `.sheet` is a grid with its own `gap`: the browser's
+ * default `h2` margin, that gap and `.hint`'s `margin-top` stacked to ~44px
+ * between the title and the line explaining it, which read as two unrelated
+ * blocks. The size drops to the scale's step-5 for the same reason
+ * `.sheet-title` is step-4 — an unstyled `h2` is 1.5em of the page's 15px and
+ * was the largest type on the dashboard.
+ */
 .parked-card h2 {
   display: flex;
-  align-items: center;
-  gap: 0.35rem;
+  align-items: flex-start;
+  gap: 0.4rem;
+  margin: 0;
+  font-size: var(--dash-text-5);
+  line-height: 1.35;
+}
+
+.parked-card h2 > .icon {
+  margin-top: 0.22rem;
+}
+
+.parked-card > .hint {
+  margin-top: 0;
 }
 
 .parked-options {
   display: grid;
   gap: 0.35rem;
-  margin: 0.75rem 0;
+  margin: 0;
 }
 
 .parked-option {
@@ -4638,6 +4671,14 @@ ol.attn-fix li + li {
   border-radius: var(--kg-radius-md);
   border: 1px solid var(--kg-border);
   cursor: pointer;
+}
+
+/* A long device name must not eat the status it is being compared against —
+   `DESKTOP-NEQUQ1U` is already wider than the column at this sheet width. */
+.parked-option > .icon,
+.parked-option > input,
+.parked-option > .pill {
+  flex-shrink: 0;
 }
 
 .parked-option.is-checked {
@@ -4654,19 +4695,33 @@ ol.attn-fix li + li {
   font-weight: 700;
 }
 
+/*
+ * Stacked, not a wrapping row. The sheet is `min(24rem, 100%)` at every size,
+ * so the row never had the width to sit side by side: it wrapped on every
+ * screen, leaving a half-width button with the hint under it starting at a
+ * different left edge than the button's own label. One column lines both up
+ * with the radios above them.
+ */
 .parked-actions {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  flex-wrap: wrap;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.parked-actions .btn {
+  width: 100%;
 }
 
 .parked-actions .hint {
   display: flex;
-  align-items: center;
-  gap: 0.25rem;
+  align-items: flex-start;
+  gap: 0.35rem;
   margin: 0;
   font-size: var(--dash-text-2);
+}
+
+/* The sentence wraps; the phone beside it marks the first line. */
+.parked-actions .hint > .icon {
+  margin-top: 0.2rem;
 }
 
 .plan-pill.is-premium {

@@ -171,14 +171,19 @@ const TABS = [
  * twin, so the two can never disagree about what a section is called; the
  * namespace is opened for the web in `packages/i18n/src/activityFeed.ts`.
  *
- * The phone's bar is capped at four by a 375pt screen. This one is not, and it
- * still carries four: the cap is what forced the phone to decide what the top
- * level *is*, and that decision is the part worth sharing.
+ * The phone's bar is capped at four by a 375pt screen. This one is not, which
+ * is the one place the two are allowed to differ: Requests & reports is a fifth
+ * here. On the phone it is a row inside Settings because there is no fifth slot
+ * to give it; a laptop has the width, and a parent waiting on a reply should
+ * not have to open Settings to find the thread. Its label is the card's own key
+ * rather than a `nav.*` twin — one string, already translated, so the menu and
+ * the heading it opens cannot disagree.
  */
 const SECTIONS = [
   { id: 'family', labelKey: 'nav.family', icon: 'home' },
   { id: 'activity', labelKey: 'nav.activities', icon: 'activity' },
   { id: 'report', labelKey: 'nav.reports', icon: 'chart' },
+  { id: 'support', labelKey: 'supportReports.title', icon: 'lifebuoy' },
   { id: 'settings', labelKey: 'nav.settings', icon: 'settings' },
 ];
 
@@ -1497,7 +1502,7 @@ export default function Dashboard({
         </div>
 
         {/*
-          The four sections, and nothing else. The child list used to be here
+          The five sections, and nothing else. The child list used to be here
           and is the Family section's own content now: the rail asked "which
           device" at the same level as the page asked "what about the family",
           so a parent read one column that answered two questions — the same
@@ -1939,6 +1944,42 @@ export default function Dashboard({
               live={live}
               appT={activityT}
             />
+
+            {/* The other people in the family, under the family they belong to.
+                They sat in Settings, which asked a parent to look for "who else
+                is in this family" two sections away from the only screen that
+                lists the family — the same defect that moved the family's own
+                name here.
+
+                Nothing at all for a joined co-parent: inviting, approving and
+                removing are the owner's, the same rule the phone's Family
+                screen applies. */}
+            {live && actions?.isOwner && (
+              <Card title={t('dash.parents', { count: family.parents.length })}>
+                <ParentsCard
+                  members={family.members ?? []}
+                  actions={actions}
+                  run={run}
+                  busy={
+                    busy === 'parent-invite' ||
+                    busy === 'parent-join' ||
+                    busy === 'parent-remove'
+                  }
+                />
+              </Card>
+            )}
+
+            {/* For both roles — the rules and the phone let a joined co-parent
+                name one — and its title is the app pack's, the words the
+                phone's Settings row says. */}
+            {live && familyId && (
+              <Card
+                title={activityT('sos.trustedContactsTitle')}
+                subtitle={activityT('sos.trustedContactsRowSubtitle')}
+              >
+                <TrustedContactsCard familyId={familyId} />
+              </Card>
+            )}
           </section>
         )}
 
@@ -1999,51 +2040,38 @@ export default function Dashboard({
           />
         )}
 
+        {/* A section of its own, not a card at the bottom of Settings. It is
+            the only place on the page a parent is waiting to be answered —
+            everything else here is a control they operate — and a thread with
+            a reply on it should be reachable by the same click that tells them
+            there is one. */}
+        {section === 'support' && (
+          <SupportCard
+            accountId={accountId}
+            accountEmail={accountEmail}
+            familyId={familyId}
+            familyName={family.name}
+            appT={activityT}
+            titled={false}
+          />
+        )}
+
         {section === 'settings' && (
           <section className="settings-home">
             {/*
-              The plan first, then the people, then the contacts — the phone's
-              own order on its Settings tab. What is deliberately NOT here:
-              anything about this browser rather than about the family. The
-              language picker, the palette and Sign out live in the rail's
-              footer and are rendered there once; on a phone-width screen the
-              rail is a bottom bar with no footer, so the same block is handed
-              to this section instead (`sideFooter`, below) rather than drawn
-              twice and allowed to disagree.
+              What is left once the people moved to Family and the support
+              thread became a section: the plan, this account's notifications,
+              the account itself. What is deliberately NOT here: anything about
+              this browser rather than about the family. The language picker,
+              the palette and Sign out live in the rail's footer and are
+              rendered there once; on a phone-width screen the rail is a bottom
+              bar with no footer, so the same block is handed to this section
+              instead (`sideFooter`, below) rather than drawn twice and allowed
+              to disagree.
             */}
             <Card title={activityT('plans.title')}>
               <PlanCard plan={family.plan} trialStartedAt={family.trialStartedAt} />
             </Card>
-
-            {/* Nothing at all for a joined co-parent: inviting, approving and
-                removing are the owner's, the same rule the phone's Family
-                screen applies. */}
-            {live && actions?.isOwner && (
-              <Card title={t('dash.parents', { count: family.parents.length })}>
-                <ParentsCard
-                  members={family.members ?? []}
-                  actions={actions}
-                  run={run}
-                  busy={
-                    busy === 'parent-invite' ||
-                    busy === 'parent-join' ||
-                    busy === 'parent-remove'
-                  }
-                />
-              </Card>
-            )}
-
-            {/* For both roles — the rules and the phone let a joined co-parent
-                name one — and its title is the app pack's, the words the
-                phone's Settings row says. */}
-            {live && familyId && (
-              <Card
-                title={activityT('sos.trustedContactsTitle')}
-                subtitle={activityT('sos.trustedContactsRowSubtitle')}
-              >
-                <TrustedContactsCard familyId={familyId} />
-              </Card>
-            )}
 
             {/* Push preferences for the account's own phones. Renders nothing
                 for a co-parent, whose devices live under their own root. */}
@@ -2053,14 +2081,6 @@ export default function Dashboard({
               appT={activityT}
               canWrite={canWrite}
               live={live}
-            />
-
-            <SupportCard
-              accountId={accountId}
-              accountEmail={accountEmail}
-              familyId={familyId}
-              familyName={family.name}
-              appT={activityT}
             />
 
             <AccountCard

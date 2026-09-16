@@ -14,6 +14,21 @@
       "runtimeArgs": ["--prefix", "apps/dashboard", "run", "run:dev"],
       "port": 5173,
       "autoPort": true
+    },
+    {
+      "name": "dashboard-prod",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "apps/dashboard",
+        "run",
+        "run:prod",
+        "--",
+        "--port",
+        "5180"
+      ],
+      "port": 5180,
+      "autoPort": false
     }
   ]
 }
