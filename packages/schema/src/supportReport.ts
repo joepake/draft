@@ -122,15 +122,62 @@ export interface SupportReport {
   /** Absent means `'pending'` — see `SupportReportStatus`. */
   status?: SupportReportStatus;
   /**
-   * The operator's reply, written alongside a `status` move to `resolved` (or
-   * earlier, if they want to say something while still `in_review`). Never
-   * written by a client — `firestore.rules` refuses client `update` on this
-   * document the same way it always has.
+   * The operator's LATEST reply, and the whole of the conversation on every
+   * report filed before `messages` existed.
+   *
+   * Kept written alongside `messages` rather than retired: `functions/admin`
+   * reads it, the reply push is built from it, and a console that only knows
+   * this field must keep working. `foldSupportThread` in
+   * `@kidgate/core/domain/supportThread` is what turns either shape into one
+   * list — never read this field directly to render a thread.
+   *
+   * Never written by a client: `firestore.rules` refuses client `update` on
+   * this document the same way it always has.
    */
   response?: string;
   /** Set whenever `status` or `response` last changed. */
   respondedAt?: string;
+  /**
+   * The conversation after the opening report, oldest first.
+   *
+   * The opening report stays in `message` and is NOT duplicated here — it is
+   * the one field every report has had since the beginning, and copying it
+   * into the array would give two sources for the same sentence.
+   * `foldSupportThread` puts it back at the head so a screen renders one list.
+   *
+   * Absent on every report filed before 2026-09-17, which is why absent has to
+   * read as "the conversation is whatever `response` says", not as "empty".
+   *
+   * **Appended only through `appendSupportMessage` or the admin endpoint**,
+   * both Admin SDK. A parent cannot reach it: `allow update: if false` still
+   * holds, and it holds for this array too — a client able to write here could
+   * edit what the operator said to them.
+   */
+  messages?: SupportMessage[];
 }
+
+/** Who wrote a line in a support thread. */
+export type SupportMessageAuthor = 'parent' | 'operator';
+
+export interface SupportMessage {
+  /** Unique within the report. Generated server-side. */
+  id: string;
+  from: SupportMessageAuthor;
+  body: string;
+  /** ISO 8601, server-stamped — a client clock decides nothing here. */
+  at: string;
+}
+
+/**
+ * The ceiling on one thread, counted over `messages` alone.
+ *
+ * A support ticket that has run past this is a conversation that belongs
+ * somewhere else, and an unbounded array in a document read on every list
+ * render is the shape that quietly stops loading. The server refuses the
+ * append rather than trimming: dropping the oldest line silently would delete
+ * something a customer can quote back.
+ */
+export const SUPPORT_THREAD_MAX_MESSAGES = 50;
 
 /**
  * `users/{userId}/supportReports/{reportId}/{index}.jpg`.

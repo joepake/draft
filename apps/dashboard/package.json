@@ -4,8 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "run:dev": "vite --mode dev --port 5173",
-    "run:prod": "vite --mode prod --port 5173",
+    "run:dev": "vite --mode dev",
+    "run:prod": "vite --mode prod",
     "build:prod": "vite build --mode prod",
     "build:dev": "vite build --mode dev",
     "preview": "vite preview --port 5173",

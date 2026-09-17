@@ -2,6 +2,10 @@ import { useEffect, useMemo, useState } from 'react';
 import Icon from '@kidgate/web-ui/Icon';
 import { useT } from '@kidgate/web-ui/useT';
 import { SUPPORT_REPORT_MAX_MESSAGE_LENGTH } from '@kidgate/schema/supportReport';
+import {
+  foldSupportThread,
+  supportReplyBlock,
+} from '@kidgate/core/domain/supportThread';
 import { userRepository } from '../adapters/repositories.js';
 import Card from './Card.jsx';
 import { timeAgo } from './timeAgo.js';
@@ -52,6 +56,44 @@ export default function SupportCard({
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState(null);
   const [expanded, setExpanded] = useState(null);
+  /* One draft, not one per report: only the expanded report has a box, and
+     carrying a map of drafts would keep text for rows nobody can see. Cleared
+     on every open/close for the same reason. */
+  const [replyDraft, setReplyDraft] = useState('');
+  const [replyBusy, setReplyBusy] = useState(false);
+
+  /**
+   * Append one line to a ticket the parent already filed.
+   *
+   * The listener re-delivers the document, so nothing is written into local
+   * state here — the thread on screen is always what the server stored, which
+   * is what keeps a failed send from leaving a line that was never saved.
+   */
+  const sendReply = async reportId => {
+    const body = replyDraft.trim();
+    if (!body) return;
+    setReplyBusy(true);
+    setError(null);
+    try {
+      await userRepository.appendSupportMessage(reportId, body);
+      setReplyDraft('');
+    } catch (failure) {
+      /* A KEY, never a sentence — `error` is rendered through `appT` below,
+         the same shape the file's own submit handler uses.
+
+         The box is hidden on a resolved ticket, so a 409 here is the race:
+         the operator closed it while the parent was typing. Naming that one
+         is worth it — the generic failure would invite a retry that cannot
+         succeed. */
+      setError(
+        failure?.serverCode === 'supportThread/resolved'
+          ? 'supportReports.replyClosed'
+          : (failure?.messageKey ?? null),
+      );
+    } finally {
+      setReplyBusy(false);
+    }
+  };
 
   useEffect(() => {
     if (!accountId) return undefined;
@@ -143,9 +185,13 @@ export default function SupportCard({
                   className="support-head"
                   aria-expanded={isOpen}
                   title={appT('supportReports.expandHint')}
-                  onClick={() =>
-                    setExpanded(current => (current === report.id ? null : report.id))
-                  }
+                  onClick={() => {
+                    // A draft belongs to the row it was typed in; carrying it
+                    // to the next report would put one ticket's words in
+                    // another's box.
+                    setReplyDraft('');
+                    setExpanded(current => (current === report.id ? null : report.id));
+                  }}
                 >
                   <span className="support-icon">
                     <Icon name={STATUS_ICON[status] ?? 'message'} size={15} />
@@ -182,19 +228,101 @@ export default function SupportCard({
                 </button>
                 {isOpen && (
                   <div className="support-detail">
-                    {report.response ? (
-                      <div className="support-reply">
-                        <strong>{appT('supportReports.responseLabel')}</strong>
-                        <p>{report.response}</p>
-                      </div>
-                    ) : (
-                      /* Only while it is still open: "waiting for a reply"
-                         under a resolved report would be wrong twice. */
+                    {/*
+                      The whole conversation, not just the latest answer. The
+                      fold is `@kidgate/core/domain/supportThread` and it is
+                      shared with the phone and the server — a report filed
+                      before threads existed has its reply in `response` and
+                      no `messages`, and reading that as an empty conversation
+                      would blank every answer given before 2026-09-17.
+
+                      The opening report is the head of the thread, so it is
+                      dropped here: the row's title already carries it.
+                    */}
+                    <ol className="support-thread">
+                      {foldSupportThread(report)
+                        .slice(1)
+                        .map(line => (
+                          <li
+                            key={line.id}
+                            className={`support-line from-${line.from}`}
+                          >
+                            <strong>
+                              {line.from === 'operator'
+                                ? appT('supportReports.responseLabel')
+                                : appT('supportReports.replyLabel')}
+                              <time>{timeAgo(line.at)}</time>
+                            </strong>
+                            <p>{line.body}</p>
+                          </li>
+                        ))}
+                    </ol>
+
+                    {/* Only while it is still open, and only before anyone has
+                        answered: "waiting for a reply" under a resolved report
+                        would be wrong twice. */}
+                    {!report.response &&
+                      (report.messages ?? []).length === 0 &&
                       status !== 'resolved' && (
                         <p className="support-waiting">
                           <Icon name="clock" size={13} />
                           {appT('supportReports.waitingNote')}
                         </p>
+                      )}
+
+                    {/*
+                      The reply box, and the one refusal worth a sentence.
+                      `supportReplyBlock` is the SAME predicate the endpoint
+                      re-checks, so a box drawn here cannot be refused there —
+                      `'full'` draws nothing, because a fifty-message ticket
+                      needs no explanation a parent can act on, while a closed
+                      one does.
+                    */}
+                    {supportReplyBlock(report) === 'resolved' ? (
+                      <p className="support-waiting">
+                        <Icon name="check" size={13} />
+                        {appT('supportReports.replyClosed')}
+                      </p>
+                    ) : (
+                      supportReplyBlock(report) === null && (
+                        <form
+                          className="support-reply-form"
+                          onSubmit={event => {
+                            event.preventDefault();
+                            sendReply(report.id);
+                          }}
+                        >
+                          <label
+                            className="sheet-label"
+                            htmlFor={`support-reply-${report.id}`}
+                          >
+                            {appT('supportReports.replyLabel')}
+                          </label>
+                          <textarea
+                            id={`support-reply-${report.id}`}
+                            className="reward-input support-input"
+                            rows={3}
+                            maxLength={SUPPORT_REPORT_MAX_MESSAGE_LENGTH}
+                            value={replyDraft}
+                            disabled={replyBusy}
+                            onChange={event => setReplyDraft(event.target.value)}
+                          />
+                          <div className="support-compose-foot">
+                            <span className="support-chars">
+                              {replyDraft.trim().length}/
+                              {SUPPORT_REPORT_MAX_MESSAGE_LENGTH}
+                            </span>
+                            <button
+                              type="submit"
+                              className="btn btn-sm btn-primary"
+                              disabled={replyBusy || !replyDraft.trim()}
+                            >
+                              {replyBusy
+                                ? t('dash.working')
+                                : appT('supportReports.replySend')}
+                            </button>
+                          </div>
+                        </form>
                       )
                     )}
                   </div>

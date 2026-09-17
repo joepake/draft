@@ -2390,6 +2390,104 @@ ol.attn-fix li + li {
   padding: 0.05rem 0.45rem;
 }
 
+/* ---------- The card the grid was asked for ----------
+ *
+ * The control-centre grid opens a PANEL, and a panel holds up to five cards.
+ * A parent who pressed "Daily limit" landed on a page called "Screen time" and
+ * had to read every heading to find what they pressed — the phone pushes a
+ * screen per action and never asks that.
+ *
+ * `Dashboard.jsx` scrolls the card into view and adds this for ~1.6s. It is a
+ * hand-off, not a selection: it says "this is the one", then stops, because a
+ * card left lit would read as a filter somebody applied.
+ *
+ * The edge, not the fill: a tinted card competes with the tones the controls
+ * inside it use to say a rule is off or needs attention.
+ */
+.card.is-pointed {
+  border-color: color-mix(in srgb, var(--brand) 55%, var(--card-line));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand) 18%, transparent);
+  transition:
+    border-color var(--kg-motion-fast) ease,
+    box-shadow var(--kg-motion-fast) ease;
+}
+
+/* This stylesheet is not covered by the reset in `index.css` —
+   `apps/dashboard` imports only this one — so the guard is stated here. The
+   ring still appears; it simply arrives without the fade. */
+@media (prefers-reduced-motion: reduce) {
+  .card.is-pointed {
+    transition: none;
+  }
+}
+
+/* ---------- The support thread ----------
+ *
+ * Two voices in one column, told apart by tint and by edge rather than by a
+ * label alone: the operator's line is the one a parent scrolls back to find,
+ * and a list where both halves look identical is one they have to read to
+ * navigate.
+ *
+ * The opening report is NOT here — it is the row's own title, and repeating it
+ * would put the same sentence twice inside one card.
+ */
+.support-thread {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.support-line {
+  border-radius: var(--dash-radius-2);
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--line);
+  background: var(--plane);
+}
+
+.support-line strong {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.6rem;
+  font-size: var(--dash-text-1);
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.support-line strong time {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.support-line p {
+  margin: 0.2rem 0 0;
+  font-size: var(--dash-text-2);
+  color: var(--ink);
+  /* A report is typed in a textarea, so its line breaks are part of what was
+     said. */
+  white-space: pre-wrap;
+}
+
+/* KidGate's own line takes the brand edge — the parent's stays on the page's
+   ground, because the one they came back for is the answer. */
+.support-line.from-operator {
+  border-inline-start: 3px solid var(--brand);
+  background: color-mix(in srgb, var(--brand) 6%, var(--surface));
+}
+
+.support-line.from-operator strong {
+  color: var(--brand);
+}
+
+.support-reply-form {
+  margin-top: 0.7rem;
+  padding-top: 0.7rem;
+  border-top: 1px solid var(--line);
+}
+
 /* ---------- Where the device was ----------
  *
  * `.map`, `.map-grid`, `.map-place` and `.map-badge` were here until
@@ -2402,6 +2500,19 @@ ol.attn-fix li + li {
  * `docs/FEASIBILITY.md` decision — a tile provider, a key in a public bundle,
  * and a child's coordinates leaving on every render.
  */
+/* The HERE map, in a sandboxed iframe. Sized here rather than inside the
+   document so the page keeps control of its own layout; `border: 0` because a
+   frame carries one by default and it would double the panel's. */
+.loc-map {
+  display: block;
+  width: 100%;
+  height: 260px;
+  border: 0;
+  border-radius: var(--dash-radius-2);
+  margin-bottom: 0.75rem;
+  background: var(--plane);
+}
+
 .loc-panel {
   display: grid;
   gap: 0.6rem;
@@ -3831,10 +3942,32 @@ ol.attn-fix li + li {
   color: var(--muted);
 }
 
+/*
+ * Two columns, the way the phone draws it — `DeviceControlCenter`'s
+ * `actionGrid` is 49% cards with `space-between`, so a feature sits in the
+ * same place on both.
+ *
+ * This REPLACES `repeat(auto-fill, minmax(13rem, 1fr))`, and that was a
+ * deliberate choice: a browser can be 1400px wide, so the grid took a third
+ * and fourth column rather than stretching two cards across a desk. The
+ * operator overruled it on 2026-09-17 for a stronger reason — a parent who
+ * learns the grid on their phone should not have to re-learn where a card is
+ * on a laptop. The pane is capped at 54rem, so two columns land at ~27rem
+ * each rather than spanning the window.
+ *
+ * One column below 520px: two cards at phone width leave the longer labels
+ * two words a line.
+ */
 .control-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.6rem;
+}
+
+@media (max-width: 520px) {
+  .control-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 .control-card {

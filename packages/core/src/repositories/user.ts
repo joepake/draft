@@ -252,6 +252,45 @@ export function createUserRepository(deps: UserRepositoryDeps) {
       return db.newId(supportReportsCollection(userId));
     },
 
+    /**
+     * A reply on an open ticket the caller already filed.
+     *
+     * Through the endpoint rather than a write, because `firestore.rules`
+     * refuses client `update` on `supportReports` and that refusal is what
+     * stops a parent editing the answer they were given
+     * (`functions/http/supportThread.js` carries the reasoning). The server
+     * re-checks `supportReplyBlock` from the same shared module the screen
+     * drew its box from, so the two cannot disagree about whether a ticket is
+     * still open.
+     *
+     * Rejects with an `ApiFailure` carrying a key — never a rendered sentence.
+     */
+    async appendSupportMessage(reportId: string, body: string): Promise<void> {
+      const trimmed = body.trim();
+      if (!trimmed) {
+        const failure: ApiFailure = {
+          code: 'conflict',
+          messageKey: 'settings.reportMessageRequired',
+        };
+        throw failure;
+      }
+      if (trimmed.length > SUPPORT_REPORT_MAX_MESSAGE_LENGTH) {
+        const failure: ApiFailure = {
+          code: 'conflict',
+          messageKey: 'settings.reportMessageTooLong',
+        };
+        throw failure;
+      }
+      /* No `userId`: the report hangs off the CALLER's own root, and the
+         endpoint reads the uid off the token rather than the body — there is
+         no account here that could be somebody else's. */
+      await api.post(
+        '/appendSupportMessage',
+        { reportId, body: trimmed },
+        { as: 'parent' },
+      );
+    },
+
     /** Rejects with an `ApiFailure` carrying a key — never a rendered sentence. */
     async submitSupportReport(
       userId: string,

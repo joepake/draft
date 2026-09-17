@@ -60,7 +60,10 @@ const ACTION_TAB = {
   'app-blocking': 'apps',
   'app-limits': 'apps',
   'reward-tasks': 'controls',
-  'request-check-in': 'overview',
+  /* Safety, where the check-in HISTORY is. It pointed at Overview, which holds
+     no check-in card at all — and the header's Check in button is on every
+     tab, so landing there answered nothing the parent could not already do. */
+  'request-check-in': 'safety',
   'web-filter': 'controls',
   /* The web half of the old "Apps & Web" panel, its own since 2026-09-17.
      `web-filter` stays on Controls — that one is a rule being SET, and it
@@ -69,10 +72,11 @@ const ACTION_TAB = {
   'video-history': 'web',
   location: 'safety',
   'sos-alerts': 'safety',
-  /* The rows this card names are timeline rows, and the timeline is the Log
-     tab since the device split into three. On Overview it landed on a screen
-     that no longer carries a single tamper line. */
-  'tamper-alerts': 'log',
+  /* Safety, where the Protection alerts card is — the card this action owns in
+     the approved allocation (`apps/dashboard/CLAUDE.md`). It pointed at Log
+     for a while, which showed the raw timeline rather than the card that folds
+     those rows into alerts. */
+  'tamper-alerts': 'safety',
   'place-alerts': 'safety',
   apps: 'apps',
   'message-alerts': 'safety',

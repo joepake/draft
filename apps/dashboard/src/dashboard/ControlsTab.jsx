@@ -787,6 +787,7 @@ export default function ControlsTab({
 
       <div className="grid-2">
         <Card
+          id="web-filter"
           title={t('dash.webFilterCatsTitle')}
           subtitle={t('dash.webFilterCatsSub')}
         >
@@ -855,7 +856,11 @@ export default function ControlsTab({
           browser extension has neither the screen nor anything to spend the
           minutes on — see `@kidgate/core/domain/rewardTaskSupport`.
         */}
-        <Card title={t('dash.rewardTasksTitle')} subtitle={t('dash.rewardTasksSub')}>
+        <Card
+          id="reward-tasks"
+          title={t('dash.rewardTasksTitle')}
+          subtitle={t('dash.rewardTasksSub')}
+        >
           {!supportsRewardTasks(device) ? (
             <p className="hint">{t('dash.rowNotSupported')}</p>
           ) : (

@@ -134,6 +134,7 @@
     "./domain/sosSupport": "./src/domain/sosSupport.ts",
     "./domain/subscription": "./src/domain/subscription.ts",
     "./domain/supportAttachments": "./src/domain/supportAttachments.ts",
+    "./domain/supportThread": "./src/domain/supportThread.ts",
     "./domain/tamperAlerts": "./src/domain/tamperAlerts.ts",
     "./domain/timeRequestCopy": "./src/domain/timeRequestCopy.ts",
     "./domain/todayTopApps": "./src/domain/todayTopApps.ts",

@@ -37,6 +37,8 @@ import { childMinutesUsedToday } from '../dashboard/childBudgetSpent.js';
 import { readDeviceBattery } from '@kidgate/core/domain/battery';
 import { isAndroidLike, isDesktopLike } from '@kidgate/core/domain/platformFamily';
 import { isKidGateOwnApp } from '@kidgate/core/domain/ownApp';
+import { buildLocationHistoryMapHtml } from '@kidgate/core/domain/locationHistoryMapHtml';
+import { useHereMapsKey } from '../dashboard/useHereMapsKey.js';
 import { buildAttention, buildFamilyAttention } from '../dashboard/attentionItems.js';
 import AttentionRail from '../dashboard/AttentionRail.jsx';
 import AttentionList from '../dashboard/AttentionList.jsx';
@@ -837,6 +839,25 @@ export default function Dashboard({
     }
   }, [compact, section, supportOpen]);
   const [tab, setTab] = useState('overview');
+  /* Which card the control-centre grid was asked for, so the panel it lands on
+     can say so. Cleared once it has been pointed at — it is a hand-off, not a
+     selection, and a card that stayed lit would read as a filter. */
+  const [focusCard, setFocusCard] = useState(null);
+  /*
+   * Which grid card opened the panel on screen, kept for as long as that panel
+   * is open.
+   *
+   * `focusCard` cannot answer this — it is cleared after 1.6s, because it is a
+   * pointer rather than a state. The heading needs the answer for the whole
+   * visit: a parent who pressed "Blocked hours" and got a page called "Screen
+   * time" has been told they are somewhere else, and re-reads the page to
+   * check. The phone never has to say it because it pushes a screen per
+   * action; this is the same sentence, from the same list.
+   */
+  const [openedAction, setOpenedAction] = useState(null);
+  /* Only while a device is open — this is a network call per session and the
+     family list has no map on it. */
+  const hereMapsKey = useHereMapsKey(Boolean(deviceOpen));
   /** Whether the hero's protection row has this device's items open. */
   const [heroIssuesOpen, setHeroIssuesOpen] = useState(false);
   const [range, setRange] = useState(14);
@@ -1225,6 +1246,46 @@ export default function Dashboard({
    * browser extension while standing on Screen time — would otherwise leave
    * the main pane blank with no nav item lit.
    */
+  /*
+   * Point the panel at the card the grid was asked for.
+   *
+   * An effect, and that is enough: React has committed the new panel by the
+   * time this runs, so the target is in the document — no animation frame to
+   * wait for.
+   *
+   * `smooth` deliberately. The scroll is what tells a parent the page moved
+   * FOR them; a jump straight to the middle of a long panel reads as having
+   * landed somewhere arbitrary. The ring comes off on a timer rather than
+   * staying, because it answers "where is it", it is not a state.
+   */
+  useEffect(() => {
+    if (!focusCard) return undefined;
+    const node = document.getElementById(focusCard);
+    if (!node) {
+      setFocusCard(null);
+      return undefined;
+    }
+    node.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    node.classList.add('is-pointed');
+    /*
+     * The state is cleared by the TIMER, never straight after the scroll.
+     * Clearing it here re-ran this effect immediately, and the re-run's
+     * cleanup killed the timeout before it could fire — so the ring went on
+     * and stayed on, which is the "a card left lit reads as a filter" the CSS
+     * comment warns about, shipped by accident.
+     */
+    const clear = setTimeout(() => {
+      node.classList.remove('is-pointed');
+      setFocusCard(null);
+    }, 1600);
+    return () => {
+      clearTimeout(clear);
+      // A second card pressed before the timer fired: the first one must not
+      // keep the ring it was given.
+      node.classList.remove('is-pointed');
+    };
+  }, [focusCard]);
+
   useEffect(() => {
     /* The three tabs are never capability-gated — `visibleTabs` lists the
        PANELS, and `manage`/`log` are not among them, so without this the bar
@@ -2103,7 +2164,13 @@ export default function Dashboard({
                 {deviceView
                   ? DEVICE_TAB_IDS.has(tab)
                     ? deviceView.name
-                    : t(TABS.find(item => item.id === tab)?.labelKey ?? 'dash.manage')
+                    : /* The card that opened this panel names it, and the
+                         panel names itself only when a parent arrived some
+                         other way. The action's title is the phone's own
+                         (`deviceDetailActions`), so one press reads the same
+                         on both consoles. */
+                      (openedAction?.tab === tab && openedAction.title) ||
+                      t(TABS.find(item => item.id === tab)?.labelKey ?? 'dash.manage')
                   : childView
                     ? childView.name
                     : /* Compact only: the page is inside Settings, and the
@@ -2417,7 +2484,20 @@ export default function Dashboard({
             facts={controlFacts}
             appT={activityT}
             canUsePremiumControls={hasFullAccess}
-            onOpen={next => setTab(next)}
+            /* The action, not just the panel. The grid has always passed it
+               and this call site threw it away, which is what made a card land
+               a parent on a page of five and leave them to find the one they
+               asked for — the phone pushes a screen per action and has never
+               had that problem. */
+            onOpen={(next, action) => {
+              setTab(next);
+              setFocusCard(action?.id ?? null);
+              /* Remembered against the panel it opened, so a parent who
+                 reaches that same panel another way — a summary chip, a Back
+                 — gets the panel's own name rather than the last card
+                 somebody happened to press. */
+              setOpenedAction(action ? { ...action, tab: next } : null);
+            }}
           />
         )}
 
@@ -2966,7 +3046,11 @@ export default function Dashboard({
         {deviceView && tab === 'screen' && (
           <>
             <div className="grid-2">
-              <Card title={t('dash.todayTitle')} subtitle={t('dash.todaySub')}>
+              <Card
+                id="daily-limit"
+                title={t('dash.todayTitle')}
+                subtitle={t('dash.todaySub')}
+              >
                 <div className="today">
                   <UsageRing
                     used={stats.used}
@@ -3123,6 +3207,7 @@ export default function Dashboard({
             </Card>
 
             <Card
+              id="schedule"
               title={t('dash.blockedHoursTitle')}
               subtitle={
                 c.scheduleEnabled
@@ -3173,7 +3258,11 @@ export default function Dashboard({
             */}
             <div className="grid-2">
               {supportsScreenTime(device) && (
-                <Card title={t('dash.appUsageTitle')} subtitle={t('dash.appUsageSub')}>
+                <Card
+                  id="app-limits"
+                  title={t('dash.appUsageTitle')}
+                  subtitle={t('dash.appUsageSub')}
+                >
                   <AppBars
                     apps={todayApps}
                     limits={c.appLimits}
@@ -3184,6 +3273,7 @@ export default function Dashboard({
 
               {(supportsAppBlocking(device) || supportsAppLimits(device)) && (
                 <Card
+                  id="app-blocking"
                   title={t('dash.appBlockingTitle')}
                   subtitle={t('dash.appBlockingSub')}
                 >
@@ -3242,6 +3332,7 @@ export default function Dashboard({
             */}
             {supportsAppInventory(device) && (
               <Card
+                id="apps"
                 title={t('dash.inventoryTitle')}
                 subtitle={
                   inventorySummary
@@ -3361,6 +3452,7 @@ export default function Dashboard({
           <>
             <div className="grid-2">
               <Card
+                id="web-history"
                 title={t('dash.webActivityTitle')}
                 subtitle={t('dash.webActivitySub')}
               >
@@ -3418,59 +3510,6 @@ export default function Dashboard({
                 </p>
               </Card>
 
-              <Card
-                title={t('dash.filterRefusedTitle')}
-                subtitle={t('dash.filterRefusedSub', { count: blockedTotal })}
-              >
-                {blockedByCategory.length === 0 ? (
-                  <p className="empty">{t('dash.nothingBlockedYet')}</p>
-                ) : (
-                  <ul className="catbars">
-                    {blockedByCategory.map(([cat, n], i) => (
-                      <li key={cat}>
-                        <div className="hbar-head">
-                          <span className="hbar-label">
-                            <i className={`dot dot-${(i % 3) + 1}`} />
-                            {webCategoryLabel(t, cat)}
-                          </span>
-                          <span className="hbar-value">{n}</span>
-                        </div>
-                        <div className="hbar-track">
-                          <div
-                            className={`hbar-fill fill-${(i % 3) + 1}`}
-                            style={{ width: `${(n / blockedTotal) * 100}%` }}
-                          />
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-                {blockedGuessed ? (
-                  <p className="hint">{t('dash.rollupNoteAi')}</p>
-                ) : null}
-                {/* Three mechanisms, not two. The Android sentence names a DNS
-                    filter, which is what the phone's and the TV's VPN is and
-                    what a Mac's NetworkExtension provider is not — a Mac fell
-                    into it only because this branch had nowhere else to put
-                    anything that was not an iPhone. */}
-                <p className="hint">
-                  {t(
-                    device.platform === 'ios'
-                      ? 'dash.filterHintIos'
-                      : device.platform === 'macos'
-                        ? 'dash.filterHintMacos'
-                        : 'dash.filterHintAndroid',
-                  )}
-                </p>
-                {/* Why a refusal count can be large with nobody at the
-                    device — a television nobody switched on produced 770 in
-                    a day. One sentence for every platform, and it says what
-                    devices do rather than what this card contains, which is
-                    what keeps it true where the filter counts openings
-                    (the extension) or minutes (iOS) instead of lookups. */}
-                <p className="hint">{t('dash.webBackgroundNote')}</p>
-              </Card>
-
               {/* The card is drawn for a desktop too, and that is the change:
                   hiding it left a parent with a Mac or a PC no place to be told
                   the Chrome extension already reports this. The phone draws
@@ -3479,7 +3518,11 @@ export default function Dashboard({
                   steps, so the two consoles cannot describe one machine
                   differently. */}
               {showsVideoHistoryCard(device) && (
-                <Card title={t('dash.videosTitle')} subtitle={t('dash.videosSub')}>
+                <Card
+                  id="video-history"
+                  title={t('dash.videosTitle')}
+                  subtitle={t('dash.videosSub')}
+                >
                   {!supportsVideoHistory(device) ? (
                     <>
                       <p className="empty">
@@ -3598,6 +3641,7 @@ export default function Dashboard({
               */}
               {supportsLocation(device) && (
                 <Card
+                  id="location"
                   title={t('dash.locationTitle')}
                   subtitle={
                     !c.locationSharingEnabled
@@ -3628,6 +3672,53 @@ export default function Dashboard({
                     link the parent chooses to follow. Nothing is sent
                     anywhere until they click it.
                   */}
+                  {/*
+                    The real map, and it is the PHONE's map — the document
+                    comes from `@kidgate/core/domain/locationHistoryMapHtml`,
+                    whose own note says a browser surface can render it in an
+                    iframe. It was lifted to core for this.
+
+                    So none of what was feared here applies: HERE is already
+                    the product's tile provider, the key never enters this
+                    bundle (`useHereMapsKey` fetches it per session from the
+                    endpoint the phone reads), and a child's coordinates
+                    already reach HERE from the phone. `sandbox` without
+                    `allow-same-origin` keeps the document away from this
+                    page's storage and its Firebase session.
+
+                    No key, no map: the builder draws its own "unavailable"
+                    document, and the facts underneath are read from Firestore
+                    and stand on their own.
+                  */}
+                  {device.lastLocation &&
+                    typeof device.lastLocation.latitude === 'number' &&
+                    typeof device.lastLocation.longitude === 'number' && (
+                      <iframe
+                        className="loc-map"
+                        title={t('dash.locationTitle')}
+                        sandbox="allow-scripts"
+                        srcDoc={buildLocationHistoryMapHtml(
+                          [
+                            {
+                              id: 'last',
+                              lat: device.lastLocation.latitude,
+                              lng: device.lastLocation.longitude,
+                              title:
+                                device.lastLocation.placeName ||
+                                device.lastLocation.address ||
+                                deviceView.name,
+                              isLatest: true,
+                            },
+                          ],
+                          'last',
+                          hereMapsKey,
+                          {
+                            mapUnavailable: activityT('location.mapUnavailable'),
+                            mapNoLocationsEmpty: t('dash.locationWaiting'),
+                          },
+                        )}
+                      />
+                    )}
                   <div className="loc-panel">
                     {device.lastLocation && (
                       <div className="loc-where">
@@ -3790,7 +3881,11 @@ export default function Dashboard({
               )}
 
               {supportsSos(device) && (
-                <Card title={t('dash.sosTitle')} subtitle={t('dash.sosSub')}>
+                <Card
+                  id="sos-alerts"
+                  title={t('dash.sosTitle')}
+                  subtitle={t('dash.sosSub')}
+                >
                   {(sosAlerts[device.id] || []).length === 0 ? (
                     <p className="empty">{t('dash.sosEmpty')}</p>
                   ) : (
@@ -3828,7 +3923,11 @@ export default function Dashboard({
 
             <div>
               {supportsCheckIn(device) && (
-                <Card title={t('dash.checkInsTitle')} subtitle={t('dash.checkInsSub')}>
+                <Card
+                  id="request-check-in"
+                  title={t('dash.checkInsTitle')}
+                  subtitle={t('dash.checkInsSub')}
+                >
                   <ul className="events">
                     {(checkIns[device.id] || []).map(ci => (
                       <li key={ci.id}>
@@ -3915,6 +4014,7 @@ export default function Dashboard({
               */}
               {supportsTamperAlerts(device) && (
                 <Card
+                  id="tamper-alerts"
                   title={t('dash.protectionAlertsTitle')}
                   subtitle={t('dash.protectionAlertsSub', {
                     count: device.protectionCounters.tamper,
@@ -3976,28 +4076,89 @@ export default function Dashboard({
         )}
 
         {deviceView && tab === 'controls' && (
-          <ControlsTab
-            device={device}
-            /*
-             * Every device this child holds, for the budget seed. The budget
-             * is one number shared across them, so writing it on the selected
-             * device alone would leave the siblings locking on a stale share
-             * until their next usage report.
-             */
-            siblingDevices={devices.filter(
-              other => device.childId && other.childId === device.childId,
-            )}
-            rewardTasks={rewardTasks}
-            siteRequests={siteRequests[device.id] || []}
-            familyChildren={children}
-            leaderboard={leaderboard}
-            readOnly={live && !canWrite}
-            hasFullAccess={hasFullAccess}
-            actions={actions}
-            run={run}
-            busy={busy}
-            activities={activities[device.id] || []}
-          />
+          <>
+            <ControlsTab
+              device={device}
+              /*
+               * Every device this child holds, for the budget seed. The budget
+               * is one number shared across them, so writing it on the selected
+               * device alone would leave the siblings locking on a stale share
+               * until their next usage report.
+               */
+              siblingDevices={devices.filter(
+                other => device.childId && other.childId === device.childId,
+              )}
+              rewardTasks={rewardTasks}
+              siteRequests={siteRequests[device.id] || []}
+              familyChildren={children}
+              leaderboard={leaderboard}
+              readOnly={live && !canWrite}
+              hasFullAccess={hasFullAccess}
+              actions={actions}
+              run={run}
+              busy={busy}
+              activities={activities[device.id] || []}
+            />
+
+            {/*
+              The refused-domain breakdown, moved off the Web panel on
+              2026-09-17 so that `web-filter` is ONE page: the categories
+              editor, what is on, the site requests, and what the filter
+              actually refused. It was a reading OF the filter sitting two
+              panels away from the filter, so a parent who pressed "Block web
+              content" never saw it. `web` keeps web history and videos.
+            */}
+            <Card
+              title={t('dash.filterRefusedTitle')}
+              subtitle={t('dash.filterRefusedSub', { count: blockedTotal })}
+            >
+              {blockedByCategory.length === 0 ? (
+                <p className="empty">{t('dash.nothingBlockedYet')}</p>
+              ) : (
+                <ul className="catbars">
+                  {blockedByCategory.map(([cat, n], i) => (
+                    <li key={cat}>
+                      <div className="hbar-head">
+                        <span className="hbar-label">
+                          <i className={`dot dot-${(i % 3) + 1}`} />
+                          {webCategoryLabel(t, cat)}
+                        </span>
+                        <span className="hbar-value">{n}</span>
+                      </div>
+                      <div className="hbar-track">
+                        <div
+                          className={`hbar-fill fill-${(i % 3) + 1}`}
+                          style={{ width: `${(n / blockedTotal) * 100}%` }}
+                        />
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              {blockedGuessed ? <p className="hint">{t('dash.rollupNoteAi')}</p> : null}
+              {/* Three mechanisms, not two. The Android sentence names a DNS
+                      filter, which is what the phone's and the TV's VPN is and
+                      what a Mac's NetworkExtension provider is not — a Mac fell
+                      into it only because this branch had nowhere else to put
+                      anything that was not an iPhone. */}
+              <p className="hint">
+                {t(
+                  device.platform === 'ios'
+                    ? 'dash.filterHintIos'
+                    : device.platform === 'macos'
+                      ? 'dash.filterHintMacos'
+                      : 'dash.filterHintAndroid',
+                )}
+              </p>
+              {/* Why a refusal count can be large with nobody at the
+                      device — a television nobody switched on produced 770 in
+                      a day. One sentence for every platform, and it says what
+                      devices do rather than what this card contains, which is
+                      what keeps it true where the filter counts openings
+                      (the extension) or minutes (iOS) instead of lookups. */}
+              <p className="hint">{t('dash.webBackgroundNote')}</p>
+            </Card>
+          </>
         )}
 
         {/*

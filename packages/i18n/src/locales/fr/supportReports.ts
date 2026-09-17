@@ -8,6 +8,9 @@ export const supportReports = {
   newReportButton: 'Nouveau signalement',
   attachmentCount: '{{count}} captures jointes',
   responseLabel: 'Réponse de KidGate',
+  replyLabel: 'Répondre',
+  replySend: 'Envoyer',
+  replyClosed: 'Ce signalement est clos.',
   waitingNote:
     'Nous répondrons ici dès qu’une personne aura examiné votre signalement.',
   expandLabel: 'Voir plus',
