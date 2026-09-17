@@ -46,12 +46,13 @@ import { resolveControlCardStatus } from '@kidgate/core/domain/deviceControlStat
  */
 
 /**
- * Which of the five per-device tabs holds the screen a card opens.
+ * Which screen a card opens — one of the four pushed panels, or one of the
+ * device's own three tabs.
  *
  * This mapping is the web's own and belongs nowhere else: the phone pushes a
- * screen per action, and this surface divides the same material into five
- * panels. Anything absent falls to Overview rather than doing nothing — a card
- * that does not respond is worse than one that lands a panel away.
+ * screen per action, and this surface divides the same material up. Anything
+ * absent falls to Overview rather than doing nothing — a card that does not
+ * respond is worse than one that lands a panel away.
  */
 const ACTION_TAB = {
   'daily-limit': 'screen',
@@ -61,11 +62,17 @@ const ACTION_TAB = {
   'reward-tasks': 'controls',
   'request-check-in': 'overview',
   'web-filter': 'controls',
-  'web-history': 'apps',
-  'video-history': 'apps',
+  /* The web half of the old "Apps & Web" panel, its own since 2026-09-17.
+     `web-filter` stays on Controls — that one is a rule being SET, and it
+     belongs with the other rules rather than with the history it produces. */
+  'web-history': 'web',
+  'video-history': 'web',
   location: 'safety',
   'sos-alerts': 'safety',
-  'tamper-alerts': 'overview',
+  /* The rows this card names are timeline rows, and the timeline is the Log
+     tab since the device split into three. On Overview it landed on a screen
+     that no longer carries a single tamper line. */
+  'tamper-alerts': 'log',
   'place-alerts': 'safety',
   apps: 'apps',
   'message-alerts': 'safety',
@@ -169,7 +176,15 @@ export default function ControlCenter({
               return (
                 <button
                   key={action.id}
-                  className={`control-card${can ? '' : ' is-muted'}`}
+                  /* The state's tone on the card as well as on the figure, so
+                     the glyph can carry it too — a parent scanning twelve
+                     cards for the one asking something should not have to read
+                     twelve numbers first. Written out rather than left to
+                     `:has()`: the tone is then visible in the DOM, which is
+                     where anyone debugging this looks. */
+                  className={`control-card${can ? '' : ' is-muted'}${
+                    status ? ` tone-${status.tone}` : ''
+                  }`}
                   /* A card this device cannot carry is readable and inert: the
                      copy on it is the point — it says what the feature is and,
                      by being struck out, that this machine is not where it

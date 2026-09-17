@@ -3,6 +3,7 @@ import { useT } from '@kidgate/web-ui/useT';
 import { MAX_DEVICE_NAME_LENGTH } from '@kidgate/schema/deviceName';
 import { useActivityTranslate } from './activityCopy.js';
 import Icon from '@kidgate/web-ui/Icon';
+import Card from './Card.jsx';
 
 /*
  * `appT` reads the APP key space through `@kidgate/i18n/activityFeed`. The
@@ -52,70 +53,89 @@ export default function DeviceAdmin({ device, actions, readOnly, busy, run }) {
     readOnly || busy || trimmed.length === 0 || tooLong || trimmed === device.name;
 
   return (
-    <div className="device-admin">
-      <label className="sheet-label" htmlFor="device-name">
-        {appT('deviceDetail.deviceNameLabel')}
-      </label>
-      <div className="device-admin-row">
-        <input
-          id="device-name"
-          className="reward-input"
-          value={name}
-          maxLength={MAX_DEVICE_NAME_LENGTH}
-          disabled={readOnly || busy}
-          onChange={event => setName(event.target.value)}
-        />
-        <button
-          className="btn btn-sm"
-          disabled={renameDisabled}
-          title={readOnly ? t('dash.unlockToChange') : undefined}
-          onClick={() =>
-            run(`rename-${device.id}`, () => actions.renameDevice(device.id, trimmed))
-          }
-        >
-          {t('dash.save')}
-        </button>
-      </div>
-
-      {tooLong ? (
-        <p className="hint">
-          {appT('family.deviceNameTooLong', { max: MAX_DEVICE_NAME_LENGTH })}
-        </p>
-      ) : null}
-
-      {confirming ? (
-        <div className="device-admin-confirm">
-          <strong>{appT('deviceDetail.removeDeviceTitle')}</strong>
-          <p>
-            {appT('deviceDetail.removeDeviceMessage', {
-              deviceName: device.name,
-            })}
-          </p>
-          <div className="reward-actions">
-            <button className="login-link" onClick={() => setConfirming(false)}>
-              {t('dash.close')}
-            </button>
-            <button
-              className="btn btn-sm btn-danger"
-              disabled={busy}
-              onClick={() =>
-                run(`remove-${device.id}`, () => actions.removeDevice(device.id))
-              }
-            >
-              {busy ? t('dash.working') : appT('deviceDetail.removeDeviceTitle')}
-            </button>
-          </div>
+    <>
+      <Card className="device-admin">
+        <label className="sheet-label" htmlFor="device-name">
+          {appT('deviceDetail.deviceNameLabel')}
+        </label>
+        <div className="device-admin-row">
+          <input
+            id="device-name"
+            className="reward-input"
+            value={name}
+            maxLength={MAX_DEVICE_NAME_LENGTH}
+            disabled={readOnly || busy}
+            onChange={event => setName(event.target.value)}
+          />
+          <button
+            className="btn btn-sm"
+            disabled={renameDisabled}
+            title={readOnly ? t('dash.unlockToChange') : undefined}
+            onClick={() =>
+              run(`rename-${device.id}`, () => actions.renameDevice(device.id, trimmed))
+            }
+          >
+            {t('dash.save')}
+          </button>
         </div>
-      ) : (
-        <button
-          className="login-link device-admin-remove"
-          disabled={readOnly || busy}
-          title={readOnly ? t('dash.unlockToChange') : undefined}
-          onClick={() => setConfirming(true)}
-        >
-          <Icon name="trash" size={13} /> {appT('deviceDetail.removeDeviceTitle')}
-        </button>
-      )}
-    </div>
+
+        {tooLong ? (
+          <p className="hint">
+            {appT('family.deviceNameTooLong', { max: MAX_DEVICE_NAME_LENGTH })}
+          </p>
+        ) : null}
+      </Card>
+
+      {/*
+        Unpairing is its own block — the danger zone `ChildHub` and the account
+        card already draw — rather than a text link under the rename field,
+        where the one irreversible thing on the page sat inside the same box as
+        a text input and read as its third row. The warning STANDS rather than
+        appearing on the click: it says what unpairing costs, which is what a
+        parent needs before aiming at the button, not after.
+      */}
+      <Card
+        className="danger-zone"
+        title={
+          <span className="danger-zone-title">
+            <span className="danger-zone-glyph">
+              <Icon name="trash" size={14} />
+            </span>
+            {appT('deviceDetail.removeDeviceTitle')}
+          </span>
+        }
+        subtitle={appT('deviceDetail.removeDeviceMessage', {
+          deviceName: device.name,
+        })}
+        action={
+          confirming ? (
+            <span className="danger-zone-actions">
+              <button className="btn btn-sm" onClick={() => setConfirming(false)}>
+                {t('dash.close')}
+              </button>
+              <button
+                className="btn btn-sm btn-danger"
+                disabled={busy}
+                onClick={() =>
+                  run(`remove-${device.id}`, () => actions.removeDevice(device.id))
+                }
+              >
+                {busy ? t('dash.working') : appT('shared.remove')}
+              </button>
+            </span>
+          ) : (
+            /* A tint at rest, never solid — solid red is the confirmation. */
+            <button
+              className="btn btn-sm device-admin-remove"
+              disabled={readOnly || busy}
+              title={readOnly ? t('dash.unlockToChange') : undefined}
+              onClick={() => setConfirming(true)}
+            >
+              <Icon name="trash" size={13} /> {appT('shared.remove')}
+            </button>
+          )
+        }
+      />
+    </>
   );
 }

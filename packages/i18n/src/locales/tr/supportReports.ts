@@ -1,5 +1,5 @@
 export const supportReports = {
-  title: 'Talepler ve bildirimler',
+  title: 'Destek',
   subtitleCount: '{{count}} açık',
   emptyTitle: 'Henüz bildirim yok',
   emptyDescription:

@@ -110,12 +110,73 @@ export default function AccountCard({
         </ul>
       </Card>
 
+      {/*
+        The same danger zone the child hub closes with (`ChildHub.jsx`), and
+        for the same reason: this was a full white card carrying the weight of
+        the working cards above it, with a lone pink button on a third line —
+        the one block a parent should pass by drew the most attention on the
+        page. Glyph, title, sentence and the button are one row; the ground
+        says what it is before the title is read.
+      */}
       <Card
-        title={appT('settings.deleteAccountTitle')}
+        className="danger-zone"
+        title={
+          <span className="danger-zone-title">
+            <span className="danger-zone-glyph">
+              <Icon name="trash" size={14} />
+            </span>
+            {appT('settings.deleteAccountTitle')}
+          </span>
+        }
         subtitle={
           request
             ? appT('settings.deleteAccountSubtitleScheduled')
             : appT('settings.deleteAccountSubtitleDefault')
+        }
+        action={
+          request ? (
+            <button
+              className="btn btn-sm btn-primary"
+              disabled={busy}
+              onClick={() =>
+                run(() => accountDeletionRepository.cancelRequest(accountId))
+              }
+            >
+              {busy ? t('dash.working') : appT('settings.deletionGateCancelButton')}
+            </button>
+          ) : confirming ? (
+            <span className="danger-zone-actions">
+              <button className="btn btn-sm" onClick={() => setConfirming(false)}>
+                {t('dash.close')}
+              </button>
+              <button
+                className="btn btn-sm btn-danger"
+                disabled={busy}
+                onClick={() =>
+                  run(() =>
+                    accountDeletionRepository.submitRequest(
+                      accountId,
+                      accountEmail ?? '',
+                    ),
+                  )
+                }
+              >
+                {busy ? t('dash.working') : appT('settings.deleteAccountTitle')}
+              </button>
+            </span>
+          ) : (
+            /* A tint at rest, never solid: solid red is the confirmation, and
+               this button only asks the question. `shared.delete` rather than
+               the title a second time — the heading beside it already says
+               which account goes, and the phone says this word in fourteen
+               languages. */
+            <button
+              className="btn btn-sm device-admin-remove"
+              onClick={() => setConfirming(true)}
+            >
+              <Icon name="trash" size={13} /> {appT('shared.delete')}
+            </button>
+          )
         }
       >
         {request ? (
@@ -133,15 +194,6 @@ export default function AccountCard({
                 : appT('settings.deletionGateBodyPending')}
             </p>
             <p className="hint">{appT('settings.deletionGateNote')}</p>
-            <button
-              className="btn btn-primary"
-              disabled={busy}
-              onClick={() =>
-                run(() => accountDeletionRepository.cancelRequest(accountId))
-              }
-            >
-              {busy ? t('dash.working') : appT('settings.deletionGateCancelButton')}
-            </button>
           </>
         ) : confirming ? (
           <>
@@ -156,34 +208,8 @@ export default function AccountCard({
                 devices: deviceCount,
               })}
             </p>
-            <div className="reward-actions">
-              <button className="login-link" onClick={() => setConfirming(false)}>
-                {t('dash.close')}
-              </button>
-              <button
-                className="btn btn-sm btn-danger"
-                disabled={busy}
-                onClick={() =>
-                  run(() =>
-                    accountDeletionRepository.submitRequest(
-                      accountId,
-                      accountEmail ?? '',
-                    ),
-                  )
-                }
-              >
-                {busy ? t('dash.working') : appT('settings.deleteAccountTitle')}
-              </button>
-            </div>
           </>
-        ) : (
-          <button
-            className="login-link device-admin-remove"
-            onClick={() => setConfirming(true)}
-          >
-            <Icon name="trash" size={13} /> {appT('settings.deleteAccountTitle')}
-          </button>
-        )}
+        ) : null}
       </Card>
     </>
   );

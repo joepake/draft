@@ -1,5 +1,5 @@
 export const supportReports = {
-  title: 'Yêu cầu & báo cáo sự cố',
+  title: 'Hỗ trợ',
   subtitleCount: '{{count}} báo cáo đang xử lý',
   emptyTitle: 'Chưa có báo cáo nào',
   emptyDescription: 'Khi bạn báo cáo sự cố, báo cáo sẽ hiện ở đây để bạn theo dõi.',

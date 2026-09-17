@@ -1,5 +1,5 @@
 export const supportReports = {
-  title: 'अनुरोध और रिपोर्ट',
+  title: 'सहायता',
   subtitleCount: '{{count}} लंबित',
   emptyTitle: 'अभी तक कोई रिपोर्ट नहीं',
   emptyDescription:

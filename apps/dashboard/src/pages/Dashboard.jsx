@@ -30,7 +30,6 @@ import {
   MONITORED_SWAP_COOLDOWN_MS,
   summariseParking,
 } from '@kidgate/core/domain/deviceParking';
-import TrustedContactsCard from '../dashboard/TrustedContactsCard.jsx';
 import BrandLogo from '@kidgate/web-ui/BrandLogo';
 import Icon from '@kidgate/web-ui/Icon';
 import { deviceIconName } from '../dashboard/deviceIcon.js';
@@ -38,7 +37,6 @@ import { childMinutesUsedToday } from '../dashboard/childBudgetSpent.js';
 import { readDeviceBattery } from '@kidgate/core/domain/battery';
 import { isAndroidLike, isDesktopLike } from '@kidgate/core/domain/platformFamily';
 import { isKidGateOwnApp } from '@kidgate/core/domain/ownApp';
-import { resolveActivityKind } from '@kidgate/core/domain/activityKind';
 import { buildAttention, buildFamilyAttention } from '../dashboard/attentionItems.js';
 import AttentionRail from '../dashboard/AttentionRail.jsx';
 import AttentionList from '../dashboard/AttentionList.jsx';
@@ -114,7 +112,6 @@ import NotificationPrefsCard from '../dashboard/NotificationPrefsCard.jsx';
 import SupportCard from '../dashboard/SupportCard.jsx';
 import AccountCard from '../dashboard/AccountCard.jsx';
 import ActivityFeed from '../dashboard/ActivityFeed.jsx';
-import { activityIconName } from '../dashboard/activityIcon.js';
 import { RichText } from '@kidgate/web-ui/RichText';
 import { useT } from '@kidgate/web-ui/useT';
 import { getLocaleTag } from '@kidgate/i18n/web';
@@ -201,9 +198,41 @@ const TABS = [
   { id: 'overview', labelKey: 'dash.tabOverview' },
   { id: 'screen', labelKey: 'dash.tabScreen' },
   { id: 'apps', labelKey: 'dash.tabApps' },
+  /*
+   * Web was the second half of `apps` until 2026-09-17, on a panel called
+   * "Apps & Web". Two grid cards — Chặn ứng dụng and Chặn nội dung web — are
+   * two different features, and landing both on one page made each of them
+   * look like half of something else. The panels split where the cards
+   * already did: app usage, app blocking and the inventory are the machine's
+   * software; web activity, the refused domains and the video list are what it
+   * reached.
+   */
+  { id: 'web', labelKey: 'dash.tabWeb' },
   { id: 'safety', labelKey: 'dash.tabSafety' },
   { id: 'controls', labelKey: 'dash.tabControls' },
 ];
+
+/**
+ * The device's own three, drawn under the hero.
+ *
+ * NOT the five-panel bar removed on 2026-09-16: that one named the same five
+ * words the control-centre grid under it already did. These three are the
+ * three questions a parent asks about one machine — what happened today, what
+ * do I change, what has it been doing — and only the middle one is the grid.
+ * The five panels stay pushed frames the grid opens, so the bar hides while
+ * one is open and the panel's own heading names it.
+ *
+ * No new copy: `nav.activities` is the app pack's word for the log, so the
+ * phone and this page cannot come to call it two things
+ * (`.claude/rules/i18n.md`).
+ */
+const DEVICE_TABS = [
+  { id: 'overview', labelKey: 'dash.tabOverview' },
+  { id: 'manage', labelKey: 'dash.tabControls' },
+  { id: 'log', labelKey: 'nav.activities', app: true },
+];
+
+const DEVICE_TAB_IDS = new Set(DEVICE_TABS.map(item => item.id));
 
 /**
  * The left menu: the same four the phone's tab bar draws, in the same order,
@@ -332,7 +361,16 @@ function StatTile({ label, value, meta, tone = 'default', icon }) {
   return (
     <div className={`tile tone-${tone}`}>
       <span className="tile-label">
-        {icon && <Icon name={icon} size={15} />}
+        {/* The glyph in a chip of its own, not loose beside the words: the
+            label is uppercase and small by the time it is a caption, and a
+            bare mark at that size read as a prefix character. The chip takes
+            the tile's tone, so a figure that needs attention says so before
+            its number is read. */}
+        {icon && (
+          <span className="tile-icon">
+            <Icon name={icon} size={14} />
+          </span>
+        )}
         {label}
       </span>
       <strong className="tile-value">{value}</strong>
@@ -1066,13 +1104,14 @@ export default function Dashboard({
   const back = useMemo(() => {
     if (deviceView) {
       /*
-       * A panel is one frame deeper than the device, now that the tab bar is
-       * gone: the control-centre grid IS the navigation, the way it is on the
-       * phone, and a card pushes the panel it opens. Without this step Back
-       * would skip the device a parent was reading and land on the list.
+       * A panel is one frame deeper than the device: the control-centre grid
+       * opens it, the way the phone pushes a screen, so Back pops to the grid
+       * — `manage`, the tab the card was tapped on — and not to Overview,
+       * which is a sideways step the parent did not take. Without this step
+       * Back would skip the device a parent was reading and land on the list.
        */
-      if (tab !== 'overview') {
-        return { label: deviceView.name, go: () => setTab('overview') };
+      if (!DEVICE_TAB_IDS.has(tab)) {
+        return { label: deviceView.name, go: () => setTab('manage') };
       }
       const parent = deviceView.childId
         ? (children ?? []).find(item => item.id === deviceView.childId)
@@ -1161,6 +1200,22 @@ export default function Dashboard({
       if (item.id === 'safety') {
         return hasSafety;
       }
+      /*
+       * Now that Web is its own panel, `apps` no longer carries it — so the
+       * reason this tab survived for a browser extension has moved next door.
+       * Every card left on it is app-shaped: usage needs the screen-time
+       * probe, blocking and limits need theirs, the inventory needs its own,
+       * and an extension has none of the three. Web is deliberately NOT gated
+       * — those three cards are the only real data that device produces.
+       */
+      if (item.id === 'apps') {
+        return (
+          supportsScreenTime(device) ||
+          supportsAppBlocking(device) ||
+          supportsAppLimits(device) ||
+          supportsAppInventory(device)
+        );
+      }
       return true;
     });
   }, [device]);
@@ -1171,8 +1226,12 @@ export default function Dashboard({
    * the main pane blank with no nav item lit.
    */
   useEffect(() => {
+    /* The three tabs are never capability-gated — `visibleTabs` lists the
+       PANELS, and `manage`/`log` are not among them, so without this the bar
+       would bounce a parent back to Overview the moment they pressed it. */
+    if (DEVICE_TAB_IDS.has(tab)) return;
     if (!visibleTabs.some(item => item.id === tab)) {
-      setTab('overview');
+      setTab('manage');
     }
   }, [tab, visibleTabs]);
 
@@ -2035,12 +2094,14 @@ export default function Dashboard({
                 </p>
               )}
               <h1>
-                {/* A panel is a pushed screen now that the tab bar is gone, so
-                    the heading is the panel's own name and the Back button
-                    beside it carries the device's — the phone's stack, where
-                    the title always names what is on screen. */}
+                {/* A panel is a pushed screen, so the heading is the panel's
+                    own name and the Back button beside it carries the
+                    device's — the phone's stack, where the title always names
+                    what is on screen. The three tabs are the device itself:
+                    the bar under the hero says which one, so repeating its
+                    word here would head the page with the tab already lit. */}
                 {deviceView
-                  ? tab === 'overview'
+                  ? DEVICE_TAB_IDS.has(tab)
                     ? deviceView.name
                     : t(TABS.find(item => item.id === tab)?.labelKey ?? 'dash.manage')
                   : childView
@@ -2318,18 +2379,39 @@ export default function Dashboard({
         )}
 
         {/*
-          The control centre, directly under the device it is about — the shape
+          The device's three tabs, between the hero and whatever they choose.
+          Hidden while a panel is open: a panel is a frame deeper and the bar
+          would offer three sideways steps out of a screen the parent has not
+          finished reading — the Back button is the way out of one.
+        */}
+        {deviceView && DEVICE_TAB_IDS.has(tab) && (
+          <nav className="dev-tabs" aria-label={deviceView.name}>
+            {DEVICE_TABS.map(item => (
+              <button
+                key={item.id}
+                className={`dev-tab${tab === item.id ? ' is-active' : ''}`}
+                onClick={() => setTab(item.id)}
+                aria-current={tab === item.id ? 'page' : undefined}
+              >
+                {item.app ? activityT(item.labelKey) : t(item.labelKey)}
+              </button>
+            ))}
+          </nav>
+        )}
+
+        {/*
+          The control centre, and it IS the middle tab — the shape
           `apps/mobile`'s device detail has: a hero, then the grid. The cards
           and the rule greying each one out are `@kidgate/core/domain/
           deviceDetailActions`, the phone's own list moved up, so neither
           console can grow a card the other does not have.
 
-          It IS the navigation, which is why it is gated on the device's own
-          frame: a card pushes a panel, Back pops it, and the grid is what a
-          parent returns to. Drawn above an open panel as well, it was a menu
-          repeating the screen already below it.
+          It is still the navigation into the five panels, which is why it is
+          gated on its own frame: a card pushes a panel, Back pops it here,
+          and the grid is what a parent returns to. Drawn above an open panel
+          as well, it was a menu repeating the screen already below it.
         */}
-        {deviceView && tab === 'overview' && (
+        {deviceView && tab === 'manage' && (
           <ControlCenter
             device={deviceView}
             facts={controlFacts}
@@ -2482,6 +2564,9 @@ export default function Dashboard({
           <section className="family-home">
             <FamilySettingsCard
               family={family}
+              /* For the Trusted contacts tab's own listener — the owner's uid,
+                 which is the family root, not `accountId`. */
+              familyId={familyId}
               children={children ?? []}
               devices={devices}
               onOpenChild={id => {
@@ -2660,29 +2745,19 @@ export default function Dashboard({
             </Card>
 
             {/*
-              Managing parents is NOT here. It lives on the Family section's
-              Parents tab (`FamilySettingsCard`), and it was drawn in both
-              places until 2026-09-16 — one roster, two doors, each with its
-              own invite form. Family is the right one: a co-parent is a member
-              of the family, and the tab beside them lists the children and
-              their devices.
+              Neither parents NOR trusted contacts are here. Both are the
+              Family section's tabs (`FamilySettingsCard`) — parents since
+              2026-09-16, contacts since 2026-09-17 — because Family is where a
+              parent looks for people, and this section had become the place
+              two rosters were kept away from the screen that lists everyone
+              else in the household.
 
-              Trusted contacts stay, and the distinction is the reason. A parent
-              has an account and can change what KidGate does; a trusted contact
-              is a name and an email that gets told when a child presses SOS,
-              with no account and no access at all. Grouping the two because
-              both are people would have a parent expecting a contact to open
-              the dashboard. The phone files it the same way — its row sits in
-              Settings next to the SOS sound, among the alert routing.
+              They stay SEPARATE tabs, and the distinction is the reason. A
+              parent has an account and can change what KidGate does; a trusted
+              contact is a name and an email told when a child presses SOS,
+              with no account and no access at all. One roster holding both
+              would have a parent expecting a contact to open the dashboard.
             */}
-            {live && familyId && (
-              <Card
-                title={activityT('sos.trustedContactsTitle')}
-                subtitle={activityT('sos.trustedContactsRowSubtitle')}
-              >
-                <TrustedContactsCard familyId={familyId} />
-              </Card>
-            )}
 
             {/* Push preferences for the account's own phones. Renders nothing
                 for a co-parent, whose devices live under their own root. */}
@@ -2809,41 +2884,10 @@ export default function Dashboard({
                     </p>
                   </Card>
                 )}
-
-                <Card title={t('dash.cardRecent')} subtitle={t('dash.cardRecentSub')}>
-                  {(activities[device.id] || []).length === 0 && (
-                    <p className="empty">{t('dash.cardRecentEmpty')}</p>
-                  )}
-                  <ul className="timeline">
-                    {(activities[device.id] || []).map(a => {
-                      const copy = activityCopy(a, activityT, device.name, actorNames);
-                      // Glyph and tint from one answer. The tint class only has
-                      // rules for tamper/app_blocked/device_locked, all three of
-                      // which the kind passes straight through, so this changes
-                      // no colour — it just stops the class claiming a `type`
-                      // the icon beside it no longer agrees with.
-                      const kind = resolveActivityKind(a);
-                      return (
-                        <li key={a.id}>
-                          <span className={`tl-icon type-${kind}`}>
-                            <Icon name={activityIconName(kind)} size={15} />
-                          </span>
-                          <span className="tl-body">
-                            <strong>{copy.title}</strong>
-                            <em>{copy.description}</em>
-                          </span>
-                          <time>{timeAgo(a.createdAt)}</time>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                  {/* Where the list stops, not over it: a free feed ends at
-                      today — a client query limit, since `firestore.rules`
-                      cannot read the plan — and a parent reaching the bottom
-                      could not tell a quiet week from a window that ends
-                      there. The phone puts it in the same place. */}
-                  <PremiumTeaser teaser={activityWindowTeaser} appT={activityT} />
-                </Card>
+                {/* The timeline stood here until the three tabs landed. It is
+                    the Log tab's now — a day's numbers and a month of rows
+                    answer different questions, and the rows were what made
+                    this tab scroll past the figures it exists for. */}
               </div>
 
               <div>
@@ -2891,6 +2935,32 @@ export default function Dashboard({
               keeps them.
             */}
           </>
+        )}
+
+        {/*
+          The log — this device's rows and nothing else, drawn by the SAME
+          component as the family feed. A second renderer here would be a
+          second set of day headings, a second empty state and a second fold
+          to keep in step; `deviceScope` is what drops the two filter rows and
+          the per-row "whose and which" the header above already says.
+
+          `activities` is `forDevice(selectedDeviceId, …)` — already this
+          machine's, from a query that filters on `deviceId` — and the scope
+          filters again on top, so a row belonging to another device cannot
+          reach this tab whatever the caller hands it.
+        */}
+        {deviceView && tab === 'log' && (
+          <ActivityFeed
+            activities={activities[device.id] || []}
+            devices={devices}
+            children={children}
+            actorNames={actorNames}
+            appT={activityT}
+            deviceScope={device}
+            teaserSlot={
+              <PremiumTeaser teaser={activityWindowTeaser} appT={activityT} />
+            }
+          />
         )}
 
         {deviceView && tab === 'screen' && (
@@ -3278,7 +3348,17 @@ export default function Dashboard({
                 )}
               </Card>
             )}
+          </>
+        )}
 
+        {/*
+          What the machine REACHED, as against what is installed on it. Split
+          out of `apps` on 2026-09-17 — see `TABS`. These three cards are the
+          only real data a browser extension produces, which is why the panel
+          is not gated on the app-shaped probes the one above needs.
+        */}
+        {deviceView && tab === 'web' && (
+          <>
             <div className="grid-2">
               <Card
                 title={t('dash.webActivityTitle')}
@@ -3529,23 +3609,28 @@ export default function Dashboard({
                         : t('dash.locationWaiting')
                   }
                 >
-                  <div className="map">
-                    <div className="map-grid" aria-hidden="true" />
-                    {(places[device.id] || []).map((p, i) => (
-                      <span
-                        key={p.id}
-                        className={`map-place${p.inside ? ' is-inside' : ''}`}
-                        style={{
-                          left: `${28 + i * 24}%`,
-                          top: `${26 + (i % 2) * 22}%`,
-                        }}
-                      >
-                        <i />
-                        {p.name}
-                      </span>
-                    ))}
+                  {/*
+                    This was a drawing of a map and it is not one any more.
+
+                    A CSS gradient under a grid pattern, with each place laid
+                    out by its INDEX in the array — `left: 28 + i * 24 %` — so
+                    two places ten metres apart and two ten kilometres apart
+                    rendered identically, and the whole thing read as a real
+                    map whose tiles had failed to load. It was asked about as a
+                    bug, which is the right reaction to it.
+
+                    A real map is not a styling job: it needs a tile provider,
+                    another key in a public bundle, and a child's coordinates
+                    leaving for a third party on every render — a decision,
+                    through `docs/FEASIBILITY.md`, not something to slip in
+                    here. Until then this says what this surface actually
+                    knows: where the device was, the places it is inside, and a
+                    link the parent chooses to follow. Nothing is sent
+                    anywhere until they click it.
+                  */}
+                  <div className="loc-panel">
                     {device.lastLocation && (
-                      <div className="map-badge">
+                      <div className="loc-where">
                         <strong>
                           {device.lastLocation.placeName ||
                             (device.lastLocation.relativePlace
@@ -3622,7 +3707,50 @@ export default function Dashboard({
                               {activityT('location.namesNeedPremiumStill')}
                             </em>
                           )}
+                        {/*
+                          The one honest way to see this on a map, and the
+                          parent opens it themselves — no key, no tiles, and no
+                          coordinates leaving the browser until they click.
+                          `location.openInMaps` is the phone's own label
+                          (`.claude/rules/i18n.md`: port a screen, read the
+                          app pack), so the two consoles say it identically.
+                          Only where a fix carries numbers — a device that has
+                          only ever reported a place NAME has nothing to point
+                          at.
+                        */}
+                        {typeof device.lastLocation.latitude === 'number' &&
+                          typeof device.lastLocation.longitude === 'number' && (
+                            <a
+                              className="loc-open"
+                              href={`https://www.google.com/maps/search/?api=1&query=${device.lastLocation.latitude},${device.lastLocation.longitude}`}
+                              target="_blank"
+                              rel="noreferrer noopener"
+                            >
+                              <Icon name="mapPin" size={13} />
+                              {activityT('location.openInMaps')}
+                            </a>
+                          )}
                       </div>
+                    )}
+                    {/*
+                      The places this device is inside, as a list of facts
+                      rather than dots on nothing. `is-inside` is the only
+                      thing the old drawing actually knew, and it survives as
+                      the tone.
+                    */}
+                    {(places[device.id] || []).length > 0 && (
+                      <ul className="loc-places">
+                        {(places[device.id] || []).map(p => (
+                          <li key={p.id} className={p.inside ? 'is-inside' : undefined}>
+                            {/* `home` for every row — it is the canonical
+                                place-alerts glyph (`@kidgate/tokens/icons`),
+                                and being INSIDE one is carried by the tone
+                                rather than by a second drawing. */}
+                            <Icon name="home" size={12} />
+                            <span>{p.name}</span>
+                          </li>
+                        ))}
+                      </ul>
                     )}
                   </div>
                   {(places[device.id] || []).length === 0 && (
@@ -3873,18 +4001,28 @@ export default function Dashboard({
         )}
 
         {/*
-          Last on the page, below whichever tab is open, and outside all five:
-          renaming and unpairing are about the device the header names, not
-          about one of the things the tabs divide it into. Renders nothing for
-          a joined co-parent — both are the owner's alone.
+          Last on the Controls tab, under the grid: renaming and unpairing are
+          about the device the header names rather than about one of the
+          things the tabs divide it into, and Controls is the tab that changes
+          the machine. Renders nothing for a joined co-parent — both are the
+          owner's alone.
 
           **`deviceView`, not `device`.** `device` stays resolved while the
           Family list, Activity, Reports and Settings are open — it is the
           selection, not the thing on screen — so this card was drawn under the
           child list, under the weekly report, and under the account settings,
           each time naming a machine the page was not about.
+
+          **And `tab === 'manage'`, not every frame.** It said "below whichever
+          tab is open" when the tabs WERE the five panels; since the three-tab
+          fold (2026-09-17) a panel is a frame deeper, pushed by a control card
+          and popped by Back — so "Rename this device" and "Unpair?" sat under
+          the SOS screen, under Web history and under Apps, at the bottom of a
+          screen a parent opened to read one thing. Overview and the Log go for
+          the same reason: today's figures and a timeline are reads, not where
+          a machine is renamed or removed.
         */}
-        {deviceView && live && (
+        {deviceView && live && tab === 'manage' && (
           <DeviceAdmin
             device={device}
             actions={actions}

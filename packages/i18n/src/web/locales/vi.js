@@ -437,7 +437,8 @@ export default {
   dash: {
     tabOverview: 'Tổng quan',
     tabScreen: 'Thời gian sử dụng',
-    tabApps: 'Ứng dụng & Web',
+    tabApps: 'Ứng dụng',
+    tabWeb: 'Web',
     tabSafety: 'An toàn',
     tabControls: 'Điều khiển',
     tabReport: 'Báo cáo tuần',

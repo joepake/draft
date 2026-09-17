@@ -420,7 +420,8 @@ export default {
   dash: {
     tabOverview: '개요',
     tabScreen: '스크린 타임',
-    tabApps: '앱 및 웹',
+    tabApps: '앱',
+    tabWeb: '웹',
     tabSafety: '안전',
     tabControls: '제어',
     tabReport: '주간 리포트',

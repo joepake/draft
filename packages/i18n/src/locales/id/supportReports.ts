@@ -1,5 +1,5 @@
 export const supportReports = {
-  title: 'Permintaan & laporan',
+  title: 'Dukungan',
   subtitleCount: '{{count}} belum selesai',
   emptyTitle: 'Belum ada laporan',
   emptyDescription:

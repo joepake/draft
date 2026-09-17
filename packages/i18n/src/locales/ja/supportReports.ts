@@ -1,5 +1,5 @@
 export const supportReports = {
-  title: 'リクエストと問題の報告',
+  title: 'サポート',
   subtitleCount: '未対応 {{count}} 件',
   emptyTitle: 'まだ報告はありません',
   emptyDescription: '問題を報告すると、ここに表示されて経過を確認できます。',

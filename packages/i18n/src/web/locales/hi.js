@@ -417,7 +417,8 @@ export default {
   dash: {
     tabOverview: 'सारांश',
     tabScreen: 'स्क्रीन टाइम',
-    tabApps: 'ऐप और वेब',
+    tabApps: 'ऐप',
+    tabWeb: 'वेब',
     tabSafety: 'सुरक्षा',
     tabControls: 'नियंत्रण',
     tabReport: 'साप्ताहिक रिपोर्ट',

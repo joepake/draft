@@ -419,7 +419,8 @@ export default {
   dash: {
     tabOverview: 'Ikhtisar',
     tabScreen: 'Waktu Layar',
-    tabApps: 'Aplikasi & Web',
+    tabApps: 'Aplikasi',
+    tabWeb: 'Web',
     tabSafety: 'Keamanan',
     tabControls: 'Kendali',
     tabReport: 'Laporan mingguan',

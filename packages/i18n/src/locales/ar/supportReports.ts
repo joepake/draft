@@ -1,5 +1,5 @@
 export const supportReports = {
-  title: 'الطلبات والتقارير',
+  title: 'الدعم',
   subtitleCount: '{{count}} قيد المعالجة',
   emptyTitle: 'لا توجد تقارير بعد',
   emptyDescription: 'عند إبلاغك عن مشكلة، ستظهر هنا لتتمكن من متابعتها.',

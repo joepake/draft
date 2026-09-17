@@ -1,5 +1,5 @@
 export const supportReports = {
-  title: 'Запросы и обращения',
+  title: 'Поддержка',
   subtitleCount: '{{count}} в обработке',
   emptyTitle: 'Пока нет обращений',
   emptyDescription:

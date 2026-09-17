@@ -1,9 +1,24 @@
 import { useEffect, useMemo, useState } from 'react';
+import Icon from '@kidgate/web-ui/Icon';
 import { useT } from '@kidgate/web-ui/useT';
 import { SUPPORT_REPORT_MAX_MESSAGE_LENGTH } from '@kidgate/schema/supportReport';
 import { userRepository } from '../adapters/repositories.js';
 import Card from './Card.jsx';
 import { timeAgo } from './timeAgo.js';
+
+/*
+ * The three lifecycle values, as a mark and a tone. `SupportReportStatus` is
+ * the list (`@kidgate/schema/supportReport`) and an ABSENT status is
+ * `pending` — a report no operator has touched yet — so every read below
+ * defaults rather than indexing on `undefined`, which printed
+ * `supportReports.status.undefined` as a raw key.
+ *
+ * Only the open half is coloured: resolved is the resting state, and a green
+ * chip on every old report would leave the one still waiting with nothing to
+ * stand out against — the rule the control grid's tones already follow.
+ */
+const STATUS_TONE = { pending: 'warning', in_review: 'brand', resolved: 'muted' };
+const STATUS_ICON = { pending: 'hourglass', in_review: 'eye', resolved: 'check' };
 
 /**
  * A parent's own support reports, and the form that files one.
@@ -93,47 +108,93 @@ export default function SupportCard({
      */
     <Card>
       {reports.length > 0 && (
-        <p className="hint">{appT('supportReports.subtitleCount', { count: open })}</p>
+        /* The open count as a chip rather than a grey line: it is the one
+           reading on this page, and `Card` has no header slot to put it in. */
+        <p className="support-count">
+          <span className={`pill ${open > 0 ? 'tone-warning' : 'tone-good'}`}>
+            <span className="pill-dot" />
+            {appT('supportReports.subtitleCount', { count: open })}
+          </span>
+        </p>
       )}
       {reports.length === 0 ? (
-        <>
-          <p className="empty">{appT('supportReports.emptyTitle')}</p>
+        /* A first-run panel, not two stranded paragraphs: the lifebuoy says
+           what the card is for before either sentence is read. */
+        <div className="empty-panel">
+          <span className="empty-panel-icon">
+            <Icon name="lifebuoy" size={24} />
+          </span>
+          <strong>{appT('supportReports.emptyTitle')}</strong>
           <p className="hint">{appT('supportReports.emptyDescription')}</p>
-        </>
+        </div>
       ) : (
-        <ul className="child-device-list">
+        <ul className="support-list">
           {reports.map(report => {
             const isOpen = expanded === report.id;
+            const status = report.status ?? 'pending';
             return (
-              <li key={report.id} className="support-row">
+              <li
+                key={report.id}
+                className={`support-item tone-${STATUS_TONE[status] ?? 'muted'}${
+                  isOpen ? ' is-open' : ''
+                }`}
+              >
                 <button
-                  className="kid"
+                  className="support-head"
                   aria-expanded={isOpen}
+                  title={appT('supportReports.expandHint')}
                   onClick={() =>
                     setExpanded(current => (current === report.id ? null : report.id))
                   }
                 >
-                  <span className="kid-meta">
+                  <span className="support-icon">
+                    <Icon name={STATUS_ICON[status] ?? 'message'} size={15} />
+                  </span>
+                  <span className="support-body">
                     <strong>{report.message}</strong>
                     <em>
-                      {appT(`supportReports.status.${report.status}`)}
+                      {appT(`supportReports.status.${status}`)}
                       <span className="dot-sep">·</span>
                       {timeAgo(report.createdAt)}
                     </em>
+                  </span>
+                  {/*
+                    That there IS a reply, never that it is new.
+                    `supportReports.unreadBadge` says "New reply" and means it
+                    — the phone knows, because it stores what it has shown
+                    (MMKV); this browser stores nothing for support reports
+                    (`reportSeen.js` is the weekly report's, not this one), so
+                    the badge would have called a month-old answer new on
+                    every visit.
+                  */}
+                  {report.response && !isOpen && (
+                    <span
+                      className="support-badge"
+                      title={appT('supportReports.responseLabel')}
+                      aria-label={appT('supportReports.responseLabel')}
+                    >
+                      <Icon name="message" size={12} />
+                    </span>
+                  )}
+                  <span className="support-chev">
+                    <Icon name="chevronRight" size={14} />
                   </span>
                 </button>
                 {isOpen && (
                   <div className="support-detail">
                     {report.response ? (
-                      <>
+                      <div className="support-reply">
                         <strong>{appT('supportReports.responseLabel')}</strong>
                         <p>{report.response}</p>
-                      </>
+                      </div>
                     ) : (
                       /* Only while it is still open: "waiting for a reply"
                          under a resolved report would be wrong twice. */
-                      report.status !== 'resolved' && (
-                        <p className="hint">{appT('supportReports.waitingNote')}</p>
+                      status !== 'resolved' && (
+                        <p className="support-waiting">
+                          <Icon name="clock" size={13} />
+                          {appT('supportReports.waitingNote')}
+                        </p>
                       )
                     )}
                   </div>
@@ -144,13 +205,13 @@ export default function SupportCard({
         </ul>
       )}
 
-      <div className="child-assign">
+      <div className="support-compose">
         <label className="sheet-label" htmlFor="support-message">
           {appT('supportReports.newReportButton')}
         </label>
         <textarea
           id="support-message"
-          className="reward-input"
+          className="reward-input support-input"
           rows={4}
           value={message}
           maxLength={SUPPORT_REPORT_MAX_MESSAGE_LENGTH}
@@ -161,13 +222,29 @@ export default function SupportCard({
             check is against that constant rather than a number typed here. */}
         {tooLong && <p className="hint">{appT('settings.reportMessageTooLong')}</p>}
         {error && <p className="hint">{appT(error)}</p>}
-        <button
-          className="btn btn-primary"
-          disabled={busy || trimmed.length === 0 || tooLong}
-          onClick={submit}
-        >
-          {busy ? t('dash.working') : t('dash.save')}
-        </button>
+        <div className="support-compose-foot">
+          {/* Digits, in every locale — a counter needs no key, and the cap is
+              the schema's rather than a number written here. */}
+          <span className={`support-chars${tooLong ? ' is-over' : ''}`}>
+            {trimmed.length}/{SUPPORT_REPORT_MAX_MESSAGE_LENGTH}
+          </span>
+          <button
+            className="btn btn-primary"
+            disabled={busy || trimmed.length === 0 || tooLong}
+            onClick={submit}
+          >
+            {/* Send, not Save. This button hands a report to a human at
+                KidGate — nothing is kept as a draft, and "Save" described an
+                action the screen has never had.
+
+                `settings.reportSendButton` is the PHONE's own label for this
+                exact action (`ReportProblemModal`), so it is reused rather
+                than twinned: a new key here would be one sentence in two
+                packs, and only one of them gets edited next time
+                (`.claude/rules/i18n.md`). */}
+            {busy ? t('dash.working') : appT('settings.reportSendButton')}
+          </button>
+        </div>
       </div>
     </Card>
   );

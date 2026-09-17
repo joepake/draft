@@ -422,7 +422,8 @@ export default {
   dash: {
     tabOverview: 'Genel bakış',
     tabScreen: 'Ekran Süresi',
-    tabApps: 'Uygulamalar ve web',
+    tabApps: 'Uygulamalar',
+    tabWeb: 'Web',
     tabSafety: 'Güvenlik',
     tabControls: 'Denetimler',
     tabReport: 'Haftalık rapor',

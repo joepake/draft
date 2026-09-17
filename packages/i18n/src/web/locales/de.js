@@ -424,7 +424,8 @@ export default {
   dash: {
     tabOverview: 'Übersicht',
     tabScreen: 'Bildschirmzeit',
-    tabApps: 'Apps & Web',
+    tabApps: 'Apps',
+    tabWeb: 'Web',
     tabSafety: 'Sicherheit',
     tabControls: 'Steuerung',
     tabReport: 'Wochenbericht',

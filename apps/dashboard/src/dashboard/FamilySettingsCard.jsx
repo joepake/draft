@@ -6,32 +6,45 @@ import Card from './Card.jsx';
 import ChildInitial from './ChildInitial.jsx';
 import ParentsCard from './ParentsCard.jsx';
 import Toggle from './Toggle.jsx';
+import TrustedContactsCard from './TrustedContactsCard.jsx';
 import { deviceIconName } from './deviceIcon.js';
 import { timeAgo } from './timeAgo.js';
+import { trustedContactRepository } from '../adapters/repositories.js';
 
 /**
  * The family screen — the web half of `apps/mobile`'s `FamilyDetailScreen`.
  *
- * **Three tabs with counts, not three stacked cards.** The phone splits this
+ * **Four tabs with counts, not four stacked cards.** The phone splits this
  * material into Parents / Children / Child devices and the split is the point:
  * each answers a different question, and a parent arriving to invite a
- * co-parent should not scroll past the roster to reach it. Stacked, the three
- * were also the first thing on the Family section, in front of the children a
+ * co-parent should not scroll past the roster to reach it. Stacked, they were
+ * also the first thing on the Family section, in front of the children a
  * parent actually came for — which is why the list now opens on a row that
  * pushes this instead.
  *
+ * **Trusted contacts is the fourth, and it is deliberately NOT folded into
+ * Parents** (2026-09-17). A parent has an account and can change what KidGate
+ * does; a trusted contact is a name and an email told when a child presses
+ * SOS, with no account and no access at all. One roster holding both would
+ * have a parent expecting a contact to be able to open the dashboard. A tab of
+ * its own keeps the two apart while putting both where a parent looks for
+ * people — which is the Family screen, not Settings, where this lived until
+ * now.
+ *
  * Every sentence is the app pack's. The tab labels are the phone's own section
- * titles, so the two consoles name the same three groups identically.
+ * titles, so the two consoles name the same four groups identically.
  */
 
 const TABS = [
   { id: 'parents', labelKey: 'settings.sectionFamilyParentsTitle' },
   { id: 'children', labelKey: 'leaderboard.childrenTitle' },
   { id: 'devices', labelKey: 'settings.sectionFamilyChildrenTitle' },
+  { id: 'contacts', labelKey: 'sos.trustedContactsTitle' },
 ];
 
 export default function FamilySettingsCard({
   family,
+  familyId = null,
   children,
   devices = [],
   leaderboardEnabled,
@@ -52,6 +65,21 @@ export default function FamilySettingsCard({
   const [renaming, setRenaming] = useState(false);
   const [nameDraft, setNameDraft] = useState(family.name ?? '');
   const [newChild, setNewChild] = useState('');
+  const [contacts, setContacts] = useState([]);
+
+  /* Here rather than inside the card, because the tab bar needs the count
+     before the tab has been opened — a listener that starts when its own tab
+     mounts can only ever report zero on the bar that would send a parent
+     there. Off the demo build: the repository needs a real family. */
+  useEffect(() => {
+    if (!live || !familyId) {
+      setContacts([]);
+      return undefined;
+    }
+    return trustedContactRepository.subscribe(familyId, setContacts, () =>
+      setContacts([]),
+    );
+  }, [live, familyId]);
 
   // The other parent renames it too, and the meta read re-delivers.
   useEffect(() => {
@@ -63,6 +91,7 @@ export default function FamilySettingsCard({
     parents: family.parents.length,
     children: children.length,
     devices: devices.length,
+    contacts: contacts.length,
   };
 
   return (
@@ -295,8 +324,25 @@ export default function FamilySettingsCard({
         </Card>
       )}
 
+      {tab === 'contacts' && (
+        <Card
+          title={appT('sos.trustedContactsTitle')}
+          subtitle={appT('sos.trustedContactsRowSubtitle')}
+        >
+          {/* The demo build has no family to read, and the card's whole body
+              is a list plus a form that would write nowhere. The tab stays —
+              a tab that came and went with the build is worse than one that
+              says there is nothing here. */}
+          {live && familyId ? (
+            <TrustedContactsCard familyId={familyId} contacts={contacts} />
+          ) : (
+            <p className="hint">{appT('sos.trustedContactsEmpty')}</p>
+          )}
+        </Card>
+      )}
+
       {/* The star chart, owner only and outside the tabs: it is about the
-          family rather than about any one of the three groups. */}
+          family rather than about any one of the four groups. */}
       {isOwner && (
         <Card
           title={appT('leaderboard.settingsTitle')}

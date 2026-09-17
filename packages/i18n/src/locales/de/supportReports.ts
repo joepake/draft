@@ -1,5 +1,5 @@
 export const supportReports = {
-  title: 'Anfragen & Meldungen',
+  title: 'Support',
   subtitleCount: '{{count}} offen',
   emptyTitle: 'Noch keine Meldungen',
   emptyDescription:

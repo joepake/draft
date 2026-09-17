@@ -1184,6 +1184,50 @@
   margin-top: 0.9rem;
 }
 
+/* ---------- The device's three tabs ----------
+ *
+ * Between the hero and the tab's own content. Underline rather than the `.seg`
+ * pill the charts use: a segmented control reads as a filter over one thing,
+ * and these three are different screens about one device.
+ *
+ * The bar scrolls sideways rather than wrapping — three words wrap to two rows
+ * in de and ru, and a nav that changes height as a parent switches language
+ * moves the page under them.
+ */
+.dev-tabs {
+  display: flex;
+  gap: 0.2rem;
+  border-bottom: 1px solid var(--line);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.dev-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.dash .dev-tab {
+  padding: 0.55rem 0.85rem;
+  border-radius: 0;
+  white-space: nowrap;
+  color: var(--muted);
+  font-size: var(--dash-text-3);
+  font-weight: 600;
+  /* Reserved by the resting state too, so the row does not lift by 2px on the
+     first press. */
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+}
+
+.dash .dev-tab:hover {
+  color: var(--ink);
+}
+
+.dash .dev-tab.is-active {
+  color: var(--ink);
+  border-bottom-color: var(--brand);
+}
+
 /* ---------- Cards & grid ---------- */
 
 .card {
@@ -1259,22 +1303,54 @@
 .tiles {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.9rem 1.15rem;
   margin-bottom: 1.15rem;
   background: var(--surface);
   border: 1px solid var(--card-line);
   border-radius: var(--dash-radius-3);
   box-shadow: var(--card-lift);
-  padding: 1.25rem;
+  /*
+   * No padding and no gap, because the quadrants are ruled rather than spaced.
+   * Four figures floating in one box read as four unrelated notes; four panes
+   * behind one frame read as a report. `overflow: hidden` is what makes the
+   * rules stop at the corner radius.
+   */
+  padding: 0;
+  gap: 0;
+  overflow: hidden;
 }
 
 /* One frame around four numbers means one LIFT too — a tile that kept its own
-   shadow would cast it inside the card holding it. */
+   shadow would cast it inside the card holding it. The padding moves here, so
+   each pane carries its own and the hairlines reach the card's edge. */
 .tiles .tile {
   background: none;
   border: 0;
   box-shadow: none;
-  padding: 0;
+  padding: 1.1rem 1.2rem;
+}
+
+/*
+ * The quadrant rules. Logical and by position rather than four hand-placed
+ * borders: the tile COUNT varies — Screen time and Blocked each disappear on a
+ * device that cannot measure them — so anything keyed to "the third one" draws
+ * a line down the middle of a two-figure card.
+ *
+ * `--line`, never `--card-line`: the latter is TRANSPARENT in light (the card
+ * there is a lift, not an outline — see the palette block), so these rules
+ * were drawn and invisible until it was swapped. A divider is what `--line`
+ * exists for.
+ */
+.tiles .tile {
+  border-inline-start: 1px solid var(--line);
+  border-top: 1px solid var(--line);
+}
+
+.tiles .tile:nth-child(2n + 1) {
+  border-inline-start: 0;
+}
+
+.tiles .tile:nth-child(-n + 2) {
+  border-top: 0;
 }
 
 /*
@@ -1288,6 +1364,16 @@
   border: 0;
   box-shadow: none;
   padding: 0;
+  gap: 0.9rem 1.15rem;
+  overflow: visible;
+}
+
+/* Three columns, so the two-column rules above would draw a line down the
+   middle of a row. Spaced rather than ruled: this variant has no frame for a
+   hairline to reach. */
+.tiles-inline .tile {
+  padding: 0;
+  border: 0;
 }
 
 .tile {
@@ -1313,12 +1399,28 @@
   opacity: 0.85;
 }
 
+/* The glyph's own chip. Square-ish rather than round: these are readings, and
+   the round chip is what the feed's rail and the perms list use for events. */
+.tile-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: var(--dash-radius-1);
+  color: var(--ink-2);
+  background: color-mix(in srgb, var(--ink) 7%, transparent);
+}
+
 .tile-value {
   display: block;
   font-size: var(--dash-text-6);
   font-weight: 700;
   letter-spacing: -0.02em;
-  margin: 0.35rem 0 0.15rem;
+  /* Four figures stacked two by two: without this the digits shift the
+     baseline between "0" and "16g 30p" as the numbers change through the day. */
+  font-variant-numeric: tabular-nums;
+  margin: 0.45rem 0 0.15rem;
 }
 
 .tile-meta {
@@ -1326,11 +1428,27 @@
   color: var(--ink-2);
 }
 
+/*
+ * Tone reaches the chip as well as the number. `--good`/`--warning` ARE the
+ * Strong variants (see the palette block at the top), so they are safe as
+ * words on the light card; the fills behind the glyph are the plain ones, the
+ * same mix every other tinted chip in this file uses.
+ */
 .tile.tone-warning .tile-value {
   color: var(--warning);
 }
 .tile.tone-good .tile-value {
   color: var(--good);
+}
+
+.tile.tone-warning .tile-icon {
+  color: var(--warning);
+  background: color-mix(in srgb, var(--warning-fill) 16%, transparent);
+}
+
+.tile.tone-good .tile-icon {
+  color: var(--good);
+  background: color-mix(in srgb, var(--good-fill) 16%, transparent);
 }
 
 .empty,
@@ -2272,81 +2390,78 @@ ol.attn-fix li + li {
   padding: 0.05rem 0.45rem;
 }
 
-/* ---------- Map ---------- */
-
-.map {
-  position: relative;
-  height: 210px;
-  border-radius: var(--dash-radius-2);
-  overflow: hidden;
-  background: linear-gradient(
-    160deg,
-    color-mix(in srgb, var(--plane) 80%, var(--brand)),
-    color-mix(in srgb, var(--plane) 92%, var(--brand))
-  );
-  border: 1px solid var(--line);
+/* ---------- Where the device was ----------
+ *
+ * `.map`, `.map-grid`, `.map-place` and `.map-badge` were here until
+ * 2026-09-17 — a gradient, a grid pattern and place dots placed by their
+ * INDEX in the array. It drew a map this surface has never had, and drew it
+ * badly enough to be reported as a map that would not load.
+ *
+ * What replaces it says only what is known: the fix in words, a link the
+ * parent opens themselves, and the places as a list. A real map is a
+ * `docs/FEASIBILITY.md` decision — a tile provider, a key in a public bundle,
+ * and a child's coordinates leaving on every render.
+ */
+.loc-panel {
+  display: grid;
+  gap: 0.6rem;
+  padding: 0.85rem 0.95rem;
   margin-bottom: 1rem;
-}
-
-.map-grid {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(var(--grid) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-  background-size: 34px 34px;
-  opacity: 0.5;
-}
-
-.map-place {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.25rem;
-  font-size: var(--dash-text-2);
-  color: var(--ink-2);
-  transform: translate(-50%, -50%);
-}
-
-.map-place i {
-  width: 12px;
-  height: 12px;
-  border-radius: 999px;
-  background: var(--muted);
-  box-shadow: 0 0 0 6px color-mix(in srgb, var(--muted) 16%, transparent);
-}
-
-.map-place.is-inside i {
-  background: var(--s1);
-  box-shadow: 0 0 0 8px color-mix(in srgb, var(--brand) 22%, transparent);
-}
-
-.map-place.is-inside {
-  color: var(--ink);
-  font-weight: 600;
-}
-
-.map-badge {
-  position: absolute;
-  left: 0.8rem;
-  bottom: 0.8rem;
-  background: color-mix(in srgb, var(--plane) 88%, transparent);
+  border-radius: var(--dash-radius-2);
   border: 1px solid var(--line);
-  border-radius: var(--dash-radius-1);
-  padding: 0.5rem 0.75rem;
-  backdrop-filter: blur(4px);
+  background: var(--plane);
 }
 
-.map-badge strong {
+.loc-where strong {
   display: block;
-  font-size: var(--dash-text-3);
+  font-size: var(--dash-text-4);
+  font-weight: 700;
+  color: var(--ink);
 }
 
-.map-badge em {
+.loc-where em {
+  display: block;
   font-style: normal;
   font-size: var(--dash-text-2);
   color: var(--muted);
+  margin-top: 0.1rem;
+}
+
+/* A link, not a button: it leaves the app, and the underline is what says so
+   before it is clicked. */
+.loc-open {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.5rem;
+  font-size: var(--dash-text-2);
+  font-weight: 700;
+  color: var(--brand);
+}
+
+.loc-places {
+  list-style: none;
+  margin: 0;
+  padding: 0.6rem 0 0;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.9rem;
+}
+
+.loc-places li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: var(--dash-text-2);
+  color: var(--muted);
+}
+
+/* Inside a place is the ONE thing the old drawing actually knew, and it is
+   the only thing here that takes a tone. */
+.loc-places li.is-inside {
+  color: var(--good);
+  font-weight: 700;
 }
 
 /* ---------- Controls ---------- */
@@ -2604,6 +2719,17 @@ ol.attn-fix li + li {
   height: 1rem;
   width: min(22rem, 85%);
   margin-bottom: 1.6rem;
+}
+
+/*
+ * The skeleton draws `.skel-tile` blocks, not `.tile` panes, so it misses the
+ * padding the real card moved onto each figure when the four became ruled
+ * quadrants. Kept on the container here: a skeleton whose blocks sit flush
+ * against one another and against the frame is not the shape it stands in for.
+ */
+.dash-skel .tiles {
+  padding: 1.25rem;
+  gap: 0.9rem 1.15rem;
 }
 
 .dash-skel .skel-tile {
@@ -3563,17 +3689,37 @@ ol.attn-fix li + li {
  * only thing on screen that says a device is stacked on top of the Family
  * list — and a 15px chevron tucked against a heading is not a target.
  */
+/*
+ * The way out of a pushed frame, and it has to LOOK like one.
+ *
+ * It was grey text with a chevron, flush against the page's left edge — on a
+ * stack four deep (family → child → device → panel) that is the only control
+ * on screen that undoes a step, and it read as a caption. It carries the
+ * surface and the hairline every other small control here has now; the tint on
+ * hover is the same one the control cards take.
+ */
 .dash-back {
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
-  margin-bottom: 0.35rem;
-  padding: 0.25rem 0.4rem 0.25rem 0.2rem;
-  margin-inline-start: -0.2rem;
-  border-radius: var(--dash-radius-1);
+  margin-bottom: 0.45rem;
+  padding: 0.3rem 0.65rem 0.3rem 0.45rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
   font-size: var(--dash-text-2);
   font-weight: 600;
-  color: var(--muted);
+  color: var(--ink-2);
+  transition:
+    color var(--kg-motion-fast) ease,
+    border-color var(--kg-motion-fast) ease,
+    background var(--kg-motion-fast) ease;
+}
+
+.dash-back:hover {
+  color: var(--ink);
+  border-color: color-mix(in srgb, var(--brand) 40%, var(--line));
+  background: color-mix(in srgb, var(--brand) 8%, var(--surface));
 }
 
 .dash-back:hover {
@@ -3688,7 +3834,7 @@ ol.attn-fix li + li {
 .control-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
-  gap: 0.5rem;
+  gap: 0.6rem;
 }
 
 .control-card {
@@ -3696,19 +3842,31 @@ ol.attn-fix li + li {
   flex-direction: column;
   align-items: flex-start;
   gap: 0.15rem;
-  padding: 0.75rem;
+  padding: 0.85rem 0.85rem 0.75rem;
   text-align: start;
   border-radius: var(--dash-radius-2);
   border: 1px solid var(--line);
   background: var(--plane);
   transition:
     background var(--kg-motion-fast) ease,
-    border-color var(--kg-motion-fast) ease;
+    border-color var(--kg-motion-fast) ease,
+    box-shadow var(--kg-motion-fast) ease;
 }
 
+/*
+ * Hover RISES the card: from the recessed `--plane` it sits on to the card's
+ * own `--surface`, plus a shadow. That is the whole affordance — the grid is
+ * the device's navigation, and a tile that cannot be told from its ground is
+ * not obviously a door.
+ *
+ * Nothing moves, as everywhere else on this surface. The shadow is invisible
+ * in dark by design (see the palette block), which is why the brand-tinted
+ * edge and fill carry the state there and are not decoration on top of it.
+ */
 .control-card:hover:not(:disabled) {
   border-color: color-mix(in srgb, var(--brand) 45%, var(--line));
-  background: color-mix(in srgb, var(--brand) 7%, var(--plane));
+  background: color-mix(in srgb, var(--brand) 7%, var(--surface));
+  box-shadow: var(--kg-shadow-md);
 }
 
 .control-card-icon {
@@ -3720,6 +3878,20 @@ ol.attn-fix li + li {
   border-radius: var(--dash-radius-1);
   color: var(--brand);
   background: color-mix(in srgb, var(--brand) 12%, transparent);
+  transition:
+    color var(--kg-motion-fast) ease,
+    background var(--kg-motion-fast) ease;
+}
+
+/*
+ * Attention reaches the glyph, and ONLY attention — the same rule the figure
+ * below already follows. `active` is the ordinary case, and tinting that too
+ * would light every chip in the grid and leave the one card asking for
+ * something with nothing to stand out against.
+ */
+.control-card.tone-attention .control-card-icon {
+  color: var(--warning);
+  background: color-mix(in srgb, var(--warning-fill) 16%, transparent);
 }
 
 .control-card strong {
@@ -3754,6 +3926,10 @@ ol.attn-fix li + li {
   font-size: var(--dash-text-5);
   font-weight: 800;
   line-height: 1.15;
+  /* A grid of figures at display size, each in its own tile: without this the
+     digits change width as the numbers do and a column of cards stops sharing
+     a left edge on the one thing being scanned. */
+  font-variant-numeric: tabular-nums;
   color: var(--ink);
 }
 
@@ -4034,11 +4210,16 @@ ol.attn-fix li + li {
   border-color: color-mix(in srgb, var(--warning-fill) 35%, transparent);
 }
 
-.chip.is-action {
-  cursor: pointer;
-}
-
-.chip:not(.is-action) {
+/*
+ * The pointer follows the ELEMENT, which is what the comment above always
+ * said it did. It was keyed on `.is-action` instead, and that class exists for
+ * exactly three call sites — so every other `<button class="chip">` in the app
+ * said "not clickable" under the pointer: the activity feed's child and device
+ * filters, and the Family screen's four tabs. A `<span>` is the reading and
+ * gets nothing; a `<button>` already takes `pointer` from the reset at the top
+ * of this file, and cannot be forgotten the way a class can.
+ */
+span.chip {
   cursor: default;
 }
 
@@ -4449,19 +4630,356 @@ ol.attn-fix li + li {
   border-top: 1px solid var(--line);
 }
 
-/* A filed support report: the row is the summary, the reply drops below it. */
-.support-row {
-  flex-direction: column;
-  align-items: stretch;
+/*
+ * ---------- Requests & reports ----------
+ *
+ * A filed report is a CARD ON THE PLANE, not a row in a list: the summary is
+ * the door and the reply drops out of it. It borrowed `.kid` and
+ * `.child-device-list` until 2026-09-17, which drew a parent's own support
+ * history in the visual language of the device picker — a chevron column and
+ * an avatar slot it had nothing to put in.
+ *
+ * The status mark is the left glyph, in its own tone (`SupportCard.jsx` owns
+ * the mapping). Only the open half is coloured; resolved takes the muted chip
+ * so the one report still waiting is the one that reads.
+ */
+.support-count {
+  margin: 0 0 0.7rem;
+}
+
+.support-list {
+  list-style: none;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.support-item {
+  border: 1px solid var(--line);
+  border-radius: var(--dash-radius-2);
+  background: var(--plane);
+  overflow: hidden;
+  transition: border-color var(--kg-motion-fast) ease;
+}
+
+/* The card rises to the surface it sits on, the same way a control tile does
+   — nothing MOVES: `apps/dashboard` imports only this file and the
+   reduced-motion reset lives in `index.css`. */
+.support-item:hover {
+  border-color: var(--card-line);
+  background: var(--surface);
+}
+
+.support-item.is-open {
+  background: var(--surface);
+  border-color: color-mix(in srgb, var(--brand) 35%, var(--line));
+}
+
+.support-head {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.7rem 0.75rem;
+  text-align: start;
+  background: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+}
+
+.support-icon {
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: var(--dash-radius-1);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  background: color-mix(in srgb, var(--ink) 7%, transparent);
+  color: var(--muted);
+}
+
+.support-item.tone-warning .support-icon {
+  background: color-mix(in srgb, var(--warning-fill) 16%, transparent);
+  color: var(--warning);
+}
+
+.support-item.tone-brand .support-icon {
+  background: color-mix(in srgb, var(--brand) 16%, transparent);
+  color: var(--brand);
+}
+
+.support-body {
+  flex: 1;
+  min-width: 0;
+}
+
+/* The message is the title and a report runs to 2,000 characters, so the
+   summary keeps two lines and the rest opens with the row. */
+.support-body strong {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: var(--dash-text-3);
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.support-body em {
+  display: block;
+  font-style: normal;
+  font-size: var(--dash-text-2);
+  color: var(--muted);
+  margin-top: 0.15rem;
+}
+
+/* A report with an answer inside it, on a row that is closed — the mark, in
+   the brand tint, with its name on `title` rather than beside it. */
+.support-badge {
+  flex-shrink: 0;
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: color-mix(in srgb, var(--brand) 16%, transparent);
+  color: var(--brand);
+}
+
+.support-chev {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  transition: transform var(--kg-motion-fast) ease;
+}
+
+.support-item.is-open .support-chev {
+  transform: rotate(90deg);
 }
 
 .support-detail {
-  padding: 0 0.55rem 0.5rem;
+  padding: 0 0.75rem 0.7rem 3.35rem;
   font-size: var(--dash-text-2);
 }
 
-.support-detail p {
+/* The operator's answer, as a reply rather than a second paragraph: a tinted
+   panel with the brand edge on the start side, which is what tells it apart
+   from the parent's own words above it in both palettes. */
+.support-reply {
+  padding: 0.55rem 0.7rem;
+  border-radius: var(--dash-radius-1);
+  border-inline-start: 3px solid var(--brand);
+  background: color-mix(in srgb, var(--brand) 8%, transparent);
+  color: var(--ink-2);
+  line-height: 1.5;
+}
+
+.support-reply strong {
+  display: block;
+  font-size: var(--dash-text-2);
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.support-reply p {
   margin: 0.2rem 0 0;
+}
+
+.support-waiting {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0;
+  color: var(--muted);
+}
+
+.support-waiting .icon {
+  flex-shrink: 0;
+}
+
+/* ---------- A card with nothing in it yet ----------
+ *
+ * Shared, not the support card's: two of these exist (no report filed, no
+ * trusted contact added) and both were a `.empty` line over a `.hint` line,
+ * stranded at the top of a card whose form then did all the talking. The mark
+ * says what the card is FOR before either sentence is read.
+ */
+.empty-panel {
+  display: grid;
+  justify-items: center;
+  gap: 0.3rem;
+  padding: 1.6rem 1rem;
+  border: 1px dashed var(--line);
+  border-radius: var(--dash-radius-2);
+  text-align: center;
+}
+
+.empty-panel-icon {
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 0.15rem;
+  background: color-mix(in srgb, var(--brand) 12%, transparent);
+  color: var(--brand);
+}
+
+.empty-panel strong {
+  font-size: var(--dash-text-4);
+}
+
+.empty-panel .hint {
+  max-width: 34ch;
+}
+
+/* ---------- Trusted contacts ----------
+ *
+ * Who is emailed when a child presses SOS. It was `.events` rows with a grey
+ * person glyph and a bare `.reward-form` under them — five silhouettes told
+ * apart only by reading, over two full-width fields and a lone button.
+ */
+.tc-list {
+  list-style: none;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.tc-row {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.6rem 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: var(--dash-radius-2);
+  background: var(--plane);
+}
+
+/* The initial, in the brand tint rather than a child's accent: a grandparent
+   is not a child and has no colour in the schema to be. */
+.tc-avatar {
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  font-size: var(--dash-text-3);
+  font-weight: 700;
+  color: var(--brand);
+  background: color-mix(in srgb, var(--brand) 14%, transparent);
+}
+
+.tc-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.tc-body strong {
+  display: block;
+  font-size: var(--dash-text-3);
+  font-weight: 600;
+}
+
+/* The address is the thing that can be long, and it is one word to a browser:
+   it breaks rather than pushing the remove button off the row. */
+.tc-body em {
+  display: block;
+  font-style: normal;
+  font-size: var(--dash-text-2);
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
+.tc-form {
+  margin-top: 0.9rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--line);
+}
+
+/* Side by side where they fit, stacked where they do not. The basis is what
+   decides it, so a language with long labels wraps on its own. */
+.tc-fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.tc-field {
+  flex: 1 1 13rem;
+  min-width: 0;
+}
+
+.tc-form-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 0.7rem;
+}
+
+.tc-count {
+  font-size: var(--dash-text-2);
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.tc-form-foot .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* The privacy note: what the contact gets, and that no photo goes with it. */
+.tc-note {
+  display: flex;
+  gap: 0.45rem;
+  margin: 0.9rem 0 0;
+  padding: 0.6rem 0.7rem;
+  border-radius: var(--dash-radius-1);
+  background: color-mix(in srgb, var(--ink) 5%, transparent);
+  color: var(--ink-2);
+  font-size: var(--dash-text-2);
+  line-height: 1.5;
+}
+
+.tc-note .icon {
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+  color: var(--muted);
+}
+
+/* The form, separated from the history by a rule — it files INTO the list
+   above it, so it reads as the last thing on the card rather than a panel. */
+.support-compose {
+  margin-top: 1rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--line);
+}
+
+.support-input {
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.support-compose-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 0.6rem;
+}
+
+.support-chars {
+  font-size: var(--dash-text-2);
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.support-chars.is-over {
+  color: var(--critical);
+  font-weight: 700;
 }
 
 /* ---------- The family feed ---------- */
@@ -4487,6 +5005,31 @@ ol.attn-fix li + li {
   display: flex;
   align-items: flex-start;
   gap: 0.6rem;
+  position: relative;
+}
+
+/*
+ * The rail the comment above has always described and nothing ever drew.
+ * It runs from the glyph's centre into the gap below it, so a day reads as one
+ * thread rather than a stack of cards that happen to share a left edge, and it
+ * stops on the last row — a line running off the end points at nothing.
+ *
+ * Logical, not `left`: this file is being walked off physical properties for
+ * RTL (`packages/i18n/src/web/languages.js`), and a new one is free to start
+ * on the right side of that.
+ */
+.feed-row::before {
+  content: '';
+  position: absolute;
+  inset-inline-start: 1rem;
+  top: 0.35rem;
+  bottom: calc(-0.5rem - 1px);
+  width: 1px;
+  background: var(--line);
+}
+
+.feed-row:last-child::before {
+  display: none;
 }
 
 .feed-row-icon {
@@ -4500,6 +5043,13 @@ ol.attn-fix li + li {
   color: var(--muted);
   border: 1px solid var(--line);
   background: var(--surface);
+  /* Over the rail, not under it: the glyph's own ground is what breaks the
+     line into segments. */
+  position: relative;
+  z-index: 1;
+  transition:
+    color var(--kg-motion-fast) ease,
+    border-color var(--kg-motion-fast) ease;
 }
 
 .feed-row-card {
@@ -4510,6 +5060,26 @@ ol.attn-fix li + li {
   border-radius: var(--dash-radius-2);
   box-shadow: var(--card-lift);
   padding: 0.7rem 0.85rem;
+  transition:
+    border-color var(--kg-motion-fast) ease,
+    box-shadow var(--kg-motion-fast) ease;
+}
+
+/*
+ * Hover moves nothing. A row is not a control — there is nothing to press —
+ * so the card answers the pointer by warming its edge and its glyph, which is
+ * enough to say "this is the one you are on" in a column of forty. A
+ * transform here would shift a list a parent is reading, and this stylesheet
+ * is not covered by the reduced-motion reset in `index.css`: `apps/dashboard`
+ * imports only this one.
+ */
+.feed-row:hover .feed-row-card {
+  border-color: color-mix(in srgb, var(--brand) 30%, var(--card-line));
+}
+
+.feed-row:hover .feed-row-icon {
+  color: var(--brand);
+  border-color: color-mix(in srgb, var(--brand) 35%, var(--line));
 }
 
 /* Who, and on what. One chip rather than two lines: a family feed is read by
@@ -4888,6 +5458,34 @@ ol.attn-fix li + li {
 
   .tile {
     padding: 0.8rem 0.85rem;
+  }
+
+  /*
+   * One figure per row at phone width. The labels are uppercase and
+   * letter-spaced by the time they are captions, and two quadrants across
+   * 375px wrapped "THỜI GIAN SỬ DỤNG HÔM NAY" to three lines beside a
+   * neighbour of two words — the pane's own tallest row, for its smallest
+   * text. The rules follow: the vertical one has nothing left to divide, and
+   * every pane but the first gains a horizontal one.
+   *
+   * `:not(.tiles-inline)` on each: that variant is inside a card already and
+   * resets padding and borders to nothing, and these come later in the file.
+   */
+  .tiles:not(.tiles-inline) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .tiles:not(.tiles-inline) .tile {
+    padding: 0.9rem 1rem;
+    border-inline-start: 0;
+  }
+
+  .tiles:not(.tiles-inline) .tile:nth-child(-n + 2) {
+    border-top: 1px solid var(--line);
+  }
+
+  .tiles:not(.tiles-inline) .tile:first-child {
+    border-top: 0;
   }
 
   .dash-top {
@@ -6200,14 +6798,13 @@ ol.attn-fix li + li {
    their ground and radius — a bordered box with the plane showing through read
    as a different kind of thing sitting at the end of a run of cards. Its
    padding stays tighter: it is two controls, not a section. */
+/* The rename half only — it IS a `Card` since 2026-09-17 and had been
+   redrawing one by hand (surface, outline, radius, lift), which is how a
+   fill-only light card came to carry a grey border the design says it does
+   not need. The removal below it is `.danger-zone`. */
 .device-admin {
   display: grid;
   gap: 0.5rem;
-  padding: 0.8rem 0.9rem;
-  background: var(--surface);
-  border: 1px solid var(--card-line);
-  border-radius: var(--dash-radius-3);
-  box-shadow: var(--card-lift);
 }
 
 .device-admin-row {
@@ -6272,8 +6869,19 @@ ol.attn-fix li + li {
 
 .danger-zone .card-head {
   align-items: center;
-  /* Nothing follows it: the card's own padding is the bottom margin. */
+  /* Usually nothing follows it: the card's own padding is the bottom margin. */
   margin-bottom: 0;
+}
+
+/*
+ * Except when the block has a body — the account's deletion zone opens one
+ * (what goes, and the grace window once it is scheduled), and the child hub's
+ * never does. `:only-child` rather than a modifier class, because `Card`
+ * renders `null` children as nothing and the geometry follows what is
+ * actually there.
+ */
+.danger-zone .card-head:not(:only-child) {
+  margin-bottom: 0.75rem;
 }
 
 /*

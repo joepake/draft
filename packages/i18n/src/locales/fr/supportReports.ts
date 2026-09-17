@@ -1,5 +1,5 @@
 export const supportReports = {
-  title: 'Demandes et signalements',
+  title: 'Assistance',
   subtitleCount: '{{count}} en cours',
   emptyTitle: 'Aucun signalement pour le moment',
   emptyDescription:

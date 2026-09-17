@@ -3,7 +3,7 @@
  * filed, its status, and the operator's reply once there is one.
  */
 export const supportReports = {
-  title: 'Requests & reports',
+  title: 'Support',
   subtitleCount: '{{count}} open',
   emptyTitle: 'No reports yet',
   emptyDescription:

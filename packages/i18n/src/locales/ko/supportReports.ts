@@ -1,5 +1,5 @@
 export const supportReports = {
-  title: '요청 및 신고',
+  title: '지원',
   subtitleCount: '{{count}}건 진행 중',
   emptyTitle: '아직 신고 내역이 없습니다',
   emptyDescription: '문제를 신고하면 여기에서 진행 상황을 확인할 수 있습니다.',

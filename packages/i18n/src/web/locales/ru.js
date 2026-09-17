@@ -423,7 +423,8 @@ export default {
   dash: {
     tabOverview: 'Обзор',
     tabScreen: 'Экранное время',
-    tabApps: 'Приложения и веб',
+    tabApps: 'Приложения',
+    tabWeb: 'Веб',
     tabSafety: 'Безопасность',
     tabControls: 'Управление',
     tabReport: 'Недельный отчёт',

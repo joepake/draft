@@ -17,9 +17,19 @@ import { timeAgo } from './timeAgo.js';
  * event. `.claude/rules/i18n.md` carries the rule; the filter chips, the day
  * headings and the empty state come from the same pack for the same reason.
  *
- * **It reads `familyActivities`, never the per-device rows.** Those are scoped
- * to whichever device the Family section has open (`useFamilyData`), and a
- * family feed that changes when a parent picks a phone is not one.
+ * **As the family feed it reads `familyActivities`, never the per-device
+ * rows.** Those are scoped to whichever device the Family section has open
+ * (`useFamilyData`), and a family feed that changes when a parent picks a
+ * phone is not one.
+ *
+ * **`deviceScope` turns the same component into one device's log** — the
+ * device detail's third tab. One renderer, because a second one drifts: the
+ * day headings, the rail, the empty states and the free-tier fold are all
+ * decisions this file already made. What the scope changes is only what a
+ * device log cannot honestly draw — the two filter rows (there is nothing
+ * left to filter) and the who-and-what chip (the header above the tab already
+ * names the child and the machine) — plus the hard filter itself, which is
+ * belt and braces over the already-scoped rows the caller passes.
  */
 export default function ActivityFeed({
   activities,
@@ -28,6 +38,7 @@ export default function ActivityFeed({
   actorNames,
   appT,
   teaserSlot = null,
+  deviceScope = null,
 }) {
   /*
    * Two tiers, like the phone: a child, then one of that child's devices.
@@ -51,6 +62,11 @@ export default function ActivityFeed({
 
   const groups = useMemo(() => {
     const scoped = activities.filter(activity => {
+      /* The device log's own guarantee, ahead of the chips: whatever the
+         caller passed, a row that is not this machine's never renders under
+         its name. A row carries `deviceId` and nothing else, so this is the
+         whole of "related to this device". */
+      if (deviceScope) return activity.deviceId === deviceScope.id;
       if (deviceId) return activity.deviceId === deviceId;
       if (!childId) return true;
       return deviceById.get(activity.deviceId)?.childId === childId;
@@ -73,7 +89,7 @@ export default function ActivityFeed({
       current.rows.push(activity);
     });
     return out;
-  }, [activities, childId, deviceId, deviceById]);
+  }, [activities, childId, deviceId, deviceById, deviceScope]);
 
   /** Today / Yesterday / the date itself, in the language on screen. */
   function dayHeading(at) {
@@ -95,8 +111,9 @@ export default function ActivityFeed({
     <section className="feed">
       {/* Chips, not a select: a family has a handful of children and the phone
           draws the same row. Hidden for a family with one child — a filter
-          offering "Everyone" and one name filters nothing. */}
-      {children.length > 1 && (
+          offering "Everyone" and one name filters nothing, and hidden on a
+          device log for the same reason: every row is already one child's. */}
+      {!deviceScope && children.length > 1 && (
         <div className="feed-filter" role="group" aria-label={appT('activities.title')}>
           <button
             type="button"
@@ -141,7 +158,7 @@ export default function ActivityFeed({
         </div>
       )}
 
-      {chipDevices.length > 1 && (
+      {!deviceScope && chipDevices.length > 1 && (
         <div className="feed-filter" role="group" aria-label={appT('activities.title')}>
           <button
             type="button"
@@ -178,12 +195,12 @@ export default function ActivityFeed({
            being filtered to. The phone splits them the same way. */
         <div className="card feed-empty">
           <h2>
-            {deviceId
+            {deviceId || deviceScope
               ? appT('activities.emptyTitleDevice')
               : appT('activities.emptyTitleAll')}
           </h2>
           <p className="hint">
-            {deviceId
+            {deviceId || deviceScope
               ? appT('activities.emptyDescriptionDevice')
               : appT('activities.emptyDescriptionAll')}
           </p>
@@ -219,12 +236,18 @@ export default function ActivityFeed({
                     <div className="feed-row-card">
                       {/* Who and on what, as one chip: a family feed is read
                           by person first, and the machine is what tells two of
-                          a child's apart. */}
-                      <span className="feed-row-who">
-                        {child && <strong>{child.name}</strong>}
-                        {device && <Icon name={deviceIconName(device)} size={12} />}
-                        <span>{device?.name || appT('activities.unknownDevice')}</span>
-                      </span>
+                          a child's apart. Gone on a device log — the header
+                          two rows up already says "Papa · MacBook", and
+                          repeating it on every row is the hero's mistake. */}
+                      {!deviceScope && (
+                        <span className="feed-row-who">
+                          {child && <strong>{child.name}</strong>}
+                          {device && <Icon name={deviceIconName(device)} size={12} />}
+                          <span>
+                            {device?.name || appT('activities.unknownDevice')}
+                          </span>
+                        </span>
+                      )}
                       <strong className="feed-row-title">{copy.title}</strong>
                       {copy.description && <p>{copy.description}</p>}
                       <span className="feed-row-foot">

@@ -432,7 +432,8 @@ export default {
   dash: {
     tabOverview: 'نظرة عامة',
     tabScreen: 'وقت استخدام الشاشة',
-    tabApps: 'التطبيقات والويب',
+    tabApps: 'التطبيقات',
+    tabWeb: 'الويب',
     tabSafety: 'الأمان',
     tabControls: 'أدوات التحكم',
     tabReport: 'التقرير الأسبوعي',

@@ -422,7 +422,8 @@ export default {
   dash: {
     tabOverview: '概要',
     tabScreen: 'スクリーンタイム',
-    tabApps: 'アプリとウェブ',
+    tabApps: 'アプリ',
+    tabWeb: 'ウェブ',
     tabSafety: '安全',
     tabControls: 'コントロール',
     tabReport: '週次レポート',
