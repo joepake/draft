@@ -120,7 +120,7 @@ export function emptyTimeline(): UsageTimeline {
  *
  * Used by the Cloud Function to refuse a malformed upload and by the parent UI
  * to refuse to draw one. A device's timeline is attacker-controlled input like
- * every other field it reports — see the date pinning in `reportChildUsage`.
+ * every other field it reports — see the date pinning in `syncChildAgent`.
  */
 export function isTimeline(value: unknown): value is UsageTimeline {
   if (typeof value !== 'string' || value.length !== USAGE_TIMELINE_MINUTES) {

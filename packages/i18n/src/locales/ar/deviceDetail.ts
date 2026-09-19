@@ -146,4 +146,10 @@ export const deviceDetail = {
   webHistorySitesUnit_many: 'موقعًا',
   managedAtChild:
     'تُدار قواعد هذا الجهاز ومكافآته وتسجيلات الاطمئنان وتنبيهاته في ملف {{childName}}',
+  pauseBrowsing: 'إيقاف التصفح مؤقتًا',
+  pauseBrowsingDescription:
+    'حظر الويب لفترة. تظل المكالمات والتطبيقات غير المتصلة تعمل.',
+  pauseBrowsingOff: 'غير متوقف',
+  pauseBrowsingLeft: 'متوقف · يتبقى {{minutes}} دقيقة',
+  pauseBrowsingFor: 'إيقاف لمدة {{minutes}} دقيقة',
 } as const;

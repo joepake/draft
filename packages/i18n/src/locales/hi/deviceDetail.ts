@@ -138,4 +138,9 @@ export const deviceDetail = {
   webHistorySitesUnit_one: 'साइट',
   managedAtChild:
     'इस डिवाइस के नियम, इनाम, चेक-इन और अलर्ट {{childName}} की प्रोफ़ाइल में प्रबंधित होते हैं',
+  pauseBrowsing: 'ब्राउज़िंग रोकें',
+  pauseBrowsingDescription: 'कुछ देर वेब बंद रहेगा। कॉल और ऑफ़लाइन ऐप चलते रहेंगे।',
+  pauseBrowsingOff: 'रुकी नहीं है',
+  pauseBrowsingLeft: 'रुकी हुई · {{minutes}} मिनट बाकी',
+  pauseBrowsingFor: '{{minutes}} मिनट के लिए रोकें',
 } as const;

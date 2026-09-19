@@ -2,6 +2,9 @@ import type { AppLanguage } from '@kidgate/schema/language';
 import { activities as enActivities } from './locales/en/activities';
 import { appInventory as enAppInventory } from './locales/en/appInventory';
 import { appLimits as enAppLimits } from './locales/en/appLimits';
+import { blockedApps as enBlockedApps } from './locales/en/blockedApps';
+import { trial as enTrial } from './locales/en/trial';
+import { errors as enErrors } from './locales/en/errors';
 import { blockedHours as enBlockedHours } from './locales/en/blockedHours';
 import { checkIn as enCheckIn } from './locales/en/checkIn';
 import { deviceDetail as enDeviceDetail } from './locales/en/deviceDetail';
@@ -198,6 +201,12 @@ export interface ActivityFeedPack extends LocaleTree {
   timeRequest: unknown;
   /** `siteRequestApproved` and its three siblings — the parent's answer to a
    *  child asking for one website. Written by `resolveSiteRequest`. */
+  /** One label: the install quarantine’s name, for `domain/parkReview`. */
+  blockedApps: unknown;
+  /** Twenty strings, and the dashboard renders the trial's cliff line. */
+  trial: unknown;
+  /** Server refusals arrive as keys from here, on both consoles. */
+  errors: unknown;
   webFilter: unknown;
 }
 
@@ -235,6 +244,9 @@ const en: ActivityFeedPack = {
   screenTime: enScreenTime,
   sos: enSos,
   timeRequest: enTimeRequest,
+  blockedApps: enBlockedApps,
+  trial: enTrial,
+  errors: enErrors,
   webFilter: enWebFilter,
 };
 
@@ -280,6 +292,24 @@ const NAMESPACES = [
   'sos',
   'timeRequest',
   'webFilter',
+  /* One label, and it has no twin anywhere reachable: the install quarantine's
+     name (`installApprovalTitle`). `domain/parkReview` lists it among the
+     protections a family can still switch on before their trial ends, and both
+     consoles draw that list from one map — so without this namespace the web
+     one printed `blockedApps.installApprovalTitle` at a parent, which is what
+     `translateIn` does with anything outside this list. 78 strings per language
+     is the price of not inventing a fifteenth name for a feature the phone
+     already names. */
+  'blockedApps',
+  /* The trial banner names what a family loses at the cliff, and both
+     consoles have to say it — `apps/dashboard` draws it on `PlanCard`.
+     Twenty strings, the smallest namespace on this list. */
+  'trial',
+  /* A refused write answers with a `messageKey`, and those name an
+     `errors.*` string — `updateDeviceControls` returns one when a free
+     family’s premium field is dropped. Without this the dashboard
+     printed the raw key at a parent. */
+  'errors',
 ] as const;
 
 type Namespace = (typeof NAMESPACES)[number];
@@ -326,6 +356,9 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     rewardTask: () => import('./locales/ar/rewardTask'),
     sos: () => import('./locales/ar/sos'),
     timeRequest: () => import('./locales/ar/timeRequest'),
+    blockedApps: () => import('./locales/ar/blockedApps'),
+    trial: () => import('./locales/ar/trial'),
+    errors: () => import('./locales/ar/errors'),
     webFilter: () => import('./locales/ar/webFilter'),
     nav: () => import('./locales/ar/nav'),
     shared: () => import('./locales/ar/shared'),
@@ -358,6 +391,9 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     rewardTask: () => import('./locales/de/rewardTask'),
     sos: () => import('./locales/de/sos'),
     timeRequest: () => import('./locales/de/timeRequest'),
+    blockedApps: () => import('./locales/de/blockedApps'),
+    trial: () => import('./locales/de/trial'),
+    errors: () => import('./locales/de/errors'),
     webFilter: () => import('./locales/de/webFilter'),
     nav: () => import('./locales/de/nav'),
     shared: () => import('./locales/de/shared'),
@@ -390,6 +426,9 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     rewardTask: () => import('./locales/es/rewardTask'),
     sos: () => import('./locales/es/sos'),
     timeRequest: () => import('./locales/es/timeRequest'),
+    blockedApps: () => import('./locales/es/blockedApps'),
+    trial: () => import('./locales/es/trial'),
+    errors: () => import('./locales/es/errors'),
     webFilter: () => import('./locales/es/webFilter'),
     nav: () => import('./locales/es/nav'),
     shared: () => import('./locales/es/shared'),
@@ -422,6 +461,9 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     rewardTask: () => import('./locales/fr/rewardTask'),
     sos: () => import('./locales/fr/sos'),
     timeRequest: () => import('./locales/fr/timeRequest'),
+    blockedApps: () => import('./locales/fr/blockedApps'),
+    trial: () => import('./locales/fr/trial'),
+    errors: () => import('./locales/fr/errors'),
     webFilter: () => import('./locales/fr/webFilter'),
     nav: () => import('./locales/fr/nav'),
     shared: () => import('./locales/fr/shared'),
@@ -454,6 +496,9 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     rewardTask: () => import('./locales/hi/rewardTask'),
     sos: () => import('./locales/hi/sos'),
     timeRequest: () => import('./locales/hi/timeRequest'),
+    blockedApps: () => import('./locales/hi/blockedApps'),
+    trial: () => import('./locales/hi/trial'),
+    errors: () => import('./locales/hi/errors'),
     webFilter: () => import('./locales/hi/webFilter'),
     nav: () => import('./locales/hi/nav'),
     shared: () => import('./locales/hi/shared'),
@@ -486,6 +531,9 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     rewardTask: () => import('./locales/id/rewardTask'),
     sos: () => import('./locales/id/sos'),
     timeRequest: () => import('./locales/id/timeRequest'),
+    blockedApps: () => import('./locales/id/blockedApps'),
+    trial: () => import('./locales/id/trial'),
+    errors: () => import('./locales/id/errors'),
     webFilter: () => import('./locales/id/webFilter'),
     nav: () => import('./locales/id/nav'),
     shared: () => import('./locales/id/shared'),
@@ -518,6 +566,9 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     rewardTask: () => import('./locales/it/rewardTask'),
     sos: () => import('./locales/it/sos'),
     timeRequest: () => import('./locales/it/timeRequest'),
+    blockedApps: () => import('./locales/it/blockedApps'),
+    trial: () => import('./locales/it/trial'),
+    errors: () => import('./locales/it/errors'),
     webFilter: () => import('./locales/it/webFilter'),
     nav: () => import('./locales/it/nav'),
     shared: () => import('./locales/it/shared'),
@@ -550,6 +601,9 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     rewardTask: () => import('./locales/ja/rewardTask'),
     sos: () => import('./locales/ja/sos'),
     timeRequest: () => import('./locales/ja/timeRequest'),
+    blockedApps: () => import('./locales/ja/blockedApps'),
+    trial: () => import('./locales/ja/trial'),
+    errors: () => import('./locales/ja/errors'),
     webFilter: () => import('./locales/ja/webFilter'),
     nav: () => import('./locales/ja/nav'),
     shared: () => import('./locales/ja/shared'),
@@ -582,6 +636,9 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     rewardTask: () => import('./locales/ko/rewardTask'),
     sos: () => import('./locales/ko/sos'),
     timeRequest: () => import('./locales/ko/timeRequest'),
+    blockedApps: () => import('./locales/ko/blockedApps'),
+    trial: () => import('./locales/ko/trial'),
+    errors: () => import('./locales/ko/errors'),
     webFilter: () => import('./locales/ko/webFilter'),
     nav: () => import('./locales/ko/nav'),
     shared: () => import('./locales/ko/shared'),
@@ -614,6 +671,9 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     rewardTask: () => import('./locales/pt/rewardTask'),
     sos: () => import('./locales/pt/sos'),
     timeRequest: () => import('./locales/pt/timeRequest'),
+    blockedApps: () => import('./locales/pt/blockedApps'),
+    trial: () => import('./locales/pt/trial'),
+    errors: () => import('./locales/pt/errors'),
     webFilter: () => import('./locales/pt/webFilter'),
     nav: () => import('./locales/pt/nav'),
     shared: () => import('./locales/pt/shared'),
@@ -646,6 +706,9 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     rewardTask: () => import('./locales/ru/rewardTask'),
     sos: () => import('./locales/ru/sos'),
     timeRequest: () => import('./locales/ru/timeRequest'),
+    blockedApps: () => import('./locales/ru/blockedApps'),
+    trial: () => import('./locales/ru/trial'),
+    errors: () => import('./locales/ru/errors'),
     webFilter: () => import('./locales/ru/webFilter'),
     nav: () => import('./locales/ru/nav'),
     shared: () => import('./locales/ru/shared'),
@@ -678,6 +741,9 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     rewardTask: () => import('./locales/tr/rewardTask'),
     sos: () => import('./locales/tr/sos'),
     timeRequest: () => import('./locales/tr/timeRequest'),
+    blockedApps: () => import('./locales/tr/blockedApps'),
+    trial: () => import('./locales/tr/trial'),
+    errors: () => import('./locales/tr/errors'),
     webFilter: () => import('./locales/tr/webFilter'),
     nav: () => import('./locales/tr/nav'),
     shared: () => import('./locales/tr/shared'),
@@ -710,6 +776,9 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     rewardTask: () => import('./locales/vi/rewardTask'),
     sos: () => import('./locales/vi/sos'),
     timeRequest: () => import('./locales/vi/timeRequest'),
+    blockedApps: () => import('./locales/vi/blockedApps'),
+    trial: () => import('./locales/vi/trial'),
+    errors: () => import('./locales/vi/errors'),
     webFilter: () => import('./locales/vi/webFilter'),
     nav: () => import('./locales/vi/nav'),
     shared: () => import('./locales/vi/shared'),

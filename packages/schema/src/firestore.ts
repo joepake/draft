@@ -1,4 +1,5 @@
 import type {
+  DeviceLockEnforcement,
   DeviceMonitoringState,
   DeviceProtectionCounters,
   DeviceProtectionStatus,
@@ -47,6 +48,26 @@ export interface FirestoreUser {
    * blank. `docs/ADMIN_REPORTING.md`.
    */
   firstPurchasedAt?: string | null;
+  /**
+   * When this family's paid plan last ran out. Written by both expiry writers —
+   * `functions/scheduled/subscriptionExpiry.js` and `applyStoreSubscriptionState`
+   * in `functions/lib/subscriptions.js`.
+   *
+   * **Top-level rather than inside `subscription`, on purpose.** A renewal
+   * replaces that whole map — which is how `endedNoticePending` cancels itself —
+   * so a lapse recorded in it cannot outlive the lapse. Out here it survives,
+   * and churn becomes readable: this field beside an `active` status is a family
+   * that lapsed and came back, beside any other status one that has not.
+   * Nothing else can tell them apart — store notifications are not persisted,
+   * and `subscription.status` only ever holds the current state.
+   *
+   * Dated on the flip and overwritten by the *next* lapse, not by every store
+   * notification about the same one. It is the most recent lapse, not a history:
+   * a family that lapses twice is one churned family, which is what
+   * `docs/ADMIN_REPORTING.md` asks of it. Unbackfillable — a lapse before this
+   * field shipped left no trace anywhere.
+   */
+  lastExpiredAt?: string | null;
   /**
    * Whether siblings see each other's star standings.
    *
@@ -108,6 +129,7 @@ export const FIRESTORE_USER_FIELDS = [
   'planId',
   'subscription',
   'firstPurchasedAt',
+  'lastExpiredAt',
   'leaderboardEnabled',
   'screenTimeBoardEnabled',
   'messageAiConsent',
@@ -215,6 +237,19 @@ export interface ChildDeviceRecord {
   otaVersion?: number;
   status: DeviceStatus;
   isLocked: boolean;
+  /**
+   * The request and the device's own answer to it — see `Device.lockRequestedAt`
+   * and `Device.lockEnforcement` for what each means.
+   *
+   * Undeclared here until 2026-09-18, which is why `mapChildDevice` dropping
+   * both went unseen for three weeks: `deviceMapperFields.test.ts` only guards
+   * fields this interface declares. Both parent surfaces render the fold
+   * (`domain/lockEnforcement`), and with the pair absent it answers `inForce`
+   * for every device that has ever beaten — so a television switched off read
+   * "Locked", which is the exact sentence the fold was built to stop.
+   */
+  lockRequestedAt?: string;
+  lockEnforcement?: DeviceLockEnforcement;
   lastActiveAt: string;
   /**
    * How often this device is currently beating — what `lastActiveAt` above is

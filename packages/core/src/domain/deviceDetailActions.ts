@@ -210,6 +210,30 @@ export function getActionSections(
           supportedBy: supportsWebFiltering,
         },
         {
+          id: 'pause-browsing',
+          title: t('deviceDetail.pauseBrowsing'),
+          description: t('deviceDetail.pauseBrowsingDescription'),
+          // No `pause` glyph exists; `hourglass` is the one that says "for a
+          // while" rather than "from now on", which is the whole distinction
+          // between this row and the filter above it.
+          icon: 'hourglass',
+          feature: 'Pause Browsing',
+          // The same predicate as the filter, and necessarily so: a pause is
+          // that filter turned all the way up for a while, so a device with
+          // nothing inspecting traffic has nothing to pause. What it reaches
+          // therefore differs by surface exactly as filtering does — the whole
+          // device on Android, macOS, Windows and the TV; Safari and in-app
+          // browsers on iOS. `docs/FEASIBILITY.md`, "Pause browsing from the
+          // parent's phone", is why this is not called "pause the internet".
+          //
+          // iOS reaches it through `webContent.blockedByFilter = .all(except:
+          // [])` and a flag of its own, never through allow-list-only with an
+          // empty list — that composition falls to `.auto(except:)` there,
+          // which is Apple's adult filter and not a pause
+          // (`KidGateControls.swift`).
+          supportedBy: supportsWebFiltering,
+        },
+        {
           id: 'web-history',
           title: t('deviceDetail.webHistory'),
           description: t('deviceDetail.webHistoryDescription'),

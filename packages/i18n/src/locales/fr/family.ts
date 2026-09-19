@@ -117,13 +117,20 @@ export const family = {
   devicePausedLabel: 'En pause',
   devicePausedHint:
     'En pause avec l’offre gratuite : toutes les règles restent actives',
+  parkReviewTitle: 'Activez ceci avant la fin de votre essai',
+  parkReviewBody:
+    'À la fin de votre essai, un appareil continue d’envoyer ses rapports et d’accepter vos changements de règles, et les autres gardent les règles qu’ils ont déjà. Sur ceux-là, vous ne pourrez plus qu’assouplir une règle : ce qui est désactivé maintenant le restera.',
+  rulesEnforcedOn: 'Appliquées sur {{enforced}} appareils sur {{total}}',
+  rulesPausedBehind: 'En pause — conserve un réglage antérieur',
+  rulesTightenRefused:
+    'Sur un appareil en pause, les règles ne peuvent qu’être assouplies, jamais renforcées. Passez à Premium pour changer cela sur tous les appareils.',
   parkedBannerTitle: 'Choisissez l’appareil que vous continuez à suivre',
   parkedBannerBody:
-    'Vos règles s’appliquent sur tous les appareils. L’offre gratuite reçoit les rapports d’un seul : choisissez-le, ou passez à Premium pour les garder tous.',
+    'Vos règles continuent de s’appliquer sur tous les appareils. L’offre gratuite reçoit les rapports d’un seul appareil et ne permet de renforcer les règles que là : choisissez cet appareil, ou passez à Premium pour les garder tous.',
   parkedBannerAction: 'Choisir l’appareil',
-  chooseMonitoredTitle: 'Quel appareil doit envoyer ses rapports ?',
+  chooseMonitoredTitle: 'Choisissez votre appareil principal',
   chooseMonitoredBody:
-    'Toutes les règles restent actives sur tous. Seul celui que vous choisissez envoie le temps d’écran et la position. Vous pouvez en changer une fois tous les {{days}} jours.',
+    'Toutes les règles restent actives sur tous. L’appareil que vous choisissez envoie le temps d’écran et la position, et c’est le seul dont vous pouvez encore renforcer les règles : sur les autres, vous ne pouvez plus que les assouplir. Vous pouvez changer d’appareil une fois tous les {{days}} jours.',
   chooseMonitoredConfirm: 'Suivre cet appareil',
   chooseMonitoredUpgrade: 'Garder tous les appareils : passer à Premium',
   chooseMonitoredDone: '{{name}} est désormais l’appareil qui envoie ses rapports',

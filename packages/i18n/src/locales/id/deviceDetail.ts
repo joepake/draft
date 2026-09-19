@@ -137,4 +137,10 @@ export const deviceDetail = {
   webHistorySitesUnit: 'situs',
   managedAtChild:
     'Aturan, hadiah, check-in, dan peringatan perangkat ini dikelola di profil {{childName}}',
+  pauseBrowsing: 'Jeda penjelajahan',
+  pauseBrowsingDescription:
+    'Blokir web sebentar. Telepon dan aplikasi offline tetap berjalan.',
+  pauseBrowsingOff: 'Tidak dijeda',
+  pauseBrowsingLeft: 'Dijeda · sisa {{minutes}} mnt',
+  pauseBrowsingFor: 'Jeda {{minutes}} mnt',
 } as const;

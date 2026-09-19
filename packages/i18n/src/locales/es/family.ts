@@ -133,13 +133,20 @@ export const family = {
   healthOffline: 'Sin conexión',
   devicePausedLabel: 'En pausa',
   devicePausedHint: 'En pausa en el plan gratis: todas las reglas siguen vigentes',
+  parkReviewTitle: 'Activa esto antes de que termine tu prueba',
+  parkReviewBody:
+    'Cuando termine tu prueba, un dispositivo seguirá enviando informes y aceptando cambios en las reglas, y el resto conserva las reglas que ya tiene. En esos solo podrás relajar una regla después, así que lo que esté desactivado ahora seguirá desactivado.',
+  rulesEnforcedOn: 'Aplicadas en {{enforced}} de {{total}} dispositivos',
+  rulesPausedBehind: 'En pausa: conserva un ajuste anterior',
+  rulesTightenRefused:
+    'En un dispositivo en pausa las reglas solo se pueden relajar, nunca endurecer. Mejora tu plan para cambiarlo en todos los dispositivos.',
   parkedBannerTitle: 'Elige el dispositivo que seguirás supervisando',
   parkedBannerBody:
-    'Tus reglas funcionan en todos los dispositivos. El plan gratis recibe informes de uno: elígelo, o mejora tu plan para conservarlos todos.',
+    'Tus reglas siguen funcionando en todos los dispositivos. El plan gratis recibe informes de un dispositivo y solo ahí puedes endurecer las reglas: elige ese dispositivo, o mejora tu plan para conservarlos todos.',
   parkedBannerAction: 'Elegir dispositivo',
-  chooseMonitoredTitle: '¿Qué dispositivo debe informar?',
+  chooseMonitoredTitle: 'Elige tu dispositivo principal',
   chooseMonitoredBody:
-    'Todas las reglas siguen activas en todos. Solo el que elijas envía tiempo de pantalla y ubicación. Puedes cambiarlo una vez cada {{days}} días.',
+    'Todas las reglas siguen activas en todos. El dispositivo que elijas envía tiempo de pantalla y ubicación, y es el único en el que aún puedes endurecer las reglas: en los demás solo puedes relajarlas. Puedes cambiar tu elección una vez cada {{days}} días.',
   chooseMonitoredConfirm: 'Supervisar este dispositivo',
   chooseMonitoredUpgrade: 'Conservar todos: mejorar plan',
   chooseMonitoredDone: '{{name}} es ahora el dispositivo que informa',

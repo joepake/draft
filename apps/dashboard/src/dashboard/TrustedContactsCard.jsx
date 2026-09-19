@@ -21,7 +21,12 @@ import { trustedContactRepository } from '../adapters/repositories.js';
  * listener in `FamilySettingsCard`, mounted with the tab bar, rather than one
  * that starts when the tab it counts is already on screen.
  */
-export default function TrustedContactsCard({ familyId, contacts = [] }) {
+export default function TrustedContactsCard({
+  familyId,
+  contacts = [],
+  /** Told when this card has changed the list its parent reads. `useReload`. */
+  onChanged = null,
+}) {
   const { language } = useT();
   const appT = useActivityTranslate();
   const [name, setName] = useState('');
@@ -47,6 +52,10 @@ export default function TrustedContactsCard({ familyId, contacts = [] }) {
       });
       setName('');
       setEmail('');
+      // The list lives one level up and is read once, not watched
+      // (`adapters/oneShot.js`) — without this the contact just added is
+      // nowhere on screen and a parent adds it again.
+      onChanged?.();
     } catch {
       setError(appT('sos.trustedContactsSaveFailed'));
     } finally {
@@ -58,6 +67,7 @@ export default function TrustedContactsCard({ familyId, contacts = [] }) {
     setBusy(true);
     try {
       await trustedContactRepository.remove(familyId, contactId);
+      onChanged?.();
     } catch {
       setError(appT('sos.trustedContactsSaveFailed'));
     } finally {
@@ -67,6 +77,25 @@ export default function TrustedContactsCard({ familyId, contacts = [] }) {
 
   return (
     <div className="parents-card">
+      {/* How many of the five slots are used, drawn as well as counted. The
+          digits alone sat in the form's foot — and the full-list state
+          REPLACES that form, so at 5/5 the one number a parent wants was the
+          one thing gone. Same meter `apps/mobile`'s hero draws; the cap is the
+          schema's and digits need no key. */}
+      <div className="tc-meter">
+        <span className="tc-meter-track" aria-hidden="true">
+          {Array.from({ length: TRUSTED_CONTACTS_MAX }, (_, slot) => (
+            <i
+              key={slot}
+              className={`tc-pip${slot < contacts.length ? ' is-filled' : ''}`}
+            />
+          ))}
+        </span>
+        <span className="tc-count">
+          {contacts.length}/{TRUSTED_CONTACTS_MAX}
+        </span>
+      </div>
+
       {contacts.length === 0 ? (
         /*
          * The list is empty far more often than not — this is a feature a
@@ -153,11 +182,6 @@ export default function TrustedContactsCard({ familyId, contacts = [] }) {
             </p>
           )}
           <div className="tc-form-foot">
-            {/* How many of the five are used, in digits — a counter needs no
-                key, and the cap is the schema's. */}
-            <span className="tc-count">
-              {contacts.length}/{TRUSTED_CONTACTS_MAX}
-            </span>
             <button
               type="submit"
               className="btn btn-sm btn-primary"

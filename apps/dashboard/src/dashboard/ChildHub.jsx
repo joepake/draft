@@ -5,6 +5,8 @@ import { resolveChildPresence } from '@kidgate/core/domain/childPresence';
 import { supportsLock } from '@kidgate/core/domain/controlSupport';
 import { isActionSupported } from '@kidgate/core/domain/deviceDetailActions';
 import { supportsVideoHistory } from '@kidgate/core/domain/videoHistorySupport';
+import { supportsAppInstallAlerts } from '@kidgate/core/domain/alertSupport';
+import { supportsAppInventory } from '@kidgate/core/domain/appInventorySupport';
 import {
   platformLabelKey,
   resolveDisplayFormFactor,
@@ -49,6 +51,8 @@ export default function ChildHub({
   live,
   appT,
   onOpenDevice,
+  /** The child's own location screen — see the Location branch below. */
+  onOpenLocation = null,
   onLeave,
 }) {
   const { t } = useT();
@@ -102,10 +106,20 @@ export default function ChildHub({
    *   the cards report the sum, and blocking counts as on when any machine has
    *   it on.
    *
-   * Everything else — SOS, check-ins, web history, places — is a feed this
-   * surface does not subscribe to per child, so it is left out and those cards
-   * keep the description they have always shown rather than reporting a zero
-   * that really means "not asked".
+   * **Places and Apps answer here now** (2026-09-17), and they cost no read:
+   * `Device.places` is FAMILY-level and already on every view this component
+   * was handed, and the two app facts are capability flags off the device
+   * document — the same `supportsAppInstallAlerts` / `supportsAppInventory`
+   * the single-device grid reads. They were left out along with the feeds
+   * because they looked like feeds. They are not.
+   *
+   * **SOS and Web history are still left out, and still on purpose.**
+   * `sos-alerts` needs `sosTotalCount`, a per-device recent query this surface
+   * does not run across a child's whole set, and `web-history` needs that
+   * device's day. Passing `0` for either is the bug the resolver's `undefined`
+   * gate exists to catch — it printed "No alerts" over a working feature.
+   * Closing them means a child-wide read, which is a cost decision rather than
+   * a default.
    */
   const controlFacts = useMemo(() => {
     const sum = read =>
@@ -141,6 +155,27 @@ export default function ChildHub({
       hasLocationFix: fixAt !== null,
       locationStale: fixAt !== null && Date.now() - fixAt > LOCATION_STALE_AFTER_MS,
       supportsVideoHistory: childDevices.some(supportsVideoHistory),
+      /*
+       * Places are FAMILY-level — the fan-out writes the same list to every
+       * device — so this is one machine's copy, not a sum. Summing would
+       * multiply the family's places by the number of devices the child owns.
+       * `undefined` while the child has no device at all, which is the
+       * resolver's "not asked" rather than "none".
+       */
+      placeCount: childDevices.length
+        ? (childDevices[0].places?.length ?? 0)
+        : undefined,
+      /*
+       * Any machine that can do it means the child is covered, the same
+       * any-of these cards already use for app blocking. `undefined` for a
+       * child with nothing paired, so the card keeps its description.
+       */
+      reportsAppInstalls: childDevices.length
+        ? childDevices.some(supportsAppInstallAlerts)
+        : undefined,
+      listsInstalledApps: childDevices.length
+        ? childDevices.some(supportsAppInventory)
+        : undefined,
     };
   }, [budgetMinutes, child, childDevices, rules]);
 
@@ -399,10 +434,31 @@ export default function ChildHub({
           facts={controlFacts}
           appT={appT}
           onOpen={(tab, action) => {
+            /*
+             * Location is the one card that must not land on a machine.
+             * The phone opens a CHILD screen for it — every device the child
+             * carries, one coloured route each — and picking "the first
+             * device that supports it" answered for a phone while the tablet
+             * sat at home. Every other card here is still a device's own.
+             */
+            if (action?.id === 'location' && onOpenLocation) {
+              onOpenLocation();
+              return;
+            }
             const target =
               childDevices.find(device => isActionSupported(action, device)) ??
               childDevices[0];
-            onOpenDevice(target.id, tab);
+            /*
+             * Pausing is the one card that ANSWERS in place rather than opening
+             * a panel, and here there is nothing to answer for: a pause blocks
+             * one machine, and "the first device that supports it" would pick
+             * which of a child's two gets cut off. So this lands on that
+             * device's grid — `manage`, where the card is — and the parent
+             * presses it against the machine they meant. `ACTION_TAB` maps it
+             * nowhere, which without this would drop them on Overview, a page
+             * with nothing about a pause on it.
+             */
+            onOpenDevice(target.id, action?.id === 'pause-browsing' ? 'manage' : tab);
           }}
         />
       )}

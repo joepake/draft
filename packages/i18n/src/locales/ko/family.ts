@@ -127,13 +127,20 @@ export const family = {
   healthOffline: '오프라인',
   devicePausedLabel: '일시중지',
   devicePausedHint: '무료 플랜에서 일시중지됨 — 모든 규칙은 계속 적용됩니다',
+  parkReviewTitle: '체험이 끝나기 전에 켜 두세요',
+  parkReviewBody:
+    '체험이 끝나면 한 기기만 보고를 보내고 규칙 변경을 받으며, 나머지 기기는 지금의 규칙을 그대로 유지합니다. 그 기기들에서는 이후 규칙을 완화만 할 수 있으므로, 지금 꺼 둔 것은 계속 꺼진 채로 남습니다.',
+  rulesEnforcedOn: '{{total}}대 중 {{enforced}}대에 적용됨',
+  rulesPausedBehind: '일시중지됨 — 아직 이전 설정입니다',
+  rulesTightenRefused:
+    '일시중지된 기기는 규칙을 완화만 할 수 있고 강화할 수 없습니다. 모든 기기에서 변경하려면 업그레이드하세요.',
   parkedBannerTitle: '계속 지켜볼 기기를 선택하세요',
   parkedBannerBody:
-    '규칙은 모든 기기에서 작동합니다. 무료 플랜은 한 기기에서만 보고를 받습니다 — 기기를 선택하거나, 업그레이드해 모두 유지하세요.',
+    '규칙은 모든 기기에서 계속 작동합니다. 무료 플랜은 한 기기에서만 보고를 받고, 규칙을 더 엄격하게 바꾸는 것도 그 기기에서만 가능합니다 — 그 기기를 선택하거나, 업그레이드해 모두 유지하세요.',
   parkedBannerAction: '기기 선택',
-  chooseMonitoredTitle: '어느 기기가 보고할까요?',
+  chooseMonitoredTitle: '주 기기를 선택하세요',
   chooseMonitoredBody:
-    '모든 기기에서 규칙은 그대로 유지됩니다. 선택한 기기만 사용 시간과 위치를 보냅니다. {{days}}일에 한 번 변경할 수 있습니다.',
+    '모든 기기에서 규칙은 그대로 유지됩니다. 선택한 기기가 사용 시간과 위치를 보내고, 규칙을 더 엄격하게 바꿀 수 있는 것도 그 기기뿐입니다 — 나머지 기기에서는 완화만 할 수 있습니다. 선택한 기기는 {{days}}일에 한 번 바꿀 수 있습니다.',
   chooseMonitoredConfirm: '이 기기 지켜보기',
   chooseMonitoredUpgrade: '모든 기기 유지 — 업그레이드',
   chooseMonitoredDone: '이제 {{name}}이(가) 보고하는 기기입니다',

@@ -13,13 +13,17 @@
  *
  * ## Consent
  *
- * `gtag` sets `_ga`, and under GDPR/ePrivacy that needs consent **before** it is
- * set. There is no banner in this repo. The decision to measure anyway was the
- * operator's, taken knowingly; `apps/site/CLAUDE.md` records it and what would
- * change it. What is here is the smallest version of that decision:
+ * `gtag` would set `_ga`, and under GDPR/ePrivacy that needs consent **before**
+ * it is set. There is no banner in this repo, so Consent Mode is declared
+ * denied before `config` runs: gtag then sets no cookie and keeps nothing in
+ * the browser, and each visit is a cookieless ping. That is what the Privacy
+ * Policy (§8) says, word for word — a banner is what would flip
+ * `analytics_storage` to granted, and adding one is a decision about that
+ * duty. What is here is the smallest version of it:
  *
  * - `VITE_ANALYTICS_ENABLED=false` turns it off in one line, per environment.
- * - `anonymize_ip` on, and Google Signals never enabled.
+ * - Consent Mode default denied, `anonymize_ip` on, Google Signals never
+ *   enabled.
  * - No user id, no cross-site identifier, nothing about who is reading.
  * - Three events. A page view carries what gtag sends automatically and
  *   nothing added.
@@ -66,6 +70,14 @@ export function initAnalytics() {
   script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(MEASUREMENT_ID)}`;
   document.head.appendChild(script);
 
+  // Before `js` and `config`: a default declared after them is a cookie
+  // already set. See "Consent" in the header.
+  gtag('consent', 'default', {
+    analytics_storage: 'denied',
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+  });
   gtag('js', new Date());
   gtag('config', MEASUREMENT_ID, {
     /*

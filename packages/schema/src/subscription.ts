@@ -12,6 +12,18 @@ export interface UserSubscription {
   originalTransactionId?: string | null;
   purchaseToken?: string | null;
   expiresAt?: string | null;
+  /**
+   * A one-time purchase that never expires, so `expiresAt` is absent rather
+   * than far-future: a sentinel date eventually arrives, and every expiry
+   * sweep would then revoke a plan somebody bought outright.
+   *
+   * Written only by `verifyAndRecordPurchase` in
+   * `functions/lib/subscriptions.js`, from the store verifier's answer — never
+   * from the client and never from the product id alone. Read by
+   * `isLifetimeEntitlementActive` in `functions/lib/entitlement.js`, which
+   * still checks `status` so a refund can take it back.
+   */
+  lifetime?: boolean;
   updatedAt: string;
   /**
    * The "your plan has ended" push is owed and not yet sent.

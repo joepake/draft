@@ -138,4 +138,10 @@ export const deviceDetail = {
   webHistorySitesUnit: 'サイト',
   managedAtChild:
     'このデバイスのルール、ごほうび、チェックイン、アラートは{{childName}}のプロフィールで管理します',
+  pauseBrowsing: 'ブラウジングを一時停止',
+  pauseBrowsingDescription:
+    'しばらくウェブをブロックします。通話とオフラインアプリは使えます。',
+  pauseBrowsingOff: '停止していません',
+  pauseBrowsingLeft: '一時停止中 · 残り{{minutes}}分',
+  pauseBrowsingFor: '{{minutes}}分停止する',
 } as const;

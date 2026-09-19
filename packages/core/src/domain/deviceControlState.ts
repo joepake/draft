@@ -74,6 +74,8 @@ export interface ControlStateControls {
   webFilterEnabled?: boolean;
   videoHistoryEnabled?: boolean;
   locationSharingEnabled?: boolean;
+  /** Epoch ms a browsing pause runs until, read against `ControlStateFacts.nowMs`. */
+  browsingPausedUntil?: number | null;
 }
 
 export interface ControlStateFacts {
@@ -103,6 +105,17 @@ export interface ControlStateFacts {
   messageSummary?: { valueKey: string; tone: ControlCardTone } | null;
   /** False on a machine whose watches are recorded by the browser extension. */
   supportsVideoHistory?: boolean;
+  /**
+   * The reading console's own clock, for the one card whose value is a
+   * countdown.
+   *
+   * Passed rather than read: this module is pure, and the number is what the
+   * PARENT is looking at — the device enforces the same pause against its own
+   * server-corrected clock (`./contentFilterPolicy.isBrowsingPaused`). Absent
+   * is "this surface did not ask", as everywhere else here, so the card keeps
+   * the feature's description rather than reporting a pause it cannot time.
+   */
+  nowMs?: number;
 }
 
 function counted(
@@ -209,6 +222,39 @@ export function resolveControlCardStatus(
       return controls.webFilterEnabled
         ? worded('shared.on', 'active', 'shared.manage')
         : worded('shared.off', 'attention', 'shared.turnOn');
+
+    case 'pause-browsing': {
+      if (facts.nowMs === undefined) {
+        return null;
+      }
+      const until = controls.browsingPausedUntil;
+      const leftMs = typeof until === 'number' ? until - facts.nowMs : 0;
+      /*
+       * Minutes left, never the end time: the card is read at a glance and
+       * "until 19:40" makes the parent do the subtraction. Floored at one,
+       * because a pause with forty seconds to run is still blocking and a "0"
+       * over a device that cannot reach the web is the one wrong answer.
+       *
+       * No unit, as on the SOS and Places cards — the number is the whole
+       * sentence, and each console says which minutes these are in the line it
+       * has room for (the phone replaces the detail with
+       * `deviceDetail.pauseBrowsingLeft`).
+       *
+       * A running pause is `attention` and a device browsing normally is
+       * `active`: the tone is what a parent scans the grid for, and the card
+       * worth finding is the one still blocking. "Not paused" is the resting
+       * state of every device and must not nag — that is the "Off reads as a
+       * switch somebody forgot" trap recorded on the app-blocking card.
+       */
+      return leftMs > 0
+        ? counted(
+            Math.max(1, Math.round(leftMs / 60_000)),
+            null,
+            'attention',
+            'shared.manage',
+          )
+        : worded('deviceDetail.pauseBrowsingOff', 'active', 'shared.manage');
+    }
 
     case 'web-history': {
       const day = facts.webHistory;

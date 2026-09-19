@@ -4,6 +4,7 @@ import { useT } from '@kidgate/web-ui/useT';
 import { legalDocumentUrl } from '@kidgate/core/domain/siteLinks';
 import { accountDeletionRepository } from '../adapters/repositories.js';
 import Card from './Card.jsx';
+import { useReload } from './useReload.js';
 
 /**
  * The portable half of the phone's Settings screen: the legal documents, and
@@ -37,6 +38,7 @@ export default function AccountCard({
   const [request, setRequest] = useState(null);
   const [confirming, setConfirming] = useState(false);
   const [busy, setBusy] = useState(false);
+  const [reloadKey, reload] = useReload();
 
   /*
    * Live: the phone can schedule or cancel the same deletion, and this card is
@@ -53,16 +55,18 @@ export default function AccountCard({
          request" would offer Delete to someone who already scheduled one. */
       () => undefined,
     );
-  }, [accountId]);
+  }, [accountId, reloadKey]);
 
   const run = async work => {
     setBusy(true);
     try {
       await work();
       setConfirming(false);
+      // The read is one-shot (`adapters/oneShot.js`), so a request this card
+      // just filed or cancelled is invisible to it until it asks again.
+      reload();
     } catch {
-      // The listener is the source of truth; a refused write leaves the card
-      // saying what the document still says.
+      // A refused write leaves the card saying what the document still says.
     } finally {
       setBusy(false);
     }

@@ -8,7 +8,9 @@
  * correspondingly behind. What costs money to run is never the rule sitting in
  * a document the agent already fetches; it is the write, the function
  * invocation and the billed read on every parent listener that each report
- * sets off. A beat every minute is 720 writes a day. Every thirty, it is 48.
+ * sets off. Measured 2026-09-18: **a beat is about ten billable operations**,
+ * because the document it writes carries both a Firestore trigger and the
+ * agent's own listener. At three minutes that is 480 beats a day; at thirty, 48.
  *
  * The two halves have to move together, which is why they are one module. A
  * cadence loosened without loosening the staleness window turns every free
@@ -26,14 +28,35 @@
 import type { Millis } from '@kidgate/schema/primitives';
 
 /**
- * One minute — the live cadence, on trial and on premium.
+ * Three minutes — the live cadence, on trial and on premium.
  *
- * The ceiling is not negotiable and is three: `OFFLINE_THRESHOLD_MS` in
- * `./deviceStatus`. A minute leaves two beats of slack for a device waking, a
- * slow network, or a beat that ran late — which on Android TV is the likely
- * case, since Doze and an OEM battery manager both delay timers.
+ * **It was sixty seconds until 2026-09-18.** What moved it is measured in
+ * `docs/FEASIBILITY.md`, "The heartbeat is billed three times": one beat costs a
+ * write, a Cloud Function invocation — `onchilddeviceupdated` fires **1:1** with
+ * the beat — and the device's own `controlsSync` listener reading that write
+ * back. About ten billable operations to record a timestamp. All three are a
+ * function of how often the document is written, so tripling the interval cuts
+ * all three in the same proportion.
+ *
+ * **What it costs is detection latency, and it is the number of attempts that is
+ * unbounded.** The time a child can steal by moving the device clock is bounded
+ * *per attempt* by the gap between readings — three minutes here rather than one
+ * — because every reading snaps the offset back to the server's
+ * (`domain/clockSkew`). **The offset does not accumulate; the stolen minutes
+ * do.** Nothing stops the trick being repeated after each correction, so this
+ * number prices one attempt and caps no total. A monotonic-clock guard is what
+ * would cap it (`docs/FEASIBILITY.md`, "The heartbeat is billed three times").
+ * `SIGNIFICANT_OFFSET_MS` is the magnitude at which a skew is *reported* and has
+ * never been a floor under this number, whatever the label in
+ * `scripts/beat-cost.mjs` used to claim. On the agents wired to
+ * `agent/serverTimeOffset.observeSyncAnswer` the clock does not ride this write
+ * at all any more.
+ *
+ * Still three beats of slack for a device waking, a slow network or a timer that
+ * ran late — which on Android TV is the likely case, since Doze and an OEM
+ * battery manager both delay them.
  */
-export const ALIVE_MIN_INTERVAL_MS: Millis = 60_000;
+export const ALIVE_MIN_INTERVAL_MS: Millis = 3 * 60_000;
 
 /**
  * Thirty minutes — the free tier's cadence.

@@ -176,7 +176,7 @@ export const plans = {
   platformMac: 'Mac',
   platformMacDetail: 'お子さま用のみ · macOS 12以降',
   platformIosLimits:
-    'App使用時間の制限とメッセージの通知はありません。Webフィルターはアダルトサイトのみが対象で、ブロックするアプリはiPhone本体で選びます。',
+    'アプリの利用時間制限とメッセージの通知はありません。Webフィルターはアダルトサイトのみが対象で、ブロックするアプリはiPhone本体で選びます。',
   platformMacLimits: 'メッセージの通知はなく、位置情報はおおよそです。',
   platformWindowsLimits: 'メッセージの通知はなく、位置情報はおおよそです。',
   platformAndroidTvLimits:

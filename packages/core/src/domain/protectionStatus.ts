@@ -87,11 +87,20 @@ export interface ProtectionSummaryKeys {
  * permanent "Needs attention" on every Mac and PC and made `canEnforceLock`
  * refuse a lock that needs no permission at all.
  *
+ * **`chromeos` joined them on 2026-09-19, for that reason and one more.**
+ * `apps/extension` writes no `protectionStatus` at all, so every Chromebook
+ * took the `missing-status` branch below — an issue pushed with no `severity`,
+ * which `attentionItems.js` then reads as `critical` rather than `warning`.
+ * Both consoles carried a permanent critical card over a working device, and
+ * its detail line said `protection.openKidGateOnChildPhone` to a parent whose
+ * child device is not a phone and has no grant they could give it. A browser
+ * extension holds one permission and it is granted at install.
+ *
  * Legacy documents without a platform are phones, so `undefined` stays on
  * the checklist side.
  */
 function reportsProtectionChecklist(platform: Device['platform']): boolean {
-  return platform !== 'macos' && platform !== 'windows';
+  return platform !== 'macos' && platform !== 'windows' && platform !== 'chromeos';
 }
 
 function isStale(nowMs: number, timestamp?: string): boolean {

@@ -132,13 +132,20 @@ export const family = {
   healthOffline: 'Offline',
   devicePausedLabel: 'Pausado',
   devicePausedHint: 'Pausado no plano gratuito: todas as regras continuam valendo',
+  parkReviewTitle: 'Ative isto antes de o teste acabar',
+  parkReviewBody:
+    'Quando o teste acabar, um dispositivo continua enviando relatórios e aceitando mudanças nas regras, e os outros mantêm as regras que já têm. Neles você só vai poder afrouxar uma regra depois, então o que estiver desativado agora continua desativado.',
+  rulesEnforcedOn: 'Aplicadas em {{enforced}} de {{total}} dispositivos',
+  rulesPausedBehind: 'Em pausa — ainda com um ajuste anterior',
+  rulesTightenRefused:
+    'Num dispositivo em pausa, as regras só podem ser afrouxadas, nunca apertadas. Faça upgrade para mudar isso em todos os dispositivos.',
   parkedBannerTitle: 'Escolha o dispositivo que você vai continuar acompanhando',
   parkedBannerBody:
-    'Suas regras funcionam em todos os dispositivos. O plano gratuito recebe relatórios de um: escolha qual, ou faça upgrade para manter todos.',
+    'Suas regras continuam funcionando em todos os dispositivos. O plano gratuito recebe relatórios de um dispositivo e só nele você pode apertar as regras: escolha esse dispositivo, ou faça upgrade para manter todos.',
   parkedBannerAction: 'Escolher dispositivo',
-  chooseMonitoredTitle: 'Qual dispositivo deve reportar?',
+  chooseMonitoredTitle: 'Escolha seu dispositivo principal',
   chooseMonitoredBody:
-    'Todas as regras continuam ativas em todos. Só o que você escolher envia tempo de tela e localização. Você pode trocar uma vez a cada {{days}} dias.',
+    'Todas as regras continuam ativas em todos. O dispositivo que você escolher envia tempo de tela e localização, e é o único em que você ainda pode apertar as regras: nos outros dá só para afrouxar. Você pode trocar de dispositivo uma vez a cada {{days}} dias.',
   chooseMonitoredConfirm: 'Acompanhar este dispositivo',
   chooseMonitoredUpgrade: 'Manter todos: fazer upgrade',
   chooseMonitoredDone: '{{name}} agora é o dispositivo que reporta',

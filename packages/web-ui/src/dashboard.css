@@ -1125,6 +1125,57 @@
 .top-actions {
   display: flex;
   gap: 0.5rem;
+  /* The refresh row rides in here beside Check-in and Lock, and on a narrow
+     header the three wrap rather than pushing the title off. */
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/*
+ * "Read at, and read again" — this console does not stream (`oneShot.js`), so
+ * the row is what keeps the page honest about the age of what it shows.
+ */
+.refresh-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.refresh-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: var(--dash-text-2);
+  color: var(--muted);
+}
+
+.refresh-age {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/*
+ * The child's location screen IS the map — no card stack under it to share the
+ * page with, so it takes the height a device's inline card cannot. Bounded by
+ * `vh` rather than fixed: the route is what the parent came for, and on a short
+ * window the header still has to stay visible above it.
+ */
+.loc-map-tall {
+  height: min(60vh, 34rem);
+}
+
+/*
+ * The age goes, the sentence stays. At phone width the header already carries
+ * a name, a back link and up to two controls, and "how old is this" is the
+ * part a parent can do without — while "open the app" is the one thing a
+ * parent reading this ON a phone is a tap away from acting on. Hiding that
+ * from them was the wrong half.
+ */
+@media (max-width: 820px) {
+  .refresh-age {
+    display: none;
+  }
 }
 
 .btn {
@@ -2404,7 +2455,12 @@ ol.attn-fix li + li {
  * The edge, not the fill: a tinted card competes with the tones the controls
  * inside it use to say a rule is off or needs attention.
  */
-.card.is-pointed {
+/* The places editor is the one target that is not a card: `place-alerts` owns
+   it and it lives INSIDE the Location card, so it carries the id itself and
+   takes the ring on its own box. The halo is what shows there — an unstyled
+   div has no border for `border-color` to reach. */
+.card.is-pointed,
+.places-editor.is-pointed {
   border-color: color-mix(in srgb, var(--brand) 55%, var(--card-line));
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand) 18%, transparent);
   transition:
@@ -2414,9 +2470,12 @@ ol.attn-fix li + li {
 
 /* This stylesheet is not covered by the reset in `index.css` —
    `apps/dashboard` imports only this one — so the guard is stated here. The
-   ring still appears; it simply arrives without the fade. */
+   ring still appears; it simply arrives without the fade. `Dashboard.jsx`
+   reads the same preference before scrolling, because a `behavior` asked for
+   in script overrides `scroll-behavior` and never reaches this. */
 @media (prefers-reduced-motion: reduce) {
-  .card.is-pointed {
+  .card.is-pointed,
+  .places-editor.is-pointed {
     transition: none;
   }
 }
@@ -3268,6 +3327,22 @@ ol.attn-fix li + li {
   color: color-mix(in srgb, var(--critical) 30%, var(--ink));
   background: color-mix(in srgb, var(--critical-fill) 15%, var(--surface));
   border: 1px solid color-mix(in srgb, var(--critical-fill) 40%, transparent);
+}
+
+/*
+ * The third tone, for a write that mostly landed: a parked device takes the
+ * relaxing half of a patch and drops the rest (`domain/ruleRelaxation`), so the
+ * save neither succeeded nor failed. `tone-good` over a form that partly did
+ * not save is the silent drop this whole path exists to end, and `tone-critical`
+ * says something broke when nothing did.
+ *
+ * Same mixes as its two siblings, against the `--warning` ramp the parked
+ * banner already uses for exactly this state.
+ */
+.toast.tone-warning {
+  color: color-mix(in srgb, var(--warning) 30%, var(--ink));
+  background: color-mix(in srgb, var(--warning-fill) 15%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--warning-fill) 40%, transparent);
 }
 
 .dash .btn:disabled,
@@ -5044,16 +5119,49 @@ span.chip {
   min-width: 0;
 }
 
+/* Slots used, drawn rather than only counted. The digits lived in the form's
+   foot alone, and the full-list state replaces that form — so at 5/5, the one
+   moment the cap is the answer, nothing on the card said it. Same meter
+   `apps/mobile`'s hero draws, so the two consoles count the same way. */
+.tc-meter {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.9rem;
+}
+
+.tc-meter-track {
+  flex: 1;
+  display: flex;
+  gap: 0.25rem;
+}
+
+/* `--line`, not a tinted brand: an empty slot is the absence of a contact, and
+   a row of pale brand pips reads as five faint ones already filled. */
+.tc-pip {
+  flex: 1;
+  height: 0.375rem;
+  border-radius: 999px;
+  background: var(--line);
+}
+
+.tc-pip.is-filled {
+  background: var(--brand);
+}
+
+/* One child now — the count moved up to the meter — so the button keeps its
+   end rather than being stranded at the start by `space-between`. */
 .tc-form-foot {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 0.75rem;
   margin-top: 0.7rem;
 }
 
 .tc-count {
   font-size: var(--dash-text-2);
+  font-weight: 700;
   color: var(--muted);
   font-variant-numeric: tabular-nums;
 }
@@ -7110,6 +7218,24 @@ span.chip {
   justify-items: start;
 }
 
+/*
+ * The trial's cliff line — what a family loses when it ends, said while there
+ * is still time to act (`dashboard/PlanCard.jsx`). The phone says the same
+ * sentence from the same key.
+ *
+ * `--ink`, not `--muted`: this is a fact about the reader's own devices rather
+ * than the plan chrome around it, and the rail is 264px, so a parent skims it.
+ * No tint and no border — the card is already a notice, and a second ground
+ * inside a 264px column reads as an error.
+ */
+.plan-cliff {
+  margin: 0;
+  color: var(--ink);
+  font-size: var(--dash-text-1);
+  font-weight: 600;
+  line-height: 1.5;
+}
+
 /* The pill and the way in to the comparison share a row where they fit, and
    the link wraps under it where they do not — which at this rail's 264px and
    `plans.compareTitle`'s length is every language. It wraps to a second line,
@@ -7203,6 +7329,82 @@ span.chip {
 .parked-banner-copy em {
   color: var(--ink-2);
   font-size: var(--dash-text-2);
+  font-style: normal;
+  line-height: 1.5;
+}
+
+/*
+ * The last trial day's review — the BEFORE to `.parked-banner`'s after, drawn
+ * in the same slot and never at the same time (`dashboard/ParkReviewCard.jsx`).
+ *
+ * A `.card`, not a banner: the banner is one row stating a fact, and this is a
+ * list a parent is meant to work through. Amber for the same reason the banner
+ * is amber and not red — nothing is broken, these protections were simply never
+ * switched on, and red would send a parent looking for a fault.
+ */
+.park-review {
+  border-color: color-mix(in srgb, var(--warning-fill) 35%, transparent);
+}
+
+.park-review-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.35rem;
+}
+
+/*
+ * Hover warms the row and moves nothing: `apps/dashboard` imports only this
+ * stylesheet, so the reduced-motion reset in `index.css` does not cover it.
+ */
+.park-review-row {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  text-align: left;
+  padding: 0.5rem 0.6rem;
+  border: 0;
+  border-radius: var(--dash-radius-1);
+  background: transparent;
+  cursor: pointer;
+  transition: background var(--kg-motion-fast) ease;
+}
+
+.park-review-row:hover {
+  background: var(--kg-warningSoft);
+}
+
+.park-review-row > .icon:first-child {
+  color: var(--warning);
+  margin-top: 0.15rem;
+}
+
+.park-review-row > .icon:last-child {
+  color: var(--muted);
+  margin-top: 0.2rem;
+}
+
+.park-review-row > span {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  gap: 0.2rem;
+}
+
+.park-review-row strong {
+  color: var(--ink);
+  font-size: var(--dash-text-2);
+  font-weight: 700;
+}
+
+/* `--ink-2` rather than `--muted`, the same reading the parked banner records:
+   the dimmest step lands under AA on the amber ground this row takes on
+   hover. */
+.park-review-row em {
+  color: var(--ink-2);
+  font-size: var(--dash-text-1);
   font-style: normal;
   line-height: 1.5;
 }
@@ -7364,4 +7566,46 @@ span.chip {
   font-size: var(--dash-text-6);
   letter-spacing: 0.25em;
   font-variant-numeric: tabular-nums;
+}
+
+/* ---------- The crash pane ----------
+ *
+ * What `ErrorBoundary` draws when a render throws. Centred and narrow rather
+ * than dressed as a card: a card is a piece of the page, and the page is the
+ * thing that just stopped. Nothing here is tinted `danger` — the sentence says
+ * the family's settings are untouched, and a red panel says the opposite
+ * louder than the words say it.
+ */
+.crash {
+  display: grid;
+  gap: 0.75rem;
+  justify-items: start;
+  max-width: 34rem;
+  margin: 12vh auto 0;
+  padding: 0 1rem;
+}
+
+.crash h1 {
+  font-size: var(--dash-text-5);
+  margin: 0;
+}
+
+.crash p {
+  margin: 0;
+  color: var(--muted);
+}
+
+/* Dev only — `import.meta.env.DEV` gates the node itself. Wraps rather than
+   scrolls sideways: a stack read through a 300px window is a stack nobody
+   reads. */
+.crash-msg {
+  margin: 0;
+  padding: 0.6rem 0.75rem;
+  width: 100%;
+  border-radius: var(--dash-radius-2);
+  background: var(--plane);
+  color: var(--muted);
+  font-size: var(--dash-text-1);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
 }

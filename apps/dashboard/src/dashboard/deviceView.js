@@ -141,6 +141,15 @@ export function toDeviceView(record) {
     ...(record.otaVersion !== undefined ? { otaVersion: record.otaVersion } : {}),
     status: record.isLocked ? 'locked' : record.status || 'offline',
     isLocked: record.isLocked,
+    /*
+     * The request and the device's answer, which `StatusPill` folds through
+     * `resolveLockEnforcement` into "Lock sent" and "Not applied". Both were
+     * dropped here, so that fold only ever saw its heartbeat fallback and the
+     * pill said Locked over a television that was switched off — the case the
+     * fold exists to name. Absent stays absent in both.
+     */
+    ...(record.lockRequestedAt ? { lockRequestedAt: record.lockRequestedAt } : {}),
+    ...(record.lockEnforcement ? { lockEnforcement: record.lockEnforcement } : {}),
     lastActiveAt: record.lastActiveAt || undefined,
     /*
      * The cadence this device keeps and the last "report now" it was sent.

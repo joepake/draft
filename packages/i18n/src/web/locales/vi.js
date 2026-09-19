@@ -45,6 +45,10 @@ export default {
     comingSoon: 'Sắp ra mắt',
     loading: 'Đang tải…',
     signOut: 'Đăng xuất',
+    crashTitle: 'Trang này đã ngừng hoạt động',
+    crashBody:
+      'Tải lại thường là xong. Cài đặt của gia đình và thiết bị của con bạn không thay đổi.',
+    crashReload: 'Tải lại trang',
   },
 
   language: {
@@ -144,7 +148,7 @@ export default {
     feature2Title: 'Chặn ứng dụng',
     feature2Text:
       'Chọn đúng những ứng dụng con được mở, bảo vệ bằng mã PIN phụ huynh, và bật chặn từ xa.',
-    feature3Title: 'Giới hạn giờ theo app',
+    feature3Title: 'Giới hạn giờ theo ứng dụng',
     feature3Text:
       'Đặt giới hạn riêng cho từng ứng dụng, tính thêm ngoài Giới hạn hằng ngày — “nửa tiếng TikTok” mà không cần cấm hẳn.',
     feature4Title: 'Chặn nội dung web & lịch sử duyệt',
@@ -225,7 +229,7 @@ export default {
       'Sáu điểm chúng tôi đã đối chiếu với các ứng dụng mà phụ huynh hay so sánh. Mỗi điểm ghi rõ nền tảng nào đúng.',
     only1Title: 'Cả chiếc TV ngoài phòng khách',
     only1Text:
-      'Android TV có Giới hạn hằng ngày, Giờ khóa thiết bị, Chặn ứng dụng và Chặn nội dung web. Trên TV, việc chặn chỉ ở mức cố gắng tối đa — ứng dụng bị chặn sẽ bị đưa về màn hình chính — và không có SOS hay Yêu cầu thêm giờ từ ghế sofa. Bản dựng đã chạy trên thiết bị thật và đang chờ phát hành lên cửa hàng, nên danh sách nền tảng ở trên ghi là Sắp có. Hầu hết ứng dụng kiểm soát dừng lại ở chiếc điện thoại.',
+      'Android TV có Giới hạn hằng ngày, Giờ khóa thiết bị, Chặn ứng dụng và Chặn nội dung web. Trên TV, việc chặn chỉ ở mức cố gắng tối đa — ứng dụng bị chặn sẽ bị đưa về màn hình chính — và không có SOS hay Yêu cầu thêm giờ từ ghế sofa. Bản dựng đã chạy trên thiết bị thật và đang chờ phát hành lên cửa hàng. Hầu hết ứng dụng kiểm soát dừng lại ở chiếc điện thoại.',
     only2Title: 'Cảnh báo tin nhắn nằm lại trên máy',
     only2Text:
       'Trên Android, tin nhắn được đối chiếu ngay trên thiết bị với danh sách từ khóa của 14 ngôn ngữ, và thứ rời khỏi máy chỉ là từ đã khớp, không phải cuộc trò chuyện. Chỉ một điều thay đổi được điều đó, và chỉ khi bạn yêu cầu: bật xác nhận bằng AI thì một tin nhắn đến chưa rõ ràng sẽ được gửi đi để đánh giá, để bạn không bị đánh thức vì một từ bình thường.',
@@ -234,7 +238,7 @@ export default {
       'Trên Android, cảnh báo đến từ thông báo và từ những gì con gõ trong bất kỳ ứng dụng nào con dùng — Zalo, LINE, KakaoTalk, chat trong game — không phụ thuộc vào danh sách ứng dụng được hỗ trợ.',
     only4Title: 'Lối thoát cho con',
     only4Text:
-      'Giữ SOS năm giây là bạn nhận được ngay, kèm vị trí — trên Android và Mac, thiết bị còn được mở khóa một lúc. Một đứa trẻ luôn gọi được trợ giúp thì không có lý do gì để chống lại ứng dụng.',
+      'Giữ SOS năm giây là bạn nhận được ngay, kèm vị trí — trên Android và Mac, thiết bị còn được mở khóa một lúc. Một đứa trẻ gọi được trợ giúp ngay từ màn hình khóa thì không có lý do gì để chống lại ứng dụng.',
     only5Title: 'Quy tắc vẫn giữ khi mất mạng',
     only5Text:
       'Giờ khóa thiết bị và Giới hạn hằng ngày được thực thi ngay trên thiết bị, nên rút dây mạng cũng không thay đổi gì. TV còn nhận mã PIN phụ huynh khi hoàn toàn không có kết nối.',
@@ -486,6 +490,8 @@ export default {
       'Xem thì được ngay. Muốn khóa thiết bị, đổi giới hạn hay duyệt yêu cầu, hãy mở khóa trình duyệt này bằng mã PIN phụ huynh — hoặc duyệt bằng cách dùng ứng dụng KidGate quét mã QR. Báo an toàn thì gửi được trong cả hai trường hợp.',
     unlockCta: 'Mở khóa thay đổi',
     unlockToChange: 'Mở khóa thay đổi trước đã',
+    refresh: 'Tải lại',
+    liveOnApp: 'Mở ứng dụng để xem theo thời gian thực',
     pinTitle: 'Nhập mã PIN phụ huynh',
     pinBody:
       'Vẫn sáu chữ số bạn dùng trong ứng dụng. Trình duyệt này mở khóa trong 8 giờ; duyệt từ ứng dụng thì giữ đăng nhập 7 ngày.',
@@ -806,7 +812,7 @@ export default {
 
     contactTitle: 'Liên hệ',
     contactEmail: '**Email:** [support@kidgate.app](mailto:support@kidgate.app)',
-    contactResponse: '**Thời gian phản hồi:** trong vòng 24 giờ (Thứ Hai–Thứ Sáu)',
+    contactResponse: '**Thời gian phản hồi:** thường trong vòng một ngày làm việc',
     contactNote:
       'Khi liên hệ, vui lòng gửi kèm địa chỉ email của tài khoản phụ huynh KidGate và mô tả ngắn về vấn đề để chúng tôi hỗ trợ nhanh hơn.',
 
@@ -902,19 +908,19 @@ export default {
     storyP1:
       'Nhà nào cũng có một buổi tối giống nhau: một cái hẹn giờ mà chẳng ai thống nhất, một chiếc điện thoại bị tịch thu, và một đứa trẻ tin chắc rằng quy tắc đã đổi sau lưng mình. Các công cụ sinh ra để giải quyết chuyện đó phần lớn làm nó tệ hơn — một bên là khóa máy mà không giải thích, bên kia là bảng theo dõi nhìn vào chẳng khác gì giám sát.',
     storyP2:
-      'Nên chúng tôi làm ra thứ mà chính mình muốn dùng ở nhà. Phụ huynh đặt Giới hạn hằng ngày, Giờ khóa thiết bị, Chặn ứng dụng và Chặn nội dung web một lần, thiết bị giữ đúng như vậy. Con nhìn thấy đúng những con số bố mẹ nhìn thấy, xin thêm giờ được, và lúc nào cũng gọi được bố mẹ bằng SOS. KidGate không giả vờ như mình không có ở đó.',
+      'Nên chúng tôi làm ra thứ mà chính mình muốn dùng ở nhà. Phụ huynh đặt Giới hạn hằng ngày, Giờ khóa thiết bị, Chặn ứng dụng và Chặn nội dung web một lần, thiết bị giữ đúng như vậy. Con nhìn thấy đúng những con số bố mẹ nhìn thấy, xin thêm giờ được, và gọi được bố mẹ bằng SOS bất cứ khi nào thiết bị có mạng. KidGate không giả vờ như mình không có ở đó.',
     storyP3:
       'Ứng dụng chạy trên iPhone, Android, Mac và Windows, cùng một tiện ích mở rộng cho Chrome và một bảng điều khiển mở bằng trình duyệt bất kỳ. Một gia đình, một gói, mọi thiết bị.',
     valuesEyebrow: 'Điều chúng tôi tin',
     valuesTitle: 'Bốn nguyên tắc chúng tôi không phá vỡ',
     valuesSub:
-      'Những câu hỏi chúng tôi nhận nhiều nhất, trả lời trước khi bạn phải hỏi.',
+      'Viết ra trước cả tính năng đầu tiên, và mọi tính năng sau đó đều được soi lại theo bốn điều này.',
     value1Title: 'Trẻ con không phải nghi phạm',
     value1Text:
       'Quy tắc bạn đặt hiện ngay trên chính thiết bị mà nó áp dụng. Con thấy được điều gì đang bật, còn bao nhiêu thời gian, xin thêm được, và bấm SOS được bất cứ lúc nào. Kiểm soát mà phải giấu thì cả nhà không thể ngồi nói chuyện với nhau về nó.',
     value2Title: 'Dữ liệu gia đình bạn không phải món hàng để bán',
     value2Text:
-      'Không quảng cáo, không bao giờ. Không có gì về con bạn được dùng để quảng cáo hay bán cho bất kỳ ai. Bạn xóa tài khoản gia đình và toàn bộ dữ liệu bất cứ lúc nào — ngay trong ứng dụng, hoặc từ trang này.',
+      'Không quảng cáo, không bao giờ. Không có gì về con bạn được dùng để quảng cáo hay bán cho bất kỳ ai. Bạn có thể yêu cầu xóa tài khoản gia đình và toàn bộ dữ liệu bất cứ lúc nào — ngay trong ứng dụng, hoặc từ trang này — và 14 ngày sau, mọi thứ biến mất.',
     value3Title: 'Chúng tôi nói rõ chỗ mình không làm được',
     value3Text:
       'Mỗi nền tảng giới hạn những gì một ứng dụng được phép làm. Chỗ nào KidGate chỉ làm được ở mức cố gắng tối đa — như đóng ứng dụng bị chặn trên máy tính thay vì chặn hẳn không cho mở — màn hình sẽ ghi đúng như vậy, thay vì hiện một dấu tích xanh.',
@@ -937,7 +943,6 @@ export default {
     make4Title: 'Windows',
     make4Text:
       'Cùng bản đó trên máy PC, kèm một dịch vụ chạy nền bật lại ứng dụng nếu nó bị đóng hay bị tắt.',
-    make5Soon: 'Sắp có',
     make5Title: 'Android TV',
     make5Text:
       'Màn hình phòng khách, được coi là thiết bị chung của cả nhà chứ không phải của riêng một đứa trẻ — cùng giới hạn và cùng lịch như trên điện thoại. Bản này đã chạy trên thiết bị thật và đang chờ phát hành lên cửa hàng ứng dụng.',

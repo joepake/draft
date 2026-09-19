@@ -8,6 +8,11 @@ import Toggle from './Toggle.jsx';
 import { timeAgo } from './timeAgo.js';
 import { hasQuickProtectOffer } from '@kidgate/core/domain/quickProtect';
 import {
+  childRuleDivergence,
+  hasRuleDivergence,
+} from '@kidgate/core/domain/childRuleDivergence';
+import { isDeviceParked } from '@kidgate/core/domain/deviceParking';
+import {
   resolveLockedTeaser,
   resolveRewardTaskCapTeaser,
 } from '@kidgate/core/domain/premiumTeaser';
@@ -137,6 +142,25 @@ export default function ControlsTab({
   familyChildren = [],
 }) {
   const siblingDeviceIds = siblingDevices.map(other => other.id);
+  /*
+   * `siblingDevices` is every device of this child, this one included, and the
+   * child's own rules ride on `device.child` — so the fold costs no read. Both
+   * were already in hand, for the budget seed and the starter card.
+   *
+   * Not memoised: the caller builds `siblingDevices` with an inline `filter`,
+   * so it is a new array every render and a `useMemo` over it would recompute
+   * every time while claiming not to. The fold is a walk of ten keys across a
+   * handful of devices.
+   */
+  const ruleDivergence = childRuleDivergence(
+    device.child?.rules,
+    siblingDevices.map(other => ({
+      deviceId: other.id,
+      name: other.name ?? null,
+      parked: isDeviceParked(other),
+      controls: other.controls,
+    })),
+  );
   const { t } = useT();
   const activityT = useActivityTranslate();
   const c = device.controls;
@@ -512,6 +536,40 @@ export default function ControlsTab({
 
   return (
     <>
+      {/*
+        Which of this child's machines are actually on the rules below.
+
+        Since the free tier's write gate (`docs/FEASIBILITY.md`, "Free tier: a
+        parked device goes loosen-only") a parked device may refuse a tightening
+        and keep an older, looser copy. The operator accepted that divergence —
+        "one child with two rule sets is fine" — on the condition that the
+        consoles say so, because every card under this line reads the CHILD
+        document, and drawing "Web filter: strict" over a child whose tablet has
+        been on last month's list since the trial ended is the product sounding
+        confident about protection that is not running.
+
+        Drawn only when they disagree: "on 3 of 3" answers a question nobody
+        asked and teaches a parent to skip the line on the day it matters.
+      */}
+      {hasRuleDivergence(ruleDivergence) && (
+        <Card
+          title={activityT('family.rulesEnforcedOn', {
+            enforced: ruleDivergence.enforcing,
+            total: ruleDivergence.total,
+          })}
+        >
+          <ul className="hint">
+            {ruleDivergence.rows
+              .filter(row => row.divergedKeys.length > 0)
+              .map(row => (
+                <li key={row.deviceId}>
+                  {row.name} — {activityT('family.rulesPausedBehind')}
+                </li>
+              ))}
+          </ul>
+        </Card>
+      )}
+
       {/*
         The starter set, for an assigned child nothing has ever been turned on
         for. The phone hangs this off the fresh-pairing hand-off; this surface

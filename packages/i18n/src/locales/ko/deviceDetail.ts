@@ -136,4 +136,9 @@ export const deviceDetail = {
   webHistorySitesUnit: '사이트',
   managedAtChild:
     '이 기기의 규칙, 보상, 체크인, 알림은 {{childName}} 프로필에서 관리합니다',
+  pauseBrowsing: '웹 사용 일시중지',
+  pauseBrowsingDescription: '잠시 웹을 차단해요. 통화와 오프라인 앱은 그대로 써요.',
+  pauseBrowsingOff: '중지 안 함',
+  pauseBrowsingLeft: '일시중지 · {{minutes}}분 남음',
+  pauseBrowsingFor: '{{minutes}}분 중지',
 } as const;

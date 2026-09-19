@@ -108,7 +108,7 @@ export interface AppLimit {
  * copy inside a parent-owned field would need the child to write a control
  * the rules deliberately keep parent-only.
  *
- * The breakdown lives on `usageDays/{date}.topApps` — `reportChildUsage`
+ * The breakdown lives on `usageDays/{date}.topApps` — `syncChildAgent`
  * never writes it onto the device document — so callers get it from
  * `useTodayTopApps`, not from `controls`.
  */
@@ -123,6 +123,27 @@ export interface AppLimit {
 export const MAX_APP_LIMITS = 20;
 export const APP_LIMIT_MIN_MINUTES = 5;
 export const APP_LIMIT_MAX_MINUTES = 480;
+
+/**
+ * How long a browsing pause may be asked for, in minutes.
+ *
+ * The floor exists because a pause shorter than the agent's poll interval
+ * would expire before any device heard about it; the ceiling because a pause
+ * is an interruption, not a schedule — a parent who wants the evening has
+ * `scheduleWindows`, which survives a reboot and says so on the child's screen.
+ */
+export const BROWSING_PAUSE_MIN_MINUTES = 5;
+export const BROWSING_PAUSE_MAX_MINUTES = 480;
+
+/**
+ * The lengths a parent is offered, in minutes — both parent consoles read this.
+ *
+ * Beside the bounds rather than inside either app: the phone's alert and the
+ * dashboard's sheet offer the same three, and the day a fourth is added it has
+ * to land on both and inside the bounds above. `updateDeviceControls` clamps
+ * whatever a client actually sends, so this is the offer and never the limit.
+ */
+export const BROWSING_PAUSE_CHOICE_MINUTES = [30, 60, 120] as const;
 
 /**
  * Most package names `approvedPackages` may hold.
@@ -160,6 +181,30 @@ export interface DeviceControls {
   /** Allow-list-only browsing: everything else is refused. */
   webFilterAllowListOnly?: boolean;
   /**
+   * Epoch ms until which this device's browsing is paused, or null.
+   *
+   * **Its own field, never built out of `webFilterAllowListOnly`.** That switch
+   * with an empty allow list looks like the same thing and is not: it is a
+   * setting the parent owns, so ending a pause could not restore what it had
+   * overwritten — and on iOS an empty allow list falls through to
+   * `.auto(except:)`, Apple's adult filter, rather than refusing anything
+   * (`apps/mobile/ios/KidGate/KidGateControls.swift`). The pause instead
+   * composes over the resolved policy in
+   * `@kidgate/core/domain/contentFilterPolicy`, which leaves every filter
+   * setting exactly as the parent left it.
+   *
+   * **Stamped by `updateDeviceControls` from the server clock** — a client
+   * sends `browsingPauseMinutes` and never this. The device compares it against
+   * its own server-corrected clock (`@kidgate/core/agent/serverTimeOffset`), so
+   * moving the device clock forward does not end a pause early.
+   *
+   * Absent, null, or a value already in the past all mean "not paused": expiry
+   * is a comparison on the agent's next pass, never a second write. What that
+   * costs is one poll interval — `docs/FEASIBILITY.md`, "Pause browsing from
+   * the parent's phone".
+   */
+  browsingPausedUntil?: number | null;
+  /**
    * Force the search engines' safe modes — Google SafeSearch, YouTube
    * Restricted Mode, Bing strict, DuckDuckGo safe — by answering the child's
    * lookups of those hosts with the engines' own enforcement addresses
@@ -183,7 +228,7 @@ export interface DeviceControls {
   videoHistoryEnabled?: boolean;
   /**
    * Where the child's shared daily budget stands, stamped by
-   * `reportChildUsage` onto every assigned device whenever the child has
+   * `syncChildAgent` onto every assigned device whenever the child has
    * `rules.dailyLimitMinutes` set.
    *
    * **This field is what parent screens read; it is not what enforces.** The
@@ -325,7 +370,7 @@ export interface DeviceControls {
   dailyLimitExceeded?: boolean;
   /**
    * When `minutesUsedToday` last arrived, ISO, server-stamped by
-   * `reportChildUsage`.
+   * `syncChildAgent`.
    *
    * The number beside it is **not live**: `shouldReportUsage` reports only when
    * the minute count moves, so a device nobody is touching stops stamping this
@@ -345,14 +390,14 @@ export interface DeviceControls {
   bonusGrantedAtMs?: number | null;
   /**
    * Child-to-server only: the breakdown the child device hands to
-   * `reportChildUsage`, which stores it on `usageDays/{date}` and never back
+   * `syncChildAgent`, which stores it on `usageDays/{date}` and never back
    * onto this document. A parent-side `controls` object therefore never has
    * it — read today's apps with `useTodayTopApps` instead.
    */
   topApps?: UsageAppBreakdown[];
   /**
    * Child-to-server only, and it travels exactly as `topApps` does: handed to
-   * `reportChildUsage`, stored on `usageDays/{date}`, never written back here.
+   * `syncChildAgent`, stored on `usageDays/{date}`, never written back here.
    *
    * It is 1440 characters, which is why it must not land on the device
    * document: that one is read by every parent screen and carried in the
@@ -386,7 +431,7 @@ export interface DeviceControls {
    * so the events themselves never reach the server for the families that need
    * these numbers most.
    *
-   * `reportChildUsage` folds them into a seven-day ring
+   * `syncChildAgent` folds them into a seven-day ring
    * (`Device.weekCounterBuckets`) and publishes the sum as
    * `Device.weekCounters`. Neither is stored on `controls`.
    *
@@ -451,6 +496,7 @@ export const DEFAULT_DEVICE_CONTROLS: DeviceControls = {
   webFilterAllowList: [],
   webFilterBlockList: [],
   webFilterAllowListOnly: false,
+  browsingPausedUntil: null,
   screenTimeAuthorized: false,
   appBlockingEnabled: false,
   appInstallApprovalEnabled: false,

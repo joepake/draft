@@ -136,4 +136,10 @@ export const deviceDetail = {
   webHistorySitesUnit: 'site',
   managedAtChild:
     "Bu cihazın kuralları, ödülleri, check-in'leri ve uyarıları {{childName}} profilinden yönetilir",
+  pauseBrowsing: 'Taramayı duraklat',
+  pauseBrowsingDescription:
+    'Web’i bir süre engeller. Aramalar ve çevrimdışı uygulamalar çalışmaya devam eder.',
+  pauseBrowsingOff: 'Duraklatılmadı',
+  pauseBrowsingLeft: 'Duraklatıldı · {{minutes}} dk kaldı',
+  pauseBrowsingFor: '{{minutes}} dk duraklat',
 } as const;

@@ -54,7 +54,7 @@ export const PARKED_WEB_BUFFER_DAYS = WEB_ACTIVITY_DATE_WINDOW_MS / 86_400_000;
 /**
  * Usage: thirty days, and it needs a server change to be worth anything.
  *
- * `reportChildUsage` accepts a `usageDate` within a day of the server's, which
+ * `syncChildAgent` accepts a `usageDate` within a day of the server's, which
  * is right for a live report — a device claiming a day it cannot be on is
  * either broken or lying. Since 2026-09-04 a `backfill: true` request opens a
  * **separate, narrower** path to thirty days back: it writes the `usageDays`
@@ -72,7 +72,7 @@ export const PARKED_USAGE_BUFFER_DAYS = PARKED_BUFFER_MAX_DAYS;
 /**
  * One day a parked device kept, as every platform's buffer hands it over.
  *
- * The same fields `reportChildUsage` takes, and deliberately **not** a
+ * The same fields `syncChildAgent` takes, and deliberately **not** a
  * `usageDays` document: that shape is the server's, carries `updatedAt` and
  * `backfilled`, and a client inventing either would be claiming something only
  * the write can know. What travels is a reading.
@@ -120,11 +120,20 @@ export function canDrainBuffer(condition: DrainCondition): boolean {
 /**
  * The same question for usage, which has one extra condition.
  *
- * Kept apart because the answer differs today: the usage endpoint refuses any
- * day but yesterday and today, so a buffered fortnight is undeliverable
- * however the family pays. A caller passes what the server it is talking to
- * can do — `false` while the backfill path does not exist, so an agent buffers
- * nothing it cannot send rather than filling a disk for a year.
+ * Kept apart because the answer used to differ: the usage endpoint once refused
+ * any day but yesterday and today, so a buffered fortnight was undeliverable
+ * however the family paid, and this paragraph told callers to pass `false`
+ * until a backfill path existed.
+ *
+ * **It exists.** `syncChildAgent` takes `backfill: true` and widens its date
+ * check to `USAGE_BACKFILL_WINDOW_MS`, and all three buffering agents —
+ * `apps/desktop`, `apps/mobile`, `apps/tv` — pass `true`. The flag stays because
+ * the caller is what knows which deployment it is talking to: an old build
+ * against a new server is the safe direction, and the reverse is a drain that
+ * re-sends a month of refused days forever.
+ *
+ * **Do not pass `false` to be cautious.** It is the setting that quietly loses a
+ * paying family the month KidGate spent buffering for them.
  */
 export function canDrainUsage(
   condition: DrainCondition & { backfillSupported: boolean },

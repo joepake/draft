@@ -3,6 +3,7 @@ import { useT } from '@kidgate/web-ui/useT';
 import { useActivityTranslate } from './activityCopy.js';
 import Icon from '@kidgate/web-ui/Icon';
 import { groupPlanComparisonRows } from '@kidgate/core/domain/planComparison';
+import { FREE_TIER_MAX_CHILD_DEVICES } from '@kidgate/core/domain/reportingAllowance';
 import { getPlanState } from '../lib/trial.js';
 
 /*
@@ -154,7 +155,7 @@ function PlanCompareSheet({ onClose }) {
  * to exactly the two states it had. A deployment without the variable is not
  * broken; it is coarse, which is the honest half of the trade.
  */
-export default function PlanCard({ plan, trialStartedAt }) {
+export default function PlanCard({ plan, trialStartedAt, deviceCount }) {
   const { t } = useT();
   const appT = useActivityTranslate();
   const [comparing, setComparing] = useState(false);
@@ -212,6 +213,33 @@ export default function PlanCard({ plan, trialStartedAt }) {
           </button>
         )}
       </div>
+      {/*
+        The cliff, said on both consoles — the phone's `TrialPromoBanner` draws
+        the same sentence from the same key (`.claude/rules/cross-platform.md`).
+        A parent who learns on the last day that one device keeps reporting
+        learns it too late to choose which.
+
+        **Three conditions, each removing a wrong audience.** `planState` must be
+        a running trial: null means this build was never told the duration and
+        `lib/trial.js` refuses to guess, while `trialEnded` and Premium have no
+        cliff ahead of them. And a household at or under the reporting allowance
+        loses nothing, so saying otherwise trains a parent to skip the next
+        warning.
+
+        `FREE_TIER_MAX_CHILD_DEVICES` is how many **report**, not
+        `domain/pairingCeilings`, which is how many may exist — a free family may
+        hold eight and still have one reporting.
+      */}
+      {planState === 'trial' &&
+      typeof deviceCount === 'number' &&
+      deviceCount > FREE_TIER_MAX_CHILD_DEVICES ? (
+        <p className="plan-cliff">
+          {appT('trial.trialDeviceCliff', {
+            keeps: FREE_TIER_MAX_CHILD_DEVICES,
+            using: deviceCount,
+          })}
+        </p>
+      ) : null}
       {/* Where a plan is changed, for the one family that has no dialog to
           read it in: the comparison sheet opens with the same sentence, so a
           free family is told before it can ask and the rail keeps two lines

@@ -27,13 +27,17 @@ export default {
   meta: {
     title: 'KidGate — Parental control that respects your kid',
     description:
-      "KidGate helps parents manage screen time, block apps, filter the web and stay in touch — without taking away a child's freedom.",
+      'KidGate helps parents manage screen time, block apps, filter the web and stay in touch — without taking away a child’s freedom.',
   },
 
   common: {
     comingSoon: 'Coming soon',
     loading: 'Loading…',
     signOut: 'Sign out',
+    crashTitle: 'This page stopped working',
+    crashBody:
+      'Reloading usually fixes it. Your family’s settings and your child’s devices are unchanged.',
+    crashReload: 'Reload the page',
   },
 
   language: {
@@ -116,7 +120,7 @@ export default {
     phoneCheckIn: 'Check-In OK',
 
     trust1Title: 'No ads, ever',
-    trust1Text: "Children's data is never used for advertising",
+    trust1Text: 'Children’s data is never used for advertising',
     trust2Title: 'Delete anytime',
     trust2Text: 'Erase your family account and all data on request',
     trust3Title: 'Phone and computer',
@@ -127,7 +131,7 @@ export default {
     featuresEyebrow: 'Features',
     featuresTitle: 'Everything a parent needs',
     featuresSub:
-      "From daily limits to emergency alerts — one app for the whole family's digital wellbeing.",
+      'From daily limits to emergency alerts — one app for the whole family’s digital wellbeing.',
     feature1Title: 'Screen Time & Daily Limits',
     feature1Text:
       'Set a daily cap and Blocked Hours for school and bedtime. The device locks itself when time is up.',
@@ -142,7 +146,7 @@ export default {
       'Refuse adult and gambling sites on the phone and the computer. With Premium, see which sites were looked up and which ones were stopped.',
     feature5Title: 'Live location & places',
     feature5Text:
-      "See your child's latest location, review history, and get told when they arrive at or leave a saved place.",
+      'See your child’s latest location, review history, and get told when they arrive at or leave a saved place.',
     feature6Title: 'Check-In & SOS',
     feature6Text:
       'Ask your child to confirm they are safe, and receive an instant SOS with location and photo in an emergency.',
@@ -185,9 +189,9 @@ export default {
     step1Title: 'Set up your device',
     step1Text:
       'Install KidGate, choose “This is a parent device”, and sign in with Google, Apple or email.',
-    step2Title: "Pair your child's device",
+    step2Title: 'Pair your child’s device',
     step2Text:
-      "Install KidGate on your child's phone and connect it by scanning a QR code. Under a minute.",
+      'Install KidGate on your child’s phone and connect it by scanning a QR code. Under a minute.',
     step3Title: 'Set your rules',
     step3Text:
       'Pick a daily limit, block apps and hours, and turn on location — all from your own phone.',
@@ -203,7 +207,7 @@ export default {
       'Invite a second parent to manage the same children, with access the owner approves.',
     why3Title: 'Privacy first',
     why3Text:
-      "We never sell personal data and never use children's data for advertising. Delete everything anytime.",
+      'We never sell personal data and never use children’s data for advertising. Delete everything anytime.',
     why4Title: 'Honest about limits',
     why4Text:
       'We tell you what each platform can and cannot enforce, instead of promising control that does not exist.',
@@ -214,7 +218,7 @@ export default {
       'Six things we checked against the apps parents compare us with. Each one names the platform it is true on.',
     only1Title: 'The living-room TV, too',
     only1Text:
-      'Android TV gets a Daily Limit, Blocked Hours, app blocking and a Web Filter. Blocking is best-effort on a TV — a blocked app is sent back to the home screen — and there is no SOS or extra-time request from the sofa. The build runs on real hardware today and is waiting on its store release, which is why the platform list says Planned. Most parental controls stop at the phone.',
+      'Android TV gets a Daily Limit, Blocked Hours, app blocking and a Web Filter. Blocking is best-effort on a TV — a blocked app is sent back to the home screen — and there is no SOS or extra-time request from the sofa. The build runs on real hardware today and is waiting on its store release. Most parental controls stop at the phone.',
     only2Title: 'Message alerts that stay on the phone',
     only2Text:
       'On Android, messages are checked on the device against keyword lists in 14 languages, and what leaves the phone is the matched word, never the conversation. One thing changes that, and only if you ask for it: turn on AI confirmation and an ambiguous incoming message is sent to be judged, so you are not woken by an ordinary word.',
@@ -223,7 +227,7 @@ export default {
       'On Android, alerts come from notifications and typing in whatever your child uses — Zalo, LINE, KakaoTalk, a game’s chat — not from a fixed list of supported apps.',
     only4Title: 'A way out for the child',
     only4Text:
-      'Holding SOS for five seconds reaches you at once, with location — and on Android and Mac it also unlocks the device for a short while. A child who can always reach help has no reason to fight the app.',
+      'Holding SOS for five seconds reaches you at once, with location — and on Android and Mac it also unlocks the device for a short while. A child who can reach help from the lock screen has no reason to fight the app.',
     only5Title: 'Rules that hold without internet',
     only5Text:
       'Blocked Hours and Daily Limit are enforced on the device itself, so unplugging the router changes nothing. The TV even accepts your Parent PIN with no connection at all.',
@@ -499,6 +503,8 @@ export default {
       'Reading works straight away. To lock a device, change limits or approve requests, unlock this browser with your Parent PIN — or approve it by scanning the QR code with the KidGate app. Check-Ins work either way.',
     unlockCta: 'Unlock changes',
     unlockToChange: 'Unlock changes first',
+    refresh: 'Refresh',
+    liveOnApp: 'Open the app for live updates',
     pinTitle: 'Enter your Parent PIN',
     pinBody:
       'The same six digits you use in the app. This browser stays unlocked for 8 hours; approving from the app keeps it signed in for 7 days.',
@@ -517,7 +523,7 @@ export default {
 
     noDeviceTitle: 'No child device yet',
     noDeviceBody:
-      "Open KidGate on your phone, go to *Family → + → Connect a child device*, and scan the QR code shown on your child's device. It will appear here within a few seconds of pairing.",
+      'Open KidGate on your phone, go to *Family → + → Connect a child device*, and scan the QR code shown on your child’s device. It will appear here within a few seconds of pairing.',
 
     toastCheckIn: '{{name}} will get a Check-In request.',
     toastTimeApproved: 'Extra time approved.',
@@ -824,7 +830,7 @@ export default {
 
     contactTitle: 'Contact Us',
     contactEmail: '**Email:** [support@kidgate.app](mailto:support@kidgate.app)',
-    contactResponse: '**Response time:** within 24 hours (Monday–Friday)',
+    contactResponse: '**Response time:** usually within one business day',
     contactNote:
       'When contacting us, please include the email address of your KidGate parent account and a short description of the issue so we can help you faster.',
 
@@ -932,19 +938,20 @@ export default {
     storyP1:
       'Most families have the same evening: a timer nobody agreed on, a phone taken away, and a child certain the rules changed while they were not looking. The tools meant to fix that mostly made it worse — a lock with no explanation on one side, a dashboard that reads like surveillance on the other.',
     storyP2:
-      'So we built the version we wanted at home. A parent sets a Daily Limit, Blocked Hours, Blocked Apps and a Web Filter once, and the device holds them. The child sees the same numbers the parent sees, can ask for more time, and can always reach a parent with SOS. KidGate does not pretend not to be there.',
+      'So we built the version we wanted at home. A parent sets a Daily Limit, Blocked Hours, Blocked Apps and a Web Filter once, and the device holds them. The child sees the same numbers the parent sees, can ask for more time, and can reach a parent with SOS whenever the device is online. KidGate does not pretend not to be there.',
     storyP3:
       'It runs on iPhone, Android, Mac and Windows, with an extension for Chrome and a dashboard parents open in any browser. One family, one subscription, every device.',
 
     valuesEyebrow: 'What we believe',
     valuesTitle: 'Four rules we do not break',
-    valuesSub: 'The questions we get asked most, answered before you have to ask them.',
+    valuesSub:
+      'Written down before the first feature, and checked against every one since.',
     value1Title: 'A child is not a suspect',
     value1Text:
       'The rules are visible on the device they apply to. A child can see what is set and how much time is left, ask for more, and raise SOS at any moment. Control that has to stay secret is not control a family can talk about.',
     value2Title: 'Your family’s data is not for sale',
     value2Text:
-      'No ads, ever. Nothing about a child is used for advertising or sold on. You can erase your family account and everything in it whenever you want — from inside the app, or from this site.',
+      'No ads, ever. Nothing about a child is used for advertising or sold on. You can ask to erase your family account and everything in it at any time — from inside the app, or from this site — and it is gone 14 days later.',
     value3Title: 'We say what we cannot do',
     value3Text:
       'Every platform limits what an app is allowed to enforce. Where KidGate is best-effort — quitting a blocked app on a computer rather than refusing to launch it — the screen says so instead of showing a green tick.',
@@ -970,7 +977,6 @@ export default {
     /* The pill on the Android TV card. It is not a decoration — nothing about
        a TV has shipped, and a row sitting between four that have is read as
        available unless it says otherwise. */
-    make5Soon: 'Planned',
     make5Title: 'Android TV',
     make5Text:
       'The living-room screen, treated as a shared family device rather than one child’s — the same limits and the same schedule as the phones. It has run on real hardware and is waiting on its store release.',

@@ -130,13 +130,20 @@ export const family = {
   healthOffline: 'Çevrimdışı',
   devicePausedLabel: 'Duraklatıldı',
   devicePausedHint: 'Ücretsiz planda duraklatıldı — tüm kurallar geçerli',
+  parkReviewTitle: 'Deneme süreniz bitmeden bunları açın',
+  parkReviewBody:
+    'Deneme süreniz bittiğinde bir cihaz rapor göndermeyi ve kural değişikliklerini almayı sürdürür, diğerleri mevcut kurallarını korur. Sonrasında o cihazlarda bir kuralı yalnızca gevşetebilirsiniz; bu yüzden şimdi kapalı olan kapalı kalır.',
+  rulesEnforcedOn: '{{total}} cihazın {{enforced}} tanesinde geçerli',
+  rulesPausedBehind: 'Duraklatıldı — hâlâ eski ayarda',
+  rulesTightenRefused:
+    'Duraklatılmış bir cihazda kurallar yalnızca gevşetilebilir, sıkılaştırılamaz. Her cihazda değiştirmek için yükseltin.',
   parkedBannerTitle: 'İzlemeye devam edeceğiniz cihazı seçin',
   parkedBannerBody:
-    'Kurallarınız her cihazda çalışır. Ücretsiz plan yalnızca bir cihazdan rapor alır — onu seçin ya da hepsini korumak için yükseltin.',
+    'Kurallarınız her cihazda çalışmaya devam eder. Ücretsiz plan yalnızca bir cihazdan rapor alır ve kuralları yalnızca orada sıkılaştırabilirsiniz — o cihazı seçin ya da hepsini korumak için yükseltin.',
   parkedBannerAction: 'Cihaz seç',
-  chooseMonitoredTitle: 'Hangi cihaz raporlamalı?',
+  chooseMonitoredTitle: 'Ana cihazınızı seçin',
   chooseMonitoredBody:
-    'Tüm kurallar hepsinde çalışmaya devam eder. Yalnızca seçtiğiniz cihaz ekran süresi ve konum gönderir. {{days}} günde bir değiştirebilirsiniz.',
+    'Tüm kurallar hepsinde çalışmaya devam eder. Seçtiğiniz cihaz ekran süresi ve konum gönderir; kuralları hâlâ sıkılaştırabileceğiniz tek cihaz odur — diğerlerinde yalnızca gevşetebilirsiniz. Seçiminizi {{days}} günde bir değiştirebilirsiniz.',
   chooseMonitoredConfirm: 'Bu cihazı izle',
   chooseMonitoredUpgrade: 'Tüm cihazları koru — yükselt',
   chooseMonitoredDone: '{{name}} artık raporlayan cihaz',

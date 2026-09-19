@@ -219,7 +219,7 @@ export function parseDeviceControls(data?: Record<string, unknown>): DeviceContr
     webFilterBlockList: parseWebDomainList(controls.webFilterBlockList),
     webFilterAllowListOnly: controls.webFilterAllowListOnly === true,
     screenTimeAuthorized: Boolean(controls.screenTimeAuthorized),
-    // Server-stamped by reportChildUsage; absent for a child with no budget.
+    // Server-stamped by syncChildAgent; absent for a child with no budget.
     ...(controls.childBudget &&
     typeof (controls.childBudget as { date?: unknown }).date === 'string'
       ? {

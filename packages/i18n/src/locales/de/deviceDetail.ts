@@ -140,4 +140,10 @@ export const deviceDetail = {
   webHistorySitesUnit_one: 'Seite',
   managedAtChild:
     'Regeln, Belohnungen, Check-ins und Warnungen dieses Geräts werden im Profil von {{childName}} verwaltet',
+  pauseBrowsing: 'Surfen pausieren',
+  pauseBrowsingDescription:
+    'Blockiert das Web eine Weile. Anrufe und Offline-Apps funktionieren weiter.',
+  pauseBrowsingOff: 'Nicht pausiert',
+  pauseBrowsingLeft: 'Pausiert · noch {{minutes}} Min.',
+  pauseBrowsingFor: 'Für {{minutes}} Min. pausieren',
 } as const;

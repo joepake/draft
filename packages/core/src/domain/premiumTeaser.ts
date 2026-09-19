@@ -194,7 +194,7 @@ export function resolveTopAppsTeaser(input: {
    * document carries no `topAppsOtherToday`.
    *
    * Read only when that field is absent, never when it says zero: absent means
-   * nothing measured it — a `reportChildUsage` older than 2026-09-10 wrote no
+   * nothing measured it — a `syncChildAgent` older than 2026-09-10 wrote no
    * such field, so every device it has not reported to since carries none —
    * while zero is a measurement, and the three really were the whole day.
    *

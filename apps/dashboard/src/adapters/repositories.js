@@ -33,6 +33,7 @@ import { fetchLatestBuilds } from '@kidgate/core/repositories/releaseConfig';
 import { createApiAdapter } from './api.js';
 import { createClockAdapter } from './clock.js';
 import { createFirestoreAdapter } from './firestore.js';
+import { wrapOneShot } from './oneShot.js';
 import { wrapWithReadCounter } from './readCounter.js';
 import { createStorageAdapter } from './storage.js';
 import { APP_VERSION, APP_VERSION_CODE } from '../lib/appVersion.js';
@@ -53,13 +54,21 @@ import { APP_VERSION, APP_VERSION_CODE } from '../lib/appVersion.js';
  */
 
 /*
- * Wrapped in dev builds only — `wrapWithReadCounter` hands the port back
- * untouched in a production bundle. Here rather than at any call site
- * because this is the one adapter instance: everything below takes `db`.
- * A tab left open is this product's longest-lived reader, which is what
- * makes this surface worth counting. `docs/DATA_RETENTION.md` §9.
+ * Two wrappers over the one adapter instance, and the order is deliberate.
+ *
+ * `wrapOneShot` is innermost and is the product decision: **this surface reads
+ * once and never watches** (2026-09-17). A tab left open is this product's
+ * longest-lived reader, and a live listener bills a read per write to every
+ * document it holds — `docs/DATA_RETENTION.md` §4 counts what that is at rest.
+ * The phone is the realtime console; the web re-reads when the parent asks.
+ *
+ * `wrapWithReadCounter` sits OUTSIDE it, in dev builds only (it hands the port
+ * back untouched in a production bundle), so what it counts is what actually
+ * reached Firestore after the one-shot rule applied — a counter underneath
+ * would report the listeners this app no longer keeps. `docs/DATA_RETENTION.md`
+ * §9.
  */
-const db = wrapWithReadCounter(createFirestoreAdapter());
+const db = wrapWithReadCounter(wrapOneShot(createFirestoreAdapter()));
 const api = createApiAdapter();
 const storage = createStorageAdapter();
 

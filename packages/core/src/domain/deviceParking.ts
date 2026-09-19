@@ -46,6 +46,50 @@ export interface ParkableDevice {
 }
 
 /**
+ * Whether a device that has just appeared should be parked on arrival.
+ *
+ * **A different question from `devicesToPark`, and the difference is the
+ * survivor.** That one runs when a plan changes under a family and parks
+ * *everything* unparked, because at trial end nobody has chosen yet. This runs
+ * when one device joins a family whose choice already exists, and parking the
+ * set would throw that choice away.
+ *
+ * **It parks only when somebody else is already reporting.** A family whose
+ * devices are all parked has room by definition, and refusing the new one there
+ * is the A1 trap of `docs/TRIAL_TO_FREE.md` §6.1 in a new shape: a free parent
+ * whose only phone broke pairs a replacement, finds it silent, and can only wake
+ * it through a sheet behind a seven-day cooldown. A household that reports
+ * nothing is better served by the new machine reporting.
+ *
+ * Needed at all because pairing stopped being the paywall
+ * (`domain/pairingCeilings`): a free family may now hold eight devices, and the
+ * three sweeps that park are one-shot, so nothing else closes this loop.
+ *
+ * **Two devices paired within a second of each other race, and the race is
+ * left in.** Each trigger reads the set after both rows exist, each sees the
+ * other unparked, and both park — leaving a family reporting nothing. A
+ * transaction would close it and is not worth its cost here: the outcome is
+ * exactly the state `summariseParking` calls `choicePending`, so the next time
+ * a parent opens either console the choose-a-device sheet asks them, which is
+ * the designed answer for a household with no survivor. The failure mode of the
+ * fix — a contended transaction on every pairing — is worse than the failure
+ * mode of the race.
+ */
+export function shouldParkNewDevice(
+  devices: readonly ParkableDevice[],
+  newDeviceId: string,
+  allowance: number,
+): boolean {
+  if (!Number.isFinite(allowance)) {
+    return false;
+  }
+  const liveElsewhere = devices.filter(
+    device => device.id !== newDeviceId && !isDeviceParked(device),
+  );
+  return liveElsewhere.length >= allowance;
+}
+
+/**
  * The devices to park, given how many the plan monitors.
  *
  * Returns ids, never the whole set: the caller writes each one, and a function

@@ -1,5 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
-import { CONSOLE_HIDDEN_GRACE_MS } from '@kidgate/core/domain/consoleVisibility';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   buildMemberActorNames,
   usableOwnerLabel,
@@ -65,56 +64,31 @@ function forDevice(deviceId, rows) {
   return deviceId ? { [deviceId]: rows } : {};
 }
 
-/**
- * Whether this tab is on screen, with the grace from `@kidgate/core`.
+/*
+ * **The visibility gate went with the listeners** (2026-09-17).
  *
- * **Only the device list is gated on it, and the asymmetry is the point.**
- * Detaching a listener saves the reads its documents would have caused while
- * nobody was looking, and costs one read per document to re-attach — so it pays
- * on `childDevices`, three documents that change every minute of every day, and
- * loses badly on the history panels, which hold three hundred documents that
- * change almost never. A parent flicking between tabs would pay six hundred
- * reads to save none.
- *
- * `docs/DATA_RETENTION.md` §9 has the measurement that decides which is which.
+ * It detached the device list while the tab was hidden, which paid for itself
+ * only because that listener was re-delivering all day. `adapters/oneShot.js`
+ * now closes every subscription as soon as it has answered, so there is
+ * nothing left to detach — and keeping the gate would have turned every
+ * return to the tab into a fresh round of reads, which is the bill inverted.
+ * `docs/DATA_RETENTION.md` §4.
  */
-function useConsoleVisible() {
-  const [visible, setVisible] = useState(
-    () => typeof document === 'undefined' || document.visibilityState !== 'hidden',
-  );
-
-  useEffect(() => {
-    if (typeof document === 'undefined') return undefined;
-    let timer = null;
-    const onChange = () => {
-      if (document.visibilityState !== 'hidden') {
-        if (timer) {
-          clearTimeout(timer);
-          timer = null;
-        }
-        setVisible(true);
-        return;
-      }
-      if (timer) return;
-      timer = setTimeout(() => {
-        timer = null;
-        // Re-checked rather than assumed: the tab may have come back and gone
-        // again inside the grace, and this timer is the older of the two.
-        if (document.visibilityState === 'hidden') setVisible(false);
-      }, CONSOLE_HIDDEN_GRACE_MS);
-    };
-    document.addEventListener('visibilitychange', onChange);
-    return () => {
-      if (timer) clearTimeout(timer);
-      document.removeEventListener('visibilitychange', onChange);
-    };
-  }, []);
-
-  return visible;
-}
 
 export function useFamilyData(user, selectedDeviceId) {
-  const visible = useConsoleVisible();
+  /*
+   * Bumped by `refresh()`, and in the deps of every read below: this is how
+   * the page asks for the data again now that nothing streams it. The Refresh
+   * button calls it, and so does a parent write once the server has accepted
+   * one — an approved request has to leave the list, and no listener is going
+   * to take it out.
+   */
+  const [version, setVersion] = useState(0);
+  const [loadedAt, setLoadedAt] = useState(() => Date.now());
+  const refresh = useCallback(() => {
+    setLoadedAt(Date.now());
+    setVersion(current => current + 1);
+  }, []);
   /** Guards the skeleton against a re-run caused by the tab coming back. */
   const lastLoadedFamilyRef = useRef(null);
   const [familyId, setFamilyId] = useState(null);
@@ -144,6 +118,21 @@ export function useFamilyData(user, selectedDeviceId) {
    * and the name map is keyed the other way round.
    */
   const [parentDevices, setParentDevices] = useState([]);
+  /*
+   * The SIGNED-IN account's own phones, which for a joined co-parent are not
+   * the ones above.
+   *
+   * `firestore.rules` gates `users/{userId}/parentDevices` on
+   * `isParentAccount(userId)` — `request.auth.uid == userId`, the account's own
+   * root and nothing else — so a co-parent reading the owner's list is refused,
+   * the list stays empty, and the notification card rendered nothing at all.
+   * Their phones were there the whole time, one uid across.
+   *
+   * For the owner the two roots are the same string, which is what made the
+   * missing half invisible in testing, and why this read is skipped there
+   * rather than paying for the same documents twice.
+   */
+  const [accountParentDevices, setAccountParentDevices] = useState([]);
   const [ownerLabel, setOwnerLabel] = useState(null);
   /** The star chart's family switch, read with the rest of the meta. */
   const [leaderboardEnabled, setLeaderboardEnabled] = useState(true);
@@ -217,7 +206,7 @@ export function useFamilyData(user, selectedDeviceId) {
 
   // 2. Family-level data.
   useEffect(() => {
-    if (!familyId || !visible) return;
+    if (!familyId) return;
     let cancelled = false;
     /*
      * Only when the family actually changed. This effect also re-runs when the
@@ -367,7 +356,7 @@ export function useFamilyData(user, selectedDeviceId) {
       cancelled = true;
       subs.forEach(unsubscribe => unsubscribe());
     };
-  }, [familyId, visible]);
+  }, [familyId, version]);
 
   // 3. Everything scoped to the device on screen.
   //
@@ -407,7 +396,7 @@ export function useFamilyData(user, selectedDeviceId) {
       sosAlertRepository.subscribeActive(familyId, setFamilySos, soft('familySos')),
     ];
     return () => subs.forEach(unsubscribe => unsubscribe());
-  }, [familyId]);
+  }, [familyId, version]);
 
   /*
    * Check-ins have no family-wide query — a row carries a `deviceId` and
@@ -420,6 +409,33 @@ export function useFamilyData(user, selectedDeviceId) {
    * every heartbeat, and depending on it would tear this listener down and
    * rebuild it several times a minute.
    */
+  /*
+   * The co-parent's own phones. Skipped for the owner, whose root the block
+   * above already read — see `accountParentDevices`.
+   */
+  const accountId = user?.uid ?? null;
+  useEffect(() => {
+    if (!accountId || !familyId || accountId === familyId) {
+      setAccountParentDevices([]);
+      return undefined;
+    }
+    return deviceRepository.subscribeParentDevices(
+      accountId,
+      records =>
+        setAccountParentDevices(
+          records.map(record => ({
+            deviceId: record.deviceId,
+            name: resolveStoredDeviceName(record) || record.deviceId,
+          })),
+        ),
+      e =>
+        console.warn(
+          '[kidgate] accountParentDevices read failed:',
+          e?.code || e?.message,
+        ),
+    );
+  }, [accountId, familyId, version]);
+
   const childDeviceIdKey = devices.map(device => device.id).join(',');
   useEffect(() => {
     if (!familyId || !childDeviceIdKey) {
@@ -436,7 +452,7 @@ export function useFamilyData(user, selectedDeviceId) {
           e?.code || e?.message,
         ),
     );
-  }, [familyId, childDeviceIdKey]);
+  }, [familyId, childDeviceIdKey, version]);
 
   useEffect(() => {
     if (!familyId || !selectedDeviceId) return;
@@ -494,6 +510,26 @@ export function useFamilyData(user, selectedDeviceId) {
         soft('rewardTasksApproved'),
         selectedChildId || undefined,
       ),
+    ];
+
+    return () => subs.forEach(unsubscribe => unsubscribe());
+  }, [familyId, selectedChildId, selectedDeviceId, version]);
+
+  /*
+   * The two history panels, apart from the block above and on `version` alone.
+   *
+   * They are 600 documents between them (`WEB_HISTORY_PAGE_SIZE` and
+   * `VIDEO_HISTORY_PAGE_SIZE`, 300 each) against roughly 60 for everything
+   * else this device needs, and **no parent write moves either** — what a
+   * child reached is not something a console edits. Re-reading them after
+   * every toggle would have put the idle bill back, one switch at a time. The
+   * Refresh button is what asks for these again.
+   */
+  useEffect(() => {
+    if (!familyId || !selectedDeviceId) return;
+    const soft = name => e =>
+      console.warn(`[kidgate] ${name} read failed:`, e?.code || e?.message);
+    const subs = [
       webHistoryRepository.subscribe(
         familyId,
         selectedDeviceId,
@@ -507,9 +543,8 @@ export function useFamilyData(user, selectedDeviceId) {
         soft('videoHistory'),
       ),
     ];
-
     return () => subs.forEach(unsubscribe => unsubscribe());
-  }, [familyId, selectedChildId, selectedDeviceId]);
+  }, [familyId, selectedDeviceId, version]);
 
   // 4. The usage range: one read for the window, one listener for today.
   //
@@ -554,7 +589,7 @@ export function useFamilyData(user, selectedDeviceId) {
       cancelled = true;
       unsubscribe();
     };
-  }, [familyId, selectedChildId, selectedDeviceId]);
+  }, [familyId, selectedChildId, selectedDeviceId, version]);
 
   /**
    * Stored one row per domain per day; the dashboard shows one row per domain
@@ -702,12 +737,21 @@ export function useFamilyData(user, selectedDeviceId) {
       /**
        * The signed-in account's own phones.
        *
-       * Only ever the OWNER's: this listener reads `users/{familyId}` and
-       * `firestore.rules` gates that path on `request.auth.uid == familyId`,
-       * so for a joined co-parent it is refused and this stays empty — which
-       * is the honest answer, since their phones live under their own root.
+       * **Whoever is signed in, not whoever owns the family** (2026-09-17).
+       *
+       * The family-root read is refused for a joined co-parent — the rule is
+       * `request.auth.uid == familyId` — so this was empty for them and the
+       * notification card drew nothing. It is their OWN root that holds their
+       * phones, and that one they may read. For the owner the two are the same
+       * string and `accountParentDevices` is deliberately not fetched.
+       *
+       * The actor names beside activity rows still come from the family root
+       * and still stop at the same wall: a co-parent cannot read the owner's
+       * device names, so a row written by the owner's phone carries no name
+       * for them. That is the rule, not an oversight — closing it needs a
+       * server-side read, not a wider client one.
        */
-      parentDevices,
+      parentDevices: accountId === familyId ? parentDevices : accountParentDevices,
       timeRequests: forDevice(selectedDeviceId, timeRequestRows),
       siteRequests: forDevice(selectedDeviceId, siteRequestRows),
       sosAlerts: forDevice(selectedDeviceId, sosRows),
@@ -718,6 +762,8 @@ export function useFamilyData(user, selectedDeviceId) {
       videoHistory: videos,
     };
   }, [
+    accountId,
+    accountParentDevices,
     devices,
     usage,
     webHistory,
@@ -790,5 +836,9 @@ export function useFamilyData(user, selectedDeviceId) {
     loading: resolving || (Boolean(familyId) && !devicesLoaded),
     error,
     unknownAccount,
+    /** When this data was asked for — the header prints it beside Refresh. */
+    loadedAt,
+    /** Read it all again: the header button, and every write that lands. */
+    refresh,
   };
 }

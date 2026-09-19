@@ -23,6 +23,10 @@ export default {
     comingSoon: 'Demnächst',
     loading: 'Wird geladen…',
     signOut: 'Abmelden',
+    crashTitle: 'Diese Seite funktioniert nicht mehr',
+    crashBody:
+      'Ein Neuladen hilft meistens. An den Einstellungen deiner Familie und den Geräten deines Kindes ändert sich nichts.',
+    crashReload: 'Seite neu laden',
   },
 
   language: {
@@ -205,7 +209,7 @@ export default {
       'Sechs Punkte, geprüft gegen die Apps, mit denen Eltern uns vergleichen. Jeder nennt die Plattform, auf der er gilt.',
     only1Title: 'Auch der Fernseher im Wohnzimmer',
     only1Text:
-      'Android TV bekommt ein Tageslimit, Sperrzeiten, App-Sperre und einen Webfilter. Auf einem Fernseher funktioniert die Sperre nur nach bestem Bemühen — eine gesperrte App wird zurück auf den Startbildschirm geschickt — und vom Sofa aus gibt es weder SOS noch eine Anfrage nach zusätzlicher Zeit. Der Build läuft heute auf echter Hardware und wartet auf seine Store-Veröffentlichung — deshalb steht in der Plattformliste Geplant. Die meisten Kindersicherungen hören beim Handy auf.',
+      'Android TV bekommt ein Tageslimit, Sperrzeiten, App-Sperre und einen Webfilter. Auf einem Fernseher funktioniert die Sperre nur nach bestem Bemühen — eine gesperrte App wird zurück auf den Startbildschirm geschickt — und vom Sofa aus gibt es weder SOS noch eine Anfrage nach zusätzlicher Zeit. Der Build läuft heute auf echter Hardware und wartet auf seine Store-Veröffentlichung. Die meisten Kindersicherungen hören beim Handy auf.',
     only2Title: 'Nachrichtenwarnungen, die auf dem Handy bleiben',
     only2Text:
       'Auf Android werden Nachrichten direkt auf dem Gerät mit Stichwortlisten in 14 Sprachen abgeglichen, und was das Handy verlässt, ist das gefundene Wort, niemals das Gespräch. Eines ändert das, und nur wenn du es willst: Schaltest du die KI-Bestätigung ein, wird eine mehrdeutige eingehende Nachricht zur Beurteilung gesendet, damit dich nicht ein gewöhnliches Wort aus dem Schlaf reißt.',
@@ -214,7 +218,7 @@ export default {
       'Auf Android kommen Warnungen aus Benachrichtigungen und Tippeingaben in allem, was dein Kind nutzt — Zalo, LINE, KakaoTalk, der Chat eines Spiels — nicht aus einer festen Liste unterstützter Apps.',
     only4Title: 'Ein Ausweg für das Kind',
     only4Text:
-      'Fünf Sekunden SOS gedrückt, und du wirst sofort benachrichtigt, mit Standort — auf Android und Mac wird das Gerät zudem kurz entsperrt. Ein Kind, das immer Hilfe erreichen kann, hat keinen Grund, gegen die App zu kämpfen.',
+      'Fünf Sekunden SOS gedrückt, und du wirst sofort benachrichtigt, mit Standort — auf Android und Mac wird das Gerät zudem kurz entsperrt. Ein Kind, das vom Sperrbildschirm aus Hilfe erreichen kann, hat keinen Grund, gegen die App zu kämpfen.',
     only5Title: 'Regeln, die ohne Internet gelten',
     only5Text:
       'Sperrzeiten und Tageslimit werden auf dem Gerät selbst durchgesetzt; den Router auszustecken ändert nichts. Der Fernseher nimmt deine Eltern-PIN sogar ganz ohne Verbindung an.',
@@ -475,6 +479,8 @@ export default {
       'Ansehen geht sofort. Um ein Gerät zu sperren, Limits zu ändern oder Anfragen zu genehmigen, entsperre diesen Browser mit deiner Eltern-PIN – oder bestätige ihn, indem du den QR-Code mit der KidGate-App scannst. Check-ins funktionieren in beiden Fällen.',
     unlockCta: 'Änderungen entsperren',
     unlockToChange: 'Erst Änderungen entsperren',
+    refresh: 'Aktualisieren',
+    liveOnApp: 'Für Live-Updates die App öffnen',
     pinTitle: 'Eltern-PIN eingeben',
     pinBody:
       'Dieselben sechs Ziffern wie in der App. Dieser Browser bleibt 8 Stunden entsperrt; eine Freigabe aus der App hält ihn 7 Tage angemeldet.',
@@ -809,7 +815,7 @@ export default {
 
     contactTitle: 'Kontakt',
     contactEmail: '**E-Mail:** [support@kidgate.app](mailto:support@kidgate.app)',
-    contactResponse: '**Antwortzeit:** innerhalb von 24 Stunden (Montag–Freitag)',
+    contactResponse: '**Antwortzeit:** in der Regel innerhalb eines Werktags',
     contactNote:
       'Nenne uns bitte die E-Mail-Adresse deines KidGate-Elternkontos und beschreibe kurz das Problem, damit wir schneller helfen können.',
 
@@ -905,19 +911,19 @@ export default {
     storyP1:
       'Fast jede Familie kennt denselben Abend: ein Timer, den niemand vereinbart hat, ein weggenommenes Handy und ein Kind, das sicher ist, die Regeln hätten sich heimlich geändert. Die Werkzeuge dagegen haben es meist schlimmer gemacht — auf der einen Seite eine Sperre ohne Erklärung, auf der anderen ein Dashboard, das sich wie Überwachung liest.',
     storyP2:
-      'Also haben wir die Version gebaut, die wir zu Hause haben wollten. Eltern legen Tageslimit, Sperrzeiten, App-Sperre und Webfilter einmal fest, und das Gerät hält sich daran. Das Kind sieht dieselben Zahlen wie die Eltern, kann mehr Zeit anfragen und erreicht mit SOS jederzeit ein Elternteil. KidGate tut nicht so, als wäre es nicht da.',
+      'Also haben wir die Version gebaut, die wir zu Hause haben wollten. Eltern legen Tageslimit, Sperrzeiten, App-Sperre und Webfilter einmal fest, und das Gerät hält sich daran. Das Kind sieht dieselben Zahlen wie die Eltern, kann mehr Zeit anfragen und erreicht mit SOS ein Elternteil, wann immer das Gerät online ist. KidGate tut nicht so, als wäre es nicht da.',
     storyP3:
       'Es läuft auf iPhone, Android, Mac und Windows, dazu eine Erweiterung für Chrome und ein Dashboard für jeden Browser. Eine Familie, ein Tarif, alle Geräte.',
     valuesEyebrow: 'Woran wir glauben',
     valuesTitle: 'Vier Regeln, die wir nicht brechen',
     valuesSub:
-      'Die Fragen, die uns am häufigsten gestellt werden — beantwortet, bevor sie gestellt werden müssen.',
+      'Vor der ersten Funktion aufgeschrieben — und seitdem wird jede Funktion daran gemessen.',
     value1Title: 'Ein Kind ist kein Verdächtiger',
     value1Text:
       'Die Regeln sind auf dem Gerät sichtbar, für das sie gelten. Ein Kind sieht, was eingestellt ist und wie viel Zeit bleibt, kann mehr anfragen und jederzeit SOS auslösen. Kontrolle, die heimlich bleiben muss, ist keine Kontrolle, über die eine Familie sprechen kann.',
     value2Title: 'Die Daten Ihrer Familie sind nicht zu verkaufen',
     value2Text:
-      'Niemals Werbung. Nichts über ein Kind wird für Werbung genutzt oder weiterverkauft. Sie können das Familienkonto mit allem darin jederzeit löschen — in der App oder auf dieser Website.',
+      'Niemals Werbung. Nichts über ein Kind wird für Werbung genutzt oder weiterverkauft. Sie können jederzeit verlangen, dass das Familienkonto mit allem darin gelöscht wird — in der App oder auf dieser Website —, und 14 Tage später ist es weg.',
     value3Title: 'Wir sagen, was wir nicht können',
     value3Text:
       'Jede Plattform begrenzt, was eine App durchsetzen darf. Wo KidGate nur nach bestem Bemühen arbeitet — eine gesperrte App auf dem Computer beenden, statt den Start zu verhindern — steht genau das auf dem Bildschirm, statt eines grünen Hakens.',
@@ -940,7 +946,6 @@ export default {
     make4Title: 'Windows',
     make4Text:
       'Derselbe Agent auf dem PC, mit einem Hintergrunddienst, der ihn neu startet, wenn er geschlossen oder beendet wird.',
-    make5Soon: 'Geplant',
     make5Title: 'Android TV',
     make5Text:
       'Der Bildschirm im Wohnzimmer, behandelt als gemeinsames Familiengerät statt als das eines Kindes — mit denselben Limits und demselben Zeitplan wie auf den Handys. Diese Version ist bereits auf echter Hardware gelaufen und wartet auf die Veröffentlichung im Store.',

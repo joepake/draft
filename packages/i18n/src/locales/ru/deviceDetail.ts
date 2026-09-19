@@ -142,4 +142,10 @@ export const deviceDetail = {
   webHistorySitesUnit_few: 'сайта',
   managedAtChild:
     'Правила, награды, чек-ины и оповещения этого устройства настраиваются в профиле {{childName}}',
+  pauseBrowsing: 'Приостановить веб',
+  pauseBrowsingDescription:
+    'Ненадолго блокирует веб. Звонки и офлайн-приложения продолжают работать.',
+  pauseBrowsingOff: 'Не приостановлено',
+  pauseBrowsingLeft: 'Пауза · осталось {{minutes}} мин',
+  pauseBrowsingFor: 'Пауза на {{minutes}} мин',
 } as const;

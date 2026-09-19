@@ -134,13 +134,20 @@ export const family = {
   healthOffline: 'Offline',
   devicePausedLabel: 'In pausa',
   devicePausedHint: 'In pausa con il piano gratuito: tutte le regole restano attive',
+  parkReviewTitle: 'Attiva queste voci prima che finisca la prova',
+  parkReviewBody:
+    'Quando la prova finisce, un dispositivo continua a inviare i report e ad accettare modifiche alle regole, mentre gli altri mantengono le regole che hanno già. Su quelli potrai solo allentare una regola, quindi ciò che ora è disattivato resta disattivato.',
+  rulesEnforcedOn: 'Attive su {{enforced}} dispositivi su {{total}}',
+  rulesPausedBehind: 'In pausa — mantiene un’impostazione precedente',
+  rulesTightenRefused:
+    'Su un dispositivo in pausa le regole si possono solo allentare, mai rendere più severe. Passa a Premium per cambiarle su ogni dispositivo.',
   parkedBannerTitle: 'Scegli il dispositivo che continuerai a seguire',
   parkedBannerBody:
-    'Le tue regole funzionano su ogni dispositivo. Il piano gratuito riceve i report da uno solo: sceglilo, o passa a Premium per tenerli tutti.',
+    'Le tue regole continuano a funzionare su ogni dispositivo. Il piano gratuito riceve i report da un solo dispositivo e lì soltanto puoi rendere le regole più severe: scegli quel dispositivo, o passa a Premium per tenerli tutti.',
   parkedBannerAction: 'Scegli dispositivo',
-  chooseMonitoredTitle: 'Quale dispositivo deve inviare i report?',
+  chooseMonitoredTitle: 'Scegli il dispositivo principale',
   chooseMonitoredBody:
-    'Tutte le regole restano attive su tutti. Solo quello che scegli invia tempo di utilizzo e posizione. Puoi cambiarlo una volta ogni {{days}} giorni.',
+    'Tutte le regole restano attive su tutti. Il dispositivo che scegli invia tempo di utilizzo e posizione ed è l’unico su cui puoi ancora rendere le regole più severe: sugli altri puoi solo allentarle. Puoi cambiare la scelta una volta ogni {{days}} giorni.',
   chooseMonitoredConfirm: 'Segui questo dispositivo',
   chooseMonitoredUpgrade: 'Tieni tutti i dispositivi: passa a Premium',
   chooseMonitoredDone: '{{name}} è ora il dispositivo che invia i report',

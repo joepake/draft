@@ -10,6 +10,7 @@ import TrustedContactsCard from './TrustedContactsCard.jsx';
 import { deviceIconName } from './deviceIcon.js';
 import { timeAgo } from './timeAgo.js';
 import { trustedContactRepository } from '../adapters/repositories.js';
+import { useReload } from './useReload.js';
 
 /**
  * The family screen — the web half of `apps/mobile`'s `FamilyDetailScreen`.
@@ -66,6 +67,7 @@ export default function FamilySettingsCard({
   const [nameDraft, setNameDraft] = useState(family.name ?? '');
   const [newChild, setNewChild] = useState('');
   const [contacts, setContacts] = useState([]);
+  const [reloadKey, reload] = useReload();
 
   /* Here rather than inside the card, because the tab bar needs the count
      before the tab has been opened — a listener that starts when its own tab
@@ -79,7 +81,7 @@ export default function FamilySettingsCard({
     return trustedContactRepository.subscribe(familyId, setContacts, () =>
       setContacts([]),
     );
-  }, [live, familyId]);
+  }, [live, familyId, reloadKey]);
 
   // The other parent renames it too, and the meta read re-delivers.
   useEffect(() => {
@@ -334,7 +336,14 @@ export default function FamilySettingsCard({
               a tab that came and went with the build is worse than one that
               says there is nothing here. */}
           {live && familyId ? (
-            <TrustedContactsCard familyId={familyId} contacts={contacts} />
+            <TrustedContactsCard
+              familyId={familyId}
+              contacts={contacts}
+              /* The list is read HERE and written there, one-shot either way
+                 (`adapters/oneShot.js`), so the card has to say when it has
+                 changed something or the row a parent just added is not drawn. */
+              onChanged={reload}
+            />
           ) : (
             <p className="hint">{appT('sos.trustedContactsEmpty')}</p>
           )}

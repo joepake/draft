@@ -32,12 +32,14 @@ import {
  * ## What this cannot do, and why it is not hidden
  *
  * **A place can only be added where the device last reported itself.** The
- * dashboard has no map — the square on the Safety tab is a decorative grid
- * with pins at fixed percentages, not a surface anyone can drop a pin on. The
- * phone has the map and stays the only place to put a geofence somewhere the
- * child has never been. Adding a map here is its own piece of work, and
- * shipping a coordinate box for a parent to type latitude into would be worse
- * than the gap.
+ * Location card above has drawn a real HERE map since 2026-09-17, but it is a
+ * READING — a sandboxed document built by
+ * `@kidgate/core/domain/locationHistoryMapHtml` that reports nothing back to
+ * this page. Dropping a pin needs a click travelling out of that iframe and a
+ * geocode behind it, which is its own piece of work; the phone stays the only
+ * place to put a geofence somewhere the child has never been. Shipping a
+ * coordinate box for a parent to type latitude into would be worse than the
+ * gap.
  */
 /*
  * `appT` reads the APP key space through `@kidgate/i18n/activityFeed`, the
@@ -118,7 +120,16 @@ export default function PlacesEditor({ device, readOnly, busy, onSave }) {
   };
 
   return (
-    <div className="places-editor">
+    /*
+     * `place-alerts` is a control-centre action in its own right and it lands
+     * on the Safety panel, one card below the Location map and its facts — far
+     * enough down that a parent who pressed "Places" arrived without seeing
+     * it. The id is the action's own, the way a `Card`'s is, so
+     * `deviceDetailActions` and this cannot drift; the editor is not a `Card`
+     * because it lives inside the Location one, which is why it carries the id
+     * itself.
+     */
+    <div id="place-alerts" className="places-editor">
       {places.map(place =>
         editing?.id === place.id ? (
           <PlaceRowForm

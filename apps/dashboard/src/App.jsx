@@ -1,5 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import DashboardLive from './pages/DashboardLive.jsx';
+import ErrorBoundary from './ErrorBoundary.jsx';
 import { useT } from '@kidgate/web-ui/useT';
 import '@kidgate/web-ui/dashboard.css';
 
@@ -23,12 +24,17 @@ export default function App() {
         {t('nav.skip')}
       </a>
       <main className="main" id="main">
-        <Routes>
-          <Route path="/" element={<DashboardLive />} />
-          {/* Anything else on this host is a stale bookmark from when the
-              dashboard was a route on the marketing site. */}
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
+        {/* Inside `main` and not around the whole app, so the skip link above
+            survives a crash and the fallback lands where a screen reader is
+            already pointed. */}
+        <ErrorBoundary>
+          <Routes>
+            <Route path="/" element={<DashboardLive />} />
+            {/* Anything else on this host is a stale bookmark from when the
+                dashboard was a route on the marketing site. */}
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </ErrorBoundary>
       </main>
     </div>
   );

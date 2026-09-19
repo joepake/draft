@@ -132,13 +132,20 @@ export const family = {
   healthOffline: 'Offline',
   devicePausedLabel: 'Pausiert',
   devicePausedHint: 'Im Gratis-Tarif pausiert – alle Regeln gelten weiter',
+  parkReviewTitle: 'Schalte das vor Ende deiner Testphase ein',
+  parkReviewBody:
+    'Wenn deine Testphase endet, sendet ein Gerät weiter Berichte und nimmt Regeländerungen an, auf den übrigen gelten die bisherigen Regeln weiter. Dort kannst du Regeln danach nur noch lockern – was jetzt aus ist, bleibt aus.',
+  rulesEnforcedOn: 'Aktiv auf {{enforced}} von {{total}} Geräten',
+  rulesPausedBehind: 'Pausiert – noch mit einer älteren Einstellung',
+  rulesTightenRefused:
+    'Auf einem pausierten Gerät lassen sich Regeln nur lockern, nie verschärfen. Upgrade, um das auf jedem Gerät zu ändern.',
   parkedBannerTitle: 'Wähle das Gerät, das du weiter im Blick behältst',
   parkedBannerBody:
-    'Deine Regeln laufen auf jedem Gerät. Der Gratis-Tarif erhält Berichte von einem – wähle es aus oder upgrade, um alle zu behalten.',
+    'Deine Regeln laufen weiter auf jedem Gerät. Der Gratis-Tarif erhält Berichte von einem Gerät und lässt dich nur dort Regeln verschärfen – wähle dieses Gerät oder upgrade, um alle zu behalten.',
   parkedBannerAction: 'Gerät wählen',
-  chooseMonitoredTitle: 'Welches Gerät soll berichten?',
+  chooseMonitoredTitle: 'Wähle dein Hauptgerät',
   chooseMonitoredBody:
-    'Alle Regeln laufen auf allen Geräten weiter. Nur das gewählte sendet Bildschirmzeit und Standort. Du kannst es alle {{days}} Tage einmal ändern.',
+    'Alle Regeln laufen auf allen Geräten weiter. Das gewählte Gerät sendet Bildschirmzeit und Standort und ist das einzige, dessen Regeln du noch verschärfen kannst – auf den anderen kannst du sie nur lockern. Deine Wahl kannst du alle {{days}} Tage einmal ändern.',
   chooseMonitoredConfirm: 'Dieses Gerät beobachten',
   chooseMonitoredUpgrade: 'Alle Geräte behalten – Upgrade',
   chooseMonitoredDone: '{{name}} ist jetzt das berichtende Gerät',

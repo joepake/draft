@@ -17,6 +17,7 @@
  */
 
 import type { Device } from '@kidgate/schema/device';
+import { isDeviceParked } from './deviceParking';
 import { getEffectiveDeviceStatus } from './deviceStatus';
 
 export interface ChildPresence {
@@ -24,6 +25,12 @@ export interface ChildPresence {
   online: boolean;
   /** How many of the child's devices are reachable right now. */
   onlineCount: number;
+  /**
+   * How many are parked — quiet because the free plan told them to be, not
+   * because anything is wrong. Lets a screen say Paused where it would
+   * otherwise have to say Offline over a device enforcing every rule it holds.
+   */
+  pausedCount: number;
   /** Every device assigned to the child, reachable or not. */
   totalCount: number;
   /**
@@ -38,6 +45,7 @@ export function resolveChildPresence(
   nowMs: number,
 ): ChildPresence {
   let onlineCount = 0;
+  let pausedCount = 0;
   let lastActiveAt: string | null = null;
 
   for (const device of devices) {
@@ -45,8 +53,21 @@ export function resolveChildPresence(
     // which is exactly why the parent can unlock it from here. 'parked' does
     // not: that device has been told not to report, and counting it present
     // would show a child "online" on a phone the family is not watching.
+    //
+    // **Parking is read off the field, never off the status**, and that is the
+    // whole correction here. `getEffectiveDeviceStatus` answers `'locked'` for
+    // a device that is BOTH parked and locked — the lock deliberately wins
+    // there so a parent can see their own lock took (`domain/deviceStatus`).
+    // Asking it alone therefore never hears `'parked'` about a locked device,
+    // so the clause above was unreachable for exactly the set trial end
+    // leaves behind: park every device, lock them, and the row read
+    // "2/2 online" over a family reporting nothing.
+    const parked = isDeviceParked(device);
+    if (parked) {
+      pausedCount += 1;
+    }
     const status = getEffectiveDeviceStatus(device, nowMs);
-    if (status === 'online' || status === 'locked') {
+    if (!parked && (status === 'online' || status === 'locked')) {
       onlineCount += 1;
     }
     if (device.lastActiveAt && (!lastActiveAt || device.lastActiveAt > lastActiveAt)) {
@@ -57,6 +78,7 @@ export function resolveChildPresence(
   return {
     online: onlineCount > 0,
     onlineCount,
+    pausedCount,
     totalCount: devices.length,
     lastActiveAt,
   };

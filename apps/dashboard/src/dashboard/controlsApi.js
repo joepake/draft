@@ -1,4 +1,7 @@
 import { isApiFailure } from '@kidgate/core/domain/apiFailure';
+import { splitChildRuleControls } from '@kidgate/core/domain/childWebRules';
+import { isDeviceParked } from '@kidgate/core/domain/deviceParking';
+import { isWhollyTightening } from '@kidgate/core/domain/ruleRelaxation';
 import {
   trackCheckInRequest,
   trackDeviceLock,
@@ -135,18 +138,57 @@ async function guard(run) {
  * its toast, and a measurement that ate the reason a lock failed would be worse
  * than no measurement.
  */
+/**
+ * The codes that mean the session ended, not that the control was refused.
+ *
+ * Derived from `MESSAGE_KEYS` rather than listed again: the two are the same
+ * question — "does this failure mean sign in again?" — and a hand-copied second
+ * list is one that stops agreeing the first time a third code maps there.
+ */
+const SESSION_EXPIRED_CODES = new Set(
+  Object.keys(MESSAGE_KEYS).filter(
+    code => MESSAGE_KEYS[code] === 'controlError.sessionExpired',
+  ),
+);
+
 async function counted(run, report) {
   try {
     const result = await run();
     report('success');
     return result;
   } catch (error) {
-    report('failed');
+    /*
+     * **A session that ended is not a control that failed**, and folding the
+     * two made the refusal rate unreadable: every expired web session landed
+     * in the same `failed` bucket as a server saying no, on the one event that
+     * answers which controls parents reach for.
+     *
+     * The same split `trackLogin` already makes for a closed popup — a parent
+     * who changed their mind is not an authentication that went wrong.
+     *
+     * **Web-only on purpose, and it does not skew the joined report.** A phone
+     * proves itself with a `deviceCredential` in the Keychain, which does not
+     * expire the way a QR-approved browser session does (see the note at the
+     * top of this file), so this is a failure class the phone's `failed`
+     * barely contains. Taking it out of the web's makes the two comparable
+     * rather than less so — the argument `trackWebStepUp` already carries.
+     */
+    report(SESSION_EXPIRED_CODES.has(error?.code) ? 'expired' : 'failed');
     throw error;
   }
 }
 
-export function createActions({ familyId, canWrite, isOwner = false }) {
+export function createActions({
+  familyId,
+  canWrite,
+  isOwner = false,
+  /**
+   * The family's devices, for the one gate a client can decide by itself —
+   * see `updateControls`. Absent (or a device missing from it) leaves every
+   * write exactly as it was: the server answers, as it always did.
+   */
+  devices = [],
+}) {
   return {
     canWrite: Boolean(canWrite),
     /**
@@ -440,10 +482,58 @@ export function createActions({ familyId, canWrite, isOwner = false }) {
       );
     },
 
+    /**
+     * A parked device takes only what loosens, and the client can tell.
+     *
+     * `tighteningKeys` is the same fold the server runs — `functions/lib/
+     * generated/ruleRelaxation` is generated from it — so a patch where every
+     * gated field tightens has exactly one possible answer, and asking for it
+     * spends a round trip and a cold start before the parent is told anything.
+     * Refused here instead. The server keeps its own gate: a client is never
+     * what enforces a rule, only what saves a request.
+     *
+     * **Only when the whole patch tightens.** A mixed one is the server's to
+     * split — it takes the loosening half and names the rest in `refusedKeys`,
+     * which `run` already renders — and refusing it here would lose the fields
+     * a parked device is still allowed to change.
+     *
+     * Child-rule fields are left out on an assigned device for the same reason
+     * the server leaves them out: they are routed to `updateChildRules` and
+     * decided per sibling, so counting them here would refuse a patch the
+     * server would have accepted.
+     */
     updateControls(deviceId, controls) {
+      const device = devices.find(entry => entry.id === deviceId);
+      const gated = device?.childId
+        ? splitChildRuleControls(controls ?? {}).deviceControls
+        : (controls ?? {});
+      const refusedUpFront =
+        Boolean(device) &&
+        isDeviceParked(device ?? {}) &&
+        isWhollyTightening(device?.controls, gated);
+
       return counted(
-        () =>
-          guard(() => controlRepository.updateControls(familyId, deviceId, controls)),
+        () => {
+          if (refusedUpFront) {
+            /*
+             * Thrown inside `counted` so the refusal lands in the same
+             * `failed` bucket the server's 403 does — one client-side and one
+             * server-side answer to the same question must not read as two
+             * different rates — and outside `guard`, which would re-map the
+             * verdict onto `controlError.forbidden` ("sign in again") and say
+             * the wrong thing about a plan.
+             */
+            throw new ControlError(
+              'forbidden',
+              null,
+              'This device is paused. Its rules can be relaxed but not tightened.',
+              'parking/loosen-only',
+            );
+          }
+          return guard(() =>
+            controlRepository.updateControls(familyId, deviceId, controls),
+          );
+        },
         /*
          * The control **keys**, never their values. Which switches parents
          * reach for is the question; what a particular family set their bedtime

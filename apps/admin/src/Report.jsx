@@ -278,6 +278,31 @@ export default function Report() {
                     {formatNumber(latest.familiesTrialWindow)}
                   </span>
                 </div>
+                {/* Absent on every row written before `lastExpiredAt` shipped, and
+                    a zero there would read as "nobody has ever churned". */}
+                {latest.lapse ? (
+                  <>
+                    <div className="plan-divider" />
+                    <div className="plan-row">
+                      <span className="plan-name">
+                        {t('report.lapsedGone')}
+                        <sup className="mark">§</sup>
+                      </span>
+                      <span className="plan-value">
+                        {formatNumber(latest.lapse.stillLapsed)}
+                      </span>
+                    </div>
+                    <div className="plan-row">
+                      <span className="plan-name">
+                        {t('report.lapsedBack')}
+                        <sup className="mark">§</sup>
+                      </span>
+                      <span className="plan-value">
+                        {formatNumber(latest.lapse.recovered)}
+                      </span>
+                    </div>
+                  </>
+                ) : null}
               </div>
             </div>
           ) : null}
@@ -489,6 +514,12 @@ export default function Report() {
               {t('footnote.firstD')}
               <b>{t('report.timeToPurchase')}</b>
               {t('footnote.firstE')}
+            </p>
+            <p>
+              <b>§</b> <b>{t('report.lapsedGone')}</b>
+              {t('footnote.lapseA')}
+              <code>lastExpiredAt</code>
+              {t('footnote.lapseB')}
             </p>
             <p>{t('footnote.gap')}</p>
           </div>

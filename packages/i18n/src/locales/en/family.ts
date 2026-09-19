@@ -117,13 +117,20 @@ export const family = {
   // `family`, not `plans`: the dashboard reads this namespace.
   devicePausedLabel: 'Paused',
   devicePausedHint: 'Paused on the free plan — every rule still applies',
+  parkReviewTitle: 'Switch these on before your trial ends',
+  parkReviewBody:
+    'When your trial ends, one device keeps sending reports and taking rule changes, and the rest keep the rules they already have. On those you can only loosen a rule afterwards, so anything switched off now stays off.',
+  rulesEnforcedOn: 'Applied on {{enforced}} of {{total}} devices',
+  rulesPausedBehind: 'Paused — keeping an earlier setting',
+  rulesTightenRefused:
+    'A paused device can only have its rules loosened, never tightened. Upgrade to change this on every device.',
   parkedBannerTitle: 'Choose the device to keep watching',
   parkedBannerBody:
-    'Your rules run on every device. The free plan reports from one — pick it, or upgrade to keep them all.',
+    'Your rules keep running on every device. The free plan reports from one device and lets you tighten rules only there — pick that device, or upgrade to keep them all.',
   parkedBannerAction: 'Choose device',
-  chooseMonitoredTitle: 'Which device should report?',
+  chooseMonitoredTitle: 'Choose your primary device',
   chooseMonitoredBody:
-    'Every rule keeps working on all of them. Only the one you pick sends screen time and location. You can change it once every {{days}} days.',
+    'Every rule keeps working on all of them. The device you pick reports screen time and location, and is the only one whose rules you can still tighten — on the others you can only loosen them. You can change your pick once every {{days}} days.',
   chooseMonitoredConfirm: 'Watch this device',
   chooseMonitoredUpgrade: 'Keep all devices — upgrade',
   chooseMonitoredDone: '{{name}} is now the reporting device',

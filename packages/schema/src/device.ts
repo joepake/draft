@@ -135,7 +135,7 @@ export interface DeviceWeekCounters {
  * said it would; keeping it here is what makes the feature reach five child
  * surfaces without five copies of the same fold. An agent only has to count
  * what it already observes and put two integers on a request it already makes
- * (`reportChildUsage`, the one endpoint a free family still reaches) —
+ * (`syncChildAgent`, the one endpoint a free family still reaches) —
  * `@kidgate/core/domain/weekCounters` does the rest in one place.
  *
  * Seven entries at most, oldest first, keyed by the **child device's** local
@@ -545,7 +545,20 @@ export interface Device {
    * available to a family the day it ships.
    */
   parentPinVerifier?: ParentPinVerifier;
-  /** Deduped web-filter blocked visits since install (Android child only). */
+  /**
+   * Lookups this device's filter has refused, monotonic since install.
+   *
+   * Written by the Android phone, the Chrome extension and — since 2026-09-19 —
+   * the Android TV, which had been counting it in `KidGateTvWebFilterStore` and
+   * dropping it at the JavaScript seam. **Not deduped**, whatever this line
+   * said before: every agent increments once per refusal, so two hits on one
+   * domain are two.
+   *
+   * `apps/desktop` still writes nothing here — `policy.rs` keeps a day counter
+   * (`blocked_sites_today`) and no all-time one — so a Mac or PC row reads zero
+   * through `DeviceCard`'s `?? 0` while its filter works. Recorded in
+   * `docs/BACKLOG.md` rather than papered over.
+   */
   webFilterBlockedCount?: number;
   /** The server's summary of the last day this device reported browsing. */
   webToday?: DeviceWebToday;
@@ -564,7 +577,7 @@ export interface Device {
    * The three apps used most today, for a parent on the free tier.
    *
    * **Deliberately not `usageDays`.** `controls.topApps` travels to
-   * `reportChildUsage` and is stored on `usageDays/{date}`, which is the
+   * `syncChildAgent` and is stored on `usageDays/{date}`, which is the
    * premium Usage Reports screen and the document the weekly digest reads — a
    * free family must never have one, or the Sunday job starts spending a model
    * call on them (`docs/PRICING.md` §7). Three labels on the device document

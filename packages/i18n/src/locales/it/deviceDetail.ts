@@ -138,4 +138,10 @@ export const deviceDetail = {
   webHistorySitesUnit_one: 'sito',
   managedAtChild:
     'Regole, premi, check-in e avvisi di questo dispositivo si gestiscono nel profilo di {{childName}}',
+  pauseBrowsing: 'Sospendi la navigazione',
+  pauseBrowsingDescription:
+    'Blocca il Web per un po’. Chiamate e app offline continuano a funzionare.',
+  pauseBrowsingOff: 'Non sospesa',
+  pauseBrowsingLeft: 'Sospesa · restano {{minutes}} min',
+  pauseBrowsingFor: 'Sospendi per {{minutes}} min',
 } as const;

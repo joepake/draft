@@ -130,13 +130,20 @@ export const family = {
   healthOffline: 'オフライン',
   devicePausedLabel: '一時停止',
   devicePausedHint: '無料プランで一時停止中 — ルールはすべて有効です',
+  parkReviewTitle: '無料体験が終わる前にオンにしてください',
+  parkReviewBody:
+    '無料体験が終わると、1台だけが報告の送信とルールの変更を続け、残りは今のルールをそのまま保ちます。残りのデバイスではあとからルールを緩めることしかできないため、今オフのものはオフのままになります。',
+  rulesEnforcedOn: '{{total}}台中{{enforced}}台に適用中',
+  rulesPausedBehind: '一時停止中 — 以前の設定のままです',
+  rulesTightenRefused:
+    '一時停止中のデバイスはルールを緩めることしかできず、厳しくすることはできません。すべてのデバイスで変更するにはアップグレードしてください。',
   parkedBannerTitle: '見守りを続けるデバイスを選んでください',
   parkedBannerBody:
-    'ルールはすべてのデバイスで働きます。無料プランで報告できるのは1台だけです。デバイスを選ぶか、アップグレードしてすべて残してください。',
+    'ルールはすべてのデバイスで働き続けます。無料プランで報告できるのは1台だけで、ルールを厳しくできるのもその1台だけです。そのデバイスを選ぶか、アップグレードしてすべて残してください。',
   parkedBannerAction: 'デバイスを選ぶ',
-  chooseMonitoredTitle: 'どのデバイスが報告しますか？',
+  chooseMonitoredTitle: 'メインのデバイスを選ぶ',
   chooseMonitoredBody:
-    'ルールはすべてのデバイスでそのまま働きます。選んだデバイスだけが利用時間と位置情報を送ります。変更は{{days}}日に1回できます。',
+    'ルールはすべてのデバイスでそのまま働きます。選んだデバイスが利用時間と位置情報を送り、ルールを厳しくできるのもそのデバイスだけです。ほかのデバイスではルールを緩めることしかできません。選んだデバイスの変更は{{days}}日に1回できます。',
   chooseMonitoredConfirm: 'このデバイスを見守る',
   chooseMonitoredUpgrade: 'すべてのデバイスを残す — アップグレード',
   chooseMonitoredDone: '{{name}}が報告するデバイスになりました',

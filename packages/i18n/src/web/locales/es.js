@@ -23,6 +23,10 @@ export default {
     comingSoon: 'Próximamente',
     loading: 'Cargando…',
     signOut: 'Cerrar sesión',
+    crashTitle: 'Esta página dejó de funcionar',
+    crashBody:
+      'Recargar suele solucionarlo. Los ajustes de tu familia y los dispositivos de tu hijo no han cambiado.',
+    crashReload: 'Recargar la página',
   },
 
   language: {
@@ -102,7 +106,7 @@ export default {
     phoneScheduleOn: 'Horario activo',
     phoneLocation: 'Ubicación',
     phoneLocationValue: 'En el colegio · hace 5 min',
-    phoneCheckIn: 'Registro correcto',
+    phoneCheckIn: 'Check-in correcto',
 
     trust1Title: 'Nunca hay anuncios',
     trust1Text: 'Los datos de los niños nunca se usan para publicidad',
@@ -132,7 +136,7 @@ export default {
     feature5Title: 'Ubicación en vivo y lugares',
     feature5Text:
       'Consulta la última ubicación de tu hijo, revisa el historial y recibe un aviso cuando llega o sale de un lugar guardado.',
-    feature6Title: 'Registro y SOS',
+    feature6Title: 'Check-in y SOS',
     feature6Text:
       'Pide a tu hijo que confirme que está bien y recibe un SOS inmediato con ubicación y foto en una emergencia.',
     feature7Title: 'Alertas de protección y de apps',
@@ -204,7 +208,7 @@ export default {
       'Seis cosas que comprobamos frente a las apps con las que nos comparan. Cada una indica en qué plataforma es cierta.',
     only1Title: 'También la tele del salón',
     only1Text:
-      'Android TV tiene Límite diario, Horas bloqueadas, bloqueo de apps y Filtro web. En la tele, el bloqueo hace lo que puede —una app bloqueada vuelve a la pantalla de inicio— y desde el sofá no hay SOS ni petición de tiempo extra. La versión ya funciona en hardware real y está a la espera de su publicación en la tienda, por eso la lista de plataformas dice Previsto. La mayoría de controles parentales se quedan en el móvil.',
+      'Android TV tiene Límite diario, Horas bloqueadas, bloqueo de apps y Filtro web. En la tele, el bloqueo hace lo que puede —una app bloqueada vuelve a la pantalla de inicio— y desde el sofá no hay SOS ni petición de tiempo extra. La versión ya funciona en hardware real y está a la espera de su publicación en la tienda. La mayoría de controles parentales se quedan en el móvil.',
     only2Title: 'Alertas de mensajes que no salen del móvil',
     only2Text:
       'En Android, los mensajes se cotejan en el propio dispositivo con listas de palabras clave en 14 idiomas, y lo que sale del móvil es la palabra detectada, nunca la conversación. Solo una cosa cambia eso, y solo si tú lo pides: activa la confirmación por IA y un mensaje entrante ambiguo se envía para que lo valoren, de modo que no te despierte una palabra corriente.',
@@ -213,7 +217,7 @@ export default {
       'En Android, las alertas salen de las notificaciones y de lo que se escribe en cualquier app que use tu hijo o hija — Zalo, LINE, KakaoTalk, el chat de un juego — no de una lista fija de apps compatibles.',
     only4Title: 'Una salida para el niño',
     only4Text:
-      'Mantener SOS cinco segundos te avisa al instante, con ubicación; en Android y Mac además desbloquea el dispositivo un rato. Quien siempre puede pedir ayuda no tiene motivo para pelearse con la app.',
+      'Mantener SOS cinco segundos te avisa al instante, con ubicación; en Android y Mac además desbloquea el dispositivo un rato. Quien puede pedir ayuda desde la pantalla de bloqueo no tiene motivo para pelearse con la app.',
     only5Title: 'Reglas que se cumplen sin internet',
     only5Text:
       'Las Horas bloqueadas y el Límite diario se aplican en el propio dispositivo, así que desenchufar el router no cambia nada. La tele incluso acepta tu PIN parental sin ninguna conexión.',
@@ -473,6 +477,8 @@ export default {
       'Consultar funciona al momento. Para bloquear un dispositivo, cambiar límites o aprobar solicitudes, desbloquea este navegador con tu PIN de madre o padre, o apruébalo escaneando el código QR con la app de KidGate. Los avisos de seguridad funcionan igual en ambos casos.',
     unlockCta: 'Desbloquear cambios',
     unlockToChange: 'Desbloquea los cambios primero',
+    refresh: 'Actualizar',
+    liveOnApp: 'Abre la app para ver los datos en vivo',
     pinTitle: 'Introduce tu PIN',
     pinBody:
       'Los mismos seis dígitos que usas en la app. Este navegador queda desbloqueado 8 horas; aprobarlo desde la app lo mantiene con la sesión iniciada 7 días.',
@@ -493,9 +499,9 @@ export default {
     noDeviceBody:
       'Abre KidGate en tu móvil, ve a *Familia → + → Conectar el dispositivo de un hijo* y escanea el código QR que aparece en el dispositivo de tu hijo. Aparecerá aquí a los pocos segundos de vincularlo.',
 
-    toastCheckIn: '{{name}} recibirá una solicitud de registro.',
+    toastCheckIn: '{{name}} recibirá una solicitud de Check-in.',
     toastTimeApproved: 'Tiempo extra aprobado.',
-    toastCheckInResent: 'Registro enviado de nuevo.',
+    toastCheckInResent: 'Check-in enviado de nuevo.',
 
     tileScreenToday: 'Tiempo de uso hoy',
     tileSameAsAverage: 'Igual que la media de 7 días',
@@ -529,7 +535,7 @@ export default {
 
     attnMoreMinutes: '{{name}} pidió {{minutes}} minutos más',
     attnReason: '«{{reason}}» · {{when}}',
-    attnCheckInMissed: 'Se perdió un registro',
+    attnCheckInMissed: 'Se perdió un Check-in',
     attnCheckInMissedMeta: 'Enviado {{when}} · sin respuesta',
     attnLimitReached: 'Límite diario alcanzado: dispositivo bloqueado',
     attnLimitReachedMeta: '{{used}} usados hoy',
@@ -653,7 +659,7 @@ export default {
     sosAcknowledged: 'confirmada',
     sosActive: 'activa',
 
-    checkInsTitle: 'Registros',
+    checkInsTitle: 'Check-ins',
     checkInsSub: 'Pide a tu hijo que confirme que está bien',
     checkInSafe: 'Confirmó estar bien',
     checkInMissed: 'Sin respuesta',
@@ -663,7 +669,7 @@ export default {
     checkInPhotoSkipped: 'foto omitida',
     checkInPhotoAttached: 'foto adjunta',
     checkInNoPhoto: 'no se pidió foto',
-    sendCheckIn: 'Enviar un registro ahora',
+    sendCheckIn: 'Enviar un Check-in ahora',
 
     protectionAlertsTitle: 'Alertas de protección',
     protectionAlertsSub_one: '{{count}} evento desde la instalación',
@@ -805,7 +811,7 @@ export default {
 
     contactTitle: 'Contáctanos',
     contactEmail: '**Correo:** [support@kidgate.app](mailto:support@kidgate.app)',
-    contactResponse: '**Tiempo de respuesta:** en 24 horas (de lunes a viernes)',
+    contactResponse: '**Tiempo de respuesta:** normalmente en un día laborable',
     contactNote:
       'Al escribirnos, incluye el correo de tu cuenta de padre de KidGate y una breve descripción del problema para que podamos ayudarte más rápido.',
 
@@ -901,19 +907,19 @@ export default {
     storyP1:
       'Casi todas las familias viven la misma tarde: un temporizador que nadie acordó, un móvil retirado y un hijo convencido de que las reglas cambiaron a sus espaldas. Las herramientas que debían arreglarlo casi siempre lo empeoraron: por un lado un bloqueo sin explicación, por otro un panel que se lee como vigilancia.',
     storyP2:
-      'Así que construimos la versión que queríamos en casa. Se configuran una vez el Límite diario, las Horas bloqueadas, el Bloqueo de apps y el Filtrado web, y el dispositivo los respeta. El niño ve los mismos números que ven sus padres, puede pedir más tiempo y siempre puede avisarles con SOS. KidGate no finge no estar ahí.',
+      'Así que construimos la versión que queríamos en casa. Se configuran una vez el Límite diario, las Horas bloqueadas, el Bloqueo de apps y el Filtrado web, y el dispositivo los respeta. El niño ve los mismos números que ven sus padres, puede pedir más tiempo y puede avisarles con SOS siempre que el dispositivo esté conectado. KidGate no finge no estar ahí.',
     storyP3:
       'Funciona en iPhone, Android, Mac y Windows, con una extensión para Chrome y un panel que se abre en cualquier navegador. Una familia, un plan, todos los dispositivos.',
     valuesEyebrow: 'En qué creemos',
     valuesTitle: 'Cuatro reglas que no rompemos',
     valuesSub:
-      'Las preguntas que más nos hacen, respondidas antes de que tengas que hacerlas.',
+      'Escritas antes de la primera función, y desde entonces cada función se contrasta con ellas.',
     value1Title: 'Un niño no es un sospechoso',
     value1Text:
       'Las reglas se ven en el dispositivo al que se aplican. El niño ve qué está activo y cuánto tiempo le queda, puede pedir más y puede lanzar un SOS en cualquier momento. Un control que necesita ser secreto no es un control del que la familia pueda hablar.',
     value2Title: 'Los datos de tu familia no están en venta',
     value2Text:
-      'Nunca hay anuncios. Nada sobre un niño se usa para publicidad ni se vende a terceros. Puedes borrar la cuenta familiar y todo lo que contiene cuando quieras, desde la app o desde este sitio.',
+      'Nunca hay anuncios. Nada sobre un niño se usa para publicidad ni se vende a terceros. Puedes pedir que se borre la cuenta familiar y todo lo que contiene cuando quieras, desde la app o desde este sitio, y 14 días después desaparece.',
     value3Title: 'Decimos lo que no podemos hacer',
     value3Text:
       'Cada plataforma limita lo que una app puede imponer. Donde KidGate solo puede hacer lo posible —cerrar una app bloqueada en un ordenador en lugar de impedir que se abra— la pantalla lo dice, en vez de mostrar un tick verde.',
@@ -936,7 +942,6 @@ export default {
     make4Title: 'Windows',
     make4Text:
       'El mismo agente en un PC, con un servicio en segundo plano que vuelve a arrancarlo si se cierra o se detiene.',
-    make5Soon: 'Previsto',
     make5Title: 'Android TV',
     make5Text:
       'La pantalla del salón, tratada como un dispositivo compartido de la familia y no de un solo hijo: los mismos límites y el mismo horario que en los móviles. Esta versión ya ha funcionado en hardware real y espera su publicación en la tienda.',

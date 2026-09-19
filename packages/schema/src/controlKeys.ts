@@ -13,7 +13,7 @@ import type { DeviceControls } from './deviceControls';
  */
 
 /**
- * Screen-time counters, written only by the `reportChildUsage` Cloud Function.
+ * Screen-time counters, written only by the `syncChildAgent` Cloud Function.
  *
  * The child device used to write these straight to Firestore, so a modified
  * child app could report "0 minutes used" all day and both the daily-limit
@@ -30,7 +30,7 @@ export const USAGE_CONTROL_KEYS = [
    * to write it could hold a stale total and keep re-dating it — the same
    * "0 minutes used all day" attack the counters above were taken away for,
    * wearing a fresh timestamp. Listed here so the fan-out in
-   * `repositories/control` routes it to `reportChildUsage` (which ignores it
+   * `repositories/control` routes it to `syncChildAgent` (which ignores it
    * and stamps its own) instead of writing it to the device document.
    */
   'usageReportedAt',
@@ -60,7 +60,7 @@ export const REPORT_ONLY_CONTROL_KEYS = [
   'idleMinutes',
   /*
    * The free tier's two counters (`docs/PRICING.md` §4). They ride
-   * `reportChildUsage`, which folds them into `weekCounterBuckets`; left off
+   * `syncChildAgent`, which folds them into `weekCounterBuckets`; left off
    * this list the fan-out would write `controls.blockedSitesToday` straight
    * onto the device document — a number nothing reads, beside a fold nothing
    * fed.
@@ -112,6 +112,12 @@ export const PARENT_CONTROL_KEYS = [
   'appInstallApprovalEnabled',
   'appInstallApprovalSinceMs',
   'approvedPackages',
+  // Browsing pause. Listed for the same reason as `appInstallApprovalSinceMs`:
+  // so the fan-out routes it here instead of writing it as a child field. The
+  // server ignores any value sent and stamps its own clock from
+  // `browsingPauseMinutes` — a child device signs in under the owner's uid, so
+  // a client able to write this could end its own pause.
+  'browsingPausedUntil',
 ] as const satisfies ReadonlyArray<keyof DeviceControls>;
 
 export type ParentControlKey = (typeof PARENT_CONTROL_KEYS)[number];

@@ -8,7 +8,7 @@ export type UsageAppBreakdown = {
  * How many app rows one device-day carries, everywhere.
  *
  * The number is a contract, not a preference: an agent truncates its own
- * ranking before uploading, `reportChildUsage` truncates again on the way in,
+ * ranking before uploading, `syncChildAgent` truncates again on the way in,
  * and the client repository truncates on the way out. Three cuts at three
  * different numbers is a list whose length depends on which one was smallest,
  * which is unexplainable from any screen — so they read this, and the two that

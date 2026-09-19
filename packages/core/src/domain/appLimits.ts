@@ -7,7 +7,7 @@ import {
 /**
  * Minutes already spent today on one limited app.
  *
- * The breakdown lives on `usageDays/{date}.topApps` — `reportChildUsage` never
+ * The breakdown lives on `usageDays/{date}.topApps` — `syncChildAgent` never
  * writes it onto the device document — so callers read it from the usage-day
  * record, not from device controls.
  *

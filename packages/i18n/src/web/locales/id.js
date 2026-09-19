@@ -23,6 +23,10 @@ export default {
     comingSoon: 'Segera hadir',
     loading: 'Memuat…',
     signOut: 'Keluar',
+    crashTitle: 'Halaman ini berhenti bekerja',
+    crashBody:
+      'Biasanya cukup dimuat ulang. Pengaturan keluarga Anda dan perangkat anak Anda tidak berubah.',
+    crashReload: 'Muat ulang halaman',
   },
 
   language: {
@@ -204,7 +208,7 @@ export default {
       'Enam hal yang kami periksa terhadap aplikasi pembanding pilihan orang tua. Masing-masing menyebut platform tempat hal itu berlaku.',
     only1Title: 'TV ruang keluarga juga',
     only1Text:
-      'Android TV mendapat Batas harian, Jam Diblokir, blokir aplikasi, dan Filter web. Di TV, pemblokiran hanya berupaya semampunya — aplikasi yang diblokir dikembalikan ke layar utama — dan tidak ada SOS atau permintaan waktu tambahan dari sofa. Versinya sudah berjalan di perangkat sungguhan hari ini dan sedang menunggu rilis di toko aplikasi, itulah sebabnya daftar platform menulis “Direncanakan”. Kebanyakan kontrol orang tua berhenti di ponsel.',
+      'Android TV mendapat Batas harian, Jam Diblokir, blokir aplikasi, dan Filter web. Di TV, pemblokiran hanya berupaya semampunya — aplikasi yang diblokir dikembalikan ke layar utama — dan tidak ada SOS atau permintaan waktu tambahan dari sofa. Versinya sudah berjalan di perangkat sungguhan hari ini dan sedang menunggu rilis di toko aplikasi. Kebanyakan kontrol orang tua berhenti di ponsel.',
     only2Title: 'Peringatan pesan yang tetap di ponsel',
     only2Text:
       'Di Android, pesan dicocokkan di perangkat itu sendiri dengan daftar kata kunci dalam 14 bahasa, dan yang keluar dari ponsel hanyalah kata yang cocok, tidak pernah isi percakapannya. Satu hal saja yang mengubahnya, dan hanya jika Anda memintanya: aktifkan konfirmasi AI, maka pesan masuk yang ambigu dikirim untuk dinilai, sehingga Anda tidak terbangun karena sebuah kata biasa.',
@@ -213,7 +217,7 @@ export default {
       'Di Android, peringatan datang dari notifikasi dan ketikan di aplikasi apa pun yang dipakai anak Anda — Zalo, LINE, KakaoTalk, obrolan dalam game — bukan dari daftar tetap aplikasi yang didukung.',
     only4Title: 'Jalan keluar bagi anak',
     only4Text:
-      'Menahan SOS lima detik langsung memberi tahu Anda, lengkap dengan lokasi — di Android dan Mac, perangkat juga terbuka sebentar. Anak yang selalu bisa minta tolong tidak punya alasan melawan aplikasi.',
+      'Menahan SOS lima detik langsung memberi tahu Anda, lengkap dengan lokasi — di Android dan Mac, perangkat juga terbuka sebentar. Anak yang bisa minta tolong dari layar kunci tidak punya alasan melawan aplikasi.',
     only5Title: 'Aturan yang tetap berlaku tanpa internet',
     only5Text:
       'Jam Diblokir dan Batas harian dijalankan di perangkat itu sendiri, jadi mencabut router tidak mengubah apa pun. TV bahkan menerima PIN orang tua Anda tanpa koneksi sama sekali.',
@@ -467,6 +471,8 @@ export default {
       'Melihat data langsung bisa. Untuk mengunci perangkat, mengubah batas, atau menyetujui permintaan, buka kunci browser ini dengan PIN orang tua — atau setujui dengan memindai kode QR lewat aplikasi KidGate. Check-In tetap bisa dikirim dalam kedua cara.',
     unlockCta: 'Buka kunci perubahan',
     unlockToChange: 'Buka kunci perubahan dulu',
+    refresh: 'Muat ulang',
+    liveOnApp: 'Buka aplikasi untuk pembaruan langsung',
     pinTitle: 'Masukkan PIN orang tua',
     pinBody:
       'Enam angka yang sama seperti di aplikasi. Browser ini tetap terbuka selama 8 jam; menyetujui dari aplikasi membuatnya tetap masuk selama 7 hari.',
@@ -788,7 +794,7 @@ export default {
 
     contactTitle: 'Hubungi kami',
     contactEmail: '**Email:** [support@kidgate.app](mailto:support@kidgate.app)',
-    contactResponse: '**Waktu tanggapan:** dalam 24 jam (Senin–Jumat)',
+    contactResponse: '**Waktu tanggapan:** biasanya dalam satu hari kerja',
     contactNote:
       'Saat menghubungi kami, sertakan alamat email akun orang tua KidGate Anda dan penjelasan singkat masalahnya agar kami bisa membantu lebih cepat.',
 
@@ -884,19 +890,19 @@ export default {
     storyP1:
       'Hampir semua keluarga mengalami malam yang sama: penghitung waktu yang tak pernah disepakati, ponsel yang diambil, dan anak yang yakin aturannya berubah diam-diam. Alat yang seharusnya membereskan itu justru sering memperburuknya — di satu sisi kunci tanpa penjelasan, di sisi lain dasbor yang terbaca seperti pengawasan.',
     storyP2:
-      'Jadi kami membuat versi yang kami inginkan di rumah sendiri. Orang tua mengatur batas harian, Jam diblokir, Blokir aplikasi, dan Penyaringan web sekali, lalu perangkat mematuhinya. Anak melihat angka yang sama dengan orang tuanya, bisa meminta tambahan waktu, dan selalu bisa menghubungi orang tua lewat SOS. KidGate tidak berpura-pura tidak ada.',
+      'Jadi kami membuat versi yang kami inginkan di rumah sendiri. Orang tua mengatur batas harian, Jam diblokir, Blokir aplikasi, dan Penyaringan web sekali, lalu perangkat mematuhinya. Anak melihat angka yang sama dengan orang tuanya, bisa meminta tambahan waktu, dan bisa menghubungi orang tua lewat SOS kapan pun perangkat sedang online. KidGate tidak berpura-pura tidak ada.',
     storyP3:
       'Ia berjalan di iPhone, Android, Mac, dan Windows, dengan ekstensi untuk Chrome dan dasbor yang dibuka di peramban mana pun. Satu keluarga, satu paket, semua perangkat.',
     valuesEyebrow: 'Yang kami percayai',
     valuesTitle: 'Empat aturan yang tidak kami langgar',
     valuesSub:
-      'Pertanyaan yang paling sering masuk, dijawab sebelum Anda perlu bertanya.',
+      'Ditulis sebelum fitur pertama, dan sejak itu setiap fitur diukur dengan keempatnya.',
     value1Title: 'Anak bukan tersangka',
     value1Text:
       'Aturannya terlihat di perangkat tempat aturan itu berlaku. Anak melihat apa yang aktif dan berapa waktu yang tersisa, bisa meminta tambahan, dan bisa menekan SOS kapan saja. Kendali yang harus dirahasiakan bukan kendali yang bisa dibicarakan satu keluarga.',
     value2Title: 'Data keluarga Anda tidak dijual',
     value2Text:
-      'Tanpa iklan, selamanya. Tidak ada apa pun tentang anak yang dipakai untuk iklan atau dijual ke pihak lain. Anda bisa menghapus akun keluarga beserta seluruh isinya kapan saja — dari dalam aplikasi atau dari situs ini.',
+      'Tanpa iklan, selamanya. Tidak ada apa pun tentang anak yang dipakai untuk iklan atau dijual ke pihak lain. Anda bisa meminta penghapusan akun keluarga beserta seluruh isinya kapan saja — dari dalam aplikasi atau dari situs ini — dan 14 hari kemudian semuanya hilang.',
     value3Title: 'Kami mengaku apa yang tidak bisa kami lakukan',
     value3Text:
       'Setiap platform membatasi apa yang boleh dipaksakan sebuah aplikasi. Di tempat KidGate hanya bisa berupaya semampunya — menutup aplikasi terblokir di komputer alih-alih mencegahnya terbuka — layarnya mengatakan begitu, bukan menampilkan centang hijau.',
@@ -919,7 +925,6 @@ export default {
     make4Title: 'Windows',
     make4Text:
       'Agen yang sama di PC, dengan layanan latar belakang yang menyalakannya lagi kalau ditutup atau dihentikan.',
-    make5Soon: 'Direncanakan',
     make5Title: 'Android TV',
     make5Text:
       'Layar ruang keluarga, diperlakukan sebagai perangkat bersama keluarga dan bukan milik satu anak — dengan batas dan jadwal yang sama seperti di ponsel. Sudah berjalan di perangkat sungguhan dan kini menunggu perilisannya di toko.',

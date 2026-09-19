@@ -1,11 +1,13 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {
   isKnownPermission,
   permissionLabel,
   webCategoryLabel,
 } from '../dashboard/labels.js';
 import { activityCopy, useActivityTranslate } from '../dashboard/activityCopy.js';
+import { navScreenSlug, navSearch, readNav } from '../dashboard/navUrl.js';
+import { trackScreen } from '../lib/analytics.js';
 import { getPlanState, getTrialEndsAt } from '../lib/trial.js';
 import StepUpSheet from '../auth/StepUpSheet.jsx';
 import ScheduleEditor from '../dashboard/ScheduleEditor.jsx';
@@ -17,6 +19,7 @@ import Toast from '../dashboard/Toast.jsx';
 import { timeAgo } from '../dashboard/timeAgo.js';
 import PlanCard from '../dashboard/PlanCard.jsx';
 import ParkedDevicesCard from '../dashboard/ParkedDevicesCard.jsx';
+import ParkReviewCard from '../dashboard/ParkReviewCard.jsx';
 import { waitForParentPresence } from '../dashboard/parentPresence.js';
 import { resolveTodayTopApps } from '@kidgate/core/domain/todayTopApps';
 import {
@@ -37,12 +40,17 @@ import { childMinutesUsedToday } from '../dashboard/childBudgetSpent.js';
 import { readDeviceBattery } from '@kidgate/core/domain/battery';
 import { isAndroidLike, isDesktopLike } from '@kidgate/core/domain/platformFamily';
 import { isKidGateOwnApp } from '@kidgate/core/domain/ownApp';
-import { buildLocationHistoryMapHtml } from '@kidgate/core/domain/locationHistoryMapHtml';
 import { useHereMapsKey } from '../dashboard/useHereMapsKey.js';
+import LocationMap from '../dashboard/LocationMap.jsx';
+import ChildLocationPanel from '../dashboard/ChildLocationPanel.jsx';
 import { buildAttention, buildFamilyAttention } from '../dashboard/attentionItems.js';
 import AttentionRail from '../dashboard/AttentionRail.jsx';
 import AttentionList from '../dashboard/AttentionList.jsx';
 import { getProtectionSummaryKeys } from '@kidgate/core/domain/protectionStatus';
+import {
+  activeBonusMinutes,
+  effectiveDailyLimitMinutes,
+} from '@kidgate/core/domain/dailyLimit';
 import { resolveLockEnforcement } from '@kidgate/core/domain/lockEnforcement';
 import { hasUnseenWeeklyReport } from '@kidgate/core/domain/weeklyReportBadge';
 import {
@@ -102,6 +110,7 @@ import ChildInitial from '../dashboard/ChildInitial.jsx';
 import DeviceDot, { STATUS_KEY, STATUS_TONE } from '../dashboard/DeviceDot.jsx';
 import ChildHub from '../dashboard/ChildHub.jsx';
 import ControlCenter from '../dashboard/ControlCenter.jsx';
+import PauseBrowsingSheet from '../dashboard/PauseBrowsingSheet.jsx';
 import ReportHub from '../dashboard/ReportHub.jsx';
 import ChildReport from '../dashboard/ChildReport.jsx';
 import FamilySummaryRow, {
@@ -135,6 +144,16 @@ import ControlsTab from '../dashboard/ControlsTab.jsx';
  * the same decision and must not drift.
  */
 const COMPACT_QUERY = '(max-width: 820px)';
+
+/**
+ * What the tab said before this page took it over — `kidgateHead()`'s title,
+ * read at import, before any effect below has written one.
+ *
+ * Restored on unmount, which is what signing out is: the title carries a
+ * child's name, and leaving it behind would put that name in the tab, the
+ * history and the window switcher of a browser nobody is signed into any more.
+ */
+const BASE_TITLE = typeof document === 'undefined' ? '' : document.title;
 
 /**
  * Where the Attention rail fits beside the 54rem content column.
@@ -276,6 +295,26 @@ const SECTIONS = [
   SUPPORT_SECTION,
   { id: 'settings', labelKey: 'nav.settings', icon: 'settings' },
 ];
+
+const SECTION_IDS = new Set(SECTIONS.map(item => item.id));
+/** Both bars' ids: a panel and a device tab are both `tab` on this page. */
+const TAB_IDS = new Set([
+  ...TABS.map(item => item.id),
+  ...DEVICE_TABS.map(item => item.id),
+]);
+
+/** `navUrl`'s validator, bound to the two lists this page actually renders. */
+const readUrl = search => readNav(search, SECTION_IDS, TAB_IDS);
+
+/**
+ * Which summary chips put a number on the browser tab.
+ *
+ * `@kidgate/core/domain/familySummary` decides which chips exist and in what
+ * tone; this is web-only on top of that — a phone has no tab to badge — and it
+ * is a SUBSET of the actionable five rather than all of them. The reason is in
+ * the effect that reads it.
+ */
+const TAB_BADGE_CHIPS = new Set(['sos', 'requests', 'check-in']);
 
 /** The bottom bar's four. Support moves inside Settings, it does not vanish. */
 const COMPACT_SECTIONS = SECTIONS.filter(item => item.id !== SUPPORT_SECTION.id);
@@ -737,6 +776,15 @@ export default function Dashboard({
   sideFooter,
   topActions,
   onDeviceChange,
+  /**
+   * When the data on screen was asked for, and how to ask again.
+   *
+   * Both absent in a rendering with no data layer behind it (the design
+   * preview), which is why the header's Refresh row is gated on `onRefresh`
+   * rather than drawing a button that would do nothing.
+   */
+  loadedAt = null,
+  onRefresh = null,
   actions,
   /**
    * The weekly reports, from `useFamilyReports`. Null in any rendering that has
@@ -784,12 +832,23 @@ export default function Dashboard({
    * those; see `dashboard/activityCopy.js`.
    */
   const activityT = useActivityTranslate();
-  const [deviceId, setDeviceId] = useState(devices[0]?.id ?? null);
+  /*
+   * The URL as it was when this page opened, read ONCE.
+   *
+   * Every navigation state below initialises from it rather than from an
+   * effect, and that ordering is the whole trick: a state seeded from the link
+   * already agrees with the address bar, so the effect that writes state back
+   * to the URL finds nothing to write and cannot wipe the link it arrived on.
+   * Seeding from an effect instead means one render where the two disagree,
+   * and the writer wins that race.
+   */
+  const [boot] = useState(() => readUrl(window.location.search));
+  const [deviceId, setDeviceId] = useState(boot.deviceId ?? devices[0]?.id ?? null);
   /**
    * Which of the four left-menu sections is open. `family` is the landing, the
    * way the phone opens on its Family tab.
    */
-  const [section, setSection] = useState('family');
+  const [section, setSection] = useState(boot.section);
   const compact = useMediaQuery(COMPACT_QUERY);
   const wide = useMediaQuery(WIDE_QUERY);
   /**
@@ -800,7 +859,7 @@ export default function Dashboard({
    * happened to sort first. `deviceId` stays set while the list is open so
    * coming back re-opens the same device.
    */
-  const [deviceOpen, setDeviceOpen] = useState(false);
+  const [deviceOpen, setDeviceOpen] = useState(boot.deviceOpen);
   /**
    * The child whose hub is open, or null for the list.
    *
@@ -809,15 +868,24 @@ export default function Dashboard({
    * Leaving it set while a device is open is what lets Back land on the hub a
    * parent came through rather than at the top of the list.
    */
-  const [openChildId, setOpenChildId] = useState(null);
+  const [openChildId, setOpenChildId] = useState(boot.openChildId);
+  /**
+   * The child's own location screen, one frame deeper than the hub.
+   *
+   * The phone reaches it the same way — `ChildDetailScreen` draws no map, and
+   * its Location card pushes `ChildLocationScreen`. Its own frame rather than
+   * a card ON the hub because the read is per device: a map sitting on the hub
+   * would bill every child a parent taps.
+   */
+  const [childLocationOpen, setChildLocationOpen] = useState(boot.childLocationOpen);
   /** Whether the family-management cards are open, behind the family row. */
-  const [familyOpen, setFamilyOpen] = useState(false);
+  const [familyOpen, setFamilyOpen] = useState(boot.familyOpen);
   /** Whether Reports is showing the stored weekly sheet rather than its landing. */
-  const [weekOpen, setWeekOpen] = useState(false);
+  const [weekOpen, setWeekOpen] = useState(boot.weekOpen);
   /** The child whose report is open, or null for the Reports landing. */
-  const [reportChildId, setReportChildId] = useState(null);
+  const [reportChildId, setReportChildId] = useState(boot.reportChildId);
   /** Whether Settings is showing Requests & reports. Compact widths only. */
-  const [supportOpen, setSupportOpen] = useState(false);
+  const [supportOpen, setSupportOpen] = useState(boot.supportOpen);
 
   /*
    * A resize across the breakpoint keeps the parent on the page they were
@@ -838,7 +906,7 @@ export default function Dashboard({
       setSupportOpen(false);
     }
   }, [compact, section, supportOpen]);
-  const [tab, setTab] = useState('overview');
+  const [tab, setTab] = useState(boot.tab);
   /* Which card the control-centre grid was asked for, so the panel it lands on
      can say so. Cleared once it has been pointed at — it is a hand-off, not a
      selection, and a card that stayed lit would read as a filter. */
@@ -855,9 +923,40 @@ export default function Dashboard({
    * action; this is the same sentence, from the same list.
    */
   const [openedAction, setOpenedAction] = useState(null);
+  /*
+   * Every way into a panel EXCEPT a grid card, which is the only caller that
+   * knows which card it asked for.
+   *
+   * Clearing here rather than at each call site: the tab bar, a summary chip,
+   * the report hub and the child hub all set a panel too, and each one that
+   * forgot left the last card's title standing over a page it had nothing to
+   * do with — which is the sentence `openedAction` exists to keep true. The
+   * one bypass is the capability-gate effect below, which cannot call this
+   * without taking a re-rendered function as a dependency.
+   */
+  const goTab = next => {
+    setTab(next);
+    setOpenedAction(null);
+    /*
+     * The document is the scroll container — `.dash` is a grid with
+     * `min-height: 100vh` and nothing inside it scrolls on its own — so React
+     * swaps the panel under a parent who stays exactly where they were. Read
+     * to the bottom of Web, press Overview, and the page opens halfway down
+     * itself. A grid card does NOT come through here: that one scrolls to the
+     * card it was asked for, which is the same fix aimed at a target.
+     */
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  };
   /* Only while a device is open — this is a network call per session and the
      family list has no map on it. */
-  const hereMapsKey = useHereMapsKey(Boolean(deviceOpen));
+  /*
+   * Fetched only where a map can be drawn, and there are TWO such places since
+   * 2026-09-18: a device's Location card and the child's own location screen.
+   * Gating on `deviceOpen` alone left the child screen asking the builder for
+   * a map with no key, which draws its "unavailable" document — a working
+   * feature reporting itself broken.
+   */
+  const hereMapsKey = useHereMapsKey(Boolean(deviceOpen) || childLocationOpen);
   /** Whether the hero's protection row has this device's items open. */
   const [heroIssuesOpen, setHeroIssuesOpen] = useState(false);
   const [range, setRange] = useState(14);
@@ -956,7 +1055,61 @@ export default function Dashboard({
        * while the invite mint genuinely has something to hand back.
        */
       const result = await fn();
-      if (okMessage) setToast({ tone: 'good', text: okMessage });
+      /*
+       * A write that mostly landed still has to say so.
+       *
+       * A parked device takes only the relaxing half of a patch
+       * (`docs/FEASIBILITY.md`, "Free tier: a parked device goes loosen-only").
+       * A patch refused outright comes back 403 and `toControlError` renders it;
+       * a patch where some keys were dropped comes back **200**, and a plain
+       * success toast over a form that partly did not save is the silent drop
+       * `ChildRulesFieldError` exists to prevent.
+       *
+       * One place, because `run` is the chokepoint every parent write on this
+       * surface already passes through — the same reason `controlsApi.js` is
+       * where analytics is wrapped. The key is the server's, rendered through
+       * the app pack, so the phone and this page say one sentence.
+       */
+      const refusedMessageKey = result?.refusedMessageKey;
+      /*
+       * `activityT` returns the key itself for a namespace outside its list, so
+       * a server sentence this surface cannot reach would print
+       * `errors.premiumSubscriptionRequired` at a parent. Compared rather than
+       * rendered blind, the same guard `MessageAlertsCard` uses for its built
+       * guidance keys — and this one has to be generic, because the key comes
+       * from the server and the next one may live anywhere.
+       *
+       * Falling back to the plain success line rather than to silence: the write
+       * did land, just not everywhere, and a toast reading a raw key is worse
+       * than one that undersells.
+       */
+      const refusal = refusedMessageKey ? activityT(refusedMessageKey) : '';
+      if (refusal && refusal !== refusedMessageKey) {
+        setToast({ tone: 'warning', text: refusal });
+      } else if (okMessage) {
+        setToast({ tone: 'good', text: okMessage });
+      }
+      /*
+       * Read the family again, because nothing streams it (`oneShot.js`).
+       *
+       * The optimistic switches are already showing what the parent chose, so
+       * this is not about them — it is about everything the write moved that
+       * this page did not touch: an approved request leaving the pending list,
+       * a resolved site request, a child budget the server re-allocated across
+       * an assigned device's siblings. A listener used to take those out; now
+       * the write does.
+       *
+       * Measured on 2026-09-17: a warm re-read is 23 documents, not the
+       * ~700 a cold one costs — Firestore bills only what CHANGED when a
+       * query is resumed in the same session, so the fifty-row activity feed
+       * came back for nothing. That measurement is why there is one refresh
+       * here and not a cheap half and an expensive half.
+       *
+       * After the toast, and never in `catch`: a refused write changed
+       * nothing, and re-reading on failure would spend a round of reads to
+       * re-learn what the page already shows.
+       */
+      onRefresh?.();
       return result === undefined ? true : result;
     } catch (e) {
       /*
@@ -973,7 +1126,19 @@ export default function Dashboard({
       // from the Cloud Function arrives as server text and is shown as-is.
       setToast({
         tone: 'critical',
-        text: e.messageKey ? t(e.messageKey) : e.message,
+        text:
+          /*
+           * The loosen-only refusal, whether `controlsApi` saw it coming or the
+           * server said it. Its sentence is the app pack's — the phone already
+           * says it — so it goes through `activityT`, the same exception
+           * `chooseMonitored` makes for the cooldown below. Mapping a `dash.*`
+           * twin instead would be one refusal with two wordings.
+           */
+          e.serverCode === 'parking/loosen-only'
+            ? activityT('family.rulesTightenRefused')
+            : e.messageKey
+              ? t(e.messageKey)
+              : e.message,
       });
       return false;
     } finally {
@@ -999,6 +1164,9 @@ export default function Dashboard({
    * is not asked on every render. The inline card stays as the way back in.
    */
   const [monitoredSheetOpen, setMonitoredSheetOpen] = useState(false);
+  /* Which length to pause the open device's browsing for. Not in the URL: it is
+     what a press did, not where the parent landed (`dashboard/navUrl.js`). */
+  const [pauseSheetOpen, setPauseSheetOpen] = useState(false);
   const promptedParkedSetRef = useRef(null);
   useEffect(() => {
     if (parking.parked.length === 0) {
@@ -1085,6 +1253,100 @@ export default function Dashboard({
     onDeviceChange?.(deviceId);
   }, [deviceId, onDeviceChange]);
 
+  /*
+   * The stack, written to the address bar and read back from it.
+   *
+   * Two effects, and neither can fight the other because they run on different
+   * renders. A gesture sets two or three of these at once — open a device and
+   * `deviceId`, `deviceOpen` and sometimes `tab` all move — and React commits
+   * the batch before any effect runs, so the push below happens ONCE per
+   * gesture. That is why this is one writer over the nine states rather than
+   * nine states that each write themselves: the second shape puts three
+   * entries in the history for one click, and Back then walks them.
+   */
+  const navState = {
+    section,
+    childLocationOpen,
+    deviceId,
+    deviceOpen,
+    openChildId,
+    familyOpen,
+    weekOpen,
+    reportChildId,
+    supportOpen,
+    tab,
+  };
+  const search = navSearch(navState);
+  /*
+   * The same state as a `page_view`, and the reason this page has one at all.
+   *
+   * `DashboardLive` reports the gate — `login` and `splash` — and stops there:
+   * one route meant one `dashboard` row in GA covering every section, every
+   * device tab and all six overlays, while `apps/mobile` reported a screen per
+   * navigation. Keyed on the slug rather than on `navState`, so the re-render
+   * that follows a device selection does not count the same frame twice.
+   */
+  const screenSlug = navScreenSlug(navState);
+  useEffect(() => {
+    trackScreen(screenSlug);
+  }, [screenSlug]);
+  const location = useLocation();
+  const navigate = useNavigate();
+  /*
+   * The address bar, in a ref rather than in the deps below — and that is the
+   * whole of what makes Back work.
+   *
+   * **Measured on 2026-09-17**: with `location.search` in the dependency list,
+   * this effect re-ran on the Back itself. The state had not caught up yet, so
+   * `search` still described the frame the parent had just left, and it pushed
+   * that frame straight back — Back did nothing, and each press cost a history
+   * entry (50 of them, from four clicks). The rule is: **push only when the
+   * STATE moved**. A Back moves the URL, and the effect below is what answers
+   * it; this one must not have an opinion until the state it watches changes.
+   */
+  const searchRef = useRef(location.search);
+  searchRef.current = location.search;
+  useEffect(() => {
+    const current = searchRef.current;
+    /*
+     * What the URL on screen MEANS, written the way this page writes it. The
+     * comparison is against this rather than the raw string: a link typed or
+     * forwarded with its parameters in another order says exactly the same
+     * thing, and comparing strings made the first render push a re-spelling of
+     * the page it had just opened.
+     */
+    if (search !== navSearch(readUrl(current))) {
+      navigate({ search }, { replace: false });
+      return;
+    }
+    // Same page, other spelling: tidy the address bar without giving the
+    // parent a Back that goes nowhere.
+    if (search !== current) navigate({ search }, { replace: true });
+  }, [search, navigate]);
+  useEffect(() => {
+    /*
+     * Back, Forward, and a link pasted into the same tab. The push above lands
+     * here too and applies values the state already holds, which React drops
+     * as a no-op — cheaper than a ref tracking who wrote last, and it cannot
+     * get out of step with one.
+     *
+     * `deviceId` is only taken when the URL names one: the parent's selection
+     * survives a Back out of the device, which is what re-opens the same
+     * machine rather than the first in the list.
+     */
+    const next = readUrl(location.search);
+    setSection(next.section);
+    setOpenChildId(next.openChildId);
+    setChildLocationOpen(next.childLocationOpen);
+    setDeviceOpen(next.deviceOpen);
+    if (next.deviceId) setDeviceId(next.deviceId);
+    setTab(next.tab);
+    setFamilyOpen(next.familyOpen);
+    setWeekOpen(next.weekOpen);
+    setReportChildId(next.reportChildId);
+    setSupportOpen(next.supportOpen);
+  }, [location.search]);
+
   const device = devices.find(d => d.id === deviceId) ?? null;
   const c = device?.controls ?? null;
   /**
@@ -1132,7 +1394,15 @@ export default function Dashboard({
        * Back would skip the device a parent was reading and land on the list.
        */
       if (!DEVICE_TAB_IDS.has(tab)) {
-        return { label: deviceView.name, go: () => setTab('manage') };
+        /* `goTab`'s two setters again — a memo that took the function would
+           rebuild on every render. */
+        return {
+          label: deviceView.name,
+          go: () => {
+            setTab('manage');
+            setOpenedAction(null);
+          },
+        };
       }
       const parent = deviceView.childId
         ? (children ?? []).find(item => item.id === deviceView.childId)
@@ -1148,6 +1418,11 @@ export default function Dashboard({
       };
     }
     if (childView) {
+      /* One frame deeper than the hub, so Back lands on the person rather
+         than on the list they were found in. */
+      if (childLocationOpen) {
+        return { label: childView.name, go: () => setChildLocationOpen(false) };
+      }
       return { label: activityT('nav.family'), go: () => setOpenChildId(null) };
     }
     if (familyOpen) {
@@ -1168,8 +1443,14 @@ export default function Dashboard({
       };
     }
     /* Only when there is a landing to go back TO: with no stored report the
-       sheet IS the section, and a Back that returned to an empty hub would be
-       a step out of the only screen with the Generate button on it. */
+       sheet IS the section, so a Back here would step out of the only thing
+       this tab has to show.
+
+       It used to say "the only screen with the Generate button on it".
+       **There is no Generate button on this surface** — nothing in this app
+       calls `generateWeeklyReport`, and `familyReportRepository` is used for
+       `fetchRecent` alone (checked 2026-09-17). The guard is still right; its
+       reason was not. */
     if (section === 'report' && weekOpen && latestReport) {
       return {
         label: activityT('nav.reports'),
@@ -1181,6 +1462,7 @@ export default function Dashboard({
     deviceView,
     tab,
     childView,
+    childLocationOpen,
     familyOpen,
     children,
     activityT,
@@ -1257,6 +1539,11 @@ export default function Dashboard({
    * FOR them; a jump straight to the middle of a long panel reads as having
    * landed somewhere arbitrary. The ring comes off on a timer rather than
    * staying, because it answers "where is it", it is not a state.
+   *
+   * The preference is read HERE and not left to the stylesheet: a `behavior`
+   * asked for in script overrides `scroll-behavior`, so the reduced-motion
+   * guard `dashboard.css` carries for the ring reaches none of this. A parent
+   * who asked for less motion still gets the page moved, it simply arrives.
    */
   useEffect(() => {
     if (!focusCard) return undefined;
@@ -1265,7 +1552,23 @@ export default function Dashboard({
       setFocusCard(null);
       return undefined;
     }
-    node.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    node.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
+    /*
+     * Focus follows the scroll, or a keyboard is left behind.
+     *
+     * The button that was pressed is a grid card, and switching panel unmounts
+     * it — focus falls to `<body>`, so the next Tab restarts at the skip link
+     * and a screen reader is told nothing at all. The ring is only a picture
+     * of the answer; this is the answer.
+     *
+     * `-1` because a card is not a tab stop in its own right: it takes focus
+     * when sent here and leaves the tab order alone afterwards.
+     * `preventScroll` so the focus call does not fight the smooth scroll
+     * above by jumping to the same place instantly.
+     */
+    node.setAttribute('tabindex', '-1');
+    node.focus({ preventScroll: true });
     node.classList.add('is-pointed');
     /*
      * The state is cleared by the TIMER, never straight after the scroll.
@@ -1292,7 +1595,10 @@ export default function Dashboard({
        would bounce a parent back to Overview the moment they pressed it. */
     if (DEVICE_TAB_IDS.has(tab)) return;
     if (!visibleTabs.some(item => item.id === tab)) {
+      /* `goTab`'s two setters, written out: taking the function itself as a
+         dependency would re-run this effect on every render. */
       setTab('manage');
+      setOpenedAction(null);
     }
   }, [tab, visibleTabs]);
 
@@ -1349,7 +1655,7 @@ export default function Dashboard({
     setDeviceId(target);
     /* SOS and check-ins are read on Safety and Overview respectively — the
        same two panels `ControlCenter`'s own mapping sends those cards to. */
-    setTab(key === 'sos' ? 'safety' : 'overview');
+    goTab(key === 'sos' ? 'safety' : 'overview');
     setDeviceOpen(true);
   };
 
@@ -1383,6 +1689,22 @@ export default function Dashboard({
     }
     return groups;
   }, [devices, children]);
+
+  /*
+   * A child nobody has paired a device to yet, and the reason they are named
+   * at all is the phone's: `FamilyScreen`'s `childrenWithoutDevice` strip
+   * exists because "a roster that renders nothing back is indistinguishable
+   * from a write that failed". `deviceGroups` keys off the devices, so until
+   * this they vanished from the only screen that offers to create them.
+   *
+   * Drawn after the groups, as on the phone — they hold nothing to report, so
+   * they come after everything that does, and the row is still a way in.
+   */
+  const childrenWithoutDevice = useMemo(
+    () =>
+      (children ?? []).filter(child => !devices.some(d => d.child?.id === child.id)),
+    [children, devices],
+  );
 
   /*
    * One group open at a time, and by default it is the one holding the selected
@@ -1484,12 +1806,29 @@ export default function Dashboard({
       ? Math.round(last7.reduce((s, d) => s + d.minutes, 0) / last7.length)
       : 0;
     const used = c.minutesUsedToday;
-    const effLimit = c.dailyLimitMinutes
-      ? c.dailyLimitMinutes + (c.bonusMinutesToday || 0)
-      : null;
+    /*
+     * **The bonus expires with the day it was granted, and the rule is core's.**
+     * This page added `bonusMinutesToday` unconditionally and read
+     * `bonusGrantedAtMs` nowhere, so a +30 approved on Tuesday was still in the
+     * total on Wednesday — on the console that GRANTED it, against a phone that
+     * had already dropped it.
+     *
+     * Nothing ever clears the stored field: expiry is a read rule, and
+     * `functions/lib/bonusGrant.js` discards a stale bonus only when the *next*
+     * grant lands, which may be never. Every reader applies it or is wrong.
+     *
+     * `Date.now()` rather than a ticking clock, and it is not in the deps:
+     * nothing streams on this surface, so the figures are what the last read
+     * said and they move on a refresh — the same contract the rest of the page
+     * keeps.
+     */
+    const nowMs = Date.now();
+    const bonus = activeBonusMinutes(c, nowMs);
+    const effLimit = effectiveDailyLimitMinutes(c, nowMs);
     return {
       avg7,
       used,
+      bonus,
       effLimit,
       left: effLimit ? Math.max(0, effLimit - used) : null,
       delta: avg7 ? Math.round(((used - avg7) / avg7) * 100) : 0,
@@ -1856,6 +2195,52 @@ export default function Dashboard({
       t('dash.toastInstallAllowed'),
     );
 
+  /**
+   * Pressing the Pause browsing card — resume at once, or ask for how long.
+   *
+   * The phone's `useDeviceDetailScreen` does exactly this with a native alert.
+   * **A running pause ends on the press, with no confirmation**: giving the web
+   * back early is the direction that can never harm, and a parent who pressed
+   * it by accident presses the card again. Starting one is a choice between
+   * three lengths, which on this surface is the step-up sheet's furniture.
+   *
+   * Per device, never `updateChildRules`: `browsingPausedUntil` is not a
+   * `CHILD_RULE_KEYS` entry — a pause is an interruption of one machine, not a
+   * rule the child's siblings inherit.
+   *
+   * No success toast. `run` re-reads the family, so the card itself moves from
+   * "Not paused" to the minutes left, which is the answer.
+   */
+  const pressPauseBrowsing = () => {
+    if (!live || !device) return;
+    const until = device.controls?.browsingPausedUntil;
+    if (typeof until === 'number' && until > Date.now()) {
+      run('pause-browsing', () =>
+        actions.updateControls(device.id, { browsingPausedUntil: null }),
+      );
+      return;
+    }
+    setPauseSheetOpen(true);
+  };
+
+  /*
+   * The end is sent, never the length — `updateDeviceControls` reads the length
+   * back off its own clock and re-stamps it, so a browser clock cannot write a
+   * deadline onto a child device. Anything under
+   * `BROWSING_PAUSE_MIN_MINUTES` resolves to resume there, which is why a
+   * rounding disagreement between the two clocks costs a minute and not a
+   * refusal.
+   */
+  const startPauseBrowsing = minutes => {
+    setPauseSheetOpen(false);
+    if (!live || !device) return;
+    run('pause-browsing', () =>
+      actions.updateControls(device.id, {
+        browsingPausedUntil: Date.now() + minutes * 60_000,
+      }),
+    );
+  };
+
   const web = useMemo(
     () => (device && webHistory[device.id]) || [],
     [device, webHistory],
@@ -1906,6 +2291,12 @@ export default function Dashboard({
          browser is told; this is the shared rule, and it is the conservative
          one. */
       locationStale: fixAt !== null && Date.now() - fixAt > LOCATION_STALE_AFTER_MS,
+      /* The pause card's value is a countdown, so it needs a clock. Stamped
+         with the rest of the fold and therefore as old as the last read, which
+         is this console's whole shape — it counts what the last read said. A
+         write goes through `run`, which re-reads the family, so the number is
+         fresh the moment a parent starts or ends a pause. */
+      nowMs: Date.now(),
       reportsAppInstalls: supportsAppInstallAlerts(deviceView),
       listsInstalledApps: supportsAppInventory(deviceView),
       // One device, so the set is one long — the same resolver the phone's card
@@ -1997,8 +2388,94 @@ export default function Dashboard({
    * parked for months, so this is a state rather than a question — the rail is
    * where a state belongs; in the flow it pushed the list down on every visit.
    */
+  /*
+   * What the page is about, in one string: the `<h1>` and the browser tab.
+   *
+   * A panel is a pushed screen, so the heading is the panel's own name and the
+   * Back button beside it carries the device's — the phone's stack, where the
+   * title always names what is on screen. The three tabs are the device
+   * itself: the bar under the hero says which one, so repeating its word here
+   * would head the page with the tab already lit.
+   */
+  const heading = deviceView
+    ? DEVICE_TAB_IDS.has(tab)
+      ? deviceView.name
+      : /* The card that opened this panel names it, and the panel names itself
+           only when a parent arrived some other way. The action's title is the
+           phone's own (`deviceDetailActions`), so one press reads the same on
+           both consoles. */
+        (openedAction?.tab === tab &&
+          openedAction.deviceId === deviceId &&
+          openedAction.title) ||
+        t(TABS.find(item => item.id === tab)?.labelKey ?? 'dash.manage')
+    : childView
+      ? childLocationOpen
+        ? t('dash.locationTitle')
+        : childView.name
+      : /* Compact only: the page is inside Settings, and the section's own
+           label would head it "Settings" while the Back button beside it also
+           said Settings. */
+        supportOpen
+        ? activityT(SUPPORT_SECTION.labelKey)
+        : section === 'family'
+          ? family.name
+          : activityT(
+              SECTIONS.find(item => item.id === section)?.labelKey ?? 'nav.family',
+            );
+
+  /*
+   * The tab says where you are. A parent reads this console beside the thing
+   * it is about — a school portal, a bank, the child's own report — and every
+   * one of those tabs said "KidGate — Parent dashboard" until this landed.
+   *
+   * The heading rather than a second wording of it: the two cannot drift, and
+   * it already names a person, a machine or a section. The product name goes
+   * after it, where a truncated tab still shows the part that differs.
+   */
+  /*
+   * What is waiting, in front of it.
+   *
+   * **A browser tab is the only thing this console has that reaches a parent
+   * who is looking at something else.** The phone pushes; a web page that is
+   * not on screen says nothing at all, and an SOS raised while the parent was
+   * reading their email waited for them to come back and look.
+   *
+   * Only the three chips that are EVENTS — a child asked, a check-in went
+   * unanswered, someone pressed SOS. The two health chips are deliberately
+   * out: a phone missing a grant stays missing it for weeks, so counting
+   * those is a number that never clears, and a badge that is always on is
+   * one a parent stops reading — including on the day it means an emergency.
+   * The summary row says them every time the page is looked at, which is what
+   * a standing state needs. Adding a fourth key is a decision, which is why
+   * this is a named set and not `chip.tone !== 'default'`.
+   */
+  const badgeCount = familyCounts.chips.reduce(
+    (total, chip) => (TAB_BADGE_CHIPS.has(chip.key) ? total + chip.count : total),
+    0,
+  );
+  useEffect(() => {
+    // Ahead of the name, because a tab is truncated from the right and the
+    // count is the half that has to survive it.
+    const badge = badgeCount > 0 ? `(${badgeCount}) ` : '';
+    document.title = heading ? `${badge}${heading} · KidGate` : BASE_TITLE;
+    return () => {
+      document.title = BASE_TITLE;
+    };
+  }, [heading, badgeCount]);
+
+  /*
+   * One slot, two states of the same story, and they cannot both apply.
+   *
+   * `ParkReviewCard` is the **before** — the last trial day, naming what can
+   * still be switched on; `ParkedDevicesCard` is the **after**, once the server
+   * has parked. The server parks first and asks second
+   * (`scheduled/trialLifecycle`), so a family is in exactly one of them, and
+   * `parking.parked.length` is the seam. Folded into one node because this
+   * surface draws the banner in two places — the rail when it fits, the flow
+   * otherwise — and a second variable would mean remembering both at both.
+   */
   const parkedBanner =
-    parking.parked.length > 0 && section !== 'report' ? (
+    section === 'report' ? null : parking.parked.length > 0 ? (
       <ParkedDevicesCard
         devices={devices}
         parking={parking}
@@ -2007,7 +2484,17 @@ export default function Dashboard({
         onChoose={chooseMonitored}
         onOpen={() => setMonitoredSheetOpen(true)}
       />
-    ) : null;
+    ) : (
+      <ParkReviewCard
+        devices={devices}
+        trialStartedAt={family.trialStartedAt}
+        onOpenDevice={target => {
+          setDeviceId(target);
+          goTab('controls');
+          setDeviceOpen(true);
+        }}
+      />
+    );
 
   return (
     <div className="dash">
@@ -2096,7 +2583,11 @@ export default function Dashboard({
               three states the family is in and where a plan is actually changed
               — buying stays on the phone, by decision (`PlanCard`).
             */}
-            <PlanCard plan={family.plan} trialStartedAt={family.trialStartedAt} />
+            <PlanCard
+              plan={family.plan}
+              trialStartedAt={family.trialStartedAt}
+              deviceCount={devices.length}
+            />
             {/* Classed because it is the one line in the footer a short rail can
                 afford to drop — it counts what the list above it already shows,
                 and nothing is done from it. */}
@@ -2154,40 +2645,53 @@ export default function Dashboard({
                   <span>{deviceView.child.name}</span>
                 </p>
               )}
-              <h1>
-                {/* A panel is a pushed screen, so the heading is the panel's
-                    own name and the Back button beside it carries the
-                    device's — the phone's stack, where the title always names
-                    what is on screen. The three tabs are the device itself:
-                    the bar under the hero says which one, so repeating its
-                    word here would head the page with the tab already lit. */}
-                {deviceView
-                  ? DEVICE_TAB_IDS.has(tab)
-                    ? deviceView.name
-                    : /* The card that opened this panel names it, and the
-                         panel names itself only when a parent arrived some
-                         other way. The action's title is the phone's own
-                         (`deviceDetailActions`), so one press reads the same
-                         on both consoles. */
-                      (openedAction?.tab === tab && openedAction.title) ||
-                      t(TABS.find(item => item.id === tab)?.labelKey ?? 'dash.manage')
-                  : childView
-                    ? childView.name
-                    : /* Compact only: the page is inside Settings, and the
-                         section's own label would head it "Settings" while the
-                         Back button beside it also said Settings. */
-                      supportOpen
-                      ? activityT(SUPPORT_SECTION.labelKey)
-                      : section === 'family'
-                        ? family.name
-                        : activityT(
-                            SECTIONS.find(item => item.id === section)?.labelKey ??
-                              'nav.family',
-                          )}
-              </h1>
+              {/* The same string the browser tab carries — one reading of
+                  "where am I", not two that can disagree. */}
+              <h1>{heading}</h1>
             </div>
           </div>
           <div className="top-actions">
+            {/*
+              **This page does not update itself, and it says so.**
+              `adapters/oneShot.js` reads once and lets go — a browser tab is
+              the longest-lived reader this product has, and a live listener
+              bills a read per write to every document it holds
+              (`docs/DATA_RETENTION.md` §4). So the parent gets the button
+              instead, and a sentence pointing at the phone, which is the
+              console that watches.
+            */}
+            {onRefresh && (
+              <span className="refresh-row">
+                <span className="refresh-meta">
+                  {/* The age goes at phone width, the sentence stays — a
+                      parent reading this ON a phone is the one person who can
+                      act on it, and hiding it from them was backwards. The
+                      app's own wording for "this reading is from then", not a
+                      `dash.*` twin (`.claude/rules/i18n.md`). */}
+                  <span className="refresh-age">
+                    {/*
+                      A CLOCK time, not "2 minutes ago". `timeAgo` is computed
+                      at render and nothing re-renders this page on its own any
+                      more, so a tab left alone for an hour went on saying "just
+                      now" — on the one row whose whole job is to say how old
+                      the reading is. An absolute time cannot go stale.
+                    */}
+                    {activityT('location.updatedAt', {
+                      date: new Date(loadedAt).toLocaleTimeString(language, {
+                        hour: '2-digit',
+                        minute: '2-digit',
+                      }),
+                    })}
+                    <span className="dot-sep">·</span>
+                  </span>
+                  {t('dash.liveOnApp')}
+                </span>
+                <button className="btn btn-sm" onClick={onRefresh}>
+                  <Icon name="refresh" size={14} />
+                  <span>{t('dash.refresh')}</span>
+                </button>
+              </span>
+            )}
             {topActions}
             {/*
               Both buttons are gone on a device that cannot do the thing, not
@@ -2445,6 +2949,16 @@ export default function Dashboard({
           />
         )}
 
+        {/* How long to pause the open device's browsing for — the phone's
+            three-option alert, in this surface's one modal shape. */}
+        {pauseSheetOpen && (
+          <PauseBrowsingSheet
+            appT={activityT}
+            onChoose={startPauseBrowsing}
+            onClose={() => setPauseSheetOpen(false)}
+          />
+        )}
+
         {/*
           The device's three tabs, between the hero and whatever they choose.
           Hidden while a panel is open: a panel is a frame deeper and the bar
@@ -2457,7 +2971,7 @@ export default function Dashboard({
               <button
                 key={item.id}
                 className={`dev-tab${tab === item.id ? ' is-active' : ''}`}
-                onClick={() => setTab(item.id)}
+                onClick={() => goTab(item.id)}
                 aria-current={tab === item.id ? 'page' : undefined}
               >
                 {item.app ? activityT(item.labelKey) : t(item.labelKey)}
@@ -2490,13 +3004,22 @@ export default function Dashboard({
                asked for — the phone pushes a screen per action and has never
                had that problem. */
             onOpen={(next, action) => {
+              /* The one card that opens no panel — there is no screen behind
+                 it. A pause is started and ended from the grid, as the phone
+                 does it from its alert, so this answers and navigates nowhere
+                 (`ControlCenter`'s `ACTION_TAB` records the same absence). */
+              if (action?.id === 'pause-browsing') {
+                pressPauseBrowsing();
+                return;
+              }
               setTab(next);
               setFocusCard(action?.id ?? null);
-              /* Remembered against the panel it opened, so a parent who
-                 reaches that same panel another way — a summary chip, a Back
-                 — gets the panel's own name rather than the last card
-                 somebody happened to press. */
-              setOpenedAction(action ? { ...action, tab: next } : null);
+              /* Remembered against the panel AND the machine it was pressed
+                 on. `goTab` clears it on every other way into a panel; the
+                 device is in the key because the sidebar switches machines
+                 without touching the tab, and a title that survived that would
+                 name one device's card over another device's page. */
+              setOpenedAction(action ? { ...action, tab: next, deviceId } : null);
             }}
           />
         )}
@@ -2524,30 +3047,36 @@ export default function Dashboard({
               appT={activityT}
               onChipPress={openSummaryChip}
             />
-            {devices.length === 0 ? (
-              <div className="card">
-                <h2>{t('dash.noDeviceTitle')}</h2>
-                <RichText as="p" className="hint" text={t('dash.noDeviceBody')} />
-              </div>
-            ) : (
-              <div className="kid-list">
-                {/*
-                  The family itself, first — the phone opens its list with this
-                  row, and without it the only way into "rename the family, add
-                  a child, the star chart" was a section away in Settings while
-                  the thing those act on was on screen here.
-                */}
-                <button className="family-row" onClick={() => setFamilyOpen(true)}>
-                  <span className="family-row-icon">
-                    <Icon name="home" size={20} />
-                  </span>
-                  <span className="kid-meta">
-                    <strong>{family.name}</strong>
-                    <em>{activityT('settings.familyDetailSubtitle')}</em>
-                  </span>
-                  <Icon name="chevronRight" size={16} />
-                </button>
-                {deviceGroups.map(group => {
+            <div className="kid-list">
+              {/*
+                The family itself, first — the phone opens its list with this
+                row, and without it the only way into "rename the family, add
+                a child, the star chart" was a section away in Settings while
+                the thing those act on was on screen here.
+
+                **Drawn with nothing paired too.** It used to sit inside the
+                `devices.length` branch, so a family that had just signed in
+                on a laptop read one card telling them to go and use the phone
+                and had nothing on the screen to press — while "add a child",
+                which needs no hardware, was behind this row the whole time.
+              */}
+              <button className="family-row" onClick={() => setFamilyOpen(true)}>
+                <span className="family-row-icon">
+                  <Icon name="home" size={20} />
+                </span>
+                <span className="kid-meta">
+                  <strong>{family.name}</strong>
+                  <em>{activityT('settings.familyDetailSubtitle')}</em>
+                </span>
+                <Icon name="chevronRight" size={16} />
+              </button>
+              {devices.length === 0 ? (
+                <div className="card">
+                  <h2>{t('dash.noDeviceTitle')}</h2>
+                  <RichText as="p" className="hint" text={t('dash.noDeviceBody')} />
+                </div>
+              ) : (
+                deviceGroups.map(group => {
                   /*
                    * Every child is a group, including one who owns a single
                    * device. It used to be a bare row — two lines saving one —
@@ -2631,9 +3160,43 @@ export default function Dashboard({
                         ))}
                     </div>
                   );
-                })}
-              </div>
-            )}
+                })
+              )}
+              {/*
+                The phone's strip, in this surface's own row shape: a `Card`
+                over `.kid` rows is what the Settings child list already draws,
+                so nothing new was styled and the row opens the same hub.
+                The heading is the app pack's — the phone says this sentence in
+                fourteen languages (`.claude/rules/i18n.md`).
+              */}
+              {childrenWithoutDevice.length > 0 && (
+                <Card title={activityT('family.childrenWithoutDeviceTitle')}>
+                  <ul className="child-device-list">
+                    {childrenWithoutDevice.map(child => (
+                      <li key={child.id}>
+                        <button
+                          className="kid"
+                          onClick={() => setOpenChildId(child.id)}
+                        >
+                          <ChildInitial
+                            name={child.name}
+                            colorIndex={child.colorIndex}
+                          />
+                          {/* The name and nothing else, as on the phone: the
+                              card's own title is what says these children have
+                              no device, and a "0 child devices" under each one
+                              would say it again per row. */}
+                          <span className="kid-meta">
+                            <strong>{child.name}</strong>
+                          </span>
+                          <Icon name="chevronRight" size={14} />
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </Card>
+              )}
+            </div>
           </section>
         )}
 
@@ -2675,7 +3238,22 @@ export default function Dashboard({
           stack — opening a device from here keeps `openChildId` set, so Back
           lands on the hub the parent came through rather than at the top.
         */}
-        {childView && (
+        {childView && childLocationOpen && (
+          <ChildLocationPanel
+            familyId={familyId}
+            child={childView}
+            childDevices={childDevices}
+            hereMapsKey={hereMapsKey}
+            title={t('dash.locationTitle')}
+            reloadKey={loadedAt}
+            messages={{
+              mapUnavailable: activityT('location.mapUnavailable'),
+              mapNoLocationsEmpty: t('dash.locationWaiting'),
+            }}
+          />
+        )}
+
+        {childView && !childLocationOpen && (
           <ChildHub
             child={childView}
             childDevices={childDevices}
@@ -2691,9 +3269,10 @@ export default function Dashboard({
                the hub's cards are the same actions the device detail draws,
                and landing on Overview every time would make one click into
                two. */
+            onOpenLocation={() => setChildLocationOpen(true)}
             onOpenDevice={(id, tab) => {
               setDeviceId(id);
-              if (tab) setTab(tab);
+              if (tab) goTab(tab);
               setDeviceOpen(true);
             }}
             onLeave={() => setOpenChildId(null)}
@@ -2721,8 +3300,10 @@ export default function Dashboard({
           answer on this surface at all.
 
           The sheet still renders on its own whenever there is no stored report
-          to land on: that empty state is where Generate lives, and hiding it
-          behind a door a family cannot see would leave them no way in.
+          to land on, and that empty state says so in words. It used to say
+          "that empty state is where Generate lives" — **it does not**; asking
+          for a report on demand is the phone's, and this surface only reads
+          what the weekly job wrote (checked 2026-09-17).
         */}
         {section === 'report' &&
           (reportChildView ? (
@@ -2738,7 +3319,7 @@ export default function Dashboard({
                 setDeviceId(id);
                 setSection('family');
                 setDeviceOpen(true);
-                setTab('screen');
+                goTab('screen');
               }}
               onAssignDevice={() => {
                 setSection('family');
@@ -2784,7 +3365,7 @@ export default function Dashboard({
                 setDeviceId(id);
                 setSection('family');
                 setDeviceOpen(true);
-                setTab('screen');
+                goTab('screen');
               }}
             />
           ))}
@@ -2821,7 +3402,11 @@ export default function Dashboard({
               twice and allowed to disagree.
             */}
             <Card title={activityT('plans.title')}>
-              <PlanCard plan={family.plan} trialStartedAt={family.trialStartedAt} />
+              <PlanCard
+                plan={family.plan}
+                trialStartedAt={family.trialStartedAt}
+                deviceCount={devices.length}
+              />
             </Card>
 
             {/*
@@ -3055,7 +3640,7 @@ export default function Dashboard({
                   <UsageRing
                     used={stats.used}
                     limit={c.dailyLimitMinutes}
-                    bonus={c.bonusMinutesToday}
+                    bonus={stats.bonus}
                   />
                   <ul className="today-stats">
                     <li>
@@ -3079,9 +3664,7 @@ export default function Dashboard({
                     <li>
                       <span>{t('dash.bonusToday')}</span>
                       <strong>
-                        {c.bonusMinutesToday
-                          ? `+${formatMinutes(c.bonusMinutesToday)}`
-                          : t('viz.none')}
+                        {stats.bonus ? `+${formatMinutes(stats.bonus)}` : t('viz.none')}
                       </strong>
                     </li>
                   </ul>
@@ -3654,25 +4237,14 @@ export default function Dashboard({
                   }
                 >
                   {/*
-                    This was a drawing of a map and it is not one any more.
+                    What stood here until 2026-09-17 was a DRAWING of a map: a
+                    CSS gradient under a grid pattern, each place laid out by
+                    its INDEX in the array — `left: 28 + i * 24 %` — so two
+                    places ten metres apart and two ten kilometres apart
+                    rendered identically. It read as a real map whose tiles had
+                    failed, and was reported as a bug, which was the right
+                    reaction to it.
 
-                    A CSS gradient under a grid pattern, with each place laid
-                    out by its INDEX in the array — `left: 28 + i * 24 %` — so
-                    two places ten metres apart and two ten kilometres apart
-                    rendered identically, and the whole thing read as a real
-                    map whose tiles had failed to load. It was asked about as a
-                    bug, which is the right reaction to it.
-
-                    A real map is not a styling job: it needs a tile provider,
-                    another key in a public bundle, and a child's coordinates
-                    leaving for a third party on every render — a decision,
-                    through `docs/FEASIBILITY.md`, not something to slip in
-                    here. Until then this says what this surface actually
-                    knows: where the device was, the places it is inside, and a
-                    link the parent chooses to follow. Nothing is sent
-                    anywhere until they click it.
-                  */}
-                  {/*
                     The real map, and it is the PHONE's map — the document
                     comes from `@kidgate/core/domain/locationHistoryMapHtml`,
                     whose own note says a browser surface can render it in an
@@ -3690,35 +4262,22 @@ export default function Dashboard({
                     document, and the facts underneath are read from Firestore
                     and stand on their own.
                   */}
-                  {device.lastLocation &&
-                    typeof device.lastLocation.latitude === 'number' &&
-                    typeof device.lastLocation.longitude === 'number' && (
-                      <iframe
-                        className="loc-map"
-                        title={t('dash.locationTitle')}
-                        sandbox="allow-scripts"
-                        srcDoc={buildLocationHistoryMapHtml(
-                          [
-                            {
-                              id: 'last',
-                              lat: device.lastLocation.latitude,
-                              lng: device.lastLocation.longitude,
-                              title:
-                                device.lastLocation.placeName ||
-                                device.lastLocation.address ||
-                                deviceView.name,
-                              isLatest: true,
-                            },
-                          ],
-                          'last',
-                          hereMapsKey,
-                          {
-                            mapUnavailable: activityT('location.mapUnavailable'),
-                            mapNoLocationsEmpty: t('dash.locationWaiting'),
-                          },
-                        )}
-                      />
-                    )}
+                  {/* The ROUTE, since 2026-09-18 — `LocationMap` reads this
+                      device's history on mount, which is what keeps the read
+                      off every parent who never opens this card. It falls back
+                      to the last fix alone, which is all this drew before. */}
+                  <LocationMap
+                    familyId={familyId}
+                    device={device}
+                    deviceName={deviceView.name}
+                    hereMapsKey={hereMapsKey}
+                    title={t('dash.locationTitle')}
+                    reloadKey={loadedAt}
+                    messages={{
+                      mapUnavailable: activityT('location.mapUnavailable'),
+                      mapNoLocationsEmpty: t('dash.locationWaiting'),
+                    }}
+                  />
                   <div className="loc-panel">
                     {device.lastLocation && (
                       <div className="loc-where">
@@ -4058,6 +4617,7 @@ export default function Dashboard({
                 the app pack (`.claude/rules/i18n.md`).
               */}
               <Card
+                id="message-alerts"
                 title={activityT('messageMonitoring.actionTitle')}
                 subtitle={activityT('messageMonitoring.heroSubtitle')}
               >
@@ -4209,7 +4769,7 @@ export default function Dashboard({
           readOnly={live && !canWrite}
           onOpenDevice={id => {
             setDeviceId(id);
-            setTab('overview');
+            goTab('overview');
             setDeviceOpen(true);
           }}
         />

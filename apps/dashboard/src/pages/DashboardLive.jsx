@@ -83,16 +83,26 @@ function LiveGate() {
   const onDeviceChange = useCallback(id => setDeviceId(id), []);
 
   /*
-   * The only screen change this app has: one route, three states, decided here.
+   * The gate, and only the gate: did this arrival get past sign-in.
    *
    * Reported from an effect rather than beside each `return`, so a re-render
    * that lands on the same screen does not count a second view — the gate
    * re-runs on every auth tick and on every device selection.
+   *
+   * **`dashboard` is no longer one of the values, and that is deliberate.**
+   * `Dashboard.jsx` reports where the parent actually stands (`navScreenSlug`),
+   * so emitting a flat `dashboard` here would put two `page_view`s on every
+   * arrival and leave the funnel counting the same visit twice. The funnel
+   * still reads the same way — a `login` with no slug after it is an arrival
+   * that stopped at sign-in — but the `dashboard` row itself ends on the day
+   * this shipped rather than continuing with a changed meaning.
    */
   const screen =
-    !configured || (!loading && !user) ? 'login' : loading ? 'splash' : 'dashboard';
+    !configured || (!loading && !user) ? 'login' : loading ? 'splash' : null;
   useEffect(() => {
-    trackScreen(screen);
+    if (screen) {
+      trackScreen(screen);
+    }
   }, [screen]);
 
   if (!configured || (!loading && !user)) {
@@ -120,10 +130,8 @@ function LiveGate() {
 function LiveDashboard({ user, deviceId, onDeviceChange, signOut }) {
   const { canWrite } = useAuth();
   const { t } = useT();
-  const { data, loading, error, familyId, unknownAccount } = useFamilyData(
-    user,
-    deviceId,
-  );
+  const { data, loading, error, familyId, unknownAccount, loadedAt, refresh } =
+    useFamilyData(user, deviceId);
   const reports = useFamilyReports(familyId);
   // No `getIdToken`: the API adapter reads the current session itself, which is
   // what lets a repository ask for `{ as: 'parent' }` and learn nothing about
@@ -136,8 +144,11 @@ function LiveDashboard({ user, deviceId, onDeviceChange, signOut }) {
    */
   const isOwner = Boolean(familyId && user?.uid === familyId);
   const actions = useMemo(
-    () => (familyId ? createActions({ familyId, canWrite, isOwner }) : null),
-    [familyId, canWrite, isOwner],
+    () =>
+      familyId
+        ? createActions({ familyId, canWrite, isOwner, devices: data?.devices })
+        : null,
+    [familyId, canWrite, isOwner, data?.devices],
   );
 
   if (loading) {
@@ -196,6 +207,13 @@ function LiveDashboard({ user, deviceId, onDeviceChange, signOut }) {
        */
       accountId={user.uid}
       accountEmail={user.email ?? null}
+      /*
+       * Nothing streams into this page any more (`adapters/oneShot.js`), so
+       * these two are how it stays honest: when the data was asked for, and
+       * how to ask again.
+       */
+      loadedAt={loadedAt}
+      onRefresh={refresh}
       onDeviceChange={onDeviceChange}
       sideFooter={
         <div className="side-account">

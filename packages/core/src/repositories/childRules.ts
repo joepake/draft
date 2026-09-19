@@ -1,6 +1,7 @@
 import type { ApiPort } from '@kidgate/ports/api';
 import type { ChildRules } from '@kidgate/schema/childRules';
 import { toJsonBody } from '../domain/jsonBody';
+import { readRefusal, type ControlsWriteResult } from './control';
 
 /**
  * Writing a child's rules — one endpoint, nothing else.
@@ -25,11 +26,18 @@ export interface ChildRulesRepositoryDeps {
    * SDK and no sibling implementation.
    */
   controls?: {
+    /**
+     * `unknown`, not `void`: the real `updateControls` answers with what the
+     * server refused (`ControlsWriteResult`), and a `void` here would refuse the
+     * very implementation this dep exists to take. `setDailyBudget` ignores the
+     * answer — it only needs the seed written — so the widest type that accepts
+     * both is the honest one.
+     */
     updateControls(
       userId: string,
       deviceId: string,
       controls: { dailyLimitMinutes: number | null },
-    ): Promise<void>;
+    ): Promise<unknown>;
   };
 }
 
@@ -44,7 +52,7 @@ export function createChildRulesRepository(deps: ChildRulesRepositoryDeps) {
      * is the number the parent chose; `controls.dailyLimitMinutes` on each
      * assigned device is the field every agent already locks on, so a budget
      * saved without seeding is decoration until the next usage report
-     * rewrites it. Since 2026-08-27 `reportChildUsage` rewrites those copies
+     * rewrites it. Since 2026-08-27 `syncChildAgent` rewrites those copies
      * to `deviceUsed + (budget − totalUsed)` on every report — **the seed is
      * a starting value, not the answer** (`@kidgate/schema/childRules`).
      *
@@ -82,16 +90,29 @@ export function createChildRulesRepository(deps: ChildRulesRepositoryDeps) {
      * Apply a partial change to the child's rules. Partial on purpose — the
      * server merges over what is stored, so a screen that only toggled the
      * switch does not have to re-send four lists it never touched.
+     *
+     * ## It hands back what the fan-out refused
+     *
+     * The child document takes the whole patch; a **parked** sibling takes only
+     * the half that loosens (`docs/FEASIBILITY.md`, "Free tier: a parked device
+     * goes loosen-only"), so this call can succeed and still leave one machine
+     * enforcing the old rule. `updateChildRules` names those keys in the same
+     * fields `updateDeviceControls` uses, read by the same `readRefusal` — one
+     * refusal, one sentence, whichever endpoint the switch went through.
+     *
+     * Empty is the ordinary answer and a caller may ignore it.
      */
     async updateRules(
       userId: string,
       childId: string,
       rules: Partial<ChildRules>,
-    ): Promise<void> {
-      await api.post(
-        '/updateChildRules',
-        { childId, familyOwnerUserId: userId, rules: toJsonBody(rules) },
-        { as: 'parent' },
+    ): Promise<ControlsWriteResult> {
+      return readRefusal(
+        await api.post(
+          '/updateChildRules',
+          { childId, familyOwnerUserId: userId, rules: toJsonBody(rules) },
+          { as: 'parent' },
+        ),
       );
     },
   };

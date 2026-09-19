@@ -140,6 +140,15 @@ export function webFilterBlockerKey(device: {
  * set" and the parent's read "not available", both correctly describing a
  * feature nothing could turn on.
  *
+ * **`chromeos` was missing until 2026-09-19, and `apps/extension` had been
+ * enforcing the full policy the whole time** — `apps/extension/src/webFilter.ts`
+ * builds its rules with the same `buildContentFilterRules` the Mac's provider,
+ * the Windows resolver and both Android tunnels are handed. The asymmetry is
+ * what gave it away: one extension build reports `macos` on a Mac host and was
+ * given the full screen, `chromeos` on a Chromebook and was given the iOS one
+ * — "Uses Screen Time on iOS", every category but `adult` locked, over a
+ * machine already enforcing all of them.
+ *
  * Safe-search is **not** part of what this opens, and must not be folded in:
  * `supportsSafeSearch` gates it separately and answers no for Windows, whose
  * resolver forwards rather than synthesising the A/AAAA answer that rewrite
@@ -155,6 +164,7 @@ export function supportsWebFilterCategories(device: WebFilterSupportInput): bool
     device.platform === 'android' ||
     device.platform === 'androidtv' ||
     device.platform === 'macos' ||
-    device.platform === 'windows'
+    device.platform === 'windows' ||
+    device.platform === 'chromeos'
   );
 }

@@ -141,4 +141,10 @@ export const deviceDetail = {
   webHistorySitesUnit_one: 'sitio',
   managedAtChild:
     'Las reglas, recompensas, check-ins y alertas de este dispositivo se gestionan en el perfil de {{childName}}',
+  pauseBrowsing: 'Pausar la navegación',
+  pauseBrowsingDescription:
+    'Bloquea la web un rato. Las llamadas y las apps sin conexión siguen funcionando.',
+  pauseBrowsingOff: 'Sin pausa',
+  pauseBrowsingLeft: 'En pausa · quedan {{minutes}} min',
+  pauseBrowsingFor: 'Pausar {{minutes}} min',
 } as const;

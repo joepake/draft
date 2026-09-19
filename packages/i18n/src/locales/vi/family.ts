@@ -106,13 +106,20 @@ export const family = {
   healthOffline: 'Ngoại tuyến',
   devicePausedLabel: 'Ngừng báo cáo',
   devicePausedHint: 'Ngừng báo cáo trên gói miễn phí — mọi quy tắc vẫn áp dụng',
+  parkReviewTitle: 'Bật những mục này trước khi hết dùng thử',
+  parkReviewBody:
+    'Khi hết dùng thử, một thiết bị tiếp tục gửi báo cáo và chỉnh sửa quy tắc, những máy còn lại giữ nguyên quy tắc đang có. Trên các máy đó bạn chỉ còn nới lỏng được quy tắc, nên thứ gì đang tắt thì sẽ không bật lại được.',
+  rulesEnforcedOn: 'Đang áp dụng trên {{enforced}}/{{total}} thiết bị',
+  rulesPausedBehind: 'Ngừng báo cáo — vẫn giữ thiết lập cũ',
+  rulesTightenRefused:
+    'Thiết bị đang ngừng báo cáo chỉ nới lỏng được quy tắc, không siết chặt thêm được. Nâng cấp để đổi trên mọi máy.',
   parkedBannerTitle: 'Chọn thiết bị để tiếp tục theo dõi',
   parkedBannerBody:
-    'Quy tắc của bạn chạy trên mọi thiết bị. Gói miễn phí chỉ nhận báo cáo từ một máy — hãy chọn, hoặc nâng cấp để giữ tất cả.',
+    'Quy tắc của bạn vẫn chạy trên mọi thiết bị. Gói miễn phí chỉ nhận báo cáo từ một máy và chỉ cho siết chặt quy tắc ở máy đó — hãy chọn máy, hoặc nâng cấp để giữ tất cả.',
   parkedBannerAction: 'Chọn thiết bị',
-  chooseMonitoredTitle: 'Thiết bị nào sẽ báo cáo?',
+  chooseMonitoredTitle: 'Chọn thiết bị chính',
   chooseMonitoredBody:
-    'Mọi quy tắc vẫn hoạt động trên tất cả. Chỉ thiết bị bạn chọn gửi thời gian sử dụng và vị trí. Bạn có thể đổi mỗi {{days}} ngày một lần.',
+    'Mọi quy tắc vẫn hoạt động trên tất cả. Máy bạn chọn sẽ gửi thời gian sử dụng và vị trí, và là máy duy nhất bạn còn siết chặt được quy tắc — những máy còn lại chỉ nới lỏng được. Bạn có thể đổi máy mỗi {{days}} ngày một lần.',
   chooseMonitoredConfirm: 'Theo dõi thiết bị này',
   chooseMonitoredUpgrade: 'Giữ tất cả thiết bị — nâng cấp',
   chooseMonitoredDone: '{{name}} giờ là thiết bị báo cáo',

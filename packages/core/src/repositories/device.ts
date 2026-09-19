@@ -1,7 +1,7 @@
 import type { ApiFailure, ApiPort } from '@kidgate/ports/api';
 import type { ClockPort } from '@kidgate/ports/clock';
 import type { DocSnapshot, FirestorePort, Unsubscribe } from '@kidgate/ports/firestore';
-import type { Device } from '@kidgate/schema/device';
+import type { Device, DeviceLockEnforcement } from '@kidgate/schema/device';
 import type { ChildDeviceRecord, ParentDeviceRecord } from '@kidgate/schema/firestore';
 import {
   childDeviceDoc,
@@ -77,6 +77,34 @@ function appliedPolicy(
 
 function formFactor(value: unknown): string | undefined {
   return isDeviceFormFactor(value) ? value : undefined;
+}
+
+/**
+ * The device's own answer about its lock, or nothing.
+ *
+ * `at` is the whole point of the field — `domain/lockEnforcement` compares it
+ * against `lockRequestedAt` to tell a fresh answer from a stale one — so a
+ * report with no readable stamp is dropped rather than passed on. Passing it
+ * would read as an answer that can never satisfy the request, which is the
+ * "Lock sent" sentence over a device that is in fact locked.
+ */
+function parseLockEnforcement(value: unknown): DeviceLockEnforcement | undefined {
+  if (!value || typeof value !== 'object') {
+    return undefined;
+  }
+  const { locked, reason, at } = value as Record<string, unknown>;
+  const atIso = timestampToIso(at);
+  if (typeof locked !== 'boolean' || !atIso) {
+    return undefined;
+  }
+  // `null` rather than absent, which is what both agents write: the reason is
+  // the agent's own and an unrecognised one is no reason at all.
+  const reasons = ['parentLock', 'schedule', 'dailyLimit'] as const;
+  return {
+    locked,
+    reason: reasons.find(known => known === reason) ?? null,
+    at: atIso,
+  };
 }
 
 /** Clamp a percentage written by the child device. */
@@ -176,6 +204,8 @@ function mapChildDevice(doc: DocSnapshot): ChildDeviceRecord {
   const weekCounters = parseWeekCounters(data);
   const topAppsToday = parseTopAppsToday(data);
   const topAppsOtherToday = parseTopAppsOtherToday(data);
+  const lockRequestedAt = timestampToIso(data.lockRequestedAt);
+  const lockEnforcement = parseLockEnforcement(data.lockEnforcement);
 
   return {
     places: parseDevicePlaces(data),
@@ -259,6 +289,22 @@ function mapChildDevice(doc: DocSnapshot): ChildDeviceRecord {
     ...(text(data.appBuild) ? { appBuild: text(data.appBuild) } : {}),
     ...(typeof data.otaVersion === 'number' ? { otaVersion: data.otaVersion } : {}),
     isLocked: data.isLocked === true,
+    /*
+     * The sixth and seventh fields this mapper forgot, and the pair that made
+     * the whole "lock sent is not lock applied" feature invisible. The endpoint
+     * stamps `lockRequestedAt`, the TV and desktop agents write
+     * `lockEnforcement`, `domain/lockEnforcement` folds the two and both parent
+     * surfaces render the fold — and with neither field reaching them the fold
+     * fell through to its heartbeat fallback and answered `inForce` for every
+     * device that had ever beaten. A parent locking a phone that is off, out of
+     * range, or with its network cut read "Locked" and nothing else.
+     *
+     * Absent still has to stay absent: a device locked before 2026-08-28 has no
+     * request stamp, and `answersTheRequest` reads that as "nothing to be stale
+     * against" rather than as a lock that was never asked for.
+     */
+    ...(lockRequestedAt ? { lockRequestedAt } : {}),
+    ...(lockEnforcement ? { lockEnforcement } : {}),
     lastActiveAt: timestampToIso(data.lastActiveAt) ?? '',
     /*
      * The cadence this device says it is keeping, and the last "report now" it

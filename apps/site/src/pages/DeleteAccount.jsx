@@ -5,7 +5,7 @@ export default function DeleteAccount() {
   return (
     <article className="legal">
       <h1>Account &amp; Data Deletion</h1>
-      <p className="updated">Last updated: August 4, 2026</p>
+      <p className="updated">Last updated: September 18, 2026</p>
       <LegalNote />
 
       <p>
@@ -53,20 +53,20 @@ export default function DeleteAccount() {
           photos.
         </li>
         <li>Your parental control settings and preferences.</li>
+        <li>Support requests you filed, with any screenshot attached to them.</li>
+        <li>Your sign-in itself, so the account cannot be used again.</li>
       </ul>
-      <p>
-        Messages and screenshots you sent to support are kept separately and are not
-        removed by account deletion today; closing that gap is planned.
-      </p>
 
       <h2>Retention timelines</h2>
       <ul>
         <li>
-          Data is deleted from our active systems when the <strong>14-day</strong> hold
-          on a verified request ends.
+          Data is deleted when the <strong>14-day</strong> hold on a verified request
+          ends. Deletion is permanent and there is no export afterwards.
         </li>
         <li>
-          Copies in encrypted backups are purged within <strong>90 days</strong>.
+          A record that the deletion was requested and completed &mdash; a hash of your
+          email address and the dates, nothing else &mdash; is kept for{' '}
+          <strong>12 months</strong> so that a disputed deletion can be answered.
         </li>
         <li>
           We may retain a minimal set of records where required by law (for example,
@@ -76,9 +76,10 @@ export default function DeleteAccount() {
 
       <h2>Partial deletion</h2>
       <p>
-        If you want to delete only some data (for example, a single child profile or
-        activity history) without closing your account, you can do so in the app, or
-        contact us at <a href="mailto:support@kidgate.app">support@kidgate.app</a>.
+        You can remove a child or a device in the app, which stops collection from it.
+        History already collected expires on the schedule in the Privacy Policy (30 days
+        for activity and location, 90 days for alerts and requests); to have it deleted
+        sooner, email <a href="mailto:support@kidgate.app">support@kidgate.app</a>.
       </p>
 
       <p>

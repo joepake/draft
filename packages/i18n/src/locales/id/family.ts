@@ -130,13 +130,20 @@ export const family = {
   healthOffline: 'Offline',
   devicePausedLabel: 'Dijeda',
   devicePausedHint: 'Dijeda di paket gratis — semua aturan tetap berlaku',
+  parkReviewTitle: 'Aktifkan ini sebelum masa coba berakhir',
+  parkReviewBody:
+    'Saat masa coba berakhir, satu perangkat tetap mengirim laporan dan menerima perubahan aturan, sisanya mempertahankan aturan yang sudah ada. Pada perangkat lainnya Anda hanya bisa melonggarkan aturan, jadi apa pun yang kini nonaktif akan tetap nonaktif.',
+  rulesEnforcedOn: 'Berlaku di {{enforced}} dari {{total}} perangkat',
+  rulesPausedBehind: 'Dijeda — masih memakai pengaturan lama',
+  rulesTightenRefused:
+    'Aturan di perangkat yang dijeda hanya bisa dilonggarkan, tidak bisa diperketat. Upgrade untuk mengubahnya di semua perangkat.',
   parkedBannerTitle: 'Pilih perangkat yang tetap dipantau',
   parkedBannerBody:
-    'Aturan Anda berjalan di semua perangkat. Paket gratis menerima laporan dari satu — pilih perangkatnya, atau upgrade untuk mempertahankan semuanya.',
+    'Aturan Anda tetap berjalan di semua perangkat. Paket gratis menerima laporan dari satu perangkat dan hanya di perangkat itu Anda bisa memperketat aturan — pilih perangkat tersebut, atau upgrade untuk mempertahankan semuanya.',
   parkedBannerAction: 'Pilih perangkat',
-  chooseMonitoredTitle: 'Perangkat mana yang harus melapor?',
+  chooseMonitoredTitle: 'Pilih perangkat utama',
   chooseMonitoredBody:
-    'Semua aturan tetap berjalan di semuanya. Hanya perangkat yang Anda pilih yang mengirim waktu layar dan lokasi. Anda bisa menggantinya sekali setiap {{days}} hari.',
+    'Semua aturan tetap berjalan di semua perangkat. Perangkat yang Anda pilih mengirim waktu layar dan lokasi, dan hanya di perangkat itu aturan masih bisa diperketat — pada perangkat lain aturan hanya bisa dilonggarkan. Anda bisa mengganti pilihan sekali setiap {{days}} hari.',
   chooseMonitoredConfirm: 'Pantau perangkat ini',
   chooseMonitoredUpgrade: 'Pertahankan semua perangkat — upgrade',
   chooseMonitoredDone: '{{name}} kini menjadi perangkat yang melapor',

@@ -435,27 +435,32 @@ export default function Home() {
             {/*
               Android TV, with a pill and no button.
 
-              **The pill is the whole card.** `apps/tv/CLAUDE.md` and
-              `docs/MIGRATION.md` both read "scaffolded, never built" — no
-              Android TV has run a line of it and three permissions the platform
-              turns on are unproven — so this is the one platform a family
-              cannot install. A card sitting between two that ship is read as
-              available unless it says otherwise, and nothing in this repo fails
-              when that is wrong; a parent finds out on the television.
+              **The pill is the whole card.** The build ran on real hardware on
+              19 Aug 2026 and has no keystore, release track or Play submission
+              (`apps/tv/CLAUDE.md`), so this is the one platform a family cannot
+              install — running is not shipping. A card sitting between two that
+              ship is read as available unless it says otherwise, and nothing in
+              this repo fails when that is wrong; a parent finds out on the
+              television.
 
               It is here rather than absent because "does KidGate work on the
               TV?" is a question this page was answering with silence, and
               silence reads as no. Ship the TV build and this card gains a
               button and loses the pill.
 
-              **The strings are `about.make5*`, not new `download.tv*` keys.**
+              **The body is `about.make5*`, not new `download.tv*` keys.**
               That is the same platform described in the same voice, already
               translated into fourteen languages and already reviewed; a second
               set would be the one thing this repo refuses — one text in two
-              places, drifting. `about.make5Soon` was in all fourteen packs with
-              no renderer at all (`pages/About` stopped drawing the pill), and
-              `yarn i18n:dead` does not scan the web key space, so nothing could
-              have told us. This is its renderer.
+              places, drifting.
+
+              **The pill is `common.comingSoon`, the same key the two cards
+              beside it use.** It was `about.make5Soon` until 2026-09-18, which
+              put two words for one state in every language on one screen —
+              "Coming soon" on the store buttons, "Planned" here; "Sắp ra mắt"
+              and "Sắp có" in Vietnamese. `about.make5Soon` had no other
+              renderer and is gone from all fourteen packs, `yarn i18n:dead`
+              being unable to see a web key.
             */}
             <article className="why-item why-item--planned reveal">
               <span className="tick">
@@ -473,7 +478,7 @@ export default function Home() {
                 */}
                 <div className="card-head">
                   <h3>{t('about.make5Title')}</h3>
-                  <span className="card-soon">{t('about.make5Soon')}</span>
+                  <span className="card-soon">{t('common.comingSoon')}</span>
                 </div>
                 <p>{t('about.make5Text')}</p>
               </div>

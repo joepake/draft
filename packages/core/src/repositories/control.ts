@@ -31,7 +31,7 @@ function hourlyAppsField(value: unknown): { hourlyApps?: UsageHourlyApps } {
  * - **Parent fields** go through `updateDeviceControls`, which verifies a
  *   parent device credential. A child device holds the family owner's uid, so
  *   a direct Firestore write could not be told apart from a parent's.
- * - **Usage counters** go through `reportChildUsage`. The child once wrote
+ * - **Usage counters** go through `syncChildAgent`. The child once wrote
  *   these directly, so a modified app could report "0 minutes used" all day and
  *   the daily-limit badge believed it. The function re-derives the day from the
  *   server clock.
@@ -50,6 +50,54 @@ export interface ControlRepositoryDeps {
   locationHistory: Pick<LocationHistoryRepository, 'append'>;
 }
 
+/**
+ * What a control write did not do — see `updateControls`.
+ *
+ * Keys rather than a rendered sentence, plus the i18n key naming the reason,
+ * because the two parent surfaces render in different component systems and
+ * neither may be handed English.
+ */
+export interface ControlsWriteResult {
+  /** Parent-settable keys the server dropped. Empty is the ordinary answer. */
+  refusedKeys: string[];
+  /** Why, as a key both consoles can render. Null when nothing was refused. */
+  refusedMessageKey: string | null;
+}
+
+const NOTHING_REFUSED: ControlsWriteResult = {
+  refusedKeys: [],
+  refusedMessageKey: null,
+};
+
+/**
+ * Read a refusal out of an `updateDeviceControls` reply.
+ *
+ * **Absent is "nothing refused", never a guess.** An older Functions
+ * deployment omits both fields, and reading that silence as a refusal would put
+ * a warning in front of every parent on every save — the same shape of mistake
+ * `premiumLatch` guards against when `degraded` is missing.
+ *
+ * Exported for `childRules.updateRules`: `updateChildRules` answers in these
+ * same fields, and the fan-out's refusals are the same sentence to the same
+ * parent. A second reader beside this one is a second place to decide what
+ * silence means.
+ */
+export function readRefusal(body: unknown): ControlsWriteResult {
+  const answer = body as
+    { refusedKeys?: unknown; refusedMessageKey?: unknown } | null | undefined;
+  const keys = Array.isArray(answer?.refusedKeys)
+    ? answer.refusedKeys.filter((key): key is string => typeof key === 'string')
+    : [];
+  if (keys.length === 0) {
+    return NOTHING_REFUSED;
+  }
+  return {
+    refusedKeys: keys,
+    refusedMessageKey:
+      typeof answer?.refusedMessageKey === 'string' ? answer.refusedMessageKey : null,
+  };
+}
+
 export function createControlRepository(deps: ControlRepositoryDeps) {
   const { db, api, clock, locationHistory } = deps;
 
@@ -64,12 +112,28 @@ export function createControlRepository(deps: ControlRepositoryDeps) {
      * `code: 'staleCredential'` and the adapter refreshes and retries, so the
      * recovery no longer depends on the wording of a server message. The same
      * dance existed in `timeRequest` and `rewardTask`; all three are now this.
+     *
+     * ## It hands back what the server refused
+     *
+     * **The answer is the point, not a courtesy** — the same lesson
+     * `reportUsage` below carries, learned the same way. A parked device takes
+     * only the half of a patch that loosens (`docs/FEASIBILITY.md`, "Free tier:
+     * a parked device goes loosen-only"), and `updateDeviceControls` says which
+     * keys it dropped. A patch that tightens **entirely** comes back 403 and
+     * every surface already renders that through `messageKey`; a patch where
+     * only **some** keys tighten comes back **200**, and while this returned
+     * `void` the parent got a plain success over a form that had partly not
+     * saved — the silent drop `ChildRulesFieldError` exists to prevent,
+     * arriving through the other door.
+     *
+     * An empty `refusedKeys` means everything landed, which is the ordinary
+     * answer and the one a caller may ignore.
      */
     async updateControls(
       userId: string,
       deviceId: string,
       controls: Partial<DeviceControls>,
-    ): Promise<void> {
+    ): Promise<ControlsWriteResult> {
       const parentControls: Partial<DeviceControls> = {};
       const childControls: Partial<DeviceControls> = {};
       const usageControls: Partial<DeviceControls> = {};
@@ -91,11 +155,18 @@ export function createControlRepository(deps: ControlRepositoryDeps) {
         }
       }
 
+      let refusal: ControlsWriteResult = NOTHING_REFUSED;
       if (Object.keys(parentControls).length > 0) {
-        await api.post(
-          '/updateDeviceControls',
-          { deviceId, familyOwnerUserId: userId, controls: toJsonBody(parentControls) },
-          { as: 'parent' },
+        refusal = readRefusal(
+          await api.post(
+            '/updateDeviceControls',
+            {
+              deviceId,
+              familyOwnerUserId: userId,
+              controls: toJsonBody(parentControls),
+            },
+            { as: 'parent' },
+          ),
         );
       }
 
@@ -117,7 +188,7 @@ export function createControlRepository(deps: ControlRepositoryDeps) {
       }
 
       if (Object.keys(childControls).length === 0) {
-        return;
+        return refusal;
       }
 
       // Dotted field paths: a merge into `controls` would replace the whole map
@@ -130,6 +201,7 @@ export function createControlRepository(deps: ControlRepositoryDeps) {
       }
 
       await db.updateDoc(childDeviceDoc(userId, deviceId), payload);
+      return refusal;
     },
 
     /**
@@ -142,7 +214,7 @@ export function createControlRepository(deps: ControlRepositoryDeps) {
     /**
      * Report today's minutes, and hand back what the server answered.
      *
-     * **The answer is the point, not a courtesy.** `reportChildUsage` is the
+     * **The answer is the point, not a courtesy.** `syncChildAgent` is the
      * one endpoint that stays open to a lapsed family, so its reply is the
      * only channel that says which side of the paywall this device is on —
      * `degraded: true` when the family has lapsed, `false` when it is paying
@@ -191,7 +263,7 @@ export function createControlRepository(deps: ControlRepositoryDeps) {
       }
 
       return api.post(
-        '/reportChildUsage',
+        '/syncChildAgent',
         {
           userId,
           deviceId,
@@ -286,7 +358,7 @@ export function createControlRepository(deps: ControlRepositoryDeps) {
       }
 
       return api.post(
-        '/reportChildUsage',
+        '/syncChildAgent',
         {
           userId,
           deviceId,

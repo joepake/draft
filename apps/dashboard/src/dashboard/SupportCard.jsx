@@ -9,6 +9,7 @@ import {
 import { userRepository } from '../adapters/repositories.js';
 import Card from './Card.jsx';
 import { timeAgo } from './timeAgo.js';
+import { useReload } from './useReload.js';
 
 /*
  * The three lifecycle values, as a mark and a tone. `SupportReportStatus` is
@@ -52,6 +53,7 @@ export default function SupportCard({
 }) {
   const { t, language } = useT();
   const [reports, setReports] = useState([]);
+  const [reloadKey, reload] = useReload();
   const [message, setMessage] = useState('');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState(null);
@@ -77,6 +79,9 @@ export default function SupportCard({
     try {
       await userRepository.appendSupportMessage(reportId, body);
       setReplyDraft('');
+      // Nothing streams the answer back (`adapters/oneShot.js`): without this
+      // the parent's own reply never appears in the thread they just sent it to.
+      reload();
     } catch (failure) {
       /* A KEY, never a sentence — `error` is rendered through `appT` below,
          the same shape the file's own submit handler uses.
@@ -103,7 +108,7 @@ export default function SupportCard({
       // Decoration on a page that works without it: a parent can still file.
       () => undefined,
     );
-  }, [accountId]);
+  }, [accountId, reloadKey]);
 
   const open = useMemo(
     () => reports.filter(report => report.status !== 'resolved').length,
@@ -130,6 +135,9 @@ export default function SupportCard({
         language,
       });
       setMessage('');
+      // Same reason as the reply above — a filed report that does not show up
+      // in the list is one a parent files a second time.
+      reload();
     } catch (failure) {
       // `ApiFailure` carries a key, never a sentence — the same shape
       // `apps/mobile` renders through `apiErrorMessage`.

@@ -7,6 +7,7 @@ import {
 import { notificationPrefsRepository } from '../adapters/repositories.js';
 import Card from './Card.jsx';
 import Toggle from './Toggle.jsx';
+import { useReload } from './useReload.js';
 
 /**
  * Push preferences — for a PHONE, edited from a browser.
@@ -40,6 +41,7 @@ export default function NotificationPrefsCard({
 
   const [deviceId, setDeviceId] = useState(parentDevices[0]?.deviceId ?? '');
   const [prefs, setPrefs] = useState(DEFAULT_NOTIFICATION_PREFS);
+  const [reloadKey, reload] = useReload();
   const [busy, setBusy] = useState(false);
 
   // A phone removed while this was open, or the first list arriving after it.
@@ -59,7 +61,7 @@ export default function NotificationPrefsCard({
       return undefined;
     }
     return notificationPrefsRepository.subscribe(accountId, deviceId, setPrefs);
-  }, [accountId, deviceId]);
+  }, [accountId, deviceId, reloadKey]);
 
   if (parentDevices.length === 0) {
     return null;
@@ -69,9 +71,16 @@ export default function NotificationPrefsCard({
     setBusy(true);
     try {
       await run();
+      /*
+       * The read above is one-shot (`adapters/oneShot.js`) and these switches
+       * render straight off the document — `on={prefs.alerts?.[key] !== false}`,
+       * no optimistic copy — so without this the switch a parent just pressed
+       * does not move at all.
+       */
+      reload();
     } catch {
-      // The listener above is the source of truth; a refused write simply
-      // never arrives, and the switch snaps back on the next snapshot.
+      // A refused write changed nothing, so the document still says what the
+      // switch already shows. Re-reading here would buy no new fact.
     } finally {
       setBusy(false);
     }

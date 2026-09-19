@@ -80,7 +80,7 @@ export interface ChildRules {
    * `controls.dailyLimitMinutes` it would multiply by the device count —
    * "2h" on three devices is six hours.
    *
-   * **Enforced since 2026-08-27, with no agent change.** `reportChildUsage`
+   * **Enforced since 2026-08-27, with no agent change.** `syncChildAgent`
    * sums the assigned devices' minutes on every report and rewrites each
    * device's `controls.dailyLimitMinutes` to `deviceUsed + (budget −
    * totalUsed)` — its share of what the child has left — alongside the

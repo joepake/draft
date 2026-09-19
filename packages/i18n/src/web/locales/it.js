@@ -23,6 +23,10 @@ export default {
     comingSoon: 'Prossimamente',
     loading: 'Caricamento…',
     signOut: 'Esci',
+    crashTitle: 'Questa pagina ha smesso di funzionare',
+    crashBody:
+      'Di solito basta ricaricare. Le impostazioni della tua famiglia e i dispositivi di tuo figlio non sono cambiati.',
+    crashReload: 'Ricarica la pagina',
   },
 
   language: {
@@ -119,7 +123,7 @@ export default {
       'Dai limiti giornalieri agli allarmi d’emergenza — un’app per il benessere digitale di tutta la famiglia.',
     feature1Title: 'Tempo di schermo e limiti giornalieri',
     feature1Text:
-      'Imposta un tetto giornaliero e le ore bloccate per la scuola e la notte. Il dispositivo si blocca da solo quando il tempo finisce.',
+      'Imposta un tetto giornaliero e gli orari di blocco per la scuola e la notte. Il dispositivo si blocca da solo quando il tempo finisce.',
     feature2Title: 'Blocco app',
     feature2Text:
       'Scegli esattamente quali app tuo figlio può aprire, protetto dal tuo PIN genitore, e attiva il blocco da remoto.',
@@ -204,7 +208,7 @@ export default {
       'Sei cose verificate rispetto alle app con cui i genitori ci confrontano. Ognuna indica la piattaforma su cui è vera.',
     only1Title: 'Anche la TV del salotto',
     only1Text:
-      'Android TV ha Limite giornaliero, Ore bloccate, blocco app e Filtro web. Su una TV il blocco fa il possibile — un’app bloccata viene rimandata alla schermata Home — e dal divano non ci sono SOS né richieste di tempo extra. La versione gira già oggi su hardware reale ed è in attesa della pubblicazione sullo store: per questo l’elenco delle piattaforme dice In programma. La maggior parte dei parental control si ferma al telefono.',
+      'Android TV ha Limite giornaliero, Orari di blocco, blocco app e Filtro web. Su una TV il blocco fa il possibile — un’app bloccata viene rimandata alla schermata Home — e dal divano non ci sono SOS né richieste di tempo extra. La versione gira già oggi su hardware reale ed è in attesa della pubblicazione sullo store. La maggior parte dei parental control si ferma al telefono.',
     only2Title: 'Avvisi sui messaggi che restano sul telefono',
     only2Text:
       'Su Android i messaggi vengono confrontati sul dispositivo stesso con liste di parole chiave in 14 lingue, e ciò che lascia il telefono è la parola rilevata, mai la conversazione. Una sola cosa lo cambia, e solo se lo chiedi tu: attiva la conferma con IA e un messaggio in arrivo ambiguo viene inviato per essere valutato, così non vieni svegliato per una parola comune.',
@@ -213,10 +217,10 @@ export default {
       'Su Android gli avvisi nascono dalle notifiche e da ciò che tuo figlio o tua figlia digita in qualsiasi app — Zalo, LINE, KakaoTalk, la chat di un gioco — non da una lista fissa di app supportate.',
     only4Title: 'Una via d’uscita per il bambino',
     only4Text:
-      'Tenendo premuto SOS per cinque secondi vieni avvisato subito, con la posizione; su Android e Mac il dispositivo si sblocca anche per un po’. Chi può sempre chiedere aiuto non ha motivo di combattere l’app.',
+      'Tenendo premuto SOS per cinque secondi vieni avvisato subito, con la posizione; su Android e Mac il dispositivo si sblocca anche per un po’. Chi può chiedere aiuto dalla schermata di blocco non ha motivo di combattere l’app.',
     only5Title: 'Regole che reggono senza internet',
     only5Text:
-      'Ore bloccate e limite giornaliero vengono applicati sul dispositivo stesso: staccare il router non cambia nulla. La TV accetta il tuo PIN genitore persino senza alcuna connessione.',
+      'Orari di blocco e limite giornaliero vengono applicati sul dispositivo stesso: staccare il router non cambia nulla. La TV accetta il tuo PIN genitore persino senza alcuna connessione.',
     only6Title: 'Merito quando la settimana lo ha guadagnato',
     only6Text:
       'Ogni report settimanale tiene spazio per ciò che è andato bene — un limite rispettato, niente più notti tardi, un compito finito — e lo dice solo quando la settimana è stata davvero misurata.',
@@ -226,7 +230,7 @@ export default {
     faqSub: 'Risposte rapide prima di scaricare.',
     faq1Q: 'C’è una prova gratuita?',
     faq1A:
-      'Sì. La prova di 7 giorni inizia quando colleghi il primo dispositivo genitore e il primo dispositivo figlio, e include tutte le funzioni Premium. Alla fine, le regole che hai impostato — Limite giornaliero, Ore bloccate, App bloccate, Filtro web, Blocco dispositivo, richieste di tempo extra e compiti con premio — continuano a funzionare gratis su un dispositivo figlio, e puoi ancora chiedere a quel dispositivo dove si trova. Attività in tempo reale, cronologia, report settimanali e tracciamento della posizione sono ciò che Premium riporta.',
+      'Sì. La prova di 7 giorni inizia quando colleghi il primo dispositivo genitore e il primo dispositivo figlio, e include tutte le funzioni Premium. Alla fine, le regole che hai impostato — Limite giornaliero, Orari di blocco, App bloccate, Filtro web, Blocco dispositivo, richieste di tempo extra e compiti con premio — continuano a funzionare gratis su un dispositivo figlio, e puoi ancora chiedere a quel dispositivo dove si trova. Attività in tempo reale, cronologia, report settimanali e tracciamento della posizione sono ciò che Premium riporta.',
     faq2Q: 'Quanti dispositivi posso gestire?',
     faq2A:
       'Un abbonamento copre tutta la famiglia — ogni dispositivo figlio e ogni genitore sullo stesso piano. Nel piano gratuito resta monitorato un solo dispositivo figlio e scegli tu quale; gli altri continuano ad applicare le regole che hai già impostato e smettono di inviare attività.',
@@ -459,7 +463,7 @@ export default {
     lastActive: 'Ultima attività {{when}}',
     appVersion: 'Versione app',
     appVersionUpdate: '{{running}} · {{latest}} disponibile',
-    appVersionRestart: "{{running}} · riavvia l'app per completare",
+    appVersionRestart: '{{running}} · riavvia l’app per completare',
     buildOutdated: 'Aggiornamento disponibile',
     checkIn: 'Check-in',
     sending: 'Invio…',
@@ -473,6 +477,8 @@ export default {
       'La consultazione funziona subito. Per bloccare un dispositivo, cambiare i limiti o approvare richieste, sblocca questo browser con il PIN genitore — oppure approvalo scansionando il codice QR con l’app KidGate. I Check-In funzionano in entrambi i casi.',
     unlockCta: 'Sblocca le modifiche',
     unlockToChange: 'Prima sblocca le modifiche',
+    refresh: 'Aggiorna',
+    liveOnApp: 'Apri l’app per gli aggiornamenti in tempo reale',
     pinTitle: 'Inserisci il PIN genitore',
     pinBody:
       'Le stesse sei cifre che usi nell’app. Questo browser resta sbloccato per 8 ore; un’approvazione dall’app lo mantiene connesso per 7 giorni.',
@@ -805,7 +811,7 @@ export default {
 
     contactTitle: 'Contattaci',
     contactEmail: '**Email:** [support@kidgate.app](mailto:support@kidgate.app)',
-    contactResponse: '**Tempo di risposta:** entro 24 ore (da lunedì a venerdì)',
+    contactResponse: '**Tempo di risposta:** di norma entro un giorno lavorativo',
     contactNote:
       'Quando ci scrivi, indica l’indirizzo email del tuo account genitore KidGate e una breve descrizione del problema, così possiamo aiutarti più in fretta.',
 
@@ -819,7 +825,7 @@ export default {
     start4:
       '**4. Concedi i permessi sul dispositivo del bambino.** Apri la schermata *Stato* sul dispositivo del bambino e consenti tutti i permessi richiesti da KidGate — su Android: notifiche, Accesso ai dati di utilizzo, Visualizza sopra altre app, Accessibilità e batteria senza restrizioni; su iOS: *Consenti utilizzo di app e siti web* (Tempo di utilizzo). I comandi non funzioneranno del tutto finché non sono attivi.',
     start5:
-      '**5. Configura i comandi.** Dal dispositivo del genitore apri la scheda del dispositivo del bambino e imposta limite giornaliero, ore bloccate, app bloccate, filtro web e funzioni di posizione.',
+      '**5. Configura i comandi.** Dal dispositivo del genitore apri la scheda del dispositivo del bambino e imposta limite giornaliero, orari di blocco, app bloccate, filtro web e funzioni di posizione.',
     startNote:
       'L’app include anche una guida passo passo: *Impostazioni → Guida utente*, con i dettagli su collegamento dei dispositivi, permessi, comandi quotidiani e funzioni di sicurezza.',
 
@@ -853,7 +859,7 @@ export default {
     faq7A:
       'I dati di utilizzo arrivano dal dispositivo del bambino. Controlla che sia online, poi aprici KidGate e guarda la schermata *Stato*: ogni riga dei permessi dovrebbe risultare consentita (su Android l’Accesso ai dati di utilizzo è necessario per tracciare il tempo di schermo). I report possono richiedere qualche minuto per sincronizzarsi.',
 
-    faq8Q: 'Perché il blocco o le ore bloccate non funzionano?',
+    faq8Q: 'Perché il blocco o gli orari di blocco non funzionano?',
     faq8A:
       'Su Android il blocco richiede *Visualizza sopra altre app* e l’assistente *Accessibilità* attivi, oltre alla batteria senza restrizioni. Su Xiaomi, Samsung, Oppo, Vivo e dispositivi simili consenti anche l’avvio automatico e togli KidGate da eventuali elenchi di "app in sospensione" (vedi *Stato → Mantieni KidGate attivo* sul dispositivo del bambino). Su iOS il blocco dipende dall’autorizzazione a Tempo di utilizzo. Se un permesso viene disattivato in seguito, riceverai un avviso di protezione sul dispositivo del genitore.',
 
@@ -901,31 +907,32 @@ export default {
     storyP1:
       'Quasi tutte le famiglie vivono la stessa sera: un timer che nessuno ha concordato, un telefono ritirato e un figlio convinto che le regole siano cambiate alle sue spalle. Gli strumenti che dovevano risolverlo lo hanno per lo più peggiorato — da una parte un blocco senza spiegazioni, dall’altra una dashboard che si legge come sorveglianza.',
     storyP2:
-      'Così abbiamo costruito la versione che volevamo a casa nostra. Il genitore imposta una volta il limite giornaliero, le Ore bloccate, il Blocco app e il Filtro web, e il dispositivo li rispetta. Il figlio vede gli stessi numeri del genitore, può chiedere altro tempo e può sempre raggiungere un genitore con l’SOS. KidGate non finge di non esserci.',
+      'Così abbiamo costruito la versione che volevamo a casa nostra. Il genitore imposta una volta il limite giornaliero, gli Orari di blocco, il Blocco app e il Filtro web, e il dispositivo li rispetta. Il figlio vede gli stessi numeri del genitore, può chiedere altro tempo e può raggiungere un genitore con l’SOS ogni volta che il dispositivo è online. KidGate non finge di non esserci.',
     storyP3:
       'Funziona su iPhone, Android, Mac e Windows, con un’estensione per Chrome e una dashboard che si apre in qualsiasi browser. Una famiglia, un piano, tutti i dispositivi.',
     valuesEyebrow: 'In cosa crediamo',
     valuesTitle: 'Quattro regole che non infrangiamo',
-    valuesSub: 'Le domande che ci fanno più spesso, con la risposta già pronta.',
+    valuesSub:
+      'Scritte prima della prima funzione, e da allora ogni funzione viene verificata su di esse.',
     value1Title: 'Un figlio non è un sospettato',
     value1Text:
       'Le regole sono visibili sul dispositivo a cui si applicano. Il figlio vede cosa è attivo e quanto tempo resta, può chiederne altro e può lanciare un SOS in qualsiasi momento. Un controllo che deve restare segreto non è un controllo di cui una famiglia possa parlare.',
     value2Title: 'I dati della tua famiglia non sono in vendita',
     value2Text:
-      'Mai pubblicità. Nulla che riguardi un bambino viene usato per la pubblicità o rivenduto. Puoi cancellare l’account famiglia e tutto ciò che contiene quando vuoi, dall’app o da questo sito.',
+      'Mai pubblicità. Nulla che riguardi un bambino viene usato per la pubblicità o rivenduto. Puoi chiedere di cancellare l’account famiglia e tutto ciò che contiene in qualsiasi momento, dall’app o da questo sito, e 14 giorni dopo non c’è più.',
     value3Title: 'Diciamo ciò che non possiamo fare',
     value3Text:
       'Ogni piattaforma limita ciò che un’app può imporre. Dove KidGate fa il possibile — chiudere un’app bloccata sul computer invece di impedirne l’avvio — lo schermo lo dice, invece di mostrare una spunta verde.',
     value4Title: 'Una famiglia, un piano',
     value4Text:
-      'Un solo abbonamento Premium copre tutti i genitori e tutti i dispositivi dei figli. Limite giornaliero, Ore bloccate, App bloccate e Filtro web continuano a funzionare gratis su un dispositivo figlio, così le regole di sicurezza non finiscono mai dietro il paywall.',
+      'Un solo abbonamento Premium copre tutti i genitori e tutti i dispositivi dei figli. Limite giornaliero, Orari di blocco, App bloccate e Filtro web continuano a funzionare gratis su un dispositivo figlio, così le regole di sicurezza non finiscono mai dietro il paywall.',
     makeEyebrow: 'Cosa facciamo',
     makeTitle: 'Un solo KidGate, ovunque ci sia uno schermo',
     makeSub:
       'Le stesse regole, scritte una volta, applicate con ciò che ogni piattaforma consente.',
     make1Title: 'iPhone e iPad',
     make1Text:
-      'Limiti giornalieri, Ore bloccate e blocco delle app tramite il framework Screen Time di Apple.',
+      'Limiti giornalieri, Orari di blocco e blocco delle app tramite il framework Screen Time di Apple.',
     make2Title: 'Android',
     make2Text:
       'Limiti, blocco app, blocco a schermo intero e Filtro web, più un avviso quando compare una nuova app.',
@@ -935,7 +942,6 @@ export default {
     make4Title: 'Windows',
     make4Text:
       'Lo stesso agente su un PC, con un servizio in background che lo riavvia se viene chiuso o terminato.',
-    make5Soon: 'In programma',
     make5Title: 'Android TV',
     make5Text:
       'Lo schermo del soggiorno, trattato come un dispositivo condiviso della famiglia e non di un solo figlio: gli stessi limiti e gli stessi orari dei telefoni. Questa versione ha già girato su hardware reale ed è in attesa della pubblicazione sullo store.',

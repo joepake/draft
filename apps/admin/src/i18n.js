@@ -329,6 +329,8 @@ const en = {
   'report.planFree': 'Free',
   'report.planMissing': 'Plan missing',
   'report.inTrial': 'In trial',
+  'report.lapsedGone': 'Lapsed, not back',
+  'report.lapsedBack': 'Lapsed, paying again',
   'report.timeToPurchase': 'Time to purchase',
   'report.timeToPurchaseSub':
     'Every family that has ever paid, as of {date} — not a range',
@@ -415,6 +417,10 @@ const en = {
     ', which is written once and never rewritten. A renewal, a restore and a re-subscribe after a lapse are all invisible here — deliberately, since this is the number the ',
   'footnote.firstE':
     ' section is built on. Families that converted before the field shipped (2026-09-05) count only if the backfill could date them.',
+  'footnote.lapseA':
+    ' and the row beside it count families whose paid plan ran out, from ',
+  'footnote.lapseB':
+    ', stamped the moment the plan lapses and left standing by the renewal that follows. It cannot be backfilled — a lapse left no other trace — so a family that churned before the field shipped is absent from both rows rather than counted as still paying. For churn measured over the whole history, and for auto-renew switched off before a plan ends, the App Store and Play consoles are the source.',
   'footnote.gap':
     'A dash is a day with no row, and the trend line breaks across it. A zero is a day the job ran and counted nothing.',
 
@@ -752,6 +758,8 @@ const vi = {
   'report.planFree': 'Miễn phí',
   'report.planMissing': 'Thiếu gói',
   'report.inTrial': 'Đang dùng thử',
+  'report.lapsedGone': 'Hết gói, chưa quay lại',
+  'report.lapsedBack': 'Hết gói, đã mua lại',
   'report.timeToPurchase': 'Thời gian tới lúc mua',
   'report.timeToPurchaseSub':
     'Mọi gia đình đã từng trả tiền, tính tới {date} — không phải một khoảng',
@@ -834,6 +842,9 @@ const vi = {
     ', trường được ghi một lần và không bao giờ ghi đè. Gia hạn, khôi phục và đăng ký lại sau khi hết hạn đều không hiện ở đây — cố ý như vậy, vì đây là con số mà mục ',
   'footnote.firstE':
     ' dựa vào. Gia đình chuyển đổi trước khi trường này ra đời (2026-09-05) chỉ được đếm nếu backfill xác định được ngày.',
+  'footnote.lapseA': ' và dòng bên cạnh đếm gia đình đã hết gói trả tiền, lấy từ ',
+  'footnote.lapseB':
+    ', được ghi đúng lúc gói hết hạn và không bị lần gia hạn sau đó xoá đi. Trường này không backfill được — một lần hết hạn không để lại dấu vết nào khác — nên gia đình rời đi trước khi trường ra đời không xuất hiện ở cả hai dòng, chứ không phải vẫn đang trả tiền. Muốn số churn trên toàn bộ lịch sử, hoặc số người tắt tự động gia hạn trước khi gói hết hạn, thì console App Store và Play mới là nguồn.',
   'footnote.gap':
     'Dấu gạch ngang là ngày không có dòng nào, và đường xu hướng đứt tại đó. Số không là ngày job có chạy và đếm được con số không.',
 

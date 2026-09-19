@@ -80,6 +80,10 @@ const ACTION_TAB = {
   'place-alerts': 'safety',
   apps: 'apps',
   'message-alerts': 'safety',
+  /* `pause-browsing` is deliberately absent: it opens no panel. A pause is
+     started and ended from the card itself — the caller's `onOpen` answers it
+     and navigates nowhere, the way the phone's alert does. A tab here would
+     land a parent on a page with nothing about it on it. */
 };
 
 export default function ControlCenter({

@@ -24,6 +24,10 @@ export default {
     comingSoon: 'Yakında',
     loading: 'Yükleniyor…',
     signOut: 'Çıkış yap',
+    crashTitle: 'Bu sayfa çalışmayı durdurdu',
+    crashBody:
+      'Genelde sayfayı yenilemek yeterli olur. Ailenizin ayarları ve çocuğunuzun cihazları değişmedi.',
+    crashReload: 'Sayfayı yenile',
   },
 
   language: {
@@ -103,7 +107,7 @@ export default {
     phoneScheduleOn: 'Program açık',
     phoneLocation: 'Konum',
     phoneLocationValue: 'Okulda · 5 dk önce',
-    phoneCheckIn: 'Yoklama tamam',
+    phoneCheckIn: 'Check-In tamam',
 
     trust1Title: 'Asla reklam yok',
     trust1Text: 'Çocuk verileri hiçbir zaman reklam için kullanılmaz',
@@ -133,7 +137,7 @@ export default {
     feature5Title: 'Canlı konum ve yerler',
     feature5Text:
       'Çocuğunuzun son konumunu görün, geçmişi inceleyin ve kayıtlı bir yere vardığında ya da oradan ayrıldığında haberdar olun.',
-    feature6Title: 'Yoklama ve SOS',
+    feature6Title: 'Check-In ve SOS',
     feature6Text:
       'Çocuğunuzdan iyi olduğunu onaylamasını isteyin; acil durumda konum ve fotoğrafla anında SOS alın.',
     feature7Title: 'Koruma ve uygulama uyarıları',
@@ -205,7 +209,7 @@ export default {
       'Ebeveynlerin bizi kıyasladığı uygulamalara karşı kontrol ettiğimiz altı madde. Her biri hangi platformda geçerli olduğunu söyler.',
     only1Title: 'Salondaki televizyon da',
     only1Text:
-      'Android TV’ye Günlük sınır, Engellenen Saatler, uygulama engelleme ve Web filtresi gelir. Televizyonda engelleme yalnızca elden geleni yapar — engellenen bir uygulama ana ekrana geri gönderilir — ve koltuktan SOS ya da ek süre isteği gönderilemez. Uygulama bugün gerçek donanımda çalışıyor ve mağazada yayınlanmayı bekliyor; platform listesinde Planlanıyor yazmasının nedeni budur. Ebeveyn denetimlerinin çoğu telefonda biter.',
+      'Android TV’ye Günlük sınır, Engellenen Saatler, uygulama engelleme ve Web filtresi gelir. Televizyonda engelleme yalnızca elden geleni yapar — engellenen bir uygulama ana ekrana geri gönderilir — ve koltuktan SOS ya da ek süre isteği gönderilemez. Uygulama bugün gerçek donanımda çalışıyor ve mağazada yayınlanmayı bekliyor. Ebeveyn denetimlerinin çoğu telefonda biter.',
     only2Title: 'Telefonda kalan mesaj uyarıları',
     only2Text:
       'Android’de mesajlar, 14 dildeki anahtar kelime listeleriyle cihazın kendisinde karşılaştırılır ve telefondan çıkan şey eşleşen kelimedir, asla konuşmanın kendisi değil. Bunu değiştiren tek bir şey var ve yalnızca siz isterseniz devreye girer: yapay zekâ onayını açtığınızda, anahtar kelime eşleşmesi belirsiz olan gelen bir mesaj değerlendirilmek üzere gönderilir; böylece sıradan bir kelime yüzünden uykunuzdan uyandırılmazsınız.',
@@ -214,7 +218,7 @@ export default {
       'Android’de uyarılar, çocuğunuzun kullandığı her uygulamadaki bildirimlerden ve yazdıklarından gelir — Zalo, LINE, KakaoTalk, bir oyunun sohbeti — sabit bir desteklenen uygulama listesinden değil.',
     only4Title: 'Çocuk için bir çıkış yolu',
     only4Text:
-      'SOS’a beş saniye basmak size konumla birlikte anında ulaşır; Android ve Mac’te cihazın kilidi de kısa bir süre açılır. Her zaman yardıma ulaşabilen bir çocuğun uygulamayla savaşması için sebep yoktur.',
+      'SOS’a beş saniye basmak size konumla birlikte anında ulaşır; Android ve Mac’te cihazın kilidi de kısa bir süre açılır. Kilit ekranından yardıma ulaşabilen bir çocuğun uygulamayla savaşması için sebep yoktur.',
     only5Title: 'İnternet olmadan da geçerli kurallar',
     only5Text:
       'Engellenen Saatler ve günlük sınır cihazın kendisinde uygulanır; modemi çekmek hiçbir şeyi değiştirmez. Televizyon, ebeveyn PIN’inizi hiç bağlantı olmadan bile kabul eder.',
@@ -470,9 +474,11 @@ export default {
 
     unlockTitle: 'Değişiklikler kilitli.',
     unlockBody:
-      'Görüntüleme hemen çalışır. Bir cihazı kilitlemek, sınırları değiştirmek veya istekleri onaylamak için bu tarayıcıyı ebeveyn PIN’inle aç — ya da KidGate uygulamasıyla QR kodu okutarak onayla. Yoklama her iki durumda da çalışır.',
+      'Görüntüleme hemen çalışır. Bir cihazı kilitlemek, sınırları değiştirmek veya istekleri onaylamak için bu tarayıcıyı ebeveyn PIN’inle aç — ya da KidGate uygulamasıyla QR kodu okutarak onayla. Check-In her iki durumda da çalışır.',
     unlockCta: 'Değişiklikleri aç',
     unlockToChange: 'Önce değişiklikleri aç',
+    refresh: 'Yenile',
+    liveOnApp: 'Canlı güncellemeler için uygulamayı açın',
     pinTitle: 'Ebeveyn PIN’ini gir',
     pinBody:
       'Uygulamada kullandığın altı rakamın aynısı. Bu tarayıcı 8 saat açık kalır; uygulamadan onaylamak oturumu 7 gün açık tutar.',
@@ -493,9 +499,9 @@ export default {
     noDeviceBody:
       'Telefonunuzda KidGate’i açın, *Aile → + → Çocuk cihazı bağla* adımına gidin ve çocuğunuzun cihazında görünen QR kodu okutun. Eşleştirmeden birkaç saniye sonra burada görünecektir.',
 
-    toastCheckIn: '{{name}} bir yoklama isteği alacak.',
+    toastCheckIn: '{{name}} bir Check-In isteği alacak.',
     toastTimeApproved: 'Ek süre onaylandı.',
-    toastCheckInResent: 'Yoklama yeniden gönderildi.',
+    toastCheckInResent: 'Check-In yeniden gönderildi.',
 
     tileScreenToday: 'Bugünkü ekran süresi',
     tileSameAsAverage: '7 günlük ortalamayla aynı',
@@ -529,7 +535,7 @@ export default {
 
     attnMoreMinutes: '{{name}} {{minutes}} dakika daha istedi',
     attnReason: '“{{reason}}” · {{when}}',
-    attnCheckInMissed: 'Bir yoklama yanıtsız kaldı',
+    attnCheckInMissed: 'Bir Check-In yanıtsız kaldı',
     attnCheckInMissedMeta: '{{when}} gönderildi · yanıt yok',
     attnLimitReached: 'Günlük sınıra ulaşıldı — cihaz kilitlendi',
     attnLimitReachedMeta: 'Bugün {{used}} kullanıldı',
@@ -652,7 +658,7 @@ export default {
     sosAcknowledged: 'görüldü',
     sosActive: 'etkin',
 
-    checkInsTitle: 'Yoklamalar',
+    checkInsTitle: "Check-In'ler",
     checkInsSub: 'Çocuğunuzdan iyi olduğunu onaylamasını isteyin',
     checkInSafe: 'Güvende olduğunu onayladı',
     checkInMissed: 'Yanıt yok',
@@ -662,7 +668,7 @@ export default {
     checkInPhotoSkipped: 'fotoğraf atlandı',
     checkInPhotoAttached: 'fotoğraf eklendi',
     checkInNoPhoto: 'fotoğraf istenmedi',
-    sendCheckIn: 'Şimdi yoklama gönder',
+    sendCheckIn: 'Şimdi Check-In gönder',
 
     protectionAlertsTitle: 'Koruma uyarıları',
     protectionAlertsSub_one: 'Kurulumdan bu yana {{count}} olay',
@@ -801,7 +807,7 @@ export default {
 
     contactTitle: 'Bize ulaşın',
     contactEmail: '**E-posta:** [support@kidgate.app](mailto:support@kidgate.app)',
-    contactResponse: '**Yanıt süresi:** 24 saat içinde (Pazartesi–Cuma)',
+    contactResponse: '**Yanıt süresi:** genellikle bir iş günü içinde',
     contactNote:
       'Bize yazarken KidGate ebeveyn hesabınızın e-posta adresini ve sorunun kısa bir açıklamasını ekleyin; böylece size daha hızlı yardımcı olabiliriz.',
 
@@ -897,18 +903,19 @@ export default {
     storyP1:
       'Neredeyse her ailede aynı akşam yaşanır: kimsenin üzerinde anlaşmadığı bir sayaç, elden alınan bir telefon ve kuralların arkasından değiştirildiğine emin bir çocuk. Bunu düzeltmesi beklenen araçlar çoğunlukla durumu kötüleştirdi — bir yanda açıklamasız bir kilit, diğer yanda gözetim gibi okunan bir panel.',
     storyP2:
-      'Biz de evde istediğimiz sürümü yaptık. Ebeveyn günlük sınırı, Engellenen saatleri, Uygulama engellemeyi ve Web filtrelemeyi bir kez ayarlıyor, cihaz da bunlara uyuyor. Çocuk ebeveynin gördüğü aynı sayıları görüyor, daha fazla süre isteyebiliyor ve SOS ile her an ebeveynine ulaşabiliyor. KidGate orada değilmiş gibi yapmıyor.',
+      'Biz de evde istediğimiz sürümü yaptık. Ebeveyn günlük sınırı, Engellenen saatleri, Uygulama engellemeyi ve Web filtrelemeyi bir kez ayarlıyor, cihaz da bunlara uyuyor. Çocuk ebeveynin gördüğü aynı sayıları görüyor, daha fazla süre isteyebiliyor ve cihaz çevrimiçi olduğu sürece SOS ile ebeveynine ulaşabiliyor. KidGate orada değilmiş gibi yapmıyor.',
     storyP3:
       'iPhone, Android, Mac ve Windows üzerinde çalışıyor; ayrıca Chrome için bir uzantı ve her tarayıcıda açılan bir panel var. Tek aile, tek plan, bütün cihazlar.',
     valuesEyebrow: 'Neye inanıyoruz',
     valuesTitle: 'Çiğnemediğimiz dört kural',
-    valuesSub: 'En çok sorulan sorular, siz sormak zorunda kalmadan yanıtlandı.',
+    valuesSub:
+      'İlk özellikten önce yazıldı; o günden beri her özellik bunlara göre ölçülüyor.',
     value1Title: 'Çocuk şüpheli değildir',
     value1Text:
       'Kurallar, geçerli oldukları cihazda görünür. Çocuk neyin açık olduğunu ve ne kadar süresi kaldığını görür, daha fazlasını isteyebilir ve istediği an SOS verebilir. Gizli kalmak zorunda olan bir denetim, ailenin üzerinde konuşabileceği bir denetim değildir.',
     value2Title: 'Ailenizin verisi satılık değil',
     value2Text:
-      'Asla reklam yok. Bir çocuğa dair hiçbir şey reklam için kullanılmaz ya da başkasına satılmaz. Aile hesabınızı ve içindeki her şeyi istediğiniz zaman silebilirsiniz — uygulamadan ya da bu siteden.',
+      'Asla reklam yok. Bir çocuğa dair hiçbir şey reklam için kullanılmaz ya da başkasına satılmaz. Aile hesabınızın ve içindeki her şeyin silinmesini istediğiniz zaman isteyebilirsiniz — uygulamadan ya da bu siteden — ve 14 gün sonra hepsi silinmiş olur.',
     value3Title: 'Yapamadığımızı söyleriz',
     value3Text:
       'Her platform, bir uygulamanın neyi zorunlu kılabileceğini sınırlar. KidGate’in yalnızca elinden geleni yaptığı yerlerde — bilgisayarda engellenen bir uygulamayı açılmadan durdurmak yerine kapatmak gibi — ekran yeşil bir onay işareti göstermek yerine bunu açıkça yazar.',
@@ -931,7 +938,6 @@ export default {
     make4Title: 'Windows',
     make4Text:
       'PC’de aynı araç; kapatıldığında ya da sonlandırıldığında onu yeniden başlatan bir arka plan hizmetiyle birlikte.',
-    make5Soon: 'Planlanıyor',
     make5Title: 'Android TV',
     make5Text:
       'Oturma odasındaki ekran; tek bir çocuğun değil, ailenin ortak cihazı olarak ele alınır — telefonlardaki aynı sınırlar ve aynı program ile. Gerçek donanımda çalıştı, şimdi mağaza yayımını bekliyor.',
