@@ -280,7 +280,7 @@ export default {
     start: 'Entrar com o app do KidGate',
     generating: 'Gerando código…',
     step1: 'Abra o KidGate no seu celular.',
-    step2: 'Vá em *Configurações → Entrar na web*.',
+    step2: 'Toque no ícone de escanear na aba *Família*.',
     step3: 'Leia este código e aprove.',
     waiting: 'Aguardando aprovação · expira em {{time}}',
     signingIn: 'Aprovado. Entrando…',
@@ -494,7 +494,7 @@ export default {
 
     noDeviceTitle: 'Ainda não há aparelho de filho',
     noDeviceBody:
-      'Abra o KidGate no seu celular, vá em *Família → + → Conectar o aparelho de um filho* e leia o QR code que aparece no aparelho do seu filho. Ele aparecerá aqui poucos segundos depois da conexão.',
+      'Abra o KidGate no seu celular, vá em *Família*, toque no ícone de escanear (*Escanear código*) e leia o QR code que aparece no aparelho do seu filho. Ele aparecerá aqui poucos segundos depois da conexão.',
 
     toastCheckIn: '{{name}} vai receber um pedido de Check-in.',
     toastTimeApproved: 'Tempo extra aprovado.',
@@ -819,7 +819,7 @@ export default {
     start2:
       '**2. Defina um PIN de responsável.** Vá em *Configurações → Segurança* e crie um PIN de 6 dígitos. Você precisa dele para mudar configurações sensíveis e escolher apps bloqueados no aparelho da criança. Não compartilhe com seus filhos.',
     start3:
-      '**3. Conecte o aparelho da criança.** Instale o KidGate no aparelho do seu filho e escolha *Este é um aparelho de filho*. No aparelho do responsável, abra *Família → + → Conectar o aparelho de um filho* e leia o QR code exibido no aparelho da criança (ou digite o código de 6 caracteres). Confirme a conexão no aparelho da criança.',
+      '**3. Conecte o aparelho da criança.** Instale o KidGate no aparelho do seu filho e escolha *Este é um aparelho de filho*. No aparelho do responsável, abra *Família* e toque no ícone de escanear (*Escanear código*), depois leia o QR code exibido no aparelho da criança (ou digite o código de 6 caracteres). Confirme a conexão no aparelho da criança.',
     start4:
       '**4. Conceda permissões no aparelho da criança.** Abra a tela *Status* no aparelho da criança e permita todas as permissões que o KidGate pedir — no Android: notificações, Acesso de uso, Exibir sobre outros apps, Acessibilidade e bateria sem restrições; no iOS: *Permitir uso de apps e sites* (Tempo de Uso). Os controles não funcionarão por completo até que estejam ligados.',
     start5:
@@ -835,11 +835,11 @@ export default {
 
     faq2Q: 'Como conecto os aparelhos do responsável e da criança?',
     faq2A:
-      'No aparelho da criança, abra o KidGate e escolha *Este é um aparelho de filho* — aparecerão um QR code e um código de 6 caracteres. No aparelho do responsável, abra *Família → + → Conectar o aparelho de um filho* e leia o QR code (recomendado) ou digite o código. Depois confirme o nome do responsável no aparelho da criança. Os códigos expiram — se a conexão falhar, toque em *Novo código* no aparelho da criança e tente de novo.',
+      'No aparelho da criança, abra o KidGate e escolha *Este é um aparelho de filho* — aparecerão um QR code e um código de 6 caracteres. No aparelho do responsável, abra *Família* e toque no ícone de escanear (*Escanear código*), em seguida leia o QR code (recomendado) ou digite o código. Depois confirme o nome do responsável no aparelho da criança. Os códigos expiram — se a conexão falhar, toque em *Novo código* no aparelho da criança e tente de novo.',
 
     faq3Q: 'Dois responsáveis podem gerenciar a mesma família?',
     faq3A:
-      'Sim. No aparelho do titular da família, abra *Família → + → Adicionar outro aparelho de responsável* e compartilhe o QR code ou o código de convite. O outro responsável instala o KidGate, entra como responsável e escolhe *Família → + → Entrar na família*. Depois o titular aprova o pedido. Uma assinatura cobre a família inteira; só o titular paga.',
+      'Sim. No aparelho do titular da família, abra *Família → + → Convidar um responsável* e compartilhe o QR code ou o código de convite. O outro responsável instala o KidGate, entra como responsável, abre *Família* e toca no ícone de escanear (*Escanear código*), depois lê o QR code ou digita o código de convite ali. Depois o titular aprova o pedido. Uma assinatura cobre a família inteira; só o titular paga.',
 
     faq4Q: 'Como funciona o teste gratuito?',
     faq4A:

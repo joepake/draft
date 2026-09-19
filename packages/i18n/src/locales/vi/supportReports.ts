@@ -11,6 +11,8 @@ export const supportReports = {
   replySend: 'Gửi',
   replyClosed: 'Báo cáo này đã đóng.',
   waitingNote: 'Chúng tôi sẽ phản hồi tại đây sau khi có người xem xét.',
+  replyAwaitingOperator:
+    'Chúng tôi đã nhận được tin nhắn. Bạn có thể trả lời tiếp sau khi chúng tôi phản hồi.',
   expandLabel: 'Xem thêm',
   collapseLabel: 'Thu gọn',
   expandHint: 'Xem toàn bộ báo cáo',

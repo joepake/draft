@@ -299,7 +299,7 @@ export default {
     start: 'Đăng nhập bằng ứng dụng KidGate',
     generating: 'Đang tạo mã…',
     step1: 'Mở KidGate trên điện thoại của bạn.',
-    step2: 'Vào *Cài đặt → Đăng nhập trên web*.',
+    step2: 'Chạm biểu tượng quét mã trên tab *Gia đình*.',
     step3: 'Quét mã này, rồi chọn Cho phép.',
     waiting: 'Đang chờ phê duyệt · hết hạn sau {{time}}',
     signingIn: 'Đã cho phép. Đang đăng nhập…',
@@ -510,7 +510,7 @@ export default {
 
     noDeviceTitle: 'Chưa có thiết bị nào của con',
     noDeviceBody:
-      'Mở KidGate trên điện thoại của bạn, vào *Gia đình → chạm + → Kết nối thiết bị của trẻ*, rồi quét mã QR hiện trên thiết bị của con. Thiết bị sẽ xuất hiện ở đây vài giây sau khi kết nối.',
+      'Mở KidGate trên điện thoại của bạn, vào *Gia đình*, chạm biểu tượng quét (*Quét mã*), rồi quét mã QR hiện trên thiết bị của con. Thiết bị sẽ xuất hiện ở đây vài giây sau khi kết nối.',
 
     toastCheckIn: '{{name}} sẽ nhận được yêu cầu Báo an toàn.',
     toastTimeApproved: 'Đã duyệt yêu cầu thêm giờ.',
@@ -822,7 +822,7 @@ export default {
     start2:
       '**2. Tạo mã PIN phụ huynh.** Vào *Cài đặt → Bảo mật* và tạo mã PIN phụ huynh gồm 6 chữ số. Bạn cần mã này để đổi các thiết lập nhạy cảm và chọn ứng dụng bị chặn trên thiết bị của con. Đừng chia sẻ mã với con.',
     start3:
-      '**3. Kết nối thiết bị của con.** Cài KidGate trên thiết bị của con và chọn *Đây là thiết bị của trẻ*. Trên thiết bị phụ huynh, mở *Gia đình → chạm + → Kết nối thiết bị của trẻ*, rồi quét mã QR hiện trên thiết bị của con (hoặc nhập mã gồm 6 ký tự). Xác nhận kết nối trên thiết bị của con.',
+      '**3. Kết nối thiết bị của con.** Cài KidGate trên thiết bị của con và chọn *Đây là thiết bị của trẻ*. Trên thiết bị phụ huynh, mở *Gia đình* và chạm biểu tượng quét (*Quét mã*), rồi quét mã QR hiện trên thiết bị của con (hoặc nhập mã gồm 6 ký tự). Xác nhận kết nối trên thiết bị của con.',
     start4:
       '**4. Cấp quyền trên thiết bị của con.** Mở màn hình *Trạng thái* trên thiết bị của con và cho phép mọi quyền KidGate yêu cầu — trên Android: Thông báo, Truy cập mức sử dụng, Hiển thị trên ứng dụng khác, Trợ năng và Pin không bị hạn chế; trên iOS: *Cho phép Sử dụng ứng dụng và Trang web* (Thời gian sử dụng). Các tính năng điều khiển chỉ hoạt động đầy đủ sau khi bật xong những quyền này.',
     start5:
@@ -838,11 +838,11 @@ export default {
 
     faq2Q: 'Kết nối thiết bị phụ huynh với thiết bị của con thế nào?',
     faq2A:
-      'Trên thiết bị của con, mở KidGate và chọn *Đây là thiết bị của trẻ* — mã QR và mã gồm 6 ký tự sẽ hiện ra. Trên thiết bị phụ huynh, mở *Gia đình → chạm + → Kết nối thiết bị của trẻ* rồi quét mã QR (khuyến nghị) hoặc nhập mã thủ công. Sau đó xác nhận tên phụ huynh trên thiết bị của con. Mã có thời hạn — nếu kết nối không thành công, hãy chạm *Tạo mã mới* trên thiết bị của con rồi thử lại.',
+      'Trên thiết bị của con, mở KidGate và chọn *Đây là thiết bị của trẻ* — mã QR và mã gồm 6 ký tự sẽ hiện ra. Trên thiết bị phụ huynh, mở *Gia đình* và chạm biểu tượng quét (*Quét mã*), rồi quét mã QR (khuyến nghị) hoặc nhập mã thủ công. Sau đó xác nhận tên phụ huynh trên thiết bị của con. Mã có thời hạn — nếu kết nối không thành công, hãy chạm *Tạo mã mới* trên thiết bị của con rồi thử lại.',
 
     faq3Q: 'Hai phụ huynh cùng quản lý một gia đình được không?',
     faq3A:
-      'Được. Trên thiết bị của chủ gia đình, mở *Gia đình → chạm + → Thêm thiết bị phụ huynh* và chia sẻ mã QR hoặc mã mời. Phụ huynh kia cài KidGate, đăng nhập với vai trò phụ huynh, rồi chọn *Gia đình → chạm + → Tham gia gia đình*. Chủ gia đình phê duyệt yêu cầu đó. Một gói dùng cho cả nhà; chỉ chủ gia đình trả tiền.',
+      'Được. Trên thiết bị của chủ gia đình, mở *Gia đình → chạm + → Mời phụ huynh* và chia sẻ mã QR hoặc mã mời. Phụ huynh kia cài KidGate, đăng nhập với vai trò phụ huynh, mở *Gia đình* và chạm biểu tượng quét (*Quét mã*), rồi quét mã QR hoặc nhập mã mời tại đó. Chủ gia đình phê duyệt yêu cầu đó. Một gói dùng cho cả nhà; chỉ chủ gia đình trả tiền.',
 
     faq4Q: 'Bản dùng thử miễn phí hoạt động thế nào?',
     faq4A:

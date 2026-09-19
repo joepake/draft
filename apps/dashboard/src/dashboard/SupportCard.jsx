@@ -93,7 +93,13 @@ export default function SupportCard({
       setError(
         failure?.serverCode === 'supportThread/resolved'
           ? 'supportReports.replyClosed'
-          : (failure?.messageKey ?? null),
+          : /* The alternation refusal, which is a race rather than a state the
+               box got wrong: the other parent device replied while this one
+               was typing. Saying "this report is closed" over it would be
+               false and would stop a parent who can still write later. */
+            failure?.serverCode === 'supportThread/awaiting-operator'
+            ? 'supportReports.replyAwaitingOperator'
+            : (failure?.messageKey ?? null),
       );
     } finally {
       setReplyBusy(false);
@@ -266,17 +272,30 @@ export default function SupportCard({
                         ))}
                     </ol>
 
-                    {/* Only while it is still open, and only before anyone has
-                        answered: "waiting for a reply" under a resolved report
-                        would be wrong twice. */}
-                    {!report.response &&
-                      (report.messages ?? []).length === 0 &&
-                      status !== 'resolved' && (
-                        <p className="support-waiting">
-                          <Icon name="clock" size={13} />
-                          {appT('supportReports.waitingNote')}
-                        </p>
-                      )}
+                    {/*
+                      "It is our turn" — one renderer, two sentences, because
+                      it is one state. This was drawn only before anybody had
+                      answered; the box is now shut for the whole of our turn,
+                      so the same note carries the case where the parent has
+                      just replied and is waiting again.
+
+                      Which sentence turns on whether we have EVER answered:
+                      "we'll reply once someone has looked at this" is false
+                      the second time round.
+                    */}
+                    {supportReplyBlock(report) === 'awaitingOperator' && (
+                      <p className="support-waiting">
+                        <Icon name="clock" size={13} />
+                        {appT(
+                          report.response ||
+                            (report.messages ?? []).some(
+                              line => line.from === 'operator',
+                            )
+                            ? 'supportReports.replyAwaitingOperator'
+                            : 'supportReports.waitingNote',
+                        )}
+                      </p>
+                    )}
 
                     {/*
                       The reply box, and the one refusal worth a sentence.

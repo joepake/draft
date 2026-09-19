@@ -282,7 +282,7 @@ export default {
     start: 'Se connecter avec l’appli KidGate',
     generating: 'Génération du code…',
     step1: 'Ouvrez KidGate sur votre téléphone.',
-    step2: 'Allez dans *Réglages → Se connecter sur le web*.',
+    step2: 'Touchez l’icône de scan dans l’onglet *Famille*.',
     step3: 'Scannez ce code, puis validez.',
     waiting: 'En attente de validation · expire dans {{time}}',
     signingIn: 'Validé. Connexion…',
@@ -498,7 +498,7 @@ export default {
 
     noDeviceTitle: 'Pas encore d’appareil enfant',
     noDeviceBody:
-      'Ouvrez KidGate sur votre téléphone, allez dans *Famille → + → Connecter un appareil enfant* et scannez le QR code affiché sur l’appareil de votre enfant. Il apparaîtra ici quelques secondes après l’association.',
+      'Ouvrez KidGate sur votre téléphone, allez dans *Famille*, touchez l’icône de scan (*Scanner un code*) et scannez le QR code affiché sur l’appareil de votre enfant. Il apparaîtra ici quelques secondes après l’association.',
 
     toastCheckIn: '{{name}} recevra une demande de check-in.',
     toastTimeApproved: 'Temps supplémentaire accordé.',
@@ -823,7 +823,7 @@ export default {
     start2:
       '**2. Définissez un code parent.** Allez dans *Réglages → Sécurité* et créez un code parent à 6 chiffres. Il est nécessaire pour modifier les réglages sensibles et choisir les applis bloquées sur l’appareil de l’enfant. Ne le partagez pas avec vos enfants.',
     start3:
-      '**3. Connectez l’appareil de l’enfant.** Installez KidGate sur l’appareil de votre enfant et choisissez *Ceci est un appareil enfant*. Sur l’appareil parent, ouvrez *Famille → + → Connecter un appareil enfant*, puis scannez le QR code affiché sur l’appareil de l’enfant (ou saisissez le code à 6 caractères). Confirmez la connexion sur l’appareil de l’enfant.',
+      '**3. Connectez l’appareil de l’enfant.** Installez KidGate sur l’appareil de votre enfant et choisissez *Ceci est un appareil enfant*. Sur l’appareil parent, ouvrez *Famille* et touchez l’icône de scan (*Scanner un code*), puis scannez le QR code affiché sur l’appareil de l’enfant (ou saisissez le code à 6 caractères). Confirmez la connexion sur l’appareil de l’enfant.',
     start4:
       '**4. Accordez les autorisations sur l’appareil de l’enfant.** Ouvrez l’écran *État* sur l’appareil de l’enfant et autorisez toutes les permissions demandées par KidGate — sur Android : notifications, Accès aux données d’usage, Superposition aux autres apps, Accessibilité et batterie sans restriction ; sur iOS : *Autoriser l’utilisation des apps et des sites* (Temps d’écran). Les commandes ne fonctionneront pas complètement tant qu’elles ne sont pas actives.',
     start5:
@@ -839,11 +839,11 @@ export default {
 
     faq2Q: 'Comment associer l’appareil parent et l’appareil enfant ?',
     faq2A:
-      'Sur l’appareil de l’enfant, ouvrez KidGate et choisissez *Ceci est un appareil enfant* — un QR code et un code à 6 caractères apparaissent. Sur l’appareil parent, ouvrez *Famille → + → Connecter un appareil enfant* et scannez le QR code (recommandé) ou saisissez le code à la main. Confirmez ensuite le nom du parent sur l’appareil de l’enfant. Les codes expirent — si l’association échoue, touchez *Nouveau code* sur l’appareil de l’enfant et réessayez.',
+      'Sur l’appareil de l’enfant, ouvrez KidGate et choisissez *Ceci est un appareil enfant* — un QR code et un code à 6 caractères apparaissent. Sur l’appareil parent, ouvrez *Famille* et touchez l’icône de scan (*Scanner un code*), puis scannez le QR code (recommandé) ou saisissez le code à la main. Confirmez ensuite le nom du parent sur l’appareil de l’enfant. Les codes expirent — si l’association échoue, touchez *Nouveau code* sur l’appareil de l’enfant et réessayez.',
 
     faq3Q: 'Deux parents peuvent-ils gérer la même famille ?',
     faq3A:
-      'Oui. Sur l’appareil du titulaire de la famille, ouvrez *Famille → + → Ajouter un autre appareil parent* et partagez le QR code ou le code d’invitation. L’autre parent installe KidGate, se connecte comme parent et choisit *Famille → + → Rejoindre la famille*. Le titulaire approuve ensuite la demande. Un abonnement couvre toute la famille ; seul le titulaire paie.',
+      'Oui. Sur l’appareil du titulaire de la famille, ouvrez *Famille → + → Inviter un parent* et partagez le QR code ou le code d’invitation. L’autre parent installe KidGate, se connecte comme parent, ouvre *Famille* et touche l’icône de scan (*Scanner un code*), puis scanne le QR code ou saisit le code d’invitation. Le titulaire approuve ensuite la demande. Un abonnement couvre toute la famille ; seul le titulaire paie.',
 
     faq4Q: 'Comment fonctionne l’essai gratuit ?',
     faq4A:

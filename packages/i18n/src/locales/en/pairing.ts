@@ -1,7 +1,7 @@
 export const pairing = {
   shareInviteButton: 'Share code',
   shareInviteMessage:
-    'Join our family on KidGate: open the app, choose Family → Join family, and enter code {{code}}. The code expires in 15 minutes.',
+    'Join our family on KidGate: open the app, go to Family → Scan a code, then scan the QR code or enter code {{code}}. The code expires in 15 minutes.',
   shareChildCodeMessage:
     'Connect this child device on KidGate: on the parent device open KidGate → Family → Scan a code, then scan the QR code or enter code {{code}}. The code expires in 5 minutes.',
   connectChildPhone: 'Connect a child device',
@@ -50,7 +50,7 @@ export const pairing = {
   unableToCreateCode: 'Unable to create a code. Try again.',
   inviteParentTitle: 'Add another parent device',
   inviteParentInstructions:
-    'On the other device, open KidGate → Family → + → Join family, then scan this QR code or enter the code within 15 minutes. Approve the request here to connect that parent.',
+    'On the other device, open KidGate → Family → Scan a code, then scan this QR code or enter the code within 15 minutes. Approve the request here to connect that parent.',
   inviteCodeLabel: 'Or share this code',
   joinFamilyTitle: 'Join family',
   joinFamilyScanInstructions:

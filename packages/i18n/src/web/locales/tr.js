@@ -282,7 +282,7 @@ export default {
     start: 'KidGate uygulamasıyla giriş yap',
     generating: 'Kod oluşturuluyor…',
     step1: 'Telefonunuzda KidGate’i açın.',
-    step2: '*Ayarlar → Web’de oturum aç* bölümüne gidin.',
+    step2: '*Aile* sekmesinde tarama simgesine dokunun.',
     step3: 'Bu kodu okutun, sonra onaylayın.',
     waiting: 'Onay bekleniyor · {{time}} içinde sona eriyor',
     signingIn: 'Onaylandı. Giriş yapılıyor…',
@@ -497,7 +497,7 @@ export default {
 
     noDeviceTitle: 'Henüz çocuk cihazı yok',
     noDeviceBody:
-      'Telefonunuzda KidGate’i açın, *Aile → + → Çocuk cihazı bağla* adımına gidin ve çocuğunuzun cihazında görünen QR kodu okutun. Eşleştirmeden birkaç saniye sonra burada görünecektir.',
+      'Telefonunuzda KidGate’i açın, *Aile* bölümüne gidin, tarama simgesine dokunun (*Kod tara*) ve çocuğunuzun cihazında görünen QR kodu okutun. Eşleştirmeden birkaç saniye sonra burada görünecektir.',
 
     toastCheckIn: '{{name}} bir Check-In isteği alacak.',
     toastTimeApproved: 'Ek süre onaylandı.',
@@ -817,7 +817,7 @@ export default {
     start2:
       '**2. Bir ebeveyn PIN’i belirleyin.** *Ayarlar → Güvenlik* bölümüne gidip 6 haneli bir ebeveyn PIN’i belirleyin. Hassas ayarları değiştirmek ve çocuk cihazında engellenecek uygulamaları seçmek için gerekir. Çocuklarınızla paylaşmayın.',
     start3:
-      '**3. Çocuk cihazını bağlayın.** Çocuğunuzun cihazına KidGate’i yükleyin ve *Bu bir çocuk cihazı* seçeneğini seçin. Ebeveyn cihazında *Aile → + → Çocuk cihazı bağla* bölümünü açın, sonra çocuk cihazında görünen QR kodu okutun (ya da 6 karakterlik kodu girin). Bağlantıyı çocuk cihazında onaylayın.',
+      '**3. Çocuk cihazını bağlayın.** Çocuğunuzun cihazına KidGate’i yükleyin ve *Bu bir çocuk cihazı* seçeneğini seçin. Ebeveyn cihazında *Aile* bölümünü açın ve tarama simgesine dokunun (*Kod tara*), sonra çocuk cihazında görünen QR kodu okutun (ya da 6 karakterlik kodu girin). Bağlantıyı çocuk cihazında onaylayın.',
     start4:
       '**4. Çocuk cihazında izinleri verin.** Çocuk cihazında *Durum* ekranını açın ve KidGate’in istediği tüm izinleri verin — Android’de: bildirimler, Kullanım Erişimi, Diğer uygulamaların üzerinde göster, Erişilebilirlik ve kısıtlamasız pil; iOS’ta: *Uygulama ve Web Sitesi Kullanımına İzin Ver* (Ekran Süresi). Bunlar açılmadan denetimler tam olarak çalışmaz.',
     start5:
@@ -833,11 +833,11 @@ export default {
 
     faq2Q: 'Ebeveyn ve çocuk cihazlarını nasıl eşleştiririm?',
     faq2A:
-      'Çocuk cihazında KidGate’i açın ve *Bu bir çocuk cihazı* seçeneğini seçin — bir QR kod ve 6 karakterlik bir kod görünür. Ebeveyn cihazında *Aile → + → Çocuk cihazı bağla* bölümünü açıp QR kodu okutun (önerilir) ya da kodu elle girin. Ardından çocuk cihazında ebeveynin adını onaylayın. Kodların süresi dolar — eşleştirme başarısız olursa çocuk cihazında *Yeni kod* seçeneğine dokunup tekrar deneyin.',
+      'Çocuk cihazında KidGate’i açın ve *Bu bir çocuk cihazı* seçeneğini seçin — bir QR kod ve 6 karakterlik bir kod görünür. Ebeveyn cihazında *Aile* bölümünü açın ve tarama simgesine dokunun (*Kod tara*), sonra QR kodu okutun (önerilir) ya da kodu elle girin. Ardından çocuk cihazında ebeveynin adını onaylayın. Kodların süresi dolar — eşleştirme başarısız olursa çocuk cihazında *Yeni kod* seçeneğine dokunup tekrar deneyin.',
 
     faq3Q: 'İki ebeveyn aynı aileyi yönetebilir mi?',
     faq3A:
-      'Evet. Aile sahibinin cihazında *Aile → + → Başka bir ebeveyn cihazı ekle* bölümünü açın ve davet QR kodunu ya da kodu paylaşın. Diğer ebeveyn KidGate’i yükler, ebeveyn olarak giriş yapar ve *Aile → + → Aileye katıl* seçeneğini seçer. Ardından aile sahibi isteği onaylar. Tek abonelik tüm aileyi kapsar; yalnızca aile sahibi öder.',
+      'Evet. Aile sahibinin cihazında *Aile → + → Ebeveyn davet et* bölümünü açın ve davet QR kodunu ya da kodu paylaşın. Diğer ebeveyn KidGate’i yükler, ebeveyn olarak giriş yapar, *Aile* bölümünü açıp tarama simgesine dokunur (*Kod tara*), ardından QR kodu okutur ya da davet kodunu yazar. Ardından aile sahibi isteği onaylar. Tek abonelik tüm aileyi kapsar; yalnızca aile sahibi öder.',
 
     faq4Q: 'Ücretsiz deneme nasıl çalışır?',
     faq4A:

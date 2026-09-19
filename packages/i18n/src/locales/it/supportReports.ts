@@ -11,6 +11,8 @@ export const supportReports = {
   replySend: 'Invia',
   replyClosed: 'Questa segnalazione è chiusa.',
   waitingNote: 'Risponderemo qui non appena qualcuno l’avrà esaminata.',
+  replyAwaitingOperator:
+    'Abbiamo ricevuto il tuo messaggio. Potrai rispondere di nuovo dopo la nostra risposta.',
   expandLabel: 'Mostra altro',
   collapseLabel: 'Mostra meno',
   expandHint: 'Mostra la segnalazione completa',

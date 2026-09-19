@@ -12,6 +12,8 @@ export const supportReports = {
   replySend: 'Отправить',
   replyClosed: 'Это обращение закрыто.',
   waitingNote: 'Мы ответим здесь, как только кто-то рассмотрит обращение.',
+  replyAwaitingOperator:
+    'Мы получили ваше сообщение. Ответить снова можно будет после нашего ответа.',
   expandLabel: 'Показать больше',
   collapseLabel: 'Свернуть',
   expandHint: 'Показать обращение полностью',

@@ -68,10 +68,11 @@ export function foldSupportThread(report: SupportReport): SupportMessage[] {
 /**
  * Whether the parent may add another line.
  *
- * Two different refusals, and they are not the same sentence on screen: a
- * resolved ticket is finished, and a full one is not.
+ * Three different refusals, and no two are the same sentence on screen: a
+ * resolved ticket is finished, a full one is not, and one waiting on us is
+ * neither — it opens again the moment the operator writes.
  */
-export type SupportReplyBlock = null | 'resolved' | 'full';
+export type SupportReplyBlock = null | 'resolved' | 'full' | 'awaitingOperator';
 
 export function supportReplyBlock(report: SupportReport): SupportReplyBlock {
   /* Absent status means `'pending'` — `SupportReportStatus` says so, and a
@@ -82,8 +83,40 @@ export function supportReplyBlock(report: SupportReport): SupportReplyBlock {
   }
   const stored = Array.isArray(report.messages) ? report.messages : [];
   if (stored.length >= SUPPORT_THREAD_MAX_MESSAGES) {
+    /* Before `awaitingOperator`, deliberately: a full thread is shut for good,
+       and telling that parent to wait for an answer would be a promise the
+       ticket can no longer keep. */
     return 'full';
   }
+
+  /*
+   * **The conversation alternates: the operator answers, then the parent may
+   * write once.**
+   *
+   * One test covers three cases — a freshly filed report, whose only line is
+   * the parent's own opening, so the box stays shut until somebody answers; a
+   * parent who has already replied and is waiting; and a ticket nobody has
+   * touched. Without it one ticket is an open channel: fifty lines fit under
+   * `SUPPORT_THREAD_MAX_MESSAGES` and nothing else rations them.
+   *
+   * Read off the FOLD, never off `messages`, so a report answered before the
+   * thread existed opens correctly — its reply lives in `response` alone, and
+   * `messages` is empty on a ticket that has genuinely been answered.
+   *
+   * A status move is not an answer. `functions/admin/support.js` appends only
+   * when the operator actually typed something, so triaging a ticket to
+   * `in_review` leaves this shut — which is right, because nothing has been
+   * said to reply to.
+   *
+   * **Not the same question as the operator console's `awaitingOperator`**,
+   * and the two must not be folded into one: a full thread refuses the parent
+   * while the customer is still waiting on us.
+   */
+  const thread = foldSupportThread(report);
+  if (thread[thread.length - 1]?.from !== 'operator') {
+    return 'awaitingOperator';
+  }
+
   return null;
 }
 

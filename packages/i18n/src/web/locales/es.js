@@ -281,7 +281,7 @@ export default {
     start: 'Iniciar sesión con la app de KidGate',
     generating: 'Generando código…',
     step1: 'Abre KidGate en tu móvil.',
-    step2: 'Ve a *Ajustes → Iniciar sesión en la web*.',
+    step2: 'Pulsa el icono de escaneo en la pestaña *Familia*.',
     step3: 'Escanea este código y aprueba.',
     waiting: 'Esperando aprobación · caduca en {{time}}',
     signingIn: 'Aprobado. Iniciando sesión…',
@@ -497,7 +497,7 @@ export default {
 
     noDeviceTitle: 'Todavía no hay dispositivos de hijos',
     noDeviceBody:
-      'Abre KidGate en tu móvil, ve a *Familia → + → Conectar el dispositivo de un hijo* y escanea el código QR que aparece en el dispositivo de tu hijo. Aparecerá aquí a los pocos segundos de vincularlo.',
+      'Abre KidGate en tu móvil, ve a *Familia*, pulsa el icono de escaneo (*Escanear código*) y escanea el código QR que aparece en el dispositivo de tu hijo. Aparecerá aquí a los pocos segundos de vincularlo.',
 
     toastCheckIn: '{{name}} recibirá una solicitud de Check-in.',
     toastTimeApproved: 'Tiempo extra aprobado.',
@@ -821,7 +821,7 @@ export default {
     start2:
       '**2. Define un PIN de padre.** Ve a *Ajustes → Seguridad* y crea un PIN de padre de 6 dígitos. Lo necesitas para cambiar ajustes sensibles y elegir apps bloqueadas en el dispositivo del niño. No lo compartas con tus hijos.',
     start3:
-      '**3. Conecta el dispositivo del niño.** Instala KidGate en el dispositivo de tu hijo y elige *Este es un dispositivo de hijo*. En el dispositivo del padre, abre *Familia → + → Conectar el dispositivo de un hijo* y escanea el código QR que aparece en el dispositivo del niño (o introduce el código de 6 caracteres). Confirma la conexión en el dispositivo del niño.',
+      '**3. Conecta el dispositivo del niño.** Instala KidGate en el dispositivo de tu hijo y elige *Este es un dispositivo de hijo*. En el dispositivo del padre, abre *Familia* y pulsa el icono de escaneo (*Escanear código*), luego escanea el código QR que aparece en el dispositivo del niño (o introduce el código de 6 caracteres). Confirma la conexión en el dispositivo del niño.',
     start4:
       '**4. Concede permisos en el dispositivo del niño.** Abre la pantalla *Estado* en el dispositivo del niño y permite todos los permisos que pide KidGate: en Android, notificaciones, Acceso de uso, Mostrar sobre otras aplicaciones, Accesibilidad y batería sin restricciones; en iOS, *Permitir uso de apps y sitios web* (Tiempo de uso). Los controles no funcionarán del todo hasta que estén activados.',
     start5:
@@ -837,11 +837,11 @@ export default {
 
     faq2Q: '¿Cómo vinculo los dispositivos del padre y del hijo?',
     faq2A:
-      'En el dispositivo del niño, abre KidGate y elige *Este es un dispositivo de hijo*: aparecerán un código QR y un código de 6 caracteres. En el dispositivo del padre, abre *Familia → + → Conectar el dispositivo de un hijo* y escanea el código QR (recomendado) o introduce el código a mano. Después confirma el nombre del padre en el dispositivo del niño. Los códigos caducan: si la vinculación falla, toca *Código nuevo* en el dispositivo del niño e inténtalo otra vez.',
+      'En el dispositivo del niño, abre KidGate y elige *Este es un dispositivo de hijo*: aparecerán un código QR y un código de 6 caracteres. En el dispositivo del padre, abre *Familia* y pulsa el icono de escaneo (*Escanear código*), luego escanea el código QR (recomendado) o introduce el código a mano. Después confirma el nombre del padre en el dispositivo del niño. Los códigos caducan: si la vinculación falla, toca *Código nuevo* en el dispositivo del niño e inténtalo otra vez.',
 
     faq3Q: '¿Pueden dos padres gestionar la misma familia?',
     faq3A:
-      'Sí. En el dispositivo del titular de la familia, abre *Familia → + → Añadir otro dispositivo de padre* y comparte el código QR o el código de invitación. El otro padre instala KidGate, inicia sesión como padre y elige *Familia → + → Unirse a la familia*. El titular aprueba después la solicitud. Una suscripción cubre a toda la familia; solo paga el titular.',
+      'Sí. En el dispositivo del titular de la familia, abre *Familia → + → Invitar a un padre* y comparte el código QR o el código de invitación. El otro padre instala KidGate, inicia sesión como padre, abre *Familia* y pulsa el icono de escaneo (*Escanear código*), luego escanea el código QR o escribe allí el código de invitación. El titular aprueba después la solicitud. Una suscripción cubre a toda la familia; solo paga el titular.',
 
     faq4Q: '¿Cómo funciona la prueba gratuita?',
     faq4A:

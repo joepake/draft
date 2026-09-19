@@ -11,6 +11,8 @@ export const supportReports = {
   replySend: '送信',
   replyClosed: 'この報告は完了しています。',
   waitingNote: '確認され次第、ここに返信します。',
+  replyAwaitingOperator:
+    'メッセージを受け取りました。こちらから返信したあとに、また返信できます。',
   expandLabel: 'もっと見る',
   collapseLabel: '閉じる',
   expandHint: '報告の全文を見る',

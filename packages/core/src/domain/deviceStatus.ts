@@ -17,6 +17,7 @@
 import type { Device } from '@kidgate/schema/device';
 import type { TranslationParams } from '@kidgate/i18n/types';
 import { supportsLock } from './controlSupport';
+import { resolveLockEnforcement } from './lockEnforcement';
 import { offlineThresholdForBeat } from './reportCadence';
 
 type TranslateFn = (key: string, params?: TranslationParams) => string;
@@ -101,11 +102,44 @@ export function getEffectiveDeviceStatus(
   return 'online';
 }
 
-export function getDeviceStatusLabel(status: Device['status'], t: TranslateFn): string {
+/**
+ * The word a chip puts on one device's status.
+ *
+ * **Pass `device`.** Without it a `'locked'` status is taken at face value, and
+ * that status is only ever `isLocked` — what the parent asked for, never what
+ * the device did. A phone that beat forty seconds before the parent pressed
+ * Lock is inside the live window and has answered nothing, so the chip said
+ * **Locked** while the row under it said "Lock sent — waiting for the device"
+ * (`domain/deviceListPriority`) and the web dashboard's pill said the same
+ * (`dash.statusLockSent`). Two sentences on one screen, one of them untrue —
+ * reported on an iPhone, 2026-09-20.
+ *
+ * The lock is not lost by dropping it here: the row keeps it, and it is the
+ * half that can say *which* lock state this is. What is left is the honest
+ * claim — the device is reachable.
+ *
+ * **A parked device is the exception, and the lock still wins there.** Its
+ * silence is a plan decision (`docs/PRICING.md` §6), so
+ * `resolveLockEnforcement` has only its heartbeat fallback to read and would
+ * answer `sent` about every parked device forever. `getEffectiveDeviceStatus`
+ * makes the same exception for the same reason.
+ */
+export function getDeviceStatusLabel(
+  status: Device['status'],
+  t: TranslateFn,
+  device?: Device,
+): string {
   if (status === 'online') {
     return t('shared.online');
   }
   if (status === 'locked') {
+    if (
+      device &&
+      device.monitoringState !== 'parked' &&
+      resolveLockEnforcement(device) !== 'inForce'
+    ) {
+      return t('shared.online');
+    }
     return t('shared.locked');
   }
   // `family`, not `shared`: the dashboard reads this namespace through the

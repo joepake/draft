@@ -1,7 +1,7 @@
 export const pairing = {
   shareInviteButton: 'Kodu paylaş',
   shareInviteMessage:
-    'KidGate’te ailemize katıl: uygulamayı aç, Aile → Aileye katıl seçeneğini seç ve {{code}} kodunu gir. Kod 15 dakika içinde geçerliliğini yitirir.',
+    'KidGate’te ailemize katılın: uygulamayı açın, Aile → Kod tara bölümüne gidin, ardından QR kodunu tarayın veya {{code}} kodunu girin. Kod 15 dakika içinde geçerliliğini yitirir.',
   shareChildCodeMessage:
     'Bu çocuk cihazını KidGate’te bağlayın: ebeveyn cihazında KidGate’i açın → Aile → Kod tara, ardından QR kodunu tarayın veya {{code}} kodunu girin. Kod 5 dakika içinde sona erer.',
   connectChildPhone: 'Çocuk cihazını bağla',
@@ -50,7 +50,7 @@ export const pairing = {
   unableToCreateCode: 'Kod oluşturulamadı. Lütfen tekrar deneyin.',
   inviteParentTitle: 'Başka bir ebeveyn cihazı ekle',
   inviteParentInstructions:
-    'Diğer cihazda KidGate → Aile → + → Aileye katıl’ı açın, ardından 15 dakika içinde bu QR kodunu tarayın veya kodu girin. O ebeveyni bağlamak için isteği burada onaylayın.',
+    'Diğer cihazda KidGate → Aile → Kod tara’yı açın, ardından 15 dakika içinde bu QR kodunu tarayın veya kodu girin. O ebeveyni bağlamak için isteği burada onaylayın.',
   inviteCodeLabel: 'Ya da bu kodu paylaşın',
   joinFamilyTitle: 'Aileye katıl',
   joinFamilyScanInstructions:

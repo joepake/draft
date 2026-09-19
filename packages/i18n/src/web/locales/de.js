@@ -282,7 +282,7 @@ export default {
     start: 'Mit der KidGate-App anmelden',
     generating: 'Code wird erzeugt…',
     step1: 'Öffne KidGate auf deinem Handy.',
-    step2: 'Gehe zu *Einstellungen → Im Web anmelden*.',
+    step2: 'Tippe im Tab *Familie* auf das Scan-Symbol.',
     step3: 'Scanne diesen Code und gib ihn frei.',
     waiting: 'Warte auf Freigabe · läuft ab in {{time}}',
     signingIn: 'Freigegeben. Anmeldung läuft…',
@@ -499,7 +499,7 @@ export default {
 
     noDeviceTitle: 'Noch kein Kindergerät',
     noDeviceBody:
-      'Öffne KidGate auf deinem Handy, gehe zu *Familie → + → Kindergerät verbinden* und scanne den QR-Code auf dem Gerät deines Kindes. Es erscheint hier wenige Sekunden nach dem Verbinden.',
+      'Öffne KidGate auf deinem Handy, gehe zu *Familie*, tippe auf das Scan-Symbol (*Code scannen*) und scanne den QR-Code auf dem Gerät deines Kindes. Es erscheint hier wenige Sekunden nach dem Verbinden.',
 
     toastCheckIn: '{{name}} erhält eine Check-in-Anfrage.',
     toastTimeApproved: 'Zusatzzeit freigegeben.',
@@ -825,7 +825,7 @@ export default {
     start2:
       '**2. Lege eine Eltern-PIN fest.** Gehe zu *Einstellungen → Sicherheit* und setze eine 6-stellige Eltern-PIN. Du brauchst sie, um sensible Einstellungen zu ändern und gesperrte Apps auf dem Kindergerät auszuwählen. Teile sie nicht mit deinen Kindern.',
     start3:
-      '**3. Verbinde das Kindergerät.** Installiere KidGate auf dem Gerät deines Kindes und wähle *Das ist ein Kindergerät*. Öffne auf dem Elterngerät *Familie → + → Kindergerät verbinden* und scanne den QR-Code auf dem Kindergerät (oder gib den 6-stelligen Code ein). Bestätige die Verbindung auf dem Kindergerät.',
+      '**3. Verbinde das Kindergerät.** Installiere KidGate auf dem Gerät deines Kindes und wähle *Das ist ein Kindergerät*. Öffne auf dem Elterngerät *Familie* und tippe auf das Scan-Symbol (*Code scannen*), scanne dann den QR-Code auf dem Kindergerät (oder gib den 6-stelligen Code ein). Bestätige die Verbindung auf dem Kindergerät.',
     start4:
       '**4. Erteile Berechtigungen auf dem Kindergerät.** Öffne den Bildschirm *Status* auf dem Kindergerät und erlaube alle Berechtigungen, die KidGate anfragt — unter Android: Mitteilungen, Nutzungszugriff, Über anderen Apps anzeigen, Bedienungshilfen und uneingeschränkter Akku; unter iOS: *App- & Websitenutzung erlauben* (Bildschirmzeit). Die Steuerung funktioniert erst vollständig, wenn diese aktiv sind.',
     start5:
@@ -841,11 +841,11 @@ export default {
 
     faq2Q: 'Wie koppele ich Eltern- und Kindergerät?',
     faq2A:
-      'Öffne auf dem Kindergerät KidGate und wähle *Das ist ein Kindergerät* — ein QR-Code und ein 6-stelliger Code erscheinen. Öffne auf dem Elterngerät *Familie → + → Kindergerät verbinden* und scanne den QR-Code (empfohlen) oder gib den Code manuell ein. Bestätige danach den Namen des Elternteils auf dem Kindergerät. Codes laufen ab — schlägt die Kopplung fehl, tippe auf dem Kindergerät auf *Neuer Code* und versuche es erneut.',
+      'Öffne auf dem Kindergerät KidGate und wähle *Das ist ein Kindergerät* — ein QR-Code und ein 6-stelliger Code erscheinen. Öffne auf dem Elterngerät *Familie* und tippe auf das Scan-Symbol (*Code scannen*), scanne dann den QR-Code (empfohlen) oder gib den Code manuell ein. Bestätige danach den Namen des Elternteils auf dem Kindergerät. Codes laufen ab — schlägt die Kopplung fehl, tippe auf dem Kindergerät auf *Neuer Code* und versuche es erneut.',
 
     faq3Q: 'Können zwei Eltern dieselbe Familie verwalten?',
     faq3A:
-      'Ja. Öffne auf dem Gerät der Familieninhaberin oder des Familieninhabers *Familie → + → Weiteres Elterngerät hinzufügen* und teile den Einladungs-QR-Code oder -Code. Das andere Elternteil installiert KidGate, meldet sich als Elternteil an und wählt *Familie → + → Familie beitreten*. Danach gibt die Inhaberin oder der Inhaber die Anfrage frei. Ein Abo deckt die ganze Familie ab; nur die Inhaberin oder der Inhaber zahlt.',
+      'Ja. Öffne auf dem Gerät der Familieninhaberin oder des Familieninhabers *Familie → + → Elternteil einladen* und teile den Einladungs-QR-Code oder -Code. Das andere Elternteil installiert KidGate, meldet sich als Elternteil an, öffnet *Familie* und tippt auf das Scan-Symbol (*Code scannen*), scannt dann den QR-Code oder gibt dort den Einladungscode ein. Danach gibt die Inhaberin oder der Inhaber die Anfrage frei. Ein Abo deckt die ganze Familie ab; nur die Inhaberin oder der Inhaber zahlt.',
 
     faq4Q: 'Wie funktioniert die kostenlose Testphase?',
     faq4A:

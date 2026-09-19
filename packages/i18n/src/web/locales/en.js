@@ -289,7 +289,7 @@ export default {
     start: 'Sign in with the KidGate app',
     generating: 'Generating code…',
     step1: 'Open KidGate on your phone.',
-    step2: 'Go to *Settings → Sign in on the web*.',
+    step2: 'Tap the scan icon on the *Family* tab.',
     step3: 'Scan this code, then approve.',
     waiting: 'Waiting for approval · expires in {{time}}',
     signingIn: 'Approved. Signing in…',
@@ -523,7 +523,7 @@ export default {
 
     noDeviceTitle: 'No child device yet',
     noDeviceBody:
-      'Open KidGate on your phone, go to *Family → + → Connect a child device*, and scan the QR code shown on your child’s device. It will appear here within a few seconds of pairing.',
+      'Open KidGate on your phone, go to *Family*, tap the scan icon (*Scan a code*), and scan the QR code shown on your child’s device. It will appear here within a few seconds of pairing.',
 
     toastCheckIn: '{{name}} will get a Check-In request.',
     toastTimeApproved: 'Extra time approved.',
@@ -840,7 +840,7 @@ export default {
     start2:
       '**2. Set a Parent PIN.** Go to *Settings → Security* and set a 6-digit Parent PIN. You need it to change sensitive settings and to choose blocked apps on the child device. Don’t share it with your children.',
     start3:
-      '**3. Connect the child device.** Install KidGate on your child’s device and choose *This is a child device*. On the parent device, open *Family → + → Connect a child device*, then scan the QR code shown on the child device (or enter the 6-character code). Confirm the connection on the child device.',
+      '**3. Connect the child device.** Install KidGate on your child’s device and choose *This is a child device*. On the parent device, open *Family* and tap the scan icon (*Scan a code*), then scan the QR code shown on the child device (or enter the 6-character code). Confirm the connection on the child device.',
     start4:
       '**4. Grant permissions on the child device.** Open the *Status* screen on the child device and allow every permission KidGate requests — on Android: notifications, Usage Access, Display over other apps, Accessibility, and unrestricted battery; on iOS: *Allow App & Website Usage* (Screen Time). Controls will not work fully until these are on.',
     start5:
@@ -856,11 +856,11 @@ export default {
 
     faq2Q: 'How do I pair the parent and child devices?',
     faq2A:
-      'On the child device, open KidGate and choose *This is a child device* — a QR code and a 6-character code appear. On the parent device, open *Family → + → Connect a child device* and scan the QR code (recommended) or enter the code manually. Then confirm the parent’s name on the child device. Codes expire — if pairing fails, tap *New code* on the child device and try again.',
+      'On the child device, open KidGate and choose *This is a child device* — a QR code and a 6-character code appear. On the parent device, open *Family* and tap the scan icon (*Scan a code*), then scan the QR code (recommended) or enter the code manually. Then confirm the parent’s name on the child device. Codes expire — if pairing fails, tap *New code* on the child device and try again.',
 
     faq3Q: 'Can two parents manage the same family?',
     faq3A:
-      'Yes. On the family owner’s device, open *Family → + → Add another parent device* and share the invite QR code or code. The other parent installs KidGate, signs in as a parent, and chooses *Family → + → Join family*. The owner then approves the request. One subscription covers the whole family; only the owner pays.',
+      'Yes. On the family owner’s device, open *Family → + → Invite parent* and share the invite QR code or code. The other parent installs KidGate, signs in as a parent, opens *Family* and taps the scan icon (*Scan a code*), then scans the QR code or types the invite code there. The owner then approves the request. One subscription covers the whole family; only the owner pays.',
 
     faq4Q: 'How does the free trial work?',
     faq4A:

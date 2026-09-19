@@ -13,6 +13,8 @@ export const supportReports = {
   replyClosed: 'Ce signalement est clos.',
   waitingNote:
     'Nous répondrons ici dès qu’une personne aura examiné votre signalement.',
+  replyAwaitingOperator:
+    'Nous avons bien reçu votre message. Vous pourrez répondre à nouveau dès que nous aurons répondu.',
   expandLabel: 'Voir plus',
   collapseLabel: 'Voir moins',
   expandHint: 'Afficher le signalement complet',

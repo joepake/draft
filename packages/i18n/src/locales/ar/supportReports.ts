@@ -16,6 +16,7 @@ export const supportReports = {
   replySend: 'إرسال',
   replyClosed: 'تم إغلاق هذا التقرير.',
   waitingNote: 'سنرد هنا بمجرد مراجعة أحد أفراد الفريق للبلاغ.',
+  replyAwaitingOperator: 'وصلتنا رسالتك. يمكنك الرد مرة أخرى بعد أن نجيب.',
   expandLabel: 'عرض المزيد',
   collapseLabel: 'عرض أقل',
   expandHint: 'عرض البلاغ كاملاً',

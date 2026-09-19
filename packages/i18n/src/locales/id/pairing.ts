@@ -1,7 +1,7 @@
 export const pairing = {
   shareInviteButton: 'Bagikan kode',
   shareInviteMessage:
-    'Gabung ke keluarga kami di KidGate: buka aplikasi, pilih Keluarga → Gabung keluarga, lalu masukkan kode {{code}}. Kode kedaluwarsa dalam 15 menit.',
+    'Gabung ke keluarga kami di KidGate: buka aplikasi, masuk ke Keluarga → Pindai kode, lalu pindai kode QR atau masukkan kode {{code}}. Kode kedaluwarsa dalam 15 menit.',
   shareChildCodeMessage:
     'Hubungkan perangkat anak ini di KidGate: di perangkat orang tua buka KidGate → Keluarga → Pindai kode, lalu pindai kode QR atau masukkan kode {{code}}. Kode kedaluwarsa dalam 5 menit.',
   connectChildPhone: 'Sambungkan perangkat anak',
@@ -50,7 +50,7 @@ export const pairing = {
   unableToCreateCode: 'Tidak dapat membuat kode. Silakan coba lagi.',
   inviteParentTitle: 'Tambahkan perangkat orang tua lain',
   inviteParentInstructions:
-    'Di perangkat lain, buka KidGate → Keluarga → + → Gabung keluarga, lalu pindai kode QR ini atau masukkan kodenya dalam 15 menit. Setujui permintaan di sini untuk menyambungkan orang tua tersebut.',
+    'Di perangkat lain, buka KidGate → Keluarga → Pindai kode, lalu pindai kode QR ini atau masukkan kodenya dalam 15 menit. Setujui permintaan di sini untuk menyambungkan orang tua tersebut.',
   inviteCodeLabel: 'Atau bagikan kode ini',
   joinFamilyTitle: 'Bergabung dengan keluarga',
   joinFamilyScanInstructions:

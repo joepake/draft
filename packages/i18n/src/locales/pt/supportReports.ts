@@ -12,6 +12,8 @@ export const supportReports = {
   replySend: 'Enviar',
   replyClosed: 'Esta ocorrência está encerrada.',
   waitingNote: 'Responderemos aqui assim que alguém analisar.',
+  replyAwaitingOperator:
+    'Recebemos a sua mensagem. Você poderá responder de novo assim que respondermos.',
   expandLabel: 'Ver mais',
   collapseLabel: 'Ver menos',
   expandHint: 'Ver o relato completo',

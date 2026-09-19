@@ -11,6 +11,7 @@ export const supportReports = {
   replySend: '보내기',
   replyClosed: '이 신고는 종료되었습니다.',
   waitingNote: '확인 후 이곳에 답변을 남겨드릴게요.',
+  replyAwaitingOperator: '메시지를 받았어요. 답변을 드린 뒤에 다시 답장하실 수 있어요.',
   expandLabel: '더 보기',
   collapseLabel: '접기',
   expandHint: '전체 신고 내용 보기',

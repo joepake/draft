@@ -6,6 +6,7 @@ import type { AppLanguage } from '@kidgate/schema/language';
 import { SUPPORTED_LANGUAGES } from '@kidgate/schema/language';
 import { supportReportsCollection, userDoc } from '@kidgate/schema/paths';
 import type {
+  SupportMessage,
   SupportReport,
   SupportReportAttachment,
   SupportReportStatus,
@@ -50,6 +51,39 @@ function mapSupportReport(doc: DocSnapshot): SupportReport {
   const respondedAt = timestampToIso(data.respondedAt) ?? undefined;
   const language = parseSupportReportLanguage(data.language);
 
+  /*
+   * **The thread, and it was dropped here for three days.**
+   *
+   * Every other stored field is mapped above; `messages` was not, so both
+   * parent surfaces received a report with the array absent, `foldSupportThread`
+   * took that as "this report predates threads" and fell through to the
+   * `response` branch — which renders the operator's LATEST line and nothing
+   * else. The parent's own replies, and every operator line but the last, were
+   * invisible on the phone and on the dashboard while the operator console read
+   * them straight out of Firestore and saw the lot.
+   *
+   * Absent must stay absent rather than become `[]`: the fold distinguishes
+   * "no thread stored" (read `response`) from "thread stored and empty", and a
+   * `?? []` here would blank every answer given before 2026-09-17.
+   *
+   * Shape-checked per entry. This is the one array a CLIENT renders as somebody
+   * else's words, and `firestore.rules` lets a parent read the document a
+   * server wrote — a malformed row should drop out of the conversation, not
+   * render as `undefined` inside it.
+   */
+  const messages = Array.isArray(data.messages)
+    ? (data.messages as unknown[]).filter(
+        (entry): entry is SupportMessage =>
+          !!entry &&
+          typeof entry === 'object' &&
+          typeof (entry as SupportMessage).id === 'string' &&
+          typeof (entry as SupportMessage).body === 'string' &&
+          typeof (entry as SupportMessage).at === 'string' &&
+          ((entry as SupportMessage).from === 'parent' ||
+            (entry as SupportMessage).from === 'operator'),
+      )
+    : undefined;
+
   return {
     id: doc.id,
     message: typeof data.message === 'string' ? data.message : '',
@@ -72,6 +106,7 @@ function mapSupportReport(doc: DocSnapshot): SupportReport {
       : {}),
     ...(language ? { language } : {}),
     ...(attachments ? { attachments } : {}),
+    ...(messages ? { messages } : {}),
     ...(response ? { response } : {}),
     ...(respondedAt ? { respondedAt } : {}),
   };

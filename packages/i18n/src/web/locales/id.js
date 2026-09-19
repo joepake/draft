@@ -280,7 +280,7 @@ export default {
     start: 'Masuk dengan aplikasi KidGate',
     generating: 'Membuat kode…',
     step1: 'Buka KidGate di ponsel Anda.',
-    step2: 'Buka *Pengaturan → Masuk di web*.',
+    step2: 'Ketuk ikon pindai di tab *Keluarga*.',
     step3: 'Pindai kode ini, lalu setujui.',
     waiting: 'Menunggu persetujuan · kedaluwarsa dalam {{time}}',
     signingIn: 'Disetujui. Sedang masuk…',
@@ -491,7 +491,7 @@ export default {
 
     noDeviceTitle: 'Belum ada perangkat anak',
     noDeviceBody:
-      'Buka KidGate di ponsel Anda, masuk ke *Keluarga → + → Sambungkan perangkat anak*, lalu pindai kode QR yang tampil di perangkat anak Anda. Perangkat akan muncul di sini beberapa detik setelah tersambung.',
+      'Buka KidGate di ponsel Anda, masuk ke *Keluarga*, ketuk ikon pindai (*Pindai kode*), lalu pindai kode QR yang tampil di perangkat anak Anda. Perangkat akan muncul di sini beberapa detik setelah tersambung.',
 
     toastCheckIn: '{{name}} akan menerima permintaan Check-In.',
     toastTimeApproved: 'Waktu tambahan disetujui.',
@@ -804,7 +804,7 @@ export default {
     start2:
       '**2. Tetapkan PIN orang tua.** Buka *Pengaturan → Keamanan* dan tetapkan PIN orang tua 6 digit. Anda memerlukannya untuk mengubah pengaturan sensitif dan memilih aplikasi yang diblokir di perangkat anak. Jangan bagikan kepada anak Anda.',
     start3:
-      '**3. Sambungkan perangkat anak.** Pasang KidGate di perangkat anak Anda dan pilih *Ini perangkat anak*. Di perangkat orang tua, buka *Keluarga → + → Sambungkan perangkat anak*, lalu pindai kode QR yang tampil di perangkat anak (atau masukkan kode 6 karakter). Konfirmasi sambungan di perangkat anak.',
+      '**3. Sambungkan perangkat anak.** Pasang KidGate di perangkat anak Anda dan pilih *Ini perangkat anak*. Di perangkat orang tua, buka *Keluarga* dan ketuk ikon pindai (*Pindai kode*), lalu pindai kode QR yang tampil di perangkat anak (atau masukkan kode 6 karakter). Konfirmasi sambungan di perangkat anak.',
     start4:
       '**4. Berikan izin di perangkat anak.** Buka layar *Status* di perangkat anak dan izinkan semua izin yang diminta KidGate — di Android: notifikasi, Akses Penggunaan, Tampil di atas aplikasi lain, Aksesibilitas, dan baterai tanpa batasan; di iOS: *Izinkan Penggunaan Aplikasi & Situs Web* (Waktu Layar). Kendali tidak akan berfungsi penuh sampai semuanya aktif.',
     start5:
@@ -820,11 +820,11 @@ export default {
 
     faq2Q: 'Bagaimana cara menyambungkan perangkat orang tua dan anak?',
     faq2A:
-      'Di perangkat anak, buka KidGate dan pilih *Ini perangkat anak* — kode QR dan kode 6 karakter akan muncul. Di perangkat orang tua, buka *Keluarga → + → Sambungkan perangkat anak* lalu pindai kode QR (disarankan) atau masukkan kodenya secara manual. Setelah itu konfirmasi nama orang tua di perangkat anak. Kode punya masa berlaku — jika penyambungan gagal, ketuk *Kode baru* di perangkat anak dan coba lagi.',
+      'Di perangkat anak, buka KidGate dan pilih *Ini perangkat anak* — kode QR dan kode 6 karakter akan muncul. Di perangkat orang tua, buka *Keluarga* dan ketuk ikon pindai (*Pindai kode*), lalu pindai kode QR (disarankan) atau masukkan kodenya secara manual. Setelah itu konfirmasi nama orang tua di perangkat anak. Kode punya masa berlaku — jika penyambungan gagal, ketuk *Kode baru* di perangkat anak dan coba lagi.',
 
     faq3Q: 'Bisakah dua orang tua mengelola keluarga yang sama?',
     faq3A:
-      'Bisa. Di perangkat pemilik keluarga, buka *Keluarga → + → Tambah perangkat orang tua lain* dan bagikan kode QR atau kode undangan. Orang tua kedua memasang KidGate, masuk sebagai orang tua, lalu memilih *Keluarga → + → Gabung keluarga*. Pemilik kemudian menyetujui permintaannya. Satu langganan mencakup seluruh keluarga; hanya pemilik yang membayar.',
+      'Bisa. Di perangkat pemilik keluarga, buka *Keluarga → + → Undang orang tua* dan bagikan kode QR atau kode undangan. Orang tua kedua memasang KidGate, masuk sebagai orang tua, membuka *Keluarga* dan mengetuk ikon pindai (*Pindai kode*), lalu memindai kode QR atau mengetik kode undangan di sana. Pemilik kemudian menyetujui permintaannya. Satu langganan mencakup seluruh keluarga; hanya pemilik yang membayar.',
 
     faq4Q: 'Bagaimana cara kerja uji coba gratis?',
     faq4A:

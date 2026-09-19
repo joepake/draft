@@ -12,6 +12,8 @@ export const supportReports = {
   replySend: 'भेजें',
   replyClosed: 'यह रिपोर्ट बंद हो चुकी है।',
   waitingNote: 'किसी के देखने के बाद हम यहाँ जवाब देंगे।',
+  replyAwaitingOperator:
+    'आपका संदेश मिल गया। हमारे जवाब देने के बाद आप फिर से जवाब दे सकेंगे।',
   expandLabel: 'और देखें',
   collapseLabel: 'कम देखें',
   expandHint: 'पूरी रिपोर्ट देखें',

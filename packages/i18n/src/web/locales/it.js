@@ -281,7 +281,7 @@ export default {
     start: 'Accedi con l’app KidGate',
     generating: 'Generazione del codice…',
     step1: 'Apri KidGate sul telefono.',
-    step2: 'Vai su *Impostazioni → Accedi sul web*.',
+    step2: 'Tocca l’icona di scansione nella scheda *Famiglia*.',
     step3: 'Scansiona questo codice e approva.',
     waiting: 'In attesa di approvazione · scade tra {{time}}',
     signingIn: 'Approvato. Accesso in corso…',
@@ -497,7 +497,7 @@ export default {
 
     noDeviceTitle: 'Ancora nessun dispositivo dei figli',
     noDeviceBody:
-      'Apri KidGate sul telefono, vai su *Famiglia → + → Collega un dispositivo del figlio* e scansiona il codice QR mostrato sul dispositivo di tuo figlio. Comparirà qui pochi secondi dopo il collegamento.',
+      'Apri KidGate sul telefono, vai su *Famiglia*, tocca l’icona di scansione (*Scansiona un codice*) e scansiona il codice QR mostrato sul dispositivo di tuo figlio. Comparirà qui pochi secondi dopo il collegamento.',
 
     toastCheckIn: '{{name}} riceverà una richiesta di check-in.',
     toastTimeApproved: 'Tempo extra approvato.',
@@ -821,7 +821,7 @@ export default {
     start2:
       '**2. Imposta un PIN genitore.** Vai su *Impostazioni → Sicurezza* e crea un PIN genitore di 6 cifre. Ti serve per modificare le impostazioni sensibili e scegliere le app bloccate sul dispositivo del bambino. Non condividerlo con i tuoi figli.',
     start3:
-      '**3. Collega il dispositivo del bambino.** Installa KidGate sul dispositivo di tuo figlio e scegli *Questo è un dispositivo del figlio*. Sul dispositivo del genitore apri *Famiglia → + → Collega un dispositivo del figlio*, poi scansiona il codice QR mostrato sul dispositivo del bambino (o inserisci il codice di 6 caratteri). Conferma la connessione sul dispositivo del bambino.',
+      '**3. Collega il dispositivo del bambino.** Installa KidGate sul dispositivo di tuo figlio e scegli *Questo è un dispositivo del figlio*. Sul dispositivo del genitore apri *Famiglia* e tocca l’icona di scansione (*Scansiona un codice*), poi scansiona il codice QR mostrato sul dispositivo del bambino (o inserisci il codice di 6 caratteri). Conferma la connessione sul dispositivo del bambino.',
     start4:
       '**4. Concedi i permessi sul dispositivo del bambino.** Apri la schermata *Stato* sul dispositivo del bambino e consenti tutti i permessi richiesti da KidGate — su Android: notifiche, Accesso ai dati di utilizzo, Visualizza sopra altre app, Accessibilità e batteria senza restrizioni; su iOS: *Consenti utilizzo di app e siti web* (Tempo di utilizzo). I comandi non funzioneranno del tutto finché non sono attivi.',
     start5:
@@ -837,11 +837,11 @@ export default {
 
     faq2Q: 'Come collego i dispositivi del genitore e del figlio?',
     faq2A:
-      'Sul dispositivo del bambino apri KidGate e scegli *Questo è un dispositivo del figlio*: compaiono un codice QR e un codice di 6 caratteri. Sul dispositivo del genitore apri *Famiglia → + → Collega un dispositivo del figlio* e scansiona il codice QR (consigliato) oppure inserisci il codice a mano. Poi conferma il nome del genitore sul dispositivo del bambino. I codici scadono: se il collegamento fallisce, tocca *Nuovo codice* sul dispositivo del bambino e riprova.',
+      'Sul dispositivo del bambino apri KidGate e scegli *Questo è un dispositivo del figlio*: compaiono un codice QR e un codice di 6 caratteri. Sul dispositivo del genitore apri *Famiglia* e tocca l’icona di scansione (*Scansiona un codice*), poi scansiona il codice QR (consigliato) oppure inserisci il codice a mano. Poi conferma il nome del genitore sul dispositivo del bambino. I codici scadono: se il collegamento fallisce, tocca *Nuovo codice* sul dispositivo del bambino e riprova.',
 
     faq3Q: 'Due genitori possono gestire la stessa famiglia?',
     faq3A:
-      'Sì. Sul dispositivo del titolare della famiglia apri *Famiglia → + → Aggiungi un altro dispositivo genitore* e condividi il codice QR o il codice d’invito. L’altro genitore installa KidGate, accede come genitore e sceglie *Famiglia → + → Unisciti alla famiglia*. Poi il titolare approva la richiesta. Un abbonamento copre tutta la famiglia; paga solo il titolare.',
+      'Sì. Sul dispositivo del titolare della famiglia apri *Famiglia → + → Invita un genitore* e condividi il codice QR o il codice d’invito. L’altro genitore installa KidGate, accede come genitore, apre *Famiglia* e tocca l’icona di scansione (*Scansiona un codice*), poi scansiona il codice QR o digita lì il codice d’invito. Poi il titolare approva la richiesta. Un abbonamento copre tutta la famiglia; paga solo il titolare.',
 
     faq4Q: 'Come funziona la prova gratuita?',
     faq4A:

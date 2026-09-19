@@ -12,6 +12,8 @@ export const supportReports = {
   replySend: 'Kirim',
   replyClosed: 'Laporan ini sudah ditutup.',
   waitingNote: 'Kami akan membalas di sini setelah ada yang meninjaunya.',
+  replyAwaitingOperator:
+    'Pesan Anda sudah kami terima. Anda bisa membalas lagi setelah kami menjawab.',
   expandLabel: 'Lihat selengkapnya',
   collapseLabel: 'Lihat lebih sedikit',
   expandHint: 'Lihat laporan lengkap',

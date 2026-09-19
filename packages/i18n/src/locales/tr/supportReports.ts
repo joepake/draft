@@ -12,6 +12,8 @@ export const supportReports = {
   replySend: 'Gönder',
   replyClosed: 'Bu bildirim kapatıldı.',
   waitingNote: 'Biri incelediğinde burada yanıt vereceğiz.',
+  replyAwaitingOperator:
+    'Mesajınızı aldık. Biz yanıtladıktan sonra tekrar yanıt verebilirsiniz.',
   expandLabel: 'Daha fazla göster',
   collapseLabel: 'Daha az göster',
   expandHint: 'Bildirimin tamamını göster',

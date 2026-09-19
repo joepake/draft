@@ -12,6 +12,8 @@ export const supportReports = {
   replySend: 'Senden',
   replyClosed: 'Diese Meldung ist abgeschlossen.',
   waitingNote: 'Wir antworten hier, sobald sich jemand darum gekümmert hat.',
+  replyAwaitingOperator:
+    'Wir haben deine Nachricht. Du kannst wieder antworten, sobald wir geantwortet haben.',
   expandLabel: 'Mehr anzeigen',
   collapseLabel: 'Weniger anzeigen',
   expandHint: 'Vollständige Meldung anzeigen',

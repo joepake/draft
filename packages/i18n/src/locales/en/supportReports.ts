@@ -17,6 +17,7 @@ export const supportReports = {
   replySend: 'Send',
   replyClosed: 'This report is closed.',
   waitingNote: 'We’ll reply here once someone has looked at this.',
+  replyAwaitingOperator: 'We’ve got your message. You can reply again once we answer.',
   expandLabel: 'Show more',
   collapseLabel: 'Show less',
   expandHint: 'Show the full report',
