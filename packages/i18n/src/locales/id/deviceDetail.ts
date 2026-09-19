@@ -143,4 +143,5 @@ export const deviceDetail = {
   pauseBrowsingOff: 'Tidak dijeda',
   pauseBrowsingLeft: 'Dijeda · sisa {{minutes}} mnt',
   pauseBrowsingFor: 'Jeda {{minutes}} mnt',
+  pauseBrowsingResume: 'Lanjutkan',
 } as const;

@@ -331,14 +331,18 @@ export function canvasBlob(canvas) {
  * it is the difference between "save this then find it in Files" and sending
  * it to the other parent in two taps. `canShare` has to be asked about the
  * actual file: a browser can have `share` for links and refuse attachments.
+ *
+ * `text` rides along where the picture alone is not the message — an invite QR
+ * is unreadable to the parent reading it on the phone that would have to scan
+ * it, so the code travels as words beside it, as it does from the app.
  */
-export async function shareCanvasImage(canvas, fileName, title) {
+export async function shareCanvasImage(canvas, fileName, title, text) {
   const blob = await canvasBlob(canvas);
   const file = new File([blob], fileName, { type: 'image/png' });
 
   if (navigator.canShare?.({ files: [file] })) {
     try {
-      await navigator.share({ files: [file], title });
+      await navigator.share({ files: [file], title, ...(text ? { text } : {}) });
       return 'shared';
     } catch (error) {
       // A cancelled share sheet is a decision, not a failure to fall back from.

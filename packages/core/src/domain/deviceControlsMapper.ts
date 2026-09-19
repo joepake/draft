@@ -280,6 +280,13 @@ export function parseDeviceControls(data?: Record<string, unknown>): DeviceContr
     bonusMinutesToday: num(controls.bonusMinutesToday, 0),
     bonusGrantedAtMs:
       typeof controls.bonusGrantedAtMs === 'number' ? controls.bonusGrantedAtMs : null,
+    // Server-stamped end of a browsing pause. Dropping it here read as "never
+    // paused" on all five child agents and both parent consoles at once — the
+    // write half was correct the whole time, the value just never came back out.
+    browsingPausedUntil:
+      typeof controls.browsingPausedUntil === 'number'
+        ? controls.browsingPausedUntil
+        : null,
   } as DeviceControls;
 }
 

@@ -212,17 +212,30 @@ export function resolveBuildFreshness(
    * twice would put the smaller of the two problems on the screen.
    */
   const publishedBundle = published.otaVersion;
-  if (
-    typeof publishedBundle === 'number' &&
-    typeof row.otaVersion === 'number' &&
-    row.otaVersion < publishedBundle
-  ) {
-    return {
-      status: 'outdated',
-      kind: 'bundle',
-      running: String(row.otaVersion),
-      latest: String(publishedBundle),
-    };
+  if (typeof publishedBundle === 'number' && typeof row.otaVersion === 'number') {
+    /*
+     * Floored at the installed build, exactly as `OtaUpdateService.checkAndApply`
+     * floors its own copy. A bundle number *is* the `versionCode` it was built
+     * from, so a phone on build 144 already runs JavaScript at least that new and
+     * answers an older published bundle `up_to_date`. Unfloored, a device that has
+     * never applied an OTA reports `otaVersion: 0` and both parent consoles called
+     * it behind — measured on a production Android on 1.0.144 against
+     * `versionAndroid: 114` (2026-09-19), under an "Update now" button the device
+     * answers by correctly doing nothing. A prompt with no working action is the
+     * failure `shouldRequestOtaCheck` exists to avoid, and it reads this.
+     */
+    const runningBundle = Math.max(
+      row.otaVersion,
+      parseInt(row.appBuild ?? '', 10) || 0,
+    );
+    if (runningBundle < publishedBundle) {
+      return {
+        status: 'outdated',
+        kind: 'bundle',
+        running: String(runningBundle),
+        latest: String(publishedBundle),
+      };
+    }
   }
 
   return behind === null ? { status: 'unknown' } : { status: 'current' };

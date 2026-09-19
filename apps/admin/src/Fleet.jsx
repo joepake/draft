@@ -258,6 +258,22 @@ export default function Fleet() {
           <div className="tile-label">{t('fleet.degraded')}</div>
           <div className="tile-value">{formatNumber(fleet.degraded || 0)}</div>
         </div>
+        {/*
+          These two next to each other on purpose. A parked device is quiet by
+          design and ages into the same "stale" bucket as a dead install, so
+          the silent count on its own read as "this much of the fleet is
+          broken" when some of it was the free tier working correctly.
+        */}
+        <div className="tile">
+          <div className="tile-label">{t('fleet.parked')}</div>
+          <div className="tile-value">
+            {formatNumber(fleet.monitoring?.parked || 0)}
+          </div>
+        </div>
+        <div className="tile">
+          <div className="tile-label">{t('fleet.silentNotParked')}</div>
+          <div className="tile-value">{formatNumber(fleet.silentNotParked || 0)}</div>
+        </div>
         <div className="tile">
           <div className="tile-label">{t('fleet.pushTokenDead')}</div>
           <div className="tile-value">{formatNumber(fleet.pushTokenDead || 0)}</div>

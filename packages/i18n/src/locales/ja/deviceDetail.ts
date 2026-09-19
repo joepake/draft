@@ -144,4 +144,5 @@ export const deviceDetail = {
   pauseBrowsingOff: '停止していません',
   pauseBrowsingLeft: '一時停止中 · 残り{{minutes}}分',
   pauseBrowsingFor: '{{minutes}}分停止する',
+  pauseBrowsingResume: '再開',
 } as const;

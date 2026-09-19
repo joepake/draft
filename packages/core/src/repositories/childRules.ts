@@ -69,11 +69,21 @@ export function createChildRulesRepository(deps: ChildRulesRepositoryDeps) {
       childId: string,
       minutes: number | null,
       deviceIds: readonly string[],
-    ): Promise<{ seedFailures: number }> {
-      await this.updateRules(userId, childId, { dailyLimitMinutes: minutes });
+    ): Promise<ControlsWriteResult & { seedFailures: number }> {
+      /*
+       * Carry the refusal out rather than dropping it. A parked device answers
+       * a tightened budget with 200 and the key in `refusedKeys`, so
+       * `seedFailures` stayed 0 and both consoles reported a clean save while
+       * the device kept enforcing the older, looser number. `dailyLimitMinutes`
+       * is not in `CHILD_RULE_KEYS`, so the divergence card never caught it
+       * either.
+       */
+      const refusal = await this.updateRules(userId, childId, {
+        dailyLimitMinutes: minutes,
+      });
 
       if (!controls || deviceIds.length === 0) {
-        return { seedFailures: 0 };
+        return { ...refusal, seedFailures: 0 };
       }
 
       const writes = await Promise.allSettled(
@@ -82,6 +92,7 @@ export function createChildRulesRepository(deps: ChildRulesRepositoryDeps) {
         ),
       );
       return {
+        ...refusal,
         seedFailures: writes.filter(result => result.status === 'rejected').length,
       };
     },

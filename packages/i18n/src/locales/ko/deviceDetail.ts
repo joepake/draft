@@ -141,4 +141,5 @@ export const deviceDetail = {
   pauseBrowsingOff: '중지 안 함',
   pauseBrowsingLeft: '일시중지 · {{minutes}}분 남음',
   pauseBrowsingFor: '{{minutes}}분 중지',
+  pauseBrowsingResume: '재개',
 } as const;

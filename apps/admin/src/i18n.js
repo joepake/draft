@@ -184,6 +184,8 @@ const en = {
   'family.colDenied': 'Denied',
   'family.deniedNone': 'none',
   'family.noProbe': 'no probe',
+  // Sits after the last-seen age: a parked device is quiet by design, not broken.
+  'family.parked': '(parked)',
   'family.members': 'Secondary parents',
   'family.noMembers': 'None — the owner is the only adult in this family.',
   'family.colMember': 'Label',
@@ -212,6 +214,10 @@ const en = {
   'fleet.childDevices': 'Child devices',
   'fleet.seenThisWeek': 'Seen this week',
   'fleet.degraded': 'Protection degraded',
+  'fleet.parked': 'Parked (free tier)',
+  // Deliberately not "silent": silence is the symptom both of these share, and
+  // naming the parked half separately is the whole point of the pair.
+  'fleet.silentNotParked': 'Quiet with no reason',
   'fleet.pushTokenDead': 'Dead push token',
   'fleet.unassigned': 'Unassigned to a child',
   'fleet.multiProfile_one': '{count} device stuck behind a second OS profile',
@@ -479,7 +485,11 @@ const en = {
   'support.unnamedDevice': 'unnamed device',
   'support.filed': 'filed {when}',
   'support.uid': 'uid {uid}',
-  'support.sentAt': 'Sent {when}',
+  'support.lineFromFamily': 'Family · {when}',
+  'support.lineFromUs': 'Our reply · {when}',
+  'support.awaitingBadge': 'Needs reply ·',
+  'support.queueAwaiting_one': '{count} ticket is waiting on us',
+  'support.queueAwaiting_other': '{count} tickets are waiting on us',
 };
 
 const vi = {
@@ -616,6 +626,7 @@ const vi = {
   'family.colDenied': 'Bị từ chối',
   'family.deniedNone': 'không có',
   'family.noProbe': 'chưa dò',
+  'family.parked': '(đang đỗ)',
   'family.members': 'Phụ huynh phụ',
   'family.noMembers': 'Không có — chủ gia đình là người lớn duy nhất.',
   'family.colMember': 'Nhãn',
@@ -644,6 +655,8 @@ const vi = {
   'fleet.childDevices': 'Thiết bị của trẻ',
   'fleet.seenThisWeek': 'Online trong tuần',
   'fleet.degraded': 'Bảo vệ bị suy giảm',
+  'fleet.parked': 'Đang đỗ (gói miễn phí)',
+  'fleet.silentNotParked': 'Im lặng không rõ lý do',
   'fleet.pushTokenDead': 'Token push đã chết',
   'fleet.unassigned': 'Chưa gán cho trẻ nào',
   'fleet.multiProfile': '{count} thiết bị kẹt sau một hồ sơ hệ điều hành thứ hai',
@@ -904,7 +917,10 @@ const vi = {
   'support.unnamedDevice': 'thiết bị chưa đặt tên',
   'support.filed': 'gửi lúc {when}',
   'support.uid': 'uid {uid}',
-  'support.sentAt': 'Đã gửi {when}',
+  'support.lineFromFamily': 'Gia đình · {when}',
+  'support.lineFromUs': 'Mình trả lời · {when}',
+  'support.awaitingBadge': 'Chờ trả lời ·',
+  'support.queueAwaiting': '{count} ticket đang chờ mình trả lời',
 };
 
 const PACKS = { en, vi };

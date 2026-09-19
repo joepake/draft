@@ -147,4 +147,5 @@ export const deviceDetail = {
   pauseBrowsingOff: 'Sin pausa',
   pauseBrowsingLeft: 'En pausa · quedan {{minutes}} min',
   pauseBrowsingFor: 'Pausar {{minutes}} min',
+  pauseBrowsingResume: 'Reanudar',
 } as const;

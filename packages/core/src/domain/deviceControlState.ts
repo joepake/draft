@@ -246,12 +246,20 @@ export function resolveControlCardStatus(
        * state of every device and must not nag — that is the "Off reads as a
        * switch somebody forgot" trap recorded on the app-blocking card.
        */
+      /*
+       * The verb differs from every other card's, because the press does. A
+       * running pause ends on the press with no confirmation and no screen in
+       * between (`useDeviceDetailScreen`, `Dashboard.pressPauseBrowsing`), so
+       * "Manage" over a number is the one card where that word promises a
+       * panel the parent never reaches — and giving the web back is the only
+       * thing they are looking for while it reads "43".
+       */
       return leftMs > 0
         ? counted(
             Math.max(1, Math.round(leftMs / 60_000)),
             null,
             'attention',
-            'shared.manage',
+            'deviceDetail.pauseBrowsingResume',
           )
         : worded('deviceDetail.pauseBrowsingOff', 'active', 'shared.manage');
     }

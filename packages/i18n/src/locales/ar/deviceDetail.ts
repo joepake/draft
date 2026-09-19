@@ -152,4 +152,5 @@ export const deviceDetail = {
   pauseBrowsingOff: 'غير متوقف',
   pauseBrowsingLeft: 'متوقف · يتبقى {{minutes}} دقيقة',
   pauseBrowsingFor: 'إيقاف لمدة {{minutes}} دقيقة',
+  pauseBrowsingResume: 'استئناف',
 } as const;

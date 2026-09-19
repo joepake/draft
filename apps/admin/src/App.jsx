@@ -1070,7 +1070,18 @@ function FamilyDetail({ family }) {
                   <td>{device.appBuild ?? '—'}</td>
                   <td>{device.otaVersion ?? '—'}</td>
                   <td>{device.locale ?? '—'}</td>
-                  <td>{ago(device.lastActiveAt, t) ?? '—'}</td>
+                  <td>
+                    {ago(device.lastActiveAt, t) ?? '—'}
+                    {/*
+                      A parked device stops reporting on purpose, so without
+                      this the column reads the same for a working free tier
+                      and a dead install — the one question this table gets
+                      opened to answer.
+                    */}
+                    {device.monitoringState === 'parked' ? (
+                      <span className="faint"> {t('family.parked')}</span>
+                    ) : null}
+                  </td>
                   <td>
                     {device.deniedPermissions?.length > 0 ? (
                       <b>{device.deniedPermissions.join(', ')}</b>

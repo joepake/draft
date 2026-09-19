@@ -160,7 +160,10 @@ function when(value, t) {
 
 function Reply({ report, onDone }) {
   const { t } = useT();
-  const [text, setText] = useState(report.response ?? '');
+  /* Empty, never the last reply. Since `postSupportResponse` appends to
+     `messages` as well as overwriting `response`, a prefilled box sends the
+     previous answer a second time into the thread the family reads. */
+  const [text, setText] = useState('');
   const [status, setStatus] = useState(
     report.status === 'resolved' ? 'resolved' : 'in_review',
   );
@@ -275,7 +278,31 @@ function Detail({ uid, id, onChanged }) {
 
   return (
     <div className="ticket-detail">
-      <p className="ticket-message">{report.message}</p>
+      {/*
+        The whole conversation, not just our half. `report.thread` is
+        `foldSupportThread` applied server-side (`functions/admin/support.js`) —
+        the opening report at the head, then every line either side has added.
+        Rendering `report.message` and `report.response` alone is what made a
+        parent's reply invisible here while their own app showed it.
+      */}
+      {(report.thread ?? []).map(line => (
+        <div
+          key={line.id}
+          className={line.from === 'operator' ? 'ticket-reply' : 'ticket-message'}
+        >
+          <div className="tile-label">
+            {t(
+              line.from === 'operator'
+                ? 'support.lineFromUs'
+                : 'support.lineFromFamily',
+              {
+                when: when(line.at, t),
+              },
+            )}
+          </div>
+          {line.body}
+        </div>
+      ))}
 
       {/*
         Who filed it, not only what they filed. A ticket without the account
@@ -400,17 +427,6 @@ function Detail({ uid, id, onChanged }) {
         </div>
       ) : null}
 
-      {report.response ? (
-        <div className="ticket-reply">
-          <div className="tile-label">
-            {report.respondedAt
-              ? t('support.sentAt', { when: when(report.respondedAt, t) })
-              : ''}
-          </div>
-          {report.response}
-        </div>
-      ) : null}
-
       <Reply report={report} onDone={onChanged} />
     </div>
   );
@@ -438,7 +454,16 @@ export default function Support() {
   }, [load]);
 
   const reports = useMemo(() => {
-    const all = data?.reports ?? [];
+    /*
+      By last activity, not by filing date. The server orders the collection
+      group on `createdAt` because that is the only field every report has an
+      index for; a customer replying to a two-week-old ticket would otherwise
+      sit below every newer report, which is the same as not being told.
+      Both values are ISO 8601, so a string compare is a time compare.
+    */
+    const all = [...(data?.reports ?? [])].sort((a, b) =>
+      String(b.lastActivityAt ?? '').localeCompare(String(a.lastActivityAt ?? '')),
+    );
     if (filter === 'all') {
       return all;
     }
@@ -453,6 +478,9 @@ export default function Support() {
     return {
       pending: all.filter(report => report.status === 'pending').length,
       in_review: all.filter(report => report.status === 'in_review').length,
+      /* Cuts across status on purpose: a ticket the operator moved to
+         `in_review` and answered is still waiting if the family wrote back. */
+      awaiting: all.filter(report => report.awaitingOperator).length,
     };
   }, [data]);
 
@@ -490,7 +518,9 @@ export default function Support() {
         <>
           <div className="status-strip" style={{ marginBottom: 12 }}>
             <span
-              className={`status-dot is-${counts.pending > 0 ? 'critical' : 'good'}`}
+              className={`status-dot is-${
+                counts.pending > 0 || counts.awaiting > 0 ? 'critical' : 'good'
+              }`}
             />
             <span className="status-label">
               {t('support.queueCounts', {
@@ -498,7 +528,11 @@ export default function Support() {
                 inReview: counts.in_review,
               })}
             </span>
-            <span className="status-detail">{t('support.queueDetail')}</span>
+            <span className="status-detail">
+              {counts.awaiting > 0
+                ? t('support.queueAwaiting', { count: counts.awaiting })
+                : t('support.queueDetail')}
+            </span>
             {data.truncated ? (
               <span className="status-detail" style={{ marginLeft: 'auto' }}>
                 {t('support.truncated', { count: reports.length })}
@@ -523,11 +557,26 @@ export default function Support() {
                       className="ticket-head"
                       onClick={() => setOpen(isOpen ? null : key)}
                     >
-                      <span className={`status-dot is-${STATUS_TONE[report.status]}`} />
+                      <span
+                        className={`status-dot is-${
+                          report.awaitingOperator
+                            ? 'critical'
+                            : STATUS_TONE[report.status]
+                        }`}
+                      />
                       <span className="ticket-status">
                         {t(STATUS_LABEL_KEY[report.status] ?? 'support.statusPending')}
                       </span>
-                      <span className="ticket-summary">{report.message}</span>
+                      <span className="ticket-summary">
+                        {/* The row's only "something happened since you last
+                            looked" — status carries no trace of a reply. */}
+                        {report.awaitingOperator ? (
+                          <strong style={{ color: 'var(--status-critical)' }}>
+                            {t('support.awaitingBadge')}{' '}
+                          </strong>
+                        ) : null}
+                        {report.message}
+                      </span>
                       <span className="ticket-when">
                         {report.attachmentCount > 0
                           ? t('support.shotCount', { count: report.attachmentCount })

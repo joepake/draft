@@ -148,4 +148,5 @@ export const deviceDetail = {
   pauseBrowsingOff: 'Не приостановлено',
   pauseBrowsingLeft: 'Пауза · осталось {{minutes}} мин',
   pauseBrowsingFor: 'Пауза на {{minutes}} мин',
+  pauseBrowsingResume: 'Возобновить',
 } as const;

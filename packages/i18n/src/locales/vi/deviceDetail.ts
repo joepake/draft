@@ -138,4 +138,5 @@ export const deviceDetail = {
   pauseBrowsingOff: 'Chưa tạm dừng',
   pauseBrowsingLeft: 'Đang dừng · còn {{minutes}} phút',
   pauseBrowsingFor: 'Dừng {{minutes}} phút',
+  pauseBrowsingResume: 'Tiếp tục',
 } as const;

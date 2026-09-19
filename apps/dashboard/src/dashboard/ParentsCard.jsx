@@ -1,8 +1,22 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import QRCode from 'qrcode';
 import { useT } from '@kidgate/web-ui/useT';
+import { buildPairingQrValue } from '@kidgate/core/domain/pairingQr';
+import { qrSvg } from '@kidgate/core/domain/qrSvg';
 import { useActivityTranslate } from './activityCopy.js';
 import Icon from '@kidgate/web-ui/Icon';
+import { shareCanvasImage } from './shareCard.js';
 import { parentInviteRepository } from '../adapters/repositories.js';
+
+/*
+ * The same literal `QrSignIn` writes for the sign-in code: this surface has no
+ * pairing environment of its own, and the value has to match what the phone
+ * mints (`apps/mobile`'s `pairingLinkConfig`) or one protocol has two QRs. The
+ * scanner takes a bare six-character code as well, so a camera app that cannot
+ * open the scheme still leaves the parent something to type.
+ */
+const PAIRING_LINK = { scheme: 'kidgate', webHost: 'https://kidgate.app' };
+const QR_PX = 170;
 
 /*
  * `appT` reads the APP key space through `@kidgate/i18n/activityFeed`. The
@@ -38,6 +52,40 @@ export default function ParentsCard({ members, actions, run, busy }) {
   const [removing, setRemoving] = useState(null);
 
   const owner = Boolean(actions?.isOwner);
+
+  /*
+   * Drawn from the encoder's matrix by `@kidgate/core/domain/qrSvg`, the same
+   * picture `apps/desktop` and `apps/extension` put on screen — no untrusted
+   * input reaches the markup, which is what makes the `innerHTML` below safe.
+   */
+  const inviteQr = useMemo(
+    () =>
+      invite?.code
+        ? qrSvg(buildPairingQrValue(invite.code, PAIRING_LINK), QR_PX)
+        : null,
+    [invite?.code],
+  );
+
+  /*
+   * The picture is no use in a chat thread on the phone that would have to
+   * scan it, so the share carries the sentence with the code in it — the same
+   * one `ParentInviteModal` sends. A canvas of its own rather than the SVG on
+   * screen: rasterising an `<svg>` taints a canvas in some browsers, and the
+   * share sheet wants a PNG either way.
+   */
+  const shareInvite = useCallback(async () => {
+    if (!invite?.code) return;
+    const canvas = await QRCode.toCanvas(
+      buildPairingQrValue(invite.code, PAIRING_LINK),
+      { width: 512, margin: 4, color: { dark: '#111111', light: '#ffffff' } },
+    );
+    await shareCanvasImage(
+      canvas,
+      'kidgate-invite.png',
+      appT('pairing.inviteParentTitle'),
+      appT('pairing.shareInviteMessage', { code: invite.code }),
+    );
+  }, [appT, invite?.code]);
 
   const refreshPending = useCallback(async () => {
     if (!owner) return;
@@ -168,15 +216,31 @@ export default function ParentsCard({ members, actions, run, busy }) {
       {invite ? (
         <div className="invite-code">
           <p className="hint">{appT('pairing.inviteParentInstructions')}</p>
+          {inviteQr && (
+            <div className="qr-code" dangerouslySetInnerHTML={{ __html: inviteQr }} />
+          )}
+          <span className="hint">{appT('pairing.inviteCodeLabel')}</span>
           <strong>{invite.code}</strong>
           {/*
             No countdown ticking on screen. The code is short-lived and the
             server is the clock; a timer here would be a second one, and the
             two disagree the moment a tab sleeps.
           */}
-          <button className="login-link" onClick={() => setInvite(null)}>
-            {t('dash.close')}
-          </button>
+          <div className="reward-actions">
+            <button
+              className="btn btn-sm btn-primary"
+              onClick={() => {
+                // A cancelled share sheet and a browser that refuses the file
+                // both end here; the code and the QR are still on screen.
+                shareInvite().catch(() => undefined);
+              }}
+            >
+              {appT('pairing.shareInviteButton')}
+            </button>
+            <button className="login-link" onClick={() => setInvite(null)}>
+              {t('dash.close')}
+            </button>
+          </div>
         </div>
       ) : (
         <button

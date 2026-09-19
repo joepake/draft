@@ -1178,7 +1178,15 @@
   }
 }
 
+/* A row, not a block: `.icon` is `display: block`, so an icon beside a label
+   broke the line and every icon button on this page drew two storeys tall —
+   the header's Refresh among them. The phone-width block below already said
+   this for the tap target; here it is the shape. */
 .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
   border-radius: var(--dash-radius-1);
   padding: 0.5rem 1rem;
   font-size: var(--dash-text-3);
@@ -3935,9 +3943,13 @@ ol.attn-fix li + li {
  * with the chevron a whole screen away from it.
  */
 .kid-list {
-  max-width: 34rem;
-  display: flex;
-  flex-direction: column;
+  /* Columns, not a capped column. The cap was 34rem and the pane beside the
+     rail is wider than that on any laptop, so the Family screen drew its
+     cards down the left and left the rest of the page empty. `auto-fill`
+     keeps the old single column wherever two would be under 24rem each. */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(24rem, 1fr));
+  align-content: start;
   gap: 0.75rem;
   /* No frame of its own any more: each child is a card and this is the stack
      they sit in. The token note below is kept because the same mistake is
@@ -4215,6 +4227,26 @@ ol.attn-fix li + li {
 }
 
 /*
+ * Two cards on one grid row end on one line. The grid item is `.kid-group`,
+ * and what a parent sees is the `.kid-card` inside it — a stretched group with
+ * a card at its natural height is exactly the ragged pair this closes. The
+ * open group keeps its device rows under the card, which is why the card grows
+ * rather than being given the height.
+ */
+.kid-list > .kid-group {
+  display: flex;
+  flex-direction: column;
+  /* The rail's row margins — `+ .kid-group` and the open group's block pair —
+     are what the grid gap does now, and inside a row they push one card down
+     against its neighbour. Measured: Nana started 1.6px below Papa. */
+  margin: 0;
+}
+
+.kid-list > .kid-group > .kid-card {
+  flex: 1 1 auto;
+}
+
+/*
  * A card that opens a person says so under the pointer — this is the one place
  * the desk gets a state the phone has no way to draw, and `shadows.md` is the
  * step the tokens already reserve for "raised". The tint answers in dark, where
@@ -4307,6 +4339,9 @@ ol.attn-fix li + li {
  * section away in Settings.
  */
 .family-row {
+  /* The family is one row over the whole list, never a card sharing a line
+     with a child — it is what the children are inside. */
+  grid-column: 1 / -1;
   display: flex;
   align-items: center;
   gap: 0.65rem;
@@ -5579,12 +5614,6 @@ span.chip {
      and on the Settings section that card is the way out of the account. */
   .dash-main {
     padding: 1.2rem 1rem calc(4.5rem + env(safe-area-inset-bottom));
-  }
-
-  /* Full width — the cap is for a desktop page, and here the list IS the
-     page. */
-  .kid-list {
-    max-width: none;
   }
 
   /*

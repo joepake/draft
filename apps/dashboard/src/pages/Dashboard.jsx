@@ -1110,6 +1110,20 @@ export default function Dashboard({
        * re-learn what the page already shows.
        */
       onRefresh?.();
+      /*
+       * A partial refusal is not a success. The note above says the optimistic
+       * switches are "not about them" — they are: the server kept the child
+       * document and dropped this device's key, so the switch shows a
+       * protection the device never got, and the toast saying so clears in nine
+       * seconds while the switch stays wrong for good.
+       *
+       * Safe against the refreshed read above, which is deliberately not
+       * awaited: the caller rolls back to the stale value first, then the
+       * refresh moves the effect's deps and re-seeds the true one.
+       */
+      if (result?.refusedKeys?.length) {
+        return false;
+      }
       return result === undefined ? true : result;
     } catch (e) {
       /*
