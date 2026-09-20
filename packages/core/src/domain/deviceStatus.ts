@@ -103,20 +103,26 @@ export function getEffectiveDeviceStatus(
 }
 
 /**
- * The word a chip puts on one device's status.
+ * The status a chip may both **word and paint**.
  *
- * **Pass `device`.** Without it a `'locked'` status is taken at face value, and
- * that status is only ever `isLocked` — what the parent asked for, never what
- * the device did. A phone that beat forty seconds before the parent pressed
- * Lock is inside the live window and has answered nothing, so the chip said
- * **Locked** while the row under it said "Lock sent — waiting for the device"
- * (`domain/deviceListPriority`) and the web dashboard's pill said the same
- * (`dash.statusLockSent`). Two sentences on one screen, one of them untrue —
- * reported on an iPhone, 2026-09-20.
+ * `getEffectiveDeviceStatus` answers `'locked'` off `isLocked`, which is what
+ * the parent asked for and never what the device did. A phone that beat forty
+ * seconds before the parent pressed Lock is inside the live window and has
+ * answered nothing, so the chip said **Locked** while the row under it said
+ * "Lock sent — waiting for the device" (`domain/deviceListPriority`) and the
+ * web dashboard's pill said the same (`dash.statusLockSent`). Two sentences on
+ * one screen, one of them untrue — reported on an iPhone, 2026-09-20.
  *
- * The lock is not lost by dropping it here: the row keeps it, and it is the
- * half that can say *which* lock state this is. What is left is the honest
- * claim — the device is reachable.
+ * **Resolve once, here.** A chip derives three things from the status — the
+ * word, the tone and the dot — and correcting only the word inside
+ * `getDeviceStatusLabel` left an orange, unpulsing dot labelled "Online" on a
+ * device that was simply reachable. Every caller reads this before any of the
+ * three, so they agree by construction.
+ *
+ * The lock is not lost by dropping it: the row reads the raw fields and keeps
+ * **"Lock sent — waiting for the device"**, the half that can say *which* lock
+ * state this is. What a chip has room for is the honest claim — the device is
+ * reachable.
  *
  * **A parked device is the exception, and the lock still wins there.** Its
  * silence is a plan decision (`docs/PRICING.md` §6), so
@@ -124,27 +130,37 @@ export function getEffectiveDeviceStatus(
  * answer `sent` about every parked device forever. `getEffectiveDeviceStatus`
  * makes the same exception for the same reason.
  */
+export function getChipDeviceStatus(
+  status: Device['status'],
+  device: Device,
+): Device['status'] {
+  if (status !== 'locked' || device.monitoringState === 'parked') {
+    return status;
+  }
+  return resolveLockEnforcement(device) === 'inForce' ? 'locked' : 'online';
+}
+
+/**
+ * The word a chip puts on one device's status.
+ *
+ * `device` is optional only for a caller that has already resolved the status
+ * through `getChipDeviceStatus`; passing it twice is the same answer.
+ */
 export function getDeviceStatusLabel(
   status: Device['status'],
   t: TranslateFn,
   device?: Device,
 ): string {
-  if (status === 'online') {
+  const shown = device ? getChipDeviceStatus(status, device) : status;
+  if (shown === 'online') {
     return t('shared.online');
   }
-  if (status === 'locked') {
-    if (
-      device &&
-      device.monitoringState !== 'parked' &&
-      resolveLockEnforcement(device) !== 'inForce'
-    ) {
-      return t('shared.online');
-    }
+  if (shown === 'locked') {
     return t('shared.locked');
   }
   // `family`, not `shared`: the dashboard reads this namespace through the
   // app pack and does not have `shared` on its list.
-  if (status === 'parked') {
+  if (shown === 'parked') {
     return t('family.devicePausedLabel');
   }
   return t('shared.offline');

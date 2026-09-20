@@ -1181,6 +1181,12 @@ export default function Dashboard({
   /* Which length to pause the open device's browsing for. Not in the URL: it is
      what a press did, not where the parent landed (`dashboard/navUrl.js`). */
   const [pauseSheetOpen, setPauseSheetOpen] = useState(false);
+  /*
+   * Minutes left on a running pause, set only while the sheet is asking
+   * whether to end it. Null is the sheet's other question — how long to pause
+   * for — so one piece of state chooses which of the two it renders.
+   */
+  const [pauseResumeMinutes, setPauseResumeMinutes] = useState(null);
   const promptedParkedSetRef = useRef(null);
   useEffect(() => {
     if (parking.parked.length === 0) {
@@ -2210,13 +2216,14 @@ export default function Dashboard({
     );
 
   /**
-   * Pressing the Pause browsing card — resume at once, or ask for how long.
+   * Pressing the Pause browsing card — ask what to do, either way.
    *
    * The phone's `useDeviceDetailScreen` does exactly this with a native alert.
-   * **A running pause ends on the press, with no confirmation**: giving the web
-   * back early is the direction that can never harm, and a parent who pressed
-   * it by accident presses the card again. Starting one is a choice between
-   * three lengths, which on this surface is the step-up sheet's furniture.
+   * **A running pause is ended only after a confirm**: this used to end on the
+   * press, arguing that a parent who pressed it by accident presses the card
+   * again — which is not a recovery, because pressing again asks for a length
+   * and the deadline that was running is already gone. Starting one is a
+   * choice between three lengths; both questions are the same sheet.
    *
    * Per device, never `updateChildRules`: `browsingPausedUntil` is not a
    * `CHILD_RULE_KEYS` entry — a pause is an interruption of one machine, not a
@@ -2229,12 +2236,21 @@ export default function Dashboard({
     if (!live || !device) return;
     const until = device.controls?.browsingPausedUntil;
     if (typeof until === 'number' && until > Date.now()) {
-      run('pause-browsing', () =>
-        actions.updateControls(device.id, { browsingPausedUntil: null }),
-      );
+      setPauseResumeMinutes(Math.max(1, Math.round((until - Date.now()) / 60_000)));
+      setPauseSheetOpen(true);
       return;
     }
+    setPauseResumeMinutes(null);
     setPauseSheetOpen(true);
+  };
+
+  const resumePauseBrowsing = () => {
+    setPauseSheetOpen(false);
+    setPauseResumeMinutes(null);
+    if (!live || !device) return;
+    run('pause-browsing', () =>
+      actions.updateControls(device.id, { browsingPausedUntil: null }),
+    );
   };
 
   /*
@@ -2963,13 +2979,19 @@ export default function Dashboard({
           />
         )}
 
-        {/* How long to pause the open device's browsing for — the phone's
-            three-option alert, in this surface's one modal shape. */}
+        {/* How long to pause the open device's browsing for, or whether to end
+            a pause already running — the phone's two alerts, in this surface's
+            one modal shape. */}
         {pauseSheetOpen && (
           <PauseBrowsingSheet
             appT={activityT}
             onChoose={startPauseBrowsing}
-            onClose={() => setPauseSheetOpen(false)}
+            resumeMinutes={pauseResumeMinutes}
+            onResume={resumePauseBrowsing}
+            onClose={() => {
+              setPauseSheetOpen(false);
+              setPauseResumeMinutes(null);
+            }}
           />
         )}
 

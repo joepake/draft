@@ -144,4 +144,7 @@ export const deviceDetail = {
   pauseBrowsingLeft: 'रुकी हुई · {{minutes}} मिनट बाकी',
   pauseBrowsingFor: '{{minutes}} मिनट के लिए रोकें',
   pauseBrowsingResume: 'फिर से शुरू करें',
+  pauseBrowsingResumeTitle: 'ब्राउज़िंग फिर से शुरू करें?',
+  pauseBrowsingResumeBody:
+    'वेब अभी लौट आएगा, और बचे हुए {{minutes}} मिनट सहेजे नहीं जाएँगे।',
 } as const;

@@ -1006,7 +1006,7 @@
 /* There is no up/down pair in `@kidgate/tokens/icons` — one drawing per glyph,
    shared with the phone — so the chevron turns instead. */
 .dev-hero-protect-count .icon {
-  transition: transform var(--kg-motionFast, 120ms) ease;
+  transition: transform var(--kg-motion-fast) ease;
 }
 
 .dev-hero-protect-count.is-open .icon {
@@ -7637,4 +7637,66 @@ span.chip {
   font-size: var(--dash-text-1);
   white-space: pre-wrap;
   overflow-wrap: anywhere;
+}
+
+/* ---------- Arrival ----------
+ *
+ * `Dashboard.jsx` mounts one block per nav state and unmounts the last, so a
+ * CSS animation is the whole mechanism — no state, no library, no key. It
+ * fires when the node mounts and never replays on a re-render or a refresh,
+ * because React keeps the node. The skeleton covers the cold load; this
+ * covers every click after it.
+ *
+ * `--kg-ease-enter` is the phone's `Easing.out(Easing.cubic)`. `theme.js` has
+ * written it onto `:root` since the motion tokens landed and no rule in either
+ * stylesheet had ever used it — every transition here says plain `ease`, which
+ * is how two surfaces in the same house came to move on different curves.
+ *
+ * `backwards`, not `both`: `.dev-tabs` is sticky and a transform held by a
+ * forwards fill would make it a containing block for anything fixed under it.
+ */
+
+@keyframes dash-enter {
+  from {
+    opacity: 0;
+    transform: translateY(0.4rem);
+  }
+}
+
+.dash-main > * {
+  animation: dash-enter var(--kg-motion-normal) var(--kg-ease-enter) backwards;
+}
+
+/* The backdrop only fades — no transform — so it stays the containing block
+   for the dialog it centres while the dialog rises inside it. */
+@keyframes backdrop-enter {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes sheet-enter {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem) scale(0.98);
+  }
+}
+
+.sheet-backdrop {
+  animation: backdrop-enter var(--kg-motion-fast) var(--kg-ease-enter) backwards;
+}
+
+.sheet {
+  animation: sheet-enter var(--kg-motion-normal) var(--kg-ease-enter) backwards;
+}
+
+/* Same guard as the ring, the toast and the skeleton: this stylesheet is the
+   only one `apps/dashboard` imports, so `index.css`'s reset reaches none of
+   it. */
+@media (prefers-reduced-motion: reduce) {
+  .dash-main > *,
+  .sheet-backdrop,
+  .sheet {
+    animation: none;
+  }
 }

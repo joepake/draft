@@ -18,8 +18,20 @@ import { BROWSING_PAUSE_CHOICE_MINUTES } from '@kidgate/schema/deviceControls';
  *
  * Three plain buttons and no primary: they are equal choices, and a highlighted
  * one would recommend a length this surface knows nothing about.
+ *
+ * **With `resumeMinutes` it asks the opposite question instead** — the same
+ * sheet, one button, because ending a pause is not reversible: the deadline
+ * that was running is gone and the next pause starts from a length the parent
+ * picks. One component rather than a second modal shape, so the two questions
+ * cannot drift apart.
  */
-export default function PauseBrowsingSheet({ appT, onChoose, onClose }) {
+export default function PauseBrowsingSheet({
+  appT,
+  onChoose,
+  onClose,
+  resumeMinutes = null,
+  onResume,
+}) {
   const { t } = useT();
   const closeRef = useRef(null);
 
@@ -38,31 +50,48 @@ export default function PauseBrowsingSheet({ appT, onChoose, onClose }) {
     return () => window.removeEventListener('keydown', onKey);
   }, [onClose]);
 
+  const resuming = typeof resumeMinutes === 'number';
+  const title = resuming
+    ? appT('deviceDetail.pauseBrowsingResumeTitle')
+    : appT('deviceDetail.pauseBrowsing');
+
   return (
     <div className="sheet-backdrop" onClick={onClose}>
       <div
         className="sheet"
         role="dialog"
         aria-modal="true"
-        aria-label={appT('deviceDetail.pauseBrowsing')}
+        aria-label={title}
         onClick={event => event.stopPropagation()}
       >
         <div className="sheet-head">
-          <h2 className="sheet-title">{appT('deviceDetail.pauseBrowsing')}</h2>
+          <h2 className="sheet-title">{title}</h2>
           <button ref={closeRef} className="login-link" onClick={onClose}>
             {t('dash.close')}
           </button>
         </div>
-        <p className="sheet-body">{appT('deviceDetail.pauseBrowsingDescription')}</p>
-        {BROWSING_PAUSE_CHOICE_MINUTES.map(minutes => (
-          <button
-            key={minutes}
-            className="btn btn-block"
-            onClick={() => onChoose(minutes)}
-          >
-            {appT('deviceDetail.pauseBrowsingFor', { minutes })}
+        <p className="sheet-body">
+          {resuming
+            ? appT('deviceDetail.pauseBrowsingResumeBody', {
+                minutes: resumeMinutes,
+              })
+            : appT('deviceDetail.pauseBrowsingDescription')}
+        </p>
+        {resuming ? (
+          <button className="btn btn-block" onClick={onResume}>
+            {appT('deviceDetail.pauseBrowsingResume')}
           </button>
-        ))}
+        ) : (
+          BROWSING_PAUSE_CHOICE_MINUTES.map(minutes => (
+            <button
+              key={minutes}
+              className="btn btn-block"
+              onClick={() => onChoose(minutes)}
+            >
+              {appT('deviceDetail.pauseBrowsingFor', { minutes })}
+            </button>
+          ))
+        )}
       </div>
     </div>
   );

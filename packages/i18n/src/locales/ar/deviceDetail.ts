@@ -153,4 +153,7 @@ export const deviceDetail = {
   pauseBrowsingLeft: 'متوقف · يتبقى {{minutes}} دقيقة',
   pauseBrowsingFor: 'إيقاف لمدة {{minutes}} دقيقة',
   pauseBrowsingResume: 'استئناف',
+  pauseBrowsingResumeTitle: 'استئناف التصفح؟',
+  pauseBrowsingResumeBody:
+    'يعود الويب الآن، ولن تُحفظ الدقائق المتبقية ({{minutes}} دقيقة).',
 } as const;

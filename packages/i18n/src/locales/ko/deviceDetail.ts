@@ -142,4 +142,7 @@ export const deviceDetail = {
   pauseBrowsingLeft: '일시중지 · {{minutes}}분 남음',
   pauseBrowsingFor: '{{minutes}}분 중지',
   pauseBrowsingResume: '재개',
+  pauseBrowsingResumeTitle: '웹 사용을 재개하시겠습니까?',
+  pauseBrowsingResumeBody:
+    '웹이 바로 돌아오고, 남은 {{minutes}}분은 유지되지 않습니다.',
 } as const;

@@ -144,4 +144,7 @@ export const deviceDetail = {
   pauseBrowsingLeft: 'Dijeda · sisa {{minutes}} mnt',
   pauseBrowsingFor: 'Jeda {{minutes}} mnt',
   pauseBrowsingResume: 'Lanjutkan',
+  pauseBrowsingResumeTitle: 'Lanjutkan penjelajahan?',
+  pauseBrowsingResumeBody:
+    'Web kembali sekarang, dan sisa {{minutes}} mnt tidak disimpan.',
 } as const;

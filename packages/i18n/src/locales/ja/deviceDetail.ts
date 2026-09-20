@@ -145,4 +145,7 @@ export const deviceDetail = {
   pauseBrowsingLeft: '一時停止中 · 残り{{minutes}}分',
   pauseBrowsingFor: '{{minutes}}分停止する',
   pauseBrowsingResume: '再開',
+  pauseBrowsingResumeTitle: 'ブラウジングを再開しますか？',
+  pauseBrowsingResumeBody:
+    'ウェブがすぐに使えるようになり、残り{{minutes}}分は保持されません。',
 } as const;

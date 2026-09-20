@@ -147,4 +147,7 @@ export const deviceDetail = {
   pauseBrowsingLeft: 'Pausiert · noch {{minutes}} Min.',
   pauseBrowsingFor: 'Für {{minutes}} Min. pausieren',
   pauseBrowsingResume: 'Fortsetzen',
+  pauseBrowsingResumeTitle: 'Surfen fortsetzen?',
+  pauseBrowsingResumeBody:
+    'Das Web ist sofort wieder da, die restlichen {{minutes}} Min. verfallen.',
 } as const;

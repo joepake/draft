@@ -139,4 +139,7 @@ export const deviceDetail = {
   pauseBrowsingLeft: 'Đang dừng · còn {{minutes}} phút',
   pauseBrowsingFor: 'Dừng {{minutes}} phút',
   pauseBrowsingResume: 'Tiếp tục',
+  pauseBrowsingResumeTitle: 'Tiếp tục duyệt web?',
+  pauseBrowsingResumeBody:
+    'Web mở lại ngay, và {{minutes}} phút còn lại sẽ không được giữ.',
 } as const;

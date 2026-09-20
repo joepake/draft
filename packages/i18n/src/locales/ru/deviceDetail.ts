@@ -149,4 +149,7 @@ export const deviceDetail = {
   pauseBrowsingLeft: 'Пауза · осталось {{minutes}} мин',
   pauseBrowsingFor: 'Пауза на {{minutes}} мин',
   pauseBrowsingResume: 'Возобновить',
+  pauseBrowsingResumeTitle: 'Возобновить веб?',
+  pauseBrowsingResumeBody:
+    'Веб вернётся сразу, а оставшиеся {{minutes}} мин не сохранятся.',
 } as const;

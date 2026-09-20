@@ -143,4 +143,6 @@ export const deviceDetail = {
   pauseBrowsingLeft: 'Duraklatıldı · {{minutes}} dk kaldı',
   pauseBrowsingFor: '{{minutes}} dk duraklat',
   pauseBrowsingResume: 'Sürdür',
+  pauseBrowsingResumeTitle: 'Tarama sürdürülsün mü?',
+  pauseBrowsingResumeBody: 'Web hemen geri gelir, kalan {{minutes}} dk saklanmaz.',
 } as const;
