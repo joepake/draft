@@ -14,7 +14,13 @@ import { isBandTooThin } from '@kidgate/core/domain/usageTimeline';
 import ChildInitial from './ChildInitial.jsx';
 import Toast from './Toast.jsx';
 import { deviceIconName } from './deviceIcon.js';
-import { UsageDayTimeline, formatMinutes } from './charts.jsx';
+import {
+  AppCategoryLine,
+  AppCategoryNote,
+  UsageDayTimeline,
+  formatMinutes,
+} from './charts.jsx';
+import { useAppCategories } from './useAppCategories.js';
 import { buildChildShareModel, shareChildReportImage } from './childShareCard.js';
 import { CHILD_TOP_APPS_LIMIT, useChildUsage } from './useChildUsage.js';
 
@@ -138,6 +144,11 @@ export default function ChildReport({
 
   const activeShares = scoped?.shares ?? shares;
   const activeApps = scoped?.apps ?? apps;
+  // Read once for the ranking, off the repository's session memo — the device
+  // tab's own cards pay nothing for the apps this list already asked about.
+  const appCategories = useAppCategories(
+    activeApps.map(app => app.packageNames[0] ?? ''),
+  );
   const activeDeviceMinutes = scoped
     ? scoped.shares.reduce((sum, row) => sum + row.minutes, 0)
     : totals.deviceMinutes;
@@ -696,13 +707,6 @@ export default function ChildReport({
                         }}
                       />
                     </span>
-                    {/* A device that can only say HOW MUCH, not when — the
-                        reason a day is a range rather than a figure. */}
-                    {!row.hasTimeline && (
-                      <em className="creport-totals-only">
-                        {appT('childReport.deviceTotalsOnly')}
-                      </em>
-                    )}
                   </span>
                   <Icon name="chevronRight" size={14} />
                 </button>
@@ -728,6 +732,14 @@ export default function ChildReport({
                   <strong>{app.label}</strong>
                   <em>{formatMinutes(app.minutes)}</em>
                 </span>
+                {/* What the app is, under its name — the phone's row carries
+                    the same line from the same `appCategories` row. Keyed on
+                    the first package: the rows are grouped by label, and
+                    Chrome on a Mac and Chrome on a phone are one kind. */}
+                <AppCategoryLine
+                  appT={appT}
+                  entry={appCategories.get(app.packageNames[0] ?? '') ?? null}
+                />
                 <span className="rhub-bar-track">
                   <span
                     className="rhub-bar-fill"
@@ -764,6 +776,7 @@ export default function ChildReport({
             )}
           </ul>
         )}
+        <AppCategoryNote appT={appT} entries={appCategories.values()} />
       </div>
     </section>
   );

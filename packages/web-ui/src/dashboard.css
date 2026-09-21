@@ -1818,6 +1818,31 @@
   flex-shrink: 0;
 }
 
+/*
+ * What an app is, under its name — the nightly classifier's answer
+ * (`appCategories/{package}`), in the phone's own words.
+ *
+ * `is-serious` is a tone and never a block: the eight kinds that name an app's
+ * purpose rather than its content, and only at high confidence. Same rule, same
+ * colour role as the phone's `categorySerious`.
+ */
+.app-cat {
+  display: block;
+  margin: -0.15rem 0 0.35rem;
+  font-size: var(--dash-text-1);
+  font-style: normal;
+  color: var(--muted);
+}
+
+.app-cat.is-serious {
+  color: var(--kg-warningStrong);
+}
+
+/* The classifier caveat, once per card rather than once per row. */
+.app-cat-note {
+  margin-top: 0.6rem;
+}
+
 .hbar-value em {
   font-style: normal;
   color: var(--muted);
@@ -2035,18 +2060,19 @@
 }
 
 /*
- * Hatched rather than a third colour, and that is the point of the whole band.
- * Every flat fill reads as a measurement; a hatch reads as an absence, which
- * is what an agent that was not running actually left behind. It also survives
- * being printed, screenshotted, and looked at by someone who cannot separate
- * green from grey.
+ * Amber, the same amber the phone's band uses (`warningSoft`): a gap in
+ * measurement is a gap in protection, not a neutral fact, and two parent
+ * consoles drawing one day in two visual languages is a comparison a parent
+ * cannot make.
+ *
+ * It replaced a 45° hatch, whose argument was that a hatch reads as an absence
+ * where every flat fill reads as a measurement. What that did not survive is
+ * the legend dot being 9px, where the hatch is one grey smudge. The sentence
+ * under the legend carries the meaning now, on both surfaces, and it is
+ * readable without colour at all.
  */
 .tl-unknown {
-  background: repeating-linear-gradient(
-    45deg,
-    color-mix(in srgb, var(--ink) 7%, transparent) 0 5px,
-    transparent 5px 10px
-  );
+  background: var(--kg-warningSoft);
 }
 
 .tl-used-dot {
@@ -2058,11 +2084,15 @@
 }
 
 .tl-unknown-dot {
-  background: repeating-linear-gradient(
-    45deg,
-    color-mix(in srgb, var(--ink) 30%, transparent) 0 2px,
-    transparent 2px 4px
-  );
+  background: var(--kg-warningSoft);
+}
+
+/* The caveat under the legend — the phone prints the same sentence in the same
+   place. Caption voice, quieter than the band it qualifies. */
+.tl-hint {
+  margin: 0.35rem 0 0;
+  font-size: var(--dash-text-1);
+  color: var(--muted);
 }
 
 .tl-empty {
@@ -6553,12 +6583,6 @@ span.chip {
   height: 1.75rem;
   border-radius: var(--dash-radius-1);
   color: var(--kg-onPrimary, var(--plane));
-}
-
-.creport-totals-only {
-  font-style: normal;
-  font-size: var(--dash-text-1);
-  color: var(--muted);
 }
 
 /* ---- When the screens were on ----

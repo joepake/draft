@@ -1,12 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
 import { getLocaleTag, t } from '@kidgate/i18n/web';
 import { useT } from '@kidgate/web-ui/useT';
+import { isSeriousAppCategory, isShowableAppCategory } from '@kidgate/schema/aiApps';
 import {
   timelineAvailability,
   timelineMinutesUnmeasured,
   timelineRuns,
 } from '@kidgate/core/domain/usageTimeline';
 import { otherAppsMinutes } from '@kidgate/core/domain/childUsage';
+import { useActivityTranslate } from './activityCopy.js';
+import { useAppCategories } from './useAppCategories.js';
 
 /** Actual pixel width of a container, so SVG text renders at its real size. */
 export function useMeasure() {
@@ -364,6 +367,14 @@ export function UsageRing({ used, limit, bonus = 0, size = 168 }) {
  */
 export function AppBars({ apps = [], limits = [], totalMinutes = 0 }) {
   const { t: tr } = useT();
+  const appT = useActivityTranslate();
+  /*
+   * Fetched here rather than taken as a prop: both call sites on the device
+   * tab rank the same apps, and the repository memoises per identifier for the
+   * session, so the card asking for its own labels costs nothing and cannot be
+   * the one that forgets to.
+   */
+  const categories = useAppCategories(apps.map(a => a.packageName));
   const max = Math.max(...apps.map(a => a.minutes), ...limits.map(l => l.minutes), 1);
   /*
    * The day the eight rows cannot show — the server keeps eight per day and
@@ -378,54 +389,109 @@ export function AppBars({ apps = [], limits = [], totalMinutes = 0 }) {
   }
 
   return (
-    <ul className="hbars">
-      {apps.map(a => {
-        const cap = limits.find(l => l.id === a.packageName);
-        const over = cap && a.minutes > cap.minutes;
-        return (
-          <li key={a.packageName}>
-            <div className="hbar-head">
-              <span className="hbar-label">{a.label}</span>
-              {/*
+    <>
+      <ul className="hbars">
+        {apps.map(a => {
+          const cap = limits.find(l => l.id === a.packageName);
+          const over = cap && a.minutes > cap.minutes;
+          return (
+            <li key={a.packageName}>
+              <div className="hbar-head">
+                <span className="hbar-label">{a.label}</span>
+                {/*
                 Zero is a real row rather than a dropped one: `usageSnapshot`
                 ranks on seconds and rounds last, so an app worth forty seconds
                 arrives here as `0`. `0m` would say nothing happened, which is
                 the reading that had a parent asking where a minute went.
               */}
-              <span className={`hbar-value${over ? ' is-over' : ''}`}>
-                {a.minutes > 0 ? formatMinutes(a.minutes) : tr('dash.underAMinute')}
-                {cap && <em> / {formatMinutes(cap.minutes)}</em>}
-              </span>
-            </div>
-            <div className="hbar-track">
-              <div
-                className={`hbar-fill${over ? ' is-over' : ''}`}
-                style={{ width: `${(a.minutes / max) * 100}%` }}
+                <span className={`hbar-value${over ? ' is-over' : ''}`}>
+                  {a.minutes > 0 ? formatMinutes(a.minutes) : tr('dash.underAMinute')}
+                  {cap && <em> / {formatMinutes(cap.minutes)}</em>}
+                </span>
+              </div>
+              {/* Under the name, above the bar — the phone's row order. Its own
+                line rather than beside the label: `.hbar-label` is a row that
+                also carries the category bars' dots, and a kind pushed onto
+                the end of a long app name is the first thing to be cut. */}
+              <AppCategoryLine
+                appT={appT}
+                entry={categories.get(a.packageName) ?? null}
               />
-              {cap && (
-                <span
-                  className="hbar-cap"
-                  style={{ left: `${(cap.minutes / max) * 100}%` }}
-                  title={tr('viz.limit', { value: formatMinutes(cap.minutes) })}
+              <div className="hbar-track">
+                <div
+                  className={`hbar-fill${over ? ' is-over' : ''}`}
+                  style={{ width: `${(a.minutes / max) * 100}%` }}
                 />
-              )}
+                {cap && (
+                  <span
+                    className="hbar-cap"
+                    style={{ left: `${(cap.minutes / max) * 100}%` }}
+                    title={tr('viz.limit', { value: formatMinutes(cap.minutes) })}
+                  />
+                )}
+              </div>
+            </li>
+          );
+        })}
+        {otherMinutes >= 1 && (
+          <li className="hbar-other">
+            <div className="hbar-head">
+              <span className="hbar-label">{tr('dash.topAppsOther')}</span>
+              <span className="hbar-value">{formatMinutes(otherMinutes)}</span>
             </div>
-          </li>
-        );
-      })}
-      {otherMinutes >= 1 && (
-        <li className="hbar-other">
-          <div className="hbar-head">
-            <span className="hbar-label">{tr('dash.topAppsOther')}</span>
-            <span className="hbar-value">{formatMinutes(otherMinutes)}</span>
-          </div>
-          {/* No bar on purpose: this is a fact about the day, not an app,
+            {/* No bar on purpose: this is a fact about the day, not an app,
               and a bar would invite comparing it against rows it is the
               complement of. */}
-        </li>
-      )}
-    </ul>
+          </li>
+        )}
+      </ul>
+      <AppCategoryNote appT={appT} entries={categories.values()} />
+    </>
   );
+}
+
+/**
+ * What the app is, when anything knows — the web twin of the phone's
+ * `AppCategoryLine` (`apps/mobile/src/features/usageReport/AppFactRows.tsx`).
+ *
+ * The label comes from the **app pack** through `activityT`, not from the web
+ * pack's `appCat`: that namespace carries only the eight flagged kinds, so
+ * Zalo would have rendered nothing at all, and the phone already names all
+ * twenty-six in fourteen languages (`.claude/rules/i18n.md`).
+ *
+ * Nothing for an app the nightly job has not reached, and nothing by design for
+ * a launcher or a screensaver — `isShowableAppCategory` drops those, because
+ * "95 minutes in loginwindow" teaches a parent nothing.
+ */
+export function AppCategoryLine({ appT, entry }) {
+  if (!isShowableAppCategory(entry)) return null;
+
+  const name = appT(`webFilter.category.${entry.category}`);
+  // Shown only when the rating is known: 0 is the common answer and does not
+  // mean "suitable for everyone". Same rule as the phone's row.
+  const age = entry.minAge > 0 ? appT('usage.appMinAge', { age: entry.minAge }) : '';
+
+  return (
+    <em className={`app-cat${isSeriousAppCategory(entry) ? ' is-serious' : ''}`}>
+      {age ? `${name} · ${age}` : name}
+    </em>
+  );
+}
+
+/**
+ * The one line saying the kinds above were worked out rather than looked up.
+ *
+ * A fact about the card, not about a row — a badge per row would mark every row
+ * and stop being a mark. Hidden when nothing above carries a kind, which is the
+ * ordinary state of a device paired this afternoon.
+ */
+export function AppCategoryNote({ appT, entries }) {
+  for (const entry of entries) {
+    if (isShowableAppCategory(entry)) {
+      return <p className="hint app-cat-note">{appT('usage.topAppsAiNote')}</p>;
+    }
+  }
+  return null;
 }
 
 /* ---------------------------------------------------------------- *
@@ -498,10 +564,13 @@ export function UsageDayTimeline({ day, platform, capability, lockedSlot }) {
 
   return (
     <div className="tl">
+      {/* Bare numbers, as the phone's `UsageTimelineBand` draws them: nine
+          labels each carrying a unit ("0h 3h 6h…") is the unit printed nine
+          times for a row whose whole job is to be read at a glance. */}
       <div className="tl-hours">
         {TIMELINE_TICKS.map(h => (
           <span key={h} style={{ left: `${(h / 24) * 100}%` }}>
-            {tr('viz.hours', { count: h })}
+            {h}
           </span>
         ))}
       </div>
@@ -557,12 +626,18 @@ export function UsageDayTimeline({ day, platform, capability, lockedSlot }) {
           </span>
         )}
         {unmeasured > 0 && (
-          <span title={tr('viz.timelineUnmeasuredHint')}>
+          <span>
             <i className="dot tl-unknown-dot" />
             {tr('viz.timelineUnmeasured')}
           </span>
         )}
       </div>
+
+      {/* The sentence the phone prints under the same legend. It was a `title`
+          here, which is a tooltip on a 9px dot: no touch device shows it, and
+          the one state a parent most needs explaining was the one state that
+          explained itself only to a mouse. */}
+      {unmeasured > 0 && <p className="tl-hint">{tr('viz.timelineUnmeasuredHint')}</p>}
     </div>
   );
 }
