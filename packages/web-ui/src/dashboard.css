@@ -1641,15 +1641,16 @@
 }
 
 /*
- * A hairline, not a frame. An SVG stroke is centred on the path, so a 2px
- * width drew 1px outside a band that is already the full height of the plot —
- * a box louder than every bar in the chart, for a state that only has to be
- * noticed. The tint carries the mark; this says which column has the keyboard.
+ * No border on any state, and the focused column is simply the deepest tint.
+ *
+ * A stroke round this band is always wrong at any width: the band is the full
+ * height of the plot, so an outline of it is a box taller and louder than
+ * every bar in the chart — drawn for a state that only has to be noticed.
+ * Depth of fill is the whole vocabulary here: nothing, faint on hover, brand
+ * when picked, brand again and stronger when it holds the keyboard.
  */
 .viz-pick:focus-visible .viz-col {
-  fill: color-mix(in srgb, var(--brand) 14%, transparent);
-  stroke: var(--brand);
-  stroke-width: 1;
+  fill: color-mix(in srgb, var(--brand) 26%, transparent);
 }
 
 .viz-axis.is-selected {
@@ -1788,12 +1789,21 @@
   flex-wrap: wrap;
 }
 
+/*
+ * Four figures that fill whatever width the card has, in as many columns as
+ * fit. The card went full width when Today moved to the top of the tab
+ * (2026-09-21), and as a single stack each row became a label at the far left
+ * and a value the width of a desk away from it — a pair nobody reads as a
+ * pair. `auto-fit` is two columns on the tab and one on a phone, off the same
+ * `170px` floor the flex layout already used.
+ */
 .today-stats {
   flex: 1;
   min-width: 170px;
   list-style: none;
   display: grid;
-  gap: 0.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 0.5rem 1.25rem;
 }
 
 .today-stats li {
