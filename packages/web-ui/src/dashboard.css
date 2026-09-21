@@ -1640,10 +1640,16 @@
   outline: none;
 }
 
+/*
+ * A hairline, not a frame. An SVG stroke is centred on the path, so a 2px
+ * width drew 1px outside a band that is already the full height of the plot —
+ * a box louder than every bar in the chart, for a state that only has to be
+ * noticed. The tint carries the mark; this says which column has the keyboard.
+ */
 .viz-pick:focus-visible .viz-col {
-  fill: color-mix(in srgb, var(--brand) 12%, transparent);
+  fill: color-mix(in srgb, var(--brand) 14%, transparent);
   stroke: var(--brand);
-  stroke-width: 2;
+  stroke-width: 1;
 }
 
 .viz-axis.is-selected {

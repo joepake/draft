@@ -3666,6 +3666,63 @@ export default function Dashboard({
 
         {deviceView && tab === 'screen' && (
           <>
+            {/*
+              The picker first, because everything under it is about the day it
+              picks: the Top apps card takes that date into its own heading and
+              the hour band draws that day's minutes.
+
+              It sat third until 2026-09-21, on the argument that the card
+              order should answer "what did they use" before "how has it been
+              trending". That argument ignored what the bars had become — a
+              control. A parent who clicked 19/9 changed two cards ABOVE the
+              thing they clicked, one of them off the top of the screen, and
+              the only sign it had worked was a date in a heading they had to
+              scroll back to. A control sits above what it controls.
+
+              The Today card stays inside the pair below and stays TODAY —
+              `stats.used` is `controls.minutesUsedToday`, which no picked day
+              moves. Its own title says so, and it is the live figure this tab
+              opens for.
+            */}
+            <Card
+              title={t('dash.trendTitle')}
+              subtitle={t('dash.trendSub', { count: range })}
+              action={
+                <div className="seg">
+                  {[7, 14, 30].map(d => (
+                    <button
+                      key={d}
+                      className={range === d ? 'is-active' : ''}
+                      onClick={() => setRange(d)}
+                    >
+                      {t('dash.rangeDays', { count: d })}
+                    </button>
+                  ))}
+                </div>
+              }
+            >
+              <UsageBars
+                data={device.usage}
+                limit={c.dailyLimitMinutes}
+                days={range}
+                selectedDate={selectedUsageDate ?? todayKey}
+                onSelectDate={date =>
+                  setSelectedUsageDate(prev => (prev === date ? null : date))
+                }
+              />
+              {/*
+                A free family has no `usageDays` at all (`docs/PRICING.md` §4),
+                so these bars are empty for them and an empty chart reads as one
+                that failed rather than as the edge of the plan. A sentence and
+                no button: the hour band below already carries this column's
+                offer. App pack, like the two notes below — the phone says the
+                same thing on its own 30-day card (`.claude/rules/i18n.md`).
+              */}
+              {!hasFullAccess && (
+                <p className="hint">{activityT('plans.premiumHistoryNote')}</p>
+              )}
+            </Card>
+
             <div className="grid-2">
               <Card
                 id="daily-limit"
@@ -3758,59 +3815,13 @@ export default function Dashboard({
               </Card>
             </div>
 
-            <Card
-              title={t('dash.trendTitle')}
-              subtitle={t('dash.trendSub', { count: range })}
-              action={
-                <div className="seg">
-                  {[7, 14, 30].map(d => (
-                    <button
-                      key={d}
-                      className={range === d ? 'is-active' : ''}
-                      onClick={() => setRange(d)}
-                    >
-                      {t('dash.rangeDays', { count: d })}
-                    </button>
-                  ))}
-                </div>
-              }
-            >
-              {/*
-                The bars are also the day picker for the Top apps card above.
-                Above, not below, because the card order answers "what did they
-                use" before "how has it been trending" — so the picked day
-                carries its date in that card's own heading rather than relying
-                on the parent connecting a highlighted bar to a card they have
-                to scroll back to.
-              */}
-              <UsageBars
-                data={device.usage}
-                limit={c.dailyLimitMinutes}
-                days={range}
-                selectedDate={selectedUsageDate ?? todayKey}
-                onSelectDate={date =>
-                  setSelectedUsageDate(prev => (prev === date ? null : date))
-                }
-              />
-              {/*
-                A free family has no `usageDays` at all (`docs/PRICING.md` §4),
-                so these bars are empty for them and an empty chart reads as one
-                that failed rather than as the edge of the plan. A sentence and
-                no button: the hour band below already carries this column's
-                offer. App pack, like the two notes above — the phone says the
-                same thing on its own 30-day card (`.claude/rules/i18n.md`).
-              */}
-              {!hasFullAccess && (
-                <p className="hint">{activityT('plans.premiumHistoryNote')}</p>
-              )}
-            </Card>
-
             {/*
-              Under the bars, because it is about the bar that was picked. A bar
-              reading 28 minutes is a number a parent cannot interrogate; the
-              band says whether that was half an hour of use or a day nobody was
-              measuring — of that day, so it reads `screenDay` and falls back to
-              the newest only when no bar is picked.
+              The second card about the picked day, under the picker with the
+              first. A bar reading 28 minutes is a number a parent cannot
+              interrogate; the band says whether that was half an hour of use
+              or a day nobody was measuring — of that day, so it reads
+              `screenDay` and falls back to the newest only when no bar is
+              picked.
             */}
             <Card title={t('dash.timelineTitle')} subtitle={t('dash.timelineSub')}>
               <UsageDayTimeline
