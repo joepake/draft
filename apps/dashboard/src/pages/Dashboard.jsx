@@ -125,7 +125,7 @@ import AccountCard from '../dashboard/AccountCard.jsx';
 import ActivityFeed from '../dashboard/ActivityFeed.jsx';
 import { RichText } from '@kidgate/web-ui/RichText';
 import { useT } from '@kidgate/web-ui/useT';
-import { getLocaleTag } from '@kidgate/i18n/web';
+import { formatDayKey } from '../dashboard/reportCopy.js';
 import Card from '../dashboard/Card.jsx';
 import ControlsTab from '../dashboard/ControlsTab.jsx';
 
@@ -1968,6 +1968,13 @@ export default function Dashboard({
       : null) ?? null;
   const screenDayIsToday = !screenDay || screenDay.date === todayKey;
   /*
+   * The band under the Top apps card draws the picked day OR the newest one
+   * when no bar is picked, so its sentence is keyed on the day it DRAWS, not
+   * on `screenDayIsToday` — that flag is about today, and a device that
+   * stopped reporting on Thursday had the band saying "Today" over Thursday.
+   */
+  const timelineDay = screenDay ?? device?.usage?.[device.usage.length - 1] ?? null;
+  /*
    * `resolveTodayTopApps` answers today's question — it falls back to
    * `Device.topAppsToday`, which carries no date beyond `controls.usageDate`.
    * Handed an older day it would answer with today's three under that day's
@@ -3787,12 +3794,10 @@ export default function Dashboard({
                 title={
                   screenDayIsToday
                     ? t('dash.topAppsTitle')
-                    : t('dash.topAppsTitleDay', {
-                        date: new Date(screenDay.date).toLocaleDateString(
-                          getLocaleTag(),
-                          { day: 'numeric', month: 'short' },
-                        ),
-                      })
+                    : /* `formatDayKey`, never a raw `new Date(dayKey)`: the key
+                         parses as UTC midnight and formatting it in a local zone
+                         west of UTC prints the day before. */
+                      t('dash.topAppsTitleDay', { date: formatDayKey(screenDay.date) })
                 }
                 subtitle={t('dash.topAppsSub')}
               >
@@ -3822,9 +3827,18 @@ export default function Dashboard({
                 that day, so it reads `screenDay` and falls back to the newest
                 only when no bar is picked.
               */}
-              <Card title={t('dash.timelineTitle')} subtitle={t('dash.timelineSub')}>
+              <Card
+                title={t('dash.timelineTitle')}
+                subtitle={
+                  !timelineDay || timelineDay.date === todayKey
+                    ? t('dash.timelineSub')
+                    : t('dash.timelineSubDay', {
+                        date: formatDayKey(timelineDay.date),
+                      })
+                }
+              >
                 <UsageDayTimeline
-                  day={screenDay ?? device.usage[device.usage.length - 1]}
+                  day={timelineDay}
                   platform={device.platform}
                   capability={device.capabilities?.usageTimeline}
                   lockedSlot={

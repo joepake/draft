@@ -741,6 +741,8 @@ export default {
     toastSiteAllowed: 'Siteye izin verildi',
     timelineTitle: 'Ne zaman kullanıldı',
     timelineSub: 'Bugün, gece yarısından gece yarısına. Yeşil, cihazda geçen süredir.',
+    timelineSubDay:
+      '{{date}}, gece yarısından gece yarısına. Yeşil, cihazda geçen süredir.',
   },
 
   controlError: {

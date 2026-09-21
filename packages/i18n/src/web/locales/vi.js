@@ -742,6 +742,7 @@ export default {
     toastSiteAllowed: 'Đã cho phép trang',
     timelineTitle: 'Khung giờ sử dụng',
     timelineSub: 'Hôm nay, từ 0h đến 24h. Màu xanh lá là thời gian dùng thiết bị.',
+    timelineSubDay: '{{date}}, từ 0h đến 24h. Màu xanh lá là thời gian dùng thiết bị.',
   },
 
   controlError: {

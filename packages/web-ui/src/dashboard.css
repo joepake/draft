@@ -1633,10 +1633,21 @@
   fill: color-mix(in srgb, var(--brand) 12%, transparent);
 }
 
-/* The focus ring goes on the same band, which is what `outline` could not do:
-   an SVG outline takes no radius and no inset, so it drew a hard rectangle
-   around the whole plot height. */
-.viz-pick:focus-visible {
+/*
+ * `:focus`, not `:focus-visible`, and that distinction is the whole bug.
+ *
+ * The blue rounded frame around a clicked column was never this stylesheet's:
+ * it is the browser's own ring, plus `index.css`'s `[tabindex]:focus-visible`
+ * — and `apps/dashboard` imports BOTH sheets (`main.jsx` takes `index.css`,
+ * `App.jsx` takes this one), whatever the older comments here claim. A `<g>`
+ * carrying `tabindex` is focused by a mouse click, and a click gives `:focus`
+ * without giving `:focus-visible` on Safari, so an override written for
+ * `:focus-visible` alone matched nothing and the UA ring stood.
+ *
+ * `:focus-visible` implies `:focus`, so this covers the keyboard too; what a
+ * keyboard gets INSTEAD is the deepest fill, below.
+ */
+.viz-pick:focus {
   outline: none;
 }
 
@@ -7974,9 +7985,11 @@ span.chip {
   animation-delay: calc(80ms + min(var(--i, 0), 8) * 35ms);
 }
 
-/* Same guard as the ring, the toast and the skeleton: this stylesheet is the
-   only one `apps/dashboard` imports, so `index.css`'s reset reaches none of
-   it. */
+/* Same guard as the ring, the toast and the skeleton — and written out rather
+   than left to `index.css`'s blanket reset, which DOES reach this surface
+   (`main.jsx` imports that sheet, `App.jsx` this one; the older comments here
+   claiming otherwise were wrong, checked 2026-09-21). A guard beside the
+   animation is the one a person editing the animation reads. */
 @media (prefers-reduced-motion: reduce) {
   .dash-main > *,
   .sheet-backdrop,

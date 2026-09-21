@@ -728,6 +728,7 @@ export default {
     toastSiteAllowed: 'サイトを許可しました',
     timelineTitle: '使った時間帯',
     timelineSub: '今日の0時から24時まで。緑はデバイスを使っていた時間です。',
+    timelineSubDay: '{{date}}の0時から24時まで。緑はデバイスを使っていた時間です。',
   },
 
   controlError: {

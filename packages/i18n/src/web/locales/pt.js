@@ -739,6 +739,8 @@ export default {
     toastSiteAllowed: 'Site permitido',
     timelineTitle: 'Quando foi usado',
     timelineSub: 'Hoje, de meia-noite a meia-noite. O verde é o tempo no dispositivo.',
+    timelineSubDay:
+      '{{date}}, de meia-noite a meia-noite. O verde é o tempo no dispositivo.',
   },
 
   controlError: {

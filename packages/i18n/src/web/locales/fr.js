@@ -745,6 +745,8 @@ export default {
     timelineTitle: 'Quand l’appareil a été utilisé',
     timelineSub:
       'Aujourd’hui, de minuit à minuit. Le vert correspond au temps passé sur l’appareil.',
+    timelineSubDay:
+      '{{date}}, de minuit à minuit. Le vert correspond au temps passé sur l’appareil.',
   },
 
   controlError: {

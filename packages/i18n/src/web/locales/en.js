@@ -763,6 +763,8 @@ export default {
     toastSiteAllowed: 'Site allowed',
     timelineTitle: 'When it was used',
     timelineSub: 'Today, midnight to midnight. Green is time spent on the device.',
+    timelineSubDay:
+      '{{date}}, midnight to midnight. Green is time spent on the device.',
   },
 
   /*

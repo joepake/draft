@@ -743,6 +743,8 @@ export default {
     timelineTitle: 'Quando è stato usato',
     timelineSub:
       'Oggi, da mezzanotte a mezzanotte. Il verde è il tempo sul dispositivo.',
+    timelineSubDay:
+      '{{date}}, da mezzanotte a mezzanotte. Il verde è il tempo sul dispositivo.',
   },
 
   controlError: {

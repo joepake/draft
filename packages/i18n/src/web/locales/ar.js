@@ -779,6 +779,8 @@ export default {
     toastSiteAllowed: 'تم السماح بالموقع',
     timelineTitle: 'متى تم الاستخدام',
     timelineSub: 'اليوم، من منتصف الليل إلى منتصف الليل. الأخضر هو وقت استخدام الجهاز.',
+    timelineSubDay:
+      '‏{{date}}، من منتصف الليل إلى منتصف الليل. الأخضر هو وقت استخدام الجهاز.',
   },
 
   controlError: {

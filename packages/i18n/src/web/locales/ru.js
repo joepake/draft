@@ -762,6 +762,7 @@ export default {
     toastSiteAllowed: 'Сайт разрешён',
     timelineTitle: 'Когда устройством пользовались',
     timelineSub: 'Сегодня, от полуночи до полуночи. Зелёный — время на устройстве.',
+    timelineSubDay: '{{date}}, от полуночи до полуночи. Зелёный — время на устройстве.',
   },
 
   controlError: {

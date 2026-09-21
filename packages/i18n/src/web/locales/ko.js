@@ -722,6 +722,7 @@ export default {
     toastSiteAllowed: '사이트를 허용했어요',
     timelineTitle: '사용한 시간대',
     timelineSub: '오늘 자정부터 자정까지. 초록색은 기기를 사용한 시간입니다.',
+    timelineSubDay: '{{date}} 자정부터 자정까지. 초록색은 기기를 사용한 시간입니다.',
   },
 
   controlError: {

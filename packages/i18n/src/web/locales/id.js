@@ -727,6 +727,8 @@ export default {
     timelineTitle: 'Kapan perangkat dipakai',
     timelineSub:
       'Hari ini, dari tengah malam ke tengah malam. Hijau adalah waktu pemakaian perangkat.',
+    timelineSubDay:
+      '{{date}}, dari tengah malam ke tengah malam. Hijau adalah waktu pemakaian perangkat.',
   },
 
   controlError: {

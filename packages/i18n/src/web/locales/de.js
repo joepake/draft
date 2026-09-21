@@ -743,6 +743,8 @@ export default {
     toastSiteAllowed: 'Website erlaubt',
     timelineTitle: 'Wann es genutzt wurde',
     timelineSub: 'Heute, von Mitternacht bis Mitternacht. Grün ist Zeit am Gerät.',
+    timelineSubDay:
+      '{{date}}, von Mitternacht bis Mitternacht. Grün ist Zeit am Gerät.',
   },
 
   controlError: {

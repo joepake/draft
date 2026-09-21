@@ -730,6 +730,8 @@ export default {
     toastSiteAllowed: 'साइट को अनुमति दी',
     timelineTitle: 'कब इस्तेमाल हुआ',
     timelineSub: 'आज, आधी रात से आधी रात तक। हरा रंग डिवाइस पर बिताया गया समय है।',
+    timelineSubDay:
+      '{{date}}, आधी रात से आधी रात तक। हरा रंग डिवाइस पर बिताया गया समय है।',
   },
 
   controlError: {
