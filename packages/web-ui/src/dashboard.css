@@ -1607,17 +1607,43 @@
   cursor: pointer;
 }
 
-.viz-pick:focus-visible {
-  outline: 2px solid var(--brand);
-  outline-offset: 2px;
+/*
+ * The picked day is a lit COLUMN, not a ringed bar.
+ *
+ * Both marks it replaced were drawn round the wrong thing. The outline was on
+ * the `<g>`, whose bounds are the full-height hit rect, so a focused day got a
+ * box from the top of the chart to the axis — taller than every bar and read
+ * as a value. The `is-selected` stroke was on the bar, so a three-hour day was
+ * a small dark-edged block beside it and the two competed to say one thing.
+ *
+ * The column is the target and the column is the mark: a tinted band behind
+ * the bar, the width of the click area, so "this day" is said once, at the
+ * size of the thing being picked, whatever the bar in it is worth.
+ */
+.viz-col {
+  fill: transparent;
+  transition: fill var(--kg-motion-fast) ease;
 }
 
-/* Brightness is what hover already says, so the picked bar is outlined
-   instead — the two states stack on the bar the pointer is over. */
-.viz-bar.is-selected {
-  stroke: var(--ink);
+.viz-pick:hover .viz-col {
+  fill: color-mix(in srgb, var(--ink) 4%, transparent);
+}
+
+.viz-pick.is-selected .viz-col {
+  fill: color-mix(in srgb, var(--brand) 12%, transparent);
+}
+
+/* The focus ring goes on the same band, which is what `outline` could not do:
+   an SVG outline takes no radius and no inset, so it drew a hard rectangle
+   around the whole plot height. */
+.viz-pick:focus-visible {
+  outline: none;
+}
+
+.viz-pick:focus-visible .viz-col {
+  fill: color-mix(in srgb, var(--brand) 12%, transparent);
+  stroke: var(--brand);
   stroke-width: 2;
-  paint-order: stroke;
 }
 
 .viz-axis.is-selected {
@@ -7714,13 +7740,248 @@ span.chip {
   animation: sheet-enter var(--kg-motion-normal) var(--kg-ease-enter) backwards;
 }
 
+/* ---------- The charts draw themselves ----------
+ *
+ * Four figures arrive the way the thing they measure accumulates: a bar grows
+ * out of the baseline, a ring winds round from midnight, a row fills from its
+ * left edge, a day sweeps from its first minute. Nothing moves afterwards and
+ * nothing moves on hover — this is arrival, once, and the rest of the card is
+ * as still as it was.
+ *
+ * All four ride `.dash-main > *`'s own entry: the pane fades up, and the
+ * figures inside it start 120ms later, so they are drawn onto a card that has
+ * already landed rather than while it is still moving.
+ *
+ * The stagger is `--i`, set on each element by `charts.jsx`, and the data caps
+ * it: 30 bars at 18ms puts the last one half a second in, which is a sweep
+ * rather than a queue. Custom properties inherit, so a `<g>` carrying `--i`
+ * hands it to both rects inside it — and the invisible hit rect is never
+ * animated, because a target that grows is a target that moves under the
+ * pointer.
+ */
+
+@keyframes viz-bar-rise {
+  from {
+    transform: scaleY(0);
+  }
+}
+
+/* `fill-box`, so each rect scales from ITS bottom rather than the SVG's — the
+   default `view-box` origin would swing the short bars up from the bottom of
+   the chart instead of growing them out of the axis. */
+.viz-bar,
+.viz-bar-bonus {
+  transform-box: fill-box;
+  transform-origin: bottom;
+  animation: viz-bar-rise var(--kg-motion-normal) var(--kg-ease-enter) backwards;
+  animation-delay: calc(120ms + var(--i, 0) * 18ms);
+}
+
+/*
+ * The ring is drawn by hiding its own arc and giving it back.
+ *
+ * `stroke-dasharray` is `<arc> <circumference>`, so an offset of exactly the
+ * arc length shifts that dash off the start of the path and leaves the gap
+ * covering the whole circle — nothing painted. Winding the offset back to zero
+ * draws the arc clockwise from twelve o'clock. `--arc` is the same number the
+ * dasharray already carries, handed over by `UsageRing`; nothing here
+ * recomputes it.
+ *
+ * The `transition` on `.ring-value` stays and does not fight this: the
+ * animation owns the property while it plays, and the transition is what moves
+ * the arc when a later report changes the figure.
+ */
+@keyframes ring-draw {
+  from {
+    stroke-dashoffset: var(--arc, 0);
+  }
+}
+
+.ring-value {
+  animation: ring-draw var(--kg-motion-slow) var(--kg-ease-enter) backwards;
+  animation-delay: 120ms;
+}
+
+@keyframes hbar-grow {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+/* Every horizontal bar this surface draws, whichever card it is on: the app
+   ranking and the blocked-category tally (`.hbar-fill`), and the report hub's
+   and child report's device and app rows (`.rhub-bar-fill`). One rule, because
+   a parent moving between those cards is looking at one chart drawn twice. */
+.hbar-fill,
+.rhub-bar-fill {
+  transform-origin: left;
+  animation: hbar-grow var(--kg-motion-normal) var(--kg-ease-enter) backwards;
+  animation-delay: calc(120ms + var(--i, 0) * 45ms);
+}
+
+/* One animation for the whole band rather than one per run: a day is a few
+   dozen runs, several of them a single minute wide, and staggering those is a
+   flicker. The track already clips, so the runs under it are revealed in
+   place. */
+@keyframes tl-sweep {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+}
+
+.tl-track {
+  animation: tl-sweep var(--kg-motion-slow) var(--kg-ease-enter) backwards;
+  animation-delay: 120ms;
+}
+
+/*
+ * The device donut winds round like the ring does, and it is uncovered rather
+ * than drawn.
+ *
+ * Its colours are a `conic-gradient` written inline by `ChildReport.jsx` — one
+ * string, nothing in it animatable — so the sweep is a lid over the top:
+ * `::after` filled with the donut's own empty-track colour, masked to the
+ * wedge that has NOT arrived yet, shrinking to nothing. The track stays
+ * visible the whole way, exactly as `UsageRing`'s does under its arc.
+ *
+ * A mask on the donut itself would have been shorter and wrong: a mask applies
+ * to an element's children too, so the hole and the figure inside it would be
+ * sliced by a rotating edge on their way in.
+ *
+ * `@property` is what makes a percentage inside a gradient interpolate at all;
+ * without it (Safari below 16.4) the lid jumps from covering everything to
+ * covering nothing, which is the ring simply appearing — what it did before
+ * any of this.
+ */
+@property --donut-sweep {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 100%;
+}
+
+@keyframes donut-sweep {
+  from {
+    --donut-sweep: 0%;
+  }
+}
+
+.creport-donut {
+  position: relative;
+}
+
+.creport-donut::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  /* The track under the slices, opaque — `color-mix` onto the card rather than
+     onto `transparent`, because this one has to hide what is beneath it. */
+  background: color-mix(in srgb, var(--ink) 8%, var(--surface));
+  /*
+   * The fallback is load-bearing, not tidiness. Where `@property` is missing
+   * the custom property is unregistered and undeclared on this element, so a
+   * bare `var(--donut-sweep)` resolves to nothing, the whole `mask` becomes
+   * invalid at computed-value time, and an unmasked lid sits over the donut
+   * for good — a grey disc where the split should be. `100%` is the resting
+   * state: masked to nothing, lid invisible.
+   */
+  -webkit-mask: conic-gradient(transparent var(--donut-sweep, 100%), #000 0);
+  mask: conic-gradient(transparent var(--donut-sweep, 100%), #000 0);
+  animation: donut-sweep var(--kg-motion-slow) var(--kg-ease-enter) backwards;
+  animation-delay: 120ms;
+  pointer-events: none;
+}
+
+/* Above the lid, so the figure is legible from the first frame — the number is
+   the answer, and the ring is how it splits. */
+.creport-donut-hole {
+  position: relative;
+  z-index: 1;
+}
+
+/*
+ * A week of blocked hours fills in a day at a time.
+ *
+ * The stagger is the ROW, handed over as `--i` by `ScheduleGrid`: two windows
+ * on one Tuesday are a single rule a parent reads at a glance, and drawing
+ * them a beat apart says they are two. Overnight windows are two blocks on two
+ * days by construction, and they arrive with their own days, which is the
+ * honest reading of what they are.
+ */
+@keyframes sched-block-in {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+.sched-block {
+  transform-origin: left;
+  animation: sched-block-in var(--kg-motion-fast) var(--kg-ease-enter) backwards;
+  animation-delay: calc(120ms + var(--i, 0) * 40ms);
+}
+
+/*
+ * The three lists that are the console's furniture — the control grid, the
+ * attention rows, the feed — arrive in order rather than all at once.
+ *
+ * `min()` caps every one of them, and the cap is the whole reason this is not
+ * annoying: a feed day holds up to fifty rows and a control section twelve, so
+ * an uncapped 30ms step would have the last row landing a second and a half
+ * after the first, which is a queue a parent waits through rather than a page
+ * arriving. Past the cap everything shares the last beat.
+ *
+ * The rows fade and rise; the cards only fade. A grid of twelve cards each
+ * travelling 6px is twelve things moving in one glance, and this grid is the
+ * device's navigation — it has to be still enough to aim at.
+ */
+@keyframes row-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.35rem);
+  }
+}
+
+@keyframes card-in {
+  from {
+    opacity: 0;
+  }
+}
+
+.attn > li,
+.feed-row {
+  animation: row-in var(--kg-motion-normal) var(--kg-ease-enter) backwards;
+  animation-delay: calc(80ms + min(var(--i, 0), 10) * 30ms);
+}
+
+.control-card {
+  animation: card-in var(--kg-motion-normal) var(--kg-ease-enter) backwards;
+  animation-delay: calc(80ms + min(var(--i, 0), 8) * 35ms);
+}
+
 /* Same guard as the ring, the toast and the skeleton: this stylesheet is the
    only one `apps/dashboard` imports, so `index.css`'s reset reaches none of
    it. */
 @media (prefers-reduced-motion: reduce) {
   .dash-main > *,
   .sheet-backdrop,
-  .sheet {
+  .sheet,
+  .viz-bar,
+  .viz-bar-bonus,
+  .ring-value,
+  .hbar-fill,
+  .rhub-bar-fill,
+  .tl-track,
+  .creport-donut::after,
+  .sched-block,
+  .attn > li,
+  .feed-row,
+  .control-card {
     animation: none;
+  }
+
+  /* The lid is masked to nothing by its own initial value, but a browser that
+     never runs the animation must not be left holding a half-drawn one. */
+  .creport-donut::after {
+    display: none;
   }
 }

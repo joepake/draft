@@ -165,7 +165,7 @@ export function UsageBars({ data, limit, days = 14, selectedDate, onSelectDate }
                     day: 'numeric',
                     month: 'short',
                   })}, ${formatMinutes(r.minutes)}`,
-                  className: 'viz-pick',
+                  className: `viz-pick${isSelected ? ' is-selected' : ''}`,
                   onClick: () => onSelectDate(r.date),
                   onKeyDown: e => {
                     if (e.key === 'Enter' || e.key === ' ') {
@@ -179,6 +179,10 @@ export function UsageBars({ data, limit, days = 14, selectedDate, onSelectDate }
             return (
               <g
                 key={r.date}
+                /* The stagger, read by `.viz-bar`'s delay — custom properties
+                   inherit, so both rects take it and the hit rect, which has
+                   no animation, ignores it. */
+                style={{ '--i': i }}
                 {...pick}
                 onMouseEnter={() =>
                   setHover({
@@ -192,12 +196,17 @@ export function UsageBars({ data, limit, days = 14, selectedDate, onSelectDate }
                 }
                 onMouseLeave={() => setHover(null)}
               >
+                {/* The hit area and, since it is exactly the day being
+                    picked, the selected and focused mark as well. Rounded and
+                    inset by a hair so two neighbouring lit columns never touch
+                    and read as one range. */}
                 <rect
-                  x={cx - step / 2}
+                  className="viz-col"
+                  x={cx - step / 2 + 1}
                   y={pad.top}
-                  width={step}
+                  width={Math.max(0, step - 2)}
                   height={plotH}
-                  fill="transparent"
+                  rx="6"
                 />
                 <rect
                   x={x}
@@ -205,9 +214,7 @@ export function UsageBars({ data, limit, days = 14, selectedDate, onSelectDate }
                   width={barW}
                   height={baseH}
                   rx="4"
-                  className={`viz-bar${over ? ' is-over' : ''}${isHover ? ' is-hover' : ''}${
-                    isSelected ? ' is-selected' : ''
-                  }`}
+                  className={`viz-bar${over ? ' is-over' : ''}${isHover ? ' is-hover' : ''}`}
                 />
                 {bonusH > 0 && (
                   <rect
@@ -337,6 +344,9 @@ export function UsageRing({ used, limit, bonus = 0, size = 168 }) {
             r={r}
             className={`ring-value${over ? ' is-over' : ''}`}
             strokeWidth={stroke}
+            /* The arc's own length, which `ring-draw` starts the dash offset
+               at so the circle draws itself in. One number, said once. */
+            style={{ '--arc': `${c * pct}px` }}
             strokeDasharray={`${c * pct} ${c}`}
             strokeLinecap="round"
             transform={`rotate(-90 ${size / 2} ${size / 2})`}
@@ -391,11 +401,11 @@ export function AppBars({ apps = [], limits = [], totalMinutes = 0 }) {
   return (
     <>
       <ul className="hbars">
-        {apps.map(a => {
+        {apps.map((a, i) => {
           const cap = limits.find(l => l.id === a.packageName);
           const over = cap && a.minutes > cap.minutes;
           return (
-            <li key={a.packageName}>
+            <li key={a.packageName} style={{ '--i': i }}>
               <div className="hbar-head">
                 <span className="hbar-label">{a.label}</span>
                 {/*
@@ -705,6 +715,10 @@ export function ScheduleGrid({ windows }) {
                   style={{
                     left: `${(s.from / 1440) * 100}%`,
                     width: `${((s.to - s.from) / 1440) * 100}%`,
+                    /* The stagger is the DAY, not the block: two windows on
+                       one Tuesday are one rule read at a glance, and drawing
+                       them a beat apart says they are two. */
+                    '--i': d,
                   }}
                   onMouseEnter={() => setHover(s)}
                   onMouseLeave={() => setHover(null)}

@@ -4713,7 +4713,9 @@ export default function Dashboard({
               ) : (
                 <ul className="catbars">
                   {blockedByCategory.map(([cat, n], i) => (
-                    <li key={cat}>
+                    // `--i` is the bar stagger, the same one the app ranking
+                    // uses — `dashboard.css`, "The charts draw themselves".
+                    <li key={cat} style={{ '--i': i }}>
                       <div className="hbar-head">
                         <span className="hbar-label">
                           <i className={`dot dot-${(i % 3) + 1}`} />

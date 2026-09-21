@@ -39,10 +39,10 @@ export default function AttentionList({
 
   return (
     <ul className={`attn ${className}`}>
-      {items.map(item => {
+      {items.map((item, i) => {
         const blocked = readOnly && !ALLOWED_READ_ONLY.has(item.action);
         return (
-          <li key={item.id} className={`tone-${item.tone}`}>
+          <li key={item.id} className={`tone-${item.tone}`} style={{ '--i': i }}>
             <span className="attn-icon">
               {/* `level` is the battery row's alone; every other item leaves it
                   undefined and draws as before. */}

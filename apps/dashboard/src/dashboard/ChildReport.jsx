@@ -676,10 +676,11 @@ export default function ChildReport({
           label={appT('childReport.sectionDevices')}
         />
         <ul className="creport-rows">
-          {activeShares.map(row => {
+          {activeShares.map((row, i) => {
             const device = childDevices.find(item => item.id === row.deviceId);
             return (
-              <li key={row.deviceId}>
+              // The stagger `.rhub-bar-fill` reads; see `dashboard.css`.
+              <li key={row.deviceId} style={{ '--i': i }}>
                 <button
                   className="rhub-row"
                   onClick={() => onOpenDevice(row.deviceId)}
@@ -726,8 +727,8 @@ export default function ChildReport({
           <p className="empty">{appT('childReport.appsEmpty')}</p>
         ) : (
           <ul className="creport-apps">
-            {activeApps.map(app => (
-              <li key={app.key}>
+            {activeApps.map((app, i) => (
+              <li key={app.key} style={{ '--i': i }}>
                 <span className="creport-app-head">
                   <strong>{app.label}</strong>
                   <em>{formatMinutes(app.minutes)}</em>
