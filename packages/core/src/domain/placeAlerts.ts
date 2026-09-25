@@ -1,6 +1,7 @@
 import type { DevicePlace } from '@kidgate/schema/devicePlace';
 import { MAX_DEVICE_PLACES } from '@kidgate/schema/devicePlace';
 import { distanceMeters } from './geo';
+import { MAX_TRUSTED_ACCURACY_M } from './locationFix';
 
 /**
  * Two pins this close are the same pin, not two places.
@@ -173,7 +174,10 @@ export function mergeDevicePlaces(
  * geofence, it is a geofence that fires at random.
  *
  * Returns null when the device has not reported an accuracy — guessing one
- * would put a number in front of a parent that nothing measured.
+ * would put a number in front of a parent that nothing measured — and null
+ * for a guess (`MAX_TRUSTED_ACCURACY_M`): a PC positioned from its IP address
+ * reports 20 000 m, and "no radius under 40 km is useful" is a sentence about
+ * that lookup, not about the place.
  */
 export function minimumUsefulRadiusMeters(
   accuracyMeters: number | null | undefined,
@@ -181,7 +185,8 @@ export function minimumUsefulRadiusMeters(
   if (
     typeof accuracyMeters !== 'number' ||
     !Number.isFinite(accuracyMeters) ||
-    accuracyMeters <= 0
+    accuracyMeters <= 0 ||
+    accuracyMeters > MAX_TRUSTED_ACCURACY_M
   ) {
     return null;
   }

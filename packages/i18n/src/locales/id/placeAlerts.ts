@@ -67,8 +67,6 @@ export const placeAlerts = {
   updatedToast: 'Tempat diperbarui.',
   removedToast: 'Tempat dihapus.',
   saveFailedToast: 'Tidak dapat menyimpan. Silakan coba lagi.',
-  enteredLabel: 'Masuk',
-  exitedLabel: 'Keluar',
   footerNote:
     'Diperiksa setiap kali lokasi disinkronkan — tidak selalu berjalan di latar belakang.',
 } as const;

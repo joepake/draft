@@ -201,14 +201,14 @@ export const family = {
 
   stepsHeading: '시작하기',
 
-  step1Title: '“자녀 기기 추가”를 누르세요',
+  step1Title: '자녀 기기에서 KidGate 열기',
 
-  step1Description: '연결용 QR 코드가 이 화면에 표시됩니다.',
+  step1Description:
+    '자녀가 사용하는 휴대전화, 태블릿, TV 또는 컴퓨터에 KidGate를 설치하세요. 휴대전화나 태블릿에서는 “자녀 기기입니다”를 선택하세요. QR 코드와 6자리 코드가 표시됩니다.',
 
-  step2Title: '자녀의 기기로 스캔하세요',
+  step2Title: '여기서 “자녀 기기 추가”를 누르세요',
 
-  step2Description:
-    '자녀의 휴대전화 또는 태블릿에 KidGate를 설치하고 “이 기기는 자녀의 기기입니다”를 선택한 후 QR 코드를 스캔하세요.',
+  step2Description: '이 휴대전화로 그 QR 코드를 스캔하거나 6자리 코드를 입력하세요.',
 
   connectChildButton: '자녀 기기 연결',
   listHint: '기기를 왼쪽으로 밀어 삭제하세요',

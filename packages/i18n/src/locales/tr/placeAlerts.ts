@@ -65,8 +65,6 @@ export const placeAlerts = {
   updatedToast: 'Yer güncellendi.',
   removedToast: 'Yer kaldırıldı.',
   saveFailedToast: 'Kaydedilemedi. Lütfen tekrar deneyin.',
-  enteredLabel: 'Varış',
-  exitedLabel: 'Ayrılış',
   footerNote:
     'Konum her senkronize olduğunda kontrol edilir — her zaman arka planda değil.',
 } as const;

@@ -32,8 +32,9 @@ export const permissions = {
   oemAutostartLabel: 'Разрешить автозапуск',
   oemAutostartHintXiaomi:
     'В разделе «Автозапуск» включите KidGate, чтобы защита возобновлялась после перезагрузки.',
-  oemAutostartHintSamsung:
-    'В разделе «Батарея» → «Ограничения фоновой работы» → «Никогда не спящие приложения» добавьте KidGate. Если KidGate нет в списке, значит он уже разрешён и шаг выполнен.',
+  oemAutostartHintSamsung: 'В разделе «Батарея» выберите «Ограничения фоновой работы».',
+  oemAutostartHintSamsungAdd:
+    'Откройте «Никогда не спящие приложения» и добавьте KidGate. Если KidGate нет в списке, значит он уже разрешён и шаг выполнен.',
   oemAutostartHintOppo:
     'В разделе «Автозапуск приложений» / «Автозапуск» разрешите KidGate.',
   oemAutostartHintVivo:

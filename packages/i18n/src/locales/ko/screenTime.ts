@@ -9,7 +9,8 @@ export const screenTime = {
   screenTimeStepAllowUsage: '상태 화면에서 앱 및 웹 사이트 사용 허용을 선택합니다.',
   screenTimeStepTapAllow: '메시지가 표시되면 허용을 선택합니다.',
   screenTimeStepReturnHereAuto: '여기로 돌아오세요 — 상태가 자동으로 업데이트됩니다.',
-  screenTimeDeniedStepOpenSettings: '자녀 기기에서 설정 → KidGate를 엽니다.',
+  screenTimeDeniedStepOpenSettings: '자녀 기기에서 설정을 엽니다.',
+  screenTimeDeniedStepFindKidGate: '목록에서 KidGate를 찾습니다.',
   screenTimeDeniedStepTurnOnRestrictions: '스크린 타임을 켭니다.',
   screenTimeDeniedStepOpenKidGateAgain: '자녀 기기에서 KidGate를 다시 엽니다.',
   screenTimeDeniedStepReturnWhenReady:

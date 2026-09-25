@@ -208,14 +208,15 @@ export const family = {
 
   stepsHeading: 'Primeiros passos',
 
-  step1Title: 'Toque em “Adicionar dispositivo da criança”',
+  step1Title: 'Abra o KidGate no dispositivo da criança',
 
-  step1Description: 'Um QR Code de pareamento aparece aqui, pronto para ser escaneado.',
+  step1Description:
+    'Instale o KidGate no celular, tablet, TV ou computador que seu filho usa. Em um celular ou tablet, escolha “Este é um dispositivo de uma criança”. Um QR Code e um código de 6 caracteres vão aparecer.',
 
-  step2Title: 'Escaneie pelo dispositivo da criança',
+  step2Title: 'Toque aqui em “Adicionar dispositivo da criança”',
 
   step2Description:
-    'Instale o KidGate no celular ou tablet do seu filho, escolha “Este é um dispositivo da criança” e escaneie o código.',
+    'Escaneie esse QR Code com este celular ou digite o código de 6 caracteres.',
 
   connectChildButton: 'Conectar dispositivo da criança',
   listHint: 'Deslize um dispositivo para a esquerda para removê-lo',

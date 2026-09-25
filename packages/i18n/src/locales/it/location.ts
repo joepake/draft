@@ -77,8 +77,12 @@ export const location = {
     'Seleziona Consenti, poi Sempre così gli aggiornamenti continuano in background.',
   requestNoFix:
     'Questo dispositivo non ha ottenuto una posizione. La localizzazione potrebbe non essere ancora consentita.',
+  requestIpOnly:
+    'Questo dispositivo ha potuto solo stimare la posizione dalla connessione a internet. Attiva il suo Wi-Fi (non serve connettersi) e riprova.',
   cardSharingOff: 'La condivisione della posizione è disattivata',
   cardPermissionOff: 'La posizione non è consentita su questo dispositivo',
+  cardIpOnly:
+    'Impossibile localizzare questo dispositivo: attiva il suo Wi-Fi (non serve connettersi)',
   cardNotUpdating: 'La posizione non si aggiorna più',
   namesNeedPremium: 'I nomi dei luoghi richiedono un piano a pagamento',
   namesNeedPremiumTrialEnded:

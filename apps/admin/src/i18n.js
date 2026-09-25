@@ -75,7 +75,6 @@ const en = {
   'nav.fleet': 'Fleet',
   'nav.support': 'Support queue',
   'nav.families': 'Families',
-  'nav.lookup': 'Family lookup',
   'nav.consoleName': 'Operator console',
   'nav.environment': 'Production · kidgate',
 
@@ -90,21 +89,9 @@ const en = {
   'time.daysAgo': '{count}d ago',
 
   // ---------------------------------------------------------------- lookup
-  'lookup.uid': 'Family owner uid',
   'lookup.reason': 'Reason',
-  'lookup.reasonRemaining_one':
-    '{count} more character — stored in the audit log beside your name and the time.',
-  'lookup.reasonRemaining_other':
-    '{count} more characters — stored in the audit log beside your name and the time.',
-  'lookup.reasonStored': 'Stored in the audit log beside your name and the time.',
-  'lookup.lookingUp': 'Looking up…',
-  'lookup.lookUp': 'Look up',
 
   // ---------------------------------------------------------------- search
-  'search.label': 'Find a family',
-  'search.hint':
-    'Name, email or uid — press Enter. A full email or a uid costs one read; a name scans the family collection, so search on what the customer gave you rather than as you type.',
-  'search.search': 'Search',
   'search.searching': 'Searching…',
   'search.noMatch': 'No family matched.',
   'search.truncated':
@@ -113,7 +100,6 @@ const en = {
   'search.colEmail': 'Email',
   'search.colPlan': 'Plan',
   'search.colUid': 'Uid',
-  'search.use': 'Use',
 
   // -------------------------------------------------------------- families
   'families.reasonStored':
@@ -125,7 +111,7 @@ const en = {
   'families.reasonToOpen': 'Type a reason of at least 12 characters first.',
   'families.reload': 'Reload',
   'families.loading': 'Loading…',
-  'families.loadMore': 'Load 50 more',
+  'families.loadMore': 'Load {count} more',
   'families.open': 'Open',
   'families.opening': 'Opening…',
   'families.empty': 'No families.',
@@ -135,14 +121,32 @@ const en = {
   'families.shownFiltered_one': '{count} of {loaded} loaded families matches',
   'families.shownFiltered_other': '{count} of {loaded} loaded families match',
   'families.colCreated': 'Created',
+  'families.colSubscription': 'Subscription',
+  'families.noSubscription': 'none',
+  'families.colChildren': 'Children',
+  'families.colParents': 'Parents',
+  'families.colChildDevices': 'Child devices',
+  'families.colParentDevices': 'Parent devices',
+  'families.sortedLoaded_one':
+    'Only the {count} loaded family is sorted — load more to rank the rest too.',
+  'families.sortedLoaded_other':
+    'Only the {count} loaded families are sorted — load more to rank the rest too.',
   'families.filterPlan': 'Plan',
   'families.filterStatus': 'Subscription',
-  'families.filterName': 'Name or uid',
+  'families.filterName': 'Name, email or uid',
   'families.filterAny': 'Any',
   'families.filterNameHint':
-    'Plan and subscription filter the whole collection. Name narrows only the rows already loaded — to search every family, use Family lookup.',
+    'Plan and subscription filter every family. Typing narrows the rows already loaded; Enter searches every family — a full email or a uid costs one read, a name scans the collection, so search on what the customer gave you.',
   'families.noneMatchLoaded':
-    'No loaded row matches that name. Load more, or search every family in Family lookup.',
+    'No loaded row matches. Load more, or press Enter to search every family.',
+  'families.searchAll': 'Search all',
+  'families.backToList': 'Back to the list',
+  'families.found_one': '{count} family found for “{query}”',
+  'families.found_other': '{count} families found for “{query}”',
+  'families.foundFiltered_one':
+    '{count} of {total} found for “{query}” matches the filters',
+  'families.foundFiltered_other':
+    '{count} of {total} found for “{query}” match the filters',
 
   // ---------------------------------------------------------------- family
   'family.plan': 'Plan',
@@ -218,7 +222,7 @@ const en = {
   // Deliberately not "silent": silence is the symptom both of these share, and
   // naming the parked half separately is the whole point of the pair.
   'fleet.silentNotParked': 'Quiet with no reason',
-  'fleet.pushTokenDead': 'Dead push token',
+  'fleet.pushTokenDead': 'Dead push token (child)',
   'fleet.unassigned': 'Unassigned to a child',
   'fleet.multiProfile_one': '{count} device stuck behind a second OS profile',
   'fleet.multiProfile_other': '{count} devices stuck behind a second OS profile',
@@ -233,7 +237,15 @@ const en = {
   'fleet.lastSeenSub':
     'Over a month is the closest signal to an uninstall the product has',
   'fleet.appVersion': 'App version',
-  'fleet.appVersionSub': 'The name a person reads — `1.0.0`',
+  'fleet.appVersionSub': 'The name a person reads — `1.0.0` and `1.0` are one release',
+  'fleet.appBuild': 'App build',
+  'fleet.appBuildSub':
+    'The number a bug report has to carry. Windows has none, so it reads Unknown',
+  'fleet.otaVersion': 'OTA bundle',
+  'fleet.otaSub': 'Phones only; a bundle applies on the next launch. ',
+  'fleet.otaPublished': 'Published: {ios} · {android}',
+  'fleet.otaDisabled': 'OTA is switched off in config/ota',
+  'fleet.otaNoConfig': 'No config/ota document',
   'fleet.osVersion': 'OS version',
   'fleet.osVersionSub': 'Decides what a build may drop support for',
   'fleet.locale': 'Device language',
@@ -261,7 +273,36 @@ const en = {
   'fleet.colDenied': 'Denied',
   'fleet.colNotAsked': 'Not asked',
   'fleet.colUnavailable': 'Unavailable',
+  'fleet.colRestricted': 'Restricted',
+  'fleet.colUnknown': 'Unknown',
   'fleet.colReportedBy': 'Reported by',
+  'fleet.nextRollup': 'Arrives with the next rollup',
+  'fleet.parentsTitle': 'Can the parents be reached',
+  'fleet.parentsSub':
+    "Families with a child device seen this week. A push reaches the owner's phones and every joined parent's; the dashboard holds no token.",
+  'fleet.familiesLive': 'Families in use',
+  'fleet.noParentPush': 'No parent phone gets push',
+  'fleet.parentIdle': 'Parent app unopened 30 days',
+  'fleet.parentPushDead': 'Dead push token (parent)',
+  'fleet.noParentPushStrip_one': '{count} family would not hear an SOS',
+  'fleet.noParentPushStrip_other': '{count} families would not hear an SOS',
+  'fleet.noParentPushDetail':
+    'A child device is in use and no parent phone holds a push token, so every alert reaches no one. Either every phone lost its token, or the parent only uses the dashboard.',
+  'fleet.enforcementTitle': 'Enforcement',
+  'fleet.enforcementSub':
+    'Devices seen this week. The lock counts every device a parent has locked, seen or not.',
+  'fleet.lockNotEnforced': 'Lock not in force',
+  'fleet.webFilterBlocked': 'Web filter waiting on a person',
+  'fleet.pinLocked': 'Parent PIN locked out',
+  'fleet.pinFailing': 'Wrong PIN, not yet locked',
+  'fleet.lock': 'Parent lock',
+  'fleet.lockSub':
+    'What each locked device says back. Awaiting device has not been heard from since the lock — switched off, not failed.',
+  'fleet.noLocks': 'No device is locked right now',
+  'fleet.webFilterBlocker': 'Why the web filter is off',
+  'fleet.webFilterBlockerSub':
+    'Devices seen this week whose filter someone at the device could switch on',
+  'fleet.webFilterBlockerEmpty': 'No device is waiting on a person',
 
   'active.hour': 'Within the hour',
   'active.day': 'Within a day',
@@ -287,6 +328,17 @@ const en = {
   'webFilter.extension': 'Browser extension',
   'webFilter.dns': 'Private DNS',
   'webFilter.unknown': 'No probe yet',
+
+  'webFilterBlocker.awaitingApproval': 'Awaiting approval',
+  'webFilterBlocker.configurationDisabled': 'Switched off',
+
+  'lock.inForce': 'In force',
+  'lock.notApplied': 'Says not locked',
+  'lock.unconfirmed': 'Never confirmed',
+  'lock.waiting': 'Awaiting device',
+
+  'ota.none': 'No OTA channel',
+  'ota.unknown': 'Not reported',
 
   'value.unknown': 'Unknown',
 
@@ -523,7 +575,6 @@ const vi = {
   'nav.fleet': 'Thiết bị',
   'nav.support': 'Hàng đợi hỗ trợ',
   'nav.families': 'Gia đình',
-  'nav.lookup': 'Tra cứu gia đình',
   'nav.consoleName': 'Bảng điều hành operator',
   'nav.environment': 'Production · kidgate',
 
@@ -538,19 +589,9 @@ const vi = {
   'time.daysAgo': '{count} ngày trước',
 
   // ---------------------------------------------------------------- lookup
-  'lookup.uid': 'UID chủ gia đình',
   'lookup.reason': 'Lý do',
-  'lookup.reasonRemaining':
-    'Còn {count} ký tự nữa — sẽ lưu vào nhật ký kiểm toán cùng tên bạn và thời điểm.',
-  'lookup.reasonStored': 'Sẽ lưu vào nhật ký kiểm toán cùng tên bạn và thời điểm.',
-  'lookup.lookingUp': 'Đang tra cứu…',
-  'lookup.lookUp': 'Tra cứu',
 
   // ---------------------------------------------------------------- search
-  'search.label': 'Tìm gia đình',
-  'search.hint':
-    'Tên, email hoặc uid — nhấn Enter. Email đầy đủ hoặc uid chỉ tốn một lượt đọc; tìm theo tên sẽ quét cả bộ sưu tập gia đình, nên hãy tìm bằng thông tin khách đưa thay vì tìm theo từng ký tự đang gõ.',
-  'search.search': 'Tìm',
   'search.searching': 'Đang tìm…',
   'search.noMatch': 'Không có gia đình nào khớp.',
   'search.truncated':
@@ -559,7 +600,6 @@ const vi = {
   'search.colEmail': 'Email',
   'search.colPlan': 'Gói',
   'search.colUid': 'Uid',
-  'search.use': 'Dùng',
 
   // -------------------------------------------------------------- families
   'families.reasonStored':
@@ -569,7 +609,7 @@ const vi = {
   'families.reasonToOpen': 'Nhập lý do ít nhất 12 ký tự trước đã.',
   'families.reload': 'Tải lại',
   'families.loading': 'Đang tải…',
-  'families.loadMore': 'Tải thêm 50',
+  'families.loadMore': 'Tải thêm {count}',
   'families.open': 'Mở',
   'families.opening': 'Đang mở…',
   'families.empty': 'Không có gia đình nào.',
@@ -577,14 +617,27 @@ const vi = {
   'families.shown': 'Đã liệt kê {count} gia đình',
   'families.shownFiltered': 'Khớp {count}/{loaded} gia đình đã tải',
   'families.colCreated': 'Tạo ngày',
+  'families.colSubscription': 'Đăng ký',
+  'families.noSubscription': 'không có',
+  'families.colChildren': 'Số trẻ',
+  'families.colParents': 'Phụ huynh',
+  'families.colChildDevices': 'Thiết bị trẻ',
+  'families.colParentDevices': 'Thiết bị phụ huynh',
+  'families.sortedLoaded':
+    'Mới chỉ sắp xếp {count} gia đình đã tải — tải thêm để xếp cả phần còn lại.',
   'families.filterPlan': 'Gói',
   'families.filterStatus': 'Đăng ký',
-  'families.filterName': 'Tên hoặc uid',
+  'families.filterName': 'Tên, email hoặc uid',
   'families.filterAny': 'Tất cả',
   'families.filterNameHint':
-    'Gói và đăng ký lọc trên toàn bộ collection. Tên chỉ lọc trong các dòng đã tải — muốn tìm mọi gia đình thì dùng Tra cứu gia đình.',
+    'Gói và đăng ký lọc trên mọi gia đình. Gõ để lọc các dòng đã tải; nhấn Enter để tìm trong mọi gia đình — email đầy đủ hoặc uid chỉ tốn một lượt đọc, tìm theo tên sẽ quét cả collection, nên hãy tìm bằng thông tin khách đưa.',
   'families.noneMatchLoaded':
-    'Không dòng đã tải nào khớp tên đó. Tải thêm, hoặc tìm mọi gia đình ở Tra cứu gia đình.',
+    'Không dòng đã tải nào khớp. Tải thêm, hoặc nhấn Enter để tìm trong mọi gia đình.',
+  'families.searchAll': 'Tìm trong tất cả',
+  'families.backToList': 'Quay lại danh sách',
+  'families.found': 'Tìm thấy {count} gia đình cho “{query}”',
+  'families.foundFiltered':
+    '{count}/{total} gia đình tìm thấy cho “{query}” khớp bộ lọc',
 
   // ---------------------------------------------------------------- family
   'family.plan': 'Gói',
@@ -657,7 +710,7 @@ const vi = {
   'fleet.degraded': 'Bảo vệ bị suy giảm',
   'fleet.parked': 'Đang đỗ (gói miễn phí)',
   'fleet.silentNotParked': 'Im lặng không rõ lý do',
-  'fleet.pushTokenDead': 'Token push đã chết',
+  'fleet.pushTokenDead': 'Token push đã chết (máy trẻ)',
   'fleet.unassigned': 'Chưa gán cho trẻ nào',
   'fleet.multiProfile': '{count} thiết bị kẹt sau một hồ sơ hệ điều hành thứ hai',
   'fleet.multiProfileDetail':
@@ -671,7 +724,15 @@ const vi = {
   'fleet.lastSeenSub':
     'Quá một tháng là tín hiệu gần nhất với việc gỡ cài đặt mà sản phẩm có được',
   'fleet.appVersion': 'Phiên bản ứng dụng',
-  'fleet.appVersionSub': 'Tên người dùng đọc được — `1.0.0`',
+  'fleet.appVersionSub': 'Tên người dùng đọc được — `1.0.0` và `1.0` là cùng một bản',
+  'fleet.appBuild': 'Số build',
+  'fleet.appBuildSub':
+    'Con số mà báo cáo lỗi phải ghi. Windows không có số build nên hiện Không rõ',
+  'fleet.otaVersion': 'Bản OTA',
+  'fleet.otaSub': 'Chỉ điện thoại; bản OTA áp dụng ở lần mở app kế tiếp. ',
+  'fleet.otaPublished': 'Đang phát hành: {ios} · {android}',
+  'fleet.otaDisabled': 'OTA đang tắt trong config/ota',
+  'fleet.otaNoConfig': 'Không có tài liệu config/ota',
   'fleet.osVersion': 'Phiên bản hệ điều hành',
   'fleet.osVersionSub': 'Quyết định bản dựng được phép bỏ hỗ trợ tới đâu',
   'fleet.locale': 'Ngôn ngữ thiết bị',
@@ -698,7 +759,35 @@ const vi = {
   'fleet.colDenied': 'Bị từ chối',
   'fleet.colNotAsked': 'Chưa hỏi',
   'fleet.colUnavailable': 'Không khả dụng',
+  'fleet.colRestricted': 'Bị hạn chế',
+  'fleet.colUnknown': 'Không rõ',
   'fleet.colReportedBy': 'Số thiết bị báo cáo',
+  'fleet.nextRollup': 'Có từ lần rollup tới',
+  'fleet.parentsTitle': 'Phụ huynh có nhận được cảnh báo không',
+  'fleet.parentsSub':
+    'Gia đình có thiết bị của trẻ online trong tuần. Push tới điện thoại của chủ gia đình và của mọi phụ huynh đã tham gia; dashboard web không có token.',
+  'fleet.familiesLive': 'Gia đình đang dùng',
+  'fleet.noParentPush': 'Không máy phụ huynh nào nhận push',
+  'fleet.parentIdle': 'Phụ huynh 30 ngày không mở app',
+  'fleet.parentPushDead': 'Token push đã chết (máy phụ huynh)',
+  'fleet.noParentPushStrip': '{count} gia đình sẽ không nhận được SOS',
+  'fleet.noParentPushDetail':
+    'Thiết bị của trẻ vẫn đang dùng nhưng không máy phụ huynh nào còn token push, nên mọi cảnh báo đều không tới ai. Hoặc mọi điện thoại đã mất token, hoặc phụ huynh chỉ dùng dashboard.',
+  'fleet.enforcementTitle': 'Thực thi',
+  'fleet.enforcementSub':
+    'Thiết bị online trong tuần. Riêng khóa thì đếm mọi thiết bị phụ huynh đang khóa, online hay không.',
+  'fleet.lockNotEnforced': 'Khóa không có hiệu lực',
+  'fleet.webFilterBlocked': 'Bộ lọc web chờ người bật',
+  'fleet.pinLocked': 'PIN phụ huynh bị khóa',
+  'fleet.pinFailing': 'Nhập sai PIN, chưa bị khóa',
+  'fleet.lock': 'Khóa của phụ huynh',
+  'fleet.lockSub':
+    'Phản hồi của từng thiết bị đang bị khóa. "Chờ thiết bị" là máy chưa online lại kể từ lúc khóa — đang tắt, không phải lỗi.',
+  'fleet.noLocks': 'Hiện không thiết bị nào bị khóa',
+  'fleet.webFilterBlocker': 'Vì sao bộ lọc web đang tắt',
+  'fleet.webFilterBlockerSub':
+    'Thiết bị online trong tuần mà người ở cạnh máy có thể tự bật bộ lọc',
+  'fleet.webFilterBlockerEmpty': 'Không thiết bị nào đang chờ người bật',
 
   'active.hour': 'Trong vòng một giờ',
   'active.day': 'Trong vòng một ngày',
@@ -724,6 +813,17 @@ const vi = {
   'webFilter.extension': 'Tiện ích trình duyệt',
   'webFilter.dns': 'DNS riêng',
   'webFilter.unknown': 'Chưa dò',
+
+  'webFilterBlocker.awaitingApproval': 'Chờ duyệt',
+  'webFilterBlocker.configurationDisabled': 'Bị tắt',
+
+  'lock.inForce': 'Đang khóa',
+  'lock.notApplied': 'Báo không khóa',
+  'lock.unconfirmed': 'Không xác nhận',
+  'lock.waiting': 'Chờ thiết bị',
+
+  'ota.none': 'Không có OTA',
+  'ota.unknown': 'Chưa báo',
 
   'value.unknown': 'Không rõ',
 

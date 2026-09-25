@@ -1,11 +1,19 @@
 import type { ApiFailure, ApiPort } from '@kidgate/ports/api';
 import type { ClockPort } from '@kidgate/ports/clock';
-import type { DocSnapshot, FirestorePort, Unsubscribe } from '@kidgate/ports/firestore';
+import type {
+  DocData,
+  DocSnapshot,
+  FirestorePort,
+  QuerySnapshot,
+  Unsubscribe,
+} from '@kidgate/ports/firestore';
 import type { Device, DeviceLockEnforcement } from '@kidgate/schema/device';
 import type { ChildDeviceRecord, ParentDeviceRecord } from '@kidgate/schema/firestore';
 import {
   childDeviceDoc,
   childDevicesCollection,
+  devicePresenceCollection,
+  devicePresenceDoc,
   parentDeviceDoc,
   parentDevicesCollection,
 } from '@kidgate/schema/paths';
@@ -36,6 +44,7 @@ import {
   shouldRequestReport,
 } from '../domain/reportRequest';
 import { timestampToIso } from '../domain/firestoreValue';
+import { newerPresence, type PresenceReading } from '../domain/devicePresence';
 
 /**
  * The family's devices — reading them, renaming them, locking them, removing
@@ -193,8 +202,40 @@ function mapParentDevice(doc: DocSnapshot): ParentDeviceRecord {
  * typechecks or tests. Each app shapes its own view from this; none of them
  * re-reads the document.
  */
-function mapChildDevice(doc: DocSnapshot): ChildDeviceRecord {
+/**
+ * A `devicePresence/{deviceId}` document, as the fold wants it.
+ *
+ * Null `lastActiveAt` for a document that exists without a stamp, which the
+ * server's parking mirror can produce (`parked` alone) — the fold reads it as
+ * "never reported through this path" and keeps the device document's own.
+ */
+function presenceReading(data: DocData | undefined): PresenceReading {
+  return {
+    lastActiveAt: timestampToIso(data?.lastActiveAt) ?? null,
+    ...(typeof data?.beatIntervalMs === 'number'
+      ? { beatIntervalMs: data.beatIntervalMs }
+      : {}),
+  };
+}
+
+function presenceById(snapshot: QuerySnapshot): Map<string, PresenceReading> {
+  return new Map(snapshot.docs.map(doc => [doc.id, presenceReading(doc.data())]));
+}
+
+function mapChildDevice(
+  doc: DocSnapshot,
+  presence?: PresenceReading | null,
+): ChildDeviceRecord {
   const data = (doc.data() ?? {}) as Record<string, unknown>;
+  const beat = newerPresence(
+    {
+      lastActiveAt: timestampToIso(data.lastActiveAt) ?? null,
+      ...(typeof data.beatIntervalMs === 'number'
+        ? { beatIntervalMs: data.beatIntervalMs }
+        : {}),
+    },
+    presence,
+  );
   const lastLocation = parseLastLocation(data);
   const otaRequestResult = parseOtaRequestResult(data);
   const locationRequestResult = parseLocationRequestResult(data);
@@ -305,7 +346,17 @@ function mapChildDevice(doc: DocSnapshot): ChildDeviceRecord {
      */
     ...(lockRequestedAt ? { lockRequestedAt } : {}),
     ...(lockEnforcement ? { lockEnforcement } : {}),
-    lastActiveAt: timestampToIso(data.lastActiveAt) ?? '',
+    /*
+     * The heartbeat, from whichever of its two homes is newer.
+     *
+     * `data.lastActiveAt` is the device document's own stamp — still written
+     * by agents with no update channel, by registration, and by the server on
+     * a write it was making anyway. The presence document is where an updated
+     * agent beats (`@kidgate/schema/devicePresence`). `newerPresence` folds
+     * the pair so the split needed no cutover day; read only one and every
+     * device on the other side of it paints offline.
+     */
+    lastActiveAt: beat.lastActiveAt ?? '',
     /*
      * The cadence this device says it is keeping, and the last "report now" it
      * was sent. Both are read by a parent console off this record and nowhere
@@ -317,9 +368,12 @@ function mapChildDevice(doc: DocSnapshot): ChildDeviceRecord {
      * nothing fails. Here that would mean every free-tier device painted
      * offline forever, and a request written on every parent app open because
      * the throttle can never see the last one.
+     *
+     * `data.beatIntervalMs` travels with the stamp beside it — the fold above
+     * keeps each interval with the stamp it describes.
      */
-    ...(typeof data.beatIntervalMs === 'number'
-      ? { beatIntervalMs: data.beatIntervalMs }
+    ...(typeof beat.beatIntervalMs === 'number'
+      ? { beatIntervalMs: beat.beatIntervalMs }
       : {}),
     ...(typeof data.reportRequestId === 'string'
       ? { reportRequestId: data.reportRequestId }
@@ -338,6 +392,9 @@ function mapChildDevice(doc: DocSnapshot): ChildDeviceRecord {
     createdAt: timestampToIso(data.createdAt) ?? '',
     controls: parseDeviceControls(data),
     ...(lastLocation ? { lastLocation } : {}),
+    ...(data.locationSensing === 'wifi' || data.locationSensing === 'ip'
+      ? { locationSensing: data.locationSensing }
+      : {}),
     parentPinFailedAttempts:
       typeof data.parentPinFailedAttempts === 'number'
         ? data.parentPinFailedAttempts
@@ -375,43 +432,157 @@ export function createDeviceRepository(deps: DeviceRepositoryDeps) {
   const { db, api, clock, cascades } = deps;
 
   return {
+    /*
+     * Every read of a child device below reads its presence document beside
+     * it — `devicePresence/{deviceId}`, where an updated agent beats
+     * (`@kidgate/schema/devicePresence`). The presence read is an add-on and
+     * fails soft: a rules deployment that has not reached this collection
+     * yet, or a refused listener, must not empty a parent's device list. What
+     * it costs a console is one extra query per load and one billed read per
+     * beat while the list is open — the same read the beat used to cost when
+     * it landed on the device document, minus everything else it cost then.
+     */
     async fetchChildDevices(userId: string): Promise<ChildDeviceRecord[]> {
-      const snapshot = await db.getDocs(childDevicesCollection(userId));
-      return snapshot.docs.map(mapChildDevice);
+      const [snapshot, presence] = await Promise.all([
+        db.getDocs(childDevicesCollection(userId)),
+        db
+          .getDocs(devicePresenceCollection(userId))
+          .then(presenceById)
+          .catch(() => null),
+      ]);
+      return snapshot.docs.map(doc => mapChildDevice(doc, presence?.get(doc.id)));
     },
 
     async fetchChildDevice(
       userId: string,
       deviceId: string,
     ): Promise<ChildDeviceRecord | null> {
-      const snapshot = await db.getDoc(childDeviceDoc(userId, deviceId));
-      return snapshot.exists ? mapChildDevice(snapshot) : null;
+      const [snapshot, presence] = await Promise.all([
+        db.getDoc(childDeviceDoc(userId, deviceId)),
+        db
+          .getDoc(devicePresenceDoc(userId, deviceId))
+          .then(doc => (doc.exists ? presenceReading(doc.data()) : null))
+          .catch(() => null),
+      ]);
+      return snapshot.exists ? mapChildDevice(snapshot, presence) : null;
     },
 
+    /**
+     * The family's devices, live.
+     *
+     * Two listeners joined into one list, and the join waits for **both** to
+     * answer before it says anything. The first list a console receives is
+     * what it treats as "a parent opened the console" — it asks every
+     * slow-beating device to report now off it (`domain/reportRequest`) — and
+     * a first list carrying no presence would carry no `beatIntervalMs`, so
+     * no device would look slow and none would be asked. Firestore answers
+     * both from its cache in the same turn, so the wait is not a delay; a
+     * refused presence listener settles the wait instead of holding it.
+     */
     subscribeChildDevices(
       userId: string,
       onDevices: (devices: ChildDeviceRecord[]) => void,
       onError: (error: Error) => void,
     ): Unsubscribe {
-      return db.onQuery(
+      let devices: DocSnapshot[] | null = null;
+      let presence: Map<string, PresenceReading> | null = null;
+      let presenceSettled = false;
+      const emit = () => {
+        if (!devices || !presenceSettled) {
+          return;
+        }
+        const byId = presence;
+        onDevices(devices.map(doc => mapChildDevice(doc, byId?.get(doc.id))));
+      };
+
+      const stopDevices = db.onQuery(
         childDevicesCollection(userId),
         {},
-        snapshot => onDevices(snapshot.docs.map(mapChildDevice)),
+        snapshot => {
+          devices = snapshot.docs;
+          emit();
+        },
         onError,
       );
+      const stopPresence = db.onQuery(
+        devicePresenceCollection(userId),
+        {},
+        snapshot => {
+          presence = presenceById(snapshot);
+          presenceSettled = true;
+          emit();
+        },
+        () => {
+          // An add-on that failed, not a list that failed: keep whatever
+          // presence was last delivered and let the devices through.
+          if (!presenceSettled) {
+            presenceSettled = true;
+            emit();
+          }
+        },
+      );
+      return () => {
+        stopDevices();
+        stopPresence();
+      };
     },
 
+    /**
+     * One device, live.
+     *
+     * `options.presence: false` skips the presence listener. It exists for the
+     * child device watching **its own** document (`apps/mobile`'s
+     * `ChildDeviceProvider`): the presence document is where that device's own
+     * beat lands, so a listener there would pay a read per beat to deliver the
+     * device its own timestamp — the self-read the presence split was made to
+     * end, back under a new name. A child screen renders no `lastActiveAt`.
+     */
     subscribeChildDevice(
       userId: string,
       deviceId: string,
       onDevice: (device: ChildDeviceRecord | null) => void,
       onError: (error: Error) => void,
+      options: { presence?: boolean } = {},
     ): Unsubscribe {
-      return db.onDoc(
+      let device: DocSnapshot | null = null;
+      let presence: PresenceReading | null = null;
+      let presenceSettled = options.presence === false;
+      const emit = () => {
+        if (!device || !presenceSettled) {
+          return;
+        }
+        onDevice(device.exists ? mapChildDevice(device, presence) : null);
+      };
+
+      const stopDevice = db.onDoc(
         childDeviceDoc(userId, deviceId),
-        snapshot => onDevice(snapshot.exists ? mapChildDevice(snapshot) : null),
+        snapshot => {
+          device = snapshot;
+          emit();
+        },
         onError,
       );
+      if (options.presence === false) {
+        return stopDevice;
+      }
+      const stopPresence = db.onDoc(
+        devicePresenceDoc(userId, deviceId),
+        snapshot => {
+          presence = snapshot.exists ? presenceReading(snapshot.data()) : null;
+          presenceSettled = true;
+          emit();
+        },
+        () => {
+          if (!presenceSettled) {
+            presenceSettled = true;
+            emit();
+          }
+        },
+      );
+      return () => {
+        stopDevice();
+        stopPresence();
+      };
     },
 
     async fetchParentDevices(userId: string): Promise<ParentDeviceRecord[]> {
@@ -759,6 +930,15 @@ export function createDeviceRepository(deps: DeviceRepositoryDeps) {
         cascades.map(cascade => cascade.deleteForDevice(userId, deviceId)),
       );
       await db.deleteDoc(childDeviceDoc(userId, deviceId));
+      /*
+       * The heartbeat's own document, a sibling keyed by the same id rather
+       * than a subcollection — so `deviceCascade.test.ts`, which reads
+       * subcollections off `paths.ts`, does not see it, and it is named here
+       * by hand. Best-effort: `revokeChildSessionOnDeviceDelete` removes it
+       * server-side as well, and a console never lists a presence document
+       * whose device is gone.
+       */
+      await db.deleteDoc(devicePresenceDoc(userId, deviceId)).catch(() => undefined);
     },
   };
 }

@@ -727,8 +727,6 @@ export default {
     timelineTitle: 'Kapan perangkat dipakai',
     timelineSub:
       'Hari ini, dari tengah malam ke tengah malam. Hijau adalah waktu pemakaian perangkat.',
-    timelineSubDay:
-      '{{date}}, dari tengah malam ke tengah malam. Hijau adalah waktu pemakaian perangkat.',
   },
 
   controlError: {
@@ -846,7 +844,7 @@ export default {
 
     faq8Q: 'Kenapa penguncian atau Jam Diblokir tidak bekerja?',
     faq8A:
-      'Di Android, penguncian memerlukan *Tampil di atas aplikasi lain* dan pembantu *Aksesibilitas* yang aktif, serta baterai tanpa batasan. Di Xiaomi, Samsung, Oppo, Vivo, dan perangkat serupa, izinkan juga mulai otomatis dan keluarkan KidGate dari daftar "aplikasi tidur" mana pun (lihat *Status → Jaga KidGate tetap berjalan* di perangkat anak). Di iOS, penguncian bergantung pada otorisasi Waktu Layar. Jika sebuah izin dimatikan kemudian, Anda akan menerima Peringatan Perlindungan di perangkat orang tua.',
+      'Di Android, penguncian memerlukan *Tampil di atas aplikasi lain* dan pembantu *Aksesibilitas* yang aktif, serta baterai tanpa batasan. Di Xiaomi, Samsung, Oppo, Vivo, dan perangkat serupa, izinkan juga mulai otomatis dan keluarkan KidGate dari daftar "aplikasi tidur" mana pun (lihat *Status → Izinkan mulai otomatis* di perangkat anak). Di iOS, penguncian bergantung pada otorisasi Waktu Layar. Jika sebuah izin dimatikan kemudian, Anda akan menerima Peringatan Perlindungan di perangkat orang tua.',
 
     faq9Q: 'Bagaimana cara memblokir aplikasi tertentu?',
     faq9A:

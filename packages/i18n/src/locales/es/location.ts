@@ -79,8 +79,12 @@ export const location = {
     'Selecciona Permitir y luego Siempre para que las actualizaciones sigan en segundo plano.',
   requestNoFix:
     'Este dispositivo no pudo obtener una posición. Puede que aún no tenga permiso de ubicación.',
+  requestIpOnly:
+    'Este dispositivo solo pudo estimar su posición a partir de la conexión a internet. Activa su Wi-Fi (no hace falta conectarse) y vuelve a intentarlo.',
   cardSharingOff: 'El uso compartido de la ubicación está desactivado',
   cardPermissionOff: 'La ubicación no está permitida en este dispositivo',
+  cardIpOnly:
+    'No se puede localizar este dispositivo: activa su Wi-Fi (no hace falta conectarse)',
   cardNotUpdating: 'La ubicación ha dejado de actualizarse',
   namesNeedPremium: 'Los nombres de lugares requieren un plan de pago',
   namesNeedPremiumTrialEnded:

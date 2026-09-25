@@ -34,8 +34,9 @@ export const permissions = {
   oemAutostartLabel: 'Consenti l’avvio automatico',
   oemAutostartHintXiaomi:
     'In Avvio automatico, attiva KidGate in modo che la protezione riparta dopo un riavvio.',
-  oemAutostartHintSamsung:
-    'In Batteria → Limiti di utilizzo in background → App mai in sospensione, aggiungi KidGate. Se KidGate non è nell’elenco è già consentito e questo passaggio è completato.',
+  oemAutostartHintSamsung: 'In Batteria, seleziona Limiti di utilizzo in background.',
+  oemAutostartHintSamsungAdd:
+    'Apri App mai in sospensione e aggiungi KidGate. Se KidGate non è nell’elenco è già consentito e questo passaggio è completato.',
   oemAutostartHintOppo: 'In App di avvio / Avvio automatico, consenti KidGate.',
   oemAutostartHintVivo:
     'In Avvio automatico / Alta potenza in background, consenti KidGate.',

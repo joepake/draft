@@ -69,8 +69,6 @@ export const placeAlerts = {
   updatedToast: 'Lieu mis à jour.',
   removedToast: 'Lieu supprimé.',
   saveFailedToast: 'Impossible d’enregistrer. Veuillez réessayer.',
-  enteredLabel: 'Entré',
-  exitedLabel: 'Sorti',
   footerNote:
     'Vérifié à chaque synchronisation de position — pas toujours en arrière-plan.',
 } as const;

@@ -78,8 +78,12 @@ export const location = {
     'Sélectionnez Autoriser, puis Toujours pour que les mises à jour continuent en arrière-plan.',
   requestNoFix:
     'Cet appareil n’a pas pu obtenir de position. La localisation n’y est peut-être pas encore autorisée.',
+  requestIpOnly:
+    'Cet appareil n’a pu qu’estimer sa position à partir de sa connexion Internet. Activez son Wi-Fi (pas besoin de se connecter), puis réessayez.',
   cardSharingOff: 'Le partage de position est désactivé',
   cardPermissionOff: 'La position n’est pas autorisée sur cet appareil',
+  cardIpOnly:
+    'Cet appareil ne peut pas être localisé : activez son Wi-Fi (pas besoin de se connecter)',
   cardNotUpdating: 'La position ne se met plus à jour',
   namesNeedPremium: 'Les noms de lieux nécessitent une offre payante',
   namesNeedPremiumTrialEnded:

@@ -32,8 +32,9 @@ export const permissions = {
   oemAutostartLabel: 'Autostart erlauben',
   oemAutostartHintXiaomi:
     'Schalte KidGate unter Autostart ein, damit der Schutz nach einem Neustart wieder startet.',
-  oemAutostartHintSamsung:
-    'Füge KidGate unter Akku → Grenzwerte für Hintergrundnutzung → Nie inaktive Apps hinzu. Fehlt KidGate in der Liste, ist es bereits erlaubt und dieser Schritt ist erledigt.',
+  oemAutostartHintSamsung: 'Wähle unter Akku die Grenzwerte für Hintergrundnutzung.',
+  oemAutostartHintSamsungAdd:
+    'Öffne Nie inaktive Apps und füge KidGate hinzu. Fehlt KidGate in der Liste, ist es bereits erlaubt und dieser Schritt ist erledigt.',
   oemAutostartHintOppo: 'Erlaube KidGate unter Startup-Apps / Auto-Start.',
   oemAutostartHintVivo:
     'Erlaube KidGate unter Autostart / Hintergrund mit hoher Leistung.',

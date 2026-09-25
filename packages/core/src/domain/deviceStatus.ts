@@ -19,6 +19,7 @@ import type { TranslationParams } from '@kidgate/i18n/types';
 import { supportsLock } from './controlSupport';
 import { resolveLockEnforcement } from './lockEnforcement';
 import { offlineThresholdForBeat } from './reportCadence';
+import { REPORT_REQUEST_UNANSWERED_MS, reportRequestedAtMs } from './reportRequest';
 
 type TranslateFn = (key: string, params?: TranslationParams) => string;
 
@@ -73,8 +74,29 @@ export function getEffectiveDeviceStatus(
     return 'offline';
   }
 
-  const age = nowMs - new Date(device.lastActiveAt).getTime();
+  const lastActiveMs = new Date(device.lastActiveAt).getTime();
+  const age = nowMs - lastActiveMs;
   if (age > thresholdMs) {
+    return 'offline';
+  }
+
+  /*
+   * A device this console asked to speak, that has not. Since 2026-09-23 a
+   * paying device idles at fifteen minutes and earns forty-five of silence
+   * above, which a dead device would spend painted green; the request the
+   * console sent on opening is the evidence that settles it. Answered means
+   * a stamp newer than the request. Unanswered past
+   * `REPORT_REQUEST_UNANSWERED_MS` — long enough for a phone in Doze — is
+   * offline, whatever cadence the device last claimed. The free tier is held
+   * to the same rule, which is more honest than the ninety minutes
+   * `docs/PRICING.md` §4 already calls "not a good Online".
+   */
+  const requestedAtMs = reportRequestedAtMs(device.reportRequestId);
+  if (
+    requestedAtMs !== null &&
+    requestedAtMs > lastActiveMs &&
+    nowMs - requestedAtMs > REPORT_REQUEST_UNANSWERED_MS
+  ) {
     return 'offline';
   }
 

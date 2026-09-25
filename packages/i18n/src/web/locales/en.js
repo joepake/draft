@@ -763,8 +763,6 @@ export default {
     toastSiteAllowed: 'Site allowed',
     timelineTitle: 'When it was used',
     timelineSub: 'Today, midnight to midnight. Green is time spent on the device.',
-    timelineSubDay:
-      '{{date}}, midnight to midnight. Green is time spent on the device.',
   },
 
   /*
@@ -882,7 +880,7 @@ export default {
 
     faq8Q: 'Why doesn’t locking or Blocked Hours work?',
     faq8A:
-      'On Android, locking needs *Display over other apps* and the *Accessibility* helper enabled, plus unrestricted battery. On Xiaomi, Samsung, Oppo, Vivo, and similar devices, also allow autostart and remove KidGate from any "sleeping apps" list (see *Status → Keep KidGate running* on the child device). On iOS, locking depends on Screen Time authorization. If a permission is turned off later, you’ll get a Protection Alert on the parent device.',
+      'On Android, locking needs *Display over other apps* and the *Accessibility* helper enabled, plus unrestricted battery. On Xiaomi, Samsung, Oppo, Vivo, and similar devices, also allow autostart and remove KidGate from any "sleeping apps" list (see *Status → Allow autostart* on the child device). On iOS, locking depends on Screen Time authorization. If a permission is turned off later, you’ll get a Protection Alert on the parent device.',
 
     faq9Q: 'How do I block specific apps?',
     faq9A:

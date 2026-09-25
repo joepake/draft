@@ -32,8 +32,9 @@ export const permissions = {
   oemAutostartLabel: 'Cho phép tự khởi động',
   oemAutostartHintXiaomi:
     'Trong mục Tự khởi động, hãy bật KidGate để tính năng bảo vệ được khôi phục sau khi khởi động lại thiết bị.',
-  oemAutostartHintSamsung:
-    'Trong Pin → Giới hạn sử dụng dưới nền → Ứng dụng không bao giờ ngủ, hãy thêm KidGate. Nếu không thấy KidGate trong danh sách thì máy đã cho phép sẵn và bước này xong rồi.',
+  oemAutostartHintSamsung: 'Trong Pin, chọn Giới hạn sử dụng dưới nền.',
+  oemAutostartHintSamsungAdd:
+    'Mở Ứng dụng không bao giờ ngủ và thêm KidGate. Nếu không thấy KidGate trong danh sách thì máy đã cho phép sẵn và bước này xong rồi.',
   oemAutostartHintOppo: 'Trong Khởi động tự động (Auto-launch), hãy cho phép KidGate.',
   oemAutostartHintVivo:
     'Trong Tự khởi động, và trong mục cảnh báo ứng dụng hao pin nền, hãy cho phép KidGate.',

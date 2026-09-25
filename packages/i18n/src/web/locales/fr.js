@@ -745,8 +745,6 @@ export default {
     timelineTitle: 'Quand l’appareil a été utilisé',
     timelineSub:
       'Aujourd’hui, de minuit à minuit. Le vert correspond au temps passé sur l’appareil.',
-    timelineSubDay:
-      '{{date}}, de minuit à minuit. Le vert correspond au temps passé sur l’appareil.',
   },
 
   controlError: {
@@ -865,7 +863,7 @@ export default {
 
     faq8Q: 'Pourquoi le verrouillage ou les heures bloquées ne fonctionnent-ils pas ?',
     faq8A:
-      "Sur Android, le verrouillage nécessite *Superposition aux autres apps* et l’assistant *Accessibilité* activés, ainsi qu’une batterie sans restriction. Sur Xiaomi, Samsung, Oppo, Vivo et appareils similaires, autorisez aussi le démarrage automatique et retirez KidGate de toute liste d'« applis en veille » (voir *État → Garder KidGate actif* sur l’appareil de l’enfant). Sur iOS, le verrouillage dépend de l’autorisation Temps d’écran. Si une autorisation est désactivée plus tard, vous recevrez une alerte de protection sur l’appareil parent.",
+      "Sur Android, le verrouillage nécessite *Superposition aux autres apps* et l’assistant *Accessibilité* activés, ainsi qu’une batterie sans restriction. Sur Xiaomi, Samsung, Oppo, Vivo et appareils similaires, autorisez aussi le démarrage automatique et retirez KidGate de toute liste d'« applis en veille » (voir *État → Autoriser le démarrage automatique* sur l’appareil de l’enfant). Sur iOS, le verrouillage dépend de l’autorisation Temps d’écran. Si une autorisation est désactivée plus tard, vous recevrez une alerte de protection sur l’appareil parent.",
 
     faq9Q: 'Comment bloquer des applis précises ?',
     faq9A:

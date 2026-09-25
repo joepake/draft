@@ -32,8 +32,9 @@ export const permissions = {
   oemAutostartLabel: 'ऑटोस्टार्ट की अनुमति दें',
   oemAutostartHintXiaomi:
     'ऑटोस्टार्ट में, KidGate को चालू करें ताकि रीबूट के बाद सुरक्षा फिर से शुरू हो जाए।',
-  oemAutostartHintSamsung:
-    'बैटरी → बैकग्राउंड इस्तेमाल की सीमाएँ → कभी स्लीप न होने वाले ऐप्स में KidGate जोड़ें। अगर सूची में KidGate नहीं है, तो उसे पहले ही अनुमति मिल चुकी है और यह चरण पूरा है।',
+  oemAutostartHintSamsung: 'बैटरी में बैकग्राउंड इस्तेमाल की सीमाएँ चुनें।',
+  oemAutostartHintSamsungAdd:
+    'कभी स्लीप न होने वाले ऐप्स खोलें और KidGate जोड़ें। अगर सूची में KidGate नहीं है, तो उसे पहले ही अनुमति मिल चुकी है और यह चरण पूरा है।',
   oemAutostartHintOppo: 'स्टार्टअप ऐप्स / ऑटो-लॉन्च में, KidGate को अनुमति दें।',
   oemAutostartHintVivo: 'ऑटोस्टार्ट / बैकग्राउंड हाई पावर में, KidGate को अनुमति दें।',
   oemAutostartHintHuawei:

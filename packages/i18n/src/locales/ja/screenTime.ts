@@ -11,7 +11,8 @@ export const screenTime = {
   screenTimeStepTapAllow: '表示されたら「許可」を選択します。',
   screenTimeStepReturnHereAuto:
     'ここに戻ってください — ステータスは自動で更新されます。',
-  screenTimeDeniedStepOpenSettings: 'お子さまのデバイスで設定 → KidGateを開きます。',
+  screenTimeDeniedStepOpenSettings: 'お子さまのデバイスで設定を開きます。',
+  screenTimeDeniedStepFindKidGate: '一覧からKidGateを探します。',
   screenTimeDeniedStepTurnOnRestrictions: 'スクリーンタイムをオンにします。',
   screenTimeDeniedStepOpenKidGateAgain:
     'お子さまのデバイスでKidGateをもう一度開きます。',

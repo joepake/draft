@@ -68,8 +68,11 @@ export const location = {
     'Select Allow, then choose Always so updates keep coming in the background.',
   requestNoFix:
     'This device could not get a position. Location may not be allowed on it yet.',
+  requestIpOnly:
+    'This device could only guess its position from its internet connection. Turn on its Wi-Fi (no need to connect) and try again.',
   cardSharingOff: 'Location sharing is off',
   cardPermissionOff: 'Location is not allowed on this device',
+  cardIpOnly: 'This device cannot be located: turn on its Wi-Fi (no need to connect)',
   cardNotUpdating: 'Location has stopped updating',
   namesNeedPremium: 'Place names need a paid plan',
   namesNeedPremiumTrialEnded:

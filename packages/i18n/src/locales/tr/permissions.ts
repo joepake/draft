@@ -32,8 +32,9 @@ export const permissions = {
   oemAutostartLabel: 'Otomatik başlatmaya izin ver',
   oemAutostartHintXiaomi:
     'Otomatik başlatma’da, yeniden başlatmadan sonra korumanın yeniden başlaması için KidGate’i açın.',
-  oemAutostartHintSamsung:
-    'Pil → Arka planda kullanım sınırları → Hiç uyumayan uygulamalar bölümüne KidGate’i ekleyin. KidGate listede yoksa zaten izinlidir ve bu adım tamamlanmıştır.',
+  oemAutostartHintSamsung: 'Pil bölümünde Arka planda kullanım sınırları’nı seçin.',
+  oemAutostartHintSamsungAdd:
+    'Hiç uyumayan uygulamalar’ı açıp KidGate’i ekleyin. KidGate listede yoksa zaten izinlidir ve bu adım tamamlanmıştır.',
   oemAutostartHintOppo:
     'Başlangıç uygulamaları / Otomatik başlatma bölümünde KidGate’e izin verin.',
   oemAutostartHintVivo:

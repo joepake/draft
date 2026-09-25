@@ -66,8 +66,6 @@ export const placeAlerts = {
   updatedToast: '場所を更新しました。',
   removedToast: '場所を削除しました。',
   saveFailedToast: '保存できませんでした。もう一度お試しください。',
-  enteredLabel: '到着',
-  exitedLabel: '出発',
   footerNote:
     '位置情報が同期されるたびに確認されます — 常にバックグラウンドで動作するわけではありません。',
 } as const;

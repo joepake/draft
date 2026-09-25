@@ -73,8 +73,12 @@ export const location = {
     '「許可」を選び、続いて「常に許可」を選ぶと、バックグラウンドでも更新が続きます。',
   requestNoFix:
     'この端末は位置情報を取得できませんでした。位置情報の許可がまだされていない可能性があります。',
+  requestIpOnly:
+    'この端末はインターネット接続から位置を推定することしかできませんでした。端末の Wi-Fi をオンにして（接続する必要はありません）、もう一度お試しください。',
   cardSharingOff: '位置情報の共有がオフです',
   cardPermissionOff: 'この端末では位置情報が許可されていません',
+  cardIpOnly:
+    'この端末の位置を特定できません。端末の Wi-Fi をオンにしてください（接続する必要はありません）',
   cardNotUpdating: '位置情報の更新が止まっています',
   namesNeedPremium: '地名の表示には有料プランが必要です',
   namesNeedPremiumTrialEnded:

@@ -78,6 +78,43 @@ export const ALIVE_MIN_INTERVAL_MS: Millis = 3 * 60_000;
 export const LAPSED_ALIVE_INTERVAL_MS: Millis = 30 * 60_000;
 
 /**
+ * Fifteen minutes — a paying family's cadence **while no parent is looking**.
+ *
+ * Since 2026-09-23. A beat is a presence write and one billed read per console
+ * that has the family open (`@kidgate/schema/devicePresence`), and the second
+ * half of that sentence is the point: for most of the day no console is open,
+ * and three minutes of presence for nobody is 480 writes a day per device
+ * that nobody reads. The live cadence is what a parent who opened the app
+ * gets, for `CONSOLE_LIVE_WINDOW_MS` after they did — the console asks
+ * (`./reportRequest`), the agent answers at once and holds the live cadence
+ * for the window (`agent/consoleLiveWindow`). Live when someone is looking,
+ * nearly free when nobody is: the free tier's own argument, applied to the
+ * hours a paying family is not watching either.
+ *
+ * A console judges an idle device by `offlineThresholdForBeat` — three of
+ * these, forty-five minutes — and would paint a dead device online for that
+ * long, so `getEffectiveDeviceStatus` also reads the request it sent: a device
+ * asked and silent for `REPORT_REQUEST_UNANSWERED_MS` is offline whatever its
+ * cadence claims.
+ *
+ * Between the live and the free cadence on purpose: `slowBeatMinutes` prints
+ * the free tier's sentence only above this, so an idle paying device never
+ * reads "Free plan".
+ */
+export const IDLE_ALIVE_INTERVAL_MS: Millis = 15 * 60_000;
+
+/**
+ * How long a device keeps the live cadence after a console asked it to speak.
+ *
+ * Twenty minutes — longer than a parent's typical session ("a parent's app is
+ * open about fifteen minutes at a time") so one request covers the visit, and
+ * re-armed by every request inside it rather than stacked. A device also
+ * starts live: a freshly paired phone is one a parent is watching come
+ * online, and twenty minutes of the live cadence is seven beats.
+ */
+export const CONSOLE_LIVE_WINDOW_MS: Millis = 20 * 60_000;
+
+/**
  * Three beats of silence is offline, at either cadence.
  *
  * One missed beat is a device waking, a slow network or a delayed timer; three
@@ -110,9 +147,20 @@ export const LAPSED_OFFLINE_THRESHOLD_MS: Millis =
  * `domain/premiumLapse` — and that latch is the only answer available inside
  * the child process. The parent side has the plan and computes the same
  * boolean from it, which is why this takes the boolean and not either source.
+ *
+ * `consoleLive` is whether a parent console asked to see this device recently
+ * (`agent/consoleLiveWindow`). It moves a paying device between the live and
+ * the idle cadence and does nothing for a lapsed one: thirty minutes whether
+ * anybody is looking or not is the free tier's product (`docs/PRICING.md`
+ * §3), and "live while you look" is what the paid tier sells. Defaults to
+ * live, so a caller that has not been taught the window keeps the cadence it
+ * had.
  */
-export function aliveIntervalMs(premiumLapsed: boolean): Millis {
-  return premiumLapsed ? LAPSED_ALIVE_INTERVAL_MS : ALIVE_MIN_INTERVAL_MS;
+export function aliveIntervalMs(premiumLapsed: boolean, consoleLive = true): Millis {
+  if (premiumLapsed) {
+    return LAPSED_ALIVE_INTERVAL_MS;
+  }
+  return consoleLive ? ALIVE_MIN_INTERVAL_MS : IDLE_ALIVE_INTERVAL_MS;
 }
 
 /** The silence that means offline, matched to `aliveIntervalMs`. */
@@ -133,14 +181,16 @@ export function offlineThresholdMs(premiumLapsed: boolean): Millis {
  * an older build that publishes nothing.
  *
  * Clamped at the free tier's cadence so a device claiming an hour cannot print
- * an hour, and floored at the live one so a premium device never draws the
- * line at all.
+ * an hour, and floored **above the idle cadence** so a paying device that is
+ * simply not being watched never draws the line: the sentence it feeds says
+ * "Free plan", and an idle paying device is not one. It is about to be asked
+ * to go live by the very console that would render this.
  */
 export function slowBeatMinutes(beatIntervalMs: unknown): number | null {
   if (typeof beatIntervalMs !== 'number' || !Number.isFinite(beatIntervalMs)) {
     return null;
   }
-  if (beatIntervalMs <= ALIVE_MIN_INTERVAL_MS) {
+  if (beatIntervalMs <= IDLE_ALIVE_INTERVAL_MS) {
     return null;
   }
   return Math.round(Math.min(beatIntervalMs, LAPSED_ALIVE_INTERVAL_MS) / 60_000);

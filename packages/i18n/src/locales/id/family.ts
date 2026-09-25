@@ -206,14 +206,15 @@ export const family = {
 
   stepsHeading: 'Langkah pertama',
 
-  step1Title: 'Ketuk “Tambahkan perangkat anak”',
+  step1Title: 'Buka KidGate di perangkat anak',
 
-  step1Description: 'Kode QR untuk memasangkan akan muncul di sini, siap dipindai.',
+  step1Description:
+    'Instal KidGate di ponsel, tablet, TV, atau komputer yang dipakai anak Anda. Di ponsel atau tablet, pilih “Ini perangkat anak”. Kode QR dan kode 6 karakter akan muncul.',
 
-  step2Title: 'Pindai dari perangkat anak',
+  step2Title: 'Ketuk “Tambahkan perangkat anak” di sini',
 
   step2Description:
-    'Instal KidGate di ponsel atau tablet anak Anda, pilih “Ini adalah perangkat anak”, lalu pindai kodenya.',
+    'Pindai kode QR itu dengan ponsel ini, atau masukkan kode 6 karakter.',
 
   connectChildButton: 'Hubungkan perangkat anak',
   listHint: 'Geser perangkat ke kiri untuk menghapusnya',

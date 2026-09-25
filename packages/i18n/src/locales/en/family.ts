@@ -168,12 +168,11 @@ export const family = {
   guestBenefitLocationBody:
     'See where your child is and ask them to confirm they are safe.',
   stepsHeading: 'Get started',
-  step1Title: 'Tap Add child device',
+  step1Title: 'Open KidGate on your child’s device',
   step1Description:
-    'A pairing QR code appears here, ready for the child device to scan.',
-  step2Title: 'Scan it from the child device',
-  step2Description:
-    'Install KidGate on your child’s phone or tablet, choose This is a child device, then scan the code.',
+    'Install it on the phone, tablet, TV or computer your child uses. On a phone or tablet, choose This is a child device. A QR code and a 6-character code appear.',
+  step2Title: 'Tap Add child device here',
+  step2Description: 'Scan that QR code with this phone, or type the 6-character code.',
   connectChildButton: 'Connect child device',
   listHint: 'Swipe left on a device to remove it',
   removeAlertTitle: 'Remove device?',

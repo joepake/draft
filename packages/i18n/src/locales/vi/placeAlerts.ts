@@ -64,8 +64,6 @@ export const placeAlerts = {
   updatedToast: 'Đã cập nhật địa điểm.',
   removedToast: 'Đã xóa địa điểm.',
   saveFailedToast: 'Không thể lưu. Vui lòng thử lại.',
-  enteredLabel: 'Đã vào',
-  exitedLabel: 'Đã rời',
   footerNote:
     'KidGate kiểm tra mỗi khi vị trí đồng bộ — việc này không phải lúc nào cũng chạy được ở chế độ nền.',
 } as const;

@@ -32,8 +32,9 @@ export const permissions = {
   oemAutostartLabel: 'Permitir inicialização automática',
   oemAutostartHintXiaomi:
     'Em Inicialização automática, ative o KidGate para que a proteção seja reiniciada após reiniciar o dispositivo.',
-  oemAutostartHintSamsung:
-    'Em Bateria → Limites de uso em segundo plano → Apps que nunca dormem, adicione o KidGate. Se o KidGate não estiver na lista, já está permitido e esta etapa está concluída.',
+  oemAutostartHintSamsung: 'Em Bateria, selecione Limites de uso em segundo plano.',
+  oemAutostartHintSamsungAdd:
+    'Abra Apps que nunca dormem e adicione o KidGate. Se o KidGate não estiver na lista, já está permitido e esta etapa está concluída.',
   oemAutostartHintOppo:
     'Em Apps de inicialização / Início automático, permita o KidGate.',
   oemAutostartHintVivo:

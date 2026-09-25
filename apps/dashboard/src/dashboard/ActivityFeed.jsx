@@ -210,7 +210,7 @@ export default function ActivityFeed({
           <div className="feed-day" key={group.key}>
             <h2 className="feed-day-head">{dayHeading(group.at)}</h2>
             <ul className="feed-rows">
-              {group.rows.map((activity, i) => {
+              {group.rows.map(activity => {
                 const device = deviceById.get(activity.deviceId);
                 const child = device?.childId
                   ? children.find(c => c.id === device.childId)
@@ -226,13 +226,7 @@ export default function ActivityFeed({
                 const kind = resolveActivityKind(activity);
                 const at = new Date(activity.createdAt);
                 return (
-                  <li
-                    className={`feed-row type-${kind}`}
-                    key={activity.id}
-                    /* Capped in CSS: a day can hold fifty rows and the
-                       fiftieth must not arrive a second and a half late. */
-                    style={{ '--i': i }}
-                  >
+                  <li className={`feed-row type-${kind}`} key={activity.id}>
                     {/* The glyph sits OUTSIDE the card, on the day's rail —
                         the phone draws it that way so a column of rows can be
                         skimmed by mark alone without the cards shifting. */}

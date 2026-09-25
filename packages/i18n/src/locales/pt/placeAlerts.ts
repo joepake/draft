@@ -66,8 +66,6 @@ export const placeAlerts = {
   updatedToast: 'Local atualizado.',
   removedToast: 'Local removido.',
   saveFailedToast: 'Não foi possível salvar. Tente novamente.',
-  enteredLabel: 'Chegada',
-  exitedLabel: 'Saída',
   footerNote:
     'Verificado sempre que a localização sincroniza — nem sempre em segundo plano.',
 } as const;

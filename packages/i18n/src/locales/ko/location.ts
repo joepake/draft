@@ -70,8 +70,12 @@ export const location = {
     '허용을 선택한 뒤 항상 허용을 선택하면 백그라운드에서도 업데이트됩니다.',
   requestNoFix:
     '이 기기가 위치를 가져오지 못했습니다. 아직 위치 권한이 허용되지 않았을 수 있습니다.',
+  requestIpOnly:
+    '이 기기는 인터넷 연결로 위치를 추측하는 것만 가능했습니다. 기기의 Wi-Fi를 켠 후(연결할 필요는 없습니다) 다시 시도해 주세요.',
   cardSharingOff: '위치 공유가 꺼져 있습니다',
   cardPermissionOff: '이 기기에서 위치 권한이 허용되지 않았습니다',
+  cardIpOnly:
+    '이 기기의 위치를 찾을 수 없습니다. 기기의 Wi-Fi를 켜 주세요(연결할 필요는 없습니다)',
   cardNotUpdating: '위치가 더 이상 업데이트되지 않습니다',
   namesNeedPremium: '장소 이름은 유료 플랜에서 제공됩니다',
   namesNeedPremiumTrialEnded:

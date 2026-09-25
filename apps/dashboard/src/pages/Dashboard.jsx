@@ -125,7 +125,7 @@ import AccountCard from '../dashboard/AccountCard.jsx';
 import ActivityFeed from '../dashboard/ActivityFeed.jsx';
 import { RichText } from '@kidgate/web-ui/RichText';
 import { useT } from '@kidgate/web-ui/useT';
-import { formatDayKey } from '../dashboard/reportCopy.js';
+import { getLocaleTag } from '@kidgate/i18n/web';
 import Card from '../dashboard/Card.jsx';
 import ControlsTab from '../dashboard/ControlsTab.jsx';
 
@@ -1968,13 +1968,6 @@ export default function Dashboard({
       : null) ?? null;
   const screenDayIsToday = !screenDay || screenDay.date === todayKey;
   /*
-   * The band under the Top apps card draws the picked day OR the newest one
-   * when no bar is picked, so its sentence is keyed on the day it DRAWS, not
-   * on `screenDayIsToday` — that flag is about today, and a device that
-   * stopped reporting on Thursday had the band saying "Today" over Thursday.
-   */
-  const timelineDay = screenDay ?? device?.usage?.[device.usage.length - 1] ?? null;
-  /*
    * `resolveTodayTopApps` answers today's question — it falls back to
    * `Device.topAppsToday`, which carries no date beyond `controls.usageDate`.
    * Handed an older day it would answer with today's three under that day's
@@ -3673,50 +3666,46 @@ export default function Dashboard({
 
         {deviceView && tab === 'screen' && (
           <>
-            {/*
-              Today first: the live figure, and the only card here that is not
-              about a day somebody chose. Everything below it answers for the
-              day picked in the chart under this one.
-            */}
-            <Card
-              id="daily-limit"
-              title={t('dash.todayTitle')}
-              subtitle={t('dash.todaySub')}
-            >
-              <div className="today">
-                <UsageRing
-                  used={stats.used}
-                  limit={c.dailyLimitMinutes}
-                  bonus={stats.bonus}
-                />
-                <ul className="today-stats">
-                  <li>
-                    <span>{t('dash.used')}</span>
-                    <strong>{formatMinutes(stats.used)}</strong>
-                  </li>
-                  <li>
-                    <span>{t('dash.left')}</span>
-                    <strong className={stats.left === 0 ? 'tone-critical' : ''}>
-                      {stats.left == null ? t('viz.none') : formatMinutes(stats.left)}
-                    </strong>
-                  </li>
-                  <li>
-                    <span>{t('dash.dailyLimit')}</span>
-                    <strong>
-                      {c.dailyLimitMinutes
-                        ? formatMinutes(c.dailyLimitMinutes)
-                        : t('dash.off')}
-                    </strong>
-                  </li>
-                  <li>
-                    <span>{t('dash.bonusToday')}</span>
-                    <strong>
-                      {stats.bonus ? `+${formatMinutes(stats.bonus)}` : t('viz.none')}
-                    </strong>
-                  </li>
-                </ul>
-              </div>
-              {/*
+            <div className="grid-2">
+              <Card
+                id="daily-limit"
+                title={t('dash.todayTitle')}
+                subtitle={t('dash.todaySub')}
+              >
+                <div className="today">
+                  <UsageRing
+                    used={stats.used}
+                    limit={c.dailyLimitMinutes}
+                    bonus={stats.bonus}
+                  />
+                  <ul className="today-stats">
+                    <li>
+                      <span>{t('dash.used')}</span>
+                      <strong>{formatMinutes(stats.used)}</strong>
+                    </li>
+                    <li>
+                      <span>{t('dash.left')}</span>
+                      <strong className={stats.left === 0 ? 'tone-critical' : ''}>
+                        {stats.left == null ? t('viz.none') : formatMinutes(stats.left)}
+                      </strong>
+                    </li>
+                    <li>
+                      <span>{t('dash.dailyLimit')}</span>
+                      <strong>
+                        {c.dailyLimitMinutes
+                          ? formatMinutes(c.dailyLimitMinutes)
+                          : t('dash.off')}
+                      </strong>
+                    </li>
+                    <li>
+                      <span>{t('dash.bonusToday')}</span>
+                      <strong>
+                        {stats.bonus ? `+${formatMinutes(stats.bonus)}` : t('viz.none')}
+                      </strong>
+                    </li>
+                  </ul>
+                </div>
+                {/*
                   Why this total is not live, said where the total is read.
                   Both halves are the free tier as built: the device beats every
                   thirty minutes rather than every one
@@ -3727,77 +3716,25 @@ export default function Dashboard({
                   doubt. App pack, not `dash.*`: the phone says both sentences
                   already (`.claude/rules/i18n.md`).
                 */}
-              {!hasFullAccess && (
-                <p className="hint">
-                  {`${activityT('plans.teaserLiveNote')} ${activityT(
-                    'plans.teaserDeviceNote',
-                  )}`}
-                </p>
-              )}
-            </Card>
+                {!hasFullAccess && (
+                  <p className="hint">
+                    {`${activityT('plans.teaserLiveNote')} ${activityT(
+                      'plans.teaserDeviceNote',
+                    )}`}
+                  </p>
+                )}
+              </Card>
 
-            {/*
-              The picker, and everything below it is what it picks: the Top
-              apps card takes the date into its own heading, the hour band
-              draws that day's minutes.
-
-              It sat under both of them until 2026-09-21, on the argument that
-              the card order should answer "what did they use" before "how has
-              it been trending". That ignored what the bars had become — a
-              control. A parent clicking 19/9 changed two cards ABOVE the thing
-              they clicked, one of them off the top of the screen, and the only
-              sign it had worked was a date in a heading they had to scroll
-              back to. A control sits above what it controls.
-            */}
-            <Card
-              title={t('dash.trendTitle')}
-              subtitle={t('dash.trendSub', { count: range })}
-              action={
-                <div className="seg">
-                  {[7, 14, 30].map(d => (
-                    <button
-                      key={d}
-                      className={range === d ? 'is-active' : ''}
-                      onClick={() => setRange(d)}
-                    >
-                      {t('dash.rangeDays', { count: d })}
-                    </button>
-                  ))}
-                </div>
-              }
-            >
-              <UsageBars
-                data={device.usage}
-                limit={c.dailyLimitMinutes}
-                days={range}
-                selectedDate={selectedUsageDate ?? todayKey}
-                onSelectDate={date =>
-                  setSelectedUsageDate(prev => (prev === date ? null : date))
-                }
-              />
-              {/*
-                A free family has no `usageDays` at all (`docs/PRICING.md` §4),
-                so these bars are empty for them and an empty chart reads as one
-                that failed rather than as the edge of the plan. A sentence and
-                no button: the hour band below already carries this column's
-                offer. App pack, like the two notes below — the phone says the
-                same thing on its own 30-day card (`.claude/rules/i18n.md`).
-              */}
-              {!hasFullAccess && (
-                <p className="hint">{activityT('plans.premiumHistoryNote')}</p>
-              )}
-            </Card>
-
-            {/* The two cards about the picked day, side by side under it. */}
-            <div className="grid-2">
               <Card
                 title={
                   screenDayIsToday
                     ? t('dash.topAppsTitle')
-                    : /* `formatDayKey`, never a raw `new Date(dayKey)`: the key
-                         parses as UTC midnight and formatting it in a local zone
-                         west of UTC prints the day before. */
-                      t('dash.topAppsTitleDay', { date: formatDayKey(screenDay.date) })
+                    : t('dash.topAppsTitleDay', {
+                        date: new Date(screenDay.date).toLocaleDateString(
+                          getLocaleTag(),
+                          { day: 'numeric', month: 'short' },
+                        ),
+                      })
                 }
                 subtitle={t('dash.topAppsSub')}
               >
@@ -3819,36 +3756,74 @@ export default function Dashboard({
                   <PremiumTeaser teaser={screenTopAppsTeaser} appT={activityT} />
                 )}
               </Card>
-
-              {/*
-                The other half of the same question. A bar reading 28 minutes
-                is a number a parent cannot interrogate; the band says whether
-                that was half an hour of use or a day nobody was measuring — of
-                that day, so it reads `screenDay` and falls back to the newest
-                only when no bar is picked.
-              */}
-              <Card
-                title={t('dash.timelineTitle')}
-                subtitle={
-                  !timelineDay || timelineDay.date === todayKey
-                    ? t('dash.timelineSub')
-                    : t('dash.timelineSubDay', {
-                        date: formatDayKey(timelineDay.date),
-                      })
-                }
-              >
-                <UsageDayTimeline
-                  day={timelineDay}
-                  platform={device.platform}
-                  capability={device.capabilities?.usageTimeline}
-                  lockedSlot={
-                    timelineTeaser ? (
-                      <PremiumTeaser teaser={timelineTeaser} appT={activityT} />
-                    ) : null
-                  }
-                />
-              </Card>
             </div>
+
+            <Card
+              title={t('dash.trendTitle')}
+              subtitle={t('dash.trendSub', { count: range })}
+              action={
+                <div className="seg">
+                  {[7, 14, 30].map(d => (
+                    <button
+                      key={d}
+                      className={range === d ? 'is-active' : ''}
+                      onClick={() => setRange(d)}
+                    >
+                      {t('dash.rangeDays', { count: d })}
+                    </button>
+                  ))}
+                </div>
+              }
+            >
+              {/*
+                The bars are also the day picker for the Top apps card above.
+                Above, not below, because the card order answers "what did they
+                use" before "how has it been trending" — so the picked day
+                carries its date in that card's own heading rather than relying
+                on the parent connecting a highlighted bar to a card they have
+                to scroll back to.
+              */}
+              <UsageBars
+                data={device.usage}
+                limit={c.dailyLimitMinutes}
+                days={range}
+                selectedDate={selectedUsageDate ?? todayKey}
+                onSelectDate={date =>
+                  setSelectedUsageDate(prev => (prev === date ? null : date))
+                }
+              />
+              {/*
+                A free family has no `usageDays` at all (`docs/PRICING.md` §4),
+                so these bars are empty for them and an empty chart reads as one
+                that failed rather than as the edge of the plan. A sentence and
+                no button: the hour band below already carries this column's
+                offer. App pack, like the two notes above — the phone says the
+                same thing on its own 30-day card (`.claude/rules/i18n.md`).
+              */}
+              {!hasFullAccess && (
+                <p className="hint">{activityT('plans.premiumHistoryNote')}</p>
+              )}
+            </Card>
+
+            {/*
+              Under the bars, because it is about the bar that was picked. A bar
+              reading 28 minutes is a number a parent cannot interrogate; the
+              band says whether that was half an hour of use or a day nobody was
+              measuring — of that day, so it reads `screenDay` and falls back to
+              the newest only when no bar is picked.
+            */}
+            <Card title={t('dash.timelineTitle')} subtitle={t('dash.timelineSub')}>
+              <UsageDayTimeline
+                day={screenDay ?? device.usage[device.usage.length - 1]}
+                platform={device.platform}
+                capability={device.capabilities?.usageTimeline}
+                lockedSlot={
+                  timelineTeaser ? (
+                    <PremiumTeaser teaser={timelineTeaser} appT={activityT} />
+                  ) : null
+                }
+              />
+            </Card>
 
             <Card
               id="schedule"
@@ -4738,9 +4713,7 @@ export default function Dashboard({
               ) : (
                 <ul className="catbars">
                   {blockedByCategory.map(([cat, n], i) => (
-                    // `--i` is the bar stagger, the same one the app ranking
-                    // uses — `dashboard.css`, "The charts draw themselves".
-                    <li key={cat} style={{ '--i': i }}>
+                    <li key={cat}>
                       <div className="hbar-head">
                         <span className="hbar-label">
                           <i className={`dot dot-${(i % 3) + 1}`} />

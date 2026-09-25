@@ -9,7 +9,8 @@ export const screenTime = {
   screenTimeStepAllowUsage: 'On the Status screen, select Allow App & Website Usage.',
   screenTimeStepTapAllow: 'When prompted, select Allow.',
   screenTimeStepReturnHereAuto: 'Return here — the status updates automatically.',
-  screenTimeDeniedStepOpenSettings: 'On the child device, open Settings → KidGate.',
+  screenTimeDeniedStepOpenSettings: 'On the child device, open Settings.',
+  screenTimeDeniedStepFindKidGate: 'Find KidGate in the list.',
   screenTimeDeniedStepTurnOnRestrictions: 'Turn on Screen Time.',
   screenTimeDeniedStepOpenKidGateAgain: 'Open KidGate again on the child device.',
   screenTimeDeniedStepReturnWhenReady:

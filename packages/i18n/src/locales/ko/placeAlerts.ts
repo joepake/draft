@@ -63,8 +63,6 @@ export const placeAlerts = {
   updatedToast: '장소를 업데이트했습니다.',
   removedToast: '장소를 삭제했습니다.',
   saveFailedToast: '저장할 수 없습니다. 다시 시도해 주세요.',
-  enteredLabel: '도착',
-  exitedLabel: '출발',
   footerNote:
     '위치가 동기화될 때마다 확인됩니다 — 항상 백그라운드에서 작동하지는 않습니다.',
 } as const;

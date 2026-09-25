@@ -33,8 +33,9 @@ export const permissions = {
   oemAutostartLabel: 'Izinkan mulai otomatis',
   oemAutostartHintXiaomi:
     'Di Mulai otomatis, aktifkan KidGate agar perlindungan mulai lagi setelah perangkat dinyalakan ulang.',
-  oemAutostartHintSamsung:
-    'Di Baterai → Batas penggunaan latar belakang → Aplikasi yang tidak pernah tidur, tambahkan KidGate. Jika KidGate tidak ada di daftar, berarti sudah diizinkan dan langkah ini selesai.',
+  oemAutostartHintSamsung: 'Di Baterai, pilih Batas penggunaan latar belakang.',
+  oemAutostartHintSamsungAdd:
+    'Buka Aplikasi yang tidak pernah tidur dan tambahkan KidGate. Jika KidGate tidak ada di daftar, berarti sudah diizinkan dan langkah ini selesai.',
   oemAutostartHintOppo:
     'Di Aplikasi saat mulai / Peluncuran otomatis, izinkan KidGate.',
   oemAutostartHintVivo:

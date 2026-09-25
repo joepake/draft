@@ -173,7 +173,7 @@ export default function ControlCenter({
           <h3 className="control-section-title">{section.title}</h3>
           <p className="control-section-sub">{section.subtitle}</p>
           <div className="control-grid">
-            {section.actions.map((action, i) => {
+            {section.actions.map(action => {
               const can = supported(action);
               /* Only for a card that is lit. A machine that cannot carry the
                  feature has no state to report, and "Off" over a struck-out
@@ -193,9 +193,6 @@ export default function ControlCenter({
                   className={`control-card${can ? '' : ' is-muted'}${
                     status ? ` tone-${status.tone}` : ''
                   }`}
-                  /* The entry stagger, capped in CSS — a section of twelve
-                     cards is a sweep, not a queue. */
-                  style={{ '--i': i }}
                   /* A card this device cannot carry is readable and inert: the
                      copy on it is the point — it says what the feature is and,
                      by being struck out, that this machine is not where it

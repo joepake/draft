@@ -69,8 +69,12 @@ export const location = {
     'Chạm Cho phép, rồi chọn Luôn luôn để vị trí vẫn cập nhật khi chạy nền.',
   requestNoFix:
     'Thiết bị này không lấy được vị trí. Có thể quyền vị trí chưa được cho phép.',
+  requestIpOnly:
+    'Thiết bị này chỉ đoán được vị trí từ đường mạng internet. Hãy bật Wi-Fi trên máy (không cần kết nối) rồi thử lại.',
   cardSharingOff: 'Chia sẻ vị trí đang tắt',
   cardPermissionOff: 'Thiết bị này chưa cho phép truy cập vị trí',
+  cardIpOnly:
+    'Không định vị được thiết bị này: hãy bật Wi-Fi trên máy (không cần kết nối)',
   cardNotUpdating: 'Vị trí đã ngừng cập nhật',
   namesNeedPremium: 'Tên địa chỉ cần gói trả phí',
   namesNeedPremiumTrialEnded:

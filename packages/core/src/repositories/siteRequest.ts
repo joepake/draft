@@ -5,6 +5,7 @@ import { siteRequestsCollection } from '@kidgate/schema/paths';
 import { isApiFailure } from '../domain/apiFailure';
 import { normalizeWebDomain } from '../domain/webDomain';
 import { deleteAllInBatches } from '../domain/batchDelete';
+import { timestampToIso } from '../domain/firestoreValue';
 
 /**
  * Site requests — a child asking for one website, a parent answering.
@@ -52,6 +53,7 @@ export function siteRequestMessageKey(error: unknown): string {
 
 function mapSiteRequest(doc: DocSnapshot): SiteRequest {
   const data = (doc.data() ?? {}) as Record<string, unknown>;
+  const resolvedAt = timestampToIso(data.resolvedAt);
   // Optional fields are spread in only when present: `exactOptionalPropertyTypes`
   // distinguishes "absent" from "explicitly undefined", and the schema declares
   // these optional rather than nullable.
@@ -61,9 +63,11 @@ function mapSiteRequest(doc: DocSnapshot): SiteRequest {
     deviceName: String(data.deviceName ?? ''),
     domain: String(data.domain ?? ''),
     status: data.status as SiteRequestStatus,
-    createdAt: typeof data.createdAt === 'string' ? data.createdAt : '',
+    // Timestamps on the wire, like `timeRequest.ts` — `siteRequests.js` writes
+    // both with `serverTimestamp()`.
+    createdAt: timestampToIso(data.createdAt) ?? '',
     ...(typeof data.reason === 'string' ? { reason: data.reason } : {}),
-    ...(typeof data.resolvedAt === 'string' ? { resolvedAt: data.resolvedAt } : {}),
+    ...(resolvedAt ? { resolvedAt } : {}),
   };
 }
 

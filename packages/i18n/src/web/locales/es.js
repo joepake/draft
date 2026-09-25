@@ -743,8 +743,6 @@ export default {
     timelineTitle: 'Cuándo se usó',
     timelineSub:
       'Hoy, de medianoche a medianoche. El verde es tiempo en el dispositivo.',
-    timelineSubDay:
-      '{{date}}, de medianoche a medianoche. El verde es tiempo en el dispositivo.',
   },
 
   controlError: {
@@ -863,7 +861,7 @@ export default {
 
     faq8Q: '¿Por qué no funciona el bloqueo o las horas bloqueadas?',
     faq8A:
-      'En Android, el bloqueo necesita *Mostrar sobre otras aplicaciones* y el asistente de *Accesibilidad* activados, además de batería sin restricciones. En Xiaomi, Samsung, Oppo, Vivo y dispositivos similares, permite también el inicio automático y quita KidGate de cualquier lista de "apps en reposo" (mira *Estado → Mantener KidGate en marcha* en el dispositivo del niño). En iOS, el bloqueo depende de la autorización de Tiempo de uso. Si un permiso se desactiva más tarde, recibirás una alerta de protección en el dispositivo del padre.',
+      'En Android, el bloqueo necesita *Mostrar sobre otras aplicaciones* y el asistente de *Accesibilidad* activados, además de batería sin restricciones. En Xiaomi, Samsung, Oppo, Vivo y dispositivos similares, permite también el inicio automático y quita KidGate de cualquier lista de "apps en reposo" (mira *Estado → Permitir el inicio automático* en el dispositivo del niño). En iOS, el bloqueo depende de la autorización de Tiempo de uso. Si un permiso se desactiva más tarde, recibirás una alerta de protección en el dispositivo del padre.',
 
     faq9Q: '¿Cómo bloqueo apps concretas?',
     faq9A:

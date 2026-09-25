@@ -30,8 +30,9 @@ export const permissions = {
   oemAutostartLabel: '자동 시작 허용',
   oemAutostartHintXiaomi:
     '자동 시작에서 KidGate를 켜서 재부팅 후에도 보호 기능이 다시 시작되도록 하세요.',
-  oemAutostartHintSamsung:
-    '배터리 → 백그라운드 사용 제한 → 절전이 적용되지 않는 앱에서 KidGate를 추가하세요. 목록에 KidGate가 없으면 이미 허용된 상태이며 이 단계는 완료된 것입니다.',
+  oemAutostartHintSamsung: '배터리에서 백그라운드 사용 제한을 선택하세요.',
+  oemAutostartHintSamsungAdd:
+    '절전이 적용되지 않는 앱을 열고 KidGate를 추가하세요. 목록에 KidGate가 없으면 이미 허용된 상태이며 이 단계는 완료된 것입니다.',
   oemAutostartHintOppo: '시작 앱 / 자동 실행에서 KidGate를 허용하세요.',
   oemAutostartHintVivo: '자동 시작 / 백그라운드 고성능에서 KidGate를 허용하세요.',
   oemAutostartHintHuawei:

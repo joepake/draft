@@ -17,15 +17,18 @@
  * - **The listener list is longer.** Location is refused by a television that
  *   has no position to give; a report is something every child surface can
  *   answer, so `androidtv` and `chromeos` join the desktops.
- * - **Nobody writes it on premium.** A paid device is already a minute or two
- *   behind, so a request would buy nothing and cost a write, a trigger and a
- *   push per device per app open. This is the rare feature that exists only on
- *   the free tier.
+ * - **A paying device is asked too, since 2026-09-23 — when it is idle.** It
+ *   beats every fifteen minutes while no console has asked to see it
+ *   (`IDLE_ALIVE_INTERVAL_MS`) and every three for twenty minutes after one
+ *   has (`agent/consoleLiveWindow`), so this request is what switches it to
+ *   live — worth the write even when its last stamp is fresh, which is why the
+ *   staleness gate below applies to the free cadence only. A device already
+ *   beating live is still never asked: the request would buy nothing.
  */
 
 import type { DevicePlatform } from '@kidgate/schema/capabilities';
 import { deviceRequestId, deviceRequestedAtMs } from './deviceRequestId';
-import { ALIVE_MIN_INTERVAL_MS } from './reportCadence';
+import { ALIVE_MIN_INTERVAL_MS, LAPSED_ALIVE_INTERVAL_MS } from './reportCadence';
 
 /**
  * Platforms whose agent takes the request off its own device document.
@@ -114,6 +117,20 @@ export const REPORT_REQUEST_MIN_INTERVAL_MS = 5 * 60 * 1000;
  */
 export const REPORT_REQUEST_STALE_AFTER_MS = 60 * 1000;
 
+/**
+ * How long a device may leave a request unanswered before a console calls it
+ * offline, whatever cadence it last claimed.
+ *
+ * An idle paying device publishes a fifteen-minute cadence, so
+ * `offlineThresholdForBeat` grants it forty-five minutes of silence — right
+ * for a device that is merely not being watched, wrong for one that died. The
+ * request is what tells them apart: a live device answers within seconds of
+ * a push or a listener delivery, and a dead one never does. Five minutes,
+ * not one — a phone in Doze can hold a silent push for a few — and read by
+ * `getEffectiveDeviceStatus` on both consoles, so they agree.
+ */
+export const REPORT_REQUEST_UNANSWERED_MS = 5 * 60 * 1000;
+
 export interface ReportRequestInput {
   /**
    * The cadence this device says it is keeping (`Device.beatIntervalMs`).
@@ -184,6 +201,16 @@ export function shouldRequestReport(input: ReportRequestInput): boolean {
 
   const reportedAtMs = new Date(input.lastActiveAt).getTime();
   if (Number.isNaN(reportedAtMs)) {
+    return true;
+  }
+
+  /*
+   * Below the free cadence is an idle paying device, and for it the request
+   * is not about the stamp: it is what moves the device to the live cadence
+   * for the parent's visit (`agent/consoleLiveWindow`). A fresh stamp is no
+   * reason to leave it idle.
+   */
+  if (beatIntervalMs < LAPSED_ALIVE_INTERVAL_MS) {
     return true;
   }
 

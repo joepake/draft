@@ -155,11 +155,11 @@ export const family = {
   guestBenefitLocationTitle: 'Vị trí và Báo an toàn',
   guestBenefitLocationBody: 'Xem trẻ đang ở đâu và yêu cầu trẻ xác nhận an toàn.',
   stepsHeading: 'Các bước bắt đầu',
-  step1Title: 'Chạm Thêm thiết bị của trẻ',
-  step1Description: 'Mã QR ghép nối sẽ hiện ngay tại đây để thiết bị của trẻ quét.',
-  step2Title: 'Quét mã từ thiết bị của trẻ',
-  step2Description:
-    'Cài KidGate trên điện thoại hoặc máy tính bảng của trẻ, chọn Đây là thiết bị của trẻ, sau đó quét mã.',
+  step1Title: 'Mở KidGate trên thiết bị của trẻ',
+  step1Description:
+    'Cài KidGate trên điện thoại, máy tính bảng, TV hoặc máy tính mà trẻ dùng. Trên điện thoại hoặc máy tính bảng, chọn Đây là thiết bị của trẻ. Màn hình sẽ hiện mã QR và mã gồm 6 ký tự.',
+  step2Title: 'Chạm Thêm thiết bị của trẻ tại đây',
+  step2Description: 'Quét mã QR đó bằng điện thoại này, hoặc nhập mã gồm 6 ký tự.',
   connectChildButton: 'Kết nối thiết bị của trẻ',
   listHint: 'Vuốt sang trái để gỡ thiết bị',
   removeAlertTitle: 'Gỡ thiết bị?',

@@ -10,7 +10,8 @@ export const screenTime = {
     'स्थिति स्क्रीन पर, ऐप और वेबसाइट उपयोग की अनुमति दें चुनें।',
   screenTimeStepTapAllow: 'पूछे जाने पर अनुमति दें चुनें।',
   screenTimeStepReturnHereAuto: 'यहाँ लौटें — स्थिति अपने आप अपडेट हो जाती है।',
-  screenTimeDeniedStepOpenSettings: 'बच्चे के डिवाइस पर सेटिंग्स → KidGate खोलें।',
+  screenTimeDeniedStepOpenSettings: 'बच्चे के डिवाइस पर सेटिंग्स खोलें।',
+  screenTimeDeniedStepFindKidGate: 'सूची में KidGate ढूँढें।',
   screenTimeDeniedStepTurnOnRestrictions: 'स्क्रीन टाइम चालू करें।',
   screenTimeDeniedStepOpenKidGateAgain: 'बच्चे के डिवाइस पर KidGate दोबारा खोलें।',
   screenTimeDeniedStepReturnWhenReady:

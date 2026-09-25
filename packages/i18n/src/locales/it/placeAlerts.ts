@@ -70,8 +70,6 @@ export const placeAlerts = {
   updatedToast: 'Luogo aggiornato.',
   removedToast: 'Luogo rimosso.',
   saveFailedToast: 'Impossibile salvare. Riprova.',
-  enteredLabel: 'Arrivo',
-  exitedLabel: 'Partenza',
   footerNote:
     'Verificato ogni volta che la posizione si sincronizza — non sempre in background.',
 } as const;

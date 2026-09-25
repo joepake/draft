@@ -10,7 +10,8 @@ export const screenTime = {
     'Tại mục Trạng thái, chọn Cho phép Sử dụng ứng dụng và Trang web.',
   screenTimeStepTapAllow: 'Khi hệ thống hỏi, chọn Cho phép.',
   screenTimeStepReturnHereAuto: 'Quay lại đây — trạng thái sẽ tự động cập nhật.',
-  screenTimeDeniedStepOpenSettings: 'Trên thiết bị của trẻ, mở Cài đặt → KidGate.',
+  screenTimeDeniedStepOpenSettings: 'Trên thiết bị của trẻ, mở Cài đặt.',
+  screenTimeDeniedStepFindKidGate: 'Tìm KidGate trong danh sách.',
   screenTimeDeniedStepTurnOnRestrictions: 'Bật Thời gian sử dụng.',
   screenTimeDeniedStepOpenKidGateAgain: 'Mở lại KidGate trên thiết bị của trẻ.',
   screenTimeDeniedStepReturnWhenReady:

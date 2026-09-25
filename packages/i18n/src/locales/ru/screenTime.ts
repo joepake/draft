@@ -10,8 +10,8 @@ export const screenTime = {
     'На экране «Статус» выберите «Разрешить использование приложений и веб-сайтов».',
   screenTimeStepTapAllow: 'В появившемся окне выберите «Разрешить».',
   screenTimeStepReturnHereAuto: 'Вернитесь сюда — статус обновится автоматически.',
-  screenTimeDeniedStepOpenSettings:
-    'На устройстве ребёнка откройте Настройки → KidGate.',
+  screenTimeDeniedStepOpenSettings: 'На устройстве ребёнка откройте Настройки.',
+  screenTimeDeniedStepFindKidGate: 'Найдите KidGate в списке.',
   screenTimeDeniedStepTurnOnRestrictions: 'Включите Экранное время.',
   screenTimeDeniedStepOpenKidGateAgain: 'Снова откройте KidGate на устройстве ребёнка.',
   screenTimeDeniedStepReturnWhenReady:

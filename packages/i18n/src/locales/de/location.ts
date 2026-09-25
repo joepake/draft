@@ -80,8 +80,12 @@ export const location = {
     'Wähle „Erlauben“ und dann „Immer“, damit Updates im Hintergrund weiterlaufen.',
   requestNoFix:
     'Dieses Gerät konnte keine Position ermitteln. Der Standort ist dort möglicherweise noch nicht erlaubt.',
+  requestIpOnly:
+    'Dieses Gerät konnte seine Position nur über die Internetverbindung schätzen. Schalte das WLAN am Gerät ein (eine Verbindung ist nicht nötig) und versuche es erneut.',
   cardSharingOff: 'Standortfreigabe ist aus',
   cardPermissionOff: 'Standort ist auf diesem Gerät nicht erlaubt',
+  cardIpOnly:
+    'Dieses Gerät lässt sich nicht orten: WLAN am Gerät einschalten (eine Verbindung ist nicht nötig)',
   cardNotUpdating: 'Standort wird nicht mehr aktualisiert',
   namesNeedPremium: 'Ortsnamen erfordern einen bezahlten Tarif',
   namesNeedPremiumTrialEnded:

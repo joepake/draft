@@ -743,8 +743,6 @@ export default {
     timelineTitle: 'Quando è stato usato',
     timelineSub:
       'Oggi, da mezzanotte a mezzanotte. Il verde è il tempo sul dispositivo.',
-    timelineSubDay:
-      '{{date}}, da mezzanotte a mezzanotte. Il verde è il tempo sul dispositivo.',
   },
 
   controlError: {
@@ -863,7 +861,7 @@ export default {
 
     faq8Q: 'Perché il blocco o gli orari di blocco non funzionano?',
     faq8A:
-      'Su Android il blocco richiede *Visualizza sopra altre app* e l’assistente *Accessibilità* attivi, oltre alla batteria senza restrizioni. Su Xiaomi, Samsung, Oppo, Vivo e dispositivi simili consenti anche l’avvio automatico e togli KidGate da eventuali elenchi di "app in sospensione" (vedi *Stato → Mantieni KidGate attivo* sul dispositivo del bambino). Su iOS il blocco dipende dall’autorizzazione a Tempo di utilizzo. Se un permesso viene disattivato in seguito, riceverai un avviso di protezione sul dispositivo del genitore.',
+      'Su Android il blocco richiede *Visualizza sopra altre app* e l’assistente *Accessibilità* attivi, oltre alla batteria senza restrizioni. Su Xiaomi, Samsung, Oppo, Vivo e dispositivi simili consenti anche l’avvio automatico e togli KidGate da eventuali elenchi di "app in sospensione" (vedi *Stato → Consenti l’avvio automatico* sul dispositivo del bambino). Su iOS il blocco dipende dall’autorizzazione a Tempo di utilizzo. Se un permesso viene disattivato in seguito, riceverai un avviso di protezione sul dispositivo del genitore.',
 
     faq9Q: 'Come blocco app specifiche?',
     faq9A:

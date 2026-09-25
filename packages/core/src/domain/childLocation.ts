@@ -28,7 +28,10 @@ import type {
   DevicePlatform,
 } from '@kidgate/schema/capabilities';
 import type { DeviceLocation } from '@kidgate/schema/deviceControls';
-import type { ProtectionPermissionStatus } from '@kidgate/schema/device';
+import type {
+  ProtectionPermissionStatus,
+  DeviceLocationSensing,
+} from '@kidgate/schema/device';
 import { supportsLocation } from './locationSupport';
 
 /** What this module reads off a device document — no screen state. */
@@ -45,6 +48,8 @@ export interface ChildLocationDeviceFacts {
   protectionStatus?: { location?: ProtectionPermissionStatus } | null;
   /** `Device.lastActiveAt`. Read only to tell a silent device from a silent fix. */
   lastActiveAt?: string | null;
+  /** `Device.locationSensing` — `'ip'` is a desktop that can only guess. */
+  locationSensing?: DeviceLocationSensing | null;
 }
 
 export interface ChildLocationView<
@@ -144,7 +149,18 @@ export function resolveChildLocationView<D extends ChildLocationDeviceFacts>(
  * active: 3 minutes ago" with no explanation anywhere.
  */
 export type ChildLocationBlocker =
-  'sharingOff' | 'permission' | 'waiting' | 'notUpdating';
+  | 'sharingOff'
+  | 'permission'
+  /**
+   * A desktop that could only guess from its internet connection — Wi-Fi
+   * radio off, or none — so no fix is coming until someone turns it on. Its
+   * own blocker because the parent can act on it, unlike `waiting`, and
+   * because the pin it would otherwise explain is not old, it is absent or
+   * wrong: an IP guess lands at the ISP's city centre.
+   */
+  | 'ipOnly'
+  | 'waiting'
+  | 'notUpdating';
 
 /**
  * How old a fix may be before a device that is plainly awake counts as broken.
@@ -213,6 +229,12 @@ export function resolveChildLocationBlocker(input: {
     return 'permission';
   }
 
+  // Before `waiting` and `notUpdating`, both of which it explains: the
+  // device is running and permitted, and still cannot place itself.
+  if (carried.locationSensing === 'ip') {
+    return 'ipOnly';
+  }
+
   if (!carried.lastLocation) {
     return 'waiting';
   }
@@ -245,6 +267,8 @@ export function childLocationBlockerKey(blocker: ChildLocationBlocker): string {
       return 'location.cardSharingOff';
     case 'permission':
       return 'location.cardPermissionOff';
+    case 'ipOnly':
+      return 'location.cardIpOnly';
     case 'waiting':
       return 'location.waitingForLocation';
     case 'notUpdating':

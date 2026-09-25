@@ -181,12 +181,13 @@ export const family = {
 
   stepsHeading: 'Premiers pas',
 
-  step1Title: 'Appuyez sur « Ajouter un appareil d’enfant »',
-  step1Description: 'Un QR code de couplage s’affiche ici, prêt à être scanné.',
+  step1Title: 'Ouvrez KidGate sur l’appareil de l’enfant',
+  step1Description:
+    'Installez KidGate sur le téléphone, la tablette, la TV ou l’ordinateur de votre enfant. Sur un téléphone ou une tablette, choisissez « Ceci est un appareil enfant ». Un QR code et un code à 6 caractères s’affichent.',
 
-  step2Title: 'Scannez-le depuis l’appareil de l’enfant',
+  step2Title: 'Appuyez ici sur « Ajouter un appareil d’enfant »',
   step2Description:
-    'Téléchargez KidGate sur le téléphone ou la tablette de votre enfant, choisissez « Cet appareil appartient à un enfant », puis scannez le code.',
+    'Scannez ce QR code avec ce téléphone, ou saisissez le code à 6 caractères.',
 
   connectChildButton: 'Connecter un appareil enfant',
   listHint: 'Faites glisser un appareil vers la gauche pour le supprimer',

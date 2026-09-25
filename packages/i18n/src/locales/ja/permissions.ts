@@ -34,7 +34,9 @@ export const permissions = {
   oemAutostartHintXiaomi:
     '「自動起動」でKidGateをオンにし、再起動後も保護機能が再開されるようにしてください。',
   oemAutostartHintSamsung:
-    '「バッテリー」→「バックグラウンド使用中の制限」→「スリープさせないアプリ」でKidGateを追加してください。一覧にKidGateがない場合はすでに許可済みで、この手順は完了です。',
+    '「バッテリー」で「バックグラウンド使用中の制限」を選びます。',
+  oemAutostartHintSamsungAdd:
+    '「スリープさせないアプリ」を開いてKidGateを追加してください。一覧にKidGateがない場合はすでに許可済みで、この手順は完了です。',
   oemAutostartHintOppo: '「起動アプリ」/「自動起動」でKidGateを許可してください。',
   oemAutostartHintVivo:
     '「自動起動」/「バックグラウンド高電力」でKidGateを許可してください。',

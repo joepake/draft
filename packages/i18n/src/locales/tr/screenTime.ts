@@ -10,7 +10,8 @@ export const screenTime = {
     'Durum ekranında Uygulama ve Web Sitesi Kullanımına İzin Ver’i seçin.',
   screenTimeStepTapAllow: 'Sorulduğunda İzin Ver’i seçin.',
   screenTimeStepReturnHereAuto: 'Buraya dönün — durum otomatik olarak güncellenir.',
-  screenTimeDeniedStepOpenSettings: 'Çocuk cihazında Ayarlar → KidGate’i açın.',
+  screenTimeDeniedStepOpenSettings: 'Çocuk cihazında Ayarlar’ı açın.',
+  screenTimeDeniedStepFindKidGate: 'Listede KidGate’i bulun.',
   screenTimeDeniedStepTurnOnRestrictions: 'Ekran Süresi’ni açın.',
   screenTimeDeniedStepOpenKidGateAgain: 'Çocuk cihazında KidGate’i yeniden açın.',
   screenTimeDeniedStepReturnWhenReady:

@@ -68,8 +68,6 @@ export const placeAlerts = {
   updatedToast: 'Место обновлено.',
   removedToast: 'Место удалено.',
   saveFailedToast: 'Не удалось сохранить. Попробуйте ещё раз.',
-  enteredLabel: 'Прибытие',
-  exitedLabel: 'Уход',
   footerNote:
     'Проверяется при каждой синхронизации местоположения — не всегда в фоновом режиме.',
 } as const;

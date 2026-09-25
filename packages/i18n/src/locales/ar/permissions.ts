@@ -29,8 +29,9 @@ export const permissions = {
   oemAutostartLabel: 'السماح بالتشغيل التلقائي',
   oemAutostartHintXiaomi:
     'في التشغيل التلقائي، فعّل KidGate حتى تُعاد الحماية بعد إعادة التشغيل.',
-  oemAutostartHintSamsung:
-    'في البطارية ثم حدود الاستخدام في الخلفية ثم التطبيقات التي لا تدخل وضع السكون، أضف KidGate. إذا لم يظهر KidGate في القائمة فهو مسموح له بالفعل وهذه الخطوة مكتملة.',
+  oemAutostartHintSamsung: 'في البطارية، اختر حدود الاستخدام في الخلفية.',
+  oemAutostartHintSamsungAdd:
+    'افتح التطبيقات التي لا تدخل وضع السكون وأضف KidGate. إذا لم يظهر KidGate في القائمة فهو مسموح له بالفعل وهذه الخطوة مكتملة.',
   oemAutostartHintOppo: 'في تطبيقات بدء التشغيل / التشغيل التلقائي، اسمح لـKidGate.',
   oemAutostartHintVivo:
     'في التشغيل التلقائي / الطاقة العالية في الخلفية، اسمح لـKidGate.',

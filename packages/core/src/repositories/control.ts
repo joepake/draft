@@ -6,7 +6,10 @@ import {
   isReportOnlyControlKey,
   isUsageControlKey,
 } from '@kidgate/schema/controlKeys';
-import type { DeviceLocationRequestResult } from '@kidgate/schema/device';
+import type {
+  DeviceLocationRequestResult,
+  DeviceLocationSensing,
+} from '@kidgate/schema/device';
 import type { DeviceControls, DeviceLocation } from '@kidgate/schema/deviceControls';
 import { childDeviceDoc } from '@kidgate/schema/paths';
 import type { BatteryStatus } from '@kidgate/schema/telemetry';
@@ -500,6 +503,22 @@ export function createControlRepository(deps: ControlRepositoryDeps) {
       }
 
       await db.updateDoc(childDeviceDoc(userId, deviceId), patch);
+    },
+
+    /**
+     * What the device could position itself from lately — `'ip'` while every
+     * read is a guess from the internet connection, `'wifi'` once a fix
+     * exists. The desktop agent writes it on change only; the parent's card
+     * turns `'ip'` into "turn on its Wi-Fi" instead of an ageing pin.
+     */
+    async reportLocationSensing(
+      userId: string,
+      deviceId: string,
+      sensing: DeviceLocationSensing,
+    ): Promise<void> {
+      await db.updateDoc(childDeviceDoc(userId, deviceId), {
+        locationSensing: sensing,
+      });
     },
 
     async markScreenTimeAuthorized(

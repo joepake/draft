@@ -230,6 +230,13 @@ export interface ChildDevicesMapPoint {
    * legend beside the list. Absent falls back to the carried/other greys.
    */
   color?: string;
+  /**
+   * Horizontal accuracy in metres — `DeviceLocation.accuracy` — drawn as the
+   * error circle under the dot. Without it a PC positioned from its IP
+   * address at 20 000 m and a phone at 5 m are the same confident marker;
+   * with it the circle says which. Absent or null draws no circle.
+   */
+  accuracy?: number | null;
 }
 
 /** One device's recent route, already windowed and capped by the caller. */
@@ -366,9 +373,45 @@ export function buildChildDevicesMapHtml(
         trails.forEach(trail => {
           trail.path.forEach(step => boundPoints.push([step.lat, step.lng]));
         });
+        // The error circles too: a 20 km circle cropped to its centre is the
+        // confident pin the circle exists to correct.
+        const circleRadius = point =>
+          typeof point.accuracy === 'number' && point.accuracy > 0
+            ? point.accuracy
+            : null;
+        points.forEach(point => {
+          const radius = circleRadius(point);
+          if (radius === null) return;
+          const dLat = radius / 111320;
+          const dLng =
+            radius / (111320 * Math.max(Math.cos((point.lat * Math.PI) / 180), 0.01));
+          boundPoints.push(
+            [point.lat + dLat, point.lng + dLng],
+            [point.lat - dLat, point.lng - dLng],
+          );
+        });
         map.fitBounds(L.latLngBounds(boundPoints), {
           padding: [48, 48],
           maxZoom: 15,
+        });
+
+        // Error circles under everything else, only where the platform gave
+        // a radius: a Wi-Fi fix's 50 m is a faint ring, an IP lookup's 20 km
+        // is the whole city — which is the honest picture of it.
+        points.forEach(point => {
+          const radius = circleRadius(point);
+          if (radius === null) return;
+          const color =
+            point.color || (point.kind === 'carried' ? '${accentColor}' : '#64748B');
+          L.circle([point.lat, point.lng], {
+            radius,
+            color,
+            weight: 1,
+            opacity: 0.5,
+            fillColor: color,
+            fillOpacity: 0.08,
+            interactive: false,
+          }).addTo(map);
         });
 
         const escapeHtml = value =>

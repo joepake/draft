@@ -10,7 +10,8 @@ export const screenTime = {
     'Di layar Status, pilih Izinkan Penggunaan Aplikasi & Situs Web.',
   screenTimeStepTapAllow: 'Saat diminta, pilih Izinkan.',
   screenTimeStepReturnHereAuto: 'Kembali ke sini — status akan diperbarui otomatis.',
-  screenTimeDeniedStepOpenSettings: 'Di perangkat anak, buka Pengaturan → KidGate.',
+  screenTimeDeniedStepOpenSettings: 'Di perangkat anak, buka Pengaturan.',
+  screenTimeDeniedStepFindKidGate: 'Cari KidGate di daftar.',
   screenTimeDeniedStepTurnOnRestrictions: 'Aktifkan Waktu Layar.',
   screenTimeDeniedStepOpenKidGateAgain: 'Buka lagi KidGate di perangkat anak.',
   screenTimeDeniedStepReturnWhenReady:

@@ -68,8 +68,6 @@ export const placeAlerts = {
   updatedToast: 'Ort aktualisiert.',
   removedToast: 'Ort entfernt.',
   saveFailedToast: 'Speichern fehlgeschlagen. Bitte versuche es erneut.',
-  enteredLabel: 'Betreten',
-  exitedLabel: 'Verlassen',
   footerNote:
     'Wird bei jeder Standortsynchronisierung geprüft – nicht immer im Hintergrund.',
 } as const;

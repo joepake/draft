@@ -8,6 +8,7 @@ import {
   searchFamilies,
 } from './api.js';
 import { LANGUAGES, useT } from './i18n.js';
+import { clearCached, readCached, writeCached } from './sessionCache.js';
 import Report from './Report.jsx';
 import Fleet from './Fleet.jsx';
 import Support from './Support.jsx';
@@ -44,6 +45,39 @@ const MIN_QUERY_LENGTH = 2;
  */
 const FAMILY_PLAN_IDS = ['free', 'trial', 'premium'];
 const FAMILY_STATUSES = ['active', 'expired', 'cancelled'];
+
+/**
+ * Rows per browse page, sent as `limit` — the server's own default is 50. Each
+ * row costs four count reads on top of its document, so a smaller page is also
+ * a cheaper one.
+ */
+const FAMILY_PAGE_SIZE = 20;
+
+/** The per-row counts `getFamilyList` returns, and the header naming each. */
+const FAMILY_COUNT_COLUMNS = [
+  ['childCount', 'families.colChildren'],
+  ['parentCount', 'families.colParents'],
+  ['childDeviceCount', 'families.colChildDevices'],
+  ['parentDeviceCount', 'families.colParentDevices'],
+];
+
+/**
+ * Order rows by one count. A row without one — cached before the server sent
+ * counts — sinks to the bottom in both directions rather than ranking as zero
+ * among the families that genuinely have none. `sort` is stable, so ties keep
+ * the server's uid order.
+ */
+function byCount(key, direction) {
+  const sign = direction === 'asc' ? 1 : -1;
+  return (a, b) => {
+    const left = Number.isFinite(a[key]) ? a[key] : null;
+    const right = Number.isFinite(b[key]) ? b[key] : null;
+    if (left === null || right === null) {
+      return Number(left === null) - Number(right === null);
+    }
+    return sign * (left - right);
+  };
+}
 
 /**
  * The same fold `searchByName` applies server-side, including the `đ` that NFD
@@ -105,12 +139,6 @@ const ICONS = {
   support: (
     <>
       <path d="M21 15a2 2 0 01-2 2H8l-4 4V5a2 2 0 012-2h13a2 2 0 012 2z" />
-    </>
-  ),
-  lookup: (
-    <>
-      <circle cx="11" cy="11" r="7" />
-      <path d="M20 20l-3.5-3.5" />
     </>
   ),
   families: (
@@ -282,10 +310,12 @@ function SignIn() {
  * the server checks again on every request regardless.
  *
  * `getIdTokenResult(true)` forces a refresh rather than trusting a cached
- * token, matching `api.js`'s `call()` — the claim is granted out of band by
- * `grant-operator-claim.js`, so a token issued before that carries no mention
- * of it. Fails closed: a token that cannot be read is treated the same as
- * "not an operator", never as "assume yes".
+ * token — the claim is granted out of band by `grant-operator-claim.js`, so a
+ * token issued before that carries no mention of it. **This is the one forced
+ * refresh**: no page mounts until it answers, so `api.js` reuses the token it
+ * produced instead of forcing another per call. Fails closed: a token that
+ * cannot be read is treated the same as "not an operator", never as "assume
+ * yes".
  */
 function useOperatorStatus(user) {
   const [status, setStatus] = useState('checking');
@@ -360,27 +390,34 @@ function NotOperator({ email, status, onRetry }) {
   );
 }
 
+/**
+ * The landing page, so it used to be fetched on every visit to it: three
+ * `count()` queries and an audit row per sidebar click back to Overview. Now
+ * once per `sessionCache.js` window, and Refresh when the operator wants now.
+ */
 function Metrics() {
   const { t, formatNumber } = useT();
-  const [metrics, setMetrics] = useState(null);
+  const [metrics, setMetrics] = useState(() => readCached('metrics'));
   const [error, setError] = useState(null);
+  const [busy, setBusy] = useState(false);
 
-  useEffect(() => {
+  const load = useCallback(() => {
+    setBusy(true);
+    setError(null);
     fetchMetrics()
-      .then(setMetrics)
-      .catch(metricsError => setError(metricsError.message));
+      .then(value => {
+        writeCached('metrics', value);
+        setMetrics(value);
+      })
+      .catch(metricsError => setError(metricsError.message))
+      .finally(() => setBusy(false));
   }, []);
 
-  if (error) {
-    return (
-      <div className="error-banner">
-        <span>{error}</span>
-      </div>
-    );
-  }
-  if (!metrics) {
-    return <p className="muted">{t('common.loading')}</p>;
-  }
+  useEffect(() => {
+    if (!readCached('metrics')) {
+      load();
+    }
+  }, [load]);
 
   /*
    * Two tiles, not three. `metrics.families` used to sit here too and is now
@@ -390,16 +427,35 @@ function Metrics() {
    * a different question from how big the product is.
    */
   return (
-    <div className="tile-grid">
-      <Tile
-        label={t('overview.pendingPairingCodes')}
-        value={formatNumber(metrics.pendingPairingCodes)}
-      />
-      <Tile
-        label={t('overview.supportReports')}
-        value={formatNumber(metrics.supportReports)}
-      />
-    </div>
+    <>
+      <div className="section-head">
+        <h2 className="section-title">{t('overview.waitingForYou')}</h2>
+        <button className="btn btn-ghost" disabled={busy} onClick={load}>
+          {busy ? t('common.loading') : t('common.refresh')}
+        </button>
+      </div>
+
+      {error ? (
+        <div className="error-banner">
+          <span>{error}</span>
+        </div>
+      ) : null}
+
+      {!metrics && !error ? <p className="muted">{t('common.loading')}</p> : null}
+
+      {metrics ? (
+        <div className="tile-grid">
+          <Tile
+            label={t('overview.pendingPairingCodes')}
+            value={formatNumber(metrics.pendingPairingCodes)}
+          />
+          <Tile
+            label={t('overview.supportReports')}
+            value={formatNumber(metrics.supportReports)}
+          />
+        </div>
+      ) : null}
+    </>
   );
 }
 
@@ -412,284 +468,9 @@ function Tile({ label, value }) {
   );
 }
 
-/**
- * Opening one family's record is a separate, logged action.
- *
- * The reason field is not decoration. One person operates this product with no
- * colleague to ask "why are you looking at this family?" — the stated reason is
- * the only thing that makes the audit log answerable months later.
- */
-/**
- * Every family, a page at a time.
- *
- * **The first page loads on arrival, since 2026-09-14.** It used to wait behind
- * a twelve-character reason, which made the reason a password typed to get past
- * a form rather than an account of why a browse happened. A reason is still
- * sent and still stored when one is typed, and `fetchFamilyDetail` — the read
- * that returns an address, a device list and who else can see the children —
- * still refuses without one. `getFamilyList` carries the decision.
- *
- * Rows carry no email address — `getFamilyList` explains why the server leaves
- * it out. Opening a row is `fetchFamilyDetail`, the same reasoned, separately
- * logged read the lookup page performs, so nothing here is a shortcut around a
- * control; it only saves retyping the uid.
- */
-function Families() {
-  const { t } = useT();
-  const [reason, setReason] = useState('');
-  const [planId, setPlanId] = useState('');
-  const [status, setStatus] = useState('');
-  const [nameFilter, setNameFilter] = useState('');
-  const [rows, setRows] = useState(null);
-  const [cursor, setCursor] = useState(null);
-  const [busy, setBusy] = useState(false);
-  const [error, setError] = useState(null);
-  const [detail, setDetail] = useState(null);
-  const [opening, setOpening] = useState(null);
-
-  const remaining = MIN_REASON_LENGTH - reason.trim().length;
-  const ready = remaining <= 0;
-
-  /**
-   * The reason travels with the list when one is typed, but typing it must not
-   * re-fetch a page per keystroke — so it is read through a ref and `load`
-   * depends on the filters alone, which are exactly the changes that invalidate
-   * the rows already on screen.
-   */
-  const reasonRef = useRef(reason);
-  reasonRef.current = reason;
-
-  const load = useCallback(
-    next => {
-      setBusy(true);
-      setError(null);
-      fetchFamilyList({
-        reason: reasonRef.current.trim(),
-        cursor: next,
-        planId,
-        status,
-      })
-        .then(page => {
-          // Appended rather than replaced: paging forward is reading more of
-          // one list, and a cursor-based API has no way back to a page it has
-          // already handed over.
-          setRows(existing =>
-            next ? [...(existing ?? []), ...page.families] : page.families,
-          );
-          setCursor(page.nextCursor ?? null);
-        })
-        .catch(listError => setError(listError.message))
-        .finally(() => setBusy(false));
-    },
-    [planId, status],
-  );
-
-  // The first page on arrival, and a fresh first page whenever a filter
-  // changes — `load`'s identity changes with exactly those two.
-  useEffect(() => {
-    load(null);
-  }, [load]);
-
-  /**
-   * The name box narrows the rows already fetched and reads no document.
-   *
-   * It cannot do more: matching a name across the whole collection is a scan
-   * Firestore will not do, which is what `adminFamilySearch` exists for — so
-   * this one says "in what is loaded" on the label rather than implying it
-   * searched every family and found nothing.
-   */
-  const needle = fold(nameFilter);
-  const visible = needle
-    ? (rows ?? []).filter(
-        family =>
-          fold(family.name).includes(needle) || fold(family.uid).includes(needle),
-      )
-    : (rows ?? []);
-
-  const open = useCallback(
-    uid => {
-      setOpening(uid);
-      setError(null);
-      setDetail(null);
-      fetchFamilyDetail(uid, reason.trim())
-        .then(setDetail)
-        .catch(detailError => setError(detailError.message))
-        .finally(() => setOpening(null));
-    },
-    [reason],
-  );
-
-  return (
-    <div className="card">
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}>
-        <div className="field-group" style={{ flex: '1 1 180px' }}>
-          <label className="field-label" htmlFor="families-plan">
-            {t('families.filterPlan')}
-          </label>
-          <select
-            className="field"
-            id="families-plan"
-            value={planId}
-            onChange={event => setPlanId(event.target.value)}
-          >
-            <option value="">{t('families.filterAny')}</option>
-            {FAMILY_PLAN_IDS.map(plan => (
-              <option key={plan} value={plan}>
-                {plan}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        <div className="field-group" style={{ flex: '1 1 180px' }}>
-          <label className="field-label" htmlFor="families-status">
-            {t('families.filterStatus')}
-          </label>
-          <select
-            className="field"
-            id="families-status"
-            value={status}
-            onChange={event => setStatus(event.target.value)}
-          >
-            <option value="">{t('families.filterAny')}</option>
-            {FAMILY_STATUSES.map(value => (
-              <option key={value} value={value}>
-                {value}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        <div className="field-group" style={{ flex: '1 1 220px' }}>
-          <label className="field-label" htmlFor="families-name">
-            {t('families.filterName')}
-          </label>
-          <input
-            className="field"
-            id="families-name"
-            value={nameFilter}
-            onChange={event => setNameFilter(event.target.value)}
-          />
-        </div>
-      </div>
-      <div className="field-hint">{t('families.filterNameHint')}</div>
-
-      <div className="field-group" style={{ marginTop: 14 }}>
-        <label className="field-label" htmlFor="families-reason">
-          {t('lookup.reason')}
-        </label>
-        <input
-          className="field"
-          id="families-reason"
-          value={reason}
-          onChange={event => setReason(event.target.value)}
-        />
-        <div className="field-hint">
-          {remaining > 0
-            ? t('families.reasonForOpening', { count: remaining })
-            : t('families.reasonStored')}
-        </div>
-      </div>
-
-      <button className="btn" disabled={busy} onClick={() => load(null)}>
-        {busy && !rows ? t('families.loading') : t('families.reload')}
-      </button>
-
-      {error ? (
-        <div className="error-banner" style={{ marginTop: 14 }}>
-          <span>{error}</span>
-        </div>
-      ) : null}
-
-      {rows && rows.length === 0 ? (
-        <p className="muted" style={{ marginTop: 14 }}>
-          {t('families.empty')}
-        </p>
-      ) : null}
-
-      {rows && rows.length > 0 && visible.length === 0 ? (
-        <p className="muted" style={{ marginTop: 14 }}>
-          {t('families.noneMatchLoaded')}
-        </p>
-      ) : null}
-
-      {visible.length > 0 ? (
-        <>
-          <div className="table-scroll" style={{ marginTop: 14 }}>
-            <table className="table">
-              <thead>
-                <tr>
-                  <th>{t('search.colName')}</th>
-                  <th>{t('search.colPlan')}</th>
-                  <th>{t('families.colCreated')}</th>
-                  <th>{t('search.colUid')}</th>
-                  <th />
-                </tr>
-              </thead>
-              <tbody>
-                {visible.map(family => (
-                  <tr key={family.uid}>
-                    <td>{family.name ?? t('family.noName')}</td>
-                    <td>
-                      {family.planId ?? t('family.noPlan')}
-                      {family.subscriptionStatus
-                        ? ` · ${family.subscriptionStatus}`
-                        : ''}
-                    </td>
-                    <td>{stamp(family.createdAt)}</td>
-                    <td>
-                      <code>{family.uid}</code>
-                    </td>
-                    <td>
-                      {/*
-                        Opening a family is the read that still demands a
-                        reason, so the button waits for one — the list above it
-                        does not.
-                      */}
-                      <button
-                        className="btn-ghost"
-                        disabled={opening !== null || !ready}
-                        title={ready ? undefined : t('families.reasonToOpen')}
-                        onClick={() => open(family.uid)}
-                      >
-                        {opening === family.uid
-                          ? t('families.opening')
-                          : t('families.open')}
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          <div className="ticket-meta" style={{ marginTop: 12 }}>
-            <span>
-              {needle
-                ? t('families.shownFiltered', {
-                    count: visible.length,
-                    loaded: rows.length,
-                  })
-                : t('families.shown', { count: rows.length })}
-            </span>
-            {cursor ? (
-              <button
-                className="btn-ghost"
-                disabled={busy}
-                onClick={() => load(cursor)}
-              >
-                {busy ? t('families.loading') : t('families.loadMore')}
-              </button>
-            ) : (
-              <span>{t('families.end')}</span>
-            )}
-          </div>
-        </>
-      ) : null}
-
-      {detail ? <FamilyDetail family={detail} /> : null}
-    </div>
-  );
+/** One entry per filter pair: a filtered browse is a different list. */
+function familiesKey(planId, status) {
+  return `families:${planId}|${status}`;
 }
 
 /**
@@ -721,30 +502,117 @@ function familyQuery(raw) {
   return { q: value };
 }
 
-function FamilyLookup() {
-  const { t } = useT();
-  const [query, setQuery] = useState('');
-  const [results, setResults] = useState(null);
-  const [truncated, setTruncated] = useState(false);
-  const [searching, setSearching] = useState(false);
-  const [searchError, setSearchError] = useState(null);
-  const [uid, setUid] = useState('');
+/**
+ * Every family a page at a time, and any family by name, email or uid.
+ *
+ * **One page since 2026-09-25, where there were two.** Family lookup had grown
+ * the whole browse underneath it, so an operator met two reason boxes, two ways
+ * to open the same family and two places its record appeared. The merge is in
+ * the UI only — the three reads stay three endpoints with three audit shapes:
+ *
+ * - **Browse**, `fetchFamilyList`: loads on arrival with no reason (since
+ *   2026-09-14 — a reason demanded before the first row appears is a password,
+ *   not an account of anything) and returns no email. `getFamilyList` carries
+ *   both decisions.
+ * - **Search**, `searchFamilies`: runs on Enter, never per keystroke, and may
+ *   return an email because the operator had to know something to type it.
+ * - **Open**, `fetchFamilyDetail`: the read that returns an address, a device
+ *   list and who else can see the children, and it still refuses without a
+ *   stated reason. One person operates this product with no colleague to ask
+ *   "why this family?" — the reason is the only thing that makes the audit log
+ *   answerable months later.
+ */
+function Families() {
+  const { t, formatNumber } = useT();
   const [reason, setReason] = useState('');
-  const [result, setResult] = useState(null);
-  const [error, setError] = useState(null);
+  const [planId, setPlanId] = useState('');
+  const [status, setStatus] = useState('');
+  const [query, setQuery] = useState('');
+  // Leaving the page and coming back shows what this tab already paged through.
+  const [rows, setRows] = useState(
+    () => readCached(familiesKey(planId, status))?.rows ?? null,
+  );
+  const [cursor, setCursor] = useState(
+    () => readCached(familiesKey(planId, status))?.cursor ?? null,
+  );
   const [busy, setBusy] = useState(false);
+  const [error, setError] = useState(null);
+  const [detail, setDetail] = useState(null);
+  const [opening, setOpening] = useState(null);
+  const [sort, setSort] = useState(null);
+  // A search's answer, or null while browsing. Held in state and never in the
+  // session cache: it can carry email addresses, which the browse never does.
+  const [found, setFound] = useState(null);
+  const [searching, setSearching] = useState(false);
 
   const remaining = MIN_REASON_LENGTH - reason.trim().length;
-  const ready = uid.trim().length > 0 && remaining <= 0;
+  const ready = remaining <= 0;
   const canSearch = query.trim().length >= MIN_QUERY_LENGTH;
 
   /**
-   * Deliberately not wired to `onChange`.
+   * The reason travels with the list when one is typed, but typing it must not
+   * re-fetch a page per keystroke — so it is read through a ref and `load`
+   * depends on the filters alone, which are exactly the changes that invalidate
+   * the rows already on screen.
+   */
+  const reasonRef = useRef(reason);
+  reasonRef.current = reason;
+  const rowsRef = useRef(rows);
+  rowsRef.current = rows;
+
+  const load = useCallback(
+    next => {
+      setBusy(true);
+      setError(null);
+      fetchFamilyList({
+        reason: reasonRef.current.trim(),
+        cursor: next,
+        limit: FAMILY_PAGE_SIZE,
+        planId,
+        status,
+      })
+        .then(page => {
+          // Appended rather than replaced: paging forward is reading more of
+          // one list, and a cursor-based API has no way back to a page it has
+          // already handed over. Cached whole for the same reason.
+          const merged = next
+            ? [...(rowsRef.current ?? []), ...page.families]
+            : page.families;
+          const nextCursor = page.nextCursor ?? null;
+          writeCached(familiesKey(planId, status), {
+            rows: merged,
+            cursor: nextCursor,
+          });
+          setRows(merged);
+          setCursor(nextCursor);
+        })
+        .catch(listError => setError(listError.message))
+        .finally(() => setBusy(false));
+    },
+    [planId, status],
+  );
+
+  // The first page on arrival, and a fresh first page whenever a filter
+  // changes — `load`'s identity changes with exactly those two. A list this
+  // tab still holds for those filters is shown instead of read again; Reload
+  // below always reads.
+  useEffect(() => {
+    const held = readCached(familiesKey(planId, status));
+    if (held) {
+      setRows(held.rows);
+      setCursor(held.cursor);
+      return;
+    }
+    load(null);
+  }, [load, planId, status]);
+
+  /**
+   * One box, two jobs, told apart by what triggers them.
    *
-   * A name search reads up to `NAME_SCAN_LIMIT` family documents per call, so a
-   * type-ahead would spend one scan per keystroke — ten characters is tens of
-   * thousands of reads for a single lookup. The button and Enter are the only
-   * triggers, and the result stays in state until the next one.
+   * Typing narrows the rows already fetched and reads nothing. Enter or the
+   * button searches every family — a uid or a full email in one read, anything
+   * else a scan of up to `NAME_SCAN_LIMIT` documents, which is why the search is
+   * never wired to `onChange`: ten characters would be ten scans.
    */
   const search = useCallback(() => {
     const value = query.trim();
@@ -752,93 +620,281 @@ function FamilyLookup() {
       return;
     }
     setSearching(true);
-    setSearchError(null);
-    setResults(null);
-    setTruncated(false);
+    setError(null);
     searchFamilies(familyQuery(value))
-      .then(found => {
-        const rows = found.results ?? [];
-        setResults(rows);
-        setTruncated(found.truncated === true);
-        if (rows.length === 0) {
-          setSearchError(t('search.noMatch'));
-        }
-      })
+      .then(answer =>
+        setFound({
+          query: value,
+          rows: answer.results ?? [],
+          truncated: answer.truncated === true,
+        }),
+      )
       // A uid or email branch that matched nothing answers 404 with no message,
       // so it arrives here as `Request failed (404)` rather than as an empty
       // result set. Same meaning to the operator; not worth threading a status
       // code through `api.js` to say it twice.
-      .catch(searchFailure => setSearchError(searchFailure.message))
+      .catch(searchFailure => setError(searchFailure.message))
       .finally(() => setSearching(false));
-  }, [query, t]);
+  }, [query]);
 
-  const look = useCallback(() => {
-    setBusy(true);
-    setError(null);
-    setResult(null);
-    fetchFamilyDetail(uid.trim(), reason.trim())
-      .then(setResult)
-      .catch(lookupError => setError(lookupError.message))
-      .finally(() => setBusy(false));
-  }, [uid, reason]);
+  const backToList = () => {
+    setFound(null);
+    setQuery('');
+  };
+
+  /**
+   * What the table shows. Browsing, plan and subscription were applied by the
+   * server and the box narrows the loaded rows. Searching, the server matched
+   * on the text alone, so the two selects narrow its answer here — a search
+   * result carries both fields for exactly that.
+   */
+  const needle = found ? '' : fold(query);
+  const visible = found
+    ? found.rows.filter(
+        family =>
+          (!planId || family.planId === planId) &&
+          (!status || family.subscriptionStatus === status),
+      )
+    : (rows ?? []).filter(
+        family =>
+          !needle ||
+          fold(family.name).includes(needle) ||
+          fold(family.uid).includes(needle),
+      );
+
+  /**
+   * Sorting orders the rows on screen: the counts are computed per row, not
+   * stored, so no index can order the whole collection by them. While a next
+   * page exists the hint under the table says so.
+   *
+   * Descending first — "most devices" is the usual question — then ascending,
+   * for the families with none, then back to the server's order.
+   */
+  const toggleSort = key =>
+    setSort(current => {
+      if (current?.key !== key) return { key, direction: 'desc' };
+      return current.direction === 'desc' ? { key, direction: 'asc' } : null;
+    });
+  const shown = sort ? [...visible].sort(byCount(sort.key, sort.direction)) : visible;
+
+  const open = useCallback(
+    uid => {
+      setOpening(uid);
+      setError(null);
+      setDetail(null);
+      fetchFamilyDetail(uid, reason.trim())
+        .then(setDetail)
+        .catch(detailError => setError(detailError.message))
+        .finally(() => setOpening(null));
+    },
+    [reason],
+  );
 
   return (
     <div className="card">
-      <div className="field-group">
-        <label className="field-label" htmlFor="family-search">
-          {t('search.label')}
-        </label>
-        <div style={{ display: 'flex', gap: 12 }}>
-          <input
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}>
+        <div className="field-group" style={{ flex: '1 1 160px' }}>
+          <label className="field-label" htmlFor="families-plan">
+            {t('families.filterPlan')}
+          </label>
+          <select
             className="field"
-            id="family-search"
-            value={query}
-            onChange={event => setQuery(event.target.value)}
-            onKeyDown={event => {
-              if (event.key === 'Enter') {
-                search();
-              }
-            }}
-          />
-          <button className="btn" disabled={!canSearch || searching} onClick={search}>
-            {searching ? t('search.searching') : t('search.search')}
-          </button>
+            id="families-plan"
+            value={planId}
+            onChange={event => setPlanId(event.target.value)}
+          >
+            <option value="">{t('families.filterAny')}</option>
+            {FAMILY_PLAN_IDS.map(plan => (
+              <option key={plan} value={plan}>
+                {plan}
+              </option>
+            ))}
+          </select>
         </div>
-        <div className="field-hint">{t('search.hint')}</div>
+
+        <div className="field-group" style={{ flex: '1 1 160px' }}>
+          <label className="field-label" htmlFor="families-status">
+            {t('families.filterStatus')}
+          </label>
+          <select
+            className="field"
+            id="families-status"
+            value={status}
+            onChange={event => setStatus(event.target.value)}
+          >
+            <option value="">{t('families.filterAny')}</option>
+            {FAMILY_STATUSES.map(value => (
+              <option key={value} value={value}>
+                {value}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div className="field-group" style={{ flex: '2 1 320px' }}>
+          <label className="field-label" htmlFor="families-query">
+            {t('families.filterName')}
+          </label>
+          <div style={{ display: 'flex', gap: 12 }}>
+            <input
+              className="field"
+              id="families-query"
+              value={query}
+              onChange={event => setQuery(event.target.value)}
+              onKeyDown={event => {
+                if (event.key === 'Enter') {
+                  search();
+                }
+              }}
+            />
+            <button className="btn" disabled={!canSearch || searching} onClick={search}>
+              {searching ? t('search.searching') : t('families.searchAll')}
+            </button>
+          </div>
+        </div>
+      </div>
+      <div className="field-hint">{t('families.filterNameHint')}</div>
+
+      <div className="field-group" style={{ marginTop: 14 }}>
+        <label className="field-label" htmlFor="families-reason">
+          {t('lookup.reason')}
+        </label>
+        <input
+          className="field"
+          id="families-reason"
+          value={reason}
+          onChange={event => setReason(event.target.value)}
+        />
+        <div className="field-hint">
+          {remaining > 0
+            ? t('families.reasonForOpening', { count: remaining })
+            : t('families.reasonStored')}
+        </div>
       </div>
 
-      {searchError ? (
-        <div className="error-banner" style={{ marginBottom: 14 }}>
-          <span>{searchError}</span>
+      {found ? (
+        <div className="ticket-meta" style={{ alignItems: 'center' }}>
+          <button className="btn" onClick={backToList}>
+            {t('families.backToList')}
+          </button>
+          <span>
+            {visible.length === found.rows.length
+              ? t('families.found', { count: found.rows.length, query: found.query })
+              : t('families.foundFiltered', {
+                  count: visible.length,
+                  total: found.rows.length,
+                  query: found.query,
+                })}
+          </span>
+        </div>
+      ) : (
+        <button className="btn" disabled={busy} onClick={() => load(null)}>
+          {busy && !rows ? t('families.loading') : t('families.reload')}
+        </button>
+      )}
+
+      {error ? (
+        <div className="error-banner" style={{ marginTop: 14 }}>
+          <span>{error}</span>
         </div>
       ) : null}
 
-      {results && results.length > 0 ? (
-        <div className="table-scroll" style={{ marginBottom: 14 }}>
+      {found?.truncated ? (
+        <p className="muted" style={{ marginTop: 14 }}>
+          {t('search.truncated')}
+        </p>
+      ) : null}
+
+      {found && found.rows.length === 0 ? (
+        <p className="muted" style={{ marginTop: 14 }}>
+          {t('search.noMatch')}
+        </p>
+      ) : null}
+
+      {!found && rows && rows.length === 0 ? (
+        <p className="muted" style={{ marginTop: 14 }}>
+          {t('families.empty')}
+        </p>
+      ) : null}
+
+      {!found && rows && rows.length > 0 && visible.length === 0 ? (
+        <p className="muted" style={{ marginTop: 14 }}>
+          {t('families.noneMatchLoaded')}
+        </p>
+      ) : null}
+
+      {visible.length > 0 ? (
+        <div className="table-scroll sticky-head" style={{ marginTop: 14 }}>
           <table className="table">
             <thead>
               <tr>
                 <th>{t('search.colName')}</th>
-                <th>{t('search.colEmail')}</th>
+                {/* Only a search answer carries an address — see `Families`. */}
+                {found ? <th>{t('search.colEmail')}</th> : null}
                 <th>{t('search.colPlan')}</th>
+                <th>{t('families.colSubscription')}</th>
+                {FAMILY_COUNT_COLUMNS.map(([key, label]) => {
+                  const direction = sort?.key === key ? sort.direction : null;
+                  return (
+                    <th
+                      key={key}
+                      aria-sort={
+                        direction === 'asc'
+                          ? 'ascending'
+                          : direction === 'desc'
+                            ? 'descending'
+                            : 'none'
+                      }
+                    >
+                      <button
+                        className={direction ? 'th-sort is-active' : 'th-sort'}
+                        onClick={() => toggleSort(key)}
+                      >
+                        {t(label)}
+                        <span className="sort-mark" aria-hidden="true">
+                          {direction === 'asc' ? '▲' : direction === 'desc' ? '▼' : '↕'}
+                        </span>
+                      </button>
+                    </th>
+                  );
+                })}
+                <th>{t('families.colCreated')}</th>
                 <th>{t('search.colUid')}</th>
                 <th />
               </tr>
             </thead>
             <tbody>
-              {results.map(family => (
+              {shown.map(family => (
                 <tr key={family.uid}>
                   <td>{family.name ?? t('family.noName')}</td>
-                  <td>{family.email ?? t('family.noEmail')}</td>
-                  <td>{family.plan ?? t('family.noPlan')}</td>
+                  {found ? <td>{family.email ?? t('family.noEmail')}</td> : null}
+                  <td>{family.planId ?? t('family.noPlan')}</td>
+                  <td>{family.subscriptionStatus ?? t('families.noSubscription')}</td>
+                  {/* `formatNumber` prints `—` for a missing count: a row
+                      cached before the server returned counts, or one
+                      served by a function not yet redeployed. */}
+                  {FAMILY_COUNT_COLUMNS.map(([key]) => (
+                    <td key={key}>{formatNumber(family[key])}</td>
+                  ))}
+                  <td>{stamp(family.createdAt)}</td>
                   <td>
                     <code>{family.uid}</code>
                   </td>
                   <td>
-                    {/* Fills the field below and nothing else. Opening the
-                        family is still a separate, reasoned, audited act. */}
-                    <button className="btn-ghost" onClick={() => setUid(family.uid)}>
-                      {t('search.use')}
+                    {/*
+                      Opening a family is the read that still demands a
+                      reason, so the button waits for one — the list above it
+                      does not.
+                    */}
+                    <button
+                      className="btn-ghost"
+                      disabled={opening !== null || !ready}
+                      title={ready ? undefined : t('families.reasonToOpen')}
+                      onClick={() => open(family.uid)}
+                    >
+                      {opening === family.uid
+                        ? t('families.opening')
+                        : t('families.open')}
                     </button>
                   </td>
                 </tr>
@@ -848,52 +904,34 @@ function FamilyLookup() {
         </div>
       ) : null}
 
-      {truncated ? (
-        <p className="muted" style={{ marginBottom: 14 }}>
-          {t('search.truncated')}
-        </p>
-      ) : null}
-
-      <div style={{ display: 'flex', gap: 12 }}>
-        <div className="field-group" style={{ flex: 1 }}>
-          <label className="field-label" htmlFor="lookup-uid">
-            {t('lookup.uid')}
-          </label>
-          <input
-            className="field"
-            id="lookup-uid"
-            value={uid}
-            onChange={event => setUid(event.target.value)}
-          />
-        </div>
-        <div className="field-group" style={{ flex: 2 }}>
-          <label className="field-label" htmlFor="lookup-reason">
-            {t('lookup.reason')}
-          </label>
-          <input
-            className="field"
-            id="lookup-reason"
-            value={reason}
-            onChange={event => setReason(event.target.value)}
-          />
-          <div className="field-hint">
-            {remaining > 0
-              ? t('lookup.reasonRemaining', { count: remaining })
-              : t('lookup.reasonStored')}
-          </div>
-        </div>
-      </div>
-
-      <button className="btn" disabled={!ready || busy} onClick={look}>
-        {busy ? t('lookup.lookingUp') : t('lookup.lookUp')}
-      </button>
-
-      {error ? (
-        <div className="error-banner" style={{ marginTop: 14 }}>
-          <span>{error}</span>
+      {!found && rows && rows.length > 0 ? (
+        <div className="ticket-meta" style={{ marginTop: 12 }}>
+          <span>
+            {needle
+              ? t('families.shownFiltered', {
+                  count: visible.length,
+                  loaded: rows.length,
+                })
+              : t('families.shown', { count: rows.length })}
+          </span>
+          {cursor ? (
+            <button className="btn-ghost" disabled={busy} onClick={() => load(cursor)}>
+              {busy
+                ? t('families.loading')
+                : t('families.loadMore', { count: FAMILY_PAGE_SIZE })}
+            </button>
+          ) : (
+            <span>{t('families.end')}</span>
+          )}
         </div>
       ) : null}
-      {result ? <FamilyDetail family={result} /> : null}
+      {!found && sort && cursor ? (
+        <div className="field-hint">
+          {t('families.sortedLoaded', { count: rows.length })}
+        </div>
+      ) : null}
+
+      {detail ? <FamilyDetail family={detail} /> : null}
     </div>
   );
 }
@@ -1206,8 +1244,10 @@ const PAGES = [
   { key: 'fleet', labelKey: 'nav.fleet', icon: 'fleet' },
   { key: 'support', labelKey: 'nav.support', icon: 'support' },
   { key: 'families', labelKey: 'nav.families', icon: 'families' },
-  { key: 'lookup', labelKey: 'nav.lookup', icon: 'lookup' },
 ];
+
+/** Hashes that used to be pages. Family lookup became part of Families on 2026-09-25. */
+const ROUTE_ALIASES = { lookup: 'families' };
 
 /**
  * Hash routing, hand-rolled.
@@ -1220,7 +1260,8 @@ const PAGES = [
  */
 function useHashRoute() {
   const read = () => {
-    const key = window.location.hash.replace(/^#\/?/, '');
+    const hash = window.location.hash.replace(/^#\/?/, '');
+    const key = ROUTE_ALIASES[hash] ?? hash;
     return PAGES.some(page => page.key === key) ? key : PAGES[0].key;
   };
   const [route, setRoute] = useState(read);
@@ -1240,7 +1281,18 @@ export default function App() {
   const [operatorStatus, retryOperatorCheck] = useOperatorStatus(user || null);
   const route = useHashRoute();
 
-  useEffect(() => onAuthStateChanged(auth, setUser), []);
+  useEffect(
+    () =>
+      onAuthStateChanged(auth, next => {
+        // Families' names and words must not carry over to whoever signs in
+        // next on this browser — `sessionCache.js`.
+        if (!next) {
+          clearCached();
+        }
+        setUser(next);
+      }),
+    [],
+  );
 
   if (user === undefined) {
     return <p className="page-loading">{t('common.loading')}</p>;
@@ -1320,40 +1372,13 @@ export default function App() {
             navigation, so a crash on one page does not persist onto the next.
           */}
           <ErrorBoundary key={route}>
-            {route === 'overview' ? (
-              <>
-                <div className="section-head">
-                  <h2 className="section-title">{t('overview.waitingForYou')}</h2>
-                </div>
-                <Metrics />
-              </>
-            ) : null}
+            {route === 'overview' ? <Metrics /> : null}
             {route === 'report' ? <Report /> : null}
             {route === 'fleet' ? <Fleet /> : null}
             {route === 'support' ? <Support /> : null}
             {route === 'families' ? (
               <>
                 <div className="section-head">
-                  <h2 className="section-title">{t('nav.families')}</h2>
-                </div>
-                <Families />
-              </>
-            ) : null}
-            {/*
-              Search first, then the same browse the Families page renders — one
-              component, not a copy, so the two pages cannot drift into
-              disagreeing about what a page of families is. Lookup answers "this
-              family, by name"; the list below answers "which families are
-              there", and an operator arriving with neither has something to
-              click either way.
-            */}
-            {route === 'lookup' ? (
-              <>
-                <div className="section-head">
-                  <h2 className="section-title">{t('nav.lookup')}</h2>
-                </div>
-                <FamilyLookup />
-                <div className="section-head" style={{ marginTop: 24 }}>
                   <h2 className="section-title">{t('nav.families')}</h2>
                 </div>
                 <Families />

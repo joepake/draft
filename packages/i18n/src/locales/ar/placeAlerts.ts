@@ -66,7 +66,5 @@ export const placeAlerts = {
   updatedToast: 'تم تحديث المكان.',
   removedToast: 'تمت إزالة المكان.',
   saveFailedToast: 'تعذر الحفظ. يرجى المحاولة مرة أخرى.',
-  enteredLabel: 'تم الدخول',
-  exitedLabel: 'تمت المغادرة',
   footerNote: 'يتم التحقق كلما تمت مزامنة الموقع — وليس دائمًا في الخلفية.',
 } as const;

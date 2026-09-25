@@ -73,8 +73,12 @@ export const location = {
     'Pilih Izinkan, lalu Selalu agar pembaruan tetap berjalan di latar belakang.',
   requestNoFix:
     'Perangkat ini tidak bisa mendapatkan posisi. Lokasi mungkin belum diizinkan di perangkat ini.',
+  requestIpOnly:
+    'Perangkat ini hanya bisa menebak posisinya dari koneksi internet. Aktifkan Wi-Fi di perangkat (tidak perlu tersambung), lalu coba lagi.',
   cardSharingOff: 'Berbagi lokasi nonaktif',
   cardPermissionOff: 'Lokasi belum diizinkan di perangkat ini',
+  cardIpOnly:
+    'Perangkat ini tidak bisa dilacak lokasinya: aktifkan Wi-Fi di perangkat (tidak perlu tersambung)',
   cardNotUpdating: 'Lokasi berhenti diperbarui',
   namesNeedPremium: 'Nama tempat memerlukan paket berbayar',
   namesNeedPremiumTrialEnded:

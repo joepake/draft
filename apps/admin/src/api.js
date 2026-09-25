@@ -54,7 +54,8 @@ async function post(path, body) {
   if (!user) {
     throw new Error(t('api.notSignedIn'));
   }
-  const token = await user.getIdToken(true);
+  // Not forced — `call()` below says why.
+  const token = await user.getIdToken();
   const response = await fetch(`${BASE_URL}/${path}`, {
     method: 'POST',
     headers: {
@@ -80,9 +81,13 @@ async function call(path, params = {}) {
     throw new Error(t('api.notSignedIn'));
   }
 
-  // `true` forces a refresh: the operator claim is granted out of band, and a
-  // session that predates it carries a token that does not mention it.
-  const token = await user.getIdToken(true);
+  // Not forced. The claim is granted out of band, so a token predating it does
+  // not mention it — but `useOperatorStatus` in `App.jsx` already forced one
+  // refresh before any page could mount, and the SDK hands back that token and
+  // renews it near expiry itself. Forcing here again was a round trip to
+  // `securetoken.googleapis.com` on every call and bought nothing: the server
+  // re-checks the claim and revocation on every request regardless.
+  const token = await user.getIdToken();
   const query = new URLSearchParams(params).toString();
   const response = await fetch(`${BASE_URL}/${path}${query ? `?${query}` : ''}`, {
     headers: { Authorization: `Bearer ${token}` },
@@ -143,7 +148,7 @@ export async function fetchSupportAttachment(uid, id, index) {
   if (!user) {
     throw new Error(t('api.notSignedIn'));
   }
-  const token = await user.getIdToken(true);
+  const token = await user.getIdToken();
   const query = new URLSearchParams({ uid, id, index: String(index) });
   const response = await fetch(`${BASE_URL}/adminSupportAttachment?${query}`, {
     headers: { Authorization: `Bearer ${token}` },
@@ -187,18 +192,21 @@ export function fetchFamilyDetail(uid, reason) {
  * is a password, not an account of anything. Typed, it is validated and stored.
  *
  * `planId` and `status` filter server-side, so a filtered page is a page of
- * matches rather than 50 rows with the misses hidden — the distinction matters
- * the moment there is a second page.
+ * matches rather than a page of rows with the misses hidden — the distinction
+ * matters the moment there is a second page.
  *
- * One page is `limit` document reads (50 by default), so paging costs what it
+ * One page is `limit` document reads (the server defaults to 50; `Families`
+ * asks for 20) plus four `count()` aggregations per row — children, parents,
+ * child and parent devices, one read each — so paging still costs what it
  * shows. The whole-collection scan is `searchFamilies`, not this.
  */
-export function fetchFamilyList({ reason, cursor, planId, status } = {}) {
+export function fetchFamilyList({ reason, cursor, limit, planId, status } = {}) {
   const params = {};
   // Omitted rather than sent empty: the server tests `req.query.reason` for
   // presence, and `reason=` would ask it to validate a string nobody typed.
   if (reason) params.reason = reason;
   if (cursor) params.cursor = cursor;
+  if (limit) params.limit = limit;
   if (planId) params.planId = planId;
   if (status) params.status = status;
   return call('adminFamilyList', params);

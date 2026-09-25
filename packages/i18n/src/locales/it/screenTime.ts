@@ -10,8 +10,8 @@ export const screenTime = {
     'Nella schermata Stato, seleziona Consenti utilizzo di app e siti web.',
   screenTimeStepTapAllow: 'Quando richiesto, seleziona Consenti.',
   screenTimeStepReturnHereAuto: 'Torna qui — lo stato si aggiorna automaticamente.',
-  screenTimeDeniedStepOpenSettings:
-    'Sul dispositivo del bambino, apri Impostazioni → KidGate.',
+  screenTimeDeniedStepOpenSettings: 'Sul dispositivo del bambino, apri Impostazioni.',
+  screenTimeDeniedStepFindKidGate: 'Trova KidGate nell’elenco.',
   screenTimeDeniedStepTurnOnRestrictions: 'Attiva Tempo di utilizzo.',
   screenTimeDeniedStepOpenKidGateAgain:
     'Apri di nuovo KidGate sul dispositivo del bambino.',

@@ -7,6 +7,19 @@ export const FirestorePaths = {
   /** Weekly screen-time standings, sibling of `leaderboards` — `screenTimeBoard.ts`. */
   screenTimeBoards: 'screenTimeBoards',
   childDevices: 'childDevices',
+  /**
+   * A child device's heartbeat — `devicePresence.ts`, keyed by the same
+   * `deviceId` as `childDevices`.
+   *
+   * A sibling collection rather than a field on the device document, and
+   * that placement is the whole feature: every write to `childDevices/{id}`
+   * is delivered to the device's own policy listener, to every open parent
+   * console, and to `onChildDeviceUpdated` — about ten billable operations
+   * for a timestamp, measured (`docs/FEASIBILITY.md`, "The heartbeat is
+   * billed three times"). A beat landing here reaches only the consoles
+   * that asked to see it.
+   */
+  devicePresence: 'devicePresence',
   activities: 'activities',
   timeRequests: 'timeRequests',
   /** A child asking for one website — `siteRequest.ts`, sibling of the above. */
@@ -87,6 +100,15 @@ export function parentDevicesCollection(userId: string) {
 
 export function childDevicesCollection(userId: string) {
   return `${FirestorePaths.users}/${userId}/${FirestorePaths.childDevices}`;
+}
+
+export function devicePresenceCollection(userId: string) {
+  return `${FirestorePaths.users}/${userId}/${FirestorePaths.devicePresence}`;
+}
+
+/** The heartbeat of `childDeviceDoc(userId, deviceId)` — same id, own document. */
+export function devicePresenceDoc(userId: string, deviceId: string) {
+  return `${devicePresenceCollection(userId)}/${deviceId}`;
 }
 
 export function activitiesCollection(userId: string) {

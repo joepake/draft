@@ -1,4 +1,5 @@
 import { DEFAULT_WEB_FILTER_CATEGORIES, type WebFilterCategory } from './webActivity';
+import type { PositionSource } from './telemetry';
 import type { UsageAppBreakdown, UsageHourlyApps, UsageTimeline } from './usageDay';
 
 export interface DeviceLocation {
@@ -11,8 +12,21 @@ export interface DeviceLocation {
    *
    * Absent means unknown, never "exact". Place presence treats a fix it
    * cannot trust as unknown rather than guessing (`functions/lib/placeAlerts.js`).
+   *
+   * **Stored as reported, kilometres included.** The endpoint used to null
+   * anything over 2 km as meaningless, and null was read as "unknown, assume
+   * 50 m" — so a PC positioned from its IP address (20 000 m, 8 km off,
+   * measured 2026-09-23) fired "left home". Whether a fix is a guess is
+   * `@kidgate/core/domain/locationFix`'s call, from this number and `positionSource`.
    */
   accuracy?: number | null;
+  /**
+   * How the platform positioned it — `PositionSource`. Only Windows says
+   * (`wifi`, `ip`, …); absent from every phone and Mac fix and from rows
+   * written before 2026-09-23. Kept so a 20 km circle from an IP lookup can
+   * be told from a phone's honest one.
+   */
+  positionSource?: PositionSource | null;
   updatedAt: string;
   placeName?: string | null;
   address?: string | null;

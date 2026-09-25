@@ -24,6 +24,7 @@
     "./desktopRelease": "./src/desktopRelease.ts",
     "./tvRelease": "./src/tvRelease.ts",
     "./devicePlace": "./src/devicePlace.ts",
+    "./devicePresence": "./src/devicePresence.ts",
     "./firestore": "./src/firestore.ts",
     "./language": "./src/language.ts",
     "./leaderboard": "./src/leaderboard.ts",

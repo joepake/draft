@@ -741,8 +741,6 @@ export default {
     toastSiteAllowed: 'Siteye izin verildi',
     timelineTitle: 'Ne zaman kullanıldı',
     timelineSub: 'Bugün, gece yarısından gece yarısına. Yeşil, cihazda geçen süredir.',
-    timelineSubDay:
-      '{{date}}, gece yarısından gece yarısına. Yeşil, cihazda geçen süredir.',
   },
 
   controlError: {
@@ -859,7 +857,7 @@ export default {
 
     faq8Q: 'Kilitleme veya engellenen saatler neden çalışmıyor?',
     faq8A:
-      'Android’de kilitleme için *Diğer uygulamaların üzerinde göster* ve *Erişilebilirlik* yardımcısının açık olması, ayrıca kısıtlamasız pil gerekir. Xiaomi, Samsung, Oppo, Vivo ve benzeri cihazlarda otomatik başlatmaya da izin verin ve KidGate’i "uyuyan uygulamalar" listelerinden çıkarın (çocuk cihazında *Durum → KidGate’i çalışır tut* bölümüne bakın). iOS’ta kilitleme Ekran Süresi yetkisine bağlıdır. Bir izin sonradan kapatılırsa ebeveyn cihazınıza bir koruma uyarısı gelir.',
+      'Android’de kilitleme için *Diğer uygulamaların üzerinde göster* ve *Erişilebilirlik* yardımcısının açık olması, ayrıca kısıtlamasız pil gerekir. Xiaomi, Samsung, Oppo, Vivo ve benzeri cihazlarda otomatik başlatmaya da izin verin ve KidGate’i "uyuyan uygulamalar" listelerinden çıkarın (çocuk cihazında *Durum → Otomatik başlatmaya izin ver* bölümüne bakın). iOS’ta kilitleme Ekran Süresi yetkisine bağlıdır. Bir izin sonradan kapatılırsa ebeveyn cihazınıza bir koruma uyarısı gelir.',
 
     faq9Q: 'Belirli uygulamaları nasıl engellerim?',
     faq9A:

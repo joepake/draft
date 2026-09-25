@@ -10,8 +10,8 @@ export const screenTime = {
     'Sur l’écran État, sélectionnez Autoriser l’utilisation des apps et des sites web.',
   screenTimeStepTapAllow: 'Quand demandé, sélectionnez Autoriser.',
   screenTimeStepReturnHereAuto: 'Revenez ici — l’état se met à jour automatiquement.',
-  screenTimeDeniedStepOpenSettings:
-    'Sur l’appareil de l’enfant, ouvrez Réglages → KidGate.',
+  screenTimeDeniedStepOpenSettings: 'Sur l’appareil de l’enfant, ouvrez les Réglages.',
+  screenTimeDeniedStepFindKidGate: 'Trouvez KidGate dans la liste.',
   screenTimeDeniedStepTurnOnRestrictions: 'Activez Temps d’écran.',
   screenTimeDeniedStepOpenKidGateAgain: 'Rouvrez KidGate sur l’appareil de l’enfant.',
   screenTimeDeniedStepReturnWhenReady:

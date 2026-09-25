@@ -351,7 +351,9 @@ export type DeviceLocationRequestStatus =
    * The OS held no position to give. On a Mac this is the ordinary shape of a
    * missing or refused grant — `CLLocationManager.location` is nil until
    * something is authorised *and* has produced a fix — and it is also a laptop
-   * in a basement, which is why it is not called `denied`.
+   * in a basement, which is why it is not called `denied`. Since 2026-09-23
+   * also the answer for a fix the agent refused as a guess — a PC positioned
+   * from its IP address, 8 km off (`@kidgate/core/domain/locationFix`).
    */
   | 'noFix'
   /**
@@ -360,8 +362,24 @@ export type DeviceLocationRequestStatus =
    * screen rather than on the child's device.
    */
   | 'sharingOff'
+  /**
+   * The OS could only guess from the internet connection — a desktop with
+   * its Wi-Fi radio off, or none — and the agent refuses a guess
+   * (`@kidgate/core/domain/locationFix`). Its own status rather than `noFix`
+   * because the parent can fix it: turning the device's Wi-Fi on is what
+   * changes the answer, and the copy says so.
+   */
+  | 'ipOnly'
   /** This build or platform cannot report a position at all. */
   | 'unsupported';
+
+/**
+ * What a child device could position itself from lately. `'ip'` means its
+ * recent reads were all guesses from the internet connection, which the agent
+ * refuses to upload — so the parent's card explains it instead of showing an
+ * ageing pin. Written by the desktop agent on change; phones never write it.
+ */
+export type DeviceLocationSensing = 'wifi' | 'ip';
 
 export interface DeviceLocationRequestResult {
   /** Which request this answers — the `locationRequestId` the agent read. */
@@ -486,6 +504,8 @@ export interface Device {
   lockEnforcement?: DeviceLockEnforcement;
   controls?: DeviceControls;
   lastLocation?: DeviceLocation;
+  /** See `DeviceLocationSensing`. Absent on phones and on rows written before 2026-09-24. */
+  locationSensing?: DeviceLocationSensing | null;
   places?: DevicePlace[];
   protectionStatus?: DeviceProtectionStatus;
   /**

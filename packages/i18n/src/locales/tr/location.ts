@@ -73,8 +73,12 @@ export const location = {
     'İzin ver’i, ardından Her zaman’ı seçin; böylece güncellemeler arka planda sürer.',
   requestNoFix:
     'Bu cihaz konum alamadı. Konum izni bu cihazda henüz verilmemiş olabilir.',
+  requestIpOnly:
+    'Bu cihaz konumunu yalnızca internet bağlantısından tahmin edebildi. Cihazda Wi-Fi’yi açın (bağlanması gerekmez) ve tekrar deneyin.',
   cardSharingOff: 'Konum paylaşımı kapalı',
   cardPermissionOff: 'Bu cihazda konuma izin verilmiyor',
+  cardIpOnly:
+    'Bu cihazın konumu bulunamıyor: cihazda Wi-Fi’yi açın (bağlanması gerekmez)',
   cardNotUpdating: 'Konum güncellenmeyi durdurdu',
   namesNeedPremium: 'Yer adları ücretli bir plan gerektirir',
   namesNeedPremiumTrialEnded:

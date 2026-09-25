@@ -66,7 +66,5 @@ export const placeAlerts = {
   updatedToast: 'स्थान अपडेट हो गया।',
   removedToast: 'स्थान हटाया गया।',
   saveFailedToast: 'सहेजा नहीं जा सका। कृपया पुनः प्रयास करें।',
-  enteredLabel: 'पहुँचा',
-  exitedLabel: 'छोड़ा',
   footerNote: 'जब भी स्थान सिंक होता है, तब जाँचा जाता है — हमेशा बैकग्राउंड में नहीं।',
 } as const;

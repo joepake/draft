@@ -743,8 +743,6 @@ export default {
     toastSiteAllowed: 'Website erlaubt',
     timelineTitle: 'Wann es genutzt wurde',
     timelineSub: 'Heute, von Mitternacht bis Mitternacht. Grün ist Zeit am Gerät.',
-    timelineSubDay:
-      '{{date}}, von Mitternacht bis Mitternacht. Grün ist Zeit am Gerät.',
   },
 
   controlError: {
@@ -867,7 +865,7 @@ export default {
 
     faq8Q: 'Warum funktionieren Sperren oder Sperrzeiten nicht?',
     faq8A:
-      'Unter Android braucht das Sperren *Über anderen Apps anzeigen* und den Helfer unter *Bedienungshilfen*, dazu einen uneingeschränkten Akku. Auf Xiaomi, Samsung, Oppo, Vivo und ähnlichen Geräten erlaube außerdem den Autostart und nimm KidGate aus jeder Liste „schlafender Apps“ (siehe *Status → KidGate am Laufen halten* auf dem Kindergerät). Unter iOS hängt das Sperren von der Bildschirmzeit-Freigabe ab. Wird eine Berechtigung später ausgeschaltet, bekommst du auf dem Elterngerät eine Schutzwarnung.',
+      'Unter Android braucht das Sperren *Über anderen Apps anzeigen* und den Helfer unter *Bedienungshilfen*, dazu einen uneingeschränkten Akku. Auf Xiaomi, Samsung, Oppo, Vivo und ähnlichen Geräten erlaube außerdem den Autostart und nimm KidGate aus jeder Liste „schlafender Apps“ (siehe *Status → Autostart erlauben* auf dem Kindergerät). Unter iOS hängt das Sperren von der Bildschirmzeit-Freigabe ab. Wird eine Berechtigung später ausgeschaltet, bekommst du auf dem Elterngerät eine Schutzwarnung.',
 
     faq9Q: 'Wie sperre ich bestimmte Apps?',
     faq9A:

@@ -35,7 +35,9 @@ export const permissions = {
   oemAutostartHintXiaomi:
     'Dans Démarrage automatique, activez KidGate afin que la protection redémarre après un redémarrage de l’appareil.',
   oemAutostartHintSamsung:
-    'Dans Batterie → Limites d’utilisation en arrière-plan → Applications jamais en veille, ajoutez KidGate. Si KidGate n’apparaît pas dans la liste, il est déjà autorisé et cette étape est terminée.',
+    'Dans Batterie, sélectionnez Limites d’utilisation en arrière-plan.',
+  oemAutostartHintSamsungAdd:
+    'Ouvrez Applications jamais en veille et ajoutez KidGate. Si KidGate n’apparaît pas dans la liste, il est déjà autorisé et cette étape est terminée.',
   oemAutostartHintOppo:
     'Dans Apps au démarrage / Lancement automatique, autorisez KidGate.',
   oemAutostartHintVivo:

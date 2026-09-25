@@ -205,14 +205,14 @@ export const family = {
 
   stepsHeading: 'İlk adımlar',
 
-  step1Title: '“Çocuk cihazı ekle” düğmesine dokunun',
+  step1Title: 'Çocuğun cihazında KidGate’i açın',
 
-  step1Description: 'Eşleştirme QR kodu burada görünür, taranmaya hazır.',
+  step1Description:
+    'KidGate’i çocuğunuzun kullandığı telefona, tablete, TV’ye veya bilgisayara yükleyin. Telefon veya tablette “Bu bir çocuk cihazı” seçeneğini seçin. Bir QR kodu ve 6 karakterlik bir kod görünür.',
 
-  step2Title: 'Çocuğun cihazından tarayın',
+  step2Title: 'Burada “Çocuk cihazı ekle” düğmesine dokunun',
 
-  step2Description:
-    'KidGate’i çocuğunuzun telefonuna veya tabletine yükleyin, “Bu cihaz çocuğa aittir” seçeneğini seçin ve kodu tarayın.',
+  step2Description: 'Bu QR kodunu bu telefonla tarayın veya 6 karakterlik kodu girin.',
 
   connectChildButton: 'Çocuk cihazını bağla',
   listHint: 'Kaldırmak için cihazı sola kaydırın',

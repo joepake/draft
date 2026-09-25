@@ -29,8 +29,9 @@ export const permissions = {
   oemAutostartLabel: 'Allow autostart',
   oemAutostartHintXiaomi:
     'In Autostart, turn KidGate on so protection restarts after a reboot.',
-  oemAutostartHintSamsung:
-    'In Battery → Background usage limits → Never sleeping apps, add KidGate. If KidGate is not on that list it is already allowed, and this step is done.',
+  oemAutostartHintSamsung: 'In Battery, select Background usage limits.',
+  oemAutostartHintSamsungAdd:
+    'Open Never sleeping apps and add KidGate. If KidGate is not on that list it is already allowed, and this step is done.',
   oemAutostartHintOppo: 'In Startup apps / Auto-launch, allow KidGate.',
   oemAutostartHintVivo: 'In Autostart / Background high power, allow KidGate.',
   oemAutostartHintHuawei:
