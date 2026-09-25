@@ -232,7 +232,18 @@ export default function Fleet() {
     <div className="section-head">
       <h2 className="section-title">{t('fleet.title')}</h2>
       <div style={{ alignItems: 'center', display: 'flex', gap: 10 }}>
-        <span className="muted">{t('fleet.asOf', { date: latest?.date ?? '—' })}</span>
+        {/*
+          When the row was written, beside what day it describes: a forced
+          re-run overwrites the same date, so the date alone cannot say whether
+          the numbers on screen came from the code just deployed. Same shape as
+          the Report page's health strip.
+        */}
+        <span className="muted">
+          {t('fleet.asOf', {
+            date: latest?.date ?? '—',
+            writtenAt: latest?.writtenAt?.slice(0, 16).replace('T', ' ') ?? '—',
+          })}
+        </span>
         <button className="btn btn-ghost" disabled={busy} onClick={() => load(30)}>
           {busy ? t('common.loading') : t('common.refresh')}
         </button>
@@ -296,6 +307,13 @@ export default function Fleet() {
               android: ota.android ?? '—',
             })
           : t('fleet.otaDisabled');
+  /*
+   * A row written before the version chart took the build carries version
+   * names alone, with builds in a separate `appBuild` map that no chart reads
+   * any more. Drawn under the new subtitle it claims "name and build" over
+   * bars that are names — so it says what it is instead, until the next run.
+   */
+  const versionsWithoutBuild = fleet.appBuild !== undefined;
 
   return (
     <>
@@ -447,8 +465,14 @@ export default function Fleet() {
         <div className="chart-card">
           <h3 className="chart-title">{t('fleet.appVersion')}</h3>
           <p className="chart-sub">
-            {t('fleet.appVersionSub')}
-            {otaNote}
+            {versionsWithoutBuild ? (
+              t('fleet.appVersionWithoutBuild')
+            ) : (
+              <>
+                {t('fleet.appVersionSub')}
+                {otaNote}
+              </>
+            )}
           </p>
           <BarChart
             data={fleet.appVersion}

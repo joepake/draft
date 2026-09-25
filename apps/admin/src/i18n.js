@@ -212,7 +212,7 @@ const en = {
 
   // ----------------------------------------------------------------- fleet
   'fleet.title': 'Fleet',
-  'fleet.asOf': 'As of {date}, not a range',
+  'fleet.asOf': 'As of {date}, written {writtenAt} — not a range',
   'fleet.noRollup':
     'No fleet data in the latest rollup row. Deploy {job} and run it once — this page arrives with the next row.',
   'fleet.childDevices': 'Child devices',
@@ -240,6 +240,8 @@ const en = {
   'fleet.appVersionSub':
     'Name and build, as the parent app prints them. “· OTA n” is a phone running a bundle newer than its build. ',
   'fleet.otaPublished': 'OTA published: {ios} · {android}',
+  'fleet.appVersionWithoutBuild':
+    'This row was written before builds were counted here — version names only. Name and build arrive with the next rollup.',
   'fleet.otaDisabled': 'OTA is switched off in config/ota',
   'fleet.otaNoConfig': 'No config/ota document',
   'fleet.osVersion': 'OS version',
@@ -695,7 +697,7 @@ const vi = {
 
   // ----------------------------------------------------------------- fleet
   'fleet.title': 'Thiết bị',
-  'fleet.asOf': 'Tại thời điểm {date}, không phải một khoảng',
+  'fleet.asOf': 'Tại thời điểm {date}, ghi lúc {writtenAt} — không phải một khoảng',
   'fleet.noRollup':
     'Dòng rollup mới nhất không có dữ liệu thiết bị. Deploy {job} và chạy một lần — trang này sẽ có dữ liệu từ dòng kế tiếp.',
   'fleet.childDevices': 'Thiết bị của trẻ',
@@ -720,6 +722,8 @@ const vi = {
   'fleet.appVersionSub':
     'Tên phiên bản và số build, như app phụ huynh hiển thị. “· OTA n” là điện thoại đang chạy bản OTA mới hơn build đã cài. ',
   'fleet.otaPublished': 'OTA đang phát hành: {ios} · {android}',
+  'fleet.appVersionWithoutBuild':
+    'Dòng rollup này được ghi trước khi biểu đồ tính số build — chỉ có tên phiên bản. Tên kèm số build có từ lần rollup tới.',
   'fleet.otaDisabled': 'OTA đang tắt trong config/ota',
   'fleet.otaNoConfig': 'Không có tài liệu config/ota',
   'fleet.osVersion': 'Phiên bản hệ điều hành',
