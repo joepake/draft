@@ -16,6 +16,7 @@
     "./agent/controlsSync": "./src/agent/controlsSync.ts",
     "./agent/inventoryScan": "./src/agent/inventoryScan.ts",
     "./agent/lockReport": "./src/agent/lockReport.ts",
+    "./agent/pairingCompletion": "./src/agent/pairingCompletion.ts",
     "./agent/premiumLatch": "./src/agent/premiumLatch.ts",
     "./agent/searchAlerts": "./src/agent/searchAlerts.ts",
     "./agent/serverTimeOffset": "./src/agent/serverTimeOffset.ts",
