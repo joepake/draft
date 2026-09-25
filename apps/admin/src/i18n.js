@@ -237,13 +237,9 @@ const en = {
   'fleet.lastSeenSub':
     'Over a month is the closest signal to an uninstall the product has',
   'fleet.appVersion': 'App version',
-  'fleet.appVersionSub': 'The name a person reads — `1.0.0` and `1.0` are one release',
-  'fleet.appBuild': 'App build',
-  'fleet.appBuildSub':
-    'The number a bug report has to carry. Windows has none, so it reads Unknown',
-  'fleet.otaVersion': 'OTA bundle',
-  'fleet.otaSub': 'Phones only; a bundle applies on the next launch. ',
-  'fleet.otaPublished': 'Published: {ios} · {android}',
+  'fleet.appVersionSub':
+    'Name and build, as the parent app prints them. “· OTA n” is a phone running a bundle newer than its build. ',
+  'fleet.otaPublished': 'OTA published: {ios} · {android}',
   'fleet.otaDisabled': 'OTA is switched off in config/ota',
   'fleet.otaNoConfig': 'No config/ota document',
   'fleet.osVersion': 'OS version',
@@ -336,9 +332,6 @@ const en = {
   'lock.notApplied': 'Says not locked',
   'lock.unconfirmed': 'Never confirmed',
   'lock.waiting': 'Awaiting device',
-
-  'ota.none': 'No OTA channel',
-  'ota.unknown': 'Not reported',
 
   'value.unknown': 'Unknown',
 
@@ -724,13 +717,9 @@ const vi = {
   'fleet.lastSeenSub':
     'Quá một tháng là tín hiệu gần nhất với việc gỡ cài đặt mà sản phẩm có được',
   'fleet.appVersion': 'Phiên bản ứng dụng',
-  'fleet.appVersionSub': 'Tên người dùng đọc được — `1.0.0` và `1.0` là cùng một bản',
-  'fleet.appBuild': 'Số build',
-  'fleet.appBuildSub':
-    'Con số mà báo cáo lỗi phải ghi. Windows không có số build nên hiện Không rõ',
-  'fleet.otaVersion': 'Bản OTA',
-  'fleet.otaSub': 'Chỉ điện thoại; bản OTA áp dụng ở lần mở app kế tiếp. ',
-  'fleet.otaPublished': 'Đang phát hành: {ios} · {android}',
+  'fleet.appVersionSub':
+    'Tên phiên bản và số build, như app phụ huynh hiển thị. “· OTA n” là điện thoại đang chạy bản OTA mới hơn build đã cài. ',
+  'fleet.otaPublished': 'OTA đang phát hành: {ios} · {android}',
   'fleet.otaDisabled': 'OTA đang tắt trong config/ota',
   'fleet.otaNoConfig': 'Không có tài liệu config/ota',
   'fleet.osVersion': 'Phiên bản hệ điều hành',
@@ -821,9 +810,6 @@ const vi = {
   'lock.notApplied': 'Báo không khóa',
   'lock.unconfirmed': 'Không xác nhận',
   'lock.waiting': 'Chờ thiết bị',
-
-  'ota.none': 'Không có OTA',
-  'ota.unknown': 'Chưa báo',
 
   'value.unknown': 'Không rõ',
 

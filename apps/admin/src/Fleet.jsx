@@ -201,7 +201,6 @@ export default function Fleet() {
         awaitingApproval: t('webFilterBlocker.awaitingApproval'),
         configurationDisabled: t('webFilterBlocker.configurationDisabled'),
       },
-      ota: { none: t('ota.none'), unknown: t('ota.unknown') },
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps -- `t` reads `language`
     [language],
@@ -447,27 +446,15 @@ export default function Fleet() {
 
         <div className="chart-card">
           <h3 className="chart-title">{t('fleet.appVersion')}</h3>
-          <p className="chart-sub">{t('fleet.appVersionSub')}</p>
-          <BarChart data={fleet.appVersion} total={fleet.devices} />
-        </div>
-
-        <div className="chart-card">
-          <h3 className="chart-title">{t('fleet.appBuild')}</h3>
-          <p className="chart-sub">{t('fleet.appBuildSub')}</p>
+          <p className="chart-sub">
+            {t('fleet.appVersionSub')}
+            {otaNote}
+          </p>
           <BarChart
-            data={fleet.appBuild}
+            data={fleet.appVersion}
             labels={labels.unknown}
             total={fleet.devices}
           />
-        </div>
-
-        <div className="chart-card">
-          <h3 className="chart-title">{t('fleet.otaVersion')}</h3>
-          <p className="chart-sub">
-            {t('fleet.otaSub')}
-            {otaNote}
-          </p>
-          <BarChart data={fleet.otaVersion} labels={labels.ota} total={fleet.devices} />
         </div>
 
         <div className="chart-card">
