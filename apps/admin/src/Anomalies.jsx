@@ -6,15 +6,60 @@ import { useT } from './i18n.js';
  * The anomaly list and the operator hold (`docs/FEASIBILITY.md`, "An operator
  * hold on a family or a device").
  *
- * One fetch on arrival and one per Refresh — the endpoint scans every family,
- * so never on a timer, and each call is an audit row. What a flag means and
- * why most of them are KidGate's own defects is `functions/lib/anomalies.js`;
- * the intro line says the short version to the person about to press Hold.
+ * **It answers before it lists.** The first version printed every flag the
+ * same way with a Hold button beside each, plus a table of raw limiter keys,
+ * and the operator's verdict on 2026-10-03 was that it could not tell whether
+ * anything was wrong. So: one sentence first (abuse or not), then the flags
+ * sorted by what they ask of the operator — abuse, cost, our own bug, nothing
+ * — each in plain words with what to do, and the raw counters behind a
+ * disclosure. A Hold button appears only where a hold is a reasonable answer.
  *
- * Hold and release are forms on this page rather than buttons that fire: the
- * family sees a hold, so it takes a reason code the parent reads, an optional
- * note, and the audit reason the server refuses to act without.
+ * One fetch on arrival and one per Refresh — the endpoint scans every family,
+ * so never on a timer, and each call is an audit row. What a flag means in
+ * code is `functions/lib/anomalies.js`.
+ *
+ * Hold and release are forms rather than buttons that fire: the family sees a
+ * hold, so it takes a reason code the parent reads, an optional note, and the
+ * audit reason the server refuses to act without.
  */
+
+/** Which group a flag belongs to; an unknown kind is ours to look at. */
+const CATEGORY_OF = {
+  'fast-beat': 'cost',
+  'doc-beat': 'cost',
+  'usage-overflow': 'ours',
+  'web-cap': 'ours',
+  'parked-on-premium': 'ours',
+  'over-allowance': 'ours',
+  silent: 'info',
+  'never-beat': 'info',
+};
+const CATEGORIES = ['abuse', 'cost', 'ours', 'info'];
+
+/** Every phone's id starts `device_1…`, so the tail is what tells two apart. */
+function deviceLabel(deviceId, platform) {
+  return `${platform ?? '?'} …${deviceId.slice(-7)}`;
+}
+
+/**
+ * The scan, regrouped by what it asks of the operator. `rate-limited` flags
+ * are left out of the family rows: the limited counters themselves are the
+ * abuse group, with the family when the key names one.
+ */
+function groupScan(scan) {
+  const groups = { abuse: [], cost: [], ours: [], info: [] };
+  for (const counter of scan.rateLimits) {
+    if (counter.limited) groups.abuse.push({ counter, uid: counter.uid });
+  }
+  for (const row of scan.rows) {
+    for (const flag of row.flags) {
+      if (flag.kind === 'rate-limited') continue;
+      groups[CATEGORY_OF[flag.kind] ?? 'ours'].push({ flag, uid: row.uid });
+    }
+  }
+  return groups;
+}
+
 export default function Anomalies() {
   const { t, formatNumber, localeTag } = useT();
   const [scan, setScan] = useState(null);
@@ -22,6 +67,7 @@ export default function Anomalies() {
   const [busy, setBusy] = useState(false);
   const [action, setAction] = useState(null);
   const [notice, setNotice] = useState(null);
+  const [rawOpen, setRawOpen] = useState(false);
 
   const load = useCallback(async () => {
     setBusy(true);
@@ -40,10 +86,11 @@ export default function Anomalies() {
   }, [load]);
 
   const reasonLabel = code => t(`anomalies.holdReason.${code}`);
-  // The tail, not the head: every phone's id starts `device_1…`, so the
-  // first eight characters named every one of them the same.
-  const deviceLabel = (deviceId, platform) =>
-    `${platform ?? '?'} …${deviceId.slice(-7)}`;
+  const groups = scan ? groupScan(scan) : null;
+  const holds = scan
+    ? scan.rows.filter(row => row.hold || row.heldDevices.length > 0)
+    : [];
+  const topCounter = scan?.rateLimits[0] ?? null;
 
   return (
     <div className="section">
@@ -53,11 +100,42 @@ export default function Anomalies() {
           {t('common.refresh')}
         </button>
       </div>
-      <p className="muted">{t('anomalies.intro')}</p>
 
       {error ? <div className="error-banner">{error}</div> : null}
       {notice ? <p className="muted">{notice}</p> : null}
       {busy && !scan ? <p className="muted">{t('anomalies.scanning')}</p> : null}
+
+      {scan ? (
+        <>
+          <div className="status-strip">
+            <span
+              className={`status-dot ${groups.abuse.length > 0 ? 'is-critical' : 'is-good'}`}
+            />
+            <span className="status-label">
+              {groups.abuse.length > 0
+                ? t('anomalies.verdictAbuse', { count: groups.abuse.length })
+                : t('anomalies.verdictClean')}
+            </span>
+            <span className="status-detail">
+              {CATEGORIES.slice(1)
+                .map(key =>
+                  t('anomalies.summaryPart', {
+                    label: t(`anomalies.cat.${key}`),
+                    count: formatNumber(groups[key].length),
+                  }),
+                )
+                .join(' · ')}
+            </span>
+          </div>
+          <p className="muted">
+            {t('anomalies.scanned', {
+              families: formatNumber(scan.families),
+              devices: formatNumber(scan.devices),
+              at: new Date(scan.scannedAt).toLocaleString(localeTag),
+            })}
+          </p>
+        </>
+      ) : null}
 
       {action ? (
         <HoldForm
@@ -74,200 +152,273 @@ export default function Anomalies() {
         />
       ) : null}
 
+      {groups
+        ? CATEGORIES.filter(key => groups[key].length > 0).map(key => (
+            <div key={key} style={{ marginTop: 24 }}>
+              <h3 className="section-title">
+                {t(`anomalies.cat.${key}`)} ({formatNumber(groups[key].length)})
+              </h3>
+              <p className="muted">{t(`anomalies.cat.${key}Hint`)}</p>
+              <div className="table-scroll">
+                <table className="table">
+                  <thead>
+                    <tr>
+                      <th>{t('anomalies.colWhere')}</th>
+                      <th>{t('anomalies.colWhat')}</th>
+                      <th>{t('anomalies.colDo')}</th>
+                      {key === 'abuse' || key === 'cost' ? <th /> : null}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {groups[key].map((item, index) => (
+                      <FlagRow
+                        key={`${key}-${index}`}
+                        category={key}
+                        item={item}
+                        onHold={setAction}
+                      />
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          ))
+        : null}
+
+      {scan && scan.rows.length === 0 && groups.abuse.length === 0 ? (
+        <p className="muted" style={{ marginTop: 24 }}>
+          {t('anomalies.empty')}
+        </p>
+      ) : null}
+
+      {holds.length > 0 ? (
+        <div style={{ marginTop: 24 }}>
+          <h3 className="section-title">{t('anomalies.holdsTitle')}</h3>
+          <div className="table-scroll">
+            <table className="table">
+              <tbody>
+                {holds.map(row => (
+                  <HoldRows
+                    key={row.uid}
+                    row={row}
+                    reasonLabel={reasonLabel}
+                    onRelease={setAction}
+                  />
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      ) : null}
+
       {scan ? (
-        <>
+        <div style={{ marginTop: 24 }}>
           <p className="muted">
-            {t('anomalies.scanned', {
-              families: formatNumber(scan.families),
-              devices: formatNumber(scan.devices),
-              at: new Date(scan.scannedAt).toLocaleString(localeTag),
-            })}
+            {topCounter
+              ? t('anomalies.rateLimitsSummary', {
+                  counters: formatNumber(scan.rateLimits.length),
+                  limited: formatNumber(groups.abuse.length),
+                  top: formatNumber(topCounter.count),
+                })
+              : t('anomalies.rateLimitsNone')}
           </p>
-
-          {scan.rows.length === 0 ? (
-            <p className="muted">{t('anomalies.empty')}</p>
-          ) : (
-            <div className="table-scroll">
-              <table className="table">
-                <thead>
-                  <tr>
-                    <th>{t('anomalies.colFamily')}</th>
-                    <th>{t('anomalies.colPlan')}</th>
-                    <th>{t('anomalies.colFlags')}</th>
-                    <th>{t('anomalies.colHold')}</th>
-                    <th />
-                  </tr>
-                </thead>
-                <tbody>
-                  {scan.rows.map(row => (
-                    <tr key={row.uid}>
-                      <td>
-                        <code>{row.uid}</code>
-                      </td>
-                      <td>{row.planId ?? '—'}</td>
-                      <td>
-                        {row.flags.length === 0 ? '—' : null}
-                        {row.flags.map((flag, index) => (
-                          <div key={`${flag.kind}-${flag.deviceId ?? ''}-${index}`}>
-                            <strong>{t(`anomalies.flag.${flag.kind}`)}</strong>
-                            {flag.deviceId ? (
-                              <>
-                                {' '}
-                                <span className="muted">
-                                  {deviceLabel(flag.deviceId, flag.platform)} · build{' '}
-                                  {flag.build}
-                                </span>{' '}
-                                <button
-                                  className="btn btn-ghost"
-                                  onClick={() =>
-                                    setAction({
-                                      mode: 'hold',
-                                      uid: row.uid,
-                                      deviceId: flag.deviceId,
-                                    })
-                                  }
-                                >
-                                  {t('anomalies.holdDevice')}
-                                </button>
-                              </>
-                            ) : null}
-                            <div className="muted">{flag.detail}</div>
-                          </div>
-                        ))}
-                      </td>
-                      <td>
-                        {row.hold ? (
-                          <div>
-                            {t('anomalies.familyHeld', {
-                              reason: reasonLabel(row.hold.reason),
-                            })}
-                            {row.hold.note ? (
-                              <div className="muted">“{row.hold.note}”</div>
-                            ) : null}
-                          </div>
-                        ) : null}
-                        {row.heldDevices.map(device => (
-                          <div key={device.deviceId}>
-                            {t('anomalies.deviceHeld', {
-                              device: deviceLabel(device.deviceId, device.platform),
-                              reason: reasonLabel(device.hold.reason),
-                            })}
-                            {device.hold.byFamily ? (
-                              <span className="muted">
-                                {' '}
-                                · {t('anomalies.byFamily')}
-                              </span>
-                            ) : (
-                              <>
-                                {' '}
-                                <button
-                                  className="btn btn-ghost"
-                                  onClick={() =>
-                                    setAction({
-                                      mode: 'release',
-                                      uid: row.uid,
-                                      deviceId: device.deviceId,
-                                    })
-                                  }
-                                >
-                                  {t('anomalies.releaseDevice')}
-                                </button>
-                              </>
-                            )}
-                          </div>
-                        ))}
-                        {!row.hold && row.heldDevices.length === 0 ? '—' : null}
-                      </td>
-                      <td>
-                        <button
-                          className="btn"
-                          onClick={() =>
-                            setAction({
-                              mode: row.hold ? 'release' : 'hold',
-                              uid: row.uid,
-                            })
-                          }
-                        >
-                          {row.hold
-                            ? t('anomalies.releaseFamily')
-                            : t('anomalies.holdFamily')}
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          )}
-
-          <h3 className="section-title" style={{ marginTop: 24 }}>
-            {t('anomalies.rateLimitsTitle')}
-          </h3>
-          <p className="muted">{t('anomalies.rateLimitsHint')}</p>
-          {scan.rateLimits.length === 0 ? (
-            <p className="muted">{t('common.noData')}</p>
-          ) : (
-            <div className="table-scroll">
-              <table className="table">
-                <thead>
-                  <tr>
-                    <th>{t('anomalies.colKey')}</th>
-                    <th>{t('anomalies.colCount')}</th>
-                    <th>{t('anomalies.colMax')}</th>
-                    <th>{t('anomalies.colFamily')}</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {scan.rateLimits.slice(0, 50).map(counter => (
-                    <tr key={`${counter.key}-${counter.windowStart}`}>
-                      <td>
-                        <code>{counter.key}</code>
-                      </td>
-                      <td>{formatNumber(counter.count)}</td>
-                      <td>
-                        {counter.max === undefined ? '—' : formatNumber(counter.max)}
-                        {counter.limited ? (
-                          <strong> · {t('anomalies.limited')}</strong>
-                        ) : null}
-                      </td>
-                      <td>{counter.uid ? <code>{counter.uid}</code> : '—'}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          )}
-
-          <h3 className="section-title" style={{ marginTop: 24 }}>
-            {t('anomalies.activityTitle')}
-          </h3>
-          {scan.activity.length === 0 ? (
-            <p className="muted">{t('common.noData')}</p>
-          ) : (
-            <div className="table-scroll">
-              <table className="table">
-                <thead>
-                  <tr>
-                    <th>{t('anomalies.colFamily')}</th>
-                    <th>{t('anomalies.colActivities')}</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {scan.activity.slice(0, 15).map(entry => (
-                    <tr key={entry.uid}>
-                      <td>
-                        <code>{entry.uid}</code>
-                      </td>
-                      <td>{formatNumber(entry.count)}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          )}
-        </>
+          <button className="disclosure" onClick={() => setRawOpen(open => !open)}>
+            {rawOpen ? t('anomalies.rawHide') : t('anomalies.rawShow')}
+          </button>
+          {rawOpen ? <RawTables scan={scan} /> : null}
+        </div>
       ) : null}
     </div>
+  );
+}
+
+/** One flag: where, what it means, what to do — and a hold where one fits. */
+function FlagRow({ category, item, onHold }) {
+  const { t, formatNumber } = useT();
+
+  if (item.counter) {
+    const { counter } = item;
+    return (
+      <tr>
+        <td>{counter.uid ? <code>{counter.uid}</code> : '—'}</td>
+        <td>
+          <strong>{t('anomalies.flag.rate-limited')}</strong>
+          <div>{t('anomalies.why.rate-limited')}</div>
+          <div className="muted">
+            <code>{counter.key}</code> · {formatNumber(counter.count)}/
+            {formatNumber(counter.max)}
+          </div>
+        </td>
+        <td className="muted">{t('anomalies.do.rate-limited')}</td>
+        <td>
+          {counter.uid ? (
+            <button
+              className="btn"
+              onClick={() => onHold({ mode: 'hold', uid: counter.uid })}
+            >
+              {t('anomalies.holdFamily')}
+            </button>
+          ) : null}
+        </td>
+      </tr>
+    );
+  }
+
+  const { flag, uid } = item;
+  return (
+    <tr>
+      <td>
+        <code>{uid}</code>
+        {flag.deviceId ? (
+          <div className="muted">
+            {deviceLabel(flag.deviceId, flag.platform)} · build {flag.build}
+          </div>
+        ) : null}
+      </td>
+      <td>
+        <strong>{t(`anomalies.flag.${flag.kind}`)}</strong>
+        <div>{t(`anomalies.why.${flag.kind}`)}</div>
+        <div className="muted">{flag.detail}</div>
+      </td>
+      <td className="muted">{t(`anomalies.do.${flag.kind}`)}</td>
+      {category === 'cost' || category === 'abuse' ? (
+        <td>
+          {flag.deviceId ? (
+            <button
+              className="btn"
+              onClick={() => onHold({ mode: 'hold', uid, deviceId: flag.deviceId })}
+            >
+              {t('anomalies.holdDevice')}
+            </button>
+          ) : null}
+        </td>
+      ) : null}
+    </tr>
+  );
+}
+
+/** A family's holds — its own and its devices' — each with a release. */
+function HoldRows({ row, reasonLabel, onRelease }) {
+  const { t } = useT();
+  return (
+    <>
+      {row.hold ? (
+        <tr>
+          <td>
+            <code>{row.uid}</code>
+          </td>
+          <td>
+            {t('anomalies.familyHeld', { reason: reasonLabel(row.hold.reason) })}
+            {row.hold.note ? <div className="muted">“{row.hold.note}”</div> : null}
+          </td>
+          <td>
+            <button
+              className="btn btn-ghost"
+              onClick={() => onRelease({ mode: 'release', uid: row.uid })}
+            >
+              {t('anomalies.releaseFamily')}
+            </button>
+          </td>
+        </tr>
+      ) : null}
+      {row.heldDevices.map(device => (
+        <tr key={device.deviceId}>
+          <td>
+            <code>{row.uid}</code>
+            <div className="muted">{deviceLabel(device.deviceId, device.platform)}</div>
+          </td>
+          <td>
+            {t('anomalies.deviceHeld', {
+              device: deviceLabel(device.deviceId, device.platform),
+              reason: reasonLabel(device.hold.reason),
+            })}
+            {device.hold.byFamily ? (
+              <div className="muted">{t('anomalies.byFamily')}</div>
+            ) : null}
+          </td>
+          <td>
+            {device.hold.byFamily ? null : (
+              <button
+                className="btn btn-ghost"
+                onClick={() =>
+                  onRelease({
+                    mode: 'release',
+                    uid: row.uid,
+                    deviceId: device.deviceId,
+                  })
+                }
+              >
+                {t('anomalies.releaseDevice')}
+              </button>
+            )}
+          </td>
+        </tr>
+      ))}
+    </>
+  );
+}
+
+/** The counters and the activity ranking as the scan returned them. */
+function RawTables({ scan }) {
+  const { t, formatNumber } = useT();
+  return (
+    <>
+      <p className="muted" style={{ marginTop: 12 }}>
+        {t('anomalies.rateLimitsHint')}
+      </p>
+      <div className="table-scroll">
+        <table className="table">
+          <thead>
+            <tr>
+              <th>{t('anomalies.colKey')}</th>
+              <th>{t('anomalies.colCount')}</th>
+              <th>{t('anomalies.colMax')}</th>
+              <th>{t('anomalies.colFamily')}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {scan.rateLimits.slice(0, 50).map(counter => (
+              <tr key={`${counter.key}-${counter.windowStart}`}>
+                <td>
+                  <code>{counter.key}</code>
+                </td>
+                <td>{formatNumber(counter.count)}</td>
+                <td>{counter.max === undefined ? '—' : formatNumber(counter.max)}</td>
+                <td>{counter.uid ? <code>{counter.uid}</code> : '—'}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <h3 className="section-title" style={{ marginTop: 24 }}>
+        {t('anomalies.activityTitle')}
+      </h3>
+      {scan.activity.length === 0 ? (
+        <p className="muted">{t('common.noData')}</p>
+      ) : (
+        <div className="table-scroll">
+          <table className="table">
+            <thead>
+              <tr>
+                <th>{t('anomalies.colFamily')}</th>
+                <th>{t('anomalies.colActivities')}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {scan.activity.slice(0, 15).map(entry => (
+                <tr key={entry.uid}>
+                  <td>
+                    <code>{entry.uid}</code>
+                  </td>
+                  <td>{formatNumber(entry.count)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </>
   );
 }
 

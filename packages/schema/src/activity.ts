@@ -43,6 +43,13 @@ export type ActivityType =
   | 'message_checked'
   | 'emergency'
   /**
+   * A child sent an SOS — the feed's copy of the alert, written by
+   * `notifyParentSosAlert` beside its own push. Not `emergency`: that type is
+   * the escape and carries a push of its own, so a second one would page the
+   * parent twice with the wrong sentence. Params: `deviceName`, `alertId`.
+   */
+  | 'sos_alert'
+  /**
    * A KidGate operator entered the family account for support. Written by
    * `functions/admin/impersonate.js` at session start — the one copy of the
    * entry log the family can read (Privacy Policy §10). `deviceId` is empty:
@@ -85,6 +92,7 @@ export const ACTIVITY_TYPES = [
   'message_alert',
   'message_checked',
   'emergency',
+  'sos_alert',
   'support_session',
 ] as const satisfies ReadonlyArray<ActivityType>;
 

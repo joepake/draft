@@ -43,7 +43,6 @@ import { useReaderToday, useTodayKey, zonesOf } from '../dashboard/useTodayKey.j
 import { readDeviceBattery } from '@kidgate/core/domain/battery';
 import { isAndroidLike, isDesktopLike } from '@kidgate/core/domain/platformFamily';
 import { isKidGateOwnApp } from '@kidgate/core/domain/ownApp';
-import { useHereMapsKey } from '../dashboard/useHereMapsKey.js';
 import LocationMap from '../dashboard/LocationMap.jsx';
 import ChildLocationPanel from '../dashboard/ChildLocationPanel.jsx';
 import { buildAttention, buildFamilyAttention } from '../dashboard/attentionItems.js';
@@ -968,16 +967,6 @@ export default function Dashboard({
      */
     window.scrollTo({ top: 0, behavior: 'auto' });
   };
-  /* Only while a device is open — this is a network call per session and the
-     family list has no map on it. */
-  /*
-   * Fetched only where a map can be drawn, and there are TWO such places since
-   * 2026-09-18: a device's Location card and the child's own location screen.
-   * Gating on `deviceOpen` alone left the child screen asking the builder for
-   * a map with no key, which draws its "unavailable" document — a working
-   * feature reporting itself broken.
-   */
-  const hereMapsKey = useHereMapsKey(Boolean(deviceOpen) || childLocationOpen);
   /** Whether the hero's protection row has this device's items open. */
   const [heroIssuesOpen, setHeroIssuesOpen] = useState(false);
   const [range, setRange] = useState(14);
@@ -3451,7 +3440,6 @@ export default function Dashboard({
             familyId={familyId}
             child={childView}
             childDevices={childDevices}
-            hereMapsKey={hereMapsKey}
             title={t('dash.locationTitle')}
             reloadKey={loadedAt}
             messages={{
@@ -4543,12 +4531,12 @@ export default function Dashboard({
                     iframe. It was lifted to core for this.
 
                     So none of what was feared here applies: HERE is already
-                    the product's tile provider, the key never enters this
-                    bundle (`useHereMapsKey` fetches it per session from the
-                    endpoint the phone reads), and a child's coordinates
-                    already reach HERE from the phone. `sandbox` without
-                    `allow-same-origin` keeps the document away from this
-                    page's storage and its Firebase session.
+                    the product's tile provider, this surface has its own
+                    domain-restricted key (`dashboard/hereTiles.js`), and a
+                    child's coordinates already reach HERE from the phone.
+                    `sandbox` without `allow-same-origin` keeps the document
+                    away from this page's storage and its Firebase session
+                    (`dashboard/HereMapFrame.jsx`).
 
                     No key, no map: the builder draws its own "unavailable"
                     document, and the facts underneath are read from Firestore
@@ -4562,7 +4550,6 @@ export default function Dashboard({
                     familyId={familyId}
                     device={device}
                     deviceName={deviceView.name}
-                    hereMapsKey={hereMapsKey}
                     title={t('dash.locationTitle')}
                     reloadKey={loadedAt}
                     messages={{

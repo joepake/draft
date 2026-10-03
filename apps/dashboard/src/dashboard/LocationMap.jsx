@@ -8,6 +8,8 @@ import {
   buildDeviceTrails,
 } from '@kidgate/core/domain/locationTrail';
 import { locationHistoryRepository } from '../adapters/repositories.js';
+import HereMapFrame from './HereMapFrame.jsx';
+import { mapTiles } from './hereTiles.js';
 
 /**
  * The device's route, not its last dot.
@@ -38,17 +40,13 @@ import { locationHistoryRepository } from '../adapters/repositories.js';
  *   200: anything past the cap is read, billed and then thrown away before it
  *   is drawn.
  *
- * Three rules from `apps/dashboard/CLAUDE.md` still bind and are unchanged
- * here: the HERE key never enters this bundle (it arrives per session through
- * `useHereMapsKey`), `sandbox` stays **without** `allow-same-origin` so a
- * third-party tile script cannot reach the parent's signed-in origin, and the
- * document takes the builder's default accent, so it is always light.
+ * The sandbox and the tiles are `HereMapFrame`'s. The document takes the
+ * builder's default accent, so it is always light.
  */
 export default function LocationMap({
   familyId,
   device,
   deviceName,
-  hereMapsKey,
   messages,
   title,
   /** Changes when the page is re-read, so the trail follows the Refresh button. */
@@ -120,11 +118,10 @@ export default function LocationMap({
   }
 
   return (
-    <iframe
+    <HereMapFrame
       className="loc-map"
       title={title}
-      sandbox="allow-scripts"
-      srcDoc={buildLocationHistoryMapHtml(points, points[0].id, hereMapsKey, messages)}
+      html={buildLocationHistoryMapHtml(points, points[0].id, mapTiles, messages)}
     />
   );
 }

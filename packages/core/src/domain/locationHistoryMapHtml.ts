@@ -17,6 +17,26 @@
 import type { LocationHistoryEntry } from '@kidgate/schema/locationHistory';
 import { getLocationHistoryTitle } from './locationHistory';
 
+/**
+ * Leaflet, pinned by hash. These documents hold the HERE key and the child's
+ * trail, and the iframe sandbox stops a script reaching the parent's origin,
+ * not the network — a CDN serving other bytes would read both. A mismatch
+ * refuses the file and the map stays blank, which is the safe failure.
+ * Bumping the version means re-hashing both files:
+ * `curl -fsSL <url> | openssl dgst -sha256 -binary | openssl base64 -A`.
+ */
+const LEAFLET_ASSETS = `<link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin="anonymous"
+    ></script>`;
+
 export interface LocationHistoryMapPoint {
   id: string;
   lat: number;
@@ -44,8 +64,60 @@ export function buildLocationHistoryMapPoints(
   }));
 }
 
-function buildHereTileLayerScript(hereApiKey: string): string {
-  const escapedKey = hereApiKey.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+/**
+ * Tiles fetched by the page around the frame, for a host whose HERE key is
+ * restricted to its own domain. A sandboxed frame has an opaque origin and
+ * sends no `Referer`, so HERE refuses every tile the frame asks for itself
+ * (measured on the dashboard, 2026-10-03); the page sends one. The key never
+ * enters the document. The frame posts `{ hereTile: { id, z, x, y } }` to its
+ * parent and takes back `{ hereTile: { id, blob } }`, `blob` absent on failure.
+ */
+export const PARENT_TILES = { fromParent: true } as const;
+
+/** A HERE key, `PARENT_TILES`, or `null` for the "map unavailable" document. */
+export type MapTileSource = string | typeof PARENT_TILES | null;
+
+function buildHereTileLayerScript(tiles: Exclude<MapTileSource, null>): string {
+  if (typeof tiles !== 'string') {
+    return `
+        const pendingTiles = new Map();
+        let nextTileId = 0;
+        window.addEventListener('message', event => {
+          const reply = event.source === window.parent && event.data && event.data.hereTile;
+          const settle = reply && pendingTiles.get(reply.id);
+          if (!settle) return;
+          pendingTiles.delete(reply.id);
+          settle(reply.blob);
+        });
+        const ParentTiles = L.GridLayer.extend({
+          createTile(coords, done) {
+            const img = document.createElement('img');
+            img.alt = '';
+            const id = ++nextTileId;
+            pendingTiles.set(id, blob => {
+              if (!blob) {
+                done(new Error('tile'), img);
+                return;
+              }
+              const url = URL.createObjectURL(blob);
+              img.onload = () => {
+                URL.revokeObjectURL(url);
+                done(null, img);
+              };
+              img.onerror = () => {
+                URL.revokeObjectURL(url);
+                done(new Error('tile'), img);
+              };
+              img.src = url;
+            });
+            window.parent.postMessage({ hereTile: { id, z: coords.z, x: coords.x, y: coords.y } }, '*');
+            return img;
+          },
+        });
+        new ParentTiles({ maxZoom: 19 }).addTo(map);
+  `;
+  }
+  const escapedKey = tiles.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
   return `
         L.tileLayer(
           'https://maps.hereapi.com/v3/base/mc/{z}/{x}/{y}/png8?style=explore.day&size=256&apiKey=${escapedKey}',
@@ -85,19 +157,19 @@ function missingKeyDocument(softBg: string, message: string): string {
 export function buildLocationHistoryMapHtml(
   points: LocationHistoryMapPoint[],
   highlightId: string | null | undefined,
-  hereApiKey: string | null,
+  tiles: MapTileSource,
   messages: LocationMapMessages,
   accentColor = '#0F766E',
   accentSecondary = '#0369A1',
 ): string {
   const softBg = `${accentColor}14`;
-  if (!hereApiKey) {
+  if (!tiles) {
     return missingKeyDocument(softBg, messages.mapUnavailable);
   }
 
   const payload = JSON.stringify(points);
   const focusId = JSON.stringify(highlightId ?? null);
-  const tileLayerScript = buildHereTileLayerScript(hereApiKey);
+  const tileLayerScript = buildHereTileLayerScript(tiles);
   const emptyMessage = JSON.stringify(messages.mapNoLocationsEmpty);
 
   return `<!DOCTYPE html>
@@ -108,11 +180,7 @@ export function buildLocationHistoryMapHtml(
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    ${LEAFLET_ASSETS}
     <style>
       html, body, #map {
         height: 100%;
@@ -266,13 +334,13 @@ export interface ChildDeviceTrail {
  */
 export function buildChildDevicesMapHtml(
   points: ChildDevicesMapPoint[],
-  hereApiKey: string | null,
+  tiles: MapTileSource,
   messages: LocationMapMessages,
   accentColor = '#0F766E',
   trails: ChildDeviceTrail[] = [],
 ): string {
   const softBg = `${accentColor}14`;
-  if (!hereApiKey) {
+  if (!tiles) {
     return missingKeyDocument(softBg, messages.mapUnavailable);
   }
 
@@ -280,7 +348,7 @@ export function buildChildDevicesMapHtml(
   // A single-point run is a marker, not a line — filtered here so the page
   // script has nothing degenerate to guard against.
   const trailPayload = JSON.stringify(trails.filter(trail => trail.path.length > 1));
-  const tileLayerScript = buildHereTileLayerScript(hereApiKey);
+  const tileLayerScript = buildHereTileLayerScript(tiles);
   const emptyMessage = JSON.stringify(messages.mapNoLocationsEmpty);
 
   return `<!DOCTYPE html>
@@ -291,11 +359,7 @@ export function buildChildDevicesMapHtml(
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    ${LEAFLET_ASSETS}
     <style>
       html, body, #map {
         height: 100%;
@@ -481,16 +545,16 @@ export function buildChildDevicesMapHtml(
 export function buildPlacePickerMapHtml(
   latitude: number,
   longitude: number,
-  hereApiKey: string | null,
+  tiles: MapTileSource,
   messages: Pick<LocationMapMessages, 'mapUnavailable'>,
   accentColor = '#0F766E',
 ): string {
   const softBg = `${accentColor}14`;
-  if (!hereApiKey) {
+  if (!tiles) {
     return missingKeyDocument(softBg, messages.mapUnavailable);
   }
 
-  const tileLayerScript = buildHereTileLayerScript(hereApiKey);
+  const tileLayerScript = buildHereTileLayerScript(tiles);
   const lat = Number(latitude);
   const lng = Number(longitude);
 
@@ -502,11 +566,7 @@ export function buildPlacePickerMapHtml(
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    ${LEAFLET_ASSETS}
     <style>
       html, body, #map {
         height: 100%;

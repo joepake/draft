@@ -8,6 +8,8 @@ import { resolveChildLocationView } from '@kidgate/core/domain/childLocation';
 import { supportsLocation } from '@kidgate/core/domain/locationSupport';
 import { getSeriesSwatch } from '@kidgate/tokens/accents';
 import { locationHistoryRepository } from '../adapters/repositories.js';
+import HereMapFrame from './HereMapFrame.jsx';
+import { mapTiles } from './hereTiles.js';
 
 /**
  * The child's afternoon, across every machine they carry.
@@ -46,7 +48,6 @@ export default function ChildLocationPanel({
   familyId,
   child,
   childDevices,
-  hereMapsKey,
   messages,
   title,
   reloadKey = 0,
@@ -139,21 +140,12 @@ export default function ChildLocationPanel({
 
   return (
     <section className="child-location">
-      {/* Same three rules as the device map: the HERE key never enters this
-          bundle, `sandbox` stays WITHOUT `allow-same-origin` so a tile script
-          cannot reach the parent's signed-in origin, and the document takes
-          the builder's default accent, so it is always light. */}
-      <iframe
+      {/* The document takes the builder's default accent, so it is always
+          light. The sandbox and the tiles are `HereMapFrame`'s. */}
+      <HereMapFrame
         className="loc-map loc-map-tall"
         title={title}
-        sandbox="allow-scripts"
-        srcDoc={buildChildDevicesMapHtml(
-          points,
-          hereMapsKey,
-          messages,
-          undefined,
-          trails,
-        )}
+        html={buildChildDevicesMapHtml(points, mapTiles, messages, undefined, trails)}
       />
     </section>
   );

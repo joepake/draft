@@ -36,7 +36,8 @@ import type { Activity, ActivityType } from '@kidgate/schema/activity';
  * inventing a verdict there would trade one wrong label for another.
  */
 export type ActivityKind =
-  | ActivityType
+  // An SOS row is the `emergency` kind — same icon, badge and destination.
+  | Exclude<ActivityType, 'sos_alert'>
   | 'check_in'
   | 'location_request'
   | 'time_request'
@@ -68,8 +69,10 @@ const SEARCH_ALERT_TITLE_KEY = 'activities.messageAlertTitleSearch';
  * An emergency row is recognised by key as well as by type, because the SOS
  * writers pre-date the `emergency` member.
  *
- * Bounded to the two namespaces that exist (`sos.*` from the seed and the push
- * path, `activities.sosEscape*` from `domain/sosEscapeActivity`) rather than
+ * Bounded to the two namespaces that exist (`sos.*` from the seed and the
+ * `sos_alert` row `notifyParentSosAlert` writes — the only writer outside the
+ * seed, since 2026-10-03; `activities.sosEscape*` from
+ * `domain/sosEscapeActivity`) rather than
  * the substring test this replaces: `titleKey.includes('sos')` would fire on
  * any future key with those three letters anywhere in it, and a row wrongly
  * promoted to Emergency is the most alarming mistake this feed can make.
@@ -87,6 +90,7 @@ export function resolveActivityKind(
 ): ActivityKind {
   if (
     activity.type === 'emergency' ||
+    activity.type === 'sos_alert' ||
     (activity.titleKey ? isEmergencyKey(activity.titleKey) : false) ||
     // Legacy rows carry a frozen sentence and no key at all.
     Boolean(activity.title?.toLowerCase().includes('sos'))
