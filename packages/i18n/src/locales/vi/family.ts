@@ -111,7 +111,7 @@ export const family = {
   childDevicesProtected: '{{count}} thiết bị đang được bảo vệ',
   chipHealthWarnCount: '{{count}} cần thiết lập',
   chipHealthInactiveCount: '{{count}} mất kết nối quá 24 giờ',
-  chipLocationBlocked: 'Không có vị trí',
+  chipLocationBlocked: 'Không nhận được vị trí',
   chipBlockedCount: '{{count}} đang bị chặn',
   healthProtected: 'Đang được bảo vệ',
   buildOutdated: 'Có bản mới',
@@ -286,4 +286,9 @@ export const family = {
   childDetailTodayWell: 'Dùng hôm nay',
   childDetailUnassignAction: 'Bỏ gán',
   childDetailLimitShared: 'Tính tổng trên mọi thiết bị của con',
+  searchTitle: 'Tìm kiếm',
+  searchPlaceholder: 'Các con, thiết bị, chức năng, hướng dẫn…',
+  searchEmpty: 'Không có mục nào khớp. Hãy thử một từ khác.',
+  searchSectionFeatures: 'Chức năng',
+  searchSectionGoTo: 'Đi tới',
 } as const;

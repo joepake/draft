@@ -75,6 +75,12 @@ export const permissions = {
   notificationsStepAllow: 'Sélectionnez Autoriser dans la demande.',
   exactAlarmStepTurnOn: 'Activez Alarmes et rappels pour KidGate.',
   cameraStepTurnOn: 'Activez Appareil photo pour KidGate.',
+  allowMicrophoneTitle: 'Autoriser le micro',
+  microphonePermissionMessage:
+    'KidGate utilise le micro pour enregistrer jusqu’à 15 secondes de son lorsque vous envoyez un SOS, afin que vos parents puissent entendre ce qui se passe. Il n’enregistre jamais à aucun autre moment.',
+  microphoneTurnedOffMessage:
+    'Veuillez ouvrir les Réglages et autoriser le micro afin que vos alertes SOS puissent inclure du son.',
+  microphoneStepTurnOn: 'Activez Micro pour KidGate.',
   uninstallProtectionStepConfirm:
     'Sélectionnez Activer sur l’écran de confirmation d’Android.',
 } as const;

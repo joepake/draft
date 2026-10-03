@@ -2,7 +2,11 @@ import type { DeviceControls, DeviceLocation } from './deviceControls';
 import type { DevicePlace } from './devicePlace';
 import type { DeviceMessageMonitoringState } from './messageMonitoringState';
 import type { OperatorHold } from './operatorHold';
-import type { ProtectionPermissionStatus, ScreenTimeStatus } from './permissions';
+import type {
+  ProtectionPermissionStatus,
+  ScreenTimeAuthorization,
+  ScreenTimeStatus,
+} from './permissions';
 import type {
   DeviceCapabilities,
   DeviceFormFactor,
@@ -254,9 +258,16 @@ export interface ParentPinVerifier {
 
 export interface DeviceProtectionStatus {
   screenTime: ScreenTimeStatus;
+  /** iOS only, while `screenTime` is `approved`; absent before the child app recorded it. */
+  screenTimeAuthorization?: ScreenTimeAuthorization;
   location: ProtectionPermissionStatus;
   notifications: ProtectionPermissionStatus;
   camera?: ProtectionPermissionStatus;
+  /**
+   * The SOS clip's grant. Published only by a build that records one, so
+   * absent means "sends no sound" from any cause, never "refused".
+   */
+  microphone?: ProtectionPermissionStatus;
   /** iOS Background App Refresh. Unavailable on Android. */
   backgroundAppRefresh?: ProtectionPermissionStatus;
   /** Android: draw-over-other-apps (lock overlay). */
@@ -289,6 +300,7 @@ export const PROTECTION_PERMISSION_KEYS = [
   'location',
   'notifications',
   'camera',
+  'microphone',
   'backgroundAppRefresh',
   'overlay',
   'batteryOptimization',

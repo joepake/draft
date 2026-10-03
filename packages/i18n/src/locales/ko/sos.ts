@@ -11,6 +11,11 @@ export const sos = {
   photoLoadFailed:
     '이 사진을 불러오지 못했습니다. 연결 상태를 확인한 후 다시 시도해 주세요.',
   noPhoto: '이 알림에 첨부된 사진이 없습니다.',
+  audioLabel: '녹음',
+  audioPlayAccessibility: 'SOS 녹음 재생',
+  audioStopAccessibility: 'SOS 녹음 재생 중지',
+  audioLoadFailed:
+    '이 녹음을 재생하지 못했습니다. 연결 상태를 확인한 후 다시 시도해 주세요.',
   acknowledgedAt: '{{time}} 확인함',
   openInMaps: '지도에서 열기',
   acknowledgeButton: '제가 확인할게요',
@@ -43,6 +48,8 @@ export const sos = {
     '알림이 전송된 후, 카메라를 이미 사용할 수 있는 경우 추가돼요.',
   infoQuickSelfieDetailPhone:
     '알림이 전송된 뒤 사진을 추가할 수 있도록 카메라가 열려요. 건너뛰어도 돼요.',
+  infoSoundLabel: '최대 15초의 소리',
+  infoSoundDetail: '보내는 순간부터 녹음되어 부모님이 상황을 들을 수 있어요.',
   simulatorTipTitle: '시뮬레이터 팁',
   simulatorTipBody:
     'SOS를 보내기 전에 Simulator 메뉴에서 Camera(Front Camera)를 켜두면 테스트용 사진을 촬영할 수 있어요.',

@@ -70,5 +70,11 @@ export const permissions = {
   notificationsStepAllow: 'Chạm Cho phép trên hộp thoại.',
   exactAlarmStepTurnOn: 'Bật Chuông báo và lời nhắc cho KidGate.',
   cameraStepTurnOn: 'Bật Máy ảnh cho KidGate.',
+  allowMicrophoneTitle: 'Cho phép micrô',
+  microphonePermissionMessage:
+    'KidGate dùng micrô để ghi tối đa 15 giây âm thanh khi gửi SOS, để bố mẹ nghe được chuyện gì đang xảy ra. Ngoài lúc đó, KidGate không bao giờ ghi âm.',
+  microphoneTurnedOffMessage:
+    'Vui lòng mở Cài đặt và bật Micrô để SOS có thể gửi kèm âm thanh.',
+  microphoneStepTurnOn: 'Bật Micrô cho KidGate.',
   uninstallProtectionStepConfirm: 'Chạm Kích hoạt trên màn hình xác nhận của Android.',
 } as const;

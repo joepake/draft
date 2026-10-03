@@ -378,6 +378,7 @@ export default {
     location: 'स्थान',
     notifications: 'सूचनाएँ',
     camera: 'कैमरा',
+    microphone: 'माइक्रोफ़ोन',
     backgroundAppRefresh: 'बैकग्राउंड ऐप रिफ़्रेश',
     overlay: 'अन्य ऐप्स के ऊपर दिखाएँ',
     batteryOptimization: 'बिना प्रतिबंध बैटरी',

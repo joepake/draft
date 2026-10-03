@@ -398,6 +398,7 @@ export default {
     location: 'Vị trí',
     notifications: 'Thông báo',
     camera: 'Camera',
+    microphone: 'Micrô',
     backgroundAppRefresh: 'Làm mới ứng dụng nền',
     overlay: 'Hiển thị trên ứng dụng khác',
     batteryOptimization: 'Pin không bị hạn chế',

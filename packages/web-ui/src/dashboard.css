@@ -2266,6 +2266,15 @@ ol.attn-fix li + li {
   margin-top: 0.12rem;
 }
 
+/* The SOS clip: the browser's own player, one line under the row's text. */
+.ev-body audio {
+  display: block;
+  width: 100%;
+  max-width: 20rem;
+  height: 2rem;
+  margin-top: 0.4rem;
+}
+
 /* A control this device cannot hold: the reason takes the warning tone rather
    than the muted one the other rows use for their status line. Muted would read
    as a rule that is simply off, which is the distinction the row exists to
@@ -4550,9 +4559,10 @@ span.chip {
 }
 
 /*
- * The per-child pills. Smaller than the row's chips and never interactive:
- * the whole row is already the door into that child, so a pill that could be
- * clicked separately would be a second target inside the first.
+ * The per-child pills. Smaller than the row's chips and, but for one, not
+ * interactive: the whole row is already the door into that child. The
+ * exception is location — the reason a position is missing lives on the
+ * child's location screen, one step past the hub, so that pill goes there.
  */
 .kid-pills {
   display: flex;
@@ -4567,6 +4577,13 @@ span.chip {
   font-size: var(--dash-text-1);
   font-weight: 600;
   font-style: normal;
+}
+
+/* The chevron is this surface's "goes somewhere" glyph, as on the kid card. */
+button.kid-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
 }
 
 .kid-pill.tone-danger {

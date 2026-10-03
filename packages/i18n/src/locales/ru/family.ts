@@ -137,7 +137,7 @@ export const family = {
   chipHealthWarnCount_one: '{{count}} требует настройки',
 
   chipHealthInactiveCount: '{{count}} без связи более 24 ч',
-  chipLocationBlocked: 'Нет местоположения',
+  chipLocationBlocked: 'Местоположение не поступает',
 
   chipBlockedCount: '{{count}} заблокировано',
 
@@ -410,4 +410,9 @@ export const family = {
   childDetailTodayWell: 'Сегодня',
   childDetailUnassignAction: 'Открепить',
   childDetailLimitShared: 'Суммарно по всем устройствам',
+  searchTitle: 'Поиск',
+  searchPlaceholder: 'Дети, устройства, функции…',
+  searchEmpty: 'Ничего не найдено. Попробуйте другое слово.',
+  searchSectionFeatures: 'Функции',
+  searchSectionGoTo: 'Перейти',
 } as const;

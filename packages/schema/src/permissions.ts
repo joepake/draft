@@ -20,6 +20,15 @@
 export type ScreenTimeStatus = 'unavailable' | 'notDetermined' | 'denied' | 'approved';
 
 /**
+ * Which FamilyControls grant an approved iOS Screen Time is. `individual` is
+ * the device owner's own consent — revocable in Settings without a PIN, and
+ * the app deletable; `child` is a child Apple ID inside Family Sharing, the
+ * only grant a child cannot lift. iOS reports both as approved, so the child
+ * app records the branch it took and both consoles warn on `individual`.
+ */
+export type ScreenTimeAuthorization = 'individual' | 'child';
+
+/**
  * Everything else the child device needs granted.
  *
  * `unknown` is not the same as `notDetermined`: the former means the device has

@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import Icon from '@kidgate/web-ui/Icon';
 import { getEffectiveDeviceStatus } from '@kidgate/core/domain/deviceStatus';
 import { getProtectionSummaryKeys } from '@kidgate/core/domain/protectionStatus';
 import { isWithinAnyScheduleWindow } from '@kidgate/core/domain/scheduleWindow';
@@ -209,16 +210,36 @@ export default function FamilySummaryRow({ chips, appT, onChipPress }) {
   );
 }
 
-/** The pills under one child's name. */
-export function ChildPills({ pills, appT }) {
+/**
+ * The pills under one child's name. `actionable` is the location pill alone
+ * (`familySummary`), and it is a `<button>` because the card's own click
+ * handler skips buttons — a span would open the hub instead.
+ */
+export function ChildPills({ pills, appT, onOpenLocation = null }) {
   if (pills.length === 0) return null;
   return (
     <span className="kid-pills">
-      {pills.map(pill => (
-        <span className={`kid-pill tone-${pill.tone}`} key={pill.key}>
-          {appT(pill.labelKey, { count: pill.count })}
-        </span>
-      ))}
+      {pills.map(pill => {
+        const label = appT(pill.labelKey, { count: pill.count });
+        if (pill.actionable && onOpenLocation) {
+          return (
+            <button
+              type="button"
+              className={`kid-pill tone-${pill.tone}`}
+              key={pill.key}
+              onClick={onOpenLocation}
+            >
+              {label}
+              <Icon name="chevronRight" size={10} />
+            </button>
+          );
+        }
+        return (
+          <span className={`kid-pill tone-${pill.tone}`} key={pill.key}>
+            {label}
+          </span>
+        );
+      })}
     </span>
   );
 }

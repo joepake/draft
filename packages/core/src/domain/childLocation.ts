@@ -294,7 +294,7 @@ export function childLocationBlockerKey(blocker: ChildLocationBlocker): string {
 }
 
 /**
- * Whether the family card's "No location" pill is true of this blocker.
+ * Whether the family card's "Not receiving location" pill is true of this blocker.
  *
  * Every blocker but `foregroundOnly` means no usable position is coming. That
  * one still sends a fix whenever the child opens KidGate, and its device

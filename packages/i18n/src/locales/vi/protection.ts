@@ -39,6 +39,9 @@ export const protection = {
   locationForegroundOnly:
     'Vị trí chỉ cập nhật khi KidGate đang mở trên thiết bị của trẻ.',
   cameraPermission: 'Quyền camera',
+  microphonePermission: 'Quyền micrô',
+  microphoneOff:
+    'Micrô chưa được cho phép trên thiết bị này, nên SOS gửi từ đó sẽ không có âm thanh.',
   cameraConsentPending:
     'Camera chưa được cho phép trên thiết bị này, nên SOS hoặc Báo an toàn gửi từ đó sẽ không có ảnh.',
   locationConsentPending:
@@ -69,4 +72,10 @@ export const protection = {
   iosUpgradeActionLabel: 'Cần iOS 16',
   appReviewRemindersNote:
     'iOS không báo cho KidGate biết khi có ứng dụng mới được cài, nên vui lòng xem lại danh sách ứng dụng cùng con theo định kỳ.',
+  screenTimeIndividualAuthorization:
+    'Quyền Thời gian sử dụng được cấp bằng Apple ID của chính thiết bị trẻ, nên trẻ có thể tắt KidGate trong Cài đặt mà không cần PIN và xóa ứng dụng. Chỉ Apple ID trẻ em thuộc nhóm Chia sẻ trong gia đình của bạn mới giữ được các kiểm soát này.',
+  screenTimeIndividualStepChildAppleId:
+    'Đăng nhập thiết bị của trẻ bằng Apple ID trẻ em thuộc nhóm Chia sẻ trong gia đình của bạn.',
+  screenTimeIndividualStepReapprove:
+    'Mở KidGate trên thiết bị của trẻ và cấp lại quyền Thời gian sử dụng.',
 } as const;

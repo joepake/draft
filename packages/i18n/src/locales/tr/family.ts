@@ -133,7 +133,7 @@ export const family = {
   chipHealthWarnCount_one: '{{count}} yapılandırma bekliyor',
 
   chipHealthInactiveCount: '{{count}} 24 saatten uzun süredir yanıtsız',
-  chipLocationBlocked: 'Konum yok',
+  chipLocationBlocked: 'Konum alınamıyor',
 
   chipBlockedCount: '{{count}} engellendi',
 
@@ -401,4 +401,9 @@ export const family = {
   childDetailTodayWell: 'Bugün kullanıldı',
   childDetailUnassignAction: 'Kaldır',
   childDetailLimitShared: 'Tüm cihazlarında toplam',
+  searchTitle: 'Ara',
+  searchPlaceholder: 'Çocuklar, cihazlar, özellikler, kılavuz…',
+  searchEmpty: 'Eşleşen bir şey yok. Başka bir kelime deneyin.',
+  searchSectionFeatures: 'Özellikler',
+  searchSectionGoTo: 'Git',
 } as const;

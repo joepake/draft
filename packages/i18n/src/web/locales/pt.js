@@ -381,6 +381,7 @@ export default {
     location: 'Localização',
     notifications: 'Notificações',
     camera: 'Câmera',
+    microphone: 'Microfone',
     backgroundAppRefresh: 'Atualização em Segundo Plano',
     overlay: 'Exibir sobre outros apps',
     batteryOptimization: 'Bateria sem restrições',

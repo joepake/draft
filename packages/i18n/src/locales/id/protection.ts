@@ -37,6 +37,9 @@ export const protection = {
   locationForegroundOnly:
     'Lokasi hanya diperbarui saat KidGate terbuka di perangkat anak.',
   cameraPermission: 'Izin kamera',
+  microphonePermission: 'Izin mikrofon',
+  microphoneOff:
+    'Mikrofon belum diizinkan di perangkat ini, jadi SOS dari sana tiba tanpa suara.',
   cameraConsentPending:
     'Kamera belum diizinkan di perangkat ini, jadi SOS atau Check-In dari sana tiba tanpa foto.',
   locationConsentPending:
@@ -67,4 +70,10 @@ export const protection = {
   iosUpgradeActionLabel: 'Perlu iOS 16',
   appReviewRemindersNote:
     'iOS tidak menyediakan info pemasangan aplikasi; tinjau aplikasi secara berkala langsung di perangkat anak.',
+  screenTimeIndividualAuthorization:
+    'Durasi Layar disetujui dengan Apple ID milik perangkat anak sendiri, jadi anak bisa mematikan KidGate di Pengaturan tanpa PIN dan menghapus aplikasi. Hanya Apple ID anak dalam grup Keluarga Berbagi Anda yang membuat kontrol ini bertahan.',
+  screenTimeIndividualStepChildAppleId:
+    'Masuk ke perangkat anak dengan Apple ID anak dari grup Keluarga Berbagi Anda.',
+  screenTimeIndividualStepReapprove:
+    'Buka KidGate di perangkat anak dan setujui Durasi Layar lagi.',
 } as const;

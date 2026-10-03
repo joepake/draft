@@ -134,7 +134,7 @@ export const family = {
   chipHealthWarnCount_one: '{{count}} perlu disiapkan',
 
   chipHealthInactiveCount: '{{count}} tidak aktif lebih dari 24 jam',
-  chipLocationBlocked: 'Tanpa lokasi',
+  chipLocationBlocked: 'Lokasi tidak diterima',
 
   chipBlockedCount: '{{count}} diblokir',
 
@@ -404,4 +404,9 @@ export const family = {
   childDetailTodayWell: 'Dipakai hari ini',
   childDetailUnassignAction: 'Lepaskan',
   childDetailLimitShared: 'Total di semua perangkatnya',
+  searchTitle: 'Cari',
+  searchPlaceholder: 'Anak, perangkat, fitur, panduan…',
+  searchEmpty: 'Tidak ada yang cocok. Coba kata lain.',
+  searchSectionFeatures: 'Fitur',
+  searchSectionGoTo: 'Buka',
 } as const;

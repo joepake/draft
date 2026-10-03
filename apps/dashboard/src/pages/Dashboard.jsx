@@ -563,6 +563,7 @@ function KidGroupHead({
   usedMinutes = null,
   limitMinutes = null,
   onLockAll = null,
+  onOpenLocation = null,
   lockBusy = false,
   readOnly = false,
 }) {
@@ -641,6 +642,9 @@ function KidGroupHead({
       aria-expanded={expandable ? open : undefined}
       onClick={activate}
       onKeyDown={event => {
+        // A key on Lock all or the location pill bubbles here; without this
+        // it opened the hub and swallowed the button's own click.
+        if (event.target !== event.currentTarget) return;
         if (event.key === 'Enter' || event.key === ' ') {
           event.preventDefault();
           onActivate();
@@ -760,7 +764,7 @@ function KidGroupHead({
         </div>
       )}
 
-      <ChildPills pills={pills} appT={appT} />
+      <ChildPills pills={pills} appT={appT} onOpenLocation={onOpenLocation} />
 
       {/*
         Named chips, not anonymous dots: those said how many machines were
@@ -3333,6 +3337,16 @@ export default function Dashboard({
                               )
                             : setOpenChildId(group.child.id)
                         }
+                        /* The hub's Location card, one step early: both
+                           setters in one gesture, so one history entry. */
+                        onOpenLocation={
+                          group.child
+                            ? () => {
+                                setOpenChildId(group.child.id);
+                                setChildLocationOpen(true);
+                              }
+                            : null
+                        }
                       />
                       {open &&
                         group.devices.map(d => (
@@ -4750,6 +4764,14 @@ export default function Dashboard({
                                   : 'dash.sosActive',
                               )}
                             </em>
+                            {s.audioUrl && (
+                              <audio
+                                controls
+                                preload="none"
+                                src={s.audioUrl}
+                                aria-label={activityT('sos.audioLabel')}
+                              />
+                            )}
                           </span>
                           <time>{timeAgo(s.createdAt)}</time>
                         </li>

@@ -383,6 +383,7 @@ export default {
     location: 'Posizione',
     notifications: 'Notifiche',
     camera: 'Fotocamera',
+    microphone: 'Microfono',
     backgroundAppRefresh: 'Aggiornamento in background',
     overlay: 'Visualizza sopra altre app',
     batteryOptimization: 'Batteria senza limitazioni',

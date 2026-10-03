@@ -39,6 +39,9 @@ export const protection = {
   locationForegroundOnly:
     'Местоположение обновляется, только пока KidGate открыт на устройстве ребёнка.',
   cameraPermission: 'Разрешение на камеру',
+  microphonePermission: 'Разрешение на микрофон',
+  microphoneOff:
+    'Микрофон не разрешён на этом устройстве, поэтому SOS с него приходит без звука.',
   cameraConsentPending:
     'Камера не разрешена на этом устройстве, поэтому SOS или Check-In с него приходит без фото.',
   locationConsentPending:
@@ -70,4 +73,10 @@ export const protection = {
   iosUpgradeActionLabel: 'Нужна iOS 16',
   appReviewRemindersNote:
     'iOS не сообщает об установке приложений — периодически проверяйте приложения вместе с устройством ребёнка.',
+  screenTimeIndividualAuthorization:
+    'Экранное время разрешено с собственного Apple ID устройства ребёнка, поэтому ребёнок может отключить KidGate в Настройках без PIN-кода и удалить приложение. Эти ограничения держатся только на детском Apple ID из вашей группы Семейного доступа.',
+  screenTimeIndividualStepChildAppleId:
+    'Войдите на устройстве ребёнка с детским Apple ID из вашей группы Семейного доступа.',
+  screenTimeIndividualStepReapprove:
+    'Откройте KidGate на устройстве ребёнка и снова разрешите Экранное время.',
 } as const;

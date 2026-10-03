@@ -380,6 +380,7 @@ export default {
     location: 'Lokasi',
     notifications: 'Notifikasi',
     camera: 'Kamera',
+    microphone: 'Mikrofon',
     backgroundAppRefresh: 'Penyegaran latar belakang',
     overlay: 'Tampil di atas aplikasi lain',
     batteryOptimization: 'Baterai tanpa batasan',

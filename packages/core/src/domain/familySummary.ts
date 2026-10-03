@@ -173,9 +173,11 @@ export interface ChildUrgencyCounts {
  * second place saying it would be the loudest thing on the card twice.
  *
  * Location is a pill rather than a sentence for the reason `apps/mobile`
- * records: four different causes produce it, the card cannot fix any of them,
+ * records: five different causes produce it, the card cannot fix any of them,
  * and spelling out which one made the one hopeless line the loudest. The pill
- * says a position is missing; the location screen says why.
+ * says a position is missing; the location screen says why — so it is the one
+ * pill that is a door, straight to that screen. The others are readings the
+ * card's own tap already answers.
  */
 export function buildChildUrgencyPills(
   counts: ChildUrgencyCounts,
@@ -224,7 +226,7 @@ export function buildChildUrgencyPills(
       labelKey: 'family.chipLocationBlocked',
       count: 0,
       tone: 'warning',
-      actionable: false,
+      actionable: true,
     });
   }
 

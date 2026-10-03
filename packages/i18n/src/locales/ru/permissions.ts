@@ -72,6 +72,12 @@ export const permissions = {
   notificationsStepAllow: 'Выберите «Разрешить» в запросе.',
   exactAlarmStepTurnOn: 'Включите «Будильники и напоминания» для KidGate.',
   cameraStepTurnOn: 'Включите «Камеру» для KidGate.',
+  allowMicrophoneTitle: 'Разрешить микрофон',
+  microphonePermissionMessage:
+    'KidGate использует микрофон, чтобы записать до 15 секунд звука, когда вы отправляете SOS, — так родители смогут услышать, что происходит. В другое время запись никогда не ведётся.',
+  microphoneTurnedOffMessage:
+    'Откройте Настройки и разрешите доступ к Микрофону, чтобы ваши оповещения SOS могли включать звук.',
+  microphoneStepTurnOn: 'Включите «Микрофон» для KidGate.',
   uninstallProtectionStepConfirm:
     'Выберите «Активировать» на экране подтверждения Android.',
 } as const;

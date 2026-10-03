@@ -10,6 +10,10 @@ export const sos = {
   photoTapHint: 'Fotoğrafın tamamını görmek için dokunun',
   photoLoadFailed: 'Bu fotoğraf yüklenemedi. Bağlantınızı kontrol edip tekrar deneyin.',
   noPhoto: 'Bu uyarıya fotoğraf eklenmedi.',
+  audioLabel: 'Ses kaydı',
+  audioPlayAccessibility: 'SOS kaydını oynat',
+  audioStopAccessibility: 'SOS kaydını oynatmayı durdur',
+  audioLoadFailed: 'Bu kayıt oynatılamadı. Bağlantınızı kontrol edip tekrar deneyin.',
   acknowledgedAt: 'Onaylandı {{time}}',
   openInMaps: 'Haritalar’da aç',
   acknowledgeButton: 'Ben ilgileniyorum',
@@ -41,6 +45,9 @@ export const sos = {
     'Kamera zaten kullanılabilirse uyarı gönderildikten sonra eklenir.',
   infoQuickSelfieDetailPhone:
     'Uyarı gönderildikten sonra fotoğraf ekleyebilmen için kamera açılır. İstersen bu adımı atlayabilirsin.',
+  infoSoundLabel: '15 saniyeye kadar ses',
+  infoSoundDetail:
+    'Gönderdiğin andan itibaren kaydedilir, böylece ailen neler olduğunu duyabilir.',
   simulatorTipTitle: 'Simülatör ipucu',
   simulatorTipBody:
     'Test amaçlı bir fotoğraf çekilebilmesi için SOS göndermeden önce Simülatör menüsünden Kamera’yı (Ön Kamera) açın.',

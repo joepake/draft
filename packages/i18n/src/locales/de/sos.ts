@@ -11,6 +11,11 @@ export const sos = {
   photoLoadFailed:
     'Dieses Foto konnte nicht geladen werden. Bitte prüfe deine Verbindung und versuche es erneut.',
   noPhoto: 'Diesem Alarm ist kein Foto angehängt.',
+  audioLabel: 'Tonaufnahme',
+  audioPlayAccessibility: 'SOS-Aufnahme abspielen',
+  audioStopAccessibility: 'Wiedergabe der SOS-Aufnahme stoppen',
+  audioLoadFailed:
+    'Diese Aufnahme konnte nicht abgespielt werden. Bitte prüfe deine Verbindung und versuche es erneut.',
   acknowledgedAt: 'Bestätigt {{time}}',
   openInMaps: 'In Karten öffnen',
   acknowledgeButton: 'Ich kümmere mich darum',
@@ -48,6 +53,9 @@ export const sos = {
     'Wird nach dem Senden des Alarms hinzugefügt, falls die Kamera bereits verfügbar ist.',
   infoQuickSelfieDetailPhone:
     'Nachdem der Alarm gesendet wurde, öffnet sich die Kamera, damit du ein Foto hinzufügen kannst. Du kannst das auch überspringen.',
+  infoSoundLabel: 'Bis zu 15 Sekunden Ton',
+  infoSoundDetail:
+    'Wird ab dem Moment aufgenommen, in dem du es sendest, damit deine Eltern hören können, was passiert.',
   simulatorTipTitle: 'Simulator-Tipp',
   simulatorTipBody:
     'Aktiviere die Kamera im Simulator-Menü (Front Camera), bevor du SOS sendest, damit ein Testfoto aufgenommen werden kann.',

@@ -10,6 +10,11 @@ export const sos = {
   photoTapHint: 'Ketuk untuk melihat foto secara penuh',
   photoLoadFailed: 'Tidak dapat memuat foto ini. Periksa koneksi Anda dan coba lagi.',
   noPhoto: 'Tidak ada foto yang dilampirkan pada peringatan ini.',
+  audioLabel: 'Rekaman suara',
+  audioPlayAccessibility: 'Putar rekaman SOS',
+  audioStopAccessibility: 'Hentikan pemutaran rekaman SOS',
+  audioLoadFailed:
+    'Tidak dapat memutar rekaman ini. Periksa koneksi Anda dan coba lagi.',
   acknowledgedAt: 'Ditanggapi {{time}}',
   openInMaps: 'Buka di Maps',
   acknowledgeButton: 'Segera saya tangani',
@@ -44,6 +49,9 @@ export const sos = {
     'Ditambahkan setelah peringatan dikirim, jika kamera sudah tersedia.',
   infoQuickSelfieDetailPhone:
     'Setelah peringatan terkirim, kamera terbuka agar kamu bisa menambahkan foto. Kamu boleh melewatinya.',
+  infoSoundLabel: 'Suara hingga 15 detik',
+  infoSoundDetail:
+    'Direkam sejak kamu mengirimnya, agar orang tuamu bisa mendengar apa yang terjadi.',
   simulatorTipTitle: 'Tips simulator',
   simulatorTipBody:
     'Aktifkan Kamera di menu Simulator (Kamera Depan) sebelum mengirim SOS agar foto uji dapat diambil.',

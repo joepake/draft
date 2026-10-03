@@ -385,6 +385,7 @@ export default {
     location: 'Standort',
     notifications: 'Mitteilungen',
     camera: 'Kamera',
+    microphone: 'Mikrofon',
     backgroundAppRefresh: 'Hintergrundaktualisierung',
     overlay: 'Über anderen Apps anzeigen',
     batteryOptimization: 'Akku ohne Einschränkung',

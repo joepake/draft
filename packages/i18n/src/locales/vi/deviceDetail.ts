@@ -103,7 +103,7 @@ export const deviceDetail = {
   waitingForChild: 'Đang chờ trẻ phản hồi',
   needsAttention: 'Cần chú ý',
   noAlertsYet: 'Chưa có cảnh báo',
-  sosAllClear: 'Không có cảnh báo SOS',
+  sosAllClear: 'Đã phản hồi hết',
   roadmap: 'Sắp ra mắt',
   includedWithPremium: 'Có trong gói Premium',
   featureIncludedInPremium: '{{actionTitle}} có trong gói Premium.',

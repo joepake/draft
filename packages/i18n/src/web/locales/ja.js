@@ -383,6 +383,7 @@ export default {
     location: '位置情報',
     notifications: '通知',
     camera: 'カメラ',
+    microphone: 'マイク',
     backgroundAppRefresh: 'Appのバックグラウンド更新',
     overlay: '他のアプリの上に表示',
     batteryOptimization: 'バッテリー無制限',

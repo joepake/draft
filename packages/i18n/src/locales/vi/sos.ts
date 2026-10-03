@@ -10,6 +10,11 @@ export const sos = {
   photoTapHint: 'Chạm để xem ảnh đầy đủ',
   photoLoadFailed: 'Không tải được ảnh. Vui lòng kiểm tra kết nối mạng rồi thử lại.',
   noPhoto: 'Cảnh báo này không kèm ảnh.',
+  audioLabel: 'Đoạn ghi âm',
+  audioPlayAccessibility: 'Phát đoạn ghi âm SOS',
+  audioStopAccessibility: 'Dừng phát đoạn ghi âm SOS',
+  audioLoadFailed:
+    'Không phát được đoạn ghi âm. Vui lòng kiểm tra kết nối mạng rồi thử lại.',
   acknowledgedAt: 'Đã phản hồi lúc {{time}}',
   openInMaps: 'Mở trong Bản đồ',
   acknowledgeButton: 'Đã thấy, đang xử lý',
@@ -41,6 +46,9 @@ export const sos = {
     'KidGate gửi thêm một tấm ảnh ngay sau cảnh báo, nếu camera đã sẵn sàng.',
   infoQuickSelfieDetailPhone:
     'Sau khi gửi cảnh báo, camera sẽ mở để con chụp thêm một tấm ảnh. Con có thể bỏ qua.',
+  infoSoundLabel: 'Tối đa 15 giây âm thanh',
+  infoSoundDetail:
+    'Được ghi lại ngay khi con gửi, để bố mẹ nghe được chuyện gì đang xảy ra.',
   simulatorTipTitle: 'Lưu ý khi dùng Simulator',
   simulatorTipBody:
     'Vui lòng bật Camera trong menu Simulator (Front Camera) trước khi gửi SOS để có thể chụp ảnh thử nghiệm.',

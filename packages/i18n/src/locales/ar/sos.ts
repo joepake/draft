@@ -14,6 +14,10 @@ export const sos = {
   photoTapHint: 'اضغط لعرض الصورة كاملة',
   photoLoadFailed: 'تعذر تحميل هذه الصورة. يرجى التحقق من اتصالك والمحاولة مرة أخرى.',
   noPhoto: 'لا توجد صورة مرفقة بهذا التنبيه.',
+  audioLabel: 'تسجيل صوتي',
+  audioPlayAccessibility: 'تشغيل تسجيل SOS',
+  audioStopAccessibility: 'إيقاف تشغيل تسجيل SOS',
+  audioLoadFailed: 'تعذر تشغيل هذا التسجيل. يرجى التحقق من اتصالك والمحاولة مرة أخرى.',
   acknowledgedAt: 'تم الاطلاع {{time}}',
   openInMaps: 'فتح في الخرائط',
   acknowledgeButton: 'سأتولى الأمر',
@@ -43,6 +47,8 @@ export const sos = {
   infoQuickSelfieDetail: 'تُضاف بعد إرسال التنبيه، إذا كانت الكاميرا متاحة بالفعل.',
   infoQuickSelfieDetailPhone:
     'بعد إرسال التنبيه، تُفتح الكاميرا لإضافة صورة. ويمكنك تخطي ذلك.',
+  infoSoundLabel: 'صوت لمدة تصل إلى 15 ثانية',
+  infoSoundDetail: 'يُسجَّل منذ لحظة الإرسال، ليتمكن والداك من سماع ما يحدث.',
   simulatorTipTitle: 'نصيحة للمحاكي',
   simulatorTipBody:
     'فعّل الكاميرا من قائمة المحاكي (Front Camera) قبل إرسال SOS حتى يمكن التقاط صورة تجريبية.',

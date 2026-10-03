@@ -11,6 +11,11 @@ export const sos = {
   photoLoadFailed:
     'Impossible de charger cette photo. Vérifiez votre connexion et réessayez.',
   noPhoto: 'Aucune photo jointe à cette alerte.',
+  audioLabel: 'Enregistrement audio',
+  audioPlayAccessibility: 'Écouter l’enregistrement SOS',
+  audioStopAccessibility: 'Arrêter l’écoute de l’enregistrement SOS',
+  audioLoadFailed:
+    'Impossible de lire cet enregistrement. Vérifiez votre connexion et réessayez.',
   acknowledgedAt: 'Pris en charge {{time}}',
   openInMaps: 'Ouvrir dans Plans',
   acknowledgeButton: 'Je m’en occupe',
@@ -46,6 +51,9 @@ export const sos = {
     'Ajoutée après l’envoi de l’alerte, si l’appareil photo est déjà disponible.',
   infoQuickSelfieDetailPhone:
     'Une fois l’alerte envoyée, l’appareil photo s’ouvre pour que tu puisses ajouter une photo. Tu peux passer cette étape.',
+  infoSoundLabel: 'Jusqu’à 15 secondes de son',
+  infoSoundDetail:
+    'Enregistré dès que tu l’envoies, pour que tes parents entendent ce qui se passe.',
   simulatorTipTitle: 'Astuce simulateur',
   simulatorTipBody:
     'Activez l’appareil photo dans le menu du simulateur (caméra frontale) avant d’envoyer un SOS afin de capturer une photo de test.',

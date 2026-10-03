@@ -10,6 +10,11 @@ export const sos = {
   photoTapHint: 'Tap to view the full photo',
   photoLoadFailed: 'Unable to load this photo. Check your connection and try again.',
   noPhoto: 'No photo attached to this alert.',
+  audioLabel: 'Sound recording',
+  audioPlayAccessibility: 'Play SOS recording',
+  audioStopAccessibility: 'Stop playing SOS recording',
+  audioLoadFailed:
+    'Unable to play this recording. Check your connection and try again.',
   acknowledgedAt: 'Responded {{time}}',
   openInMaps: 'Open in Maps',
   acknowledgeButton: 'I’m on it',
@@ -53,6 +58,9 @@ export const sos = {
   // The phone's: `launchCamera` opens the full-screen camera for the child.
   infoQuickSelfieDetailPhone:
     'After the alert is sent, the camera opens so you can add a photo. You can skip it.',
+  infoSoundLabel: 'Up to 15 seconds of sound',
+  infoSoundDetail:
+    'Recorded from the moment you send it, so your parent can hear what is happening.',
   simulatorTipTitle: 'Simulator tip',
   simulatorTipBody:
     'Turn on Camera in the Simulator menu (Front Camera) before sending SOS so a test photo can be captured.',

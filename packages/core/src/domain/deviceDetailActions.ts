@@ -405,6 +405,13 @@ export const PERSON_LEVEL_ACTION_IDS: ReadonlySet<string> = new Set([
   'sos-alerts',
 ]);
 
+/** One action from the full list, by the id a route param carries. */
+export function getActionById(t: TranslateFn, id: string): DeviceAction | undefined {
+  return getActionSections(t)
+    .flatMap(section => section.actions)
+    .find(action => action.id === id);
+}
+
 /** Whether this card leaves an assigned device's grid for the child's page. */
 export function isPersonLevelAction(action: Pick<DeviceAction, 'id'>): boolean {
   return PERSON_LEVEL_ACTION_IDS.has(action.id);

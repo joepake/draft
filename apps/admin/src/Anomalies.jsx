@@ -40,8 +40,10 @@ export default function Anomalies() {
   }, [load]);
 
   const reasonLabel = code => t(`anomalies.holdReason.${code}`);
+  // The tail, not the head: every phone's id starts `device_1…`, so the
+  // first eight characters named every one of them the same.
   const deviceLabel = (deviceId, platform) =>
-    `${platform ?? '?'} ${deviceId.slice(0, 8)}`;
+    `${platform ?? '?'} …${deviceId.slice(-7)}`;
 
   return (
     <div className="section">

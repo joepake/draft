@@ -141,7 +141,7 @@ export const family = {
   chipHealthWarnCount_one: '{{count}} بحاجة إلى إعداد',
 
   chipHealthInactiveCount: '{{count}} غير نشط منذ أكثر من 24 ساعة',
-  chipLocationBlocked: 'لا يوجد موقع',
+  chipLocationBlocked: 'لا يصل الموقع',
 
   chipBlockedCount: '{{count}} ضمن ساعات الحظر',
 
@@ -433,4 +433,9 @@ export const family = {
   childDetailTodayWell: 'الاستخدام اليوم',
   childDetailUnassignAction: 'إلغاء التعيين',
   childDetailLimitShared: 'الإجمالي عبر كل أجهزته',
+  searchTitle: 'بحث',
+  searchPlaceholder: 'الأطفال، الأجهزة، الميزات، الدليل…',
+  searchEmpty: 'لا يوجد ما يطابق ذلك. جرّب كلمة أخرى.',
+  searchSectionFeatures: 'الميزات',
+  searchSectionGoTo: 'انتقل إلى',
 } as const;

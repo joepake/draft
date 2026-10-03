@@ -134,7 +134,7 @@ export const family = {
   chipHealthWarnCount_one: '{{count}}台が設定必要',
 
   chipHealthInactiveCount: '{{count}}台 24時間以上反応なし',
-  chipLocationBlocked: '位置情報なし',
+  chipLocationBlocked: '位置情報が届いていません',
 
   chipBlockedCount: '{{count}}台が休止時間中',
 
@@ -408,4 +408,9 @@ export const family = {
   childDetailTodayWell: '今日の利用',
   childDetailUnassignAction: '割り当て解除',
   childDetailLimitShared: 'すべてのデバイスの合計',
+  searchTitle: '検索',
+  searchPlaceholder: 'お子さま、デバイス、機能、ガイド…',
+  searchEmpty: '一致する項目がありません。別の言葉で検索してください。',
+  searchSectionFeatures: '機能',
+  searchSectionGoTo: '移動',
 } as const;

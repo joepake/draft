@@ -394,6 +394,7 @@ export default {
     location: 'الموقع',
     notifications: 'الإشعارات',
     camera: 'الكاميرا',
+    microphone: 'الميكروفون',
     backgroundAppRefresh: 'تحديث التطبيقات في الخلفية',
     overlay: 'العرض فوق التطبيقات الأخرى',
     batteryOptimization: 'بطارية دون قيود',

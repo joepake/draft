@@ -76,5 +76,11 @@ export const permissions = {
   // `messageKeywordCorpus` refuses a UI string that reads like the phrase it
   // watches for. The keyword is right; the copy moved.
   cameraStepTurnOn: 'KidGate için Kamera erişimini etkinleştirin.',
+  allowMicrophoneTitle: 'Mikrofona izin ver',
+  microphonePermissionMessage:
+    'KidGate, bir SOS gönderdiğinizde ailenizin neler olduğunu duyabilmesi için mikrofonla 15 saniyeye kadar ses kaydeder. Başka hiçbir zaman kayıt yapmaz.',
+  microphoneTurnedOffMessage:
+    'SOS uyarılarınıza ses eklenebilmesi için lütfen Ayarlar’ı açıp Mikrofon’a izin verin.',
+  microphoneStepTurnOn: 'KidGate için Mikrofon erişimini etkinleştirin.',
   uninstallProtectionStepConfirm: 'Android’in onay ekranında Etkinleştir’i seçin.',
 } as const;

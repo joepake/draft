@@ -36,6 +36,9 @@ export const protection = {
   locationForegroundOnly:
     'Location only updates while KidGate is open on the child device.',
   cameraPermission: 'Camera permission',
+  microphonePermission: 'Microphone permission',
+  microphoneOff:
+    'The microphone has not been allowed on this device, so an SOS from it arrives without sound.',
   /*
    * A consent the child device is still waiting for, said in what it costs
    * rather than in what the switch is called.
@@ -89,4 +92,16 @@ export const protection = {
   iosUpgradeActionLabel: 'Needs iOS 16',
   appReviewRemindersNote:
     'iOS does not expose install events; review apps periodically with the child device.',
+  /*
+   * iOS granted Screen Time as `.individual` — the device owner's own consent,
+   * which the child revokes in Settings without a PIN. The only durable grant
+   * is a child Apple ID in the parent's Family Sharing group, so the steps say
+   * that and nothing about Settings panes (`@kidgate/schema/permissions`).
+   */
+  screenTimeIndividualAuthorization:
+    'Screen Time was approved with the child device’s own Apple ID, so the child can switch KidGate off in Settings without a PIN and delete the app. Only a child Apple ID in your Family Sharing group makes these controls stick.',
+  screenTimeIndividualStepChildAppleId:
+    'Sign the child device in with a child Apple ID that belongs to your Family Sharing group.',
+  screenTimeIndividualStepReapprove:
+    'Open KidGate on the child device and approve Screen Time again.',
 } as const;

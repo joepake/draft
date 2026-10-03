@@ -54,6 +54,9 @@ export const PROTECTION_ISSUE_ICON = {
   accessibility: 'userCheck',
   backgroundAppRefresh: 'refresh',
   'consent-camera': 'camera',
+  camera: 'camera',
+  // No microphone glyph; the issue is about the SOS.
+  microphone: 'siren',
   'consent-location': 'mapPin',
 };
 

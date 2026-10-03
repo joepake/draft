@@ -37,6 +37,17 @@ export interface SosAlert {
   photoUrl?: string;
   /** Firebase Storage object path — used to refresh download URL if Image fails. */
   photoPath?: string;
+  /**
+   * Sound the child's hold recorded, set once by the child after the upload —
+   * seconds after the alert, possibly after a parent acknowledged it. Absent
+   * on most alerts: no microphone grant, a phone call, or a device that does
+   * not record.
+   */
+  audioUrl?: string;
+  /** Storage path beside the selfie: `{alertId}-audio.m4a`. */
+  audioPath?: string;
+  /** What was actually recorded — "up to 15 s", never a promise of fifteen. */
+  audioDurationMs?: number;
   createdAt: string;
   acknowledgedAt?: string;
   acknowledgedByDeviceId?: string;

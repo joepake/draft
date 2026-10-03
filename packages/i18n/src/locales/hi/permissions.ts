@@ -70,5 +70,11 @@ export const permissions = {
   notificationsStepAllow: 'प्रॉम्प्ट पर अनुमति दें चुनें।',
   exactAlarmStepTurnOn: 'KidGate के लिए अलार्म और रिमाइंडर चालू करें।',
   cameraStepTurnOn: 'KidGate के लिए कैमरा चालू करें।',
+  allowMicrophoneTitle: 'माइक्रोफ़ोन की अनुमति दें',
+  microphonePermissionMessage:
+    'जब आप SOS भेजते हैं, तब KidGate माइक्रोफ़ोन से 15 सेकंड तक की आवाज़ रिकॉर्ड करता है, ताकि आपके माता-पिता सुन सकें कि क्या हो रहा है। यह किसी और समय कभी रिकॉर्ड नहीं करता।',
+  microphoneTurnedOffMessage:
+    'कृपया सेटिंग्स खोलें और माइक्रोफ़ोन की अनुमति दें ताकि आपके SOS अलर्ट में आवाज़ शामिल हो सके।',
+  microphoneStepTurnOn: 'KidGate के लिए माइक्रोफ़ोन चालू करें।',
   uninstallProtectionStepConfirm: 'Android की पुष्टि स्क्रीन पर सक्रिय करें चुनें।',
 } as const;

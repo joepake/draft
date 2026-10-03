@@ -384,6 +384,7 @@ export default {
     location: 'Localisation',
     notifications: 'Notifications',
     camera: 'Appareil photo',
+    microphone: 'Micro',
     backgroundAppRefresh: 'Actualisation en arrière-plan',
     overlay: 'Superposition aux autres apps',
     batteryOptimization: 'Batterie sans restriction',

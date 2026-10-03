@@ -38,6 +38,9 @@ export const protection = {
   locationForegroundOnly:
     'Konum yalnızca çocuğun cihazında KidGate açıkken güncellenir.',
   cameraPermission: 'Kamera izni',
+  microphonePermission: 'Mikrofon izni',
+  microphoneOff:
+    'Bu cihazda mikrofona izin verilmemiş, bu yüzden buradan gelen SOS ses kaydı olmadan geliyor.',
   cameraConsentPending:
     'Bu cihazda kameraya izin verilmemiş, bu yüzden buradan gelen SOS veya Check-In fotoğrafsız geliyor.',
   locationConsentPending:
@@ -67,4 +70,10 @@ export const protection = {
   iosUpgradeActionLabel: 'iOS 16 gerekir',
   appReviewRemindersNote:
     'iOS yükleme olaylarını paylaşmaz; uygulamaları çocuğun cihazıyla birlikte düzenli olarak gözden geçirin.',
+  screenTimeIndividualAuthorization:
+    'Ekran Süresi, çocuğun cihazındaki kendi Apple Kimliği ile onaylandı; çocuk Ayarlar’dan PIN olmadan KidGate’i kapatabilir ve uygulamayı silebilir. Bu denetimler yalnızca Aile Paylaşımı grubunuzdaki bir çocuk Apple Kimliği ile kalıcı olur.',
+  screenTimeIndividualStepChildAppleId:
+    'Çocuğun cihazına Aile Paylaşımı grubunuzdaki bir çocuk Apple Kimliği ile giriş yapın.',
+  screenTimeIndividualStepReapprove:
+    'Çocuğun cihazında KidGate’i açın ve Ekran Süresi’ni yeniden onaylayın.',
 } as const;

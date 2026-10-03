@@ -66,5 +66,11 @@ export const permissions = {
   notificationsStepAllow: '알림 창에서 허용을 선택하세요.',
   exactAlarmStepTurnOn: 'KidGate의 알람 및 리마인더를 켜세요.',
   cameraStepTurnOn: 'KidGate의 카메라를 켜세요.',
+  allowMicrophoneTitle: '마이크 허용',
+  microphonePermissionMessage:
+    'KidGate는 SOS를 보낼 때 부모님이 상황을 들을 수 있도록 마이크로 최대 15초 동안 소리를 녹음합니다. 그 외에는 절대 녹음하지 않습니다.',
+  microphoneTurnedOffMessage:
+    'SOS 알림에 소리를 포함할 수 있도록 설정에서 마이크를 허용해 주세요.',
+  microphoneStepTurnOn: 'KidGate의 마이크를 켜세요.',
   uninstallProtectionStepConfirm: 'Android 확인 화면에서 활성화를 선택하세요.',
 } as const;

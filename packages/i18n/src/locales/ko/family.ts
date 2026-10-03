@@ -131,7 +131,7 @@ export const family = {
   chipHealthWarnCount_one: '{{count}}개 설정 필요',
 
   chipHealthInactiveCount: '{{count}}대 24시간 넘게 무응답',
-  chipLocationBlocked: '위치 없음',
+  chipLocationBlocked: '위치 수신 안 됨',
 
   chipBlockedCount: '{{count}}개 차단됨',
 
@@ -397,4 +397,9 @@ export const family = {
   childDetailTodayWell: '오늘 사용',
   childDetailUnassignAction: '할당 해제',
   childDetailLimitShared: '모든 기기 합산',
+  searchTitle: '검색',
+  searchPlaceholder: '아이, 기기, 기능, 가이드…',
+  searchEmpty: '일치하는 항목이 없습니다. 다른 단어로 검색해 보세요.',
+  searchSectionFeatures: '기능',
+  searchSectionGoTo: '바로 가기',
 } as const;

@@ -383,6 +383,7 @@ export default {
     location: 'Konum',
     notifications: 'Bildirimler',
     camera: 'Kamera',
+    microphone: 'Mikrofon',
     backgroundAppRefresh: 'Arka Planda Yenileme',
     overlay: 'Diğer uygulamaların üzerinde göster',
     batteryOptimization: 'Sınırsız pil',

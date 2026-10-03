@@ -83,6 +83,11 @@ function mapSosAlert(doc: DocSnapshot): SosAlert {
     ...(location ? { location } : {}),
     ...(text(data.photoUrl) ? { photoUrl: text(data.photoUrl) } : {}),
     ...(text(data.photoPath) ? { photoPath: text(data.photoPath) } : {}),
+    ...(text(data.audioUrl) ? { audioUrl: text(data.audioUrl) } : {}),
+    ...(text(data.audioPath) ? { audioPath: text(data.audioPath) } : {}),
+    ...(typeof data.audioDurationMs === 'number' && data.audioDurationMs > 0
+      ? { audioDurationMs: data.audioDurationMs }
+      : {}),
     ...(timestampToIso(data.acknowledgedAt)
       ? { acknowledgedAt: timestampToIso(data.acknowledgedAt) }
       : {}),
@@ -170,6 +175,19 @@ export function createSosAlertRepository(deps: SosAlertRepositoryDeps) {
       await db.updateDoc(`${sosAlertsCollection(userId)}/${alertId}`, {
         photoUrl,
         photoPath,
+      });
+    },
+
+    /** Set once, after the recording and its upload — the rule refuses a second. */
+    async attachAudio(
+      userId: string,
+      alertId: string,
+      clip: { audioUrl: string; audioPath: string; audioDurationMs?: number },
+    ): Promise<void> {
+      await db.updateDoc(`${sosAlertsCollection(userId)}/${alertId}`, {
+        audioUrl: clip.audioUrl,
+        audioPath: clip.audioPath,
+        ...(clip.audioDurationMs ? { audioDurationMs: clip.audioDurationMs } : {}),
       });
     },
 

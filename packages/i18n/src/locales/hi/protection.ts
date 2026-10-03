@@ -37,6 +37,9 @@ export const protection = {
   locationForegroundOnly:
     'स्थान केवल तभी अपडेट होता है जब बच्चे के डिवाइस पर KidGate खुला हो।',
   cameraPermission: 'कैमरा अनुमति',
+  microphonePermission: 'माइक्रोफ़ोन अनुमति',
+  microphoneOff:
+    'इस डिवाइस पर माइक्रोफ़ोन की अनुमति नहीं है, इसलिए यहाँ से भेजा गया SOS बिना आवाज़ के आता है।',
   cameraConsentPending:
     'इस डिवाइस पर कैमरे की अनुमति नहीं है, इसलिए यहाँ से भेजा गया SOS या चेक-इन बिना फ़ोटो के आता है।',
   locationConsentPending:
@@ -67,4 +70,10 @@ export const protection = {
   iosUpgradeActionLabel: 'iOS 16 चाहिए',
   appReviewRemindersNote:
     'iOS इंस्टॉल इवेंट नहीं दिखाता; समय-समय पर बच्चे के डिवाइस के साथ ऐप्स की समीक्षा करें।',
+  screenTimeIndividualAuthorization:
+    'स्क्रीन टाइम बच्चे के डिवाइस की अपनी Apple ID से स्वीकृत हुआ है, इसलिए बच्चा सेटिंग्स में बिना PIN के KidGate बंद कर सकता है और ऐप हटा सकता है। केवल आपके Family Sharing समूह की चाइल्ड Apple ID ही इन नियंत्रणों को बनाए रखती है।',
+  screenTimeIndividualStepChildAppleId:
+    'बच्चे के डिवाइस में अपने Family Sharing समूह की चाइल्ड Apple ID से साइन इन करें।',
+  screenTimeIndividualStepReapprove:
+    'बच्चे के डिवाइस पर KidGate खोलें और स्क्रीन टाइम को फिर से स्वीकृत करें।',
 } as const;

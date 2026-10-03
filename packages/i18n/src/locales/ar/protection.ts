@@ -36,6 +36,9 @@ export const protection = {
   locationPermission: 'إذن الموقع',
   locationForegroundOnly: 'لا يتم تحديث الموقع إلا أثناء فتح KidGate على جهاز الطفل.',
   cameraPermission: 'إذن الكاميرا',
+  microphonePermission: 'إذن الميكروفون',
+  microphoneOff:
+    'الميكروفون غير مسموح به على هذا الجهاز، لذا يصل نداء SOS منه بدون صوت.',
   cameraConsentPending:
     'الكاميرا غير مسموح بها على هذا الجهاز، لذا يصل نداء SOS أو الاطمئنان منه بدون صورة.',
   locationConsentPending:
@@ -64,4 +67,10 @@ export const protection = {
   iosUpgradeActionLabel: 'يتطلب iOS 16',
   appReviewRemindersNote:
     'لا يوفر iOS أحداث التثبيت؛ راجع التطبيقات دوريًا مع جهاز الطفل.',
+  screenTimeIndividualAuthorization:
+    'تمت الموافقة على مدة استخدام الجهاز عبر Apple ID الخاص بجهاز الطفل نفسه، لذا يمكن للطفل إيقاف KidGate من الإعدادات دون رمز PIN وحذف التطبيق. لا يثبّت هذه الضوابط إلا Apple ID للأطفال ضمن مجموعة المشاركة العائلية لديك.',
+  screenTimeIndividualStepChildAppleId:
+    'سجّل الدخول على جهاز الطفل باستخدام Apple ID للأطفال من مجموعة المشاركة العائلية لديك.',
+  screenTimeIndividualStepReapprove:
+    'افتح KidGate على جهاز الطفل ووافق على مدة استخدام الجهاز مرة أخرى.',
 } as const;

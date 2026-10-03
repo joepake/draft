@@ -378,6 +378,7 @@ export default {
     location: '위치',
     notifications: '알림',
     camera: '카메라',
+    microphone: '마이크',
     backgroundAppRefresh: '백그라운드 앱 새로 고침',
     overlay: '다른 앱 위에 표시',
     batteryOptimization: '배터리 제한 없음',

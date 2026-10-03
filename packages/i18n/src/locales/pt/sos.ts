@@ -11,6 +11,11 @@ export const sos = {
   photoLoadFailed:
     'Não foi possível carregar esta foto. Verifique sua conexão e tente novamente.',
   noPhoto: 'Nenhuma foto anexada a este alerta.',
+  audioLabel: 'Gravação de áudio',
+  audioPlayAccessibility: 'Reproduzir a gravação do SOS',
+  audioStopAccessibility: 'Parar a reprodução da gravação do SOS',
+  audioLoadFailed:
+    'Não foi possível reproduzir esta gravação. Verifique sua conexão e tente novamente.',
   acknowledgedAt: 'Confirmado {{time}}',
   openInMaps: 'Abrir no Mapas',
   acknowledgeButton: 'Deixa comigo',
@@ -46,6 +51,9 @@ export const sos = {
     'Adicionada depois que o alerta é enviado, se a câmera já estiver disponível.',
   infoQuickSelfieDetailPhone:
     'Depois que o alerta é enviado, a câmera abre para você adicionar uma foto. Você pode pular essa etapa.',
+  infoSoundLabel: 'Até 15 segundos de som',
+  infoSoundDetail:
+    'Gravado a partir do momento em que você envia, para que seus pais possam ouvir o que está acontecendo.',
   simulatorTipTitle: 'Dica do simulador',
   simulatorTipBody:
     'Ative a Câmera no menu do Simulador (Câmera frontal) antes de enviar o SOS para que uma foto de teste possa ser capturada.',

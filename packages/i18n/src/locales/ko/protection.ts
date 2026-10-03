@@ -35,6 +35,9 @@ export const protection = {
   locationForegroundOnly:
     '자녀 기기에서 KidGate가 열려 있을 때만 위치가 업데이트됩니다.',
   cameraPermission: '카메라 권한',
+  microphonePermission: '마이크 권한',
+  microphoneOff:
+    '이 기기에서 마이크가 허용되지 않아, 여기서 보낸 SOS는 소리 없이 도착합니다.',
   cameraConsentPending:
     '이 기기에서 카메라가 허용되지 않아, 여기서 보낸 SOS나 체크인은 사진 없이 도착합니다.',
   locationConsentPending:
@@ -63,4 +66,10 @@ export const protection = {
   iosUpgradeActionLabel: 'iOS 16 필요',
   appReviewRemindersNote:
     'iOS는 설치 이벤트를 제공하지 않으므로 자녀 기기에서 주기적으로 앱을 확인해 주세요.',
+  screenTimeIndividualAuthorization:
+    '스크린 타임이 자녀 기기 자체의 Apple ID로 승인되었습니다. 자녀는 설정에서 PIN 없이 KidGate를 끄고 앱을 삭제할 수 있습니다. 가족 공유 그룹에 속한 어린이 Apple ID만 이 제어를 유지합니다.',
+  screenTimeIndividualStepChildAppleId:
+    '가족 공유 그룹에 속한 어린이 Apple ID로 자녀 기기에 로그인하세요.',
+  screenTimeIndividualStepReapprove:
+    '자녀 기기에서 KidGate를 열고 스크린 타임을 다시 승인하세요.',
 } as const;

@@ -197,8 +197,9 @@ function foregroundOnlyLocationIssue(isAndroid: boolean): ProtectionIssueKeys {
  * protection on while it is not granted. Pinned to the summary below by
  * `protectionStatus.test.ts`, so a row added to one and not the other fails.
  *
- * `camera` is absent on purpose: a refused camera costs the photo on an SOS and
- * nothing else, and the checklist never reads it.
+ * `camera` and `microphone` are absent on purpose: a refused one costs the
+ * photo or the sound on an SOS and nothing else, so the summary lists it as
+ * `'info'` and never turns amber over it.
  */
 export const SUMMARY_WARNED_PERMISSIONS: {
   readonly android: readonly ProtectionPermissionKey[];
@@ -287,6 +288,31 @@ export function getProtectionSummaryKeys(
       });
     }
 
+    /*
+     * Approved, but with the device owner's own consent (`.individual`): the
+     * child turns KidGate off in Settings › Screen Time without a PIN and
+     * deletes the app. iOS reports it as approved exactly like the Family
+     * Sharing grant that cannot be lifted, so the child app records which it
+     * got (`@kidgate/schema/permissions`). A warning, not info: every rule on
+     * this phone holds only until the child finds the switch. Absent is an
+     * older child app, and says nothing — not the same as `child`.
+     */
+    if (
+      !isAndroid &&
+      protection.screenTime === 'approved' &&
+      protection.screenTimeAuthorization === 'individual'
+    ) {
+      issues.push({
+        key: 'screen-time-individual',
+        labelKey: 'protection.screenTimePermission',
+        detailKey: 'protection.screenTimeIndividualAuthorization',
+        hintKeys: [
+          'protection.screenTimeIndividualStepChildAppleId',
+          'protection.screenTimeIndividualStepReapprove',
+        ],
+      });
+    }
+
     const location =
       protection.location === 'foregroundOnly'
         ? foregroundOnlyLocationIssue(isAndroid)
@@ -309,6 +335,46 @@ export function getProtectionSummaryKeys(
         ...notifications,
         hintKeys: ['permissions.notificationsOpenSettings'],
       });
+    }
+
+    /*
+     * The two grants that cost part of an SOS and nothing else: the photo (a
+     * check-in's too) and the sound. `'info'`, like a desktop's camera
+     * consent: the alert still sends with its place, no rule stops biting, so
+     * the badge is not spent on them. Absent says nothing — a television has
+     * no camera, an older app or a build with no recorder no microphone. The
+     * hints are the child wizard's own Settings path for each step.
+     */
+    for (const extra of [
+      {
+        key: 'camera',
+        status: protection.camera,
+        labelKey: 'protection.cameraPermission',
+        detailKey: 'protection.cameraConsentPending',
+        stepKey: 'permissions.cameraStepTurnOn',
+      },
+      {
+        key: 'microphone',
+        status: protection.microphone,
+        labelKey: 'protection.microphonePermission',
+        detailKey: 'protection.microphoneOff',
+        stepKey: 'permissions.microphoneStepTurnOn',
+      },
+    ]) {
+      if (
+        extra.status &&
+        extra.status !== 'authorized' &&
+        extra.status !== 'unavailable' &&
+        extra.status !== 'unknown'
+      ) {
+        issues.push({
+          key: extra.key,
+          labelKey: extra.labelKey,
+          detailKey: extra.detailKey,
+          hintKeys: ['permissions.backgroundRefreshStepOpen', extra.stepKey],
+          severity: 'info',
+        });
+      }
     }
 
     if (isAndroid) {
