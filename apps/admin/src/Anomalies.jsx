@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { fetchAnomalies, placeHold, releaseHold } from './api.js';
+import { fetchAnomalies, openSupportTicket, placeHold, releaseHold } from './api.js';
 import { useT } from './i18n.js';
 
 /**
@@ -21,6 +21,11 @@ import { useT } from './i18n.js';
  * Hold and release are forms rather than buttons that fire: the family sees a
  * hold, so it takes a reason code the parent reads, an optional note, and the
  * audit reason the server refuses to act without.
+ *
+ * **Help flags come first and are not abuse or a bug** — a family that looks
+ * stuck (`help: true` in the scan). They are answered with a ticket to the
+ * owner, never a hold: one row per family, one form, and the owner's app
+ * language beside it because the operator writes in it.
  */
 
 /** Which group a flag belongs to; an unknown kind is ours to look at. */
@@ -47,13 +52,18 @@ function deviceLabel(deviceId, platform) {
  * abuse group, with the family when the key names one.
  */
 function groupScan(scan) {
-  const groups = { abuse: [], cost: [], ours: [], info: [] };
+  const groups = { abuse: [], cost: [], ours: [], info: [], help: [] };
   for (const counter of scan.rateLimits) {
     if (counter.limited) groups.abuse.push({ counter, uid: counter.uid });
   }
   for (const row of scan.rows) {
+    // Help flags are one row per family — one ticket answers all of them.
+    const help = row.flags.filter(flag => flag.help);
+    if (help.length > 0) {
+      groups.help.push({ uid: row.uid, ownerLanguage: row.ownerLanguage, flags: help });
+    }
     for (const flag of row.flags) {
-      if (flag.kind === 'rate-limited') continue;
+      if (flag.kind === 'rate-limited' || flag.help) continue;
       groups[CATEGORY_OF[flag.kind] ?? 'ours'].push({ flag, uid: row.uid });
     }
   }
@@ -66,6 +76,7 @@ export default function Anomalies() {
   const [error, setError] = useState(null);
   const [busy, setBusy] = useState(false);
   const [action, setAction] = useState(null);
+  const [ticket, setTicket] = useState(null);
   const [notice, setNotice] = useState(null);
   const [rawOpen, setRawOpen] = useState(false);
 
@@ -117,7 +128,7 @@ export default function Anomalies() {
                 : t('anomalies.verdictClean')}
             </span>
             <span className="status-detail">
-              {CATEGORIES.slice(1)
+              {['help', ...CATEGORIES.slice(1)]
                 .map(key =>
                   t('anomalies.summaryPart', {
                     label: t(`anomalies.cat.${key}`),
@@ -150,6 +161,57 @@ export default function Anomalies() {
             load();
           }}
         />
+      ) : null}
+
+      {ticket ? (
+        <TicketForm
+          target={ticket}
+          max={scan?.ticketMax ?? 2000}
+          onCancel={() => setTicket(null)}
+          onDone={result => {
+            setTicket(null);
+            setNotice(
+              t(
+                result.emailed
+                  ? 'anomalies.ticketSentEmail'
+                  : 'anomalies.ticketSentNoEmail',
+                {
+                  pushed: formatNumber(result.pushed),
+                },
+              ),
+            );
+          }}
+        />
+      ) : null}
+
+      {groups && groups.help.length > 0 ? (
+        <div style={{ marginTop: 24 }}>
+          <h3 className="section-title">
+            {t('anomalies.cat.help')} ({formatNumber(groups.help.length)})
+          </h3>
+          <p className="muted">{t('anomalies.cat.helpHint')}</p>
+          <div className="table-scroll">
+            <table className="table">
+              <thead>
+                <tr>
+                  <th>{t('anomalies.colWhere')}</th>
+                  <th>{t('anomalies.colWhat')}</th>
+                  <th />
+                </tr>
+              </thead>
+              <tbody>
+                {groups.help.map(item => (
+                  <HelpRow
+                    key={item.uid}
+                    item={item}
+                    rules={scan.rules}
+                    onWrite={setTicket}
+                  />
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
       ) : null}
 
       {groups
@@ -294,6 +356,127 @@ function FlagRow({ category, item, onHold }) {
         </td>
       ) : null}
     </tr>
+  );
+}
+
+/** A family that may be stuck: every reason, the owner's language, one ticket. */
+function HelpRow({ item, rules, onWrite }) {
+  const { t } = useT();
+  const params = { noChild: rules.noChildDeviceDays, away: rules.ownerAwayDays };
+  return (
+    <tr>
+      <td>
+        <code>{item.uid}</code>
+        <div className="muted">
+          {item.ownerLanguage
+            ? t('anomalies.ownerLanguage', { language: item.ownerLanguage })
+            : t('anomalies.ownerLanguageUnknown')}
+        </div>
+      </td>
+      <td>
+        {item.flags.map((flag, index) => (
+          <div
+            key={`${flag.kind}-${flag.deviceId ?? ''}`}
+            style={index > 0 ? { marginTop: 8 } : null}
+          >
+            <strong>{t(`anomalies.flag.${flag.kind}`)}</strong>
+            <div>{t(`anomalies.why.${flag.kind}`, params)}</div>
+            <div className="muted">
+              {flag.deviceId ? `${deviceLabel(flag.deviceId, flag.platform)} · ` : ''}
+              {flag.detail}
+            </div>
+          </div>
+        ))}
+      </td>
+      <td>
+        <button className="btn" onClick={() => onWrite(item)}>
+          {t('anomalies.sendTicket')}
+        </button>
+      </td>
+    </tr>
+  );
+}
+
+/**
+ * Write to the owner. A form, like a hold: the family reads these words under
+ * the product's name, so it takes the message and the audit reason the server
+ * refuses to act without.
+ */
+function TicketForm({ target, max, onCancel, onDone }) {
+  const { t } = useT();
+  const [message, setMessage] = useState('');
+  const [reason, setReason] = useState('');
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState(null);
+  const canSubmit = message.trim().length > 0 && reason.trim().length >= 12 && !busy;
+
+  const submit = async () => {
+    setBusy(true);
+    setError(null);
+    try {
+      onDone(
+        await openSupportTicket({
+          uid: target.uid,
+          message: message.trim(),
+          reason: reason.trim(),
+        }),
+      );
+    } catch (caught) {
+      setError(caught.message);
+      setBusy(false);
+    }
+  };
+
+  return (
+    <div className="card" style={{ marginBottom: 18 }}>
+      <h3 className="section-title">
+        {t('anomalies.formTicket', { uid: target.uid })}
+      </h3>
+      <p className="muted">{t('anomalies.ticketEffect')}</p>
+      <p className="muted">
+        {target.ownerLanguage
+          ? t('anomalies.ownerLanguage', { language: target.ownerLanguage })
+          : t('anomalies.ownerLanguageUnknown')}
+      </p>
+
+      <div className="field-group">
+        <label className="field-label" htmlFor="ticket-message">
+          {t('anomalies.ticketMessage', { max })}
+        </label>
+        <textarea
+          className="field"
+          id="ticket-message"
+          rows={6}
+          maxLength={max}
+          value={message}
+          onChange={event => setMessage(event.target.value)}
+          style={{ fontFamily: 'inherit', resize: 'vertical' }}
+        />
+      </div>
+
+      <div className="field-group" style={{ marginTop: 12 }}>
+        <label className="field-label" htmlFor="ticket-audit">
+          {t('anomalies.auditReason')}
+        </label>
+        <input
+          className="field"
+          id="ticket-audit"
+          value={reason}
+          onChange={event => setReason(event.target.value)}
+        />
+      </div>
+
+      {error ? <div className="error-banner">{error}</div> : null}
+
+      <div style={{ display: 'flex', gap: 10, marginTop: 12 }}>
+        <button className="btn" disabled={!canSubmit} onClick={submit}>
+          {t('anomalies.confirmTicket')}
+        </button>
+        <button className="btn btn-ghost" disabled={busy} onClick={onCancel}>
+          {t('anomalies.cancel')}
+        </button>
+      </div>
+    </div>
   );
 }
 

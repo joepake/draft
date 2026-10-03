@@ -154,6 +154,19 @@ export interface SupportReport {
    * edit what the operator said to them.
    */
   messages?: SupportMessage[];
+  /**
+   * Who started the conversation. Absent on every report a parent filed —
+   * every report before 2026-10-04 — and `'operator'` on a ticket the
+   * operator opened from the help list (`functions/admin/support.js`,
+   * `postSupportOpen`).
+   *
+   * Such a ticket stores an empty `message`, so `foldSupportThread` starts at
+   * the operator's first line, and no `platform`, `appVersion` or
+   * `deviceName`: nothing was filed from a device. The decoded `platform`
+   * still reads `'ios'` there (`mapSupportReport`'s fallback) — read this
+   * field, never `platform`, to tell the two apart.
+   */
+  openedBy?: SupportMessageAuthor;
 }
 
 /** Who wrote a line in a support thread. */

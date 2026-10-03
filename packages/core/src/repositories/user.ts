@@ -107,6 +107,7 @@ function mapSupportReport(doc: DocSnapshot): SupportReport {
     ...(language ? { language } : {}),
     ...(attachments ? { attachments } : {}),
     ...(messages ? { messages } : {}),
+    ...(data.openedBy === 'operator' ? { openedBy: 'operator' as const } : {}),
     ...(response ? { response } : {}),
     ...(respondedAt ? { respondedAt } : {}),
   };

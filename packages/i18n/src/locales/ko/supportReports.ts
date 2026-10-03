@@ -7,6 +7,7 @@ export const supportReports = {
   newReportButton: '새 신고',
   attachmentCount: '스크린샷 {{count}}장 첨부됨',
   responseLabel: 'KidGate의 답변',
+  fromKidGate: 'KidGate의 메시지',
   replyLabel: '답장',
   replySend: '보내기',
   replyClosed: '이 신고는 종료되었습니다.',

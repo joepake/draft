@@ -24,6 +24,16 @@ export const location = {
     '{{deviceName}}에 최신 위치를 보내도록 요청했습니다.',
   toastRefreshSent: '{{deviceName}}에서 요청을 받는 즉시 위치가 업데이트됩니다.',
   toastRefreshFailed: '위치 새로고침을 요청할 수 없습니다. 다시 시도해 주세요.',
+  ringButton: '사운드 재생',
+  toastRingSentAndroid: '{{deviceName}}에서 요청을 받는 즉시 소리가 울립니다.',
+  toastRingSentIos:
+    '{{deviceName}}에서 요청을 받는 즉시 사운드가 재생됩니다. 무음 모드이거나 집중 모드가 켜져 있으면 울리지 않습니다.',
+  toastRingFailed: '기기에서 사운드를 재생할 수 없습니다. 다시 시도해 주세요.',
+  ringNotificationsOff:
+    '{{deviceName}}의 알림이 꺼져 있어 사운드를 재생할 수 없습니다. 해당 기기의 설정에서 알림을 켜 주세요.',
+  activityTitleRingRequested: '사운드 재생 요청됨',
+  activityDescriptionRingRequested:
+    '{{deviceName}}에 기기를 찾기 위한 사운드 재생을 요청했습니다.',
   toastChildNeedsNotifications:
     '위치 새로고침 요청을 받을 수 있도록 자녀 기기에서 KidGate를 열고 알림을 허용해 주세요.',
   checkInBadge: '체크인',

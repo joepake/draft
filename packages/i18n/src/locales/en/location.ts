@@ -24,6 +24,16 @@ export const location = {
   toastRefreshSent:
     '{{deviceName}} will update its location as soon as it receives the request.',
   toastRefreshFailed: 'Unable to request a location refresh. Try again.',
+  ringButton: 'Play sound',
+  toastRingSentAndroid: '{{deviceName}} will ring as soon as it receives the request.',
+  toastRingSentIos:
+    '{{deviceName}} will play a sound as soon as it receives the request, unless it’s on silent or in a Focus.',
+  toastRingFailed: 'Unable to play a sound on the device. Try again.',
+  ringNotificationsOff:
+    'Notifications are off on {{deviceName}}, so it can’t play a sound. Turn them on in that device’s settings.',
+  activityTitleRingRequested: 'Sound requested',
+  activityDescriptionRingRequested:
+    'Asked {{deviceName}} to play a sound so it can be found.',
   toastChildNeedsNotifications:
     'Open KidGate on the child device and allow Notifications so location refresh requests can reach it.',
   checkInBadge: 'Check-In',

@@ -147,6 +147,7 @@
     "./domain/sosAlertCopy": "./src/domain/sosAlertCopy.ts",
     "./domain/reinstallActivity": "./src/domain/reinstallActivity.ts",
     "./domain/sosEscapeActivity": "./src/domain/sosEscapeActivity.ts",
+    "./domain/ringSupport": "./src/domain/ringSupport.ts",
     "./domain/sosSupport": "./src/domain/sosSupport.ts",
     "./domain/subscription": "./src/domain/subscription.ts",
     "./domain/supportAttachments": "./src/domain/supportAttachments.ts",

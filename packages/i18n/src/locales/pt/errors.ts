@@ -65,7 +65,7 @@ export const errors = {
     'Este dispositivo precisa ser reconectado. Feche e abra o KidGate novamente e tente outra vez.',
   deviceNotFound: 'Este dispositivo não faz mais parte da sua família.',
   registerParentDeviceFirst:
-    'Este telefone ainda não está configurado como dispositivo dos pais. Abra o KidGate aqui, escolha a função de responsável na tela inicial e tente parear novamente.',
+    'Não foi possível configurar este telefone como dispositivo dos pais. Verifique sua conexão e tente novamente. Se o problema continuar, saia da conta e entre novamente.',
   pairingCodeFormat: 'Digite o código de 6 caracteres.',
   pairingCodeUsed: 'Este código já foi usado. Solicite um novo código.',
   pairingCodeExpiredChild:

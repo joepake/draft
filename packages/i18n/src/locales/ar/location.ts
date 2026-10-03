@@ -22,6 +22,15 @@ export const location = {
   activityDescriptionRefreshRequested: 'تم طلب إرسال الموقع الحالي من {{deviceName}}.',
   toastRefreshSent: 'سيقوم {{deviceName}} بتحديث موقعه بمجرد استلام الطلب.',
   toastRefreshFailed: 'تعذر طلب تحديث الموقع. يُرجى المحاولة مرة أخرى.',
+  ringButton: 'تشغيل صوت',
+  toastRingSentAndroid: 'سيصدر {{deviceName}} رنينًا بمجرد استلام الطلب.',
+  toastRingSentIos:
+    'سيشغّل {{deviceName}} صوتًا بمجرد استلام الطلب، ما لم يكن في الوضع الصامت أو كان وضع التركيز مفعّلًا.',
+  toastRingFailed: 'تعذر تشغيل صوت على الجهاز. يُرجى المحاولة مرة أخرى.',
+  ringNotificationsOff:
+    'الإشعارات متوقفة على {{deviceName}}، لذا لا يمكنه تشغيل صوت. فعّلها من إعدادات ذلك الجهاز.',
+  activityTitleRingRequested: 'تم طلب تشغيل صوت',
+  activityDescriptionRingRequested: 'تم طلب تشغيل صوت على {{deviceName}} للعثور عليه.',
   toastChildNeedsNotifications:
     'يرجى فتح KidGate على جهاز الطفل والسماح بالإشعارات حتى يتمكن الجهاز من استلام طلبات تحديث الموقع.',
   checkInBadge: 'الاطمئنان',

@@ -56,7 +56,7 @@ export const errors = {
     'Thiết bị này cần kết nối lại. Vui lòng đóng và mở lại KidGate, sau đó thử lại.',
   deviceNotFound: 'Thiết bị này không còn trong gia đình của bạn.',
   registerParentDeviceFirst:
-    'Điện thoại này chưa được thiết lập làm thiết bị phụ huynh. Hãy mở KidGate tại đây, chọn Đây là thiết bị của phụ huynh ở màn hình bắt đầu, sau đó thử ghép nối lại.',
+    'Không thể thiết lập điện thoại này làm thiết bị phụ huynh. Vui lòng kiểm tra kết nối mạng rồi thử lại. Nếu vẫn không được, hãy đăng xuất và đăng nhập lại.',
   pairingCodeFormat: 'Vui lòng nhập mã gồm 6 ký tự.',
   pairingCodeUsed: 'Mã này đã được sử dụng. Vui lòng lấy mã mới.',
   pairingCodeExpiredChild:

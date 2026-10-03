@@ -7,6 +7,7 @@ export const supportReports = {
   newReportButton: '新しい報告',
   attachmentCount: 'スクリーンショット{{count}}枚を添付',
   responseLabel: 'KidGateからの返信',
+  fromKidGate: 'KidGateからのメッセージ',
   replyLabel: '返信',
   replySend: '送信',
   replyClosed: 'この報告は完了しています。',

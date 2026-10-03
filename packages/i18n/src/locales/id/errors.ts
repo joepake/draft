@@ -65,7 +65,7 @@ export const errors = {
     'Perangkat ini perlu dihubungkan kembali. Tutup lalu buka kembali KidGate, kemudian coba lagi.',
   deviceNotFound: 'Perangkat tersebut sudah tidak ada di keluarga Anda.',
   registerParentDeviceFirst:
-    'Ponsel ini belum disiapkan sebagai perangkat orang tua. Buka KidGate di sini, pilih peran orang tua di layar awal, lalu coba pasangkan lagi.',
+    'Ponsel ini tidak dapat disiapkan sebagai perangkat orang tua. Periksa koneksi Anda dan coba lagi. Jika masih gagal, silakan keluar lalu masuk kembali.',
   pairingCodeFormat: 'Masukkan kode yang terdiri dari 6 karakter.',
   pairingCodeUsed: 'Kode tersebut sudah digunakan. Silakan minta kode baru.',
   pairingCodeExpiredChild:

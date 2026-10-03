@@ -8,6 +8,7 @@ export const supportReports = {
   newReportButton: 'Nuevo informe',
   attachmentCount: '{{count}} capturas adjuntas',
   responseLabel: 'Respuesta de KidGate',
+  fromKidGate: 'Mensaje de KidGate',
   replyLabel: 'Responder',
   replySend: 'Enviar',
   replyClosed: 'Este informe está cerrado.',

@@ -12,6 +12,7 @@ export const supportReports = {
   attachmentCount_many: 'تم إرفاق {{count}} لقطة شاشة',
   attachmentCount_other: 'تم إرفاق {{count}} لقطة شاشة',
   responseLabel: 'رد من KidGate',
+  fromKidGate: 'رسالة من KidGate',
   replyLabel: 'رد',
   replySend: 'إرسال',
   replyClosed: 'تم إغلاق هذا التقرير.',

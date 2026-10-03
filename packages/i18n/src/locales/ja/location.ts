@@ -26,6 +26,16 @@ export const location = {
   toastRefreshSent: '{{deviceName}} はリクエストを受信すると位置情報を更新します。',
   toastRefreshFailed:
     '位置情報の更新をリクエストできませんでした。もう一度お試しください。',
+  ringButton: 'サウンド再生',
+  toastRingSentAndroid: '{{deviceName}} はリクエストを受信すると音が鳴ります。',
+  toastRingSentIos:
+    '{{deviceName}} はリクエストを受信するとサウンドを再生します。消音モードや集中モードがオンの場合は鳴りません。',
+  toastRingFailed: 'デバイスでサウンドを再生できませんでした。もう一度お試しください。',
+  ringNotificationsOff:
+    '{{deviceName}} の通知がオフのため、サウンドを再生できません。そのデバイスの設定で通知をオンにしてください。',
+  activityTitleRingRequested: 'サウンド再生をリクエストしました',
+  activityDescriptionRingRequested:
+    '{{deviceName}} を見つけるため、サウンドの再生をリクエストしました。',
   toastChildNeedsNotifications:
     '位置情報の更新リクエストを受信できるよう、お子さまのデバイスで KidGate を開き、通知を許可してください。',
   checkInBadge: 'チェックイン',

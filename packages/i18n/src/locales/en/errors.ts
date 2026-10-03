@@ -59,7 +59,7 @@ export const errors = {
     'This device needs to reconnect. Close and reopen KidGate, then try again.',
   deviceNotFound: 'That device is no longer in your family.',
   registerParentDeviceFirst:
-    'This phone isn’t set up as a parent device yet. Open KidGate here, choose the parent role on the start screen, then try pairing again.',
+    'Unable to set this phone up as a parent device. Check your connection and try again. If it keeps happening, sign out and sign in again.',
   pairingCodeFormat: 'Enter the 6-character code.',
   pairingCodeUsed: 'That code has already been used. Ask for a new one.',
   pairingCodeExpiredChild:

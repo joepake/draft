@@ -58,7 +58,7 @@ export const errors = {
     '이 기기를 다시 연결해야 합니다. KidGate를 종료한 후 다시 열고 시도해 주세요.',
   deviceNotFound: '이 기기는 더 이상 가족에 속해 있지 않습니다.',
   registerParentDeviceFirst:
-    '이 휴대폰은 아직 부모 기기로 설정되지 않았습니다. 여기에서 KidGate를 열고 시작 화면에서 부모 역할을 선택한 뒤 다시 페어링해 보세요.',
+    '이 휴대폰을 부모 기기로 설정할 수 없습니다. 연결 상태를 확인한 후 다시 시도해 주세요. 문제가 계속되면 로그아웃한 후 다시 로그인해 주세요.',
   pairingCodeFormat: '6자리 코드를 입력해 주세요.',
   pairingCodeUsed: '이미 사용된 코드입니다. 새 코드를 요청하세요.',
   pairingCodeExpiredChild:

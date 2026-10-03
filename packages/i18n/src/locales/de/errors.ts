@@ -69,7 +69,7 @@ export const errors = {
     'Dieses Gerät muss erneut verbunden werden. Bitte schließe KidGate und öffne es erneut.',
   deviceNotFound: 'Dieses Gerät gehört nicht mehr zu deiner Familie.',
   registerParentDeviceFirst:
-    'Dieses Telefon ist noch nicht als Elterngerät eingerichtet. Öffne KidGate hier, wähle auf dem Startbildschirm die Elternrolle und versuche die Kopplung dann erneut.',
+    'Dieses Telefon konnte nicht als Elterngerät eingerichtet werden. Bitte überprüfe deine Verbindung und versuche es erneut. Wenn das Problem bleibt, melde dich ab und erneut an.',
   pairingCodeFormat: 'Bitte gib den 6-stelligen Code ein.',
   pairingCodeUsed: 'Dieser Code wurde bereits verwendet. Bitte fordere einen neuen an.',
   pairingCodeExpiredChild:

@@ -28,6 +28,16 @@ export const location = {
     '{{deviceName}} aggiornerà la propria posizione non appena riceverà la richiesta.',
   toastRefreshFailed:
     'Impossibile richiedere l’aggiornamento della posizione. Riprova.',
+  ringButton: 'Riproduci suono',
+  toastRingSentAndroid: '{{deviceName}} suonerà non appena riceverà la richiesta.',
+  toastRingSentIos:
+    '{{deviceName}} riprodurrà un suono non appena riceverà la richiesta, a meno che non sia in modalità silenziosa o con una modalità Full immersion attiva.',
+  toastRingFailed: 'Impossibile riprodurre un suono sul dispositivo. Riprova.',
+  ringNotificationsOff:
+    'Le notifiche sono disattivate su {{deviceName}}, quindi non può riprodurre un suono. Attivale nelle impostazioni di quel dispositivo.',
+  activityTitleRingRequested: 'Suono richiesto',
+  activityDescriptionRingRequested:
+    'È stato richiesto a {{deviceName}} di riprodurre un suono per poterlo trovare.',
   toastChildNeedsNotifications:
     'Apri KidGate sul dispositivo del bambino e consenti le notifiche affinché le richieste di aggiornamento della posizione possano essere ricevute.',
   checkInBadge: 'Check-in',

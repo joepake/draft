@@ -8,6 +8,7 @@ export const supportReports = {
   newReportButton: 'Новое обращение',
   attachmentCount: 'Прикреплено скриншотов: {{count}}',
   responseLabel: 'Ответ от KidGate',
+  fromKidGate: 'Сообщение от KidGate',
   replyLabel: 'Ответить',
   replySend: 'Отправить',
   replyClosed: 'Это обращение закрыто.',

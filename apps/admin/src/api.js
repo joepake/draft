@@ -190,6 +190,15 @@ export function placeHold({ uid, deviceId, holdReason, note, reason }) {
   return post('adminHold', { uid, deviceId, holdReason, note, reason });
 }
 
+/**
+ * **The family sees this.** Opens a support ticket on the owner's account with
+ * our words first, and tells them by push and by email. `reason` is the
+ * audit's, at least 12 characters.
+ */
+export function openSupportTicket({ uid, message, reason }) {
+  return post('adminSupportOpen', { uid, message, reason });
+}
+
 /** Lifts a family's hold (and the device holds it placed) or one device's. */
 export function releaseHold({ uid, deviceId, reason }) {
   return post('adminReleaseHold', { uid, deviceId, reason });

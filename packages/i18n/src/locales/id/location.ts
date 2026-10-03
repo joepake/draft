@@ -25,6 +25,17 @@ export const location = {
   toastRefreshSent:
     '{{deviceName}} akan memperbarui lokasinya segera setelah menerima permintaan.',
   toastRefreshFailed: 'Tidak dapat meminta pembaruan lokasi. Silakan coba lagi.',
+  ringButton: 'Putar suara',
+  toastRingSentAndroid:
+    '{{deviceName}} akan berdering segera setelah menerima permintaan.',
+  toastRingSentIos:
+    '{{deviceName}} akan memutar suara segera setelah menerima permintaan, kecuali sedang dalam mode senyap atau mode Fokus aktif.',
+  toastRingFailed: 'Tidak dapat memutar suara di perangkat. Silakan coba lagi.',
+  ringNotificationsOff:
+    'Notifikasi nonaktif di {{deviceName}}, jadi perangkat tidak dapat memutar suara. Aktifkan notifikasi di pengaturan perangkat tersebut.',
+  activityTitleRingRequested: 'Permintaan putar suara dikirim',
+  activityDescriptionRingRequested:
+    'Meminta {{deviceName}} memutar suara agar dapat ditemukan.',
   toastChildNeedsNotifications:
     'Silakan buka KidGate di perangkat anak dan izinkan Notifikasi agar permintaan pembaruan lokasi dapat diterima.',
   checkInBadge: 'Check-In',

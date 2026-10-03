@@ -7,6 +7,7 @@ export const supportReports = {
   newReportButton: 'Báo cáo mới',
   attachmentCount: 'Đính kèm {{count}} ảnh chụp màn hình',
   responseLabel: 'Phản hồi từ KidGate',
+  fromKidGate: 'Tin nhắn từ KidGate',
   replyLabel: 'Trả lời',
   replySend: 'Gửi',
   replyClosed: 'Báo cáo này đã đóng.',

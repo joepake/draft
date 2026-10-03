@@ -269,6 +269,15 @@ export interface DeviceCapabilities {
   pendingConsents?: readonly DeviceConsent[];
   battery: boolean;
   sos: boolean;
+  /**
+   * The device answers a parent's "Play sound" (`requestChildRing`). Only a
+   * phone publishes it — from the native build that carries the ring
+   * (`KidGateRingNotifier`, `kidgate_ring.caf`), riding its protection-status
+   * write. **Absent is "cannot", never unknown**: an Android build from before
+   * the ring takes the push and stays silent, the one thing the button must not
+   * do (`@kidgate/core/domain/ringSupport`).
+   */
+  ring?: boolean;
 
   /**
    * Probe time. A capability set that predates an OS upgrade or a revoked

@@ -29,6 +29,16 @@ export const location = {
     '{{deviceName}} aktualisiert den Standort, sobald die Anfrage empfangen wurde.',
   toastRefreshFailed:
     'Die Standortaktualisierung konnte nicht angefordert werden. Bitte versuche es erneut.',
+  ringButton: 'Ton abspielen',
+  toastRingSentAndroid: '{{deviceName}} klingelt, sobald die Anfrage empfangen wurde.',
+  toastRingSentIos:
+    '{{deviceName}} spielt einen Ton ab, sobald die Anfrage empfangen wurde – außer das Gerät ist auf lautlos gestellt oder ein Fokus ist aktiv.',
+  toastRingFailed: 'Der Ton konnte nicht abgespielt werden. Bitte versuche es erneut.',
+  ringNotificationsOff:
+    'Auf {{deviceName}} sind Benachrichtigungen deaktiviert, daher kann kein Ton abgespielt werden. Aktiviere sie in den Einstellungen dieses Geräts.',
+  activityTitleRingRequested: 'Ton angefordert',
+  activityDescriptionRingRequested:
+    '{{deviceName}} wurde aufgefordert, einen Ton abzuspielen, damit es gefunden werden kann.',
   toastChildNeedsNotifications:
     'Bitte öffne KidGate auf dem Gerät des Kindes und erlaube Benachrichtigungen, damit Anfragen zur Standortaktualisierung empfangen werden können.',
   checkInBadge: 'Check-in',

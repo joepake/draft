@@ -27,6 +27,16 @@ export const location = {
   toastRefreshSent: '{{deviceName}} अनुरोध प्राप्त होते ही अपना स्थान अपडेट करेगा।',
   toastRefreshFailed:
     'स्थान रीफ़्रेश का अनुरोध भेजा नहीं जा सका। कृपया पुनः प्रयास करें।',
+  ringButton: 'ध्वनि चलाएँ',
+  toastRingSentAndroid: '{{deviceName}} अनुरोध प्राप्त होते ही बजेगा।',
+  toastRingSentIos:
+    '{{deviceName}} अनुरोध प्राप्त होते ही ध्वनि चलाएगा, जब तक कि वह साइलेंट मोड या फ़ोकस में न हो।',
+  toastRingFailed: 'डिवाइस पर ध्वनि नहीं चलाई जा सकी। कृपया पुनः प्रयास करें।',
+  ringNotificationsOff:
+    '{{deviceName}} पर सूचनाएँ बंद हैं, इसलिए ध्वनि नहीं चल सकती। उस डिवाइस की सेटिंग्स में सूचनाएँ चालू करें।',
+  activityTitleRingRequested: 'ध्वनि चलाने का अनुरोध भेजा गया',
+  activityDescriptionRingRequested:
+    '{{deviceName}} को ढूँढने के लिए उस पर ध्वनि चलाने का अनुरोध किया गया।',
   toastChildNeedsNotifications:
     'कृपया बच्चे के डिवाइस पर KidGate खोलें और सूचनाओं (Notifications) की अनुमति दें ताकि स्थान रीफ़्रेश अनुरोध प्राप्त हो सकें।',
   checkInBadge: 'चेक-इन',

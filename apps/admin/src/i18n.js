@@ -175,6 +175,32 @@ const en = {
   'anomalies.confirmHold': 'Place hold',
   'anomalies.confirmRelease': 'Release hold',
   'anomalies.cancel': 'Cancel',
+  'anomalies.cat.help': 'Families who may need help',
+  'anomalies.cat.helpHint':
+    'Not a fault in our code — a family that looks stuck. Write to the owner: it lands in their Support screen, with a push and an email.',
+  'anomalies.flag.no-child-device': 'No child device',
+  'anomalies.why.no-child-device':
+    'Created over {noChild} days ago and nothing is paired yet — setup likely stalled.',
+  'anomalies.flag.owner-away': 'Owner away',
+  'anomalies.why.owner-away':
+    'The owner has not opened the app on any phone for {away} days.',
+  'anomalies.flag.app-removed': 'Child app removed',
+  'anomalies.why.app-removed':
+    'Push to this child device is refused — the app was most likely uninstalled.',
+  'anomalies.flag.permission-denied': 'Permission denied',
+  'anomalies.why.permission-denied':
+    'A permission protection depends on is denied on this child device.',
+  'anomalies.sendTicket': 'Write to owner',
+  'anomalies.ownerLanguage': 'Owner’s app language: {language}',
+  'anomalies.ownerLanguageUnknown': 'Owner’s app language: unknown',
+  'anomalies.formTicket': 'Write to the owner of {uid}',
+  'anomalies.ticketEffect':
+    'The owner sees it under Support on their phone and the dashboard, gets a push, and an email with the text. They reply in the app. Write in their language.',
+  'anomalies.ticketMessage': 'Message ({max} characters max)',
+  'anomalies.confirmTicket': 'Send',
+  'anomalies.ticketSentEmail': 'Sent — push reached {pushed} device(s); email sent.',
+  'anomalies.ticketSentNoEmail':
+    'Sent — push reached {pushed} device(s); no email (no usable address, or email is not configured).',
   'anomalies.done': 'Done — {count} device(s).',
   'anomalies.holdReason.unusualActivity': 'Unusual activity',
   'anomalies.holdReason.outdatedApp': 'Outdated app',
@@ -773,6 +799,32 @@ const vi = {
   'anomalies.confirmHold': 'Khoá',
   'anomalies.confirmRelease': 'Mở khoá',
   'anomalies.cancel': 'Huỷ',
+  'anomalies.cat.help': 'Gia đình có thể cần hỗ trợ',
+  'anomalies.cat.helpHint':
+    'Không phải lỗi code — gia đình có vẻ đang kẹt. Nhắn cho owner: tin vào mục Hỗ trợ của họ, kèm push và email.',
+  'anomalies.flag.no-child-device': 'Chưa có máy con',
+  'anomalies.why.no-child-device':
+    'Tạo hơn {noChild} ngày mà chưa ghép máy nào — nhiều khả năng kẹt ở bước cài đặt.',
+  'anomalies.flag.owner-away': 'Owner vắng mặt',
+  'anomalies.why.owner-away':
+    'Owner không mở app trên điện thoại nào trong {away} ngày.',
+  'anomalies.flag.app-removed': 'App máy con đã bị gỡ',
+  'anomalies.why.app-removed':
+    'Push tới máy con này bị từ chối — nhiều khả năng app đã bị gỡ.',
+  'anomalies.flag.permission-denied': 'Quyền bị từ chối',
+  'anomalies.why.permission-denied':
+    'Một quyền mà bảo vệ cần đang bị từ chối trên máy con này.',
+  'anomalies.sendTicket': 'Nhắn owner',
+  'anomalies.ownerLanguage': 'Ngôn ngữ app của owner: {language}',
+  'anomalies.ownerLanguageUnknown': 'Ngôn ngữ app của owner: chưa rõ',
+  'anomalies.formTicket': 'Nhắn owner của {uid}',
+  'anomalies.ticketEffect':
+    'Owner thấy tin trong mục Hỗ trợ trên điện thoại và dashboard, nhận push và email kèm nội dung. Họ trả lời trong app. Viết bằng ngôn ngữ của họ.',
+  'anomalies.ticketMessage': 'Tin nhắn (tối đa {max} ký tự)',
+  'anomalies.confirmTicket': 'Gửi',
+  'anomalies.ticketSentEmail': 'Đã gửi — push tới {pushed} thiết bị; đã gửi email.',
+  'anomalies.ticketSentNoEmail':
+    'Đã gửi — push tới {pushed} thiết bị; không gửi email (không có địa chỉ dùng được, hoặc chưa cấu hình email).',
   'anomalies.done': 'Xong — {count} thiết bị.',
   'anomalies.holdReason.unusualActivity': 'Hoạt động bất thường',
   'anomalies.holdReason.outdatedApp': 'Ứng dụng quá cũ',

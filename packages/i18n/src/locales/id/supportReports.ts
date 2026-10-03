@@ -8,6 +8,7 @@ export const supportReports = {
   newReportButton: 'Laporan baru',
   attachmentCount: '{{count}} tangkapan layar dilampirkan',
   responseLabel: 'Balasan dari KidGate',
+  fromKidGate: 'Pesan dari KidGate',
   replyLabel: 'Balas',
   replySend: 'Kirim',
   replyClosed: 'Laporan ini sudah ditutup.',

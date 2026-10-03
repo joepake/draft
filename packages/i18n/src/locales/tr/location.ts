@@ -26,6 +26,16 @@ export const location = {
     '{{deviceName}} cihazından güncel konumunu göndermesi istendi.',
   toastRefreshSent: '{{deviceName}} isteği alır almaz konumunu güncelleyecek.',
   toastRefreshFailed: 'Konum yenileme isteği gönderilemedi. Lütfen tekrar deneyin.',
+  ringButton: 'Ses çal',
+  toastRingSentAndroid: '{{deviceName}} isteği alır almaz çalacak.',
+  toastRingSentIos:
+    '{{deviceName}} isteği alır almaz ses çalacak; sessiz moddaysa ya da bir Odak açıksa ses çıkmaz.',
+  toastRingFailed: 'Cihazda ses çalınamadı. Lütfen tekrar deneyin.',
+  ringNotificationsOff:
+    '{{deviceName}} cihazında bildirimler kapalı olduğu için ses çalınamaz. Bildirimleri o cihazın ayarlarından açın.',
+  activityTitleRingRequested: 'Ses çalma istendi',
+  activityDescriptionRingRequested:
+    'Bulunabilmesi için {{deviceName}} cihazından ses çalması istendi.',
   toastChildNeedsNotifications:
     'Konum yenileme isteklerinin ulaşabilmesi için lütfen çocuk cihazında KidGate uygulamasını açın ve Bildirimlere izin verin.',
   checkInBadge: 'Check-In',

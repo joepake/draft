@@ -194,6 +194,11 @@ export default function SupportCard({
           {reports.map(report => {
             const isOpen = expanded === report.id;
             const status = report.status ?? 'pending';
+            // The head of the thread titles the row, whoever wrote it: a
+            // ticket the operator opened stores an empty `message`, and its
+            // first line is ours (`SupportReport.openedBy`).
+            const thread = foldSupportThread(report);
+            const opening = thread[0];
             return (
               <li
                 key={report.id}
@@ -217,8 +222,14 @@ export default function SupportCard({
                     <Icon name={STATUS_ICON[status] ?? 'message'} size={15} />
                   </span>
                   <span className="support-body">
-                    <strong>{report.message}</strong>
+                    <strong>{opening?.body ?? report.message}</strong>
                     <em>
+                      {opening?.from === 'operator' && (
+                        <>
+                          {appT('supportReports.fromKidGate')}
+                          <span className="dot-sep">·</span>
+                        </>
+                      )}
                       {appT(`supportReports.status.${status}`)}
                       <span className="dot-sep">·</span>
                       {timeAgo(report.createdAt)}
@@ -256,26 +267,22 @@ export default function SupportCard({
                       no `messages`, and reading that as an empty conversation
                       would blank every answer given before 2026-09-17.
 
-                      The opening report is the head of the thread, so it is
-                      dropped here: the row's title already carries it.
+                      The head of the thread is dropped here: the row's title
+                      already carries it — the parent's report, or our first
+                      line on a ticket we opened.
                     */}
                     <ol className="support-thread">
-                      {foldSupportThread(report)
-                        .slice(1)
-                        .map(line => (
-                          <li
-                            key={line.id}
-                            className={`support-line from-${line.from}`}
-                          >
-                            <strong>
-                              {line.from === 'operator'
-                                ? appT('supportReports.responseLabel')
-                                : appT('supportReports.replyLabel')}
-                              <time>{timeAgo(line.at)}</time>
-                            </strong>
-                            <p>{line.body}</p>
-                          </li>
-                        ))}
+                      {thread.slice(1).map(line => (
+                        <li key={line.id} className={`support-line from-${line.from}`}>
+                          <strong>
+                            {line.from === 'operator'
+                              ? appT('supportReports.responseLabel')
+                              : appT('supportReports.replyLabel')}
+                            <time>{timeAgo(line.at)}</time>
+                          </strong>
+                          <p>{line.body}</p>
+                        </li>
+                      ))}
                     </ol>
 
                     {/*

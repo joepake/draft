@@ -59,7 +59,7 @@ export const errors = {
     'Bu cihazın yeniden bağlanması gerekiyor. KidGate’i kapatıp tekrar açın ve yeniden deneyin.',
   deviceNotFound: 'Bu cihaz artık ailenize ait değil.',
   registerParentDeviceFirst:
-    'Bu telefon henüz ebeveyn cihazı olarak ayarlanmamış. Burada KidGate’i açın, başlangıç ekranında ebeveyn rolünü seçin ve eşleştirmeyi tekrar deneyin.',
+    'Bu telefon ebeveyn cihazı olarak ayarlanamadı. Lütfen bağlantınızı kontrol edip tekrar deneyin. Sorun devam ederse oturumu kapatıp tekrar giriş yapın.',
   pairingCodeFormat: '6 karakterli kodu girin.',
   pairingCodeUsed: 'Bu kod zaten kullanılmış. Yeni bir kod isteyin.',
   pairingCodeExpiredChild:

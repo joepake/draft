@@ -13,6 +13,7 @@ export const supportReports = {
   attachmentCount_one: '{{count}} screenshot attached',
   attachmentCount: '{{count}} screenshots attached',
   responseLabel: 'Reply from KidGate',
+  fromKidGate: 'Message from KidGate',
   replyLabel: 'Reply',
   replySend: 'Send',
   replyClosed: 'This report is closed.',

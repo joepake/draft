@@ -23,6 +23,16 @@ export const location = {
   activityDescriptionRefreshRequested: 'Đã yêu cầu {{deviceName}} gửi vị trí mới nhất.',
   toastRefreshSent: '{{deviceName}} sẽ cập nhật vị trí ngay khi nhận được yêu cầu.',
   toastRefreshFailed: 'Không thể gửi yêu cầu làm mới vị trí. Vui lòng thử lại.',
+  ringButton: 'Phát âm thanh',
+  toastRingSentAndroid: '{{deviceName}} sẽ đổ chuông ngay khi nhận được yêu cầu.',
+  toastRingSentIos:
+    '{{deviceName}} sẽ phát âm thanh ngay khi nhận được yêu cầu, trừ khi máy đang ở chế độ im lặng hoặc bật Tập trung.',
+  toastRingFailed: 'Không thể phát âm thanh trên thiết bị. Vui lòng thử lại.',
+  ringNotificationsOff:
+    'Thông báo đang tắt trên {{deviceName}} nên thiết bị không thể phát âm thanh. Hãy bật thông báo trong cài đặt của thiết bị đó.',
+  activityTitleRingRequested: 'Đã yêu cầu phát âm thanh',
+  activityDescriptionRingRequested:
+    'Đã yêu cầu {{deviceName}} phát âm thanh để tìm thiết bị.',
   toastChildNeedsNotifications:
     'Vui lòng mở KidGate trên thiết bị của trẻ và cấp quyền Thông báo để yêu cầu làm mới vị trí có thể đến được thiết bị.',
   checkInBadge: 'Báo an toàn',
