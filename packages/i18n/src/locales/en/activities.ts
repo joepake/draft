@@ -45,11 +45,11 @@ export const activities = {
   activityTypeScreenTime: 'Screen Time',
   activityTypeCheckIn: 'Check-In',
   activityTypeLocationRequest: 'Location',
-  activityTypeTimeRequest: 'Time request',
-  activityTypeRewardTask: 'Reward task',
+  activityTypeTimeRequest: 'Time Requests',
+  activityTypeRewardTask: 'Reward tasks',
   activityTypeSearchAlert: 'Search alert',
   activityTypeWebFilter: 'Web Filter',
-  activityTypeEmergency: 'Emergency',
+  activityTypeEmergency: 'SOS',
   activityTypeUnknown: 'Activity',
   /*
    * `app_blocked`. Written by the desktop agent, which is the first platform to
@@ -116,7 +116,7 @@ export const activities = {
     'A flagged word was seen in a message your child wrote in {{appName}}.',
   messageAlertTitleSearch: 'Concerning search',
   messageAlertBodySearch: 'A flagged word was searched for on {{appName}}.',
-  activityTypeMessageAlert: 'Message alert',
+  activityTypeMessageAlert: 'Message Alerts',
   messageCheckedTitle: 'Checked, nothing concerning',
   messageCheckedBody:
     'A watched word appeared in {{appName}} and was judged harmless in context.',
@@ -169,9 +169,12 @@ export const activities = {
   tamperBackgroundRefreshTitle: 'Background App Refresh turned off',
   tamperBackgroundRefreshBody:
     'KidGate may update less often in the background until Background App Refresh is turned back on.',
-  tamperDeviceClockTitle: 'Date or time was changed',
+  // Raised by a clock moved by hand and by a time-zone change alike, so a
+  // family abroad sees it too (`detectTamper.ts`). Schedules read the
+  // server-corrected clock in the device's own time zone.
+  tamperDeviceClockTitle: 'Date, time or time zone changed',
   tamperDeviceClockBody:
-    'The clock on this device no longer matches the correct time. Screen Time and Blocked Hours still follow the correct time.',
+    'The date, time or time zone on this device changed — travelling can do this too. Screen Time and Blocked Hours ignore a changed clock and follow the device’s time zone.',
   /** @deprecated legacy description keys — kept for old activity docs */
   tamperOverlay: 'Display over other apps was turned off.',
   tamperAccessibility: 'The Accessibility service was turned off.',
@@ -192,7 +195,9 @@ export const activities = {
   openFullSosHistory: 'Open full SOS history',
   openActivityDetails: 'View details',
   unknownDevice: 'Unknown device',
-  basicActivityNote: 'Lock, unlock, and device events are recorded in Activities.',
   tamperUninstallProtectionTitle: 'Uninstall protection turned off',
   tamperUninstallProtectionBody: 'KidGate can now be removed from this phone.',
+  tamperReinstalledTitle: 'KidGate was reinstalled',
+  tamperReinstalledBody:
+    'KidGate was removed from this device and installed again. Nothing was recorded in between.',
 } as const;

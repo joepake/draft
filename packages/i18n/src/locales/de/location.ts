@@ -37,8 +37,6 @@ export const location = {
     'Noch kein Verlauf vorhanden. Standorte werden nach einer Standortaktualisierung oder einem Check-in angezeigt.',
   historyHighlightAccessibility: '{{place}} auf der Karte hervorheben',
   historyOpenMapsAccessibility: '{{place}} in Karten öffnen',
-  unableToRequestLocationRefresh:
-    'Die Standortaktualisierung konnte nicht angefordert werden',
   locationBannerTitle: 'Standort aktivieren',
   locationBannerBody:
     'Deine Eltern möchten den Standort dieses Geräts sehen, damit sie wissen, dass du gut angekommen bist.',
@@ -47,20 +45,24 @@ export const location = {
   allowLocationButton: 'Standort erlauben',
   locationNotAllowed:
     'Der Standortzugriff wurde noch nicht erlaubt. Öffne Einstellungen → KidGate → Standort (oder aktiviere zuerst die Ortungsdienste). Falls die Option „Standort“ fehlt, wähle erneut „Standort erlauben“.',
+  locationNotAllowedAndroid:
+    'Der Standortzugriff wurde noch nicht erlaubt. Wähle „Einstellungen öffnen“, dann „Berechtigungen → Standort“ und anschließend „Immer zulassen“.',
   locationServicesOff:
     'Die Ortungsdienste sind auf diesem Gerät deaktiviert. Öffne Einstellungen → Datenschutz & Sicherheit → Ortungsdienste, aktiviere sie und kehre anschließend zu KidGate zurück, um „Standort erlauben“ auszuwählen.',
   locationDeniedInSettings:
     'Der Standortzugriff für KidGate wurde verweigert. Öffne Einstellungen → KidGate → Standort und wähle „Beim Verwenden der App“ oder „Immer“.',
-  locationEnabled:
-    'Der Standort ist aktiviert. Bitte wähle „Immer“, damit KidGate den Standort auch aktualisieren kann, wenn die App geschlossen ist.',
+  foregroundOnly:
+    'Der Standort wird nur aktualisiert, solange KidGate geöffnet ist. Wähle „Einstellungen öffnen“, dann „Standort“ und anschließend „Immer“.',
+  foregroundOnlyAndroid:
+    'Der Standort wird nur aktualisiert, solange KidGate geöffnet ist. Wähle „Einstellungen öffnen“, dann „Berechtigungen → Standort“ und anschließend „Immer zulassen“.',
+  toastLocateFailed:
+    'Dein Standort konnte gerade nicht ermittelt werden. Versuche es gleich noch einmal.',
   backgroundLocationTitle: 'Standort erlauben, wenn die App geschlossen ist',
   backgroundLocationBody:
     'KidGate benötigt Standortzugriff im Hintergrund, damit Eltern den Standort dieses Geräts auch sehen können, wenn die App geschlossen ist – für die Sicherheit der Familie.',
-  locationNote:
-    'Zeigt den Standort des Kindes an, wenn die Standortfreigabe auf dem Gerät des Kindes aktiviert ist.',
-  placeAlertsNote:
-    'Sendet Standortbenachrichtigungen für Zuhause, Schule und andere sichere Orte.',
   mapNoLocationsEmpty: 'Noch keine Standorte vorhanden',
+  mapHistoryEmpty:
+    'Bewegungspunkte erscheinen nach der nächsten Standortaktualisierung auf der Karte.',
   mapUnavailable:
     'Karte nicht verfügbar. Bitte überprüfe deine Internetverbindung und versuche es erneut.',
   historyShowMore: '{{count}} weitere Orte anzeigen',
@@ -78,10 +80,19 @@ export const location = {
   stayRange: '{{from}} – {{to}}',
   wizardStepAllow:
     'Wähle „Erlauben“ und dann „Immer“, damit Updates im Hintergrund weiterlaufen.',
+  wizardStepAllowAndroid:
+    'Wähle „Bei Nutzung der App“ und dann „Immer zulassen“, wenn du gefragt wirst, damit Updates im Hintergrund weiterlaufen.',
   requestNoFix:
     'Dieses Gerät konnte keine Position ermitteln. Der Standort ist dort möglicherweise noch nicht erlaubt.',
+  requestIpOnly:
+    'Dieses Gerät konnte seine Position nur über die Internetverbindung schätzen. Schalte das WLAN am Gerät ein (eine Verbindung ist nicht nötig) und versuche es erneut.',
+  requestUnsupported: 'Dieses Gerät kann seinen Standort nicht melden.',
   cardSharingOff: 'Standortfreigabe ist aus',
   cardPermissionOff: 'Standort ist auf diesem Gerät nicht erlaubt',
+  cardForegroundOnly:
+    'Standort wird nur aktualisiert, solange KidGate auf diesem Gerät geöffnet ist',
+  cardIpOnly:
+    'Dieses Gerät lässt sich nicht orten: WLAN am Gerät einschalten (eine Verbindung ist nicht nötig)',
   cardNotUpdating: 'Standort wird nicht mehr aktualisiert',
   namesNeedPremium: 'Ortsnamen erfordern einen bezahlten Tarif',
   namesNeedPremiumTrialEnded:

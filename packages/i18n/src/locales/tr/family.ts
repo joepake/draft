@@ -8,7 +8,8 @@ export const family = {
   addChildOption: 'Çocuk cihazı ekle',
   addJoinFamilyOption: 'Aileye katıl',
   addParentOption: 'Ebeveyn davet et',
-  loginWebOption: "Web'de giriş yap",
+  parentLimitFull: 'Bir aile en fazla bu kadar ebeveyne sahip olabilir.',
+  loginWebOption: 'Web’de giriş yap',
   // The "who uses this device?" assignment sheet.
   assignSheetTitle: '{{deviceName}} cihazını kim kullanıyor?',
   assignSheetBody: 'Ekran süresi ve yıldızlar seçtiğiniz çocuğa sayılır.',
@@ -32,7 +33,7 @@ export const family = {
   quickProtectBedtime: 'Yatma saati için Engellenen Saatler',
   quickProtectBedtimeHint:
     'Cihaz kullanımını gece boyunca, 22.00–07.00 arasında engeller.',
-  quickProtectDailyLimit: 'Günlük ekran süresi sınırı',
+  quickProtectDailyLimit: 'Günlük sınır',
   quickProtectDailyLimitHint:
     'Günde {{minutes}} dakika, tüm cihazlarında ortak sayılır.',
   quickProtectWebFilter: 'Web filtresi',
@@ -46,7 +47,7 @@ export const family = {
     'Bazı korumalar kaydedilemedi. Çocuk profilinden tekrar deneyin.',
   pairDeviceFirstTitle: 'Henüz eşleştirilmiş cihaz yok',
   pairDeviceFirstBody:
-    'Önce bu çocuk için bir cihaz eşleştirin — Aile sekmesinde tarama simgesine veya "+" düğmesine dokunup Çocuk cihazı ekle’yi seçin. Bu kontrol, bir cihaz bağlanır bağlanmaz çalışmaya başlar.',
+    'Önce bu çocuk için bir cihaz eşleştirin — Aile sekmesinde tarama simgesine veya “+” düğmesine dokunup Çocuk cihazı ekle’yi seçin. Bu kontrol, bir cihaz bağlanır bağlanmaz çalışmaya başlar.',
   // Child-grouped family list: group header lock-all + unassigned group.
   lockAll: 'Tümünü kilitle',
   unlockAll: 'Tümünün kilidini aç',
@@ -63,6 +64,13 @@ export const family = {
   assignDeviceCta: 'Bir çocuğa ata…',
   unassignedHint: 'Bu cihazlar henüz kimseye sayılmıyor.',
   unassignedHintMember: 'Bu cihazları çocuklara yalnızca aile sahibi atar.',
+  // One device's own page (the web's Controls tab): the two sentences above are
+  // said to a group heading, and "these devices" is false about one machine.
+  unassignedDeviceHint: 'Bu cihaz henüz kimseye sayılmıyor.',
+  unassignedDeviceHintMember: 'Bu cihazı kimin kullandığını aile sahibi seçer.',
+  // The pairing sheets' success step for a joined parent, who may pair but not assign.
+  pairedDeviceBodyMember:
+    'Çocuk cihazı eşleştirmeyi onayladı. Cihazı kimin kullandığını aile sahibi seçer.',
   // The footer strip: children who hold no device get no group of their own.
   childrenWithoutDeviceTitle: 'Cihazı olmayan çocuklar',
   // Child detail screen.
@@ -71,9 +79,14 @@ export const family = {
   childDetailDevicesTitle: 'Cihazlar',
   childDetailSwipeHint: 'Atamayı kaldırmak için cihazı kaydırın.',
   childDetailAssignMore: 'Başka bir cihaz ata…',
+  // The same row while the child has no device yet — "another" needs a first.
+  childDetailAssignFirst: 'Bir cihaz ata…',
   childDetailAssignSheetTitle: '{{childName}} için cihaz ata',
   childDetailNoDevices:
     'Henüz cihaz yok. Aşağıdan atayın veya Aile sekmesinden yeni bir cihaz eşleyin.',
+  // Same screen when nothing is left below to assign.
+  childDetailNoDevicesPair:
+    'Henüz cihaz yok. Aile sekmesinden bir cihaz eşleyin ve uygulama kimin kullandığını sorduğunda bu çocuğu seçin.',
   // Same screen for a joined parent, who may pair but may not assign.
   childDetailNoDevicesMember:
     'Henüz cihaz yok. Hangi cihazın kime ait olduğunu yalnızca aile sahibi belirler.',
@@ -82,7 +95,7 @@ export const family = {
   scanButtonAccessibility: 'Kod tara',
   scanTitle: 'Kod tara',
   scanBody:
-    'Kamerayı bir çocuk cihazına, aile davetine veya bilgisayarda gösterilen koda doğrultun.',
+    'Kamerayı bir çocuk cihazındaki koda, aile davetine veya bir web giriş koduna doğrultun.',
   manualCodeLabel: '6 haneli kodu girin',
   manualInstructions: 'Diğer cihazda gösterilen 6 haneli kodu girin.',
 
@@ -130,6 +143,11 @@ export const family = {
   healthOffline: 'Çevrimdışı',
   devicePausedLabel: 'Duraklatıldı',
   devicePausedHint: 'Ücretsiz planda duraklatıldı — tüm kurallar geçerli',
+  // What Paused means, said where the choice is made: the choose-a-device sheet on
+  // both consoles. Checked against every agent 2026-09-28 — enforcement never
+  // stops while parked; the reports do, and an SOS still goes through.
+  devicePausedMeaning:
+    'Duraklatılan bir cihaz mevcut kurallarını uygulamaya devam eder. Ekran süresi, konum ve geçmiş raporlarını göndermeyi bırakır, ama SOS size yine de ulaşır.',
   parkReviewTitle: 'Deneme süreniz bitmeden bunları açın',
   parkReviewBody:
     'Deneme süreniz bittiğinde bir cihaz rapor göndermeyi ve kural değişikliklerini almayı sürdürür, diğerleri mevcut kurallarını korur. Sonrasında o cihazlarda bir kuralı yalnızca gevşetebilirsiniz; bu yüzden şimdi kapalı olan kapalı kalır.',
@@ -141,14 +159,34 @@ export const family = {
   parkedBannerBody:
     'Kurallarınız her cihazda çalışmaya devam eder. Ücretsiz plan yalnızca bir cihazdan rapor alır ve kuralları yalnızca orada sıkılaştırabilirsiniz — o cihazı seçin ya da hepsini korumak için yükseltin.',
   parkedBannerAction: 'Cihaz seç',
+  holdFamilyTitle: 'KidGate bu aileyi geçici olarak askıya aldı',
+  holdDeviceTitle: '{{deviceName}}, KidGate tarafından geçici olarak askıya alındı',
+  holdFamilyBody:
+    'Tüm cihazlar kurallarını korur ancak askıya alma kaldırılana kadar rapor göndermez.',
+  holdDeviceBody:
+    'Bu cihaz kurallarını korur ancak askıya alma kaldırılana kadar rapor göndermez.',
+  holdReasonUnusualActivity: 'Neden: bu hesapta olağan dışı etkinlik.',
+  holdReasonOutdatedApp:
+    'Neden: bu hesaptaki bir KidGate uygulaması güncel değil. Güncelleyin, ardından destekle iletişime geçin.',
+  holdReasonTermsViolation: 'Neden: KidGate kullanım koşullarının ihlali.',
+  holdReasonOther: 'Neden: KidGate bu hesabı inceliyor.',
+  holdNote: 'KidGate’ten mesaj: {{note}}',
+  holdAppeal: 'Destekle iletişime geç',
+  holdAppealMessage:
+    'Ailemin hesabının askıya alınmasıyla ilgili bilgi almak istiyorum.',
+  pairedDevicePaused:
+    'Ücretsiz plan yalnızca bir cihazdan rapor alır ve kuralları yalnızca orada sıkılaştırabilirsiniz, bu yüzden bu cihaz duraklatılmış olarak başlar.',
+  pairingWillStartPaused:
+    'Ücretsiz plan yalnızca bir cihazdan rapor alır ve kuralları yalnızca orada sıkılaştırabilirsiniz, bu yüzden yeni cihaz duraklatılmış olarak başlayacak.',
   chooseMonitoredTitle: 'Ana cihazınızı seçin',
   chooseMonitoredBody:
     'Tüm kurallar hepsinde çalışmaya devam eder. Seçtiğiniz cihaz ekran süresi ve konum gönderir; kuralları hâlâ sıkılaştırabileceğiniz tek cihaz odur — diğerlerinde yalnızca gevşetebilirsiniz. Seçiminizi {{days}} günde bir değiştirebilirsiniz.',
   chooseMonitoredConfirm: 'Bu cihazı izle',
   chooseMonitoredUpgrade: 'Tüm cihazları koru — yükselt',
   chooseMonitoredDone: '{{name}} artık raporlayan cihaz',
+  chooseMonitoredCurrent: 'Şu anda raporlayan cihaz',
   monitoredCooldown: 'Raporlayan cihaz yalnızca {{days}} günde bir değiştirilebilir',
-  monitoredChooseFailed: 'Raporlayan cihaz değiştirilemedi',
+  monitoredChooseFailed: 'Raporlayan cihaz değiştirilemedi. Lütfen tekrar deneyin.',
 
   cardWhereLabel: 'Konum',
 
@@ -168,9 +206,6 @@ export const family = {
     'Ekran süresini ve uygulama kullanımını izlemeye başlamak için çocuğunuzun cihazını ekleyin.',
 
   setupFamilyTitle: 'Ailenizi oluşturun',
-
-  setupFamilyDescription:
-    'Çocuklarınızın cihazlarını bağlamak için bir aile oluşturun veya başka bir ebeveynden gelen davetle mevcut bir aileye katılın.',
 
   createFamilyButton: 'Aile oluştur',
 
@@ -205,14 +240,14 @@ export const family = {
 
   stepsHeading: 'İlk adımlar',
 
-  step1Title: '“Çocuk cihazı ekle” düğmesine dokunun',
+  step1Title: 'Çocuğun cihazında KidGate’i açın',
 
-  step1Description: 'Eşleştirme QR kodu burada görünür, taranmaya hazır.',
+  step1Description:
+    'KidGate’i çocuğunuzun kullandığı telefona, tablete, TV’ye veya bilgisayara yükleyin. Telefon veya tablette “Bu bir çocuk cihazı” seçeneğini seçin. Bir QR kodu ve 6 karakterlik bir kod görünür.',
 
-  step2Title: 'Çocuğun cihazından tarayın',
+  step2Title: 'Burada “Çocuk cihazı ekle” düğmesine dokunun',
 
-  step2Description:
-    'KidGate’i çocuğunuzun telefonuna veya tabletine yükleyin, “Bu cihaz çocuğa aittir” seçeneğini seçin ve kodu tarayın.',
+  step2Description: 'Bu QR kodunu bu telefonla tarayın veya 6 karakterlik kodu girin.',
 
   connectChildButton: 'Çocuk cihazını bağla',
   listHint: 'Kaldırmak için cihazı sola kaydırın',
@@ -237,7 +272,7 @@ export const family = {
   deviceRemovedAlertTitle: 'Cihaz kaldırıldı',
 
   deviceRemovedAlertMessage:
-    'Bir ebeveyn bu cihazı aile hesabından kaldırdı. Yeniden bağlamak için tekrar Çocuk rolünü seçin.',
+    'Bir ebeveyn bu cihazı aile hesabından kaldırdı. Yeniden bağlamak için tekrar Çocuk rolünü seç.',
 
   deviceNotRegistered: 'Bu cihaz henüz kayıtlı değil.',
 

@@ -45,11 +45,11 @@ export const activities = {
   activityTypeScreenTime: '스크린 타임',
   activityTypeCheckIn: '체크인',
   activityTypeLocationRequest: '위치',
-  activityTypeTimeRequest: '시간 요청',
+  activityTypeTimeRequest: '시간 연장 요청',
   activityTypeRewardTask: '보상 과제',
   activityTypeSearchAlert: '검색 경고',
   activityTypeWebFilter: '웹 필터',
-  activityTypeEmergency: '긴급',
+  activityTypeEmergency: 'SOS',
   activityTypeUnknown: '활동',
 
   sosEscapeTitle: '긴급 잠금 해제',
@@ -150,9 +150,9 @@ export const activities = {
   tamperBackgroundRefreshBody:
     '백그라운드 앱 새로 고침이 다시 활성화될 때까지 KidGate가 백그라운드에서 덜 자주 업데이트될 수 있습니다.',
 
-  tamperDeviceClockTitle: '날짜 또는 시간이 변경되었습니다',
+  tamperDeviceClockTitle: '날짜, 시간 또는 시간대가 변경되었습니다',
   tamperDeviceClockBody:
-    '이 기기의 시간이 실제 시간과 일치하지 않습니다. 스크린 타임과 차단 시간은 계속 올바른 시간을 기준으로 동작합니다.',
+    '이 기기의 날짜, 시간 또는 시간대가 변경되었습니다. 여행 중에도 이런 일이 생길 수 있습니다. 스크린 타임과 차단 시간은 변경된 시계를 따르지 않고 기기의 시간대를 따릅니다.',
 
   /** @deprecated legacy description keys — kept for old activity docs */
   tamperOverlay: '“다른 앱 위에 표시” 권한이 비활성화되었습니다.',
@@ -179,7 +179,9 @@ export const activities = {
 
   unknownDevice: '알 수 없는 기기',
 
-  basicActivityNote: '잠금, 잠금 해제 및 기기 이벤트는 활동에 기록됩니다.',
   tamperUninstallProtectionTitle: '삭제 방지가 꺼졌습니다',
   tamperUninstallProtectionBody: '이제 이 휴대폰에서 KidGate를 삭제할 수 있습니다.',
+  tamperReinstalledTitle: 'KidGate가 다시 설치되었습니다',
+  tamperReinstalledBody:
+    '이 기기에서 KidGate가 삭제되었다가 다시 설치되었습니다. 그 사이에는 아무것도 기록되지 않았습니다.',
 } as const;

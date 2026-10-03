@@ -6,6 +6,16 @@ import {
   respondToSupportReport,
 } from './api.js';
 import { useT } from './i18n.js';
+import { dropCached, readCached, writeCached } from './sessionCache.js';
+
+/**
+ * A ticket's detail is keyed by its last activity as well as its id, so a
+ * queue refresh that shows the family wrote back cannot open onto the thread
+ * as it stood before the reply.
+ */
+function detailKey(uid, id, version) {
+  return `support:${uid}:${id}:${version ?? ''}`;
+}
 
 /**
  * One screenshot, fetched with the operator's token and shown from a blob.
@@ -237,17 +247,24 @@ function Reply({ report, onDone }) {
   );
 }
 
-function Detail({ uid, id, onChanged }) {
+function Detail({ uid, id, version, onChanged }) {
   const { t } = useT();
-  const [data, setData] = useState(null);
+  const [data, setData] = useState(() => readCached(detailKey(uid, id, version)));
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    const key = detailKey(uid, id, version);
+    const held = readCached(key);
+    setError(null);
+    if (held) {
+      setData(held);
+      return undefined;
+    }
     let cancelled = false;
     setData(null);
-    setError(null);
     fetchSupportReport(uid, id)
       .then(result => {
+        writeCached(key, result);
         if (!cancelled) {
           setData(result);
         }
@@ -260,7 +277,7 @@ function Detail({ uid, id, onChanged }) {
     return () => {
       cancelled = true;
     };
-  }, [uid, id]);
+  }, [uid, id, version]);
 
   if (error) {
     return (
@@ -306,9 +323,9 @@ function Detail({ uid, id, onChanged }) {
 
       {/*
         Who filed it, not only what they filed. A ticket without the account
-        behind it makes the operator paste the uid into Family lookup for every
-        single one — and that lookup demands a stated reason, so the shortcut
-        would cost a second audit row per ticket.
+        behind it makes the operator paste the uid into Families for every
+        single one — and opening a family there demands a stated reason, so the
+        shortcut would cost a second audit row per ticket.
       */}
       {family ? (
         <div className="ticket-account">
@@ -434,7 +451,7 @@ function Detail({ uid, id, onChanged }) {
 
 export default function Support() {
   const { t } = useT();
-  const [data, setData] = useState(null);
+  const [data, setData] = useState(() => readCached('supportQueue'));
   const [error, setError] = useState(null);
   const [busy, setBusy] = useState(false);
   const [filter, setFilter] = useState('open');
@@ -444,13 +461,21 @@ export default function Support() {
     setBusy(true);
     setError(null);
     fetchSupportReports()
-      .then(setData)
+      .then(result => {
+        // A fresh queue means fresh threads too: Refresh, and the reload
+        // after a reply, both come through here.
+        dropCached('support:');
+        writeCached('supportQueue', result);
+        setData(result);
+      })
       .catch(loadError => setError(loadError.message))
       .finally(() => setBusy(false));
   }, []);
 
   useEffect(() => {
-    load();
+    if (!readCached('supportQueue')) {
+      load();
+    }
   }, [load]);
 
   const reports = useMemo(() => {
@@ -588,6 +613,7 @@ export default function Support() {
                       <Detail
                         uid={report.uid}
                         id={report.id}
+                        version={report.lastActivityAt}
                         onChanged={() => {
                           setOpen(null);
                           load();

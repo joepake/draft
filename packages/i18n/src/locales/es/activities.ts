@@ -48,11 +48,11 @@ export const activities = {
   activityTypeScreenTime: 'Tiempo de uso',
   activityTypeCheckIn: 'Check-in',
   activityTypeLocationRequest: 'Ubicación',
-  activityTypeTimeRequest: 'Solicitud de tiempo',
-  activityTypeRewardTask: 'Tarea de recompensa',
+  activityTypeTimeRequest: 'Solicitudes de tiempo',
+  activityTypeRewardTask: 'Tareas con recompensa',
   activityTypeSearchAlert: 'Alerta de búsqueda',
   activityTypeWebFilter: 'Filtro web',
-  activityTypeEmergency: 'Emergencia',
+  activityTypeEmergency: 'SOS',
   activityTypeUnknown: 'Actividad',
 
   sosEscapeTitle: 'Desbloqueo de emergencia',
@@ -87,7 +87,7 @@ export const activities = {
   messageAlertTitleSearch: 'Búsqueda preocupante',
   messageAlertBodySearch:
     'Se detectó una palabra marcada en una búsqueda en {{appName}}.',
-  activityTypeMessageAlert: 'Alerta de mensaje',
+  activityTypeMessageAlert: 'Alertas de mensajes',
   messageCheckedTitle: 'Revisado, nada preocupante',
   messageCheckedBody:
     'Apareció una palabra vigilada en {{appName}} y resultó inofensiva en su contexto.',
@@ -153,9 +153,9 @@ export const activities = {
   tamperBackgroundRefreshBody:
     'KidGate puede actualizarse con menor frecuencia en segundo plano hasta que esta función vuelva a habilitarse.',
 
-  tamperDeviceClockTitle: 'Se cambió la fecha o la hora',
+  tamperDeviceClockTitle: 'Se cambió la fecha, la hora o la zona horaria',
   tamperDeviceClockBody:
-    'El reloj de este dispositivo ya no coincide con la hora correcta. El Tiempo de uso y las Horas bloqueadas seguirán usando la hora correcta.',
+    'La fecha, la hora o la zona horaria de este dispositivo cambió — también puede pasar al viajar. El Tiempo de uso y las Horas bloqueadas ignoran los cambios de reloj y siguen la zona horaria del dispositivo.',
 
   /** @deprecated legacy description keys — kept for old activity docs */
   tamperOverlay: 'Se desactivó el permiso Mostrar sobre otras aplicaciones.',
@@ -182,8 +182,9 @@ export const activities = {
 
   unknownDevice: 'Dispositivo desconocido',
 
-  basicActivityNote:
-    'Los eventos de bloqueo, desbloqueo y del dispositivo se registran en Actividad.',
   tamperUninstallProtectionTitle: 'Protección de desinstalación desactivada',
   tamperUninstallProtectionBody: 'Ahora se puede quitar KidGate de este teléfono.',
+  tamperReinstalledTitle: 'KidGate se volvió a instalar',
+  tamperReinstalledBody:
+    'KidGate se quitó de este dispositivo y se instaló de nuevo. No se registró nada mientras tanto.',
 } as const;

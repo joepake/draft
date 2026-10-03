@@ -38,6 +38,8 @@ export const videoHistory = {
   heroTopChannel: 'Xem nhiều nhất',
   readerLayoutChanged:
     'Shorts hiện không được ghi lại trên thiết bị này — ứng dụng YouTube đã thay đổi và KidGate cần cập nhật. Các video khác vẫn được ghi lại.',
+  grantNeeded:
+    'Chưa ghi lại được: KidGate cần quyền truy cập thông báo trên điện thoại của con. Trên điện thoại đó, mở Cài đặt KidGate, chọn Mở khóa bằng mã PIN phụ huynh, rồi chọn Cho phép truy cập thông báo trong mục Cảnh báo tin nhắn.',
   openAction: 'Mở trên YouTube',
   searchAction: 'Tìm video này trên YouTube',
   openFailed: 'Không mở được YouTube.',

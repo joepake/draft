@@ -44,10 +44,10 @@ export const usage = {
   deviceLockedChip: 'Gerät gesperrt',
   blockedHoursChip: 'Sperrzeiten',
   overLimitChip: 'Limit überschritten',
-  usageReportsNote:
-    'Zeigt Bildschirmzeit, Sperrungen und die letzte Aktivität für dieses Gerät.',
   syncNote:
-    'Bildschirmzeit kann ein paar Minuten brauchen, bis sie hier angezeigt wird – länger, wenn das Gerät keine Internetverbindung hat oder unerwartet beendet wurde.',
+    'Die Bildschirmzeit hier kann bis zu 5 Minuten hinter dem Gerät zurückliegen, im Gratis-Tarif bis zu 15 – länger, wenn das Gerät keine Internetverbindung hat oder unerwartet beendet wurde.',
+  syncNoteIos:
+    'Auf dem iPhone kommt die Bildschirmzeit erst an, nachdem KidGate auf dem Gerät deines Kindes gelaufen ist. Wurde die App nicht geöffnet, kann sie Stunden hinterherhinken.',
   syncNoteTv:
     'Dieser Fernseher meldet sich nur in größeren Abständen, daher kann es bis zu einer Stunde dauern, bis die Bildschirmzeit hier angezeigt wird – länger ohne Internetverbindung.',
   sectionLast30Days: 'Letzte 30 Tage',

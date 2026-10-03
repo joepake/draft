@@ -1,5 +1,7 @@
 import { readDeviceBattery } from '@kidgate/core/domain/battery';
+import { resolveCheckInOutcome } from '@kidgate/core/domain/checkInSupport';
 import { getProtectionSummaryKeys } from '@kidgate/core/domain/protectionStatus';
+import { isUsageStampToday } from '@kidgate/core/domain/reportHub';
 import { formatMinutes } from './charts.jsx';
 import { timeAgo } from './timeAgo.js';
 
@@ -59,6 +61,12 @@ export function buildAttention({
   device,
   t,
   activityT,
+  /**
+   * The page's `useReaderToday()` — `{ key, nowMs }`, so each device is judged
+   * on its own calendar — or a bare day key. Without it no stamped figure is
+   * today's.
+   */
+  today = '',
   timeRequests = [],
   siteRequests = [],
   checkIns = [],
@@ -113,8 +121,13 @@ export function buildAttention({
       action: 'siteAllow',
     }),
   );
+  /*
+    A check-in the child closed with an SOS is `missed` on the document too,
+    and is not one: nothing is left to resend, and "no response" is false of a
+    child who asked for help. The SOS has its own card and summary chip.
+  */
   checkIns
-    .filter(ci => ci.status === 'missed')
+    .filter(ci => resolveCheckInOutcome(ci) === 'noResponse')
     .forEach(ci =>
       items.push({
         id: ci.id,
@@ -164,7 +177,12 @@ export function buildAttention({
         fixKeys: issue.hintKeys,
       }),
     );
-  if (c.dailyLimitExceeded) {
+  /*
+   * A stamp, like the minutes beside it: set by a usage report and never
+   * cleared at midnight, so a device off since yesterday still said "limit
+   * reached" with yesterday's total. Today's or nothing — `isUsageStampToday`.
+   */
+  if (c.dailyLimitExceeded && isUsageStampToday(c, today, device.timeZone)) {
     items.push({
       id: 'limit',
       tone: 'warning',
@@ -174,6 +192,22 @@ export function buildAttention({
         used: formatMinutes(c.minutesUsedToday),
       }),
       action: 'unlock',
+    });
+  }
+  /*
+   * The child locked the Parent PIN out on this device. The phone offers the
+   * reset in Settings to every parent (`pinLockoutSafe` allows any family
+   * parent); until 2026-09-27 the web offered it nowhere, and the child is
+   * told to ask a parent.
+   */
+  if (device.parentPinLocked) {
+    items.push({
+      id: 'pinLocked',
+      tone: 'serious',
+      icon: 'lock',
+      title: activityT('pin.unlockChildPinTitle', { deviceName: device.name }),
+      meta: activityT('pin.unlockChildPinSubtitle'),
+      action: 'pinReset',
     });
   }
   // `readDeviceBattery` rather than a threshold written here: this row said
@@ -203,6 +237,7 @@ export function buildFamilyAttention({
   devices,
   t,
   activityT,
+  today = '',
   timeRequests = [],
   checkIns = [],
 }) {
@@ -211,6 +246,7 @@ export function buildFamilyAttention({
       device,
       t,
       activityT,
+      today,
       timeRequests: timeRequests.filter(row => row.deviceId === device.id),
       checkIns: checkIns.filter(row => row.deviceId === device.id),
     }).map(item => ({

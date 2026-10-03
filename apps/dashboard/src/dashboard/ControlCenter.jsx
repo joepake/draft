@@ -10,6 +10,7 @@ import {
   getVisibleActionSectionsForDevices,
   isActionSupported,
   isActionSupportedByAnyDevice,
+  omitPersonLevelActions,
 } from '@kidgate/core/domain/deviceDetailActions';
 import { resolveControlCardStatus } from '@kidgate/core/domain/deviceControlState';
 
@@ -107,6 +108,15 @@ export default function ControlCenter({
     device ? defaultShowsAllControls(device) : true,
   );
 
+  /*
+   * One device's grid drops what belongs to the PERSON once it is assigned —
+   * the phone's rule, from the same list (`omitPersonLevelActions`). Until
+   * 2026-09-28 this page drew all seven on an assigned machine, so a parent
+   * set the child's blocked hours and web filter from one device's page with
+   * nothing saying they were the child's. `DeviceChildRow` above the grid is
+   * the pointer to where they went. The child hub passes `devices` and keeps
+   * every card: it IS where they went.
+   */
   const sections = useMemo(
     () =>
       devices
@@ -116,7 +126,10 @@ export default function ControlCenter({
             showAll,
             canUsePremiumControls,
           )
-        : getVisibleActionSections(appT, device, showAll, canUsePremiumControls),
+        : omitPersonLevelActions(
+            getVisibleActionSections(appT, device, showAll, canUsePremiumControls),
+            device?.childId,
+          ),
     [devices, device, appT, showAll, canUsePremiumControls],
   );
 

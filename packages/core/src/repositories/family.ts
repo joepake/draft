@@ -13,6 +13,7 @@ import {
   userDoc,
 } from '@kidgate/schema/paths';
 import { timestampToIso } from '../domain/firestoreValue';
+import { readTimeZone } from '../domain/timeZone';
 
 /**
  * A family is the owner's account root, `users/{ownerUid}`.
@@ -133,9 +134,16 @@ export function createFamilyRepository(deps: FamilyRepositoryDeps) {
       };
     },
 
-    /** Create family metadata lazily: set a default name if none exists yet. */
+    /**
+     * Create family metadata lazily: set a default name if none exists yet.
+     *
+     * **A failed read rejects and writes nothing.** It used to be swallowed as
+     * "no name", so a read that failed offline wrote the fallback over the
+     * family's real name — queued by the SDK and landing on reconnect. A read
+     * that failed says nothing about whether a name exists.
+     */
     async ensureOwnFamily(ownUid: string, defaultName: string): Promise<string> {
-      const meta = await this.getFamilyMeta(ownUid).catch(() => null);
+      const meta = await this.getFamilyMeta(ownUid);
       const existing = meta?.name?.trim();
       if (existing) {
         return existing;
@@ -424,6 +432,41 @@ export function createFamilyRepository(deps: FamilyRepositoryDeps) {
       return typeof data?.memberFamilyId === 'string' && data.memberFamilyId
         ? data.memberFamilyId
         : null;
+    },
+
+    /**
+     * Publish a dashboard browser's zone on the signed-in account's own root
+     * (`FirestoreUser.dashboardTimeZone`) — the family's clock when no parent
+     * phone has one (`functions/lib/localHours.js`).
+     *
+     * The client half of `functions/lib/dashboardTimeZone.js`, with the same
+     * two guards. **Written only when it changed**: the owner's root is the
+     * family root, and every open phone console holds a listener on it.
+     * **Never creates the document**: a stray `users/{uid}` reads as a family
+     * to every sweep that pages the collection. The server writes it when a QR
+     * sign-in is redeemed or a PIN step-up passes; this is for the browser that
+     * signed in with a password, Google or Apple and was never unlocked, which
+     * makes neither call. `firestore.rules` lets a parent token update its own
+     * root; a child token shares the owner's uid and is refused there.
+     *
+     * True when it wrote. Errors propagate; the caller treats this as
+     * best-effort.
+     */
+    async recordDashboardTimeZone(ownUid: string, timeZone: string): Promise<boolean> {
+      const zone = readTimeZone(timeZone);
+      if (!ownUid || zone === null) {
+        return false;
+      }
+      const profile = await db.getDoc(userDoc(ownUid));
+      if (!profile.exists) {
+        return false;
+      }
+      const data = profile.data() as Record<string, unknown> | undefined;
+      if (data?.dashboardTimeZone === zone) {
+        return false;
+      }
+      await db.updateDoc(userDoc(ownUid), { dashboardTimeZone: zone });
+      return true;
     },
   };
 }

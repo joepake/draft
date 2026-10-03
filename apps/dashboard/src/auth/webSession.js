@@ -1,3 +1,4 @@
+import { readTimeZone } from '@kidgate/core/domain/timeZone';
 import { functionsBaseUrl } from '../lib/firebase.js';
 
 /**
@@ -12,6 +13,24 @@ import { functionsBaseUrl } from '../lib/firebase.js';
  */
 
 const POLL_INTERVAL_MS = 2000;
+
+/**
+ * This browser's IANA zone, or nothing when it answers no readable name.
+ *
+ * Sent on the two calls that let a browser in, and stored by the server on the
+ * account's root as `dashboardTimeZone` — the family's clock when no parent
+ * phone has published one (`functions/lib/dashboardTimeZone.js`). Never a
+ * location. A browser that never makes these calls publishes on load
+ * instead (`../dashboard/dashboardTimeZone.js`).
+ */
+function zoneField() {
+  try {
+    const timeZone = readTimeZone(Intl.DateTimeFormat().resolvedOptions().timeZone);
+    return timeZone ? { timeZone } : {};
+  } catch {
+    return {};
+  }
+}
 
 /*
  * One code per tab, held until it expires.
@@ -158,7 +177,7 @@ export function getOrCreateWebSession() {
 export function stepUpWithPin({ pin, familyOwnerUserId, idToken }) {
   return post(
     'stepUpParentWebSession',
-    { pin, familyOwnerUserId },
+    { pin, familyOwnerUserId, ...zoneField() },
     { Authorization: `Bearer ${idToken}` },
   );
 }
@@ -216,7 +235,10 @@ export function waitForApproval(sessionId, { signal } = {}) {
         return;
       }
       try {
-        const result = await post('pollParentWebSession', { sessionId });
+        const result = await post('pollParentWebSession', {
+          sessionId,
+          ...zoneField(),
+        });
         if (result.status === 'confirmed' && result.customToken) {
           stop();
           resolve(result.customToken);

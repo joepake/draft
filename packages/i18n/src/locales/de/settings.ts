@@ -48,6 +48,9 @@ export const settings = {
   accountLinkActionLink: 'Verknüpfen',
   accountLinkActionUnlink: 'Verknüpfung aufheben',
   accountLinkActionVerify: 'Bestätigen',
+  accountLinkActionLinkA11y: '{{provider}} verknüpfen',
+  accountLinkActionUnlinkA11y: 'Verknüpfung mit {{provider}} aufheben',
+  accountLinkActionVerifyA11y: '{{provider}} bestätigen',
   accountLinkSummary: 'Anmeldung mit {{methods}}',
   accountLinked: 'Verknüpft',
   accountNotLinked: 'Nicht verknüpft',
@@ -63,13 +66,10 @@ export const settings = {
   pushNotificationsSubtitle: 'Lege fest, welche Hinweise dieses Telefon erreichen',
   inAppAlertsLabel: 'In-App-Benachrichtigungen',
   inAppAlertsHint:
-    'Zeigt In-App-Benachrichtigungen für Zeitanfragen. SOS-Alarme erscheinen immer.',
+    'Zeigt ein Banner für neue Hinweise, während KidGate geöffnet ist. SOS-Alarme erscheinen immer.',
   sosSoundLabel: 'SOS-Sirene',
   sosSoundHint:
     'Spielt eine laute Sirene auf diesem Telefon ab, wenn ein Kind einen SOS sendet. Die Vibration bleibt in jedem Fall aktiv.',
-  shareScreenTimeLabel: 'Meine Bildschirmzeit teilen',
-  shareScreenTimeHint:
-    'Zeigt die Bildschirmzeit dieses Handys auf der Familientafel neben der deiner Kinder. Braucht Nutzungszugriff.',
   themeStyleLabel: 'Design-Stil',
   themeColorLabel: 'Themenfarbe',
   signOutButton: 'Abmelden',
@@ -104,12 +104,16 @@ export const settings = {
     '{{deviceName}} wird von diesem Konto abgemeldet und erhält keine Benachrichtigungen mehr. Wer das Gerät hat, kann sich mit dem Passwort erneut anmelden.',
   toastParentDeviceRemoved: '{{deviceName}} entfernt.',
   signedOutByAnotherDevice:
-    'Dieses Gerät wurde von einem anderen Gerät aus vom Elternkonto abgemeldet.',
+    'Dieses Gerät wurde von einem anderen Gerät aus vom Elternkonto abgemeldet. Melde dich erneut an, um fortzufahren.',
   deleteAccountTitle: 'Konto löschen',
   deleteAccountSubtitleDefault: 'Lösche dein Konto und alle Daten dauerhaft',
   deleteAccountAlertTitle: 'Konto dauerhaft löschen?',
   deleteAccountAlertMessage:
     'Damit wird die Löschung deines Familienkontos geplant. Es wird noch nichts gelöscht – du kannst dich anmelden und jederzeit vor dem Löschdatum abbrechen. Danach werden alle Daten (Geräte, Aktivitäten, Standortverlauf, SOS-Fotos) für alle Eltern und Kinder endgültig gelöscht.',
+  deleteAccountAlertMessageMember:
+    'Damit wird die Löschung deines eigenen Kontos geplant. Es wird noch nichts gelöscht – du kannst dich anmelden und jederzeit vor dem Löschdatum abbrechen. Danach werden deine Anmeldedaten und deine eigenen Einstellungen gelöscht. Die Familie, ihre Geräte und die anderen Eltern sind nicht betroffen.',
+  deleteAccountSubscriptionNotice:
+    'Das Löschen deines Kontos kündigt dein Abo nicht. Kündige es im App Store oder bei Google Play.',
   sendRequestButton: 'Dauerhaft löschen',
   toastDeletionAlreadyPending: 'Die Kontolöschung läuft bereits.',
   toastDeletionRequestFailed:
@@ -195,7 +199,7 @@ export const settings = {
   deleteAccountImpact:
     'Eltern, die den Zugriff verlieren: {{parents}}. Kindergeräte, die den Zugriff verlieren: {{devices}}.',
   deleteAccountGraceNotice:
-    'Dein Konto funktioniert noch {{days}} Tage und wird danach endgültig gelöscht.',
+    'Die Löschung erfolgt nach {{days}} Tagen. Bis dahin kannst du KidGate öffnen und sie abbrechen.',
   deleteAccountReauthNotice:
     'Du wirst zur Bestätigung erneut zur Anmeldung aufgefordert.',
   deleteAccountConfirmLabel: 'Gib {{word}} ein, um zu bestätigen',

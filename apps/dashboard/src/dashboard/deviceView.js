@@ -141,6 +141,8 @@ export function toDeviceView(record) {
     ...(record.otaVersion !== undefined ? { otaVersion: record.otaVersion } : {}),
     status: record.isLocked ? 'locked' : record.status || 'offline',
     isLocked: record.isLocked,
+    // The child typed a wrong Parent PIN too often; any parent may clear it.
+    parentPinLocked: record.parentPinLocked === true,
     /*
      * The request and the device's answer, which `StatusPill` folds through
      * `resolveLockEnforcement` into "Lock sent" and "Not applied". Both were
@@ -177,6 +179,12 @@ export function toDeviceView(record) {
     batteryLevel: record.batteryLevel,
     batteryCharging: Boolean(record.batteryCharging),
     lastLocation,
+    /*
+     * The calendar `controls.usageDate` is written on — the day this device's
+     * "today" is judged by (`reportHub.usageTodayKey`). Absent until the agent
+     * publishes one, and then the browser's calendar stands in.
+     */
+    ...(record.timeZone ? { timeZone: record.timeZone } : {}),
     controls,
     protectionStatus: record.protectionStatus ?? {},
     /*

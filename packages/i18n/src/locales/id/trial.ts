@@ -15,7 +15,7 @@ export const trial = {
   impactScreenTime: 'Waktu layar turun sekitar {{duration}} per hari',
   impactWebBlocked: 'Memblokir {{count}} kunjungan ke situs tidak pantas',
   impactTamper: 'Mencatat {{count}} kali perlindungan dimatikan',
-  impactLocks: 'Menerapkan jam tidur dan jam diblokir {{count}} kali',
+  impactLocks: 'Menerapkan Jam Diblokir {{count}} kali',
   impactScreenTimeTracked: 'Mengukur {{duration}} waktu layar untuk Anda',
   impactDevices: 'Menjaga {{count}} perangkat, siang dan malam',
   impactPlaceArrivals:

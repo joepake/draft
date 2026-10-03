@@ -30,8 +30,11 @@ export const plans = {
   compareColumnFree: 'Бесплатно',
   compareColumnPremium: 'Premium',
   compareDevices: 'Устройства ребёнка',
-  compareDevicesFree: '1',
-  compareDevicesPremium: 'Без ограничений',
+  compareDevicesFree: 'Правила на всех, отчёты с 1',
+  compareDevicesPremium: 'Отчёты со всех',
+  compareParents: 'Родители',
+  compareParentsFree: 'До 3',
+  compareParentsPremium: 'До 6',
   compareSync: 'Обновления с устройства',
   compareSyncFree: 'Каждые 30 минут',
   compareSyncPremium: 'В реальном времени',
@@ -46,14 +49,14 @@ export const plans = {
   compareWeb: 'Веб',
   compareWebPremium: 'Полная история и поисковые запросы',
   compareNewApps: 'Недавно установленные приложения',
-  compareNewAppsPremium: 'Какие приложения и подтверждение перед установкой',
+  compareNewAppsPremium: 'Какие приложения, по названиям',
   compareMessages: 'Оповещения о сообщениях (Android)',
   compareSafety: 'Оповещения защиты и Check-In',
   compareSafetyFree: 'Оповещения + отметка «Я на месте»',
   compareSafetyPremium: 'Добавляет фото к каждой отметке',
   compareControls: 'Блокировка приложений и веб-фильтр',
   compareControlsFree: 'Любое приложение, контент для взрослых',
-  compareControlsPremium: 'По категориям, лимиты на приложения, собственные списки',
+  compareControlsPremium: 'По категориям, собственные списки',
   compareReport: 'Отчёт за неделю',
   compareReportFree: 'Один раз, когда закончится пробный период',
   compareReportPremium: 'Каждую неделю',
@@ -62,7 +65,7 @@ export const plans = {
   compareActivityFeedPremium: '30 дней',
   compareChildReport: 'Отчёты по ребёнку',
   compareIncluded:
-    'Оба тарифа включают дневной лимит, заблокированные часы, заблокированные приложения, веб-фильтр, удалённую блокировку, SOS, запросы времени и задания с наградой на iPhone, Android, Mac и Windows в одной семье, а также веб-панель и нескольких родителей. Android TV и Chromebook уже на подходе, но функций на них меньше.',
+    'Оба тарифа включают Дневной лимит, Заблокированные часы, Заблокированные приложения, Веб-фильтр, Блокировку устройства, SOS, Запросы времени и Задания с наградой на iPhone, Android, Mac и Windows в одной семье, а также веб-панель. Android TV и Chromebook тоже поддерживаются, но функций управления на них меньше.',
   sectionWhyPremium: 'Что добавляет Premium',
   sectionWhyPremiumSubtitle:
     'Все правила продолжают работать бесплатно. Premium добавляет то, что вы видите, и как скоро.',
@@ -85,12 +88,12 @@ export const plans = {
   featurePausePhone: 'Блокировка устройства',
   featureDailyLimits: 'Дневной лимит',
   featureBlockedHours: 'Заблокированные часы',
-  featureAppLimits: 'Лимит времени для каждого приложения',
-  featureInstallApproval: 'Подтверждение новых установок',
+  featureAppLimits: 'Лимиты приложений',
+  featureInstallApproval: 'Подтверждение новых приложений',
   featureTimeRequests: 'Запросы времени',
   featureAppBlocking: 'Заблокированные приложения',
   featureWebFiltering: 'Веб-фильтр',
-  featureSeeLocation: 'Местоположение в реальном времени',
+  featureSeeLocation: 'Местоположение',
   featureTamperAlerts: 'Оповещение, если KidGate удалили',
   featureSosAlerts: 'Оповещения SOS',
   trialPlanName: 'Пробный период',
@@ -99,6 +102,7 @@ export const plans = {
   premiumPlanName: 'Premium',
   subscribeBadge: 'Оформить подписку',
   currentPlanKicker: 'Текущий план',
+  currentPlanA11y: 'Текущий план: {{plan}}',
   trialEnded: 'Пробный период завершён',
   trialPending: 'Пробный период не начат',
   premiumActiveSubtitle: 'Сейчас у вас полный доступ.',
@@ -114,9 +118,9 @@ export const plans = {
   onlyOwnerCanSubscribe:
     'Только владелец семьи может оформить подписку или восстановить покупки.',
   memberSubscriptionNotice:
-    'Один план покрывает всю семью, и платит только владелец. Вы можете видёть, находится ли семья на пробном периоде или уже подписана.',
+    'Один план покрывает всю семью, и платит только владелец. Вы можете видеть, находится ли семья на пробном периоде или уже подписана.',
   memberTrialActiveSubtitle:
-    'Эта семья на пробном периоде. Когда он закончится, все правила продолжат работать на одном устройстве; владелец может оформить подписку ради активности в реальном времени, истории и всех устройств.',
+    'Эта семья на пробном периоде. Когда он закончится, все правила продолжат работать на всех устройствах, а одно устройство продолжит отправлять отчёты; владелец может оформить подписку ради активности в реальном времени, истории и отчётов со всех устройств.',
   memberTrialEndedSubtitle:
     'Пробный период этой семьи завершён. Дневной лимит, Заблокированные приложения, Веб-фильтр и местоположение продолжают работать. Попросите владельца оформить подписку ради обновлений в реальном времени, истории и оповещений.',
   memberSetupTrialSubtitle:
@@ -130,7 +134,8 @@ export const plans = {
     'Покупка ожидает подтверждения. Premium откроется, как только она завершится.',
   purchaseFailed: 'Покупка не была завершена. Повторите попытку.',
   storeNotReady: 'Магазин ещё не готов. Повторите попытку через мгновение.',
-  premiumNotAvailable: 'Premium сейчас недоступен для покупки.',
+  premiumNotAvailable:
+    'Premium сейчас недоступен для покупки на этом устройстве. Попробуйте позже.',
   premiumProductNotFound:
     'Premium сейчас недоступен для покупки. Повторите попытку позже.',
   subscriptionOfferNotConfigured:
@@ -139,7 +144,8 @@ export const plans = {
   noActiveSubscription: 'Активная подписка не найдена.',
   purchasesRestored: 'Покупки восстановлены.',
   unableToRestorePurchases: 'Не удалось восстановить покупки. Повторите попытку.',
-  purchaseVerificationFailed: 'Проверка покупки не удалась.',
+  purchaseVerificationFailed:
+    'Не удалось проверить покупку. Подождите немного, затем нажмите «Восстановить покупки».',
   // Shown to joined parents — only the family owner can subscribe, so this
   // has to name who needs to act instead of offering a button they can't use.
   familyPremiumEndedTitle: 'Premium этой семьи закончился',
@@ -156,14 +162,16 @@ export const plans = {
   trustOnePlan: 'Один тариф на всю семью',
   trustNoAds: 'Без рекламы',
   freePlanName: 'Бесплатно',
-  freeDescription: 'Базовые функции для одного устройства ребёнка, бессрочно.',
-  featureOneChildDevice: 'Одно устройство ребёнка',
+  freeDescription:
+    'Базовые функции работают на всех устройствах ребёнка, отчёты приходят с одного. Без срока действия.',
+  featureOneChildDevice: 'Отчёты с одного устройства ребёнка',
   termLifetime: 'Навсегда',
   badgeOneTime: 'Разовый платёж',
   planPeriodOnce: 'разово',
-  billedOnce: 'Оплата один раз за {{devices}} устройств ребёнка, пока KidGate доступен',
+  billedOnce:
+    'Разовая оплата за отчёты не более чем с {{devices}} устройств ребёнка, пока KidGate доступен',
   sectionFreePlan: 'Если не оформлять подписку',
-  devicesUnlimited: 'Неограниченное число устройств ребёнка',
+  devicesUnlimited: 'Все устройства ребёнка отправляют отчёты',
   featureFootnotePlatforms:
     'Некоторые возможности зависят от того, что разрешает платформа, поэтому не все доступны на каждом устройстве.',
   sectionPlatforms: 'Где работает KidGate',
@@ -180,7 +188,7 @@ export const plans = {
   platformAndroidTvLimits:
     'Нет оповещений о сообщениях, местоположения, SOS и запросов времени. Блокировка приложений работает по возможности.',
   platformChromebookLimits:
-    'Только веб-фильтр — нет Дневного лимита, Заблокированных часов, Блокировки приложений, Блокировки устройства, SOS и местоположения.',
+    'Только Веб-фильтр — нет Дневного лимита, Заблокированных часов, Заблокированных приложений, Блокировки устройства, SOS и местоположения.',
   platformComingSoon: 'Скоро',
   platformWindows: 'Windows',
   platformWindowsDetail: 'Только устройство ребёнка · Windows 10 и новее',
@@ -217,5 +225,8 @@ export const plans = {
   teaserLiveNote:
     'Бесплатный план обновляется раз в 30 минут. Premium — в реальном времени.',
   teaserUsageTimeline: 'Premium показывает, в какие часы дня пользовались устройством.',
+  teaserProofParents: 'Родителей: {{count}}',
+  teaserParentCap:
+    'Столько родителей может быть в семье без Premium. Premium позволяет вдвое больше.',
   teaserDeviceNote: 'Отчёты присылает только отслеживаемое устройство.',
 } as const;

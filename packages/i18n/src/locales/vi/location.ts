@@ -31,7 +31,6 @@ export const location = {
     'Chưa có lịch sử. Các điểm sẽ hiển thị sau mỗi lần cập nhật vị trí hoặc Báo an toàn.',
   historyHighlightAccessibility: 'Đánh dấu {{place}} trên bản đồ',
   historyOpenMapsAccessibility: 'Mở {{place}} trong Bản đồ',
-  unableToRequestLocationRefresh: 'Không thể gửi yêu cầu làm mới vị trí',
   locationBannerTitle: 'Bật vị trí',
   locationBannerBody:
     'Bố mẹ muốn biết thiết bị này đang ở đâu để yên tâm là con đã đến nơi an toàn.',
@@ -40,20 +39,24 @@ export const location = {
   allowLocationButton: 'Cho phép vị trí',
   locationNotAllowed:
     'Quyền vị trí chưa được cấp. Vui lòng mở Cài đặt → KidGate → Vị trí (hoặc bật Dịch vụ định vị trước). Nếu chưa thấy mục Vị trí, hãy chọn Cho phép vị trí lại trong ứng dụng.',
+  locationNotAllowedAndroid:
+    'Quyền vị trí chưa được cấp. Vui lòng chọn Mở Cài đặt, rồi vào Quyền → Vị trí và chọn “Cho phép mọi lúc”.',
   locationServicesOff:
     'Dịch vụ định vị đang tắt trên toàn thiết bị. Vui lòng mở Cài đặt → Quyền riêng tư và Bảo mật → Dịch vụ định vị, bật lên, sau đó quay lại KidGate và chọn Cho phép vị trí.',
   locationDeniedInSettings:
     'KidGate đã bị từ chối quyền vị trí. Vui lòng mở Cài đặt → KidGate → Vị trí và chọn Khi dùng ứng dụng hoặc Luôn luôn.',
-  locationEnabled:
-    'Đã bật vị trí. Vui lòng chọn “Luôn cho phép” để KidGate có thể cập nhật ngay cả khi ứng dụng đã đóng.',
+  foregroundOnly:
+    'Vị trí chỉ cập nhật khi KidGate đang mở. Vui lòng chọn Mở Cài đặt, rồi vào Vị trí và chọn Luôn luôn.',
+  foregroundOnlyAndroid:
+    'Vị trí chỉ cập nhật khi KidGate đang mở. Vui lòng chọn Mở Cài đặt, rồi vào Quyền → Vị trí và chọn “Cho phép mọi lúc”.',
+  toastLocateFailed:
+    'Chưa lấy được vị trí của con lúc này. Con thử lại sau giây lát nhé.',
   backgroundLocationTitle: 'Cho phép vị trí khi ứng dụng đã đóng',
   backgroundLocationBody:
     'KidGate cần quyền vị trí chạy nền để bố mẹ biết thiết bị này ở đâu ngay cả khi ứng dụng đã đóng, giúp cả nhà yên tâm hơn.',
-  locationNote:
-    'Hiển thị vị trí của trẻ khi chia sẻ vị trí được bật trên thiết bị của trẻ.',
-  placeAlertsNote:
-    'Cảnh báo khi trẻ đến hoặc rời khỏi nhà, trường học và các địa điểm an toàn khác.',
   mapNoLocationsEmpty: 'Chưa có vị trí để hiển thị',
+  mapHistoryEmpty:
+    'Các điểm di chuyển sẽ hiện trên bản đồ sau lần cập nhật vị trí tiếp theo.',
   mapUnavailable: 'Không tải được bản đồ. Vui lòng kiểm tra kết nối mạng rồi thử lại.',
   historyShowMore: 'Xem thêm {{count}} địa điểm',
   childSharingHint: 'Áp dụng cho mọi thiết bị được gán cho {{childName}}.',
@@ -67,10 +70,18 @@ export const location = {
   stayRange: '{{from}} – {{to}}',
   wizardStepAllow:
     'Chạm Cho phép, rồi chọn Luôn luôn để vị trí vẫn cập nhật khi chạy nền.',
+  wizardStepAllowAndroid:
+    'Chọn “Trong khi dùng ứng dụng”, rồi chọn “Cho phép mọi lúc” khi được hỏi để vị trí vẫn cập nhật khi chạy nền.',
   requestNoFix:
     'Thiết bị này không lấy được vị trí. Có thể quyền vị trí chưa được cho phép.',
+  requestIpOnly:
+    'Thiết bị này chỉ đoán được vị trí từ đường mạng internet. Hãy bật Wi-Fi trên máy (không cần kết nối) rồi thử lại.',
+  requestUnsupported: 'Thiết bị này không báo cáo được vị trí.',
   cardSharingOff: 'Chia sẻ vị trí đang tắt',
   cardPermissionOff: 'Thiết bị này chưa cho phép truy cập vị trí',
+  cardForegroundOnly: 'Vị trí chỉ cập nhật khi KidGate đang mở trên thiết bị này',
+  cardIpOnly:
+    'Không định vị được thiết bị này: hãy bật Wi-Fi trên máy (không cần kết nối)',
   cardNotUpdating: 'Vị trí đã ngừng cập nhật',
   namesNeedPremium: 'Tên địa chỉ cần gói trả phí',
   namesNeedPremiumTrialEnded:

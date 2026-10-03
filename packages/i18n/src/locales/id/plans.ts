@@ -30,8 +30,11 @@ export const plans = {
   compareColumnFree: 'Gratis',
   compareColumnPremium: 'Premium',
   compareDevices: 'Perangkat anak',
-  compareDevicesFree: '1',
-  compareDevicesPremium: 'Tanpa batas',
+  compareDevicesFree: 'Aturan di semua, laporan dari 1',
+  compareDevicesPremium: 'Laporan dari semua',
+  compareParents: 'Orang tua',
+  compareParentsFree: 'Hingga 3',
+  compareParentsPremium: 'Hingga 6',
   compareSync: 'Pembaruan dari perangkat',
   compareSyncFree: 'Setiap 30 menit',
   compareSyncPremium: 'Langsung',
@@ -46,14 +49,14 @@ export const plans = {
   compareWeb: 'Web',
   compareWebPremium: 'Riwayat lengkap dan pencarian',
   compareNewApps: 'Aplikasi yang baru dipasang',
-  compareNewAppsPremium: 'Aplikasi mana, dan persetujuan sebelum dipasang',
+  compareNewAppsPremium: 'Aplikasi mana, lengkap dengan namanya',
   compareMessages: 'Peringatan pesan (Android)',
   compareSafety: 'Peringatan perlindungan dan Check-In',
   compareSafetyFree: 'Peringatan + Check-In',
   compareSafetyPremium: 'Menambahkan foto di setiap Check-In',
   compareControls: 'Pemblokiran aplikasi dan filter web',
   compareControlsFree: 'Aplikasi apa pun, konten dewasa',
-  compareControlsPremium: 'Per kategori, batas tiap aplikasi, daftar Anda sendiri',
+  compareControlsPremium: 'Per kategori, daftar Anda sendiri',
   compareReport: 'Laporan mingguan',
   compareReportFree: 'Sekali, saat masa uji coba berakhir',
   compareReportPremium: 'Setiap minggu',
@@ -62,7 +65,7 @@ export const plans = {
   compareActivityFeedPremium: '30 hari',
   compareChildReport: 'Laporan per anak',
   compareIncluded:
-    'Kedua paket mencakup batas harian, jam diblokir, aplikasi yang diblokir, filter web, kunci jarak jauh, SOS, permintaan waktu, dan tugas hadiah di iPhone, Android, Mac, dan Windows dalam satu keluarga, ditambah dasbor web dan beberapa orang tua. Android TV dan Chromebook segera hadir dengan kontrol yang lebih sedikit.',
+    'Kedua paket mencakup Batas harian, Jam Diblokir, Aplikasi yang Diblokir, Filter web, Kunci perangkat, SOS, Permintaan waktu, dan Tugas hadiah di iPhone, Android, Mac, dan Windows dalam satu keluarga, ditambah dasbor web. Android TV dan Chromebook juga didukung, dengan kontrol yang lebih sedikit.',
   sectionWhyPremium: 'Apa yang ditambahkan Premium',
   sectionWhyPremiumSubtitle:
     'Semua aturan tetap berjalan di paket Gratis. Premium menambahkan apa yang bisa Anda lihat, dan seberapa cepat.',
@@ -85,12 +88,12 @@ export const plans = {
   featurePausePhone: 'Kunci perangkat',
   featureDailyLimits: 'Batas harian',
   featureBlockedHours: 'Jam Diblokir',
-  featureAppLimits: 'Batas waktu tiap aplikasi',
-  featureInstallApproval: 'Setujui pemasangan baru',
+  featureAppLimits: 'Batas Aplikasi',
+  featureInstallApproval: 'Setujui aplikasi baru',
   featureTimeRequests: 'Permintaan waktu',
   featureAppBlocking: 'Aplikasi yang Diblokir',
   featureWebFiltering: 'Filter web',
-  featureSeeLocation: 'Lokasi Langsung',
+  featureSeeLocation: 'Lokasi',
   featureTamperAlerts: 'Peringatan jika KidGate dihapus',
   featureSosAlerts: 'Peringatan SOS',
   trialPlanName: 'Uji coba',
@@ -99,6 +102,7 @@ export const plans = {
   premiumPlanName: 'Premium',
   subscribeBadge: 'Berlangganan',
   currentPlanKicker: 'Paket saat ini',
+  currentPlanA11y: 'Paket saat ini: {{plan}}',
   trialEnded: 'Uji coba berakhir',
   trialPending: 'Uji coba belum dimulai',
   premiumActiveSubtitle: 'Anda memiliki akses penuh sekarang.',
@@ -116,7 +120,7 @@ export const plans = {
   memberSubscriptionNotice:
     'Satu paket mencakup seluruh keluarga dan hanya pemilik yang membayar. Anda dapat melihat apakah keluarga sedang uji coba atau sudah berlangganan.',
   memberTrialActiveSubtitle:
-    'Keluarga ini sedang uji coba. Setelah berakhir, semua aturan tetap berjalan di satu perangkat; pemilik dapat berlangganan untuk aktivitas langsung, riwayat, dan semua perangkat.',
+    'Keluarga ini sedang dalam masa uji coba. Setelah berakhir, semua aturan tetap berjalan di semua perangkat dan satu perangkat tetap melapor; pemilik dapat berlangganan untuk aktivitas langsung, riwayat, dan laporan dari semua perangkat.',
   memberTrialEndedSubtitle:
     'Masa uji coba keluarga ini sudah berakhir. Batas harian, Aplikasi yang Diblokir, Filter web, dan lokasi masih berjalan. Minta pemilik keluarga berlangganan untuk pembaruan langsung, riwayat, dan peringatan.',
   memberSetupTrialSubtitle:
@@ -130,7 +134,8 @@ export const plans = {
     'Pembelianmu menunggu persetujuan. Premium aktif begitu pembelian selesai.',
   purchaseFailed: 'Pembelian tidak berhasil. Silakan coba lagi.',
   storeNotReady: 'Toko belum siap. Silakan coba lagi sesaat lagi.',
-  premiumNotAvailable: 'Premium tidak tersedia untuk dibeli saat ini.',
+  premiumNotAvailable:
+    'Premium belum bisa dibeli di perangkat ini saat ini. Silakan coba lagi nanti.',
   premiumProductNotFound:
     'Premium tidak tersedia untuk dibeli saat ini. Silakan coba lagi nanti.',
   subscriptionOfferNotConfigured:
@@ -139,7 +144,8 @@ export const plans = {
   noActiveSubscription: 'Tidak ditemukan langganan aktif.',
   purchasesRestored: 'Pembelian berhasil dipulihkan.',
   unableToRestorePurchases: 'Tidak dapat memulihkan pembelian. Silakan coba lagi.',
-  purchaseVerificationFailed: 'Verifikasi pembelian tidak berhasil.',
+  purchaseVerificationFailed:
+    'Tidak dapat memverifikasi pembelian. Tunggu sebentar, lalu ketuk “Pulihkan pembelian”.',
   // Shown to joined parents — only the family owner can subscribe, so this
   // has to name who needs to act instead of offering a button they can't use.
   familyPremiumEndedTitle: 'Premium keluarga ini telah berakhir',
@@ -157,15 +163,15 @@ export const plans = {
   trustNoAds: 'Tanpa iklan',
   freePlanName: 'Gratis',
   freeDescription:
-    'Fitur dasar tetap jalan untuk satu perangkat anak, tanpa batas waktu.',
-  featureOneChildDevice: 'Satu perangkat anak',
+    'Fitur dasar tetap berjalan di setiap perangkat anak, dengan laporan dari satu perangkat. Paket ini tidak pernah kedaluwarsa.',
+  featureOneChildDevice: 'Laporan dari satu perangkat anak',
   termLifetime: 'Seumur hidup',
   badgeOneTime: 'Sekali bayar',
   planPeriodOnce: 'sekali',
   billedOnce:
-    'Bayar sekali untuk hingga {{devices}} perangkat anak, selama KidGate tersedia',
+    'Bayar sekali untuk laporan dari hingga {{devices}} perangkat anak, selama KidGate tersedia',
   sectionFreePlan: 'Jika Anda tidak pernah berlangganan',
-  devicesUnlimited: 'Perangkat anak tanpa batas',
+  devicesUnlimited: 'Semua perangkat anak melapor',
   featureFootnotePlatforms:
     'Beberapa fitur bergantung pada apa yang diizinkan setiap platform, jadi tidak semuanya tersedia di setiap perangkat.',
   sectionPlatforms: 'Tempat KidGate berjalan',
@@ -182,7 +188,7 @@ export const plans = {
   platformAndroidTvLimits:
     'Tidak ada peringatan pesan, lokasi, SOS, atau permintaan waktu. Pemblokiran aplikasi berjalan sebisanya.',
   platformChromebookLimits:
-    'Hanya filter web — tidak ada Batas harian, Jam Diblokir, Pemblokiran aplikasi, Kunci perangkat, SOS, atau lokasi.',
+    'Hanya Filter web — tanpa Batas harian, Jam Diblokir, Aplikasi yang Diblokir, Kunci perangkat, SOS, atau lokasi.',
   platformComingSoon: 'Segera hadir',
   platformWindows: 'Windows',
   platformWindowsDetail: 'Hanya perangkat anak · Windows 10 ke atas',
@@ -218,5 +224,8 @@ export const plans = {
     'Itu batas tugas yang bisa berjalan bersamaan di paket gratis. Premium menggandakannya.',
   teaserLiveNote: 'Paket gratis diperbarui tiap 30 menit. Premium bersifat langsung.',
   teaserUsageTimeline: 'Premium menunjukkan pada jam berapa saja perangkat dipakai.',
+  teaserProofParents: 'Orang tua: {{count}}',
+  teaserParentCap:
+    'Itu batas orang tua dalam satu keluarga tanpa Premium. Premium menggandakannya.',
   teaserDeviceNote: 'Hanya satu perangkat yang Anda pantau yang mengirim laporan.',
 } as const;

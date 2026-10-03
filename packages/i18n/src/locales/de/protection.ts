@@ -37,6 +37,8 @@ export const protection = {
   lockNotReadyBodyIos:
     'KidGate kann dieses iPhone erst sperren, wenn der Zugriff auf die Bildschirmzeit auf dem Kindergerät bestätigt wurde. Bitte öffne KidGate dort und schließe Folgendes ab:',
   locationPermission: 'Standort-Berechtigung',
+  locationForegroundOnly:
+    'Der Standort wird nur aktualisiert, solange KidGate auf dem Kindergerät geöffnet ist.',
   cameraPermission: 'Kameraberechtigung',
   cameraConsentPending:
     'Die Kamera ist auf diesem Gerät nicht erlaubt, deshalb kommt ein SOS oder Check-in von dort ohne Foto an.',
@@ -65,18 +67,9 @@ export const protection = {
   healthBadgeProtected: 'Grün – geschützt',
   healthBadgeWarning: 'Gelb – Einrichtung erforderlich',
   healthBadgeInactive: 'Rot – Kindergerät seit über 24 Std. stumm',
-  iosFeatureSupportEvaluating:
-    'Die Unterstützung dieser Funktion unter iOS wird derzeit geprüft.',
   iosUpgradeRequiredNote:
     'Dafür ist iOS 16 oder neuer nötig. Das Kindergerät unter Einstellungen › Allgemein › Softwareupdate aktualisieren. Wird kein Update angeboten, ist dieses iPad oder iPhone zu alt, um von Apple unterstützt zu werden.',
   iosUpgradeActionLabel: 'Benötigt iOS 16',
-  lockUnlockNote:
-    'Sperrt das Gerät über die Bildschirmzeit, sobald das Kind den Zugriff erlaubt hat.',
-  scheduleNote: 'Bis zu 3 Sperrzeiten blockieren Apps über die Bildschirmzeit.',
-  individualAppBlockingNote:
-    'Das Kind wählt die Apps aus, nachdem die 6-stellige Eltern-PIN eingegeben wurde.',
-  tamperAlertsNote:
-    'Meldet Berechtigungsänderungen und wenn sich die App auf dem Kindergerät längere Zeit nicht aktualisiert hat.',
   appReviewRemindersNote:
     'iOS stellt keine Installationsereignisse bereit – prüfe die Apps regelmäßig direkt auf dem Kindergerät.',
 } as const;

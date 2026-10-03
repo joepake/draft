@@ -205,8 +205,22 @@ const FEATURES = [
  * SmartScreen warns on every install, forever, not once per release, and the
  * `.zip` does not soften it: the extracted `.exe` carries the same Mark of the
  * Web. `download.warningSub` under the grid is therefore about Windows alone.
+ *
+ * **Android TV and Chrome are cards of the same kind since 2026-09-27**, when
+ * both joined the launch set. Their body is `about.make5Text` / `make6Text` —
+ * what the platform cannot do (no location or SOS on a TV, nothing but the Web
+ * Filter in Chrome), in the words already translated for `/about` — and their
+ * button names the store it opens rather than saying Download. Neither has an
+ * install note: a store installs its own listing.
  */
-function DesktopCard({ platform, icon }) {
+function DownloadCard({
+  platform,
+  icon,
+  title,
+  body,
+  note = null,
+  button = 'download.button',
+}) {
   const { t } = useT();
   const href = storeHref(platform);
 
@@ -218,14 +232,14 @@ function DesktopCard({ platform, icon }) {
       <div>
         {/*
           The pill takes the button's place while the build is not uploaded —
-          the same shape the Android TV card beside these two already uses, so
-          three unshipped platforms state it one way. `.card-soon` sits above
+          the same shape on every card in this section, so four unshipped
+          platforms state it one way. `.card-soon` sits above
           the heading everywhere else; here it replaces an action below the
           requirement line, which is where a reader looking for the button
           looks.
         */}
-        <h3>{t(`download.${platform}Title`)}</h3>
-        <p>{t(`download.${platform}Requires`)}</p>
+        <h3>{t(title)}</h3>
+        <p>{t(body)}</p>
         {href ? (
           <a
             className="store-btn store-btn--solid"
@@ -240,7 +254,7 @@ function DesktopCard({ platform, icon }) {
           >
             <Icon name="arrowRight" />
             <span>
-              <strong>{t('download.button')}</strong>
+              <strong>{t(button)}</strong>
             </span>
           </a>
         ) : (
@@ -255,7 +269,7 @@ function DesktopCard({ platform, icon }) {
           ahead is exactly who this section is for. They come back beside a
           working button on the day the flag flips, with nothing else to edit.
         */}
-        <p className="download-note">{t(`download.${platform}Steps`)}</p>
+        {note && <p className="download-note">{t(note)}</p>}
       </div>
     </article>
   );
@@ -429,60 +443,51 @@ export default function Home() {
 
           <StoreButtons centered storesOnly />
 
-          <div className="why-grid why-grid--three">
-            <DesktopCard platform="macos" icon="mac" />
-            <DesktopCard platform="windows" icon="windows" />
-            {/*
-              Android TV, with a pill and no button.
+          {/*
+            Four cards, two by two: the two desktops, then Android TV and
+            Chrome, which launch with them (decided 2026-09-27).
 
-              **The pill is the whole card.** The build ran on real hardware on
-              19 Aug 2026 and has no keystore, release track or Play submission
-              (`apps/tv/CLAUDE.md`), so this is the one platform a family cannot
-              install — running is not shipping. A card sitting between two that
-              ship is read as available unless it says otherwise, and nothing in
-              this repo fails when that is wrong; a parent finds out on the
-              television.
+            Every card goes through `storeHref`, so each becomes a button on
+            the day its `available` flag flips in `lib/storeLinks.js`, and
+            says `common.comingSoon` in the button's place until then. The TV
+            card drew that pill unconditionally before it had a store entry,
+            which would have left it saying Coming soon after launch; Chrome had
+            no card at all.
 
-              It is here rather than absent because "does KidGate work on the
-              TV?" is a question this page was answering with silence, and
-              silence reads as no. Ship the TV build and this card gains a
-              button and loses the pill.
-
-              **The body is `about.make5*`, not new `download.tv*` keys.**
-              That is the same platform described in the same voice, already
-              translated into fourteen languages and already reviewed; a second
-              set would be the one thing this repo refuses — one text in two
-              places, drifting.
-
-              **The pill is `common.comingSoon`, the same key the two cards
-              beside it use.** It was `about.make5Soon` until 2026-09-18, which
-              put two words for one state in every language on one screen —
-              "Coming soon" on the store buttons, "Planned" here; "Sắp ra mắt"
-              and "Sắp có" in Vietnamese. `about.make5Soon` had no other
-              renderer and is gone from all fourteen packs, `yarn i18n:dead`
-              being unable to see a web key.
-            */}
-            <article className="why-item why-item--planned reveal">
-              <span className="tick">
-                <Icon name="tv" />
-              </span>
-              <div>
-                {/*
-                  Title and pill on one line, not the pill above the title.
-
-                  `.why-item` is a flex row of icon and body, so whatever comes
-                  first in the body is what the icon lines up with. With the
-                  pill first, the icon sat level with the pill and the words
-                  "Android TV" dropped a line below every other card's title —
-                  three cards side by side with one heading out of line.
-                */}
-                <div className="card-head">
-                  <h3>{t('about.make5Title')}</h3>
-                  <span className="card-soon">{t('common.comingSoon')}</span>
-                </div>
-                <p>{t('about.make5Text')}</p>
-              </div>
-            </article>
+            **The TV and Chrome bodies are `about.make5*` / `about.make6*`, not
+            new `download.*` keys** — the same platform in the same voice,
+            already in fourteen languages; a second set is one text in two
+            places, drifting.
+          */}
+          <div className="why-grid">
+            <DownloadCard
+              platform="macos"
+              icon="mac"
+              title="download.macosTitle"
+              body="download.macosRequires"
+              note="download.macosSteps"
+            />
+            <DownloadCard
+              platform="windows"
+              icon="windows"
+              title="download.windowsTitle"
+              body="download.windowsRequires"
+              note="download.windowsSteps"
+            />
+            <DownloadCard
+              platform="androidtv"
+              icon="tv"
+              title="about.make5Title"
+              body="about.make5Text"
+              button="store.googleName"
+            />
+            <DownloadCard
+              platform="chrome"
+              icon="extension"
+              title="about.make6Title"
+              body="about.make6Text"
+              button="store.chromeName"
+            />
           </div>
 
           {/*

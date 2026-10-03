@@ -1,20 +1,10 @@
 export const leaderboard = {
   title: '별 순위표',
   thisWeek: '이번 주',
-  resetsNote: '매주 월요일에 다시 시작해요.',
+  resetsNoteAt: '매주 {{weekday}} {{time}}에 다시 시작해요.',
   rowA11y: '{{rank}}위 {{name}}, 별 {{count}}개',
   settingsTitle: '별 순위표',
   settingsBody: '이번 주에 각자 모은 별 개수를 아이들이 서로 볼 수 있게 합니다.',
-  screenTimeTitle: '가족 스크린 타임',
-  screenTimeSub: '스크린 타임 적은 순 · 이번 주',
-  screenTimeRowA11y: '{{rank}}. {{name}}, {{duration}}',
-  screenTimeParentBadge: '부모',
-  screenTimeParentFallbackName: '부모',
-  screenTimeSettingsTitle: '가족 스크린 타임',
-  screenTimeSettingsBody:
-    '이번 주 자녀 각자가 스크린 타임을 얼마나 썼는지 보여 줍니다. 켜기 전까지는 꺼져 있습니다.',
-  screenTimeNote:
-    '한 사람이 쓰는 모든 기기를 합산합니다. 매주 월요일에 새로 시작합니다.',
   childrenTitle: '아이',
   manageAccessibility: '자녀 및 기기 관리',
   addChild: '아이 추가',

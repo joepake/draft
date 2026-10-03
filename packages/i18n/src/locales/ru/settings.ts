@@ -6,7 +6,7 @@ export const settings = {
   personNameTooLong: 'Ваше имя не должно превышать {{max}} символов.',
   personNameRequiredTitle: 'Как к вам обращаться?',
   personNameRequiredSubtitle:
-    'Это имя отображается в активности и оповещёниях семьи. До {{max}} символов.',
+    'Это имя отображается в активности и оповещениях семьи. До {{max}} символов.',
   personNameEditTitle: 'Ваше имя',
   personNameEditSubtitle:
     'Изменить это можете только вы. Члены семьи видят это имя в активности. До {{max}} символов.',
@@ -44,6 +44,9 @@ export const settings = {
   accountLinkActionLink: 'Привязать',
   accountLinkActionUnlink: 'Отвязать',
   accountLinkActionVerify: 'Подтвердить',
+  accountLinkActionLinkA11y: 'Привязать {{provider}}',
+  accountLinkActionUnlinkA11y: 'Отвязать {{provider}}',
+  accountLinkActionVerifyA11y: 'Подтвердить {{provider}}',
   accountLinkSummary: 'Вход через {{methods}}',
   accountLinked: 'Привязано',
   accountNotLinked: 'Не привязано',
@@ -59,20 +62,17 @@ export const settings = {
   pushNotificationsSubtitle: 'Выберите, какие оповещения приходят на этот телефон',
   inAppAlertsLabel: 'Уведомления в приложении',
   inAppAlertsHint:
-    'Показывать уведомления в приложении для запросов времени. Оповещения SOS появляются всегда.',
+    'Показывать баннер о новых оповещениях, пока KidGate открыт. Оповещения SOS появляются всегда.',
   sosSoundLabel: 'Сирена SOS',
   sosSoundHint:
     'Включает громкую сирену на этом телефоне, когда ребёнок отправляет SOS. Вибрация работает в любом случае.',
-  shareScreenTimeLabel: 'Делиться моим экранным временем',
-  shareScreenTimeHint:
-    'Показывает экранное время этого телефона на семейной доске рядом с детьми. Нужен доступ к данным об использовании.',
   themeStyleLabel: 'Стиль темы',
   themeColorLabel: 'Цвет темы',
   signOutButton: 'Выйти',
   signInButton: 'Войти',
   switchToChildDevice: 'Настроить этот телефон как устройство ребёнка',
   guestAccountHint:
-    'Войдите, чтобы синхронизировать устройства, оповещёния и семейный план.',
+    'Войдите, чтобы синхронизировать устройства, оповещения и семейный план.',
   reportModalTitle: 'Сообщить о проблеме',
   reportMessageLabel: 'Опишите проблему, с которой вы столкнулись.',
   reportMessagePlaceholder: 'Опишите ошибку или проблему…',
@@ -99,12 +99,16 @@ export const settings = {
     '{{deviceName}} выйдет из этого аккаунта и перестанет получать уведомления. Тот, у кого устройство, сможет снова войти по паролю.',
   toastParentDeviceRemoved: '{{deviceName}} удалено.',
   signedOutByAnotherDevice:
-    'Это устройство вышло из родительского аккаунта по команде с другого устройства.',
+    'Это устройство вышло из родительского аккаунта по команде с другого устройства. Войдите снова, чтобы продолжить.',
   deleteAccountTitle: 'Удалить аккаунт',
   deleteAccountSubtitleDefault: 'Безвозвратно удаляет ваш аккаунт и все данные',
   deleteAccountAlertTitle: 'Удалить аккаунт навсегда?',
   deleteAccountAlertMessage:
     'Это запланирует удаление вашего семейного аккаунта. Пока ничего не удаляется — вы можете войти и отменить в любой момент до даты удаления. После этой даты все данные (устройства, активность, история местоположений, фото SOS) будут безвозвратно удалены для всех родителей и детей.',
+  deleteAccountAlertMessageMember:
+    'Это запланирует удаление только вашего аккаунта. Пока ничего не удаляется — вы можете войти и отменить в любой момент до даты удаления. После этой даты ваши данные для входа и ваши собственные настройки будут удалены. Семью, её устройства и других родителей это не затронет.',
+  deleteAccountSubscriptionNotice:
+    'Удаление аккаунта не отменяет подписку. Отмените её в App Store или Google Play.',
   sendRequestButton: 'Удалить навсегда',
   toastDeletionAlreadyPending: 'Удаление аккаунта уже выполняется.',
   toastDeletionRequestFailed:
@@ -154,7 +158,7 @@ export const settings = {
   sectionFamilyChildrenTitle: 'Устройства детей',
   familyChildrenEmptyTitle: 'Нет устройств ребёнка',
   familyChildrenEmpty:
-    'Добавьте устройство ребёнка, чтобы задать лимиты и видёть активность.',
+    'Добавьте устройство ребёнка, чтобы задать лимиты и видеть активность.',
   familyChildDeviceSubtitle: 'Устройство ребёнка',
   familyPendingSection: 'Ожидают присоединения',
   familyYouSection: 'Вы',
@@ -171,7 +175,7 @@ export const settings = {
   familyMemberJoinedDate: 'Присоединился(-ась) {{date}}',
   removeFamilyMemberAlertTitle: 'Удалить этого родителя?',
   removeFamilyMemberAlertMessage:
-    '{{memberName}} останется в системе на своём устройстве, но больше не сможет видёть эту семью или управлять ею.',
+    '{{memberName}} останется в системе на своём устройстве, но больше не сможет видеть эту семью или управлять ею.',
   toastFamilyMemberRemoved: 'Родитель удалён из семьи.',
   leaveFamilyTitle: 'Покинуть семью',
   leaveFamilyAlertTitle: 'Покинуть эту семью?',
@@ -187,9 +191,9 @@ export const settings = {
   familyMembersSection: 'Участники',
   deleteAccountSubtitleScheduled: 'Удаление запланировано. Войдите, чтобы отменить.',
   deleteAccountImpact:
-    'Родителей потеряют доступ: {{parents}}. Детских устройств потеряют доступ: {{devices}}.',
+    'Родители потеряют доступ: {{parents}}. Детские устройства потеряют доступ: {{devices}}.',
   deleteAccountGraceNotice:
-    'Аккаунт продолжит работать {{days}} дней, после чего будет удалён безвозвратно.',
+    'Удаление произойдёт через {{days}} дней. До этого момента вы можете открыть KidGate и отменить его.',
   deleteAccountReauthNotice: 'Для подтверждения потребуется войти заново.',
   deleteAccountConfirmLabel: 'Введите {{word}} для подтверждения',
   statusScheduled: 'Запланировано',

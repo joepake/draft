@@ -1,5 +1,6 @@
 export const timeRequest = {
   alertMorePending: '{{count}} weitere Anfragen warten unter Familie.',
+  alertMorePending_one: '{{count}} weitere Anfrage wartet unter Familie.',
   pauseConfirmTitle: '{{deviceName}} sperren?',
   pauseConfirmBody:
     'Damit wird das Gerät jetzt gesperrt, statt mehr Zeit zu gewähren. {{deviceName}} ist nicht nutzbar, bis du es entsperrst.',
@@ -21,10 +22,12 @@ export const timeRequest = {
   statusCooldown: 'Du kannst in {{time}} eine neue Anfrage senden.',
   statusDailyLimitExceeded:
     'Du hast deine gesamte Bildschirmzeit für heute aufgebraucht. Apps öffnen sich morgen wieder – oder früher, wenn deine Eltern mehr Zeit hinzufügen.',
-  errorDeviceNotRegistered: 'Dieses Gerät ist nicht registriert.',
+  errorDeviceNotRegistered:
+    'Dieses Gerät ist noch nicht bereit, Anfragen zu senden. Versuche es gleich noch einmal oder bitte deine Eltern, es erneut zu koppeln.',
   errorMinutesRange: 'Gib einen Wert zwischen {{min}} und {{max}} Minuten ein.',
   toastRequestSent: 'Anfrage gesendet. Deine Eltern werden sie in Kürze prüfen.',
-  toastDeviceNotRegistered: 'Dieses Gerät ist noch nicht registriert.',
+  toastDeviceNotRegistered:
+    'Dieses Gerät ist noch nicht bereit, Anfragen zu senden. Versuche es gleich noch einmal oder bitte deine Eltern, es erneut zu koppeln.',
   toastSendFailed:
     'Deine Anfrage konnte nicht gesendet werden. Bitte versuche es erneut.',
   askForMoreTime: 'Mehr Zeit anfragen',
@@ -51,7 +54,7 @@ export const timeRequest = {
   pendingRequestExists:
     'Du hast bereits eine Anfrage gesendet. Bitte warte auf die Antwort deiner Eltern.',
   waitBeforeAnotherRequest:
-    'Bitte warte ein paar Minuten, bevor du eine weitere Anfrage sendest.',
+    'Bitte warte einen Moment, bevor du eine weitere Anfrage sendest.',
   timeRequestSent: 'Zeitanfrage gesendet',
   timeRequestSentDescription:
     '{{deviceName}} hat {{minutes}} zusätzliche Minuten angefragt.',
@@ -71,6 +74,4 @@ export const timeRequest = {
   requestPendingButton: 'Anfrage ausstehend',
   requestPendingChip: 'Anfrage ausstehend',
   waitCooldown: 'Warte {{cooldown}}',
-  timeRequestNote:
-    'Wenn deine Eltern zustimmen, bekommst du heute mehr Bildschirmzeit.',
 } as const;

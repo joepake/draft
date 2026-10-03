@@ -2,14 +2,15 @@ export const screenTime = {
   turnOnScreenTime: 'تفعيل مدة استخدام الجهاز',
   finishScreenTimeSetup: 'إكمال إعداد مدة استخدام الجهاز',
   screenTimeNeededForControls:
-    'يتطلب حظر التطبيقات وساعات الحظر والقفل تفعيل مدة استخدام الجهاز على هذا الجهاز.',
+    'تتطلب التطبيقات المحظورة وساعات الحظر والحد اليومي والقفل تفعيل مدة استخدام الجهاز على هذا الجهاز.',
   screenTimeNeededForLimits:
-    'بدون مدة استخدام الجهاز، لا يمكن تطبيق القفل أو ساعات الحظر أو حدود التطبيقات.',
+    'بدون مدة استخدام الجهاز، لا يمكن تطبيق القفل أو ساعات الحظر أو الحد اليومي أو التطبيقات المحظورة.',
   screenTimeStepOpenKidGate: 'افتح KidGate على جهاز الطفل هذا.',
   screenTimeStepAllowUsage: 'في شاشة الحالة، اختر السماح باستخدام التطبيقات والمواقع.',
   screenTimeStepTapAllow: 'عند الطلب، اختر السماح.',
   screenTimeStepReturnHereAuto: 'عد إلى هنا — تتحدث الحالة تلقائيًا.',
-  screenTimeDeniedStepOpenSettings: 'على جهاز الطفل، افتح الإعدادات ← KidGate.',
+  screenTimeDeniedStepOpenSettings: 'على جهاز الطفل، افتح الإعدادات.',
+  screenTimeDeniedStepFindKidGate: 'ابحث عن KidGate في القائمة.',
   screenTimeDeniedStepTurnOnRestrictions: 'فعّل مدة استخدام الجهاز.',
   screenTimeDeniedStepOpenKidGateAgain: 'افتح KidGate مجددًا على جهاز الطفل.',
   screenTimeDeniedStepReturnWhenReady:
@@ -26,6 +27,12 @@ export const screenTime = {
     'يحتاج {{appName}} إلى تفعيل مدة استخدام الجهاز في الإعدادات.',
   screenTimeBannerBodyRequest:
     'يتيح هذا لوالديك قفل التطبيقات وضبط ساعات الحظر على هذا الجهاز.',
+  screenTimeAuthPasscode:
+    'يحتاج هذا الجهاز إلى رمز دخول قبل أن يتمكن KidGate من استخدام مدة استخدام الجهاز. يرجى تعيين رمز من الإعدادات ثم المحاولة مرة أخرى.',
+  screenTimeAuthConflict:
+    'يتحكم تطبيق آخر بالفعل في مدة استخدام الجهاز على هذا الجهاز. يرجى إزالة ذلك التطبيق ثم المحاولة مرة أخرى.',
+  screenTimeAuthRestricted:
+    'يمنع قيد مفروض على هذا الجهاز KidGate من استخدام مدة استخدام الجهاز. يرجى طلب إزالته من الشخص الذي يدير هذا الجهاز.',
   usageAccessBannerTitle: 'تفعيل الوصول إلى الاستخدام',
   usageAccessBannerBody:
     'يحتاج KidGate إلى الوصول إلى الاستخدام لتتبّع وقت الشاشة وتطبيق الحدود.',
@@ -37,6 +44,5 @@ export const screenTime = {
   minutesUsedStatus: 'استُخدم {{used}} / {{limit}}',
   usageUpdatesHint:
     'يُحدَّث الاستخدام كل بضع دقائق ما دامت مراقبة مدة استخدام الجهاز مفعّلة.',
-  dailyLimitNote: 'يفرض سقفًا يوميًا لوقت الشاشة.',
   dailyLimitMinutes: '{{limitMinutes}} دقيقة',
 } as const;

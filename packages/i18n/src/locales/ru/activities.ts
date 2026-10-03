@@ -42,11 +42,11 @@ export const activities = {
   activityTypeScreenTime: 'Экранное время',
   activityTypeCheckIn: 'Check-In',
   activityTypeLocationRequest: 'Местоположение',
-  activityTypeTimeRequest: 'Запрос времени',
-  activityTypeRewardTask: 'Бонусное задание',
+  activityTypeTimeRequest: 'Запросы времени',
+  activityTypeRewardTask: 'Задания с наградой',
   activityTypeSearchAlert: 'Оповещение о поиске',
   activityTypeWebFilter: 'Веб-фильтр',
-  activityTypeEmergency: 'Экстренная ситуация',
+  activityTypeEmergency: 'SOS',
   activityTypeUnknown: 'Активность',
   sosEscapeTitle: 'Экстренная разблокировка',
   sosEscapeBody: 'SOS разблокировал это устройство на {{minutes}} минут.',
@@ -79,7 +79,7 @@ export const activities = {
   messageAlertTitleSearch: 'Тревожный поисковый запрос',
   messageAlertBodySearch:
     'В поисковом запросе на {{appName}} обнаружено отмеченное слово.',
-  activityTypeMessageAlert: 'Оповещение о сообщении',
+  activityTypeMessageAlert: 'Оповещения о сообщениях',
   messageCheckedTitle: 'Проверено, ничего тревожного',
   messageCheckedBody:
     'В {{appName}} встретилось отслеживаемое слово, но в контексте оно оказалось безобидным.',
@@ -132,9 +132,9 @@ export const activities = {
   tamperBackgroundRefreshTitle: 'Фоновое обновление приложений отключено',
   tamperBackgroundRefreshBody:
     'KidGate может обновляться реже в фоновом режиме, пока фоновое обновление приложений снова не будет включено.',
-  tamperDeviceClockTitle: 'Дата или время были изменены',
+  tamperDeviceClockTitle: 'Изменены дата, время или часовой пояс',
   tamperDeviceClockBody:
-    'Часы на этом устройстве больше не соответствуют правильному времени. Экранное время и Заблокированные часы по-прежнему используют правильное время.',
+    'На этом устройстве изменились дата, время или часовой пояс — такое бывает и в поездках. Экранное время и Заблокированные часы не учитывают изменённое время и следуют часовому поясу устройства.',
   /** @deprecated legacy description keys — kept for old activity docs */
   tamperOverlay: 'Отображение поверх других приложений было отключено.',
   tamperAccessibility: 'Служба специальных возможностей была отключена.',
@@ -155,8 +155,9 @@ export const activities = {
   openFullSosHistory: 'Открыть полную историю SOS',
   openActivityDetails: 'Посмотреть подробности',
   unknownDevice: 'Неизвестное устройство',
-  basicActivityNote:
-    'События блокировки, разблокировки и устройства сохраняются в разделе «События».',
   tamperUninstallProtectionTitle: 'Защита от удаления выключена',
   tamperUninstallProtectionBody: 'Теперь KidGate можно удалить с этого телефона.',
+  tamperReinstalledTitle: 'KidGate переустановлен',
+  tamperReinstalledBody:
+    'KidGate удалили с этого устройства и установили снова. За это время ничего не записано.',
 } as const;

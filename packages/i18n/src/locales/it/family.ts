@@ -8,6 +8,7 @@ export const family = {
   addChildOption: 'Aggiungi dispositivo del bambino',
   addJoinFamilyOption: 'Unisciti a una famiglia',
   addParentOption: 'Invita un genitore',
+  parentLimitFull: 'È il numero massimo di genitori che una famiglia può avere.',
   loginWebOption: 'Accedi sul web',
   // The "who uses this device?" assignment sheet.
   assignSheetTitle: 'Chi usa {{deviceName}}?',
@@ -33,7 +34,7 @@ export const family = {
   quickProtectBedtime: 'Orari di blocco per la notte',
   quickProtectBedtimeHint:
     'Blocca l’uso del dispositivo di notte, dalle 22:00 alle 7:00.',
-  quickProtectDailyLimit: 'Limite giornaliero di tempo di utilizzo',
+  quickProtectDailyLimit: 'Limite giornaliero',
   quickProtectDailyLimitHint:
     '{{minutes}} minuti al giorno, condivisi tra tutti i suoi dispositivi.',
   quickProtectWebFilter: 'Filtro web',
@@ -65,6 +66,14 @@ export const family = {
   unassignedHint: 'Questi dispositivi non contano ancora per nessuno.',
   unassignedHintMember:
     'Il proprietario della famiglia assegna questi dispositivi ai figli.',
+  // One device's own page (the web's Controls tab): the two sentences above are
+  // said to a group heading, and "these devices" is false about one machine.
+  unassignedDeviceHint: 'Questo dispositivo non conta ancora per nessuno.',
+  unassignedDeviceHintMember:
+    'Il proprietario della famiglia sceglie chi usa questo dispositivo.',
+  // The pairing sheets' success step for a joined parent, who may pair but not assign.
+  pairedDeviceBodyMember:
+    'Il dispositivo del bambino ha confermato l’associazione. Il proprietario della famiglia sceglie chi lo usa.',
   // The footer strip: children who hold no device get no group of their own.
   childrenWithoutDeviceTitle: 'Bambini senza dispositivo',
   // Child detail screen.
@@ -73,9 +82,14 @@ export const family = {
   childDetailDevicesTitle: 'Dispositivi',
   childDetailSwipeHint: 'Scorri un dispositivo per rimuovere l’assegnazione.',
   childDetailAssignMore: 'Assegna un altro dispositivo…',
+  // The same row while the child has no device yet — "another" needs a first.
+  childDetailAssignFirst: 'Assegna un dispositivo…',
   childDetailAssignSheetTitle: 'Assegna un dispositivo a {{childName}}',
   childDetailNoDevices:
     'Nessun dispositivo. Assegnane uno qui sotto o abbina un nuovo dispositivo dalla scheda Famiglia.',
+  // Same screen when nothing is left below to assign.
+  childDetailNoDevicesPair:
+    'Nessun dispositivo. Abbinane uno dalla scheda Famiglia e, quando l’app chiede chi lo usa, scegli questo bambino.',
   // Same screen for a joined parent, who may pair but may not assign.
   childDetailNoDevicesMember:
     'Ancora nessun dispositivo. Solo il proprietario della famiglia decide a chi appartiene ogni dispositivo.',
@@ -84,7 +98,7 @@ export const family = {
   scanButtonAccessibility: 'Scansiona un codice',
   scanTitle: 'Scansiona un codice',
   scanBody:
-    'Inquadra un dispositivo del bambino, un invito famiglia o il codice mostrato su un computer.',
+    'Inquadra il codice su un dispositivo del bambino, un invito famiglia o un codice di accesso web.',
   manualCodeLabel: 'Inserisci il codice di 6 caratteri',
   manualInstructions:
     'Inserisci il codice di 6 caratteri mostrato sull’altro dispositivo.',
@@ -127,6 +141,7 @@ export const family = {
   chipLocationBlocked: 'Nessuna posizione',
 
   chipBlockedCount: '{{count}} bloccati',
+  chipBlockedCount_one: '{{count}} bloccato',
 
   healthProtected: 'Protetto',
   buildOutdated: 'Aggiornamento disponibile',
@@ -134,6 +149,11 @@ export const family = {
   healthOffline: 'Offline',
   devicePausedLabel: 'In pausa',
   devicePausedHint: 'In pausa con il piano gratuito: tutte le regole restano attive',
+  // What Paused means, said where the choice is made: the choose-a-device sheet on
+  // both consoles. Checked against every agent 2026-09-28 — enforcement never
+  // stops while parked; the reports do, and an SOS still goes through.
+  devicePausedMeaning:
+    'Un dispositivo in pausa continua ad applicare le regole che ha già. Smette di inviare tempo di utilizzo, posizione e cronologia, ma un SOS ti arriva comunque.',
   parkReviewTitle: 'Attiva queste voci prima che finisca la prova',
   parkReviewBody:
     'Quando la prova finisce, un dispositivo continua a inviare i report e ad accettare modifiche alle regole, mentre gli altri mantengono le regole che hanno già. Su quelli potrai solo allentare una regola, quindi ciò che ora è disattivato resta disattivato.',
@@ -145,15 +165,36 @@ export const family = {
   parkedBannerBody:
     'Le tue regole continuano a funzionare su ogni dispositivo. Il piano gratuito riceve i report da un solo dispositivo e lì soltanto puoi rendere le regole più severe: scegli quel dispositivo, o passa a Premium per tenerli tutti.',
   parkedBannerAction: 'Scegli dispositivo',
+  holdFamilyTitle: 'KidGate ha sospeso temporaneamente questa famiglia',
+  holdDeviceTitle: 'KidGate ha sospeso temporaneamente {{deviceName}}',
+  holdFamilyBody:
+    'Ogni dispositivo mantiene le sue regole ma non invia report finché la sospensione non viene revocata.',
+  holdDeviceBody:
+    'Questo dispositivo mantiene le sue regole ma non invia report finché la sospensione non viene revocata.',
+  holdReasonUnusualActivity: 'Motivo: attività insolita su questo account.',
+  holdReasonOutdatedApp:
+    'Motivo: un’app KidGate di questo account non è aggiornata. Aggiornala, poi contatta l’assistenza.',
+  holdReasonTermsViolation: 'Motivo: una violazione dei termini d’uso di KidGate.',
+  holdReasonOther: 'Motivo: KidGate sta verificando questo account.',
+  holdNote: 'Messaggio da KidGate: {{note}}',
+  holdAppeal: 'Contatta l’assistenza',
+  holdAppealMessage:
+    'Vorrei informazioni sulla sospensione dell’account della mia famiglia.',
+  pairedDevicePaused:
+    'Il piano gratuito riceve i report da un solo dispositivo e lì soltanto puoi rendere le regole più severe, quindi questo dispositivo parte in pausa.',
+  pairingWillStartPaused:
+    'Il piano gratuito riceve i report da un solo dispositivo e lì soltanto puoi rendere le regole più severe, quindi il nuovo dispositivo partirà in pausa.',
   chooseMonitoredTitle: 'Scegli il dispositivo principale',
   chooseMonitoredBody:
     'Tutte le regole restano attive su tutti. Il dispositivo che scegli invia tempo di utilizzo e posizione ed è l’unico su cui puoi ancora rendere le regole più severe: sugli altri puoi solo allentarle. Puoi cambiare la scelta una volta ogni {{days}} giorni.',
   chooseMonitoredConfirm: 'Segui questo dispositivo',
   chooseMonitoredUpgrade: 'Tieni tutti i dispositivi: passa a Premium',
   chooseMonitoredDone: '{{name}} è ora il dispositivo che invia i report',
+  chooseMonitoredCurrent: 'Attualmente invia i report',
   monitoredCooldown:
     'Il dispositivo che invia i report può cambiare solo una volta ogni {{days}} giorni',
-  monitoredChooseFailed: 'Impossibile cambiare il dispositivo che invia i report',
+  monitoredChooseFailed:
+    'Impossibile cambiare il dispositivo che invia i report. Riprova.',
 
   cardWhereLabel: 'Posizione',
   cardWhereAccessibility: 'Apri la posizione di {{deviceName}}',
@@ -172,9 +213,6 @@ export const family = {
     'Aggiungi il dispositivo di tuo figlio per iniziare a monitorare il tempo di utilizzo e l’uso delle app.',
 
   setupFamilyTitle: 'Configura la tua famiglia',
-
-  setupFamilyDescription:
-    'Crea una famiglia per collegare i dispositivi dei tuoi figli oppure unisciti a una famiglia esistente tramite l’invito di un altro genitore.',
 
   createFamilyButton: 'Crea famiglia',
 
@@ -210,15 +248,15 @@ export const family = {
 
   stepsHeading: 'Primi passi',
 
-  step1Title: 'Tocca “Aggiungi dispositivo del bambino”',
+  step1Title: 'Apri KidGate sul dispositivo del bambino',
 
   step1Description:
-    'Qui comparirà un codice QR di associazione, pronto per essere scansionato.',
+    'Installa KidGate sul telefono, tablet, TV o computer usato da tuo figlio. Su un telefono o un tablet, scegli “Questo è un dispositivo di un bambino”. Compariranno un codice QR e un codice di 6 caratteri.',
 
-  step2Title: 'Scansionalo dal dispositivo del bambino',
+  step2Title: 'Tocca qui “Aggiungi dispositivo del bambino”',
 
   step2Description:
-    'Installa KidGate sul telefono o tablet di tuo figlio, scegli “Questo è il dispositivo di un bambino”, quindi scansiona il codice.',
+    'Scansiona quel codice QR con questo telefono, oppure inserisci il codice di 6 caratteri.',
 
   connectChildButton: 'Collega dispositivo del bambino',
   listHint: 'Scorri un dispositivo verso sinistra per rimuoverlo',

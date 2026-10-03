@@ -15,7 +15,7 @@ export const trial = {
   impactScreenTime: 'Thời gian sử dụng giảm khoảng {{duration}} mỗi ngày',
   impactWebBlocked: 'Đã chặn {{count}} lượt vào trang web không phù hợp',
   impactTamper: 'Đã ghi nhận {{count}} lần quyền bảo vệ bị tắt',
-  impactLocks: 'Đã áp dụng giờ khóa thiết bị và giờ ngủ {{count}} lần',
+  impactLocks: 'Đã áp dụng Giờ khóa thiết bị {{count}} lần',
   impactScreenTimeTracked: 'Đã đo giúp bạn {{duration}} thời gian sử dụng',
   impactDevices: 'Đã trông {{count}} thiết bị, cả ngày lẫn đêm',
   impactPlaceArrivals: 'Đã báo {{count}} lần con đến nơi an toàn',

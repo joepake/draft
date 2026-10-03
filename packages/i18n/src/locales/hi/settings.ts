@@ -44,6 +44,9 @@ export const settings = {
   accountLinkActionLink: 'जोड़ें',
   accountLinkActionUnlink: 'हटाएँ',
   accountLinkActionVerify: 'सत्यापित करें',
+  accountLinkActionLinkA11y: '{{provider}} जोड़ें',
+  accountLinkActionUnlinkA11y: '{{provider}} हटाएँ',
+  accountLinkActionVerifyA11y: '{{provider}} सत्यापित करें',
   accountLinkSummary: '{{methods}} से साइन इन',
   accountLinked: 'जुड़ा हुआ',
   accountNotLinked: 'नहीं जुड़ा',
@@ -59,13 +62,10 @@ export const settings = {
   pushNotificationsSubtitle: 'चुनें कि इस फ़ोन पर कौन-से अलर्ट आएँ',
   inAppAlertsLabel: 'ऐप के अंदर अलर्ट',
   inAppAlertsHint:
-    'समय अनुरोधों के लिए ऐप के अंदर अलर्ट दिखाएँ। SOS अलर्ट हमेशा दिखाई देते हैं।',
+    'KidGate खुला होने पर नए अलर्ट के लिए बैनर दिखाएँ। SOS अलर्ट हमेशा दिखाई देते हैं।',
   sosSoundLabel: 'SOS सायरन',
   sosSoundHint:
     'जब बच्चा SOS भेजता है तो इस फ़ोन पर तेज़ सायरन बजाएँ। कंपन हर हाल में चालू रहता है।',
-  shareScreenTimeLabel: 'मेरा स्क्रीन टाइम साझा करें',
-  shareScreenTimeHint:
-    'इस फ़ोन का स्क्रीन टाइम परिवार के बोर्ड पर, आपके बच्चों के स्क्रीन टाइम के बगल में दिखाया जाता है। इसके लिए उपयोग एक्सेस ज़रूरी है।',
   themeStyleLabel: 'थीम शैली',
   themeColorLabel: 'थीम रंग',
   signOutButton: 'साइन आउट',
@@ -98,12 +98,16 @@ export const settings = {
     '{{deviceName}} इस अकाउंट से साइन आउट हो जाएगा और सूचनाएँ मिलना बंद हो जाएँगी। जिसके पास यह है, वह पासवर्ड से फिर साइन इन कर सकता है।',
   toastParentDeviceRemoved: '{{deviceName}} हटाया गया।',
   signedOutByAnotherDevice:
-    'इस डिवाइस को किसी दूसरे डिवाइस से पैरेंट अकाउंट से साइन आउट कर दिया गया।',
+    'इस डिवाइस को किसी दूसरे डिवाइस से पैरेंट अकाउंट से साइन आउट कर दिया गया। जारी रखने के लिए फिर से साइन इन करें।',
   deleteAccountTitle: 'खाता हटाएँ',
   deleteAccountSubtitleDefault: 'अपने खाते और सभी डेटा को स्थायी रूप से हटाएँ',
   deleteAccountAlertTitle: 'क्या खाता स्थायी रूप से हटाना है?',
   deleteAccountAlertMessage:
     'इससे आपके फ़ैमिली अकाउंट को हटाने का समय तय हो जाता है। अभी कुछ भी नहीं हटाया गया है — आप हटाने की तारीख से पहले कभी भी साइन इन करके इसे रद्द कर सकते हैं। उसके बाद सभी डेटा (डिवाइस, गतिविधि, लोकेशन इतिहास, SOS फ़ोटो) सभी अभिभावकों और बच्चों के लिए स्थायी रूप से हटा दिया जाता है।',
+  deleteAccountAlertMessageMember:
+    'इससे सिर्फ़ आपके अपने अकाउंट को हटाने का समय तय होता है। अभी कुछ भी नहीं हटाया गया है — आप हटाने की तारीख से पहले कभी भी साइन इन करके इसे रद्द कर सकते हैं। उसके बाद आपका साइन-इन और आपकी अपनी सेटिंग्स हटा दी जाती हैं। परिवार, उसके डिवाइस और दूसरे अभिभावकों पर इसका कोई असर नहीं पड़ता।',
+  deleteAccountSubscriptionNotice:
+    'अकाउंट हटाने से सदस्यता रद्द नहीं होती। उसे App Store या Google Play में रद्द करें।',
   sendRequestButton: 'स्थायी रूप से हटाएँ',
   toastDeletionAlreadyPending: 'खाता हटाना पहले से ही जारी है।',
   toastDeletionRequestFailed:
@@ -184,9 +188,9 @@ export const settings = {
   familyMembersSection: 'सदस्य',
   deleteAccountSubtitleScheduled: 'हटाना निर्धारित है। रद्द करने के लिए साइन इन करें।',
   deleteAccountImpact:
-    'पहुँच खोने वाले माता-पिता: {{parents}}. पहुँच खोने वाले बच्चों के डिवाइस: {{devices}}.',
+    'पहुँच खोने वाले माता-पिता: {{parents}}। पहुँच खोने वाले बच्चों के डिवाइस: {{devices}}।',
   deleteAccountGraceNotice:
-    'आपका अकाउंट {{days}} दिनों तक चालू रहेगा, उसके बाद स्थायी रूप से हटा दिया जाएगा।',
+    'अकाउंट {{days}} दिन बाद हटाया जाएगा। तब तक आप KidGate खोलकर इसे रद्द कर सकते हैं।',
   deleteAccountReauthNotice: 'पुष्टि के लिए आपसे दोबारा साइन इन करने को कहा जाएगा।',
   deleteAccountConfirmLabel: 'पुष्टि के लिए {{word}} टाइप करें',
   statusScheduled: 'निर्धारित',

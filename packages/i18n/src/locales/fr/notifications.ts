@@ -9,7 +9,7 @@ export const notifications = {
   sectionSummary: 'Récapitulatif',
   sectionQuietHours: 'Heures silencieuses',
   sectionQuietHoursHint:
-    'Les alertes restent muettes sur cette plage. Le SOS n’est jamais coupé.',
+    'Les alertes restent muettes sur cette plage. Le SOS n’est jamais coupé, et les Alertes de messages les plus graves passent quand même.',
   quietHoursLabel: 'Heures silencieuses',
   quietHoursOff: 'Désactivé — les alertes arrivent à toute heure',
   quietHoursActive: 'Silencieux de {{start}} à {{end}}',
@@ -21,7 +21,7 @@ export const notifications = {
   alert: {
     tamperAlerts: {
       label: 'Protection désactivée',
-      hint: 'Une autorisation nécessaire à KidGate a été coupée sur un appareil enfant.',
+      hint: 'Sur un appareil enfant, une autorisation nécessaire à KidGate a été désactivée, la date, l’heure ou le fuseau horaire a été modifié, ou le SOS a été pressé pendant que l’appareil était verrouillé. L’alerte SOS elle-même passe toujours.',
     },
     placeAlerts: {
       label: 'Arrivées et départs',
@@ -57,7 +57,11 @@ export const notifications = {
     },
     messageAlerts: {
       label: 'Alertes de messages',
-      hint: 'Soyez averti lorsque des mots préoccupants apparaissent dans les messages',
+      hint: 'Des mots préoccupants apparaissent dans les messages ou les recherches de votre enfant.',
+    },
+    billing: {
+      label: 'Rappels Premium',
+      hint: 'Des rappels pour vous abonner après votre essai. Les avis de fin d’essai ou de fin de Premium passent toujours.',
     },
   },
 };

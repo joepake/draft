@@ -39,6 +39,8 @@ export const videoHistory = {
   heroTopChannel: 'Mais visto',
   readerLayoutChanged:
     'No momento, os Shorts não estão sendo registrados neste dispositivo: o app do YouTube mudou e o KidGate precisa de uma atualização. Os outros vídeos continuam sendo registrados.',
+  grantNeeded:
+    'Os vídeos ainda não estão sendo registrados: o KidGate precisa de acesso às notificações no celular do seu filho. Nesse celular, abra os Ajustes do KidGate, selecione Desbloquear com o PIN dos pais e depois Permitir acesso às notificações na seção Alertas de mensagens.',
   openAction: 'Abrir no YouTube',
   searchAction: 'Pesquisar este vídeo no YouTube',
   openFailed: 'Não foi possível abrir o YouTube.',

@@ -2,6 +2,7 @@ export const webFilter = {
   title: 'Filtro da web',
   fallbackDeviceName: 'Dispositivo da criança',
   appliesToAll: 'Aplica-se a todos os {{count}} dispositivos de {{name}}',
+  appliesToAll_one: 'Aplica-se a {{count}} dispositivo de {{name}}',
   coverageLine: 'Ativo em {{enforcing}} de {{total}} dispositivos',
   mergeNotice:
     'Os dispositivos de {{name}} tinham configurações de filtro da web diferentes. Salvar aqui aplica um único conjunto a todos, combinado para a opção mais rígida.',
@@ -22,7 +23,7 @@ export const webFilter = {
   toggleAccessibilityLabel: 'Ativar o Filtro da web',
   safeSearchSectionTitle: 'Pesquisa segura e YouTube',
   safeSearchSectionSubtitle:
-    'Força o Google, o Bing e o DuckDuckGo a resultados seguros e bloqueia o YouTube no Modo restrito. Requer o filtro da web ativado.',
+    'Força o Google, o Bing e o DuckDuckGo a resultados seguros e bloqueia o YouTube no Modo restrito. Requer o Filtro da web ativado.',
   safeSearchLabel: 'Forçar SafeSearch',
   safeSearchHint:
     'Fixa o Google SafeSearch, o Modo restrito do YouTube, o Bing e o DuckDuckGo na configuração rigorosa. Android, Android TV e Chrome.',
@@ -64,34 +65,42 @@ export const webFilter = {
 
   heroSubtitleWindows:
     'Executa o resolvedor do próprio KidGate no PC da criança para bloquear sites inadequados conhecidos em todos os navegadores.',
+  heroSubtitleExtension:
+    'Executa a extensão do KidGate no Chrome, no computador da criança, para bloquear sites inadequados conhecidos nesse navegador.',
 
   toggleHintWindows:
     'Não há nada a aprovar no PC. O serviço em segundo plano do KidGate liga o filtro em poucos segundos.',
+  toggleHintExtension:
+    'Não há nada a aprovar. O filtro funciona só no Chrome, não em outros navegadores nem apps.',
 
   infoLine1Windows:
-    'O KidGate executa no PC um resolvedor que verifica que sites estão a ser procurados e bloqueia os das suas categorias.',
+    'O KidGate executa no PC um resolvedor que verifica quais sites estão sendo procurados e bloqueia os das suas categorias.',
 
   infoLine2Windows:
-    'O Chrome, o Edge e o Firefox ficam presos a ele por uma definição aplicada pelo KidGate. Nada é pedido à criança.',
+    'O Chrome, o Edge e o Firefox ficam presos a ele por uma configuração aplicada pelo KidGate. Nada é pedido à criança.',
 
   infoLine3Windows:
     'Precisa do serviço em segundo plano do KidGate. Se a filtragem continuar desligada, reinstale o KidGate no PC como administrador.',
 
   infoLine4Windows:
-    'O filtro lê apenas nomes de sites. Não vê o interior de uma página, e um site procurado há pouco pode continuar a abrir durante alguns minutos.',
+    'O filtro lê apenas nomes de sites. Não vê o interior de uma página, e um site procurado há pouco pode continuar abrindo por alguns minutos.',
+  infoLine1Extension:
+    'A extensão do KidGate verifica cada site antes que o Chrome o abra e bloqueia os das suas categorias.',
+  infoLine2Extension:
+    'Só o Chrome é filtrado, no perfil em que o KidGate está instalado. Outros navegadores e apps do computador não são.',
+  infoLine3Extension:
+    'As janelas anônimas só são filtradas se “Permitir no modo anônimo” estiver ativado para a extensão. As janelas de visitante não são filtradas.',
+  infoLine4Extension:
+    'Uma página bloqueada permite que seu filho peça a você para liberar o site. Remover ou desativar a extensão interrompe o filtro.',
 
   windowsFilterNote: 'Usa o resolvedor do próprio KidGate no Windows',
-  webFilteringNote:
-    'O iOS usa o filtro de conteúdo adulto do Tempo de Uso. Android, Mac e Windows usam a lista de bloqueio do próprio KidGate.',
-  safeSearchAlertsNote:
-    'O Safari não compartilha termos de busca; alertas por palavra-chave exigem um navegador seguro gerenciado.',
-  webHistoryNote: 'Requer um navegador com filtro ou relatórios via DNS/VPN.',
+  extensionFilterNote: 'Usa a extensão do KidGate no Chrome',
   categoriesTitle: 'O que bloquear',
   categoriesSubtitle:
     'O KidGate usa suas próprias listas de domínios. Elas cobrem os sites que as crianças realmente alcançam, não a web inteira — combine com as listas abaixo.',
-  androidOnlyCategory: 'Indisponível no iPhone — funciona no Android e no Mac',
+  androidOnlyCategory: 'Indisponível no iPhone — funciona em outros dispositivos',
   iosCategoryNote:
-    'O iPhone só suporta {{category}}, usando o filtro da Apple. As outras categorias valem para dispositivos Android e Mac da criança.',
+    'O iPhone só suporta {{category}}, usando o filtro da Apple. As outras categorias valem em outros dispositivos.',
   allowListTitle: 'Sempre permitir',
   allowListSubtitle:
     'Sites que continuam acessíveis mesmo quando uma categoria os bloquearia.',
@@ -106,6 +115,8 @@ export const webFilter = {
     'Tudo fora da sua lista é recusado. Funciona na camada DNS, então outros apps também perdem conexão.',
   allowListOnlyHintIos:
     'O Safari e os navegadores dentro de apps só abrem os sites da sua lista.',
+  allowListOnlyHintExtension:
+    'O Chrome só abre os sites da sua lista de permitidos. Outros navegadores e apps não são afetados.',
   allowListOnlyNeedsEntries: 'Adicione pelo menos um site permitido antes de ativar.',
   domainPlaceholder: 'exemplo.com',
   addDomain: 'Adicionar site',

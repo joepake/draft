@@ -10,7 +10,11 @@
 
 import type { ScheduleWindow } from '@kidgate/schema/deviceControls';
 import { ALL_SCHEDULE_DAYS } from '@kidgate/schema/deviceControls';
-import { normalizeScheduleDays } from './scheduleWindow';
+import {
+  isOvernightScheduleWindow,
+  normalizeScheduleDays,
+  parseTimeToMinutes,
+} from './scheduleWindow';
 
 /** Monday-first, because that is the order the picker shows. */
 const DAY_LABEL_KEYS = [
@@ -45,27 +49,61 @@ export function scheduleDayLabelKey(day: number): string {
   return DAY_LABEL_KEYS[mondayFirstIndex(day)] ?? DAY_LABEL_KEYS[0];
 }
 
-/**
- * One-tap day sets.
- *
- * **"School nights" is Sunday-through-Thursday, not Monday-through-Friday**: an
- * overnight curfew is stamped by the night it starts, so the nights before
- * school are Sun–Thu, and Friday and Saturday nights are the weekend. Getting
- * that backwards ships a curfew that lets the child stay up on a school night
- * and blocks them on a Friday — which is why this sits beside the rule rather
- * than being retyped per surface.
- */
-export const SCHEDULE_DAY_PRESETS: ReadonlyArray<{
+/** One one-tap day set: the chip's label key and the days it writes. */
+export interface ScheduleDayPreset {
   labelKey: string;
   days: number[];
-}> = [
-  { labelKey: 'blockedHours.daysEveryDay', days: [...ALL_SCHEDULE_DAYS] },
-  { labelKey: 'blockedHours.daysSchoolNights', days: [0, 1, 2, 3, 4] },
-  { labelKey: 'blockedHours.daysWeekend', days: [5, 6] },
+}
+
+/** Mon–Fri. The days a daytime window means by "weekdays". */
+const SCHOOL_DAYS = [1, 2, 3, 4, 5];
+
+const EVERY_DAY_PRESET: ScheduleDayPreset = {
+  labelKey: 'blockedHours.daysEveryDay',
+  days: [...ALL_SCHEDULE_DAYS],
+};
+
+/**
+ * Daytime windows: the days are the days the block runs on, so the weekend is
+ * Saturday and Sunday.
+ */
+const DAYTIME_DAY_PRESETS: readonly ScheduleDayPreset[] = [
+  EVERY_DAY_PRESET,
+  { labelKey: 'blockedHours.daysWeekdays', days: [...SCHOOL_DAYS] },
+  { labelKey: 'blockedHours.daysWeekend', days: [0, 6] },
 ];
 
-/** Mon–Fri. Daytime windows, unlike the overnight preset above. */
-const SCHOOL_DAYS = [1, 2, 3, 4, 5];
+/**
+ * Overnight windows: **"School nights" is Sunday-through-Thursday, not
+ * Monday-through-Friday**. An overnight curfew is stamped by the night it
+ * starts, so the nights before school are Sun–Thu, and Friday and Saturday
+ * nights are the weekend. Getting that backwards ships a curfew that lets the
+ * child stay up on a school night and blocks them on a Friday.
+ */
+const OVERNIGHT_DAY_PRESETS: readonly ScheduleDayPreset[] = [
+  EVERY_DAY_PRESET,
+  { labelKey: 'blockedHours.daysSchoolNights', days: [0, 1, 2, 3, 4] },
+  { labelKey: 'blockedHours.daysWeekendNights', days: [5, 6] },
+];
+
+/**
+ * One-tap day sets for this window, which depend on whether it crosses
+ * midnight.
+ *
+ * One table used to serve every window, and it was the overnight one: on an
+ * 08:00–16:00 window "Weekend" wrote Friday and Saturday, blocking a school
+ * Friday and leaving Sunday free. A daytime window's days are the days the
+ * block runs, so it gets Weekdays (Mon–Fri) and Weekend (Sat+Sun); an overnight
+ * window keeps the night-stamped pair and says "nights" in both labels. Both
+ * parent surfaces read this rather than retyping either table.
+ */
+export function scheduleDayPresets(
+  window: ScheduleWindow,
+): readonly ScheduleDayPreset[] {
+  return isOvernightScheduleWindow(window)
+    ? OVERNIGHT_DAY_PRESETS
+    : DAYTIME_DAY_PRESETS;
+}
 
 /**
  * One-tap context windows.
@@ -117,9 +155,23 @@ export function scheduleDayLabelKeys(window: ScheduleWindow): string[] | null {
 }
 
 /**
- * `"22:00 - 07:00"` — the locale-neutral half of the line. Day labels are the
- * caller's to render and append (the phone joins with `" · "`).
+ * The window's two ends as one range. Day labels are the caller's to render
+ * and append (the phone joins with `" · "`).
+ *
+ * Without `formatTime` it is the stored `"22:00 - 07:00"`, which is only right
+ * for a 24-hour reader — an English parent was told their child's curfew in a
+ * clock they do not use. A caller with a locale passes its own clock
+ * (`formatTime(minuteOfDay)`, the phone's `formatMinuteOfDay`) and gets
+ * `"10:00 PM – 7:00 AM"`; this package has no locale to reach for.
  */
-export function scheduleWindowTimeRange(window: ScheduleWindow): string {
-  return `${window.start} - ${window.end}`;
+export function scheduleWindowTimeRange(
+  window: ScheduleWindow,
+  formatTime?: (minuteOfDay: number) => string,
+): string {
+  if (!formatTime) {
+    return `${window.start} - ${window.end}`;
+  }
+  return `${formatTime(parseTimeToMinutes(window.start))} – ${formatTime(
+    parseTimeToMinutes(window.end),
+  )}`;
 }

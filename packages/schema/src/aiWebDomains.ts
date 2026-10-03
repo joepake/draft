@@ -11,8 +11,11 @@
  *
  * Storage contract: `users/{ownerUid}/childDevices/{deviceId}.aiWebDomains`
  * is a flat, already-serious-only string array written **only** by the
- * `classifyWebDomains` Cloud Function (Admin SDK); `firestore.rules` pins the
- * field immutable for every client. Enforcement folds it into
+ * server (Admin SDK): `logChildWebActivity` as rows are written, since
+ * 2026-09-27, and `classifyWebDomains` before that. Entries are registrable
+ * domains (`@kidgate/core/domain/webDomainKey`) and every platform matches
+ * them as suffixes, so one entry covers the site's hosts. `firestore.rules`
+ * pins the field immutable for every client. Enforcement folds it into
  * `WebFilterPolicy.blockedDomains` (see `resolveWebFilterPolicy`), which every
  * platform already honours — and the parent's allow list still outranks it,
  * so one wrong classification is one allow-list entry away from fixed.

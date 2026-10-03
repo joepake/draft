@@ -2,11 +2,14 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import QRCode from 'qrcode';
 import { useT } from '@kidgate/web-ui/useT';
 import { buildPairingQrValue } from '@kidgate/core/domain/pairingQr';
+import { wouldExceedFamilyParents } from '@kidgate/core/domain/pairingCeilings';
+import { resolveParentCapTeaser } from '@kidgate/core/domain/premiumTeaser';
 import { qrSvg } from '@kidgate/core/domain/qrSvg';
 import { useActivityTranslate } from './activityCopy.js';
 import Icon from '@kidgate/web-ui/Icon';
 import { shareCanvasImage } from './shareCard.js';
 import { parentInviteRepository } from '../adapters/repositories.js';
+import PremiumTeaser from './PremiumTeaser.jsx';
 
 /*
  * The same literal `QrSignIn` writes for the sign-in code: this surface has no
@@ -44,7 +47,14 @@ const QR_PX = 170;
  * server-scoped collection this browser cannot read directly, and the endpoint
  * scopes them to the caller's own uid.
  */
-export default function ParentsCard({ members, actions, run, busy }) {
+export default function ParentsCard({
+  members,
+  actions,
+  run,
+  busy,
+  readOnly = false,
+  isPremium = false,
+}) {
   const { t } = useT();
   const appT = useActivityTranslate();
   const [invite, setInvite] = useState(null);
@@ -52,6 +62,17 @@ export default function ParentsCard({ members, actions, run, busy }) {
   const [removing, setRemoving] = useState(null);
 
   const owner = Boolean(actions?.isOwner);
+  /*
+   * The parent ceiling: three without Premium — the trial included — and six
+   * with it, owner counted (`maxParentsPerFamily`, 2026-09-27).
+   * `createPairingCode` refuses a full family, so the button gives way to the
+   * sentence rather than failing after the click; the phone reads the same
+   * two folds. Removing a member stays open. `members` excludes the owner,
+   * as `useFamilyData` counts them.
+   */
+  const parentCount = members.length + 1;
+  const capTeaser = resolveParentCapTeaser({ paid: isPremium, parentCount });
+  const familyFull = wouldExceedFamilyParents(parentCount, isPremium);
 
   /*
    * Drawn from the encoder's matrix by `@kidgate/core/domain/qrSvg`, the same
@@ -136,7 +157,8 @@ export default function ParentsCard({ members, actions, run, busy }) {
             </span>
             <button
               className="login-link"
-              disabled={busy}
+              disabled={busy || readOnly}
+              title={readOnly ? t('dash.unlockToChange') : undefined}
               onClick={() => setRemoving(member)}
             >
               <Icon name="trash" size={13} />
@@ -159,7 +181,7 @@ export default function ParentsCard({ members, actions, run, busy }) {
             </button>
             <button
               className="btn btn-sm btn-danger"
-              disabled={busy}
+              disabled={busy || readOnly}
               onClick={async () => {
                 const ok = await run('parent-remove', () =>
                   actions.removeParent(removing.id),
@@ -186,7 +208,7 @@ export default function ParentsCard({ members, actions, run, busy }) {
               </span>
               <button
                 className="btn btn-sm"
-                disabled={busy}
+                disabled={busy || readOnly}
                 onClick={async () => {
                   await run('parent-join', () =>
                     actions.resolveParentJoin(request.requestId, false),
@@ -198,7 +220,7 @@ export default function ParentsCard({ members, actions, run, busy }) {
               </button>
               <button
                 className="btn btn-sm btn-primary"
-                disabled={busy}
+                disabled={busy || readOnly}
                 onClick={async () => {
                   await run('parent-join', () =>
                     actions.resolveParentJoin(request.requestId, true),
@@ -242,10 +264,18 @@ export default function ParentsCard({ members, actions, run, busy }) {
             </button>
           </div>
         </div>
+      ) : capTeaser ? (
+        <PremiumTeaser teaser={capTeaser} appT={appT} />
+      ) : familyFull ? (
+        <p className="hint">
+          <strong>{appT('plans.teaserProofParents', { count: parentCount })}</strong>{' '}
+          {appT('family.parentLimitFull')}
+        </p>
       ) : (
         <button
           className="btn btn-sm"
-          disabled={busy}
+          disabled={busy || readOnly}
+          title={readOnly ? t('dash.unlockToChange') : undefined}
           onClick={async () => {
             const result = await run('parent-invite', () =>
               actions.createParentInvite(),

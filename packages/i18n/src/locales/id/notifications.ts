@@ -8,7 +8,7 @@ export const notifications = {
   sectionSummary: 'Ringkasan',
   sectionQuietHours: 'Jam tenang',
   sectionQuietHoursHint:
-    'Peringatan senyap selama rentang ini. SOS tidak pernah dibisukan.',
+    'Peringatan senyap selama rentang ini. SOS tidak pernah dibisukan, dan Peringatan pesan yang paling serius tetap masuk.',
   quietHoursLabel: 'Jam tenang',
   quietHoursOff: 'Nonaktif — peringatan datang kapan saja',
   quietHoursActive: 'Senyap dari {{start}} sampai {{end}}',
@@ -20,7 +20,7 @@ export const notifications = {
   alert: {
     tamperAlerts: {
       label: 'Perlindungan dimatikan',
-      hint: 'Izin yang dibutuhkan KidGate dimatikan di perangkat anak.',
+      hint: 'Di perangkat anak, izin yang dibutuhkan KidGate dimatikan, tanggal, waktu, atau zona waktu diubah, atau SOS ditekan saat perangkat terkunci. Peringatan SOS itu sendiri selalu masuk.',
     },
     placeAlerts: {
       label: 'Kedatangan dan kepergian',
@@ -56,7 +56,11 @@ export const notifications = {
     },
     messageAlerts: {
       label: 'Peringatan pesan',
-      hint: 'Dapatkan peringatan saat kata yang mengkhawatirkan muncul di pesan',
+      hint: 'Kata yang mengkhawatirkan muncul di pesan atau pencarian anak Anda.',
+    },
+    billing: {
+      label: 'Pengingat Premium',
+      hint: 'Pengingat untuk berlangganan setelah uji coba berakhir. Pemberitahuan bahwa uji coba atau Premium berakhir selalu masuk.',
     },
   },
 };

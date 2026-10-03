@@ -8,8 +8,8 @@ export const report = {
 
   statScreenTime: 'Thời gian sử dụng',
   statDailyAverage: 'Trung bình mỗi ngày',
-  statBlockedApps: 'Ứng dụng bị chặn',
-  statBlockedWebVisits: 'Trang web bị lọc',
+  statBlockedApps: 'Lượt mở ứng dụng bị chặn',
+  statBlockedWebVisits: 'Lượt truy cập web bị chặn',
   statTasksApproved: 'Nhiệm vụ hoàn thành',
 
   trendUp: 'Nhiều hơn tuần trước {{value}}',
@@ -73,7 +73,7 @@ export const report = {
   shareFailed: 'Không mở được bảng chia sẻ.',
   shareLinkCta: 'Tải ứng dụng tại {{url}}',
   shareFooterDesc:
-    'KidGate giúp bố mẹ theo dõi thời gian sử dụng, vị trí và tin nhắn của con.',
+    'KidGate giúp bố mẹ quản lý thời gian sử dụng, xem vị trí và lọc nội dung web.',
   shareFooterCta: 'Tải app tại kidgate.app',
 
   currentWeekTab: 'Tuần này',
@@ -105,6 +105,9 @@ export const report = {
   // existed; the phone could not, because the copy lived only in the web
   // pack.
   childrenTitle: 'Từng con',
+  childrenNoteByChild:
+    'Cùng hai tuần ở trên, tính cho từng con trên mọi thiết bị con dùng. Phần trăm so với tổng cả nhà.',
+  devicesTitle: 'Từng thiết bị',
   childrenNote:
     'Cùng hai tuần ở trên, tính theo từng thiết bị. Phần trăm so với tổng cả nhà.',
   colChild: 'Con',

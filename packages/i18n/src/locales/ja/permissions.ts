@@ -34,7 +34,9 @@ export const permissions = {
   oemAutostartHintXiaomi:
     '「自動起動」でKidGateをオンにし、再起動後も保護機能が再開されるようにしてください。',
   oemAutostartHintSamsung:
-    '「バッテリー」→「バックグラウンド使用中の制限」→「スリープさせないアプリ」でKidGateを追加してください。一覧にKidGateがない場合はすでに許可済みで、この手順は完了です。',
+    '「バッテリー」で「バックグラウンド使用中の制限」を選びます。',
+  oemAutostartHintSamsungAdd:
+    '「スリープさせないアプリ」を開いてKidGateを追加してください。一覧にKidGateがない場合はすでに許可済みで、この手順は完了です。',
   oemAutostartHintOppo: '「起動アプリ」/「自動起動」でKidGateを許可してください。',
   oemAutostartHintVivo:
     '「自動起動」/「バックグラウンド高電力」でKidGateを許可してください。',
@@ -50,8 +52,10 @@ export const permissions = {
     '一覧全体が開いた場合は、「ダウンロードしたアプリ」からKidGateを選んでください。',
   accessibilityStepTurnOn:
     'スイッチをオンにし、Androidの確認画面で許可を選んでください。',
+  restrictedSettingsStep:
+    'スイッチが灰色で押せない場合は、設定 › アプリ › KidGate を開き、⋮ メニューから「制限された設定を許可」を選んでから、ここへ戻ってもう一度お試しください。',
   accessibilityWarningNote:
-    'Androidは、KidGateが操作を監視できると警告します。ロックを他のアプリの上に維持するためのものです。KidGateはパスワードや個人的なメッセージを読み取りません。',
+    'Androidは、KidGateが操作を監視できると警告します。この権限によってKidGateは、ロックを常に手前に表示できるようにどのアプリが開いているかを確認し、「視聴した動画を記録」がオンのときはYouTube動画のタイトルとチャンネルを読み取ります。パスワードやメッセージ、入力した内容を読むためには使いません。',
   uninstallProtectionWizardBody:
     '保護者PINなしでこのアプリがアンインストールされるのを防ぎます。Androidの確認画面が表示されます。',
   notificationsWizardBody:
@@ -61,6 +65,8 @@ export const permissions = {
     'KidGateの「Appのバックグラウンド更新」をオンにしてください。',
   backgroundRefreshStepGeneral:
     'スイッチがグレーの場合は、設定を開き、「一般」、「Appのバックグラウンド更新」の順に進んでオンにしてください。',
+  locationAlwaysStep: '「位置情報」で「常に許可」を選びます。',
+  locationAlwaysStepAndroid: '「権限」→「位置情報」で「常に許可」を選びます。',
   batteryStepAllow: 'Androidの確認画面で「許可」を選んでください。',
   batteryStepAppInfo:
     '画面が表示されない場合は、アプリ情報を開き、「バッテリー」、「制限なし」の順に選んでください。',

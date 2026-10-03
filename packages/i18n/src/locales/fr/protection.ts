@@ -38,6 +38,8 @@ export const protection = {
   lockNotReadyBodyIos:
     'KidGate ne peut pas verrouiller cet iPhone tant que l’accès à Temps d’écran n’est pas autorisé sur l’appareil de l’enfant. Veuillez ouvrir KidGate sur cet appareil et terminer les étapes suivantes :',
   locationPermission: 'Autorisation de localisation',
+  locationForegroundOnly:
+    'La localisation ne se met à jour que lorsque KidGate est ouvert sur l’appareil de l’enfant.',
   cameraPermission: 'Autorisation caméra',
   cameraConsentPending:
     'L’appareil photo n’est pas autorisé sur cet appareil : un SOS ou un Check-in envoyé depuis cet appareil arrivera sans photo.',
@@ -66,19 +68,9 @@ export const protection = {
   healthBadgeProtected: 'Vert — protégé',
   healthBadgeWarning: 'Jaune — configuration requise',
   healthBadgeInactive: 'Rouge — appareil de l’enfant silencieux depuis plus de 24 h',
-  iosFeatureSupportEvaluating:
-    'La prise en charge de cette fonctionnalité sur iOS est en cours d’évaluation.',
   iosUpgradeRequiredNote:
     'Ceci nécessite iOS 16 ou une version ultérieure. Mettez à jour l’appareil de l’enfant dans Réglages › Général › Mise à jour logicielle. Si aucune mise à jour n’est proposée, cet iPad ou iPhone est trop ancien pour être pris en charge par Apple.',
   iosUpgradeActionLabel: 'Nécessite iOS 16',
-  lockUnlockNote:
-    'Verrouille l’appareil via Temps d’écran une fois que l’enfant a autorisé l’accès.',
-  scheduleNote:
-    'Jusqu’à 3 plages d’Heures bloquées bloquent les apps via Temps d’écran.',
-  individualAppBlockingNote:
-    'L’enfant sélectionne les apps après avoir saisi le code PIN parental à 6 chiffres.',
-  tamperAlertsNote:
-    'Signale les changements d’autorisations et les périodes où l’app de l’appareil de l’enfant ne s’est pas mise à jour depuis un moment.',
   appReviewRemindersNote:
     'iOS n’expose pas les événements d’installation ; vérifiez régulièrement les apps avec l’appareil de l’enfant.',
 } as const;

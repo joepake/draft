@@ -39,6 +39,7 @@
  */
 
 import type { DeviceCapabilities, DevicePlatform } from '@kidgate/schema/capabilities';
+import type { SafetyCheckIn } from '@kidgate/schema/safetyCheckIn';
 import { isBrowserOnlySurface } from './deviceSurface';
 
 /**
@@ -118,4 +119,32 @@ export function answersCheckInWithPhoto(
   premiumLapsed: boolean,
 ): boolean {
   return requirePhoto === true && !premiumLapsed;
+}
+
+/** What a check-in row tells the parent. */
+export type CheckInOutcome = 'waiting' | 'safe' | 'askedForHelp' | 'noResponse';
+
+/**
+ * How a check-in ended, for both parent consoles.
+ *
+ * `missed` is written for three reasons and only one of them is silence: a
+ * newer request replaced it (`createRequest`), the child sent an SOS instead
+ * of answering, or a parent acknowledged an SOS while it was still open. Both
+ * SOS closes stamp `sosAlertId`, and that is the case worth telling apart — it
+ * read "No response" to a parent whose child had just asked for help. A
+ * parent's acknowledgement stamps only check-ins asked for at or before the
+ * alert (`dismissPendingForDevice`'s `createdAtOrBefore`); one asked for after
+ * it closes without the id and still reads `noResponse`, because nothing
+ * answered it.
+ */
+export function resolveCheckInOutcome(
+  checkIn: Pick<SafetyCheckIn, 'status' | 'sosAlertId'>,
+): CheckInOutcome {
+  if (checkIn.status === 'safe') {
+    return 'safe';
+  }
+  if (checkIn.status === 'missed') {
+    return checkIn.sosAlertId ? 'askedForHelp' : 'noResponse';
+  }
+  return 'waiting';
 }

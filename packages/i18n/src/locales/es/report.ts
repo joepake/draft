@@ -8,8 +8,8 @@ export const report = {
 
   statScreenTime: 'Tiempo de uso',
   statDailyAverage: 'Promedio diario',
-  statBlockedApps: 'Apps bloqueadas',
-  statBlockedWebVisits: 'Sitios filtrados',
+  statBlockedApps: 'Aperturas de apps bloqueadas',
+  statBlockedWebVisits: 'Visitas a sitios bloqueados',
   statTasksApproved: 'Tareas completadas',
 
   trendUp: '{{value}} más que la semana anterior',
@@ -87,7 +87,7 @@ export const report = {
   shareFailed: 'No se pudo abrir el menú de compartir.',
   shareLinkCta: 'Descarga la app en {{url}}',
   shareFooterDesc:
-    'KidGate ayuda a los padres a ver el tiempo de pantalla, la ubicación y los mensajes.',
+    'KidGate ayuda a los padres a gestionar el tiempo de pantalla, ver la ubicación y filtrar la web.',
   shareFooterCta: 'Descarga la app en kidgate.app/get',
 
   currentWeekTab: 'Esta semana',
@@ -120,6 +120,9 @@ export const report = {
   // existed; the phone could not, because the copy lived only in the web
   // pack.
   childrenTitle: 'Cada hijo',
+  childrenNoteByChild:
+    'La misma quincena, cada hijo en todos los dispositivos que usa. Los porcentajes son del total familiar.',
+  devicesTitle: 'Cada dispositivo',
   childrenNote:
     'La misma quincena, por dispositivo. Los porcentajes son del total familiar.',
   colChild: 'Hijo',

@@ -33,8 +33,9 @@ export const permissions = {
   oemAutostartLabel: 'Izinkan mulai otomatis',
   oemAutostartHintXiaomi:
     'Di Mulai otomatis, aktifkan KidGate agar perlindungan mulai lagi setelah perangkat dinyalakan ulang.',
-  oemAutostartHintSamsung:
-    'Di Baterai → Batas penggunaan latar belakang → Aplikasi yang tidak pernah tidur, tambahkan KidGate. Jika KidGate tidak ada di daftar, berarti sudah diizinkan dan langkah ini selesai.',
+  oemAutostartHintSamsung: 'Di Baterai, pilih Batas penggunaan latar belakang.',
+  oemAutostartHintSamsungAdd:
+    'Buka Aplikasi yang tidak pernah tidur dan tambahkan KidGate. Jika KidGate tidak ada di daftar, berarti sudah diizinkan dan langkah ini selesai.',
   oemAutostartHintOppo:
     'Di Aplikasi saat mulai / Peluncuran otomatis, izinkan KidGate.',
   oemAutostartHintVivo:
@@ -51,8 +52,10 @@ export const permissions = {
     'Jika yang terbuka adalah daftar lengkap, pilih KidGate di Aplikasi terpasang / diunduh.',
   accessibilityStepTurnOn:
     'Nyalakan sakelarnya, lalu pilih Izinkan pada konfirmasi Android.',
+  restrictedSettingsStep:
+    'Jika sakelarnya abu-abu, buka Setelan › Aplikasi › KidGate, ketuk menu ⋮ lalu pilih “Izinkan setelan terbatas”, kemudian kembali ke sini dan coba lagi.',
   accessibilityWarningNote:
-    'Android memperingatkan bahwa KidGate dapat mengamati tindakan Anda. Begitulah kunci tetap tampil di atas aplikasi lain — KidGate tidak membaca kata sandi atau pesan pribadi.',
+    'Android memperingatkan bahwa KidGate dapat mengamati tindakan pengguna. Dengan izin ini, KidGate melihat aplikasi mana yang sedang terbuka agar kunci tetap tampil di atas, dan membaca judul serta saluran video YouTube saat video yang ditonton sedang direkam. KidGate tidak memakainya untuk membaca kata sandi, pesan, atau apa yang diketik.',
   uninstallProtectionWizardBody:
     'Mencegah aplikasi ini dihapus tanpa PIN Orang Tua. Android menampilkan layar konfirmasinya sendiri.',
   notificationsWizardBody:
@@ -61,6 +64,8 @@ export const permissions = {
   backgroundRefreshStepTurnOn: 'Aktifkan Penyegaran latar belakang untuk KidGate.',
   backgroundRefreshStepGeneral:
     'Jika sakelarnya abu-abu, buka Pengaturan, lalu Umum, lalu Penyegaran latar belakang dan aktifkan.',
+  locationAlwaysStep: 'Pilih Lokasi, lalu pilih “Selalu”.',
+  locationAlwaysStepAndroid: 'Pilih Izin → Lokasi, lalu pilih “Selalu izinkan”.',
   batteryStepAllow: 'Pilih Izinkan pada permintaan Android.',
   batteryStepAppInfo:
     'Jika tidak ada permintaan, buka Info aplikasi, lalu Baterai, lalu pilih Tanpa batasan.',

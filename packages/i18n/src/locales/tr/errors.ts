@@ -8,6 +8,12 @@ export const errors = {
   invalidEmailOrPassword: 'E-posta adresi veya parola hatalı.',
   tooManyRequests: 'Çok fazla deneme yapıldı. Lütfen daha sonra tekrar deneyin.',
   somethingWentWrong: 'Bir hata oluştu. Lütfen tekrar deneyin.',
+  accountDisabled:
+    'Bu hesap devre dışı bırakıldı. Hesabı geri açmak için KidGate destek ekibiyle iletişime geçin.',
+  recentLoginRequired:
+    'Güvenliğiniz için tekrar oturum açın, ardından bu işlemi yeniden deneyin.',
+  accountExistsDifferentMethod:
+    'Bu e-posta adresiyle farklı bir giriş yöntemi kullanan bir hesap zaten var. O yöntemle oturum açın, ardından bu yöntemi Ayarlar’dan bağlayın.',
   unableToCreateAccount: 'Hesap oluşturulamadı. Lütfen tekrar deneyin.',
   unableToSignIn: 'Oturum açılamadı. Lütfen tekrar deneyin.',
   unableToJoinFamilyAccount: 'Aile hesabına katılınamadı. Lütfen tekrar deneyin.',
@@ -16,7 +22,8 @@ export const errors = {
   unableToRedeemPairingCode:
     'Bu kod eşleşmiyor. Karakterleri dikkatlice kontrol edin — kodun üzerinden zaman geçtiyse yeni bir kod isteyin.',
   unableToClaimChildPairing: 'Çocuğun cihazı bağlanamadı. Lütfen tekrar deneyin.',
-  unableToPollChildPairing: 'Eşleştirme durumu kontrol edilemedi.',
+  unableToPollChildPairing:
+    'Eşleştirme durumu kontrol edilemedi. Lütfen tekrar deneyin.',
   unableToConfirmChildPairing: 'Eşleştirme onaylanamadı. Lütfen tekrar deneyin.',
   unableToRejectChildPairing: 'Eşleştirme reddedilemedi. Lütfen tekrar deneyin.',
   photoCaptureCancelled: 'Fotoğraf çekimi iptal edildi.',
@@ -36,8 +43,6 @@ export const errors = {
   noNetworkConnection:
     'İnternet bağlantısı yok. Wi-Fi veya mobil verinizi kontrol edip tekrar deneyin.',
   connectionFailedTitle: 'Bağlantı başarısız',
-  connectionFailedBody:
-    'KidGate bağlanamadı. Wi-Fi veya mobil verinizi kontrol edin ve “Yeniden Bağlan”ı seçin.',
   reconnect: 'Yeniden Bağlan',
   unableToUploadPhoto: 'Fotoğraf yüklenemedi. Lütfen tekrar deneyin.',
   premiumSubscriptionRequired:
@@ -48,6 +53,7 @@ export const errors = {
   notFamilyMember:
     'Artık bu ailenin bir üyesi değilsiniz. Aile sahibinden sizi tekrar davet etmesini isteyin.',
   familyNotCreated: 'Önce ailenizi oluşturun, ardından başka bir ebeveyni davet edin.',
+  parentLimitReached: 'Bu ailede planın izin verdiği sayıda ebeveyn zaten var.',
   childDeviceNotAllowed: 'Bu bir çocuk cihazıdır ve aile ayarlarını yönetemez.',
   deviceCredentialMissing:
     'Bu cihazın yeniden bağlanması gerekiyor. KidGate’i kapatıp tekrar açın ve yeniden deneyin.',
@@ -89,6 +95,13 @@ export const errors = {
   leaveFamilyBeforeJoining:
     'Başka bir aileye katılmadan önce mevcut ailenizden ayrılın.',
   locationDailyLimitFree:
-    'Ücretsiz plan bugünkü konum sorgularını bitirdi. Premium konumu canlı izler.',
-  deviceLimitReached: 'KidGate’in bir aile için kapsadığı cihaz sayısına ulaştınız.',
+    'Ücretsiz plan bugünkü konum sorgularını bitirdi. Yarın tekrar deneyin — Premium konumu canlı izler.',
+  deviceLimitReached:
+    'Bu aile, KidGate’in kapsadığı cihaz sayısına ulaştı. Artık kullanmadığınız bir cihazı kaldırın, ardından tekrar deneyin.',
+  rewardTaskLimitReached:
+    'Aynı anda izin verilen sayıda etkin görev zaten var. Birini kaldırın ya da biri tamamlanana kadar bekleyin, ardından tekrar deneyin.',
+  deviceNotPaired:
+    'Bu cihaz artık ailene bağlı değil. Ailenden cihazı yeniden eşleştirmesini iste.',
+  bonusMinutesOutOfRange:
+    'Bu kadar ek süre tek seferde verilemez. Farklı bir süre seçip tekrar deneyin.',
 };

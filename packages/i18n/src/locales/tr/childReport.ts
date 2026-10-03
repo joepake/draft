@@ -37,7 +37,6 @@ export const childReport = {
   bandTooThin: 'Bu günün ölçülen kısmı çizilemeyecek kadar az.',
 
   sectionDevices: 'Hangi cihaz',
-  deviceTotalsOnly: 'Yalnızca toplam',
   openDeviceReport: '{{name}} raporunu aç',
 
   sectionApps: 'En çok kullanılan',

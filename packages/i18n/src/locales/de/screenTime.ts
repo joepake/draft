@@ -2,17 +2,17 @@ export const screenTime = {
   turnOnScreenTime: 'Bildschirmzeit aktivieren',
   finishScreenTimeSetup: 'Bildschirmzeit-Einrichtung abschließen',
   screenTimeNeededForControls:
-    'App-Blockierung, Sperrzeiten und Sperren benötigen Bildschirmzeit auf diesem Gerät.',
+    'Blockierte Apps, Sperrzeiten, Tageslimit und Sperren benötigen Bildschirmzeit auf diesem Gerät.',
   screenTimeNeededForLimits:
-    'Ohne Bildschirmzeit lassen sich Sperren, Sperrzeiten und App-Limits nicht anwenden.',
+    'Ohne Bildschirmzeit lassen sich Sperren, Sperrzeiten, Tageslimit und Blockierte Apps nicht anwenden.',
   screenTimeStepOpenKidGate: 'Öffne KidGate auf diesem Kindergerät.',
   screenTimeStepAllowUsage:
     'Wähle auf dem Status-Bildschirm „App- & Websitenutzung erlauben“.',
   screenTimeStepTapAllow: 'Wähle „Erlauben“, wenn du gefragt wirst.',
   screenTimeStepReturnHereAuto:
     'Kehre hierher zurück – der Status aktualisiert sich automatisch.',
-  screenTimeDeniedStepOpenSettings:
-    'Öffne auf dem Kindergerät Einstellungen → KidGate.',
+  screenTimeDeniedStepOpenSettings: 'Öffne auf dem Kindergerät die Einstellungen.',
+  screenTimeDeniedStepFindKidGate: 'Suche KidGate in der Liste.',
   screenTimeDeniedStepTurnOnRestrictions: 'Aktiviere Bildschirmzeit.',
   screenTimeDeniedStepOpenKidGateAgain: 'Öffne KidGate erneut auf dem Kindergerät.',
   screenTimeDeniedStepReturnWhenReady:
@@ -29,6 +29,12 @@ export const screenTime = {
     '{{appName}} benötigt aktivierte Bildschirmzeit in den Einstellungen.',
   screenTimeBannerBodyRequest:
     'Damit können deine Eltern auf diesem Gerät Apps sperren und Sperrzeiten festlegen.',
+  screenTimeAuthPasscode:
+    'Dieses Gerät braucht einen Code, bevor KidGate Bildschirmzeit nutzen kann. Lege in den Einstellungen einen fest und versuche es dann erneut.',
+  screenTimeAuthConflict:
+    'Eine andere App steuert bereits Bildschirmzeit auf diesem Gerät. Entferne diese App und versuche es dann erneut.',
+  screenTimeAuthRestricted:
+    'Eine Einschränkung auf diesem Gerät verhindert, dass KidGate Bildschirmzeit nutzt. Frag die Person, die dieses Gerät verwaltet, ob sie sie aufheben kann.',
   usageAccessBannerTitle: 'Nutzungszugriff aktivieren',
   usageAccessBannerBody:
     'KidGate braucht den Nutzungszugriff, um Bildschirmzeit zu erfassen und Limits durchzusetzen.',
@@ -42,6 +48,5 @@ export const screenTime = {
   minutesUsedStatus: '{{used}} / {{limit}} genutzt',
   usageUpdatesHint:
     'Die Nutzung wird alle paar Minuten aktualisiert, solange die Bildschirmzeit-Überwachung aktiv ist.',
-  dailyLimitNote: 'Setzt eine tägliche Obergrenze für die Bildschirmzeit.',
   dailyLimitMinutes: '{{limitMinutes}} Min.',
 } as const;

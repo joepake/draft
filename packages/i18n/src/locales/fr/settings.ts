@@ -48,6 +48,9 @@ export const settings = {
   accountLinkActionLink: 'Lier',
   accountLinkActionUnlink: 'Dissocier',
   accountLinkActionVerify: 'Vérifier',
+  accountLinkActionLinkA11y: 'Lier {{provider}}',
+  accountLinkActionUnlinkA11y: 'Dissocier {{provider}}',
+  accountLinkActionVerifyA11y: 'Vérifier {{provider}}',
   accountLinkSummary: 'Connexion avec {{methods}}',
   accountLinked: 'Lié',
   accountNotLinked: 'Non lié',
@@ -63,13 +66,10 @@ export const settings = {
   pushNotificationsSubtitle: 'Choisissez les alertes qui arrivent sur ce téléphone',
   inAppAlertsLabel: 'Alertes dans l’application',
   inAppAlertsHint:
-    'Affiche les alertes dans l’application pour les demandes de temps. Les alertes SOS apparaissent toujours.',
+    'Affiche une bannière pour les nouvelles alertes lorsque KidGate est ouvert. Les alertes SOS apparaissent toujours.',
   sosSoundLabel: 'Sirène SOS',
   sosSoundHint:
     'Émet une sirène forte sur ce téléphone quand un enfant envoie un SOS. La vibration reste active dans tous les cas.',
-  shareScreenTimeLabel: 'Partager mon temps d’écran',
-  shareScreenTimeHint:
-    'Affiche le temps d’écran de ce téléphone sur le tableau familial, à côté de celui de vos enfants. Nécessite l’accès aux données d’utilisation.',
   themeStyleLabel: 'Style du thème',
   themeColorLabel: 'Couleur du thème',
   signOutButton: 'Se déconnecter',
@@ -103,13 +103,17 @@ export const settings = {
     '{{deviceName}} sera déconnecté de ce compte et ne recevra plus de notifications. La personne qui l’a pourra se reconnecter avec le mot de passe.',
   toastParentDeviceRemoved: '{{deviceName}} supprimé.',
   signedOutByAnotherDevice:
-    'Cet appareil a été déconnecté du compte parent depuis un autre appareil.',
+    'Cet appareil a été déconnecté du compte parent depuis un autre appareil. Reconnectez-vous pour continuer.',
   deleteAccountTitle: 'Supprimer le compte',
   deleteAccountSubtitleDefault:
     'Supprimez définitivement votre compte et toutes les données',
   deleteAccountAlertTitle: 'Supprimer définitivement le compte ?',
   deleteAccountAlertMessage:
     'Cette action programme la suppression de votre compte familial. Rien n’est encore supprimé : vous pouvez vous reconnecter et annuler à tout moment avant la date de suppression. Après cette date, toutes les données (appareils, activité, historique de localisation, photos SOS) sont définitivement supprimées pour tous les parents et enfants.',
+  deleteAccountAlertMessageMember:
+    'Cette action programme la suppression de votre propre compte. Rien n’est encore supprimé : vous pouvez vous reconnecter et annuler à tout moment avant la date de suppression. Après cette date, vos identifiants de connexion et vos propres réglages sont supprimés. La famille, ses appareils et les autres parents ne sont pas concernés.',
+  deleteAccountSubscriptionNotice:
+    'La suppression de votre compte n’annule pas l’abonnement. Annulez-le dans l’App Store ou sur Google Play.',
   sendRequestButton: 'Supprimer définitivement',
   toastDeletionAlreadyPending: 'La suppression du compte est déjà en cours.',
   toastDeletionRequestFailed:
@@ -195,7 +199,7 @@ export const settings = {
   deleteAccountImpact:
     'Parents qui perdent l’accès : {{parents}}. Appareils enfants qui perdent l’accès : {{devices}}.',
   deleteAccountGraceNotice:
-    'Votre compte reste utilisable pendant {{days}} jours, puis il est définitivement supprimé.',
+    'La suppression a lieu après {{days}} jours. D’ici là, vous pouvez ouvrir KidGate et l’annuler.',
   deleteAccountReauthNotice: 'Il vous sera demandé de vous reconnecter pour confirmer.',
   deleteAccountConfirmLabel: 'Saisissez {{word}} pour confirmer',
   statusScheduled: 'Programmée',

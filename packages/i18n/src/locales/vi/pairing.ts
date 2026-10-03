@@ -6,20 +6,22 @@ export const pairing = {
     'Kết nối thiết bị của trẻ trên KidGate: trên thiết bị phụ huynh mở KidGate → Gia đình → Quét mã, sau đó quét mã QR hoặc nhập mã {{code}}. Mã hết hạn sau 5 phút.',
   connectChildPhone: 'Kết nối thiết bị của trẻ',
   parentInstructions:
-    'Trên thiết bị của trẻ, mở KidGate và chọn Đây là thiết bị của trẻ. Sau đó nhập mã hiển thị trên màn hình.',
+    'Mở KidGate trên thiết bị của trẻ. Trên điện thoại hoặc máy tính bảng, chọn Đây là thiết bị của trẻ. Sau đó nhập mã gồm 6 ký tự hiển thị trên màn hình.',
   parentScanInstructions: 'Hướng camera vào mã QR trên thiết bị của trẻ.',
   childWaitingTitle: 'Đang chờ bố mẹ kết nối',
   childWaitingSubtitle:
     'Con giữ nguyên màn hình này nhé. Bố mẹ sẽ kết nối thiết bị này từ ứng dụng KidGate trên máy của họ.',
   childCodeLabel: 'Hoặc chia sẻ mã này',
   childScanHint: 'Bố mẹ: mở KidGate → Gia đình → {{scan}} → quét mã QR hoặc nhập mã.',
+  extensionCloseHint:
+    'Có thể đóng cửa sổ này — mã vẫn còn hiệu lực. Mở lại KidGate để xác nhận kết nối với bố mẹ.',
   childConnecting: 'Đã kết nối. Đang thiết lập thiết bị…',
   childPairedTitle: 'Đã kết nối thành công',
   childPairedSubtitle: 'Đang thiết lập thiết bị…',
   connectChild: 'Kết nối thiết bị của trẻ',
   waitingChildConfirm: 'Đã gửi yêu cầu. Đang chờ xác nhận trên thiết bị của trẻ.',
   waitingChildConfirmHint:
-    'Trên thiết bị của trẻ, chạm “Đồng ý kết nối” để hoàn tất. Bạn có thể đóng màn hình này — quá trình ghép nối vẫn tiếp tục chạy nền.',
+    'Nếu thiết bị của trẻ hỏi, chọn “Đồng ý kết nối” để hoàn tất. TV sẽ tự kết nối. Bạn có thể đóng màn hình này — quá trình ghép nối vẫn tiếp tục chạy nền.',
   childConfirmedTitle: 'Đã kết nối thiết bị',
   childConfirmedBody:
     'Thiết bị của trẻ đã xác nhận ghép nối. Tiếp theo, hãy chọn ai sẽ dùng thiết bị này.',
@@ -43,10 +45,16 @@ export const pairing = {
   manualCodeLabel: 'Mã từ thiết bị của trẻ',
   openingScanner: 'Đang mở camera…',
   cameraPermissionRequired: 'Cần quyền camera để quét mã QR.',
-  unableToOpenScanner: 'Không thể mở camera để quét mã.',
+  unableToOpenScanner: 'Không thể mở camera để quét mã. Vui lòng nhập mã thủ công.',
   newCode: 'Tạo mã mới',
   done: 'Xong',
   unableToCreateCode: 'Không thể tạo mã. Vui lòng thử lại.',
+  extensionUnsupportedSystem:
+    'Hệ điều hành này không được hỗ trợ. KidGate hoạt động trên Chromebook, Mac hoặc PC Windows.',
+  deviceLimitReachedCeiling:
+    'Gia đình này đã đạt số thiết bị tối đa KidGate hỗ trợ ({{limit}}). Vui lòng gỡ một thiết bị không còn dùng rồi thử lại.',
+  tooManyAttemptsWait:
+    'Bạn đã thử quá nhiều lần. Vui lòng thử lại sau {{minutes}} phút.',
   inviteParentTitle: 'Thêm thiết bị phụ huynh khác',
   inviteParentInstructions:
     'Trên thiết bị còn lại, mở KidGate → Gia đình → Quét mã, sau đó quét mã QR này hoặc nhập mã trong vòng 15 phút. Hãy duyệt yêu cầu tại đây để kết nối phụ huynh đó.',
@@ -63,7 +71,8 @@ export const pairing = {
   parentJoinRejected: 'Chủ gia đình đã từ chối yêu cầu của bạn.',
   parentJoinExpired:
     'Yêu cầu phê duyệt đã hết hạn. Vui lòng đề nghị chủ gia đình gửi lời mời mới.',
-  unableToResolveParentJoin: 'Không thể xử lý yêu cầu này.',
+  unableToResolveParentJoin:
+    'Không thể phản hồi yêu cầu tham gia này. Vui lòng thử lại.',
   joinedFamily: 'Bạn đã tham gia gia đình. Các thiết bị của trẻ sẽ hiển thị tại đây.',
   joinedFamilyTitle: 'Đã tham gia gia đình',
   joinedFamilyMessage:

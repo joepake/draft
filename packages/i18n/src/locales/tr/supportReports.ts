@@ -7,7 +7,7 @@ export const supportReports = {
   emptyAction: 'Sorun bildir',
   newReportButton: 'Yeni bildirim',
   attachmentCount: '{{count}} ekran görüntüsü eklendi',
-  responseLabel: "KidGate'ten yanıt",
+  responseLabel: 'KidGate’ten yanıt',
   replyLabel: 'Yanıtla',
   replySend: 'Gönder',
   replyClosed: 'Bu bildirim kapatıldı.',

@@ -38,7 +38,6 @@ export const childReport = {
   bandTooThin: 'Terlalu sedikit bagian dari hari itu yang terukur untuk digambar.',
 
   sectionDevices: 'Perangkat mana',
-  deviceTotalsOnly: 'Hanya total',
   openDeviceReport: 'Buka laporan {{name}}',
 
   sectionApps: 'Paling banyak dipakai',

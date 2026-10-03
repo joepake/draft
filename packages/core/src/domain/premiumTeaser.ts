@@ -55,6 +55,7 @@
 
 import type { DeviceTopAppsOther, DeviceWeekCounters } from '@kidgate/schema/device';
 import type { TodayTopAppsSource } from './todayTopApps';
+import { wouldExceedFamilyParents } from './pairingCeilings';
 import { isWeekCountersCurrent } from './weekCounters';
 
 export type PremiumTeaserId =
@@ -68,7 +69,8 @@ export type PremiumTeaserId =
   | 'webFilterAdvanced'
   | 'weeklyReport'
   | 'usageTimeline'
-  | 'rewardTaskCap';
+  | 'rewardTaskCap'
+  | 'parentCap';
 
 /**
  * The free-tier reading the offer leads with, or `null` on a structural id.
@@ -138,6 +140,12 @@ const BODY_KEYS: Record<PremiumTeaserId, string> = {
    * (`resolveRewardTaskCapTeaser`).
    */
   rewardTaskCap: 'plans.teaserRewardTasks',
+  /*
+   * The second cap, and the first on an **action** rather than a list: a family
+   * holds three parents without Premium, six with it
+   * (`FREE_MAX_PARENTS_PER_FAMILY`, `resolveParentCapTeaser`).
+   */
+  parentCap: 'plans.teaserParentCap',
 };
 
 /**
@@ -301,6 +309,37 @@ export function resolveRewardTaskCapTeaser(input: {
 }
 
 /**
+ * The invite button of a family that already holds every parent it may without
+ * Premium — the trial included, which takes the free number here
+ * (`FREE_MAX_PARENTS_PER_FAMILY`).
+ *
+ * `createPairingCode` refuses that family (`family/parent-limit`), and this is
+ * the same refusal said before the tap. Shaped like the reward-task wall: the
+ * proof is the family's own count and the body names no number, so the caps
+ * can move without fourteen re-translations. A **paying** family at its own
+ * ceiling gets `null` — there is nothing left to sell it, and the caller says
+ * the plain limit instead (`wouldExceedFamilyParents`).
+ */
+export function resolveParentCapTeaser(input: {
+  /** A live subscription or a lifetime purchase. The trial is not paid here. */
+  paid: boolean;
+  /** The owner plus every member. */
+  parentCount: number;
+}): PremiumTeaser | null {
+  const { paid, parentCount } = input;
+  if (paid || !wouldExceedFamilyParents(parentCount, false)) {
+    return null;
+  }
+
+  return {
+    id: 'parentCap',
+    proof: { key: 'plans.teaserProofParents', params: { count: parentCount } },
+    bodyKey: BODY_KEYS.parentCap,
+    ctaKey: CTA_KEY,
+  };
+}
+
+/**
  * The offer that stands in for an empty screen a free family cannot fill.
  *
  * `weekCounters` is passed for the one id with a counter of its own —
@@ -316,7 +355,7 @@ export function resolveRewardTaskCapTeaser(input: {
  * strictly more honest than one that does not.
  */
 export function resolveLockedTeaser(input: {
-  id: Exclude<PremiumTeaserId, 'topApps'>;
+  id: Exclude<PremiumTeaserId, 'topApps' | 'rewardTaskCap' | 'parentCap'>;
   hasFullAccess: boolean;
   weekCounters?: DeviceWeekCounters | null;
   todayKey?: string;

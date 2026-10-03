@@ -1,4 +1,5 @@
-import { localDayKey } from '@kidgate/core/domain/weeklyReportSchedule';
+import { foldMinutesToday, sumMinutesToday } from '@kidgate/core/domain/reportHub';
+import { viewerTodayKey } from './useTodayKey.js';
 
 /**
  * How much of a child's shared budget has gone today, summed from the device
@@ -16,21 +17,14 @@ import { localDayKey } from '@kidgate/core/domain/weeklyReportSchedule';
  * figure under a heading that says today. `null` is "nothing reported", which
  * is a different answer from `0`.
  *
- * `apps/mobile`'s `getChildScreenTimeUsage` is the same fold. The two are
- * written twice and should not be — the honest home is
- * `@kidgate/core/domain/childUsage`, beside `childUsageTotals`, which is where
- * this belongs the next time either surface needs it changed
- * (`docs/BACKLOG.md`).
+ * The rule is core's since 2026-09-27 — `foldMinutesToday`, which the Reports
+ * hub on both consoles and this surface's Screen tab read too, so the budget
+ * card and the tab beside it cannot disagree about which day a stamp is.
+ * `apps/mobile`'s `getChildScreenTimeUsage` still folds its own copy, and
+ * counts a stale device with a limit as a measured zero (`docs/TODO.md`, A).
  */
 export function childMinutesUsedToday(devices, nowMs = Date.now()) {
-  const today = localDayKey(nowMs, -new Date(nowMs).getTimezoneOffset());
-  let used = 0;
-  let reported = false;
-  for (const device of devices) {
-    const controls = device?.controls;
-    if (!controls || controls.usageDate !== today) continue;
-    used += Math.max(0, controls.minutesUsedToday ?? 0);
-    reported = true;
-  }
-  return reported ? used : null;
+  return sumMinutesToday(
+    foldMinutesToday(devices, { key: viewerTodayKey(nowMs), nowMs }),
+  );
 }

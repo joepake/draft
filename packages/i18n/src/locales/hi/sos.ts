@@ -25,8 +25,9 @@ export const sos = {
     'SOS भेज दिया गया। हो सके तो किसी सुरक्षित जगह रहें — आपके माता-पिता को सूचित कर दिया गया है।',
   escapeGrantedTitle: 'SOS भेजा गया',
   escapeGrantedBody: 'आपके माता-पिता को सूचित कर दिया गया है। यह डिवाइस लॉक ही रहेगा।',
-  toastSentWithoutPhoto:
-    'SOS भेज दिया गया, लेकिन बिना फ़ोटो के। कृपया सेटिंग्स में कैमरे की अनुमति दें और हो सके तो फिर से प्रयास करें।',
+  toastSentWithoutPhoto: 'SOS बिना फ़ोटो के भेज दिया गया।',
+  toastSentWithoutPhotoCamera:
+    'SOS बिना फ़ोटो के भेज दिया गया। अगली बार फ़ोटो जोड़ने के लिए सेटिंग्स में कैमरे की अनुमति दें।',
   toastSendFailed:
     'SOS भेजा नहीं जा सका। कृपया पुनः प्रयास करें, या किसी भरोसेमंद व्यक्ति को कॉल करें।',
   sendFailedBannerTitle: 'आपका पिछला SOS नहीं भेजा जा सका',
@@ -36,13 +37,15 @@ export const sos = {
   headerSubtitle:
     'जब आप असुरक्षित महसूस करें या आपको तुरंत मदद की ज़रूरत हो, तब इसका इस्तेमाल करें।',
   infoInstantAlertLabel: 'तुरंत अलर्ट',
-  infoInstantAlertDetail: 'आपके माता-पिता को तुरंत एक ज़रूरी सूचना मिलती है।',
+  infoInstantAlertDetail: 'KidGate आपके माता-पिता को तुरंत एक ज़रूरी सूचना भेजता है।',
   infoYourLocationLabel: 'आपका स्थान',
   infoYourLocationDetail:
     'आपके माता-पिता के साथ साझा किया जाता है ताकि उन्हें पता चले कि आप कहाँ हैं।',
   infoQuickSelfieLabel: 'एक त्वरित फ़ोटो',
   infoQuickSelfieDetail:
     'अलर्ट भेजे जाने के बाद जोड़ी जाती है, अगर कैमरा पहले से उपलब्ध हो।',
+  infoQuickSelfieDetailPhone:
+    'अलर्ट भेजे जाने के बाद कैमरा खुलता है, ताकि आप एक फ़ोटो जोड़ सकें। आप इसे छोड़ भी सकते हैं।',
   simulatorTipTitle: 'सिम्युलेटर टिप',
   simulatorTipBody:
     'SOS भेजने से पहले सिम्युलेटर मेनू में कैमरा (फ्रंट कैमरा) चालू करें ताकि एक टेस्ट फ़ोटो ली जा सके।',
@@ -52,6 +55,7 @@ export const sos = {
   whatParentsReceive: 'माता-पिता को क्या मिलता है',
   holdToSendFiveSeconds: 'भेजने के लिए दबाए रखें · 5 सेकंड',
   keepHolding: 'दबाए रखें',
+  secondsLeft: '{{seconds}}से',
   pressAndHoldToCancel: 'दबाकर रखें — रद्द करने के लिए जल्दी छोड़ दें',
   holdToSendSosAccessibility: 'SOS भेजने के लिए 5 सेकंड दबाए रखें',
   sosEmergencyAccessibility: 'SOS आपातकाल',
@@ -76,7 +80,8 @@ export const sos = {
   muteAlarm: 'इस अलर्ट को म्यूट करें',
   alertCount: '{{total}} में से {{current}}',
   trustedContactsTitle: 'भरोसेमंद संपर्क',
-  trustedContactsSubtitle: 'हर SOS पर आख़िरी स्थान के साथ ईमेल पाते हैं',
+  trustedContactsSubtitle:
+    'SOS होने पर आख़िरी ज्ञात स्थान के साथ ईमेल पाते हैं, एक घंटे में ज़्यादा से ज़्यादा कुछ अलर्ट',
   trustedContactsRowSubtitle: 'आपके बच्चे के SOS भेजने पर जिन्हें ईमेल मिलता है',
   trustedContactsListSection: 'SOS किसे मिलता है',
   trustedContactsEmpty: 'अभी कोई नहीं। दादा-दादी, पड़ोसी या पारिवारिक मित्र जोड़ें।',

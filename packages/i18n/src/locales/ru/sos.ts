@@ -7,26 +7,27 @@ export const sos = {
   statusNeedsAttention: 'Требуется внимание',
   statusAcknowledged: 'Подтверждено',
   viewPhotoAccessibility: 'Посмотреть фото SOS',
-  photoTapHint: 'Нажмите, чтобы увидёть фото полностью',
+  photoTapHint: 'Нажмите, чтобы увидеть фото полностью',
   photoLoadFailed:
     'Не удалось загрузить это фото. Проверьте подключение и попробуйте ещё раз.',
-  noPhoto: 'К этому оповещёнию фото не приложено.',
+  noPhoto: 'К этому оповещению фото не приложено.',
   acknowledgedAt: 'Подтверждено {{time}}',
   openInMaps: 'Открыть в Картах',
   acknowledgeButton: 'Я разбираюсь',
   acknowledgingButton: 'Сохранение…',
   toastAcknowledgeFailed: 'Не удалось подтвердить. Попробуйте ещё раз через минуту.',
-  emptyTitle: 'Пока нет оповещёний SOS',
+  emptyTitle: 'Пока нет оповещений SOS',
   emptyDescription:
-    'Когда ребёнок удержит SOS в течение 5 секунд, оповещёния появятся здесь с фото и местоположением.',
+    'Когда ребёнок удержит SOS в течение 5 секунд, оповещения появятся здесь с фото и местоположением.',
   alertMessage: '{{childName}} нужна помощь — SOS отправлен',
   toastSent:
     'SOS отправлен. Оставайся в безопасном месте, если можешь, — родители уже знают.',
   escapeGrantedTitle: 'SOS отправлен',
   escapeGrantedBody:
     'Твои родители получили уведомление. Это устройство останется заблокированным.',
-  toastSentWithoutPhoto:
-    'SOS отправлен, но без фото. Разреши доступ к камере в настройках и попробуй ещё раз, если можешь.',
+  toastSentWithoutPhoto: 'SOS отправлен без фото.',
+  toastSentWithoutPhotoCamera:
+    'SOS отправлен без фото. Чтобы в следующий раз добавить фото, разреши доступ к камере в настройках.',
   toastSendFailed:
     'Не удалось отправить SOS. Попробуй ещё раз или позвони тому, кому доверяешь.',
   sendFailedBannerTitle: 'Последний SOS не был отправлен',
@@ -35,13 +36,15 @@ export const sos = {
   headerTitle: 'Экстренный SOS',
   headerSubtitle:
     'Используй эту кнопку, если чувствуешь себя в опасности или тебе срочно нужна помощь.',
-  infoInstantAlertLabel: 'Мгновенное оповещёние',
-  infoInstantAlertDetail: 'Родители сразу получают срочное уведомление.',
+  infoInstantAlertLabel: 'Мгновенное оповещение',
+  infoInstantAlertDetail: 'KidGate сразу отправляет родителям срочное уведомление.',
   infoYourLocationLabel: 'Твоё местоположение',
   infoYourLocationDetail: 'Передаётся родителям, чтобы они знали, где ты находишься.',
   infoQuickSelfieLabel: 'Быстрое фото',
   infoQuickSelfieDetail:
-    'Добавляется после отправки оповещёния, если камера уже доступна.',
+    'Добавляется после отправки оповещения, если камера уже доступна.',
+  infoQuickSelfieDetailPhone:
+    'После отправки оповещения откроется камера, чтобы добавить фото. Этот шаг можно пропустить.',
   simulatorTipTitle: 'Совет для симулятора',
   simulatorTipBody:
     'Включите камеру в меню симулятора (фронтальная камера) перед отправкой SOS, чтобы можно было сделать тестовое фото.',
@@ -52,15 +55,16 @@ export const sos = {
   whatParentsReceive: 'Что получают родители',
   holdToSendFiveSeconds: 'Удерживай, чтобы отправить · 5 секунд',
   keepHolding: 'Продолжай удерживать',
+  secondsLeft: '{{seconds}} с',
   pressAndHoldToCancel: 'Нажми и удерживай — отпусти раньше, чтобы отменить',
   holdToSendSosAccessibility: 'Удерживайте 5 секунд, чтобы отправить SOS',
   sosEmergencyAccessibility: 'Экстренный SOS',
-  sosEmergencyAlert: 'Экстренное оповещёние SOS',
-  sosAlertSent: 'Оповещёние SOS отправлено',
+  sosEmergencyAlert: 'Экстренное оповещение SOS',
+  sosAlertSent: 'Оповещение SOS отправлено',
   sosAlertSentDescription: 'С устройства {{deviceName}} отправлен SOS — нужна помощь.',
   deviceNeedsHelp: '{{deviceName}} нужна помощь',
   tapPhotoToEnlarge: 'Нажмите на фото, чтобы увеличить',
-  noPhotoAttached: 'К этому оповещёнию не было приложено фото.',
+  noPhotoAttached: 'К этому оповещению не было приложено фото.',
   sentRelativeTime: 'Отправлено {{relativeTime}}',
   imOnIt: 'Я разбираюсь',
   acknowledging: 'Подтверждение…',
@@ -70,13 +74,14 @@ export const sos = {
   devicePausedAccessibility: 'Устройство заблокировано родителем',
   openEmergencySos: 'Открыть экстренный SOS',
   sosAlertsNote:
-    'Показывает экстренные оповещёния SOS с устройства ребёнка вместе с местоположением.',
+    'Показывает экстренные оповещения SOS с устройства ребёнка вместе с местоположением.',
   openLocationInMapsAccessibility: 'Открыть местоположение в Картах',
   badgeLabel: 'SOS',
   muteAlarm: 'Отключить звук оповещения',
   alertCount: '{{current}} из {{total}}',
   trustedContactsTitle: 'Доверенные контакты',
-  trustedContactsSubtitle: 'Получают письмо при каждом SOS с последним местоположением',
+  trustedContactsSubtitle:
+    'Получают письмо с SOS и последним известным местоположением, не больше нескольких оповещений в час',
   trustedContactsRowSubtitle:
     'Люди, которым приходит письмо, когда ребёнок отправляет SOS',
   trustedContactsListSection: 'Кто получает SOS',

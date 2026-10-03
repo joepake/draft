@@ -38,7 +38,7 @@ export const appInventory = {
   unsupportedGeneric:
     'Cet appareil ne signale pas les applications qui y sont installées.',
   incompleteNote:
-    'Une application sans icône sur l’écran d’accueil peut ne pas apparaître ici.',
+    'Certaines applications peuvent ne pas apparaître ici, par exemple une application sans icône dans la liste des applications de l’appareil.',
   blockHint:
     'Pour bloquer une application, ouvrez Applications bloquées sur l’appareil lui-même.',
   howItWorksLabel: 'Comment fonctionne cette liste',

@@ -160,10 +160,13 @@ export default function ParkedDevicesCard({
               />
               <Icon name={deviceIconName(device)} size={16} />
               <span className="parked-option-name">{device.name}</span>
+              {/* Which device holds the reporting slot, not whether it is
+                  connected — this said Online whatever the device's real
+                  status. The phone's sheet says the same sentence. */}
               {reporting ? (
                 <span className="pill tone-good">
                   <i className="pill-dot" aria-hidden="true" />
-                  {t('dash.statusOnline')}
+                  {appT('family.chooseMonitoredCurrent')}
                 </span>
               ) : (
                 <span className="pill tone-muted">
@@ -175,6 +178,12 @@ export default function ParkedDevicesCard({
           );
         })}
       </div>
+
+      {/* What the Paused pill on each row means, in both states — inside the
+          cooldown the sentence above is only the rule. The phone's sheet says
+          the same key under its list; neither says "only the reports", since
+          a parked device also refuses a tightened rule (the body says so). */}
+      <p className="hint">{appT('family.devicePausedMeaning')}</p>
 
       <div className="parked-actions">
         <button

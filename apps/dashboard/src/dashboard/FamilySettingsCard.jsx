@@ -2,8 +2,11 @@ import { useEffect, useState } from 'react';
 import Icon from '@kidgate/web-ui/Icon';
 import { useT } from '@kidgate/web-ui/useT';
 import { getEffectiveDeviceStatus } from '@kidgate/core/domain/deviceStatus';
+import { leaderboardResetParams } from '@kidgate/core/domain/leaderboardReset';
+import { getLocaleTag } from '@kidgate/i18n/web';
 import Card from './Card.jsx';
 import ChildInitial from './ChildInitial.jsx';
+import NoDevicePanel from './NoDevicePanel.jsx';
 import ParentsCard from './ParentsCard.jsx';
 import Toggle from './Toggle.jsx';
 import TrustedContactsCard from './TrustedContactsCard.jsx';
@@ -192,6 +195,8 @@ export default function FamilySettingsCard({
               members={family.members ?? []}
               actions={actions}
               run={run}
+              readOnly={readOnly}
+              isPremium={family.plan === 'premium'}
               busy={
                 busy === 'parent-invite' ||
                 busy === 'parent-join' ||
@@ -278,10 +283,12 @@ export default function FamilySettingsCard({
       {tab === 'devices' && (
         <Card title={appT('settings.sectionFamilyChildrenTitle')}>
           {devices.length === 0 ? (
-            <>
-              <p className="empty">{appT('settings.familyChildrenEmptyTitle')}</p>
-              <p className="hint">{appT('settings.familyChildrenEmpty')}</p>
-            </>
+            /* The phone's sentences for this tab, and the pairing steps it
+               cannot offer a button for (`NoDevicePanel`). */
+            <NoDevicePanel
+              title={appT('settings.familyChildrenEmptyTitle')}
+              body={appT('settings.familyChildrenEmpty')}
+            />
           ) : (
             <ul className="child-device-list">
               {devices.map(device => (
@@ -358,7 +365,14 @@ export default function FamilySettingsCard({
           subtitle={appT('leaderboard.settingsBody')}
         >
           <div className="row-between">
-            <span>{appT('leaderboard.resetsNote')}</span>
+            {/* The phone's footnote: the UTC week's turn, on this browser's
+                clock and in the language on screen. */}
+            <span>
+              {appT(
+                'leaderboard.resetsNoteAt',
+                leaderboardResetParams(Date.now(), getLocaleTag()),
+              )}
+            </span>
             <Toggle
               on={leaderboardEnabled}
               label={appT('leaderboard.settingsTitle')}

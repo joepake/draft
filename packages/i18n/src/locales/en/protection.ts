@@ -33,6 +33,8 @@ export const protection = {
   lockNotReadyBodyIos:
     'KidGate cannot lock this iPhone until Screen Time access is approved on the child device. Open KidGate there and complete the following:',
   locationPermission: 'Location permission',
+  locationForegroundOnly:
+    'Location only updates while KidGate is open on the child device.',
   cameraPermission: 'Camera permission',
   /*
    * A consent the child device is still waiting for, said in what it costs
@@ -82,17 +84,9 @@ export const protection = {
   healthBadgeProtected: 'Green — protected',
   healthBadgeWarning: 'Yellow — needs setup',
   healthBadgeInactive: 'Red — child device silent for over 24h',
-  iosFeatureSupportEvaluating: 'Feature support on iOS is being evaluated.',
   iosUpgradeRequiredNote:
     'This needs iOS 16 or later. Update the child device in Settings › General › Software Update. If no update is offered, this iPad or iPhone is too old for Apple to support it.',
   iosUpgradeActionLabel: 'Needs iOS 16',
-  lockUnlockNote:
-    'Locks the device through Screen Time once the child authorizes access.',
-  scheduleNote: 'Up to 3 Blocked Hours ranges block apps through Screen Time.',
-  individualAppBlockingNote:
-    'The child selects apps after entering the 6-digit Parent PIN.',
-  tamperAlertsNote:
-    'Reports permission changes and when the app on the child device has not updated in a while.',
   appReviewRemindersNote:
     'iOS does not expose install events; review apps periodically with the child device.',
 } as const;

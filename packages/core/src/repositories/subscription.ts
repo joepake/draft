@@ -1,5 +1,6 @@
 import type { ApiFailure, ApiPort } from '@kidgate/ports/api';
 import type { FirestorePort, Unsubscribe } from '@kidgate/ports/firestore';
+import type { OperatorHold } from '@kidgate/schema/operatorHold';
 import type { PlanId } from '@kidgate/schema/plan';
 import { userDoc } from '@kidgate/schema/paths';
 import type {
@@ -8,6 +9,7 @@ import type {
   VerifyPurchaseResponse,
 } from '@kidgate/schema/subscription';
 import { timestampToIso } from '../domain/firestoreValue';
+import { parseOperatorHold } from '../domain/operatorHold';
 
 /**
  * Billing state, and the two store round-trips that change it.
@@ -25,6 +27,12 @@ export interface UserBillingState {
   paidPlanId: PlanId | null;
   subscription: UserSubscription | null;
   trialStartedAt: string | null;
+  /**
+   * KidGate's own hold on the family, or null. Carried here because this is
+   * the listener both consoles already hold on the family root — reading it
+   * anywhere else would be a second listener on the same document.
+   */
+  operatorHold: OperatorHold | null;
 }
 
 /** Only `premium` is ever paid for; `free` and `trial` are states, not purchases. */
@@ -98,6 +106,7 @@ export function createSubscriptionRepository(deps: SubscriptionRepositoryDeps) {
             paidPlanId: parsePaidPlanId(data.planId),
             subscription: parseSubscription(data.subscription),
             trialStartedAt: timestampToIso(data.trialStartedAt) ?? null,
+            operatorHold: parseOperatorHold(data.operatorHold),
           });
         },
         // A session can be swapped mid-listen (re-pairing, sign-out), which

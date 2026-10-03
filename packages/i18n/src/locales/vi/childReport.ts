@@ -44,7 +44,6 @@ export const childReport = {
   bandTooThin: 'Ngày này đo được quá ít nên chưa vẽ được biểu đồ giờ.',
 
   sectionDevices: 'Theo thiết bị',
-  deviceTotalsOnly: 'Chỉ có tổng',
   openDeviceReport: 'Mở báo cáo của {{name}}',
 
   sectionApps: 'Dùng nhiều nhất',

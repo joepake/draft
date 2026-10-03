@@ -44,10 +44,10 @@ export const usage = {
   deviceLockedChip: 'Dispositivo bloqueado',
   blockedHoursChip: 'Horários bloqueados',
   overLimitChip: 'Acima do limite',
-  usageReportsNote:
-    'Mostra o tempo de tela, os bloqueios e a atividade recente deste dispositivo.',
   syncNote:
-    'O tempo de uso pode levar alguns minutos para aparecer nesta tela — mais tempo se o dispositivo não tiver conexão com a internet ou tiver sido fechado inesperadamente.',
+    'O tempo de uso mostrado aqui pode estar até 5 minutos atrás do dispositivo, ou 15 no plano gratuito — mais se o dispositivo não tiver conexão com a internet ou tiver sido fechado inesperadamente.',
+  syncNoteIos:
+    'No iPhone, o tempo de uso só chega depois que o KidGate é executado no dispositivo da criança, então pode ficar horas atrasado se o app não tiver sido aberto.',
   syncNoteTv:
     'Esta TV só se conecta periodicamente, então o tempo de uso pode levar até uma hora para aparecer nesta tela — mais tempo sem conexão com a internet.',
   sectionLast30Days: 'Últimos 30 dias',

@@ -55,20 +55,10 @@ export const placeAlerts = {
   samePinToast: 'Es el mismo punto que «{{name}}». Arrastra el mapa para mover el pin.',
   overlapWarning:
     '«{{name}}» está a {{meters}} m y su círculo llega hasta aquí. Mientras el dispositivo esté en ambos, solo avisa el más cercano. Guarda otra vez para conservarlo.',
-  copyTitle: '¿Copiarlo a los demás hijos?',
-  copyMessage:
-    '¿Copiar «{{name}}» a los otros {{count}} dispositivos infantiles de esta familia?',
-  copyMessage_one: '¿Copiar «{{name}}» al otro dispositivo del hijo en esta familia?',
-  copyConfirm: 'Copiar',
-  copyDoneToast: 'Copiado a {{count}} dispositivos.',
-  copyDoneToast_one: 'Copiado a {{count}} dispositivo.',
-  copySkippedToast: 'Los demás hijos ya tienen este lugar o alcanzaron el máximo.',
   savedToast: 'Lugar guardado.',
   updatedToast: 'Lugar actualizado.',
   removedToast: 'Lugar eliminado.',
   saveFailedToast: 'No se pudo guardar. Inténtalo de nuevo.',
-  enteredLabel: 'Entró',
-  exitedLabel: 'Salió',
   footerNote:
     'Se comprueba cada vez que se sincroniza la ubicación, no siempre en segundo plano.',
 } as const;

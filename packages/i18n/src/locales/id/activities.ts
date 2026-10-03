@@ -51,7 +51,7 @@ export const activities = {
   activityTypeRewardTask: 'Tugas hadiah',
   activityTypeSearchAlert: 'Peringatan pencarian',
   activityTypeWebFilter: 'Filter web',
-  activityTypeEmergency: 'Darurat',
+  activityTypeEmergency: 'SOS',
   activityTypeUnknown: 'Aktivitas',
 
   sosEscapeTitle: 'Buka kunci darurat',
@@ -151,9 +151,9 @@ export const activities = {
   tamperBackgroundRefreshBody:
     'KidGate mungkin lebih jarang memperbarui di latar belakang sampai Penyegaran Aplikasi Latar diaktifkan kembali.',
 
-  tamperDeviceClockTitle: 'Tanggal atau waktu diubah',
+  tamperDeviceClockTitle: 'Tanggal, waktu, atau zona waktu berubah',
   tamperDeviceClockBody:
-    'Jam di perangkat ini tidak lagi cocok dengan waktu yang benar. Waktu Layar dan Jam Diblokir tetap mengikuti waktu yang benar.',
+    'Tanggal, waktu, atau zona waktu di perangkat ini berubah — bepergian juga bisa menyebabkannya. Waktu Layar dan Jam Diblokir mengabaikan jam yang diubah dan mengikuti zona waktu perangkat.',
 
   /** @deprecated legacy description keys — kept for old activity docs */
   tamperOverlay: 'Izin Tampil di atas aplikasi lain telah dimatikan.',
@@ -180,7 +180,9 @@ export const activities = {
 
   unknownDevice: 'Perangkat tidak dikenal',
 
-  basicActivityNote: 'Peristiwa kunci, buka kunci, dan perangkat dicatat di Aktivitas.',
   tamperUninstallProtectionTitle: 'Perlindungan hapus instal dimatikan',
   tamperUninstallProtectionBody: 'KidGate kini bisa dihapus dari ponsel ini.',
+  tamperReinstalledTitle: 'KidGate diinstal ulang',
+  tamperReinstalledBody:
+    'KidGate dihapus dari perangkat ini lalu diinstal lagi. Tidak ada yang tercatat selama itu.',
 } as const;

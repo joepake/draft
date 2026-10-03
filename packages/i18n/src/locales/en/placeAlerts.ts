@@ -51,19 +51,9 @@ export const placeAlerts = {
   samePinToast: 'This is the same spot as “{{name}}”. Drag the map to move the pin.',
   overlapWarning:
     '“{{name}}” is {{meters}} m away and its circle reaches here. While the device is in both, only the nearer one alerts. Save again to keep it.',
-  copyTitle: 'Add to other children?',
-  copyMessage: 'Copy “{{name}}” to the other {{count}} child devices in this family?',
-  copyMessage_one: 'Copy “{{name}}” to the other child device in this family?',
-  copyConfirm: 'Copy',
-  copyDoneToast: 'Copied to {{count}} devices.',
-  copyDoneToast_one: 'Copied to {{count}} device.',
-  copySkippedToast:
-    'Other children already have this place or have reached the maximum.',
   savedToast: 'Place saved.',
   updatedToast: 'Place updated.',
   removedToast: 'Place removed.',
   saveFailedToast: 'Unable to save. Try again.',
-  enteredLabel: 'Entered',
-  exitedLabel: 'Left',
   footerNote: 'Checked whenever location syncs — not always in the background.',
 } as const;

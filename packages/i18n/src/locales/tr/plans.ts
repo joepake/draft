@@ -30,8 +30,11 @@ export const plans = {
   compareColumnFree: 'Ücretsiz',
   compareColumnPremium: 'Premium',
   compareDevices: 'Çocuk cihazları',
-  compareDevicesFree: '1',
-  compareDevicesPremium: 'Sınırsız',
+  compareDevicesFree: 'Kurallar hepsinde, raporlar 1 cihazdan',
+  compareDevicesPremium: 'Raporlar hepsinden',
+  compareParents: 'Ebeveynler',
+  compareParentsFree: 'En fazla 3',
+  compareParentsPremium: 'En fazla 6',
   compareSync: 'Cihazdan gelen güncellemeler',
   compareSyncFree: '30 dakikada bir',
   compareSyncPremium: 'Canlı',
@@ -46,14 +49,14 @@ export const plans = {
   compareWeb: 'Web',
   compareWebPremium: 'Tam geçmiş ve aramalar',
   compareNewApps: 'Yeni yüklenen uygulamalar',
-  compareNewAppsPremium: 'Hangi uygulamalar ve yüklemeden önce onay',
+  compareNewAppsPremium: 'Hangi uygulamalar, adlarıyla',
   compareMessages: 'Mesaj uyarıları (Android)',
   compareSafety: 'Koruma uyarıları ve Check-In',
   compareSafetyFree: 'Uyarılar + Check-In',
   compareSafetyPremium: 'Her Check-In’e fotoğraf ekler',
   compareControls: 'Uygulama engelleme ve web filtresi',
   compareControlsFree: 'Her uygulama, yetişkin içeriği',
-  compareControlsPremium: 'Kategoriye göre, uygulama başına limit, kendi listeleriniz',
+  compareControlsPremium: 'Kategoriye göre, kendi listeleriniz',
   compareReport: 'Haftalık rapor',
   compareReportFree: 'Bir kez, deneme bitince',
   compareReportPremium: 'Her hafta',
@@ -62,7 +65,7 @@ export const plans = {
   compareActivityFeedPremium: '30 gün',
   compareChildReport: 'Çocuk başına rapor',
   compareIncluded:
-    'Her iki plan da tek ailede iPhone, Android, Mac ve Windows’ta günlük sınır, engellenen saatler, engellenen uygulamalar, web filtresi, uzaktan kilit, SOS, süre istekleri ve ödül görevlerini, ayrıca web panelini ve birden fazla ebeveyni içerir. Android TV ve Chromebook yakında geliyor ve daha az kontrol sunar.',
+    'Her iki plan da tek ailede iPhone, Android, Mac ve Windows’ta Günlük sınır, Engellenen Saatler, Engellenen Uygulamalar, Web filtresi, Cihaz Kilidi, SOS, Süre istekleri ve Ödül görevleri özelliklerini, ayrıca web panelini içerir. Android TV ve Chromebook da daha az kontrolle desteklenir.',
   sectionWhyPremium: 'Premium neler ekler',
   sectionWhyPremiumSubtitle:
     'Her kural Ücretsiz planda çalışmaya devam eder. Premium, neyi ne kadar erken gördüğünüzü ekler.',
@@ -85,12 +88,12 @@ export const plans = {
   featurePausePhone: 'Cihaz Kilidi',
   featureDailyLimits: 'Günlük sınır',
   featureBlockedHours: 'Engellenen Saatler',
-  featureAppLimits: 'Uygulama başına süre sınırı',
-  featureInstallApproval: 'Yeni kurulumları onayla',
+  featureAppLimits: 'Uygulama Sınırları',
+  featureInstallApproval: 'Yeni uygulamaları onayla',
   featureTimeRequests: 'Süre istekleri',
   featureAppBlocking: 'Engellenen Uygulamalar',
   featureWebFiltering: 'Web filtresi',
-  featureSeeLocation: 'Canlı Konum',
+  featureSeeLocation: 'Konum',
   featureTamperAlerts: 'KidGate kaldırılırsa uyarı',
   featureSosAlerts: 'SOS uyarıları',
   trialPlanName: 'Deneme',
@@ -99,6 +102,7 @@ export const plans = {
   premiumPlanName: 'Premium',
   subscribeBadge: 'Abone ol',
   currentPlanKicker: 'Mevcut plan',
+  currentPlanA11y: 'Mevcut plan: {{plan}}',
   trialEnded: 'Deneme sona erdi',
   trialPending: 'Deneme başlamadı',
   premiumActiveSubtitle: 'Şu anda tam erişiminiz var.',
@@ -116,7 +120,7 @@ export const plans = {
   memberSubscriptionNotice:
     'Tek bir plan tüm aileyi kapsar ve yalnızca aile sahibi öder. Ailenin denemede mi yoksa abone mi olduğunu görebilirsiniz.',
   memberTrialActiveSubtitle:
-    'Bu aile deneme sürecinde. Bittiğinde, tüm kurallar bir cihazda çalışmaya devam eder; sahibi canlı etkinlik, geçmiş ve tüm cihazlar için abone olabilir.',
+    'Bu aile deneme sürecinde. Deneme bittiğinde tüm kurallar her cihazda çalışmaya devam eder ve bir cihaz rapor göndermeyi sürdürür; aile sahibi canlı etkinlik, geçmiş ve tüm cihazlardan raporlar için abone olabilir.',
   memberTrialEndedSubtitle:
     'Bu ailenin deneme süresi bitti. Günlük sınır, Engellenen Uygulamalar, Web filtresi ve konum çalışmaya devam ediyor. Canlı güncellemeler, geçmiş ve uyarılar için aile sahibinden abone olmasını isteyin.',
   memberSetupTrialSubtitle:
@@ -131,7 +135,8 @@ export const plans = {
     'Satın alman onay bekliyor. İşlem tamamlanır tamamlanmaz Premium açılacak.',
   purchaseFailed: 'Satın alma işlemi tamamlanamadı. Lütfen tekrar deneyin.',
   storeNotReady: 'Mağaza henüz hazır değil. Lütfen biraz sonra tekrar deneyin.',
-  premiumNotAvailable: 'Premium şu anda satın alınamıyor.',
+  premiumNotAvailable:
+    'Premium şu anda bu cihazda satın alınamıyor. Lütfen daha sonra tekrar deneyin.',
   premiumProductNotFound:
     'Premium şu anda satın alınamıyor. Lütfen daha sonra tekrar deneyin.',
   subscriptionOfferNotConfigured:
@@ -140,7 +145,8 @@ export const plans = {
   noActiveSubscription: 'Etkin abonelik bulunamadı.',
   purchasesRestored: 'Satın alımlar geri yüklendi.',
   unableToRestorePurchases: 'Satın alımlar geri yüklenemedi. Lütfen tekrar deneyin.',
-  purchaseVerificationFailed: 'Satın alma doğrulaması başarısız oldu.',
+  purchaseVerificationFailed:
+    'Satın alma doğrulanamadı. Biraz bekleyin, ardından Satın alımları geri yükle’ye dokunun.',
   // Shown to joined parents — only the family owner can subscribe, so this
   // has to name who needs to act instead of offering a button they can't use.
   familyPremiumEndedTitle: 'Bu ailenin Premium’u sona erdi',
@@ -157,15 +163,16 @@ export const plans = {
   trustOnePlan: 'Tüm aile için tek plan',
   trustNoAds: 'Reklam yok',
   freePlanName: 'Ücretsiz',
-  freeDescription: 'Tek bir çocuk cihazında temel özellikler, süresi dolmaz.',
-  featureOneChildDevice: 'Bir çocuk cihazı',
+  freeDescription:
+    'Temel özellikler her çocuk cihazında çalışmaya devam eder, raporlar ise bir cihazdan gelir. Süresi hiç dolmaz.',
+  featureOneChildDevice: 'Bir çocuk cihazından raporlar',
   termLifetime: 'Ömür boyu',
   badgeOneTime: 'Tek seferlik',
   planPeriodOnce: 'tek sefer',
   billedOnce:
-    'Bir kez öde, {{devices}} çocuk cihazına kadar; KidGate sunulduğu sürece geçerli',
+    'Bir kez öde, en fazla {{devices}} çocuk cihazından rapor al; KidGate sunulduğu sürece geçerli',
   sectionFreePlan: 'Hiç abone olmazsanız',
-  devicesUnlimited: 'Sınırsız çocuk cihazı',
+  devicesUnlimited: 'Her çocuk cihazı rapor gönderir',
   featureFootnotePlatforms:
     'Bazı özellikler her platformun izin verdiğine bağlıdır, bu yüzden hepsi her cihazda kullanılamaz.',
   sectionPlatforms: 'KidGate nerede çalışır',
@@ -182,7 +189,7 @@ export const plans = {
   platformAndroidTvLimits:
     'Mesaj uyarıları, konum, SOS ve süre istekleri yok. Uygulama engelleme elden geldiğince çalışır.',
   platformChromebookLimits:
-    'Yalnızca web filtresi — Günlük sınır, Engellenen Saatler, Uygulama engelleme, Cihaz Kilidi, SOS ve konum yok.',
+    'Yalnızca Web filtresi — Günlük sınır, Engellenen Saatler, Engellenen Uygulamalar, Cihaz Kilidi, SOS ve konum yok.',
   platformComingSoon: 'Yakında',
   platformWindows: 'Windows',
   platformWindowsDetail: 'Yalnızca çocuk cihazı · Windows 10 ve üzeri',
@@ -216,5 +223,8 @@ export const plans = {
   teaserLiveNote: 'Ücretsiz plan 30 dakikada bir güncellenir. Premium canlıdır.',
   teaserUsageTimeline:
     'Premium, cihazın gün içinde hangi saatlerde kullanıldığını gösterir.',
+  teaserProofParents: 'Ebeveynler: {{count}}',
+  teaserParentCap:
+    'Premium olmadan bir ailede olabilecek ebeveyn sayısı bu kadar. Premium bunun iki katına izin verir.',
   teaserDeviceNote: 'Yalnızca izlenen cihaz rapor gönderir.',
 } as const;

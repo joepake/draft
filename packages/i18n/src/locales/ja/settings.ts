@@ -48,6 +48,9 @@ export const settings = {
   accountLinkActionLink: '連携',
   accountLinkActionUnlink: '連携解除',
   accountLinkActionVerify: '確認',
+  accountLinkActionLinkA11y: '{{provider}}を連携',
+  accountLinkActionUnlinkA11y: '{{provider}}の連携を解除',
+  accountLinkActionVerifyA11y: '{{provider}}を確認',
   accountLinkSummary: '{{methods}}でサインイン',
   accountLinked: '連携済み',
   accountNotLinked: '未連携',
@@ -63,13 +66,10 @@ export const settings = {
   pushNotificationsSubtitle: 'このデバイスに届く通知を選びます',
   inAppAlertsLabel: 'アプリ内アラート',
   inAppAlertsHint:
-    '時間延長リクエストのアプリ内アラートを表示します。SOSアラートは常に表示されます。',
+    'KidGateを開いている間、新しいアラートをバナーで表示します。SOSアラートは常に表示されます。',
   sosSoundLabel: 'SOSサイレン',
   sosSoundHint:
     'お子さまがSOSを送信したとき、このデバイスで大きなサイレンを鳴らします。バイブレーションは常に作動します。',
-  shareScreenTimeLabel: '自分のスクリーンタイムを共有',
-  shareScreenTimeHint:
-    'このスマホのスクリーンタイムを、お子さまと並べて家族のボードに表示します。使用状況へのアクセスが必要です。',
   themeStyleLabel: 'テーマスタイル',
   themeColorLabel: 'テーマカラー',
   signOutButton: 'サインアウト',
@@ -100,15 +100,19 @@ export const settings = {
     'この保護者セッションを終了し、保護者／子どもの選択画面に戻ります。デバイスを管理するには再度サインインしてください。アカウント、ファミリー、子どものデバイスは変更されません。',
   removeParentDeviceAlertTitle: '保護者のデバイスを削除しますか？',
   removeParentDeviceAlertMessage:
-    '{{deviceName}} はこのアカウントからログアウトされ、通知を受け取らなくなります。端末を持っている人はパスワードで再度ログインできます。',
+    '{{deviceName}} はこのアカウントからログアウトされ、通知を受け取らなくなります。デバイスを持っている人はパスワードで再度ログインできます。',
   toastParentDeviceRemoved: '{{deviceName}}を削除しました。',
   signedOutByAnotherDevice:
-    'この端末は、別の端末から保護者アカウントをログアウトされました。',
+    'このデバイスは、別のデバイスからの操作で保護者アカウントからログアウトされました。続けるには、もう一度ログインしてください。',
   deleteAccountTitle: 'アカウントを削除',
   deleteAccountSubtitleDefault: 'アカウントとすべてのデータを完全に削除します',
   deleteAccountAlertTitle: 'アカウントを完全に削除しますか？',
   deleteAccountAlertMessage:
     'ファミリーアカウントの削除を予約します。まだ何も削除されていません。削除日までならログインしていつでもキャンセルできます。削除日を過ぎると、すべてのデータ（デバイス、アクティビティ、位置情報履歴、SOS写真）が保護者と子どものすべてについて完全に削除されます。',
+  deleteAccountAlertMessageMember:
+    'ご自身のアカウントの削除を予約します。まだ何も削除されていません。削除日までならログインしていつでもキャンセルできます。削除日を過ぎると、ご自身のログイン情報と設定が削除されます。家族、そのデバイス、ほかの保護者には影響しません。',
+  deleteAccountSubscriptionNotice:
+    'アカウントを削除しても、サブスクリプションは解約されません。App StoreまたはGoogle Playで解約してください。',
   sendRequestButton: '完全に削除',
   toastDeletionAlreadyPending: 'アカウントの削除はすでに処理中です。',
   toastDeletionRequestFailed:
@@ -192,7 +196,7 @@ export const settings = {
   deleteAccountImpact:
     'アクセスできなくなる保護者: {{parents}}人。アクセスできなくなる子どものデバイス: {{devices}}台。',
   deleteAccountGraceNotice:
-    'アカウントは {{days}} 日間そのまま使えます。その後、完全に削除されます。',
+    '削除は{{days}}日後に行われます。それまでは、KidGateを開いて削除をキャンセルできます。',
   deleteAccountReauthNotice: '確認のため、再度ログインが必要です。',
   deleteAccountConfirmLabel: '確認のため {{word}} と入力してください',
   statusScheduled: '予約済み',

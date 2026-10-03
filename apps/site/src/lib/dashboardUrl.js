@@ -29,18 +29,23 @@ export const DASHBOARD_URL =
 /**
  * Whether `dashboard.kidgate.app` is serving yet.
  *
- * It is not, so every link to it on this site renders as "coming soon" — the
- * same switch the four platforms have in `lib/storeLinks.js`, for the same
- * reason: a header button that leads to a host with nothing behind it reads as
- * a broken site rather than an unshipped one. Three places follow this flag —
- * the header CTA, the footer's Product column, and the `[…](/dashboard)` link
- * inside the Support copy.
+ * **It is, since 2026-09-23.** `apps/dashboard` had been deploying to Vercel
+ * for weeks — `docs/DEPLOY_LOG.md` names "the console that is still live" on
+ * 2026-09-20 — while this constant still said no, so the header CTA and the
+ * footer's Product column both rendered "coming soon" and no link at all. The
+ * site was the only thing hiding a console that worked.
+ *
+ * Three places follow this flag: the header CTA, the footer's Product column,
+ * and the `[…](/dashboard)` link inside `support.faq1A`. Flipping it is the
+ * whole change — none of them carry a second copy of the answer, which is why
+ * the fix belongs here and not in fourteen locale packs.
  *
  * Deliberately a constant here rather than a `VITE_` variable: it is a fact
  * about the product, not about the environment. A dev build pointing at
- * `localhost:5173` still must not tell a reader the dashboard has shipped.
+ * `localhost:5173` still renders the link, because the dashboard has shipped
+ * whatever host this build happens to target.
  */
-export const DASHBOARD_AVAILABLE = false;
+export const DASHBOARD_AVAILABLE = true;
 
 /** The path the locale packs use for the dashboard. Not a route on this site. */
 const DASHBOARD_PATH = '/dashboard';

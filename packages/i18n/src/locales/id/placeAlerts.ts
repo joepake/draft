@@ -55,20 +55,10 @@ export const placeAlerts = {
     'Ini titik yang sama dengan “{{name}}”. Geser peta untuk memindahkan pin.',
   overlapWarning:
     '“{{name}}” berjarak {{meters}} m dan lingkarannya mencapai titik ini. Selama perangkat berada di keduanya, hanya yang lebih dekat yang memberi tahu. Simpan lagi untuk mempertahankannya.',
-  copyTitle: 'Tambahkan ke anak lain?',
-  copyMessage: 'Salin “{{name}}” ke {{count}} perangkat anak lain di keluarga ini?',
-  copyMessage_one: 'Salin “{{name}}” ke perangkat anak lain di keluarga ini?',
-  copyConfirm: 'Salin',
-  copyDoneToast: 'Disalin ke {{count}} perangkat.',
-  copyDoneToast_one: 'Disalin ke {{count}} perangkat.',
-  copySkippedToast:
-    'Anak lain sudah memiliki tempat ini atau telah mencapai batas maksimum.',
   savedToast: 'Tempat disimpan.',
   updatedToast: 'Tempat diperbarui.',
   removedToast: 'Tempat dihapus.',
   saveFailedToast: 'Tidak dapat menyimpan. Silakan coba lagi.',
-  enteredLabel: 'Masuk',
-  exitedLabel: 'Keluar',
   footerNote:
     'Diperiksa setiap kali lokasi disinkronkan — tidak selalu berjalan di latar belakang.',
 } as const;

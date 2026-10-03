@@ -46,6 +46,9 @@ export const settings = {
   accountLinkActionLink: 'Vincular',
   accountLinkActionUnlink: 'Desvincular',
   accountLinkActionVerify: 'Verificar',
+  accountLinkActionLinkA11y: 'Vincular {{provider}}',
+  accountLinkActionUnlinkA11y: 'Desvincular {{provider}}',
+  accountLinkActionVerifyA11y: 'Verificar {{provider}}',
   accountLinkSummary: 'Entra com {{methods}}',
   accountLinked: 'Vinculado',
   accountNotLinked: 'Não vinculado',
@@ -61,13 +64,10 @@ export const settings = {
   pushNotificationsSubtitle: 'Escolha quais alertas chegam a este telefone',
   inAppAlertsLabel: 'Alertas no app',
   inAppAlertsHint:
-    'Mostra alertas no app para solicitações de tempo. Os alertas de SOS sempre aparecem.',
+    'Mostra um banner para novos alertas enquanto o KidGate está aberto. Os alertas de SOS sempre aparecem.',
   sosSoundLabel: 'Sirene de SOS',
   sosSoundHint:
     'Toca uma sirene alta neste telefone quando a criança envia um SOS. A vibração continua ativa de qualquer forma.',
-  shareScreenTimeLabel: 'Compartilhar meu Tempo de Uso',
-  shareScreenTimeHint:
-    'Coloca o Tempo de Uso deste celular no quadro da família, ao lado do dos seus filhos. Precisa de acesso de uso.',
   themeStyleLabel: 'Estilo do tema',
   themeColorLabel: 'Cor do tema',
   signOutButton: 'Sair',
@@ -101,12 +101,16 @@ export const settings = {
     '{{deviceName}} será desconectado desta conta e deixará de receber notificações. Quem estiver com ele pode entrar de novo com a senha.',
   toastParentDeviceRemoved: '{{deviceName}} removido.',
   signedOutByAnotherDevice:
-    'Este dispositivo foi desconectado da conta de responsável a partir de outro dispositivo.',
+    'Este dispositivo foi desconectado da conta de responsável a partir de outro dispositivo. Entre novamente para continuar.',
   deleteAccountTitle: 'Excluir conta',
   deleteAccountSubtitleDefault: 'Exclui permanentemente sua conta e todos os dados',
   deleteAccountAlertTitle: 'Excluir a conta permanentemente?',
   deleteAccountAlertMessage:
     'Isto agenda a exclusão da sua conta familiar. Nada é removido ainda — você pode entrar e cancelar a qualquer momento antes da data de exclusão. Depois disso, todos os dados (dispositivos, atividade, histórico de localização, fotos SOS) são excluídos permanentemente para todos os pais e crianças.',
+  deleteAccountAlertMessageMember:
+    'Isto agenda a exclusão da sua própria conta. Nada é removido ainda — você pode entrar e cancelar a qualquer momento antes da data de exclusão. Depois disso, seu login e seus próprios ajustes são excluídos. A família, os dispositivos dela e os outros responsáveis não são afetados.',
+  deleteAccountSubscriptionNotice:
+    'Excluir sua conta não cancela uma assinatura. Cancele-a na App Store ou no Google Play.',
   sendRequestButton: 'Excluir permanentemente',
   toastDeletionAlreadyPending: 'A exclusão da conta já está em andamento.',
   toastDeletionRequestFailed:
@@ -190,7 +194,7 @@ export const settings = {
   deleteAccountImpact:
     'Pais que perdem o acesso: {{parents}}. Dispositivos que perdem o acesso: {{devices}}.',
   deleteAccountGraceNotice:
-    'Sua conta continua funcionando por {{days}} dias e depois é excluída permanentemente.',
+    'A exclusão acontece depois de {{days}} dias. Até lá, você pode abrir o KidGate e cancelá-la.',
   deleteAccountReauthNotice: 'Você precisará entrar novamente para confirmar.',
   deleteAccountConfirmLabel: 'Digite {{word}} para confirmar',
   statusScheduled: 'Agendada',

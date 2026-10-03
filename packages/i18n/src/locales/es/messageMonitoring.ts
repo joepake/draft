@@ -2,18 +2,21 @@ export const messageMonitoring = {
   actionTitle: 'Alertas de mensajes',
   actionDescription:
     'Recibe un aviso cuando aparezcan palabras preocupantes en los mensajes',
-  title: 'Alertas de contenido',
-  heroTitle: 'Seguridad de mensajes',
+  title: 'Alertas de mensajes',
+  heroTitle: 'Alertas de mensajes',
   heroSubtitle:
-    'KidGate detecta palabras preocupantes en los mensajes de tu hijo y te avisa. Nunca te muestra el mensaje, solo la palabra marcada.',
-  androidOnlyNote: 'Solo disponible en dispositivos Android.',
+    'KidGate detecta palabras preocupantes en los mensajes y las búsquedas de tu hijo, y te avisa. Solo ves la palabra o frase marcada, nunca el mensaje ni la búsqueda.',
+  androidOnlyNote:
+    'Los mensajes solo se pueden revisar en dispositivos Android. Las búsquedas también se pueden revisar en la extensión de Chrome.',
+  searchOnlyNote:
+    'Aquí solo se pueden revisar las búsquedas. Los mensajes solo se pueden revisar en dispositivos Android.',
   recentTitle: 'Alertas recientes',
   emptyTitle: 'Aún no hay alertas',
   emptySubtitle: 'No se han detectado palabras preocupantes en los mensajes.',
   emptySubtitleNotWatching:
     'Ahora mismo no se están revisando los mensajes, así que esta lista seguirá vacía pase lo que pase.',
-  flaggedTerm: 'Palabra marcada: «{{term}}»',
-  flaggedTermPrefix: 'Palabra marcada: «',
+  flaggedTerm: 'Marcado: «{{term}}»',
+  flaggedTermPrefix: 'Marcado: «',
   flaggedTermSuffix: '»',
   flaggedTermMeaning: 'Significado: {{gloss}}',
   aiConfirmed: 'Confirmado por IA',
@@ -31,7 +34,7 @@ export const messageMonitoring = {
   guidanceToggle: 'Qué hacer ahora',
   guidanceHide: 'Ocultar',
   guidanceFooter:
-    'KidGate no guardó el mensaje, solo esta palabra. Todo lo demás tiene que venir de tu hijo.',
+    'KidGate no guardó el mensaje, solo esta palabra o frase. Todo lo demás tiene que venir de tu hijo.',
   guidance: {
     predator:
       'El acoso de adultos suele empezar de forma amable, de alguien que tu hijo cree de su edad. Pregunta con quién habla últimamente y cómo se conocieron, antes de mencionar el aviso: un niño que se siente descubierto deja de responder.',
@@ -52,22 +55,24 @@ export const messageMonitoring = {
     gambling:
       'Las cajas de botín, los sobres de cartas y las apuestas de skins cuentan, y rara vez le parecen juego de azar a un niño. Mira en qué gasta dentro de los juegos antes de tratarlo como un problema de dinero.',
     profanity:
-      'El lenguaje soez por sí solo es común y casi nunca dice nada sobre su seguridad. Si estos avisos son ruido para tu familia, desactiva “Marcar también el lenguaje soez” en los ajustes de esta pantalla.',
+      'El lenguaje soez por sí solo es común y casi nunca dice nada sobre su seguridad. Si estos avisos son ruido para tu familia, desactiva «Marcar también el lenguaje soez» en los ajustes de esta pantalla.',
     unknown:
-      'Este aviso viene de un dispositivo o una lista de palabras que esta versión ya no nombra. La palabra marcada de arriba es lo que hay que preguntar; del mensaje no se guardó nada más.',
+      'Este aviso viene de un dispositivo o una lista de palabras que esta versión ya no nombra. La palabra o frase marcada de arriba es lo que hay que preguntar; del mensaje no se guardó nada más.',
   },
-  setupTitle: 'Seguridad de mensajes',
+  setupTitle: 'Alertas de mensajes',
   setupBody:
-    'Vigila los mensajes en busca de palabras preocupantes. KidGate nunca te muestra el mensaje, solo un aviso si aparece algo preocupante.',
+    'Cuando tu padre o madre lo activa, KidGate revisa los mensajes que recibes en busca de palabras de aviso, aquí mismo en este teléfono. Tu padre o madre solo ve una palabra o frase marcada, nunca tus mensajes. Si además activa el análisis de mensajes con IA, un mensaje poco claro puede enviarse a un servicio de IA para revisarlo, tras eliminar los correos electrónicos, los números de teléfono, los enlaces y los @usuarios.',
   setupGrant: 'Permitir acceso a notificaciones',
-  setupEnable: 'Seguridad de mensajes',
+  setupEnable: 'Alertas de mensajes',
   controlledByParentHint:
-    'Se activa o desactiva desde la app KidGate en el teléfono de tu padre o madre, no aquí.',
+    'Se activa o desactiva desde la app parental o el panel web, no aquí.',
   parentIncomingLabel: 'Revisar los mensajes que recibe',
   parentOutgoingLabel: 'Revisar los mensajes que escribe',
   parentSearchLabel: 'Revisar lo que busca',
   parentSearchHint:
-    'Navegadores y YouTube. Solo se informa la palabra marcada, nunca la búsqueda en sí.',
+    'Navegadores y YouTube. Solo se informa la palabra o frase marcada, nunca la búsqueda en sí.',
+  parentSearchHintNotGranted:
+    'Necesita el mismo permiso que «Revisar los mensajes que escribe». Activa «Revisar los mensajes que recibe» y luego permítelo en su dispositivo.',
   parentToggleHintGranted: 'En este teléfono.',
   parentToggleHintNotGranted:
     'Aún no se ha permitido en este teléfono: abre KidGate en su dispositivo para concederlo.',
@@ -75,17 +80,17 @@ export const messageMonitoring = {
   parentProfanityHint:
     'Desactivado por defecto — las groserías comunes son frecuentes, y esto también las convierte en alerta.',
   parentToggleSaveFailed: 'No se pudo guardar el cambio.',
-  settingsTitle: 'Ajustes de alertas de mensajes',
+  settingsTitle: 'Ajustes de Alertas de mensajes',
   checkedTitle: 'Revisado y sin problema',
   checkedSubtitle:
     'Palabras vigiladas que aparecieron pero resultaron inofensivas en su contexto, así que no se te avisó. Se muestran aquí para que veas qué se filtra en tu nombre, y nos digas si algo debería haberte llegado.',
   consentTitle: 'Análisis de mensajes con IA',
   consentBody:
-    'Cuando está activado, los mensajes que una palabra clave marca como dudosos se envían —sin nombres, números ni enlaces— a un servicio de IA para confirmar si son realmente preocupantes antes de avisarte. Las palabras de alto riesgo siguen avisando al instante sin enviar nada.',
+    'Cuando está activado, un mensaje cuya palabra marcada podría ser inofensiva o haber coincidido solo de forma aproximada se envía a un servicio de IA para confirmar si es realmente preocupante antes de avisarte. Primero se eliminan los correos electrónicos, los números de teléfono, los enlaces y los @usuarios; los nombres y el resto del mensaje, no. Una coincidencia clara avisa al instante sin enviar nada.',
   consentEnable: 'Activar análisis con IA',
   consentConfirmTitle: '¿Activar el análisis de mensajes con IA?',
   consentConfirmBody:
-    'Los mensajes dudosos, sin datos personales, se enviarán a un servicio de IA para su revisión. Confirmas que consientes este tratamiento.',
+    'Los mensajes dudosos se enviarán a un servicio de IA para comprobar si son preocupantes, tras eliminar los correos electrónicos, los números de teléfono, los enlaces y los @usuarios. Los nombres y el resto del mensaje no se eliminan. Confirmas que consientes este tratamiento.',
   consentAgree: 'Acepto',
   outgoingTitle: 'Mensajes que escribes',
   outgoingBody:
@@ -105,30 +110,34 @@ export const messageMonitoring = {
     'Android desactivó esto. Vuelve a concederlo para seguir revisando lo que escribes.',
   outgoingDisclosureTitle: 'Antes de permitirlo',
   outgoingDisclosureBody:
-    'KidGate lee solo lo que escribes en apps de mensajería, nunca en otra app y nunca en un campo de contraseña. Busca las mismas palabras de aviso en este teléfono. Tus mensajes no se envían a ninguna parte; solo la palabra marcada llega a tu padre o madre.',
+    'KidGate revisa lo que escribes en apps de mensajería en busca de las mismas palabras de aviso. Si tu padre o madre activa las alertas de búsqueda, también revisa lo que escribes en navegadores, YouTube y la app de Google. Nunca lee un campo de contraseña. La revisión se hace en este teléfono: nada de lo que escribes se envía a ningún sitio, y solo una palabra o frase marcada llega a tu padre o madre.',
   outgoingRestrictedHint:
     'Si el interruptor aparece atenuado, abre Ajustes › Aplicaciones › KidGate, toca el menú ⋮ y elige «Permitir ajustes restringidos»; después vuelve aquí.',
   notice: {
     revokedTitle: 'La revisión de mensajes se ha detenido',
     revokedBody:
       'Android desactivó un permiso que KidGate necesita, así que los mensajes ya no se revisan. Abre KidGate en el dispositivo de tu hijo o hija y concédelo de nuevo.',
-    offTitle: 'La seguridad de mensajes no está activada',
+    offTitle: 'Las Alertas de mensajes no están activadas',
     offBody:
       'No se está revisando nada en el dispositivo, así que aquí no puede aparecer ninguna alerta. Abre KidGate en su dispositivo para configurarlo.',
+    switchedOffBody:
+      'No se está revisando nada en el dispositivo de tu hijo, así que aquí no puede aparecer ninguna alerta. Activa «Revisar los mensajes que recibe» en los ajustes de esta pantalla.',
     pendingTitle: 'Esperando a que el dispositivo lo aplique',
     pendingBody:
       'Has activado esto. El dispositivo recogerá el cambio en su próxima conexión, normalmente en unos minutos, y antes si el teléfono está en uso. No tienes que hacer nada más.',
     unknownTitle: 'Esperando al dispositivo',
     unknownBody:
-      'Este dispositivo aún no ha informado de si la seguridad de mensajes está funcionando, así que una lista vacía no dice mucho. Se actualizará la próxima vez que el dispositivo se conecte.',
+      'Este dispositivo aún no ha informado de si las Alertas de mensajes están funcionando, así que una lista vacía no dice mucho. Se actualizará la próxima vez que el dispositivo se conecte.',
     outgoingAvailableTitle: 'Revisa también lo que escribe',
     outgoingAvailableBody:
       'Los mensajes que recibe ya se revisan. KidGate también puede revisar lo que escribe en apps de mensajería: el acoso y la autolesión aparecen ahí mucho más a menudo. Configúralo en su dispositivo.',
+    outgoingSwitchedOffBody:
+      'Los mensajes que recibe tu hijo ya se revisan. KidGate también puede revisar lo que escribe en apps de mensajería: el acoso y la autolesión aparecen ahí mucho más a menudo. Activa «Revisar los mensajes que escribe» en los ajustes de esta pantalla.',
   },
   languagesLabel: 'Idiomas analizados',
   languagesHint:
     'Los idiomas en los que este dispositivo busca palabras preocupantes. Elige hasta {{max}}.',
   languagesDefaultHint: 'Por defecto, el idioma del dispositivo.',
   setupStepFindKidGate:
-    'Busca KidGate en la lista de acceso a notificaciones y actívalo. KidGate puede aparecer dos veces: la otra entrada es la de alertas de llamadas nocturnas, así que si al volver este paso sigue pendiente, activa la otra.',
+    'Busca KidGate en la lista de acceso a notificaciones y actívalo.',
 } as const;

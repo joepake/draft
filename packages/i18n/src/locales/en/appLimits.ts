@@ -1,7 +1,7 @@
 export const appLimits = {
   title: 'App Limits',
   intro:
-    'Cap how long each app can be used per day. This is on top of the device-wide daily limit.',
+    'Cap how long each app can be used per day. This is on top of the Daily Limit.',
   emptyTitle: 'No app limits yet',
   emptySubtitle: 'Pick an app below to give it its own daily cap.',
   usedToday: '{{used}} of {{limit}} today',

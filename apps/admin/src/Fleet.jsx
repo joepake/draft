@@ -102,21 +102,51 @@ const PROTECTION_KEYS = [
   'batteryOptimization',
 ];
 
-/** Devices reporting each status for one permission, worst first. */
+/**
+ * Devices reporting each status for one permission, worst first.
+ *
+ * `unknown` is whatever is left of `reported` once the named columns are
+ * taken, not `table.unknown` alone, so every row sums to its last column. It
+ * did not: `restricted` and `unknown` were counted in `reported` and drawn
+ * nowhere, and a row that does not add up reads as a bug in the table rather
+ * than as a status the table forgot. A value no column knows lands there too.
+ */
 function permissionSummary(protection, t) {
   return PROTECTION_KEYS.map(key => {
     const table = protection?.[key] || {};
     const reported = Object.values(table).reduce((sum, value) => sum + value, 0);
-    return {
+    const row = {
       key,
       label: t(`permission.${key}`),
       denied: table.denied || 0,
       authorized: (table.authorized || 0) + (table.approved || 0),
       unavailable: table.unavailable || 0,
       notDetermined: table.notDetermined || 0,
+      restricted: table.restricted || 0,
       reported,
     };
+    row.unknown =
+      reported -
+      row.denied -
+      row.authorized -
+      row.unavailable -
+      row.notDetermined -
+      row.restricted;
+    return row;
   }).filter(row => row.reported > 0);
+}
+
+/** Lock states in the order a lock moves through them, good news first. */
+const LOCK_ORDER = ['inForce', 'notApplied', 'unconfirmed', 'waiting'];
+
+/**
+ * Sum of some keys of a rollup map, or `undefined` when the map itself is
+ * absent — a row written before the field existed. `formatNumber` draws that
+ * as `—` rather than `0`, which would claim a count nobody took.
+ */
+function sumOf(table, keys) {
+  if (!table) return undefined;
+  return keys.reduce((sum, key) => sum + (table[key] || 0), 0);
 }
 
 export default function Fleet() {
@@ -166,6 +196,11 @@ export default function Fleet() {
       },
       /** Absent `osVersion`, which is an old install, not a version. */
       unknown: { unknown: t('value.unknown') },
+      lock: Object.fromEntries(LOCK_ORDER.map(key => [key, t(`lock.${key}`)])),
+      webFilterBlocker: {
+        awaitingApproval: t('webFilterBlocker.awaitingApproval'),
+        configurationDisabled: t('webFilterBlocker.configurationDisabled'),
+      },
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps -- `t` reads `language`
     [language],
@@ -197,7 +232,18 @@ export default function Fleet() {
     <div className="section-head">
       <h2 className="section-title">{t('fleet.title')}</h2>
       <div style={{ alignItems: 'center', display: 'flex', gap: 10 }}>
-        <span className="muted">{t('fleet.asOf', { date: latest?.date ?? '—' })}</span>
+        {/*
+          When the row was written, beside what day it describes: a forced
+          re-run overwrites the same date, so the date alone cannot say whether
+          the numbers on screen came from the code just deployed. Same shape as
+          the Report page's health strip.
+        */}
+        <span className="muted">
+          {t('fleet.asOf', {
+            date: latest?.date ?? '—',
+            writtenAt: latest?.writtenAt?.slice(0, 16).replace('T', ' ') ?? '—',
+          })}
+        </span>
         <button className="btn btn-ghost" disabled={busy} onClick={() => load(30)}>
           {busy ? t('common.loading') : t('common.refresh')}
         </button>
@@ -241,6 +287,33 @@ export default function Fleet() {
   const permissions = permissionSummary(fleet.protection, t);
   const active = fleet.lastActive || {};
   const reachable = (active.hour || 0) + (active.day || 0) + (active.week || 0);
+  const parents = fleet.parents;
+  const lockNotEnforced = sumOf(fleet.lock, ['notApplied', 'unconfirmed']);
+  const webFilterBlocked = sumOf(fleet.webFilterBlocker, [
+    'awaitingApproval',
+    'configurationDisabled',
+  ]);
+  const ota = fleet.otaPublished;
+  // Rows written before this field carry no `otaPublished` key at all; a row
+  // that read a missing `config/ota` carries `null`. Different sentences.
+  const otaNote =
+    ota === undefined
+      ? t('fleet.nextRollup')
+      : ota === null
+        ? t('fleet.otaNoConfig')
+        : ota.enabled
+          ? t('fleet.otaPublished', {
+              ios: ota.ios ?? '—',
+              android: ota.android ?? '—',
+            })
+          : t('fleet.otaDisabled');
+  /*
+   * A row written before the version chart took the build carries version
+   * names alone, with builds in a separate `appBuild` map that no chart reads
+   * any more. Drawn under the new subtitle it claims "name and build" over
+   * bars that are names — so it says what it is instead, until the next run.
+   */
+  const versionsWithoutBuild = fleet.appBuild !== undefined;
 
   return (
     <>
@@ -298,6 +371,70 @@ export default function Fleet() {
         </div>
       ) : null}
 
+      {/*
+        The other end of every alert. The tiles above describe the child's
+        device; none of them says whether anyone is on the receiving end of an
+        SOS from it, and a family whose every parent phone lost its token looks
+        perfectly healthy from the device's side.
+      */}
+      <h3 className="chart-title">{t('fleet.parentsTitle')}</h3>
+      <p className="chart-sub">{t('fleet.parentsSub')}</p>
+      <div className="tile-grid" style={{ marginBottom: 12 }}>
+        <div className="tile">
+          <div className="tile-label">{t('fleet.familiesLive')}</div>
+          <div className="tile-value">{formatNumber(parents?.familiesLive)}</div>
+        </div>
+        <div className="tile">
+          <div className="tile-label">{t('fleet.noParentPush')}</div>
+          <div className="tile-value">
+            {formatNumber(parents?.familiesNoParentPush)}
+          </div>
+        </div>
+        <div className="tile">
+          <div className="tile-label">{t('fleet.parentIdle')}</div>
+          <div className="tile-value">{formatNumber(parents?.familiesParentIdle)}</div>
+        </div>
+        <div className="tile">
+          <div className="tile-label">{t('fleet.parentPushDead')}</div>
+          <div className="tile-value">{formatNumber(parents?.pushDead)}</div>
+        </div>
+      </div>
+
+      {parents?.familiesNoParentPush > 0 ? (
+        <div className="status-strip" style={{ marginBottom: 12 }}>
+          <span className="status-dot is-critical" />
+          <span className="status-label">
+            {t('fleet.noParentPushStrip', { count: parents.familiesNoParentPush })}
+          </span>
+          <span className="status-detail">{t('fleet.noParentPushDetail')}</span>
+        </div>
+      ) : null}
+
+      <h3 className="chart-title">{t('fleet.enforcementTitle')}</h3>
+      <p className="chart-sub">{t('fleet.enforcementSub')}</p>
+      <div className="tile-grid" style={{ marginBottom: 12 }}>
+        <div className="tile">
+          <div className="tile-label">{t('fleet.lockNotEnforced')}</div>
+          <div className="tile-value">{formatNumber(lockNotEnforced)}</div>
+        </div>
+        <div className="tile">
+          <div className="tile-label">{t('fleet.webFilterBlocked')}</div>
+          <div className="tile-value">{formatNumber(webFilterBlocked)}</div>
+        </div>
+        <div className="tile">
+          <div className="tile-label">{t('fleet.pinLocked')}</div>
+          <div className="tile-value">
+            {formatNumber(sumOf(fleet.parentPin, ['locked']))}
+          </div>
+        </div>
+        <div className="tile">
+          <div className="tile-label">{t('fleet.pinFailing')}</div>
+          <div className="tile-value">
+            {formatNumber(sumOf(fleet.parentPin, ['failing']))}
+          </div>
+        </div>
+      </div>
+
       <div className="chart-grid">
         <div className="chart-card">
           <h3 className="chart-title">{t('fleet.platform')}</h3>
@@ -327,8 +464,21 @@ export default function Fleet() {
 
         <div className="chart-card">
           <h3 className="chart-title">{t('fleet.appVersion')}</h3>
-          <p className="chart-sub">{t('fleet.appVersionSub')}</p>
-          <BarChart data={fleet.appVersion} total={fleet.devices} />
+          <p className="chart-sub">
+            {versionsWithoutBuild ? (
+              t('fleet.appVersionWithoutBuild')
+            ) : (
+              <>
+                {t('fleet.appVersionSub')}
+                {otaNote}
+              </>
+            )}
+          </p>
+          <BarChart
+            data={fleet.appVersion}
+            labels={labels.unknown}
+            total={fleet.devices}
+          />
         </div>
 
         <div className="chart-card">
@@ -391,6 +541,38 @@ export default function Fleet() {
             emptyLabel={t('fleet.noProbePublished')}
           />
         </div>
+
+        <div className="chart-card">
+          <h3 className="chart-title">{t('fleet.webFilterBlocker')}</h3>
+          <p className="chart-sub">{t('fleet.webFilterBlockerSub')}</p>
+          <BarChart
+            data={fleet.webFilterBlocker}
+            labels={labels.webFilterBlocker}
+            emptyLabel={
+              fleet.webFilterBlocker
+                ? t('fleet.webFilterBlockerEmpty')
+                : t('fleet.nextRollup')
+            }
+          />
+        </div>
+
+        <div className="chart-card">
+          <h3 className="chart-title">{t('fleet.lock')}</h3>
+          <p className="chart-sub">{t('fleet.lockSub')}</p>
+          {/*
+            Not `order`, which draws every state at zero and would show four
+            empty rows instead of "no lock standing". Rebuilt in `LOCK_ORDER`
+            so bars that tie keep that order through the chart's stable sort.
+          */}
+          <BarChart
+            data={
+              fleet.lock &&
+              Object.fromEntries(LOCK_ORDER.map(key => [key, fleet.lock[key] || 0]))
+            }
+            labels={labels.lock}
+            emptyLabel={fleet.lock ? t('fleet.noLocks') : t('fleet.nextRollup')}
+          />
+        </div>
       </div>
 
       <div className="card" style={{ marginTop: 12 }}>
@@ -408,6 +590,8 @@ export default function Fleet() {
                   <th>{t('fleet.colDenied')}</th>
                   <th>{t('fleet.colNotAsked')}</th>
                   <th>{t('fleet.colUnavailable')}</th>
+                  <th>{t('fleet.colRestricted')}</th>
+                  <th>{t('fleet.colUnknown')}</th>
                   <th>{t('fleet.colReportedBy')}</th>
                 </tr>
               </thead>
@@ -425,6 +609,8 @@ export default function Fleet() {
                     </td>
                     <td>{formatNumber(row.notDetermined)}</td>
                     <td>{formatNumber(row.unavailable)}</td>
+                    <td>{formatNumber(row.restricted)}</td>
+                    <td>{formatNumber(row.unknown)}</td>
                     <td>{formatNumber(row.reported)}</td>
                   </tr>
                 ))}

@@ -26,8 +26,8 @@ export const report = {
 
   statScreenTime: 'Screen Time',
   statDailyAverage: 'Daily average',
-  statBlockedApps: 'Apps blocked',
-  statBlockedWebVisits: 'Sites filtered',
+  statBlockedApps: 'Blocked app opens',
+  statBlockedWebVisits: 'Blocked site visits',
   statTasksApproved: 'Tasks completed',
 
   trendUp: '{{value}} more than the week before',
@@ -112,7 +112,8 @@ export const report = {
   // The message next to the shared image — the image already carries every
   // figure, so this is only the download link, not a second copy of the report.
   shareLinkCta: 'Get the app at {{url}}',
-  shareFooterDesc: 'KidGate helps parents see screen time, location, and messages.',
+  shareFooterDesc:
+    'KidGate helps parents manage screen time, see location and filter the web.',
   shareFooterCta: 'Get the app at kidgate.app',
 
   /*
@@ -154,7 +155,12 @@ export const report = {
   // Per-child rows. The dashboard has rendered these since the table
   // existed; the phone could not, because the copy lived only in the web
   // pack.
+  // Title and note are chosen by row kind (`reportChildrenHeading`): one row
+  // per child once two or more are set up, one per device before that.
   childrenTitle: 'Each child',
+  childrenNoteByChild:
+    'Same fortnight, each child across every device they use. Percentages are of the family total.',
+  devicesTitle: 'Each device',
   childrenNote: 'Same fortnight, per device. Percentages are of the family total.',
   colChild: 'Child',
   colScreenTime: 'Screen Time',

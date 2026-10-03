@@ -30,8 +30,11 @@ export const sos = {
   // SOS screen, with no lock involved.
   escapeGrantedTitle: 'SOS sent',
   escapeGrantedBody: 'Your parent has been notified. This device stays locked.',
-  toastSentWithoutPhoto:
-    'SOS sent, but without a photo. Allow Camera in Settings and try again if you can.',
+  toastSentWithoutPhoto: 'SOS sent without a photo.',
+  // Only when the camera permission is what stopped the photo. "Try again"
+  // would mean a second SOS, so the step is for next time.
+  toastSentWithoutPhotoCamera:
+    'SOS sent without a photo. To add one next time, allow Camera in Settings.',
   toastSendFailed: 'Unable to send the SOS. Try again, or call someone you trust.',
   sendFailedBannerTitle: 'Your last SOS did not go through',
   sendFailedBannerBody:
@@ -39,12 +42,17 @@ export const sos = {
   headerTitle: 'Emergency SOS',
   headerSubtitle: 'Use this when you feel unsafe or need help right away.',
   infoInstantAlertLabel: 'Instant alert',
-  infoInstantAlertDetail: 'Your parents receive an urgent notification right away.',
+  infoInstantAlertDetail:
+    'KidGate sends your parent an urgent notification right away.',
   infoYourLocationLabel: 'Your location',
   infoYourLocationDetail: 'Shared with your parent so they know where you are.',
   infoQuickSelfieLabel: 'A quick photo',
+  // The desktop agent's wording: it takes a frame without opening anything.
   infoQuickSelfieDetail:
     'Added after the alert is sent, if the camera is already available.',
+  // The phone's: `launchCamera` opens the full-screen camera for the child.
+  infoQuickSelfieDetailPhone:
+    'After the alert is sent, the camera opens so you can add a photo. You can skip it.',
   simulatorTipTitle: 'Simulator tip',
   simulatorTipBody:
     'Turn on Camera in the Simulator menu (Front Camera) before sending SOS so a test photo can be captured.',
@@ -54,6 +62,7 @@ export const sos = {
   whatParentsReceive: 'What parents receive',
   holdToSendFiveSeconds: 'Hold to send · 5 seconds',
   keepHolding: 'Keep holding',
+  secondsLeft: '{{seconds}}s',
   pressAndHoldToCancel: 'Press and hold — release early to cancel',
   holdToSendSosAccessibility: 'Hold for 5 seconds to send SOS',
   sosEmergencyAccessibility: 'SOS emergency',
@@ -77,7 +86,8 @@ export const sos = {
   muteAlarm: 'Silence this alert',
   alertCount: '{{current}} of {{total}}',
   trustedContactsTitle: 'Trusted contacts',
-  trustedContactsSubtitle: 'Emailed with every SOS and its last known location',
+  trustedContactsSubtitle:
+    'Emailed with an SOS and its last known location, up to a few alerts an hour',
   trustedContactsRowSubtitle: 'People emailed when your child sends an SOS',
   trustedContactsListSection: 'Who gets the SOS',
   trustedContactsEmpty:

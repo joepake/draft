@@ -37,7 +37,6 @@ export const childReport = {
   bandTooThin: 'इस दिन का इतना कम मापा गया कि उसे दिखाया नहीं जा सकता।',
 
   sectionDevices: 'कौन-सा डिवाइस',
-  deviceTotalsOnly: 'सिर्फ़ कुल',
   openDeviceReport: '{{name}} की रिपोर्ट खोलें',
 
   sectionApps: 'सबसे ज़्यादा इस्तेमाल',

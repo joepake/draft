@@ -3,11 +3,13 @@ import type { ApiPort } from '@kidgate/ports/api';
 /**
  * Inviting a second parent, and answering the request that comes back.
  *
- * Three endpoints, one shape: **`requireAuthUser` and nothing more.** No
- * device credential and no web step-up — minting a code is not a control over
- * a child's device, and the code alone grants nothing until the owner approves
- * the request it produces. That is why this surface works from a browser that
- * has only signed in.
+ * Minting and approving ask what every other parent write asks,
+ * `requireParentDevice`: a paired phone, or a browser whose QR session is still
+ * live (`requireParentCaller` in `functions/http/pairing.js`, 2026-09-27).
+ * Approval is what hands out control of the family, and on the ID token alone
+ * a password typed into any browser could add its holder as a parent. Listing
+ * the pending requests stays on the ID token — it changes nothing, and a
+ * read-only browser still shows them.
  *
  * The handshake is deliberately two-sided:
  *

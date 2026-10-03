@@ -7,6 +7,7 @@ import {
   quickProtectSources,
 } from '@kidgate/core/domain/quickProtect';
 import Toggle from './Toggle.jsx';
+import { formatHm } from './locale.js';
 
 /** Every switch starts on: the card is an offer to protect, not a form. */
 const ALL_ON = {
@@ -91,7 +92,7 @@ export default function QuickProtectCard({
         hint: withReplaces(
           source?.rules?.scheduleWindows?.length
             ? source.rules.scheduleWindows
-                .map(window => `${window.start}–${window.end}`)
+                .map(window => `${formatHm(window.start)}–${formatHm(window.end)}`)
                 .join(', ')
             : activityT('family.quickProtectBedtimeHint'),
           replaces,

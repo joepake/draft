@@ -48,10 +48,10 @@ export const activities = {
   activityTypeCheckIn: 'चेक-इन',
   activityTypeLocationRequest: 'स्थान',
   activityTypeTimeRequest: 'समय अनुरोध',
-  activityTypeRewardTask: 'इनाम वाला टास्क',
+  activityTypeRewardTask: 'इनाम वाले टास्क',
   activityTypeSearchAlert: 'खोज चेतावनी',
   activityTypeWebFilter: 'वेब फ़िल्टर',
-  activityTypeEmergency: 'आपातकाल',
+  activityTypeEmergency: 'SOS',
   activityTypeUnknown: 'गतिविधि',
 
   sosEscapeTitle: 'आपातकालीन अनलॉक',
@@ -84,7 +84,7 @@ export const activities = {
     '{{appName}} में आपके बच्चे के लिखे संदेश में एक चिह्नित शब्द मिला।',
   messageAlertTitleSearch: 'चिंताजनक खोज',
   messageAlertBodySearch: '{{appName}} पर की गई खोज में एक चिह्नित शब्द मिला।',
-  activityTypeMessageAlert: 'संदेश चेतावनी',
+  activityTypeMessageAlert: 'संदेश चेतावनियाँ',
   messageCheckedTitle: 'जाँच हुई, चिंता की बात नहीं',
   messageCheckedBody:
     '{{appName}} में एक निगरानी वाला शब्द दिखा जो संदर्भ में हानिरहित निकला।',
@@ -150,9 +150,9 @@ export const activities = {
   tamperBackgroundRefreshBody:
     'बैकग्राउंड ऐप रिफ्रेश दोबारा चालू होने तक KidGate कम बार अपडेट हो सकता है।',
 
-  tamperDeviceClockTitle: 'तारीख या समय बदल दिया गया',
+  tamperDeviceClockTitle: 'तारीख, समय या टाइम ज़ोन बदल गया',
   tamperDeviceClockBody:
-    'इस डिवाइस का समय सही समय से मेल नहीं खाता। स्क्रीन टाइम और ब्लॉक किए गए समय सही समय के अनुसार ही चलते रहेंगे।',
+    'इस डिवाइस की तारीख, समय या टाइम ज़ोन बदल गया है — यात्रा के दौरान भी ऐसा हो सकता है। स्क्रीन टाइम और ब्लॉक किए गए समय बदली हुई घड़ी को नहीं मानते और डिवाइस के टाइम ज़ोन के अनुसार चलते हैं।',
 
   /** @deprecated legacy description keys — kept for old activity docs */
   tamperOverlay: '“अन्य ऐप्स के ऊपर दिखाएँ” अनुमति बंद कर दी गई।',
@@ -179,7 +179,9 @@ export const activities = {
 
   unknownDevice: 'अज्ञात डिवाइस',
 
-  basicActivityNote: 'लॉक, अनलॉक और डिवाइस से जुड़ी गतिविधियाँ यहाँ दर्ज की जाती हैं।',
   tamperUninstallProtectionTitle: 'अनइंस्टॉल सुरक्षा बंद हुई',
   tamperUninstallProtectionBody: 'अब इस फ़ोन से KidGate हटाया जा सकता है।',
+  tamperReinstalledTitle: 'KidGate फिर से इंस्टॉल हुआ',
+  tamperReinstalledBody:
+    'KidGate को इस डिवाइस से हटाकर फिर से इंस्टॉल किया गया। बीच के समय में कुछ भी रिकॉर्ड नहीं हुआ।',
 } as const;

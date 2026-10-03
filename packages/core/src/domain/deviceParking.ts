@@ -17,6 +17,7 @@
  * and loses only the seeing.
  */
 
+import type { OperatorHold } from '@kidgate/schema/operatorHold';
 import type { Millis } from '@kidgate/schema/primitives';
 
 /**
@@ -199,11 +200,19 @@ export interface ParkingSummary {
 }
 
 export function summariseParking(
-  devices: readonly Pick<
+  allDevices: readonly (Pick<
     ParkableDevice,
     'id' | 'monitoringState' | 'monitoredChangedAt'
-  >[],
+  > & { operatorHold?: OperatorHold })[],
 ): ParkingSummary {
+  /*
+   * A device under KidGate's own hold is parked, but not by the plan, and no
+   * choice of the parent's can wake it — `chooseMonitoredDevice` answers 404
+   * for one. Left in, a family with one phone held would be offered the
+   * choose-a-device sheet and the premium-ended banner for a device neither
+   * can reach. `domain/operatorHold` is what says why it is quiet.
+   */
+  const devices = allDevices.filter(device => !device.operatorHold);
   const parked = devices.filter(isDeviceParked).map(device => device.id);
   if (parked.length === 0) {
     return {

@@ -19,10 +19,12 @@ export const timeRequest = {
   statusCooldown: 'Con có thể gửi yêu cầu mới sau {{time}}.',
   statusDailyLimitExceeded:
     'Con đã dùng hết thời gian sử dụng hôm nay. Các ứng dụng sẽ mở lại vào ngày mai — hoặc sớm hơn nếu bố mẹ cho thêm giờ.',
-  errorDeviceNotRegistered: 'Thiết bị chưa được đăng ký.',
+  errorDeviceNotRegistered:
+    'Thiết bị này chưa sẵn sàng để gửi yêu cầu. Con thử lại sau giây lát nhé, hoặc nhờ bố mẹ ghép nối lại.',
   errorMinutesRange: 'Vui lòng nhập từ {{min}} đến {{max}} phút.',
   toastRequestSent: 'Đã gửi yêu cầu. Bố mẹ sẽ xem và trả lời sớm.',
-  toastDeviceNotRegistered: 'Thiết bị này chưa được đăng ký.',
+  toastDeviceNotRegistered:
+    'Thiết bị này chưa sẵn sàng để gửi yêu cầu. Con thử lại sau giây lát nhé, hoặc nhờ bố mẹ ghép nối lại.',
   toastSendFailed: 'Không thể gửi yêu cầu. Vui lòng thử lại.',
   askForMoreTime: 'Yêu cầu thêm giờ',
   askForMoreTimeSubtitle:
@@ -43,7 +45,7 @@ export const timeRequest = {
   unableToDeclineRequest: 'Không thể từ chối yêu cầu. Vui lòng thử lại.',
   unableToApproveRequest: 'Không thể duyệt yêu cầu. Vui lòng thử lại.',
   pendingRequestExists: 'Con đã gửi một yêu cầu rồi. Hãy chờ bố mẹ trả lời nhé.',
-  waitBeforeAnotherRequest: 'Vui lòng chờ vài phút trước khi gửi yêu cầu mới.',
+  waitBeforeAnotherRequest: 'Con chờ một chút rồi gửi yêu cầu mới nhé.',
   timeRequestSent: 'Đã gửi yêu cầu thêm giờ',
   timeRequestSentDescription: '{{deviceName}} yêu cầu thêm {{minutes}} phút.',
   timeRequestApproved: 'Đã duyệt yêu cầu thêm giờ',
@@ -60,5 +62,4 @@ export const timeRequest = {
   requestPendingButton: 'Đang chờ bố mẹ trả lời',
   requestPendingChip: 'Đang chờ bố mẹ',
   waitCooldown: 'Chờ {{cooldown}}',
-  timeRequestNote: 'Nếu bố mẹ đồng ý, con sẽ có thêm thời gian sử dụng trong hôm nay.',
 } as const;

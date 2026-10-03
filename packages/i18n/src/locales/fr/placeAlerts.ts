@@ -56,21 +56,10 @@ export const placeAlerts = {
     'C’est le même endroit que « {{name}} ». Faites glisser la carte pour déplacer le repère.',
   overlapWarning:
     '« {{name}} » est à {{meters}} m et son cercle atteint ce point. Tant que l’appareil est dans les deux, seul le plus proche alerte. Enregistrez à nouveau pour le conserver.',
-  copyTitle: 'Ajouter aux autres enfants ?',
-  copyMessage:
-    'Copier « {{name}} » vers les {{count}} autres appareils enfants de cette famille ?',
-  copyMessage_one:
-    'Copier « {{name}} » vers l’autre appareil enfant de cette famille ?',
-  copyConfirm: 'Copier',
-  copyDoneToast: 'Copié vers {{count}} appareils.',
-  copyDoneToast_one: 'Copié vers {{count}} appareil.',
-  copySkippedToast: 'Les autres enfants ont déjà ce lieu ou ont atteint le maximum.',
   savedToast: 'Lieu enregistré.',
   updatedToast: 'Lieu mis à jour.',
   removedToast: 'Lieu supprimé.',
   saveFailedToast: 'Impossible d’enregistrer. Veuillez réessayer.',
-  enteredLabel: 'Entré',
-  exitedLabel: 'Sorti',
   footerNote:
     'Vérifié à chaque synchronisation de position — pas toujours en arrière-plan.',
 } as const;

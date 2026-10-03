@@ -56,22 +56,10 @@ export const placeAlerts = {
     'È lo stesso punto di “{{name}}”. Trascina la mappa per spostare il segnaposto.',
   overlapWarning:
     '“{{name}}” è a {{meters}} m e il suo cerchio arriva fin qui. Mentre il dispositivo è in entrambi, avvisa solo il più vicino. Salva di nuovo per mantenerlo.',
-  copyTitle: 'Aggiungere anche agli altri figli?',
-  copyMessage:
-    'Copiare “{{name}}” sugli altri {{count}} dispositivi dei bambini in questa famiglia?',
-  copyMessage_one:
-    'Copiare “{{name}}” sull’altro dispositivo del bambino in questa famiglia?',
-  copyConfirm: 'Copia',
-  copyDoneToast: 'Copiato su {{count}} dispositivi.',
-  copyDoneToast_one: 'Copiato su {{count}} dispositivo.',
-  copySkippedToast:
-    'Gli altri figli hanno già questo luogo o hanno raggiunto il numero massimo.',
   savedToast: 'Luogo salvato.',
   updatedToast: 'Luogo aggiornato.',
   removedToast: 'Luogo rimosso.',
   saveFailedToast: 'Impossibile salvare. Riprova.',
-  enteredLabel: 'Arrivo',
-  exitedLabel: 'Partenza',
   footerNote:
     'Verificato ogni volta che la posizione si sincronizza — non sempre in background.',
 } as const;

@@ -26,6 +26,21 @@ export type ScreenTimeStatus = 'unavailable' | 'notDetermined' | 'denied' | 'app
  * not reported yet (old build, never came online), the latter means it reported
  * that the user has not been asked. A parent screen must show those
  * differently — one is "waiting for the device", the other is "finish setup".
+ *
+ * `foregroundOnly` is written for `location` alone: a fix can be read while
+ * KidGate is open and never while it is closed — iOS "While Using the App",
+ * Android 10+ without "Allow all the time". Both phones reported it as
+ * `authorized` until 2026-09-28, so the wizard ticked and both consoles read
+ * Protected over a map that only moved with the app open. A reader that can
+ * read a fix treats it as granted; a reader asking "is this set up" does not.
+ * Consoles older than that date fall through to their default and say nothing
+ * about it — the same as they said about `authorized`.
  */
 export type ProtectionPermissionStatus =
-  'authorized' | 'denied' | 'notDetermined' | 'restricted' | 'unavailable' | 'unknown';
+  | 'authorized'
+  | 'foregroundOnly'
+  | 'denied'
+  | 'notDetermined'
+  | 'restricted'
+  | 'unavailable'
+  | 'unknown';

@@ -2,11 +2,16 @@ export const webFilter = {
   title: 'فلتر الويب',
   fallbackDeviceName: 'جهاز الطفل',
   appliesToAll: 'يسري على أجهزة {{name}} كلها ({{count}})',
+  appliesToAll_one: 'يسري على جهاز {{name}}',
+  appliesToAll_two: 'يسري على جهازَي {{name}} كليهما',
+  appliesToAll_few: 'يسري على أجهزة {{name}} كلها ({{count}})',
+  appliesToAll_many: 'يسري على أجهزة {{name}} كلها ({{count}})',
+  appliesToAll_other: 'يسري على أجهزة {{name}} كلها ({{count}})',
   coverageLine: 'مفعّل على {{enforcing}} من {{total}} أجهزة',
   mergeNotice:
     'كانت أجهزة {{name}} تحمل إعدادات مختلفة لتصفية الويب. الحفظ هنا يطبّق مجموعة واحدة عليها كلها، مدموجة نحو الخيار الأكثر تشددًا.',
   mergeLoosened: 'أصبح مسموحًا الآن على كل الأجهزة: {{domains}}',
-  toastUpdateFailed: 'تعذّر تحديث فلتر الويب. حاول مرة أخرى.',
+  toastUpdateFailed: 'تعذّر تحديث فلتر الويب. يُرجى المحاولة مرة أخرى.',
   heroTitle: 'فلترة المواقع غير المناسبة',
   heroSubtitleIos:
     'يستخدم فلتر محتوى الويب في مدة استخدام الجهاز من Apple للحد من محتوى البالغين في Safari والمتصفحات داخل التطبيقات على جهاز الطفل.',
@@ -41,7 +46,7 @@ export const webFilter = {
   infoLine3Android:
     'يعرض جهاز الطفل أيقونة VPN أثناء الفلترة. إيقاف الـVPN يوقف الفلتر — افتح KidGate مجددًا لاستعادته.',
   infoLine4Android:
-    'في الإعدادات، افتح "الشبكة والإنترنت" ثم "DNS الخاص" واختر "إيقاف".',
+    'في الإعدادات، افتح «الشبكة والإنترنت» ثم «DNS الخاص» واختر «إيقاف».',
   infoLine1Macos:
     'يشغّل KidGate فلتر محتوى على جهاز Mac يفحص المواقع التي يتم البحث عنها، ويحظر ما يقع منها ضمن فئاتك.',
   infoLine2Macos:
@@ -50,9 +55,9 @@ export const webFilter = {
     'يُظهر جهاز Mac الخاص بالطفل الفلتر نشطًا بمجرد الموافقة عليه. إذا تم إيقافه هناك، أعد فتح KidGate لاستعادته.',
   infoLine4Macos:
     'يقرأ الفلتر أسماء المواقع، لكن المتصفحات الحديثة تُخفيها في نحو نصف الزيارات — تلك المواقع لا تُفحص وفق فئاتك. ورغم ذلك، يوقف الفلتر معظم المواقع التي يصل إليها الأطفال بهذه الطريقة.',
-  privateDnsBannerTitle: 'أوقف DNS الخاص',
+  privateDnsBannerTitle: 'إيقاف DNS الخاص',
   privateDnsBannerBody:
-    '\u200FDNS الخاص مفعّل، لذا قد يُتجاوز فلتر المواقع غير المناسبة. أوقفه ليعمل الفلتر.',
+    '\u200FDNS الخاص مفعّل، لذا قد يُتجاوز فلتر المواقع غير المناسبة. يُرجى إيقافه ليعمل الفلتر.',
   privateDnsBannerButton: 'فتح إعدادات DNS',
   vpnConsentBannerTitle: 'استعادة VPN فلتر الويب',
   vpnConsentBannerBody:
@@ -64,9 +69,13 @@ export const webFilter = {
 
   heroSubtitleWindows:
     'يشغّل محلل KidGate الخاص على كمبيوتر الطفل لحظر المواقع غير المناسبة المعروفة في كل المتصفحات.',
+  heroSubtitleExtension:
+    'يشغّل إضافة KidGate في Chrome على كمبيوتر الطفل لحظر المواقع غير المناسبة المعروفة في ذلك المتصفح.',
 
   toggleHintWindows:
     'لا شيء للموافقة عليه على الكمبيوتر. تشغّل خدمة KidGate في الخلفية التصفية خلال ثوانٍ.',
+  toggleHintExtension:
+    'لا شيء للموافقة عليه. يعمل الفلتر في Chrome فقط، وليس في المتصفحات أو التطبيقات الأخرى.',
 
   infoLine1Windows:
     'يشغّل KidGate محللاً على الكمبيوتر يتحقق من المواقع التي يجري البحث عنها ويحظر ما يقع ضمن فئاتك.',
@@ -79,19 +88,23 @@ export const webFilter = {
 
   infoLine4Windows:
     'تقرأ التصفية أسماء المواقع فقط. لا ترى ما بداخل الصفحة، وقد يظل موقع بحث عنه المتصفح قبل قليل يفتح لبضع دقائق.',
+  infoLine1Extension:
+    'تتحقق إضافة KidGate من كل موقع قبل أن يفتحه Chrome، وتحظر ما يقع ضمن فئاتك.',
+  infoLine2Extension:
+    'لا يُفلتَر إلا Chrome، في الملف الشخصي المثبّت فيه KidGate. أما المتصفحات والتطبيقات الأخرى على الكمبيوتر فلا تُفلتَر.',
+  infoLine3Extension:
+    'لا تُفلتَر نوافذ التصفح المتخفي إلا إذا كان خيار «السماح في وضع التصفح المتخفي» مفعّلًا للإضافة. ولا تُفلتَر نوافذ الضيف.',
+  infoLine4Extension:
+    'تتيح الصفحة المحظورة لطفلك أن يطلب منك السماح بالموقع. وإزالة الإضافة أو إيقافها يوقف الفلتر.',
 
   windowsFilterNote: 'يستخدم محلل KidGate الخاص على Windows',
-  webFilteringNote:
-    'يستخدم iOS فلتر محتوى البالغين في «مدة استخدام الشاشة». أما Android وMac وWindows فتستخدم قائمة الحظر الخاصة بـKidGate.',
-  safeSearchAlertsNote:
-    'لا يشارك Safari عبارات البحث؛ تتطلب تنبيهات الكلمات المفتاحية متصفحًا آمنًا مُدارًا.',
-  webHistoryNote: 'يتطلب متصفحًا مزوّدًا بفلتر أو تقارير عبر DNS/VPN.',
+  extensionFilterNote: 'يستخدم إضافة KidGate في Chrome',
   categoriesTitle: 'ما الذي يُحظر',
   categoriesSubtitle:
     'يستخدم KidGate قوائم نطاقات خاصة به. تغطي المواقع التي يصل إليها الأطفال فعلًا، وليس الويب بأكمله — استخدمها مع القوائم أدناه.',
-  androidOnlyCategory: 'غير متاح على iPhone — يعمل على Android وMac',
+  androidOnlyCategory: 'غير متاح على iPhone — يعمل على الأجهزة الأخرى',
   iosCategoryNote:
-    'يدعم iPhone فئة {{category}} فقط، عبر مرشّح Apple نفسه. أما بقية الفئات فتنطبق على أجهزة Android وMac الخاصة بالأطفال.',
+    'يدعم iPhone فئة {{category}} فقط، عبر مرشّح Apple نفسه. أما بقية الفئات فتنطبق على الأجهزة الأخرى.',
   allowListTitle: 'السماح دائمًا',
   allowListSubtitle: 'مواقع تبقى متاحة حتى لو كانت إحدى الفئات ستحظرها.',
   allowListEmpty: 'لا استثناءات بعد.',
@@ -105,17 +118,19 @@ export const webFilter = {
     'يُرفض كل ما هو خارج قائمة السماح. ينطبق هذا على الجهاز كله، لذا تفقد التطبيقات الأخرى اتصالاتها أيضًا.',
   allowListOnlyHintIos:
     'لن يفتح Safari والمتصفحات داخل التطبيقات إلا المواقع الموجودة في قائمتك.',
+  allowListOnlyHintExtension:
+    'لن يفتح Chrome إلا المواقع الموجودة في قائمتك. ولا تتأثر المتصفحات والتطبيقات الأخرى.',
   allowListOnlyNeedsEntries: 'أضف موقعًا مسموحًا واحدًا على الأقل قبل التفعيل.',
   domainPlaceholder: 'example.com',
   addDomain: 'إضافة موقع',
   removeDomain: 'إزالة {{domain}}',
-  invalidDomain: 'أدخل عنوان موقع، مثل example.com',
+  invalidDomain: 'يُرجى إدخال عنوان موقع، مثل example.com',
   listFull: 'يمكنك حفظ {{max}} موقعًا كحد أقصى في هذه القائمة.',
   openHistory: 'سجل الويب',
   openHistorySubtitle: 'اطّلع على المواقع التي وصل إليها هذا الجهاز وما تم حظره',
   blockedPageTitle: 'تم حظر الموقع',
   blockedPageBody:
-    'حظر KidGate هذا الموقع لعائلتك. إذا كنت تعتقد أن هذا خطأ، فاسأل والديك.',
+    'حظر KidGate هذا الموقع لعائلتك. إذا بدا لك أن هذا خطأ، فيمكنك سؤال والديك.',
   category: {
     adult: 'محتوى للبالغين',
     selfHarm: 'إيذاء النفس واضطرابات الأكل',
@@ -185,12 +200,12 @@ export const webFilter = {
     money: 'التسوق والمال',
   },
   categoriesOnCount: '{{on}} من {{total}} مفعّلة',
-  askToOpen: 'اسأل والديك',
+  askToOpen: 'طلب الإذن من والديك',
   askToOpenSubtitle: 'إذا سمحا لك، سيُفتح هذا الموقع.',
   askToOpenDomainLabel: 'أي موقع؟',
   askToOpenBlockedLabel: 'محظورة مؤخرًا',
-  askToOpenPending: 'لقد طلبت موقعًا بالفعل. انتظر الرد.',
-  askToOpenTooSoon: 'لقد أرسلت طلبًا للتو. حاول بعد دقيقة.',
+  askToOpenPending: 'لقد طلبت موقعًا بالفعل. يُرجى انتظار الرد.',
+  askToOpenTooSoon: 'لقد أرسلت طلبًا للتو. يمكنك المحاولة بعد دقيقة.',
   askToOpenTooMany: 'يمكنك طلب بضعة مواقع فقط في المرة الواحدة.',
   requestsTitle: 'طلبات المواقع',
   requestsSubtitle: 'المواقع التي طلب هذا الجهاز السماح بها.',
@@ -201,9 +216,9 @@ export const webFilter = {
   siteRequestDeniedDescription: 'ما زال {{domain}} محظورًا على {{deviceName}}.',
   siteRequestReceived: 'طلب فتح موقع',
   siteRequestReceivedDescription: 'طلب {{deviceName}} فتح {{domain}}.',
-  privateDnsStep1: 'افتح الإعدادات على هذا الجهاز.',
-  privateDnsStep2: 'اختر "الشبكة والإنترنت".',
-  privateDnsStep3: 'افتح "DNS الخاص" واختر "إيقاف".',
+  privateDnsStep1: 'فتح الإعدادات على هذا الجهاز.',
+  privateDnsStep2: 'اختيار «الشبكة والإنترنت».',
+  privateDnsStep3: 'فتح «DNS الخاص» واختيار «إيقاف».',
   vpnConsentStepAllow:
-    'اختر "موافق" في طلب VPN من Android. تبقى أيقونة المفتاح في شريط الحالة أثناء عمل الفلتر.',
+    'اختيار «موافق» في طلب VPN من Android. تبقى أيقونة المفتاح في شريط الحالة أثناء عمل الفلتر.',
 } as const;

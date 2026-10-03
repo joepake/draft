@@ -6,12 +6,16 @@ import {
   isReportOnlyControlKey,
   isUsageControlKey,
 } from '@kidgate/schema/controlKeys';
-import type { DeviceLocationRequestResult } from '@kidgate/schema/device';
+import type {
+  DeviceLocationRequestResult,
+  DeviceLocationSensing,
+} from '@kidgate/schema/device';
 import type { DeviceControls, DeviceLocation } from '@kidgate/schema/deviceControls';
 import { childDeviceDoc } from '@kidgate/schema/paths';
 import type { BatteryStatus } from '@kidgate/schema/telemetry';
 import { toJsonBody } from '../domain/jsonBody';
 import type { BufferedUsageDay } from '../domain/parkedBuffer';
+import { readTimeZone } from '../domain/timeZone';
 import { isTimeline, parseHourlyApps } from '../domain/usageTimeline';
 import type { LocationHistoryRepository } from './locationHistory';
 import type { UsageHourlyApps } from '@kidgate/schema/usageDay';
@@ -20,6 +24,17 @@ import type { UsageHourlyApps } from '@kidgate/schema/usageDay';
 function hourlyAppsField(value: unknown): { hourlyApps?: UsageHourlyApps } {
   const hourlyApps = parseHourlyApps(value);
   return hourlyApps ? { hourlyApps } : {};
+}
+
+/** This device's IANA zone as a report field, or nothing when it has none. */
+function zoneField(clock: Pick<ClockPort, 'timezone'>): { timeZone?: string } {
+  let timeZone: string | null = null;
+  try {
+    timeZone = readTimeZone(clock.timezone());
+  } catch {
+    timeZone = null;
+  }
+  return timeZone ? { timeZone } : {};
 }
 
 /**
@@ -62,6 +77,16 @@ export interface ControlsWriteResult {
   refusedKeys: string[];
   /** Why, as a key both consoles can render. Null when nothing was refused. */
   refusedMessageKey: string | null;
+  /**
+   * What `syncChildAgent` answered, when the write carried a usage report.
+   *
+   * Handed back whole and unparsed, the way `apps/tv`'s reporter receives it:
+   * the reply is the channel the shared budget's cap and the server's clock
+   * ride (`@kidgate/schema/syncAgentReply`), and until 2026-09-27 this method
+   * dropped it on the floor — which is why the phone enforced the cap only
+   * through the device document. Absent when no report was sent.
+   */
+  reply?: unknown;
 }
 
 const NOTHING_REFUSED: ControlsWriteResult = {
@@ -170,8 +195,9 @@ export function createControlRepository(deps: ControlRepositoryDeps) {
         );
       }
 
+      let reply: unknown;
       if (Object.keys(usageControls).length > 0) {
-        await this.reportUsage(userId, deviceId, {
+        reply = await this.reportUsage(userId, deviceId, {
           ...usageControls,
           ...(controls.topApps ? { topApps: controls.topApps } : {}),
           ...(controls.timeline ? { timeline: controls.timeline } : {}),
@@ -188,7 +214,7 @@ export function createControlRepository(deps: ControlRepositoryDeps) {
       }
 
       if (Object.keys(childControls).length === 0) {
-        return refusal;
+        return reply === undefined ? refusal : { ...refusal, reply };
       }
 
       // Dotted field paths: a merge into `controls` would replace the whole map
@@ -321,6 +347,15 @@ export function createControlRepository(deps: ControlRepositoryDeps) {
           usage.newAppsToday >= 0
             ? { newAppsToday: Math.floor(usage.newAppsToday) }
             : {}),
+          /*
+           * The zone `usageDate` above was written on, so a console can judge
+           * this report on the device's own calendar and the server can fall
+           * back to it for the family's clock (`Device.timeZone`). Every report,
+           * because it is a few bytes on a request that was going anyway; the
+           * server stores it only when it changed. Omitted when this runtime's
+           * `Intl` answers no readable name — the server then keeps the last.
+           */
+          ...zoneField(clock),
         },
         { as: 'child' },
       );
@@ -500,6 +535,22 @@ export function createControlRepository(deps: ControlRepositoryDeps) {
       }
 
       await db.updateDoc(childDeviceDoc(userId, deviceId), patch);
+    },
+
+    /**
+     * What the device could position itself from lately — `'ip'` while every
+     * read is a guess from the internet connection, `'wifi'` once a fix
+     * exists. The desktop agent writes it on change only; the parent's card
+     * turns `'ip'` into "turn on its Wi-Fi" instead of an ageing pin.
+     */
+    async reportLocationSensing(
+      userId: string,
+      deviceId: string,
+      sensing: DeviceLocationSensing,
+    ): Promise<void> {
+      await db.updateDoc(childDeviceDoc(userId, deviceId), {
+        locationSensing: sensing,
+      });
     },
 
     async markScreenTimeAuthorized(

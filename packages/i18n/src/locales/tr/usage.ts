@@ -2,7 +2,7 @@ export const usage = {
   title: 'Kullanım Raporu',
   fallbackDeviceName: 'Çocuk cihazı',
   sectionToday: 'Bugün',
-  percentOfLimit: "Sınırın %{{percent}}'i",
+  percentOfLimit: 'Sınırın %{{percent}}’i',
   reportedAt: '{{time}} güncellendi',
   statUsedLabel: 'Kullanılan',
   statLeftLabel: 'Kalan',
@@ -43,10 +43,10 @@ export const usage = {
   deviceLockedChip: 'Cihaz kilitli',
   blockedHoursChip: 'Engellenen Saatler',
   overLimitChip: 'Sınır aşıldı',
-  usageReportsNote:
-    'Bu cihazın ekran süresini, kilitlemelerini ve son etkinliğini gösterir.',
   syncNote:
-    'Ekran süresinin bu ekrana yansıması birkaç dakika sürebilir — cihazın internet bağlantısı yoksa veya beklenmedik şekilde kapandıysa bu süre daha uzun olabilir.',
+    'Buradaki ekran süresi cihazın 5 dakikaya kadar gerisinde olabilir, ücretsiz planda 15 dakikaya kadar — cihazın internet bağlantısı yoksa veya beklenmedik şekilde kapandıysa daha da geride olabilir.',
+  syncNoteIos:
+    'iPhone’da ekran süresi ancak KidGate çocuğun cihazında çalıştıktan sonra gelir; uygulama açılmadıysa saatlerce geriden gelebilir.',
   syncNoteTv:
     'Bu TV yalnızca belirli aralıklarla bağlanır, bu yüzden ekran süresinin bu ekrana yansıması bir saate kadar sürebilir — internet bağlantısı yoksa bu süre daha da uzar.',
   sectionLast30Days: 'Son 30 gün',

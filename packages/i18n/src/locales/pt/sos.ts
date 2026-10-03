@@ -25,8 +25,9 @@ export const sos = {
   escapeGrantedTitle: 'SOS enviado',
   escapeGrantedBody:
     'Seu pai ou sua mãe foi avisado. Este dispositivo continua bloqueado.',
-  toastSentWithoutPhoto:
-    'SOS enviado, mas sem foto. Permita o acesso à Câmera nos Ajustes e tente novamente, se puder.',
+  toastSentWithoutPhoto: 'SOS enviado sem foto.',
+  toastSentWithoutPhotoCamera:
+    'SOS enviado sem foto. Para adicionar uma da próxima vez, permita o acesso à Câmera nos Ajustes.',
   toastSendFailed:
     'Não foi possível enviar o SOS. Tente novamente ou ligue para alguém de confiança.',
   sendFailedBannerTitle: 'Seu último SOS não foi enviado',
@@ -36,12 +37,15 @@ export const sos = {
   headerSubtitle:
     'Use isso quando se sentir inseguro ou precisar de ajuda imediatamente.',
   infoInstantAlertLabel: 'Alerta instantâneo',
-  infoInstantAlertDetail: 'Seus pais recebem uma notificação urgente imediatamente.',
+  infoInstantAlertDetail:
+    'O KidGate envia na hora uma notificação urgente para seus pais.',
   infoYourLocationLabel: 'Sua localização',
   infoYourLocationDetail: 'Compartilhada com seus pais para que saibam onde você está.',
   infoQuickSelfieLabel: 'Uma foto rápida',
   infoQuickSelfieDetail:
     'Adicionada depois que o alerta é enviado, se a câmera já estiver disponível.',
+  infoQuickSelfieDetailPhone:
+    'Depois que o alerta é enviado, a câmera abre para você adicionar uma foto. Você pode pular essa etapa.',
   simulatorTipTitle: 'Dica do simulador',
   simulatorTipBody:
     'Ative a Câmera no menu do Simulador (Câmera frontal) antes de enviar o SOS para que uma foto de teste possa ser capturada.',
@@ -52,6 +56,7 @@ export const sos = {
   whatParentsReceive: 'O que os pais recebem',
   holdToSendFiveSeconds: 'Segure para enviar · 5 segundos',
   keepHolding: 'Continue segurando',
+  secondsLeft: '{{seconds}} s',
   pressAndHoldToCancel: 'Pressione e segure — solte antes para cancelar',
   holdToSendSosAccessibility: 'Segure por 5 segundos para enviar o SOS',
   sosEmergencyAccessibility: 'Emergência SOS',
@@ -76,7 +81,8 @@ export const sos = {
   muteAlarm: 'Silenciar este alerta',
   alertCount: '{{current}} de {{total}}',
   trustedContactsTitle: 'Contatos de confiança',
-  trustedContactsSubtitle: 'Recebem um e-mail a cada SOS com a última localização',
+  trustedContactsSubtitle:
+    'Recebem um e-mail com o SOS e a última localização conhecida, com limite de alguns alertas por hora',
   trustedContactsRowSubtitle:
     'Pessoas que recebem e-mail quando seu filho envia um SOS',
   trustedContactsListSection: 'Quem recebe o SOS',

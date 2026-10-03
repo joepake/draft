@@ -37,6 +37,10 @@ export const videoHistory = {
   heroTopChannel: 'Most watched',
   readerLayoutChanged:
     'Shorts are not being recorded on this device right now — the YouTube app has changed and KidGate needs an update. Other videos are still recorded.',
+  // An Android phone whose notification-access grant is missing: the reader
+  // needs it to see what is playing (`videoHistoryAwaitingGrant`).
+  grantNeeded:
+    'Not recording yet: KidGate needs notification access on your child’s phone. On that phone, open KidGate Settings, select Unlock with Parent PIN, then Allow notification access under Message Alerts.',
   openAction: 'Open on YouTube',
   searchAction: 'Search YouTube for this video',
   openFailed: 'Could not open YouTube.',

@@ -1,4 +1,5 @@
 import { DEFAULT_WEB_FILTER_CATEGORIES, type WebFilterCategory } from './webActivity';
+import type { PositionSource } from './telemetry';
 import type { UsageAppBreakdown, UsageHourlyApps, UsageTimeline } from './usageDay';
 
 export interface DeviceLocation {
@@ -11,8 +12,21 @@ export interface DeviceLocation {
    *
    * Absent means unknown, never "exact". Place presence treats a fix it
    * cannot trust as unknown rather than guessing (`functions/lib/placeAlerts.js`).
+   *
+   * **Stored as reported, kilometres included.** The endpoint used to null
+   * anything over 2 km as meaningless, and null was read as "unknown, assume
+   * 50 m" — so a PC positioned from its IP address (20 000 m, 8 km off,
+   * measured 2026-09-23) fired "left home". Whether a fix is a guess is
+   * `@kidgate/core/domain/locationFix`'s call, from this number and `positionSource`.
    */
   accuracy?: number | null;
+  /**
+   * How the platform positioned it — `PositionSource`. Only Windows says
+   * (`wifi`, `ip`, …); absent from every phone and Mac fix and from rows
+   * written before 2026-09-23. Kept so a 20 km circle from an IP lookup can
+   * be told from a phone's honest one.
+   */
+  positionSource?: PositionSource | null;
   updatedAt: string;
   placeName?: string | null;
   address?: string | null;
@@ -227,20 +241,18 @@ export interface DeviceControls {
    */
   videoHistoryEnabled?: boolean;
   /**
-   * Where the child's shared daily budget stands, stamped by
-   * `syncChildAgent` onto every assigned device whenever the child has
-   * `rules.dailyLimitMinutes` set.
-   *
-   * **This field is what parent screens read; it is not what enforces.** The
-   * same call rewrites each device's `dailyLimitMinutes` to that device's
-   * share of what the child has left, so the agents enforce the budget
-   * through the field they always locked on and this one exists to explain
-   * the number rather than to be obeyed. An agent reading `childBudget` to
-   * decide a lock would be deciding it twice.
-   *
-   * `usedMinutes` is the device-minutes sum for `date` across the child's
-   * devices; overlap between two screens used at once counts twice, which the
-   * enforcement wave will revisit (`screenOnLowMinutes`).
+   * **No longer written, since 2026-09-27.** `syncChildAgent` stamped this
+   * onto every assigned device on every report, rewriting each device's
+   * `dailyLimitMinutes` to its share of the child's day beside it — a write
+   * per sibling per report, each a trigger, a self-read and a console read
+   * (`docs/FEASIBILITY.md`, "Telemetry leaves the device document"). The
+   * share rides the reply now (`@kidgate/schema/syncAgentReply`,
+   * `AgentBudgetCap`) and `dailyLimitMinutes` here is the parent's figure
+   * again; the first report after that deploy deletes this field and restores
+   * the figure, so a row still carrying it is one the new server has not
+   * answered yet. Neither console ever read it (they sum the devices), and
+   * the child's own home screen falls back to `dailyLimitMinutes` without it.
+   * Kept on the type only so an old row still parses.
    */
   childBudget?: {
     date: string;

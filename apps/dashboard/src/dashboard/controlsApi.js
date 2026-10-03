@@ -1,4 +1,5 @@
 import { isApiFailure } from '@kidgate/core/domain/apiFailure';
+import { serverCodeMessageKey } from '@kidgate/core/domain/apiErrorMessages';
 import { splitChildRuleControls } from '@kidgate/core/domain/childWebRules';
 import { isDeviceParked } from '@kidgate/core/domain/deviceParking';
 import { isWhollyTightening } from '@kidgate/core/domain/ruleRelaxation';
@@ -71,6 +72,22 @@ const MESSAGE_KEYS = {
   unknown: 'controlError.generic',
 };
 
+/**
+ * Server codes whose app-pack sentence is as true in a browser as on the phone,
+ * said through `activityT` rather than a `dash.*` twin.
+ *
+ * The key is core's (`serverCodeMessageKey`), so the two consoles cannot map
+ * one code two ways. A code joins only once this surface can hit it and its
+ * sentence names nothing the web lacks: of the eight added to that table on
+ * 2026-09-27, `rewardTask/too-many` is the one a browser reaches. The rest
+ * answer a purchase, a location request, an on-demand report, a bonus grant
+ * or a child agent's session refresh — none of which this surface calls — or
+ * a revoked parent PHONE's credential, a check a web session returns before.
+ * It is a 400, so it read `controlError.generic` — "Try again",
+ * for a refusal no retry can satisfy.
+ */
+const APP_PACK_REFUSALS = new Set(['parking/loosen-only', 'rewardTask/too-many']);
+
 export class ControlError extends Error {
   constructor(code, messageKey, detail, serverCode) {
     super(detail || code);
@@ -84,6 +101,10 @@ export class ControlError extends Error {
      * `rateLimited` with its own sentence) reads this.
      */
     this.serverCode = serverCode;
+    /** An app-pack key, set only for `APP_PACK_REFUSALS`; `run` prefers it. */
+    this.appMessageKey = APP_PACK_REFUSALS.has(serverCode)
+      ? serverCodeMessageKey(serverCode)
+      : undefined;
   }
 }
 
@@ -333,6 +354,11 @@ export function createActions({
         () => guard(() => familyRepository.removeMember(familyId, memberId)),
         result => trackParentAction('parent_remove', result),
       );
+    },
+
+    /** Clears a child device's Parent PIN lockout — any parent, per rules. */
+    resetParentPinLockout(deviceId) {
+      return guard(() => deviceRepository.resetParentPinLockout(familyId, deviceId));
     },
 
     setLock(deviceId, locked) {

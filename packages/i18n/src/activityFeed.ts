@@ -33,6 +33,8 @@ import { sos as enSos } from './locales/en/sos';
 import { timeRequest as enTimeRequest } from './locales/en/timeRequest';
 import { webFilter as enWebFilter } from './locales/en/webFilter';
 import { usage as enUsage } from './locales/en/usage';
+import { webHistory as enWebHistory } from './locales/en/webHistory';
+import { pin as enPin } from './locales/en/pin';
 import { translateIn, type LocaleTree } from './translateIn';
 import type { TranslationParams } from './types';
 
@@ -213,6 +215,12 @@ export interface ActivityFeedPack extends LocaleTree {
    *  ranking, and the app age rating beside a kind. Both consoles draw that
    *  card, so both say it the same way. */
   usage: unknown;
+  /** The web-history card's lag notes — `syncNote`, `syncNoteIos`,
+   *  `syncNoteTv` — said once for both consoles. */
+  webHistory: unknown;
+  /** A child device locked out of the Parent PIN, and the reset any parent
+   *  may make — `unlockChildPinTitle` and its toasts, on both consoles. */
+  pin: unknown;
 }
 
 /**
@@ -254,6 +262,8 @@ const en: ActivityFeedPack = {
   errors: enErrors,
   webFilter: enWebFilter,
   usage: enUsage,
+  webHistory: enWebHistory,
+  pin: enPin,
 };
 
 /** The namespaces a feed row can name. Anything outside them falls to `en`. */
@@ -321,6 +331,14 @@ const NAMESPACES = [
      family’s premium field is dropped. Without this the dashboard
      printed the raw key at a parent. */
   'errors',
+  /* The web-history card's three lag notes. They were `dash.webActivitySyncNote*`
+     copies of `webHistory.syncNote*` until 2026-09-27 — the same sentence in two
+     packs, and the phone's had already been corrected once without the web's. */
+  'webHistory',
+  /* The Parent PIN lockout on a child device. `pinLockoutSafe` lets any
+     family parent clear it, and the dashboard offers that in its attention
+     list with the sentences the phone already says. */
+  'pin',
 ] as const;
 
 type Namespace = (typeof NAMESPACES)[number];
@@ -379,6 +397,8 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     leaderboard: () => import('./locales/ar/leaderboard'),
     videoHistory: () => import('./locales/ar/videoHistory'),
     childReport: () => import('./locales/ar/childReport'),
+    webHistory: () => import('./locales/ar/webHistory'),
+    pin: () => import('./locales/ar/pin'),
   },
   de: {
     activities: () => import('./locales/de/activities'),
@@ -415,6 +435,8 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     leaderboard: () => import('./locales/de/leaderboard'),
     videoHistory: () => import('./locales/de/videoHistory'),
     childReport: () => import('./locales/de/childReport'),
+    webHistory: () => import('./locales/de/webHistory'),
+    pin: () => import('./locales/de/pin'),
   },
   es: {
     activities: () => import('./locales/es/activities'),
@@ -451,6 +473,8 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     leaderboard: () => import('./locales/es/leaderboard'),
     videoHistory: () => import('./locales/es/videoHistory'),
     childReport: () => import('./locales/es/childReport'),
+    webHistory: () => import('./locales/es/webHistory'),
+    pin: () => import('./locales/es/pin'),
   },
   fr: {
     activities: () => import('./locales/fr/activities'),
@@ -487,6 +511,8 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     leaderboard: () => import('./locales/fr/leaderboard'),
     videoHistory: () => import('./locales/fr/videoHistory'),
     childReport: () => import('./locales/fr/childReport'),
+    webHistory: () => import('./locales/fr/webHistory'),
+    pin: () => import('./locales/fr/pin'),
   },
   hi: {
     activities: () => import('./locales/hi/activities'),
@@ -523,6 +549,8 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     leaderboard: () => import('./locales/hi/leaderboard'),
     videoHistory: () => import('./locales/hi/videoHistory'),
     childReport: () => import('./locales/hi/childReport'),
+    webHistory: () => import('./locales/hi/webHistory'),
+    pin: () => import('./locales/hi/pin'),
   },
   id: {
     activities: () => import('./locales/id/activities'),
@@ -559,6 +587,8 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     leaderboard: () => import('./locales/id/leaderboard'),
     videoHistory: () => import('./locales/id/videoHistory'),
     childReport: () => import('./locales/id/childReport'),
+    webHistory: () => import('./locales/id/webHistory'),
+    pin: () => import('./locales/id/pin'),
   },
   it: {
     activities: () => import('./locales/it/activities'),
@@ -595,6 +625,8 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     leaderboard: () => import('./locales/it/leaderboard'),
     videoHistory: () => import('./locales/it/videoHistory'),
     childReport: () => import('./locales/it/childReport'),
+    webHistory: () => import('./locales/it/webHistory'),
+    pin: () => import('./locales/it/pin'),
   },
   ja: {
     activities: () => import('./locales/ja/activities'),
@@ -631,6 +663,8 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     leaderboard: () => import('./locales/ja/leaderboard'),
     videoHistory: () => import('./locales/ja/videoHistory'),
     childReport: () => import('./locales/ja/childReport'),
+    webHistory: () => import('./locales/ja/webHistory'),
+    pin: () => import('./locales/ja/pin'),
   },
   ko: {
     activities: () => import('./locales/ko/activities'),
@@ -667,6 +701,8 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     leaderboard: () => import('./locales/ko/leaderboard'),
     videoHistory: () => import('./locales/ko/videoHistory'),
     childReport: () => import('./locales/ko/childReport'),
+    webHistory: () => import('./locales/ko/webHistory'),
+    pin: () => import('./locales/ko/pin'),
   },
   pt: {
     activities: () => import('./locales/pt/activities'),
@@ -703,6 +739,8 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     leaderboard: () => import('./locales/pt/leaderboard'),
     videoHistory: () => import('./locales/pt/videoHistory'),
     childReport: () => import('./locales/pt/childReport'),
+    webHistory: () => import('./locales/pt/webHistory'),
+    pin: () => import('./locales/pt/pin'),
   },
   ru: {
     activities: () => import('./locales/ru/activities'),
@@ -739,6 +777,8 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     leaderboard: () => import('./locales/ru/leaderboard'),
     videoHistory: () => import('./locales/ru/videoHistory'),
     childReport: () => import('./locales/ru/childReport'),
+    webHistory: () => import('./locales/ru/webHistory'),
+    pin: () => import('./locales/ru/pin'),
   },
   tr: {
     activities: () => import('./locales/tr/activities'),
@@ -775,6 +815,8 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     leaderboard: () => import('./locales/tr/leaderboard'),
     videoHistory: () => import('./locales/tr/videoHistory'),
     childReport: () => import('./locales/tr/childReport'),
+    webHistory: () => import('./locales/tr/webHistory'),
+    pin: () => import('./locales/tr/pin'),
   },
   vi: {
     activities: () => import('./locales/vi/activities'),
@@ -811,6 +853,8 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     leaderboard: () => import('./locales/vi/leaderboard'),
     videoHistory: () => import('./locales/vi/videoHistory'),
     childReport: () => import('./locales/vi/childReport'),
+    webHistory: () => import('./locales/vi/webHistory'),
+    pin: () => import('./locales/vi/pin'),
   },
 };
 

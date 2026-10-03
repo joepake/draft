@@ -9,7 +9,7 @@ export const notifications = {
   sectionSummary: 'Resumen',
   sectionQuietHours: 'Horas de silencio',
   sectionQuietHoursHint:
-    'Las alertas quedan en silencio en este intervalo. El SOS nunca se silencia.',
+    'Las alertas quedan en silencio en este intervalo. El SOS nunca se silencia, y las Alertas de mensajes más graves siguen llegando.',
   quietHoursLabel: 'Horas de silencio',
   quietHoursOff: 'Desactivado: las alertas llegan a cualquier hora',
   quietHoursActive: 'En silencio de {{start}} a {{end}}',
@@ -21,7 +21,7 @@ export const notifications = {
   alert: {
     tamperAlerts: {
       label: 'Protección desactivada',
-      hint: 'Se desactivó en el dispositivo del niño un permiso que KidGate necesita.',
+      hint: 'En un dispositivo del niño se desactivó un permiso que KidGate necesita, se cambió la fecha, la hora o la zona horaria, o se pulsó SOS mientras estaba bloqueado. La propia alerta de SOS siempre llega.',
     },
     placeAlerts: {
       label: 'Llegadas y salidas',
@@ -57,7 +57,11 @@ export const notifications = {
     },
     messageAlerts: {
       label: 'Alertas de mensajes',
-      hint: 'Recibe un aviso cuando aparezcan palabras preocupantes en los mensajes',
+      hint: 'Aparecen palabras preocupantes en los mensajes o las búsquedas de tu hijo.',
+    },
+    billing: {
+      label: 'Recordatorios de Premium',
+      hint: 'Recordatorios para suscribirte después de que termine tu prueba. Los avisos de que tu prueba o Premium terminan siempre llegan.',
     },
   },
 };

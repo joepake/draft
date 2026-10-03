@@ -48,11 +48,11 @@ export const activities = {
   activityTypeScreenTime: 'Bildschirmzeit',
   activityTypeCheckIn: 'Check-in',
   activityTypeLocationRequest: 'Standort',
-  activityTypeTimeRequest: 'Zeitanfrage',
-  activityTypeRewardTask: 'Belohnungsaufgabe',
+  activityTypeTimeRequest: 'Zeitanfragen',
+  activityTypeRewardTask: 'Belohnungsaufgaben',
   activityTypeSearchAlert: 'Suchwarnung',
   activityTypeWebFilter: 'Webfilter',
-  activityTypeEmergency: 'Notfall',
+  activityTypeEmergency: 'SOS',
   activityTypeUnknown: 'Aktivität',
 
   sosEscapeTitle: 'Notfall-Entsperrung',
@@ -86,7 +86,7 @@ export const activities = {
   messageAlertTitleSearch: 'Bedenkliche Suche',
   messageAlertBodySearch:
     'Ein markiertes Wort wurde in einer Suche auf {{appName}} erkannt.',
-  activityTypeMessageAlert: 'Nachrichtenwarnung',
+  activityTypeMessageAlert: 'Nachrichtenwarnungen',
   messageCheckedTitle: 'Geprüft, nichts Bedenkliches',
   messageCheckedBody:
     'Ein beobachtetes Wort tauchte in {{appName}} auf und war im Zusammenhang harmlos.',
@@ -154,9 +154,9 @@ export const activities = {
   tamperBackgroundRefreshBody:
     'KidGate wird im Hintergrund möglicherweise seltener aktualisiert, bis die Hintergrundaktualisierung wieder aktiviert ist.',
 
-  tamperDeviceClockTitle: 'Datum oder Uhrzeit wurden geändert',
+  tamperDeviceClockTitle: 'Datum, Uhrzeit oder Zeitzone geändert',
   tamperDeviceClockBody:
-    'Die Uhrzeit dieses Geräts stimmt nicht mehr mit der tatsächlichen Zeit überein. Bildschirmzeit und Sperrzeiten verwenden weiterhin die korrekte Zeit.',
+    'Datum, Uhrzeit oder Zeitzone dieses Geräts wurden geändert – das kann auch auf Reisen passieren. Bildschirmzeit und Sperrzeiten ignorieren eine verstellte Uhr und richten sich nach der Zeitzone des Geräts.',
 
   /** @deprecated legacy description keys — kept for old activity docs */
   tamperOverlay: '„Über anderen Apps anzeigen“ wurde deaktiviert.',
@@ -183,8 +183,9 @@ export const activities = {
 
   unknownDevice: 'Unbekanntes Gerät',
 
-  basicActivityNote:
-    'Sperr-, Entsperr- und Geräteereignisse werden unter „Aktivitäten“ aufgezeichnet.',
   tamperUninstallProtectionTitle: 'Deinstallationsschutz ausgeschaltet',
   tamperUninstallProtectionBody: 'KidGate kann jetzt von diesem Handy entfernt werden.',
+  tamperReinstalledTitle: 'KidGate wurde neu installiert',
+  tamperReinstalledBody:
+    'KidGate wurde von diesem Gerät entfernt und wieder installiert. In der Zwischenzeit wurde nichts aufgezeichnet.',
 } as const;

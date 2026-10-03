@@ -23,8 +23,9 @@ export const sos = {
     'SOS terkirim. Tetaplah di tempat yang aman jika bisa — orang tuamu sudah diberi tahu.',
   escapeGrantedTitle: 'SOS terkirim',
   escapeGrantedBody: 'Orang tuamu sudah diberi tahu. Perangkat ini tetap terkunci.',
-  toastSentWithoutPhoto:
-    'SOS terkirim, tapi tanpa foto. Izinkan akses Kamera di Pengaturan dan coba lagi jika bisa.',
+  toastSentWithoutPhoto: 'SOS terkirim tanpa foto.',
+  toastSentWithoutPhotoCamera:
+    'SOS terkirim tanpa foto. Agar lain kali bisa menambahkan foto, izinkan Kamera di Pengaturan.',
   toastSendFailed:
     'SOS tidak dapat dikirim. Coba lagi, atau hubungi orang yang kamu percaya.',
   sendFailedBannerTitle: 'SOS terakhirmu tidak terkirim',
@@ -33,13 +34,16 @@ export const sos = {
   headerTitle: 'SOS Darurat',
   headerSubtitle: 'Gunakan ini saat kamu merasa tidak aman atau butuh bantuan segera.',
   infoInstantAlertLabel: 'Peringatan instan',
-  infoInstantAlertDetail: 'Orang tuamu langsung menerima notifikasi mendesak.',
+  infoInstantAlertDetail:
+    'KidGate langsung mengirim notifikasi mendesak ke orang tuamu.',
   infoYourLocationLabel: 'Lokasimu',
   infoYourLocationDetail:
     'Dibagikan ke orang tuamu agar mereka tahu di mana kamu berada.',
   infoQuickSelfieLabel: 'Foto singkat',
   infoQuickSelfieDetail:
     'Ditambahkan setelah peringatan dikirim, jika kamera sudah tersedia.',
+  infoQuickSelfieDetailPhone:
+    'Setelah peringatan terkirim, kamera terbuka agar kamu bisa menambahkan foto. Kamu boleh melewatinya.',
   simulatorTipTitle: 'Tips simulator',
   simulatorTipBody:
     'Aktifkan Kamera di menu Simulator (Kamera Depan) sebelum mengirim SOS agar foto uji dapat diambil.',
@@ -50,6 +54,7 @@ export const sos = {
   whatParentsReceive: 'Apa yang diterima orang tua',
   holdToSendFiveSeconds: 'Tahan untuk mengirim · 5 detik',
   keepHolding: 'Terus tahan',
+  secondsLeft: '{{seconds}} dtk',
   pressAndHoldToCancel: 'Tekan dan tahan — lepas lebih awal untuk membatalkan',
   holdToSendSosAccessibility: 'Tahan selama 5 detik untuk mengirim SOS',
   sosEmergencyAccessibility: 'Darurat SOS',
@@ -75,7 +80,7 @@ export const sos = {
   alertCount: '{{current}} dari {{total}}',
   trustedContactsTitle: 'Kontak tepercaya',
   trustedContactsSubtitle:
-    'Menerima email setiap kali ada SOS, beserta lokasi terakhir yang diketahui',
+    'Menerima email saat ada SOS beserta lokasi terakhir yang diketahui, hingga beberapa peringatan per jam',
   trustedContactsRowSubtitle: 'Orang yang menerima email saat anak mengirim SOS',
   trustedContactsListSection: 'Siapa yang menerima SOS',
   trustedContactsEmpty:

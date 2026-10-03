@@ -14,7 +14,7 @@ export const deviceDetail = {
   dailyLimit: 'दैनिक सीमा',
   setDailyScreenTimeCap: 'दैनिक स्क्रीन समय सीमा निर्धारित करें',
   blockedHours: 'ब्लॉक किए गए समय',
-  manageUpToThreeTimeRanges: 'अधिकतम 3 समय अवधि प्रबंधित करें',
+  manageTimeRanges: 'अधिकतम {{max}} समय अवधि प्रबंधित करें',
   blockedApps: 'ब्लॉक किए गए ऐप्स',
   viewAndManageBlockedApps: 'ब्लॉक किए गए ऐप्स देखें और प्रबंधित करें',
   appBlockingBestEffort:
@@ -115,11 +115,14 @@ export const deviceDetail = {
     '{{actionTitle}} जल्द उपलब्ध होगा। स्थान, वेब फ़िल्टर और ऊपर दिए गए नियंत्रण अभी उपलब्ध हैं।',
   chooseAppsOnChildIphone: 'बच्चे के डिवाइस पर ऐप्स चुनें',
   appPickerMustOpenOnChildIphone:
-    'बच्चे के डिवाइस पर KidGate Settings खोलें, Parent PIN दर्ज करें और ब्लॉक करने के लिए ऐप्स चुनें।',
+    'बच्चे के डिवाइस पर KidGate सेटिंग्स खोलें, Parent PIN दर्ज करें, फिर ऐप ब्लॉकिंग → ब्लॉक किए गए ऐप्स में ऐप्स चुनें।',
+  appPickerMustOpenOnChildTv:
+    'TV पर KidGate खोलें, “{{button}}” चुनें, Parent PIN दर्ज करें और ब्लॉक करने के लिए ऐप्स चुनें।',
   rewardTasks: 'इनाम वाले टास्क',
   rewardTasksDescription: 'पूरे टास्क पर अतिरिक्त मिनट दें',
   rewardTasksUnit: 'सक्रिय टास्क',
   rewardTasksEarnable: 'आज {{minutes}} बोनस मिनट कमाए जा सकते हैं',
+  rewardTasksEarnable_one: 'आज {{minutes}} बोनस मिनट कमाया जा सकता है',
   rewardTasksEmptyDetail: 'बच्चे को अतिरिक्त स्क्रीन टाइम कमाने दें',
   rewardTasksWaitingReview: '{{count}} आपकी जांच के इंतज़ार में',
   appLimits: 'ऐप सीमाएँ',
@@ -131,7 +134,7 @@ export const deviceDetail = {
   appLimitsReached: '{{count}} ऐप अपनी सीमा पर पहुँचे',
   webHistory: 'वेब इतिहास',
   videoHistory: 'देखे गए वीडियो',
-  videoHistoryDescription: 'YouTube और वेब पर वीडियो',
+  videoHistoryDescription: 'YouTube पर देखे गए वीडियो',
   videoHistoryOn: 'रिकॉर्डिंग',
   webHistoryDescription: 'पहुँची और ब्लॉक हुई साइटें',
   webHistorySitesUnit: 'साइटें',
@@ -139,7 +142,8 @@ export const deviceDetail = {
   managedAtChild:
     'इस डिवाइस के नियम, इनाम, चेक-इन और अलर्ट {{childName}} की प्रोफ़ाइल में प्रबंधित होते हैं',
   pauseBrowsing: 'ब्राउज़िंग रोकें',
-  pauseBrowsingDescription: 'कुछ देर वेब बंद रहेगा। कॉल और ऑफ़लाइन ऐप चलते रहेंगे।',
+  pauseBrowsingDescription:
+    'कुछ देर के लिए ब्राउज़िंग रोकें। कॉल और ऑफ़लाइन ऐप चलते रहेंगे।',
   pauseBrowsingOff: 'रुकी नहीं है',
   pauseBrowsingLeft: 'रुकी हुई · {{minutes}} मिनट बाकी',
   pauseBrowsingFor: '{{minutes}} मिनट के लिए रोकें',

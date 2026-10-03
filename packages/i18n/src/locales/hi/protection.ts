@@ -34,12 +34,14 @@ export const protection = {
   lockNotReadyBodyIos:
     'जब तक बच्चे के डिवाइस पर स्क्रीन टाइम एक्सेस स्वीकृत नहीं होता, KidGate इस iPhone को लॉक नहीं कर सकता। कृपया उस डिवाइस पर KidGate खोलें और निम्न पूरा करें:',
   locationPermission: 'स्थान की अनुमति',
+  locationForegroundOnly:
+    'स्थान केवल तभी अपडेट होता है जब बच्चे के डिवाइस पर KidGate खुला हो।',
   cameraPermission: 'कैमरा अनुमति',
   cameraConsentPending:
     'इस डिवाइस पर कैमरे की अनुमति नहीं है, इसलिए यहाँ से भेजा गया SOS या चेक-इन बिना फ़ोटो के आता है।',
   locationConsentPending:
     'इस डिवाइस पर लोकेशन की अनुमति नहीं है, इसलिए यह नहीं बता सकता कि कहाँ है।',
-  consentStepOpenSettings: 'बच्चे के डिवाइस पर KidGate खोलें और सेटिंग्ज़ में जाएँ।',
+  consentStepOpenSettings: 'बच्चे के डिवाइस पर KidGate खोलें और सेटिंग्स में जाएँ।',
   consentStepParentPin: 'पैरेंट PIN डालें।',
   consentStepPermissions: '“अनुमतियाँ” खोलें और जो बाकी है उसे अनुमति दें।',
   notificationsPermission: 'सूचना अनुमति',
@@ -60,18 +62,9 @@ export const protection = {
   healthBadgeProtected: 'हरा — सुरक्षित',
   healthBadgeWarning: 'पीला — सेटअप की ज़रूरत',
   healthBadgeInactive: 'लाल — बच्चे का डिवाइस 24 घंटे से ज़्यादा निष्क्रिय',
-  iosFeatureSupportEvaluating:
-    'iOS पर इस सुविधा के समर्थन का मूल्यांकन किया जा रहा है।',
   iosUpgradeRequiredNote:
     'इसके लिए iOS 16 या नया चाहिए। बच्चे के डिवाइस को सेटिंग्स › सामान्य › सॉफ़्टवेयर अपडेट से अपडेट करें। अगर कोई अपडेट नहीं दिखता, तो यह iPad या iPhone इतना पुराना है कि Apple इसे सपोर्ट नहीं करता।',
   iosUpgradeActionLabel: 'iOS 16 चाहिए',
-  lockUnlockNote:
-    'जब बच्चा स्क्रीन टाइम एक्सेस की अनुमति दे देता है, तब KidGate उसके ज़रिए डिवाइस लॉक करता है।',
-  scheduleNote:
-    'अधिकतम 3 ब्लॉक किए गए घंटे की अवधियाँ स्क्रीन टाइम के ज़रिए ऐप्स ब्लॉक करती हैं।',
-  individualAppBlockingNote: '6 अंकों का पैरेंट PIN डालने के बाद बच्चा ऐप्स चुनता है।',
-  tamperAlertsNote:
-    'अनुमति में बदलाव और बच्चे के डिवाइस पर ऐप के लंबे समय से अपडेट न होने की सूचना देता है।',
   appReviewRemindersNote:
     'iOS इंस्टॉल इवेंट नहीं दिखाता; समय-समय पर बच्चे के डिवाइस के साथ ऐप्स की समीक्षा करें।',
 } as const;

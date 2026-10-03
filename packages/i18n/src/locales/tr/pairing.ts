@@ -6,7 +6,7 @@ export const pairing = {
     'Bu çocuk cihazını KidGate’te bağlayın: ebeveyn cihazında KidGate’i açın → Aile → Kod tara, ardından QR kodunu tarayın veya {{code}} kodunu girin. Kod 5 dakika içinde sona erer.',
   connectChildPhone: 'Çocuk cihazını bağla',
   parentInstructions:
-    'Çocuk cihazında KidGate’i açın ve “Bu cihaz çocuğa aittir” seçeneğini seçin. Ardından o ekranda gösterilen kodu girin.',
+    'Çocuk cihazında KidGate’i açın. Telefon veya tablette “Bu bir çocuk cihazı” seçeneğini seçin. Ardından orada gösterilen 6 karakterlik kodu girin.',
   parentScanInstructions: 'Kameranızı çocuğun cihazındaki QR koduna doğrultun.',
   childWaitingTitle: 'Bir ebeveyn bekleniyor',
   childWaitingSubtitle:
@@ -14,13 +14,15 @@ export const pairing = {
   childCodeLabel: 'Ya da bu kodu paylaşın',
   childScanHint:
     'Ebeveyn: KidGate → Aile → {{scan}} → QR kodunu tarayın veya kodu girin.',
+  extensionCloseHint:
+    'Bu pencereyi kapatabilirsiniz — kod geçerli kalır. Ebeveyni onaylamak için KidGate’i yeniden açın.',
   childConnecting: 'Bağlandı. Bu cihaz ayarlanıyor…',
   childPairedTitle: 'Bağlandınız',
   childPairedSubtitle: 'Bu cihaz ayarlanıyor…',
   connectChild: 'Çocuk cihazını bağla',
   waitingChildConfirm: 'İstek gönderildi. Çocuk cihazında onay bekleniyor.',
   waitingChildConfirmHint:
-    'Bitirmek için çocuk cihazında "Evet, bağla" seçeneğine dokunun. Bu ekranı kapatabilirsiniz — eşleştirme arka planda devam eder.',
+    'Çocuk cihazı onay isterse bitirmek için "Evet, bağla" seçeneğini seçin. TV kendiliğinden bağlanır. Bu ekranı kapatabilirsiniz — eşleştirme arka planda devam eder.',
   childConfirmedTitle: 'Cihaz bağlandı',
   childConfirmedBody:
     'Çocuk cihazı eşleştirmeyi onayladı. Şimdi cihazı kimin kullandığını seçin.',
@@ -44,10 +46,16 @@ export const pairing = {
   manualCodeLabel: 'Çocuk cihazından gelen kod',
   openingScanner: 'Kamera açılıyor…',
   cameraPermissionRequired: 'QR kodunu taramak için kamera erişimi gerekir.',
-  unableToOpenScanner: 'Kamera tarayıcısı açılamadı.',
+  unableToOpenScanner: 'Kamera tarayıcısı açılamadı. Bunun yerine kodu elle girin.',
   newCode: 'Yeni kod',
   done: 'Bitti',
   unableToCreateCode: 'Kod oluşturulamadı. Lütfen tekrar deneyin.',
+  extensionUnsupportedSystem:
+    'Bu işletim sistemi desteklenmiyor. KidGate bir Chromebook, Mac veya Windows PC’de çalışır.',
+  deviceLimitReachedCeiling:
+    'Bu aile, KidGate’in kapsadığı cihaz sayısına ({{limit}}) ulaştı. Artık kullanmadığınız bir cihazı kaldırın, ardından tekrar deneyin.',
+  tooManyAttemptsWait:
+    'Çok fazla deneme yapıldı. Lütfen {{minutes}} dk sonra tekrar deneyin.',
   inviteParentTitle: 'Başka bir ebeveyn cihazı ekle',
   inviteParentInstructions:
     'Diğer cihazda KidGate → Aile → Kod tara’yı açın, ardından 15 dakika içinde bu QR kodunu tarayın veya kodu girin. O ebeveyni bağlamak için isteği burada onaylayın.',
@@ -64,7 +72,7 @@ export const pairing = {
   parentJoinDecline: 'Reddet',
   parentJoinRejected: 'Aile sahibi isteğinizi reddetti.',
   parentJoinExpired: 'Onay isteğinin süresi doldu. Lütfen yeni bir davet isteyin.',
-  unableToResolveParentJoin: 'Bu istek işlenemedi.',
+  unableToResolveParentJoin: 'Bu katılma isteği yanıtlanamadı. Lütfen tekrar deneyin.',
   joinedFamily: 'Aileye katıldınız. Ailenin çocuk cihazları artık burada görünüyor.',
   joinedFamilyTitle: 'Aileye katılındı',
   joinedFamilyMessage:

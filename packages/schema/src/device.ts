@@ -1,7 +1,8 @@
 import type { DeviceControls, DeviceLocation } from './deviceControls';
 import type { DevicePlace } from './devicePlace';
 import type { DeviceMessageMonitoringState } from './messageMonitoringState';
-import type { ScreenTimeStatus } from './permissions';
+import type { OperatorHold } from './operatorHold';
+import type { ProtectionPermissionStatus, ScreenTimeStatus } from './permissions';
 import type {
   DeviceCapabilities,
   DeviceFormFactor,
@@ -18,8 +19,8 @@ import type { UsageAppBreakdown } from './usageDay';
  * Nothing writes `status: 'parked'` to Firestore.
  */
 export type DeviceStatus = 'online' | 'offline' | 'locked' | 'parked';
-export type ProtectionPermissionStatus =
-  'authorized' | 'denied' | 'notDetermined' | 'restricted' | 'unavailable' | 'unknown';
+/** Defined once, in `./permissions` — this file carried a second copy. */
+export type { ProtectionPermissionStatus };
 
 /** All-time tallies from the tallyProtectionCounters Cloud Function. */
 export interface DeviceProtectionCounters {
@@ -351,7 +352,9 @@ export type DeviceLocationRequestStatus =
    * The OS held no position to give. On a Mac this is the ordinary shape of a
    * missing or refused grant — `CLLocationManager.location` is nil until
    * something is authorised *and* has produced a fix — and it is also a laptop
-   * in a basement, which is why it is not called `denied`.
+   * in a basement, which is why it is not called `denied`. Since 2026-09-23
+   * also the answer for a fix the agent refused as a guess — a PC positioned
+   * from its IP address, 8 km off (`@kidgate/core/domain/locationFix`).
    */
   | 'noFix'
   /**
@@ -360,8 +363,24 @@ export type DeviceLocationRequestStatus =
    * screen rather than on the child's device.
    */
   | 'sharingOff'
+  /**
+   * The OS could only guess from the internet connection — a desktop with
+   * its Wi-Fi radio off, or none — and the agent refuses a guess
+   * (`@kidgate/core/domain/locationFix`). Its own status rather than `noFix`
+   * because the parent can fix it: turning the device's Wi-Fi on is what
+   * changes the answer, and the copy says so.
+   */
+  | 'ipOnly'
   /** This build or platform cannot report a position at all. */
   | 'unsupported';
+
+/**
+ * What a child device could position itself from lately. `'ip'` means its
+ * recent reads were all guesses from the internet connection, which the agent
+ * refuses to upload — so the parent's card explains it instead of showing an
+ * ageing pin. Written by the desktop agent on change; phones never write it.
+ */
+export type DeviceLocationSensing = 'wifi' | 'ip';
 
 export interface DeviceLocationRequestResult {
   /** Which request this answers — the `locationRequestId` the agent read. */
@@ -484,8 +503,29 @@ export interface Device {
    * lock to confirm.
    */
   lockEnforcement?: DeviceLockEnforcement;
+  /**
+   * The IANA zone this device's OS is set to (`Asia/Ho_Chi_Minh`) — the
+   * calendar its `controls.usageDate` is written on. Never a location.
+   *
+   * **Server-written, top-level, change-gated.** The agent sends it on its
+   * usage report (`ControlRepository.reportUsage`, the desktop's `cloud.rs`
+   * template) and `syncChildAgent` stores it only when it differs from what is
+   * stored, so it costs no write on a report that changed nothing else. Not in
+   * `controls`: that map is the parent's policy plus the server's usage stamp,
+   * each field pinned by `firestore.rules`, and a device fact belongs beside
+   * `locale` and `osVersion`. Absent on a build older than the field and on a
+   * runtime whose `Intl` answers no name; a report without one leaves the
+   * stored value alone.
+   *
+   * Read by both consoles to judge a usage stamp on the device's own day
+   * (`@kidgate/core/domain/reportHub` `usageTodayKey`) and by the server as the
+   * last fallback for a family's clock before UTC+7.
+   */
+  timeZone?: string;
   controls?: DeviceControls;
   lastLocation?: DeviceLocation;
+  /** See `DeviceLocationSensing`. Absent on phones and on rows written before 2026-09-24. */
+  locationSensing?: DeviceLocationSensing | null;
   places?: DevicePlace[];
   protectionStatus?: DeviceProtectionStatus;
   /**
@@ -603,6 +643,12 @@ export interface Device {
    * `DeviceMonitoringState`.
    */
   monitoringState?: DeviceMonitoringState;
+  /**
+   * KidGate's own hold on this device — parked by the operator, with a reason
+   * the parent reads (`./operatorHold`). Absent on every device not held.
+   * Server-written; `firestore.rules` pins it.
+   */
+  operatorHold?: OperatorHold;
   /**
    * When this device became the monitored one, ISO. Absent on every device
    * that has never been chosen, which is most of them.

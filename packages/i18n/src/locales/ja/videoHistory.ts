@@ -17,7 +17,7 @@ export const videoHistory = {
   extensionStepSearch: '「KidGate」を検索する',
   extensionStepInstall: '「Chrome に追加」をクリックする',
   extensionStepConnect:
-    'Chrome で KidGate を開いて接続する — 独立した端末として表示されます',
+    'Chrome で KidGate を開いて接続する — 独立したデバイスとして表示されます',
   extensionStepEnable: 'そのデバイスで「視聴した動画を記録」をオンにする',
   emptyTitle: 'まだ視聴なし',
   emptyBody: 'KidGate が動作中にお子さまが視聴すると、動画がここに表示されます。',
@@ -38,6 +38,8 @@ export const videoHistory = {
   heroTopChannel: '最も視聴',
   readerLayoutChanged:
     '現在このデバイスではショート動画が記録されていません。YouTubeアプリが変更されたため、KidGateの更新が必要です。その他の動画は引き続き記録されます。',
+  grantNeeded:
+    'まだ動画は記録されていません。KidGateには、お子さまのスマートフォンでの通知へのアクセスが必要です。そのスマートフォンでKidGateの設定を開き、「保護者PINで解除」を選択してから、「メッセージ警告」セクションの「通知へのアクセスを許可」を選択してください。',
   openAction: 'YouTube で開く',
   searchAction: 'この動画を YouTube で検索',
   openFailed: 'YouTube を開けませんでした。',

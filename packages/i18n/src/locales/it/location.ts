@@ -36,8 +36,6 @@ export const location = {
     'Nessuna cronologia disponibile. I punti verranno visualizzati dopo un aggiornamento della posizione o un Check-in.',
   historyHighlightAccessibility: 'Evidenzia {{place}} sulla mappa',
   historyOpenMapsAccessibility: 'Apri {{place}} in Mappe',
-  unableToRequestLocationRefresh:
-    'Impossibile richiedere l’aggiornamento della posizione',
   locationBannerTitle: 'Attiva la posizione',
   locationBannerBody:
     'I tuoi genitori vogliono vedere la posizione di questo dispositivo per sapere che sei arrivato in sicurezza.',
@@ -46,19 +44,24 @@ export const location = {
   allowLocationButton: 'Consenti posizione',
   locationNotAllowed:
     'L’accesso alla posizione non è ancora consentito. Apri Impostazioni → KidGate → Posizione (oppure attiva prima i Servizi di localizzazione). Se la voce Posizione non è presente, seleziona di nuovo “Consenti posizione”.',
+  locationNotAllowedAndroid:
+    'La posizione non è ancora consentita. Seleziona Apri Impostazioni, poi Autorizzazioni → Posizione, e scegli “Consenti sempre”.',
   locationServicesOff:
     'I Servizi di localizzazione sono disattivati per il dispositivo. Apri Impostazioni → Privacy e sicurezza → Servizi di localizzazione, attivali, quindi torna in KidGate e seleziona “Consenti posizione”.',
   locationDeniedInSettings:
     'L’accesso alla posizione per KidGate è stato negato. Apri Impostazioni → KidGate → Posizione e scegli “Durante l’uso dell’app” oppure “Sempre”.',
-  locationEnabled:
-    'La posizione è attiva. Scegli “Sempre” affinché KidGate possa aggiornare la posizione anche quando l’app è chiusa.',
+  foregroundOnly:
+    'La posizione si aggiorna solo mentre KidGate è aperto. Seleziona Apri Impostazioni, poi Posizione, e scegli “Sempre”.',
+  foregroundOnlyAndroid:
+    'La posizione si aggiorna solo mentre KidGate è aperto. Seleziona Apri Impostazioni, poi Autorizzazioni → Posizione, e scegli “Consenti sempre”.',
+  toastLocateFailed:
+    'Impossibile trovare la tua posizione in questo momento. Riprova tra poco.',
   backgroundLocationTitle: 'Consenti la posizione anche con l’app chiusa',
   backgroundLocationBody:
     'KidGate necessita dell’accesso alla posizione in background affinché i genitori possano vedere dove si trova questo dispositivo anche quando l’app è chiusa, per la sicurezza della famiglia.',
-  locationNote:
-    'Mostra la posizione del bambino quando la condivisione della posizione è attiva sul suo dispositivo.',
-  placeAlertsNote: 'Invia avvisi di posizione per casa, scuola e altri luoghi sicuri.',
   mapNoLocationsEmpty: 'Nessuna posizione da mostrare',
+  mapHistoryEmpty:
+    'I punti degli spostamenti compariranno sulla mappa dopo il prossimo aggiornamento della posizione.',
   mapUnavailable: 'Mappa non disponibile. Controlla la connessione e riprova.',
   historyShowMore: 'Mostra altri {{count}} luoghi',
   historyShowMore_one: 'Mostra 1 altro luogo',
@@ -75,10 +78,19 @@ export const location = {
   stayRange: '{{from}} – {{to}}',
   wizardStepAllow:
     'Seleziona Consenti, poi Sempre così gli aggiornamenti continuano in background.',
+  wizardStepAllowAndroid:
+    'Scegli “Mentre usi l’app”, poi “Consenti sempre” quando richiesto, così gli aggiornamenti continuano in background.',
   requestNoFix:
     'Questo dispositivo non ha ottenuto una posizione. La localizzazione potrebbe non essere ancora consentita.',
+  requestIpOnly:
+    'Questo dispositivo ha potuto solo stimare la posizione dalla connessione a internet. Attiva il suo Wi-Fi (non serve connettersi) e riprova.',
+  requestUnsupported: 'Questo dispositivo non può segnalare la sua posizione.',
   cardSharingOff: 'La condivisione della posizione è disattivata',
   cardPermissionOff: 'La posizione non è consentita su questo dispositivo',
+  cardForegroundOnly:
+    'La posizione si aggiorna solo mentre KidGate è aperto su questo dispositivo',
+  cardIpOnly:
+    'Impossibile localizzare questo dispositivo: attiva il suo Wi-Fi (non serve connettersi)',
   cardNotUpdating: 'La posizione non si aggiorna più',
   namesNeedPremium: 'I nomi dei luoghi richiedono un piano a pagamento',
   namesNeedPremiumTrialEnded:

@@ -1,3 +1,4 @@
+import { toBcp47 } from '../languageMeta';
 import { detectBrowserLanguage, matchSupportedLanguage } from './detectLanguage.js';
 import { interpolate } from './interpolate.js';
 import { DEFAULT_LANGUAGE, LANGUAGE_META, SUPPORTED_LANGUAGES } from './languages.js';
@@ -176,9 +177,18 @@ export function formatNumber(value) {
   return formatParamValue(value);
 }
 
-/** BCP-47 tag for `Intl` and `toLocaleDateString` call sites. */
+/**
+ * The BCP-47 tag every `Intl` and `toLocale*String` call site passes — `pt-BR`,
+ * never the bare pack code, because the pack is Brazilian (`languageMeta`'s
+ * `toBcp47`). Never `undefined` there either: that is the BROWSER's language,
+ * so a parent who picked Vietnamese on an English laptop read English dates
+ * under Vietnamese sentences.
+ *
+ * Read it at call time, like `t`: every caller renders under a `useT()` that
+ * re-renders on a language change.
+ */
 export function getLocaleTag() {
-  return currentLanguage;
+  return toBcp47(currentLanguage);
 }
 
 /* ------------------------------------------------------------------ *

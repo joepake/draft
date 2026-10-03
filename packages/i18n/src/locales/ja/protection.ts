@@ -36,6 +36,8 @@ export const protection = {
   lockNotReadyBodyIos:
     '子どものデバイスでスクリーンタイムのアクセスが許可されるまで、KidGateはこのiPhoneをロックできません。そのデバイスでKidGateを開き、次の設定を完了してください。',
   locationPermission: '位置情報の権限',
+  locationForegroundOnly:
+    '子どものデバイスでKidGateを開いている間しか位置情報が更新されません。',
   cameraPermission: 'カメラの許可',
   cameraConsentPending:
     'このデバイスでカメラが許可されていないため、ここからの SOS やチェックインは写真なしで届きます。',
@@ -61,18 +63,9 @@ export const protection = {
   healthBadgeProtected: '緑 — 保護中',
   healthBadgeWarning: '黄 — 設定が必要',
   healthBadgeInactive: '赤 — 子どものデバイスが24時間以上無応答',
-  iosFeatureSupportEvaluating: 'iOSでのこの機能のサポートは現在評価中です。',
   iosUpgradeRequiredNote:
     'これにはiOS 16以降が必要です。お子さまのデバイスを「設定 › 一般 › ソフトウェアアップデート」から更新してください。アップデートが表示されない場合、このiPadまたはiPhoneは古すぎるためAppleのサポート対象外です。',
   iosUpgradeActionLabel: 'iOS 16が必要',
-  lockUnlockNote:
-    'お子さまがアクセスを許可すると、スクリーンタイムを通じてデバイスをロックします。',
-  scheduleNote:
-    '最大3つの休止時間帯で、スクリーンタイムを通じてアプリをブロックします。',
-  individualAppBlockingNote:
-    '6桁の保護者PINを入力した後、お子さまがアプリを選択します。',
-  tamperAlertsNote:
-    '権限の変更や、子どものデバイスのアプリがしばらく更新されていない場合に通知します。',
   appReviewRemindersNote:
     'iOSはインストールイベントを提供しないため、子どものデバイスで定期的にアプリを確認してください。',
 } as const;

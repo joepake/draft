@@ -18,10 +18,12 @@ export const timeRequest = {
   statusCooldown: 'Yeni bir isteği {{time}} sonra gönderebilirsin.',
   statusDailyLimitExceeded:
     'Bugünkü ekran süreni bitirdin. Uygulamalar yarın tekrar açılacak — ailen daha fazla süre eklerse daha erken.',
-  errorDeviceNotRegistered: 'Bu cihaz kayıtlı değil.',
+  errorDeviceNotRegistered:
+    'Bu cihaz henüz istek göndermeye hazır değil. Biraz sonra tekrar dene ya da ailenden cihazı yeniden eşleştirmesini iste.',
   errorMinutesRange: '{{min}} ile {{max}} dakika arasında bir değer gir.',
   toastRequestSent: 'İstek gönderildi. Ailen kısa süre içinde inceleyecek.',
-  toastDeviceNotRegistered: 'Bu cihaz henüz kayıtlı değil.',
+  toastDeviceNotRegistered:
+    'Bu cihaz henüz istek göndermeye hazır değil. Biraz sonra tekrar dene ya da ailenden cihazı yeniden eşleştirmesini iste.',
   toastSendFailed: 'İstek gönderilemedi. Lütfen tekrar dene.',
   askForMoreTime: 'Daha fazla süre iste',
   askForMoreTimeSubtitle: 'Ailen onaylarsa bugün daha fazla ekran süresi kazanırsın.',
@@ -41,7 +43,7 @@ export const timeRequest = {
   unableToDeclineRequest: 'İstek reddedilemedi. Lütfen tekrar deneyin.',
   unableToApproveRequest: 'İstek onaylanamadı. Lütfen tekrar deneyin.',
   pendingRequestExists: 'Zaten bir istek gönderdin. Ailenin yanıtını bekle.',
-  waitBeforeAnotherRequest: 'Başka bir istek göndermeden önce birkaç dakika bekle.',
+  waitBeforeAnotherRequest: 'Başka bir istek göndermeden önce biraz bekle.',
   timeRequestSent: 'Süre isteği gönderildi',
   timeRequestSentDescription: '{{deviceName}} {{minutes}} dakika daha istedi.',
   timeRequestApproved: 'Süre isteği onaylandı',
@@ -58,5 +60,4 @@ export const timeRequest = {
   requestPendingButton: 'İstek bekliyor',
   requestPendingChip: 'İstek bekliyor',
   waitCooldown: '{{cooldown}} bekle',
-  timeRequestNote: 'Ailen onaylarsa bugün daha fazla ekran süresi kazanırsın.',
 } as const;

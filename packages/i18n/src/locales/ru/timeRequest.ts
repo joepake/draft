@@ -1,5 +1,7 @@
 export const timeRequest = {
   alertMorePending: 'Ещё {{count}} запросов ждут в разделе «Семья».',
+  alertMorePending_one: 'Ещё {{count}} запрос ждёт в разделе «Семья».',
+  alertMorePending_few: 'Ещё {{count}} запроса ждут в разделе «Семья».',
   pauseConfirmTitle: 'Заблокировать {{deviceName}}?',
   pauseConfirmBody:
     'Устройство будет заблокировано сейчас вместо добавления времени. {{deviceName}} нельзя будет использовать, пока вы его не разблокируете.',
@@ -24,10 +26,12 @@ export const timeRequest = {
   statusCooldown: 'Сможешь отправить новый запрос через {{time}}.',
   statusDailyLimitExceeded:
     'Экранное время на сегодня закончилось. Приложения снова откроются завтра — или раньше, если родители добавят время.',
-  errorDeviceNotRegistered: 'Это устройство не зарегистрировано.',
+  errorDeviceNotRegistered:
+    'Это устройство пока не может отправлять запросы. Попробуй ещё раз чуть позже или попроси родителей подключить его заново.',
   errorMinutesRange: 'Введи от {{min}} до {{max}} минут.',
   toastRequestSent: 'Запрос отправлен. Родители скоро его рассмотрят.',
-  toastDeviceNotRegistered: 'Это устройство ещё не зарегистрировано.',
+  toastDeviceNotRegistered:
+    'Это устройство пока не может отправлять запросы. Попробуй ещё раз чуть позже или попроси родителей подключить его заново.',
   toastSendFailed: 'Не удалось отправить запрос. Попробуй ещё раз.',
   askForMoreTime: 'Запросить больше времени',
   askForMoreTimeSubtitle:
@@ -48,8 +52,7 @@ export const timeRequest = {
   unableToDeclineRequest: 'Не удалось отклонить запрос. Попробуйте ещё раз.',
   unableToApproveRequest: 'Не удалось одобрить запрос. Попробуйте ещё раз.',
   pendingRequestExists: 'Запрос уже отправлен. Подожди ответа родителей.',
-  waitBeforeAnotherRequest:
-    'Подожди несколько минут, прежде чем отправить ещё один запрос.',
+  waitBeforeAnotherRequest: 'Подожди немного, прежде чем отправить ещё один запрос.',
   timeRequestSent: 'Запрос времени отправлен',
   timeRequestSentDescription: '{{deviceName}} запросил ещё {{minutes}} минут.',
   timeRequestSentDescription_one: '{{deviceName}} запросил ещё {{minutes}} минуту.',
@@ -83,5 +86,4 @@ export const timeRequest = {
   requestPendingButton: 'Запрос ожидает',
   requestPendingChip: 'Запрос ожидает',
   waitCooldown: 'Подожди {{cooldown}}',
-  timeRequestNote: 'Если родители одобрят, сегодня получишь больше экранного времени.',
 } as const;

@@ -122,6 +122,13 @@ export interface DeviceCapabilities {
    * because "install a different build" is not an instruction to put in front
    * of a parent — and neither is a provider the agent's own watchdog is already
    * tearing down.
+   *
+   * **An Android phone publishes this field alone**, with no `webFilter` beside
+   * it (`@kidgate/core/domain/webFilterSupport.androidWebFilterBlocker`, since
+   * 2026-09-25): VPN consent not accepted is `awaitingApproval`, a VPN that is
+   * down or bypassed by Private DNS is `configurationDisabled`. The phone's
+   * filter is still assumed from its platform, so there it names a fault for
+   * the parent's summary without closing the Web Filter card.
    */
   webFilterBlocker?: 'awaitingApproval' | 'configurationDisabled';
   schedule: boolean;

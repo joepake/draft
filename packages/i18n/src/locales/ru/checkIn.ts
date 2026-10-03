@@ -1,5 +1,5 @@
 export const checkIn = {
-  noPhotoBadge: 'Фото не приложено',
+  noPhotoBadge: 'Без фото',
   historyTitle: 'История Check-In',
   historyHint:
     'Нажмите на фото, чтобы увеличить. Выше можно в любой момент запросить новый Check-In.',
@@ -7,12 +7,14 @@ export const checkIn = {
   screenTitle: 'Check-In',
   statusSafe: 'В безопасности',
   statusNoResponse: 'Нет ответа',
+  statusAskedForHelp: 'Просьба о помощи (SOS)',
   statusWaiting: 'Ожидание',
   metaWaitingForLocationAndPhoto: 'Ожидаем геопозицию и фото',
+  metaWaitingForLocation: 'Ожидание местоположения',
   metaNoLocation: 'Без геопозиции',
   viewPhotoAccessibility: 'Посмотреть фото Check-In',
   responseMessage: 'Я в порядке.',
-  toastSuccess: 'Спасибо. Родители знают, что ты в порядке.',
+  toastSuccess: 'Спасибо. Твой ответ отправлен родителям.',
   toastFailed: 'Не удалось отправить Check-In. Попробуй ещё раз.',
   quickCheckInBadge: 'Check-In',
   areYouOkay: 'Ты в порядке?',
@@ -33,12 +35,14 @@ export const checkIn = {
   childDeviceFallback: 'Устройство ребёнка',
   requestCheckIn: 'Запросить Check-In',
   requestCheckInNote:
-    'Запрашивает у устройства ребёнка геопозицию и фото с фронтальной камеры.',
+    'Запрашивает у устройства ребёнка его местоположение, а у телефона или планшета — ещё и фото с фронтальной камеры.',
+  requestCheckInNoteLocationOnly:
+    'Запрашивает у устройства ребёнка его местоположение.',
   needHelpOpenSosAccessibility: 'Мне нужна помощь — открыть SOS',
   showAllDevices: 'Показать все устройства ({{count}})',
   showFewerDevices: 'Показать меньше устройств',
   parentSafePopupTitle: 'Ваш ребёнок в безопасности',
-  childSafePopupTitle: 'Родителям сообщили',
-  childSafePopupBody: 'Родители получили сообщение — ты в порядке.',
+  childSafePopupTitle: 'Ответ отправлен',
+  childSafePopupBody: 'Теперь родители видят, что ты в порядке.',
   confirmedKicker: 'Check-In',
 } as const;

@@ -15,11 +15,11 @@ export const trial = {
   impactScreenTime: 'Ekran süresi günde yaklaşık {{duration}} azaldı',
   impactWebBlocked: 'Uygunsuz sitelere {{count}} ziyaret engellendi',
   impactTamper: 'Korumanın kapatıldığı {{count}} kez kaydedildi',
-  impactLocks: 'Uyku saati ve engellenen saatler {{count}} kez uygulandı',
+  impactLocks: 'Engellenen Saatler {{count}} kez uygulandı',
   impactScreenTimeTracked: 'Sizin için {{duration}} ekran süresi ölçüldü',
   impactDevices: '{{count}} cihaz gece gündüz gözetildi',
   impactPlaceArrivals: 'Çocuğunuzun güvenle vardığını {{count}} kez bildirdik',
-  impactAppInstalled: 'Ortaya çıktıkları gün {{count}} yeni uygulama yakalandı',
+  impactAppInstalled: '{{count}} yeni uygulama, ortaya çıktığı gün yakalandı',
   impactSos: '{{count}} SOS uyarısı doğrudan size iletildi',
   impactKeepButton: 'Bu korumayı sürdür',
 } as const;

@@ -6,7 +6,7 @@ export const pairing = {
     'Conecte este dispositivo da criança no KidGate: no dispositivo do responsável, abra o KidGate → Família → Escanear código, depois escaneie o código QR ou digite o código {{code}}. O código expira em 5 minutos.',
   connectChildPhone: 'Conectar dispositivo da criança',
   parentInstructions:
-    'No dispositivo da criança, abra o KidGate e escolha Este é um dispositivo da criança. Depois digite o código exibido nessa tela.',
+    'Abra o KidGate no dispositivo da criança. Em um celular ou tablet, escolha “Este é um dispositivo de uma criança”. Depois digite o código de 6 caracteres exibido.',
   parentScanInstructions: 'Aponte a câmera para o código QR no dispositivo da criança.',
   childWaitingTitle: 'Aguardando um responsável',
   childWaitingSubtitle:
@@ -14,6 +14,8 @@ export const pairing = {
   childCodeLabel: 'Ou compartilhe este código',
   childScanHint:
     'Responsável: abra o KidGate → Família → {{scan}} → escaneie o código QR ou digite o código.',
+  extensionCloseHint:
+    'Você pode fechar esta janela — o código continua valendo. Abra o KidGate de novo para confirmar o responsável.',
   childConnecting: 'Conectado. Configurando este dispositivo…',
   childPairedTitle: 'Você está conectado',
   childPairedSubtitle: 'Configurando este dispositivo…',
@@ -21,7 +23,7 @@ export const pairing = {
   waitingChildConfirm:
     'Solicitação enviada. Aguardando confirmação no dispositivo da criança.',
   waitingChildConfirmHint:
-    'No dispositivo da criança, toque em "Sim, conectar" para concluir. Você pode fechar esta tela — o pareamento continua em segundo plano.',
+    'Se o dispositivo da criança pedir, escolha "Sim, conectar" para concluir. A TV se conecta sozinha. Você pode fechar esta tela — o pareamento continua em segundo plano.',
   childConfirmedTitle: 'Dispositivo conectado',
   childConfirmedBody:
     'O dispositivo da criança confirmou o pareamento. Agora escolha quem usa esse dispositivo.',
@@ -45,10 +47,16 @@ export const pairing = {
   manualCodeLabel: 'Código do dispositivo da criança',
   openingScanner: 'Abrindo câmera…',
   cameraPermissionRequired: 'O acesso à câmera é necessário para escanear o código QR.',
-  unableToOpenScanner: 'Não foi possível abrir o scanner da câmera.',
+  unableToOpenScanner:
+    'Não foi possível abrir o scanner da câmera. Digite o código manualmente.',
   newCode: 'Novo código',
   done: 'Concluído',
   unableToCreateCode: 'Não foi possível criar um código. Tente novamente.',
+  extensionUnsupportedSystem:
+    'Este sistema operacional não é compatível. O KidGate funciona em um Chromebook, um Mac ou um PC com Windows.',
+  deviceLimitReachedCeiling:
+    'Esta família atingiu o número de dispositivos que o KidGate cobre ({{limit}}). Remova um dispositivo que você não usa mais e tente novamente.',
+  tooManyAttemptsWait: 'Muitas tentativas. Tente novamente em {{minutes}} min.',
   inviteParentTitle: 'Adicionar outro dispositivo dos pais',
   inviteParentInstructions:
     'No outro dispositivo, abra o KidGate → Família → Escanear código, depois escaneie este código QR ou digite o código em até 15 minutos. Aprove a solicitação aqui para conectar esse responsável.',
@@ -65,7 +73,8 @@ export const pairing = {
   parentJoinDecline: 'Recusar',
   parentJoinRejected: 'O proprietário da família recusou sua solicitação.',
   parentJoinExpired: 'A solicitação de aprovação expirou. Peça um novo convite.',
-  unableToResolveParentJoin: 'Não foi possível resolver esta solicitação.',
+  unableToResolveParentJoin:
+    'Não foi possível responder a esta solicitação de entrada. Tente novamente.',
   joinedFamily:
     'Você entrou na família. Os dispositivos das crianças dela agora aparecem aqui.',
   joinedFamilyTitle: 'Família adicionada',

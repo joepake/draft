@@ -44,6 +44,9 @@ export const settings = {
   accountLinkActionLink: 'ربط',
   accountLinkActionUnlink: 'إلغاء الربط',
   accountLinkActionVerify: 'تأكيد',
+  accountLinkActionLinkA11y: 'ربط {{provider}}',
+  accountLinkActionUnlinkA11y: 'إلغاء ربط {{provider}}',
+  accountLinkActionVerifyA11y: 'تأكيد {{provider}}',
   accountLinkSummary: 'تسجيل الدخول عبر {{methods}}',
   accountLinked: 'مرتبط',
   accountNotLinked: 'غير مرتبط',
@@ -59,13 +62,10 @@ export const settings = {
   pushNotificationsSubtitle: 'اختر التنبيهات التي تصل إلى هذا الهاتف',
   inAppAlertsLabel: 'التنبيهات داخل التطبيق',
   inAppAlertsHint:
-    'إظهار التنبيهات داخل التطبيق لطلبات الوقت. تظهر تنبيهات SOS دائمًا.',
+    'إظهار شريط للتنبيهات الجديدة أثناء فتح KidGate. تظهر تنبيهات SOS دائمًا.',
   sosSoundLabel: 'صفارة SOS',
   sosSoundHint:
     'تشغيل صفارة إنذار عالية على هذا الهاتف عندما يرسل الطفل نداء SOS. يظل الاهتزاز فعالاً في جميع الأحوال.',
-  shareScreenTimeLabel: 'مشاركة وقت شاشتي',
-  shareScreenTimeHint:
-    'يضع وقت شاشة هذا الهاتف على لوحة العائلة بجانب أطفالك. يحتاج إلى إذن الوصول إلى بيانات الاستخدام.',
   themeStyleLabel: 'نمط السمة',
   themeColorLabel: 'لون السمة',
   signOutButton: 'تسجيل الخروج',
@@ -96,12 +96,17 @@ export const settings = {
   removeParentDeviceAlertMessage:
     'سيتم تسجيل خروج {{deviceName}} من هذا الحساب وسيتوقف عن تلقي الإشعارات. يمكن لمن يحمله تسجيل الدخول مجددًا بكلمة المرور.',
   toastParentDeviceRemoved: 'تمت إزالة {{deviceName}}.',
-  signedOutByAnotherDevice: 'تم تسجيل خروج هذا الجهاز من حساب الوالدين عبر جهاز آخر.',
+  signedOutByAnotherDevice:
+    'تم تسجيل خروج هذا الجهاز من حساب الوالدين عبر جهاز آخر. سجّل الدخول مرة أخرى للمتابعة.',
   deleteAccountTitle: 'حذف الحساب',
   deleteAccountSubtitleDefault: 'حذف حسابك وجميع بياناتك نهائيًا',
   deleteAccountAlertTitle: 'حذف الحساب نهائيًا؟',
   deleteAccountAlertMessage:
     'يؤدي هذا إلى جدولة حذف حساب العائلة. لم يُحذف أي شيء بعد — يمكنك تسجيل الدخول والإلغاء في أي وقت قبل تاريخ الحذف. بعد ذلك التاريخ، تُحذف جميع البيانات (الأجهزة والنشاط وسجل المواقع وصور الاستغاثة) نهائيًا لكل الوالدين والأطفال.',
+  deleteAccountAlertMessageMember:
+    'يؤدي هذا إلى جدولة حذف حسابك أنت فقط. لم يُحذف أي شيء بعد — يمكنك تسجيل الدخول والإلغاء في أي وقت قبل تاريخ الحذف. بعد ذلك التاريخ، تُحذف بيانات تسجيل دخولك وإعداداتك الخاصة. ولا تتأثر العائلة ولا أجهزتها ولا أولياء الأمور الآخرون.',
+  deleteAccountSubscriptionNotice:
+    'حذف حسابك لا يلغي الاشتراك. ألغِه من App Store أو Google Play.',
   sendRequestButton: 'حذف نهائيًا',
   toastDeletionAlreadyPending: 'حذف الحساب قيد التنفيذ بالفعل.',
   toastDeletionRequestFailed: 'تعذر بدء حذف الحساب. يرجى المحاولة مرة أخرى.',
@@ -181,7 +186,8 @@ export const settings = {
   deleteAccountSubtitleScheduled: 'تمت جدولة الحذف. سجّل الدخول للإلغاء.',
   deleteAccountImpact:
     'عدد الأهالي الذين سيفقدون الوصول: {{parents}}. عدد أجهزة الأطفال التي ستفقد الوصول: {{devices}}.',
-  deleteAccountGraceNotice: 'يظل حسابك يعمل لمدة {{days}} يومًا، ثم يُحذف نهائيًا.',
+  deleteAccountGraceNotice:
+    'يتم الحذف بعد {{days}} يومًا. وحتى ذلك الحين، يمكنك فتح KidGate وإلغاؤه.',
   deleteAccountReauthNotice: 'سيُطلب منك تسجيل الدخول مرة أخرى للتأكيد.',
   deleteAccountConfirmLabel: 'اكتب {{word}} للتأكيد',
   statusScheduled: 'مجدول',

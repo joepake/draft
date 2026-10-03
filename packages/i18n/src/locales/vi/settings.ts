@@ -45,6 +45,9 @@ export const settings = {
   accountLinkActionLink: 'Liên kết',
   accountLinkActionUnlink: 'Gỡ liên kết',
   accountLinkActionVerify: 'Xác thực',
+  accountLinkActionLinkA11y: 'Liên kết {{provider}}',
+  accountLinkActionUnlinkA11y: 'Gỡ liên kết {{provider}}',
+  accountLinkActionVerifyA11y: 'Xác thực {{provider}}',
   accountLinkSummary: 'Đăng nhập bằng {{methods}}',
   accountLinked: 'Đã liên kết',
   accountNotLinked: 'Chưa liên kết',
@@ -60,13 +63,10 @@ export const settings = {
   pushNotificationsSubtitle: 'Chọn cảnh báo nào gửi tới máy này',
   inAppAlertsLabel: 'Thông báo trong ứng dụng',
   inAppAlertsHint:
-    'Hiển thị thông báo trong ứng dụng đối với yêu cầu thêm giờ. Cảnh báo SOS luôn được hiển thị.',
+    'Hiện thông báo khi có cảnh báo mới lúc đang mở KidGate. Cảnh báo SOS luôn được hiển thị.',
   sosSoundLabel: 'Âm báo SOS',
   sosSoundHint:
     'Phát còi báo động lớn trên máy này khi con gửi SOS. Rung vẫn hoạt động dù bật hay tắt.',
-  shareScreenTimeLabel: 'Chia sẻ thời gian sử dụng của tôi',
-  shareScreenTimeHint:
-    'Đưa thời gian sử dụng điện thoại này lên bảng cả nhà, cạnh các con. Cần quyền truy cập dữ liệu sử dụng.',
   themeStyleLabel: 'Phong cách giao diện',
   themeColorLabel: 'Màu giao diện',
   signOutButton: 'Đăng xuất',
@@ -99,12 +99,16 @@ export const settings = {
     '{{deviceName}} sẽ bị đăng xuất khỏi tài khoản này và không còn nhận thông báo. Người giữ máy có thể đăng nhập lại bằng mật khẩu.',
   toastParentDeviceRemoved: 'Đã gỡ {{deviceName}}.',
   signedOutByAnotherDevice:
-    'Thiết bị này đã bị đăng xuất khỏi tài khoản phụ huynh từ một thiết bị khác.',
+    'Thiết bị này đã bị đăng xuất khỏi tài khoản phụ huynh từ một thiết bị khác. Vui lòng đăng nhập lại để tiếp tục.',
   deleteAccountTitle: 'Xóa tài khoản',
   deleteAccountSubtitleDefault: 'Xóa vĩnh viễn tài khoản và toàn bộ dữ liệu',
   deleteAccountAlertTitle: 'Xóa vĩnh viễn tài khoản?',
   deleteAccountAlertMessage:
     'Thao tác này lên lịch xóa tài khoản gia đình của bạn. Chưa có dữ liệu nào bị xóa — bạn có thể đăng nhập và hủy bất cứ lúc nào trước ngày xóa. Sau ngày đó, toàn bộ dữ liệu (thiết bị, nhật ký hoạt động, lịch sử vị trí, ảnh SOS) của tất cả phụ huynh và trẻ sẽ bị xóa vĩnh viễn.',
+  deleteAccountAlertMessageMember:
+    'Thao tác này lên lịch xóa tài khoản của riêng bạn. Chưa có dữ liệu nào bị xóa — bạn có thể đăng nhập và hủy bất cứ lúc nào trước ngày xóa. Sau ngày đó, thông tin đăng nhập và cài đặt riêng của bạn sẽ bị xóa. Gia đình, các thiết bị và những phụ huynh khác không bị ảnh hưởng.',
+  deleteAccountSubscriptionNotice:
+    'Xóa tài khoản không hủy gói đăng ký. Vui lòng hủy gói trong App Store hoặc Google Play.',
   sendRequestButton: 'Xóa vĩnh viễn',
   toastDeletionAlreadyPending: 'Tài khoản đang trong quá trình xóa.',
   toastDeletionRequestFailed: 'Không thể bắt đầu xóa tài khoản. Vui lòng thử lại.',
@@ -187,7 +191,7 @@ export const settings = {
   deleteAccountImpact:
     '{{parents}} phụ huynh và {{devices}} thiết bị của trẻ sẽ mất quyền truy cập.',
   deleteAccountGraceNotice:
-    'Tài khoản vẫn hoạt động bình thường trong {{days}} ngày, sau đó bị xóa vĩnh viễn.',
+    'Tài khoản sẽ bị xóa sau {{days}} ngày. Trước thời điểm đó, bạn có thể mở KidGate và hủy yêu cầu xóa.',
   deleteAccountReauthNotice: 'Bạn sẽ được yêu cầu đăng nhập lại để xác nhận.',
   deleteAccountConfirmLabel: 'Nhập {{word}} để xác nhận',
   statusScheduled: 'Đã lên lịch',

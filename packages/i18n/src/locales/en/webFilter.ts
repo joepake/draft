@@ -2,6 +2,7 @@ export const webFilter = {
   title: 'Web Filter',
   fallbackDeviceName: 'Child device',
   appliesToAll: 'Applies to all {{count}} of {{name}}’s devices',
+  appliesToAll_one: 'Applies to {{name}}’s device',
   coverageLine: 'Enforced on {{enforcing}} of {{total}} devices',
   mergeNotice:
     '{{name}}’s devices had different web filter settings. Saving here applies one set to all of them, combined toward the stricter choice.',
@@ -16,6 +17,8 @@ export const webFilter = {
     'Runs KidGate’s content filter on the child’s Mac to block known inappropriate sites in browsers and many apps.',
   heroSubtitleWindows:
     'Runs KidGate’s own resolver on the child’s PC to block known inappropriate sites in every browser.',
+  heroSubtitleExtension:
+    'Runs the KidGate extension in Chrome on the child’s computer to block known inappropriate sites in that browser.',
   toggleHintIos: 'Requires the Screen Time permission on the child device.',
   toggleHintAndroid:
     'The child must approve the KidGate VPN connection once. Keep the VPN on for filtering to work.',
@@ -23,10 +26,12 @@ export const webFilter = {
     'The child must approve the KidGate filter extension once in System Settings. Keep it approved for filtering to work.',
   toggleHintWindows:
     'Nothing to approve on the PC. KidGate’s background service switches the filter on within a few seconds.',
+  toggleHintExtension:
+    'Nothing to approve. The filter runs in Chrome only, not in other browsers or apps.',
   toggleAccessibilityLabel: 'Enable Web Filter',
   safeSearchSectionTitle: 'Safe search & YouTube',
   safeSearchSectionSubtitle:
-    'Force Google, Bing and DuckDuckGo to safe results and lock YouTube to Restricted Mode. Needs the web filter on.',
+    'Force Google, Bing and DuckDuckGo to safe results and lock YouTube to Restricted Mode. Needs the Web Filter on.',
   safeSearchLabel: 'Force SafeSearch',
   safeSearchHint:
     'Locks Google SafeSearch, YouTube Restricted Mode, Bing and DuckDuckGo to their strict settings. Android, Android TV and Chrome.',
@@ -62,6 +67,14 @@ export const webFilter = {
     'It needs KidGate’s background service. If web filtering stays off, reinstall KidGate on the PC as an administrator.',
   infoLine4Windows:
     'The filter reads site names only. It cannot see inside a page, and a site the browser looked up a moment ago may keep opening for a few minutes.',
+  infoLine1Extension:
+    'The KidGate extension checks each site before Chrome opens it, and blocks the ones on your categories.',
+  infoLine2Extension:
+    'Only Chrome is filtered, in the profile KidGate is installed in. Other browsers and apps on the computer are not.',
+  infoLine3Extension:
+    'Incognito windows are filtered only if “Allow in Incognito” is turned on for the extension. Guest windows are not filtered.',
+  infoLine4Extension:
+    'A blocked page lets your child ask you to allow the site. Removing or turning off the extension stops the filter.',
   privateDnsBannerTitle: 'Turn off Private DNS',
   privateDnsBannerBody:
     'Private DNS is on, so web filtering may be bypassed. Turn it off for the filter to work.',
@@ -74,17 +87,13 @@ export const webFilter = {
   androidVpnNote: 'Uses a private connection on Android',
   macosFilterNote: 'Uses KidGate’s content filter on Mac',
   windowsFilterNote: 'Uses KidGate’s own resolver on Windows',
-  webFilteringNote:
-    'iOS uses the Screen Time adult filter. Android, Mac and Windows use KidGate’s own blocklist.',
-  safeSearchAlertsNote:
-    'Safari does not share search terms; keyword alerts require a managed safe browser.',
-  webHistoryNote: 'Requires a filtered browser or DNS/VPN-style reporting.',
+  extensionFilterNote: 'Uses the KidGate extension in Chrome',
   categoriesTitle: 'What to block',
   categoriesSubtitle:
     'KidGate comes with its own domain lists. They cover the sites children actually reach, not the whole web — pair them with the lists below.',
-  androidOnlyCategory: 'Not available on iPhone — works on Android and Mac',
+  androidOnlyCategory: 'Not available on iPhone — works on other devices',
   iosCategoryNote:
-    'iPhone only supports {{category}}, using Apple’s own filter. The other categories apply to Android and Mac child devices.',
+    'iPhone only supports {{category}}, using Apple’s own filter. The other categories apply on other devices.',
   allowListTitle: 'Always allow',
   allowListSubtitle: 'Sites that stay reachable even when a category would block them.',
   allowListEmpty: 'No exceptions yet.',
@@ -98,6 +107,8 @@ export const webFilter = {
     'Everything except your allow list is refused. This applies to the whole device, so other apps lose their connections too.',
   allowListOnlyHintIos:
     'Safari and in-app browsers can only open the sites in your allow list.',
+  allowListOnlyHintExtension:
+    'Chrome can only open the sites in your allow list. Other browsers and apps are not affected.',
   allowListOnlyNeedsEntries: 'Add at least one allowed site before turning this on.',
   domainPlaceholder: 'example.com',
   addDomain: 'Add site',

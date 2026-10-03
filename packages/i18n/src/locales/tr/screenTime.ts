@@ -2,15 +2,16 @@ export const screenTime = {
   turnOnScreenTime: 'Ekran Süresi’ni aç',
   finishScreenTimeSetup: 'Ekran Süresi kurulumunu tamamla',
   screenTimeNeededForControls:
-    'Uygulama engelleme, Engellenen Saatler ve kilitleme bu cihazda Ekran Süresi gerektirir.',
+    'Engellenen Uygulamalar, Engellenen Saatler, Günlük sınır ve kilitleme bu cihazda Ekran Süresi gerektirir.',
   screenTimeNeededForLimits:
-    'Ekran Süresi olmadan kilitleme, Engellenen Saatler ve uygulama sınırları uygulanamaz.',
+    'Ekran Süresi olmadan kilitleme, Engellenen Saatler, Günlük sınır ve Engellenen Uygulamalar uygulanamaz.',
   screenTimeStepOpenKidGate: 'Bu çocuk cihazında KidGate’i açın.',
   screenTimeStepAllowUsage:
     'Durum ekranında Uygulama ve Web Sitesi Kullanımına İzin Ver’i seçin.',
   screenTimeStepTapAllow: 'Sorulduğunda İzin Ver’i seçin.',
   screenTimeStepReturnHereAuto: 'Buraya dönün — durum otomatik olarak güncellenir.',
-  screenTimeDeniedStepOpenSettings: 'Çocuk cihazında Ayarlar → KidGate’i açın.',
+  screenTimeDeniedStepOpenSettings: 'Çocuk cihazında Ayarlar’ı açın.',
+  screenTimeDeniedStepFindKidGate: 'Listede KidGate’i bulun.',
   screenTimeDeniedStepTurnOnRestrictions: 'Ekran Süresi’ni açın.',
   screenTimeDeniedStepOpenKidGateAgain: 'Çocuk cihazında KidGate’i yeniden açın.',
   screenTimeDeniedStepReturnWhenReady:
@@ -27,6 +28,12 @@ export const screenTime = {
   screenTimeBannerBodyDenied: '{{appName}} için Ayarlar’da Ekran Süresi açık olmalı.',
   screenTimeBannerBodyRequest:
     'Bu, ailenin bu cihazda uygulamaları kilitlemesine ve Engellenen Saatler ayarlamasına olanak tanır.',
+  screenTimeAuthPasscode:
+    'KidGate’in Ekran Süresi’ni kullanabilmesi için bu cihazda bir parola olmalı. Ayarlar’dan bir parola belirleyin, sonra tekrar deneyin.',
+  screenTimeAuthConflict:
+    'Bu cihazda Ekran Süresi’ni zaten başka bir uygulama yönetiyor. O uygulamayı kaldırın, sonra tekrar deneyin.',
+  screenTimeAuthRestricted:
+    'Bu cihazdaki bir kısıtlama KidGate’in Ekran Süresi’ni kullanmasını engelliyor. Bu cihazı yöneten kişiden kısıtlamayı kaldırmasını isteyin.',
   usageAccessBannerTitle: 'Kullanım Erişimi’ni aç',
   usageAccessBannerBody:
     'KidGate’in ekran süresini takip etmesi ve sınırları uygulaması için Kullanım Erişimi gerekir.',
@@ -38,6 +45,5 @@ export const screenTime = {
   minutesUsedStatus: '{{used}} / {{limit}} kullanıldı',
   usageUpdatesHint:
     'Ekran Süresi izleme etkinken kullanım birkaç dakikada bir güncellenir.',
-  dailyLimitNote: 'Günlük bir ekran süresi üst sınırı uygular.',
   dailyLimitMinutes: '{{limitMinutes}} dk',
 } as const;

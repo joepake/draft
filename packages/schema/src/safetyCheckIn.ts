@@ -23,6 +23,14 @@ export interface SafetyCheckIn {
    * silently getting less than they asked for.
    */
   photoSkipped?: boolean;
+  /**
+   * The `sosAlerts` document id, set when an SOS closed this while it was
+   * pending — the child's own close, or a parent acknowledging an SOS raised
+   * at or after this was asked for. `status` stays `missed`, so a console built
+   * before this field still reads the row as it always did; one that knows the
+   * field says the child asked for help, not "No response".
+   */
+  sosAlertId?: string;
   createdAt: string;
   respondedAt?: string;
 }

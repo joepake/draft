@@ -1,20 +1,11 @@
 export const leaderboard = {
   title: 'Sternetafel',
   thisWeek: 'Diese Woche',
-  resetsNote: 'Beginnt jeden Montag neu.',
+  resetsNoteAt: 'Beginnt jeden {{weekday}} um {{time}} neu.',
   rowA11y: '{{rank}}. {{name}}, {{count}} Sterne',
   settingsTitle: 'Sternetafel',
   settingsBody:
     'Deine Kinder sehen, wie viele Sterne jedes von ihnen diese Woche gesammelt hat.',
-  screenTimeTitle: 'Bildschirmzeit der Familie',
-  screenTimeSub: 'Wenigste Bildschirmzeit zuerst · diese Woche',
-  screenTimeRowA11y: '{{rank}}. {{name}}, {{duration}}',
-  screenTimeParentBadge: 'Elternteil',
-  screenTimeParentFallbackName: 'Elternteil',
-  screenTimeSettingsTitle: 'Bildschirmzeit der Familie',
-  screenTimeSettingsBody:
-    'Zeige deinen Kindern, wie viel Bildschirmzeit jedes von ihnen diese Woche genutzt hat. Aus, bis du es einschaltest.',
-  screenTimeNote: 'Zählt jedes Gerät einer Person. Beginnt jeden Montag neu.',
   childrenTitle: 'Kinder',
   manageAccessibility: 'Kinder und Geräte verwalten',
   addChild: 'Kind hinzufügen',

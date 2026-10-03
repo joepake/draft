@@ -6,6 +6,11 @@ export const errors = {
   invalidEmailOrPassword: 'Email hoặc mật khẩu không chính xác.',
   tooManyRequests: 'Bạn đã thử quá nhiều lần. Vui lòng chờ một lát rồi thử lại.',
   somethingWentWrong: 'Đã có lỗi xảy ra. Vui lòng thử lại.',
+  accountDisabled:
+    'Tài khoản này đã bị vô hiệu hóa. Vui lòng liên hệ bộ phận hỗ trợ KidGate để khôi phục.',
+  recentLoginRequired: 'Để bảo mật, vui lòng đăng nhập lại rồi thử lại thao tác này.',
+  accountExistsDifferentMethod:
+    'Email này đã có tài khoản với cách đăng nhập khác. Vui lòng đăng nhập bằng cách đó, rồi liên kết cách này trong Cài đặt.',
   unableToCreateAccount: 'Không thể tạo tài khoản. Vui lòng thử lại.',
   unableToSignIn: 'Không thể đăng nhập. Vui lòng thử lại.',
   unableToJoinFamilyAccount: 'Không thể tham gia tài khoản gia đình. Vui lòng thử lại.',
@@ -15,7 +20,7 @@ export const errors = {
     'Mã này không khớp. Hãy kiểm tra kỹ từng ký tự — hoặc lấy mã mới nếu mã đã tạo được một lúc.',
   unableToClaimChildPairing:
     'Không thể kết nối với thiết bị của trẻ. Vui lòng thử lại.',
-  unableToPollChildPairing: 'Không thể kiểm tra trạng thái ghép nối.',
+  unableToPollChildPairing: 'Không thể kiểm tra trạng thái ghép nối. Vui lòng thử lại.',
   unableToConfirmChildPairing: 'Không thể xác nhận ghép nối. Vui lòng thử lại.',
   unableToRejectChildPairing: 'Không thể từ chối ghép nối. Vui lòng thử lại.',
   photoCaptureCancelled: 'Đã hủy chụp ảnh.',
@@ -34,8 +39,6 @@ export const errors = {
   noNetworkConnection:
     'Không có kết nối mạng. Vui lòng kiểm tra Wi‑Fi hoặc dữ liệu di động rồi thử lại.',
   connectionFailedTitle: 'Kết nối không thành công',
-  connectionFailedBody:
-    'KidGate không thể kết nối. Vui lòng kiểm tra Wi‑Fi hoặc dữ liệu di động, sau đó chọn Kết nối lại.',
   reconnect: 'Kết nối lại',
   unableToUploadPhoto: 'Không thể tải ảnh lên. Vui lòng thử lại.',
   premiumSubscriptionRequired:
@@ -46,6 +49,7 @@ export const errors = {
   // src/services/api/client.ts — sửa thì sửa cả hai ngôn ngữ.
   notFamilyMember: 'Bạn không còn thuộc gia đình này. Hãy nhờ chủ gia đình mời lại.',
   familyNotCreated: 'Vui lòng tạo gia đình trước khi mời phụ huynh khác.',
+  parentLimitReached: 'Gia đình này đã có đủ số phụ huynh mà gói hiện tại cho phép.',
   childDeviceNotAllowed:
     'Đây là thiết bị của trẻ nên không thể thay đổi cài đặt gia đình.',
   deviceCredentialMissing:
@@ -69,7 +73,7 @@ export const errors = {
   joinRequestResolved: 'Yêu cầu tham gia này đã được phản hồi.',
   joinRequestExpired:
     'Yêu cầu tham gia đã hết hạn. Vui lòng đề nghị chủ gia đình gửi lời mời mới.',
-  timeRequestPendingExists: 'Bạn đang có một yêu cầu chờ phụ huynh phản hồi.',
+  timeRequestPendingExists: 'Con đã có một yêu cầu đang chờ bố mẹ trả lời rồi nhé.',
   timeRequestCooldown: 'Vui lòng chờ một lát trước khi gửi yêu cầu mới.',
   deviceClockOutOfRange:
     'Ngày giờ trên thiết bị này có vẻ không chính xác. Vui lòng mở Cài đặt → Ngày và giờ rồi bật đặt giờ tự động.',
@@ -88,6 +92,13 @@ export const errors = {
   leaveFamilyBeforeJoining:
     'Vui lòng rời khỏi gia đình hiện tại trước khi tham gia gia đình khác.',
   locationDailyLimitFree:
-    'Bản miễn phí đã dùng hết lượt xem vị trí hôm nay. Premium theo dõi vị trí trực tiếp.',
-  deviceLimitReached: 'Bạn đã đạt số thiết bị KidGate hỗ trợ cho một gia đình.',
+    'Bản miễn phí đã dùng hết lượt xem vị trí hôm nay. Vui lòng thử lại vào ngày mai — Premium theo dõi vị trí trực tiếp.',
+  deviceLimitReached:
+    'Gia đình này đã đạt số thiết bị tối đa KidGate hỗ trợ. Vui lòng gỡ một thiết bị không còn dùng rồi thử lại.',
+  rewardTaskLimitReached:
+    'Số nhiệm vụ đang hoạt động đã đạt mức tối đa cùng lúc. Hãy xóa bớt một nhiệm vụ hoặc chờ một nhiệm vụ hoàn thành, rồi thử lại.',
+  deviceNotPaired:
+    'Thiết bị này không còn được ghép nối với gia đình. Con hãy nhờ bố mẹ ghép nối lại nhé.',
+  bonusMinutesOutOfRange:
+    'Không thể cho thêm khoảng thời gian này trong một lần. Vui lòng chọn khoảng khác rồi thử lại.',
 };

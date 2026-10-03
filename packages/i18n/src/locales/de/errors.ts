@@ -7,6 +7,12 @@ export const errors = {
   invalidEmailOrPassword: 'Ungültige E-Mail-Adresse oder falsches Passwort.',
   tooManyRequests: 'Zu viele Versuche. Bitte versuche es später erneut.',
   somethingWentWrong: 'Etwas ist schiefgelaufen. Bitte versuche es erneut.',
+  accountDisabled:
+    'Dieses Konto wurde deaktiviert. Wende dich an den KidGate-Support, um es wiederherzustellen.',
+  recentLoginRequired:
+    'Melde dich zu deiner Sicherheit erneut an und versuche es dann noch einmal.',
+  accountExistsDifferentMethod:
+    'Für diese E-Mail-Adresse gibt es bereits ein Konto mit einer anderen Anmeldemethode. Melde dich auf diesem Weg an und verknüpfe diese Methode dann in den Einstellungen.',
   unableToCreateAccount:
     'Konto konnte nicht erstellt werden. Bitte versuche es erneut.',
   unableToSignIn: 'Anmeldung nicht möglich. Bitte versuche es erneut.',
@@ -19,7 +25,8 @@ export const errors = {
     'Dieser Code stimmt nicht. Prüfe die Zeichen genau – oder hole dir einen neuen Code, falls er schon älter ist.',
   unableToClaimChildPairing:
     'Das Kindergerät konnte nicht verbunden werden. Bitte versuche es erneut.',
-  unableToPollChildPairing: 'Der Kopplungsstatus konnte nicht überprüft werden.',
+  unableToPollChildPairing:
+    'Der Kopplungsstatus konnte nicht überprüft werden. Bitte versuche es erneut.',
   unableToConfirmChildPairing:
     'Diese Kopplung konnte nicht bestätigt werden. Bitte versuche es erneut.',
   unableToRejectChildPairing:
@@ -42,8 +49,6 @@ export const errors = {
   noNetworkConnection:
     'Keine Netzwerkverbindung. Bitte überprüfe WLAN oder mobile Daten und versuche es erneut.',
   connectionFailedTitle: 'Verbindung fehlgeschlagen',
-  connectionFailedBody:
-    'KidGate konnte keine Verbindung herstellen. Bitte überprüfe WLAN oder mobile Daten und wähle anschließend „Erneut verbinden“.',
   reconnect: 'Erneut verbinden',
   unableToUploadPhoto:
     'Das Foto konnte nicht hochgeladen werden. Bitte versuche es erneut.',
@@ -56,6 +61,8 @@ export const errors = {
     'Du gehörst nicht mehr zu dieser Familie. Frag den Familieninhaber, ob er dich erneut einlädt.',
   familyNotCreated:
     'Erstelle zuerst deine Familie und lade danach einen weiteren Elternteil ein.',
+  parentLimitReached:
+    'Diese Familie hat bereits so viele Elternteile, wie ihr Tarif erlaubt.',
   childDeviceNotAllowed:
     'Dies ist ein Kindergerät und kann daher die Familieneinstellungen nicht verwalten.',
   deviceCredentialMissing:
@@ -103,7 +110,13 @@ export const errors = {
   leaveFamilyBeforeJoining:
     'Bitte verlasse zuerst deine aktuelle Familie, bevor du einer anderen beitrittst.',
   locationDailyLimitFree:
-    'Der Gratis-Plan hat die heutigen Standortabfragen aufgebraucht. Premium zeigt den Standort live.',
+    'Der Gratis-Plan hat die heutigen Standortabfragen aufgebraucht. Versuche es morgen erneut – Premium zeigt den Standort live.',
   deviceLimitReached:
-    'Du hast die Anzahl der Geräte erreicht, die KidGate pro Familie abdeckt.',
+    'Diese Familie hat die Anzahl der Geräte erreicht, die KidGate abdeckt. Entferne ein Gerät, das du nicht mehr nutzt, und versuche es dann erneut.',
+  rewardTaskLimitReached:
+    'Es sind bereits so viele Aufgaben aktiv wie gleichzeitig erlaubt. Entferne eine oder warte, bis eine erledigt ist, und versuche es dann erneut.',
+  deviceNotPaired:
+    'Dieses Gerät ist nicht mehr mit deiner Familie gekoppelt. Bitte deine Eltern, es erneut zu koppeln.',
+  bonusMinutesOutOfRange:
+    'So viel zusätzliche Zeit kann nicht auf einmal vergeben werden. Wähle eine andere Menge und versuche es erneut.',
 };

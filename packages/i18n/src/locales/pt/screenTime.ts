@@ -2,15 +2,15 @@ export const screenTime = {
   turnOnScreenTime: 'Ativar o Tempo de Uso',
   finishScreenTimeSetup: 'Concluir a configuração do Tempo de Uso',
   screenTimeNeededForControls:
-    'Bloqueio de apps, Horários bloqueados e bloqueio exigem o Tempo de Uso neste dispositivo.',
+    'Os Apps bloqueados, os Horários bloqueados, o Limite diário e o bloqueio exigem o Tempo de Uso neste dispositivo.',
   screenTimeNeededForLimits:
-    'Sem o Tempo de Uso não é possível aplicar bloqueio, Horários bloqueados nem limites de apps.',
+    'Sem o Tempo de Uso não é possível aplicar o bloqueio, os Horários bloqueados, o Limite diário nem os Apps bloqueados.',
   screenTimeStepOpenKidGate: 'Abra o KidGate neste dispositivo da criança.',
   screenTimeStepAllowUsage: 'Na tela Status, selecione Permitir uso de apps e sites.',
   screenTimeStepTapAllow: 'Quando solicitado, selecione Permitir.',
   screenTimeStepReturnHereAuto: 'Volte aqui — o status é atualizado automaticamente.',
-  screenTimeDeniedStepOpenSettings:
-    'No dispositivo da criança, abra Ajustes → KidGate.',
+  screenTimeDeniedStepOpenSettings: 'No dispositivo da criança, abra Ajustes.',
+  screenTimeDeniedStepFindKidGate: 'Encontre o KidGate na lista.',
   screenTimeDeniedStepTurnOnRestrictions: 'Ative Tempo de Uso.',
   screenTimeDeniedStepOpenKidGateAgain:
     'Abra o KidGate novamente no dispositivo da criança.',
@@ -29,6 +29,12 @@ export const screenTime = {
     'O {{appName}} precisa do Tempo de Uso ativado nos Ajustes.',
   screenTimeBannerBodyRequest:
     'Isso permite que seus pais bloqueiem apps e definam Horários bloqueados neste dispositivo.',
+  screenTimeAuthPasscode:
+    'Este dispositivo precisa de um código para que o KidGate possa usar o Tempo de Uso. Defina um em Ajustes e tente novamente.',
+  screenTimeAuthConflict:
+    'Outro app já controla o Tempo de Uso neste dispositivo. Remova esse app e tente novamente.',
+  screenTimeAuthRestricted:
+    'Uma restrição neste dispositivo impede o KidGate de usar o Tempo de Uso. Peça a quem gerencia este dispositivo para removê-la.',
   usageAccessBannerTitle: 'Ativar o Acesso de uso',
   usageAccessBannerBody:
     'O KidGate precisa do Acesso de uso para acompanhar o tempo de tela e aplicar limites.',
@@ -40,6 +46,5 @@ export const screenTime = {
   minutesUsedStatus: '{{used}} / {{limit}} de uso',
   usageUpdatesHint:
     'O uso é atualizado a cada poucos minutos enquanto o monitoramento do Tempo de Uso está ativo.',
-  dailyLimitNote: 'Aplica um teto diário de tempo de tela.',
   dailyLimitMinutes: '{{limitMinutes}} min',
 } as const;

@@ -26,8 +26,9 @@ export const sos = {
   toastSent: 'تم إرسال SOS. من الأفضل البقاء في مكان آمن إن أمكن — تم إشعار والديك.',
   escapeGrantedTitle: 'تم إرسال SOS',
   escapeGrantedBody: 'تم إشعار والديك. سيبقى هذا الجهاز مقفلاً.',
-  toastSentWithoutPhoto:
-    'تم إرسال SOS، لكن بدون صورة. يرجى السماح بالوصول إلى الكاميرا من الإعدادات والمحاولة مرة أخرى إن أمكن.',
+  toastSentWithoutPhoto: 'تم إرسال SOS بدون صورة.',
+  toastSentWithoutPhotoCamera:
+    'تم إرسال SOS بدون صورة. لإضافة صورة في المرة القادمة، يمكنك السماح بالوصول إلى الكاميرا من الإعدادات.',
   toastSendFailed: 'تعذر إرسال SOS. يرجى المحاولة مرة أخرى، أو الاتصال بشخص تثق به.',
   sendFailedBannerTitle: 'لم يتم إرسال آخر تنبيه SOS الخاص بك',
   sendFailedBannerBody:
@@ -35,11 +36,13 @@ export const sos = {
   headerTitle: 'طوارئ SOS',
   headerSubtitle: 'استخدم هذا عندما تشعر بعدم الأمان أو تحتاج إلى مساعدة فورية.',
   infoInstantAlertLabel: 'تنبيه فوري',
-  infoInstantAlertDetail: 'يتلقى والداك إشعارًا عاجلاً على الفور.',
+  infoInstantAlertDetail: 'يرسل KidGate إلى والديك إشعارًا عاجلًا على الفور.',
   infoYourLocationLabel: 'موقعك',
   infoYourLocationDetail: 'تتم مشاركته مع والديك ليعرفا مكانك.',
   infoQuickSelfieLabel: 'صورة سريعة',
   infoQuickSelfieDetail: 'تُضاف بعد إرسال التنبيه، إذا كانت الكاميرا متاحة بالفعل.',
+  infoQuickSelfieDetailPhone:
+    'بعد إرسال التنبيه، تُفتح الكاميرا لإضافة صورة. ويمكنك تخطي ذلك.',
   simulatorTipTitle: 'نصيحة للمحاكي',
   simulatorTipBody:
     'فعّل الكاميرا من قائمة المحاكي (Front Camera) قبل إرسال SOS حتى يمكن التقاط صورة تجريبية.',
@@ -49,6 +52,7 @@ export const sos = {
   whatParentsReceive: 'ما الذي يتلقاه الوالدان',
   holdToSendFiveSeconds: 'اضغط مطولاً للإرسال · 5 ثوانٍ',
   keepHolding: 'استمر بالضغط',
+  secondsLeft: '{{seconds}} ث',
   pressAndHoldToCancel: 'اضغط مطولاً — ارفع إصبعك مبكرًا للإلغاء',
   holdToSendSosAccessibility: 'اضغط مطولاً لمدة 5 ثوانٍ لإرسال SOS',
   sosEmergencyAccessibility: 'طوارئ SOS',
@@ -72,7 +76,8 @@ export const sos = {
   muteAlarm: 'كتم هذا التنبيه',
   alertCount: '{{current}} من {{total}}',
   trustedContactsTitle: 'جهات اتصال موثوقة',
-  trustedContactsSubtitle: 'تصلهم رسالة مع كل SOS وآخر موقع معروف',
+  trustedContactsSubtitle:
+    'تصلهم رسالة مع تنبيه SOS وآخر موقع معروف، بحد أقصى بضعة تنبيهات في الساعة',
   trustedContactsRowSubtitle: 'أشخاص تصلهم رسالة عندما يرسل طفلك SOS',
   trustedContactsListSection: 'من يتلقى SOS',
   trustedContactsEmpty: 'لا أحد بعد. أضف جدًا أو جارًا أو صديقًا للعائلة.',

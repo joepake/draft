@@ -1,18 +1,21 @@
 export const messageMonitoring = {
   actionTitle: 'Cảnh báo tin nhắn',
   actionDescription: 'Nhận cảnh báo khi tin nhắn có từ ngữ đáng lo ngại',
-  title: 'Cảnh báo nội dung',
-  heroTitle: 'Nhắn tin an toàn',
+  title: 'Cảnh báo tin nhắn',
+  heroTitle: 'Cảnh báo tin nhắn',
   heroSubtitle:
-    'KidGate phát hiện từ ngữ đáng lo ngại trong tin nhắn của con và báo cho bạn. Không hiển thị nội dung tin nhắn — chỉ từ bị đánh dấu.',
-  androidOnlyNote: 'Chỉ có trên thiết bị Android.',
+    'KidGate phát hiện từ ngữ đáng lo ngại trong tin nhắn và nội dung tìm kiếm của con, rồi báo cho bạn. Bạn chỉ thấy từ hoặc cụm từ bị đánh dấu, không bao giờ thấy nội dung tin nhắn hay nội dung tìm kiếm.',
+  androidOnlyNote:
+    'Chỉ có thể kiểm tra tin nhắn trên thiết bị Android. Nội dung tìm kiếm còn có thể được kiểm tra qua tiện ích Chrome.',
+  searchOnlyNote:
+    'Ở đây chỉ có thể kiểm tra nội dung tìm kiếm. Tin nhắn chỉ kiểm tra được trên thiết bị Android.',
   recentTitle: 'Cảnh báo gần đây',
   emptyTitle: 'Chưa có cảnh báo',
   emptySubtitle: 'Chưa phát hiện từ ngữ đáng lo ngại nào trong tin nhắn.',
   emptySubtitleNotWatching:
     'Tin nhắn hiện không được kiểm tra, nên danh sách này sẽ trống dù có chuyện gì xảy ra.',
-  flaggedTerm: 'Từ bị đánh dấu: “{{term}}”',
-  flaggedTermPrefix: 'Từ bị đánh dấu: “',
+  flaggedTerm: 'Từ ngữ bị đánh dấu: “{{term}}”',
+  flaggedTermPrefix: 'Từ ngữ bị đánh dấu: “',
   flaggedTermSuffix: '”',
   flaggedTermMeaning: 'Nghĩa: {{gloss}}',
   aiConfirmed: 'Được AI xác nhận',
@@ -26,14 +29,14 @@ export const messageMonitoring = {
   categoryBullying: 'Bắt nạt',
   categoryDrugs: 'Ma túy hoặc chất cấm',
   categoryAlcohol: 'Rượu bia',
-  categoryTobacco: 'Thuốc lá',
+  categoryTobacco: 'Thuốc lá hoặc thuốc lá điện tử',
   categoryGambling: 'Cờ bạc',
   categoryProfanity: 'Ngôn từ thô tục',
   categoryUnknown: 'Tin nhắn bị đánh dấu',
   guidanceToggle: 'Nên làm gì tiếp',
   guidanceHide: 'Ẩn',
   guidanceFooter:
-    'KidGate không lưu nội dung tin nhắn — chỉ lưu từ này. Những gì hơn thế phải do con kể cho bạn.',
+    'KidGate không lưu nội dung tin nhắn — chỉ lưu từ hoặc cụm từ này. Những gì hơn thế phải do con kể cho bạn.',
   guidance: {
     predator:
       'Dụ dỗ thường bắt đầu rất thân thiện, từ một người mà con tin là bạn cùng tuổi. Hãy hỏi dạo này con hay nói chuyện với ai và hai bên biết nhau thế nào, trước khi nhắc đến cảnh báo — con thấy như bị bắt lỗi thì sẽ im lặng.',
@@ -56,20 +59,22 @@ export const messageMonitoring = {
     profanity:
       'Ngôn từ thô tục tự nó rất phổ biến và thường không nói gì về an toàn của con. Nếu những cảnh báo này chỉ gây ồn cho gia đình bạn, hãy tắt “Cảnh báo cả ngôn từ tục tĩu” trong phần cài đặt ở màn hình này.',
     unknown:
-      'Cảnh báo này đến từ một thiết bị hoặc danh sách từ mà bản này không còn gọi tên. Từ bị đánh dấu ở trên là thứ cần hỏi; không có gì khác về tin nhắn được lưu lại.',
+      'Cảnh báo này đến từ một thiết bị hoặc danh sách từ mà bản này không còn gọi tên. Từ hoặc cụm từ bị đánh dấu ở trên là thứ cần hỏi; không có gì khác về tin nhắn được lưu lại.',
   },
-  setupTitle: 'Nhắn tin an toàn',
+  setupTitle: 'Cảnh báo tin nhắn',
   setupBody:
-    'Theo dõi tin nhắn để phát hiện từ ngữ đáng lo ngại. KidGate không bao giờ hiển thị nội dung tin nhắn — chỉ cảnh báo khi có điều đáng lo.',
+    'Khi bố mẹ bật tính năng này, KidGate kiểm tra tin nhắn con nhận được để tìm các từ ngữ cảnh báo, ngay trên điện thoại này. Bố mẹ chỉ thấy từ hoặc cụm từ bị đánh dấu, không bao giờ thấy tin nhắn của con. Nếu bố mẹ bật thêm tính năng Phân tích tin nhắn bằng AI, một tin nhắn chưa rõ ràng có thể được gửi tới dịch vụ AI để kiểm tra, sau khi đã xóa email, số điện thoại, liên kết và @tên người dùng.',
   setupGrant: 'Cho phép truy cập thông báo',
-  setupEnable: 'Nhắn tin an toàn',
+  setupEnable: 'Cảnh báo tin nhắn',
   controlledByParentHint:
-    'Bật hoặc tắt từ ứng dụng KidGate trên máy của bố mẹ, không phải ở đây.',
+    'Bật hoặc tắt từ ứng dụng KidGate của bố mẹ hoặc từ bảng điều khiển web, không phải ở đây.',
   parentIncomingLabel: 'Quét tin nhắn con nhận',
   parentOutgoingLabel: 'Quét tin nhắn con gõ',
   parentSearchLabel: 'Quét nội dung con tìm kiếm',
   parentSearchHint:
-    'Trình duyệt và YouTube. Chỉ từ bị đánh dấu được báo, không bao giờ báo nội dung tìm kiếm.',
+    'Trình duyệt và YouTube. Chỉ từ hoặc cụm từ bị đánh dấu được báo, không bao giờ báo nội dung tìm kiếm.',
+  parentSearchHintNotGranted:
+    'Cần cùng quyền với mục Quét tin nhắn con gõ. Hãy bật Quét tin nhắn con nhận, rồi cho phép trên thiết bị của con.',
   parentToggleHintGranted: 'Trên máy này.',
   parentToggleHintNotGranted:
     'Máy này chưa cấp quyền — mở KidGate trên máy của con để cấp.',
@@ -77,14 +82,14 @@ export const messageMonitoring = {
   parentProfanityHint:
     'Mặc định tắt — chửi thề thông thường rất phổ biến, bật lên sẽ khiến những từ này cũng thành cảnh báo.',
   parentToggleSaveFailed: 'Không lưu được thay đổi.',
-  settingsTitle: 'Cài đặt cảnh báo tin nhắn',
+  settingsTitle: 'Cài đặt Cảnh báo tin nhắn',
   consentTitle: 'Phân tích tin nhắn bằng AI',
   consentBody:
-    'Khi bật, những tin nhắn chưa rõ có đáng lo hay không sẽ được gửi — đã xóa tên, số và liên kết — tới dịch vụ AI để xác nhận có thật sự đáng lo trước khi báo cho bạn. Từ nguy cơ cao vẫn báo ngay mà không gửi gì.',
+    'Khi bật, tin nhắn có từ bị gắn cờ nhưng có thể vô hại, hoặc chỉ khớp gần đúng, sẽ được gửi tới dịch vụ AI để xác nhận có thật sự đáng lo trước khi báo cho bạn. Email, số điện thoại, liên kết và @tên người dùng được xóa trước; tên người và phần còn lại của tin nhắn thì không. Trường hợp khớp rõ ràng sẽ báo ngay mà không gửi gì.',
   consentEnable: 'Bật phân tích AI',
   consentConfirmTitle: 'Bật phân tích tin nhắn bằng AI?',
   consentConfirmBody:
-    'Những tin nhắn chưa rõ có đáng lo hay không, đã xóa thông tin cá nhân, sẽ được gửi tới dịch vụ AI để kiểm tra. Bạn xác nhận đồng ý với việc xử lý này.',
+    'Những tin nhắn chưa rõ có đáng lo hay không sẽ được gửi tới dịch vụ AI để kiểm tra, sau khi đã xóa email, số điện thoại, liên kết và @tên người dùng. Tên người và phần còn lại của tin nhắn không bị xóa. Bạn xác nhận đồng ý với việc xử lý này.',
   consentAgree: 'Tôi đồng ý',
   outgoingTitle: 'Tin nhắn con viết',
   outgoingBody:
@@ -104,30 +109,33 @@ export const messageMonitoring = {
     'Android đã tắt mục này. Hãy cấp lại để tiếp tục kiểm tra những gì con viết.',
   outgoingDisclosureTitle: 'Trước khi con cho phép',
   outgoingDisclosureBody:
-    'KidGate chỉ đọc những gì con gõ trong ứng dụng nhắn tin — không đọc trong bất kỳ ứng dụng nào khác, và không bao giờ đọc ô mật khẩu. Việc tìm từ ngữ cảnh báo diễn ra ngay trên điện thoại này. Tin nhắn của con không được gửi đi đâu cả; chỉ từ bị đánh dấu mới đến bố mẹ.',
+    'KidGate kiểm tra những gì con gõ trong ứng dụng nhắn tin để tìm cùng các từ ngữ cảnh báo đó. Nếu bố mẹ bật cảnh báo tìm kiếm, KidGate cũng kiểm tra những gì con gõ trên trình duyệt, YouTube và ứng dụng Google. KidGate không bao giờ đọc ô mật khẩu. Việc kiểm tra diễn ra ngay trên điện thoại này: những gì con gõ không được gửi đi đâu cả, và chỉ từ hoặc cụm từ bị đánh dấu mới được gửi tới bố mẹ.',
   outgoingRestrictedHint:
     'Nếu nút gạt bị mờ, hãy mở Cài đặt › Ứng dụng › KidGate, nhấn menu ⋮ rồi chọn “Cho phép cài đặt bị hạn chế”, sau đó quay lại.',
   notice: {
     revokedTitle: 'Việc kiểm tra tin nhắn đã dừng',
     revokedBody:
       'Android đã tắt một quyền KidGate cần, nên tin nhắn không còn được kiểm tra. Hãy mở KidGate trên thiết bị của con và cấp lại quyền.',
-    offTitle: 'Nhắn tin an toàn chưa được bật',
+    offTitle: 'Tính năng Cảnh báo tin nhắn chưa được bật',
     offBody:
       'Thiết bị của con chưa kiểm tra gì cả, nên sẽ không có cảnh báo nào xuất hiện ở đây. Hãy mở KidGate trên thiết bị của con để thiết lập.',
+    switchedOffBody:
+      'Thiết bị của con chưa kiểm tra gì cả, nên sẽ không có cảnh báo nào xuất hiện ở đây. Hãy bật “Quét tin nhắn con nhận” trong phần cài đặt ở màn hình này.',
     pendingTitle: 'Đang chờ thiết bị của con áp dụng',
     pendingBody:
       'Bạn đã bật mục này. Thiết bị của con sẽ nhận thay đổi ở lần kết nối tiếp theo, thường trong vài phút — nhanh hơn nếu máy đang mở. Bạn không cần làm gì thêm.',
     unknownTitle: 'Đang chờ thiết bị của con',
     unknownBody:
-      'Thiết bị này chưa báo về việc nhắn tin an toàn có đang chạy hay không, nên danh sách trống chưa nói lên điều gì. Thông tin sẽ cập nhật ở lần kết nối tiếp theo.',
+      'Thiết bị này chưa báo tính năng Cảnh báo tin nhắn có đang chạy hay không, nên danh sách trống chưa nói lên điều gì. Thông tin sẽ cập nhật ở lần kết nối tiếp theo.',
     outgoingAvailableTitle: 'Kiểm tra cả những gì con viết',
     outgoingAvailableBody:
       'Tin nhắn con nhận được đang được kiểm tra. KidGate cũng có thể kiểm tra những gì con gõ trong ứng dụng nhắn tin — bắt nạt và tự làm hại bản thân xuất hiện ở đó nhiều hơn hẳn. Hãy thiết lập trên thiết bị của con.',
+    outgoingSwitchedOffBody:
+      'Tin nhắn con nhận được đang được kiểm tra. KidGate cũng có thể kiểm tra những gì con gõ trong ứng dụng nhắn tin — bắt nạt và tự làm hại bản thân xuất hiện ở đó nhiều hơn hẳn. Hãy bật “Quét tin nhắn con gõ” trong phần cài đặt ở màn hình này.',
   },
   languagesLabel: 'Ngôn ngữ được quét',
   languagesHint:
     'Thiết bị sẽ tìm từ đáng lo trong những ngôn ngữ này. Chọn tối đa {{max}}.',
   languagesDefaultHint: 'Mặc định theo ngôn ngữ của thiết bị.',
-  setupStepFindKidGate:
-    'Tìm KidGate trong danh sách quyền truy cập thông báo rồi bật. KidGate có thể hiện hai lần — mục còn lại là cảnh báo cuộc gọi đêm, nên nếu quay lại mà bước này vẫn chưa xong thì bật mục kia.',
+  setupStepFindKidGate: 'Tìm KidGate trong danh sách quyền truy cập thông báo rồi bật.',
 } as const;

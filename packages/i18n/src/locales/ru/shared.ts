@@ -58,6 +58,4 @@ export const shared = {
   toastRemoveDeviceFailed: 'Не удалось удалить устройство. Попробуйте снова.',
   unableToOpenMaps: 'Не удалось открыть Карты. Повторите попытку.',
   unableToSignOut: 'Не удалось выйти. Повторите попытку.',
-  pushNotificationNote:
-    'Родители и дети получают push-уведомления о командах и запросах времени.',
 } as const;

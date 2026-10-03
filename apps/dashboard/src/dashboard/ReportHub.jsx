@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import Icon from '@kidgate/web-ui/Icon';
+import { getLocaleTag } from '@kidgate/i18n/web';
 import { supportsScreenTime } from '@kidgate/core/domain/controlSupport';
-import { localDayKey } from '@kidgate/core/domain/weeklyReportSchedule';
 import { reportBarLabels } from '@kidgate/core/domain/reportCopy';
 import {
   buildChildReportRows,
@@ -14,6 +14,7 @@ import {
 import ChildInitial from './ChildInitial.jsx';
 import { deviceIconName } from './deviceIcon.js';
 import { formatMinutes } from './charts.jsx';
+import { useReaderToday, zonesOf } from './useTodayKey.js';
 
 /**
  * The Reports landing — the web half of `apps/mobile`'s `ReportsScreen`.
@@ -86,18 +87,15 @@ export default function ReportHub({
   onOpenDevice,
 }) {
   /*
-   * The viewer's own midnight, the way every day-keyed reading on this surface
-   * resolves it — a device stamps `usageDate` in its local day, and a parent
-   * reading "today" means theirs.
+   * A device stamps `usageDate` on its own calendar, so each is judged on that
+   * device's today when it published a zone and on the viewer's otherwise
+   * (`reportHub.usageTodayKey`) — re-keyed when any of those days rolls over.
    */
-  const todayKey = useMemo(() => {
-    const now = Date.now();
-    return localDayKey(now, -new Date(now).getTimezoneOffset());
-  }, []);
+  const usageToday = useReaderToday(zonesOf(devices));
 
   const byDevice = useMemo(
-    () => foldMinutesToday(devices, todayKey),
-    [devices, todayKey],
+    () => foldMinutesToday(devices, usageToday),
+    [devices, usageToday],
   );
   const todayTotal = useMemo(() => sumMinutesToday(byDevice), [byDevice]);
   const dailyAverage = useMemo(() => resolveDailyAverage(latest, Date.now()), [latest]);
@@ -134,7 +132,7 @@ export default function ReportHub({
               t: appT,
               formatDuration: formatMinutes,
               formatDay: dayKey =>
-                new Date(`${dayKey}T00:00:00`).toLocaleDateString(undefined, {
+                new Date(`${dayKey}T00:00:00`).toLocaleDateString(getLocaleTag(), {
                   day: 'numeric',
                   month: 'short',
                 }),

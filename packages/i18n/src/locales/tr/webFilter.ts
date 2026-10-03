@@ -1,7 +1,7 @@
 export const webFilter = {
   title: 'Web filtresi',
   fallbackDeviceName: 'Çocuk cihazı',
-  appliesToAll: '{{name}} adlı çocuğun {{count}} cihazının tümüne uygulanır',
+  appliesToAll: '{{name}} adlı çocuğun tüm cihazlarına uygulanır ({{count}} cihaz)',
   coverageLine: '{{total}} cihazın {{enforcing}} tanesinde etkin',
   mergeNotice:
     '{{name}} adlı çocuğun cihazlarında farklı web filtresi ayarları vardı. Burada kaydetmek, daha katı seçeneğe göre birleştirilmiş tek bir ayarı tümüne uygular.',
@@ -50,9 +50,9 @@ export const webFilter = {
     'Onaylandıktan sonra çocuğun Mac’i filtreyi etkin gösterir. Orada kapatılırsa, geri yüklemek için KidGate’i yeniden açın.',
   infoLine4Macos:
     'Filtre site adlarını okur, ancak modern tarayıcılar ziyaretlerin yaklaşık yarısında bunu gizler — bu siteler kategorilerinize göre denetlenmez. Yine de filtre, çocukların bu yolla ulaştığı çoğu siteyi engellemeye devam eder.',
-  privateDnsBannerTitle: 'Özel DNS’i kapatın',
+  privateDnsBannerTitle: 'Özel DNS’i kapat',
   privateDnsBannerBody:
-    'Özel DNS açık olduğundan web filtresi atlanabilir. Filtrenin çalışması için kapatın.',
+    'Özel DNS açık olduğundan web filtresi atlanabilir. Filtrenin çalışması için kapat.',
   privateDnsBannerButton: 'DNS ayarlarını aç',
   vpnConsentBannerTitle: 'Web filtresi VPN’ini geri getir',
   vpnConsentBannerBody:
@@ -64,9 +64,13 @@ export const webFilter = {
 
   heroSubtitleWindows:
     'Çocuğun bilgisayarında KidGate’in kendi çözümleyicisini çalıştırarak bilinen uygunsuz siteleri her tarayıcıda engeller.',
+  heroSubtitleExtension:
+    'Bilinen uygunsuz siteleri o tarayıcıda engellemek için çocuğun bilgisayarındaki Chrome’da KidGate uzantısını çalıştırır.',
 
   toggleHintWindows:
     'Bilgisayarda onaylanacak bir şey yok. KidGate’in arka plan hizmeti filtreyi birkaç saniye içinde açar.',
+  toggleHintExtension:
+    'Onaylanacak bir şey yok. Filtre yalnızca Chrome’da çalışır, diğer tarayıcılarda veya uygulamalarda çalışmaz.',
 
   infoLine1Windows:
     'KidGate bilgisayarda, hangi sitelerin sorgulandığını denetleyen ve kategorilerinizdekileri engelleyen bir çözümleyici çalıştırır.',
@@ -79,19 +83,23 @@ export const webFilter = {
 
   infoLine4Windows:
     'Filtre yalnızca site adlarını okur. Sayfanın içini göremez ve az önce sorgulanan bir site birkaç dakika daha açılabilir.',
+  infoLine1Extension:
+    'KidGate uzantısı her siteyi Chrome açmadan önce kontrol eder ve seçtiğiniz kategorilerdeki siteleri engeller.',
+  infoLine2Extension:
+    'Yalnızca Chrome, KidGate’in yüklü olduğu profilde filtrelenir. Bilgisayardaki diğer tarayıcılar ve uygulamalar filtrelenmez.',
+  infoLine3Extension:
+    'Gizli pencereler yalnızca uzantı için “Gizli modda izin ver” açıksa filtrelenir. Misafir pencereleri filtrelenmez.',
+  infoLine4Extension:
+    'Engellenen bir sayfadan çocuğunuz siteye izin vermenizi isteyebilir. Uzantıyı kaldırmak veya kapatmak filtreyi durdurur.',
 
   windowsFilterNote: 'Windows’ta KidGate’in kendi çözümleyicisini kullanır',
-  webFilteringNote:
-    'iOS, Ekran Süresi yetişkin filtresini kullanır. Android, Mac ve Windows ise KidGate’in kendi engel listesini kullanır.',
-  safeSearchAlertsNote:
-    'Safari arama terimlerini paylaşmaz; anahtar kelime uyarıları yönetilen güvenli bir tarayıcı gerektirir.',
-  webHistoryNote: 'Filtreli bir tarayıcı veya DNS/VPN tarzı raporlama gerektirir.',
+  extensionFilterNote: 'Chrome’da KidGate uzantısını kullanır',
   categoriesTitle: 'Neler engellensin',
   categoriesSubtitle:
     'KidGate kendi alan adı listelerini kullanır. Çocukların gerçekten ulaştığı siteleri kapsar, tüm web’i değil — aşağıdaki listelerle birlikte kullanın.',
-  androidOnlyCategory: 'iPhone’da kullanılamaz — Android ve Mac’te çalışır',
+  androidOnlyCategory: 'iPhone’da kullanılamaz — diğer cihazlarda çalışır',
   iosCategoryNote:
-    'iPhone, Apple’ın kendi filtresiyle yalnızca {{category}} kategorisini destekler. Diğer kategoriler Android ve Mac çocuk cihazları için geçerlidir.',
+    'iPhone, Apple’ın kendi filtresiyle yalnızca {{category}} kategorisini destekler. Diğer kategoriler diğer cihazlarda geçerlidir.',
   allowListTitle: 'Her zaman izin ver',
   allowListSubtitle: 'Bir kategori engelleyecek olsa bile erişilebilir kalan siteler.',
   allowListEmpty: 'Henüz istisna yok.',
@@ -105,6 +113,8 @@ export const webFilter = {
     'İzin listenizin dışındaki her şey reddedilir. DNS katmanında çalışır, bu yüzden diğer uygulamalar da bağlantısını kaybeder.',
   allowListOnlyHintIos:
     'Safari ve uygulama içi tarayıcılar yalnızca listenizdeki siteleri açabilir.',
+  allowListOnlyHintExtension:
+    'Chrome yalnızca izin listenizdeki siteleri açabilir. Diğer tarayıcılar ve uygulamalar etkilenmez.',
   allowListOnlyNeedsEntries: 'Açmadan önce en az bir izinli site ekleyin.',
   domainPlaceholder: 'ornek.com',
   addDomain: 'Site ekle',
@@ -203,9 +213,9 @@ export const webFilter = {
     '{{domain}} {{deviceName}} cihazında engelli kalmaya devam ediyor.',
   siteRequestReceived: 'Site isteği',
   siteRequestReceivedDescription: '{{deviceName}} {{domain}} adresini açmak istiyor.',
-  privateDnsStep1: 'Bu cihazda Ayarlar’ı açın.',
-  privateDnsStep2: 'Ağ ve internet’i seçin.',
-  privateDnsStep3: 'Özel DNS’i açın ve Kapalı’yı seçin.',
+  privateDnsStep1: 'Bu cihazda Ayarlar’ı aç.',
+  privateDnsStep2: 'Ağ ve internet’i seç.',
+  privateDnsStep3: 'Özel DNS’i aç ve Kapalı’yı seç.',
   vpnConsentStepAllow:
-    'Android’in VPN isteğinde Tamam’ı seçin. Filtre çalışırken durum çubuğunda anahtar simgesi kalır.',
+    'Android’in VPN isteğinde Tamam’ı seç. Filtre çalışırken durum çubuğunda anahtar simgesi kalır.',
 } as const;

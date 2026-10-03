@@ -7411,6 +7411,23 @@ span.chip {
   margin-top: 0.1rem;
 }
 
+/* KidGate's own hold (`dashboard/OperatorHoldBanner.jsx`): this banner's
+   ground and copy, measured above, with the glyph and edge in the error tone.
+   A block, not a button — the appeal inside it is the control, so it takes no
+   raised hover. */
+.parked-banner.hold-banner {
+  border-color: color-mix(in srgb, var(--kg-errorStrong) 35%, transparent);
+}
+
+.parked-banner.hold-banner:hover {
+  background: var(--kg-warningSoft);
+  box-shadow: var(--card-lift);
+}
+
+.parked-banner.hold-banner > .icon:first-child {
+  color: var(--kg-errorStrong);
+}
+
 .parked-banner > .icon:last-child {
   color: var(--muted);
   margin-top: 0.15rem;

@@ -54,20 +54,10 @@ export const placeAlerts = {
     '「{{name}}」と同じ地点です。地図をドラッグしてピンを移動してください。',
   overlapWarning:
     '「{{name}}」は {{meters}} m 先にあり、その範囲がここまで届いています。デバイスが両方に入っている間は、近いほうだけが通知します。このまま保存するにはもう一度保存してください。',
-  copyTitle: '他の子どもにも追加しますか？',
-  copyMessage:
-    'この家族の他の{{count}}台の子どものデバイスにも「{{name}}」をコピーしますか？',
-  copyMessage_one: 'この家族の他の子どものデバイスにも「{{name}}」をコピーしますか？',
-  copyConfirm: 'コピー',
-  copyDoneToast: '{{count}}台のデバイスにコピーしました。',
-  copyDoneToast_one: '{{count}}台のデバイスにコピーしました。',
-  copySkippedToast: '他の子どもはすでにこの場所を登録済みか、上限に達しています。',
   savedToast: '場所を保存しました。',
   updatedToast: '場所を更新しました。',
   removedToast: '場所を削除しました。',
   saveFailedToast: '保存できませんでした。もう一度お試しください。',
-  enteredLabel: '到着',
-  exitedLabel: '出発',
   footerNote:
     '位置情報が同期されるたびに確認されます — 常にバックグラウンドで動作するわけではありません。',
 } as const;

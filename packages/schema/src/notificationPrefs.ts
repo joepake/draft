@@ -10,6 +10,11 @@
  *
  * Per device, not per account: a parent with a phone and a tablet mutes the
  * tablet and keeps the phone loud, and the FCM token is per device anyway.
+ *
+ * `billing` is the trial's two win-back offers (`scheduled/trialLifecycle.js`)
+ * and nothing else. The notices that a trial or plan is ending carry no key
+ * and cannot be muted — silencing those strands a parent on a plan that ended
+ * without a word.
  */
 export const ALERT_PREF_KEYS = [
   'appActivity',
@@ -22,6 +27,7 @@ export const ALERT_PREF_KEYS = [
   'weeklyDigest',
   'anomalyAlerts',
   'messageAlerts',
+  'billing',
 ] as const;
 
 export type AlertPrefKey = (typeof ALERT_PREF_KEYS)[number];

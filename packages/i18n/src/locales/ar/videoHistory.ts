@@ -37,6 +37,8 @@ export const videoHistory = {
   heroTopChannel: 'الأكثر مشاهدة',
   readerLayoutChanged:
     'لا يتم تسجيل مقاطع Shorts على هذا الجهاز حاليًا — تغيّر تطبيق YouTube ويحتاج KidGate إلى تحديث. لا تزال الفيديوهات الأخرى تُسجَّل.',
+  grantNeeded:
+    'لم يبدأ تسجيل الفيديوهات بعد: يحتاج KidGate إلى الوصول إلى الإشعارات على هاتف طفلك. على ذلك الهاتف، افتح الإعدادات في KidGate، واختر «إلغاء القفل برمز PIN الوالدين»، ثم «السماح بالوصول إلى الإشعارات» ضمن «تنبيهات الرسائل».',
   openAction: 'فتح على YouTube',
   searchAction: 'ابحث عن هذا الفيديو على YouTube',
   openFailed: 'تعذّر فتح YouTube.',

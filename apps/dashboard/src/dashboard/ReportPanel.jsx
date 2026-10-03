@@ -346,8 +346,8 @@ export default function ReportPanel({
 
         {view.children.length > 0 && (
           <section className="report-children">
-            <h3>{t('report.childrenTitle')}</h3>
-            <p className="hint">{t('report.childrenNote')}</p>
+            <h3>{view.childrenHeading.title}</h3>
+            <p className="hint">{view.childrenHeading.note}</p>
             <div className="report-table-wrap">
               <table className="report-table">
                 <thead>

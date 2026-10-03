@@ -2,15 +2,16 @@ export const screenTime = {
   turnOnScreenTime: 'स्क्रीन टाइम चालू करें',
   finishScreenTimeSetup: 'स्क्रीन टाइम सेटअप पूरा करें',
   screenTimeNeededForControls:
-    'ऐप ब्लॉकिंग, ब्लॉक किए गए घंटों और लॉकिंग के लिए इस डिवाइस पर स्क्रीन टाइम चाहिए।',
+    'ब्लॉक किए गए ऐप्स, ब्लॉक किए गए समय, दैनिक सीमा और लॉकिंग के लिए इस डिवाइस पर स्क्रीन टाइम ज़रूरी है।',
   screenTimeNeededForLimits:
-    'स्क्रीन टाइम के बिना लॉकिंग, ब्लॉक किए गए घंटे और ऐप सीमाएँ लागू नहीं हो सकतीं।',
+    'स्क्रीन टाइम के बिना लॉकिंग, ब्लॉक किए गए समय, दैनिक सीमा और ब्लॉक किए गए ऐप्स लागू नहीं हो सकते।',
   screenTimeStepOpenKidGate: 'बच्चे के इस डिवाइस पर KidGate खोलें।',
   screenTimeStepAllowUsage:
     'स्थिति स्क्रीन पर, ऐप और वेबसाइट उपयोग की अनुमति दें चुनें।',
   screenTimeStepTapAllow: 'पूछे जाने पर अनुमति दें चुनें।',
   screenTimeStepReturnHereAuto: 'यहाँ लौटें — स्थिति अपने आप अपडेट हो जाती है।',
-  screenTimeDeniedStepOpenSettings: 'बच्चे के डिवाइस पर सेटिंग्स → KidGate खोलें।',
+  screenTimeDeniedStepOpenSettings: 'बच्चे के डिवाइस पर सेटिंग्स खोलें।',
+  screenTimeDeniedStepFindKidGate: 'सूची में KidGate ढूँढें।',
   screenTimeDeniedStepTurnOnRestrictions: 'स्क्रीन टाइम चालू करें।',
   screenTimeDeniedStepOpenKidGateAgain: 'बच्चे के डिवाइस पर KidGate दोबारा खोलें।',
   screenTimeDeniedStepReturnWhenReady:
@@ -27,6 +28,12 @@ export const screenTime = {
     '{{appName}} के लिए सेटिंग्स में स्क्रीन टाइम चालू होना ज़रूरी है।',
   screenTimeBannerBodyRequest:
     'इससे आपके माता-पिता इस डिवाइस पर ऐप लॉक कर सकते हैं और ब्लॉक किए गए घंटे सेट कर सकते हैं।',
+  screenTimeAuthPasscode:
+    'KidGate के स्क्रीन टाइम इस्तेमाल करने से पहले इस डिवाइस पर पासकोड होना ज़रूरी है। सेटिंग्स में पासकोड सेट करें और फिर से कोशिश करें।',
+  screenTimeAuthConflict:
+    'इस डिवाइस पर स्क्रीन टाइम को पहले से कोई दूसरा ऐप नियंत्रित कर रहा है। उस ऐप को हटाएँ और फिर से कोशिश करें।',
+  screenTimeAuthRestricted:
+    'इस डिवाइस पर लगी एक पाबंदी KidGate को स्क्रीन टाइम इस्तेमाल करने से रोक रही है। जो इस डिवाइस को मैनेज करते हैं, उनसे यह पाबंदी हटाने के लिए कहें।',
   usageAccessBannerTitle: 'उपयोग की पहुँच चालू करें',
   usageAccessBannerBody:
     'स्क्रीन टाइम ट्रैक करने और सीमाएँ लागू करने के लिए KidGate को उपयोग की पहुँच चाहिए।',
@@ -38,6 +45,5 @@ export const screenTime = {
   minutesUsedStatus: '{{used}} / {{limit}} उपयोग',
   usageUpdatesHint:
     'स्क्रीन टाइम निगरानी चालू रहने पर उपयोग हर कुछ मिनट में अपडेट होता है।',
-  dailyLimitNote: 'हर दिन के स्क्रीन टाइम की ऊपरी सीमा लगाता है।',
   dailyLimitMinutes: '{{limitMinutes}} मिनट',
 } as const;

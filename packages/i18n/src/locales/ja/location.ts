@@ -34,7 +34,6 @@ export const location = {
     'まだ履歴はありません。位置情報の更新またはチェックイン後に表示されます。',
   historyHighlightAccessibility: '地図上で {{place}} を強調表示',
   historyOpenMapsAccessibility: '{{place}} をマップで開く',
-  unableToRequestLocationRefresh: '位置情報の更新をリクエストできませんでした',
   locationBannerTitle: '位置情報を有効にする',
   locationBannerBody:
     '保護者が安全を確認できるよう、このデバイスの位置情報を共有してください。',
@@ -43,20 +42,23 @@ export const location = {
   allowLocationButton: '位置情報を許可',
   locationNotAllowed:
     '位置情報へのアクセスがまだ許可されていません。「設定 → KidGate → 位置情報」を開いてください（または先に位置情報サービスを有効にしてください）。「位置情報」の項目が表示されない場合は、もう一度「位置情報を許可」を選択してください。',
+  locationNotAllowedAndroid:
+    '位置情報がまだ許可されていません。「設定を開く」を選び、「権限」→「位置情報」で「常に許可」を選んでください。',
   locationServicesOff:
     'このデバイスでは位置情報サービスがオフになっています。「設定 → プライバシーとセキュリティ → 位置情報サービス」を開いて有効にし、その後 KidGate に戻って「位置情報を許可」を選択してください。',
   locationDeniedInSettings:
     'KidGate の位置情報へのアクセスが拒否されています。「設定 → KidGate → 位置情報」を開き、「Appの使用中のみ許可」または「常に許可」を選択してください。',
-  locationEnabled:
-    '位置情報は有効です。アプリを閉じている間も位置情報を更新できるよう、「常に許可」を選択してください。',
+  foregroundOnly:
+    '位置情報はKidGateを開いている間しか更新されません。「設定を開く」を選び、「位置情報」で「常に許可」を選んでください。',
+  foregroundOnlyAndroid:
+    '位置情報はKidGateを開いている間しか更新されません。「設定を開く」を選び、「権限」→「位置情報」で「常に許可」を選んでください。',
+  toastLocateFailed:
+    'いまは現在地を取得できません。少ししてからもう一度お試しください。',
   backgroundLocationTitle: 'アプリを閉じている間も位置情報を許可',
   backgroundLocationBody:
     '家族の安全のため、KidGate はアプリを閉じている間も保護者がデバイスの位置を確認できるよう、バックグラウンドでの位置情報へのアクセスが必要です。',
-  locationNote:
-    '子どものデバイスで位置情報の共有が有効な場合、子どもの位置を表示します。',
-  placeAlertsNote:
-    '自宅、学校、その他の安全な場所に関する位置情報アラートを送信します。',
   mapNoLocationsEmpty: '表示できる位置情報はまだありません',
+  mapHistoryEmpty: '次に位置情報が更新されると、移動の地点が地図に表示されます。',
   mapUnavailable:
     '地図を表示できません。インターネット接続を確認して、もう一度お試しください。',
   historyShowMore: 'さらに{{count}}件の場所を表示',
@@ -71,10 +73,19 @@ export const location = {
   stayRange: '{{from}} – {{to}}',
   wizardStepAllow:
     '「許可」を選び、続いて「常に許可」を選ぶと、バックグラウンドでも更新が続きます。',
+  wizardStepAllowAndroid:
+    '「アプリの使用時のみ」を選び、続けて確認されたら「常に許可」を選ぶと、バックグラウンドでも更新が続きます。',
   requestNoFix:
-    'この端末は位置情報を取得できませんでした。位置情報の許可がまだされていない可能性があります。',
+    'このデバイスは位置情報を取得できませんでした。まだ位置情報が許可されていない可能性があります。',
+  requestIpOnly:
+    'このデバイスはインターネット接続から位置を推定することしかできませんでした。デバイスの Wi-Fi をオンにして（接続する必要はありません）、もう一度お試しください。',
+  requestUnsupported: 'このデバイスは位置情報を報告できません。',
   cardSharingOff: '位置情報の共有がオフです',
-  cardPermissionOff: 'この端末では位置情報が許可されていません',
+  cardPermissionOff: 'このデバイスでは位置情報が許可されていません',
+  cardForegroundOnly:
+    'このデバイスではKidGateを開いている間しか位置情報が更新されません',
+  cardIpOnly:
+    'このデバイスの位置を特定できません。デバイスの Wi-Fi をオンにしてください（接続する必要はありません）',
   cardNotUpdating: '位置情報の更新が止まっています',
   namesNeedPremium: '地名の表示には有料プランが必要です',
   namesNeedPremiumTrialEnded:

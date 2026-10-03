@@ -1,9 +1,11 @@
 import type { AppLanguage } from '@kidgate/schema/language';
 
 /**
- * Every `apps/site` page the two apps open, built in one place.
+ * Every `apps/site` page the apps open, built in one place.
  *
- * Three of them: the About page and the two legal documents. They used to be
+ * The About page and the two legal documents, which the phone and the desktop
+ * agent embed, and the home page's download section, which `apps/dashboard`
+ * opens in a new tab (`downloadPageUrl`, below). The first three used to be
  * built in four — and the legal pair was worse than duplicated, it was
  * *rewritten*: `apps/site` served hardcoded English JSX while `apps/mobile` and
  * `apps/desktop` rendered `@kidgate/i18n`'s `legal` tree, with different
@@ -12,7 +14,7 @@ import type { AppLanguage } from '@kidgate/schema/language';
  * which is the failure root rule 2 exists to end.
  *
  * There is now one renderer — `apps/site`, reading the locale packs — and
- * **neither app hands these URLs to the reader's own browser.** Both open them
+ * **neither app hands those three to the reader's own browser.** Both open them
  * as a screen inside themselves: `apps/mobile` in a `WebView`, `apps/desktop`
  * in an `iframe` filling its own screen. The desktop agent runs on a child's
  * machine, and the phone opens the legal pages from the consent line under the
@@ -112,6 +114,32 @@ export function legalDocumentUrl(
  */
 export function aboutUrl(language: AppLanguage, options: SiteUrlOptions = {}): string {
   return buildUrl(ABOUT_PATH, language, options);
+}
+
+/** The home page's download section — see `downloadPageUrl`. */
+const DOWNLOAD_PATH = '/';
+const DOWNLOAD_ANCHOR = '#download';
+
+/**
+ * Where a parent gets KidGate for a device: the `#download` section of the
+ * site's home page, in the reader's language. `apps/dashboard` opens it from
+ * every no-device state (`NoDevicePanel`) and from the no-family sign-in.
+ *
+ * **The section, never a store URL.** `apps/site/src/lib/storeLinks.js` is the
+ * one answer to "where is the build", and it gates every platform on its own
+ * `available` flag — until a store listing is live the section says "coming
+ * soon" in the button's place, and on launch day it becomes the button without
+ * any app changing. A store link copied in here would be a second answer, live
+ * or dead on its own schedule. `#download` is the anchor that answer is kept
+ * under on purpose (`apps/site` `pages/Home.jsx`: "`id` is load bearing").
+ *
+ * Always production and never `embed`: it is opened in the parent's own
+ * browser, in a new tab, to install something — not read inside an app.
+ * Moved here from `apps/dashboard/src/dashboard/siteDownload.js` on
+ * 2026-09-28, unchanged: `SITE_ORIGIN` + `/?hl=<language>#download`.
+ */
+export function downloadPageUrl(language: AppLanguage): string {
+  return `${buildUrl(DOWNLOAD_PATH, language, {})}${DOWNLOAD_ANCHOR}`;
 }
 
 /**

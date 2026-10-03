@@ -15,8 +15,8 @@ export const report = {
 
   statScreenTime: 'وقت استخدام الشاشة',
   statDailyAverage: 'المعدل اليومي',
-  statBlockedApps: 'تطبيقات محظورة',
-  statBlockedWebVisits: 'مواقع مُرشَّحة',
+  statBlockedApps: 'مرات فتح تطبيقات محظورة',
+  statBlockedWebVisits: 'زيارات لمواقع محظورة',
   statTasksApproved: 'المهام المكتملة',
 
   trendUp: 'أكثر بمقدار {{value}} عن الأسبوع السابق',
@@ -108,7 +108,8 @@ export const report = {
   copied: 'تم نسخ الملخص.',
   shareFailed: 'تعذّر فتح قائمة المشاركة.',
   shareLinkCta: 'احصل على التطبيق من {{url}}',
-  shareFooterDesc: 'يساعد KidGate الوالدين على معرفة وقت الشاشة والموقع والرسائل.',
+  shareFooterDesc:
+    'يساعد KidGate الوالدين على إدارة وقت الشاشة ومعرفة الموقع وتصفية الويب.',
   shareFooterCta: 'احصل على التطبيق من kidgate.app/get',
 
   currentWeekTab: 'هذا الأسبوع',
@@ -140,6 +141,9 @@ export const report = {
   // existed; the phone could not, because the copy lived only in the web
   // pack.
   childrenTitle: 'لكل طفل',
+  childrenNoteByChild:
+    'الأسبوعان نفسهما، لكل طفل على جميع الأجهزة التي يستخدمها. النسب محسوبة من إجمالي العائلة.',
+  devicesTitle: 'لكل جهاز',
   childrenNote: 'الأسبوعان نفسهما، لكل جهاز. النسب محسوبة من إجمالي العائلة.',
   colChild: 'الطفل',
   colScreenTime: 'وقت استخدام الشاشة',

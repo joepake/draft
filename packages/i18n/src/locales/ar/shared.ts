@@ -58,5 +58,4 @@ export const shared = {
   toastRemoveDeviceFailed: 'تعذر إزالة الجهاز. يرجى المحاولة مرة أخرى.',
   unableToOpenMaps: 'تعذّر فتح الخرائط. يرجى المحاولة مرة أخرى.',
   unableToSignOut: 'تعذّر تسجيل الخروج. يرجى المحاولة مرة أخرى.',
-  pushNotificationNote: 'يتلقى الوالدان والأطفال إشعارات فورية بالأوامر وطلبات الوقت.',
 } as const;

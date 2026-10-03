@@ -4,6 +4,7 @@ import type { DocSnapshot, FirestorePort, Unsubscribe } from '@kidgate/ports/fir
 import type { TimeRequest, TimeRequestStatus } from '@kidgate/schema/timeRequest';
 import { isApiFailure } from '../domain/apiFailure';
 import { deleteAllInBatches } from '../domain/batchDelete';
+import { timestampToIso } from '../domain/firestoreValue';
 
 /**
  * Time requests — a child asking for more screen time, a parent answering.
@@ -75,6 +76,7 @@ function timeRequestsPath(userId: string): string {
 
 function mapTimeRequest(doc: DocSnapshot): TimeRequest {
   const data = (doc.data() ?? {}) as Record<string, unknown>;
+  const resolvedAt = timestampToIso(data.resolvedAt);
   // Optional fields are spread in only when present: `exactOptionalPropertyTypes`
   // distinguishes "absent" from "explicitly undefined", and the schema declares
   // these optional rather than nullable.
@@ -84,9 +86,13 @@ function mapTimeRequest(doc: DocSnapshot): TimeRequest {
     deviceName: String(data.deviceName ?? ''),
     requestedMinutes: Number(data.requestedMinutes ?? 0),
     status: data.status as TimeRequestStatus,
-    createdAt: typeof data.createdAt === 'string' ? data.createdAt : '',
+    // A Firestore Timestamp on the wire — `controls.js` writes both with
+    // `serverTimestamp()`. Reading only strings turned every row into `''`,
+    // which printed "Invalid Date" on both consoles' pending cards and made the
+    // cooldown in `getRequestGate` NaN, so it never refused.
+    createdAt: timestampToIso(data.createdAt) ?? '',
     ...(typeof data.reason === 'string' ? { reason: data.reason } : {}),
-    ...(typeof data.resolvedAt === 'string' ? { resolvedAt: data.resolvedAt } : {}),
+    ...(resolvedAt ? { resolvedAt } : {}),
   };
 }
 

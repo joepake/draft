@@ -12,11 +12,11 @@ export const blockedHours = {
   statusDisabled: 'Disattivato',
   statusActiveNow: 'Attivo ora',
   heroSubtitle:
-    'Configura fino a {{max}} fasce orarie durante le quali questo dispositivo non può essere utilizzato.',
+    'Configura fino a {{max}} fasce orarie in cui l’uso del dispositivo è bloccato.',
   statTimeRangesLabel: 'Fasce orarie',
   statMaxAllowedLabel: 'Massimo consentito',
   toggleTitle: 'Abilita gli Orari di blocco',
-  toggleSubtitleOn: 'Il dispositivo sarà bloccato negli orari indicati di seguito.',
+  toggleSubtitleOn: 'L’uso del dispositivo è bloccato negli orari indicati di seguito.',
   toggleSubtitleOff:
     'Attiva per bloccare l’uso del dispositivo secondo una pianificazione.',
   toggleAccessibilityLabel: 'Abilita gli Orari di blocco',
@@ -45,13 +45,14 @@ export const blockedHours = {
   presetStudy: 'Studio',
   disabledTitle: 'Orari di blocco disattivati',
   disabledSubtitle:
-    'Attiva l’interruttore qui sopra per scegliere quando questo dispositivo non potrà essere utilizzato.',
+    'Attiva l’interruttore qui sopra per scegliere quando l’uso del dispositivo è bloccato.',
   infoTitle: 'Come funziona',
   infoLine1:
     'Durante gli Orari di blocco, le app vengono bloccate sul dispositivo del bambino.',
   infoLine2:
     'Sono supportate anche le fasce orarie notturne, ad esempio dalle 22:00 alle 07:00.',
-  infoLine3: 'Il dispositivo deve supportare Tempo di utilizzo.',
+  infoLine3:
+    'Su iPhone e iPad, Tempo di utilizzo deve essere consentito sul dispositivo del bambino.',
   off: 'Disattivato',
   blockedHoursChip: 'Orari di blocco',
   blockedHoursOnChip: 'Orari di blocco configurati',
@@ -70,8 +71,10 @@ export const blockedHours = {
   dayShortSun: 'Dom',
   daysLabel: 'Giorni',
   daysEveryDay: 'Ogni giorno',
-  daysSchoolNights: 'Sere di scuola',
+  daysWeekdays: 'Giorni feriali',
   daysWeekend: 'Fine settimana',
+  daysSchoolNights: 'Sere prima di scuola',
+  daysWeekendNights: 'Sere del fine settimana',
   daysOvernightHint: 'Le fasce notturne contano per la notte in cui iniziano.',
   overlapWarning:
     'Questo si sovrappone a un altro orario bloccato: entrambi restano validi.',

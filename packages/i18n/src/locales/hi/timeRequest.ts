@@ -1,5 +1,6 @@
 export const timeRequest = {
   alertMorePending: 'परिवार में {{count}} और अनुरोध प्रतीक्षा में हैं।',
+  alertMorePending_one: 'परिवार में {{count}} और अनुरोध प्रतीक्षा में है।',
   pauseConfirmTitle: '{{deviceName}} को लॉक करें?',
   pauseConfirmBody:
     'अतिरिक्त समय देने के बजाय डिवाइस अभी लॉक हो जाएगा। जब तक आप इसे अनलॉक नहीं करते, {{deviceName}} का इस्तेमाल नहीं हो पाएगा।',
@@ -19,10 +20,12 @@ export const timeRequest = {
   statusCooldown: 'आप {{time}} में नया अनुरोध भेज सकते हैं।',
   statusDailyLimitExceeded:
     'आपने आज का पूरा स्क्रीन टाइम इस्तेमाल कर लिया है। ऐप्स कल फिर से खुलेंगे — और अगर आपके माता-पिता और समय जोड़ दें, तो उससे भी पहले।',
-  errorDeviceNotRegistered: 'यह डिवाइस पंजीकृत नहीं है।',
+  errorDeviceNotRegistered:
+    'यह डिवाइस अभी अनुरोध भेजने के लिए तैयार नहीं है। थोड़ी देर बाद फिर से कोशिश करें, या माता-पिता से इसे फिर से पेयर करने को कहें।',
   errorMinutesRange: '{{min}} से {{max}} मिनट के बीच दर्ज करें।',
   toastRequestSent: 'अनुरोध भेज दिया गया। आपके माता-पिता जल्द ही इसकी समीक्षा करेंगे।',
-  toastDeviceNotRegistered: 'यह डिवाइस अभी तक पंजीकृत नहीं है।',
+  toastDeviceNotRegistered:
+    'यह डिवाइस अभी अनुरोध भेजने के लिए तैयार नहीं है। थोड़ी देर बाद फिर से कोशिश करें, या माता-पिता से इसे फिर से पेयर करने को कहें।',
   toastSendFailed: 'आपका अनुरोध भेजा नहीं जा सका। कृपया पुनः प्रयास करें।',
   askForMoreTime: 'और समय माँगें',
   askForMoreTimeSubtitle:
@@ -44,7 +47,7 @@ export const timeRequest = {
   unableToApproveRequest: 'अनुरोध स्वीकृत नहीं किया जा सका। कृपया पुनः प्रयास करें।',
   pendingRequestExists:
     'आप पहले ही एक अनुरोध भेज चुके हैं। कृपया अपने माता-पिता के जवाब की प्रतीक्षा करें।',
-  waitBeforeAnotherRequest: 'दूसरा अनुरोध भेजने से पहले कृपया कुछ मिनट प्रतीक्षा करें।',
+  waitBeforeAnotherRequest: 'दूसरा अनुरोध भेजने से पहले कृपया थोड़ी देर रुकें।',
   timeRequestSent: 'समय अनुरोध भेजा गया',
   timeRequestSentDescription:
     '{{deviceName}} ने {{minutes}} अतिरिक्त मिनट का अनुरोध किया।',
@@ -63,6 +66,4 @@ export const timeRequest = {
   requestPendingButton: 'जवाब का इंतज़ार',
   requestPendingChip: 'अनुरोध लंबित है',
   waitCooldown: '{{cooldown}} प्रतीक्षा करें',
-  timeRequestNote:
-    'अगर आपके माता-पिता स्वीकृति देते हैं, तो आपको आज और स्क्रीन टाइम मिलेगा।',
 } as const;

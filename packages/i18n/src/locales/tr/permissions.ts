@@ -32,8 +32,9 @@ export const permissions = {
   oemAutostartLabel: 'Otomatik başlatmaya izin ver',
   oemAutostartHintXiaomi:
     'Otomatik başlatma’da, yeniden başlatmadan sonra korumanın yeniden başlaması için KidGate’i açın.',
-  oemAutostartHintSamsung:
-    'Pil → Arka planda kullanım sınırları → Hiç uyumayan uygulamalar bölümüne KidGate’i ekleyin. KidGate listede yoksa zaten izinlidir ve bu adım tamamlanmıştır.',
+  oemAutostartHintSamsung: 'Pil bölümünde Arka planda kullanım sınırları’nı seçin.',
+  oemAutostartHintSamsungAdd:
+    'Hiç uyumayan uygulamalar’ı açıp KidGate’i ekleyin. KidGate listede yoksa zaten izinlidir ve bu adım tamamlanmıştır.',
   oemAutostartHintOppo:
     'Başlangıç uygulamaları / Otomatik başlatma bölümünde KidGate’e izin verin.',
   oemAutostartHintVivo:
@@ -51,8 +52,10 @@ export const permissions = {
     'Bunun yerine tam liste açılırsa, Yüklü / indirilen uygulamalar altında KidGate’i seçin.',
   accessibilityStepTurnOn:
     'Anahtarı açın, ardından Android’in onay penceresinde İzin ver’i seçin.',
+  restrictedSettingsStep:
+    'Anahtar soluk görünüyorsa Ayarlar › Uygulamalar › KidGate yolunu açıp ⋮ menüsüne dokunun ve “Kısıtlanmış ayarlara izin ver” seçeneğini seçin, ardından buraya dönüp tekrar deneyin.',
   accessibilityWarningNote:
-    'Android, KidGate’in işlemlerinizi izleyebileceği uyarısını gösterir. Kilidin diğer uygulamaların üzerinde kalması bu sayede olur — KidGate parolaları veya kişisel mesajları okumaz.',
+    'Android, KidGate’in işlemlerinizi izleyebileceği uyarısını gösterir. Bu izinle KidGate hangi uygulamanın açık olduğunu görür, böylece kilit en üstte kalabilir; izlenen videolar kaydediliyorsa YouTube videolarının başlığını ve kanalını da okur. Bu izni parolaları, mesajları veya yazdıklarınızı okumak için kullanmaz.',
   uninstallProtectionWizardBody:
     'Ebeveyn PIN’i girilmeden bu uygulamanın kaldırılmasını engeller. Android kendi onay ekranını gösterir.',
   notificationsWizardBody:
@@ -61,6 +64,9 @@ export const permissions = {
   backgroundRefreshStepTurnOn: 'KidGate için Arka Planda Yenileme’yi açın.',
   backgroundRefreshStepGeneral:
     'Anahtar griyse Ayarlar’ı açın, Genel’e, ardından Arka Planda Yenileme’ye gidip açın.',
+  locationAlwaysStep: 'Konum’u açın ve “Her Zaman” seçeneğini belirleyin.',
+  locationAlwaysStepAndroid:
+    'İzinler → Konum’u açın ve “Her zaman izin ver” seçeneğini belirleyin.',
   batteryStepAllow: 'Android isteminde İzin ver’i seçin.',
   batteryStepAppInfo:
     'İstem görünmezse Uygulama bilgisi’ni açın, Pil’e gidin ve Sınırsız’ı seçin.',

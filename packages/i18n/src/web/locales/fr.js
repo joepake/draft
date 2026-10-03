@@ -73,7 +73,8 @@ export default {
     terms: 'Conditions générales',
     deleteData: 'Supprimer vos données',
     rights: '© {{year}} KidGate. Tous droits réservés.',
-    madeFor: 'Conçu pour les familles sur iPhone, Android, Mac et Windows.',
+    madeFor:
+      'Conçu pour les familles sur iPhone, Android, Mac, Windows, Android TV et Chrome.',
   },
 
   legalNote:
@@ -86,6 +87,7 @@ export default {
     googleAria: 'Obtenir KidGate sur Google Play',
     googleSmall: 'Disponible sur',
     googleName: 'Google Play',
+    chromeName: 'Chrome Web Store',
   },
 
   home: {
@@ -112,9 +114,10 @@ export default {
     trust1Text: 'Les données des enfants ne servent jamais à la publicité',
     trust2Title: 'Suppression à tout moment',
     trust2Text: 'Effacez votre compte familial et toutes les données sur demande',
-    trust3Title: 'Téléphone et ordinateur',
-    trust3Text: 'iPhone, Android, Mac et Windows sur un seul compte famille',
-    trust4Title: 'Un forfait par famille',
+    trust3Title: 'Téléphone, ordinateur et télé',
+    trust3Text:
+      'iPhone, Android, Mac, Windows, Android TV et Chrome sur un seul compte famille',
+    trust4Title: 'Une formule par famille',
     trust4Text: 'Tous les appareils parents et enfants, un seul abonnement',
 
     featuresEyebrow: 'Fonctionnalités',
@@ -123,25 +126,25 @@ export default {
       'Des limites quotidiennes aux alertes d’urgence — une appli pour le bien-être numérique de toute la famille.',
     feature1Title: 'Temps d’écran et limites quotidiennes',
     feature1Text:
-      'Fixez un plafond quotidien et des heures bloquées pour l’école et le coucher. L’appareil se verrouille tout seul quand le temps est écoulé.',
+      'Fixez un plafond quotidien et des Heures bloquées pour l’école et le coucher. L’appareil se verrouille tout seul quand le temps est écoulé.',
     feature2Title: 'Blocage d’applis',
     feature2Text:
-      'Choisissez exactement les applis que votre enfant peut ouvrir, protégé par votre code parent, et activez le blocage à distance.',
-    feature3Title: 'Limites par appli',
+      'Choisissez exactement les applis que votre enfant peut ouvrir — un choix protégé par votre code PIN parent — et activez le blocage à distance.',
+    feature3Title: 'Limites d’apps',
     feature3Text:
-      'Plafonnez chaque appli séparément, en plus de la limite quotidienne : « une demi-heure de TikTok » sans l’interdire pour autant.',
-    feature4Title: 'Filtrage web et historique',
+      'Plafonnez chaque appli séparément, en plus de la limite quotidienne : « une demi-heure de TikTok » sans l’interdire pour autant. Sur Android, Android TV et ordinateur.',
+    feature4Title: 'Filtre web et historique',
     feature4Text:
-      'Refusez les sites pour adultes et de jeux d’argent sur le téléphone et sur l’ordinateur. Avec Premium, voyez quels sites ont été consultés et lesquels ont été bloqués.',
+      'Bloquez les sites pour adultes sur tous les appareils, et les jeux d’argent, l’automutilation et d’autres catégories sur Android, Android TV et ordinateur. Avec Premium, choisissez vous-même les catégories et voyez quels sites ont été consultés et lesquels ont été bloqués.',
     feature5Title: 'Localisation en direct et lieux',
     feature5Text:
       'Consultez la dernière position de votre enfant, revoyez l’historique et soyez prévenu quand il arrive dans un lieu enregistré ou le quitte.',
     feature6Title: 'Check-in et SOS',
     feature6Text:
-      'Demandez à votre enfant de confirmer qu’il va bien, et recevez un SOS immédiat avec position et photo en cas d’urgence.',
+      'Demandez à votre enfant de confirmer qu’il va bien, et recevez un SOS immédiat depuis son téléphone en cas d’urgence, avec sa position et une photo quand elle peut être prise.',
     feature7Title: 'Alertes de protection et d’applis',
     feature7Text:
-      'Sachez à l’instant où une autorisation importante est désactivée. Avec Premium, une nouvelle appli sur Android attend votre approbation avant de s’ouvrir.',
+      'Sachez à l’instant où une autorisation importante est désactivée sur le téléphone de votre enfant. Activez l’approbation des nouvelles applications, et une nouvelle appli sur Android, Android TV ou un ordinateur attend votre accord avant de s’ouvrir.',
     feature8Title: 'Tâches à récompense et temps en plus',
     feature8Text:
       'Les enfants gagnent des minutes bonus en accomplissant des tâches, ou demandent du temps en plus. Les deux arrivent sur votre téléphone pour validation.',
@@ -157,11 +160,11 @@ export default {
       'Les enfants voient combien d’étoiles chacun a gagnées cette semaine. Il repart chaque lundi, et c’est vous qui décidez s’il est activé.',
     feature12Title: 'Fil d’activité',
     feature12Text:
-      'Tout ce qui s’est passé, dans l’ordre — un appareil déverrouillé, un site filtré, une tâche terminée, une alerte envoyée. La journée en cours est gratuite ; Premium conserve 30 jours.',
+      'Tout ce qui s’est passé, dans l’ordre — un appareil déverrouillé, une demande de site traitée, une tâche terminée, une alerte envoyée. La formule gratuite affiche la journée en cours ; Premium conserve 30 jours.',
     featurePremium: 'Premium',
     platformsTitle: 'Un seul KidGate, où que soit l’écran',
     platformsSub:
-      'Les mêmes règles et le même compte famille sur le téléphone et sur l’ordinateur. L’application de bureau s’installe depuis ce site, pas depuis un magasin d’applications ; Chrome et Android TV attendent la validation de leur boutique.',
+      'Les mêmes règles et le même compte famille sur le téléphone, sur l’ordinateur et sur Android TV — et le même Filtre web dans Chrome. L’application de bureau s’obtient sur ce site, pas dans un magasin d’applications.',
 
     showcaseEyebrow: 'Tableau de bord parent',
     showcaseTitle: 'Toute la famille sur un seul écran',
@@ -169,7 +172,7 @@ export default {
       'Temps d’écran, tentatives bloquées, localisation et tout ce qui demande votre attention — sur votre téléphone ou dans n’importe quel navigateur.',
     showcaseTile1: 'Temps d’écran aujourd’hui',
     showcaseTile2: 'Tentatives bloquées',
-    showcaseTile3: 'Demande attention',
+    showcaseTile3: 'Attention requise',
     showcaseCaption1: 'Consultez les rapports depuis n’importe quel navigateur',
     showcaseCaption2: 'Les changements sont validés depuis votre téléphone',
 
@@ -179,23 +182,23 @@ export default {
       'Aucune compétence technique nécessaire — l’appli vous guide à chaque étape.',
     step1Title: 'Configurez votre appareil',
     step1Text:
-      'Installez KidGate, choisissez « Ceci est un appareil parent » et connectez-vous avec Google, Apple ou une adresse e-mail.',
+      'Installez KidGate, choisissez « Ceci est un appareil parent » et connectez-vous avec Google ou une adresse e-mail — ou avec Apple, sur un iPhone.',
     step2Title: 'Associez l’appareil de votre enfant',
     step2Text:
       'Installez KidGate sur le téléphone de votre enfant et connectez-le en scannant un QR code. Moins d’une minute.',
     step3Title: 'Définissez vos règles',
     step3Text:
-      'Choisissez une limite quotidienne, bloquez des applis et des horaires, activez la localisation — le tout depuis votre propre téléphone.',
+      'Choisissez une Limite quotidienne et des Heures bloquées, puis activez la localisation et le blocage des applications depuis votre propre téléphone. Les applis à bloquer se choisissent une seule fois sur l’appareil de votre enfant, avec votre code PIN parent.',
 
     whyEyebrow: 'Pourquoi KidGate',
     whyTitle: 'Conçu pour la confiance, pas pour la surveillance',
     whySub: 'Pensé pour garder le dialogue ouvert entre parent et enfant.',
-    why1Title: 'Un forfait, toute la famille',
+    why1Title: 'Une formule, toute la famille',
     why1Text:
       'Un seul abonnement Premium couvre tous les appareils parents et enfants, et seul le titulaire de la famille paie. La formule gratuite garde un appareil enfant sous surveillance.',
     why2Title: 'Pensé pour la coparentalité',
     why2Text:
-      'Invitez un second parent à gérer les mêmes enfants, avec l’accès que le titulaire approuve.',
+      'Invitez un second parent à gérer les mêmes enfants, avec l’accès que le titulaire approuve. Une famille peut compter jusqu’à 3 parents avec la formule gratuite et pendant l’essai, et jusqu’à 6 avec Premium.',
     why3Title: 'La confidentialité d’abord',
     why3Text:
       'Nous ne vendons jamais de données personnelles et n’utilisons jamais les données des enfants à des fins publicitaires. Supprimez tout quand vous voulez.',
@@ -209,41 +212,41 @@ export default {
       'Six points vérifiés face aux applis auxquelles les parents nous comparent. Chacun précise la plateforme sur laquelle il est vrai.',
     only1Title: 'La télé du salon aussi',
     only1Text:
-      'Android TV reçoit une Limite quotidienne, des Heures bloquées, le blocage d’applis et un Filtre web. Sur une télé, le blocage se fait au mieux — une appli bloquée est renvoyée à l’écran d’accueil — et il n’y a ni SOS ni demande de temps supplémentaire depuis le canapé. La version fonctionne déjà sur du matériel réel et attend sa sortie en boutique. La plupart des contrôles parentaux s’arrêtent au téléphone.',
+      'Android TV reçoit une Limite quotidienne, des Heures bloquées, le blocage d’applis et un Filtre web. Sur une télé, le blocage se fait au mieux — une appli bloquée est renvoyée à l’écran d’accueil — et il n’y a ni SOS ni demande de temps supplémentaire depuis le canapé. Une télé ne partage pas non plus sa position. La plupart des contrôles parentaux s’arrêtent au téléphone.',
     only2Title: 'Des alertes de messages qui restent sur le téléphone',
     only2Text:
-      'Sur Android, les messages sont comparés sur l’appareil même à des listes de mots-clés en 14 langues, et ce qui quitte le téléphone est le mot détecté, jamais la conversation. Une seule chose change cela, et seulement si vous le demandez : activez la confirmation par IA et un message entrant ambigu est envoyé pour être évalué, afin qu’un mot ordinaire ne vous réveille pas.',
+      'Avec Premium sur Android, les messages sont comparés sur l’appareil même à des listes de mots-clés dans trois langues au plus, choisies parmi 14, et ce qui quitte le téléphone est le mot ou l’expression détectés, jamais la conversation. Une seule chose change cela, et seulement si vous le demandez : activez la confirmation par IA et un message entrant ambigu est envoyé à Gemini de Google pour être évalué, afin qu’un mot ordinaire ne vous réveille pas.',
     only3Title: 'Toutes les applis, pas une liste d’applis',
     only3Text:
-      'Sur Android, les alertes viennent des notifications et de ce que votre enfant tape dans n’importe quelle appli — Zalo, LINE, KakaoTalk, le chat d’un jeu — et non d’une liste fixe d’applis prises en charge.',
+      'Les alertes viennent des notifications de n’importe quelle appli utilisée par votre enfant — pas d’une liste fixe d’applis prises en charge — et de ce qu’il tape dans les principales applis de discussion, de réseaux sociaux et de jeux, dont Zalo, LINE et KakaoTalk. Android uniquement, avec Premium.',
     only4Title: 'Une issue pour l’enfant',
     only4Text:
-      'Cinq secondes sur SOS et vous êtes prévenu aussitôt, avec la position — sur Android et Mac, l’appareil est en plus déverrouillé un moment. Un enfant qui peut appeler à l’aide depuis l’écran de verrouillage n’a aucune raison de lutter contre l’appli.',
+      'Un appui de cinq secondes sur SOS depuis un téléphone vous prévient aussitôt, avec la position — et sur Android, cela ouvre aussi les appels, les cartes et les messages pendant cinq minutes, même sur un téléphone verrouillé. Un enfant qui peut appeler à l’aide depuis l’écran de verrouillage n’a aucune raison de lutter contre l’appli.',
     only5Title: 'Des règles qui tiennent sans internet',
     only5Text:
-      'Les heures bloquées et la limite quotidienne sont appliquées sur l’appareil lui-même : débrancher la box ne change rien. La télé accepte même votre PIN parental sans aucune connexion.',
-    only6Title: 'Du crédit quand la semaine le mérite',
+      'Les Heures bloquées et la Limite quotidienne sont appliquées sur l’appareil lui-même : débrancher la box ne change rien. La télé accepte même votre code PIN parent sans aucune connexion.',
+    only6Title: 'Saluer ce que la semaine a réussi',
     only6Text:
-      'Chaque rapport hebdomadaire garde une place pour ce qui s’est bien passé — une limite respectée, plus de nuit tardive, une tâche terminée — et ne le dit que lorsque la semaine a vraiment été mesurée.',
+      'Chaque rapport hebdomadaire garde une place pour ce qui s’est bien passé — une limite respectée, un coucher moins tardif, une tâche terminée — et ne le dit que lorsque la semaine a vraiment été mesurée.',
 
     faqEyebrow: 'FAQ',
     faqTitle: 'Les premières questions des parents',
     faqSub: 'Des réponses rapides avant de télécharger.',
     faq1Q: 'Existe-t-il un essai gratuit ?',
     faq1A:
-      'Oui. L’essai de 7 jours commence dès que vos premiers appareils parent et enfant sont connectés, et inclut toutes les fonctions Premium. À la fin, les règles que vous avez définies — Limite quotidienne, Heures bloquées, Applications bloquées, Filtre web, Verrouillage de l’appareil, demandes de temps supplémentaire et tâches à récompense — continuent de fonctionner gratuitement sur un appareil enfant, et vous pouvez toujours demander à cet appareil où il se trouve. L’activité en direct, l’historique, les rapports hebdomadaires et le suivi de position sont ce que Premium rétablit.',
+      'Oui. L’essai de 7 jours commence dès que vos premiers appareils parent et enfant sont connectés, et inclut toutes les fonctions Premium. À la fin, les règles que vous avez définies — Limite quotidienne, Heures bloquées, Applications bloquées, Filtre web, Verrouillage de l’appareil, demandes de temps supplémentaire et tâches à récompense — continuent de fonctionner gratuitement sur tous les appareils enfants, et vous pouvez toujours demander à celui que vous choisissez où il se trouve. L’activité en direct, l’historique, les rapports hebdomadaires et le suivi de position sont ce que Premium rétablit.',
     faq2Q: 'Combien d’appareils puis-je gérer ?',
     faq2A:
-      'Un abonnement couvre toute votre famille — chaque appareil enfant et chaque parent sur le même forfait. Sur la formule gratuite, un appareil enfant reste surveillé et c’est vous qui choisissez lequel ; les autres continuent d’appliquer les règles déjà définies et cessent d’envoyer de l’activité.',
+      'Un abonnement couvre toute votre famille — chaque appareil enfant et chaque parent sur la même formule. Avec la formule gratuite, un appareil enfant reste surveillé et c’est vous qui choisissez lequel ; les autres continuent d’appliquer les règles déjà définies, qui peuvent alors être assouplies mais pas renforcées, et cessent d’envoyer de l’activité.',
     faq3Q: 'Mon enfant peut-il désinstaller ou contourner KidGate ?',
     faq3A:
-      'Les réglages sensibles sont protégés par votre code parent, et les alertes de protection vous préviennent aussitôt si une autorisation clé est désactivée sur l’appareil de l’enfant.',
+      'Les réglages sensibles sont protégés par votre code PIN parent, et les alertes de protection vous préviennent aussitôt si une autorisation clé est désactivée sur l’appareil de l’enfant.',
     faq4Q: 'Puis-je tout gérer depuis un ordinateur ?',
     faq4A:
-      'Oui. Le tableau de bord parent s’ouvre dans n’importe quel navigateur — connectez-vous avec un code venu de votre téléphone et vous retrouvez la même famille, les mêmes appareils et les mêmes réglages. La consultation fonctionne tout de suite ; verrouiller un appareil ou modifier une limite demande votre code parent, ou une validation depuis l’application.',
+      'Oui. Le tableau de bord parent s’ouvre dans n’importe quel navigateur. Scannez le code qu’il affiche avec l’application KidGate de votre téléphone : vous retrouvez la même famille, les mêmes appareils et les mêmes réglages, avec les commandes déverrouillées. Vous pouvez aussi vous connecter avec votre compte pour consulter ; verrouiller un appareil ou modifier une limite demande alors votre code PIN parent.',
     faq5Q: 'Combien coûte Premium ?',
     faq5A:
-      'Premium coûte $6.99 par mois ou $39.99 par an aux États-Unis, facturé via l’App Store ou Google Play et affiché là-bas dans votre propre devise. Une formule Lifetime à paiement unique couvre jusqu’à trois appareils enfants. La formule gratuite n’expire jamais.',
+      'Premium coûte 6,99 $ par mois ou 39,99 $ par an aux États-Unis, facturé via l’App Store ou Google Play et affiché dans votre devise sur la boutique. Une formule À vie, à paiement unique, couvre jusqu’à trois appareils enfants. La formule gratuite n’expire jamais.',
     faqMore: 'D’autres questions ? Voir l’assistance',
 
     ctaTitle: 'Commencez à protéger votre famille dès aujourd’hui',
@@ -327,6 +330,12 @@ export default {
     noAccessTitle: 'Aucune famille sur ce compte',
     noAccess:
       'Ce compte n’a accès à aucune famille KidGate. Connectez-vous avec le compte parent que vous utilisez dans l’appli.',
+    noFamily:
+      'Ce compte n’a pas encore de famille KidGate. Si vous utilisez KidGate sur votre téléphone, déconnectez-vous puis reconnectez-vous ici avec le même compte. Pour créer une famille, configurez-la sur votre téléphone, puis rechargez cette page.',
+    noFamilyStep1:
+      'Installez KidGate sur votre téléphone, choisissez *Ceci est un appareil parent* et connectez-vous avec ce compte.',
+    noFamilyStep2:
+      'Ouvrez *Famille* et choisissez *Créer une famille*, ou *Rejoindre une famille* si un autre parent vous a invité.',
   },
 
   time: {
@@ -378,8 +387,8 @@ export default {
     backgroundAppRefresh: 'Actualisation en arrière-plan',
     overlay: 'Superposition aux autres apps',
     batteryOptimization: 'Batterie sans restriction',
-    exactAlarm: 'Alarmes exactes',
-    accessibility: 'Accessibilité',
+    exactAlarm: 'Alarmes et rappels',
+    accessibility: 'Accessibilité (assistant de verrouillage)',
   },
 
   webCat: {
@@ -412,7 +421,7 @@ export default {
     drugs: 'Drogues et alcool',
     violence: 'Violence et gore',
     piracy: 'Piratage',
-    bypass: 'Contournement de filtre et VPN',
+    bypass: 'Applis de contournement',
   },
 
   webCatGroup: {
@@ -443,9 +452,9 @@ export default {
     devices_one: '{{count}} appareil enfant',
     devices_other: '{{count}} appareils enfants',
     planManageOnPhone:
-      'Les forfaits s’achètent et se modifient dans l’application KidGate sur votre téléphone.',
+      'Les formules s’achètent et se modifient dans l’application KidGate sur votre téléphone.',
     fallbackFamily: 'Votre famille',
-    fallbackDevice: 'Appareil enfant',
+    fallbackDevice: 'Appareil de l’enfant',
 
     statusOnline: 'En ligne',
     statusOffline: 'Hors ligne',
@@ -455,6 +464,7 @@ export default {
     statusPaused: 'En pause',
 
     stateAllowed: 'Autorisé',
+    stateForegroundOnly: 'Seulement si l’app est ouverte',
     stateDenied: 'Désactivé',
     stateNotDetermined: 'Pas encore demandé',
     stateRestricted: 'Restreint',
@@ -475,7 +485,7 @@ export default {
 
     unlockTitle: 'Les modifications sont verrouillées.',
     unlockBody:
-      'La consultation fonctionne tout de suite. Pour verrouiller un appareil, changer les limites ou approuver des demandes, déverrouillez ce navigateur avec votre code PIN parent — ou validez-le en scannant le QR code avec l’application KidGate. Les demandes de nouvelles fonctionnent dans les deux cas.',
+      'La consultation fonctionne tout de suite. Pour verrouiller un appareil, changer les limites ou approuver des demandes, déverrouillez ce navigateur avec votre code PIN parent — ou validez-le en scannant le QR code avec l’application KidGate. Les Check-in fonctionnent dans les deux cas.',
     unlockCta: 'Déverrouiller les modifications',
     unlockToChange: 'Déverrouillez d’abord les modifications',
     refresh: 'Actualiser',
@@ -496,9 +506,14 @@ export default {
     unlockedToast: 'Modifications déverrouillées sur ce navigateur.',
     close: 'Fermer',
 
-    noDeviceTitle: 'Pas encore d’appareil enfant',
     noDeviceBody:
-      'Ouvrez KidGate sur votre téléphone, allez dans *Famille*, touchez l’icône de scan (*Scanner un code*) et scannez le QR code affiché sur l’appareil de votre enfant. Il apparaîtra ici quelques secondes après l’association.',
+      'Ouvrez KidGate sur votre téléphone, allez dans *Famille* et touchez l’icône de scan (*Scanner un code*). Scannez le QR code de l’appareil de votre enfant, ou saisissez son code à 6 caractères. Cliquez ensuite sur *Actualiser* ici.',
+    pairStep2Title: 'Scannez le code avec votre téléphone',
+    getKidGate: 'Télécharger KidGate',
+    childNoDevices:
+      'Pas encore d’appareil. Associez-en un, puis choisissez cet enfant quand l’appli demande qui l’utilise.',
+    childNoDevicesAssign:
+      'Pas encore d’appareil. Attribuez-en un ci-dessous, ou associez-en un nouveau.',
 
     toastCheckIn: '{{name}} recevra une demande de check-in.',
     toastTimeApproved: 'Temps supplémentaire accordé.',
@@ -514,16 +529,12 @@ export default {
     tileCategoriesHit_one: '{{count}} catégorie touchée',
     tileCategoriesHit_other: '{{count}} catégories touchées',
     tileNothingBlocked: 'Rien de bloqué pour le moment',
-    tileAttention: 'Demande attention',
+    tileAttention: 'Attention requise',
     tileOpenItems: 'Points ouverts ci-dessous',
     tileAllClear: 'Tout va bien',
 
     cardScreenTime: 'Temps d’écran',
     cardScreenTimeSub: '14 derniers jours, face à la limite quotidienne',
-    usageSyncNote:
-      'Le temps d’écran peut mettre quelques minutes à apparaître sur cet écran — plus longtemps si l’appareil n’a pas de connexion Internet ou s’est fermé de façon inattendue.',
-    usageSyncNoteTv:
-      'Cette télévision ne se connecte que périodiquement, le temps d’écran peut donc mettre jusqu’à une heure à apparaître sur cet écran — plus longtemps sans connexion Internet.',
     cardRecent: 'Activité récente',
     cardRecentSub: 'Le plus récent en premier',
     cardRecentEmpty:
@@ -573,13 +584,13 @@ export default {
 
     appUsageTitle: 'Usage des applis aujourd’hui',
     appUsageSub: 'Temps passé par appli',
-    topAppsOther: 'Autres applis',
+    topAppsOther: 'Autres applications',
     underAMinute: 'Moins d’une minute',
     appUsageEmpty: 'Aucune utilisation d’applis signalée pour l’instant.',
-    appBlockingTitle: 'Blocage d’applis',
-    appBlockingSub: 'Choisi sur l’appareil de l’enfant avec le code parent',
+    appBlockingTitle: 'Blocage des applications',
+    appBlockingSub: 'Choisi sur l’appareil de l’enfant avec le code PIN parent',
     blockingLabel: 'Blocage',
-    appsBlocked: 'Applis bloquées',
+    appsBlocked: 'Applications bloquées',
     categories: 'Catégories',
     perAppHint:
       'Les plafonds par appli sont indépendants de la liste de blocage — « 30 minutes de TikTok » n’est pas la même décision que « pas de TikTok ».',
@@ -594,26 +605,23 @@ export default {
     inventoryFirstScan:
       'Première analyse : KidGate ne peut pas dire quand chacune est arrivée.',
     inventoryFlagged: 'À regarder de plus près',
-    inventoryFlaggedLabel: 'À examiner',
+    inventoryFlaggedLabel: 'À regarder de plus près',
     inventoryOtherLabel: 'Identifiées',
     inventoryUnknownLabel: 'Non identifiées',
     installAllow: 'Autoriser',
-    pendingInstallsTitle: 'Nouvelles applis en attente de validation',
+    pendingInstallsTitle: 'Nouvelles applications en attente d’approbation',
     pendingInstallsSub:
-      'Installées après l’activation de la validation, bloquées par l’appareil de lui-même',
-    pendingInstallsEmpty: 'Aucune nouvelle appli en attente de validation.',
+      'Installées après l’activation de l’approbation, bloquées automatiquement par l’appareil',
+    pendingInstallsEmpty: 'Aucune nouvelle application en attente d’approbation.',
     toastInstallAllowed: 'Appli autorisée',
-    rowInstallApproval: 'Valider les nouvelles applis',
-    rowInstallApprovalDesc: '{{count}} applications en attente de validation',
-    rowInstallApprovalDesc_one: '{{count}} application en attente de validation',
+    rowInstallApproval: 'Approuver les nouvelles applications',
+    rowInstallApprovalDesc: '{{count}} applications en attente d’approbation',
+    rowInstallApprovalDesc_one: '{{count}} application en attente d’approbation',
     rowInstallApprovalDescIos:
-      'Masque l’App Store — Apple n’autorise aucune validation appli par appli',
-    webActivitySyncNote:
-      'L’activité web peut mettre quelques minutes à apparaître sur cet écran — plus longtemps si l’appareil n’a pas de connexion Internet ou s’est fermé de façon inattendue.',
-    webActivitySyncNoteTv:
-      'Cette télévision ne se connecte que périodiquement, l’activité web peut donc mettre jusqu’à une heure à apparaître sur cet écran — plus longtemps sans connexion Internet.',
+      'Masque l’App Store — Apple ne permet pas d’approuver application par application',
     colDomain: 'Domaine',
     colVisits: 'Visites',
+    colTime: 'Durée',
     colBlocked: 'Bloquées',
     colLastSeen: 'Vu pour la dernière fois',
     videosTitle: 'Vidéos regardées',
@@ -631,7 +639,7 @@ export default {
     webBackgroundNote:
       'Quand personne n’utilise l’appareil, certaines applications accèdent quand même à Internet en arrière-plan : mises à jour, recommandations et synchronisations tournent seules.',
     filterHintIos:
-      'Sur iOS, le filtre utilise le contrôle des contenus pour adultes d’Apple — le blocage par catégorie n’existe que sur Android.',
+      'Sur iOS, le filtre utilise le contrôle des contenus pour adultes d’Apple — le blocage par catégorie n’est pas disponible sur iPhone ni sur iPad.',
     filterHintAndroid:
       'Les catégories sont appliquées par le filtre DNS de l’appareil.',
     filterHintMacos:
@@ -657,7 +665,7 @@ export default {
     sosTitle: 'Alertes SOS',
     sosSub: 'Signaux d’urgence envoyés par l’appareil de l’enfant',
     sosEmpty:
-      'Aucune alerte SOS. Testez-la une fois ensemble pour que vous sachiez tous les deux comment ça marche.',
+      'Aucune alerte SOS. Testez le SOS une fois ensemble pour que vous sachiez tous les deux comment il fonctionne.',
     sosAcknowledged: 'prise en compte',
     sosActive: 'active',
 
@@ -685,7 +693,7 @@ export default {
     limitScaleMin: '30 min',
     limitScaleMax: '8 h',
     limitHint:
-      'Les minutes bonus des tâches et des demandes de temps validées s’ajoutent par-dessus, pour ce jour-là uniquement.',
+      'Les minutes bonus des tâches à récompense et des demandes de temps approuvées s’ajoutent par-dessus, pour ce jour-là uniquement.',
     limitShared: 'Partagé entre tous les appareils',
     limitSharedSpent: '{{used}} sur {{limit}} utilisés aujourd’hui',
     limitSharedHint:
@@ -695,7 +703,7 @@ export default {
     rowBlockedHours: 'Heures bloquées',
     rowBlockedHoursDesc_one: '{{count}} plage horaire · {{list}}',
     rowBlockedHoursDesc_other: '{{count}} plages horaires · {{list}}',
-    rowAppBlocking: 'Blocage d’applis',
+    rowAppBlocking: 'Blocage des applications',
     rowAppBlockingApps: '{{count}} applications',
     rowAppBlockingApps_one: '{{count}} application',
     rowAppBlockingCategories: '{{count}} catégories',
@@ -724,18 +732,12 @@ export default {
     starChartEmpty:
       'Ajoutez un deuxième enfant dans l’application pour lancer le tableau des étoiles.',
     starChartStars: '{{count}} étoiles',
-    familyScreenTimeTitle: 'Temps d’écran de la famille',
-    familyScreenTimeSub: 'Le moins de temps d’écran d’abord, cette semaine',
-    familyScreenTimeEmpty:
-      'Personne n’a encore rien remonté cette semaine. Les lignes apparaissent quand les téléphones remontent.',
-    familyScreenTimeParent: 'Parent',
-    familyScreenTimeDays: '{{count}} jours remontés',
     rewardTasksTitle: 'Tâches à récompense',
     rewardTasksSub: 'Gagnez des minutes en accomplissant des tâches',
     rewardTaskMeta: '+{{minutes}} min · {{cadence}}',
     rewardTaskStars: 'Difficulté : {{count}} sur 3',
-    rewardTaskWaiting: ' · en attente de votre validation',
-    approve: 'Valider',
+    rewardTaskWaiting: ' · en attente de votre approbation',
+    approve: 'Approuver',
     siteRequestsTitle: 'Demandes de sites',
     siteRequestsSub: 'Sites que cet appareil a demandé d’autoriser',
     siteRequestAllow: 'Autoriser',
@@ -760,12 +762,12 @@ export default {
     rateLimited: 'Trop de modifications à la fois. Patientez un instant et réessayez.',
     server: 'KidGate n’a pas pu terminer. Réessayez sous peu.',
     premiumRequired:
-      'Cette fonction est réservée à Premium. Les offres se gèrent dans l’app KidGate sur votre téléphone.',
+      'Cette fonction est réservée à Premium. Les formules se gèrent dans l’app KidGate sur votre téléphone.',
   },
 
   report: {
     title: 'Rapport hebdomadaire',
-    subtitle: 'Ce que KidGate a remarqué cette semaine.',
+    subtitle: 'Ce que KidGate a observé cette semaine.',
     weekOf: 'Semaine {{week}}',
     writtenAt: 'Écrit le {{when}}',
     triggerScheduled: 'Envoyé lundi',
@@ -821,15 +823,15 @@ export default {
 
     startTitle: 'Premiers pas',
     start1:
-      '**1. Configurez l’appareil parent.** Installez KidGate, ouvrez l’appli et choisissez *Ceci est un appareil parent*. Connectez-vous avec Google, Apple ou une adresse e-mail, puis nommez votre famille.',
+      '**1. Configurez l’appareil parent.** Installez KidGate, ouvrez l’appli et choisissez *Ceci est un appareil parent*. Connectez-vous avec Google ou une adresse e-mail (ou avec Apple, sur un iPhone), puis nommez votre famille.',
     start2:
-      '**2. Définissez un code parent.** Allez dans *Réglages → Sécurité* et créez un code parent à 6 chiffres. Il est nécessaire pour modifier les réglages sensibles et choisir les applis bloquées sur l’appareil de l’enfant. Ne le partagez pas avec vos enfants.',
+      '**2. Définissez un code PIN parent.** Allez dans *Réglages → Sécurité* et créez un code PIN parent à 6 chiffres. Il est nécessaire pour modifier les réglages sensibles et choisir les applis bloquées sur l’appareil de l’enfant. Ne le partagez pas avec vos enfants.',
     start3:
-      '**3. Connectez l’appareil de l’enfant.** Installez KidGate sur l’appareil de votre enfant et choisissez *Ceci est un appareil enfant*. Sur l’appareil parent, ouvrez *Famille* et touchez l’icône de scan (*Scanner un code*), puis scannez le QR code affiché sur l’appareil de l’enfant (ou saisissez le code à 6 caractères). Confirmez la connexion sur l’appareil de l’enfant.',
+      '**3. Connectez l’appareil de l’enfant.** Installez KidGate sur l’appareil de votre enfant et ouvrez-le. Sur un téléphone ou une tablette, choisissez *Ceci est un appareil enfant*. Sur l’appareil parent, ouvrez *Famille* et touchez l’icône de scan (*Scanner un code*), puis scannez le QR code affiché sur l’appareil de l’enfant (ou saisissez le code à 6 caractères). Si l’appareil de l’enfant le demande, confirmez-y la connexion ; une TV se connecte d’elle-même.',
     start4:
-      '**4. Accordez les autorisations sur l’appareil de l’enfant.** Ouvrez l’écran *État* sur l’appareil de l’enfant et autorisez toutes les permissions demandées par KidGate — sur Android : notifications, Accès aux données d’usage, Superposition aux autres apps, Accessibilité et batterie sans restriction ; sur iOS : *Autoriser l’utilisation des apps et des sites* (Temps d’écran). Les commandes ne fonctionneront pas complètement tant qu’elles ne sont pas actives.',
+      '**4. Accordez les autorisations sur l’appareil de l’enfant.** Ouvrez l’écran *État* sur l’appareil de l’enfant et touchez *Poursuivre la configuration* — l’appli vous guide à travers chaque autorisation dont KidGate a besoin. Sur Android : Notifications, Accès à l’utilisation, Superposition aux autres apps, Accessibilité (assistant de verrouillage), Alarmes et rappels, et Batterie sans restriction ; sur iOS : *Autoriser l’utilisation des apps et des sites web* (Temps d’écran). Les commandes ne fonctionneront pas complètement tant que ces autorisations ne sont pas actives.',
     start5:
-      '**5. Configurez les commandes.** Depuis l’appareil parent, ouvrez la fiche de l’appareil de l’enfant et réglez la limite quotidienne, les heures bloquées, les applis bloquées, le filtre web et les fonctions de localisation.',
+      '**5. Configurez les commandes.** Depuis l’appareil parent, ouvrez la fiche de l’appareil de l’enfant et réglez la Limite quotidienne, les Heures bloquées, les Applications bloquées, le Filtre web et les fonctions de localisation.',
     startNote:
       'L’appli contient aussi un guide pas à pas : *Réglages → Guide d’utilisation*, qui détaille l’association des appareils, les autorisations, les commandes quotidiennes et les fonctions de sécurité.',
 
@@ -837,19 +839,19 @@ export default {
 
     faq1Q: 'Puis-je gérer ma famille depuis un ordinateur ?',
     faq1A:
-      'Oui. Ouvrez le [tableau de bord web](/dashboard) et connectez-vous avec le même compte que dans l’appli — Google, Apple, ou votre e-mail et mot de passe. Vous y retrouvez la même famille, les mêmes appareils, rapports et réglages. La création de comptes et l’association d’appareils se font toujours dans l’appli mobile.',
+      'Oui. Ouvrez le [tableau de bord web](/dashboard) et scannez le code qu’il affiche avec l’application KidGate de votre téléphone — ou connectez-vous avec le même compte que dans l’appli : Google, Apple, ou votre e-mail et mot de passe. Vous y retrouvez la même famille, les mêmes appareils, rapports et réglages. Si vous êtes connecté avec un compte, modifier une commande demande votre code PIN parent. La création de comptes et l’association d’appareils se font toujours dans l’appli mobile.',
 
     faq2Q: 'Comment associer l’appareil parent et l’appareil enfant ?',
     faq2A:
-      'Sur l’appareil de l’enfant, ouvrez KidGate et choisissez *Ceci est un appareil enfant* — un QR code et un code à 6 caractères apparaissent. Sur l’appareil parent, ouvrez *Famille* et touchez l’icône de scan (*Scanner un code*), puis scannez le QR code (recommandé) ou saisissez le code à la main. Confirmez ensuite le nom du parent sur l’appareil de l’enfant. Les codes expirent — si l’association échoue, touchez *Nouveau code* sur l’appareil de l’enfant et réessayez.',
+      'Sur l’appareil de l’enfant, ouvrez KidGate. Sur un téléphone ou une tablette, choisissez *Ceci est un appareil enfant*. Un QR code et un code à 6 caractères apparaissent. Sur l’appareil parent, ouvrez *Famille* et touchez l’icône de scan (*Scanner un code*), puis scannez le QR code (recommandé) ou saisissez le code à la main. Si l’appareil de l’enfant le demande, confirmez-y le nom du parent ; une TV se connecte d’elle-même. Les codes expirent — si l’association échoue, touchez *Nouveau code* sur l’appareil de l’enfant et réessayez.',
 
     faq3Q: 'Deux parents peuvent-ils gérer la même famille ?',
     faq3A:
-      'Oui. Sur l’appareil du titulaire de la famille, ouvrez *Famille → + → Inviter un parent* et partagez le QR code ou le code d’invitation. L’autre parent installe KidGate, se connecte comme parent, ouvre *Famille* et touche l’icône de scan (*Scanner un code*), puis scanne le QR code ou saisit le code d’invitation. Le titulaire approuve ensuite la demande. Un abonnement couvre toute la famille ; seul le titulaire paie.',
+      'Oui. Sur l’appareil du titulaire de la famille, ouvrez *Famille → + → Inviter un parent* et partagez le QR code ou le code d’invitation. L’autre parent installe KidGate, se connecte comme parent, ouvre *Famille* et touche l’icône de scan (*Scanner un code*), puis scanne le QR code ou saisit le code d’invitation. Le titulaire approuve ensuite la demande. Une famille peut compter jusqu’à 3 parents avec la formule gratuite et pendant l’essai, et jusqu’à 6 avec Premium. Un abonnement couvre toute la famille ; seul le titulaire paie.',
 
     faq4Q: 'Comment fonctionne l’essai gratuit ?',
     faq4A:
-      'L’essai de 7 jours commence dès que vos premiers appareils parent et enfant sont connectés, et donne accès à toutes les fonctions. Retirer un appareil enfant ne le remet pas à zéro. À la fin, toutes les règles continuent de fonctionner gratuitement sur un appareil enfant ; Premium conserve l’activité en direct, l’historique, les rapports hebdomadaires et tous les appareils.',
+      'L’essai de 7 jours commence dès que vos premiers appareils parent et enfant sont connectés, et donne accès à toutes les fonctions. Retirer un appareil enfant ne le remet pas à zéro. À la fin, toutes les règles continuent de fonctionner gratuitement et un appareil enfant de votre choix continue d’envoyer ses rapports ; Premium rétablit l’activité en direct, l’historique, les rapports hebdomadaires et les rapports de tous les appareils.',
 
     faq5Q: 'Comment annuler mon abonnement ?',
     faq5A:
@@ -857,23 +859,23 @@ export default {
 
     faq6Q: 'Comment restaurer mes achats ?',
     faq6A:
-      'Sur l’appareil parent, ouvrez l’écran *Forfaits* et touchez *Restaurer les achats*. Vérifiez que vous êtes connecté avec le même compte de boutique que lors de l’achat initial. Notez que seul le titulaire de la famille peut s’abonner ou restaurer des achats.',
+      'Sur l’appareil parent, ouvrez l’écran *Formules* et touchez *Restaurer les achats*. Vérifiez que vous êtes connecté avec le même compte de boutique que lors de l’achat initial. Notez que seul le titulaire de la famille peut s’abonner ou restaurer des achats.',
 
     faq7Q: 'Pourquoi les données de temps d’écran n’apparaissent-elles pas ?',
     faq7A:
       'Les données d’usage viennent de l’appareil de l’enfant. Vérifiez qu’il est en ligne, ouvrez-y KidGate et regardez l’écran *État* — chaque ligne d’autorisation doit être marquée comme autorisée (sur Android, l’accès aux données d’usage est nécessaire au suivi du temps d’écran). Les rapports peuvent mettre quelques minutes à se synchroniser.',
 
-    faq8Q: 'Pourquoi le verrouillage ou les heures bloquées ne fonctionnent-ils pas ?',
+    faq8Q: 'Pourquoi le verrouillage ou les Heures bloquées ne fonctionnent-ils pas ?',
     faq8A:
-      "Sur Android, le verrouillage nécessite *Superposition aux autres apps* et l’assistant *Accessibilité* activés, ainsi qu’une batterie sans restriction. Sur Xiaomi, Samsung, Oppo, Vivo et appareils similaires, autorisez aussi le démarrage automatique et retirez KidGate de toute liste d'« applis en veille » (voir *État → Garder KidGate actif* sur l’appareil de l’enfant). Sur iOS, le verrouillage dépend de l’autorisation Temps d’écran. Si une autorisation est désactivée plus tard, vous recevrez une alerte de protection sur l’appareil parent.",
+      'Sur Android, le verrouillage nécessite *Superposition aux autres apps* et l’assistant *Accessibilité* activés, ainsi qu’une batterie sans restriction. Sur Xiaomi, Samsung, Oppo, Vivo et appareils similaires, autorisez aussi le démarrage automatique et retirez KidGate de toute liste d’« applis en veille » (voir *État → Autoriser le démarrage automatique* sur l’appareil de l’enfant). Sur iOS, le verrouillage dépend de l’autorisation Temps d’écran. Si une autorisation est désactivée plus tard, vous recevrez une alerte de protection sur l’appareil parent.',
 
     faq9Q: 'Comment bloquer des applis précises ?',
     faq9A:
-      'La sélection des applis se fait sur l’appareil de l’enfant : ouvrez *KidGate → Réglages*, saisissez le code parent, choisissez *Choisir les applis à bloquer*, puis enregistrez. Ensuite, sur l’appareil parent, ouvrez l’écran *Applis bloquées* de l’appareil et activez *Activer le blocage d’applis*. Sur iOS, Apple peut masquer les noms exacts des applis à l’appareil parent — c’est une limite de la plateforme.',
+      'La sélection des applis se fait sur l’appareil de l’enfant : ouvrez *KidGate → Réglages*, touchez *Déverrouiller avec le code PIN parent*, ouvrez *Applications bloquées*, choisissez les applis et enregistrez. Ensuite, sur l’appareil parent, ouvrez l’écran *Applications bloquées* de cet appareil et activez *Activer le blocage des applications*. Sur iOS, Apple peut masquer les noms exacts des applis à l’appareil parent — c’est une limite de la plateforme.',
 
     faq10Q: 'Pourquoi la position de mon enfant ne se met-elle pas à jour ?',
     faq10A:
-      'La localisation doit être autorisée pour KidGate sur l’appareil de l’enfant, et l’appareil a besoin d’une connexion réseau. Ouvrez l’écran *Localisation* de l’appareil depuis le téléphone parent et tirez vers le bas pour actualiser. Les modes d’économie de batterie peuvent retarder les mises à jour, et le GPS en intérieur peut être moins précis.',
+      'La localisation doit être autorisée pour KidGate sur l’appareil de l’enfant, et l’appareil a besoin d’une connexion réseau. Sur l’appareil parent, ouvrez l’écran *Localisation* de l’appareil et touchez *Actualiser la position*. Les modes d’économie de batterie peuvent retarder les mises à jour, et le GPS en intérieur peut être moins précis.',
 
     faq11Q: 'Comment retirer KidGate de l’appareil de mon enfant ?',
     faq11A:
@@ -881,7 +883,7 @@ export default {
 
     faq12Q: 'Comment supprimer mon compte et mes données ?',
     faq12A:
-      'Dans l’appli parent, allez dans *Réglages → Compte → Supprimer le compte*. Cela supprime définitivement votre compte familial et toutes les données — appareils, activité, historique de localisation et photos SOS — pour tous les parents et enfants. Consultez notre page [Suppression du compte et des données](/delete-account) pour toutes les options, y compris la suppression sans avoir l’appli installée.',
+      'Dans l’appli parent, allez dans *Réglages → Compte → Supprimer le compte*. Après un délai de 14 jours pendant lequel vous pouvez annuler, cela supprime définitivement votre compte familial et toutes les données — appareils, activité, historique de localisation et photos SOS — pour tous les parents et enfants. Consultez notre page [Suppression du compte et des données](/delete-account) pour toutes les options, y compris la suppression sans avoir l’appli installée.',
 
     legalTitle: 'Mentions légales',
     legalDeletion: 'Suppression du compte et des données',
@@ -890,14 +892,14 @@ export default {
   download: {
     eyebrow: 'Télécharger',
     macosTitle: 'macOS',
-    macosRequires: 'macOS 12 ou version ultérieure. Apple silicon et Intel.',
+    macosRequires: 'macOS 12 ou version ultérieure, sur un Mac à puce Apple silicon.',
     windowsTitle: 'Windows',
     windowsRequires: 'Windows 10 ou version ultérieure, 64 bits.',
     button: 'Télécharger',
     warningSub:
-      'Windows affiche cet avertissement pour toute application installée hors de sa propre boutique par un développeur qui ne figure pas encore sur sa liste vérifiée — il ne signale rien qui ait été trouvé dans KidGate. La carte Windows ci-dessus indique comment l’autoriser. Le paquet Mac est signé et notarisé par Apple et ne déclenche aucun avertissement. Téléchargez uniquement depuis kidgate.app.',
+      'Windows affiche un avertissement SmartScreen pour toute application installée hors de sa propre boutique par un développeur qui ne figure pas encore sur sa liste vérifiée — il ne signale rien qui ait été trouvé dans KidGate. La carte Windows ci-dessus indique comment l’autoriser. Le paquet Mac est signé avec un Developer ID Apple et notarisé par Apple : il ne déclenche donc aucun avertissement. Téléchargez uniquement depuis kidgate.app.',
     macosSteps:
-      'Ouvrez le paquet téléchargé et suivez l’installateur. macOS vous demande ensuite une fois d’autoriser l’extension système KidGate, dans les Réglages Système — le Filtre web ne fonctionne pas tant que vous ne l’avez pas fait.',
+      'Ouvrez le paquet téléchargé et suivez l’installateur. macOS vous demande ensuite une fois d’autoriser l’extension système KidGate : ouvrez les réglages indiqués par ce message et autorisez-la à cet endroit. Le Filtre web ne fonctionne pas tant que vous ne l’avez pas fait.',
     windowsSteps:
       'Quand Windows indique avoir protégé votre PC, choisissez Informations complémentaires puis Exécuter quand même.',
   },
@@ -911,11 +913,11 @@ export default {
     storyP1:
       'Presque toutes les familles vivent la même soirée : un minuteur que personne n’a accepté, un téléphone confisqué et un enfant persuadé que les règles ont changé dans son dos. Les outils censés régler cela l’ont surtout aggravé — d’un côté un verrouillage sans explication, de l’autre un tableau de bord qui se lit comme de la surveillance.',
     storyP2:
-      'Nous avons donc construit la version que nous voulions à la maison. Le parent règle une fois la limite quotidienne, les Heures bloquées, le Blocage d’applis et le Filtrage web, et l’appareil s’y tient. L’enfant voit les mêmes chiffres que le parent, peut demander plus de temps et peut joindre un parent avec le SOS chaque fois que l’appareil est en ligne. KidGate ne fait pas semblant d’être absent.',
+      'Nous avons donc construit la version que nous voulions à la maison. Le parent règle une fois la Limite quotidienne, les Heures bloquées, les Applications bloquées et le Filtre web, et l’appareil s’y tient. L’enfant voit les mêmes chiffres que le parent, peut demander plus de temps et peut joindre un parent avec le SOS chaque fois que l’appareil est en ligne. KidGate ne fait pas semblant d’être absent.',
     storyP3:
-      'Il fonctionne sur iPhone, Android, Mac et Windows, avec une extension pour Chrome et un tableau de bord qui s’ouvre dans n’importe quel navigateur. Une famille, un forfait, tous les appareils.',
+      'Il fonctionne sur iPhone, Android, Mac, Windows et Android TV, avec une extension Chrome pour le Filtre web et un tableau de bord que les parents ouvrent dans n’importe quel navigateur. Une famille, un abonnement, tous les appareils.',
     valuesEyebrow: 'Ce en quoi nous croyons',
-    valuesTitle: 'Quatre règles que nous ne cassons pas',
+    valuesTitle: 'Quatre règles auxquelles nous ne dérogeons pas',
     valuesSub:
       'Écrites avant la première fonctionnalité, et chaque fonctionnalité depuis y est confrontée.',
     value1Title: 'Un enfant n’est pas un suspect',
@@ -923,23 +925,23 @@ export default {
       'Les règles sont visibles sur l’appareil auquel elles s’appliquent. L’enfant voit ce qui est activé et le temps qu’il lui reste, peut en demander plus et peut déclencher un SOS à tout moment. Un contrôle qui doit rester secret n’est pas un contrôle dont une famille peut parler.',
     value2Title: 'Les données de votre famille ne sont pas à vendre',
     value2Text:
-      'Jamais de publicité. Rien concernant un enfant n’est utilisé à des fins publicitaires ni revendu. Vous pouvez demander la suppression du compte familial et de tout ce qu’il contient à tout moment — depuis l’application ou depuis ce site — et tout disparaît 14 jours plus tard.',
-    value3Title: 'Nous disons ce que nous ne savons pas faire',
+      'Jamais de publicité. Rien concernant un enfant n’est utilisé à des fins publicitaires ni revendu. Vous pouvez demander la suppression de votre compte familial et de tout ce qu’il contient à tout moment — depuis l’application, ou par e-mail comme l’explique ce site — et tout disparaît 14 jours plus tard.',
+    value3Title: 'Nous disons ce que nous ne pouvons pas faire',
     value3Text:
       'Chaque plateforme limite ce qu’une application a le droit d’imposer. Là où KidGate fait au mieux — fermer une appli bloquée sur un ordinateur plutôt qu’empêcher son lancement — l’écran le dit, au lieu d’afficher une coche verte.',
-    value4Title: 'Une famille, un forfait',
+    value4Title: 'Une famille, une formule',
     value4Text:
-      'Un seul abonnement Premium couvre tous les parents et tous les appareils des enfants. La Limite quotidienne, les Heures bloquées, les Applications bloquées et le Filtre web continuent de fonctionner gratuitement sur un appareil enfant : les règles de sécurité ne sont jamais derrière le mur payant.',
+      'Un seul abonnement Premium couvre tous les parents et tous les appareils des enfants. Sans lui, la Limite quotidienne, les Heures bloquées, les Applications bloquées, le Verrouillage de l’appareil et le Filtre web continuent de fonctionner sur tous les appareils enfants, et le SOS vous parvient toujours : les règles de sécurité essentielles ne sont jamais derrière le mur payant.',
     makeEyebrow: 'Ce que nous faisons',
     makeTitle: 'Un seul KidGate, où que soit l’écran',
     makeSub:
       'Les mêmes règles, écrites une fois, appliquées avec ce que chaque plateforme autorise.',
     make1Title: 'iPhone et iPad',
     make1Text:
-      'Limites quotidiennes, Heures bloquées et blocage d’applis via le framework Screen Time d’Apple.',
+      'Limites quotidiennes, Heures bloquées et blocage d’applis via Temps d’écran, le framework d’Apple.',
     make2Title: 'Android',
     make2Text:
-      'Limites, blocage d’applis, verrouillage plein écran et Filtrage web, plus une alerte dès qu’une nouvelle appli apparaît.',
+      'Limites, blocage d’applis, verrouillage plein écran et Filtre web, plus une alerte dès qu’une nouvelle appli apparaît.',
     make3Title: 'macOS',
     make3Text:
       'L’agent de bureau sur un Mac : le même planning et les mêmes limites, et une journée qu’un parent peut vraiment lire.',
@@ -948,13 +950,13 @@ export default {
       'Le même agent sur un PC, avec un service en arrière-plan qui le relance s’il est fermé ou arrêté.',
     make5Title: 'Android TV',
     make5Text:
-      'L’écran du salon, traité comme un appareil partagé par la famille et non comme celui d’un seul enfant — avec les mêmes limites et le même planning que sur les téléphones. Cette version a déjà tourné sur du matériel réel et attend sa sortie sur le magasin d’applications.',
+      'L’écran du salon, traité comme un appareil partagé par la famille et non comme celui d’un seul enfant — avec les mêmes limites et le même planning que sur les téléphones. Une télé ne partage pas sa position et n’a pas de SOS.',
     make6Title: 'Chrome',
     make6Text:
-      'Une extension de navigateur qui porte le même Filtrage web à l’intérieur de Chrome, sur un ordinateur qui a déjà KidGate comme sur un ordinateur qui ne peut pas l’avoir. Elle est construite et associée, et attend la validation du Chrome Web Store.',
+      'Une extension de navigateur qui porte le même Filtre web à l’intérieur de Chrome, sur un ordinateur qui a déjà KidGate comme sur un ordinateur qui ne peut pas l’avoir. Elle filtre le Web dans Chrome et rien d’autre : elle ne mesure pas le temps d’écran et ne bloque pas d’applis.',
     make7Title: 'Tableau de bord parent',
     make7Text:
-      'Le navigateur est le second écran du parent. Connectez-vous depuis n’importe quel ordinateur avec un code affiché sur votre téléphone ; rien à installer.',
+      'Le navigateur est le second écran du parent. Connectez-vous depuis n’importe quel ordinateur en scannant un code avec votre téléphone ; rien à installer.',
     factsEyebrow: 'KidGate aujourd’hui',
     factsTitle: 'Quatre chiffres',
     fact1Label: 'langues, de l’arabe au vietnamien',

@@ -28,9 +28,14 @@ import {
   supportsDailyLimit,
   supportsSchedule,
 } from './controlSupport';
-import { supportsAppInstallAlerts, supportsMessageMonitoring } from './alertSupport';
+import {
+  supportsAppInstallAlerts,
+  supportsMessageMonitoring,
+  supportsSearchMonitoring,
+} from './alertSupport';
 import { supportsAppInventory } from './appInventorySupport';
 import { supportsRewardTasks } from './rewardTaskSupport';
+import { MAX_SCHEDULE_WINDOWS } from './scheduleWindow';
 
 /** What a support rule is allowed to look at: the device document, no screen state. */
 export type DeviceSupportFacts = Pick<Device, 'platform' | 'capabilities'>;
@@ -127,7 +132,9 @@ export function getActionSections(
         {
           id: 'schedule',
           title: t('deviceDetail.blockedHours'),
-          description: t('deviceDetail.manageUpToThreeTimeRanges'),
+          description: t('deviceDetail.manageTimeRanges', {
+            max: MAX_SCHEDULE_WINDOWS,
+          }),
           icon: 'moon',
           feature: 'Schedule',
           supportedBy: supportsSchedule,
@@ -335,15 +342,95 @@ export function getActionSections(
           description: t('messageMonitoring.actionDescription'),
           icon: 'message',
           feature: 'App Review Reminders',
-          // Android only — the notification-listener channel iOS has no
-          // equivalent of. `supportsMessageMonitoring` answers false everywhere
-          // else, so the struck-out row says "not available on this device"
-          // rather than offering a feed that can never fill.
-          supportedBy: supportsMessageMonitoring,
+          // Messages are Android only — the notification-listener channel iOS
+          // has no equivalent of. Searches are not: `apps/extension` reads the
+          // URL and publishes `searchMonitoring: true`, and the screen behind
+          // this card serves a search-only device (`searchOnlyNote`). Gated on
+          // messages alone, the card was struck out on the extension and its
+          // search switch was reachable from the dashboard only. A device that
+          // does neither still gets the struck-out row, never an empty feed.
+          supportedBy: device =>
+            supportsMessageMonitoring(device) || supportsSearchMonitoring(device),
         },
       ],
     },
   ];
+}
+
+/**
+ * Cards that belong to the PERSON once a device is assigned.
+ *
+ * **Moved here from `apps/mobile/src/features/deviceDetail/useDeviceDetailScreen.ts`
+ * on 2026-09-28**, when `apps/dashboard`'s device grid turned out to draw every
+ * one of them on an assigned machine — editing the child's blocked hours and
+ * web filter from one device's page with nothing saying they were the child's.
+ * Both consoles now drop the same seven (`omitPersonLevelActions`), and each
+ * draws one pointer to the child's page in their place
+ * (`deviceDetail.managedAtChild`), so the parent is sent rather than left
+ * hunting an absence. The child hub carries the equivalent of every id here.
+ *
+ * **Before adding an id, ask: could a device with no `childId` still do it
+ * standalone?** An unassigned device keeps the full grid — there is no profile
+ * to defer to, and that is the honest floor rather than a lesser mode. Still
+ * per-device on purpose: app-blocking, app-limits, location, tamper-alerts,
+ * apps, web-history (`docs/CHILD_HUB.md`).
+ */
+export const PERSON_LEVEL_ACTION_IDS: ReadonlySet<string> = new Set([
+  /*
+   * `daily-limit` belongs here ONLY because the child's budget is one shared
+   * total the server divides between the assigned devices
+   * (`docs/CHILD_HUB.md`, "One daily limit, one place"): a device's own
+   * `controls.dailyLimitMinutes` is an allocation, not a number a parent
+   * picks. Hiding it before that existed was a regression — the parent was
+   * left editing a figure nothing enforced while the one that locks was
+   * off-screen. **If the shared budget is ever removed, this id must come
+   * straight back out**, or that returns.
+   */
+  'daily-limit',
+  'reward-tasks',
+  'place-alerts',
+  /*
+   * 2026-08-26, second pass: the rule cards (`schedule`, `web-filter`) already
+   * write `Child.rules` on an assigned device — the write fans out to every
+   * sibling — so a second copy of the same switch sitting on one machine's page
+   * was never a different setting, only a second door to it.
+   * `request-check-in` and `sos-alerts` are the safety pair: a check-in asks
+   * whichever device the parent is worried about, and the SOS feed reads every
+   * device a person could raise one from — both questions about the CHILD,
+   * asked from the wrong altitude on a single device's page.
+   */
+  'schedule',
+  'web-filter',
+  'request-check-in',
+  'sos-alerts',
+]);
+
+/** Whether this card leaves an assigned device's grid for the child's page. */
+export function isPersonLevelAction(action: Pick<DeviceAction, 'id'>): boolean {
+  return PERSON_LEVEL_ACTION_IDS.has(action.id);
+}
+
+/**
+ * One device's sections, minus what belongs to the person it is assigned to.
+ *
+ * `childId` absent or empty returns the sections untouched: an unassigned
+ * device has nobody to defer to. A section left with no card is dropped rather
+ * than drawn as a heading over nothing, the same rule `getVisibleActionSections`
+ * applies.
+ */
+export function omitPersonLevelActions<Section extends { actions: DeviceAction[] }>(
+  sections: Section[],
+  childId: string | null | undefined,
+): Section[] {
+  if (!childId) {
+    return sections;
+  }
+  return sections
+    .map(section => ({
+      ...section,
+      actions: section.actions.filter(action => !isPersonLevelAction(action)),
+    }))
+    .filter(section => section.actions.length > 0);
 }
 
 /**

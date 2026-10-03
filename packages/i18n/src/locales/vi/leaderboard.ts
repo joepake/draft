@@ -1,20 +1,10 @@
 export const leaderboard = {
   title: 'Bảng tích sao',
   thisWeek: 'Tuần này',
-  resetsNote: 'Bắt đầu lại vào mỗi thứ Hai.',
+  resetsNoteAt: 'Bắt đầu lại lúc {{time}} {{weekday}} hằng tuần.',
   rowA11y: 'Hạng {{rank}}, {{name}}, {{count}} sao',
   settingsTitle: 'Bảng tích sao',
-  settingsBody: 'Cho các con thấy mỗi bạn kiếm được bao nhiêu sao trong tuần này.',
-  screenTimeTitle: 'Thời gian cả nhà',
-  screenTimeSub: 'Ít thời gian nhất xếp trước · tuần này',
-  screenTimeRowA11y: '{{rank}}. {{name}}, {{duration}}',
-  screenTimeParentBadge: 'Phụ huynh',
-  screenTimeParentFallbackName: 'Phụ huynh',
-  screenTimeSettingsTitle: 'Thời gian cả nhà',
-  screenTimeSettingsBody:
-    'Cho các con thấy tuần này mỗi con dùng màn hình bao lâu. Mặc định đang tắt.',
-  screenTimeNote:
-    'Tính tổng trên tất cả thiết bị của mỗi người. Bắt đầu lại vào thứ Hai hằng tuần.',
+  settingsBody: 'Cho các con thấy mỗi con kiếm được bao nhiêu sao trong tuần này.',
   childrenTitle: 'Các con',
   manageAccessibility: 'Quản lý các con và thiết bị',
   addChild: 'Thêm con',

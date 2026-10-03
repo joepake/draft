@@ -8,6 +8,7 @@ export const family = {
   addChildOption: 'Добавить устройство ребёнка',
   addJoinFamilyOption: 'Присоединиться к семье',
   addParentOption: 'Пригласить родителя',
+  parentLimitFull: 'Больше родителей в одной семье быть не может.',
   loginWebOption: 'Войти через браузер',
   // The "who uses this device?" assignment sheet.
   assignSheetTitle: 'Кто пользуется {{deviceName}}?',
@@ -31,7 +32,7 @@ export const family = {
     'Копирует правила {{childName}}, включая разрешённые и заблокированные сайты.',
   quickProtectBedtime: 'Заблокированные часы на ночь',
   quickProtectBedtimeHint: 'Блокирует использование устройства ночью, с 22:00 до 7:00.',
-  quickProtectDailyLimit: 'Дневной лимит экранного времени',
+  quickProtectDailyLimit: 'Дневной лимит',
   quickProtectDailyLimitHint:
     '{{minutes}} минут в день, суммарно по всем устройствам ребёнка.',
   quickProtectWebFilter: 'Веб-фильтр',
@@ -62,6 +63,14 @@ export const family = {
   assignDeviceCta: 'Назначить ребёнку…',
   unassignedHint: 'Эти устройства пока никому не засчитываются.',
   unassignedHintMember: 'Эти устройства детям назначает владелец семьи.',
+  // One device's own page (the web's Controls tab): the two sentences above are
+  // said to a group heading, and "these devices" is false about one machine.
+  unassignedDeviceHint: 'Это устройство пока никому не засчитывается.',
+  unassignedDeviceHintMember:
+    'Кто пользуется этим устройством, выбирает владелец семьи.',
+  // The pairing sheets' success step for a joined parent, who may pair but not assign.
+  pairedDeviceBodyMember:
+    'Устройство ребёнка подтвердило сопряжение. Кто им пользуется, выбирает владелец семьи.',
   // The footer strip: children who hold no device get no group of their own.
   childrenWithoutDeviceTitle: 'Дети без устройства',
   // Child detail screen.
@@ -70,9 +79,14 @@ export const family = {
   childDetailDevicesTitle: 'Устройства',
   childDetailSwipeHint: 'Проведите по устройству, чтобы отменить назначение.',
   childDetailAssignMore: 'Назначить ещё устройство…',
+  // The same row while the child has no device yet — "another" needs a first.
+  childDetailAssignFirst: 'Назначить устройство…',
   childDetailAssignSheetTitle: 'Назначить устройство ребёнку {{childName}}',
   childDetailNoDevices:
     'Устройств пока нет. Назначьте ниже или подключите новое на вкладке «Семья».',
+  // Same screen when nothing is left below to assign.
+  childDetailNoDevicesPair:
+    'Устройств пока нет. Подключите устройство на вкладке «Семья» и выберите этого ребёнка, когда приложение спросит, кто им пользуется.',
   // Same screen for a joined parent, who may pair but may not assign.
   childDetailNoDevicesMember:
     'Устройств пока нет. Только владелец семьи решает, кому принадлежит устройство.',
@@ -81,7 +95,7 @@ export const family = {
   scanButtonAccessibility: 'Сканировать код',
   scanTitle: 'Сканировать код',
   scanBody:
-    'Наведите камеру на устройство ребёнка, приглашение в семью или код, показанный на компьютере.',
+    'Наведите камеру на код с устройства ребёнка, приглашение в семью или код входа в веб-версию.',
   manualCodeLabel: 'Введите 6-значный код',
   manualInstructions: 'Введите 6-значный код, показанный на другом устройстве.',
 
@@ -133,6 +147,11 @@ export const family = {
   healthOffline: 'Не в сети',
   devicePausedLabel: 'На паузе',
   devicePausedHint: 'На паузе в бесплатном тарифе — все правила по-прежнему действуют',
+  // What Paused means, said where the choice is made: the choose-a-device sheet on
+  // both consoles. Checked against every agent 2026-09-28 — enforcement never
+  // stops while parked; the reports do, and an SOS still goes through.
+  devicePausedMeaning:
+    'Устройство на паузе продолжает применять правила, которые у него уже есть. Оно перестаёт отправлять экранное время, местоположение и историю, но SOS по-прежнему до вас доходит.',
   parkReviewTitle: 'Включите это до конца пробного периода',
   parkReviewBody:
     'Когда пробный период закончится, одно устройство продолжит отправлять отчёты и принимать изменения правил, а остальные сохранят те правила, которые у них есть. На них правила можно будет только смягчать, поэтому то, что выключено сейчас, останется выключенным.',
@@ -144,14 +163,34 @@ export const family = {
   parkedBannerBody:
     'Ваши правила продолжают работать на каждом устройстве. Бесплатный тариф получает отчёты с одного устройства, и только на нём можно ужесточить правила — выберите это устройство или перейдите на Premium, чтобы сохранить все.',
   parkedBannerAction: 'Выбрать устройство',
+  holdFamilyTitle: 'KidGate: семья временно приостановлена',
+  holdDeviceTitle: 'KidGate: устройство «{{deviceName}}» временно приостановлено',
+  holdFamilyBody:
+    'Все устройства сохраняют свои правила, но не отправляют отчёты, пока приостановка не снята.',
+  holdDeviceBody:
+    'Это устройство сохраняет свои правила, но не отправляет отчёты, пока приостановка не снята.',
+  holdReasonUnusualActivity: 'Причина: необычная активность в этом аккаунте.',
+  holdReasonOutdatedApp:
+    'Причина: приложение KidGate в этом аккаунте устарело. Обновите его, затем обратитесь в поддержку.',
+  holdReasonTermsViolation: 'Причина: нарушение условий использования KidGate.',
+  holdReasonOther: 'Причина: KidGate проверяет этот аккаунт.',
+  holdNote: 'Сообщение от KidGate: {{note}}',
+  holdAppeal: 'Написать в поддержку',
+  holdAppealMessage: 'Хочу узнать о приостановке аккаунта моей семьи.',
+  pairedDevicePaused:
+    'Бесплатный тариф получает отчёты с одного устройства, и только на нём можно ужесточить правила, поэтому это устройство подключено на паузе.',
+  pairingWillStartPaused:
+    'Бесплатный тариф получает отчёты с одного устройства, и только на нём можно ужесточить правила, поэтому новое устройство будет подключено на паузе.',
   chooseMonitoredTitle: 'Выберите основное устройство',
   chooseMonitoredBody:
     'Все правила продолжают работать на всех. Выбранное устройство отправляет экранное время и местоположение, и только на нём можно ещё ужесточить правила — на остальных их можно только смягчить. Менять выбор можно раз в {{days}} дн.',
   chooseMonitoredConfirm: 'Следить за этим устройством',
   chooseMonitoredUpgrade: 'Сохранить все устройства — перейти на Premium',
   chooseMonitoredDone: '{{name}} теперь отчитывающееся устройство',
+  chooseMonitoredCurrent: 'Отчитывается сейчас',
   monitoredCooldown: 'Отчитывающееся устройство можно менять только раз в {{days}} дн.',
-  monitoredChooseFailed: 'Не удалось сменить отчитывающееся устройство',
+  monitoredChooseFailed:
+    'Не удалось сменить отчитывающееся устройство. Повторите попытку.',
 
   cardWhereLabel: 'Местоположение',
 
@@ -171,9 +210,6 @@ export const family = {
     'Добавьте устройство ребёнка, чтобы отслеживать экранное время и использование приложений.',
 
   setupFamilyTitle: 'Настройте семью',
-
-  setupFamilyDescription:
-    'Создайте семью, чтобы подключить устройства ваших детей, или присоединитесь к существующей семье по приглашению другого родителя.',
 
   createFamilyButton: 'Создать семью',
 
@@ -205,18 +241,19 @@ export const family = {
   guestBenefitLocationTitle: 'Местоположение и Check-In',
 
   guestBenefitLocationBody:
-    'Узнавайте, где находится ребенок, и просите его подтвердить, что с ним всё в порядке.',
+    'Узнавайте, где находится ребёнок, и просите его подтвердить, что с ним всё в порядке.',
 
   stepsHeading: 'Первые шаги',
 
-  step1Title: 'Нажмите «Добавить устройство ребёнка»',
+  step1Title: 'Откройте KidGate на устройстве ребёнка',
 
-  step1Description: 'Здесь появится QR-код для привязки, готовый к сканированию.',
+  step1Description:
+    'Установите KidGate на телефон, планшет, телевизор или компьютер ребёнка. На телефоне или планшете выберите «Это устройство ребёнка». Появятся QR-код и код из 6 символов.',
 
-  step2Title: 'Отсканируйте его с устройства ребёнка',
+  step2Title: 'Нажмите здесь «Добавить устройство ребёнка»',
 
   step2Description:
-    'Установите KidGate на телефон или планшет ребёнка, выберите «Это устройство ребёнка», затем отсканируйте код.',
+    'Отсканируйте этот QR-код этим телефоном или введите код из 6 символов.',
 
   connectChildButton: 'Подключить устройство ребёнка',
   listHint: 'Проведите по устройству влево, чтобы удалить его',
@@ -242,7 +279,7 @@ export const family = {
   deviceRemovedAlertTitle: 'Устройство удалено',
 
   deviceRemovedAlertMessage:
-    'Один из родителей удалил это устройство из семейной группы. Снова выберите роль «Ребенок», чтобы подключить его.',
+    'Один из родителей удалил это устройство из семейной группы. Снова выберите роль «Ребёнок», чтобы подключить его.',
 
   deviceNotRegistered: 'Это устройство ещё не зарегистрировано.',
 

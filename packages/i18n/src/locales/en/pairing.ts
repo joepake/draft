@@ -6,7 +6,7 @@ export const pairing = {
     'Connect this child device on KidGate: on the parent device open KidGate → Family → Scan a code, then scan the QR code or enter code {{code}}. The code expires in 5 minutes.',
   connectChildPhone: 'Connect a child device',
   parentInstructions:
-    'On the child device, open KidGate and choose This is a child device. Then enter the code shown on that screen.',
+    'Open KidGate on the child device. On a phone or tablet, choose This is a child device. Then enter the 6-character code it shows.',
   parentScanInstructions: 'Point your camera at the QR code on the child device.',
   childWaitingTitle: 'Waiting for a parent',
   childWaitingSubtitle:
@@ -14,13 +14,17 @@ export const pairing = {
   childCodeLabel: 'Or share this code',
   childScanHint:
     'Parent: open KidGate → Family → {{scan}} → scan the QR code or enter the code.',
+  extensionCloseHint:
+    'You can close this — the code keeps working. Open KidGate again to confirm the parent.',
   childConnecting: 'Connected. Setting up this device…',
   childPairedTitle: 'You are connected',
   childPairedSubtitle: 'Setting up this device…',
   connectChild: 'Connect child device',
   waitingChildConfirm: 'Request sent. Waiting for confirmation on the child device.',
+  // Conditional on purpose: a TV confirms itself (`apps/tv/src/pairing.ts`),
+  // and the claim response does not say what kind of device was claimed.
   waitingChildConfirmHint:
-    'On the child device, tap "Yes, connect" to finish. You can close this — pairing continues in the background.',
+    'If the child device asks, select “Yes, connect” to finish. A TV connects on its own. You can close this — pairing continues in the background.',
   childConfirmedTitle: 'Device connected',
   childConfirmedBody:
     'The child device confirmed the pairing. Next, choose who uses it.',
@@ -44,10 +48,19 @@ export const pairing = {
   manualCodeLabel: 'Code from the child device',
   openingScanner: 'Opening camera…',
   cameraPermissionRequired: 'Camera access is required to scan the QR code.',
-  unableToOpenScanner: 'Unable to open the camera scanner.',
+  unableToOpenScanner:
+    'Unable to open the camera scanner. Enter the code manually instead.',
   newCode: 'New code',
   done: 'Done',
   unableToCreateCode: 'Unable to create a code. Try again.',
+  extensionUnsupportedSystem:
+    'This operating system is not supported. KidGate works on a Chromebook, a Mac or a Windows PC.',
+  // `billing/device-limit-reached` on a claim, with the `ceiling` the server
+  // sends beside it. `errors.deviceLimitReached` stays for callers without it.
+  deviceLimitReachedCeiling:
+    'This family has reached the number of devices KidGate covers ({{limit}}). Remove a device you no longer use, then try again.',
+  // A pairing call refused with a 429 that said how long to wait.
+  tooManyAttemptsWait: 'Too many attempts. Try again in {{minutes}} min.',
   inviteParentTitle: 'Add another parent device',
   inviteParentInstructions:
     'On the other device, open KidGate → Family → Scan a code, then scan this QR code or enter the code within 15 minutes. Approve the request here to connect that parent.',
@@ -64,7 +77,7 @@ export const pairing = {
   parentJoinDecline: 'Decline',
   parentJoinRejected: 'The family owner declined your request.',
   parentJoinExpired: 'The approval request has expired. Ask for a new invite.',
-  unableToResolveParentJoin: 'Unable to resolve this request.',
+  unableToResolveParentJoin: 'Unable to answer this join request. Try again.',
   joinedFamily: 'You joined the family. Its child devices now appear here.',
   joinedFamilyTitle: 'Joined family',
   joinedFamilyMessage:

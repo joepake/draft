@@ -25,8 +25,9 @@ export const sos = {
   escapeGrantedTitle: 'SOS inviato',
   escapeGrantedBody:
     'I tuoi genitori sono stati avvisati. Questo dispositivo resta bloccato.',
-  toastSentWithoutPhoto:
-    'SOS inviato, ma senza foto. Se puoi, consenti l’accesso alla fotocamera nelle impostazioni e riprova.',
+  toastSentWithoutPhoto: 'SOS inviato senza foto.',
+  toastSentWithoutPhotoCamera:
+    'SOS inviato senza foto. Per aggiungerne una la prossima volta, consenti l’accesso alla Fotocamera nelle Impostazioni.',
   toastSendFailed:
     'Impossibile inviare l’SOS. Riprova, oppure chiama qualcuno di cui ti fidi.',
   sendFailedBannerTitle: 'Il tuo ultimo SOS non è stato inviato',
@@ -35,12 +36,14 @@ export const sos = {
   headerTitle: 'SOS di emergenza',
   headerSubtitle: 'Usalo quando ti senti in pericolo o hai bisogno di aiuto immediato.',
   infoInstantAlertLabel: 'Avviso immediato',
-  infoInstantAlertDetail: 'I tuoi genitori ricevono subito una notifica urgente.',
+  infoInstantAlertDetail: 'KidGate invia subito una notifica urgente ai tuoi genitori.',
   infoYourLocationLabel: 'La tua posizione',
   infoYourLocationDetail: 'Condivisa con i tuoi genitori così sanno dove ti trovi.',
   infoQuickSelfieLabel: 'Una foto veloce',
   infoQuickSelfieDetail:
     'Aggiunta dopo l’invio dell’avviso, se la fotocamera è già disponibile.',
+  infoQuickSelfieDetailPhone:
+    'Dopo l’invio dell’avviso si apre la fotocamera, così puoi aggiungere una foto. Puoi anche saltare questo passaggio.',
   simulatorTipTitle: 'Suggerimento per il simulatore',
   simulatorTipBody:
     'Attiva la fotocamera nel menu Simulator (Front Camera) prima di inviare un SOS, così potrà essere acquisita una foto di prova.',
@@ -50,6 +53,7 @@ export const sos = {
   whatParentsReceive: 'Cosa ricevono i tuoi genitori',
   holdToSendFiveSeconds: 'Tieni premuto per inviare · 5 secondi',
   keepHolding: 'Continua a tenere premuto',
+  secondsLeft: '{{seconds}} s',
   pressAndHoldToCancel: 'Tieni premuto — rilascia prima per annullare',
   holdToSendSosAccessibility: 'Tieni premuto per 5 secondi per inviare un SOS',
   sosEmergencyAccessibility: 'Emergenza SOS',
@@ -74,7 +78,8 @@ export const sos = {
   muteAlarm: 'Silenzia questo avviso',
   alertCount: '{{current}} / {{total}}',
   trustedContactsTitle: 'Contatti fidati',
-  trustedContactsSubtitle: 'Ricevono un’email a ogni SOS con l’ultima posizione',
+  trustedContactsSubtitle:
+    'Ricevono un’email con l’SOS e l’ultima posizione nota, fino a qualche avviso all’ora',
   trustedContactsRowSubtitle:
     'Persone avvisate via email quando tuo figlio invia un SOS',
   trustedContactsListSection: 'Chi riceve l’SOS',

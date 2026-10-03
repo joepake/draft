@@ -40,7 +40,6 @@ export const childReport = {
   bandTooThin: 'ما قيس من هذا اليوم أقل من أن يُرسم.',
 
   sectionDevices: 'أي جهاز',
-  deviceTotalsOnly: 'المجموع فقط',
   openDeviceReport: 'فتح تقرير {{name}}',
 
   sectionApps: 'الأكثر استخدامًا',

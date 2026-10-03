@@ -52,19 +52,10 @@ export const placeAlerts = {
   samePinToast: '“{{name}}”과(와) 같은 지점입니다. 지도를 드래그하여 핀을 옮기세요.',
   overlapWarning:
     '“{{name}}”이(가) {{meters}} m 떨어져 있고 그 범위가 여기까지 닿습니다. 기기가 두 곳에 모두 있을 때는 더 가까운 곳만 알립니다. 그대로 두려면 다시 저장하세요.',
-  copyTitle: '다른 자녀에게도 추가할까요?',
-  copyMessage: '이 가족의 다른 {{count}}개 자녀 기기에도 “{{name}}”을(를) 복사할까요?',
-  copyMessage_one: '이 가족의 다른 자녀 기기에도 “{{name}}”을(를) 복사할까요?',
-  copyConfirm: '복사',
-  copyDoneToast: '{{count}}개 기기에 복사했습니다.',
-  copyDoneToast_one: '{{count}}개 기기에 복사했습니다.',
-  copySkippedToast: '다른 자녀는 이미 이 장소가 있거나 최대 개수에 도달했습니다.',
   savedToast: '장소를 저장했습니다.',
   updatedToast: '장소를 업데이트했습니다.',
   removedToast: '장소를 삭제했습니다.',
   saveFailedToast: '저장할 수 없습니다. 다시 시도해 주세요.',
-  enteredLabel: '도착',
-  exitedLabel: '출발',
   footerNote:
     '위치가 동기화될 때마다 확인됩니다 — 항상 백그라운드에서 작동하지는 않습니다.',
 } as const;

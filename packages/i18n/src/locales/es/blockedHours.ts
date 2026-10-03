@@ -12,11 +12,12 @@ export const blockedHours = {
   statusDisabled: 'Desactivado',
   statusActiveNow: 'Activo ahora',
   heroSubtitle:
-    'Configura hasta {{max}} franjas horarias en las que este dispositivo no puede usarse.',
+    'Configura hasta {{max}} franjas horarias en las que el uso del dispositivo está bloqueado.',
   statTimeRangesLabel: 'Franjas',
   statMaxAllowedLabel: 'Máximo',
   toggleTitle: 'Activar Horas bloqueadas',
-  toggleSubtitleOn: 'El dispositivo se bloquea durante las franjas de abajo.',
+  toggleSubtitleOn:
+    'El uso del dispositivo está bloqueado durante las franjas de abajo.',
   toggleSubtitleOff: 'Actívalo para bloquear el uso del dispositivo según un horario.',
   toggleAccessibilityLabel: 'Activar Horas bloqueadas',
   sectionTitle: 'Franjas bloqueadas',
@@ -44,12 +45,13 @@ export const blockedHours = {
   presetStudy: 'Estudio',
   disabledTitle: 'Las Horas bloqueadas están desactivadas',
   disabledSubtitle:
-    'Activa el interruptor de arriba para elegir cuándo este dispositivo debe quedar fuera de uso.',
+    'Activa el interruptor de arriba para elegir cuándo se bloquea el uso del dispositivo.',
   infoTitle: 'Cómo funciona',
   infoLine1:
     'Durante las Horas bloqueadas, las apps quedan bloqueadas en el dispositivo del niño.',
   infoLine2: 'Se admiten franjas nocturnas, por ejemplo de 22:00 a 07:00.',
-  infoLine3: 'El dispositivo debe admitir Tiempo de uso.',
+  infoLine3:
+    'En iPhone y iPad, el Tiempo de uso debe estar permitido en el dispositivo del niño.',
   off: 'Desactivado',
   blockedHoursChip: 'Horas bloqueadas',
   blockedHoursOnChip: 'Horas bloqueadas configuradas',
@@ -67,8 +69,10 @@ export const blockedHours = {
   dayShortSun: 'Dom',
   daysLabel: 'Días',
   daysEveryDay: 'Todos los días',
-  daysSchoolNights: 'Noches de clase',
+  daysWeekdays: 'Entre semana',
   daysWeekend: 'Fin de semana',
+  daysSchoolNights: 'Noches antes de clase',
+  daysWeekendNights: 'Noches de fin de semana',
   daysOvernightHint:
     'Los intervalos nocturnos se cuentan por la noche en que empiezan.',
   overlapWarning:

@@ -28,15 +28,18 @@ import {
 } from '@kidgate/core/domain/premiumTeaser';
 import { otherAppsMinutes } from '@kidgate/core/domain/childUsage';
 import PremiumTeaser from '../dashboard/PremiumTeaser.jsx';
-import { localDayKey } from '@kidgate/core/domain/weeklyReportSchedule';
+import { deviceMinutesToday } from '@kidgate/core/domain/reportHub';
 import {
   MONITORED_SWAP_COOLDOWN_MS,
   summariseParking,
 } from '@kidgate/core/domain/deviceParking';
+import { summariseOperatorHold } from '@kidgate/core/domain/operatorHold';
+import OperatorHoldBanner from '../dashboard/OperatorHoldBanner.jsx';
 import BrandLogo from '@kidgate/web-ui/BrandLogo';
 import Icon from '@kidgate/web-ui/Icon';
 import { deviceIconName } from '../dashboard/deviceIcon.js';
 import { childMinutesUsedToday } from '../dashboard/childBudgetSpent.js';
+import { useReaderToday, useTodayKey, zonesOf } from '../dashboard/useTodayKey.js';
 import { readDeviceBattery } from '@kidgate/core/domain/battery';
 import { isAndroidLike, isDesktopLike } from '@kidgate/core/domain/platformFamily';
 import { isKidGateOwnApp } from '@kidgate/core/domain/ownApp';
@@ -69,7 +72,10 @@ import {
   withApprovedPackage,
 } from '@kidgate/core/domain/appInstallApproval';
 import { supportsLocation } from '@kidgate/core/domain/locationSupport';
-import { supportsCheckIn } from '@kidgate/core/domain/checkInSupport';
+import {
+  resolveCheckInOutcome,
+  supportsCheckIn,
+} from '@kidgate/core/domain/checkInSupport';
 import { supportsSos } from '@kidgate/core/domain/sosSupport';
 import {
   supportsAppInstallAlerts,
@@ -80,6 +86,7 @@ import { LOCATION_STALE_AFTER_MS } from '@kidgate/core/domain/childLocation';
 import {
   showsVideoHistoryCard,
   supportsVideoHistory,
+  videoHistoryAwaitingGrant,
   videoHistoryBlockerKey,
   videoHistoryUnavailableKey,
 } from '@kidgate/core/domain/videoHistorySupport';
@@ -110,6 +117,7 @@ import ChildInitial from '../dashboard/ChildInitial.jsx';
 import DeviceDot, { STATUS_KEY, STATUS_TONE } from '../dashboard/DeviceDot.jsx';
 import ChildHub from '../dashboard/ChildHub.jsx';
 import ControlCenter from '../dashboard/ControlCenter.jsx';
+import DeviceChildRow from '../dashboard/DeviceChildRow.jsx';
 import PauseBrowsingSheet from '../dashboard/PauseBrowsingSheet.jsx';
 import ReportHub from '../dashboard/ReportHub.jsx';
 import ChildReport from '../dashboard/ChildReport.jsx';
@@ -123,8 +131,9 @@ import NotificationPrefsCard from '../dashboard/NotificationPrefsCard.jsx';
 import SupportCard from '../dashboard/SupportCard.jsx';
 import AccountCard from '../dashboard/AccountCard.jsx';
 import ActivityFeed from '../dashboard/ActivityFeed.jsx';
-import { RichText } from '@kidgate/web-ui/RichText';
+import NoDevicePanel from '../dashboard/NoDevicePanel.jsx';
 import { useT } from '@kidgate/web-ui/useT';
+import { getLocaleTag } from '@kidgate/i18n/web';
 import { formatDayKey } from '../dashboard/reportCopy.js';
 import Card from '../dashboard/Card.jsx';
 import ControlsTab from '../dashboard/ControlsTab.jsx';
@@ -350,6 +359,13 @@ function osLabel(platform, osVersion) {
  */
 const PERMISSION_STATE = {
   authorized: { labelKey: 'dash.stateAllowed', tone: 'good', icon: 'check' },
+  // Location allowed only while KidGate is open. Read as `unknown` by a build
+  // without this row, never as allowed.
+  foregroundOnly: {
+    labelKey: 'dash.stateForegroundOnly',
+    tone: 'warning',
+    icon: 'alert',
+  },
   denied: { labelKey: 'dash.stateDenied', tone: 'critical', icon: 'ban' },
   notDetermined: {
     labelKey: 'dash.stateNotDetermined',
@@ -817,7 +833,6 @@ export default function Dashboard({
     places,
     rewardTasks,
     leaderboard,
-    // screenTimeBoard, — board dropped 2026-09-08 (docs/FEASIBILITY.md, D4)
     sosAlerts,
     timeRequests,
     siteRequests,
@@ -886,6 +901,8 @@ export default function Dashboard({
   const [reportChildId, setReportChildId] = useState(boot.reportChildId);
   /** Whether Settings is showing Requests & reports. Compact widths only. */
   const [supportOpen, setSupportOpen] = useState(boot.supportOpen);
+  /* What the support form opens with when a held family appeals. */
+  const [supportDraft, setSupportDraft] = useState('');
 
   /*
    * A resize across the breakpoint keeps the parent on the page they were
@@ -1136,23 +1153,25 @@ export default function Dashboard({
         setWriteExpired(true);
         setStepUpOpen(true);
       }
-      // Failures raised in the browser carry a key we own; anything relayed
-      // from the Cloud Function arrives as server text and is shown as-is.
+      // Every failure is said in the language on screen. `controlsApi` gives
+      // each one a key; anything that escaped it gets the generic sentence,
+      // never its `message` — the server's English, or the SDK's.
       setToast({
         tone: 'critical',
         text:
           /*
-           * The loosen-only refusal, whether `controlsApi` saw it coming or the
-           * server said it. Its sentence is the app pack's — the phone already
-           * says it — so it goes through `activityT`, the same exception
-           * `chooseMonitored` makes for the cooldown below. Mapping a `dash.*`
-           * twin instead would be one refusal with two wordings.
+           * A refusal the phone already words — the loosen-only one, whether
+           * `controlsApi` saw it coming or the server said it, and the reward
+           * task cap (`APP_PACK_REFUSALS`). Its sentence is the app pack's, so
+           * it goes through `activityT`, the same exception `chooseMonitored`
+           * makes for the cooldown below. Mapping a `dash.*` twin instead would
+           * be one refusal with two wordings.
            */
-          e.serverCode === 'parking/loosen-only'
-            ? activityT('family.rulesTightenRefused')
+          e.appMessageKey
+            ? activityT(e.appMessageKey)
             : e.messageKey
               ? t(e.messageKey)
-              : e.message,
+              : t('controlError.generic'),
       });
       return false;
     } finally {
@@ -1165,6 +1184,22 @@ export default function Dashboard({
    * about it (`@kidgate/core/domain/deviceParking`, `docs/PRICING.md` §6).
    */
   const parking = useMemo(() => summariseParking(devices), [devices]);
+  const holdSummary = useMemo(
+    () => summariseOperatorHold(family.operatorHold, devices),
+    [devices, family.operatorHold],
+  );
+  /* The appeal lands on Requests & reports — the rail item on a wide screen,
+     the Settings row on a bottom bar, the same two doors the effect above
+     keeps in step — with its first line written. */
+  const appealHold = message => {
+    setSupportDraft(message);
+    if (compact) {
+      setSection('settings');
+      setSupportOpen(true);
+    } else {
+      setSection(SUPPORT_SECTION.id);
+    }
+  };
 
   /*
    * The sheet opens **unprompted** when `choicePending` — every device parked
@@ -1188,18 +1223,33 @@ export default function Dashboard({
    */
   const [pauseResumeMinutes, setPauseResumeMinutes] = useState(null);
   const promptedParkedSetRef = useRef(null);
+  /*
+   * **Both effects below are keyed on these two values, never on `parking`.**
+   * `parking` is a memo of `devices`, and `devices` is rebuilt by
+   * `useFamilyData`'s `data` memo whenever ANY of its thirty inputs moves —
+   * usage, a feed, the selected device, a refresh. Keyed on the object, the
+   * old close branch ran on every one of those and shut the sheet whenever a
+   * device was already chosen, so the banner opened it until the next read
+   * landed (suspected 2026-09-27, confirmed from the code 2026-09-28). The
+   * same churn re-ran the auto-open's cleanup mid-`waitForParentPresence`,
+   * cancelling the open, and the re-run then found the set already prompted —
+   * so a trial-end family was never asked whenever any other read landed
+   * during a due presence call (read from the code, not watched).
+   */
+  const parkedSetKey = [...parking.parked].sort().join(',');
+  const { choicePending } = parking;
   useEffect(() => {
-    if (parking.parked.length === 0) {
+    if (!parkedSetKey) {
+      /* Nothing is parked, so the sheet has no question left — an upgrade or
+         a wake. It can only have been opened while something was. */
       promptedParkedSetRef.current = null;
       setMonitoredSheetOpen(false);
       return undefined;
     }
-    if (!parking.choicePending) {
-      // Somebody answered — from here, from a phone, from the other parent.
-      setMonitoredSheetOpen(false);
+    if (!choicePending) {
       return undefined;
     }
-    const key = [...parking.parked].sort().join(',');
+    const key = parkedSetKey;
     if (promptedParkedSetRef.current === key) {
       return undefined;
     }
@@ -1220,7 +1270,24 @@ export default function Dashboard({
     return () => {
       cancelled = true;
     };
-  }, [familyId, parking]);
+  }, [familyId, parkedSetKey, choicePending]);
+
+  /*
+   * Answered — by the wake, this parent, the other parent, or a phone. On the
+   * answer ARRIVING, never on its absence: the phone's rule
+   * (`FamilyScreen`, 2026-09-27), which closed the same sheet the same wrong
+   * way. The unchosen devices stay parked by design, so a family that has
+   * chosen is never pending again, and "not pending" is the state the banner
+   * opens this sheet from to change the choice.
+   */
+  const choicePendingRef = useRef(choicePending);
+  useEffect(() => {
+    const wasPending = choicePendingRef.current;
+    choicePendingRef.current = choicePending;
+    if (wasPending && !choicePending) {
+      setMonitoredSheetOpen(false);
+    }
+  }, [choicePending]);
 
   /*
    * The cooldown is the one failure `run` cannot say. It arrives as a
@@ -1234,11 +1301,28 @@ export default function Dashboard({
     setToast(null);
     try {
       await actions.chooseMonitoredDevice(deviceId);
+      /*
+       * The sheet closes on its own answer, as the phone's does — the effect
+       * above hears only a PENDING choice being answered, and a swap was not
+       * one. Then the family is read again, like every write here: nothing
+       * streams in, and without it the banner went on naming the old device.
+       */
+      setMonitoredSheetOpen(false);
       setToast({
         tone: 'good',
         text: activityT('family.chooseMonitoredDone', { name: chosen?.name ?? '' }),
       });
+      onRefresh?.();
     } catch (e) {
+      /* The plan covers every device now — a purchase landed, or a device was
+         removed, while the sheet was open (`functions/http/monitoredDevice.js`).
+         Nothing is left to choose and nothing went wrong, so the phone closes
+         without a word; the re-read clears the banner. */
+      if (e.serverCode === 'monitored/not-required') {
+        setMonitoredSheetOpen(false);
+        onRefresh?.();
+        return;
+      }
       if (e.code === 'unauthenticated' || e.code === 'staleCredential') {
         setWriteExpired(true);
         setStepUpOpen(true);
@@ -1252,7 +1336,7 @@ export default function Dashboard({
               })
             : e.messageKey
               ? t(e.messageKey)
-              : e.message,
+              : t('controlError.generic'),
       });
     } finally {
       setBusy(null);
@@ -1819,13 +1903,31 @@ export default function Dashboard({
         ),
       ].filter(Boolean);
 
+  /*
+   * The one "today" this page reads — the ring, the tiles, the top apps, the
+   * teasers and the Attention rows — rolling over at the browser's midnight.
+   */
+  const todayKey = useTodayKey();
+  /*
+   * The same day with the instant it was read, so every usage stamp below is
+   * judged on its own device's calendar when that device published a zone
+   * (`reportHub.usageTodayKey`) — and re-keyed when any of their days rolls.
+   */
+  const usageToday = useReaderToday(zonesOf(devices));
   const stats = useMemo(() => {
     if (!device || !c) return null;
     const last7 = device.usage.slice(-8, -1);
     const avg7 = last7.length
       ? Math.round(last7.reduce((s, d) => s + d.minutes, 0) / last7.length)
       : 0;
-    const used = c.minutesUsedToday;
+    /*
+     * Null when this device has not reported today. `minutesUsedToday` is a
+     * stamp, left standing overnight, so a device off since yesterday put
+     * yesterday's total under "Screen time today", in the ring, and in Used
+     * and Left. The rule is core's, the one the budget card and the Reports
+     * hub already read (`@kidgate/core/domain/reportHub`).
+     */
+    const used = deviceMinutesToday(device, usageToday);
     /*
      * **The bonus expires with the day it was granted, and the rule is core's.**
      * This page added `bonusMinutesToday` unconditionally and read
@@ -1850,10 +1952,10 @@ export default function Dashboard({
       used,
       bonus,
       effLimit,
-      left: effLimit ? Math.max(0, effLimit - used) : null,
-      delta: avg7 ? Math.round(((used - avg7) / avg7) * 100) : 0,
+      left: effLimit && used !== null ? Math.max(0, effLimit - used) : null,
+      delta: used === null ? null : avg7 ? Math.round(((used - avg7) / avg7) * 100) : 0,
     };
-  }, [device, c]);
+  }, [device, c, usageToday]);
 
   /*
    * This device's open items. The fold itself is `dashboard/attentionItems.js`
@@ -1866,11 +1968,12 @@ export default function Dashboard({
         device,
         t,
         activityT,
+        today: usageToday,
         timeRequests: (device && timeRequests[device.id]) || [],
         siteRequests: (device && siteRequests[device.id]) || [],
         checkIns: (device && checkIns[device.id]) || [],
       }),
-    [device, t, activityT, checkIns, timeRequests, siteRequests],
+    [device, t, activityT, usageToday, checkIns, timeRequests, siteRequests],
   );
 
   /*
@@ -1901,10 +2004,11 @@ export default function Dashboard({
         devices,
         t,
         activityT,
+        today: usageToday,
         timeRequests: familyTimeRequests,
         checkIns: familyCheckIns,
       }),
-    [devices, t, activityT, familyTimeRequests, familyCheckIns],
+    [devices, t, activityT, usageToday, familyTimeRequests, familyCheckIns],
   );
 
   /*
@@ -1925,7 +2029,6 @@ export default function Dashboard({
    * and it lets today on the device beat a stale latest row; the "Other apps"
    * remainder is computed against whichever day the rows came from.
    */
-  const todayKey = localDayKey(Date.now(), -new Date().getTimezoneOffset());
   const todayTopApps = resolveTodayTopApps({
     usageDay: device?.usage?.[device.usage.length - 1] ?? null,
     device: device ?? {},
@@ -2340,6 +2443,7 @@ export default function Dashboard({
       // and this app's own Message Alerts banner read.
       messageSummary: resolveMessageMonitoringSummary([deviceView]),
       supportsVideoHistory: supportsVideoHistory(deviceView),
+      videoHistoryAwaitingGrant: videoHistoryAwaitingGrant(deviceView),
     };
   }, [checkIns, deviceView, places, rewardTasks, sosAlerts, web]);
 
@@ -2417,6 +2521,12 @@ export default function Dashboard({
       run(item.id, () => actions.sendCheckIn(target), t('dash.toastCheckInResent'));
     } else if (item.action === 'unlock') {
       run(item.id, () => actions.setLock(target.id, false));
+    } else if (item.action === 'pinReset') {
+      run(
+        item.id,
+        () => actions.resetParentPinLockout(target.id),
+        activityT('pin.toastPinUnlocked', { deviceName: target.name }),
+      );
     }
   };
 
@@ -2714,7 +2824,7 @@ export default function Dashboard({
                       the reading is. An absolute time cannot go stale.
                     */}
                     {activityT('location.updatedAt', {
-                      date: new Date(loadedAt).toLocaleTimeString(language, {
+                      date: new Date(loadedAt).toLocaleTimeString(getLocaleTag(), {
                         hour: '2-digit',
                         minute: '2-digit',
                       }),
@@ -2967,6 +3077,13 @@ export default function Dashboard({
           a confirm button over every screen kept asking a question that had
           already been answered. The sheet is one click away.
         */}
+        {holdSummary ? (
+          <OperatorHoldBanner
+            summary={holdSummary}
+            appT={activityT}
+            onAppeal={appealHold}
+          />
+        ) : null}
         {!railOpen && parkedBanner}
 
         {/*
@@ -3034,7 +3151,36 @@ export default function Dashboard({
           gated on its own frame: a card pushes a panel, Back pops it here,
           and the grid is what a parent returns to. Drawn above an open panel
           as well, it was a menu repeating the screen already below it.
+
+          Above it, whose rules these are (`DeviceChildRow`): on an assigned
+          device the way to the child's page, where the person-level cards
+          the grid drops went; on an unassigned one the owner's picker. The
+          header's child name is a label, not a link — the header is the name
+          and the two buttons, nothing else.
         */}
+        {deviceView && tab === 'manage' && (
+          <DeviceChildRow
+            device={deviceView}
+            familyChildren={children}
+            actions={actions}
+            run={run}
+            busy={Boolean(busy)}
+            readOnly={live && !canWrite}
+            appT={activityT}
+            /* The same two setters Back uses to land on this child, plus the
+               child's location frame closed — a stale `childloc` would draw
+               that screen in place of the hub the row names. */
+            onOpenChild={id => {
+              setDeviceOpen(false);
+              setChildLocationOpen(false);
+              setOpenChildId(id);
+            }}
+            /* The panel pushed as a card pushes it, so Back pops to this
+               grid; the requests card sits near its top. */
+            pendingSiteRequests={(siteRequests[deviceView.id] || []).length}
+            onOpenSiteRequests={() => goTab('controls')}
+          />
+        )}
         {deviceView && tab === 'manage' && (
           <ControlCenter
             device={deviceView}
@@ -3114,9 +3260,14 @@ export default function Dashboard({
                 <Icon name="chevronRight" size={16} />
               </button>
               {devices.length === 0 ? (
+                /* The phone's empty Family tab — its title, its sentence and
+                   its two steps — with the web's second step, since the page
+                   cannot pair (`NoDevicePanel`). */
                 <div className="card">
-                  <h2>{t('dash.noDeviceTitle')}</h2>
-                  <RichText as="p" className="hint" text={t('dash.noDeviceBody')} />
+                  <NoDevicePanel
+                    title={activityT('family.emptyTitle')}
+                    body={activityT('family.emptyDescription')}
+                  />
                 </div>
               ) : (
                 deviceGroups.map(group => {
@@ -3428,6 +3579,7 @@ export default function Dashboard({
               familyId={familyId}
               familyName={family.name}
               appT={activityT}
+              initialMessage={supportDraft}
             />
           </section>
         )}
@@ -3467,8 +3619,9 @@ export default function Dashboard({
               would have a parent expecting a contact to open the dashboard.
             */}
 
-            {/* Push preferences for the account's own phones. Renders nothing
-                for a co-parent, whose devices live under their own root. */}
+            {/* Push preferences for the signed-in account's own phones, read
+                from its own root — a co-parent's too. Renders nothing when
+                this account has no phone to push to. */}
             <NotificationPrefsCard
               accountId={accountId}
               parentDevices={parentDevices}
@@ -3504,6 +3657,9 @@ export default function Dashboard({
             <AccountCard
               accountId={accountId}
               accountEmail={accountEmail}
+              // `familyId` is the owner's uid and `accountId` whoever signed
+              // in, so they are equal exactly for the owner.
+              isFamilyOwner={Boolean(accountId) && accountId === familyId}
               parentCount={family.parents.length}
               deviceCount={devices.length}
               appT={activityT}
@@ -3533,11 +3689,16 @@ export default function Dashboard({
                   label={t('dash.tileScreenToday')}
                   value={formatMinutes(stats.used)}
                   meta={
-                    stats.delta === 0
-                      ? t('dash.tileSameAsAverage')
-                      : t(stats.delta > 0 ? 'dash.tileDeltaUp' : 'dash.tileDeltaDown', {
-                          percent: Math.abs(stats.delta),
-                        })
+                    stats.delta === null
+                      ? activityT('deviceDetail.usageUpdatesFromChildDevice')
+                      : stats.delta === 0
+                        ? t('dash.tileSameAsAverage')
+                        : t(
+                            stats.delta > 0 ? 'dash.tileDeltaUp' : 'dash.tileDeltaDown',
+                            {
+                              percent: Math.abs(stats.delta),
+                            },
+                          )
                   }
                   tone={stats.delta > 25 ? 'warning' : 'default'}
                 />
@@ -3583,11 +3744,15 @@ export default function Dashboard({
                       limit={c.dailyLimitMinutes}
                       days={14}
                     />
+                    {/* The phone's sentence (`usage.syncNote*`, the Usage
+                        Reports screen), never a `dash.*` copy of it. */}
                     <p className="hint">
-                      {t(
+                      {activityT(
                         device.platform === 'androidtv'
-                          ? 'dash.usageSyncNoteTv'
-                          : 'dash.usageSyncNote',
+                          ? 'usage.syncNoteTv'
+                          : device.platform === 'ios'
+                            ? 'usage.syncNoteIos'
+                            : 'usage.syncNote',
                       )}
                     </p>
                   </Card>
@@ -3716,6 +3881,16 @@ export default function Dashboard({
                   </li>
                 </ul>
               </div>
+              {/*
+                No report today, which is not nothing used: the figure on the
+                device is another day's, so the ring and Used read "—". The
+                phone's own words for this state, from its Daily limit card.
+              */}
+              {stats.used === null && (
+                <p className="hint">
+                  {activityT('deviceDetail.usageUpdatesFromChildDevice')}
+                </p>
+              )}
               {/*
                   Why this total is not live, said where the total is read.
                   Both halves are the free tier as built: the device beats every
@@ -3859,6 +4034,21 @@ export default function Dashboard({
                   : t('dash.scheduleOff')
               }
             >
+              {/*
+                On an assigned device the save below is the CHILD's rule and
+                reaches every machine they hold, which the subtitle's "the
+                device" does not say. The phone's Blocked Hours screen heads
+                itself with this same line, through the same key.
+              */}
+              {device.childId && device.child && (
+                <p className="hint">
+                  {activityT('webFilter.appliesToAll', {
+                    name: device.child.name ?? '',
+                    count: devices.filter(other => other.childId === device.childId)
+                      .length,
+                  })}
+                </p>
+              )}
               <ScheduleGrid windows={c.scheduleWindows} />
               {/*
                 The grid stays: reading three overlapping ranges as text is the
@@ -4116,7 +4306,18 @@ export default function Dashboard({
                       <thead>
                         <tr>
                           <th>{t('dash.colDomain')}</th>
-                          <th className="num">{t('dash.colVisits')}</th>
+                          {/* On an iPhone `visits` is Screen Time MINUTES — the
+                              report extension names domains with the time
+                              spent on each (`childWebHistorySync.ts`) — so the
+                              column says a duration there, as the phone's
+                              history screen does (`countsMinutes`). */}
+                          <th className="num">
+                            {t(
+                              device.platform === 'ios'
+                                ? 'dash.colTime'
+                                : 'dash.colVisits',
+                            )}
+                          </th>
                           <th className="num">{t('dash.colBlocked')}</th>
                           <th>{t('dash.colLastSeen')}</th>
                         </tr>
@@ -4132,7 +4333,11 @@ export default function Dashboard({
                                 </span>
                               )}
                             </td>
-                            <td className="num">{w.visits}</td>
+                            <td className="num">
+                              {device.platform === 'ios'
+                                ? formatMinutes(w.visits)
+                                : w.visits}
+                            </td>
                             <td
                               className={`num${w.blockedVisits ? ' tone-critical' : ''}`}
                             >
@@ -4146,10 +4351,15 @@ export default function Dashboard({
                   </div>
                 )}
                 <p className="hint">
-                  {t(
+                  {/* The phone's three cases, in the phone's own keys: a TV's
+                      alarm, an iPhone that uploads only while KidGate runs on
+                      it, and everything else inside about 15 minutes. */}
+                  {activityT(
                     device.platform === 'androidtv'
-                      ? 'dash.webActivitySyncNoteTv'
-                      : 'dash.webActivitySyncNote',
+                      ? 'webHistory.syncNoteTv'
+                      : device.platform === 'ios'
+                        ? 'webHistory.syncNoteIos'
+                        : 'webHistory.syncNote',
                   )}
                 </p>
               </Card>
@@ -4198,6 +4408,13 @@ export default function Dashboard({
                   ) : null}
                   {videoHistoryBlockerKey(device) ? (
                     <p className="empty">{activityT(videoHistoryBlockerKey(device))}</p>
+                  ) : null}
+                  {/* The phone's note: switched on, but the child's phone has
+                      no notification access, so the list would stay empty and
+                      read as a quiet day. */}
+                  {device?.controls?.videoHistoryEnabled === true &&
+                  videoHistoryAwaitingGrant(device) ? (
+                    <p className="hint">{activityT('videoHistory.grantNeeded')}</p>
                   ) : null}
                   {!supportsVideoHistory(device) ? null : videos.length === 0 &&
                     videoHistoryTeaser ? (
@@ -4412,7 +4629,9 @@ export default function Dashboard({
                               */}
                               {trialEndsAt
                                 ? `${activityT('location.namesNeedPremiumTrialEnded', {
-                                    date: trialEndsAt.toLocaleDateString(),
+                                    date: trialEndsAt.toLocaleDateString(
+                                      getLocaleTag(),
+                                    ),
                                   })} `
                                 : ''}
                               {activityT('location.namesNeedPremiumStill')}
@@ -4549,58 +4768,86 @@ export default function Dashboard({
                   subtitle={t('dash.checkInsSub')}
                 >
                   <ul className="events">
-                    {(checkIns[device.id] || []).map(ci => (
-                      <li key={ci.id}>
-                        <span
-                          className={`ev-state tone-${
-                            ci.status === 'safe'
-                              ? 'good'
-                              : ci.status === 'missed'
-                                ? 'critical'
-                                : 'warning'
-                          }`}
-                        >
-                          <Icon
-                            name={
-                              ci.status === 'safe'
-                                ? 'check'
-                                : ci.status === 'missed'
-                                  ? 'ban'
-                                  : 'clock'
-                            }
-                            size={13}
-                          />
-                        </span>
-                        <span className="ev-body">
-                          <strong>
-                            {t(
-                              ci.status === 'safe'
-                                ? 'dash.checkInSafe'
-                                : ci.status === 'missed'
-                                  ? 'dash.checkInMissed'
-                                  : 'dash.checkInWaiting',
+                    {(checkIns[device.id] || []).map(ci => {
+                      /* The phone's fold (`resolveCheckInOutcome`): a check-in
+                         the child closed with an SOS is `missed` on the
+                         document and read "No response" here, to the child who
+                         had just asked for help. */
+                      const outcome = resolveCheckInOutcome(ci);
+                      return (
+                        <li key={ci.id}>
+                          <span
+                            className={`ev-state tone-${
+                              outcome === 'safe'
+                                ? 'good'
+                                : outcome === 'waiting'
+                                  ? 'warning'
+                                  : 'critical'
+                            }`}
+                          >
+                            <Icon
+                              name={
+                                outcome === 'safe'
+                                  ? 'check'
+                                  : outcome === 'askedForHelp'
+                                    ? 'lifebuoy'
+                                    : outcome === 'noResponse'
+                                      ? 'ban'
+                                      : 'clock'
+                              }
+                              size={13}
+                            />
+                          </span>
+                          <span className="ev-body">
+                            <strong>
+                              {outcome === 'askedForHelp'
+                                ? activityT('checkIn.statusAskedForHelp')
+                                : t(
+                                    outcome === 'safe'
+                                      ? 'dash.checkInSafe'
+                                      : outcome === 'noResponse'
+                                        ? 'dash.checkInMissed'
+                                        : 'dash.checkInWaiting',
+                                  )}
+                            </strong>
+                            {outcome === 'askedForHelp' ? (
+                              /* The position and the photo went with the SOS,
+                                 so the line leads there — the card beside this
+                                 one, on the same panel. */
+                              supportsSos(device) && (
+                                <em>
+                                  <button
+                                    type="button"
+                                    className="login-link"
+                                    onClick={() => setFocusCard('sos-alerts')}
+                                  >
+                                    {activityT('sos.title')}
+                                  </button>
+                                </em>
+                              )
+                            ) : (
+                              <em>
+                                {ci.location?.placeName
+                                  ? `${ci.location.placeName} · `
+                                  : ''}
+                                {t(
+                                  ci.status !== 'safe'
+                                    ? ci.requirePhoto
+                                      ? 'dash.checkInPhotoRequested'
+                                      : 'dash.checkInNoReply'
+                                    : ci.photoSkipped
+                                      ? 'dash.checkInPhotoSkipped'
+                                      : ci.requirePhoto
+                                        ? 'dash.checkInPhotoAttached'
+                                        : 'dash.checkInNoPhoto',
+                                )}
+                              </em>
                             )}
-                          </strong>
-                          <em>
-                            {ci.location?.placeName
-                              ? `${ci.location.placeName} · `
-                              : ''}
-                            {t(
-                              ci.status !== 'safe'
-                                ? ci.requirePhoto
-                                  ? 'dash.checkInPhotoRequested'
-                                  : 'dash.checkInNoReply'
-                                : ci.photoSkipped
-                                  ? 'dash.checkInPhotoSkipped'
-                                  : ci.requirePhoto
-                                    ? 'dash.checkInPhotoAttached'
-                                    : 'dash.checkInNoPhoto',
-                            )}
-                          </em>
-                        </span>
-                        <time>{timeAgo(ci.createdAt)}</time>
-                      </li>
-                    ))}
+                          </span>
+                          <time>{timeAgo(ci.createdAt)}</time>
+                        </li>
+                      );
+                    })}
                   </ul>
                   <button
                     className="btn btn-primary btn-block"

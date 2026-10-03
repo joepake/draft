@@ -29,7 +29,15 @@ export type TamperPermissionKey =
    * itself runs on server-corrected time, so this is the visibility half —
    * the parent gets told someone tried.
    */
-  | 'deviceClock';
+  | 'deviceClock'
+  /**
+   * Not a permission either: the app was deleted and put back. Only the
+   * reinstalled app can say so, on its first launch, and only where an
+   * uninstall leaves a survivor to tell a reinstall from a first install.
+   * `domain/reinstallActivity` builds the row; each agent detects it its own
+   * way (iOS: the Keychain, `apps/mobile/src/services/auth/freshInstallGuard.ts`).
+   */
+  | 'reinstalled';
 
 /**
  * The icon vocabulary these alerts draw from. A plain string union, not a
@@ -106,6 +114,11 @@ const PERMISSION_COPY: Record<
     titleKey: 'activities.tamperDeviceClockTitle',
     bodyKey: 'activities.tamperDeviceClockBody',
     icon: 'clock',
+  },
+  reinstalled: {
+    titleKey: 'activities.tamperReinstalledTitle',
+    bodyKey: 'activities.tamperReinstalledBody',
+    icon: 'shieldAlert',
   },
 };
 

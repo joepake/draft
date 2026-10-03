@@ -8,8 +8,8 @@ export const report = {
 
   statScreenTime: 'Waktu Layar',
   statDailyAverage: 'Rata-rata harian',
-  statBlockedApps: 'Aplikasi diblokir',
-  statBlockedWebVisits: 'Situs difilter',
+  statBlockedApps: 'Upaya membuka aplikasi diblokir',
+  statBlockedWebVisits: 'Kunjungan ke situs diblokir',
   statTasksApproved: 'Tugas selesai',
 
   trendUp: '{{value}} lebih banyak dari minggu sebelumnya',
@@ -76,7 +76,8 @@ export const report = {
   copied: 'Ringkasan disalin.',
   shareFailed: 'Tidak bisa membuka menu berbagi.',
   shareLinkCta: 'Unduh aplikasinya di {{url}}',
-  shareFooterDesc: 'KidGate membantu orang tua melihat waktu layar, lokasi, dan pesan.',
+  shareFooterDesc:
+    'KidGate membantu orang tua mengelola waktu layar, melihat lokasi, dan memfilter konten web.',
   shareFooterCta: 'Unduh aplikasinya di kidgate.app/get',
 
   currentWeekTab: 'Minggu ini',
@@ -109,6 +110,9 @@ export const report = {
   // existed; the phone could not, because the copy lived only in the web
   // pack.
   childrenTitle: 'Setiap anak',
+  childrenNoteByChild:
+    'Dua minggu yang sama, per anak di semua perangkat yang dipakainya. Persentase dihitung dari total keluarga.',
+  devicesTitle: 'Setiap perangkat',
   childrenNote:
     'Dua minggu yang sama, per perangkat. Persentase dihitung dari total keluarga.',
   colChild: 'Anak',

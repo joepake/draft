@@ -32,8 +32,9 @@ export const permissions = {
   oemAutostartLabel: 'Permitir el inicio automático',
   oemAutostartHintXiaomi:
     'En Inicio automático, activa KidGate para que la protección se reinicie tras un reinicio del dispositivo.',
-  oemAutostartHintSamsung:
-    'En Batería → Límites de uso en segundo plano → Aplicaciones que nunca duermen, añade KidGate. Si KidGate no aparece en la lista ya está permitido y este paso está hecho.',
+  oemAutostartHintSamsung: 'En Batería, selecciona Límites de uso en segundo plano.',
+  oemAutostartHintSamsungAdd:
+    'Abre Aplicaciones que nunca duermen y añade KidGate. Si KidGate no aparece en la lista ya está permitido y este paso está hecho.',
   oemAutostartHintOppo: 'En Apps de inicio / Inicio automático, permite KidGate.',
   oemAutostartHintVivo:
     'En Inicio automático / Alto rendimiento en segundo plano, permite KidGate.',
@@ -49,8 +50,10 @@ export const permissions = {
     'Si en su lugar se abre la lista completa, selecciona KidGate en Aplicaciones descargadas.',
   accessibilityStepTurnOn:
     'Activa el interruptor y luego selecciona Permitir en el aviso de Android.',
+  restrictedSettingsStep:
+    'Si el interruptor aparece atenuado, abre Ajustes › Aplicaciones › KidGate, toca el menú ⋮ y elige «Permitir ajustes restringidos»; después vuelve aquí e inténtalo de nuevo.',
   accessibilityWarningNote:
-    'Android avisa de que KidGate puede observar tus acciones. Así es como el bloqueo se mantiene sobre otras apps: KidGate no lee contraseñas ni mensajes personales.',
+    'Android avisa de que KidGate puede observar tus acciones. Con este permiso KidGate ve qué app está abierta, para que el bloqueo pueda mantenerse encima, y lee el título y el canal de los vídeos de YouTube cuando se registran los vídeos vistos. No lo usa para leer contraseñas, mensajes ni lo que escribes.',
   uninstallProtectionWizardBody:
     'Impide que esta app se desinstale sin el PIN parental. Android muestra su propia pantalla de confirmación.',
   notificationsWizardBody:
@@ -59,6 +62,9 @@ export const permissions = {
   backgroundRefreshStepTurnOn: 'Activa Actualización en segundo plano para KidGate.',
   backgroundRefreshStepGeneral:
     'Si el interruptor está atenuado, abre Ajustes, luego General y activa Actualización en segundo plano.',
+  locationAlwaysStep: 'Selecciona Ubicación y elige «Siempre».',
+  locationAlwaysStepAndroid:
+    'Selecciona Permisos → Ubicación y elige «Permitir todo el tiempo».',
   batteryStepAllow: 'Selecciona Permitir en el aviso de Android.',
   batteryStepAppInfo:
     'Si no aparece ningún aviso, abre Información de la app, luego Batería y elige Sin restricciones.',

@@ -35,12 +35,13 @@ export const appInventory = {
   unsupportedIos:
     'A Apple não permite que nenhum aplicativo leia o que está instalado em um iPhone ou iPad, então o KidGate só consegue relatar aplicativos conforme eles são usados.',
   unsupportedGeneric: 'Este dispositivo não relata os aplicativos instalados nele.',
-  incompleteNote: 'Um aplicativo sem ícone na tela inicial pode não aparecer aqui.',
+  incompleteNote:
+    'Alguns aplicativos podem não aparecer aqui, como um que não tenha ícone na lista de aplicativos do dispositivo.',
   blockHint:
-    'Para bloquear um aplicativo, abra a tela Aplicativos bloqueados no próprio dispositivo.',
+    'Para bloquear um aplicativo, abra a tela Apps bloqueados no próprio dispositivo.',
   howItWorksLabel: 'Como esta lista funciona',
-  markSafe: 'Segura',
-  dismissedTitle: 'Marcadas como seguras por você',
+  markSafe: 'Seguro',
+  dismissedTitle: 'Marcados como seguros por você',
   undoSafe: 'Desfazer',
   howToBlock: 'Como bloquear',
 } as const;

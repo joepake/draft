@@ -24,8 +24,9 @@ export const sos = {
     'SOS를 보냈어요. 가능하면 안전한 곳에 있어 주세요 — 부모님에게 알림이 갔어요.',
   escapeGrantedTitle: 'SOS를 보냈어요',
   escapeGrantedBody: '보호자에게 알림이 갔어요. 이 기기는 계속 잠겨 있어요.',
-  toastSentWithoutPhoto:
-    'SOS를 보냈지만 사진은 첨부되지 않았어요. 가능하면 설정에서 카메라 접근을 허용한 후 다시 시도해 주세요.',
+  toastSentWithoutPhoto: 'SOS를 사진 없이 보냈어요.',
+  toastSentWithoutPhotoCamera:
+    'SOS를 사진 없이 보냈어요. 다음에 사진을 함께 보내려면 설정에서 카메라를 허용하세요.',
   toastSendFailed:
     'SOS를 보내지 못했어요. 다시 시도하거나 믿을 수 있는 사람에게 연락하세요.',
   sendFailedBannerTitle: '마지막 SOS가 전송되지 않았어요',
@@ -34,12 +35,14 @@ export const sos = {
   headerTitle: '긴급 SOS',
   headerSubtitle: '위험을 느끼거나 즉시 도움이 필요할 때 사용하세요.',
   infoInstantAlertLabel: '즉시 알림',
-  infoInstantAlertDetail: '부모님에게 즉시 긴급 알림이 전송돼요.',
+  infoInstantAlertDetail: 'KidGate가 부모님께 바로 긴급 알림을 보내요.',
   infoYourLocationLabel: '내 위치',
   infoYourLocationDetail: '부모님과 공유되어 지금 어디에 있는지 알 수 있어요.',
   infoQuickSelfieLabel: '빠른 사진',
   infoQuickSelfieDetail:
     '알림이 전송된 후, 카메라를 이미 사용할 수 있는 경우 추가돼요.',
+  infoQuickSelfieDetailPhone:
+    '알림이 전송된 뒤 사진을 추가할 수 있도록 카메라가 열려요. 건너뛰어도 돼요.',
   simulatorTipTitle: '시뮬레이터 팁',
   simulatorTipBody:
     'SOS를 보내기 전에 Simulator 메뉴에서 Camera(Front Camera)를 켜두면 테스트용 사진을 촬영할 수 있어요.',
@@ -49,6 +52,7 @@ export const sos = {
   whatParentsReceive: '부모님이 받는 정보',
   holdToSendFiveSeconds: '길게 눌러 전송 · 5초',
   keepHolding: '계속 누르고 있으세요',
+  secondsLeft: '{{seconds}}초',
   pressAndHoldToCancel: '길게 누르세요 — 도중에 놓으면 취소돼요',
   holdToSendSosAccessibility: '5초간 길게 눌러 SOS 보내기',
   sosEmergencyAccessibility: 'SOS 긴급',
@@ -72,7 +76,8 @@ export const sos = {
   muteAlarm: '이 알림 소리 끄기',
   alertCount: '{{current}} / {{total}}',
   trustedContactsTitle: '신뢰할 수 있는 연락처',
-  trustedContactsSubtitle: 'SOS마다 마지막 위치와 함께 이메일을 받습니다',
+  trustedContactsSubtitle:
+    'SOS가 오면 마지막 위치와 함께 이메일을 받습니다(시간당 몇 건까지)',
   trustedContactsRowSubtitle: '자녀가 SOS를 보내면 이메일을 받는 사람',
   trustedContactsListSection: 'SOS를 받는 사람',
   trustedContactsEmpty: '아직 없습니다. 조부모, 이웃, 가족의 친구를 추가하세요.',

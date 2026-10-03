@@ -6,7 +6,7 @@ export const pairing = {
     'Hubungkan perangkat anak ini di KidGate: di perangkat orang tua buka KidGate → Keluarga → Pindai kode, lalu pindai kode QR atau masukkan kode {{code}}. Kode kedaluwarsa dalam 5 menit.',
   connectChildPhone: 'Sambungkan perangkat anak',
   parentInstructions:
-    'Di perangkat anak, buka KidGate dan pilih Ini adalah perangkat anak. Lalu masukkan kode yang ditampilkan di layar tersebut.',
+    'Buka KidGate di perangkat anak. Di ponsel atau tablet, pilih “Ini perangkat anak”. Lalu masukkan kode 6 karakter yang ditampilkan.',
   parentScanInstructions: 'Arahkan kamera Anda ke kode QR di perangkat anak.',
   childWaitingTitle: 'Menunggu orang tua',
   childWaitingSubtitle:
@@ -14,13 +14,15 @@ export const pairing = {
   childCodeLabel: 'Atau bagikan kode ini',
   childScanHint:
     'Orang tua: buka KidGate → Keluarga → {{scan}} → pindai kode QR atau masukkan kodenya.',
+  extensionCloseHint:
+    'Jendela ini boleh ditutup — kodenya tetap berlaku. Buka KidGate lagi untuk mengonfirmasi orang tua.',
   childConnecting: 'Terhubung. Menyiapkan perangkat ini…',
   childPairedTitle: 'Kamu sudah terhubung',
   childPairedSubtitle: 'Menyiapkan perangkat ini…',
   connectChild: 'Hubungkan perangkat anak',
   waitingChildConfirm: 'Permintaan terkirim. Menunggu konfirmasi di perangkat anak.',
   waitingChildConfirmHint:
-    'Di perangkat anak, ketuk "Ya, sambungkan" untuk menyelesaikan. Anda bisa menutup layar ini — pemasangan tetap berlanjut di latar belakang.',
+    'Jika perangkat anak meminta konfirmasi, pilih "Ya, sambungkan" untuk menyelesaikan. TV akan tersambung sendiri. Anda bisa menutup layar ini — pemasangan tetap berlanjut di latar belakang.',
   childConfirmedTitle: 'Perangkat terhubung',
   childConfirmedBody:
     'Perangkat anak sudah mengonfirmasi pemasangan. Selanjutnya, pilih siapa yang memakainya.',
@@ -44,10 +46,17 @@ export const pairing = {
   manualCodeLabel: 'Kode dari perangkat anak',
   openingScanner: 'Membuka kamera…',
   cameraPermissionRequired: 'Akses kamera diperlukan untuk memindai kode QR.',
-  unableToOpenScanner: 'Tidak dapat membuka pemindai kamera.',
+  unableToOpenScanner:
+    'Tidak dapat membuka pemindai kamera. Masukkan kodenya secara manual.',
   newCode: 'Kode baru',
   done: 'Selesai',
   unableToCreateCode: 'Tidak dapat membuat kode. Silakan coba lagi.',
+  extensionUnsupportedSystem:
+    'Sistem operasi ini tidak didukung. KidGate berfungsi di Chromebook, Mac, atau PC Windows.',
+  deviceLimitReachedCeiling:
+    'Keluarga ini sudah mencapai jumlah perangkat yang didukung KidGate ({{limit}}). Hapus perangkat yang tidak lagi dipakai, lalu coba lagi.',
+  tooManyAttemptsWait:
+    'Terlalu banyak percobaan. Silakan coba lagi dalam {{minutes}} menit.',
   inviteParentTitle: 'Tambahkan perangkat orang tua lain',
   inviteParentInstructions:
     'Di perangkat lain, buka KidGate → Keluarga → Pindai kode, lalu pindai kode QR ini atau masukkan kodenya dalam 15 menit. Setujui permintaan di sini untuk menyambungkan orang tua tersebut.',
@@ -65,7 +74,8 @@ export const pairing = {
   parentJoinRejected: 'Pemilik keluarga menolak permintaan Anda.',
   parentJoinExpired:
     'Permintaan persetujuan telah kedaluwarsa. Silakan minta undangan baru.',
-  unableToResolveParentJoin: 'Tidak dapat memproses permintaan ini.',
+  unableToResolveParentJoin:
+    'Tidak dapat menanggapi permintaan bergabung ini. Silakan coba lagi.',
   joinedFamily:
     'Anda telah bergabung dengan keluarga. Perangkat anak keluarga ini sekarang muncul di sini.',
   joinedFamilyTitle: 'Bergabung dengan keluarga',

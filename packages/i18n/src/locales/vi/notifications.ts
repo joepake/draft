@@ -8,7 +8,7 @@ export const notifications = {
   sectionSummary: 'Tổng kết',
   sectionQuietHours: 'Giờ yên tĩnh',
   sectionQuietHoursHint:
-    'Cảnh báo im lặng trong khung giờ này. SOS không bao giờ bị tắt.',
+    'Cảnh báo im lặng trong khung giờ này. SOS không bao giờ bị tắt, và các Cảnh báo tin nhắn nghiêm trọng nhất vẫn được báo.',
   quietHoursLabel: 'Giờ yên tĩnh',
   quietHoursOff: 'Tắt — cảnh báo đến bất cứ lúc nào',
   quietHoursActive: 'Im lặng từ {{start}} đến {{end}}',
@@ -20,7 +20,7 @@ export const notifications = {
   alert: {
     tamperAlerts: {
       label: 'Bảo vệ bị tắt',
-      hint: 'Một quyền KidGate cần đã bị tắt trên thiết bị của trẻ.',
+      hint: 'Trên thiết bị của trẻ, một quyền KidGate cần đã bị tắt, ngày giờ hoặc múi giờ đã bị đổi, hoặc SOS được bấm khi máy đang khóa. Bản thân cảnh báo SOS luôn được gửi.',
     },
     placeAlerts: {
       label: 'Khi đến và rời địa điểm',
@@ -56,7 +56,11 @@ export const notifications = {
     },
     messageAlerts: {
       label: 'Cảnh báo tin nhắn',
-      hint: 'Nhận cảnh báo khi tin nhắn có từ ngữ đáng lo ngại',
+      hint: 'Tin nhắn hoặc nội dung tìm kiếm của con có từ ngữ đáng lo ngại.',
+    },
+    billing: {
+      label: 'Nhắc về Premium',
+      hint: 'Lời nhắc đăng ký sau khi hết thời gian dùng thử. Thông báo khi bản dùng thử hoặc Premium kết thúc luôn được gửi.',
     },
   },
 };

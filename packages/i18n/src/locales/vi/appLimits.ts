@@ -1,7 +1,7 @@
 export const appLimits = {
   title: 'Giới hạn ứng dụng',
   intro:
-    'Đặt thời lượng tối đa mỗi ngày cho từng ứng dụng. Áp dụng cùng lúc với giới hạn chung của thiết bị.',
+    'Đặt thời lượng tối đa mỗi ngày cho từng ứng dụng. Giới hạn này áp dụng thêm, bên cạnh Giới hạn hằng ngày.',
   emptyTitle: 'Chưa có giới hạn nào',
   emptySubtitle: 'Chọn một ứng dụng bên dưới để đặt hạn mức riêng.',
   usedToday: '{{used}} / {{limit}} hôm nay',

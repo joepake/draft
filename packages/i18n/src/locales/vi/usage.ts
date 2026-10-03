@@ -43,10 +43,10 @@ export const usage = {
   deviceLockedChip: 'Đã khóa thiết bị',
   blockedHoursChip: 'Giờ khóa thiết bị',
   overLimitChip: 'Vượt giới hạn',
-  usageReportsNote:
-    'Hiển thị thời gian sử dụng, các lần khóa và nhật ký gần đây của thiết bị này.',
   syncNote:
-    'Thời gian sử dụng có thể mất vài phút để hiện trên màn hình này — lâu hơn nếu thiết bị không có kết nối mạng hoặc bị đóng đột ngột.',
+    'Thời gian sử dụng ở đây có thể chậm tối đa 5 phút so với thiết bị, hoặc 15 phút với gói miễn phí — lâu hơn nếu thiết bị không có kết nối mạng hoặc bị đóng đột ngột.',
+  syncNoteIos:
+    'Trên iPhone, thời gian sử dụng chỉ được gửi về sau khi KidGate chạy trên thiết bị của trẻ, nên có thể chậm vài giờ nếu con chưa mở ứng dụng.',
   syncNoteTv:
     'TV này chỉ kết nối theo định kỳ, nên thời gian sử dụng có thể mất tới một giờ để hiện trên màn hình này — lâu hơn nếu không có kết nối mạng.',
   sectionLast30Days: '30 ngày gần đây',

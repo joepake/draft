@@ -37,7 +37,7 @@ export const appInventory = {
     'Apple không cho phép ứng dụng nào đọc danh sách đã cài trên iPhone hay iPad, nên KidGate chỉ báo được ứng dụng khi chúng được dùng.',
   unsupportedGeneric: 'Thiết bị này không báo cáo các ứng dụng đã cài trên nó.',
   incompleteNote:
-    'Những ứng dụng không có biểu tượng trên màn hình chính có thể không xuất hiện trong danh sách này.',
+    'Một số ứng dụng có thể không có ở đây, chẳng hạn ứng dụng không có biểu tượng trong danh sách ứng dụng của thiết bị.',
   blockHint:
     'Để không cho con dùng một ứng dụng, hãy mở mục Chặn ứng dụng ngay trên thiết bị đó.',
   howItWorksLabel: 'Danh sách này hoạt động thế nào',

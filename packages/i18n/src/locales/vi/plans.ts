@@ -29,9 +29,12 @@ export const plans = {
   compareTitle: 'So sánh Miễn phí và Premium',
   compareColumnFree: 'Miễn phí',
   compareColumnPremium: 'Premium',
-  compareDevices: 'Thiết bị của con',
-  compareDevicesFree: '1',
-  compareDevicesPremium: 'Không giới hạn',
+  compareDevices: 'Thiết bị của trẻ',
+  compareDevicesFree: 'Quy tắc ở mọi máy, báo cáo từ 1 máy',
+  compareDevicesPremium: 'Mọi máy đều báo cáo',
+  compareParents: 'Phụ huynh',
+  compareParentsFree: 'Tối đa 3',
+  compareParentsPremium: 'Tối đa 6',
   compareSync: 'Cập nhật từ thiết bị',
   compareSyncFree: 'Mỗi 30 phút',
   compareSyncPremium: 'Trực tiếp',
@@ -46,14 +49,14 @@ export const plans = {
   compareWeb: 'Web',
   compareWebPremium: 'Đầy đủ lịch sử và từ khóa tìm kiếm',
   compareNewApps: 'Ứng dụng mới cài',
-  compareNewAppsPremium: 'Tên ứng dụng, và duyệt trước khi cài',
+  compareNewAppsPremium: 'Tên từng ứng dụng',
   compareMessages: 'Cảnh báo tin nhắn (Android)',
   compareSafety: 'Cảnh báo bảo vệ và Báo an toàn',
   compareSafetyFree: 'Cảnh báo + Báo an toàn',
   compareSafetyPremium: 'Thêm ảnh cho mỗi lần Báo an toàn',
   compareControls: 'Chặn ứng dụng và chặn nội dung web',
   compareControlsFree: 'Mọi ứng dụng, nội dung người lớn',
-  compareControlsPremium: 'Theo nhóm, giới hạn từng ứng dụng, danh sách riêng',
+  compareControlsPremium: 'Theo nhóm, danh sách riêng',
   compareReport: 'Báo cáo tuần',
   compareReportFree: 'Một lần, khi hết dùng thử',
   compareReportPremium: 'Hằng tuần',
@@ -62,7 +65,7 @@ export const plans = {
   compareActivityFeedPremium: '30 ngày',
   compareChildReport: 'Báo cáo từng trẻ',
   compareIncluded:
-    'Cả hai gói đều có giới hạn hằng ngày, giờ khóa thiết bị, chặn ứng dụng, chặn nội dung web, khóa từ xa, SOS, yêu cầu thêm giờ và nhiệm vụ thưởng trên iPhone, Android, Mac và Windows trong một gia đình, cùng với bảng điều khiển web và nhiều phụ huynh. Android TV và Chromebook sắp có, với ít tính năng kiểm soát hơn.',
+    'Cả hai gói đều có Giới hạn hằng ngày, Giờ khóa thiết bị, Chặn ứng dụng, Chặn nội dung web, Khóa thiết bị, SOS, Yêu cầu thêm giờ và Nhiệm vụ thưởng trên iPhone, Android, Mac và Windows trong một gia đình, cùng với bảng điều khiển web. Android TV và Chromebook cũng được hỗ trợ, với ít tính năng kiểm soát hơn.',
   sectionWhyPremium: 'Premium thêm gì',
   sectionWhyPremiumSubtitle:
     'Mọi quy tắc vẫn hoạt động ở gói Miễn phí. Premium thêm những gì bạn thấy được, và thấy sớm đến đâu.',
@@ -82,12 +85,12 @@ export const plans = {
   featurePausePhone: 'Khóa thiết bị',
   featureDailyLimits: 'Giới hạn hằng ngày',
   featureBlockedHours: 'Giờ khóa thiết bị',
-  featureAppLimits: 'Giới hạn giờ cho từng ứng dụng',
-  featureInstallApproval: 'Duyệt ứng dụng mới cài',
+  featureAppLimits: 'Giới hạn ứng dụng',
+  featureInstallApproval: 'Duyệt ứng dụng mới',
   featureTimeRequests: 'Yêu cầu thêm giờ',
   featureAppBlocking: 'Chặn ứng dụng',
   featureWebFiltering: 'Chặn nội dung web',
-  featureSeeLocation: 'Xem vị trí',
+  featureSeeLocation: 'Vị trí',
   featureTamperAlerts: 'Báo khi KidGate bị gỡ',
   featureSosAlerts: 'Cảnh báo SOS',
   trialPlanName: 'Dùng thử',
@@ -96,6 +99,7 @@ export const plans = {
   premiumPlanName: 'Premium',
   subscribeBadge: 'Đăng ký',
   currentPlanKicker: 'Gói hiện tại',
+  currentPlanA11y: 'Gói hiện tại: {{plan}}',
   trialEnded: 'Hết dùng thử',
   trialPending: 'Chưa bắt đầu dùng thử',
   premiumActiveSubtitle: 'Bạn đang sử dụng đầy đủ mọi tính năng.',
@@ -113,7 +117,7 @@ export const plans = {
   memberSubscriptionNotice:
     'Mỗi gia đình chỉ cần một gói duy nhất và chỉ chủ gia đình thực hiện thanh toán. Bạn có thể xem gia đình đang dùng thử hay đã đăng ký Premium.',
   memberTrialActiveSubtitle:
-    'Gia đình này đang dùng thử. Khi hết hạn, mọi quy tắc vẫn hoạt động trên một thiết bị; chủ gia đình có thể đăng ký để có hoạt động trực tiếp, lịch sử và tất cả thiết bị.',
+    'Gia đình này đang dùng thử. Khi hết hạn, mọi quy tắc vẫn hoạt động trên tất cả thiết bị và một thiết bị vẫn gửi báo cáo; chủ gia đình có thể đăng ký để có hoạt động trực tiếp, lịch sử và báo cáo từ mọi thiết bị.',
   memberTrialEndedSubtitle:
     'Bản dùng thử của gia đình này đã kết thúc. Giới hạn hằng ngày, Chặn ứng dụng, Chặn nội dung web và vị trí vẫn hoạt động. Hãy nhờ chủ gia đình đăng ký để có cập nhật trực tiếp, lịch sử và cảnh báo.',
   memberSetupTrialSubtitle:
@@ -127,7 +131,8 @@ export const plans = {
   purchasePending: 'Giao dịch đang chờ duyệt. Premium sẽ mở khóa ngay khi hoàn tất.',
   purchaseFailed: 'Giao dịch không thành công. Vui lòng thử lại.',
   storeNotReady: 'Cửa hàng chưa sẵn sàng. Vui lòng thử lại sau ít phút.',
-  premiumNotAvailable: 'Premium hiện chưa thể mua được.',
+  premiumNotAvailable:
+    'Hiện chưa thể mua Premium trên thiết bị này. Vui lòng thử lại sau.',
   premiumProductNotFound: 'Premium hiện chưa thể mua được. Vui lòng thử lại sau.',
   subscriptionOfferNotConfigured:
     'Gói đăng ký này hiện chưa khả dụng. Vui lòng thử lại sau.',
@@ -135,7 +140,8 @@ export const plans = {
   noActiveSubscription: 'Không tìm thấy gói đăng ký đang hoạt động.',
   purchasesRestored: 'Đã khôi phục giao dịch.',
   unableToRestorePurchases: 'Không thể khôi phục giao dịch. Vui lòng thử lại.',
-  purchaseVerificationFailed: 'Xác minh giao dịch không thành công.',
+  purchaseVerificationFailed:
+    'Không thể xác minh giao dịch. Vui lòng chờ một lát rồi chọn Khôi phục giao dịch.',
   // Hiển thị cho phụ huynh tham gia — chỉ chủ gia đình mới đăng ký được,
   // nên câu chữ phải nói rõ ai cần hành động thay vì đưa nút họ không dùng được.
   familyPremiumEndedTitle: 'Gói Premium của gia đình này đã kết thúc',
@@ -153,15 +159,15 @@ export const plans = {
   trustNoAds: 'Không quảng cáo',
   freePlanName: 'Miễn phí',
   freeDescription:
-    'Giữ những thứ cơ bản cho một thiết bị của trẻ, và không bao giờ hết hạn.',
-  featureOneChildDevice: 'Một thiết bị của con',
+    'Những tính năng cơ bản vẫn chạy trên mọi thiết bị của trẻ, và một thiết bị gửi báo cáo. Gói này không bao giờ hết hạn.',
+  featureOneChildDevice: 'Báo cáo từ một thiết bị của trẻ',
   termLifetime: 'Trọn đời',
   badgeOneTime: 'Trả một lần',
   planPeriodOnce: 'một lần',
   billedOnce:
-    'Trả một lần cho tối đa {{devices}} thiết bị của trẻ, dùng chừng nào KidGate còn hoạt động',
+    'Trả một lần để nhận báo cáo từ tối đa {{devices}} thiết bị của trẻ, dùng chừng nào KidGate còn hoạt động',
   sectionFreePlan: 'Nếu bạn không đăng ký',
-  devicesUnlimited: 'Không giới hạn thiết bị của trẻ',
+  devicesUnlimited: 'Mọi thiết bị của trẻ đều gửi báo cáo',
   featureFootnotePlatforms:
     'Một số tính năng phụ thuộc vào giới hạn của từng nền tảng, nên không phải tính năng nào cũng có trên mọi thiết bị.',
   sectionPlatforms: 'Nền tảng hỗ trợ',
@@ -176,9 +182,9 @@ export const plans = {
   platformMacLimits: 'Không có cảnh báo tin nhắn, vị trí chỉ ở mức tương đối.',
   platformWindowsLimits: 'Không có cảnh báo tin nhắn, vị trí chỉ ở mức tương đối.',
   platformAndroidTvLimits:
-    'Không có cảnh báo tin nhắn, vị trí, SOS và yêu cầu thêm giờ. Chặn ứng dụng chỉ ở mức tương đối.',
+    'Không có cảnh báo tin nhắn, vị trí, SOS và yêu cầu thêm giờ. Tính năng Chặn ứng dụng không bảo đảm chặn được mọi lúc.',
   platformChromebookLimits:
-    'Chỉ có chặn nội dung web — không có Giới hạn hằng ngày, Giờ khóa thiết bị, Chặn ứng dụng, Khóa thiết bị, SOS và vị trí.',
+    'Chỉ có tính năng Chặn nội dung web — không có Giới hạn hằng ngày, Giờ khóa thiết bị, tính năng Chặn ứng dụng, Khóa thiết bị, SOS và vị trí.',
   platformComingSoon: 'Sắp có',
   platformWindows: 'Windows',
   platformWindowsDetail: 'Chỉ thiết bị của trẻ · Windows 10 trở lên',
@@ -211,5 +217,8 @@ export const plans = {
   teaserLiveNote: 'Bản miễn phí cập nhật 30 phút một lần. Premium là trực tiếp.',
   teaserUsageTimeline:
     'Premium cho biết thiết bị được dùng vào những khung giờ nào trong ngày.',
+  teaserProofParents: 'Phụ huynh: {{count}}',
+  teaserParentCap:
+    'Đó là số phụ huynh tối đa một gia đình có được khi chưa có Premium. Premium cho phép gấp đôi.',
   teaserDeviceNote: 'Chỉ thiết bị đang được giám sát mới gửi báo cáo.',
 } as const;

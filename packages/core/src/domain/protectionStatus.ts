@@ -12,7 +12,11 @@
  * wall time and a test has to be able to say what time it is.
  */
 
-import type { Device, ProtectionPermissionStatus } from '@kidgate/schema/device';
+import type {
+  Device,
+  ProtectionPermissionKey,
+  ProtectionPermissionStatus,
+} from '@kidgate/schema/device';
 
 import { isAndroidLike } from './platformFamily';
 import { pendingConsentCopy } from './deviceConsents';
@@ -46,8 +50,9 @@ export interface ProtectionIssueKeys {
    * writing a second set.
    *
    * A list because a grant is a walk through Settings, not a sentence. Absent
-   * is honest and the renderer must handle it: iOS Screen Time, location and
-   * the television's filter consent have no written steps yet, and inventing
+   * is honest and the renderer must handle it: iOS Screen Time, a location
+   * that was never allowed (foreground-only has steps) and the television's
+   * filter consent have no written steps yet, and inventing
    * them here would be fourteen locales of guesswork about somebody else's
    * Settings app.
    */
@@ -141,9 +146,83 @@ function permissionIssue(
       return { key, labelKey, detailKey: 'protection.permissionRestrictedByIos' };
     case 'unknown':
       return { key, labelKey, detailKey: 'protection.permissionStatusUnknown' };
+    /*
+     * A value this build has no case for — a newer child app's. "Could not
+     * read" rather than nothing: `null` here is "Protected", and that is how
+     * every console before 2026-09-28 still reads `foregroundOnly`.
+     */
     default:
-      return null;
+      return { key, labelKey, detailKey: 'protection.permissionStatusUnknown' };
   }
+}
+
+/**
+ * Location that only works while KidGate is open — iOS "While Using the App",
+ * Android 10+ without "Allow all the time".
+ *
+ * Its own issue rather than a `permissionIssue` case because the sentence and
+ * the steps are location's alone. Both phones reported this as `authorized`
+ * until 2026-09-28: the child's wizard ticked, both consoles said Protected,
+ * and the parent's map moved only when the child happened to open the app.
+ * A warning, not `info`: a family relies on that map when the phone is in a
+ * pocket, which is exactly when it stops.
+ *
+ * The steps start from the KidGate page in Settings on both platforms —
+ * `permissions.backgroundRefreshStepOpen` already says that — and differ only
+ * in what the choice is called.
+ */
+function foregroundOnlyLocationIssue(isAndroid: boolean): ProtectionIssueKeys {
+  return {
+    key: 'location',
+    labelKey: 'protection.locationPermission',
+    detailKey: 'protection.locationForegroundOnly',
+    hintKeys: [
+      'permissions.backgroundRefreshStepOpen',
+      isAndroid
+        ? 'permissions.locationAlwaysStepAndroid'
+        : 'permissions.locationAlwaysStep',
+    ],
+  };
+}
+
+/**
+ * The checklist rows `getProtectionSummaryKeys` turns amber over while they are
+ * not granted, per phone family — the two report different rows.
+ *
+ * **What a child's setup may call "core".** The phone's wizard said "Core
+ * protection is on" once its required steps were granted, while battery
+ * optimisation and exact alarms — optional there, and skippable — kept both
+ * consoles on "Needs attention" for the same phone. It reads this list now: a
+ * step whose row is here may still be skipped, but nothing on the child calls
+ * protection on while it is not granted. Pinned to the summary below by
+ * `protectionStatus.test.ts`, so a row added to one and not the other fails.
+ *
+ * `camera` is absent on purpose: a refused camera costs the photo on an SOS and
+ * nothing else, and the checklist never reads it.
+ */
+export const SUMMARY_WARNED_PERMISSIONS: {
+  readonly android: readonly ProtectionPermissionKey[];
+  readonly ios: readonly ProtectionPermissionKey[];
+} = {
+  android: [
+    'screenTime',
+    'location',
+    'notifications',
+    'overlay',
+    'batteryOptimization',
+    'exactAlarm',
+    'accessibility',
+  ],
+  ios: ['screenTime', 'location', 'notifications', 'backgroundAppRefresh'],
+};
+
+/** `SUMMARY_WARNED_PERMISSIONS` for one device's platform. */
+export function summaryWarnedPermissions(
+  platform: Device['platform'],
+): readonly ProtectionPermissionKey[] {
+  return isAndroidLike(platform)
+    ? SUMMARY_WARNED_PERMISSIONS.android
+    : SUMMARY_WARNED_PERMISSIONS.ios;
 }
 
 export function getProtectionSummaryKeys(
@@ -208,11 +287,14 @@ export function getProtectionSummaryKeys(
       });
     }
 
-    const location = permissionIssue(
-      'location',
-      'protection.locationPermission',
-      protection.location,
-    );
+    const location =
+      protection.location === 'foregroundOnly'
+        ? foregroundOnlyLocationIssue(isAndroid)
+        : permissionIssue(
+            'location',
+            'protection.locationPermission',
+            protection.location,
+          );
     if (location) {
       issues.push(location);
     }

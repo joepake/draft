@@ -1,5 +1,6 @@
 export const timeRequest = {
   alertMorePending: 'Altre {{count}} richieste in attesa in Famiglia.',
+  alertMorePending_one: 'Un’altra richiesta in attesa in Famiglia.',
   pauseConfirmTitle: 'Bloccare {{deviceName}}?',
   pauseConfirmBody:
     'Questo blocca subito il dispositivo invece di concedere più tempo. {{deviceName}} non sarà utilizzabile finché non lo sblocchi.',
@@ -19,10 +20,12 @@ export const timeRequest = {
   statusCooldown: 'Potrai inviare una nuova richiesta tra {{time}}.',
   statusDailyLimitExceeded:
     'Hai esaurito il tempo di utilizzo di oggi. Le app si sbloccheranno domani, o prima se i tuoi genitori aggiungono altro tempo.',
-  errorDeviceNotRegistered: 'Questo dispositivo non è registrato.',
+  errorDeviceNotRegistered:
+    'Questo dispositivo non è ancora pronto per inviare richieste. Riprova tra poco, oppure chiedi ai tuoi genitori di associarlo di nuovo.',
   errorMinutesRange: 'Inserisci un valore tra {{min}} e {{max}} minuti.',
   toastRequestSent: 'Richiesta inviata. I tuoi genitori la esamineranno a breve.',
-  toastDeviceNotRegistered: 'Questo dispositivo non è ancora registrato.',
+  toastDeviceNotRegistered:
+    'Questo dispositivo non è ancora pronto per inviare richieste. Riprova tra poco, oppure chiedi ai tuoi genitori di associarlo di nuovo.',
   toastSendFailed: 'Impossibile inviare la richiesta. Riprova.',
   askForMoreTime: 'Richiedi altro tempo',
   askForMoreTimeSubtitle:
@@ -44,8 +47,7 @@ export const timeRequest = {
   unableToApproveRequest: 'Impossibile approvare la richiesta. Riprova.',
   pendingRequestExists:
     'Hai già inviato una richiesta. Attendi la risposta dei tuoi genitori.',
-  waitBeforeAnotherRequest:
-    'Attendi qualche minuto prima di inviare un’altra richiesta.',
+  waitBeforeAnotherRequest: 'Attendi un momento prima di inviare un’altra richiesta.',
   timeRequestSent: 'Richiesta di tempo inviata',
   timeRequestSentDescription: '{{deviceName}} ha richiesto {{minutes}} minuti extra.',
   timeRequestApproved: 'Richiesta di tempo approvata',
@@ -64,5 +66,4 @@ export const timeRequest = {
   requestPendingButton: 'Richiesta in attesa',
   requestPendingChip: 'Richiesta in attesa',
   waitCooldown: 'Attendi {{cooldown}}',
-  timeRequestNote: 'Se i tuoi genitori approvano, avrai più tempo di utilizzo oggi.',
 } as const;

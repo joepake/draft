@@ -60,6 +60,4 @@ export const shared = {
     'Das Gerät konnte nicht entfernt werden. Bitte versuche es erneut.',
   unableToOpenMaps: 'Karten konnte nicht geöffnet werden. Bitte versuche es erneut.',
   unableToSignOut: 'Abmelden nicht möglich. Bitte versuche es erneut.',
-  pushNotificationNote:
-    'Eltern und Kinder erhalten Push-Benachrichtigungen zu Befehlen und Zeitanfragen.',
 } as const;

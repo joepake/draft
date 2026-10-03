@@ -37,7 +37,7 @@ export const appInventory = {
     'Apple non permette a nessuna app di leggere cosa è installato su un iPhone o iPad, perciò KidGate può segnalare le app solo mentre vengono usate.',
   unsupportedGeneric: 'Questo dispositivo non segnala le app installate su di esso.',
   incompleteNote:
-    'Un’app senza icona nella schermata iniziale potrebbe non comparire qui.',
+    'Alcune app potrebbero non comparire qui, ad esempio quelle senza icona nell’elenco delle app del dispositivo.',
   blockHint: 'Per fermare un’app, apri App bloccate sul dispositivo stesso.',
   howItWorksLabel: 'Come funziona questo elenco',
   markSafe: 'Sicura',

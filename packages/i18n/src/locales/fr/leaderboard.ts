@@ -1,20 +1,10 @@
 export const leaderboard = {
   title: 'Tableau des étoiles',
   thisWeek: 'Cette semaine',
-  resetsNote: 'Tout repart chaque lundi.',
+  resetsNoteAt: 'Tout repart chaque {{weekday}} à {{time}}.',
   rowA11y: '{{rank}}. {{name}}, {{count}} étoiles',
   settingsTitle: 'Tableau des étoiles',
   settingsBody: 'Vos enfants voient combien d’étoiles chacun a gagnées cette semaine.',
-  screenTimeTitle: 'Temps d’écran de la famille',
-  screenTimeSub: 'Le moins de temps d’écran d’abord · cette semaine',
-  screenTimeRowA11y: '{{rank}}. {{name}}, {{duration}}',
-  screenTimeParentBadge: 'Parent',
-  screenTimeParentFallbackName: 'Parent',
-  screenTimeSettingsTitle: 'Temps d’écran de la famille',
-  screenTimeSettingsBody:
-    'Montrez à vos enfants le temps d’écran de chacun d’eux cette semaine. Désactivé tant que vous ne l’activez pas.',
-  screenTimeNote:
-    'Compte tous les appareils d’une personne. Repart à zéro chaque lundi.',
   childrenTitle: 'Enfants',
   manageAccessibility: 'Gérer les enfants et les appareils',
   addChild: 'Ajouter un enfant',

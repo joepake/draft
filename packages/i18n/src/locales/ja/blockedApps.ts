@@ -15,9 +15,14 @@ export const blockedApps = {
   installApprovalInfoLine1:
     'この機能をオンにした後にインストールされたアプリは、あなたを待たずにお子さまのデバイスでブロックされます。',
   installApprovalInfoLine2:
-    '通知が届き、そのアプリは以下の一覧と「アプリ」に、許可するまで表示され続けます。',
+    '通知が届き、そのアプリは許可するまで、下の「ブロックされたアプリ」に表示されます。',
   installApprovalInfoLine3:
     'アプリを許可すると、すぐに開けるようになります。許可しなければ、ブロックされたままです。',
+  installApprovalInfoLine1Ios:
+    'この機能がオンの間は、お子さまのデバイスでApp Storeが非表示になるため、新しいアプリをインストールできません。',
+  installApprovalInfoLine2Ios: 'すでにデバイスにあるアプリは引き続き使えます。',
+  installApprovalInfoLine3Ios:
+    'アプリを1つ入れたいときは、この機能をオフにしてインストールし、その後もう一度オンにしてください。',
   pendingSectionTitle: '自動的にブロックされ、承認待ち',
   pendingSectionSubtitle:
     '承認機能をオンにした後にインストールされたものです。ここにあるものはお子さまのデバイスで選んだものではありません。',
@@ -29,7 +34,7 @@ export const blockedApps = {
   toastAllowFailed: 'このアプリを許可できませんでした。もう一度お試しください。',
   toastInstallApprovalSaveFailed: '保存できませんでした。もう一度お試しください。',
   toastChooseAppsFirst:
-    'まず、お子さまに KidGate の設定を開き、ブロックするアプリを選択してもらってください。',
+    '先にアプリを選んでください。お子さまのデバイスでKidGateの設定を開き、保護者PINを入力します。',
   toastSaveFailed: '保存できませんでした。もう一度お試しください。',
   statusBlockingOn: 'ブロック中',
   statusBlockingOff: 'ブロックなし',
@@ -44,7 +49,9 @@ export const blockedApps = {
   toggleAccessibilityLabel: 'アプリブロックを有効にする',
   emptyTitle: 'ブロックされたアプリはありません',
   emptySubtitle:
-    'お子さまのデバイスで「KidGate 設定 → ブロックするアプリを選択」を開き、保護者 PIN を入力して保存してください。',
+    'お子さまのデバイスでKidGateの設定を開いて保護者PINを入力し、「アプリブロック」→「ブロックされたアプリ」を開いて選択を保存してください。',
+  emptySubtitleTv:
+    'テレビでKidGateを開いて「{{button}}」を選び、保護者PINを入力してから、アプリを選んで保存してください。',
   sectionTitle: 'ブロックリスト',
   privacyTitle: 'アプリ一覧はお子さまのデバイスから取得されます',
   privacySubtitle:
@@ -77,5 +84,8 @@ export const blockedApps = {
   unableToOpenAppPicker: 'アプリ一覧を開けませんでした。もう一度お試しください。',
   wizardStepPin: '設定で求められたら保護者PINを入力します。',
   wizardStepChoose:
-    '「ブロックするアプリを選択」を開き、アプリにチェックを入れて保存します。',
+    '「アプリブロック」の「ブロックされたアプリ」を開き、アプリにチェックを入れて保存します。',
+  pickerSubtitle: 'このデバイスでブロックするアプリとカテゴリを選んでください。',
+  pickerSubtitleAndroid: 'アプリブロックがオンの間は、チェックしたアプリを開けません。',
+  pickerEmpty: 'このデバイスにアプリが見つかりません。',
 } as const;

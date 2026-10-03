@@ -15,9 +15,15 @@ export const blockedApps = {
   installApprovalInfoLine1:
     'L’appareil de l’enfant bloque toute application installée après l’activation de cette option, sans attendre votre réponse.',
   installApprovalInfoLine2:
-    'Vous recevez une notification, et l’application apparaît ci-dessous et dans Applications jusqu’à ce que vous l’autorisiez.',
+    'Vous recevez une notification, et l’application apparaît ci-dessous, dans Applications bloquées, jusqu’à ce que vous l’autorisiez.',
   installApprovalInfoLine3:
     'Autoriser une application lui permet de s’ouvrir immédiatement. Une application que vous n’autorisez pas reste simplement bloquée.',
+  installApprovalInfoLine1Ios:
+    'Tant que cette option est activée, l’App Store est masqué sur l’appareil de l’enfant : aucune nouvelle application ne peut donc être installée.',
+  installApprovalInfoLine2Ios:
+    'Les applications déjà présentes sur l’appareil continuent de fonctionner.',
+  installApprovalInfoLine3Ios:
+    'Pour laisser passer une application, désactivez cette option, installez l’application, puis réactivez l’option.',
   pendingSectionTitle: 'Bloquées automatiquement, en attente de votre décision',
   pendingSectionSubtitle:
     'Installées après l’activation de l’approbation. Rien ici n’a été choisi sur l’appareil de l’enfant.',
@@ -29,7 +35,7 @@ export const blockedApps = {
   toastAllowFailed: 'Impossible d’autoriser cette application. Veuillez réessayer.',
   toastInstallApprovalSaveFailed: 'Impossible d’enregistrer. Veuillez réessayer.',
   toastChooseAppsFirst:
-    'Demandez d’abord à votre enfant d’ouvrir les paramètres de KidGate et de sélectionner les applications à bloquer.',
+    'Choisissez d’abord les applications : ouvrez les Réglages KidGate sur l’appareil de l’enfant et saisissez le code PIN parent.',
   toastSaveFailed: 'Impossible d’enregistrer. Veuillez réessayer.',
   statusBlockingOn: 'Blocage activé',
   statusBlockingOff: 'Blocage désactivé',
@@ -46,7 +52,9 @@ export const blockedApps = {
   toggleAccessibilityLabel: 'Activer le blocage des applications',
   emptyTitle: 'Aucune application bloquée',
   emptySubtitle:
-    'Sur l’appareil de l’enfant, ouvrez les Réglages KidGate → Choisir les applications à bloquer, saisissez le code PIN parent, puis enregistrez la sélection.',
+    'Sur l’appareil de l’enfant, ouvrez les Réglages KidGate, saisissez le code PIN parent, puis ouvrez Blocage des applications → Applications bloquées et enregistrez la sélection.',
+  emptySubtitleTv:
+    'Sur la TV, ouvrez KidGate, sélectionnez « {{button}} », saisissez le code PIN parent, puis choisissez les applications et enregistrez.',
   sectionTitle: 'Liste des applications bloquées',
   privacyTitle: 'La liste des applications provient de l’appareil de l’enfant',
   privacySubtitle:
@@ -82,5 +90,10 @@ export const blockedApps = {
     'Impossible d’ouvrir le sélecteur d’applications. Veuillez réessayer.',
   wizardStepPin: 'Saisissez le code PIN parent lorsque les Réglages le demandent.',
   wizardStepChoose:
-    'Ouvrez « Choisir les applications à bloquer », cochez les applications et enregistrez.',
+    'Ouvrez « Applications bloquées » dans « Blocage des applications », cochez les applications et enregistrez.',
+  pickerSubtitle:
+    'Choisissez les applications et catégories à bloquer sur cet appareil.',
+  pickerSubtitleAndroid:
+    'Les applications cochées ne peuvent pas s’ouvrir tant que le Blocage des applications est activé.',
+  pickerEmpty: 'Aucune application trouvée sur cet appareil.',
 } as const;

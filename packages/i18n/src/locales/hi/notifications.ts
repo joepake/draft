@@ -8,7 +8,8 @@ export const notifications = {
   sectionAlertsHint: 'चुनें कि इस फ़ोन पर किन बातों की सूचना आए।',
   sectionSummary: 'सारांश',
   sectionQuietHours: 'शांत घंटे',
-  sectionQuietHoursHint: 'इस अवधि में अलर्ट चुप रहते हैं। SOS कभी म्यूट नहीं होता।',
+  sectionQuietHoursHint:
+    'इस अवधि में अलर्ट चुप रहते हैं। SOS कभी म्यूट नहीं होता, और सबसे गंभीर संदेश चेतावनियाँ फिर भी आती हैं।',
   quietHoursLabel: 'शांत घंटे',
   quietHoursOff: 'बंद — अलर्ट किसी भी समय आ सकते हैं',
   quietHoursActive: '{{start}} से {{end}} तक चुप',
@@ -20,7 +21,7 @@ export const notifications = {
   alert: {
     tamperAlerts: {
       label: 'सुरक्षा बंद हुई',
-      hint: 'बच्चे के डिवाइस पर KidGate की ज़रूरी अनुमति बंद कर दी गई।',
+      hint: 'किसी बच्चे के डिवाइस पर KidGate की ज़रूरी अनुमति बंद कर दी गई, तारीख, समय या टाइम ज़ोन बदला गया, या डिवाइस लॉक रहते हुए SOS दबाया गया। SOS अलर्ट खुद हमेशा आता है।',
     },
     placeAlerts: {
       label: 'पहुँचना और निकलना',
@@ -56,7 +57,11 @@ export const notifications = {
     },
     messageAlerts: {
       label: 'संदेश चेतावनियाँ',
-      hint: 'संदेशों में चिंताजनक शब्द आने पर सूचना पाएं',
+      hint: 'आपके बच्चे के संदेशों या खोजों में चिंताजनक शब्द आते हैं।',
+    },
+    billing: {
+      label: 'Premium रिमाइंडर',
+      hint: 'ट्रायल खत्म होने के बाद सदस्यता लेने के रिमाइंडर। ट्रायल या Premium खत्म होने की सूचना हमेशा आती है।',
     },
   },
 };

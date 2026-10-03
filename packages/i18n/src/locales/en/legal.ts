@@ -51,7 +51,7 @@ export const legal = {
       },
       {
         title: '12. Deleting an account',
-        body: 'A parent can request deletion in Settings, from kidgate.app, or by email to support@kidgate.app from the address on the account. The request holds for 14 days and can be cancelled during that time; after it, the family account, every child and device under it, and the stored files belonging to it are deleted, and the sign-in itself is removed. Deletion is permanent and there is no export afterwards.',
+        body: 'A parent can request deletion in Settings, or by email to support@kidgate.app from the address on the account, as kidgate.app/delete-account explains. The request holds for 14 days and can be cancelled during that time; after it, the family account, every child and device under it, and the stored files belonging to it are deleted, and the sign-in itself is removed. Deletion is permanent and there is no export afterwards.',
       },
       {
         title: '13. Rights and choices',
@@ -103,7 +103,7 @@ export const legal = {
       },
       {
         title: '7. Plans, the trial and the free tier',
-        body: 'A free trial with full access begins when your first parent and child devices are paired and runs for the period stated in the app. When it ends, the rules you configured keep working without payment on one child device — Daily Limit, Blocked Hours, Blocked Apps, per-app limits, the Web Filter, safe search, Device Lock, extra-time requests, reward tasks and message monitoring — and a parent can still ask that device for its current position a limited number of times a day. SOS is never behind payment. Live activity, history, weekly reports, the location trail, addresses and place alerts become part of Premium. Where a family has more child devices than the plan covers, the extra devices are paused: they keep enforcing the rules already set, those rules can be loosened but not tightened, and they stop sending activity. You choose which device stays monitored, and that choice can be changed once every seven days. Removing a child device does not restart the trial. A family may pair a limited number of child devices over the life of the account; the number depends on the plan, the app states it when it is reached, and a device that was removed still counts toward it.',
+        body: 'A free trial with full access begins when your first parent and child devices are paired and runs for the period stated in the app. When it ends, the rules you configured keep working without payment on one child device — Daily Limit, Blocked Hours, Blocked Apps, per-app limits, the Web Filter, safe search, Device Lock, extra-time requests and reward tasks — and a parent can still ask that device for its current position a limited number of times a day. SOS is never behind payment. Live activity, history, weekly reports, the location trail, addresses, place alerts and message monitoring become part of Premium. Where a family has more child devices than the plan covers, the extra devices are paused: they keep enforcing the rules already set, those rules can be loosened but not tightened, and they stop sending activity. You choose which device stays monitored, and that choice can be changed once every seven days. Removing a child device does not restart the trial. A family may have a limited number of child devices paired at the same time; the number depends on the plan, and the app states it when it is reached.',
       },
       {
         title: '8. Subscriptions and payments',

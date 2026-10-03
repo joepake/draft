@@ -113,3 +113,31 @@ export function supportsVideoHistory(device: VideoHistorySupportInput): boolean 
 export function showsVideoHistoryCard(device: VideoHistorySupportInput): boolean {
   return supportsVideoHistory(device) || isDesktopLike(device.platform);
 }
+
+/**
+ * An Android phone whose reader cannot run, known without a probe.
+ *
+ * The phone publishes no `videoHistory` probe, so the card answered from the
+ * platform list and said "Recording" whatever the child's phone could do. Its
+ * reader, `KidGateYoutubeWatch`, needs KidGate's notification-access grant —
+ * the SAME grant as incoming Message Alerts (`KidGateMessageListenerService`),
+ * which the phone already publishes as `messageMonitoring.incoming.granted`.
+ * So the parent can be told, with no agent change.
+ *
+ * Only a definite `false` counts: absent is a build that never reported, and
+ * reading it as refused would accuse a phone that is very probably recording.
+ * A device that publishes a probe (TV, extension, desktop) answers for itself.
+ */
+export function videoHistoryAwaitingGrant(
+  device: VideoHistorySupportInput & {
+    messageMonitoring?: { incoming?: { granted?: boolean } | null } | null;
+  },
+): boolean {
+  if (device.capabilities?.videoHistory !== undefined) {
+    return false;
+  }
+  if (device.platform !== 'android') {
+    return false;
+  }
+  return device.messageMonitoring?.incoming?.granted === false;
+}

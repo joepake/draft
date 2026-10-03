@@ -45,6 +45,9 @@ export const settings = {
   accountLinkActionLink: '연결',
   accountLinkActionUnlink: '연결 해제',
   accountLinkActionVerify: '인증',
+  accountLinkActionLinkA11y: '{{provider}} 연결',
+  accountLinkActionUnlinkA11y: '{{provider}} 연결 해제',
+  accountLinkActionVerifyA11y: '{{provider}} 인증',
   accountLinkSummary: '{{methods}}(으)로 로그인',
   accountLinked: '연결됨',
   accountNotLinked: '연결 안 됨',
@@ -60,13 +63,10 @@ export const settings = {
   pushNotificationsSubtitle: '이 기기에 올 알림을 선택합니다',
   inAppAlertsLabel: '앱 내 알림',
   inAppAlertsHint:
-    '시간 연장 요청에 대한 앱 내 알림을 표시합니다. SOS 알림은 항상 표시됩니다.',
+    'KidGate를 열어 둔 동안 새 알림을 배너로 표시합니다. SOS 알림은 항상 표시됩니다.',
   sosSoundLabel: 'SOS 사이렌',
   sosSoundHint:
     '자녀가 SOS를 보내면 이 기기에서 큰 사이렌을 울립니다. 진동은 어떤 경우에도 유지됩니다.',
-  shareScreenTimeLabel: '내 스크린 타임 공유',
-  shareScreenTimeHint:
-    '이 휴대폰의 스크린 타임을 자녀 옆에 가족 보드에 올립니다. 사용 정보 접근 권한이 필요합니다.',
   themeStyleLabel: '테마 스타일',
   themeColorLabel: '테마 색상',
   signOutButton: '로그아웃',
@@ -99,12 +99,16 @@ export const settings = {
     '{{deviceName}}이(가) 이 계정에서 로그아웃되고 알림을 더 이상 받지 않습니다. 기기를 가진 사람은 비밀번호로 다시 로그인할 수 있습니다.',
   toastParentDeviceRemoved: '{{deviceName}}이(가) 삭제되었습니다.',
   signedOutByAnotherDevice:
-    '이 기기는 다른 기기에서 부모 계정으로부터 로그아웃되었습니다.',
+    '이 기기는 다른 기기에서 부모 계정으로부터 로그아웃되었습니다. 계속하려면 다시 로그인하세요.',
   deleteAccountTitle: '계정 삭제',
   deleteAccountSubtitleDefault: '계정과 모든 데이터를 영구적으로 삭제합니다',
   deleteAccountAlertTitle: '계정을 영구적으로 삭제하시겠습니까?',
   deleteAccountAlertMessage:
     '가족 계정 삭제를 예약합니다. 아직 삭제된 것은 없습니다. 삭제 예정일 전에는 언제든지 로그인해 취소할 수 있습니다. 그 이후에는 모든 데이터(기기, 활동, 위치 기록, SOS 사진)가 모든 보호자와 자녀에 대해 영구적으로 삭제됩니다.',
+  deleteAccountAlertMessageMember:
+    '본인 계정의 삭제를 예약합니다. 아직 삭제된 것은 없습니다. 삭제 예정일 전에는 언제든지 로그인해 취소할 수 있습니다. 그 이후에는 본인의 로그인 정보와 설정이 삭제됩니다. 가족과 가족의 기기, 다른 보호자에게는 영향이 없습니다.',
+  deleteAccountSubscriptionNotice:
+    '계정을 삭제해도 구독은 취소되지 않습니다. App Store 또는 Google Play에서 취소하세요.',
   sendRequestButton: '영구적으로 삭제',
   toastDeletionAlreadyPending: '계정 삭제가 이미 진행 중입니다.',
   toastDeletionRequestFailed: '계정 삭제를 시작하지 못했습니다. 다시 시도해 주세요.',
@@ -185,7 +189,7 @@ export const settings = {
   deleteAccountImpact:
     '접근 권한을 잃는 보호자: {{parents}}명. 접근 권한을 잃는 자녀 기기: {{devices}}대.',
   deleteAccountGraceNotice:
-    '계정은 {{days}}일 동안 그대로 사용할 수 있으며, 그 이후 영구 삭제됩니다.',
+    '삭제는 {{days}}일 후에 진행됩니다. 그때까지는 KidGate를 열어 취소할 수 있습니다.',
   deleteAccountReauthNotice: '확인을 위해 다시 로그인해야 합니다.',
   deleteAccountConfirmLabel: '확인하려면 {{word}}을(를) 입력하세요',
   statusScheduled: '예약됨',

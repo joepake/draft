@@ -14,8 +14,8 @@ export const report = {
 
   statScreenTime: 'Экранное время',
   statDailyAverage: 'В среднем за день',
-  statBlockedApps: 'Заблокированные приложения',
-  statBlockedWebVisits: 'Отфильтрованные сайты',
+  statBlockedApps: 'Запуски заблокированных приложений',
+  statBlockedWebVisits: 'Посещения заблокированных сайтов',
   statTasksApproved: 'Выполненные задания',
 
   trendUp: 'на {{value}} больше, чем неделей раньше',
@@ -90,7 +90,7 @@ export const report = {
   shareFailed: 'Не удалось открыть меню «Поделиться».',
   shareLinkCta: 'Скачайте приложение на {{url}}',
   shareFooterDesc:
-    'KidGate помогает родителям видеть экранное время, местоположение и сообщения.',
+    'KidGate помогает родителям управлять экранным временем, видеть местоположение и фильтровать сайты.',
   shareFooterCta: 'Скачайте приложение на kidgate.app/get',
 
   currentWeekTab: 'Эта неделя',
@@ -122,6 +122,9 @@ export const report = {
   // existed; the phone could not, because the copy lived only in the web
   // pack.
   childrenTitle: 'По детям',
+  childrenNoteByChild:
+    'Те же две недели, по каждому ребёнку на всех устройствах, которыми он пользуется. Проценты — от суммы по семье.',
+  devicesTitle: 'По устройствам',
   childrenNote: 'Те же две недели, по устройствам. Проценты — от суммы по семье.',
   colChild: 'Ребёнок',
   colScreenTime: 'Экранное время',

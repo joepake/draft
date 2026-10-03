@@ -19,10 +19,12 @@ export const timeRequest = {
   statusCooldown: '{{time}}後に新しいリクエストを送信できます。',
   statusDailyLimitExceeded:
     '今日の利用時間をすべて使い切りました。アプリは明日また使えるようになります。保護者が時間を追加すれば、それより早く使えます。',
-  errorDeviceNotRegistered: 'このデバイスは登録されていません。',
+  errorDeviceNotRegistered:
+    'このデバイスはまだリクエストを送れる状態になっていません。少ししてからもう一度お試しいただくか、保護者にもう一度ペアリングしてもらってください。',
   errorMinutesRange: '{{min}}〜{{max}}分の範囲で入力してください。',
   toastRequestSent: 'リクエストを送信しました。保護者がまもなく確認します。',
-  toastDeviceNotRegistered: 'このデバイスはまだ登録されていません。',
+  toastDeviceNotRegistered:
+    'このデバイスはまだリクエストを送れる状態になっていません。少ししてからもう一度お試しいただくか、保護者にもう一度ペアリングしてもらってください。',
   toastSendFailed: 'リクエストを送信できませんでした。もう一度お試しください。',
   askForMoreTime: '追加の時間をリクエスト',
   askForMoreTimeSubtitle: '保護者が承認すると、今日はもっと長く使えるようになります。',
@@ -62,5 +64,4 @@ export const timeRequest = {
   requestPendingButton: 'リクエスト承認待ち',
   requestPendingChip: 'リクエスト承認待ち',
   waitCooldown: 'あと{{cooldown}}',
-  timeRequestNote: '保護者が承認すると、今日はもっと長く使えるようになります。',
 } as const;

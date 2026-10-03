@@ -1,21 +1,11 @@
 export const leaderboard = {
   title: 'Papan bintang',
   thisWeek: 'Minggu ini',
-  resetsNote: 'Dimulai lagi setiap Senin.',
+  resetsNoteAt: 'Dimulai lagi setiap {{weekday}} pukul {{time}}.',
   rowA11y: '{{rank}}. {{name}}, {{count}} bintang',
   settingsTitle: 'Papan bintang',
   settingsBody:
     'Biarkan anak-anak Anda melihat berapa bintang yang dikumpulkan masing-masing minggu ini.',
-  screenTimeTitle: 'Waktu layar keluarga',
-  screenTimeSub: 'Waktu layar paling sedikit di atas · minggu ini',
-  screenTimeRowA11y: '{{rank}}. {{name}}, {{duration}}',
-  screenTimeParentBadge: 'Orang tua',
-  screenTimeParentFallbackName: 'Orang tua',
-  screenTimeSettingsTitle: 'Waktu layar keluarga',
-  screenTimeSettingsBody:
-    'Tunjukkan kepada anak-anak Anda berapa banyak waktu layar yang dipakai masing-masing minggu ini. Fitur ini nonaktif sampai Anda mengaktifkannya.',
-  screenTimeNote:
-    'Menghitung semua perangkat yang dipakai seseorang. Dimulai lagi setiap Senin.',
   childrenTitle: 'Anak',
   manageAccessibility: 'Kelola anak dan perangkat',
   addChild: 'Tambah anak',

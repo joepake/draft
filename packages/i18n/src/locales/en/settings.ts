@@ -44,13 +44,17 @@ export const settings = {
   accountLinkActionLink: 'Link',
   accountLinkActionUnlink: 'Unlink',
   accountLinkActionVerify: 'Verify',
+  // Screen-reader labels for the three actions, each naming its provider.
+  accountLinkActionLinkA11y: 'Link {{provider}}',
+  accountLinkActionUnlinkA11y: 'Unlink {{provider}}',
+  accountLinkActionVerifyA11y: 'Verify {{provider}}',
   accountLinkSummary: 'Signs in with {{methods}}',
   accountLinked: 'Linked',
   accountNotLinked: 'Not linked',
   darkModeLabel: 'Dark mode',
   darkModeHint: 'Easier on the eyes at night',
   addWidgetTitle: 'Add widget to Home Screen',
-  addWidgetSubtitle: "See each child's screen time at a glance",
+  addWidgetSubtitle: 'See each child’s screen time at a glance',
   addWidgetStepsIos:
     '1. Touch and hold an empty spot on your Home Screen\n2. Tap the + button in the top corner\n3. Search for KidGate\n4. Choose a size and tap Add Widget',
   addWidgetStepsAndroid:
@@ -58,13 +62,11 @@ export const settings = {
   pushNotificationsTitle: 'Push notifications',
   pushNotificationsSubtitle: 'Choose which alerts reach this phone',
   inAppAlertsLabel: 'In-app alerts',
-  inAppAlertsHint: 'Show in-app alerts for time requests. SOS alerts always appear.',
+  inAppAlertsHint:
+    'Show a banner for new alerts while KidGate is open. SOS alerts always appear.',
   sosSoundLabel: 'SOS siren',
   sosSoundHint:
     'Play a loud siren on this phone when a child sends an SOS. Vibration stays on either way.',
-  shareScreenTimeLabel: 'Share my screen time',
-  shareScreenTimeHint:
-    'Put this phone’s screen time on the family board, beside your children’s. Needs usage access.',
   themeStyleLabel: 'Theme style',
   themeColorLabel: 'Theme color',
   signOutButton: 'Sign out',
@@ -96,12 +98,18 @@ export const settings = {
     '{{deviceName}} will be signed out of this account and stop receiving notifications. Whoever has it can sign in again with the password.',
   toastParentDeviceRemoved: '{{deviceName}} removed.',
   signedOutByAnotherDevice:
-    'This device was signed out of the parent account from another device.',
+    'This device was signed out of the parent account from another device. Sign in again to continue.',
   deleteAccountTitle: 'Delete account',
   deleteAccountSubtitleDefault: 'Permanently delete your account and all data',
   deleteAccountAlertTitle: 'Delete account permanently?',
   deleteAccountAlertMessage:
     'This schedules your family account for deletion. Nothing is removed yet — you can sign in and cancel any time before the deletion date. After that, all data (devices, activity, location history, SOS photos) is permanently deleted for every parent and child.',
+  // A co-parent's deletion removes only their own sign-in and settings
+  // (`functions/scheduled/purgeScheduledDeletions.js`); the family stays.
+  deleteAccountAlertMessageMember:
+    'This schedules your own account for deletion. Nothing is removed yet — you can sign in and cancel any time before the deletion date. After that, your sign-in and your own settings are deleted. The family, its devices and the other parents are not affected.',
+  deleteAccountSubscriptionNotice:
+    'Deleting your account does not cancel a subscription. Cancel it in the App Store or Google Play.',
   sendRequestButton: 'Delete permanently',
   toastDeletionAlreadyPending: 'Account deletion is already in progress.',
   toastDeletionRequestFailed: 'Unable to start account deletion. Try again.',
@@ -183,7 +191,7 @@ export const settings = {
   deleteAccountImpact:
     'Parents losing access: {{parents}}. Child devices losing access: {{devices}}.',
   deleteAccountGraceNotice:
-    'Your account keeps working for {{days}} days, then it is permanently deleted.',
+    'Deletion happens after {{days}} days. Until then, you can open KidGate and cancel it.',
   deleteAccountReauthNotice: 'You will be asked to sign in again to confirm.',
   deleteAccountConfirmLabel: 'Type {{word}} to confirm',
   statusScheduled: 'Scheduled',

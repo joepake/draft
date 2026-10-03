@@ -6,6 +6,11 @@ export const errors = {
   invalidEmailOrPassword: 'Invalid email or password.',
   tooManyRequests: 'Too many attempts. Try again later.',
   somethingWentWrong: 'Something went wrong. Try again.',
+  accountDisabled:
+    'This account has been disabled. Contact KidGate support to restore it.',
+  recentLoginRequired: 'For your security, sign in again, then try this once more.',
+  accountExistsDifferentMethod:
+    'This email already has an account with a different sign-in method. Sign in that way, then link this one in Settings.',
   unableToCreateAccount: 'Unable to create your account. Try again.',
   unableToSignIn: 'Unable to sign in. Try again.',
   unableToJoinFamilyAccount: 'Unable to join the family account. Try again.',
@@ -17,7 +22,7 @@ export const errors = {
   unableToRedeemPairingCode:
     'That code doesn’t match. Double-check the characters — or ask for a fresh code if it’s been a while.',
   unableToClaimChildPairing: 'Unable to connect the child device. Try again.',
-  unableToPollChildPairing: 'Unable to check the pairing status.',
+  unableToPollChildPairing: 'Unable to check the pairing status. Try again.',
   unableToConfirmChildPairing: 'Unable to confirm this pairing. Try again.',
   unableToRejectChildPairing: 'Unable to decline this pairing. Try again.',
   photoCaptureCancelled: 'Photo capture was cancelled.',
@@ -37,8 +42,6 @@ export const errors = {
   noNetworkConnection:
     'No network connection. Check Wi‑Fi or mobile data and try again.',
   connectionFailedTitle: 'Connection failed',
-  connectionFailedBody:
-    'KidGate could not connect. Check Wi‑Fi or mobile data, then select Reconnect.',
   reconnect: 'Reconnect',
   unableToUploadPhoto: 'Unable to upload the photo. Try again.',
   premiumSubscriptionRequired:
@@ -50,6 +53,7 @@ export const errors = {
   notFamilyMember:
     'You are no longer part of this family. Ask the family owner to invite you again.',
   familyNotCreated: 'Create your family first, then invite another parent.',
+  parentLimitReached: 'This family already has as many parents as its plan allows.',
   childDeviceNotAllowed: 'This is a child device, so it cannot manage family settings.',
   deviceCredentialMissing:
     'This device needs to reconnect. Close and reopen KidGate, then try again.',
@@ -89,7 +93,16 @@ export const errors = {
   alreadyInFamily: 'You are already in this family.',
   leaveFamilyBeforeJoining: 'Leave your current family before joining another.',
   locationDailyLimitFree:
-    'The free plan has used up today’s location checks. Premium follows their location live.',
+    'The free plan has used up today’s location checks. Try again tomorrow — Premium follows their location live.',
   deviceLimitReached:
-    'You have reached the number of devices KidGate covers for one family.',
+    'This family has reached the number of devices KidGate covers. Remove a device you no longer use, then try again.',
+  // `rewardTask/too-many` — the cap on active tasks at once, free or paid.
+  rewardTaskLimitReached:
+    'There are already as many active tasks as allowed at once. Remove one or wait until one is done, then try again.',
+  // `device/not-paired` — read by a child agent whose device was unpaired.
+  deviceNotPaired:
+    'This device is no longer paired with your family. Ask your parent to pair it again.',
+  // `timeRequest/invalid-minutes` — a parent's direct grant outside the bounds.
+  bonusMinutesOutOfRange:
+    'That amount of extra time can’t be given at once. Choose a different amount and try again.',
 };

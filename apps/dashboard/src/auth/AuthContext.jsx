@@ -40,6 +40,7 @@ const MESSAGE_KEYS = {
   'auth/invalid-custom-token': 'authError.invalidCustomToken',
   'web/rejected': 'authError.webRejected',
   'web/expired': 'authError.webExpired',
+  'auth/network-request-failed': 'controlError.network',
 };
 
 /**
@@ -97,7 +98,10 @@ export function describeAuthError(error, t) {
   }
   const key = MESSAGE_KEYS[error.code || ''];
   if (key) return t(key);
-  return error.message || t('authError.generic');
+  // A fetch that never reached the server rejects with a bare TypeError.
+  if (error instanceof TypeError) return t('controlError.network');
+  // Never `error.message`: it is Firebase's English, or the server's.
+  return t('authError.generic');
 }
 
 export function AuthProvider({ children }) {

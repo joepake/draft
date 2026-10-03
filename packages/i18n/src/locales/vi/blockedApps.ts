@@ -15,9 +15,14 @@ export const blockedApps = {
   installApprovalInfoLine1:
     'Thiết bị của trẻ chặn bất kỳ ứng dụng nào được cài sau khi bạn bật tính năng này, không cần chờ bạn.',
   installApprovalInfoLine2:
-    'Bạn sẽ nhận được thông báo, và ứng dụng đó hiện ra ở danh sách bên dưới và trong mục Ứng dụng cho đến khi bạn cho phép.',
+    'Bạn sẽ nhận được thông báo, và ứng dụng đó hiện ra ở danh sách bên dưới, trong mục Chặn ứng dụng, cho đến khi bạn cho phép.',
   installApprovalInfoLine3:
     'Khi bạn cho phép, ứng dụng đó dùng được ngay. Ứng dụng bạn không cho phép sẽ tiếp tục bị chặn.',
+  installApprovalInfoLine1Ios:
+    'Khi bật tính năng này, App Store bị ẩn trên thiết bị của trẻ nên không cài được ứng dụng mới.',
+  installApprovalInfoLine2Ios: 'Các ứng dụng đã có trên thiết bị vẫn dùng bình thường.',
+  installApprovalInfoLine3Ios:
+    'Muốn cho cài một ứng dụng, hãy tắt tính năng này, cài ứng dụng đó rồi bật lại.',
   pendingSectionTitle: 'Đã tự động chặn, đang chờ bạn',
   pendingSectionSubtitle:
     'Được cài đặt sau khi bạn bật tính năng duyệt. Không mục nào ở đây do thiết bị của trẻ chọn.',
@@ -29,7 +34,7 @@ export const blockedApps = {
   toastAllowFailed: 'Không thể cho phép ứng dụng này. Vui lòng thử lại.',
   toastInstallApprovalSaveFailed: 'Không thể lưu. Vui lòng thử lại.',
   toastChooseAppsFirst:
-    'Hãy nhờ con mở Cài đặt KidGate trên máy của con và chọn ứng dụng cần chặn trước.',
+    'Hãy chọn ứng dụng trước: mở Cài đặt KidGate trên thiết bị của trẻ và nhập mã PIN phụ huynh.',
   toastSaveFailed: 'Không thể lưu. Vui lòng thử lại.',
   statusBlockingOn: 'Đang chặn',
   statusBlockingOff: 'Chưa chặn',
@@ -44,7 +49,9 @@ export const blockedApps = {
   toggleAccessibilityLabel: 'Bật chặn ứng dụng',
   emptyTitle: 'Chưa chặn ứng dụng nào',
   emptySubtitle:
-    'Trên thiết bị của trẻ, mở Cài đặt KidGate → Chọn ứng dụng cần chặn, nhập mã PIN phụ huynh rồi lưu lại.',
+    'Trên thiết bị của trẻ, mở Cài đặt KidGate, nhập mã PIN phụ huynh, rồi mở mục Chặn ứng dụng, chọn ứng dụng và lưu lại.',
+  emptySubtitleTv:
+    'Trên TV, mở KidGate, chọn “{{button}}”, nhập mã PIN phụ huynh, rồi chọn ứng dụng và lưu lại.',
   sectionTitle: 'Danh sách chặn',
   privacyTitle: 'Danh sách ứng dụng được lấy từ thiết bị của trẻ',
   privacySubtitle:
@@ -72,5 +79,9 @@ export const blockedApps = {
   noAppsSelected: 'Bạn chưa chọn ứng dụng nào.',
   unableToOpenAppPicker: 'Không thể mở bảng chọn ứng dụng. Vui lòng thử lại.',
   wizardStepPin: 'Nhập mã PIN phụ huynh khi Cài đặt hỏi.',
-  wizardStepChoose: 'Mở Chọn ứng dụng cần chặn, tích các ứng dụng rồi lưu lại.',
+  wizardStepChoose: 'Mở mục Chặn ứng dụng, tích các ứng dụng rồi lưu lại.',
+  pickerSubtitle: 'Chọn ứng dụng và danh mục cần chặn trên thiết bị này.',
+  pickerSubtitleAndroid:
+    'Các ứng dụng đã đánh dấu sẽ không mở được khi mục Chặn ứng dụng đang bật.',
+  pickerEmpty: 'Không tìm thấy ứng dụng nào trên thiết bị này.',
 } as const;

@@ -8,6 +8,11 @@ export const errors = {
   invalidEmailOrPassword: 'E-mail ou senha inválidos.',
   tooManyRequests: 'Muitas tentativas. Tente novamente mais tarde.',
   somethingWentWrong: 'Algo deu errado. Tente novamente.',
+  accountDisabled:
+    'Esta conta foi desativada. Entre em contato com o suporte do KidGate para restaurá-la.',
+  recentLoginRequired: 'Para sua segurança, entre novamente e tente mais uma vez.',
+  accountExistsDifferentMethod:
+    'Este e-mail já tem uma conta com outro método de login. Entre por esse método e depois vincule este em Ajustes.',
   unableToCreateAccount: 'Não foi possível criar sua conta. Tente novamente.',
   unableToSignIn: 'Não foi possível entrar. Tente novamente.',
   unableToJoinFamilyAccount:
@@ -19,7 +24,8 @@ export const errors = {
     'Este código não confere. Verifique os caracteres — ou peça um novo código se já faz um tempo.',
   unableToClaimChildPairing:
     'Não foi possível conectar o dispositivo da criança. Tente novamente.',
-  unableToPollChildPairing: 'Não foi possível verificar o status do pareamento.',
+  unableToPollChildPairing:
+    'Não foi possível verificar o status do pareamento. Tente novamente.',
   unableToConfirmChildPairing:
     'Não foi possível confirmar este pareamento. Tente novamente.',
   unableToRejectChildPairing:
@@ -42,8 +48,6 @@ export const errors = {
   noNetworkConnection:
     'Sem conexão com a internet. Verifique o Wi-Fi ou os dados móveis e tente novamente.',
   connectionFailedTitle: 'Falha na conexão',
-  connectionFailedBody:
-    'O KidGate não conseguiu se conectar. Verifique o Wi-Fi ou os dados móveis e selecione “Reconectar”.',
   reconnect: 'Reconectar',
   unableToUploadPhoto: 'Não foi possível enviar a foto. Tente novamente.',
   premiumSubscriptionRequired:
@@ -54,6 +58,7 @@ export const errors = {
   notFamilyMember:
     'Você não faz mais parte desta família. Peça ao proprietário da família para convidá-lo novamente.',
   familyNotCreated: 'Crie sua família primeiro e depois convide outro responsável.',
+  parentLimitReached: 'Esta família já tem tantos responsáveis quanto o plano permite.',
   childDeviceNotAllowed:
     'Este é um dispositivo infantil e não pode gerenciar as configurações da família.',
   deviceCredentialMissing:
@@ -96,7 +101,13 @@ export const errors = {
   alreadyInFamily: 'Você já faz parte desta família.',
   leaveFamilyBeforeJoining: 'Saia da sua família atual antes de entrar em outra.',
   locationDailyLimitFree:
-    'O plano gratuito esgotou as consultas de localização de hoje. O Premium acompanha a localização em tempo real.',
+    'O plano gratuito esgotou as consultas de localização de hoje. Tente novamente amanhã — o Premium acompanha a localização em tempo real.',
   deviceLimitReached:
-    'Você atingiu o número de dispositivos que o KidGate cobre por família.',
+    'Esta família atingiu o número de dispositivos que o KidGate cobre. Remova um dispositivo que você não usa mais e tente novamente.',
+  rewardTaskLimitReached:
+    'Já existem tantas tarefas ativas quanto o permitido ao mesmo tempo. Remova uma ou espere até que uma seja concluída e tente novamente.',
+  deviceNotPaired:
+    'Este dispositivo não está mais pareado com a sua família. Peça aos seus pais para pareá-lo de novo.',
+  bonusMinutesOutOfRange:
+    'Não é possível dar essa quantidade de tempo extra de uma vez. Escolha outra quantidade e tente novamente.',
 };

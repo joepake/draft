@@ -37,6 +37,8 @@ export const protection = {
   lockNotReadyBodyIos:
     'O KidGate não consegue bloquear este iPhone até que o acesso ao Tempo de Uso seja aprovado no dispositivo da criança. Abra o KidGate nesse dispositivo e conclua o seguinte:',
   locationPermission: 'Permissão de localização',
+  locationForegroundOnly:
+    'A localização só é atualizada enquanto o KidGate está aberto no dispositivo da criança.',
   cameraPermission: 'Permissão de câmera',
   cameraConsentPending:
     'A câmera não foi permitida neste dispositivo, então um SOS ou Check-in enviado dele chega sem foto.',
@@ -65,17 +67,9 @@ export const protection = {
   healthBadgeProtected: 'Verde — protegido',
   healthBadgeWarning: 'Amarelo — precisa de configuração',
   healthBadgeInactive: 'Vermelho — dispositivo da criança em silêncio há mais de 24 h',
-  iosFeatureSupportEvaluating: 'O suporte a este recurso no iOS está em avaliação.',
   iosUpgradeRequiredNote:
     'Isto precisa do iOS 16 ou mais recente. Atualize o dispositivo da criança em Ajustes › Geral › Atualização de Software. Se nenhuma atualização for oferecida, este iPad ou iPhone é antigo demais para o suporte da Apple.',
   iosUpgradeActionLabel: 'Precisa do iOS 16',
-  lockUnlockNote:
-    'Bloqueia o dispositivo pelo Tempo de Uso depois que a criança autoriza o acesso.',
-  scheduleNote: 'Até 3 faixas de Horários bloqueados bloqueiam apps pelo Tempo de Uso.',
-  individualAppBlockingNote:
-    'A criança seleciona os apps após digitar o PIN dos responsáveis de 6 dígitos.',
-  tamperAlertsNote:
-    'Informa mudanças de permissões e quando o app no dispositivo da criança está há muito tempo sem atualizar.',
   appReviewRemindersNote:
     'O iOS não expõe eventos de instalação; revise os apps periodicamente junto com o dispositivo da criança.',
 } as const;

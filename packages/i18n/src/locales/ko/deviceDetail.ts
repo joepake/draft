@@ -14,7 +14,7 @@ export const deviceDetail = {
   dailyLimit: '일일 제한',
   setDailyScreenTimeCap: '하루 화면 사용 시간 제한 설정',
   blockedHours: '차단 시간',
-  manageUpToThreeTimeRanges: '최대 3개의 시간대를 관리',
+  manageTimeRanges: '최대 {{max}}개의 시간대를 관리',
   blockedApps: '차단된 앱',
   viewAndManageBlockedApps: '차단된 앱 보기 및 관리',
   appBlockingBestEffort:
@@ -115,7 +115,9 @@ export const deviceDetail = {
     '{{actionTitle}} 기능은 곧 제공될 예정입니다. 위치, 웹 필터 및 위의 기능은 현재 이용 가능합니다.',
   chooseAppsOnChildIphone: '자녀 기기에서 앱 선택',
   appPickerMustOpenOnChildIphone:
-    '자녀 기기에서 KidGate 설정을 열고 부모 PIN을 입력한 후 차단할 앱을 선택하세요.',
+    '자녀 기기에서 KidGate 설정을 열고 부모 PIN을 입력한 다음, 앱 차단 → 차단된 앱에서 앱을 선택하세요.',
+  appPickerMustOpenOnChildTv:
+    'TV에서 KidGate를 열고 “{{button}}”을(를) 선택한 다음 부모 PIN을 입력하고 차단할 앱을 선택하세요.',
   rewardTasks: '보상 과제',
   rewardTasksDescription: '과제를 끝내면 추가 시간을 줘요',
   rewardTasksUnit: '개 진행 중',
@@ -130,14 +132,15 @@ export const deviceDetail = {
   appLimitsReached: '{{count}}개 앱이 한도에 도달',
   webHistory: '웹 기록',
   videoHistory: '시청한 동영상',
-  videoHistoryDescription: 'YouTube 및 웹 동영상',
+  videoHistoryDescription: 'YouTube에서 시청한 동영상',
   videoHistoryOn: '기록 중',
   webHistoryDescription: '접속한 사이트와 차단된 사이트',
   webHistorySitesUnit: '사이트',
   managedAtChild:
     '이 기기의 규칙, 보상, 체크인, 알림은 {{childName}} 프로필에서 관리합니다',
   pauseBrowsing: '웹 사용 일시중지',
-  pauseBrowsingDescription: '잠시 웹을 차단해요. 통화와 오프라인 앱은 그대로 써요.',
+  pauseBrowsingDescription:
+    '잠시 웹 사용을 멈춥니다. 통화와 오프라인 앱은 계속 사용할 수 있습니다.',
   pauseBrowsingOff: '중지 안 함',
   pauseBrowsingLeft: '일시중지 · {{minutes}}분 남음',
   pauseBrowsingFor: '{{minutes}}분 중지',

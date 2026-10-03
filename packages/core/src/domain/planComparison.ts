@@ -121,6 +121,19 @@ export const PLAN_COMPARISON_ROWS: readonly PlanComparisonRow[] = [
      */
     premiumKey: 'plans.compareDevicesPremium',
   },
+  /*
+   * Parents, owner included — `FREE_MAX_PARENTS_PER_FAMILY` and
+   * `PAID_MAX_PARENTS_PER_FAMILY` (2026-09-27). Under devices because it is
+   * the same question, how much of a household the plan holds. The cells name
+   * the numbers: a comparison that says "more" asks the parent to guess.
+   */
+  {
+    id: 'parents',
+    group: 'devices',
+    labelKey: 'plans.compareParents',
+    freeKey: 'plans.compareParentsFree',
+    premiumKey: 'plans.compareParentsPremium',
+  },
   {
     id: 'sync',
     group: 'live',

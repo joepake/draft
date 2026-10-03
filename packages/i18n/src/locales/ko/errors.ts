@@ -8,6 +8,11 @@ export const errors = {
   invalidEmailOrPassword: '이메일 또는 비밀번호가 올바르지 않습니다.',
   tooManyRequests: '요청이 너무 많습니다. 잠시 후 다시 시도해 주세요.',
   somethingWentWrong: '문제가 발생했습니다. 다시 시도해 주세요.',
+  accountDisabled:
+    '이 계정은 비활성화되었습니다. 복구하려면 KidGate 지원팀에 문의하세요.',
+  recentLoginRequired: '보안을 위해 다시 로그인한 뒤 이 작업을 한 번 더 시도하세요.',
+  accountExistsDifferentMethod:
+    '이 이메일은 이미 다른 로그인 방법으로 만든 계정이 있습니다. 그 방법으로 로그인한 뒤 설정에서 이 방법을 연결하세요.',
   unableToCreateAccount: '계정을 만들 수 없습니다. 다시 시도해 주세요.',
   unableToSignIn: '로그인할 수 없습니다. 다시 시도해 주세요.',
   unableToJoinFamilyAccount: '가족 계정에 참여할 수 없습니다. 다시 시도해 주세요.',
@@ -16,7 +21,7 @@ export const errors = {
   unableToRedeemPairingCode:
     '코드가 일치하지 않습니다. 문자를 다시 확인하세요 — 시간이 지났다면 새 코드를 요청하세요.',
   unableToClaimChildPairing: '자녀 기기를 연결할 수 없습니다. 다시 시도해 주세요.',
-  unableToPollChildPairing: '페어링 상태를 확인할 수 없습니다.',
+  unableToPollChildPairing: '페어링 상태를 확인할 수 없습니다. 다시 시도해 주세요.',
   unableToConfirmChildPairing: '페어링을 승인할 수 없습니다. 다시 시도해 주세요.',
   unableToRejectChildPairing: '페어링을 거부할 수 없습니다. 다시 시도해 주세요.',
   photoCaptureCancelled: '사진 촬영이 취소되었습니다.',
@@ -37,8 +42,6 @@ export const errors = {
   noNetworkConnection:
     '네트워크에 연결되어 있지 않습니다. Wi-Fi 또는 모바일 데이터를 확인한 후 다시 시도해 주세요.',
   connectionFailedTitle: '연결 실패',
-  connectionFailedBody:
-    'KidGate에 연결할 수 없습니다. Wi-Fi 또는 모바일 데이터를 확인한 후 “다시 연결”을 선택하세요.',
   reconnect: '다시 연결',
   unableToUploadPhoto: '사진을 업로드할 수 없습니다. 다시 시도해 주세요.',
   premiumSubscriptionRequired:
@@ -49,6 +52,7 @@ export const errors = {
   notFamilyMember:
     '더 이상 이 가족의 구성원이 아닙니다. 가족 소유자에게 다시 초대를 요청하세요.',
   familyNotCreated: '먼저 가족을 만든 후 다른 부모를 초대하세요.',
+  parentLimitReached: '이 가족에는 이미 플랜에서 허용하는 만큼의 부모가 있습니다.',
   childDeviceNotAllowed: '이 기기는 자녀용 기기이므로 가족 설정을 관리할 수 없습니다.',
   deviceCredentialMissing:
     '이 기기를 다시 연결해야 합니다. KidGate를 종료한 후 다시 열고 시도해 주세요.',
@@ -88,6 +92,13 @@ export const errors = {
   alreadyInFamily: '이미 이 가족에 참여하고 있습니다.',
   leaveFamilyBeforeJoining: '다른 가족에 참여하기 전에 현재 가족에서 먼저 나가세요.',
   locationDailyLimitFree:
-    '무료 플랜의 오늘 위치 확인 횟수를 다 썼습니다. Premium은 위치를 실시간으로 따라갑니다.',
-  deviceLimitReached: 'KidGate가 한 가족에 지원하는 기기 수에 도달했습니다.',
+    '무료 플랜의 오늘 위치 확인 횟수를 다 썼습니다. 내일 다시 시도하세요. Premium은 위치를 실시간으로 따라갑니다.',
+  deviceLimitReached:
+    '이 가족은 KidGate가 지원하는 기기 수에 도달했습니다. 더 이상 사용하지 않는 기기를 삭제한 뒤 다시 시도하세요.',
+  rewardTaskLimitReached:
+    '동시에 진행할 수 있는 과제 수가 이미 최대입니다. 과제 하나를 삭제하거나 완료될 때까지 기다린 뒤 다시 시도하세요.',
+  deviceNotPaired:
+    '이 기기는 더 이상 가족과 페어링되어 있지 않아요. 부모님께 다시 페어링해 달라고 부탁하세요.',
+  bonusMinutesOutOfRange:
+    '그만큼의 추가 시간은 한 번에 줄 수 없습니다. 다른 시간을 선택하고 다시 시도하세요.',
 };

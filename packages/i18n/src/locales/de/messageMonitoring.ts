@@ -2,18 +2,21 @@ export const messageMonitoring = {
   actionTitle: 'Nachrichtenwarnungen',
   actionDescription:
     'Werde benachrichtigt, wenn bedenkliche Wörter in Nachrichten auftauchen',
-  title: 'Inhaltswarnungen',
-  heroTitle: 'Nachrichtensicherheit',
+  title: 'Nachrichtenwarnungen',
+  heroTitle: 'Nachrichtenwarnungen',
   heroSubtitle:
-    'KidGate markiert bedenkliche Wörter in den Nachrichten deines Kindes und benachrichtigt dich. Die Nachricht selbst wird nie angezeigt – nur das markierte Wort.',
-  androidOnlyNote: 'Nur auf Android-Geräten verfügbar.',
+    'KidGate markiert bedenkliche Wörter in den Nachrichten und Suchanfragen deines Kindes und benachrichtigt dich. Du siehst nur das markierte Wort oder den markierten Ausdruck, nie die Nachricht oder die Suchanfrage.',
+  androidOnlyNote:
+    'Nachrichten können nur auf Android-Geräten geprüft werden. Suchanfragen lassen sich auch in der Chrome-Erweiterung prüfen.',
+  searchOnlyNote:
+    'Hier lassen sich nur Suchanfragen prüfen. Nachrichten können nur auf Android-Geräten geprüft werden.',
   recentTitle: 'Neueste Warnungen',
   emptyTitle: 'Noch keine Warnungen',
   emptySubtitle: 'In Nachrichten wurden keine bedenklichen Wörter gefunden.',
   emptySubtitleNotWatching:
     'Nachrichten werden derzeit nicht geprüft, daher bleibt diese Liste leer, was auch passiert.',
-  flaggedTerm: 'Markiertes Wort: „{{term}}“',
-  flaggedTermPrefix: 'Markiertes Wort: „',
+  flaggedTerm: 'Markiert: „{{term}}“',
+  flaggedTermPrefix: 'Markiert: „',
   flaggedTermSuffix: '“',
   flaggedTermMeaning: 'Bedeutung: {{gloss}}',
   aiConfirmed: 'Von KI bestätigt',
@@ -31,7 +34,7 @@ export const messageMonitoring = {
   guidanceToggle: 'Was jetzt zu tun ist',
   guidanceHide: 'Ausblenden',
   guidanceFooter:
-    'KidGate hat die Nachricht nicht gespeichert – nur dieses Wort. Alles Weitere muss von deinem Kind kommen.',
+    'KidGate hat die Nachricht nicht gespeichert – nur dieses Wort oder diesen Ausdruck. Alles Weitere muss von deinem Kind kommen.',
   guidance: {
     predator:
       'Grooming beginnt fast immer freundlich, von jemandem, den dein Kind für gleichaltrig hält. Frage, mit wem es zurzeit schreibt und wie die beiden sich kennengelernt haben, bevor du die Warnung erwähnst – ein Kind, das sich erwischt fühlt, antwortet nicht mehr.',
@@ -54,20 +57,22 @@ export const messageMonitoring = {
     profanity:
       'Kraftausdrücke allein sind verbreitet und sagen fast nichts über Sicherheit. Wenn diese Meldungen für euch nur Lärm sind, schalte „Auch Kraftausdrücke melden“ in den Einstellungen auf diesem Bildschirm aus.',
     unknown:
-      'Diese Meldung kommt von einem Gerät oder einer Wortliste, die diese Version nicht mehr benennt. Das markierte Wort oben ist das, wonach zu fragen ist; sonst wurde nichts von der Nachricht behalten.',
+      'Diese Meldung kommt von einem Gerät oder einer Wortliste, die diese Version nicht mehr benennt. Frag nach dem markierten Wort oder Ausdruck oben; sonst wurde nichts von der Nachricht behalten.',
   },
-  setupTitle: 'Nachrichtensicherheit',
+  setupTitle: 'Nachrichtenwarnungen',
   setupBody:
-    'Nachrichten auf bedenkliche Wörter überwachen. KidGate zeigt die Nachricht nie an – nur eine Warnung, wenn etwas Beunruhigendes auftaucht.',
+    'Wenn deine Eltern das einschalten, prüft KidGate die Nachrichten, die du bekommst, direkt auf diesem Handy auf Warnwörter. Deine Eltern sehen nur ein markiertes Wort oder einen markierten Ausdruck, nie deine Nachrichten. Wenn sie zusätzlich die KI-Nachrichtenanalyse einschalten, kann eine unklare Nachricht zur Prüfung an einen KI-Dienst gesendet werden – ohne E-Mail-Adressen, Telefonnummern, Links und @Nutzernamen.',
   setupGrant: 'Benachrichtigungszugriff erlauben',
-  setupEnable: 'Nachrichtensicherheit',
+  setupEnable: 'Nachrichtenwarnungen',
   controlledByParentHint:
-    'Wird in der KidGate-App auf dem Elterntelefon ein- oder ausgeschaltet, nicht hier.',
+    'Wird in der Eltern-App oder im Web-Dashboard ein- oder ausgeschaltet, nicht hier.',
   parentIncomingLabel: 'Empfangene Nachrichten prüfen',
   parentOutgoingLabel: 'Getippte Nachrichten prüfen',
   parentSearchLabel: 'Suchanfragen prüfen',
   parentSearchHint:
-    'Browser und YouTube. Gemeldet wird nur das markierte Wort, nie die Suchanfrage selbst.',
+    'Browser und YouTube. Gemeldet wird nur das markierte Wort oder der markierte Ausdruck, nie die Suchanfrage selbst.',
+  parentSearchHintNotGranted:
+    'Braucht dieselbe Berechtigung wie „Getippte Nachrichten prüfen“. Schalte „Empfangene Nachrichten prüfen“ ein und erlaube sie dann auf dem Gerät deines Kindes.',
   parentToggleHintGranted: 'Auf diesem Telefon.',
   parentToggleHintNotGranted:
     'Auf diesem Telefon noch nicht erlaubt – öffne KidGate auf dem Gerät, um es zu erlauben.',
@@ -81,11 +86,11 @@ export const messageMonitoring = {
     'Beobachtete Wörter, die aufgetaucht sind, im Zusammenhang aber harmlos waren – deshalb gab es keine Warnung. Hier steht, was stellvertretend herausgefiltert wird – sag Bescheid, wenn etwas davon hätte ankommen sollen.',
   consentTitle: 'KI-Nachrichtenanalyse',
   consentBody:
-    'Wenn aktiv, werden Nachrichten, die ein Schlüsselwort als grenzwertig markiert, an einen KI-Dienst gesendet, um vor der Warnung zu prüfen, ob sie wirklich bedenklich sind. Namen, Nummern und Links werden vorher entfernt. Hochriskante Wörter warnen weiterhin sofort, ohne etwas zu senden.',
+    'Wenn aktiv, wird eine Nachricht, deren markiertes Wort harmlos sein könnte oder nur ungefähr passt, an einen KI-Dienst gesendet, um zu prüfen, ob sie wirklich bedenklich ist, bevor du benachrichtigt wirst. E-Mail-Adressen, Telefonnummern, Links und @Nutzernamen werden vorher entfernt, Namen und der restliche Nachrichtentext jedoch nicht. Ein eindeutiger Treffer löst sofort eine Warnung aus, ohne dass etwas gesendet wird.',
   consentEnable: 'KI-Analyse aktivieren',
   consentConfirmTitle: 'KI-Nachrichtenanalyse aktivieren?',
   consentConfirmBody:
-    'Grenzwertige Nachrichten werden – von persönlichen Daten befreit – zur Prüfung an einen KI-Dienst gesendet. Du bestätigst, dass du dieser Verarbeitung zustimmst.',
+    'Grenzwertige Nachrichten werden zur Prüfung auf bedenkliche Inhalte an einen KI-Dienst gesendet, nachdem E-Mail-Adressen, Telefonnummern, Links und @Nutzernamen entfernt wurden. Namen und der restliche Nachrichtentext werden nicht entfernt. Du bestätigst, dass du dieser Verarbeitung zustimmst.',
   consentAgree: 'Ich stimme zu',
   outgoingTitle: 'Nachrichten, die du schreibst',
   outgoingBody:
@@ -106,30 +111,34 @@ export const messageMonitoring = {
     'Android hat das deaktiviert. Erteile die Berechtigung erneut, damit weiter geprüft wird, was du schreibst.',
   outgoingDisclosureTitle: 'Bevor du zustimmst',
   outgoingDisclosureBody:
-    'KidGate liest nur, was du in Messenger-Apps tippst – nie in einer anderen App und nie in einem Passwortfeld. Die Suche nach Warnwörtern läuft auf diesem Handy. Deine Nachrichten werden nirgendwohin gesendet; nur das markierte Wort erreicht deine Eltern.',
+    'KidGate prüft, was du in Messenger-Apps tippst, auf dieselben Warnwörter. Wenn deine Eltern Suchwarnungen einschalten, prüft KidGate auch, was du in Browsern, YouTube und der Google-App tippst. Passwortfelder liest KidGate nie. Die Prüfung läuft auf diesem Handy: Nichts, was du tippst, wird irgendwohin gesendet, und nur ein markiertes Wort oder ein markierter Ausdruck erreicht deine Eltern.',
   outgoingRestrictedHint:
     'Wenn der Schalter ausgegraut ist, öffne Einstellungen › Apps › KidGate, tippe auf das Menü ⋮ und wähle „Eingeschränkte Einstellungen zulassen“. Komm danach hierher zurück.',
   notice: {
     revokedTitle: 'Die Nachrichtenprüfung wurde gestoppt',
     revokedBody:
       'Android hat eine Berechtigung deaktiviert, die KidGate braucht, deshalb werden Nachrichten nicht mehr geprüft. Öffne KidGate auf dem Gerät deines Kindes und erteile sie erneut.',
-    offTitle: 'Nachrichtensicherheit ist nicht eingeschaltet',
+    offTitle: 'Nachrichtenwarnungen sind nicht eingeschaltet',
     offBody:
       'Auf dem Gerät wird nichts geprüft, hier kann also keine Warnung erscheinen. Öffne KidGate auf dem Gerät, um es einzurichten.',
+    switchedOffBody:
+      'Auf dem Gerät deines Kindes wird nichts geprüft, daher kann hier keine Warnung erscheinen. Schalte „Empfangene Nachrichten prüfen“ in den Einstellungen auf diesem Bildschirm ein.',
     pendingTitle: 'Wartet darauf, dass das Gerät des Kindes das übernimmt',
     pendingBody:
       'Du hast das eingeschaltet. Das Gerät des Kindes übernimmt die Änderung bei der nächsten Verbindung, meist innerhalb weniger Minuten – schneller, wenn das Telefon gerade benutzt wird. Du musst nichts weiter tun.',
     unknownTitle: 'Warten auf das Gerät',
     unknownBody:
-      'Dieses Gerät hat noch nicht gemeldet, ob die Nachrichtensicherheit läuft – eine leere Liste sagt daher wenig aus. Sie sollte sich beim nächsten Kontakt des Geräts aktualisieren.',
+      'Dieses Gerät hat noch nicht gemeldet, ob die Nachrichtenwarnungen laufen – eine leere Liste sagt daher wenig aus. Das sollte sich beim nächsten Kontakt des Geräts aktualisieren.',
     outgoingAvailableTitle: 'Auch prüfen, was dein Kind schreibt',
     outgoingAvailableBody:
       'Empfangene Nachrichten werden bereits geprüft. KidGate kann auch prüfen, was dein Kind in Messenger-Apps tippt – Mobbing und Selbstverletzung tauchen dort deutlich häufiger auf. Richte es auf dem Gerät ein.',
+    outgoingSwitchedOffBody:
+      'Nachrichten, die dein Kind empfängt, werden geprüft. KidGate kann auch prüfen, was es in Messenger-Apps tippt – Mobbing und Selbstverletzung zeigen sich dort viel häufiger. Schalte „Getippte Nachrichten prüfen“ in den Einstellungen auf diesem Bildschirm ein.',
   },
   languagesLabel: 'Geprüfte Sprachen',
   languagesHint:
     'In welchen Sprachen dieses Gerät nach besorgniserregenden Wörtern sucht. Bis zu {{max}} auswählen.',
   languagesDefaultHint: 'Standardmäßig die Sprache des Geräts.',
   setupStepFindKidGate:
-    'Finde KidGate in der Liste für Benachrichtigungszugriff und aktiviere es. KidGate kann zweimal in der Liste stehen — der andere Eintrag ist für nächtliche Anruf-Hinweise. Wenn dieser Schritt nach der Rückkehr noch offen ist, aktiviere den anderen Eintrag.',
+    'Finde KidGate in der Liste für Benachrichtigungszugriff und aktiviere es.',
 } as const;

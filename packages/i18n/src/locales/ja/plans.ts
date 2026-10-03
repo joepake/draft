@@ -30,8 +30,11 @@ export const plans = {
   compareColumnFree: '無料',
   compareColumnPremium: 'Premium',
   compareDevices: 'お子さまのデバイス',
-  compareDevicesFree: '1台',
-  compareDevicesPremium: '無制限',
+  compareDevicesFree: 'ルールは全台、報告は1台',
+  compareDevicesPremium: '全台から報告',
+  compareParents: '保護者',
+  compareParentsFree: '最大3人',
+  compareParentsPremium: '最大6人',
   compareSync: 'デバイスからの更新',
   compareSyncFree: '30分ごと',
   compareSyncPremium: 'リアルタイム',
@@ -46,14 +49,14 @@ export const plans = {
   compareWeb: 'ウェブ',
   compareWebPremium: '完全な履歴と検索語',
   compareNewApps: '新しくインストールされたアプリ',
-  compareNewAppsPremium: 'アプリ名と、インストール前の承認',
-  compareMessages: 'メッセージの通知（Android）',
+  compareNewAppsPremium: 'どのアプリか、名前で表示',
+  compareMessages: 'メッセージ警告（Android）',
   compareSafety: '保護の通知とチェックイン',
   compareSafetyFree: '通知 + チェックイン',
   compareSafetyPremium: 'チェックインごとに写真を追加',
   compareControls: 'アプリのブロックとWebフィルター',
   compareControlsFree: 'すべてのアプリ、成人向けコンテンツ',
-  compareControlsPremium: 'カテゴリ別、アプリごとの上限、独自のリスト',
+  compareControlsPremium: 'カテゴリ別、独自のリスト',
   compareReport: '週次レポート',
   compareReportFree: 'お試し終了時に1回',
   compareReportPremium: '毎週',
@@ -62,7 +65,7 @@ export const plans = {
   compareActivityFeedPremium: '30日分',
   compareChildReport: 'お子さまごとのレポート',
   compareIncluded:
-    'どちらのプランにも、1つの家族のiPhone・Android・Mac・Windowsでの1日の上限、休止時間、アプリのブロック、Webフィルター、遠隔ロック、SOS、時間のリクエスト、ごほうびタスクに加え、Webダッシュボードと複数の保護者が含まれます。Android TVとChromebookは近日対応で、使える管理機能は少なめです。',
+    'どちらのプランにも、1つの家族のiPhone・Android・Mac・Windowsで使える1日の上限、休止時間、ブロックされたアプリ、Webフィルター、デバイスロック、SOS、時間延長リクエスト、ごほうびタスクに加え、Webダッシュボードが含まれます。Android TVとChromebookにも対応していますが、使える管理機能は少なめです。',
   sectionWhyPremium: 'Premiumで加わるもの',
   sectionWhyPremiumSubtitle:
     'ルールはすべて無料版でも動き続けます。Premiumでは、見えるものと、それがどれだけ早く届くかが加わります。',
@@ -85,12 +88,12 @@ export const plans = {
   featurePausePhone: 'デバイスロック',
   featureDailyLimits: '1日の上限',
   featureBlockedHours: '休止時間',
-  featureAppLimits: 'アプリごとの時間制限',
-  featureInstallApproval: '新しいインストールを承認',
+  featureAppLimits: 'アプリの利用時間制限',
+  featureInstallApproval: '新しいアプリの承認',
   featureTimeRequests: '時間延長リクエスト',
   featureAppBlocking: 'ブロックされたアプリ',
   featureWebFiltering: 'Webフィルター',
-  featureSeeLocation: 'リアルタイム位置情報',
+  featureSeeLocation: '位置情報',
   featureTamperAlerts: 'KidGate が削除されたら通知',
   featureSosAlerts: 'SOSアラート',
   trialPlanName: 'トライアル',
@@ -99,6 +102,7 @@ export const plans = {
   premiumPlanName: 'Premium',
   subscribeBadge: '登録',
   currentPlanKicker: '現在のプラン',
+  currentPlanA11y: '現在のプラン：{{plan}}',
   trialEnded: 'トライアル終了',
   trialPending: 'トライアル未開始',
   premiumActiveSubtitle: '現在フルアクセスをご利用いただけます。',
@@ -116,7 +120,7 @@ export const plans = {
   memberSubscriptionNotice:
     '1つのプランで家族全員をカバーし、支払いを行うのは管理者のみです。家族がトライアル中か登録済みかを確認できます。',
   memberTrialActiveSubtitle:
-    'この家族はお試し期間中です。終了後もルールはすべて1台のデバイスで働き続けます。オーナーが登録するとリアルタイムの利用状況、履歴、すべてのデバイスが使えます。',
+    'この家族はお試し期間中です。終了後も、すべてのルールがすべてのデバイスで働き続け、1台のデバイスは報告を続けます。オーナーが登録すると、リアルタイムの利用状況、履歴、すべてのデバイスからの報告が使えるようになります。',
   memberTrialEndedSubtitle:
     'このご家族のお試しは終了しました。1日の上限、ブロックされたアプリ、Webフィルター、位置情報はそのまま使えます。リアルタイムの更新、履歴、通知は管理者の登録が必要です。',
   memberSetupTrialSubtitle:
@@ -131,7 +135,8 @@ export const plans = {
   purchaseFailed: '購入が完了しませんでした。もう一度お試しください。',
   storeNotReady:
     'ストアの準備がまだ整っていません。しばらくしてからもう一度お試しください。',
-  premiumNotAvailable: '現在Premiumは購入できません。',
+  premiumNotAvailable:
+    '現在、このデバイスではPremiumを購入できません。しばらくしてからもう一度お試しください。',
   premiumProductNotFound:
     '現在Premiumは購入できません。しばらくしてからもう一度お試しください。',
   subscriptionOfferNotConfigured:
@@ -140,7 +145,8 @@ export const plans = {
   noActiveSubscription: '有効なサブスクリプションが見つかりません。',
   purchasesRestored: '購入を復元しました。',
   unableToRestorePurchases: '購入を復元できませんでした。もう一度お試しください。',
-  purchaseVerificationFailed: '購入の確認に失敗しました。',
+  purchaseVerificationFailed:
+    '購入を確認できませんでした。少し待ってから「購入を復元」をタップしてください。',
   // Shown to joined parents — only the family owner can subscribe, so this
   // has to name who needs to act instead of offering a button they can't use.
   familyPremiumEndedTitle: 'このファミリーのPremiumは終了しました',
@@ -157,15 +163,16 @@ export const plans = {
   trustOnePlan: '1つのプランで家族全員',
   trustNoAds: '広告なし',
   freePlanName: '無料',
-  freeDescription: 'お子さまのデバイス1台で基本機能を期限なく使えます。',
-  featureOneChildDevice: 'お子さまのデバイス1台',
+  freeDescription:
+    '基本機能はお子さまのすべてのデバイスで動き続け、報告は1台から届きます。期限はありません。',
+  featureOneChildDevice: 'お子さまのデバイス1台からの報告',
   termLifetime: '買い切り',
   badgeOneTime: '一回のみ',
   planPeriodOnce: '一回',
   billedOnce:
-    '一度の支払いで、お子さまのデバイス{{devices}}台まで。KidGateが提供されている間ご利用いただけます',
+    '一度の支払いで、お子さまのデバイス最大{{devices}}台からの報告を、KidGateが提供されている間ご利用いただけます',
   sectionFreePlan: 'ご登録されない場合',
-  devicesUnlimited: 'お子さまのデバイスは無制限',
+  devicesUnlimited: 'お子さまのすべてのデバイスから報告',
   featureFootnotePlatforms:
     '一部の機能はプラットフォームが許可する範囲に左右されるため、すべてのデバイスで使えるわけではありません。',
   sectionPlatforms: 'KidGateが使えるデバイス',
@@ -182,7 +189,7 @@ export const plans = {
   platformAndroidTvLimits:
     'メッセージの通知、位置情報、SOS、時間のリクエストはありません。アプリのブロックはベストエフォートです。',
   platformChromebookLimits:
-    'Webフィルターのみ — 1日の上限、休止時間、アプリのブロック、デバイスロック、SOS、位置情報はありません。',
+    'Webフィルターのみ — 1日の上限、休止時間、ブロックされたアプリ、デバイスロック、SOS、位置情報はありません。',
   platformComingSoon: '近日対応',
   platformWindows: 'Windows',
   platformWindowsDetail: 'お子さま用のみ · Windows 10以降',
@@ -216,5 +223,8 @@ export const plans = {
     '無料プランが同時に持てるタスクはここまでです。Premium はこの 2 倍になります。',
   teaserLiveNote: '無料プランは30分ごとの更新です。Premium はリアルタイムです。',
   teaserUsageTimeline: 'Premium なら、その日のどの時間帯に使われたかがわかります。',
+  teaserProofParents: '保護者: {{count}}',
+  teaserParentCap:
+    'Premium なしで 1 つのファミリーに登録できる保護者はここまでです。Premium ではこの 2 倍になります。',
   teaserDeviceNote: '報告するのは監視中の 1 台だけです。',
 } as const;

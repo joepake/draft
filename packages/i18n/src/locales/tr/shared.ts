@@ -58,6 +58,4 @@ export const shared = {
   toastRemoveDeviceFailed: 'Cihaz kaldırılamadı. Lütfen tekrar deneyin.',
   unableToOpenMaps: 'Haritalar açılamadı. Lütfen tekrar deneyin.',
   unableToSignOut: 'Çıkış yapılamadı. Lütfen tekrar deneyin.',
-  pushNotificationNote:
-    'Ebeveynler ve çocuklar; komutlar ve süre istekleri için anlık bildirim alır.',
 } as const;

@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import Icon from '@kidgate/web-ui/Icon';
+import { getLocaleTag } from '@kidgate/i18n/web';
 import ChildInitial from './ChildInitial.jsx';
 import { resolveActivityKind } from '@kidgate/core/domain/activityKind';
 import { activityCopy } from './activityCopy.js';
@@ -100,7 +101,7 @@ export default function ActivityFeed({
     const yesterday = new Date(today);
     yesterday.setDate(yesterday.getDate() - 1);
     if (key === yesterday.toDateString()) return appT('activities.dateYesterday');
-    return at.toLocaleDateString(undefined, {
+    return at.toLocaleDateString(getLocaleTag(), {
       weekday: 'short',
       day: 'numeric',
       month: 'short',
@@ -264,7 +265,7 @@ export default function ActivityFeed({
                         <time>
                           {Number.isNaN(at.getTime())
                             ? ''
-                            : at.toLocaleTimeString(undefined, {
+                            : at.toLocaleTimeString(getLocaleTag(), {
                                 hour: '2-digit',
                                 minute: '2-digit',
                               })}

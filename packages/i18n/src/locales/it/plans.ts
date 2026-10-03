@@ -31,8 +31,11 @@ export const plans = {
   compareColumnFree: 'Gratis',
   compareColumnPremium: 'Premium',
   compareDevices: 'Dispositivi del bambino',
-  compareDevicesFree: '1',
-  compareDevicesPremium: 'Illimitato',
+  compareDevicesFree: 'Regole su tutti, report da 1',
+  compareDevicesPremium: 'Report da tutti',
+  compareParents: 'Genitori',
+  compareParentsFree: 'Fino a 3',
+  compareParentsPremium: 'Fino a 6',
   compareSync: 'Aggiornamenti dal dispositivo',
   compareSyncFree: 'Ogni 30 minuti',
   compareSyncPremium: 'In tempo reale',
@@ -47,14 +50,14 @@ export const plans = {
   compareWeb: 'Web',
   compareWebPremium: 'Cronologia completa e ricerche',
   compareNewApps: 'App appena installate',
-  compareNewAppsPremium: 'Quali app, e approvazione prima dell’installazione',
-  compareMessages: 'Avvisi sui messaggi (Android)',
+  compareNewAppsPremium: 'Quali app, con il nome',
+  compareMessages: 'Avvisi messaggi (Android)',
   compareSafety: 'Avvisi di protezione e Check-in',
   compareSafetyFree: 'Avvisi + Check-In',
   compareSafetyPremium: 'Aggiunge una foto a ogni Check-In',
   compareControls: 'Blocco app e filtro web',
   compareControlsFree: 'Qualsiasi app, contenuti per adulti',
-  compareControlsPremium: 'Per categoria, limiti per app, elenchi personali',
+  compareControlsPremium: 'Per categoria, elenchi personali',
   compareReport: 'Report settimanale',
   compareReportFree: 'Una volta, alla fine della prova',
   compareReportPremium: 'Ogni settimana',
@@ -63,7 +66,7 @@ export const plans = {
   compareActivityFeedPremium: '30 giorni',
   compareChildReport: 'Report per figlio',
   compareIncluded:
-    'Entrambi i piani includono limite giornaliero, orari di blocco, app bloccate, filtro web, blocco remoto, SOS, richieste di tempo e compiti premio su iPhone, Android, Mac e Windows in una stessa famiglia, oltre alla dashboard web e a più genitori. Android TV e Chromebook sono in arrivo e offrono meno controlli.',
+    'Entrambi i piani includono il Limite giornaliero, gli Orari di blocco, le App bloccate, il Filtro web, il Blocco dispositivo, SOS, le Richieste di tempo e i Compiti premio su iPhone, Android, Mac e Windows in una stessa famiglia, oltre alla dashboard web. Anche Android TV e Chromebook sono supportati, con meno controlli.',
   sectionWhyPremium: 'Cosa aggiunge Premium',
   sectionWhyPremiumSubtitle:
     'Ogni regola continua a funzionare con Gratis. Premium aggiunge ciò che puoi vedere, e quando.',
@@ -86,12 +89,12 @@ export const plans = {
   featurePausePhone: 'Blocco dispositivo',
   featureDailyLimits: 'Limite giornaliero',
   featureBlockedHours: 'Orari di blocco',
-  featureAppLimits: 'Un limite di tempo per app',
-  featureInstallApproval: 'Approvare le nuove installazioni',
+  featureAppLimits: 'Limiti app',
+  featureInstallApproval: 'Approva le nuove app',
   featureTimeRequests: 'Richieste di tempo',
   featureAppBlocking: 'App bloccate',
   featureWebFiltering: 'Filtro web',
-  featureSeeLocation: 'Posizione in tempo reale',
+  featureSeeLocation: 'Posizione',
   featureTamperAlerts: 'Avviso se KidGate viene rimosso',
   featureSosAlerts: 'Avvisi SOS',
   trialPlanName: 'Prova',
@@ -100,6 +103,7 @@ export const plans = {
   premiumPlanName: 'Premium',
   subscribeBadge: 'Abbonati',
   currentPlanKicker: 'Piano attuale',
+  currentPlanA11y: 'Piano attuale: {{plan}}',
   trialEnded: 'Prova terminata',
   trialPending: 'Prova non iniziata',
   premiumActiveSubtitle: 'Hai accesso completo in questo momento.',
@@ -117,7 +121,7 @@ export const plans = {
   memberSubscriptionNotice:
     'Un solo piano copre tutta la famiglia e solo il proprietario paga. Puoi vedere se la famiglia è in prova o abbonata.',
   memberTrialActiveSubtitle:
-    'Questa famiglia è in prova. Alla fine, tutte le regole restano attive su un dispositivo; il proprietario può abbonarsi per attività in tempo reale, cronologia e tutti i dispositivi.',
+    'Questa famiglia è in prova. Alla fine, tutte le regole restano attive su ogni dispositivo e un dispositivo continua a inviare i report; il proprietario può abbonarsi per attività in tempo reale, cronologia e report da tutti i dispositivi.',
   memberTrialEndedSubtitle:
     'La prova di questa famiglia è terminata. Limite giornaliero, App bloccate, Filtro web e posizione funzionano ancora. Chiedi al titolare di abbonarsi per aggiornamenti in tempo reale, cronologia e avvisi.',
   memberSetupTrialSubtitle:
@@ -132,7 +136,8 @@ export const plans = {
     'Il tuo acquisto è in attesa di approvazione. Premium si attiverà appena sarà completato.',
   purchaseFailed: 'L’acquisto non è andato a buon fine. Riprova.',
   storeNotReady: 'Lo store non è ancora pronto. Riprova tra poco.',
-  premiumNotAvailable: 'Premium non è al momento disponibile per l’acquisto.',
+  premiumNotAvailable:
+    'Premium non è al momento acquistabile su questo dispositivo. Riprova più tardi.',
   premiumProductNotFound:
     'Premium non è al momento disponibile per l’acquisto. Riprova più tardi.',
   subscriptionOfferNotConfigured:
@@ -141,7 +146,8 @@ export const plans = {
   noActiveSubscription: 'Nessun abbonamento attivo trovato.',
   purchasesRestored: 'Acquisti ripristinati.',
   unableToRestorePurchases: 'Impossibile ripristinare gli acquisti. Riprova.',
-  purchaseVerificationFailed: 'La verifica dell’acquisto non è riuscita.',
+  purchaseVerificationFailed:
+    'Impossibile verificare l’acquisto. Attendi un momento, poi tocca Ripristina acquisti.',
   // Shown to joined parents — only the family owner can subscribe, so this
   // has to name who needs to act instead of offering a button they can't use.
   familyPremiumEndedTitle: 'Il Premium di questa famiglia è terminato',
@@ -158,15 +164,16 @@ export const plans = {
   trustOnePlan: 'Un piano per tutta la famiglia',
   trustNoAds: 'Nessuna pubblicità',
   freePlanName: 'Gratis',
-  freeDescription: 'Le funzioni essenziali su un dispositivo, senza scadenza.',
-  featureOneChildDevice: 'Un dispositivo del bambino',
+  freeDescription:
+    'Le funzioni essenziali restano attive su ogni dispositivo del bambino, con i report da uno solo. Non scade mai.',
+  featureOneChildDevice: 'Report da un dispositivo del bambino',
   termLifetime: 'A vita',
   badgeOneTime: 'Pagamento unico',
   planPeriodOnce: 'una volta',
   billedOnce:
-    'Paghi una volta per un massimo di {{devices}} dispositivi, finché KidGate è disponibile',
+    'Paghi una volta per i report da un massimo di {{devices}} dispositivi dei bambini, finché KidGate è disponibile',
   sectionFreePlan: 'Se non ti abboni mai',
-  devicesUnlimited: 'Dispositivi dei bambini illimitati',
+  devicesUnlimited: 'Ogni dispositivo del bambino invia i report',
   featureFootnotePlatforms:
     'Alcune funzioni dipendono da ciò che ogni piattaforma consente, quindi non tutte sono disponibili su ogni dispositivo.',
   sectionPlatforms: 'Dove funziona KidGate',
@@ -183,7 +190,7 @@ export const plans = {
   platformAndroidTvLimits:
     'Niente avvisi sui messaggi, posizione, SOS né richieste di tempo. Il blocco app funziona nei limiti del possibile.',
   platformChromebookLimits:
-    'Solo filtro web — niente Limite giornaliero, Orari di blocco, Blocco app, Blocco dispositivo, SOS né posizione.',
+    'Solo Filtro web — niente Limite giornaliero, Orari di blocco, App bloccate, Blocco dispositivo, SOS né posizione.',
   platformComingSoon: 'In arrivo',
   platformWindows: 'Windows',
   platformWindowsDetail: 'Solo dispositivo del figlio · Windows 10 o successivo',
@@ -220,5 +227,8 @@ export const plans = {
     'La versione gratuita si aggiorna ogni 30 minuti. Premium è in tempo reale.',
   teaserUsageTimeline:
     'Premium mostra in quali ore della giornata il dispositivo è stato usato.',
+  teaserProofParents: 'Genitori: {{count}}',
+  teaserParentCap:
+    'Sono tutti i genitori che una famiglia può avere senza Premium. Premium ne consente il doppio.',
   teaserDeviceNote: 'Solo il dispositivo monitorato invia dati.',
 } as const;

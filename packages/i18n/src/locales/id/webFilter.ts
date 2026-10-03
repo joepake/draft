@@ -1,7 +1,7 @@
 export const webFilter = {
   title: 'Filter web',
   fallbackDeviceName: 'Perangkat anak',
-  appliesToAll: 'Berlaku untuk semua {{count}} perangkat {{name}}',
+  appliesToAll: 'Berlaku untuk semua perangkat {{name}} ({{count}})',
   coverageLine: 'Aktif di {{enforcing}} dari {{total}} perangkat',
   mergeNotice:
     'Perangkat {{name}} memiliki pengaturan filter web yang berbeda. Menyimpan di sini menerapkan satu pengaturan ke semuanya, digabungkan ke pilihan yang lebih ketat.',
@@ -22,7 +22,7 @@ export const webFilter = {
   toggleAccessibilityLabel: 'Aktifkan Filter web',
   safeSearchSectionTitle: 'Penelusuran aman & YouTube',
   safeSearchSectionSubtitle:
-    'Paksa Google, Bing, dan DuckDuckGo ke hasil aman dan kunci YouTube ke Mode Terbatas. Perlu filter web aktif.',
+    'Paksa Google, Bing, dan DuckDuckGo menampilkan hasil aman dan kunci YouTube ke Mode Terbatas. Filter web harus aktif.',
   safeSearchLabel: 'Paksa SafeSearch',
   safeSearchHint:
     'Mengunci Google SafeSearch, Mode Terbatas YouTube, Bing, dan DuckDuckGo pada pengaturan ketat. Android, Android TV, dan Chrome.',
@@ -64,9 +64,13 @@ export const webFilter = {
 
   heroSubtitleWindows:
     'Menjalankan resolver milik KidGate di PC anak untuk memblokir situs tidak pantas yang dikenal di semua browser.',
+  heroSubtitleExtension:
+    'Menjalankan ekstensi KidGate di Chrome pada komputer anak untuk memblokir situs tidak pantas yang sudah dikenal di browser itu.',
 
   toggleHintWindows:
     'Tidak ada yang perlu disetujui di PC. Layanan latar belakang KidGate menyalakan filter dalam beberapa detik.',
+  toggleHintExtension:
+    'Tidak ada yang perlu disetujui. Filter hanya berjalan di Chrome, tidak di browser atau aplikasi lain.',
 
   infoLine1Windows:
     'KidGate menjalankan resolver di PC yang memeriksa situs mana yang sedang dicari, dan memblokir yang masuk kategori Anda.',
@@ -79,19 +83,23 @@ export const webFilter = {
 
   infoLine4Windows:
     'Filter hanya membaca nama situs. Ia tidak melihat isi halaman, dan situs yang baru saja dicari browser bisa tetap terbuka beberapa menit.',
+  infoLine1Extension:
+    'Ekstensi KidGate memeriksa setiap situs sebelum Chrome membukanya, dan memblokir situs yang masuk kategori pilihan Anda.',
+  infoLine2Extension:
+    'Hanya Chrome yang difilter, di profil tempat KidGate dipasang. Browser dan aplikasi lain di komputer tidak difilter.',
+  infoLine3Extension:
+    'Jendela Samaran hanya difilter jika “Izinkan dalam mode Samaran” diaktifkan untuk ekstensi ini. Jendela Tamu tidak difilter.',
+  infoLine4Extension:
+    'Dari halaman yang diblokir, anak Anda bisa meminta Anda mengizinkan situs itu. Menghapus atau menonaktifkan ekstensi akan menghentikan filter.',
 
   windowsFilterNote: 'Memakai resolver milik KidGate di Windows',
-  webFilteringNote:
-    'iOS memakai filter dewasa Waktu Layar. Android, Mac, dan Windows memakai daftar blokir milik KidGate.',
-  safeSearchAlertsNote:
-    'Safari tidak membagikan kata pencarian; peringatan kata kunci memerlukan browser aman terkelola.',
-  webHistoryNote: 'Memerlukan browser terfilter atau pelaporan gaya DNS/VPN.',
+  extensionFilterNote: 'Memakai ekstensi KidGate di Chrome',
   categoriesTitle: 'Apa yang diblokir',
   categoriesSubtitle:
     'KidGate memakai daftar domainnya sendiri. Daftar ini mencakup situs yang benar-benar dijangkau anak, bukan seluruh web — padukan dengan daftar di bawah.',
-  androidOnlyCategory: 'Tidak tersedia di iPhone — berfungsi di Android dan Mac',
+  androidOnlyCategory: 'Tidak tersedia di iPhone — berfungsi di perangkat lain',
   iosCategoryNote:
-    'iPhone hanya mendukung {{category}}, memakai filter Apple. Kategori lain berlaku untuk perangkat anak Android dan Mac.',
+    'iPhone hanya mendukung {{category}}, memakai filter milik Apple. Kategori lain berlaku di perangkat lain.',
   allowListTitle: 'Selalu izinkan',
   allowListSubtitle:
     'Situs yang tetap bisa dibuka meski sebuah kategori akan memblokirnya.',
@@ -106,6 +114,8 @@ export const webFilter = {
     'Semua di luar daftar izin ditolak. Ini bekerja di lapisan DNS, jadi aplikasi lain juga kehilangan koneksi.',
   allowListOnlyHintIos:
     'Safari dan browser dalam aplikasi hanya bisa membuka situs di daftar “Selalu izinkan”.',
+  allowListOnlyHintExtension:
+    'Chrome hanya bisa membuka situs di daftar “Selalu izinkan”. Browser dan aplikasi lain tidak terpengaruh.',
   allowListOnlyNeedsEntries:
     'Tambahkan minimal satu situs yang diizinkan sebelum mengaktifkan.',
   domainPlaceholder: 'contoh.com',
@@ -130,7 +140,7 @@ export const webFilter = {
     // screen iterates WEB_FILTER_CATEGORIES and never reaches these.
     education: 'Pendidikan',
     utility: 'Utilitas',
-    browser: 'Peramban web',
+    browser: 'Browser web',
     devTools: 'Coding & alat pengembang',
     messaging: 'Pesan & panggilan',
     community: 'Forum & komunitas',

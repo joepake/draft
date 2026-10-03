@@ -29,8 +29,9 @@ export const permissions = {
   oemAutostartLabel: 'السماح بالتشغيل التلقائي',
   oemAutostartHintXiaomi:
     'في التشغيل التلقائي، فعّل KidGate حتى تُعاد الحماية بعد إعادة التشغيل.',
-  oemAutostartHintSamsung:
-    'في البطارية ثم حدود الاستخدام في الخلفية ثم التطبيقات التي لا تدخل وضع السكون، أضف KidGate. إذا لم يظهر KidGate في القائمة فهو مسموح له بالفعل وهذه الخطوة مكتملة.',
+  oemAutostartHintSamsung: 'في البطارية، اختر حدود الاستخدام في الخلفية.',
+  oemAutostartHintSamsungAdd:
+    'افتح التطبيقات التي لا تدخل وضع السكون وأضف KidGate. إذا لم يظهر KidGate في القائمة فهو مسموح له بالفعل وهذه الخطوة مكتملة.',
   oemAutostartHintOppo: 'في تطبيقات بدء التشغيل / التشغيل التلقائي، اسمح لـKidGate.',
   oemAutostartHintVivo:
     'في التشغيل التلقائي / الطاقة العالية في الخلفية، اسمح لـKidGate.',
@@ -45,8 +46,10 @@ export const permissions = {
   accessibilityStepFindKidGate:
     'إذا فُتحت القائمة الكاملة بدلاً من ذلك، فاختر KidGate ضمن التطبيقات المثبّتة / التي تم تنزيلها.',
   accessibilityStepTurnOn: 'شغّل المفتاح، ثم اختر "سماح" في رسالة تأكيد Android.',
+  restrictedSettingsStep:
+    'إذا كان المفتاح باهتًا ولا يستجيب، افتح الإعدادات › التطبيقات › KidGate، واضغط على قائمة ⋮ واختر «السماح بالإعدادات المقيّدة»، ثم عُد إلى هنا وحاول مرة أخرى.',
   accessibilityWarningNote:
-    'ينبّه Android إلى أن KidGate يمكنه مراقبة إجراءاتك. هكذا يبقى القفل فوق التطبيقات الأخرى — ولا يقرأ KidGate كلمات المرور ولا الرسائل الشخصية.',
+    'ينبّه Android إلى أن KidGate يمكنه مراقبة إجراءاتك. بهذا الإذن يعرف KidGate التطبيق المفتوح، ليبقى القفل فوقه، ويقرأ عنوان مقاطع YouTube وقناتها عند تفعيل تسجيل المقاطع المُشاهَدة. ولا يستخدمه لقراءة كلمات المرور أو الرسائل أو ما يُكتب.',
   uninstallProtectionWizardBody:
     'يمنع إلغاء تثبيت هذا التطبيق دون رمز PIN الوالدين. يعرض Android شاشة تأكيد خاصة به.',
   notificationsWizardBody:
@@ -55,6 +58,8 @@ export const permissions = {
   backgroundRefreshStepTurnOn: 'فعّل "تحديث التطبيقات في الخلفية" لـKidGate.',
   backgroundRefreshStepGeneral:
     'إذا كان المفتاح باهتًا، افتح الإعدادات ثم "عام" ثم "تحديث التطبيقات في الخلفية" وفعّله.',
+  locationAlwaysStep: 'اختر «الموقع»، ثم «دائمًا».',
+  locationAlwaysStepAndroid: 'اختر «الأذونات» ← «الموقع»، ثم «السماح طوال الوقت».',
   batteryStepAllow: 'اختر "سماح" في رسالة Android.',
   batteryStepAppInfo:
     'إذا لم تظهر رسالة، افتح "معلومات التطبيق" ثم "البطارية" ثم اختر "دون قيود".',

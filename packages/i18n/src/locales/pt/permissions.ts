@@ -32,8 +32,9 @@ export const permissions = {
   oemAutostartLabel: 'Permitir inicialização automática',
   oemAutostartHintXiaomi:
     'Em Inicialização automática, ative o KidGate para que a proteção seja reiniciada após reiniciar o dispositivo.',
-  oemAutostartHintSamsung:
-    'Em Bateria → Limites de uso em segundo plano → Apps que nunca dormem, adicione o KidGate. Se o KidGate não estiver na lista, já está permitido e esta etapa está concluída.',
+  oemAutostartHintSamsung: 'Em Bateria, selecione Limites de uso em segundo plano.',
+  oemAutostartHintSamsungAdd:
+    'Abra Apps que nunca dormem e adicione o KidGate. Se o KidGate não estiver na lista, já está permitido e esta etapa está concluída.',
   oemAutostartHintOppo:
     'Em Apps de inicialização / Início automático, permita o KidGate.',
   oemAutostartHintVivo:
@@ -50,8 +51,10 @@ export const permissions = {
     'Se abrir a lista completa, selecione o KidGate em Apps instalados / baixados.',
   accessibilityStepTurnOn:
     'Ligue a chave e depois selecione Permitir na confirmação do Android.',
+  restrictedSettingsStep:
+    'Se a chave estiver esmaecida, abra Configurações › Aplicativos › KidGate, toque no menu ⋮ e escolha “Permitir configurações restritas”; depois volte aqui e tente de novo.',
   accessibilityWarningNote:
-    'O Android avisa que o KidGate pode observar suas ações. É assim que o bloqueio continua sobre outros apps: o KidGate não lê senhas nem mensagens pessoais.',
+    'O Android avisa que o KidGate pode observar suas ações. Com esta permissão, o KidGate vê qual app está aberto, para que o bloqueio possa ficar por cima, e lê o título e o canal dos vídeos do YouTube quando os vídeos assistidos estão sendo registrados. Ele não a usa para ler senhas, mensagens nem o que você digita.',
   uninstallProtectionWizardBody:
     'Impede que este app seja desinstalado sem o PIN dos pais. O Android mostra a própria tela de confirmação.',
   notificationsWizardBody:
@@ -60,6 +63,9 @@ export const permissions = {
   backgroundRefreshStepTurnOn: 'Ative a Atualização em Segundo Plano para o KidGate.',
   backgroundRefreshStepGeneral:
     'Se a chave estiver acinzentada, abra Ajustes, depois Geral, depois Atualização em Segundo Plano e ative.',
+  locationAlwaysStep: 'Selecione Localização e escolha “Sempre”.',
+  locationAlwaysStepAndroid:
+    'Selecione Permissões → Localização e escolha “Permitir o tempo todo”.',
   batteryStepAllow: 'Selecione Permitir na solicitação do Android.',
   batteryStepAppInfo:
     'Se nenhuma solicitação aparecer, abra Informações do app, depois Bateria, e escolha Sem restrições.',

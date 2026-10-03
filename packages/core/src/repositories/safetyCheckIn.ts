@@ -3,7 +3,7 @@ import type { DeviceLocation } from '@kidgate/schema/deviceControls';
 import { safetyCheckInsCollection } from '@kidgate/schema/paths';
 import type { SafetyCheckIn } from '@kidgate/schema/safetyCheckIn';
 import { deleteAllInBatches } from '../domain/batchDelete';
-import { timestampToIso } from '../domain/firestoreValue';
+import { timestampToIso, timestampToMillis } from '../domain/firestoreValue';
 import type { ActivityRepository } from './activity';
 
 /**
@@ -57,6 +57,7 @@ function mapSafetyCheckIn(doc: DocSnapshot): SafetyCheckIn {
     ...(location ? { location } : {}),
     ...(text(data.photoUrl) ? { photoUrl: text(data.photoUrl) } : {}),
     ...(data.photoSkipped === true ? { photoSkipped: true } : {}),
+    ...(text(data.sosAlertId) ? { sosAlertId: text(data.sosAlertId) } : {}),
     ...(respondedAt ? { respondedAt } : {}),
   } as SafetyCheckIn;
 }
@@ -297,8 +298,25 @@ export function createSafetyCheckInRepository(deps: SafetyCheckInRepositoryDeps)
       };
     },
 
-    /** Clear pending check-ins once a child escalates to SOS, or a parent claims one. */
-    async dismissPendingForDevice(userId: string, deviceId: string): Promise<void> {
+    /**
+     * Clear pending check-ins once a child escalates to SOS, or a parent claims one.
+     *
+     * With `sosAlertId` the closed rows carry it: without it the parent read
+     * "No response" from the one child who had just asked for help. Omitted,
+     * the rows close as `missed` exactly as before.
+     *
+     * `createdAtOrBefore` is for a parent acknowledging the alert: only
+     * a check-in asked for at or before the SOS was answered by it. One asked
+     * for afterwards, or with no server time yet, closes without the id, as
+     * every row did before. An unreadable bound stamps nothing. The child's
+     * own SOS passes no bound — it has just been raised, so every pending row
+     * predates it.
+     */
+    async dismissPendingForDevice(
+      userId: string,
+      deviceId: string,
+      options: { sosAlertId?: string; createdAtOrBefore?: string } = {},
+    ): Promise<void> {
       const path = safetyCheckInsCollection(userId);
       const snapshot = await db.getDocs(path, {
         where: [
@@ -314,11 +332,30 @@ export function createSafetyCheckInRepository(deps: SafetyCheckInRepositoryDeps)
         return;
       }
 
+      const sosAlertId = options.sosAlertId?.trim();
+      const bounded = options.createdAtOrBefore !== undefined;
+      const boundMs = bounded
+        ? timestampToMillis(options.createdAtOrBefore)
+        : undefined;
+      const answeredBySos = (doc: DocSnapshot): boolean => {
+        if (!sosAlertId) {
+          return false;
+        }
+        if (!bounded) {
+          return true;
+        }
+        const createdMs = timestampToMillis(
+          (doc.data() as Record<string, unknown> | undefined)?.createdAt,
+        );
+        return boundMs !== undefined && createdMs !== undefined && createdMs <= boundMs;
+      };
+
       const batch = db.batch();
       for (const doc of pending) {
         batch.update(`${path}/${doc.id}`, {
           status: 'missed',
           respondedAt: db.fieldValues.serverTimestamp(),
+          ...(answeredBySos(doc) ? { sosAlertId } : {}),
         });
       }
       await batch.commit();

@@ -22,8 +22,9 @@ export const sos = {
   toastSent: 'SOS gönderildi. Mümkünse güvenli bir yerde kal — ailen bilgilendirildi.',
   escapeGrantedTitle: 'SOS gönderildi',
   escapeGrantedBody: 'Ailene haber verildi. Bu cihaz kilitli kalacak.',
-  toastSentWithoutPhoto:
-    'SOS gönderildi, ancak fotoğraf olmadan. Mümkünse Ayarlar’dan Kamera’ya izin verip tekrar dene.',
+  toastSentWithoutPhoto: 'SOS fotoğrafsız gönderildi.',
+  toastSentWithoutPhotoCamera:
+    'SOS fotoğrafsız gönderildi. Bir dahaki sefere fotoğraf ekleyebilmek için Ayarlar’dan Kamera’ya izin ver.',
   toastSendFailed: 'SOS gönderilemedi. Tekrar dene veya güvendiğin birini ara.',
   sendFailedBannerTitle: 'Son SOS’un gönderilemedi',
   sendFailedBannerBody:
@@ -32,12 +33,14 @@ export const sos = {
   headerSubtitle:
     'Kendini güvende hissetmediğinde veya hemen yardıma ihtiyacın olduğunda bunu kullan.',
   infoInstantAlertLabel: 'Anında uyarı',
-  infoInstantAlertDetail: 'Ailen hemen acil bir bildirim alır.',
+  infoInstantAlertDetail: 'KidGate ailene hemen acil bir bildirim gönderir.',
   infoYourLocationLabel: 'Konumun',
   infoYourLocationDetail: 'Nerede olduğunu bilmeleri için ailenle paylaşılır.',
   infoQuickSelfieLabel: 'Hızlı bir fotoğraf',
   infoQuickSelfieDetail:
     'Kamera zaten kullanılabilirse uyarı gönderildikten sonra eklenir.',
+  infoQuickSelfieDetailPhone:
+    'Uyarı gönderildikten sonra fotoğraf ekleyebilmen için kamera açılır. İstersen bu adımı atlayabilirsin.',
   simulatorTipTitle: 'Simülatör ipucu',
   simulatorTipBody:
     'Test amaçlı bir fotoğraf çekilebilmesi için SOS göndermeden önce Simülatör menüsünden Kamera’yı (Ön Kamera) açın.',
@@ -47,6 +50,7 @@ export const sos = {
   whatParentsReceive: 'Ailen neler alır',
   holdToSendFiveSeconds: 'Göndermek için 5 saniye basılı tut',
   keepHolding: 'Basılı tutmaya devam et',
+  secondsLeft: '{{seconds}} sn',
   pressAndHoldToCancel: 'Basılı tut — iptal etmek için erken bırak',
   holdToSendSosAccessibility: 'SOS göndermek için 5 saniye basılı tutun',
   sosEmergencyAccessibility: 'SOS acil durumu',
@@ -71,7 +75,8 @@ export const sos = {
   muteAlarm: 'Bu uyarıyı sessize al',
   alertCount: '{{current}} / {{total}}',
   trustedContactsTitle: 'Güvenilir kişiler',
-  trustedContactsSubtitle: 'Her SOS’ta son konumla birlikte e-posta alırlar',
+  trustedContactsSubtitle:
+    'SOS ve son bilinen konumla birlikte e-posta alırlar; saatte en fazla birkaç uyarı',
   trustedContactsRowSubtitle: 'Çocuğunuz SOS gönderdiğinde e-posta alan kişiler',
   trustedContactsListSection: 'SOS’u kim alır',
   trustedContactsEmpty:

@@ -38,7 +38,7 @@ export const appInventory = {
   unsupportedGeneric:
     'Este dispositivo no informa de las aplicaciones instaladas en él.',
   incompleteNote:
-    'Una aplicación sin icono en la pantalla de inicio puede no aparecer aquí.',
+    'Puede que algunas aplicaciones no aparezcan aquí, por ejemplo una que no tenga icono en la lista de aplicaciones del dispositivo.',
   blockHint:
     'Para detener una aplicación, abre Apps bloqueadas en el propio dispositivo.',
   howItWorksLabel: 'Cómo funciona esta lista',

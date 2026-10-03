@@ -13,8 +13,8 @@ import {
   scheduleWindowRunsEveryDay,
 } from '@kidgate/core/domain/scheduleWindow';
 import {
-  SCHEDULE_DAY_PRESETS,
   SCHEDULE_QUICK_WINDOWS,
+  scheduleDayPresets,
 } from '@kidgate/core/domain/scheduleWindowCopy';
 
 const DAY_INDEXES = [0, 1, 2, 3, 4, 5, 6];
@@ -177,12 +177,14 @@ export default function ScheduleEditor({ windows, readOnly, busy, onSave }) {
 
           <div className="sched-days-head">
             <span className="sched-days-label">{appT('blockedHours.daysLabel')}</span>
-            {/* The phone's presets, off the shared table — "School nights" is
-                Sun–Thu there because an overnight window is stamped by the
-                night it starts on, and a second hand-typed copy here is how
-                the two consoles come to mean different nights. */}
+            {/* The phone's presets, off the shared table — which one depends
+                on the window: a daytime window gets Weekdays / Weekend, an
+                overnight one School nights (Sun–Thu) / Weekend nights, because
+                an overnight window is stamped by the night it starts on. A
+                second hand-typed copy here is how the two consoles come to
+                mean different days. */}
             <ul className="chips chips-toggle">
-              {SCHEDULE_DAY_PRESETS.map(preset => {
+              {scheduleDayPresets(window).map(preset => {
                 const active = dayKey(window) === dayKey({ days: preset.days });
                 return (
                   <li key={preset.labelKey} className={active ? 'is-on' : ''}>

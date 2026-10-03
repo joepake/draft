@@ -51,22 +51,9 @@ export const placeAlerts = {
   samePinToast: 'هذه هي نفس نقطة «{{name}}». اسحب الخريطة لتحريك الدبوس.',
   overlapWarning:
     'يقع «{{name}}» على بُعد {{meters}} م ونطاقه يصل إلى هنا. أثناء وجود الجهاز في المكانين، ينبّه الأقرب وحده. احفظ مرة أخرى للإبقاء عليه.',
-  copyTitle: 'إضافة للأطفال الآخرين؟',
-  copyMessage:
-    'نسخ "{{name}}" إلى أجهزة الأطفال الأخرى البالغ عددها {{count}} في هذه العائلة؟',
-  copyMessage_one: 'نسخ "{{name}}" إلى جهاز الطفل الآخر في هذه العائلة؟',
-  copyConfirm: 'نسخ',
-  copyDoneToast: 'تم النسخ إلى {{count}} أجهزة.',
-  copyDoneToast_one: 'تم النسخ إلى جهاز واحد.',
-  copyDoneToast_two: 'تم النسخ إلى جهازين.',
-  copyDoneToast_many: 'تم النسخ إلى {{count}} جهازًا.',
-  copyDoneToast_other: 'تم النسخ إلى {{count}} جهاز.',
-  copySkippedToast: 'الأطفال الآخرون لديهم هذا المكان بالفعل أو وصلوا إلى الحد الأقصى.',
   savedToast: 'تم حفظ المكان.',
   updatedToast: 'تم تحديث المكان.',
   removedToast: 'تمت إزالة المكان.',
   saveFailedToast: 'تعذر الحفظ. يرجى المحاولة مرة أخرى.',
-  enteredLabel: 'تم الدخول',
-  exitedLabel: 'تمت المغادرة',
   footerNote: 'يتم التحقق كلما تمت مزامنة الموقع — وليس دائمًا في الخلفية.',
 } as const;

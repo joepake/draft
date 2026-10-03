@@ -1,6 +1,9 @@
 import { useEffect, useMemo, useState } from 'react';
 import Icon from '@kidgate/web-ui/Icon';
-import { supportsMessageMonitoring } from '@kidgate/core/domain/alertSupport';
+import {
+  supportsMessageMonitoring,
+  supportsSearchMonitoring,
+} from '@kidgate/core/domain/alertSupport';
 import { termGlossFor } from '@kidgate/core/domain/messageAlertGloss';
 import { resolveMessageMonitoringNotice } from '@kidgate/core/domain/messageMonitoringStatus';
 import {
@@ -77,6 +80,12 @@ export default function MessageAlertsCard({
   const live = Boolean(actions);
   const controls = device.controls ?? {};
   const supported = supportsMessageMonitoring(device);
+  /*
+   * The Chrome extension watches searches and no messages, and its alerts land
+   * in this same feed. Asking only the message question returned the
+   * Android-only note for it and hid every search alert it had filed.
+   */
+  const searches = supportsSearchMonitoring(device);
 
   const notice = useMemo(
     () => (supported ? resolveMessageMonitoringNotice([device]) : null),
@@ -147,7 +156,7 @@ export default function MessageAlertsCard({
     }
   };
 
-  if (!supported) {
+  if (!supported && !searches) {
     /*
      * An iPhone, a Mac, a television. `messageMonitoring: false` is permanent on
      * iOS — no listener API exists — so this says so once and renders no
@@ -156,7 +165,13 @@ export default function MessageAlertsCard({
     return <p className="empty">{appT('messageMonitoring.androidOnlyNote')}</p>;
   }
 
-  const rows = [
+  /*
+   * A search-only device keeps the profanity row — the extension's scan reads
+   * `messageProfanityEnabled` — and loses the two message switches, which no
+   * browser can act on. Its search switch is on the Controls tab (`ControlsTab`
+   * row `search`), where it already was.
+   */
+  const allRows = [
     {
       key: 'incoming',
       field: 'messageMonitoringEnabled',
@@ -180,9 +195,11 @@ export default function MessageAlertsCard({
       desc: appT('messageMonitoring.parentProfanityHint'),
     },
   ];
+  const rows = supported ? allRows : allRows.filter(row => row.key === 'profanity');
 
   return (
     <div className="msg-alerts">
+      {!supported && <p className="hint">{appT('messageMonitoring.searchOnlyNote')}</p>}
       {notice && (
         <ul className="attn">
           <li

@@ -54,18 +54,10 @@ export const placeAlerts = {
   samePinToast: 'Đây đúng là vị trí của “{{name}}”. Kéo bản đồ để di chuyển ghim.',
   overlapWarning:
     '“{{name}}” cách đây {{meters}} m và vùng của địa điểm đó chạm tới đây. Khi thiết bị nằm trong cả hai vùng, chỉ địa điểm gần hơn gửi cảnh báo. Bấm Lưu lần nữa nếu bạn vẫn muốn giữ.',
-  copyTitle: 'Thêm cho các con khác?',
-  copyMessage:
-    'Sao chép “{{name}}” sang {{count}} thiết bị khác của trẻ trong gia đình này?',
-  copyConfirm: 'Sao chép',
-  copyDoneToast: 'Đã sao chép sang {{count}} thiết bị.',
-  copySkippedToast: 'Các con khác đã có địa điểm này hoặc đã đạt số lượng tối đa.',
   savedToast: 'Đã lưu địa điểm.',
   updatedToast: 'Đã cập nhật địa điểm.',
   removedToast: 'Đã xóa địa điểm.',
   saveFailedToast: 'Không thể lưu. Vui lòng thử lại.',
-  enteredLabel: 'Đã vào',
-  exitedLabel: 'Đã rời',
   footerNote:
     'KidGate kiểm tra mỗi khi vị trí đồng bộ — việc này không phải lúc nào cũng chạy được ở chế độ nền.',
 } as const;

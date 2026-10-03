@@ -8,6 +8,7 @@ export const family = {
   addChildOption: 'Thêm thiết bị của trẻ',
   addJoinFamilyOption: 'Tham gia gia đình',
   addParentOption: 'Mời phụ huynh',
+  parentLimitFull: 'Đó là số phụ huynh tối đa của một gia đình.',
   loginWebOption: 'Đăng nhập trên máy tính',
   // The "who uses this device?" assignment sheet.
   assignSheetTitle: 'Ai dùng {{deviceName}}?',
@@ -31,7 +32,7 @@ export const family = {
     'Chép quy tắc của {{childName}}, gồm cả các trang được phép và bị chặn.',
   quickProtectBedtime: 'Giờ khóa thiết bị buổi đêm',
   quickProtectBedtimeHint: 'Khóa thiết bị qua đêm, từ 22:00 đến 07:00.',
-  quickProtectDailyLimit: 'Giới hạn thời gian sử dụng hằng ngày',
+  quickProtectDailyLimit: 'Giới hạn hằng ngày',
   quickProtectDailyLimitHint:
     '{{minutes}} phút mỗi ngày, tính chung trên mọi thiết bị của con.',
   quickProtectWebFilter: 'Chặn nội dung web',
@@ -58,20 +59,32 @@ export const family = {
   // The fold control on a group heading.
   collapseGroupA11y: 'Thu gọn {{name}}',
   expandGroupA11y: 'Mở rộng {{name}}',
-  assignDeviceCta: 'Gán cho con…',
+  assignDeviceCta: 'Gán cho trẻ…',
   unassignedHint: 'Những thiết bị này chưa được tính cho ai.',
   unassignedHintMember: 'Chỉ chủ gia đình mới gán được các thiết bị này cho các con.',
+  // One device's own page (the web's Controls tab): the two sentences above are
+  // said to a group heading, and "these devices" is false about one machine.
+  unassignedDeviceHint: 'Thiết bị này chưa được tính cho ai.',
+  unassignedDeviceHintMember: 'Chủ gia đình sẽ chọn ai dùng thiết bị này.',
+  // The pairing sheets' success step for a joined parent, who may pair but not assign.
+  pairedDeviceBodyMember:
+    'Thiết bị của trẻ đã xác nhận ghép nối. Chủ gia đình sẽ chọn ai dùng thiết bị này.',
   // The footer strip: children who hold no device get no group of their own.
   childrenWithoutDeviceTitle: 'Trẻ chưa có thiết bị',
   // Child detail screen.
-  childDetailStarsWell: 'Nhiệm vụ tuần này',
+  childDetailStarsWell: 'Sao tuần này',
   childStarsA11y: 'Sao tuần này: {{count}}',
   childDetailDevicesTitle: 'Thiết bị',
   childDetailSwipeHint: 'Vuốt thiết bị để bỏ gán.',
   childDetailAssignMore: 'Gán thêm thiết bị…',
+  // The same row while the child has no device yet — "another" needs a first.
+  childDetailAssignFirst: 'Gán thiết bị…',
   childDetailAssignSheetTitle: 'Gán thiết bị cho {{childName}}',
   childDetailNoDevices:
     'Chưa có thiết bị nào. Gán bên dưới hoặc ghép thiết bị mới từ tab Gia đình.',
+  // Same screen when nothing is left below to assign.
+  childDetailNoDevicesPair:
+    'Chưa có thiết bị nào. Hãy ghép một thiết bị mới từ tab Gia đình, rồi chọn con khi ứng dụng hỏi ai dùng thiết bị đó.',
   // Same screen for a joined parent, who may pair but may not assign.
   childDetailNoDevicesMember:
     'Chưa có thiết bị nào. Chỉ chủ gia đình mới quyết định thiết bị thuộc về ai.',
@@ -80,7 +93,7 @@ export const family = {
   scanButtonAccessibility: 'Quét mã',
   scanTitle: 'Quét mã',
   scanBody:
-    'Hướng camera vào thiết bị của con, lời mời gia đình, hoặc mã hiển thị trên máy tính.',
+    'Hướng camera vào mã trên thiết bị của con, lời mời gia đình, hoặc mã đăng nhập web.',
   manualCodeLabel: 'Nhập mã gồm 6 ký tự',
   manualInstructions: 'Nhập mã gồm 6 ký tự hiển thị trên thiết bị kia.',
   headerHintEmpty: 'Quản lý và bảo vệ thiết bị của trẻ',
@@ -106,6 +119,11 @@ export const family = {
   healthOffline: 'Ngoại tuyến',
   devicePausedLabel: 'Ngừng báo cáo',
   devicePausedHint: 'Ngừng báo cáo trên gói miễn phí — mọi quy tắc vẫn áp dụng',
+  // What Paused means, said where the choice is made: the choose-a-device sheet on
+  // both consoles. Checked against every agent 2026-09-28 — enforcement never
+  // stops while parked; the reports do, and an SOS still goes through.
+  devicePausedMeaning:
+    'Thiết bị ngừng báo cáo vẫn áp dụng các quy tắc đang có. Máy không gửi thời gian sử dụng, vị trí và lịch sử nữa, nhưng SOS vẫn đến được với bạn.',
   parkReviewTitle: 'Bật những mục này trước khi hết dùng thử',
   parkReviewBody:
     'Khi hết dùng thử, một thiết bị tiếp tục gửi báo cáo và chỉnh sửa quy tắc, những máy còn lại giữ nguyên quy tắc đang có. Trên các máy đó bạn chỉ còn nới lỏng được quy tắc, nên thứ gì đang tắt thì sẽ không bật lại được.',
@@ -117,14 +135,33 @@ export const family = {
   parkedBannerBody:
     'Quy tắc của bạn vẫn chạy trên mọi thiết bị. Gói miễn phí chỉ nhận báo cáo từ một máy và chỉ cho siết chặt quy tắc ở máy đó — hãy chọn máy, hoặc nâng cấp để giữ tất cả.',
   parkedBannerAction: 'Chọn thiết bị',
+  holdFamilyTitle: 'KidGate đã tạm khóa gia đình này',
+  holdDeviceTitle: 'KidGate đã tạm khóa {{deviceName}}',
+  holdFamilyBody:
+    'Mọi thiết bị vẫn giữ luật của mình nhưng không gửi báo cáo cho đến khi được mở khóa.',
+  holdDeviceBody:
+    'Thiết bị này vẫn giữ luật của mình nhưng không gửi báo cáo cho đến khi được mở khóa.',
+  holdReasonUnusualActivity: 'Lý do: tài khoản này có hoạt động bất thường.',
+  holdReasonOutdatedApp:
+    'Lý do: một ứng dụng KidGate trong tài khoản này đã quá cũ. Hãy cập nhật, rồi liên hệ hỗ trợ.',
+  holdReasonTermsViolation: 'Lý do: vi phạm điều khoản sử dụng của KidGate.',
+  holdReasonOther: 'Lý do: KidGate đang xem xét tài khoản này.',
+  holdNote: 'Lời nhắn từ KidGate: {{note}}',
+  holdAppeal: 'Liên hệ hỗ trợ',
+  holdAppealMessage: 'Tôi muốn hỏi về việc tài khoản gia đình tôi bị tạm khóa.',
+  pairedDevicePaused:
+    'Gói miễn phí chỉ nhận báo cáo từ một máy và chỉ cho siết chặt quy tắc ở máy đó, nên thiết bị này bắt đầu ở trạng thái ngừng báo cáo.',
+  pairingWillStartPaused:
+    'Gói miễn phí chỉ nhận báo cáo từ một máy và chỉ cho siết chặt quy tắc ở máy đó, nên thiết bị mới sẽ bắt đầu ở trạng thái ngừng báo cáo.',
   chooseMonitoredTitle: 'Chọn thiết bị chính',
   chooseMonitoredBody:
     'Mọi quy tắc vẫn hoạt động trên tất cả. Máy bạn chọn sẽ gửi thời gian sử dụng và vị trí, và là máy duy nhất bạn còn siết chặt được quy tắc — những máy còn lại chỉ nới lỏng được. Bạn có thể đổi máy mỗi {{days}} ngày một lần.',
   chooseMonitoredConfirm: 'Theo dõi thiết bị này',
   chooseMonitoredUpgrade: 'Giữ tất cả thiết bị — nâng cấp',
   chooseMonitoredDone: '{{name}} giờ là thiết bị báo cáo',
+  chooseMonitoredCurrent: 'Đang báo cáo',
   monitoredCooldown: 'Thiết bị báo cáo chỉ đổi được mỗi {{days}} ngày một lần',
-  monitoredChooseFailed: 'Không thể đổi thiết bị báo cáo',
+  monitoredChooseFailed: 'Không thể đổi thiết bị báo cáo. Vui lòng thử lại.',
   // Hai dòng xem nhanh trên thẻ thiết bị — việc phụ huynh kiểm tra hằng ngày,
   // trước đây nằm sâu 3 tap sau màn hình Chi tiết thiết bị.
   cardWhereLabel: 'Vị trí',
@@ -136,8 +173,6 @@ export const family = {
   emptyTitle: 'Chưa có thiết bị của trẻ',
   emptyDescription: 'Thêm thiết bị của trẻ để bắt đầu theo dõi thời gian sử dụng.',
   setupFamilyTitle: 'Thiết lập gia đình',
-  setupFamilyDescription:
-    'Tạo gia đình để kết nối thiết bị của trẻ, hoặc tham gia bằng mã mời từ phụ huynh khác.',
   createFamilyButton: 'Tạo gia đình',
   joinFamilyButton: 'Tham gia gia đình',
   switchToJoinTitle: 'Tham gia gia đình khác?',
@@ -153,13 +188,13 @@ export const family = {
   guestBenefitAlertsTitle: 'Cảnh báo SOS và hoạt động',
   guestBenefitAlertsBody: 'Nhận thông báo ngay khi có việc cần bạn xử lý.',
   guestBenefitLocationTitle: 'Vị trí và Báo an toàn',
-  guestBenefitLocationBody: 'Xem trẻ đang ở đâu và yêu cầu trẻ xác nhận an toàn.',
+  guestBenefitLocationBody: 'Xem con đang ở đâu và nhờ con xác nhận mình an toàn.',
   stepsHeading: 'Các bước bắt đầu',
-  step1Title: 'Chạm Thêm thiết bị của trẻ',
-  step1Description: 'Mã QR ghép nối sẽ hiện ngay tại đây để thiết bị của trẻ quét.',
-  step2Title: 'Quét mã từ thiết bị của trẻ',
-  step2Description:
-    'Cài KidGate trên điện thoại hoặc máy tính bảng của trẻ, chọn Đây là thiết bị của trẻ, sau đó quét mã.',
+  step1Title: 'Mở KidGate trên thiết bị của trẻ',
+  step1Description:
+    'Cài KidGate trên điện thoại, máy tính bảng, TV hoặc máy tính mà trẻ dùng. Trên điện thoại hoặc máy tính bảng, chọn Đây là thiết bị của trẻ. Màn hình sẽ hiện mã QR và mã gồm 6 ký tự.',
+  step2Title: 'Chạm Thêm thiết bị của trẻ tại đây',
+  step2Description: 'Quét mã QR đó bằng điện thoại này, hoặc nhập mã gồm 6 ký tự.',
   connectChildButton: 'Kết nối thiết bị của trẻ',
   listHint: 'Vuốt sang trái để gỡ thiết bị',
   removeAlertTitle: 'Gỡ thiết bị?',
@@ -207,7 +242,7 @@ export const family = {
   editDeviceNameSubtitle:
     'Chỉ chủ gia đình mới có thể đổi tên thiết bị. Tối đa {{maxLength}} ký tự.',
   deviceNameInputLabel: 'Tên thiết bị',
-  deviceNamePlaceholder: 'iPhone của Bé Na',
+  deviceNamePlaceholder: 'iPhone của Na',
   unableToUpdateDeviceName: 'Không thể cập nhật tên thiết bị. Vui lòng thử lại.',
   osLabelFallback: 'Hệ điều hành',
   iosLabel: 'iOS',

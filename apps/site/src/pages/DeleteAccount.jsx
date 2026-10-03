@@ -78,8 +78,9 @@ export default function DeleteAccount() {
       <p>
         You can remove a child or a device in the app, which stops collection from it.
         History already collected expires on the schedule in the Privacy Policy (30 days
-        for activity and location, 90 days for alerts and requests); to have it deleted
-        sooner, email <a href="mailto:support@kidgate.app">support@kidgate.app</a>.
+        for usage, web and location history and the activity feed; 90 days for SOS,
+        Check-In and extra-time requests); to have it deleted sooner, email{' '}
+        <a href="mailto:support@kidgate.app">support@kidgate.app</a>.
       </p>
 
       <p>

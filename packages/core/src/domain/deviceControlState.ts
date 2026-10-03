@@ -106,6 +106,11 @@ export interface ControlStateFacts {
   /** False on a machine whose watches are recorded by the browser extension. */
   supportsVideoHistory?: boolean;
   /**
+   * `videoHistoryAwaitingGrant` — an Android phone whose reader lacks the
+   * notification-access grant. Absent means nothing is known to be missing.
+   */
+  videoHistoryAwaitingGrant?: boolean;
+  /**
    * The reading console's own clock, for the one card whose value is a
    * countdown.
    *
@@ -366,9 +371,14 @@ export function resolveControlCardStatus(
       if (facts.supportsVideoHistory === false) {
         return worded('videoHistory.viaExtension', 'attention', 'shared.view');
       }
-      return controls.videoHistoryEnabled === true
-        ? worded('deviceDetail.videoHistoryOn', 'active', 'shared.view')
-        : worded('shared.off', 'attention', 'shared.view');
+      if (controls.videoHistoryEnabled !== true) {
+        return worded('shared.off', 'attention', 'shared.view');
+      }
+      // Switched on, but the phone's reader has no grant to run on: "Recording"
+      // here was the card vouching for a list that stays empty.
+      return facts.videoHistoryAwaitingGrant === true
+        ? worded('deviceDetail.waiting', 'attention', 'shared.view')
+        : worded('deviceDetail.videoHistoryOn', 'active', 'shared.view');
 
     default:
       return null;

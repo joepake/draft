@@ -8,6 +8,7 @@ export const family = {
   addChildOption: 'बच्चे का डिवाइस जोड़ें',
   addJoinFamilyOption: 'परिवार से जुड़ें',
   addParentOption: 'अभिभावक को आमंत्रित करें',
+  parentLimitFull: 'एक परिवार में इससे ज़्यादा अभिभावक नहीं हो सकते।',
   loginWebOption: 'वेब पर साइन इन करें',
   // The "who uses this device?" assignment sheet.
   assignSheetTitle: '{{deviceName}} कौन इस्तेमाल करता है?',
@@ -30,10 +31,10 @@ export const family = {
   quickProtectSourceDefault: 'KidGate डिफ़ॉल्ट',
   quickProtectSourceBody:
     '{{childName}} के नियम कॉपी करता है, जिनमें अनुमत और अवरुद्ध साइटें भी शामिल हैं।',
-  quickProtectBedtime: 'रात के ब्लॉक किए गए समय',
+  quickProtectBedtime: 'ब्लॉक किए गए समय (सोने का समय)',
   quickProtectBedtimeHint:
     'रात 10:00 बजे से सुबह 7:00 बजे तक डिवाइस का उपयोग ब्लॉक रहेगा।',
-  quickProtectDailyLimit: 'दैनिक स्क्रीन समय सीमा',
+  quickProtectDailyLimit: 'दैनिक सीमा',
   quickProtectDailyLimitHint:
     'प्रति दिन {{minutes}} मिनट, बच्चे के सभी डिवाइस पर साझा।',
   quickProtectWebFilter: 'वेब फ़िल्टर',
@@ -47,7 +48,7 @@ export const family = {
     'कुछ सुरक्षा सेटिंग्स सहेजी नहीं जा सकीं। बच्चे की प्रोफ़ाइल से पुनः प्रयास करें।',
   pairDeviceFirstTitle: 'अभी कोई डिवाइस पेयर नहीं है',
   pairDeviceFirstBody:
-    'पहले इस बच्चे के लिए एक डिवाइस पेयर करें — परिवार टैब में स्कैन आइकन या "+" पर टैप करके बच्चे का डिवाइस जोड़ें चुनें। डिवाइस कनेक्ट होते ही यह नियंत्रण काम करने लगेगा।',
+    'पहले इस बच्चे के लिए एक डिवाइस पेयर करें — परिवार टैब में स्कैन आइकन या “+” पर टैप करके बच्चे का डिवाइस जोड़ें चुनें। डिवाइस कनेक्ट होते ही यह नियंत्रण काम करने लगेगा।',
   // Child-grouped family list: group header lock-all + unassigned group.
   lockAll: 'सभी लॉक करें',
   unlockAll: 'सभी अनलॉक करें',
@@ -64,6 +65,14 @@ export const family = {
   assignDeviceCta: 'बच्चे को असाइन करें…',
   unassignedHint: 'ये डिवाइस अभी किसी के लिए नहीं गिने जाते।',
   unassignedHintMember: 'ये डिवाइस बच्चों को परिवार का मालिक ही सौंपता है।',
+  // One device's own page (the web's Controls tab): the two sentences above are
+  // said to a group heading, and "these devices" is false about one machine.
+  unassignedDeviceHint: 'यह डिवाइस अभी किसी के लिए नहीं गिना जाता।',
+  unassignedDeviceHintMember:
+    'इस डिवाइस को कौन इस्तेमाल करेगा, यह परिवार का मालिक चुनता है।',
+  // The pairing sheets' success step for a joined parent, who may pair but not assign.
+  pairedDeviceBodyMember:
+    'बच्चे के डिवाइस ने पेयरिंग की पुष्टि कर दी। इसे कौन इस्तेमाल करेगा, यह परिवार का मालिक चुनता है।',
   // The footer strip: children who hold no device get no group of their own.
   childrenWithoutDeviceTitle: 'बिना डिवाइस वाले बच्चे',
   // Child detail screen.
@@ -72,9 +81,14 @@ export const family = {
   childDetailDevicesTitle: 'डिवाइस',
   childDetailSwipeHint: 'असाइनमेंट हटाने के लिए डिवाइस को स्वाइप करें।',
   childDetailAssignMore: 'एक और डिवाइस असाइन करें…',
+  // The same row while the child has no device yet — "another" needs a first.
+  childDetailAssignFirst: 'एक डिवाइस असाइन करें…',
   childDetailAssignSheetTitle: '{{childName}} को डिवाइस असाइन करें',
   childDetailNoDevices:
     'अभी कोई डिवाइस नहीं। नीचे असाइन करें या परिवार टैब से नया डिवाइस जोड़ें।',
+  // Same screen when nothing is left below to assign.
+  childDetailNoDevicesPair:
+    'अभी कोई डिवाइस नहीं। परिवार टैब से एक डिवाइस जोड़ें, और जब ऐप पूछे कि इसे कौन इस्तेमाल करता है, तो इस बच्चे को चुनें।',
   // Same screen for a joined parent, who may pair but may not assign.
   childDetailNoDevicesMember:
     'अभी कोई डिवाइस नहीं है। कौन-सा डिवाइस किसका है, यह केवल परिवार का मालिक तय करता है।',
@@ -83,7 +97,7 @@ export const family = {
   scanButtonAccessibility: 'कोड स्कैन करें',
   scanTitle: 'कोड स्कैन करें',
   scanBody:
-    'कैमरे को किसी बच्चे के डिवाइस, फ़ैमिली इनवाइट या कंप्यूटर पर दिखाए गए कोड की ओर करें।',
+    'कैमरे को किसी बच्चे के डिवाइस पर दिखे कोड, फ़ैमिली इनवाइट या वेब साइन इन के कोड की ओर करें।',
   manualCodeLabel: '6-अंकों वाला कोड दर्ज करें',
   manualInstructions: 'दूसरे डिवाइस पर दिखाया गया 6-अंकों वाला कोड दर्ज करें।',
 
@@ -135,6 +149,11 @@ export const family = {
   devicePausedLabel: 'रुका हुआ',
 
   devicePausedHint: 'फ़्री प्लान में रुका हुआ — सभी नियम अब भी लागू हैं',
+  // What Paused means, said where the choice is made: the choose-a-device sheet on
+  // both consoles. Checked against every agent 2026-09-28 — enforcement never
+  // stops while parked; the reports do, and an SOS still goes through.
+  devicePausedMeaning:
+    'रुका हुआ डिवाइस अपने मौजूदा नियम लागू करता रहता है। वह स्क्रीन टाइम, लोकेशन और इतिहास की रिपोर्ट भेजना बंद कर देता है, लेकिन SOS आप तक फिर भी पहुँचता है।',
 
   parkReviewTitle: 'ट्रायल ख़त्म होने से पहले ये चालू करें',
   parkReviewBody:
@@ -149,6 +168,25 @@ export const family = {
     'आपके नियम हर डिवाइस पर चलते रहते हैं। फ़्री प्लान में सिर्फ़ एक डिवाइस रिपोर्ट भेजता है और नियम सिर्फ़ उसी पर सख़्त किए जा सकते हैं — वह डिवाइस चुनें, या सबको रखने के लिए अपग्रेड करें।',
 
   parkedBannerAction: 'डिवाइस चुनें',
+  holdFamilyTitle: 'KidGate ने इस परिवार को अस्थायी रूप से रोक दिया है',
+  holdDeviceTitle: 'KidGate ने {{deviceName}} को अस्थायी रूप से रोक दिया है',
+  holdFamilyBody:
+    'हर डिवाइस अपने नियम बनाए रखता है, लेकिन रोक हटने तक कोई रिपोर्ट नहीं भेजता।',
+  holdDeviceBody:
+    'यह डिवाइस अपने नियम बनाए रखता है, लेकिन रोक हटने तक कोई रिपोर्ट नहीं भेजता।',
+  holdReasonUnusualActivity: 'कारण: इस खाते पर असामान्य गतिविधि।',
+  holdReasonOutdatedApp:
+    'कारण: इस खाते का एक KidGate ऐप पुराना है। इसे अपडेट करें, फिर सहायता से संपर्क करें।',
+  holdReasonTermsViolation: 'कारण: KidGate की उपयोग की शर्तों का उल्लंघन।',
+  holdReasonOther: 'कारण: KidGate इस खाते की समीक्षा कर रहा है।',
+  holdNote: 'KidGate का संदेश: {{note}}',
+  holdAppeal: 'सहायता से संपर्क करें',
+  holdAppealMessage: 'मुझे अपने परिवार के खाते पर लगी रोक के बारे में जानकारी चाहिए।',
+  pairedDevicePaused:
+    'फ़्री प्लान में सिर्फ़ एक डिवाइस रिपोर्ट भेजता है और नियम सिर्फ़ उसी पर सख़्त किए जा सकते हैं, इसलिए यह डिवाइस शुरुआत से रुका हुआ रहेगा।',
+
+  pairingWillStartPaused:
+    'फ़्री प्लान में सिर्फ़ एक डिवाइस रिपोर्ट भेजता है और नियम सिर्फ़ उसी पर सख़्त किए जा सकते हैं, इसलिए नया डिवाइस शुरुआत से रुका हुआ रहेगा।',
 
   chooseMonitoredTitle: 'अपना मुख्य डिवाइस चुनें',
 
@@ -160,11 +198,13 @@ export const family = {
   chooseMonitoredUpgrade: 'सभी डिवाइस रखें — अपग्रेड करें',
 
   chooseMonitoredDone: '{{name}} अब रिपोर्ट भेजने वाला डिवाइस है',
+  chooseMonitoredCurrent: 'अभी रिपोर्ट भेज रहा है',
 
   monitoredCooldown:
     'रिपोर्ट भेजने वाला डिवाइस हर {{days}} दिन में सिर्फ़ एक बार बदला जा सकता है',
 
-  monitoredChooseFailed: 'रिपोर्ट भेजने वाला डिवाइस नहीं बदला जा सका',
+  monitoredChooseFailed:
+    'रिपोर्ट भेजने वाला डिवाइस नहीं बदला जा सका। कृपया पुनः प्रयास करें।',
 
   cardWhereLabel: 'स्थान',
 
@@ -184,9 +224,6 @@ export const family = {
     'स्क्रीन समय और ऐप उपयोग की निगरानी शुरू करने के लिए बच्चे का डिवाइस जोड़ें।',
 
   setupFamilyTitle: 'अपना परिवार सेट करें',
-
-  setupFamilyDescription:
-    'अपने बच्चों के डिवाइस कनेक्ट करने के लिए परिवार बनाएँ या किसी अन्य अभिभावक के निमंत्रण से मौजूदा परिवार में शामिल हों।',
 
   createFamilyButton: 'परिवार बनाएँ',
 
@@ -221,14 +258,14 @@ export const family = {
 
   stepsHeading: 'शुरुआत करें',
 
-  step1Title: '“बच्चे का डिवाइस जोड़ें” पर टैप करें',
+  step1Title: 'बच्चे के डिवाइस पर KidGate खोलें',
 
-  step1Description: 'जोड़ने के लिए QR कोड यहीं दिखाई देगा, स्कैन के लिए तैयार।',
+  step1Description:
+    'आपका बच्चा जिस फ़ोन, टैबलेट, टीवी या कंप्यूटर का इस्तेमाल करता है, उस पर KidGate इंस्टॉल करें। फ़ोन या टैबलेट पर “यह बच्चे का डिवाइस है” चुनें। एक QR कोड और 6 अक्षरों का कोड दिखाई देगा।',
 
-  step2Title: 'बच्चे के डिवाइस से स्कैन करें',
+  step2Title: 'यहाँ “बच्चे का डिवाइस जोड़ें” पर टैप करें',
 
-  step2Description:
-    'अपने बच्चे के फ़ोन या टैबलेट पर KidGate इंस्टॉल करें, “यह बच्चे का डिवाइस है” चुनें और कोड स्कैन करें।',
+  step2Description: 'उस QR कोड को इस फ़ोन से स्कैन करें, या 6 अक्षरों का कोड डालें।',
 
   connectChildButton: 'बच्चे का डिवाइस कनेक्ट करें',
   listHint: 'हटाने के लिए डिवाइस को बाईं ओर स्वाइप करें',
@@ -382,6 +419,6 @@ export const family = {
   childDetailSectionAlerts: 'सभी डिवाइस, एक ही सूची',
   childDetailScopeAll: 'सभी डिवाइस',
   childDetailTodayWell: 'आज इस्तेमाल',
-  childDetailUnassignAction: 'हटाएँ',
+  childDetailUnassignAction: 'असाइनमेंट हटाएँ',
   childDetailLimitShared: 'इनके सभी डिवाइस का कुल',
 } as const;

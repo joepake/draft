@@ -35,6 +35,8 @@
  * empty bar rather than nothing.
  */
 
+import { dayKeyInZone } from './timeZone';
+
 /**
  * A device document, as much of one as these folds read.
  *
@@ -53,6 +55,83 @@ export interface ReportHubDevice {
       }
     | null
     | undefined;
+  /**
+   * The IANA zone the device published with its last usage report
+   * (`Device.timeZone`) — the calendar `usageDate` above is written on.
+   */
+  timeZone?: string | null | undefined;
+}
+
+/**
+ * The reader's calendar day, and the instant it was read at — what a console
+ * hands the rules below so each device can be judged on its own day.
+ *
+ * A bare `YYYY-MM-DD` still works and means "judge every device on this day",
+ * which is the reader's calendar: what both consoles did before devices
+ * published a zone, and what they still do for a device that has not.
+ */
+export type UsageToday = string | { key: string; nowMs: number };
+
+/**
+ * The day a device's usage stamp has to carry to be today's.
+ *
+ * **The device's own calendar when its zone is known**, else the reader's.
+ * `usageDate` is written on the device's clock, so a tablet in Berlin checked
+ * from a phone in Hanoi at 02:00 Hanoi time is still on yesterday's date — and
+ * that date is its today. Judged on the parent's calendar it read "no report
+ * today" for six hours every night, and a device east of the parent, already
+ * past its midnight, read the same until the parent's day caught up.
+ */
+export function usageTodayKey(
+  timeZone: string | null | undefined,
+  today: UsageToday,
+): string {
+  if (typeof today === 'string') {
+    return today;
+  }
+  return (timeZone ? dayKeyInZone(timeZone, today.nowMs) : null) ?? today.key;
+}
+
+/**
+ * Whether a device's stamped usage figures are today's — **the** freshness
+ * rule, for every figure a usage report stamps.
+ *
+ * `minutesUsedToday` and `dailyLimitExceeded` arrive on a usage report beside
+ * the device-local `usageDate` they belong to, and nothing clears them at
+ * midnight: a device switched off yesterday evening still carries yesterday's
+ * total and yesterday's "limit reached". A stamp whose day is not `todayKey`
+ * says nothing about today — not zero, and not yesterday's figure under a
+ * heading that says today.
+ *
+ * `today` is the reader's day; `timeZone` is the device's, and when it is
+ * known the stamp is judged on the device's own calendar (`usageTodayKey`).
+ * Both consoles call this with the same pair, so a Mac in another zone cannot
+ * read "today" on one and "—" on the other. An empty key matches nothing.
+ */
+export function isUsageStampToday(
+  controls: { usageDate?: string | null | undefined } | null | undefined,
+  today: UsageToday,
+  timeZone?: string | null,
+): boolean {
+  const todayKey = usageTodayKey(timeZone, today);
+  return Boolean(todayKey) && controls?.usageDate === todayKey;
+}
+
+/**
+ * One device's minutes for today, or null when it has not reported today.
+ *
+ * Null is "nothing reported", a different answer from a measured `0` — the
+ * device-level form of `foldMinutesToday`, for a screen about one machine.
+ */
+export function deviceMinutesToday(
+  device: ReportHubDevice | null | undefined,
+  today: UsageToday,
+): number | null {
+  const controls = device?.controls;
+  if (!isUsageStampToday(controls, today, device?.timeZone)) {
+    return null;
+  }
+  return Math.max(0, Math.round(controls?.minutesUsedToday ?? 0));
 }
 
 /**
@@ -64,15 +143,14 @@ export interface ReportHubDevice {
  */
 export function foldMinutesToday(
   devices: readonly ReportHubDevice[],
-  todayKey: string,
+  today: UsageToday,
 ): Map<string, number> {
   const byDevice = new Map<string, number>();
   for (const device of devices) {
-    const controls = device.controls;
-    if (!controls || controls.usageDate !== todayKey) {
-      continue;
+    const minutes = deviceMinutesToday(device, today);
+    if (minutes !== null) {
+      byDevice.set(device.id, minutes);
     }
-    byDevice.set(device.id, Math.max(0, Math.round(controls.minutesUsedToday ?? 0)));
   }
   return byDevice;
 }

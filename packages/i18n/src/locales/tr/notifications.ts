@@ -8,7 +8,7 @@ export const notifications = {
   sectionSummary: 'Özet',
   sectionQuietHours: 'Sessiz saatler',
   sectionQuietHoursHint:
-    'Bu aralıkta uyarılar sessiz kalır. SOS hiçbir zaman susturulmaz.',
+    'Bu aralıkta uyarılar sessiz kalır. SOS hiçbir zaman susturulmaz ve en ciddi Mesaj uyarıları yine de gelir.',
   quietHoursLabel: 'Sessiz saatler',
   quietHoursOff: 'Kapalı — uyarılar her saat gelebilir',
   quietHoursActive: '{{start}} – {{end}} arası sessiz',
@@ -20,7 +20,7 @@ export const notifications = {
   alert: {
     tamperAlerts: {
       label: 'Koruma kapatıldı',
-      hint: 'Çocuk cihazında KidGate’in ihtiyaç duyduğu bir izin kapatıldı.',
+      hint: 'Bir çocuk cihazında KidGate’in ihtiyaç duyduğu bir izin kapatıldı, tarih, saat veya saat dilimi değiştirildi ya da cihaz kilitliyken SOS’a basıldı. SOS uyarısının kendisi her zaman gelir.',
     },
     placeAlerts: {
       label: 'Varış ve ayrılış',
@@ -56,7 +56,11 @@ export const notifications = {
     },
     messageAlerts: {
       label: 'Mesaj uyarıları',
-      hint: 'Mesajlarda endişe verici kelimeler göründüğünde uyarı alın',
+      hint: 'Çocuğunuzun mesajlarında veya aramalarında endişe verici kelimeler görünüyor.',
+    },
+    billing: {
+      label: 'Premium hatırlatmaları',
+      hint: 'Deneme süreniz bittikten sonra abone olma hatırlatmaları. Deneme süresinin veya Premium’un bittiğine dair bildirimler her zaman gelir.',
     },
   },
 };

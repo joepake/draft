@@ -34,28 +34,31 @@ export const location = {
     'Henüz geçmiş yok. Konum güncellendikten veya Check-In yapıldıktan sonra noktalar görünecektir.',
   historyHighlightAccessibility: '{{place}} konumunu haritada vurgula',
   historyOpenMapsAccessibility: '{{place}} konumunu Haritalar’da aç',
-  unableToRequestLocationRefresh: 'Konum yenileme isteği gönderilemedi',
   locationBannerTitle: 'Konumu etkinleştir',
   locationBannerBody:
     'Ebeveynin, güvenle vardığından emin olmak için bu cihazın konumunu görmek istiyor.',
   locationBannerBodySharingOff:
-    'Konum paylaşımı şu anda kapalı, yani hiçbir şey gönderilmiyor. Burada izin verirsen, ileride annen ya da baban açtığında hemen çalışır.',
+    'Konum paylaşımı şu anda kapalı, yani hiçbir şey gönderilmiyor. Burada izin verirsen, ileride ebeveynin açtığında hemen çalışır.',
   allowLocationButton: 'Konuma izin ver',
   locationNotAllowed:
-    'Konum izni henüz verilmedi. Ayarlar → KidGate → Konum menüsünü açın (veya önce Konum Servislerini etkinleştirin). Konum seçeneği görünmüyorsa tekrar “Konuma izin ver” seçeneğini seçin.',
+    'Konum izni henüz verilmedi. Ayarlar → KidGate → Konum menüsünü aç (veya önce Konum Servislerini etkinleştir). Konum seçeneği görünmüyorsa tekrar “Konuma izin ver” seçeneğini seç.',
+  locationNotAllowedAndroid:
+    'Konuma henüz izin verilmedi. “Ayarları aç”ı seç, ardından İzinler → Konum’a git ve “Her zaman izin ver” seçeneğini seç.',
   locationServicesOff:
-    'Konum Servisleri bu cihaz için kapalı. Ayarlar → Gizlilik ve Güvenlik → Konum Servisleri bölümünü açın, etkinleştirin, ardından KidGate’e dönüp “Konuma izin ver” seçeneğini seçin.',
+    'Konum Servisleri bu cihaz için kapalı. Ayarlar → Gizlilik ve Güvenlik → Konum Servisleri bölümünü aç, etkinleştir, ardından KidGate’e dönüp “Konuma izin ver” seçeneğini seç.',
   locationDeniedInSettings:
-    'KidGate için konum izni reddedildi. Ayarlar → KidGate → Konum bölümünü açın ve “Uygulamayı Kullanırken” veya “Her Zaman” seçeneğini belirleyin.',
-  locationEnabled:
-    'Konum etkin. KidGate’in uygulama kapalıyken de konumu güncelleyebilmesi için lütfen “Her Zaman” seçeneğini kullanın.',
+    'KidGate için konum izni reddedildi. Ayarlar → KidGate → Konum bölümünü aç ve “Uygulamayı Kullanırken” veya “Her Zaman” seçeneğini belirle.',
+  foregroundOnly:
+    'Konum yalnızca KidGate açıkken güncellenir. “Ayarları aç”ı seç, ardından Konum’a git ve “Her Zaman” seçeneğini seç.',
+  foregroundOnlyAndroid:
+    'Konum yalnızca KidGate açıkken güncellenir. “Ayarları aç”ı seç, ardından İzinler → Konum’a git ve “Her zaman izin ver” seçeneğini seç.',
+  toastLocateFailed: 'Konumun şu anda bulunamadı. Biraz sonra tekrar dene.',
   backgroundLocationTitle: 'Uygulama kapalıyken konuma izin ver',
   backgroundLocationBody:
     'KidGate, aile güvenliği için ebeveynlerin uygulama kapalıyken bile bu cihazın konumunu görebilmesi amacıyla arka planda konum erişimine ihtiyaç duyar.',
-  locationNote:
-    'Çocuk cihazında konum paylaşımı etkinleştirildiğinde çocuğun konumunu gösterir.',
-  placeAlertsNote: 'Ev, okul ve diğer güvenli yerler için konum uyarıları gönderir.',
   mapNoLocationsEmpty: 'Henüz gösterilecek konum yok',
+  mapHistoryEmpty:
+    'Hareket noktaları bir sonraki konum güncellemesinden sonra haritada görünecek.',
   mapUnavailable:
     'Harita kullanılamıyor. Lütfen internet bağlantınızı kontrol edip tekrar deneyin.',
   historyShowMore: '{{count}} yer daha göster',
@@ -70,11 +73,19 @@ export const location = {
     '{{deviceName}} cihazını {{childName}} yanında taşıdığı cihaz olarak işaretle',
   stayRange: '{{from}} – {{to}}',
   wizardStepAllow:
-    'İzin ver’i, ardından Her zaman’ı seçin; böylece güncellemeler arka planda sürer.',
+    'İzin ver’i, ardından Her zaman’ı seç; böylece güncellemeler arka planda sürer.',
+  wizardStepAllowAndroid:
+    'Önce “Uygulama kullanılırken” seçeneğini, sorulduğunda da “Her zaman izin ver” seçeneğini seç; böylece güncellemeler arka planda da gelmeye devam eder.',
   requestNoFix:
     'Bu cihaz konum alamadı. Konum izni bu cihazda henüz verilmemiş olabilir.',
+  requestIpOnly:
+    'Bu cihaz konumunu yalnızca internet bağlantısından tahmin edebildi. Cihazda Wi-Fi’yi açın (bağlanması gerekmez) ve tekrar deneyin.',
+  requestUnsupported: 'Bu cihaz konumunu bildiremiyor.',
   cardSharingOff: 'Konum paylaşımı kapalı',
   cardPermissionOff: 'Bu cihazda konuma izin verilmiyor',
+  cardForegroundOnly: 'Konum yalnızca bu cihazda KidGate açıkken güncellenir',
+  cardIpOnly:
+    'Bu cihazın konumu bulunamıyor: cihazda Wi-Fi’yi açın (bağlanması gerekmez)',
   cardNotUpdating: 'Konum güncellenmeyi durdurdu',
   namesNeedPremium: 'Yer adları ücretli bir plan gerektirir',
   namesNeedPremiumTrialEnded:

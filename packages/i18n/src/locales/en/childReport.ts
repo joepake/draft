@@ -75,7 +75,6 @@ export const childReport = {
   bandTooThin: 'Too little of this day was measured to draw it.',
 
   sectionDevices: 'Which device',
-  deviceTotalsOnly: 'Totals only',
   openDeviceReport: 'Open the report for {{name}}',
 
   sectionApps: 'Most used',

@@ -6,7 +6,7 @@ export const pairing = {
     'اربط جهاز الطفل هذا على KidGate: على جهاز الوالد افتح KidGate ← العائلة ← مسح رمز، ثم امسح رمز QR أو أدخل الرمز {{code}}. تنتهي صلاحية الرمز خلال 5 دقائق.',
   connectChildPhone: 'ربط جهاز طفل',
   parentInstructions:
-    'على جهاز الطفل، افتح KidGate واختر "هذا جهاز طفل". ثم أدخل الرمز الظاهر على تلك الشاشة.',
+    'افتح KidGate على جهاز الطفل. على الهاتف أو الجهاز اللوحي، اختر «هذا جهاز طفل». ثم أدخل الرمز المكوّن من 6 أحرف الذي يظهر عليه.',
   parentScanInstructions: 'وجّه الكاميرا نحو رمز QR الموجود على جهاز الطفل.',
   childWaitingTitle: 'بانتظار أحد الوالدين',
   childWaitingSubtitle:
@@ -14,13 +14,15 @@ export const pairing = {
   childCodeLabel: 'أو شارك هذا الرمز',
   childScanHint:
     'الوالد: افتح KidGate ← العائلة ← {{scan}} ← امسح رمز QR أو أدخل الرمز.',
+  extensionCloseHint:
+    'يمكن إغلاق هذه النافذة — يبقى الرمز صالحًا. يكفي فتح KidGate مرة أخرى لتأكيد الوالد.',
   childConnecting: 'تم الاتصال. جارٍ إعداد هذا الجهاز…',
   childPairedTitle: 'أنت متصل الآن',
   childPairedSubtitle: 'جارٍ إعداد هذا الجهاز…',
   connectChild: 'ربط جهاز الطفل',
   waitingChildConfirm: 'تم إرسال الطلب. بانتظار التأكيد على جهاز الطفل.',
   waitingChildConfirmHint:
-    'على جهاز الطفل، اضغط على "نعم، اتصال" لإكمال الربط. يمكنك إغلاق هذه الشاشة — يستمر الاقتران في الخلفية.',
+    'إذا طلب جهاز الطفل التأكيد، فاختر "نعم، اتصال" لإكمال الربط. يتصل التلفزيون تلقائيًا. يمكنك إغلاق هذه الشاشة — يستمر الاقتران في الخلفية.',
   childConfirmedTitle: 'تم ربط الجهاز',
   childConfirmedBody: 'أكد جهاز الطفل الاقتران. اختر الآن من يستخدم هذا الجهاز.',
   childRejectedPairing:
@@ -43,10 +45,16 @@ export const pairing = {
   manualCodeLabel: 'الرمز من جهاز الطفل',
   openingScanner: 'جارٍ فتح الكاميرا…',
   cameraPermissionRequired: 'يلزم الوصول إلى الكاميرا لمسح رمز QR.',
-  unableToOpenScanner: 'تعذر فتح ماسح الكاميرا.',
+  unableToOpenScanner: 'تعذر فتح ماسح الكاميرا. أدخل الرمز يدويًا بدلًا من ذلك.',
   newCode: 'رمز جديد',
   done: 'تم',
   unableToCreateCode: 'تعذر إنشاء رمز. يرجى المحاولة مرة أخرى.',
+  extensionUnsupportedSystem:
+    'نظام التشغيل هذا غير مدعوم. يعمل KidGate على Chromebook أو Mac أو كمبيوتر Windows.',
+  deviceLimitReachedCeiling:
+    'وصلت هذه العائلة إلى عدد الأجهزة ({{limit}}) الذي يغطيه KidGate. أزل جهازًا لم تعد تستخدمه، ثم حاول مرة أخرى.',
+  tooManyAttemptsWait:
+    'عدد كبير جدًا من المحاولات. يرجى المحاولة بعد {{minutes}} دقيقة.',
   inviteParentTitle: 'إضافة جهاز والد آخر',
   inviteParentInstructions:
     'على الجهاز الآخر، افتح KidGate ← العائلة ← مسح رمز، ثم امسح رمز QR هذا أو أدخل الرمز خلال 15 دقيقة. وافق على الطلب هنا لربط ذلك الوالد.',
@@ -63,7 +71,7 @@ export const pairing = {
   parentJoinDecline: 'رفض',
   parentJoinRejected: 'رفض مالك العائلة طلبك.',
   parentJoinExpired: 'انتهت صلاحية طلب الموافقة. يرجى طلب دعوة جديدة.',
-  unableToResolveParentJoin: 'تعذر معالجة هذا الطلب.',
+  unableToResolveParentJoin: 'تعذر الرد على طلب الانضمام هذا. يرجى المحاولة مرة أخرى.',
   joinedFamily: 'انضممت إلى العائلة. تظهر أجهزة أطفالها الآن هنا.',
   joinedFamilyTitle: 'تم الانضمام إلى العائلة',
   joinedFamilyMessage:

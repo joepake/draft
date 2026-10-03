@@ -34,6 +34,8 @@ export const protection = {
   lockNotReadyBodyIos:
     'KidGate tidak dapat mengunci iPhone ini sampai akses Waktu Layar disetujui di perangkat anak. Buka KidGate di perangkat tersebut dan selesaikan langkah berikut:',
   locationPermission: 'Izin lokasi',
+  locationForegroundOnly:
+    'Lokasi hanya diperbarui saat KidGate terbuka di perangkat anak.',
   cameraPermission: 'Izin kamera',
   cameraConsentPending:
     'Kamera belum diizinkan di perangkat ini, jadi SOS atau Check-In dari sana tiba tanpa foto.',
@@ -60,17 +62,9 @@ export const protection = {
   healthBadgeProtected: 'Hijau — terlindungi',
   healthBadgeWarning: 'Kuning — perlu penyiapan',
   healthBadgeInactive: 'Merah — perangkat anak diam lebih dari 24 jam',
-  iosFeatureSupportEvaluating: 'Dukungan fitur ini di iOS sedang dievaluasi.',
   iosUpgradeRequiredNote:
     'Ini butuh iOS 16 atau lebih baru. Perbarui perangkat anak di Pengaturan › Umum › Pembaruan Perangkat Lunak. Jika tidak ada pembaruan yang ditawarkan, iPad atau iPhone ini terlalu lama untuk didukung Apple.',
   iosUpgradeActionLabel: 'Perlu iOS 16',
-  lockUnlockNote:
-    'Mengunci perangkat melalui Waktu Layar setelah anak memberikan izin akses.',
-  scheduleNote: 'Hingga 3 rentang Jam Diblokir memblokir aplikasi melalui Waktu Layar.',
-  individualAppBlockingNote:
-    'Anak memilih aplikasi setelah memasukkan PIN Orang Tua 6 digit.',
-  tamperAlertsNote:
-    'Melaporkan perubahan izin dan saat aplikasi di perangkat anak sudah lama tidak diperbarui.',
   appReviewRemindersNote:
     'iOS tidak menyediakan info pemasangan aplikasi; tinjau aplikasi secara berkala langsung di perangkat anak.',
 } as const;

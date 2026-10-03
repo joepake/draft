@@ -15,9 +15,14 @@ export const blockedApps = {
   installApprovalInfoLine1:
     'يحظر جهاز الطفل أي تطبيق يُثبَّت بعد تفعيل هذا الخيار، دون انتظارك.',
   installApprovalInfoLine2:
-    'يصلك إشعار، ويظهر التطبيق أدناه وفي شاشة «التطبيقات» حتى تسمح به.',
+    'يصلك إشعار، ويظهر التطبيق أدناه ضمن «التطبيقات المحظورة» حتى تسمح به.',
   installApprovalInfoLine3:
     'السماح بتطبيق يتيح له الفتح فورًا. أما التطبيق الذي لا تسمح به فيبقى محظورًا ببساطة.',
+  installApprovalInfoLine1Ios:
+    'عند تفعيل هذا الخيار، يُخفى App Store على جهاز الطفل، فلا يمكن تثبيت أي تطبيق جديد.',
+  installApprovalInfoLine2Ios: 'تستمر التطبيقات الموجودة على الجهاز في العمل.',
+  installApprovalInfoLine3Ios:
+    'للسماح بتطبيق واحد، أوقف هذا الخيار، وثبّت التطبيق، ثم فعّله مرة أخرى.',
   pendingSectionTitle: 'محظورة تلقائيًا، بانتظارك',
   pendingSectionSubtitle:
     'تم تثبيتها بعد تفعيل الموافقة. لم يُختر شيء هنا على جهاز الطفل.',
@@ -29,7 +34,7 @@ export const blockedApps = {
   toastAllowFailed: 'تعذر السماح بهذا التطبيق. يرجى المحاولة مرة أخرى.',
   toastInstallApprovalSaveFailed: 'تعذر الحفظ. يرجى المحاولة مرة أخرى.',
   toastChooseAppsFirst:
-    'يرجى أن تطلب من طفلك أولاً فتح إعدادات KidGate واختيار التطبيقات التي سيتم حظرها.',
+    'اختر التطبيقات أولًا: افتح إعدادات KidGate على جهاز الطفل وأدخل رمز PIN الوالدين.',
   toastSaveFailed: 'تعذر الحفظ. يرجى المحاولة مرة أخرى.',
   statusBlockingOn: 'الحظر مفعل',
   statusBlockingOff: 'الحظر غير مفعل',
@@ -44,7 +49,9 @@ export const blockedApps = {
   toggleAccessibilityLabel: 'تفعيل حظر التطبيقات',
   emptyTitle: 'لا توجد تطبيقات محظورة حتى الآن',
   emptySubtitle:
-    'على جهاز الطفل، افتح إعدادات KidGate ← اختر التطبيقات التي سيتم حظرها، ثم أدخل رمز PIN الخاص بالوالدين واحفظ الاختيار.',
+    'على جهاز الطفل، افتح إعدادات KidGate، وأدخل رمز PIN الوالدين، ثم افتح حظر التطبيقات ← التطبيقات المحظورة واحفظ الاختيار.',
+  emptySubtitleTv:
+    'على التلفزيون، افتح KidGate، واختر «{{button}}»، وأدخل رمز PIN الوالدين، ثم اختر التطبيقات واحفظ.',
   sectionTitle: 'قائمة الحظر',
   privacyTitle: 'تأتي قائمة التطبيقات من جهاز الطفل',
   privacySubtitle:
@@ -60,16 +67,19 @@ export const blockedApps = {
   blockedAppCount: '{{count}} تطبيقات',
   blockedAppCount_one: '{{count}} تطبيق',
   blockedAppCount_two: 'تطبيقان',
+  blockedAppCount_few: '{{count}} تطبيقات',
   blockedAppCount_many: '{{count}} تطبيقًا',
   blockedAppCount_other: '{{count}} تطبيق',
   blockedCategoryCount: '{{count}} فئات',
   blockedCategoryCount_one: '{{count}} فئة',
   blockedCategoryCount_two: 'فئتان',
+  blockedCategoryCount_few: '{{count}} فئات',
   blockedCategoryCount_many: '{{count}} فئة',
   blockedCategoryCount_other: '{{count}} فئة',
   blockedItemCount: '{{count}} عناصر محظورة',
   blockedItemCount_one: '{{count}} عنصر محظور',
   blockedItemCount_two: 'عنصران محظوران',
+  blockedItemCount_few: '{{count}} عناصر محظورة',
   blockedItemCount_many: '{{count}} عنصرًا محظورًا',
   blockedItemCount_other: '{{count}} عنصر محظور',
   blockedListReady: 'قائمة الحظر جاهزة',
@@ -82,10 +92,15 @@ export const blockedApps = {
   savedItemsForBlocking: 'تم حفظ {{count}} عناصر للحظر.',
   savedItemsForBlocking_one: 'تم حفظ عنصر واحد للحظر.',
   savedItemsForBlocking_two: 'تم حفظ عنصرين للحظر.',
+  savedItemsForBlocking_few: 'تم حفظ {{count}} عناصر للحظر.',
   savedItemsForBlocking_many: 'تم حفظ {{count}} عنصرًا للحظر.',
   savedItemsForBlocking_other: 'تم حفظ {{count}} عنصر للحظر.',
   noAppsSelected: 'لم يتم اختيار أي تطبيق.',
   unableToOpenAppPicker: 'تعذر فتح قائمة اختيار التطبيقات. يرجى المحاولة مرة أخرى.',
   wizardStepPin: 'أدخل رمز PIN الخاص بالوالدين عندما تطلبه الإعدادات.',
-  wizardStepChoose: 'افتح "اختيار التطبيقات المراد حظرها"، وحدّد التطبيقات ثم احفظ.',
+  wizardStepChoose:
+    'افتح «التطبيقات المحظورة» ضمن «حظر التطبيقات»، وحدّد التطبيقات ثم احفظ.',
+  pickerSubtitle: 'اختر التطبيقات والفئات التي تريد حظرها على هذا الجهاز.',
+  pickerSubtitleAndroid: 'لا يمكن فتح التطبيقات المحددة أثناء تفعيل حظر التطبيقات.',
+  pickerEmpty: 'لم يتم العثور على تطبيقات على هذا الجهاز.',
 } as const;

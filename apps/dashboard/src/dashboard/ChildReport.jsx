@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import Icon from '@kidgate/web-ui/Icon';
 import { useT } from '@kidgate/web-ui/useT';
+import { getLocaleTag } from '@kidgate/i18n/web';
 import { getSeriesSwatch } from '@kidgate/tokens/accents';
 import {
   THIN_COVERAGE,
@@ -22,6 +23,7 @@ import {
 } from './charts.jsx';
 import { useAppCategories } from './useAppCategories.js';
 import { buildChildShareModel, shareChildReportImage } from './childShareCard.js';
+import { formatPercent } from './locale.js';
 import { CHILD_TOP_APPS_LIMIT, useChildUsage } from './useChildUsage.js';
 
 /**
@@ -55,7 +57,7 @@ const NO_FIGURE = '—';
 
 /** A day key rendered the reader's way, not ISO. */
 function shortDay(dateKey, options) {
-  return new Date(`${dateKey}T00:00:00`).toLocaleDateString(undefined, options);
+  return new Date(`${dateKey}T00:00:00`).toLocaleDateString(getLocaleTag(), options);
 }
 
 /**
@@ -308,7 +310,7 @@ export default function ChildReport({
             ? activeShares.map(row => ({
                 name: row.name ?? '',
                 value: formatMinutes(row.minutes),
-                percent: Math.round(row.share * 100),
+                percent: formatPercent(row.share),
                 color: deviceColor(row.deviceId),
               }))
             : [],

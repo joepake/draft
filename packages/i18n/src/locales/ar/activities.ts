@@ -45,11 +45,11 @@ export const activities = {
   activityTypeScreenTime: 'وقت استخدام الشاشة',
   activityTypeCheckIn: 'الاطمئنان',
   activityTypeLocationRequest: 'الموقع',
-  activityTypeTimeRequest: 'طلب وقت',
-  activityTypeRewardTask: 'مهمة مكافأة',
+  activityTypeTimeRequest: 'طلبات الوقت',
+  activityTypeRewardTask: 'مهام المكافآت',
   activityTypeSearchAlert: 'تنبيه بحث',
   activityTypeWebFilter: 'فلتر الويب',
-  activityTypeEmergency: 'طوارئ',
+  activityTypeEmergency: 'SOS',
   activityTypeUnknown: 'نشاط',
 
   sosEscapeTitle: 'فتح طارئ للقفل',
@@ -81,7 +81,7 @@ export const activities = {
   messageAlertBodyOutgoing: 'تم رصد كلمة مُعلَّمة في رسالة كتبها طفلك في {{appName}}.',
   messageAlertTitleSearch: 'عملية بحث مقلقة',
   messageAlertBodySearch: 'تم رصد كلمة مُعلَّمة في عملية بحث على {{appName}}.',
-  activityTypeMessageAlert: 'تنبيه رسالة',
+  activityTypeMessageAlert: 'تنبيهات الرسائل',
   messageCheckedTitle: 'تم الفحص، لا شيء مقلق',
   messageCheckedBody:
     'ظهرت كلمة مراقَبة في {{appName}} وتبيّن أنها غير مؤذية في سياقها.',
@@ -146,9 +146,9 @@ export const activities = {
   tamperBackgroundRefreshBody:
     'قد يتم تحديث KidGate بوتيرة أقل في الخلفية حتى تتم إعادة تفعيل تحديث التطبيقات في الخلفية.',
 
-  tamperDeviceClockTitle: 'تم تغيير التاريخ أو الوقت',
+  tamperDeviceClockTitle: 'تم تغيير التاريخ أو الوقت أو المنطقة الزمنية',
   tamperDeviceClockBody:
-    'لم يعد وقت هذا الجهاز مطابقًا للوقت الصحيح. سيستمر وقت استخدام الشاشة وساعات الحظر في الاعتماد على الوقت الصحيح.',
+    'تغيّر التاريخ أو الوقت أو المنطقة الزمنية على هذا الجهاز — وقد يحدث ذلك أيضًا عند السفر. لا يتأثر وقت استخدام الشاشة وساعات الحظر بتغيير الساعة، ويتبعان المنطقة الزمنية للجهاز.',
 
   /** @deprecated legacy description keys — kept for old activity docs */
   tamperOverlay: 'تم تعطيل إذن "الظهور فوق التطبيقات الأخرى".',
@@ -175,7 +175,9 @@ export const activities = {
 
   unknownDevice: 'جهاز غير معروف',
 
-  basicActivityNote: 'يتم تسجيل أحداث القفل وإلغاء القفل والجهاز ضمن قسم الأنشطة.',
   tamperUninstallProtectionTitle: 'تم إيقاف الحماية من إلغاء التثبيت',
   tamperUninstallProtectionBody: 'أصبح بالإمكان إزالة KidGate من هذا الهاتف.',
+  tamperReinstalledTitle: 'تمت إعادة تثبيت KidGate',
+  tamperReinstalledBody:
+    'تمت إزالة KidGate من هذا الجهاز ثم إعادة تثبيته. لم يُسجَّل أي شيء في الفترة بينهما.',
 } as const;

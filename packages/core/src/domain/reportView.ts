@@ -369,3 +369,24 @@ export function reportChildren(report: FamilyReport): ReportChildRow[] {
       isBusiest: familyMinutes > 0 && row.id === busiest?.id,
     }));
 }
+
+export interface ReportChildrenHeading {
+  titleKey: string;
+  noteKey: string;
+}
+
+/**
+ * The heading and note over `reportChildren`'s table, chosen by what its rows
+ * are.
+ *
+ * The table is one row per child once a family has two or more set up, and one
+ * per device otherwise — so a single fixed "Each child … per device" was wrong
+ * in both cases: person rows are not per device, and device rows are not
+ * children. `reportChildren` never mixes the two, so the first row decides.
+ * Keys, never text, like every other copy table in `domain/`.
+ */
+export function reportChildrenHeading(rows: ReportChildRow[]): ReportChildrenHeading {
+  return rows[0]?.childId
+    ? { titleKey: 'report.childrenTitle', noteKey: 'report.childrenNoteByChild' }
+    : { titleKey: 'report.devicesTitle', noteKey: 'report.childrenNote' };
+}

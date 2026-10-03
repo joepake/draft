@@ -2,16 +2,17 @@ export const screenTime = {
   turnOnScreenTime: 'スクリーンタイムをオンにする',
   finishScreenTimeSetup: 'スクリーンタイム設定を完了する',
   screenTimeNeededForControls:
-    'アプリブロック・休止時間・ロックには、このデバイスでスクリーンタイムが必要です。',
+    'ブロックされたアプリ、休止時間、1日の上限、ロックには、このデバイスでスクリーンタイムが必要です。',
   screenTimeNeededForLimits:
-    'スクリーンタイムがないと、ロック・休止時間・アプリ制限を適用できません。',
+    'スクリーンタイムがないと、ロック、休止時間、1日の上限、ブロックされたアプリを適用できません。',
   screenTimeStepOpenKidGate: 'このお子さまのデバイスでKidGateを開きます。',
   screenTimeStepAllowUsage:
     'ステータス画面で「アプリとWebサイトの使用を許可」を選択します。',
   screenTimeStepTapAllow: '表示されたら「許可」を選択します。',
   screenTimeStepReturnHereAuto:
     'ここに戻ってください — ステータスは自動で更新されます。',
-  screenTimeDeniedStepOpenSettings: 'お子さまのデバイスで設定 → KidGateを開きます。',
+  screenTimeDeniedStepOpenSettings: 'お子さまのデバイスで設定を開きます。',
+  screenTimeDeniedStepFindKidGate: '一覧からKidGateを探します。',
   screenTimeDeniedStepTurnOnRestrictions: 'スクリーンタイムをオンにします。',
   screenTimeDeniedStepOpenKidGateAgain:
     'お子さまのデバイスでKidGateをもう一度開きます。',
@@ -29,6 +30,12 @@ export const screenTime = {
     '{{appName}}は設定でスクリーンタイムをオンにする必要があります。',
   screenTimeBannerBodyRequest:
     'これにより、保護者がこのデバイスでアプリのロックや休止時間の設定を行えます。',
+  screenTimeAuthPasscode:
+    'KidGateがスクリーンタイムを使うには、このデバイスにパスコードが必要です。設定でパスコードを設定してから、もう一度お試しください。',
+  screenTimeAuthConflict:
+    'このデバイスのスクリーンタイムは、すでに別のアプリが管理しています。そのアプリを削除してから、もう一度お試しください。',
+  screenTimeAuthRestricted:
+    'このデバイスの制限により、KidGateはスクリーンタイムを使用できません。このデバイスを管理している人に制限の解除を依頼してください。',
   usageAccessBannerTitle: '使用状況へのアクセスをオンにする',
   usageAccessBannerBody:
     'KidGateが利用時間を記録し制限を適用するには、使用状況へのアクセスが必要です。',
@@ -39,6 +46,5 @@ export const screenTime = {
   limitReachedStatus: '{{used}} / {{limit}} · 上限に達しました',
   minutesUsedStatus: '{{used}} / {{limit}} 使用',
   usageUpdatesHint: 'スクリーンタイムの監視中は、数分ごとに利用状況が更新されます。',
-  dailyLimitNote: '1日の利用時間に上限を設けます。',
   dailyLimitMinutes: '{{limitMinutes}}分',
 } as const;

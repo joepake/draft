@@ -1,5 +1,10 @@
 export const timeRequest = {
   alertMorePending: 'هناك {{count}} طلبات أخرى بانتظارك في قسم العائلة.',
+  alertMorePending_one: 'هناك طلب آخر بانتظارك في قسم العائلة.',
+  alertMorePending_two: 'هناك طلبان آخران بانتظارك في قسم العائلة.',
+  alertMorePending_few: 'هناك {{count}} طلبات أخرى بانتظارك في قسم العائلة.',
+  alertMorePending_many: 'هناك {{count}} طلبًا آخر بانتظارك في قسم العائلة.',
+  alertMorePending_other: 'هناك {{count}} طلب آخر بانتظارك في قسم العائلة.',
   pauseConfirmTitle: 'قفل {{deviceName}}؟',
   pauseConfirmBody:
     'سيؤدي هذا إلى قفل الجهاز الآن بدلًا من منح وقت إضافي. لن يمكن استخدام {{deviceName}} حتى تفتح قفله.',
@@ -20,10 +25,12 @@ export const timeRequest = {
   statusCooldown: 'يمكنك إرسال طلب جديد خلال {{time}}.',
   statusDailyLimitExceeded:
     'لقد استخدمت كل وقت الشاشة المخصص لليوم. ستُفتح التطبيقات مرة أخرى غدًا — أو قبل ذلك إذا أضاف والداك مزيدًا من الوقت.',
-  errorDeviceNotRegistered: 'هذا الجهاز غير مسجّل.',
+  errorDeviceNotRegistered:
+    'هذا الجهاز ليس جاهزًا لإرسال الطلبات بعد. يمكنك المحاولة مرة أخرى بعد قليل، أو الطلب من والديك إعادة ربطه.',
   errorMinutesRange: 'أدخل رقمًا بين {{min}} و{{max}} دقيقة.',
   toastRequestSent: 'تم إرسال الطلب. سيراجعه والداك قريبًا.',
-  toastDeviceNotRegistered: 'هذا الجهاز غير مسجل بعد.',
+  toastDeviceNotRegistered:
+    'هذا الجهاز ليس جاهزًا لإرسال الطلبات بعد. يمكنك المحاولة مرة أخرى بعد قليل، أو الطلب من والديك إعادة ربطه.',
   toastSendFailed: 'تعذر إرسال طلبك. يرجى المحاولة مرة أخرى.',
   askForMoreTime: 'طلب وقت إضافي',
   askForMoreTimeSubtitle: 'إذا وافق والداك، ستحصل على مزيد من وقت الشاشة اليوم.',
@@ -43,7 +50,7 @@ export const timeRequest = {
   unableToDeclineRequest: 'تعذر رفض الطلب. يرجى المحاولة مرة أخرى.',
   unableToApproveRequest: 'تعذرت الموافقة على الطلب. يرجى المحاولة مرة أخرى.',
   pendingRequestExists: 'لقد أرسلت طلبًا بالفعل. يرجى انتظار رد والديك.',
-  waitBeforeAnotherRequest: 'يرجى الانتظار بضع دقائق قبل إرسال طلب آخر.',
+  waitBeforeAnotherRequest: 'يرجى الانتظار قليلًا قبل إرسال طلب آخر.',
   timeRequestSent: 'تم إرسال طلب الوقت',
   timeRequestSentDescription: 'طلب {{deviceName}} {{minutes}} دقيقة إضافية.',
   timeRequestSentDescription_few: 'طلب {{deviceName}} {{minutes}} دقائق إضافية.',
@@ -66,5 +73,4 @@ export const timeRequest = {
   requestPendingButton: 'الطلب قيد الانتظار',
   requestPendingChip: 'الطلب قيد الانتظار',
   waitCooldown: 'انتظر {{cooldown}}',
-  timeRequestNote: 'إذا وافق والداك، ستحصل على مزيد من وقت الشاشة اليوم.',
 } as const;

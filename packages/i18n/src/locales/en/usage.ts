@@ -42,9 +42,12 @@ export const usage = {
   deviceLockedChip: 'Device locked',
   blockedHoursChip: 'Blocked Hours',
   overLimitChip: 'Over limit',
-  usageReportsNote: 'Shows screen time, locks, and recent activity for this device.',
+  // 5 and 15 are `MIN_UPLOAD_DELTA_MINUTES` and `LAPSED_UPLOAD_DELTA_MINUTES`
+  // (`@kidgate/core/domain/usageReportGate`); change the sentence with them.
   syncNote:
-    'Screen time can take a few minutes to reach this screen — longer if the device has no internet connection or was closed unexpectedly.',
+    'Screen time here can be up to 5 minutes behind the device, or 15 on the free plan — longer if the device has no internet connection or was closed unexpectedly.',
+  syncNoteIos:
+    'On iPhone, screen time arrives only after KidGate has run on the child device, so it can be hours behind if the app has not been opened.',
   syncNoteTv:
     'This television only checks in periodically, so screen time can take up to an hour to reach this screen — longer with no internet connection.',
   sectionLast30Days: 'Last 30 days',

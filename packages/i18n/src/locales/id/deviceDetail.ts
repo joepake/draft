@@ -14,7 +14,7 @@ export const deviceDetail = {
   dailyLimit: 'Batas harian',
   setDailyScreenTimeCap: 'Tetapkan batas waktu layar harian',
   blockedHours: 'Jam Diblokir',
-  manageUpToThreeTimeRanges: 'Kelola hingga 3 rentang waktu',
+  manageTimeRanges: 'Kelola hingga {{max}} rentang waktu',
   blockedApps: 'Aplikasi yang Diblokir',
   viewAndManageBlockedApps: 'Lihat dan kelola aplikasi yang diblokir',
   appBlockingBestEffort:
@@ -116,7 +116,9 @@ export const deviceDetail = {
     '{{actionTitle}} akan segera hadir. Lokasi, Filter Web, dan kontrol di atas sudah tersedia.',
   chooseAppsOnChildIphone: 'Pilih aplikasi di perangkat anak',
   appPickerMustOpenOnChildIphone:
-    'Buka Pengaturan KidGate di perangkat anak, masukkan PIN Orang Tua, lalu pilih aplikasi yang ingin diblokir.',
+    'Buka Pengaturan KidGate di perangkat anak, masukkan PIN Orang Tua, lalu pilih aplikasi di Pemblokiran Aplikasi → Aplikasi yang Diblokir.',
+  appPickerMustOpenOnChildTv:
+    'Buka KidGate di TV, pilih “{{button}}”, masukkan PIN Orang Tua, lalu pilih aplikasi yang akan diblokir.',
   rewardTasks: 'Tugas hadiah',
   rewardTasksDescription: 'Beri menit ekstra untuk tugas yang selesai',
   rewardTasksUnit: 'tugas aktif',
@@ -131,7 +133,7 @@ export const deviceDetail = {
   appLimitsReached: '{{count}} aplikasi mencapai batasnya',
   webHistory: 'Riwayat web',
   videoHistory: 'Video yang ditonton',
-  videoHistoryDescription: 'Video di YouTube dan web',
+  videoHistoryDescription: 'Video yang ditonton di YouTube',
   videoHistoryOn: 'Merekam',
   webHistoryDescription: 'Situs yang dijangkau dan diblokir',
   webHistorySitesUnit: 'situs',
@@ -139,7 +141,7 @@ export const deviceDetail = {
     'Aturan, hadiah, check-in, dan peringatan perangkat ini dikelola di profil {{childName}}',
   pauseBrowsing: 'Jeda penjelajahan',
   pauseBrowsingDescription:
-    'Blokir web sebentar. Telepon dan aplikasi offline tetap berjalan.',
+    'Hentikan penjelajahan web sebentar. Telepon dan aplikasi offline tetap berjalan.',
   pauseBrowsingOff: 'Tidak dijeda',
   pauseBrowsingLeft: 'Dijeda · sisa {{minutes}} mnt',
   pauseBrowsingFor: 'Jeda {{minutes}} mnt',

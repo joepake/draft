@@ -32,6 +32,8 @@ export const protection = {
   lockNotReadyBodyIos:
     '자녀 기기에서 스크린 타임 접근이 허용될 때까지 KidGate는 이 iPhone을 잠글 수 없습니다. 해당 기기에서 KidGate를 열고 다음을 완료해 주세요.',
   locationPermission: '위치 권한',
+  locationForegroundOnly:
+    '자녀 기기에서 KidGate가 열려 있을 때만 위치가 업데이트됩니다.',
   cameraPermission: '카메라 권한',
   cameraConsentPending:
     '이 기기에서 카메라가 허용되지 않아, 여기서 보낸 SOS나 체크인은 사진 없이 도착합니다.',
@@ -56,15 +58,9 @@ export const protection = {
   healthBadgeProtected: '초록 — 보호 중',
   healthBadgeWarning: '노랑 — 설정 필요',
   healthBadgeInactive: '빨강 — 자녀 기기 24시간 넘게 무응답',
-  iosFeatureSupportEvaluating: 'iOS에서 이 기능의 지원 여부를 검토하고 있습니다.',
   iosUpgradeRequiredNote:
     '이 기능에는 iOS 16 이상이 필요합니다. 자녀 기기를 설정 › 일반 › 소프트웨어 업데이트에서 업데이트하세요. 업데이트가 제공되지 않으면 이 iPad 또는 iPhone은 너무 오래되어 Apple이 지원하지 않습니다.',
   iosUpgradeActionLabel: 'iOS 16 필요',
-  lockUnlockNote: '자녀가 접근을 허용하면 스크린 타임을 통해 기기를 잠급니다.',
-  scheduleNote: '최대 3개의 차단 시간대가 스크린 타임을 통해 앱을 차단합니다.',
-  individualAppBlockingNote: '6자리 부모 PIN을 입력한 뒤 자녀가 앱을 선택합니다.',
-  tamperAlertsNote:
-    '권한 변경 사항과 자녀 기기의 앱이 한동안 업데이트되지 않은 경우를 알려 줍니다.',
   appReviewRemindersNote:
     'iOS는 설치 이벤트를 제공하지 않으므로 자녀 기기에서 주기적으로 앱을 확인해 주세요.',
 } as const;

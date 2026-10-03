@@ -32,8 +32,9 @@ export const permissions = {
   oemAutostartLabel: 'ऑटोस्टार्ट की अनुमति दें',
   oemAutostartHintXiaomi:
     'ऑटोस्टार्ट में, KidGate को चालू करें ताकि रीबूट के बाद सुरक्षा फिर से शुरू हो जाए।',
-  oemAutostartHintSamsung:
-    'बैटरी → बैकग्राउंड इस्तेमाल की सीमाएँ → कभी स्लीप न होने वाले ऐप्स में KidGate जोड़ें। अगर सूची में KidGate नहीं है, तो उसे पहले ही अनुमति मिल चुकी है और यह चरण पूरा है।',
+  oemAutostartHintSamsung: 'बैटरी में बैकग्राउंड इस्तेमाल की सीमाएँ चुनें।',
+  oemAutostartHintSamsungAdd:
+    'कभी स्लीप न होने वाले ऐप्स खोलें और KidGate जोड़ें। अगर सूची में KidGate नहीं है, तो उसे पहले ही अनुमति मिल चुकी है और यह चरण पूरा है।',
   oemAutostartHintOppo: 'स्टार्टअप ऐप्स / ऑटो-लॉन्च में, KidGate को अनुमति दें।',
   oemAutostartHintVivo: 'ऑटोस्टार्ट / बैकग्राउंड हाई पावर में, KidGate को अनुमति दें।',
   oemAutostartHintHuawei:
@@ -48,8 +49,10 @@ export const permissions = {
     'अगर इसके बजाय पूरी सूची खुले, तो इंस्टॉल किए गए / डाउनलोड किए गए ऐप्स में KidGate चुनें।',
   accessibilityStepTurnOn:
     'स्विच चालू करें, फिर Android की पुष्टि पर अनुमति दें चुनें।',
+  restrictedSettingsStep:
+    'अगर स्विच धुँधला दिख रहा है, तो सेटिंग्स › ऐप्स › KidGate खोलें, ⋮ मेन्यू दबाकर “प्रतिबंधित सेटिंग्स की अनुमति दें” चुनें, फिर यहाँ लौटकर दोबारा कोशिश करें।',
   accessibilityWarningNote:
-    'Android चेतावनी देता है कि KidGate आपकी गतिविधियाँ देख सकता है। इसी वजह से लॉक अन्य ऐप्स के ऊपर बना रहता है — KidGate पासवर्ड या निजी संदेश नहीं पढ़ता।',
+    'Android चेतावनी देता है कि KidGate आपकी गतिविधियाँ देख सकता है। इस अनुमति से KidGate देखता है कि कौन-सा ऐप खुला है, ताकि लॉक सबसे ऊपर बना रहे, और जब देखे गए वीडियो रिकॉर्ड किए जाते हैं तब YouTube वीडियो का शीर्षक और चैनल पढ़ता है। KidGate इसका इस्तेमाल पासवर्ड, संदेश या आपका टाइप किया हुआ पढ़ने के लिए नहीं करता।',
   uninstallProtectionWizardBody:
     'Parent PIN के बिना इस ऐप को अनइंस्टॉल होने से रोकता है। Android अपनी पुष्टि स्क्रीन दिखाएगा।',
   notificationsWizardBody:
@@ -58,6 +61,9 @@ export const permissions = {
   backgroundRefreshStepTurnOn: 'KidGate के लिए बैकग्राउंड ऐप रिफ़्रेश चालू करें।',
   backgroundRefreshStepGeneral:
     'अगर स्विच धूसर है, तो सेटिंग्स खोलें, फिर सामान्य, फिर बैकग्राउंड ऐप रिफ़्रेश चालू करें।',
+  locationAlwaysStep: 'स्थान खोलें और “हमेशा” चुनें।',
+  locationAlwaysStepAndroid:
+    'अनुमतियां → जगह की जानकारी खोलें और “हमेशा के लिए अनुमति दें” चुनें।',
   batteryStepAllow: 'Android के प्रॉम्प्ट पर अनुमति दें चुनें।',
   batteryStepAppInfo:
     'अगर कोई प्रॉम्प्ट न दिखे, तो ऐप जानकारी खोलें, फिर बैटरी, फिर बिना प्रतिबंध चुनें।',

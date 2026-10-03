@@ -1,20 +1,10 @@
 export const leaderboard = {
   title: 'スターボード',
   thisWeek: '今週',
-  resetsNote: '毎週月曜日にリセットされます。',
+  resetsNoteAt: '毎週{{weekday}} {{time}}にリセットされます。',
   rowA11y: '{{rank}}位 {{name}}、星{{count}}個',
   settingsTitle: 'スターボード',
   settingsBody: '今週それぞれが集めた星の数を、お子さま同士が見られるようにします。',
-  screenTimeTitle: '家族のスクリーンタイム',
-  screenTimeSub: 'スクリーンタイムが少ない順 · 今週',
-  screenTimeRowA11y: '{{rank}}. {{name}}、{{duration}}',
-  screenTimeParentBadge: '保護者',
-  screenTimeParentFallbackName: '保護者',
-  screenTimeSettingsTitle: '家族のスクリーンタイム',
-  screenTimeSettingsBody:
-    '今週、お子さまそれぞれがどれだけ使ったかをお子さまに見せます。初期設定ではオフです。',
-  screenTimeNote:
-    'その人が使うすべてのデバイスを合計します。毎週月曜日にリセットされます。',
   childrenTitle: 'お子さま',
   manageAccessibility: 'お子さまとデバイスを管理',
   addChild: 'お子さまを追加',

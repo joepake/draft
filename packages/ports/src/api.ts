@@ -54,6 +54,13 @@ export interface ApiFailure {
    * branch on `detail`, which is a sentence.
    */
   serverCode?: string;
+  /**
+   * How long a 429 asked the caller to wait, in ms, when it said. Read off the
+   * `Retry-After` header, or a `retryAfterMs` in the body for endpoints that
+   * state it twice because a cross-origin caller cannot read that header.
+   * Absent is "no number given", never "retry at once".
+   */
+  retryAfterMs?: number;
 }
 
 export interface ApiCallOptions {

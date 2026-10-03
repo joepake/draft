@@ -109,6 +109,7 @@ function failure(
     detail?: string;
     status?: number;
     serverCode?: string;
+    retryAfterMs?: number;
   },
 ): ApiFailure {
   return {
@@ -117,7 +118,34 @@ function failure(
     ...(extra?.detail === undefined ? {} : { detail: extra.detail }),
     ...(extra?.status === undefined ? {} : { status: extra.status }),
     ...(extra?.serverCode === undefined ? {} : { serverCode: extra.serverCode }),
+    ...(extra?.retryAfterMs === undefined ? {} : { retryAfterMs: extra.retryAfterMs }),
   };
+}
+
+/**
+ * How long a 429 asked the caller to wait, in ms, or `undefined`.
+ *
+ * The body's `retryAfterMs` first, where an endpoint states one, then the
+ * `Retry-After` header in seconds. Every rate limiter in `functions/` sets the
+ * header; only some repeat it in the body, because the header is not
+ * CORS-safelisted and a cross-origin caller reads `null` for it. A native
+ * caller — the TV — reads the header either way. Without this the number was
+ * dropped here and every agent retried a rate limit on its own schedule.
+ */
+function retryAfterMsOf(
+  response: Response,
+  envelope: { retryAfterMs?: unknown },
+): number | undefined {
+  if (response.status !== 429) {
+    return undefined;
+  }
+  const stated = envelope.retryAfterMs;
+  if (typeof stated === 'number' && Number.isFinite(stated) && stated > 0) {
+    return stated;
+  }
+  const header = response.headers?.get('Retry-After');
+  const seconds = header ? Number(header) : Number.NaN;
+  return Number.isFinite(seconds) && seconds > 0 ? seconds * 1000 : undefined;
 }
 
 /**
@@ -250,11 +278,13 @@ export function createHttpApiAdapter(options: HttpApiAdapterOptions): ApiPort {
       code?: unknown;
       messageKey?: unknown;
       error?: unknown;
+      retryAfterMs?: unknown;
     };
 
     // Some endpoints answer 200 with `{ ok: false, error }` rather than a
     // status code, so a failure has to be read out of the body too.
     if (!response.ok || envelope.ok === false) {
+      const retryAfterMs = retryAfterMsOf(response, envelope);
       throw failure(
         codeFor(
           response.status,
@@ -271,6 +301,7 @@ export function createHttpApiAdapter(options: HttpApiAdapterOptions): ApiPort {
           // Verbatim, for the callers that must tell two `forbidden`s apart —
           // see `ApiFailure.serverCode`.
           ...(typeof envelope.code === 'string' ? { serverCode: envelope.code } : {}),
+          ...(retryAfterMs === undefined ? {} : { retryAfterMs }),
         },
       );
     }

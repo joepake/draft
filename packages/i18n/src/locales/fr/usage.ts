@@ -44,10 +44,10 @@ export const usage = {
   deviceLockedChip: 'Appareil verrouillé',
   blockedHoursChip: 'Heures bloquées',
   overLimitChip: 'Limite dépassée',
-  usageReportsNote:
-    'Affiche le temps d’écran, les verrouillages et l’activité récente de cet appareil.',
   syncNote:
-    'Le temps d’écran peut mettre quelques minutes à apparaître sur cet écran — plus longtemps si l’appareil n’a pas de connexion Internet ou s’est fermé de façon inattendue.',
+    'Le temps d’écran affiché ici peut avoir jusqu’à 5 minutes de retard sur l’appareil, ou 15 avec l’offre gratuite — plus si l’appareil n’a pas de connexion Internet ou s’est fermé de façon inattendue.',
+  syncNoteIos:
+    'Sur iPhone, le temps d’écran n’arrive qu’après l’exécution de KidGate sur l’appareil de l’enfant : il peut donc avoir des heures de retard si l’appli n’a pas été ouverte.',
   syncNoteTv:
     'Cette télévision ne se connecte que périodiquement, le temps d’écran peut donc mettre jusqu’à une heure à apparaître sur cet écran — plus longtemps sans connexion Internet.',
   sectionLast30Days: 'Les 30 derniers jours',

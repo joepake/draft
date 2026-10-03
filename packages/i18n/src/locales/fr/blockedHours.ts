@@ -12,11 +12,12 @@ export const blockedHours = {
   statusDisabled: 'Désactivé',
   statusActiveNow: 'Actif maintenant',
   heroSubtitle:
-    'Configurez jusqu’à {{max}} plages horaires pendant lesquelles cet appareil ne pourra pas être utilisé.',
+    'Configurez jusqu’à {{max}} plages horaires pendant lesquelles l’utilisation de l’appareil est bloquée.',
   statTimeRangesLabel: 'Plages horaires',
   statMaxAllowedLabel: 'Maximum autorisé',
   toggleTitle: 'Activer les Heures bloquées',
-  toggleSubtitleOn: 'L’appareil sera bloqué pendant les horaires ci-dessous.',
+  toggleSubtitleOn:
+    'L’utilisation de l’appareil est bloquée pendant les horaires ci-dessous.',
   toggleSubtitleOff:
     'Activez cette option pour bloquer l’utilisation de l’appareil selon un horaire.',
   toggleAccessibilityLabel: 'Activer les Heures bloquées',
@@ -45,13 +46,14 @@ export const blockedHours = {
   presetStudy: 'Études',
   disabledTitle: 'Les Heures bloquées sont désactivées',
   disabledSubtitle:
-    'Activez le commutateur ci-dessus pour définir les périodes pendant lesquelles cet appareil ne pourra pas être utilisé.',
+    'Activez le commutateur ci-dessus pour choisir quand l’utilisation de l’appareil est bloquée.',
   infoTitle: 'Fonctionnement',
   infoLine1:
     'Pendant les Heures bloquées, les applications sont bloquées sur l’appareil de l’enfant.',
   infoLine2:
     'Les plages horaires de nuit sont prises en charge, par exemple de 22:00 à 07:00.',
-  infoLine3: 'L’appareil doit prendre en charge Temps d’écran.',
+  infoLine3:
+    'Sur iPhone et iPad, Temps d’écran doit être autorisé sur l’appareil de l’enfant.',
   off: 'Désactivé',
   blockedHoursChip: 'Heures bloquées',
   blockedHoursOnChip: 'Heures bloquées configurées',
@@ -70,8 +72,10 @@ export const blockedHours = {
   dayShortSun: 'Dim',
   daysLabel: 'Jours',
   daysEveryDay: 'Tous les jours',
-  daysSchoolNights: 'Nuits d’école',
+  daysWeekdays: 'En semaine',
   daysWeekend: 'Week-end',
+  daysSchoolNights: 'Veilles d’école',
+  daysWeekendNights: 'Nuits du week-end',
   daysOvernightHint: 'Les plages de nuit comptent pour la nuit où elles commencent.',
   overlapWarning:
     'Cette période chevauche une autre plage bloquée : les deux restent actives.',

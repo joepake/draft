@@ -34,6 +34,7 @@ import {
   type ReportStat,
   type ReportTrend,
   reportChildren,
+  reportChildrenHeading,
 } from './reportView';
 import { isCurrentPeriod } from './familyReport';
 
@@ -305,6 +306,12 @@ export interface ReportPresentation {
    * renderer draws the section only when this has rows.
    */
   children: ReportChildLine[];
+  /**
+   * The table's title and note, worded for what its rows are: people once a
+   * family has two children set up, devices otherwise. One fixed "Each child …
+   * per device" was wrong in both cases (`reportChildrenHeading`).
+   */
+  childrenHeading: { title: string; note: string };
 }
 
 export interface ReportChildLine {
@@ -463,7 +470,16 @@ export function buildReportPresentation(
     })),
     findings: findingLines(report, deps),
     children: childLines(report, deps),
+    childrenHeading: childrenHeading(report, deps),
   };
+}
+
+function childrenHeading(
+  report: FamilyReport,
+  deps: ReportCopyDeps,
+): ReportPresentation['childrenHeading'] {
+  const { titleKey, noteKey } = reportChildrenHeading(reportChildren(report));
+  return { title: deps.t(titleKey), note: deps.t(noteKey) };
 }
 
 /**
@@ -510,7 +526,7 @@ export function reportSummaryLines(
   // One block per child, each on its own line pair — a share-sheet paragraph
   // that runs every kid's figures together is unreadable past two children.
   if (view.children.length > 0) {
-    lines.push('', `${deps.t('report.childrenTitle')}:`);
+    lines.push('', `${view.childrenHeading.title}:`);
     view.children.forEach(child => {
       lines.push(
         `• ${child.name}: ${child.screenTime} (${child.share}), ${child.change}`,

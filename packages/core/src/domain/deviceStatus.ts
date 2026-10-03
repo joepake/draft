@@ -19,6 +19,7 @@ import type { TranslationParams } from '@kidgate/i18n/types';
 import { supportsLock } from './controlSupport';
 import { resolveLockEnforcement } from './lockEnforcement';
 import { offlineThresholdForBeat } from './reportCadence';
+import { REPORT_REQUEST_UNANSWERED_MS, reportRequestedAtMs } from './reportRequest';
 
 type TranslateFn = (key: string, params?: TranslationParams) => string;
 
@@ -73,8 +74,27 @@ export function getEffectiveDeviceStatus(
     return 'offline';
   }
 
-  const age = nowMs - new Date(device.lastActiveAt).getTime();
-  if (age > thresholdMs) {
+  const lastActiveMs = new Date(device.lastActiveAt).getTime();
+  const age = nowMs - lastActiveMs;
+  /*
+   * A device this console asked to speak. Since 2026-09-27 an idle device
+   * beats on a two-hour floor and answers a request within seconds
+   * (`./reportCadence`), so the request the console sent on opening is the
+   * evidence that settles the question, in both directions: answered means a
+   * stamp newer than the request; unanswered past
+   * `REPORT_REQUEST_UNANSWERED_MS` — long enough for a phone in Doze — is
+   * offline whatever cadence the device published; and **unanswered but not
+   * yet overdue is the benefit of the doubt**, because the alternative is a
+   * red flash on every open, for every device, until the answer lands. A
+   * dead device therefore shows green for at most those five minutes, where
+   * it used to spend forty-five idle or ninety free.
+   */
+  const requestedAtMs = reportRequestedAtMs(device.reportRequestId);
+  const awaitingAnswer = requestedAtMs !== null && requestedAtMs > lastActiveMs;
+  if (awaitingAnswer && nowMs - requestedAtMs > REPORT_REQUEST_UNANSWERED_MS) {
+    return 'offline';
+  }
+  if (age > thresholdMs && !awaitingAnswer) {
     return 'offline';
   }
 

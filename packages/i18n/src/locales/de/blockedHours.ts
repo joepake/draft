@@ -12,11 +12,12 @@ export const blockedHours = {
   statusDisabled: 'Deaktiviert',
   statusActiveNow: 'Jetzt aktiv',
   heroSubtitle:
-    'Lege bis zu {{max}} Zeiträume fest, in denen dieses Gerät nicht verwendet werden kann.',
+    'Lege bis zu {{max}} Zeiträume fest, in denen die Gerätenutzung gesperrt ist.',
   statTimeRangesLabel: 'Zeiträume',
   statMaxAllowedLabel: 'Maximum',
   toggleTitle: 'Sperrzeiten aktivieren',
-  toggleSubtitleOn: 'Das Gerät wird während der unten angegebenen Zeiten gesperrt.',
+  toggleSubtitleOn:
+    'Die Gerätenutzung ist während der unten angegebenen Zeiten gesperrt.',
   toggleSubtitleOff:
     'Aktiviere diese Option, um die Gerätenutzung nach einem Zeitplan zu sperren.',
   toggleAccessibilityLabel: 'Sperrzeiten aktivieren',
@@ -45,13 +46,14 @@ export const blockedHours = {
   presetStudy: 'Lernen',
   disabledTitle: 'Sperrzeiten sind deaktiviert',
   disabledSubtitle:
-    'Aktiviere den Schalter oben, um festzulegen, wann dieses Gerät nicht verwendet werden darf.',
+    'Aktiviere den Schalter oben, um festzulegen, wann die Gerätenutzung gesperrt ist.',
   infoTitle: 'So funktioniert es',
   infoLine1:
     'Während der Sperrzeiten werden Apps auf dem Gerät deines Kindes blockiert.',
   infoLine2:
     'Zeiträume über Mitternacht werden unterstützt, z. B. von 22:00 bis 07:00 Uhr.',
-  infoLine3: 'Das Gerät muss Bildschirmzeit unterstützen.',
+  infoLine3:
+    'Auf iPhone und iPad muss Bildschirmzeit auf dem Gerät deines Kindes erlaubt sein.',
   off: 'Aus',
   blockedHoursChip: 'Sperrzeiten',
   blockedHoursOnChip: 'Sperrzeiten eingerichtet',
@@ -69,8 +71,10 @@ export const blockedHours = {
   dayShortSun: 'So',
   daysLabel: 'Tage',
   daysEveryDay: 'Täglich',
-  daysSchoolNights: 'Vor Schultagen',
+  daysWeekdays: 'Wochentags',
   daysWeekend: 'Wochenende',
+  daysSchoolNights: 'Vor Schultagen',
+  daysWeekendNights: 'Wochenendnächte',
   daysOvernightHint: 'Zeiträume über Nacht zählen zu der Nacht, in der sie beginnen.',
   overlapWarning:
     'Diese Zeit überschneidet sich mit einer anderen gesperrten Zeit – beide gelten weiterhin.',

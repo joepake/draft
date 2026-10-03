@@ -59,6 +59,4 @@ export const shared = {
   toastRemoveDeviceFailed: 'No se pudo eliminar el dispositivo. Inténtalo de nuevo.',
   unableToOpenMaps: 'No se pudo abrir Mapas. Inténtalo de nuevo.',
   unableToSignOut: 'No se pudo cerrar la sesión. Inténtalo de nuevo.',
-  pushNotificationNote:
-    'Padres e hijos reciben notificaciones push de los comandos y las solicitudes de tiempo.',
 } as const;

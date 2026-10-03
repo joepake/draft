@@ -47,11 +47,11 @@ export const activities = {
   activityTypeScreenTime: 'Tempo di utilizzo',
   activityTypeCheckIn: 'Check-in',
   activityTypeLocationRequest: 'Posizione',
-  activityTypeTimeRequest: 'Richiesta di tempo',
-  activityTypeRewardTask: 'Compito premio',
+  activityTypeTimeRequest: 'Richieste di tempo',
+  activityTypeRewardTask: 'Compiti premio',
   activityTypeSearchAlert: 'Avviso ricerca',
   activityTypeWebFilter: 'Filtro web',
-  activityTypeEmergency: 'Emergenza',
+  activityTypeEmergency: 'SOS',
   activityTypeUnknown: 'Attività',
 
   sosEscapeTitle: 'Sblocco di emergenza',
@@ -86,7 +86,7 @@ export const activities = {
   messageAlertTitleSearch: 'Ricerca preoccupante',
   messageAlertBodySearch:
     'È stata rilevata una parola segnalata in una ricerca su {{appName}}.',
-  activityTypeMessageAlert: 'Avviso messaggio',
+  activityTypeMessageAlert: 'Avvisi messaggi',
   messageCheckedTitle: 'Controllato, nulla di preoccupante',
   messageCheckedBody:
     'Una parola sorvegliata è comparsa in {{appName}} ed è risultata innocua nel contesto.',
@@ -156,9 +156,9 @@ export const activities = {
   tamperBackgroundRefreshBody:
     'KidGate potrebbe aggiornarsi meno frequentemente in background finché questa funzione non verrà riattivata.',
 
-  tamperDeviceClockTitle: 'La data o l’ora sono state modificate',
+  tamperDeviceClockTitle: 'Data, ora o fuso orario modificati',
   tamperDeviceClockBody:
-    'L’orologio di questo dispositivo non corrisponde più all’ora corretta. Il Tempo di utilizzo e gli Orari di blocco continueranno a utilizzare l’ora corretta.',
+    'La data, l’ora o il fuso orario di questo dispositivo sono cambiati — può succedere anche in viaggio. Il Tempo di utilizzo e gli Orari di blocco ignorano l’orologio modificato e seguono il fuso orario del dispositivo.',
 
   /** @deprecated legacy description keys — kept for old activity docs */
   tamperOverlay: 'È stata disattivata l’autorizzazione “Visualizza sopra altre app”.',
@@ -185,8 +185,9 @@ export const activities = {
 
   unknownDevice: 'Dispositivo sconosciuto',
 
-  basicActivityNote:
-    'Gli eventi di blocco, sblocco e del dispositivo vengono registrati in Attività.',
   tamperUninstallProtectionTitle: 'Protezione dalla disinstallazione disattivata',
   tamperUninstallProtectionBody: 'Ora KidGate può essere rimosso da questo telefono.',
+  tamperReinstalledTitle: 'KidGate è stato reinstallato',
+  tamperReinstalledBody:
+    'KidGate è stato rimosso da questo dispositivo e poi installato di nuovo. Nel frattempo non è stato registrato nulla.',
 } as const;

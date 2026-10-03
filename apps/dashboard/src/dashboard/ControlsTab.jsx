@@ -22,6 +22,7 @@ import { childMinutesUsedToday } from './childBudgetSpent.js';
 import Icon from '@kidgate/web-ui/Icon';
 import { WEB_FILTER_CATEGORY_GROUPS } from '@kidgate/core/domain/webFilterCategoryGroups';
 import { WEB_FILTER_CATEGORIES } from '@kidgate/schema/webActivity';
+import { CHILD_RULE_KEYS } from '@kidgate/schema/childRules';
 import { resolveTaskStars } from '@kidgate/core/domain/rewardTasks';
 import {
   supportsWebFiltering,
@@ -40,9 +41,11 @@ import {
 } from '@kidgate/core/domain/appInstallApproval';
 import { supportsLocation } from '@kidgate/core/domain/locationSupport';
 import { supportsSearchMonitoring } from '@kidgate/core/domain/alertSupport';
+import { searchMonitoringGranted } from '@kidgate/core/domain/messageMonitoringStatus';
 import { supportsSafeSearch } from '@kidgate/core/domain/safeSearchSupport';
 import { supportsRewardTasks } from '@kidgate/core/domain/rewardTaskSupport';
 import { formatMinutes } from './charts.jsx';
+import { formatHm } from './locale.js';
 import { useT } from '@kidgate/web-ui/useT';
 
 import Card from './Card.jsx';
@@ -120,6 +123,15 @@ const CONTROL_FIELDS = {
   installApproval: 'appInstallApprovalEnabled',
 };
 
+/**
+ * Whether a switch writes the CHILD's rule on an assigned device — the server
+ * fans it out to every sibling. Read off the schema's list (`docs/CHILD_HUB.md`,
+ * "The routing rule"), so the write and the label saying so cannot disagree.
+ */
+function isChildRuleSwitch(key) {
+  return CHILD_RULE_KEYS.includes(CONTROL_FIELDS[key]);
+}
+
 /** Where the slider sits for a family that has no daily limit set. */
 const DEFAULT_LIMIT_MINUTES = 180;
 
@@ -128,7 +140,6 @@ export default function ControlsTab({
   rewardTasks,
   siteRequests,
   leaderboard,
-  // screenTimeBoard, — dropped 2026-09-08 with the board
   readOnly,
   /** Premium. The filter's switch is free; its categories are not. */
   hasFullAccess = true,
@@ -297,13 +308,8 @@ export default function ControlsTab({
     // every sibling device, so a Mac and the Chrome extension on it cannot
     // diverge again. App blocking stays per-device — its list of packages
     // only exists on the one machine. See docs/FEASIBILITY.md (2026-08-26).
-    const childRuleSwitch =
-      key === 'webFilter' ||
-      key === 'schedule' ||
-      key === 'location' ||
-      key === 'safeSearch';
     const ok = await run(`ctrl-${key}`, () =>
-      childRuleSwitch && device.childId
+      isChildRuleSwitch(key) && device.childId
         ? actions.updateChildRules(device.childId, {
             [CONTROL_FIELDS[key]]: next,
           })
@@ -345,8 +351,11 @@ export default function ControlsTab({
    * allocation the server recomputes, and a parent watched their own number
    * jump to one they never picked. The phone answered this by moving
    * `daily-limit` into `PERSON_LEVEL_ACTION_IDS` and editing the budget on the
-   * child hub; this is the same answer for the surface that has no child hub
-   * yet. Reading stays — a parent still needs to see where the day stands.
+   * child hub. This surface's grid drops the same card since 2026-09-28
+   * (`omitPersonLevelActions`, now in core), so this panel is reached from the
+   * child hub's Daily limit card rather than from the device's own grid; the
+   * editor stays here because the hub draws none. Reading stays — a parent
+   * still needs to see where the day stands.
    */
   const childBudgetMinutes = device.child?.rules?.dailyLimitMinutes ?? null;
   /*
@@ -437,6 +446,19 @@ export default function ControlsTab({
    */
   const filterBlocker = canWebFilter ? null : webFilterBlockerKey(device);
 
+  /*
+   * The scope line the Blocked Hours and Web Filter cards already carry, on
+   * the rows that write the same child rules. Only those: app blocking, the
+   * install gate and search monitoring stay on this one machine.
+   */
+  const childRuleScope =
+    device.childId && device.child
+      ? activityT('webFilter.appliesToAll', {
+          name: device.child.name ?? '',
+          count: siblingDevices.length,
+        })
+      : null;
+
   const rows = [
     /*
      * Three of these four now answer from the device's own probe, as Web
@@ -454,7 +476,7 @@ export default function ControlsTab({
         ? t('dash.rowBlockedHoursDesc', {
             count: c.scheduleWindows.length,
             list: c.scheduleWindows
-              .map(w => w.label || `${w.start}–${w.end}`)
+              .map(w => w.label || `${formatHm(w.start)}–${formatHm(w.end)}`)
               .join(', '),
           })
         : t('dash.rowNotSupported'),
@@ -519,10 +541,16 @@ export default function ControlsTab({
       // Same wording as the phone's third switch, because it is the same
       // field — a parent reading both surfaces should meet one promise about
       // what leaves the device, not two.
-      desc: supportsSearchMonitoring(device)
-        ? activityT('messageMonitoring.parentSearchHint')
-        : t('dash.rowNotSupported'),
+      desc: !supportsSearchMonitoring(device)
+        ? t('dash.rowNotSupported')
+        : searchMonitoringGranted(device)
+          ? activityT('messageMonitoring.parentSearchHint')
+          : activityT('messageMonitoring.parentSearchHintNotGranted'),
       unsupported: !supportsSearchMonitoring(device),
+      // The phone's rule: on Android the search reader is the typing service,
+      // so the switch waits for that grant — unless it is already on, so a
+      // stale state can still be switched off.
+      held: !searchMonitoringGranted(device) && state.search !== true,
     },
     {
       key: 'safeSearch',
@@ -820,6 +848,11 @@ export default function ControlsTab({
                 <span className="ctrl-body">
                   <strong>{r.title}</strong>
                   <em>{r.desc}</em>
+                  {/* With its switch only: a row the device cannot hold
+                      has nothing here to apply anywhere. */}
+                  {childRuleScope && isChildRuleSwitch(r.key) && !r.unsupported && (
+                    <em>{childRuleScope}</em>
+                  )}
                 </span>
                 {/*
                  * The row stays and the switch goes. Hiding the row entirely
@@ -834,7 +867,7 @@ export default function ControlsTab({
                     // Its own write, not any write: a parent may flip Location
                     // while Blocked hours is still saving, and the two are
                     // independent fields on the same document.
-                    disabled={readOnly || busy === `ctrl-${r.key}`}
+                    disabled={readOnly || r.held || busy === `ctrl-${r.key}`}
                   />
                 )}
               </li>
@@ -856,6 +889,18 @@ export default function ControlsTab({
            */}
           {canWebFilter ? (
             <>
+              {/* An assigned device's categories are the CHILD's rule —
+                  `toggleCategory` writes `updateChildRules` — so every machine
+                  they hold changes with a chip. The phone's Web Filter screen
+                  heads itself with this same line, through the same key. */}
+              {device.childId && device.child && (
+                <p className="hint">
+                  {activityT('webFilter.appliesToAll', {
+                    name: device.child.name ?? '',
+                    count: siblingDevices.length,
+                  })}
+                </p>
+              )}
               {/* Free filters on `DEFAULT_WEB_FILTER_CATEGORIES` and cannot
                   narrow or widen it: `functions/lib/freeTier.js` drops
                   `webFilterCategories` from the write rather than refusing it,
@@ -901,12 +946,6 @@ export default function ControlsTab({
         </Card>
 
         <StarChartCard leaderboard={leaderboard} />
-        {/* The family screen-time board is dropped, here as on the phone —
-            decided 2026-09-08 (docs/FEASIBILITY.md, D4). The switch that fed it
-            is gone from Family detail, so this card could only draw a board
-            nobody can turn on. Commented, not deleted.
-        <FamilyScreenTimeCard board={screenTimeBoard} />
-        */}
 
         {/*
           A reward is minutes of screen time, granted on a device that can

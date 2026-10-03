@@ -5,6 +5,7 @@ import {
   reportSummaryLines,
 } from '@kidgate/core/domain/reportCopy';
 import { formatMinutes } from './charts.jsx';
+import { formatClock } from './locale.js';
 
 /**
  * The browser's binding to `@kidgate/core/domain/reportCopy`.
@@ -46,14 +47,7 @@ function appTranslate(key, params) {
 const deps = {
   t: appTranslate,
   formatDuration: formatMinutes,
-  formatTime: minuteOfDay =>
-    new Intl.DateTimeFormat(getLocaleTag(), {
-      hour: 'numeric',
-      minute: '2-digit',
-      timeZone: 'UTC',
-    }).format(
-      new Date(Date.UTC(2000, 0, 1, Math.floor(minuteOfDay / 60), minuteOfDay % 60)),
-    ),
+  formatTime: formatClock,
   formatDay: dayKey => formatDayKey(dayKey),
 };
 

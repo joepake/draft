@@ -8,6 +8,11 @@ export const errors = {
   invalidEmailOrPassword: 'Email atau kata sandi tidak valid.',
   tooManyRequests: 'Terlalu banyak percobaan. Silakan coba lagi nanti.',
   somethingWentWrong: 'Terjadi kesalahan. Silakan coba lagi.',
+  accountDisabled:
+    'Akun ini telah dinonaktifkan. Hubungi dukungan KidGate untuk memulihkannya.',
+  recentLoginRequired: 'Demi keamanan Anda, masuk lagi, lalu coba sekali lagi.',
+  accountExistsDifferentMethod:
+    'Email ini sudah memiliki akun dengan metode masuk yang berbeda. Masuk dengan metode itu, lalu tautkan metode ini di Pengaturan.',
   unableToCreateAccount: 'Tidak dapat membuat akun Anda. Silakan coba lagi.',
   unableToSignIn: 'Tidak dapat masuk. Silakan coba lagi.',
   unableToJoinFamilyAccount:
@@ -18,7 +23,8 @@ export const errors = {
     'Kode itu tidak cocok. Periksa kembali setiap karakternya — atau minta kode baru jika kodenya sudah agak lama.',
   unableToClaimChildPairing:
     'Tidak dapat menghubungkan perangkat anak. Silakan coba lagi.',
-  unableToPollChildPairing: 'Tidak dapat memeriksa status pemasangan.',
+  unableToPollChildPairing:
+    'Tidak dapat memeriksa status pemasangan. Silakan coba lagi.',
   unableToConfirmChildPairing:
     'Tidak dapat mengonfirmasi pemasangan ini. Silakan coba lagi.',
   unableToRejectChildPairing: 'Tidak dapat menolak pemasangan ini. Silakan coba lagi.',
@@ -40,8 +46,6 @@ export const errors = {
   noNetworkConnection:
     'Tidak ada koneksi internet. Periksa Wi-Fi atau data seluler, lalu coba lagi.',
   connectionFailedTitle: 'Koneksi gagal',
-  connectionFailedBody:
-    'KidGate tidak dapat terhubung. Periksa Wi-Fi atau data seluler, lalu pilih Hubungkan kembali.',
   reconnect: 'Hubungkan kembali',
   unableToUploadPhoto: 'Tidak dapat mengunggah foto. Silakan coba lagi.',
   premiumSubscriptionRequired:
@@ -53,6 +57,8 @@ export const errors = {
     'Anda bukan lagi anggota keluarga ini. Minta pemilik keluarga untuk mengundang Anda kembali.',
   familyNotCreated:
     'Silakan buat keluarga Anda terlebih dahulu, lalu undang orang tua lainnya.',
+  parentLimitReached:
+    'Keluarga ini sudah memiliki orang tua sebanyak yang diizinkan paketnya.',
   childDeviceNotAllowed:
     'Ini adalah perangkat anak sehingga tidak dapat mengelola pengaturan keluarga.',
   deviceCredentialMissing:
@@ -98,7 +104,13 @@ export const errors = {
   leaveFamilyBeforeJoining:
     'Silakan keluar dari keluarga Anda saat ini sebelum bergabung dengan keluarga lain.',
   locationDailyLimitFree:
-    'Kuota pengecekan lokasi paket gratis untuk hari ini sudah habis. Premium memantau lokasi anak Anda secara langsung.',
+    'Kuota pengecekan lokasi paket gratis untuk hari ini sudah habis. Coba lagi besok — Premium memantau lokasi anak Anda secara langsung.',
   deviceLimitReached:
-    'Anda telah mencapai jumlah perangkat yang didukung KidGate untuk satu keluarga.',
+    'Keluarga ini sudah mencapai jumlah perangkat yang didukung KidGate. Hapus perangkat yang tidak lagi dipakai, lalu coba lagi.',
+  rewardTaskLimitReached:
+    'Jumlah tugas aktif sudah mencapai batas yang diizinkan sekaligus. Hapus satu tugas atau tunggu sampai ada yang selesai, lalu coba lagi.',
+  deviceNotPaired:
+    'Perangkat ini tidak lagi terhubung dengan keluargamu. Minta orang tuamu memasangkannya lagi.',
+  bonusMinutesOutOfRange:
+    'Waktu tambahan sebanyak itu tidak bisa diberikan sekaligus. Pilih jumlah lain, lalu coba lagi.',
 };

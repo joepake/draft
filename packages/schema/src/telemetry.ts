@@ -64,11 +64,39 @@ export interface BatteryStatus {
   charging: boolean | null;
 }
 
+/**
+ * How the platform arrived at a fix, as it reported it — Windows'
+ * `PositionSource` names, because Windows is the one platform that says. A
+ * desktop tower with its Wi-Fi radio off is still "located", from its IP
+ * address, at the ISP's idea of the city: measured 2026-09-23 on a PC in
+ * Hà Đông, `ip` at 20 000 m, pinned to Hoàn Kiếm lake 8 km away, where the
+ * same machine with the radio on reports `wifi` at 51–212 m. CoreLocation and
+ * the phones report no source; absent means unknown.
+ *
+ * `@kidgate/core/domain/locationFix` is the one place that turns this and
+ * `accuracy` into "position" or "guess".
+ */
+export const POSITION_SOURCES = [
+  'satellite',
+  'wifi',
+  'cellular',
+  'ip',
+  // Windows' user-set default location (Settings → Location) — not a measurement.
+  'default',
+  // A position the user asked the OS to blur.
+  'obfuscated',
+  'unknown',
+] as const;
+
+export type PositionSource = (typeof POSITION_SOURCES)[number];
+
 export interface LocationFix {
   latitude: number;
   longitude: number;
   /** Metres. Absent when the platform will not say. */
   accuracy?: number;
+  /** See `POSITION_SOURCES`. Absent when the platform does not say. */
+  positionSource?: PositionSource;
   at: IsoDateTime;
 }
 

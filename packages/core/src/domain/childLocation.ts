@@ -28,7 +28,12 @@ import type {
   DevicePlatform,
 } from '@kidgate/schema/capabilities';
 import type { DeviceLocation } from '@kidgate/schema/deviceControls';
-import type { ProtectionPermissionStatus } from '@kidgate/schema/device';
+import type {
+  ProtectionPermissionStatus,
+  DeviceLocationRequestResult,
+  DeviceLocationRequestStatus,
+  DeviceLocationSensing,
+} from '@kidgate/schema/device';
 import { supportsLocation } from './locationSupport';
 
 /** What this module reads off a device document — no screen state. */
@@ -45,6 +50,8 @@ export interface ChildLocationDeviceFacts {
   protectionStatus?: { location?: ProtectionPermissionStatus } | null;
   /** `Device.lastActiveAt`. Read only to tell a silent device from a silent fix. */
   lastActiveAt?: string | null;
+  /** `Device.locationSensing` — `'ip'` is a desktop that can only guess. */
+  locationSensing?: DeviceLocationSensing | null;
 }
 
 export interface ChildLocationView<
@@ -144,7 +151,26 @@ export function resolveChildLocationView<D extends ChildLocationDeviceFacts>(
  * active: 3 minutes ago" with no explanation anywhere.
  */
 export type ChildLocationBlocker =
-  'sharingOff' | 'permission' | 'waiting' | 'notUpdating';
+  | 'sharingOff'
+  | 'permission'
+  /**
+   * Allowed only while KidGate is open (`ProtectionPermissionStatus`
+   * `foregroundOnly`), so the fix is as old as the last time the child opened
+   * the app. Not "no location": one still arrives, which is why
+   * `isLocationBlocked` leaves it off the family card's pill — the device's
+   * protection verdict already counts it there.
+   */
+  | 'foregroundOnly'
+  /**
+   * A desktop that could only guess from its internet connection — Wi-Fi
+   * radio off, or none — so no fix is coming until someone turns it on. Its
+   * own blocker because the parent can act on it, unlike `waiting`, and
+   * because the pin it would otherwise explain is not old, it is absent or
+   * wrong: an IP guess lands at the ISP's city centre.
+   */
+  | 'ipOnly'
+  | 'waiting'
+  | 'notUpdating';
 
 /**
  * How old a fix may be before a device that is plainly awake counts as broken.
@@ -212,6 +238,17 @@ export function resolveChildLocationBlocker(input: {
   if (carried.capabilities?.pendingConsents?.includes('location')) {
     return 'permission';
   }
+  // Ahead of `waiting` and `notUpdating`, which it explains: a phone nobody
+  // has opened today has no fresh fix because it is not allowed to take one.
+  if (permission === 'foregroundOnly') {
+    return 'foregroundOnly';
+  }
+
+  // Before `waiting` and `notUpdating`, both of which it explains: the
+  // device is running and permitted, and still cannot place itself.
+  if (carried.locationSensing === 'ip') {
+    return 'ipOnly';
+  }
 
   if (!carried.lastLocation) {
     return 'waiting';
@@ -245,9 +282,112 @@ export function childLocationBlockerKey(blocker: ChildLocationBlocker): string {
       return 'location.cardSharingOff';
     case 'permission':
       return 'location.cardPermissionOff';
+    case 'foregroundOnly':
+      return 'location.cardForegroundOnly';
+    case 'ipOnly':
+      return 'location.cardIpOnly';
     case 'waiting':
       return 'location.waitingForLocation';
     case 'notUpdating':
       return 'location.cardNotUpdating';
+  }
+}
+
+/**
+ * Whether the family card's "No location" pill is true of this blocker.
+ *
+ * Every blocker but `foregroundOnly` means no usable position is coming. That
+ * one still sends a fix whenever the child opens KidGate, and its device
+ * already turns the card's health pill amber through the protection summary —
+ * so both consoles ask here rather than testing for `null`.
+ */
+export function isLocationBlocked(blocker: ChildLocationBlocker | null): boolean {
+  return blocker !== null && blocker !== 'foregroundOnly';
+}
+
+/**
+ * The device's own answer to the last "Locate now", when that answer is a
+ * failure a parent screen should still be showing.
+ *
+ * `Device.locationRequestResult` is written for every request a device takes,
+ * and for a long time no parent screen read it: the toast said the request was
+ * on its way, the map kept its old pin, and "could not get a position" looked
+ * exactly like "not there yet". This is the rule both parent location screens
+ * read, so they cannot come to disagree about the same press.
+ */
+export type LocationRequestFailure = Exclude<DeviceLocationRequestStatus, 'answered'>;
+
+/**
+ * How long an answer stays the answer to "what came of my refresh".
+ *
+ * An hour, because the line answers the press a parent just made, and a device
+ * answers that in seconds. Past that the line would be describing a device
+ * that may have been granted, charged or moved since — the blocker line
+ * (`resolveChildLocationBlocker`) is what carries a lasting cause. `atMs` is the
+ * device's clock, so a skewed device only moves this by its skew.
+ */
+export const LOCATION_REQUEST_ANSWER_TTL_MS = 60 * 60 * 1000;
+
+/** The blockers that already say what a failed answer would. */
+const BLOCKER_EXPLAINS: Partial<
+  Record<LocationRequestFailure, readonly ChildLocationBlocker[]>
+> = {
+  sharingOff: ['sharingOff'],
+  ipOnly: ['ipOnly'],
+  // "Location is not allowed on this device" is why an OS had no fix to give —
+  // and so is a phone allowed only while KidGate is open, which a "Locate now"
+  // wakes in the background, where it may not take one.
+  noFix: ['permission', 'foregroundOnly'],
+};
+
+export function resolveLocationRequestFailure(input: {
+  result?: DeviceLocationRequestResult | null;
+  /** The same device's `lastLocation`. A fix newer than the answer supersedes it. */
+  lastLocation?: DeviceLocation | null;
+  /**
+   * The blocker already on screen for this device, if any — one sentence per
+   * cause, not two.
+   */
+  blocker?: ChildLocationBlocker | null;
+  nowMs: number;
+  ttlMs?: number;
+}): LocationRequestFailure | null {
+  const {
+    result,
+    lastLocation,
+    blocker,
+    nowMs,
+    ttlMs = LOCATION_REQUEST_ANSWER_TTL_MS,
+  } = input;
+
+  if (!result || result.status === 'answered') {
+    return null;
+  }
+  if (nowMs - result.atMs > ttlMs) {
+    return null;
+  }
+  // A position that arrived after the failure has answered the question the
+  // failure was about — a background upload, or a second press that worked.
+  const fixMs = lastLocation ? new Date(lastLocation.updatedAt).getTime() : NaN;
+  if (Number.isFinite(fixMs) && fixMs >= result.atMs) {
+    return null;
+  }
+  if (blocker && BLOCKER_EXPLAINS[result.status]?.includes(blocker)) {
+    return null;
+  }
+  return result.status;
+}
+
+/** The sentence for a failed answer, as an i18n key every parent surface renders. */
+export function locationRequestFailureKey(failure: LocationRequestFailure): string {
+  switch (failure) {
+    case 'noFix':
+      return 'location.requestNoFix';
+    case 'ipOnly':
+      return 'location.requestIpOnly';
+    case 'sharingOff':
+      return 'location.cardSharingOff';
+    case 'unsupported':
+      return 'location.requestUnsupported';
   }
 }

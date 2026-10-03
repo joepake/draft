@@ -38,6 +38,8 @@ export const videoHistory = {
   heroTopChannel: 'Più guardato',
   readerLayoutChanged:
     'Al momento gli Shorts non vengono registrati su questo dispositivo: l’app YouTube è cambiata e KidGate ha bisogno di un aggiornamento. Gli altri video vengono ancora registrati.',
+  grantNeeded:
+    'I video non vengono ancora registrati: KidGate ha bisogno dell’accesso alle notifiche sul telefono di tuo figlio. Su quel telefono, apri KidGate, poi Impostazioni, seleziona “Sblocca con il PIN genitore”, poi “Consenti accesso alle notifiche” nella sezione Avvisi messaggi.',
   openAction: 'Apri su YouTube',
   searchAction: 'Cerca questo video su YouTube',
   openFailed: 'Impossibile aprire YouTube.',

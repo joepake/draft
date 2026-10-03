@@ -1,5 +1,6 @@
 export const timeRequest = {
   alertMorePending: '{{count}} more requests are waiting in Family.',
+  alertMorePending_one: '{{count}} more request is waiting in Family.',
   pauseConfirmTitle: 'Lock {{deviceName}}?',
   pauseConfirmBody:
     'This locks the device now instead of granting more time. {{deviceName}} will not be usable until you unlock it.',
@@ -19,10 +20,12 @@ export const timeRequest = {
   statusCooldown: 'You can send a new request in {{time}}.',
   statusDailyLimitExceeded:
     'You have used all of today’s screen time. Apps will open again tomorrow — or sooner if your parent adds more time.',
-  errorDeviceNotRegistered: 'This device is not registered.',
+  errorDeviceNotRegistered:
+    'This device is not ready to send requests yet. Try again in a moment, or ask your parent to pair it again.',
   errorMinutesRange: 'Enter between {{min}} and {{max}} minutes.',
   toastRequestSent: 'Request sent. Your parent will review it shortly.',
-  toastDeviceNotRegistered: 'This device is not registered yet.',
+  toastDeviceNotRegistered:
+    'This device is not ready to send requests yet. Try again in a moment, or ask your parent to pair it again.',
   toastSendFailed: 'Unable to send your request. Try again.',
   askForMoreTime: 'Request more time',
   askForMoreTimeSubtitle: 'If your parent approves, you get more screen time today.',
@@ -43,7 +46,7 @@ export const timeRequest = {
   unableToApproveRequest: 'Unable to approve the request. Try again.',
   pendingRequestExists:
     'You have already sent a request. Wait for your parent to respond.',
-  waitBeforeAnotherRequest: 'Wait a few minutes before sending another request.',
+  waitBeforeAnotherRequest: 'Wait a moment before sending another request.',
   timeRequestSent: 'Time request sent',
   timeRequestSentDescription: '{{deviceName}} requested {{minutes}} extra minutes.',
   timeRequestApproved: 'Time request approved',
@@ -61,5 +64,4 @@ export const timeRequest = {
   requestPendingButton: 'Request pending',
   requestPendingChip: 'Request pending',
   waitCooldown: 'Wait {{cooldown}}',
-  timeRequestNote: 'If your parent approves, you get more screen time today.',
 } as const;

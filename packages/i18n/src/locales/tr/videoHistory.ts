@@ -38,6 +38,8 @@ export const videoHistory = {
   heroTopChannel: 'En çok izlenen',
   readerLayoutChanged:
     'Bu cihazda Shorts şu anda kaydedilmiyor: YouTube uygulaması değişti ve KidGate’in güncellenmesi gerekiyor. Diğer videolar kaydedilmeye devam ediyor.',
+  grantNeeded:
+    'Videolar henüz kaydedilmiyor: KidGate’in çocuğunuzun telefonunda bildirim erişimine ihtiyacı var. O telefonda KidGate Ayarları’nı açın, “Ebeveyn PIN’i ile Kilidi Aç” düğmesini seçin, ardından Mesaj uyarıları bölümünde “Bildirim erişimine izin ver”i seçin.',
   openAction: 'YouTube’da aç',
   searchAction: 'Bu videoyu YouTube’da ara',
   openFailed: 'YouTube açılamadı.',

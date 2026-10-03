@@ -50,11 +50,17 @@ export default function SupportCard({
   familyId,
   familyName,
   appT,
+  /* The first line a held family's appeal opens with (`OperatorHoldBanner`). */
+  initialMessage = '',
 }) {
   const { t, language } = useT();
   const [reports, setReports] = useState([]);
   const [reloadKey, reload] = useReload();
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState(initialMessage);
+  /* An appeal pressed while this card is already open still lands its line. */
+  useEffect(() => {
+    if (initialMessage) setMessage(initialMessage);
+  }, [initialMessage]);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState(null);
   const [expanded, setExpanded] = useState(null);

@@ -7,7 +7,9 @@ import { useFamilyReports } from '../dashboard/useFamilyReports.js';
 import { createActions } from '../dashboard/controlsApi.js';
 import { useT } from '@kidgate/web-ui/useT';
 import LanguagePicker from '@kidgate/web-ui/LanguagePicker';
+import { RichText } from '@kidgate/web-ui/RichText';
 import ThemeToggle from '../dashboard/ThemeToggle.jsx';
+import { downloadPageUrl } from '@kidgate/core/domain/siteLinks';
 import { trackScreen } from '../lib/analytics.js';
 
 function Splash({ children }) {
@@ -129,7 +131,7 @@ function LiveGate() {
 
 function LiveDashboard({ user, deviceId, onDeviceChange, signOut }) {
   const { canWrite } = useAuth();
-  const { t } = useT();
+  const { t, language } = useT();
   const { data, loading, error, familyId, unknownAccount, loadedAt, refresh } =
     useFamilyData(user, deviceId);
   const reports = useFamilyReports(familyId);
@@ -162,7 +164,11 @@ function LiveDashboard({ user, deviceId, onDeviceChange, signOut }) {
         <p className="login-sub">
           {/* The port's normalised code, not the JS SDK's `permission-denied`:
               every adapter maps its SDK's spelling onto the same enum. */}
-          {error.code === 'permissionDenied' ? t('live.noAccess') : error.message}
+          {error.code === 'permissionDenied'
+            ? t('live.noAccess')
+            : error.code === 'unavailable'
+              ? t('controlError.network')
+              : t('controlError.generic')}
         </p>
         <button className="btn btn-primary btn-block" onClick={signOut}>
           {t('common.signOut')}
@@ -172,22 +178,59 @@ function LiveDashboard({ user, deviceId, onDeviceChange, signOut }) {
   }
 
   /*
-   * Said here rather than inside the dashboard, and with the same words a
-   * refused read gets, because it is the same fact: this account has no family
-   * to show. The difference is only how it was discovered — a rules denial
-   * there, an empty root here — and a parent does not need to know which.
+   * Said here rather than inside the dashboard: this account has no family to
+   * show. Two parents land here and need opposite things — one signed in with
+   * the wrong account (Sign out, then the right one), one who has never set a
+   * family up (the phone, because families are made there and the web has no
+   * pairing, `docs/BACKLOG.md`). Sign out used to be the only action, which
+   * answered the first and left the second nowhere to go.
    *
-   * Sign out is the whole action. There is no pairing flow on the web
-   * (`docs/BACKLOG.md`), so the way out of both cases is the same one.
+   * So the sentence names both, the steps name the phone's own buttons
+   * (`FamilySetupPrompt`, labels copied from the app pack), and Reload is the
+   * primary action because it is the one that finishes the loop on this page:
+   * a family named, joined or paired into on the phone makes this account
+   * known on the next read. A reload rather than `refresh()`, because joining
+   * someone else's family changes which root this account resolves to, and
+   * `useFamilyData` resolves that once per sign-in — `refresh()` never asks
+   * again.
+   *
+   * The refused read above keeps `live.noAccess` and Sign out: that account
+   * resolved to a family and was turned away, a different fact from an
+   * account that has none.
    */
   if (unknownAccount) {
     return (
       <Splash>
         <h1>{t('live.noAccessTitle')}</h1>
-        <p className="login-sub">{t('live.noAccess')}</p>
-        <button className="btn btn-primary btn-block" onClick={signOut}>
-          {t('common.signOut')}
-        </button>
+        <p className="login-sub">{t('live.noFamily')}</p>
+        <div className="qr-hero">
+          <ol className="qr-steps">
+            <li>
+              <RichText text={t('live.noFamilyStep1')} />
+            </li>
+            <li>
+              <RichText text={t('live.noFamilyStep2')} />
+            </li>
+          </ol>
+          <p className="qr-why">
+            <a href={downloadPageUrl(language)} target="_blank" rel="noreferrer">
+              {t('dash.getKidGate')}
+            </a>
+          </p>
+        </div>
+        {/* `.login-form` for its stack and gap, which is what centres the
+            secondary link under the button on the sign-in page. */}
+        <div className="login-form">
+          <button
+            className="btn btn-primary btn-block"
+            onClick={() => window.location.reload()}
+          >
+            {t('common.crashReload')}
+          </button>
+          <button className="login-link" onClick={signOut}>
+            {t('common.signOut')}
+          </button>
+        </div>
       </Splash>
     );
   }

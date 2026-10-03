@@ -58,6 +58,4 @@ export const shared = {
   toastRemoveDeviceFailed: 'Không thể gỡ thiết bị. Vui lòng thử lại.',
   unableToOpenMaps: 'Không thể mở Bản đồ. Vui lòng thử lại.',
   unableToSignOut: 'Không thể đăng xuất. Vui lòng thử lại.',
-  pushNotificationNote:
-    'Phụ huynh và trẻ đều nhận được thông báo khi có thay đổi cài đặt hoặc yêu cầu thêm giờ.',
 } as const;

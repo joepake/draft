@@ -38,6 +38,8 @@ export const videoHistory = {
   heroTopChannel: 'Meistgesehen',
   readerLayoutChanged:
     'Shorts werden auf diesem Gerät gerade nicht aufgezeichnet – die YouTube-App hat sich geändert und KidGate braucht ein Update. Andere Videos werden weiter aufgezeichnet.',
+  grantNeeded:
+    'Videos werden noch nicht aufgezeichnet: KidGate braucht Benachrichtigungszugriff auf dem Handy deines Kindes. Öffne auf diesem Handy KidGate, dann Einstellungen, wähle „Mit Eltern-PIN entsperren“ und dann „Benachrichtigungszugriff erlauben“ im Bereich Nachrichtenwarnungen.',
   openAction: 'Auf YouTube öffnen',
   searchAction: 'Dieses Video auf YouTube suchen',
   openFailed: 'YouTube konnte nicht geöffnet werden.',

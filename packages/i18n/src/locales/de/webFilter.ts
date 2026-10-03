@@ -2,6 +2,7 @@ export const webFilter = {
   title: 'Webfilter',
   fallbackDeviceName: 'Kindergerät',
   appliesToAll: 'Gilt für alle {{count}} Geräte von {{name}}',
+  appliesToAll_one: 'Gilt für das Gerät von {{name}}',
   coverageLine: 'Aktiv auf {{enforcing}} von {{total}} Geräten',
   mergeNotice:
     'Die Geräte von {{name}} hatten unterschiedliche Webfilter-Einstellungen. Wenn du hier speicherst, gilt für alle Geräte dieselbe Einstellung – bei Unterschieden jeweils die strengere.',
@@ -65,9 +66,13 @@ export const webFilter = {
 
   heroSubtitleWindows:
     'Führt KidGates eigenen Resolver auf dem PC des Kindes aus, um bekannte ungeeignete Seiten in jedem Browser zu blockieren.',
+  heroSubtitleExtension:
+    'Nutzt die KidGate-Erweiterung in Chrome auf dem Computer deines Kindes, um bekannte ungeeignete Seiten in diesem Browser zu blockieren.',
 
   toggleHintWindows:
     'Auf dem PC ist nichts zu bestätigen. Der KidGate-Hintergrunddienst schaltet den Filter binnen Sekunden ein.',
+  toggleHintExtension:
+    'Nichts zu genehmigen. Der Filter läuft nur in Chrome, nicht in anderen Browsern oder Apps.',
 
   infoLine1Windows:
     'KidGate betreibt auf dem PC einen Resolver, der prüft, welche Seiten nachgeschlagen werden, und die aus deinen Kategorien blockiert.',
@@ -80,19 +85,23 @@ export const webFilter = {
 
   infoLine4Windows:
     'Der Filter liest nur Seitennamen. Er sieht nicht in eine Seite hinein, und eine Seite, die der Browser gerade nachgeschlagen hat, lässt sich noch einige Minuten öffnen.',
+  infoLine1Extension:
+    'Die KidGate-Erweiterung prüft jede Seite, bevor Chrome sie öffnet, und blockiert die aus deinen Kategorien.',
+  infoLine2Extension:
+    'Gefiltert wird nur Chrome, und zwar in dem Profil, in dem KidGate installiert ist. Andere Browser und Apps auf dem Computer nicht.',
+  infoLine3Extension:
+    'Inkognitofenster werden nur gefiltert, wenn „Im Inkognitomodus zulassen“ für die Erweiterung aktiviert ist. Gastfenster werden nicht gefiltert.',
+  infoLine4Extension:
+    'Auf einer blockierten Seite kann dein Kind dich bitten, die Seite freizugeben. Wird die Erweiterung entfernt oder deaktiviert, stoppt der Filter.',
 
   windowsFilterNote: 'Nutzt KidGates eigenen Resolver unter Windows',
-  webFilteringNote:
-    'iOS nutzt den Erwachsenenfilter der Bildschirmzeit. Android, Mac und Windows nutzen die eigene Sperrliste von KidGate.',
-  safeSearchAlertsNote:
-    'Safari teilt keine Suchbegriffe; Stichwort-Warnungen erfordern einen verwalteten sicheren Browser.',
-  webHistoryNote: 'Erfordert einen gefilterten Browser oder DNS/VPN-Berichte.',
+  extensionFilterNote: 'Nutzt die KidGate-Erweiterung in Chrome',
   categoriesTitle: 'Was blockiert wird',
   categoriesSubtitle:
     'KidGate bringt eigene Domain-Listen mit. Sie decken die Seiten ab, die Kinder wirklich erreichen, nicht das ganze Web – ergänze sie mit den Listen unten.',
-  androidOnlyCategory: 'Nicht auf dem iPhone – funktioniert auf Android und Mac',
+  androidOnlyCategory: 'Nicht auf dem iPhone – funktioniert auf anderen Geräten',
   iosCategoryNote:
-    'Das iPhone unterstützt nur {{category}}, über Apples eigenen Filter. Die übrigen Kategorien gelten für Android- und Mac-Kindergeräte.',
+    'Das iPhone unterstützt nur {{category}}, über Apples eigenen Filter. Die übrigen Kategorien gelten auf anderen Geräten.',
   allowListTitle: 'Immer erlauben',
   allowListSubtitle:
     'Seiten, die erreichbar bleiben, auch wenn eine Kategorie sie blockieren würde.',
@@ -107,6 +116,8 @@ export const webFilter = {
     'Alles außerhalb deiner Liste wird abgewiesen. Das wirkt auf DNS-Ebene, also verlieren auch andere Apps ihre Verbindungen.',
   allowListOnlyHintIos:
     'Safari und In-App-Browser öffnen nur die Seiten aus deiner Liste.',
+  allowListOnlyHintExtension:
+    'Chrome öffnet nur die Seiten aus deiner Liste. Andere Browser und Apps sind nicht betroffen.',
   allowListOnlyNeedsEntries:
     'Füge mindestens eine erlaubte Seite hinzu, bevor du das einschaltest.',
   domainPlaceholder: 'beispiel.de',

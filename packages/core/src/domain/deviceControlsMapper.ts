@@ -605,6 +605,9 @@ const LOCATION_REQUEST_STATUSES: readonly DeviceLocationRequestStatus[] = [
   'answered',
   'noFix',
   'sharingOff',
+  // Written by `apps/desktop` when the OS could only guess from the network;
+  // dropping it here made `location.requestIpOnly` unreachable.
+  'ipOnly',
   'unsupported',
 ];
 

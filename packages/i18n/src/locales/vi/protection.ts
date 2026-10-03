@@ -36,6 +36,8 @@ export const protection = {
   lockNotReadyBodyIos:
     'KidGate chưa thể khóa iPhone này cho đến khi quyền Thời gian sử dụng được cấp trên thiết bị của trẻ. Vui lòng mở KidGate trên máy đó và hoàn tất các bước sau:',
   locationPermission: 'Quyền vị trí',
+  locationForegroundOnly:
+    'Vị trí chỉ cập nhật khi KidGate đang mở trên thiết bị của trẻ.',
   cameraPermission: 'Quyền camera',
   cameraConsentPending:
     'Camera chưa được cho phép trên thiết bị này, nên SOS hoặc Báo an toàn gửi từ đó sẽ không có ảnh.',
@@ -62,18 +64,9 @@ export const protection = {
   healthBadgeProtected: 'Xanh — đang được bảo vệ',
   healthBadgeWarning: 'Vàng — cần thiết lập',
   healthBadgeInactive: 'Đỏ — thiết bị của trẻ không có tín hiệu quá 24 giờ',
-  iosFeatureSupportEvaluating: 'Đang kiểm tra xem iOS có hỗ trợ tính năng này không.',
   iosUpgradeRequiredNote:
     'Tính năng này cần iOS 16 trở lên. Hãy cập nhật thiết bị của trẻ trong Cài đặt › Cài đặt chung › Cập nhật phần mềm. Nếu không có bản cập nhật nào, thiết bị đã quá cũ để Apple hỗ trợ.',
   iosUpgradeActionLabel: 'Cần iOS 16',
-  lockUnlockNote:
-    'Khóa thiết bị bằng quyền Thời gian sử dụng, sau khi trẻ đã cấp quyền đó.',
-  scheduleNote:
-    'Đặt tối đa 3 khung Giờ khóa thiết bị; trong các khung này ứng dụng bị chặn qua Thời gian sử dụng.',
-  individualAppBlockingNote:
-    'Danh sách ứng dụng được chọn ngay trên thiết bị của trẻ, sau khi nhập mã PIN phụ huynh 6 chữ số.',
-  tamperAlertsNote:
-    'Thông báo khi có thay đổi về quyền hoặc khi ứng dụng trên thiết bị của trẻ lâu chưa cập nhật.',
   appReviewRemindersNote:
     'iOS không báo cho KidGate biết khi có ứng dụng mới được cài, nên vui lòng xem lại danh sách ứng dụng cùng con theo định kỳ.',
 } as const;

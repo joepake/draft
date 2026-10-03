@@ -19,10 +19,12 @@ export const timeRequest = {
   statusCooldown: 'Kamu bisa mengirim permintaan baru dalam {{time}}.',
   statusDailyLimitExceeded:
     'Waktu layar hari ini sudah habis. Aplikasi akan terbuka lagi besok — atau lebih cepat jika orang tuamu menambah waktu.',
-  errorDeviceNotRegistered: 'Perangkat ini belum terdaftar.',
+  errorDeviceNotRegistered:
+    'Perangkat ini belum siap mengirim permintaan. Coba lagi sebentar lagi, atau minta orang tuamu memasangkannya lagi.',
   errorMinutesRange: 'Masukkan antara {{min}} dan {{max}} menit.',
   toastRequestSent: 'Permintaan terkirim. Orang tuamu akan segera meninjaunya.',
-  toastDeviceNotRegistered: 'Perangkat ini belum terdaftar.',
+  toastDeviceNotRegistered:
+    'Perangkat ini belum siap mengirim permintaan. Coba lagi sebentar lagi, atau minta orang tuamu memasangkannya lagi.',
   toastSendFailed: 'Tidak dapat mengirim permintaanmu. Silakan coba lagi.',
   askForMoreTime: 'Minta waktu tambahan',
   askForMoreTimeSubtitle:
@@ -44,7 +46,7 @@ export const timeRequest = {
   unableToApproveRequest: 'Tidak dapat menyetujui permintaan. Silakan coba lagi.',
   pendingRequestExists:
     'Kamu sudah mengirim permintaan. Tunggu tanggapan dari orang tuamu.',
-  waitBeforeAnotherRequest: 'Tunggu beberapa menit sebelum mengirim permintaan lain.',
+  waitBeforeAnotherRequest: 'Tunggu sebentar sebelum mengirim permintaan lain.',
   timeRequestSent: 'Permintaan waktu terkirim',
   timeRequestSentDescription: '{{deviceName}} meminta {{minutes}} menit tambahan.',
   timeRequestApproved: 'Permintaan waktu disetujui',
@@ -62,6 +64,4 @@ export const timeRequest = {
   requestPendingButton: 'Permintaan tertunda',
   requestPendingChip: 'Permintaan tertunda',
   waitCooldown: 'Tunggu {{cooldown}}',
-  timeRequestNote:
-    'Jika orang tuamu menyetujui, kamu mendapat lebih banyak waktu layar hari ini.',
 } as const;

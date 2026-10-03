@@ -32,8 +32,9 @@ export const permissions = {
   oemAutostartLabel: 'Cho phép tự khởi động',
   oemAutostartHintXiaomi:
     'Trong mục Tự khởi động, hãy bật KidGate để tính năng bảo vệ được khôi phục sau khi khởi động lại thiết bị.',
-  oemAutostartHintSamsung:
-    'Trong Pin → Giới hạn sử dụng dưới nền → Ứng dụng không bao giờ ngủ, hãy thêm KidGate. Nếu không thấy KidGate trong danh sách thì máy đã cho phép sẵn và bước này xong rồi.',
+  oemAutostartHintSamsung: 'Trong Pin, chọn Giới hạn sử dụng dưới nền.',
+  oemAutostartHintSamsungAdd:
+    'Mở Ứng dụng không bao giờ ngủ và thêm KidGate. Nếu không thấy KidGate trong danh sách thì máy đã cho phép sẵn và bước này xong rồi.',
   oemAutostartHintOppo: 'Trong Khởi động tự động (Auto-launch), hãy cho phép KidGate.',
   oemAutostartHintVivo:
     'Trong Tự khởi động, và trong mục cảnh báo ứng dụng hao pin nền, hãy cho phép KidGate.',
@@ -49,8 +50,10 @@ export const permissions = {
     'Nếu danh sách đầy đủ hiện ra, hãy chọn KidGate trong mục Ứng dụng đã tải xuống.',
   accessibilityStepTurnOn:
     'Bật công tắc, sau đó chọn Cho phép trên hộp thoại xác nhận của Android.',
+  restrictedSettingsStep:
+    'Nếu công tắc bị mờ, hãy mở Cài đặt › Ứng dụng › KidGate, nhấn menu ⋮ rồi chọn “Cho phép cài đặt bị hạn chế”, sau đó quay lại đây và thử lại.',
   accessibilityWarningNote:
-    'Android sẽ cảnh báo rằng KidGate có thể quan sát thao tác của bạn. Đó là cách màn hình khóa luôn hiển thị đè lên ứng dụng khác — KidGate không đọc mật khẩu hay tin nhắn cá nhân.',
+    'Android sẽ cảnh báo rằng KidGate có thể quan sát thao tác của bạn. Với quyền này, KidGate biết ứng dụng nào đang mở để màn hình khóa luôn hiển thị đè lên, và đọc tiêu đề cùng tên kênh của video YouTube khi mục Ghi lại video đã xem đang bật. KidGate không dùng quyền này để đọc mật khẩu, tin nhắn hay những gì bạn gõ.',
   uninstallProtectionWizardBody:
     'Ngăn gỡ cài đặt ứng dụng này khi chưa nhập mã PIN phụ huynh. Android sẽ hiển thị màn hình xác nhận riêng.',
   notificationsWizardBody:
@@ -59,6 +62,8 @@ export const permissions = {
   backgroundRefreshStepTurnOn: 'Bật Làm mới ứng dụng nền cho KidGate.',
   backgroundRefreshStepGeneral:
     'Nếu nút bị mờ, hãy mở Cài đặt, chọn Cài đặt chung, rồi bật Làm mới ứng dụng nền.',
+  locationAlwaysStep: 'Vào Vị trí và chọn Luôn luôn.',
+  locationAlwaysStepAndroid: 'Vào Quyền → Vị trí và chọn “Cho phép mọi lúc”.',
   batteryStepAllow: 'Chọn Cho phép trên hộp thoại của Android.',
   batteryStepAppInfo:
     'Nếu không thấy hộp thoại, mở Thông tin ứng dụng, chọn Pin, rồi chọn Không bị hạn chế.',

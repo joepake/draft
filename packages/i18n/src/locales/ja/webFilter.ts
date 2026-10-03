@@ -1,10 +1,10 @@
 export const webFilter = {
   title: 'Webフィルター',
   fallbackDeviceName: '子どものデバイス',
-  appliesToAll: '{{name}}の{{count}}台すべてのデバイスに適用されます',
+  appliesToAll: '{{name}}のすべてのデバイス（{{count}}台）に適用されます',
   coverageLine: '{{total}}台中{{enforcing}}台で有効',
   mergeNotice:
-    '{{name}}のデバイスごとにウェブフィルター設定が異なっていました。ここで保存すると、より厳しい設定に統合された1つの設定がすべてに適用されます。',
+    '{{name}}のデバイスごとにWebフィルター設定が異なっていました。ここで保存すると、より厳しい設定に統合された1つの設定がすべてに適用されます。',
   mergeLoosened: 'すべてのデバイスで許可されるようになりました: {{domains}}',
   toastUpdateFailed: 'Webフィルターを更新できませんでした。もう一度お試しください。',
   heroTitle: '不適切なサイトをフィルタリング',
@@ -22,7 +22,7 @@ export const webFilter = {
   toggleAccessibilityLabel: 'Webフィルターを有効にする',
   safeSearchSectionTitle: 'セーフサーチと YouTube',
   safeSearchSectionSubtitle:
-    'Google、Bing、DuckDuckGo を安全な結果に強制し、YouTube を制限付きモードに固定します。ウェブフィルターの有効化が必要です。',
+    'Google、Bing、DuckDuckGo を安全な結果に強制し、YouTube を制限付きモードに固定します。Webフィルターがオンになっている必要があります。',
   safeSearchLabel: 'セーフサーチを強制',
   safeSearchHint:
     'Google セーフサーチ、YouTube 制限付きモード、Bing、DuckDuckGo を厳格設定に固定します。Android、Android TV、Chrome。',
@@ -64,9 +64,13 @@ export const webFilter = {
 
   heroSubtitleWindows:
     'お子さまのPCでKidGate独自のリゾルバーを動かし、既知の不適切なサイトをすべてのブラウザーでブロックします。',
+  heroSubtitleExtension:
+    'お子さまのパソコンのChromeでKidGate拡張機能を動かし、そのブラウザで既知の不適切なサイトをブロックします。',
 
   toggleHintWindows:
     'PC側で承認する操作はありません。KidGateのバックグラウンドサービスが数秒でフィルターを有効にします。',
+  toggleHintExtension:
+    '承認する操作はありません。フィルターはChromeでのみ動作し、ほかのブラウザやアプリでは動作しません。',
 
   infoLine1Windows:
     'KidGateはPC上でリゾルバーを動かし、どのサイトが参照されたかを確認して、選んだカテゴリーのサイトをブロックします。',
@@ -79,19 +83,23 @@ export const webFilter = {
 
   infoLine4Windows:
     'フィルターが読むのはサイト名だけです。ページの中身は見えず、直前に参照されたサイトは数分間開けることがあります。',
+  infoLine1Extension:
+    'KidGate拡張機能は、Chromeがサイトを開く前にそれぞれのサイトを確認し、選んだカテゴリーに該当するサイトをブロックします。',
+  infoLine2Extension:
+    'フィルタリングされるのは、KidGateがインストールされたプロファイルのChromeだけです。パソコン上のほかのブラウザやアプリは対象外です。',
+  infoLine3Extension:
+    'シークレット ウィンドウがフィルタリングされるのは、拡張機能で「シークレット モードでの実行を許可する」がオンになっている場合だけです。ゲストモードのウィンドウはフィルタリングされません。',
+  infoLine4Extension:
+    'ブロックされたページから、お子さまはそのサイトの許可をあなたに求められます。拡張機能を削除するかオフにすると、フィルターは停止します。',
 
   windowsFilterNote: 'WindowsではKidGate独自のリゾルバーを使用',
-  webFilteringNote:
-    'iOSはスクリーンタイムのアダルトフィルターを使い、Android・Mac・WindowsはKidGate独自のブロックリストを使用します。',
-  safeSearchAlertsNote:
-    'Safariは検索語を共有しません。キーワード通知には管理されたセーフブラウザが必要です。',
-  webHistoryNote: 'フィルター付きブラウザまたはDNS/VPN型のレポートが必要です。',
+  extensionFilterNote: 'ChromeではKidGate拡張機能を使用',
   categoriesTitle: 'ブロックする内容',
   categoriesSubtitle:
     'KidGateは独自のドメインリストを使います。子どもが実際にたどり着くサイトを対象にしており、ウェブ全体ではありません。下のリストと組み合わせてください。',
-  androidOnlyCategory: 'iPhoneでは利用できません — AndroidとMacで動作します',
+  androidOnlyCategory: 'iPhoneでは利用できません — ほかのデバイスで動作します',
   iosCategoryNote:
-    'iPhoneは{{category}}のみ対応し、Apple独自のフィルターを使います。他のカテゴリはAndroidとMacのお子さまのデバイスに適用されます。',
+    'iPhoneは{{category}}のみ対応し、Apple独自のフィルターを使います。それ以外のカテゴリは、ほかのデバイスで適用されます。',
   allowListTitle: '常に許可',
   allowListSubtitle: 'カテゴリがブロックする場合でもアクセスできるサイト。',
   allowListEmpty: '例外はまだありません。',
@@ -104,6 +112,8 @@ export const webFilter = {
   allowListOnlyHintAndroid:
     '許可リスト以外はすべて拒否されます。DNS層で動作するため、他のアプリも接続できなくなります。',
   allowListOnlyHintIos: 'Safariとアプリ内ブラウザは許可リストのサイトしか開けません。',
+  allowListOnlyHintExtension:
+    'Chromeでは許可リストのサイトしか開けません。ほかのブラウザやアプリには影響しません。',
   allowListOnlyNeedsEntries:
     'オンにする前に、許可するサイトを1つ以上追加してください。',
   domainPlaceholder: 'example.com',
@@ -115,7 +125,7 @@ export const webFilter = {
   openHistorySubtitle: 'このデバイスがどのサイトに到達し、何がブロックされたかを見る',
   blockedPageTitle: 'サイトはブロックされました',
   blockedPageBody:
-    'KidGate がこのサイトをブロックしたよ。まちがいだと思ったら、おうちの人に聞いてみてね。',
+    'KidGate がこのサイトをブロックしました。まちがいだと思ったら、保護者に聞いてみてください。',
   category: {
     adult: 'アダルト',
     selfHarm: '自傷・摂食障害',
@@ -185,13 +195,14 @@ export const webFilter = {
     money: '買い物・お金',
   },
   categoriesOnCount: '{{total}}件中{{on}}件がオン',
-  askToOpen: 'おうちの人に聞く',
-  askToOpenSubtitle: '許可されたら、このサイトを開けるよ。',
+  askToOpen: '保護者に聞く',
+  askToOpenSubtitle: '許可されると、このサイトを開けます。',
   askToOpenDomainLabel: 'どのサイト？',
   askToOpenBlockedLabel: '最近ブロックされたサイト',
-  askToOpenPending: 'もうリクエストを送ってあるよ。お返事を待ってね。',
-  askToOpenTooSoon: 'いま送ったばかりだよ。1分たったらもう一度試してね。',
-  askToOpenTooMany: '一度にお願いできるサイトは少しだけだよ。',
+  askToOpenPending: 'すでにリクエストを送っています。返事を待ってください。',
+  askToOpenTooSoon:
+    'リクエストを送ったばかりです。1分たってからもう一度お試しください。',
+  askToOpenTooMany: '一度にリクエストできるサイトは少しだけです。',
   requestsTitle: 'サイトのリクエスト',
   requestsSubtitle: 'このデバイスが許可を求めたサイト。',
   siteRequestApproved: 'サイトを許可しました',
@@ -203,7 +214,7 @@ export const webFilter = {
   siteRequestReceived: 'サイトのリクエスト',
   siteRequestReceivedDescription:
     '{{deviceName}}から{{domain}}を開きたいというリクエストが届きました。',
-  privateDnsStep1: 'この端末で設定を開いてください。',
+  privateDnsStep1: 'このデバイスで設定を開いてください。',
   privateDnsStep2: '「ネットワークとインターネット」を選びます。',
   privateDnsStep3: '「プライベートDNS」を開き、「オフ」を選びます。',
   vpnConsentStepAllow:

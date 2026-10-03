@@ -15,7 +15,7 @@ export const trial = {
   impactScreenTime: 'スクリーンタイムが1日あたり約{{duration}}減少しました',
   impactWebBlocked: '不適切なサイトへのアクセスを{{count}}回ブロックしました',
   impactTamper: '保護がオフになったことを{{count}}回記録しました',
-  impactLocks: '就寝時間と休止時間を{{count}}回適用しました',
+  impactLocks: '休止時間を{{count}}回適用しました',
   impactScreenTimeTracked: 'スクリーンタイムを{{duration}}計測しました',
   impactDevices: '{{count}}台のデバイスを昼も夜も見守りました',
   impactPlaceArrivals: '無事に到着したことを{{count}}回お知らせしました',

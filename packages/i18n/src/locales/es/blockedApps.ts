@@ -15,9 +15,15 @@ export const blockedApps = {
   installApprovalInfoLine1:
     'El dispositivo del niño bloquea cualquier app instalada después de activar esto, sin esperar tu confirmación.',
   installApprovalInfoLine2:
-    'Recibirás una notificación, y la app aparecerá abajo y en Aplicaciones hasta que la permitas.',
+    'Recibirás una notificación, y la app aparecerá abajo, en Apps bloqueadas, hasta que la permitas.',
   installApprovalInfoLine3:
     'Permitir una app hace que se abra de inmediato. Una app que no permitas simplemente sigue bloqueada.',
+  installApprovalInfoLine1Ios:
+    'Mientras esto está activado, la App Store queda oculta en el dispositivo del niño, así que no se puede instalar ninguna app nueva.',
+  installApprovalInfoLine2Ios:
+    'Las apps que ya están en el dispositivo siguen funcionando.',
+  installApprovalInfoLine3Ios:
+    'Para dejar entrar una app, desactiva esto, instálala y vuelve a activarlo.',
   pendingSectionTitle: 'Bloqueadas automáticamente, esperando tu decisión',
   pendingSectionSubtitle:
     'Instaladas después de activar la aprobación. Nada de esto se eligió en el dispositivo del niño.',
@@ -29,7 +35,7 @@ export const blockedApps = {
   toastAllowFailed: 'No se pudo permitir esta app. Inténtalo de nuevo.',
   toastInstallApprovalSaveFailed: 'No se pudo guardar. Inténtalo de nuevo.',
   toastChooseAppsFirst:
-    'Pide a tu hijo que abra los ajustes de KidGate y elija primero las apps a bloquear.',
+    'Primero elige las apps: abre Ajustes de KidGate en el dispositivo del niño e introduce el PIN parental.',
   toastSaveFailed: 'No se pudo guardar. Inténtalo de nuevo.',
   statusBlockingOn: 'Bloqueo activado',
   statusBlockingOff: 'Sin bloqueo',
@@ -45,7 +51,9 @@ export const blockedApps = {
   toggleAccessibilityLabel: 'Activar el bloqueo de apps',
   emptyTitle: 'Aún no hay apps bloqueadas',
   emptySubtitle:
-    'En el dispositivo del niño, abre Ajustes de KidGate → Elegir apps para bloquear, introduce el PIN parental y guarda la selección.',
+    'En el dispositivo del niño, abre Ajustes de KidGate, introduce el PIN parental, luego abre Bloqueo de apps → Apps bloqueadas y guarda la selección.',
+  emptySubtitleTv:
+    'En la TV, abre KidGate, selecciona «{{button}}», introduce el PIN parental y después elige las apps y guarda.',
   sectionTitle: 'Lista de bloqueo',
   privacyTitle: 'La lista de apps viene del dispositivo del niño',
   privacySubtitle:
@@ -78,5 +86,10 @@ export const blockedApps = {
   noAppsSelected: 'No se seleccionó ninguna app.',
   unableToOpenAppPicker: 'No se pudo abrir el selector de apps. Inténtalo de nuevo.',
   wizardStepPin: 'Introduce el PIN parental cuando Ajustes lo pida.',
-  wizardStepChoose: 'Abre Elegir apps para bloquear, marca las apps y guarda.',
+  wizardStepChoose:
+    'En Bloqueo de apps, abre Apps bloqueadas, marca las apps y guarda.',
+  pickerSubtitle: 'Elige las apps y categorías a bloquear en este dispositivo.',
+  pickerSubtitleAndroid:
+    'Las apps marcadas no pueden abrirse mientras el Bloqueo de apps está activado.',
+  pickerEmpty: 'No se encontraron apps en este dispositivo.',
 } as const;

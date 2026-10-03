@@ -35,6 +35,8 @@ export const protection = {
   lockNotReadyBodyIos:
     'Çocuğun cihazında Ekran Süresi erişimi onaylanana kadar KidGate bu iPhone’u kilitleyemez. Lütfen o cihazda KidGate’i açın ve şunları tamamlayın:',
   locationPermission: 'Konum izni',
+  locationForegroundOnly:
+    'Konum yalnızca çocuğun cihazında KidGate açıkken güncellenir.',
   cameraPermission: 'Kamera izni',
   cameraConsentPending:
     'Bu cihazda kameraya izin verilmemiş, bu yüzden buradan gelen SOS veya Check-In fotoğrafsız geliyor.',
@@ -60,18 +62,9 @@ export const protection = {
   healthBadgeProtected: 'Yeşil — korunuyor',
   healthBadgeWarning: 'Sarı — kurulum gerekiyor',
   healthBadgeInactive: 'Kırmızı — çocuğun cihazı 24 saatten uzun süredir sessiz',
-  iosFeatureSupportEvaluating: 'Bu özelliğin iOS desteği değerlendiriliyor.',
   iosUpgradeRequiredNote:
     'Bunun için iOS 16 veya üzeri gerekir. Çocuk cihazını Ayarlar › Genel › Yazılım Güncelleme bölümünden güncelleyin. Güncelleme sunulmuyorsa bu iPad veya iPhone, Apple’ın destekleyemeyeceği kadar eskidir.',
   iosUpgradeActionLabel: 'iOS 16 gerekir',
-  lockUnlockNote:
-    'Çocuk erişime izin verdikten sonra cihazı Ekran Süresi üzerinden kilitler.',
-  scheduleNote:
-    'En fazla 3 Engellenen Saatler aralığı, uygulamaları Ekran Süresi üzerinden engeller.',
-  individualAppBlockingNote:
-    'Çocuk, 6 haneli Ebeveyn PIN’ini girdikten sonra uygulamaları seçer.',
-  tamperAlertsNote:
-    'İzin değişikliklerini ve çocuğun cihazındaki uygulamanın bir süredir güncellenmediğini bildirir.',
   appReviewRemindersNote:
     'iOS yükleme olaylarını paylaşmaz; uygulamaları çocuğun cihazıyla birlikte düzenli olarak gözden geçirin.',
 } as const;

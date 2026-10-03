@@ -34,7 +34,8 @@ export const appInventory = {
   unsupportedIos:
     'Apple hiçbir uygulamanın iPhone veya iPad’de neyin kurulu olduğunu okumasına izin vermez; bu yüzden KidGate uygulamaları yalnızca kullanıldıkça bildirebilir.',
   unsupportedGeneric: 'Bu cihaz üzerinde kurulu uygulamaları bildirmiyor.',
-  incompleteNote: 'Ana ekranda simgesi olmayan bir uygulama burada görünmeyebilir.',
+  incompleteNote:
+    'Bazı uygulamalar burada görünmeyebilir; örneğin cihazın uygulama listesinde simgesi olmayan bir uygulama.',
   blockHint:
     'Bir uygulamayı engellemek için cihazın kendisinde Engellenen Uygulamalar’ı açın.',
   howItWorksLabel: 'Bu liste nasıl çalışır',

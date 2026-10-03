@@ -29,8 +29,9 @@ export const permissions = {
   oemAutostartLabel: 'Allow autostart',
   oemAutostartHintXiaomi:
     'In Autostart, turn KidGate on so protection restarts after a reboot.',
-  oemAutostartHintSamsung:
-    'In Battery → Background usage limits → Never sleeping apps, add KidGate. If KidGate is not on that list it is already allowed, and this step is done.',
+  oemAutostartHintSamsung: 'In Battery, select Background usage limits.',
+  oemAutostartHintSamsungAdd:
+    'Open Never sleeping apps and add KidGate. If KidGate is not on that list it is already allowed, and this step is done.',
   oemAutostartHintOppo: 'In Startup apps / Auto-launch, allow KidGate.',
   oemAutostartHintVivo: 'In Autostart / Background high power, allow KidGate.',
   oemAutostartHintHuawei:
@@ -45,8 +46,10 @@ export const permissions = {
     'If the full list opens instead, select KidGate under Downloaded apps.',
   accessibilityStepTurnOn:
     'Turn the switch on, then select Allow on Android’s confirmation.',
+  restrictedSettingsStep:
+    'If the switch is greyed out, open Settings › Apps › KidGate, select the ⋮ menu and choose “Allow restricted settings”, then return here and try again.',
   accessibilityWarningNote:
-    'Android warns that KidGate can observe your actions. That is how the lock stays over other apps — KidGate does not read passwords or personal messages.',
+    'Android warns that KidGate can observe your actions. With this permission KidGate sees which app is open, so the lock can stay on top, and reads the title and channel of YouTube videos when watched videos are recorded. It does not use it to read passwords, messages or what you type.',
   uninstallProtectionWizardBody:
     'Stops this app from being uninstalled without the Parent PIN. Android shows its own confirmation screen.',
   notificationsWizardBody:
@@ -55,6 +58,9 @@ export const permissions = {
   backgroundRefreshStepTurnOn: 'Turn on Background App Refresh for KidGate.',
   backgroundRefreshStepGeneral:
     'If the switch is dimmed, open Settings, then General, then Background App Refresh, and turn it on.',
+  locationAlwaysStep: 'Select Location and choose Always.',
+  locationAlwaysStepAndroid:
+    'Select Permissions → Location and choose “Allow all the time”.',
   batteryStepAllow: 'Select Allow on the Android prompt.',
   batteryStepAppInfo:
     'If no prompt appears, open App info, then Battery, then choose Unrestricted.',

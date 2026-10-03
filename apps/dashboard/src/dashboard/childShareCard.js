@@ -228,7 +228,9 @@ export function drawChildShareCard(model) {
       ctx.fillStyle = palette.textSecondary;
       ctx.font = font(stack, 28, 600);
       ctx.textAlign = 'right';
-      ctx.fillText(`${row.value} · ${row.percent}%`, WIDTH - MARGIN, y + 22);
+      // `percent` arrives formatted (`formatPercent`): the sign's side and
+      // spacing are the language's, never a `%` glued on here.
+      ctx.fillText(`${row.value} · ${row.percent}`, WIDTH - MARGIN, y + 22);
       ctx.textAlign = 'left';
 
       y += 56;

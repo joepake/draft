@@ -53,20 +53,10 @@ export const placeAlerts = {
     'Burası “{{name}}” ile aynı nokta. İşaretçiyi taşımak için haritayı sürükleyin.',
   overlapWarning:
     '“{{name}}” {{meters}} m uzakta ve çemberi buraya kadar uzanıyor. Cihaz her ikisindeyken yalnızca daha yakın olan uyarır. Korumak için tekrar kaydedin.',
-  copyTitle: 'Diğer çocuklara eklensin mi?',
-  copyMessage:
-    '“{{name}}” öğesi bu ailedeki diğer {{count}} çocuk cihazına kopyalansın mı?',
-  copyMessage_one: '“{{name}}” öğesi bu ailedeki diğer çocuk cihazına kopyalansın mı?',
-  copyConfirm: 'Kopyala',
-  copyDoneToast: '{{count}} cihaza kopyalandı.',
-  copyDoneToast_one: '{{count}} cihaza kopyalandı.',
-  copySkippedToast: 'Diğer çocuklarda bu yer zaten var ya da maksimuma ulaşıldı.',
   savedToast: 'Yer kaydedildi.',
   updatedToast: 'Yer güncellendi.',
   removedToast: 'Yer kaldırıldı.',
   saveFailedToast: 'Kaydedilemedi. Lütfen tekrar deneyin.',
-  enteredLabel: 'Varış',
-  exitedLabel: 'Ayrılış',
   footerNote:
     'Konum her senkronize olduğunda kontrol edilir — her zaman arka planda değil.',
 } as const;

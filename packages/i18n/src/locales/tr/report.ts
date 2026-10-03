@@ -8,8 +8,8 @@ export const report = {
 
   statScreenTime: 'Ekran Süresi',
   statDailyAverage: 'Günlük ortalama',
-  statBlockedApps: 'Engellenen uygulamalar',
-  statBlockedWebVisits: 'Filtrelenen siteler',
+  statBlockedApps: 'Engellenen uygulama açılışları',
+  statBlockedWebVisits: 'Engellenen site ziyaretleri',
   statTasksApproved: 'Tamamlanan görevler',
 
   trendUp: 'Önceki haftadan {{value}} daha fazla',
@@ -74,7 +74,7 @@ export const report = {
   shareFailed: 'Paylaşım menüsü açılamadı.',
   shareLinkCta: 'Uygulamayı {{url}} adresinden indirin',
   shareFooterDesc:
-    'KidGate, ebeveynlerin ekran süresini, konumu ve mesajları görmesine yardımcı olur.',
+    'KidGate, ebeveynlerin ekran süresini yönetmesine, konumu görmesine ve web içeriğini filtrelemesine yardımcı olur.',
   shareFooterCta: 'Uygulamayı kidgate.app/get adresinden indirin',
 
   currentWeekTab: 'Bu hafta',
@@ -106,6 +106,9 @@ export const report = {
   // existed; the phone could not, because the copy lived only in the web
   // pack.
   childrenTitle: 'Her çocuk',
+  childrenNoteByChild:
+    'Aynı iki hafta, her çocuk için kullandığı tüm cihazlarda. Yüzdeler ailenin toplamına göredir.',
+  devicesTitle: 'Her cihaz',
   childrenNote: 'Aynı iki hafta, cihaz başına. Yüzdeler ailenin toplamına göredir.',
   colChild: 'Çocuk',
   colScreenTime: 'Ekran Süresi',

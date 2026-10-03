@@ -2,6 +2,7 @@ export const webFilter = {
   title: 'Filtro web',
   fallbackDeviceName: 'Dispositivo del bambino',
   appliesToAll: 'Si applica a tutti i {{count}} dispositivi di {{name}}',
+  appliesToAll_one: 'Si applica al dispositivo di {{name}}',
   coverageLine: 'Attivo su {{enforcing}} dispositivi su {{total}}',
   mergeNotice:
     'I dispositivi di {{name}} avevano impostazioni del filtro web diverse. Salvando qui si applica a tutti un unico insieme di impostazioni, scegliendo ogni volta l’opzione più restrittiva.',
@@ -23,7 +24,7 @@ export const webFilter = {
   toggleAccessibilityLabel: 'Attiva il Filtro web',
   safeSearchSectionTitle: 'Ricerca sicura e YouTube',
   safeSearchSectionSubtitle:
-    'Forza Google, Bing e DuckDuckGo su risultati sicuri e blocca YouTube in modalità con restrizioni. Richiede il filtro web attivo.',
+    'Forza Google, Bing e DuckDuckGo su risultati sicuri e blocca YouTube in modalità con restrizioni. Richiede il Filtro web attivo.',
   safeSearchLabel: 'Forza SafeSearch',
   safeSearchHint:
     'Blocca Google SafeSearch, la modalità con restrizioni di YouTube, Bing e DuckDuckGo sull’impostazione rigorosa. Android, Android TV e Chrome.',
@@ -65,9 +66,13 @@ export const webFilter = {
 
   heroSubtitleWindows:
     'Esegue il resolver di KidGate sul PC del bambino per bloccare i siti inappropriati noti in ogni browser.',
+  heroSubtitleExtension:
+    'Usa l’estensione KidGate in Chrome sul computer del bambino per bloccare i siti inappropriati noti in quel browser.',
 
   toggleHintWindows:
     'Sul PC non c’è nulla da approvare. Il servizio in background di KidGate attiva il filtro in pochi secondi.',
+  toggleHintExtension:
+    'Non c’è nulla da approvare. Il filtro funziona solo in Chrome, non in altri browser o app.',
 
   infoLine1Windows:
     'KidGate esegue sul PC un resolver che controlla quali siti vengono cercati e blocca quelli delle tue categorie.',
@@ -80,19 +85,23 @@ export const webFilter = {
 
   infoLine4Windows:
     'Il filtro legge solo i nomi dei siti. Non vede dentro una pagina, e un sito cercato poco fa può continuare ad aprirsi per qualche minuto.',
+  infoLine1Extension:
+    'L’estensione KidGate controlla ogni sito prima che Chrome lo apra e blocca quelli delle categorie che hai scelto.',
+  infoLine2Extension:
+    'Viene filtrato solo Chrome, nel profilo in cui è installato KidGate. Gli altri browser e le altre app del computer no.',
+  infoLine3Extension:
+    'Le finestre di navigazione in incognito vengono filtrate solo se per l’estensione è attiva l’opzione “Consenti in modalità di navigazione in incognito”. Le finestre Ospite non vengono filtrate.',
+  infoLine4Extension:
+    'Da una pagina bloccata tuo figlio può chiederti di consentire il sito. Rimuovere o disattivare l’estensione ferma il filtro.',
 
   windowsFilterNote: 'Usa il resolver di KidGate su Windows',
-  webFilteringNote:
-    'iOS usa il filtro per adulti di Tempo di utilizzo. Android, Mac e Windows usano l’elenco di blocco di KidGate.',
-  safeSearchAlertsNote:
-    'Safari non condivide i termini di ricerca; gli avvisi per parole chiave richiedono un browser sicuro gestito.',
-  webHistoryNote: 'Richiede un browser filtrato o report di tipo DNS/VPN.',
+  extensionFilterNote: 'Usa l’estensione KidGate in Chrome',
   categoriesTitle: 'Cosa bloccare',
   categoriesSubtitle:
     'KidGate usa i propri elenchi di domini. Coprono i siti che i bambini raggiungono davvero, non tutto il web: affiancali agli elenchi qui sotto.',
-  androidOnlyCategory: 'Non disponibile su iPhone — funziona su Android e Mac',
+  androidOnlyCategory: 'Non disponibile su iPhone — funziona sugli altri dispositivi',
   iosCategoryNote:
-    'iPhone supporta solo {{category}}, tramite il filtro di Apple. Le altre categorie valgono per i dispositivi Android e Mac dei bambini.',
+    'iPhone supporta solo {{category}}, tramite il filtro di Apple. Le altre categorie valgono sugli altri dispositivi.',
   allowListTitle: 'Consenti sempre',
   allowListSubtitle:
     'Siti che restano raggiungibili anche se una categoria li bloccherebbe.',
@@ -107,6 +116,8 @@ export const webFilter = {
     'Tutto ciò che non è nel tuo elenco viene rifiutato. Agisce a livello DNS, quindi anche altre app perdono le connessioni.',
   allowListOnlyHintIos:
     'Safari e i browser nelle app possono aprire solo i siti del tuo elenco.',
+  allowListOnlyHintExtension:
+    'Chrome può aprire solo i siti del tuo elenco. Gli altri browser e le altre app non sono coinvolti.',
   allowListOnlyNeedsEntries: 'Aggiungi almeno un sito consentito prima di attivarlo.',
   domainPlaceholder: 'esempio.com',
   addDomain: 'Aggiungi sito',

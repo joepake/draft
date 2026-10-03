@@ -55,21 +55,10 @@ export const placeAlerts = {
     'Das ist dieselbe Stelle wie „{{name}}“. Ziehe die Karte, um die Markierung zu verschieben.',
   overlapWarning:
     '„{{name}}“ ist {{meters}} m entfernt und sein Kreis reicht bis hierher. Solange das Gerät in beiden ist, meldet nur der nähere Ort. Zum Behalten erneut speichern.',
-  copyTitle: 'Für andere Kinder übernehmen?',
-  copyMessage:
-    '„{{name}}“ auf die anderen {{count}} Kindergeräte in dieser Familie kopieren?',
-  copyMessage_one: '„{{name}}“ auf das andere Kindergerät in dieser Familie kopieren?',
-  copyConfirm: 'Kopieren',
-  copyDoneToast: 'Auf {{count}} Geräte kopiert.',
-  copyDoneToast_one: 'Auf {{count}} Gerät kopiert.',
-  copySkippedToast:
-    'Andere Kinder haben diesen Ort bereits oder haben das Maximum erreicht.',
   savedToast: 'Ort gespeichert.',
   updatedToast: 'Ort aktualisiert.',
   removedToast: 'Ort entfernt.',
   saveFailedToast: 'Speichern fehlgeschlagen. Bitte versuche es erneut.',
-  enteredLabel: 'Betreten',
-  exitedLabel: 'Verlassen',
   footerNote:
     'Wird bei jeder Standortsynchronisierung geprüft – nicht immer im Hintergrund.',
 } as const;

@@ -14,9 +14,14 @@ export const blockedApps = {
   installApprovalInfoLine1:
     '이 기능을 켠 후 설치된 앱은 당신을 기다리지 않고 자녀의 기기에서 차단됩니다.',
   installApprovalInfoLine2:
-    '알림을 받게 되며, 허용하기 전까지 해당 앱은 아래 목록과 ‘앱’ 화면에 표시됩니다.',
+    '알림을 받게 되며, 해당 앱은 허용할 때까지 아래 “차단된 앱”에 표시됩니다.',
   installApprovalInfoLine3:
     '앱을 허용하면 바로 열 수 있습니다. 허용하지 않은 앱은 계속 차단된 상태로 남습니다.',
+  installApprovalInfoLine1Ios:
+    '이 기능이 켜져 있는 동안에는 자녀 기기에서 App Store가 숨겨지므로 새 앱을 설치할 수 없습니다.',
+  installApprovalInfoLine2Ios: '기기에 이미 있는 앱은 계속 작동합니다.',
+  installApprovalInfoLine3Ios:
+    '앱 하나를 설치하게 하려면 이 기능을 끄고 앱을 설치한 다음 다시 켜세요.',
   pendingSectionTitle: '자동으로 차단되어 승인을 기다리는 중',
   pendingSectionSubtitle:
     '승인 기능을 켠 후 설치된 앱입니다. 여기 있는 항목은 자녀의 기기에서 선택한 것이 아닙니다.',
@@ -28,7 +33,7 @@ export const blockedApps = {
   toastAllowFailed: '이 앱을 허용할 수 없습니다. 다시 시도해 주세요.',
   toastInstallApprovalSaveFailed: '저장할 수 없습니다. 다시 시도해 주세요.',
   toastChooseAppsFirst:
-    '먼저 자녀에게 KidGate 설정을 열고 차단할 앱을 선택하도록 요청하세요.',
+    '먼저 앱을 선택하세요. 자녀 기기에서 KidGate 설정을 열고 부모 PIN을 입력하면 됩니다.',
   toastSaveFailed: '저장할 수 없습니다. 다시 시도해 주세요.',
   statusBlockingOn: '차단 켜짐',
   statusBlockingOff: '차단 꺼짐',
@@ -43,7 +48,9 @@ export const blockedApps = {
   toggleAccessibilityLabel: '앱 차단 사용',
   emptyTitle: '아직 차단된 앱이 없습니다',
   emptySubtitle:
-    '자녀의 기기에서 KidGate 설정 → 차단할 앱 선택을 열고 부모 PIN을 입력한 후 선택 내용을 저장하세요.',
+    '자녀 기기에서 KidGate 설정을 열고 부모 PIN을 입력한 다음, 앱 차단 → 차단된 앱을 열어 선택 내용을 저장하세요.',
+  emptySubtitleTv:
+    'TV에서 KidGate를 열고 “{{button}}”을(를) 선택한 다음 부모 PIN을 입력하고, 앱을 선택해 저장하세요.',
   sectionTitle: '차단 목록',
   privacyTitle: '앱 목록은 자녀의 기기에서 가져옵니다',
   privacySubtitle:
@@ -72,6 +79,9 @@ export const blockedApps = {
   savedItemsForBlocking_one: '차단할 {{count}}개의 항목을 저장했습니다.',
   noAppsSelected: '선택된 앱이 없습니다.',
   unableToOpenAppPicker: '앱 선택기를 열 수 없습니다. 다시 시도해 주세요.',
-  wizardStepPin: '설정에서 요청하면 보호자 PIN을 입력하세요.',
-  wizardStepChoose: '차단할 앱 선택을 열고 앱을 선택한 뒤 저장하세요.',
+  wizardStepPin: '설정에서 요청하면 부모 PIN을 입력하세요.',
+  wizardStepChoose: '앱 차단에서 차단된 앱을 열고, 앱을 선택한 뒤 저장하세요.',
+  pickerSubtitle: '이 기기에서 차단할 앱과 카테고리를 선택하세요.',
+  pickerSubtitleAndroid: '앱 차단이 켜져 있는 동안 체크한 앱은 열 수 없습니다.',
+  pickerEmpty: '이 기기에서 앱을 찾을 수 없습니다.',
 } as const;

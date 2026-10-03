@@ -10,11 +10,11 @@ export const blockedHours = {
   statusDisabled: 'Desativado',
   statusActiveNow: 'Ativo agora',
   heroSubtitle:
-    'Configure até {{max}} faixas de horário em que este dispositivo não pode ser usado.',
+    'Configure até {{max}} faixas de horário em que o uso do dispositivo fica bloqueado.',
   statTimeRangesLabel: 'Faixas',
   statMaxAllowedLabel: 'Máximo',
   toggleTitle: 'Ativar Horários bloqueados',
-  toggleSubtitleOn: 'O dispositivo fica bloqueado durante os horários abaixo.',
+  toggleSubtitleOn: 'O uso do dispositivo fica bloqueado durante os horários abaixo.',
   toggleSubtitleOff: 'Ative para bloquear o uso do dispositivo por agenda.',
   toggleAccessibilityLabel: 'Ativar Horários bloqueados',
   sectionTitle: 'Faixas bloqueadas',
@@ -42,13 +42,14 @@ export const blockedHours = {
   presetStudy: 'Estudo',
   disabledTitle: 'Os Horários bloqueados estão desativados',
   disabledSubtitle:
-    'Ative a chave acima para escolher quando este dispositivo deve ficar indisponível.',
+    'Ative a chave acima para escolher quando o uso do dispositivo fica bloqueado.',
   infoTitle: 'Como funciona',
   infoLine1:
     'Durante os Horários bloqueados, os apps ficam bloqueados no dispositivo da criança.',
   infoLine2:
     'Faixas que atravessam a noite são aceitas, por exemplo das 22:00 às 07:00.',
-  infoLine3: 'O dispositivo precisa ter suporte ao Tempo de Uso.',
+  infoLine3:
+    'No iPhone e no iPad, o Tempo de Uso precisa estar permitido no dispositivo da criança.',
   off: 'Desativado',
   blockedHoursChip: 'Horários bloqueados',
   blockedHoursOnChip: 'Horários bloqueados definidos',
@@ -66,8 +67,10 @@ export const blockedHours = {
   dayShortSun: 'Dom',
   daysLabel: 'Dias',
   daysEveryDay: 'Todos os dias',
-  daysSchoolNights: 'Vésperas de aula',
+  daysWeekdays: 'Dias de semana',
   daysWeekend: 'Fim de semana',
+  daysSchoolNights: 'Vésperas de aula',
+  daysWeekendNights: 'Noites de fim de semana',
   daysOvernightHint: 'Os intervalos noturnos contam pela noite em que começam.',
   overlapWarning:
     'Isso se sobrepõe a outro horário bloqueado — os dois continuam válidos.',

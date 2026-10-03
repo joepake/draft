@@ -4,7 +4,10 @@ import { useT } from '@kidgate/web-ui/useT';
 import { resolveChildPresence } from '@kidgate/core/domain/childPresence';
 import { supportsLock } from '@kidgate/core/domain/controlSupport';
 import { isActionSupported } from '@kidgate/core/domain/deviceDetailActions';
-import { supportsVideoHistory } from '@kidgate/core/domain/videoHistorySupport';
+import {
+  supportsVideoHistory,
+  videoHistoryAwaitingGrant,
+} from '@kidgate/core/domain/videoHistorySupport';
 import { supportsAppInstallAlerts } from '@kidgate/core/domain/alertSupport';
 import { supportsAppInventory } from '@kidgate/core/domain/appInventorySupport';
 import {
@@ -20,6 +23,7 @@ import DeviceDot from './DeviceDot.jsx';
 import { deviceIconName } from './deviceIcon.js';
 import ControlCenter from './ControlCenter.jsx';
 import ChildInitial from './ChildInitial.jsx';
+import NoDevicePanel from './NoDevicePanel.jsx';
 import { timeAgo } from './timeAgo.js';
 
 /**
@@ -155,6 +159,11 @@ export default function ChildHub({
       hasLocationFix: fixAt !== null,
       locationStale: fixAt !== null && Date.now() - fixAt > LOCATION_STALE_AFTER_MS,
       supportsVideoHistory: childDevices.some(supportsVideoHistory),
+      // The phone hub's rule: waiting only when every device that could record
+      // lacks the grant, so a child whose extension records reads Recording.
+      videoHistoryAwaitingGrant:
+        childDevices.some(supportsVideoHistory) &&
+        childDevices.filter(supportsVideoHistory).every(videoHistoryAwaitingGrant),
       /*
        * Places are FAMILY-level — the fan-out writes the same list to every
        * device — so this is one machine's copy, not a sum. Summing would
@@ -323,11 +332,29 @@ export default function ChildHub({
       {/* ---- Their machines ---- */}
       <Card title={appT('family.childDetailDevicesTitle')}>
         {childDevices.length === 0 ? (
-          <p className="empty">
-            {isOwner
-              ? appT('family.childDetailNoDevices')
-              : appT('family.childDetailNoDevicesMember')}
-          </p>
+          /*
+           * The owner gets the pairing steps under a `dash.*` twin of
+           * `family.childDetailNoDevices`, which sends the parent to "pair a
+           * new device from the Family tab" — a tab that cannot pair here. Two
+           * sentences, because "assign one below" is only true while the
+           * picker below has something in it. After pairing, the owner's phone
+           * asks who uses the device, which is how it lands on this page.
+           *
+           * A joined parent may pair but not assign, so the device would not
+           * arrive on this child from anything they do; the phone's own
+           * sentence for them names who decides, and is as true here.
+           */
+          isOwner ? (
+            <NoDevicePanel
+              body={
+                unassignedDevices.length > 0
+                  ? t('dash.childNoDevicesAssign')
+                  : t('dash.childNoDevices')
+              }
+            />
+          ) : (
+            <p className="empty">{appT('family.childDetailNoDevicesMember')}</p>
+          )
         ) : (
           <ul className="child-device-list">
             {childDevices.map(device => (
@@ -382,8 +409,14 @@ export default function ChildHub({
 
         {isOwner && unassignedDevices.length > 0 && (
           <div className="child-assign">
+            {/* "Another" only once there is a first — the phone's row makes
+                the same split. */}
             <label className="sheet-label" htmlFor="child-assign">
-              {appT('family.childDetailAssignMore')}
+              {appT(
+                childDevices.length > 0
+                  ? 'family.childDetailAssignMore'
+                  : 'family.childDetailAssignFirst',
+              )}
             </label>
             <div className="device-admin-row">
               <select

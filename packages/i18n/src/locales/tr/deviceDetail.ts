@@ -14,7 +14,7 @@ export const deviceDetail = {
   dailyLimit: 'Günlük sınır',
   setDailyScreenTimeCap: 'Günlük ekran süresi sınırı belirle',
   blockedHours: 'Engellenen Saatler',
-  manageUpToThreeTimeRanges: 'En fazla 3 zaman aralığını yönetin',
+  manageTimeRanges: 'En fazla {{max}} zaman aralığını yönetin',
   blockedApps: 'Engellenen Uygulamalar',
   viewAndManageBlockedApps: 'Engellenen uygulamaları görüntüleyin ve yönetin',
   appBlockingBestEffort:
@@ -115,7 +115,9 @@ export const deviceDetail = {
     '{{actionTitle}} yakında kullanıma sunulacak. Konum, Web Filtresi ve yukarıdaki özellikler zaten kullanılabilir.',
   chooseAppsOnChildIphone: 'Çocuğun cihazında uygulamaları seçin',
   appPickerMustOpenOnChildIphone:
-    'Çocuğun cihazında KidGate Ayarları’nı açın, ebeveyn PIN’ini girin ve engellenecek uygulamaları seçin.',
+    'Çocuğun cihazında KidGate Ayarları’nı açın, Ebeveyn PIN’ini girin, ardından Uygulama Engelleme → Engellenen Uygulamalar bölümünden uygulamaları seçin.',
+  appPickerMustOpenOnChildTv:
+    'TV’de KidGate’i açın, “{{button}}” düğmesini seçin, Ebeveyn PIN’ini girin ve engellenecek uygulamaları seçin.',
   rewardTasks: 'Ödül görevleri',
   rewardTasksDescription: 'Biten görevlere ekstra dakika ver',
   rewardTasksUnit: 'aktif görev',
@@ -130,15 +132,15 @@ export const deviceDetail = {
   appLimitsReached: '{{count}} uygulama sınırına ulaştı',
   webHistory: 'Web geçmişi',
   videoHistory: 'İzlenen videolar',
-  videoHistoryDescription: 'YouTube ve web’deki videolar',
+  videoHistoryDescription: 'YouTube’da izlenen videolar',
   videoHistoryOn: 'Kaydediliyor',
   webHistoryDescription: 'Ulaşılan ve engellenen siteler',
   webHistorySitesUnit: 'site',
   managedAtChild:
-    "Bu cihazın kuralları, ödülleri, check-in'leri ve uyarıları {{childName}} profilinden yönetilir",
+    'Bu cihazın kuralları, ödülleri, check-in’leri ve uyarıları {{childName}} profilinden yönetilir',
   pauseBrowsing: 'Taramayı duraklat',
   pauseBrowsingDescription:
-    'Web’i bir süre engeller. Aramalar ve çevrimdışı uygulamalar çalışmaya devam eder.',
+    'İnternette gezinmeyi bir süre durdurur. Aramalar ve çevrimdışı uygulamalar çalışmaya devam eder.',
   pauseBrowsingOff: 'Duraklatılmadı',
   pauseBrowsingLeft: 'Duraklatıldı · {{minutes}} dk kaldı',
   pauseBrowsingFor: '{{minutes}} dk duraklat',

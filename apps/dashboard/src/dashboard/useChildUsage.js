@@ -6,8 +6,9 @@ import {
 } from '@kidgate/core/domain/childUsage';
 import { USAGE_TOP_APPS_LIMIT } from '@kidgate/schema/usageDay';
 import { resolveTodayTopApps } from '@kidgate/core/domain/todayTopApps';
-import { localDayKey } from '@kidgate/core/domain/weeklyReportSchedule';
+import { deviceMinutesToday } from '@kidgate/core/domain/reportHub';
 import { usageDayRepository } from '../adapters/repositories.js';
+import { useTodayKey } from './useTodayKey.js';
 
 /**
  * One child's usage, read across every device assigned to them.
@@ -53,10 +54,7 @@ export function useChildUsage(familyId, childDevices, days) {
   const [hasPartialError, setPartialError] = useState(false);
   const cacheRef = useRef({ scope: null, rows: new Map() });
 
-  const todayKey = useMemo(() => {
-    const now = Date.now();
-    return localDayKey(now, -new Date(now).getTimezoneOffset());
-  }, []);
+  const todayKey = useTodayKey();
 
   /*
    * A string, not the array: the device list streams, so its identity changes
@@ -81,10 +79,9 @@ export function useChildUsage(familyId, childDevices, days) {
   const liveToday = useMemo(() => {
     const live = {};
     for (const device of childDevices) {
-      const controls = device.controls;
-      if (!controls || controls.usageDate !== todayKey) continue;
-      const minutes = Math.max(0, Math.round(controls.minutesUsedToday ?? 0));
-      if (minutes > 0) live[device.id] = minutes;
+      // Null for a stamp that is not today's — the same rule as every "today".
+      const minutes = deviceMinutesToday(device, todayKey);
+      if (minutes) live[device.id] = minutes;
     }
     return live;
   }, [childDevices, todayKey]);

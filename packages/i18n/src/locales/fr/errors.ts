@@ -8,6 +8,11 @@ export const errors = {
   invalidEmailOrPassword: 'Adresse e-mail ou mot de passe incorrect.',
   tooManyRequests: 'Trop de tentatives. Veuillez réessayer plus tard.',
   somethingWentWrong: 'Une erreur est survenue. Veuillez réessayer.',
+  accountDisabled:
+    'Ce compte a été désactivé. Contactez l’assistance KidGate pour le rétablir.',
+  recentLoginRequired: 'Pour votre sécurité, reconnectez-vous, puis réessayez.',
+  accountExistsDifferentMethod:
+    'Cette adresse e-mail a déjà un compte avec une autre méthode de connexion. Connectez-vous de cette façon, puis liez celle-ci dans les Réglages.',
   unableToCreateAccount: 'Impossible de créer votre compte. Veuillez réessayer.',
   unableToSignIn: 'Impossible de vous connecter. Veuillez réessayer.',
   unableToJoinFamilyAccount:
@@ -19,7 +24,8 @@ export const errors = {
     'Ce code ne correspond pas. Vérifiez bien les caractères — ou demandez un nouveau code s’il date un peu.',
   unableToClaimChildPairing:
     'Impossible de connecter l’appareil de l’enfant. Veuillez réessayer.',
-  unableToPollChildPairing: 'Impossible de vérifier l’état de l’association.',
+  unableToPollChildPairing:
+    'Impossible de vérifier l’état de l’association. Veuillez réessayer.',
   unableToConfirmChildPairing:
     'Impossible de confirmer cette association. Veuillez réessayer.',
   unableToRejectChildPairing:
@@ -43,8 +49,6 @@ export const errors = {
   noNetworkConnection:
     'Aucune connexion réseau. Vérifiez le Wi-Fi ou les données mobiles, puis réessayez.',
   connectionFailedTitle: 'Échec de la connexion',
-  connectionFailedBody:
-    'KidGate n’a pas pu se connecter. Vérifiez le Wi-Fi ou les données mobiles, puis sélectionnez « Reconnecter ».',
   reconnect: 'Reconnecter',
   unableToUploadPhoto: 'Impossible de téléverser la photo. Veuillez réessayer.',
   premiumSubscriptionRequired:
@@ -55,6 +59,8 @@ export const errors = {
   notFamilyMember:
     'Vous ne faites plus partie de cette famille. Demandez au propriétaire de la famille de vous inviter à nouveau.',
   familyNotCreated: 'Créez d’abord votre famille, puis invitez un autre parent.',
+  parentLimitReached:
+    'Cette famille compte déjà autant de parents que sa formule le permet.',
   childDeviceNotAllowed:
     'Il s’agit d’un appareil enfant et il ne peut pas gérer les paramètres familiaux.',
   deviceCredentialMissing:
@@ -101,7 +107,13 @@ export const errors = {
   leaveFamilyBeforeJoining:
     'Veuillez quitter votre famille actuelle avant d’en rejoindre une autre.',
   locationDailyLimitFree:
-    'La version gratuite a épuisé les localisations du jour. Premium suit la position en direct.',
+    'La version gratuite a épuisé les localisations du jour. Réessayez demain — Premium suit la position en direct.',
   deviceLimitReached:
-    'Vous avez atteint le nombre d’appareils que KidGate couvre pour une famille.',
+    'Cette famille a atteint le nombre d’appareils couverts par KidGate. Supprimez un appareil que vous n’utilisez plus, puis réessayez.',
+  rewardTaskLimitReached:
+    'Le nombre maximal de tâches actives en même temps est déjà atteint. Supprimez-en une ou attendez qu’une tâche soit terminée, puis réessayez.',
+  deviceNotPaired:
+    'Cet appareil n’est plus associé à ta famille. Demande à tes parents de l’associer de nouveau.',
+  bonusMinutesOutOfRange:
+    'Ce temps supplémentaire ne peut pas être accordé en une seule fois. Choisissez une autre durée et réessayez.',
 };

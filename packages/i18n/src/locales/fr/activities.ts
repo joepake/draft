@@ -47,11 +47,11 @@ export const activities = {
   activityTypeScreenTime: 'Temps d’écran',
   activityTypeCheckIn: 'Check-in',
   activityTypeLocationRequest: 'Localisation',
-  activityTypeTimeRequest: 'Demande de temps',
-  activityTypeRewardTask: 'Tâche à récompense',
+  activityTypeTimeRequest: 'Demandes de temps',
+  activityTypeRewardTask: 'Tâches à récompense',
   activityTypeSearchAlert: 'Alerte recherche',
   activityTypeWebFilter: 'Filtre web',
-  activityTypeEmergency: 'Urgence',
+  activityTypeEmergency: 'SOS',
   activityTypeUnknown: 'Activité',
 
   sosEscapeTitle: 'Déverrouillage d’urgence',
@@ -88,7 +88,7 @@ export const activities = {
   messageAlertTitleSearch: 'Recherche préoccupante',
   messageAlertBodySearch:
     'Un mot signalé a été détecté dans une recherche sur {{appName}}.',
-  activityTypeMessageAlert: 'Alerte de message',
+  activityTypeMessageAlert: 'Alertes de messages',
   messageCheckedTitle: 'Vérifié, rien d’inquiétant',
   messageCheckedBody:
     'Un mot surveillé est apparu dans {{appName}} et s’est révélé inoffensif dans son contexte.',
@@ -158,9 +158,9 @@ export const activities = {
   tamperBackgroundRefreshBody:
     'KidGate peut se mettre à jour moins fréquemment en arrière-plan tant que cette fonction n’est pas réactivée.',
 
-  tamperDeviceClockTitle: 'La date ou l’heure a été modifiée',
+  tamperDeviceClockTitle: 'Date, heure ou fuseau horaire modifiés',
   tamperDeviceClockBody:
-    'L’horloge de cet appareil ne correspond plus à l’heure correcte. Le Temps d’écran et les Heures bloquées continueront d’utiliser l’heure correcte.',
+    'La date, l’heure ou le fuseau horaire de cet appareil a changé — cela peut aussi arriver en voyage. Le Temps d’écran et les Heures bloquées ignorent une horloge modifiée et suivent le fuseau horaire de l’appareil.',
 
   /** @deprecated legacy description keys — kept for old activity docs */
   tamperOverlay:
@@ -188,9 +188,10 @@ export const activities = {
 
   unknownDevice: 'Appareil inconnu',
 
-  basicActivityNote:
-    'Les événements de verrouillage, déverrouillage et du système sont enregistrés dans Activité.',
   tamperUninstallProtectionTitle: 'Protection contre la désinstallation désactivée',
   tamperUninstallProtectionBody:
     'KidGate peut désormais être supprimé de ce téléphone.',
+  tamperReinstalledTitle: 'KidGate a été réinstallé',
+  tamperReinstalledBody:
+    'KidGate a été supprimé de cet appareil puis réinstallé. Rien n’a été enregistré entre-temps.',
 } as const;

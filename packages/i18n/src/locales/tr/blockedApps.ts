@@ -15,9 +15,15 @@ export const blockedApps = {
   installApprovalInfoLine1:
     'Çocuğun cihazı, bunu açtıktan sonra yüklenen her uygulamayı sizi beklemeden engeller.',
   installApprovalInfoLine2:
-    'Bir bildirim alırsınız ve uygulama, siz izin verene kadar aşağıda ve Uygulamalar’da görünür.',
+    'Bir bildirim alırsınız ve uygulama, siz izin verene kadar aşağıda, Engellenen Uygulamalar’da görünür.',
   installApprovalInfoLine3:
     'Bir uygulamaya izin vermek onun hemen açılmasını sağlar. İzin vermediğiniz bir uygulama ise engelli kalmaya devam eder.',
+  installApprovalInfoLine1Ios:
+    'Bu açıkken App Store çocuğun cihazında gizlenir, bu yüzden yeni uygulama yüklenemez.',
+  installApprovalInfoLine2Ios:
+    'Cihazda zaten yüklü olan uygulamalar çalışmaya devam eder.',
+  installApprovalInfoLine3Ios:
+    'Bir uygulamanın yüklenmesine izin vermek için bunu kapatın, uygulamayı yükleyin, ardından yeniden açın.',
   pendingSectionTitle: 'Otomatik olarak engellendi, sizi bekliyor',
   pendingSectionSubtitle:
     'Onayı açtıktan sonra yüklendi. Buradakilerin hiçbiri çocuğun cihazında seçilmedi.',
@@ -29,7 +35,7 @@ export const blockedApps = {
   toastAllowFailed: 'Bu uygulamaya izin verilemedi. Lütfen tekrar deneyin.',
   toastInstallApprovalSaveFailed: 'Kaydedilemedi. Lütfen tekrar deneyin.',
   toastChooseAppsFirst:
-    'Lütfen çocuğunuzdan önce KidGate Ayarları’nı açıp engellenecek uygulamaları seçmesini isteyin.',
+    'Önce uygulamaları seçin: çocuğun cihazında KidGate Ayarları’nı açın ve Ebeveyn PIN’ini girin.',
   toastSaveFailed: 'Kaydedilemedi. Lütfen tekrar deneyin.',
   statusBlockingOn: 'Engelleme açık',
   statusBlockingOff: 'Engelleme kapalı',
@@ -44,7 +50,9 @@ export const blockedApps = {
   toggleAccessibilityLabel: 'Uygulama Engellemeyi Etkinleştir',
   emptyTitle: 'Henüz engellenen uygulama yok',
   emptySubtitle:
-    'Çocuğun cihazında KidGate Ayarları → Engellenecek uygulamaları seç seçeneğini açın, Ebeveyn PIN’ini girin ve seçimi kaydedin.',
+    'Çocuğun cihazında KidGate Ayarları’nı açın, Ebeveyn PIN’ini girin, ardından Uygulama Engelleme → Engellenen Uygulamalar’ı açıp seçimi kaydedin.',
+  emptySubtitleTv:
+    'TV’de KidGate’i açın, “{{button}}” düğmesini seçin, Ebeveyn PIN’ini girin, ardından uygulamaları seçip kaydedin.',
   sectionTitle: 'Engelleme listesi',
   privacyTitle: 'Uygulama listesi çocuğun cihazından alınır',
   privacySubtitle:
@@ -77,5 +85,8 @@ export const blockedApps = {
   unableToOpenAppPicker: 'Uygulama seçici açılamadı. Lütfen tekrar deneyin.',
   wizardStepPin: 'Ayarlar sorduğunda ebeveyn PIN’ini girin.',
   wizardStepChoose:
-    'Engellenecek uygulamaları seç’i açın, uygulamaları işaretleyin ve kaydedin.',
+    'Uygulama Engelleme altında Engellenen Uygulamalar’ı açın, uygulamaları işaretleyin ve kaydedin.',
+  pickerSubtitle: 'Bu cihazda engellenecek uygulamaları ve kategorileri seçin.',
+  pickerSubtitleAndroid: 'Uygulama Engelleme açıkken işaretli uygulamalar açılamaz.',
+  pickerEmpty: 'Bu cihazda uygulama bulunamadı.',
 } as const;

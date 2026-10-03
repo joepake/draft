@@ -1,7 +1,7 @@
 export const webFilter = {
   title: 'Chặn nội dung web',
   fallbackDeviceName: 'Thiết bị của trẻ',
-  appliesToAll: 'Áp dụng cho cả {{count}} thiết bị của {{name}}',
+  appliesToAll: 'Áp dụng cho tất cả thiết bị của {{name}} ({{count}})',
   coverageLine: 'Đang chặn trên {{enforcing}}/{{total}} thiết bị',
   mergeNotice:
     'Các thiết bị của {{name}} đang có cài đặt bộ lọc web khác nhau. Lưu tại đây sẽ áp dụng một bộ cài đặt cho tất cả, gộp theo hướng chặt chẽ hơn.',
@@ -22,7 +22,7 @@ export const webFilter = {
   toggleAccessibilityLabel: 'Bật Chặn nội dung web',
   safeSearchSectionTitle: 'Tìm kiếm an toàn & YouTube',
   safeSearchSectionSubtitle:
-    'Ép Google, Bing và DuckDuckGo trả kết quả an toàn và khóa YouTube ở chế độ hạn chế. Cần bật bộ lọc web.',
+    'Ép Google, Bing và DuckDuckGo trả kết quả an toàn và khóa YouTube ở chế độ hạn chế. Cần bật tính năng Chặn nội dung web.',
   safeSearchLabel: 'Bắt buộc tìm kiếm an toàn',
   safeSearchHint:
     'Khóa Tìm kiếm an toàn của Google, chế độ hạn chế của YouTube, và đặt Bing cùng DuckDuckGo ở mức nghiêm ngặt. Áp dụng cho Android, Android TV và Chrome.',
@@ -64,9 +64,13 @@ export const webFilter = {
 
   heroSubtitleWindows:
     'Chạy trình phân giải riêng của KidGate trên máy tính của trẻ để chặn các trang có nội dung không phù hợp đã biết trên mọi trình duyệt.',
+  heroSubtitleExtension:
+    'Chạy tiện ích KidGate trong Chrome trên máy tính của trẻ để chặn các trang có nội dung không phù hợp đã biết trong trình duyệt đó.',
 
   toggleHintWindows:
     'Không cần phê duyệt gì trên máy tính. Dịch vụ nền của KidGate bật bộ lọc trong vài giây.',
+  toggleHintExtension:
+    'Không cần phê duyệt gì. Bộ lọc chỉ chạy trong Chrome, không áp dụng cho trình duyệt hay ứng dụng khác.',
 
   infoLine1Windows:
     'KidGate chạy một trình phân giải trên máy, kiểm tra những trang đang được tra cứu và chặn các trang thuộc danh mục bạn chọn.',
@@ -79,19 +83,23 @@ export const webFilter = {
 
   infoLine4Windows:
     'Bộ lọc chỉ đọc tên trang. Nó không thấy bên trong một trang, và trang vừa được tra cứu có thể còn mở được vài phút.',
+  infoLine1Extension:
+    'Tiện ích KidGate kiểm tra từng trang trước khi Chrome mở và chặn các trang thuộc danh mục bạn đã chọn.',
+  infoLine2Extension:
+    'Chỉ Chrome được lọc, trong hồ sơ Chrome đã cài KidGate. Các trình duyệt và ứng dụng khác trên máy không được lọc.',
+  infoLine3Extension:
+    'Cửa sổ ẩn danh chỉ được lọc khi đã bật “Cho phép ở chế độ ẩn danh” cho tiện ích. Cửa sổ khách không được lọc.',
+  infoLine4Extension:
+    'Trang bị chặn cho phép con xin bạn mở trang đó. Gỡ hoặc tắt tiện ích sẽ làm bộ lọc ngừng hoạt động.',
 
   windowsFilterNote: 'Dùng trình phân giải riêng của KidGate trên Windows',
-  webFilteringNote:
-    'iOS dùng bộ lọc nội dung người lớn của Thời gian sử dụng. Android, Mac và Windows dùng danh sách chặn riêng của KidGate.',
-  safeSearchAlertsNote:
-    'Safari không chia sẻ từ khóa tìm kiếm; cảnh báo theo từ khóa cần một trình duyệt an toàn được quản lý riêng.',
-  webHistoryNote: 'Cần trình duyệt có bộ lọc hoặc cơ chế báo cáo qua DNS/VPN.',
+  extensionFilterNote: 'Dùng tiện ích KidGate trong Chrome',
   categoriesTitle: 'Chặn những gì',
   categoriesSubtitle:
     'KidGate dùng danh sách trang web riêng. Danh sách này bao phủ những trang trẻ thực sự hay vào, không phải toàn bộ Internet — hãy kết hợp thêm với danh sách bên dưới.',
-  androidOnlyCategory: 'Không dùng được trên iPhone — hoạt động trên Android và Mac',
+  androidOnlyCategory: 'Không dùng được trên iPhone — hoạt động trên các thiết bị khác',
   iosCategoryNote:
-    'iPhone chỉ hỗ trợ {{category}}, dùng bộ lọc của Apple. Các danh mục còn lại áp dụng cho thiết bị Android và Mac.',
+    'iPhone chỉ hỗ trợ {{category}}, dùng bộ lọc của Apple. Các danh mục còn lại áp dụng cho các thiết bị khác.',
   allowListTitle: 'Luôn cho phép',
   allowListSubtitle: 'Những trang vẫn vào được kể cả khi một danh mục sẽ chặn chúng.',
   allowListEmpty: 'Chưa có ngoại lệ nào.',
@@ -105,6 +113,8 @@ export const webFilter = {
     'Mọi trang ngoài danh sách cho phép đều bị từ chối. Bộ lọc chặn ở mức toàn máy, nên các ứng dụng khác cũng sẽ mất kết nối.',
   allowListOnlyHintIos:
     'Safari và trình duyệt trong ứng dụng chỉ mở được các trang trong danh sách cho phép.',
+  allowListOnlyHintExtension:
+    'Chrome chỉ mở được các trang trong danh sách cho phép. Các trình duyệt và ứng dụng khác không bị ảnh hưởng.',
   allowListOnlyNeedsEntries: 'Thêm ít nhất một trang được phép trước khi bật.',
   domainPlaceholder: 'vidu.com',
   addDomain: 'Thêm trang',

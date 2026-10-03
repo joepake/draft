@@ -8,6 +8,7 @@ export const family = {
   addChildOption: '子どものデバイスを追加',
   addJoinFamilyOption: 'ファミリーに参加',
   addParentOption: '保護者を招待',
+  parentLimitFull: 'これが1つのファミリーに登録できる保護者の上限です。',
   loginWebOption: 'ウェブでログイン',
   // The "who uses this device?" assignment sheet.
   assignSheetTitle: '{{deviceName}}は誰が使いますか？',
@@ -31,7 +32,7 @@ export const family = {
     '{{childName}} のルールを、許可・ブロックしたサイトも含めてコピーします。',
   quickProtectBedtime: '就寝時の休止時間',
   quickProtectBedtimeHint: '22:00〜7:00の間、デバイスの使用をブロックします。',
-  quickProtectDailyLimit: '1日のスクリーンタイム上限',
+  quickProtectDailyLimit: '1日の上限',
   quickProtectDailyLimitHint:
     '1日{{minutes}}分。お子さまのすべてのデバイスで合算されます。',
   quickProtectWebFilter: 'Webフィルター',
@@ -63,6 +64,14 @@ export const family = {
   unassignedHint: 'これらのデバイスはまだ誰にも集計されていません。',
   unassignedHintMember:
     'これらのデバイスをお子さまに割り当てられるのはファミリー管理者のみです。',
+  // One device's own page (the web's Controls tab): the two sentences above are
+  // said to a group heading, and "these devices" is false about one machine.
+  unassignedDeviceHint: 'このデバイスはまだ誰にも集計されていません。',
+  unassignedDeviceHintMember:
+    'このデバイスを誰が使うかは、ファミリー管理者が選びます。',
+  // The pairing sheets' success step for a joined parent, who may pair but not assign.
+  pairedDeviceBodyMember:
+    '子どものデバイスがペアリングを確認しました。誰が使うかは、ファミリー管理者が選びます。',
   // The footer strip: children who hold no device get no group of their own.
   childrenWithoutDeviceTitle: 'デバイスのない子ども',
   // Child detail screen.
@@ -71,9 +80,14 @@ export const family = {
   childDetailDevicesTitle: 'デバイス',
   childDetailSwipeHint: 'デバイスをスワイプすると割り当てを解除できます。',
   childDetailAssignMore: '別のデバイスを割り当てる…',
+  // The same row while the child has no device yet — "another" needs a first.
+  childDetailAssignFirst: 'デバイスを割り当てる…',
   childDetailAssignSheetTitle: '{{childName}}にデバイスを割り当てる',
   childDetailNoDevices:
     'デバイスはまだありません。下で割り当てるか、ファミリータブから新しいデバイスをペアリングしてください。',
+  // Same screen when nothing is left below to assign.
+  childDetailNoDevicesPair:
+    'デバイスはまだありません。ファミリータブからデバイスをペアリングし、誰が使うかを聞かれたらこのお子さまを選んでください。',
   // Same screen for a joined parent, who may pair but may not assign.
   childDetailNoDevicesMember:
     'まだデバイスがありません。どのデバイスが誰のものかは、ファミリー管理者のみが決められます。',
@@ -82,7 +96,7 @@ export const family = {
   scanButtonAccessibility: 'コードをスキャン',
   scanTitle: 'コードをスキャン',
   scanBody:
-    '子どものデバイス、家族への招待、またはパソコンに表示されたコードにカメラを向けてください。',
+    '子どものデバイスに表示されたコード、家族への招待、またはウェブログイン用のコードにカメラを向けてください。',
   manualCodeLabel: '6文字のコードを入力',
   manualInstructions: '他のデバイスに表示されている6桁のコードを入力してください。',
 
@@ -130,6 +144,11 @@ export const family = {
   healthOffline: 'オフライン',
   devicePausedLabel: '一時停止',
   devicePausedHint: '無料プランで一時停止中 — ルールはすべて有効です',
+  // What Paused means, said where the choice is made: the choose-a-device sheet on
+  // both consoles. Checked against every agent 2026-09-28 — enforcement never
+  // stops while parked; the reports do, and an SOS still goes through.
+  devicePausedMeaning:
+    '一時停止中のデバイスも、今のルールをそのまま適用し続けます。利用時間・位置情報・履歴の報告は止まりますが、SOSは引き続き届きます。',
   parkReviewTitle: '無料体験が終わる前にオンにしてください',
   parkReviewBody:
     '無料体験が終わると、1台だけが報告の送信とルールの変更を続け、残りは今のルールをそのまま保ちます。残りのデバイスではあとからルールを緩めることしかできないため、今オフのものはオフのままになります。',
@@ -141,14 +160,35 @@ export const family = {
   parkedBannerBody:
     'ルールはすべてのデバイスで働き続けます。無料プランで報告できるのは1台だけで、ルールを厳しくできるのもその1台だけです。そのデバイスを選ぶか、アップグレードしてすべて残してください。',
   parkedBannerAction: 'デバイスを選ぶ',
+  holdFamilyTitle: 'KidGate がこのファミリーの利用を一時的に制限しています',
+  holdDeviceTitle: 'KidGate が {{deviceName}} の利用を一時的に制限しています',
+  holdFamilyBody:
+    'すべてのデバイスはルールを維持しますが、制限が解除されるまでレポートを送信しません。',
+  holdDeviceBody:
+    'このデバイスはルールを維持しますが、制限が解除されるまでレポートを送信しません。',
+  holdReasonUnusualActivity:
+    '理由：このアカウントで通常と異なるアクティビティがありました。',
+  holdReasonOutdatedApp:
+    '理由：このアカウントの KidGate アプリが古いバージョンです。更新してから、サポートにお問い合わせください。',
+  holdReasonTermsViolation: '理由：KidGate の利用規約への違反。',
+  holdReasonOther: '理由：KidGate がこのアカウントを確認しています。',
+  holdNote: 'KidGate からのメッセージ：{{note}}',
+  holdAppeal: 'サポートに連絡',
+  holdAppealMessage: 'ファミリーアカウントの利用制限について問い合わせたいです。',
+  pairedDevicePaused:
+    '無料プランで報告できるのは1台だけで、ルールを厳しくできるのもその1台だけなので、このデバイスは一時停止中の状態で始まります。',
+  pairingWillStartPaused:
+    '無料プランで報告できるのは1台だけで、ルールを厳しくできるのもその1台だけなので、新しいデバイスは一時停止中の状態で始まります。',
   chooseMonitoredTitle: 'メインのデバイスを選ぶ',
   chooseMonitoredBody:
     'ルールはすべてのデバイスでそのまま働きます。選んだデバイスが利用時間と位置情報を送り、ルールを厳しくできるのもそのデバイスだけです。ほかのデバイスではルールを緩めることしかできません。選んだデバイスの変更は{{days}}日に1回できます。',
   chooseMonitoredConfirm: 'このデバイスを見守る',
   chooseMonitoredUpgrade: 'すべてのデバイスを残す — アップグレード',
   chooseMonitoredDone: '{{name}}が報告するデバイスになりました',
+  chooseMonitoredCurrent: 'いま報告しているデバイス',
   monitoredCooldown: '報告するデバイスは{{days}}日に1回しか変更できません',
-  monitoredChooseFailed: '報告するデバイスを変更できませんでした',
+  monitoredChooseFailed:
+    '報告するデバイスを変更できませんでした。もう一度お試しください。',
 
   cardWhereLabel: '位置情報',
 
@@ -168,9 +208,6 @@ export const family = {
     '子どものデバイスを追加して、スクリーンタイムやアプリの利用状況の管理を始めましょう。',
 
   setupFamilyTitle: 'ファミリーを設定',
-
-  setupFamilyDescription:
-    'ファミリーを作成してお子さまのデバイスを接続するか、他の保護者からの招待で既存のファミリーに参加できます。',
 
   createFamilyButton: 'ファミリーを作成',
 
@@ -205,14 +242,15 @@ export const family = {
 
   stepsHeading: 'はじめに',
 
-  step1Title: '「子どものデバイスを追加」をタップ',
+  step1Title: 'お子さまのデバイスで KidGate を開く',
 
-  step1Description: 'ペアリング用のQRコードがこの画面に表示されます。',
+  step1Description:
+    'お子さまが使うスマートフォン、タブレット、テレビ、またはパソコンに KidGate をインストールします。スマートフォンやタブレットでは「これはお子さまのデバイスです」を選んでください。QRコードと6文字のコードが表示されます。',
 
-  step2Title: '子どものデバイスで読み取る',
+  step2Title: 'この画面で「子どものデバイスを追加」をタップ',
 
   step2Description:
-    'お子さまのスマートフォンまたはタブレットに KidGate をインストールし、「このデバイスは子ども用です」を選んでQRコードをスキャンしてください。',
+    'そのQRコードをこのスマートフォンで読み取るか、6文字のコードを入力してください。',
 
   connectChildButton: '子どものデバイスを接続',
   listHint: 'デバイスを左にスワイプすると削除できます',

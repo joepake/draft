@@ -62,7 +62,10 @@ export default function StepUpSheet({ familyOwnerUserId, onClose, onUnlocked }) 
         } else if (e?.code === 'pin/not-set') {
           setError(t('dash.pinNotSet'));
         } else {
-          setError(e?.message || t('controlError.generic'));
+          // Never `e.message`: the server's English, or the browser's.
+          setError(
+            t(e?.code === 'network' ? 'controlError.network' : 'controlError.generic'),
+          );
         }
       } finally {
         setBusy(false);

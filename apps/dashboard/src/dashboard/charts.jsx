@@ -10,6 +10,7 @@ import {
 import { otherAppsMinutes } from '@kidgate/core/domain/childUsage';
 import { useActivityTranslate } from './activityCopy.js';
 import { useAppCategories } from './useAppCategories.js';
+import { formatClock, formatHm } from './locale.js';
 
 /** Actual pixel width of a container, so SVG text renders at its real size. */
 export function useMeasure() {
@@ -527,13 +528,6 @@ const TIMELINE_TICKS = [0, 3, 6, 9, 12, 15, 18, 21, 24];
 const TIMELINE_GRID = TIMELINE_TICKS.slice(1, -1);
 const TIMELINE_CLASS = { used: 'tl-used', idle: 'tl-idle', unknown: 'tl-unknown' };
 
-/** `540` → `09:00`. The band's own labels, not a date format. */
-function clockAt(minute) {
-  const h = Math.floor(minute / 60) % 24;
-  const m = minute % 60;
-  return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`;
-}
-
 export function UsageDayTimeline({ day, platform, capability, lockedSlot }) {
   const { t: tr } = useT();
   const availability = timelineAvailability({
@@ -605,7 +599,7 @@ export function UsageDayTimeline({ day, platform, capability, lockedSlot }) {
                * single minute wide, which is a target no pointer can hold.
                * The legend carries the meaning; this carries the detail.
                */
-              title={`${clockAt(run.startMinute)}–${clockAt(run.endMinute + 1)} · ${tr(
+              title={`${formatClock(run.startMinute)}–${formatClock(run.endMinute + 1)} · ${tr(
                 `viz.timeline${run.state === 'unknown' ? 'Unmeasured' : run.state === 'used' ? 'Used' : 'Idle'}`,
               )}`}
             />
@@ -731,13 +725,14 @@ export function ScheduleGrid({ windows }) {
         {windows.map((w, i) => (
           <span key={i}>
             <i className={`dot ${WINDOW_CLASS[i % 3]}-dot`} />
-            {w.label || tr('viz.blocked')} · {w.start}–{w.end}
+            {w.label || tr('viz.blocked')} · {formatHm(w.start)}–{formatHm(w.end)}
           </span>
         ))}
       </div>
       {hover && (
         <div className="sched-hint">
-          {hover.w.label || tr('viz.blockedHours')} · {hover.w.start}–{hover.w.end}
+          {hover.w.label || tr('viz.blockedHours')} · {formatHm(hover.w.start)}–
+          {formatHm(hover.w.end)}
         </div>
       )}
     </div>

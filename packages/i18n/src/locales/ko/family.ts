@@ -8,6 +8,7 @@ export const family = {
   addChildOption: '자녀 기기 추가',
   addJoinFamilyOption: '가족에 참여',
   addParentOption: '부모 초대',
+  parentLimitFull: '한 가족에 둘 수 있는 최대 부모 수입니다.',
   loginWebOption: '웹에서 로그인',
   // The "who uses this device?" assignment sheet.
   assignSheetTitle: '{{deviceName}}은(는) 누가 사용하나요?',
@@ -31,7 +32,7 @@ export const family = {
     '{{childName}}의 규칙을 허용 및 차단한 사이트까지 함께 복사합니다.',
   quickProtectBedtime: '야간 차단 시간',
   quickProtectBedtimeHint: '밤 10시부터 오전 7시까지 기기 사용을 차단합니다.',
-  quickProtectDailyLimit: '일일 스크린 타임 제한',
+  quickProtectDailyLimit: '일일 제한',
   quickProtectDailyLimitHint:
     '하루 {{minutes}}분, 자녀의 모든 기기에서 함께 집계됩니다.',
   quickProtectWebFilter: '웹 필터',
@@ -45,7 +46,7 @@ export const family = {
     '일부 보호 설정을 저장하지 못했습니다. 자녀 프로필에서 다시 시도해 주세요.',
   pairDeviceFirstTitle: '아직 페어링된 기기가 없습니다',
   pairDeviceFirstBody:
-    '먼저 이 자녀의 기기를 페어링하세요 — 가족 탭에서 스캔 아이콘 또는 "+"를 탭한 뒤 자녀 기기 추가를 선택합니다. 기기가 연결되는 순간부터 이 관리 기능이 작동합니다.',
+    '먼저 이 자녀의 기기를 페어링하세요 — 가족 탭에서 스캔 아이콘 또는 “+”를 탭한 뒤 자녀 기기 추가를 선택합니다. 기기가 연결되는 순간부터 이 관리 기능이 작동합니다.',
   // Child-grouped family list: group header lock-all + unassigned group.
   lockAll: '모두 잠금',
   unlockAll: '모두 잠금 해제',
@@ -62,6 +63,13 @@ export const family = {
   assignDeviceCta: '자녀에게 지정…',
   unassignedHint: '이 기기들은 아직 아무에게도 집계되지 않습니다.',
   unassignedHintMember: '이 기기들은 가족 소유자만 아이에게 배정할 수 있습니다.',
+  // One device's own page (the web's Controls tab): the two sentences above are
+  // said to a group heading, and "these devices" is false about one machine.
+  unassignedDeviceHint: '이 기기는 아직 아무에게도 집계되지 않습니다.',
+  unassignedDeviceHintMember: '이 기기를 누가 사용할지는 가족 소유자가 선택합니다.',
+  // The pairing sheets' success step for a joined parent, who may pair but not assign.
+  pairedDeviceBodyMember:
+    '자녀 기기에서 페어링을 확인했습니다. 누가 사용할지는 가족 소유자가 선택합니다.',
   // The footer strip: children who hold no device get no group of their own.
   childrenWithoutDeviceTitle: '기기가 없는 자녀',
   // Child detail screen.
@@ -70,9 +78,14 @@ export const family = {
   childDetailDevicesTitle: '기기',
   childDetailSwipeHint: '기기를 밀면 할당을 해제할 수 있습니다.',
   childDetailAssignMore: '다른 기기 지정…',
+  // The same row while the child has no device yet — "another" needs a first.
+  childDetailAssignFirst: '기기 지정…',
   childDetailAssignSheetTitle: '{{childName}}에게 기기 지정',
   childDetailNoDevices:
     '아직 기기가 없습니다. 아래에서 지정하거나 가족 탭에서 새 기기를 연결하세요.',
+  // Same screen when nothing is left below to assign.
+  childDetailNoDevicesPair:
+    '아직 기기가 없습니다. 가족 탭에서 기기를 연결하고, 앱에서 누가 사용하는지 물으면 이 자녀를 선택하세요.',
   // Same screen for a joined parent, who may pair but may not assign.
   childDetailNoDevicesMember:
     '아직 기기가 없습니다. 어떤 기기가 누구의 것인지는 가족 소유자만 정할 수 있습니다.',
@@ -80,7 +93,8 @@ export const family = {
   childDetailColorLabel: '색상',
   scanButtonAccessibility: '코드 스캔',
   scanTitle: '코드 스캔',
-  scanBody: '자녀 기기, 가족 초대 코드 또는 컴퓨터에 표시된 코드에 카메라를 비추세요.',
+  scanBody:
+    '자녀 기기에 표시된 코드, 가족 초대 코드 또는 웹 로그인 코드에 카메라를 비추세요.',
   manualCodeLabel: '6자리 코드 입력',
   manualInstructions: '다른 기기에 표시된 6자리 코드를 입력하세요.',
 
@@ -127,6 +141,11 @@ export const family = {
   healthOffline: '오프라인',
   devicePausedLabel: '일시중지',
   devicePausedHint: '무료 플랜에서 일시중지됨 — 모든 규칙은 계속 적용됩니다',
+  // What Paused means, said where the choice is made: the choose-a-device sheet on
+  // both consoles. Checked against every agent 2026-09-28 — enforcement never
+  // stops while parked; the reports do, and an SOS still goes through.
+  devicePausedMeaning:
+    '일시중지된 기기도 지금의 규칙을 그대로 적용합니다. 사용 시간, 위치, 기록은 더 이상 보고하지 않지만 SOS는 계속 전달됩니다.',
   parkReviewTitle: '체험이 끝나기 전에 켜 두세요',
   parkReviewBody:
     '체험이 끝나면 한 기기만 보고를 보내고 규칙 변경을 받으며, 나머지 기기는 지금의 규칙을 그대로 유지합니다. 그 기기들에서는 이후 규칙을 완화만 할 수 있으므로, 지금 꺼 둔 것은 계속 꺼진 채로 남습니다.',
@@ -138,14 +157,33 @@ export const family = {
   parkedBannerBody:
     '규칙은 모든 기기에서 계속 작동합니다. 무료 플랜은 한 기기에서만 보고를 받고, 규칙을 더 엄격하게 바꾸는 것도 그 기기에서만 가능합니다 — 그 기기를 선택하거나, 업그레이드해 모두 유지하세요.',
   parkedBannerAction: '기기 선택',
+  holdFamilyTitle: 'KidGate가 이 가족의 이용을 일시 제한했습니다',
+  holdDeviceTitle: 'KidGate가 {{deviceName}} 기기의 이용을 일시 제한했습니다',
+  holdFamilyBody:
+    '모든 기기는 규칙을 그대로 유지하지만, 제한이 해제될 때까지 보고서를 보내지 않습니다.',
+  holdDeviceBody:
+    '이 기기는 규칙을 그대로 유지하지만, 제한이 해제될 때까지 보고서를 보내지 않습니다.',
+  holdReasonUnusualActivity: '사유: 이 계정에서 평소와 다른 활동이 감지되었습니다.',
+  holdReasonOutdatedApp:
+    '사유: 이 계정의 KidGate 앱이 오래된 버전입니다. 업데이트한 후 지원팀에 문의하세요.',
+  holdReasonTermsViolation: '사유: KidGate 이용약관 위반.',
+  holdReasonOther: '사유: KidGate에서 이 계정을 검토하고 있습니다.',
+  holdNote: 'KidGate의 메시지: {{note}}',
+  holdAppeal: '지원팀에 문의',
+  holdAppealMessage: '가족 계정의 이용 제한에 대해 문의드립니다.',
+  pairedDevicePaused:
+    '무료 플랜은 한 기기에서만 보고를 받고 규칙을 더 엄격하게 바꾸는 것도 그 기기에서만 가능하므로, 이 기기는 일시중지된 상태로 시작됩니다.',
+  pairingWillStartPaused:
+    '무료 플랜은 한 기기에서만 보고를 받고 규칙을 더 엄격하게 바꾸는 것도 그 기기에서만 가능하므로, 새 기기는 일시중지된 상태로 시작됩니다.',
   chooseMonitoredTitle: '주 기기를 선택하세요',
   chooseMonitoredBody:
     '모든 기기에서 규칙은 그대로 유지됩니다. 선택한 기기가 사용 시간과 위치를 보내고, 규칙을 더 엄격하게 바꿀 수 있는 것도 그 기기뿐입니다 — 나머지 기기에서는 완화만 할 수 있습니다. 선택한 기기는 {{days}}일에 한 번 바꿀 수 있습니다.',
   chooseMonitoredConfirm: '이 기기 지켜보기',
   chooseMonitoredUpgrade: '모든 기기 유지 — 업그레이드',
   chooseMonitoredDone: '이제 {{name}}이(가) 보고하는 기기입니다',
+  chooseMonitoredCurrent: '지금 보고하는 기기',
   monitoredCooldown: '보고하는 기기는 {{days}}일에 한 번만 변경할 수 있습니다',
-  monitoredChooseFailed: '보고하는 기기를 변경할 수 없습니다',
+  monitoredChooseFailed: '보고하는 기기를 변경할 수 없습니다. 다시 시도해 주세요.',
 
   cardWhereLabel: '위치',
 
@@ -164,9 +202,6 @@ export const family = {
   emptyDescription: '자녀 기기를 추가하고 화면 사용 시간과 앱 사용을 관리하세요.',
 
   setupFamilyTitle: '가족 설정',
-
-  setupFamilyDescription:
-    '가족을 만들어 자녀의 기기를 연결하거나 다른 부모의 초대를 받아 기존 가족에 참여하세요.',
 
   createFamilyButton: '가족 만들기',
 
@@ -201,14 +236,14 @@ export const family = {
 
   stepsHeading: '시작하기',
 
-  step1Title: '“자녀 기기 추가”를 누르세요',
+  step1Title: '자녀 기기에서 KidGate 열기',
 
-  step1Description: '연결용 QR 코드가 이 화면에 표시됩니다.',
+  step1Description:
+    '자녀가 사용하는 휴대전화, 태블릿, TV 또는 컴퓨터에 KidGate를 설치하세요. 휴대전화나 태블릿에서는 “자녀 기기입니다”를 선택하세요. QR 코드와 6자리 코드가 표시됩니다.',
 
-  step2Title: '자녀의 기기로 스캔하세요',
+  step2Title: '여기서 “자녀 기기 추가”를 누르세요',
 
-  step2Description:
-    '자녀의 휴대전화 또는 태블릿에 KidGate를 설치하고 “이 기기는 자녀의 기기입니다”를 선택한 후 QR 코드를 스캔하세요.',
+  step2Description: '이 휴대전화로 그 QR 코드를 스캔하거나 6자리 코드를 입력하세요.',
 
   connectChildButton: '자녀 기기 연결',
   listHint: '기기를 왼쪽으로 밀어 삭제하세요',
@@ -230,12 +265,12 @@ export const family = {
 
   deviceNotFoundError: '기기를 찾을 수 없습니다',
 
-  deviceRemovedAlertTitle: '기기가 삭제되었습니다',
+  deviceRemovedAlertTitle: '기기가 삭제되었어요',
 
   deviceRemovedAlertMessage:
-    '부모가 이 기기를 가족 계정에서 삭제했습니다. 다시 연결하려면 자녀 역할을 다시 선택하세요.',
+    '부모님이 이 기기를 가족 계정에서 삭제했어요. 다시 연결하려면 자녀 역할을 다시 선택하세요.',
 
-  deviceNotRegistered: '이 기기는 아직 등록되지 않았습니다.',
+  deviceNotRegistered: '이 기기는 아직 등록되지 않았어요.',
 
   defaultDeviceName: '자녀 기기',
 
@@ -354,7 +389,7 @@ export const family = {
   childDetailRemoveTitle: '{{childName}} 프로필 삭제',
   childDetailRemovingButton: '삭제 중…',
   childDetailOnlineCount: '{{total}}대 중 {{online}}대 온라인',
-  childDetailBudgetTitle: '하루 제한',
+  childDetailBudgetTitle: '일일 제한',
   childDetailSectionControls: '모든 기기에 적용되는 규칙',
   childDetailSectionSafety: '모든 기기를 합쳐서 표시',
   childDetailSectionAlerts: '모든 기기를 한 목록으로',

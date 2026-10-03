@@ -32,8 +32,11 @@ export const plans = {
   compareColumnFree: 'Free',
   compareColumnPremium: 'Premium',
   compareDevices: 'Child devices',
-  compareDevicesFree: '1',
-  compareDevicesPremium: 'Unlimited',
+  compareDevicesFree: 'Rules on all, reports from 1',
+  compareDevicesPremium: 'Reports from all',
+  compareParents: 'Parents',
+  compareParentsFree: 'Up to 3',
+  compareParentsPremium: 'Up to 6',
   compareSync: 'Updates from the device',
   compareSyncFree: 'Every 30 minutes',
   compareSyncPremium: 'Live',
@@ -50,14 +53,14 @@ export const plans = {
   compareCountOnly: 'How many, not which',
   compareWebPremium: 'Full history and searches',
   compareNewApps: 'New apps installed',
-  compareNewAppsPremium: 'Which apps, and approval before install',
-  compareMessages: 'Message alerts (Android)',
+  compareNewAppsPremium: 'Which apps, by name',
+  compareMessages: 'Message Alerts (Android)',
   compareSafety: 'Protection alerts and Check-In',
   compareSafetyFree: 'Alerts + Check-In',
   compareSafetyPremium: 'Adds a photo to every Check-In',
   compareControls: 'App blocking and web filter',
   compareControlsFree: 'Any app, adult content',
-  compareControlsPremium: 'By category, per-app limits, your own lists',
+  compareControlsPremium: 'By category, your own lists',
   compareReport: 'Weekly report',
   compareReportFree: 'Once, when the trial ends',
   compareReportPremium: 'Every week',
@@ -66,7 +69,7 @@ export const plans = {
   compareActivityFeedPremium: '30 days',
   compareChildReport: 'Per-child reports',
   compareIncluded:
-    'Both plans include the daily limit, blocked hours, blocked apps, the web filter, remote lock, SOS, time requests and reward tasks on iPhone, Android, Mac and Windows in one family, plus the web dashboard and several parents. Android TV and Chromebook are on the way and carry fewer controls.',
+    'Both plans include the Daily Limit, Blocked Hours, Blocked Apps, the Web Filter, Device Lock, SOS, Time Requests and Reward tasks on iPhone, Android, Mac and Windows in one family, plus the web dashboard. Android TV and Chromebook are supported too, with fewer controls.',
   // The rows above, folded into the five reasons Premium sells
   // (`docs/PRICING.md` §5). Groups and their order: `planComparison` in
   // `@kidgate/core/domain`. A headline is one or two words; a tagline is one
@@ -93,12 +96,12 @@ export const plans = {
   featurePausePhone: 'Device Lock',
   featureDailyLimits: 'Daily Limit',
   featureBlockedHours: 'Blocked Hours',
-  featureAppLimits: 'A time limit per app',
-  featureInstallApproval: 'Approve new installs',
+  featureAppLimits: 'App Limits',
+  featureInstallApproval: 'Approve new apps',
   featureTimeRequests: 'Time Requests',
   featureAppBlocking: 'Blocked Apps',
   featureWebFiltering: 'Web Filter',
-  featureSeeLocation: 'Live Location',
+  featureSeeLocation: 'Location',
   featureTamperAlerts: 'Alerts if KidGate is removed',
   featureSosAlerts: 'SOS Alerts',
   trialPlanName: 'Trial',
@@ -107,6 +110,8 @@ export const plans = {
   premiumPlanName: 'Premium',
   subscribeBadge: 'Subscribe',
   currentPlanKicker: 'Current plan',
+  // The plan card's screen-reader label: one sentence, not a kicker glued to a name.
+  currentPlanA11y: 'Current plan: {{plan}}',
   trialEnded: 'Trial ended',
   trialPending: 'Trial not started',
   premiumActiveSubtitle: 'You have full access right now.',
@@ -123,7 +128,7 @@ export const plans = {
   memberSubscriptionNotice:
     'One plan covers the whole family and only the owner pays. You can see whether the family is on trial or subscribed.',
   memberTrialActiveSubtitle:
-    'This family is on trial. When it ends, every rule keeps working on one device; the owner can subscribe for live activity, history and every device.',
+    'This family is on trial. When it ends, every rule keeps working on every device and one device keeps reporting; the owner can subscribe for live activity, history and reports from every device.',
   memberTrialEndedSubtitle:
     'This family’s trial has ended. Daily Limit, Blocked Apps, Web Filter and location still work. Ask the owner to subscribe for live updates, history and alerts.',
   memberSetupTrialSubtitle:
@@ -137,7 +142,8 @@ export const plans = {
     'Your purchase is waiting for approval. Premium unlocks as soon as it goes through.',
   purchaseFailed: 'The purchase did not go through. Try again.',
   storeNotReady: 'The store is not ready yet. Try again in a moment.',
-  premiumNotAvailable: 'Premium is not available to purchase right now.',
+  premiumNotAvailable:
+    'Premium is not available to purchase on this device right now. Try again later.',
   premiumProductNotFound:
     'Premium is not available to purchase right now. Try again later.',
   subscriptionOfferNotConfigured:
@@ -146,7 +152,8 @@ export const plans = {
   noActiveSubscription: 'No active subscription found.',
   purchasesRestored: 'Purchases restored.',
   unableToRestorePurchases: 'Unable to restore purchases. Try again.',
-  purchaseVerificationFailed: 'Purchase verification did not succeed.',
+  purchaseVerificationFailed:
+    'Unable to verify the purchase. Wait a moment, then tap Restore purchases.',
   // Shown to joined parents — only the family owner can subscribe, so this
   // has to name who needs to act instead of offering a button they can't use.
   familyPremiumEndedTitle: 'This family’s Premium has ended',
@@ -163,15 +170,16 @@ export const plans = {
   trustOnePlan: 'One plan, whole family',
   trustNoAds: 'No ads, ever',
   freePlanName: 'Free',
-  freeDescription: 'Keep the basics running for one child device, with no time limit.',
-  featureOneChildDevice: 'One child device',
+  freeDescription:
+    'The basics keep running on every child device, with reports from one. It never expires.',
+  featureOneChildDevice: 'Reports from one child device',
   termLifetime: 'Lifetime',
   badgeOneTime: 'One-time',
   planPeriodOnce: 'once',
   billedOnce:
-    'Pay once for up to {{devices}} child devices, for as long as KidGate is available',
+    'Pay once for reports from up to {{devices}} child devices, for as long as KidGate is available',
   sectionFreePlan: 'If you never subscribe',
-  devicesUnlimited: 'Unlimited child devices',
+  devicesUnlimited: 'Every child device reports',
   featureFootnotePlatforms:
     'A few features depend on what each platform allows, so not all of them are available on every device.',
   sectionPlatforms: 'Where KidGate runs',
@@ -188,7 +196,7 @@ export const plans = {
   platformAndroidTvLimits:
     'No message alerts, location, SOS or time requests. App blocking is best-effort.',
   platformChromebookLimits:
-    'Web filter only — no Daily Limit, Blocked Hours, App Blocking, Device Lock, SOS or location.',
+    'Web Filter only — no Daily Limit, Blocked Hours, Blocked Apps, Device Lock, SOS or location.',
   platformComingSoon: 'Coming soon',
   platformWindows: 'Windows',
   platformWindowsDetail: 'Child device only · Windows 10 and later',
@@ -229,5 +237,8 @@ export const plans = {
   teaserLiveNote: 'Free updates every 30 minutes. Premium is live.',
   teaserUsageTimeline:
     'Premium shows when in the day the device was used, hour by hour.',
+  teaserProofParents: 'Parents: {{count}}',
+  teaserParentCap:
+    'That is every parent a family can have without Premium. Premium allows twice as many.',
   teaserDeviceNote: 'Only your one monitored device reports.',
 } as const;

@@ -22,6 +22,7 @@ const ACTION_LABEL = {
   resend: 'dash.attnResend',
   howToFix: 'dash.attnHowToFix',
   unlock: 'dash.attnUnlock',
+  pinReset: 'dash.attnUnlock',
 };
 
 export default function AttentionList({

@@ -18,10 +18,12 @@ export const timeRequest = {
   statusCooldown: '{{time}} 후에 새 요청을 보낼 수 있어요.',
   statusDailyLimitExceeded:
     '오늘의 스크린 타임을 모두 사용했어요. 앱은 내일 다시 열리며, 부모님이 시간을 추가하면 더 일찍 열려요.',
-  errorDeviceNotRegistered: '이 기기는 등록되어 있지 않습니다.',
+  errorDeviceNotRegistered:
+    '이 기기는 아직 요청을 보낼 준비가 되지 않았어요. 잠시 후 다시 시도하거나, 부모님께 다시 페어링해 달라고 부탁하세요.',
   errorMinutesRange: '{{min}}분에서 {{max}}분 사이로 입력하세요.',
   toastRequestSent: '요청을 보냈어요. 부모님이 곧 확인할 거예요.',
-  toastDeviceNotRegistered: '이 기기는 아직 등록되지 않았습니다.',
+  toastDeviceNotRegistered:
+    '이 기기는 아직 요청을 보낼 준비가 되지 않았어요. 잠시 후 다시 시도하거나, 부모님께 다시 페어링해 달라고 부탁하세요.',
   toastSendFailed: '요청을 보내지 못했습니다. 다시 시도해 주세요.',
   askForMoreTime: '시간 더 요청하기',
   askForMoreTimeSubtitle: '부모님이 승인하면 오늘 스크린 타임이 늘어나요.',
@@ -41,7 +43,7 @@ export const timeRequest = {
   unableToDeclineRequest: '요청을 거절하지 못했습니다. 다시 시도해 주세요.',
   unableToApproveRequest: '요청을 승인하지 못했습니다. 다시 시도해 주세요.',
   pendingRequestExists: '이미 요청을 보냈어요. 부모님의 응답을 기다려 주세요.',
-  waitBeforeAnotherRequest: '다음 요청을 보내기 전에 몇 분만 기다려 주세요.',
+  waitBeforeAnotherRequest: '다음 요청을 보내기 전에 잠시만 기다려 주세요.',
   timeRequestSent: '시간 연장 요청을 보냈습니다',
   timeRequestSentDescription: '{{deviceName}}에서 {{minutes}}분 추가를 요청했습니다.',
   timeRequestApproved: '시간 연장 요청이 승인되었습니다',
@@ -57,5 +59,4 @@ export const timeRequest = {
   requestPendingButton: '요청 승인 대기 중',
   requestPendingChip: '요청 승인 대기 중',
   waitCooldown: '{{cooldown}} 대기',
-  timeRequestNote: '부모님이 승인하면 오늘 스크린 타임이 늘어나요.',
 } as const;

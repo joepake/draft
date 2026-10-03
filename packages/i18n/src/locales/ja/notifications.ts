@@ -7,7 +7,8 @@ export const notifications = {
   sectionAlertsHint: 'このデバイスで受け取る通知を選びます。',
   sectionSummary: 'サマリー',
   sectionQuietHours: 'サイレント時間',
-  sectionQuietHoursHint: 'この時間帯は通知を鳴らしません。SOS は対象外です。',
+  sectionQuietHoursHint:
+    'この時間帯は通知を鳴らしません。SOSは消音されず、最も重大なメッセージ警告も届きます。',
   quietHoursLabel: 'サイレント時間',
   quietHoursOff: 'オフ — 通知はいつでも届きます',
   quietHoursActive: '{{start}}〜{{end}} はサイレント',
@@ -19,7 +20,7 @@ export const notifications = {
   alert: {
     tamperAlerts: {
       label: '保護がオフになった',
-      hint: 'お子さまのデバイスで KidGate に必要な権限がオフにされたとき。',
+      hint: 'お子さまのデバイスで、KidGateに必要な権限がオフにされたとき、日付・時刻・タイムゾーンが変更されたとき、またはロック中にSOSが押されたとき。SOSのアラート自体は常に届きます。',
     },
     placeAlerts: {
       label: '到着と出発',
@@ -55,7 +56,11 @@ export const notifications = {
     },
     messageAlerts: {
       label: 'メッセージ警告',
-      hint: 'メッセージに気がかりな語句が現れたら通知します',
+      hint: 'お子さまのメッセージや検索に気がかりな語句が現れたとき。',
+    },
+    billing: {
+      label: 'Premiumのご案内',
+      hint: 'トライアル終了後に届く登録のご案内。トライアルやPremiumの終了のお知らせは常に届きます。',
     },
   },
 };

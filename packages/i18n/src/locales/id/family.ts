@@ -8,6 +8,7 @@ export const family = {
   addChildOption: 'Tambahkan perangkat anak',
   addJoinFamilyOption: 'Bergabung dengan keluarga',
   addParentOption: 'Undang orang tua',
+  parentLimitFull: 'Itu jumlah orang tua terbanyak untuk satu keluarga.',
   loginWebOption: 'Masuk di web',
   // The "who uses this device?" assignment sheet.
   assignSheetTitle: 'Siapa yang memakai {{deviceName}}?',
@@ -29,10 +30,10 @@ export const family = {
   quickProtectSourceDefault: 'Default KidGate',
   quickProtectSourceBody:
     'Menyalin aturan {{childName}}, termasuk situs yang diizinkan dan diblokir.',
-  quickProtectBedtime: 'Jam Diblokir waktu tidur',
+  quickProtectBedtime: 'Jam Diblokir saat waktu tidur',
   quickProtectBedtimeHint:
     'Memblokir penggunaan perangkat sepanjang malam, pukul 22.00 sampai 07.00.',
-  quickProtectDailyLimit: 'Batas waktu layar harian',
+  quickProtectDailyLimit: 'Batas harian',
   quickProtectDailyLimitHint:
     '{{minutes}} menit sehari, dihitung bersama di semua perangkatnya.',
   quickProtectWebFilter: 'Filter web',
@@ -46,7 +47,7 @@ export const family = {
     'Sebagian perlindungan tidak dapat disimpan. Coba lagi dari profil anak.',
   pairDeviceFirstTitle: 'Belum ada perangkat terpasang',
   pairDeviceFirstBody:
-    'Pasangkan perangkat untuk anak ini terlebih dahulu — dari tab Keluarga, ketuk ikon pindai atau "+" lalu pilih Tambahkan perangkat anak. Kontrol ini mulai bekerja begitu ada perangkat yang terhubung.',
+    'Pasangkan perangkat untuk anak ini terlebih dahulu — dari tab Keluarga, ketuk ikon pindai atau “+” lalu pilih Tambahkan perangkat anak. Kontrol ini mulai bekerja begitu ada perangkat yang terhubung.',
   // Child-grouped family list: group header lock-all + unassigned group.
   lockAll: 'Kunci semua',
   unlockAll: 'Buka kunci semua',
@@ -63,6 +64,14 @@ export const family = {
   assignDeviceCta: 'Tetapkan ke anak…',
   unassignedHint: 'Perangkat ini belum dihitung untuk siapa pun.',
   unassignedHintMember: 'Pemilik keluarga yang menetapkan perangkat ini untuk anak.',
+  // One device's own page (the web's Controls tab): the two sentences above are
+  // said to a group heading, and "these devices" is false about one machine.
+  unassignedDeviceHint: 'Perangkat ini belum dihitung untuk siapa pun.',
+  unassignedDeviceHintMember:
+    'Pemilik keluarga yang memilih siapa yang memakai perangkat ini.',
+  // The pairing sheets' success step for a joined parent, who may pair but not assign.
+  pairedDeviceBodyMember:
+    'Perangkat anak sudah mengonfirmasi pemasangan. Pemilik keluarga yang memilih siapa yang memakainya.',
   // The footer strip: children who hold no device get no group of their own.
   childrenWithoutDeviceTitle: 'Anak tanpa perangkat',
   // Child detail screen.
@@ -71,9 +80,14 @@ export const family = {
   childDetailDevicesTitle: 'Perangkat',
   childDetailSwipeHint: 'Geser perangkat untuk membatalkan penetapannya.',
   childDetailAssignMore: 'Tetapkan perangkat lain…',
+  // The same row while the child has no device yet — "another" needs a first.
+  childDetailAssignFirst: 'Tetapkan perangkat…',
   childDetailAssignSheetTitle: 'Tetapkan perangkat ke {{childName}}',
   childDetailNoDevices:
     'Belum ada perangkat. Tetapkan di bawah atau sambungkan perangkat baru dari tab Keluarga.',
+  // Same screen when nothing is left below to assign.
+  childDetailNoDevicesPair:
+    'Belum ada perangkat. Sambungkan satu dari tab Keluarga, lalu pilih anak ini saat aplikasi menanyakan siapa yang memakainya.',
   // Same screen for a joined parent, who may pair but may not assign.
   childDetailNoDevicesMember:
     'Belum ada perangkat. Hanya pemilik keluarga yang menentukan perangkat milik siapa.',
@@ -82,7 +96,7 @@ export const family = {
   scanButtonAccessibility: 'Pindai kode',
   scanTitle: 'Pindai kode',
   scanBody:
-    'Arahkan kamera ke perangkat anak, undangan keluarga, atau kode yang ditampilkan di komputer.',
+    'Arahkan kamera ke kode di perangkat anak, undangan keluarga, atau kode masuk web.',
   manualCodeLabel: 'Masukkan kode 6 karakter',
   manualInstructions: 'Masukkan kode 6 karakter yang ditampilkan di perangkat lain.',
 
@@ -130,6 +144,11 @@ export const family = {
   healthOffline: 'Offline',
   devicePausedLabel: 'Dijeda',
   devicePausedHint: 'Dijeda di paket gratis — semua aturan tetap berlaku',
+  // What Paused means, said where the choice is made: the choose-a-device sheet on
+  // both consoles. Checked against every agent 2026-09-28 — enforcement never
+  // stops while parked; the reports do, and an SOS still goes through.
+  devicePausedMeaning:
+    'Perangkat yang dijeda tetap menerapkan aturan yang sudah ada. Perangkat itu berhenti melaporkan waktu layar, lokasi, dan riwayat, tetapi SOS tetap sampai kepada Anda.',
   parkReviewTitle: 'Aktifkan ini sebelum masa coba berakhir',
   parkReviewBody:
     'Saat masa coba berakhir, satu perangkat tetap mengirim laporan dan menerima perubahan aturan, sisanya mempertahankan aturan yang sudah ada. Pada perangkat lainnya Anda hanya bisa melonggarkan aturan, jadi apa pun yang kini nonaktif akan tetap nonaktif.',
@@ -141,15 +160,35 @@ export const family = {
   parkedBannerBody:
     'Aturan Anda tetap berjalan di semua perangkat. Paket gratis menerima laporan dari satu perangkat dan hanya di perangkat itu Anda bisa memperketat aturan — pilih perangkat tersebut, atau upgrade untuk mempertahankan semuanya.',
   parkedBannerAction: 'Pilih perangkat',
+  holdFamilyTitle: 'KidGate menangguhkan keluarga ini untuk sementara',
+  holdDeviceTitle: 'KidGate menangguhkan {{deviceName}} untuk sementara',
+  holdFamilyBody:
+    'Setiap perangkat tetap menjalankan aturannya, tetapi tidak mengirim laporan sampai penangguhan dicabut.',
+  holdDeviceBody:
+    'Perangkat ini tetap menjalankan aturannya, tetapi tidak mengirim laporan sampai penangguhan dicabut.',
+  holdReasonUnusualActivity: 'Alasan: aktivitas tidak biasa di akun ini.',
+  holdReasonOutdatedApp:
+    'Alasan: ada aplikasi KidGate di akun ini yang sudah usang. Perbarui, lalu hubungi dukungan.',
+  holdReasonTermsViolation: 'Alasan: pelanggaran ketentuan penggunaan KidGate.',
+  holdReasonOther: 'Alasan: KidGate sedang meninjau akun ini.',
+  holdNote: 'Pesan dari KidGate: {{note}}',
+  holdAppeal: 'Hubungi dukungan',
+  holdAppealMessage: 'Saya ingin menanyakan penangguhan akun keluarga saya.',
+  pairedDevicePaused:
+    'Paket gratis menerima laporan dari satu perangkat dan hanya di perangkat itu Anda bisa memperketat aturan, jadi perangkat ini mulai dalam keadaan dijeda.',
+  pairingWillStartPaused:
+    'Paket gratis menerima laporan dari satu perangkat dan hanya di perangkat itu Anda bisa memperketat aturan, jadi perangkat baru akan mulai dalam keadaan dijeda.',
   chooseMonitoredTitle: 'Pilih perangkat utama',
   chooseMonitoredBody:
     'Semua aturan tetap berjalan di semua perangkat. Perangkat yang Anda pilih mengirim waktu layar dan lokasi, dan hanya di perangkat itu aturan masih bisa diperketat — pada perangkat lain aturan hanya bisa dilonggarkan. Anda bisa mengganti pilihan sekali setiap {{days}} hari.',
   chooseMonitoredConfirm: 'Pantau perangkat ini',
   chooseMonitoredUpgrade: 'Pertahankan semua perangkat — upgrade',
   chooseMonitoredDone: '{{name}} kini menjadi perangkat yang melapor',
+  chooseMonitoredCurrent: 'Sedang melapor',
   monitoredCooldown:
     'Perangkat yang melapor hanya bisa diganti sekali setiap {{days}} hari',
-  monitoredChooseFailed: 'Tidak dapat mengganti perangkat yang melapor',
+  monitoredChooseFailed:
+    'Tidak dapat mengganti perangkat yang melapor. Silakan coba lagi.',
 
   cardWhereLabel: 'Lokasi',
 
@@ -169,9 +208,6 @@ export const family = {
     'Tambahkan perangkat anak untuk mulai memantau waktu layar dan penggunaan aplikasi.',
 
   setupFamilyTitle: 'Siapkan keluarga',
-
-  setupFamilyDescription:
-    'Buat keluarga untuk menghubungkan perangkat anak Anda atau bergabung ke keluarga yang sudah ada melalui undangan dari orang tua lain.',
 
   createFamilyButton: 'Buat keluarga',
 
@@ -206,14 +242,15 @@ export const family = {
 
   stepsHeading: 'Langkah pertama',
 
-  step1Title: 'Ketuk “Tambahkan perangkat anak”',
+  step1Title: 'Buka KidGate di perangkat anak',
 
-  step1Description: 'Kode QR untuk memasangkan akan muncul di sini, siap dipindai.',
+  step1Description:
+    'Instal KidGate di ponsel, tablet, TV, atau komputer yang dipakai anak Anda. Di ponsel atau tablet, pilih “Ini perangkat anak”. Kode QR dan kode 6 karakter akan muncul.',
 
-  step2Title: 'Pindai dari perangkat anak',
+  step2Title: 'Ketuk “Tambahkan perangkat anak” di sini',
 
   step2Description:
-    'Instal KidGate di ponsel atau tablet anak Anda, pilih “Ini adalah perangkat anak”, lalu pindai kodenya.',
+    'Pindai kode QR itu dengan ponsel ini, atau masukkan kode 6 karakter.',
 
   connectChildButton: 'Hubungkan perangkat anak',
   listHint: 'Geser perangkat ke kiri untuk menghapusnya',

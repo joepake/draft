@@ -6,7 +6,7 @@ export const pairing = {
     'KidGate에서 이 자녀 기기를 연결하세요: 부모 기기에서 KidGate 열기 → 가족 → 코드 스캔을 선택한 뒤 QR 코드를 스캔하거나 코드 {{code}}를 입력하세요. 코드는 5분 후 만료됩니다.',
   connectChildPhone: '자녀 기기 연결',
   parentInstructions:
-    '자녀 기기에서 KidGate를 열고 “이 기기는 자녀의 기기입니다”를 선택하세요. 그런 다음 해당 화면에 표시된 코드를 입력하세요.',
+    '자녀 기기에서 KidGate를 여세요. 휴대전화나 태블릿에서는 “자녀 기기입니다”를 선택하세요. 그런 다음 표시된 6자리 코드를 입력하세요.',
   parentScanInstructions: '카메라를 자녀 기기의 QR 코드에 맞추세요.',
   childWaitingTitle: '부모님을 기다리는 중',
   childWaitingSubtitle:
@@ -14,13 +14,15 @@ export const pairing = {
   childCodeLabel: '또는 이 코드를 공유하세요',
   childScanHint:
     '부모님: KidGate 열기 → 가족 → {{scan}} → QR 코드를 스캔하거나 코드를 입력하세요.',
+  extensionCloseHint:
+    '이 창은 닫아도 됩니다 — 코드는 계속 유효합니다. 부모님을 확인하려면 KidGate를 다시 여세요.',
   childConnecting: '연결되었습니다. 이 기기를 설정하는 중…',
   childPairedTitle: '연결되었습니다',
   childPairedSubtitle: '이 기기를 설정하는 중…',
   connectChild: '자녀 기기 연결',
   waitingChildConfirm: '요청을 보냈습니다. 자녀 기기에서 확인을 기다리는 중입니다.',
   waitingChildConfirmHint:
-    '자녀 기기에서 "예, 연결합니다"를 탭하면 완료됩니다. 이 화면은 닫아도 됩니다 — 페어링은 백그라운드에서 계속됩니다.',
+    '자녀 기기에서 확인을 요청하면 "예, 연결합니다"를 선택해 완료하세요. TV는 자동으로 연결됩니다. 이 화면은 닫아도 됩니다 — 페어링은 백그라운드에서 계속됩니다.',
   childConfirmedTitle: '기기가 연결되었습니다',
   childConfirmedBody:
     '자녀 기기에서 페어링을 확인했습니다. 이제 누가 사용할지 선택하세요.',
@@ -44,10 +46,15 @@ export const pairing = {
   manualCodeLabel: '자녀 기기의 코드',
   openingScanner: '카메라를 여는 중…',
   cameraPermissionRequired: 'QR 코드를 스캔하려면 카메라 접근 권한이 필요합니다.',
-  unableToOpenScanner: '카메라 스캐너를 열 수 없습니다.',
+  unableToOpenScanner: '카메라 스캐너를 열 수 없습니다. 대신 코드를 직접 입력하세요.',
   newCode: '새 코드',
   done: '완료',
   unableToCreateCode: '코드를 생성할 수 없습니다. 다시 시도해 주세요.',
+  extensionUnsupportedSystem:
+    '이 운영체제는 지원되지 않습니다. KidGate는 Chromebook, Mac 또는 Windows PC에서 작동합니다.',
+  deviceLimitReachedCeiling:
+    '이 가족은 KidGate가 지원하는 기기 수({{limit}}대)에 도달했습니다. 더 이상 사용하지 않는 기기를 삭제한 뒤 다시 시도하세요.',
+  tooManyAttemptsWait: '요청이 너무 많습니다. {{minutes}}분 후에 다시 시도해 주세요.',
   inviteParentTitle: '다른 부모 기기 추가',
   inviteParentInstructions:
     '다른 기기에서 KidGate → 가족 → 코드 스캔을 선택한 뒤 15분 안에 이 QR 코드를 스캔하거나 코드를 입력하세요. 여기에서 요청을 승인하면 해당 부모가 연결됩니다.',
@@ -63,7 +70,7 @@ export const pairing = {
   parentJoinDecline: '거절',
   parentJoinRejected: '가족 소유자가 요청을 거절했습니다.',
   parentJoinExpired: '승인 요청이 만료되었습니다. 새 초대를 요청하세요.',
-  unableToResolveParentJoin: '이 요청을 처리할 수 없습니다.',
+  unableToResolveParentJoin: '이 참여 요청에 응답할 수 없습니다. 다시 시도해 주세요.',
   joinedFamily: '가족에 참여했습니다. 이제 이곳에 자녀 기기가 표시됩니다.',
   joinedFamilyTitle: '가족에 참여함',
   joinedFamilyMessage:

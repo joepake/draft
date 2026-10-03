@@ -46,11 +46,11 @@ export const activities = {
   activityTypeScreenTime: 'Ekran Süresi',
   activityTypeCheckIn: 'Check-In',
   activityTypeLocationRequest: 'Konum',
-  activityTypeTimeRequest: 'Süre isteği',
-  activityTypeRewardTask: 'Ödül görevi',
+  activityTypeTimeRequest: 'Süre istekleri',
+  activityTypeRewardTask: 'Ödül görevleri',
   activityTypeSearchAlert: 'Arama uyarısı',
   activityTypeWebFilter: 'Web filtresi',
-  activityTypeEmergency: 'Acil Durum',
+  activityTypeEmergency: 'SOS',
   activityTypeUnknown: 'Etkinlik',
 
   sosEscapeTitle: 'Acil durum kilidi açma',
@@ -84,7 +84,7 @@ export const activities = {
   messageAlertTitleSearch: 'Endişe verici arama',
   messageAlertBodySearch:
     '{{appName}} üzerinde yapılan bir aramada işaretli bir kelime tespit edildi.',
-  activityTypeMessageAlert: 'Mesaj uyarısı',
+  activityTypeMessageAlert: 'Mesaj uyarıları',
   messageCheckedTitle: 'Bakıldı, endişelenecek bir şey yok',
   messageCheckedBody:
     '{{appName}} içinde izlenen bir kelime göründü ve bağlam içinde zararsız bulundu.',
@@ -149,9 +149,9 @@ export const activities = {
   tamperBackgroundRefreshBody:
     'Arka Planda Uygulama Yenileme yeniden etkinleştirilene kadar KidGate arka planda daha seyrek güncellenebilir.',
 
-  tamperDeviceClockTitle: 'Tarih veya saat değiştirildi',
+  tamperDeviceClockTitle: 'Tarih, saat veya saat dilimi değiştirildi',
   tamperDeviceClockBody:
-    'Bu cihazın saati artık doğru zamanla eşleşmiyor. Ekran Süresi ve Engellenen Saatler doğru zamanı kullanmaya devam edecektir.',
+    'Bu cihazın tarihi, saati veya saat dilimi değişti — seyahat de buna yol açabilir. Ekran Süresi ve Engellenen Saatler değiştirilen saati dikkate almaz, cihazın saat dilimine göre çalışır.',
 
   /** @deprecated legacy description keys — kept for old activity docs */
   tamperOverlay: '“Diğer uygulamaların üzerinde göster” izni devre dışı bırakıldı.',
@@ -178,8 +178,9 @@ export const activities = {
 
   unknownDevice: 'Bilinmeyen cihaz',
 
-  basicActivityNote:
-    'Kilitleme, kilit açma ve cihaz olayları Etkinlikler bölümüne kaydedilir.',
   tamperUninstallProtectionTitle: 'Kaldırma koruması kapatıldı',
   tamperUninstallProtectionBody: 'KidGate artık bu telefondan kaldırılabilir.',
+  tamperReinstalledTitle: 'KidGate yeniden yüklendi',
+  tamperReinstalledBody:
+    'KidGate bu cihazdan kaldırılıp yeniden yüklendi. Bu arada hiçbir şey kaydedilmedi.',
 } as const;

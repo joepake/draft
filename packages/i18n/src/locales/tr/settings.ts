@@ -44,6 +44,9 @@ export const settings = {
   accountLinkActionLink: 'Bağla',
   accountLinkActionUnlink: 'Kaldır',
   accountLinkActionVerify: 'Doğrula',
+  accountLinkActionLinkA11y: '{{provider}} giriş yöntemini bağla',
+  accountLinkActionUnlinkA11y: '{{provider}} giriş yönteminin bağlantısını kaldır',
+  accountLinkActionVerifyA11y: '{{provider}} giriş yöntemini doğrula',
   accountLinkSummary: '{{methods}} ile giriş yapıyor',
   accountLinked: 'Bağlı',
   accountNotLinked: 'Bağlı değil',
@@ -52,20 +55,17 @@ export const settings = {
   addWidgetTitle: 'Ana ekrana widget ekle',
   addWidgetSubtitle: 'Her çocuğun ekran süresi bir bakışta',
   addWidgetStepsIos:
-    "1. Ana ekranda boş bir alana basılı tut\n2. Üst köşedeki + düğmesine dokun\n3. KidGate'i ara\n4. Bir boyut seç ve Widget Ekle'ye dokun",
+    '1. Ana ekranda boş bir alana basılı tut\n2. Üst köşedeki + düğmesine dokun\n3. KidGate’i ara\n4. Bir boyut seç ve Widget Ekle’ye dokun',
   addWidgetStepsAndroid:
-    "1. Ana ekranda boş bir alana basılı tut\n2. Widget'lara dokun\n3. KidGate'i bul ve widget'ı ana ekrana sürükle",
+    '1. Ana ekranda boş bir alana basılı tut\n2. Widget’lara dokun\n3. KidGate’i bul ve widget’ı ana ekrana sürükle',
   pushNotificationsTitle: 'Anlık bildirimler',
   pushNotificationsSubtitle: 'Bu telefona hangi uyarıların geleceğini seçin',
   inAppAlertsLabel: 'Uygulama içi uyarılar',
   inAppAlertsHint:
-    'Süre istekleri için uygulama içi uyarılar gösterir. SOS uyarıları her zaman görünür.',
+    'KidGate açıkken yeni uyarılar için bir bildirim şeridi gösterir. SOS uyarıları her zaman görünür.',
   sosSoundLabel: 'SOS sireni',
   sosSoundHint:
     'Çocuk SOS gönderdiğinde bu telefonda yüksek sesli bir siren çalar. Titreşim her durumda açık kalır.',
-  shareScreenTimeLabel: 'Ekran süremi paylaş',
-  shareScreenTimeHint:
-    'Bu telefonun ekran süresini aile tablosuna, çocuklarınızınkinin yanına koyar. Kullanım erişimi gerekir.',
   themeStyleLabel: 'Tema stili',
   themeColorLabel: 'Tema rengi',
   signOutButton: 'Çıkış yap',
@@ -98,12 +98,16 @@ export const settings = {
     '{{deviceName}} bu hesaptan çıkış yapacak ve artık bildirim almayacak. Cihazı elinde bulunduran kişi şifreyle yeniden giriş yapabilir.',
   toastParentDeviceRemoved: '{{deviceName}} kaldırıldı.',
   signedOutByAnotherDevice:
-    'Bu cihazın ebeveyn hesabı oturumu başka bir cihazdan kapatıldı.',
+    'Bu cihazın ebeveyn hesabı oturumu başka bir cihazdan kapatıldı. Devam etmek için tekrar oturum açın.',
   deleteAccountTitle: 'Hesabı sil',
   deleteAccountSubtitleDefault: 'Hesabınızı ve tüm verilerinizi kalıcı olarak siler',
   deleteAccountAlertTitle: 'Hesap kalıcı olarak silinsin mi?',
   deleteAccountAlertMessage:
     'Bu işlem aile hesabınızın silinmesini planlar. Henüz hiçbir şey silinmedi — silme tarihinden önce istediğiniz zaman oturum açıp iptal edebilirsiniz. Bu tarihten sonra tüm veriler (cihazlar, etkinlik, konum geçmişi, SOS fotoğrafları) tüm ebeveynler ve çocuklar için kalıcı olarak silinir.',
+  deleteAccountAlertMessageMember:
+    'Bu işlem yalnızca kendi hesabınızın silinmesini planlar. Henüz hiçbir şey silinmedi — silme tarihinden önce istediğiniz zaman oturum açıp iptal edebilirsiniz. Bu tarihten sonra giriş bilgileriniz ve kendi ayarlarınız silinir. Aile, cihazları ve diğer ebeveynler bundan etkilenmez.',
+  deleteAccountSubscriptionNotice:
+    'Hesabınızı silmek aboneliği iptal etmez. Aboneliği App Store’dan veya Google Play’den iptal edin.',
   sendRequestButton: 'Kalıcı olarak sil',
   toastDeletionAlreadyPending: 'Hesap silme işlemi zaten sürüyor.',
   toastDeletionRequestFailed:
@@ -186,7 +190,7 @@ export const settings = {
   deleteAccountImpact:
     'Erişimi kaybedecek ebeveyn sayısı: {{parents}}. Erişimi kaybedecek çocuk cihazı sayısı: {{devices}}.',
   deleteAccountGraceNotice:
-    'Hesabınız {{days}} gün boyunca çalışmaya devam eder, sonra kalıcı olarak silinir.',
+    'Silme işlemi {{days}} gün sonra gerçekleşir. O zamana kadar KidGate’i açıp iptal edebilirsiniz.',
   deleteAccountReauthNotice: 'Onaylamak için tekrar oturum açmanız istenecek.',
   deleteAccountConfirmLabel: 'Onaylamak için {{word}} yazın',
   statusScheduled: 'Planlandı',

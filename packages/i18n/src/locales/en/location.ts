@@ -31,7 +31,6 @@ export const location = {
   historyEmpty: 'No history yet. Points appear after location updates or Check-Ins.',
   historyHighlightAccessibility: 'Highlight {{place}} on the map',
   historyOpenMapsAccessibility: 'Open {{place}} in Maps',
-  unableToRequestLocationRefresh: 'Unable to request a location refresh',
   locationBannerTitle: 'Turn on location',
   locationBannerBody:
     'Your parent would like to see where this device is, so they know you arrived safely.',
@@ -40,18 +39,24 @@ export const location = {
   allowLocationButton: 'Allow location',
   locationNotAllowed:
     'Location is not allowed yet. Open Settings → KidGate → Location (or turn on Location Services first). Select Allow location again if the Location entry is missing.',
+  // Android's own labels. `Open Settings` lands on KidGate's App info page.
+  locationNotAllowedAndroid:
+    'Location is not allowed yet. Select Open Settings, then Permissions → Location, and choose “Allow all the time”.',
   locationServicesOff:
     'Location Services is turned off for the whole device. Open Settings → Privacy & Security → Location Services, turn it on, then return to KidGate and select Allow location.',
   locationDeniedInSettings:
     'Location was denied for KidGate. Open Settings → KidGate → Location and choose While Using the App or Always.',
-  locationEnabled:
-    'Location is on. Choose “Always Allow” so KidGate can update even when the app is closed.',
+  foregroundOnly:
+    'Location only updates while KidGate is open. Select Open Settings, then Location, and choose Always.',
+  foregroundOnlyAndroid:
+    'Location only updates while KidGate is open. Select Open Settings, then Permissions → Location, and choose “Allow all the time”.',
+  toastLocateFailed: 'Unable to find your location right now. Try again in a moment.',
   backgroundLocationTitle: 'Allow location while the app is closed',
   backgroundLocationBody:
     'KidGate needs background location so parents can see where this device is when the app is closed, for family safety.',
-  locationNote: 'Shows the child location when sharing is enabled on the child device.',
-  placeAlertsNote: 'Sends location alerts for home, school, and other safe places.',
   mapNoLocationsEmpty: 'No locations to show yet',
+  mapHistoryEmpty:
+    'Movement points will appear on the map after the next location update.',
   mapUnavailable: 'Map unavailable. Check your connection and try again.',
   historyShowMore: 'Show {{count}} more places',
   historyShowMore_one: 'Show 1 more place',
@@ -66,10 +71,17 @@ export const location = {
   stayRange: '{{from}} – {{to}}',
   wizardStepAllow:
     'Select Allow, then choose Always so updates keep coming in the background.',
+  wizardStepAllowAndroid:
+    'Choose “While using the app”, then “Allow all the time” when asked, so updates keep coming in the background.',
   requestNoFix:
     'This device could not get a position. Location may not be allowed on it yet.',
+  requestIpOnly:
+    'This device could only guess its position from its internet connection. Turn on its Wi-Fi (no need to connect) and try again.',
+  requestUnsupported: 'This device cannot report its location.',
   cardSharingOff: 'Location sharing is off',
   cardPermissionOff: 'Location is not allowed on this device',
+  cardForegroundOnly: 'Location only updates while KidGate is open on this device',
+  cardIpOnly: 'This device cannot be located: turn on its Wi-Fi (no need to connect)',
   cardNotUpdating: 'Location has stopped updating',
   namesNeedPremium: 'Place names need a paid plan',
   namesNeedPremiumTrialEnded:

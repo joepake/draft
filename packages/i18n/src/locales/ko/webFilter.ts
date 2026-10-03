@@ -1,7 +1,7 @@
 export const webFilter = {
   title: '웹 필터',
   fallbackDeviceName: '자녀 기기',
-  appliesToAll: '{{name}}의 기기 {{count}}대 모두에 적용됩니다',
+  appliesToAll: '{{name}}의 모든 기기({{count}}대)에 적용됩니다',
   coverageLine: '{{total}}대 중 {{enforcing}}대에서 적용 중',
   mergeNotice:
     '{{name}}의 기기마다 웹 필터 설정이 달랐습니다. 여기서 저장하면 더 엄격한 쪽으로 합쳐진 하나의 설정이 모든 기기에 적용됩니다.',
@@ -52,11 +52,11 @@ export const webFilter = {
     '필터는 사이트 이름을 읽지만, 최신 브라우저는 방문의 약 절반에서 이를 숨기므로 해당 사이트는 카테고리에 따라 확인되지 않습니다. 그래도 이 방식으로 자녀가 접근하는 대부분의 사이트는 계속 차단됩니다.',
   privateDnsBannerTitle: '프라이빗 DNS 끄기',
   privateDnsBannerBody:
-    '프라이빗 DNS가 켜져 있어 웹 필터가 우회될 수 있습니다. 필터가 작동하도록 꺼 주세요.',
+    '프라이빗 DNS가 켜져 있어 웹 필터가 우회될 수 있어요. 필터가 작동하도록 꺼 주세요.',
   privateDnsBannerButton: 'DNS 설정 열기',
   vpnConsentBannerTitle: '웹 필터 VPN 복원',
   vpnConsentBannerBody:
-    'KidGate VPN이 꺼져 있습니다. 성인 웹 필터는 VPN 연결이 유지되어야 합니다.',
+    'KidGate VPN이 꺼져 있어요. 성인 웹 필터는 VPN 연결이 유지되어야 해요.',
   vpnConsentBannerButton: 'VPN 켜기',
   iosOnlyNote: 'iOS에서는 스크린 타임 사용',
   androidVpnNote: 'Android에서는 로컬 DNS VPN 사용',
@@ -64,9 +64,13 @@ export const webFilter = {
 
   heroSubtitleWindows:
     '아이의 PC에서 KidGate 자체 리졸버를 실행해 모든 브라우저에서 알려진 부적절한 사이트를 차단합니다.',
+  heroSubtitleExtension:
+    '자녀 컴퓨터의 Chrome에서 KidGate 확장 프로그램을 실행해, 그 브라우저에서 알려진 부적절한 사이트를 차단합니다.',
 
   toggleHintWindows:
     'PC에서 승인할 것은 없습니다. KidGate 백그라운드 서비스가 몇 초 안에 필터를 켭니다.',
+  toggleHintExtension:
+    '승인할 것이 없습니다. 필터는 Chrome에서만 작동하며 다른 브라우저나 앱에서는 작동하지 않습니다.',
 
   infoLine1Windows:
     'KidGate는 PC에서 리졸버를 실행해 어떤 사이트를 조회하는지 확인하고, 선택한 카테고리의 사이트를 차단합니다.',
@@ -79,19 +83,23 @@ export const webFilter = {
 
   infoLine4Windows:
     '필터는 사이트 이름만 읽습니다. 페이지 내부는 볼 수 없고, 방금 조회한 사이트는 몇 분 동안 계속 열릴 수 있습니다.',
+  infoLine1Extension:
+    'KidGate 확장 프로그램은 Chrome이 사이트를 열기 전에 각 사이트를 확인하고, 선택한 카테고리에 해당하는 사이트를 차단합니다.',
+  infoLine2Extension:
+    'KidGate가 설치된 프로필의 Chrome만 필터링됩니다. 컴퓨터의 다른 브라우저와 앱은 필터링되지 않습니다.',
+  infoLine3Extension:
+    '시크릿 창은 확장 프로그램에 “시크릿 모드에서 허용”이 켜져 있을 때만 필터링됩니다. 게스트 창은 필터링되지 않습니다.',
+  infoLine4Extension:
+    '차단된 페이지에서 자녀가 이 사이트를 허용해 달라고 요청할 수 있습니다. 확장 프로그램을 삭제하거나 끄면 필터가 멈춥니다.',
 
   windowsFilterNote: 'Windows에서 KidGate 자체 리졸버 사용',
-  webFilteringNote:
-    'iOS는 스크린 타임 성인 필터를 사용하고, Android, Mac, Windows는 KidGate 자체 차단 목록을 사용합니다.',
-  safeSearchAlertsNote:
-    'Safari는 검색어를 공유하지 않습니다. 키워드 알림에는 관리형 안전 브라우저가 필요합니다.',
-  webHistoryNote: '필터링 브라우저 또는 DNS/VPN 방식 보고가 필요합니다.',
+  extensionFilterNote: 'Chrome에서는 KidGate 확장 프로그램 사용',
   categoriesTitle: '차단할 항목',
   categoriesSubtitle:
     'KidGate는 자체 도메인 목록을 사용합니다. 아이가 실제로 접근하는 사이트를 다루며, 웹 전체는 아닙니다. 아래 목록과 함께 쓰세요.',
-  androidOnlyCategory: 'iPhone에서는 사용할 수 없음 — Android와 Mac에서 사용 가능',
+  androidOnlyCategory: 'iPhone에서는 사용할 수 없음 — 다른 기기에서 사용 가능',
   iosCategoryNote:
-    'iPhone은 Apple 자체 필터로 {{category}}만 지원합니다. 나머지 카테고리는 Android와 Mac 자녀 기기에 적용됩니다.',
+    'iPhone은 Apple 자체 필터로 {{category}}만 지원합니다. 나머지 카테고리는 다른 기기에 적용됩니다.',
   allowListTitle: '항상 허용',
   allowListSubtitle: '카테고리가 차단하더라도 계속 접속할 수 있는 사이트입니다.',
   allowListEmpty: '아직 예외가 없습니다.',
@@ -105,6 +113,8 @@ export const webFilter = {
     '허용 목록 외의 모든 것이 거부됩니다. DNS 계층에서 동작하므로 다른 앱도 연결이 끊깁니다.',
   allowListOnlyHintIos:
     'Safari와 앱 내 브라우저는 허용 목록의 사이트만 열 수 있습니다.',
+  allowListOnlyHintExtension:
+    'Chrome에서는 허용 목록에 있는 사이트만 열 수 있습니다. 다른 브라우저와 앱에는 영향을 주지 않습니다.',
   allowListOnlyNeedsEntries: '켜기 전에 허용할 사이트를 하나 이상 추가하세요.',
   domainPlaceholder: 'example.com',
   addDomain: '사이트 추가',
@@ -113,9 +123,9 @@ export const webFilter = {
   listFull: '이 목록에는 최대 {{max}}개까지 저장할 수 있습니다.',
   openHistory: '웹 기록',
   openHistorySubtitle: '이 기기가 접속한 사이트와 차단된 항목 보기',
-  blockedPageTitle: '사이트가 차단되었습니다',
+  blockedPageTitle: '사이트가 차단되었어요',
   blockedPageBody:
-    'KidGate가 가족을 위해 이 사이트를 차단했습니다. 잘못되었다고 생각되면 부모님께 문의하세요.',
+    'KidGate가 가족을 위해 이 사이트를 차단했어요. 잘못되었다고 생각되면 부모님께 물어보세요.',
   category: {
     adult: '성인 콘텐츠',
     selfHarm: '자해·섭식장애',
@@ -205,5 +215,5 @@ export const webFilter = {
   privateDnsStep2: '네트워크 및 인터넷을 선택하세요.',
   privateDnsStep3: '비공개 DNS를 열고 사용 안 함을 선택하세요.',
   vpnConsentStepAllow:
-    'Android VPN 요청에서 확인을 선택하세요. 필터가 켜져 있는 동안 상태 표시줄에 열쇠 아이콘이 남습니다.',
+    'Android VPN 요청에서 확인을 선택하세요. 필터가 켜져 있는 동안 상태 표시줄에 열쇠 아이콘이 남아요.',
 } as const;

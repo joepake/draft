@@ -384,27 +384,22 @@ export function createFamilyReportRepository(deps: FamilyReportRepositoryDeps) {
      * trap `rewardTask.ts` documents at the top of the file). It has to be the
      * same root `fetchRecent` reads from, or the button writes a report the
      * list it refreshes cannot see.
+     *
+     * **Never a rebuild.** A week that already has a report comes back as
+     * stored, with `locale`'s sentence added when it lacked one. The
+     * test-phase `regenerate` option went on 2026-09-27, after the endpoint
+     * stopped reading it: its whole-document rewrite dropped every other
+     * locale's narrative and could replace the scheduled report itself.
      */
     async generateNow(
       familyId: string,
       locale?: string,
-      options?: {
-        /**
-         * Rebuild and overwrite this week's stored report instead of getting
-         * it back. Test-phase only: the endpoint's week key deliberately makes
-         * a second press return the first wording, which is right for parents
-         * and useless while the prompt is being tuned. Goes away with the
-         * button when reports become schedule-only.
-         */
-        regenerate?: boolean;
-      },
     ): Promise<GenerateReportResult> {
       const body = await api.post<GenerateReportBody>(
         '/generateWeeklyReport',
         {
           familyOwnerUserId: familyId,
           ...(locale ? { locale } : {}),
-          ...(options?.regenerate ? { regenerate: true } : {}),
         },
         { as: 'parent' },
       );

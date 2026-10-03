@@ -2,14 +2,15 @@ export const screenTime = {
   turnOnScreenTime: 'Turn on Screen Time',
   finishScreenTimeSetup: 'Finish Screen Time setup',
   screenTimeNeededForControls:
-    'App Blocking, Blocked Hours, and locking require Screen Time on this device.',
+    'Blocked Apps, Blocked Hours, Daily Limit and locking require Screen Time on this device.',
   screenTimeNeededForLimits:
-    'Without Screen Time, locking, Blocked Hours, and app limits cannot be applied.',
+    'Without Screen Time, locking, Blocked Hours, Daily Limit and Blocked Apps cannot be applied.',
   screenTimeStepOpenKidGate: 'Open KidGate on this child device.',
   screenTimeStepAllowUsage: 'On the Status screen, select Allow App & Website Usage.',
   screenTimeStepTapAllow: 'When prompted, select Allow.',
   screenTimeStepReturnHereAuto: 'Return here — the status updates automatically.',
-  screenTimeDeniedStepOpenSettings: 'On the child device, open Settings → KidGate.',
+  screenTimeDeniedStepOpenSettings: 'On the child device, open Settings.',
+  screenTimeDeniedStepFindKidGate: 'Find KidGate in the list.',
   screenTimeDeniedStepTurnOnRestrictions: 'Turn on Screen Time.',
   screenTimeDeniedStepOpenKidGateAgain: 'Open KidGate again on the child device.',
   screenTimeDeniedStepReturnWhenReady:
@@ -26,6 +27,12 @@ export const screenTime = {
   screenTimeBannerBodyDenied: '{{appName}} needs Screen Time turned on in Settings.',
   screenTimeBannerBodyRequest:
     'This lets your parent lock apps and set Blocked Hours on this device.',
+  screenTimeAuthPasscode:
+    'This device needs a passcode before KidGate can use Screen Time. Set one in Settings, then try again.',
+  screenTimeAuthConflict:
+    'Another app already controls Screen Time on this device. Remove that app, then try again.',
+  screenTimeAuthRestricted:
+    'A restriction on this device stops KidGate from using Screen Time. Ask whoever manages this device to remove it.',
   usageAccessBannerTitle: 'Turn on Usage access',
   usageAccessBannerBody:
     'KidGate needs Usage access to track screen time and enforce limits.',
@@ -37,6 +44,5 @@ export const screenTime = {
   minutesUsedStatus: 'Used {{used}} / {{limit}}',
   usageUpdatesHint:
     'Usage updates every few minutes while Screen Time monitoring is active.',
-  dailyLimitNote: 'Applies a daily screen time cap.',
   dailyLimitMinutes: '{{limitMinutes}} min',
 } as const;

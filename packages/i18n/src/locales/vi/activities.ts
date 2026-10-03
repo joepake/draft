@@ -46,7 +46,7 @@ export const activities = {
   activityTypeRewardTask: 'Nhiệm vụ thưởng',
   activityTypeSearchAlert: 'Cảnh báo tìm kiếm',
   activityTypeWebFilter: 'Chặn nội dung web',
-  activityTypeEmergency: 'Khẩn cấp',
+  activityTypeEmergency: 'SOS',
   activityTypeUnknown: 'Hoạt động',
   sosEscapeTitle: 'Mở khóa khẩn cấp',
   sosEscapeBody: 'SOS đã mở khóa thiết bị này trong {{minutes}} phút.',
@@ -55,10 +55,10 @@ export const activities = {
     'SOS đã mở khóa thiết bị này trong {{minutes}} phút. Đây là lần thứ {{count}} hôm nay.',
   sosEscapeLimitedTitle: 'Đã mở ứng dụng khẩn cấp',
   sosEscapeLimitedBody:
-    'SOS đã mở điện thoại, bản đồ và tin nhắn trên thiết bị này trong {{minutes}} phút. Mọi ứng dụng khác vẫn bị khóa.',
+    'SOS đã cho phép gọi điện, xem bản đồ và nhắn tin trên thiết bị này trong {{minutes}} phút. Mọi ứng dụng khác vẫn bị khóa.',
   sosEscapeLimitedRepeatTitle: 'Đã mở ứng dụng khẩn cấp ({{count}} lần hôm nay)',
   sosEscapeLimitedRepeatBody:
-    'SOS đã mở điện thoại, bản đồ và tin nhắn trên thiết bị này trong {{minutes}} phút. Đây là lần thứ {{count}} hôm nay.',
+    'SOS đã cho phép gọi điện, xem bản đồ và nhắn tin trên thiết bị này trong {{minutes}} phút. Đây là lần thứ {{count}} hôm nay.',
   sosPressLockHeldTitle: 'Bấm SOS khi máy đang khóa',
   sosPressLockHeldBody:
     'SOS đã được bấm trên thiết bị này. Cảnh báo đã được gửi và thiết bị vẫn khóa.',
@@ -131,9 +131,9 @@ export const activities = {
   tamperBackgroundRefreshTitle: 'Đã tắt Làm mới ứng dụng nền',
   tamperBackgroundRefreshBody:
     'KidGate có thể cập nhật thưa hơn khi chạy nền cho đến khi bật lại Làm mới ứng dụng nền.',
-  tamperDeviceClockTitle: 'Ngày giờ trên thiết bị đã thay đổi',
+  tamperDeviceClockTitle: 'Ngày, giờ hoặc múi giờ đã thay đổi',
   tamperDeviceClockBody:
-    'Đồng hồ trên thiết bị này không còn khớp với giờ chuẩn. Thời gian sử dụng và Giờ khóa thiết bị vẫn được tính theo giờ chuẩn.',
+    'Ngày, giờ hoặc múi giờ trên thiết bị này đã thay đổi — khi đi du lịch cũng có thể xảy ra điều này. Thời gian sử dụng và Giờ khóa thiết bị không bị ảnh hưởng khi chỉnh đồng hồ, và luôn theo múi giờ của thiết bị.',
   /** @deprecated legacy description keys — kept for old activity docs */
   tamperOverlay: 'Quyền Hiển thị trên ứng dụng khác đã bị tắt.',
   tamperAccessibility: 'Dịch vụ Trợ năng đã bị tắt.',
@@ -154,8 +154,9 @@ export const activities = {
   openFullSosHistory: 'Xem toàn bộ lịch sử SOS',
   openActivityDetails: 'Xem chi tiết',
   unknownDevice: 'Thiết bị không xác định',
-  basicActivityNote:
-    'Các sự kiện khóa, mở khóa và thiết bị đều được ghi trong Nhật ký.',
   tamperUninstallProtectionTitle: 'Đã tắt chống gỡ cài đặt',
   tamperUninstallProtectionBody: 'Giờ có thể gỡ KidGate khỏi máy này.',
+  tamperReinstalledTitle: 'KidGate đã được cài lại',
+  tamperReinstalledBody:
+    'KidGate đã bị gỡ khỏi thiết bị này rồi được cài lại. Khoảng thời gian ở giữa không được ghi nhận.',
 } as const;

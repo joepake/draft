@@ -30,8 +30,9 @@ export const permissions = {
   oemAutostartLabel: '자동 시작 허용',
   oemAutostartHintXiaomi:
     '자동 시작에서 KidGate를 켜서 재부팅 후에도 보호 기능이 다시 시작되도록 하세요.',
-  oemAutostartHintSamsung:
-    '배터리 → 백그라운드 사용 제한 → 절전이 적용되지 않는 앱에서 KidGate를 추가하세요. 목록에 KidGate가 없으면 이미 허용된 상태이며 이 단계는 완료된 것입니다.',
+  oemAutostartHintSamsung: '배터리에서 백그라운드 사용 제한을 선택하세요.',
+  oemAutostartHintSamsungAdd:
+    '절전이 적용되지 않는 앱을 열고 KidGate를 추가하세요. 목록에 KidGate가 없으면 이미 허용된 상태이며 이 단계는 완료된 것입니다.',
   oemAutostartHintOppo: '시작 앱 / 자동 실행에서 KidGate를 허용하세요.',
   oemAutostartHintVivo: '자동 시작 / 백그라운드 고성능에서 KidGate를 허용하세요.',
   oemAutostartHintHuawei:
@@ -45,8 +46,10 @@ export const permissions = {
   accessibilityStepFindKidGate:
     '전체 목록이 열리면 설치된/다운로드한 앱에서 KidGate를 선택하세요.',
   accessibilityStepTurnOn: '스위치를 켠 다음 Android 확인 창에서 허용을 선택하세요.',
+  restrictedSettingsStep:
+    '스위치가 흐리게 표시되면 설정 › 앱 › KidGate를 열고 ⋮ 메뉴에서 “제한된 설정 허용”을 선택한 뒤, 여기로 돌아와 다시 시도하세요.',
   accessibilityWarningNote:
-    'Android는 KidGate가 사용자의 동작을 관찰할 수 있다고 경고합니다. 잠금이 다른 앱 위에 유지되는 방식이며, KidGate는 비밀번호나 개인 메시지를 읽지 않습니다.',
+    'Android는 KidGate가 사용자의 동작을 관찰할 수 있다고 경고합니다. 이 권한으로 KidGate는 잠금 화면이 항상 위에 표시되도록 어떤 앱이 열려 있는지 확인하고, “시청한 동영상 기록”이 켜져 있으면 YouTube 동영상의 제목과 채널을 읽습니다. 비밀번호, 메시지, 입력한 내용을 읽는 데는 이 권한을 사용하지 않습니다.',
   uninstallProtectionWizardBody:
     '부모 PIN 없이 이 앱이 삭제되지 않도록 막습니다. Android의 자체 확인 화면이 표시됩니다.',
   notificationsWizardBody:
@@ -55,6 +58,8 @@ export const permissions = {
   backgroundRefreshStepTurnOn: 'KidGate의 백그라운드 앱 새로 고침을 켜세요.',
   backgroundRefreshStepGeneral:
     '토글이 회색이면 설정을 열고 일반, 백그라운드 앱 새로 고침 순서로 이동해 켜세요.',
+  locationAlwaysStep: '위치에서 “항상”을 선택하세요.',
+  locationAlwaysStepAndroid: '권한 → 위치에서 “항상 허용”을 선택하세요.',
   batteryStepAllow: 'Android 알림 창에서 허용을 선택하세요.',
   batteryStepAppInfo:
     '알림 창이 없으면 앱 정보를 열고 배터리로 이동한 뒤 제한 없음을 선택하세요.',

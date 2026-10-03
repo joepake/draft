@@ -3,6 +3,7 @@ import { getEffectiveDeviceStatus } from '@kidgate/core/domain/deviceStatus';
 import { getProtectionSummaryKeys } from '@kidgate/core/domain/protectionStatus';
 import { isWithinAnyScheduleWindow } from '@kidgate/core/domain/scheduleWindow';
 import {
+  isLocationBlocked,
   resolveChildLocationBlocker,
   resolveChildLocationView,
 } from '@kidgate/core/domain/childLocation';
@@ -169,7 +170,7 @@ export function childPills(counts, childDevices, child = null) {
     requests,
     checkIn,
     warn,
-    locationBlocked: blocker !== null,
+    locationBlocked: isLocationBlocked(blocker),
   });
 }
 

@@ -112,6 +112,53 @@ export function webFilterBlockerKey(device: {
   }
 }
 
+/** What an Android phone's VPN filter reports about itself (`getWebFilterStatus`). */
+export interface AndroidWebFilterFacts {
+  /** The parent's policy has filtering on — nothing is owed while it is off. */
+  enabled: boolean;
+  vpnActive: boolean;
+  /** `VpnService.prepare` still wants the OS consent dialog accepted. */
+  needsVpnConsent: boolean;
+  /** A custom Private DNS provider, which resolves around the VPN. */
+  privateDnsActive: boolean;
+}
+
+/**
+ * The `webFilterBlocker` an Android **phone** publishes, or `null` for none.
+ *
+ * The phone publishes no capability probe — its filter is assumed from the
+ * platform (`WEB_FILTER_FALLBACK_PLATFORMS`) — so until 2026-09-25 the one
+ * place that knew its filter was down was the child's own Home banner. The
+ * parent's summary reads `webFilterBlocker` (`domain/protectionStatus`) and got
+ * nothing, so a phone with the VPN consent never accepted, or with Private DNS
+ * resolving around it, read "Protected": the 2026-08-23 television failure,
+ * on the phone.
+ *
+ * The two existing values are reused rather than a third coined, because each
+ * already says the true thing: consent not given is waiting for approval (the
+ * television maps its own VPN consent the same way), and a VPN that is down or
+ * bypassed by a setting on the phone is switched off there. Consent comes
+ * first — it is the one a person must act on before the others can matter.
+ *
+ * Unlike a Mac's, this blocker does **not** close the Web Filter card:
+ * `supportsWebFiltering` still answers from the platform, so the parent can
+ * keep editing the policy the filter will apply once it is back.
+ */
+export function androidWebFilterBlocker(
+  facts: AndroidWebFilterFacts,
+): NonNullable<DeviceCapabilities['webFilterBlocker']> | null {
+  if (!facts.enabled) {
+    return null;
+  }
+  if (facts.needsVpnConsent) {
+    return 'awaitingApproval';
+  }
+  if (facts.privateDnsActive || !facts.vpnActive) {
+    return 'configurationDisabled';
+  }
+  return null;
+}
+
 /**
  * Whether this device's filter takes a full policy — categories, an allow
  * list and a block list — rather than Apple's single always-on adult filter.

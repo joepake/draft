@@ -7,9 +7,9 @@ import {
 /**
  * Minutes already spent today on one limited app.
  *
- * The breakdown lives on `usageDays/{date}.topApps` — `syncChildAgent` never
- * writes it onto the device document — so callers read it from the usage-day
- * record, not from device controls.
+ * Callers pass `resolveTodayTopApps`' rows: `usageDays/{date}.topApps` when the
+ * family pays, else the device document's `topAppsToday`. The second is only
+ * three long, so an app outside it reads 0 here.
  *
  * Moved out of `@kidgate/schema` during the migration: schema holds shapes and
  * contract constants, never behaviour.

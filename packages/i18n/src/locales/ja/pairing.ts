@@ -6,7 +6,7 @@ export const pairing = {
     'KidGateでこの子どものデバイスを接続: 保護者のデバイスでKidGateを開き → ファミリー → コードをスキャン を選び、QRコードをスキャンするかコード {{code}} を入力してください。コードは5分で期限切れになります。',
   connectChildPhone: '子どものデバイスを接続',
   parentInstructions:
-    '子どものデバイスでKidGateを開き、「これは子どものデバイスです」を選択してください。その後、画面に表示されるコードを入力してください。',
+    '子どものデバイスでKidGateを開いてください。スマートフォンやタブレットでは「これはお子さまのデバイスです」を選んでください。その後、表示される6文字のコードを入力してください。',
   parentScanInstructions: 'カメラを子どものデバイスのQRコードに向けてください。',
   childWaitingTitle: '保護者を待っています',
   childWaitingSubtitle:
@@ -14,6 +14,8 @@ export const pairing = {
   childCodeLabel: 'またはこのコードを共有',
   childScanHint:
     '保護者の方へ: KidGateを開く → ファミリー → {{scan}} → QRコードをスキャンするか、コードを入力してください。',
+  extensionCloseHint:
+    'この画面は閉じてもかまいません — コードは有効なままです。保護者を承認するには、もう一度KidGateを開いてください。',
   childConnecting: '接続しました。このデバイスを設定中…',
   childPairedTitle: '接続されました',
   childPairedSubtitle: 'このデバイスを設定中…',
@@ -21,7 +23,7 @@ export const pairing = {
   waitingChildConfirm:
     'リクエストを送信しました。子どものデバイスでの確認をお待ちください。',
   waitingChildConfirmHint:
-    '子どものデバイスで「はい、接続する」をタップすると完了します。この画面は閉じてもかまいません — ペアリングはバックグラウンドで続行されます。',
+    '子どものデバイスで確認を求められたら、「はい、接続する」を選ぶと完了します。テレビは自動で接続されます。この画面は閉じてもかまいません — ペアリングはバックグラウンドで続行されます。',
   childConfirmedTitle: 'デバイスを接続しました',
   childConfirmedBody:
     '子どものデバイスがペアリングを確認しました。次に、誰が使うかを選んでください。',
@@ -45,10 +47,17 @@ export const pairing = {
   manualCodeLabel: '子どものデバイスのコード',
   openingScanner: 'カメラを起動中…',
   cameraPermissionRequired: 'QRコードをスキャンするにはカメラへのアクセスが必要です。',
-  unableToOpenScanner: 'カメラスキャナーを開けませんでした。',
+  unableToOpenScanner:
+    'カメラスキャナーを開けませんでした。代わりにコードを手動で入力してください。',
   newCode: '新しいコード',
   done: '完了',
   unableToCreateCode: 'コードを作成できませんでした。もう一度お試しください。',
+  extensionUnsupportedSystem:
+    'このOSには対応していません。KidGateはChromebook、Mac、Windows PCで利用できます。',
+  deviceLimitReachedCeiling:
+    'この家族では、KidGateで管理できるデバイス数の上限（{{limit}}台）に達しています。使わなくなったデバイスを削除してから、もう一度お試しください。',
+  tooManyAttemptsWait:
+    '試行回数が多すぎます。{{minutes}}分後にもう一度お試しください。',
   inviteParentTitle: '別の保護者のデバイスを追加',
   inviteParentInstructions:
     '別のデバイスでKidGateを開き、ファミリー → コードをスキャン を選び、15分以内にこのQRコードをスキャンするかコードを入力してください。ここでリクエストを承認すると、その保護者を接続できます。',
@@ -66,7 +75,8 @@ export const pairing = {
   parentJoinRejected: 'ファミリー管理者があなたのリクエストを拒否しました。',
   parentJoinExpired:
     '承認リクエストの有効期限が切れました。新しい招待をリクエストしてください。',
-  unableToResolveParentJoin: 'このリクエストを処理できませんでした。',
+  unableToResolveParentJoin:
+    'この参加リクエストに応答できませんでした。もう一度お試しください。',
   joinedFamily: 'ファミリーに参加しました。子どものデバイスがここに表示されます。',
   joinedFamilyTitle: 'ファミリーに参加しました',
   joinedFamilyMessage:

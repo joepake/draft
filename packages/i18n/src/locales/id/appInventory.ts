@@ -35,7 +35,8 @@ export const appInventory = {
   unsupportedIos:
     'Apple tidak mengizinkan aplikasi mana pun membaca apa yang terpasang di iPhone atau iPad, jadi KidGate hanya bisa melaporkan aplikasi saat digunakan.',
   unsupportedGeneric: 'Perangkat ini tidak melaporkan aplikasi yang terpasang padanya.',
-  incompleteNote: 'Aplikasi tanpa ikon di layar utama mungkin tidak muncul di sini.',
+  incompleteNote:
+    'Beberapa aplikasi mungkin tidak muncul di sini, misalnya aplikasi yang tidak punya ikon di daftar aplikasi perangkat.',
   blockHint:
     'Untuk menghentikan aplikasi, buka Aplikasi yang Diblokir di perangkat itu sendiri.',
   howItWorksLabel: 'Cara kerja daftar ini',

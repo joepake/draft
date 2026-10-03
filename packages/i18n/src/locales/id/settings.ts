@@ -45,6 +45,9 @@ export const settings = {
   accountLinkActionLink: 'Tautkan',
   accountLinkActionUnlink: 'Lepas tautan',
   accountLinkActionVerify: 'Verifikasi',
+  accountLinkActionLinkA11y: 'Tautkan {{provider}}',
+  accountLinkActionUnlinkA11y: 'Lepas tautan {{provider}}',
+  accountLinkActionVerifyA11y: 'Verifikasi {{provider}}',
   accountLinkSummary: 'Masuk dengan {{methods}}',
   accountLinked: 'Tertaut',
   accountNotLinked: 'Belum tertaut',
@@ -60,13 +63,10 @@ export const settings = {
   pushNotificationsSubtitle: 'Pilih peringatan yang sampai ke ponsel ini',
   inAppAlertsLabel: 'Peringatan dalam aplikasi',
   inAppAlertsHint:
-    'Tampilkan peringatan dalam aplikasi untuk permintaan waktu. Peringatan SOS selalu muncul.',
+    'Tampilkan banner untuk peringatan baru saat KidGate terbuka. Peringatan SOS selalu muncul.',
   sosSoundLabel: 'Sirene SOS',
   sosSoundHint:
     'Bunyikan sirene keras di ponsel ini saat anak mengirim SOS. Getaran tetap aktif bagaimanapun juga.',
-  shareScreenTimeLabel: 'Bagikan waktu layar saya',
-  shareScreenTimeHint:
-    'Menampilkan waktu layar ponsel ini di papan keluarga, di samping milik anak Anda. Perlu akses penggunaan.',
   themeStyleLabel: 'Gaya tema',
   themeColorLabel: 'Warna tema',
   signOutButton: 'Keluar',
@@ -99,12 +99,16 @@ export const settings = {
     '{{deviceName}} akan dikeluarkan dari akun ini dan berhenti menerima notifikasi. Siapa pun yang memegangnya dapat masuk lagi dengan kata sandi.',
   toastParentDeviceRemoved: '{{deviceName}} dihapus.',
   signedOutByAnotherDevice:
-    'Perangkat ini telah dikeluarkan dari akun orang tua melalui perangkat lain.',
+    'Perangkat ini telah dikeluarkan dari akun orang tua melalui perangkat lain. Masuk lagi untuk melanjutkan.',
   deleteAccountTitle: 'Hapus akun',
   deleteAccountSubtitleDefault: 'Hapus permanen akun dan semua data Anda',
   deleteAccountAlertTitle: 'Hapus akun secara permanen?',
   deleteAccountAlertMessage:
     'Ini menjadwalkan penghapusan akun keluarga Anda. Belum ada yang dihapus — Anda bisa masuk dan membatalkan kapan saja sebelum tanggal penghapusan. Setelah itu, semua data (perangkat, aktivitas, riwayat lokasi, foto SOS) dihapus permanen untuk semua orang tua dan anak.',
+  deleteAccountAlertMessageMember:
+    'Ini menjadwalkan penghapusan akun Anda sendiri. Belum ada yang dihapus — Anda bisa masuk dan membatalkan kapan saja sebelum tanggal penghapusan. Setelah itu, akses masuk dan pengaturan pribadi Anda dihapus. Keluarga, perangkatnya, dan orang tua lainnya tidak terpengaruh.',
+  deleteAccountSubscriptionNotice:
+    'Menghapus akun tidak membatalkan langganan. Batalkan langganan di App Store atau Google Play.',
   sendRequestButton: 'Hapus permanen',
   toastDeletionAlreadyPending: 'Penghapusan akun sudah sedang berlangsung.',
   toastDeletionRequestFailed:
@@ -187,7 +191,7 @@ export const settings = {
   deleteAccountImpact:
     'Orang tua yang kehilangan akses: {{parents}}. Perangkat anak yang kehilangan akses: {{devices}}.',
   deleteAccountGraceNotice:
-    'Akun Anda tetap berfungsi selama {{days}} hari, lalu dihapus permanen.',
+    'Penghapusan dilakukan setelah {{days}} hari. Sebelum itu, Anda bisa membuka KidGate dan membatalkannya.',
   deleteAccountReauthNotice: 'Anda akan diminta masuk lagi untuk mengonfirmasi.',
   deleteAccountConfirmLabel: 'Ketik {{word}} untuk mengonfirmasi',
   statusScheduled: 'Dijadwalkan',

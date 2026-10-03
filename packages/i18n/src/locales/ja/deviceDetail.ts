@@ -14,7 +14,7 @@ export const deviceDetail = {
   dailyLimit: '1日の上限',
   setDailyScreenTimeCap: '1日のスクリーンタイム制限を設定',
   blockedHours: '休止時間',
-  manageUpToThreeTimeRanges: '最大3つの時間帯を管理',
+  manageTimeRanges: '最大{{max}}件の時間帯を管理',
   blockedApps: 'ブロックされたアプリ',
   viewAndManageBlockedApps: 'ブロックしたアプリを表示・管理',
   appBlockingBestEffort:
@@ -52,9 +52,9 @@ export const deviceDetail = {
   lastActive: '最終利用',
   appVersion: 'アプリのバージョン',
   otaUpdateNow: '今すぐ更新',
-  otaAsked: 'この端末に更新を依頼しました',
+  otaAsked: 'このデバイスに更新を依頼しました',
   otaUpToDate: 'すでに最新です',
-  otaSkipped: 'この端末では更新が無効です',
+  otaSkipped: 'このデバイスでは更新が無効です',
   otaStoreUpdate: '先にストアからの更新が必要です',
   otaFailed: '更新をインストールできませんでした',
   androidPauseNote:
@@ -117,7 +117,9 @@ export const deviceDetail = {
     '{{actionTitle}}は近日公開予定です。位置情報、Webフィルター、および上記の機能は現在利用できます。',
   chooseAppsOnChildIphone: '子どものデバイスでアプリを選択',
   appPickerMustOpenOnChildIphone:
-    '子どものデバイスでKidGate設定を開き、保護者PINを入力して、ブロックするアプリを選択してください。',
+    'お子さまのデバイスでKidGateの設定を開いて保護者PINを入力し、「アプリブロック」→「ブロックされたアプリ」でアプリを選んでください。',
+  appPickerMustOpenOnChildTv:
+    'テレビでKidGateを開いて「{{button}}」を選び、保護者PINを入力して、ブロックするアプリを選んでください。',
   rewardTasks: 'ごほうびタスク',
   rewardTasksDescription: 'タスク達成で追加時間をプレゼント',
   rewardTasksUnit: '件のタスク',
@@ -132,7 +134,7 @@ export const deviceDetail = {
   appLimitsReached: '{{count}} 件が上限に達しました',
   webHistory: 'ウェブ履歴',
   videoHistory: '視聴した動画',
-  videoHistoryDescription: 'YouTube とウェブの動画',
+  videoHistoryDescription: 'YouTubeで視聴した動画',
   videoHistoryOn: '記録中',
   webHistoryDescription: '到達したサイトとブロックしたサイト',
   webHistorySitesUnit: 'サイト',
@@ -140,7 +142,7 @@ export const deviceDetail = {
     'このデバイスのルール、ごほうび、チェックイン、アラートは{{childName}}のプロフィールで管理します',
   pauseBrowsing: 'ブラウジングを一時停止',
   pauseBrowsingDescription:
-    'しばらくウェブをブロックします。通話とオフラインアプリは使えます。',
+    'しばらくの間ブラウジングを止めます。通話とオフラインのアプリは引き続き使えます。',
   pauseBrowsingOff: '停止していません',
   pauseBrowsingLeft: '一時停止中 · 残り{{minutes}}分',
   pauseBrowsingFor: '{{minutes}}分停止する',

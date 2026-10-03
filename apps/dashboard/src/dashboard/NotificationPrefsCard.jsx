@@ -19,15 +19,20 @@ import { useReload } from './useReload.js';
  * edit the phones the signed-in account already registered, which is why the
  * card opens with a device picker rather than a switch.
  *
- * **Owner-only, and that is a data-model fact rather than a product rule.**
- * `firestore.rules` gates the path on `isParentAccount(userId)` — literally
- * `request.auth.uid == userId` — so an account can only reach its own root. A
- * joined co-parent's phones live under *their* uid, which this app never
- * subscribes to; there is nothing for it to show.
+ * **The signed-in account's own phones, owner or co-parent.** `firestore.rules`
+ * gates the path on `isParentAccount(userId)` — literally
+ * `request.auth.uid == userId` — so an account can only reach its own root;
+ * `useFamilyData` hands a co-parent the phones under their uid (2026-09-17).
  *
  * `accountId` is the signed-in uid and never `familyId`. For the owner they are
  * the same string, which is exactly what would make the wrong one work in
  * testing and fail for everybody else.
+ *
+ * One row per `ALERT_PREF_KEYS` entry, in that order, so a key the schema adds
+ * arrives here with no edit — `billing`, the trial's win-back offers, did on
+ * 2026-09-28. Its hint says the notice that a plan ended cannot be switched off.
+ * A browser-only parent has no document to hold a switch and gets no card; it
+ * receives no push either, so nothing is left unmuted for them.
  */
 export default function NotificationPrefsCard({
   accountId,

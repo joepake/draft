@@ -9,7 +9,7 @@ export const notifications = {
   sectionSummary: 'Zusammenfassung',
   sectionQuietHours: 'Ruhezeiten',
   sectionQuietHoursHint:
-    'In diesem Zeitraum bleiben Hinweise still. SOS wird nie stummgeschaltet.',
+    'In diesem Zeitraum bleiben Hinweise still. SOS wird nie stummgeschaltet, und die schwerwiegendsten Nachrichtenwarnungen kommen trotzdem durch.',
   quietHoursLabel: 'Ruhezeiten',
   quietHoursOff: 'Aus – Hinweise kommen jederzeit',
   quietHoursActive: 'Still von {{start}} bis {{end}}',
@@ -21,7 +21,7 @@ export const notifications = {
   alert: {
     tamperAlerts: {
       label: 'Schutz deaktiviert',
-      hint: 'Eine von KidGate benötigte Berechtigung wurde auf einem Kindergerät abgeschaltet.',
+      hint: 'Auf einem Kindergerät wurde eine Berechtigung, die KidGate braucht, ausgeschaltet, Datum, Uhrzeit oder Zeitzone wurden geändert, oder SOS wurde gedrückt, während das Gerät gesperrt war. Der SOS-Alarm selbst kommt immer durch.',
     },
     placeAlerts: {
       label: 'Ankommen und Verlassen',
@@ -57,7 +57,11 @@ export const notifications = {
     },
     messageAlerts: {
       label: 'Nachrichtenwarnungen',
-      hint: 'Werde benachrichtigt, wenn bedenkliche Wörter in Nachrichten auftauchen',
+      hint: 'Bedenkliche Wörter tauchen in den Nachrichten oder Suchanfragen deines Kindes auf.',
+    },
+    billing: {
+      label: 'Premium-Erinnerungen',
+      hint: 'Erinnerungen zum Abonnieren nach Ablauf deiner Testphase. Hinweise, dass die Testphase oder Premium endet, kommen immer durch.',
     },
   },
 };

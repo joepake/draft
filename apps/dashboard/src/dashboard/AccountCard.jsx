@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Icon from '@kidgate/web-ui/Icon';
 import { useT } from '@kidgate/web-ui/useT';
+import { getLocaleTag } from '@kidgate/i18n/web';
 import { legalDocumentUrl } from '@kidgate/core/domain/siteLinks';
 import { accountDeletionRepository } from '../adapters/repositories.js';
 import Card from './Card.jsx';
@@ -30,6 +31,7 @@ import { useReload } from './useReload.js';
 export default function AccountCard({
   accountId,
   accountEmail,
+  isFamilyOwner,
   parentCount,
   deviceCount,
   appT,
@@ -192,7 +194,9 @@ export default function AccountCard({
             <p className="hint">
               {request.purgeAfter
                 ? appT('settings.deletionGateBody', {
-                    date: new Date(request.purgeAfter).toLocaleDateString(),
+                    date: new Date(request.purgeAfter).toLocaleDateString(
+                      getLocaleTag(),
+                    ),
                     days: daysLeft,
                   })
                 : appT('settings.deletionGateBodyPending')}
@@ -202,16 +206,30 @@ export default function AccountCard({
         ) : confirming ? (
           <>
             <strong>{appT('settings.deleteAccountAlertTitle')}</strong>
-            <p className="hint">{appT('settings.deleteAccountAlertMessage')}</p>
+            {/* The phone's split: a co-parent deletes their own account and
+                the family stays, so neither the family-wide sentence nor the
+                family's losses are true of them. */}
+            <p className="hint">
+              {appT(
+                isFamilyOwner
+                  ? 'settings.deleteAccountAlertMessage'
+                  : 'settings.deleteAccountAlertMessageMember',
+              )}
+            </p>
             {/* What actually goes, counted from the family on screen rather
                 than described in the abstract — the phone shows the same two
                 numbers before the button. */}
-            <p className="hint">
-              {appT('settings.deleteAccountImpact', {
-                parents: parentCount,
-                devices: deviceCount,
-              })}
-            </p>
+            {isFamilyOwner ? (
+              <p className="hint">
+                {appT('settings.deleteAccountImpact', {
+                  parents: parentCount,
+                  devices: deviceCount,
+                })}
+              </p>
+            ) : null}
+            {isFamilyOwner ? (
+              <p className="hint">{appT('settings.deleteAccountSubscriptionNotice')}</p>
+            ) : null}
           </>
         ) : null}
       </Card>

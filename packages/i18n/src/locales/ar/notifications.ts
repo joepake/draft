@@ -12,7 +12,7 @@ export const notifications = {
   sectionSummary: 'الملخّص',
   sectionQuietHours: 'ساعات الهدوء',
   sectionQuietHoursHint:
-    'تبقى التنبيهات صامتة خلال هذه الفترة. نداء الاستغاثة لا يُكتم أبدًا.',
+    'تبقى التنبيهات صامتة خلال هذه الفترة. لا يُكتم SOS أبدًا، ولا تزال أخطر تنبيهات الرسائل تصل.',
   quietHoursLabel: 'ساعات الهدوء',
   quietHoursOff: 'متوقفة — تصل التنبيهات في أي وقت',
   quietHoursActive: 'صامتة من {{start}} إلى {{end}}',
@@ -24,7 +24,7 @@ export const notifications = {
   alert: {
     tamperAlerts: {
       label: 'إيقاف الحماية',
-      hint: 'أُوقف على جهاز الطفل إذنٌ يحتاجه KidGate.',
+      hint: 'على جهاز طفل، أُوقف إذن يحتاجه KidGate، أو غُيّر التاريخ أو الوقت أو المنطقة الزمنية، أو ضُغط SOS أثناء قفل الجهاز. أما تنبيه SOS نفسه فيصل دائمًا.',
     },
     placeAlerts: {
       label: 'الوصول والمغادرة',
@@ -60,7 +60,11 @@ export const notifications = {
     },
     messageAlerts: {
       label: 'تنبيهات الرسائل',
-      hint: 'احصل على تنبيه عند ظهور كلمات مقلقة في الرسائل',
+      hint: 'تظهر كلمات مقلقة في رسائل طفلك أو عمليات بحثه.',
+    },
+    billing: {
+      label: 'تذكيرات Premium',
+      hint: 'تذكيرات بالاشتراك بعد انتهاء فترتك التجريبية. تصل إشعارات انتهاء الفترة التجريبية أو Premium دائمًا.',
     },
   },
 };

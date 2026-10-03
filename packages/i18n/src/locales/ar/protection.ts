@@ -34,6 +34,7 @@ export const protection = {
   lockNotReadyBodyIos:
     'لا يمكن لـ KidGate قفل جهاز iPhone هذا حتى تتم الموافقة على الوصول إلى «مدة استخدام الجهاز» على جهاز الطفل. يرجى فتح KidGate على ذلك الجهاز وإكمال ما يلي:',
   locationPermission: 'إذن الموقع',
+  locationForegroundOnly: 'لا يتم تحديث الموقع إلا أثناء فتح KidGate على جهاز الطفل.',
   cameraPermission: 'إذن الكاميرا',
   cameraConsentPending:
     'الكاميرا غير مسموح بها على هذا الجهاز، لذا يصل نداء SOS أو الاطمئنان منه بدون صورة.',
@@ -58,17 +59,9 @@ export const protection = {
   healthBadgeProtected: 'أخضر — محمي',
   healthBadgeWarning: 'أصفر — يحتاج إلى إعداد',
   healthBadgeInactive: 'أحمر — جهاز الطفل صامت منذ أكثر من 24 ساعة',
-  iosFeatureSupportEvaluating: 'يجري حاليًا تقييم دعم هذه الميزة على iOS.',
   iosUpgradeRequiredNote:
     'يتطلب هذا iOS 16 أو أحدث. حدّث جهاز الطفل من الإعدادات › عام › تحديث البرامج. إذا لم يظهر أي تحديث، فهذا الـ iPad أو iPhone أقدم من أن تدعمه Apple.',
   iosUpgradeActionLabel: 'يتطلب iOS 16',
-  lockUnlockNote: 'يقفل الجهاز عبر مدة استخدام الجهاز بعد أن يأذن الطفل بالوصول.',
-  scheduleNote:
-    'ما يصل إلى 3 فترات من ساعات الحظر تحظر التطبيقات عبر مدة استخدام الجهاز.',
-  individualAppBlockingNote:
-    'يختار الطفل التطبيقات بعد إدخال رمز PIN الوالدين المكوّن من 6 أرقام.',
-  tamperAlertsNote:
-    'يُبلغ عن تغييرات الأذونات وعندما لا يتحدّث التطبيق على جهاز الطفل لفترة من الوقت.',
   appReviewRemindersNote:
     'لا يوفر iOS أحداث التثبيت؛ راجع التطبيقات دوريًا مع جهاز الطفل.',
 } as const;

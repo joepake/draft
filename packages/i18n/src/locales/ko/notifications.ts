@@ -7,7 +7,8 @@ export const notifications = {
   sectionAlertsHint: '이 기기에서 받을 알림을 선택하세요.',
   sectionSummary: '요약',
   sectionQuietHours: '방해 금지 시간',
-  sectionQuietHoursHint: '이 시간대에는 알림이 조용해집니다. SOS는 예외입니다.',
+  sectionQuietHoursHint:
+    '이 시간대에는 알림이 조용해집니다. SOS는 절대 무음 처리되지 않으며, 가장 심각한 메시지 경고는 계속 전달됩니다.',
   quietHoursLabel: '방해 금지 시간',
   quietHoursOff: '꺼짐 — 알림이 언제든 도착합니다',
   quietHoursActive: '{{start}}부터 {{end}}까지 무음',
@@ -19,7 +20,7 @@ export const notifications = {
   alert: {
     tamperAlerts: {
       label: '보호 기능 꺼짐',
-      hint: '자녀 기기에서 KidGate에 필요한 권한이 꺼졌을 때.',
+      hint: '자녀 기기에서 KidGate에 필요한 권한이 꺼졌거나, 날짜·시간·시간대가 변경되었거나, 잠긴 상태에서 SOS를 눌렀을 때. SOS 알림 자체는 항상 전달됩니다.',
     },
     placeAlerts: {
       label: '도착과 출발',
@@ -55,7 +56,11 @@ export const notifications = {
     },
     messageAlerts: {
       label: '메시지 경고',
-      hint: '메시지에 우려되는 단어가 나타나면 알림을 받으세요',
+      hint: '자녀의 메시지나 검색에 우려되는 단어가 나타날 때.',
+    },
+    billing: {
+      label: 'Premium 안내',
+      hint: '체험이 끝난 후 오는 구독 안내. 체험이나 Premium 종료 알림은 항상 전달됩니다.',
     },
   },
 };

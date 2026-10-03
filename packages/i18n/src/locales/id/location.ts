@@ -33,7 +33,6 @@ export const location = {
     'Belum ada riwayat. Titik lokasi akan muncul setelah pembaruan lokasi atau Check-In.',
   historyHighlightAccessibility: 'Sorot {{place}} di peta',
   historyOpenMapsAccessibility: 'Buka {{place}} di Maps',
-  unableToRequestLocationRefresh: 'Tidak dapat meminta pembaruan lokasi',
   locationBannerTitle: 'Aktifkan lokasi',
   locationBannerBody:
     'Orang tuamu ingin melihat lokasi perangkat ini agar tahu kamu sudah tiba dengan selamat.',
@@ -42,20 +41,23 @@ export const location = {
   allowLocationButton: 'Izinkan lokasi',
   locationNotAllowed:
     'Izin lokasi belum diberikan. Buka Pengaturan → KidGate → Lokasi (atau aktifkan Layanan Lokasi terlebih dahulu). Pilih “Izinkan lokasi” lagi jika opsi Lokasi tidak muncul.',
+  locationNotAllowedAndroid:
+    'Izin lokasi belum diberikan. Pilih Buka Pengaturan, lalu Izin → Lokasi, dan pilih “Selalu izinkan”.',
   locationServicesOff:
     'Layanan Lokasi dinonaktifkan untuk perangkat ini. Buka Pengaturan → Privasi & Keamanan → Layanan Lokasi, aktifkan, lalu kembali ke KidGate dan pilih “Izinkan lokasi”.',
   locationDeniedInSettings:
     'Akses lokasi untuk KidGate ditolak. Buka Pengaturan → KidGate → Lokasi, lalu pilih “Saat menggunakan aplikasi” atau “Selalu”.',
-  locationEnabled:
-    'Lokasi telah diaktifkan. Pilih “Selalu” agar KidGate dapat memperbarui lokasi meskipun aplikasi ditutup.',
+  foregroundOnly:
+    'Lokasi hanya diperbarui saat KidGate terbuka. Pilih Buka Pengaturan, lalu Lokasi, dan pilih “Selalu”.',
+  foregroundOnlyAndroid:
+    'Lokasi hanya diperbarui saat KidGate terbuka. Pilih Buka Pengaturan, lalu Izin → Lokasi, dan pilih “Selalu izinkan”.',
+  toastLocateFailed: 'Lokasimu belum bisa ditemukan saat ini. Coba lagi sebentar lagi.',
   backgroundLocationTitle: 'Izinkan lokasi saat aplikasi ditutup',
   backgroundLocationBody:
     'KidGate memerlukan akses lokasi di latar belakang agar orang tua dapat melihat lokasi perangkat ini meskipun aplikasi ditutup, demi keamanan keluarga.',
-  locationNote:
-    'Menampilkan lokasi anak saat berbagi lokasi diaktifkan pada perangkat anak.',
-  placeAlertsNote:
-    'Mengirim peringatan lokasi untuk rumah, sekolah, dan tempat aman lainnya.',
   mapNoLocationsEmpty: 'Belum ada lokasi untuk ditampilkan',
+  mapHistoryEmpty:
+    'Titik pergerakan akan muncul di peta setelah pembaruan lokasi berikutnya.',
   mapUnavailable: 'Peta tidak tersedia. Periksa koneksi internet Anda lalu coba lagi.',
   historyShowMore: 'Tampilkan {{count}} lokasi lagi',
   childSharingHint: 'Berlaku untuk setiap perangkat yang ditetapkan ke {{childName}}.',
@@ -71,10 +73,18 @@ export const location = {
   stayRange: '{{from}} – {{to}}',
   wizardStepAllow:
     'Pilih Izinkan, lalu Selalu agar pembaruan tetap berjalan di latar belakang.',
+  wizardStepAllowAndroid:
+    'Pilih “Saat aplikasi digunakan”, lalu “Selalu izinkan” saat diminta, agar pembaruan tetap berjalan di latar belakang.',
   requestNoFix:
     'Perangkat ini tidak bisa mendapatkan posisi. Lokasi mungkin belum diizinkan di perangkat ini.',
+  requestIpOnly:
+    'Perangkat ini hanya bisa menebak posisinya dari koneksi internet. Aktifkan Wi-Fi di perangkat (tidak perlu tersambung), lalu coba lagi.',
+  requestUnsupported: 'Perangkat ini tidak bisa melaporkan lokasinya.',
   cardSharingOff: 'Berbagi lokasi nonaktif',
   cardPermissionOff: 'Lokasi belum diizinkan di perangkat ini',
+  cardForegroundOnly: 'Lokasi hanya diperbarui saat KidGate terbuka di perangkat ini',
+  cardIpOnly:
+    'Perangkat ini tidak bisa dilacak lokasinya: aktifkan Wi-Fi di perangkat (tidak perlu tersambung)',
   cardNotUpdating: 'Lokasi berhenti diperbarui',
   namesNeedPremium: 'Nama tempat memerlukan paket berbayar',
   namesNeedPremiumTrialEnded:

@@ -36,8 +36,6 @@ export const location = {
     'Aucun historique pour le moment. Les points apparaîtront après une mise à jour de position ou un Check-in.',
   historyHighlightAccessibility: 'Mettre en évidence {{place}} sur la carte',
   historyOpenMapsAccessibility: 'Ouvrir {{place}} dans Plans',
-  unableToRequestLocationRefresh:
-    'Impossible de demander une actualisation de la position',
   locationBannerTitle: 'Activer la localisation',
   locationBannerBody:
     'Tes parents veulent savoir où est cet appareil, pour être sûrs que tout va bien.',
@@ -45,21 +43,25 @@ export const location = {
     'Le partage de position est désactivé pour le moment, donc rien n’est envoyé. En autorisant ici, tout fonctionnera tout de suite si tes parents l’activent plus tard.',
   allowLocationButton: 'Autoriser la localisation',
   locationNotAllowed:
-    'La localisation n’est pas encore autorisée. Ouvrez Réglages → KidGate → Localisation (ou activez d’abord les Services de localisation). Sélectionnez de nouveau « Autoriser la localisation » si l’option Localisation n’apparaît pas.',
+    'La localisation n’est pas encore autorisée. Ouvre Réglages → KidGate → Localisation (ou active d’abord les Services de localisation). Sélectionne de nouveau « Autoriser la localisation » si l’option Localisation n’apparaît pas.',
+  locationNotAllowedAndroid:
+    'La localisation n’est pas encore autorisée. Sélectionne Ouvrir les Réglages, puis Autorisations → Position, et choisis « Toujours autoriser ».',
   locationServicesOff:
-    'Les Services de localisation sont désactivés pour tout l’appareil. Ouvrez Réglages → Confidentialité et sécurité → Services de localisation, activez-les, puis revenez dans KidGate et sélectionnez « Autoriser la localisation ».',
+    'Les Services de localisation sont désactivés pour tout l’appareil. Ouvre Réglages → Confidentialité et sécurité → Services de localisation, active-les, puis reviens dans KidGate et sélectionne « Autoriser la localisation ».',
   locationDeniedInSettings:
-    'L’accès à la localisation a été refusé pour KidGate. Ouvrez Réglages → KidGate → Localisation et choisissez « Lorsque l’app est active » ou « Toujours ».',
-  locationEnabled:
-    'La localisation est activée. Veuillez choisir « Toujours autoriser » afin que KidGate puisse mettre à jour la position même lorsque l’application est fermée.',
+    'L’accès à la localisation a été refusé pour KidGate. Ouvre Réglages → KidGate → Localisation et choisis « Lorsque l’app est active » ou « Toujours ».',
+  foregroundOnly:
+    'La localisation ne se met à jour que lorsque KidGate est ouvert. Sélectionne Ouvrir les Réglages, puis Localisation, et choisis « Toujours ».',
+  foregroundOnlyAndroid:
+    'La localisation ne se met à jour que lorsque KidGate est ouvert. Sélectionne Ouvrir les Réglages, puis Autorisations → Position, et choisis « Toujours autoriser ».',
+  toastLocateFailed:
+    'Impossible de trouver ta position pour le moment. Réessaie dans un instant.',
   backgroundLocationTitle: 'Autoriser la localisation lorsque l’application est fermée',
   backgroundLocationBody:
     'KidGate a besoin d’accéder à la localisation en arrière-plan afin que les parents puissent voir où se trouve cet appareil, même lorsque l’application est fermée, pour assurer la sécurité de la famille.',
-  locationNote:
-    'Affiche la position de l’enfant lorsque le partage est activé sur son appareil.',
-  placeAlertsNote:
-    'Envoie des alertes de localisation pour le domicile, l’école et les autres lieux sûrs.',
   mapNoLocationsEmpty: 'Aucune position à afficher pour le moment',
+  mapHistoryEmpty:
+    'Les points de déplacement apparaîtront sur la carte après la prochaine mise à jour de position.',
   mapUnavailable: 'Carte indisponible. Veuillez vérifier votre connexion et réessayer.',
   historyShowMore: 'Voir {{count}} lieux de plus',
   historyShowMore_one: 'Voir 1 lieu de plus',
@@ -75,11 +77,20 @@ export const location = {
     'Définir {{deviceName}} comme l’appareil que {{childName}} emporte',
   stayRange: '{{from}} – {{to}}',
   wizardStepAllow:
-    'Sélectionnez Autoriser, puis Toujours pour que les mises à jour continuent en arrière-plan.',
+    'Sélectionne Autoriser, puis Toujours pour que les mises à jour continuent en arrière-plan.',
+  wizardStepAllowAndroid:
+    'Choisis « Lorsque vous utilisez l’appli », puis « Toujours autoriser » quand on te le demande, pour que les mises à jour continuent en arrière-plan.',
   requestNoFix:
     'Cet appareil n’a pas pu obtenir de position. La localisation n’y est peut-être pas encore autorisée.',
+  requestIpOnly:
+    'Cet appareil n’a pu qu’estimer sa position à partir de sa connexion Internet. Activez son Wi-Fi (pas besoin de se connecter), puis réessayez.',
+  requestUnsupported: 'Cet appareil ne peut pas signaler sa position.',
   cardSharingOff: 'Le partage de position est désactivé',
   cardPermissionOff: 'La position n’est pas autorisée sur cet appareil',
+  cardForegroundOnly:
+    'La position ne se met à jour que lorsque KidGate est ouvert sur cet appareil',
+  cardIpOnly:
+    'Cet appareil ne peut pas être localisé : activez son Wi-Fi (pas besoin de se connecter)',
   cardNotUpdating: 'La position ne se met plus à jour',
   namesNeedPremium: 'Les noms de lieux nécessitent une offre payante',
   namesNeedPremiumTrialEnded:

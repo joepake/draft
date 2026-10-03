@@ -38,7 +38,6 @@ export const childReport = {
   bandTooThin: 'Cette journée a été trop peu mesurée pour être tracée.',
 
   sectionDevices: 'Quel appareil',
-  deviceTotalsOnly: 'Totaux seulement',
   openDeviceReport: 'Ouvrir le rapport de {{name}}',
 
   sectionApps: 'Les plus utilisées',

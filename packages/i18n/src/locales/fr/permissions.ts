@@ -35,7 +35,9 @@ export const permissions = {
   oemAutostartHintXiaomi:
     'Dans Démarrage automatique, activez KidGate afin que la protection redémarre après un redémarrage de l’appareil.',
   oemAutostartHintSamsung:
-    'Dans Batterie → Limites d’utilisation en arrière-plan → Applications jamais en veille, ajoutez KidGate. Si KidGate n’apparaît pas dans la liste, il est déjà autorisé et cette étape est terminée.',
+    'Dans Batterie, sélectionnez Limites d’utilisation en arrière-plan.',
+  oemAutostartHintSamsungAdd:
+    'Ouvrez Applications jamais en veille et ajoutez KidGate. Si KidGate n’apparaît pas dans la liste, il est déjà autorisé et cette étape est terminée.',
   oemAutostartHintOppo:
     'Dans Apps au démarrage / Lancement automatique, autorisez KidGate.',
   oemAutostartHintVivo:
@@ -52,8 +54,10 @@ export const permissions = {
     'Si la liste complète s’ouvre à la place, sélectionnez KidGate sous « Applications téléchargées ».',
   accessibilityStepTurnOn:
     'Activez l’interrupteur, puis sélectionnez Autoriser dans la confirmation d’Android.',
+  restrictedSettingsStep:
+    'Si l’interrupteur est grisé, ouvrez Paramètres › Applications › KidGate, appuyez sur le menu ⋮ et choisissez « Autoriser les paramètres restreints », puis revenez ici et réessayez.',
   accessibilityWarningNote:
-    'Android prévient que KidGate peut observer vos actions. C’est ainsi que le verrouillage reste par-dessus les autres apps — KidGate ne lit ni les mots de passe ni les messages personnels.',
+    'Android prévient que KidGate peut observer vos actions. Grâce à cette autorisation, KidGate voit quelle application est ouverte, pour que le verrouillage reste au premier plan, et lit le titre et la chaîne des vidéos YouTube lorsque l’enregistrement des vidéos regardées est activé. KidGate ne s’en sert pas pour lire les mots de passe, les messages ni ce que vous tapez.',
   uninstallProtectionWizardBody:
     'Empêche la désinstallation de cette app sans le code PIN parent. Android affiche son propre écran de confirmation.',
   notificationsWizardBody:
@@ -62,6 +66,9 @@ export const permissions = {
   backgroundRefreshStepTurnOn: 'Activez l’Actualisation en arrière-plan pour KidGate.',
   backgroundRefreshStepGeneral:
     'Si l’interrupteur est grisé, ouvrez Réglages, puis Général, puis Actualisation en arrière-plan et activez-la.',
+  locationAlwaysStep: 'Sélectionnez Localisation et choisissez « Toujours ».',
+  locationAlwaysStepAndroid:
+    'Sélectionnez Autorisations → Position et choisissez « Toujours autoriser ».',
   batteryStepAllow: 'Sélectionnez Autoriser dans la fenêtre d’Android.',
   batteryStepAppInfo:
     'Si aucune fenêtre n’apparaît, ouvrez Infos sur l’app, puis Batterie, puis choisissez Sans restriction.',

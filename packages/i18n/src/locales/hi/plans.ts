@@ -30,8 +30,11 @@ export const plans = {
   compareColumnFree: 'मुफ़्त',
   compareColumnPremium: 'Premium',
   compareDevices: 'बच्चे के डिवाइस',
-  compareDevicesFree: '1',
-  compareDevicesPremium: 'असीमित',
+  compareDevicesFree: 'नियम सभी पर, रिपोर्ट 1 से',
+  compareDevicesPremium: 'रिपोर्ट सभी से',
+  compareParents: 'अभिभावक',
+  compareParentsFree: 'अधिकतम 3',
+  compareParentsPremium: 'अधिकतम 6',
   compareSync: 'डिवाइस से अपडेट',
   compareSyncFree: 'हर 30 मिनट में',
   compareSyncPremium: 'लाइव',
@@ -46,14 +49,14 @@ export const plans = {
   compareWeb: 'वेब',
   compareWebPremium: 'पूरा इतिहास और खोजें',
   compareNewApps: 'नए इंस्टॉल हुए ऐप्स',
-  compareNewAppsPremium: 'कौन-से ऐप, और इंस्टॉल से पहले मंज़ूरी',
-  compareMessages: 'संदेश सूचनाएँ (Android)',
+  compareNewAppsPremium: 'कौन-से ऐप, नाम के साथ',
+  compareMessages: 'संदेश चेतावनियाँ (Android)',
   compareSafety: 'सुरक्षा अलर्ट और चेक-इन',
   compareSafetyFree: 'अलर्ट + चेक-इन',
   compareSafetyPremium: 'हर चेक-इन के साथ फ़ोटो जोड़ता है',
   compareControls: 'ऐप ब्लॉक और वेब फ़िल्टर',
   compareControlsFree: 'कोई भी ऐप, वयस्क सामग्री',
-  compareControlsPremium: 'श्रेणी के अनुसार, हर ऐप की सीमा, अपनी सूचियाँ',
+  compareControlsPremium: 'श्रेणी के अनुसार, अपनी सूचियाँ',
   compareReport: 'साप्ताहिक रिपोर्ट',
   compareReportFree: 'एक बार, ट्रायल खत्म होने पर',
   compareReportPremium: 'हर हफ़्ते',
@@ -62,7 +65,7 @@ export const plans = {
   compareActivityFeedPremium: '30 दिन',
   compareChildReport: 'हर बच्चे की रिपोर्ट',
   compareIncluded:
-    'दोनों प्लान में एक परिवार के iPhone, Android, Mac और Windows पर दैनिक सीमा, ब्लॉक किए गए समय, ब्लॉक किए गए ऐप्स, वेब फ़िल्टर, रिमोट लॉक, SOS, समय अनुरोध और इनाम वाले टास्क शामिल हैं, साथ ही वेब डैशबोर्ड और कई पैरेंट भी। Android TV और Chromebook जल्द आ रहे हैं और उन पर कम नियंत्रण उपलब्ध हैं।',
+    'दोनों प्लान में एक परिवार के iPhone, Android, Mac और Windows पर दैनिक सीमा, ब्लॉक किए गए समय, ब्लॉक किए गए ऐप्स, वेब फ़िल्टर, डिवाइस लॉक, SOS, समय अनुरोध और इनाम वाले टास्क शामिल हैं, साथ ही वेब डैशबोर्ड भी। Android TV और Chromebook भी समर्थित हैं, हालाँकि उन पर कम नियंत्रण उपलब्ध हैं।',
   sectionWhyPremium: 'Premium में क्या जुड़ता है',
   sectionWhyPremiumSubtitle:
     'हर नियम मुफ़्त में भी चलता रहता है। Premium में यह जुड़ता है कि आप क्या देख सकते हैं, और कितनी जल्दी।',
@@ -85,12 +88,12 @@ export const plans = {
   featurePausePhone: 'डिवाइस लॉक',
   featureDailyLimits: 'दैनिक सीमा',
   featureBlockedHours: 'ब्लॉक किए गए समय',
-  featureAppLimits: 'हर ऐप के लिए समय सीमा',
-  featureInstallApproval: 'नए इंस्टॉल मंज़ूर करें',
+  featureAppLimits: 'ऐप सीमाएँ',
+  featureInstallApproval: 'नए ऐप्स स्वीकृत करें',
   featureTimeRequests: 'समय अनुरोध',
   featureAppBlocking: 'ब्लॉक किए गए ऐप्स',
   featureWebFiltering: 'वेब फ़िल्टर',
-  featureSeeLocation: 'लाइव स्थान',
+  featureSeeLocation: 'स्थान',
   featureTamperAlerts: 'KidGate हटाए जाने पर अलर्ट',
   featureSosAlerts: 'SOS अलर्ट',
   trialPlanName: 'ट्रायल',
@@ -99,6 +102,7 @@ export const plans = {
   premiumPlanName: 'Premium',
   subscribeBadge: 'सदस्यता लें',
   currentPlanKicker: 'मौजूदा प्लान',
+  currentPlanA11y: 'मौजूदा प्लान: {{plan}}',
   trialEnded: 'ट्रायल समाप्त',
   trialPending: 'ट्रायल शुरू नहीं हुआ',
   premiumActiveSubtitle: 'अभी आपके पास पूरी पहुँच है।',
@@ -116,7 +120,7 @@ export const plans = {
   memberSubscriptionNotice:
     'एक ही प्लान पूरे परिवार को कवर करता है और भुगतान केवल स्वामी करता है। आप देख सकते हैं कि परिवार ट्रायल पर है या सदस्यता ले चुका है।',
   memberTrialActiveSubtitle:
-    'यह परिवार ट्रायल पर है। खत्म होने पर, सभी नियम एक डिवाइस पर चलते रहेंगे; मालिक लाइव गतिविधि, इतिहास और सभी डिवाइस के लिए सब्सक्राइब कर सकता है।',
+    'यह परिवार ट्रायल पर है। ट्रायल खत्म होने पर हर नियम हर डिवाइस पर चलता रहेगा और एक डिवाइस रिपोर्ट भेजता रहेगा; मालिक लाइव गतिविधि, इतिहास और हर डिवाइस से रिपोर्ट के लिए सदस्यता ले सकता है।',
   memberTrialEndedSubtitle:
     'इस परिवार का ट्रायल खत्म हो गया है। दैनिक सीमा, ब्लॉक किए गए ऐप्स, वेब फ़िल्टर और स्थान अब भी चलते हैं। लाइव अपडेट, इतिहास और अलर्ट के लिए परिवार के मालिक से सदस्यता लेने को कहें।',
   memberSetupTrialSubtitle:
@@ -130,7 +134,8 @@ export const plans = {
     'आपकी ख़रीदारी अनुमोदन की प्रतीक्षा में है। पूरा होते ही Premium चालू हो जाएगा।',
   purchaseFailed: 'खरीदारी पूरी नहीं हो सकी। कृपया पुनः प्रयास करें।',
   storeNotReady: 'स्टोर अभी तैयार नहीं है। कृपया थोड़ी देर बाद पुनः प्रयास करें।',
-  premiumNotAvailable: 'Premium अभी खरीद के लिए उपलब्ध नहीं है।',
+  premiumNotAvailable:
+    'Premium अभी इस डिवाइस पर खरीद के लिए उपलब्ध नहीं है। कृपया बाद में पुनः प्रयास करें।',
   premiumProductNotFound:
     'Premium अभी खरीद के लिए उपलब्ध नहीं है। कृपया बाद में पुनः प्रयास करें।',
   subscriptionOfferNotConfigured:
@@ -139,7 +144,8 @@ export const plans = {
   noActiveSubscription: 'कोई सक्रिय सदस्यता नहीं मिली।',
   purchasesRestored: 'खरीदारी पुनर्स्थापित हो गई।',
   unableToRestorePurchases: 'खरीदारी पुनर्स्थापित नहीं हो सकी। कृपया पुनः प्रयास करें।',
-  purchaseVerificationFailed: 'खरीदारी की पुष्टि नहीं हो सकी।',
+  purchaseVerificationFailed:
+    'खरीदारी की पुष्टि नहीं हो सकी। थोड़ी देर रुकें, फिर “खरीदारी पुनर्स्थापित करें” पर टैप करें।',
   // Shown to joined parents — only the family owner can subscribe, so this
   // has to name who needs to act instead of offering a button they can't use.
   familyPremiumEndedTitle: 'इस परिवार का Premium समाप्त हो गया है',
@@ -157,15 +163,15 @@ export const plans = {
   trustNoAds: 'कोई विज्ञापन नहीं',
   freePlanName: 'मुफ़्त',
   freeDescription:
-    'एक बच्चे के डिवाइस पर बुनियादी सुविधाएँ चलती रहती हैं — यह प्लान कभी खत्म नहीं होता।',
-  featureOneChildDevice: 'एक बच्चे का डिवाइस',
+    'बुनियादी सुविधाएँ बच्चे के हर डिवाइस पर चलती रहती हैं, और एक डिवाइस से रिपोर्ट मिलती है। यह प्लान कभी खत्म नहीं होता।',
+  featureOneChildDevice: 'बच्चे के एक डिवाइस से रिपोर्ट',
   termLifetime: 'आजीवन',
   badgeOneTime: 'एक बार',
   planPeriodOnce: 'एक बार',
   billedOnce:
-    '{{devices}} बच्चों के डिवाइस तक के लिए एक बार भुगतान — जब तक KidGate उपलब्ध है, तब तक के लिए',
+    'बच्चों के अधिकतम {{devices}} डिवाइस से रिपोर्ट के लिए एक बार भुगतान — जब तक KidGate उपलब्ध है, तब तक के लिए',
   sectionFreePlan: 'अगर आप कभी सदस्यता न लें',
-  devicesUnlimited: 'बच्चों के असीमित डिवाइस',
+  devicesUnlimited: 'बच्चे का हर डिवाइस रिपोर्ट भेजता है',
   featureFootnotePlatforms:
     'कुछ सुविधाएँ इस पर निर्भर करती हैं कि हर प्लेटफ़ॉर्म क्या अनुमति देता है, इसलिए सभी हर डिवाइस पर उपलब्ध नहीं होतीं।',
   sectionPlatforms: 'KidGate कहाँ चलता है',
@@ -182,7 +188,7 @@ export const plans = {
   platformAndroidTvLimits:
     'संदेश सूचनाएँ, स्थान, SOS और समय अनुरोध उपलब्ध नहीं हैं। ऐप ब्लॉकिंग यथासंभव ही काम करती है।',
   platformChromebookLimits:
-    'सिर्फ़ वेब फ़िल्टर — दैनिक सीमा, ब्लॉक किए गए समय, ऐप ब्लॉकिंग, डिवाइस लॉक, SOS और स्थान उपलब्ध नहीं हैं।',
+    'सिर्फ़ वेब फ़िल्टर — दैनिक सीमा, ब्लॉक किए गए समय, ब्लॉक किए गए ऐप्स, डिवाइस लॉक, SOS और स्थान उपलब्ध नहीं हैं।',
   platformComingSoon: 'जल्द आ रहा है',
   platformWindows: 'Windows',
   platformWindowsDetail: 'सिर्फ़ बच्चे का डिवाइस · Windows 10 या बाद का',
@@ -215,5 +221,8 @@ export const plans = {
     'मुफ़्त प्लान एक साथ इतने ही काम चलाता है। Premium इसे दोगुना कर देता है।',
   teaserLiveNote: 'मुफ़्त प्लान हर 30 मिनट में अपडेट होता है। Premium लाइव है।',
   teaserUsageTimeline: 'Premium दिखाता है कि दिन के किन घंटों में डिवाइस इस्तेमाल हुआ।',
+  teaserProofParents: 'अभिभावक: {{count}}',
+  teaserParentCap:
+    'Premium के बिना एक परिवार में इतने ही अभिभावक हो सकते हैं। Premium इसे दोगुना कर देता है।',
   teaserDeviceNote: 'रिपोर्ट सिर्फ़ आपके मॉनिटर किए गए डिवाइस से आती है।',
 } as const;

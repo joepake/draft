@@ -1289,18 +1289,6 @@ label[for] {
   color: var(--ink-3);
 }
 
-/*
- * Three across, for the download section's three platforms.
- *
- * The default two columns would leave Android TV alone on a second row, which
- * reads as an afterthought rather than as the third of a set — and it is the
- * one card whose whole job is to be read. Collapses with every other `.why-grid`
- * at 720px.
- */
-.why-grid--three {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
 .why-item {
   display: flex;
   gap: 0.9rem;
@@ -1309,30 +1297,6 @@ label[for] {
   border: 1px solid var(--line);
   border-radius: var(--r-lg);
   padding: 1.35rem 1.5rem;
-}
-
-/*
- * A card for something that is not here yet.
- *
- * A grid stretches its cards to one height, so this one sat with **153px of
- * empty surface** below 137px of content, next to two cards that fill theirs
- * with a button and an install note. On a solid surface that empty half reads
- * as a card that failed to render rather than as a platform that has not
- * shipped.
- *
- * Outlined and unfilled instead: the emptiness becomes reserved space, and the
- * row reads at a glance as two things a family can take and one that is coming.
- * The `.card-soon` pill says it in words; this says it before the words are
- * read.
- *
- * **It has to sit after `.why-item`, not before it.** Both selectors are one
- * class, so nothing but source order decides which wins; written above the base
- * rule this had the class in the DOM, no error anywhere, and no visible effect.
- */
-.why-item--planned {
-  background: none;
-  border-style: dashed;
-  border-color: var(--line-strong);
 }
 
 .why-item .tick {

@@ -34,7 +34,8 @@ export const appInventory = {
   unsupportedIos:
     'Apple does not let any app read what is installed on an iPhone or iPad, so KidGate can only report apps as they are used.',
   unsupportedGeneric: 'This device does not report the apps installed on it.',
-  incompleteNote: 'An app with no icon on the home screen may not appear here.',
+  incompleteNote:
+    'Some apps may not appear here, such as one with no icon in the device’s app list.',
   blockHint: 'To stop an app, open Blocked Apps on the device itself.',
   howItWorksLabel: 'How this list works',
   markSafe: 'Safe',

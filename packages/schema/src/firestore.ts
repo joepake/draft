@@ -13,6 +13,7 @@ import type { DeviceControls, DeviceLocation } from './deviceControls';
 import type { DeviceMessageMonitoringState } from './messageMonitoringState';
 import type { DevicePlace } from './devicePlace';
 import type { MessageAiConsent } from './messageAiConsent';
+import type { OperatorHold } from './operatorHold';
 import type { PlanId } from './plan';
 import type { UserSubscription } from './subscription';
 import type { AppLanguage } from './language';
@@ -48,6 +49,12 @@ export interface FirestoreUser {
    * blank. `docs/ADMIN_REPORTING.md`.
    */
   firstPurchasedAt?: string | null;
+  /**
+   * KidGate's own hold on the whole family (`./operatorHold`): every device is
+   * held with it, and both consoles say why. Absent on every family not held.
+   * Server-written; `firestore.rules` pins it.
+   */
+  operatorHold?: OperatorHold;
   /**
    * When this family's paid plan last ran out. Written by both expiry writers —
    * `functions/scheduled/subscriptionExpiry.js` and `applyStoreSubscriptionState`
@@ -93,6 +100,25 @@ export interface FirestoreUser {
    * document type omitted a field the document has always carried.
    */
   messageAiConsent?: MessageAiConsent;
+  /**
+   * The IANA zone of the dashboard browser this account last unlocked
+   * (`Intl…resolvedOptions().timeZone`, e.g. `Asia/Ho_Chi_Minh`).
+   *
+   * Written by the server — `pollParentWebSession` when a QR sign-in is
+   * redeemed, `stepUpParentWebSession` — from a `timeZone` the browser sends
+   * on that call, and by the dashboard itself on load for a browser signed in
+   * with a password, Google or Apple that makes neither call
+   * (`familyRepository.recordDashboardTimeZone`, at most daily). Validated by
+   * `@kidgate/core/domain/timeZone` on both paths, written only when it
+   * changed, never creating the document. On the account's **own** root, the
+   * same `accountId` rule the dashboard's other own-root writes follow.
+   *
+   * The family's clock after every parent device and before any child device
+   * (`functions/lib/localHours.js`): what times the weekly report and the
+   * billing bands for a family whose parents use the browser and no phone that
+   * says where it is.
+   */
+  dashboardTimeZone?: string;
   createdAt: string;
   updatedAt: string;
 }
@@ -129,10 +155,12 @@ export const FIRESTORE_USER_FIELDS = [
   'planId',
   'subscription',
   'firstPurchasedAt',
+  'operatorHold',
   'lastExpiredAt',
   'leaderboardEnabled',
   'screenTimeBoardEnabled',
   'messageAiConsent',
+  'dashboardTimeZone',
   'createdAt',
   'updatedAt',
 ] as const satisfies ReadonlyArray<keyof FirestoreUser>;
@@ -172,6 +200,31 @@ export interface ParentDeviceRecord {
   revokedAt?: string;
   /** Language Cloud Functions render this device's push copy in. */
   locale?: AppLanguage;
+  /**
+   * This phone's IANA zone (`Intl…resolvedOptions().timeZone`, e.g.
+   * `America/New_York`), written at registration and on every launch of the
+   * parent console. Never a location.
+   *
+   * The clock of everything the server times to a parent: this device's quiet
+   * hours, its weekly-report push, and — as the most recently active device's —
+   * the family's billing, parking and anomaly bands. The server derives the
+   * offset from it **at the moment it needs one**, so it stays right across a
+   * daylight-saving switch the phone has not relaunched since. Absent on a
+   * build older than the field, and on a runtime whose `Intl` answers no name;
+   * `utcOffsetMinutes` below is read then.
+   */
+  timeZone?: string;
+  /**
+   * This phone's UTC offset in minutes (`-Date#getTimezoneOffset()`), written
+   * beside `timeZone` and read only when that is absent or unreadable — kept
+   * for a server or console older than the zone. A reading taken at launch, so
+   * stale by an hour after a switch until the next one.
+   *
+   * With neither, the server uses the family's clock — another parent device,
+   * then a dashboard browser, then a child device — else UTC+7, and never skips
+   * quiet hours for want of one (`functions/lib/localHours.js`).
+   */
+  utcOffsetMinutes?: number;
   /**
    * Where the device says it is — ISO 3166-1 alpha-2, uppercase.
    *
@@ -261,6 +314,8 @@ export interface ChildDeviceRecord {
   reportRequestId?: string;
   /** Monitored or parked. Absent means active — see `DeviceMonitoringState`. */
   monitoringState?: DeviceMonitoringState;
+  /** KidGate's own hold on this device. See `Device.operatorHold`. */
+  operatorHold?: OperatorHold;
   /** When this device became the monitored one, ISO. See `Device.monitoredChangedAt`. */
   monitoredChangedAt?: string;
   /** The trailing week's counts, child-written. See `DeviceWeekCounters`. */
@@ -270,6 +325,11 @@ export interface ChildDeviceRecord {
   /** What those three leave out. See `DeviceTopAppsOther`. */
   topAppsOtherToday?: DeviceTopAppsOther;
   createdAt: string;
+  /**
+   * The device's IANA zone, the calendar `controls.usageDate` is written on.
+   * See `Device.timeZone`.
+   */
+  timeZone?: string;
   controls?: DeviceControls;
   lastLocation?: DeviceLocation;
   places?: DevicePlace[];

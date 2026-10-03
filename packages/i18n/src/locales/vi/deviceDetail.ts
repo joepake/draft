@@ -12,7 +12,7 @@ export const deviceDetail = {
   dailyLimit: 'Giới hạn hằng ngày',
   setDailyScreenTimeCap: 'Đặt mức thời gian sử dụng tối đa mỗi ngày',
   blockedHours: 'Giờ khóa thiết bị',
-  manageUpToThreeTimeRanges: 'Quản lý tối đa 3 khung giờ',
+  manageTimeRanges: 'Quản lý tối đa {{max}} khung giờ',
   blockedApps: 'Chặn ứng dụng',
   viewAndManageBlockedApps: 'Xem và quản lý các ứng dụng bị chặn',
   appBlockingBestEffort:
@@ -111,7 +111,9 @@ export const deviceDetail = {
     '{{actionTitle}} sắp ra mắt. Vị trí, Chặn nội dung web và các điều khiển phía trên đã sẵn sàng để sử dụng.',
   chooseAppsOnChildIphone: 'Chọn ứng dụng trên thiết bị của trẻ',
   appPickerMustOpenOnChildIphone:
-    'Mở Cài đặt KidGate trên thiết bị của trẻ, nhập mã PIN phụ huynh và chọn các ứng dụng cần chặn.',
+    'Mở Cài đặt KidGate trên thiết bị của trẻ, nhập mã PIN phụ huynh, rồi chọn ứng dụng trong mục Chặn ứng dụng.',
+  appPickerMustOpenOnChildTv:
+    'Mở KidGate trên TV, chọn “{{button}}”, nhập mã PIN phụ huynh, rồi chọn ứng dụng cần chặn.',
   rewardTasks: 'Nhiệm vụ thưởng',
   rewardTasksDescription: 'Thưởng thêm phút khi hoàn thành nhiệm vụ',
   rewardTasksUnit: 'nhiệm vụ đang chạy',
@@ -126,7 +128,7 @@ export const deviceDetail = {
   appLimitsReached: '{{count}} ứng dụng đã hết giờ',
   webHistory: 'Lịch sử web',
   videoHistory: 'Video đã xem',
-  videoHistoryDescription: 'Video trên YouTube và web',
+  videoHistoryDescription: 'Video đã xem trên YouTube',
   videoHistoryOn: 'Đang ghi',
   webHistoryDescription: 'Trang đã vào và bị chặn',
   webHistorySitesUnit: 'trang web',
@@ -134,7 +136,7 @@ export const deviceDetail = {
     'Quy tắc, nhiệm vụ thưởng, báo an toàn và cảnh báo của thiết bị này được quản lý trong hồ sơ của {{childName}}',
   pauseBrowsing: 'Tạm dừng duyệt web',
   pauseBrowsingDescription:
-    'Chặn web một lúc. Gọi điện và ứng dụng ngoại tuyến vẫn dùng được.',
+    'Tạm dừng duyệt web một lúc. Gọi điện và ứng dụng ngoại tuyến vẫn dùng được.',
   pauseBrowsingOff: 'Chưa tạm dừng',
   pauseBrowsingLeft: 'Đang dừng · còn {{minutes}} phút',
   pauseBrowsingFor: 'Dừng {{minutes}} phút',

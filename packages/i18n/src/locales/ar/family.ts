@@ -8,6 +8,7 @@ export const family = {
   addChildOption: 'إضافة جهاز طفل',
   addJoinFamilyOption: 'الانضمام إلى عائلة',
   addParentOption: 'دعوة أحد الوالدين',
+  parentLimitFull: 'هذا أقصى عدد من الوالدين يمكن أن تضمّه عائلة واحدة.',
   loginWebOption: 'تسجيل الدخول على الويب',
   // The "who uses this device?" assignment sheet.
   assignSheetTitle: 'من يستخدم {{deviceName}}؟',
@@ -32,7 +33,7 @@ export const family = {
   quickProtectBedtime: 'ساعات الحظر وقت النوم',
   quickProtectBedtimeHint:
     'يحظر استخدام الجهاز طوال الليل، من 10:00 مساءً إلى 7:00 صباحًا.',
-  quickProtectDailyLimit: 'الحد اليومي لوقت الشاشة',
+  quickProtectDailyLimit: 'الحد اليومي',
   quickProtectDailyLimitHint: '{{minutes}} دقيقة في اليوم، تُحتسب عبر كل أجهزته.',
   quickProtectWebFilter: 'فلتر الويب',
   quickProtectWebFilterHint:
@@ -44,7 +45,7 @@ export const family = {
   quickProtectPartial: 'تعذر حفظ بعض الحمايات. يرجى المحاولة مرة أخرى من ملف الطفل.',
   pairDeviceFirstTitle: 'لم يُقترن أي جهاز بعد',
   pairDeviceFirstBody:
-    'اقرن جهازًا لهذا الطفل أولاً — من تبويب العائلة، اضغط على أيقونة المسح أو "+" واختر إضافة جهاز طفل. يبدأ هذا التحكم في العمل فور اتصال جهاز.',
+    'اقرن جهازًا لهذا الطفل أولاً — من تبويب العائلة، اضغط على أيقونة المسح أو «+» واختر إضافة جهاز طفل. يبدأ هذا التحكم في العمل فور اتصال جهاز.',
   // Child-grouped family list: group header lock-all + unassigned group.
   lockAll: 'قفل الكل',
   unlockAll: 'إلغاء قفل الكل',
@@ -61,6 +62,13 @@ export const family = {
   assignDeviceCta: 'تعيين لطفل…',
   unassignedHint: 'هذه الأجهزة لا تُحتسب لأحد بعد.',
   unassignedHintMember: 'مالك العائلة هو من يخصّص هذه الأجهزة للأطفال.',
+  // One device's own page (the web's Controls tab): the two sentences above are
+  // said to a group heading, and "these devices" is false about one machine.
+  unassignedDeviceHint: 'هذا الجهاز لا يُحتسب لأحد بعد.',
+  unassignedDeviceHintMember: 'مالك العائلة هو من يختار من يستخدم هذا الجهاز.',
+  // The pairing sheets' success step for a joined parent, who may pair but not assign.
+  pairedDeviceBodyMember:
+    'أكد جهاز الطفل الاقتران. مالك العائلة هو من يختار من يستخدم هذا الجهاز.',
   // The footer strip: children who hold no device get no group of their own.
   childrenWithoutDeviceTitle: 'أطفال بلا جهاز',
   // Child detail screen.
@@ -69,9 +77,14 @@ export const family = {
   childDetailDevicesTitle: 'الأجهزة',
   childDetailSwipeHint: 'اسحب الجهاز لإلغاء تعيينه.',
   childDetailAssignMore: 'تعيين جهاز آخر…',
+  // The same row while the child has no device yet — "another" needs a first.
+  childDetailAssignFirst: 'تعيين جهاز…',
   childDetailAssignSheetTitle: 'تعيين جهاز لـ{{childName}}',
   childDetailNoDevices:
     'لا توجد أجهزة بعد. عيّن جهازًا أدناه أو اقرن جهازًا جديدًا من تبويب العائلة.',
+  // Same screen when nothing is left below to assign.
+  childDetailNoDevicesPair:
+    'لا توجد أجهزة بعد. اقرن جهازًا من تبويب العائلة، واختر هذا الطفل عندما يسألك التطبيق عمّن يستخدمه.',
   // Same screen for a joined parent, who may pair but may not assign.
   childDetailNoDevicesMember:
     'لا توجد أجهزة بعد. مالك العائلة هو من يحدّد الجهاز الخاص بكل طفل.',
@@ -80,7 +93,7 @@ export const family = {
   scanButtonAccessibility: 'مسح رمز',
   scanTitle: 'مسح رمز',
   scanBody:
-    'وجّه الكاميرا نحو جهاز الطفل، أو دعوة عائلية، أو الرمز الظاهر على الكمبيوتر.',
+    'وجّه الكاميرا نحو الرمز على جهاز الطفل، أو دعوة عائلية، أو رمز تسجيل دخول للويب.',
   manualCodeLabel: 'أدخل الرمز المكوّن من 6 أحرف',
   manualInstructions: 'أدخل الرمز المكوّن من 6 أحرف الظاهر على الجهاز الآخر.',
 
@@ -142,6 +155,11 @@ export const family = {
   devicePausedLabel: 'متوقف مؤقتًا',
 
   devicePausedHint: 'متوقف مؤقتًا في الخطة المجانية — كل القواعد لا تزال سارية',
+  // What Paused means, said where the choice is made: the choose-a-device sheet on
+  // both consoles. Checked against every agent 2026-09-28 — enforcement never
+  // stops while parked; the reports do, and an SOS still goes through.
+  devicePausedMeaning:
+    'الجهاز المتوقف مؤقتًا يواصل تطبيق القواعد الموجودة لديه. يتوقف عن إرسال تقارير وقت الشاشة والموقع والسجل، لكن نداء SOS لا يزال يصلك.',
 
   parkReviewTitle: 'فعّل هذه قبل انتهاء فترتك التجريبية',
   parkReviewBody:
@@ -156,6 +174,24 @@ export const family = {
     'قواعدك تستمر في العمل على كل جهاز. الخطة المجانية تتلقى التقارير من جهاز واحد، ولا تسمح بتشديد القواعد إلا عليه — اختر ذلك الجهاز، أو قم بالترقية للاحتفاظ بها كلها.',
 
   parkedBannerAction: 'اختيار الجهاز',
+  holdFamilyTitle: 'تم تعليق هذه العائلة مؤقتًا من قِبل KidGate',
+  holdDeviceTitle: 'تم تعليق {{deviceName}} مؤقتًا من قِبل KidGate',
+  holdFamilyBody:
+    'تحتفظ كل الأجهزة بقواعدها، لكنها لا ترسل أي تقارير حتى يُرفع التعليق.',
+  holdDeviceBody: 'يحتفظ هذا الجهاز بقواعده، لكنه لا يرسل أي تقارير حتى يُرفع التعليق.',
+  holdReasonUnusualActivity: 'السبب: نشاط غير معتاد في هذا الحساب.',
+  holdReasonOutdatedApp:
+    'السبب: أحد تطبيقات KidGate في هذا الحساب قديم. يُرجى تحديثه ثم التواصل مع الدعم.',
+  holdReasonTermsViolation: 'السبب: مخالفة لشروط استخدام KidGate.',
+  holdReasonOther: 'السبب: يراجع KidGate هذا الحساب.',
+  holdNote: 'رسالة من KidGate: {{note}}',
+  holdAppeal: 'التواصل مع الدعم',
+  holdAppealMessage: 'أود الاستفسار عن تعليق حساب عائلتي.',
+  pairedDevicePaused:
+    'الخطة المجانية تتلقى التقارير من جهاز واحد، ولا تسمح بتشديد القواعد إلا عليه، لذلك يبدأ هذا الجهاز متوقفًا مؤقتًا.',
+
+  pairingWillStartPaused:
+    'الخطة المجانية تتلقى التقارير من جهاز واحد، ولا تسمح بتشديد القواعد إلا عليه، لذلك سيبدأ الجهاز الجديد متوقفًا مؤقتًا.',
 
   chooseMonitoredTitle: 'اختر جهازك الأساسي',
 
@@ -167,10 +203,11 @@ export const family = {
   chooseMonitoredUpgrade: 'الاحتفاظ بكل الأجهزة — الترقية',
 
   chooseMonitoredDone: '\u200F{{name}} هو الآن الجهاز الذي يُبلغ',
+  chooseMonitoredCurrent: 'يُبلغ الآن',
 
   monitoredCooldown: 'لا يمكن تغيير الجهاز الذي يُبلغ إلا مرة كل {{days}} أيام',
 
-  monitoredChooseFailed: 'تعذر تغيير الجهاز الذي يُبلغ',
+  monitoredChooseFailed: 'تعذر تغيير الجهاز الذي يُبلغ. يرجى المحاولة مرة أخرى.',
 
   cardWhereLabel: 'الموقع',
 
@@ -189,9 +226,6 @@ export const family = {
   emptyDescription: 'أضف جهاز طفلك لبدء مراقبة وقت الشاشة واستخدام التطبيقات.',
 
   setupFamilyTitle: 'إعداد العائلة',
-
-  setupFamilyDescription:
-    'أنشئ عائلة لربط أجهزة أطفالك أو انضم إلى عائلة موجودة باستخدام دعوة من أحد الوالدين.',
 
   createFamilyButton: 'إنشاء عائلة',
 
@@ -225,14 +259,14 @@ export const family = {
 
   stepsHeading: 'البدء',
 
-  step1Title: 'اضغط على "إضافة جهاز طفل"',
+  step1Title: 'افتح KidGate على جهاز الطفل',
 
-  step1Description: 'سيظهر هنا رمز QR للاقتران، جاهز للمسح.',
+  step1Description:
+    'ثبّت KidGate على الهاتف أو الجهاز اللوحي أو التلفزيون أو الكمبيوتر الذي يستخدمه طفلك. على الهاتف أو الجهاز اللوحي، اختر «هذا جهاز طفل». سيظهر رمز QR ورمز مكوّن من 6 أحرف.',
 
-  step2Title: 'امسح الرمز من جهاز الطفل',
+  step2Title: 'اضغط على «إضافة جهاز طفل» هنا',
 
-  step2Description:
-    'نزّل KidGate على هاتف أو جهاز الطفل اللوحي، واختر "هذا جهاز طفل"، ثم امسح الرمز.',
+  step2Description: 'امسح رمز QR هذا بهذا الهاتف، أو أدخل الرمز المكوّن من 6 أحرف.',
 
   connectChildButton: 'ربط جهاز الطفل',
   listHint: 'اسحب الجهاز إلى اليسار لإزالته',
@@ -257,7 +291,7 @@ export const family = {
   deviceRemovedAlertTitle: 'تمت إزالة الجهاز',
 
   deviceRemovedAlertMessage:
-    'قام أحد الوالدين بإزالة هذا الجهاز من حساب العائلة. اختر دور "الطفل" مرة أخرى لإعادة ربطه.',
+    'قام أحد الوالدين بإزالة هذا الجهاز من حساب العائلة. يمكنك اختيار دور «الطفل» مرة أخرى لإعادة ربطه.',
 
   deviceNotRegistered: 'هذا الجهاز غير مسجل بعد.',
 

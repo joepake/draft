@@ -34,8 +34,9 @@ export const permissions = {
   oemAutostartLabel: 'Consenti l’avvio automatico',
   oemAutostartHintXiaomi:
     'In Avvio automatico, attiva KidGate in modo che la protezione riparta dopo un riavvio.',
-  oemAutostartHintSamsung:
-    'In Batteria → Limiti di utilizzo in background → App mai in sospensione, aggiungi KidGate. Se KidGate non è nell’elenco è già consentito e questo passaggio è completato.',
+  oemAutostartHintSamsung: 'In Batteria, seleziona Limiti di utilizzo in background.',
+  oemAutostartHintSamsungAdd:
+    'Apri App mai in sospensione e aggiungi KidGate. Se KidGate non è nell’elenco è già consentito e questo passaggio è completato.',
   oemAutostartHintOppo: 'In App di avvio / Avvio automatico, consenti KidGate.',
   oemAutostartHintVivo:
     'In Avvio automatico / Alta potenza in background, consenti KidGate.',
@@ -51,8 +52,10 @@ export const permissions = {
     'Se invece si apre l’elenco completo, seleziona KidGate in App installate/scaricate.',
   accessibilityStepTurnOn:
     'Attiva l’interruttore, poi seleziona Consenti nella conferma di Android.',
+  restrictedSettingsStep:
+    'Se l’interruttore è disattivato, apri Impostazioni › App › KidGate, tocca il menu ⋮ e scegli “Consenti impostazioni con restrizioni”, poi torna qui e riprova.',
   accessibilityWarningNote:
-    'Android avvisa che KidGate può osservare le tue azioni. È così che il blocco resta sopra le altre app: KidGate non legge password né messaggi personali.',
+    'Android avvisa che KidGate può osservare le tue azioni. Con questa autorizzazione KidGate vede quale app è aperta, così il blocco può restare in primo piano, e legge il titolo e il canale dei video di YouTube quando la registrazione dei video guardati è attiva. Non la usa per leggere password, messaggi o ciò che scrivi.',
   uninstallProtectionWizardBody:
     'Impedisce di disinstallare questa app senza il PIN genitore. Android mostra la sua schermata di conferma.',
   notificationsWizardBody:
@@ -61,6 +64,9 @@ export const permissions = {
   backgroundRefreshStepTurnOn: 'Attiva Aggiornamento app in background per KidGate.',
   backgroundRefreshStepGeneral:
     'Se l’interruttore è in grigio, apri Impostazioni, poi Generali, poi Aggiornamento app in background e attivalo.',
+  locationAlwaysStep: 'Seleziona Posizione e scegli “Sempre”.',
+  locationAlwaysStepAndroid:
+    'Seleziona Autorizzazioni → Posizione e scegli “Consenti sempre”.',
   batteryStepAllow: 'Seleziona Consenti nella richiesta di Android.',
   batteryStepAppInfo:
     'Se non compare alcuna richiesta, apri Informazioni app, poi Batteria, poi scegli Senza limitazioni.',

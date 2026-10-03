@@ -21,7 +21,11 @@ import type {
   DeviceMessageMonitoringState,
   MessageMonitoringHalfState,
 } from '@kidgate/schema/messageMonitoringState';
-import { supportsMessageMonitoring, type AppInstallAlertInput } from './alertSupport';
+import {
+  supportsMessageMonitoring,
+  supportsSearchMonitoring,
+  type AppInstallAlertInput,
+} from './alertSupport';
 
 /**
  * One half's state, in the order a reader ranks them.
@@ -102,6 +106,29 @@ function halfStatus(
   return intended ? 'pending' : 'off';
 }
 
+/**
+ * Whether the search switch can take effect on this device yet.
+ *
+ * On Android the search reader is `KidGateTypingMonitorService` — the same
+ * accessibility service as the typed half — so it needs the outgoing grant,
+ * and the child's device offers that grant only once receiving is switched on
+ * (`MessageSafetyCard`). With the switch always open, a parent could turn on
+ * search alone and get nothing, with no sign why. A browser extension reads
+ * the URL and needs no OS grant, so it is never held.
+ *
+ * Both consoles gate the switch on this: the phone's settings sheet and the
+ * dashboard's Controls row.
+ */
+export function searchMonitoringGranted(device: MessageMonitoringInput): boolean {
+  if (!supportsSearchMonitoring(device)) {
+    return false;
+  }
+  if (!supportsMessageMonitoring(device)) {
+    return true;
+  }
+  return device.messageMonitoring?.outgoing?.granted === true;
+}
+
 /** Both halves for one device. */
 export function resolveMessageMonitoring(
   device: MessageMonitoringInput,
@@ -174,6 +201,26 @@ const NOTICE_ORDER: MessageMonitoringNoticeKind[] = [
 ];
 
 /**
+ * The body for a notice whose every device has the OS consent and only the
+ * parent's own switch is off.
+ *
+ * `off` and `outgoingAvailable` each cover two states, and the two need
+ * opposite instructions. `notGranted` is fixed on the child's device — the
+ * consent is a physical action there. `off` (granted, switched off) is fixed by
+ * the parent's switch on the screen they are already looking at, while the
+ * child's device says the switch is "turned on or off from the parent app or
+ * the web dashboard, not here". One body told that parent to walk to the
+ * device that sends them straight back. `kind` stays the same either way,
+ * because renderers branch on it; only the sentence changes. A set with any
+ * `notGranted` device keeps the device instruction, since at least one phone
+ * does need the visit.
+ */
+const SWITCHED_OFF_BODY: Partial<Record<MessageMonitoringNoticeKind, string>> = {
+  off: 'switchedOffBody',
+  outgoingAvailable: 'outgoingSwitchedOffBody',
+};
+
+/**
  * `null` when every supported device is watching, and when none can watch at
  * all — an iPhone-only family is told that by the platform note the screen
  * already renders, and saying it twice in two shapes is worse than once.
@@ -183,17 +230,24 @@ export function resolveMessageMonitoringNotice(
 ): MessageMonitoringNotice | null {
   const found = new Map<
     MessageMonitoringNoticeKind,
-    { halves: Set<MessageMonitoringHalf>; deviceIds: string[] }
+    {
+      halves: Set<MessageMonitoringHalf>;
+      deviceIds: string[];
+      /** Some device in this state still lacks the OS consent. */
+      needsDevice: boolean;
+    }
   >();
 
   const add = (
     kind: MessageMonitoringNoticeKind,
     half: MessageMonitoringHalf | null,
     deviceId: string | undefined,
+    needsDevice = false,
   ) => {
     const entry = found.get(kind) ?? {
       halves: new Set<MessageMonitoringHalf>(),
       deviceIds: [],
+      needsDevice: false,
     };
     if (half) {
       entry.halves.add(half);
@@ -201,6 +255,7 @@ export function resolveMessageMonitoringNotice(
     if (deviceId && !entry.deviceIds.includes(deviceId)) {
       entry.deviceIds.push(deviceId);
     }
+    entry.needsDevice = entry.needsDevice || needsDevice;
     found.set(kind, entry);
   };
 
@@ -216,7 +271,7 @@ export function resolveMessageMonitoringNotice(
       add('revoked', 'outgoing', device.id);
     }
     if (status.incoming === 'off' || status.incoming === 'notGranted') {
-      add('off', 'incoming', device.id);
+      add('off', 'incoming', device.id, status.incoming === 'notGranted');
     }
     // Either half: a parent who just switched the typed half on is owed the
     // same "waiting" answer as one who switched the arriving half on, and
@@ -234,7 +289,7 @@ export function resolveMessageMonitoringNotice(
       status.incoming === 'on' &&
       (status.outgoing === 'off' || status.outgoing === 'notGranted')
     ) {
-      add('outgoingAvailable', 'outgoing', device.id);
+      add('outgoingAvailable', 'outgoing', device.id, status.outgoing === 'notGranted');
     }
   }
 
@@ -243,6 +298,7 @@ export function resolveMessageMonitoringNotice(
     if (!entry) {
       continue;
     }
+    const switchedOffBody = entry.needsDevice ? undefined : SWITCHED_OFF_BODY[kind];
     return {
       kind,
       // Fixed order rather than insertion order: the sentence reads
@@ -252,7 +308,7 @@ export function resolveMessageMonitoringNotice(
       ),
       deviceIds: entry.deviceIds,
       titleKey: `messageMonitoring.notice.${kind}Title`,
-      bodyKey: `messageMonitoring.notice.${kind}Body`,
+      bodyKey: `messageMonitoring.notice.${switchedOffBody ?? `${kind}Body`}`,
     };
   }
   return null;

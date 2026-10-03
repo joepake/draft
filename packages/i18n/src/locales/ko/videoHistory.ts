@@ -37,6 +37,8 @@ export const videoHistory = {
   heroTopChannel: '가장 많이 시청',
   readerLayoutChanged:
     '현재 이 기기에서는 Shorts가 기록되지 않습니다. YouTube 앱이 변경되어 KidGate 업데이트가 필요합니다. 다른 동영상은 계속 기록됩니다.',
+  grantNeeded:
+    '아직 동영상이 기록되지 않습니다. 자녀의 휴대폰에서 KidGate에 알림 접근 권한이 필요합니다. 해당 휴대폰에서 KidGate 설정을 열고 “부모 PIN으로 잠금 해제”를 선택한 다음, “메시지 경고” 아래의 “알림 접근 허용”을 선택하세요.',
   openAction: 'YouTube에서 열기',
   searchAction: '이 동영상을 YouTube에서 검색',
   openFailed: 'YouTube를 열 수 없습니다.',

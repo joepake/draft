@@ -42,10 +42,10 @@ export const usage = {
   deviceLockedChip: 'Perangkat terkunci',
   blockedHoursChip: 'Jam Diblokir',
   overLimitChip: 'Melebihi batas',
-  usageReportsNote:
-    'Menampilkan waktu layar, kunci, dan aktivitas terbaru untuk perangkat ini.',
   syncNote:
-    'Waktu layar bisa butuh beberapa menit untuk muncul di layar ini — lebih lama jika perangkat tidak memiliki koneksi internet atau ditutup secara tidak terduga.',
+    'Waktu layar di sini bisa tertinggal hingga 5 menit dari perangkat, atau 15 menit di paket gratis — lebih lama jika perangkat tidak memiliki koneksi internet atau ditutup secara tidak terduga.',
+  syncNoteIos:
+    'Di iPhone, waktu layar baru masuk setelah KidGate berjalan di perangkat anak, jadi bisa tertinggal beberapa jam jika aplikasinya belum dibuka.',
   syncNoteTv:
     'TV ini hanya memeriksa secara berkala, jadi waktu layar bisa butuh waktu hingga satu jam untuk muncul di layar ini — lebih lama jika tidak ada koneksi internet.',
   sectionLast30Days: '30 hari terakhir',

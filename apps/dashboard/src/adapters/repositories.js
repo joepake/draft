@@ -9,7 +9,6 @@ import { createChildRulesRepository } from '@kidgate/core/repositories/childRule
 import { createFamilyPlacesRepository } from '@kidgate/core/repositories/familyPlaces';
 import { createParentInviteRepository } from '@kidgate/core/repositories/parentInvite';
 import { createLeaderboardRepository } from '@kidgate/core/repositories/leaderboard';
-import { createScreenTimeBoardRepository } from '@kidgate/core/repositories/screenTimeBoard';
 import { createRewardTaskRepository } from '@kidgate/core/repositories/rewardTask';
 import { createSafetyCheckInRepository } from '@kidgate/core/repositories/safetyCheckIn';
 import { createSosAlertRepository } from '@kidgate/core/repositories/sosAlert';
@@ -108,7 +107,6 @@ export const familyPlacesRepository = createFamilyPlacesRepository({ api });
  */
 export const parentInviteRepository = createParentInviteRepository({ api });
 export const leaderboardRepository = createLeaderboardRepository({ db });
-export const screenTimeBoardRepository = createScreenTimeBoardRepository({ db });
 export const rewardTaskRepository = createRewardTaskRepository({ db, api });
 export const sosAlertRepository = createSosAlertRepository({ db });
 export const trustedContactRepository = createTrustedContactRepository({ db });

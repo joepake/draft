@@ -31,8 +31,11 @@ export const plans = {
   compareColumnFree: 'Gratuit',
   compareColumnPremium: 'Premium',
   compareDevices: 'Appareils enfants',
-  compareDevicesFree: '1',
-  compareDevicesPremium: 'Illimité',
+  compareDevicesFree: 'Règles sur tous, rapports d’un seul',
+  compareDevicesPremium: 'Rapports de tous',
+  compareParents: 'Parents',
+  compareParentsFree: 'Jusqu’à 3',
+  compareParentsPremium: 'Jusqu’à 6',
   compareSync: 'Mises à jour de l’appareil',
   compareSyncFree: 'Toutes les 30 minutes',
   compareSyncPremium: 'En direct',
@@ -47,14 +50,14 @@ export const plans = {
   compareWeb: 'Web',
   compareWebPremium: 'Historique complet et recherches',
   compareNewApps: 'Applications récemment installées',
-  compareNewAppsPremium: 'Quelles applications, et validation avant installation',
+  compareNewAppsPremium: 'Quelles applications, avec leur nom',
   compareMessages: 'Alertes de messages (Android)',
   compareSafety: 'Alertes de protection et Check-in',
   compareSafetyFree: 'Alertes + Check-In',
   compareSafetyPremium: 'Ajoute une photo à chaque Check-In',
   compareControls: 'Blocage d’applications et filtre web',
   compareControlsFree: 'Toute application, contenu pour adultes',
-  compareControlsPremium: 'Par catégorie, limites par application, vos propres listes',
+  compareControlsPremium: 'Par catégorie, vos propres listes',
   compareReport: 'Rapport hebdomadaire',
   compareReportFree: 'Une fois, à la fin de l’essai',
   compareReportPremium: 'Chaque semaine',
@@ -63,7 +66,7 @@ export const plans = {
   compareActivityFeedPremium: '30 jours',
   compareChildReport: 'Rapports par enfant',
   compareIncluded:
-    'Les deux offres incluent la limite quotidienne, les heures bloquées, les applications bloquées, le filtre web, le verrouillage à distance, le SOS, les demandes de temps et les tâches à récompense sur iPhone, Android, Mac et Windows dans une même famille, ainsi que le tableau de bord web et plusieurs parents. Android TV et Chromebook arrivent bientôt et proposent moins de contrôles.',
+    'Les deux offres incluent la Limite quotidienne, les Heures bloquées, les Applications bloquées, le Filtre web, le Verrouillage de l’appareil, le SOS, les Demandes de temps et les Tâches à récompense sur iPhone, Android, Mac et Windows dans une même famille, ainsi que le tableau de bord web. Android TV et Chromebook sont aussi pris en charge, avec moins de contrôles.',
   sectionWhyPremium: 'Ce que Premium ajoute',
   sectionWhyPremiumSubtitle:
     'Toutes les règles continuent de fonctionner en Gratuit. Premium ajoute ce que vous voyez, et à quel moment.',
@@ -86,12 +89,12 @@ export const plans = {
   featurePausePhone: 'Verrouillage de l’appareil',
   featureDailyLimits: 'Limite quotidienne',
   featureBlockedHours: 'Heures bloquées',
-  featureAppLimits: 'Une limite de temps par app',
-  featureInstallApproval: 'Approuver les nouvelles installations',
+  featureAppLimits: 'Limites d’apps',
+  featureInstallApproval: 'Approuver les nouvelles applications',
   featureTimeRequests: 'Demandes de temps',
   featureAppBlocking: 'Applications bloquées',
   featureWebFiltering: 'Filtre web',
-  featureSeeLocation: 'Position en direct',
+  featureSeeLocation: 'Localisation',
   featureTamperAlerts: 'Alerte si KidGate est supprimé',
   featureSosAlerts: 'Alertes SOS',
   trialPlanName: 'Essai',
@@ -100,6 +103,7 @@ export const plans = {
   premiumPlanName: 'Premium',
   subscribeBadge: 'S’abonner',
   currentPlanKicker: 'Formule actuelle',
+  currentPlanA11y: 'Formule actuelle : {{plan}}',
   trialEnded: 'Essai terminé',
   trialPending: 'Essai non démarré',
   premiumActiveSubtitle: 'Vous avez un accès complet dès maintenant.',
@@ -117,7 +121,7 @@ export const plans = {
   memberSubscriptionNotice:
     'Une seule formule couvre toute la famille et seul le propriétaire paie. Vous pouvez voir si la famille est en essai ou abonnée.',
   memberTrialActiveSubtitle:
-    'Cette famille est en période d’essai. À la fin, toutes les règles continuent de fonctionner sur un appareil ; le propriétaire peut s’abonner pour l’activité en direct, l’historique et tous les appareils.',
+    'Cette famille est en période d’essai. À la fin, toutes les règles continuent de fonctionner sur tous les appareils et un appareil continue d’envoyer ses rapports ; le propriétaire peut s’abonner pour l’activité en direct, l’historique et les rapports de tous les appareils.',
   memberTrialEndedSubtitle:
     'L’essai de cette famille est terminé. La Limite quotidienne, les Applications bloquées, le Filtre web et la position fonctionnent toujours. Demandez au propriétaire de s’abonner pour les mises à jour en direct, l’historique et les alertes.',
   memberSetupTrialSubtitle:
@@ -133,7 +137,8 @@ export const plans = {
   purchaseFailed: 'L’achat n’a pas abouti. Veuillez réessayer.',
   storeNotReady:
     'La boutique n’est pas encore prête. Veuillez réessayer dans un instant.',
-  premiumNotAvailable: 'Premium n’est pas disponible à l’achat pour le moment.',
+  premiumNotAvailable:
+    'Premium n’est pas disponible à l’achat sur cet appareil pour le moment. Veuillez réessayer plus tard.',
   premiumProductNotFound:
     'Premium n’est pas disponible à l’achat pour le moment. Veuillez réessayer plus tard.',
   subscriptionOfferNotConfigured:
@@ -142,7 +147,8 @@ export const plans = {
   noActiveSubscription: 'Aucun abonnement actif trouvé.',
   purchasesRestored: 'Achats restaurés.',
   unableToRestorePurchases: 'Impossible de restaurer les achats. Veuillez réessayer.',
-  purchaseVerificationFailed: 'La vérification de l’achat a échoué.',
+  purchaseVerificationFailed:
+    'Impossible de vérifier l’achat. Patientez un instant, puis touchez Restaurer les achats.',
   // Shown to joined parents — only the family owner can subscribe, so this
   // has to name who needs to act instead of offering a button they can't use.
   familyPremiumEndedTitle: 'Le Premium de cette famille a expiré',
@@ -159,15 +165,16 @@ export const plans = {
   trustOnePlan: 'Une formule pour toute la famille',
   trustNoAds: 'Sans publicité',
   freePlanName: 'Gratuit',
-  freeDescription: 'Gardez l’essentiel actif sur un appareil, sans date d’expiration.',
-  featureOneChildDevice: 'Un appareil enfant',
+  freeDescription:
+    'L’essentiel reste actif sur chaque appareil enfant, avec les rapports d’un seul. Cette formule n’expire jamais.',
+  featureOneChildDevice: 'Rapports d’un appareil enfant',
   termLifetime: 'À vie',
   badgeOneTime: 'Paiement unique',
   planPeriodOnce: 'une fois',
   billedOnce:
-    'Payez une fois pour jusqu’à {{devices}} appareils enfants, tant que KidGate existe',
+    'Payez une fois pour les rapports de {{devices}} appareils enfants maximum, tant que KidGate existe',
   sectionFreePlan: 'Si vous ne vous abonnez jamais',
-  devicesUnlimited: 'Appareils enfants illimités',
+  devicesUnlimited: 'Chaque appareil enfant envoie ses rapports',
   featureFootnotePlatforms:
     'Certaines fonctionnalités dépendent de ce que chaque plateforme autorise, donc toutes ne sont pas disponibles sur chaque appareil.',
   sectionPlatforms: 'Où KidGate fonctionne',
@@ -185,7 +192,7 @@ export const plans = {
   platformAndroidTvLimits:
     'Pas d’alertes de messages, de position, de SOS ni de demandes de temps. Le blocage d’applications se fait au mieux.',
   platformChromebookLimits:
-    'Filtre web uniquement — pas de Limite quotidienne, d’Heures bloquées, de Blocage d’applications, de Verrouillage de l’appareil, de SOS ni de position.',
+    'Filtre web uniquement — pas de Limite quotidienne, d’Heures bloquées, d’Applications bloquées, de Verrouillage de l’appareil, de SOS ni de position.',
   platformComingSoon: 'Bientôt',
   platformWindows: 'Windows',
   platformWindowsDetail:
@@ -226,5 +233,8 @@ export const plans = {
     'La version gratuite se met à jour toutes les 30 minutes. Premium est en direct.',
   teaserUsageTimeline:
     'Premium montre à quelles heures de la journée l’appareil a été utilisé.',
+  teaserProofParents: 'Parents : {{count}}',
+  teaserParentCap:
+    'C’est le maximum de parents pour une famille sans Premium. Premium en autorise deux fois plus.',
   teaserDeviceNote: 'Seul l’appareil surveillé envoie des données.',
 } as const;

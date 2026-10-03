@@ -8,6 +8,12 @@ export const errors = {
   invalidEmailOrPassword: 'メールアドレスまたはパスワードが正しくありません。',
   tooManyRequests: '試行回数が多すぎます。しばらくしてからもう一度お試しください。',
   somethingWentWrong: '問題が発生しました。もう一度お試しください。',
+  accountDisabled:
+    'このアカウントは無効になっています。復元するには、KidGateサポートにお問い合わせください。',
+  recentLoginRequired:
+    'セキュリティのため、もう一度サインインしてから、この操作をやり直してください。',
+  accountExistsDifferentMethod:
+    'このメールアドレスには、別のサインイン方法のアカウントがすでにあります。その方法でサインインしてから、設定でこの方法を連携してください。',
   unableToCreateAccount: 'アカウントを作成できませんでした。もう一度お試しください。',
   unableToSignIn: 'サインインできませんでした。もう一度お試しください。',
   unableToJoinFamilyAccount:
@@ -19,7 +25,8 @@ export const errors = {
     'コードが一致しません。文字をもう一度ご確認ください — 時間が経っている場合は新しいコードを取得してください。',
   unableToClaimChildPairing:
     '子どものデバイスを接続できませんでした。もう一度お試しください。',
-  unableToPollChildPairing: 'ペアリング状況を確認できませんでした。',
+  unableToPollChildPairing:
+    'ペアリング状況を確認できませんでした。もう一度お試しください。',
   unableToConfirmChildPairing:
     'ペアリングを確認できませんでした。もう一度お試しください。',
   unableToRejectChildPairing:
@@ -43,8 +50,6 @@ export const errors = {
   noNetworkConnection:
     'ネットワークに接続されていません。Wi-Fiまたはモバイル通信を確認してもう一度お試しください。',
   connectionFailedTitle: '接続に失敗しました',
-  connectionFailedBody:
-    'KidGateに接続できませんでした。Wi-Fiまたはモバイル通信を確認し、「再接続」を選択してください。',
   reconnect: '再接続',
   unableToUploadPhoto: '写真をアップロードできませんでした。もう一度お試しください。',
   premiumSubscriptionRequired:
@@ -55,6 +60,7 @@ export const errors = {
   notFamilyMember:
     'このファミリーのメンバーではありません。ファミリー管理者に再度招待してもらってください。',
   familyNotCreated: 'まずファミリーを作成してから、他の保護者を招待してください。',
+  parentLimitReached: 'このファミリーの保護者は、すでにプランの上限に達しています。',
   childDeviceNotAllowed:
     'これは子どものデバイスのため、ファミリー設定を管理できません。',
   deviceCredentialMissing:
@@ -99,6 +105,13 @@ export const errors = {
   leaveFamilyBeforeJoining:
     '他のファミリーに参加する前に、現在のファミリーを退出してください。',
   locationDailyLimitFree:
-    '無料プランの本日の位置確認は使い切りました。Premium は現在地をリアルタイムで追えます。',
-  deviceLimitReached: '1つのご家族で KidGate が対応するデバイス数に達しました。',
+    '無料プランの本日の位置確認は使い切りました。明日もう一度お試しください。Premium では現在地をリアルタイムで確認できます。',
+  deviceLimitReached:
+    'この家族では、KidGateで管理できるデバイス数の上限に達しています。使わなくなったデバイスを削除してから、もう一度お試しください。',
+  rewardTaskLimitReached:
+    '同時に有効にできるタスクの数が上限に達しています。1つ削除するか、どれかが完了するまで待ってから、もう一度お試しください。',
+  deviceNotPaired:
+    'このデバイスは、家族とのペアリングが解除されています。保護者にもう一度ペアリングしてもらってください。',
+  bonusMinutesOutOfRange:
+    'その長さの追加時間は一度に付与できません。別の長さを選んで、もう一度お試しください。',
 };

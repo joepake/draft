@@ -1,18 +1,21 @@
 export const messageMonitoring = {
   actionTitle: 'Mesaj uyarıları',
   actionDescription: 'Mesajlarda endişe verici kelimeler göründüğünde uyarı alın',
-  title: 'İçerik uyarıları',
-  heroTitle: 'Mesaj güvenliği',
+  title: 'Mesaj uyarıları',
+  heroTitle: 'Mesaj uyarıları',
   heroSubtitle:
-    'KidGate çocuğunuzun mesajlarındaki endişe verici kelimeleri işaretler ve sizi uyarır. Mesajın kendisi asla gösterilmez — yalnızca işaretlenen kelime.',
-  androidOnlyNote: 'Yalnızca Android cihazlarda kullanılabilir.',
+    'KidGate çocuğunuzun mesajlarındaki ve aramalarındaki endişe verici kelimeleri işaretler ve sizi uyarır. Yalnızca işaretlenen kelimeyi veya ifadeyi görürsünüz; mesajın ya da aramanın kendisini asla görmezsiniz.',
+  androidOnlyNote:
+    'Mesajlar yalnızca Android cihazlarda kontrol edilebilir. Aramalar Chrome uzantısında da kontrol edilebilir.',
+  searchOnlyNote:
+    'Burada yalnızca aramalar kontrol edilebilir. Mesajlar yalnızca Android cihazlarda kontrol edilebilir.',
   recentTitle: 'Son uyarılar',
   emptyTitle: 'Henüz uyarı yok',
   emptySubtitle: 'Mesajlarda endişe verici kelime görülmedi.',
   emptySubtitleNotWatching:
     'Mesajlar şu anda kontrol edilmiyor, bu yüzden ne olursa olsun bu liste boş kalacak.',
-  flaggedTerm: 'İşaretlenen kelime: “{{term}}”',
-  flaggedTermPrefix: 'İşaretlenen kelime: “',
+  flaggedTerm: 'İşaretlenen: “{{term}}”',
+  flaggedTermPrefix: 'İşaretlenen: “',
   flaggedTermSuffix: '”',
   flaggedTermMeaning: 'Anlamı: {{gloss}}',
   aiConfirmed: 'Yapay zeka tarafından onaylandı',
@@ -30,7 +33,7 @@ export const messageMonitoring = {
   guidanceToggle: 'Şimdi ne yapmalı',
   guidanceHide: 'Gizle',
   guidanceFooter:
-    'KidGate mesajı saklamadı — yalnızca bu kelimeyi. Gerisi çocuğunuzdan gelmek zorunda.',
+    'KidGate mesajı kaydetmedi — yalnızca bu kelimeyi veya ifadeyi. Gerisi çocuğunuzdan gelmek zorunda.',
   guidance: {
     predator:
       'Yaklaşma çoğu zaman dostça başlar ve çocuğunuzun kendi yaşıtı sandığı biri tarafından yapılır. Uyarıdan söz etmeden önce son zamanlarda kiminle konuştuğunu ve nasıl tanıştıklarını sorun: yakalandığını düşünen bir çocuk anlatmayı bırakır.',
@@ -53,20 +56,22 @@ export const messageMonitoring = {
     profanity:
       'Küfür tek başına yaygındır ve güvenlik hakkında neredeyse hiçbir şey söylemez. Bu uyarılar aileniz için yalnızca gürültüyse, bu ekrandaki ayarlardan “Küfürlü ifadeleri de işaretle” seçeneğini kapatın.',
     unknown:
-      'Bu uyarı, bu sürümün artık adlandırmadığı bir cihazdan ya da kelime listesinden geliyor. Yukarıdaki işaretli kelime sorulacak olan şeydir; mesajın başka hiçbir kısmı saklanmadı.',
+      'Bu uyarı, bu sürümün artık adlandırmadığı bir cihazdan ya da kelime listesinden geliyor. Sormanız gereken, yukarıdaki işaretli kelime veya ifadedir; mesajla ilgili başka hiçbir şey saklanmadı.',
   },
-  setupTitle: 'Mesaj güvenliği',
+  setupTitle: 'Mesaj uyarıları',
   setupBody:
-    'Mesajları endişe verici kelimeler için izler. KidGate mesajı asla göstermez — yalnızca endişe verici bir şey çıkarsa uyarı verir.',
+    'Ailen bunu açtığında KidGate, aldığın mesajlarda uyarı kelimeleri olup olmadığını doğrudan bu telefonda kontrol eder. Ailen yalnızca işaretlenen bir kelimeyi veya ifadeyi görür, mesajlarını asla görmez. Yapay zekâ ile mesaj analizini de açarlarsa, belirsiz bir mesaj kontrol için bir yapay zekâ hizmetine gönderilebilir; bundan önce e-postalar, telefon numaraları, bağlantılar ve @kullanıcı adları çıkarılır.',
   setupGrant: 'Bildirim erişimine izin ver',
-  setupEnable: 'Mesaj güvenliği',
+  setupEnable: 'Mesaj uyarıları',
   controlledByParentHint:
-    'Buradan değil, ebeveynin telefonundaki KidGate uygulamasından açılıp kapatılır.',
+    'Buradan değil, ebeveyn uygulamasından veya web panelinden açılıp kapatılır.',
   parentIncomingLabel: 'Gelen mesajları tara',
   parentOutgoingLabel: 'Yazılan mesajları tara',
   parentSearchLabel: 'Aramalarını denetle',
   parentSearchHint:
-    'Tarayıcılar ve YouTube. Yalnızca işaretli kelime bildirilir, aramanın kendisi asla.',
+    'Tarayıcılar ve YouTube. Yalnızca işaretli kelime veya ifade bildirilir, aramanın kendisi asla bildirilmez.',
+  parentSearchHintNotGranted:
+    '“Yazılan mesajları tara” ile aynı izni gerektirir. “Gelen mesajları tara” seçeneğini açın, ardından çocuğunuzun cihazında izin verin.',
   parentToggleHintGranted: 'Bu telefonda.',
   parentToggleHintNotGranted:
     'Bu telefonda henüz izin verilmedi — izin vermek için onun cihazında KidGate’i aç.',
@@ -74,17 +79,17 @@ export const messageMonitoring = {
   parentProfanityHint:
     'Varsayılan olarak kapalı — sıradan küfürler yaygındır, bunu açmak onları da uyarıya dönüştürür.',
   parentToggleSaveFailed: 'Değişiklik kaydedilemedi.',
-  settingsTitle: 'Mesaj uyarısı ayarları',
+  settingsTitle: 'Mesaj uyarıları ayarları',
   checkedTitle: 'Bakıldı, sorun yok',
   checkedSubtitle:
     'İzlenen kelimeler göründü ama bağlam içinde zararsız çıktı, bu yüzden size bildirim gitmedi. Sizin adınıza nelerin elendiğini görebilesiniz diye burada gösteriliyor — içlerinden biri size ulaşmalıysa bize söyleyin.',
   consentTitle: 'Yapay zekâ ile mesaj analizi',
   consentBody:
-    'Açıkken, bir anahtar kelimenin sınırda işaretlediği mesajlar — adlar, numaralar ve bağlantılar çıkarılarak — gerçekten endişe verici olup olmadığını doğrulamak için sizi uyarmadan önce bir yapay zekâ hizmetine gönderilir. Yüksek riskli kelimeler hiçbir şey göndermeden anında uyarmaya devam eder.',
+    'Açıkken, işaretlenen kelimesi zararsız olabilecek ya da yalnızca yaklaşık olarak eşleşmiş bir mesaj, sizi uyarmadan önce gerçekten endişe verici olup olmadığını doğrulamak için bir yapay zekâ hizmetine gönderilir. Önce e-postalar, telefon numaraları, bağlantılar ve @kullanıcı adları çıkarılır; kişi adları ve mesajın geri kalanı çıkarılmaz. Açık bir eşleşme hiçbir şey göndermeden anında uyarır.',
   consentEnable: 'Yapay zekâ analizini aç',
   consentConfirmTitle: 'Yapay zekâ ile mesaj analizi açılsın mı?',
   consentConfirmBody:
-    'Kişisel bilgileri çıkarılmış sınırdaki mesajlar, kontrol için bir yapay zekâ hizmetine gönderilecek. Bu işleme onay verdiğinizi doğruluyorsunuz.',
+    'Sınırdaki mesajlar, endişe verici bir durum olup olmadığını kontrol etmek için e-postalar, telefon numaraları, bağlantılar ve @kullanıcı adları çıkarılarak bir yapay zekâ hizmetine gönderilecek. Kişi adları ve mesajın geri kalanı çıkarılmaz. Bu işleme onay verdiğinizi doğruluyorsunuz.',
   consentAgree: 'Kabul ediyorum',
   outgoingTitle: 'Yazdığın mesajlar',
   outgoingBody:
@@ -105,30 +110,33 @@ export const messageMonitoring = {
     'Android bunu kapattı. Yazdıklarının kontrol edilmeye devam etmesi için izni yeniden ver.',
   outgoingDisclosureTitle: 'İzin vermeden önce',
   outgoingDisclosureBody:
-    'KidGate yalnızca mesajlaşma uygulamalarında yazdıklarını okur — başka hiçbir uygulamada ve asla parola alanında okumaz. Uyarı sözcükleri bu telefonda aranır. Mesajların hiçbir yere gönderilmez; ailene yalnızca işaretlenen sözcük ulaşır.',
+    'KidGate sohbet uygulamalarında yazdıklarını aynı uyarı kelimeleri için kontrol eder. Ailen arama uyarılarını açarsa tarayıcılarda, YouTube’da ve Google uygulamasında yazdıklarını da kontrol eder. Parola alanlarını asla okumaz. Kontrol bu telefonda yapılır: yazdığın hiçbir şey bir yere gönderilmez ve ailene yalnızca işaretlenen bir kelime veya ifade ulaşır.',
   outgoingRestrictedHint:
     'Anahtar soluk görünüyorsa Ayarlar › Uygulamalar › KidGate yolunu açıp ⋮ menüsüne dokun ve “Kısıtlanmış ayarlara izin ver” seçeneğini seç, sonra buraya dön.',
   notice: {
     revokedTitle: 'Mesaj kontrolü durdu',
     revokedBody:
       'Android, KidGate’in ihtiyaç duyduğu bir izni kapattı; mesajlar artık kontrol edilmiyor. Çocuğunuzun cihazında KidGate’i açıp izni yeniden verin.',
-    offTitle: 'Mesaj güvenliği açık değil',
+    offTitle: 'Mesaj uyarıları açık değil',
     offBody:
       'Çocuğunuzun cihazında hiçbir şey kontrol edilmiyor, bu yüzden burada uyarı çıkamaz. Kurmak için cihazında KidGate’i açın.',
+    switchedOffBody:
+      'Çocuğunuzun cihazında hiçbir şey kontrol edilmiyor, bu yüzden burada uyarı çıkamaz. Bu ekrandaki ayarlardan “Gelen mesajları tara” seçeneğini açın.',
     pendingTitle: 'Çocuğunuzun cihazının bunu uygulaması bekleniyor',
     pendingBody:
       'Bunu açtınız. Çocuğunuzun cihazı değişikliği bir sonraki bağlanışında alacak, genelde birkaç dakika içinde — telefon kullanılıyorsa daha da hızlı. Yapmanız gereken başka bir şey yok.',
     unknownTitle: 'Cihazdan yanıt bekleniyor',
     unknownBody:
-      'Bu cihaz mesaj güvenliğinin çalışıp çalışmadığını henüz bildirmedi, bu yüzden boş liste pek bir şey söylemiyor. Cihaz bir sonraki bağlantısında güncellenecektir.',
+      'Bu cihaz, Mesaj uyarılarının çalışıp çalışmadığını henüz bildirmedi, bu yüzden boş liste pek bir şey söylemiyor. Bilgi, cihazın bir sonraki bağlantısında güncellenecektir.',
     outgoingAvailableTitle: 'Çocuğunuzun yazdıklarını da kontrol edin',
     outgoingAvailableBody:
       'Gelen mesajlar zaten kontrol ediliyor. KidGate, çocuğunuzun mesajlaşma uygulamalarında yazdıklarını da kontrol edebilir — zorbalık ve kendine zarar verme orada çok daha sık görülür. Cihazında kurun.',
+    outgoingSwitchedOffBody:
+      'Gelen mesajlar zaten kontrol ediliyor. KidGate, çocuğunuzun mesajlaşma uygulamalarında yazdıklarını da kontrol edebilir — zorbalık ve kendine zarar verme orada çok daha sık görülür. Bu ekrandaki ayarlardan “Yazılan mesajları tara” seçeneğini açın.',
   },
   languagesLabel: 'Taranan diller',
   languagesHint:
     'Bu cihazın endişe verici kelimeleri hangi dillerde aradığı. En fazla {{max}} tane seçin.',
   languagesDefaultHint: 'Varsayılan olarak cihazın dili kullanılır.',
-  setupStepFindKidGate:
-    'Bildirim erişimi listesinde KidGate’i bulun ve açın. KidGate listede iki kez görünebilir — diğeri gece arama uyarıları içindir. Geri döndüğünüzde bu adım hâlâ tamamlanmadıysa diğerini açın.',
+  setupStepFindKidGate: 'Bildirim erişimi listesinde KidGate’i bul ve aç.',
 } as const;

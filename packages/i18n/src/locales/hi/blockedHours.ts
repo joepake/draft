@@ -12,11 +12,11 @@ export const blockedHours = {
   statusDisabled: 'निष्क्रिय',
   statusActiveNow: 'अभी सक्रिय',
   heroSubtitle:
-    'अधिकतम {{max}} समय अंतराल सेट करें जिनके दौरान इस डिवाइस का उपयोग नहीं किया जा सकेगा।',
+    'अधिकतम {{max}} समय अंतराल सेट करें, जिनके दौरान डिवाइस का इस्तेमाल ब्लॉक रहता है।',
   statTimeRangesLabel: 'समय अंतराल',
   statMaxAllowedLabel: 'अधिकतम',
   toggleTitle: 'ब्लॉक किए गए समय सक्षम करें',
-  toggleSubtitleOn: 'नीचे दिए गए समय के दौरान डिवाइस ब्लॉक रहेगा।',
+  toggleSubtitleOn: 'नीचे दिए गए समय के दौरान डिवाइस का इस्तेमाल ब्लॉक रहता है।',
   toggleSubtitleOff:
     'निर्धारित समय के अनुसार डिवाइस उपयोग को ब्लॉक करने के लिए इसे चालू करें।',
   toggleAccessibilityLabel: 'ब्लॉक किए गए समय सक्षम करें',
@@ -45,11 +45,11 @@ export const blockedHours = {
   presetStudy: 'पढ़ाई',
   disabledTitle: 'ब्लॉक किए गए समय बंद हैं',
   disabledSubtitle:
-    'यह चुनने के लिए ऊपर का स्विच चालू करें कि यह डिवाइस कब उपयोग नहीं किया जा सकेगा।',
+    'डिवाइस का इस्तेमाल कब ब्लॉक रहे, यह चुनने के लिए ऊपर का स्विच चालू करें।',
   infoTitle: 'यह कैसे काम करता है',
   infoLine1: 'ब्लॉक किए गए समय के दौरान बच्चे के डिवाइस पर ऐप्स ब्लॉक रहेंगे।',
   infoLine2: 'रात भर के समय अंतराल, जैसे 22:00 से 07:00 तक, समर्थित हैं।',
-  infoLine3: 'डिवाइस में स्क्रीन टाइम का समर्थन होना चाहिए।',
+  infoLine3: 'iPhone और iPad पर, बच्चे के डिवाइस पर स्क्रीन टाइम की अनुमति होनी चाहिए।',
   off: 'बंद',
   blockedHoursChip: 'ब्लॉक किए गए समय',
   blockedHoursOnChip: 'ब्लॉक किए गए समय सेट हैं',
@@ -67,7 +67,9 @@ export const blockedHours = {
   dayShortSun: 'रवि',
   daysLabel: 'दिन',
   daysEveryDay: 'हर दिन',
-  daysSchoolNights: 'स्कूल की रातें',
+  daysWeekdays: 'कार्यदिवस',
+  daysSchoolNights: 'स्कूल से पहले की रातें',
+  daysWeekendNights: 'सप्ताहांत की रातें',
   daysWeekend: 'सप्ताहांत',
   daysOvernightHint:
     'रातभर चलने वाले समय उसी रात से गिने जाते हैं जब वे शुरू होते हैं।',

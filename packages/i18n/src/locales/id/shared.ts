@@ -59,6 +59,4 @@ export const shared = {
   toastRemoveDeviceFailed: 'Tidak dapat menghapus perangkat. Silakan coba lagi.',
   unableToOpenMaps: 'Tidak dapat membuka Maps. Silakan coba lagi.',
   unableToSignOut: 'Tidak dapat keluar. Silakan coba lagi.',
-  pushNotificationNote:
-    'Orang tua dan anak menerima notifikasi push untuk perintah dan permintaan waktu.',
 } as const;

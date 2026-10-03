@@ -9,7 +9,7 @@ export const notifications = {
   sectionSummary: 'Summary',
   sectionQuietHours: 'Quiet hours',
   sectionQuietHoursHint:
-    'Alerts stay silent during this window. SOS is never silenced.',
+    'Alerts stay silent during this window. SOS is never silenced, and the most serious Message Alerts still come through.',
   quietHoursLabel: 'Quiet hours',
   quietHoursOff: 'Off — alerts arrive at any time',
   quietHoursActive: 'Silent from {{start}} to {{end}}',
@@ -21,7 +21,7 @@ export const notifications = {
   alert: {
     tamperAlerts: {
       label: 'Protection turned off',
-      hint: 'A permission KidGate needs was switched off on a child device.',
+      hint: 'On a child device, a permission KidGate needs was switched off, the date, time or time zone was changed, or SOS was pressed while it was locked. The SOS alert itself always comes through.',
     },
     placeAlerts: {
       label: 'Arrivals and departures',
@@ -57,7 +57,11 @@ export const notifications = {
     },
     messageAlerts: {
       label: 'Message Alerts',
-      hint: 'Get alerted when concerning words appear in messages',
+      hint: 'Concerning words appear in your child’s messages or searches.',
+    },
+    billing: {
+      label: 'Premium reminders',
+      hint: 'Reminders to subscribe after your trial ends. Notices that your trial or Premium is ending always come through.',
     },
   },
 };

@@ -8,8 +8,8 @@ export const report = {
 
   statScreenTime: '스크린 타임',
   statDailyAverage: '하루 평균',
-  statBlockedApps: '차단된 앱',
-  statBlockedWebVisits: '필터된 사이트',
+  statBlockedApps: '차단된 앱 실행 시도',
+  statBlockedWebVisits: '차단된 사이트 방문',
   statTasksApproved: '완료한 할 일',
 
   trendUp: '지난주보다 {{value}} 많음',
@@ -79,7 +79,7 @@ export const report = {
   shareFailed: '공유 메뉴를 열지 못했습니다.',
   shareLinkCta: '{{url}} 에서 앱 받기',
   shareFooterDesc:
-    'KidGate는 부모가 사용 시간, 위치, 메시지를 확인할 수 있도록 돕습니다.',
+    'KidGate는 보호자가 사용 시간을 관리하고, 위치를 확인하고, 웹을 필터링할 수 있도록 돕습니다.',
   shareFooterCta: 'kidgate.app/get 에서 앱 받기',
 
   currentWeekTab: '이번 주',
@@ -111,6 +111,9 @@ export const report = {
   // existed; the phone could not, because the copy lived only in the web
   // pack.
   childrenTitle: '자녀별',
+  childrenNoteByChild:
+    '같은 2주간을 자녀별로, 사용하는 모든 기기를 합쳐서. 비율은 가족 합계 기준입니다.',
+  devicesTitle: '기기별',
   childrenNote: '같은 2주간을 기기별로. 비율은 가족 합계 기준입니다.',
   colChild: '자녀',
   colScreenTime: '스크린 타임',

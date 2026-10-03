@@ -15,9 +15,14 @@ export const blockedApps = {
   installApprovalInfoLine1:
     'Perangkat anak memblokir aplikasi apa pun yang dipasang setelah Anda mengaktifkan ini, tanpa menunggu Anda.',
   installApprovalInfoLine2:
-    'Anda akan menerima notifikasi, dan aplikasi itu muncul di daftar di bawah dan di layar Aplikasi sampai Anda mengizinkannya.',
+    'Anda akan menerima notifikasi, dan aplikasi itu muncul di bawah, di Aplikasi yang Diblokir, sampai Anda mengizinkannya.',
   installApprovalInfoLine3:
     'Mengizinkan aplikasi membuatnya bisa langsung dibuka. Aplikasi yang tidak Anda izinkan akan tetap diblokir.',
+  installApprovalInfoLine1Ios:
+    'Selama fitur ini aktif, App Store disembunyikan di perangkat anak, jadi aplikasi baru tidak bisa dipasang.',
+  installApprovalInfoLine2Ios: 'Aplikasi yang sudah ada di perangkat tetap berfungsi.',
+  installApprovalInfoLine3Ios:
+    'Untuk mengizinkan satu aplikasi, matikan fitur ini, pasang aplikasinya, lalu aktifkan lagi.',
   pendingSectionTitle: 'Diblokir otomatis, menunggu Anda',
   pendingSectionSubtitle:
     'Dipasang setelah Anda mengaktifkan persetujuan. Tidak satu pun di antaranya dipilih di perangkat anak.',
@@ -29,7 +34,7 @@ export const blockedApps = {
   toastAllowFailed: 'Tidak dapat mengizinkan aplikasi ini. Silakan coba lagi.',
   toastInstallApprovalSaveFailed: 'Tidak dapat menyimpan. Silakan coba lagi.',
   toastChooseAppsFirst:
-    'Minta anak Anda membuka Pengaturan KidGate dan memilih aplikasi yang akan diblokir terlebih dahulu.',
+    'Pilih aplikasinya dulu: buka Pengaturan KidGate di perangkat anak dan masukkan PIN Orang Tua.',
   toastSaveFailed: 'Tidak dapat menyimpan. Silakan coba lagi.',
   statusBlockingOn: 'Pemblokiran aktif',
   statusBlockingOff: 'Tidak memblokir',
@@ -44,7 +49,9 @@ export const blockedApps = {
   toggleAccessibilityLabel: 'Aktifkan Pemblokiran Aplikasi',
   emptyTitle: 'Belum ada aplikasi yang diblokir',
   emptySubtitle:
-    'Di perangkat anak, buka Pengaturan KidGate → Pilih aplikasi untuk diblokir, masukkan PIN Orang Tua, lalu simpan pilihan.',
+    'Di perangkat anak, buka Pengaturan KidGate, masukkan PIN Orang Tua, lalu buka Pemblokiran Aplikasi → Aplikasi yang Diblokir dan simpan pilihan.',
+  emptySubtitleTv:
+    'Di TV, buka KidGate, pilih “{{button}}”, masukkan PIN Orang Tua, lalu pilih aplikasinya dan simpan.',
   sectionTitle: 'Daftar blokir',
   privacyTitle: 'Daftar aplikasi berasal dari perangkat anak',
   privacySubtitle:
@@ -77,5 +84,9 @@ export const blockedApps = {
   unableToOpenAppPicker: 'Tidak dapat membuka pemilih aplikasi. Silakan coba lagi.',
   wizardStepPin: 'Masukkan PIN orang tua saat Pengaturan memintanya.',
   wizardStepChoose:
-    'Buka Pilih aplikasi untuk diblokir, centang aplikasinya, lalu simpan.',
+    'Buka Aplikasi yang Diblokir di bagian Pemblokiran Aplikasi, centang aplikasinya, lalu simpan.',
+  pickerSubtitle: 'Pilih aplikasi dan kategori yang akan diblokir di perangkat ini.',
+  pickerSubtitleAndroid:
+    'Aplikasi yang dicentang tidak bisa dibuka selama Pemblokiran Aplikasi aktif.',
+  pickerEmpty: 'Tidak ada aplikasi yang ditemukan di perangkat ini.',
 } as const;
