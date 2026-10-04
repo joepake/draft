@@ -103,11 +103,9 @@ export default {
     heroCheck5: 'Dashboard famiglia',
 
     phoneDailyLimit: 'Limite giornaliero',
-    phoneDailyLimitValue: '1h 24m usate su 3h',
     phoneBlockedHours: 'Orari di blocco',
     phoneScheduleOn: 'Programmazione attiva',
     phoneLocation: 'Posizione',
-    phoneLocationValue: 'A scuola · 5 min fa',
     phoneCheckIn: 'Check-in OK',
 
     trust1Title: 'Mai pubblicità',

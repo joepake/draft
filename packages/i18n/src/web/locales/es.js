@@ -103,11 +103,9 @@ export default {
     heroCheck5: 'Panel familiar',
 
     phoneDailyLimit: 'Límite diario',
-    phoneDailyLimitValue: '1 h 24 min de 3 h usadas',
     phoneBlockedHours: 'Horas bloqueadas',
     phoneScheduleOn: 'Horario activo',
     phoneLocation: 'Ubicación',
-    phoneLocationValue: 'En el colegio · hace 5 min',
     phoneCheckIn: 'Check-in correcto',
 
     trust1Title: 'Sin anuncios, nunca',

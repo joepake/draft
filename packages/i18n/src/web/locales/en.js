@@ -116,11 +116,9 @@ export default {
     heroCheck5: 'Family Dashboard',
 
     phoneDailyLimit: 'Daily Limit',
-    phoneDailyLimitValue: '1h 24m of 3h used',
     phoneBlockedHours: 'Blocked Hours',
     phoneScheduleOn: 'Schedule on',
     phoneLocation: 'Location',
-    phoneLocationValue: 'At school · 5 min ago',
     phoneCheckIn: 'Check-In OK',
 
     trust1Title: 'No ads, ever',

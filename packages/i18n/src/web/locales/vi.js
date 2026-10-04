@@ -124,11 +124,9 @@ export default {
     heroCheck5: 'Bảng điều khiển gia đình',
 
     phoneDailyLimit: 'Giới hạn hằng ngày',
-    phoneDailyLimitValue: 'Đã dùng 1g 24p / 3g',
     phoneBlockedHours: 'Giờ khóa thiết bị',
     phoneScheduleOn: 'Lịch đang bật',
     phoneLocation: 'Vị trí',
-    phoneLocationValue: 'Ở trường · 5 phút trước',
     phoneCheckIn: 'Đã báo an toàn',
 
     trust1Title: 'Không bao giờ có quảng cáo',

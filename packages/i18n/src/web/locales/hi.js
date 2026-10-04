@@ -103,11 +103,9 @@ export default {
     heroCheck5: 'परिवार डैशबोर्ड',
 
     phoneDailyLimit: 'दैनिक सीमा',
-    phoneDailyLimitValue: '3 घं में से 1 घं 24 मि इस्तेमाल',
     phoneBlockedHours: 'ब्लॉक किए गए समय',
     phoneScheduleOn: 'शेड्यूल चालू',
     phoneLocation: 'स्थान',
-    phoneLocationValue: 'स्कूल में · 5 मिनट पहले',
     phoneCheckIn: 'चेक-इन ठीक',
 
     trust1Title: 'कभी विज्ञापन नहीं',

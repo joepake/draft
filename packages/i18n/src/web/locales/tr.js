@@ -104,11 +104,9 @@ export default {
     heroCheck5: 'Aile paneli',
 
     phoneDailyLimit: 'Günlük sınır',
-    phoneDailyLimitValue: '3 saatin 1 sa 24 dk’sı kullanıldı',
     phoneBlockedHours: 'Engellenen Saatler',
     phoneScheduleOn: 'Program açık',
     phoneLocation: 'Konum',
-    phoneLocationValue: 'Okulda · 5 dk önce',
     phoneCheckIn: 'Check-In tamam',
 
     trust1Title: 'Asla reklam yok',

@@ -103,11 +103,9 @@ export default {
     heroCheck5: 'Tableau de bord familial',
 
     phoneDailyLimit: 'Limite quotidienne',
-    phoneDailyLimitValue: '1 h 24 min utilisées sur 3 h',
     phoneBlockedHours: 'Heures bloquées',
     phoneScheduleOn: 'Planning actif',
     phoneLocation: 'Localisation',
-    phoneLocationValue: 'À l’école · il y a 5 min',
     phoneCheckIn: 'Check-in OK',
 
     trust1Title: 'Jamais de publicité',

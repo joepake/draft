@@ -102,11 +102,9 @@ export default {
     heroCheck5: '가족 대시보드',
 
     phoneDailyLimit: '일일 제한',
-    phoneDailyLimitValue: '3시간 중 1시간 24분 사용',
     phoneBlockedHours: '차단 시간',
     phoneScheduleOn: '일정 켜짐',
     phoneLocation: '위치',
-    phoneLocationValue: '학교 · 5분 전',
     phoneCheckIn: '체크인 완료',
 
     trust1Title: '광고는 절대 없음',

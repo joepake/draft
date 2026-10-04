@@ -113,11 +113,9 @@ export default {
     heroCheck5: 'لوحة العائلة',
 
     phoneDailyLimit: 'الحد اليومي',
-    phoneDailyLimitValue: 'استُخدم ساعة و24 دقيقة من 3 ساعات',
     phoneBlockedHours: 'ساعات الحظر',
     phoneScheduleOn: 'الجدول مفعّل',
     phoneLocation: 'الموقع',
-    phoneLocationValue: 'في المدرسة · قبل 5 دقائق',
     phoneCheckIn: 'تم تسجيل الاطمئنان',
 
     trust1Title: 'بلا إعلانات إطلاقًا',

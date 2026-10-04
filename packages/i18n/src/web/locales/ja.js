@@ -103,11 +103,9 @@ export default {
     heroCheck5: '家族ダッシュボード',
 
     phoneDailyLimit: '1日の上限',
-    phoneDailyLimitValue: '3 時間のうち 1 時間 24 分を使用',
     phoneBlockedHours: '休止時間',
     phoneScheduleOn: 'スケジュール有効',
     phoneLocation: '位置情報',
-    phoneLocationValue: '学校 · 5 分前',
     phoneCheckIn: 'チェックイン OK',
 
     trust1Title: '広告は一切なし',

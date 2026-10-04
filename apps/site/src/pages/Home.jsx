@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Icon from '@kidgate/web-ui/Icon';
 import { useT } from '@kidgate/web-ui/useT';
@@ -316,9 +316,43 @@ const STEPS = [1, 2, 3];
 const FAQ = [1, 2, 3, 4, 5];
 const HERO_CHECKS = [1, 2, 3, 4, 5];
 
+/*
+ * The promo's 9x16 cut in the visitor's language, which `apps/videos` renders
+ * and uploads to the R2 `assets` bucket (`yarn workspace @kidgate/videos hero
+ * --upload`, docs/VIDEOS.md). A re-render replaces it in place; nothing here
+ * changes. Started from an effect rather than `autoPlay`, so a visitor who asked
+ * for less motion or less data keeps the poster and downloads no video.
+ */
+const PROMO_BASE = 'https://assets.kidgate.app/promo';
+
+function HeroVideo({ language }) {
+  const ref = useRef(null);
+  useEffect(() => {
+    const still =
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
+      navigator.connection?.saveData;
+    // Refused in iOS Low Power Mode, among others; the poster stays, which is fine.
+    if (!still) ref.current?.play().catch(() => {});
+  }, [language]);
+  return (
+    <video
+      key={language}
+      ref={ref}
+      className="hero-video"
+      src={`${PROMO_BASE}/${language}/hero.mp4`}
+      poster={`${PROMO_BASE}/${language}/hero.jpg`}
+      muted
+      loop
+      playsInline
+      preload="none"
+      aria-hidden="true"
+    />
+  );
+}
+
 export default function Home() {
   const root = useReveal();
-  const { t } = useT();
+  const { t, language } = useT();
   useScrollToHash();
 
   return (
@@ -346,34 +380,7 @@ export default function Home() {
             <StoreButtons />
           </div>
 
-          <div className="phone-wrap" aria-hidden="true">
-            <div className="phone">
-              <div className="phone-notch" />
-              <div className="phone-card">
-                <div className="label">{t('home.phoneDailyLimit')}</div>
-                <div className="value">{t('home.phoneDailyLimitValue')}</div>
-                <div className="phone-bar">
-                  <span style={{ width: '47%' }} />
-                </div>
-              </div>
-              <div className="phone-card">
-                <div className="label">{t('home.phoneBlockedHours')}</div>
-                <div className="value">21:00 – 07:00</div>
-                <span className="phone-pill">
-                  <Icon name="check" />
-                  {t('home.phoneScheduleOn')}
-                </span>
-              </div>
-              <div className="phone-card">
-                <div className="label">{t('home.phoneLocation')}</div>
-                <div className="value">{t('home.phoneLocationValue')}</div>
-                <span className="phone-pill">
-                  <Icon name="check" />
-                  {t('home.phoneCheckIn')}
-                </span>
-              </div>
-            </div>
-          </div>
+          <HeroVideo language={language} />
         </div>
       </section>
 

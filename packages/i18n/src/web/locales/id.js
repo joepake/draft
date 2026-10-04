@@ -103,11 +103,9 @@ export default {
     heroCheck5: 'Dasbor keluarga',
 
     phoneDailyLimit: 'Batas harian',
-    phoneDailyLimitValue: '1j 24m dari 3j terpakai',
     phoneBlockedHours: 'Jam Diblokir',
     phoneScheduleOn: 'Jadwal aktif',
     phoneLocation: 'Lokasi',
-    phoneLocationValue: 'Di sekolah · 5 menit lalu',
     phoneCheckIn: 'Check-In OK',
 
     trust1Title: 'Tanpa iklan, selamanya',

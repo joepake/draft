@@ -105,11 +105,9 @@ export default {
     heroCheck5: 'Семейная панель',
 
     phoneDailyLimit: 'Дневной лимит',
-    phoneDailyLimitValue: 'Использовано 1 ч 24 мин из 3 ч',
     phoneBlockedHours: 'Заблокированные часы',
     phoneScheduleOn: 'Расписание включено',
     phoneLocation: 'Местоположение',
-    phoneLocationValue: 'В школе · 5 мин назад',
     phoneCheckIn: 'Check-In получен',
 
     trust1Title: 'Никакой рекламы',
