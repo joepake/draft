@@ -72,3 +72,25 @@ export function extractPairingCodeFromScan(
   const code = match[1].toUpperCase();
   return PAIRING_CODE_PATTERN.test(code) ? code : null;
 }
+
+/**
+ * The code a tapped pairing link carries: the QR's own value
+ * (`buildPairingQrValue`) opened by the phone's camera app instead of being
+ * scanned inside KidGate. Only `scheme://pair` is read — `extractPairingCodeFromScan`
+ * takes any `code=` it can find, and a web sign-in link, or an OAuth redirect
+ * on another scheme the app registers, carries one too.
+ */
+export function extractPairingCodeFromLink(
+  url: string | null | undefined,
+  config: PairingLinkConfig,
+): string | null {
+  if (!url) {
+    return null;
+  }
+  const trimmed = url.trim();
+  const scheme = config.scheme.replace(/[.+]/g, '\\$&');
+  if (!new RegExp(`^${scheme}://pair(?:[/?#]|$)`, 'i').test(trimmed)) {
+    return null;
+  }
+  return extractPairingCodeFromScan(trimmed, config);
+}

@@ -28,7 +28,7 @@ export const location = {
     '{{deviceName}} mettra à jour sa position dès que la demande sera reçue.',
   toastRefreshFailed:
     'Impossible de demander l’actualisation de la position. Veuillez réessayer.',
-  ringButton: 'Émettre un son',
+  ringButton: 'Faire sonner l’appareil',
   toastRingSentAndroid: '{{deviceName}} sonnera dès que la demande sera reçue.',
   toastRingSentIos:
     '{{deviceName}} émettra un son dès que la demande sera reçue, sauf s’il est en mode silencieux ou qu’un mode de concentration est activé.',
@@ -53,15 +53,15 @@ export const location = {
     'Le partage de position est désactivé pour le moment, donc rien n’est envoyé. En autorisant ici, tout fonctionnera tout de suite si tes parents l’activent plus tard.',
   allowLocationButton: 'Autoriser la localisation',
   locationNotAllowed:
-    'La localisation n’est pas encore autorisée. Ouvre Réglages → KidGate → Localisation (ou active d’abord les Services de localisation). Sélectionne de nouveau « Autoriser la localisation » si l’option Localisation n’apparaît pas.',
+    'La localisation n’est pas encore autorisée. Ouvre Réglages → KidGate → Position (ou active d’abord les Services de localisation). Sélectionne de nouveau « Autoriser la localisation » si l’option Position n’apparaît pas.',
   locationNotAllowedAndroid:
     'La localisation n’est pas encore autorisée. Sélectionne Ouvrir les Réglages, puis Autorisations → Position, et choisis « Toujours autoriser ».',
   locationServicesOff:
     'Les Services de localisation sont désactivés pour tout l’appareil. Ouvre Réglages → Confidentialité et sécurité → Services de localisation, active-les, puis reviens dans KidGate et sélectionne « Autoriser la localisation ».',
   locationDeniedInSettings:
-    'L’accès à la localisation a été refusé pour KidGate. Ouvre Réglages → KidGate → Localisation et choisis « Lorsque l’app est active » ou « Toujours ».',
+    'L’accès à la localisation a été refusé pour KidGate. Ouvre Réglages → KidGate → Position et choisis « Lorsque l’app est active » ou « Toujours ».',
   foregroundOnly:
-    'La localisation ne se met à jour que lorsque KidGate est ouvert. Sélectionne Ouvrir les Réglages, puis Localisation, et choisis « Toujours ».',
+    'La localisation ne se met à jour que lorsque KidGate est ouvert. Sélectionne Ouvrir les Réglages, puis Position, et choisis « Toujours ».',
   foregroundOnlyAndroid:
     'La localisation ne se met à jour que lorsque KidGate est ouvert. Sélectionne Ouvrir les Réglages, puis Autorisations → Position, et choisis « Toujours autoriser ».',
   toastLocateFailed:

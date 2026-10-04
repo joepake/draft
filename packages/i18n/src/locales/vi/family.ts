@@ -60,11 +60,13 @@ export const family = {
   collapseGroupA11y: 'Thu gọn {{name}}',
   expandGroupA11y: 'Mở rộng {{name}}',
   assignDeviceCta: 'Gán cho trẻ…',
-  unassignedHint: 'Những thiết bị này chưa được tính cho ai.',
+  unassignedHint:
+    'Những thiết bị này chưa được gán cho con nào, nên hoạt động trên đó chưa hiển thị dưới tên ai.',
   unassignedHintMember: 'Chỉ chủ gia đình mới gán được các thiết bị này cho các con.',
   // One device's own page (the web's Controls tab): the two sentences above are
   // said to a group heading, and "these devices" is false about one machine.
-  unassignedDeviceHint: 'Thiết bị này chưa được tính cho ai.',
+  unassignedDeviceHint:
+    'Thiết bị này chưa được gán cho con nào, nên hoạt động trên đó chưa hiển thị dưới tên ai.',
   unassignedDeviceHintMember: 'Chủ gia đình sẽ chọn ai dùng thiết bị này.',
   // The pairing sheets' success step for a joined parent, who may pair but not assign.
   pairedDeviceBodyMember:
@@ -84,7 +86,7 @@ export const family = {
     'Chưa có thiết bị nào. Gán bên dưới hoặc ghép thiết bị mới từ tab Gia đình.',
   // Same screen when nothing is left below to assign.
   childDetailNoDevicesPair:
-    'Chưa có thiết bị nào. Hãy ghép một thiết bị mới từ tab Gia đình, rồi chọn con khi ứng dụng hỏi ai dùng thiết bị đó.',
+    'Chưa có thiết bị nào. Hãy ghép một thiết bị mới từ tab Gia đình, rồi chọn tên con này khi ứng dụng hỏi ai dùng thiết bị đó.',
   // Same screen for a joined parent, who may pair but may not assign.
   childDetailNoDevicesMember:
     'Chưa có thiết bị nào. Chỉ chủ gia đình mới quyết định thiết bị thuộc về ai.',
@@ -135,12 +137,12 @@ export const family = {
   parkedBannerBody:
     'Quy tắc của bạn vẫn chạy trên mọi thiết bị. Gói miễn phí chỉ nhận báo cáo từ một máy và chỉ cho siết chặt quy tắc ở máy đó — hãy chọn máy, hoặc nâng cấp để giữ tất cả.',
   parkedBannerAction: 'Chọn thiết bị',
-  holdFamilyTitle: 'KidGate đã tạm khóa gia đình này',
-  holdDeviceTitle: 'KidGate đã tạm khóa {{deviceName}}',
+  holdFamilyTitle: 'KidGate đã tạm ngưng gia đình này',
+  holdDeviceTitle: 'KidGate đã tạm ngưng {{deviceName}}',
   holdFamilyBody:
-    'Mọi thiết bị vẫn giữ luật của mình nhưng không gửi báo cáo cho đến khi được mở khóa.',
+    'Mọi thiết bị vẫn giữ quy tắc của mình nhưng không gửi báo cáo cho đến khi KidGate mở lại.',
   holdDeviceBody:
-    'Thiết bị này vẫn giữ luật của mình nhưng không gửi báo cáo cho đến khi được mở khóa.',
+    'Thiết bị này vẫn giữ quy tắc của mình nhưng không gửi báo cáo cho đến khi KidGate mở lại.',
   holdReasonUnusualActivity: 'Lý do: tài khoản này có hoạt động bất thường.',
   holdReasonOutdatedApp:
     'Lý do: một ứng dụng KidGate trong tài khoản này đã quá cũ. Hãy cập nhật, rồi liên hệ hỗ trợ.',
@@ -148,7 +150,7 @@ export const family = {
   holdReasonOther: 'Lý do: KidGate đang xem xét tài khoản này.',
   holdNote: 'Lời nhắn từ KidGate: {{note}}',
   holdAppeal: 'Liên hệ hỗ trợ',
-  holdAppealMessage: 'Tôi muốn hỏi về việc tài khoản gia đình tôi bị tạm khóa.',
+  holdAppealMessage: 'Tôi muốn hỏi về việc tài khoản gia đình tôi bị tạm ngưng.',
   pairedDevicePaused:
     'Gói miễn phí chỉ nhận báo cáo từ một máy và chỉ cho siết chặt quy tắc ở máy đó, nên thiết bị này bắt đầu ở trạng thái ngừng báo cáo.',
   pairingWillStartPaused:
@@ -287,8 +289,8 @@ export const family = {
   childDetailUnassignAction: 'Bỏ gán',
   childDetailLimitShared: 'Tính tổng trên mọi thiết bị của con',
   searchTitle: 'Tìm kiếm',
-  searchPlaceholder: 'Các con, thiết bị, chức năng, hướng dẫn…',
+  searchPlaceholder: 'Các con, thiết bị, tính năng, hướng dẫn…',
   searchEmpty: 'Không có mục nào khớp. Hãy thử một từ khác.',
-  searchSectionFeatures: 'Chức năng',
+  searchSectionFeatures: 'Tính năng',
   searchSectionGoTo: 'Đi tới',
 } as const;

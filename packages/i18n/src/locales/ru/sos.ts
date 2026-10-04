@@ -65,7 +65,7 @@ export const sos = {
   keepHolding: 'Продолжай удерживать',
   secondsLeft: '{{seconds}} с',
   pressAndHoldToCancel: 'Нажми и удерживай — отпусти раньше, чтобы отменить',
-  holdToSendSosAccessibility: 'Удерживайте 5 секунд, чтобы отправить SOS',
+  holdToSendSosAccessibility: 'Удерживай 5 секунд, чтобы отправить SOS',
   sosEmergencyAccessibility: 'Экстренный SOS',
   sosEmergencyAlert: 'Экстренное оповещение SOS',
   sosAlertSent: 'Оповещение SOS отправлено',

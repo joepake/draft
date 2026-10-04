@@ -28,7 +28,7 @@ export const location = {
     '{{deviceName}} atualizará sua localização assim que receber a solicitação.',
   toastRefreshFailed:
     'Não foi possível solicitar a atualização da localização. Tente novamente.',
-  ringButton: 'Reproduzir som',
+  ringButton: 'Fazer o dispositivo tocar',
   toastRingSentAndroid: '{{deviceName}} vai tocar assim que receber a solicitação.',
   toastRingSentIos:
     '{{deviceName}} vai reproduzir um som assim que receber a solicitação, a menos que esteja no modo silencioso ou com um Foco ativado.',

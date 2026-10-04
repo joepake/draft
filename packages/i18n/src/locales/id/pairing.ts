@@ -22,7 +22,7 @@ export const pairing = {
   connectChild: 'Hubungkan perangkat anak',
   waitingChildConfirm: 'Permintaan terkirim. Menunggu konfirmasi di perangkat anak.',
   waitingChildConfirmHint:
-    'Jika perangkat anak meminta konfirmasi, pilih "Ya, sambungkan" untuk menyelesaikan. TV akan tersambung sendiri. Anda bisa menutup layar ini — pemasangan tetap berlanjut di latar belakang.',
+    'Jika perangkat anak meminta konfirmasi, pilih “Ya, sambungkan” untuk menyelesaikan. TV akan tersambung sendiri. Anda bisa menutup layar ini — pemasangan tetap berlanjut di latar belakang.',
   childConfirmedTitle: 'Perangkat terhubung',
   childConfirmedBody:
     'Perangkat anak sudah mengonfirmasi pemasangan. Selanjutnya, pilih siapa yang memakainya.',

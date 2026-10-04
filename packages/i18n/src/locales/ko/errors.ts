@@ -71,7 +71,7 @@ export const errors = {
   pairingDeclined: '상대 기기에서 페어링 요청이 거부되었습니다.',
   pairingNoParentWaiting:
     '승인을 기다리는 부모가 없습니다. 부모 기기에서 다시 페어링을 시작하세요.',
-  pairingRequestExpired: '페어링 요청이 만료되었습니다. 다시 시작해 주세요.',
+  pairingRequestExpired: '페어링 요청이 만료되었어요. 다시 시작해 주세요.',
   joinRequestNotFound: '이 참여 요청은 더 이상 사용할 수 없습니다.',
   joinRequestResolved: '이 참여 요청은 이미 처리되었습니다.',
   joinRequestExpired: '참여 요청이 만료되었습니다. 새 초대를 요청하세요.',

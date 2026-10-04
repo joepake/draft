@@ -15,7 +15,7 @@ export const pairing = {
   childScanHint:
     'Padre/madre: abre KidGate → Familia → {{scan}} → escanea el código QR o introduce el código.',
   extensionCloseHint:
-    'Puedes cerrar esta ventana: el código sigue funcionando. Vuelve a abrir KidGate para confirmar al padre.',
+    'Puedes cerrar esta ventana: el código sigue funcionando. Vuelve a abrir KidGate para confirmar a tu padre o madre.',
   childConnecting: 'Conectado. Configurando este dispositivo…',
   childPairedTitle: 'Estás conectado',
   childPairedSubtitle: 'Configurando este dispositivo…',

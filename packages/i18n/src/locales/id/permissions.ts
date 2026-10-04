@@ -74,9 +74,9 @@ export const permissions = {
   cameraStepTurnOn: 'Aktifkan Kamera untuk KidGate.',
   allowMicrophoneTitle: 'Izinkan mikrofon',
   microphonePermissionMessage:
-    'KidGate menggunakan mikrofon untuk merekam suara hingga 15 detik saat Anda mengirim SOS, agar orang tua Anda dapat mendengar apa yang terjadi. KidGate tidak pernah merekam di waktu lain.',
+    'KidGate menggunakan mikrofon untuk merekam suara hingga 15 detik saat kamu mengirim SOS, agar orang tuamu bisa mendengar apa yang terjadi. KidGate tidak pernah merekam di waktu lain.',
   microphoneTurnedOffMessage:
-    'Silakan buka Pengaturan dan izinkan Mikrofon agar peringatan SOS Anda dapat menyertakan suara.',
+    'Buka Pengaturan dan izinkan Mikrofon agar peringatan SOS kamu bisa menyertakan suara.',
   microphoneStepTurnOn: 'Aktifkan Mikrofon untuk KidGate.',
   uninstallProtectionStepConfirm: 'Pilih Aktifkan pada layar konfirmasi Android.',
 } as const;

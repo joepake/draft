@@ -62,11 +62,13 @@ export const family = {
   collapseGroupA11y: '{{name}} daralt',
   expandGroupA11y: '{{name}} genişlet',
   assignDeviceCta: 'Bir çocuğa ata…',
-  unassignedHint: 'Bu cihazlar henüz kimseye sayılmıyor.',
+  unassignedHint:
+    'Bu cihazlar henüz bir çocuğa atanmadı, bu yüzden etkinlikleri kimsenin altında görünmüyor.',
   unassignedHintMember: 'Bu cihazları çocuklara yalnızca aile sahibi atar.',
   // One device's own page (the web's Controls tab): the two sentences above are
   // said to a group heading, and "these devices" is false about one machine.
-  unassignedDeviceHint: 'Bu cihaz henüz kimseye sayılmıyor.',
+  unassignedDeviceHint:
+    'Bu cihaz henüz bir çocuğa atanmadı, bu yüzden etkinliği kimsenin altında görünmüyor.',
   unassignedDeviceHintMember: 'Bu cihazı kimin kullandığını aile sahibi seçer.',
   // The pairing sheets' success step for a joined parent, who may pair but not assign.
   pairedDeviceBodyMember:

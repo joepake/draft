@@ -78,9 +78,9 @@ export const permissions = {
   cameraStepTurnOn: 'KidGate için Kamera erişimini etkinleştirin.',
   allowMicrophoneTitle: 'Mikrofona izin ver',
   microphonePermissionMessage:
-    'KidGate, bir SOS gönderdiğinizde ailenizin neler olduğunu duyabilmesi için mikrofonla 15 saniyeye kadar ses kaydeder. Başka hiçbir zaman kayıt yapmaz.',
+    'KidGate, bir SOS gönderdiğinde ailenin neler olduğunu duyabilmesi için mikrofonla 15 saniyeye kadar ses kaydeder. Başka hiçbir zaman kayıt yapmaz.',
   microphoneTurnedOffMessage:
-    'SOS uyarılarınıza ses eklenebilmesi için lütfen Ayarlar’ı açıp Mikrofon’a izin verin.',
+    'SOS uyarılarına ses eklenebilmesi için Ayarlar’ı açıp Mikrofon’a izin ver.',
   microphoneStepTurnOn: 'KidGate için Mikrofon erişimini etkinleştirin.',
   uninstallProtectionStepConfirm: 'Android’in onay ekranında Etkinleştir’i seçin.',
 } as const;

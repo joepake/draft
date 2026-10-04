@@ -81,7 +81,7 @@ export const errors = {
   pairingDeclined: 'La demande d’association a été refusée sur l’autre appareil.',
   pairingNoParentWaiting:
     'Aucun parent n’attend de confirmation. Redémarrez l’association depuis l’appareil parent.',
-  pairingRequestExpired: 'Cette demande d’association a expiré. Veuillez recommencer.',
+  pairingRequestExpired: 'Cette demande d’association a expiré. Recommence.',
   joinRequestNotFound: 'Cette demande d’adhésion n’est plus disponible.',
   joinRequestResolved: 'Cette demande d’adhésion a déjà reçu une réponse.',
   joinRequestExpired:

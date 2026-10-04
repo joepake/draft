@@ -62,12 +62,14 @@ export const family = {
   collapseGroupA11y: 'Recolher {{name}}',
   expandGroupA11y: 'Expandir {{name}}',
   assignDeviceCta: 'Atribuir a uma criança…',
-  unassignedHint: 'Estes dispositivos ainda não contam para ninguém.',
+  unassignedHint:
+    'Estes dispositivos ainda não estão atribuídos a nenhuma criança, então a atividade deles não aparece em nenhum perfil.',
   unassignedHintMember:
     'O proprietário da família atribui estes dispositivos aos filhos.',
   // One device's own page (the web's Controls tab): the two sentences above are
   // said to a group heading, and "these devices" is false about one machine.
-  unassignedDeviceHint: 'Este dispositivo ainda não conta para ninguém.',
+  unassignedDeviceHint:
+    'Este dispositivo ainda não está atribuído a nenhuma criança, então a atividade dele não aparece em nenhum perfil.',
   unassignedDeviceHintMember:
     'O proprietário da família escolhe quem usa este dispositivo.',
   // The pairing sheets' success step for a joined parent, who may pair but not assign.

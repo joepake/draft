@@ -66,7 +66,7 @@ export const permissions = {
   backgroundRefreshStepTurnOn: 'Activez l’Actualisation en arrière-plan pour KidGate.',
   backgroundRefreshStepGeneral:
     'Si l’interrupteur est grisé, ouvrez Réglages, puis Général, puis Actualisation en arrière-plan et activez-la.',
-  locationAlwaysStep: 'Sélectionnez Localisation et choisissez « Toujours ».',
+  locationAlwaysStep: 'Sélectionnez Position et choisissez « Toujours ».',
   locationAlwaysStepAndroid:
     'Sélectionnez Autorisations → Position et choisissez « Toujours autoriser ».',
   batteryStepAllow: 'Sélectionnez Autoriser dans la fenêtre d’Android.',
@@ -77,9 +77,9 @@ export const permissions = {
   cameraStepTurnOn: 'Activez Appareil photo pour KidGate.',
   allowMicrophoneTitle: 'Autoriser le micro',
   microphonePermissionMessage:
-    'KidGate utilise le micro pour enregistrer jusqu’à 15 secondes de son lorsque vous envoyez un SOS, afin que vos parents puissent entendre ce qui se passe. Il n’enregistre jamais à aucun autre moment.',
+    'KidGate utilise le micro pour enregistrer jusqu’à 15 secondes de son lorsque tu envoies un SOS, pour que tes parents entendent ce qui se passe. Il n’enregistre jamais à aucun autre moment.',
   microphoneTurnedOffMessage:
-    'Veuillez ouvrir les Réglages et autoriser le micro afin que vos alertes SOS puissent inclure du son.',
+    'Ouvre les Réglages et autorise le micro pour que tes alertes SOS puissent inclure du son.',
   microphoneStepTurnOn: 'Activez Micro pour KidGate.',
   uninstallProtectionStepConfirm:
     'Sélectionnez Activer sur l’écran de confirmation d’Android.',

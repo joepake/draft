@@ -23,7 +23,7 @@ export const pairing = {
   waitingChildConfirm:
     'Solicitação enviada. Aguardando confirmação no dispositivo da criança.',
   waitingChildConfirmHint:
-    'Se o dispositivo da criança pedir, escolha "Sim, conectar" para concluir. A TV se conecta sozinha. Você pode fechar esta tela — o pareamento continua em segundo plano.',
+    'Se o dispositivo da criança pedir, escolha “Sim, conectar” para concluir. A TV se conecta sozinha. Você pode fechar esta tela — o pareamento continua em segundo plano.',
   childConfirmedTitle: 'Dispositivo conectado',
   childConfirmedBody:
     'O dispositivo da criança confirmou o pareamento. Agora escolha quem usa esse dispositivo.',

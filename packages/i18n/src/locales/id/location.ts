@@ -25,7 +25,7 @@ export const location = {
   toastRefreshSent:
     '{{deviceName}} akan memperbarui lokasinya segera setelah menerima permintaan.',
   toastRefreshFailed: 'Tidak dapat meminta pembaruan lokasi. Silakan coba lagi.',
-  ringButton: 'Putar suara',
+  ringButton: 'Bunyikan perangkat',
   toastRingSentAndroid:
     '{{deviceName}} akan berdering segera setelah menerima permintaan.',
   toastRingSentIos:

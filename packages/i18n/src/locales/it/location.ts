@@ -28,7 +28,7 @@ export const location = {
     '{{deviceName}} aggiornerà la propria posizione non appena riceverà la richiesta.',
   toastRefreshFailed:
     'Impossibile richiedere l’aggiornamento della posizione. Riprova.',
-  ringButton: 'Riproduci suono',
+  ringButton: 'Fai squillare il dispositivo',
   toastRingSentAndroid: '{{deviceName}} suonerà non appena riceverà la richiesta.',
   toastRingSentIos:
     '{{deviceName}} riprodurrà un suono non appena riceverà la richiesta, a meno che non sia in modalità silenziosa o con una modalità Full immersion attiva.',

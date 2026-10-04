@@ -16,7 +16,7 @@ export const notifications = {
   quietHoursStart: 'Das',
   quietHoursEnd: 'Às',
   footnote:
-    'Estas definições valem apenas para este telefone. Outros dispositivos dos responsáveis mantêm as suas.',
+    'Estas configurações valem apenas para este telefone. Outros dispositivos dos responsáveis mantêm as suas.',
   toastSaveFailed: 'Não foi possível salvar. Tente novamente.',
   alert: {
     tamperAlerts: {

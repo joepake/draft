@@ -61,12 +61,14 @@ export const family = {
   collapseGroupA11y: 'Collapse {{name}}',
   expandGroupA11y: 'Expand {{name}}',
   assignDeviceCta: 'Assign to a child…',
-  unassignedHint: 'These devices don’t count for anyone yet.',
+  unassignedHint:
+    'These devices aren’t assigned to a child yet, so their activity isn’t shown under anyone.',
   // A joined parent has no assign button, so the hint names who does.
   unassignedHintMember: 'The family owner assigns these devices to children.',
   // One device's own page (the web's Controls tab): the two sentences above are
   // said to a group heading, and "these devices" is false about one machine.
-  unassignedDeviceHint: 'This device doesn’t count for anyone yet.',
+  unassignedDeviceHint:
+    'This device isn’t assigned to a child yet, so its activity isn’t shown under anyone.',
   unassignedDeviceHintMember: 'The family owner chooses who uses this device.',
   // The pairing sheets' success step for a joined parent, who may pair but not assign.
   pairedDeviceBodyMember:

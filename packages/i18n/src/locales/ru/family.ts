@@ -61,11 +61,13 @@ export const family = {
   collapseGroupA11y: 'Свернуть: {{name}}',
   expandGroupA11y: 'Развернуть: {{name}}',
   assignDeviceCta: 'Назначить ребёнку…',
-  unassignedHint: 'Эти устройства пока никому не засчитываются.',
+  unassignedHint:
+    'Эти устройства пока не назначены ни одному ребёнку, поэтому их активность никому не засчитывается.',
   unassignedHintMember: 'Эти устройства детям назначает владелец семьи.',
   // One device's own page (the web's Controls tab): the two sentences above are
   // said to a group heading, and "these devices" is false about one machine.
-  unassignedDeviceHint: 'Это устройство пока никому не засчитывается.',
+  unassignedDeviceHint:
+    'Это устройство пока не назначено ни одному ребёнку, поэтому его активность никому не засчитывается.',
   unassignedDeviceHintMember:
     'Кто пользуется этим устройством, выбирает владелец семьи.',
   // The pairing sheets' success step for a joined parent, who may pair but not assign.
@@ -411,7 +413,7 @@ export const family = {
   childDetailUnassignAction: 'Открепить',
   childDetailLimitShared: 'Суммарно по всем устройствам',
   searchTitle: 'Поиск',
-  searchPlaceholder: 'Дети, устройства, функции…',
+  searchPlaceholder: 'Дети, устройства, функции, руководство…',
   searchEmpty: 'Ничего не найдено. Попробуйте другое слово.',
   searchSectionFeatures: 'Функции',
   searchSectionGoTo: 'Перейти',

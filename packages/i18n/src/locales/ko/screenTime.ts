@@ -26,7 +26,7 @@ export const screenTime = {
   screenTimeBannerBodyDenied:
     '{{appName}}에는 설정에서 스크린 타임이 켜져 있어야 합니다.',
   screenTimeBannerBodyRequest:
-    '이렇게 하면 부모님이 이 기기에서 앱을 잠그고 차단 시간대를 설정할 수 있습니다.',
+    '이렇게 하면 부모님이 이 기기에서 앱을 잠그고 차단 시간대를 설정할 수 있어요.',
   screenTimeAuthPasscode:
     'KidGate가 스크린 타임을 사용하려면 이 기기에 암호가 설정되어 있어야 합니다. 설정에서 암호를 설정한 뒤 다시 시도해 주세요.',
   screenTimeAuthConflict:

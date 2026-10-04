@@ -65,7 +65,7 @@ export const permissions = {
     'KidGateの「Appのバックグラウンド更新」をオンにしてください。',
   backgroundRefreshStepGeneral:
     'スイッチがグレーの場合は、設定を開き、「一般」、「Appのバックグラウンド更新」の順に進んでオンにしてください。',
-  locationAlwaysStep: '「位置情報」で「常に許可」を選びます。',
+  locationAlwaysStep: '「位置情報」で「常に」を選びます。',
   locationAlwaysStepAndroid: '「権限」→「位置情報」で「常に許可」を選びます。',
   batteryStepAllow: 'Androidの確認画面で「許可」を選んでください。',
   batteryStepAppInfo:

@@ -24,7 +24,7 @@ export const timeRequest = {
   toastRequestSent: '요청을 보냈어요. 부모님이 곧 확인할 거예요.',
   toastDeviceNotRegistered:
     '이 기기는 아직 요청을 보낼 준비가 되지 않았어요. 잠시 후 다시 시도하거나, 부모님께 다시 페어링해 달라고 부탁하세요.',
-  toastSendFailed: '요청을 보내지 못했습니다. 다시 시도해 주세요.',
+  toastSendFailed: '요청을 보내지 못했어요. 다시 시도해 주세요.',
   askForMoreTime: '시간 더 요청하기',
   askForMoreTimeSubtitle: '부모님이 승인하면 오늘 스크린 타임이 늘어나요.',
   sendToParent: '부모님에게 보내기',

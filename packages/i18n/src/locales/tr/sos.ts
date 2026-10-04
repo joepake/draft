@@ -59,7 +59,7 @@ export const sos = {
   keepHolding: 'Basılı tutmaya devam et',
   secondsLeft: '{{seconds}} sn',
   pressAndHoldToCancel: 'Basılı tut — iptal etmek için erken bırak',
-  holdToSendSosAccessibility: 'SOS göndermek için 5 saniye basılı tutun',
+  holdToSendSosAccessibility: 'SOS göndermek için 5 saniye basılı tut',
   sosEmergencyAccessibility: 'SOS acil durumu',
   sosEmergencyAlert: 'SOS acil durum uyarısı',
   sosAlertSent: 'SOS uyarısı gönderildi',

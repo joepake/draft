@@ -60,11 +60,12 @@ export const family = {
   collapseGroupA11y: 'طيّ {{name}}',
   expandGroupA11y: 'توسيع {{name}}',
   assignDeviceCta: 'تعيين لطفل…',
-  unassignedHint: 'هذه الأجهزة لا تُحتسب لأحد بعد.',
+  unassignedHint: 'لم تُعيَّن هذه الأجهزة لأي طفل بعد، لذا لا يظهر نشاطها تحت اسم أحد.',
   unassignedHintMember: 'مالك العائلة هو من يخصّص هذه الأجهزة للأطفال.',
   // One device's own page (the web's Controls tab): the two sentences above are
   // said to a group heading, and "these devices" is false about one machine.
-  unassignedDeviceHint: 'هذا الجهاز لا يُحتسب لأحد بعد.',
+  unassignedDeviceHint:
+    'لم يُعيَّن هذا الجهاز لأي طفل بعد، لذا لا يظهر نشاطه تحت اسم أحد.',
   unassignedDeviceHintMember: 'مالك العائلة هو من يختار من يستخدم هذا الجهاز.',
   // The pairing sheets' success step for a joined parent, who may pair but not assign.
   pairedDeviceBodyMember:

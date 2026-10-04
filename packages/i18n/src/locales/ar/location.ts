@@ -22,7 +22,7 @@ export const location = {
   activityDescriptionRefreshRequested: 'تم طلب إرسال الموقع الحالي من {{deviceName}}.',
   toastRefreshSent: 'سيقوم {{deviceName}} بتحديث موقعه بمجرد استلام الطلب.',
   toastRefreshFailed: 'تعذر طلب تحديث الموقع. يُرجى المحاولة مرة أخرى.',
-  ringButton: 'تشغيل صوت',
+  ringButton: 'تشغيل رنين الجهاز',
   toastRingSentAndroid: 'سيصدر {{deviceName}} رنينًا بمجرد استلام الطلب.',
   toastRingSentIos:
     'سيشغّل {{deviceName}} صوتًا بمجرد استلام الطلب، ما لم يكن في الوضع الصامت أو كان وضع التركيز مفعّلًا.',

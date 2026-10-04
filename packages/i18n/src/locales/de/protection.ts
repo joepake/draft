@@ -76,9 +76,9 @@ export const protection = {
   appReviewRemindersNote:
     'iOS stellt keine Installationsereignisse bereit – prüfe die Apps regelmäßig direkt auf dem Kindergerät.',
   screenTimeIndividualAuthorization:
-    'Bildschirmzeit wurde mit der eigenen Apple-ID des Kindergeräts erlaubt. Das Kind kann KidGate in den Einstellungen ohne PIN ausschalten und die App löschen. Nur eine Kinder-Apple-ID in Ihrer Familienfreigabe hält diese Kontrollen fest.',
+    'Bildschirmzeit wurde mit der eigenen Apple-ID des Kindergeräts erlaubt. Das Kind kann KidGate in den Einstellungen ohne PIN ausschalten und die App löschen. Nur eine Kinder-Apple-ID in deiner Familienfreigabe hält diese Kontrollen fest.',
   screenTimeIndividualStepChildAppleId:
-    'Melden Sie das Kindergerät mit einer Kinder-Apple-ID aus Ihrer Familienfreigabe an.',
+    'Melde das Kindergerät mit einer Kinder-Apple-ID aus deiner Familienfreigabe an.',
   screenTimeIndividualStepReapprove:
-    'Öffnen Sie KidGate auf dem Kindergerät und erlauben Sie Bildschirmzeit erneut.',
+    'Öffne KidGate auf dem Kindergerät und erlaube Bildschirmzeit erneut.',
 } as const;

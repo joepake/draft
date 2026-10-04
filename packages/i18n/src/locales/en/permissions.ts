@@ -58,7 +58,7 @@ export const permissions = {
   backgroundRefreshStepTurnOn: 'Turn on Background App Refresh for KidGate.',
   backgroundRefreshStepGeneral:
     'If the switch is dimmed, open Settings, then General, then Background App Refresh, and turn it on.',
-  locationAlwaysStep: 'Select Location and choose Always.',
+  locationAlwaysStep: 'Select Location and choose “Always”.',
   locationAlwaysStepAndroid:
     'Select Permissions → Location and choose “Allow all the time”.',
   batteryStepAllow: 'Select Allow on the Android prompt.',

@@ -10,19 +10,19 @@ export const pairing = {
   parentScanInstructions: 'Kameranızı çocuğun cihazındaki QR koduna doğrultun.',
   childWaitingTitle: 'Bir ebeveyn bekleniyor',
   childWaitingSubtitle:
-    'Lütfen bu ekranı açık tutun. Bir ebeveyn bu cihazı kendi KidGate uygulamasından bağlayacak.',
-  childCodeLabel: 'Ya da bu kodu paylaşın',
+    'Bu ekranı açık tut. Ailenden biri bu cihazı kendi KidGate uygulamasından bağlayacak.',
+  childCodeLabel: 'Ya da bu kodu paylaş',
   childScanHint:
     'Ebeveyn: KidGate → Aile → {{scan}} → QR kodunu tarayın veya kodu girin.',
   extensionCloseHint:
-    'Bu pencereyi kapatabilirsiniz — kod geçerli kalır. Ebeveyni onaylamak için KidGate’i yeniden açın.',
+    'Bu pencereyi kapatabilirsin — kod geçerli kalır. Ebeveyni onaylamak için KidGate’i yeniden aç.',
   childConnecting: 'Bağlandı. Bu cihaz ayarlanıyor…',
-  childPairedTitle: 'Bağlandınız',
+  childPairedTitle: 'Bağlandın',
   childPairedSubtitle: 'Bu cihaz ayarlanıyor…',
   connectChild: 'Çocuk cihazını bağla',
   waitingChildConfirm: 'İstek gönderildi. Çocuk cihazında onay bekleniyor.',
   waitingChildConfirmHint:
-    'Çocuk cihazı onay isterse bitirmek için "Evet, bağla" seçeneğini seçin. TV kendiliğinden bağlanır. Bu ekranı kapatabilirsiniz — eşleştirme arka planda devam eder.',
+    'Çocuk cihazı onay isterse bitirmek için “Evet, bağla” seçeneğini seçin. TV kendiliğinden bağlanır. Bu ekranı kapatabilirsiniz — eşleştirme arka planda devam eder.',
   childConfirmedTitle: 'Cihaz bağlandı',
   childConfirmedBody:
     'Çocuk cihazı eşleştirmeyi onayladı. Şimdi cihazı kimin kullandığını seçin.',
@@ -32,7 +32,7 @@ export const pairing = {
     'Çocuk cihazı zamanında onay vermedi. O cihazdan yeni bir kod isteyip tekrar deneyin.',
   confirmParentTitle: 'Bu ebeveyn onaylansın mı?',
   confirmParentSubtitle:
-    '{{parentLabel}} bu cihazı yönetmek istiyor. Yalnızca bu kişiyi tanıyorsanız kabul edin.',
+    '{{parentLabel}} bu cihazı yönetmek istiyor. Yalnızca bu kişiyi tanıyorsan kabul et.',
   confirmParentButton: 'Evet, bağla',
   rejectParentButton: 'Bu ebeveyn değil',
   parentAccount: 'Ebeveyn hesabı',

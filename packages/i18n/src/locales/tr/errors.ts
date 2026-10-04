@@ -72,7 +72,7 @@ export const errors = {
   pairingDeclined: 'Eşleştirme isteği diğer cihazda reddedildi.',
   pairingNoParentWaiting:
     'Onay bekleyen bir ebeveyn yok. Eşleştirmeyi ebeveyn cihazından yeniden başlatın.',
-  pairingRequestExpired: 'Eşleştirme isteğinin süresi doldu. Baştan başlayın.',
+  pairingRequestExpired: 'Eşleştirme isteğinin süresi doldu. Baştan başla.',
   joinRequestNotFound: 'Bu katılma isteği artık mevcut değil.',
   joinRequestResolved: 'Bu katılma isteği zaten yanıtlandı.',
   joinRequestExpired: 'Katılma isteğinin süresi doldu. Yeni bir davet isteyin.',

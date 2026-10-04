@@ -23,7 +23,7 @@ export const location = {
   activityDescriptionRefreshRequested: 'Đã yêu cầu {{deviceName}} gửi vị trí mới nhất.',
   toastRefreshSent: '{{deviceName}} sẽ cập nhật vị trí ngay khi nhận được yêu cầu.',
   toastRefreshFailed: 'Không thể gửi yêu cầu làm mới vị trí. Vui lòng thử lại.',
-  ringButton: 'Phát âm thanh',
+  ringButton: 'Đổ chuông thiết bị',
   toastRingSentAndroid: '{{deviceName}} sẽ đổ chuông ngay khi nhận được yêu cầu.',
   toastRingSentIos:
     '{{deviceName}} sẽ phát âm thanh ngay khi nhận được yêu cầu, trừ khi máy đang ở chế độ im lặng hoặc bật Tập trung.',
@@ -56,7 +56,7 @@ export const location = {
   locationDeniedInSettings:
     'KidGate đã bị từ chối quyền vị trí. Vui lòng mở Cài đặt → KidGate → Vị trí và chọn Khi dùng ứng dụng hoặc Luôn luôn.',
   foregroundOnly:
-    'Vị trí chỉ cập nhật khi KidGate đang mở. Vui lòng chọn Mở Cài đặt, rồi vào Vị trí và chọn Luôn luôn.',
+    'Vị trí chỉ cập nhật khi KidGate đang mở. Vui lòng chọn Mở Cài đặt, rồi vào Vị trí và chọn “Luôn luôn”.',
   foregroundOnlyAndroid:
     'Vị trí chỉ cập nhật khi KidGate đang mở. Vui lòng chọn Mở Cài đặt, rồi vào Quyền → Vị trí và chọn “Cho phép mọi lúc”.',
   toastLocateFailed:

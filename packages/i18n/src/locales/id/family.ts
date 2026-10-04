@@ -62,11 +62,13 @@ export const family = {
   collapseGroupA11y: 'Ciutkan {{name}}',
   expandGroupA11y: 'Bentangkan {{name}}',
   assignDeviceCta: 'Tetapkan ke anak…',
-  unassignedHint: 'Perangkat ini belum dihitung untuk siapa pun.',
+  unassignedHint:
+    'Perangkat-perangkat ini belum ditetapkan ke anak mana pun, jadi aktivitasnya belum muncul di profil siapa pun.',
   unassignedHintMember: 'Pemilik keluarga yang menetapkan perangkat ini untuk anak.',
   // One device's own page (the web's Controls tab): the two sentences above are
   // said to a group heading, and "these devices" is false about one machine.
-  unassignedDeviceHint: 'Perangkat ini belum dihitung untuk siapa pun.',
+  unassignedDeviceHint:
+    'Perangkat ini belum ditetapkan ke anak mana pun, jadi aktivitasnya belum muncul di profil siapa pun.',
   unassignedDeviceHintMember:
     'Pemilik keluarga yang memilih siapa yang memakai perangkat ini.',
   // The pairing sheets' success step for a joined parent, who may pair but not assign.

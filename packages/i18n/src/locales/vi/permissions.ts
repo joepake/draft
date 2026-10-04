@@ -62,7 +62,7 @@ export const permissions = {
   backgroundRefreshStepTurnOn: 'Bật Làm mới ứng dụng nền cho KidGate.',
   backgroundRefreshStepGeneral:
     'Nếu nút bị mờ, hãy mở Cài đặt, chọn Cài đặt chung, rồi bật Làm mới ứng dụng nền.',
-  locationAlwaysStep: 'Vào Vị trí và chọn Luôn luôn.',
+  locationAlwaysStep: 'Vào Vị trí và chọn “Luôn luôn”.',
   locationAlwaysStepAndroid: 'Vào Quyền → Vị trí và chọn “Cho phép mọi lúc”.',
   batteryStepAllow: 'Chọn Cho phép trên hộp thoại của Android.',
   batteryStepAppInfo:

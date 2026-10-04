@@ -12,13 +12,13 @@ export const pairing = {
   childWaitingTitle: 'En attente d’un parent',
   childWaitingSubtitle:
     'Laisse cet écran ouvert. Un parent va connecter cet appareil depuis son app KidGate.',
-  childCodeLabel: 'Ou partagez ce code',
+  childCodeLabel: 'Ou partage ce code',
   childScanHint:
     'Parent : ouvrez KidGate → Famille → {{scan}} → scannez le code QR ou saisissez le code.',
   extensionCloseHint:
     'Cette fenêtre peut être fermée — le code reste valable. Il suffit de rouvrir KidGate pour confirmer le parent.',
   childConnecting: 'Connecté. Configuration de cet appareil…',
-  childPairedTitle: 'Vous êtes connecté',
+  childPairedTitle: 'Connexion réussie',
   childPairedSubtitle: 'Configuration de cet appareil…',
   connectChild: 'Connecter un appareil enfant',
   waitingChildConfirm:

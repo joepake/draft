@@ -29,7 +29,7 @@ export const location = {
     '{{deviceName}} aktualisiert den Standort, sobald die Anfrage empfangen wurde.',
   toastRefreshFailed:
     'Die Standortaktualisierung konnte nicht angefordert werden. Bitte versuche es erneut.',
-  ringButton: 'Ton abspielen',
+  ringButton: 'Gerät klingeln lassen',
   toastRingSentAndroid: '{{deviceName}} klingelt, sobald die Anfrage empfangen wurde.',
   toastRingSentIos:
     '{{deviceName}} spielt einen Ton ab, sobald die Anfrage empfangen wurde – außer das Gerät ist auf lautlos gestellt oder ein Fokus ist aktiv.',

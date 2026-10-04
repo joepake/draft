@@ -24,7 +24,7 @@ export const location = {
   toastRefreshSent:
     '{{deviceName}} will update its location as soon as it receives the request.',
   toastRefreshFailed: 'Unable to request a location refresh. Try again.',
-  ringButton: 'Play sound',
+  ringButton: 'Ring device',
   toastRingSentAndroid: '{{deviceName}} will ring as soon as it receives the request.',
   toastRingSentIos:
     '{{deviceName}} will play a sound as soon as it receives the request, unless it’s on silent or in a Focus.',
@@ -57,7 +57,7 @@ export const location = {
   locationDeniedInSettings:
     'Location was denied for KidGate. Open Settings → KidGate → Location and choose While Using the App or Always.',
   foregroundOnly:
-    'Location only updates while KidGate is open. Select Open Settings, then Location, and choose Always.',
+    'Location only updates while KidGate is open. Select Open Settings, then Location, and choose “Always”.',
   foregroundOnlyAndroid:
     'Location only updates while KidGate is open. Select Open Settings, then Permissions → Location, and choose “Allow all the time”.',
   toastLocateFailed: 'Unable to find your location right now. Try again in a moment.',

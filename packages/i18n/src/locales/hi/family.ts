@@ -63,11 +63,13 @@ export const family = {
   collapseGroupA11y: '{{name}} को छोटा करें',
   expandGroupA11y: '{{name}} को बड़ा करें',
   assignDeviceCta: 'बच्चे को असाइन करें…',
-  unassignedHint: 'ये डिवाइस अभी किसी के लिए नहीं गिने जाते।',
+  unassignedHint:
+    'ये डिवाइस अभी किसी बच्चे को असाइन नहीं किए गए हैं, इसलिए इनकी गतिविधि किसी के नाम पर नहीं दिखती।',
   unassignedHintMember: 'ये डिवाइस बच्चों को परिवार का मालिक ही सौंपता है।',
   // One device's own page (the web's Controls tab): the two sentences above are
   // said to a group heading, and "these devices" is false about one machine.
-  unassignedDeviceHint: 'यह डिवाइस अभी किसी के लिए नहीं गिना जाता।',
+  unassignedDeviceHint:
+    'यह डिवाइस अभी किसी बच्चे को असाइन नहीं किया गया है, इसलिए इसकी गतिविधि किसी के नाम पर नहीं दिखती।',
   unassignedDeviceHintMember:
     'इस डिवाइस को कौन इस्तेमाल करेगा, यह परिवार का मालिक चुनता है।',
   // The pairing sheets' success step for a joined parent, who may pair but not assign.

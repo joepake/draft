@@ -524,7 +524,7 @@ export default {
     pairStep2Title: 'Quét mã bằng điện thoại của bạn',
     getKidGate: 'Tải KidGate',
     childNoDevices:
-      'Chưa có thiết bị nào. Hãy ghép một thiết bị mới, rồi chọn con khi ứng dụng hỏi ai dùng thiết bị đó.',
+      'Chưa có thiết bị nào. Hãy ghép một thiết bị mới, rồi chọn tên con này khi ứng dụng hỏi ai dùng thiết bị đó.',
     childNoDevicesAssign:
       'Chưa có thiết bị nào. Gán một thiết bị bên dưới, hoặc ghép thiết bị mới.',
 

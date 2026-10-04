@@ -75,7 +75,7 @@ export const sos = {
   unableToAcknowledgeSos: '확인하지 못했습니다. 잠시 후 다시 시도해 주세요.',
   noLocationSharedWithSos: '이 SOS에는 위치 정보가 공유되지 않았습니다.',
   emergencySos: '긴급 SOS',
-  devicePausedAccessibility: '부모님이 기기를 잠갔습니다',
+  devicePausedAccessibility: '부모님이 기기를 잠갔어요',
   openEmergencySos: '긴급 SOS 열기',
   sosAlertsNote: '자녀 기기에서 온 긴급 SOS 알림을 위치 정보와 함께 표시합니다.',
   openLocationInMapsAccessibility: '위치를 지도에서 열기',

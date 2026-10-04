@@ -61,11 +61,13 @@ export const family = {
   collapseGroupA11y: '{{name}} 접기',
   expandGroupA11y: '{{name}} 펼치기',
   assignDeviceCta: '자녀에게 지정…',
-  unassignedHint: '이 기기들은 아직 아무에게도 집계되지 않습니다.',
+  unassignedHint:
+    '이 기기들은 아직 어느 자녀에게도 배정되지 않아, 활동 내역이 누구에게도 표시되지 않습니다.',
   unassignedHintMember: '이 기기들은 가족 소유자만 아이에게 배정할 수 있습니다.',
   // One device's own page (the web's Controls tab): the two sentences above are
   // said to a group heading, and "these devices" is false about one machine.
-  unassignedDeviceHint: '이 기기는 아직 아무에게도 집계되지 않습니다.',
+  unassignedDeviceHint:
+    '이 기기는 아직 어느 자녀에게도 배정되지 않아, 활동 내역이 누구에게도 표시되지 않습니다.',
   unassignedDeviceHintMember: '이 기기를 누가 사용할지는 가족 소유자가 선택합니다.',
   // The pairing sheets' success step for a joined parent, who may pair but not assign.
   pairedDeviceBodyMember:

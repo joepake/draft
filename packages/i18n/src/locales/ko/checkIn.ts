@@ -19,9 +19,9 @@ export const checkIn = {
   quickCheckInBadge: '체크인',
   areYouOkay: '괜찮나요?',
   checkInWithPhotoBody:
-    '부모님이 괜찮은지 알고 싶어 합니다. KidGate가 위치와 가능하면 사진을 보냅니다.',
+    '부모님이 괜찮은지 알고 싶어 해요. 가능하면 KidGate가 위치와 사진을 보내요.',
   checkInLocationOnlyBody:
-    '부모님이 괜찮은지 알고 싶어 합니다. KidGate가 가능하면 위치를 보냅니다.',
+    '부모님이 괜찮은지 알고 싶어 해요. 가능하면 KidGate가 위치를 보내요.',
   yesImOkay: '저는 괜찮아요',
   yesImOkaySending: '보내는 중…',
   iNeedHelp: '도움이 필요해요',

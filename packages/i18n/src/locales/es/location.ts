@@ -29,7 +29,7 @@ export const location = {
     '{{deviceName}} actualizará su ubicación en cuanto reciba la solicitud.',
   toastRefreshFailed:
     'No se pudo solicitar la actualización de la ubicación. Inténtalo de nuevo.',
-  ringButton: 'Reproducir sonido',
+  ringButton: 'Hacer sonar el dispositivo',
   toastRingSentAndroid: '{{deviceName}} sonará en cuanto reciba la solicitud.',
   toastRingSentIos:
     '{{deviceName}} reproducirá un sonido en cuanto reciba la solicitud, salvo que esté en silencio o con un modo de concentración activado.',

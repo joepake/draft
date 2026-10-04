@@ -27,7 +27,7 @@ export const location = {
   toastRefreshSent: '{{deviceName}} अनुरोध प्राप्त होते ही अपना स्थान अपडेट करेगा।',
   toastRefreshFailed:
     'स्थान रीफ़्रेश का अनुरोध भेजा नहीं जा सका। कृपया पुनः प्रयास करें।',
-  ringButton: 'ध्वनि चलाएँ',
+  ringButton: 'डिवाइस की घंटी बजाएँ',
   toastRingSentAndroid: '{{deviceName}} अनुरोध प्राप्त होते ही बजेगा।',
   toastRingSentIos:
     '{{deviceName}} अनुरोध प्राप्त होते ही ध्वनि चलाएगा, जब तक कि वह साइलेंट मोड या फ़ोकस में न हो।',

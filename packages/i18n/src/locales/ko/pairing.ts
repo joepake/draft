@@ -10,19 +10,19 @@ export const pairing = {
   parentScanInstructions: '카메라를 자녀 기기의 QR 코드에 맞추세요.',
   childWaitingTitle: '부모님을 기다리는 중',
   childWaitingSubtitle:
-    '이 화면을 계속 열어 두세요. 부모님이 KidGate 앱에서 이 기기를 연결할 것입니다.',
+    '이 화면을 계속 열어 두세요. 부모님이 KidGate 앱에서 이 기기를 연결할 거예요.',
   childCodeLabel: '또는 이 코드를 공유하세요',
   childScanHint:
     '부모님: KidGate 열기 → 가족 → {{scan}} → QR 코드를 스캔하거나 코드를 입력하세요.',
   extensionCloseHint:
-    '이 창은 닫아도 됩니다 — 코드는 계속 유효합니다. 부모님을 확인하려면 KidGate를 다시 여세요.',
-  childConnecting: '연결되었습니다. 이 기기를 설정하는 중…',
-  childPairedTitle: '연결되었습니다',
+    '이 창은 닫아도 돼요 — 코드는 계속 유효해요. 부모님을 확인하려면 KidGate를 다시 여세요.',
+  childConnecting: '연결되었어요. 이 기기를 설정하는 중…',
+  childPairedTitle: '연결되었어요',
   childPairedSubtitle: '이 기기를 설정하는 중…',
   connectChild: '자녀 기기 연결',
   waitingChildConfirm: '요청을 보냈습니다. 자녀 기기에서 확인을 기다리는 중입니다.',
   waitingChildConfirmHint:
-    '자녀 기기에서 확인을 요청하면 "예, 연결합니다"를 선택해 완료하세요. TV는 자동으로 연결됩니다. 이 화면은 닫아도 됩니다 — 페어링은 백그라운드에서 계속됩니다.',
+    '자녀 기기에서 확인을 요청하면 “예, 연결합니다”를 선택해 완료하세요. TV는 자동으로 연결됩니다. 이 화면은 닫아도 됩니다 — 페어링은 백그라운드에서 계속됩니다.',
   childConfirmedTitle: '기기가 연결되었습니다',
   childConfirmedBody:
     '자녀 기기에서 페어링을 확인했습니다. 이제 누가 사용할지 선택하세요.',
@@ -30,9 +30,9 @@ export const pairing = {
     '자녀 기기에서 이 페어링을 거절했습니다. 그 기기에서 새 코드를 받아 다시 시도해 주세요.',
   childConfirmExpired:
     '자녀 기기에서 제한 시간 내에 확인하지 않았습니다. 새 코드를 받아 다시 시도해 주세요.',
-  confirmParentTitle: '이 부모님을 확인하시겠습니까?',
+  confirmParentTitle: '이 부모님이 맞나요?',
   confirmParentSubtitle:
-    '{{parentLabel}}님이 이 기기를 관리하려고 합니다. 이 사람을 아는 경우에만 수락하세요.',
+    '{{parentLabel}}님이 이 기기를 관리하려고 해요. 아는 사람일 때만 수락하세요.',
   confirmParentButton: '예, 연결합니다',
   rejectParentButton: '이 부모가 아닙니다',
   parentAccount: '부모 계정',

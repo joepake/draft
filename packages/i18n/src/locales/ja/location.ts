@@ -26,7 +26,7 @@ export const location = {
   toastRefreshSent: '{{deviceName}} はリクエストを受信すると位置情報を更新します。',
   toastRefreshFailed:
     '位置情報の更新をリクエストできませんでした。もう一度お試しください。',
-  ringButton: 'サウンド再生',
+  ringButton: 'デバイスを鳴らす',
   toastRingSentAndroid: '{{deviceName}} はリクエストを受信すると音が鳴ります。',
   toastRingSentIos:
     '{{deviceName}} はリクエストを受信するとサウンドを再生します。消音モードや集中モードがオンの場合は鳴りません。',
@@ -57,9 +57,9 @@ export const location = {
   locationServicesOff:
     'このデバイスでは位置情報サービスがオフになっています。「設定 → プライバシーとセキュリティ → 位置情報サービス」を開いて有効にし、その後 KidGate に戻って「位置情報を許可」を選択してください。',
   locationDeniedInSettings:
-    'KidGate の位置情報へのアクセスが拒否されています。「設定 → KidGate → 位置情報」を開き、「Appの使用中のみ許可」または「常に許可」を選択してください。',
+    'KidGate の位置情報へのアクセスが拒否されています。「設定 → KidGate → 位置情報」を開き、「このAppの使用中」または「常に」を選択してください。',
   foregroundOnly:
-    '位置情報はKidGateを開いている間しか更新されません。「設定を開く」を選び、「位置情報」で「常に許可」を選んでください。',
+    '位置情報はKidGateを開いている間しか更新されません。「設定を開く」を選び、「位置情報」で「常に」を選んでください。',
   foregroundOnlyAndroid:
     '位置情報はKidGateを開いている間しか更新されません。「設定を開く」を選び、「権限」→「位置情報」で「常に許可」を選んでください。',
   toastLocateFailed:
