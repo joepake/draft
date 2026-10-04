@@ -208,7 +208,8 @@ export function getActionSections(
           description: t('deviceDetail.limitAdultWebsites'),
           icon: 'globe',
           feature: 'Web Filtering',
-          // iOS: Screen Time adult filter. Android: the VPN blocklist. Every
+          // Phones: the VPN blocklist (an iPhone's KidGate tunnel; Apple's
+          // adult filter alone on an older iPhone build). Every
           // other agent answers for itself — a Mac publishes `'contentFilter'`
           // once its extension is bundled, a PC `'dns'` once its resolver
           // holds port 53, and `false` where neither is true, so the row hides
@@ -229,15 +230,16 @@ export function getActionSections(
           // that filter turned all the way up for a while, so a device with
           // nothing inspecting traffic has nothing to pause. What it reaches
           // therefore differs by surface exactly as filtering does — the whole
-          // device on Android, macOS, Windows and the TV; Safari and in-app
-          // browsers on iOS. `docs/FEASIBILITY.md`, "Pause browsing from the
-          // parent's phone", is why this is not called "pause the internet".
+          // device on Android, an iPhone with the KidGate tunnel, macOS,
+          // Windows and the TV; Safari and in-app browsers on an older iPhone
+          // build. `docs/FEASIBILITY.md`, "Pause browsing from the parent's
+          // phone", is why this is not called "pause the internet".
           //
-          // iOS reaches it through `webContent.blockedByFilter = .all(except:
-          // [])` and a flag of its own, never through allow-list-only with an
-          // empty list — that composition falls to `.auto(except:)` there,
-          // which is Apple's adult filter and not a pause
-          // (`KidGateControls.swift`).
+          // iOS reaches it twice: as rules the tunnel refuses everything by
+          // (`pauseWebFilterPolicy`), and through `webContent.blockedByFilter =
+          // .all(except: [])` and a flag of its own — never through
+          // allow-list-only with an empty list, which falls to `.auto(except:)`
+          // there, Apple's adult filter and not a pause (`KidGateControls.swift`).
           supportedBy: supportsWebFiltering,
         },
         {

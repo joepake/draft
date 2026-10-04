@@ -8,6 +8,7 @@
     "./translate": "./src/translate.ts",
     "./copyTokens": "./src/copyTokens.ts",
     "./activityFeed": "./src/activityFeed.ts",
+    "./userGuidePack": "./src/userGuidePack.ts",
     "./interpolate": "./src/interpolate.ts",
     "./languageMeta": "./src/languageMeta.ts",
     "./types": "./src/types.ts",

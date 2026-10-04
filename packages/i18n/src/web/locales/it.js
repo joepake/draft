@@ -135,7 +135,7 @@ export default {
       'Limita ogni app per conto suo, oltre al limite giornaliero: «mezz’ora di TikTok» senza doverlo vietare del tutto. Su Android, Android TV e computer.',
     feature4Title: 'Filtro web e cronologia',
     feature4Text:
-      'Blocca i siti per adulti su ogni dispositivo, e gioco d’azzardo, autolesionismo e altre categorie su Android, Android TV e computer. Con Premium, scegli tu le categorie e guarda quali siti sono stati visitati e quali sono stati bloccati.',
+      'Blocca i siti per adulti, il gioco d’azzardo, l’autolesionismo e altre categorie su ogni dispositivo. Con Premium, scegli tu le categorie e guarda quali siti sono stati visitati e quali sono stati bloccati.',
     feature5Title: 'Posizione in tempo reale e luoghi',
     feature5Text:
       'Vedi l’ultima posizione di tuo figlio, consulta lo storico e ricevi un avviso quando arriva o lascia un luogo salvato.',
@@ -249,8 +249,7 @@ export default {
     faqMore: 'Altre domande? Vai all’assistenza',
 
     ctaTitle: 'Inizia oggi a proteggere la tua famiglia',
-    ctaSub:
-      'Prova gratuita di 7 giorni con accesso completo. Nessuna carta di credito per iniziare.',
+    ctaSub: 'Prova gratuita di 7 giorni con accesso completo.',
     ctaNote: 'Disdici quando vuoi da App Store o Google Play.',
   },
 
@@ -621,7 +620,6 @@ export default {
       'Nasconde l’App Store — Apple non consente l’approvazione app per app',
     colDomain: 'Dominio',
     colVisits: 'Visite',
-    colTime: 'Tempo',
     colBlocked: 'Bloccate',
     colLastSeen: 'Ultima volta',
     videosTitle: 'Video guardati',
@@ -969,5 +967,32 @@ export default {
     contactEmail: 'Scrivici',
     contactSupport: 'Assistenza e guide',
     contactPrivacy: 'Come trattiamo i dati',
+  },
+  promo: {
+    intro: 'Tutta la giornata di tuo figlio, in tutta tranquillità.',
+    school: 'Inizia la lezione. Il telefono si blocca da solo.',
+    apps: 'Si aprono solo le app che permetti tu.',
+    arrive: 'Arriva dalla nonna e lo sai subito.',
+    checkIn: 'Chiedi come sta. Con un tocco ti conferma che va tutto bene.',
+    sos: 'Se qualcosa non va, un SOS ti mostra dov’è.',
+    limit: 'Tempo di gioco finito. Il telefono si blocca da solo.',
+    lockNow: 'La cena è pronta. Blocca il suo telefono dal tuo.',
+    web: 'I siti per adulti sono bloccati su ogni dispositivo.',
+    tv: 'Anche la TV del salotto segue le stesse regole di casa.',
+    reward: 'Compiti fatti: 15 minuti extra guadagnati.',
+    bedtime: 'All’ora di dormire, anche telefono, computer e TV vanno a nanna.',
+    kid: 'Figlio',
+    parent: 'Genitore',
+    arrivedNotice: 'Sofia è arrivata dalla nonna',
+    checkAsk: 'Tutto ok?',
+    checkReply: 'Tutto ok!',
+    sosNotice: 'Sofia ha inviato un SOS',
+    timeUp: 'Tempo di gioco finito per oggi',
+    lockButton: 'Blocca ora',
+    task: 'Compiti fatti',
+    granted: '+15 min',
+    youtubeTitle: 'KidGate — Parental control per telefono, computer e TV',
+    youtubeDescription:
+      'Una giornata qualunque con KidGate, dalla campanella della scuola all’ora di dormire.',
   },
 };

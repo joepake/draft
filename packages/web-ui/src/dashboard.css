@@ -3067,6 +3067,29 @@ ol.attn-fix li + li {
   width: min(34rem, 100%);
 }
 
+/* The header search: a list that grows as a parent types, so it sits near the
+   top rather than re-centring on every keystroke, and scrolls inside itself. */
+.sheet-search {
+  width: min(36rem, 100%);
+  align-self: start;
+  align-content: start;
+  max-height: calc(100vh - 2.4rem);
+}
+
+.search-section {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.search-section-title {
+  margin: 0.4rem 0 0;
+  font-size: var(--dash-text-1);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
 .sheet-head {
   display: flex;
   align-items: baseline;
@@ -6347,6 +6370,221 @@ button.kid-pill {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+/* ---------- The user guide (Support) ----------
+ *
+ * The phone's Settings → Help → User guide. Rows are the Settings row's
+ * furniture without its card, inside a card per group, and a step is a card
+ * of its own as on the phone — the number, which device, then the words.
+ */
+.guide {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 52rem;
+}
+
+.guide-lead {
+  margin: 0;
+  font-size: var(--dash-text-3);
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.guide-topics {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.guide-topics li + li {
+  border-top: 1px solid var(--line);
+}
+
+.guide-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  min-height: 44px;
+  padding: 0.65rem 0;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+}
+
+.guide-row:hover .guide-row-copy strong {
+  color: var(--brand);
+}
+
+/* Title over summary. `.settings-row-copy` is one clipped line, which is
+   right for a label and wrong for a summary a parent chooses by. */
+.guide-row-copy {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.guide-row-copy strong {
+  font-size: var(--dash-text-3);
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.guide-row-copy span {
+  font-size: var(--dash-text-2);
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+[dir='rtl'] .guide-row > .icon:last-child,
+[dir='rtl'] .guide-entry > .icon:last-child {
+  transform: scaleX(-1);
+}
+
+.guide-match {
+  background: none;
+  color: var(--brand);
+  font-weight: 700;
+}
+
+.guide-hero {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.guide-hero h2 {
+  margin: 0 0 0.3rem;
+  font-size: var(--dash-text-5);
+}
+
+.guide-hero p {
+  margin: 0;
+  font-size: var(--dash-text-3);
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.guide-handoff {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0.9rem 1rem;
+  border-radius: var(--dash-radius-2);
+  background: color-mix(in srgb, var(--brand) 12%, transparent);
+  color: var(--brand);
+  font-size: var(--dash-text-3);
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.guide-section {
+  margin: 0.4rem 0 0;
+  font-size: var(--dash-text-2);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.guide-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.guide-step-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+  font-size: var(--dash-text-3);
+  color: var(--brand);
+}
+
+.guide-step-badge {
+  display: grid;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 999px;
+  background: var(--brand);
+  color: var(--surface);
+  font-size: var(--dash-text-2);
+  font-weight: 800;
+}
+
+/* The child tag is the common case and stays quiet; `parent` is the exception
+   in a list of child steps, so it is the one that takes the accent. */
+.guide-device {
+  margin-inline-start: auto;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--ink) 8%, transparent);
+  color: var(--muted);
+  font-size: var(--dash-text-1);
+  font-weight: 700;
+}
+
+.guide-device.is-parent {
+  background: color-mix(in srgb, var(--brand) 14%, transparent);
+  color: var(--brand);
+}
+
+.guide-step p,
+.guide-tip p {
+  margin: 0;
+  font-size: var(--dash-text-3);
+  color: var(--ink-2);
+  line-height: 1.7;
+}
+
+/* A UI name in a step, drawn as the thing the parent is told to press. */
+.guide-chip {
+  display: inline-block;
+  padding: 0 0.5rem;
+  border: 1px solid var(--brand);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--brand) 12%, transparent);
+  color: var(--brand);
+  font-size: var(--dash-text-2);
+  font-weight: 800;
+  line-height: 1.6;
+}
+
+.guide-tip {
+  padding: 1rem;
+  border-radius: var(--dash-radius-2);
+  background: color-mix(in srgb, var(--brand) 10%, transparent);
+}
+
+.guide-tip h3 {
+  margin: 0 0 0.35rem;
+  font-size: var(--dash-text-2);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--brand);
+}
+
+/* What a search result landed on. An outline, not a fill: the tip is already
+   tinted, and the mark has to read on both. */
+.guide-step.is-focused,
+.guide-tip.is-focused {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
 }
 
 /* ---------- One child's report ----------

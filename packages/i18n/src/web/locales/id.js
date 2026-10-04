@@ -135,7 +135,7 @@ export default {
       'Batasi tiap aplikasi sendiri-sendiri, di atas batas harian — “setengah jam TikTok” tanpa harus melarangnya sama sekali. Di Android, Android TV, dan komputer.',
     feature4Title: 'Filter web & riwayat',
     feature4Text:
-      'Blokir situs dewasa di semua perangkat, serta judi, melukai diri, dan kategori lain di Android, Android TV, dan komputer. Dengan Premium, pilih sendiri kategorinya dan lihat situs mana yang dicoba dibuka dan mana yang dihentikan.',
+      'Blokir situs dewasa, judi, melukai diri, dan kategori lain di semua perangkat. Dengan Premium, pilih sendiri kategorinya dan lihat situs mana yang dicoba dibuka dan mana yang dihentikan.',
     feature5Title: 'Lokasi langsung & tempat',
     feature5Text:
       'Lihat lokasi terakhir anak Anda, telusuri riwayatnya, dan dapatkan pemberitahuan saat ia tiba di atau meninggalkan tempat tersimpan.',
@@ -249,8 +249,7 @@ export default {
     faqMore: 'Masih ada pertanyaan? Kunjungi Dukungan',
 
     ctaTitle: 'Mulai lindungi keluarga Anda hari ini',
-    ctaSub:
-      'Uji coba gratis 7 hari dengan akses penuh. Tanpa kartu kredit untuk memulai.',
+    ctaSub: 'Uji coba gratis 7 hari dengan akses penuh.',
     ctaNote: 'Batalkan kapan saja lewat App Store atau Google Play.',
   },
 
@@ -611,7 +610,6 @@ export default {
       'Menyembunyikan App Store — Apple tidak mengizinkan persetujuan per aplikasi',
     colDomain: 'Domain',
     colVisits: 'Kunjungan',
-    colTime: 'Waktu',
     colBlocked: 'Diblokir',
     colLastSeen: 'Terakhir',
     videosTitle: 'Video yang ditonton',
@@ -952,5 +950,32 @@ export default {
     contactEmail: 'Kirim email',
     contactSupport: 'Dukungan dan panduan',
     contactPrivacy: 'Cara kami menangani data',
+  },
+  promo: {
+    intro: 'Sepanjang hari anak Anda, Anda tetap tenang.',
+    school: 'Kelas dimulai. Ponsel mengunci sendiri.',
+    apps: 'Hanya aplikasi yang Anda izinkan yang bisa dibuka.',
+    arrive: 'Ia tiba di rumah nenek, dan Anda langsung tahu.',
+    checkIn: 'Anda menanyakan kabarnya. Sekali ketuk, ia memastikan dirinya aman.',
+    sos: 'Jika terjadi sesuatu, satu SOS menunjukkan di mana ia berada.',
+    limit: 'Waktu main habis. Ponsel mengunci sendiri.',
+    lockNow: 'Makan malam sudah siap. Kunci ponselnya dari ponsel Anda.',
+    web: 'Situs dewasa diblokir di semua perangkat.',
+    tv: 'TV di ruang keluarga juga mengikuti aturan rumah yang sama.',
+    reward: 'PR selesai. Dapat 15 menit tambahan.',
+    bedtime: 'Saat waktu tidur, ponsel, komputer, dan TV juga ikut tidur.',
+    kid: 'Anak',
+    parent: 'Orang tua',
+    arrivedNotice: 'Nadia sudah tiba di rumah nenek',
+    checkAsk: 'Kamu baik-baik saja?',
+    checkReply: 'Aku baik-baik saja',
+    sosNotice: 'Nadia mengirim SOS',
+    timeUp: 'Waktu main hari ini sudah habis',
+    lockButton: 'Kunci sekarang',
+    task: 'PR selesai',
+    granted: '+15 menit',
+    youtubeTitle: 'KidGate — Kontrol orang tua untuk ponsel, komputer, dan TV',
+    youtubeDescription:
+      'Satu hari biasa bersama KidGate, dari bel sekolah sampai waktu tidur.',
   },
 };

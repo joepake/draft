@@ -1,0 +1,55 @@
+export const appLock = {
+  toggleLabel: 'アプリロック',
+  toggleHint: '保護者アプリを開くときにPINを要求する',
+  biometricToggleLabel: '{{biometryLabel}}で解除',
+  biometricToggleHint: 'PINの入力の代わりに生体認証を使用する',
+  fallbackBiometryLabel: '生体認証',
+  changePinTitle: 'アプリロックPINを変更',
+  changePinSubtitle: 'このデバイスで使用するPINを更新',
+  turnOffAlertTitle: 'アプリロックをオフにしますか？',
+  turnOffAlertMessage:
+    'このアプリのPINと生体認証による解除が、このデバイスから削除されます。',
+  turnOffButton: 'オフにする',
+  toastTurnedOff: 'このデバイスでアプリロックをオフにしました。',
+  toastTurnOffFailed: 'アプリロックをオフにできませんでした。もう一度お試しください。',
+  toastBiometricEnabled: 'アプリ解除に{{biometryLabel}}を有効にしました。',
+  toastBiometricEnableFailed:
+    '生体認証による解除を有効にできませんでした。もう一度お試しください。',
+  toastBiometricDisableFailed:
+    '生体認証による解除を無効にできませんでした。もう一度お試しください。',
+  toastEnabled: 'このデバイスでアプリロックを有効にしました。',
+  createAppLockPin: 'アプリロックPINを作成',
+  changeAppLockPin: 'アプリロックPINを変更',
+  appLockSetupSubtitle:
+    'このデバイスで保護者アプリを解除する6桁のPINを設定してください。',
+  appLockSetupHelper:
+    'このPINはこのデバイスのみで使用され、子どものデバイスで使う保護者PINとは別のものです。',
+  appLockPinMismatch: '入力したPINが一致しません。',
+  unableToSaveAppLockPin:
+    'アプリロックPINを保存できませんでした。もう一度お試しください。',
+  kidGateLocked: 'KidGateがロックされています',
+  signInRequired: 'サインインが必要です',
+  enterAppLockPin: '保護者アプリを開くには、アプリロックPINを入力してください。',
+  appLockLockoutMessage:
+    '入力ミスが多すぎます。再度サインインできるよう、一度サインアウトされます。',
+  appLockPinLabel: 'アプリロックPIN（6桁）',
+  attemptsRemainingShort: '残り{{count}}回',
+  attemptsRemainingShort_one: '残り{{count}}回',
+  unlockWithBiometric: '{{biometryLabel}}で解除',
+  signInAgain: 'もう一度サインイン',
+  tooManyPinAttemptsSignIn: '入力ミスが多すぎます。もう一度サインインしてください。',
+  unableToVerifyPin: 'そのPINは正しくありません。もう一度お試しください。',
+  appLockPinMustBeSixDigits: 'アプリロックPINはちょうど6桁である必要があります。',
+  enterCurrentAppLockPin: '現在のアプリロックPINを入力してください。',
+  currentAppLockPinIncorrect: '現在のアプリロックPINが正しくありません。',
+  signInAgainToContinue:
+    '入力ミスが多すぎます。続けるにはもう一度サインインしてください。',
+  incorrectPinAttemptsLeft: 'PINが正しくありません。残り{{count}}回。',
+  incorrectPinAttemptsLeft_one: 'PINが正しくありません。残り{{count}}回。',
+  biometricsUnavailable: 'このデバイスでは生体認証による解除は利用できません。',
+  unlockKidGateTitle: 'KidGateのロックを解除',
+  biometricUnlockSubtitle: '保護者アプリを開くために本人確認を行ってください',
+  faceId: 'Face ID',
+  touchId: 'Touch ID',
+  fingerprint: '指紋認証',
+} as const;

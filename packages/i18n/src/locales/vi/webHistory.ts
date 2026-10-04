@@ -3,14 +3,10 @@ export const webHistory = {
   fallbackDeviceName: 'Thiết bị của trẻ',
   syncNote:
     'Lịch sử web có thể mất tối đa khoảng 15 phút để hiện trên màn hình này — lâu hơn nếu thiết bị không có kết nối mạng hoặc bị đóng đột ngột.',
-  syncNoteIos:
-    'Trên iPhone, lịch sử web chỉ được gửi về sau khi KidGate chạy trên thiết bị của trẻ, nên có thể chậm vài giờ nếu con chưa mở ứng dụng.',
   syncNoteTv:
     'TV này chỉ kết nối theo định kỳ, nên lịch sử web có thể mất tới một giờ để hiện trên màn hình này — lâu hơn nếu không có kết nối mạng.',
   summarySites: 'Trang truy cập',
   summaryBlocked: 'Trang bị chặn',
-  sourceNoteIos:
-    'Trên iPhone, dữ liệu này lấy từ báo cáo Thời gian sử dụng của Apple — những trang con dành thời gian vào, không phải mọi trang đã mở.',
   sourceNoteFilter:
     'Dữ liệu này lấy từ bộ lọc của KidGate — những trang thiết bị này truy vấn, không phải mọi trang đã mở.',
   backgroundNote:
@@ -21,8 +17,6 @@ export const webHistory = {
     'Tính năng Chặn nội dung web đang tắt nên thiết bị này không ghi lại lượt truy cập, cũng không chặn trang nào. Bật lên để xem thiết bị truy cập vào những trang nào.',
   filterOffNoteMacos:
     'Tính năng Chặn nội dung web đang tắt nên Mac này không ghi lại lượt truy cập, cũng không chặn trang nào. Bật lên để xem máy này truy cập vào những trang nào.',
-  filterOffNoteIos:
-    'Tính năng Chặn nội dung web đang tắt nên hiện không có trang nào bị chặn. Danh sách này chỉ cho biết điện thoại đã truy cập vào những trang nào.',
   filterAll: 'Tất cả',
   filterBlocked: 'Chỉ bị chặn',
   emptyTitle: 'Chưa ghi nhận gì',
@@ -51,7 +45,6 @@ export const webHistory = {
     'Các trang mà một dịch vụ tự tải về được gộp vào chung một dòng — mở YouTube một lần là chạm tới vài trang. Chạm vào dòng để xem đầy đủ.',
   showMoreDays: 'Xem thêm {{count}} ngày',
   rollupTitle: 'Lượt truy cập theo loại trang',
-  rollupTitleMinutes: 'Thời gian theo loại trang',
   rollupShare: '{{percent}}%',
   rollupNote:
     'Là số lượt truy cập, không phải số phút — một video dài chỉ vài lượt, mười phút lướt web là hàng chục.',
@@ -59,8 +52,6 @@ export const webHistory = {
     'Một số mục được suy ra từ tên trang chứ không khớp với trang đã biết, nên có thể lệch đôi chút.',
   rollupNoteExtension:
     'Là số trang, không phải phút — một video dài tính một lần, mười phút lướt web tính hàng chục.',
-  rollupNoteMinutes:
-    'Là số phút, không phải số lượt truy cập — lấy từ báo cáo Thời gian sử dụng của Apple về thời gian dành cho từng trang.',
   hoursTitle: 'Lướt web vào lúc nào',
   hoursNote:
     'Số trang đã tải theo giờ, tính theo đồng hồ của máy. Một tab mở cả buổi chiều chỉ tính một lần.',
@@ -69,6 +60,4 @@ export const webHistory = {
     'Dữ liệu này gộp từ {{count}} thiết bị. Mỗi thiết bị chỉ ghi lại những trang mà bộ lọc trên đó thấy được.',
   filterOffNoteChild:
     'Bộ lọc web đang tắt trên mọi thiết bị nên lượt truy cập mới không được ghi lại.',
-  filterOffNoteChildIos:
-    'Tính năng Chặn nội dung web đang tắt trên mọi thiết bị nên không có trang nào bị chặn. Chỉ iPhone và iPad vẫn báo các trang đã truy cập, qua Thời gian sử dụng.',
 } as const;

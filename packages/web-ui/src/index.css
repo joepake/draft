@@ -1,15 +1,15 @@
 /* ==================================================================
    KidGate marketing site.
 
-   One dark surface across marketing, legal and the dashboard. The site
-   used to jump white → dark → white, which read as three different
-   products; the shared palette is what makes it read as one.
+   One ground per page. The site once jumped white → dark → white, which
+   read as three different products. It runs the light palette — the one
+   a phone starts on — and the dashboard runs whichever the parent chose.
    ================================================================== */
 
 :root {
   /* Every colour below resolves to `@kidgate/tokens`, written onto `:root`
-     as `--kg-*` custom properties by `theme.js` before first paint (the web
-     runs the classic pack's dark palette — see `applyTheme` in main.jsx).
+     as `--kg-*` custom properties by `theme.js` before first paint (see
+     `applyTheme` in each app's main.jsx for which palette).
      This block keeps the site's own vocabulary; it must contain no literal
      colour. Alpha variants are mixed from the tokens with `color-mix`. */
   --bg: var(--kg-background);
@@ -36,6 +36,7 @@
    * against all three grounds it is used on, with margin. It stays far below
    * `--ink-2` (9.71 on `--bg`), so the three-step hierarchy is unchanged.
    * Re-measure before lowering it; the card surface is the binding constraint.
+   * Dark palette only — the light one sets its own, below.
    */
   --ink-3: color-mix(in srgb, var(--kg-textSecondary) 76%, var(--kg-background));
 
@@ -60,7 +61,28 @@
   background-color: var(--bg);
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
-  color-scheme: dark;
+  color-scheme: light;
+}
+
+/*
+ * The light palette's own values for four lines above that were tuned against
+ * the dark one. `data-kg-scheme` is written by `applyTheme`. Measured 2026-10-04:
+ *
+ * - `--ink-3` mixed toward the ground gave 3.61:1 on `--surface` and 3.19 on
+ *   `--bg` — the light `textSecondary` already sits near the AA floor, so any
+ *   step dimmer than it fails. It is the token itself: 5.82 on `--surface`,
+ *   5.14 on `--bg`, 4.94 on `--surface-2`, 4.75 on `--bg-2`.
+ * - `--ink-2` moves 30% toward `--ink`, so three steps stay three.
+ * - `--bg-2` above is `backgroundDark`, near-black in both palettes: every band
+ *   on it (trust, showcase, footer) put dark headings on a dark ground. Here
+ *   it is one step below `--bg`, which is the job it does in dark.
+ * - `--shadow-lg` at 55% is a grey cloud on a light ground.
+ */
+:root[data-kg-scheme='light'] {
+  --ink-2: color-mix(in srgb, var(--kg-text) 30%, var(--kg-textSecondary));
+  --ink-3: var(--kg-textSecondary);
+  --bg-2: color-mix(in srgb, var(--kg-background) 96%, var(--kg-text));
+  --shadow-lg: 0 30px 70px color-mix(in srgb, var(--kg-shadow) 22%, transparent);
 }
 
 * {
@@ -177,6 +199,10 @@ label[for] {
  * light palette, which is the white-on-teal this should have been, and dark
  * in the dark one, where the tile itself is the light thing. Same fix, same
  * fallback chain, as `.btn-primary` in `dashboard.css`.
+ *
+ * `--plane` is only declared inside `.dash`, so on the site the chain ended in
+ * nothing and the glyph inherited `--ink` after all. It ends in what `--plane`
+ * resolves to.
  */
 .brand-mark {
   width: 1.6rem;
@@ -185,7 +211,7 @@ label[for] {
   background: linear-gradient(135deg, var(--brand), var(--brand-2));
   display: grid;
   place-items: center;
-  color: var(--kg-onPrimary, var(--plane));
+  color: var(--kg-onPrimary, var(--plane, var(--kg-background)));
 }
 
 .brand-mark svg {
@@ -500,26 +526,18 @@ label[for] {
 
 /* Hero */
 
+/*
+ * Washes are the `*Soft` tokens, never `--brand` mixed into the ground: the
+ * light brand is a deep teal, and any share of it in a light ground is grey.
+ * Same for `.showcase` and `.cta`.
+ */
 .hero {
   position: relative;
   padding-top: clamp(3rem, 7vw, 5.5rem) !important;
   background:
-    radial-gradient(
-      58rem 30rem at 78% -12%,
-      color-mix(in srgb, var(--brand-2) 28%, transparent),
-      transparent 62%
-    ),
-    radial-gradient(
-      48rem 28rem at 8% 105%,
-      color-mix(in srgb, var(--brand) 30%, transparent),
-      transparent 62%
-    ),
-    linear-gradient(
-      168deg,
-      color-mix(in srgb, var(--bg) 94%, var(--brand)) 0%,
-      color-mix(in srgb, var(--bg) 82%, var(--brand)) 58%,
-      color-mix(in srgb, var(--bg) 72%, var(--brand)) 100%
-    );
+    radial-gradient(58rem 30rem at 78% -12%, var(--kg-secondarySoft), transparent 62%),
+    radial-gradient(48rem 28rem at 8% 105%, var(--brand-soft), transparent 62%),
+    var(--bg);
   border-bottom: 1px solid var(--line);
 }
 
@@ -592,7 +610,7 @@ label[for] {
   font-size: 0.87rem;
   font-weight: 500;
   color: color-mix(in srgb, var(--brand) 20%, var(--ink));
-  background: color-mix(in srgb, var(--ink) 6%, transparent);
+  background: color-mix(in srgb, var(--surface) 70%, transparent);
   border: 1px solid var(--line-strong);
   border-radius: 999px;
   padding: 0.42rem 0.9rem;
@@ -779,7 +797,8 @@ label[for] {
   line-height: 1.2;
 }
 
-/* Phone mockup */
+/* Phone mockup — the app's own layout, cards on `--surface` over `--bg`, so it
+   is a picture of the phone rather than of the page around it. */
 
 .phone-wrap {
   display: flex;
@@ -790,12 +809,8 @@ label[for] {
 .phone {
   width: min(280px, 78vw);
   border-radius: 2.4rem;
-  background: linear-gradient(
-    170deg,
-    color-mix(in srgb, var(--bg) 86%, var(--brand)),
-    color-mix(in srgb, var(--bg) 96%, var(--brand))
-  );
-  border: 7px solid color-mix(in srgb, var(--surface) 78%, var(--ink));
+  background: var(--bg);
+  border: 7px solid color-mix(in srgb, var(--kg-backgroundDark) 90%, var(--kg-surface));
   box-shadow:
     var(--shadow-lg),
     0 0 0 1px color-mix(in srgb, var(--ink) 7%, transparent);
@@ -812,7 +827,7 @@ label[for] {
 }
 
 .phone-card {
-  background: color-mix(in srgb, var(--ink) 5.5%, transparent);
+  background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--r-md);
   padding: 0.85rem 0.95rem;
@@ -1032,11 +1047,7 @@ label[for] {
 
 .showcase {
   background:
-    radial-gradient(
-      46rem 24rem at 50% -20%,
-      color-mix(in srgb, var(--brand) 20%, transparent),
-      transparent 65%
-    ),
+    radial-gradient(46rem 24rem at 50% -20%, var(--brand-soft), transparent 65%),
     var(--bg-2);
   border-block: 1px solid var(--line);
 }
@@ -1045,11 +1056,7 @@ label[for] {
   margin-top: 1rem;
   border-radius: var(--r-xl);
   border: 1px solid var(--line-strong);
-  background: linear-gradient(
-    170deg,
-    color-mix(in srgb, var(--bg) 84%, var(--brand)),
-    color-mix(in srgb, var(--bg) 95%, var(--brand))
-  );
+  background: var(--surface);
   box-shadow: var(--shadow-lg);
   overflow: hidden;
 }
@@ -1413,16 +1420,8 @@ label[for] {
 .cta {
   text-align: center;
   background:
-    radial-gradient(
-      40rem 20rem at 50% -30%,
-      color-mix(in srgb, var(--brand-2) 34%, transparent),
-      transparent 70%
-    ),
-    linear-gradient(
-      165deg,
-      color-mix(in srgb, var(--bg) 88%, var(--brand)),
-      color-mix(in srgb, var(--bg) 70%, var(--brand))
-    );
+    radial-gradient(40rem 20rem at 50% -30%, var(--kg-secondarySoft), transparent 70%),
+    linear-gradient(165deg, var(--bg), var(--brand-soft));
   border-top: 1px solid var(--line);
 }
 

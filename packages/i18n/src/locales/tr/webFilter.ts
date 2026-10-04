@@ -9,12 +9,13 @@ export const webFilter = {
   toastUpdateFailed: 'Web filtresi güncellenemedi. Lütfen tekrar deneyin.',
   heroTitle: 'Uygunsuz siteleri filtrele',
   heroSubtitleIos:
-    'Çocuğun cihazındaki Safari ve uygulama içi tarayıcılarda yetişkin içeriği sınırlamak için Apple Ekran Süresi web içerik filtresini kullanır.',
+    'Apple Ekran Süresi web içerik filtresinin yanı sıra, bilinen uygunsuz siteleri tarayıcılarda ve birçok uygulamada engellemek için çocuğun iPhone’unda veya iPad’inde özel bir bağlantı çalıştırır.',
   heroSubtitleAndroid:
     'Bilinen uygunsuz alan adlarını tarayıcılarda ve birçok uygulamada engellemek için çocuğun Android cihazında yerel bir DNS VPN kullanır.',
   heroSubtitleMacos:
     'Tarayıcılarda ve birçok uygulamada bilinen uygunsuz siteleri engellemek için çocuğun Mac’inde KidGate’in içerik filtresini çalıştırır.',
-  toggleHintIos: 'Çocuk cihazında Ekran Süresi izni gerektirir.',
+  toggleHintIos:
+    'Çocuğun KidGate VPN bağlantısına bir kez izin vermesi ve cihaz parolasını girmesi gerekir. Filtrenin çalışması için VPN’i cihazdan kaldırmayın.',
   toggleHintAndroid:
     'Çocuğun KidGate VPN bağlantısını bir kez onaylaması gerekir. Filtrenin çalışması için VPN’i açık tutun.',
   toggleHintMacos:
@@ -29,11 +30,12 @@ export const webFilter = {
   safeSearchStrictNote:
     'YouTube en katı seviyede çalışır: yorumlar gizlenir ve bazı sıradan videolar da engellenir. Çocuk bunu kendi hesabından kapatamaz.',
   infoTitle: 'Nasıl çalışır',
-  infoLine1Ios: 'Apple yetişkin sitelerini otomatik olarak filtreler.',
+  infoLine1Ios:
+    'KidGate, cihazda özel bir bağlantı çalıştırır; hangi sitelere girilmek istendiğini görür ve seçtiğiniz kategorilerdeki siteleri engeller.',
   infoLine2Ios:
-    'Safari’de Apple’ın yetişkin içerik filtresini kullanır; diğer uygulamaların içindeki her şeyi engellemez.',
+    'Apple’ın yetişkin içerik filtresi, ikinci bir koruma katmanı olarak Safari’de ve uygulama içi tarayıcılarda açık kalır.',
   infoLine3Ios:
-    'Çocuk cihazındaki uygulama denetimleri eşitlediğinde KidGate ayarı otomatik uygular.',
+    'Filtreleme sırasında bir VPN simgesi görünür. VPN Ayarlar’dan kapatılırsa birkaç saniye içinde yeniden açılır; silinirse KidGate’te yeniden izin verilene kadar filtre durur.',
   infoLine1Android:
     'KidGate, cihazda özel bir bağlantı çalıştırır; hangi sitelere girilmek istendiğini görür ve seçtiğiniz kategorilerdeki siteleri engeller.',
   infoLine2Android:
@@ -58,7 +60,7 @@ export const webFilter = {
   vpnConsentBannerBody:
     'KidGate VPN kapalı. Yetişkin web filtresi VPN bağlantısının sürmesini gerektirir.',
   vpnConsentBannerButton: 'VPN’i aç',
-  iosOnlyNote: 'iOS’ta Ekran Süresi kullanır',
+  iosOnlyNote: 'iPhone’da özel bağlantı ve Ekran Süresi kullanır',
   androidVpnNote: 'Android’de yerel DNS VPN kullanır',
   macosFilterNote: 'Mac’te KidGate’in içerik filtresini kullanır',
 
@@ -218,4 +220,6 @@ export const webFilter = {
   privateDnsStep3: 'Özel DNS’i aç ve Kapalı’yı seç.',
   vpnConsentStepAllow:
     'Android’in VPN isteğinde Tamam’ı seç. Filtre çalışırken durum çubuğunda anahtar simgesi kalır.',
+  vpnConsentStepAllowIos:
+    'iOS, VPN yapılandırmaları eklemek için izin istediğinde İzin Ver’i seç, ardından cihaz parolasını gir. Filtre çalışırken bir VPN simgesi görünür.',
 } as const;

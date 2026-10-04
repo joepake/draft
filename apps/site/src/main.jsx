@@ -9,9 +9,11 @@ import '@kidgate/web-ui/index.css';
 
 // Tokens onto `:root` before the first paint — the stylesheets hold only
 // `var(--kg-…)`, so a frame drawn before this is a frame with no colours.
-// `dark: true`: the web surfaces are designed dark, so they run the classic
-// pack's dark palette — same tokens as a phone whose family chose dark.
-applyTheme(undefined, true);
+// Light, and never the visitor's `prefers-color-scheme`: the phone starts light,
+// so a parent arriving from an ad sees the app they are about to install. The
+// site ran dark until 2026-10 and read as a surveillance tool to the parents it
+// is selling to — the opposite of its headline.
+applyTheme();
 
 /*
  * Three counters — visits, and a download click per desktop. Never awaited: a

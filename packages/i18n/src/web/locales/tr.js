@@ -136,7 +136,7 @@ export default {
       'Günlük sınırın üstüne, her uygulamaya ayrı bir sınır koyun — tamamen yasaklamadan “yarım saat TikTok”. Android’de, Android TV’de ve bilgisayarlarda.',
     feature4Title: 'Web filtreleme ve geçmiş',
     feature4Text:
-      'Yetişkin sitelerini her cihazda; kumar, kendine zarar verme ve diğer kategorileri ise Android’de, Android TV’de ve bilgisayarlarda engelleyin. Premium ile kategorileri kendiniz seçin, hangi sitelerin arandığını ve hangilerinin durdurulduğunu görün.',
+      'Yetişkin siteleri, kumar, kendine zarar verme ve diğer kategorileri her cihazda engelleyin. Premium ile kategorileri kendiniz seçin, hangi sitelerin arandığını ve hangilerinin durdurulduğunu görün.',
     feature5Title: 'Canlı konum ve yerler',
     feature5Text:
       'Çocuğunuzun son konumunu görün, geçmişi inceleyin ve kayıtlı bir yere vardığında ya da oradan ayrıldığında haberdar olun.',
@@ -250,8 +250,7 @@ export default {
     faqMore: 'Başka sorunuz mu var? Destek sayfasına gidin',
 
     ctaTitle: 'Ailenizi korumaya bugün başlayın',
-    ctaSub:
-      'Tam erişimli 7 günlük ücretsiz deneme. Başlamak için kredi kartı gerekmez.',
+    ctaSub: 'Tam erişimli 7 günlük ücretsiz deneme.',
     ctaNote: 'App Store veya Google Play üzerinden istediğiniz zaman iptal edin.',
   },
 
@@ -620,7 +619,6 @@ export default {
       'App Store’u gizler — Apple uygulama bazında onaya izin vermiyor',
     colDomain: 'Alan adı',
     colVisits: 'Ziyaret',
-    colTime: 'Süre',
     colBlocked: 'Engellenen',
     colLastSeen: 'Son görülme',
     videosTitle: 'İzlenen videolar',
@@ -965,5 +963,32 @@ export default {
     contactEmail: 'E-posta gönderin',
     contactSupport: 'Destek ve rehberler',
     contactPrivacy: 'Verileri nasıl işliyoruz',
+  },
+  promo: {
+    intro: 'Çocuğunuzun bütün günü boyunca içiniz rahat.',
+    school: 'Ders başlayınca telefon kendini kilitler.',
+    apps: 'Yalnızca izin verdiğiniz uygulamalar açılır.',
+    arrive: 'Anneanneye vardığında hemen haberdar olursunuz.',
+    checkIn: 'Halini sorarsınız; tek dokunuşla iyi olduğunu bildirir.',
+    sos: 'Bir sorun olursa tek bir SOS, nerede olduğunu gösterir.',
+    limit: 'Oyun süresi doldu. Telefon kendini kilitler.',
+    lockNow: 'Yemek hazır. Onun telefonunu kendi telefonunuzdan kilitleyin.',
+    web: 'Yetişkin siteleri her cihazda engellenir.',
+    tv: 'Salondaki televizyon da aynı ev kurallarına uyar.',
+    reward: 'Ödev bitti: 15 ek dakika kazanıldı.',
+    bedtime: 'Yatma saatinde telefon, bilgisayar ve televizyon da uyur.',
+    kid: 'Çocuk',
+    parent: 'Ebeveyn',
+    arrivedNotice: 'Elif anneannesine vardı',
+    checkAsk: 'İyi misin?',
+    checkReply: 'İyiyim!',
+    sosNotice: 'Elif SOS gönderdi',
+    timeUp: 'Bugünlük oyun süresi bitti',
+    lockButton: 'Şimdi kilitle',
+    task: 'Ödev bitti',
+    granted: '+15 dk',
+    youtubeTitle: 'KidGate — Telefon, bilgisayar ve TV için ebeveyn denetimi',
+    youtubeDescription:
+      'KidGate ile sıradan bir gün: okul zilinden yatma saatine kadar.',
   },
 };

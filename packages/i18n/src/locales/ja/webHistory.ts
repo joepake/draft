@@ -3,14 +3,10 @@ export const webHistory = {
   fallbackDeviceName: 'お子さまのデバイス',
   syncNote:
     'ウェブ履歴がこの画面に反映されるまで最大15分ほどかかることがあります。デバイスがインターネットに接続していない場合や、予期せず終了した場合は、さらに時間がかかります。',
-  syncNoteIos:
-    'iPhoneでは、お子さまのデバイスでKidGateが動作した後にしかウェブ履歴が届かないため、アプリが開かれていないと数時間遅れることがあります。',
   syncNoteTv:
     'このテレビは定期的にしか通信しないため、ウェブ履歴がこの画面に反映されるまで最大1時間かかることがあります。インターネットに接続していない場合はさらに時間がかかります。',
   summarySites: '見たサイト',
   summaryBlocked: 'ブロックしたサイト',
-  sourceNoteIos:
-    'iPhoneではAppleのスクリーンタイムのレポートが元です。お子さまが時間を使ったサイトであり、開いたすべてのページではありません。',
   sourceNoteFilter:
     'KidGateのフィルターが元です。このデバイスが問い合わせたサイトであり、開いたすべてのページではありません。',
   backgroundNote:
@@ -21,8 +17,6 @@ export const webHistory = {
     'Webフィルターがオフのため、このデバイスは記録もブロックもしていません。オンにすると訪問先が見られます。',
   filterOffNoteMacos:
     'Webフィルターがオフのため、このMacは記録もブロックもしていません。オンにすると訪問先が見られます。',
-  filterOffNoteIos:
-    'Webフィルターがオフのため、何もブロックされていません。この一覧は、デバイスがどのサイトを見たかだけを示します。',
   filterAll: 'すべて',
   filterBlocked: 'ブロックのみ',
   emptyTitle: 'まだ記録がありません',
@@ -51,7 +45,6 @@ export const webHistory = {
     'サービスが自動的に読み込むサイトは1行にまとめています。YouTubeを一度開くだけで複数に接続します。行をタップすると内訳が表示されます。',
   showMoreDays: 'さらに{{count}}日分を表示',
   rollupTitle: 'サイトの種類別アクセス数',
-  rollupTitleMinutes: 'サイトの種類別の時間',
   rollupShare: '{{percent}}%',
   rollupNote:
     '分ではなく参照回数です。長い動画は数回、10分のブラウジングは数十回になります。',
@@ -59,8 +52,6 @@ export const webHistory = {
     '一部はサイト名からの推定で、既知のサイトとの照合ではありません。外れているものもあります。',
   rollupNoteExtension:
     '分ではなくページ数です。長い動画は1回、10分のブラウジングは数十回になります。',
-  rollupNoteMinutes:
-    'アクセス数ではなく分数です。サイトごとの利用時間を示す、Appleのスクリーンタイムのレポートに基づいています。',
   hoursTitle: 'いつ見ていたか',
   hoursNote:
     '時間帯ごとのページ読み込み数（デバイスの時計）。午後ずっと開いたままのタブは1回です。',
@@ -69,6 +60,4 @@ export const webHistory = {
     '{{count}}台のデバイスをまとめて表示。各デバイスは自分のフィルターが見たものだけを記録します。',
   filterOffNoteChild:
     'すべてのデバイスでWebフィルターがオフのため、新しいアクセスは記録されません。',
-  filterOffNoteChildIos:
-    'すべてのデバイスでWebフィルターがオフのため、何もブロックされていません。引き続きサイトを報告しているのは、スクリーンタイムを使うiPhoneとiPadだけです。',
 } as const;

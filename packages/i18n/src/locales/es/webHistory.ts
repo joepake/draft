@@ -3,14 +3,10 @@ export const webHistory = {
   fallbackDeviceName: 'Dispositivo del niño',
   syncNote:
     'El historial web puede tardar hasta unos 15 minutos en aparecer en esta pantalla, más si el dispositivo no tiene conexión a Internet o se cerró de forma inesperada.',
-  syncNoteIos:
-    'En iPhone, el historial web solo llega después de que KidGate se haya ejecutado en el dispositivo del niño, así que puede ir con horas de retraso si no se ha abierto la app.',
   syncNoteTv:
     'Este televisor solo se conecta de forma periódica, así que el historial web puede tardar hasta una hora en aparecer en esta pantalla, más si no hay conexión a Internet.',
   summarySites: 'Sitios vistos',
   summaryBlocked: 'Sitios bloqueados',
-  sourceNoteIos:
-    'En iPhone esto viene del informe de Tiempo de uso de Apple: los sitios en los que tu hijo pasó tiempo, no cada página que abrió.',
   sourceNoteFilter:
     'Esto viene del filtro de KidGate: los sitios que este dispositivo consultó, no cada página que se abrió.',
   backgroundNote:
@@ -21,8 +17,6 @@ export const webHistory = {
     'El filtro web está desactivado, así que este dispositivo no registra ni bloquea nada. Actívalo para ver por dónde navega.',
   filterOffNoteMacos:
     'El filtro web está desactivado, así que este Mac no registra ni bloquea nada. Actívalo para ver por dónde navega.',
-  filterOffNoteIos:
-    'El filtro web está desactivado, así que no se bloquea nada. Esta lista solo muestra por dónde navegó el teléfono.',
   filterAll: 'Todos los sitios',
   filterBlocked: 'Solo bloqueados',
   emptyTitle: 'Aún no hay registros',
@@ -55,7 +49,6 @@ export const webHistory = {
   showMoreDays: 'Ver {{count}} días más',
   showMoreDays_one: 'Ver 1 día más',
   rollupTitle: 'Visitas por tipo de sitio',
-  rollupTitleMinutes: 'Tiempo por tipo de sitio',
   rollupShare: '{{percent}} %',
   rollupNote:
     'Consultas, no minutos: un vídeo largo son unas pocas, diez minutos de navegación son docenas.',
@@ -63,8 +56,6 @@ export const webHistory = {
     'Algunos tipos se dedujeron del nombre del sitio en vez de coincidir con uno conocido, así que alguno puede fallar.',
   rollupNoteExtension:
     'Páginas, no minutos: un vídeo largo cuenta una vez, diez minutos de navegación cuentan docenas.',
-  rollupNoteMinutes:
-    'Minutos, no visitas: según el informe de Tiempo de uso de Apple sobre el tiempo pasado en cada sitio.',
   hoursTitle: 'Cuándo navegó',
   hoursNote:
     'Páginas cargadas por hora, según el reloj del dispositivo. Una pestaña abierta toda la tarde cuenta una vez.',
@@ -73,6 +64,4 @@ export const webHistory = {
     'Combinado de {{count}} dispositivos. Cada uno registra solo lo que ve su propio filtro.',
   filterOffNoteChild:
     'El filtro web está desactivado en todos los dispositivos, así que las visitas nuevas no se registran.',
-  filterOffNoteChildIos:
-    'El Filtro web está desactivado en todos los dispositivos, así que no se bloquea nada. Solo los iPhone y iPad siguen informando de sitios, a través de Tiempo de uso.',
 } as const;

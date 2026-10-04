@@ -175,6 +175,9 @@ export const activities = {
 
   unknownDevice: 'جهاز غير معروف',
 
+  tamperWebFilterTitle: 'تم إيقاف فلتر الويب',
+  tamperWebFilterBody:
+    'تم إيقاف VPN الخاص بـKidGate على هذا الهاتف أو استبداله بتطبيق VPN آخر. لن تتم تصفية المواقع أو تسجيلها حتى يعود للعمل.',
   tamperUninstallProtectionTitle: 'تم إيقاف الحماية من إلغاء التثبيت',
   tamperUninstallProtectionBody: 'أصبح بالإمكان إزالة KidGate من هذا الهاتف.',
   tamperReinstalledTitle: 'تمت إعادة تثبيت KidGate',

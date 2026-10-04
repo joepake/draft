@@ -135,7 +135,7 @@ export default {
       'Plafonnez chaque appli séparément, en plus de la limite quotidienne : « une demi-heure de TikTok » sans l’interdire pour autant. Sur Android, Android TV et ordinateur.',
     feature4Title: 'Filtre web et historique',
     feature4Text:
-      'Bloquez les sites pour adultes sur tous les appareils, et les jeux d’argent, l’automutilation et d’autres catégories sur Android, Android TV et ordinateur. Avec Premium, choisissez vous-même les catégories et voyez quels sites ont été consultés et lesquels ont été bloqués.',
+      'Bloquez les sites pour adultes, les jeux d’argent, l’automutilation et d’autres catégories sur tous les appareils. Avec Premium, choisissez vous-même les catégories et voyez quels sites ont été consultés et lesquels ont été bloqués.',
     feature5Title: 'Localisation en direct et lieux',
     feature5Text:
       'Consultez la dernière position de votre enfant, revoyez l’historique et soyez prévenu quand il arrive dans un lieu enregistré ou le quitte.',
@@ -250,8 +250,7 @@ export default {
     faqMore: 'D’autres questions ? Voir l’assistance',
 
     ctaTitle: 'Commencez à protéger votre famille dès aujourd’hui',
-    ctaSub:
-      'Essai gratuit de 7 jours avec accès complet. Aucune carte bancaire pour démarrer.',
+    ctaSub: 'Essai gratuit de 7 jours avec accès complet.',
     ctaNote: 'Annulez à tout moment depuis l’App Store ou Google Play.',
   },
 
@@ -622,7 +621,6 @@ export default {
       'Masque l’App Store — Apple ne permet pas d’approuver application par application',
     colDomain: 'Domaine',
     colVisits: 'Visites',
-    colTime: 'Durée',
     colBlocked: 'Bloquées',
     colLastSeen: 'Vu pour la dernière fois',
     videosTitle: 'Vidéos regardées',
@@ -971,5 +969,34 @@ export default {
     contactEmail: 'Écrivez-nous',
     contactSupport: 'Assistance et guides',
     contactPrivacy: 'Comment nous traitons les données',
+  },
+  promo: {
+    intro: 'Toute la journée de votre enfant, l’esprit tranquille.',
+    school: 'Les cours commencent. Le téléphone se verrouille tout seul.',
+    apps: 'Seules les applis que vous autorisez s’ouvrent.',
+    arrive: 'Votre enfant arrive chez Mamie : vous êtes prévenu aussitôt.',
+    checkIn:
+      'Vous prenez des nouvelles : d’un seul geste, il confirme que tout va bien.',
+    sos: 'En cas de problème, un SOS vous montre où il se trouve.',
+    limit: 'Fini le temps de jeu. Le téléphone se verrouille tout seul.',
+    lockNow: 'À table ! Verrouillez son téléphone depuis le vôtre.',
+    web: 'Les sites pour adultes sont bloqués sur tous les appareils.',
+    tv: 'La télé du salon suit les mêmes règles de la maison.',
+    reward: 'Devoirs terminés : 15 minutes bonus gagnées.',
+    bedtime:
+      'À l’heure du coucher, le téléphone, l’ordinateur et la télé dorment aussi.',
+    kid: 'Enfant',
+    parent: 'Parent',
+    arrivedNotice: 'Léa est arrivée chez Mamie',
+    checkAsk: 'Tout va bien ?',
+    checkReply: 'Tout va bien !',
+    sosNotice: 'Léa a envoyé un SOS',
+    timeUp: 'Fini le temps de jeu pour aujourd’hui',
+    lockButton: 'Verrouiller',
+    task: 'Devoirs terminés',
+    granted: '+15 min',
+    youtubeTitle: 'KidGate — Contrôle parental pour téléphone, ordinateur et télé',
+    youtubeDescription:
+      'Une journée ordinaire avec KidGate, de la sonnerie de l’école jusqu’au coucher.',
   },
 };

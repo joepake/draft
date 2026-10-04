@@ -178,6 +178,9 @@ export const activities = {
 
   unknownDevice: 'Bilinmeyen cihaz',
 
+  tamperWebFilterTitle: 'Web filtresi kapatıldı',
+  tamperWebFilterBody:
+    'Bu telefondaki KidGate VPN kapatıldı ya da yerini başka bir VPN uygulaması aldı. Yeniden açılana kadar siteler filtrelenmez ve kaydedilmez.',
   tamperUninstallProtectionTitle: 'Kaldırma koruması kapatıldı',
   tamperUninstallProtectionBody: 'KidGate artık bu telefondan kaldırılabilir.',
   tamperReinstalledTitle: 'KidGate yeniden yüklendi',

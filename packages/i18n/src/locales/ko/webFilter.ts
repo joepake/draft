@@ -9,12 +9,13 @@ export const webFilter = {
   toastUpdateFailed: '웹 필터를 업데이트하지 못했습니다. 다시 시도해 주세요.',
   heroTitle: '부적절한 웹사이트 필터링',
   heroSubtitleIos:
-    'Apple 스크린 타임의 웹 콘텐츠 필터를 사용해 자녀 기기의 Safari와 앱 내 브라우저에서 성인 콘텐츠를 제한합니다.',
+    'Apple 스크린 타임의 웹 콘텐츠 필터에 더해, 자녀의 iPhone이나 iPad에서 비공개 연결을 실행해 알려진 부적절한 사이트를 브라우저와 여러 앱에서 차단합니다.',
   heroSubtitleAndroid:
     '자녀의 Android 기기에서 로컬 DNS VPN을 사용해 알려진 부적절한 도메인을 브라우저와 여러 앱에서 차단합니다.',
   heroSubtitleMacos:
     '브라우저와 여러 앱에서 알려진 부적절한 사이트를 차단하기 위해 자녀의 Mac에서 KidGate 콘텐츠 필터를 실행합니다.',
-  toggleHintIos: '자녀 기기에서 스크린 타임 권한이 필요합니다.',
+  toggleHintIos:
+    '자녀가 KidGate VPN 연결을 한 번 허용하고 기기 암호를 입력해야 합니다. 필터가 작동하려면 VPN을 삭제하지 말고 그대로 두세요.',
   toggleHintAndroid:
     '자녀가 KidGate VPN 연결을 한 번 승인해야 합니다. 필터가 작동하려면 VPN을 켜 두세요.',
   toggleHintMacos:
@@ -29,11 +30,12 @@ export const webFilter = {
   safeSearchStrictNote:
     'YouTube가 가장 엄격한 수준으로 작동합니다. 댓글이 숨겨지고 일반 동영상도 일부 차단됩니다. 아이가 자기 계정에서 끌 수 없습니다.',
   infoTitle: '작동 방식',
-  infoLine1Ios: 'Apple이 성인 웹사이트를 자동으로 필터링합니다.',
+  infoLine1Ios:
+    'KidGate는 기기에서 비공개 연결을 실행해 어떤 사이트에 접속하려는지 확인하고, 선택한 카테고리에 해당하는 사이트를 차단합니다.',
   infoLine2Ios:
-    'Safari에서 Apple 성인 콘텐츠 필터를 사용하며, 다른 앱 내부의 모든 것을 차단하지는 않습니다.',
+    'Apple 성인 콘텐츠 필터도 이중 보호를 위해 Safari와 앱 내 브라우저에서 계속 켜져 있습니다.',
   infoLine3Ios:
-    '자녀 기기의 앱이 제어를 동기화하면 KidGate가 설정을 자동으로 적용합니다.',
+    '필터링 중에는 VPN 아이콘이 표시됩니다. 설정에서 VPN을 꺼도 몇 초 안에 다시 켜지며, VPN을 삭제하면 KidGate에서 다시 허용할 때까지 필터가 중단됩니다.',
   infoLine1Android:
     'KidGate는 기기에서 비공개 연결을 실행해 어떤 사이트에 접속하려는지 확인하고, 선택한 카테고리에 해당하는 사이트를 차단합니다.',
   infoLine2Android:
@@ -58,7 +60,7 @@ export const webFilter = {
   vpnConsentBannerBody:
     'KidGate VPN이 꺼져 있어요. 성인 웹 필터는 VPN 연결이 유지되어야 해요.',
   vpnConsentBannerButton: 'VPN 켜기',
-  iosOnlyNote: 'iOS에서는 스크린 타임 사용',
+  iosOnlyNote: 'iPhone에서는 비공개 연결과 스크린 타임 사용',
   androidVpnNote: 'Android에서는 로컬 DNS VPN 사용',
   macosFilterNote: 'Mac에서는 KidGate 콘텐츠 필터 사용',
 
@@ -216,4 +218,6 @@ export const webFilter = {
   privateDnsStep3: '비공개 DNS를 열고 사용 안 함을 선택하세요.',
   vpnConsentStepAllow:
     'Android VPN 요청에서 확인을 선택하세요. 필터가 켜져 있는 동안 상태 표시줄에 열쇠 아이콘이 남아요.',
+  vpnConsentStepAllowIos:
+    'iOS에서 VPN 구성 추가 요청이 뜨면 허용을 선택한 다음 기기 암호를 입력하세요. 필터가 실행되는 동안 VPN 아이콘이 표시돼요.',
 } as const;

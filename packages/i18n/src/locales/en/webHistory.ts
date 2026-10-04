@@ -3,14 +3,10 @@ export const webHistory = {
   fallbackDeviceName: 'Child device',
   syncNote:
     'Web history can take up to about 15 minutes to reach this screen — longer if the device has no internet connection or was closed unexpectedly.',
-  syncNoteIos:
-    'On iPhone, web history arrives only after KidGate has run on the child device, so it can be hours behind if the app has not been opened.',
   syncNoteTv:
     'This television only checks in periodically, so web history can take up to an hour to reach this screen — longer with no internet connection.',
   summarySites: 'Sites seen',
   summaryBlocked: 'Sites blocked',
-  sourceNoteIos:
-    'On iPhone this comes from Apple’s Screen Time report — the sites your child spent time on, not every page they opened.',
   sourceNoteFilter:
     'This comes from the KidGate filter — the sites this device looked up, not every page that was opened.',
   backgroundNote:
@@ -21,8 +17,6 @@ export const webHistory = {
     'The Web Filter is off, so this device is not recording or blocking anything. Turn it on to see where it goes.',
   filterOffNoteMacos:
     'The Web Filter is off, so this Mac is not recording or blocking anything. Turn it on to see where it goes.',
-  filterOffNoteIos:
-    'The Web Filter is off, so nothing is being blocked. This list only shows where the phone went.',
   filterAll: 'All sites',
   filterBlocked: 'Blocked only',
   emptyTitle: 'Nothing recorded yet',
@@ -54,7 +48,6 @@ export const webHistory = {
   showMoreDays: 'Show {{count}} more days',
   showMoreDays_one: 'Show 1 more day',
   rollupTitle: 'Visits by kind of site',
-  rollupTitleMinutes: 'Time by kind of site',
   rollupShare: '{{percent}}%',
   rollupNote:
     'Lookups, not minutes — one long video is a handful, ten minutes of browsing is dozens.',
@@ -62,8 +55,6 @@ export const webHistory = {
     'Some kinds were worked out from the site name rather than matched to a known site, so a few may be off.',
   rollupNoteExtension:
     'Pages, not minutes — one long video counts once, ten minutes of browsing counts dozens.',
-  rollupNoteMinutes:
-    'Minutes, not visits — from Apple’s Screen Time report of the time spent on each site.',
   hoursTitle: 'When they browsed',
   hoursNote:
     'Page loads by hour, on this device’s clock. A tab left open all afternoon counts once.',
@@ -72,6 +63,4 @@ export const webHistory = {
     'Combined from {{count}} devices. Each records only what its own filter can see.',
   filterOffNoteChild:
     'Web filtering is off on every device, so new visits are not being recorded.',
-  filterOffNoteChildIos:
-    'The Web Filter is off on every device, so nothing is being blocked. Only iPhones and iPads still report sites, through Screen Time.',
 } as const;

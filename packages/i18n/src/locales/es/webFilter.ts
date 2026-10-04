@@ -10,12 +10,13 @@ export const webFilter = {
   toastUpdateFailed: 'No se pudo actualizar el Filtro web. Inténtalo de nuevo.',
   heroTitle: 'Filtrar sitios web inapropiados',
   heroSubtitleIos:
-    'Usa el filtro de contenido web de Tiempo de uso de Apple para limitar el contenido adulto en Safari y los navegadores dentro de las apps del dispositivo del niño.',
+    'Usa una conexión privada en el iPhone o iPad del niño para bloquear sitios inapropiados conocidos en navegadores y muchas apps, junto con el propio filtro de contenido adulto de Apple.',
   heroSubtitleAndroid:
     'Usa una VPN DNS local en el dispositivo Android del niño para bloquear dominios inapropiados conocidos en navegadores y muchas apps.',
   heroSubtitleMacos:
     'Ejecuta el filtro de contenido de KidGate en el Mac del niño para bloquear sitios inapropiados conocidos en navegadores y muchas apps.',
-  toggleHintIos: 'Requiere el permiso de Tiempo de uso en el dispositivo del niño.',
+  toggleHintIos:
+    'El niño debe permitir la VPN de KidGate una vez e introducir el código del dispositivo. Mantén la VPN instalada para que el filtro funcione.',
   toggleHintAndroid:
     'El niño debe aprobar la conexión VPN de KidGate una vez. Mantén la VPN activa para que el filtro funcione.',
   toggleHintMacos:
@@ -30,11 +31,12 @@ export const webFilter = {
   safeSearchStrictNote:
     'YouTube funciona en su nivel más estricto: los comentarios se ocultan y algunos vídeos normales también se bloquean. Un niño no puede desactivarlo desde su cuenta.',
   infoTitle: 'Cómo funciona',
-  infoLine1Ios: 'Apple filtra automáticamente los sitios para adultos.',
+  infoLine1Ios:
+    'KidGate mantiene una conexión privada en el dispositivo que comprueba qué sitios se consultan y bloquea los de tus categorías.',
   infoLine2Ios:
-    'Usa el filtro de contenido adulto de Apple en Safari y no bloquea todo dentro de otras apps.',
+    'El filtro de contenido adulto de Apple sigue activo en Safari y en los navegadores integrados en las apps como segunda capa de protección.',
   infoLine3Ios:
-    'KidGate aplica el ajuste automáticamente cuando la app del dispositivo del niño sincroniza los controles.',
+    'Aparece un icono de VPN mientras el filtro funciona. Si se desactiva la VPN en Ajustes, vuelve a activarse en unos segundos; si se elimina, el filtro se detiene hasta que se vuelva a permitir en KidGate.',
   infoLine1Android:
     'KidGate mantiene una conexión privada en el dispositivo que comprueba qué sitios se consultan y bloquea los de tus categorías.',
   infoLine2Android:
@@ -59,7 +61,7 @@ export const webFilter = {
   vpnConsentBannerBody:
     'La VPN de KidGate está desactivada. El filtrado de contenido adulto necesita que la VPN siga conectada.',
   vpnConsentBannerButton: 'Activar VPN',
-  iosOnlyNote: 'Usa Tiempo de uso en iOS',
+  iosOnlyNote: 'Usa una conexión privada y Tiempo de uso en iPhone',
   androidVpnNote: 'Usa una VPN DNS local en Android',
   macosFilterNote: 'Usa el filtro de contenido de KidGate en Mac',
 
@@ -218,4 +220,6 @@ export const webFilter = {
   privateDnsStep3: 'Abre DNS privado y elige Desactivado.',
   vpnConsentStepAllow:
     'Selecciona Aceptar en la solicitud de VPN de Android. Un icono de llave permanece en la barra de estado mientras el filtro funciona.',
+  vpnConsentStepAllowIos:
+    'Selecciona Permitir cuando iOS pida añadir configuraciones VPN y luego introduce el código del dispositivo. Aparece un icono de VPN mientras el filtro funciona.',
 } as const;

@@ -124,11 +124,14 @@ export interface DeviceCapabilities {
    * tearing down.
    *
    * **An Android phone publishes this field alone**, with no `webFilter` beside
-   * it (`@kidgate/core/domain/webFilterSupport.androidWebFilterBlocker`, since
+   * it (`@kidgate/core/domain/webFilterSupport.vpnWebFilterBlocker`, since
    * 2026-09-25): VPN consent not accepted is `awaitingApproval`, a VPN that is
    * down or bypassed by Private DNS is `configurationDisabled`. The phone's
    * filter is still assumed from its platform, so there it names a fault for
-   * the parent's summary without closing the Web Filter card.
+   * the parent's summary without closing the Web Filter card. **An iPhone**
+   * writes the same field from its tunnel's state and `webFilter: 'vpn'`
+   * beside it (2026-10-04) — the one probe field a phone publishes, because an
+   * iPhone without the tunnel is a genuinely smaller filter.
    */
   webFilterBlocker?: 'awaitingApproval' | 'configurationDisabled';
   schedule: boolean;

@@ -32,6 +32,7 @@ const LANDING = {
   weekOpen: false,
   reportChildId: null,
   supportOpen: false,
+  guide: null,
 };
 
 describe('navScreenSlug', () => {
@@ -70,6 +71,8 @@ describe('navScreenSlug', () => {
       deviceId: 'd1',
       openChildId: 'c1',
     };
+    expect(slug({ ...deep, guide: 'dailyLimit' })).toBe('family/guide_topic');
+    expect(slug({ ...deep, guide: '1' })).toBe('family/guide');
     expect(slug(deep)).toBe('family/support');
     expect(slug({ ...deep, supportOpen: false })).toBe('family/report');
     expect(slug({ ...deep, supportOpen: false, reportChildId: null })).toBe(
@@ -125,6 +128,9 @@ describe('navUrl', () => {
     { ...LANDING, section: 'report', weekOpen: true },
     { ...LANDING, section: 'report', reportChildId: 'child-2' },
     { ...LANDING, section: 'settings', supportOpen: true },
+    { ...LANDING, section: 'support', guide: '1' },
+    { ...LANDING, section: 'support', guide: 'dailyLimit' },
+    { ...LANDING, section: 'settings', supportOpen: true, guide: 'sos' },
   ])('round-trips %o', state => {
     const search = navSearch(state);
     expect(read(search)).toEqual(state);

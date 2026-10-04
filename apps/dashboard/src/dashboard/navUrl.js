@@ -20,6 +20,13 @@
  */
 
 /**
+ * `guide` is the user guide on the Support page: this for its list, a topic
+ * id for one topic. One parameter rather than two, because a topic is only
+ * ever open inside the guide.
+ */
+export const GUIDE_INDEX = '1';
+
+/**
  * Short keys: this is read aloud in an address bar, and the default of each is
  * absent rather than spelled out.
  */
@@ -39,6 +46,7 @@ export function navSearch(state) {
   if (state.weekOpen) params.set('week', '1');
   if (state.reportChildId) params.set('report', state.reportChildId);
   if (state.supportOpen) params.set('support', '1');
+  if (state.guide) params.set('guide', state.guide);
   const query = params.toString();
   return query ? `?${query}` : '';
 }
@@ -73,6 +81,9 @@ export function readNav(search, sectionIds, tabIds) {
     weekOpen: params.get('week') === '1',
     reportChildId: params.get('report'),
     supportOpen: params.get('support') === '1',
+    /* Not checked against the topic list: an unknown id renders the guide's
+       list, which is where a stale link should land anyway. */
+    guide: params.get('guide'),
   };
 }
 
@@ -104,6 +115,7 @@ export function readNav(search, sectionIds, tabIds) {
  */
 export function navScreenSlug(state) {
   const frame =
+    (state.guide && (state.guide === GUIDE_INDEX ? 'guide' : 'guide_topic')) ||
     (state.supportOpen && 'support') ||
     (state.reportChildId && 'report') ||
     (state.weekOpen && 'week') ||

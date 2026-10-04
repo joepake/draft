@@ -160,6 +160,8 @@
     "./domain/trustedContact": "./src/domain/trustedContact.ts",
     "./domain/updateNotesHtml": "./src/domain/updateNotesHtml.ts",
     "./domain/usageDuration": "./src/domain/usageDuration.ts",
+    "./domain/userGuide": "./src/domain/userGuide.ts",
+    "./domain/userGuideSearch": "./src/domain/userGuideSearch.ts",
     "./domain/usageReportGate": "./src/domain/usageReportGate.ts",
     "./domain/usageTimeline": "./src/domain/usageTimeline.ts",
     "./domain/webActivityWindow": "./src/domain/webActivityWindow.ts",

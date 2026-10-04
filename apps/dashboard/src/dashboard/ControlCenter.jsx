@@ -55,7 +55,7 @@ import { resolveControlCardStatus } from '@kidgate/core/domain/deviceControlStat
  * absent falls to Overview rather than doing nothing — a card that does not
  * respond is worse than one that lands a panel away.
  */
-const ACTION_TAB = {
+export const ACTION_TAB = {
   'daily-limit': 'screen',
   schedule: 'screen',
   'app-blocking': 'apps',

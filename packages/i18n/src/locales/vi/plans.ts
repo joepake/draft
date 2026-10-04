@@ -178,7 +178,7 @@ export const plans = {
   platformMac: 'Mac',
   platformMacDetail: 'Chỉ thiết bị của trẻ · macOS 12 trở lên',
   platformIosLimits:
-    'Không có Giới hạn ứng dụng và cảnh báo tin nhắn. Chặn nội dung web chỉ áp dụng cho trang web người lớn, còn ứng dụng bị chặn được chọn ngay trên iPhone.',
+    'Không có Giới hạn ứng dụng và cảnh báo tin nhắn, còn ứng dụng bị chặn được chọn ngay trên iPhone.',
   platformMacLimits: 'Không có cảnh báo tin nhắn, vị trí chỉ ở mức tương đối.',
   platformWindowsLimits: 'Không có cảnh báo tin nhắn, vị trí chỉ ở mức tương đối.',
   platformAndroidTvLimits:

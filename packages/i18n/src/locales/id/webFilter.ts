@@ -9,12 +9,13 @@ export const webFilter = {
   toastUpdateFailed: 'Tidak dapat memperbarui Filter web. Coba lagi.',
   heroTitle: 'Filter situs web tidak pantas',
   heroSubtitleIos:
-    'Menggunakan filter konten web Waktu Layar Apple untuk membatasi konten dewasa di Safari dan browser dalam aplikasi di perangkat anak.',
+    'Menjalankan koneksi privat di iPhone atau iPad anak untuk memblokir situs tidak pantas yang dikenal di browser dan banyak aplikasi, bersama filter konten dewasa milik Apple sendiri.',
   heroSubtitleAndroid:
     'Menggunakan VPN DNS lokal di perangkat Android anak untuk memblokir domain tidak pantas yang dikenal di browser dan banyak aplikasi.',
   heroSubtitleMacos:
     'Menjalankan filter konten KidGate di Mac anak untuk memblokir situs tidak pantas yang dikenal di browser dan banyak aplikasi.',
-  toggleHintIos: 'Memerlukan izin Waktu Layar di perangkat anak.',
+  toggleHintIos:
+    'Anak perlu mengizinkan VPN KidGate sekali dan memasukkan kode sandi perangkat. Biarkan VPN tetap terpasang agar filter bekerja.',
   toggleHintAndroid:
     'Anak perlu menyetujui koneksi VPN KidGate sekali. Biarkan VPN aktif agar filter bekerja.',
   toggleHintMacos:
@@ -29,11 +30,12 @@ export const webFilter = {
   safeSearchStrictNote:
     'YouTube berjalan di level paling ketat: komentar disembunyikan dan sebagian video biasa ikut diblokir. Anak tidak bisa mematikannya dari akunnya sendiri.',
   infoTitle: 'Cara kerjanya',
-  infoLine1Ios: 'Apple memfilter situs dewasa secara otomatis.',
+  infoLine1Ios:
+    'KidGate menjalankan koneksi privat di perangkat yang memeriksa situs mana yang sedang dibuka, lalu memblokir situs yang masuk kategori pilihan Anda.',
   infoLine2Ios:
-    'Menggunakan filter konten dewasa Apple di Safari dan tidak memblokir semuanya di dalam aplikasi lain.',
+    'Filter konten dewasa Apple tetap aktif di Safari dan browser dalam aplikasi sebagai lapisan perlindungan kedua.',
   infoLine3Ios:
-    'KidGate menerapkan pengaturan secara otomatis saat aplikasi di perangkat anak menyinkronkan kontrol.',
+    'Ikon VPN muncul selama pemfilteran. Jika VPN dimatikan di Pengaturan, VPN akan aktif kembali dalam beberapa detik; jika dihapus, filter berhenti hingga diizinkan lagi di KidGate.',
   infoLine1Android:
     'KidGate menjalankan koneksi privat di perangkat yang memeriksa situs mana yang sedang dibuka, lalu memblokir situs yang masuk kategori pilihan Anda.',
   infoLine2Android:
@@ -58,7 +60,7 @@ export const webFilter = {
   vpnConsentBannerBody:
     'VPN KidGate mati. Filter web dewasa memerlukan VPN yang tetap terhubung.',
   vpnConsentBannerButton: 'Aktifkan VPN',
-  iosOnlyNote: 'Menggunakan Waktu Layar di iOS',
+  iosOnlyNote: 'Menggunakan koneksi privat dan Waktu Layar di iPhone',
   androidVpnNote: 'Menggunakan VPN DNS lokal di Android',
   macosFilterNote: 'Menggunakan filter konten KidGate di Mac',
 
@@ -219,4 +221,6 @@ export const webFilter = {
   privateDnsStep3: 'Buka DNS Pribadi dan pilih Nonaktif.',
   vpnConsentStepAllow:
     'Pilih OK pada permintaan VPN Android. Ikon kunci tetap di bilah status selama filter berjalan.',
+  vpnConsentStepAllowIos:
+    'Pilih Izinkan saat iOS meminta untuk menambahkan konfigurasi VPN, lalu masukkan kode sandi perangkat. Ikon VPN tetap muncul selama filter berjalan.',
 } as const;

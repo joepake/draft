@@ -1,0 +1,36 @@
+export const systemNotifications = {
+  channelAlerts: 'KidGate-Hinweise',
+  channelAlertsDesc: 'Check-in, Zeitanfragen und weitere Hinweise von KidGate',
+  channelSos: 'SOS-Alarme',
+  channelSosDesc: 'Dringende Alarme, wenn ein Kind ein SOS sendet',
+  channelWebFilterDesc: 'Wird angezeigt, während der Webfilter auf diesem Gerät läuft',
+  channelLocation: 'Standortfreigabe',
+  channelLocationDesc:
+    'Wird angezeigt, während KidGate den Standort dieses Geräts aktualisiert',
+  channelMonitor: 'KidGate-Schutz',
+  channelMonitorDesc:
+    'Wird angezeigt, während die KidGate-Regeln auf diesem Gerät aktiv sind',
+  channelRing: 'Ton abspielen',
+  channelRingDesc:
+    'Klingelt, wenn deine Eltern einen Ton abspielen, um dieses Gerät zu finden',
+  webFilterTitle: 'KidGate-Webfilter',
+  webFilterBody: 'Websites auf diesem Gerät werden gefiltert',
+  locationTitle: 'Standort wird aktualisiert',
+  locationBody: 'KidGate teilt den Standort dieses Geräts mit deinen Eltern.',
+  monitorTitleWeak: 'KidGate-Schutz ist eingeschränkt',
+  monitorTitleActive: 'KidGate-Schutz ist aktiv',
+  monitorTitleIdle: 'KidGate läuft',
+  monitorBodyAccessibility:
+    'Aktiviere KidGate in den Einstellungen unter „Bedienungshilfen“. Sonst lassen sich andere Apps weiterhin öffnen.',
+  monitorBodyDailyLimit: 'Tageslimit erreicht',
+  monitorBodySchedule: 'Sperrzeiten sind aktiv',
+  monitorBodyAppBlocking: 'Von deinen Eltern gewählte Apps werden blockiert',
+  monitorBodyReady: 'Bereit, die Regeln deiner Eltern anzuwenden',
+  sosTitle: 'SOS – Hilfe benötigt',
+  sosBody: 'Das Gerät eines Kindes hat ein SOS gesendet.',
+  checkInBody: 'Deine Eltern möchten wissen, ob es dir gut geht.',
+  checkInSafeTitle: 'Deinem Kind geht es gut',
+  checkInSafeBody: 'Dein Kind hat geantwortet, dass alles in Ordnung ist.',
+  timeRequestTitle: 'Mehr Zeit angefragt',
+  timeRequestBody: 'Dein Kind hat um mehr Bildschirmzeit gebeten.',
+} as const;

@@ -156,7 +156,7 @@ export default {
       'Đặt giới hạn riêng cho từng ứng dụng, áp dụng song song với Giới hạn hằng ngày — “nửa tiếng TikTok” mà không cần cấm hẳn. Có trên Android, Android TV và máy tính.',
     feature4Title: 'Lịch sử web & Chặn nội dung web',
     feature4Text:
-      'Chặn trang người lớn trên mọi thiết bị; trên Android, Android TV và máy tính còn chặn được cả cờ bạc, nội dung tự làm hại bản thân và các danh mục khác. Với Premium, bạn tự chọn danh mục cần chặn và xem được con đã vào những trang nào, trang nào đã bị chặn.',
+      'Chặn trang người lớn, cờ bạc, nội dung tự làm hại bản thân và các danh mục khác trên mọi thiết bị. Với Premium, bạn tự chọn danh mục cần chặn và xem được con đã vào những trang nào, trang nào đã bị chặn.',
     feature5Title: 'Vị trí trực tiếp & địa điểm',
     feature5Text:
       'Xem vị trí mới nhất của con, xem lại lịch sử, và được báo khi con đến hoặc rời một địa điểm đã lưu.',
@@ -270,7 +270,7 @@ export default {
     faqMore: 'Còn câu hỏi khác? Xem trang Hỗ trợ',
 
     ctaTitle: 'Bắt đầu bảo vệ gia đình bạn hôm nay',
-    ctaSub: 'Dùng thử miễn phí 7 ngày, đầy đủ tính năng. Không cần thẻ tín dụng.',
+    ctaSub: 'Dùng thử miễn phí 7 ngày, đầy đủ tính năng.',
     ctaNote: 'Hủy bất cứ lúc nào từ App Store hoặc Google Play.',
   },
 
@@ -628,7 +628,6 @@ export default {
       'Ẩn App Store — Apple không cho phép duyệt từng ứng dụng',
     colDomain: 'Tên miền',
     colVisits: 'Lượt vào',
-    colTime: 'Thời gian',
     colBlocked: 'Bị chặn',
     colLastSeen: 'Lần cuối',
     videosTitle: 'Video đã xem',
@@ -970,5 +969,32 @@ export default {
     contactEmail: 'Gửi email',
     contactSupport: 'Hỗ trợ và hướng dẫn',
     contactPrivacy: 'Cách chúng tôi xử lý dữ liệu',
+  },
+  promo: {
+    intro: 'Cả ngày của con, bạn đều yên tâm.',
+    school: 'Vào lớp, điện thoại tự khóa.',
+    apps: 'Con chỉ mở được những ứng dụng bạn cho phép.',
+    arrive: 'Con vừa tới nhà bà, bạn nhận tin ngay.',
+    checkIn: 'Bạn hỏi thăm, con báo bình an chỉ với một chạm.',
+    sos: 'Lỡ có chuyện gấp, con bấm SOS là bạn biết ngay con ở đâu.',
+    limit: 'Chơi đủ giờ rồi, máy tự khóa.',
+    lockNow: 'Đến bữa tối, bạn khóa máy con ngay từ điện thoại.',
+    web: 'Trang web người lớn bị chặn sẵn trên mọi thiết bị.',
+    tv: 'TV phòng khách cũng theo đúng luật nhà mình.',
+    reward: 'Làm xong bài tập, con được thưởng thêm 15 phút.',
+    bedtime: 'Đến giờ ngủ, điện thoại, máy tính và TV cũng đi ngủ.',
+    kid: 'Con',
+    parent: 'Ba mẹ',
+    arrivedNotice: 'An vừa đến Nhà bà',
+    checkAsk: 'Con ổn chứ?',
+    checkReply: 'Con ổn ạ',
+    sosNotice: 'An vừa gửi SOS',
+    timeUp: 'Hết giờ chơi hôm nay',
+    lockButton: 'Khóa ngay',
+    task: 'Làm xong bài tập',
+    granted: '+15 phút',
+    youtubeTitle: 'KidGate — Quản lý điện thoại, máy tính và TV của con',
+    youtubeDescription:
+      'Một ngày bình thường cùng KidGate, từ lúc vào lớp đến giờ đi ngủ.',
   },
 };

@@ -10,7 +10,7 @@ export const webFilter = {
   toastUpdateFailed: 'Unable to update the Web Filter. Try again.',
   heroTitle: 'Filter inappropriate websites',
   heroSubtitleIos:
-    'Uses Apple’s Screen Time content filter to limit adult content in Safari and in-app browsers on the child device.',
+    'Runs a private connection on the child iPhone or iPad to block known inappropriate sites in browsers and many apps, alongside Apple’s own adult-content filter.',
   heroSubtitleAndroid:
     'Runs a private connection on the child Android device to block known inappropriate sites in browsers and many apps.',
   heroSubtitleMacos:
@@ -19,7 +19,8 @@ export const webFilter = {
     'Runs KidGate’s own resolver on the child’s PC to block known inappropriate sites in every browser.',
   heroSubtitleExtension:
     'Runs the KidGate extension in Chrome on the child’s computer to block known inappropriate sites in that browser.',
-  toggleHintIos: 'Requires the Screen Time permission on the child device.',
+  toggleHintIos:
+    'The child must allow the KidGate VPN once and enter the device passcode. Keep it installed for filtering to work.',
   toggleHintAndroid:
     'The child must approve the KidGate VPN connection once. Keep the VPN on for filtering to work.',
   toggleHintMacos:
@@ -38,11 +39,12 @@ export const webFilter = {
   safeSearchStrictNote:
     'YouTube runs at its strictest level: comments are hidden and some ordinary videos are blocked too. A child cannot switch it off from their account.',
   infoTitle: 'How it works',
-  infoLine1Ios: 'Apple automatically filters adult websites.',
+  infoLine1Ios:
+    'KidGate runs a private connection on the device that checks which sites are being looked up, and blocks the ones on your categories.',
   infoLine2Ios:
-    'This uses Apple’s adult-content filter in Safari and does not block everything inside other apps.',
+    'Apple’s adult-content filter stays on in Safari and in-app browsers as a second layer.',
   infoLine3Ios:
-    'KidGate applies the setting automatically when the app on the child device syncs controls.',
+    'A VPN icon shows while filtering. Switching it off in Settings is undone within seconds; deleting it stops the filter until it is allowed again in KidGate.',
   infoLine1Android:
     'KidGate runs a private connection on the device that checks which sites are being looked up, and blocks the ones on your categories.',
   infoLine2Android:
@@ -83,7 +85,7 @@ export const webFilter = {
   vpnConsentBannerBody:
     'The KidGate VPN is off. Adult web filtering needs the VPN to stay connected.',
   vpnConsentBannerButton: 'Enable VPN',
-  iosOnlyNote: 'Uses Screen Time on iOS',
+  iosOnlyNote: 'Uses a private connection and Screen Time on iPhone',
   androidVpnNote: 'Uses a private connection on Android',
   macosFilterNote: 'Uses KidGate’s content filter on Mac',
   windowsFilterNote: 'Uses KidGate’s own resolver on Windows',
@@ -210,4 +212,6 @@ export const webFilter = {
   privateDnsStep3: 'Open Private DNS and choose Off.',
   vpnConsentStepAllow:
     'Select OK on Android’s VPN request. A key icon stays in the status bar while the filter runs.',
+  vpnConsentStepAllowIos:
+    'Select Allow when iOS asks to add VPN configurations, then enter the device passcode. A VPN icon shows while the filter runs.',
 } as const;

@@ -113,12 +113,14 @@ export const DEFAULT_WEB_FILTER_CATEGORIES: WebFilterCategory[] = [
 ];
 
 /**
- * Categories iOS can enforce.
+ * Categories an iPhone **without the KidGate tunnel** can enforce.
  *
  * ManagedSettings offers one web content control — Apple's own automatic
  * adult filter — plus an allow list. There is no per-category API and no
- * arbitrary deny list, so everything else is Android-only and the UI says so
- * rather than showing a toggle that does nothing.
+ * arbitrary deny list. An iPhone that publishes `capabilities.webFilter:
+ * 'vpn'` (the tunnel, 2026-10-04) enforces every category and both lists, and
+ * `supportsWebFilterCategories` opens them; this list is what an older build
+ * is honestly limited to.
  */
 export const IOS_SUPPORTED_WEB_FILTER_CATEGORIES: WebFilterCategory[] = ['adult'];
 

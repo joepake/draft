@@ -179,7 +179,7 @@ export const plans = {
   platformMac: 'Mac',
   platformMacDetail: 'جهاز طفل فقط · macOS 12 أو أحدث',
   platformIosLimits:
-    'لا تتوفر حدود التطبيقات ولا تنبيهات الرسائل. يغطي فلتر الويب مواقع البالغين فقط، وتُختار التطبيقات المحظورة على جهاز iPhone نفسه.',
+    'لا تتوفر حدود التطبيقات ولا تنبيهات الرسائل، وتُختار التطبيقات المحظورة على جهاز iPhone نفسه.',
   platformMacLimits: 'لا تتوفر تنبيهات الرسائل، والموقع تقريبي.',
   platformWindowsLimits: 'لا تتوفر تنبيهات الرسائل، والموقع تقريبي.',
   platformAndroidTvLimits:

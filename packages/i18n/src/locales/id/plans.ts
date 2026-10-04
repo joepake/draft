@@ -182,7 +182,7 @@ export const plans = {
   platformMac: 'Mac',
   platformMacDetail: 'Hanya perangkat anak · macOS 12 ke atas',
   platformIosLimits:
-    'Tidak ada Batas Aplikasi atau peringatan pesan. Filter web hanya mencakup situs dewasa, dan aplikasi yang diblokir dipilih di iPhone itu sendiri.',
+    'Tidak ada Batas Aplikasi atau peringatan pesan, dan aplikasi yang diblokir dipilih di iPhone itu sendiri.',
   platformMacLimits: 'Tidak ada peringatan pesan, dan lokasi bersifat perkiraan.',
   platformWindowsLimits: 'Tidak ada peringatan pesan, dan lokasi bersifat perkiraan.',
   platformAndroidTvLimits:

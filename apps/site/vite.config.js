@@ -18,6 +18,8 @@ export default defineConfig({
       title: 'KidGate — Parental control that respects your kid',
       description:
         "KidGate helps parents manage screen time, block apps, filter the web and stay in touch — without taking away a child's freedom.",
+      // The light palette's `background`; `src/main.jsx` paints light.
+      themeColor: '#EEF1F6',
     }),
   ],
   publicDir: SHARED_PUBLIC_DIR,

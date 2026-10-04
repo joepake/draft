@@ -145,4 +145,7 @@ export function applyTheme(
   root.dataset.kgStyle = style;
   // Native scrollbars, form controls and the text caret follow the page.
   root.style.colorScheme = dark ? 'dark' : 'light';
+  // The scheme, for the same reason as the pack: `index.css` has a few values
+  // tuned per palette that no token carries.
+  root.dataset.kgScheme = dark ? 'dark' : 'light';
 }

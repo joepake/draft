@@ -148,7 +148,7 @@ export default {
       'Cap each app on its own, on top of the daily limit — “half an hour of TikTok” without banning it outright. On Android, Android TV and computers.',
     feature4Title: 'Web Filter & history',
     feature4Text:
-      'Block adult sites on every device, and gambling, self-harm and other categories on Android, Android TV and computers. With Premium, choose the categories yourself and see which sites were looked up and which ones were stopped.',
+      'Block adult sites, gambling, self-harm and other categories on every device. With Premium, choose the categories yourself and see which sites were looked up and which ones were stopped.',
     feature5Title: 'Live location & places',
     feature5Text:
       'See your child’s latest location, review history, and get told when they arrive at or leave a saved place.',
@@ -261,7 +261,7 @@ export default {
     faqMore: 'More questions? Visit Support',
 
     ctaTitle: 'Start protecting your family today',
-    ctaSub: '7-day free trial with full access. No credit card needed to begin.',
+    ctaSub: '7-day free trial with full access.',
     ctaNote: 'Cancel anytime from the App Store or Google Play.',
   },
 
@@ -645,7 +645,6 @@ export default {
     rowInstallApprovalDescIos: 'Hides the App Store — Apple allows no per-app approval',
     colDomain: 'Domain',
     colVisits: 'Visits',
-    colTime: 'Time',
     colBlocked: 'Blocked',
     colLastSeen: 'Last seen',
     videosTitle: 'Videos watched',
@@ -1004,5 +1003,38 @@ export default {
     contactEmail: 'Email us',
     contactSupport: 'Support and guides',
     contactPrivacy: 'How we handle data',
+  },
+  /*
+   * The promo video (apps/videos). Every caption is a claim this pack already
+   * makes under `home` — docs/VIDEOS.md maps each to its source. The rest is text
+   * drawn inside the illustrations; the child's name is illustration, not a
+   * family. Nothing in apps/site or apps/dashboard reads this namespace.
+   */
+  promo: {
+    intro: 'Your child’s whole day. Your peace of mind.',
+    school: 'Class starts. The phone locks itself.',
+    apps: 'Only the apps you allow will open.',
+    arrive: 'They reach Grandma’s, and you know right away.',
+    checkIn: 'You check in. One tap tells you they’re safe.',
+    sos: 'If something’s wrong, one SOS shows you where they are.',
+    limit: 'Playtime’s up. The phone locks itself.',
+    lockNow: 'Dinner’s ready. Lock their phone from yours.',
+    web: 'Adult sites are blocked on every device.',
+    tv: 'The living-room TV follows the same house rules.',
+    reward: 'Homework done. 15 bonus minutes earned.',
+    bedtime: 'At bedtime, the phone, computer and TV go to sleep too.',
+    kid: 'Child',
+    parent: 'Parent',
+    arrivedNotice: 'Mia arrived at Grandma’s',
+    checkAsk: 'Are you OK?',
+    checkReply: 'I’m OK',
+    sosNotice: 'Mia sent an SOS',
+    timeUp: 'Playtime’s over for today',
+    lockButton: 'Lock now',
+    task: 'Homework done',
+    granted: '+15 min',
+    youtubeTitle: 'KidGate — Parental Control for Phone, Computer & TV',
+    youtubeDescription:
+      'One ordinary day with KidGate, from the school bell to bedtime.',
   },
 };

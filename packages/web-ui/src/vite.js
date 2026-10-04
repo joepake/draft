@@ -79,17 +79,40 @@ const link = attrs => ({ tag: 'link', attrs, injectTo: 'head' });
  * @param {string} options.description
  * @param {boolean} [options.noindex]  Keep the deployment out of search
  *   results. True for anything behind a sign-in.
+ * @param {string} [options.themeColor]  The browser chrome's colour. A literal,
+ *   because a Vite config cannot load the TypeScript tokens; keep it equal to
+ *   the `background` of the palette the app paints first.
  */
-export function kidgateHead({ origin, title, description, noindex = false }) {
+export function kidgateHead({
+  origin,
+  title,
+  description,
+  noindex = false,
+  themeColor = '#0b1226',
+}) {
   const url = `${origin}/`;
   const image = `${origin}/${OG_IMAGE_FILE}`;
 
   return {
     name: 'kidgate-head',
+    /*
+     * Not `<head>`, but this is the plugin every app rendering this package
+     * applies, so it is the one place an app cannot forget it.
+     *
+     * `RichText` renders `[label](/route)` as a `<Link>`, which only works under
+     * a router from the same copy. Imported from here and from the app, the
+     * router resolves to two paths — `react-router-dom` peers on `react`, this
+     * package is tested on React 19 and the apps run 18, so yarn cannot hoist
+     * one copy — and the `Link` reads a context nothing provides. Measured
+     * 2026-10-04: `kidgate.app/support` rendered blank in production, "Cannot
+     * destructure property 'basename'". `@vitejs/plugin-react` does the same
+     * for `react`, which is why only the router broke.
+     */
+    config: () => ({ resolve: { dedupe: ['react-router', 'react-router-dom'] } }),
     transformIndexHtml() {
       return {
         tags: [
-          meta({ name: 'theme-color', content: '#0b1226' }),
+          meta({ name: 'theme-color', content: themeColor }),
           link({ rel: 'icon', type: 'image/png', href: '/icon.png' }),
           link({ rel: 'apple-touch-icon', href: '/icon.png' }),
           link({ rel: 'mask-icon', href: '/icon.png', color: '#2d6a6a' }),

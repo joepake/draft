@@ -185,6 +185,9 @@ export const activities = {
 
   unknownDevice: 'Dispositivo sconosciuto',
 
+  tamperWebFilterTitle: 'Filtro web disattivato',
+  tamperWebFilterBody:
+    'La VPN di KidGate su questo telefono è stata spenta o sostituita da un’altra app VPN. Finché non viene riattivata, i siti non vengono filtrati né registrati.',
   tamperUninstallProtectionTitle: 'Protezione dalla disinstallazione disattivata',
   tamperUninstallProtectionBody: 'Ora KidGate può essere rimosso da questo telefono.',
   tamperReinstalledTitle: 'KidGate è stato reinstallato',

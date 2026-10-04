@@ -180,6 +180,9 @@ export const activities = {
 
   unknownDevice: 'Perangkat tidak dikenal',
 
+  tamperWebFilterTitle: 'Filter web dimatikan',
+  tamperWebFilterBody:
+    'VPN KidGate di ponsel ini dimatikan atau digantikan aplikasi VPN lain. Sampai VPN aktif kembali, situs tidak difilter atau dicatat.',
   tamperUninstallProtectionTitle: 'Perlindungan hapus instal dimatikan',
   tamperUninstallProtectionBody: 'KidGate kini bisa dihapus dari ponsel ini.',
   tamperReinstalledTitle: 'KidGate diinstal ulang',

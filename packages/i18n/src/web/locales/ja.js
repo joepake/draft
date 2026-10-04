@@ -135,7 +135,7 @@ export default {
       '1 日の上限とは別に、アプリごとに上限を設定できます。「TikTok は 30 分」と、禁止せずに決められます。Android、Android TV、パソコンで使えます。',
     feature4Title: 'Webフィルターと閲覧履歴',
     feature4Text:
-      'アダルトサイトはすべてのデバイスでブロックし、ギャンブルや自傷などのカテゴリーは Android、Android TV、パソコンでブロックします。Premium では、カテゴリーを自分で選び、アクセスしようとしたサイトと止められたサイトを確認できます。',
+      'アダルトサイト、ギャンブル、自傷などのカテゴリーをすべてのデバイスでブロックします。Premium では、カテゴリーを自分で選び、アクセスしようとしたサイトと止められたサイトを確認できます。',
     feature5Title: 'リアルタイムの位置情報と場所',
     feature5Text:
       '子どもの最新の位置を確認し、履歴を見返し、登録した場所への到着・出発を通知で受け取れます。',
@@ -249,8 +249,7 @@ export default {
     faqMore: 'ほかにも質問がありますか？ サポートへ',
 
     ctaTitle: '今日から家族を守りはじめましょう',
-    ctaSub:
-      'すべての機能を使える 7 日間の無料トライアル。開始にクレジットカードは不要です。',
+    ctaSub: 'すべての機能を使える 7 日間の無料トライアル。',
     ctaNote: 'App Store または Google Play からいつでも解約できます。',
   },
 
@@ -613,7 +612,6 @@ export default {
       'App Store を非表示にします。Apple はアプリごとの承認を認めていません',
     colDomain: 'ドメイン',
     colVisits: '訪問',
-    colTime: '時間',
     colBlocked: 'ブロック',
     colLastSeen: '最終',
     videosTitle: '視聴した動画',
@@ -951,5 +949,32 @@ export default {
     contactEmail: 'メールで問い合わせる',
     contactSupport: 'サポートとガイド',
     contactPrivacy: 'データの取り扱いについて',
+  },
+  promo: {
+    intro: 'お子さまの一日を、まるごと安心に。',
+    school: '授業が始まると、スマホは自動でロック。',
+    apps: '開けるのは、許可したアプリだけ。',
+    arrive: 'おばあちゃんの家に着いたら、すぐにお知らせ。',
+    checkIn: '様子をたずねると、ワンタップで「大丈夫」と返事が届きます。',
+    sos: 'もしものときは、SOS ですぐに居場所がわかります。',
+    limit: '遊ぶ時間はおしまい。スマホは自動でロック。',
+    lockNow: 'ごはんの時間。あなたのスマホから、お子さまのスマホをロック。',
+    web: 'アダルトサイトは、すべてのデバイスでブロック。',
+    tv: 'リビングのテレビも、家族のルールを守ります。',
+    reward: '宿題が終わったら、ボーナス 15 分。',
+    bedtime: '寝る時間には、スマホもパソコンもテレビもおやすみ。',
+    kid: 'お子さま',
+    parent: '保護者',
+    arrivedNotice: 'ゆいがおばあちゃんの家に着きました',
+    checkAsk: '大丈夫？',
+    checkReply: '大丈夫だよ',
+    sosNotice: 'ゆいが SOS を送信しました',
+    timeUp: '今日の遊ぶ時間はおしまい',
+    lockButton: '今すぐロック',
+    task: '宿題おわり',
+    granted: '+15 分',
+    youtubeTitle: 'KidGate — スマホ・パソコン・テレビのペアレンタルコントロール',
+    youtubeDescription:
+      'KidGate と過ごす、いつもの一日。学校のチャイムから寝る時間まで。',
   },
 };

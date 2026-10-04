@@ -155,6 +155,9 @@ export const activities = {
   openFullSosHistory: 'Открыть полную историю SOS',
   openActivityDetails: 'Посмотреть подробности',
   unknownDevice: 'Неизвестное устройство',
+  tamperWebFilterTitle: 'Веб-фильтр выключен',
+  tamperWebFilterBody:
+    'VPN KidGate на этом телефоне выключили или заменили другим VPN-приложением. Пока он снова не включится, сайты не фильтруются и не записываются.',
   tamperUninstallProtectionTitle: 'Защита от удаления выключена',
   tamperUninstallProtectionBody: 'Теперь KidGate можно удалить с этого телефона.',
   tamperReinstalledTitle: 'KidGate переустановлен',

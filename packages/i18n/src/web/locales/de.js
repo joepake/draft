@@ -135,7 +135,7 @@ export default {
       'Begrenze jede App einzeln, zusätzlich zum Tageslimit — „eine halbe Stunde TikTok“, ohne es ganz zu verbieten. Auf Android, Android TV und Computern.',
     feature4Title: 'Webfilter & Verlauf',
     feature4Text:
-      'Blockiere Seiten für Erwachsene auf jedem Gerät, dazu Glücksspiel, Selbstverletzung und weitere Kategorien auf Android, Android TV und Computern. Mit Premium wählst du die Kategorien selbst aus und siehst, welche Seiten aufgerufen und welche gestoppt wurden.',
+      'Blockiere Seiten für Erwachsene, Glücksspiel, Selbstverletzung und weitere Kategorien auf jedem Gerät. Mit Premium wählst du die Kategorien selbst aus und siehst, welche Seiten aufgerufen und welche gestoppt wurden.',
     feature5Title: 'Live-Standort & Orte',
     feature5Text:
       'Sieh den letzten Standort deines Kindes, prüfe den Verlauf und lass dich benachrichtigen, wenn es an einem gespeicherten Ort ankommt oder ihn verlässt.',
@@ -250,8 +250,7 @@ export default {
     faqMore: 'Noch Fragen? Zum Support',
 
     ctaTitle: 'Schütze deine Familie ab heute',
-    ctaSub:
-      '7 Tage kostenlose Testphase mit vollem Zugriff. Zum Start keine Kreditkarte nötig.',
+    ctaSub: '7 Tage kostenlose Testphase mit vollem Zugriff.',
     ctaNote: 'Jederzeit im App Store oder bei Google Play kündbar.',
   },
 
@@ -622,7 +621,6 @@ export default {
       'Blendet den App Store aus — Apple erlaubt keine Genehmigung pro App',
     colDomain: 'Domain',
     colVisits: 'Besuche',
-    colTime: 'Dauer',
     colBlocked: 'Blockiert',
     colLastSeen: 'Zuletzt gesehen',
     videosTitle: 'Angesehene Videos',
@@ -973,5 +971,32 @@ export default {
     contactEmail: 'Schreib uns',
     contactSupport: 'Support und Anleitungen',
     contactPrivacy: 'Wie wir mit Daten umgehen',
+  },
+  promo: {
+    intro: 'Den ganzen Tag über: dein Kind geschützt, du entspannt.',
+    school: 'Der Unterricht beginnt. Das Handy sperrt sich selbst.',
+    apps: 'Nur die Apps, die du erlaubst, lassen sich öffnen.',
+    arrive: 'Bei Oma angekommen — und du weißt es sofort.',
+    checkIn: 'Du fragst nach, und mit einem Tipp meldet dein Kind: alles in Ordnung.',
+    sos: 'Wenn etwas passiert, zeigt dir ein SOS sofort, wo dein Kind ist.',
+    limit: 'Spielzeit vorbei. Das Handy sperrt sich selbst.',
+    lockNow: 'Essen ist fertig. Sperre das Handy deines Kindes von deinem aus.',
+    web: 'Seiten für Erwachsene sind auf jedem Gerät blockiert.',
+    tv: 'Auch der Fernseher im Wohnzimmer hält sich an eure Familienregeln.',
+    reward: 'Hausaufgaben erledigt. 15 Bonusminuten verdient.',
+    bedtime: 'Zur Schlafenszeit gehen auch Handy, Computer und Fernseher schlafen.',
+    kid: 'Kind',
+    parent: 'Eltern',
+    arrivedNotice: 'Mia ist bei Oma angekommen',
+    checkAsk: 'Alles okay?',
+    checkReply: 'Alles gut!',
+    sosNotice: 'Mia hat ein SOS gesendet',
+    timeUp: 'Die Spielzeit für heute ist vorbei',
+    lockButton: 'Jetzt sperren',
+    task: 'Hausaufgaben erledigt',
+    granted: '+15 Min.',
+    youtubeTitle: 'KidGate — Kindersicherung für Handy, Computer und Fernseher',
+    youtubeDescription:
+      'Ein ganz normaler Tag mit KidGate, vom Schulbeginn bis zur Schlafenszeit.',
   },
 };

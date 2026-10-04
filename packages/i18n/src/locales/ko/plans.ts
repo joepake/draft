@@ -179,7 +179,7 @@ export const plans = {
   platformMac: 'Mac',
   platformMacDetail: '자녀 기기 전용 · macOS 12 이상',
   platformIosLimits:
-    '앱 시간 제한과 메시지 알림은 제공되지 않습니다. 웹 필터는 성인 사이트만 차단하며, 차단할 앱은 iPhone에서 직접 선택합니다.',
+    '앱 시간 제한과 메시지 알림은 제공되지 않습니다. 차단할 앱은 iPhone에서 직접 선택합니다.',
   platformMacLimits: '메시지 알림이 없고, 위치는 대략적입니다.',
   platformWindowsLimits: '메시지 알림이 없고, 위치는 대략적입니다.',
   platformAndroidTvLimits:

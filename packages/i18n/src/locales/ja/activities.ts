@@ -177,6 +177,9 @@ export const activities = {
 
   unknownDevice: '不明なデバイス',
 
+  tamperWebFilterTitle: 'Webフィルターがオフになりました',
+  tamperWebFilterBody:
+    'このデバイスのKidGateのVPNがオフにされたか、別のVPNアプリに置き換えられました。再びオンになるまで、サイトはフィルタリングも記録もされません。',
   tamperUninstallProtectionTitle: 'アンインストール防止がオフになりました',
   tamperUninstallProtectionBody: 'このデバイスからKidGateを削除できる状態です。',
   tamperReinstalledTitle: 'KidGateが再インストールされました',

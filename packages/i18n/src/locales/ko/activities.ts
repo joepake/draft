@@ -179,6 +179,9 @@ export const activities = {
 
   unknownDevice: '알 수 없는 기기',
 
+  tamperWebFilterTitle: '웹 필터가 꺼졌습니다',
+  tamperWebFilterBody:
+    '이 휴대폰의 KidGate VPN이 꺼졌거나 다른 VPN 앱으로 대체되었습니다. 다시 켜질 때까지 사이트가 필터링되거나 기록되지 않습니다.',
   tamperUninstallProtectionTitle: '삭제 방지가 꺼졌습니다',
   tamperUninstallProtectionBody: '이제 이 휴대폰에서 KidGate를 삭제할 수 있습니다.',
   tamperReinstalledTitle: 'KidGate가 다시 설치되었습니다',

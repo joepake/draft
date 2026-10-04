@@ -9,12 +9,13 @@ export const webFilter = {
   toastUpdateFailed: 'Webフィルターを更新できませんでした。もう一度お試しください。',
   heroTitle: '不適切なサイトをフィルタリング',
   heroSubtitleIos:
-    'Appleスクリーンタイムのウェブコンテンツフィルターを使って、お子さまのデバイスのSafariやアプリ内ブラウザでアダルトコンテンツを制限します。',
+    'Appleスクリーンタイムのウェブコンテンツフィルターに加えて、お子さまのiPhoneやiPadでプライベート接続を使い、既知の不適切なサイトをブラウザや多くのアプリでブロックします。',
   heroSubtitleAndroid:
     'お子さまのAndroidデバイスでローカルDNS VPNを使い、既知の不適切なドメインをブラウザや多くのアプリでブロックします。',
   heroSubtitleMacos:
     '子どものMacでKidGateのコンテンツフィルターを実行し、ブラウザや多くのアプリで既知の不適切なサイトをブロックします。',
-  toggleHintIos: 'お子さまのデバイスでスクリーンタイムの権限が必要です。',
+  toggleHintIos:
+    'お子さまが一度KidGateのVPN接続を許可し、デバイスのパスコードを入力する必要があります。フィルターの動作にはVPNを削除せずに残してください。',
   toggleHintAndroid:
     'お子さまが一度KidGateのVPN接続を承認する必要があります。フィルターの動作にはVPNをオンのままにしてください。',
   toggleHintMacos:
@@ -29,11 +30,12 @@ export const webFilter = {
   safeSearchStrictNote:
     'YouTube は最も厳しいレベルで動作します。コメントは非表示になり、ふつうの動画も一部ブロックされます。子どもが自分のアカウントで解除することはできません。',
   infoTitle: '仕組み',
-  infoLine1Ios: 'Appleがアダルトサイトを自動でフィルタリングします。',
+  infoLine1Ios:
+    'KidGateはデバイス上でプライベート接続を動かし、どのサイトが参照されているかを確認して、選んだカテゴリーに該当するサイトをブロックします。',
   infoLine2Ios:
-    'SafariでAppleのアダルトコンテンツフィルターを使用します。他のアプリ内のすべてをブロックできるわけではありません。',
+    'Appleのアダルトコンテンツフィルターも、二重の保護としてSafariとアプリ内ブラウザで引き続き有効です。',
   infoLine3Ios:
-    'お子さまのデバイスのアプリが設定を同期すると、KidGateが自動で適用します。',
+    'フィルタリング中はVPNアイコンが表示されます。設定でVPNをオフにしても、数秒で自動的にオンに戻ります。VPNを削除すると、KidGateで再び許可されるまでフィルターは止まります。',
   infoLine1Android:
     'KidGateはデバイス上でプライベート接続を動かし、どのサイトが参照されているかを確認して、選んだカテゴリーに該当するサイトをブロックします。',
   infoLine2Android:
@@ -58,7 +60,7 @@ export const webFilter = {
   vpnConsentBannerBody:
     'KidGateのVPNがオフです。アダルトフィルターにはVPNの接続維持が必要です。',
   vpnConsentBannerButton: 'VPNを有効にする',
-  iosOnlyNote: 'iOSではスクリーンタイムを使用',
+  iosOnlyNote: 'iPhoneではプライベート接続とスクリーンタイムを使用',
   androidVpnNote: 'AndroidではローカルDNS VPNを使用',
   macosFilterNote: 'MacではKidGateのコンテンツフィルターを使用',
 
@@ -219,4 +221,6 @@ export const webFilter = {
   privateDnsStep3: '「プライベートDNS」を開き、「オフ」を選びます。',
   vpnConsentStepAllow:
     'AndroidのVPN確認で「OK」を選びます。フィルターの動作中はステータスバーに鍵アイコンが表示されます。',
+  vpnConsentStepAllowIos:
+    'iOSでVPN構成の追加を求められたら「許可」を選び、デバイスのパスコードを入力します。フィルターの動作中はVPNアイコンが表示されます。',
 } as const;

@@ -1,0 +1,65 @@
+export const child = {
+  pageTitle: 'ステータス',
+  statusPaused: 'ロック中',
+  statusActive: '利用中',
+  readyTitle: '準備完了',
+  readyBody:
+    '利用時間がもっと必要なときは、上の欄から保護者にリクエストを送れます。緊急時はSOSボタンを使ってください。',
+  setupCollapsedTitle: '保護者と一緒に設定を完了',
+  setupCollapsedRequiredCount: '必須 {{count}}件',
+  setupCollapsedOptionalCount: '任意 {{count}}件',
+  oneMoment: '少々お待ちください…',
+  paused: 'ロック中',
+  blockedHours: '休止時間',
+  limitReached: '上限に達しました',
+  active: '利用中',
+  parentPausedThisDevice: '保護者がこのデバイスを一時的にロックしました。',
+  blockedHoursOnPaused: '今は休止時間です。休憩するのにいい時間です。',
+  outOfScreenTimeAskParent:
+    '今日の利用時間を使い切りました。下から追加をリクエストできます。',
+  screenTimeToday: '今日の利用時間',
+  usedOverLimitMinutes: '{{used}} / {{limit}}',
+  usedMinutesOnly: '{{used}}',
+  outOfScreenTimeToday:
+    '今日の利用時間を使い切りました。保護者に追加をお願いできます。',
+  devicePaused: 'デバイスロック中',
+  devicePausedByParent: '{{deviceName}}は現在ロックされています。',
+  phonePausedByParent: '保護者がこのデバイスを一時的にロックしました。',
+  pausedAskParentOrSos:
+    '必要なときは保護者にロック解除をお願いしてください。緊急時はSOSを送れます。',
+  blockedHoursLockTitle: '休止時間',
+  blockedHoursLockBody: '今は休止時間です。休憩するのにいい時間です。',
+  blockedHoursLockHint:
+    'いまこのデバイスが必要なときは、保護者に休止時間を変更してもらってください。緊急のときは、ロック中でもSOSを送れます。',
+  blockedHoursLockBodyUntil: '休止時間は{{time}}までです。休憩するのにいい時間です。',
+  dailyLimitLockHint:
+    'もっと時間が必要なときは、保護者にお願いしてください。緊急のときは、ロック中でもSOSを送れます。',
+  appClosedTitle: 'アプリを終了しました',
+  appClosedBody: 'ブロック中のアプリなので、KidGateが終了しました。',
+  parentPausedAccess: '保護者がこのデバイスを一時的にロックしました。',
+  parentRestoredAccess: '保護者がロックを解除しました。引き続き使えます。',
+  toastDailyLimitIncreased: '保護者が利用時間を{{minutes}}分追加しました。',
+  errorDeviceNotRegistered:
+    'このデバイスはまだ準備ができていません。少ししてからもう一度お試しください。何度も起きる場合は、もう一度ペアリングしてください。',
+  errorScreenTimeRequired:
+    'スクリーンタイムへのアクセスが必要です。KidGateに許可してから、もう一度お試しください。',
+  minUsed: '{{used}}使用',
+  setupContinueButton: '設定を続ける',
+  setupWizardTitle: '保護の設定',
+  setupWizardProgress: '{{done}}/{{total}} 完了',
+  setupWizardRequired: '必須',
+  setupWizardOptional: '任意',
+  setupWizardSkip: 'あとで',
+  setupWizardWatchGuide: 'やり方を見る',
+  setupGrantStuckHint:
+    'オンにしても変わらない場合は、テレビを再起動してからもう一度お試しください。',
+  setupWizardAllDoneTitle: '完了',
+  setupWizardAllDoneSubtitle: 'このデバイスは保護されています。',
+  setupWizardStepDone: '完了 — この設定はオンです。',
+  setupWizardCoreDoneTitle: '基本の保護がオンになりました',
+  setupWizardCoreDoneBody:
+    '必須の権限が許可され、このデバイスは保護されています。残りの手順は任意の追加設定で、今すぐでもあとででも行えます。',
+  setupWizardCoreDoneContinue: '今すぐ強化する',
+  setupWizardCoreDoneLater: 'あとで完了する',
+  setupWizardParentPinNote: '保護者PINが必要です。次の画面で保護者が入力します。',
+} as const;

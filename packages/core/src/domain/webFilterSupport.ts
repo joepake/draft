@@ -71,15 +71,24 @@ export function supportsWebFiltering(device: WebFilterSupportInput): boolean {
 /**
  * Whether this device can report the sites the child visited.
  *
- * Deliberately the same answer, not a second rule: history is a by-product of
- * whatever inspects the traffic. Android's VPN keeps the log it already builds
- * to block on, and a desktop content filter would be the thing that could keep
- * one — so a device with no filter has nothing to write a history from. iOS is
- * the one platform where the two come from different places (the
- * `DeviceActivityReport` extension names domains without any filter involved),
- * and it lands on `true` either way.
+ * Deliberately the filter's answer, not a second rule: history is a by-product
+ * of whatever inspects the traffic. Android's VPN keeps the log it already
+ * builds to block on, a desktop content filter likewise — so a device with no
+ * filter has nothing to write a history from.
+ *
+ * **An iPhone is the exception, and needs its probe.** Its Screen Time filter
+ * (`ManagedSettings`) records nothing, and the `DeviceActivityReport` route
+ * this used to trust can export nothing (`ios/KidGateReport`), so for months
+ * an iPhone was offered a Web History screen that could never fill. History
+ * comes from the KidGate tunnel alone (`ios/KidGateTunnel`), and a build that
+ * carries it says so with `capabilities.webFilter: 'vpn'`. Explicit platform
+ * only: a record with no platform at all predates the field and may be an
+ * Android phone.
  */
 export function supportsWebHistory(device: WebFilterSupportInput): boolean {
+  if (device.platform === 'ios') {
+    return device.capabilities?.webFilter === 'vpn';
+  }
   return supportsWebFiltering(device);
 }
 
@@ -112,8 +121,11 @@ export function webFilterBlockerKey(device: {
   }
 }
 
-/** What an Android phone's VPN filter reports about itself (`getWebFilterStatus`). */
-export interface AndroidWebFilterFacts {
+/**
+ * What a phone's VPN filter reports about itself (`getWebFilterStatus`) —
+ * Android's `VpnService`, an iPhone's packet tunnel.
+ */
+export interface VpnWebFilterFacts {
   /** The parent's policy has filtering on — nothing is owed while it is off. */
   enabled: boolean;
   vpnActive: boolean;
@@ -124,10 +136,14 @@ export interface AndroidWebFilterFacts {
 }
 
 /**
- * The `webFilterBlocker` an Android **phone** publishes, or `null` for none.
+ * The `webFilterBlocker` a **phone** publishes, or `null` for none.
  *
- * The phone publishes no capability probe — its filter is assumed from the
- * platform (`WEB_FILTER_FALLBACK_PLATFORMS`) — so until 2026-09-25 the one
+ * Both phones answer the same facts: an iPhone has no Private DNS to bypass
+ * with and always reports it off, and "consent" there is the VPN
+ * configuration iOS asks the child to allow.
+ *
+ * An Android phone publishes no capability probe — its filter is assumed from
+ * the platform (`WEB_FILTER_FALLBACK_PLATFORMS`) — so until 2026-09-25 the one
  * place that knew its filter was down was the child's own Home banner. The
  * parent's summary reads `webFilterBlocker` (`domain/protectionStatus`) and got
  * nothing, so a phone with the VPN consent never accepted, or with Private DNS
@@ -144,8 +160,8 @@ export interface AndroidWebFilterFacts {
  * `supportsWebFiltering` still answers from the platform, so the parent can
  * keep editing the policy the filter will apply once it is back.
  */
-export function androidWebFilterBlocker(
-  facts: AndroidWebFilterFacts,
+export function vpnWebFilterBlocker(
+  facts: VpnWebFilterFacts,
 ): NonNullable<DeviceCapabilities['webFilterBlocker']> | null {
   if (!facts.enabled) {
     return null;
@@ -199,9 +215,13 @@ export function androidWebFilterBlocker(
  * Safe-search is **not** part of what this opens, and must not be folded in:
  * `supportsSafeSearch` gates it separately and answers no for Windows, whose
  * resolver forwards rather than synthesising the A/AAAA answer that rewrite
- * needs. iOS is deliberately never a `true` here either: `Device.capabilities`
- * carries no probe for it, so nothing about its filter is a policy this
- * function could describe.
+ * needs.
+ *
+ * **An iPhone answers true only with its probe** (2026-10-04). The KidGate
+ * tunnel (`ios/KidGateTunnel`) is handed the same rules and judges them with
+ * the Mac's `PolicyEngine`; a build that carries it publishes
+ * `capabilities.webFilter: 'vpn'`. Without that, an iPhone has Apple's single
+ * adult filter and nothing this function could describe.
  */
 export function supportsWebFilterCategories(device: WebFilterSupportInput): boolean {
   if (!supportsWebFiltering(device)) {
@@ -212,6 +232,7 @@ export function supportsWebFilterCategories(device: WebFilterSupportInput): bool
     device.platform === 'androidtv' ||
     device.platform === 'macos' ||
     device.platform === 'windows' ||
-    device.platform === 'chromeos'
+    device.platform === 'chromeos' ||
+    (device.platform === 'ios' && device.capabilities?.webFilter === 'vpn')
   );
 }

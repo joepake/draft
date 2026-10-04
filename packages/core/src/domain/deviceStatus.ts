@@ -18,6 +18,7 @@ import type { Device } from '@kidgate/schema/device';
 import type { TranslationParams } from '@kidgate/i18n/types';
 import { supportsLock } from './controlSupport';
 import { resolveLockEnforcement } from './lockEnforcement';
+import { INACTIVE_THRESHOLD_MS } from './protectionStatus';
 import { offlineThresholdForBeat } from './reportCadence';
 import { REPORT_REQUEST_UNANSWERED_MS, reportRequestedAtMs } from './reportRequest';
 
@@ -94,7 +95,15 @@ export function getEffectiveDeviceStatus(
   if (awaitingAnswer && nowMs - requestedAtMs > REPORT_REQUEST_UNANSWERED_MS) {
     return 'offline';
   }
-  if (age > thresholdMs && !awaitingAnswer) {
+  /*
+   * **The doubt stops where the protection summary says "inactive".** The
+   * phone console re-asks every five minutes while the family screen is open,
+   * so each new request re-armed it: a Windows PC silent for days showed a
+   * green dot inside a red "1 offline over 24 hours" pill on the same card
+   * (2026-10-04). Past `INACTIVE_THRESHOLD_MS` the request is no evidence.
+   */
+  const doubted = awaitingAnswer && age <= INACTIVE_THRESHOLD_MS;
+  if (age > thresholdMs && !doubted) {
     return 'offline';
   }
 

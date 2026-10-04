@@ -6,7 +6,7 @@ import {
   webCategoryLabel,
 } from '../dashboard/labels.js';
 import { activityCopy, useActivityTranslate } from '../dashboard/activityCopy.js';
-import { navScreenSlug, navSearch, readNav } from '../dashboard/navUrl.js';
+import { GUIDE_INDEX, navScreenSlug, navSearch, readNav } from '../dashboard/navUrl.js';
 import { trackScreen } from '../lib/analytics.js';
 import { getPlanState, getTrialEndsAt } from '../lib/trial.js';
 import StepUpSheet from '../auth/StepUpSheet.jsx';
@@ -41,6 +41,7 @@ import { deviceIconName } from '../dashboard/deviceIcon.js';
 import { childMinutesUsedToday } from '../dashboard/childBudgetSpent.js';
 import { useReaderToday, useTodayKey, zonesOf } from '../dashboard/useTodayKey.js';
 import { readDeviceBattery } from '@kidgate/core/domain/battery';
+import { supportsWebFilterCategories } from '@kidgate/core/domain/webFilterSupport';
 import { isAndroidLike, isDesktopLike } from '@kidgate/core/domain/platformFamily';
 import { isKidGateOwnApp } from '@kidgate/core/domain/ownApp';
 import LocationMap from '../dashboard/LocationMap.jsx';
@@ -115,9 +116,10 @@ import ReportPanel from '../dashboard/ReportPanel.jsx';
 import ChildInitial from '../dashboard/ChildInitial.jsx';
 import DeviceDot, { STATUS_KEY, STATUS_TONE } from '../dashboard/DeviceDot.jsx';
 import ChildHub from '../dashboard/ChildHub.jsx';
-import ControlCenter from '../dashboard/ControlCenter.jsx';
+import ControlCenter, { ACTION_TAB } from '../dashboard/ControlCenter.jsx';
 import DeviceChildRow from '../dashboard/DeviceChildRow.jsx';
 import PauseBrowsingSheet from '../dashboard/PauseBrowsingSheet.jsx';
+import SearchSheet from '../dashboard/SearchSheet.jsx';
 import ReportHub from '../dashboard/ReportHub.jsx';
 import ChildReport from '../dashboard/ChildReport.jsx';
 import FamilySummaryRow, {
@@ -128,6 +130,7 @@ import FamilySummaryRow, {
 import FamilySettingsCard from '../dashboard/FamilySettingsCard.jsx';
 import NotificationPrefsCard from '../dashboard/NotificationPrefsCard.jsx';
 import SupportCard from '../dashboard/SupportCard.jsx';
+import UserGuide from '../dashboard/UserGuide.jsx';
 import AccountCard from '../dashboard/AccountCard.jsx';
 import ActivityFeed from '../dashboard/ActivityFeed.jsx';
 import NoDevicePanel from '../dashboard/NoDevicePanel.jsx';
@@ -906,6 +909,20 @@ export default function Dashboard({
   const [supportOpen, setSupportOpen] = useState(boot.supportOpen);
   /* What the support form opens with when a held family appeals. */
   const [supportDraft, setSupportDraft] = useState('');
+  /**
+   * The user guide, one frame deeper than Support: null, `GUIDE_INDEX` for its
+   * list, or a topic id. The phone keeps it beside Requests & reports under
+   * Settings → Help; here it opens from the Support page, wherever that is.
+   */
+  const [guide, setGuide] = useState(boot.guide);
+  /*
+   * Support's one mount — the rail item, or the Settings row on a bottom bar.
+   * The guide exists only there: `navState` writes it only while this holds,
+   * so leaving Support drops it from the URL, and the read-back clears it.
+   */
+  const supportPlace =
+    section === SUPPORT_SECTION.id || (section === 'settings' && supportOpen);
+  const guideShown = supportPlace ? guide : null;
 
   /*
    * A resize across the breakpoint keeps the parent on the page they were
@@ -1186,6 +1203,7 @@ export default function Dashboard({
      keeps in step — with its first line written. */
   const appealHold = message => {
     setSupportDraft(message);
+    setGuide(null);
     if (compact) {
       setSection('settings');
       setSupportOpen(true);
@@ -1209,6 +1227,26 @@ export default function Dashboard({
   /* Which length to pause the open device's browsing for. Not in the URL: it is
      what a press did, not where the parent landed (`dashboard/navUrl.js`). */
   const [pauseSheetOpen, setPauseSheetOpen] = useState(false);
+  /*
+   * The header search (`SearchSheet`) — what a press did, not where the parent
+   * is, so it is state and never in the URL, like every other sheet here.
+   * Ctrl/⌘ K opens it from anywhere, the shortcut a browser user already
+   * expects of a search box; it is claimed only for that chord.
+   */
+  const [searchOpen, setSearchOpen] = useState(false);
+  /* Where a guide topic opened from the search should land — a fresh object
+     each time, read once by `UserGuide`. */
+  const [guideLanding, setGuideLanding] = useState(null);
+  useEffect(() => {
+    const onKey = event => {
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
+        event.preventDefault();
+        setSearchOpen(true);
+      }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, []);
   /*
    * Minutes left on a running pause, set only while the sheet is asking
    * whether to end it. Null is the sheet's other question — how long to pause
@@ -1371,6 +1409,7 @@ export default function Dashboard({
     weekOpen,
     reportChildId,
     supportOpen,
+    guide: guideShown,
     tab,
   };
   const search = navSearch(navState);
@@ -1442,6 +1481,7 @@ export default function Dashboard({
     setWeekOpen(next.weekOpen);
     setReportChildId(next.reportChildId);
     setSupportOpen(next.supportOpen);
+    setGuide(next.guide);
   }, [location.search]);
 
   const device = devices.find(d => d.id === deviceId) ?? null;
@@ -1525,6 +1565,18 @@ export default function Dashboard({
     if (familyOpen) {
       return { label: activityT('nav.family'), go: () => setFamilyOpen(false) };
     }
+    /* A topic pops to the guide's list, the list to Support. */
+    if (guideShown) {
+      return guideShown === GUIDE_INDEX
+        ? {
+            label: activityT(SUPPORT_SECTION.labelKey),
+            go: () => setGuide(null),
+          }
+        : {
+            label: activityT('settings.userGuideTitle'),
+            go: () => setGuide(GUIDE_INDEX),
+          };
+    }
     /* Compact only: on a rail this is its own menu item, and a Back out of a
        top-level section would be a step to nowhere. */
     if (section === 'settings' && supportOpen) {
@@ -1568,6 +1620,7 @@ export default function Dashboard({
     latestReport,
     reportChildView,
     supportOpen,
+    guideShown,
   ]);
 
   /**
@@ -2552,16 +2605,20 @@ export default function Dashboard({
       ? childLocationOpen
         ? t('dash.locationTitle')
         : childView.name
-      : /* Compact only: the page is inside Settings, and the section's own
-           label would head it "Settings" while the Back button beside it also
-           said Settings. */
-        supportOpen
-        ? activityT(SUPPORT_SECTION.labelKey)
-        : section === 'family'
-          ? family.name
-          : activityT(
-              SECTIONS.find(item => item.id === section)?.labelKey ?? 'nav.family',
-            );
+      : /* The guide's list and every topic share one heading; a topic names
+           itself in its first card, from a pack this page has not loaded. */
+        guideShown
+        ? activityT('settings.userGuideTitle')
+        : /* Compact only: the page is inside Settings, and the section's own
+             label would head it "Settings" while the Back button beside it
+             also said Settings. */
+          supportOpen
+          ? activityT(SUPPORT_SECTION.labelKey)
+          : section === 'family'
+            ? family.name
+            : activityT(
+                SECTIONS.find(item => item.id === section)?.labelKey ?? 'nav.family',
+              );
 
   /*
    * The tab says where you are. A parent reads this console beside the thing
@@ -2686,6 +2743,9 @@ export default function Dashboard({
                 if (section === item.id && item.id === 'settings') {
                   setSupportOpen(false);
                 }
+                if (section === item.id && item.id === SUPPORT_SECTION.id) {
+                  setGuide(null);
+                }
                 setSection(item.id);
               }}
               aria-current={section === item.id ? 'page' : undefined}
@@ -2800,6 +2860,16 @@ export default function Dashboard({
               instead, and a sentence pointing at the phone, which is the
               console that watches.
             */}
+            {/* On every page, because what it finds is on every page. */}
+            <button
+              className="btn btn-sm"
+              onClick={() => setSearchOpen(true)}
+              aria-label={activityT('family.searchTitle')}
+              aria-keyshortcuts="Control+K Meta+K"
+              title={activityT('family.searchTitle')}
+            >
+              <Icon name="search" size={14} />
+            </button>
             {onRefresh && (
               <span className="refresh-row">
                 <span className="refresh-meta">
@@ -3093,6 +3163,93 @@ export default function Dashboard({
             busy={busy === 'monitored'}
             onChoose={chooseMonitored}
             onDismiss={() => setMonitoredSheetOpen(false)}
+          />
+        )}
+
+        {/*
+          The header search. Each landing is the setters a press elsewhere on
+          this page already uses for that place, so a result lands exactly
+          where the row's own door would: a child on their hub, a device on
+          Overview, a card the way the grid opens it (its panel, scrolled to
+          and ringed, its title over the page), Pause on the device's grid
+          where the card answers in place, a guide topic on the step that
+          matched.
+        */}
+        {searchOpen && (
+          <SearchSheet
+            appT={activityT}
+            familyChildren={children}
+            devices={devices}
+            onClose={() => setSearchOpen(false)}
+            open={{
+              child: childId => {
+                setSearchOpen(false);
+                setSection('family');
+                setFamilyOpen(false);
+                setDeviceOpen(false);
+                setChildLocationOpen(false);
+                setOpenChildId(childId);
+                window.scrollTo({ top: 0, behavior: 'auto' });
+              },
+              device: target => {
+                setSearchOpen(false);
+                setSection('family');
+                setFamilyOpen(false);
+                setChildLocationOpen(false);
+                /* Back from the device lands on its child's hub, as it does
+                   for a device opened from that hub — never on a child left
+                   open from an earlier visit. */
+                setOpenChildId(target.childId ?? null);
+                setDeviceId(target.id);
+                setDeviceOpen(true);
+                goTab('overview');
+              },
+              card: (target, action) => {
+                setSearchOpen(false);
+                setSection('family');
+                setFamilyOpen(false);
+                setChildLocationOpen(false);
+                setOpenChildId(target.childId ?? null);
+                setDeviceId(target.id);
+                setDeviceOpen(true);
+                if (action.id === 'pause-browsing') {
+                  goTab('manage');
+                  return;
+                }
+                const next = ACTION_TAB[action.id] ?? 'overview';
+                setTab(next);
+                setFocusCard(action.id);
+                setOpenedAction({ ...action, tab: next, deviceId: target.id });
+              },
+              section: id => {
+                setSearchOpen(false);
+                if (id === SUPPORT_SECTION.id && compact) {
+                  setSection('settings');
+                  setSupportOpen(true);
+                } else {
+                  setSection(id);
+                  if (id === 'settings') setSupportOpen(false);
+                }
+                if (id === 'report') {
+                  setWeekOpen(false);
+                  setReportChildId(null);
+                }
+                setGuide(null);
+                window.scrollTo({ top: 0, behavior: 'auto' });
+              },
+              guide: (topicId, focus) => {
+                setSearchOpen(false);
+                if (compact) {
+                  setSection('settings');
+                  setSupportOpen(true);
+                } else {
+                  setSection(SUPPORT_SECTION.id);
+                }
+                setGuide(topicId ?? GUIDE_INDEX);
+                setGuideLanding({ focus });
+                window.scrollTo({ top: 0, behavior: 'auto' });
+              },
+            }}
           />
         )}
 
@@ -3572,17 +3729,41 @@ export default function Dashboard({
           second copy behind the second door would be two subscriptions to one
           collection and two forms filing into it.
         */}
-        {(section === SUPPORT_SECTION.id ||
-          (section === 'settings' && supportOpen)) && (
+        {supportPlace && (
           <section className="settings-home">
-            <SupportCard
-              accountId={accountId}
-              accountEmail={accountEmail}
-              familyId={familyId}
-              familyName={family.name}
-              appT={activityT}
-              initialMessage={supportDraft}
-            />
+            {guideShown ? (
+              <UserGuide
+                topicId={guideShown === GUIDE_INDEX ? null : guideShown}
+                onOpenTopic={setGuide}
+                landing={guideLanding}
+              />
+            ) : (
+              <>
+                {/* The phone's Settings → Help carries these two rows, the
+                    guide first; its row's words are the phone's own. */}
+                <button
+                  className="card settings-row guide-entry"
+                  onClick={() => setGuide(GUIDE_INDEX)}
+                >
+                  <span className="settings-row-icon">
+                    <Icon name="book" size={17} />
+                  </span>
+                  <span className="guide-row-copy">
+                    <strong>{activityT('settings.userGuideTitle')}</strong>
+                    <span>{activityT('settings.userGuideSubtitle')}</span>
+                  </span>
+                  <Icon name="chevronRight" size={15} />
+                </button>
+                <SupportCard
+                  accountId={accountId}
+                  accountEmail={accountEmail}
+                  familyId={familyId}
+                  familyName={family.name}
+                  appT={activityT}
+                  initialMessage={supportDraft}
+                />
+              </>
+            )}
           </section>
         )}
 
@@ -4308,18 +4489,10 @@ export default function Dashboard({
                       <thead>
                         <tr>
                           <th>{t('dash.colDomain')}</th>
-                          {/* On an iPhone `visits` is Screen Time MINUTES — the
-                              report extension names domains with the time
-                              spent on each (`childWebHistorySync.ts`) — so the
-                              column says a duration there, as the phone's
-                              history screen does (`countsMinutes`). */}
-                          <th className="num">
-                            {t(
-                              device.platform === 'ios'
-                                ? 'dash.colTime'
-                                : 'dash.colVisits',
-                            )}
-                          </th>
+                          {/* Visits on every surface — an iPhone's come from
+                              the KidGate tunnel since 2026-10-04, the same
+                              lookups Android's VPN counts. */}
+                          <th className="num">{t('dash.colVisits')}</th>
                           <th className="num">{t('dash.colBlocked')}</th>
                           <th>{t('dash.colLastSeen')}</th>
                         </tr>
@@ -4335,11 +4508,7 @@ export default function Dashboard({
                                 </span>
                               )}
                             </td>
-                            <td className="num">
-                              {device.platform === 'ios'
-                                ? formatMinutes(w.visits)
-                                : w.visits}
-                            </td>
+                            <td className="num">{w.visits}</td>
                             <td
                               className={`num${w.blockedVisits ? ' tone-critical' : ''}`}
                             >
@@ -4353,15 +4522,12 @@ export default function Dashboard({
                   </div>
                 )}
                 <p className="hint">
-                  {/* The phone's three cases, in the phone's own keys: a TV's
-                      alarm, an iPhone that uploads only while KidGate runs on
-                      it, and everything else inside about 15 minutes. */}
+                  {/* The phone's two cases, in the phone's own keys: a TV's
+                      alarm, and everything else inside about 15 minutes. */}
                   {activityT(
                     device.platform === 'androidtv'
                       ? 'webHistory.syncNoteTv'
-                      : device.platform === 'ios'
-                        ? 'webHistory.syncNoteIos'
-                        : 'webHistory.syncNote',
+                      : 'webHistory.syncNote',
                   )}
                 </p>
               </Card>
@@ -5020,9 +5186,12 @@ export default function Dashboard({
                       what a Mac's NetworkExtension provider is not — a Mac fell
                       into it only because this branch had nowhere else to put
                       anything that was not an iPhone. */}
+              {/* An iPhone with the KidGate tunnel runs the same DNS filter
+                      as Android; only one without it is Apple's adult control
+                      alone (`supportsWebFilterCategories`). */}
               <p className="hint">
                 {t(
-                  device.platform === 'ios'
+                  device.platform === 'ios' && !supportsWebFilterCategories(device)
                     ? 'dash.filterHintIos'
                     : device.platform === 'macos'
                       ? 'dash.filterHintMacos'
@@ -5034,7 +5203,7 @@ export default function Dashboard({
                       a day. One sentence for every platform, and it says what
                       devices do rather than what this card contains, which is
                       what keeps it true where the filter counts openings
-                      (the extension) or minutes (iOS) instead of lookups. */}
+                      (the extension) instead of lookups. */}
               <p className="hint">{t('dash.webBackgroundNote')}</p>
             </Card>
           </>

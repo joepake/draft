@@ -183,7 +183,7 @@ export const plans = {
   platformMac: 'Mac',
   platformMacDetail: 'Yalnızca çocuk cihazı · macOS 12 ve üzeri',
   platformIosLimits:
-    'Uygulama Sınırları ve mesaj uyarıları yok. Web filtresi yalnızca yetişkin sitelerini kapsar ve engellenen uygulamalar iPhone’un kendisinde seçilir.',
+    'Uygulama Sınırları ve mesaj uyarıları yok. Engellenen uygulamalar iPhone’un kendisinde seçilir.',
   platformMacLimits: 'Mesaj uyarıları yok, konum yaklaşıktır.',
   platformWindowsLimits: 'Mesaj uyarıları yok, konum yaklaşıktır.',
   platformAndroidTvLimits:

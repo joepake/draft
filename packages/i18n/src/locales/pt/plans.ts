@@ -184,7 +184,7 @@ export const plans = {
   platformMac: 'Mac',
   platformMacDetail: 'Somente dispositivo da criança · macOS 12 ou posterior',
   platformIosLimits:
-    'Sem Limites de apps nem avisos de mensagens. O filtro da web cobre apenas sites adultos, e os apps bloqueados são escolhidos no próprio iPhone.',
+    'Sem Limites de apps nem avisos de mensagens, e os apps bloqueados são escolhidos no próprio iPhone.',
   platformMacLimits: 'Sem avisos de mensagens, e a localização é aproximada.',
   platformWindowsLimits: 'Sem avisos de mensagens, e a localização é aproximada.',
   platformAndroidTvLimits:
