@@ -36,11 +36,11 @@ export const plans = {
   compareParentsFree: 'Tối đa 3',
   compareParentsPremium: 'Tối đa 6',
   compareSync: 'Cập nhật từ thiết bị',
-  compareSyncFree: 'Mỗi 30 phút',
+  compareSyncFree: 'Khi bạn mở xem',
   compareSyncPremium: 'Trực tiếp',
   compareScreenTime: 'Thời gian sử dụng',
   compareScreenTimeFree: 'Hôm nay, 3 ứng dụng nhiều nhất',
-  compareScreenTimePremium: 'Mọi ứng dụng, lịch sử 30 ngày',
+  compareScreenTimePremium: 'Mọi ứng dụng, theo từng giờ, lịch sử 30 ngày',
   compareLocation: 'Vị trí',
   compareLocationFree: 'Khi bạn mở bản đồ',
   compareLocationPremium: 'Trực tiếp, kèm lịch sử và cảnh báo địa điểm',
@@ -55,8 +55,8 @@ export const plans = {
   compareSafetyFree: 'Cảnh báo + Báo an toàn',
   compareSafetyPremium: 'Thêm ảnh cho mỗi lần Báo an toàn',
   compareControls: 'Chặn ứng dụng và chặn nội dung web',
-  compareControlsFree: 'Mọi ứng dụng, nội dung người lớn',
-  compareControlsPremium: 'Theo nhóm, danh sách riêng',
+  compareControlsFree: 'Mọi ứng dụng, bộ danh mục cố định',
+  compareControlsPremium: 'Theo danh mục, danh sách riêng, yêu cầu mở trang',
   compareReport: 'Báo cáo tuần',
   compareReportFree: 'Một lần, khi hết dùng thử',
   compareReportPremium: 'Hằng tuần',
@@ -65,7 +65,7 @@ export const plans = {
   compareActivityFeedPremium: '30 ngày',
   compareChildReport: 'Báo cáo từng trẻ',
   compareIncluded:
-    'Cả hai gói đều có Giới hạn hằng ngày, Giờ khóa thiết bị, Chặn ứng dụng, Chặn nội dung web, Khóa thiết bị, SOS, Yêu cầu thêm giờ và Nhiệm vụ thưởng trên iPhone, Android, Mac và Windows trong một gia đình, cùng với bảng điều khiển web. Android TV và Chromebook cũng được hỗ trợ, với ít tính năng kiểm soát hơn.',
+    'Cả hai gói đều có Giới hạn hằng ngày, Giờ khóa thiết bị, Chặn ứng dụng, Giới hạn ứng dụng, Duyệt ứng dụng mới, Chặn nội dung web, Khóa thiết bị, SOS, Yêu cầu thêm giờ và Nhiệm vụ thưởng trên iPhone, Android, Mac và Windows trong một gia đình, cùng với bảng điều khiển web. Android TV và Chromebook cũng được hỗ trợ, với ít tính năng kiểm soát hơn.',
   sectionWhyPremium: 'Premium thêm gì',
   sectionWhyPremiumSubtitle:
     'Mọi quy tắc vẫn hoạt động ở gói Miễn phí. Premium thêm những gì bạn thấy được, và thấy sớm đến đâu.',
@@ -119,7 +119,7 @@ export const plans = {
   memberTrialActiveSubtitle:
     'Gia đình này đang dùng thử. Khi hết hạn, mọi quy tắc vẫn hoạt động trên tất cả thiết bị và một thiết bị vẫn gửi báo cáo; chủ gia đình có thể đăng ký để có hoạt động trực tiếp, lịch sử và báo cáo từ mọi thiết bị.',
   memberTrialEndedSubtitle:
-    'Bản dùng thử của gia đình này đã kết thúc. Giới hạn hằng ngày, Chặn ứng dụng, Chặn nội dung web và vị trí vẫn hoạt động. Hãy nhờ chủ gia đình đăng ký để có cập nhật trực tiếp, lịch sử và cảnh báo.',
+    'Bản dùng thử của gia đình này đã kết thúc. Giới hạn hằng ngày, Giờ khóa thiết bị, Chặn ứng dụng, Chặn nội dung web và vị trí vẫn hoạt động. Hãy nhờ chủ gia đình đăng ký để có cập nhật trực tiếp, lịch sử và cảnh báo.',
   memberSetupTrialSubtitle:
     'Thời gian dùng thử bắt đầu khi chủ gia đình kết nối một thiết bị phụ huynh và một thiết bị của trẻ.',
   premiumActivatedTitle: 'Đã mở khóa Premium',
@@ -164,8 +164,7 @@ export const plans = {
   termLifetime: 'Trọn đời',
   badgeOneTime: 'Trả một lần',
   planPeriodOnce: 'một lần',
-  billedOnce:
-    'Trả một lần để nhận báo cáo từ tối đa {{devices}} thiết bị của trẻ, dùng chừng nào KidGate còn hoạt động',
+  billedOnce: 'Trả một lần, dùng chừng nào KidGate còn hoạt động',
   sectionFreePlan: 'Nếu bạn không đăng ký',
   devicesUnlimited: 'Mọi thiết bị của trẻ đều gửi báo cáo',
   featureFootnotePlatforms:
@@ -214,7 +213,7 @@ export const plans = {
   teaserProofRewardTasks: 'Nhiệm vụ đang bật: {{count}}',
   teaserRewardTasks:
     'Đó là số nhiệm vụ tối đa bản miễn phí chạy cùng lúc. Premium tăng gấp đôi số này.',
-  teaserLiveNote: 'Bản miễn phí cập nhật 30 phút một lần. Premium là trực tiếp.',
+  teaserLiveNote: 'Bản miễn phí cập nhật khi bạn mở xem. Premium là trực tiếp.',
   teaserUsageTimeline:
     'Premium cho biết thiết bị được dùng vào những khung giờ nào trong ngày.',
   teaserProofParents: 'Phụ huynh: {{count}}',

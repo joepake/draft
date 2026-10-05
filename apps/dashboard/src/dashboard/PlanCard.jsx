@@ -2,78 +2,15 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { useT } from '@kidgate/web-ui/useT';
 import { useActivityTranslate } from './activityCopy.js';
 import Icon from '@kidgate/web-ui/Icon';
-import { groupPlanComparisonRows } from '@kidgate/core/domain/planComparison';
+import PlanComparison from '@kidgate/web-ui/PlanComparison';
 import { FREE_TIER_MAX_CHILD_DEVICES } from '@kidgate/core/domain/reportingAllowance';
 import { getPlanState } from '../lib/trial.js';
 
 /*
  * `appT` reads the APP key space through `@kidgate/i18n/activityFeed`. The
- * phone's Plans screen already says all of this, in fourteen languages.
+ * phone's Plans screen already says all of this, in fourteen languages. The
+ * table itself is `@kidgate/web-ui/PlanComparison`, shared with the site.
  */
-
-/**
- * Free against Premium, as a table.
- *
- * Split out of `PlanCard` because it has two homes now: the dialog the rail
- * opens, and any future placement with room for it. Rows and their groups come
- * from `@kidgate/core/domain/planComparison` and the copy from the app pack
- * through `appT`, so this cannot drift from `PlansScreen` — the phone says
- * every one of these sentences already, and a `dash.*` twin would be the same
- * sentence in two packs with only one of them ever edited again
- * (`.claude/rules/i18n.md`).
- *
- * One `<tbody>` per group, headed by the group's title: the phone draws each
- * group as a card with a tagline, and the same five headings over the same rows
- * is what keeps a parent reading this on a laptop and paying on the phone
- * looking at one argument, not two.
- */
-function PlanComparison() {
-  const appT = useActivityTranslate();
-
-  return (
-    <div className="plan-compare">
-      <table>
-        <thead>
-          <tr>
-            <th />
-            <th>{appT('plans.compareColumnFree')}</th>
-            <th className="is-premium">{appT('plans.compareColumnPremium')}</th>
-          </tr>
-        </thead>
-        {groupPlanComparisonRows().map(section => (
-          <tbody key={section.id}>
-            <tr className="plan-compare-group">
-              <th scope="rowgroup" colSpan={3}>
-                {appT(section.titleKey)}
-              </th>
-            </tr>
-            {section.rows.map(row => (
-              <tr key={row.id}>
-                <th scope="row" className={row.highlight ? 'is-highlight' : undefined}>
-                  {appT(row.labelKey)}
-                </th>
-                {/* A dash on the free side, a tick on the paid one — the
-                    module says why null means those two different things. */}
-                <td className="is-free">{row.freeKey ? appT(row.freeKey) : '—'}</td>
-                <td>
-                  {row.premiumKey ? (
-                    appT(row.premiumKey)
-                  ) : (
-                    <Icon name="check" size={14} />
-                  )}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        ))}
-      </table>
-      <p className="plan-compare-included">{appT('plans.compareIncluded')}</p>
-      {/* The phone says this under the same table, so a parent comparing
-          here and paying there reads one caveat rather than two. */}
-      <p className="plan-compare-included">{appT('plans.featureFootnotePlatforms')}</p>
-    </div>
-  );
-}
 
 /**
  * The comparison as a dialog, built on the step-up sheet's furniture
@@ -116,7 +53,7 @@ function PlanCompareSheet({ onClose }) {
         <p className="sheet-body">
           <Icon name="phone" size={12} /> {t('dash.planManageOnPhone')}
         </p>
-        <PlanComparison />
+        <PlanComparison t={appT} />
       </div>
     </div>
   );

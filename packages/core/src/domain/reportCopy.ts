@@ -311,7 +311,7 @@ export interface ReportPresentation {
    * family has two children set up, devices otherwise. One fixed "Each child …
    * per device" was wrong in both cases (`reportChildrenHeading`).
    */
-  childrenHeading: { title: string; note: string };
+  childrenHeading: { title: string; note: string; column: string };
 }
 
 export interface ReportChildLine {
@@ -478,8 +478,10 @@ function childrenHeading(
   report: FamilyReport,
   deps: ReportCopyDeps,
 ): ReportPresentation['childrenHeading'] {
-  const { titleKey, noteKey } = reportChildrenHeading(reportChildren(report));
-  return { title: deps.t(titleKey), note: deps.t(noteKey) };
+  const { titleKey, noteKey, columnKey } = reportChildrenHeading(
+    reportChildren(report),
+  );
+  return { title: deps.t(titleKey), note: deps.t(noteKey), column: deps.t(columnKey) };
 }
 
 /**

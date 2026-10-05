@@ -1278,6 +1278,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@kidgate/web-ui@workspace:packages/web-ui"
   dependencies:
+    "@kidgate/core": "workspace:*"
     "@kidgate/i18n": "workspace:*"
     "@kidgate/tokens": "workspace:*"
     react: "npm:19.2.3"

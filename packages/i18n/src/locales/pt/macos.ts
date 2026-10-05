@@ -52,7 +52,7 @@ export const macos = {
   setupSubtitle:
     'O sistema pede permissão para cada um destes itens, e só quem está usando este dispositivo pode autorizar. Fazer isso agora evita que a pergunta chegue ao seu filho ou filha depois.',
   setupStepFilterApprovalTitle: 'Aprovar o filtro da web',
-  setupStepFilterSwitchTitle: 'Filter Network Content',
+  setupStepFilterSwitchTitle: 'Filtrar conteúdo da rede',
 
   setupStepFilterWindowsTitle: 'Filtragem da web',
 

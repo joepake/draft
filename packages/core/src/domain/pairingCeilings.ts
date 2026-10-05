@@ -75,12 +75,10 @@ export const FREE_MAX_DEVICES_PER_FAMILY = 8;
  * for seven days, two sets of numbers is two things to explain and two places to
  * get one wrong, and the difference is under a dollar a family.
  *
- * **A lifetime purchase takes this number too**, and that closes a complaint the
- * entry opened: `LIFETIME_MAX_CHILD_DEVICES` is three, so a lifetime buyer could
- * hold fewer devices than a free family that paired quickly during its trial.
- * Three stays as that buyer's *reporting* allowance — which is where the
- * revenue-does-not-scale argument actually belongs — and pairing is fair use for
- * everybody who has paid anything.
+ * **A lifetime purchase takes this number too**, and since 2026-10-05 it is the
+ * only device number a lifetime buyer meets: the three-device *reporting*
+ * allowance it used to carry was dropped, so every device it pairs reports,
+ * as on a subscription. Pairing is fair use for everybody who has paid anything.
  */
 export const PAID_MAX_DEVICES_PER_FAMILY = 25;
 

@@ -182,7 +182,7 @@ export const userGuide = {
       keywords: 'ekran süresi, family controls, iphone, ipad, yetkilendir',
       tip: 'İzin Ver düğmesi görünmüyorsa iOS Ayarları, ardından Ekran Süresi’ni açın ve önce çocuk cihazında Ekran Süresi’nin etkin olduğundan emin olun.',
       steps: {
-        '1': 'Çocuğun iPhone’unda KidGate’i açın ve Durum / kurulum ekranında kalın.',
+        '1': 'KidGate’i açın ve “Durum” ekranında kalın.',
         '2': 'Uygulama ve Web Sitesi Kullanımına İzin Ver’i (veya Ekran Süresi bannerını) seçin.',
         '3': 'Sistem iletişim kutusunda İzin Ver’i seçin. Lütfen bir seçim yapmadan iletişim kutusunu kapatmayın.',
         '4': 'KidGate’e dönün. Yetkilendirme başarılı olduğunda banner kaybolur.',
@@ -369,7 +369,7 @@ export const userGuide = {
         '2': 'Mevcut durumu (uygunsuz siteler sınırlı veya filtreleme kapalı) inceleyin.',
         '3': 'Bir anahtar gösteriliyorsa filtrelemeyi açın ve kaydedin.',
         '4': 'Daha sonra aynı ekrandan tekrar kontrol edin. Durum Bekleniyor olarak kalırsa ayarların senkronize olması için çocuk cihazında KidGate’i yeniden açın.',
-        '5': 'Çocuk cihazı iPhone veya iPad ise cihazda KidGate’i açın, iOS VPN yapılandırmaları eklemek için izin istediğinde İzin Ver’i seçin ve ardından cihaz parolasını girin. Bu yalnızca bir kez sorulur.',
+        '5': 'Çocuk cihazı iPhone veya iPad ise cihazda KidGate’i açın, iOS VPN konfigürasyonları eklemek için izin istediğinde İzin Ver’i seçin ve ardından cihaz parolasını girin. Bu yalnızca bir kez sorulur.',
       },
     },
     protectionAlerts: {
@@ -388,7 +388,7 @@ export const userGuide = {
       title: 'Kullanım raporlarını okuma',
       summary:
         'Her cihazın bugün ve son 30 günde ne kadar kullanıldığını çocuk bazında ve her pazartesi gelen bir raporda görün.',
-      tip: 'Ücretsiz plandaki aileler bugünün toplamını ve en çok kullanılan 3 uygulamayı görür; bu bilgiler her 30 dakikada bir güncellenir. Premium ise 30 günlük geçmiş, her cihazın ne zaman kullanıldığı, tüm uygulamalar, her çocuk için bir rapor ve her pazartesi yeni bir haftalık rapor ekler. iPhone ve iPad yalnızca toplam süreyi bildirir.',
+      tip: 'Ücretsiz plandaki aileler bugünün toplamını ve en çok kullanılan 3 uygulamayı görür; bu bilgiler siz baktığınızda güncellenir. Premium ise 30 günlük geçmiş, her cihazın ne zaman kullanıldığı, tüm uygulamalar, her çocuk için bir rapor ve her pazartesi yeni bir haftalık rapor ekler. iPhone ve iPad yalnızca toplam süreyi bildirir.',
       steps: {
         '1': 'Raporlar’ı açın. “Bugün” bölümü tüm cihazları toplar; altında Haftalık rapor, her çocuk (Çocuğa göre) ve her cihaz (Cihaza göre) yer alır.',
         '2': 'Bir cihazın Kullanım Raporu’nu açmak için ona dokunun: Günlük sınıra göre bugünkü durum, “Son 30 gün”, “Ne zaman kullanıldı” ve “En çok kullanılan uygulamalar”. Bu raporu cihaz ekranındaki “Bugünkü kullanım” bölümünden de açabilirsiniz.',
@@ -475,7 +475,7 @@ export const userGuide = {
       steps: {
         '1': 'Ayarlar’ı açın. En üstteki kart mevcut planınızı gösterir; Planları gör’ü seçin.',
         '2': '7 günlük deneme, ilk çocuk cihazınız eşleştirildiğinde başlar ve Premium’daki her şeyi içerir.',
-        '3': 'Ücretsiz planda tüm kurallar çalışmaya devam eder, ancak yalnızca bir cihaz rapor gönderir: her 30 dakikada bir, bugünün toplamı ve en çok kullanılan 3 uygulamayla. Premium ise canlı güncellemeler, tüm cihazlar, 30 günlük geçmiş, web ve video geçmişi ve haftalık raporlar ekler.',
+        '3': 'Ücretsiz planda tüm kurallar çalışmaya devam eder, ancak yalnızca bir cihaz rapor gönderir; bu rapor bugünün toplamını ve en çok kullanılan 3 uygulamayı içerir ve siz baktığınızda güncellenir. Premium ise canlı güncellemeler, tüm cihazlar, 30 günlük geçmiş, web ve video geçmişi ve haftalık raporlar ekler.',
         '4': 'Deneme sona erdiğinde birden fazla çocuk cihazı varsa KidGate sizden “Ana cihazınızı seçin” ekranında bir seçim yapmanızı ister. Seçilen cihaz rapor göndermeye devam eder; diğerleri Duraklatıldı olarak görünür ama kurallarını korur. Seçiminizi 7 günde bir değiştirebilirsiniz.',
         '5': 'Abone olmak için bir plan seçin ve “Premium’a abone ol” düğmesine dokunun. Abone olduğunuzda duraklatılmış tüm cihazlar yeniden rapor göndermeye başlar. Daha önce ödeme yaptıysanız Satın alımları geri yükle’yi seçin.',
       },

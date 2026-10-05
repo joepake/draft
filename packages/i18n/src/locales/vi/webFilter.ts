@@ -9,13 +9,13 @@ export const webFilter = {
   toastUpdateFailed: 'Không thể cập nhật Chặn nội dung web. Vui lòng thử lại.',
   heroTitle: 'Chặn nội dung không phù hợp',
   heroSubtitleIos:
-    'KidGate lọc ngay trên iPhone hoặc iPad của trẻ để chặn các trang có nội dung không phù hợp đã biết, trong trình duyệt và nhiều ứng dụng, song song với bộ lọc nội dung người lớn của chính Apple.',
+    'KidGate chạy một kết nối riêng trên iPhone hoặc iPad của con để chặn các trang web không phù hợp đã được nhận diện, trên trình duyệt và nhiều ứng dụng, song song với bộ lọc nội dung người lớn của Apple.',
   heroSubtitleAndroid:
     'KidGate lọc ngay trên thiết bị Android của trẻ để chặn các trang có nội dung không phù hợp đã biết, trong trình duyệt và nhiều ứng dụng.',
   heroSubtitleMacos:
     'Chạy bộ lọc nội dung của KidGate trên Mac của con để chặn các trang có nội dung không phù hợp đã biết trong trình duyệt và nhiều ứng dụng.',
   toggleHintIos:
-    'Thiết bị của trẻ cần cho phép VPN của KidGate một lần và nhập mật mã thiết bị. Vui lòng giữ VPN trên máy để bộ lọc hoạt động.',
+    'Trên thiết bị của con, cần cho phép VPN của KidGate một lần rồi nhập mật mã máy. Vui lòng giữ VPN trên máy để bộ lọc hoạt động.',
   toggleHintAndroid:
     'Thiết bị của trẻ cần chấp nhận kết nối VPN của KidGate một lần. Vui lòng giữ VPN luôn bật để bộ lọc hoạt động.',
   toggleHintMacos:
@@ -219,5 +219,5 @@ export const webFilter = {
   vpnConsentStepAllow:
     'Chạm OK trên yêu cầu VPN của Android. Biểu tượng chìa khóa sẽ hiển thị trên thanh trạng thái khi bộ lọc đang chạy.',
   vpnConsentStepAllowIos:
-    'Chọn Cho phép khi iOS hỏi thêm cấu hình VPN, rồi nhập mật mã thiết bị. Biểu tượng VPN sẽ hiển thị khi bộ lọc đang chạy.',
+    'Chọn Cho phép khi iOS hỏi có cho KidGate thêm cấu hình VPN không, rồi nhập mật mã thiết bị. Biểu tượng VPN sẽ hiển thị khi bộ lọc đang chạy.',
 } as const;

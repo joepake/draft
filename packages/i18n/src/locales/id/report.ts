@@ -78,7 +78,7 @@ export const report = {
   shareLinkCta: 'Unduh aplikasinya di {{url}}',
   shareFooterDesc:
     'KidGate membantu orang tua mengelola waktu layar, melihat lokasi, dan memfilter konten web.',
-  shareFooterCta: 'Unduh aplikasinya di kidgate.app/get',
+  shareFooterCta: 'Unduh aplikasinya di kidgate.app',
 
   currentWeekTab: 'Minggu ini',
   currentWeekTitle: 'Masih diukur',
@@ -116,6 +116,7 @@ export const report = {
   childrenNote:
     'Dua minggu yang sama, per perangkat. Persentase dihitung dari total keluarga.',
   colChild: 'Anak',
+  colDevice: 'Perangkat',
   colScreenTime: 'Waktu Layar',
   colShare: 'Porsi',
   colChange: 'Dibanding minggu lalu',

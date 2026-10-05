@@ -14,6 +14,7 @@ import {
   type WebActivityHoursDoc,
 } from '@kidgate/schema/webActivityHours';
 import type { WebDay } from '@kidgate/schema/webDay';
+import { WEB_DAYS_SINCE } from '@kidgate/schema/webDay';
 import {
   foldWebHistory,
   rowBeforeCutover,
@@ -148,6 +149,21 @@ export function createWebHistoryRepository(deps: WebHistoryRepositoryDeps) {
         db.onQuery(
           webHistoryCollection(userId, deviceId),
           {
+            /*
+             * **Only the rows the fold can actually use.** `rowBeforeCutover`
+             * below discards everything from `WEB_DAYS_SINCE` onward, and
+             * without this clause the query read `rowsLimit` of the *newest*
+             * rows first — which since the cutover are exactly the ones it
+             * throws away. A console opening a device read up to 300
+             * documents to keep none of them, every open, on every device.
+             *
+             * Measured 2026-10-04: one console-open minute cost ~480 reads
+             * against 77 writes. The same `date` ordering means the existing
+             * composite index serves this unchanged, and once the retention
+             * sweep has cleared the pre-cutover rows the query matches
+             * nothing and costs one read rather than three hundred.
+             */
+            where: [['date', '<', WEB_DAYS_SINCE]],
             orderBy: [
               ['date', 'desc'],
               ['visits', 'desc'],
@@ -227,6 +243,18 @@ export function createWebHistoryRepository(deps: WebHistoryRepositoryDeps) {
         unsubscribers.push(
           db.onQuery(
             webActivityHoursCollection(userId, deviceId),
+            /*
+             * **Deliberately not given the cutover `where` the rows query
+             * above has.** Two reasons, and the second is the one that
+             * decided it: this collection is one document per day against the
+             * rows' one per domain, so `limit` already bounds it to something
+             * small and the filter would save almost nothing — and
+             * `firestore.indexes.json` exempts `webActivityHours.date` to
+             * ASCENDING only, where `webHistory.date` and `webDays.date` both
+             * keep DESCENDING too. That asymmetry looks like an oversight
+             * rather than a decision (`docs/BACKLOG.md`), and an inequality is
+             * not the change that should discover it.
+             */
             { orderBy: [['date', 'desc']], limit },
             snapshot => {
               fromHourDocs = snapshot.docs

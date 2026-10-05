@@ -352,7 +352,7 @@ export default function ReportPanel({
               <table className="report-table">
                 <thead>
                   <tr>
-                    <th scope="col">{t('report.colChild')}</th>
+                    <th scope="col">{view.childrenHeading.column}</th>
                     <th scope="col">{t('report.colScreenTime')}</th>
                     <th scope="col">{t('report.colShare')}</th>
                     <th scope="col">{t('report.colChange')}</th>

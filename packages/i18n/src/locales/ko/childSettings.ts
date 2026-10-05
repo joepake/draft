@@ -13,12 +13,12 @@ export const childSettings = {
   uninstallProtectionSectionDescription:
     '이 휴대폰에서 KidGate를 삭제하지 못하게 해요. Android가 한 번 권한을 요청해요.',
   uninstallProtectionLabel: '삭제 방지',
-  uninstallProtectionHintOn: '켜짐. 이 설정이 꺼지면 보호자에게 알림이 가요.',
+  uninstallProtectionHintOn: '켜짐. 이 설정이 꺼지면 부모님에게 알림이 가요.',
   uninstallProtectionHintOff: '꺼짐. 이 휴대폰에서 KidGate를 삭제할 수 있어요.',
   uninstallProtectionTurnedOff: '삭제 방지가 꺼졌어요.',
   uninstallProtectionFailed: '삭제 방지를 변경하지 못했어요. 다시 시도해 주세요.',
   deviceAdminExplanation:
-    '보호자 없이 KidGate가 삭제되는 것을 막습니다. KidGate는 다른 기기 관리자 권한을 사용하지 않습니다. 이 기기의 데이터를 지우거나 화면 잠금을 바꾸거나 카메라를 끌 수 없습니다.',
+    '부모 없이 KidGate가 삭제되는 것을 막습니다. KidGate는 다른 기기 관리자 권한을 사용하지 않습니다. 이 기기의 데이터를 지우거나 화면 잠금을 바꾸거나 카메라를 끌 수 없습니다.',
   deviceAdminDisableWarning:
     '이 설정을 끄면 이 기기에서 KidGate를 삭제할 수 있게 돼요. 부모님께 알림이 가요.',
   appPickerUnavailable: '이 기기에서는 차단된 앱 기능을 사용할 수 없어요.',

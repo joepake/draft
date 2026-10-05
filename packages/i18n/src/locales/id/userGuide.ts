@@ -183,7 +183,7 @@ export const userGuide = {
       keywords: 'durasi layar, screen time, family controls, iphone, ipad, otorisasi',
       tip: 'Jika tombol Izinkan tidak muncul, buka Pengaturan iOS, lalu Waktu Layar dan pastikan Waktu Layar sudah diaktifkan di perangkat anak terlebih dahulu.',
       steps: {
-        '1': 'Di iPhone anak, buka KidGate dan tetap di layar Status / penyiapan.',
+        '1': 'Buka KidGate dan tetap di layar “Status”.',
         '2': 'Pilih Izinkan Penggunaan Aplikasi & Situs Web (atau banner Waktu Layar).',
         '3': 'Pada dialog sistem, pilih Izinkan. Mohon jangan menutup dialog tanpa memilih.',
         '4': 'Kembali ke KidGate. Banner akan hilang setelah izin berhasil diberikan.',
@@ -389,7 +389,7 @@ export const userGuide = {
       title: 'Lihat laporan penggunaan',
       summary:
         'Lihat berapa lama setiap perangkat dipakai hari ini dan selama 30 hari terakhir, juga per anak, dan dalam laporan setiap hari Senin.',
-      tip: 'Dengan paket gratis, Anda melihat total hari ini dan 3 aplikasi teratas, yang diperbarui setiap 30 menit. Premium menambahkan riwayat 30 hari, kapan setiap perangkat dipakai, semua aplikasi, laporan untuk setiap anak, dan laporan mingguan baru setiap hari Senin. iPhone dan iPad hanya melaporkan totalnya.',
+      tip: 'Dengan paket gratis, Anda melihat total hari ini dan 3 aplikasi teratas, yang diperbarui saat Anda memeriksa. Premium menambahkan riwayat 30 hari, kapan setiap perangkat dipakai, semua aplikasi, laporan untuk setiap anak, dan laporan mingguan baru setiap hari Senin. iPhone dan iPad hanya melaporkan totalnya.',
       steps: {
         '1': 'Buka Laporan. Bagian Hari ini menjumlahkan semua perangkat; di bawahnya ada Laporan mingguan, setiap anak (Per anak), dan setiap perangkat (Per perangkat).',
         '2': 'Ketuk perangkat untuk membuka Laporan Penggunaan perangkat itu: pemakaian hari ini dibandingkan Batas harian, 30 hari terakhir, Kapan perangkat dipakai, dan Aplikasi paling sering digunakan. Anda juga dapat membukanya dari Penggunaan hari ini di layar perangkat.',
@@ -476,7 +476,7 @@ export const userGuide = {
       steps: {
         '1': 'Buka Pengaturan. Kartu di bagian atas menampilkan paket Anda saat ini; pilih Lihat paket.',
         '2': 'Uji coba 7 hari dimulai setelah perangkat anak pertama Anda disandingkan, dan mencakup semua fitur Premium.',
-        '3': 'Di paket gratis, semua aturan tetap berjalan, tetapi hanya satu perangkat yang melapor: setiap 30 menit, dengan total hari ini dan 3 aplikasi teratas. Premium menambahkan pembaruan langsung, semua perangkat, riwayat 30 hari, riwayat web dan video, serta laporan mingguan.',
+        '3': 'Di paket gratis, semua aturan tetap berjalan, tetapi hanya satu perangkat yang melapor: total hari ini dan 3 aplikasi teratas, yang diperbarui saat Anda memeriksa. Premium menambahkan pembaruan langsung, semua perangkat, riwayat 30 hari, riwayat web dan video, serta laporan mingguan.',
         '4': 'Jika uji coba berakhir saat ada lebih dari satu perangkat anak, KidGate membuka layar Pilih perangkat utama. Perangkat yang dipilih tetap melapor; perangkat lain menampilkan Dijeda, tetapi aturannya tetap berlaku. Anda dapat mengganti pilihan sekali setiap 7 hari.',
         '5': 'Untuk berlangganan, pilih paket lalu pilih Berlangganan Premium. Setelah berlangganan, semua perangkat yang dijeda kembali melapor. Jika Anda pernah membayar sebelumnya, pilih Pulihkan pembelian.',
       },

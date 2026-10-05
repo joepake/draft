@@ -74,6 +74,17 @@ function SiteHeader() {
         is enough for a strip that has to stay short enough to fit a phone.
       */}
       <nav className="nav" aria-label={t('nav.main')}>
+        {/*
+          Plans is the one section that earns a slot anyway (2026-10-04): it is
+          what a parent comparing apps comes looking for, and the page had no
+          way to say it was there. A `Link`, not a `NavLink` — it never lights
+          up, because a section is not a page. The dead second click is fixed
+          where the scroll lives: `useScrollToHash` re-runs on every navigation,
+          not only when the hash changes. Its label is each pack's
+          `plans.title`, byte for byte, so the strip and the section's eyebrow
+          say one word.
+        */}
+        <Link to="/#plans">{t('nav.plans')}</Link>
         <NavLink to="/about">{t('nav.about')}</NavLink>
         <NavLink to="/support">{t('nav.support')}</NavLink>
         <NavLink to="/privacy-policy">{t('nav.privacy')}</NavLink>

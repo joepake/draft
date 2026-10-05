@@ -5,7 +5,7 @@ export const child = {
   readyTitle: 'كل شيء جاهز',
   readyBody:
     'إذا احتجت إلى مزيد من وقت الشاشة، يمكنك إرسال طلب إلى والديك من القسم أعلاه. وفي الحالات الطارئة يمكنك استخدام زر SOS.',
-  setupCollapsedTitle: 'أكمل الإعداد مع أحد الوالدين',
+  setupCollapsedTitle: 'إكمال الإعداد مع أحد الوالدين',
   setupCollapsedRequiredCount: '{{count}} خطوة مطلوبة',
   setupCollapsedRequiredCount_one: 'خطوة مطلوبة واحدة',
   setupCollapsedRequiredCount_two: 'خطوتان مطلوبتان',
@@ -35,7 +35,7 @@ export const child = {
   devicePausedByParent: '\u200F{{deviceName}} مقفل الآن.',
   phonePausedByParent: 'قفل والداك هذا الجهاز مؤقتًا.',
   pausedAskParentOrSos:
-    'اطلب من والديك فتح القفل عندما تحتاجه. وفي الحالات الطارئة لا يزال بإمكانك إرسال SOS.',
+    'يمكن طلب فتح القفل من والديك عند الحاجة. وفي الحالات الطارئة لا يزال بإمكانك إرسال SOS.',
   blockedHoursLockTitle: 'ساعات الحظر',
   blockedHoursLockBody: 'ساعات الحظر نشطة الآن. إنه وقت مناسب لأخذ استراحة.',
   blockedHoursLockHint:

@@ -25,7 +25,7 @@ export const webHistory = {
   emptyBlockedBody: 'Belum ada yang diblokir.',
   dayBlockedBadge: '{{count}} diblokir',
   visitsMeta: '{{count}} kunjungan',
-  blockedMeta: 'Diblokir {{count}} kali · {{category}}',
+  blockedMeta: '{{category}} · Diblokir {{count}} kali',
   categoryUnknown: 'Daftar blokir',
   sectionUncategorized: 'Situs lain',
   blockCategory: 'Blokir {{category}}',

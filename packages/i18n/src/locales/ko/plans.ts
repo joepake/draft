@@ -35,11 +35,11 @@ export const plans = {
   compareParentsFree: '최대 3명',
   compareParentsPremium: '최대 6명',
   compareSync: '기기에서 오는 업데이트',
-  compareSyncFree: '30분마다',
+  compareSyncFree: '열어서 확인할 때',
   compareSyncPremium: '실시간',
   compareScreenTime: '사용 시간',
   compareScreenTimeFree: '오늘, 많이 쓴 앱 3개',
-  compareScreenTimePremium: '모든 앱, 30일 기록',
+  compareScreenTimePremium: '모든 앱, 시간대별, 30일 기록',
   compareLocation: '위치',
   compareLocationFree: '지도를 열었을 때',
   compareLocationPremium: '실시간, 이동 기록과 장소 알림 포함',
@@ -54,8 +54,8 @@ export const plans = {
   compareSafetyFree: '알림 + 체크인',
   compareSafetyPremium: '체크인마다 사진을 추가',
   compareControls: '앱 차단과 웹 필터',
-  compareControlsFree: '모든 앱, 성인 콘텐츠',
-  compareControlsPremium: '카테고리별, 직접 만든 목록',
+  compareControlsFree: '모든 앱, 정해진 카테고리',
+  compareControlsPremium: '카테고리별, 직접 만든 목록, 사이트 요청',
   compareReport: '주간 리포트',
   compareReportFree: '체험이 끝날 때 한 번',
   compareReportPremium: '매주',
@@ -64,7 +64,7 @@ export const plans = {
   compareActivityFeedPremium: '30일',
   compareChildReport: '자녀별 리포트',
   compareIncluded:
-    '두 플랜 모두 한 가족 안의 iPhone·Android·Mac·Windows에서 일일 제한, 차단 시간, 차단된 앱, 웹 필터, 기기 잠금, SOS, 시간 연장 요청, 보상 과제를 제공하며, 웹 대시보드도 포함합니다. Android TV와 Chromebook도 지원하지만 제공되는 제어 기능은 더 적습니다.',
+    '두 플랜 모두 한 가족 안의 iPhone·Android·Mac·Windows에서 일일 제한, 차단 시간, 차단된 앱, 앱 시간 제한, 새 앱 승인, 웹 필터, 기기 잠금, SOS, 시간 연장 요청, 보상 과제를 제공하며, 웹 대시보드도 포함합니다. Android TV와 Chromebook도 지원하지만 제공되는 제어 기능은 더 적습니다.',
   sectionWhyPremium: 'Premium이 더하는 것',
   sectionWhyPremiumSubtitle:
     '모든 규칙은 무료에서도 계속 작동합니다. Premium은 무엇을, 얼마나 빨리 볼 수 있는지를 더합니다.',
@@ -119,7 +119,7 @@ export const plans = {
   memberTrialActiveSubtitle:
     '이 가족은 체험 중입니다. 체험이 끝나도 모든 규칙은 모든 기기에서 계속 작동하고 한 기기는 계속 보고합니다. 소유자가 구독하면 실시간 활동, 기록, 모든 기기의 보고를 이용할 수 있습니다.',
   memberTrialEndedSubtitle:
-    '이 가족의 체험이 끝났습니다. 일일 제한, 차단된 앱, 웹 필터, 위치는 계속 사용할 수 있습니다. 실시간 업데이트, 기록, 알림은 가족 관리자에게 구독을 요청하세요.',
+    '이 가족의 체험이 끝났습니다. 일일 제한, 차단 시간, 차단된 앱, 웹 필터, 위치는 계속 사용할 수 있습니다. 실시간 업데이트, 기록, 알림은 가족 관리자에게 구독을 요청하세요.',
   memberSetupTrialSubtitle:
     '소유자가 부모 기기와 자녀 기기를 연결하면 체험이 시작됩니다.',
   premiumActivatedTitle: 'Premium이 활성화되었습니다',
@@ -165,17 +165,16 @@ export const plans = {
   termLifetime: '평생',
   badgeOneTime: '1회 결제',
   planPeriodOnce: '1회',
-  billedOnce:
-    '한 번 결제로 자녀 기기 최대 {{devices}}대에서 보고, KidGate가 제공되는 동안 이용',
+  billedOnce: '한 번 결제로 KidGate가 제공되는 동안 이용',
   sectionFreePlan: '구독하지 않는 경우',
   devicesUnlimited: '모든 자녀 기기에서 보고',
   featureFootnotePlatforms:
     '일부 기능은 플랫폼이 허용하는 범위에 따라 달라져, 모든 기기에서 사용할 수 있는 것은 아닙니다.',
   sectionPlatforms: 'KidGate를 쓸 수 있는 기기',
   platformIos: 'iPhone·iPad',
-  platformIosDetail: '보호자 또는 자녀 기기 · iOS 16 이상',
+  platformIosDetail: '부모 또는 자녀 기기 · iOS 16 이상',
   platformAndroid: 'Android',
-  platformAndroidDetail: '보호자 또는 자녀 기기 · Android 7 이상',
+  platformAndroidDetail: '부모 또는 자녀 기기 · Android 7 이상',
   platformMac: 'Mac',
   platformMacDetail: '자녀 기기 전용 · macOS 12 이상',
   platformIosLimits:
@@ -216,7 +215,7 @@ export const plans = {
   teaserProofRewardTasks: '진행 중인 과제: {{count}}',
   teaserRewardTasks:
     '무료 플랜이 동시에 유지하는 과제는 여기까지입니다. Premium은 두 배입니다.',
-  teaserLiveNote: '무료는 30분마다 업데이트됩니다. Premium은 실시간입니다.',
+  teaserLiveNote: '무료는 열어서 확인할 때 업데이트됩니다. Premium은 실시간입니다.',
   teaserUsageTimeline: 'Premium은 하루 중 어느 시간대에 기기를 사용했는지 보여 줍니다.',
   teaserProofParents: '부모: {{count}}',
   teaserParentCap:

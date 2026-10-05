@@ -37,11 +37,12 @@ export const plans = {
   compareParentsFree: 'Jusqu’à 3',
   compareParentsPremium: 'Jusqu’à 6',
   compareSync: 'Mises à jour de l’appareil',
-  compareSyncFree: 'Toutes les 30 minutes',
+  compareSyncFree: 'Quand vous consultez l’app',
   compareSyncPremium: 'En direct',
   compareScreenTime: 'Temps d’écran',
   compareScreenTimeFree: 'Aujourd’hui, les 3 principales applications',
-  compareScreenTimePremium: 'Toutes les applications, historique de 30 jours',
+  compareScreenTimePremium:
+    'Toutes les applications, heure par heure, historique de 30 jours',
   compareLocation: 'Localisation',
   compareLocationFree: 'À l’ouverture de la carte',
   compareLocationPremium: 'En direct, avec historique et alertes de lieux',
@@ -56,8 +57,8 @@ export const plans = {
   compareSafetyFree: 'Alertes + Check-In',
   compareSafetyPremium: 'Ajoute une photo à chaque Check-In',
   compareControls: 'Blocage d’applications et filtre web',
-  compareControlsFree: 'Toute application, contenu pour adultes',
-  compareControlsPremium: 'Par catégorie, vos propres listes',
+  compareControlsFree: 'Toute application, catégories fixes',
+  compareControlsPremium: 'Par catégorie, vos propres listes, demandes de sites',
   compareReport: 'Rapport hebdomadaire',
   compareReportFree: 'Une fois, à la fin de l’essai',
   compareReportPremium: 'Chaque semaine',
@@ -66,7 +67,7 @@ export const plans = {
   compareActivityFeedPremium: '30 jours',
   compareChildReport: 'Rapports par enfant',
   compareIncluded:
-    'Les deux offres incluent la Limite quotidienne, les Heures bloquées, les Applications bloquées, le Filtre web, le Verrouillage de l’appareil, le SOS, les Demandes de temps et les Tâches à récompense sur iPhone, Android, Mac et Windows dans une même famille, ainsi que le tableau de bord web. Android TV et Chromebook sont aussi pris en charge, avec moins de contrôles.',
+    'Les deux offres incluent la Limite quotidienne, les Heures bloquées, les Applications bloquées, les Limites d’apps, l’approbation des nouvelles applications, le Filtre web, le Verrouillage de l’appareil, le SOS, les Demandes de temps et les Tâches à récompense sur iPhone, Android, Mac et Windows dans une même famille, ainsi que le tableau de bord web. Android TV et Chromebook sont aussi pris en charge, avec moins de contrôles.',
   sectionWhyPremium: 'Ce que Premium ajoute',
   sectionWhyPremiumSubtitle:
     'Toutes les règles continuent de fonctionner en Gratuit. Premium ajoute ce que vous voyez, et à quel moment.',
@@ -123,7 +124,7 @@ export const plans = {
   memberTrialActiveSubtitle:
     'Cette famille est en période d’essai. À la fin, toutes les règles continuent de fonctionner sur tous les appareils et un appareil continue d’envoyer ses rapports ; le propriétaire peut s’abonner pour l’activité en direct, l’historique et les rapports de tous les appareils.',
   memberTrialEndedSubtitle:
-    'L’essai de cette famille est terminé. La Limite quotidienne, les Applications bloquées, le Filtre web et la position fonctionnent toujours. Demandez au propriétaire de s’abonner pour les mises à jour en direct, l’historique et les alertes.',
+    'L’essai de cette famille est terminé. La Limite quotidienne, les Heures bloquées, les Applications bloquées, le Filtre web et la position fonctionnent toujours. Demandez au propriétaire de s’abonner pour les mises à jour en direct, l’historique et les alertes.',
   memberSetupTrialSubtitle:
     'L’essai démarre lorsque le propriétaire connecte un appareil parent et un appareil enfant.',
   premiumActivatedTitle: 'Premium débloqué',
@@ -171,8 +172,7 @@ export const plans = {
   termLifetime: 'À vie',
   badgeOneTime: 'Paiement unique',
   planPeriodOnce: 'une fois',
-  billedOnce:
-    'Payez une fois pour les rapports de {{devices}} appareils enfants maximum, tant que KidGate existe',
+  billedOnce: 'Payez une fois, tant que KidGate existe',
   sectionFreePlan: 'Si vous ne vous abonnez jamais',
   devicesUnlimited: 'Chaque appareil enfant envoie ses rapports',
   featureFootnotePlatforms:
@@ -230,7 +230,7 @@ export const plans = {
   teaserRewardTasks:
     'C’est tout ce que la version gratuite garde en cours. Premium double ce nombre.',
   teaserLiveNote:
-    'La version gratuite se met à jour toutes les 30 minutes. Premium est en direct.',
+    'La version gratuite se met à jour quand vous consultez l’app. Premium est en direct.',
   teaserUsageTimeline:
     'Premium montre à quelles heures de la journée l’appareil a été utilisé.',
   teaserProofParents: 'Parents : {{count}}',

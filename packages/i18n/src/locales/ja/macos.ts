@@ -50,7 +50,7 @@ export const macos = {
   setupSubtitle:
     'システムはこれらひとつひとつに許可を求めます。許可できるのはその時このデバイスを使っている人だけです。今すませておけば、あとからお子さまが尋ねられることはありません。',
   setupStepFilterApprovalTitle: 'Webフィルターを承認',
-  setupStepFilterSwitchTitle: 'Filter Network Content',
+  setupStepFilterSwitchTitle: 'ネットワークコンテンツのフィルタリング',
 
   setupStepFilterWindowsTitle: 'Webフィルター',
 

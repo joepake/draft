@@ -154,7 +154,7 @@ export const activities = {
   openFullSosHistory: 'Xem toàn bộ lịch sử SOS',
   openActivityDetails: 'Xem chi tiết',
   unknownDevice: 'Thiết bị không xác định',
-  tamperWebFilterTitle: 'Đã tắt Chặn nội dung web',
+  tamperWebFilterTitle: 'Đã tắt tính năng Chặn nội dung web',
   tamperWebFilterBody:
     'VPN của KidGate trên máy này đã bị tắt hoặc bị một ứng dụng VPN khác thay thế. Trang web sẽ không được lọc và ghi lại cho đến khi VPN bật lại.',
   tamperUninstallProtectionTitle: 'Đã tắt chống gỡ cài đặt',

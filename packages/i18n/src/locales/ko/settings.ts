@@ -104,9 +104,9 @@ export const settings = {
   deleteAccountSubtitleDefault: '계정과 모든 데이터를 영구적으로 삭제합니다',
   deleteAccountAlertTitle: '계정을 영구적으로 삭제하시겠습니까?',
   deleteAccountAlertMessage:
-    '가족 계정 삭제를 예약합니다. 아직 삭제된 것은 없습니다. 삭제 예정일 전에는 언제든지 로그인해 취소할 수 있습니다. 그 이후에는 모든 데이터(기기, 활동, 위치 기록, SOS 사진)가 모든 보호자와 자녀에 대해 영구적으로 삭제됩니다.',
+    '가족 계정 삭제를 예약합니다. 아직 삭제된 것은 없습니다. 삭제 예정일 전에는 언제든지 로그인해 취소할 수 있습니다. 그 이후에는 모든 데이터(기기, 활동, 위치 기록, SOS 사진)가 모든 부모와 자녀에 대해 영구적으로 삭제됩니다.',
   deleteAccountAlertMessageMember:
-    '본인 계정의 삭제를 예약합니다. 아직 삭제된 것은 없습니다. 삭제 예정일 전에는 언제든지 로그인해 취소할 수 있습니다. 그 이후에는 본인의 로그인 정보와 설정이 삭제됩니다. 가족과 가족의 기기, 다른 보호자에게는 영향이 없습니다.',
+    '본인 계정의 삭제를 예약합니다. 아직 삭제된 것은 없습니다. 삭제 예정일 전에는 언제든지 로그인해 취소할 수 있습니다. 그 이후에는 본인의 로그인 정보와 설정이 삭제됩니다. 가족과 가족의 기기, 다른 부모에게는 영향이 없습니다.',
   deleteAccountSubscriptionNotice:
     '계정을 삭제해도 구독은 취소되지 않습니다. App Store 또는 Google Play에서 취소하세요.',
   sendRequestButton: '영구적으로 삭제',
@@ -187,7 +187,7 @@ export const settings = {
   familyMembersSection: '구성원',
   deleteAccountSubtitleScheduled: '삭제 예약됨. 로그인하면 취소할 수 있습니다.',
   deleteAccountImpact:
-    '접근 권한을 잃는 보호자: {{parents}}명. 접근 권한을 잃는 자녀 기기: {{devices}}대.',
+    '접근 권한을 잃는 부모: {{parents}}명. 접근 권한을 잃는 자녀 기기: {{devices}}대.',
   deleteAccountGraceNotice:
     '삭제는 {{days}}일 후에 진행됩니다. 그때까지는 KidGate를 열어 취소할 수 있습니다.',
   deleteAccountReauthNotice: '확인을 위해 다시 로그인해야 합니다.',

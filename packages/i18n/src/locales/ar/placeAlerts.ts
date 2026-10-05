@@ -39,7 +39,7 @@ export const placeAlerts = {
   mapHint: 'اسحب الخريطة لتحريك الدبوس.',
   placesFull: 'لقد حفظت الحد الأقصى وهو {{max}} أماكن.',
   deleteConfirmTitle: 'حذف هذا المكان؟',
-  deleteConfirmMessage: 'إزالة "{{name}}" من تنبيهات الأماكن.',
+  deleteConfirmMessage: 'إزالة «{{name}}» من تنبيهات الأماكن.',
   emptyEventsTitle: 'لا يوجد نشاط أماكن بعد',
   emptyEventsSubtitle:
     'عندما يدخل هذا الجهاز مكانًا محفوظًا أو يغادره، تظهر الأحداث هنا.',

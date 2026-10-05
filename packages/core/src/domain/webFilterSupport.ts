@@ -97,8 +97,9 @@ export function supportsWebHistory(device: WebFilterSupportInput): boolean {
  * something they can do about it.
  *
  * Returns an i18n key or null. Null is the ordinary case and means the row
- * should say whatever it says for a platform that cannot filter — a build with
- * no extension, an Android TV, a Windows PC. A key means the device published
+ * should say whatever it says for a device that cannot filter — a build with
+ * no filter in it, or one whose filter is off with nothing a person nearby can
+ * do about it. A key means the device published
  * `webFilterBlocker`: the filter exists on that machine and is waiting on a
  * person who is standing next to it.
  *

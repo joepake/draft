@@ -35,11 +35,11 @@ export const plans = {
   compareParentsFree: 'حتى 3',
   compareParentsPremium: 'حتى 6',
   compareSync: 'التحديثات من الجهاز',
-  compareSyncFree: 'كل 30 دقيقة',
+  compareSyncFree: 'عند فتحك KidGate',
   compareSyncPremium: 'مباشر',
   compareScreenTime: 'وقت الشاشة',
   compareScreenTimeFree: 'اليوم، أكثر 3 تطبيقات استخدامًا',
-  compareScreenTimePremium: 'كل التطبيقات، سجل 30 يومًا',
+  compareScreenTimePremium: 'كل التطبيقات، ساعةً بساعة، سجل 30 يومًا',
   compareLocation: 'الموقع',
   compareLocationFree: 'عند فتح الخريطة',
   compareLocationPremium: 'مباشر، مع السجل وتنبيهات الأماكن',
@@ -54,8 +54,8 @@ export const plans = {
   compareSafetyFree: 'تنبيهات + تسجيل الوصول',
   compareSafetyPremium: 'يضيف صورة إلى كل تسجيل وصول',
   compareControls: 'حظر التطبيقات وفلتر الويب',
-  compareControlsFree: 'أي تطبيق، محتوى البالغين',
-  compareControlsPremium: 'حسب الفئة، قوائمك الخاصة',
+  compareControlsFree: 'أي تطبيق، مجموعة ثابتة من الفئات',
+  compareControlsPremium: 'حسب الفئة، قوائمك الخاصة، طلبات المواقع',
   compareReport: 'التقرير الأسبوعي',
   compareReportFree: 'مرة واحدة، عند انتهاء التجربة',
   compareReportPremium: 'كل أسبوع',
@@ -64,7 +64,7 @@ export const plans = {
   compareActivityFeedPremium: '30 يومًا',
   compareChildReport: 'تقارير لكل طفل',
   compareIncluded:
-    'تشمل الخطتان الحد اليومي وساعات الحظر والتطبيقات المحظورة وفلتر الويب وقفل الجهاز وSOS وطلبات الوقت ومهام المكافآت على أجهزة iPhone وAndroid وMac وWindows في عائلة واحدة، إضافة إلى لوحة الويب. ويدعم KidGate أيضًا Android TV وChromebook، مع عناصر تحكم أقل.',
+    'تشمل الخطتان الحد اليومي وساعات الحظر والتطبيقات المحظورة وحدود التطبيقات والموافقة على التطبيقات الجديدة وفلتر الويب وقفل الجهاز وSOS وطلبات الوقت ومهام المكافآت على أجهزة iPhone وAndroid وMac وWindows في عائلة واحدة، إضافة إلى لوحة الويب. ويدعم KidGate أيضًا Android TV وChromebook، مع عناصر تحكم أقل.',
   sectionWhyPremium: 'ما الذي يضيفه Premium',
   sectionWhyPremiumSubtitle:
     'كل القواعد تستمر في العمل في الخطة المجانية. يضيف Premium ما يمكنك رؤيته، ومتى.',
@@ -119,7 +119,7 @@ export const plans = {
   memberTrialActiveSubtitle:
     'هذه العائلة في فترة تجريبية. وعند انتهائها، تستمر كل القواعد في العمل على كل الأجهزة ويواصل جهاز واحد إرسال التقارير؛ ويمكن للمالك الاشتراك للحصول على النشاط المباشر والسجل والتقارير من كل الأجهزة.',
   memberTrialEndedSubtitle:
-    'انتهت تجربة هذه العائلة. لا يزال الحد اليومي والتطبيقات المحظورة وفلتر الويب والموقع يعمل. اطلب من مالك العائلة الاشتراك للحصول على التحديثات المباشرة والسجل والتنبيهات.',
+    'انتهت تجربة هذه العائلة. لا يزال الحد اليومي وساعات الحظر والتطبيقات المحظورة وفلتر الويب والموقع يعمل. اطلب من مالك العائلة الاشتراك للحصول على التحديثات المباشرة والسجل والتنبيهات.',
   memberSetupTrialSubtitle:
     'تبدأ الفترة التجريبية عندما يربط المالك جهاز أحد الوالدين وجهاز طفل.',
   premiumActivatedTitle: 'تم فتح Premium',
@@ -165,8 +165,7 @@ export const plans = {
   termLifetime: 'مدى الحياة',
   badgeOneTime: 'دفعة واحدة',
   planPeriodOnce: 'مرة واحدة',
-  billedOnce:
-    'ادفع مرة واحدة للحصول على تقارير مما يصل إلى {{devices}} من أجهزة الأطفال، طوال توفر KidGate',
+  billedOnce: 'ادفع مرة واحدة، طوال توفر KidGate',
   sectionFreePlan: 'إذا لم تشترك أبدًا',
   devicesUnlimited: 'كل أجهزة الأطفال ترسل تقارير',
   featureFootnotePlatforms:
@@ -214,7 +213,7 @@ export const plans = {
   teaserProofRewardTasks: 'المهام النشطة: {{count}}',
   teaserRewardTasks:
     'هذا كل ما تشغّله الخطة المجانية في وقت واحد. Premium يضاعف العدد.',
-  teaserLiveNote: 'يجري تحديث الخطة المجانية كل 30 دقيقة. Premium مباشر.',
+  teaserLiveNote: 'يجري تحديث الخطة المجانية عند فتحك KidGate للاطلاع. Premium مباشر.',
   teaserUsageTimeline: 'يعرض Premium ساعات اليوم التي استُخدم فيها الجهاز.',
   teaserProofParents: 'الوالدون: {{count}}',
   teaserParentCap:

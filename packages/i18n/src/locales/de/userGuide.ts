@@ -186,7 +186,7 @@ export const userGuide = {
       keywords: 'bildschirmzeit, family controls, iphone, ipad, autorisieren',
       tip: 'Fehlt der Erlauben-Button, öffne iOS-Einstellungen, dann Bildschirmzeit und stelle sicher, dass Bildschirmzeit auf dem Kindergerät zuerst aktiviert ist.',
       steps: {
-        '1': 'Öffne auf dem iPhone des Kindes KidGate und bleibe auf dem Status-/Einrichtungsbildschirm.',
+        '1': 'Öffne KidGate und bleibe auf dem Bildschirm „Status“.',
         '2': 'Wähle „App- & Websitenutzung erlauben“ (oder das Bildschirmzeit-Banner).',
         '3': 'Wähle im Systemdialog „Erlauben“. Bitte schließe den Dialog nicht ohne eine Auswahl.',
         '4': 'Kehre zu KidGate zurück. Das Banner verschwindet, sobald die Autorisierung erfolgreich ist.',
@@ -393,7 +393,7 @@ export const userGuide = {
       title: 'Nutzungsberichte lesen',
       summary:
         'Sieh, wie lange jedes Gerät heute und in den letzten 30 Tagen genutzt wurde – pro Kind und jeden Montag in einem Bericht.',
-      tip: 'Im Gratis-Tarif siehst du die heutige Gesamtzeit und die Top 3 Apps, alle 30 Minuten aktualisiert. Premium ergänzt 30 Tage Verlauf, wann jedes Gerät genutzt wurde, jede App, einen Bericht für jedes Kind und jeden Montag einen neuen Wochenbericht. iPhone und iPad melden nur die Gesamtzeit.',
+      tip: 'Im Gratis-Tarif siehst du die heutige Gesamtzeit und die Top 3 Apps, aktualisiert, wenn du nachsiehst. Premium ergänzt 30 Tage Verlauf, wann jedes Gerät genutzt wurde, jede App, einen Bericht für jedes Kind und jeden Montag einen neuen Wochenbericht. iPhone und iPad melden nur die Gesamtzeit.',
       steps: {
         '1': 'Öffne Berichte. „Heute“ zählt alle Geräte zusammen; darunter folgen der Wochenbericht, jedes Kind („Nach Kind“) und jedes Gerät („Nach Gerät“).',
         '2': 'Tippe auf ein Gerät, um seinen Nutzungsbericht zu öffnen: heute im Vergleich zum Tageslimit, „Letzte 30 Tage“, „Wann es genutzt wurde“ und „Meistgenutzte Apps“. Du kannst ihn auch über „Nutzung heute“ auf dem Gerätebildschirm öffnen.',
@@ -480,7 +480,7 @@ export const userGuide = {
       steps: {
         '1': 'Öffne Einstellungen. Die Karte oben zeigt deinen aktuellen Plan; wähle „Pläne ansehen“.',
         '2': 'Die 7-tägige Testphase beginnt, sobald dein erstes Kindergerät gekoppelt ist, und umfasst alles aus Premium.',
-        '3': 'Im Gratis-Tarif funktionieren alle Regeln weiter, aber nur ein Gerät sendet Berichte: alle 30 Minuten, mit der heutigen Gesamtzeit und den Top 3 Apps. Premium ergänzt Live-Updates, alle Geräte, 30 Tage Verlauf, Web- und Videoverlauf sowie Wochenberichte.',
+        '3': 'Im Gratis-Tarif funktionieren alle Regeln weiter, aber nur ein Gerät sendet Berichte: die heutige Gesamtzeit und die Top 3 Apps, aktualisiert, wenn du nachsiehst. Premium ergänzt Live-Updates, alle Geräte, 30 Tage Verlauf, Web- und Videoverlauf sowie Wochenberichte.',
         '4': 'Endet die Testphase mit mehr als einem Kindergerät, zeigt KidGate „Wähle dein Hauptgerät“ an. Dieses Gerät sendet weiter Berichte; die anderen zeigen „Pausiert“, behalten aber ihre Regeln. Du kannst die Wahl alle 7 Tage einmal ändern.',
         '5': 'Um zu abonnieren, wähle einen Plan und dann „Premium abonnieren“. Mit einem Abo senden alle pausierten Geräte wieder Berichte. Hast du schon einmal bezahlt, wähle „Käufe wiederherstellen“.',
       },

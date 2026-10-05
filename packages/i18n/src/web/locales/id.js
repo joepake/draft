@@ -52,6 +52,7 @@ export default {
   nav: {
     skip: 'Lewati ke konten',
     main: 'Utama',
+    plans: 'Paket',
     about: 'Tentang',
     support: 'Dukungan',
     privacy: 'Privasi',
@@ -100,7 +101,7 @@ export default {
     heroCheck2: 'Pemblokiran Aplikasi',
     heroCheck3: 'Filter web',
     heroCheck4: 'Lokasi',
-    heroCheck5: 'Dasbor keluarga',
+    heroCheck5: 'SOS',
 
     phoneDailyLimit: 'Batas harian',
     phoneBlockedHours: 'Jam Diblokir',
@@ -127,25 +128,25 @@ export default {
       'Tetapkan batas harian dan Jam Diblokir untuk sekolah dan waktu tidur. Perangkat mengunci sendiri saat waktu habis.',
     feature2Title: 'Blokir aplikasi',
     feature2Text:
-      'Pilih persis aplikasi apa yang boleh dibuka anak Anda, dilindungi PIN Orang Tua, dan nyalakan pemblokiran dari jauh.',
+      'Pilih aplikasi apa saja yang tidak boleh dibuka anak Anda, dilindungi PIN Orang Tua, dan nyalakan pemblokiran dari jauh.',
     feature3Title: 'Batas Aplikasi',
     feature3Text:
       'Batasi tiap aplikasi sendiri-sendiri, di atas batas harian — “setengah jam TikTok” tanpa harus melarangnya sama sekali. Di Android, Android TV, dan komputer.',
     feature4Title: 'Filter web & riwayat',
     feature4Text:
       'Blokir situs dewasa, judi, melukai diri, dan kategori lain di semua perangkat. Dengan Premium, pilih sendiri kategorinya dan lihat situs mana yang dicoba dibuka dan mana yang dihentikan.',
-    feature5Title: 'Lokasi langsung & tempat',
+    feature5Title: 'Lokasi & tempat',
     feature5Text:
-      'Lihat lokasi terakhir anak Anda, telusuri riwayatnya, dan dapatkan pemberitahuan saat ia tiba di atau meninggalkan tempat tersimpan.',
+      'Lihat di mana anak Anda berada saat Anda memeriksa, hingga 10 kali sehari. Dengan Premium, pantau posisinya secara langsung, telusuri ke mana saja ia pergi, dan dapatkan pemberitahuan saat ia tiba di atau meninggalkan tempat tersimpan.',
     feature6Title: 'Check-In & SOS',
     feature6Text:
-      'Minta anak Anda memastikan dirinya aman, dan terima SOS seketika dari ponselnya saat darurat, lengkap dengan lokasi dan foto bila foto bisa diambil.',
+      'Minta anak Anda memastikan dirinya aman, dengan foto di Premium. Saat darurat, ponselnya langsung mengirim SOS kepada Anda, lengkap dengan lokasi dan foto bila foto bisa diambil.',
     feature7Title: 'Peringatan perlindungan & aplikasi',
     feature7Text:
       'Ketahui saat sebuah izin penting dimatikan di ponsel anak Anda. Aktifkan persetujuan aplikasi baru, maka aplikasi baru di Android, Android TV, atau komputer menunggu persetujuan Anda sebelum bisa dibuka.',
     feature8Title: 'Tugas hadiah & waktu tambahan',
     feature8Text:
-      'Anak mendapat menit tambahan dengan menyelesaikan tugas, atau meminta waktu lebih. Keduanya masuk ke ponsel Anda untuk disetujui.',
+      'Anak mendapat menit tambahan dan bintang dengan menyelesaikan tugas, atau meminta waktu lebih. Keduanya masuk ke ponsel Anda untuk disetujui. Anda yang menentukan apakah Papan bintang memperlihatkan kepada mereka berapa bintang yang dikumpulkan masing-masing minggu ini; papan ini dimulai lagi setiap Senin.',
 
     feature9Title: 'Kunci perangkat',
     feature9Text:
@@ -153,9 +154,9 @@ export default {
     feature10Title: 'Laporan mingguan',
     feature10Text:
       'Setiap Senin: waktu layar, rata-rata harian, apa saja yang diblokir, dan perbandingan dengan minggu sebelumnya.',
-    feature11Title: 'Papan bintang',
+    feature11Title: 'Riwayat YouTube & video',
     feature11Text:
-      'Anak-anak bisa melihat berapa bintang yang dikumpulkan masing-masing minggu ini. Dimulai lagi setiap Senin, dan Anda yang menentukan apakah dinyalakan.',
+      'Video dan Shorts YouTube yang ditonton anak Anda, di aplikasi YouTube pada ponsel Android dan Android TV, serta YouTube di Chrome. Tidak tersedia di iPhone, dan TV tidak mencantumkan Shorts.',
     feature12Title: 'Feed Aktivitas',
     feature12Text:
       'Semua yang terjadi, berurutan — perangkat dibuka, permintaan situs dijawab, tugas selesai, peringatan dikirim. Paket gratis menampilkan hari ini; Premium menyimpan 30 hari.',
@@ -224,17 +225,17 @@ export default {
       'Jam Diblokir dan Batas harian dijalankan di perangkat itu sendiri, jadi mencabut router tidak mengubah apa pun. TV bahkan menerima PIN Orang Tua Anda tanpa koneksi sama sekali.',
     only6Title: 'Pengakuan saat minggunya memang layak',
     only6Text:
-      'Setiap laporan mingguan menyisakan ruang untuk yang berjalan baik — batas yang dipatuhi, tidak ada lagi begadang, tugas yang selesai — dan baru mengatakannya bila minggu itu benar-benar terukur.',
+      'Dengan Premium, setiap laporan mingguan menyisakan ruang untuk yang berjalan baik — batas yang dipatuhi, tidak ada lagi begadang, tugas yang selesai — dan baru mengatakannya bila minggu itu benar-benar terukur.',
 
     faqEyebrow: 'FAQ',
     faqTitle: 'Pertanyaan pertama orang tua',
     faqSub: 'Jawaban singkat sebelum Anda mengunduh.',
     faq1Q: 'Apakah ada uji coba gratis?',
     faq1A:
-      'Ya. Uji coba 7 hari dimulai saat perangkat orang tua dan anak pertama Anda terhubung, dan mencakup semua fitur Premium. Setelah berakhir, aturan yang Anda buat — Batas harian, Jam Diblokir, Aplikasi yang Diblokir, Filter web, Kunci perangkat, permintaan waktu tambahan, dan tugas hadiah — tetap berjalan gratis di setiap perangkat anak, dan Anda masih bisa menanyakan posisi perangkat yang Anda pilih. Aktivitas langsung, riwayat, laporan mingguan, dan pelacakan lokasi adalah yang dikembalikan oleh Premium.',
+      'Ya. Uji coba 7 hari dimulai saat perangkat orang tua dan perangkat anak Anda pertama kali terhubung, dan mencakup semua fitur Premium. Setelah berakhir, aturan yang Anda buat — Batas harian, Jam Diblokir, Aplikasi yang Diblokir, Filter web, Kunci perangkat, permintaan waktu tambahan, dan tugas hadiah — tetap berjalan gratis di setiap perangkat anak, dan perangkat yang Anda pilih untuk tetap dipantau masih membagikan lokasinya. Aktivitas langsung, riwayat, laporan mingguan, dan pelacakan lokasi adalah yang dikembalikan oleh Premium.',
     faq2Q: 'Berapa perangkat yang bisa saya kelola?',
     faq2A:
-      'Satu langganan mencakup seluruh keluarga Anda — setiap perangkat anak dan setiap orang tua dalam paket yang sama. Pada paket gratis, satu perangkat anak tetap dipantau dan Anda yang memilih yang mana; perangkat lainnya tetap menerapkan aturan yang sudah Anda atur — aturan itu kemudian bisa dilonggarkan tetapi tidak bisa diperketat — dan berhenti mengirim aktivitas.',
+      'Premium mencakup hingga 25 perangkat anak dan 6 orang tua, termasuk Anda, dan setiap perangkat mengirim aktivitas. Paket gratis mencakup hingga 8 perangkat anak dan 3 orang tua. Setiap perangkat tetap menerapkan aturan yang Anda atur, tetapi hanya perangkat yang Anda pilih yang mengirim aktivitas; di perangkat lainnya, aturan itu bisa dilonggarkan tetapi tidak bisa diperketat.',
     faq3Q: 'Bisakah anak saya menghapus atau mengakali KidGate?',
     faq3A:
       'Pengaturan sensitif berada di balik PIN Orang Tua, dan Peringatan perlindungan langsung memberi tahu Anda jika izin penting dimatikan di perangkat anak.',
@@ -243,7 +244,7 @@ export default {
       'Bisa. Dasbor orang tua terbuka di browser mana pun. Pindai kode yang ditampilkannya dengan aplikasi KidGate di ponsel Anda, dan Anda melihat keluarga, perangkat, serta pengaturan yang sama, dengan kendali yang sudah terbuka. Anda juga bisa masuk dengan akun Anda untuk membaca; mengunci perangkat atau mengubah sebuah batas lalu akan meminta PIN Orang Tua Anda.',
     faq5Q: 'Berapa harga Premium?',
     faq5A:
-      'Premium berharga US$6,99 per bulan atau US$39,99 per tahun di AS, ditagih melalui App Store atau Google Play dan ditampilkan di sana dalam mata uang Anda. Paket Seumur hidup yang dibayar sekali mencakup hingga tiga perangkat anak. Paket gratis tidak pernah berakhir.',
+      'Premium berharga US$6,99 per bulan atau US$39,99 per tahun di AS, ditagih melalui App Store atau Google Play dan ditampilkan di sana dalam mata uang Anda. Paket Seumur hidup yang dibayar sekali memberikan Premium yang sama di setiap perangkat anak, selama KidGate tersedia. Paket gratis tidak pernah berakhir.',
     faqMore: 'Masih ada pertanyaan? Kunjungi Dukungan',
 
     ctaTitle: 'Mulai lindungi keluarga Anda hari ini',
@@ -295,7 +296,7 @@ export default {
     invalidEmail: 'Alamat email itu sepertinya tidak benar.',
     userDisabled: 'Akun ini telah dinonaktifkan.',
     userNotFound: 'Tidak ada akun KidGate yang memakai email itu.',
-    wrongPassword: 'Email atau kata sandi salah.',
+    wrongPassword: 'Email atau kata sandi tidak cocok. Silakan coba lagi.',
     rateLimited:
       'Terlalu banyak kode masuk dari jaringan ini. Coba lagi dalam {{minutes}} menit.',
     tooManyRequests: 'Terlalu banyak percobaan. Tunggu beberapa menit lalu coba lagi.',
@@ -624,7 +625,7 @@ export default {
     webBackgroundNote:
       'Saat perangkat tidak dipakai, sebagian aplikasi tetap mengakses internet di latar belakang: pembaruan, rekomendasi, dan pemeriksaan berjalan sendiri.',
     filterHintIos:
-      'Di iOS penyaring memakai kontrol konten dewasa milik Apple — pemblokiran per kategori tidak tersedia di iPhone atau iPad.',
+      'iPhone atau iPad ini hanya menyaring dengan kontrol konten dewasa milik Apple. Perbarui KidGate di perangkat itu dan izinkan VPN KidGate untuk memblokir per kategori.',
     filterHintAndroid: 'Kategori ditegakkan oleh penyaring DNS di perangkat.',
     filterHintMacos: 'Kategori ditegakkan oleh penyaring konten KidGate di Mac.',
 
@@ -774,7 +775,6 @@ export default {
     childrenTitle: 'Setiap anak',
     childrenNote:
       'Dua minggu yang sama, per perangkat. Persentase dihitung dari total keluarga.',
-    colChild: 'Anak',
     colScreenTime: 'Waktu Layar',
     colShare: 'Porsi',
     colChange: 'Dibanding minggu lalu',
@@ -807,7 +807,7 @@ export default {
     start3:
       '**3. Sambungkan perangkat anak.** Pasang KidGate di perangkat anak Anda, lalu buka. Di ponsel atau tablet, pilih *Ini perangkat anak*. Di perangkat orang tua, buka *Keluarga* dan ketuk ikon pindai (*Pindai kode*), lalu pindai kode QR yang tampil di perangkat anak (atau masukkan kode 6 karakter). Jika perangkat anak meminta konfirmasi, konfirmasi sambungan di sana; TV akan tersambung sendiri.',
     start4:
-      '**4. Berikan izin di perangkat anak.** Buka layar *Status* di perangkat anak dan ketuk *Lanjutkan penyiapan* — layar ini memandu setiap izin yang dibutuhkan KidGate. Di Android: Notifikasi, Akses Penggunaan, Tampil di atas aplikasi lain, Aksesibilitas (bantuan kunci), Alarm & pengingat, dan Baterai tanpa batasan; di iOS: *Izinkan Penggunaan Aplikasi & Situs Web* (Durasi Layar). Kendali tidak akan berfungsi penuh sampai semuanya aktif.',
+      '**4. Berikan izin di perangkat anak.** Buka layar *Status* di perangkat anak dan ketuk *Lanjutkan penyiapan* — layar ini memandu setiap izin yang dibutuhkan KidGate. Di Android: Notifikasi, Akses Penggunaan, Tampil di atas aplikasi lain, Aksesibilitas (bantuan kunci), Alarm & pengingat, dan Baterai tanpa batasan; di iOS: *Izinkan Penggunaan Aplikasi & Situs Web* (Durasi Layar), serta untuk Filter web, *Izinkan* saat iOS meminta untuk menambahkan konfigurasi VPN. Kendali tidak akan berfungsi penuh sampai semuanya aktif.',
     start5:
       '**5. Atur kendali.** Dari perangkat orang tua, buka kartu perangkat anak dan tetapkan Batas harian, Jam Diblokir, Aplikasi yang Diblokir, Filter web, dan fitur lokasi.',
     startNote:
@@ -845,7 +845,7 @@ export default {
 
     faq8Q: 'Kenapa penguncian atau Jam Diblokir tidak bekerja?',
     faq8A:
-      'Di Android, penguncian memerlukan *Tampil di atas aplikasi lain* dan *Aksesibilitas* (bantuan kunci) yang aktif, serta baterai tanpa batasan. Di Xiaomi, Samsung, Oppo, Vivo, dan perangkat serupa, izinkan juga mulai otomatis dan keluarkan KidGate dari daftar "aplikasi tidur" mana pun (lihat *Status → Izinkan mulai otomatis* di perangkat anak). Di iOS, penguncian bergantung pada otorisasi Durasi Layar. Jika sebuah izin dimatikan kemudian, Anda akan menerima Peringatan perlindungan di perangkat orang tua.',
+      'Di Android, penguncian memerlukan *Tampil di atas aplikasi lain* dan *Aksesibilitas* (bantuan kunci) yang aktif, serta baterai tanpa batasan. Di Xiaomi, Samsung, Oppo, Vivo, dan perangkat serupa, izinkan juga mulai otomatis dan keluarkan KidGate dari daftar “aplikasi tidur” mana pun (lihat *Status → Izinkan mulai otomatis* di perangkat anak). Di iOS, penguncian bergantung pada otorisasi Durasi Layar. Jika sebuah izin dimatikan kemudian, Anda akan menerima Peringatan perlindungan di perangkat orang tua.',
 
     faq9Q: 'Bagaimana cara memblokir aplikasi tertentu?',
     faq9A:
@@ -885,7 +885,7 @@ export default {
     eyebrow: 'Tentang kami',
     title: 'Kontrol orang tua yang benar-benar bisa',
     titleAccent: 'disepakati satu keluarga.',
-    lede: 'KidGate dibuat tim kecil dan independen yang mengerjakan satu produk saja. Sikap kami sederhana: orang tua harus bisa memercayai apa yang dikatakan aplikasi ini — termasuk bagian ketika aplikasi mengaku tidak bisa membantu.',
+    lede: 'KidGate dibuat oleh seorang pengembang independen yang mengerjakan satu produk saja. Sikap kami sederhana: orang tua harus bisa memercayai apa yang dikatakan aplikasi ini — termasuk bagian ketika aplikasi mengaku tidak bisa membantu.',
     storyEyebrow: 'Kenapa KidGate ada',
     storyTitle: 'Waktu layar menjadi pertengkaran di setiap rumah',
     storyP1:
@@ -916,7 +916,7 @@ export default {
       'Aturan yang sama, ditulis sekali, dijalankan sejauh yang diizinkan tiap platform.',
     make1Title: 'iPhone dan iPad',
     make1Text:
-      'Batas harian, Jam Diblokir, dan pemblokiran aplikasi lewat framework Durasi Layar (Screen Time) milik Apple.',
+      'Batas harian, Jam Diblokir, dan pemblokiran aplikasi lewat framework Durasi Layar (Screen Time) milik Apple, serta Filter web lewat koneksi privat di perangkat itu sendiri.',
     make2Title: 'Android',
     make2Text:
       'Batas waktu, blokir aplikasi, kunci layar penuh, dan Filter web, plus peringatan saat aplikasi baru muncul.',
@@ -952,13 +952,13 @@ export default {
   promo: {
     intro: 'Sepanjang hari anak Anda, Anda tetap tenang.',
     school: 'Kelas dimulai. Ponsel mengunci sendiri.',
-    apps: 'Hanya aplikasi yang Anda izinkan yang bisa dibuka.',
-    arrive: 'Ia tiba di rumah nenek, dan Anda langsung tahu.',
+    apps: 'Aplikasi yang Anda blokir tidak bisa dibuka.',
+    arrive: 'Ia tiba di rumah nenek, dan Anda mendapat notifikasi.',
     checkIn: 'Anda menanyakan kabarnya. Sekali ketuk, ia memastikan dirinya aman.',
     sos: 'Jika terjadi sesuatu, satu SOS menunjukkan di mana ia berada.',
     limit: 'Waktu main habis. Ponsel mengunci sendiri.',
     lockNow: 'Makan malam sudah siap. Kunci ponselnya dari ponsel Anda.',
-    web: 'Situs dewasa diblokir di semua perangkat.',
+    web: 'Blokir situs berbahaya di semua perangkat.',
     tv: 'TV di ruang keluarga juga mengikuti aturan rumah yang sama.',
     reward: 'PR selesai. Dapat 15 menit tambahan.',
     bedtime: 'Saat waktu tidur, ponsel, komputer, dan TV juga ikut tidur.',

@@ -36,11 +36,11 @@ export const plans = {
   compareParentsFree: 'En fazla 3',
   compareParentsPremium: 'En fazla 6',
   compareSync: 'Cihazdan gelen güncellemeler',
-  compareSyncFree: '30 dakikada bir',
+  compareSyncFree: 'Siz baktığınızda',
   compareSyncPremium: 'Canlı',
   compareScreenTime: 'Ekran süresi',
   compareScreenTimeFree: 'Bugün, en çok kullanılan 3 uygulama',
-  compareScreenTimePremium: 'Her uygulama, 30 günlük geçmiş',
+  compareScreenTimePremium: 'Her uygulama, saat saat, 30 günlük geçmiş',
   compareLocation: 'Konum',
   compareLocationFree: 'Haritayı açtığınızda',
   compareLocationPremium: 'Canlı, geçmiş ve yer uyarılarıyla',
@@ -55,8 +55,8 @@ export const plans = {
   compareSafetyFree: 'Uyarılar + Check-In',
   compareSafetyPremium: 'Her Check-In’e fotoğraf ekler',
   compareControls: 'Uygulama engelleme ve web filtresi',
-  compareControlsFree: 'Her uygulama, yetişkin içeriği',
-  compareControlsPremium: 'Kategoriye göre, kendi listeleriniz',
+  compareControlsFree: 'Her uygulama, sabit kategori seti',
+  compareControlsPremium: 'Kategoriye göre, kendi listeleriniz, site istekleri',
   compareReport: 'Haftalık rapor',
   compareReportFree: 'Bir kez, deneme bitince',
   compareReportPremium: 'Her hafta',
@@ -65,7 +65,7 @@ export const plans = {
   compareActivityFeedPremium: '30 gün',
   compareChildReport: 'Çocuk başına rapor',
   compareIncluded:
-    'Her iki plan da tek ailede iPhone, Android, Mac ve Windows’ta Günlük sınır, Engellenen Saatler, Engellenen Uygulamalar, Web filtresi, Cihaz Kilidi, SOS, Süre istekleri ve Ödül görevleri özelliklerini, ayrıca web panelini içerir. Android TV ve Chromebook da daha az kontrolle desteklenir.',
+    'Her iki plan da tek ailede iPhone, Android, Mac ve Windows’ta Günlük sınır, Engellenen Saatler, Engellenen Uygulamalar, Uygulama Sınırları, yeni uygulama onayı, Web filtresi, Cihaz Kilidi, SOS, Süre istekleri ve Ödül görevleri özelliklerini, ayrıca web panelini içerir. Android TV ve Chromebook da daha az kontrolle desteklenir.',
   sectionWhyPremium: 'Premium neler ekler',
   sectionWhyPremiumSubtitle:
     'Her kural Ücretsiz planda çalışmaya devam eder. Premium, neyi ne kadar erken gördüğünüzü ekler.',
@@ -122,7 +122,7 @@ export const plans = {
   memberTrialActiveSubtitle:
     'Bu aile deneme sürecinde. Deneme bittiğinde tüm kurallar her cihazda çalışmaya devam eder ve bir cihaz rapor göndermeyi sürdürür; aile sahibi canlı etkinlik, geçmiş ve tüm cihazlardan raporlar için abone olabilir.',
   memberTrialEndedSubtitle:
-    'Bu ailenin deneme süresi bitti. Günlük sınır, Engellenen Uygulamalar, Web filtresi ve konum çalışmaya devam ediyor. Canlı güncellemeler, geçmiş ve uyarılar için aile sahibinden abone olmasını isteyin.',
+    'Bu ailenin deneme süresi bitti. Günlük sınır, Engellenen Saatler, Engellenen Uygulamalar, Web filtresi ve konum çalışmaya devam ediyor. Canlı güncellemeler, geçmiş ve uyarılar için aile sahibinden abone olmasını isteyin.',
   memberSetupTrialSubtitle:
     'Deneme, aile sahibi bir ebeveyn cihazı ve bir çocuk cihazı bağladığında başlar.',
   premiumActivatedTitle: 'Premium açıldı',
@@ -169,8 +169,7 @@ export const plans = {
   termLifetime: 'Ömür boyu',
   badgeOneTime: 'Tek seferlik',
   planPeriodOnce: 'tek sefer',
-  billedOnce:
-    'Bir kez öde, en fazla {{devices}} çocuk cihazından rapor al; KidGate sunulduğu sürece geçerli',
+  billedOnce: 'Bir kez öde; KidGate sunulduğu sürece geçerli',
   sectionFreePlan: 'Hiç abone olmazsanız',
   devicesUnlimited: 'Her çocuk cihazı rapor gönderir',
   featureFootnotePlatforms:
@@ -220,7 +219,7 @@ export const plans = {
   teaserProofRewardTasks: 'Etkin görevler: {{count}}',
   teaserRewardTasks:
     'Ücretsiz planın aynı anda yürüttüğü görev sayısı bu kadar. Premium bunu ikiye katlar.',
-  teaserLiveNote: 'Ücretsiz plan 30 dakikada bir güncellenir. Premium canlıdır.',
+  teaserLiveNote: 'Ücretsiz plan siz baktığınızda güncellenir. Premium canlıdır.',
   teaserUsageTimeline:
     'Premium, cihazın gün içinde hangi saatlerde kullanıldığını gösterir.',
   teaserProofParents: 'Ebeveynler: {{count}}',

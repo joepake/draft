@@ -36,11 +36,11 @@ export const plans = {
   compareParentsFree: '最大3人',
   compareParentsPremium: '最大6人',
   compareSync: 'デバイスからの更新',
-  compareSyncFree: '30分ごと',
+  compareSyncFree: '開いて確認したとき',
   compareSyncPremium: 'リアルタイム',
   compareScreenTime: '利用時間',
   compareScreenTimeFree: '今日の合計と上位3アプリ',
-  compareScreenTimePremium: 'すべてのアプリ、30日分の履歴',
+  compareScreenTimePremium: 'すべてのアプリ、時間帯別、30日分の履歴',
   compareLocation: '位置情報',
   compareLocationFree: '地図を開いたとき',
   compareLocationPremium: 'リアルタイム、履歴と場所の通知つき',
@@ -55,8 +55,8 @@ export const plans = {
   compareSafetyFree: '通知 + チェックイン',
   compareSafetyPremium: 'チェックインごとに写真を追加',
   compareControls: 'アプリのブロックとWebフィルター',
-  compareControlsFree: 'すべてのアプリ、成人向けコンテンツ',
-  compareControlsPremium: 'カテゴリ別、独自のリスト',
+  compareControlsFree: 'すべてのアプリ、固定のカテゴリ',
+  compareControlsPremium: 'カテゴリ別、独自のリスト、サイトのリクエスト',
   compareReport: '週次レポート',
   compareReportFree: 'お試し終了時に1回',
   compareReportPremium: '毎週',
@@ -65,7 +65,7 @@ export const plans = {
   compareActivityFeedPremium: '30日分',
   compareChildReport: 'お子さまごとのレポート',
   compareIncluded:
-    'どちらのプランにも、1つの家族のiPhone・Android・Mac・Windowsで使える1日の上限、休止時間、ブロックされたアプリ、Webフィルター、デバイスロック、SOS、時間延長リクエスト、ごほうびタスクに加え、Webダッシュボードが含まれます。Android TVとChromebookにも対応していますが、使える管理機能は少なめです。',
+    'どちらのプランにも、1つの家族のiPhone・Android・Mac・Windowsで使える1日の上限、休止時間、ブロックされたアプリ、アプリの利用時間制限、新しいアプリの承認、Webフィルター、デバイスロック、SOS、時間延長リクエスト、ごほうびタスクに加え、Webダッシュボードが含まれます。Android TVとChromebookにも対応していますが、使える管理機能は少なめです。',
   sectionWhyPremium: 'Premiumで加わるもの',
   sectionWhyPremiumSubtitle:
     'ルールはすべて無料版でも動き続けます。Premiumでは、見えるものと、それがどれだけ早く届くかが加わります。',
@@ -122,7 +122,7 @@ export const plans = {
   memberTrialActiveSubtitle:
     'この家族はお試し期間中です。終了後も、すべてのルールがすべてのデバイスで働き続け、1台のデバイスは報告を続けます。オーナーが登録すると、リアルタイムの利用状況、履歴、すべてのデバイスからの報告が使えるようになります。',
   memberTrialEndedSubtitle:
-    'このご家族のお試しは終了しました。1日の上限、ブロックされたアプリ、Webフィルター、位置情報はそのまま使えます。リアルタイムの更新、履歴、通知は管理者の登録が必要です。',
+    'このご家族のお試しは終了しました。1日の上限、休止時間、ブロックされたアプリ、Webフィルター、位置情報はそのまま使えます。リアルタイムの更新、履歴、通知は管理者の登録が必要です。',
   memberSetupTrialSubtitle:
     '管理者が保護者のデバイスと子どものデバイスを接続すると、トライアルが開始します。',
   premiumActivatedTitle: 'Premiumが有効になりました',
@@ -169,8 +169,7 @@ export const plans = {
   termLifetime: '買い切り',
   badgeOneTime: '一回のみ',
   planPeriodOnce: '一回',
-  billedOnce:
-    '一度の支払いで、お子さまのデバイス最大{{devices}}台からの報告を、KidGateが提供されている間ご利用いただけます',
+  billedOnce: '一度の支払いで、KidGateが提供されている間ご利用いただけます',
   sectionFreePlan: 'ご登録されない場合',
   devicesUnlimited: 'お子さまのすべてのデバイスから報告',
   featureFootnotePlatforms:
@@ -221,7 +220,8 @@ export const plans = {
   teaserProofRewardTasks: '進行中のタスク: {{count}}',
   teaserRewardTasks:
     '無料プランが同時に持てるタスクはここまでです。Premium はこの 2 倍になります。',
-  teaserLiveNote: '無料プランは30分ごとの更新です。Premium はリアルタイムです。',
+  teaserLiveNote:
+    '無料プランでは、開いて確認したときに更新されます。Premium はリアルタイムです。',
   teaserUsageTimeline: 'Premium なら、その日のどの時間帯に使われたかがわかります。',
   teaserProofParents: '保護者: {{count}}',
   teaserParentCap:

@@ -373,20 +373,31 @@ export function reportChildren(report: FamilyReport): ReportChildRow[] {
 export interface ReportChildrenHeading {
   titleKey: string;
   noteKey: string;
+  /** The first column's header, which names what each row is. */
+  columnKey: string;
 }
 
 /**
- * The heading and note over `reportChildren`'s table, chosen by what its rows
- * are.
+ * The heading, note and first column over `reportChildren`'s table, chosen by
+ * what its rows are.
  *
  * The table is one row per child once a family has two or more set up, and one
  * per device otherwise — so a single fixed "Each child … per device" was wrong
  * in both cases: person rows are not per device, and device rows are not
- * children. `reportChildren` never mixes the two, so the first row decides.
+ * children. The column said "Child" over device rows until 2026-10-05.
+ * `reportChildren` never mixes the two, so the first row decides.
  * Keys, never text, like every other copy table in `domain/`.
  */
 export function reportChildrenHeading(rows: ReportChildRow[]): ReportChildrenHeading {
   return rows[0]?.childId
-    ? { titleKey: 'report.childrenTitle', noteKey: 'report.childrenNoteByChild' }
-    : { titleKey: 'report.devicesTitle', noteKey: 'report.childrenNote' };
+    ? {
+        titleKey: 'report.childrenTitle',
+        noteKey: 'report.childrenNoteByChild',
+        columnKey: 'report.colChild',
+      }
+    : {
+        titleKey: 'report.devicesTitle',
+        noteKey: 'report.childrenNote',
+        columnKey: 'report.colDevice',
+      };
 }

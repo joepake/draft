@@ -52,7 +52,7 @@ export const macos = {
   setupSubtitle:
     'Sistem bunların her biri için izin ister ve yalnızca bu cihazı o an kullanan kişi izin verebilir. Şimdi halletmek, sorunun sonradan çocuğunuza sorulmasını önler.',
   setupStepFilterApprovalTitle: 'Web filtrelemeyi onaylayın',
-  setupStepFilterSwitchTitle: 'Filter Network Content',
+  setupStepFilterSwitchTitle: 'Ağ İçeriğini Filtreleme',
 
   setupStepFilterWindowsTitle: 'Web filtreleme',
 

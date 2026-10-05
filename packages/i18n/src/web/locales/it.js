@@ -52,6 +52,7 @@ export default {
   nav: {
     skip: 'Vai al contenuto',
     main: 'Principale',
+    plans: 'Piani',
     about: 'Chi siamo',
     support: 'Assistenza',
     privacy: 'Privacy',
@@ -100,7 +101,7 @@ export default {
     heroCheck2: 'Blocco app',
     heroCheck3: 'Filtro web',
     heroCheck4: 'Posizione',
-    heroCheck5: 'Dashboard famiglia',
+    heroCheck5: 'SOS',
 
     phoneDailyLimit: 'Limite giornaliero',
     phoneBlockedHours: 'Orari di blocco',
@@ -127,25 +128,25 @@ export default {
       'Imposta un tetto giornaliero e gli orari di blocco per la scuola e la notte. Il dispositivo si blocca da solo quando il tempo finisce.',
     feature2Title: 'Blocco app',
     feature2Text:
-      'Scegli esattamente quali app tuo figlio può aprire, protetto dal tuo PIN genitore, e attiva il blocco da remoto.',
+      'Scegli quali app tuo figlio non può aprire — una scelta protetta dal tuo PIN genitore — e attiva il blocco da remoto.',
     feature3Title: 'Limiti app',
     feature3Text:
       'Limita ogni app per conto suo, oltre al limite giornaliero: «mezz’ora di TikTok» senza doverlo vietare del tutto. Su Android, Android TV e computer.',
     feature4Title: 'Filtro web e cronologia',
     feature4Text:
       'Blocca i siti per adulti, il gioco d’azzardo, l’autolesionismo e altre categorie su ogni dispositivo. Con Premium, scegli tu le categorie e guarda quali siti sono stati visitati e quali sono stati bloccati.',
-    feature5Title: 'Posizione in tempo reale e luoghi',
+    feature5Title: 'Posizione e luoghi',
     feature5Text:
-      'Vedi l’ultima posizione di tuo figlio, consulta lo storico e ricevi un avviso quando arriva o lascia un luogo salvato.',
+      'Vedi dov’è tuo figlio quando controlli, fino a 10 volte al giorno. Con Premium lo segui in tempo reale, rivedi i suoi spostamenti e ricevi un avviso quando arriva o lascia un luogo salvato.',
     feature6Title: 'Check-in e SOS',
     feature6Text:
-      'Chiedi a tuo figlio di confermare che sta bene e ricevi un SOS immediato dal suo telefono in caso di emergenza, con la posizione e una foto quando è possibile scattarla.',
+      'Chiedi a tuo figlio di confermare che sta bene: con Premium arriva anche una foto. In caso di emergenza, il suo telefono ti invia subito un SOS con la posizione e una foto quando è possibile scattarla.',
     feature7Title: 'Avvisi di protezione e sulle app',
     feature7Text:
       'Scopri nell’istante in cui un permesso importante viene disattivato sul telefono di tuo figlio. Attiva l’approvazione delle nuove app e una nuova app su Android, Android TV o un computer aspetterà il tuo via libera prima di aprirsi.',
     feature8Title: 'Compiti premio e tempo extra',
     feature8Text:
-      'I ragazzi guadagnano minuti extra completando compiti, o chiedono più tempo. Entrambe le cose arrivano sul tuo telefono da approvare.',
+      'I ragazzi guadagnano minuti extra e stelle completando compiti, o chiedono più tempo. Entrambe le cose arrivano sul tuo telefono da approvare. Sei tu a decidere se la Tabella delle stelle mostra loro quante stelle ha guadagnato ciascuno questa settimana; riparte ogni lunedì.',
 
     feature9Title: 'Blocco dispositivo',
     feature9Text:
@@ -153,9 +154,9 @@ export default {
     feature10Title: 'Report settimanale',
     feature10Text:
       'Ogni lunedì: tempo di utilizzo, media giornaliera, cosa è stato bloccato e il confronto con la settimana prima.',
-    feature11Title: 'Tabella delle stelle',
+    feature11Title: 'Cronologia YouTube e video',
     feature11Text:
-      'I bambini vedono quante stelle ha guadagnato ciascuno questa settimana. Riparte ogni lunedì e sei tu a decidere se attivarla.',
+      'I video e gli Shorts di YouTube guardati da tuo figlio, nell’app YouTube su telefoni Android e Android TV e su YouTube in Chrome. Non su iPhone, e su una TV gli Shorts non compaiono.',
     feature12Title: 'Cronologia attività',
     feature12Text:
       'Tutto quello che è successo, in ordine: un dispositivo sbloccato, una richiesta per un sito con la sua risposta, un compito completato, un avviso inviato. Il piano gratuito mostra la giornata di oggi; Premium conserva 30 giorni.',
@@ -224,17 +225,17 @@ export default {
       'Orari di blocco e limite giornaliero vengono applicati sul dispositivo stesso: staccare il router non cambia nulla. La TV accetta il tuo PIN genitore persino senza alcuna connessione.',
     only6Title: 'Il giusto riconoscimento, quando la settimana lo merita',
     only6Text:
-      'Ogni report settimanale tiene spazio per ciò che è andato bene — un limite rispettato, niente più serate fino a tardi, un compito finito — e lo dice solo quando la settimana è stata davvero misurata.',
+      'Con Premium, ogni report settimanale tiene spazio per ciò che è andato bene — un limite rispettato, niente più serate fino a tardi, un compito finito — e lo dice solo quando la settimana è stata davvero misurata.',
 
     faqEyebrow: 'FAQ',
     faqTitle: 'Le prime domande dei genitori',
     faqSub: 'Risposte rapide prima di scaricare.',
     faq1Q: 'C’è una prova gratuita?',
     faq1A:
-      'Sì. La prova di 7 giorni inizia quando colleghi il primo dispositivo genitore e il primo dispositivo del bambino, e include tutte le funzioni Premium. Alla fine, le regole che hai impostato — Limite giornaliero, Orari di blocco, App bloccate, Filtro web, Blocco dispositivo, richieste di tempo extra e compiti premio — continuano a funzionare gratis su tutti i dispositivi dei figli, e puoi ancora chiedere a quello che scegli dove si trova. Attività in tempo reale, cronologia, report settimanali e tracciamento della posizione sono ciò che Premium riporta.',
+      'Sì. La prova di 7 giorni inizia quando colleghi il primo dispositivo genitore e il primo dispositivo del bambino, e include tutte le funzioni Premium. Alla fine, le regole che hai impostato — Limite giornaliero, Orari di blocco, App bloccate, Filtro web, Blocco dispositivo, richieste di tempo extra e compiti premio — continuano a funzionare gratis su tutti i dispositivi dei figli, e il dispositivo che scegli di mantenere monitorato condivide ancora la sua posizione. Attività in tempo reale, cronologia, report settimanali e tracciamento della posizione sono ciò che Premium riporta.',
     faq2Q: 'Quanti dispositivi posso gestire?',
     faq2A:
-      'Un abbonamento copre tutta la famiglia — ogni dispositivo dei figli e ogni genitore sullo stesso piano. Nel piano gratuito resta monitorato un solo dispositivo del bambino e scegli tu quale; gli altri continuano ad applicare le regole che hai già impostato, che a quel punto si possono allentare ma non rendere più severe, e smettono di inviare attività.',
+      'Premium copre fino a 25 dispositivi dei figli e 6 genitori, contando anche te, e ogni dispositivo invia attività. Il piano gratuito copre fino a 8 dispositivi dei figli e 3 genitori. Ogni dispositivo continua ad applicare le regole che hai impostato, ma solo quello che scegli tu invia attività; sugli altri quelle regole si possono allentare ma non rendere più severe.',
     faq3Q: 'Mio figlio può disinstallare o aggirare KidGate?',
     faq3A:
       'Le impostazioni sensibili sono protette dal PIN genitore e gli avvisi di protezione ti segnalano subito se un permesso chiave viene disattivato sul dispositivo del bambino.',
@@ -243,7 +244,7 @@ export default {
       'Sì. La dashboard genitori si apre in qualsiasi browser. Scansiona il codice che mostra con l’app KidGate sul tuo telefono e vedi la stessa famiglia, gli stessi dispositivi e le stesse impostazioni, con i comandi sbloccati. Puoi anche accedere con il tuo account per consultare; bloccare un dispositivo o modificare un limite richiede allora il PIN genitore.',
     faq5Q: 'Quanto costa Premium?',
     faq5A:
-      'Premium costa 6,99 $ al mese o 39,99 $ all’anno negli Stati Uniti, addebitato tramite App Store o Google Play e mostrato lì nella tua valuta. Il piano A vita, con pagamento unico, copre fino a tre dispositivi dei figli. Il piano gratuito non scade mai.',
+      'Premium costa 6,99 $ al mese o 39,99 $ all’anno negli Stati Uniti, addebitato tramite App Store o Google Play e mostrato lì nella tua valuta. Il piano A vita, con pagamento unico, offre lo stesso Premium su ogni dispositivo dei figli, finché KidGate è disponibile. Il piano gratuito non scade mai.',
     faqMore: 'Altre domande? Vai all’assistenza',
 
     ctaTitle: 'Inizia oggi a proteggere la tua famiglia',
@@ -296,7 +297,7 @@ export default {
     invalidEmail: 'Questo indirizzo email non sembra corretto.',
     userDisabled: 'Questo account è stato disattivato.',
     userNotFound: 'Nessun account KidGate usa questa email.',
-    wrongPassword: 'Email o password errate.',
+    wrongPassword: 'L’email o la password non sono corrette. Riprova.',
     rateLimited:
       'Troppi codici di accesso da questa rete. Riprova tra {{minutes}} min.',
     tooManyRequests: 'Troppi tentativi. Aspetta qualche minuto e riprova.',
@@ -635,7 +636,7 @@ export default {
     webBackgroundNote:
       'Quando nessuno usa il dispositivo, alcune app continuano ad accedere a Internet in background: aggiornamenti, consigli e controlli vanno da soli.',
     filterHintIos:
-      'Su iOS il filtro usa il controllo dei contenuti per adulti di Apple — il blocco per categoria non è disponibile su iPhone e iPad.',
+      'Questo iPhone o iPad filtra solo con il controllo dei contenuti per adulti di Apple. Aggiorna KidGate sul dispositivo e consenti la VPN di KidGate per bloccare per categoria.',
     filterHintAndroid: 'Le categorie sono applicate dal filtro DNS sul dispositivo.',
     filterHintMacos:
       'Le categorie sono applicate dal filtro contenuti KidGate sul Mac.',
@@ -792,7 +793,6 @@ export default {
     childrenTitle: 'Ogni figlio',
     childrenNote:
       'Le stesse due settimane, per dispositivo. Le percentuali sono sul totale della famiglia.',
-    colChild: 'Figlio',
     colScreenTime: 'Tempo di utilizzo',
     colShare: 'Quota',
     colChange: 'Rispetto alla settimana scorsa',
@@ -824,7 +824,7 @@ export default {
     start3:
       '**3. Collega il dispositivo del bambino.** Installa KidGate sul dispositivo di tuo figlio e aprilo. Su un telefono o un tablet, scegli *Questo è un dispositivo di un bambino*. Sul dispositivo del genitore apri *Famiglia* e tocca l’icona di scansione (*Scansiona un codice*), poi scansiona il codice QR mostrato sul dispositivo del bambino (o inserisci il codice di 6 caratteri). Se il dispositivo del bambino lo chiede, conferma lì la connessione; una TV si collega da sola.',
     start4:
-      '**4. Concedi i permessi sul dispositivo del bambino.** Apri la schermata *Stato* sul dispositivo del bambino e tocca *Continua configurazione*: ti guida attraverso ogni permesso di cui KidGate ha bisogno. Su Android: Notifiche, Accesso ai dati di utilizzo, Mostra sopra le altre app, Accessibilità (assistente di blocco), Sveglie e promemoria e Batteria senza limitazioni; su iOS: *Consenti utilizzo di app e siti web* (Tempo di utilizzo). I comandi non funzioneranno del tutto finché non sono attivi.',
+      '**4. Concedi i permessi sul dispositivo del bambino.** Apri la schermata *Stato* sul dispositivo del bambino e tocca *Continua configurazione*: ti guida attraverso ogni permesso di cui KidGate ha bisogno. Su Android: Notifiche, Accesso ai dati di utilizzo, Mostra sopra le altre app, Accessibilità (assistente di blocco), Sveglie e promemoria e Batteria senza limitazioni; su iOS: *Consenti utilizzo di app e siti web* (Tempo di utilizzo) e, per il Filtro web, *Consenti* quando iOS chiede di aggiungere configurazioni VPN. I comandi non funzioneranno del tutto finché non sono attivi.',
     start5:
       '**5. Configura i comandi.** Dal dispositivo del genitore apri la scheda del dispositivo del bambino e imposta limite giornaliero, orari di blocco, app bloccate, filtro web e funzioni di posizione.',
     startNote:
@@ -902,7 +902,7 @@ export default {
     eyebrow: 'Chi siamo',
     title: 'Un parental control su cui una famiglia',
     titleAccent: 'riesce davvero a mettersi d’accordo.',
-    lede: 'KidGate è realizzato da un piccolo team indipendente che lavora a un solo prodotto. La nostra posizione è che un genitore debba potersi fidare di ciò che dice l’app, comprese le parti in cui dice di non poter aiutare.',
+    lede: 'KidGate è realizzato da uno sviluppatore indipendente che lavora a un solo prodotto. La nostra posizione è che un genitore debba potersi fidare di ciò che dice l’app, comprese le parti in cui dice di non poter aiutare.',
     storyEyebrow: 'Perché esiste KidGate',
     storyTitle: 'Il tempo di schermo è diventato la discussione di ogni casa',
     storyP1:
@@ -933,7 +933,7 @@ export default {
       'Le stesse regole, scritte una volta, applicate con ciò che ogni piattaforma consente.',
     make1Title: 'iPhone e iPad',
     make1Text:
-      'Limiti giornalieri, Orari di blocco e blocco delle app tramite Tempo di utilizzo, il framework di Apple.',
+      'Limite giornaliero, Orari di blocco e blocco delle app tramite Tempo di utilizzo, il framework di Apple, e il Filtro web tramite una connessione privata sul dispositivo stesso.',
     make2Title: 'Android',
     make2Text:
       'Limiti, blocco app, blocco a schermo intero e Filtro web, più un avviso quando compare una nuova app.',
@@ -969,13 +969,13 @@ export default {
   promo: {
     intro: 'Tutta la giornata di tuo figlio, in tutta tranquillità.',
     school: 'Inizia la lezione. Il telefono si blocca da solo.',
-    apps: 'Si aprono solo le app che permetti tu.',
-    arrive: 'Arriva dalla nonna e lo sai subito.',
+    apps: 'Le app che blocchi non si aprono.',
+    arrive: 'Arriva dalla nonna e ricevi una notifica.',
     checkIn: 'Chiedi come sta. Con un tocco ti conferma che va tutto bene.',
     sos: 'Se qualcosa non va, un SOS ti mostra dov’è.',
     limit: 'Tempo di gioco finito. Il telefono si blocca da solo.',
     lockNow: 'La cena è pronta. Blocca il suo telefono dal tuo.',
-    web: 'I siti per adulti sono bloccati su ogni dispositivo.',
+    web: 'Blocca i siti dannosi su ogni dispositivo.',
     tv: 'Anche la TV del salotto segue le stesse regole di casa.',
     reward: 'Compiti fatti: 15 minuti extra guadagnati.',
     bedtime: 'All’ora di dormire, anche telefono, computer e TV vanno a nanna.',
@@ -983,7 +983,7 @@ export default {
     parent: 'Genitore',
     arrivedNotice: 'Sofia è arrivata dalla nonna',
     checkAsk: 'Tutto ok?',
-    checkReply: 'Tutto ok!',
+    checkReply: 'Sto bene',
     sosNotice: 'Sofia ha inviato un SOS',
     timeUp: 'Tempo di gioco finito per oggi',
     lockButton: 'Blocca ora',

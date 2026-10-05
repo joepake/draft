@@ -74,6 +74,7 @@ export default {
   nav: {
     skip: 'Đến nội dung chính',
     main: 'Menu chính',
+    plans: 'Gói dịch vụ',
     about: 'Giới thiệu',
     support: 'Hỗ trợ',
     privacy: 'Quyền riêng tư',
@@ -121,7 +122,7 @@ export default {
     heroCheck2: 'Chặn ứng dụng',
     heroCheck3: 'Chặn nội dung web',
     heroCheck4: 'Vị trí',
-    heroCheck5: 'Bảng điều khiển gia đình',
+    heroCheck5: 'SOS',
 
     phoneDailyLimit: 'Giới hạn hằng ngày',
     phoneBlockedHours: 'Giờ khóa thiết bị',
@@ -148,25 +149,25 @@ export default {
       'Đặt Giới hạn hằng ngày và Giờ khóa thiết bị cho giờ học, giờ ngủ. Hết giờ, thiết bị tự khóa.',
     feature2Title: 'Chặn ứng dụng',
     feature2Text:
-      'Chọn đúng những ứng dụng con được mở, bảo vệ bằng mã PIN phụ huynh, và bật chặn từ xa.',
+      'Chọn những ứng dụng con không được mở, có mã PIN phụ huynh bảo vệ, và bật chặn từ xa.',
     feature3Title: 'Giới hạn ứng dụng',
     feature3Text:
       'Đặt giới hạn riêng cho từng ứng dụng, áp dụng song song với Giới hạn hằng ngày — “nửa tiếng TikTok” mà không cần cấm hẳn. Có trên Android, Android TV và máy tính.',
     feature4Title: 'Lịch sử web & Chặn nội dung web',
     feature4Text:
       'Chặn trang người lớn, cờ bạc, nội dung tự làm hại bản thân và các danh mục khác trên mọi thiết bị. Với Premium, bạn tự chọn danh mục cần chặn và xem được con đã vào những trang nào, trang nào đã bị chặn.',
-    feature5Title: 'Vị trí trực tiếp & địa điểm',
+    feature5Title: 'Vị trí & địa điểm',
     feature5Text:
-      'Xem vị trí mới nhất của con, xem lại lịch sử, và được báo khi con đến hoặc rời một địa điểm đã lưu.',
+      'Xem con đang ở đâu mỗi khi bạn mở xem, tối đa 10 lần một ngày. Với Premium, theo dõi vị trí trực tiếp, xem lại con đã đi những đâu, và được báo khi con đến hoặc rời một địa điểm đã lưu.',
     feature6Title: 'Báo an toàn & SOS',
     feature6Text:
-      'Yêu cầu con xác nhận mình vẫn an toàn, và khi có việc khẩn cấp, nhận ngay SOS từ điện thoại của con, kèm vị trí và ảnh nếu chụp được.',
+      'Yêu cầu con xác nhận mình vẫn an toàn, kèm ảnh với Premium. Khi có việc khẩn cấp, điện thoại của con gửi ngay SOS cho bạn, kèm vị trí và ảnh nếu chụp được.',
     feature7Title: 'Cảnh báo bảo vệ & cảnh báo ứng dụng',
     feature7Text:
       'Biết ngay khi một quyền quan trọng trên điện thoại của con bị tắt. Bật tính năng Duyệt ứng dụng mới thì ứng dụng mới cài trên Android, Android TV hoặc máy tính sẽ chờ bạn duyệt rồi mới mở được.',
     feature8Title: 'Nhiệm vụ thưởng & yêu cầu thêm giờ',
     feature8Text:
-      'Con làm xong nhiệm vụ để được cộng phút, hoặc gửi yêu cầu thêm giờ. Cả hai đều gửi về điện thoại của bạn để bạn duyệt.',
+      'Con làm xong nhiệm vụ để được cộng phút và sao, hoặc gửi yêu cầu thêm giờ. Cả hai đều gửi về điện thoại của bạn để bạn duyệt. Bạn quyết định có bật Bảng tích sao để các con xem số sao mỗi người kiếm được trong tuần này hay không; bảng được làm mới vào mỗi thứ Hai.',
 
     feature9Title: 'Khóa thiết bị',
     feature9Text:
@@ -174,9 +175,9 @@ export default {
     feature10Title: 'Báo cáo tuần',
     feature10Text:
       'Mỗi thứ Hai: thời gian dùng máy, trung bình mỗi ngày, những gì đã bị chặn, và tuần này so với tuần trước.',
-    feature11Title: 'Bảng tích sao',
+    feature11Title: 'Lịch sử YouTube & video',
     feature11Text:
-      'Các con xem được số sao mỗi người kiếm được trong tuần này. Bảng được làm mới vào mỗi thứ Hai, và bạn quyết định có bật bảng này hay không.',
+      'Những video YouTube và Shorts con đã xem, trong ứng dụng YouTube trên điện thoại Android và Android TV, và trên YouTube trong Chrome. Không có trên iPhone, và TV không liệt kê Shorts.',
     feature12Title: 'Nhật ký hoạt động',
     feature12Text:
       'Mọi việc đã xảy ra, theo thứ tự — máy được mở khóa, một yêu cầu mở trang web được trả lời, một nhiệm vụ hoàn thành, một cảnh báo được gửi. Gói miễn phí xem được hoạt động trong ngày; Premium lưu lại 30 ngày.',
@@ -245,17 +246,17 @@ export default {
       'Giờ khóa thiết bị và Giới hạn hằng ngày được thực thi ngay trên thiết bị, nên rút dây mạng cũng không thay đổi gì. TV còn nhận mã PIN phụ huynh khi hoàn toàn không có kết nối.',
     only6Title: 'Ghi nhận khi tuần đó xứng đáng',
     only6Text:
-      'Mỗi Báo cáo tuần luôn dành chỗ cho điều làm tốt — giữ đúng giới hạn, bớt một tối thức khuya, xong một nhiệm vụ — và chỉ ghi nhận khi đã có đủ số liệu của cả tuần.',
+      'Với Premium, mỗi Báo cáo tuần luôn dành chỗ cho điều làm tốt — giữ đúng giới hạn, bớt một tối thức khuya, xong một nhiệm vụ — và chỉ ghi nhận khi đã có đủ số liệu của cả tuần.',
 
     faqEyebrow: 'Hỏi đáp',
     faqTitle: 'Những câu cha mẹ hỏi đầu tiên',
     faqSub: 'Trả lời nhanh trước khi bạn tải về.',
     faq1Q: 'Có dùng thử miễn phí không?',
     faq1A:
-      'Có. Bản dùng thử 7 ngày bắt đầu khi thiết bị phụ huynh và thiết bị trẻ đầu tiên được kết nối, và bao gồm mọi tính năng Premium. Khi hết hạn, các quy tắc bạn đặt — Giới hạn hằng ngày, Giờ khóa thiết bị, Chặn ứng dụng, Chặn nội dung web, Khóa thiết bị, Yêu cầu thêm giờ và Nhiệm vụ thưởng — vẫn hoạt động miễn phí trên mọi thiết bị trẻ, và bạn vẫn hỏi được thiết bị bạn chọn đang ở đâu. Hoạt động trực tiếp, lịch sử, báo cáo tuần và theo dõi vị trí là phần Premium mang lại.',
+      'Có. Bản dùng thử 7 ngày bắt đầu khi thiết bị phụ huynh và thiết bị trẻ đầu tiên được kết nối, và bao gồm mọi tính năng Premium. Khi hết hạn, các quy tắc bạn đặt — Giới hạn hằng ngày, Giờ khóa thiết bị, Chặn ứng dụng, Chặn nội dung web, Khóa thiết bị, Yêu cầu thêm giờ và Nhiệm vụ thưởng — vẫn hoạt động miễn phí trên mọi thiết bị trẻ, và thiết bị bạn chọn để tiếp tục theo dõi vẫn chia sẻ vị trí. Hoạt động trực tiếp, lịch sử, báo cáo tuần và theo dõi vị trí là phần Premium mang lại.',
     faq2Q: 'Tôi quản lý được bao nhiêu thiết bị?',
     faq2A:
-      'Một gói dùng cho cả nhà — mọi thiết bị của con và mọi phụ huynh trên cùng một gói. Ở gói miễn phí, một thiết bị trẻ được theo dõi và bạn chọn thiết bị nào; các thiết bị còn lại vẫn thực thi quy tắc bạn đã đặt — chỉ nới lỏng được, không siết thêm được — và ngừng gửi hoạt động.',
+      'Gói Premium dùng cho tối đa 25 thiết bị của con và 6 phụ huynh (tính cả bạn), và thiết bị nào cũng gửi hoạt động. Gói miễn phí dùng cho tối đa 8 thiết bị của con và 3 phụ huynh. Thiết bị nào cũng thực thi quy tắc bạn đặt, nhưng chỉ thiết bị bạn chọn mới gửi hoạt động; ở các thiết bị còn lại, quy tắc chỉ nới lỏng được, không siết thêm được.',
     faq3Q: 'Con tôi có gỡ hoặc vượt qua KidGate được không?',
     faq3A:
       'Các thiết lập nhạy cảm nằm sau mã PIN phụ huynh, và Cảnh báo bảo vệ sẽ báo cho bạn ngay khi một quyền quan trọng bị tắt trên thiết bị của con.',
@@ -264,7 +265,7 @@ export default {
       'Được. Bảng điều khiển phụ huynh mở được trong mọi trình duyệt. Dùng ứng dụng KidGate trên điện thoại quét mã hiện trên màn hình là bạn thấy cùng gia đình, thiết bị và cài đặt như trong ứng dụng, và điều khiển được ngay. Bạn cũng có thể đăng nhập bằng tài khoản để xem; khi đó, khóa thiết bị hay đổi giới hạn sẽ cần mã PIN phụ huynh.',
     faq5Q: 'Premium giá bao nhiêu?',
     faq5A:
-      'Premium giá 6,99 USD mỗi tháng hoặc 39,99 USD mỗi năm tại Mỹ, tính phí qua App Store hoặc Google Play và hiển thị bằng đơn vị tiền của bạn ở đó. Gói Trọn đời trả một lần, dùng cho tối đa ba thiết bị trẻ. Gói miễn phí không bao giờ hết hạn.',
+      'Premium giá 6,99 USD mỗi tháng hoặc 39,99 USD mỗi năm tại Mỹ, tính phí qua App Store hoặc Google Play và hiển thị bằng đơn vị tiền của bạn ở đó. Gói Trọn đời trả một lần, có đủ Premium trên mọi thiết bị trẻ, dùng chừng nào KidGate còn hoạt động. Gói miễn phí không bao giờ hết hạn.',
     faqMore: 'Còn câu hỏi khác? Xem trang Hỗ trợ',
 
     ctaTitle: 'Bắt đầu bảo vệ gia đình bạn hôm nay',
@@ -315,7 +316,7 @@ export default {
     invalidEmail: 'Địa chỉ email không hợp lệ.',
     userDisabled: 'Tài khoản này đã bị vô hiệu hóa.',
     userNotFound: 'Không có tài khoản KidGate nào dùng email này.',
-    wrongPassword: 'Sai email hoặc mật khẩu.',
+    wrongPassword: 'Email hoặc mật khẩu không đúng. Vui lòng thử lại.',
     rateLimited:
       'Mạng này đã tạo quá nhiều mã đăng nhập. Thử lại sau {{minutes}} phút.',
     tooManyRequests: 'Bạn đã thử quá nhiều lần. Vui lòng đợi vài phút rồi thử lại.',
@@ -642,7 +643,7 @@ export default {
     webBackgroundNote:
       'Khi không có ai dùng thiết bị, một số ứng dụng chạy ngầm vẫn truy cập internet — cập nhật, tải gợi ý và kiểm tra định kỳ tự chạy.',
     filterHintIos:
-      'Trên iOS, bộ lọc dùng cơ chế chặn nội dung người lớn của Apple — iPhone và iPad không chặn được theo từng danh mục.',
+      'iPhone hoặc iPad này chỉ lọc bằng cơ chế chặn nội dung người lớn của Apple. Hãy cập nhật KidGate trên máy và cho phép VPN của KidGate để chặn theo danh mục.',
     filterHintAndroid: 'Các danh mục được chặn bằng bộ lọc DNS ngay trên máy.',
     filterHintMacos:
       'Các danh mục được chặn bằng bộ lọc nội dung KidGate ngay trên máy Mac.',
@@ -794,7 +795,6 @@ export default {
     childrenTitle: 'Từng con',
     childrenNote:
       'Cùng hai tuần đó, tính riêng từng thiết bị. Phần trăm là tỉ lệ trên tổng của cả nhà.',
-    colChild: 'Con',
     colScreenTime: 'Thời gian sử dụng',
     colShare: 'Tỉ lệ',
     colChange: 'So tuần trước',
@@ -826,7 +826,7 @@ export default {
     start3:
       '**3. Kết nối thiết bị của con.** Cài KidGate trên thiết bị của con rồi mở ứng dụng. Trên điện thoại hoặc máy tính bảng, chọn *Đây là thiết bị của trẻ*. Trên thiết bị phụ huynh, mở *Gia đình* và chạm biểu tượng quét (*Quét mã*), rồi quét mã QR hiện trên thiết bị của con (hoặc nhập mã gồm 6 ký tự). Nếu thiết bị của con hỏi, hãy xác nhận kết nối trên thiết bị đó; TV sẽ tự kết nối.',
     start4:
-      '**4. Cấp quyền trên thiết bị của con.** Mở màn hình *Trạng thái* trên thiết bị của con và chạm *Tiếp tục thiết lập* — ứng dụng sẽ hướng dẫn lần lượt từng quyền KidGate cần. Trên Android: Thông báo, Truy cập mức sử dụng, Hiển thị trên ứng dụng khác, Trợ năng (hỗ trợ khóa), Chuông báo và lời nhắc, và Pin không bị hạn chế; trên iOS: *Cho phép Sử dụng ứng dụng và Trang web* (Thời gian sử dụng). Các tính năng điều khiển chỉ hoạt động đầy đủ sau khi bật xong những quyền này.',
+      '**4. Cấp quyền trên thiết bị của con.** Mở màn hình *Trạng thái* trên thiết bị của con và chạm *Tiếp tục thiết lập* — ứng dụng sẽ hướng dẫn lần lượt từng quyền KidGate cần. Trên Android: Thông báo, Truy cập mức sử dụng, Hiển thị trên ứng dụng khác, Trợ năng (hỗ trợ khóa), Chuông báo và lời nhắc, và Pin không bị hạn chế; trên iOS: *Cho phép Sử dụng ứng dụng và Trang web* (Thời gian sử dụng), và, nếu dùng tính năng Chặn nội dung web, chọn *Cho phép* khi iOS hỏi có cho KidGate thêm cấu hình VPN không. Các tính năng điều khiển chỉ hoạt động đầy đủ sau khi bật xong những quyền này.',
     start5:
       '**5. Thiết lập điều khiển.** Từ thiết bị phụ huynh, mở thẻ thiết bị của con và đặt Giới hạn hằng ngày, Giờ khóa thiết bị, Chặn ứng dụng, Chặn nội dung web và các tính năng vị trí.',
     startNote:
@@ -904,7 +904,7 @@ export default {
     eyebrow: 'Về chúng tôi',
     title: 'Kiểm soát của cha mẹ mà cả nhà',
     titleAccent: 'thật sự đồng thuận.',
-    lede: 'KidGate do một nhóm nhỏ độc lập làm ra, và chỉ làm một sản phẩm. Điều chúng tôi coi trọng nhất: phụ huynh phải tin được những gì ứng dụng nói — kể cả những chỗ nó nói rằng nó không làm được.',
+    lede: 'KidGate do một nhà phát triển độc lập làm ra, chỉ tập trung vào đúng một sản phẩm này. Điều chúng tôi coi trọng nhất: phụ huynh phải tin được những gì ứng dụng nói — kể cả những chỗ nó nói rằng nó không làm được.',
     storyEyebrow: 'Vì sao có KidGate',
     storyTitle: 'Chuyện dùng điện thoại trở thành cuộc cãi vã trong mọi nhà',
     storyP1:
@@ -935,7 +935,7 @@ export default {
       'Cùng một bộ quy tắc, viết một lần, thực thi bằng đúng những gì mỗi nền tảng cho phép.',
     make1Title: 'iPhone và iPad',
     make1Text:
-      'Giới hạn hằng ngày, Giờ khóa thiết bị và chặn ứng dụng qua chính tính năng Thời gian sử dụng (Screen Time) của Apple.',
+      'Giới hạn hằng ngày, Giờ khóa thiết bị và chặn ứng dụng qua chính tính năng Thời gian sử dụng (Screen Time) của Apple, cùng tính năng Chặn nội dung web qua một kết nối riêng ngay trên máy.',
     make2Title: 'Android',
     make2Text:
       'Giới hạn giờ, chặn ứng dụng, khóa toàn màn hình và Chặn nội dung web, kèm cảnh báo khi có ứng dụng mới xuất hiện.',
@@ -971,13 +971,13 @@ export default {
   promo: {
     intro: 'Cả ngày của con, bạn đều yên tâm.',
     school: 'Vào lớp, điện thoại tự khóa.',
-    apps: 'Con chỉ mở được những ứng dụng bạn cho phép.',
-    arrive: 'Con vừa tới nhà bà, bạn nhận tin ngay.',
+    apps: 'Ứng dụng bạn đã chặn sẽ không mở được.',
+    arrive: 'Con vừa tới nhà bà, bạn nhận được thông báo.',
     checkIn: 'Bạn hỏi thăm, con báo bình an chỉ với một chạm.',
     sos: 'Lỡ có chuyện gấp, con bấm SOS là bạn biết ngay con ở đâu.',
     limit: 'Chơi đủ giờ rồi, máy tự khóa.',
     lockNow: 'Đến bữa tối, bạn khóa máy con ngay từ điện thoại.',
-    web: 'Trang web người lớn bị chặn sẵn trên mọi thiết bị.',
+    web: 'Bạn chặn được các trang web có hại trên mọi thiết bị.',
     tv: 'TV phòng khách cũng theo đúng luật nhà mình.',
     reward: 'Làm xong bài tập, con được thưởng thêm 15 phút.',
     bedtime: 'Đến giờ ngủ, điện thoại, máy tính và TV cũng đi ngủ.',
@@ -985,7 +985,7 @@ export default {
     parent: 'Ba mẹ',
     arrivedNotice: 'An vừa đến Nhà bà',
     checkAsk: 'Con ổn chứ?',
-    checkReply: 'Con ổn ạ',
+    checkReply: 'Con vẫn ổn',
     sosNotice: 'An vừa gửi SOS',
     timeUp: 'Hết giờ chơi hôm nay',
     lockButton: 'Khóa ngay',

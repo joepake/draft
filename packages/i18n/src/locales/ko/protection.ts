@@ -43,7 +43,7 @@ export const protection = {
   locationConsentPending:
     '이 기기에서 위치가 허용되지 않아, 어디에 있는지 알릴 수 없습니다.',
   consentStepOpenSettings: '아이 기기에서 KidGate를 열고 설정으로 이동하세요.',
-  consentStepParentPin: '보호자 PIN을 입력하세요.',
+  consentStepParentPin: '부모 PIN을 입력하세요.',
   consentStepPermissions: '‘권한’을 열고 빠진 항목을 허용하세요.',
   notificationsPermission: '알림 권한',
   backgroundUpdates: '백그라운드 업데이트',

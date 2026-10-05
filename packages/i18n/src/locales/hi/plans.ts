@@ -36,11 +36,11 @@ export const plans = {
   compareParentsFree: 'अधिकतम 3',
   compareParentsPremium: 'अधिकतम 6',
   compareSync: 'डिवाइस से अपडेट',
-  compareSyncFree: 'हर 30 मिनट में',
+  compareSyncFree: 'जब आप खोलकर देखें',
   compareSyncPremium: 'लाइव',
   compareScreenTime: 'स्क्रीन समय',
   compareScreenTimeFree: 'आज, सबसे ज़्यादा चले 3 ऐप्स',
-  compareScreenTimePremium: 'हर ऐप, 30 दिन का इतिहास',
+  compareScreenTimePremium: 'हर ऐप, घंटे-दर-घंटे, 30 दिन का इतिहास',
   compareLocation: 'स्थान',
   compareLocationFree: 'जब आप नक्शा खोलें',
   compareLocationPremium: 'लाइव, इतिहास और जगह की सूचनाओं के साथ',
@@ -55,8 +55,8 @@ export const plans = {
   compareSafetyFree: 'अलर्ट + चेक-इन',
   compareSafetyPremium: 'हर चेक-इन के साथ फ़ोटो जोड़ता है',
   compareControls: 'ऐप ब्लॉक और वेब फ़िल्टर',
-  compareControlsFree: 'कोई भी ऐप, वयस्क सामग्री',
-  compareControlsPremium: 'श्रेणी के अनुसार, अपनी सूचियाँ',
+  compareControlsFree: 'कोई भी ऐप, श्रेणियों का तय सेट',
+  compareControlsPremium: 'श्रेणी के अनुसार, अपनी सूचियाँ, साइट के अनुरोध',
   compareReport: 'साप्ताहिक रिपोर्ट',
   compareReportFree: 'एक बार, ट्रायल खत्म होने पर',
   compareReportPremium: 'हर हफ़्ते',
@@ -65,7 +65,7 @@ export const plans = {
   compareActivityFeedPremium: '30 दिन',
   compareChildReport: 'हर बच्चे की रिपोर्ट',
   compareIncluded:
-    'दोनों प्लान में एक परिवार के iPhone, Android, Mac और Windows पर दैनिक सीमा, ब्लॉक किए गए समय, ब्लॉक किए गए ऐप्स, वेब फ़िल्टर, डिवाइस लॉक, SOS, समय अनुरोध और इनाम वाले टास्क शामिल हैं, साथ ही वेब डैशबोर्ड भी। Android TV और Chromebook भी समर्थित हैं, हालाँकि उन पर कम नियंत्रण उपलब्ध हैं।',
+    'दोनों प्लान में एक परिवार के iPhone, Android, Mac और Windows पर दैनिक सीमा, ब्लॉक किए गए समय, ब्लॉक किए गए ऐप्स, ऐप सीमाएँ, नए ऐप्स की मंज़ूरी, वेब फ़िल्टर, डिवाइस लॉक, SOS, समय अनुरोध और इनाम वाले टास्क शामिल हैं, साथ ही वेब डैशबोर्ड भी। Android TV और Chromebook भी समर्थित हैं, हालाँकि उन पर कम नियंत्रण उपलब्ध हैं।',
   sectionWhyPremium: 'Premium में क्या जुड़ता है',
   sectionWhyPremiumSubtitle:
     'हर नियम मुफ़्त में भी चलता रहता है। Premium में यह जुड़ता है कि आप क्या देख सकते हैं, और कितनी जल्दी।',
@@ -122,7 +122,7 @@ export const plans = {
   memberTrialActiveSubtitle:
     'यह परिवार ट्रायल पर है। ट्रायल खत्म होने पर हर नियम हर डिवाइस पर चलता रहेगा और एक डिवाइस रिपोर्ट भेजता रहेगा; मालिक लाइव गतिविधि, इतिहास और हर डिवाइस से रिपोर्ट के लिए सदस्यता ले सकता है।',
   memberTrialEndedSubtitle:
-    'इस परिवार का ट्रायल खत्म हो गया है। दैनिक सीमा, ब्लॉक किए गए ऐप्स, वेब फ़िल्टर और स्थान अब भी चलते हैं। लाइव अपडेट, इतिहास और अलर्ट के लिए परिवार के मालिक से सदस्यता लेने को कहें।',
+    'इस परिवार का ट्रायल खत्म हो गया है। दैनिक सीमा, ब्लॉक किए गए समय, ब्लॉक किए गए ऐप्स, वेब फ़िल्टर और स्थान अब भी चलते हैं। लाइव अपडेट, इतिहास और अलर्ट के लिए परिवार के मालिक से सदस्यता लेने को कहें।',
   memberSetupTrialSubtitle:
     'जब स्वामी एक अभिभावक डिवाइस और एक बच्चे का डिवाइस कनेक्ट करता है, तब ट्रायल शुरू होता है।',
   premiumActivatedTitle: 'Premium अनलॉक हो गया',
@@ -168,8 +168,7 @@ export const plans = {
   termLifetime: 'आजीवन',
   badgeOneTime: 'एक बार',
   planPeriodOnce: 'एक बार',
-  billedOnce:
-    'बच्चों के अधिकतम {{devices}} डिवाइस से रिपोर्ट के लिए एक बार भुगतान — जब तक KidGate उपलब्ध है, तब तक के लिए',
+  billedOnce: 'एक बार भुगतान — जब तक KidGate उपलब्ध है, तब तक के लिए',
   sectionFreePlan: 'अगर आप कभी सदस्यता न लें',
   devicesUnlimited: 'बच्चे का हर डिवाइस रिपोर्ट भेजता है',
   featureFootnotePlatforms:
@@ -219,7 +218,7 @@ export const plans = {
   teaserProofRewardTasks: 'चालू काम: {{count}}',
   teaserRewardTasks:
     'मुफ़्त प्लान एक साथ इतने ही काम चलाता है। Premium इसे दोगुना कर देता है।',
-  teaserLiveNote: 'मुफ़्त प्लान हर 30 मिनट में अपडेट होता है। Premium लाइव है।',
+  teaserLiveNote: 'मुफ़्त प्लान आपके खोलकर देखने पर अपडेट होता है। Premium लाइव है।',
   teaserUsageTimeline: 'Premium दिखाता है कि दिन के किन घंटों में डिवाइस इस्तेमाल हुआ।',
   teaserProofParents: 'अभिभावक: {{count}}',
   teaserParentCap:

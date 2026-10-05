@@ -51,7 +51,7 @@ export const macos = {
   setupSubtitle:
     'يطلب النظام إذنًا لكل بند من هذه البنود، ولا يستطيع الموافقة إلا من يجلس أمام هذا الجهاز. إنهاؤها الآن يعني ألّا يُسأل طفلك لاحقًا.',
   setupStepFilterApprovalTitle: 'اعتماد تصفية الويب',
-  setupStepFilterSwitchTitle: 'Netzwerkinhalt filtern',
+  setupStepFilterSwitchTitle: 'فلترة محتوى الشبكة',
 
   setupStepFilterWindowsTitle: 'تصفية الويب',
 

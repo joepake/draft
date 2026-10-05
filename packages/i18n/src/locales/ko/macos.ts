@@ -49,7 +49,7 @@ export const macos = {
   setupSubtitle:
     '시스템은 아래 항목마다 권한을 묻고, 지금 이 기기를 쓰는 사람만 허용할 수 있습니다. 지금 끝내 두면 나중에 아이에게 묻지 않습니다.',
   setupStepFilterApprovalTitle: '웹 필터 승인',
-  setupStepFilterSwitchTitle: 'Filter Network Content',
+  setupStepFilterSwitchTitle: '네트워크 콘텐츠 필터링',
 
   setupStepFilterWindowsTitle: '웹 필터링',
 

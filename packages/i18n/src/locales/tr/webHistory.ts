@@ -24,7 +24,7 @@ export const webHistory = {
   emptyBlockedBody: 'Henüz hiçbir şey engellenmedi.',
   dayBlockedBadge: '{{count}} engellendi',
   visitsMeta: '{{count}} ziyaret',
-  blockedMeta: '{{count}} kez engellendi · {{category}}',
+  blockedMeta: '{{category}} · {{count}} kez engellendi',
   categoryUnknown: 'Engel listesi',
   sectionUncategorized: 'Diğer siteler',
   blockCategory: '{{category}} engelle',

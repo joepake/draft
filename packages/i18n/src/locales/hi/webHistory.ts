@@ -25,7 +25,7 @@ export const webHistory = {
   emptyBlockedBody: 'अभी तक कुछ ब्लॉक नहीं हुआ।',
   dayBlockedBadge: '{{count}} ब्लॉक',
   visitsMeta: '{{count}} बार देखा',
-  blockedMeta: '{{count}} बार ब्लॉक · {{category}}',
+  blockedMeta: '{{category}} · {{count}} बार ब्लॉक',
   categoryUnknown: 'ब्लॉक सूची',
   sectionUncategorized: 'अन्य साइटें',
   blockCategory: '{{category}} ब्लॉक करें',

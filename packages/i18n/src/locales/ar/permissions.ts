@@ -36,16 +36,16 @@ export const permissions = {
   oemAutostartHintVivo:
     'في التشغيل التلقائي / الطاقة العالية في الخلفية، اسمح لـKidGate.',
   oemAutostartHintHuawei:
-    'في تشغيل التطبيقات / مدير بدء التشغيل، اضبط KidGate على "إدارة يدوية" واسمح بجميع الخيارات.',
+    'في تشغيل التطبيقات / مدير بدء التشغيل، اضبط KidGate على «إدارة يدوية» واسمح بجميع الخيارات.',
   oemAutostartHintOther:
     'اسمح لـKidGate بالتشغيل التلقائي من إعدادات الأمان أو البطارية على جهازك.',
   markDone: 'تم',
-  overlayStepAllow: 'فعّل "العرض فوق التطبيقات الأخرى" لـKidGate.',
+  overlayStepAllow: 'فعّل «العرض فوق التطبيقات الأخرى» لـKidGate.',
   accessibilityStepOpenSettings:
     'اختر الإعدادات في الأسفل — سيفتح ذلك صفحة إمكانية الوصول الخاصة بـKidGate مباشرة.',
   accessibilityStepFindKidGate:
     'إذا فُتحت القائمة الكاملة بدلاً من ذلك، فاختر KidGate ضمن التطبيقات المثبّتة / التي تم تنزيلها.',
-  accessibilityStepTurnOn: 'شغّل المفتاح، ثم اختر "سماح" في رسالة تأكيد Android.',
+  accessibilityStepTurnOn: 'شغّل المفتاح، ثم اختر «سماح» في رسالة تأكيد Android.',
   restrictedSettingsStep:
     'إذا كان المفتاح باهتًا ولا يستجيب، افتح الإعدادات › التطبيقات › KidGate، واضغط على قائمة ⋮ واختر «السماح بالإعدادات المقيّدة»، ثم عُد إلى هنا وحاول مرة أخرى.',
   accessibilityWarningNote:
@@ -55,16 +55,16 @@ export const permissions = {
   notificationsWizardBody:
     'اسمح بالإشعارات ليتلقى هذا الجهاز موافقات الوقت والتذكيرات فورًا.',
   backgroundRefreshStepOpen: 'افتح صفحة KidGate في الإعدادات.',
-  backgroundRefreshStepTurnOn: 'فعّل "تحديث التطبيقات في الخلفية" لـKidGate.',
+  backgroundRefreshStepTurnOn: 'فعّل «تحديث التطبيقات في الخلفية» لـKidGate.',
   backgroundRefreshStepGeneral:
-    'إذا كان المفتاح باهتًا، افتح الإعدادات ثم "عام" ثم "تحديث التطبيقات في الخلفية" وفعّله.',
+    'إذا كان المفتاح باهتًا، افتح الإعدادات ثم «عام» ثم «تحديث التطبيقات في الخلفية» وفعّله.',
   locationAlwaysStep: 'اختر «الموقع»، ثم «دائمًا».',
   locationAlwaysStepAndroid: 'اختر «الأذونات» ← «الموقع»، ثم «السماح طوال الوقت».',
-  batteryStepAllow: 'اختر "سماح" في رسالة Android.',
+  batteryStepAllow: 'اختر «سماح» في رسالة Android.',
   batteryStepAppInfo:
-    'إذا لم تظهر رسالة، افتح "معلومات التطبيق" ثم "البطارية" ثم اختر "دون قيود".',
-  notificationsStepAllow: 'اختر "سماح" في الرسالة.',
-  exactAlarmStepTurnOn: 'فعّل "المنبهات والتذكيرات" لـKidGate.',
+    'إذا لم تظهر رسالة، افتح «معلومات التطبيق» ثم «البطارية» ثم اختر «دون قيود».',
+  notificationsStepAllow: 'اختر «سماح» في الرسالة.',
+  exactAlarmStepTurnOn: 'فعّل «المنبهات والتذكيرات» لـKidGate.',
   cameraStepTurnOn: 'فعّل الكاميرا لـKidGate.',
   allowMicrophoneTitle: 'السماح بالميكروفون',
   microphonePermissionMessage:
@@ -72,5 +72,5 @@ export const permissions = {
   microphoneTurnedOffMessage:
     'يرجى فتح الإعدادات والسماح بالميكروفون حتى تتضمن تنبيهات SOS الصوت.',
   microphoneStepTurnOn: 'فعّل الميكروفون لـKidGate.',
-  uninstallProtectionStepConfirm: 'اختر "تفعيل" في شاشة تأكيد Android.',
+  uninstallProtectionStepConfirm: 'اختر «تفعيل» في شاشة تأكيد Android.',
 } as const;

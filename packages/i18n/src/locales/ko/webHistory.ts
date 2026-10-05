@@ -24,7 +24,7 @@ export const webHistory = {
   emptyBlockedBody: '아직 차단된 항목이 없습니다.',
   dayBlockedBadge: '{{count}}건 차단',
   visitsMeta: '{{count}}회 방문',
-  blockedMeta: '{{count}}회 차단 · {{category}}',
+  blockedMeta: '{{category}} · {{count}}회 차단',
   categoryUnknown: '차단 목록',
   sectionUncategorized: '기타 사이트',
   blockCategory: '{{category}} 차단',

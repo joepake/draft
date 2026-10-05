@@ -13,12 +13,14 @@
     "./RichText": "./src/RichText.jsx",
     "./BrandLogo": "./src/BrandLogo.jsx",
     "./Icon": "./src/Icon.jsx",
+    "./PlanComparison": "./src/PlanComparison.jsx",
     "./index.css": "./src/index.css",
     "./dashboard.css": "./src/dashboard.css",
     "./theme": "./src/theme.js",
     "./vite": "./src/vite.js"
   },
   "dependencies": {
+    "@kidgate/core": "workspace:*",
     "@kidgate/i18n": "workspace:*",
     "@kidgate/tokens": "workspace:*"
   },

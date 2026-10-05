@@ -94,8 +94,9 @@ export function supportsCheckIn(device: CheckInSupportInput): boolean {
  *
  * Free is location only; the photo is premium (`docs/PRICING.md` §4). The
  * parent app already sends `requirePhoto` from the plan it knows, so this is
- * the second line, and it is the one that holds: **no Cloud Function touches a
- * check-in** and `storage.rules` cannot read a plan, so the request document is
+ * the second line, and it is the one that holds: **no Cloud Function checks a
+ * check-in's plan** — `functions/triggers/safetyCheckIns.js` only sends the two
+ * pushes — and `storage.rules` cannot read a plan, so the request document is
  * whatever a client chose to write. `apps/dashboard` is the honest case — it
  * cannot tell a running trial from a lapsed plan, so it always asks — and a
  * modified parent client is the other.

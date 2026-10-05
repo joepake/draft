@@ -221,5 +221,5 @@ export const webFilter = {
   vpnConsentStepAllow:
     'Android’in VPN isteğinde Tamam’ı seç. Filtre çalışırken durum çubuğunda anahtar simgesi kalır.',
   vpnConsentStepAllowIos:
-    'iOS, VPN yapılandırmaları eklemek için izin istediğinde İzin Ver’i seç, ardından cihaz parolasını gir. Filtre çalışırken bir VPN simgesi görünür.',
+    'iOS, VPN konfigürasyonları eklemek için izin istediğinde İzin Ver’i seç, ardından cihaz parolasını gir. Filtre çalışırken bir VPN simgesi görünür.',
 } as const;

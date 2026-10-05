@@ -1,6 +1,8 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { loadPlans, plansTranslator } from '@kidgate/i18n/plansPack';
 import Icon from '@kidgate/web-ui/Icon';
+import PlanComparison from '@kidgate/web-ui/PlanComparison';
 import { useT } from '@kidgate/web-ui/useT';
 import { trackDownloadClick } from '../lib/analytics.js';
 import { isPlatformAvailable, storeHref } from '../lib/storeLinks.js';
@@ -163,26 +165,33 @@ const TRUST = [1, 2, 3, 4];
  * chips are the closest thing to an inventory, and they listed more than this
  * did. Twelve also fills the 3-column grid exactly; renumber the
  * `home.feature*` keys rather than leaving a gap when one goes.
+ *
+ * **Video history took the Star chart's key on 2026-10-04**, and the stars moved
+ * into the reward card that earns them. It is the row `planComparison` marks
+ * `highlight` — the one no competitor's free tier answers — and this page never
+ * named it. Placed beside the web card because it is the same question; the
+ * array order is the page order, `n` is only the key.
  */
 /**
  * `premium` marks a card whose whole feature sits behind the paywall
- * (`docs/PRICING.md` §4: live location and the weekly report). Cards that are
- * half free — the filter is free, its history is not — say so in their own
- * sentence instead. Before this the grid sold every row as included while the
- * FAQ two sections down said otherwise, on the same page.
+ * (`docs/PRICING.md` §4: video history and the weekly report). Cards that are
+ * half free — the filter is free, its history is not; location on request is
+ * free, live location is not — say so in their own sentence instead. Before
+ * this the grid sold every row as included while the FAQ two sections down said
+ * otherwise, on the same page.
  */
 const FEATURES = [
   { n: 1, icon: 'clock' },
   { n: 2, icon: 'ban' },
   { n: 3, icon: 'hourglass' },
   { n: 4, icon: 'globe' },
-  { n: 5, icon: 'mapPin', premium: true },
+  { n: 11, icon: 'play', premium: true },
+  { n: 5, icon: 'mapPin' },
   { n: 6, icon: 'lifebuoy' },
   { n: 7, icon: 'shieldCheck' },
   { n: 8, icon: 'star' },
   { n: 9, icon: 'lock' },
   { n: 10, icon: 'fileText', premium: true },
-  { n: 11, icon: 'crown' },
   { n: 12, icon: 'activity' },
 ];
 
@@ -285,7 +294,11 @@ function DownloadCard({
  * section exists to scroll to.
  */
 function useScrollToHash() {
-  const { hash } = useLocation();
+  // `key` as well as `hash`: the header's Plans link clicked a second time,
+  // after the reader has scrolled away, is a new navigation to the same hash,
+  // and keyed on the hash alone it did nothing — the reason the header once
+  // refused section links at all.
+  const { hash, key } = useLocation();
 
   useEffect(() => {
     if (!hash) return;
@@ -293,8 +306,32 @@ function useScrollToHash() {
     // `auto`, not `smooth`: this is an arrival, not a navigation the reader
     // made on the page, and a long glide from the hero reads as a bug.
     if (target) target.scrollIntoView({ behavior: 'auto', block: 'start' });
-  }, [hash]);
+  }, [hash, key]);
 }
+/**
+ * The app pack's `plans.*`, for the comparison below — the phone's Plans
+ * screen and the dashboard's plan dialog say the same sentences, so this page
+ * reads them rather than keeping `home.*` twins (`@kidgate/i18n/plansPack`).
+ * English until the language on screen arrives; a chunk that fails to load
+ * leaves it English, which is the pack's own fallback anyway.
+ */
+function usePlansT(language) {
+  const [, setReady] = useState(null);
+
+  useEffect(() => {
+    let live = true;
+    loadPlans(language).then(
+      () => live && setReady(language),
+      () => {},
+    );
+    return () => {
+      live = false;
+    };
+  }, [language]);
+
+  return plansTranslator(language);
+}
+
 const WHY = [1, 2, 3, 4];
 /*
  * Things a parent will not find in the apps they compare us against, each
@@ -353,6 +390,7 @@ function HeroVideo({ language }) {
 export default function Home() {
   const root = useReveal();
   const { t, language } = useT();
+  const plansT = usePlansT(language);
   useScrollToHash();
 
   return (
@@ -649,6 +687,26 @@ export default function Home() {
                 </div>
               </article>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/*
+        Free against Premium — the table `docs/PRICING.md` §4 names for "the
+        Plans screen, the site, the store listing", and the site never had.
+        Before it the page said what was paid in two corner tags and an FAQ
+        answer. Rows: `@kidgate/core/domain/planComparison`; words: the app
+        pack, so a cell edited for the phone is edited here.
+      */}
+      <section id="plans" className="plans-section">
+        <div className="inner">
+          <div className="reveal">
+            <span className="eyebrow">{plansT('plans.title')}</span>
+            <h2>{plansT('plans.compareTitle')}</h2>
+            <p className="section-sub">{plansT('plans.sectionWhyPremiumSubtitle')}</p>
+          </div>
+          <div className="reveal">
+            <PlanComparison t={plansT} />
           </div>
         </div>
       </section>

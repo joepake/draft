@@ -53,7 +53,7 @@ export const macos = {
   setupSubtitle:
     'Система запрашивает разрешение на каждый из этих пунктов, и дать его может только тот, кто сейчас за этим устройством. Если сделать это сейчас, позже вопрос не достанется ребёнку.',
   setupStepFilterApprovalTitle: 'Разрешить веб-фильтрацию',
-  setupStepFilterSwitchTitle: 'Фильтрация сетевого контента',
+  setupStepFilterSwitchTitle: 'Фильтрация сетевого трафика',
 
   setupStepFilterWindowsTitle: 'Веб-фильтр',
 

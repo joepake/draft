@@ -179,12 +179,12 @@ export const activities = {
 
   unknownDevice: 'अज्ञात डिवाइस',
 
-  tamperWebFilterTitle: 'वेब फ़िल्टर बंद हुआ',
+  tamperWebFilterTitle: 'वेब फ़िल्टर बंद कर दिया गया',
   tamperWebFilterBody:
-    'इस फ़ोन पर KidGate का VPN बंद कर दिया गया या किसी दूसरे VPN ऐप ने उसकी जगह ले ली। उसके दोबारा चालू होने तक साइटें न फ़िल्टर होंगी, न रिकॉर्ड होंगी।',
-  tamperUninstallProtectionTitle: 'अनइंस्टॉल सुरक्षा बंद हुई',
+    'इस डिवाइस पर KidGate का VPN बंद कर दिया गया या किसी दूसरे VPN ऐप ने उसकी जगह ले ली। उसके दोबारा चालू होने तक साइटें न फ़िल्टर होंगी, न रिकॉर्ड होंगी।',
+  tamperUninstallProtectionTitle: 'अनइंस्टॉल सुरक्षा बंद कर दी गई',
   tamperUninstallProtectionBody: 'अब इस फ़ोन से KidGate हटाया जा सकता है।',
-  tamperReinstalledTitle: 'KidGate फिर से इंस्टॉल हुआ',
+  tamperReinstalledTitle: 'KidGate फिर से इंस्टॉल किया गया',
   tamperReinstalledBody:
     'KidGate को इस डिवाइस से हटाकर फिर से इंस्टॉल किया गया। बीच के समय में कुछ भी रिकॉर्ड नहीं हुआ।',
 } as const;

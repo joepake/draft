@@ -378,7 +378,7 @@ export const family = {
 
   parentFallback: '부모',
 
-  formerParent: '가족을 떠난 보호자',
+  formerParent: '가족을 떠난 부모',
   batteryPercent: '{{percent}}%',
   batteryAccessibility: '배터리 {{percent}} 퍼센트',
   batteryChargingAccessibility: '배터리 {{percent}} 퍼센트, 충전 중',

@@ -36,11 +36,11 @@ export const plans = {
   compareParentsFree: 'Hingga 3',
   compareParentsPremium: 'Hingga 6',
   compareSync: 'Pembaruan dari perangkat',
-  compareSyncFree: 'Setiap 30 menit',
+  compareSyncFree: 'Saat Anda memeriksa',
   compareSyncPremium: 'Langsung',
   compareScreenTime: 'Waktu layar',
   compareScreenTimeFree: 'Hari ini, 3 aplikasi teratas',
-  compareScreenTimePremium: 'Semua aplikasi, riwayat 30 hari',
+  compareScreenTimePremium: 'Semua aplikasi, jam demi jam, riwayat 30 hari',
   compareLocation: 'Lokasi',
   compareLocationFree: 'Saat Anda membuka peta',
   compareLocationPremium: 'Langsung, dengan riwayat dan peringatan tempat',
@@ -55,8 +55,8 @@ export const plans = {
   compareSafetyFree: 'Peringatan + Check-In',
   compareSafetyPremium: 'Menambahkan foto di setiap Check-In',
   compareControls: 'Pemblokiran aplikasi dan filter web',
-  compareControlsFree: 'Aplikasi apa pun, konten dewasa',
-  compareControlsPremium: 'Per kategori, daftar Anda sendiri',
+  compareControlsFree: 'Aplikasi apa pun, kumpulan kategori tetap',
+  compareControlsPremium: 'Per kategori, daftar Anda sendiri, permintaan situs',
   compareReport: 'Laporan mingguan',
   compareReportFree: 'Sekali, saat masa uji coba berakhir',
   compareReportPremium: 'Setiap minggu',
@@ -65,7 +65,7 @@ export const plans = {
   compareActivityFeedPremium: '30 hari',
   compareChildReport: 'Laporan per anak',
   compareIncluded:
-    'Kedua paket mencakup Batas harian, Jam Diblokir, Aplikasi yang Diblokir, Filter web, Kunci perangkat, SOS, Permintaan waktu, dan Tugas hadiah di iPhone, Android, Mac, dan Windows dalam satu keluarga, ditambah dasbor web. Android TV dan Chromebook juga didukung, dengan kontrol yang lebih sedikit.',
+    'Kedua paket mencakup Batas harian, Jam Diblokir, Aplikasi yang Diblokir, Batas Aplikasi, persetujuan aplikasi baru, Filter web, Kunci perangkat, SOS, Permintaan waktu, dan Tugas hadiah di iPhone, Android, Mac, dan Windows dalam satu keluarga, ditambah dasbor web. Android TV dan Chromebook juga didukung, dengan kontrol yang lebih sedikit.',
   sectionWhyPremium: 'Apa yang ditambahkan Premium',
   sectionWhyPremiumSubtitle:
     'Semua aturan tetap berjalan di paket Gratis. Premium menambahkan apa yang bisa Anda lihat, dan seberapa cepat.',
@@ -122,7 +122,7 @@ export const plans = {
   memberTrialActiveSubtitle:
     'Keluarga ini sedang dalam masa uji coba. Setelah berakhir, semua aturan tetap berjalan di semua perangkat dan satu perangkat tetap melapor; pemilik dapat berlangganan untuk aktivitas langsung, riwayat, dan laporan dari semua perangkat.',
   memberTrialEndedSubtitle:
-    'Masa uji coba keluarga ini sudah berakhir. Batas harian, Aplikasi yang Diblokir, Filter web, dan lokasi masih berjalan. Minta pemilik keluarga berlangganan untuk pembaruan langsung, riwayat, dan peringatan.',
+    'Masa uji coba keluarga ini sudah berakhir. Batas harian, Jam Diblokir, Aplikasi yang Diblokir, Filter web, dan lokasi masih berjalan. Minta pemilik keluarga berlangganan untuk pembaruan langsung, riwayat, dan peringatan.',
   memberSetupTrialSubtitle:
     'Uji coba dimulai saat pemilik menghubungkan satu perangkat orang tua dan satu perangkat anak.',
   premiumActivatedTitle: 'Premium terbuka',
@@ -168,8 +168,7 @@ export const plans = {
   termLifetime: 'Seumur hidup',
   badgeOneTime: 'Sekali bayar',
   planPeriodOnce: 'sekali',
-  billedOnce:
-    'Bayar sekali untuk laporan dari hingga {{devices}} perangkat anak, selama KidGate tersedia',
+  billedOnce: 'Bayar sekali, selama KidGate tersedia',
   sectionFreePlan: 'Jika Anda tidak pernah berlangganan',
   devicesUnlimited: 'Semua perangkat anak melapor',
   featureFootnotePlatforms:
@@ -222,7 +221,8 @@ export const plans = {
   teaserProofRewardTasks: 'Tugas aktif: {{count}}',
   teaserRewardTasks:
     'Itu batas tugas yang bisa berjalan bersamaan di paket gratis. Premium menggandakannya.',
-  teaserLiveNote: 'Paket gratis diperbarui tiap 30 menit. Premium bersifat langsung.',
+  teaserLiveNote:
+    'Paket gratis diperbarui saat Anda memeriksa. Premium bersifat langsung.',
   teaserUsageTimeline: 'Premium menunjukkan pada jam berapa saja perangkat dipakai.',
   teaserProofParents: 'Orang tua: {{count}}',
   teaserParentCap:

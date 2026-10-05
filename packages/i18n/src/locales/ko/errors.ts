@@ -1,7 +1,7 @@
 // errors.ts (한국어)
 
 export const errors = {
-  timeRequestAlreadyResolved: '이 요청은 다른 보호자가 이미 처리했습니다.',
+  timeRequestAlreadyResolved: '이 요청은 다른 부모가 이미 처리했습니다.',
   emailAlreadyInUse: '이미 등록된 이메일입니다.',
   invalidEmail: '올바르지 않은 이메일 주소입니다.',
   weakPassword: '비밀번호는 최소 6자 이상이어야 합니다.',

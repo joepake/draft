@@ -111,6 +111,7 @@ export const report = {
   childrenNote:
     'Cùng hai tuần ở trên, tính theo từng thiết bị. Phần trăm so với tổng cả nhà.',
   colChild: 'Con',
+  colDevice: 'Thiết bị',
   colScreenTime: 'Thời gian sử dụng',
   colShare: 'Tỉ lệ',
   colChange: 'So tuần trước',

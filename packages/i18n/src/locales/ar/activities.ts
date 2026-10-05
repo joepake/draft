@@ -103,7 +103,7 @@ export const activities = {
   tamperFallbackTitle: 'تم تعطيل إذن حماية',
   tamperFallbackBody: 'تم تعطيل أحد أذونات الحماية على جهاز الطفل.',
 
-  tamperOverlayTitle: 'تم تعطيل إذن "الظهور فوق التطبيقات الأخرى"',
+  tamperOverlayTitle: 'تم تعطيل إذن «الظهور فوق التطبيقات الأخرى»',
   tamperOverlayBody:
     'قد لا تظهر شاشة القفل فوق التطبيقات الأخرى حتى تتم إعادة تفعيل هذا الإذن.',
 
@@ -124,7 +124,7 @@ export const activities = {
 
   tamperBatteryTitle: 'تم تعطيل وضع البطارية غير المقيد',
   tamperBatteryBody:
-    'قد يقوم النظام بإيقاف KidGate مؤقتًا حتى يتم ضبط استخدام البطارية على "غير مقيد" مرة أخرى.',
+    'قد يقوم النظام بإيقاف KidGate مؤقتًا حتى يتم ضبط استخدام البطارية على «غير مقيد» مرة أخرى.',
 
   tamperExactAlarmTitle: 'تم إيقاف المنبهات والتذكيرات',
   tamperExactAlarmBody:
@@ -151,7 +151,7 @@ export const activities = {
     'تغيّر التاريخ أو الوقت أو المنطقة الزمنية على هذا الجهاز — وقد يحدث ذلك أيضًا عند السفر. لا يتأثر وقت استخدام الشاشة وساعات الحظر بتغيير الساعة، ويتبعان المنطقة الزمنية للجهاز.',
 
   /** @deprecated legacy description keys — kept for old activity docs */
-  tamperOverlay: 'تم تعطيل إذن "الظهور فوق التطبيقات الأخرى".',
+  tamperOverlay: 'تم تعطيل إذن «الظهور فوق التطبيقات الأخرى».',
   tamperAccessibility: 'تم تعطيل خدمة إمكانية الوصول.',
   tamperUsageAccess: 'تم تعطيل إذن الوصول إلى الاستخدام.',
   tamperBattery: 'تم تعطيل وضع البطارية غير المقيد.',
@@ -177,7 +177,7 @@ export const activities = {
 
   tamperWebFilterTitle: 'تم إيقاف فلتر الويب',
   tamperWebFilterBody:
-    'تم إيقاف VPN الخاص بـKidGate على هذا الهاتف أو استبداله بتطبيق VPN آخر. لن تتم تصفية المواقع أو تسجيلها حتى يعود للعمل.',
+    'تم إيقاف VPN الخاص بـKidGate على هذا الجهاز أو استبداله بتطبيق VPN آخر. لن تتم تصفية المواقع أو تسجيلها حتى يعود للعمل.',
   tamperUninstallProtectionTitle: 'تم إيقاف الحماية من إلغاء التثبيت',
   tamperUninstallProtectionBody: 'أصبح بالإمكان إزالة KidGate من هذا الهاتف.',
   tamperReinstalledTitle: 'تمت إعادة تثبيت KidGate',

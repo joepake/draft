@@ -369,7 +369,7 @@ export const userGuide = {
         '2': 'Xem trạng thái hiện tại (đã hạn chế trang không phù hợp hoặc chưa lọc).',
         '3': 'Bật bộ lọc và lưu lại nếu màn hình có công tắc.',
         '4': 'Kiểm tra lại sau tại cùng màn hình. Nếu vẫn hiển thị Đang chờ, hãy mở lại KidGate trên thiết bị của trẻ để đồng bộ.',
-        '5': 'Trên iPhone hoặc iPad, mở KidGate trên thiết bị của trẻ và chọn Cho phép khi iOS hỏi thêm cấu hình VPN, rồi nhập mật mã thiết bị. Việc này chỉ cần làm một lần.',
+        '5': 'Trên iPhone hoặc iPad, mở KidGate trên thiết bị của con và chọn Cho phép khi iOS hỏi có cho KidGate thêm cấu hình VPN không, rồi nhập mật mã thiết bị. Việc này chỉ cần làm một lần.',
       },
     },
     protectionAlerts: {
@@ -388,7 +388,7 @@ export const userGuide = {
       title: 'Xem báo cáo sử dụng',
       summary:
         'Xem mỗi thiết bị đã được dùng bao lâu hôm nay và trong 30 ngày qua, theo từng con, và qua báo cáo mỗi sáng thứ Hai.',
-      tip: 'Gói miễn phí hiển thị tổng thời gian hôm nay và 3 ứng dụng dùng nhiều nhất, cập nhật mỗi 30 phút. Premium có thêm lịch sử 30 ngày, khung giờ sử dụng của từng thiết bị, mọi ứng dụng, báo cáo riêng cho từng con và báo cáo tuần mới vào mỗi thứ Hai. iPhone và iPad chỉ báo cáo tổng thời gian.',
+      tip: 'Gói miễn phí hiển thị tổng thời gian hôm nay và 3 ứng dụng dùng nhiều nhất, cập nhật khi bạn mở xem. Premium có thêm lịch sử 30 ngày, khung giờ sử dụng của từng thiết bị, mọi ứng dụng, báo cáo riêng cho từng con và báo cáo tuần mới vào mỗi thứ Hai. iPhone và iPad chỉ báo cáo tổng thời gian.',
       steps: {
         '1': 'Mở [[Báo cáo]]. [[Hôm nay]] cộng dồn tất cả thiết bị; bên dưới là [[Báo cáo tuần]], từng con ([[Theo con]]) và từng thiết bị ([[Theo thiết bị]]).',
         '2': 'Chạm vào một thiết bị để xem [[Báo cáo sử dụng]] của thiết bị đó: hôm nay so với Giới hạn hằng ngày, [[30 ngày gần đây]], [[Khung giờ sử dụng]] và [[Ứng dụng dùng nhiều nhất]]. Bạn cũng có thể mở báo cáo này từ [[Mức sử dụng hôm nay]] trên màn hình thiết bị.',
@@ -472,7 +472,7 @@ export const userGuide = {
       steps: {
         '1': 'Mở [[Cài đặt]]. Thẻ ở trên cùng hiển thị gói hiện tại; chọn [[Xem các gói]].',
         '2': 'Bản dùng thử 7 ngày bắt đầu khi thiết bị đầu tiên của con được ghép nối, và có đầy đủ mọi tính năng Premium.',
-        '3': 'Với gói miễn phí, mọi quy tắc vẫn hoạt động, nhưng chỉ một thiết bị gửi báo cáo: mỗi 30 phút, gồm tổng thời gian hôm nay và 3 ứng dụng dùng nhiều nhất. Premium có thêm cập nhật trực tiếp, mọi thiết bị, lịch sử 30 ngày, lịch sử web và video, và báo cáo tuần.',
+        '3': 'Với gói miễn phí, mọi quy tắc vẫn hoạt động, nhưng chỉ một thiết bị gửi báo cáo: tổng thời gian hôm nay và 3 ứng dụng dùng nhiều nhất, cập nhật khi bạn mở xem. Premium có thêm cập nhật trực tiếp, mọi thiết bị, lịch sử 30 ngày, lịch sử web và video, và báo cáo tuần.',
         '4': 'Nếu bản dùng thử kết thúc khi gia đình có nhiều hơn một thiết bị của con, KidGate sẽ yêu cầu bạn [[Chọn thiết bị chính]]. Thiết bị đó tiếp tục gửi báo cáo; các thiết bị khác hiện [[Ngừng báo cáo]] nhưng vẫn giữ quy tắc. Bạn có thể đổi lựa chọn mỗi 7 ngày một lần.',
         '5': 'Để đăng ký, chọn một gói rồi chạm [[Đăng ký Premium]]. Khi đăng ký, mọi thiết bị đang ngừng báo cáo sẽ hoạt động lại. Nếu bạn đã từng thanh toán, chọn [[Khôi phục giao dịch]].',
       },

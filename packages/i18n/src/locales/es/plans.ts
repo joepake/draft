@@ -37,11 +37,11 @@ export const plans = {
   compareParentsFree: 'Hasta 3',
   compareParentsPremium: 'Hasta 6',
   compareSync: 'Actualizaciones del dispositivo',
-  compareSyncFree: 'Cada 30 minutos',
+  compareSyncFree: 'Cuando lo consultas',
   compareSyncPremium: 'En vivo',
   compareScreenTime: 'Tiempo de pantalla',
   compareScreenTimeFree: 'Hoy, las 3 apps principales',
-  compareScreenTimePremium: 'Todas las apps, historial de 30 días',
+  compareScreenTimePremium: 'Todas las apps, hora por hora, historial de 30 días',
   compareLocation: 'Ubicación',
   compareLocationFree: 'Al abrir el mapa',
   compareLocationPremium: 'En vivo, con historial y avisos de lugares',
@@ -56,8 +56,8 @@ export const plans = {
   compareSafetyFree: 'Alertas + Check-in',
   compareSafetyPremium: 'Añade una foto a cada Check-In',
   compareControls: 'Bloqueo de apps y filtro web',
-  compareControlsFree: 'Cualquier app, contenido para adultos',
-  compareControlsPremium: 'Por categoría, tus propias listas',
+  compareControlsFree: 'Cualquier app, un conjunto fijo de categorías',
+  compareControlsPremium: 'Por categoría, tus propias listas, peticiones de sitios',
   compareReport: 'Informe semanal',
   compareReportFree: 'Una vez, al terminar la prueba',
   compareReportPremium: 'Cada semana',
@@ -66,7 +66,7 @@ export const plans = {
   compareActivityFeedPremium: '30 días',
   compareChildReport: 'Informes por hijo',
   compareIncluded:
-    'Ambos planes incluyen el Límite diario, las Horas bloqueadas, las Apps bloqueadas, el Filtro web, el Bloqueo de dispositivo, SOS, las Solicitudes de tiempo y las Tareas con recompensa en iPhone, Android, Mac y Windows dentro de una misma familia, además del panel web. Android TV y Chromebook también son compatibles, con menos controles.',
+    'Ambos planes incluyen el Límite diario, las Horas bloqueadas, las Apps bloqueadas, los Límites de apps, la aprobación de aplicaciones nuevas, el Filtro web, el Bloqueo de dispositivo, SOS, las Solicitudes de tiempo y las Tareas con recompensa en iPhone, Android, Mac y Windows dentro de una misma familia, además del panel web. Android TV y Chromebook también son compatibles, con menos controles.',
   sectionWhyPremium: 'Qué añade Premium',
   sectionWhyPremiumSubtitle:
     'Todas las reglas siguen funcionando en Gratis. Premium añade lo que puedes ver, y cuándo.',
@@ -123,7 +123,7 @@ export const plans = {
   memberTrialActiveSubtitle:
     'Esta familia está en prueba. Cuando termine, todas las reglas seguirán funcionando en todos los dispositivos y un dispositivo seguirá enviando informes; el propietario puede suscribirse para tener actividad en vivo, historial e informes de todos los dispositivos.',
   memberTrialEndedSubtitle:
-    'La prueba de esta familia ha terminado. El Límite diario, las Apps bloqueadas, el Filtro web y la ubicación siguen funcionando. Pide a quien creó la familia que se suscriba para tener actualizaciones en vivo, historial y alertas.',
+    'La prueba de esta familia ha terminado. El Límite diario, las Horas bloqueadas, las Apps bloqueadas, el Filtro web y la ubicación siguen funcionando. Pide a quien creó la familia que se suscriba para tener actualizaciones en vivo, historial y alertas.',
   memberSetupTrialSubtitle:
     'La prueba comienza cuando el propietario conecta un dispositivo de padre y uno de niño.',
   premiumActivatedTitle: 'Premium desbloqueado',
@@ -170,8 +170,7 @@ export const plans = {
   termLifetime: 'De por vida',
   badgeOneTime: 'Pago único',
   planPeriodOnce: 'una vez',
-  billedOnce:
-    'Paga una vez por informes de hasta {{devices}} dispositivos de niños, mientras KidGate esté disponible',
+  billedOnce: 'Paga una vez, mientras KidGate esté disponible',
   sectionFreePlan: 'Si nunca te suscribes',
   devicesUnlimited: 'Todos los dispositivos del niño envían informes',
   featureFootnotePlatforms:
@@ -221,7 +220,7 @@ export const plans = {
   teaserProofRewardTasks: 'Tareas activas: {{count}}',
   teaserRewardTasks:
     'Son todas las tareas que el plan gratuito mantiene activas a la vez. Premium duplica ese número.',
-  teaserLiveNote: 'Gratis se actualiza cada 30 minutos. Premium, en vivo.',
+  teaserLiveNote: 'Gratis se actualiza cuando lo consultas. Premium, en vivo.',
   teaserUsageTimeline: 'Premium muestra a qué horas del día se usó el dispositivo.',
   teaserProofParents: 'Padres: {{count}}',
   teaserParentCap:

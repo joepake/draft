@@ -25,7 +25,7 @@ export const webHistory = {
   emptyBlockedBody: 'まだ何もブロックされていません。',
   dayBlockedBadge: '{{count}}件ブロック',
   visitsMeta: '{{count}}回アクセス',
-  blockedMeta: '{{count}}回ブロック・{{category}}',
+  blockedMeta: '{{category}}・{{count}}回ブロック',
   categoryUnknown: 'ブロックリスト',
   sectionUncategorized: 'その他のサイト',
   blockCategory: '{{category}}をブロック',

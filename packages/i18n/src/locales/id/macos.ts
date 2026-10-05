@@ -51,7 +51,7 @@ export const macos = {
   setupSubtitle:
     'Sistem meminta izin untuk setiap hal berikut, dan hanya orang yang sedang memakai perangkat ini yang bisa menyetujuinya. Menyelesaikannya sekarang berarti anak Anda tidak ditanyai nanti.',
   setupStepFilterApprovalTitle: 'Setujui pemfilteran web',
-  setupStepFilterSwitchTitle: 'Filter Network Content',
+  setupStepFilterSwitchTitle: 'Memfilter Konten Jaringan',
 
   setupStepFilterWindowsTitle: 'Pemfilteran web',
 

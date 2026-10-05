@@ -24,7 +24,7 @@ export const webHistory = {
   emptyBlockedBody: 'لم يتم حظر أي شيء بعد.',
   dayBlockedBadge: 'محظورة: {{count}}',
   visitsMeta: '{{count}} زيارة',
-  blockedMeta: 'حُظر {{count}} مرة · {{category}}',
+  blockedMeta: '{{category}} · حُظر {{count}} مرة',
   categoryUnknown: 'قائمة الحظر',
   sectionUncategorized: 'مواقع أخرى',
   blockCategory: 'حظر {{category}}',

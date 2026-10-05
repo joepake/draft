@@ -83,7 +83,7 @@ export const report = {
   shareLinkCta: '{{url}} でアプリを入手',
   shareFooterDesc:
     'KidGateで、保護者は利用時間の管理、位置情報の確認、Webのフィルタリングができます。',
-  shareFooterCta: 'kidgate.app/get でアプリを入手',
+  shareFooterCta: 'kidgate.app でアプリを入手',
 
   currentWeekTab: '今週',
   currentWeekTitle: '計測中',
@@ -119,6 +119,7 @@ export const report = {
   devicesTitle: 'デバイスごと',
   childrenNote: '同じ 2 週間を、デバイスごとに。割合はご家族の合計に対するものです。',
   colChild: 'お子さま',
+  colDevice: 'デバイス',
   colScreenTime: 'スクリーンタイム',
   colShare: '割合',
   colChange: '先週比',

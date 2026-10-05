@@ -38,11 +38,11 @@ export const plans = {
   compareParentsFree: 'Up to 3',
   compareParentsPremium: 'Up to 6',
   compareSync: 'Updates from the device',
-  compareSyncFree: 'Every 30 minutes',
+  compareSyncFree: 'When you check',
   compareSyncPremium: 'Live',
   compareScreenTime: 'Screen time',
   compareScreenTimeFree: 'Today, top 3 apps',
-  compareScreenTimePremium: 'Every app, 30-day history',
+  compareScreenTimePremium: 'Every app, hour by hour, 30-day history',
   compareLocation: 'Location',
   compareLocationFree: 'When you open the map',
   compareLocationPremium: 'Live, with history and place alerts',
@@ -59,8 +59,8 @@ export const plans = {
   compareSafetyFree: 'Alerts + Check-In',
   compareSafetyPremium: 'Adds a photo to every Check-In',
   compareControls: 'App blocking and web filter',
-  compareControlsFree: 'Any app, adult content',
-  compareControlsPremium: 'By category, your own lists',
+  compareControlsFree: 'Any app, a fixed set of categories',
+  compareControlsPremium: 'By category, your own lists, site requests',
   compareReport: 'Weekly report',
   compareReportFree: 'Once, when the trial ends',
   compareReportPremium: 'Every week',
@@ -69,7 +69,7 @@ export const plans = {
   compareActivityFeedPremium: '30 days',
   compareChildReport: 'Per-child reports',
   compareIncluded:
-    'Both plans include the Daily Limit, Blocked Hours, Blocked Apps, the Web Filter, Device Lock, SOS, Time Requests and Reward tasks on iPhone, Android, Mac and Windows in one family, plus the web dashboard. Android TV and Chromebook are supported too, with fewer controls.',
+    'Both plans include the Daily Limit, Blocked Hours, Blocked Apps, App Limits, approving new apps, the Web Filter, Device Lock, SOS, Time Requests and Reward tasks on iPhone, Android, Mac and Windows in one family, plus the web dashboard. Android TV and Chromebook are supported too, with fewer controls.',
   // The rows above, folded into the five reasons Premium sells
   // (`docs/PRICING.md` §5). Groups and their order: `planComparison` in
   // `@kidgate/core/domain`. A headline is one or two words; a tagline is one
@@ -130,7 +130,7 @@ export const plans = {
   memberTrialActiveSubtitle:
     'This family is on trial. When it ends, every rule keeps working on every device and one device keeps reporting; the owner can subscribe for live activity, history and reports from every device.',
   memberTrialEndedSubtitle:
-    'This family’s trial has ended. Daily Limit, Blocked Apps, Web Filter and location still work. Ask the owner to subscribe for live updates, history and alerts.',
+    'This family’s trial has ended. Daily Limit, Blocked Hours, Blocked Apps, Web Filter and location still work. Ask the owner to subscribe for live updates, history and alerts.',
   memberSetupTrialSubtitle:
     'The trial starts when the owner connects a parent device and a child device.',
   premiumActivatedTitle: 'Premium unlocked',
@@ -176,8 +176,7 @@ export const plans = {
   termLifetime: 'Lifetime',
   badgeOneTime: 'One-time',
   planPeriodOnce: 'once',
-  billedOnce:
-    'Pay once for reports from up to {{devices}} child devices, for as long as KidGate is available',
+  billedOnce: 'Pay once, for as long as KidGate is available',
   sectionFreePlan: 'If you never subscribe',
   devicesUnlimited: 'Every child device reports',
   featureFootnotePlatforms:
@@ -234,7 +233,7 @@ export const plans = {
   teaserProofRewardTasks: 'Active tasks: {{count}}',
   teaserRewardTasks:
     'That is every task the free plan runs at once. Premium doubles it.',
-  teaserLiveNote: 'Free updates every 30 minutes. Premium is live.',
+  teaserLiveNote: 'Free updates when you check. Premium is live.',
   teaserUsageTimeline:
     'Premium shows when in the day the device was used, hour by hour.',
   teaserProofParents: 'Parents: {{count}}',

@@ -91,7 +91,7 @@ export const report = {
   shareLinkCta: 'Скачайте приложение на {{url}}',
   shareFooterDesc:
     'KidGate помогает родителям управлять экранным временем, видеть местоположение и фильтровать сайты.',
-  shareFooterCta: 'Скачайте приложение на kidgate.app/get',
+  shareFooterCta: 'Скачайте приложение на kidgate.app',
 
   currentWeekTab: 'Эта неделя',
   currentWeekTitle: 'Ещё измеряется',
@@ -127,6 +127,7 @@ export const report = {
   devicesTitle: 'По устройствам',
   childrenNote: 'Те же две недели, по устройствам. Проценты — от суммы по семье.',
   colChild: 'Ребёнок',
+  colDevice: 'Устройство',
   colScreenTime: 'Экранное время',
   colShare: 'Доля',
   colChange: 'К прошлой неделе',

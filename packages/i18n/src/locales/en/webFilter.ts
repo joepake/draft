@@ -40,7 +40,7 @@ export const webFilter = {
     'YouTube runs at its strictest level: comments are hidden and some ordinary videos are blocked too. A child cannot switch it off from their account.',
   infoTitle: 'How it works',
   infoLine1Ios:
-    'KidGate runs a private connection on the device that checks which sites are being looked up, and blocks the ones on your categories.',
+    'KidGate runs a private connection on the device that checks which sites are being looked up, and blocks the ones in the categories you chose.',
   infoLine2Ios:
     'Apple’s adult-content filter stays on in Safari and in-app browsers as a second layer.',
   infoLine3Ios:

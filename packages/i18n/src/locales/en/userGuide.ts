@@ -385,7 +385,7 @@ export const userGuide = {
       title: 'Read usage reports',
       summary:
         'See how long each device was used today and over the last 30 days, per child, and in a report every Monday.',
-      tip: 'Free families see today’s total and the top 3 apps, updated every 30 minutes. Premium adds 30 days of history, when each device was used, every app, a report for each child, and a new weekly report every Monday. iPhone and iPad report the total only.',
+      tip: 'Free families see today’s total and the top 3 apps, updated when you check. Premium adds 30 days of history, when each device was used, every app, a report for each child, and a new weekly report every Monday. iPhone and iPad report the total only.',
       steps: {
         '1': 'Open [[Reports]]. [[Today]] adds up every device; below it are the [[Weekly report]], each child ([[By child]]) and each device ([[By device]]).',
         '2': 'Tap a device for its [[Usage Report]]: today against the Daily Limit, [[Last 30 days]], [[When it was used]] and [[Most used apps]]. You can also open it from [[Usage today]] on the device’s screen.',
@@ -403,7 +403,7 @@ export const userGuide = {
       steps: {
         '1': 'On the parent device, open your child (or the device, if no child is assigned to it), then [[Web History]] in the [[Safety monitoring]] section. From your child, it combines all their devices.',
         '2': 'Each day lists sites by kind, with how many times each was reached. Select [[Blocked only]] to see just what the Web Filter stopped.',
-        '3': 'To block a whole kind of site, open its section and select the Block button at the end of it. From your child, this applies to all their devices.',
+        '3': 'To block a whole kind of site, open its section and select the Block button at the end of it. From your child’s profile, this applies to all their devices.',
         '4': 'History comes from the Web Filter, so it only fills while the filter is running on that device.',
         '5': 'History is kept for 30 days. When your child asks to open a blocked site, the request appears in [[Needs approval]], not here.',
       },
@@ -471,7 +471,7 @@ export const userGuide = {
       steps: {
         '1': 'Open [[Settings]]. The card at the top shows your current plan; select [[View plans]].',
         '2': 'The 7-day trial starts once your first child device is paired, and includes everything in Premium.',
-        '3': 'On the free plan, every rule keeps working, but only one device reports: every 30 minutes, with today’s total and the top 3 apps. Premium adds live updates, every device, 30 days of history, web and video history, and weekly reports.',
+        '3': 'On the free plan, every rule keeps working, but only one device reports: today’s total and the top 3 apps, updated when you check. Premium adds live updates, every device, 30 days of history, web and video history, and weekly reports.',
         '4': 'If the trial ends with more than one child device, KidGate asks you to [[Choose your primary device]]. That one keeps reporting; the others show [[Paused]] but keep their rules. You can change the choice once every 7 days.',
         '5': 'To subscribe, choose a plan and select [[Subscribe to Premium]]. Subscribing brings every paused device back. If you have paid before, select [[Restore purchases]].',
       },

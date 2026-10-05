@@ -52,7 +52,7 @@ export const macos = {
   setupSubtitle:
     'सिस्टम इनमें से हर चीज़ के लिए अनुमति माँगता है, और हाँ सिर्फ़ वही कह सकता है जो इस समय इस डिवाइस पर है। अभी कर लेने से बाद में आपके बच्चे से यह नहीं पूछा जाएगा।',
   setupStepFilterApprovalTitle: 'वेब फ़िल्टरिंग को मंज़ूरी दें',
-  setupStepFilterSwitchTitle: 'Filter Network Content',
+  setupStepFilterSwitchTitle: 'नेटवर्क कॉन्टेंट फ़िल्टर करना',
 
   setupStepFilterWindowsTitle: 'वेब फ़िल्टरिंग',
 

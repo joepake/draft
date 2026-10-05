@@ -1,7 +1,7 @@
 /**
  * How many of a family's devices keep **reporting** — the paywall, in numbers.
  *
- * One home for two constants that had two hand-written copies each
+ * One home for a constant that had two hand-written copies
  * (`functions/lib/freeTier.js` and `apps/mobile/src/constants/FreeTier.ts`,
  * pinned against each other by `freeTierParity.test.js` reading one as text).
  * That arrangement worked for two consumers and ran out at the third:
@@ -51,17 +51,8 @@
  */
 export const FREE_TIER_MAX_CHILD_DEVICES = 1;
 
-/**
- * Three report on a lifetime purchase.
- *
- * A subscription's costs scale with how long someone stays; a one-time
- * purchase's do not, so the ceiling has to be somewhere. Three covers the
- * families this plan is sold to and stops one payment from underwriting a
- * household of eight phones indefinitely.
- *
- * **Pairing is not what this refuses**, whatever the two old copies said. A
- * lifetime buyer may pair up to `PAID_MAX_DEVICES_PER_FAMILY` like anybody who
- * has paid — three is how many of those report, which is where the
- * revenue-does-not-scale argument actually lands.
+/*
+ * `LIFETIME_MAX_CHILD_DEVICES` (three) lived here until 2026-10-05. The owner
+ * dropped it: a lifetime purchase reports from every device, like a
+ * subscription (`docs/PRICING.md` §7).
  */
-export const LIFETIME_MAX_CHILD_DEVICES = 3;

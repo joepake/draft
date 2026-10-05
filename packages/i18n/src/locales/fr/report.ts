@@ -92,7 +92,7 @@ export const report = {
   shareLinkCta: 'Téléchargez l’appli sur {{url}}',
   shareFooterDesc:
     'KidGate aide les parents à gérer le temps d’écran, à voir la position et à filtrer le web.',
-  shareFooterCta: 'Téléchargez l’appli sur kidgate.app/get',
+  shareFooterCta: 'Téléchargez l’appli sur kidgate.app',
 
   currentWeekTab: 'Cette semaine',
   currentWeekTitle: 'Mesure en cours',
@@ -129,6 +129,7 @@ export const report = {
   childrenNote:
     'La même quinzaine, par appareil. Les pourcentages portent sur le total de la famille.',
   colChild: 'Enfant',
+  colDevice: 'Appareil',
   colScreenTime: 'Temps d’écran',
   colShare: 'Part',
   colChange: 'Vs semaine dernière',

@@ -80,7 +80,7 @@ export const report = {
   shareLinkCta: '{{url}} से ऐप पाएं',
   shareFooterDesc:
     'KidGate माता-पिता को स्क्रीन टाइम प्रबंधित करने, स्थान देखने और वेब फ़िल्टर करने में मदद करता है।',
-  shareFooterCta: 'kidgate.app/get से ऐप पाएं',
+  shareFooterCta: 'kidgate.app से ऐप पाएं',
 
   currentWeekTab: 'इस हफ़्ते',
   currentWeekTitle: 'अभी मापा जा रहा है',
@@ -116,6 +116,7 @@ export const report = {
   devicesTitle: 'हर डिवाइस',
   childrenNote: 'वही दो सप्ताह, हर डिवाइस के हिसाब से। प्रतिशत परिवार के कुल पर हैं।',
   colChild: 'बच्चा',
+  colDevice: 'डिवाइस',
   colScreenTime: 'स्क्रीन टाइम',
   colShare: 'हिस्सा',
   colChange: 'पिछले सप्ताह से',

@@ -162,6 +162,7 @@
     "./domain/usageDuration": "./src/domain/usageDuration.ts",
     "./domain/userGuide": "./src/domain/userGuide.ts",
     "./domain/userGuideSearch": "./src/domain/userGuideSearch.ts",
+    "./domain/userGuideSpotlight": "./src/domain/userGuideSpotlight.ts",
     "./domain/usageReportGate": "./src/domain/usageReportGate.ts",
     "./domain/usageTimeline": "./src/domain/usageTimeline.ts",
     "./domain/webActivityWindow": "./src/domain/webActivityWindow.ts",

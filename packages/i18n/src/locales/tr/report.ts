@@ -75,7 +75,7 @@ export const report = {
   shareLinkCta: 'Uygulamayı {{url}} adresinden indirin',
   shareFooterDesc:
     'KidGate, ebeveynlerin ekran süresini yönetmesine, konumu görmesine ve web içeriğini filtrelemesine yardımcı olur.',
-  shareFooterCta: 'Uygulamayı kidgate.app/get adresinden indirin',
+  shareFooterCta: 'Uygulamayı kidgate.app adresinden indirin',
 
   currentWeekTab: 'Bu hafta',
   currentWeekTitle: 'Hâlâ ölçülüyor',
@@ -111,6 +111,7 @@ export const report = {
   devicesTitle: 'Her cihaz',
   childrenNote: 'Aynı iki hafta, cihaz başına. Yüzdeler ailenin toplamına göredir.',
   colChild: 'Çocuk',
+  colDevice: 'Cihaz',
   colScreenTime: 'Ekran Süresi',
   colShare: 'Pay',
   colChange: 'Geçen haftaya göre',

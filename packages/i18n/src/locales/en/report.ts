@@ -163,6 +163,7 @@ export const report = {
   devicesTitle: 'Each device',
   childrenNote: 'Same fortnight, per device. Percentages are of the family total.',
   colChild: 'Child',
+  colDevice: 'Device',
   colScreenTime: 'Screen Time',
   colShare: 'Share',
   colChange: 'vs last week',

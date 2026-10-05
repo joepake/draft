@@ -184,7 +184,7 @@ export const userGuide = {
       keywords: 'tempo de uso, tempo de tela, family controls, iphone, ipad, autorizar',
       tip: 'Se o botão Permitir não aparecer, abra Ajustes do iOS, depois Tempo de tela e confirme que o Tempo de tela está ativado no dispositivo da criança primeiro.',
       steps: {
-        '1': 'No iPhone da criança, abra o KidGate e permaneça na tela Status / configuração.',
+        '1': 'Abra o KidGate e permaneça na tela “Status”.',
         '2': 'Selecione Permitir uso de apps e sites (ou o banner de Tempo de tela).',
         '3': 'Na caixa de diálogo do sistema, selecione Permitir. Não feche a caixa de diálogo sem escolher.',
         '4': 'Volte ao KidGate. O banner desaparece assim que a autorização for concluída.',
@@ -391,7 +391,7 @@ export const userGuide = {
       title: 'Ver relatórios de uso',
       summary:
         'Veja por quanto tempo cada dispositivo foi usado hoje e nos últimos 30 dias, também por criança, e em um relatório toda segunda-feira.',
-      tip: 'No plano gratuito, você vê o total de hoje e os 3 apps principais, atualizados a cada 30 minutos. O Premium adiciona 30 dias de histórico, quando cada dispositivo foi usado, todos os apps, um relatório para cada criança e um novo relatório semanal toda segunda-feira. iPhone e iPad informam apenas o total.',
+      tip: 'No plano gratuito, você vê o total de hoje e os 3 apps principais, atualizados quando você consulta o KidGate. O Premium adiciona 30 dias de histórico, quando cada dispositivo foi usado, todos os apps, um relatório para cada criança e um novo relatório semanal toda segunda-feira. iPhone e iPad informam apenas o total.',
       steps: {
         '1': 'Abra Relatórios. A seção Hoje soma todos os dispositivos; abaixo dela ficam o Relatório semanal, cada criança (Por criança) e cada dispositivo (Por dispositivo).',
         '2': 'Toque em um dispositivo para ver o Relatório de uso dele: o uso de hoje em relação ao Limite diário, Últimos 30 dias, Quando foi usado e Apps mais usados. Você também pode abri-lo em Uso de hoje, na tela do dispositivo.',
@@ -477,7 +477,7 @@ export const userGuide = {
       steps: {
         '1': 'Abra Ajustes. O cartão no topo mostra seu plano atual; selecione Ver planos.',
         '2': 'O teste de 7 dias começa quando o primeiro dispositivo da criança é pareado e inclui tudo o que o Premium oferece.',
-        '3': 'No plano gratuito, todas as regras continuam funcionando, mas só um dispositivo envia relatórios: a cada 30 minutos, com o total de hoje e os 3 apps principais. O Premium adiciona atualizações ao vivo, todos os dispositivos, 30 dias de histórico, histórico da web e de vídeos, e relatórios semanais.',
+        '3': 'No plano gratuito, todas as regras continuam funcionando, mas só um dispositivo envia relatórios: o total de hoje e os 3 apps principais, atualizados quando você consulta o KidGate. O Premium adiciona atualizações ao vivo, todos os dispositivos, 30 dias de histórico, histórico da web e de vídeos, e relatórios semanais.',
         '4': 'Se o teste terminar com mais de um dispositivo da criança, o KidGate abre a tela Escolha seu dispositivo principal. O escolhido continua enviando relatórios; os outros mostram Pausado, mas mantêm as regras. Você pode mudar a escolha uma vez a cada 7 dias.',
         '5': 'Para assinar, escolha um plano e selecione Assinar o Premium. Ao assinar, todos os dispositivos pausados voltam a enviar relatórios. Se você já pagou antes, selecione Restaurar compras.',
       },

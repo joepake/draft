@@ -136,11 +136,11 @@ export const activities = {
 
   tamperNotificationsTitle: '알림이 비활성화되었습니다',
   tamperNotificationsBody:
-    '원격 명령 및 보호자 알림이 이 기기에 정상적으로 전달되지 않을 수 있습니다.',
+    '원격 명령 및 부모 알림이 이 기기에 정상적으로 전달되지 않을 수 있습니다.',
 
   tamperLocationTitle: '위치 정보가 비활성화되었습니다',
   tamperLocationBody:
-    '위치 권한이 다시 허용될 때까지 보호자는 위치 업데이트를 받을 수 없습니다.',
+    '위치 권한이 다시 허용될 때까지 부모는 위치 업데이트를 받을 수 없습니다.',
 
   tamperCameraTitle: '카메라가 비활성화되었습니다',
   tamperCameraBody:
@@ -181,7 +181,7 @@ export const activities = {
 
   tamperWebFilterTitle: '웹 필터가 꺼졌습니다',
   tamperWebFilterBody:
-    '이 휴대폰의 KidGate VPN이 꺼졌거나 다른 VPN 앱으로 대체되었습니다. 다시 켜질 때까지 사이트가 필터링되거나 기록되지 않습니다.',
+    '이 기기의 KidGate VPN이 꺼졌거나 다른 VPN 앱으로 대체되었습니다. 다시 켜질 때까지 사이트가 필터링되거나 기록되지 않습니다.',
   tamperUninstallProtectionTitle: '삭제 방지가 꺼졌습니다',
   tamperUninstallProtectionBody: '이제 이 휴대폰에서 KidGate를 삭제할 수 있습니다.',
   tamperReinstalledTitle: 'KidGate가 다시 설치되었습니다',

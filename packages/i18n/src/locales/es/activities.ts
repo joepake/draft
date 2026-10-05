@@ -184,7 +184,7 @@ export const activities = {
 
   tamperWebFilterTitle: 'Filtro web desactivado',
   tamperWebFilterBody:
-    'La VPN de KidGate en este teléfono se desactivó o fue reemplazada por otra aplicación de VPN. Hasta que vuelva a activarse, los sitios no se filtran ni se registran.',
+    'La VPN de KidGate en este dispositivo se desactivó o fue reemplazada por otra aplicación de VPN. Hasta que vuelva a activarse, los sitios no se filtran ni se registran.',
   tamperUninstallProtectionTitle: 'Protección de desinstalación desactivada',
   tamperUninstallProtectionBody: 'Ahora se puede quitar KidGate de este teléfono.',
   tamperReinstalledTitle: 'KidGate se volvió a instalar',

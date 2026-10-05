@@ -157,7 +157,7 @@ export const activities = {
   unknownDevice: 'Неизвестное устройство',
   tamperWebFilterTitle: 'Веб-фильтр выключен',
   tamperWebFilterBody:
-    'VPN KidGate на этом телефоне выключили или заменили другим VPN-приложением. Пока он снова не включится, сайты не фильтруются и не записываются.',
+    'VPN KidGate на этом устройстве выключили или заменили другим VPN-приложением. Пока он снова не включится, сайты не фильтруются и не записываются.',
   tamperUninstallProtectionTitle: 'Защита от удаления выключена',
   tamperUninstallProtectionBody: 'Теперь KidGate можно удалить с этого телефона.',
   tamperReinstalledTitle: 'KidGate переустановлен',

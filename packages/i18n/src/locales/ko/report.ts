@@ -79,8 +79,8 @@ export const report = {
   shareFailed: '공유 메뉴를 열지 못했습니다.',
   shareLinkCta: '{{url}} 에서 앱 받기',
   shareFooterDesc:
-    'KidGate는 보호자가 사용 시간을 관리하고, 위치를 확인하고, 웹을 필터링할 수 있도록 돕습니다.',
-  shareFooterCta: 'kidgate.app/get 에서 앱 받기',
+    'KidGate는 부모가 사용 시간을 관리하고, 위치를 확인하고, 웹을 필터링할 수 있도록 돕습니다.',
+  shareFooterCta: 'kidgate.app에서 앱 받기',
 
   currentWeekTab: '이번 주',
   currentWeekTitle: '아직 측정 중',
@@ -116,6 +116,7 @@ export const report = {
   devicesTitle: '기기별',
   childrenNote: '같은 2주간을 기기별로. 비율은 가족 합계 기준입니다.',
   colChild: '자녀',
+  colDevice: '기기',
   colScreenTime: '스크린 타임',
   colShare: '비율',
   colChange: '지난주 대비',

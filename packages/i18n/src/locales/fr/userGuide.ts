@@ -187,7 +187,7 @@ export const userGuide = {
       keywords: 'temps d’écran, family controls, iphone, ipad, autoriser',
       tip: 'Si le bouton Autoriser est absent, ouvrez Réglages iOS, puis Temps d’écran et assurez-vous d’abord que Temps d’écran est activé sur l’appareil de l’enfant.',
       steps: {
-        '1': 'Sur l’iPhone de l’enfant, ouvrez KidGate et restez sur l’écran État / configuration.',
+        '1': 'Ouvrez KidGate et restez sur l’écran « État ».',
         '2': 'Sélectionnez Autoriser l’utilisation des apps et des sites web (ou la bannière Temps d’écran).',
         '3': 'Dans la boîte de dialogue système, sélectionnez Autoriser. Merci de ne pas fermer la boîte de dialogue sans faire de choix.',
         '4': 'Revenez à KidGate. La bannière disparaît une fois l’autorisation réussie.',
@@ -397,7 +397,7 @@ export const userGuide = {
       title: 'Consulter les rapports d’utilisation',
       summary:
         'Voyez combien de temps chaque appareil a été utilisé aujourd’hui et sur les 30 derniers jours, par enfant, et dans un rapport chaque lundi.',
-      tip: 'Avec l’offre gratuite, vous voyez le total du jour et les 3 applications les plus utilisées, mis à jour toutes les 30 minutes. Premium ajoute 30 jours d’historique, les moments où chaque appareil a été utilisé, toutes les applications, un rapport pour chaque enfant et un nouveau rapport hebdomadaire chaque lundi. L’iPhone et l’iPad ne transmettent que le total.',
+      tip: 'Avec l’offre gratuite, vous voyez le total du jour et les 3 applications les plus utilisées, mis à jour quand vous consultez l’app. Premium ajoute 30 jours d’historique, les moments où chaque appareil a été utilisé, toutes les applications, un rapport pour chaque enfant et un nouveau rapport hebdomadaire chaque lundi. L’iPhone et l’iPad ne transmettent que le total.',
       steps: {
         '1': 'Ouvrez Rapports. La section Aujourd’hui additionne tous les appareils ; en dessous se trouvent le Rapport hebdomadaire, chaque enfant (Par enfant) et chaque appareil (Par appareil).',
         '2': 'Appuyez sur un appareil pour ouvrir son Rapport d’utilisation : aujourd’hui par rapport à la Limite quotidienne, Les 30 derniers jours, Quand l’appareil a été utilisé et Applications les plus utilisées. Vous pouvez aussi l’ouvrir depuis Utilisation aujourd’hui sur l’écran de l’appareil.',
@@ -484,7 +484,7 @@ export const userGuide = {
       steps: {
         '1': 'Ouvrez Réglages. La fiche en haut indique votre formule actuelle ; sélectionnez Voir les formules.',
         '2': 'L’essai de 7 jours commence dès que votre premier appareil enfant est appairé, et inclut tout ce que contient Premium.',
-        '3': 'Avec l’offre gratuite, toutes les règles continuent de fonctionner, mais un seul appareil envoie des rapports : toutes les 30 minutes, avec le total du jour et les 3 applications les plus utilisées. Premium ajoute les mises à jour en direct, tous les appareils, 30 jours d’historique, l’historique web et vidéo, et les rapports hebdomadaires.',
+        '3': 'Avec l’offre gratuite, toutes les règles continuent de fonctionner, mais un seul appareil envoie des rapports : le total du jour et les 3 applications les plus utilisées, mis à jour quand vous consultez l’app. Premium ajoute les mises à jour en direct, tous les appareils, 30 jours d’historique, l’historique web et vidéo, et les rapports hebdomadaires.',
         '4': 'Si l’essai se termine avec plus d’un appareil enfant, KidGate affiche l’écran Choisissez votre appareil principal. Cet appareil continue d’envoyer des rapports ; les autres affichent En pause mais gardent leurs règles. Vous pouvez changer ce choix une fois tous les 7 jours.',
         '5': 'Pour vous abonner, choisissez une formule et sélectionnez S’abonner à Premium. Avec l’abonnement, tous les appareils en pause envoient de nouveau des rapports. Si vous avez déjà payé, sélectionnez Restaurer les achats.',
       },

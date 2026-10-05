@@ -52,7 +52,7 @@ export const macos = {
   setupSubtitle:
     'Das System fragt für jeden dieser Punkte um Erlaubnis, und nur wer gerade an diesem Gerät sitzt, kann zustimmen. Wenn du das jetzt erledigst, wird dein Kind später nicht gefragt.',
   setupStepFilterApprovalTitle: 'Webfilter freigeben',
-  setupStepFilterSwitchTitle: 'Filter Network Content',
+  setupStepFilterSwitchTitle: 'Netzwerkinhalte filtern',
 
   setupStepFilterWindowsTitle: 'Webfilter',
 
