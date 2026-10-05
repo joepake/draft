@@ -13,8 +13,7 @@ export const sos = {
   audioLabel: 'Đoạn ghi âm',
   audioPlayAccessibility: 'Phát đoạn ghi âm SOS',
   audioStopAccessibility: 'Dừng phát đoạn ghi âm SOS',
-  audioLoadFailed:
-    'Không phát được đoạn ghi âm. Vui lòng kiểm tra kết nối mạng rồi thử lại.',
+  audioLoadFailed: 'Không phát được đoạn ghi âm. Vui lòng thử lại.',
   acknowledgedAt: 'Đã phản hồi lúc {{time}}',
   openInMaps: 'Mở trong Bản đồ',
   acknowledgeButton: 'Đã thấy, đang xử lý',

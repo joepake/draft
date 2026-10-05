@@ -14,8 +14,7 @@ export const sos = {
   audioLabel: 'Gravação de áudio',
   audioPlayAccessibility: 'Reproduzir a gravação do SOS',
   audioStopAccessibility: 'Parar a reprodução da gravação do SOS',
-  audioLoadFailed:
-    'Não foi possível reproduzir esta gravação. Verifique sua conexão e tente novamente.',
+  audioLoadFailed: 'Não foi possível reproduzir esta gravação. Tente novamente.',
   acknowledgedAt: 'Confirmado {{time}}',
   openInMaps: 'Abrir no Mapas',
   acknowledgeButton: 'Deixa comigo',

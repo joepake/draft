@@ -17,7 +17,7 @@ export const sos = {
   audioLabel: 'تسجيل صوتي',
   audioPlayAccessibility: 'تشغيل تسجيل SOS',
   audioStopAccessibility: 'إيقاف تشغيل تسجيل SOS',
-  audioLoadFailed: 'تعذر تشغيل هذا التسجيل. يرجى التحقق من اتصالك والمحاولة مرة أخرى.',
+  audioLoadFailed: 'تعذر تشغيل هذا التسجيل. يرجى المحاولة مرة أخرى.',
   acknowledgedAt: 'تم الاطلاع {{time}}',
   openInMaps: 'فتح في الخرائط',
   acknowledgeButton: 'سأتولى الأمر',

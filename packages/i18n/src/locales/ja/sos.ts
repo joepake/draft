@@ -14,8 +14,7 @@ export const sos = {
   audioLabel: '録音',
   audioPlayAccessibility: 'SOSの録音を再生',
   audioStopAccessibility: 'SOSの録音の再生を停止',
-  audioLoadFailed:
-    'この録音を再生できませんでした。接続を確認してもう一度お試しください。',
+  audioLoadFailed: 'この録音を再生できませんでした。もう一度お試しください。',
   acknowledgedAt: '{{time}}に確認済み',
   openInMaps: 'マップで開く',
   acknowledgeButton: '対応します',

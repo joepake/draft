@@ -14,8 +14,7 @@ export const sos = {
   audioLabel: 'Enregistrement audio',
   audioPlayAccessibility: 'Écouter l’enregistrement SOS',
   audioStopAccessibility: 'Arrêter l’écoute de l’enregistrement SOS',
-  audioLoadFailed:
-    'Impossible de lire cet enregistrement. Vérifiez votre connexion et réessayez.',
+  audioLoadFailed: 'Impossible de lire cet enregistrement. Réessayez.',
   acknowledgedAt: 'Pris en charge {{time}}',
   openInMaps: 'Ouvrir dans Plans',
   acknowledgeButton: 'Je m’en occupe',

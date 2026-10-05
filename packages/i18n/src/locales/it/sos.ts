@@ -14,8 +14,7 @@ export const sos = {
   audioLabel: 'Registrazione audio',
   audioPlayAccessibility: 'Riproduci la registrazione SOS',
   audioStopAccessibility: 'Interrompi la riproduzione della registrazione SOS',
-  audioLoadFailed:
-    'Impossibile riprodurre questa registrazione. Controlla la connessione e riprova.',
+  audioLoadFailed: 'Impossibile riprodurre questa registrazione. Riprova.',
   acknowledgedAt: 'Confermato {{time}}',
   openInMaps: 'Apri in Mappe',
   acknowledgeButton: 'Ci penso io',

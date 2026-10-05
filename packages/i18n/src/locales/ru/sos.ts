@@ -14,8 +14,7 @@ export const sos = {
   audioLabel: 'Аудиозапись',
   audioPlayAccessibility: 'Воспроизвести запись SOS',
   audioStopAccessibility: 'Остановить воспроизведение записи SOS',
-  audioLoadFailed:
-    'Не удалось воспроизвести эту запись. Проверьте подключение и попробуйте ещё раз.',
+  audioLoadFailed: 'Не удалось воспроизвести эту запись. Попробуйте ещё раз.',
   acknowledgedAt: 'Подтверждено {{time}}',
   openInMaps: 'Открыть в Картах',
   acknowledgeButton: 'Я разбираюсь',

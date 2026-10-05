@@ -14,8 +14,7 @@ export const sos = {
   audioLabel: 'ऑडियो रिकॉर्डिंग',
   audioPlayAccessibility: 'SOS रिकॉर्डिंग चलाएँ',
   audioStopAccessibility: 'SOS रिकॉर्डिंग चलाना बंद करें',
-  audioLoadFailed:
-    'यह रिकॉर्डिंग चल नहीं सकी। कृपया अपना कनेक्शन जांचें और पुनः प्रयास करें।',
+  audioLoadFailed: 'यह रिकॉर्डिंग चल नहीं सकी। कृपया पुनः प्रयास करें।',
   acknowledgedAt: '{{time}} स्वीकार किया गया',
   openInMaps: 'मैप्स में खोलें',
   acknowledgeButton: 'मैंने संभाल लिया',

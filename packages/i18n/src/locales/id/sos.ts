@@ -13,8 +13,7 @@ export const sos = {
   audioLabel: 'Rekaman suara',
   audioPlayAccessibility: 'Putar rekaman SOS',
   audioStopAccessibility: 'Hentikan pemutaran rekaman SOS',
-  audioLoadFailed:
-    'Tidak dapat memutar rekaman ini. Periksa koneksi Anda dan coba lagi.',
+  audioLoadFailed: 'Tidak dapat memutar rekaman ini. Coba lagi.',
   acknowledgedAt: 'Ditanggapi {{time}}',
   openInMaps: 'Buka di Maps',
   acknowledgeButton: 'Segera saya tangani',

@@ -13,8 +13,7 @@ export const sos = {
   audioLabel: 'Sound recording',
   audioPlayAccessibility: 'Play SOS recording',
   audioStopAccessibility: 'Stop playing SOS recording',
-  audioLoadFailed:
-    'Unable to play this recording. Check your connection and try again.',
+  audioLoadFailed: 'Unable to play this recording. Try again.',
   acknowledgedAt: 'Responded {{time}}',
   openInMaps: 'Open in Maps',
   acknowledgeButton: 'I’m on it',

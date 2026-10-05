@@ -13,7 +13,7 @@ export const sos = {
   audioLabel: 'Ses kaydı',
   audioPlayAccessibility: 'SOS kaydını oynat',
   audioStopAccessibility: 'SOS kaydını oynatmayı durdur',
-  audioLoadFailed: 'Bu kayıt oynatılamadı. Bağlantınızı kontrol edip tekrar deneyin.',
+  audioLoadFailed: 'Bu kayıt oynatılamadı. Tekrar deneyin.',
   acknowledgedAt: 'Onaylandı {{time}}',
   openInMaps: 'Haritalar’da aç',
   acknowledgeButton: 'Ben ilgileniyorum',

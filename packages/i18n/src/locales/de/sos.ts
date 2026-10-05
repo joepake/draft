@@ -15,7 +15,7 @@ export const sos = {
   audioPlayAccessibility: 'SOS-Aufnahme abspielen',
   audioStopAccessibility: 'Wiedergabe der SOS-Aufnahme stoppen',
   audioLoadFailed:
-    'Diese Aufnahme konnte nicht abgespielt werden. Bitte prüfe deine Verbindung und versuche es erneut.',
+    'Diese Aufnahme konnte nicht abgespielt werden. Bitte versuche es erneut.',
   acknowledgedAt: 'Bestätigt {{time}}',
   openInMaps: 'In Karten öffnen',
   acknowledgeButton: 'Ich kümmere mich darum',

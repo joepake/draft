@@ -14,8 +14,7 @@ export const sos = {
   audioLabel: '녹음',
   audioPlayAccessibility: 'SOS 녹음 재생',
   audioStopAccessibility: 'SOS 녹음 재생 중지',
-  audioLoadFailed:
-    '이 녹음을 재생하지 못했습니다. 연결 상태를 확인한 후 다시 시도해 주세요.',
+  audioLoadFailed: '이 녹음을 재생하지 못했습니다. 다시 시도해 주세요.',
   acknowledgedAt: '{{time}} 확인함',
   openInMaps: '지도에서 열기',
   acknowledgeButton: '제가 확인할게요',

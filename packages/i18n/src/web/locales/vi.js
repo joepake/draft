@@ -241,7 +241,7 @@ export default {
     only4Title: 'Lối thoát cho con',
     only4Text:
       'Con giữ nút SOS năm giây trên điện thoại là bạn nhận được ngay, kèm vị trí — trên Android, máy còn mở được gọi điện, bản đồ và tin nhắn trong năm phút, kể cả khi đang bị khóa. Khi gọi được trợ giúp ngay từ màn hình khóa, con không có lý do gì để chống lại ứng dụng.',
-    only5Title: 'Quy tắc vẫn giữ khi mất mạng',
+    only5Title: 'Quy tắc vẫn giữ khi mất kết nối',
     only5Text:
       'Giờ khóa thiết bị và Giới hạn hằng ngày được thực thi ngay trên thiết bị, nên rút dây mạng cũng không thay đổi gì. TV còn nhận mã PIN phụ huynh khi hoàn toàn không có kết nối.',
     only6Title: 'Ghi nhận khi tuần đó xứng đáng',
