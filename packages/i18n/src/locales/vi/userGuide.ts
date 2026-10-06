@@ -38,7 +38,7 @@ export const userGuide = {
     account: {
       title: 'Tài khoản và gói dịch vụ',
       description:
-        'Premium, thông báo, bảng điều khiển trên web, mã PIN và xóa tài khoản',
+        'Premium, thông báo, ngôn ngữ, bảng điều khiển trên web, mã PIN, hỗ trợ và xóa tài khoản',
     },
   },
   topics: {
@@ -156,6 +156,21 @@ export const userGuide = {
         '3': 'Quét mã QR mời của chủ gia đình, hoặc chọn Nhập mã thủ công rồi nhập mã mời gồm 6 ký tự.',
         '4': 'Chờ chủ gia đình phê duyệt. Hãy giữ ứng dụng mở đến khi thấy thông báo đã tham gia gia đình.',
         '5': 'Kiểm tra các thiết bị của trẻ đã hiển thị trong mục Gia đình. Mở một thiết bị để xem trạng thái và các chức năng điều khiển.',
+      },
+    },
+    manageDevices: {
+      title: 'Đổi tên hoặc gỡ thiết bị',
+      summary:
+        'Đặt cho thiết bị một cái tên ai cũng nhận ra, hoặc ngắt kết nối thiết bị con không còn dùng.',
+      keywords:
+        'hủy ghép đôi, ngắt kết nối, xóa thiết bị, máy cũ, máy mới, đã bán, đổi tên, cài lại',
+      tip: 'Chỉ chủ gia đình mới đổi tên hoặc gỡ được thiết bị. Gỡ thiết bị không thể hoàn tác: các yêu cầu thêm giờ và lịch sử hoạt động của thiết bị sẽ bị xóa. Muốn bảo vệ lại, hãy kết nối nó như một thiết bị mới.',
+      steps: {
+        '1': 'Để đổi tên, mở thiết bị từ [[Gia đình]] hoặc từ hồ sơ của con, rồi chọn [[Sửa]] cạnh tên thiết bị.',
+        '2': 'Nhập một cái tên mọi phụ huynh nhìn là nhận ra, rồi lưu.',
+        '3': 'Để gỡ thiết bị, mở thiết bị và chọn [[Gỡ thiết bị]] ở cuối màn hình, rồi xác nhận. Trong tab [[Thiết bị của trẻ]] của thẻ gia đình, bạn cũng có thể vuốt sang trái trên thiết bị.',
+        '4': 'Thiết bị rời khỏi gia đình, và KidGate trên máy đó báo rằng thiết bị đã bị gỡ.',
+        '5': 'Để dùng lại thiết bị, ví dụ sau khi cài lại máy hoặc chuyển cho con khác, hãy kết nối như thiết bị mới bằng [[Thêm thiết bị của trẻ]] trong [[Gia đình]].',
       },
     },
     androidPermissions: {
@@ -277,6 +292,7 @@ export const userGuide = {
         '3': 'Chờ vài giây. Trạng thái sẽ chuyển sang Đã khóa. Nếu trạng thái không thay đổi, hãy mở KidGate trên thiết bị của trẻ và kiểm tra lại các quyền.',
         '4': 'Để cho phép sử dụng trở lại, chạm [[Mở khóa tất cả]] (hoặc [[Mở khóa]] trên màn hình thiết bị) và xác nhận.',
         '5': 'Tùy chọn: bạn cũng có thể khóa hoặc mở khóa nhanh từ mục Gia đình nếu thẻ thiết bị hiển thị lối tắt.',
+        '6': 'Điện thoại hoặc máy tính đang bị khóa vẫn cho con gửi SOS. Trên Android, SOS còn mở gọi điện, bản đồ và tin nhắn trong 5 phút trong khi mọi thứ khác vẫn khóa, và việc này hiện trong [[Nhật ký]].',
       },
     },
     pauseBrowsing: {
@@ -317,6 +333,7 @@ export const userGuide = {
         '3': 'Trên thiết bị của con, nhiệm vụ hiện trong mục [[Kiếm thêm thời gian]]. Khi làm xong, con chạm [[Xong rồi]].',
         '4': 'Bạn sẽ nhận được thông báo. Trong [[Chờ bạn duyệt]] (trên màn hình Nhiệm vụ thưởng, ở Gia đình hoặc trong hồ sơ của con), chạm [[Duyệt]] để cộng số phút vào hôm nay, hoặc [[Trả lại]] để con làm lại.',
         '5': 'Chạm vào một nhiệm vụ để sửa hoặc xóa. Gói miễn phí cho phép tối đa 10 nhiệm vụ đang hoạt động cùng lúc; Premium cho phép 20.',
+        '6': 'Mỗi nhiệm vụ đáng 1 đến 3 sao tùy độ khó, và sao chỉ được tính khi bạn duyệt nhiệm vụ. Để các con so sánh số sao trong tuần, chủ gia đình mở [[Gia đình]], chọn thẻ gia đình rồi bật [[Bảng tích sao]] trong tab [[Các con]]. Mỗi con sẽ thấy bảng này trong KidGate trên máy của mình. Bảng bắt đầu lại mỗi tuần.',
       },
     },
     locationSharing: {
@@ -347,14 +364,17 @@ export const userGuide = {
     },
     sos: {
       title: 'Cảnh báo khẩn cấp SOS',
-      summary: 'Tìm hiểu cách trẻ gửi SOS và cách phụ huynh xem lại cảnh báo.',
-      tip: 'Nên thử một lần tại nhà để cả phụ huynh và trẻ nắm rõ quy trình trước khi thực sự cần dùng.',
+      summary: 'Cách trẻ gửi SOS, cảnh báo gồm những gì và cách phụ huynh phản hồi.',
+      keywords:
+        'nút báo động, cầu cứu, nguy hiểm, không an toàn, ghi âm, giọng nói, micrô, còi, email, ông bà, hàng xóm, người thân',
+      tip: 'SOS dùng được trên điện thoại và máy tính, không có trên TV hay tiện ích Chrome. Chỉ điện thoại mới ghi âm. Hãy thử một lần tại nhà và thống nhất với con khi nào nên dùng SOS, khi nào chỉ cần Báo an toàn.',
       steps: {
-        '1': 'Trên thiết bị của trẻ, mở thẻ hoặc màn hình SOS trong KidGate.',
-        '2': 'Làm theo hướng dẫn trên màn hình để gửi SOS (vị trí và ảnh phụ thuộc vào quyền đã cấp).',
-        '3': 'Phụ huynh sẽ nhận được thông báo đẩy khi có cảnh báo SOS.',
-        '4': 'Trên thiết bị phụ huynh, mở hồ sơ của con (hoặc mở thiết bị, nếu thiết bị chưa được gán cho con), vào mục [[Cảnh báo]] rồi chọn [[SOS]] để mở Cảnh báo SOS và xem chi tiết sự kiện.',
-        '5': 'Hãy thống nhất với trẻ về thời điểm nên dùng SOS và thời điểm chỉ cần Báo an toàn thông thường.',
+        '1': 'Trên thiết bị của trẻ, mở SOS trong KidGate. Trên điện thoại, đó là nút ở giữa thanh dưới cùng.',
+        '2': 'Giữ nút SOS trong 5 giây. Thả tay trước đó thì SOS bị hủy.',
+        '3': 'Cảnh báo được gửi ngay, kèm vị trí nếu có. Trên điện thoại, camera sẽ mở để chụp ảnh, có thể bỏ qua. Nếu micrô đã được cho phép lúc thiết lập, KidGate ghi tối đa 15 giây âm thanh kể từ lúc gửi SOS.',
+        '4': 'Phụ huynh nhận thông báo khẩn, kể cả trong giờ yên tĩnh. Nếu KidGate đang mở, cảnh báo hiện ngay trên màn hình, kèm âm báo SOS nếu bạn chưa tắt trong Cài đặt.',
+        '5': 'Mở hồ sơ của con (hoặc mở thiết bị, nếu thiết bị chưa được gán cho con), vào mục [[Cảnh báo]] rồi chọn [[SOS]]. Mỗi cảnh báo có vị trí ([[Mở trong Bản đồ]]), ảnh và [[Đoạn ghi âm]]; đoạn ghi âm có thể đến sau cảnh báo một chút. Chọn [[Đã thấy, đang xử lý]] để đánh dấu là đã phản hồi.',
+        '6': 'Để gửi email cho cả người ngoài gia đình, mở [[Gia đình]], chọn thẻ gia đình rồi chọn [[Liên hệ tin cậy]]. Chọn [[Thêm liên hệ]] để thêm tối đa 5 người. Mỗi lần có SOS, họ nhận email gồm tên thiết bị và vị trí gần nhất, không kèm ảnh hay âm thanh. Hãy báo trước cho họ.',
       },
     },
     webFilter: {
@@ -395,6 +415,21 @@ export const userGuide = {
         '3': 'Chạm vào một con để xem một báo cáo chung cho tất cả thiết bị của con, theo [[Hôm nay]], [[7 ngày]] hoặc [[30 ngày]]. Thời gian dùng hai màn hình cùng lúc chỉ được tính một lần, nên con số có thể thấp hơn tổng của từng thiết bị.',
         '4': '[[Báo cáo tuần]] mới đến vào mỗi sáng thứ Hai, kèm thông báo. Báo cáo gợi ý một việc bạn có thể thay đổi và mở đúng phần cài đặt đó.',
         '5': 'Khi bạn mở KidGate, ứng dụng sẽ yêu cầu từng thiết bị gửi số liệu mới, nên có thể mất vài phút để cập nhật. Thiết bị mất kết nối mạng sẽ gửi báo cáo khi có mạng trở lại.',
+      },
+    },
+    widget: {
+      title: 'Thêm widget thời gian sử dụng',
+      summary:
+        'Xem thời gian sử dụng của từng con ngay trên màn hình chính, và để con biết mình còn bao nhiêu thời gian trên máy của con.',
+      keywords:
+        'màn hình chính, tiện ích, xem nhanh, còn lại, bao nhiêu phút, iphone, android',
+      tip: 'Widget dùng được trên iPhone, iPad và Android, không có trên máy tính hay TV. Widget hiển thị số liệu mới nhất KidGate nhận được và thời điểm cập nhật.',
+      steps: {
+        '1': 'Mở [[Cài đặt]] rồi chọn [[Thêm widget vào màn hình chính]]. Trên hầu hết điện thoại Android, bạn chỉ cần xác nhận vị trí đặt. Nếu không, KidGate sẽ hiện các bước để bạn tự thêm.',
+        '2': 'Để tự thêm, chạm và giữ một chỗ trống trên màn hình chính. Trên iPhone, chạm Sửa (hoặc + ở phiên bản cũ), rồi Thêm tiện ích. Trên Android, chạm Tiện ích. Tìm KidGate và chọn widget Thời gian sử dụng.',
+        '3': 'Mỗi dòng là thời gian sử dụng hôm nay của một con so với Giới hạn hằng ngày; con nào đã hết giờ được xếp lên đầu. Widget hiện tối đa 2 con trên iPhone và 3 con trên Android.',
+        '4': 'Widget cập nhật khi bạn mở KidGate. Khi ứng dụng đang đóng, widget cập nhật tối đa 20 phút một lần và chỉ khi có con đang dùng thiết bị.',
+        '5': 'Trên điện thoại của con, thêm widget Thời gian còn lại theo cách tương tự. Widget cho biết hôm nay con còn bao nhiêu thời gian, hoặc vì sao thiết bị đang bị khóa, và cập nhật khi KidGate đang mở trên điện thoại đó.',
       },
     },
     webHistory: {
@@ -490,6 +525,19 @@ export const userGuide = {
         '5': 'Trong Cài đặt, [[Thông báo trong ứng dụng]] và [[Âm báo SOS]] là hai mục riêng: chúng điều khiển biểu ngữ bên trong ứng dụng và âm thanh SOS lớn trên điện thoại này.',
       },
     },
+    appLanguage: {
+      title: 'Đổi ngôn ngữ ứng dụng',
+      summary:
+        'Chọn ngôn ngữ KidGate dùng trên từng điện thoại và trên bảng điều khiển web.',
+      keywords: 'tiếng việt, tiếng anh, english, dịch, sai ngôn ngữ, ngôn ngữ hiển thị',
+      tip: 'Mỗi điện thoại giữ ngôn ngữ riêng. Thông báo và widget trên điện thoại đó cũng theo ngôn ngữ này.',
+      steps: {
+        '1': 'Trên điện thoại của phụ huynh hoặc của con, mở [[Cài đặt]] rồi chọn [[Ngôn ngữ]].',
+        '2': 'Chọn một ngôn ngữ để cố định, hoặc [[Theo ngôn ngữ thiết bị]] để theo cài đặt của điện thoại. Nếu KidGate không có ngôn ngữ của điện thoại, ứng dụng dùng tiếng Anh.',
+        '3': 'Ứng dụng đổi ngay. Thông báo gửi tới điện thoại này và widget của nó cũng dùng ngôn ngữ mới.',
+        '4': 'Trên bảng điều khiển web, đổi ngôn ngữ ở phần tài khoản trong menu bên. Thay đổi chỉ áp dụng cho trình duyệt đó.',
+      },
+    },
     webSignIn: {
       title: 'Dùng KidGate trên máy tính',
       summary: 'Đăng nhập bảng điều khiển trên web để quản lý gia đình từ trình duyệt.',
@@ -513,6 +561,21 @@ export const userGuide = {
         '3': 'Nếu quên mã, chọn [[Quên mã PIN?]] ở cùng chỗ để đặt mã mới với tư cách chủ gia đình.',
         '4': 'Nếu thiết bị của con tự khóa sau 5 lần nhập sai mã PIN, mục Bảo mật sẽ hiện một dòng mở khóa cho thiết bị đó. Chọn dòng này để đặt lại số lần thử.',
         '5': 'Để bảo vệ ứng dụng phụ huynh trên điện thoại này, bật [[Khóa ứng dụng]] và tạo mã PIN 6 chữ số riêng. Bạn cũng có thể cho phép mở khóa bằng Face ID, Touch ID hoặc vân tay.',
+      },
+    },
+    reportProblem: {
+      title: 'Báo cáo sự cố',
+      summary:
+        'Báo cho đội ngũ KidGate điều gì không ổn, kèm ảnh chụp màn hình, và đọc phản hồi ngay trong ứng dụng.',
+      keywords:
+        'lỗi, liên hệ, góp ý, không hoạt động, hỏng, chăm sóc khách hàng, trợ giúp, email',
+      tip: 'Bạn nhận thông báo khi KidGate phản hồi. Nếu lỡ mất, dòng Hỗ trợ trong Cài đặt sẽ hiện Có phản hồi mới.',
+      steps: {
+        '1': 'Mở [[Cài đặt]] rồi chọn [[Hỗ trợ]]. Trên bảng điều khiển web, Hỗ trợ nằm trong menu.',
+        '2': 'Chọn [[Báo cáo sự cố]], hoặc [[Báo cáo mới]] nếu bạn đã từng gửi.',
+        '3': 'Mô tả chuyện gì đã xảy ra và trên thiết bị nào, đính kèm tối đa 5 ảnh chụp màn hình nếu cần, rồi chọn [[Gửi báo cáo]].',
+        '4': 'Mỗi báo cáo hiện trạng thái: [[Đã nhận]], [[Đang xem xét]] hoặc [[Đã xử lý]]. Phản hồi của KidGate hiện ngay dưới báo cáo.',
+        '5': 'Bạn có thể trả lời dưới báo cáo cho đến khi báo cáo được đóng. Với vấn đề khác, hãy gửi báo cáo mới.',
       },
     },
     deleteAccount: {

@@ -131,22 +131,22 @@ export default {
       'Bestimme, welche Apps dein Kind nicht öffnen darf, geschützt durch deine Eltern-PIN, und schalte die Sperre aus der Ferne ein.',
     feature3Title: 'App-Limits',
     feature3Text:
-      'Begrenze jede App einzeln, zusätzlich zum Tageslimit — „eine halbe Stunde TikTok“, ohne es ganz zu verbieten. Auf Android, Android TV und Computern.',
+      'Auf Android, Android TV und Computern begrenzt du jede App einzeln — „eine halbe Stunde TikTok“, ohne es ganz zu verbieten.',
     feature4Title: 'Webfilter & Verlauf',
     feature4Text:
-      'Blockiere Seiten für Erwachsene, Glücksspiel, Selbstverletzung und weitere Kategorien auf jedem Gerät. Mit Premium wählst du die Kategorien selbst aus und siehst, welche Seiten aufgerufen und welche gestoppt wurden.',
+      'Blockiere Seiten für Erwachsene, Glücksspiel, Selbstverletzung und mehr auf jedem Gerät; mit Premium siehst du auch, welche Seiten aufgerufen wurden.',
     feature5Title: 'Standort & Orte',
     feature5Text:
-      'Sieh bis zu 10-mal am Tag nach, wo dein Kind ist. Mit Premium verfolgst du es live, siehst den Verlauf und lässt dich benachrichtigen, wenn es an einem gespeicherten Ort ankommt oder ihn verlässt.',
+      'Sieh bis zu 10-mal am Tag nach, wo dein Kind ist; Premium ergänzt den Live-Standort und Benachrichtigungen für gespeicherte Orte.',
     feature6Title: 'Check-in & SOS',
     feature6Text:
-      'Bitte dein Kind, per Check-in zu bestätigen, dass alles in Ordnung ist. Mit Premium kommt ein Foto dazu. Im Notfall erhältst du sofort ein SOS von seinem Handy — mit Standort und einem Foto, wenn sich eines aufnehmen lässt.',
+      'Bitte dein Kind zu bestätigen, dass alles in Ordnung ist; im Notfall schickt dir sein Handy sofort ein SOS mit Standort.',
     feature7Title: 'Schutz- & App-Warnungen',
     feature7Text:
-      'Erfahre sofort, wenn auf dem Handy deines Kindes eine wichtige Berechtigung ausgeschaltet wird. Schalte die Genehmigung neuer Apps ein, und eine neue App auf Android, Android TV oder einem Computer wartet auf dich, bevor sie sich öffnet.',
+      'Erfahre sofort, wenn auf dem Handy deines Kindes eine wichtige Berechtigung ausgeschaltet wird, und gib neue Apps auf Android, Android TV oder einem Computer frei, bevor sie sich öffnen.',
     feature8Title: 'Belohnungsaufgaben & Extrazeit',
     feature8Text:
-      'Kinder verdienen Bonusminuten und Sterne durch erledigte Aufgaben oder bitten um mehr Zeit. Beides landet zur Freigabe auf deinem Handy. Du entscheidest, ob die Sternetafel den Kindern zeigt, wie viele Sterne jedes von ihnen diese Woche verdient hat. Montags beginnt sie von vorn.',
+      'Kinder verdienen Bonusminuten und Sterne mit erledigten Aufgaben oder bitten um mehr Zeit — beides gibst du auf deinem Handy frei.',
 
     feature9Title: 'Gerätesperre',
     feature9Text:
@@ -156,10 +156,10 @@ export default {
       'Jeden Montag: Bildschirmzeit, Tagesdurchschnitt, was blockiert wurde und wie die Woche im Vergleich zur letzten aussieht.',
     feature11Title: 'YouTube- & Videoverlauf',
     feature11Text:
-      'Die YouTube-Videos und Shorts, die dein Kind angesehen hat — in der YouTube-App auf Android-Handys und Android TV sowie auf YouTube in Chrome. Nicht auf dem iPhone, und ein Fernseher listet keine Shorts auf.',
+      'Die YouTube-Videos und Shorts, die dein Kind auf Android und in Chrome angesehen hat, dazu die Videos auf Android TV. Nicht auf dem iPhone.',
     feature12Title: 'Aktivitätsverlauf',
     feature12Text:
-      'Alles, was passiert ist, der Reihe nach — ein Gerät entsperrt, eine Website-Anfrage beantwortet, eine Aufgabe erledigt, ein Alarm ausgelöst. Der kostenlose Tarif zeigt den heutigen Tag; Premium behält 30 Tage.',
+      'Alles, was passiert ist, der Reihe nach — ein Gerät entsperrt, eine Anfrage beantwortet, ein Alarm ausgelöst; im kostenlosen Tarif der heutige Tag, mit Premium 30 Tage.',
     featurePremium: 'Premium',
     platformsTitle: 'Ein KidGate, überall wo ein Bildschirm ist',
     platformsSub:
@@ -169,9 +169,6 @@ export default {
     showcaseTitle: 'Die ganze Familie auf einem Bildschirm',
     showcaseSub:
       'Bildschirmzeit, blockierte Versuche, Standort und alles, was deine Aufmerksamkeit braucht — auf dem Handy oder in jedem Browser.',
-    showcaseTile1: 'Bildschirmzeit heute',
-    showcaseTile2: 'Blockierte Versuche',
-    showcaseTile3: 'Braucht Aufmerksamkeit',
     showcaseCaption1: 'Berichte in jedem Browser lesen',
     showcaseCaption2: 'Änderungen werden per Handy freigegeben',
 
@@ -891,6 +888,7 @@ export default {
 
   download: {
     eyebrow: 'Download',
+    qrScan: 'Mit der Handykamera scannen und die App laden',
     macosTitle: 'macOS',
     macosRequires: 'macOS 12 oder neuer, auf einem Mac mit Apple Silicon.',
     windowsTitle: 'Windows',

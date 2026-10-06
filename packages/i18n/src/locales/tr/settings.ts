@@ -55,7 +55,7 @@ export const settings = {
   addWidgetTitle: 'Ana ekrana widget ekle',
   addWidgetSubtitle: 'Her çocuğun ekran süresi bir bakışta',
   addWidgetStepsIos:
-    '1. Ana ekranda boş bir alana basılı tut\n2. Üst köşedeki + düğmesine dokun\n3. KidGate’i ara\n4. Bir boyut seç ve Widget Ekle’ye dokun',
+    '1. Ana ekranda boş bir alana basılı tut\n2. Üst köşedeki + düğmesine, ardından Araç Takımı Ekle’ye dokun\n3. KidGate’i ara\n4. Bir boyut seç ve Araç Takımı Ekle’ye dokun',
   addWidgetStepsAndroid:
     '1. Ana ekranda boş bir alana basılı tut\n2. Widget’lara dokun\n3. KidGate’i bul ve widget’ı ana ekrana sürükle',
   pushNotificationsTitle: 'Anlık bildirimler',

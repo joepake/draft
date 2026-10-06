@@ -57,7 +57,7 @@ export const settings = {
   addWidgetTitle: 'Adicionar widget à tela de início',
   addWidgetSubtitle: 'Veja rapidamente o tempo de tela de cada criança',
   addWidgetStepsIos:
-    '1. Toque e segure um espaço vazio na Tela de Início\n2. Toque no botão + no canto superior\n3. Procure KidGate\n4. Escolha um tamanho e toque em Adicionar Widget',
+    '1. Toque e segure um espaço vazio na Tela de Início\n2. Toque em Editar no canto superior e depois em Adicionar Widget (em versões anteriores do iOS, toque em +)\n3. Procure KidGate\n4. Escolha um tamanho e toque em Adicionar Widget',
   addWidgetStepsAndroid:
     '1. Toque e segure um espaço vazio na tela inicial\n2. Toque em Widgets\n3. Encontre KidGate e arraste o widget para a tela inicial',
   pushNotificationsTitle: 'Notificações push',

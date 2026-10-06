@@ -128,22 +128,22 @@ export default {
       '아이가 열 수 없는 앱을 부모 PIN으로 보호하며 고르고, 차단은 원격으로 켤 수 있습니다.',
     feature3Title: '앱 시간 제한',
     feature3Text:
-      '일일 제한과 별개로 앱마다 따로 제한을 둘 수 있습니다. 아예 막지 않고도 "TikTok은 30분"이 가능합니다. Android, Android TV, 컴퓨터에서 쓸 수 있습니다.',
+      'Android, Android TV, 컴퓨터에서 앱마다 따로 제한을 둘 수 있어, 아예 막지 않고도 "TikTok은 30분"이 가능합니다.',
     feature4Title: '웹 필터와 방문 기록',
     feature4Text:
-      '성인 사이트·도박·자해 등 여러 카테고리를 모든 기기에서 차단합니다. Premium에서는 카테고리를 직접 고르고, 접속을 시도한 사이트와 막힌 사이트를 확인할 수 있습니다.',
+      '성인 사이트·도박·자해 등을 모든 기기에서 차단하고, Premium에서는 접속을 시도한 사이트도 확인할 수 있습니다.',
     feature5Title: '위치와 장소',
     feature5Text:
-      '열어서 확인하면 아이가 지금 어디 있는지 하루 최대 10번까지 볼 수 있습니다. Premium에서는 실시간으로 따라가고, 다녀간 곳을 돌아보고, 저장한 장소에 도착하거나 떠날 때 알림을 받을 수 있습니다.',
+      '아이가 어디 있는지 하루 최대 10번까지 볼 수 있고, Premium에서는 실시간 위치와 저장한 장소 알림이 더해집니다.',
     feature6Title: '체크인과 SOS',
     feature6Text:
-      '체크인으로 아이에게 안전을 확인해 달라고 요청할 수 있고, Premium에서는 사진도 함께 옵니다. 비상시에는 아이 휴대폰에서 보낸 SOS를 즉시 받습니다. 위치가 함께 오고, 촬영할 수 있을 때는 사진도 담깁니다.',
+      '아이에게 안전을 확인해 달라고 요청할 수 있고, 비상시에는 아이 휴대폰에서 위치가 담긴 SOS를 즉시 받습니다.',
     feature7Title: '보호 알림과 앱 알림',
     feature7Text:
-      '아이 휴대폰에서 중요한 권한이 꺼지는 순간 바로 알 수 있습니다. 새 앱 승인을 켜면 Android, Android TV, 컴퓨터에 새로 들어온 앱이 열리기 전에 부모의 승인을 기다립니다.',
+      '아이 휴대폰에서 중요한 권한이 꺼지는 순간 바로 알 수 있고, Android, Android TV, 컴퓨터의 새 앱은 열리기 전에 승인할 수 있습니다.',
     feature8Title: '보상 과제와 시간 연장 요청',
     feature8Text:
-      '아이는 과제를 마쳐 보너스 시간과 별을 얻거나 시간을 더 요청할 수 있습니다. 둘 다 승인 요청으로 부모 휴대폰에 도착합니다. 별 순위표로 이번 주에 각자 별을 몇 개 모았는지 아이들에게 보여줄지는 부모가 정합니다. 매주 월요일에 다시 시작합니다.',
+      '아이는 과제를 마쳐 보너스 시간과 별을 얻거나 시간을 더 요청할 수 있고, 부모는 둘 다 휴대폰에서 승인합니다.',
 
     feature9Title: '기기 잠금',
     feature9Text:
@@ -153,10 +153,10 @@ export default {
       '매주 월요일에 도착합니다. 사용 시간, 하루 평균, 차단된 항목, 지난주와의 비교.',
     feature11Title: 'YouTube와 동영상 기록',
     feature11Text:
-      '아이가 본 YouTube 동영상과 Shorts를 확인할 수 있습니다. Android 휴대폰과 Android TV의 YouTube 앱, 그리고 Chrome의 YouTube에서 작동합니다. iPhone에서는 지원하지 않으며, TV에서는 Shorts가 표시되지 않습니다.',
+      '아이가 Android와 Chrome에서 본 YouTube 동영상과 Shorts, 그리고 Android TV에서 본 동영상을 확인할 수 있습니다. iPhone에서는 지원하지 않습니다.',
     feature12Title: '활동 내역',
     feature12Text:
-      '일어난 일이 순서대로 쌓입니다. 기기 잠금 해제, 사이트 요청에 대한 응답, 완료한 과제, 발생한 알림. 무료 요금제는 오늘 기록을 보여 주고, Premium은 30일을 보관합니다.',
+      '기기 잠금 해제, 요청에 대한 응답, 알림 등 일어난 일이 순서대로 쌓입니다. 무료 요금제는 오늘 기록을 보여 주고, Premium은 30일을 보관합니다.',
     featurePremium: 'Premium',
     platformsTitle: '어느 화면에서든 하나의 KidGate',
     platformsSub:
@@ -166,9 +166,6 @@ export default {
     showcaseTitle: '온 가족을 한 화면에서',
     showcaseSub:
       '스크린 타임, 차단된 시도, 위치, 그리고 확인이 필요한 모든 것을 — 휴대폰에서도, 어떤 브라우저에서도.',
-    showcaseTile1: '오늘의 스크린 타임',
-    showcaseTile2: '차단된 시도',
-    showcaseTile3: '확인 필요',
     showcaseCaption1: '어떤 브라우저에서도 리포트 확인',
     showcaseCaption2: '변경은 휴대폰에서 승인',
 
@@ -860,6 +857,7 @@ export default {
 
   download: {
     eyebrow: '다운로드',
+    qrScan: '휴대폰 카메라로 스캔해 앱을 받으세요',
     macosTitle: 'macOS',
     macosRequires: 'macOS 12 이상, Apple 실리콘 Mac.',
     windowsTitle: 'Windows',

@@ -152,22 +152,22 @@ export default {
       'Chọn những ứng dụng con không được mở, có mã PIN phụ huynh bảo vệ, và bật chặn từ xa.',
     feature3Title: 'Giới hạn ứng dụng',
     feature3Text:
-      'Đặt giới hạn riêng cho từng ứng dụng, áp dụng song song với Giới hạn hằng ngày — “nửa tiếng TikTok” mà không cần cấm hẳn. Có trên Android, Android TV và máy tính.',
+      'Trên Android, Android TV và máy tính, đặt giới hạn riêng cho từng ứng dụng — “nửa tiếng TikTok” mà không cần cấm hẳn.',
     feature4Title: 'Lịch sử web & Chặn nội dung web',
     feature4Text:
-      'Chặn trang người lớn, cờ bạc, nội dung tự làm hại bản thân và các danh mục khác trên mọi thiết bị. Với Premium, bạn tự chọn danh mục cần chặn và xem được con đã vào những trang nào, trang nào đã bị chặn.',
+      'Chặn trang người lớn, cờ bạc, nội dung tự làm hại bản thân và nhiều hơn nữa trên mọi thiết bị; với Premium, xem thêm được con đã vào những trang nào.',
     feature5Title: 'Vị trí & địa điểm',
     feature5Text:
-      'Xem con đang ở đâu mỗi khi bạn mở xem, tối đa 10 lần một ngày. Với Premium, theo dõi vị trí trực tiếp, xem lại con đã đi những đâu, và được báo khi con đến hoặc rời một địa điểm đã lưu.',
+      'Xem con đang ở đâu, tối đa 10 lần một ngày; Premium có thêm vị trí trực tiếp và báo khi con đến hoặc rời một địa điểm đã lưu.',
     feature6Title: 'Báo an toàn & SOS',
     feature6Text:
-      'Yêu cầu con xác nhận mình vẫn an toàn, kèm ảnh với Premium. Khi có việc khẩn cấp, điện thoại của con gửi ngay SOS cho bạn, kèm vị trí và ảnh nếu chụp được.',
+      'Yêu cầu con xác nhận mình vẫn an toàn; khi có việc khẩn cấp, điện thoại của con gửi ngay SOS cho bạn, kèm vị trí.',
     feature7Title: 'Cảnh báo bảo vệ & cảnh báo ứng dụng',
     feature7Text:
-      'Biết ngay khi một quyền quan trọng trên điện thoại của con bị tắt. Bật tính năng Duyệt ứng dụng mới thì ứng dụng mới cài trên Android, Android TV hoặc máy tính sẽ chờ bạn duyệt rồi mới mở được.',
+      'Biết ngay khi một quyền quan trọng trên điện thoại của con bị tắt, và duyệt ứng dụng mới trước khi chúng mở được trên Android, Android TV hoặc máy tính.',
     feature8Title: 'Nhiệm vụ thưởng & yêu cầu thêm giờ',
     feature8Text:
-      'Con làm xong nhiệm vụ để được cộng phút và sao, hoặc gửi yêu cầu thêm giờ. Cả hai đều gửi về điện thoại của bạn để bạn duyệt. Bạn quyết định có bật Bảng tích sao để các con xem số sao mỗi người kiếm được trong tuần này hay không; bảng được làm mới vào mỗi thứ Hai.',
+      'Con làm xong nhiệm vụ để được cộng phút và sao, hoặc gửi yêu cầu thêm giờ — bạn duyệt cả hai ngay trên điện thoại của mình.',
 
     feature9Title: 'Khóa thiết bị',
     feature9Text:
@@ -177,10 +177,10 @@ export default {
       'Mỗi thứ Hai: thời gian dùng máy, trung bình mỗi ngày, những gì đã bị chặn, và tuần này so với tuần trước.',
     feature11Title: 'Lịch sử YouTube & video',
     feature11Text:
-      'Những video YouTube và Shorts con đã xem, trong ứng dụng YouTube trên điện thoại Android và Android TV, và trên YouTube trong Chrome. Không có trên iPhone, và TV không liệt kê Shorts.',
+      'Những video YouTube và Shorts con đã xem trên Android và trong Chrome, cùng các video trên Android TV. Không có trên iPhone.',
     feature12Title: 'Nhật ký hoạt động',
     feature12Text:
-      'Mọi việc đã xảy ra, theo thứ tự — máy được mở khóa, một yêu cầu mở trang web được trả lời, một nhiệm vụ hoàn thành, một cảnh báo được gửi. Gói miễn phí xem được hoạt động trong ngày; Premium lưu lại 30 ngày.',
+      'Mọi việc đã xảy ra, theo thứ tự — máy được mở khóa, một yêu cầu được trả lời, một cảnh báo được gửi; gói miễn phí xem trong ngày, Premium lưu 30 ngày.',
     featurePremium: 'Premium',
     platformsTitle: 'Một KidGate, ở mọi màn hình',
     platformsSub:
@@ -190,9 +190,6 @@ export default {
     showcaseTitle: 'Cả gia đình trên một màn hình',
     showcaseSub:
       'Thời gian sử dụng, lượt bị chặn, vị trí và mọi thứ cần bạn để ý — trên điện thoại, hoặc trên bất kỳ trình duyệt nào.',
-    showcaseTile1: 'Thời gian sử dụng hôm nay',
-    showcaseTile2: 'Lượt bị chặn',
-    showcaseTile3: 'Cần chú ý',
     showcaseCaption1: 'Xem báo cáo từ mọi trình duyệt',
     showcaseCaption2: 'Thay đổi được duyệt từ điện thoại của bạn',
 
@@ -888,6 +885,7 @@ export default {
 
   download: {
     eyebrow: 'Tải về',
+    qrScan: 'Quét bằng camera điện thoại để tải ứng dụng',
     macosTitle: 'macOS',
     macosRequires: 'macOS 12 trở lên, máy Mac dùng chip Apple (Apple silicon).',
     windowsTitle: 'Windows',

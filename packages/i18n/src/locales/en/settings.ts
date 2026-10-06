@@ -56,7 +56,7 @@ export const settings = {
   addWidgetTitle: 'Add widget to Home Screen',
   addWidgetSubtitle: 'See each child’s screen time at a glance',
   addWidgetStepsIos:
-    '1. Touch and hold an empty spot on your Home Screen\n2. Tap the + button in the top corner\n3. Search for KidGate\n4. Choose a size and tap Add Widget',
+    '1. Touch and hold an empty spot on your Home Screen\n2. Tap Edit in the top corner, then Add Widget (on older iOS, tap +)\n3. Search for KidGate\n4. Choose a size and tap Add Widget',
   addWidgetStepsAndroid:
     '1. Touch and hold an empty spot on your home screen\n2. Tap Widgets\n3. Find KidGate and drag the widget onto your home screen',
   pushNotificationsTitle: 'Push notifications',

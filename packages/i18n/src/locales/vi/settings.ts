@@ -56,7 +56,7 @@ export const settings = {
   addWidgetTitle: 'Thêm widget vào màn hình chính',
   addWidgetSubtitle: 'Xem nhanh thời gian sử dụng của từng trẻ',
   addWidgetStepsIos:
-    '1. Chạm và giữ chỗ trống trên màn hình chính\n2. Bấm nút + ở góc trên\n3. Tìm KidGate\n4. Chọn cỡ rồi bấm Thêm tiện ích',
+    '1. Chạm và giữ chỗ trống trên màn hình chính\n2. Bấm Sửa ở góc trên, rồi Thêm tiện ích (iOS cũ: bấm nút +)\n3. Tìm KidGate\n4. Chọn cỡ rồi bấm Thêm Tiện ích',
   addWidgetStepsAndroid:
     '1. Chạm và giữ chỗ trống trên màn hình chính\n2. Bấm Tiện ích (Widgets)\n3. Tìm KidGate rồi kéo widget ra màn hình chính',
   pushNotificationsTitle: 'Thông báo trên máy này',

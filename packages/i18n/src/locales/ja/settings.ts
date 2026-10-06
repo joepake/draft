@@ -59,7 +59,7 @@ export const settings = {
   addWidgetTitle: 'ウィジェットをホーム画面に追加',
   addWidgetSubtitle: 'お子さまごとのスクリーンタイムをひと目で',
   addWidgetStepsIos:
-    '1. ホーム画面の空いている場所を長押し\n2. 上部の「+」ボタンをタップ\n3. KidGate を検索\n4. サイズを選んで「ウィジェットを追加」をタップ',
+    '1. ホーム画面の空いている場所を長押し\n2. 上部の「編集」をタップし、「ウィジェットを追加」をタップ（以前のiOSでは「+」ボタン）\n3. KidGate を検索\n4. サイズを選んで「ウィジェットを追加」をタップ',
   addWidgetStepsAndroid:
     '1. ホーム画面の空いている場所を長押し\n2. 「ウィジェット」をタップ\n3. KidGate を探してウィジェットをホーム画面にドラッグ',
   pushNotificationsTitle: 'プッシュ通知',

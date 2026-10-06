@@ -37,7 +37,8 @@ export const userGuide = {
     },
     account: {
       title: 'Akun dan paket',
-      description: 'Premium, peringatan, dasbor web, PIN, dan penghapusan akun',
+      description:
+        'Premium, peringatan, bahasa, dasbor web, PIN, dukungan, dan penghapusan akun',
     },
   },
   topics: {
@@ -158,6 +159,21 @@ export const userGuide = {
         '5': 'Pastikan perangkat anak muncul di bawah Keluarga. Buka salah satu perangkat untuk melihat status dan kontrolnya.',
       },
     },
+    manageDevices: {
+      title: 'Ganti nama atau hapus perangkat',
+      summary:
+        'Beri perangkat nama yang mudah dikenali semua orang, atau putuskan perangkat yang tidak dipakai anak lagi.',
+      keywords:
+        'lepas pasangan, putuskan, hapus perangkat, ponsel lama, ponsel baru, dijual, ganti nama, reset',
+      tip: 'Hanya pemilik keluarga yang dapat mengganti nama atau menghapus perangkat. Penghapusan tidak dapat dibatalkan: permintaan waktu dan riwayat aktivitas perangkat ikut dihapus. Untuk melindunginya lagi, sambungkan sebagai perangkat baru.',
+      steps: {
+        '1': 'Untuk mengganti nama perangkat, buka perangkat dari Keluarga atau dari profil anak, lalu pilih Ubah di samping namanya.',
+        '2': 'Masukkan nama yang langsung dikenali semua orang tua, lalu simpan.',
+        '3': 'Untuk menghapus perangkat, buka perangkat, pilih Hapus perangkat di bagian bawah layarnya, lalu konfirmasi. Di tab Perangkat anak pada kartu keluarga, Anda juga bisa menggeser perangkat ke kiri.',
+        '4': 'Perangkat keluar dari keluarga Anda, dan KidGate di perangkat itu menampilkan bahwa perangkat telah dihapus.',
+        '5': 'Untuk memakai perangkat lagi, misalnya setelah direset atau diberikan ke anak lain, sambungkan sebagai perangkat baru lewat Tambahkan perangkat anak di Keluarga.',
+      },
+    },
     androidPermissions: {
       title: 'Izin Android (perangkat anak)',
       summary:
@@ -276,6 +292,7 @@ export const userGuide = {
         '3': 'Tunggu beberapa detik. Status akan berubah menjadi Terkunci. Jika tidak ada perubahan, buka KidGate di perangkat anak dan periksa kembali izinnya.',
         '4': 'Untuk memulihkan akses, pilih Buka kunci semua (atau Buka kunci di layar perangkat) dan konfirmasi.',
         '5': 'Opsional: Anda juga dapat mengunci atau membuka kunci dengan cepat dari Keluarga jika pintasan tersebut muncul di kartu perangkat.',
+        '6': 'Ponsel atau komputer yang terkunci tetap memungkinkan anak Anda mengirim SOS. Di Android, SOS juga membuka panggilan, peta, dan pesan selama 5 menit sementara yang lain tetap terkunci, dan ini muncul di Aktivitas.',
       },
     },
     pauseBrowsing: {
@@ -316,6 +333,7 @@ export const userGuide = {
         '3': 'Di perangkat anak, tugas muncul di bagian Dapatkan waktu ekstra. Setelah selesai, anak Anda memilih Sudah selesai.',
         '4': 'Anda akan menerima notifikasi. Di Siap ditinjau (di layar Tugas hadiah, di Keluarga, atau di profil anak), pilih Setujui untuk menambahkan menitnya ke hari ini, atau Kembalikan agar anak Anda bisa mencoba lagi.',
         '5': 'Ketuk tugas untuk mengedit atau menghapusnya. Paket gratis dapat menjalankan hingga 10 tugas aktif sekaligus; Premium hingga 20.',
+        '6': 'Setiap tugas bernilai 1 sampai 3 bintang sesuai tingkat kesulitannya, dan bintang dihitung setelah Anda menyetujui tugas. Agar anak-anak bisa membandingkan bintang minggu ini, pemilik keluarga membuka Keluarga, lalu kartu keluarga, dan menyalakan Papan bintang di tab Anak. Setiap anak lalu melihatnya di KidGate pada perangkatnya. Papan dimulai ulang setiap minggu.',
       },
     },
     locationSharing: {
@@ -348,14 +366,17 @@ export const userGuide = {
     sos: {
       title: 'Peringatan darurat SOS',
       summary:
-        'Pahami bagaimana anak mengirim SOS dan bagaimana orang tua meninjaunya.',
-      tip: 'Uji ini sekali di rumah agar orang tua dan anak sama-sama memahami prosesnya sebelum keadaan darurat sesungguhnya.',
+        'Cara anak mengirim SOS, apa saja yang dikirim, dan cara orang tua menanggapinya.',
+      keywords:
+        'tombol panik, tolong, bantuan, bahaya, tidak aman, audio, suara, mikrofon, sirene, email, kakek, nenek, tetangga',
+      tip: 'SOS berfungsi di ponsel dan komputer, tidak di TV atau ekstensi Chrome. Suara hanya direkam di ponsel. Uji sekali di rumah, dan sepakati dengan anak Anda kapan menggunakan SOS dan kapan Check-In sudah cukup.',
       steps: {
-        '1': 'Di perangkat anak, buka tab atau layar SOS di KidGate.',
-        '2': 'Ikuti langkah-langkah di layar untuk mengirim SOS (lokasi dan foto bergantung pada izin yang diberikan).',
-        '3': 'Orang tua menerima notifikasi push saat SOS dikirim.',
-        '4': 'Di perangkat orang tua, buka profil anak (atau perangkat, jika perangkat belum ditetapkan ke anak), lalu bagian Peringatan, dan pilih SOS untuk membuka Peringatan SOS dan meninjau kejadiannya.',
-        '5': 'Sepakati dengan anak Anda kapan harus menggunakan SOS dan kapan Check-In biasa sudah cukup.',
+        '1': 'Di perangkat anak, buka SOS di KidGate. Di ponsel, ini adalah tombol di tengah bilah bawah.',
+        '2': 'Tahan tombol SOS selama 5 detik. Jika dilepas lebih awal, pengiriman dibatalkan.',
+        '3': 'Peringatan langsung terkirim, beserta lokasi jika tersedia. Di ponsel, kamera lalu terbuka untuk mengambil foto, yang bisa dilewati. Jika mikrofon diizinkan saat penyiapan, suara hingga 15 detik direkam sejak SOS dikirim.',
+        '4': 'Orang tua menerima notifikasi mendesak, bahkan selama Jam tenang. Jika KidGate sedang terbuka, peringatan muncul di layar, dengan Sirene SOS kecuali dinonaktifkan di Pengaturan.',
+        '5': 'Buka profil anak (atau perangkat, jika perangkat belum ditetapkan ke anak), lalu bagian Peringatan, dan pilih SOS. Setiap peringatan menampilkan lokasi (Buka di Maps), foto, dan Rekaman suara, yang bisa tiba sedikit setelah peringatan. Pilih Segera saya tangani untuk menandainya sudah ditanggapi.',
+        '6': 'Agar orang di luar keluarga juga menerima email, buka Keluarga, lalu kartu keluarga, dan pilih Kontak tepercaya. Pilih Tambah kontak untuk menambahkan hingga 5 orang. Setiap ada SOS, mereka menerima email berisi nama perangkat dan lokasi terakhir yang diketahui, tanpa foto atau suara. Beri tahu mereka lebih dulu.',
       },
     },
     webFilter: {
@@ -396,6 +417,21 @@ export const userGuide = {
         '3': 'Ketuk profil anak untuk melihat satu laporan dari semua perangkatnya, untuk Hari ini, 7 hari, atau 30 hari. Waktu di dua layar sekaligus hanya dihitung sekali, jadi angkanya bisa lebih rendah daripada jumlah semua perangkat.',
         '4': 'Setiap Senin pagi, Laporan mingguan terbaru tiba, disertai notifikasi. Laporan ini menyarankan satu hal yang bisa Anda ubah dan membuka pengaturan yang tepat.',
         '5': 'Saat KidGate dibuka, setiap perangkat diminta mengirim angka terbaru, jadi pembaruannya bisa memakan waktu beberapa menit. Perangkat tanpa koneksi internet akan melapor saat kembali online.',
+      },
+    },
+    widget: {
+      title: 'Tambahkan widget waktu layar',
+      summary:
+        'Lihat waktu layar setiap anak di layar utama Anda, dan biarkan anak melihat sisa waktunya di layar utamanya.',
+      keywords:
+        'layar utama, peluncur, sekali lihat, sisa waktu, sisa menit, iphone, android',
+      tip: 'Widget berfungsi di iPhone, iPad, dan Android, tidak di komputer atau TV. Widget menampilkan angka terakhir yang diterima KidGate dan waktu pembaruan itu.',
+      steps: {
+        '1': 'Buka Pengaturan dan pilih Tambahkan widget ke layar utama. Di sebagian besar ponsel Android, Anda cukup mengonfirmasi letaknya. Jika tidak, KidGate menampilkan langkah untuk menambahkannya sendiri.',
+        '2': 'Untuk menambahkannya sendiri, tekan lama area kosong di layar utama. Di iPhone, ketuk Edit (atau + di versi lama), lalu Tambah Widget. Di Android, ketuk Widget. Cari KidGate dan pilih widget Waktu layar.',
+        '3': 'Setiap baris menampilkan waktu layar hari ini milik seorang anak dibandingkan dengan Batas harian, dan anak yang sudah mencapainya tampil paling atas. Maksimal 2 anak di iPhone dan 3 anak di Android.',
+        '4': 'Widget diperbarui saat Anda membuka KidGate. Saat aplikasi tertutup, widget diperbarui paling sering setiap 20 menit, dan hanya saat ada anak yang memakai perangkat.',
+        '5': 'Di ponsel anak, tambahkan widget Waktu tersisa dengan cara yang sama. Widget ini menampilkan sisa waktu hari ini, atau alasan perangkat terkunci, dan diperbarui saat KidGate terbuka di ponsel itu.',
       },
     },
     webHistory: {
@@ -494,6 +530,19 @@ export const userGuide = {
         '5': 'Di Pengaturan, Peringatan dalam aplikasi dan Sirene SOS adalah opsi terpisah: keduanya mengatur banner di dalam aplikasi dan bunyi SOS yang keras di ponsel ini.',
       },
     },
+    appLanguage: {
+      title: 'Ganti bahasa aplikasi',
+      summary:
+        'Pilih bahasa yang digunakan KidGate di setiap ponsel dan di dasbor web.',
+      keywords: 'bahasa indonesia, inggris, terjemahan, bahasa salah, bahasa tampilan',
+      tip: 'Setiap ponsel menyimpan bahasanya sendiri. Notifikasi dan widget di ponsel itu mengikutinya.',
+      steps: {
+        '1': 'Di ponsel orang tua atau anak, buka Pengaturan dan pilih Bahasa.',
+        '2': 'Pilih satu bahasa agar tetap, atau Bahasa perangkat untuk mengikuti pengaturan ponsel. Jika KidGate tidak menyediakan bahasa ponsel, bahasa Inggris yang dipakai.',
+        '3': 'Aplikasi langsung berganti. Notifikasi ke ponsel ini dan widgetnya juga memakai bahasa baru.',
+        '4': 'Di dasbor web, ganti bahasa di bagian akun pada menu samping. Pilihan ini hanya berlaku untuk browser itu.',
+      },
+    },
     webSignIn: {
       title: 'Gunakan KidGate di komputer',
       summary: 'Masuk ke dasbor web dan kelola keluarga Anda dari browser.',
@@ -517,6 +566,21 @@ export const userGuide = {
         '3': 'Jika Anda lupa, pilih Lupa PIN? di tempat yang sama untuk membuat PIN baru sebagai pemilik keluarga.',
         '4': 'Jika PIN terkunci di perangkat anak setelah 5 kali percobaan yang salah, bagian Keamanan menampilkan baris buka kunci untuk perangkat itu. Pilih baris tersebut untuk mengatur ulang percobaan.',
         '5': 'Untuk melindungi aplikasi orang tua di ponsel ini, aktifkan Kunci Aplikasi dan buat PIN 6 digit tersendiri. Anda juga dapat mengizinkan buka kunci dengan Face ID, Touch ID, atau sidik jari.',
+      },
+    },
+    reportProblem: {
+      title: 'Laporkan masalah',
+      summary:
+        'Beri tahu tim KidGate apa yang salah, lampirkan tangkapan layar, dan baca balasannya di aplikasi.',
+      keywords:
+        'bug, error, kontak, masukan, tidak berfungsi, rusak, layanan pelanggan, bantuan, email',
+      tip: 'Anda menerima notifikasi saat KidGate membalas. Jika terlewat, baris Dukungan di Pengaturan menampilkan Balasan baru.',
+      steps: {
+        '1': 'Buka Pengaturan dan pilih Dukungan. Di dasbor web, Dukungan ada di menu.',
+        '2': 'Pilih Laporkan masalah, atau Laporan baru jika Anda pernah mengirim laporan.',
+        '3': 'Jelaskan apa yang terjadi dan di perangkat mana, lampirkan hingga 5 tangkapan layar jika membantu, lalu pilih Kirim laporan.',
+        '4': 'Setiap laporan menampilkan statusnya: Diterima, Sedang ditinjau, atau Selesai. Balasan dari KidGate muncul di bawah laporan.',
+        '5': 'Anda bisa membalas di bawah laporan sampai laporan ditutup. Untuk masalah lain, kirim laporan baru.',
       },
     },
     deleteAccount: {

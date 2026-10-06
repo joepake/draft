@@ -7,6 +7,21 @@ import { useT } from '@kidgate/web-ui/useT';
 import { trackDownloadClick } from '../lib/analytics.js';
 import { isPlatformAvailable, storeHref } from '../lib/storeLinks.js';
 import { useReveal } from '../lib/useReveal.js';
+import familyEn from '../assets/dashboard-family-en.webp';
+import familyVi from '../assets/dashboard-family-vi.webp';
+import getQr from '../assets/get-qr.svg';
+
+/*
+ * The real dashboard's Family screen, not a drawing of one. Captured
+ * 2026-10-05 from the live console with every name, place, figure and the
+ * account email swapped in the DOM before the shot — never a real family's
+ * data on this page. Two languages; the other twelve show the English one.
+ * A retake follows the same rule: edit the page, not the picture.
+ */
+const DASHBOARD_SHOTS = {
+  en: { src: familyEn, width: 2000, height: 813 },
+  vi: { src: familyVi, width: 2000, height: 818 },
+};
 
 function AppleMark() {
   return (
@@ -332,7 +347,9 @@ function usePlansT(language) {
   return plansTranslator(language);
 }
 
-const WHY = [1, 2, 3, 4];
+// "Honest about limits" leads: it is the one claim no rival makes, and the
+// section sits straight after the features so it is read beside them.
+const WHY = [4, 1, 2, 3];
 /*
  * Things a parent will not find in the apps they compare us against, each
  * named with the platform it is true on. The copy carries "Android" or
@@ -368,8 +385,11 @@ function HeroVideo({ language }) {
     const still =
       window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
       navigator.connection?.saveData;
-    // Refused in iOS Low Power Mode, among others; the poster stays, which is fine.
-    if (!still) ref.current?.play().catch(() => {});
+    // Refused in iOS Low Power Mode, among others. A refused play() has already
+    // swapped the poster for the faded first frame (measured 2026-10-05: an empty
+    // phone), so `load()` puts the poster back; `preload="none"` keeps it free.
+    const video = ref.current;
+    if (!still) video?.play().catch(() => video.load());
   }, [language]);
   return (
     <video
@@ -391,13 +411,14 @@ export default function Home() {
   const root = useReveal();
   const { t, language } = useT();
   const plansT = usePlansT(language);
+  const shot = DASHBOARD_SHOTS[language] ?? DASHBOARD_SHOTS.en;
   useScrollToHash();
 
   return (
     <div className="landing" ref={root}>
       <section className="hero">
         <div className="inner">
-          <div>
+          <div className="hero-copy">
             <span className="hero-badge">
               <Icon name="shieldCheck" />
               {t('home.heroBadge')}
@@ -462,6 +483,29 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="showcase">
+        <div className="inner">
+          <div className="reveal">
+            <span className="eyebrow">{t('home.whyEyebrow')}</span>
+            <h2>{t('home.whyTitle')}</h2>
+            <p className="section-sub">{t('home.whySub')}</p>
+          </div>
+          <div className="why-grid">
+            {WHY.map(n => (
+              <article className="why-item reveal" key={n}>
+                <span className="tick">
+                  <Icon name="check" />
+                </span>
+                <div>
+                  <h3>{t(`home.why${n}Title`)}</h3>
+                  <p>{t(`home.why${n}Text`)}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/*
         Every platform, in one place — this replaced the `/download` route.
 
@@ -487,6 +531,23 @@ export default function Home() {
           </div>
 
           <StoreButtons centered storesOnly />
+
+          {/*
+            For a reader on a computer, whose phone is what installs the app:
+            the code opens `/get`, which picks the store by the phone that
+            scanned it. **Shown before launch on purpose** (operator,
+            2026-10-06): until a store flag flips, `/get` lands the phone on
+            this section's "coming soon", and on launch day the same printed
+            or cached code starts reaching the stores with nothing edited.
+            Touch screens tap the buttons, so the CSS hides it there.
+            `get-qr.svg` is generated, not drawn: regenerate with `qrcode`
+            (root node_modules), margin 2, for
+            `https://www.kidgate.app/get?utm_source=site` — only if `/get` moves.
+          */}
+          <figure className="get-qr">
+            <img src={getQr} width="140" height="140" alt="" />
+            <figcaption>{t('download.qrScan')}</figcaption>
+          </figure>
 
           {/*
             Four cards, two by two: the two desktops, then Android TV and
@@ -563,54 +624,15 @@ export default function Home() {
               <i />
               <span>dashboard.kidgate.app</span>
             </div>
-            <div className="showcase-body">
-              <div className="showcase-side">
-                {[
-                  ['grid', 'dash.tabOverview', true],
-                  ['clock', 'dash.tabScreen', false],
-                  ['apps', 'dash.tabApps', false],
-                  ['shield', 'dash.tabSafety', false],
-                  ['sliders', 'dash.tabControls', false],
-                ].map(([icon, key, active]) => (
-                  <div
-                    className={`showcase-row${active ? ' is-active' : ''}`}
-                    key={key}
-                  >
-                    <Icon name={icon} />
-                    {t(key)}
-                  </div>
-                ))}
-              </div>
-              <div className="showcase-main">
-                <div className="showcase-tiles">
-                  <div className="showcase-tile">
-                    <em>{t('home.showcaseTile1')}</em>
-                    <strong>{t('viz.hoursMinutes', { hours: 2, minutes: 14 })}</strong>
-                  </div>
-                  <div className="showcase-tile">
-                    <em>{t('home.showcaseTile2')}</em>
-                    <strong>41</strong>
-                  </div>
-                  <div className="showcase-tile">
-                    <em>{t('home.showcaseTile3')}</em>
-                    <strong>2</strong>
-                  </div>
-                </div>
-                <div className="showcase-chart">
-                  <div className="showcase-bars">
-                    {[52, 68, 74, 46, 39, 61, 88, 57, 44, 70, 96, 63, 51, 80].map(
-                      (h, i) => (
-                        <i
-                          key={i}
-                          className={h > 85 ? 'over' : undefined}
-                          style={{ height: `${h}%` }}
-                        />
-                      ),
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
+            <img
+              className="showcase-shot"
+              src={shot.src}
+              width={shot.width}
+              height={shot.height}
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
           </div>
 
           <div className="showcase-caption reveal">
@@ -639,29 +661,6 @@ export default function Home() {
                 <span className="step-num">{n}</span>
                 <h3>{t(`home.step${n}Title`)}</h3>
                 <p>{t(`home.step${n}Text`)}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="showcase">
-        <div className="inner">
-          <div className="reveal">
-            <span className="eyebrow">{t('home.whyEyebrow')}</span>
-            <h2>{t('home.whyTitle')}</h2>
-            <p className="section-sub">{t('home.whySub')}</p>
-          </div>
-          <div className="why-grid">
-            {WHY.map(n => (
-              <article className="why-item reveal" key={n}>
-                <span className="tick">
-                  <Icon name="check" />
-                </span>
-                <div>
-                  <h3>{t(`home.why${n}Title`)}</h3>
-                  <p>{t(`home.why${n}Text`)}</p>
-                </div>
               </article>
             ))}
           </div>

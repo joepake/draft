@@ -31,6 +31,9 @@ import { QR_CLICK_URL } from '../lib/qrClickUrl';
 function detectPlatform() {
   const ua = window.navigator.userAgent || window.navigator.vendor || '';
   if (/iPad|iPhone|iPod/.test(ua)) return 'ios';
+  // iPadOS 13+ Safari reports a Mac; only the touch points tell it apart, and
+  // the iOS app ships for iPad too (TARGETED_DEVICE_FAMILY "1,2").
+  if (/Macintosh/.test(ua) && window.navigator.maxTouchPoints > 1) return 'ios';
   if (/Android/.test(ua)) return 'android';
   return null;
 }

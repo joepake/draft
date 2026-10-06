@@ -25,6 +25,7 @@ export type UserGuideTopicId =
   | 'connectChrome'
   | 'inviteParent'
   | 'joinFamily'
+  | 'manageDevices'
   | 'androidPermissions'
   | 'iosScreenTime'
   | 'oemKeepRunning'
@@ -42,6 +43,7 @@ export type UserGuideTopicId =
   | 'webFilter'
   | 'protectionAlerts'
   | 'usageReports'
+  | 'widget'
   | 'webHistory'
   | 'videoHistory'
   | 'appAlerts'
@@ -49,8 +51,10 @@ export type UserGuideTopicId =
   | 'childProfiles'
   | 'plans'
   | 'notificationSettings'
+  | 'appLanguage'
   | 'webSignIn'
   | 'securityPins'
+  | 'reportProblem'
   | 'deleteAccount';
 
 /**
@@ -144,6 +148,12 @@ export const USER_GUIDE_TOPICS: UserGuideTopicConfig[] = [
     stepCount: 5,
   },
   {
+    id: 'manageDevices',
+    groupId: 'connection',
+    icon: 'pencil',
+    stepCount: 5,
+  },
+  {
     id: 'androidPermissions',
     groupId: 'permissions',
     icon: 'android',
@@ -201,7 +211,7 @@ export const USER_GUIDE_TOPICS: UserGuideTopicConfig[] = [
     id: 'lockUnlock',
     groupId: 'controls',
     icon: 'lock',
-    stepCount: 5,
+    stepCount: 6,
   },
   {
     id: 'appLimits',
@@ -228,8 +238,8 @@ export const USER_GUIDE_TOPICS: UserGuideTopicConfig[] = [
     id: 'rewardTasks',
     groupId: 'controls',
     icon: 'star',
-    stepCount: 5,
-    stepDevices: ['parent', 'parent', 'child', 'parent', 'parent'],
+    stepCount: 6,
+    stepDevices: ['parent', 'parent', 'child', 'parent', 'parent', 'parent'],
   },
   {
     id: 'locationSharing',
@@ -247,7 +257,8 @@ export const USER_GUIDE_TOPICS: UserGuideTopicConfig[] = [
     id: 'sos',
     groupId: 'safety',
     icon: 'siren',
-    stepCount: 5,
+    stepCount: 6,
+    stepDevices: ['child', 'child', 'child', 'parent', 'parent', 'parent'],
   },
   {
     id: 'webFilter',
@@ -266,6 +277,13 @@ export const USER_GUIDE_TOPICS: UserGuideTopicConfig[] = [
     groupId: 'reports',
     icon: 'chart',
     stepCount: 5,
+  },
+  {
+    id: 'widget',
+    groupId: 'reports',
+    icon: 'grid',
+    stepCount: 5,
+    stepDevices: ['parent', 'parent', 'parent', 'parent', 'child'],
   },
   {
     id: 'webHistory',
@@ -314,6 +332,12 @@ export const USER_GUIDE_TOPICS: UserGuideTopicConfig[] = [
     stepCount: 5,
   },
   {
+    id: 'appLanguage',
+    groupId: 'account',
+    icon: 'globe',
+    stepCount: 4,
+  },
+  {
     id: 'webSignIn',
     groupId: 'account',
     icon: 'globe',
@@ -323,6 +347,12 @@ export const USER_GUIDE_TOPICS: UserGuideTopicConfig[] = [
     id: 'securityPins',
     groupId: 'account',
     icon: 'key',
+    stepCount: 5,
+  },
+  {
+    id: 'reportProblem',
+    groupId: 'account',
+    icon: 'mail',
     stepCount: 5,
   },
   {
@@ -349,6 +379,7 @@ export const USER_GUIDE_GROUPS: UserGuideGroupConfig[] = [
       'connectChrome',
       'inviteParent',
       'joinFamily',
+      'manageDevices',
     ],
   },
   {
@@ -380,6 +411,7 @@ export const USER_GUIDE_GROUPS: UserGuideGroupConfig[] = [
     icon: 'chart',
     topicIds: [
       'usageReports',
+      'widget',
       'webHistory',
       'videoHistory',
       'appAlerts',
@@ -392,8 +424,10 @@ export const USER_GUIDE_GROUPS: UserGuideGroupConfig[] = [
     topicIds: [
       'plans',
       'notificationSettings',
+      'appLanguage',
       'webSignIn',
       'securityPins',
+      'reportProblem',
       'deleteAccount',
     ],
   },

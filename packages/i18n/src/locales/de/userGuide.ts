@@ -39,7 +39,7 @@ export const userGuide = {
     account: {
       title: 'Konto und Plan',
       description:
-        'Premium, Hinweise, das Web-Dashboard, PINs und das Löschen deines Kontos',
+        'Premium, Hinweise, Sprache, das Web-Dashboard, PINs, Support und das Löschen deines Kontos',
     },
   },
   topics: {
@@ -161,6 +161,21 @@ export const userGuide = {
         '5': 'Bestätige, dass die Kindergeräte unter Familie erscheinen. Öffne ein Gerät, um dessen Status und Steuerungen anzuzeigen.',
       },
     },
+    manageDevices: {
+      title: 'Ein Gerät umbenennen oder entfernen',
+      summary:
+        'Gib einem Gerät einen Namen, den alle erkennen, oder trenne eines, das dein Kind nicht mehr nutzt.',
+      keywords:
+        'koppeln aufheben, trennen, gerät löschen, altes handy, neues handy, verkauft, name ändern, zurücksetzen',
+      tip: 'Nur der Familieninhaber kann Geräte umbenennen oder entfernen. Das Entfernen lässt sich nicht rückgängig machen: Zeitanfragen und Aktivitätsverlauf des Geräts werden gelöscht. Um es wieder zu schützen, kopple es als neues Gerät.',
+      steps: {
+        '1': 'Um ein Gerät umzubenennen, öffne es über „Familie“ oder über dein Kind und wähle „Bearbeiten“ neben seinem Namen.',
+        '2': 'Gib einen Namen ein, den alle Eltern auf einen Blick erkennen, und speichere ihn.',
+        '3': 'Um ein Gerät zu entfernen, öffne es, wähle unten auf seinem Bildschirm „Gerät entfernen“ und bestätige. Im Tab „Kindergeräte“ der Familienkarte kannst du ein Gerät auch nach links wischen.',
+        '4': 'Das Gerät verlässt deine Familie, und KidGate zeigt auf dem Gerät an, dass es entfernt wurde.',
+        '5': 'Um das Gerät wieder zu nutzen, etwa nach einem Zurücksetzen oder wenn es an ein anderes Kind geht, kopple es mit „Gerät eines Kindes hinzufügen“ unter „Familie“ als neues Gerät.',
+      },
+    },
     androidPermissions: {
       title: 'Android-Berechtigungen (Kindergerät)',
       summary:
@@ -279,6 +294,7 @@ export const userGuide = {
         '3': 'Warte einige Sekunden. Der Status sollte auf „Gesperrt“ wechseln. Ändert sich nichts, öffne KidGate auf dem Kindergerät und überprüfe die Berechtigungen erneut.',
         '4': 'Um den Zugriff wiederherzustellen, wähle „Alle entsperren“ (oder „Entsperren“ auf dem Gerätebildschirm) und bestätige.',
         '5': 'Optional: Du kannst ein Gerät auch schnell aus Familie sperren oder entsperren, wenn diese Verknüpfungen auf der Gerätekarte erscheinen.',
+        '6': 'Ein gesperrtes Handy oder ein gesperrter Computer lässt dein Kind weiterhin einen SOS-Alarm senden. Auf Android öffnet SOS außerdem 5 Minuten lang Anrufe, Karten und Nachrichten, während alles andere gesperrt bleibt, und es erscheint unter „Aktivitäten“.',
       },
     },
     pauseBrowsing: {
@@ -319,6 +335,7 @@ export const userGuide = {
         '3': 'Auf dem Kindergerät erscheint die Aufgabe unter „Extra-Zeit verdienen“. Ist sie erledigt, wählt dein Kind „Geschafft“.',
         '4': 'Du erhältst eine Mitteilung. Wähle unter „Bereit zur Prüfung“ (auf dem Bildschirm Belohnungsaufgaben, unter Familie oder im Profil deines Kindes) „Genehmigen“, um die Minuten für heute gutzuschreiben, oder „Zurückgeben“, damit dein Kind es noch einmal versuchen kann.',
         '5': 'Tippe auf eine Aufgabe, um sie zu bearbeiten oder zu löschen. Im Gratis-Tarif laufen bis zu 10 aktive Aufgaben gleichzeitig, mit Premium 20.',
+        '6': 'Jede Aufgabe ist je nach Schwierigkeit 1 bis 3 Sterne wert, und Sterne zählen, sobald du die Aufgabe genehmigst. Damit deine Kinder die Sterne dieser Woche vergleichen können, öffnet der Familieninhaber „Familie“, dann die Familienkarte, und schaltet im Tab „Kinder“ die „Sternetafel“ ein. Jedes Kind sieht sie dann in KidGate auf seinem Gerät. Sie beginnt jede Woche neu.',
       },
     },
     locationSharing: {
@@ -351,14 +368,17 @@ export const userGuide = {
     sos: {
       title: 'SOS-Notfallalarme',
       summary:
-        'Verstehe, wie ein Kind einen SOS-Alarm sendet und wie Eltern ihn überprüfen.',
-      tip: 'Teste dies einmal zu Hause, damit Eltern und Kind den Ablauf vor einem echten Notfall kennen.',
+        'Wie ein Kind einen SOS-Alarm sendet, was er enthält und wie Eltern darauf reagieren.',
+      keywords:
+        'notfallknopf, panikknopf, hilfe, gefahr, unsicher, audio, stimme, mikrofon, sirene, e-mail, großeltern, nachbarn',
+      tip: 'SOS funktioniert auf Handys und Computern, nicht auf einem Fernseher und nicht in der Chrome-Erweiterung. Ton wird nur auf Handys aufgenommen. Teste es einmal zu Hause und vereinbare mit deinem Kind, wann SOS verwendet wird und wann ein Check-in reicht.',
       steps: {
-        '1': 'Öffne auf dem Kindergerät den SOS-Tab oder -Bildschirm in KidGate.',
-        '2': 'Folge den Schritten auf dem Bildschirm, um einen SOS-Alarm zu senden (Standort und Foto hängen von den erteilten Berechtigungen ab).',
-        '3': 'Eltern erhalten eine Push-Mitteilung, sobald ein SOS-Alarm gesendet wird.',
-        '4': 'Öffne auf dem Elterngerät das Profil deines Kindes (oder das Gerät, falls es keinem Kind zugewiesen ist), dann den Bereich Benachrichtigungen, und wähle SOS, um die SOS-Alarme zu öffnen und das Ereignis zu überprüfen.',
-        '5': 'Vereinbare mit deinem Kind, wann SOS verwendet werden soll und wann ein normaler Check-in ausreicht.',
+        '1': 'Öffne auf dem Kindergerät SOS in KidGate. Auf einem Handy ist es die Taste in der Mitte der unteren Leiste.',
+        '2': 'Halte die SOS-Taste 5 Sekunden lang gedrückt. Wird sie früher losgelassen, wird der Alarm abgebrochen.',
+        '3': 'Der Alarm wird sofort gesendet, mit dem Standort, sofern verfügbar. Auf einem Handy öffnet sich danach die Kamera für ein Foto, das übersprungen werden kann. Wurde das Mikrofon bei der Einrichtung erlaubt, werden ab dem Senden bis zu 15 Sekunden Ton aufgenommen.',
+        '4': 'Eltern erhalten eine dringende Mitteilung, auch während der „Ruhezeiten“. Ist KidGate geöffnet, erscheint der Alarm auf dem Bildschirm, mit der „SOS-Sirene“, sofern sie in den Einstellungen nicht ausgeschaltet ist.',
+        '5': 'Öffne das Profil deines Kindes (oder das Gerät, falls es keinem Kind zugewiesen ist), dann den Bereich „Benachrichtigungen“, und wähle „SOS“. Jeder Alarm zeigt den Standort („In Karten öffnen“), das Foto und die „Tonaufnahme“, die etwas nach dem Alarm eintreffen kann. Wähle „Ich kümmere mich darum“, um ihn als beantwortet zu markieren.',
+        '6': 'Um auch Personen außerhalb der Familie per E-Mail zu benachrichtigen, öffne „Familie“, dann die Familienkarte, und wähle „Vertrauenskontakte“. Wähle „Kontakt hinzufügen“, um bis zu 5 hinzuzufügen. Bei jedem SOS erhalten sie per E-Mail den Gerätenamen und den letzten bekannten Standort, nie das Foto oder den Ton. Sag ihnen vorher Bescheid.',
       },
     },
     webFilter: {
@@ -400,6 +420,21 @@ export const userGuide = {
         '3': 'Tippe auf ein Kind, um einen gemeinsamen Bericht über alle seine Geräte zu sehen, für „Heute“, „7 Tage“ oder „30 Tage“. Zeit auf zwei Bildschirmen gleichzeitig zählt nur einmal, daher kann die Summe niedriger sein als die Werte der einzelnen Geräte zusammen.',
         '4': 'Jeden Montagmorgen kommt ein neuer Wochenbericht, zusammen mit einer Mitteilung. Er schlägt eine Sache vor, die du ändern könntest, und öffnet die passende Einstellung.',
         '5': 'Beim Öffnen von KidGate wird jedes Gerät nach aktuellen Zahlen gefragt, daher kann die Aktualisierung ein paar Minuten dauern. Ein Gerät ohne Internetverbindung sendet seine Daten, sobald es wieder online ist.',
+      },
+    },
+    widget: {
+      title: 'Ein Bildschirmzeit-Widget hinzufügen',
+      summary:
+        'Sieh die Bildschirmzeit jedes Kindes auf deinem Home-Bildschirm, und dein Kind sieht auf seinem, wie viel Zeit noch übrig ist.',
+      keywords:
+        'startbildschirm, launcher, auf einen blick, restzeit, verbleibende minuten, iphone, android',
+      tip: 'Widgets gibt es auf iPhone, iPad und Android, nicht auf Computern oder Fernsehern. Ein Widget zeigt die zuletzt von KidGate empfangenen Zahlen und die Uhrzeit dieser Aktualisierung.',
+      steps: {
+        '1': 'Öffne „Einstellungen“ und wähle „Widget zum Home-Bildschirm hinzufügen“. Auf den meisten Android-Handys bestätigst du nur noch, wo es hin soll. Andernfalls zeigt KidGate die Schritte, um es selbst hinzuzufügen.',
+        '2': 'Um es selbst hinzuzufügen, halte eine freie Stelle auf dem Home-Bildschirm gedrückt. Tippe auf dem iPhone auf „Bearb.“ (bei älteren Versionen auf +) und dann auf „Widget hinzufügen“. Tippe auf Android auf „Widgets“. Suche KidGate und wähle das Widget „Bildschirmzeit“.',
+        '3': 'Jede Zeile zeigt die heutige Bildschirmzeit eines Kindes im Vergleich zu seinem Tageslimit; Kinder, die es erreicht haben, stehen oben. Auf dem iPhone passen bis zu 2 Kinder hinein, auf Android bis zu 3.',
+        '4': 'Es aktualisiert sich, wenn du KidGate öffnest. Ist die App geschlossen, höchstens alle 20 Minuten und nur, während ein Kind ein Gerät nutzt.',
+        '5': 'Füge auf dem Handy deines Kindes das Widget „Verbleibende Zeit“ auf die gleiche Weise hinzu. Es zeigt, wie viel Zeit heute noch übrig ist oder warum das Gerät gesperrt ist, und aktualisiert sich, während KidGate auf diesem Handy geöffnet ist.',
       },
     },
     webHistory: {
@@ -498,6 +533,19 @@ export const userGuide = {
         '5': 'In den Einstellungen sind „In-App-Benachrichtigungen“ und „SOS-Sirene“ eigene Schalter: Sie steuern das Banner in der App und den lauten SOS-Ton auf diesem Handy.',
       },
     },
+    appLanguage: {
+      title: 'Die App-Sprache ändern',
+      summary:
+        'Wähle, welche Sprache KidGate auf jedem Handy und im Web-Dashboard verwendet.',
+      keywords: 'deutsch, englisch, übersetzung, falsche sprache, anzeigesprache',
+      tip: 'Jedes Handy behält seine eigene Sprache. Mitteilungen und das Widget auf diesem Handy folgen ihr.',
+      steps: {
+        '1': 'Öffne auf einem Eltern- oder Kinderhandy „Einstellungen“ und wähle „Sprache“.',
+        '2': 'Wähle eine Sprache, um sie festzulegen, oder „Gerätesprache“, um der Einstellung des Handys zu folgen. Bietet KidGate die Sprache des Handys nicht an, wird Englisch verwendet.',
+        '3': 'Die App wechselt sofort. Mitteilungen an dieses Handy und sein Widget verwenden ebenfalls die neue Sprache.',
+        '4': 'Im Web-Dashboard änderst du die Sprache im Kontobereich des Seitenmenüs. Sie gilt nur für diesen Browser.',
+      },
+    },
     webSignIn: {
       title: 'KidGate am Computer nutzen',
       summary: 'Melde dich im Web-Dashboard an und verwalte deine Familie im Browser.',
@@ -521,6 +569,21 @@ export const userGuide = {
         '3': 'Hast du sie vergessen, wähle an derselben Stelle „PIN vergessen?“, um als Familieninhaber eine neue festzulegen.',
         '4': 'Sperrt sich ein Kindergerät nach 5 falschen PIN-Versuchen, zeigt der Bereich Sicherheit eine Zeile zum Entsperren dieses Geräts. Wähle sie, um die Versuche zurückzusetzen.',
         '5': 'Um die Eltern-App auf diesem Handy zu schützen, schalte „App-Sperre“ ein und erstelle eine eigene 6-stellige PIN. Du kannst auch das Entsperren mit Face ID, Touch ID oder Fingerabdruck erlauben.',
+      },
+    },
+    reportProblem: {
+      title: 'Ein Problem melden',
+      summary:
+        'Sag dem KidGate-Team, was nicht funktioniert hat, hänge Screenshots an und lies die Antwort in der App.',
+      keywords:
+        'fehler, bug, kontakt, feedback, funktioniert nicht, kaputt, kundendienst, hilfe, e-mail',
+      tip: 'Du bekommst eine Mitteilung, wenn KidGate antwortet. Falls du sie verpasst hast, zeigt die Zeile „Support“ in den Einstellungen „Neue Antwort“.',
+      steps: {
+        '1': 'Öffne „Einstellungen“ und wähle „Support“. Im Web-Dashboard steht „Support“ im Menü.',
+        '2': 'Wähle „Problem melden“ oder „Neue Meldung“, wenn du schon einmal eine gesendet hast.',
+        '3': 'Beschreibe, was passiert ist und auf welchem Gerät, hänge bei Bedarf bis zu 5 Screenshots an und wähle „Bericht senden“.',
+        '4': 'Jede Meldung zeigt ihren Status: „Eingegangen“, „In Bearbeitung“ oder „Gelöst“. Die Antwort von KidGate erscheint unter der Meldung.',
+        '5': 'Du kannst unter der Meldung antworten, bis sie geschlossen ist. Für ein anderes Problem sende eine neue Meldung.',
       },
     },
     deleteAccount: {

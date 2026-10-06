@@ -131,22 +131,22 @@ export default {
       'Escolha quais apps seu filho não pode abrir, com a escolha protegida pelo seu PIN dos pais, e ligue o bloqueio à distância.',
     feature3Title: 'Limites de apps',
     feature3Text:
-      'Limite cada app separadamente, além do limite diário — “meia hora de TikTok” sem precisar proibir de vez. No Android, na Android TV e em computadores.',
+      'No Android, na Android TV e em computadores, limite cada app separadamente — “meia hora de TikTok” sem precisar proibir de vez.',
     feature4Title: 'Filtro da web e histórico',
     feature4Text:
-      'Bloqueie sites adultos, apostas, automutilação e outras categorias em todos os dispositivos. Com o Premium, escolha você mesmo as categorias e veja quais sites foram consultados e quais foram barrados.',
+      'Bloqueie sites adultos, apostas, automutilação e mais em todos os dispositivos; com o Premium, veja também quais sites foram consultados.',
     feature5Title: 'Localização e lugares',
     feature5Text:
-      'Veja onde seu filho está quando você consulta o KidGate, até 10 vezes por dia. Com o Premium, acompanhe ao vivo, reveja por onde ele andou e seja avisado quando ele chega ou sai de um lugar salvo.',
+      'Veja onde seu filho está até 10 vezes por dia; o Premium adiciona a localização ao vivo e avisos para lugares salvos.',
     feature6Title: 'Check-in e SOS',
     feature6Text:
-      'Peça ao seu filho para confirmar que está bem, com uma foto no Premium. Numa emergência, o celular dele envia um SOS imediato com a localização e uma foto quando for possível tirá-la.',
+      'Peça ao seu filho para confirmar que está bem; numa emergência, o celular dele envia um SOS imediato com a localização.',
     feature7Title: 'Alertas de proteção e de apps',
     feature7Text:
-      'Saiba na hora em que uma permissão importante é desligada no celular do seu filho. Ative a aprovação de novos apps e um app novo no Android, na Android TV ou num computador espera por você antes de abrir.',
+      'Saiba na hora em que uma permissão importante é desligada no celular do seu filho e aprove novos apps antes que abram no Android, na Android TV ou num computador.',
     feature8Title: 'Tarefas com recompensa e tempo extra',
     feature8Text:
-      'As crianças ganham minutos extras e estrelas concluindo tarefas, ou pedem mais tempo. Os dois chegam ao seu celular para aprovação. Você decide se o Quadro de estrelas mostra às crianças quantas estrelas cada uma ganhou nesta semana; ele recomeça toda segunda-feira.',
+      'As crianças ganham minutos extras e estrelas concluindo tarefas, ou pedem mais tempo — você aprova os dois pelo seu celular.',
 
     feature9Title: 'Bloqueio do dispositivo',
     feature9Text:
@@ -156,10 +156,10 @@ export default {
       'Toda segunda-feira: tempo de tela, a média diária, o que foi bloqueado e como a semana ficou em relação à anterior.',
     feature11Title: 'Histórico do YouTube e de vídeos',
     feature11Text:
-      'Os vídeos e os Shorts do YouTube que seu filho assistiu, no app do YouTube em celulares Android e na Android TV, e no YouTube pelo Chrome. Não está disponível no iPhone, e a TV não lista os Shorts.',
+      'Os vídeos e os Shorts do YouTube que seu filho assistiu no Android e no Chrome, além dos vídeos na Android TV. Não está disponível no iPhone.',
     feature12Title: 'Feed de atividades',
     feature12Text:
-      'Tudo o que aconteceu, em ordem: um dispositivo desbloqueado, um pedido de site respondido, uma tarefa concluída, um alerta enviado. O plano gratuito mostra o dia de hoje; o Premium guarda 30 dias.',
+      'Tudo o que aconteceu, em ordem — um dispositivo desbloqueado, um pedido respondido, um alerta enviado; o dia de hoje no plano gratuito, 30 dias no Premium.',
     featurePremium: 'Premium',
     platformsTitle: 'Um só KidGate, onde estiver a tela',
     platformsSub:
@@ -169,9 +169,6 @@ export default {
     showcaseTitle: 'A família inteira em uma tela',
     showcaseSub:
       'Tempo de Uso, tentativas bloqueadas, localização e tudo o que precisa da sua atenção — no seu celular ou em qualquer navegador.',
-    showcaseTile1: 'Tempo de Uso hoje',
-    showcaseTile2: 'Tentativas bloqueadas',
-    showcaseTile3: 'Precisa de atenção',
     showcaseCaption1: 'Leia relatórios de qualquer navegador',
     showcaseCaption2: 'Mudanças aprovadas pelo seu celular',
 
@@ -884,6 +881,7 @@ export default {
 
   download: {
     eyebrow: 'Baixar',
+    qrScan: 'Aponte a câmera do celular para baixar o app',
     macosTitle: 'macOS',
     macosRequires: 'macOS 12 ou posterior, em um Mac com Apple silicon.',
     windowsTitle: 'Windows',

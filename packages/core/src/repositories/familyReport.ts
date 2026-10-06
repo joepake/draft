@@ -303,6 +303,9 @@ function mapReportData(id: string, data: Record<string, unknown>): FamilyReport 
     previousScreenMinutes: Number(data.previousScreenMinutes ?? 0),
     blockedAppOpens: Number(data.blockedAppOpens ?? 0),
     blockedWebVisits: Number(data.blockedWebVisits ?? 0),
+    ...(typeof data.tasksApproved === 'number'
+      ? { tasksApproved: data.tasksApproved }
+      : {}),
     findings: mapFindings(data.findings),
     children: mapChildren(data.children),
     people: mapPeople(data.people),

@@ -59,7 +59,7 @@ export const settings = {
   addWidgetTitle: 'Widget zum Home-Bildschirm hinzufügen',
   addWidgetSubtitle: 'Die Bildschirmzeit jedes Kindes auf einen Blick',
   addWidgetStepsIos:
-    '1. Halte eine freie Stelle auf dem Home-Bildschirm gedrückt\n2. Tippe oben auf die Taste +\n3. Suche nach KidGate\n4. Wähle eine Größe und tippe auf Widget hinzufügen',
+    '1. Halte eine freie Stelle auf dem Home-Bildschirm gedrückt\n2. Tippe oben auf „Bearb.“ und dann auf „Widget hinzufügen“ (bei älterem iOS auf +)\n3. Suche nach KidGate\n4. Wähle eine Größe und tippe auf Widget hinzufügen',
   addWidgetStepsAndroid:
     '1. Halte eine freie Stelle auf dem Startbildschirm gedrückt\n2. Tippe auf Widgets\n3. Suche KidGate und ziehe das Widget auf den Startbildschirm',
   pushNotificationsTitle: 'Push-Benachrichtigungen',

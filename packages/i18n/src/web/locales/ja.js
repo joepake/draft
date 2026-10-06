@@ -131,22 +131,22 @@ export default {
       'お子さまが開けないアプリを保護者 PIN で守りながら指定でき、ブロックは遠隔でオンにできます。',
     feature3Title: 'アプリの利用時間制限',
     feature3Text:
-      '1 日の上限とは別に、アプリごとに上限を設定できます。「TikTok は 30 分」と、禁止せずに決められます。Android、Android TV、パソコンで使えます。',
+      'Android、Android TV、パソコンでは、アプリごとに上限を設定して、禁止せずに「TikTok は 30 分」と決められます。',
     feature4Title: 'Webフィルターと閲覧履歴',
     feature4Text:
-      'アダルトサイト、ギャンブル、自傷などのカテゴリーをすべてのデバイスでブロックします。Premium では、カテゴリーを自分で選び、アクセスしようとしたサイトと止められたサイトを確認できます。',
+      'アダルトサイト、ギャンブル、自傷などをすべてのデバイスでブロックします。Premium では、アクセスしようとしたサイトも確認できます。',
     feature5Title: '位置情報と場所',
     feature5Text:
-      'お子さまの居場所を、開いて確認したときに1日10回まで見られます。Premium では、リアルタイムで見守り、移動した場所を振り返り、登録した場所への到着・出発を通知で受け取れます。',
+      'お子さまの居場所を1日10回まで確認できます。Premium では、リアルタイムの位置情報と、登録した場所への到着・出発の通知が加わります。',
     feature6Title: 'チェックインと SOS',
     feature6Text:
-      'チェックインで、お子さまに無事の確認を求められます。Premium では写真も付きます。緊急時にはお子さまのスマホから SOS がすぐに届き、位置情報と、撮影できた場合は写真も添えられます。',
+      'お子さまに無事の確認を求められます。緊急時にはお子さまのスマホから、位置情報付きの SOS がすぐに届きます。',
     feature7Title: '保護アラートとアプリ通知',
     feature7Text:
-      'お子さまのスマホで重要な権限がオフになった瞬間に分かります。新しいアプリの承認をオンにすると、Android、Android TV、パソコンに入った新しいアプリは、開く前に保護者の承認を待ちます。',
+      'お子さまのスマホで重要な権限がオフになった瞬間に分かり、Android、Android TV、パソコンの新しいアプリは開く前に承認できます。',
     feature8Title: 'ごほうびタスクと時間延長リクエスト',
     feature8Text:
-      'お子さまはタスクを終えてボーナス時間と星を得たり、延長を申請したりできます。どちらも承認待ちとしてあなたのスマホに届きます。スターボードで、今週それぞれが何個の星を集めたかをお子さまに見せるかどうかは、保護者が決められます。毎週月曜にリセットされます。',
+      'お子さまはタスクを終えてボーナス時間と星を得たり、延長を申請したりでき、どちらもあなたのスマホで承認できます。',
 
     feature9Title: 'デバイスロック',
     feature9Text:
@@ -156,10 +156,10 @@ export default {
       '毎週月曜に届きます。使用時間、1日の平均、ブロックされたもの、前の週との比較。',
     feature11Title: 'YouTube と動画の履歴',
     feature11Text:
-      'お子さまが見た YouTube の動画と Shorts を確認できます。Android スマホと Android TV の YouTube アプリ、および Chrome の YouTube が対象です。iPhone では使えず、テレビには Shorts が表示されません。',
+      'Android と Chrome でお子さまが見た YouTube の動画と Shorts、そして Android TV で見た動画を確認できます。iPhone では使えません。',
     feature12Title: 'アクティビティ履歴',
     feature12Text:
-      '起きたことが時系列で並びます。デバイスのロック解除、サイトのリクエストへの返答、終えたタスク、発生したアラート。無料プランでは今日の分を表示し、Premium では 30 日分が残ります。',
+      'デバイスのロック解除、リクエストへの返答、アラートなど、起きたことが時系列で並びます。無料プランでは今日の分、Premium では 30 日分を表示します。',
     featurePremium: 'Premium',
     platformsTitle: 'どの画面でも、KidGate はひとつ',
     platformsSub:
@@ -169,9 +169,6 @@ export default {
     showcaseTitle: '家族全員をひとつの画面で',
     showcaseSub:
       'スクリーンタイム、ブロックした回数、位置情報、そして注意が必要なことすべてを — スマホでも、どのブラウザからでも。',
-    showcaseTile1: '今日のスクリーンタイム',
-    showcaseTile2: 'ブロックした回数',
-    showcaseTile3: '要対応',
     showcaseCaption1: 'どのブラウザからでもレポートを閲覧',
     showcaseCaption2: '変更はスマホから承認',
 
@@ -870,6 +867,7 @@ export default {
 
   download: {
     eyebrow: 'ダウンロード',
+    qrScan: 'スマホのカメラで読み取ると、アプリを入手できます',
     macosTitle: 'macOS',
     macosRequires: 'macOS 12 以降、Apple シリコン搭載の Mac。',
     windowsTitle: 'Windows',

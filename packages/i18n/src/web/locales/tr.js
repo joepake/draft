@@ -132,22 +132,22 @@ export default {
       'Çocuğunuzun hangi uygulamaları açamayacağını seçin; Ebeveyn PIN’iyle korunur ve engellemeyi uzaktan açabilirsiniz.',
     feature3Title: 'Uygulama Sınırları',
     feature3Text:
-      'Günlük sınırın üstüne, her uygulamaya ayrı bir sınır koyun — tamamen yasaklamadan “yarım saat TikTok”. Android’de, Android TV’de ve bilgisayarlarda.',
+      'Android’de, Android TV’de ve bilgisayarlarda her uygulamaya ayrı bir sınır koyun — tamamen yasaklamadan “yarım saat TikTok”.',
     feature4Title: 'Web filtreleme ve geçmiş',
     feature4Text:
-      'Yetişkin siteleri, kumar, kendine zarar verme ve diğer kategorileri her cihazda engelleyin. Premium ile kategorileri kendiniz seçin, hangi sitelerin arandığını ve hangilerinin durdurulduğunu görün.',
+      'Yetişkin siteleri, kumar, kendine zarar verme ve daha fazlasını her cihazda engelleyin; Premium ile hangi sitelerin arandığını da görün.',
     feature5Title: 'Konum ve yerler',
     feature5Text:
-      'Siz baktığınızda çocuğunuzun nerede olduğunu görün, günde en fazla 10 kez. Premium ile onu canlı takip edin, nerelere gittiğine geri dönüp bakın ve kayıtlı bir yere vardığında ya da oradan ayrıldığında haberdar olun.',
+      'Çocuğunuzun nerede olduğunu günde en fazla 10 kez görün; Premium canlı konum ve kayıtlı yerler için uyarılar ekler.',
     feature6Title: 'Check-In ve SOS',
     feature6Text:
-      'Çocuğunuzdan iyi olduğunu onaylamasını isteyin; Premium’da fotoğrafla birlikte. Acil durumda onun telefonundan anında SOS alın — konumla ve çekilebildiğinde bir fotoğrafla.',
+      'Çocuğunuzdan iyi olduğunu onaylamasını isteyin; acil durumda telefonu size konumuyla birlikte anında SOS gönderir.',
     feature7Title: 'Koruma ve uygulama uyarıları',
     feature7Text:
-      'Çocuğunuzun telefonunda önemli bir izin kapatıldığı anda haberiniz olsun. Yeni uygulama onayını açın; Android’de, Android TV’de ya da bir bilgisayarda yeni bir uygulama açılmadan önce sizi bekler.',
+      'Çocuğunuzun telefonunda önemli bir izin kapatıldığı anda haberiniz olsun; Android’de, Android TV’de ya da bir bilgisayarda yeni uygulamaları açılmadan önce onaylayın.',
     feature8Title: 'Ödül görevleri ve ek süre',
     feature8Text:
-      'Çocuklar görevleri bitirerek ek dakika ve yıldız kazanır ya da daha fazla süre ister. İkisi de onayınız için telefonunuza düşer. Yıldız tablosunun çocuklara bu hafta her birinin kaç yıldız kazandığını gösterip göstermeyeceğine siz karar verirsiniz; tablo her pazartesi sıfırlanır.',
+      'Çocuklar görevleri bitirerek ek dakika ve yıldız kazanır ya da daha fazla süre ister — ikisini de telefonunuzdan onaylarsınız.',
 
     feature9Title: 'Cihaz Kilidi',
     feature9Text:
@@ -157,10 +157,10 @@ export default {
       'Her pazartesi: ekran süresi, günlük ortalama, engellenenler ve haftanın bir öncekiyle karşılaştırması.',
     feature11Title: 'YouTube ve video geçmişi',
     feature11Text:
-      'Çocuğunuzun izlediği YouTube videoları ve Shorts: Android telefonlarda ve Android TV’de YouTube uygulamasında, ayrıca Chrome’daki YouTube’da. iPhone’da kullanılamaz; TV’de Shorts listelenmez.',
+      'Çocuğunuzun Android’de ve Chrome’da izlediği YouTube videoları ve Shorts, ayrıca Android TV’deki videolar. iPhone’da kullanılamaz.',
     feature12Title: 'Etkinlik Akışı',
     feature12Text:
-      'Olan biten her şey, sırasıyla — kilidi açılan bir cihaz, yanıtlanan bir site isteği, tamamlanan bir görev, gönderilen bir uyarı. Ücretsiz plan bugünü gösterir; Premium 30 günü saklar.',
+      'Olan biten her şey, sırasıyla — kilidi açılan bir cihaz, yanıtlanan bir istek, gönderilen bir uyarı; ücretsiz plan bugünü gösterir, Premium 30 günü saklar.',
     featurePremium: 'Premium',
     platformsTitle: 'Ekran nerede olursa olsun, tek bir KidGate',
     platformsSub:
@@ -170,9 +170,6 @@ export default {
     showcaseTitle: 'Tüm aile tek ekranda',
     showcaseSub:
       'Ekran süresi, engellenen denemeler, konum ve dikkatinizi gerektiren her şey — telefonunuzda ya da herhangi bir tarayıcıda.',
-    showcaseTile1: 'Bugünkü ekran süresi',
-    showcaseTile2: 'Engellenen denemeler',
-    showcaseTile3: 'Dikkat gerekiyor',
     showcaseCaption1: 'Raporları herhangi bir tarayıcıdan okuyun',
     showcaseCaption2: 'Değişiklikler telefonunuzdan onaylanır',
 
@@ -882,6 +879,7 @@ export default {
 
   download: {
     eyebrow: 'İndir',
+    qrScan: 'Uygulamayı indirmek için telefonunuzun kamerasıyla tarayın',
     macosTitle: 'macOS',
     macosRequires: 'macOS 12 veya üzeri, Apple silicon işlemcili bir Mac’te.',
     windowsTitle: 'Windows',

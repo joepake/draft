@@ -59,7 +59,7 @@ export const settings = {
   addWidgetTitle: 'Ajouter le widget à l’écran d’accueil',
   addWidgetSubtitle: 'Le temps d’écran de chaque enfant en un coup d’œil',
   addWidgetStepsIos:
-    '1. Maintenez le doigt sur un espace vide de l’écran d’accueil\n2. Touchez le bouton + en haut\n3. Recherchez KidGate\n4. Choisissez une taille puis touchez Ajouter le widget',
+    '1. Maintenez le doigt sur un espace vide de l’écran d’accueil\n2. Touchez le bouton + en haut, puis Ajouter un widget\n3. Recherchez KidGate\n4. Choisissez une taille puis touchez Ajouter le widget',
   addWidgetStepsAndroid:
     '1. Maintenez le doigt sur un espace vide de l’écran d’accueil\n2. Touchez Widgets\n3. Trouvez KidGate et faites glisser le widget sur l’écran d’accueil',
   pushNotificationsTitle: 'Notifications push',

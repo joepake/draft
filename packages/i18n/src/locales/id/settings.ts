@@ -56,7 +56,7 @@ export const settings = {
   addWidgetTitle: 'Tambahkan widget ke layar utama',
   addWidgetSubtitle: 'Waktu layar setiap anak dalam sekali lihat',
   addWidgetStepsIos:
-    '1. Tekan lama area kosong di layar utama\n2. Ketuk tombol + di pojok atas\n3. Cari KidGate\n4. Pilih ukuran lalu ketuk Tambahkan Widget',
+    '1. Tekan lama area kosong di layar utama\n2. Ketuk Edit di pojok atas, lalu Tambah Widget (di iOS lama, ketuk tombol +)\n3. Cari KidGate\n4. Pilih ukuran lalu ketuk Tambah Widget',
   addWidgetStepsAndroid:
     '1. Tekan lama area kosong di layar utama\n2. Ketuk Widget\n3. Cari KidGate lalu seret widget ke layar utama',
   pushNotificationsTitle: 'Notifikasi push',

@@ -81,7 +81,7 @@ describe('the dashboard header search', () => {
     const guide = await loadUserGuide('vi');
     const { rows, calls } = search('hỗ trợ', guide);
     expect(rows.guide.map(row => row.key).sort()).toEqual(
-      ['androidPermissions', 'inviteParent', 'webFilter'].sort(),
+      ['androidPermissions', 'inviteParent', 'reportProblem', 'webFilter'].sort(),
     );
     expect(rows.guide.every(row => row.phraseOnly)).toBe(true);
     rows.guide[0].open();

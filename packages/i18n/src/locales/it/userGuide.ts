@@ -38,7 +38,8 @@ export const userGuide = {
     },
     account: {
       title: 'Account e piano',
-      description: 'Premium, avvisi, dashboard web, PIN ed eliminazione dell’account',
+      description:
+        'Premium, avvisi, lingua, dashboard web, PIN, assistenza ed eliminazione dell’account',
     },
   },
   topics: {
@@ -158,6 +159,21 @@ export const userGuide = {
         '3': 'Scansiona il codice QR di invito del proprietario, oppure seleziona “Inserisci il codice manualmente” e digita il codice di invito di 6 caratteri.',
         '4': 'Attendi l’approvazione del proprietario. Tieni l’app aperta finché non vedi che ti sei unito alla famiglia.',
         '5': 'Verifica che i dispositivi dei bambini compaiano in Famiglia. Apri un dispositivo per visualizzarne lo stato e i controlli.',
+      },
+    },
+    manageDevices: {
+      title: 'Rinomina o rimuovi un dispositivo',
+      summary:
+        'Dai a un dispositivo un nome che tutti riconoscono, o scollega quello che tuo figlio non usa più.',
+      keywords:
+        'disassociare, scollegare, eliminare dispositivo, vecchio telefono, nuovo telefono, venduto, cambiare nome, ripristino',
+      tip: 'Solo il proprietario della famiglia può rinominare o rimuovere i dispositivi. La rimozione non si può annullare: le richieste di tempo e la cronologia delle attività del dispositivo vengono eliminate. Per proteggerlo di nuovo, collegalo come nuovo dispositivo.',
+      steps: {
+        '1': 'Per rinominare un dispositivo, aprilo da “Famiglia” o dal profilo di tuo figlio e seleziona “Modifica” accanto al nome.',
+        '2': 'Inserisci un nome che tutti i genitori riconoscano a colpo d’occhio, poi salva.',
+        '3': 'Per rimuovere un dispositivo, aprilo, seleziona “Rimuovi dispositivo” in fondo alla schermata e conferma. Nella sezione “Dispositivi dei bambini” della scheda della famiglia puoi anche scorrere un dispositivo verso sinistra.',
+        '4': 'Il dispositivo esce dalla tua famiglia, e KidGate su quel dispositivo indica che è stato rimosso.',
+        '5': 'Per riusare il dispositivo, per esempio dopo un ripristino o se passa a un altro figlio, collegalo come nuovo con “Aggiungi dispositivo del bambino” in “Famiglia”.',
       },
     },
     androidPermissions: {
@@ -280,6 +296,7 @@ export const userGuide = {
         '3': 'Attendi qualche secondo. Lo stato dovrebbe cambiare in “Bloccato”. Se nulla cambia, apri KidGate sul dispositivo del bambino e ricontrolla i permessi.',
         '4': 'Per ripristinare l’accesso, seleziona “Sblocca tutto” (oppure Sblocca nella schermata del dispositivo) e conferma.',
         '5': 'Facoltativo: puoi anche bloccare o sbloccare rapidamente da Famiglia se queste scorciatoie compaiono sulla scheda del dispositivo.',
+        '6': 'Un telefono o un computer bloccato permette comunque a tuo figlio di inviare un SOS. Su Android, l’SOS apre anche chiamate, mappe e messaggi per 5 minuti mentre tutto il resto resta bloccato, e compare in “Attività”.',
       },
     },
     pauseBrowsing: {
@@ -321,6 +338,7 @@ export const userGuide = {
         '3': 'Sul dispositivo del bambino, il compito compare in “Guadagna tempo extra”. Quando l’ha finito, tuo figlio seleziona Fatto.',
         '4': 'Ricevi una notifica. In “Da controllare” (nella schermata Compiti premio, in Famiglia o nel profilo di tuo figlio), seleziona Approva per aggiungere i minuti a oggi, oppure “Fai rifare” perché tuo figlio possa riprovare.',
         '5': 'Tocca un compito per modificarlo o eliminarlo. Il piano gratuito consente fino a 10 compiti attivi contemporaneamente; Premium ne consente 20.',
+        '6': 'Ogni compito vale da 1 a 3 stelle in base alla difficoltà, e le stelle contano quando approvi il compito. Per far confrontare ai tuoi figli le stelle della settimana, il proprietario della famiglia apre “Famiglia”, poi la scheda della famiglia, e attiva la “Tabella delle stelle” nella sezione “Figli”. Ogni figlio la vede poi in KidGate sul suo dispositivo. Riparte ogni settimana.',
       },
     },
     locationSharing: {
@@ -354,14 +372,17 @@ export const userGuide = {
     sos: {
       title: 'Avvisi di emergenza SOS',
       summary:
-        'Scopri come un bambino invia un SOS e come i genitori possono controllarlo.',
-      tip: 'Provalo una volta a casa così genitore e bambino conoscono la procedura prima di un’emergenza reale.',
+        'Come un bambino invia un SOS, cosa contiene e come rispondono i genitori.',
+      keywords:
+        'pulsante di emergenza, panico, aiuto, pericolo, insicuro, audio, voce, microfono, sirena, email, nonni, vicino',
+      tip: 'L’SOS funziona su telefoni e computer, non su una TV né nell’estensione Chrome. Il suono viene registrato solo sui telefoni. Provalo una volta a casa e concorda con tuo figlio quando usare l’SOS e quando basta un Check-in.',
       steps: {
-        '1': 'Sul dispositivo del bambino, apri la scheda o la schermata SOS in KidGate.',
-        '2': 'Segui i passaggi a schermo per inviare un SOS (posizione e foto dipendono dai permessi concessi).',
-        '3': 'I genitori ricevono una notifica push quando viene inviato un SOS.',
-        '4': 'Sul dispositivo del genitore, apri il profilo di tuo figlio (o il dispositivo, se non è assegnato a nessun bambino), poi la sezione Avvisi, e seleziona SOS per aprire gli Avvisi SOS e rivedere l’evento.',
-        '5': 'Concorda con tuo figlio quando usare l’SOS e quando è sufficiente un normale Check-in.',
+        '1': 'Sul dispositivo del bambino, apri SOS in KidGate. Su un telefono è il pulsante al centro della barra in basso.',
+        '2': 'Tieni premuto il pulsante SOS per 5 secondi. Se viene rilasciato prima, l’invio si annulla.',
+        '3': 'L’avviso parte subito, con la posizione se disponibile. Su un telefono si apre poi la fotocamera per una foto, che si può saltare. Se il microfono è stato consentito durante la configurazione, vengono registrati fino a 15 secondi di suono dal momento in cui l’SOS viene inviato.',
+        '4': 'I genitori ricevono una notifica urgente, anche durante le “Ore silenziose”. Se KidGate è aperto, l’avviso compare sullo schermo, con la “Sirena SOS” a meno che non sia disattivata in Impostazioni.',
+        '5': 'Apri il profilo di tuo figlio (o il dispositivo, se non è assegnato a nessun bambino), poi la sezione “Avvisi”, e seleziona “SOS”. Ogni avviso mostra la posizione (“Apri in Mappe”), la foto e la “Registrazione audio”, che può arrivare poco dopo l’avviso. Seleziona “Ci penso io” per segnarlo come gestito.',
+        '6': 'Per avvisare via email anche persone fuori dalla famiglia, apri “Famiglia”, poi la scheda della famiglia, e scegli “Contatti fidati”. Seleziona “Aggiungi contatto” per aggiungerne fino a 5. A ogni SOS ricevono via email il nome del dispositivo e l’ultima posizione nota, mai la foto né il suono. Avvisali prima.',
       },
     },
     webFilter: {
@@ -403,6 +424,21 @@ export const userGuide = {
         '3': 'Tocca uno dei tuoi figli per un unico report su tutti i suoi dispositivi, per “Oggi”, “7 giorni” o “30 giorni”. Il tempo su due schermi contemporaneamente conta una volta sola, quindi il totale può essere inferiore alla somma dei singoli dispositivi.',
         '4': 'Ogni lunedì mattina arriva un nuovo Report settimanale, con una notifica. Ti suggerisce una cosa che potresti cambiare e apre l’impostazione giusta.',
         '5': 'Quando apri KidGate, a ogni dispositivo vengono chiesti dati aggiornati, quindi possono servire alcuni minuti. Un dispositivo senza connessione a Internet invia i dati quando torna online.',
+      },
+    },
+    widget: {
+      title: 'Aggiungi un widget del tempo di utilizzo',
+      summary:
+        'Vedi il tempo di utilizzo di ogni figlio nella schermata Home e fai vedere a tuo figlio, sulla sua, quanto tempo gli resta.',
+      keywords:
+        'schermata home, launcher, a colpo d’occhio, tempo rimasto, minuti rimasti, iphone, android',
+      tip: 'I widget funzionano su iPhone, iPad e Android, non su computer o TV. Un widget mostra gli ultimi dati ricevuti da KidGate e l’ora di quell’aggiornamento.',
+      steps: {
+        '1': 'Apri “Impostazioni” e seleziona “Aggiungi il widget alla schermata Home”. Sulla maggior parte dei telefoni Android basta confermare dove metterlo. Altrimenti KidGate mostra i passaggi per aggiungerlo manualmente.',
+        '2': 'Per aggiungerlo manualmente, tieni premuto uno spazio vuoto nella schermata Home. Su iPhone tocca “Modifica” (o + nelle versioni precedenti), poi “Aggiungi widget”. Su Android tocca “Widget”. Trova KidGate e scegli il widget “Tempo di utilizzo”.',
+        '3': 'Ogni riga mostra il tempo di utilizzo di oggi di un figlio rispetto al suo Limite giornaliero, e chi l’ha raggiunto compare per primo. Mostra fino a 2 figli su iPhone e fino a 3 su Android.',
+        '4': 'Si aggiorna quando apri KidGate. Con l’app chiusa, si aggiorna al massimo ogni 20 minuti, e solo mentre un figlio usa un dispositivo.',
+        '5': 'Sul telefono di tuo figlio, aggiungi allo stesso modo il widget “Tempo rimasto”. Mostra quanto tempo resta oggi, o perché il dispositivo è bloccato, e si aggiorna mentre KidGate è aperto su quel telefono.',
       },
     },
     webHistory: {
@@ -501,6 +537,20 @@ export const userGuide = {
         '5': 'In Impostazioni, “Avvisi in-app” e “Sirena SOS” sono voci separate: controllano il banner nell’app e il suono SOS ad alto volume su questo telefono.',
       },
     },
+    appLanguage: {
+      title: 'Cambia la lingua dell’app',
+      summary:
+        'Scegli quale lingua usa KidGate su ogni telefono e nella dashboard web.',
+      keywords:
+        'italiano, inglese, traduzione, lingua sbagliata, lingua di visualizzazione',
+      tip: 'Ogni telefono mantiene la propria lingua. Le sue notifiche e il suo widget la seguono.',
+      steps: {
+        '1': 'Sul telefono di un genitore o di un figlio, apri “Impostazioni” e seleziona “Lingua”.',
+        '2': 'Scegli una lingua per fissarla, o “Lingua del dispositivo” per seguire l’impostazione del telefono. Se KidGate non offre la lingua del telefono, usa l’inglese.',
+        '3': 'L’app cambia subito. Anche le notifiche a questo telefono e il suo widget usano la nuova lingua.',
+        '4': 'Nella dashboard web, cambia la lingua nella sezione dell’account del menu laterale. Vale solo per quel browser.',
+      },
+    },
     webSignIn: {
       title: 'Usa KidGate su un computer',
       summary: 'Accedi alla dashboard web e gestisci la tua famiglia da un browser.',
@@ -524,6 +574,21 @@ export const userGuide = {
         '3': 'Se lo dimentichi, seleziona “Hai dimenticato il PIN?” nello stesso punto per impostarne uno nuovo come proprietario della famiglia.',
         '4': 'Se un dispositivo del bambino si blocca dopo 5 tentativi di PIN errati, la sezione Sicurezza mostra una riga di sblocco per quel dispositivo. Selezionala per azzerare i tentativi.',
         '5': 'Per proteggere l’app genitore su questo telefono, attiva il Blocco app e crea un PIN a 6 cifre dedicato. Puoi anche consentire lo sblocco con Face ID, Touch ID o impronta digitale.',
+      },
+    },
+    reportProblem: {
+      title: 'Segnala un problema',
+      summary:
+        'Racconta al team di KidGate cosa non ha funzionato, allega screenshot e leggi la risposta nell’app.',
+      keywords:
+        'bug, errore, contatto, feedback, non funziona, guasto, assistenza clienti, aiuto, email',
+      tip: 'Ricevi una notifica quando KidGate risponde. Se te la sei persa, la riga “Assistenza” in Impostazioni mostra “Nuova risposta”.',
+      steps: {
+        '1': 'Apri “Impostazioni” e seleziona “Assistenza”. Nella dashboard web, “Assistenza” è nel menu.',
+        '2': 'Seleziona “Segnala un problema”, o “Nuova segnalazione” se ne hai già inviata una.',
+        '3': 'Descrivi cosa è successo e su quale dispositivo, allega fino a 5 screenshot se servono, poi seleziona “Invia segnalazione”.',
+        '4': 'Ogni segnalazione mostra il suo stato: “Ricevuta”, “In revisione” o “Risolta”. La risposta di KidGate compare sotto la segnalazione.',
+        '5': 'Puoi rispondere sotto la segnalazione finché non viene chiusa. Per un problema diverso, invia una nuova segnalazione.',
       },
     },
     deleteAccount: {

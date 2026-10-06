@@ -131,22 +131,22 @@ export default {
       'Choisissez les applis que votre enfant ne peut pas ouvrir — un choix protégé par votre code PIN parent — et activez le blocage à distance.',
     feature3Title: 'Limites d’apps',
     feature3Text:
-      'Plafonnez chaque appli séparément, en plus de la limite quotidienne : « une demi-heure de TikTok » sans l’interdire pour autant. Sur Android, Android TV et ordinateur.',
+      'Sur Android, Android TV et ordinateur, plafonnez chaque appli séparément : « une demi-heure de TikTok » sans l’interdire pour autant.',
     feature4Title: 'Filtre web et historique',
     feature4Text:
-      'Bloquez les sites pour adultes, les jeux d’argent, l’automutilation et d’autres catégories sur tous les appareils. Avec Premium, choisissez vous-même les catégories et voyez quels sites ont été consultés et lesquels ont été bloqués.',
+      'Bloquez les sites pour adultes, les jeux d’argent, l’automutilation et plus encore sur tous les appareils ; avec Premium, voyez aussi quels sites ont été consultés.',
     feature5Title: 'Localisation et lieux',
     feature5Text:
-      'Voyez où se trouve votre enfant, jusqu’à 10 fois par jour. Avec Premium, suivez-le en direct, revoyez l’historique de ses déplacements et soyez prévenu quand il arrive dans un lieu enregistré ou le quitte.',
+      'Voyez où se trouve votre enfant jusqu’à 10 fois par jour ; Premium ajoute la position en direct et des alertes pour les lieux enregistrés.',
     feature6Title: 'Check-in et SOS',
     feature6Text:
-      'Demandez à votre enfant de confirmer par un Check-in qu’il va bien. Avec Premium, une photo s’y ajoute. En cas d’urgence, recevez un SOS immédiat depuis son téléphone, avec sa position et une photo quand elle peut être prise.',
+      'Demandez à votre enfant de confirmer qu’il va bien ; en cas d’urgence, son téléphone vous envoie un SOS immédiat avec sa position.',
     feature7Title: 'Alertes de protection et d’applis',
     feature7Text:
-      'Sachez à l’instant où une autorisation importante est désactivée sur le téléphone de votre enfant. Activez l’approbation des nouvelles applications, et une nouvelle appli sur Android, Android TV ou un ordinateur attend votre accord avant de s’ouvrir.',
+      'Sachez à l’instant où une autorisation importante est désactivée sur le téléphone de votre enfant, et approuvez les nouvelles applis avant qu’elles ne s’ouvrent sur Android, Android TV ou un ordinateur.',
     feature8Title: 'Tâches à récompense et temps en plus',
     feature8Text:
-      'Les enfants gagnent des minutes bonus et des étoiles en accomplissant des tâches, ou demandent du temps en plus. Les deux arrivent sur votre téléphone pour validation. C’est vous qui décidez si le Tableau des étoiles leur montre combien d’étoiles chacun a gagnées cette semaine ; il repart chaque lundi.',
+      'Les enfants gagnent des minutes bonus et des étoiles en accomplissant des tâches, ou demandent du temps en plus — vous validez les deux depuis votre téléphone.',
 
     feature9Title: 'Verrouillage de l’appareil',
     feature9Text:
@@ -156,10 +156,10 @@ export default {
       'Chaque lundi : temps d’écran, moyenne quotidienne, ce qui a été bloqué, et la comparaison avec la semaine précédente.',
     feature11Title: 'Historique YouTube et vidéos',
     feature11Text:
-      'Les vidéos YouTube et les Shorts regardés par votre enfant, dans l’application YouTube sur les téléphones Android et Android TV, et sur YouTube dans Chrome. Pas sur iPhone, et une TV ne répertorie pas les Shorts.',
+      'Les vidéos YouTube et les Shorts regardés par votre enfant sur Android et dans Chrome, ainsi que les vidéos sur Android TV. Pas sur iPhone.',
     feature12Title: 'Fil d’activité',
     feature12Text:
-      'Tout ce qui s’est passé, dans l’ordre — un appareil déverrouillé, une demande de site traitée, une tâche terminée, une alerte envoyée. La formule gratuite affiche la journée en cours ; Premium conserve 30 jours.',
+      'Tout ce qui s’est passé, dans l’ordre — un appareil déverrouillé, une demande traitée, une alerte envoyée ; la journée en cours avec la formule gratuite, 30 jours avec Premium.',
     featurePremium: 'Premium',
     platformsTitle: 'Un seul KidGate, où que soit l’écran',
     platformsSub:
@@ -169,9 +169,6 @@ export default {
     showcaseTitle: 'Toute la famille sur un seul écran',
     showcaseSub:
       'Temps d’écran, tentatives bloquées, localisation et tout ce qui demande votre attention — sur votre téléphone ou dans n’importe quel navigateur.',
-    showcaseTile1: 'Temps d’écran aujourd’hui',
-    showcaseTile2: 'Tentatives bloquées',
-    showcaseTile3: 'Attention requise',
     showcaseCaption1: 'Consultez les rapports depuis n’importe quel navigateur',
     showcaseCaption2: 'Les changements sont validés depuis votre téléphone',
 
@@ -888,6 +885,7 @@ export default {
 
   download: {
     eyebrow: 'Télécharger',
+    qrScan: 'Scannez avec l’appareil photo de votre téléphone pour obtenir l’appli',
     macosTitle: 'macOS',
     macosRequires: 'macOS 12 ou version ultérieure, sur un Mac à puce Apple silicon.',
     windowsTitle: 'Windows',

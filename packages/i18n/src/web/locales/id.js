@@ -131,22 +131,22 @@ export default {
       'Pilih aplikasi apa saja yang tidak boleh dibuka anak Anda, dilindungi PIN Orang Tua, dan nyalakan pemblokiran dari jauh.',
     feature3Title: 'Batas Aplikasi',
     feature3Text:
-      'Batasi tiap aplikasi sendiri-sendiri, di atas batas harian — “setengah jam TikTok” tanpa harus melarangnya sama sekali. Di Android, Android TV, dan komputer.',
+      'Di Android, Android TV, dan komputer, batasi tiap aplikasi sendiri-sendiri — “setengah jam TikTok” tanpa harus melarangnya sama sekali.',
     feature4Title: 'Filter web & riwayat',
     feature4Text:
-      'Blokir situs dewasa, judi, melukai diri, dan kategori lain di semua perangkat. Dengan Premium, pilih sendiri kategorinya dan lihat situs mana yang dicoba dibuka dan mana yang dihentikan.',
+      'Blokir situs dewasa, judi, melukai diri, dan lainnya di semua perangkat; dengan Premium, lihat juga situs mana yang dicoba dibuka.',
     feature5Title: 'Lokasi & tempat',
     feature5Text:
-      'Lihat di mana anak Anda berada saat Anda memeriksa, hingga 10 kali sehari. Dengan Premium, pantau posisinya secara langsung, telusuri ke mana saja ia pergi, dan dapatkan pemberitahuan saat ia tiba di atau meninggalkan tempat tersimpan.',
+      'Lihat di mana anak Anda berada hingga 10 kali sehari; Premium menambahkan lokasi secara langsung dan pemberitahuan untuk tempat tersimpan.',
     feature6Title: 'Check-In & SOS',
     feature6Text:
-      'Minta anak Anda memastikan dirinya aman, dengan foto di Premium. Saat darurat, ponselnya langsung mengirim SOS kepada Anda, lengkap dengan lokasi dan foto bila foto bisa diambil.',
+      'Minta anak Anda memastikan dirinya aman; saat darurat, ponselnya langsung mengirim SOS kepada Anda, lengkap dengan lokasi.',
     feature7Title: 'Peringatan perlindungan & aplikasi',
     feature7Text:
-      'Ketahui saat sebuah izin penting dimatikan di ponsel anak Anda. Aktifkan persetujuan aplikasi baru, maka aplikasi baru di Android, Android TV, atau komputer menunggu persetujuan Anda sebelum bisa dibuka.',
+      'Ketahui saat sebuah izin penting dimatikan di ponsel anak Anda, dan setujui aplikasi baru sebelum bisa dibuka di Android, Android TV, atau komputer.',
     feature8Title: 'Tugas hadiah & waktu tambahan',
     feature8Text:
-      'Anak mendapat menit tambahan dan bintang dengan menyelesaikan tugas, atau meminta waktu lebih. Keduanya masuk ke ponsel Anda untuk disetujui. Anda yang menentukan apakah Papan bintang memperlihatkan kepada mereka berapa bintang yang dikumpulkan masing-masing minggu ini; papan ini dimulai lagi setiap Senin.',
+      'Anak mendapat menit tambahan dan bintang dengan menyelesaikan tugas, atau meminta waktu lebih — Anda menyetujui keduanya dari ponsel Anda.',
 
     feature9Title: 'Kunci perangkat',
     feature9Text:
@@ -156,10 +156,10 @@ export default {
       'Setiap Senin: waktu layar, rata-rata harian, apa saja yang diblokir, dan perbandingan dengan minggu sebelumnya.',
     feature11Title: 'Riwayat YouTube & video',
     feature11Text:
-      'Video dan Shorts YouTube yang ditonton anak Anda, di aplikasi YouTube pada ponsel Android dan Android TV, serta YouTube di Chrome. Tidak tersedia di iPhone, dan TV tidak mencantumkan Shorts.',
+      'Video dan Shorts YouTube yang ditonton anak Anda di Android dan di Chrome, serta video di Android TV. Tidak tersedia di iPhone.',
     feature12Title: 'Feed Aktivitas',
     feature12Text:
-      'Semua yang terjadi, berurutan — perangkat dibuka, permintaan situs dijawab, tugas selesai, peringatan dikirim. Paket gratis menampilkan hari ini; Premium menyimpan 30 hari.',
+      'Semua yang terjadi, berurutan — perangkat dibuka, permintaan dijawab, peringatan dikirim; paket gratis menampilkan hari ini, Premium menyimpan 30 hari.',
     featurePremium: 'Premium',
     platformsTitle: 'Satu KidGate, di mana pun layarnya',
     platformsSub:
@@ -169,9 +169,6 @@ export default {
     showcaseTitle: 'Seluruh keluarga dalam satu layar',
     showcaseSub:
       'Waktu layar, upaya yang diblokir, lokasi, dan apa pun yang butuh perhatian Anda — di ponsel Anda atau di browser mana pun.',
-    showcaseTile1: 'Waktu layar hari ini',
-    showcaseTile2: 'Upaya diblokir',
-    showcaseTile3: 'Butuh perhatian',
     showcaseCaption1: 'Baca laporan dari browser mana pun',
     showcaseCaption2: 'Perubahan disetujui dari ponsel Anda',
 
@@ -869,6 +866,7 @@ export default {
 
   download: {
     eyebrow: 'Unduh',
+    qrScan: 'Pindai dengan kamera ponsel untuk mengunduh aplikasi',
     macosTitle: 'macOS',
     macosRequires: 'macOS 12 atau lebih baru, di Mac dengan Apple silicon.',
     windowsTitle: 'Windows',

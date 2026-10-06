@@ -131,22 +131,22 @@ export default {
       'Scegli quali app tuo figlio non può aprire — una scelta protetta dal tuo PIN genitore — e attiva il blocco da remoto.',
     feature3Title: 'Limiti app',
     feature3Text:
-      'Limita ogni app per conto suo, oltre al limite giornaliero: «mezz’ora di TikTok» senza doverlo vietare del tutto. Su Android, Android TV e computer.',
+      'Su Android, Android TV e computer, limita ogni app per conto suo: «mezz’ora di TikTok» senza doverlo vietare del tutto.',
     feature4Title: 'Filtro web e cronologia',
     feature4Text:
-      'Blocca i siti per adulti, il gioco d’azzardo, l’autolesionismo e altre categorie su ogni dispositivo. Con Premium, scegli tu le categorie e guarda quali siti sono stati visitati e quali sono stati bloccati.',
+      'Blocca i siti per adulti, il gioco d’azzardo, l’autolesionismo e altro ancora su ogni dispositivo; con Premium vedi anche quali siti sono stati visitati.',
     feature5Title: 'Posizione e luoghi',
     feature5Text:
-      'Vedi dov’è tuo figlio quando controlli, fino a 10 volte al giorno. Con Premium lo segui in tempo reale, rivedi i suoi spostamenti e ricevi un avviso quando arriva o lascia un luogo salvato.',
+      'Vedi dov’è tuo figlio fino a 10 volte al giorno; Premium aggiunge la posizione in tempo reale e gli avvisi per i luoghi salvati.',
     feature6Title: 'Check-in e SOS',
     feature6Text:
-      'Chiedi a tuo figlio di confermare che sta bene: con Premium arriva anche una foto. In caso di emergenza, il suo telefono ti invia subito un SOS con la posizione e una foto quando è possibile scattarla.',
+      'Chiedi a tuo figlio di confermare che sta bene; in caso di emergenza, il suo telefono ti invia subito un SOS con la posizione.',
     feature7Title: 'Avvisi di protezione e sulle app',
     feature7Text:
-      'Scopri nell’istante in cui un permesso importante viene disattivato sul telefono di tuo figlio. Attiva l’approvazione delle nuove app e una nuova app su Android, Android TV o un computer aspetterà il tuo via libera prima di aprirsi.',
+      'Scopri nell’istante in cui un permesso importante viene disattivato sul telefono di tuo figlio, e approva le nuove app prima che si aprano su Android, Android TV o un computer.',
     feature8Title: 'Compiti premio e tempo extra',
     feature8Text:
-      'I ragazzi guadagnano minuti extra e stelle completando compiti, o chiedono più tempo. Entrambe le cose arrivano sul tuo telefono da approvare. Sei tu a decidere se la Tabella delle stelle mostra loro quante stelle ha guadagnato ciascuno questa settimana; riparte ogni lunedì.',
+      'I ragazzi guadagnano minuti extra e stelle completando compiti, o chiedono più tempo: approvi entrambe le cose dal tuo telefono.',
 
     feature9Title: 'Blocco dispositivo',
     feature9Text:
@@ -156,10 +156,10 @@ export default {
       'Ogni lunedì: tempo di utilizzo, media giornaliera, cosa è stato bloccato e il confronto con la settimana prima.',
     feature11Title: 'Cronologia YouTube e video',
     feature11Text:
-      'I video e gli Shorts di YouTube guardati da tuo figlio, nell’app YouTube su telefoni Android e Android TV e su YouTube in Chrome. Non su iPhone, e su una TV gli Shorts non compaiono.',
+      'I video e gli Shorts di YouTube guardati da tuo figlio su Android e in Chrome, più i video su Android TV. Non su iPhone.',
     feature12Title: 'Cronologia attività',
     feature12Text:
-      'Tutto quello che è successo, in ordine: un dispositivo sbloccato, una richiesta per un sito con la sua risposta, un compito completato, un avviso inviato. Il piano gratuito mostra la giornata di oggi; Premium conserva 30 giorni.',
+      'Tutto quello che è successo, in ordine: un dispositivo sbloccato, una richiesta con la sua risposta, un avviso inviato; la giornata di oggi con il piano gratuito, 30 giorni con Premium.',
     featurePremium: 'Premium',
     platformsTitle: 'Un solo KidGate, ovunque ci sia uno schermo',
     platformsSub:
@@ -169,9 +169,6 @@ export default {
     showcaseTitle: 'Tutta la famiglia su un solo schermo',
     showcaseSub:
       'Tempo di utilizzo, tentativi bloccati, posizione e tutto ciò che richiede la tua attenzione — sul telefono o da qualunque browser.',
-    showcaseTile1: 'Tempo di utilizzo oggi',
-    showcaseTile2: 'Tentativi bloccati',
-    showcaseTile3: 'Richiede attenzione',
     showcaseCaption1: 'Leggi i report da qualunque browser',
     showcaseCaption2: 'Le modifiche si approvano dal telefono',
 
@@ -886,6 +883,7 @@ export default {
 
   download: {
     eyebrow: 'Scarica',
+    qrScan: 'Inquadra il codice con la fotocamera del telefono per scaricare l’app',
     macosTitle: 'macOS',
     macosRequires: 'macOS 12 o successivo, su un Mac con Apple silicon.',
     windowsTitle: 'Windows',

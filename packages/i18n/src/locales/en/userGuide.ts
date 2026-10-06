@@ -38,7 +38,7 @@ export const userGuide = {
     account: {
       title: 'Account and plan',
       description:
-        'Premium, alerts, the web dashboard, PINs, and deleting your account',
+        'Premium, alerts, language, the web dashboard, PINs, support, and deleting your account',
     },
   },
   topics: {
@@ -157,6 +157,21 @@ export const userGuide = {
         '5': 'Confirm that the child devices appear under Family. Open one device to view its status and controls.',
       },
     },
+    manageDevices: {
+      title: 'Rename or remove a device',
+      summary:
+        'Give a device a name everyone recognizes, or disconnect one your child no longer uses.',
+      keywords:
+        'unpair, disconnect, delete device, old phone, new phone, sold, change name, reset',
+      tip: 'Only the family owner can rename or remove devices. Removing a device cannot be undone: its time requests and activity history are deleted. To protect it again, pair it as a new device.',
+      steps: {
+        '1': 'To rename a device, open it from [[Family]] or from your child, then select [[Edit]] next to its name.',
+        '2': 'Enter a name every parent will recognize at a glance, then save.',
+        '3': 'To remove a device, open it, select [[Remove device]] at the bottom of its screen, then confirm. On the family card’s [[Child devices]] tab, you can also swipe left on a device.',
+        '4': 'The device leaves your family, and KidGate on that device shows that it was removed.',
+        '5': 'To use the device again, for example after a reset or when it passes to another child, pair it as a new device with [[Add child device]] in [[Family]].',
+      },
+    },
     androidPermissions: {
       title: 'Android permissions (child device)',
       summary:
@@ -273,6 +288,7 @@ export const userGuide = {
         '3': 'Wait a few seconds. The status should change to Locked. If nothing changes, open KidGate on the child device and recheck permissions.',
         '4': 'To restore access, select [[Unlock all]] (or [[Unlock]] on the device screen) and confirm.',
         '5': 'Optional: you can also lock or unlock quickly from Family if those shortcuts appear on the device card.',
+        '6': 'A locked phone or computer still lets your child send an SOS. On Android, SOS also opens calls, maps and messages for 5 minutes while everything else stays locked, and it appears in [[Activities]].',
       },
     },
     pauseBrowsing: {
@@ -312,6 +328,7 @@ export const userGuide = {
         '3': 'On the child device, the task appears under [[Earn extra time]]. When it is done, your child selects [[I did it]].',
         '4': 'You get a notification. In [[Ready to review]] (on the Reward tasks screen, on Family, or on your child), select [[Approve]] to add the minutes to today, or [[Send back]] so your child can try again.',
         '5': 'Tap a task to edit or delete it. The free plan runs up to 10 active tasks at once; Premium allows 20.',
+        '6': 'Each task is worth 1 to 3 stars, set by its difficulty, and stars count once you approve the task. To let your children compare this week’s stars, the family owner opens [[Family]], then the family card, and turns on [[Star chart]] in the [[Children]] tab. Each child then sees it in KidGate on their device. It starts again every week.',
       },
     },
     locationSharing: {
@@ -343,14 +360,18 @@ export const userGuide = {
     },
     sos: {
       title: 'SOS emergency alerts',
-      summary: 'Understand how a child sends an SOS and how parents review it.',
-      tip: 'Test this once at home so both parent and child know the process before a real emergency.',
+      summary:
+        'How a child sends an SOS, what it carries, and how parents respond to it.',
+      keywords:
+        'panic button, help, danger, unsafe, audio, voice, microphone, siren, email, grandparent, neighbour, neighbor',
+      tip: 'SOS works on phones and computers, not on a TV or in the Chrome extension. Sound is recorded on phones only. Test it once at home, and agree with your child on when to use SOS and when a Check-In is enough.',
       steps: {
-        '1': 'On the child device, open the SOS tab or screen in KidGate.',
-        '2': 'Follow the on-screen steps to send an SOS (location and photo depend on the permissions granted).',
-        '3': 'Parents receive a push notification when an SOS is sent.',
-        '4': 'On the parent device, open your child (or the device, if no child is assigned to it), then the [[Alerts]] section, and choose [[SOS]] to open SOS Alerts and review the event.',
-        '5': 'Agree with your child on when to use SOS and when a normal Check-In is enough.',
+        '1': 'On the child device, open SOS in KidGate. On a phone, it is the button in the middle of the bottom bar.',
+        '2': 'Hold the SOS button for 5 seconds. Letting go earlier cancels it.',
+        '3': 'The alert goes out right away, with the location if it is available. On a phone, the camera then opens for a photo, which can be skipped. If the microphone was allowed during setup, up to 15 seconds of sound is recorded from the moment the SOS is sent.',
+        '4': 'Parents receive an urgent notification, even during quiet hours. If KidGate is open, the alert appears on screen, with the SOS siren unless it is turned off in Settings.',
+        '5': 'Open your child (or the device, if no child is assigned to it), then the [[Alerts]] section, and choose [[SOS]]. Each alert shows the location ([[Open in Maps]]), the photo and the [[Sound recording]], which can arrive a little after the alert. Select [[I’m on it]] to mark it as responded.',
+        '6': 'To also email people outside the family, open [[Family]], then your family card, and choose [[Trusted contacts]]. Select [[Add contact]] to add up to 5. Each SOS emails them the device name and last known location, never the photo or sound. Tell them first.',
       },
     },
     webFilter: {
@@ -392,6 +413,21 @@ export const userGuide = {
         '3': 'Tap a child for one report across all their devices, for [[Today]], [[7 days]] or [[30 days]]. Time on two screens at once counts once, so it can be lower than the devices added up.',
         '4': 'A new [[Weekly report]] arrives every Monday morning, with a notification. It suggests one thing you could change and opens the right setting.',
         '5': 'Opening KidGate asks each device for fresh numbers, so they can take a few minutes to update. A device with no internet connection reports when it is back online.',
+      },
+    },
+    widget: {
+      title: 'Add a screen time widget',
+      summary:
+        'See each child’s screen time on your home screen, and let your child see how much time is left on theirs.',
+      keywords:
+        'home screen, launcher, at a glance, minutes left, remaining, iphone, android',
+      tip: 'Widgets work on iPhone, iPad and Android, not on a computer or TV. A widget shows the last numbers KidGate received and the time of that update.',
+      steps: {
+        '1': 'Open [[Settings]] and select [[Add widget to Home Screen]]. On most Android phones, you only confirm where it goes. Otherwise, KidGate shows the steps to add it yourself.',
+        '2': 'To add it yourself, touch and hold an empty spot on the home screen. On iPhone, tap Edit (or + on older versions), then Add Widget. On Android, tap Widgets. Find KidGate and choose the Screen time widget.',
+        '3': 'Each child’s row shows today’s screen time against their Daily Limit, and children who reached it come first. It fits up to 2 children on iPhone and up to 3 on Android.',
+        '4': 'It updates when you open KidGate. While the app is closed, it updates at most every 20 minutes, and only while a child is using a device.',
+        '5': 'On your child’s phone, add the Screen time left widget the same way. It shows how much time is left today, or why the device is locked, and updates while KidGate is open on that phone.',
       },
     },
     webHistory: {
@@ -489,6 +525,19 @@ export const userGuide = {
         '5': 'In Settings, [[In-app alerts]] and [[SOS siren]] are separate: they control the banner inside the app and the loud SOS sound on this phone.',
       },
     },
+    appLanguage: {
+      title: 'Change the app language',
+      summary:
+        'Choose which language KidGate uses on each phone and on the web dashboard.',
+      keywords: 'english, translation, wrong language, display language, locale',
+      tip: 'Each phone keeps its own language. Its notifications and widget follow it.',
+      steps: {
+        '1': 'On a parent or child phone, open [[Settings]] and select [[Language]].',
+        '2': 'Choose a language to keep it fixed, or [[Device language]] to follow the phone’s own setting. If KidGate does not offer the phone’s language, it uses English.',
+        '3': 'The app switches right away. Notifications to this phone and its widget use the new language too.',
+        '4': 'On the web dashboard, change the language in the account section of the side menu. It applies to that browser only.',
+      },
+    },
     webSignIn: {
       title: 'Use KidGate on a computer',
       summary: 'Sign in to the web dashboard and manage your family from a browser.',
@@ -512,6 +561,21 @@ export const userGuide = {
         '3': 'If you forget it, select [[Forgot PIN?]] in the same place to set a new one as the family owner.',
         '4': 'If a child device locks itself after 5 wrong PIN attempts, Security shows an unlock row for that device. Select it to reset the attempts.',
         '5': 'To protect the parent app on this phone, turn on [[App Lock]] and create its own 6-digit PIN. You can also allow unlocking with Face ID, Touch ID or a fingerprint.',
+      },
+    },
+    reportProblem: {
+      title: 'Report a problem',
+      summary:
+        'Tell the KidGate team what went wrong, attach screenshots, and read the reply in the app.',
+      keywords:
+        'bug, contact us, feedback, not working, broken, customer service, help desk, email',
+      tip: 'You get a notification when KidGate replies. If you missed it, the Support row in Settings shows New reply.',
+      steps: {
+        '1': 'Open [[Settings]] and select [[Support]]. On the web dashboard, Support is in the menu.',
+        '2': 'Select [[Report a problem]], or [[New report]] if you have sent one before.',
+        '3': 'Describe what happened and on which device, attach up to 5 screenshots if they help, then select [[Send report]].',
+        '4': 'Each report shows its status: [[Received]], [[In review]] or [[Resolved]]. The reply from KidGate appears under the report.',
+        '5': 'You can reply under the report until it is closed. For a different problem, send a new report.',
       },
     },
     deleteAccount: {

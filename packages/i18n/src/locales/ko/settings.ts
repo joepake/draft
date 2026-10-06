@@ -56,7 +56,7 @@ export const settings = {
   addWidgetTitle: '홈 화면에 위젯 추가',
   addWidgetSubtitle: '자녀별 사용 시간을 한눈에',
   addWidgetStepsIos:
-    '1. 홈 화면의 빈 곳을 길게 누르세요\n2. 상단의 + 버튼을 누르세요\n3. KidGate를 검색하세요\n4. 크기를 고르고 위젯 추가를 누르세요',
+    '1. 홈 화면의 빈 곳을 길게 누르세요\n2. 상단의 편집을 누른 다음 위젯 추가를 누르세요(이전 iOS에서는 + 버튼)\n3. KidGate를 검색하세요\n4. 크기를 고르고 위젯 추가를 누르세요',
   addWidgetStepsAndroid:
     '1. 홈 화면의 빈 곳을 길게 누르세요\n2. 위젯을 누르세요\n3. KidGate를 찾아 위젯을 홈 화면으로 끌어다 놓으세요',
   pushNotificationsTitle: '푸시 알림',

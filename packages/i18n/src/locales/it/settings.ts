@@ -55,7 +55,7 @@ export const settings = {
   addWidgetTitle: 'Aggiungi il widget alla schermata Home',
   addWidgetSubtitle: 'Il tempo di utilizzo di ogni figlio a colpo d’occhio',
   addWidgetStepsIos:
-    '1. Tieni premuto uno spazio vuoto nella schermata Home\n2. Tocca il pulsante + in alto\n3. Cerca KidGate\n4. Scegli una dimensione e tocca Aggiungi widget',
+    '1. Tieni premuto uno spazio vuoto nella schermata Home\n2. Tocca Modifica in alto, poi Aggiungi widget (nelle versioni precedenti di iOS, tocca +)\n3. Cerca KidGate\n4. Scegli una dimensione e tocca Aggiungi widget',
   addWidgetStepsAndroid:
     '1. Tieni premuto uno spazio vuoto nella schermata Home\n2. Tocca Widget\n3. Trova KidGate e trascina il widget nella schermata Home',
   pushNotificationsTitle: 'Notifiche push',

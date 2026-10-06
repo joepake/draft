@@ -37,7 +37,8 @@ export const userGuide = {
     },
     account: {
       title: 'Hesap ve plan',
-      description: 'Premium, uyarılar, web paneli, PIN’ler ve hesabınızı silme',
+      description:
+        'Premium, uyarılar, dil, web paneli, PIN’ler, destek ve hesabınızı silme',
     },
   },
   topics: {
@@ -155,6 +156,21 @@ export const userGuide = {
         '3': 'Sahibin davet QR kodunu tarayın veya Kodu elle gir’i seçip 6 haneli davet kodunu yazın.',
         '4': 'Sahibin onaylamasını bekleyin. Aileye katıldığınızı görene kadar uygulamayı açık tutun.',
         '5': 'Çocuk cihazlarının Aile bölümünde göründüğünü doğrulayın. Durumunu ve kontrollerini görmek için bir cihazı açın.',
+      },
+    },
+    manageDevices: {
+      title: 'Cihazı yeniden adlandırma veya kaldırma',
+      summary:
+        'Bir cihaza herkesin tanıyacağı bir ad verin ya da çocuğunuzun artık kullanmadığı bir cihazın bağlantısını kesin.',
+      keywords:
+        'eşleştirmeyi kaldır, bağlantıyı kes, cihazı sil, eski telefon, yeni telefon, satıldı, adını değiştir, sıfırlama',
+      tip: 'Cihazları yalnızca aile sahibi yeniden adlandırabilir veya kaldırabilir. Kaldırma geri alınamaz: cihazın süre istekleri ve etkinlik geçmişi silinir. Yeniden korumak için cihazı yeni bir cihaz olarak eşleştirin.',
+      steps: {
+        '1': 'Bir cihazı yeniden adlandırmak için onu “Aile”den veya çocuğunuzun profilinden açın, ardından adının yanındaki “Düzenle”yi seçin.',
+        '2': 'Tüm ebeveynlerin bir bakışta tanıyacağı bir ad girin ve kaydedin.',
+        '3': 'Bir cihazı kaldırmak için onu açın, ekranın altındaki “Cihazı kaldır”ı seçin ve onaylayın. Aile kartının “Çocuk cihazları” sekmesinde bir cihazı sola da kaydırabilirsiniz.',
+        '4': 'Cihaz ailenizden ayrılır ve o cihazdaki KidGate, cihazın kaldırıldığını gösterir.',
+        '5': 'Cihazı yeniden kullanmak için, örneğin sıfırlamadan sonra ya da başka bir çocuğa geçtiğinde, “Aile”de “Çocuk cihazı ekle” ile yeni cihaz olarak eşleştirin.',
       },
     },
     androidPermissions: {
@@ -275,6 +291,7 @@ export const userGuide = {
         '3': 'Birkaç saniye bekleyin. Durum Kilitli olarak değişmelidir. Hiçbir şey değişmezse çocuk cihazında KidGate’i açın ve izinleri yeniden kontrol edin.',
         '4': 'Erişimi geri yüklemek için Tümünün kilidini aç’ı (veya cihaz ekranında Kilidi aç’ı) seçin ve onaylayın.',
         '5': 'İsteğe bağlı: bu kısayollar cihaz kartında görünüyorsa Aile bölümünden de hızlıca kilitleyip kilidini açabilirsiniz.',
+        '6': 'Kilitli bir telefon veya bilgisayar, çocuğunuzun SOS göndermesine yine izin verir. Android’de SOS ayrıca aramaları, haritaları ve mesajları 5 dakika boyunca açar; geri kalan her şey kilitli kalır ve bu durum “Etkinlikler”de görünür.',
       },
     },
     pauseBrowsing: {
@@ -315,6 +332,7 @@ export const userGuide = {
         '3': 'Görev, çocuk cihazında “Ekstra süre kazan” bölümünde görünür. Görev bitince çocuğunuz Yaptım’ı seçer.',
         '4': 'Bir bildirim alırsınız. İncelemeye hazır bölümünde (Ödül görevleri ekranında, Aile’de veya çocuğunuzun profilinde) dakikaları bugüne eklemek için Onayla’yı ya da çocuğunuzun tekrar deneyebilmesi için Geri gönder’i seçin.',
         '5': 'Düzenlemek veya silmek için bir göreve dokunun. Ücretsiz planda aynı anda en fazla 10 etkin görev olabilir; Premium’da bu sayı 20’dir.',
+        '6': 'Her görev zorluğuna göre 1 ile 3 yıldız değerindedir ve yıldızlar görevi onayladığınızda sayılır. Çocuklarınızın bu haftaki yıldızları karşılaştırabilmesi için aile sahibi “Aile”yi, ardından aile kartını açar ve “Çocuklar” sekmesinde “Yıldız tablosu”nu açar. Her çocuk tabloyu kendi cihazındaki KidGate’te görür. Tablo her hafta yeniden başlar.',
       },
     },
     locationSharing: {
@@ -347,14 +365,17 @@ export const userGuide = {
     sos: {
       title: 'SOS acil durum uyarıları',
       summary:
-        'Bir çocuğun nasıl SOS gönderdiğini ve ebeveynlerin bunu nasıl incelediğini öğrenin.',
-      tip: 'Gerçek bir acil durumdan önce hem ebeveynin hem de çocuğun süreci bilmesi için bunu bir kez evde deneyin.',
+        'Bir çocuğun nasıl SOS gönderdiği, SOS’un neleri içerdiği ve ebeveynlerin nasıl yanıt verdiği.',
+      keywords:
+        'panik butonu, yardım, tehlike, güvensiz, ses, sesli kayıt, mikrofon, siren, e-posta, büyükanne, büyükbaba, komşu',
+      tip: 'SOS telefonlarda ve bilgisayarlarda çalışır; TV’de ve Chrome uzantısında çalışmaz. Ses yalnızca telefonlarda kaydedilir. Bir kez evde deneyin ve çocuğunuzla ne zaman SOS kullanılacağı, ne zaman Check-In’in yeterli olduğu konusunda anlaşın.',
       steps: {
-        '1': 'Çocuk cihazında KidGate’te SOS sekmesini veya ekranını açın.',
-        '2': 'SOS göndermek için ekrandaki adımları izleyin (konum ve fotoğraf verilen izinlere bağlıdır).',
-        '3': 'SOS gönderildiğinde ebeveynler bir push bildirimi alır.',
-        '4': 'Ebeveyn cihazında çocuğunuzun profilini (veya cihaz bir çocuğa atanmamışsa cihazı) açın, ardından Uyarılar bölümünden SOS’u seçerek SOS uyarıları’nı açın ve olayı inceleyin.',
-        '5': 'Çocuğunuzla ne zaman SOS kullanılacağı, ne zaman normal bir Check-In’in yeterli olduğu konusunda anlaşın.',
+        '1': 'Çocuk cihazında KidGate’te SOS’u açın. Telefonda bu, alt çubuğun ortasındaki düğmedir.',
+        '2': 'SOS düğmesini 5 saniye basılı tutun. Daha önce bırakılırsa gönderim iptal edilir.',
+        '3': 'Uyarı, varsa konumla birlikte hemen gönderilir. Telefonda ardından fotoğraf için kamera açılır; bu adım atlanabilir. Kurulum sırasında mikrofona izin verildiyse SOS gönderildiği andan itibaren 15 saniyeye kadar ses kaydedilir.',
+        '4': 'Ebeveynler “Sessiz saatler” sırasında bile acil bir bildirim alır. KidGate açıksa uyarı ekranda belirir; Ayarlar’da kapatılmadıysa “SOS sireni” de çalar.',
+        '5': 'Çocuğunuzun profilini (veya cihaz bir çocuğa atanmamışsa cihazı) açın, ardından “Uyarılar” bölümünden “SOS”u seçin. Her uyarıda konum (“Haritalar’da aç”), fotoğraf ve uyarıdan biraz sonra gelebilen “Ses kaydı” bulunur. Yanıt verildi olarak işaretlemek için “Ben ilgileniyorum”u seçin.',
+        '6': 'Aile dışındaki kişilere de e-posta gitmesi için “Aile”yi, ardından aile kartını açın ve “Güvenilir kişiler”i seçin. En fazla 5 kişi eklemek için “Kişi ekle”yi seçin. Her SOS’ta bu kişilere e-postayla cihaz adı ve bilinen son konum gider; fotoğraf ve ses asla gönderilmez. Önce onlara haber verin.',
       },
     },
     webFilter: {
@@ -395,6 +416,21 @@ export const userGuide = {
         '3': 'Tüm cihazlarını kapsayan tek bir rapor için bir çocuğa dokunun; süre olarak “Bugün”, “7 gün” veya “30 gün” seçilebilir. Aynı anda iki ekranda geçen süre bir kez sayılır, bu yüzden bu toplam cihazların ayrı ayrı toplamından düşük olabilir.',
         '4': 'Her pazartesi sabahı bir bildirimle birlikte yeni bir Haftalık rapor gelir. Rapor, değiştirebileceğiniz bir şeyi önerir ve ilgili ayarı açar.',
         '5': 'KidGate’i açtığınızda her cihazdan güncel veriler istenir, bu yüzden rakamların güncellenmesi birkaç dakika sürebilir. İnternet bağlantısı olmayan bir cihaz, yeniden çevrimiçi olduğunda veri gönderir.',
+      },
+    },
+    widget: {
+      title: 'Ekran süresi widget’ı ekleme',
+      summary:
+        'Her çocuğun ekran süresini ana ekranınızda görün; çocuğunuz da kendi ana ekranında ne kadar süresi kaldığını görsün.',
+      keywords:
+        'ana ekran, başlatıcı, bir bakışta, kalan süre, kalan dakika, araç takımı, iphone, android',
+      tip: 'Widget’lar iPhone, iPad ve Android’de çalışır; bilgisayarda ve TV’de çalışmaz. Widget, KidGate’in aldığı son verileri ve bu güncellemenin saatini gösterir.',
+      steps: {
+        '1': '“Ayarlar”ı açın ve “Ana ekrana widget ekle”yi seçin. Çoğu Android telefonda yalnızca nereye yerleştirileceğini onaylarsınız. Aksi halde KidGate, widget’ı kendiniz eklemeniz için adımları gösterir.',
+        '2': 'Kendiniz eklemek için ana ekranda boş bir alana basılı tutun. iPhone’da + simgesine, ardından “Araç Takımı Ekle”ye dokunun. Android’de “Widget’lar”a dokunun. KidGate’i bulun ve “Ekran süresi” widget’ını seçin.',
+        '3': 'Her satır, bir çocuğun bugünkü ekran süresini Günlük sınırıyla karşılaştırır; sınırına ulaşan çocuklar en üstte yer alır. iPhone’da en fazla 2, Android’de en fazla 3 çocuk gösterilir.',
+        '4': 'KidGate’i açtığınızda güncellenir. Uygulama kapalıyken en fazla 20 dakikada bir ve yalnızca bir çocuk cihaz kullanırken güncellenir.',
+        '5': 'Çocuğunuzun telefonuna “Kalan süre” widget’ını aynı şekilde ekleyin. Bugün ne kadar süre kaldığını ya da cihazın neden kilitli olduğunu gösterir ve KidGate o telefonda açıkken güncellenir.',
       },
     },
     webHistory: {
@@ -493,6 +529,19 @@ export const userGuide = {
         '5': 'Ayarlar’da Uygulama içi uyarılar ve SOS sireni ayrı seçeneklerdir: uygulama içinde görünen bildirimi ve bu telefondaki yüksek sesli SOS alarmını yönetirler.',
       },
     },
+    appLanguage: {
+      title: 'Uygulama dilini değiştirme',
+      summary:
+        'KidGate’in her telefonda ve web panelinde hangi dili kullanacağını seçin.',
+      keywords: 'türkçe, ingilizce, çeviri, yanlış dil, görüntüleme dili',
+      tip: 'Her telefon kendi dilini korur. O telefondaki bildirimler ve widget bu dili izler.',
+      steps: {
+        '1': 'Bir ebeveyn veya çocuk telefonunda “Ayarlar”ı açın ve “Dil”i seçin.',
+        '2': 'Sabitlemek için bir dil ya da telefonun ayarını izlemek için “Cihaz dili”ni seçin. KidGate telefonun dilini sunmuyorsa İngilizce kullanılır.',
+        '3': 'Uygulama hemen değişir. Bu telefona gelen bildirimler ve telefonun widget’ı da yeni dili kullanır.',
+        '4': 'Web panelinde dili yan menünün hesap bölümünden değiştirin. Bu yalnızca o tarayıcı için geçerlidir.',
+      },
+    },
     webSignIn: {
       title: 'KidGate’i bilgisayarda kullanma',
       summary: 'Web paneline giriş yapın ve ailenizi bir tarayıcıdan yönetin.',
@@ -516,6 +565,21 @@ export const userGuide = {
         '3': 'PIN’i unutursanız aile sahibi olarak yenisini belirlemek için aynı yerde “PIN’inizi mi unuttunuz?” seçeneğine dokunun.',
         '4': 'Bir çocuk cihazı 5 yanlış PIN denemesinden sonra kendini kilitlerse Güvenlik bölümünde o cihaz için bir kilit açma satırı görünür. Denemeleri sıfırlamak için bu satırı seçin.',
         '5': 'Bu telefondaki ebeveyn uygulamasını korumak için Uygulama Kilidi’ni açın ve ona özel 6 haneli bir PIN oluşturun. Face ID, Touch ID veya parmak iziyle kilit açmaya da izin verebilirsiniz.',
+      },
+    },
+    reportProblem: {
+      title: 'Sorun bildirme',
+      summary:
+        'KidGate ekibine neyin ters gittiğini anlatın, ekran görüntüsü ekleyin ve yanıtı uygulamada okuyun.',
+      keywords:
+        'hata, bug, iletişim, geri bildirim, çalışmıyor, bozuk, müşteri hizmetleri, yardım, e-posta',
+      tip: 'KidGate yanıt verdiğinde bildirim alırsınız. Kaçırdıysanız Ayarlar’daki “Destek” satırında “Yeni yanıt” görünür.',
+      steps: {
+        '1': '“Ayarlar”ı açın ve “Destek”i seçin. Web panelinde “Destek” menüdedir.',
+        '2': '“Sorun bildir”i ya da daha önce gönderdiyseniz “Yeni bildirim”i seçin.',
+        '3': 'Ne olduğunu ve hangi cihazda olduğunu anlatın, işe yarayacaksa en fazla 5 ekran görüntüsü ekleyin ve “Raporu gönder”i seçin.',
+        '4': 'Her bildirimin bir durumu vardır: “Alındı”, “İnceleniyor” veya “Çözüldü”. KidGate’in yanıtı bildirimin altında görünür.',
+        '5': 'Bildirim kapatılana kadar altına yanıt yazabilirsiniz. Başka bir sorun için yeni bir bildirim gönderin.',
       },
     },
     deleteAccount: {

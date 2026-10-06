@@ -40,7 +40,9 @@ export function useReveal() {
           }
         });
       },
-      { rootMargin: '0px 0px -12% 0px', threshold: 0.08 },
+      // Fade from the first visible pixel. A -12% margin held the bottom band
+      // of every screen blank while scrolling (measured 2026-10-05).
+      { threshold: 0 },
     );
 
     targets.forEach(target => io.observe(target));

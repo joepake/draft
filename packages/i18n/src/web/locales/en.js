@@ -144,22 +144,22 @@ export default {
       'Choose which apps your child can’t open, protected by your Parent PIN, and switch blocking on remotely.',
     feature3Title: 'App Limits',
     feature3Text:
-      'Cap each app on its own, on top of the daily limit — “half an hour of TikTok” without banning it outright. On Android, Android TV and computers.',
+      'On Android, Android TV and computers, cap each app on its own — “half an hour of TikTok” without banning it.',
     feature4Title: 'Web Filter & history',
     feature4Text:
-      'Block adult sites, gambling, self-harm and other categories on every device. With Premium, choose the categories yourself and see which sites were looked up and which ones were stopped.',
+      'Block adult sites, gambling, self-harm and more on every device; with Premium, also see which sites were looked up.',
     feature5Title: 'Location & places',
     feature5Text:
-      'See where your child is when you check, up to 10 times a day. With Premium, follow them live, look back at where they went, and get told when they arrive at or leave a saved place.',
+      'See where your child is up to 10 times a day; Premium adds live location and alerts for saved places.',
     feature6Title: 'Check-In & SOS',
     feature6Text:
-      'Ask your child to confirm they are safe, with a photo on Premium. In an emergency, their phone sends you an instant SOS with location, and a photo when one can be taken.',
+      'Ask your child to confirm they are safe; in an emergency, their phone sends you an instant SOS with location.',
     feature7Title: 'Protection & app alerts',
     feature7Text:
-      'Know the moment an important permission is switched off on your child’s phone. Turn on install approval and a new app on Android, Android TV or a computer waits for you before it opens.',
+      'Know the moment an important permission is switched off on your child’s phone, and approve new apps before they open on Android, Android TV or a computer.',
     feature8Title: 'Reward tasks & extra time',
     feature8Text:
-      'Children earn bonus minutes and stars by finishing tasks, or ask for more time. Both land on your phone for approval. You decide whether the Star chart shows them how many stars each of them earned this week; it starts again every Monday.',
+      'Children earn bonus minutes and stars for finished tasks, or ask for more time — you approve both from your phone.',
     feature9Title: 'Device Lock',
     feature9Text:
       'Lock the device now and release it when you are ready — dinner, homework, or a rule that was ignored.',
@@ -168,10 +168,10 @@ export default {
       'Every Monday: screen time, the daily average, what was blocked, and how the week compares with the one before.',
     feature11Title: 'YouTube & video history',
     feature11Text:
-      'The YouTube videos and Shorts your child watched, in the YouTube app on Android phones and Android TV, and on YouTube in Chrome. Not on iPhone, and a TV does not list Shorts.',
+      'The YouTube videos and Shorts your child watched on Android and in Chrome, plus videos on Android TV. Not on iPhone.',
     feature12Title: 'Activity feed',
     feature12Text:
-      'Everything that happened, in order — a device unlocked, a site request answered, a task finished, an alert raised. The free plan shows today; Premium keeps 30 days.',
+      'Everything that happened, in order — a device unlocked, a request answered, an alert raised; today on the free plan, 30 days on Premium.',
     featurePremium: 'Premium',
     platformsTitle: 'One KidGate, wherever the screen is',
     platformsSub:
@@ -181,9 +181,6 @@ export default {
     showcaseTitle: 'The whole family, on one screen',
     showcaseSub:
       'Screen Time, blocked attempts, location and anything that needs your attention — on your phone, or in any browser.',
-    showcaseTile1: 'Screen Time today',
-    showcaseTile2: 'Blocked attempts',
-    showcaseTile3: 'Needs attention',
     showcaseCaption1: 'Read reports from any browser',
     showcaseCaption2: 'Changes approved from your phone',
 
@@ -907,6 +904,7 @@ export default {
 
   download: {
     eyebrow: 'Download',
+    qrScan: 'Scan with your phone’s camera to get the app',
     macosTitle: 'macOS',
     macosRequires: 'macOS 12 or later, on a Mac with Apple silicon.',
     windowsTitle: 'Windows',
