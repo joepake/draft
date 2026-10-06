@@ -290,6 +290,23 @@ export default {
     tryAgain: 'Réessayer',
   },
 
+  authAction: {
+    checking: 'Vérification du lien…',
+    resetTitle: 'Choisissez un nouveau mot de passe',
+    newPassword: 'Nouveau mot de passe',
+    confirmPassword: 'Confirmez le nouveau mot de passe',
+    mismatch: 'Les mots de passe ne correspondent pas.',
+    tooShort: 'Le mot de passe doit contenir au moins 6 caractères.',
+    save: 'Enregistrer le mot de passe',
+    saving: 'Enregistrement…',
+    resetDone: 'Mot de passe modifié',
+    resetDoneBody:
+      'Connectez-vous avec votre nouveau mot de passe, ici ou dans l’appli KidGate.',
+    verifyDone: 'E-mail confirmé',
+    verifyDoneBody: 'Revenez dans l’appli KidGate pour continuer.',
+    invalid: 'Ce lien a expiré ou a déjà été utilisé',
+    invalidBody: 'Ouvrez KidGate et demandez un nouveau lien.',
+  },
   authError: {
     generic: 'Une erreur s’est produite. Réessayez.',
     invalidEmail: 'Cette adresse e-mail ne semble pas correcte.',

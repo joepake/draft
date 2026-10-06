@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App.jsx';
+import { readAuthAction } from './pages/AuthAction.jsx';
 import { initI18n } from '@kidgate/i18n/web';
 import { initAnalytics, installErrorReporting } from './lib/analytics';
 import { applyTheme } from '@kidgate/web-ui/theme';
@@ -26,8 +27,11 @@ applyTheme(undefined, isDarkPreferred());
  * Deliberately after `initI18n` is *started* rather than inside its callback:
  * the two are unrelated, and chaining them would make the first paint wait on
  * the slower of the two.
+ *
+ * Never on an auth action link: its query string is a live one-time code
+ * (`pages/AuthAction.jsx`), and the automatic `page_view` sends the whole URL.
  */
-void initAnalytics();
+if (!readAuthAction()) void initAnalytics();
 
 /*
  * Before the first render, so an error thrown while mounting is reported too.

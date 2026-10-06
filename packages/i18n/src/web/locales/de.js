@@ -290,6 +290,22 @@ export default {
     tryAgain: 'Erneut versuchen',
   },
 
+  authAction: {
+    checking: 'Link wird geprüft…',
+    resetTitle: 'Neues Passwort festlegen',
+    newPassword: 'Neues Passwort',
+    confirmPassword: 'Neues Passwort bestätigen',
+    mismatch: 'Die Passwörter stimmen nicht überein.',
+    tooShort: 'Das Passwort muss mindestens 6 Zeichen lang sein.',
+    save: 'Passwort speichern',
+    saving: 'Wird gespeichert…',
+    resetDone: 'Passwort geändert',
+    resetDoneBody: 'Melde dich hier oder in der KidGate-App mit dem neuen Passwort an.',
+    verifyDone: 'E-Mail bestätigt',
+    verifyDoneBody: 'Kehre zur KidGate-App zurück, um fortzufahren.',
+    invalid: 'Dieser Link ist abgelaufen oder wurde bereits verwendet',
+    invalidBody: 'Öffne KidGate und fordere einen neuen Link an.',
+  },
   authError: {
     generic: 'Etwas ist schiefgelaufen. Versuche es erneut.',
     invalidEmail: 'Diese E-Mail-Adresse sieht nicht richtig aus.',

@@ -288,6 +288,22 @@ export default {
     tryAgain: 'फिर कोशिश करें',
   },
 
+  authAction: {
+    checking: 'लिंक जाँचा जा रहा है…',
+    resetTitle: 'नया पासवर्ड चुनें',
+    newPassword: 'नया पासवर्ड',
+    confirmPassword: 'नए पासवर्ड की पुष्टि करें',
+    mismatch: 'दोनों पासवर्ड मेल नहीं खाते।',
+    tooShort: 'पासवर्ड कम से कम 6 अक्षरों का होना चाहिए।',
+    save: 'पासवर्ड सहेजें',
+    saving: 'सहेजा जा रहा है…',
+    resetDone: 'पासवर्ड बदल गया',
+    resetDoneBody: 'नए पासवर्ड से यहाँ या KidGate ऐप में साइन इन करें।',
+    verifyDone: 'ईमेल की पुष्टि हो गई',
+    verifyDoneBody: 'जारी रखने के लिए KidGate ऐप पर वापस जाएँ।',
+    invalid: 'यह लिंक समाप्त हो चुका है या पहले ही इस्तेमाल हो चुका है',
+    invalidBody: 'KidGate खोलें और नया लिंक माँगें।',
+  },
   authError: {
     generic: 'कुछ गड़बड़ हो गई। फिर कोशिश करें।',
     invalidEmail: 'यह ईमेल पता सही नहीं लगता।',

@@ -38,11 +38,14 @@ function readStoredLanguage() {
  *
  * `hl` rather than `lang`: it is what Google's own properties use for exactly
  * this, so it is the one a store listing or a support article can be pointed
- * at without a second convention.
+ * at without a second convention. `lang` is read after it only because
+ * Firebase's auth mail links carry the sender's language under that name
+ * (`apps/dashboard/src/pages/AuthAction.jsx`).
  */
 function readUrlLanguage() {
   try {
-    const hl = new URLSearchParams(window.location.search).get('hl');
+    const params = new URLSearchParams(window.location.search);
+    const hl = params.get('hl') || params.get('lang');
     return hl ? matchSupportedLanguage([hl]) : null;
   } catch {
     // No `window` (a prerender or a test), or a malformed query string. Both

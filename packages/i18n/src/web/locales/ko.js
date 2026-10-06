@@ -285,6 +285,22 @@ export default {
     tryAgain: '다시 시도',
   },
 
+  authAction: {
+    checking: '링크를 확인하는 중…',
+    resetTitle: '새 비밀번호 설정',
+    newPassword: '새 비밀번호',
+    confirmPassword: '새 비밀번호 확인',
+    mismatch: '비밀번호가 일치하지 않습니다.',
+    tooShort: '비밀번호는 최소 6자 이상이어야 합니다.',
+    save: '비밀번호 저장',
+    saving: '저장 중…',
+    resetDone: '비밀번호 변경 완료',
+    resetDoneBody: '새 비밀번호로 여기 또는 KidGate 앱에서 로그인하세요.',
+    verifyDone: '이메일 확인 완료',
+    verifyDoneBody: 'KidGate 앱으로 돌아가 계속 진행하세요.',
+    invalid: '만료되었거나 이미 사용된 링크입니다',
+    invalidBody: 'KidGate를 열고 새 링크를 요청하세요.',
+  },
   authError: {
     generic: '문제가 발생했습니다. 다시 시도해 주세요.',
     invalidEmail: '이메일 주소가 올바르지 않은 것 같습니다.',

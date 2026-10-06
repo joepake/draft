@@ -1,5 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import DashboardLive from './pages/DashboardLive.jsx';
+import AuthAction, { readAuthAction } from './pages/AuthAction.jsx';
 import ErrorBoundary from './ErrorBoundary.jsx';
 import { useT } from '@kidgate/web-ui/useT';
 import '@kidgate/web-ui/dashboard.css';
@@ -17,6 +18,9 @@ import '@kidgate/web-ui/dashboard.css';
 
 export default function App() {
   const { t } = useT();
+  // At the root: Firebase appends its query to whatever URL the console holds,
+  // and `/` needs no route of its own (`docs/EMAIL_TEMPLATES.md`).
+  const authAction = readAuthAction();
 
   return (
     <div className="app">
@@ -28,12 +32,16 @@ export default function App() {
             survives a crash and the fallback lands where a screen reader is
             already pointed. */}
         <ErrorBoundary>
-          <Routes>
-            <Route path="/" element={<DashboardLive />} />
-            {/* Anything else on this host is a stale bookmark from when the
-                dashboard was a route on the marketing site. */}
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
+          {authAction ? (
+            <AuthAction {...authAction} />
+          ) : (
+            <Routes>
+              <Route path="/" element={<DashboardLive />} />
+              {/* Anything else on this host is a stale bookmark from when the
+                  dashboard was a route on the marketing site. */}
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          )}
         </ErrorBoundary>
       </main>
     </div>

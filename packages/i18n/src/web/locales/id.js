@@ -288,6 +288,23 @@ export default {
     tryAgain: 'Coba lagi',
   },
 
+  authAction: {
+    checking: 'Memeriksa tautan…',
+    resetTitle: 'Buat kata sandi baru',
+    newPassword: 'Kata sandi baru',
+    confirmPassword: 'Konfirmasi kata sandi baru',
+    mismatch: 'Kata sandi tidak cocok.',
+    tooShort: 'Kata sandi harus terdiri dari minimal 6 karakter.',
+    save: 'Simpan kata sandi',
+    saving: 'Menyimpan…',
+    resetDone: 'Kata sandi diubah',
+    resetDoneBody:
+      'Masuk dengan kata sandi baru Anda, di sini atau di aplikasi KidGate.',
+    verifyDone: 'Email dikonfirmasi',
+    verifyDoneBody: 'Kembali ke aplikasi KidGate untuk melanjutkan.',
+    invalid: 'Tautan ini sudah kedaluwarsa atau sudah dipakai',
+    invalidBody: 'Buka KidGate dan minta tautan baru.',
+  },
   authError: {
     generic: 'Terjadi masalah. Coba lagi.',
     invalidEmail: 'Alamat email itu sepertinya tidak benar.',

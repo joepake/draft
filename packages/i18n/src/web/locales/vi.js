@@ -308,6 +308,22 @@ export default {
     tryAgain: 'Thử lại',
   },
 
+  authAction: {
+    checking: 'Đang kiểm tra liên kết…',
+    resetTitle: 'Đặt mật khẩu mới',
+    newPassword: 'Mật khẩu mới',
+    confirmPassword: 'Nhập lại mật khẩu mới',
+    mismatch: 'Hai mật khẩu không khớp.',
+    tooShort: 'Mật khẩu phải có ít nhất 6 ký tự.',
+    save: 'Lưu mật khẩu',
+    saving: 'Đang lưu…',
+    resetDone: 'Đã đổi mật khẩu',
+    resetDoneBody: 'Đăng nhập bằng mật khẩu mới tại đây hoặc trong ứng dụng KidGate.',
+    verifyDone: 'Đã xác nhận email',
+    verifyDoneBody: 'Quay lại ứng dụng KidGate để tiếp tục.',
+    invalid: 'Liên kết đã hết hạn hoặc đã được dùng',
+    invalidBody: 'Mở KidGate và yêu cầu liên kết mới.',
+  },
   authError: {
     generic: 'Đã có lỗi xảy ra. Vui lòng thử lại.',
     invalidEmail: 'Địa chỉ email không hợp lệ.',

@@ -290,6 +290,22 @@ export default {
     tryAgain: 'Tekrar dene',
   },
 
+  authAction: {
+    checking: 'Bağlantı kontrol ediliyor…',
+    resetTitle: 'Yeni bir parola belirleyin',
+    newPassword: 'Yeni parola',
+    confirmPassword: 'Yeni parolayı onaylayın',
+    mismatch: 'Parolalar eşleşmiyor.',
+    tooShort: 'Parola en az 6 karakter olmalıdır.',
+    save: 'Parolayı kaydet',
+    saving: 'Kaydediliyor…',
+    resetDone: 'Parola değiştirildi',
+    resetDoneBody: 'Yeni parolanızla burada veya KidGate uygulamasında giriş yapın.',
+    verifyDone: 'E-posta onaylandı',
+    verifyDoneBody: 'Devam etmek için KidGate uygulamasına dönün.',
+    invalid: 'Bu bağlantının süresi dolmuş veya bağlantı zaten kullanılmış',
+    invalidBody: 'KidGate uygulamasını açıp yeni bir bağlantı isteyin.',
+  },
   authError: {
     generic: 'Bir şeyler ters gitti. Tekrar deneyin.',
     invalidEmail: 'Bu e-posta adresi doğru görünmüyor.',

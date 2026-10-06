@@ -294,6 +294,22 @@ export default {
     tryAgain: 'أعد المحاولة',
   },
 
+  authAction: {
+    checking: 'جارٍ التحقق من الرابط…',
+    resetTitle: 'تعيين كلمة مرور جديدة',
+    newPassword: 'كلمة المرور الجديدة',
+    confirmPassword: 'تأكيد كلمة المرور الجديدة',
+    mismatch: 'كلمتا المرور غير متطابقتين.',
+    tooShort: 'يجب أن تتكون كلمة المرور من 6 أحرف على الأقل.',
+    save: 'حفظ كلمة المرور',
+    saving: 'جارٍ الحفظ…',
+    resetDone: 'تم تغيير كلمة المرور',
+    resetDoneBody: 'سجّل الدخول بكلمة المرور الجديدة هنا أو في تطبيق KidGate.',
+    verifyDone: 'تم تأكيد البريد الإلكتروني',
+    verifyDoneBody: 'ارجع إلى تطبيق KidGate للمتابعة.',
+    invalid: 'انتهت صلاحية هذا الرابط أو سبق استخدامه',
+    invalidBody: 'افتح KidGate واطلب رابطًا جديدًا.',
+  },
   authError: {
     generic: 'حدث خطأ ما. أعد المحاولة.',
     invalidEmail: 'عنوان البريد الإلكتروني هذا لا يبدو صحيحًا.',

@@ -300,6 +300,22 @@ export default {
     tryAgain: 'Try again',
   },
 
+  authAction: {
+    checking: 'Checking the link…',
+    resetTitle: 'Choose a new password',
+    newPassword: 'New password',
+    confirmPassword: 'Confirm new password',
+    mismatch: 'The passwords do not match.',
+    tooShort: 'Password must be at least 6 characters.',
+    save: 'Save password',
+    saving: 'Saving…',
+    resetDone: 'Password changed',
+    resetDoneBody: 'Sign in with your new password, here or in the KidGate app.',
+    verifyDone: 'Email confirmed',
+    verifyDoneBody: 'Go back to the KidGate app to continue.',
+    invalid: 'This link has expired or was already used',
+    invalidBody: 'Open KidGate and ask for a new link.',
+  },
   authError: {
     generic: 'Something went wrong. Try again.',
     invalidEmail: 'That email address does not look right.',

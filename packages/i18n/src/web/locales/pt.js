@@ -288,6 +288,22 @@ export default {
     tryAgain: 'Tentar de novo',
   },
 
+  authAction: {
+    checking: 'Verificando o link…',
+    resetTitle: 'Escolha uma nova senha',
+    newPassword: 'Nova senha',
+    confirmPassword: 'Confirme a nova senha',
+    mismatch: 'As senhas não coincidem.',
+    tooShort: 'A senha deve ter pelo menos 6 caracteres.',
+    save: 'Salvar senha',
+    saving: 'Salvando…',
+    resetDone: 'Senha alterada',
+    resetDoneBody: 'Entre com a nova senha, aqui ou no app do KidGate.',
+    verifyDone: 'E-mail confirmado',
+    verifyDoneBody: 'Volte ao app do KidGate para continuar.',
+    invalid: 'Este link expirou ou já foi usado',
+    invalidBody: 'Abra o KidGate e peça um novo link.',
+  },
   authError: {
     generic: 'Algo deu errado. Tente de novo.',
     invalidEmail: 'Esse e-mail não parece certo.',
