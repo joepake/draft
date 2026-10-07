@@ -3,7 +3,7 @@ export const legal = {
     title: 'Informativa sulla privacy',
     effectiveDate: 'In vigore dal 4 ottobre 2026',
     intro:
-      'KidGate è il nome commerciale utilizzato dallo sviluppatore indipendente che gestisce l’app. La presente informativa spiega come KidGate tratta i dati quando i genitori utilizzano il servizio per gestire il dispositivo di un minore. Riguarda le app KidGate per iPhone, iPad e Android, l’agente KidGate per macOS e Windows, l’estensione per browser KidGate, l’app per Android TV, la dashboard genitori e il sito kidgate.app.',
+      'KidGate è il nome commerciale con cui viene gestita l’app. La presente informativa spiega come KidGate tratta i dati quando i genitori utilizzano il servizio per gestire il dispositivo di un minore. Riguarda le app KidGate per iPhone, iPad e Android, l’agente KidGate per macOS e Windows, l’estensione per browser KidGate, l’app per Android TV, la dashboard genitori e il sito kidgate.app.',
     sections: [
       {
         title: '1. Ambito di applicazione e autorità genitoriale',
@@ -75,7 +75,7 @@ export const legal = {
     title: 'Termini di servizio',
     effectiveDate: 'In vigore dal 6 settembre 2026',
     intro:
-      'Accedendo a KidGate o utilizzandolo, confermi di aver letto e di accettare i presenti termini. KidGate è il nome commerciale utilizzato dallo sviluppatore indipendente che gestisce il servizio.',
+      'Accedendo a KidGate o utilizzandolo, confermi di aver letto e di accettare i presenti termini. KidGate è il nome commerciale con cui viene gestito il servizio.',
     sections: [
       {
         title: '1. Requisiti di idoneità',
@@ -123,7 +123,7 @@ export const legal = {
       },
       {
         title: '12. Disponibilità e modifiche',
-        body: 'Il servizio può essere modificato, sospeso o interrotto per manutenzione, sicurezza, cambiamenti della piattaforma, obblighi di legge o esigenze operative. KidGate è gestito da uno sviluppatore indipendente e può essere interrotto; in tal caso, gli abbonamenti attivi e l’acquisto una tantum saranno gestiti secondo le regole applicabili dello store di app — l’acquisto una tantum compra il servizio finché viene offerto, non la promessa che sarà offerto per sempre. KidGate punta a una disponibilità ragionevole, ma non garantisce un funzionamento ininterrotto, privo di errori o compatibile con ogni dispositivo.',
+        body: 'Il servizio può essere modificato, sospeso o interrotto per manutenzione, sicurezza, cambiamenti della piattaforma, obblighi di legge o esigenze operative. KidGate può essere interrotto; in tal caso, gli abbonamenti attivi e l’acquisto una tantum saranno gestiti secondo le regole applicabili dello store di app — l’acquisto una tantum compra il servizio finché viene offerto, non la promessa che sarà offerto per sempre. KidGate punta a una disponibilità ragionevole, ma non garantisce un funzionamento ininterrotto, privo di errori o compatibile con ogni dispositivo.',
       },
       {
         title: '13. Esclusioni di garanzia',

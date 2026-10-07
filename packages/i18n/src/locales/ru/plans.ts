@@ -40,14 +40,14 @@ export const plans = {
   compareSyncPremium: 'В реальном времени',
   compareScreenTime: 'Экранное время',
   compareScreenTimeFree: 'Сегодня, 3 главных приложения',
-  compareScreenTimePremium: 'Все приложения, по часам, история за 30 дней',
+  compareScreenTimePremium: 'Топ-10 приложений, по часам, история за 30 дней',
   compareLocation: 'Местоположение',
   compareLocationFree: 'Когда вы открываете карту',
   compareLocationPremium: 'В реальном времени, с историей и оповещениями о местах',
   compareVideo: 'История YouTube и видео',
   compareCountOnly: 'Только сколько, а не какие',
   compareWeb: 'Веб',
-  compareWebPremium: 'Полная история и поисковые запросы',
+  compareWebPremium: 'Какие сайты, по названиям',
   compareNewApps: 'Недавно установленные приложения',
   compareNewAppsPremium: 'Какие приложения, по названиям',
   compareMessages: 'Оповещения о сообщениях (Android)',
@@ -76,7 +76,9 @@ export const plans = {
   groupControlsTitle: 'Более тонкие настройки',
   sectionIncludedFeatures: 'Что включено',
   footerLegal:
-    'Оплата через App Store или Google Play. Подписки продлеваются автоматически, если не отменить минимум за 24 часа до конца периода. Разовая покупка не продлевается и действует, пока KidGate доступен.',
+    'Оплата через App Store. Подписки продлеваются автоматически, если не отменить минимум за 24 часа до конца периода. Разовая покупка не продлевается и действует, пока KidGate доступен.',
+  footerLegalAndroid:
+    'Оплата через Google Play. Подписки продлеваются автоматически до отмены в Google Play. Разовая покупка не продлевается и действует, пока KidGate доступен.',
   subscribeButton: 'Оформить Premium',
   restoringPurchases: 'Восстановление…',
   restorePurchases: 'Восстановить покупки',
@@ -94,7 +96,7 @@ export const plans = {
   featureAppBlocking: 'Заблокированные приложения',
   featureWebFiltering: 'Веб-фильтр',
   featureSeeLocation: 'Местоположение',
-  featureTamperAlerts: 'Оповещение, если KidGate удалили',
+  featureTamperAlerts: 'Оповещение, если отключено разрешение',
   featureSosAlerts: 'Оповещения SOS',
   trialPlanName: 'Пробный период',
   trialDescription:
@@ -202,9 +204,9 @@ export const plans = {
   premiumHistoryNote:
     'Premium хранит полную историю использования за последние 30 дней.',
   teaserTopApps:
-    'Бесплатный план показывает три приложения. Premium называет каждое приложение, поминутно, и хранит 30 дней.',
+    'Бесплатный план показывает три приложения. Premium показывает десять, поминутно, и хранит 30 дней.',
   teaserWebHistory:
-    'Premium показывает, какие сайты были заблокированы и что искал ребёнок.',
+    'Premium показывает, какие сайты посещались и какие были заблокированы.',
   teaserVideoHistory:
     'Premium хранит каждое видео и Short на YouTube, которое он смотрел.',
   teaserLocationTrail:

@@ -42,7 +42,7 @@ export const plans = {
   compareSyncPremium: 'Live',
   compareScreenTime: 'Screen time',
   compareScreenTimeFree: 'Today, top 3 apps',
-  compareScreenTimePremium: 'Every app, hour by hour, 30-day history',
+  compareScreenTimePremium: 'Top 10 apps, hour by hour, 30-day history',
   compareLocation: 'Location',
   compareLocationFree: 'When you open the map',
   compareLocationPremium: 'Live, with history and place alerts',
@@ -51,7 +51,7 @@ export const plans = {
   // One promise made twice — the web row and the new-apps row share this cell,
   // because two wordings would read as two different limits.
   compareCountOnly: 'How many, not which',
-  compareWebPremium: 'Full history and searches',
+  compareWebPremium: 'Which sites, by name',
   compareNewApps: 'New apps installed',
   compareNewAppsPremium: 'Which apps, by name',
   compareMessages: 'Message Alerts (Android)',
@@ -84,7 +84,9 @@ export const plans = {
   groupControlsTitle: 'Finer controls',
   sectionIncludedFeatures: 'What is included',
   footerLegal:
-    'Billed through the App Store or Google Play. Subscriptions renew automatically unless you cancel at least 24 hours before the period ends. The one-time purchase does not renew and lasts for as long as KidGate is available.',
+    'Billed through the App Store. Subscriptions renew automatically unless you cancel at least 24 hours before the period ends. The one-time purchase does not renew and lasts for as long as KidGate is available.',
+  footerLegalAndroid:
+    'Billed through Google Play. Subscriptions renew automatically until you cancel them in Google Play. The one-time purchase does not renew and lasts for as long as KidGate is available.',
   subscribeButton: 'Subscribe to Premium',
   restoringPurchases: 'Restoring…',
   restorePurchases: 'Restore purchases',
@@ -102,7 +104,7 @@ export const plans = {
   featureAppBlocking: 'Blocked Apps',
   featureWebFiltering: 'Web Filter',
   featureSeeLocation: 'Location',
-  featureTamperAlerts: 'Alerts if KidGate is removed',
+  featureTamperAlerts: 'Alerts when a permission is turned off',
   featureSosAlerts: 'SOS Alerts',
   trialPlanName: 'Trial',
   trialDescription:
@@ -215,9 +217,9 @@ export const plans = {
   teaserProofBlocked: 'Blocked this week: {{count}}',
   premiumHistoryNote: 'Premium keeps the full usage history for the last 30 days.',
   teaserTopApps:
-    'Free ranks the top three apps. Premium ranks every app, minute by minute, and keeps 30 days of it.',
+    'Free ranks the top three apps. Premium ranks the top ten, minute by minute, and keeps 30 days of it.',
   teaserWebHistory:
-    'Premium shows which sites were blocked, and what your child searched for.',
+    'Premium shows which sites your child visited, and which were blocked.',
   teaserVideoHistory: 'Premium keeps every YouTube video and Short they watched.',
   teaserLocationTrail:
     'Premium keeps where they went, and tells you when they arrive at or leave home and school.',

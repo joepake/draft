@@ -17,6 +17,13 @@ export const notifications = {
   footnote:
     'Bu ayarlar yalnızca bu telefon için geçerlidir. Diğer ebeveyn cihazları kendi ayarlarını korur.',
   toastSaveFailed: 'Kaydedilemedi. Lütfen tekrar deneyin.',
+  localReminderSetupTitle: 'Kurulumu tamamlayın',
+  localReminderIdleTitle: 'Kurallarınız çalışıyor',
+  localReminderIdleBody:
+    'KidGate’i bir haftadır açmadınız. Bugünkü ekran süresini ve nelerin engellendiğini görün.',
+  localReminderDormancyTitle: 'Raporlar durabilir',
+  localReminderDormancyBody:
+    '{{days}} gün boyunca kimse KidGate’i açmazsa çocuğunuzun cihazları, biri tekrar açana kadar rapor göndermeyi bırakır. Kurallarınız çalışmaya devam eder.',
   alert: {
     tamperAlerts: {
       label: 'Koruma kapatıldı',

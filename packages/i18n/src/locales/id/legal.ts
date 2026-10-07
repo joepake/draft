@@ -3,7 +3,7 @@ export const legal = {
     title: 'Kebijakan Privasi',
     effectiveDate: 'Berlaku mulai 4 Oktober 2026',
     intro:
-      'KidGate adalah nama produk dan nama dagang yang digunakan oleh pengembang independen yang mengoperasikan aplikasi ini. Kebijakan ini menjelaskan bagaimana KidGate menangani data ketika orang tua menggunakan layanan untuk mengelola perangkat anak. Kebijakan ini mencakup aplikasi KidGate untuk iPhone, iPad, dan Android, agen KidGate untuk macOS dan Windows, ekstensi browser KidGate, aplikasi Android TV, dasbor orang tua, dan situs kidgate.app.',
+      'Aplikasi ini dioperasikan dengan nama produk dan nama dagang KidGate. Kebijakan ini menjelaskan bagaimana KidGate menangani data ketika orang tua menggunakan layanan untuk mengelola perangkat anak. Kebijakan ini mencakup aplikasi KidGate untuk iPhone, iPad, dan Android, agen KidGate untuk macOS dan Windows, ekstensi browser KidGate, aplikasi Android TV, dasbor orang tua, dan situs kidgate.app.',
     sections: [
       {
         title: '1. Cakupan dan wewenang orang tua',
@@ -75,7 +75,7 @@ export const legal = {
     title: 'Ketentuan Layanan',
     effectiveDate: 'Berlaku mulai 6 September 2026',
     intro:
-      'Dengan masuk ke atau menggunakan KidGate, Anda menegaskan bahwa Anda telah membaca dan menyetujui ketentuan ini. KidGate adalah nama produk dan nama dagang yang digunakan oleh pengembang independen yang mengoperasikan layanan ini.',
+      'Dengan masuk ke atau menggunakan KidGate, Anda menegaskan bahwa Anda telah membaca dan menyetujui ketentuan ini. Layanan ini dioperasikan dengan nama produk dan nama dagang KidGate.',
     sections: [
       {
         title: '1. Kelayakan',
@@ -123,7 +123,7 @@ export const legal = {
       },
       {
         title: '12. Ketersediaan dan perubahan',
-        body: 'Layanan dapat berubah, dihentikan sementara, atau diakhiri karena pemeliharaan, keamanan, perubahan platform, hukum, atau alasan operasional. KidGate dioperasikan oleh pengembang independen dan dapat dihentikan; jika hal itu terjadi, langganan aktif dan pembelian sekali bayar ditangani sesuai aturan toko aplikasi yang berlaku — pembelian sekali bayar membeli layanan selama layanan itu tersedia, bukan janji bahwa layanan akan tersedia selamanya. KidGate berupaya menjaga ketersediaan yang wajar namun tidak menjanjikan operasi tanpa gangguan, bebas kesalahan, atau kompatibilitas dengan setiap perangkat.',
+        body: 'Layanan dapat berubah, dihentikan sementara, atau diakhiri karena pemeliharaan, keamanan, perubahan platform, hukum, atau alasan operasional. KidGate dapat dihentikan; jika hal itu terjadi, langganan aktif dan pembelian sekali bayar ditangani sesuai aturan toko aplikasi yang berlaku — pembelian sekali bayar membeli layanan selama layanan itu tersedia, bukan janji bahwa layanan akan tersedia selamanya. KidGate berupaya menjaga ketersediaan yang wajar namun tidak menjanjikan operasi tanpa gangguan, bebas kesalahan, atau kompatibilitas dengan setiap perangkat.',
       },
       {
         title: '13. Penyangkalan',

@@ -18,6 +18,13 @@ export const notifications = {
   footnote:
     'ये सेटिंग्स सिर्फ़ इसी फ़ोन पर लागू होती हैं। अन्य अभिभावक डिवाइस अपनी सेटिंग्स रखते हैं।',
   toastSaveFailed: 'सहेजा नहीं जा सका। फिर कोशिश करें।',
+  localReminderSetupTitle: 'KidGate का सेटअप पूरा करें',
+  localReminderIdleTitle: 'आपके नियम चलते रहते हैं',
+  localReminderIdleBody:
+    'आपने एक सप्ताह से KidGate नहीं खोला है। आज का स्क्रीन समय और ब्लॉक की गई चीज़ें देखें।',
+  localReminderDormancyTitle: 'डिवाइस की रिपोर्ट रुक सकती है',
+  localReminderDormancyBody:
+    'अगर {{days}} दिन तक कोई KidGate नहीं खोलता, तो बच्चे के डिवाइस तब तक रिपोर्ट भेजना बंद कर देते हैं, जब तक कोई इसे दोबारा नहीं खोलता। आपके नियम चलते रहते हैं।',
   alert: {
     tamperAlerts: {
       label: 'सुरक्षा बंद हुई',

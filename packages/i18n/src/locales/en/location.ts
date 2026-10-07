@@ -43,9 +43,9 @@ export const location = {
   historyOpenMapsAccessibility: 'Open {{place}} in Maps',
   locationBannerTitle: 'Turn on location',
   locationBannerBody:
-    'Your parent would like to see where this device is, so they know you arrived safely.',
+    'Your parent would like to see where this device is, so they know you arrived safely. KidGate shares this device’s location with your parent even when the app is closed or not in use.',
   locationBannerBodySharingOff:
-    'Location sharing is off right now, so nothing is sent. Allowing here means it works straight away if your parent turns it on later.',
+    'Location sharing is off right now, so nothing is sent. Allowing here means it works straight away if your parent turns it on later. Once it is on, this device’s location is shared even when KidGate is closed or not in use.',
   allowLocationButton: 'Allow location',
   locationNotAllowed:
     'Location is not allowed yet. Open Settings → KidGate → Location (or turn on Location Services first). Select Allow location again if the Location entry is missing.',

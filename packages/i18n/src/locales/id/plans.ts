@@ -40,14 +40,14 @@ export const plans = {
   compareSyncPremium: 'Langsung',
   compareScreenTime: 'Waktu layar',
   compareScreenTimeFree: 'Hari ini, 3 aplikasi teratas',
-  compareScreenTimePremium: 'Semua aplikasi, jam demi jam, riwayat 30 hari',
+  compareScreenTimePremium: '10 aplikasi teratas, jam demi jam, riwayat 30 hari',
   compareLocation: 'Lokasi',
   compareLocationFree: 'Saat Anda membuka peta',
   compareLocationPremium: 'Langsung, dengan riwayat dan peringatan tempat',
   compareVideo: 'Riwayat YouTube dan video',
   compareCountOnly: 'Hanya berapa, bukan yang mana',
   compareWeb: 'Web',
-  compareWebPremium: 'Riwayat lengkap dan pencarian',
+  compareWebPremium: 'Situs mana, lengkap dengan namanya',
   compareNewApps: 'Aplikasi yang baru dipasang',
   compareNewAppsPremium: 'Aplikasi mana, lengkap dengan namanya',
   compareMessages: 'Peringatan pesan (Android)',
@@ -76,7 +76,9 @@ export const plans = {
   groupControlsTitle: 'Kontrol lebih rinci',
   sectionIncludedFeatures: 'Apa saja yang termasuk',
   footerLegal:
-    'Ditagih melalui App Store atau Google Play. Langganan diperpanjang otomatis kecuali Anda membatalkan minimal 24 jam sebelum periode berakhir. Pembelian sekali bayar tidak diperpanjang dan berlaku selama KidGate tersedia.',
+    'Ditagih melalui App Store. Langganan diperpanjang otomatis kecuali Anda membatalkan minimal 24 jam sebelum periode berakhir. Pembelian sekali bayar tidak diperpanjang dan berlaku selama KidGate tersedia.',
+  footerLegalAndroid:
+    'Ditagih melalui Google Play. Langganan diperpanjang otomatis sampai Anda membatalkannya di Google Play. Pembelian sekali bayar tidak diperpanjang dan berlaku selama KidGate tersedia.',
   subscribeButton: 'Berlangganan Premium',
   restoringPurchases: 'Memulihkan…',
   restorePurchases: 'Pulihkan pembelian',
@@ -94,7 +96,7 @@ export const plans = {
   featureAppBlocking: 'Aplikasi yang Diblokir',
   featureWebFiltering: 'Filter web',
   featureSeeLocation: 'Lokasi',
-  featureTamperAlerts: 'Peringatan jika KidGate dihapus',
+  featureTamperAlerts: 'Peringatan jika izin dimatikan',
   featureSosAlerts: 'Peringatan SOS',
   trialPlanName: 'Uji coba',
   trialDescription:
@@ -202,9 +204,9 @@ export const plans = {
   premiumHistoryNote:
     'Premium menyimpan riwayat penggunaan lengkap selama 30 hari terakhir.',
   teaserTopApps:
-    'Versi gratis menampilkan tiga aplikasi teratas. Premium menyebut setiap aplikasi, menit demi menit, dan menyimpannya 30 hari.',
+    'Versi gratis menampilkan tiga aplikasi teratas. Premium menyebut sepuluh teratas, menit demi menit, dan menyimpannya 30 hari.',
   teaserWebHistory:
-    'Premium menunjukkan situs mana yang diblokir dan apa yang dicari anak Anda.',
+    'Premium menunjukkan situs mana yang dikunjungi anak Anda dan mana yang diblokir.',
   teaserVideoHistory:
     'Premium menyimpan setiap video dan Short YouTube yang ia tonton.',
   teaserLocationTrail:

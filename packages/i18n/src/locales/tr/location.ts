@@ -46,9 +46,9 @@ export const location = {
   historyOpenMapsAccessibility: '{{place}} konumunu Haritalar’da aç',
   locationBannerTitle: 'Konumu etkinleştir',
   locationBannerBody:
-    'Ebeveynin, güvenle vardığından emin olmak için bu cihazın konumunu görmek istiyor.',
+    'Ebeveynin, güvenle vardığından emin olmak için bu cihazın konumunu görmek istiyor. KidGate, uygulama kapalıyken veya kullanılmıyorken de bu cihazın konumunu ebeveyninle paylaşır.',
   locationBannerBodySharingOff:
-    'Konum paylaşımı şu anda kapalı, yani hiçbir şey gönderilmiyor. Burada izin verirsen, ileride ebeveynin açtığında hemen çalışır.',
+    'Konum paylaşımı şu anda kapalı, yani hiçbir şey gönderilmiyor. Burada izin verirsen, ileride ebeveynin açtığında hemen çalışır. Açıldıktan sonra bu cihazın konumu, KidGate kapalıyken veya kullanılmıyorken de paylaşılır.',
   allowLocationButton: 'Konuma izin ver',
   locationNotAllowed:
     'Konum izni henüz verilmedi. Ayarlar → KidGate → Konum menüsünü aç (veya önce Konum Servislerini etkinleştir). Konum seçeneği görünmüyorsa tekrar “Konuma izin ver” seçeneğini seç.',

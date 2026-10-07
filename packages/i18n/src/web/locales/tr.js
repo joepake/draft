@@ -912,7 +912,7 @@ export default {
     eyebrow: 'Hakkımızda',
     title: 'Ailenin gerçekten uzlaşabildiği',
     titleAccent: 'bir ebeveyn denetimi.',
-    lede: 'KidGate, tek bir ürün üzerinde çalışan bağımsız bir geliştirici tarafından yapılıyor. Duruşumuz şu: bir ebeveyn uygulamanın söylediğine güvenebilmeli — yardımcı olamadığını söylediği yerler dahil.',
+    lede: 'Yalnızca tek bir ürün üzerinde çalışıyoruz, bu yüzden tüm dikkatimiz KidGate’te. Duruşumuz şu: bir ebeveyn uygulamanın söylediğine güvenebilmeli — yardımcı olamadığını söylediği yerler dahil.',
     storyEyebrow: 'KidGate neden var',
     storyTitle: 'Ekran süresi her evin tartışması hâline geldi',
     storyP1:

@@ -918,7 +918,7 @@ export default {
     eyebrow: 'Về chúng tôi',
     title: 'Kiểm soát của cha mẹ mà cả nhà',
     titleAccent: 'thật sự đồng thuận.',
-    lede: 'KidGate do một nhà phát triển độc lập làm ra, chỉ tập trung vào đúng một sản phẩm này. Điều chúng tôi coi trọng nhất: phụ huynh phải tin được những gì ứng dụng nói — kể cả những chỗ nó nói rằng nó không làm được.',
+    lede: 'Chúng tôi chỉ làm một sản phẩm duy nhất, nên toàn bộ tâm sức đều dồn cho KidGate. Điều chúng tôi coi trọng nhất: phụ huynh phải tin được những gì ứng dụng nói — kể cả những chỗ nó nói rằng nó không làm được.',
     storyEyebrow: 'Vì sao có KidGate',
     storyTitle: 'Chuyện dùng điện thoại trở thành cuộc cãi vã trong mọi nhà',
     storyP1:

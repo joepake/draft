@@ -19,6 +19,13 @@ export const notifications = {
   footnote:
     'Эти настройки действуют только на этом телефоне. У других родительских устройств свои.',
   toastSaveFailed: 'Не удалось сохранить. Попробуйте ещё раз.',
+  localReminderSetupTitle: 'Завершите настройку',
+  localReminderIdleTitle: 'Ваши правила работают',
+  localReminderIdleBody:
+    'Вы неделю не открывали KidGate. Посмотрите экранное время за сегодня и то, что было заблокировано.',
+  localReminderDormancyTitle: 'Отчёты могут прекратиться',
+  localReminderDormancyBody:
+    'Если {{days}} дней никто не открывает KidGate, устройства ребёнка перестают отправлять отчёты, пока его снова не откроют. Ваши правила продолжают работать.',
   alert: {
     tamperAlerts: {
       label: 'Защита отключена',

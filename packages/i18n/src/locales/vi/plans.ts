@@ -40,14 +40,15 @@ export const plans = {
   compareSyncPremium: 'Trực tiếp',
   compareScreenTime: 'Thời gian sử dụng',
   compareScreenTimeFree: 'Hôm nay, 3 ứng dụng nhiều nhất',
-  compareScreenTimePremium: 'Mọi ứng dụng, theo từng giờ, lịch sử 30 ngày',
+  compareScreenTimePremium:
+    '10 ứng dụng dùng nhiều nhất, theo từng giờ, lịch sử 30 ngày',
   compareLocation: 'Vị trí',
   compareLocationFree: 'Khi bạn mở bản đồ',
   compareLocationPremium: 'Trực tiếp, kèm lịch sử và cảnh báo địa điểm',
   compareVideo: 'Lịch sử YouTube và video',
   compareCountOnly: 'Chỉ số lượng, không xem được chi tiết',
   compareWeb: 'Web',
-  compareWebPremium: 'Đầy đủ lịch sử và từ khóa tìm kiếm',
+  compareWebPremium: 'Tên từng trang web',
   compareNewApps: 'Ứng dụng mới cài',
   compareNewAppsPremium: 'Tên từng ứng dụng',
   compareMessages: 'Cảnh báo tin nhắn (Android)',
@@ -76,7 +77,9 @@ export const plans = {
   groupControlsTitle: 'Kiểm soát chi tiết hơn',
   sectionIncludedFeatures: 'Tính năng bao gồm',
   footerLegal:
-    'Thanh toán qua App Store hoặc Google Play. Gói đăng ký tự động gia hạn trừ khi bạn hủy trước thời điểm kết thúc chu kỳ ít nhất 24 giờ. Gói trả một lần không gia hạn và có hiệu lực chừng nào KidGate còn hoạt động.',
+    'Thanh toán qua App Store. Gói đăng ký tự động gia hạn trừ khi bạn hủy trước thời điểm kết thúc chu kỳ ít nhất 24 giờ. Gói trả một lần không gia hạn và có hiệu lực chừng nào KidGate còn hoạt động.',
+  footerLegalAndroid:
+    'Thanh toán qua Google Play. Gói đăng ký tự động gia hạn cho đến khi bạn hủy trong Google Play. Gói trả một lần không gia hạn và có hiệu lực chừng nào KidGate còn hoạt động.',
   subscribeButton: 'Đăng ký Premium',
   restoringPurchases: 'Đang khôi phục…',
   restorePurchases: 'Khôi phục giao dịch',
@@ -91,7 +94,7 @@ export const plans = {
   featureAppBlocking: 'Chặn ứng dụng',
   featureWebFiltering: 'Chặn nội dung web',
   featureSeeLocation: 'Vị trí',
-  featureTamperAlerts: 'Báo khi KidGate bị gỡ',
+  featureTamperAlerts: 'Báo khi một quyền bị tắt',
   featureSosAlerts: 'Cảnh báo SOS',
   trialPlanName: 'Dùng thử',
   trialDescription:
@@ -197,8 +200,8 @@ export const plans = {
   teaserProofBlocked: 'Đã chặn tuần này: {{count}}',
   premiumHistoryNote: 'Premium lưu đầy đủ lịch sử sử dụng của 30 ngày gần nhất.',
   teaserTopApps:
-    'Bản miễn phí xếp hạng 3 ứng dụng. Premium xếp hạng mọi ứng dụng, từng phút, và giữ 30 ngày.',
-  teaserWebHistory: 'Premium cho biết trang nào bị chặn và con đã tìm gì.',
+    'Bản miễn phí xếp hạng 3 ứng dụng. Premium xếp hạng 10 ứng dụng, từng phút, và giữ 30 ngày.',
+  teaserWebHistory: 'Premium cho biết con đã vào những trang nào và trang nào bị chặn.',
   teaserVideoHistory: 'Premium lưu mọi video và Short trên YouTube mà con đã xem.',
   teaserLocationTrail:
     'Premium lưu lộ trình của con và báo khi con đến hoặc rời nhà, trường.',

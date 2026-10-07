@@ -18,6 +18,16 @@ export const notifications = {
   footnote:
     'These settings apply to this phone only. Other parent devices keep their own.',
   toastSaveFailed: 'Unable to save. Try again.',
+  // Reminders the parent’s phone schedules for itself (`hooks/useLocalReminders`,
+  // `@kidgate/core/domain/localReminders`). The setup reminder’s body is
+  // `family.emptyDescription`.
+  localReminderSetupTitle: 'Finish setting up KidGate',
+  localReminderIdleTitle: 'Your rules keep working',
+  localReminderIdleBody:
+    'It’s been a week since you opened KidGate. See today’s screen time and what was blocked.',
+  localReminderDormancyTitle: 'Devices may stop reporting',
+  localReminderDormancyBody:
+    'If no one opens KidGate for {{days}} days, your child’s devices stop reporting until someone opens it again. Your rules keep working.',
   alert: {
     tamperAlerts: {
       label: 'Protection turned off',

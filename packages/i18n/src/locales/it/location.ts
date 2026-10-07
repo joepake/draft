@@ -48,9 +48,9 @@ export const location = {
   historyOpenMapsAccessibility: 'Apri {{place}} in Mappe',
   locationBannerTitle: 'Attiva la posizione',
   locationBannerBody:
-    'I tuoi genitori vogliono vedere la posizione di questo dispositivo per sapere che sei arrivato in sicurezza.',
+    'I tuoi genitori vogliono vedere la posizione di questo dispositivo per sapere che sei arrivato in sicurezza. KidGate condivide la posizione di questo dispositivo con i tuoi genitori anche quando l’app è chiusa o non la stai usando.',
   locationBannerBodySharingOff:
-    'La condivisione della posizione è disattivata, quindi non viene inviato niente. Se dai il permesso qui, funzionerà subito se i tuoi genitori la attivano più avanti.',
+    'La condivisione della posizione è disattivata, quindi non viene inviato niente. Se dai il permesso qui, funzionerà subito se i tuoi genitori la attivano più avanti. Quando la condivisione è attiva, la posizione di questo dispositivo viene inviata anche quando l’app è chiusa o non la stai usando.',
   allowLocationButton: 'Consenti posizione',
   locationNotAllowed:
     'L’accesso alla posizione non è ancora consentito. Apri Impostazioni → KidGate → Posizione (oppure attiva prima i Servizi di localizzazione). Se la voce Posizione non è presente, seleziona di nuovo “Consenti posizione”.',

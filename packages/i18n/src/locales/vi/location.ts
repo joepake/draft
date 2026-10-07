@@ -43,9 +43,9 @@ export const location = {
   historyOpenMapsAccessibility: 'Mở {{place}} trong Bản đồ',
   locationBannerTitle: 'Bật vị trí',
   locationBannerBody:
-    'Bố mẹ muốn biết thiết bị này đang ở đâu để yên tâm là con đã đến nơi an toàn.',
+    'Bố mẹ muốn biết thiết bị này đang ở đâu để yên tâm là con đã đến nơi an toàn. KidGate vẫn chia sẻ vị trí của thiết bị này với bố mẹ kể cả khi ứng dụng đã đóng hoặc con không dùng đến.',
   locationBannerBodySharingOff:
-    'Chia sẻ vị trí đang tắt nên không có gì được gửi đi. Cho phép ở đây thì sau này bố mẹ bật lên là dùng được ngay.',
+    'Chia sẻ vị trí đang tắt nên không có gì được gửi đi. Cho phép ở đây thì sau này bố mẹ bật lên là dùng được ngay. Khi chia sẻ vị trí được bật, vị trí của thiết bị này vẫn được gửi đi kể cả khi KidGate đã đóng hoặc con không dùng đến.',
   allowLocationButton: 'Cho phép vị trí',
   locationNotAllowed:
     'Quyền vị trí chưa được cấp. Vui lòng mở Cài đặt → KidGate → Vị trí (hoặc bật Dịch vụ định vị trước). Nếu chưa thấy mục Vị trí, hãy chọn Cho phép vị trí lại trong ứng dụng.',

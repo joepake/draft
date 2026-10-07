@@ -45,7 +45,7 @@ export const permissions = {
   markDone: 'Fertig',
   overlayStepAllow: 'Aktiviere „Über anderen Apps anzeigen“ für KidGate.',
   accessibilityStepOpenSettings:
-    'Wähle unten Einstellungen – das öffnet direkt die Bedienungshilfen-Seite von KidGate.',
+    'Wähle unten Zustimmen – das öffnet direkt die Bedienungshilfen-Seite von KidGate.',
   accessibilityStepFindKidGate:
     'Öffnet sich stattdessen die vollständige Liste, wähle KidGate unter „Heruntergeladene Apps“.',
   accessibilityStepTurnOn:
@@ -53,7 +53,10 @@ export const permissions = {
   restrictedSettingsStep:
     'Ist der Schalter ausgegraut: Einstellungen › Apps › KidGate öffnen, auf das Menü ⋮ tippen und „Eingeschränkte Einstellungen zulassen“ wählen, dann hierher zurückkehren und es erneut versuchen.',
   accessibilityWarningNote:
-    'Android warnt, dass KidGate deine Aktionen beobachten kann. Mit dieser Berechtigung sieht KidGate, welche App geöffnet ist, damit die Sperre im Vordergrund bleibt, und liest Titel und Kanal von YouTube-Videos, wenn angesehene Videos aufgezeichnet werden. KidGate nutzt sie nicht, um Passwörter, Nachrichten oder deine Eingaben zu lesen.',
+    'Android warnt, dass KidGate deine Aktionen beobachten kann. Mit dieser Berechtigung sieht KidGate, welche App geöffnet ist, damit die Sperre im Vordergrund bleibt. Wenn angesehene Videos aufgezeichnet werden, liest KidGate außerdem Titel und Kanal jedes YouTube-Videos und sendet sie an deine Eltern. KidGate nutzt die Berechtigung nicht, um Passwörter, Nachrichten oder deine Eingaben zu lesen.',
+  accessibilityAgree: 'Zustimmen',
+  accessibilityTvNote:
+    'Mit dieser Berechtigung sieht KidGate, welche App geöffnet ist, damit die Sperre im Vordergrund bleibt. Außerdem zählt KidGate, wie lange jede App genutzt wird, und sendet das an deine Eltern. Bildschirminhalte, Passwörter und Nachrichten liest KidGate nicht.',
   uninstallProtectionWizardBody:
     'Verhindert, dass diese App ohne die Eltern-PIN deinstalliert wird. Android zeigt dazu einen eigenen Bestätigungsbildschirm an.',
   notificationsWizardBody:

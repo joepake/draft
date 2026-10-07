@@ -921,7 +921,7 @@ export default {
     eyebrow: 'Über uns',
     title: 'Kindersicherung, auf die sich eine Familie',
     titleAccent: 'wirklich einigen kann.',
-    lede: 'KidGate stammt von einem unabhängigen Entwickler, der an einem einzigen Produkt arbeitet. Unsere Haltung: Eltern müssen dem vertrauen können, was die App sagt — auch dort, wo sie sagt, dass sie nicht helfen kann.',
+    lede: 'Wir arbeiten an einem einzigen Produkt, und KidGate bekommt unsere ganze Aufmerksamkeit. Unsere Haltung: Eltern müssen dem vertrauen können, was die App sagt — auch dort, wo sie sagt, dass sie nicht helfen kann.',
     storyEyebrow: 'Warum es KidGate gibt',
     storyTitle: 'Bildschirmzeit wurde zum Streit in jedem Haushalt',
     storyP1:

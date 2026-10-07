@@ -96,6 +96,7 @@
     "./domain/leaderboard": "./src/domain/leaderboard.ts",
     "./domain/leaderboardReset": "./src/domain/leaderboardReset.ts",
     "./domain/screenTimeBoard": "./src/domain/screenTimeBoard.ts",
+    "./domain/localReminders": "./src/domain/localReminders.ts",
     "./domain/locationFix": "./src/domain/locationFix.ts",
     "./domain/locationHistory": "./src/domain/locationHistory.ts",
     "./domain/locationHistoryMapHtml": "./src/domain/locationHistoryMapHtml.ts",

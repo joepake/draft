@@ -17,6 +17,13 @@ export const notifications = {
   footnote:
     'この設定はこのデバイスのみに適用されます。ほかの保護者デバイスは個別の設定を保ちます。',
   toastSaveFailed: '保存できませんでした。もう一度お試しください。',
+  localReminderSetupTitle: '設定を完了しましょう',
+  localReminderIdleTitle: 'ルールは引き続き有効です',
+  localReminderIdleBody:
+    'KidGateを1週間開いていません。今日の利用時間とブロックされた内容を確認しましょう。',
+  localReminderDormancyTitle: '報告が止まるかもしれません',
+  localReminderDormancyBody:
+    '{{days}}日間誰もKidGateを開かないと、次に開かれるまで子どものデバイスからの報告が止まります。ルールはそのまま働いています。',
   alert: {
     tamperAlerts: {
       label: '保護がオフになった',

@@ -41,14 +41,14 @@ export const plans = {
   compareSyncPremium: 'In tempo reale',
   compareScreenTime: 'Tempo di utilizzo',
   compareScreenTimeFree: 'Oggi, le 3 app principali',
-  compareScreenTimePremium: 'Ogni app, ora per ora, cronologia di 30 giorni',
+  compareScreenTimePremium: 'Le prime 10 app, ora per ora, cronologia di 30 giorni',
   compareLocation: 'Posizione',
   compareLocationFree: 'Quando apri la mappa',
   compareLocationPremium: 'In tempo reale, con cronologia e avvisi sui luoghi',
   compareVideo: 'Cronologia YouTube e video',
   compareCountOnly: 'Solo quanti, non quali',
   compareWeb: 'Web',
-  compareWebPremium: 'Cronologia completa e ricerche',
+  compareWebPremium: 'Quali siti, con il nome',
   compareNewApps: 'App appena installate',
   compareNewAppsPremium: 'Quali app, con il nome',
   compareMessages: 'Avvisi messaggi (Android)',
@@ -77,7 +77,9 @@ export const plans = {
   groupControlsTitle: 'Controlli più precisi',
   sectionIncludedFeatures: 'Cosa è incluso',
   footerLegal:
-    'Addebitato tramite App Store o Google Play. Gli abbonamenti si rinnovano automaticamente salvo disdetta almeno 24 ore prima della fine del periodo. L’acquisto una tantum non si rinnova e vale finché KidGate è disponibile.',
+    'Addebitato tramite App Store. Gli abbonamenti si rinnovano automaticamente salvo disdetta almeno 24 ore prima della fine del periodo. L’acquisto una tantum non si rinnova e vale finché KidGate è disponibile.',
+  footerLegalAndroid:
+    'Addebitato tramite Google Play. Gli abbonamenti si rinnovano automaticamente finché non li disdici in Google Play. L’acquisto una tantum non si rinnova e vale finché KidGate è disponibile.',
   subscribeButton: 'Abbonati a Premium',
   restoringPurchases: 'Ripristino…',
   restorePurchases: 'Ripristina acquisti',
@@ -95,7 +97,7 @@ export const plans = {
   featureAppBlocking: 'App bloccate',
   featureWebFiltering: 'Filtro web',
   featureSeeLocation: 'Posizione',
-  featureTamperAlerts: 'Avviso se KidGate viene rimosso',
+  featureTamperAlerts: 'Avviso se un permesso viene disattivato',
   featureSosAlerts: 'Avvisi SOS',
   trialPlanName: 'Prova',
   trialDescription:
@@ -204,9 +206,9 @@ export const plans = {
   premiumHistoryNote:
     'Premium conserva lo storico d’uso completo degli ultimi 30 giorni.',
   teaserTopApps:
-    'La versione gratuita mostra le prime tre app. Premium indica ogni app, minuto per minuto, e ne conserva 30 giorni.',
+    'La versione gratuita mostra le prime tre app. Premium indica le prime dieci, minuto per minuto, e ne conserva 30 giorni.',
   teaserWebHistory:
-    'Premium mostra quali siti sono stati bloccati e cosa ha cercato tuo figlio.',
+    'Premium mostra quali siti ha visitato tuo figlio e quali sono stati bloccati.',
   teaserVideoHistory: 'Premium conserva ogni video e Short di YouTube che ha guardato.',
   teaserLocationTrail:
     'Premium conserva dov’è stato e ti avvisa quando arriva o esce da casa e da scuola.',

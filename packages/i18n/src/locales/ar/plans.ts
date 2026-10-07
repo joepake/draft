@@ -39,14 +39,14 @@ export const plans = {
   compareSyncPremium: 'مباشر',
   compareScreenTime: 'وقت الشاشة',
   compareScreenTimeFree: 'اليوم، أكثر 3 تطبيقات استخدامًا',
-  compareScreenTimePremium: 'كل التطبيقات، ساعةً بساعة، سجل 30 يومًا',
+  compareScreenTimePremium: 'أعلى 10 تطبيقات، ساعةً بساعة، سجل 30 يومًا',
   compareLocation: 'الموقع',
   compareLocationFree: 'عند فتح الخريطة',
   compareLocationPremium: 'مباشر، مع السجل وتنبيهات الأماكن',
   compareVideo: 'سجل YouTube والفيديو',
   compareCountOnly: 'العدد فقط، دون التفاصيل',
   compareWeb: 'الويب',
-  compareWebPremium: 'السجل الكامل وعمليات البحث',
+  compareWebPremium: 'أي المواقع، بأسمائها',
   compareNewApps: 'التطبيقات المثبَّتة حديثًا',
   compareNewAppsPremium: 'أي التطبيقات، بأسمائها',
   compareMessages: 'تنبيهات الرسائل (Android)',
@@ -75,7 +75,9 @@ export const plans = {
   groupControlsTitle: 'تحكم أدق',
   sectionIncludedFeatures: 'ما الذي يشمله',
   footerLegal:
-    'تتم الفوترة عبر App Store أو Google Play. تتجدد الاشتراكات تلقائيًا ما لم تلغِها قبل نهاية الفترة بـ24 ساعة على الأقل. أما الشراء لمرة واحدة فلا يتجدد ويظل ساريًا طوال توفر KidGate.',
+    'تتم الفوترة عبر App Store. تتجدد الاشتراكات تلقائيًا ما لم تلغِها قبل نهاية الفترة بـ24 ساعة على الأقل. أما الشراء لمرة واحدة فلا يتجدد ويظل ساريًا طوال توفر KidGate.',
+  footerLegalAndroid:
+    'تتم الفوترة عبر Google Play. تتجدد الاشتراكات تلقائيًا إلى أن تلغيها من Google Play. أما الشراء لمرة واحدة فلا يتجدد ويظل ساريًا طوال توفر KidGate.',
   subscribeButton: 'الاشتراك في Premium',
   restoringPurchases: 'جارٍ الاستعادة…',
   restorePurchases: 'استعادة المشتريات',
@@ -93,7 +95,7 @@ export const plans = {
   featureAppBlocking: 'التطبيقات المحظورة',
   featureWebFiltering: 'فلتر الويب',
   featureSeeLocation: 'الموقع',
-  featureTamperAlerts: 'تنبيه عند إزالة KidGate',
+  featureTamperAlerts: 'تنبيه عند إيقاف أحد الأذونات',
   featureSosAlerts: 'تنبيهات SOS',
   trialPlanName: 'تجريبي',
   trialDescription:
@@ -198,8 +200,8 @@ export const plans = {
   teaserProofBlocked: 'المحظور هذا الأسبوع: {{count}}',
   premiumHistoryNote: 'يحتفظ Premium بسجل الاستخدام الكامل لآخر 30 يومًا.',
   teaserTopApps:
-    'تعرض النسخة المجانية أعلى ثلاثة تطبيقات. يرتّب Premium كل تطبيق، دقيقة بدقيقة، ويحتفظ بـ 30 يومًا.',
-  teaserWebHistory: 'يعرض Premium المواقع التي حُظرت وما بحث عنه طفلك.',
+    'تعرض النسخة المجانية أعلى ثلاثة تطبيقات. يرتّب Premium أعلى عشرة تطبيقات، دقيقة بدقيقة، ويحتفظ بـ 30 يومًا.',
+  teaserWebHistory: 'يعرض Premium المواقع التي زارها طفلك وأيها حُظر.',
   teaserVideoHistory: 'يحتفظ Premium بكل فيديو ومقطع Short شاهده على YouTube.',
   teaserLocationTrail:
     'يحتفظ Premium بالأماكن التي ذهب إليها، وينبّهك عند وصوله إلى المنزل أو المدرسة وعند مغادرته لهما.',

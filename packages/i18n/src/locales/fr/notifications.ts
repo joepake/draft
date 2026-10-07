@@ -18,6 +18,13 @@ export const notifications = {
   footnote:
     'Ces réglages ne valent que pour ce téléphone. Les autres appareils parents gardent les leurs.',
   toastSaveFailed: 'Enregistrement impossible. Réessayez.',
+  localReminderSetupTitle: 'Terminez la configuration',
+  localReminderIdleTitle: 'Vos règles restent actives',
+  localReminderIdleBody:
+    'Vous n’avez pas ouvert KidGate depuis une semaine. Consultez le temps d’écran d’aujourd’hui et ce qui a été bloqué.',
+  localReminderDormancyTitle: 'Les rapports pourraient cesser',
+  localReminderDormancyBody:
+    'Si personne n’ouvre KidGate pendant {{days}} jours, les appareils de votre enfant cessent d’envoyer des rapports jusqu’à ce que quelqu’un l’ouvre à nouveau. Vos règles fonctionnent toujours.',
   alert: {
     tamperAlerts: {
       label: 'Protection désactivée',

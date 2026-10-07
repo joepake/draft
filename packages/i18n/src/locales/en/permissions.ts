@@ -41,7 +41,7 @@ export const permissions = {
   markDone: 'Done',
   overlayStepAllow: 'Turn on “Allow display over other apps” for KidGate.',
   accessibilityStepOpenSettings:
-    'Select Settings below — it opens KidGate’s own Accessibility page.',
+    'Select Agree below — it opens KidGate’s own Accessibility page.',
   accessibilityStepFindKidGate:
     'If the full list opens instead, select KidGate under Downloaded apps.',
   accessibilityStepTurnOn:
@@ -49,7 +49,10 @@ export const permissions = {
   restrictedSettingsStep:
     'If the switch is greyed out, open Settings › Apps › KidGate, select the ⋮ menu and choose “Allow restricted settings”, then return here and try again.',
   accessibilityWarningNote:
-    'Android warns that KidGate can observe your actions. With this permission KidGate sees which app is open, so the lock can stay on top, and reads the title and channel of YouTube videos when watched videos are recorded. It does not use it to read passwords, messages or what you type.',
+    'Android warns that KidGate can observe your actions. With this permission KidGate sees which app is open, so the lock can stay on top. When watched videos are recorded, it also reads the title and channel of each YouTube video and sends them to your parent. It does not use this permission to read passwords, messages or what you type.',
+  accessibilityAgree: 'Agree',
+  accessibilityTvNote:
+    'With this permission KidGate sees which app is open, so the lock can stay on top. It also counts how long each app is used and sends that to your parent. It does not read what is on the screen, passwords or messages.',
   uninstallProtectionWizardBody:
     'Stops this app from being uninstalled without the Parent PIN. Android shows its own confirmation screen.',
   notificationsWizardBody:

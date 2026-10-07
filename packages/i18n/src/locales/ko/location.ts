@@ -43,9 +43,9 @@ export const location = {
   historyOpenMapsAccessibility: '{{place}}를 지도에서 열기',
   locationBannerTitle: '위치 정보 켜기',
   locationBannerBody:
-    '안전하게 도착했는지 부모님이 알 수 있도록 이 기기의 위치를 공유해 주세요.',
+    '안전하게 도착했는지 부모님이 알 수 있도록 이 기기의 위치를 공유해 주세요. 앱을 닫았거나 사용하지 않을 때도 KidGate는 이 기기의 위치를 부모님과 공유해요.',
   locationBannerBodySharingOff:
-    '지금은 위치 공유가 꺼져 있어서 아무것도 전송되지 않아요. 여기서 허용해 두면 나중에 부모님이 켰을 때 바로 작동해요.',
+    '지금은 위치 공유가 꺼져 있어서 아무것도 전송되지 않아요. 여기서 허용해 두면 나중에 부모님이 켰을 때 바로 작동해요. 켜지면 KidGate를 닫았거나 사용하지 않을 때도 이 기기의 위치가 공유돼요.',
   allowLocationButton: '위치 허용',
   locationNotAllowed:
     '위치 권한이 아직 허용되지 않았어요. 설정 → KidGate → 위치를 열거나 먼저 위치 서비스를 켜세요. 위치 항목이 보이지 않으면 “위치 허용”을 다시 선택하세요.',

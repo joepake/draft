@@ -173,7 +173,8 @@ export const family = {
   cardTodayNoData: 'Chưa có dữ liệu',
   cardTodayAccessibility: 'Mở báo cáo sử dụng của {{deviceName}}',
   emptyTitle: 'Chưa có thiết bị của trẻ',
-  emptyDescription: 'Thêm thiết bị của trẻ để bắt đầu theo dõi thời gian sử dụng.',
+  emptyDescription:
+    'Thêm thiết bị của con để bắt đầu theo dõi thời gian sử dụng và các ứng dụng con dùng.',
   setupFamilyTitle: 'Thiết lập gia đình',
   createFamilyButton: 'Tạo gia đình',
   joinFamilyButton: 'Tham gia gia đình',

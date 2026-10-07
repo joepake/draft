@@ -45,7 +45,7 @@ export const permissions = {
   markDone: 'Đã xong',
   overlayStepAllow: 'Bật “Hiển thị trên ứng dụng khác” cho KidGate.',
   accessibilityStepOpenSettings:
-    'Chọn Cài đặt bên dưới — thao tác này mở thẳng trang Trợ năng của KidGate.',
+    'Chọn Đồng ý bên dưới — thao tác này mở thẳng trang Trợ năng của KidGate.',
   accessibilityStepFindKidGate:
     'Nếu danh sách đầy đủ hiện ra, hãy chọn KidGate trong mục Ứng dụng đã tải xuống.',
   accessibilityStepTurnOn:
@@ -53,7 +53,10 @@ export const permissions = {
   restrictedSettingsStep:
     'Nếu công tắc bị mờ, hãy mở Cài đặt › Ứng dụng › KidGate, nhấn menu ⋮ rồi chọn “Cho phép cài đặt bị hạn chế”, sau đó quay lại đây và thử lại.',
   accessibilityWarningNote:
-    'Android sẽ cảnh báo rằng KidGate có thể quan sát thao tác của bạn. Với quyền này, KidGate biết ứng dụng nào đang mở để màn hình khóa luôn hiển thị đè lên, và đọc tiêu đề cùng tên kênh của video YouTube khi mục Ghi lại video đã xem đang bật. KidGate không dùng quyền này để đọc mật khẩu, tin nhắn hay những gì bạn gõ.',
+    'Android sẽ cảnh báo rằng KidGate có thể quan sát thao tác của bạn. Với quyền này, KidGate biết ứng dụng nào đang mở để màn hình khóa luôn hiển thị đè lên. Khi mục Ghi lại video đã xem đang bật, KidGate còn đọc tiêu đề và tên kênh của từng video YouTube rồi gửi cho bố mẹ. KidGate không dùng quyền này để đọc mật khẩu, tin nhắn hay những gì bạn gõ.',
+  accessibilityAgree: 'Đồng ý',
+  accessibilityTvNote:
+    'Với quyền này, KidGate biết ứng dụng nào đang mở để màn hình khóa luôn hiển thị đè lên. KidGate còn đếm thời gian dùng từng ứng dụng rồi gửi cho bố mẹ. KidGate không đọc nội dung trên màn hình, mật khẩu hay tin nhắn.',
   uninstallProtectionWizardBody:
     'Ngăn gỡ cài đặt ứng dụng này khi chưa nhập mã PIN phụ huynh. Android sẽ hiển thị màn hình xác nhận riêng.',
   notificationsWizardBody:

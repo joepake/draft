@@ -40,14 +40,14 @@ export const plans = {
   compareSyncPremium: 'Canlı',
   compareScreenTime: 'Ekran süresi',
   compareScreenTimeFree: 'Bugün, en çok kullanılan 3 uygulama',
-  compareScreenTimePremium: 'Her uygulama, saat saat, 30 günlük geçmiş',
+  compareScreenTimePremium: 'İlk 10 uygulama, saat saat, 30 günlük geçmiş',
   compareLocation: 'Konum',
   compareLocationFree: 'Haritayı açtığınızda',
   compareLocationPremium: 'Canlı, geçmiş ve yer uyarılarıyla',
   compareVideo: 'YouTube ve video geçmişi',
   compareCountOnly: 'Yalnızca kaç tane, hangileri değil',
   compareWeb: 'Web',
-  compareWebPremium: 'Tam geçmiş ve aramalar',
+  compareWebPremium: 'Hangi siteler, adlarıyla',
   compareNewApps: 'Yeni yüklenen uygulamalar',
   compareNewAppsPremium: 'Hangi uygulamalar, adlarıyla',
   compareMessages: 'Mesaj uyarıları (Android)',
@@ -76,7 +76,9 @@ export const plans = {
   groupControlsTitle: 'Daha ince denetim',
   sectionIncludedFeatures: 'Neler dahil',
   footerLegal:
-    'App Store veya Google Play üzerinden faturalandırılır. Abonelikler, dönem bitiminden en az 24 saat önce iptal etmezseniz otomatik yenilenir. Tek seferlik satın alma yenilenmez ve KidGate sunulduğu sürece geçerlidir.',
+    'App Store üzerinden faturalandırılır. Abonelikler, dönem bitiminden en az 24 saat önce iptal etmezseniz otomatik yenilenir. Tek seferlik satın alma yenilenmez ve KidGate sunulduğu sürece geçerlidir.',
+  footerLegalAndroid:
+    'Google Play üzerinden faturalandırılır. Abonelikler, Google Play’de iptal edene kadar otomatik yenilenir. Tek seferlik satın alma yenilenmez ve KidGate sunulduğu sürece geçerlidir.',
   subscribeButton: 'Premium’a abone ol',
   restoringPurchases: 'Geri yükleniyor…',
   restorePurchases: 'Satın alımları geri yükle',
@@ -94,7 +96,7 @@ export const plans = {
   featureAppBlocking: 'Engellenen Uygulamalar',
   featureWebFiltering: 'Web filtresi',
   featureSeeLocation: 'Konum',
-  featureTamperAlerts: 'KidGate kaldırılırsa uyarı',
+  featureTamperAlerts: 'Bir izin kapatılırsa uyarı',
   featureSosAlerts: 'SOS uyarıları',
   trialPlanName: 'Deneme',
   trialDescription:
@@ -202,9 +204,9 @@ export const plans = {
   teaserProofBlocked: 'Bu hafta engellenen: {{count}}',
   premiumHistoryNote: 'Premium son 30 günün tüm kullanım geçmişini saklar.',
   teaserTopApps:
-    'Ücretsiz sürüm ilk üç uygulamayı gösterir. Premium her uygulamayı dakika dakika adlandırır ve 30 gün saklar.',
+    'Ücretsiz sürüm ilk üç uygulamayı gösterir. Premium ilk onu dakika dakika adlandırır ve 30 gün saklar.',
   teaserWebHistory:
-    'Premium hangi sitelerin engellendiğini ve çocuğunuzun ne aradığını gösterir.',
+    'Premium çocuğunuzun hangi siteleri ziyaret ettiğini ve hangilerinin engellendiğini gösterir.',
   teaserVideoHistory: 'Premium izlediği her YouTube videosunu ve Short’u saklar.',
   teaserLocationTrail:
     'Premium, nerelere gittiğini kaydeder; eve ve okula varınca ya da oradan ayrılınca haber verir.',

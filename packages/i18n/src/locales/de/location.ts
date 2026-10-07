@@ -49,9 +49,9 @@ export const location = {
   historyOpenMapsAccessibility: '{{place}} in Karten öffnen',
   locationBannerTitle: 'Standort aktivieren',
   locationBannerBody:
-    'Deine Eltern möchten den Standort dieses Geräts sehen, damit sie wissen, dass du gut angekommen bist.',
+    'Deine Eltern möchten den Standort dieses Geräts sehen, damit sie wissen, dass du gut angekommen bist. KidGate teilt den Standort dieses Geräts auch dann mit deinen Eltern, wenn die App geschlossen ist oder nicht benutzt wird.',
   locationBannerBodySharingOff:
-    'Die Standortfreigabe ist gerade aus, es wird also nichts gesendet. Wenn du sie hier erlaubst, funktioniert sie sofort, falls deine Eltern sie später einschalten.',
+    'Die Standortfreigabe ist gerade aus, es wird also nichts gesendet. Wenn du sie hier erlaubst, funktioniert sie sofort, falls deine Eltern sie später einschalten. Sobald sie an ist, wird der Standort dieses Geräts auch dann geteilt, wenn KidGate geschlossen ist oder nicht benutzt wird.',
   allowLocationButton: 'Standort erlauben',
   locationNotAllowed:
     'Der Standortzugriff wurde noch nicht erlaubt. Öffne Einstellungen → KidGate → Standort (oder aktiviere zuerst die Ortungsdienste). Falls die Option „Standort“ fehlt, wähle erneut „Standort erlauben“.',

@@ -47,7 +47,7 @@ export const permissions = {
   overlayStepAllow:
     'KidGate için “Diğer uygulamaların üzerinde göster” seçeneğini açın.',
   accessibilityStepOpenSettings:
-    'Aşağıdan Ayarlar’ı seçin — bu, doğrudan KidGate’in Erişilebilirlik sayfasını açar.',
+    'Aşağıdaki “Kabul et” düğmesini seçin — bu, doğrudan KidGate’in Erişilebilirlik sayfasını açar.',
   accessibilityStepFindKidGate:
     'Bunun yerine tam liste açılırsa, Yüklü / indirilen uygulamalar altında KidGate’i seçin.',
   accessibilityStepTurnOn:
@@ -55,7 +55,10 @@ export const permissions = {
   restrictedSettingsStep:
     'Anahtar soluk görünüyorsa Ayarlar › Uygulamalar › KidGate yolunu açıp ⋮ menüsüne dokunun ve “Kısıtlanmış ayarlara izin ver” seçeneğini seçin, ardından buraya dönüp tekrar deneyin.',
   accessibilityWarningNote:
-    'Android, KidGate’in işlemlerinizi izleyebileceği uyarısını gösterir. Bu izinle KidGate hangi uygulamanın açık olduğunu görür, böylece kilit en üstte kalabilir; izlenen videolar kaydediliyorsa YouTube videolarının başlığını ve kanalını da okur. Bu izni parolaları, mesajları veya yazdıklarınızı okumak için kullanmaz.',
+    'Android, KidGate’in işlemlerinizi izleyebileceği uyarısını gösterir. Bu izinle KidGate hangi uygulamanın açık olduğunu görür, böylece kilit en üstte kalabilir. İzlenen videolar kaydediliyorsa her YouTube videosunun başlığını ve kanalını da okur ve bunları ailenize gönderir. Bu izni parolaları, mesajları veya yazdıklarınızı okumak için kullanmaz.',
+  accessibilityAgree: 'Kabul et',
+  accessibilityTvNote:
+    'Bu izinle KidGate hangi uygulamanın açık olduğunu görür, böylece kilit en üstte kalabilir. Ayrıca her uygulamanın ne kadar süre kullanıldığını sayar ve bunu ailene gönderir. Ekrandakileri, parolaları veya mesajları okumaz.',
   uninstallProtectionWizardBody:
     'Ebeveyn PIN’i girilmeden bu uygulamanın kaldırılmasını engeller. Android kendi onay ekranını gösterir.',
   notificationsWizardBody:

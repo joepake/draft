@@ -50,9 +50,9 @@ export const location = {
   historyOpenMapsAccessibility: 'Abrir {{place}} en Mapas',
   locationBannerTitle: 'Activar ubicación',
   locationBannerBody:
-    'Tu padre o madre quiere ver la ubicación de este dispositivo para saber que has llegado bien.',
+    'Tu padre o madre quiere ver la ubicación de este dispositivo para saber que has llegado bien. KidGate comparte la ubicación de este dispositivo con tu padre o madre incluso cuando la app está cerrada o no la usas.',
   locationBannerBodySharingOff:
-    'Ahora mismo compartir la ubicación está desactivado, así que no se envía nada. Si lo permites aquí, funcionará enseguida si tu padre o madre lo activa más adelante.',
+    'Ahora mismo compartir la ubicación está desactivado, así que no se envía nada. Si lo permites aquí, funcionará enseguida si tu padre o madre lo activa más adelante. Cuando esté activado, la ubicación de este dispositivo se compartirá incluso cuando la app esté cerrada o no la uses.',
   allowLocationButton: 'Permitir ubicación',
   locationNotAllowed:
     'La ubicación aún no está permitida. Abre Ajustes → KidGate → Ubicación (o activa primero los Servicios de ubicación). Si la opción Ubicación no aparece, selecciona nuevamente «Permitir ubicación».',

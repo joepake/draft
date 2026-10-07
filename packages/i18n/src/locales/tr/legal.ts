@@ -3,7 +3,7 @@ export const legal = {
     title: 'Gizlilik Politikası',
     effectiveDate: '4 Ekim 2026 tarihinde yürürlüğe girer',
     intro:
-      'KidGate, uygulamayı işleten bağımsız geliştiricinin kullandığı ürün ve ticari adıdır. Bu politika, ebeveynler hizmeti bir çocuğun cihazını yönetmek için kullandığında KidGate’in verileri nasıl işlediğini açıklar. Kapsamı iPhone, iPad ve Android için KidGate uygulamaları, macOS ve Windows için KidGate aracısı, KidGate tarayıcı uzantısı, Android TV uygulaması, ebeveyn paneli ve kidgate.app web sitesidir.',
+      'Uygulama, KidGate ürün ve ticari adı altında işletilmektedir. Bu politika, ebeveynler hizmeti bir çocuğun cihazını yönetmek için kullandığında KidGate’in verileri nasıl işlediğini açıklar. Kapsamı iPhone, iPad ve Android için KidGate uygulamaları, macOS ve Windows için KidGate aracısı, KidGate tarayıcı uzantısı, Android TV uygulaması, ebeveyn paneli ve kidgate.app web sitesidir.',
     sections: [
       {
         title: '1. Kapsam ve ebeveyn yetkisi',
@@ -75,7 +75,7 @@ export const legal = {
     title: 'Hizmet Şartları',
     effectiveDate: '6 Eylül 2026 tarihinde yürürlüğe girer',
     intro:
-      'KidGate’e giriş yaparak veya KidGate’i kullanarak, bu şartları okuduğunuzu ve kabul ettiğinizi onaylarsınız. KidGate, hizmeti işleten bağımsız geliştiricinin kullandığı ürün ve ticari adıdır.',
+      'KidGate’e giriş yaparak veya KidGate’i kullanarak, bu şartları okuduğunuzu ve kabul ettiğinizi onaylarsınız. Hizmet, KidGate ürün ve ticari adı altında işletilmektedir.',
     sections: [
       {
         title: '1. Uygunluk',
@@ -123,7 +123,7 @@ export const legal = {
       },
       {
         title: '12. Kullanılabilirlik ve değişiklikler',
-        body: 'Hizmet; bakım, güvenlik, platform değişiklikleri, yasa veya operasyonel nedenlerle değişebilir, duraklatılabilir veya sona erdirilebilir. KidGate bağımsız bir geliştirici tarafından işletilmektedir ve hizmete son verilebilir; bu durumda etkin abonelikler ve tek seferlik satın alma geçerli uygulama mağazası kurallarına göre işlenir — tek seferlik satın alma, hizmeti sunulduğu sürece satın alır; sonsuza dek sunulacağına dair bir söz değildir. KidGate makul bir kullanılabilirlik hedeflemektedir ancak kesintisiz, hatasız çalışma veya her cihazla uyumluluk garanti etmez.',
+        body: 'Hizmet; bakım, güvenlik, platform değişiklikleri, yasa veya operasyonel nedenlerle değişebilir, duraklatılabilir veya sona erdirilebilir. KidGate’in sunumu sona erdirilebilir; bu durumda etkin abonelikler ve tek seferlik satın alma geçerli uygulama mağazası kurallarına göre işlenir — tek seferlik satın alma, hizmeti sunulduğu sürece satın alır; sonsuza dek sunulacağına dair bir söz değildir. KidGate makul bir kullanılabilirlik hedeflemektedir ancak kesintisiz, hatasız çalışma veya her cihazla uyumluluk garanti etmez.',
       },
       {
         title: '13. Sorumluluk reddi beyanları',

@@ -46,9 +46,9 @@ export const location = {
   historyOpenMapsAccessibility: 'Buka {{place}} di Maps',
   locationBannerTitle: 'Aktifkan lokasi',
   locationBannerBody:
-    'Orang tuamu ingin melihat lokasi perangkat ini agar tahu kamu sudah tiba dengan selamat.',
+    'Orang tuamu ingin melihat lokasi perangkat ini agar tahu kamu sudah tiba dengan selamat. KidGate tetap membagikan lokasi perangkat ini ke orang tuamu walaupun aplikasinya sedang ditutup atau tidak dipakai.',
   locationBannerBodySharingOff:
-    'Berbagi lokasi sedang mati, jadi tidak ada yang dikirim. Kalau kamu izinkan di sini, fiturnya langsung jalan saat orang tuamu menyalakannya nanti.',
+    'Berbagi lokasi sedang mati, jadi tidak ada yang dikirim. Kalau kamu izinkan di sini, fiturnya langsung jalan saat orang tuamu menyalakannya nanti. Setelah dinyalakan, lokasi perangkat ini tetap dibagikan walaupun KidGate sedang ditutup atau tidak dipakai.',
   allowLocationButton: 'Izinkan lokasi',
   locationNotAllowed:
     'Izin lokasi belum diberikan. Buka Pengaturan → KidGate → Lokasi (atau aktifkan Layanan Lokasi terlebih dahulu). Pilih “Izinkan lokasi” lagi jika opsi Lokasi tidak muncul.',

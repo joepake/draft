@@ -18,6 +18,13 @@ export const notifications = {
   footnote:
     'Estos ajustes solo se aplican a este teléfono. Los demás dispositivos de madres y padres mantienen los suyos.',
   toastSaveFailed: 'No se pudo guardar. Inténtalo de nuevo.',
+  localReminderSetupTitle: 'Termina de configurar KidGate',
+  localReminderIdleTitle: 'Tus reglas siguen funcionando',
+  localReminderIdleBody:
+    'Hace una semana que no abres KidGate. Consulta el tiempo de pantalla de hoy y lo que se bloqueó.',
+  localReminderDormancyTitle: 'Los informes podrían parar',
+  localReminderDormancyBody:
+    'Si nadie abre KidGate durante {{days}} días, los dispositivos de tu hijo dejan de enviar informes hasta que alguien vuelva a abrirlo. Tus reglas siguen funcionando.',
   alert: {
     tamperAlerts: {
       label: 'Protección desactivada',

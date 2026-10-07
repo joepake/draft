@@ -948,7 +948,7 @@ export default {
     eyebrow: 'About us',
     title: 'Parental control a family can',
     titleAccent: 'actually agree on.',
-    lede: 'KidGate is made by an independent developer working on one product. Our whole posture is that a parent should be able to trust what the app says — including the parts where it says it cannot help.',
+    lede: 'We work on one product, so KidGate gets all of our attention. Our whole posture is that a parent should be able to trust what the app says — including the parts where it says it cannot help.',
 
     storyEyebrow: 'Why KidGate exists',
     storyTitle: 'Screen time became the argument in every house',

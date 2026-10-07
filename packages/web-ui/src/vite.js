@@ -82,6 +82,9 @@ const link = attrs => ({ tag: 'link', attrs, injectTo: 'head' });
  * @param {string} [options.themeColor]  The browser chrome's colour. A literal,
  *   because a Vite config cannot load the TypeScript tokens; keep it equal to
  *   the `background` of the palette the app paints first.
+ * @param {string} [options.appStoreId]  The App Store's numeric id. Set, it adds
+ *   Safari's Smart App Banner on iPhone and iPad. Leave it unset while the
+ *   listing is not live — the banner would offer an app the store cannot serve.
  */
 export function kidgateHead({
   origin,
@@ -89,6 +92,7 @@ export function kidgateHead({
   description,
   noindex = false,
   themeColor = '#0b1226',
+  appStoreId,
 }) {
   const url = `${origin}/`;
   const image = `${origin}/${OG_IMAGE_FILE}`;
@@ -121,6 +125,9 @@ export function kidgateHead({
           meta({ name: 'description', content: description }),
           link({ rel: 'canonical', href: url }),
           ...(noindex ? [meta({ name: 'robots', content: 'noindex, nofollow' })] : []),
+          ...(appStoreId
+            ? [meta({ name: 'apple-itunes-app', content: `app-id=${appStoreId}` })]
+            : []),
 
           meta({ property: 'og:type', content: 'website' }),
           meta({ property: 'og:site_name', content: 'KidGate' }),

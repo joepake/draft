@@ -21,6 +21,13 @@ export const notifications = {
   footnote:
     'تنطبق هذه الإعدادات على هذا الهاتف فقط. تحتفظ أجهزة الوالدين الأخرى بإعداداتها.',
   toastSaveFailed: 'تعذّر الحفظ. حاول مرة أخرى.',
+  localReminderSetupTitle: 'أكمل إعداد KidGate',
+  localReminderIdleTitle: 'قواعدك لا تزال تعمل',
+  localReminderIdleBody:
+    'مرّ أسبوع منذ آخر مرة فتحت فيها KidGate. اطّلع على وقت الشاشة اليوم وما تم حظره.',
+  localReminderDormancyTitle: 'قد تتوقف التقارير',
+  localReminderDormancyBody:
+    'إذا لم يفتح أحد KidGate لمدة {{days}} يومًا، تتوقف أجهزة طفلك عن إرسال التقارير حتى يفتحه أحد من جديد. قواعدك لا تزال تعمل.',
   alert: {
     tamperAlerts: {
       label: 'إيقاف الحماية',

@@ -45,7 +45,7 @@ export const permissions = {
   markDone: 'Listo',
   overlayStepAllow: 'Activa «Mostrar sobre otras aplicaciones» para KidGate.',
   accessibilityStepOpenSettings:
-    'Selecciona Ajustes abajo: abre directamente la página de Accesibilidad de KidGate.',
+    'Selecciona Aceptar abajo: abre directamente la página de Accesibilidad de KidGate.',
   accessibilityStepFindKidGate:
     'Si en su lugar se abre la lista completa, selecciona KidGate en Aplicaciones descargadas.',
   accessibilityStepTurnOn:
@@ -53,7 +53,10 @@ export const permissions = {
   restrictedSettingsStep:
     'Si el interruptor aparece atenuado, abre Ajustes › Aplicaciones › KidGate, toca el menú ⋮ y elige «Permitir ajustes restringidos»; después vuelve aquí e inténtalo de nuevo.',
   accessibilityWarningNote:
-    'Android avisa de que KidGate puede observar tus acciones. Con este permiso KidGate ve qué app está abierta, para que el bloqueo pueda mantenerse encima, y lee el título y el canal de los vídeos de YouTube cuando se registran los vídeos vistos. No lo usa para leer contraseñas, mensajes ni lo que escribes.',
+    'Android avisa de que KidGate puede observar tus acciones. Con este permiso KidGate ve qué app está abierta, para que el bloqueo pueda mantenerse encima. Cuando se registran los vídeos vistos, también lee el título y el canal de cada vídeo de YouTube y se los envía a tu padre o madre. No usa este permiso para leer contraseñas, mensajes ni lo que escribes.',
+  accessibilityAgree: 'Aceptar',
+  accessibilityTvNote:
+    'Con este permiso KidGate ve qué app está abierta, para que el bloqueo pueda mantenerse encima. También cuenta cuánto tiempo se usa cada app y se lo envía a tu padre o madre. No lee lo que hay en la pantalla, contraseñas ni mensajes.',
   uninstallProtectionWizardBody:
     'Impide que esta app se desinstale sin el PIN parental. Android muestra su propia pantalla de confirmación.',
   notificationsWizardBody:

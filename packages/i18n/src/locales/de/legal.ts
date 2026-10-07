@@ -3,7 +3,7 @@ export const legal = {
     title: 'Datenschutzerklärung',
     effectiveDate: 'Gültig ab 4. Oktober 2026',
     intro:
-      'KidGate ist der Produkt- und Handelsname, den der unabhängige Entwickler verwendet, der die App betreibt. Diese Richtlinie erläutert, wie KidGate mit Daten umgeht, wenn Eltern den Dienst nutzen, um das Gerät eines Kindes zu verwalten. Sie gilt für die KidGate-Apps für iPhone, iPad und Android, den KidGate-Agenten für macOS und Windows, die KidGate-Browsererweiterung, die Android-TV-App, das Eltern-Dashboard und die Website kidgate.app.',
+      'KidGate ist der Produkt- und Handelsname, unter dem die App betrieben wird. Diese Richtlinie erläutert, wie KidGate mit Daten umgeht, wenn Eltern den Dienst nutzen, um das Gerät eines Kindes zu verwalten. Sie gilt für die KidGate-Apps für iPhone, iPad und Android, den KidGate-Agenten für macOS und Windows, die KidGate-Browsererweiterung, die Android-TV-App, das Eltern-Dashboard und die Website kidgate.app.',
     sections: [
       {
         title: '1. Geltungsbereich und elterliche Befugnis',
@@ -75,7 +75,7 @@ export const legal = {
     title: 'Nutzungsbedingungen',
     effectiveDate: 'Gültig ab 6. September 2026',
     intro:
-      'Durch die Anmeldung bei oder die Nutzung von KidGate bestätigen Sie, dass Sie diese Bedingungen gelesen haben und ihnen zustimmen. KidGate ist der Produkt- und Handelsname, den der unabhängige Entwickler verwendet, der den Dienst betreibt.',
+      'Durch die Anmeldung bei oder die Nutzung von KidGate bestätigen Sie, dass Sie diese Bedingungen gelesen haben und ihnen zustimmen. KidGate ist der Produkt- und Handelsname, unter dem der Dienst betrieben wird.',
     sections: [
       {
         title: '1. Berechtigung',
@@ -123,7 +123,7 @@ export const legal = {
       },
       {
         title: '12. Verfügbarkeit und Änderungen',
-        body: 'Der Dienst kann sich aufgrund von Wartung, Sicherheit, Plattformänderungen, Recht oder betrieblichen Erfordernissen ändern, pausiert oder eingestellt werden. KidGate wird von einem unabhängigen Entwickler betrieben und kann eingestellt werden; in diesem Fall werden aktive Abonnements und der Einmalkauf gemäß den anwendbaren App-Store-Regeln behandelt — der Einmalkauf erwirbt den Dienst, solange er angeboten wird, und kein Versprechen, dass er für immer angeboten wird. KidGate strebt eine angemessene Verfügbarkeit an, verspricht jedoch keinen unterbrechungsfreien, fehlerfreien Betrieb oder Kompatibilität mit jedem Gerät.',
+        body: 'Der Dienst kann sich aufgrund von Wartung, Sicherheit, Plattformänderungen, Recht oder betrieblichen Erfordernissen ändern, pausiert oder eingestellt werden. KidGate kann eingestellt werden; in diesem Fall werden aktive Abonnements und der Einmalkauf gemäß den anwendbaren App-Store-Regeln behandelt — der Einmalkauf erwirbt den Dienst, solange er angeboten wird, und kein Versprechen, dass er für immer angeboten wird. KidGate strebt eine angemessene Verfügbarkeit an, verspricht jedoch keinen unterbrechungsfreien, fehlerfreien Betrieb oder Kompatibilität mit jedem Gerät.',
       },
       {
         title: '13. Haftungsausschlüsse',

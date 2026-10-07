@@ -17,6 +17,13 @@ export const notifications = {
   footnote:
     'Cài đặt này chỉ áp dụng cho máy này. Máy phụ huynh khác giữ cài đặt riêng.',
   toastSaveFailed: 'Không lưu được. Vui lòng thử lại.',
+  localReminderSetupTitle: 'Hoàn tất thiết lập KidGate',
+  localReminderIdleTitle: 'Quy tắc của bạn vẫn chạy',
+  localReminderIdleBody:
+    'Đã một tuần bạn chưa mở KidGate. Xem thời gian sử dụng hôm nay và những gì đã bị chặn.',
+  localReminderDormancyTitle: 'Thiết bị có thể ngừng báo cáo',
+  localReminderDormancyBody:
+    'Nếu không ai mở KidGate trong {{days}} ngày, thiết bị của con sẽ ngừng báo cáo cho tới khi có người mở lại. Quy tắc của bạn vẫn hoạt động.',
   alert: {
     tamperAlerts: {
       label: 'Bảo vệ bị tắt',

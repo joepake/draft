@@ -18,6 +18,13 @@ export const notifications = {
   footnote:
     'Diese Einstellungen gelten nur für dieses Telefon. Andere Elterngeräte behalten ihre eigenen.',
   toastSaveFailed: 'Speichern nicht möglich. Bitte erneut versuchen.',
+  localReminderSetupTitle: 'Einrichtung abschließen',
+  localReminderIdleTitle: 'Deine Regeln laufen weiter',
+  localReminderIdleBody:
+    'Du hast KidGate seit einer Woche nicht geöffnet. Sieh dir die Bildschirmzeit und die Sperren von heute an.',
+  localReminderDormancyTitle: 'Berichte könnten ausbleiben',
+  localReminderDormancyBody:
+    'Wenn {{days}} Tage lang niemand KidGate öffnet, senden die Geräte deines Kindes keine Berichte mehr, bis jemand die App wieder öffnet. Deine Regeln laufen weiter.',
   alert: {
     tamperAlerts: {
       label: 'Schutz deaktiviert',

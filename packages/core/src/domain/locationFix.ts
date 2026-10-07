@@ -114,10 +114,10 @@ export function restingRadiusMeters(accuracy: number | null | undefined): number
  * Establishing a position, with nothing to contradict, takes two minutes on
  * either.
  *
- * Time first, reads second. The agent reads on the family's report cadence
- * (`aliveIntervalMs`: three minutes while a parent console is open, fifteen
- * idle, thirty lapsed), so a rule counted in reads would mean a different
- * number of minutes at different hours of the day. These are minutes a run
+ * Time first, reads second. The agent's read cadence has followed the
+ * family's report cadence (three minutes, fifteen, thirty, two hours), so a
+ * rule counted in reads would mean a different number of minutes at different
+ * hours of the day. These are minutes a run
  * has to survive, with a floor of witnesses so that one pair of reads a
  * quarter of an hour apart cannot carry a tower on its own.
  */

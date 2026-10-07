@@ -17,6 +17,13 @@ export const notifications = {
   footnote:
     '이 설정은 이 기기에만 적용됩니다. 다른 부모 기기는 각자 설정을 유지합니다.',
   toastSaveFailed: '저장할 수 없습니다. 다시 시도해 주세요.',
+  localReminderSetupTitle: 'KidGate 설정을 마치세요',
+  localReminderIdleTitle: '규칙은 계속 작동합니다',
+  localReminderIdleBody:
+    '일주일 동안 KidGate를 열지 않았습니다. 오늘 사용 시간과 차단된 항목을 확인하세요.',
+  localReminderDormancyTitle: '기기 보고가 멈출 수 있습니다',
+  localReminderDormancyBody:
+    '{{days}}일 동안 아무도 KidGate를 열지 않으면 누군가 다시 열 때까지 자녀 기기가 보고를 멈춥니다. 규칙은 계속 작동합니다.',
   alert: {
     tamperAlerts: {
       label: '보호 기능 꺼짐',

@@ -17,6 +17,13 @@ export const notifications = {
   footnote:
     'Pengaturan ini hanya berlaku untuk ponsel ini. Perangkat orang tua lain punya pengaturannya sendiri.',
   toastSaveFailed: 'Tidak dapat menyimpan. Coba lagi.',
+  localReminderSetupTitle: 'Selesaikan penyiapan KidGate',
+  localReminderIdleTitle: 'Aturan Anda tetap berjalan',
+  localReminderIdleBody:
+    'Sudah seminggu Anda tidak membuka KidGate. Lihat waktu layar hari ini dan apa saja yang diblokir.',
+  localReminderDormancyTitle: 'Laporan bisa berhenti',
+  localReminderDormancyBody:
+    'Jika tidak ada yang membuka KidGate selama {{days}} hari, perangkat anak berhenti melapor sampai ada yang membukanya lagi. Aturan Anda tetap berjalan.',
   alert: {
     tamperAlerts: {
       label: 'Perlindungan dimatikan',

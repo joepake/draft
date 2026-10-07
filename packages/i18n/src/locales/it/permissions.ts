@@ -47,7 +47,7 @@ export const permissions = {
   markDone: 'Fatto',
   overlayStepAllow: 'Attiva «Mostra sopra le altre app» per KidGate.',
   accessibilityStepOpenSettings:
-    'Seleziona Impostazioni qui sotto: si apre direttamente la pagina Accessibilità di KidGate.',
+    'Seleziona Accetta qui sotto: si apre direttamente la pagina Accessibilità di KidGate.',
   accessibilityStepFindKidGate:
     'Se invece si apre l’elenco completo, seleziona KidGate in App installate/scaricate.',
   accessibilityStepTurnOn:
@@ -55,7 +55,10 @@ export const permissions = {
   restrictedSettingsStep:
     'Se l’interruttore è disattivato, apri Impostazioni › App › KidGate, tocca il menu ⋮ e scegli “Consenti impostazioni con restrizioni”, poi torna qui e riprova.',
   accessibilityWarningNote:
-    'Android avvisa che KidGate può osservare le tue azioni. Con questa autorizzazione KidGate vede quale app è aperta, così il blocco può restare in primo piano, e legge il titolo e il canale dei video di YouTube quando la registrazione dei video guardati è attiva. Non la usa per leggere password, messaggi o ciò che scrivi.',
+    'Android avvisa che KidGate può osservare le tue azioni. Con questa autorizzazione KidGate vede quale app è aperta, così il blocco può restare in primo piano. Quando la registrazione dei video guardati è attiva, legge anche il titolo e il canale di ogni video di YouTube e li invia ai tuoi genitori. Non usa questa autorizzazione per leggere password, messaggi o ciò che scrivi.',
+  accessibilityAgree: 'Accetta',
+  accessibilityTvNote:
+    'Con questa autorizzazione KidGate vede quale app è aperta, così il blocco può restare in primo piano. Conta anche per quanto tempo viene usata ogni app e lo invia ai tuoi genitori. Non legge il contenuto dello schermo, le password né i messaggi.',
   uninstallProtectionWizardBody:
     'Impedisce di disinstallare questa app senza il PIN genitore. Android mostra la sua schermata di conferma.',
   notificationsWizardBody:

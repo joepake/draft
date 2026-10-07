@@ -47,7 +47,7 @@ export const permissions = {
   markDone: 'Selesai',
   overlayStepAllow: 'Aktifkan “Tampil di atas aplikasi lain” untuk KidGate.',
   accessibilityStepOpenSettings:
-    'Pilih Pengaturan di bawah — ini langsung membuka halaman Aksesibilitas KidGate.',
+    'Pilih Setuju di bawah — ini langsung membuka halaman Aksesibilitas KidGate.',
   accessibilityStepFindKidGate:
     'Jika yang terbuka adalah daftar lengkap, pilih KidGate di Aplikasi terpasang / diunduh.',
   accessibilityStepTurnOn:
@@ -55,7 +55,10 @@ export const permissions = {
   restrictedSettingsStep:
     'Jika sakelarnya abu-abu, buka Setelan › Aplikasi › KidGate, ketuk menu ⋮ lalu pilih “Izinkan setelan terbatas”, kemudian kembali ke sini dan coba lagi.',
   accessibilityWarningNote:
-    'Android memperingatkan bahwa KidGate dapat mengamati tindakan pengguna. Dengan izin ini, KidGate melihat aplikasi mana yang sedang terbuka agar kunci tetap tampil di atas, dan membaca judul serta saluran video YouTube saat video yang ditonton sedang direkam. KidGate tidak memakainya untuk membaca kata sandi, pesan, atau apa yang diketik.',
+    'Android memperingatkan bahwa KidGate dapat mengamati tindakan pengguna. Dengan izin ini, KidGate melihat aplikasi mana yang sedang terbuka agar kunci tetap tampil di atas. Saat video yang ditonton sedang direkam, KidGate juga membaca judul dan saluran setiap video YouTube lalu mengirimkannya ke orang tua. KidGate tidak memakai izin ini untuk membaca kata sandi, pesan, atau apa yang diketik.',
+  accessibilityAgree: 'Setuju',
+  accessibilityTvNote:
+    'Dengan izin ini, KidGate melihat aplikasi mana yang sedang terbuka agar kunci tetap tampil di atas. KidGate juga menghitung berapa lama setiap aplikasi dipakai lalu mengirimkannya ke orang tuamu. KidGate tidak membaca isi layar, kata sandi, atau pesan.',
   uninstallProtectionWizardBody:
     'Mencegah aplikasi ini dihapus tanpa PIN Orang Tua. Android menampilkan layar konfirmasinya sendiri.',
   notificationsWizardBody:

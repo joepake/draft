@@ -3,7 +3,7 @@ export const legal = {
     title: 'Chính sách quyền riêng tư',
     effectiveDate: 'Có hiệu lực từ ngày 04/10/2026',
     intro:
-      'KidGate là tên sản phẩm và tên hoạt động của nhà phát triển độc lập vận hành ứng dụng. Chính sách này giải thích cách KidGate xử lý dữ liệu khi phụ huynh dùng dịch vụ để quản lý thiết bị trẻ em. Chính sách áp dụng cho ứng dụng KidGate trên iPhone, iPad và Android, ứng dụng KidGate trên macOS và Windows, tiện ích mở rộng trình duyệt, ứng dụng Android TV, bảng điều khiển dành cho phụ huynh và trang kidgate.app.',
+      'Ứng dụng được vận hành dưới tên sản phẩm và tên hoạt động KidGate. Chính sách này giải thích cách KidGate xử lý dữ liệu khi phụ huynh dùng dịch vụ để quản lý thiết bị trẻ em. Chính sách áp dụng cho ứng dụng KidGate trên iPhone, iPad và Android, ứng dụng KidGate trên macOS và Windows, tiện ích mở rộng trình duyệt, ứng dụng Android TV, bảng điều khiển dành cho phụ huynh và trang kidgate.app.',
     sections: [
       {
         title: '1. Phạm vi và vai trò của phụ huynh',
@@ -75,7 +75,7 @@ export const legal = {
     title: 'Điều khoản sử dụng',
     effectiveDate: 'Có hiệu lực từ ngày 06/09/2026',
     intro:
-      'Khi đăng nhập hoặc sử dụng KidGate, bạn xác nhận đã đọc và đồng ý với các điều khoản này. KidGate là tên sản phẩm và tên hoạt động của nhà phát triển độc lập vận hành dịch vụ.',
+      'Khi đăng nhập hoặc sử dụng KidGate, bạn xác nhận đã đọc và đồng ý với các điều khoản này. Dịch vụ được vận hành dưới tên sản phẩm và tên hoạt động KidGate.',
     sections: [
       {
         title: '1. Điều kiện sử dụng',
@@ -123,7 +123,7 @@ export const legal = {
       },
       {
         title: '12. Tính sẵn có và thay đổi',
-        body: 'Dịch vụ có thể được sửa đổi, tạm dừng hoặc ngừng do bảo trì, bảo mật, thay đổi nền tảng, pháp luật hoặc lý do vận hành. KidGate do một nhà phát triển độc lập vận hành và có thể bị ngừng cung cấp; khi đó, thuê bao đang hoạt động và gói trả một lần được xử lý theo quy định áp dụng của cửa hàng ứng dụng — gói trả một lần mua dịch vụ chừng nào dịch vụ còn được cung cấp, không phải một lời hứa rằng dịch vụ sẽ được cung cấp mãi mãi. KidGate cố gắng duy trì dịch vụ hợp lý nhưng không cam kết hoạt động liên tục, không lỗi hoặc tương thích với mọi thiết bị.',
+        body: 'Dịch vụ có thể được sửa đổi, tạm dừng hoặc ngừng do bảo trì, bảo mật, thay đổi nền tảng, pháp luật hoặc lý do vận hành. KidGate có thể bị ngừng cung cấp; khi đó, thuê bao đang hoạt động và gói trả một lần được xử lý theo quy định áp dụng của cửa hàng ứng dụng — gói trả một lần mua dịch vụ chừng nào dịch vụ còn được cung cấp, không phải một lời hứa rằng dịch vụ sẽ được cung cấp mãi mãi. KidGate cố gắng duy trì dịch vụ hợp lý nhưng không cam kết hoạt động liên tục, không lỗi hoặc tương thích với mọi thiết bị.',
       },
       {
         title: '13. Tuyên bố miễn trừ',

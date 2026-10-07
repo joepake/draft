@@ -42,14 +42,14 @@ export const plans = {
   compareScreenTime: 'Temps d’écran',
   compareScreenTimeFree: 'Aujourd’hui, les 3 principales applications',
   compareScreenTimePremium:
-    'Toutes les applications, heure par heure, historique de 30 jours',
+    'Les 10 premières applications, heure par heure, historique de 30 jours',
   compareLocation: 'Localisation',
   compareLocationFree: 'À l’ouverture de la carte',
   compareLocationPremium: 'En direct, avec historique et alertes de lieux',
   compareVideo: 'Historique YouTube et vidéos',
   compareCountOnly: 'Le nombre seulement, pas lesquels',
   compareWeb: 'Web',
-  compareWebPremium: 'Historique complet et recherches',
+  compareWebPremium: 'Quels sites, avec leur nom',
   compareNewApps: 'Applications récemment installées',
   compareNewAppsPremium: 'Quelles applications, avec leur nom',
   compareMessages: 'Alertes de messages (Android)',
@@ -78,7 +78,9 @@ export const plans = {
   groupControlsTitle: 'Contrôles plus fins',
   sectionIncludedFeatures: 'Ce qui est inclus',
   footerLegal:
-    'Facturé via l’App Store ou Google Play. Les abonnements se renouvellent automatiquement sauf annulation au moins 24 heures avant la fin de la période. L’achat unique ne se renouvelle pas et vaut tant que KidGate existe.',
+    'Facturé via l’App Store. Les abonnements se renouvellent automatiquement sauf annulation au moins 24 heures avant la fin de la période. L’achat unique ne se renouvelle pas et vaut tant que KidGate existe.',
+  footerLegalAndroid:
+    'Facturé via Google Play. Les abonnements se renouvellent automatiquement jusqu’à ce que vous les annuliez dans Google Play. L’achat unique ne se renouvelle pas et vaut tant que KidGate existe.',
   subscribeButton: 'S’abonner à Premium',
   restoringPurchases: 'Restauration…',
   restorePurchases: 'Restaurer les achats',
@@ -96,7 +98,7 @@ export const plans = {
   featureAppBlocking: 'Applications bloquées',
   featureWebFiltering: 'Filtre web',
   featureSeeLocation: 'Localisation',
-  featureTamperAlerts: 'Alerte si KidGate est supprimé',
+  featureTamperAlerts: 'Alerte si une autorisation est désactivée',
   featureSosAlerts: 'Alertes SOS',
   trialPlanName: 'Essai',
   trialDescription:
@@ -209,9 +211,9 @@ export const plans = {
   premiumHistoryNote:
     'Premium conserve tout l’historique d’utilisation des 30 derniers jours.',
   teaserTopApps:
-    'La version gratuite affiche les trois principales applications. Premium nomme chaque application, minute par minute, et en garde 30 jours.',
+    'La version gratuite affiche les trois principales applications. Premium affiche les dix principales, minute par minute, et en garde 30 jours.',
   teaserWebHistory:
-    'Premium montre quels sites ont été bloqués et ce que votre enfant a recherché.',
+    'Premium montre quels sites votre enfant a visités et lesquels ont été bloqués.',
   teaserVideoHistory:
     'Premium garde chaque vidéo et chaque Short YouTube qu’il a regardé.',
   teaserLocationTrail:

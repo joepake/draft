@@ -40,14 +40,14 @@ export const plans = {
   compareSyncPremium: 'लाइव',
   compareScreenTime: 'स्क्रीन समय',
   compareScreenTimeFree: 'आज, सबसे ज़्यादा चले 3 ऐप्स',
-  compareScreenTimePremium: 'हर ऐप, घंटे-दर-घंटे, 30 दिन का इतिहास',
+  compareScreenTimePremium: 'टॉप 10 ऐप, घंटे-दर-घंटे, 30 दिन का इतिहास',
   compareLocation: 'स्थान',
   compareLocationFree: 'जब आप नक्शा खोलें',
   compareLocationPremium: 'लाइव, इतिहास और जगह की सूचनाओं के साथ',
   compareVideo: 'YouTube और वीडियो इतिहास',
   compareCountOnly: 'सिर्फ़ कितने, कौन-से नहीं',
   compareWeb: 'वेब',
-  compareWebPremium: 'पूरा इतिहास और खोजें',
+  compareWebPremium: 'कौन-सी साइटें, नाम के साथ',
   compareNewApps: 'नए इंस्टॉल हुए ऐप्स',
   compareNewAppsPremium: 'कौन-से ऐप, नाम के साथ',
   compareMessages: 'संदेश चेतावनियाँ (Android)',
@@ -76,7 +76,9 @@ export const plans = {
   groupControlsTitle: 'और बारीक नियंत्रण',
   sectionIncludedFeatures: 'इसमें क्या शामिल है',
   footerLegal:
-    'App Store या Google Play के माध्यम से बिल किया जाता है। सदस्यताएँ अवधि समाप्त होने से कम से कम 24 घंटे पहले रद्द न करने पर स्वतः नवीनीकृत होती हैं। एक बार की खरीद नवीनीकृत नहीं होती और जब तक KidGate उपलब्ध है तब तक चलती है।',
+    'App Store के माध्यम से बिल किया जाता है। सदस्यताएँ अवधि समाप्त होने से कम से कम 24 घंटे पहले रद्द न करने पर स्वतः नवीनीकृत होती हैं। एक बार की खरीद नवीनीकृत नहीं होती और जब तक KidGate उपलब्ध है तब तक चलती है।',
+  footerLegalAndroid:
+    'Google Play के माध्यम से बिल किया जाता है। सदस्यताएँ तब तक स्वतः नवीनीकृत होती रहती हैं जब तक आप उन्हें Google Play में रद्द नहीं करते। एक बार की खरीद नवीनीकृत नहीं होती और जब तक KidGate उपलब्ध है तब तक चलती है।',
   subscribeButton: 'Premium की सदस्यता लें',
   restoringPurchases: 'पुनर्स्थापित हो रहा है…',
   restorePurchases: 'खरीदारी पुनर्स्थापित करें',
@@ -94,7 +96,7 @@ export const plans = {
   featureAppBlocking: 'ब्लॉक किए गए ऐप्स',
   featureWebFiltering: 'वेब फ़िल्टर',
   featureSeeLocation: 'स्थान',
-  featureTamperAlerts: 'KidGate हटाए जाने पर अलर्ट',
+  featureTamperAlerts: 'कोई अनुमति बंद होने पर अलर्ट',
   featureSosAlerts: 'SOS अलर्ट',
   trialPlanName: 'ट्रायल',
   trialDescription:
@@ -201,9 +203,9 @@ export const plans = {
   teaserProofBlocked: 'इस हफ़्ते ब्लॉक किए गए: {{count}}',
   premiumHistoryNote: 'Premium पिछले 30 दिनों का पूरा उपयोग इतिहास रखता है।',
   teaserTopApps:
-    'फ़्री में सिर्फ़ टॉप तीन ऐप दिखते हैं। Premium हर ऐप का नाम बताता है, मिनट दर मिनट, और 30 दिन तक रखता है।',
+    'फ़्री में सिर्फ़ टॉप तीन ऐप दिखते हैं। Premium टॉप दस ऐप के नाम बताता है, मिनट दर मिनट, और 30 दिन तक रखता है।',
   teaserWebHistory:
-    'Premium बताता है कि कौन-सी साइटें ब्लॉक हुईं और आपके बच्चे ने क्या खोजा।',
+    'Premium बताता है कि आपके बच्चे ने कौन-सी साइटें खोलीं और कौन-सी ब्लॉक हुईं।',
   teaserVideoHistory: 'Premium उसके देखे हर YouTube वीडियो और Short को रखता है।',
   teaserLocationTrail:
     'Premium यह रिकॉर्ड रखता है कि बच्चा कहाँ-कहाँ गया, और घर या स्कूल पहुँचने और वहाँ से निकलने पर आपको बताता है।',

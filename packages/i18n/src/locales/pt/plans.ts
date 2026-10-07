@@ -41,14 +41,14 @@ export const plans = {
   compareSyncPremium: 'Ao vivo',
   compareScreenTime: 'Tempo de uso',
   compareScreenTimeFree: 'Hoje, os 3 apps principais',
-  compareScreenTimePremium: 'Todos os apps, hora a hora, histórico de 30 dias',
+  compareScreenTimePremium: 'Os 10 principais apps, hora a hora, histórico de 30 dias',
   compareLocation: 'Localização',
   compareLocationFree: 'Ao abrir o mapa',
   compareLocationPremium: 'Ao vivo, com histórico e avisos de locais',
   compareVideo: 'Histórico do YouTube e de vídeos',
   compareCountOnly: 'Só quantos, não quais',
   compareWeb: 'Web',
-  compareWebPremium: 'Histórico completo e buscas',
+  compareWebPremium: 'Quais sites, pelo nome',
   compareNewApps: 'Apps recém-instalados',
   compareNewAppsPremium: 'Quais apps, pelo nome',
   compareMessages: 'Alertas de mensagens (Android)',
@@ -77,7 +77,9 @@ export const plans = {
   groupControlsTitle: 'Controles mais finos',
   sectionIncludedFeatures: 'O que está incluído',
   footerLegal:
-    'Cobrado pela App Store ou pelo Google Play. As assinaturas renovam automaticamente, a menos que você cancele pelo menos 24 horas antes do fim do período. A compra única não renova e vale enquanto o KidGate estiver disponível.',
+    'Cobrado pela App Store. As assinaturas renovam automaticamente, a menos que você cancele pelo menos 24 horas antes do fim do período. A compra única não renova e vale enquanto o KidGate estiver disponível.',
+  footerLegalAndroid:
+    'Cobrado pelo Google Play. As assinaturas renovam automaticamente até você cancelar no Google Play. A compra única não renova e vale enquanto o KidGate estiver disponível.',
   subscribeButton: 'Assinar o Premium',
   restoringPurchases: 'Restaurando…',
   restorePurchases: 'Restaurar compras',
@@ -95,7 +97,7 @@ export const plans = {
   featureAppBlocking: 'Apps bloqueados',
   featureWebFiltering: 'Filtro da web',
   featureSeeLocation: 'Localização',
-  featureTamperAlerts: 'Alerta se o KidGate for removido',
+  featureTamperAlerts: 'Alerta se uma permissão for desativada',
   featureSosAlerts: 'Alertas de SOS',
   trialPlanName: 'Teste',
   trialDescription:
@@ -203,9 +205,9 @@ export const plans = {
   teaserProofBlocked: 'Bloqueados esta semana: {{count}}',
   premiumHistoryNote: 'O Premium guarda todo o histórico de uso dos últimos 30 dias.',
   teaserTopApps:
-    'O plano grátis mostra os três apps principais. O Premium mostra o nome de cada app, minuto a minuto, e guarda 30 dias.',
+    'O plano grátis mostra os três apps principais. O Premium mostra os dez principais, minuto a minuto, e guarda 30 dias.',
   teaserWebHistory:
-    'O Premium mostra quais sites foram bloqueados e o que seu filho pesquisou.',
+    'O Premium mostra quais sites seu filho visitou e quais foram bloqueados.',
   teaserVideoHistory:
     'O Premium guarda cada vídeo e Short do YouTube que ele assistiu.',
   teaserLocationTrail:

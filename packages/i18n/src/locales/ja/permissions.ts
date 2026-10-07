@@ -47,7 +47,7 @@ export const permissions = {
   markDone: '完了',
   overlayStepAllow: 'KidGateの「他のアプリの上に重ねて表示」をオンにしてください。',
   accessibilityStepOpenSettings:
-    '下の設定を選ぶと、KidGateのユーザー補助ページが直接開きます。',
+    '下の「同意する」を選ぶと、KidGateのユーザー補助ページが直接開きます。',
   accessibilityStepFindKidGate:
     '一覧全体が開いた場合は、「ダウンロードしたアプリ」からKidGateを選んでください。',
   accessibilityStepTurnOn:
@@ -55,7 +55,10 @@ export const permissions = {
   restrictedSettingsStep:
     'スイッチが灰色で押せない場合は、設定 › アプリ › KidGate を開き、⋮ メニューから「制限された設定を許可」を選んでから、ここへ戻ってもう一度お試しください。',
   accessibilityWarningNote:
-    'Androidは、KidGateが操作を監視できると警告します。この権限によってKidGateは、ロックを常に手前に表示できるようにどのアプリが開いているかを確認し、「視聴した動画を記録」がオンのときはYouTube動画のタイトルとチャンネルを読み取ります。パスワードやメッセージ、入力した内容を読むためには使いません。',
+    'Androidは、KidGateが操作を監視できると警告します。この権限によってKidGateは、ロックを常に手前に表示できるようにどのアプリが開いているかを確認します。「視聴した動画を記録」がオンのときは、各YouTube動画のタイトルとチャンネルも読み取り、保護者に送信します。パスワードやメッセージ、入力した内容を読むためには使いません。',
+  accessibilityAgree: '同意する',
+  accessibilityTvNote:
+    'この権限によってKidGateは、ロックを常に手前に表示できるようにどのアプリが開いているかを確認します。また、各アプリの使用時間を数えて保護者に送信します。画面の内容、パスワード、メッセージは読み取りません。',
   uninstallProtectionWizardBody:
     '保護者PINなしでこのアプリがアンインストールされるのを防ぎます。Androidの確認画面が表示されます。',
   notificationsWizardBody:

@@ -3,7 +3,7 @@ export const legal = {
     title: 'Política de Privacidade',
     effectiveDate: 'Em vigor a partir de 4 de outubro de 2026',
     intro:
-      'KidGate é o nome comercial e de produto utilizado pelo desenvolvedor independente que opera o aplicativo. Esta política explica como o KidGate trata os dados quando os pais utilizam o serviço para gerenciar o dispositivo de um filho. Ela abrange os aplicativos KidGate para iPhone, iPad e Android, o agente KidGate para macOS e Windows, a extensão de navegador do KidGate, o aplicativo para Android TV, o painel dos pais e o site kidgate.app.',
+      'KidGate é o nome comercial e de produto sob o qual o aplicativo é operado. Esta política explica como o KidGate trata os dados quando os pais utilizam o serviço para gerenciar o dispositivo de um filho. Ela abrange os aplicativos KidGate para iPhone, iPad e Android, o agente KidGate para macOS e Windows, a extensão de navegador do KidGate, o aplicativo para Android TV, o painel dos pais e o site kidgate.app.',
     sections: [
       {
         title: '1. Âmbito e autoridade parental',
@@ -75,7 +75,7 @@ export const legal = {
     title: 'Termos de Serviço',
     effectiveDate: 'Em vigor a partir de 6 de setembro de 2026',
     intro:
-      'Ao entrar ou utilizar o KidGate, você confirma que leu e concorda com estes termos. KidGate é o nome comercial e de produto utilizado pelo desenvolvedor independente que opera o serviço.',
+      'Ao entrar ou utilizar o KidGate, você confirma que leu e concorda com estes termos. KidGate é o nome comercial e de produto sob o qual o serviço é operado.',
     sections: [
       {
         title: '1. Elegibilidade',
@@ -123,7 +123,7 @@ export const legal = {
       },
       {
         title: '12. Disponibilidade e alterações',
-        body: 'O serviço pode mudar, ser pausado ou encerrado devido a manutenção, segurança, mudanças de plataforma, exigências legais ou razões operacionais. O KidGate é operado por um desenvolvedor independente e pode ser descontinuado; se isso ocorrer, as assinaturas ativas e a compra única serão tratadas de acordo com as regras aplicáveis da loja de aplicativos — a compra única adquire o serviço enquanto ele estiver disponível, não uma promessa de que ele será oferecido para sempre. O KidGate busca uma disponibilidade razoável, mas não garante operação ininterrupta, isenta de erros ou compatibilidade com todos os dispositivos.',
+        body: 'O serviço pode mudar, ser pausado ou encerrado devido a manutenção, segurança, mudanças de plataforma, exigências legais ou razões operacionais. O KidGate pode ser descontinuado; se isso ocorrer, as assinaturas ativas e a compra única serão tratadas de acordo com as regras aplicáveis da loja de aplicativos — a compra única adquire o serviço enquanto ele estiver disponível, não uma promessa de que ele será oferecido para sempre. O KidGate busca uma disponibilidade razoável, mas não garante operação ininterrupta, isenta de erros ou compatibilidade com todos os dispositivos.',
       },
       {
         title: '13. Isenções de responsabilidade',

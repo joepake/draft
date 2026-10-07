@@ -49,7 +49,7 @@ export const permissions = {
   markDone: 'Terminé',
   overlayStepAllow: 'Activez « Superposition aux autres apps » pour KidGate.',
   accessibilityStepOpenSettings:
-    'Sélectionnez Réglages ci-dessous : la page Accessibilité de KidGate s’ouvre directement.',
+    'Sélectionnez Accepter ci-dessous : la page Accessibilité de KidGate s’ouvre directement.',
   accessibilityStepFindKidGate:
     'Si la liste complète s’ouvre à la place, sélectionnez KidGate sous « Applications téléchargées ».',
   accessibilityStepTurnOn:
@@ -57,7 +57,10 @@ export const permissions = {
   restrictedSettingsStep:
     'Si l’interrupteur est grisé, ouvrez Paramètres › Applications › KidGate, appuyez sur le menu ⋮ et choisissez « Autoriser les paramètres restreints », puis revenez ici et réessayez.',
   accessibilityWarningNote:
-    'Android prévient que KidGate peut observer vos actions. Grâce à cette autorisation, KidGate voit quelle application est ouverte, pour que le verrouillage reste au premier plan, et lit le titre et la chaîne des vidéos YouTube lorsque l’enregistrement des vidéos regardées est activé. KidGate ne s’en sert pas pour lire les mots de passe, les messages ni ce que vous tapez.',
+    'Android prévient que KidGate peut observer vos actions. Grâce à cette autorisation, KidGate voit quelle application est ouverte, pour que le verrouillage reste au premier plan. Lorsque l’enregistrement des vidéos regardées est activé, KidGate lit aussi le titre et la chaîne de chaque vidéo YouTube et les envoie à vos parents. KidGate ne se sert pas de cette autorisation pour lire les mots de passe, les messages ni ce que vous tapez.',
+  accessibilityAgree: 'Accepter',
+  accessibilityTvNote:
+    'Grâce à cette autorisation, KidGate voit quelle application est ouverte, pour que le verrouillage reste au premier plan. KidGate compte aussi le temps passé dans chaque application et l’envoie à tes parents. Il ne lit ni le contenu de l’écran, ni les mots de passe, ni les messages.',
   uninstallProtectionWizardBody:
     'Empêche la désinstallation de cette app sans le code PIN parent. Android affiche son propre écran de confirmation.',
   notificationsWizardBody:

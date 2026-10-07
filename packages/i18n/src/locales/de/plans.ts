@@ -40,14 +40,14 @@ export const plans = {
   compareSyncPremium: 'Live',
   compareScreenTime: 'Bildschirmzeit',
   compareScreenTimeFree: 'Heute, Top 3 Apps',
-  compareScreenTimePremium: 'Jede App, Stunde für Stunde, 30 Tage Verlauf',
+  compareScreenTimePremium: 'Top 10 Apps, Stunde für Stunde, 30 Tage Verlauf',
   compareLocation: 'Standort',
   compareLocationFree: 'Beim Öffnen der Karte',
   compareLocationPremium: 'Live, mit Verlauf und Ortshinweisen',
   compareVideo: 'YouTube- und Videoverlauf',
   compareCountOnly: 'Nur die Anzahl, nicht welche',
   compareWeb: 'Web',
-  compareWebPremium: 'Vollständiger Verlauf und Suchanfragen',
+  compareWebPremium: 'Welche Seiten, mit Namen',
   compareNewApps: 'Neu installierte Apps',
   compareNewAppsPremium: 'Welche Apps, mit Namen',
   compareMessages: 'Nachrichtenwarnungen (Android)',
@@ -76,7 +76,9 @@ export const plans = {
   groupControlsTitle: 'Feinere Kontrolle',
   sectionIncludedFeatures: 'Was enthalten ist',
   footerLegal:
-    'Abrechnung über den App Store oder Google Play. Abos verlängern sich automatisch, sofern du nicht mindestens 24 Stunden vor Ablauf kündigst. Der Einmalkauf verlängert sich nicht und gilt, solange es KidGate gibt.',
+    'Abrechnung über den App Store. Abos verlängern sich automatisch, sofern du nicht mindestens 24 Stunden vor Ablauf kündigst. Der Einmalkauf verlängert sich nicht und gilt, solange es KidGate gibt.',
+  footerLegalAndroid:
+    'Abrechnung über Google Play. Abos verlängern sich automatisch, bis du sie in Google Play kündigst. Der Einmalkauf verlängert sich nicht und gilt, solange es KidGate gibt.',
   subscribeButton: 'Premium abonnieren',
   restoringPurchases: 'Wird wiederhergestellt…',
   restorePurchases: 'Käufe wiederherstellen',
@@ -94,7 +96,7 @@ export const plans = {
   featureAppBlocking: 'Blockierte Apps',
   featureWebFiltering: 'Webfilter',
   featureSeeLocation: 'Standort',
-  featureTamperAlerts: 'Warnung, wenn KidGate entfernt wird',
+  featureTamperAlerts: 'Warnung, wenn eine Berechtigung ausgeschaltet wird',
   featureSosAlerts: 'SOS-Alarme',
   trialPlanName: 'Testphase',
   trialDescription:
@@ -208,9 +210,9 @@ export const plans = {
   premiumHistoryNote:
     'Premium bewahrt den vollständigen Nutzungsverlauf der letzten 30 Tage auf.',
   teaserTopApps:
-    'Gratis zeigt die drei größten Apps. Premium nennt jede App, Minute für Minute, und bewahrt 30 Tage davon auf.',
+    'Gratis zeigt die drei größten Apps. Premium nennt die zehn größten, Minute für Minute, und bewahrt 30 Tage davon auf.',
   teaserWebHistory:
-    'Premium zeigt, welche Seiten blockiert wurden und wonach dein Kind gesucht hat.',
+    'Premium zeigt, welche Seiten dein Kind besucht hat und welche blockiert wurden.',
   teaserVideoHistory:
     'Premium bewahrt jedes YouTube-Video und jeden Short auf, den es gesehen hat.',
   teaserLocationTrail:

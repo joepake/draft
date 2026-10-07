@@ -48,9 +48,9 @@ export const location = {
   historyOpenMapsAccessibility: 'Ouvrir {{place}} dans Plans',
   locationBannerTitle: 'Activer la localisation',
   locationBannerBody:
-    'Tes parents veulent savoir où est cet appareil, pour être sûrs que tout va bien.',
+    'Tes parents veulent savoir où est cet appareil, pour être sûrs que tout va bien. KidGate partage la position de cet appareil avec tes parents, même quand l’app est fermée ou que tu ne l’utilises pas.',
   locationBannerBodySharingOff:
-    'Le partage de position est désactivé pour le moment, donc rien n’est envoyé. En autorisant ici, tout fonctionnera tout de suite si tes parents l’activent plus tard.',
+    'Le partage de position est désactivé pour le moment, donc rien n’est envoyé. En autorisant ici, tout fonctionnera tout de suite si tes parents l’activent plus tard. Une fois le partage activé, la position de cet appareil est envoyée même quand l’app est fermée ou que tu ne l’utilises pas.',
   allowLocationButton: 'Autoriser la localisation',
   locationNotAllowed:
     'La localisation n’est pas encore autorisée. Ouvre Réglages → KidGate → Position (ou active d’abord les Services de localisation). Sélectionne de nouveau « Autoriser la localisation » si l’option Position n’apparaît pas.',

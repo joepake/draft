@@ -39,14 +39,14 @@ export const plans = {
   compareSyncPremium: '실시간',
   compareScreenTime: '사용 시간',
   compareScreenTimeFree: '오늘, 많이 쓴 앱 3개',
-  compareScreenTimePremium: '모든 앱, 시간대별, 30일 기록',
+  compareScreenTimePremium: '상위 앱 10개, 시간대별, 30일 기록',
   compareLocation: '위치',
   compareLocationFree: '지도를 열었을 때',
   compareLocationPremium: '실시간, 이동 기록과 장소 알림 포함',
   compareVideo: 'YouTube 및 동영상 기록',
   compareCountOnly: '개수만, 어떤 것인지는 볼 수 없음',
   compareWeb: '웹',
-  compareWebPremium: '전체 기록과 검색어',
+  compareWebPremium: '어떤 사이트인지 이름으로 표시',
   compareNewApps: '새로 설치된 앱',
   compareNewAppsPremium: '어떤 앱인지 이름으로 표시',
   compareMessages: '메시지 경고 (Android)',
@@ -75,7 +75,9 @@ export const plans = {
   groupControlsTitle: '더 세밀한 제어',
   sectionIncludedFeatures: '포함된 항목',
   footerLegal:
-    'App Store 또는 Google Play를 통해 결제됩니다. 구독은 기간 종료 24시간 전까지 해지하지 않으면 자동 갱신됩니다. 일회성 결제는 갱신되지 않으며 KidGate가 제공되는 동안 유지됩니다.',
+    'App Store를 통해 결제됩니다. 구독은 기간 종료 24시간 전까지 해지하지 않으면 자동 갱신됩니다. 일회성 결제는 갱신되지 않으며 KidGate가 제공되는 동안 유지됩니다.',
+  footerLegalAndroid:
+    'Google Play를 통해 결제됩니다. 구독은 Google Play에서 해지할 때까지 자동 갱신됩니다. 일회성 결제는 갱신되지 않으며 KidGate가 제공되는 동안 유지됩니다.',
   subscribeButton: 'Premium 구독하기',
   restoringPurchases: '복원 중…',
   restorePurchases: '구매 복원',
@@ -93,7 +95,7 @@ export const plans = {
   featureAppBlocking: '차단된 앱',
   featureWebFiltering: '웹 필터',
   featureSeeLocation: '위치',
-  featureTamperAlerts: 'KidGate가 삭제되면 알림',
+  featureTamperAlerts: '권한이 꺼지면 알림',
   featureSosAlerts: 'SOS 알림',
   trialPlanName: '체험',
   trialDescription:
@@ -198,9 +200,8 @@ export const plans = {
   teaserProofBlocked: '이번 주 차단: {{count}}',
   premiumHistoryNote: 'Premium은 최근 30일간의 사용 기록을 모두 보관합니다.',
   teaserTopApps:
-    '무료는 상위 앱 3개만 보여줍니다. Premium은 모든 앱을 분 단위로 알려주고 30일간 보관합니다.',
-  teaserWebHistory:
-    'Premium은 어떤 사이트가 차단됐는지, 아이가 무엇을 검색했는지 보여줍니다.',
+    '무료는 상위 앱 3개만 보여줍니다. Premium은 상위 앱 10개를 분 단위로 알려주고 30일간 보관합니다.',
+  teaserWebHistory: 'Premium은 아이가 방문한 사이트와 차단된 사이트를 보여줍니다.',
   teaserVideoHistory: 'Premium은 아이가 본 YouTube 동영상과 Shorts를 모두 보관합니다.',
   teaserLocationTrail:
     'Premium은 이동 경로를 보관하고, 집과 학교에 도착하거나 떠날 때 알려줍니다.',

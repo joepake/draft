@@ -41,14 +41,15 @@ export const plans = {
   compareSyncPremium: 'En vivo',
   compareScreenTime: 'Tiempo de pantalla',
   compareScreenTimeFree: 'Hoy, las 3 apps principales',
-  compareScreenTimePremium: 'Todas las apps, hora por hora, historial de 30 días',
+  compareScreenTimePremium:
+    'Las 10 apps principales, hora por hora, historial de 30 días',
   compareLocation: 'Ubicación',
   compareLocationFree: 'Al abrir el mapa',
   compareLocationPremium: 'En vivo, con historial y avisos de lugares',
   compareVideo: 'Historial de YouTube y vídeos',
   compareCountOnly: 'Solo cuántos, no cuáles',
   compareWeb: 'Web',
-  compareWebPremium: 'Historial completo y búsquedas',
+  compareWebPremium: 'Qué sitios, por nombre',
   compareNewApps: 'Apps recién instaladas',
   compareNewAppsPremium: 'Qué apps, por nombre',
   compareMessages: 'Alertas de mensajes (Android)',
@@ -77,7 +78,9 @@ export const plans = {
   groupControlsTitle: 'Controles más finos',
   sectionIncludedFeatures: 'Qué incluye',
   footerLegal:
-    'Se factura a través del App Store o Google Play. Las suscripciones se renuevan automáticamente salvo que canceles al menos 24 horas antes de que termine el período. El pago único no se renueva y dura mientras KidGate esté disponible.',
+    'Se factura a través del App Store. Las suscripciones se renuevan automáticamente salvo que canceles al menos 24 horas antes de que termine el período. El pago único no se renueva y dura mientras KidGate esté disponible.',
+  footerLegalAndroid:
+    'Se factura a través de Google Play. Las suscripciones se renuevan automáticamente hasta que las canceles en Google Play. El pago único no se renueva y dura mientras KidGate esté disponible.',
   subscribeButton: 'Suscribirse a Premium',
   restoringPurchases: 'Restaurando…',
   restorePurchases: 'Restaurar compras',
@@ -95,7 +98,7 @@ export const plans = {
   featureAppBlocking: 'Apps bloqueadas',
   featureWebFiltering: 'Filtro web',
   featureSeeLocation: 'Ubicación',
-  featureTamperAlerts: 'Aviso si se elimina KidGate',
+  featureTamperAlerts: 'Aviso si se desactiva un permiso',
   featureSosAlerts: 'Alertas SOS',
   trialPlanName: 'Prueba',
   trialDescription:
@@ -204,8 +207,8 @@ export const plans = {
   premiumHistoryNote:
     'Premium guarda el historial de uso completo de los últimos 30 días.',
   teaserTopApps:
-    'La versión gratis muestra las tres apps principales. Premium nombra cada app, minuto a minuto, y guarda 30 días.',
-  teaserWebHistory: 'Premium muestra qué sitios se bloquearon y qué buscó tu hijo.',
+    'La versión gratis muestra las tres apps principales. Premium muestra las diez principales, minuto a minuto, y guarda 30 días.',
+  teaserWebHistory: 'Premium muestra qué sitios visitó tu hijo y cuáles se bloquearon.',
   teaserVideoHistory: 'Premium guarda cada vídeo y Short de YouTube que vio.',
   teaserLocationTrail:
     'Premium guarda por dónde estuvo y te avisa cuando llega o sale de casa y del colegio.',

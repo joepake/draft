@@ -900,7 +900,7 @@ export default {
     eyebrow: 'Tentang kami',
     title: 'Kontrol orang tua yang benar-benar bisa',
     titleAccent: 'disepakati satu keluarga.',
-    lede: 'KidGate dibuat oleh seorang pengembang independen yang mengerjakan satu produk saja. Sikap kami sederhana: orang tua harus bisa memercayai apa yang dikatakan aplikasi ini — termasuk bagian ketika aplikasi mengaku tidak bisa membantu.',
+    lede: 'Kami hanya mengerjakan satu produk, sehingga KidGate mendapat seluruh perhatian kami. Sikap kami sederhana: orang tua harus bisa memercayai apa yang dikatakan aplikasi ini — termasuk bagian ketika aplikasi mengaku tidak bisa membantu.',
     storyEyebrow: 'Kenapa KidGate ada',
     storyTitle: 'Waktu layar menjadi pertengkaran di setiap rumah',
     storyP1:

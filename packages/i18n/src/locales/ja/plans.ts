@@ -40,14 +40,14 @@ export const plans = {
   compareSyncPremium: 'リアルタイム',
   compareScreenTime: '利用時間',
   compareScreenTimeFree: '今日の合計と上位3アプリ',
-  compareScreenTimePremium: 'すべてのアプリ、時間帯別、30日分の履歴',
+  compareScreenTimePremium: '上位10アプリ、時間帯別、30日分の履歴',
   compareLocation: '位置情報',
   compareLocationFree: '地図を開いたとき',
   compareLocationPremium: 'リアルタイム、履歴と場所の通知つき',
   compareVideo: 'YouTube・動画の履歴',
   compareCountOnly: '件数のみ、内容は表示されません',
   compareWeb: 'ウェブ',
-  compareWebPremium: '完全な履歴と検索語',
+  compareWebPremium: 'どのサイトか、名前で表示',
   compareNewApps: '新しくインストールされたアプリ',
   compareNewAppsPremium: 'どのアプリか、名前で表示',
   compareMessages: 'メッセージ警告（Android）',
@@ -76,7 +76,9 @@ export const plans = {
   groupControlsTitle: 'より細かな制限',
   sectionIncludedFeatures: '含まれる内容',
   footerLegal:
-    'App StoreまたはGoogle Play経由で請求されます。サブスクリプションは期間終了の24時間前までに解約しない限り自動更新されます。買い切りは自動更新されず、KidGateが提供されている間ご利用いただけます。',
+    'App Store経由で請求されます。サブスクリプションは期間終了の24時間前までに解約しない限り自動更新されます。買い切りは自動更新されず、KidGateが提供されている間ご利用いただけます。',
+  footerLegalAndroid:
+    'Google Play経由で請求されます。サブスクリプションはGoogle Playで解約するまで自動更新されます。買い切りは自動更新されず、KidGateが提供されている間ご利用いただけます。',
   subscribeButton: 'Premiumに登録',
   restoringPurchases: '復元中…',
   restorePurchases: '購入を復元',
@@ -94,7 +96,7 @@ export const plans = {
   featureAppBlocking: 'ブロックされたアプリ',
   featureWebFiltering: 'Webフィルター',
   featureSeeLocation: '位置情報',
-  featureTamperAlerts: 'KidGate が削除されたら通知',
+  featureTamperAlerts: '権限がオフになったら通知',
   featureSosAlerts: 'SOSアラート',
   trialPlanName: 'トライアル',
   trialDescription:
@@ -202,9 +204,9 @@ export const plans = {
   teaserProofBlocked: '今週のブロック数: {{count}}',
   premiumHistoryNote: 'Premium なら直近30日分の利用履歴をすべて保存します。',
   teaserTopApps:
-    '無料版は上位3つのアプリだけです。Premium ならすべてのアプリを分単位で表示し、30日分を保存します。',
+    '無料版は上位3つのアプリだけです。Premium なら上位10アプリを分単位で表示し、30日分を保存します。',
   teaserWebHistory:
-    'Premium ならどのサイトがブロックされたか、お子さまが何を検索したかが分かります。',
+    'Premium なら、お子さまがアクセスしたサイトとブロックされたサイトが分かります。',
   teaserVideoHistory: 'Premium なら視聴した YouTube 動画とショートをすべて保存します。',
   teaserLocationTrail:
     'Premium なら移動の記録を保存し、自宅や学校に着いたとき・出たときに通知します。',

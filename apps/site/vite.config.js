@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { kidgateHead, SHARED_PUBLIC_DIR } from '@kidgate/web-ui/vite';
+import { APP_STORE_ID, isPlatformAvailable } from './src/lib/storeLinks.js';
 
 export default defineConfig({
   plugins: [
@@ -20,6 +21,9 @@ export default defineConfig({
         "KidGate helps parents manage screen time, block apps, filter the web and stay in touch — without taking away a child's freedom.",
       // The light palette's `background`; `src/main.jsx` paints light.
       themeColor: '#EEF1F6',
+      // Safari's Smart App Banner, behind the same `available` switch as the
+      // App Store button: flipping `STORE_LINKS.ios` turns both on.
+      appStoreId: isPlatformAvailable('ios') ? APP_STORE_ID : undefined,
     }),
   ],
   publicDir: SHARED_PUBLIC_DIR,

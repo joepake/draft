@@ -3,7 +3,7 @@ export const legal = {
     title: 'Privacy Policy',
     effectiveDate: 'Effective October 4, 2026',
     intro:
-      'KidGate is the product and trading name used by the independent developer who operates the app. This policy explains how KidGate handles data when parents use the service to manage a child’s device. It covers the KidGate apps for iPhone, iPad and Android, the KidGate agent for macOS and Windows, the KidGate browser extension, the Android TV app, the parent dashboard, and the kidgate.app website.',
+      'KidGate is the product and trading name under which the app is operated. This policy explains how KidGate handles data when parents use the service to manage a child’s device. It covers the KidGate apps for iPhone, iPad and Android, the KidGate agent for macOS and Windows, the KidGate browser extension, the Android TV app, the parent dashboard, and the kidgate.app website.',
     sections: [
       {
         title: '1. Scope and parental authority',
@@ -75,7 +75,7 @@ export const legal = {
     title: 'Terms of Service',
     effectiveDate: 'Effective September 6, 2026',
     intro:
-      'By signing in to or using KidGate, you confirm that you have read and agree to these terms. KidGate is the product and trading name used by the independent developer who operates the service.',
+      'By signing in to or using KidGate, you confirm that you have read and agree to these terms. KidGate is the product and trading name under which the service is operated.',
     sections: [
       {
         title: '1. Eligibility',
@@ -123,7 +123,7 @@ export const legal = {
       },
       {
         title: '12. Availability and changes',
-        body: 'The service may change, pause, or end because of maintenance, security, platform changes, law, or operations. KidGate is operated by an independent developer and may be discontinued; if that happens, active subscriptions and the one-time purchase are handled under the applicable app-store rules — the one-time purchase buys the service for as long as it is offered, not a promise that it will be offered forever. KidGate aims for reasonable availability but does not promise uninterrupted, error-free operation or compatibility with every device.',
+        body: 'The service may change, pause, or end because of maintenance, security, platform changes, law, or operations. KidGate may be discontinued; if that happens, active subscriptions and the one-time purchase are handled under the applicable app-store rules — the one-time purchase buys the service for as long as it is offered, not a promise that it will be offered forever. KidGate aims for reasonable availability but does not promise uninterrupted, error-free operation or compatibility with every device.',
       },
       {
         title: '13. Disclaimers',
