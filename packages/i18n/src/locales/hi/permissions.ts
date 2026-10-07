@@ -44,9 +44,9 @@ export const permissions = {
   markDone: 'पूर्ण',
   overlayStepAllow: 'KidGate के लिए “अन्य ऐप्स के ऊपर दिखाएँ” चालू करें।',
   accessibilityStepOpenSettings:
-    'नीचे “सहमति दें” चुनें — इससे सीधे KidGate का एक्सेसिबिलिटी पेज खुलता है।',
+    'नीचे “सहमति दें” चुनें — इससे एक्सेसिबिलिटी पेज खुलता है।',
   accessibilityStepFindKidGate:
-    'अगर इसके बजाय पूरी सूची खुले, तो इंस्टॉल किए गए / डाउनलोड किए गए ऐप्स में KidGate चुनें।',
+    'अगर कोई सूची खुले, तो इंस्टॉल किए गए / डाउनलोड किए गए ऐप्स में KidGate चुनें।',
   accessibilityStepTurnOn:
     'स्विच चालू करें, फिर Android की पुष्टि पर अनुमति दें चुनें।',
   restrictedSettingsStep:
@@ -73,11 +73,15 @@ export const permissions = {
   notificationsStepAllow: 'प्रॉम्प्ट पर अनुमति दें चुनें।',
   exactAlarmStepTurnOn: 'KidGate के लिए अलार्म और रिमाइंडर चालू करें।',
   cameraStepTurnOn: 'KidGate के लिए कैमरा चालू करें।',
+  cameraStepAndroid: 'अनुमतियां → कैमरा चुनें और ऐप इस्तेमाल करते समय अनुमति दें।',
+  notificationsStepTurnOn: 'KidGate के लिए सूचनाएँ चालू करें।',
   allowMicrophoneTitle: 'माइक्रोफ़ोन की अनुमति दें',
   microphonePermissionMessage:
     'जब आप SOS भेजते हैं, तब KidGate माइक्रोफ़ोन से 15 सेकंड तक की आवाज़ रिकॉर्ड करता है, ताकि आपके माता-पिता सुन सकें कि क्या हो रहा है। यह किसी और समय कभी रिकॉर्ड नहीं करता।',
   microphoneTurnedOffMessage:
     'कृपया सेटिंग्स खोलें और माइक्रोफ़ोन की अनुमति दें ताकि आपके SOS अलर्ट में आवाज़ शामिल हो सके।',
   microphoneStepTurnOn: 'KidGate के लिए माइक्रोफ़ोन चालू करें।',
+  microphoneStepAndroid:
+    'अनुमतियां → माइक्रोफ़ोन चुनें और ऐप इस्तेमाल करते समय अनुमति दें।',
   uninstallProtectionStepConfirm: 'Android की पुष्टि स्क्रीन पर सक्रिय करें चुनें।',
 } as const;

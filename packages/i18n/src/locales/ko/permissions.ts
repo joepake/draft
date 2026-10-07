@@ -41,10 +41,9 @@ export const permissions = {
     '기기의 보안 또는 배터리 설정에서 KidGate가 자동으로 시작되도록 허용하세요.',
   markDone: '완료',
   overlayStepAllow: 'KidGate의 “다른 앱 위에 표시”를 켜세요.',
-  accessibilityStepOpenSettings:
-    '아래 “동의”를 선택하면 KidGate의 접근성 페이지가 바로 열립니다.',
+  accessibilityStepOpenSettings: '아래 “동의”를 선택하면 접근성 페이지가 열립니다.',
   accessibilityStepFindKidGate:
-    '전체 목록이 열리면 설치된/다운로드한 앱에서 KidGate를 선택하세요.',
+    '목록이 열리면 설치된/다운로드한 앱에서 KidGate를 선택하세요.',
   accessibilityStepTurnOn: '스위치를 켠 다음 Android 확인 창에서 허용을 선택하세요.',
   restrictedSettingsStep:
     '스위치가 흐리게 표시되면 설정 › 앱 › KidGate를 열고 ⋮ 메뉴에서 “제한된 설정 허용”을 선택한 뒤, 여기로 돌아와 다시 시도하세요.',
@@ -69,11 +68,14 @@ export const permissions = {
   notificationsStepAllow: '알림 창에서 허용을 선택하세요.',
   exactAlarmStepTurnOn: 'KidGate의 알람 및 리마인더를 켜세요.',
   cameraStepTurnOn: 'KidGate의 카메라를 켜세요.',
+  cameraStepAndroid: '권한 → 카메라를 선택하고 앱 사용 중에만 허용하세요.',
+  notificationsStepTurnOn: 'KidGate의 알림을 켜세요.',
   allowMicrophoneTitle: '마이크 허용',
   microphonePermissionMessage:
     'KidGate는 SOS를 보낼 때 부모님이 상황을 들을 수 있도록 마이크로 최대 15초 동안 소리를 녹음해요. 그 외에는 절대 녹음하지 않아요.',
   microphoneTurnedOffMessage:
     'SOS 알림에 소리를 포함할 수 있도록 설정에서 마이크를 허용해 주세요.',
   microphoneStepTurnOn: 'KidGate의 마이크를 켜세요.',
+  microphoneStepAndroid: '권한 → 마이크를 선택하고 앱 사용 중에만 허용하세요.',
   uninstallProtectionStepConfirm: 'Android 확인 화면에서 활성화를 선택하세요.',
 } as const;

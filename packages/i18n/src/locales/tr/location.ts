@@ -61,11 +61,8 @@ export const location = {
   foregroundOnly:
     'Konum yalnızca KidGate açıkken güncellenir. “Ayarları aç”ı seç, ardından Konum’a git ve “Her Zaman” seçeneğini seç.',
   foregroundOnlyAndroid:
-    'Konum yalnızca KidGate açıkken güncellenir. “Ayarları aç”ı seç, ardından İzinler → Konum’a git ve “Her zaman izin ver” seçeneğini seç.',
+    'Konum yalnızca KidGate açıkken güncellenir. “Ayarları aç”ı seç, ardından “Her zaman izin ver” seçeneğini seç.',
   toastLocateFailed: 'Konumun şu anda bulunamadı. Biraz sonra tekrar dene.',
-  backgroundLocationTitle: 'Uygulama kapalıyken konuma izin ver',
-  backgroundLocationBody:
-    'KidGate, aile güvenliği için ebeveynlerin uygulama kapalıyken bile bu cihazın konumunu görebilmesi amacıyla arka planda konum erişimine ihtiyaç duyar.',
   mapNoLocationsEmpty: 'Henüz gösterilecek konum yok',
   mapHistoryEmpty:
     'Hareket noktaları bir sonraki konum güncellemesinden sonra haritada görünecek.',

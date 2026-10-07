@@ -47,9 +47,9 @@ export const permissions = {
   markDone: 'Selesai',
   overlayStepAllow: 'Aktifkan “Tampil di atas aplikasi lain” untuk KidGate.',
   accessibilityStepOpenSettings:
-    'Pilih Setuju di bawah — ini langsung membuka halaman Aksesibilitas KidGate.',
+    'Pilih Setuju di bawah — ini membuka halaman Aksesibilitas.',
   accessibilityStepFindKidGate:
-    'Jika yang terbuka adalah daftar lengkap, pilih KidGate di Aplikasi terpasang / diunduh.',
+    'Jika daftar terbuka, pilih KidGate di Aplikasi terpasang / diunduh.',
   accessibilityStepTurnOn:
     'Nyalakan sakelarnya, lalu pilih Izinkan pada konfirmasi Android.',
   restrictedSettingsStep:
@@ -75,11 +75,14 @@ export const permissions = {
   notificationsStepAllow: 'Pilih Izinkan pada permintaan.',
   exactAlarmStepTurnOn: 'Aktifkan Alarm & pengingat untuk KidGate.',
   cameraStepTurnOn: 'Aktifkan Kamera untuk KidGate.',
+  cameraStepAndroid: 'Pilih Izin → Kamera, lalu izinkan saat aplikasi digunakan.',
+  notificationsStepTurnOn: 'Aktifkan Notifikasi untuk KidGate.',
   allowMicrophoneTitle: 'Izinkan mikrofon',
   microphonePermissionMessage:
     'KidGate menggunakan mikrofon untuk merekam suara hingga 15 detik saat kamu mengirim SOS, agar orang tuamu bisa mendengar apa yang terjadi. KidGate tidak pernah merekam di waktu lain.',
   microphoneTurnedOffMessage:
     'Buka Pengaturan dan izinkan Mikrofon agar peringatan SOS kamu bisa menyertakan suara.',
   microphoneStepTurnOn: 'Aktifkan Mikrofon untuk KidGate.',
+  microphoneStepAndroid: 'Pilih Izin → Mikrofon, lalu izinkan saat aplikasi digunakan.',
   uninstallProtectionStepConfirm: 'Pilih Aktifkan pada layar konfirmasi Android.',
 } as const;

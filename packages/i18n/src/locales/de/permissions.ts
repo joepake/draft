@@ -45,9 +45,9 @@ export const permissions = {
   markDone: 'Fertig',
   overlayStepAllow: 'Aktiviere „Über anderen Apps anzeigen“ für KidGate.',
   accessibilityStepOpenSettings:
-    'Wähle unten Zustimmen – das öffnet direkt die Bedienungshilfen-Seite von KidGate.',
+    'Wähle unten Zustimmen – das öffnet die Bedienungshilfen-Seite.',
   accessibilityStepFindKidGate:
-    'Öffnet sich stattdessen die vollständige Liste, wähle KidGate unter „Heruntergeladene Apps“.',
+    'Öffnet sich eine Liste, wähle KidGate unter „Heruntergeladene Apps“.',
   accessibilityStepTurnOn:
     'Schalte den Regler ein und wähle dann in Androids Abfrage „Erlauben“.',
   restrictedSettingsStep:
@@ -74,12 +74,17 @@ export const permissions = {
   notificationsStepAllow: 'Wähle in der Abfrage „Zulassen“.',
   exactAlarmStepTurnOn: 'Aktiviere „Wecker und Erinnerungen“ für KidGate.',
   cameraStepTurnOn: 'Aktiviere „Kamera“ für KidGate.',
+  cameraStepAndroid:
+    'Wähle „Berechtigungen → Kamera“ und erlaube den Zugriff während der App-Nutzung.',
+  notificationsStepTurnOn: 'Aktiviere Mitteilungen für KidGate.',
   allowMicrophoneTitle: 'Mikrofon erlauben',
   microphonePermissionMessage:
     'KidGate verwendet das Mikrofon, um bis zu 15 Sekunden Ton aufzunehmen, wenn du ein SOS sendest, damit deine Eltern hören können, was passiert. Zu keinem anderen Zeitpunkt wird aufgenommen.',
   microphoneTurnedOffMessage:
     'Bitte öffne die Einstellungen und erlaube das Mikrofon, damit deine SOS-Warnungen Ton enthalten können.',
   microphoneStepTurnOn: 'Aktiviere „Mikrofon“ für KidGate.',
+  microphoneStepAndroid:
+    'Wähle „Berechtigungen → Mikrofon“ und erlaube den Zugriff während der App-Nutzung.',
   uninstallProtectionStepConfirm:
     'Wähle „Aktivieren“ auf Androids Bestätigungsbildschirm.',
 } as const;

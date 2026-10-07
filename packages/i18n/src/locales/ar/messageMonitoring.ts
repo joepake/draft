@@ -136,5 +136,5 @@ export const messageMonitoring = {
   languagesLabel: 'اللغات التي يتم فحصها',
   languagesHint: 'اللغات التي يبحث فيها هذا الجهاز عن كلمات مقلقة. اختر حتى {{max}}.',
   languagesDefaultHint: 'الإعداد الافتراضي هو لغة الجهاز.',
-  setupStepFindKidGate: 'البحث عن KidGate في قائمة الوصول إلى الإشعارات وتفعيله.',
+  setupStepFindKidGate: 'تفعيل الوصول إلى الإشعارات لـKidGate ثم التأكيد.',
 } as const;

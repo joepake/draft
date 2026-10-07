@@ -58,12 +58,9 @@ export const location = {
   foregroundOnly:
     'Vị trí chỉ cập nhật khi KidGate đang mở. Vui lòng chọn Mở Cài đặt, rồi vào Vị trí và chọn “Luôn luôn”.',
   foregroundOnlyAndroid:
-    'Vị trí chỉ cập nhật khi KidGate đang mở. Vui lòng chọn Mở Cài đặt, rồi vào Quyền → Vị trí và chọn “Cho phép mọi lúc”.',
+    'Vị trí chỉ cập nhật khi KidGate đang mở. Vui lòng chọn Mở Cài đặt rồi chọn “Cho phép mọi lúc”.',
   toastLocateFailed:
     'Chưa lấy được vị trí của con lúc này. Con thử lại sau giây lát nhé.',
-  backgroundLocationTitle: 'Cho phép vị trí khi ứng dụng đã đóng',
-  backgroundLocationBody:
-    'KidGate cần quyền vị trí chạy nền để bố mẹ biết thiết bị này ở đâu ngay cả khi ứng dụng đã đóng, giúp cả nhà yên tâm hơn.',
   mapNoLocationsEmpty: 'Chưa có vị trí để hiển thị',
   mapHistoryEmpty:
     'Các điểm di chuyển sẽ hiện trên bản đồ sau lần cập nhật vị trí tiếp theo.',

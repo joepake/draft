@@ -41,9 +41,9 @@ export const permissions = {
   markDone: 'Done',
   overlayStepAllow: 'Turn on “Allow display over other apps” for KidGate.',
   accessibilityStepOpenSettings:
-    'Select Agree below — it opens KidGate’s own Accessibility page.',
+    'Select Agree below — it opens the Accessibility page.',
   accessibilityStepFindKidGate:
-    'If the full list opens instead, select KidGate under Downloaded apps.',
+    'If a list opens, select KidGate under Downloaded apps.',
   accessibilityStepTurnOn:
     'Turn the switch on, then select Allow on Android’s confirmation.',
   restrictedSettingsStep:
@@ -70,11 +70,15 @@ export const permissions = {
   notificationsStepAllow: 'Select Allow on the prompt.',
   exactAlarmStepTurnOn: 'Turn on Alarms & reminders for KidGate.',
   cameraStepTurnOn: 'Turn on Camera for KidGate.',
+  cameraStepAndroid: 'Select Permissions → Camera and allow it while using the app.',
+  notificationsStepTurnOn: 'Turn on Notifications for KidGate.',
   allowMicrophoneTitle: 'Allow microphone',
   microphonePermissionMessage:
     'KidGate uses the microphone to record up to 15 seconds of sound when you send an SOS, so your parent can hear what is happening. It never records at any other time.',
   microphoneTurnedOffMessage:
     'Open Settings and allow Microphone so your SOS alerts can include sound.',
   microphoneStepTurnOn: 'Turn on Microphone for KidGate.',
+  microphoneStepAndroid:
+    'Select Permissions → Microphone and allow it while using the app.',
   uninstallProtectionStepConfirm: 'Select Activate on Android’s confirmation screen.',
 } as const;

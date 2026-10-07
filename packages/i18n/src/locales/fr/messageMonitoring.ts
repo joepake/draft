@@ -139,6 +139,5 @@ export const messageMonitoring = {
   languagesHint:
     'Les langues dans lesquelles cet appareil recherche des mots inquiétants. Choisissez-en jusqu’à {{max}}.',
   languagesDefaultHint: 'Par défaut, la langue de l’appareil.',
-  setupStepFindKidGate:
-    'Trouve KidGate dans la liste d’accès aux notifications et active-le.',
+  setupStepFindKidGate: 'Active l’accès aux notifications pour KidGate, puis confirme.',
 } as const;

@@ -3,17 +3,15 @@ import {
   GoogleAuthProvider,
   OAuthProvider,
   onAuthStateChanged,
-  sendPasswordResetEmail,
   signInWithCustomToken,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut as fbSignOut,
 } from 'firebase/auth';
-import { toBcp47 } from '@kidgate/i18n/languageMeta';
 import { getLanguage } from '@kidgate/i18n/web';
 import { auth, isFirebaseConfigured } from '../lib/firebase.js';
 import { trackLogin, trackLogout, trackWebStepUp } from '../lib/analytics.js';
-import { stepUpWithPin } from './webSession.js';
+import { callFunction, stepUpWithPin } from './webSession.js';
 
 const AuthContext = createContext({
   user: null,
@@ -213,15 +211,13 @@ export function AuthProvider({ children }) {
         }
       },
 
-      resetPassword: email => {
-        // Firebase renders and sends this mail itself, in whatever
-        // `languageCode` was last set — unset means the project default, which
-        // is English. Set per send rather than once, because the picker can
-        // flip the page's language after the context was built. An unsupported
-        // tag falls back to Firebase's default template, never to an error.
-        auth.languageCode = toBcp47(getLanguage());
-        return sendPasswordResetEmail(auth, email.trim());
-      },
+      // Our endpoint sends this mail, not Firebase (`docs/EMAIL_TEMPLATES.md`),
+      // in the language on screen when the parent pressed the button.
+      resetPassword: email =>
+        callFunction('requestPasswordReset', {
+          email: email.trim(),
+          lang: getLanguage(),
+        }),
 
       signOut: () => {
         trackLogout();

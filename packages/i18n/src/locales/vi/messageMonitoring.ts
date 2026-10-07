@@ -137,5 +137,5 @@ export const messageMonitoring = {
   languagesHint:
     'Thiết bị sẽ tìm từ đáng lo trong những ngôn ngữ này. Chọn tối đa {{max}}.',
   languagesDefaultHint: 'Mặc định theo ngôn ngữ của thiết bị.',
-  setupStepFindKidGate: 'Tìm KidGate trong danh sách quyền truy cập thông báo rồi bật.',
+  setupStepFindKidGate: 'Bật quyền truy cập thông báo cho KidGate rồi xác nhận.',
 } as const;

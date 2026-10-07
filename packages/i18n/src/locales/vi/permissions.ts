@@ -45,9 +45,9 @@ export const permissions = {
   markDone: 'Đã xong',
   overlayStepAllow: 'Bật “Hiển thị trên ứng dụng khác” cho KidGate.',
   accessibilityStepOpenSettings:
-    'Chọn Đồng ý bên dưới — thao tác này mở thẳng trang Trợ năng của KidGate.',
+    'Chọn Đồng ý bên dưới — thao tác này mở trang Trợ năng.',
   accessibilityStepFindKidGate:
-    'Nếu danh sách đầy đủ hiện ra, hãy chọn KidGate trong mục Ứng dụng đã tải xuống.',
+    'Nếu một danh sách hiện ra, hãy chọn KidGate trong mục Ứng dụng đã tải xuống.',
   accessibilityStepTurnOn:
     'Bật công tắc, sau đó chọn Cho phép trên hộp thoại xác nhận của Android.',
   restrictedSettingsStep:
@@ -73,11 +73,14 @@ export const permissions = {
   notificationsStepAllow: 'Chạm Cho phép trên hộp thoại.',
   exactAlarmStepTurnOn: 'Bật Chuông báo và lời nhắc cho KidGate.',
   cameraStepTurnOn: 'Bật Máy ảnh cho KidGate.',
+  cameraStepAndroid: 'Chọn Quyền → Máy ảnh và cho phép khi đang dùng ứng dụng.',
+  notificationsStepTurnOn: 'Bật Thông báo cho KidGate.',
   allowMicrophoneTitle: 'Cho phép micrô',
   microphonePermissionMessage:
     'KidGate dùng micrô để ghi tối đa 15 giây âm thanh khi gửi SOS, để bố mẹ nghe được chuyện gì đang xảy ra. Ngoài lúc đó, KidGate không bao giờ ghi âm.',
   microphoneTurnedOffMessage:
     'Vui lòng mở Cài đặt và bật Micrô để SOS có thể gửi kèm âm thanh.',
   microphoneStepTurnOn: 'Bật Micrô cho KidGate.',
+  microphoneStepAndroid: 'Chọn Quyền → Micrô và cho phép khi đang dùng ứng dụng.',
   uninstallProtectionStepConfirm: 'Chạm Kích hoạt trên màn hình xác nhận của Android.',
 } as const;

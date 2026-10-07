@@ -65,12 +65,9 @@ export const location = {
   foregroundOnly:
     'La ubicación solo se actualiza mientras KidGate está abierto. Selecciona Abrir Ajustes, luego Ubicación, y elige «Siempre».',
   foregroundOnlyAndroid:
-    'La ubicación solo se actualiza mientras KidGate está abierto. Selecciona Abrir Ajustes, luego Permisos → Ubicación, y elige «Permitir todo el tiempo».',
+    'La ubicación solo se actualiza mientras KidGate está abierto. Selecciona Abrir Ajustes y elige «Permitir todo el tiempo».',
   toastLocateFailed:
     'No se pudo encontrar tu ubicación ahora mismo. Inténtalo de nuevo en un momento.',
-  backgroundLocationTitle: 'Permitir ubicación cuando la aplicación esté cerrada',
-  backgroundLocationBody:
-    'KidGate necesita acceso a la ubicación en segundo plano para que los padres puedan ver dónde está este dispositivo incluso cuando la aplicación esté cerrada, ayudando a mantener la seguridad de la familia.',
   mapNoLocationsEmpty: 'Todavía no hay ubicaciones para mostrar',
   mapHistoryEmpty:
     'Los puntos del recorrido aparecerán en el mapa después de la próxima actualización de ubicación.',

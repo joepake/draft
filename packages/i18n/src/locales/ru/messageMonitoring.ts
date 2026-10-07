@@ -138,5 +138,5 @@ export const messageMonitoring = {
   languagesHint:
     'Языки, на которых устройство ищет тревожные слова. Выберите не более {{max}}.',
   languagesDefaultHint: 'По умолчанию — язык устройства.',
-  setupStepFindKidGate: 'Найди KidGate в списке доступа к уведомлениям и включи его.',
+  setupStepFindKidGate: 'Включи доступ к уведомлениям для KidGate и подтверди.',
 } as const;

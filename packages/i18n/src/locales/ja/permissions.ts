@@ -47,9 +47,9 @@ export const permissions = {
   markDone: '完了',
   overlayStepAllow: 'KidGateの「他のアプリの上に重ねて表示」をオンにしてください。',
   accessibilityStepOpenSettings:
-    '下の「同意する」を選ぶと、KidGateのユーザー補助ページが直接開きます。',
+    '下の「同意する」を選ぶと、ユーザー補助のページが開きます。',
   accessibilityStepFindKidGate:
-    '一覧全体が開いた場合は、「ダウンロードしたアプリ」からKidGateを選んでください。',
+    '一覧が開いた場合は、「ダウンロードしたアプリ」からKidGateを選んでください。',
   accessibilityStepTurnOn:
     'スイッチをオンにし、Androidの確認画面で許可を選んでください。',
   restrictedSettingsStep:
@@ -76,11 +76,15 @@ export const permissions = {
   notificationsStepAllow: '表示された確認画面で「許可」を選びます。',
   exactAlarmStepTurnOn: 'KidGateの「アラームとリマインダー」をオンにします。',
   cameraStepTurnOn: 'KidGateの「カメラ」をオンにします。',
+  cameraStepAndroid: '「権限」→「カメラ」を選び、アプリの使用中のみ許可してください。',
+  notificationsStepTurnOn: 'KidGateの「通知」をオンにします。',
   allowMicrophoneTitle: 'マイクを許可',
   microphonePermissionMessage:
     'KidGateはSOSを送ったときに、保護者が状況を聞けるようマイクで最大15秒の音声を録音します。それ以外のときに録音することはありません。',
   microphoneTurnedOffMessage:
     'SOSアラートに音声を含められるよう、設定を開いてマイクを許可してください。',
   microphoneStepTurnOn: 'KidGateの「マイク」をオンにします。',
+  microphoneStepAndroid:
+    '「権限」→「マイク」を選び、アプリの使用中のみ許可してください。',
   uninstallProtectionStepConfirm: 'Androidの確認画面で「有効にする」を選びます。',
 } as const;

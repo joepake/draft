@@ -47,9 +47,9 @@ export const permissions = {
   overlayStepAllow:
     'KidGate için “Diğer uygulamaların üzerinde göster” seçeneğini açın.',
   accessibilityStepOpenSettings:
-    'Aşağıdaki “Kabul et” düğmesini seçin — bu, doğrudan KidGate’in Erişilebilirlik sayfasını açar.',
+    'Aşağıdaki “Kabul et” düğmesini seçin — bu, Erişilebilirlik sayfasını açar.',
   accessibilityStepFindKidGate:
-    'Bunun yerine tam liste açılırsa, Yüklü / indirilen uygulamalar altında KidGate’i seçin.',
+    'Bir liste açılırsa, Yüklü / indirilen uygulamalar altında KidGate’i seçin.',
   accessibilityStepTurnOn:
     'Anahtarı açın, ardından Android’in onay penceresinde İzin ver’i seçin.',
   restrictedSettingsStep:
@@ -79,11 +79,15 @@ export const permissions = {
   // `messageKeywordCorpus` refuses a UI string that reads like the phrase it
   // watches for. The keyword is right; the copy moved.
   cameraStepTurnOn: 'KidGate için Kamera erişimini etkinleştirin.',
+  cameraStepAndroid: 'İzinler → Kamera’yı seçin ve uygulama kullanılırken izin verin.',
+  notificationsStepTurnOn: 'KidGate için bildirimleri etkinleştirin.',
   allowMicrophoneTitle: 'Mikrofona izin ver',
   microphonePermissionMessage:
     'KidGate, bir SOS gönderdiğinde ailenin neler olduğunu duyabilmesi için mikrofonla 15 saniyeye kadar ses kaydeder. Başka hiçbir zaman kayıt yapmaz.',
   microphoneTurnedOffMessage:
     'SOS uyarılarına ses eklenebilmesi için Ayarlar’ı açıp Mikrofon’a izin ver.',
   microphoneStepTurnOn: 'KidGate için Mikrofon erişimini etkinleştirin.',
+  microphoneStepAndroid:
+    'İzinler → Mikrofon’u seçin ve uygulama kullanılırken izin verin.',
   uninstallProtectionStepConfirm: 'Android’in onay ekranında Etkinleştir’i seçin.',
 } as const;

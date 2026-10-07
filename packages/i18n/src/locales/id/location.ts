@@ -61,11 +61,8 @@ export const location = {
   foregroundOnly:
     'Lokasi hanya diperbarui saat KidGate terbuka. Pilih Buka Pengaturan, lalu Lokasi, dan pilih “Selalu”.',
   foregroundOnlyAndroid:
-    'Lokasi hanya diperbarui saat KidGate terbuka. Pilih Buka Pengaturan, lalu Izin → Lokasi, dan pilih “Selalu izinkan”.',
+    'Lokasi hanya diperbarui saat KidGate terbuka. Pilih Buka Pengaturan, lalu pilih “Selalu izinkan”.',
   toastLocateFailed: 'Lokasimu belum bisa ditemukan saat ini. Coba lagi sebentar lagi.',
-  backgroundLocationTitle: 'Izinkan lokasi saat aplikasi ditutup',
-  backgroundLocationBody:
-    'KidGate memerlukan akses lokasi di latar belakang agar orang tua dapat melihat lokasi perangkat ini meskipun aplikasi ditutup, demi keamanan keluarga.',
   mapNoLocationsEmpty: 'Belum ada lokasi untuk ditampilkan',
   mapHistoryEmpty:
     'Titik pergerakan akan muncul di peta setelah pembaruan lokasi berikutnya.',

@@ -58,11 +58,8 @@ export const location = {
   foregroundOnly:
     '위치는 KidGate가 열려 있을 때만 업데이트돼요. “설정 열기”를 선택한 다음 위치에서 “항상”을 선택하세요.',
   foregroundOnlyAndroid:
-    '위치는 KidGate가 열려 있을 때만 업데이트돼요. “설정 열기”를 선택한 다음 권한 → 위치에서 “항상 허용”을 선택하세요.',
+    '위치는 KidGate가 열려 있을 때만 업데이트돼요. “설정 열기”를 선택한 다음 “항상 허용”을 선택하세요.',
   toastLocateFailed: '지금은 위치를 찾을 수 없어요. 잠시 후 다시 시도하세요.',
-  backgroundLocationTitle: '앱이 종료되어도 위치 허용',
-  backgroundLocationBody:
-    '가족의 안전을 위해 KidGate는 앱이 종료된 상태에서도 부모가 기기의 위치를 확인할 수 있도록 백그라운드 위치 권한이 필요합니다.',
   mapNoLocationsEmpty: '표시할 위치 정보가 아직 없습니다',
   mapHistoryEmpty: '다음 위치 업데이트 후 이동 지점이 지도에 표시됩니다.',
   mapUnavailable:

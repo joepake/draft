@@ -61,12 +61,9 @@ export const location = {
   foregroundOnly:
     '位置情報はKidGateを開いている間しか更新されません。「設定を開く」を選び、「位置情報」で「常に」を選んでください。',
   foregroundOnlyAndroid:
-    '位置情報はKidGateを開いている間しか更新されません。「設定を開く」を選び、「権限」→「位置情報」で「常に許可」を選んでください。',
+    '位置情報はKidGateを開いている間しか更新されません。「設定を開く」を選び、「常に許可」を選んでください。',
   toastLocateFailed:
     'いまは現在地を取得できません。少ししてからもう一度お試しください。',
-  backgroundLocationTitle: 'アプリを閉じている間も位置情報を許可',
-  backgroundLocationBody:
-    '家族の安全のため、KidGate はアプリを閉じている間も保護者がデバイスの位置を確認できるよう、バックグラウンドでの位置情報へのアクセスが必要です。',
   mapNoLocationsEmpty: '表示できる位置情報はまだありません',
   mapHistoryEmpty: '次に位置情報が更新されると、移動の地点が地図に表示されます。',
   mapUnavailable:

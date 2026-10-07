@@ -135,6 +135,8 @@ async function post(name, body, headers) {
   return payload;
 }
 
+export { post as callFunction };
+
 export function createWebSession() {
   return post('createParentWebSession', {});
 }

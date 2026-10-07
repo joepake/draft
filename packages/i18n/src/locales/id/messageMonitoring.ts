@@ -139,5 +139,5 @@ export const messageMonitoring = {
   languagesHint:
     'Bahasa yang digunakan perangkat ini untuk mencari kata yang mengkhawatirkan. Pilih maksimal {{max}}.',
   languagesDefaultHint: 'Bawaan mengikuti bahasa perangkat.',
-  setupStepFindKidGate: 'Temukan KidGate di daftar akses notifikasi lalu aktifkan.',
+  setupStepFindKidGate: 'Aktifkan akses notifikasi untuk KidGate, lalu konfirmasi.',
 } as const;

@@ -46,9 +46,9 @@ export const permissions = {
   markDone: 'Готово',
   overlayStepAllow: 'Включите «Поверх других приложений» для KidGate.',
   accessibilityStepOpenSettings:
-    'Выберите «Принять» ниже — откроется страница специальных возможностей KidGate.',
+    'Выберите «Принять» ниже — откроется страница специальных возможностей.',
   accessibilityStepFindKidGate:
-    'Если вместо этого откроется полный список, выберите KidGate в разделе Установленные / загруженные приложения.',
+    'Если откроется список, выберите KidGate в разделе Установленные / загруженные приложения.',
   accessibilityStepTurnOn:
     'Включите переключатель, затем выберите Разрешить в подтверждении Android.',
   restrictedSettingsStep:
@@ -75,12 +75,17 @@ export const permissions = {
   notificationsStepAllow: 'Выберите «Разрешить» в запросе.',
   exactAlarmStepTurnOn: 'Включите «Будильники и напоминания» для KidGate.',
   cameraStepTurnOn: 'Включите «Камеру» для KidGate.',
+  cameraStepAndroid:
+    'Выберите «Разрешения» → «Камера» и разрешите доступ во время использования приложения.',
+  notificationsStepTurnOn: 'Включите уведомления для KidGate.',
   allowMicrophoneTitle: 'Разрешить микрофон',
   microphonePermissionMessage:
     'KidGate использует микрофон, чтобы записать до 15 секунд звука, когда ты отправляешь SOS, — так родители смогут услышать, что происходит. В другое время запись никогда не ведётся.',
   microphoneTurnedOffMessage:
     'Открой Настройки и разреши доступ к Микрофону, чтобы твои оповещения SOS могли включать звук.',
   microphoneStepTurnOn: 'Включите «Микрофон» для KidGate.',
+  microphoneStepAndroid:
+    'Выберите «Разрешения» → «Микрофон» и разрешите доступ во время использования приложения.',
   uninstallProtectionStepConfirm:
     'Выберите «Активировать» на экране подтверждения Android.',
 } as const;

@@ -137,5 +137,5 @@ export const messageMonitoring = {
   languagesHint:
     '이 기기가 우려되는 단어를 찾을 언어입니다. 최대 {{max}}개까지 선택할 수 있습니다.',
   languagesDefaultHint: '기본값은 기기의 언어입니다.',
-  setupStepFindKidGate: '알림 접근 목록에서 KidGate를 찾아 켜세요.',
+  setupStepFindKidGate: 'KidGate의 알림 접근을 켠 다음 확인하세요.',
 } as const;

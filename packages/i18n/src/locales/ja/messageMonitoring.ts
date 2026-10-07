@@ -136,5 +136,5 @@ export const messageMonitoring = {
   languagesLabel: '検索する言語',
   languagesHint: 'このデバイスが心配な言葉を探す言語です。最大{{max}}件まで選べます。',
   languagesDefaultHint: '既定ではデバイスの言語が使われます。',
-  setupStepFindKidGate: '通知へのアクセス一覧でKidGateを見つけて、オンにしてください。',
+  setupStepFindKidGate: 'KidGateの通知へのアクセスをオンにして、確認してください。',
 } as const;

@@ -42,9 +42,9 @@ export const permissions = {
   markDone: 'تم',
   overlayStepAllow: 'فعّل «العرض فوق التطبيقات الأخرى» لـKidGate.',
   accessibilityStepOpenSettings:
-    'اختر «موافق» في الأسفل — سيفتح ذلك صفحة إمكانية الوصول الخاصة بـKidGate مباشرة.',
+    'اختر «موافق» في الأسفل — سيفتح ذلك صفحة إمكانية الوصول.',
   accessibilityStepFindKidGate:
-    'إذا فُتحت القائمة الكاملة بدلاً من ذلك، فاختر KidGate ضمن التطبيقات المثبّتة / التي تم تنزيلها.',
+    'إذا فُتحت قائمة، فاختر KidGate ضمن التطبيقات المثبّتة / التي تم تنزيلها.',
   accessibilityStepTurnOn: 'شغّل المفتاح، ثم اختر «سماح» في رسالة تأكيد Android.',
   restrictedSettingsStep:
     'إذا كان المفتاح باهتًا ولا يستجيب، افتح الإعدادات › التطبيقات › KidGate، واضغط على قائمة ⋮ واختر «السماح بالإعدادات المقيّدة»، ثم عُد إلى هنا وحاول مرة أخرى.',
@@ -69,11 +69,16 @@ export const permissions = {
   notificationsStepAllow: 'اختر «سماح» في الرسالة.',
   exactAlarmStepTurnOn: 'فعّل «المنبهات والتذكيرات» لـKidGate.',
   cameraStepTurnOn: 'فعّل الكاميرا لـKidGate.',
+  cameraStepAndroid:
+    'اختر «الأذونات» ← «الكاميرا»، ثم اسمح بالوصول أثناء استخدام التطبيق.',
+  notificationsStepTurnOn: 'فعّل الإشعارات لـKidGate.',
   allowMicrophoneTitle: 'السماح بالميكروفون',
   microphonePermissionMessage:
     'يستخدم KidGate الميكروفون لتسجيل ما يصل إلى 15 ثانية من الصوت عند إرسال SOS، حتى يتمكن والداك من سماع ما يحدث. ولا يسجّل في أي وقت آخر أبدًا.',
   microphoneTurnedOffMessage:
     'يرجى فتح الإعدادات والسماح بالميكروفون حتى تتضمن تنبيهات SOS الصوت.',
   microphoneStepTurnOn: 'فعّل الميكروفون لـKidGate.',
+  microphoneStepAndroid:
+    'اختر «الأذونات» ← «الميكروفون»، ثم اسمح بالوصول أثناء استخدام التطبيق.',
   uninstallProtectionStepConfirm: 'اختر «تفعيل» في شاشة تأكيد Android.',
 } as const;

@@ -140,5 +140,5 @@ export const messageMonitoring = {
     'In welchen Sprachen dieses Gerät nach besorgniserregenden Wörtern sucht. Bis zu {{max}} auswählen.',
   languagesDefaultHint: 'Standardmäßig die Sprache des Geräts.',
   setupStepFindKidGate:
-    'Finde KidGate in der Liste für Benachrichtigungszugriff und aktiviere es.',
+    'Aktiviere den Benachrichtigungszugriff für KidGate und bestätige.',
 } as const;
