@@ -85,6 +85,8 @@ export const webFilter = {
   vpnConsentBannerBody:
     'The KidGate VPN is off. Adult web filtering needs the VPN to stay connected.',
   vpnConsentBannerButton: 'Enable VPN',
+  vpnDisclosureNote:
+    'While the Web Filter is on, KidGate’s VPN runs only on this device. It sees the name of each website the device looks up — never the pages, what is typed or any other traffic. It blocks the sites your parent chose and shows your parent which sites were visited and blocked, kept for 30 days. KidGate never sells this data or uses it for anything else.',
   iosOnlyNote: 'Uses a private connection and Screen Time on iPhone',
   androidVpnNote: 'Uses a private connection on Android',
   macosFilterNote: 'Uses KidGate’s content filter on Mac',

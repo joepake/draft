@@ -62,6 +62,8 @@ export const webFilter = {
   vpnConsentBannerBody:
     'Das KidGate-VPN ist aus. Der Erwachsenenfilter braucht eine bestehende VPN-Verbindung.',
   vpnConsentBannerButton: 'VPN aktivieren',
+  vpnDisclosureNote:
+    'Solange der Webfilter an ist, läuft das KidGate-VPN nur auf diesem Gerät. Es sieht den Namen jeder Website, die das Gerät abfragt — nie die Seiten selbst, Eingaben oder anderen Datenverkehr. Es blockiert die Seiten, die deine Eltern ausgewählt haben, und zeigt deinen Eltern 30 Tage lang, welche Seiten besucht und blockiert wurden. KidGate verkauft diese Daten nie und nutzt sie für nichts anderes.',
   iosOnlyNote: 'Nutzt eine private Verbindung und Bildschirmzeit auf dem iPhone',
   androidVpnNote: 'Nutzt ein lokales DNS-VPN auf Android',
   macosFilterNote: 'Nutzt den Inhaltsfilter von KidGate auf dem Mac',

@@ -60,6 +60,8 @@ export const webFilter = {
   vpnConsentBannerBody:
     'KidGateのVPNがオフです。アダルトフィルターにはVPNの接続維持が必要です。',
   vpnConsentBannerButton: 'VPNを有効にする',
+  vpnDisclosureNote:
+    'Webフィルターがオンの間、KidGateのVPNはこのデバイス上でのみ動作します。VPNが確認するのは、デバイスがアクセスする各サイトの名前だけで、ページの内容、入力した文字、その他の通信は確認しません。保護者が選んだサイトをブロックし、閲覧・ブロックされたサイトを保護者に表示します。この記録は30日間保存されます。KidGateがこのデータを販売したり、ほかの目的に使ったりすることはありません。',
   iosOnlyNote: 'iPhoneではプライベート接続とスクリーンタイムを使用',
   androidVpnNote: 'AndroidではローカルDNS VPNを使用',
   macosFilterNote: 'MacではKidGateのコンテンツフィルターを使用',
