@@ -100,7 +100,8 @@ export const STORE_LINKS = {
     available: true,
   },
   windows: {
-    url: 'https://download.kidgate.app/KidGate-windows.zip',
+    // Must equal RELEASE_NAME in scripts/release-windows.mjs.
+    url: 'https://download.kidgate.app/KidGate-windows.exe',
     available: true,
   },
   androidtv: {
