@@ -7,6 +7,9 @@ export const notifications = {
   subtitleMuted_few: '{{count}} تنبيهات مكتومة',
   subtitleMuted: '{{count}} تنبيهًا مكتومًا',
   sosAlwaysOn: 'تصل تنبيهات SOS دائمًا، حتى لو أوقفت كل ما هنا.',
+  sosFullScreenOff:
+    'على هذا الهاتف يظهر SOS كشريط صغير بدل أن يملأ الشاشة، فيسهل أن يفوتك. اسمح بالتنبيهات بملء الشاشة لإصلاح ذلك.',
+  sosFullScreenAllow: 'السماح بالتنبيهات بملء الشاشة',
   sectionAlerts: 'التنبيهات',
   sectionAlertsHint: 'اختر ما يصل إلى هذا الهاتف من إشعارات.',
   sectionSummary: 'الملخّص',

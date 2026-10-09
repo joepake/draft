@@ -3,7 +3,7 @@ export const trial = {
   trialHoursMinutesLeft: 'Sisa {{hours}} jam {{minutes}} mnt',
   trialMinutesLeft: 'Sisa {{minutes}} mnt',
   trialDeviceCliff:
-    'Saat masa coba berakhir, hanya {{keeps}} dari {{using}} perangkat Anda yang tetap mengirim laporan dan menerima perubahan aturan. Sisanya tetap menjalankan aturan yang sudah ada, tetapi sejak saat itu Anda hanya bisa melonggarkan aturan tersebut, tidak bisa memperketatnya.',
+    'Saat masa coba berakhir, hanya {{keeps}} dari {{using}} perangkat Anda yang tetap mengirim laporan dan menerima perubahan aturan. Sisanya mempertahankan aturan yang ada, yang hanya bisa Anda longgarkan, tidak bisa diperketat.',
   trialBannerTitle: 'Uji coba · {{remaining}}',
   trialUrgentBody:
     'Uji coba Anda hampir berakhir. Berlangganan Premium seharga {{price}}/bulan agar tidak ada yang terputus.',

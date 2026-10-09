@@ -59,22 +59,23 @@ function PlayMark() {
  * action that scrolled to the top of the page instead of reaching a store.
  * `STORE_LINKS` holds the real destinations; see `lib/storeLinks.js`.
  *
- * **`href` overrides where the button goes, and the desktop pair needs it.**
- * `STORE_LINKS.macos.url` is the `.zip` itself, and a button that starts a
- * download of an unsigned build with no Gatekeeper warning beside it is the
- * exact failure `#download` is arranged to prevent. So up here the two desktop
- * buttons point at `#download` — the section where the file and its warning sit
- * together — and the store buttons, which have no such warning to carry, point
- * straight at their listing.
+ * **`steps` downloads and scrolls at once — the desktop pair needs it.**
+ * `STORE_LINKS.macos.url` is the installer itself, and a download with no
+ * install steps in view is the failure `#download` is arranged to prevent: a
+ * Mac whose system extension is never approved has no Web Filter, silently,
+ * and an unsigned Windows build meets SmartScreen. Until 2026-10-09 these two
+ * buttons only scrolled to the cards, which cost a second click; now the file
+ * starts and the page brings that platform's card, steps included, to the
+ * middle of the screen while it downloads. Store buttons have no steps to
+ * carry and just open their listing.
  *
- * **An unshipped platform renders as a `<span>`, not a dimmed link.** Nothing
- * is published on any of the four yet (`available: false`, see
- * `lib/storeLinks.js`), and the override does not rescue the desktop pair from
- * that: `#download` is a real anchor, but sending a parent down to a card whose
- * button is also "coming soon" is a click that answers nothing. So the flag
- * wins over `href` for all four, and the ground swaps to the muted
- * `.store-btn--soon` — a button that keeps a filled, primary-action look while
- * doing nothing reads as broken.
+ * Every click counts as `download_click` with its platform, the same event the
+ * cards send — intent to install, wherever on the page it was shown.
+ *
+ * **An unshipped platform renders as a `<span>`, not a dimmed link**
+ * (`available: false`, see `lib/storeLinks.js`), and the ground swaps to the
+ * muted `.store-btn--soon` — a button that keeps a filled, primary-action look
+ * while doing nothing reads as broken.
  *
  * The vendor mark and the platform name stay; only the small line above them
  * becomes "coming soon", so the row still says which four platforms are meant
@@ -86,9 +87,18 @@ function PlayMark() {
  * at all — it is not a control, and a label on a non-interactive element is
  * announced inconsistently; its visible text already reads as a sentence.
  */
-function StoreButton({ platform, mark, aria, small, name, href: hrefOverride }) {
+function StoreButton({ platform, mark, aria, small, name, steps = false }) {
   const { t } = useT();
   const available = isPlatformAvailable(platform);
+
+  function onClick() {
+    trackDownloadClick(platform);
+    if (!steps) return;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document
+      .getElementById(`get-${platform}`)
+      ?.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
+  }
 
   const label = (
     <span>
@@ -109,7 +119,8 @@ function StoreButton({ platform, mark, aria, small, name, href: hrefOverride }) 
   return (
     <a
       className="store-btn"
-      href={hrefOverride ?? storeHref(platform)}
+      href={storeHref(platform)}
+      onClick={onClick}
       aria-label={aria ? t(aria) : `${t(small)} ${t(name)}`}
     >
       {mark}
@@ -119,16 +130,18 @@ function StoreButton({ platform, mark, aria, small, name, href: hrefOverride }) 
 }
 
 /**
- * The platform row: four buttons in the hero and the closing CTA, two inside
- * the download section.
+ * The two store buttons, used three times: the hero (`HeroGet`), `#download`
+ * and the closing CTA.
  *
- * `storesOnly` is what stops macOS and Windows appearing twice in `#download` —
- * that section already gives each of them a full card, and a button above the
- * cards pointing at the section it is already in is a link to itself.
+ * The other four platforms appear in the hero row and as `#download`'s cards,
+ * and nowhere else. The CTA carried all six until 2026-10-09 — a third copy of
+ * the hero's row; its trial line and its note are both about the stores, so the
+ * pair is what belongs under it. Android TV and Chrome go straight to their
+ * listings: a store installs its own item, so there are no steps to carry.
  */
-function StoreButtons({ centered = false, storesOnly = false }) {
+function PhoneStoreButtons() {
   return (
-    <div className={`store-buttons${centered ? ' store-buttons--center' : ''}`}>
+    <>
       <StoreButton
         platform="ios"
         mark={<AppleMark />}
@@ -143,24 +156,90 @@ function StoreButtons({ centered = false, storesOnly = false }) {
         small="store.googleSmall"
         name="store.googleName"
       />
-      {storesOnly ? null : (
-        <>
-          <StoreButton
-            platform="macos"
-            mark={<Icon name="mac" />}
-            small="download.button"
-            name="download.macosTitle"
-            href="#download"
-          />
-          <StoreButton
-            platform="windows"
-            mark={<Icon name="windows" />}
-            small="download.button"
-            name="download.windowsTitle"
-            href="#download"
-          />
-        </>
-      )}
+    </>
+  );
+}
+
+function OtherPlatformButtons() {
+  return (
+    <>
+      <StoreButton
+        platform="macos"
+        mark={<Icon name="mac" />}
+        small="download.button"
+        name="download.macosTitle"
+        steps
+      />
+      <StoreButton
+        platform="windows"
+        mark={<Icon name="windows" />}
+        small="download.button"
+        name="download.windowsTitle"
+        steps
+      />
+      <StoreButton
+        platform="androidtv"
+        mark={<Icon name="tv" />}
+        small="download.button"
+        name="about.make5Title"
+      />
+      <StoreButton
+        platform="chrome"
+        mark={<Icon name="extension" />}
+        small="download.button"
+        name="about.make6Title"
+      />
+    </>
+  );
+}
+
+/** The closing CTA's row: the store pair alone. */
+function StoreButtons() {
+  return (
+    <div className="store-buttons">
+      <PhoneStoreButtons />
+    </div>
+  );
+}
+
+/**
+ * The phone group — the two store buttons stacked, the `/get` code beside them
+ * at the pair's height — in the hero and again in `#download`, the same block
+ * in both. The phone app is what a parent installs first and the only one a
+ * code can deliver, so tap and scan sit together.
+ *
+ * The code opens `/get`, which picks the App Store or Google Play by the phone
+ * that scanned it. It carries no caption inside the group: beside the store
+ * buttons it explains itself, and a sentence beside it read as clutter.
+ * Touch screens tap the buttons, so the CSS hides it there.
+ *
+ * `get-qr.svg` is generated, not drawn: regenerate with `qrcode` (root
+ * node_modules), margin 2, for `https://www.kidgate.app/get?utm_source=site` —
+ * only if `/get` moves.
+ */
+function PhoneGet({ centered = false }) {
+  return (
+    <div className={`phone-get${centered ? ' phone-get--center' : ''}`}>
+      <div className="store-buttons phone-get-stores">
+        <PhoneStoreButtons />
+      </div>
+      <img className="get-qr" src={getQr} width="116" height="116" alt="" />
+    </div>
+  );
+}
+
+/**
+ * The hero's version, in two tiers: the phone group, then the four other
+ * platforms as a smaller row (their "Download" line hidden; it stays in each
+ * accessible name).
+ */
+function HeroGet() {
+  return (
+    <div className="hero-get">
+      <PhoneGet />
+      <div className="store-buttons hero-others">
+        <OtherPlatformButtons />
+      </div>
     </div>
   );
 }
@@ -249,7 +328,7 @@ function DownloadCard({
   const href = storeHref(platform);
 
   return (
-    <article className="why-item reveal">
+    <article className="why-item reveal" id={`get-${platform}`}>
       <span className="tick">
         <Icon name={icon} />
       </span>
@@ -436,7 +515,7 @@ export default function Home() {
                 </li>
               ))}
             </ul>
-            <StoreButtons />
+            <HeroGet />
           </div>
 
           <HeroVideo language={language} />
@@ -479,6 +558,31 @@ export default function Home() {
                 <p>{t(`home.feature${f.n}Text`)}</p>
               </article>
             ))}
+          </div>
+
+          {/*
+            "Only KidGate" was its own section until 2026-10-09 — a second
+            feature list a thousand pixels further down. It is a sub-block of
+            this one now, the same six claims with the same words, three across
+            in a tighter grid. Each still names the platform it is true on.
+          */}
+          <div className="only-block">
+            <div className="reveal">
+              <span className="eyebrow">{t('home.onlyEyebrow')}</span>
+              <h3 className="only-title">{t('home.onlyTitle')}</h3>
+              <p className="section-sub">{t('home.onlySub')}</p>
+            </div>
+            <div className="only-grid">
+              {ONLY.map(o => (
+                <article className="only-item reveal" key={o.n}>
+                  <h4>
+                    <Icon name={o.icon} />
+                    {t(`home.only${o.n}Title`)}
+                  </h4>
+                  <p>{t(`home.only${o.n}Text`)}</p>
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -530,24 +634,12 @@ export default function Home() {
             <p className="section-sub">{t('home.platformsSub')}</p>
           </div>
 
-          <StoreButtons centered storesOnly />
-
-          {/*
-            For a reader on a computer, whose phone is what installs the app:
-            the code opens `/get`, which picks the store by the phone that
-            scanned it. **Shown before launch on purpose** (operator,
-            2026-10-06): until a store flag flips, `/get` lands the phone on
-            this section's "coming soon", and on launch day the same printed
-            or cached code starts reaching the stores with nothing edited.
-            Touch screens tap the buttons, so the CSS hides it there.
-            `get-qr.svg` is generated, not drawn: regenerate with `qrcode`
-            (root node_modules), margin 2, for
-            `https://www.kidgate.app/get?utm_source=site` — only if `/get` moves.
-          */}
-          <figure className="get-qr">
-            <img src={getQr} width="140" height="140" alt="" />
-            <figcaption>{t('download.qrScan')}</figcaption>
-          </figure>
+          {/* The hero's phone group again, with the caption under it: here a
+              reader arrives from the header's Download link, past no hero. */}
+          <div className="download-get">
+            <PhoneGet centered />
+            <p className="phone-get-note">{t('download.qrScan')}</p>
+          </div>
 
           {/*
             Four cards, two by two: the two desktops, then Android TV and
@@ -661,29 +753,6 @@ export default function Home() {
                 <span className="step-num">{n}</span>
                 <h3>{t(`home.step${n}Title`)}</h3>
                 <p>{t(`home.step${n}Text`)}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <div className="inner">
-          <div className="reveal">
-            <span className="eyebrow">{t('home.onlyEyebrow')}</span>
-            <h2>{t('home.onlyTitle')}</h2>
-            <p className="section-sub">{t('home.onlySub')}</p>
-          </div>
-          <div className="why-grid">
-            {ONLY.map(o => (
-              <article className="why-item reveal" key={o.n}>
-                <span className="tick">
-                  <Icon name={o.icon} />
-                </span>
-                <div>
-                  <h3>{t(`home.only${o.n}Title`)}</h3>
-                  <p>{t(`home.only${o.n}Text`)}</p>
-                </div>
               </article>
             ))}
           </div>

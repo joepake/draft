@@ -3,7 +3,7 @@ export const trial = {
   trialHoursMinutesLeft: '残り{{hours}}時間{{minutes}}分',
   trialMinutesLeft: '残り{{minutes}}分',
   trialDeviceCliff:
-    '無料体験が終わると、{{using}}台のうち{{keeps}}台だけが報告の送信とルールの変更を続けられます。残りは今のルールをそのまま適用し続けますが、以降はルールを緩めることしかできず、厳しくすることはできません。',
+    '無料体験が終わると、{{using}}台のうち報告の送信とルールの変更を続けられるのは{{keeps}}台だけです。残りは今のルールのままで、緩めることはできても厳しくすることはできません。',
   trialBannerTitle: 'トライアル · {{remaining}}',
   trialUrgentBody:
     'トライアルがまもなく終了します。月額{{price}}のPremiumに登録して、途切れなくご利用ください。',

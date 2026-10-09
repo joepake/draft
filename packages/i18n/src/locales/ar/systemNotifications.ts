@@ -14,6 +14,7 @@ export const systemNotifications = {
   webFilterBody: 'جارٍ تصفية مواقع الويب على هذا الجهاز',
   locationTitle: 'جارٍ تحديث الموقع',
   locationBody: 'يشارك KidGate موقع هذا الجهاز مع والديك.',
+  sosAudioBody: 'يسجّل KidGate صوتًا لمدة تصل إلى 15 ثانية لوالديك.',
   monitorTitleWeak: 'حماية KidGate محدودة',
   monitorTitleActive: 'حماية KidGate مفعّلة',
   monitorTitleIdle: 'يعمل KidGate',

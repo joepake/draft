@@ -4,6 +4,9 @@ export const notifications = {
   subtitleMuted_one: '1 Hinweis stummgeschaltet',
   subtitleMuted: '{{count}} Hinweise stummgeschaltet',
   sosAlwaysOn: 'SOS kommt immer an – auch wenn hier alles aus ist.',
+  sosFullScreenOff:
+    'Auf diesem Handy erscheint ein SOS nur als kleines Banner statt im Vollbild und wird so leichter übersehen. Erlaube Vollbild-Hinweise, um das zu ändern.',
+  sosFullScreenAllow: 'Vollbild-Hinweise erlauben',
   sectionAlerts: 'Hinweise',
   sectionAlertsHint: 'Lege fest, worüber dieses Telefon informiert wird.',
   sectionSummary: 'Zusammenfassung',

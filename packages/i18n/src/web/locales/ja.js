@@ -241,7 +241,7 @@ export default {
       'はい。保護者ダッシュボードはどのブラウザでも開けます。表示されたコードをスマホの KidGate アプリで読み取ると、同じ家族、デバイス、設定が見られ、操作のロックも解除されます。アカウントでサインインして閲覧することもできますが、その場合、デバイスのロックや上限の変更には保護者 PIN が必要です。',
     faq5Q: 'Premium の料金はいくらですか？',
     faq5A:
-      'Premium は米国で月額 6.99 米ドルまたは年額 39.99 米ドルです。App Store または Google Play を通じて課金され、そこではお住まいの地域の通貨で表示されます。1 回払いの買い切りプランでは、KidGate が提供されている間、子どものすべてのデバイスで同じ Premium を利用できます。無料プランに期限はありません。',
+      'Premium は米国で月額 4.99 米ドルまたは年額 39.99 米ドルです。App Store または Google Play を通じて課金され、そこではお住まいの地域の通貨で表示されます。1 回払いの買い切りプランでは、KidGate が提供されている間、子どものすべてのデバイスで同じ Premium を利用できます。無料プランに期限はありません。',
     faqMore: 'ほかにも質問がありますか？ サポートへ',
 
     ctaTitle: '今日から家族を守りはじめましょう',
@@ -990,5 +990,81 @@ export default {
     youtubeTitle: 'KidGate — スマホ・パソコン・テレビのペアレンタルコントロール',
     youtubeDescription:
       'KidGate と過ごす、いつもの一日。学校のチャイムから寝る時間まで。',
+  },
+  setup: {
+    parentTitle: '自分のスマホを設定する',
+    parentSub: '最初のステップです。数分で終わります。',
+    install: 'App Store または Google Play で「KidGate」を探して、インストールします。',
+    installSub: 'iPhone、iPad、Android スマホで使えます。',
+    role: 'KidGate を開き、「{{parent}}」を選びます。',
+    signIn: '「{{signIn}}」をタップし、Apple、Google、またはメールでログインします。',
+    signInSub: 'Apple なら Face ID で確認するだけです。',
+    family: '{{tab}}で「{{create}}」をタップし、ファミリーに名前を付けます。',
+    done: '保護者側の準備はこれで完了です。',
+    next: '次は、お子さまのデバイスに KidGate をインストールします。そのデバイス用の動画を選んでください。',
+    parentYoutubeTitle: '自分のスマホに KidGate を設定する方法',
+    parentYoutubeDescription:
+      'KidGate をインストールし、ログインしてファミリーを作成します。お子さまのデバイスをつなぐ前の、最初のステップです。',
+    pairSub: '保護者のスマホと接続してから、保護をオンにします。',
+    parentPhone: '保護者のスマホ',
+    openSub: 'QR コードが表示されます。この画面は開いたままにしてください。',
+    scanSub: '読み取れないときは「{{manual}}」を選びます。',
+    protect: '「{{turnOn}}」をタップすると、安全な基本ルールで始められます。',
+    protectSub: 'ルールはあとから一つずつ調整できます。',
+    tapAllow: '「{{allow}}」をタップします。',
+    extras: '最後に、カメラとマイクへのアクセスを許可します。',
+    extrasSub: '任意：許可すると、お子さまが SOS に写真や音声を添えられます。',
+    pairNext: '次は、保護者のスマホからルールを設定します。',
+    iosTitle: 'お子さまの iPhone を設定する',
+    childPhone: '子どもの iPhone',
+    iosOpen: 'お子さまの iPhone で KidGate を開き、「{{child}}」を選びます。',
+    iosScan: '保護者のスマホで「{{add}}」をタップし、QR コードを読み取ります。',
+    iosConfirm: 'お子さまの iPhone で保護者の名前を確認し、「{{yes}}」をタップします。',
+    iosPin: '「{{pin}}」（6 桁）を作成します。',
+    iosPinSub:
+      'ブロックするアプリを変更する前に、お子さまの iPhone がこの PIN を求めます。',
+    iosAssign: 'この iPhone を使う人を選ぶか、名前を入力してお子さまを追加します。',
+    iosScreenTime:
+      'お子さまの iPhone で「{{allow}}」をタップし、スクリーンタイムへのアクセスを許可します。',
+    iosScreenTimeSub: 'Apple がこの iPhone の Face ID またはパスコードを求めます。',
+    iosNotify:
+      '「{{settings}}」をタップして{{notifications}}をオンにし、KidGate に戻ります。',
+    iosRefresh: '「{{settings}}」をタップし、「{{refresh}}」をオンにします。',
+    iosRefreshSub: '任意：KidGate がバックグラウンドでも動作し続けます。',
+    iosBlocked: '「{{strengthen}}」をタップし、「{{blocked}}」を設定します。',
+    iosBlockedSub: '「{{unlock}}」をタップして PIN を入力し、アプリを選びます。',
+    iosDone: 'お子さまの iPhone が保護されました。',
+    iosYoutubeTitle: 'お子さまの iPhone に KidGate を設定する方法',
+    iosYoutubeDescription:
+      'QR コードでお子さまの iPhone を保護者のスマホと接続し、スクリーンタイムなど KidGate に必要な権限を一つずつオンにします。',
+    androidTitle: 'お子さまの Android スマホを設定する',
+    childAndroid: '子どもの Android',
+    androidOpen: 'お子さまのスマホで KidGate を開き、「{{child}}」を選びます。',
+    androidScan: '保護者のスマホの KidGate で QR コードを読み取ります。',
+    androidConfirm:
+      'お子さまのスマホで保護者の名前を確認し、「{{yes}}」をタップします。',
+    androidAssign: 'このスマホを使う人を選ぶか、名前を入力してお子さまを追加します。',
+    androidUsage:
+      'お子さまのスマホで「{{open}}」をタップし、KidGate の使用状況へのアクセスをオンにします。',
+    androidBack: 'そのあと、スワイプして KidGate に戻ります。',
+    androidAccessibility:
+      '「{{agree}}」をタップし、ユーザー補助で KidGate をオンにします。',
+    androidOverlay:
+      '「{{settings}}」をタップし、KidGate に「{{overlay}}」を許可します。',
+    androidNotify: '「{{allow}}」をタップし、続けて通知を許可します。',
+    androidWebFilter: '「{{enable}}」をタップし、接続を許可します。',
+    androidWebFilterSub: 'KidGate の {{filter}}は、VPN としてスマホ上で動作します。',
+    androidBattery:
+      '「{{settings}}」をタップし、KidGate がバックグラウンドで常に動作できるようにします。',
+    androidStrengthen:
+      '「{{strengthen}}」をタップし、「{{uninstall}}」をオンにします。',
+    androidMessages:
+      '「{{alerts}}」で「{{grant}}」をタップし、KidGate の通知へのアクセスをオンにします。',
+    androidMessagesSub:
+      'KidGate は受信したメッセージに警告ワードがないかを、スマホの中でチェックします。',
+    androidDone: 'お子さまのスマホが保護されました。',
+    androidYoutubeTitle: 'お子さまの Android スマホに KidGate を設定する方法',
+    androidYoutubeDescription:
+      'QR コードでお子さまの Android スマホを保護者のスマホと接続し、KidGate に必要な権限を一つずつオンにします。',
   },
 };

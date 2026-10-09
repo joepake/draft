@@ -3,7 +3,7 @@ export const trial = {
   trialHoursMinutesLeft: '{{hours}}h {{minutes}}m left',
   trialMinutesLeft: '{{minutes}}m left',
   trialDeviceCliff:
-    'When the trial ends, only {{keeps}} of your {{using}} devices keeps sending reports and taking rule changes. The rest keep enforcing the rules they already have, but from that point on you can only loosen those rules, never tighten them.',
+    'When the trial ends, only {{keeps}} of your {{using}} devices keeps sending reports and taking rule changes. The others keep their current rules, which you can only loosen, never tighten.',
   trialBannerTitle: 'Trial · {{remaining}}',
   trialUrgentBody:
     'Your trial is almost over. Subscribe to Premium for {{price}}/month so nothing is interrupted.',

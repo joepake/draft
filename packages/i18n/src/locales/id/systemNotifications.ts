@@ -15,6 +15,7 @@ export const systemNotifications = {
   webFilterBody: 'Memfilter situs web di perangkat ini',
   locationTitle: 'Memperbarui lokasi',
   locationBody: 'KidGate sedang membagikan lokasi perangkat ini kepada orang tuamu.',
+  sosAudioBody: 'KidGate sedang merekam suara hingga 15 detik untuk orang tuamu.',
   monitorTitleWeak: 'Perlindungan KidGate terbatas',
   monitorTitleActive: 'Perlindungan KidGate aktif',
   monitorTitleIdle: 'KidGate sedang berjalan',

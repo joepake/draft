@@ -242,7 +242,7 @@ export default {
       'Evet. Ebeveyn paneli her tarayıcıda açılır. Gösterdiği kodu telefonunuzdaki KidGate uygulamasıyla tarayın; aynı aileyi, cihazları ve ayarları, denetimlerin kilidi açık olarak görürsünüz. Okumak için hesabınızla da giriş yapabilirsiniz; bu durumda bir cihazı kilitlemek ya da bir sınırı değiştirmek Ebeveyn PIN’inizi ister.',
     faq5Q: 'Premium’un ücreti ne kadar?',
     faq5A:
-      'Premium’un ABD fiyatı ayda 6,99 $ veya yılda 39,99 $; App Store ya da Google Play üzerinden faturalandırılır ve orada kendi para biriminizde gösterilir. Tek seferlik ödenen Ömür boyu planı, KidGate sunulduğu sürece her çocuk cihazında aynı Premium’u sunar. Ücretsiz planın süresi hiç dolmaz.',
+      'Premium’un ABD fiyatı ayda 4,99 $ veya yılda 39,99 $; App Store ya da Google Play üzerinden faturalandırılır ve orada kendi para biriminizde gösterilir. Tek seferlik ödenen Ömür boyu planı, KidGate sunulduğu sürece her çocuk cihazında aynı Premium’u sunar. Ücretsiz planın süresi hiç dolmaz.',
     faqMore: 'Başka sorunuz mu var? Destek sayfasına gidin',
 
     ctaTitle: 'Ailenizi korumaya bugün başlayın',
@@ -1002,5 +1002,91 @@ export default {
     youtubeTitle: 'KidGate — Telefon, bilgisayar ve TV için ebeveyn denetimi',
     youtubeDescription:
       'KidGate ile sıradan bir gün: okul zilinden yatma saatine kadar.',
+  },
+  setup: {
+    parentTitle: 'Telefonunuzda kurulum',
+    parentSub: 'İlk adım. Yalnızca birkaç dakika sürer.',
+    install:
+      '“KidGate” uygulamasını App Store’da veya Google Play’de bulun ve yükleyin.',
+    installSub: 'iPhone, iPad veya Android telefon.',
+    role: 'KidGate’i açın ve “{{parent}}” seçeneğini seçin.',
+    signIn:
+      '“{{signIn}}” seçeneğine dokunun, ardından Apple, Google veya e-posta ile giriş yapın.',
+    signInSub: 'Apple ile girişte onay için Face ID yeterli.',
+    family:
+      '“{{tab}}” açıkken “{{create}}” seçeneğine dokunun ve ailenize bir ad verin.',
+    done: 'Sizin kısmınız tamamlandı.',
+    next: 'Sıradaki adım: KidGate’i çocuğunuzun cihazına yükleyin. O cihaza uygun videoyu seçin.',
+    parentYoutubeTitle: 'KidGate telefonunuza nasıl kurulur',
+    parentYoutubeDescription:
+      'KidGate’i yükleyin, giriş yapın ve ailenizi oluşturun: çocuğunuzun cihazlarını bağlamadan önceki ilk adım.',
+    pairSub: 'Telefonunuza bağlayın, ardından korumasını açın.',
+    parentPhone: 'Telefonunuz',
+    openSub: 'Ekranda bir QR kod görünür. Bu ekranı açık bırakın.',
+    scanSub: 'Okutamıyor musunuz? “{{manual}}” seçeneğini seçin.',
+    protect: 'Güvenli kurallarla başlamak için “{{turnOn}}” seçeneğine dokunun.',
+    protectSub: 'Her birinde daha sonra ince ayar yapabilirsiniz.',
+    tapAllow: '“{{allow}}” seçeneğine dokunun.',
+    extras: 'Son olarak kameraya ve mikrofona izin verin.',
+    extrasSub:
+      'İsteğe bağlı: böylece çocuğunuz bir SOS’a fotoğraf veya ses ekleyebilir.',
+    pairNext: 'Sıradaki adım: kuralları telefonunuzdan belirleyin.',
+    iosTitle: 'Çocuğunuzun iPhone’unda kurulum',
+    childPhone: 'Çocuğun iPhone’u',
+    iosOpen: 'Çocuğunuzun iPhone’unda KidGate’i açın ve “{{child}}” seçeneğini seçin.',
+    iosScan: 'Telefonunuzda “{{add}}” seçeneğine dokunun ve QR kodu okutun.',
+    iosConfirm:
+      'Çocuğunuzun iPhone’unda adınızı kontrol edin, ardından “{{yes}}” seçeneğine dokunun.',
+    iosPin: '6 haneli “{{pin}}” oluşturun.',
+    iosPinSub:
+      'Engellenen uygulamalar değiştirilmeden önce çocuğunuzun iPhone’u bu PIN’i ister.',
+    iosAssign: 'Bu iPhone’u kimin kullandığını seçin ya da çocuğunuzu adıyla ekleyin.',
+    iosScreenTime:
+      'Çocuğunuzun iPhone’unda “{{allow}}” seçeneğine dokunun ve Ekran Süresi’ne izin verin.',
+    iosScreenTimeSub: 'Apple, bu iPhone için Face ID veya parola ister.',
+    iosNotify:
+      '“{{settings}}” seçeneğine dokunun, {{notifications}} seçeneğini açın, ardından KidGate’e dönün.',
+    iosRefresh: '“{{settings}}” seçeneğine dokunun ve “{{refresh}}” seçeneğini açın.',
+    iosRefreshSub:
+      'İsteğe bağlı: KidGate’in arka planda çalışmayı sürdürmesini sağlar.',
+    iosBlocked:
+      '“{{strengthen}}” seçeneğine dokunun, ardından “{{blocked}}” bölümünü ayarlayın.',
+    iosBlockedSub:
+      '“{{unlock}}” seçeneğine dokunur, PIN’inizi girer, ardından uygulamaları seçersiniz.',
+    iosDone: 'Çocuğunuzun iPhone’u korunuyor.',
+    iosYoutubeTitle: 'KidGate çocuğunuzun iPhone’una nasıl kurulur',
+    iosYoutubeDescription:
+      'Çocuğunuzun iPhone’unu bir QR kodla telefonunuza bağlayın, ardından Ekran Süresi’ni ve KidGate’in ihtiyaç duyduğu diğer izinleri adım adım açın.',
+    androidTitle: 'Çocuğunuzun Android telefonunda kurulum',
+    childAndroid: 'Çocuğun Android’i',
+    androidOpen:
+      'Çocuğunuzun telefonunda KidGate’i açın ve “{{child}}” seçeneğini seçin.',
+    androidScan: 'Telefonunuzda QR kodu KidGate ile okutun.',
+    androidConfirm:
+      'Çocuğunuzun telefonunda adınızı kontrol edin, ardından “{{yes}}” seçeneğine dokunun.',
+    androidAssign:
+      'Bu telefonu kimin kullandığını seçin ya da çocuğunuzu adıyla ekleyin.',
+    androidUsage:
+      'Çocuğunuzun telefonunda “{{open}}” seçeneğine dokunun ve KidGate için Kullanım Erişimi’ni açın.',
+    androidBack: 'Ardından geri kaydırarak KidGate’e dönün.',
+    androidAccessibility:
+      '“{{agree}}” seçeneğine dokunun, ardından Erişilebilirlik bölümünde KidGate’i açın.',
+    androidOverlay:
+      '“{{settings}}” seçeneğine dokunun ve KidGate için “{{overlay}}” iznini verin.',
+    androidNotify: '“{{allow}}” seçeneğine dokunun, ardından bildirimlere izin verin.',
+    androidWebFilter: '“{{enable}}” seçeneğine dokunun ve bağlantıya izin verin.',
+    androidWebFilterSub: 'KidGate’in {{filter}} özelliği telefonda VPN olarak çalışır.',
+    androidBattery:
+      '“{{settings}}” seçeneğine dokunun, ardından KidGate’in her zaman arka planda çalışmasına izin verin.',
+    androidStrengthen:
+      '“{{strengthen}}” seçeneğine dokunun, ardından “{{uninstall}}” seçeneğini açın.',
+    androidMessages:
+      '“{{alerts}}” bölümünde “{{grant}}” seçeneğine dokunun ve KidGate için bildirim erişimini açın.',
+    androidMessagesSub:
+      'KidGate, gelen mesajlarda uyarı kelimeleri olup olmadığını doğrudan telefonda kontrol eder.',
+    androidDone: 'Çocuğunuzun telefonu korunuyor.',
+    androidYoutubeTitle: 'KidGate çocuğunuzun Android telefonuna nasıl kurulur',
+    androidYoutubeDescription:
+      'Çocuğunuzun Android telefonunu bir QR kodla telefonunuza bağlayın, ardından KidGate’in ihtiyaç duyduğu izinleri adım adım açın.',
   },
 };

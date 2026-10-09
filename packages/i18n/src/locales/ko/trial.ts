@@ -3,7 +3,7 @@ export const trial = {
   trialHoursMinutesLeft: '{{hours}}시간 {{minutes}}분 남음',
   trialMinutesLeft: '{{minutes}}분 남음',
   trialDeviceCliff:
-    '체험이 끝나면 {{using}}대 중 {{keeps}}대만 보고를 보내고 규칙 변경을 받습니다. 나머지 기기는 지금의 규칙을 그대로 적용하지만, 그 뒤로는 규칙을 완화만 할 수 있고 강화할 수 없습니다.',
+    '체험이 끝나면 {{using}}대 중 {{keeps}}대만 계속 보고를 보내고 규칙 변경을 받습니다. 나머지 기기는 지금의 규칙을 유지하며, 규칙을 완화만 할 수 있고 강화할 수는 없습니다.',
   trialBannerTitle: '체험 · {{remaining}}',
   trialUrgentBody:
     '체험이 곧 끝납니다. 월 {{price}}의 Premium을 구독하면 중단 없이 사용할 수 있습니다.',

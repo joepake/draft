@@ -3,6 +3,9 @@ export const notifications = {
   subtitleAllOn: 'Semua peringatan aktif',
   subtitleMuted: '{{count}} peringatan dibisukan',
   sosAlwaysOn: 'SOS selalu sampai, meski semua di sini dimatikan.',
+  sosFullScreenOff:
+    'Di ponsel ini, SOS muncul sebagai banner kecil, bukan memenuhi layar, jadi lebih mudah terlewat. Izinkan peringatan layar penuh untuk memperbaikinya.',
+  sosFullScreenAllow: 'Izinkan peringatan layar penuh',
   sectionAlerts: 'Peringatan',
   sectionAlertsHint: 'Pilih hal yang diberitahukan ke ponsel ini.',
   sectionSummary: 'Ringkasan',

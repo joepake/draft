@@ -4,6 +4,9 @@ export const notifications = {
   subtitleMuted_one: '1 alerta silenciada',
   subtitleMuted: '{{count}} alertas silenciadas',
   sosAlwaysOn: 'El SOS siempre llega, aunque desactives todo lo de aquí.',
+  sosFullScreenOff:
+    'En este teléfono, un SOS aparece como un aviso pequeño en lugar de ocupar toda la pantalla, así que es más fácil pasarlo por alto. Permite las alertas a pantalla completa para solucionarlo.',
+  sosFullScreenAllow: 'Permitir alertas a pantalla completa',
   sectionAlerts: 'Alertas',
   sectionAlertsHint: 'Elige de qué se notifica este teléfono.',
   sectionSummary: 'Resumen',

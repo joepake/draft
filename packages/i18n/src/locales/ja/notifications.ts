@@ -3,6 +3,9 @@ export const notifications = {
   subtitleAllOn: 'すべての通知がオン',
   subtitleMuted: '{{count}}件をオフ中',
   sosAlwaysOn: 'SOS はここをすべてオフにしても必ず届きます。',
+  sosFullScreenOff:
+    'このスマートフォンでは、SOS が全画面ではなく小さなバナーで表示されるため、見逃しやすくなっています。全画面通知を許可してください。',
+  sosFullScreenAllow: '全画面通知を許可',
   sectionAlerts: '通知',
   sectionAlertsHint: 'このデバイスで受け取る通知を選びます。',
   sectionSummary: 'サマリー',

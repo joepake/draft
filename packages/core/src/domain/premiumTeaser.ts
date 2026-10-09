@@ -47,7 +47,7 @@
  * they lead with what the screen is for rather than with a number.
  *
  * The bodies are the §4 plan table said one row at a time, at the moment the
- * row is missed. That is the point of the placement: a parent weighing $6.99
+ * row is missed. That is the point of the placement: a parent weighing $4.99
  * against a comparison table is guessing, and the same parent looking at a
  * screen that says "two hours across seven more apps — Premium names them" is
  * not.

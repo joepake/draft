@@ -3,7 +3,7 @@ export const trial = {
   trialHoursMinutesLeft: 'Còn {{hours}} giờ {{minutes}} phút',
   trialMinutesLeft: 'Còn {{minutes}} phút',
   trialDeviceCliff:
-    'Khi hết dùng thử, chỉ {{keeps}} trong {{using}} thiết bị còn gửi báo cáo và chỉnh sửa quy tắc. Các máy còn lại vẫn chạy đúng quy tắc đang có, nhưng từ thời điểm này bạn chỉ có thể nới lỏng được, không thể siết chặt được quy tắc.',
+    'Khi hết dùng thử, chỉ {{keeps}} trong {{using}} thiết bị còn gửi báo cáo và chỉnh sửa quy tắc. Các thiết bị còn lại giữ nguyên quy tắc hiện tại, chỉ có thể nới lỏng, không thể siết chặt.',
   trialBannerTitle: 'Dùng thử · {{remaining}}',
   trialUrgentBody:
     'Thời gian dùng thử của bạn sắp kết thúc. Vui lòng đăng ký Premium với giá {{price}}/tháng để trải nghiệm không bị gián đoạn.',

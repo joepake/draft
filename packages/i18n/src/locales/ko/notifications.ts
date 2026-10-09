@@ -3,6 +3,9 @@ export const notifications = {
   subtitleAllOn: '모든 알림 켜짐',
   subtitleMuted: '{{count}}개 알림 끔',
   sosAlwaysOn: 'SOS는 여기 설정을 모두 꺼도 항상 전달됩니다.',
+  sosFullScreenOff:
+    '이 휴대폰에서는 SOS가 전체 화면 대신 작은 배너로 표시되어 놓치기 쉽습니다. 전체 화면 알림을 허용해 주세요.',
+  sosFullScreenAllow: '전체 화면 알림 허용',
   sectionAlerts: '알림',
   sectionAlertsHint: '이 기기에서 받을 알림을 선택하세요.',
   sectionSummary: '요약',

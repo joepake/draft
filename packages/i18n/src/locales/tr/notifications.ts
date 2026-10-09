@@ -3,6 +3,9 @@ export const notifications = {
   subtitleAllOn: 'Tüm uyarılar açık',
   subtitleMuted: '{{count}} uyarı susturuldu',
   sosAlwaysOn: 'SOS, buradaki her şey kapalıyken bile her zaman ulaşır.',
+  sosFullScreenOff:
+    'Bu telefonda SOS tam ekran yerine küçük bir bildirim olarak görünüyor, bu yüzden gözden kaçabilir. Bunu düzeltmek için tam ekran uyarılara izin verin.',
+  sosFullScreenAllow: 'Tam ekran uyarılara izin ver',
   sectionAlerts: 'Uyarılar',
   sectionAlertsHint: 'Bu telefona hangi bildirimlerin geleceğini seçin.',
   sectionSummary: 'Özet',

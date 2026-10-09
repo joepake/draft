@@ -4,6 +4,9 @@ export const notifications = {
   subtitleMuted_one: '1 alerta silenciado',
   subtitleMuted: '{{count}} alertas silenciados',
   sosAlwaysOn: 'O SOS sempre chega, mesmo com tudo aqui desativado.',
+  sosFullScreenOff:
+    'Neste celular, um SOS aparece como um pequeno banner em vez de ocupar a tela inteira, então é mais fácil perdê-lo. Permita alertas em tela cheia para corrigir isso.',
+  sosFullScreenAllow: 'Permitir alertas em tela cheia',
   sectionAlerts: 'Alertas',
   sectionAlertsHint: 'Escolha sobre o que este telefone é notificado.',
   sectionSummary: 'Resumo',

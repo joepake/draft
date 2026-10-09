@@ -18,6 +18,7 @@ export const systemNotifications = {
   webFilterBody: 'Filtrage des sites web sur cet appareil',
   locationTitle: 'Mise à jour de la position',
   locationBody: 'KidGate partage la position de cet appareil avec tes parents.',
+  sosAudioBody: 'KidGate enregistre jusqu’à 15 secondes de son pour tes parents.',
   monitorTitleWeak: 'Protection KidGate limitée',
   monitorTitleActive: 'Protection KidGate activée',
   monitorTitleIdle: 'KidGate fonctionne',

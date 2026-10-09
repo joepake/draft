@@ -242,7 +242,7 @@ export default {
       'Ja. Das Eltern-Dashboard öffnet sich in jedem Browser. Scanne den angezeigten Code mit der KidGate-App auf deinem Handy, und du siehst dieselbe Familie, dieselben Geräte und dieselben Einstellungen, mit freigeschalteter Steuerung. Du kannst dich auch mit deinem Konto zum Lesen anmelden; ein Gerät zu sperren oder ein Limit zu ändern verlangt dann deine Eltern-PIN.',
     faq5Q: 'Was kostet Premium?',
     faq5A:
-      'Premium kostet in den USA 6,99 $ im Monat oder 39,99 $ im Jahr, abgerechnet über den App Store oder Google Play und dort in deiner eigenen Währung angezeigt. Der Tarif „Lebenslang“ mit Einmalzahlung bietet dasselbe Premium auf jedem Kindergerät, solange es KidGate gibt. Der kostenlose Tarif läuft nie ab.',
+      'Premium kostet in den USA 4,99 $ im Monat oder 39,99 $ im Jahr, abgerechnet über den App Store oder Google Play und dort in deiner eigenen Währung angezeigt. Der Tarif „Lebenslang“ mit Einmalzahlung bietet dasselbe Premium auf jedem Kindergerät, solange es KidGate gibt. Der kostenlose Tarif läuft nie ab.',
     faqMore: 'Noch Fragen? Zum Support',
 
     ctaTitle: 'Schütze deine Familie ab heute',
@@ -1011,5 +1011,88 @@ export default {
     youtubeTitle: 'KidGate — Kindersicherung für Handy, Computer und Fernseher',
     youtubeDescription:
       'Ein ganz normaler Tag mit KidGate, vom Schulbeginn bis zur Schlafenszeit.',
+  },
+  setup: {
+    parentTitle: 'Dein Handy einrichten',
+    parentSub: 'Der erste Schritt. Er dauert nur ein paar Minuten.',
+    install:
+      'Suche „KidGate“ im App Store oder bei Google Play und installiere die App.',
+    installSub: 'iPhone, iPad oder Android-Handy.',
+    role: 'Öffne KidGate und wähle „{{parent}}“.',
+    signIn:
+      'Tippe auf „{{signIn}}“ und melde dich dann mit Apple, Google oder E-Mail an.',
+    signInSub: 'Mit Apple bestätigst du einfach per Face ID.',
+    family: 'Tippe im „{{tab}}“ auf „{{create}}“ und benenne deine Familie.',
+    done: 'Dein Teil ist erledigt.',
+    next: 'Als Nächstes: Installiere KidGate auf dem Gerät deines Kindes. Wähle das passende Video für sein Gerät.',
+    parentYoutubeTitle: 'So richtest du KidGate auf deinem Handy ein',
+    parentYoutubeDescription:
+      'Installiere KidGate, melde dich an und erstelle deine Familie: der erste Schritt, bevor du die Geräte deines Kindes verbindest.',
+    pairSub: 'Verbinde es mit deinem Handy und schalte dann seinen Schutz ein.',
+    parentPhone: 'Dein Handy',
+    openSub: 'Ein QR-Code erscheint. Lass diesen Bildschirm geöffnet.',
+    scanSub: 'Scannen klappt nicht? Wähle „{{manual}}“.',
+    protect: 'Tippe auf „{{turnOn}}“, um mit sicheren Standardregeln zu beginnen.',
+    protectSub: 'Jede Regel kannst du später feiner einstellen.',
+    tapAllow: 'Tippe auf „{{allow}}“.',
+    extras: 'Erlaube zuletzt Kamera und Mikrofon.',
+    extrasSub:
+      'Optional: Dann kann dein Kind einem SOS ein Foto oder einen Ton anhängen.',
+    pairNext: 'Als Nächstes: Lege die Regeln von deinem Handy aus fest.',
+    iosTitle: 'Das iPhone deines Kindes einrichten',
+    childPhone: 'iPhone des Kindes',
+    iosOpen: 'Öffne KidGate auf dem iPhone deines Kindes und wähle „{{child}}“.',
+    iosScan: 'Tippe auf deinem Handy auf „{{add}}“ und scanne den QR-Code.',
+    iosConfirm:
+      'Prüfe auf dem iPhone deines Kindes, dass du es bist, und tippe dann auf „{{yes}}“.',
+    iosPin: 'Lege deine „{{pin}}“ fest (6 Ziffern).',
+    iosPinSub:
+      'Das iPhone deines Kindes fragt danach, bevor sich blockierte Apps ändern lassen.',
+    iosAssign:
+      'Wähle aus, wer dieses iPhone nutzt, oder füge dein Kind mit Namen hinzu.',
+    iosScreenTime:
+      'Tippe auf dem iPhone deines Kindes auf „{{allow}}“ und erlaube den Zugriff auf Bildschirmzeit.',
+    iosScreenTimeSub:
+      'Apple verlangt dafür Face ID oder den Gerätecode dieses iPhones.',
+    iosNotify:
+      'Tippe auf „{{settings}}“, aktiviere {{notifications}} und kehre dann zu KidGate zurück.',
+    iosRefresh: 'Tippe auf „{{settings}}“ und aktiviere „{{refresh}}“.',
+    iosRefreshSub: 'Optional: So läuft KidGate auch im Hintergrund weiter.',
+    iosBlocked: 'Tippe auf „{{strengthen}}“ und richte dann „{{blocked}}“ ein.',
+    iosBlockedSub:
+      'Du tippst auf „{{unlock}}“, gibst deine PIN ein und wählst dann die Apps aus.',
+    iosDone: 'Das iPhone deines Kindes ist geschützt.',
+    iosYoutubeTitle: 'So richtest du KidGate auf dem iPhone deines Kindes ein',
+    iosYoutubeDescription:
+      'Verbinde das iPhone deines Kindes per QR-Code mit deinem Handy und aktiviere dann Schritt für Schritt Bildschirmzeit und die weiteren Berechtigungen, die KidGate braucht.',
+    androidTitle: 'Das Android-Handy deines Kindes einrichten',
+    childAndroid: 'Android-Handy des Kindes',
+    androidOpen: 'Öffne KidGate auf dem Handy deines Kindes und wähle „{{child}}“.',
+    androidScan: 'Scanne auf deinem Handy den QR-Code mit KidGate.',
+    androidConfirm:
+      'Prüfe auf dem Handy deines Kindes, dass du es bist, und tippe dann auf „{{yes}}“.',
+    androidAssign:
+      'Wähle aus, wer dieses Handy nutzt, oder füge dein Kind mit Namen hinzu.',
+    androidUsage:
+      'Tippe auf dem Handy deines Kindes auf „{{open}}“ und erlaube KidGate den Zugriff auf Nutzungsdaten.',
+    androidBack: 'Wische dann zurück zu KidGate.',
+    androidAccessibility:
+      'Tippe auf „{{agree}}“ und aktiviere dann KidGate unter Bedienungshilfen.',
+    androidOverlay: 'Tippe auf „{{settings}}“ und erlaube „{{overlay}}“ für KidGate.',
+    androidNotify: 'Tippe auf „{{allow}}“ und lass dann Benachrichtigungen zu.',
+    androidWebFilter: 'Tippe auf „{{enable}}“ und erlaube die Verbindung.',
+    androidWebFilterSub: 'Der {{filter}} von KidGate läuft auf dem Handy als VPN.',
+    androidBattery:
+      'Tippe auf „{{settings}}“ und lass KidGate dann immer im Hintergrund laufen.',
+    androidStrengthen: 'Tippe auf „{{strengthen}}“ und aktiviere dann „{{uninstall}}“.',
+    androidMessages:
+      'Tippe bei „{{alerts}}“ auf „{{grant}}“ und aktiviere den Zugriff für KidGate.',
+    androidMessagesSub:
+      'KidGate prüft eingehende Nachrichten auf Warnwörter, direkt auf dem Handy.',
+    androidDone: 'Das Handy deines Kindes ist geschützt.',
+    androidYoutubeTitle:
+      'So richtest du KidGate auf dem Android-Handy deines Kindes ein',
+    androidYoutubeDescription:
+      'Verbinde das Android-Handy deines Kindes per QR-Code mit deinem Handy und aktiviere dann Schritt für Schritt die Berechtigungen, die KidGate braucht.',
   },
 };

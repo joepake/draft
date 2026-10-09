@@ -3,7 +3,7 @@ export const trial = {
   trialHoursMinutesLeft: '{{hours}} sa {{minutes}} dk kaldı',
   trialMinutesLeft: '{{minutes}} dk kaldı',
   trialDeviceCliff:
-    'Deneme bittiğinde {{using}} cihazınızdan yalnızca {{keeps}} tanesi rapor göndermeyi ve kural değişikliklerini almayı sürdürür. Diğerleri mevcut kurallarını uygulamaya devam eder; ancak bundan sonra o kuralları yalnızca gevşetebilir, sıkılaştıramazsınız.',
+    'Deneme bittiğinde {{using}} cihazınızdan yalnızca {{keeps}} tanesi rapor göndermeyi ve kural değişikliklerini almayı sürdürür. Diğerleri mevcut kurallarını korur; bu kuralları yalnızca gevşetebilir, sıkılaştıramazsınız.',
   trialBannerTitle: 'Deneme · {{remaining}}',
   trialUrgentBody:
     'Denemeniz bitmek üzere. Hiçbir şey kesintiye uğramasın diye ayda {{price}} karşılığında Premium’a abone olun.',

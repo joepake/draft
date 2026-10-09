@@ -3,7 +3,7 @@ export const trial = {
   trialHoursMinutesLeft: 'Restam {{hours}} h {{minutes}} min',
   trialMinutesLeft: 'Restam {{minutes}} min',
   trialDeviceCliff:
-    'Quando o teste acabar, só {{keeps}} dos seus {{using}} dispositivos continua enviando relatórios e aceitando mudanças nas regras. Os outros seguem aplicando as regras que já têm, mas a partir daí você só pode afrouxar essas regras, nunca apertá-las.',
+    'Quando o teste acabar, só {{keeps}} dos seus {{using}} dispositivos continua enviando relatórios e aceitando mudanças nas regras. Os outros mantêm as regras atuais, que você só pode afrouxar, nunca apertar.',
   trialBannerTitle: 'Teste · {{remaining}}',
   trialUrgentBody:
     'Seu teste está quase no fim. Assine o Premium por {{price}}/mês para não interromper nada.',

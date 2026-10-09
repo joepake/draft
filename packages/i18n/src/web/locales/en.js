@@ -253,7 +253,7 @@ export default {
       'Yes. The parent dashboard opens in any browser. Scan the code it shows with the KidGate app on your phone and you see the same family, devices and settings, with the controls unlocked. You can also sign in with your account to read; locking a device or changing a limit then asks for your Parent PIN.',
     faq5Q: 'What does Premium cost?',
     faq5A:
-      'Premium is $6.99 a month or $39.99 a year in the US, billed through the App Store or Google Play and shown in your own currency there. A one-time Lifetime plan gives the same Premium on every child device, for as long as KidGate is available. The free plan never expires.',
+      'Premium is $4.99 a month or $39.99 a year in the US, billed through the App Store or Google Play and shown in your own currency there. A one-time Lifetime plan gives the same Premium on every child device, for as long as KidGate is available. The free plan never expires.',
     faqMore: 'More questions? Visit Support',
 
     ctaTitle: 'Start protecting your family today',
@@ -1048,5 +1048,80 @@ export default {
     youtubeTitle: 'KidGate — Parental Control for Phone, Computer & TV',
     youtubeDescription:
       'One ordinary day with KidGate, from the school bell to bedtime.',
+  },
+  // The setup videos' captions, read only by apps/videos (src/setup/*.script.ts).
+  // Every quoted button is a {{placeholder}} filled from the app pack.
+  setup: {
+    // Clip 0 — the parent's phone.
+    parentTitle: 'Set up your phone',
+    parentSub: 'The first step. It only takes a few minutes.',
+    install: 'Find “KidGate” on the App Store or Google Play and install it.',
+    installSub: 'iPhone, iPad or Android phone.',
+    role: 'Open KidGate and choose “{{parent}}”.',
+    signIn: 'Tap “{{signIn}}”, then sign in with Apple, Google or email.',
+    signInSub: 'With Apple, you just confirm with Face ID.',
+    family: 'In “{{tab}}”, tap “{{create}}” and name your family.',
+    done: 'Your part is done.',
+    next: 'Next: install KidGate on your child’s device. Choose the video for their device.',
+    parentYoutubeTitle: 'How to set up KidGate on your phone',
+    parentYoutubeDescription:
+      'Install KidGate, sign in and create your family: the first step before you connect your child’s devices.',
+    // Both pairing clips.
+    pairSub: 'Connect it to your phone, then switch on its protection.',
+    parentPhone: 'Your phone',
+    openSub: 'It shows a QR code. Leave that screen open.',
+    scanSub: 'Can’t scan it? Choose “{{manual}}”.',
+    protect: 'Tap “{{turnOn}}” to start with a safe set of rules.',
+    protectSub: 'You can fine-tune each one later.',
+    tapAllow: 'Tap “{{allow}}”.',
+    extras: 'Last, allow the camera and microphone.',
+    extrasSub: 'Optional: your child can then add a photo or sound to an SOS.',
+    pairNext: 'Next: set the rules from your phone.',
+    // Clip 1 — the child's iPhone.
+    iosTitle: 'Set up your child’s iPhone',
+    childPhone: 'Child’s iPhone',
+    iosOpen: 'On your child’s iPhone, open KidGate and choose “{{child}}”.',
+    iosScan: 'On your phone, tap “{{add}}” and scan the QR code.',
+    iosConfirm: 'On your child’s iPhone, check it’s you, then tap “{{yes}}”.',
+    iosPin: 'Create your “{{pin}}” (6 digits).',
+    iosPinSub: 'Your child’s iPhone asks for it before blocked apps can change.',
+    iosAssign: 'Choose who uses this iPhone, or add your child by name.',
+    iosScreenTime: 'On your child’s iPhone, tap “{{allow}}” and allow Screen Time.',
+    iosScreenTimeSub: 'Apple asks for this iPhone’s Face ID or passcode.',
+    iosNotify:
+      'Tap “{{settings}}”, turn on {{notifications}}, then come back to KidGate.',
+    iosRefresh: 'Tap “{{settings}}” and turn on “{{refresh}}”.',
+    iosRefreshSub: 'Optional: it keeps KidGate working in the background.',
+    iosBlocked: 'Tap “{{strengthen}}”, then set up “{{blocked}}”.',
+    iosBlockedSub: 'You tap “{{unlock}}”, enter your PIN, then pick the apps.',
+    iosDone: 'Your child’s iPhone is protected.',
+    iosYoutubeTitle: 'How to set up KidGate on your child’s iPhone',
+    iosYoutubeDescription:
+      'Connect your child’s iPhone to your phone with a QR code, then turn on Screen Time and the other permissions KidGate needs, one step at a time.',
+    // Clip 2 — the child's Android phone.
+    androidTitle: 'Set up your child’s Android phone',
+    childAndroid: 'Child’s Android',
+    androidOpen: 'On your child’s phone, open KidGate and choose “{{child}}”.',
+    androidScan: 'On your phone, scan the QR code with KidGate.',
+    androidConfirm: 'On your child’s phone, check it’s you, then tap “{{yes}}”.',
+    androidAssign: 'Choose who uses this phone, or add your child by name.',
+    androidUsage:
+      'On your child’s phone, tap “{{open}}” and allow usage access for KidGate.',
+    androidBack: 'Then swipe back to KidGate.',
+    androidAccessibility: 'Tap “{{agree}}”, then turn on KidGate in Accessibility.',
+    androidOverlay: 'Tap “{{settings}}” and allow “{{overlay}}” for KidGate.',
+    androidNotify: 'Tap “{{allow}}”, then allow notifications.',
+    androidWebFilter: 'Tap “{{enable}}” and allow the connection.',
+    androidWebFilterSub: 'KidGate’s {{filter}} runs on the phone as a VPN.',
+    androidBattery:
+      'Tap “{{settings}}”, then let KidGate always run in the background.',
+    androidStrengthen: 'Tap “{{strengthen}}”, then turn on “{{uninstall}}”.',
+    androidMessages: 'For “{{alerts}}”, tap “{{grant}}” and turn it on for KidGate.',
+    androidMessagesSub:
+      'KidGate checks incoming messages for warning words, on the phone.',
+    androidDone: 'Your child’s phone is protected.',
+    androidYoutubeTitle: 'How to set up KidGate on your child’s Android phone',
+    androidYoutubeDescription:
+      'Connect your child’s Android phone to your phone with a QR code, then turn on the permissions KidGate needs, one step at a time.',
   },
 };

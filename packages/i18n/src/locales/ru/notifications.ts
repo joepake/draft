@@ -5,6 +5,9 @@ export const notifications = {
   subtitleMuted_few: '{{count}} оповещения отключены',
   subtitleMuted: '{{count}} оповещений отключено',
   sosAlwaysOn: 'SOS приходит всегда, даже если всё здесь выключено.',
+  sosFullScreenOff:
+    'На этом телефоне SOS показывается небольшим баннером, а не на весь экран, поэтому его легко пропустить. Разрешите полноэкранные оповещения, чтобы это исправить.',
+  sosFullScreenAllow: 'Разрешить полноэкранные оповещения',
   sectionAlerts: 'Оповещения',
   sectionAlertsHint: 'Выберите, о чём уведомлять этот телефон.',
   sectionSummary: 'Сводка',

@@ -4,6 +4,9 @@ export const notifications = {
   subtitleMuted_one: '1 alerte coupée',
   subtitleMuted: '{{count}} alertes coupées',
   sosAlwaysOn: 'Le SOS passe toujours, même si tout est désactivé ici.',
+  sosFullScreenOff:
+    'Sur ce téléphone, un SOS s’affiche en petite bannière au lieu d’occuper tout l’écran, il est donc plus facile de le manquer. Autorisez les alertes en plein écran pour corriger cela.',
+  sosFullScreenAllow: 'Autoriser les alertes en plein écran',
   sectionAlerts: 'Alertes',
   sectionAlertsHint: 'Choisissez ce dont ce téléphone est averti.',
   sectionSummary: 'Récapitulatif',

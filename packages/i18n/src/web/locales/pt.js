@@ -241,7 +241,7 @@ export default {
       'Sim. O painel dos pais abre em qualquer navegador. Escaneie o código que ele mostra com o app KidGate no seu celular e você vê a mesma família, os mesmos dispositivos e as mesmas configurações, com os controles liberados. Você também pode entrar com a sua conta para consultar; nesse caso, bloquear um dispositivo ou mudar um limite pede o seu PIN dos pais.',
     faq5Q: 'Quanto custa o Premium?',
     faq5A:
-      'O Premium custa US$ 6,99 por mês ou US$ 39,99 por ano nos Estados Unidos, cobrado pela App Store ou pelo Google Play e mostrado lá na sua moeda. Um plano Vitalício de pagamento único oferece o mesmo Premium em todos os dispositivos infantis, enquanto o KidGate estiver disponível. O plano gratuito nunca expira.',
+      'O Premium custa US$ 4,99 por mês ou US$ 39,99 por ano nos Estados Unidos, cobrado pela App Store ou pelo Google Play e mostrado lá na sua moeda. Um plano Vitalício de pagamento único oferece o mesmo Premium em todos os dispositivos infantis, enquanto o KidGate estiver disponível. O plano gratuito nunca expira.',
     faqMore: 'Mais dúvidas? Veja o Suporte',
 
     ctaTitle: 'Comece a proteger sua família hoje',
@@ -1004,5 +1004,79 @@ export default {
     youtubeTitle: 'KidGate — Controle parental para celular, computador e TV',
     youtubeDescription:
       'Um dia comum com o KidGate, do sinal da escola até a hora de dormir.',
+  },
+  setup: {
+    parentTitle: 'Configure seu celular',
+    parentSub: 'O primeiro passo. Leva só alguns minutos.',
+    install: 'Procure “KidGate” na App Store ou no Google Play e instale.',
+    installSub: 'iPhone, iPad ou celular Android.',
+    role: 'Abra o KidGate e escolha “{{parent}}”.',
+    signIn: 'Toque em “{{signIn}}” e escolha Apple, Google ou e-mail.',
+    signInSub: 'Com a Apple, é só confirmar com o Face ID.',
+    family: 'Na “{{tab}}”, toque em “{{create}}” e dê um nome à sua família.',
+    done: 'Sua parte está feita.',
+    next: 'A seguir: instale o KidGate no aparelho do seu filho. Escolha o vídeo do aparelho dele.',
+    parentYoutubeTitle: 'Como configurar o KidGate no seu celular',
+    parentYoutubeDescription:
+      'Instale o KidGate, entre e crie sua família: o primeiro passo antes de conectar os aparelhos do seu filho.',
+    pairSub: 'Conecte-o ao seu celular e depois ative a proteção.',
+    parentPhone: 'Seu celular',
+    openSub: 'Aparece um QR code. Deixe essa tela aberta.',
+    scanSub: 'Não conseguiu ler? Escolha “{{manual}}”.',
+    protect: 'Toque em “{{turnOn}}” para começar com um conjunto de regras seguras.',
+    protectSub: 'Você pode ajustar cada uma depois.',
+    tapAllow: 'Toque em “{{allow}}”.',
+    extras: 'Por fim, permita o acesso à câmera e ao microfone.',
+    extrasSub:
+      'Opcional: assim seu filho pode anexar uma foto ou uma gravação a um SOS.',
+    pairNext: 'A seguir: defina as regras pelo seu celular.',
+    iosTitle: 'Configure o iPhone do seu filho',
+    childPhone: 'iPhone da criança',
+    iosOpen: 'No iPhone do seu filho, abra o KidGate e escolha “{{child}}”.',
+    iosScan: 'No seu celular, toque em “{{add}}” e leia o QR code.',
+    iosConfirm: 'No iPhone do seu filho, confira se é você e toque em “{{yes}}”.',
+    iosPin: 'Crie seu “{{pin}}” (6 dígitos).',
+    iosPinSub:
+      'O iPhone do seu filho pede esse PIN antes de qualquer mudança nos apps bloqueados.',
+    iosAssign: 'Escolha quem usa este iPhone ou adicione seu filho pelo nome.',
+    iosScreenTime:
+      'No iPhone do seu filho, toque em “{{allow}}” e permita o Tempo de Uso.',
+    iosScreenTimeSub: 'A Apple pede o Face ID ou o código deste iPhone.',
+    iosNotify:
+      'Toque em “{{settings}}”, ative as {{notifications}} e volte ao KidGate.',
+    iosRefresh: 'Toque em “{{settings}}” e ative “{{refresh}}”.',
+    iosRefreshSub: 'Opcional: mantém o KidGate funcionando em segundo plano.',
+    iosBlocked: 'Toque em “{{strengthen}}” e depois configure “{{blocked}}”.',
+    iosBlockedSub: 'Você toca em “{{unlock}}”, digita seu PIN e escolhe os apps.',
+    iosDone: 'O iPhone do seu filho está protegido.',
+    iosYoutubeTitle: 'Como configurar o KidGate no iPhone do seu filho',
+    iosYoutubeDescription:
+      'Conecte o iPhone do seu filho ao seu celular com um QR code. Depois, ative o Tempo de Uso e as outras permissões de que o KidGate precisa, passo a passo.',
+    androidTitle: 'Configure o celular Android do seu filho',
+    childAndroid: 'Android da criança',
+    androidOpen: 'No celular do seu filho, abra o KidGate e escolha “{{child}}”.',
+    androidScan: 'No seu celular, leia o QR code com o KidGate.',
+    androidConfirm: 'No celular do seu filho, confira se é você e toque em “{{yes}}”.',
+    androidAssign: 'Escolha quem usa este celular ou adicione seu filho pelo nome.',
+    androidUsage:
+      'No celular do seu filho, toque em “{{open}}” e ative o Acesso de uso para o KidGate.',
+    androidBack: 'Depois, deslize para voltar ao KidGate.',
+    androidAccessibility: 'Toque em “{{agree}}” e ative o KidGate em Acessibilidade.',
+    androidOverlay: 'Toque em “{{settings}}” e permita “{{overlay}}” para o KidGate.',
+    androidNotify: 'Toque em “{{allow}}” e depois autorize as notificações.',
+    androidWebFilter: 'Toque em “{{enable}}” e permita a conexão.',
+    androidWebFilterSub:
+      'O {{filter}} do KidGate funciona no próprio celular, como uma VPN.',
+    androidBattery:
+      'Toque em “{{settings}}” e permita que o KidGate funcione sempre em segundo plano.',
+    androidStrengthen: 'Toque em “{{strengthen}}” e depois ative “{{uninstall}}”.',
+    androidMessages:
+      'Em “{{alerts}}”, toque em “{{grant}}” e ative o acesso para o KidGate.',
+    androidMessagesSub:
+      'O KidGate procura palavras preocupantes nas mensagens recebidas, no próprio celular.',
+    androidDone: 'O celular do seu filho está protegido.',
+    androidYoutubeTitle: 'Como configurar o KidGate no celular Android do seu filho',
+    androidYoutubeDescription:
+      'Conecte o celular Android do seu filho ao seu celular com um QR code. Depois, ative as permissões de que o KidGate precisa, passo a passo.',
   },
 };

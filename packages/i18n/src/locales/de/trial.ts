@@ -3,7 +3,7 @@ export const trial = {
   trialHoursMinutesLeft: 'Noch {{hours}} Std. {{minutes}} Min.',
   trialMinutesLeft: 'Noch {{minutes}} Min.',
   trialDeviceCliff:
-    'Wenn die Testphase endet, sendet nur {{keeps}} von deinen {{using}} Geräten weiter Berichte und nimmt Regeländerungen an. Auf den übrigen gelten die Regeln weiter, doch ab dann kannst du sie nur noch lockern, nie verschärfen.',
+    'Wenn die Testphase endet, sendet nur {{keeps}} von deinen {{using}} Geräten weiter Berichte und nimmt Regeländerungen an. Die übrigen behalten ihre aktuellen Regeln, die du nur noch lockern, aber nicht verschärfen kannst.',
   trialBannerTitle: 'Testphase · {{remaining}}',
   trialUrgentBody:
     'Deine Testphase endet bald. Abonniere Premium für {{price}}/Monat, damit nichts unterbrochen wird.',

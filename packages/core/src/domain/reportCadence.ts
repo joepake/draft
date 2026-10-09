@@ -129,6 +129,38 @@ export const IDLE_ALIVE_INTERVAL_MS: Millis = LAPSED_ALIVE_INTERVAL_MS;
 export const CONSOLE_LIVE_WINDOW_MS: Millis = 10 * 60_000;
 
 /**
+ * How often an open console re-asks the devices it is watching to report.
+ *
+ * **Derived, because the two numbers it sits between are what make it right.**
+ * A request arms the live window above, and the console cannot tell a device
+ * that is already live from an idle one — a device publishes the floor, never
+ * the cadence it is keeping, so `shouldRequestReport` says yes on every tick.
+ * The interval is therefore the only thing deciding what a visit costs, and a
+ * fixed number beside a window it has to fit inside is exactly the drift this
+ * module exists to prevent.
+ *
+ * **It was `REPORT_REQUEST_MIN_INTERVAL_MS` — five minutes, half the window —
+ * until 2026-10-09.** Every second re-ask extended a window with five minutes
+ * still on it, and each one is a write to `childDevices/{id}`: a trigger
+ * invocation, a delivery to the device's own `controlsSync` listener and one to
+ * every open console, measured at about 3.7 reads per write. One request per
+ * window keeps a device live indefinitely.
+ *
+ * One beat of margin rather than none, since the request has to be written,
+ * delivered and answered before the window lapses. What is lost against five
+ * minutes is the *spare* request: a dropped one was covered by the next before
+ * the window closed, and now costs the device a fall back to the floor until
+ * the following tick. A console paints that honestly rather than silently
+ * (`REPORT_REQUEST_UNANSWERED_MS`), which is what makes the trade payable.
+ *
+ * Still longer than `REPORT_REQUEST_MIN_INTERVAL_MS`, so the per-device
+ * throttle never refuses this timer and a parent's manual pull-to-refresh keeps
+ * the shorter floor it was sized for.
+ */
+export const CONSOLE_REASK_INTERVAL_MS: Millis =
+  CONSOLE_LIVE_WINDOW_MS - ALIVE_MIN_INTERVAL_MS;
+
+/**
  * Three beats of silence is offline, at either cadence.
  *
  * One missed beat is a device waking, a slow network or a delayed timer; three

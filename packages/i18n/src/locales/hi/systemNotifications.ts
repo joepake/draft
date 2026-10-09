@@ -15,6 +15,7 @@ export const systemNotifications = {
   webFilterBody: 'इस डिवाइस पर वेबसाइटें फ़िल्टर की जा रही हैं',
   locationTitle: 'स्थान अपडेट हो रहा है',
   locationBody: 'KidGate इस डिवाइस का स्थान आपके माता-पिता के साथ साझा कर रहा है।',
+  sosAudioBody: 'KidGate आपके माता-पिता के लिए 15 सेकंड तक की आवाज़ रिकॉर्ड कर रहा है।',
   monitorTitleWeak: 'KidGate सुरक्षा सीमित है',
   monitorTitleActive: 'KidGate सुरक्षा चालू है',
   monitorTitleIdle: 'KidGate चल रहा है',

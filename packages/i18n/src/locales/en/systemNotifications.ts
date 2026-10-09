@@ -23,6 +23,7 @@ export const systemNotifications = {
   webFilterBody: 'Filtering websites on this device',
   locationTitle: 'Updating location',
   locationBody: 'KidGate is sharing this device’s location with your parent.',
+  sosAudioBody: 'KidGate is recording up to 15 seconds of sound for your parent.',
   monitorTitleWeak: 'KidGate protection is limited',
   monitorTitleActive: 'KidGate protection is on',
   monitorTitleIdle: 'KidGate is running',

@@ -15,6 +15,7 @@ export const systemNotifications = {
   webFilterBody: 'Đang lọc trang web trên thiết bị này',
   locationTitle: 'Đang cập nhật vị trí',
   locationBody: 'KidGate đang chia sẻ vị trí của thiết bị này với bố mẹ con.',
+  sosAudioBody: 'KidGate đang ghi tối đa 15 giây âm thanh để gửi cho bố mẹ con.',
   monitorTitleWeak: 'Bảo vệ của KidGate đang bị hạn chế',
   monitorTitleActive: 'Bảo vệ của KidGate đang bật',
   monitorTitleIdle: 'KidGate đang chạy',

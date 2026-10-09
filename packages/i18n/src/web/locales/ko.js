@@ -238,7 +238,7 @@ export default {
       '네. 부모 대시보드는 어떤 브라우저에서도 열립니다. 대시보드에 표시된 코드를 휴대폰의 KidGate 앱으로 스캔하면 같은 가족, 기기, 설정이 보이고 제어 기능도 잠금 해제됩니다. 계정으로 로그인해 조회할 수도 있으며, 이때 기기를 잠그거나 한도를 바꾸려면 부모 PIN이 필요합니다.',
     faq5Q: 'Premium 요금은 얼마인가요?',
     faq5A:
-      'Premium은 미국 기준 월 6.99달러 또는 연 39.99달러이며, App Store 또는 Google Play를 통해 결제되고 그곳에서 사용자의 통화로 표시됩니다. 한 번만 결제하는 평생 요금제는 KidGate가 제공되는 동안 모든 자녀 기기에서 같은 Premium을 제공합니다. 무료 요금제는 만료되지 않습니다.',
+      'Premium은 미국 기준 월 4.99달러 또는 연 39.99달러이며, App Store 또는 Google Play를 통해 결제되고 그곳에서 사용자의 통화로 표시됩니다. 한 번만 결제하는 평생 요금제는 KidGate가 제공되는 동안 모든 자녀 기기에서 같은 Premium을 제공합니다. 무료 요금제는 만료되지 않습니다.',
     faqMore: '더 궁금한 점이 있나요? 고객지원 보기',
 
     ctaTitle: '오늘부터 가족을 지키세요',
@@ -978,5 +978,79 @@ export default {
     granted: '+15분',
     youtubeTitle: 'KidGate — 휴대폰·컴퓨터·TV 자녀 보호 앱',
     youtubeDescription: 'KidGate와 함께하는 평범한 하루, 수업 종소리부터 잠자리까지.',
+  },
+  setup: {
+    parentTitle: '내 휴대폰 설정하기',
+    parentSub: '첫 단계입니다. 몇 분이면 끝납니다.',
+    install: 'App Store 또는 Google Play에서 "KidGate"를 찾아 설치하세요.',
+    installSub: 'iPhone, iPad 또는 Android 휴대폰에서 사용할 수 있습니다.',
+    role: 'KidGate를 열고 "{{parent}}" 버튼을 탭하세요.',
+    signIn: '"{{signIn}}" 버튼을 탭한 뒤 Apple, Google 또는 이메일로 로그인하세요.',
+    signInSub: 'Apple로 로그인할 때는 Face ID로 확인만 하면 됩니다.',
+    family: '"{{tab}}"에서 "{{create}}" 버튼을 탭하고 가족 이름을 정하세요.',
+    done: '부모 쪽 준비는 끝났습니다.',
+    next: '다음: 자녀 기기에 KidGate를 설치하세요. 기기에 맞는 영상을 선택하세요.',
+    parentYoutubeTitle: '부모 휴대폰에 KidGate를 설정하는 방법',
+    parentYoutubeDescription:
+      'KidGate를 설치하고 로그인한 뒤 가족을 만드세요. 자녀 기기를 연결하기 전 첫 단계입니다.',
+    pairSub: '내 휴대폰과 연결한 뒤 보호를 켭니다.',
+    parentPhone: '내 휴대폰',
+    openSub: 'QR 코드가 표시됩니다. 이 화면을 그대로 열어 두세요.',
+    scanSub: '스캔이 안 되면 "{{manual}}" 버튼을 탭하세요.',
+    protect: '"{{turnOn}}" 버튼을 탭하면 안전한 기본 규칙으로 시작합니다.',
+    protectSub: '각 규칙은 나중에 따로 조정할 수 있습니다.',
+    tapAllow: '"{{allow}}" 버튼을 탭하세요.',
+    extras: '마지막으로 카메라와 마이크를 허용하세요.',
+    extrasSub: '선택 사항: 허용하면 자녀가 SOS에 사진이나 소리를 담을 수 있습니다.',
+    pairNext: '다음: 내 휴대폰에서 규칙을 정하세요.',
+    iosTitle: '자녀의 iPhone 설정하기',
+    childPhone: '자녀 iPhone',
+    iosOpen: '자녀의 iPhone에서 KidGate를 열고 "{{child}}" 버튼을 탭하세요.',
+    iosScan: '내 휴대폰에서 "{{add}}" 버튼을 탭하고 QR 코드를 스캔하세요.',
+    iosConfirm: '자녀의 iPhone에서 본인이 맞는지 확인한 뒤 "{{yes}}" 버튼을 탭하세요.',
+    iosPin: '"{{pin}}" 6자리를 만드세요.',
+    iosPinSub: '자녀의 iPhone에서 차단된 앱을 바꾸려면 이 PIN이 필요합니다.',
+    iosAssign: '이 iPhone을 사용할 자녀를 선택하거나, 이름을 입력해 자녀를 추가하세요.',
+    iosScreenTime:
+      '자녀의 iPhone에서 "{{allow}}" 버튼을 탭하고 스크린 타임을 허용하세요.',
+    iosScreenTimeSub: 'Apple이 이 iPhone의 Face ID 또는 암호를 요청합니다.',
+    iosNotify:
+      '"{{settings}}" 버튼을 탭해 {{notifications}}을 켠 뒤 KidGate로 돌아오세요.',
+    iosRefresh: '"{{settings}}" 버튼을 탭하고 "{{refresh}}" 스위치를 켜세요.',
+    iosRefreshSub: '선택 사항: 켜 두면 KidGate가 백그라운드에서도 계속 작동합니다.',
+    iosBlocked: '"{{strengthen}}" 버튼을 탭한 뒤 "{{blocked}}" 항목을 설정하세요.',
+    iosBlockedSub: '"{{unlock}}" 버튼을 탭하고 PIN을 입력한 뒤 앱을 고르면 됩니다.',
+    iosDone: '이제 자녀의 iPhone이 보호됩니다.',
+    iosYoutubeTitle: '자녀의 iPhone에 KidGate를 설정하는 방법',
+    iosYoutubeDescription:
+      '자녀의 iPhone을 QR 코드로 부모 휴대폰에 연결한 뒤, 스크린 타임과 KidGate에 필요한 다른 권한을 한 단계씩 켜는 방법입니다.',
+    androidTitle: '자녀의 Android 휴대폰 설정하기',
+    childAndroid: '자녀 Android',
+    androidOpen: '자녀의 휴대폰에서 KidGate를 열고 "{{child}}" 버튼을 탭하세요.',
+    androidScan: '내 휴대폰의 KidGate로 QR 코드를 스캔하세요.',
+    androidConfirm:
+      '자녀의 휴대폰에서 본인이 맞는지 확인한 뒤 "{{yes}}" 버튼을 탭하세요.',
+    androidAssign:
+      '이 휴대폰을 사용할 자녀를 선택하거나, 이름을 입력해 자녀를 추가하세요.',
+    androidUsage:
+      '자녀의 휴대폰에서 "{{open}}" 버튼을 탭하고 KidGate의 사용 정보 접근을 허용하세요.',
+    androidBack: '그런 다음 뒤로 스와이프해 KidGate로 돌아오세요.',
+    androidAccessibility: '"{{agree}}" 버튼을 탭한 뒤 접근성에서 KidGate를 켜세요.',
+    androidOverlay:
+      '"{{settings}}" 버튼을 탭하고 KidGate의 "{{overlay}}" 권한을 허용하세요.',
+    androidNotify: '"{{allow}}" 버튼을 탭한 뒤 알림을 허용하세요.',
+    androidWebFilter: '"{{enable}}" 버튼을 탭하고 연결을 허용하세요.',
+    androidWebFilterSub: 'KidGate {{filter}} 기능은 휴대폰 안에서 VPN으로 작동합니다.',
+    androidBattery:
+      '"{{settings}}" 버튼을 탭한 뒤 KidGate가 항상 백그라운드에서 실행되도록 허용하세요.',
+    androidStrengthen: '"{{strengthen}}" 버튼을 탭한 뒤 "{{uninstall}}" 기능을 켜세요.',
+    androidMessages:
+      '"{{alerts}}" 기능을 쓰려면 "{{grant}}" 버튼을 탭한 뒤 KidGate의 알림 접근을 켜세요.',
+    androidMessagesSub:
+      'KidGate는 받은 메시지에 경고 단어가 있는지 휴대폰 안에서 확인합니다.',
+    androidDone: '이제 자녀의 휴대폰이 보호됩니다.',
+    androidYoutubeTitle: '자녀의 Android 휴대폰에 KidGate를 설정하는 방법',
+    androidYoutubeDescription:
+      '자녀의 Android 휴대폰을 QR 코드로 부모 휴대폰에 연결한 뒤, KidGate에 필요한 권한을 한 단계씩 켜는 방법입니다.',
   },
 };

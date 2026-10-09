@@ -14,6 +14,7 @@ export const systemNotifications = {
   webFilterBody: 'Bu cihazda web siteleri filtreleniyor',
   locationTitle: 'Konum güncelleniyor',
   locationBody: 'KidGate bu cihazın konumunu ailenle paylaşıyor.',
+  sosAudioBody: 'KidGate ailen için 15 saniyeye kadar ses kaydediyor.',
   monitorTitleWeak: 'KidGate koruması sınırlı',
   monitorTitleActive: 'KidGate koruması açık',
   monitorTitleIdle: 'KidGate çalışıyor',

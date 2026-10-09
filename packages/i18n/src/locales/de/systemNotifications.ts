@@ -17,6 +17,7 @@ export const systemNotifications = {
   webFilterBody: 'Websites auf diesem Gerät werden gefiltert',
   locationTitle: 'Standort wird aktualisiert',
   locationBody: 'KidGate teilt den Standort dieses Geräts mit deinen Eltern.',
+  sosAudioBody: 'KidGate nimmt bis zu 15 Sekunden Ton für deine Eltern auf.',
   monitorTitleWeak: 'KidGate-Schutz ist eingeschränkt',
   monitorTitleActive: 'KidGate-Schutz ist aktiv',
   monitorTitleIdle: 'KidGate läuft',

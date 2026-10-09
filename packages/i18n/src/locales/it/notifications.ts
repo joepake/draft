@@ -4,6 +4,9 @@ export const notifications = {
   subtitleMuted_one: '1 avviso silenziato',
   subtitleMuted: '{{count}} avvisi silenziati',
   sosAlwaysOn: 'L’SOS arriva sempre, anche con tutto disattivato qui.',
+  sosFullScreenOff:
+    'Su questo telefono un SOS appare come un piccolo banner invece di occupare tutto lo schermo, quindi è più facile non notarlo. Consenti gli avvisi a schermo intero per risolvere.',
+  sosFullScreenAllow: 'Consenti avvisi a schermo intero',
   sectionAlerts: 'Avvisi',
   sectionAlertsHint: 'Scegli di cosa viene avvisato questo telefono.',
   sectionSummary: 'Riepilogo',

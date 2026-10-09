@@ -16,6 +16,16 @@
   --bg-2: var(--kg-backgroundDark);
   --surface: var(--kg-surface);
   --surface-2: color-mix(in srgb, var(--kg-surface) 92%, var(--kg-text));
+  /* The top layer of every tinted band (trust, showcase, section-band, CTA):
+     the band meets the page ground over 1.5rem instead of a 1px border. A
+     border drew a cut line; a fade over a third of the band (tried
+     2026-10-09) made the band vanish. */
+  --band-edge: linear-gradient(
+    var(--bg),
+    transparent 1.5rem,
+    transparent calc(100% - 1.5rem),
+    var(--bg)
+  );
 
   --line: color-mix(in srgb, var(--kg-text) 9%, transparent);
   --line-strong: color-mix(in srgb, var(--kg-text) 17%, transparent);
@@ -305,10 +315,32 @@ label[for] {
 
 /* ---------- Footer ---------- */
 
+/*
+ * A dark, brand-tinted ground since 2026-10-09. On `--bg-2` it was the same
+ * grey as the trust band and read as more page rather than its end. The site
+ * is light-only (`applyTheme`), so `--kg-textInverse` is white here and every
+ * colour inside is a share of it.
+ */
 .footer {
-  border-top: 1px solid var(--line);
-  background: var(--bg-2);
-  padding: 3rem clamp(1rem, 4vw, 2.5rem) 2rem;
+  --footer-text: var(--kg-textInverse);
+  background:
+    radial-gradient(
+      40rem 18rem at 88% 0%,
+      color-mix(in srgb, var(--brand) 30%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      34rem 16rem at 4% 100%,
+      color-mix(in srgb, var(--brand-2) 22%, transparent),
+      transparent 70%
+    ),
+    color-mix(in srgb, var(--brand) 16%, var(--ink));
+  color: color-mix(in srgb, var(--footer-text) 70%, transparent);
+  padding: 3.5rem clamp(1rem, 4vw, 2.5rem) 2rem;
+}
+
+.footer .brand {
+  color: var(--footer-text);
 }
 
 .footer-inner {
@@ -320,19 +352,20 @@ label[for] {
 }
 
 .footer-blurb {
-  color: var(--ink-3);
+  color: color-mix(in srgb, var(--footer-text) 66%, transparent);
   font-size: 0.9rem;
   max-width: 30ch;
   margin-top: 0.7rem;
 }
 
+/* The column labels take the brand, lifted toward white to read on the dark. */
 .footer h4 {
   font-size: 0.78rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--ink-3);
+  color: color-mix(in srgb, var(--brand) 55%, var(--footer-text));
   margin-bottom: 0.85rem;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .footer ul {
@@ -342,13 +375,13 @@ label[for] {
 }
 
 .footer ul a {
-  color: var(--ink-2);
+  color: color-mix(in srgb, var(--footer-text) 84%, transparent);
   text-decoration: none;
   font-size: 0.9rem;
 }
 
 .footer ul a:hover {
-  color: var(--ink);
+  color: var(--footer-text);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
@@ -360,7 +393,7 @@ label[for] {
   display: inline-flex;
   align-items: baseline;
   gap: 0.4rem;
-  color: var(--ink-3);
+  color: color-mix(in srgb, var(--footer-text) 55%, transparent);
   font-size: 0.9rem;
 }
 
@@ -368,8 +401,8 @@ label[for] {
   max-width: 1120px;
   margin: 2.5rem auto 0;
   padding-top: 1.5rem;
-  border-top: 1px solid var(--line);
-  color: var(--ink-3);
+  border-top: 1px solid color-mix(in srgb, var(--footer-text) 14%, transparent);
+  color: color-mix(in srgb, var(--footer-text) 60%, transparent);
   font-size: 0.83rem;
   display: flex;
   justify-content: space-between;
@@ -533,12 +566,13 @@ label[for] {
  */
 .hero {
   position: relative;
-  padding-top: clamp(3rem, 7vw, 5.5rem) !important;
+  padding-top: clamp(2.5rem, 5vw, 4rem) !important;
   background:
     radial-gradient(58rem 30rem at 78% -12%, var(--kg-secondarySoft), transparent 62%),
-    radial-gradient(48rem 28rem at 8% 105%, var(--brand-soft), transparent 62%),
+    radial-gradient(44rem 22rem at 6% 72%, var(--brand-soft), transparent 62%),
     var(--bg);
-  border-bottom: 1px solid var(--line);
+  /* No border, and the mint glow sits inside the section: centred below the
+     edge, it was cut off in a straight line where the trust band starts. */
 }
 
 .hero .inner {
@@ -595,74 +629,128 @@ label[for] {
   margin-bottom: 1.9rem;
 }
 
+/* Sized so all five sit on one line in the 581px copy column (1280px up) in
+   English and Vietnamese, the longest of the two at 569px; longer locales
+   wrap, which `flex-wrap` keeps tidy. */
 .hero-checks {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.35rem;
   list-style: none;
-  margin-bottom: 2.1rem;
+  margin-bottom: 1.9rem;
 }
 
 .hero-checks li {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  font-size: 0.87rem;
+  gap: 0.25rem;
+  font-size: 0.76rem;
   font-weight: 500;
   color: color-mix(in srgb, var(--brand) 20%, var(--ink));
   background: color-mix(in srgb, var(--surface) 70%, transparent);
   border: 1px solid var(--line-strong);
   border-radius: 999px;
-  padding: 0.42rem 0.9rem;
+  padding: 0.32rem 0.6rem;
 }
 
 .hero-checks svg {
-  width: 0.95rem;
-  height: 0.95rem;
+  width: 0.8rem;
+  height: 0.8rem;
   color: var(--good);
 }
 
 /*
- * The store row in the download section, which sits under a centred heading
- * rather than in the left column of the hero.
- *
- * `.cta .store-buttons` already does exactly this for the closing CTA; the
- * modifier exists so the rule is not tied to being inside one more section
- * class, since this row now appears in three places on one page.
+ * The phone group (`PhoneGet` in `apps/site`), in the hero and in `#download`:
+ * the two store buttons stacked, the `/get` code beside them at the pair's
+ * height.
  */
-.store-buttons--center {
-  justify-content: center;
-  margin-bottom: 2rem;
-}
-
-/*
- * The `/get` code under the download section's store row, for a reader on a
- * computer. White tile in every palette: dark modules on light is the polarity
- * every phone camera reads, so these colours are not tokens. Touch screens
- * install by tapping the buttons above, and never see it.
- */
-.get-qr {
+.phone-get {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 1rem;
-  max-width: 26rem;
-  margin: -0.75rem auto 2rem;
-  font-size: 0.9rem;
+}
+
+.phone-get--center {
+  justify-content: center;
+}
+
+.phone-get .phone-get-stores {
+  display: grid;
+  gap: 0.6rem;
+  flex: 0 0 12.5rem;
+}
+
+/* The same tile as the buttons beside it (border, radius, shadow), so the
+   group reads as three controls rather than two and a picture. White in every
+   palette: dark modules on light is the polarity every phone camera reads, so
+   this background is not a token. */
+.get-qr {
+  flex: none;
+  width: 116px;
+  height: 116px;
+  padding: 0.4rem;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-md);
+  background: #fff;
+  box-shadow: 0 4px 14px color-mix(in srgb, var(--kg-shadow) 18%, transparent);
+}
+
+/* `#download`: the group centred under the heading, its caption under it. */
+.download-get {
+  margin-bottom: 2.5rem;
+}
+
+.phone-get-note {
+  margin-top: 0.9rem;
+  text-align: center;
+  font-size: 0.85rem;
   color: var(--ink-3);
 }
 
-.get-qr img {
-  flex: none;
-  padding: 0.4rem;
-  border: 1px solid var(--line);
-  border-radius: var(--r-md);
-  background: #fff;
+/* The hero's two tiers: the phone group, then the other four platforms. */
+.hero-get {
+  display: grid;
+  gap: 0.75rem;
+  max-width: 36rem;
+}
+
+.hero-get .hero-others {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr));
+  gap: 0.5rem;
+}
+
+.hero-others .store-btn {
+  min-height: 40px;
+  gap: 0.5rem;
+  padding: 0.45rem 0.75rem;
+  box-shadow: none;
+}
+
+.hero-others .store-btn svg {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.hero-others .store-btn small {
+  display: none;
+}
+
+.hero-others .store-btn strong {
+  font-size: 0.88rem;
 }
 
 @media (pointer: coarse) {
-  .get-qr {
+  .get-qr,
+  .phone-get-note {
     display: none;
+  }
+
+  /* No code to stand beside: the two store buttons share the row. */
+  .phone-get .phone-get-stores {
+    flex: 1 1 auto;
+    max-width: 26rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -690,41 +778,30 @@ label[for] {
   gap: 0.75rem;
 }
 
-/*
- * Four platforms in the hero's left column, which is not wide enough for four
- * on a line — flex-wrap put three up and left Windows alone underneath.
- *
- * A grid rather than a narrower flex row: `auto-fit` gives two even columns
- * whenever two fit and one when they do not, and `1fr` makes all four the same
- * width, so the block reads as a set instead of as four buttons sized by how
- * long each store's name happens to be. The closing CTA keeps the flex row —
- * it spans the page and fits all four across.
- */
-.hero .store-buttons {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr));
-  max-width: 26rem;
-}
-
+/* Light since 2026-10-09: six near-black tiles outweighed the headline above
+   them. The border and shadow are what keep a white tile reading as a button. */
 .store-btn {
   display: inline-flex;
   align-items: center;
   gap: 0.7rem;
   min-height: 48px;
-  background: var(--ink);
-  color: var(--bg);
+  background: var(--surface);
+  color: var(--ink);
   text-decoration: none;
+  border: 1px solid var(--line-strong);
   border-radius: var(--r-md);
   padding: 0.6rem 1.15rem;
   transition:
     transform var(--kg-motion-fast) ease,
-    box-shadow var(--kg-motion-fast) ease;
-  box-shadow: 0 8px 22px color-mix(in srgb, var(--kg-shadow) 40%, transparent);
+    box-shadow var(--kg-motion-fast) ease,
+    border-color var(--kg-motion-fast) ease;
+  box-shadow: 0 4px 14px color-mix(in srgb, var(--kg-shadow) 18%, transparent);
 }
 
 .store-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 14px 30px color-mix(in srgb, var(--kg-shadow) 50%, transparent);
+  border-color: color-mix(in srgb, var(--brand) 45%, var(--line-strong));
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--kg-shadow) 28%, transparent);
 }
 
 /*
@@ -747,6 +824,7 @@ label[for] {
      fixed colour across theme packs. */
   background: linear-gradient(135deg, var(--brand), var(--brand-2));
   color: var(--kg-textInverse);
+  border-color: transparent;
   padding: 0.55rem 1.1rem 0.55rem 0.95rem;
   min-height: 42px;
 }
@@ -784,12 +862,9 @@ label[for] {
   box-shadow: none;
 }
 
-/* `.store-btn small` is 0.7 alpha because it is a caption over a near-black
-   ground. Here it carries the only words that say the build is not out, over
-   a ground two steps lighter — 0.7 of `--ink-3` on `--surface-2` is under the
-   contrast floor for text that small. */
+/* Here the caption carries the only words that say the build is not out. */
 .store-btn--soon small {
-  opacity: 1;
+  color: inherit;
 }
 
 /* The pill stands where the download button does, so it needs the button's
@@ -816,7 +891,7 @@ label[for] {
 .store-btn small {
   display: block;
   font-size: 0.64rem;
-  opacity: 0.7;
+  color: var(--ink-2);
   line-height: 1.25;
   letter-spacing: 0.02em;
 }
@@ -847,8 +922,7 @@ label[for] {
 
 .trust {
   padding-block: clamp(2rem, 4vw, 2.75rem) !important;
-  background: var(--bg-2);
-  border-bottom: 1px solid var(--line);
+  background: var(--band-edge), var(--bg-2);
 }
 
 .trust-grid {
@@ -889,6 +963,61 @@ label[for] {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.15rem;
+}
+
+/*
+ * "Only KidGate", under the feature cards (`apps/site` `pages/Home`). Lighter
+ * than the cards above on purpose — no shadow, smaller type, the icon inline
+ * with the title — so it reads as the footnote to that grid that it is, not a
+ * second grid of equal weight.
+ */
+.only-block {
+  margin-top: clamp(3rem, 6vw, 4.5rem);
+}
+
+.only-block .section-sub {
+  margin-bottom: 2rem;
+}
+
+.only-title {
+  font-size: clamp(1.35rem, 3vw, 1.75rem);
+  text-align: center;
+  margin-bottom: 0.6rem;
+}
+
+.only-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.only-item {
+  background: color-mix(in srgb, var(--surface) 60%, transparent);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: 1.1rem 1.2rem;
+}
+
+.only-item h4 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-size: 0.98rem;
+  margin-bottom: 0.45rem;
+}
+
+.only-item h4 svg {
+  flex: none;
+  width: 1.1rem;
+  height: 1.1rem;
+  color: var(--brand);
+}
+
+.only-item p {
+  font-size: 0.84rem;
+  line-height: 1.55;
+  color: var(--ink-3);
 }
 
 .feature-card {
@@ -994,22 +1123,22 @@ label[for] {
  */
 .section-band {
   background:
+    var(--band-edge),
     radial-gradient(
       52rem 22rem at 50% 0%,
       color-mix(in srgb, var(--brand) 10%, transparent),
       transparent 70%
     ),
     color-mix(in srgb, var(--surface) 45%, var(--bg));
-  border-block: 1px solid var(--line);
 }
 
 /* Dashboard showcase */
 
 .showcase {
   background:
+    var(--band-edge),
     radial-gradient(46rem 24rem at 50% -20%, var(--brand-soft), transparent 65%),
     var(--bg-2);
-  border-block: 1px solid var(--line);
 }
 
 .showcase-frame {
@@ -1095,7 +1224,9 @@ label[for] {
   height: 2.2rem;
   border-radius: 999px;
   background: linear-gradient(135deg, var(--brand), var(--brand-2));
-  color: var(--ink);
+  /* `--kg-textInverse`, as on `.nav-cta`: the token for text on this gradient.
+     `--ink` read near-black on dark teal. */
+  color: var(--kg-textInverse);
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 0.95rem;
@@ -1394,10 +1525,11 @@ label[for] {
 
 .cta {
   text-align: center;
+  /* Top edge only: the footer below draws its own border. */
   background:
+    linear-gradient(var(--bg), transparent 1.5rem),
     radial-gradient(40rem 20rem at 50% -30%, var(--kg-secondarySoft), transparent 70%),
     linear-gradient(165deg, var(--bg), var(--brand-soft));
-  border-top: 1px solid var(--line);
 }
 
 .cta .store-buttons {
@@ -1575,8 +1707,10 @@ label[for] {
 /* ---------- Responsive ---------- */
 
 @media (max-width: 980px) {
+  /* `minmax(0, …)`: a bare `1fr` grows to the button grid's three-across
+     min-content and pushes the column off a phone. */
   .hero .inner {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     text-align: center;
   }
 
@@ -1603,10 +1737,11 @@ label[for] {
     margin-bottom: 2rem;
   }
 
-  .hero .store-buttons {
+  .hero-get {
     order: 2;
     justify-self: center;
     width: 100%;
+    text-align: left;
   }
 
   .hero-checks,
@@ -1615,6 +1750,7 @@ label[for] {
   }
 
   .features-grid,
+  .only-grid,
   .steps {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1631,6 +1767,7 @@ label[for] {
 
 @media (max-width: 720px) {
   .features-grid,
+  .only-grid,
   .steps,
   .why-grid {
     grid-template-columns: 1fr;

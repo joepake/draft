@@ -241,7 +241,7 @@ export default {
       'Bisa. Dasbor orang tua terbuka di browser mana pun. Pindai kode yang ditampilkannya dengan aplikasi KidGate di ponsel Anda, dan Anda melihat keluarga, perangkat, serta pengaturan yang sama, dengan kendali yang sudah terbuka. Anda juga bisa masuk dengan akun Anda untuk membaca; mengunci perangkat atau mengubah sebuah batas lalu akan meminta PIN Orang Tua Anda.',
     faq5Q: 'Berapa harga Premium?',
     faq5A:
-      'Premium berharga US$6,99 per bulan atau US$39,99 per tahun di AS, ditagih melalui App Store atau Google Play dan ditampilkan di sana dalam mata uang Anda. Paket Seumur hidup yang dibayar sekali memberikan Premium yang sama di setiap perangkat anak, selama KidGate tersedia. Paket gratis tidak pernah berakhir.',
+      'Premium berharga US$4,99 per bulan atau US$39,99 per tahun di AS, ditagih melalui App Store atau Google Play dan ditampilkan di sana dalam mata uang Anda. Paket Seumur hidup yang dibayar sekali memberikan Premium yang sama di setiap perangkat anak, selama KidGate tersedia. Paket gratis tidak pernah berakhir.',
     faqMore: 'Masih ada pertanyaan? Kunjungi Dukungan',
 
     ctaTitle: 'Mulai lindungi keluarga Anda hari ini',
@@ -990,5 +990,82 @@ export default {
     youtubeTitle: 'KidGate — Kontrol orang tua untuk ponsel, komputer, dan TV',
     youtubeDescription:
       'Satu hari biasa bersama KidGate, dari bel sekolah sampai waktu tidur.',
+  },
+  setup: {
+    parentTitle: 'Siapkan ponsel Anda',
+    parentSub: 'Langkah pertama. Hanya butuh beberapa menit.',
+    install: 'Cari “KidGate” di App Store atau Google Play, lalu pasang.',
+    installSub: 'iPhone, iPad, atau ponsel Android.',
+    role: 'Buka KidGate dan pilih “{{parent}}”.',
+    signIn: 'Ketuk “{{signIn}}”, lalu masuk dengan Apple, Google, atau email.',
+    signInSub: 'Dengan Apple, Anda cukup mengonfirmasi dengan Face ID.',
+    family: 'Di “{{tab}}”, ketuk “{{create}}” lalu beri nama keluarga Anda.',
+    done: 'Bagian Anda sudah selesai.',
+    next: 'Berikutnya: pasang KidGate di perangkat anak Anda. Pilih video untuk perangkat tersebut.',
+    parentYoutubeTitle: 'Cara menyiapkan KidGate di ponsel Anda',
+    parentYoutubeDescription:
+      'Pasang KidGate, masuk, lalu buat keluarga Anda: langkah pertama sebelum menyambungkan perangkat anak Anda.',
+    pairSub: 'Sambungkan ke ponsel Anda, lalu aktifkan perlindungannya.',
+    parentPhone: 'Ponsel Anda',
+    openSub: 'Kode QR akan muncul. Biarkan layar itu tetap terbuka.',
+    scanSub: 'Tidak bisa memindai? Pilih “{{manual}}”.',
+    protect: 'Ketuk “{{turnOn}}” untuk memulai dengan aturan dasar yang aman.',
+    protectSub: 'Anda bisa menyesuaikan tiap aturan nanti.',
+    tapAllow: 'Ketuk “{{allow}}”.',
+    extras: 'Terakhir, izinkan kamera dan mikrofon.',
+    extrasSub:
+      'Opsional: dengan begitu, anak Anda bisa menyertakan foto atau suara pada SOS.',
+    pairNext: 'Berikutnya: tetapkan aturan dari ponsel Anda.',
+    iosTitle: 'Siapkan iPhone anak Anda',
+    childPhone: 'iPhone anak',
+    iosOpen: 'Di iPhone anak Anda, buka KidGate dan pilih “{{child}}”.',
+    iosScan: 'Di ponsel Anda, ketuk “{{add}}” lalu pindai kode QR-nya.',
+    iosConfirm:
+      'Di iPhone anak Anda, pastikan yang tampil adalah Anda, lalu ketuk “{{yes}}”.',
+    iosPin: 'Buat “{{pin}}” Anda (6 digit).',
+    iosPinSub:
+      'iPhone anak Anda memintanya sebelum Aplikasi yang Diblokir bisa diubah.',
+    iosAssign:
+      'Pilih siapa yang memakai iPhone ini, atau tambahkan anak Anda dengan mengetik namanya.',
+    iosScreenTime:
+      'Di iPhone anak Anda, ketuk “{{allow}}” lalu izinkan akses Waktu Layar.',
+    iosScreenTimeSub: 'Apple meminta Face ID atau kode sandi iPhone ini.',
+    iosNotify:
+      'Ketuk “{{settings}}”, aktifkan {{notifications}}, lalu kembali ke KidGate.',
+    iosRefresh: 'Ketuk “{{settings}}” lalu aktifkan “{{refresh}}”.',
+    iosRefreshSub: 'Opsional: ini menjaga KidGate tetap bekerja di latar belakang.',
+    iosBlocked: 'Ketuk “{{strengthen}}”, lalu atur “{{blocked}}”.',
+    iosBlockedSub: 'Ketuk “{{unlock}}”, masukkan PIN Anda, lalu pilih aplikasinya.',
+    iosDone: 'iPhone anak Anda sudah terlindungi.',
+    iosYoutubeTitle: 'Cara menyiapkan KidGate di iPhone anak Anda',
+    iosYoutubeDescription:
+      'Sambungkan iPhone anak Anda ke ponsel Anda dengan kode QR, lalu aktifkan Waktu Layar dan izin lain yang dibutuhkan KidGate, langkah demi langkah.',
+    androidTitle: 'Siapkan ponsel Android anak Anda',
+    childAndroid: 'Android anak',
+    androidOpen: 'Di ponsel anak Anda, buka KidGate dan pilih “{{child}}”.',
+    androidScan: 'Di ponsel Anda, pindai kode QR dengan KidGate.',
+    androidConfirm:
+      'Di ponsel anak Anda, pastikan yang tampil adalah Anda, lalu ketuk “{{yes}}”.',
+    androidAssign:
+      'Pilih siapa yang memakai ponsel ini, atau tambahkan anak Anda dengan mengetik namanya.',
+    androidUsage:
+      'Di ponsel anak Anda, ketuk “{{open}}” lalu aktifkan Akses Penggunaan untuk KidGate.',
+    androidBack: 'Setelah itu, geser untuk kembali ke KidGate.',
+    androidAccessibility: 'Ketuk “{{agree}}”, lalu aktifkan KidGate di Aksesibilitas.',
+    androidOverlay: 'Ketuk “{{settings}}” lalu izinkan “{{overlay}}” untuk KidGate.',
+    androidNotify: 'Ketuk “{{allow}}”, lalu izinkan notifikasi.',
+    androidWebFilter: 'Ketuk “{{enable}}” lalu izinkan koneksinya.',
+    androidWebFilterSub: '{{filter}} KidGate berjalan di ponsel sebagai VPN.',
+    androidBattery:
+      'Ketuk “{{settings}}”, lalu izinkan KidGate selalu berjalan di latar belakang.',
+    androidStrengthen: 'Ketuk “{{strengthen}}”, lalu aktifkan “{{uninstall}}”.',
+    androidMessages:
+      'Untuk “{{alerts}}”, ketuk “{{grant}}” lalu aktifkan untuk KidGate.',
+    androidMessagesSub:
+      'KidGate memeriksa pesan masuk untuk mencari kata peringatan, langsung di ponsel.',
+    androidDone: 'Ponsel anak Anda sudah terlindungi.',
+    androidYoutubeTitle: 'Cara menyiapkan KidGate di ponsel Android anak Anda',
+    androidYoutubeDescription:
+      'Sambungkan ponsel Android anak Anda ke ponsel Anda dengan kode QR, lalu aktifkan izin yang dibutuhkan KidGate, langkah demi langkah.',
   },
 };

@@ -3,6 +3,9 @@ export const notifications = {
   subtitleAllOn: 'Đang bật tất cả',
   subtitleMuted: 'Đã tắt {{count}} loại',
   sosAlwaysOn: 'SOS luôn được gửi, kể cả khi tắt hết mục bên dưới.',
+  sosFullScreenOff:
+    'Trên điện thoại này, SOS chỉ hiện thành một thông báo nhỏ thay vì chiếm cả màn hình, nên dễ bị bỏ lỡ. Hãy cho phép cảnh báo toàn màn hình để khắc phục.',
+  sosFullScreenAllow: 'Cho phép cảnh báo toàn màn hình',
   sectionAlerts: 'Cảnh báo',
   sectionAlertsHint: 'Chọn những gì máy này được báo.',
   sectionSummary: 'Tổng kết',

@@ -21,45 +21,35 @@
  *   `com.kidgate.app.tv` (`applicationId` in `apps/tv/android/app/build.gradle`),
  *   so the phone's link would land a parent on a listing a television cannot
  *   install.
- * - **Chrome.** The Web Store names a listing by the extension's id, and that id
- *   **does not exist yet** — the store assigns it on the first upload.
- *   `CHROME_WEB_STORE_ID` is therefore a placeholder, and the one line to edit
- *   when the listing exists: replace it with the 32-letter id (`a`–`p` only) the
- *   Web Store developer dashboard shows for the published item.
- *   `storeLinks.test.js` fails while `chrome.available` is true and the id is
- *   still the placeholder, and `isPlatformAvailable` refuses the entry either
- *   way, so the placeholder cannot become a live link.
+ * - **Chrome.** The Web Store names a listing by the extension's id, which the
+ *   store assigns on the first upload. `storeLinks.test.js` fails while
+ *   `chrome.available` is true and the id is the placeholder or not 32 letters
+ *   `a`–`p`, and `isPlatformAvailable` refuses a placeholder either way.
  * - **macOS / Windows.** `download.kidgate.app`, a subdomain of the apex on
  *   purpose: `ALLOWED_DESKTOP_DOWNLOAD_HOSTS` in `@kidgate/schema/desktopRelease`
  *   matches on suffix, so the desktop agent's own update banner may already
  *   point at these without widening an allowlist. Moving the binaries to an R2
  *   or Vercel URL would need one.
  *
- * The two desktop files are **`.zip`, not `.dmg`/`.exe`**, and the archive does
- * not soften either install warning — macOS carries quarantine through the
- * unzip and Windows stamps the extracted `.exe` with the same Mark of the Web.
- * `DesktopCard` in `pages/Home` states each one inside the card that carries
- * the button, which is what a bare file link cannot do.
+ * The Windows file is a **`.zip`, not an `.exe`**, and the archive does not
+ * soften its install warning — Windows stamps the extracted `.exe` with the
+ * same Mark of the Web. `DownloadCard` in `pages/Home` states each platform's
+ * steps inside the card that carries the button, which is what a bare file
+ * link cannot do.
  *
  * No `download` attribute on the desktop links: it is ignored cross-origin, and
  * what names the saved file is `Content-Disposition` on the object itself.
  *
  * ## `available` is the shipping switch
  *
- * Nothing is published on any of the six platforms yet: the four store
- * listings are not live and neither `.zip` is uploaded. So every entry carries
- * `available: false`, and `pages/Home` renders each of them as a non-anchor
- * "coming soon" instead of a button — a link to a store 404 or a missing object
- * is worse than one that says the build is not out.
+ * All six flipped together on 2026-10-09 (decided 2026-09-27). That day the
+ * two desktop files and the Chrome listing answered 200; the App Store and
+ * both Play listings still answered 404, flipped ahead of review by decision.
  *
- * The URLs beside the flag are final and stay here while it is false, because
- * they are what the flag is a switch *for*: going live is one boolean per
- * platform, on the day that platform ships, and nothing else on this page
- * changes with it. **The one exception is Chrome**, whose URL is not final
- * until `CHROME_WEB_STORE_ID` is real.
- *
- * **Launch day** — all six ship together (decided 2026-09-27): flip the six
- * `available` flags, and replace `CHROME_WEB_STORE_ID` with the real id.
+ * A false flag renders that platform as a non-anchor "coming soon" instead of
+ * a button — a link to a store 404 or a missing object is worse than one that
+ * says the build is not out. Pulling a platform, or adding one, is one boolean
+ * here and nothing else on the page.
  */
 
 /**
@@ -80,19 +70,19 @@ export const TV_BUNDLE_ID = 'com.kidgate.app.tv';
 export const CHROME_WEB_STORE_ID_PLACEHOLDER = 'REPLACE-WITH-EXTENSION-ID';
 
 /**
- * The extension's Chrome Web Store id. **A placeholder** — replace it with the
- * real 32-letter id once the listing exists (see the header).
+ * The extension's Chrome Web Store id, assigned on the first upload. The
+ * desktop agent's `CHROME_WEB_STORE_URL` carries the same id.
  */
-export const CHROME_WEB_STORE_ID = CHROME_WEB_STORE_ID_PLACEHOLDER;
+export const CHROME_WEB_STORE_ID = 'lebaeomlgdejemdbiibffmhflijiojbj';
 
 export const STORE_LINKS = {
   ios: {
     url: `https://apps.apple.com/app/id${APP_STORE_ID}`,
-    available: false,
+    available: true,
   },
   android: {
     url: `https://play.google.com/store/apps/details?id=${BUNDLE_ID}`,
-    available: false,
+    available: true,
   },
   macos: {
     /*
@@ -107,19 +97,19 @@ export const STORE_LINKS = {
      * prompt, silently. The package writes the bundle there itself.
      */
     url: 'https://download.kidgate.app/KidGate-macos.pkg',
-    available: false,
+    available: true,
   },
   windows: {
     url: 'https://download.kidgate.app/KidGate-windows.zip',
-    available: false,
+    available: true,
   },
   androidtv: {
     url: `https://play.google.com/store/apps/details?id=${TV_BUNDLE_ID}`,
-    available: false,
+    available: true,
   },
   chrome: {
     url: `https://chromewebstore.google.com/detail/${CHROME_WEB_STORE_ID}`,
-    available: false,
+    available: true,
   },
 };
 

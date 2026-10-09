@@ -4,6 +4,9 @@ export const notifications = {
   subtitleMuted_one: '1 अलर्ट म्यूट',
   subtitleMuted: '{{count}} अलर्ट म्यूट',
   sosAlwaysOn: 'SOS हमेशा पहुँचता है, भले ही यहाँ सब बंद हो।',
+  sosFullScreenOff:
+    'इस फ़ोन पर SOS पूरी स्क्रीन पर आने के बजाय एक छोटे बैनर में दिखता है, इसलिए इसके छूटने की संभावना रहती है। इसे ठीक करने के लिए फ़ुल-स्क्रीन अलर्ट की अनुमति दें।',
+  sosFullScreenAllow: 'फ़ुल-स्क्रीन अलर्ट की अनुमति दें',
   sectionAlerts: 'अलर्ट',
   sectionAlertsHint: 'चुनें कि इस फ़ोन पर किन बातों की सूचना आए।',
   sectionSummary: 'सारांश',

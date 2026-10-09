@@ -4,6 +4,9 @@ export const notifications = {
   subtitleMuted_one: '1 alert muted',
   subtitleMuted: '{{count}} alerts muted',
   sosAlwaysOn: 'SOS always comes through, even with everything here off.',
+  sosFullScreenOff:
+    'On this phone an SOS shows as a small banner instead of filling the screen, so it is easier to miss. Allow full-screen alerts to fix this.',
+  sosFullScreenAllow: 'Allow full-screen alerts',
   sectionAlerts: 'Alerts',
   sectionAlertsHint: 'Choose what this phone is notified about.',
   sectionSummary: 'Summary',

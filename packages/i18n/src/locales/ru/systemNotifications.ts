@@ -16,6 +16,7 @@ export const systemNotifications = {
   webFilterBody: 'Фильтрация сайтов на этом устройстве',
   locationTitle: 'Обновление местоположения',
   locationBody: 'KidGate передаёт местоположение этого устройства родителям.',
+  sosAudioBody: 'KidGate записывает до 15 секунд звука для родителей.',
   monitorTitleWeak: 'Защита KidGate ограничена',
   monitorTitleActive: 'Защита KidGate включена',
   monitorTitleIdle: 'KidGate работает',

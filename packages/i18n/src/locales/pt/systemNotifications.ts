@@ -18,6 +18,7 @@ export const systemNotifications = {
   locationTitle: 'Atualizando localização',
   locationBody:
     'O KidGate está compartilhando a localização deste dispositivo com seus pais.',
+  sosAudioBody: 'O KidGate está gravando até 15 segundos de som para seus pais.',
   monitorTitleWeak: 'A proteção do KidGate está limitada',
   monitorTitleActive: 'A proteção do KidGate está ativada',
   monitorTitleIdle: 'O KidGate está em execução',
