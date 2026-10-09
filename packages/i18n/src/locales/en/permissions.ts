@@ -48,9 +48,13 @@ export const permissions = {
     'Turn the switch on, then select Allow on Android’s confirmation.',
   restrictedSettingsStep:
     'If the switch is greyed out, open Settings › Apps › KidGate, select the ⋮ menu and choose “Allow restricted settings”, then return here and try again.',
+  // Play's prominent disclosure for the lock helper. It must name every data
+  // type the app declares, the typing service's included (rejected 2026-10-09
+  // for leaving out SMS/MMS, in-app messages, search history and crash logs).
   accessibilityWarningNote:
-    'Android warns that KidGate can observe your actions. With this permission KidGate sees which app is open, so the lock can stay on top. When watched videos are recorded, it also reads the title and channel of each YouTube video and sends them to your parent. It does not use this permission to read passwords, messages or what you type.',
+    'Android warns that KidGate can observe your actions. With this permission KidGate sees which app is open, so the lock can stay on top. When watched videos are recorded, it also reads the title and channel of each YouTube video and sends them to your parent. This permission does not read passwords, messages or what you type. If your parent turns on Message Alerts, a second permission, asked for separately, checks the text messages (SMS and MMS), chat messages and searches you type, and sends your parent only a flagged word or phrase. If KidGate crashes, a crash log is sent to the KidGate team so the problem can be fixed.',
   accessibilityAgree: 'Agree',
+  accessibilityDecline: 'Disagree',
   accessibilityTvNote:
     'With this permission KidGate sees which app is open, so the lock can stay on top. It also counts how long each app is used and sends that to your parent. It does not read what is on the screen, passwords or messages.',
   uninstallProtectionWizardBody:

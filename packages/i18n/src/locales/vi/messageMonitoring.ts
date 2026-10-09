@@ -95,7 +95,6 @@ export const messageMonitoring = {
   outgoingBody:
     'KidGate có thể kiểm tra cả những gì con gõ trong ứng dụng chat. Việc tìm từ ngữ cảnh báo diễn ra ngay trên máy này. Nội dung tin nhắn không bao giờ được gửi đi đâu.',
   outgoingEnable: 'Kiểm tra tin nhắn con viết',
-  outgoingGrant: 'Cho phép',
   directionIncoming: 'Nhận được',
   directionOutgoing: 'Đã gửi',
   directionSearch: 'Đã tìm',
@@ -109,7 +108,7 @@ export const messageMonitoring = {
     'Android đã tắt mục này. Hãy cấp lại để tiếp tục kiểm tra những gì con viết.',
   outgoingDisclosureTitle: 'Trước khi con cho phép',
   outgoingDisclosureBody:
-    'KidGate kiểm tra những gì con gõ trong ứng dụng nhắn tin để tìm cùng các từ ngữ cảnh báo đó. Nếu bố mẹ bật cảnh báo tìm kiếm, KidGate cũng kiểm tra những gì con gõ trên trình duyệt, YouTube và ứng dụng Google. KidGate không bao giờ đọc ô mật khẩu. Việc kiểm tra diễn ra ngay trên điện thoại này: những gì con gõ không được gửi đi đâu cả, và chỉ từ hoặc cụm từ bị đánh dấu mới được gửi tới bố mẹ.',
+    'Với quyền này, KidGate đọc những gì con gõ trong tin nhắn văn bản (SMS và MMS) và ứng dụng nhắn tin để tìm cùng các từ ngữ cảnh báo đó. Nếu bố mẹ bật cảnh báo tìm kiếm, KidGate cũng đọc những gì con gõ trên trình duyệt, YouTube và ứng dụng Google, ví dụ nội dung tìm kiếm. KidGate không bao giờ đọc ô mật khẩu. Việc kiểm tra diễn ra ngay trên điện thoại này. Khi có từ khớp, chỉ từ hoặc cụm từ đó, loại cảnh báo, tên ứng dụng và thời gian được gửi tới bố mẹ — phần còn lại của tin nhắn hay nội dung tìm kiếm không bao giờ được gửi đi. Nếu KidGate gặp sự cố, nhật ký sự cố sẽ được gửi tới đội ngũ KidGate để khắc phục.',
   outgoingRestrictedHint:
     'Nếu nút gạt bị mờ, hãy mở Cài đặt › Ứng dụng › KidGate, nhấn menu ⋮ rồi chọn “Cho phép cài đặt bị hạn chế”, sau đó quay lại.',
   notice: {

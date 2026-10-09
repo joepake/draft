@@ -96,7 +96,6 @@ export const messageMonitoring = {
   outgoingBody:
     'KidGate juga bisa memeriksa apa yang kamu ketik di aplikasi obrolan. Ia mencari kata peringatan yang sama, di ponsel ini. Isi pesanmu tidak pernah dikirim ke mana pun.',
   outgoingEnable: 'Periksa yang aku tulis',
-  outgoingGrant: 'Izinkan',
   directionIncoming: 'Diterima',
   directionOutgoing: 'Dikirim',
   directionSearch: 'Dicari',
@@ -111,7 +110,7 @@ export const messageMonitoring = {
     'Android mematikan fitur ini. Berikan izinnya lagi agar yang kamu tulis tetap diperiksa.',
   outgoingDisclosureTitle: 'Sebelum kamu mengizinkan',
   outgoingDisclosureBody:
-    'KidGate memeriksa apa yang kamu ketik di aplikasi obrolan untuk mencari kata peringatan yang sama. Jika orang tuamu menyalakan peringatan pencarian, KidGate juga memeriksa apa yang kamu ketik di browser, YouTube, dan aplikasi Google. KidGate tidak pernah membaca kolom kata sandi. Pemeriksaan dilakukan di ponsel ini: apa pun yang kamu ketik tidak dikirim ke mana pun, dan hanya kata atau frasa yang ditandai yang sampai ke orang tuamu.',
+    'Dengan izin ini, KidGate membaca apa yang kamu ketik di pesan teks (SMS dan MMS) dan aplikasi obrolan, lalu memeriksanya untuk mencari kata peringatan yang sama. Jika orang tuamu menyalakan peringatan pencarian, KidGate juga membaca apa yang kamu ketik di browser, YouTube, dan aplikasi Google, seperti pencarian. KidGate tidak pernah membaca kolom kata sandi. Pemeriksaan dilakukan di ponsel ini. Jika ada kata yang cocok, hanya kata atau frasa itu, kategorinya, aplikasinya, dan waktunya yang dikirim ke orang tuamu — sisa pesan atau pencariannya tidak pernah dikirim. Jika KidGate tiba-tiba berhenti, log error dikirim ke tim KidGate agar masalahnya bisa diperbaiki.',
   outgoingRestrictedHint:
     'Jika sakelarnya abu-abu, buka Setelan › Aplikasi › KidGate, ketuk menu ⋮ lalu pilih “Izinkan setelan terbatas”, kemudian kembali ke sini.',
   notice: {

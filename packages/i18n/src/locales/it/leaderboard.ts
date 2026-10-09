@@ -10,6 +10,7 @@ export const leaderboard = {
   manageAccessibility: 'Gestisci figli e dispositivi',
   addChild: 'Aggiungi un figlio',
   childAdded: 'Figlio aggiunto.',
+  childNameTaken: 'C’è già un figlio con questo nome.',
   childNameLabel: 'Nome',
   childNamePlaceholder: 'es. Mai',
   unassigned: 'Non assegnato',

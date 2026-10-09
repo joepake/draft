@@ -895,7 +895,7 @@ export default {
     macosSteps:
       'ダウンロードしたパッケージを開き、インストーラの案内に従います。そのあと macOS が一度だけ、KidGate のシステム機能拡張を許可するよう求めます。メッセージが示す設定を開き、そこで許可してください。許可するまで Webフィルターは動きません。',
     windowsSteps:
-      'Windows が PC を保護したと表示したら、詳細情報、続いて実行を選びます。',
+      'ブラウザが先に、このファイルはあまりダウンロードされていないと警告することがあります。その場合はそのまま保存してください。次に Windows が PC を保護したと表示したら、詳細情報、続いて実行を選びます。',
   },
   about: {
     eyebrow: '私たちについて',
@@ -1066,5 +1066,26 @@ export default {
     androidYoutubeTitle: 'お子さまの Android スマホに KidGate を設定する方法',
     androidYoutubeDescription:
       'QR コードでお子さまの Android スマホを保護者のスマホと接続し、KidGate に必要な権限を一つずつオンにします。',
+    macTitle: 'お子さまの Mac を設定する',
+    childMac: '子どもの Mac',
+    macDownload:
+      'お子さまの Mac で、kidgate.app から macOS 版の KidGate をダウンロードします。',
+    macInstall: 'ダウンロードしたインストーラを開き、画面の手順に従います。',
+    macPasswordSub: 'macOS がこの Mac のパスワードを求めます。',
+    macOpen: 'KidGate が開き、QR コードが表示されます。',
+    macOpenSub: 'そのウィンドウは開いたままにしてください。',
+    macScan:
+      '保護者のスマホで KidGate のスキャンボタンをタップし、QR コードを読み取ります。',
+    macConfirm: 'Mac で保護者の名前を確認し、「{{yes}}」をクリックします。',
+    macAssign: 'この Mac を使う人を選ぶか、名前を入力してお子さまを追加します。',
+    macFilter:
+      'Mac で「{{open}}」をクリックし、ネットワーク機能拡張で KidGate をオンにします。',
+    macAllow:
+      'ネットワークコンテンツのフィルタリングについて macOS から確認が表示されたら、「許可」をクリックします。',
+    macAllowSub: 'これで KidGate の {{filter}}がオンになります。',
+    macDone: 'お子さまの Mac が保護されました。',
+    macYoutubeTitle: 'お子さまの Mac に KidGate を設定する方法',
+    macYoutubeDescription:
+      'お子さまの Mac に KidGate をインストールし、QR コードで保護者のスマホと接続して、システム設定で Webフィルターをオンにします。',
   },
 };

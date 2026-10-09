@@ -908,7 +908,7 @@ export default {
     macosSteps:
       'Abra o pacote baixado e siga o instalador. Depois o macOS pede uma vez para você permitir a extensão de sistema do KidGate: abra os ajustes que essa mensagem indica e permita a extensão ali. O Filtro da web não funciona até você fazer isso.',
     windowsSteps:
-      'Quando o Windows disser que protegeu seu PC, escolha Mais informações e depois Executar assim mesmo.',
+      'Seu navegador pode avisar primeiro que o arquivo não costuma ser baixado — escolha mantê-lo. Em seguida, quando o Windows disser que protegeu seu PC, escolha Mais informações e depois Executar assim mesmo.',
   },
   about: {
     eyebrow: 'Sobre nós',
@@ -1078,5 +1078,23 @@ export default {
     androidYoutubeTitle: 'Como configurar o KidGate no celular Android do seu filho',
     androidYoutubeDescription:
       'Conecte o celular Android do seu filho ao seu celular com um QR code. Depois, ative as permissões de que o KidGate precisa, passo a passo.',
+    macTitle: 'Configure o Mac do seu filho',
+    childMac: 'Mac da criança',
+    macDownload: 'No Mac do seu filho, baixe o KidGate para macOS em kidgate.app.',
+    macInstall: 'Abra o instalador baixado e siga os passos.',
+    macPasswordSub: 'O macOS pede a senha deste Mac.',
+    macOpen: 'O KidGate abre e mostra um QR code.',
+    macOpenSub: 'Deixe essa janela aberta.',
+    macScan: 'No seu celular, toque no botão de escanear do KidGate e leia o QR code.',
+    macConfirm: 'No Mac, confira se é você e clique em “{{yes}}”.',
+    macAssign: 'Escolha quem usa este Mac ou adicione seu filho pelo nome.',
+    macFilter: 'No Mac, clique em “{{open}}” e ative o KidGate em Extensões de rede.',
+    macAllow:
+      'Quando o macOS perguntar se o KidGate pode filtrar conteúdo da rede, clique em “Permitir”.',
+    macAllowSub: 'Em seguida, o {{filter}} do KidGate é ativado.',
+    macDone: 'O Mac do seu filho está protegido.',
+    macYoutubeTitle: 'Como configurar o KidGate no Mac do seu filho',
+    macYoutubeDescription:
+      'Instale o KidGate no Mac do seu filho, conecte-o ao seu celular com um QR code e depois ative o filtro da web nos Ajustes do Sistema.',
   },
 };

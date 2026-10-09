@@ -912,7 +912,7 @@ export default {
     macosSteps:
       'Mở gói cài đã tải và làm theo trình cài đặt. Sau đó macOS sẽ hỏi bạn một lần để cho phép tiện ích hệ thống của KidGate: mở phần cài đặt mà thông báo đó chỉ tới và cho phép tại đó. Tính năng Chặn nội dung web chỉ hoạt động sau khi bạn cho phép.',
     windowsSteps:
-      'Khi Windows báo đã bảo vệ máy, chọn Thông tin thêm (More info), rồi Vẫn chạy (Run anyway).',
+      'Trình duyệt có thể cảnh báo trước rằng tệp này không thường được tải xuống — chọn giữ lại tệp. Sau đó, khi Windows báo đã bảo vệ máy, chọn Thông tin thêm (More info), rồi Vẫn chạy (Run anyway).',
   },
   about: {
     eyebrow: 'Về chúng tôi',
@@ -1078,5 +1078,23 @@ export default {
     androidYoutubeTitle: 'Cách cài đặt KidGate trên điện thoại Android của con',
     androidYoutubeDescription:
       'Kết nối điện thoại Android của con với điện thoại của bạn bằng mã QR, rồi bật các quyền KidGate cần, từng bước một.',
+    macTitle: 'Cài đặt trên máy Mac của con',
+    childMac: 'Mac của con',
+    macDownload: 'Trên máy Mac của con, tải KidGate cho macOS từ kidgate.app.',
+    macInstall: 'Mở trình cài đặt vừa tải và làm theo các bước.',
+    macPasswordSub: 'macOS sẽ hỏi mật khẩu của máy Mac này.',
+    macOpen: 'KidGate mở ra và hiện mã QR.',
+    macOpenSub: 'Cứ để nguyên cửa sổ đó.',
+    macScan: 'Trên điện thoại của bạn, chạm nút quét trong KidGate và quét mã QR.',
+    macConfirm: 'Trên máy Mac, kiểm tra đúng là bạn, rồi bấm “{{yes}}”.',
+    macAssign: 'Chọn ai dùng máy Mac này, hoặc thêm con bằng tên.',
+    macFilter:
+      'Trên máy Mac, bấm “{{open}}”, rồi bật KidGate trong Tiện ích mở rộng mạng.',
+    macAllow: 'Khi macOS hỏi về việc lọc nội dung mạng, bấm “Cho phép”.',
+    macAllowSub: 'Tính năng {{filter}} của KidGate sẽ bật ngay sau đó.',
+    macDone: 'Máy Mac của con đã được bảo vệ.',
+    macYoutubeTitle: 'Cách cài đặt KidGate trên máy Mac của con',
+    macYoutubeDescription:
+      'Cài KidGate trên máy Mac của con, kết nối với điện thoại của bạn bằng mã QR, rồi bật bộ lọc web trong Cài đặt hệ thống.',
   },
 };

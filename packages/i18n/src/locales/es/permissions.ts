@@ -53,8 +53,9 @@ export const permissions = {
   restrictedSettingsStep:
     'Si el interruptor aparece atenuado, abre Ajustes › Aplicaciones › KidGate, toca el menú ⋮ y elige «Permitir ajustes restringidos»; después vuelve aquí e inténtalo de nuevo.',
   accessibilityWarningNote:
-    'Android avisa de que KidGate puede observar tus acciones. Con este permiso KidGate ve qué app está abierta, para que el bloqueo pueda mantenerse encima. Cuando se registran los vídeos vistos, también lee el título y el canal de cada vídeo de YouTube y se los envía a tu padre o madre. No usa este permiso para leer contraseñas, mensajes ni lo que escribes.',
+    'Android avisa de que KidGate puede observar tus acciones. Con este permiso KidGate ve qué app está abierta, para que el bloqueo pueda mantenerse encima. Cuando se registran los vídeos vistos, también lee el título y el canal de cada vídeo de YouTube y se los envía a tu padre o madre. Este permiso no lee contraseñas, mensajes ni lo que escribes. Si tu padre o madre activa las Alertas de mensajes, un segundo permiso, que se pide aparte, revisa los mensajes de texto (SMS y MMS), los mensajes de chat y las búsquedas que escribes, y solo le envía una palabra o frase marcada. Si KidGate se cierra por un error, se envía un registro de fallos al equipo de KidGate para poder solucionarlo.',
   accessibilityAgree: 'Aceptar',
+  accessibilityDecline: 'Rechazar',
   accessibilityTvNote:
     'Con este permiso KidGate ve qué app está abierta, para que el bloqueo pueda mantenerse encima. También cuenta cuánto tiempo se usa cada app y se lo envía a tu padre o madre. No lee lo que hay en la pantalla, contraseñas ni mensajes.',
   uninstallProtectionWizardBody:

@@ -894,7 +894,7 @@ export default {
     macosSteps:
       'Buka paket yang telah diunduh lalu ikuti pemasangnya. Setelah itu macOS meminta Anda sekali untuk mengizinkan ekstensi sistem KidGate: buka pengaturan yang ditunjuk pesan itu dan izinkan di sana. Filter web belum berjalan sebelum Anda mengizinkannya.',
     windowsSteps:
-      'Saat Windows berkata telah melindungi PC Anda, pilih Info selengkapnya (More info), lalu Tetap jalankan (Run anyway).',
+      'Browser Anda mungkin lebih dulu memperingatkan bahwa file ini jarang diunduh — pilih untuk menyimpannya. Setelah itu, saat Windows berkata telah melindungi PC Anda, pilih Info selengkapnya (More info), lalu Tetap jalankan (Run anyway).',
   },
   about: {
     eyebrow: 'Tentang kami',
@@ -1067,5 +1067,24 @@ export default {
     androidYoutubeTitle: 'Cara menyiapkan KidGate di ponsel Android anak Anda',
     androidYoutubeDescription:
       'Sambungkan ponsel Android anak Anda ke ponsel Anda dengan kode QR, lalu aktifkan izin yang dibutuhkan KidGate, langkah demi langkah.',
+    macTitle: 'Siapkan Mac anak Anda',
+    childMac: 'Mac anak',
+    macDownload: 'Di Mac anak Anda, unduh KidGate untuk macOS dari kidgate.app.',
+    macInstall: 'Buka pemasang yang telah diunduh lalu ikuti langkah-langkahnya.',
+    macPasswordSub: 'macOS meminta kata sandi Mac ini.',
+    macOpen: 'KidGate terbuka dan menampilkan kode QR.',
+    macOpenSub: 'Biarkan jendela itu tetap terbuka.',
+    macScan: 'Di ponsel Anda, ketuk tombol pindai di KidGate lalu pindai kode QR-nya.',
+    macConfirm: 'Di Mac, pastikan yang tampil adalah Anda, lalu klik “{{yes}}”.',
+    macAssign:
+      'Pilih siapa yang memakai Mac ini, atau tambahkan anak Anda dengan mengetik namanya.',
+    macFilter: 'Di Mac, klik “{{open}}”, lalu aktifkan KidGate di Network Extensions.',
+    macAllow:
+      'Saat macOS meminta izin untuk memfilter konten jaringan, klik “Izinkan”.',
+    macAllowSub: '{{filter}} KidGate kemudian aktif.',
+    macDone: 'Mac anak Anda sudah terlindungi.',
+    macYoutubeTitle: 'Cara menyiapkan KidGate di Mac anak Anda',
+    macYoutubeDescription:
+      'Pasang KidGate di Mac anak Anda, sambungkan ke ponsel Anda dengan kode QR, lalu aktifkan Filter web di System Settings.',
   },
 };

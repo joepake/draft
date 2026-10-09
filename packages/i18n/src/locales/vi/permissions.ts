@@ -53,8 +53,9 @@ export const permissions = {
   restrictedSettingsStep:
     'Nếu công tắc bị mờ, hãy mở Cài đặt › Ứng dụng › KidGate, nhấn menu ⋮ rồi chọn “Cho phép cài đặt bị hạn chế”, sau đó quay lại đây và thử lại.',
   accessibilityWarningNote:
-    'Android sẽ cảnh báo rằng KidGate có thể quan sát thao tác của bạn. Với quyền này, KidGate biết ứng dụng nào đang mở để màn hình khóa luôn hiển thị đè lên. Khi mục Ghi lại video đã xem đang bật, KidGate còn đọc tiêu đề và tên kênh của từng video YouTube rồi gửi cho bố mẹ. KidGate không dùng quyền này để đọc mật khẩu, tin nhắn hay những gì bạn gõ.',
+    'Android sẽ cảnh báo rằng KidGate có thể quan sát thao tác của bạn. Với quyền này, KidGate biết ứng dụng nào đang mở để màn hình khóa luôn hiển thị đè lên. Khi mục Ghi lại video đã xem đang bật, KidGate còn đọc tiêu đề và tên kênh của từng video YouTube rồi gửi cho bố mẹ. Quyền này không đọc mật khẩu, tin nhắn hay những gì bạn gõ. Nếu bố mẹ bật Cảnh báo tin nhắn, một quyền thứ hai, được xin riêng, sẽ kiểm tra tin nhắn văn bản (SMS và MMS), tin nhắn trò chuyện và nội dung tìm kiếm bạn gõ, rồi chỉ gửi cho bố mẹ từ hoặc cụm từ bị đánh dấu. Nếu KidGate gặp sự cố, nhật ký sự cố sẽ được gửi tới đội ngũ KidGate để khắc phục.',
   accessibilityAgree: 'Đồng ý',
+  accessibilityDecline: 'Không đồng ý',
   accessibilityTvNote:
     'Với quyền này, KidGate biết ứng dụng nào đang mở để màn hình khóa luôn hiển thị đè lên. KidGate còn đếm thời gian dùng từng ứng dụng rồi gửi cho bố mẹ. KidGate không đọc nội dung trên màn hình, mật khẩu hay tin nhắn.',
   uninstallProtectionWizardBody:

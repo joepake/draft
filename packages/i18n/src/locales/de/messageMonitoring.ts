@@ -96,7 +96,6 @@ export const messageMonitoring = {
   outgoingBody:
     'KidGate kann auch prüfen, was du in Chat-Apps tippst. Es sucht nach denselben Warnwörtern, auf diesem Handy. Deine Nachrichten werden nirgendwohin gesendet.',
   outgoingEnable: 'Prüfen, was ich schreibe',
-  outgoingGrant: 'Erlauben',
   directionIncoming: 'Empfangen',
   directionOutgoing: 'Gesendet',
   directionSearch: 'Gesucht',
@@ -111,7 +110,7 @@ export const messageMonitoring = {
     'Android hat das deaktiviert. Erteile die Berechtigung erneut, damit weiter geprüft wird, was du schreibst.',
   outgoingDisclosureTitle: 'Bevor du zustimmst',
   outgoingDisclosureBody:
-    'KidGate prüft, was du in Messenger-Apps tippst, auf dieselben Warnwörter. Wenn deine Eltern Suchwarnungen einschalten, prüft KidGate auch, was du in Browsern, YouTube und der Google-App tippst. Passwortfelder liest KidGate nie. Die Prüfung läuft auf diesem Handy: Nichts, was du tippst, wird irgendwohin gesendet, und nur ein markiertes Wort oder ein markierter Ausdruck erreicht deine Eltern.',
+    'Mit dieser Berechtigung liest KidGate, was du in SMS und MMS und in Messenger-Apps tippst, und prüft es auf dieselben Warnwörter. Wenn deine Eltern Suchwarnungen einschalten, liest KidGate auch, was du in Browsern, YouTube und der Google-App tippst, zum Beispiel Suchanfragen. Passwortfelder liest KidGate nie. Die Prüfung läuft auf diesem Handy. Bei einem Treffer erhalten deine Eltern nur dieses Wort oder diesen Ausdruck, die Kategorie, die App und die Uhrzeit – nie den Rest der Nachricht oder Suche. Wenn KidGate abstürzt, wird ein Absturzprotokoll an das KidGate-Team gesendet, damit der Fehler behoben werden kann.',
   outgoingRestrictedHint:
     'Wenn der Schalter ausgegraut ist, öffne Einstellungen › Apps › KidGate, tippe auf das Menü ⋮ und wähle „Eingeschränkte Einstellungen zulassen“. Komm danach hierher zurück.',
   notice: {

@@ -9,6 +9,7 @@ export const leaderboard = {
   manageAccessibility: 'お子さまとデバイスを管理',
   addChild: 'お子さまを追加',
   childAdded: 'お子さまを追加しました。',
+  childNameTaken: 'この名前のお子さまはすでに登録されています。',
   childNameLabel: '名前',
   childNamePlaceholder: '例：マイ',
   unassigned: '未設定',

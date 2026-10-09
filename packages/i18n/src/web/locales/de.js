@@ -915,7 +915,7 @@ export default {
     macosSteps:
       'Öffne das geladene Paket und folge dem Installationsprogramm. macOS fragt dich danach einmal, ob du die KidGate-Systemerweiterung erlauben möchtest: Öffne die Einstellungen, auf die diese Meldung verweist, und erlaube sie dort. Der Webfilter läuft erst, wenn du das getan hast.',
     windowsSteps:
-      'Wenn Windows meldet, dass es deinen PC geschützt hat, wähle Weitere Informationen und dann Trotzdem ausführen.',
+      'Dein Browser warnt möglicherweise zuerst, dass die Datei nicht häufig heruntergeladen wird — behalte sie. Wenn Windows danach meldet, dass es deinen PC geschützt hat, wähle Weitere Informationen und dann Trotzdem ausführen.',
   },
   about: {
     eyebrow: 'Über uns',
@@ -1094,5 +1094,27 @@ export default {
       'So richtest du KidGate auf dem Android-Handy deines Kindes ein',
     androidYoutubeDescription:
       'Verbinde das Android-Handy deines Kindes per QR-Code mit deinem Handy und aktiviere dann Schritt für Schritt die Berechtigungen, die KidGate braucht.',
+    macTitle: 'Den Mac deines Kindes einrichten',
+    childMac: 'Mac des Kindes',
+    macDownload:
+      'Lade auf dem Mac deines Kindes KidGate für macOS von kidgate.app herunter.',
+    macInstall:
+      'Öffne das heruntergeladene Installationsprogramm und folge den Schritten.',
+    macPasswordSub: 'macOS fragt nach dem Passwort dieses Macs.',
+    macOpen: 'KidGate öffnet sich und zeigt einen QR-Code.',
+    macOpenSub: 'Lass dieses Fenster geöffnet.',
+    macScan:
+      'Tippe auf deinem Handy in KidGate auf das Scan-Symbol und scanne den QR-Code.',
+    macConfirm: 'Prüfe auf dem Mac, dass du es bist, und klicke dann auf „{{yes}}“.',
+    macAssign: 'Wähle aus, wer diesen Mac nutzt, oder füge dein Kind mit Namen hinzu.',
+    macFilter:
+      'Klicke auf dem Mac auf „{{open}}“ und aktiviere dann KidGate unter Netzwerkerweiterungen.',
+    macAllow:
+      'Wenn macOS fragt, ob KidGate Netzwerkinhalte filtern darf, klicke auf „Erlauben“.',
+    macAllowSub: 'Danach schaltet sich der {{filter}} von KidGate ein.',
+    macDone: 'Der Mac deines Kindes ist geschützt.',
+    macYoutubeTitle: 'So richtest du KidGate auf dem Mac deines Kindes ein',
+    macYoutubeDescription:
+      'Installiere KidGate auf dem Mac deines Kindes, verbinde ihn per QR-Code mit deinem Handy und aktiviere dann seinen Webfilter in den Systemeinstellungen.',
   },
 };

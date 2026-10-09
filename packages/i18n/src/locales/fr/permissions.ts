@@ -57,8 +57,9 @@ export const permissions = {
   restrictedSettingsStep:
     'Si l’interrupteur est grisé, ouvrez Paramètres › Applications › KidGate, appuyez sur le menu ⋮ et choisissez « Autoriser les paramètres restreints », puis revenez ici et réessayez.',
   accessibilityWarningNote:
-    'Android prévient que KidGate peut observer vos actions. Grâce à cette autorisation, KidGate voit quelle application est ouverte, pour que le verrouillage reste au premier plan. Lorsque l’enregistrement des vidéos regardées est activé, KidGate lit aussi le titre et la chaîne de chaque vidéo YouTube et les envoie à vos parents. KidGate ne se sert pas de cette autorisation pour lire les mots de passe, les messages ni ce que vous tapez.',
+    'Android prévient que KidGate peut observer vos actions. Grâce à cette autorisation, KidGate voit quelle application est ouverte, pour que le verrouillage reste au premier plan. Lorsque l’enregistrement des vidéos regardées est activé, KidGate lit aussi le titre et la chaîne de chaque vidéo YouTube et les envoie à vos parents. Cette autorisation ne lit pas les mots de passe, les messages ni ce que vous tapez. Si vos parents activent les Alertes de messages, une deuxième autorisation, demandée séparément, analyse les SMS et MMS, les messages de discussion et les recherches que vous tapez, et n’envoie à vos parents qu’un mot ou une expression signalés. Si KidGate plante, un journal de plantage est envoyé à l’équipe KidGate pour corriger le problème.',
   accessibilityAgree: 'Accepter',
+  accessibilityDecline: 'Refuser',
   accessibilityTvNote:
     'Grâce à cette autorisation, KidGate voit quelle application est ouverte, pour que le verrouillage reste au premier plan. KidGate compte aussi le temps passé dans chaque application et l’envoie à tes parents. Il ne lit ni le contenu de l’écran, ni les mots de passe, ni les messages.',
   uninstallProtectionWizardBody:

@@ -9,6 +9,7 @@ export const leaderboard = {
   manageAccessibility: 'Quản lý các con và thiết bị',
   addChild: 'Thêm con',
   childAdded: 'Đã thêm con.',
+  childNameTaken: 'Đã có con mang tên này.',
   childNameLabel: 'Tên',
   childNamePlaceholder: 'ví dụ: Mai',
   unassigned: 'Chưa gán',

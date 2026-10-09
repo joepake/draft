@@ -9,6 +9,7 @@ export const leaderboard = {
   manageAccessibility: 'Управление детьми и устройствами',
   addChild: 'Добавить ребёнка',
   childAdded: 'Ребёнок добавлен.',
+  childNameTaken: 'Ребёнок с таким именем уже есть.',
   childNameLabel: 'Имя',
   childNamePlaceholder: 'например, Май',
   unassigned: 'Не назначено',

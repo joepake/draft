@@ -61,7 +61,7 @@ export const webFilter = {
     'VPN KidGate mati. Filter web dewasa memerlukan VPN yang tetap terhubung.',
   vpnConsentBannerButton: 'Aktifkan VPN',
   vpnDisclosureNote:
-    'Selama Filter web aktif, VPN KidGate hanya berjalan di perangkat ini. VPN ini melihat nama setiap situs yang dicari perangkat — tidak pernah halamannya, apa yang diketik, atau lalu lintas lainnya. VPN ini memblokir situs yang dipilih orang tuamu dan menunjukkan kepada mereka situs mana yang dikunjungi dan diblokir, disimpan selama 30 hari. KidGate tidak pernah menjual data ini atau menggunakannya untuk hal lain.',
+    'Selama Filter web aktif, VPN KidGate hanya berjalan di perangkat ini. VPN ini melihat nama setiap situs yang dicari perangkat — tidak pernah halamannya, apa yang diketik, atau lalu lintas lainnya. VPN ini memblokir situs yang dipilih orang tuamu dan menunjukkan kepada mereka histori penjelajahan web perangkat ini (situs mana yang dikunjungi dan diblokir), disimpan selama 30 hari. KidGate tidak pernah menjual data ini atau menggunakannya untuk hal lain.',
   iosOnlyNote: 'Menggunakan koneksi privat dan Waktu Layar di iPhone',
   androidVpnNote: 'Menggunakan VPN DNS lokal di Android',
   macosFilterNote: 'Menggunakan filter konten KidGate di Mac',

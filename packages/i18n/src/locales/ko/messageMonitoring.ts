@@ -95,7 +95,6 @@ export const messageMonitoring = {
   outgoingBody:
     'KidGate는 채팅 앱에서 입력하는 내용도 확인할 수 있어요. 같은 경고 단어를 이 휴대폰 안에서 찾아요. 메시지 내용은 어디로도 전송되지 않아요.',
   outgoingEnable: '내가 쓴 내용 확인',
-  outgoingGrant: '허용하기',
   directionIncoming: '받음',
   directionOutgoing: '보냄',
   directionSearch: '검색함',
@@ -109,7 +108,7 @@ export const messageMonitoring = {
     'Android가 이 기능을 껐어요. 작성한 내용 검사를 계속하려면 권한을 다시 허용해 주세요.',
   outgoingDisclosureTitle: '허용하기 전에',
   outgoingDisclosureBody:
-    'KidGate는 채팅 앱에 입력한 내용에 같은 경고 단어가 있는지 확인해요. 부모님이 검색 알림을 켜면 브라우저, YouTube, Google 앱에 입력한 내용도 확인해요. 비밀번호 입력란은 절대 읽지 않아요. 확인은 이 휴대폰 안에서 이루어져요. 입력한 내용은 어디로도 전송되지 않고, 감지된 단어나 문구만 부모님께 전달돼요.',
+    '이 권한으로 KidGate는 문자 메시지(SMS 및 MMS)와 채팅 앱에 입력한 내용을 읽고 같은 경고 단어가 있는지 확인해요. 부모님이 검색 알림을 켜면 브라우저, YouTube, Google 앱에 입력한 검색어 같은 내용도 읽어요. 비밀번호 입력란은 절대 읽지 않아요. 확인은 이 휴대폰 안에서 이루어져요. 단어가 감지되면 그 단어나 문구, 분류, 앱, 시간만 부모님께 전달되고, 메시지나 검색의 나머지 내용은 절대 전송되지 않아요. KidGate에 오류가 발생해 앱이 종료되면 문제를 해결할 수 있도록 비정상 종료 로그가 KidGate 팀에 전송돼요.',
   outgoingRestrictedHint:
     '스위치가 흐리게 표시되면 설정 › 앱 › KidGate를 열고 ⋮ 메뉴에서 “제한된 설정 허용”을 선택한 뒤 다시 돌아오세요.',
   notice: {

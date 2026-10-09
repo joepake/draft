@@ -906,7 +906,7 @@ export default {
     macosSteps:
       'İndirdiğiniz paketi açın ve yükleyiciyi izleyin. Ardından macOS, KidGate sistem uzantısına izin vermenizi bir kez ister: bu mesajın gösterdiği ayarları açın ve izni orada verin. Siz izin verene kadar Web filtresi çalışmaz.',
     windowsSteps:
-      'Windows bilgisayarınızı koruduğunu söylediğinde Ek bilgi’yi, ardından Yine de çalıştır’ı seçin.',
+      'Tarayıcınız önce dosyanın yaygın olarak indirilmediği konusunda uyarabilir — dosyayı saklamayı seçin. Sonra Windows bilgisayarınızı koruduğunu söylediğinde Ek bilgi’yi, ardından Yine de çalıştır’ı seçin.',
   },
   about: {
     eyebrow: 'Hakkımızda',
@@ -1088,5 +1088,25 @@ export default {
     androidYoutubeTitle: 'KidGate çocuğunuzun Android telefonuna nasıl kurulur',
     androidYoutubeDescription:
       'Çocuğunuzun Android telefonunu bir QR kodla telefonunuza bağlayın, ardından KidGate’in ihtiyaç duyduğu izinleri adım adım açın.',
+    macTitle: 'Çocuğunuzun Mac’inde kurulum',
+    childMac: 'Çocuğun Mac’i',
+    macDownload:
+      'Çocuğunuzun Mac’inde, kidgate.app adresinden macOS için KidGate’i indirin.',
+    macInstall: 'İndirilen yükleyiciyi açın ve adımlarını izleyin.',
+    macPasswordSub: 'macOS, bu Mac’in parolasını ister.',
+    macOpen: 'KidGate açılır ve bir QR kod gösterir.',
+    macOpenSub: 'Bu pencereyi açık bırakın.',
+    macScan: 'Telefonunuzda KidGate’teki tarama düğmesine dokunun ve QR kodu okutun.',
+    macConfirm: 'Mac’te adınızı kontrol edin, ardından “{{yes}}” seçeneğine tıklayın.',
+    macAssign: 'Bu Mac’i kimin kullandığını seçin ya da çocuğunuzu adıyla ekleyin.',
+    macFilter:
+      'Mac’te “{{open}}” seçeneğine tıklayın, ardından Ağ Uzantıları bölümünde KidGate’i açın.',
+    macAllow:
+      'macOS ağ içeriğini filtrelemek için izin istediğinde “İzin Ver” seçeneğine tıklayın.',
+    macAllowSub: 'Ardından KidGate’in {{filter}} özelliği açılır.',
+    macDone: 'Çocuğunuzun Mac’i korunuyor.',
+    macYoutubeTitle: 'KidGate çocuğunuzun Mac’ine nasıl kurulur',
+    macYoutubeDescription:
+      'KidGate’i çocuğunuzun Mac’ine yükleyin, bir QR kodla telefonunuza bağlayın, ardından Sistem Ayarları’nda web filtresini açın.',
   },
 };

@@ -946,7 +946,7 @@ export default {
     macosSteps:
       'افتح الحزمة التي نزّلتها واتبع خطوات المثبِّت. بعدها يطلب منك macOS مرة واحدة السماح بامتداد نظام KidGate: افتح الإعدادات التي تشير إليها تلك الرسالة واسمح به هناك. ولا يعمل فلتر الويب قبل أن تفعل ذلك.',
     windowsSteps:
-      'عندما يقول Windows إنه حمى جهازك، اختر «مزيد من المعلومات» (More info) ثم «تشغيل على أي حال» (Run anyway).',
+      'قد يحذّرك المتصفح أولًا من أن هذا الملف لا يُنزَّل كثيرًا، فاختر الاحتفاظ به. بعد ذلك، عندما يقول Windows إنه حمى جهازك، اختر «مزيد من المعلومات» (More info) ثم «تشغيل على أي حال» (Run anyway).',
   },
   about: {
     eyebrow: 'من نحن',
@@ -1110,5 +1110,22 @@ export default {
     androidYoutubeTitle: 'كيفية إعداد KidGate على هاتف Android الخاص بطفلك',
     androidYoutubeDescription:
       'اربط هاتف Android الخاص بطفلك بهاتفك عبر رمز QR، ثم فعّل الأذونات التي يحتاجها KidGate، خطوة بخطوة.',
+    macTitle: 'إعداد جهاز Mac الخاص بطفلك',
+    childMac: 'جهاز Mac للطفل',
+    macDownload: 'على جهاز Mac الخاص بطفلك، نزّل KidGate لنظام macOS من kidgate.app.',
+    macInstall: 'افتح برنامج التثبيت الذي نزّلته واتبع خطواته.',
+    macPasswordSub: 'سيطلب macOS كلمة مرور جهاز Mac هذا.',
+    macOpen: 'يفتح KidGate ويعرض رمز QR.',
+    macOpenSub: 'اترك هذه النافذة مفتوحة.',
+    macScan: 'على هاتفك، اضغط على زر المسح في KidGate وامسح رمز QR.',
+    macConfirm: 'على جهاز Mac، تحقّق من ظهور اسمك، ثم انقر على «{{yes}}».',
+    macAssign: 'اختر من يستخدم جهاز Mac هذا، أو أضف طفلك باسمه.',
+    macFilter: 'على جهاز Mac، انقر على «{{open}}»، ثم فعّل KidGate في إضافات الشبكة.',
+    macAllow: 'عندما يسألك macOS عن فلترة محتوى الشبكة، انقر على «السماح».',
+    macAllowSub: 'بعدها يعمل {{filter}} في KidGate.',
+    macDone: 'أصبح جهاز Mac الخاص بطفلك محميًا.',
+    macYoutubeTitle: 'كيفية إعداد KidGate على جهاز Mac الخاص بطفلك',
+    macYoutubeDescription:
+      'ثبّت KidGate على جهاز Mac الخاص بطفلك، واربطه بهاتفك عبر رمز QR، ثم فعّل فلتر الويب من إعدادات النظام.',
   },
 };

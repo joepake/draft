@@ -53,8 +53,9 @@ export const permissions = {
   restrictedSettingsStep:
     'Ist der Schalter ausgegraut: Einstellungen › Apps › KidGate öffnen, auf das Menü ⋮ tippen und „Eingeschränkte Einstellungen zulassen“ wählen, dann hierher zurückkehren und es erneut versuchen.',
   accessibilityWarningNote:
-    'Android warnt, dass KidGate deine Aktionen beobachten kann. Mit dieser Berechtigung sieht KidGate, welche App geöffnet ist, damit die Sperre im Vordergrund bleibt. Wenn angesehene Videos aufgezeichnet werden, liest KidGate außerdem Titel und Kanal jedes YouTube-Videos und sendet sie an deine Eltern. KidGate nutzt die Berechtigung nicht, um Passwörter, Nachrichten oder deine Eingaben zu lesen.',
+    'Android warnt, dass KidGate deine Aktionen beobachten kann. Mit dieser Berechtigung sieht KidGate, welche App geöffnet ist, damit die Sperre im Vordergrund bleibt. Wenn angesehene Videos aufgezeichnet werden, liest KidGate außerdem Titel und Kanal jedes YouTube-Videos und sendet sie an deine Eltern. Diese Berechtigung liest keine Passwörter, Nachrichten oder Eingaben. Wenn deine Eltern Nachrichtenwarnungen einschalten, prüft eine zweite, separat angefragte Berechtigung die SMS und MMS, Chatnachrichten und Suchanfragen, die du tippst, und sendet deinen Eltern nur ein markiertes Wort oder einen markierten Ausdruck. Wenn KidGate abstürzt, wird ein Absturzprotokoll an das KidGate-Team gesendet, damit der Fehler behoben werden kann.',
   accessibilityAgree: 'Zustimmen',
+  accessibilityDecline: 'Ablehnen',
   accessibilityTvNote:
     'Mit dieser Berechtigung sieht KidGate, welche App geöffnet ist, damit die Sperre im Vordergrund bleibt. Außerdem zählt KidGate, wie lange jede App genutzt wird, und sendet das an deine Eltern. Bildschirminhalte, Passwörter und Nachrichten liest KidGate nicht.',
   uninstallProtectionWizardBody:

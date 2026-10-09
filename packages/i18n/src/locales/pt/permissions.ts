@@ -54,8 +54,9 @@ export const permissions = {
   restrictedSettingsStep:
     'Se a chave estiver esmaecida, abra Configurações › Aplicativos › KidGate, toque no menu ⋮ e escolha “Permitir configurações restritas”; depois volte aqui e tente de novo.',
   accessibilityWarningNote:
-    'O Android avisa que o KidGate pode observar suas ações. Com esta permissão, o KidGate vê qual app está aberto, para que o bloqueio possa ficar por cima. Quando os vídeos assistidos estão sendo registrados, ele também lê o título e o canal de cada vídeo do YouTube e os envia para seus pais. Ele não usa esta permissão para ler senhas, mensagens nem o que você digita.',
+    'O Android avisa que o KidGate pode observar suas ações. Com esta permissão, o KidGate vê qual app está aberto, para que o bloqueio possa ficar por cima. Quando os vídeos assistidos estão sendo registrados, ele também lê o título e o canal de cada vídeo do YouTube e os envia para seus pais. Esta permissão não lê senhas, mensagens nem o que você digita. Se seus pais ativarem os Alertas de mensagens, uma segunda permissão, pedida separadamente, verifica as mensagens de texto (SMS e MMS), as mensagens de chat e as buscas que você digita, e envia a seus pais só uma palavra ou frase sinalizada. Se o KidGate travar, um registro de falhas é enviado à equipe do KidGate para corrigir o problema.',
   accessibilityAgree: 'Concordar',
+  accessibilityDecline: 'Discordar',
   accessibilityTvNote:
     'Com esta permissão, o KidGate vê qual app está aberto, para que o bloqueio possa ficar por cima. Ele também conta quanto tempo cada app é usado e envia isso para seus pais. Ele não lê o que está na tela, senhas nem mensagens.',
   uninstallProtectionWizardBody:

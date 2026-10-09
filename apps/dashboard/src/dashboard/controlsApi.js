@@ -3,6 +3,7 @@ import { serverCodeMessageKey } from '@kidgate/core/domain/apiErrorMessages';
 import { splitChildRuleControls } from '@kidgate/core/domain/childWebRules';
 import { isDeviceParked } from '@kidgate/core/domain/deviceParking';
 import { isWhollyTightening } from '@kidgate/core/domain/ruleRelaxation';
+import { DuplicateChildNameError } from '@kidgate/core/repositories/child';
 import {
   trackCheckInRequest,
   trackDeviceLock,
@@ -134,6 +135,13 @@ function toControlError(error) {
 
   if (error?.code === 'permissionDenied') {
     return new ControlError(error.code, 'controlError.forbidden', error.message);
+  }
+
+  // The phone's sentence, through `activityT` like `APP_PACK_REFUSALS`.
+  if (error instanceof DuplicateChildNameError) {
+    const refusal = new ControlError('conflict', MESSAGE_KEYS.conflict, error.message);
+    refusal.appMessageKey = 'leaderboard.childNameTaken';
+    return refusal;
   }
 
   return new ControlError('unknown', MESSAGE_KEYS.unknown, error?.message);

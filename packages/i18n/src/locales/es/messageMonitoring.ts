@@ -96,7 +96,6 @@ export const messageMonitoring = {
   outgoingBody:
     'KidGate también puede revisar lo que escribes en apps de chat. Busca las mismas palabras de aviso, en este teléfono. Tus mensajes nunca se envían a ningún sitio.',
   outgoingEnable: 'Revisar lo que escribo',
-  outgoingGrant: 'Permitir',
   directionIncoming: 'Recibido',
   directionOutgoing: 'Enviado',
   directionSearch: 'Buscado',
@@ -110,7 +109,7 @@ export const messageMonitoring = {
     'Android desactivó esto. Vuelve a concederlo para seguir revisando lo que escribes.',
   outgoingDisclosureTitle: 'Antes de permitirlo',
   outgoingDisclosureBody:
-    'KidGate revisa lo que escribes en apps de mensajería en busca de las mismas palabras de aviso. Si tu padre o madre activa las alertas de búsqueda, también revisa lo que escribes en navegadores, YouTube y la app de Google. Nunca lee un campo de contraseña. La revisión se hace en este teléfono: nada de lo que escribes se envía a ningún sitio, y solo una palabra o frase marcada llega a tu padre o madre.',
+    'Con este permiso KidGate lee lo que escribes en mensajes de texto (SMS y MMS) y en apps de mensajería, y lo revisa en busca de las mismas palabras de aviso. Si tu padre o madre activa las alertas de búsqueda, también lee lo que escribes en navegadores, YouTube y la app de Google, como las búsquedas. Nunca lee un campo de contraseña. La revisión se hace en este teléfono. Cuando una palabra coincide, solo esa palabra o frase, su categoría, la app y la hora se envían a tu padre o madre, nunca el resto del mensaje o la búsqueda. Si KidGate se cierra por un error, se envía un registro de fallos al equipo de KidGate para poder solucionarlo.',
   outgoingRestrictedHint:
     'Si el interruptor aparece atenuado, abre Ajustes › Aplicaciones › KidGate, toca el menú ⋮ y elige «Permitir ajustes restringidos»; después vuelve aquí.',
   notice: {

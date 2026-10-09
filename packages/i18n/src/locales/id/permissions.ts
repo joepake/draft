@@ -55,8 +55,9 @@ export const permissions = {
   restrictedSettingsStep:
     'Jika sakelarnya abu-abu, buka Setelan › Aplikasi › KidGate, ketuk menu ⋮ lalu pilih “Izinkan setelan terbatas”, kemudian kembali ke sini dan coba lagi.',
   accessibilityWarningNote:
-    'Android memperingatkan bahwa KidGate dapat mengamati tindakan pengguna. Dengan izin ini, KidGate melihat aplikasi mana yang sedang terbuka agar kunci tetap tampil di atas. Saat video yang ditonton sedang direkam, KidGate juga membaca judul dan saluran setiap video YouTube lalu mengirimkannya ke orang tua. KidGate tidak memakai izin ini untuk membaca kata sandi, pesan, atau apa yang diketik.',
+    'Android memperingatkan bahwa KidGate dapat mengamati tindakan pengguna. Dengan izin ini, KidGate melihat aplikasi mana yang sedang terbuka agar kunci tetap tampil di atas. Saat video yang ditonton sedang direkam, KidGate juga membaca judul dan saluran setiap video YouTube lalu mengirimkannya ke orang tua. Izin ini tidak membaca kata sandi, pesan, atau apa yang diketik. Jika orang tua menyalakan Peringatan pesan, izin kedua yang diminta terpisah akan memeriksa pesan teks (SMS dan MMS), pesan obrolan, dan pencarian yang diketik, lalu hanya mengirimkan kata atau frasa yang ditandai ke orang tua. Jika KidGate tiba-tiba berhenti, log error dikirim ke tim KidGate agar masalahnya bisa diperbaiki.',
   accessibilityAgree: 'Setuju',
+  accessibilityDecline: 'Tidak setuju',
   accessibilityTvNote:
     'Dengan izin ini, KidGate melihat aplikasi mana yang sedang terbuka agar kunci tetap tampil di atas. KidGate juga menghitung berapa lama setiap aplikasi dipakai lalu mengirimkannya ke orang tuamu. KidGate tidak membaca isi layar, kata sandi, atau pesan.',
   uninstallProtectionWizardBody:

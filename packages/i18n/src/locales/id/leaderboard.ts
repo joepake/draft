@@ -10,6 +10,7 @@ export const leaderboard = {
   manageAccessibility: 'Kelola anak dan perangkat',
   addChild: 'Tambah anak',
   childAdded: 'Anak ditambahkan.',
+  childNameTaken: 'Sudah ada anak dengan nama ini.',
   childNameLabel: 'Nama',
   childNamePlaceholder: 'mis. Mai',
   unassigned: 'Belum ditetapkan',

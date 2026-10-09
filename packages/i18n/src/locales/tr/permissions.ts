@@ -55,8 +55,9 @@ export const permissions = {
   restrictedSettingsStep:
     'Anahtar soluk görünüyorsa Ayarlar › Uygulamalar › KidGate yolunu açıp ⋮ menüsüne dokunun ve “Kısıtlanmış ayarlara izin ver” seçeneğini seçin, ardından buraya dönüp tekrar deneyin.',
   accessibilityWarningNote:
-    'Android, KidGate’in işlemlerinizi izleyebileceği uyarısını gösterir. Bu izinle KidGate hangi uygulamanın açık olduğunu görür, böylece kilit en üstte kalabilir. İzlenen videolar kaydediliyorsa her YouTube videosunun başlığını ve kanalını da okur ve bunları ailenize gönderir. Bu izni parolaları, mesajları veya yazdıklarınızı okumak için kullanmaz.',
+    'Android, KidGate’in işlemlerinizi izleyebileceği uyarısını gösterir. Bu izinle KidGate hangi uygulamanın açık olduğunu görür, böylece kilit en üstte kalabilir. İzlenen videolar kaydediliyorsa her YouTube videosunun başlığını ve kanalını da okur ve bunları ailenize gönderir. Bu izin parolaları, mesajları veya yazdıklarınızı okumaz. Aileniz Mesaj uyarılarını açarsa, ayrıca istenen ikinci bir izin yazdığınız kısa mesajları (SMS ve MMS), sohbet mesajlarını ve aramaları kontrol eder ve ailenize yalnızca işaretlenen bir kelime veya ifadeyi gönderir. KidGate çökerse, sorunun giderilebilmesi için KidGate ekibine bir kilitlenme günlüğü gönderilir.',
   accessibilityAgree: 'Kabul et',
+  accessibilityDecline: 'Reddet',
   accessibilityTvNote:
     'Bu izinle KidGate hangi uygulamanın açık olduğunu görür, böylece kilit en üstte kalabilir. Ayrıca her uygulamanın ne kadar süre kullanıldığını sayar ve bunu ailene gönderir. Ekrandakileri, parolaları veya mesajları okumaz.',
   uninstallProtectionWizardBody:

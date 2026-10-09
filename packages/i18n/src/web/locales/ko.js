@@ -884,7 +884,7 @@ export default {
     macosSteps:
       '내려받은 패키지를 열고 설치 프로그램의 안내를 따르세요. 그런 다음 macOS가 KidGate 시스템 확장을 허용해 달라고 한 번 요청합니다. 메시지가 안내하는 설정을 열어 그곳에서 허용하세요. 허용하기 전까지는 웹 필터가 실행되지 않습니다.',
     windowsSteps:
-      'Windows가 PC를 보호했다고 표시하면 추가 정보, 이어서 실행을 선택하세요.',
+      '브라우저가 먼저 이 파일은 자주 다운로드되지 않는다고 경고할 수 있습니다. 이때는 파일을 유지하도록 선택하세요. 그다음 Windows가 PC를 보호했다고 표시하면 추가 정보, 이어서 실행을 선택하세요.',
   },
   about: {
     eyebrow: '소개',
@@ -1052,5 +1052,25 @@ export default {
     androidYoutubeTitle: '자녀의 Android 휴대폰에 KidGate를 설정하는 방법',
     androidYoutubeDescription:
       '자녀의 Android 휴대폰을 QR 코드로 부모 휴대폰에 연결한 뒤, KidGate에 필요한 권한을 한 단계씩 켜는 방법입니다.',
+    macTitle: '자녀의 Mac 설정하기',
+    childMac: '자녀 Mac',
+    macDownload:
+      '자녀의 Mac에서 kidgate.app에 접속해 macOS용 KidGate를 다운로드하세요.',
+    macInstall: '다운로드한 설치 프로그램을 열고 안내에 따라 진행하세요.',
+    macPasswordSub: 'macOS가 이 Mac의 암호를 요청합니다.',
+    macOpen: 'KidGate가 열리고 QR 코드가 표시됩니다.',
+    macOpenSub: '이 창을 그대로 열어 두세요.',
+    macScan: '내 휴대폰의 KidGate에서 스캔 버튼을 탭하고 QR 코드를 스캔하세요.',
+    macConfirm: 'Mac에서 본인이 맞는지 확인한 뒤 "{{yes}}" 버튼을 클릭하세요.',
+    macAssign: '이 Mac을 사용할 자녀를 선택하거나, 이름을 입력해 자녀를 추가하세요.',
+    macFilter:
+      'Mac에서 "{{open}}" 버튼을 클릭한 뒤 네트워크 확장에서 KidGate를 켜세요.',
+    macAllow:
+      'KidGate가 네트워크 콘텐츠를 필터링하려고 한다는 macOS 창이 나타나면 "허용" 버튼을 클릭하세요.',
+    macAllowSub: '그러면 KidGate {{filter}} 기능이 켜집니다.',
+    macDone: '이제 자녀의 Mac이 보호됩니다.',
+    macYoutubeTitle: '자녀의 Mac에 KidGate를 설정하는 방법',
+    macYoutubeDescription:
+      '자녀의 Mac에 KidGate를 설치하고 QR 코드로 부모 휴대폰에 연결한 뒤, 시스템 설정에서 웹 필터를 켜는 방법입니다.',
   },
 };

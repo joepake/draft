@@ -62,7 +62,7 @@ export const webFilter = {
     'Le VPN de KidGate est désactivé. Le filtre adulte a besoin d’un VPN connecté.',
   vpnConsentBannerButton: 'Activer le VPN',
   vpnDisclosureNote:
-    'Tant que le Filtre web est activé, le VPN de KidGate fonctionne uniquement sur cet appareil. Il voit le nom de chaque site que l’appareil consulte, jamais les pages, ce qui est tapé ni aucun autre trafic. Il bloque les sites choisis par tes parents et leur montre les sites visités et bloqués, conservés 30 jours. KidGate ne vend jamais ces données et ne les utilise pour rien d’autre.',
+    'Tant que le Filtre web est activé, le VPN de KidGate fonctionne uniquement sur cet appareil. Il voit le nom de chaque site que l’appareil consulte, jamais les pages, ce qui est tapé ni aucun autre trafic. Il bloque les sites choisis par tes parents et leur montre l’historique de navigation web de cet appareil (sites visités et bloqués), conservé 30 jours. KidGate ne vend jamais ces données et ne les utilise pour rien d’autre.',
   iosOnlyNote: 'Utilise une connexion privée et Temps d’écran sur iPhone',
   androidVpnNote: 'Utilise un VPN DNS local sur Android',
   macosFilterNote: 'Utilise le filtre de contenu de KidGate sur Mac',

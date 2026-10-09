@@ -55,8 +55,9 @@ export const permissions = {
   restrictedSettingsStep:
     'Se l’interruttore è disattivato, apri Impostazioni › App › KidGate, tocca il menu ⋮ e scegli “Consenti impostazioni con restrizioni”, poi torna qui e riprova.',
   accessibilityWarningNote:
-    'Android avvisa che KidGate può osservare le tue azioni. Con questa autorizzazione KidGate vede quale app è aperta, così il blocco può restare in primo piano. Quando la registrazione dei video guardati è attiva, legge anche il titolo e il canale di ogni video di YouTube e li invia ai tuoi genitori. Non usa questa autorizzazione per leggere password, messaggi o ciò che scrivi.',
+    'Android avvisa che KidGate può osservare le tue azioni. Con questa autorizzazione KidGate vede quale app è aperta, così il blocco può restare in primo piano. Quando la registrazione dei video guardati è attiva, legge anche il titolo e il canale di ogni video di YouTube e li invia ai tuoi genitori. Questa autorizzazione non legge password, messaggi o ciò che scrivi. Se i tuoi genitori attivano Avvisi messaggi, una seconda autorizzazione, chiesta a parte, controlla gli SMS e MMS, i messaggi in chat e le ricerche che scrivi, e invia ai tuoi genitori solo una parola o una frase segnalata. Se KidGate si arresta in modo anomalo, un log degli arresti anomali viene inviato al team di KidGate per risolvere il problema.',
   accessibilityAgree: 'Accetta',
+  accessibilityDecline: 'Rifiuta',
   accessibilityTvNote:
     'Con questa autorizzazione KidGate vede quale app è aperta, così il blocco può restare in primo piano. Conta anche per quanto tempo viene usata ogni app e lo invia ai tuoi genitori. Non legge il contenuto dello schermo, le password né i messaggi.',
   uninstallProtectionWizardBody:

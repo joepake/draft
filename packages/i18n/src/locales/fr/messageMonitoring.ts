@@ -96,7 +96,6 @@ export const messageMonitoring = {
   outgoingBody:
     'KidGate peut aussi vérifier ce que tu tapes dans les applis de discussion. Il cherche les mêmes mots d’alerte, sur ce téléphone. Tes messages ne sont jamais envoyés nulle part.',
   outgoingEnable: 'Vérifier ce que j’écris',
-  outgoingGrant: 'Autoriser',
   directionIncoming: 'Reçu',
   directionOutgoing: 'Envoyé',
   directionSearch: 'Recherché',
@@ -111,7 +110,7 @@ export const messageMonitoring = {
     'Android a désactivé cette fonction. Accorde-la à nouveau pour continuer à analyser ce que tu écris.',
   outgoingDisclosureTitle: 'Avant d’autoriser',
   outgoingDisclosureBody:
-    'KidGate analyse ce que tu écris dans les applis de messagerie pour y repérer les mêmes mots d’alerte. Si tes parents activent les alertes de recherche, il analyse aussi ce que tu écris dans les navigateurs, YouTube et l’appli Google. Il ne lit jamais un champ de mot de passe. L’analyse se fait sur ce téléphone : rien de ce que tu écris n’est envoyé nulle part, et tes parents ne reçoivent que le mot ou l’expression signalés.',
+    'Avec cette autorisation, KidGate lit ce que tu écris dans les SMS et MMS et dans les applis de messagerie, et y cherche les mêmes mots d’alerte. Si tes parents activent les alertes de recherche, il lit aussi ce que tu écris dans les navigateurs, YouTube et l’appli Google, comme tes recherches. Il ne lit jamais un champ de mot de passe. L’analyse se fait sur ce téléphone. Quand un mot correspond, seuls ce mot ou cette expression, sa catégorie, l’appli et l’heure sont envoyés à tes parents — jamais le reste du message ou de la recherche. Si KidGate plante, un journal de plantage est envoyé à l’équipe KidGate pour corriger le problème.',
   outgoingRestrictedHint:
     'Si l’interrupteur est grisé, ouvre Paramètres › Applications › KidGate, appuie sur le menu ⋮ et choisis « Autoriser les paramètres restreints », puis reviens ici.',
   notice: {

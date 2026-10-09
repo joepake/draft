@@ -61,7 +61,7 @@ export const webFilter = {
     'KidGate VPN이 꺼져 있어요. 성인 웹 필터는 VPN 연결이 유지되어야 해요.',
   vpnConsentBannerButton: 'VPN 켜기',
   vpnDisclosureNote:
-    '웹 필터가 켜져 있는 동안 KidGate VPN은 이 기기에서만 작동해요. 기기가 찾는 각 사이트의 이름만 보고, 페이지 내용이나 입력한 내용, 그 밖의 트래픽은 절대 보지 않아요. 부모님이 고른 사이트를 차단하고, 방문하거나 차단된 사이트를 부모님에게 보여 줘요. 이 기록은 30일 동안 보관돼요. KidGate는 이 데이터를 판매하거나 다른 용도로 쓰지 않아요.',
+    '웹 필터가 켜져 있는 동안 KidGate VPN은 이 기기에서만 작동해요. 기기가 찾는 각 사이트의 이름만 보고, 페이지 내용이나 입력한 내용, 그 밖의 트래픽은 절대 보지 않아요. 부모님이 고른 사이트를 차단하고, 이 기기의 웹 탐색 기록(방문하거나 차단된 사이트)을 부모님에게 보여 줘요. 이 기록은 30일 동안 보관돼요. KidGate는 이 데이터를 판매하거나 다른 용도로 쓰지 않아요.',
   iosOnlyNote: 'iPhone에서는 비공개 연결과 스크린 타임 사용',
   androidVpnNote: 'Android에서는 로컬 DNS VPN 사용',
   macosFilterNote: 'Mac에서는 KidGate 콘텐츠 필터 사용',

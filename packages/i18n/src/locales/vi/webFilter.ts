@@ -61,7 +61,7 @@ export const webFilter = {
     'VPN của KidGate đang tắt. Tính năng Chặn nội dung web cần VPN duy trì kết nối để hoạt động.',
   vpnConsentBannerButton: 'Bật VPN',
   vpnDisclosureNote:
-    'Khi Chặn nội dung web đang bật, VPN của KidGate chỉ chạy trên thiết bị này. VPN thấy tên từng trang web mà thiết bị tra cứu — không bao giờ thấy nội dung trang, những gì được gõ hay dữ liệu nào khác. VPN chặn các trang bố mẹ đã chọn và cho bố mẹ xem những trang đã truy cập và đã bị chặn, lưu trong 30 ngày. KidGate không bao giờ bán dữ liệu này hay dùng vào việc gì khác.',
+    'Khi Chặn nội dung web đang bật, VPN của KidGate chỉ chạy trên thiết bị này. VPN thấy tên từng trang web mà thiết bị tra cứu — không bao giờ thấy nội dung trang, những gì được gõ hay dữ liệu nào khác. VPN chặn các trang bố mẹ đã chọn và cho bố mẹ xem lịch sử duyệt web của thiết bị này (những trang đã truy cập và đã bị chặn), lưu trong 30 ngày. KidGate không bao giờ bán dữ liệu này hay dùng vào việc gì khác.',
   iosOnlyNote: 'Dùng kết nối riêng và Thời gian sử dụng trên iPhone',
   androidVpnNote: 'Sử dụng VPN DNS cục bộ trên Android',
   macosFilterNote: 'Dùng bộ lọc nội dung của KidGate trên Mac',

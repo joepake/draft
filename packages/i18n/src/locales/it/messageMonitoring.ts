@@ -96,7 +96,6 @@ export const messageMonitoring = {
   outgoingBody:
     'KidGate può controllare anche ciò che scrivi nelle app di chat. Cerca le stesse parole di allerta, su questo telefono. I tuoi messaggi non vengono mai inviati da nessuna parte.',
   outgoingEnable: 'Controlla ciò che scrivo',
-  outgoingGrant: 'Consenti',
   directionIncoming: 'Ricevuto',
   directionOutgoing: 'Inviato',
   directionSearch: 'Cercato',
@@ -111,7 +110,7 @@ export const messageMonitoring = {
     'Android ha disattivato questa funzione. Concedila di nuovo per continuare a controllare ciò che scrivi.',
   outgoingDisclosureTitle: 'Prima di consentire',
   outgoingDisclosureBody:
-    'KidGate controlla ciò che scrivi nelle app di chat cercando le stesse parole di allerta. Se i tuoi genitori attivano gli avvisi sulle ricerche, controlla anche ciò che scrivi nei browser, su YouTube e nell’app Google. Non legge mai un campo password. Il controllo avviene su questo telefono: niente di ciò che scrivi viene inviato da nessuna parte, e ai tuoi genitori arriva solo una parola o una frase segnalata.',
+    'Con questa autorizzazione KidGate legge ciò che scrivi negli SMS e MMS e nelle app di chat, e lo controlla cercando le stesse parole di allerta. Se i tuoi genitori attivano gli avvisi sulle ricerche, legge anche ciò che scrivi nei browser, su YouTube e nell’app Google, come le ricerche. Non legge mai un campo password. Il controllo avviene su questo telefono. Quando una parola corrisponde, ai tuoi genitori arrivano solo quella parola o frase, la sua categoria, l’app e l’ora, mai il resto del messaggio o della ricerca. Se KidGate si arresta in modo anomalo, un log degli arresti anomali viene inviato al team di KidGate per risolvere il problema.',
   outgoingRestrictedHint:
     'Se l’interruttore è disattivato, apri Impostazioni › App › KidGate, tocca il menu ⋮ e scegli “Consenti impostazioni con restrizioni”, poi torna qui.',
   notice: {

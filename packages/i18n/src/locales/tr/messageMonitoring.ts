@@ -95,7 +95,6 @@ export const messageMonitoring = {
   outgoingBody:
     'KidGate sohbet uygulamalarında yazdıklarını da kontrol edebilir. Aynı uyarı kelimelerini, bu telefonda arar. Mesajların hiçbir yere gönderilmez.',
   outgoingEnable: 'Yazdıklarımı kontrol et',
-  outgoingGrant: 'İzin ver',
   directionIncoming: 'Gelen',
   directionOutgoing: 'Giden',
   directionSearch: 'Arandı',
@@ -110,7 +109,7 @@ export const messageMonitoring = {
     'Android bunu kapattı. Yazdıklarının kontrol edilmeye devam etmesi için izni yeniden ver.',
   outgoingDisclosureTitle: 'İzin vermeden önce',
   outgoingDisclosureBody:
-    'KidGate sohbet uygulamalarında yazdıklarını aynı uyarı kelimeleri için kontrol eder. Ailen arama uyarılarını açarsa tarayıcılarda, YouTube’da ve Google uygulamasında yazdıklarını da kontrol eder. Parola alanlarını asla okumaz. Kontrol bu telefonda yapılır: yazdığın hiçbir şey bir yere gönderilmez ve ailene yalnızca işaretlenen bir kelime veya ifade ulaşır.',
+    'Bu izinle KidGate kısa mesajlarda (SMS ve MMS) ve sohbet uygulamalarında yazdıklarını okur ve aynı uyarı kelimeleri için kontrol eder. Ailen arama uyarılarını açarsa tarayıcılarda, YouTube’da ve Google uygulamasında yazdıklarını, örneğin aramalarını da okur. Parola alanlarını asla okumaz. Kontrol bu telefonda yapılır. Bir kelime eşleşirse ailene yalnızca o kelime veya ifade, kategorisi, uygulama ve saat gönderilir; mesajın ya da aramanın geri kalanı asla gönderilmez. KidGate çökerse, sorunun giderilebilmesi için KidGate ekibine bir kilitlenme günlüğü gönderilir.',
   outgoingRestrictedHint:
     'Anahtar soluk görünüyorsa Ayarlar › Uygulamalar › KidGate yolunu açıp ⋮ menüsüne dokun ve “Kısıtlanmış ayarlara izin ver” seçeneğini seç, sonra buraya dön.',
   notice: {

@@ -40,12 +40,51 @@ function mapChild(doc: DocSnapshot): Child {
   };
 }
 
+/**
+ * Two children with one name make every child-keyed screen ambiguous — the
+ * board, the device picker, the hub — so a name is unique per family, compared
+ * trimmed, whitespace-collapsed and case-folded, the same rule as places.
+ */
+export function isChildNameTaken(
+  children: ReadonlyArray<{ id: string; name: string }>,
+  name: string,
+  excludeId?: string,
+): boolean {
+  const key = childNameKey(name);
+  return (
+    key !== '' &&
+    children.some(child => child.id !== excludeId && childNameKey(child.name) === key)
+  );
+}
+
+function childNameKey(name: string): string {
+  return name.normalize('NFC').trim().replace(/\s+/g, ' ').toLowerCase();
+}
+
+export class DuplicateChildNameError extends Error {
+  constructor() {
+    super('child/name-taken');
+    this.name = 'DuplicateChildNameError';
+  }
+}
+
 export interface ChildRepositoryDeps {
   db: FirestorePort;
 }
 
 export function createChildRepository(deps: ChildRepositoryDeps) {
   const { db } = deps;
+
+  // Read fresh rather than trusting the caller's list: the dashboard reads
+  // once and never watches, and a co-parent may have added the name since.
+  // ponytail: read-then-write, two parents saving the same name in the same
+  // second both pass; a transaction if that ever shows up in real data.
+  async function assertNameFree(familyId: string, name: string, excludeId?: string) {
+    const snapshot = await db.getDocs(childrenCollection(familyId));
+    if (isChildNameTaken(snapshot.docs.map(mapChild), name, excludeId)) {
+      throw new DuplicateChildNameError();
+    }
+  }
 
   return {
     subscribe(
@@ -70,6 +109,7 @@ export function createChildRepository(deps: ChildRepositoryDeps) {
       familyId: string,
       input: { name: string; colorIndex: number },
     ): Promise<string> {
+      await assertNameFree(familyId, input.name);
       return db.addDoc(childrenCollection(familyId), {
         name: input.name,
         colorIndex: input.colorIndex,
@@ -78,6 +118,7 @@ export function createChildRepository(deps: ChildRepositoryDeps) {
     },
 
     async rename(familyId: string, childId: string, name: string): Promise<void> {
+      await assertNameFree(familyId, name, childId);
       await db.updateDoc(childDoc(familyId, childId), { name });
     },
 

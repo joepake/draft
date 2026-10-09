@@ -96,7 +96,6 @@ export const messageMonitoring = {
   outgoingBody:
     'O KidGate também pode verificar o que você digita em apps de conversa. Ele procura as mesmas palavras de alerta, neste telefone. Suas mensagens nunca são enviadas a lugar nenhum.',
   outgoingEnable: 'Verificar o que eu escrevo',
-  outgoingGrant: 'Permitir',
   directionIncoming: 'Recebido',
   directionOutgoing: 'Enviado',
   directionSearch: 'Buscado',
@@ -111,7 +110,7 @@ export const messageMonitoring = {
     'O Android desativou isto. Conceda novamente para continuar verificando o que você escreve.',
   outgoingDisclosureTitle: 'Antes de permitir',
   outgoingDisclosureBody:
-    'O KidGate verifica o que você digita em aplicativos de mensagens em busca das mesmas palavras de alerta. Se seus pais ativarem os alertas de busca, ele também verifica o que você digita em navegadores, no YouTube e no app do Google. Ele nunca lê um campo de senha. A verificação acontece neste celular: nada do que você digita é enviado a lugar nenhum, e só uma palavra ou frase sinalizada chega aos seus pais.',
+    'Com esta permissão, o KidGate lê o que você digita em mensagens de texto (SMS e MMS) e em aplicativos de mensagens, e verifica se há as mesmas palavras de alerta. Se seus pais ativarem os alertas de busca, ele também lê o que você digita em navegadores, no YouTube e no app do Google, como buscas. Ele nunca lê um campo de senha. A verificação acontece neste celular. Quando uma palavra corresponde, só essa palavra ou frase, a categoria, o app e o horário são enviados para seus pais — nunca o resto da mensagem ou da busca. Se o KidGate travar, um registro de falhas é enviado à equipe do KidGate para corrigir o problema.',
   outgoingRestrictedHint:
     'Se o botão estiver esmaecido, abra Configurações › Aplicativos › KidGate, toque no menu ⋮ e escolha “Permitir configurações restritas”; depois volte aqui.',
   notice: {

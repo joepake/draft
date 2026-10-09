@@ -61,7 +61,7 @@ export const webFilter = {
     'KidGate VPN kapalı. Yetişkin web filtresi VPN bağlantısının sürmesini gerektirir.',
   vpnConsentBannerButton: 'VPN’i aç',
   vpnDisclosureNote:
-    'Web filtresi açıkken KidGate VPN yalnızca bu cihazda çalışır. Cihazın açtığı her sitenin adını görür; sayfaları, yazılanları ya da başka hiçbir trafiği asla görmez. Ailenin seçtiği siteleri engeller ve hangi sitelerin açıldığını ve engellendiğini ailene gösterir; bu liste 30 gün saklanır. KidGate bu verileri asla satmaz ve başka hiçbir şey için kullanmaz.',
+    'Web filtresi açıkken KidGate VPN yalnızca bu cihazda çalışır. Cihazın açtığı her sitenin adını görür; sayfaları, yazılanları ya da başka hiçbir trafiği asla görmez. Ailenin seçtiği siteleri engeller ve bu cihazın web’de gezinme geçmişini (hangi sitelerin açıldığını ve engellendiğini) ailene gösterir; bu geçmiş 30 gün saklanır. KidGate bu verileri asla satmaz ve başka hiçbir şey için kullanmaz.',
   iosOnlyNote: 'iPhone’da özel bağlantı ve Ekran Süresi kullanır',
   androidVpnNote: 'Android’de yerel DNS VPN kullanır',
   macosFilterNote: 'Mac’te KidGate’in içerik filtresini kullanır',

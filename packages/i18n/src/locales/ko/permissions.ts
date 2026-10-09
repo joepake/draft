@@ -48,8 +48,9 @@ export const permissions = {
   restrictedSettingsStep:
     '스위치가 흐리게 표시되면 설정 › 앱 › KidGate를 열고 ⋮ 메뉴에서 “제한된 설정 허용”을 선택한 뒤, 여기로 돌아와 다시 시도하세요.',
   accessibilityWarningNote:
-    'Android는 KidGate가 사용자의 동작을 관찰할 수 있다고 경고합니다. 이 권한으로 KidGate는 잠금 화면이 항상 위에 표시되도록 어떤 앱이 열려 있는지 확인합니다. “시청한 동영상 기록”이 켜져 있으면 각 YouTube 동영상의 제목과 채널도 읽어 부모님에게 보냅니다. 비밀번호, 메시지, 입력한 내용을 읽는 데는 이 권한을 사용하지 않습니다.',
+    'Android는 KidGate가 사용자의 동작을 관찰할 수 있다고 경고합니다. 이 권한으로 KidGate는 잠금 화면이 항상 위에 표시되도록 어떤 앱이 열려 있는지 확인합니다. “시청한 동영상 기록”이 켜져 있으면 각 YouTube 동영상의 제목과 채널도 읽어 부모님에게 보냅니다. 이 권한은 비밀번호, 메시지, 입력한 내용을 읽지 않습니다. 부모님이 메시지 경고를 켜면, 따로 요청하는 두 번째 권한이 입력한 문자 메시지(SMS 및 MMS), 채팅 메시지, 검색어를 확인하고 감지된 단어나 문구만 부모님에게 보냅니다. KidGate에 오류가 발생해 앱이 종료되면 문제를 해결할 수 있도록 비정상 종료 로그가 KidGate 팀에 전송됩니다.',
   accessibilityAgree: '동의',
+  accessibilityDecline: '동의 안 함',
   accessibilityTvNote:
     '이 권한으로 KidGate는 잠금 화면이 항상 위에 표시되도록 어떤 앱이 열려 있는지 확인해요. 또 앱마다 얼마나 사용했는지 세어 부모님에게 보내요. 화면 내용, 비밀번호, 메시지는 읽지 않아요.',
   uninstallProtectionWizardBody:

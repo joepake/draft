@@ -9,6 +9,7 @@ export const leaderboard = {
   manageAccessibility: '자녀 및 기기 관리',
   addChild: '아이 추가',
   childAdded: '아이가 추가되었습니다.',
+  childNameTaken: '이 이름의 아이가 이미 있습니다.',
   childNameLabel: '이름',
   childNamePlaceholder: '예: 마이',
   unassigned: '지정 안 됨',

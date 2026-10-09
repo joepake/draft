@@ -9,6 +9,7 @@ export const leaderboard = {
   manageAccessibility: 'Çocukları ve cihazları yönet',
   addChild: 'Çocuk ekle',
   childAdded: 'Çocuk eklendi.',
+  childNameTaken: 'Bu adla bir çocuk zaten var.',
   childNameLabel: 'Ad',
   childNamePlaceholder: 'örn. Mai',
   unassigned: 'Atanmadı',

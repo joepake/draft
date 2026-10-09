@@ -931,7 +931,7 @@ export default {
     macosSteps:
       'Open the downloaded package and follow the installer. macOS then asks you once to allow the KidGate system extension: open the settings that message points to and allow it there. The Web Filter does not run until you do.',
     windowsSteps:
-      'When Windows says it protected your PC, choose More info, then Run anyway.',
+      'Your browser may first warn that the file isn’t commonly downloaded — choose to keep it. Then, when Windows says it protected your PC, choose More info, then Run anyway.',
   },
 
   /**
@@ -1123,5 +1123,24 @@ export default {
     androidYoutubeTitle: 'How to set up KidGate on your child’s Android phone',
     androidYoutubeDescription:
       'Connect your child’s Android phone to your phone with a QR code, then turn on the permissions KidGate needs, one step at a time.',
+    // Clip 3 — the child's Mac.
+    macTitle: 'Set up your child’s Mac',
+    childMac: 'Child’s Mac',
+    macDownload: 'On your child’s Mac, download KidGate for macOS from kidgate.app.',
+    macInstall: 'Open the downloaded installer and follow its steps.',
+    macPasswordSub: 'macOS asks for this Mac’s password.',
+    macOpen: 'KidGate opens and shows a QR code.',
+    macOpenSub: 'Leave that window open.',
+    macScan: 'On your phone, tap the scan button in KidGate and scan the QR code.',
+    macConfirm: 'On the Mac, check it’s you, then click “{{yes}}”.',
+    macAssign: 'Choose who uses this Mac, or add your child by name.',
+    macFilter:
+      'On the Mac, click “{{open}}”, then turn on KidGate in Network Extensions.',
+    macAllow: 'When macOS asks to filter network content, click “Allow”.',
+    macAllowSub: 'KidGate’s {{filter}} then turns on.',
+    macDone: 'Your child’s Mac is protected.',
+    macYoutubeTitle: 'How to set up KidGate on your child’s Mac',
+    macYoutubeDescription:
+      'Install KidGate on your child’s Mac, connect it to your phone with a QR code, then turn on its web filter in System Settings.',
   },
 };

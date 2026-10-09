@@ -12,6 +12,7 @@ export const leaderboard = {
   // Toast confirming the "+" menu's add-a-child: a child with no device lands
   // in the strip at the bottom of the Family list, below the fold.
   childAdded: 'Child added.',
+  childNameTaken: 'There is already a child with this name.',
   childNameLabel: 'Name',
   childNamePlaceholder: 'e.g. Mai',
   unassigned: 'Not assigned',

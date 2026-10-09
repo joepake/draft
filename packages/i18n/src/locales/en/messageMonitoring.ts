@@ -110,7 +110,6 @@ export const messageMonitoring = {
   outgoingBody:
     'KidGate can also check what you type in chat apps. It looks for the same warning words, on this phone. Your messages are never sent anywhere.',
   outgoingEnable: 'Check what I write',
-  outgoingGrant: 'Allow this',
   directionIncoming: 'Received',
   directionOutgoing: 'Sent',
   directionSearch: 'Searched',
@@ -125,9 +124,11 @@ export const messageMonitoring = {
   outgoingDisclosureTitle: 'Before you allow',
   // The disclosure in front of the typing service's accessibility grant, and
   // that one grant also carries the search half (`KidGateSearchApps`), which
-  // reads any field in those apps, not only a search box.
+  // reads any field in those apps, not only a search box. Play rejected the
+  // app on 2026-10-09 because SMS/MMS, in-app messages, in-app search history
+  // and crash logs (Data Safety types) were not named here — keep all four.
   outgoingDisclosureBody:
-    'KidGate checks what you type in chat apps for the same warning words. If your parent turns on search alerts, it also checks what you type in browsers, YouTube and the Google app. It never reads a password box. The check happens on this phone: nothing you type is sent anywhere, and only a flagged word or phrase reaches your parent.',
+    'With this permission KidGate reads what you type in text messages (SMS and MMS) and chat apps, and checks it for the same warning words. If your parent turns on search alerts, it also reads what you type in browsers, YouTube and the Google app, such as searches. It never reads a password box. The check happens on this phone. When a word matches, only that word or phrase, its category, the app and the time are sent to your parent — never the rest of the message or search. If KidGate crashes, a crash log is sent to the KidGate team so the problem can be fixed.',
   outgoingRestrictedHint:
     'If the switch is greyed out, open Settings › Apps › KidGate, tap the ⋮ menu and choose “Allow restricted settings”, then come back.',
   notice: {
