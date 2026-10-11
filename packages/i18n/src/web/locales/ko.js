@@ -989,7 +989,6 @@ export default {
     signInSub: 'Apple로 로그인할 때는 Face ID로 확인만 하면 됩니다.',
     family: '"{{tab}}"에서 "{{create}}" 버튼을 탭하고 가족 이름을 정하세요.',
     done: '부모 쪽 준비는 끝났습니다.',
-    next: '다음: 자녀 기기에 KidGate를 설치하세요. 기기에 맞는 영상을 선택하세요.',
     parentYoutubeTitle: '부모 휴대폰에 KidGate를 설정하는 방법',
     parentYoutubeDescription:
       'KidGate를 설치하고 로그인한 뒤 가족을 만드세요. 자녀 기기를 연결하기 전 첫 단계입니다.',
@@ -1002,8 +1001,7 @@ export default {
     tapAllow: '"{{allow}}" 버튼을 탭하세요.',
     extras: '마지막으로 카메라와 마이크를 허용하세요.',
     extrasSub: '선택 사항: 허용하면 자녀가 SOS에 사진이나 소리를 담을 수 있습니다.',
-    pairNext: '다음: 내 휴대폰에서 규칙을 정하세요.',
-    iosTitle: '자녀의 iPhone 설정하기',
+    iosTitle: '자녀의 iPhone 또는 iPad 설정하기',
     childPhone: '자녀 iPhone',
     iosOpen: '자녀의 iPhone에서 KidGate를 열고 "{{child}}" 버튼을 탭하세요.',
     iosScan: '내 휴대폰에서 "{{add}}" 버튼을 탭하고 QR 코드를 스캔하세요.',
@@ -1021,10 +1019,10 @@ export default {
     iosBlocked: '"{{strengthen}}" 버튼을 탭한 뒤 "{{blocked}}" 항목을 설정하세요.',
     iosBlockedSub: '"{{unlock}}" 버튼을 탭하고 PIN을 입력한 뒤 앱을 고르면 됩니다.',
     iosDone: '이제 자녀의 iPhone이 보호됩니다.',
-    iosYoutubeTitle: '자녀의 iPhone에 KidGate를 설정하는 방법',
+    iosYoutubeTitle: '자녀의 iPhone 또는 iPad에 KidGate를 설정하는 방법',
     iosYoutubeDescription:
-      '자녀의 iPhone을 QR 코드로 부모 휴대폰에 연결한 뒤, 스크린 타임과 KidGate에 필요한 다른 권한을 한 단계씩 켜는 방법입니다.',
-    androidTitle: '자녀의 Android 휴대폰 설정하기',
+      '자녀의 iPhone 또는 iPad를 QR 코드로 부모 휴대폰에 연결한 뒤, 스크린 타임과 KidGate에 필요한 다른 권한을 한 단계씩 켜는 방법입니다.',
+    androidTitle: '자녀의 Android 휴대폰 또는 태블릿 설정하기',
     childAndroid: '자녀 Android',
     androidOpen: '자녀의 휴대폰에서 KidGate를 열고 "{{child}}" 버튼을 탭하세요.',
     androidScan: '내 휴대폰의 KidGate로 QR 코드를 스캔하세요.',
@@ -1048,10 +1046,10 @@ export default {
       '"{{alerts}}" 기능을 쓰려면 "{{grant}}" 버튼을 탭한 뒤 KidGate의 알림 접근을 켜세요.',
     androidMessagesSub:
       'KidGate는 받은 메시지에 경고 단어가 있는지 휴대폰 안에서 확인합니다.',
-    androidDone: '이제 자녀의 휴대폰이 보호됩니다.',
-    androidYoutubeTitle: '자녀의 Android 휴대폰에 KidGate를 설정하는 방법',
+    androidDone: '이제 자녀의 Android 휴대폰이 보호됩니다.',
+    androidYoutubeTitle: '자녀의 Android 휴대폰 또는 태블릿에 KidGate를 설정하는 방법',
     androidYoutubeDescription:
-      '자녀의 Android 휴대폰을 QR 코드로 부모 휴대폰에 연결한 뒤, KidGate에 필요한 권한을 한 단계씩 켜는 방법입니다.',
+      '자녀의 Android 휴대폰 또는 태블릿을 QR 코드로 부모 휴대폰에 연결한 뒤, KidGate에 필요한 권한을 한 단계씩 켜는 방법입니다.',
     macTitle: '자녀의 Mac 설정하기',
     childMac: '자녀 Mac',
     macDownload:
@@ -1072,5 +1070,48 @@ export default {
     macYoutubeTitle: '자녀의 Mac에 KidGate를 설정하는 방법',
     macYoutubeDescription:
       '자녀의 Mac에 KidGate를 설치하고 QR 코드로 부모 휴대폰에 연결한 뒤, 시스템 설정에서 웹 필터를 켜는 방법입니다.',
+    windowsTitle: '자녀의 Windows PC 설정하기',
+    childWindows: '자녀 PC',
+    windowsDownload:
+      '자녀의 PC에서 kidgate.app에 접속해 Windows용 KidGate를 다운로드하세요.',
+    windowsSmartScreen:
+      'Windows가 PC를 보호했다고 표시하면 추가 정보, 이어서 실행을 선택하세요.',
+    windowsInstall:
+      '관리자 권한 요청을 승인한 뒤 설치 프로그램의 안내에 따라 진행하세요.',
+    windowsInstallSub: '표준 계정에서는 Windows가 관리자 암호를 요청합니다.',
+    windowsConfirm: 'PC에서 본인이 맞는지 확인한 뒤 "{{yes}}" 버튼을 클릭하세요.',
+    windowsAssign: '이 PC를 사용할 자녀를 선택하거나, 이름을 입력해 자녀를 추가하세요.',
+    windowsSetup: 'PC에서 {{location}} 항목의 "{{allow}}" 버튼을 클릭하세요.',
+    windowsSetupSub: 'KidGate {{filter}} 기능이 몇 초 안에 자동으로 켜집니다.',
+    windowsDone: '이제 자녀의 PC가 보호됩니다.',
+    windowsYoutubeTitle: '자녀의 Windows PC에 KidGate를 설정하는 방법',
+    windowsYoutubeDescription:
+      '자녀의 Windows PC에 KidGate를 설치하고 QR 코드로 부모 휴대폰에 연결하는 방법입니다. 그러면 웹 필터가 자동으로 켜집니다.',
+    chromeTitle: 'Chrome에서 KidGate 설정하기',
+    childChrome: '자녀 컴퓨터',
+    chromeSite: '자녀 컴퓨터의 Chrome에서 kidgate.app에 접속해 Chrome을 선택하세요.',
+    chromeStore:
+      'Chrome 웹 스토어에서 "Chrome에 추가", 이어서 "확장 프로그램 추가"를 클릭하세요.',
+    chromeOpen:
+      'Chrome 툴바에서 KidGate 아이콘을 클릭하세요. 팝업에 QR 코드가 표시됩니다.',
+    chromeOpenSub: '페어링하는 동안 팝업을 열어 두세요.',
+    chromeConfirm: 'KidGate에서 본인이 맞는지 확인한 뒤 "{{yes}}" 버튼을 클릭하세요.',
+    chromeAssign: '이 컴퓨터에서 Chrome을 사용할 자녀를 선택하세요.',
+    chromeDone: '이제 자녀 컴퓨터의 Chrome이 보호됩니다.',
+    chromeYoutubeTitle: '자녀 컴퓨터의 Chrome에서 KidGate를 설정하는 방법',
+    chromeYoutubeDescription:
+      '자녀 컴퓨터의 Chrome에 KidGate 확장 프로그램을 추가하고 QR 코드로 부모 휴대폰에 연결하는 방법입니다. 그러면 Chrome에서 웹 필터가 적용됩니다.',
+    dashboardComputer: '내 컴퓨터',
+    dashboardSite: '컴퓨터에서 kidgate.app에 접속해 "대시보드"를 클릭하세요.',
+    dashboardDone: '웹 대시보드에 로그인했습니다.',
+    tvTitle: '자녀의 Android TV 설정하기',
+    tvAssign: '이 TV를 사용할 자녀를 선택하거나, 이름을 입력해 자녀를 추가하세요.',
+    tvDone: '이제 자녀의 Android TV가 보호됩니다.',
+    tvYoutubeTitle: '자녀의 Android TV에 KidGate를 설정하는 방법',
+    outroTitle: '모든 준비가 끝났습니다.',
+    outroSub: 'KidGate와 함께 가족 관리가 더 쉬워지길 바랍니다.',
+    allYoutubeTitle: '부모 휴대폰과 자녀 기기에 KidGate를 설정하는 방법',
+    allYoutubeDescription:
+      '모든 설정을 영상 하나에 담았습니다. 먼저 부모 휴대폰, 이어서 자녀의 각 기기(iPhone 또는 iPad, Android 휴대폰 또는 태블릿, Mac, Windows PC, Android TV, Chrome), 마지막으로 웹 대시보드입니다. 아래 목록에서 기기를 선택하세요.',
   },
 };

@@ -116,6 +116,7 @@
     "./domain/ownApp": "./src/domain/ownApp.ts",
     "./domain/pairingQr": "./src/domain/pairingQr.ts",
     "./domain/parentPin": "./src/domain/parentPin.ts",
+    "./domain/parentPinVerifier": "./src/domain/parentPinVerifier.ts",
     "./domain/parentWidgetSnapshot": "./src/domain/parentWidgetSnapshot.ts",
     "./domain/personName": "./src/domain/personName.ts",
     "./domain/pinHash": "./src/domain/pinHash.ts",

@@ -4,6 +4,7 @@ import {
   ALERT_PREF_KEYS,
   DEFAULT_NOTIFICATION_PREFS,
 } from '@kidgate/schema/notificationPrefs';
+import { isValidQuietHoursWindow } from '@kidgate/core/domain/notificationPrefs';
 import { notificationPrefsRepository } from '../adapters/repositories.js';
 import Card from './Card.jsx';
 import Toggle from './Toggle.jsx';
@@ -89,6 +90,14 @@ export default function NotificationPrefsCard({
     } finally {
       setBusy(false);
     }
+  };
+
+  // A cleared field writes `''` and equal bounds make a zero-width window; the
+  // server reads both as something other than what the field shows, so the
+  // input snaps back to what is stored instead.
+  const writeWindow = next => {
+    if (!isValidQuietHoursWindow(next)) return;
+    write(() => notificationPrefsRepository.setQuietHours(accountId, deviceId, next));
   };
 
   const disabled = readOnly || busy || !deviceId;
@@ -189,12 +198,7 @@ export default function NotificationPrefsCard({
             value={prefs.quietHours?.start ?? ''}
             disabled={disabled}
             onChange={event =>
-              write(() =>
-                notificationPrefsRepository.setQuietHours(accountId, deviceId, {
-                  ...prefs.quietHours,
-                  start: event.target.value,
-                }),
-              )
+              writeWindow({ ...prefs.quietHours, start: event.target.value })
             }
           />
           <label className="sheet-label" htmlFor="quiet-end">
@@ -207,12 +211,7 @@ export default function NotificationPrefsCard({
             value={prefs.quietHours?.end ?? ''}
             disabled={disabled}
             onChange={event =>
-              write(() =>
-                notificationPrefsRepository.setQuietHours(accountId, deviceId, {
-                  ...prefs.quietHours,
-                  end: event.target.value,
-                }),
-              )
+              writeWindow({ ...prefs.quietHours, end: event.target.value })
             }
           />
         </div>

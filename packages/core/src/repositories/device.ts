@@ -45,6 +45,7 @@ import {
 } from '../domain/reportRequest';
 import { timestampToIso } from '../domain/firestoreValue';
 import { parseOperatorHold } from '../domain/operatorHold';
+import { parseParentPinVerifier } from '../domain/parentPinVerifier';
 import {
   newerPresence,
   presenceUsageWins,
@@ -291,6 +292,7 @@ function mapChildDevice(
   const locationRequestResult = parseLocationRequestResult(data);
   const protectionStatus = parseProtectionStatus(data);
   const messageMonitoring = parseMessageMonitoring(data);
+  const verifier = parseParentPinVerifier(data.parentPinVerifier);
   /*
    * The usage report, from whichever of its two homes is newer
    * (`presenceUsageWins`). Since 2026-09-27 `syncChildAgent` stores it on the
@@ -501,6 +503,7 @@ function mapChildDevice(
         ? data.parentPinFailedAttempts
         : 0,
     parentPinLocked: data.parentPinLocked === true,
+    ...(verifier ? { parentPinVerifier: verifier } : {}),
     batteryLevel: parseBatteryLevel(data.batteryLevel),
     batteryCharging:
       typeof data.batteryCharging === 'boolean' ? data.batteryCharging : undefined,

@@ -72,4 +72,7 @@ export const pin = {
   enterCurrentParentPin: 'أدخل رمز PIN الوالدين الحالي.',
   currentParentPinIncorrect:
     'رمز PIN الوالدين الحالي غير صحيح. تحقّق منه وحاول مرة أخرى، أو استخدم «هل نسيت رمز PIN؟» لإعادة تعيينه.',
+  // The offline Parent PIN pad's wait; {{time}} is a shared.duration*Short phrase.
+  offlineUnlockWait:
+    'محاولات PIN غير صحيحة كثيرة. يرجى المحاولة مرة أخرى بعد {{time}}.',
 } as const;

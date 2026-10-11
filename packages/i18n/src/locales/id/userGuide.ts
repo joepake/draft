@@ -5,6 +5,8 @@ export const userGuide = {
   stepLabel: 'Langkah {{n}}',
   stepsSectionTitle: 'Langkah-langkah',
   tipTitle: 'Tips',
+  // The Help Center video button: the wizard's own label (child.setupWizardWatchGuide).
+  watchVideo: 'Lihat caranya',
   searchPlaceholder: 'Cari di panduan…',
   searchClear: 'Hapus pencarian',
   searchEmpty: 'Tidak ada yang cocok di panduan. Coba kata lain.',

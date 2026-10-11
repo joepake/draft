@@ -1019,7 +1019,6 @@ export default {
     signInSub: 'Với Apple, bạn chỉ cần xác nhận bằng Face ID.',
     family: 'Ở mục “{{tab}}”, chạm “{{create}}” và đặt tên cho gia đình.',
     done: 'Phần của bạn đã xong.',
-    next: 'Tiếp theo: cài KidGate trên thiết bị của con. Chọn video dành cho thiết bị đó.',
     parentYoutubeTitle: 'Cách cài đặt KidGate trên điện thoại của bạn',
     parentYoutubeDescription:
       'Cài KidGate, đăng nhập và tạo gia đình: bước đầu tiên trước khi kết nối các thiết bị của con.',
@@ -1032,8 +1031,7 @@ export default {
     tapAllow: 'Chạm “{{allow}}”.',
     extras: 'Cuối cùng, cho phép camera và micrô.',
     extrasSub: 'Tùy chọn: con có thể kèm ảnh hoặc âm thanh khi gửi SOS.',
-    pairNext: 'Tiếp theo: đặt quy tắc từ điện thoại của bạn.',
-    iosTitle: 'Cài đặt trên iPhone của con',
+    iosTitle: 'Cài đặt trên iPhone hoặc iPad của con',
     childPhone: 'iPhone của con',
     iosOpen: 'Trên iPhone của con, mở KidGate và chọn “{{child}}”.',
     iosScan: 'Trên điện thoại của bạn, chạm “{{add}}” và quét mã QR.',
@@ -1050,10 +1048,10 @@ export default {
     iosBlocked: 'Chạm “{{strengthen}}”, rồi thiết lập “{{blocked}}”.',
     iosBlockedSub: 'Bạn chạm “{{unlock}}”, nhập mã PIN, rồi chọn ứng dụng.',
     iosDone: 'iPhone của con đã được bảo vệ.',
-    iosYoutubeTitle: 'Cách cài đặt KidGate trên iPhone của con',
+    iosYoutubeTitle: 'Cách cài đặt KidGate trên iPhone hoặc iPad của con',
     iosYoutubeDescription:
-      'Kết nối iPhone của con với điện thoại của bạn bằng mã QR, rồi bật Thời gian sử dụng và các quyền khác KidGate cần, từng bước một.',
-    androidTitle: 'Cài đặt trên điện thoại Android của con',
+      'Kết nối iPhone hoặc iPad của con với điện thoại của bạn bằng mã QR, rồi bật Thời gian sử dụng và các quyền khác KidGate cần, từng bước một.',
+    androidTitle: 'Cài đặt trên điện thoại, máy tính bảng Android của con',
     childAndroid: 'Android của con',
     androidOpen: 'Trên điện thoại của con, mở KidGate và chọn “{{child}}”.',
     androidScan: 'Trên điện thoại của bạn, quét mã QR bằng KidGate.',
@@ -1074,10 +1072,11 @@ export default {
     androidMessages: 'Với “{{alerts}}”, chạm “{{grant}}” và bật cho KidGate.',
     androidMessagesSub:
       'KidGate kiểm tra tin nhắn đến để tìm các từ ngữ cảnh báo, ngay trên điện thoại.',
-    androidDone: 'Điện thoại của con đã được bảo vệ.',
-    androidYoutubeTitle: 'Cách cài đặt KidGate trên điện thoại Android của con',
+    androidDone: 'Điện thoại Android của con đã được bảo vệ.',
+    androidYoutubeTitle:
+      'Cách cài đặt KidGate trên điện thoại, máy tính bảng Android của con',
     androidYoutubeDescription:
-      'Kết nối điện thoại Android của con với điện thoại của bạn bằng mã QR, rồi bật các quyền KidGate cần, từng bước một.',
+      'Kết nối điện thoại hoặc máy tính bảng Android của con với điện thoại của bạn bằng mã QR, rồi bật các quyền KidGate cần, từng bước một.',
     macTitle: 'Cài đặt trên máy Mac của con',
     childMac: 'Mac của con',
     macDownload: 'Trên máy Mac của con, tải KidGate cho macOS từ kidgate.app.',
@@ -1096,5 +1095,47 @@ export default {
     macYoutubeTitle: 'Cách cài đặt KidGate trên máy Mac của con',
     macYoutubeDescription:
       'Cài KidGate trên máy Mac của con, kết nối với điện thoại của bạn bằng mã QR, rồi bật bộ lọc web trong Cài đặt hệ thống.',
+    windowsTitle: 'Cài đặt trên máy tính Windows của con',
+    childWindows: 'Máy tính của con',
+    windowsDownload: 'Trên máy tính của con, tải KidGate cho Windows từ kidgate.app.',
+    windowsSmartScreen:
+      'Nếu Windows báo đã bảo vệ máy, chọn Thông tin thêm (More info), rồi Vẫn chạy (Run anyway).',
+    windowsInstall:
+      'Chấp thuận yêu cầu quyền quản trị viên, rồi làm theo các bước của trình cài đặt.',
+    windowsInstallSub: 'Với tài khoản thường, Windows sẽ hỏi mật khẩu quản trị viên.',
+    windowsConfirm: 'Trên máy tính, kiểm tra đúng là bạn, rồi bấm “{{yes}}”.',
+    windowsAssign: 'Chọn ai dùng máy tính này, hoặc thêm con bằng tên.',
+    windowsSetup: 'Trên máy tính, bấm “{{allow}}” cho mục {{location}}.',
+    windowsSetupSub: 'Tính năng {{filter}} của KidGate tự bật sau vài giây.',
+    windowsDone: 'Máy tính của con đã được bảo vệ.',
+    windowsYoutubeTitle: 'Cách cài đặt KidGate trên máy tính Windows của con',
+    windowsYoutubeDescription:
+      'Cài KidGate trên máy tính Windows của con và kết nối với điện thoại của bạn bằng mã QR. Bộ lọc web sau đó tự bật.',
+    chromeTitle: 'Cài đặt KidGate trong Chrome',
+    childChrome: 'Máy tính của con',
+    chromeSite: 'Trong Chrome trên máy tính của con, mở kidgate.app và chọn Chrome.',
+    chromeStore: 'Trong Chrome Web Store, bấm “Thêm vào Chrome”, rồi “Thêm tiện ích”.',
+    chromeOpen:
+      'Bấm biểu tượng KidGate trên thanh công cụ Chrome. Cửa sổ sẽ hiện mã QR.',
+    chromeOpenSub: 'Giữ cửa sổ này mở trong lúc ghép nối.',
+    chromeConfirm: 'Trong KidGate, kiểm tra đúng là bạn, rồi bấm “{{yes}}”.',
+    chromeAssign: 'Chọn con nào dùng Chrome trên máy tính này.',
+    chromeDone: 'Chrome trên máy tính của con đã được bảo vệ.',
+    chromeYoutubeTitle: 'Cách cài đặt KidGate trong Chrome trên máy tính của con',
+    chromeYoutubeDescription:
+      'Thêm tiện ích KidGate vào Chrome trên máy tính của con và kết nối với điện thoại của bạn bằng mã QR. Tiện ích sẽ lọc web trong Chrome.',
+    dashboardComputer: 'Máy tính của bạn',
+    dashboardSite: 'Trên máy tính của bạn, mở kidgate.app và bấm “Bảng điều khiển”.',
+    dashboardDone: 'Bạn đã đăng nhập vào bảng điều khiển trên web.',
+    tvTitle: 'Cài đặt trên Android TV của con',
+    tvAssign: 'Chọn ai dùng TV này, hoặc thêm con bằng tên.',
+    tvDone: 'Android TV của con đã được bảo vệ.',
+    tvYoutubeTitle: 'Cách cài đặt KidGate trên Android TV của con',
+    outroTitle: 'Mọi thứ đã sẵn sàng.',
+    outroSub: 'Chúc bạn quản lý gia đình hiệu quả cùng KidGate.',
+    allYoutubeTitle:
+      'Cách cài đặt KidGate trên điện thoại của bạn và các thiết bị của con',
+    allYoutubeDescription:
+      'Mọi bước cài đặt trong một video: trước tiên là điện thoại của bạn, rồi từng thiết bị của con (iPhone hoặc iPad, điện thoại hoặc máy tính bảng Android, máy Mac, máy tính Windows, Android TV, Chrome), cuối cùng là bảng điều khiển trên web. Chọn thiết bị của bạn trong danh sách bên dưới.',
   },
 };

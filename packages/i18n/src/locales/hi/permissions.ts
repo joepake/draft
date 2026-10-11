@@ -48,7 +48,7 @@ export const permissions = {
   accessibilityStepFindKidGate:
     'अगर कोई सूची खुले, तो इंस्टॉल किए गए / डाउनलोड किए गए ऐप्स में KidGate चुनें।',
   accessibilityStepTurnOn:
-    'स्विच चालू करें, फिर Android की पुष्टि पर अनुमति दें चुनें।',
+    'स्विच चालू करें, फिर Android की पुष्टि पर “अनुमति दें” चुनें।',
   restrictedSettingsStep:
     'अगर स्विच धुँधला दिख रहा है, तो सेटिंग्स › ऐप्स › KidGate खोलें, ⋮ मेन्यू दबाकर “प्रतिबंधित सेटिंग्स की अनुमति दें” चुनें, फिर यहाँ लौटकर दोबारा कोशिश करें।',
   accessibilityWarningNote:
@@ -68,10 +68,10 @@ export const permissions = {
   locationAlwaysStep: 'स्थान खोलें और “हमेशा” चुनें।',
   locationAlwaysStepAndroid:
     'अनुमतियां → जगह की जानकारी खोलें और “हमेशा के लिए अनुमति दें” चुनें।',
-  batteryStepAllow: 'Android के प्रॉम्प्ट पर अनुमति दें चुनें।',
+  batteryStepAllow: 'Android के प्रॉम्प्ट पर “अनुमति दें” चुनें।',
   batteryStepAppInfo:
     'अगर कोई प्रॉम्प्ट न दिखे, तो ऐप जानकारी खोलें, फिर बैटरी, फिर बिना प्रतिबंध चुनें।',
-  notificationsStepAllow: 'प्रॉम्प्ट पर अनुमति दें चुनें।',
+  notificationsStepAllow: 'प्रॉम्प्ट पर “अनुमति दें” चुनें।',
   exactAlarmStepTurnOn: 'KidGate के लिए अलार्म और रिमाइंडर चालू करें।',
   cameraStepTurnOn: 'KidGate के लिए कैमरा चालू करें।',
   cameraStepAndroid: 'अनुमतियां → कैमरा चुनें और ऐप इस्तेमाल करते समय अनुमति दें।',
@@ -84,5 +84,5 @@ export const permissions = {
   microphoneStepTurnOn: 'KidGate के लिए माइक्रोफ़ोन चालू करें।',
   microphoneStepAndroid:
     'अनुमतियां → माइक्रोफ़ोन चुनें और ऐप इस्तेमाल करते समय अनुमति दें।',
-  uninstallProtectionStepConfirm: 'Android की पुष्टि स्क्रीन पर सक्रिय करें चुनें।',
+  uninstallProtectionStepConfirm: 'Android की पुष्टि स्क्रीन पर “सक्रिय करें” चुनें।',
 } as const;

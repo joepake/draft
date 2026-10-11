@@ -38,8 +38,10 @@ export const pairing = {
   parentAccount: 'Akun orang tua',
   unknownParent: 'orang tua',
   expiresIn: 'Kedaluwarsa dalam {{countdown}}',
-  autoRefreshPaused:
-    'Pembaruan kode otomatis dijeda untuk menghemat data seluler dan baterai. Pilih Kode baru saat Anda siap.',
+  inviteCodeExpired:
+    'Kode ini telah kedaluwarsa. Pilih Kode baru untuk mendapatkan kode lain.',
+  codeExpired:
+    'Kode ini telah kedaluwarsa. Pilih Kode baru untuk mendapatkan kode lain.',
   scanQrTitle: 'Pindai kode QR',
   scanQrSubtitle: 'Sejajarkan kode QR di dalam bingkai.',
   enterCodeManually: 'Masukkan kode secara manual',

@@ -1062,7 +1062,6 @@ export default {
     signInSub: 'With Apple, you just confirm with Face ID.',
     family: 'In “{{tab}}”, tap “{{create}}” and name your family.',
     done: 'Your part is done.',
-    next: 'Next: install KidGate on your child’s device. Choose the video for their device.',
     parentYoutubeTitle: 'How to set up KidGate on your phone',
     parentYoutubeDescription:
       'Install KidGate, sign in and create your family: the first step before you connect your child’s devices.',
@@ -1076,9 +1075,8 @@ export default {
     tapAllow: 'Tap “{{allow}}”.',
     extras: 'Last, allow the camera and microphone.',
     extrasSub: 'Optional: your child can then add a photo or sound to an SOS.',
-    pairNext: 'Next: set the rules from your phone.',
     // Clip 1 — the child's iPhone.
-    iosTitle: 'Set up your child’s iPhone',
+    iosTitle: 'Set up your child’s iPhone or iPad',
     childPhone: 'Child’s iPhone',
     iosOpen: 'On your child’s iPhone, open KidGate and choose “{{child}}”.',
     iosScan: 'On your phone, tap “{{add}}” and scan the QR code.',
@@ -1095,11 +1093,11 @@ export default {
     iosBlocked: 'Tap “{{strengthen}}”, then set up “{{blocked}}”.',
     iosBlockedSub: 'You tap “{{unlock}}”, enter your PIN, then pick the apps.',
     iosDone: 'Your child’s iPhone is protected.',
-    iosYoutubeTitle: 'How to set up KidGate on your child’s iPhone',
+    iosYoutubeTitle: 'How to set up KidGate on your child’s iPhone or iPad',
     iosYoutubeDescription:
-      'Connect your child’s iPhone to your phone with a QR code, then turn on Screen Time and the other permissions KidGate needs, one step at a time.',
+      'Connect your child’s iPhone or iPad to your phone with a QR code, then turn on Screen Time and the other permissions KidGate needs, one step at a time.',
     // Clip 2 — the child's Android phone.
-    androidTitle: 'Set up your child’s Android phone',
+    androidTitle: 'Set up your child’s Android phone or tablet',
     childAndroid: 'Child’s Android',
     androidOpen: 'On your child’s phone, open KidGate and choose “{{child}}”.',
     androidScan: 'On your phone, scan the QR code with KidGate.',
@@ -1119,10 +1117,11 @@ export default {
     androidMessages: 'For “{{alerts}}”, tap “{{grant}}” and turn it on for KidGate.',
     androidMessagesSub:
       'KidGate checks incoming messages for warning words, on the phone.',
-    androidDone: 'Your child’s phone is protected.',
-    androidYoutubeTitle: 'How to set up KidGate on your child’s Android phone',
+    androidDone: 'Your child’s Android phone is protected.',
+    androidYoutubeTitle:
+      'How to set up KidGate on your child’s Android phone or tablet',
     androidYoutubeDescription:
-      'Connect your child’s Android phone to your phone with a QR code, then turn on the permissions KidGate needs, one step at a time.',
+      'Connect your child’s Android phone or tablet to your phone with a QR code, then turn on the permissions KidGate needs, one step at a time.',
     // Clip 3 — the child's Mac.
     macTitle: 'Set up your child’s Mac',
     childMac: 'Child’s Mac',
@@ -1142,5 +1141,52 @@ export default {
     macYoutubeTitle: 'How to set up KidGate on your child’s Mac',
     macYoutubeDescription:
       'Install KidGate on your child’s Mac, connect it to your phone with a QR code, then turn on its web filter in System Settings.',
+    // Clip 4 — the child's Windows PC. It also reads macOpen, macOpenSub and
+    // macScan above, which name no Mac.
+    windowsTitle: 'Set up your child’s Windows PC',
+    childWindows: 'Child’s PC',
+    windowsDownload:
+      'On your child’s PC, download KidGate for Windows from kidgate.app.',
+    windowsSmartScreen:
+      'If Windows says it protected your PC, choose More info, then Run anyway.',
+    windowsInstall:
+      'Approve the administrator prompt, then follow the installer’s steps.',
+    windowsInstallSub:
+      'On a standard account, Windows asks for an administrator’s password.',
+    windowsConfirm: 'On the PC, check it’s you, then click “{{yes}}”.',
+    windowsAssign: 'Choose who uses this PC, or add your child by name.',
+    windowsSetup: 'On the PC, click “{{allow}}” for {{location}}.',
+    windowsSetupSub: 'KidGate’s {{filter}} turns on by itself within a few seconds.',
+    windowsDone: 'Your child’s PC is protected.',
+    windowsYoutubeTitle: 'How to set up KidGate on your child’s Windows PC',
+    windowsYoutubeDescription:
+      'Install KidGate on your child’s Windows PC and connect it to your phone with a QR code. Its web filter then turns on by itself.',
+    // Clip 6 — the Chrome extension. It also reads macScan.
+    chromeTitle: 'Set up KidGate in Chrome',
+    childChrome: 'Child’s computer',
+    chromeSite:
+      'In Chrome on your child’s computer, open kidgate.app and choose Chrome.',
+    chromeStore:
+      'In the Chrome Web Store, click “Add to Chrome”, then “Add extension”.',
+    chromeOpen: 'Click KidGate in Chrome’s toolbar. It shows a QR code.',
+    chromeOpenSub: 'Keep it open while you pair.',
+    chromeConfirm: 'In KidGate, check it’s you, then click “{{yes}}”.',
+    chromeAssign: 'Choose which child uses Chrome on this computer.',
+    chromeDone: 'Chrome on your child’s computer is protected.',
+    chromeYoutubeTitle: 'How to set up KidGate in Chrome on your child’s computer',
+    chromeYoutubeDescription:
+      'Add the KidGate extension to Chrome on your child’s computer and connect it to your phone with a QR code. It then filters the web in Chrome.',
+    dashboardComputer: 'Your computer',
+    dashboardSite: 'On your computer, open kidgate.app and click “Dashboard”.',
+    dashboardDone: 'You’re signed in to the web dashboard.',
+    tvTitle: 'Set up your child’s Android TV',
+    tvAssign: 'Choose who uses this TV, or add your child by name.',
+    tvDone: 'Your child’s Android TV is protected.',
+    tvYoutubeTitle: 'How to set up KidGate on your child’s Android TV',
+    outroTitle: 'You’re all set.',
+    outroSub: 'We hope KidGate makes managing your family easier.',
+    allYoutubeTitle: 'How to set up KidGate on your phone and your child’s devices',
+    allYoutubeDescription:
+      'Every setup in one video: first your phone, then each of your child’s devices (iPhone or iPad, Android phone or tablet, Mac, Windows PC, Android TV, Chrome), and last the web dashboard. Pick your device from the list below.',
   },
 };

@@ -244,6 +244,27 @@ export interface DeviceWebToday {
  * refuses outright on a `version` it does not know — an unlock that verifies
  * wrongly is worse than one that is unavailable.
  */
+/**
+ * Wrong offline PINs a lock allows before each wait. Counted on the device
+ * only — nothing about a guess leaves it.
+ */
+export const OFFLINE_UNLOCK_MAX_ATTEMPTS = 5;
+
+/**
+ * The waits after each round of wrong PINs, in minutes; the last repeats.
+ *
+ * Every round is another five tries, so the waits are what make guessing slow,
+ * and they grow because the person at the pad after a third round is not a
+ * parent who mistyped. A correct PIN and a parent's Unlock from their own phone
+ * reset the count; nothing else does — a lock that ends on its own (a window
+ * closing, a new day) or an SOS press must not hand a child five fresh tries.
+ *
+ * Hand-copied into `KidGateUnlock.kt`, `KidGateTvUnlock.kt`,
+ * `KidGateControls.swift` and `policy.rs`, none of which can import this;
+ * `offlineUnlockLockoutParity.test.ts` pins all four.
+ */
+export const OFFLINE_UNLOCK_LOCKOUT_MINUTES = [10, 30, 120, 240, 720] as const;
+
 export interface ParentPinVerifier {
   /** Shape, not cost. Bumped only when the fields below change meaning. */
   version: number;

@@ -1001,7 +1001,6 @@ export default {
     signInSub: 'Apple なら Face ID で確認するだけです。',
     family: '{{tab}}で「{{create}}」をタップし、ファミリーに名前を付けます。',
     done: '保護者側の準備はこれで完了です。',
-    next: '次は、お子さまのデバイスに KidGate をインストールします。そのデバイス用の動画を選んでください。',
     parentYoutubeTitle: '自分のスマホに KidGate を設定する方法',
     parentYoutubeDescription:
       'KidGate をインストールし、ログインしてファミリーを作成します。お子さまのデバイスをつなぐ前の、最初のステップです。',
@@ -1014,8 +1013,7 @@ export default {
     tapAllow: '「{{allow}}」をタップします。',
     extras: '最後に、カメラとマイクへのアクセスを許可します。',
     extrasSub: '任意：許可すると、お子さまが SOS に写真や音声を添えられます。',
-    pairNext: '次は、保護者のスマホからルールを設定します。',
-    iosTitle: 'お子さまの iPhone を設定する',
+    iosTitle: 'お子さまの iPhone または iPad を設定する',
     childPhone: '子どもの iPhone',
     iosOpen: 'お子さまの iPhone で KidGate を開き、「{{child}}」を選びます。',
     iosScan: '保護者のスマホで「{{add}}」をタップし、QR コードを読み取ります。',
@@ -1034,10 +1032,10 @@ export default {
     iosBlocked: '「{{strengthen}}」をタップし、「{{blocked}}」を設定します。',
     iosBlockedSub: '「{{unlock}}」をタップして PIN を入力し、アプリを選びます。',
     iosDone: 'お子さまの iPhone が保護されました。',
-    iosYoutubeTitle: 'お子さまの iPhone に KidGate を設定する方法',
+    iosYoutubeTitle: 'お子さまの iPhone または iPad に KidGate を設定する方法',
     iosYoutubeDescription:
-      'QR コードでお子さまの iPhone を保護者のスマホと接続し、スクリーンタイムなど KidGate に必要な権限を一つずつオンにします。',
-    androidTitle: 'お子さまの Android スマホを設定する',
+      'QR コードでお子さまの iPhone または iPad を保護者のスマホと接続し、スクリーンタイムなど KidGate に必要な権限を一つずつオンにします。',
+    androidTitle: 'お子さまの Android スマホ・タブレットを設定する',
     childAndroid: '子どもの Android',
     androidOpen: 'お子さまのスマホで KidGate を開き、「{{child}}」を選びます。',
     androidScan: '保護者のスマホの KidGate で QR コードを読み取ります。',
@@ -1062,10 +1060,11 @@ export default {
       '「{{alerts}}」で「{{grant}}」をタップし、KidGate の通知へのアクセスをオンにします。',
     androidMessagesSub:
       'KidGate は受信したメッセージに警告ワードがないかを、スマホの中でチェックします。',
-    androidDone: 'お子さまのスマホが保護されました。',
-    androidYoutubeTitle: 'お子さまの Android スマホに KidGate を設定する方法',
+    androidDone: 'お子さまの Android スマホが保護されました。',
+    androidYoutubeTitle:
+      'お子さまの Android スマホ・タブレットに KidGate を設定する方法',
     androidYoutubeDescription:
-      'QR コードでお子さまの Android スマホを保護者のスマホと接続し、KidGate に必要な権限を一つずつオンにします。',
+      'QR コードでお子さまの Android スマホ・タブレットを保護者のスマホと接続し、KidGate に必要な権限を一つずつオンにします。',
     macTitle: 'お子さまの Mac を設定する',
     childMac: '子どもの Mac',
     macDownload:
@@ -1087,5 +1086,49 @@ export default {
     macYoutubeTitle: 'お子さまの Mac に KidGate を設定する方法',
     macYoutubeDescription:
       'お子さまの Mac に KidGate をインストールし、QR コードで保護者のスマホと接続して、システム設定で Webフィルターをオンにします。',
+    windowsTitle: 'お子さまの Windows PC を設定する',
+    childWindows: '子どもの PC',
+    windowsDownload:
+      'お子さまの PC で、kidgate.app から Windows 版の KidGate をダウンロードします。',
+    windowsSmartScreen:
+      'Windows が PC を保護したと表示したら、「詳細情報」、続いて「実行」を選びます。',
+    windowsInstall: '管理者権限の確認を承認し、インストーラーの手順に従います。',
+    windowsInstallSub: '標準アカウントでは、Windows が管理者のパスワードを求めます。',
+    windowsConfirm: 'PC で保護者の名前を確認し、「{{yes}}」をクリックします。',
+    windowsAssign: 'この PC を使う人を選ぶか、名前を入力してお子さまを追加します。',
+    windowsSetup: 'PC で{{location}}の「{{allow}}」をクリックします。',
+    windowsSetupSub: 'KidGate の {{filter}}は、数秒で自動的にオンになります。',
+    windowsDone: 'お子さまの PC が保護されました。',
+    windowsYoutubeTitle: 'お子さまの Windows PC に KidGate を設定する方法',
+    windowsYoutubeDescription:
+      'お子さまの Windows PC に KidGate をインストールし、QR コードで保護者のスマホと接続します。その後、Webフィルターが自動的にオンになります。',
+    chromeTitle: 'Chrome に KidGate を設定する',
+    childChrome: '子どものパソコン',
+    chromeSite:
+      'お子さまのパソコンの Chrome で kidgate.app を開き、Chrome を選びます。',
+    chromeStore:
+      'Chrome ウェブストアで「Chrome に追加」、続いて「拡張機能を追加」をクリックします。',
+    chromeOpen:
+      'Chrome のツールバーにある KidGate のアイコンをクリックします。ポップアップに QR コードが表示されます。',
+    chromeOpenSub: 'ペアリングが終わるまで開いたままにします。',
+    chromeConfirm: 'KidGate で保護者の名前を確認し、「{{yes}}」をクリックします。',
+    chromeAssign: 'このパソコンで Chrome を使うお子さまを選びます。',
+    chromeDone: 'お子さまのパソコンの Chrome が保護されました。',
+    chromeYoutubeTitle: 'お子さまのパソコンの Chrome に KidGate を設定する方法',
+    chromeYoutubeDescription:
+      'KidGate の拡張機能をお子さまのパソコンの Chrome に追加し、QR コードで保護者のスマホと接続します。その後、Chrome の中で Webフィルターが働きます。',
+    dashboardComputer: '保護者のパソコン',
+    dashboardSite:
+      'パソコンで kidgate.app を開き、「ダッシュボード」をクリックします。',
+    dashboardDone: 'Webダッシュボードにログインしました。',
+    tvTitle: 'お子さまの Android TV を設定する',
+    tvAssign: 'このテレビを使う人を選ぶか、名前を入力してお子さまを追加します。',
+    tvDone: 'お子さまの Android TV が保護されました。',
+    tvYoutubeTitle: 'お子さまの Android TV に KidGate を設定する方法',
+    outroTitle: '準備が整いました。',
+    outroSub: 'KidGate でご家族の見守りがもっとラクになりますように。',
+    allYoutubeTitle: '自分のスマホとお子さまのデバイスに KidGate を設定する方法',
+    allYoutubeDescription:
+      'すべての設定を1本の動画にまとめました。まず保護者のスマホ、次にお子さまの各デバイス（iPhone または iPad、Android スマホ・タブレット、Mac、Windows PC、Android TV、Chrome）、最後に Webダッシュボードです。下のリストからお使いのデバイスを選んでください。',
   },
 };

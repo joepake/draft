@@ -1024,7 +1024,6 @@ export default {
     signInSub: 'Mit Apple bestätigst du einfach per Face ID.',
     family: 'Tippe im „{{tab}}“ auf „{{create}}“ und benenne deine Familie.',
     done: 'Dein Teil ist erledigt.',
-    next: 'Als Nächstes: Installiere KidGate auf dem Gerät deines Kindes. Wähle das passende Video für sein Gerät.',
     parentYoutubeTitle: 'So richtest du KidGate auf deinem Handy ein',
     parentYoutubeDescription:
       'Installiere KidGate, melde dich an und erstelle deine Familie: der erste Schritt, bevor du die Geräte deines Kindes verbindest.',
@@ -1038,8 +1037,7 @@ export default {
     extras: 'Erlaube zuletzt Kamera und Mikrofon.',
     extrasSub:
       'Optional: Dann kann dein Kind einem SOS ein Foto oder einen Ton anhängen.',
-    pairNext: 'Als Nächstes: Lege die Regeln von deinem Handy aus fest.',
-    iosTitle: 'Das iPhone deines Kindes einrichten',
+    iosTitle: 'Das iPhone oder iPad deines Kindes einrichten',
     childPhone: 'iPhone des Kindes',
     iosOpen: 'Öffne KidGate auf dem iPhone deines Kindes und wähle „{{child}}“.',
     iosScan: 'Tippe auf deinem Handy auf „{{add}}“ und scanne den QR-Code.',
@@ -1062,10 +1060,11 @@ export default {
     iosBlockedSub:
       'Du tippst auf „{{unlock}}“, gibst deine PIN ein und wählst dann die Apps aus.',
     iosDone: 'Das iPhone deines Kindes ist geschützt.',
-    iosYoutubeTitle: 'So richtest du KidGate auf dem iPhone deines Kindes ein',
+    iosYoutubeTitle:
+      'So richtest du KidGate auf dem iPhone oder iPad deines Kindes ein',
     iosYoutubeDescription:
-      'Verbinde das iPhone deines Kindes per QR-Code mit deinem Handy und aktiviere dann Schritt für Schritt Bildschirmzeit und die weiteren Berechtigungen, die KidGate braucht.',
-    androidTitle: 'Das Android-Handy deines Kindes einrichten',
+      'Verbinde das iPhone oder iPad deines Kindes per QR-Code mit deinem Handy und aktiviere dann Schritt für Schritt Bildschirmzeit und die weiteren Berechtigungen, die KidGate braucht.',
+    androidTitle: 'Das Android-Handy oder -Tablet deines Kindes einrichten',
     childAndroid: 'Android-Handy des Kindes',
     androidOpen: 'Öffne KidGate auf dem Handy deines Kindes und wähle „{{child}}“.',
     androidScan: 'Scanne auf deinem Handy den QR-Code mit KidGate.',
@@ -1089,11 +1088,11 @@ export default {
       'Tippe bei „{{alerts}}“ auf „{{grant}}“ und aktiviere den Zugriff für KidGate.',
     androidMessagesSub:
       'KidGate prüft eingehende Nachrichten auf Warnwörter, direkt auf dem Handy.',
-    androidDone: 'Das Handy deines Kindes ist geschützt.',
+    androidDone: 'Das Android-Handy deines Kindes ist geschützt.',
     androidYoutubeTitle:
-      'So richtest du KidGate auf dem Android-Handy deines Kindes ein',
+      'So richtest du KidGate auf dem Android-Handy oder -Tablet deines Kindes ein',
     androidYoutubeDescription:
-      'Verbinde das Android-Handy deines Kindes per QR-Code mit deinem Handy und aktiviere dann Schritt für Schritt die Berechtigungen, die KidGate braucht.',
+      'Verbinde das Android-Handy oder -Tablet deines Kindes per QR-Code mit deinem Handy und aktiviere dann Schritt für Schritt die Berechtigungen, die KidGate braucht.',
     macTitle: 'Den Mac deines Kindes einrichten',
     childMac: 'Mac des Kindes',
     macDownload:
@@ -1116,5 +1115,55 @@ export default {
     macYoutubeTitle: 'So richtest du KidGate auf dem Mac deines Kindes ein',
     macYoutubeDescription:
       'Installiere KidGate auf dem Mac deines Kindes, verbinde ihn per QR-Code mit deinem Handy und aktiviere dann seinen Webfilter in den Systemeinstellungen.',
+    windowsTitle: 'Den Windows-PC deines Kindes einrichten',
+    childWindows: 'PC des Kindes',
+    windowsDownload:
+      'Lade auf dem PC deines Kindes KidGate für Windows von kidgate.app herunter.',
+    windowsSmartScreen:
+      'Wenn Windows meldet, dass es deinen PC geschützt hat, wähle Weitere Informationen und dann Trotzdem ausführen.',
+    windowsInstall:
+      'Bestätige die Administratorabfrage und folge dann den Schritten des Installationsprogramms.',
+    windowsInstallSub:
+      'Bei einem Standardkonto fragt Windows nach dem Passwort eines Administrators.',
+    windowsConfirm: 'Prüfe auf dem PC, dass du es bist, und klicke dann auf „{{yes}}“.',
+    windowsAssign:
+      'Wähle aus, wer diesen PC nutzt, oder füge dein Kind mit Namen hinzu.',
+    windowsSetup: 'Klicke auf dem PC bei {{location}} auf „{{allow}}“.',
+    windowsSetupSub:
+      'Der {{filter}} von KidGate schaltet sich innerhalb weniger Sekunden von selbst ein.',
+    windowsDone: 'Der PC deines Kindes ist geschützt.',
+    windowsYoutubeTitle: 'So richtest du KidGate auf dem Windows-PC deines Kindes ein',
+    windowsYoutubeDescription:
+      'Installiere KidGate auf dem Windows-PC deines Kindes und verbinde ihn per QR-Code mit deinem Handy. Danach schaltet sich sein Webfilter von selbst ein.',
+    chromeTitle: 'KidGate in Chrome einrichten',
+    childChrome: 'Computer des Kindes',
+    chromeSite:
+      'Öffne in Chrome auf dem Computer deines Kindes kidgate.app und wähle Chrome.',
+    chromeStore:
+      'Klicke im Chrome Web Store auf „Zu Chrome hinzufügen“ und dann auf „Erweiterung hinzufügen“.',
+    chromeOpen:
+      'Klicke in der Chrome-Symbolleiste auf das KidGate-Symbol. Das Pop-up zeigt einen QR-Code.',
+    chromeOpenSub: 'Lasse das Pop-up geöffnet, während du koppelst.',
+    chromeConfirm: 'Prüfe in KidGate, dass du es bist, und klicke dann auf „{{yes}}“.',
+    chromeAssign: 'Wähle aus, welches Kind Chrome auf diesem Computer nutzt.',
+    chromeDone: 'Chrome auf dem Computer deines Kindes ist geschützt.',
+    chromeYoutubeTitle:
+      'So richtest du KidGate in Chrome auf dem Computer deines Kindes ein',
+    chromeYoutubeDescription:
+      'Füge die KidGate-Erweiterung zu Chrome auf dem Computer deines Kindes hinzu und verbinde sie per QR-Code mit deinem Handy. Danach filtert sie das Web in Chrome.',
+    dashboardComputer: 'Dein Computer',
+    dashboardSite: 'Öffne auf deinem Computer kidgate.app und klicke auf „Dashboard“.',
+    dashboardDone: 'Du bist im Web-Dashboard angemeldet.',
+    tvTitle: 'Den Android TV deines Kindes einrichten',
+    tvAssign:
+      'Wähle aus, wer diesen Fernseher nutzt, oder füge dein Kind mit Namen hinzu.',
+    tvDone: 'Der Android TV deines Kindes ist geschützt.',
+    tvYoutubeTitle: 'So richtest du KidGate auf dem Android TV deines Kindes ein',
+    outroTitle: 'Alles ist eingerichtet.',
+    outroSub: 'Wir hoffen, dass KidGate dir den Familienalltag erleichtert.',
+    allYoutubeTitle:
+      'So richtest du KidGate auf deinem Handy und den Geräten deines Kindes ein',
+    allYoutubeDescription:
+      'Jede Einrichtung in einem Video: zuerst dein Handy, dann jedes Gerät deines Kindes (iPhone oder iPad, Android-Handy oder -Tablet, Mac, Windows-PC, Android TV, Chrome) und zum Schluss das Web-Dashboard. Wähle dein Gerät in der Liste unten.',
   },
 };

@@ -1001,7 +1001,6 @@ export default {
     signInSub: 'Dengan Apple, Anda cukup mengonfirmasi dengan Face ID.',
     family: 'Di “{{tab}}”, ketuk “{{create}}” lalu beri nama keluarga Anda.',
     done: 'Bagian Anda sudah selesai.',
-    next: 'Berikutnya: pasang KidGate di perangkat anak Anda. Pilih video untuk perangkat tersebut.',
     parentYoutubeTitle: 'Cara menyiapkan KidGate di ponsel Anda',
     parentYoutubeDescription:
       'Pasang KidGate, masuk, lalu buat keluarga Anda: langkah pertama sebelum menyambungkan perangkat anak Anda.',
@@ -1015,8 +1014,7 @@ export default {
     extras: 'Terakhir, izinkan kamera dan mikrofon.',
     extrasSub:
       'Opsional: dengan begitu, anak Anda bisa menyertakan foto atau suara pada SOS.',
-    pairNext: 'Berikutnya: tetapkan aturan dari ponsel Anda.',
-    iosTitle: 'Siapkan iPhone anak Anda',
+    iosTitle: 'Siapkan iPhone atau iPad anak Anda',
     childPhone: 'iPhone anak',
     iosOpen: 'Di iPhone anak Anda, buka KidGate dan pilih “{{child}}”.',
     iosScan: 'Di ponsel Anda, ketuk “{{add}}” lalu pindai kode QR-nya.',
@@ -1037,10 +1035,10 @@ export default {
     iosBlocked: 'Ketuk “{{strengthen}}”, lalu atur “{{blocked}}”.',
     iosBlockedSub: 'Ketuk “{{unlock}}”, masukkan PIN Anda, lalu pilih aplikasinya.',
     iosDone: 'iPhone anak Anda sudah terlindungi.',
-    iosYoutubeTitle: 'Cara menyiapkan KidGate di iPhone anak Anda',
+    iosYoutubeTitle: 'Cara menyiapkan KidGate di iPhone atau iPad anak Anda',
     iosYoutubeDescription:
-      'Sambungkan iPhone anak Anda ke ponsel Anda dengan kode QR, lalu aktifkan Waktu Layar dan izin lain yang dibutuhkan KidGate, langkah demi langkah.',
-    androidTitle: 'Siapkan ponsel Android anak Anda',
+      'Sambungkan iPhone atau iPad anak Anda ke ponsel Anda dengan kode QR, lalu aktifkan Waktu Layar dan izin lain yang dibutuhkan KidGate, langkah demi langkah.',
+    androidTitle: 'Siapkan ponsel atau tablet Android anak Anda',
     childAndroid: 'Android anak',
     androidOpen: 'Di ponsel anak Anda, buka KidGate dan pilih “{{child}}”.',
     androidScan: 'Di ponsel Anda, pindai kode QR dengan KidGate.',
@@ -1063,10 +1061,11 @@ export default {
       'Untuk “{{alerts}}”, ketuk “{{grant}}” lalu aktifkan untuk KidGate.',
     androidMessagesSub:
       'KidGate memeriksa pesan masuk untuk mencari kata peringatan, langsung di ponsel.',
-    androidDone: 'Ponsel anak Anda sudah terlindungi.',
-    androidYoutubeTitle: 'Cara menyiapkan KidGate di ponsel Android anak Anda',
+    androidDone: 'Ponsel Android anak Anda sudah terlindungi.',
+    androidYoutubeTitle:
+      'Cara menyiapkan KidGate di ponsel atau tablet Android anak Anda',
     androidYoutubeDescription:
-      'Sambungkan ponsel Android anak Anda ke ponsel Anda dengan kode QR, lalu aktifkan izin yang dibutuhkan KidGate, langkah demi langkah.',
+      'Sambungkan ponsel atau tablet Android anak Anda ke ponsel Anda dengan kode QR, lalu aktifkan izin yang dibutuhkan KidGate, langkah demi langkah.',
     macTitle: 'Siapkan Mac anak Anda',
     childMac: 'Mac anak',
     macDownload: 'Di Mac anak Anda, unduh KidGate untuk macOS dari kidgate.app.',
@@ -1086,5 +1085,49 @@ export default {
     macYoutubeTitle: 'Cara menyiapkan KidGate di Mac anak Anda',
     macYoutubeDescription:
       'Pasang KidGate di Mac anak Anda, sambungkan ke ponsel Anda dengan kode QR, lalu aktifkan Filter web di System Settings.',
+    windowsTitle: 'Siapkan PC Windows anak Anda',
+    childWindows: 'PC anak',
+    windowsDownload: 'Di PC anak Anda, unduh KidGate untuk Windows dari kidgate.app.',
+    windowsSmartScreen:
+      'Jika Windows berkata telah melindungi PC Anda, pilih Info selengkapnya (More info), lalu Tetap jalankan (Run anyway).',
+    windowsInstall:
+      'Setujui permintaan akses administrator, lalu ikuti langkah-langkah pemasang.',
+    windowsInstallSub: 'Di akun standar, Windows meminta kata sandi administrator.',
+    windowsConfirm: 'Di PC, pastikan yang tampil adalah Anda, lalu klik “{{yes}}”.',
+    windowsAssign:
+      'Pilih siapa yang memakai PC ini, atau tambahkan anak Anda dengan mengetik namanya.',
+    windowsSetup: 'Di PC, klik “{{allow}}” untuk {{location}}.',
+    windowsSetupSub: '{{filter}} KidGate aktif dengan sendirinya dalam beberapa detik.',
+    windowsDone: 'PC anak Anda sudah terlindungi.',
+    windowsYoutubeTitle: 'Cara menyiapkan KidGate di PC Windows anak Anda',
+    windowsYoutubeDescription:
+      'Pasang KidGate di PC Windows anak Anda, lalu sambungkan ke ponsel Anda dengan kode QR. Setelah itu, Filter web aktif dengan sendirinya.',
+    chromeTitle: 'Siapkan KidGate di Chrome',
+    childChrome: 'Komputer anak',
+    chromeSite:
+      'Di Chrome pada komputer anak Anda, buka kidgate.app lalu pilih Chrome.',
+    chromeStore:
+      'Di Chrome Web Store, klik “Tambahkan ke Chrome”, lalu “Tambahkan ekstensi”.',
+    chromeOpen: 'Klik ikon KidGate di toolbar Chrome. Pop-up akan menampilkan kode QR.',
+    chromeOpenSub: 'Biarkan tetap terbuka selama penyandingan.',
+    chromeConfirm: 'Di KidGate, pastikan yang tampil adalah Anda, lalu klik “{{yes}}”.',
+    chromeAssign: 'Pilih anak yang memakai Chrome di komputer ini.',
+    chromeDone: 'Chrome di komputer anak Anda sudah terlindungi.',
+    chromeYoutubeTitle: 'Cara menyiapkan KidGate di Chrome pada komputer anak Anda',
+    chromeYoutubeDescription:
+      'Tambahkan ekstensi KidGate ke Chrome di komputer anak Anda, lalu sambungkan ke ponsel Anda dengan kode QR. Setelah itu, ekstensi ini memfilter web di Chrome.',
+    dashboardComputer: 'Komputer Anda',
+    dashboardSite: 'Di komputer Anda, buka kidgate.app lalu klik “Dasbor”.',
+    dashboardDone: 'Anda sudah masuk ke dasbor web.',
+    tvTitle: 'Siapkan Android TV anak Anda',
+    tvAssign:
+      'Pilih siapa yang memakai TV ini, atau tambahkan anak Anda dengan mengetik namanya.',
+    tvDone: 'Android TV anak Anda sudah terlindungi.',
+    tvYoutubeTitle: 'Cara menyiapkan KidGate di Android TV anak Anda',
+    outroTitle: 'Semuanya sudah siap.',
+    outroSub: 'Semoga KidGate memudahkan Anda mengelola keluarga.',
+    allYoutubeTitle: 'Cara menyiapkan KidGate di ponsel Anda dan perangkat anak Anda',
+    allYoutubeDescription:
+      'Semua penyiapan dalam satu video: pertama ponsel Anda, lalu setiap perangkat anak Anda (iPhone atau iPad, ponsel atau tablet Android, Mac, PC Windows, Android TV, Chrome), dan terakhir dasbor web. Pilih perangkat Anda dari daftar di bawah.',
   },
 };

@@ -1016,7 +1016,6 @@ export default {
     family:
       '“{{tab}}” açıkken “{{create}}” seçeneğine dokunun ve ailenize bir ad verin.',
     done: 'Sizin kısmınız tamamlandı.',
-    next: 'Sıradaki adım: KidGate’i çocuğunuzun cihazına yükleyin. O cihaza uygun videoyu seçin.',
     parentYoutubeTitle: 'KidGate telefonunuza nasıl kurulur',
     parentYoutubeDescription:
       'KidGate’i yükleyin, giriş yapın ve ailenizi oluşturun: çocuğunuzun cihazlarını bağlamadan önceki ilk adım.',
@@ -1030,8 +1029,7 @@ export default {
     extras: 'Son olarak kameraya ve mikrofona izin verin.',
     extrasSub:
       'İsteğe bağlı: böylece çocuğunuz bir SOS’a fotoğraf veya ses ekleyebilir.',
-    pairNext: 'Sıradaki adım: kuralları telefonunuzdan belirleyin.',
-    iosTitle: 'Çocuğunuzun iPhone’unda kurulum',
+    iosTitle: 'Çocuğunuzun iPhone’unda veya iPad’inde kurulum',
     childPhone: 'Çocuğun iPhone’u',
     iosOpen: 'Çocuğunuzun iPhone’unda KidGate’i açın ve “{{child}}” seçeneğini seçin.',
     iosScan: 'Telefonunuzda “{{add}}” seçeneğine dokunun ve QR kodu okutun.',
@@ -1054,10 +1052,10 @@ export default {
     iosBlockedSub:
       '“{{unlock}}” seçeneğine dokunur, PIN’inizi girer, ardından uygulamaları seçersiniz.',
     iosDone: 'Çocuğunuzun iPhone’u korunuyor.',
-    iosYoutubeTitle: 'KidGate çocuğunuzun iPhone’una nasıl kurulur',
+    iosYoutubeTitle: 'KidGate çocuğunuzun iPhone’una veya iPad’ine nasıl kurulur',
     iosYoutubeDescription:
-      'Çocuğunuzun iPhone’unu bir QR kodla telefonunuza bağlayın, ardından Ekran Süresi’ni ve KidGate’in ihtiyaç duyduğu diğer izinleri adım adım açın.',
-    androidTitle: 'Çocuğunuzun Android telefonunda kurulum',
+      'Çocuğunuzun iPhone’unu veya iPad’ini bir QR kodla telefonunuza bağlayın, ardından Ekran Süresi’ni ve KidGate’in ihtiyaç duyduğu diğer izinleri adım adım açın.',
+    androidTitle: 'Çocuğunuzun Android telefonunda veya tabletinde kurulum',
     childAndroid: 'Çocuğun Android’i',
     androidOpen:
       'Çocuğunuzun telefonunda KidGate’i açın ve “{{child}}” seçeneğini seçin.',
@@ -1084,10 +1082,11 @@ export default {
       '“{{alerts}}” bölümünde “{{grant}}” seçeneğine dokunun ve KidGate için bildirim erişimini açın.',
     androidMessagesSub:
       'KidGate, gelen mesajlarda uyarı kelimeleri olup olmadığını doğrudan telefonda kontrol eder.',
-    androidDone: 'Çocuğunuzun telefonu korunuyor.',
-    androidYoutubeTitle: 'KidGate çocuğunuzun Android telefonuna nasıl kurulur',
+    androidDone: 'Çocuğunuzun Android telefonu korunuyor.',
+    androidYoutubeTitle:
+      'KidGate çocuğunuzun Android telefonuna veya tabletine nasıl kurulur',
     androidYoutubeDescription:
-      'Çocuğunuzun Android telefonunu bir QR kodla telefonunuza bağlayın, ardından KidGate’in ihtiyaç duyduğu izinleri adım adım açın.',
+      'Çocuğunuzun Android telefonunu veya tabletini bir QR kodla telefonunuza bağlayın, ardından KidGate’in ihtiyaç duyduğu izinleri adım adım açın.',
     macTitle: 'Çocuğunuzun Mac’inde kurulum',
     childMac: 'Çocuğun Mac’i',
     macDownload:
@@ -1108,5 +1107,54 @@ export default {
     macYoutubeTitle: 'KidGate çocuğunuzun Mac’ine nasıl kurulur',
     macYoutubeDescription:
       'KidGate’i çocuğunuzun Mac’ine yükleyin, bir QR kodla telefonunuza bağlayın, ardından Sistem Ayarları’nda web filtresini açın.',
+    windowsTitle: 'Çocuğunuzun Windows PC’sinde kurulum',
+    childWindows: 'Çocuğun PC’si',
+    windowsDownload:
+      'Çocuğunuzun PC’sinde, kidgate.app adresinden Windows için KidGate’i indirin.',
+    windowsSmartScreen:
+      'Windows bilgisayarınızı koruduğunu söylerse Ek bilgi’yi, ardından Yine de çalıştır’ı seçin.',
+    windowsInstall:
+      'Yönetici izni istemini onaylayın, ardından yükleyicinin adımlarını izleyin.',
+    windowsInstallSub:
+      'Standart bir hesapta Windows, bir yöneticinin parolasını ister.',
+    windowsConfirm:
+      'PC’de adınızı kontrol edin, ardından “{{yes}}” seçeneğine tıklayın.',
+    windowsAssign: 'Bu PC’yi kimin kullandığını seçin ya da çocuğunuzu adıyla ekleyin.',
+    windowsSetup: 'PC’de {{location}} için “{{allow}}” seçeneğine tıklayın.',
+    windowsSetupSub:
+      'KidGate’in {{filter}} özelliği birkaç saniye içinde kendiliğinden açılır.',
+    windowsDone: 'Çocuğunuzun PC’si korunuyor.',
+    windowsYoutubeTitle: 'KidGate çocuğunuzun Windows PC’sine nasıl kurulur',
+    windowsYoutubeDescription:
+      'KidGate’i çocuğunuzun Windows PC’sine yükleyin ve bir QR kodla telefonunuza bağlayın. Ardından web filtresi kendiliğinden açılır.',
+    chromeTitle: 'Chrome’da KidGate kurulumu',
+    childChrome: 'Çocuğun bilgisayarı',
+    chromeSite:
+      'Çocuğunuzun bilgisayarındaki Chrome’da kidgate.app adresini açın ve Chrome’u seçin.',
+    chromeStore:
+      'Chrome Web Mağazası’nda “Chrome’a ekle”yi, ardından “Uzantı ekle”yi seçin.',
+    chromeOpen:
+      'Chrome araç çubuğundaki KidGate simgesini seçin. Açılır pencerede bir QR kodu görünür.',
+    chromeOpenSub: 'Eşleştirme bitene kadar pencereyi açık tutun.',
+    chromeConfirm:
+      'KidGate’te adınızı kontrol edin, ardından “{{yes}}” seçeneğine tıklayın.',
+    chromeAssign: 'Bu bilgisayarda Chrome’u hangi çocuğun kullandığını seçin.',
+    chromeDone: 'Çocuğunuzun bilgisayarındaki Chrome korunuyor.',
+    chromeYoutubeTitle: 'KidGate çocuğunuzun bilgisayarındaki Chrome’a nasıl kurulur',
+    chromeYoutubeDescription:
+      'KidGate uzantısını çocuğunuzun bilgisayarındaki Chrome’a ekleyin ve bir QR kodla telefonunuza bağlayın. Ardından uzantı, Chrome içinde web filtrelemesi yapar.',
+    dashboardComputer: 'Bilgisayarınız',
+    dashboardSite:
+      'Bilgisayarınızda kidgate.app adresini açın ve “Panel” seçeneğine tıklayın.',
+    dashboardDone: 'Web paneline giriş yaptınız.',
+    tvTitle: 'Çocuğunuzun Android TV’sinde kurulum',
+    tvAssign: 'Bu TV’yi kimin kullandığını seçin ya da çocuğunuzu adıyla ekleyin.',
+    tvDone: 'Çocuğunuzun Android TV’si korunuyor.',
+    tvYoutubeTitle: 'KidGate çocuğunuzun Android TV’sine nasıl kurulur',
+    outroTitle: 'Her şey hazır.',
+    outroSub: 'KidGate’in ailenizi yönetmeyi kolaylaştırmasını umuyoruz.',
+    allYoutubeTitle: 'KidGate telefonunuza ve çocuğunuzun cihazlarına nasıl kurulur',
+    allYoutubeDescription:
+      'Tüm kurulum tek videoda: önce telefonunuz, sonra çocuğunuzun her cihazı (iPhone veya iPad, Android telefon veya tablet, Mac, Windows PC, Android TV, Chrome) ve son olarak web paneli. Aşağıdaki listeden cihazınızı seçin.',
   },
 };

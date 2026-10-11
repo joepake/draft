@@ -1051,7 +1051,6 @@ export default {
     signInSub: 'مع Apple، يكفي أن تؤكّد بـ Face ID.',
     family: 'في «{{tab}}»، اضغط على «{{create}}» وسمِّ عائلتك.',
     done: 'انتهى الجزء الخاص بك.',
-    next: 'التالي: ثبّت KidGate على جهاز طفلك. اختر الفيديو المناسب لجهازه.',
     parentYoutubeTitle: 'كيفية إعداد KidGate على هاتفك',
     parentYoutubeDescription:
       'ثبّت KidGate وسجّل الدخول وأنشئ عائلتك: الخطوة الأولى قبل ربط أجهزة طفلك.',
@@ -1064,8 +1063,7 @@ export default {
     tapAllow: 'اضغط على «{{allow}}».',
     extras: 'أخيرًا، اسمح بالوصول إلى الكاميرا والميكروفون.',
     extrasSub: 'اختياري: يستطيع طفلك بعدها إرفاق صورة أو صوت بنداء SOS.',
-    pairNext: 'التالي: اضبط القواعد من هاتفك.',
-    iosTitle: 'إعداد iPhone طفلك',
+    iosTitle: 'إعداد iPhone أو iPad الخاص بطفلك',
     childPhone: 'جهاز iPhone للطفل',
     iosOpen: 'على iPhone طفلك، افتح KidGate واختر «{{child}}».',
     iosScan: 'على هاتفك، اضغط على «{{add}}» وامسح رمز QR.',
@@ -1082,10 +1080,10 @@ export default {
     iosBlocked: 'اضغط على «{{strengthen}}»، ثم اضبط «{{blocked}}».',
     iosBlockedSub: 'تضغط على «{{unlock}}»، وتُدخل رمز PIN، ثم تختار التطبيقات.',
     iosDone: 'أصبح iPhone طفلك محميًا.',
-    iosYoutubeTitle: 'كيفية إعداد KidGate على iPhone طفلك',
+    iosYoutubeTitle: 'كيفية إعداد KidGate على iPhone أو iPad الخاص بطفلك',
     iosYoutubeDescription:
-      'اربط iPhone طفلك بهاتفك عبر رمز QR، ثم فعّل وقت استخدام الشاشة وباقي الأذونات التي يحتاجها KidGate، خطوة بخطوة.',
-    androidTitle: 'إعداد هاتف Android الخاص بطفلك',
+      'اربط iPhone أو iPad طفلك بهاتفك عبر رمز QR، ثم فعّل وقت استخدام الشاشة وباقي الأذونات التي يحتاجها KidGate، خطوة بخطوة.',
+    androidTitle: 'إعداد هاتف Android أو الجهاز اللوحي الخاص بطفلك',
     childAndroid: 'جهاز Android للطفل',
     androidOpen: 'على هاتف طفلك، افتح KidGate واختر «{{child}}».',
     androidScan: 'على هاتفك، امسح رمز QR باستخدام KidGate.',
@@ -1106,10 +1104,11 @@ export default {
       'لتشغيل «{{alerts}}»، اضغط على «{{grant}}» ثم فعّل الوصول لـ KidGate.',
     androidMessagesSub:
       'يفحص KidGate الرسائل الواردة بحثًا عن كلمات تحذيرية، على الهاتف نفسه.',
-    androidDone: 'أصبح هاتف طفلك محميًا.',
-    androidYoutubeTitle: 'كيفية إعداد KidGate على هاتف Android الخاص بطفلك',
+    androidDone: 'أصبح هاتف Android الخاص بطفلك محميًا.',
+    androidYoutubeTitle:
+      'كيفية إعداد KidGate على هاتف Android أو الجهاز اللوحي الخاص بطفلك',
     androidYoutubeDescription:
-      'اربط هاتف Android الخاص بطفلك بهاتفك عبر رمز QR، ثم فعّل الأذونات التي يحتاجها KidGate، خطوة بخطوة.',
+      'اربط هاتف Android أو الجهاز اللوحي الخاص بطفلك بهاتفك عبر رمز QR، ثم فعّل الأذونات التي يحتاجها KidGate، خطوة بخطوة.',
     macTitle: 'إعداد جهاز Mac الخاص بطفلك',
     childMac: 'جهاز Mac للطفل',
     macDownload: 'على جهاز Mac الخاص بطفلك، نزّل KidGate لنظام macOS من kidgate.app.',
@@ -1127,5 +1126,46 @@ export default {
     macYoutubeTitle: 'كيفية إعداد KidGate على جهاز Mac الخاص بطفلك',
     macYoutubeDescription:
       'ثبّت KidGate على جهاز Mac الخاص بطفلك، واربطه بهاتفك عبر رمز QR، ثم فعّل فلتر الويب من إعدادات النظام.',
+    windowsTitle: 'إعداد كمبيوتر Windows الخاص بطفلك',
+    childWindows: 'كمبيوتر الطفل',
+    windowsDownload: 'على كمبيوتر طفلك، نزّل KidGate لنظام Windows من kidgate.app.',
+    windowsSmartScreen:
+      'إذا قال Windows إنه حمى جهازك، فاختر «مزيد من المعلومات» (More info) ثم «تشغيل على أي حال» (Run anyway).',
+    windowsInstall: 'وافق على طلب صلاحيات المسؤول، ثم اتبع خطوات برنامج التثبيت.',
+    windowsInstallSub: 'إذا كان الحساب قياسيًا، فسيطلب Windows كلمة مرور المسؤول.',
+    windowsConfirm: 'على الكمبيوتر، تحقّق من ظهور اسمك، ثم انقر على «{{yes}}».',
+    windowsAssign: 'اختر من يستخدم هذا الكمبيوتر، أو أضف طفلك باسمه.',
+    windowsSetup: 'على الكمبيوتر، انقر على «{{allow}}» لإذن {{location}}.',
+    windowsSetupSub: 'يتفعّل {{filter}} في KidGate تلقائيًا خلال بضع ثوانٍ.',
+    windowsDone: 'أصبح كمبيوتر طفلك محميًا.',
+    windowsYoutubeTitle: 'كيفية إعداد KidGate على كمبيوتر Windows الخاص بطفلك',
+    windowsYoutubeDescription:
+      'ثبّت KidGate على كمبيوتر Windows الخاص بطفلك، واربطه بهاتفك عبر رمز QR. بعدها يعمل فلتر الويب تلقائيًا.',
+    chromeTitle: 'إعداد KidGate في Chrome',
+    childChrome: 'كمبيوتر الطفل',
+    chromeSite: 'في Chrome على كمبيوتر طفلك، افتح kidgate.app واختر Chrome.',
+    chromeStore:
+      'في متجر Chrome الإلكتروني، انقر على «إضافة إلى Chrome»، ثم «إضافة الإضافة».',
+    chromeOpen:
+      'انقر على أيقونة KidGate في شريط أدوات Chrome. تعرض النافذة المنبثقة رمز QR.',
+    chromeOpenSub: 'أبقِ النافذة مفتوحة أثناء الربط.',
+    chromeConfirm: 'في KidGate، تحقّق من ظهور اسمك، ثم انقر على «{{yes}}».',
+    chromeAssign: 'اختر الطفل الذي يستخدم Chrome على هذا الكمبيوتر.',
+    chromeDone: 'أصبح Chrome على كمبيوتر طفلك محميًا.',
+    chromeYoutubeTitle: 'كيفية إعداد KidGate في Chrome على كمبيوتر طفلك',
+    chromeYoutubeDescription:
+      'ثبّت إضافة KidGate في Chrome على كمبيوتر طفلك، واربطها بهاتفك عبر رمز QR. بعدها تفلتر الويب داخل Chrome.',
+    dashboardComputer: 'كمبيوترك',
+    dashboardSite: 'على الكمبيوتر الخاص بك، افتح kidgate.app وانقر على «لوحة التحكم».',
+    dashboardDone: 'سجّلت الدخول إلى لوحة الويب.',
+    tvTitle: 'إعداد Android TV الخاص بطفلك',
+    tvAssign: 'اختر من يستخدم هذا التلفزيون، أو أضف طفلك باسمه.',
+    tvDone: 'أصبح Android TV الخاص بطفلك محميًا.',
+    tvYoutubeTitle: 'كيفية إعداد KidGate على Android TV الخاص بطفلك',
+    outroTitle: 'كل شيء جاهز.',
+    outroSub: 'نأمل أن يجعل KidGate إدارة عائلتك أسهل.',
+    allYoutubeTitle: 'كيفية إعداد KidGate على هاتفك وأجهزة طفلك',
+    allYoutubeDescription:
+      'كل خطوات الإعداد في فيديو واحد: هاتفك أولًا، ثم كل جهاز من أجهزة طفلك (iPhone أو iPad، هاتف Android أو جهاز لوحي، Mac، كمبيوتر Windows، Android TV، Chrome)، وأخيرًا لوحة الويب. اختر جهازك من القائمة أدناه.',
   },
 };

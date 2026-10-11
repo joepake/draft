@@ -40,8 +40,9 @@ export const pairing = {
   parentAccount: 'Account genitore',
   unknownParent: 'un genitore',
   expiresIn: 'Scade tra {{countdown}}',
-  autoRefreshPaused:
-    'L’aggiornamento automatico del codice è in pausa per risparmiare dati mobili e batteria. Seleziona Nuovo codice quando sei pronto.',
+  inviteCodeExpired:
+    'Questo codice è scaduto. Seleziona Nuovo codice per averne un altro.',
+  codeExpired: 'Questo codice è scaduto. Seleziona Nuovo codice per averne un altro.',
   scanQrTitle: 'Scansiona il codice QR',
   scanQrSubtitle: 'Allinea il codice QR all’interno del riquadro.',
   enterCodeManually: 'Inserisci il codice manualmente',

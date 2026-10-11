@@ -5,6 +5,8 @@ export const userGuide = {
   stepLabel: 'Bước {{n}}',
   stepsSectionTitle: 'Các bước thực hiện',
   tipTitle: 'Lưu ý',
+  // The Help Center video button: the wizard's own label (child.setupWizardWatchGuide).
+  watchVideo: 'Xem hướng dẫn',
   searchPlaceholder: 'Tìm trong hướng dẫn…',
   searchClear: 'Xóa tìm kiếm',
   searchEmpty: 'Không có mục hướng dẫn nào khớp. Hãy thử một từ khác.',

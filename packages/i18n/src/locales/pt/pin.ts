@@ -70,4 +70,6 @@ export const pin = {
   enterCurrentParentPin: 'Digite seu PIN dos pais atual.',
   currentParentPinIncorrect:
     'O PIN dos pais atual está incorreto. Confira e tente novamente, ou use “Esqueceu o PIN?” para redefini-lo.',
+  // The offline Parent PIN pad's wait; {{time}} is a shared.duration*Short phrase.
+  offlineUnlockWait: 'Muitos PINs incorretos. Tente novamente em {{time}}.',
 } as const;

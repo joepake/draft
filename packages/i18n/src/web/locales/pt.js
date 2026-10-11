@@ -1015,7 +1015,6 @@ export default {
     signInSub: 'Com a Apple, é só confirmar com o Face ID.',
     family: 'Na “{{tab}}”, toque em “{{create}}” e dê um nome à sua família.',
     done: 'Sua parte está feita.',
-    next: 'A seguir: instale o KidGate no aparelho do seu filho. Escolha o vídeo do aparelho dele.',
     parentYoutubeTitle: 'Como configurar o KidGate no seu celular',
     parentYoutubeDescription:
       'Instale o KidGate, entre e crie sua família: o primeiro passo antes de conectar os aparelhos do seu filho.',
@@ -1029,8 +1028,7 @@ export default {
     extras: 'Por fim, permita o acesso à câmera e ao microfone.',
     extrasSub:
       'Opcional: assim seu filho pode anexar uma foto ou uma gravação a um SOS.',
-    pairNext: 'A seguir: defina as regras pelo seu celular.',
-    iosTitle: 'Configure o iPhone do seu filho',
+    iosTitle: 'Configure o iPhone ou iPad do seu filho',
     childPhone: 'iPhone da criança',
     iosOpen: 'No iPhone do seu filho, abra o KidGate e escolha “{{child}}”.',
     iosScan: 'No seu celular, toque em “{{add}}” e leia o QR code.',
@@ -1049,10 +1047,10 @@ export default {
     iosBlocked: 'Toque em “{{strengthen}}” e depois configure “{{blocked}}”.',
     iosBlockedSub: 'Você toca em “{{unlock}}”, digita seu PIN e escolhe os apps.',
     iosDone: 'O iPhone do seu filho está protegido.',
-    iosYoutubeTitle: 'Como configurar o KidGate no iPhone do seu filho',
+    iosYoutubeTitle: 'Como configurar o KidGate no iPhone ou iPad do seu filho',
     iosYoutubeDescription:
-      'Conecte o iPhone do seu filho ao seu celular com um QR code. Depois, ative o Tempo de Uso e as outras permissões de que o KidGate precisa, passo a passo.',
-    androidTitle: 'Configure o celular Android do seu filho',
+      'Conecte o iPhone ou iPad do seu filho ao seu celular com um QR code. Depois, ative o Tempo de Uso e as outras permissões de que o KidGate precisa, passo a passo.',
+    androidTitle: 'Configure o celular ou tablet Android do seu filho',
     childAndroid: 'Android da criança',
     androidOpen: 'No celular do seu filho, abra o KidGate e escolha “{{child}}”.',
     androidScan: 'No seu celular, leia o QR code com o KidGate.',
@@ -1074,10 +1072,11 @@ export default {
       'Em “{{alerts}}”, toque em “{{grant}}” e ative o acesso para o KidGate.',
     androidMessagesSub:
       'O KidGate procura palavras preocupantes nas mensagens recebidas, no próprio celular.',
-    androidDone: 'O celular do seu filho está protegido.',
-    androidYoutubeTitle: 'Como configurar o KidGate no celular Android do seu filho',
+    androidDone: 'O celular Android do seu filho está protegido.',
+    androidYoutubeTitle:
+      'Como configurar o KidGate no celular ou tablet Android do seu filho',
     androidYoutubeDescription:
-      'Conecte o celular Android do seu filho ao seu celular com um QR code. Depois, ative as permissões de que o KidGate precisa, passo a passo.',
+      'Conecte o celular ou tablet Android do seu filho ao seu celular com um QR code. Depois, ative as permissões de que o KidGate precisa, passo a passo.',
     macTitle: 'Configure o Mac do seu filho',
     childMac: 'Mac da criança',
     macDownload: 'No Mac do seu filho, baixe o KidGate para macOS em kidgate.app.',
@@ -1096,5 +1095,51 @@ export default {
     macYoutubeTitle: 'Como configurar o KidGate no Mac do seu filho',
     macYoutubeDescription:
       'Instale o KidGate no Mac do seu filho, conecte-o ao seu celular com um QR code e depois ative o filtro da web nos Ajustes do Sistema.',
+    windowsTitle: 'Configure o PC com Windows do seu filho',
+    childWindows: 'PC da criança',
+    windowsDownload: 'No PC do seu filho, baixe o KidGate para Windows em kidgate.app.',
+    windowsSmartScreen:
+      'Se o Windows disser que protegeu seu PC, escolha Mais informações e depois Executar assim mesmo.',
+    windowsInstall:
+      'Aprove a solicitação de administrador e siga os passos do instalador.',
+    windowsInstallSub:
+      'Em uma conta padrão, o Windows pede a senha de um administrador.',
+    windowsConfirm: 'No PC, confira se é você e clique em “{{yes}}”.',
+    windowsAssign: 'Escolha quem usa este PC ou adicione seu filho pelo nome.',
+    windowsSetup: 'No PC, clique em “{{allow}}” em {{location}}.',
+    windowsSetupSub: 'O {{filter}} do KidGate é ativado sozinho em alguns segundos.',
+    windowsDone: 'O PC do seu filho está protegido.',
+    windowsYoutubeTitle: 'Como configurar o KidGate no PC com Windows do seu filho',
+    windowsYoutubeDescription:
+      'Instale o KidGate no PC com Windows do seu filho e conecte-o ao seu celular com um QR code. Depois, o filtro da web é ativado sozinho.',
+    chromeTitle: 'Configure o KidGate no Chrome',
+    childChrome: 'Computador da criança',
+    chromeSite:
+      'No Chrome do computador do seu filho, abra kidgate.app e escolha Chrome.',
+    chromeStore:
+      'Na Chrome Web Store, clique em “Usar no Chrome” e depois em “Adicionar extensão”.',
+    chromeOpen:
+      'Clique no ícone do KidGate na barra de ferramentas do Chrome. O pop-up mostra um QR code.',
+    chromeOpenSub: 'Mantenha o pop-up aberto durante o pareamento.',
+    chromeConfirm: 'No KidGate, confira se é você e clique em “{{yes}}”.',
+    chromeAssign: 'Escolha qual filho usa o Chrome neste computador.',
+    chromeDone: 'O Chrome do computador do seu filho está protegido.',
+    chromeYoutubeTitle:
+      'Como configurar o KidGate no Chrome do computador do seu filho',
+    chromeYoutubeDescription:
+      'Adicione a extensão do KidGate ao Chrome do computador do seu filho e conecte-a ao seu celular com um QR code. Depois, ela filtra a web no Chrome.',
+    dashboardComputer: 'Seu computador',
+    dashboardSite: 'No seu computador, abra kidgate.app e clique em “Painel”.',
+    dashboardDone: 'Você entrou no painel web.',
+    tvTitle: 'Configure a Android TV do seu filho',
+    tvAssign: 'Escolha quem usa esta TV ou adicione seu filho pelo nome.',
+    tvDone: 'A Android TV do seu filho está protegida.',
+    tvYoutubeTitle: 'Como configurar o KidGate na Android TV do seu filho',
+    outroTitle: 'Tudo pronto.',
+    outroSub: 'Esperamos que o KidGate facilite o cuidado com a sua família.',
+    allYoutubeTitle:
+      'Como configurar o KidGate no seu celular e nos aparelhos do seu filho',
+    allYoutubeDescription:
+      'Toda a configuração em um só vídeo: primeiro o seu celular, depois cada aparelho do seu filho (iPhone ou iPad, celular ou tablet Android, Mac, PC com Windows, Android TV, Chrome) e, por fim, o painel web. Escolha o seu aparelho na lista abaixo.',
   },
 };

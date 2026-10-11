@@ -222,6 +222,18 @@ export interface AppCategoryEntry {
    * sweep should care.
    */
   taxonomyVersion: number;
+  /**
+   * sha256 of the device-reported label the model was given, present only
+   * while the row is provisional.
+   *
+   * The label is the client's, so a row built on one family's word is
+   * re-asked from the identifier alone the first time any report names the
+   * app differently, and is written back without this field — settled. No
+   * family identity: this collection is readable product-wide. Sweep-only;
+   * no client reads it. `functions/lib/appLabelTrust.js`,
+   * `docs/SECURITY_AUDIT.md` D4.
+   */
+  labelDigest?: string;
 }
 
 /** True when this classification is fit to put in front of a parent. */

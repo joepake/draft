@@ -68,4 +68,6 @@ export const pin = {
   enterCurrentParentPin: 'अपना मौजूदा Parent PIN दर्ज करें।',
   currentParentPinIncorrect:
     'मौजूदा Parent PIN गलत है। इसे जाँचकर फिर से कोशिश करें, या रीसेट करने के लिए “PIN भूल गए?” चुनें।',
+  // The offline Parent PIN pad's wait; {{time}} is a shared.duration*Short phrase.
+  offlineUnlockWait: 'बहुत अधिक गलत PIN। कृपया {{time}} बाद पुनः प्रयास करें।',
 } as const;

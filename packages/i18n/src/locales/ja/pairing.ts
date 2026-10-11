@@ -39,8 +39,10 @@ export const pairing = {
   parentAccount: '保護者アカウント',
   unknownParent: '保護者',
   expiresIn: '{{countdown}}後に期限切れ',
-  autoRefreshPaused:
-    'モバイルデータとバッテリーを節約するため、コードの自動更新を一時停止しました。準備ができたら「新しいコード」を選択してください。',
+  inviteCodeExpired:
+    'このコードの有効期限が切れました。別のコードを取得するには「新しいコード」を選択してください。',
+  codeExpired:
+    'このコードの有効期限が切れました。別のコードを取得するには「新しいコード」を選択してください。',
   scanQrTitle: 'QRコードをスキャン',
   scanQrSubtitle: 'QRコードを枠内に合わせてください。',
   enterCodeManually: 'コードを手入力',

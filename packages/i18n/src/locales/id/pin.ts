@@ -68,4 +68,6 @@ export const pin = {
   enterCurrentParentPin: 'Masukkan PIN Orang Tua Anda saat ini.',
   currentParentPinIncorrect:
     'PIN Orang Tua saat ini salah. Periksa lalu coba lagi, atau pilih “Lupa PIN?” untuk mengatur ulang.',
+  // The offline Parent PIN pad's wait; {{time}} is a shared.duration*Short phrase.
+  offlineUnlockWait: 'Terlalu banyak PIN salah. Silakan coba lagi dalam {{time}}.',
 } as const;

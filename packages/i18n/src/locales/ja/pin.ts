@@ -68,4 +68,6 @@ export const pin = {
   enterCurrentParentPin: '現在の保護者PINを入力してください。',
   currentParentPinIncorrect:
     '現在の保護者PINが正しくありません。確認してもう一度お試しいただくか、「PINをお忘れですか？」からリセットしてください。',
+  // The offline Parent PIN pad's wait; {{time}} is a shared.duration*Short phrase.
+  offlineUnlockWait: 'PINの誤りが多すぎます。{{time}}後にもう一度お試しください。',
 } as const;

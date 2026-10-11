@@ -66,4 +66,6 @@ export const pin = {
   enterCurrentParentPin: 'Vui lòng nhập mã PIN phụ huynh hiện tại.',
   currentParentPinIncorrect:
     'Mã PIN phụ huynh hiện tại không chính xác. Vui lòng kiểm tra rồi thử lại, hoặc chọn Quên mã PIN? để đặt lại.',
+  // The offline Parent PIN pad's wait; {{time}} is a shared.duration*Short phrase.
+  offlineUnlockWait: 'Nhập sai mã PIN quá nhiều lần. Vui lòng thử lại sau {{time}}.',
 } as const;

@@ -1033,7 +1033,6 @@ export default {
     signInSub: 'При входе через Apple достаточно подтвердить его с помощью Face ID.',
     family: 'Откройте «{{tab}}», нажмите «{{create}}» и введите название семьи.',
     done: 'Со своей стороны всё готово.',
-    next: 'Далее: установите KidGate на устройство ребёнка. Выберите видео для нужного устройства.',
     parentYoutubeTitle: 'Как настроить KidGate на своём телефоне',
     parentYoutubeDescription:
       'Установите KidGate, войдите и создайте семью — первый шаг перед подключением устройств ребёнка.',
@@ -1046,8 +1045,7 @@ export default {
     tapAllow: 'Нажмите «{{allow}}».',
     extras: 'Напоследок разрешите доступ к камере и микрофону.',
     extrasSub: 'Необязательно: тогда ребёнок сможет добавить к SOS фото или звук.',
-    pairNext: 'Далее: задайте правила со своего телефона.',
-    iosTitle: 'Настройте iPhone ребёнка',
+    iosTitle: 'Настройте iPhone или iPad ребёнка',
     childPhone: 'iPhone ребёнка',
     iosOpen: 'На iPhone ребёнка откройте KidGate и выберите «{{child}}».',
     iosScan: 'На своём телефоне нажмите «{{add}}» и отсканируйте QR-код.',
@@ -1066,10 +1064,10 @@ export default {
     iosBlocked: 'Нажмите «{{strengthen}}», затем настройте «{{blocked}}».',
     iosBlockedSub: 'Нажмите «{{unlock}}», введите PIN и выберите приложения.',
     iosDone: 'iPhone ребёнка защищён.',
-    iosYoutubeTitle: 'Как настроить KidGate на iPhone ребёнка',
+    iosYoutubeTitle: 'Как настроить KidGate на iPhone или iPad ребёнка',
     iosYoutubeDescription:
-      'Подключите iPhone ребёнка к своему телефону по QR-коду, затем шаг за шагом включите «Экранное время» и другие разрешения, которые нужны KidGate.',
-    androidTitle: 'Настройте Android-телефон ребёнка',
+      'Подключите iPhone или iPad ребёнка к своему телефону по QR-коду, затем шаг за шагом включите «Экранное время» и другие разрешения, которые нужны KidGate.',
+    androidTitle: 'Настройте Android-телефон или планшет ребёнка',
     childAndroid: 'Android ребёнка',
     androidOpen: 'На телефоне ребёнка откройте KidGate и выберите «{{child}}».',
     androidScan: 'На своём телефоне отсканируйте QR-код приложением KidGate.',
@@ -1093,10 +1091,11 @@ export default {
       'В разделе «{{alerts}}» нажмите «{{grant}}» и включите доступ для KidGate.',
     androidMessagesSub:
       'KidGate ищет тревожные слова во входящих сообщениях прямо на телефоне.',
-    androidDone: 'Телефон ребёнка защищён.',
-    androidYoutubeTitle: 'Как настроить KidGate на Android-телефоне ребёнка',
+    androidDone: 'Android-телефон ребёнка защищён.',
+    androidYoutubeTitle:
+      'Как настроить KidGate на Android-телефоне или планшете ребёнка',
     androidYoutubeDescription:
-      'Подключите Android-телефон ребёнка к своему телефону по QR-коду, затем шаг за шагом включите разрешения, которые нужны KidGate.',
+      'Подключите Android-телефон или планшет ребёнка к своему телефону по QR-коду, затем шаг за шагом включите разрешения, которые нужны KidGate.',
     macTitle: 'Настройте Mac ребёнка',
     childMac: 'Mac ребёнка',
     macDownload: 'На Mac ребёнка скачайте KidGate для macOS с сайта kidgate.app.',
@@ -1117,5 +1116,51 @@ export default {
     macYoutubeTitle: 'Как настроить KidGate на Mac ребёнка',
     macYoutubeDescription:
       'Установите KidGate на Mac ребёнка, подключите его к своему телефону по QR-коду, затем включите Веб-фильтр в Системных настройках.',
+    windowsTitle: 'Настройте ПК ребёнка с Windows',
+    childWindows: 'ПК ребёнка',
+    windowsDownload: 'На ПК ребёнка скачайте KidGate для Windows с сайта kidgate.app.',
+    windowsSmartScreen:
+      'Если Windows сообщит, что защитила компьютер, выберите «Подробнее», затем «Выполнить в любом случае».',
+    windowsInstall:
+      'Подтвердите запрос прав администратора, затем следуйте шагам установщика.',
+    windowsInstallSub:
+      'Если учётная запись обычная, Windows запросит пароль администратора.',
+    windowsConfirm: 'На ПК убедитесь, что это вы, затем нажмите «{{yes}}».',
+    windowsAssign: 'Выберите, кто пользуется этим ПК, или добавьте ребёнка по имени.',
+    windowsSetup: 'На ПК нажмите «{{allow}}» для пункта «{{location}}».',
+    windowsSetupSub:
+      'Через несколько секунд {{filter}} KidGate включится автоматически.',
+    windowsDone: 'ПК ребёнка защищён.',
+    windowsYoutubeTitle: 'Как настроить KidGate на ПК ребёнка с Windows',
+    windowsYoutubeDescription:
+      'Установите KidGate на ПК ребёнка с Windows и подключите его к своему телефону по QR-коду. После этого Веб-фильтр включится автоматически.',
+    chromeTitle: 'Настройте KidGate в Chrome',
+    childChrome: 'Компьютер ребёнка',
+    chromeSite:
+      'В Chrome на компьютере ребёнка откройте kidgate.app и выберите Chrome.',
+    chromeStore:
+      'В Интернет-магазине Chrome нажмите «Установить», затем «Установить расширение».',
+    chromeOpen:
+      'Нажмите значок KidGate на панели инструментов Chrome. Во всплывающем окне появится QR-код.',
+    chromeOpenSub: 'Не закрывайте его, пока идёт подключение.',
+    chromeConfirm: 'В KidGate убедитесь, что это вы, затем нажмите «{{yes}}».',
+    chromeAssign: 'Выберите ребёнка, который пользуется Chrome на этом компьютере.',
+    chromeDone: 'Chrome на компьютере ребёнка защищён.',
+    chromeYoutubeTitle: 'Как настроить KidGate в Chrome на компьютере ребёнка',
+    chromeYoutubeDescription:
+      'Установите расширение KidGate в Chrome на компьютере ребёнка и подключите его к своему телефону по QR-коду. После этого оно будет фильтровать веб в Chrome.',
+    dashboardComputer: 'Ваш компьютер',
+    dashboardSite: 'На своём компьютере откройте kidgate.app и нажмите «Панель».',
+    dashboardDone: 'Вы вошли в веб-панель.',
+    tvTitle: 'Настройте Android TV ребёнка',
+    tvAssign:
+      'Выберите, кто пользуется этим телевизором, или добавьте ребёнка по имени.',
+    tvDone: 'Android TV ребёнка защищён.',
+    tvYoutubeTitle: 'Как настроить KidGate на Android TV ребёнка',
+    outroTitle: 'Всё готово.',
+    outroSub: 'Надеемся, что KidGate упростит заботу о вашей семье.',
+    allYoutubeTitle: 'Как настроить KidGate на своём телефоне и устройствах ребёнка',
+    allYoutubeDescription:
+      'Вся настройка в одном видео: сначала ваш телефон, затем каждое устройство ребёнка (iPhone или iPad, Android-телефон или планшет, Mac, ПК с Windows, Android TV, Chrome) и в конце веб-панель. Выберите своё устройство в списке ниже.',
   },
 };

@@ -12,9 +12,17 @@ import {
   matchRanges,
   searchUserGuide,
 } from '@kidgate/core/domain/userGuideSearch';
+import {
+  GUIDE_VIDEO_DEVICE_LABEL,
+  resolveGuideTopicVideos,
+  youtubeEmbedUrl,
+  youtubeThumbnailUrl,
+} from '@kidgate/core/domain/setupGuide';
 import { loadUserGuide } from '@kidgate/i18n/userGuidePack';
 import Icon from '@kidgate/web-ui/Icon';
 import { useT } from '@kidgate/web-ui/useT';
+import { fetchGuideConfig } from '../adapters/repositories.js';
+import { useActivityTranslate } from './activityCopy.js';
 import Card from './Card.jsx';
 
 /**
@@ -37,6 +45,7 @@ export default function UserGuide({ topicId, onOpenTopic, landing = null }) {
   const [query, setQuery] = useState('');
   const [focus, setFocus] = useState(undefined);
   const topic = topicId ? getUserGuideTopic(topicId) : undefined;
+  const videos = useGuideVideos(topic?.id);
 
   /* Opened from the header search (`SearchSheet`): land on the step it
      matched, the way a result from this page's own box does. A fresh object
@@ -99,6 +108,13 @@ export default function UserGuide({ topicId, onOpenTopic, landing = null }) {
             </div>
           </div>
         </Card>
+
+        <GuideVideos
+          key={topic.id}
+          videos={videos}
+          title={guideT(`userGuide.topics.${topic.id}.title`)}
+          label={guideT('userGuide.watchVideo')}
+        />
 
         {/* The permissions group is walked on the child's device, which has a
             button per step there — said once, before the steps. */}
@@ -225,6 +241,78 @@ export default function UserGuide({ topicId, onOpenTopic, landing = null }) {
         </Card>
       )}
     </div>
+  );
+}
+
+/** One read of `config/setupGuides` per page load, shared by every topic. */
+let guideConfig = null;
+
+/** A topic's setup videos (`resolveGuideTopicVideos`), none until they arrive. */
+function useGuideVideos(topicId) {
+  const [config, setConfig] = useState(null);
+  useEffect(() => {
+    let alive = true;
+    guideConfig ??= fetchGuideConfig().catch(() => null);
+    guideConfig.then(loaded => {
+      if (alive) setConfig(loaded);
+    });
+    return () => {
+      alive = false;
+    };
+  }, []);
+  return useMemo(
+    () => (topicId ? resolveGuideTopicVideos(config, topicId) : []),
+    [config, topicId],
+  );
+}
+
+/**
+ * The phone's "Show me how", for a browser: the poster first, the player only
+ * once pressed — an iframe per video on open would load YouTube for every
+ * topic a parent glances at. Same embed as the phone (`youtubeEmbedUrl`):
+ * no recommendations, the parent's language, opening at the topic's mark.
+ * Two videos are named by device, in the plans screen's own words.
+ */
+function GuideVideos({ videos, title, label }) {
+  const appT = useActivityTranslate();
+  const { language } = useT();
+  const [playing, setPlaying] = useState(null);
+  if (videos.length === 0) return null;
+  return (
+    <section className="guide-videos">
+      {videos.length > 1 && <h3 className="guide-section">{label}</h3>}
+      <div className="guide-video-row">
+        {videos.map(video => {
+          const name =
+            videos.length > 1 && video.device
+              ? appT(GUIDE_VIDEO_DEVICE_LABEL[video.device])
+              : label;
+          return playing === video.youtubeId ? (
+            <div key={video.youtubeId} className="guide-video">
+              <iframe
+                src={youtubeEmbedUrl(video.youtubeId, video.startSeconds, language)}
+                title={`${title} · ${name}`}
+                allow="autoplay; encrypted-media; picture-in-picture"
+                referrerPolicy="strict-origin-when-cross-origin"
+              />
+            </div>
+          ) : (
+            <button
+              key={video.youtubeId}
+              type="button"
+              className="guide-video guide-video-poster"
+              onClick={() => setPlaying(video.youtubeId)}
+            >
+              <img src={youtubeThumbnailUrl(video.youtubeId)} alt="" />
+              <span className="guide-video-label">
+                <Icon name="play" size={18} />
+                {name}
+              </span>
+            </button>
+          );
+        })}
+      </div>
+    </section>
   );
 }
 

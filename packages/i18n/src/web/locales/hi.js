@@ -1001,7 +1001,6 @@ export default {
     signInSub: 'Apple से साइन इन करने पर आपको बस Face ID से पुष्टि करनी होती है।',
     family: '“{{tab}}” में “{{create}}” पर टैप करें और अपने परिवार को एक नाम दें।',
     done: 'आपका हिस्सा पूरा हो गया।',
-    next: 'अगला कदम: अपने बच्चे के डिवाइस पर KidGate इंस्टॉल करें। उस डिवाइस के लिए बना वीडियो चुनें।',
     parentYoutubeTitle: 'अपने फ़ोन पर KidGate कैसे सेट अप करें',
     parentYoutubeDescription:
       'KidGate इंस्टॉल करें, साइन इन करें और अपना परिवार बनाएँ: अपने बच्चे के डिवाइस कनेक्ट करने से पहले का पहला कदम।',
@@ -1014,8 +1013,7 @@ export default {
     tapAllow: '“{{allow}}” पर टैप करें।',
     extras: 'अंत में, कैमरा और माइक्रोफ़ोन की अनुमति दें।',
     extrasSub: 'वैकल्पिक: इससे आपका बच्चा SOS में फ़ोटो या आवाज़ जोड़ सकता है।',
-    pairNext: 'अगला कदम: अपने फ़ोन से नियम तय करें।',
-    iosTitle: 'अपने बच्चे का iPhone सेट अप करें',
+    iosTitle: 'अपने बच्चे का iPhone या iPad सेट अप करें',
     childPhone: 'बच्चे का iPhone',
     iosOpen: 'अपने बच्चे के iPhone पर KidGate खोलें और “{{child}}” चुनें।',
     iosScan: 'अपने फ़ोन में “{{add}}” पर टैप करें और QR कोड स्कैन करें।',
@@ -1037,10 +1035,10 @@ export default {
     iosBlockedSub:
       'आप “{{unlock}}” पर टैप करते हैं, अपना PIN डालते हैं, फिर ऐप्स चुनते हैं।',
     iosDone: 'आपके बच्चे का iPhone सुरक्षित है।',
-    iosYoutubeTitle: 'अपने बच्चे के iPhone पर KidGate कैसे सेट अप करें',
+    iosYoutubeTitle: 'अपने बच्चे के iPhone या iPad पर KidGate कैसे सेट अप करें',
     iosYoutubeDescription:
-      'QR कोड से अपने बच्चे के iPhone को अपने फ़ोन से कनेक्ट करें, फिर स्क्रीन टाइम और KidGate के लिए ज़रूरी बाकी अनुमतियाँ एक-एक करके चालू करें।',
-    androidTitle: 'अपने बच्चे का Android फ़ोन सेट अप करें',
+      'QR कोड से अपने बच्चे के iPhone या iPad को अपने फ़ोन से कनेक्ट करें, फिर स्क्रीन टाइम और KidGate के लिए ज़रूरी बाकी अनुमतियाँ एक-एक करके चालू करें।',
+    androidTitle: 'अपने बच्चे का Android फ़ोन या टैबलेट सेट अप करें',
     childAndroid: 'बच्चे का Android',
     androidOpen: 'अपने बच्चे के फ़ोन पर KidGate खोलें और “{{child}}” चुनें।',
     androidScan: 'अपने फ़ोन पर KidGate से QR कोड स्कैन करें।',
@@ -1065,10 +1063,11 @@ export default {
       '“{{alerts}}” के लिए, “{{grant}}” पर टैप करें और इसे KidGate के लिए चालू करें।',
     androidMessagesSub:
       'KidGate फ़ोन पर ही आने वाले संदेशों में चेतावनी वाले शब्द जाँचता है।',
-    androidDone: 'आपके बच्चे का फ़ोन सुरक्षित है।',
-    androidYoutubeTitle: 'अपने बच्चे के Android फ़ोन पर KidGate कैसे सेट अप करें',
+    androidDone: 'आपके बच्चे का Android फ़ोन सुरक्षित है।',
+    androidYoutubeTitle:
+      'अपने बच्चे के Android फ़ोन या टैबलेट पर KidGate कैसे सेट अप करें',
     androidYoutubeDescription:
-      'QR कोड से अपने बच्चे के Android फ़ोन को अपने फ़ोन से कनेक्ट करें, फिर KidGate के लिए ज़रूरी अनुमतियाँ एक-एक करके चालू करें।',
+      'QR कोड से अपने बच्चे के Android फ़ोन या टैबलेट को अपने फ़ोन से कनेक्ट करें, फिर KidGate के लिए ज़रूरी अनुमतियाँ एक-एक करके चालू करें।',
     macTitle: 'अपने बच्चे का Mac सेट अप करें',
     childMac: 'बच्चे का Mac',
     macDownload:
@@ -1089,5 +1088,51 @@ export default {
     macYoutubeTitle: 'अपने बच्चे के Mac पर KidGate कैसे सेट अप करें',
     macYoutubeDescription:
       'अपने बच्चे के Mac पर KidGate इंस्टॉल करें, QR कोड से उसे अपने फ़ोन से कनेक्ट करें, फिर System Settings में वेब फ़िल्टर चालू करें।',
+    windowsTitle: 'अपने बच्चे का Windows PC सेट अप करें',
+    childWindows: 'बच्चे का PC',
+    windowsDownload:
+      'अपने बच्चे के PC पर kidgate.app से Windows के लिए KidGate डाउनलोड करें।',
+    windowsSmartScreen:
+      'अगर Windows कहे कि उसने आपका PC सुरक्षित किया, तो अधिक जानकारी (More info) चुनें, उसके बाद फिर भी चलाएँ (Run anyway)।',
+    windowsInstall:
+      'एडमिनिस्ट्रेटर अनुमति के प्रॉम्प्ट को मंज़ूरी दें, फिर इंस्टॉलर में बताए गए कदम पूरे करें।',
+    windowsInstallSub: 'सामान्य खाते पर Windows एडमिनिस्ट्रेटर का पासवर्ड माँगता है।',
+    windowsConfirm: 'PC पर देख लें कि नाम आपका ही है, फिर “{{yes}}” पर क्लिक करें।',
+    windowsAssign:
+      'चुनें कि यह PC कौन इस्तेमाल करता है, या अपने बच्चे को नाम से जोड़ें।',
+    windowsSetup: 'PC पर {{location}} के लिए “{{allow}}” पर क्लिक करें।',
+    windowsSetupSub: 'कुछ ही सेकंड में KidGate का {{filter}} अपने आप चालू हो जाता है।',
+    windowsDone: 'आपके बच्चे का PC सुरक्षित है।',
+    windowsYoutubeTitle: 'अपने बच्चे के Windows PC पर KidGate कैसे सेट अप करें',
+    windowsYoutubeDescription:
+      'अपने बच्चे के Windows PC पर KidGate इंस्टॉल करें और QR कोड से उसे अपने फ़ोन से कनेक्ट करें। इसके बाद वेब फ़िल्टर अपने आप चालू हो जाता है।',
+    chromeTitle: 'Chrome में KidGate सेट अप करें',
+    childChrome: 'बच्चे का कंप्यूटर',
+    chromeSite:
+      'अपने बच्चे के कंप्यूटर पर Chrome में kidgate.app खोलें और Chrome चुनें।',
+    chromeStore:
+      'Chrome वेब स्टोर में “Chrome में जोड़ें” पर क्लिक करें, फिर “एक्सटेंशन जोड़ें” पर।',
+    chromeOpen:
+      'Chrome टूलबार में KidGate आइकन पर क्लिक करें। पॉप-अप में एक QR कोड दिखता है।',
+    chromeOpenSub: 'पेयर करते समय इसे खुला रखें।',
+    chromeConfirm:
+      'KidGate में देख लें कि नाम आपका ही है, फिर “{{yes}}” पर क्लिक करें।',
+    chromeAssign: 'चुनें कि इस कंप्यूटर पर Chrome कौन-सा बच्चा इस्तेमाल करता है।',
+    chromeDone: 'आपके बच्चे के कंप्यूटर पर Chrome सुरक्षित है।',
+    chromeYoutubeTitle: 'अपने बच्चे के कंप्यूटर पर Chrome में KidGate कैसे सेट अप करें',
+    chromeYoutubeDescription:
+      'अपने बच्चे के कंप्यूटर पर Chrome में KidGate एक्सटेंशन जोड़ें और QR कोड से उसे अपने फ़ोन से कनेक्ट करें। इसके बाद यह Chrome में वेब फ़िल्टर करता है।',
+    dashboardComputer: 'आपका कंप्यूटर',
+    dashboardSite: 'अपने कंप्यूटर पर kidgate.app खोलें और “डैशबोर्ड” पर क्लिक करें।',
+    dashboardDone: 'आपने वेब डैशबोर्ड में साइन इन कर लिया है।',
+    tvTitle: 'अपने बच्चे का Android TV सेट अप करें',
+    tvAssign: 'चुनें कि यह टीवी कौन इस्तेमाल करता है, या अपने बच्चे को नाम से जोड़ें।',
+    tvDone: 'आपके बच्चे का Android TV सुरक्षित है।',
+    tvYoutubeTitle: 'अपने बच्चे के Android TV पर KidGate कैसे सेट अप करें',
+    outroTitle: 'सब कुछ तैयार है।',
+    outroSub: 'हमें उम्मीद है कि KidGate से आपके परिवार को संभालना आसान होगा।',
+    allYoutubeTitle: 'अपने फ़ोन और अपने बच्चे के डिवाइस पर KidGate कैसे सेट अप करें',
+    allYoutubeDescription:
+      'पूरा सेटअप एक वीडियो में: पहले आपका फ़ोन, फिर आपके बच्चे का हर डिवाइस (iPhone या iPad, Android फ़ोन या टैबलेट, Mac, Windows PC, Android TV, Chrome), और आख़िर में वेब डैशबोर्ड। नीचे दी गई सूची से अपना डिवाइस चुनें।',
   },
 };

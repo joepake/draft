@@ -37,8 +37,8 @@ export const pairing = {
   parentAccount: 'Tài khoản phụ huynh',
   unknownParent: 'một phụ huynh',
   expiresIn: 'Hết hạn sau {{countdown}}',
-  autoRefreshPaused:
-    'Đã tạm dừng tự động tải lại mã để tiết kiệm dữ liệu di động và pin. Vui lòng chọn Tạo mã mới khi bạn đã sẵn sàng.',
+  inviteCodeExpired: 'Mã này đã hết hạn. Hãy chọn nút Tạo mã mới để lấy mã khác.',
+  codeExpired: 'Mã này đã hết hạn. Con chọn nút Tạo mã mới để lấy mã khác nhé.',
   scanQrTitle: 'Quét mã QR',
   scanQrSubtitle: 'Vui lòng đưa mã QR vào giữa khung hình.',
   enterCodeManually: 'Nhập mã thủ công',

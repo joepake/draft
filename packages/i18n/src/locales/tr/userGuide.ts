@@ -5,6 +5,8 @@ export const userGuide = {
   stepLabel: 'Adım {{n}}',
   stepsSectionTitle: 'Adımlar',
   tipTitle: 'İpucu',
+  // The Help Center video button: the wizard's own label (child.setupWizardWatchGuide).
+  watchVideo: 'Nasıl yapılır',
   searchPlaceholder: 'Kılavuzda ara…',
   searchClear: 'Aramayı temizle',
   searchEmpty: 'Kılavuzda eşleşen bir şey yok. Başka bir kelime deneyin.',

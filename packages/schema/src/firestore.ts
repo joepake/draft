@@ -7,6 +7,7 @@ import type {
   DeviceWebToday,
   DeviceTopAppsOther,
   DeviceWeekCounters,
+  ParentPinVerifier,
 } from './device';
 import type { UsageAppBreakdown } from './usageDay';
 import type { DeviceControls, DeviceLocation } from './deviceControls';
@@ -343,6 +344,8 @@ export interface ChildDeviceRecord {
   messageMonitoring?: DeviceMessageMonitoringState;
   parentPinFailedAttempts?: number;
   parentPinLocked?: boolean;
+  /** See `Device.parentPinVerifier`. Read by the phone's own lock overlay. */
+  parentPinVerifier?: ParentPinVerifier;
   /** Deduped web-filter blocked visits since install (Android child only). */
   webFilterBlockedCount?: number;
   /** Written by `logChildWebActivity`, never by a client. */

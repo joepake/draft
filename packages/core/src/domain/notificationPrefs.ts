@@ -1,5 +1,6 @@
 import {
   ALERT_PREF_KEYS,
+  DEFAULT_QUIET_HOURS,
   DEFAULT_QUIET_HOURS_END,
   DEFAULT_QUIET_HOURS_START,
   type AlertPrefKey,
@@ -30,19 +31,48 @@ export function normalizeAlertPrefs(value: unknown): AlertPrefs {
   );
 }
 
+/** The only bound `functions/lib/alertPrefs.parseHhMm` accepts. */
+const HH_MM = /^([01]\d|2[0-3]):[0-5]\d$/;
+
+/**
+ * Read the way the server reads it, so a screen never shows a window the
+ * fan-out is not enforcing. Two shapes used to differ: an unparseable bound
+ * (a cleared `<input type="time">` writes `''`) showed as 00:00 here while
+ * the server used the default, and a zero-width window showed as on while the
+ * server treated it as off. The zero-width one comes back as the default
+ * window, switched off, so the next switch-on writes a real window rather than
+ * re-writing the one the server refuses.
+ */
 export function normalizeQuietHours(value: unknown): QuietHours {
   const source =
     value && typeof value === 'object' ? (value as Record<string, unknown>) : {};
 
   const start =
-    typeof source.start === 'string' ? source.start : DEFAULT_QUIET_HOURS_START;
-  const end = typeof source.end === 'string' ? source.end : DEFAULT_QUIET_HOURS_END;
+    typeof source.start === 'string' && HH_MM.test(source.start)
+      ? source.start
+      : DEFAULT_QUIET_HOURS_START;
+  const end =
+    typeof source.end === 'string' && HH_MM.test(source.end)
+      ? source.end
+      : DEFAULT_QUIET_HOURS_END;
+
+  if (start === end) {
+    return { ...DEFAULT_QUIET_HOURS, enabled: false };
+  }
 
   return {
     enabled: source.enabled === true,
     start,
     end,
   };
+}
+
+/** Whether a window may be written: both bounds `HH:mm`, and not equal. */
+export function isValidQuietHoursWindow({
+  start,
+  end,
+}: Pick<QuietHours, 'start' | 'end'>): boolean {
+  return HH_MM.test(start) && HH_MM.test(end) && start !== end;
 }
 
 export function normalizeNotificationPrefs(

@@ -31,6 +31,7 @@ import { getAppCategories as readAppCategories } from '@kidgate/core/repositorie
 import { fetchLatestBuilds } from '@kidgate/core/repositories/releaseConfig';
 import { createApiAdapter } from './api.js';
 import { createClockAdapter } from './clock.js';
+import { fetchSetupGuides } from '@kidgate/core/repositories/setupGuide';
 import { createFirestoreAdapter } from './firestore.js';
 import { wrapOneShot } from './oneShot.js';
 import { wrapWithReadCounter } from './readCounter.js';
@@ -107,6 +108,8 @@ export const familyPlacesRepository = createFamilyPlacesRepository({ api });
  */
 export const parentInviteRepository = createParentInviteRepository({ api });
 export const leaderboardRepository = createLeaderboardRepository({ db });
+/** `config/setupGuides` — the User Guide's videos ride the same document as the wizard's. */
+export const fetchGuideConfig = () => fetchSetupGuides(db);
 export const rewardTaskRepository = createRewardTaskRepository({ db, api });
 export const sosAlertRepository = createSosAlertRepository({ db });
 export const trustedContactRepository = createTrustedContactRepository({ db });

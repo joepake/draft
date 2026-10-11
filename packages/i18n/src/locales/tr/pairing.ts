@@ -38,8 +38,9 @@ export const pairing = {
   parentAccount: 'Ebeveyn hesabı',
   unknownParent: 'bir ebeveyn',
   expiresIn: '{{countdown}} içinde sona erer',
-  autoRefreshPaused:
-    'Mobil veri ve pil tasarrufu için otomatik kod yenileme duraklatıldı. Hazır olduğunuzda Yeni kod’u seçin.',
+  inviteCodeExpired:
+    'Bu kodun süresi doldu. Başka bir kod almak için Yeni kod’u seçin.',
+  codeExpired: 'Bu kodun süresi doldu. Başka bir kod almak için Yeni kod’u seç.',
   scanQrTitle: 'QR kodu tara',
   scanQrSubtitle: 'QR kodunu çerçevenin içine hizalayın.',
   enterCodeManually: 'Kodu elle gir',

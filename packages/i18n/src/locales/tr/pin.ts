@@ -68,4 +68,6 @@ export const pin = {
   enterCurrentParentPin: 'Mevcut Ebeveyn PIN’ini gir.',
   currentParentPinIncorrect:
     'Mevcut Ebeveyn PIN’i yanlış. Kontrol edip tekrar deneyin ya da sıfırlamak için “PIN’inizi mi unuttunuz?” seçeneğini kullanın.',
+  // The offline Parent PIN pad's wait; {{time}} is a shared.duration*Short phrase.
+  offlineUnlockWait: 'Çok fazla yanlış PIN. {{time}} sonra tekrar dene.',
 } as const;

@@ -37,8 +37,9 @@ export const pairing = {
   parentAccount: 'حساب الوالد',
   unknownParent: 'أحد الوالدين',
   expiresIn: 'تنتهي الصلاحية خلال {{countdown}}',
-  autoRefreshPaused:
-    'تم إيقاف التحديث التلقائي للرمز مؤقتًا لتوفير بيانات الجوال والبطارية. اختر «رمز جديد» عندما تكون مستعدًا.',
+  inviteCodeExpired:
+    'انتهت صلاحية هذا الرمز. يمكن الحصول على رمز آخر باختيار «رمز جديد».',
+  codeExpired: 'انتهت صلاحية هذا الرمز. يمكن الحصول على رمز آخر باختيار «رمز جديد».',
   scanQrTitle: 'مسح رمز QR',
   scanQrSubtitle: 'ضع رمز QR داخل الإطار.',
   enterCodeManually: 'إدخال الرمز يدويًا',
