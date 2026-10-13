@@ -297,7 +297,7 @@ export const userGuide = {
         '1': 'Sur l’appareil parent, ouvrez le profil de votre enfant (ou l’appareil, s’il n’est attribué à aucun enfant).',
         '2': 'Sélectionnez Tout verrouiller pour verrouiller tous les appareils de cet enfant, ou ouvrez un appareil et sélectionnez Verrouiller l’appareil.',
         '3': 'Attendez quelques secondes. Le statut doit passer à Verrouillé. Si rien ne change, ouvrez KidGate sur l’appareil de l’enfant et revérifiez les autorisations.',
-        '4': 'Pour restaurer l’accès, sélectionnez Tout déverrouiller (ou Déverrouiller sur l’écran de l’appareil) et confirmez.',
+        '4': 'Pour restaurer l’accès, sélectionnez Tout déverrouiller (ou Déverrouiller sur l’écran de l’appareil).',
         '5': 'Facultatif : vous pouvez aussi verrouiller ou déverrouiller rapidement depuis Famille si ces raccourcis apparaissent sur la fiche appareil.',
         '6': 'Un téléphone ou un ordinateur verrouillé permet toujours à votre enfant d’envoyer un SOS. Sur Android, le SOS ouvre aussi les appels, les plans et les messages pendant 5 minutes, tout le reste restant verrouillé, et cela apparaît dans Activité.',
       },

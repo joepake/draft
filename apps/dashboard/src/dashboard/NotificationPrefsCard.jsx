@@ -49,6 +49,7 @@ export default function NotificationPrefsCard({
   const [prefs, setPrefs] = useState(DEFAULT_NOTIFICATION_PREFS);
   const [reloadKey, reload] = useReload();
   const [busy, setBusy] = useState(false);
+  const [notice, setNotice] = useState(null);
 
   // A phone removed while this was open, or the first list arriving after it.
   useEffect(() => {
@@ -73,7 +74,12 @@ export default function NotificationPrefsCard({
     return null;
   }
 
-  const write = async run => {
+  // `next` is what the card shows at once: the document only says it after
+  // the write lands and the re-read below comes back.
+  const write = async (run, next) => {
+    const previous = prefs;
+    setPrefs(next);
+    setNotice(null);
     setBusy(true);
     try {
       await run();
@@ -85,8 +91,10 @@ export default function NotificationPrefsCard({
        */
       reload();
     } catch {
-      // A refused write changed nothing, so the document still says what the
-      // switch already shows. Re-reading here would buy no new fact.
+      // A refused write changed nothing, so the document still says what was
+      // there before the press: put that back, and say why it moved back.
+      setPrefs(previous);
+      setNotice(t('controlError.generic'));
     } finally {
       setBusy(false);
     }
@@ -96,8 +104,18 @@ export default function NotificationPrefsCard({
   // server reads both as something other than what the field shows, so the
   // input snaps back to what is stored instead.
   const writeWindow = next => {
-    if (!isValidQuietHoursWindow(next)) return;
-    write(() => notificationPrefsRepository.setQuietHours(accountId, deviceId, next));
+    if (!isValidQuietHoursWindow(next)) {
+      // Equal bounds snapped back with no word, which read as a broken field.
+      // A cleared field needs none: what it snaps back to is the answer.
+      if (next.start && next.end) {
+        setNotice(appT('notifications.quietHoursSameTime'));
+      }
+      return;
+    }
+    write(() => notificationPrefsRepository.setQuietHours(accountId, deviceId, next), {
+      ...prefs,
+      quietHours: next,
+    });
   };
 
   const disabled = readOnly || busy || !deviceId;
@@ -150,13 +168,15 @@ export default function NotificationPrefsCard({
             label={appT(`notifications.alert.${key}.label`)}
             disabled={disabled}
             onChange={next =>
-              write(() =>
-                notificationPrefsRepository.setAlertPref(
-                  accountId,
-                  deviceId,
-                  key,
-                  next,
-                ),
+              write(
+                () =>
+                  notificationPrefsRepository.setAlertPref(
+                    accountId,
+                    deviceId,
+                    key,
+                    next,
+                  ),
+                { ...prefs, alerts: { ...prefs.alerts, [key]: next } },
               )
             }
           />
@@ -171,15 +191,22 @@ export default function NotificationPrefsCard({
           on={Boolean(prefs.quietHours?.enabled)}
           label={appT('notifications.quietHoursLabel')}
           disabled={disabled}
-          onChange={next =>
-            write(() =>
-              notificationPrefsRepository.setQuietHours(accountId, deviceId, {
-                ...DEFAULT_NOTIFICATION_PREFS.quietHours,
-                ...prefs.quietHours,
-                enabled: next,
-              }),
-            )
-          }
+          onChange={next => {
+            const quietHours = {
+              ...DEFAULT_NOTIFICATION_PREFS.quietHours,
+              ...prefs.quietHours,
+              enabled: next,
+            };
+            write(
+              () =>
+                notificationPrefsRepository.setQuietHours(
+                  accountId,
+                  deviceId,
+                  quietHours,
+                ),
+              { ...prefs, quietHours },
+            );
+          }}
         />
       </div>
 
@@ -217,6 +244,11 @@ export default function NotificationPrefsCard({
         </div>
       )}
 
+      {notice && (
+        <p className="hint" role="alert">
+          {notice}
+        </p>
+      )}
       <p className="hint">{appT('notifications.footnote')}</p>
       {readOnly && <p className="hint">{t('dash.unlockToChange')}</p>}
     </Card>

@@ -333,6 +333,8 @@ export default {
     checkingSession: 'आपका सत्र जाँचा जा रहा है…',
     loadingFamily: 'आपका परिवार लोड हो रहा है…',
     loadFailedTitle: 'आपका परिवार लोड नहीं हो सका',
+    partialLoadFailed:
+      'इस पेज का कुछ हिस्सा लोड नहीं हुआ, इसलिए कोई सूची खाली दिख सकती है जबकि वह खाली नहीं है।',
     noAccessTitle: 'इस खाते में कोई परिवार नहीं',
     noAccess:
       'इस खाते की किसी KidGate परिवार तक पहुँच नहीं है। उसी अभिभावक खाते से साइन इन करें जो आप ऐप में इस्तेमाल करते हैं।',
@@ -1131,6 +1133,7 @@ export default {
     tvYoutubeTitle: 'अपने बच्चे के Android TV पर KidGate कैसे सेट अप करें',
     outroTitle: 'सब कुछ तैयार है।',
     outroSub: 'हमें उम्मीद है कि KidGate से आपके परिवार को संभालना आसान होगा।',
+    findDeviceTitle: 'अपने बच्चे का डिवाइस ढूँढें',
     allYoutubeTitle: 'अपने फ़ोन और अपने बच्चे के डिवाइस पर KidGate कैसे सेट अप करें',
     allYoutubeDescription:
       'पूरा सेटअप एक वीडियो में: पहले आपका फ़ोन, फिर आपके बच्चे का हर डिवाइस (iPhone या iPad, Android फ़ोन या टैबलेट, Mac, Windows PC, Android TV, Chrome), और आख़िर में वेब डैशबोर्ड। नीचे दी गई सूची से अपना डिवाइस चुनें।',

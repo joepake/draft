@@ -221,6 +221,7 @@ export const webFilter = {
     '{{domain}} остаётся заблокированным на {{deviceName}}.',
   siteRequestReceived: 'Запрос сайта',
   siteRequestReceivedDescription: '{{deviceName}} просит открыть {{domain}}.',
+  siteRequestAlsoAllows: 'Также разрешает {{domains}}, чтобы сайт мог загрузиться.',
   privateDnsStep1: 'Открой Настройки на этом устройстве.',
   privateDnsStep2: 'Выбери «Сеть и интернет».',
   privateDnsStep3: 'Открой «Личный DNS-сервер» и выбери «Отключено».',

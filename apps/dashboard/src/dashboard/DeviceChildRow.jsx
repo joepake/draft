@@ -3,6 +3,7 @@ import Icon from '@kidgate/web-ui/Icon';
 import { useT } from '@kidgate/web-ui/useT';
 import Card from './Card.jsx';
 import ChildInitial from './ChildInitial.jsx';
+import { pressNextOnEnter } from './enterPresses.js';
 
 /**
  * Whose rules this device's grid is editing — drawn above the grid on the
@@ -161,6 +162,7 @@ export default function DeviceChildRow({
             value={newChild}
             disabled={locked}
             onChange={event => setNewChild(event.target.value)}
+            onKeyDown={pressNextOnEnter}
           />
           <button
             className="btn btn-sm"

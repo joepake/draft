@@ -68,7 +68,7 @@ export const sos = {
   deviceNeedsHelp: '\u200F{{deviceName}} بحاجة إلى مساعدة',
   tapPhotoToEnlarge: 'اضغط على الصورة لتكبيرها',
   noPhotoAttached: 'لم يتم إرفاق صورة بهذا التنبيه.',
-  sentRelativeTime: 'تم الإرسال {{relativeTime}}',
+  sentAtTime: 'تم الإرسال الساعة {{time}} · {{relativeTime}}',
   imOnIt: 'سأتولى الأمر',
   acknowledging: 'جارٍ التأكيد…',
   unableToAcknowledgeSos: 'تعذر تأكيد الاطلاع. يرجى المحاولة مرة أخرى بعد قليل.',

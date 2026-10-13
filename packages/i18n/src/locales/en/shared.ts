@@ -40,6 +40,8 @@ export const shared = {
   // Shown instead of an empty state when a live listener fails, so a broken
   // query never masquerades as "there is nothing here".
   loadFailed: 'Unable to load this list. Pull down to retry.',
+  loadFailedTapRetry: 'Unable to load this list.',
+  removeConfirm: 'Remove “{{name}}”?',
   loadFailedOffline: 'Showing the last saved copy — you appear to be offline.',
   dismissMessage: 'Dismiss message',
   notNow: 'Not now',

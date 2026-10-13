@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {
   isKnownPermission,
@@ -52,6 +52,7 @@ import AttentionList from '../dashboard/AttentionList.jsx';
 import { getProtectionSummaryKeys } from '@kidgate/core/domain/protectionStatus';
 import {
   activeBonusMinutes,
+  childLimitWithBonus,
   effectiveDailyLimitMinutes,
 } from '@kidgate/core/domain/dailyLimit';
 import { resolveLockEnforcement } from '@kidgate/core/domain/lockEnforcement';
@@ -139,6 +140,7 @@ import { getLocaleTag } from '@kidgate/i18n/web';
 import { formatDayKey } from '../dashboard/reportCopy.js';
 import Card from '../dashboard/Card.jsx';
 import ControlsTab from '../dashboard/ControlsTab.jsx';
+import { WriteLockContext } from '../dashboard/writeLock.js';
 
 /**
  * Phone width, where the left menu is a bottom bar.
@@ -570,6 +572,7 @@ function KidGroupHead({
   readOnly = false,
 }) {
   const { t } = useT();
+  const writeLock = useContext(WriteLockContext);
   /*
    * Last active is worth a line in both states — online it is the proof behind
    * the green dot, offline it is the whole question. Folded across the set,
@@ -700,14 +703,18 @@ function KidGroupHead({
         {onLockAll && lockable.length > 0 && (
           <button
             className="btn btn-sm"
-            disabled={readOnly || lockBusy}
+            // Gated, not dead: a press opens the PIN step-up, the one thing a
+            // touchscreen can learn the reason from (`title` never shows).
+            disabled={lockBusy}
             title={readOnly ? t('dash.unlockToChange') : undefined}
             aria-label={
               allLocked
                 ? appT('family.unlockAllA11y', { childName: group.child?.name ?? '' })
                 : appT('family.lockAllA11y', { childName: group.child?.name ?? '' })
             }
-            onClick={() => onLockAll(lockable, allLocked)}
+            onClick={() =>
+              readOnly ? writeLock?.requestUnlock() : onLockAll(lockable, allLocked)
+            }
           >
             {allLocked ? appT('family.unlockAll') : appT('family.lockAll')}
           </button>
@@ -807,6 +814,10 @@ export default function Dashboard({
    */
   loadedAt = null,
   onRefresh = null,
+  /** A refresh is in flight: the button waits for it instead of re-firing. */
+  refreshing = false,
+  /** A side panel failed to read (`useFamilyData`'s `feedFailed`). */
+  partialFailure = false,
   actions,
   /**
    * The weekly reports, from `useFamilyReports`. Null in any rendering that has
@@ -2308,12 +2319,14 @@ export default function Dashboard({
       </button>
       <button
         className="btn btn-sm btn-primary"
-        disabled={(live && !canWrite) || savingAppId === row.id}
+        disabled={savingAppId === row.id}
         title={live && !canWrite ? t('dash.unlockToChange') : undefined}
         onClick={() =>
-          run(`app-flag-${row.id}`, () =>
-            isDismissed ? restoreFlag(row.id) : markSafe(row),
-          )
+          live && !canWrite
+            ? setStepUpOpen(true)
+            : run(`app-flag-${row.id}`, () =>
+                isDismissed ? restoreFlag(row.id) : markSafe(row),
+              )
         }
       >
         {activityT(isDismissed ? 'appInventory.undoSafe' : 'appInventory.markSafe')}
@@ -2693,7 +2706,15 @@ export default function Dashboard({
       />
     );
 
-  return (
+  // A switch the write gate holds opens the step-up when pressed (`Toggle`).
+  const writeLock = useMemo(
+    () => ({ locked: live && !canWrite, requestUnlock: () => setStepUpOpen(true) }),
+    [live, canWrite],
+  );
+
+  // Built first and wrapped after, so the provider adds no indentation to the
+  // two and a half thousand lines below.
+  const page = (
     <div className="dash">
       <aside className="dash-side">
         <div className="dash-brand">
@@ -2896,7 +2917,12 @@ export default function Dashboard({
                   </span>
                   {t('dash.liveOnApp')}
                 </span>
-                <button className="btn btn-sm" onClick={onRefresh}>
+                <button
+                  className="btn btn-sm"
+                  onClick={onRefresh}
+                  disabled={refreshing}
+                  aria-busy={refreshing}
+                >
                   <Icon name="refresh" size={14} />
                   <span>{t('dash.refresh')}</span>
                 </button>
@@ -2933,12 +2959,15 @@ export default function Dashboard({
             {deviceView && supportsLock(device) && (
               <button
                 className="btn btn-primary"
-                disabled={(live && !canWrite) || busy === 'lock'}
+                // Gated, not dead: a press opens the PIN step-up.
+                disabled={busy === 'lock'}
                 title={live && !canWrite ? t('dash.unlockToChange') : undefined}
-                onClick={() =>
-                  live &&
-                  run('lock', () => actions.setLock(device.id, !device.isLocked))
-                }
+                onClick={() => {
+                  if (live && !canWrite) setStepUpOpen(true);
+                  else if (live) {
+                    run('lock', () => actions.setLock(device.id, !device.isLocked));
+                  }
+                }}
               >
                 {busy === 'lock'
                   ? t('dash.working')
@@ -3102,8 +3131,21 @@ export default function Dashboard({
           </section>
         )}
 
+        {/* One notice for every side panel, above them all: each panel's empty
+            state cannot tell a quiet day from a read that never landed. */}
+        {partialFailure && (
+          <div className="write-note" role="status">
+            {t('live.partialLoadFailed')}
+            {onRefresh && (
+              <button className="btn btn-sm" onClick={onRefresh} disabled={refreshing}>
+                {t('qr.tryAgain')}
+              </button>
+            )}
+          </div>
+        )}
+
         {live && !canWrite && (
-          <div className="write-note">
+          <div className="write-note write-lock">
             <strong>{t('dash.unlockTitle')}</strong> {t('dash.unlockBody')}
             <button className="btn btn-sm" onClick={() => setStepUpOpen(true)}>
               {t('dash.unlockCta')}
@@ -3460,7 +3502,11 @@ export default function Dashboard({
                           familyCounts.sosDeviceIds.has(d.id),
                         )}
                         usedMinutes={childMinutesUsedToday(group.devices)}
-                        limitMinutes={group.child?.rules?.dailyLimitMinutes ?? null}
+                        limitMinutes={childLimitWithBonus(
+                          group.child?.rules?.dailyLimitMinutes,
+                          group.devices.map(d => d.controls),
+                          Date.now(),
+                        )}
                         readOnly={live && !canWrite}
                         lockBusy={busy === `lock-all-${group.key}`}
                         onLockAll={
@@ -4155,7 +4201,9 @@ export default function Dashboard({
                     : /* `formatDayKey`, never a raw `new Date(dayKey)`: the key
                          parses as UTC midnight and formatting it in a local zone
                          west of UTC prints the day before. */
-                      t('dash.topAppsTitleDay', { date: formatDayKey(screenDay.date) })
+                      t('dash.topAppsTitleDay', {
+                        date: formatDayKey(screenDay.date),
+                      })
                 }
                 subtitle={t('dash.topAppsSub')}
               >
@@ -4244,18 +4292,22 @@ export default function Dashboard({
                 readOnly={live && !canWrite}
                 busy={busy === 'schedule-windows'}
                 onSave={next =>
-                  run('schedule-windows', () =>
-                    // Routed exactly like the switch above it: on an assigned
-                    // device the schedule is the CHILD's rule and the server
-                    // fans it out to every sibling. Writing this device's own
-                    // controls would be wiped by the next fan-out.
-                    device.childId
-                      ? actions.updateChildRules(device.childId, {
-                          scheduleWindows: next,
-                        })
-                      : actions.updateControls(device.id, {
-                          scheduleWindows: next,
-                        }),
+                  run(
+                    'schedule-windows',
+                    () =>
+                      // Routed exactly like the switch above it: on an assigned
+                      // device the schedule is the CHILD's rule and the server
+                      // fans it out to every sibling. Writing this device's own
+                      // controls would be wiped by the next fan-out.
+                      device.childId
+                        ? actions.updateChildRules(device.childId, {
+                            scheduleWindows: next,
+                          })
+                        : actions.updateControls(device.id, {
+                            scheduleWindows: next,
+                          }),
+                    // A save that lands said nothing; the phone says this.
+                    activityT('blockedHours.toastSaveSuccess'),
                   )
                 }
               />
@@ -4329,10 +4381,13 @@ export default function Dashboard({
                     readOnly={live && !canWrite}
                     busy={busy === 'app-limits'}
                     onSave={next =>
-                      run('app-limits', () =>
-                        // Per-device, never routed: the package names exist on
-                        // this one machine (`docs/CHILD_HUB.md`).
-                        actions.updateControls(device.id, { appLimits: next }),
+                      run(
+                        'app-limits',
+                        () =>
+                          // Per-device, never routed: the package names exist on
+                          // this one machine (`docs/CHILD_HUB.md`).
+                          actions.updateControls(device.id, { appLimits: next }),
+                        activityT('appLimits.toastSaved'),
                       )
                     }
                   />
@@ -4393,16 +4448,17 @@ export default function Dashboard({
                               </span>
                               <button
                                 className="btn btn-sm btn-primary"
-                                disabled={
-                                  (live && !canWrite) ||
-                                  busy === `install-allow-${row.id}`
-                                }
+                                disabled={busy === `install-allow-${row.id}`}
                                 title={
                                   live && !canWrite
                                     ? t('dash.unlockToChange')
                                     : undefined
                                 }
-                                onClick={() => approveInstall(row.id)}
+                                onClick={() =>
+                                  live && !canWrite
+                                    ? setStepUpOpen(true)
+                                    : approveInstall(row.id)
+                                }
                               >
                                 {t('dash.installAllow')}
                               </button>
@@ -5263,6 +5319,10 @@ export default function Dashboard({
         />
       )}
     </div>
+  );
+
+  return (
+    <WriteLockContext.Provider value={writeLock}>{page}</WriteLockContext.Provider>
   );
 }
 

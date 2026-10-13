@@ -40,6 +40,8 @@ export const shared = {
   // Shown instead of an empty state when a live listener fails, so a broken
   // query never masquerades as "there is nothing here".
   loadFailed: 'Не удалось загрузить список. Потяните вниз, чтобы повторить.',
+  loadFailedTapRetry: 'Не удалось загрузить список.',
+  removeConfirm: 'Удалить «{{name}}»?',
   loadFailedOffline: 'Показана последняя сохранённая копия — похоже, вы не в сети.',
   dismissMessage: 'Скрыть сообщение',
   notNow: 'Не сейчас',

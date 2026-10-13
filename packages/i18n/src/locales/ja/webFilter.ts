@@ -218,6 +218,7 @@ export const webFilter = {
   siteRequestReceived: 'サイトのリクエスト',
   siteRequestReceivedDescription:
     '{{deviceName}}から{{domain}}を開きたいというリクエストが届きました。',
+  siteRequestAlsoAllows: 'このサイトを読み込めるよう、{{domains}}も許可されます。',
   privateDnsStep1: 'このデバイスで設定を開いてください。',
   privateDnsStep2: '「ネットワークとインターネット」を選びます。',
   privateDnsStep3: '「プライベートDNS」を開き、「オフ」を選びます。',

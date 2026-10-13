@@ -218,6 +218,7 @@ export const webFilter = {
   siteRequestDeniedDescription: '{{domain}} tetap diblokir di {{deviceName}}.',
   siteRequestReceived: 'Permintaan situs',
   siteRequestReceivedDescription: '{{deviceName}} meminta membuka {{domain}}.',
+  siteRequestAlsoAllows: 'Juga mengizinkan {{domains}} agar situs ini bisa dimuat.',
   privateDnsStep1: 'Buka Pengaturan di perangkat ini.',
   privateDnsStep2: 'Pilih Jaringan & internet.',
   privateDnsStep3: 'Buka DNS Pribadi dan pilih Nonaktif.',

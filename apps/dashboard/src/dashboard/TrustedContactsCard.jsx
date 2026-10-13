@@ -130,7 +130,13 @@ export default function TrustedContactsCard({
                 aria-label={appT('sos.trustedContactsRemoveAccessibility', {
                   name: contact.name,
                 })}
-                onClick={() => remove(contact.id)}
+                onClick={() => {
+                  if (
+                    window.confirm(appT('shared.removeConfirm', { name: contact.name }))
+                  ) {
+                    remove(contact.id);
+                  }
+                }}
               >
                 <Icon name="trash" size={13} />
               </button>

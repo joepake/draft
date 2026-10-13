@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { useSheet } from '../dashboard/useSheet.js';
 import { useT } from '@kidgate/web-ui/useT';
+import { PARENT_PIN_LENGTH } from '@kidgate/schema/parentPin';
 import { useAuth } from './AuthContext.jsx';
 import QrSignIn from './QrSignIn.jsx';
 
@@ -18,6 +20,7 @@ import QrSignIn from './QrSignIn.jsx';
  */
 export default function StepUpSheet({ familyOwnerUserId, onClose, onUnlocked }) {
   const { t } = useT();
+  const sheetRef = useSheet(onClose);
   const { stepUpWithPin } = useAuth();
   const [pin, setPin] = useState('');
   const [busy, setBusy] = useState(false);
@@ -41,7 +44,7 @@ export default function StepUpSheet({ familyOwnerUserId, onClose, onUnlocked }) 
   const submit = useCallback(
     async event => {
       event.preventDefault();
-      if (busy || pin.length !== 6) return;
+      if (busy || pin.length !== PARENT_PIN_LENGTH) return;
       setBusy(true);
       setError(null);
       try {
@@ -77,6 +80,7 @@ export default function StepUpSheet({ familyOwnerUserId, onClose, onUnlocked }) 
   return (
     <div className="sheet-backdrop" onClick={onClose}>
       <div
+        ref={sheetRef}
         className="sheet"
         role="dialog"
         aria-modal="true"
@@ -103,7 +107,7 @@ export default function StepUpSheet({ familyOwnerUserId, onClose, onUnlocked }) 
             type="text"
             inputMode="numeric"
             autoComplete="off"
-            maxLength={6}
+            maxLength={PARENT_PIN_LENGTH}
             value={pin}
             disabled={busy}
             onChange={event => setPin(event.target.value.replace(/\D/g, ''))}
@@ -111,7 +115,7 @@ export default function StepUpSheet({ familyOwnerUserId, onClose, onUnlocked }) 
           <button
             className="btn btn-primary btn-block"
             type="submit"
-            disabled={busy || pin.length !== 6}
+            disabled={busy || pin.length !== PARENT_PIN_LENGTH}
           >
             {busy ? t('dash.working') : t('dash.pinSubmit')}
           </button>

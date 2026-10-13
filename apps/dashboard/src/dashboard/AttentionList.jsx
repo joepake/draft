@@ -77,7 +77,9 @@ export default function AttentionList({
                    the rest need the phone. So do the steps for a denied
                    permission: they are text, and a parent who cannot write still
                    has to read them to fix the device in their hand. */
-                disabled={blocked}
+                // Busy too: `run()` has no re-entry guard, so a double click
+                // sent the approval or the unlock twice.
+                disabled={blocked || busyId === item.id}
                 title={blocked ? t('dash.attnAppOnly') : undefined}
                 aria-expanded={
                   item.action === 'howToFix' ? fixOpen === item.id : undefined

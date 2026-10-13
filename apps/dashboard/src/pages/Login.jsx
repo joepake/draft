@@ -5,6 +5,7 @@ import QrSignIn from '../auth/QrSignIn.jsx';
 import BrandLogo from '@kidgate/web-ui/BrandLogo';
 import LanguagePicker from '@kidgate/web-ui/LanguagePicker';
 import { useT } from '@kidgate/web-ui/useT';
+import { useActivityTranslate } from '../dashboard/activityCopy.js';
 
 function GoogleMark() {
   return (
@@ -94,6 +95,8 @@ export default function Login() {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const appT = useActivityTranslate();
   const [busy, setBusy] = useState(null);
   const [error, setError] = useState(null);
   const [info, setInfo] = useState(null);
@@ -237,12 +240,22 @@ export default function Login() {
                 <label>
                   {t('login.password')}
                   <input
-                    type="password"
+                    type={showPassword ? 'text' : 'password'}
                     autoComplete="current-password"
                     value={password}
                     onChange={e => setPassword(e.target.value)}
                     required
                   />
+                  {/* A typo typed on a phone is invisible behind the dots, and
+                      this form has no confirm field to catch it. */}
+                  <button
+                    type="button"
+                    className="login-link"
+                    aria-pressed={showPassword}
+                    onClick={() => setShowPassword(shown => !shown)}
+                  >
+                    {appT(showPassword ? 'auth.hidePassword' : 'auth.showPassword')}
+                  </button>
                 </label>
                 <button
                   type="submit"

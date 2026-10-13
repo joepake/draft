@@ -18,6 +18,7 @@ export const notifications = {
   quietHoursActive: 'In silenzio dalle {{start}} alle {{end}}',
   quietHoursStart: 'Dalle',
   quietHoursEnd: 'Alle',
+  quietHoursSameTime: 'Scegli due orari diversi.',
   footnote:
     'Queste impostazioni valgono solo per questo telefono. Gli altri dispositivi dei genitori mantengono le proprie.',
   toastSaveFailed: 'Impossibile salvare. Riprova.',

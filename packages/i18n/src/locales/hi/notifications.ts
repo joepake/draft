@@ -18,6 +18,7 @@ export const notifications = {
   quietHoursActive: '{{start}} से {{end}} तक चुप',
   quietHoursStart: 'से',
   quietHoursEnd: 'तक',
+  quietHoursSameTime: 'दो अलग-अलग समय चुनें।',
   footnote:
     'ये सेटिंग्स सिर्फ़ इसी फ़ोन पर लागू होती हैं। अन्य अभिभावक डिवाइस अपनी सेटिंग्स रखते हैं।',
   toastSaveFailed: 'सहेजा नहीं जा सका। फिर कोशिश करें।',

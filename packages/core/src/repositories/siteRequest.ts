@@ -48,6 +48,11 @@ export function siteRequestMessageKey(error: unknown): string {
   if (isApiFailure(error) && error.messageKey) {
     return error.messageKey;
   }
+  // No response at all carries no key; said as "send failed" it read the
+  // same as a refusal, and a child cannot fix a refusal by finding Wi-Fi.
+  if (isApiFailure(error) && error.code === 'network') {
+    return 'errors.noNetworkConnection';
+  }
   return 'timeRequest.toastSendFailed';
 }
 

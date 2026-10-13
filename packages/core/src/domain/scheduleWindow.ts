@@ -76,6 +76,26 @@ export function normalizeTimeValue(value: string): string | null {
 }
 
 /**
+ * What a time field shows while it is being typed: digits only, a colon after
+ * the hour, four digits at most. "1010" reads "10:10"; a first digit of 3–9
+ * can only be an hour, so "930" reads "09:30". Arabic-Indic and Devanagari
+ * digits are read as ASCII — an ar or hi number pad types them, and
+ * `isValidTimeValue` reads ASCII only.
+ */
+export function maskTimeInput(raw: string): string {
+  let digits = raw
+    .replace(/[٠-٩]/g, d => String(d.charCodeAt(0) - 0x0660))
+    .replace(/[۰-۹]/g, d => String(d.charCodeAt(0) - 0x06f0))
+    .replace(/[०-९]/g, d => String(d.charCodeAt(0) - 0x0966))
+    .replace(/\D/g, '');
+  if (/^[3-9]/.test(digits)) {
+    digits = `0${digits}`;
+  }
+  digits = digits.slice(0, 4);
+  return digits.length > 2 ? `${digits.slice(0, 2)}:${digits.slice(2)}` : digits;
+}
+
+/**
  * The days a window runs on, or null for "every day".
  *
  * Null is the answer for both an absent list and a full one, so the two are

@@ -353,6 +353,8 @@ export default {
     checkingSession: 'Đang kiểm tra phiên đăng nhập…',
     loadingFamily: 'Đang tải gia đình của bạn…',
     loadFailedTitle: 'Không tải được gia đình của bạn',
+    partialLoadFailed:
+      'Một phần trang này không tải được, nên có danh sách trông như trống nhưng thật ra không trống.',
     noAccessTitle: 'Tài khoản này chưa có gia đình',
     noAccess:
       'Tài khoản này chưa thuộc gia đình KidGate nào. Vui lòng đăng nhập bằng tài khoản phụ huynh bạn dùng trong ứng dụng.',
@@ -1133,6 +1135,7 @@ export default {
     tvYoutubeTitle: 'Cách cài đặt KidGate trên Android TV của con',
     outroTitle: 'Mọi thứ đã sẵn sàng.',
     outroSub: 'Chúc bạn quản lý gia đình hiệu quả cùng KidGate.',
+    findDeviceTitle: 'Tìm thiết bị của con',
     allYoutubeTitle:
       'Cách cài đặt KidGate trên điện thoại của bạn và các thiết bị của con',
     allYoutubeDescription:

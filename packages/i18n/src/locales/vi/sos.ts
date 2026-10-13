@@ -68,7 +68,7 @@ export const sos = {
   deviceNeedsHelp: '{{deviceName}} cần trợ giúp',
   tapPhotoToEnlarge: 'Chạm vào ảnh để phóng to',
   noPhotoAttached: 'Cảnh báo này không kèm ảnh.',
-  sentRelativeTime: 'Đã gửi {{relativeTime}}',
+  sentAtTime: 'Đã gửi lúc {{time}} · {{relativeTime}}',
   imOnIt: 'Đã thấy, đang xử lý',
   acknowledging: 'Đang lưu…',
   unableToAcknowledgeSos: 'Không thể ghi nhận phản hồi. Vui lòng thử lại sau ít phút.',

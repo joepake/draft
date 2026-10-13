@@ -40,6 +40,8 @@ export const shared = {
   // Shown instead of an empty state when a live listener fails, so a broken
   // query never masquerades as "there is nothing here".
   loadFailed: 'Không tải được danh sách. Vui lòng kéo xuống để thử lại.',
+  loadFailedTapRetry: 'Không tải được danh sách.',
+  removeConfirm: 'Gỡ “{{name}}”?',
   loadFailedOffline: 'Đang hiển thị bản lưu gần nhất — có vẻ bạn đang ngoại tuyến.',
   dismissMessage: 'Ẩn thông báo',
   notNow: 'Để sau',

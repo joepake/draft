@@ -23,6 +23,7 @@ export const child = {
   outOfScreenTimeAskParent:
     'Экранное время на сегодня закончилось. Можешь запросить ещё ниже.',
   screenTimeToday: 'Экранное время сегодня',
+  timeLeftToday: 'Сегодня осталось {{time}}',
   usedOverLimitMinutes: '{{used}} / {{limit}}',
   usedMinutesOnly: '{{used}}',
   outOfScreenTimeToday:

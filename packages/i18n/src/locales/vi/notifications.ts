@@ -17,6 +17,7 @@ export const notifications = {
   quietHoursActive: 'Im lặng từ {{start}} đến {{end}}',
   quietHoursStart: 'Từ',
   quietHoursEnd: 'Đến',
+  quietHoursSameTime: 'Vui lòng chọn hai giờ khác nhau.',
   footnote:
     'Cài đặt này chỉ áp dụng cho máy này. Máy phụ huynh khác giữ cài đặt riêng.',
   toastSaveFailed: 'Không lưu được. Vui lòng thử lại.',

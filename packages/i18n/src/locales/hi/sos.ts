@@ -72,7 +72,7 @@ export const sos = {
   deviceNeedsHelp: '{{deviceName}} को मदद चाहिए',
   tapPhotoToEnlarge: 'फ़ोटो बड़ी करने के लिए उस पर टैप करें',
   noPhotoAttached: 'इस अलर्ट के साथ कोई फ़ोटो नहीं जुड़ी थी।',
-  sentRelativeTime: '{{relativeTime}} भेजा गया',
+  sentAtTime: '{{time}} भेजा गया · {{relativeTime}}',
   imOnIt: 'मैं संभाल रहा हूँ',
   acknowledging: 'सहेजा जा रहा है…',
   unableToAcknowledgeSos:

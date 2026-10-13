@@ -32,6 +32,7 @@ import { toDeviceView } from './deviceView.js';
 import { publishDashboardTimeZoneIfDue } from './dashboardTimeZone.js';
 import { touchParentPresenceIfDue } from './parentPresence.js';
 import { useTodayKey } from './useTodayKey.js';
+import { setFamily } from '../lib/analytics.js';
 
 /**
  * Live family data for the parent dashboard.
@@ -69,6 +70,20 @@ function forDevice(deviceId, rows) {
  * `docs/DATA_RETENTION.md` §4.
  */
 
+/**
+ * A side panel's read failed: logged, and flagged for the page's one notice —
+ * which used to be nothing, so the panel's empty state said "nothing here yet"
+ * over data that never arrived. A refusal is logged only: some collections are
+ * unreadable to some accounts by design, and a notice that never goes away
+ * teaches a parent to ignore it.
+ */
+function softFailure(setFeedFailed, label) {
+  return e => {
+    console.warn(`[kidgate] ${label} failed:`, e?.code || e?.message);
+    if (e?.code !== 'permissionDenied') setFeedFailed(true);
+  };
+}
+
 export function useFamilyData(user, selectedDeviceId) {
   /*
    * Bumped by `refresh()`, and in the deps of every read below: this is how
@@ -79,8 +94,13 @@ export function useFamilyData(user, selectedDeviceId) {
    */
   const [version, setVersion] = useState(0);
   const [loadedAt, setLoadedAt] = useState(() => Date.now());
+  /** True from a refresh until the device list answers it — the header button. */
+  const [refreshing, setRefreshing] = useState(false);
+  const [feedFailed, setFeedFailed] = useState(false);
   const refresh = useCallback(() => {
     setLoadedAt(Date.now());
+    setRefreshing(true);
+    setFeedFailed(false);
     setVersion(current => current + 1);
   }, []);
   /** Guards the skeleton against a re-run caused by the tab coming back. */
@@ -201,6 +221,10 @@ export function useFamilyData(user, selectedDeviceId) {
     };
   }, [user]);
 
+  useEffect(() => {
+    setFamily(familyId);
+  }, [familyId]);
+
   // 2. Family-level data.
   useEffect(() => {
     if (!familyId) return;
@@ -222,8 +246,7 @@ export function useFamilyData(user, selectedDeviceId) {
     // single failing side panel (a collection this account cannot read, an
     // index that is still building) must degrade to an empty panel rather than
     // replacing the whole dashboard with an error screen.
-    const soft = name => e =>
-      console.warn(`[kidgate] ${name} listener failed:`, e?.code || e?.message);
+    const soft = name => softFailure(setFeedFailed, `${name} listener`);
 
     /** One "report now" per page open, not one per snapshot. See its use below. */
     let devicesAsked = false;
@@ -317,9 +340,11 @@ export function useFamilyData(user, selectedDeviceId) {
           }
           setDevices(views);
           setDevicesLoaded(true);
+          setRefreshing(false);
         },
         e => {
           setDevicesLoaded(true);
+          setRefreshing(false);
           setError(e);
         },
       ),
@@ -367,8 +392,7 @@ export function useFamilyData(user, selectedDeviceId) {
    */
   useEffect(() => {
     if (!familyId) return undefined;
-    const soft = name => e =>
-      console.warn(`[kidgate] ${name} listener failed:`, e?.code || e?.message);
+    const soft = name => softFailure(setFeedFailed, `${name} listener`);
     const subs = [
       activityRepository.subscribe(
         familyId,
@@ -418,11 +442,7 @@ export function useFamilyData(user, selectedDeviceId) {
             name: resolveStoredDeviceName(record) || record.deviceId,
           })),
         ),
-      e =>
-        console.warn(
-          '[kidgate] accountParentDevices read failed:',
-          e?.code || e?.message,
-        ),
+      softFailure(setFeedFailed, 'accountParentDevices read'),
     );
   }, [accountId, familyId, version]);
 
@@ -436,19 +456,14 @@ export function useFamilyData(user, selectedDeviceId) {
       familyId,
       childDeviceIdKey.split(','),
       setFamilyCheckIns,
-      e =>
-        console.warn(
-          '[kidgate] familyCheckIns listener failed:',
-          e?.code || e?.message,
-        ),
+      softFailure(setFeedFailed, 'familyCheckIns listener'),
     );
   }, [familyId, childDeviceIdKey, version]);
 
   useEffect(() => {
     if (!familyId || !selectedDeviceId) return;
 
-    const soft = name => e =>
-      console.warn(`[kidgate] ${name} listener failed:`, e?.code || e?.message);
+    const soft = name => softFailure(setFeedFailed, `${name} listener`);
 
     const subs = [
       activityRepository.subscribe(
@@ -517,8 +532,7 @@ export function useFamilyData(user, selectedDeviceId) {
    */
   useEffect(() => {
     if (!familyId || !selectedDeviceId) return;
-    const soft = name => e =>
-      console.warn(`[kidgate] ${name} read failed:`, e?.code || e?.message);
+    const soft = name => softFailure(setFeedFailed, `${name} read`);
     const subs = [
       webHistoryRepository.subscribe(
         familyId,
@@ -578,7 +592,7 @@ export function useFamilyData(user, selectedDeviceId) {
         byDate.set(day.date, day);
         publish();
       },
-      e => console.warn('[kidgate] usageDay listener failed:', e?.code || e?.message),
+      softFailure(setFeedFailed, 'usageDay listener'),
     );
 
     return () => {
@@ -837,5 +851,8 @@ export function useFamilyData(user, selectedDeviceId) {
     loadedAt,
     /** Read it all again: the header button, and every write that lands. */
     refresh,
+    refreshing,
+    /** A side panel's read failed — the page says so once, with a retry. */
+    feedFailed,
   };
 }

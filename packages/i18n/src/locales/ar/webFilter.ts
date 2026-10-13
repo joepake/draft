@@ -220,6 +220,7 @@ export const webFilter = {
   siteRequestDeniedDescription: 'ما زال {{domain}} محظورًا على {{deviceName}}.',
   siteRequestReceived: 'طلب فتح موقع',
   siteRequestReceivedDescription: 'طلب {{deviceName}} فتح {{domain}}.',
+  siteRequestAlsoAllows: 'يُسمح أيضًا بما يحتاجه هذا الموقع ليُحمَّل: {{domains}}.',
   privateDnsStep1: 'فتح الإعدادات على هذا الجهاز.',
   privateDnsStep2: 'اختيار «الشبكة والإنترنت».',
   privateDnsStep3: 'فتح «DNS الخاص» واختيار «إيقاف».',

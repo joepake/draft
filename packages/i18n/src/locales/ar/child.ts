@@ -27,6 +27,7 @@ export const child = {
   blockedHoursOnPaused: 'ساعات الحظر نشطة الآن. إنه وقت مناسب لأخذ استراحة.',
   outOfScreenTimeAskParent: 'استهلكت كل وقت الشاشة لليوم. يمكنك طلب المزيد أدناه.',
   screenTimeToday: 'وقت الشاشة اليوم',
+  timeLeftToday: 'متبقٍ اليوم: {{time}}',
   usedOverLimitMinutes: '{{used}} / {{limit}}',
   usedMinutesOnly: '{{used}}',
   outOfScreenTimeToday: 'استهلكت كل وقت الشاشة لليوم. يمكنك طلب المزيد من والديك.',

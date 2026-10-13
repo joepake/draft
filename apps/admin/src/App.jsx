@@ -229,9 +229,9 @@ function SignIn() {
       signInWithEmailAndPassword(auth, email.trim(), password)
         .catch(signInError => {
           // Firebase's own codes distinguish "no such user" from "wrong
-          // password"; the screen shows one generic message, matching
-          // `functions/admin/CLAUDE.md` rule 5's reasoning for why 401 and 403
-          // read the same. The code still goes to the console — this app has
+          // password"; the screen shows one generic message, so it is no
+          // oracle for which addresses hold an account. The code still goes
+          // to the console — this app has
           // no enumeration threat to protect against (localhost only, one
           // operator), so hiding it would only slow down the one person who
           // can ever see it.

@@ -2,6 +2,7 @@ import { readDeviceBattery } from '@kidgate/core/domain/battery';
 import { resolveCheckInOutcome } from '@kidgate/core/domain/checkInSupport';
 import { getProtectionSummaryKeys } from '@kidgate/core/domain/protectionStatus';
 import { isUsageStampToday } from '@kidgate/core/domain/reportHub';
+import { webSiteCompanions } from '@kidgate/core/domain/webSiteCompanions';
 import { formatMinutes } from './charts.jsx';
 import { timeAgo } from './timeAgo.js';
 
@@ -40,19 +41,25 @@ export const PROTECTION_ISSUES_SHOWN_ELSEWHERE = new Set([
  * A glyph per issue, so the feed reads as a list of different problems rather
  * than a column of identical warning triangles. `alert` is the fallback and is
  * correct for anything new: a row with no icon of its own is still a row.
+ *
+ * Keyed by the issue's `key` as `protectionStatus` emits it — `battery`, not
+ * the permission's `batteryOptimization`. Three rows drew the fallback for
+ * that until 2026-10-11; `attentionItems.test.js` now holds the two lists
+ * together.
  */
 export const PROTECTION_ISSUE_ICON = {
   'screen-time': 'clock',
+  'screen-time-individual': 'clock',
   'missing-status': 'alert',
   location: 'mapPin',
   notifications: 'bell',
   overlay: 'lock',
-  batteryOptimization: 'battery',
-  exactAlarm: 'clock',
+  battery: 'battery',
+  'exact-alarm': 'clock',
   // No accessibility glyph in `@kidgate/tokens/icons`; a hand is what the
   // grant is about and `userCheck` is the nearest honest one.
   accessibility: 'userCheck',
-  backgroundAppRefresh: 'refresh',
+  'background-app-refresh': 'refresh',
   'consent-camera': 'camera',
   camera: 'camera',
   // No microphone glyph; the issue is about the SOS.
@@ -106,7 +113,15 @@ export function buildAttention({
     card, where both answers sit side by side; this list is for the one move a
     parent most often wants, not for a decision surface.
   */
-  siteRequests.forEach(req =>
+  siteRequests.forEach(req => {
+    const when = req.reason
+      ? t('dash.attnReason', {
+          reason: req.reason,
+          when: timeAgo(req.createdAt),
+        })
+      : timeAgo(req.createdAt);
+    // Allow on this row also writes the site's companions — say which.
+    const alsoAllows = webSiteCompanions(req.domain).join(', ');
     items.push({
       id: req.id,
       tone: 'warning',
@@ -115,15 +130,12 @@ export function buildAttention({
         name: device.child?.name || device.name,
         domain: req.domain,
       }),
-      meta: req.reason
-        ? t('dash.attnReason', {
-            reason: req.reason,
-            when: timeAgo(req.createdAt),
-          })
-        : timeAgo(req.createdAt),
+      meta: alsoAllows
+        ? `${when} · ${activityT('webFilter.siteRequestAlsoAllows', { domains: alsoAllows })}`
+        : when,
       action: 'siteAllow',
-    }),
-  );
+    });
+  });
   /*
     A check-in the child closed with an SOS is `missed` on the document too,
     and is not one: nothing is left to resend, and "no response" is false of a

@@ -339,6 +339,8 @@ export default {
     checkingSession: 'セッションを確認しています…',
     loadingFamily: '家族の情報を読み込んでいます…',
     loadFailedTitle: '家族の情報を読み込めませんでした',
+    partialLoadFailed:
+      'このページの一部を読み込めませんでした。空に見えるリストにも、実際は項目がある場合があります。',
     noAccessTitle: 'このアカウントに家族がありません',
     noAccess:
       'このアカウントには KidGate の家族へのアクセス権がありません。アプリで使っている保護者アカウントでログインしてください。',
@@ -1127,6 +1129,7 @@ export default {
     tvYoutubeTitle: 'お子さまの Android TV に KidGate を設定する方法',
     outroTitle: '準備が整いました。',
     outroSub: 'KidGate でご家族の見守りがもっとラクになりますように。',
+    findDeviceTitle: 'お子さまのデバイスを探す',
     allYoutubeTitle: '自分のスマホとお子さまのデバイスに KidGate を設定する方法',
     allYoutubeDescription:
       'すべての設定を1本の動画にまとめました。まず保護者のスマホ、次にお子さまの各デバイス（iPhone または iPad、Android スマホ・タブレット、Mac、Windows PC、Android TV、Chrome）、最後に Webダッシュボードです。下のリストからお使いのデバイスを選んでください。',

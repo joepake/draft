@@ -2913,6 +2913,9 @@ ol.attn-fix li + li {
  */
 .toast {
   position: fixed;
+  /* Text only, and on a phone it sits over the bottom tab bar: a tap there
+     must reach the tab, not die on the toast. */
+  pointer-events: none;
   right: 1.25rem;
   bottom: 1.25rem;
   /* Over the sticky tab bar and the chart tooltip, both 5. */
@@ -3024,6 +3027,19 @@ ol.attn-fix li + li {
   color: var(--warning);
 }
 
+/* Read-only on a phone: the reason and the Unlock button ride the top of the
+   screen. Every gated button explains itself in a `title`, which a
+   touchscreen never shows, so scrolled away from this note a parent pressed
+   dead buttons with no word why. Opaque, because the page slides under it. */
+@media (max-width: 820px) {
+  .dash-main > .write-lock {
+    position: sticky;
+    top: 0;
+    z-index: 4;
+    background: color-mix(in srgb, var(--warning-fill) 10%, var(--plane));
+  }
+}
+
 /* The unlock button sits inside the note rather than under it: the sentence is
    what explains the button, and a parent who read one has read the other. */
 .write-note .btn {
@@ -3046,6 +3062,8 @@ ol.attn-fix li + li {
 }
 
 .sheet {
+  /* Scrolling to the end of a sheet must not carry on into the page. */
+  overscroll-behavior: contain;
   display: grid;
   gap: 0.75rem;
   width: min(24rem, 100%);
@@ -3469,9 +3487,16 @@ ol.attn-fix li + li {
 }
 
 .dash .btn:disabled,
-.dash .toggle:disabled {
+.dash .toggle:disabled,
+.dash .toggle[aria-disabled='true'] {
   opacity: 0.45;
   cursor: not-allowed;
+}
+
+/* Held by the write gate, a switch still answers a press: it opens the unlock
+   sheet (`Toggle.jsx`), so it points rather than refuses. */
+.dash .toggle[aria-disabled='true']:not(:disabled) {
+  cursor: pointer;
 }
 
 .dash .btn:disabled:hover {
@@ -3903,6 +3928,11 @@ ol.attn-fix li + li {
 .side-account .login-link,
 .plan-card-row .login-link,
 .sheet .login-link {
+  /* Close on every sheet: a thumb's height, not a line of text's. */
+  min-height: 2.75rem;
+  display: inline-flex;
+  align-items: center;
+  padding-inline: 0.5rem;
   font-size: var(--dash-text-3);
   color: var(--ink-2);
   text-decoration: underline;

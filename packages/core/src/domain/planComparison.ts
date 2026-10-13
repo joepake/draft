@@ -192,12 +192,14 @@ export const PLAN_COMPARISON_ROWS: readonly PlanComparisonRow[] = [
    * both halves it names.
    *
    * Check-In has always been free without a photo (`docs/PRICING.md` §4's
-   * "every plan includes" line), and the protection alert was never gated in
-   * code at all: `logChildTamperActivity` carries no plan check, so free
-   * families have received it since that endpoint shipped and the table said
-   * `—` against something they had. Family Link gives the same alert away on
-   * every Android phone, which is the §5 parity argument that already made
-   * Device Lock and app blocking free — so the row moves, no gate is added.
+   * "every plan includes" line), and most of the protection alert was never
+   * gated in code: `detectTamper` writes its rows straight to Firestore, so
+   * free families have received them all along and the table said `—`
+   * against something they had (the two only native code sees went through
+   * `logChildTamperActivity`, gated until 2026-10-13). Family Link gives the
+   * same alert away on every Android phone, which is the §5 parity argument
+   * that already made Device Lock and app blocking free — so the row moves,
+   * no gate is added.
    *
    * What is left to sell here is the photo.
    */

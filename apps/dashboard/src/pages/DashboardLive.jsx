@@ -11,6 +11,7 @@ import { RichText } from '@kidgate/web-ui/RichText';
 import ThemeToggle from '../dashboard/ThemeToggle.jsx';
 import { downloadPageUrl } from '@kidgate/core/domain/siteLinks';
 import { trackScreen } from '../lib/analytics.js';
+import { useActivityTranslate } from '../dashboard/activityCopy.js';
 
 function Splash({ children }) {
   return (
@@ -132,8 +133,18 @@ function LiveGate() {
 function LiveDashboard({ user, deviceId, onDeviceChange, signOut }) {
   const { canWrite } = useAuth();
   const { t, language } = useT();
-  const { data, loading, error, familyId, unknownAccount, loadedAt, refresh } =
-    useFamilyData(user, deviceId);
+  const appT = useActivityTranslate();
+  const {
+    data,
+    loading,
+    error,
+    familyId,
+    unknownAccount,
+    loadedAt,
+    refresh,
+    refreshing,
+    feedFailed,
+  } = useFamilyData(user, deviceId);
   const reports = useFamilyReports(familyId);
   // No `getIdToken`: the API adapter reads the current session itself, which is
   // what lets a repository ask for `{ as: 'parent' }` and learn nothing about
@@ -170,7 +181,19 @@ function LiveDashboard({ user, deviceId, onDeviceChange, signOut }) {
               ? t('controlError.network')
               : t('controlError.generic')}
         </p>
-        <button className="btn btn-primary btn-block" onClick={signOut}>
+        {/* A dropped connection is the usual cause, and signing out was the
+            only way off this screen — which costs a QR scan to come back.
+            `qr.tryAgain` is a plain "Try again" in all 14 packs. A reload
+            re-runs every read, the family lookup included. */}
+        {error.code !== 'permissionDenied' && (
+          <button
+            className="btn btn-primary btn-block"
+            onClick={() => window.location.reload()}
+          >
+            {t('qr.tryAgain')}
+          </button>
+        )}
+        <button className="btn btn-block" onClick={signOut}>
           {t('common.signOut')}
         </button>
       </Splash>
@@ -257,6 +280,8 @@ function LiveDashboard({ user, deviceId, onDeviceChange, signOut }) {
        */
       loadedAt={loadedAt}
       onRefresh={refresh}
+      refreshing={refreshing}
+      partialFailure={feedFailed}
       onDeviceChange={onDeviceChange}
       sideFooter={
         <div className="side-account">
@@ -270,7 +295,17 @@ function LiveDashboard({ user, deviceId, onDeviceChange, signOut }) {
           */}
           <div className="side-account-row">
             <LanguagePicker variant="side" />
-            <button className="login-link" onClick={signOut}>
+            {/* Asked first: it sits beside the language picker, and coming
+                back means approving a QR code on the phone again. The app's
+                own question, title only — its body is about a phone. */}
+            <button
+              className="login-link"
+              onClick={() => {
+                if (window.confirm(appT('settings.signOutAlertTitle'))) {
+                  signOut();
+                }
+              }}
+            >
               {t('common.signOut')}
             </button>
           </div>

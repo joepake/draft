@@ -169,7 +169,13 @@ export default function ScheduleEditor({ windows, readOnly, busy, onSave }) {
               title={
                 readOnly ? t('dash.unlockToChange') : appT('blockedHours.removeButton')
               }
-              onClick={() => commit(draft.filter((_, i) => i !== index))}
+              onClick={() => {
+                // `window` is the schedule row here, hence `globalThis`.
+                const name = `${window.start}–${window.end}`;
+                if (globalThis.confirm(appT('shared.removeConfirm', { name }))) {
+                  commit(draft.filter((_, i) => i !== index));
+                }
+              }}
             >
               <Icon name="trash" size={15} />
             </button>

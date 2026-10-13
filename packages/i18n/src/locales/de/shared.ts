@@ -40,6 +40,8 @@ export const shared = {
   // Shown instead of an empty state when a live listener fails, so a broken
   // query never masquerades as "there is nothing here".
   loadFailed: 'Liste konnte nicht geladen werden. Zum Wiederholen nach unten ziehen.',
+  loadFailedTapRetry: 'Liste konnte nicht geladen werden.',
+  removeConfirm: '„{{name}}“ entfernen?',
   loadFailedOffline:
     'Zeigt die zuletzt gespeicherte Kopie – du scheinst offline zu sein.',
   dismissMessage: 'Meldung ausblenden',

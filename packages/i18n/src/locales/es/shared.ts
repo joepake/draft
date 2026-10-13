@@ -40,6 +40,8 @@ export const shared = {
   // Shown instead of an empty state when a live listener fails, so a broken
   // query never masquerades as "there is nothing here".
   loadFailed: 'No se pudo cargar esta lista. Desliza hacia abajo para reintentar.',
+  loadFailedTapRetry: 'No se pudo cargar esta lista.',
+  removeConfirm: '¿Quitar «{{name}}»?',
   loadFailedOffline:
     'Mostrando la última copia guardada — parece que no tienes conexión.',
   dismissMessage: 'Descartar mensaje',

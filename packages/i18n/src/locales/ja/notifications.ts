@@ -17,6 +17,7 @@ export const notifications = {
   quietHoursActive: '{{start}}〜{{end}} はサイレント',
   quietHoursStart: '開始',
   quietHoursEnd: '終了',
+  quietHoursSameTime: '異なる2つの時刻を選んでください。',
   footnote:
     'この設定はこのデバイスのみに適用されます。ほかの保護者デバイスは個別の設定を保ちます。',
   toastSaveFailed: '保存できませんでした。もう一度お試しください。',

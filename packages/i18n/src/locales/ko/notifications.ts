@@ -17,6 +17,7 @@ export const notifications = {
   quietHoursActive: '{{start}}부터 {{end}}까지 무음',
   quietHoursStart: '시작',
   quietHoursEnd: '종료',
+  quietHoursSameTime: '서로 다른 두 시간을 선택하세요.',
   footnote:
     '이 설정은 이 기기에만 적용됩니다. 다른 부모 기기는 각자 설정을 유지합니다.',
   toastSaveFailed: '저장할 수 없습니다. 다시 시도해 주세요.',

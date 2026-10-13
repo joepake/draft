@@ -17,6 +17,7 @@ export const notifications = {
   quietHoursActive: '{{start}} – {{end}} arası sessiz',
   quietHoursStart: 'Başlangıç',
   quietHoursEnd: 'Bitiş',
+  quietHoursSameTime: 'İki farklı saat seçin.',
   footnote:
     'Bu ayarlar yalnızca bu telefon için geçerlidir. Diğer ebeveyn cihazları kendi ayarlarını korur.',
   toastSaveFailed: 'Kaydedilemedi. Lütfen tekrar deneyin.',

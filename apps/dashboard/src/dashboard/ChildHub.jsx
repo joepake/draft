@@ -4,6 +4,7 @@ import { useT } from '@kidgate/web-ui/useT';
 import { resolveChildPresence } from '@kidgate/core/domain/childPresence';
 import { supportsLock } from '@kidgate/core/domain/controlSupport';
 import { isActionSupported } from '@kidgate/core/domain/deviceDetailActions';
+import { foldChildAppBlocking } from '@kidgate/core/domain/deviceControlState';
 import {
   supportsVideoHistory,
   videoHistoryAwaitingGrant,
@@ -25,6 +26,7 @@ import ControlCenter from './ControlCenter.jsx';
 import ChildInitial from './ChildInitial.jsx';
 import NoDevicePanel from './NoDevicePanel.jsx';
 import { timeAgo } from './timeAgo.js';
+import { pressNextOnEnter } from './enterPresses.js';
 
 /**
  * The child hub — the person, not one of their machines.
@@ -108,7 +110,8 @@ export default function ChildHub({
    *   device, so the child's own copy is the truth;
    * - **app limits and blocked apps are per device** (`docs/CHILD_HUB.md`), so
    *   the cards report the sum, and blocking counts as on when any machine has
-   *   it on.
+   *   its own list AND its own switch on (`foldChildAppBlocking`, shared with
+   *   the phone's hub).
    *
    * **Places and Apps answer here now** (2026-09-17), and they cost no read:
    * `Device.places` is FAMILY-level and already on every view this component
@@ -142,14 +145,7 @@ export default function ChildHub({
         scheduleEnabled: rules.scheduleEnabled === true,
         scheduleWindows: rules.scheduleWindows ?? [],
         appLimits: new Array(sum(item => item.controls?.appLimits?.length)),
-        blockedAppsConfigured: childDevices.some(
-          item => item.controls?.blockedAppsConfigured === true,
-        ),
-        blockedAppCount: sum(item => item.controls?.blockedAppCount),
-        blockedCategoryCount: sum(item => item.controls?.blockedCategoryCount),
-        appBlockingEnabled: childDevices.some(
-          item => item.controls?.appBlockingEnabled === true,
-        ),
+        ...foldChildAppBlocking(childDevices),
         webFilterEnabled: rules.webFilterEnabled === true,
         locationSharingEnabled: rules.locationSharingEnabled === true,
         videoHistoryEnabled: childDevices.some(
@@ -219,6 +215,7 @@ export default function ChildHub({
                   autoFocus
                   disabled={busy}
                   onChange={event => setNameDraft(event.target.value)}
+                  onKeyDown={pressNextOnEnter}
                 />
                 <button
                   className="btn btn-sm btn-primary"

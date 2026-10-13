@@ -333,6 +333,8 @@ export default {
     checkingSession: '세션을 확인하는 중…',
     loadingFamily: '가족 정보를 불러오는 중…',
     loadFailedTitle: '가족 정보를 불러오지 못했습니다',
+    partialLoadFailed:
+      '이 페이지의 일부를 불러오지 못했습니다. 비어 보이는 목록도 실제로는 비어 있지 않을 수 있습니다.',
     noAccessTitle: '이 계정에 가족이 없습니다',
     noAccess:
       '이 계정에는 KidGate 가족에 대한 접근 권한이 없습니다. 앱에서 쓰는 부모 계정으로 로그인하세요.',
@@ -1110,6 +1112,7 @@ export default {
     tvYoutubeTitle: '자녀의 Android TV에 KidGate를 설정하는 방법',
     outroTitle: '모든 준비가 끝났습니다.',
     outroSub: 'KidGate와 함께 가족 관리가 더 쉬워지길 바랍니다.',
+    findDeviceTitle: '자녀의 기기 찾기',
     allYoutubeTitle: '부모 휴대폰과 자녀 기기에 KidGate를 설정하는 방법',
     allYoutubeDescription:
       '모든 설정을 영상 하나에 담았습니다. 먼저 부모 휴대폰, 이어서 자녀의 각 기기(iPhone 또는 iPad, Android 휴대폰 또는 태블릿, Mac, Windows PC, Android TV, Chrome), 마지막으로 웹 대시보드입니다. 아래 목록에서 기기를 선택하세요.',

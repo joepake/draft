@@ -339,6 +339,8 @@ export default {
     checkingSession: 'جارٍ التحقق من جلستك…',
     loadingFamily: 'جارٍ تحميل عائلتك…',
     loadFailedTitle: 'تعذّر تحميل عائلتك',
+    partialLoadFailed:
+      'تعذّر تحميل جزء من هذه الصفحة، لذا قد تبدو قائمة فارغة وهي ليست كذلك.',
     noAccessTitle: 'لا توجد عائلة على هذا الحساب',
     noAccess:
       'لا يملك هذا الحساب صلاحية الوصول إلى أي عائلة في KidGate. سجّل الدخول بحساب ولي الأمر الذي تستخدمه في التطبيق.',
@@ -1164,6 +1166,7 @@ export default {
     tvYoutubeTitle: 'كيفية إعداد KidGate على Android TV الخاص بطفلك',
     outroTitle: 'كل شيء جاهز.',
     outroSub: 'نأمل أن يجعل KidGate إدارة عائلتك أسهل.',
+    findDeviceTitle: 'العثور على جهاز طفلك',
     allYoutubeTitle: 'كيفية إعداد KidGate على هاتفك وأجهزة طفلك',
     allYoutubeDescription:
       'كل خطوات الإعداد في فيديو واحد: هاتفك أولًا، ثم كل جهاز من أجهزة طفلك (iPhone أو iPad، هاتف Android أو جهاز لوحي، Mac، كمبيوتر Windows، Android TV، Chrome)، وأخيرًا لوحة الويب. اختر جهازك من القائمة أدناه.',

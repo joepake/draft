@@ -40,6 +40,8 @@ export const shared = {
   // Shown instead of an empty state when a live listener fails, so a broken
   // query never masquerades as "there is nothing here".
   loadFailed: 'Tidak dapat memuat daftar ini. Tarik ke bawah untuk mencoba lagi.',
+  loadFailedTapRetry: 'Tidak dapat memuat daftar ini.',
+  removeConfirm: 'Hapus “{{name}}”?',
   loadFailedOffline:
     'Menampilkan salinan terakhir yang tersimpan — sepertinya Anda sedang offline.',
   dismissMessage: 'Tutup pesan',

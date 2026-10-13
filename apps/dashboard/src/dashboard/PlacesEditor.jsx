@@ -5,6 +5,7 @@ import Icon from '@kidgate/web-ui/Icon';
 import {
   DEFAULT_PLACE_RADIUS_METERS,
   MAX_DEVICE_PLACES,
+  MAX_PLACE_NAME_LENGTH,
 } from '@kidgate/schema/devicePlace';
 import {
   PLACE_RADIUS_STEPS,
@@ -170,7 +171,17 @@ export default function PlacesEditor({ device, readOnly, busy, onSave }) {
               disabled={readOnly || busy}
               aria-label={appT('placeAlerts.deletePlace', { name: place.name })}
               title={readOnly ? t('dash.unlockToChange') : undefined}
-              onClick={() => write(places.filter(p => p.id !== place.id))}
+              onClick={() => {
+                // Asked first: this sits beside Edit, and a mis-tap deleted
+                // the geofence outright.
+                const question = `${appT('placeAlerts.deleteConfirmTitle')}\n\n${appT(
+                  'placeAlerts.deleteConfirmMessage',
+                  { name: place.name },
+                )}`;
+                if (window.confirm(question)) {
+                  write(places.filter(p => p.id !== place.id));
+                }
+              }}
             >
               <Icon name="trash" size={14} />
             </button>
@@ -272,6 +283,8 @@ function PlaceRowForm({
         id="place-name"
         className="reward-input"
         value={draft.name}
+        // The server keeps this many and cuts the rest without a word.
+        maxLength={MAX_PLACE_NAME_LENGTH}
         disabled={busy}
         placeholder={appT('placeAlerts.namePlaceholder')}
         onChange={event => onChange({ ...draft, name: event.target.value })}

@@ -98,6 +98,9 @@ export default function RewardTaskForm({ device, readOnly, busy, onCreate }) {
       <input
         id="reward-title"
         className="reward-input"
+        // The form opens from "New task" or a row's edit: the title is what
+        // the parent came to type, so the field is ready for it.
+        autoFocus
         value={title}
         maxLength={REWARD_TITLE_MAX_LENGTH}
         disabled={busy}

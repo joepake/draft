@@ -79,3 +79,28 @@ export function effectiveDailyLimitMinutes(
   }
   return base + activeBonusMinutes(controls, nowMs, localDateOf);
 }
+
+/**
+ * A child's shared Daily Limit plus today's bonus, for a parent's card.
+ *
+ * A bonus lands on the device that asked, and the server caps each device at
+ * the budget less its siblings' minutes plus its own bonus
+ * (`functions/lib/childBudget.js`), so the child's total can reach the budget
+ * plus one device's bonus — never two summed. The largest is that ceiling.
+ * Zero or no budget is returned untouched, as `effectiveDailyLimitMinutes`
+ * leaves a blocked day.
+ */
+export function childLimitWithBonus(
+  budget: Minutes | null | undefined,
+  devices: ReadonlyArray<BonusControls | null | undefined>,
+  nowMs: Millis,
+  localDateOf: (ms: Millis) => IsoDate = localIsoDate,
+): Minutes | null {
+  if (budget === null || budget === undefined || budget <= 0) {
+    return budget ?? null;
+  }
+  const bonuses = devices.map(controls =>
+    controls ? activeBonusMinutes(controls, nowMs, localDateOf) : 0,
+  );
+  return budget + Math.max(0, ...bonuses);
+}

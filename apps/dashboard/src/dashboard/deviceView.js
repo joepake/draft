@@ -1,5 +1,6 @@
 import { DEFAULT_DEVICE_CONTROLS } from '@kidgate/schema/deviceControls';
 import { nearestPlaceWithin } from '@kidgate/core/domain/geo';
+import { placeForFix } from '@kidgate/core/domain/placeVisits';
 import {
   relativePlaceCopy,
   relativePlaceForHistoryEntry,
@@ -30,6 +31,9 @@ export function toDeviceView(record) {
   const name = record.name || t('dash.fallbackDevice');
   const controls = { ...DEFAULT_DEVICE_CONTROLS, ...(record.controls ?? {}) };
   const currentPlace = record.lastLocation?.placeName || null;
+  const containing = record.lastLocation
+    ? placeForFix(record.lastLocation, record.places ?? [])
+    : null;
   /*
    * Three answers before a coordinate pair, in falling order of what they
    * claim — and the middle one was missing here until 2026-09-10.
@@ -212,11 +216,12 @@ export function toDeviceView(record) {
       radius: place.radiusMeters,
       alertOnEnter: place.notifyOnEnter,
       alertOnExit: place.notifyOnExit,
-      // Derived from the reported place *name*, not from the coordinates: the
-      // child device evaluates the geofence itself and reports which place it
-      // is in, and recomputing that here from a position minutes old would
-      // sometimes contradict the device that is actually standing there.
-      inside: currentPlace != null && currentPlace === place.name,
+      // The fence the fix sits in, by `placeForFix` — the test the location
+      // line above and the phone's location screens apply. It compared
+      // `placeName` until 2026-10-11, which is HERE's street name and never a
+      // saved place, so this list said "not here" under a line saying "Home".
+      // No device reports its geofence onto this document to read instead.
+      inside: containing != null && containing.id === place.id,
     })),
     usage: [],
   };

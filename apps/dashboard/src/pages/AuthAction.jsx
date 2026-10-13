@@ -7,6 +7,7 @@ import {
 import BrandLogo from '@kidgate/web-ui/BrandLogo';
 import LanguagePicker from '@kidgate/web-ui/LanguagePicker';
 import { useT } from '@kidgate/web-ui/useT';
+import { useActivityTranslate } from '../dashboard/activityCopy.js';
 import { describeAuthError } from '../auth/AuthContext.jsx';
 import { auth } from '../lib/firebase';
 
@@ -52,6 +53,8 @@ export default function AuthAction({ mode, oobCode }) {
   const [step, setStep] = useState('checking');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const appT = useActivityTranslate();
   const [confirm, setConfirm] = useState('');
   const [error, setError] = useState(null);
   const [busy, setBusy] = useState(false);
@@ -155,7 +158,7 @@ export default function AuthAction({ mode, oobCode }) {
             <label>
               {t('authAction.newPassword')}
               <input
-                type="password"
+                type={showPassword ? 'text' : 'password'}
                 autoComplete="new-password"
                 value={password}
                 onChange={e => setPassword(e.target.value)}
@@ -166,13 +169,22 @@ export default function AuthAction({ mode, oobCode }) {
             <label>
               {t('authAction.confirmPassword')}
               <input
-                type="password"
+                type={showPassword ? 'text' : 'password'}
                 autoComplete="new-password"
                 value={confirm}
                 onChange={e => setConfirm(e.target.value)}
                 required
               />
             </label>
+            {/* One switch for both fields, as on the sign-in form. */}
+            <button
+              type="button"
+              className="login-link"
+              aria-pressed={showPassword}
+              onClick={() => setShowPassword(shown => !shown)}
+            >
+              {appT(showPassword ? 'auth.hidePassword' : 'auth.showPassword')}
+            </button>
             <button type="submit" className="btn btn-primary btn-block" disabled={busy}>
               {busy ? t('authAction.saving') : t('authAction.save')}
             </button>

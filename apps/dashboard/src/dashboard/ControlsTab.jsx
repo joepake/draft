@@ -7,6 +7,7 @@ import QuickProtectCard from './QuickProtectCard.jsx';
 import Toggle from './Toggle.jsx';
 import { timeAgo } from './timeAgo.js';
 import { hasQuickProtectOffer } from '@kidgate/core/domain/quickProtect';
+import { webSiteCompanions } from '@kidgate/core/domain/webSiteCompanions';
 import {
   childRuleDivergence,
   hasRuleDivergence,
@@ -39,6 +40,7 @@ import {
   resolveInstallApprovalPolicy,
   withApprovedPackage,
 } from '@kidgate/core/domain/appInstallApproval';
+import { childLimitWithBonus } from '@kidgate/core/domain/dailyLimit';
 import { supportsLocation } from '@kidgate/core/domain/locationSupport';
 import { supportsSearchMonitoring } from '@kidgate/core/domain/alertSupport';
 import { searchMonitoringGranted } from '@kidgate/core/domain/messageMonitoringStatus';
@@ -712,6 +714,13 @@ export default function ControlsTab({
                     {req.reason ? `${req.reason} · ` : ''}
                     {timeAgo(req.createdAt)}
                   </em>
+                  {webSiteCompanions(req.domain).length > 0 && (
+                    <em>
+                      {activityT('webFilter.siteRequestAlsoAllows', {
+                        domains: webSiteCompanions(req.domain).join(', '),
+                      })}
+                    </em>
+                  )}
                 </span>
                 <button
                   className="btn btn-sm"
@@ -780,7 +789,13 @@ export default function ControlsTab({
                   <p className="hint">
                     {t('dash.limitSharedSpent', {
                       used: formatMinutes(budgetSpentMinutes),
-                      limit: formatMinutes(childBudgetMinutes),
+                      limit: formatMinutes(
+                        childLimitWithBonus(
+                          childBudgetMinutes,
+                          siblingDevices.map(d => d.controls),
+                          Date.now(),
+                        ),
+                      ),
                     })}
                   </p>
                 ) : null}
@@ -1081,11 +1096,18 @@ export default function ControlsTab({
                           title={
                             readOnly ? t('dash.unlockToChange') : t('dash.rewardDelete')
                           }
-                          onClick={() =>
+                          onClick={() => {
+                            // Asked first, with the phone's own sentences: one
+                            // click used to delete with no way back.
+                            const question = `${activityT('rewardTask.deleteConfirmTitle')}\n\n${activityT(
+                              'rewardTask.deleteConfirmBody',
+                              { title: task.title },
+                            )}`;
+                            if (!window.confirm(question)) return;
                             run(`reward-${task.id}`, () =>
                               actions.deleteRewardTask(task.id),
-                            )
-                          }
+                            );
+                          }}
                         >
                           <Icon name="trash" size={13} />
                         </button>

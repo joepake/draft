@@ -335,6 +335,8 @@ export default {
     checkingSession: 'Memeriksa sesi Anda…',
     loadingFamily: 'Memuat keluarga Anda…',
     loadFailedTitle: 'Tidak bisa memuat keluarga Anda',
+    partialLoadFailed:
+      'Sebagian halaman ini tidak termuat, jadi daftar bisa tampak kosong padahal tidak.',
     noAccessTitle: 'Tidak ada keluarga di akun ini',
     noAccess:
       'Akun ini tidak punya akses ke keluarga KidGate mana pun. Masuk dengan akun orang tua yang Anda pakai di aplikasi.',
@@ -1126,6 +1128,7 @@ export default {
     tvYoutubeTitle: 'Cara menyiapkan KidGate di Android TV anak Anda',
     outroTitle: 'Semuanya sudah siap.',
     outroSub: 'Semoga KidGate memudahkan Anda mengelola keluarga.',
+    findDeviceTitle: 'Temukan perangkat anak Anda',
     allYoutubeTitle: 'Cara menyiapkan KidGate di ponsel Anda dan perangkat anak Anda',
     allYoutubeDescription:
       'Semua penyiapan dalam satu video: pertama ponsel Anda, lalu setiap perangkat anak Anda (iPhone atau iPad, ponsel atau tablet Android, Mac, PC Windows, Android TV, Chrome), dan terakhir dasbor web. Pilih perangkat Anda dari daftar di bawah.',

@@ -14,6 +14,7 @@ import { deviceIconName } from './deviceIcon.js';
 import { timeAgo } from './timeAgo.js';
 import { trustedContactRepository } from '../adapters/repositories.js';
 import { useReload } from './useReload.js';
+import { pressNextOnEnter } from './enterPresses.js';
 
 /**
  * The family screen — the web half of `apps/mobile`'s `FamilyDetailScreen`.
@@ -140,6 +141,7 @@ export default function FamilySettingsCard({
               autoFocus
               disabled={busy}
               onChange={event => setNameDraft(event.target.value)}
+              onKeyDown={pressNextOnEnter}
             />
             <button
               className="btn btn-sm btn-primary"
@@ -253,6 +255,7 @@ export default function FamilySettingsCard({
                   value={newChild}
                   disabled={readOnly || busy}
                   onChange={event => setNewChild(event.target.value)}
+                  onKeyDown={pressNextOnEnter}
                 />
                 <button
                   className="btn btn-sm"

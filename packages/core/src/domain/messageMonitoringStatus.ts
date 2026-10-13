@@ -51,8 +51,9 @@ export type MessageMonitoringHalfStatus =
    * Two fields, two questions, and this status is the gap between them:
    * `controls.messageMonitoringEnabled` is what the parent *asked for*,
    * `messageMonitoring.incoming.enabled` is what the device *reports doing*.
-   * The second follows the first by one heartbeat when the child device is
-   * awake, and by an unbounded amount when it is not.
+   * The second follows the first within seconds when the child device is
+   * awake — the phone publishes on applying the switch, not on its next
+   * heartbeat — and by an unbounded amount when it is not.
    *
    * Without this the gap rendered as `off` — "granted, switched off, a
    * choice" — which is false twice over: the parent had just chosen the
@@ -166,7 +167,7 @@ export function resolveMessageMonitoring(
  *   rather than above it because it is not a problem yet, and above
  *   `unknown` because it says more: `unknown` is "the device has told us
  *   nothing at all", this is "we know what it was asked to do and are
- *   waiting". It resolves itself on the next heartbeat, so the copy asks for
+ *   waiting". It resolves itself once the device applies it, so the copy asks for
  *   nothing — a banner that demanded an action here would be asking a parent
  *   to fix a delay.
  * - `unknown` — supported, and the device has told us nothing. Said plainly

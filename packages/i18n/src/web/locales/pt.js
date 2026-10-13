@@ -335,6 +335,8 @@ export default {
     checkingSession: 'Verificando sua sessão…',
     loadingFamily: 'Carregando sua família…',
     loadFailedTitle: 'Não foi possível carregar sua família',
+    partialLoadFailed:
+      'Parte desta página não carregou, então uma lista pode parecer vazia sem estar.',
     noAccessTitle: 'Nenhuma família nesta conta',
     noAccess:
       'Esta conta não tem acesso a nenhuma família do KidGate. Entre com a conta de responsável que você usa no app.',
@@ -1137,6 +1139,7 @@ export default {
     tvYoutubeTitle: 'Como configurar o KidGate na Android TV do seu filho',
     outroTitle: 'Tudo pronto.',
     outroSub: 'Esperamos que o KidGate facilite o cuidado com a sua família.',
+    findDeviceTitle: 'Encontre o dispositivo do seu filho',
     allYoutubeTitle:
       'Como configurar o KidGate no seu celular e nos aparelhos do seu filho',
     allYoutubeDescription:

@@ -73,7 +73,7 @@ export const sos = {
   deviceNeedsHelp: '{{deviceName}} a besoin d’aide',
   tapPhotoToEnlarge: 'Appuyez sur la photo pour l’agrandir',
   noPhotoAttached: 'Aucune photo n’a été jointe à cette alerte.',
-  sentRelativeTime: 'Envoyé {{relativeTime}}',
+  sentAtTime: 'Envoyé à {{time}} · {{relativeTime}}',
   imOnIt: 'Je m’en occupe',
   acknowledging: 'Confirmation en cours…',
   unableToAcknowledgeSos:

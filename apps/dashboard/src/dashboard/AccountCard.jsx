@@ -40,6 +40,7 @@ export default function AccountCard({
   const [request, setRequest] = useState(null);
   const [confirming, setConfirming] = useState(false);
   const [busy, setBusy] = useState(false);
+  const [failed, setFailed] = useState(false);
   const [reloadKey, reload] = useReload();
 
   /*
@@ -61,6 +62,7 @@ export default function AccountCard({
 
   const run = async work => {
     setBusy(true);
+    setFailed(false);
     try {
       await work();
       setConfirming(false);
@@ -68,7 +70,9 @@ export default function AccountCard({
       // just filed or cancelled is invisible to it until it asks again.
       reload();
     } catch {
-      // A refused write leaves the card saying what the document still says.
+      // A refused write leaves the card saying what the document still says —
+      // and says that it was refused, or Delete looks like it did nothing.
+      setFailed(true);
     } finally {
       setBusy(false);
     }
@@ -152,7 +156,13 @@ export default function AccountCard({
             </button>
           ) : confirming ? (
             <span className="danger-zone-actions">
-              <button className="btn btn-sm" onClick={() => setConfirming(false)}>
+              <button
+                className="btn btn-sm"
+                onClick={() => {
+                  setConfirming(false);
+                  setFailed(false);
+                }}
+              >
                 {t('dash.close')}
               </button>
               <button
@@ -231,6 +241,11 @@ export default function AccountCard({
               <p className="hint">{appT('settings.deleteAccountSubscriptionNotice')}</p>
             ) : null}
           </>
+        ) : null}
+        {failed ? (
+          <p className="hint" role="alert">
+            {t('controlError.generic')}
+          </p>
         ) : null}
       </Card>
     </>

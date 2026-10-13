@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { useSheet } from './useSheet.js';
 import { useT } from '@kidgate/web-ui/useT';
 import { BROWSING_PAUSE_CHOICE_MINUTES } from '@kidgate/schema/deviceControls';
 
@@ -33,6 +34,7 @@ export default function PauseBrowsingSheet({
   onResume,
 }) {
   const { t } = useT();
+  const sheetRef = useSheet(onClose);
   const closeRef = useRef(null);
 
   // Focus lands on the way out, as on the step-up and plan sheets.
@@ -58,6 +60,7 @@ export default function PauseBrowsingSheet({
   return (
     <div className="sheet-backdrop" onClick={onClose}>
       <div
+        ref={sheetRef}
         className="sheet"
         role="dialog"
         aria-modal="true"

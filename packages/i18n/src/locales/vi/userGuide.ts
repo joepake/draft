@@ -292,7 +292,7 @@ export const userGuide = {
         '1': 'Trên thiết bị phụ huynh, mở hồ sơ của con (hoặc mở thiết bị, nếu thiết bị chưa được gán cho con).',
         '2': 'Chạm [[Khóa tất cả]] để khóa mọi thiết bị của con, hoặc mở một thiết bị rồi chạm [[Khóa thiết bị]].',
         '3': 'Chờ vài giây. Trạng thái sẽ chuyển sang Đã khóa. Nếu trạng thái không thay đổi, hãy mở KidGate trên thiết bị của trẻ và kiểm tra lại các quyền.',
-        '4': 'Để cho phép sử dụng trở lại, chạm [[Mở khóa tất cả]] (hoặc [[Mở khóa]] trên màn hình thiết bị) và xác nhận.',
+        '4': 'Để cho phép sử dụng trở lại, chạm [[Mở khóa tất cả]] (hoặc [[Mở khóa]] trên màn hình thiết bị).',
         '5': 'Tùy chọn: bạn cũng có thể khóa hoặc mở khóa nhanh từ mục Gia đình nếu thẻ thiết bị hiển thị lối tắt.',
         '6': 'Điện thoại hoặc máy tính đang bị khóa vẫn cho con gửi SOS. Trên Android, SOS còn mở gọi điện, bản đồ và tin nhắn trong 5 phút trong khi mọi thứ khác vẫn khóa, và việc này hiện trong [[Nhật ký]].',
       },

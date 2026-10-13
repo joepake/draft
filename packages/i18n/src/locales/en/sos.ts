@@ -79,7 +79,7 @@ export const sos = {
   deviceNeedsHelp: '{{deviceName}} needs help',
   tapPhotoToEnlarge: 'Tap the photo to enlarge it',
   noPhotoAttached: 'No photo was attached to this alert.',
-  sentRelativeTime: 'Sent {{relativeTime}}',
+  sentAtTime: 'Sent at {{time}} · {{relativeTime}}',
   imOnIt: 'I’m on it',
   acknowledging: 'Saving…',
   unableToAcknowledgeSos: 'Unable to acknowledge. Try again in a moment.',

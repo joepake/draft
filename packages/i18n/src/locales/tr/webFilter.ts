@@ -217,6 +217,8 @@ export const webFilter = {
     '{{domain}} {{deviceName}} cihazında engelli kalmaya devam ediyor.',
   siteRequestReceived: 'Site isteği',
   siteRequestReceivedDescription: '{{deviceName}} {{domain}} adresini açmak istiyor.',
+  siteRequestAlsoAllows:
+    'Sitenin yüklenebilmesi için ayrıca izin verilir: {{domains}}.',
   privateDnsStep1: 'Bu cihazda Ayarlar’ı aç.',
   privateDnsStep2: 'Ağ ve internet’i seç.',
   privateDnsStep3: 'Özel DNS’i aç ve Kapalı’yı seç.',

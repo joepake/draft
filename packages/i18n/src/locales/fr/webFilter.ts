@@ -219,6 +219,8 @@ export const webFilter = {
   siteRequestDeniedDescription: '{{domain}} reste bloqué sur {{deviceName}}.',
   siteRequestReceived: 'Demande de site',
   siteRequestReceivedDescription: '{{deviceName}} demande à ouvrir {{domain}}.',
+  siteRequestAlsoAllows:
+    'Autorise aussi {{domains}} pour que ce site puisse se charger.',
   privateDnsStep1: 'Ouvre les Paramètres sur cet appareil.',
   privateDnsStep2: 'Sélectionne Réseau et Internet.',
   privateDnsStep3: 'Ouvre DNS privé et choisis Désactivé.',

@@ -1,4 +1,9 @@
 import { initializeApp } from 'firebase/app';
+import {
+  getToken,
+  initializeAppCheck,
+  ReCaptchaEnterpriseProvider,
+} from 'firebase/app-check';
 import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 
@@ -43,16 +48,35 @@ export const isFirebaseConfigured = Boolean(
  */
 export const functionsBaseUrl = import.meta.env.VITE_FIREBASE_FUNCTIONS_URL || '';
 
+/**
+ * App Check site key (reCAPTCHA Enterprise). Unset = no App Check, and every
+ * call goes out exactly as before; the functions only log what arrives
+ * (`functions/lib/appCheck.js`). Firestore is never enforced —
+ * `docs/FEASIBILITY.md`, "Firebase App Check".
+ */
+const appCheckSiteKey = import.meta.env.VITE_RECAPTCHA_ENTERPRISE_SITE_KEY || '';
+
 let app = null;
 let authInstance = null;
 let dbInstance = null;
+let appCheckInstance = null;
 
 if (isFirebaseConfigured) {
   app = initializeApp(config);
   authInstance = getAuth(app);
   dbInstance = getFirestore(app);
+  if (appCheckSiteKey) {
+    appCheckInstance = initializeAppCheck(app, {
+      provider: new ReCaptchaEnterpriseProvider(appCheckSiteKey),
+      isTokenAutoRefreshEnabled: true,
+    });
+  }
 }
 
 export const auth = authInstance;
 export const db = dbInstance;
+
+export async function appCheckToken() {
+  return appCheckInstance ? (await getToken(appCheckInstance)).token : null;
+}
 export default app;

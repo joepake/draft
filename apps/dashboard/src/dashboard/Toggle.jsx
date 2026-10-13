@@ -1,4 +1,6 @@
+import { useContext } from 'react';
 import { useT } from '@kidgate/web-ui/useT';
+import { WriteLockContext } from './writeLock.js';
 
 /**
  * The dashboard's switch.
@@ -11,14 +13,22 @@ import { useT } from '@kidgate/web-ui/useT';
  */
 export default function Toggle({ on, onChange, label, disabled }) {
   const { t } = useT();
+  const lock = useContext(WriteLockContext);
+  // Held by the write gate rather than by a write in flight: it stays
+  // pressable, and a press opens the unlock sheet instead of doing nothing.
+  const askUnlock = Boolean(disabled && lock?.locked);
   return (
     <button
       className={`toggle${on ? ' is-on' : ''}`}
-      onClick={() => !disabled && onChange(!on)}
+      onClick={() => {
+        if (askUnlock) lock.requestUnlock();
+        else if (!disabled) onChange(!on);
+      }}
       role="switch"
       aria-checked={on}
       aria-label={label}
-      disabled={disabled}
+      aria-disabled={disabled || undefined}
+      disabled={disabled && !askUnlock}
       title={disabled ? t('dash.unlockToChange') : undefined}
     >
       <i />

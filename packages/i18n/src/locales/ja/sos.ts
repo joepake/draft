@@ -69,7 +69,7 @@ export const sos = {
   deviceNeedsHelp: '{{deviceName}}が助けを必要としています',
   tapPhotoToEnlarge: '写真をタップすると拡大できます',
   noPhotoAttached: 'このアラートには写真が添付されていませんでした。',
-  sentRelativeTime: '{{relativeTime}}に送信',
+  sentAtTime: '{{time}}に送信 · {{relativeTime}}',
   imOnIt: '対応します',
   acknowledging: '確認中…',
   unableToAcknowledgeSos:

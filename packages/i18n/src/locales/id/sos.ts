@@ -71,7 +71,7 @@ export const sos = {
   deviceNeedsHelp: '{{deviceName}} butuh bantuan',
   tapPhotoToEnlarge: 'Ketuk foto untuk memperbesarnya',
   noPhotoAttached: 'Tidak ada foto yang dilampirkan pada peringatan ini.',
-  sentRelativeTime: 'Terkirim {{relativeTime}}',
+  sentAtTime: 'Terkirim pukul {{time}} · {{relativeTime}}',
   imOnIt: 'Segera saya tangani',
   acknowledging: 'Menanggapi…',
   unableToAcknowledgeSos: 'Tidak dapat menanggapi. Coba lagi sebentar lagi.',

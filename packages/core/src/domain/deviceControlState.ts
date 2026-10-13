@@ -384,3 +384,37 @@ export function resolveControlCardStatus(
       return null;
   }
 }
+
+type AppBlockingControls = Pick<
+  ControlStateControls,
+  | 'blockedAppsConfigured'
+  | 'blockedAppCount'
+  | 'blockedCategoryCount'
+  | 'appBlockingEnabled'
+>;
+
+/**
+ * The `app-blocking` controls of a child's whole set, for the child hub on
+ * both consoles. Configured is any-of and the counts sum; **on means one
+ * machine has its OWN list and its OWN switch** — what the agent enforces
+ * (`./childPolicy`). The phone hub read the list alone and said
+ * "On" over a set blocking nothing (2026-10-13).
+ */
+export function foldChildAppBlocking(
+  devices: readonly { controls?: AppBlockingControls | null }[],
+): AppBlockingControls {
+  const sum = (read: (c: AppBlockingControls) => number | undefined) =>
+    devices.reduce((total, d) => total + (d.controls ? (read(d.controls) ?? 0) : 0), 0);
+  return {
+    blockedAppsConfigured: devices.some(
+      d => d.controls?.blockedAppsConfigured === true,
+    ),
+    blockedAppCount: sum(c => c.blockedAppCount),
+    blockedCategoryCount: sum(c => c.blockedCategoryCount),
+    appBlockingEnabled: devices.some(
+      d =>
+        d.controls?.blockedAppsConfigured === true &&
+        d.controls.appBlockingEnabled === true,
+    ),
+  };
+}

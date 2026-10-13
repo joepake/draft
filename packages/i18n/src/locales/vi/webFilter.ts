@@ -215,6 +215,7 @@ export const webFilter = {
   siteRequestDeniedDescription: '{{domain}} vẫn bị chặn trên {{deviceName}}.',
   siteRequestReceived: 'Yêu cầu mở trang',
   siteRequestReceivedDescription: '{{deviceName}} xin mở {{domain}}.',
+  siteRequestAlsoAllows: 'Cũng cho phép {{domains}} để trang này tải được.',
   privateDnsStep1: 'Mở Cài đặt trên thiết bị này.',
   privateDnsStep2: 'Chọn Mạng và Internet.',
   privateDnsStep3: 'Mở DNS riêng tư và chọn Tắt.',

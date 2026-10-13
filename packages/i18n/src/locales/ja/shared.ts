@@ -40,6 +40,8 @@ export const shared = {
   // Shown instead of an empty state when a live listener fails, so a broken
   // query never masquerades as "there is nothing here".
   loadFailed: 'リストを読み込めませんでした。下に引っ張って再試行してください。',
+  loadFailedTapRetry: 'リストを読み込めませんでした。',
+  removeConfirm: '「{{name}}」を削除しますか？',
   loadFailedOffline: '最後に保存されたデータを表示しています — オフラインのようです。',
   dismissMessage: 'メッセージを閉じる',
   notNow: '後で',

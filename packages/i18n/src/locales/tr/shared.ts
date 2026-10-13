@@ -40,6 +40,8 @@ export const shared = {
   // Shown instead of an empty state when a live listener fails, so a broken
   // query never masquerades as "there is nothing here".
   loadFailed: 'Bu liste yüklenemedi. Yeniden denemek için aşağı çekin.',
+  loadFailedTapRetry: 'Bu liste yüklenemedi.',
+  removeConfirm: '“{{name}}” kaldırılsın mı?',
   loadFailedOffline: 'Son kaydedilen kopya gösteriliyor — çevrimdışı görünüyorsunuz.',
   dismissMessage: 'Mesajı kapat',
   notNow: 'Şimdi değil',

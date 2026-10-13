@@ -337,6 +337,8 @@ export default {
     checkingSession: 'Oturumunuz denetleniyor…',
     loadingFamily: 'Aileniz yükleniyor…',
     loadFailedTitle: 'Aileniz yüklenemedi',
+    partialLoadFailed:
+      'Bu sayfanın bir kısmı yüklenemedi; bu yüzden bir liste boş görünebilir ama boş olmayabilir.',
     noAccessTitle: 'Bu hesapta aile yok',
     noAccess:
       'Bu hesabın herhangi bir KidGate ailesine erişimi yok. Uygulamada kullandığınız ebeveyn hesabıyla giriş yapın.',
@@ -1153,6 +1155,7 @@ export default {
     tvYoutubeTitle: 'KidGate çocuğunuzun Android TV’sine nasıl kurulur',
     outroTitle: 'Her şey hazır.',
     outroSub: 'KidGate’in ailenizi yönetmeyi kolaylaştırmasını umuyoruz.',
+    findDeviceTitle: 'Çocuğunuzun cihazını bulun',
     allYoutubeTitle: 'KidGate telefonunuza ve çocuğunuzun cihazlarına nasıl kurulur',
     allYoutubeDescription:
       'Tüm kurulum tek videoda: önce telefonunuz, sonra çocuğunuzun her cihazı (iPhone veya iPad, Android telefon veya tablet, Mac, Windows PC, Android TV, Chrome) ve son olarak web paneli. Aşağıdaki listeden cihazınızı seçin.',

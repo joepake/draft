@@ -106,7 +106,13 @@ export default function AppLimitsEditor({
               disabled={readOnly || busy}
               aria-label={appT('appLimits.removeAccessibility', { app: limit.label })}
               title={readOnly ? t('dash.unlockToChange') : undefined}
-              onClick={() => commit(draft.filter(l => l.id !== limit.id))}
+              onClick={() => {
+                if (
+                  window.confirm(appT('shared.removeConfirm', { name: limit.label }))
+                ) {
+                  commit(draft.filter(l => l.id !== limit.id));
+                }
+              }}
             >
               <Icon name="trash" size={14} />
             </button>

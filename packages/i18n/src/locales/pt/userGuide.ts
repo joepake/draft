@@ -294,7 +294,7 @@ export const userGuide = {
         '1': 'No dispositivo dos pais, abra o perfil da criança (ou o dispositivo, se não estiver atribuído a nenhuma criança).',
         '2': 'Selecione Bloquear tudo para bloquear todos os dispositivos dessa criança, ou abra um único dispositivo e selecione Bloquear dispositivo.',
         '3': 'Aguarde alguns segundos. O status deve mudar para Bloqueado. Se nada mudar, abra o KidGate no dispositivo da criança e verifique as permissões novamente.',
-        '4': 'Para restaurar o acesso, selecione Desbloquear tudo (ou Desbloquear na tela do dispositivo) e confirme.',
+        '4': 'Para restaurar o acesso, selecione Desbloquear tudo (ou Desbloquear na tela do dispositivo).',
         '5': 'Opcional: você também pode bloquear ou desbloquear rapidamente pela tela Família, se esses atalhos aparecerem no cartão do dispositivo.',
         '6': 'Um celular ou computador bloqueado ainda deixa seu filho enviar um SOS. No Android, o SOS também abre chamadas, mapas e mensagens por 5 minutos enquanto todo o resto continua bloqueado, e isso aparece em Atividades.',
       },

@@ -55,6 +55,7 @@ export default function SupportCard({
 }) {
   const { t, language } = useT();
   const [reports, setReports] = useState([]);
+  const [loadFailed, setLoadFailed] = useState(false);
   const [reloadKey, reload] = useReload();
   const [message, setMessage] = useState(initialMessage);
   /* An appeal pressed while this card is already open still lands its line. */
@@ -116,9 +117,13 @@ export default function SupportCard({
     if (!accountId) return undefined;
     return userRepository.subscribeSupportReports(
       accountId,
-      setReports,
-      // Decoration on a page that works without it: a parent can still file.
-      () => undefined,
+      rows => {
+        setLoadFailed(false);
+        setReports(rows);
+      },
+      // A parent can still file — but "no reports yet" over a failed read
+      // hides open tickets and invites a duplicate.
+      () => setLoadFailed(true),
     );
   }, [accountId, reloadKey]);
 
@@ -179,7 +184,16 @@ export default function SupportCard({
           </span>
         </p>
       )}
-      {reports.length === 0 ? (
+      {reports.length === 0 && loadFailed ? (
+        <div className="empty-panel">
+          <p className="hint" role="alert">
+            {appT('shared.loadFailedTapRetry')}
+          </p>
+          <button className="btn btn-sm" onClick={() => reload()}>
+            {t('qr.tryAgain')}
+          </button>
+        </div>
+      ) : reports.length === 0 ? (
         /* A first-run panel, not two stranded paragraphs: the lifebuoy says
            what the card is for before either sentence is read. */
         <div className="empty-panel">

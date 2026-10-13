@@ -113,9 +113,8 @@ export default function ParentsCard({
     try {
       setPending(await parentInviteRepository.listPending());
     } catch {
-      // A failed poll costs one refresh. The card still lists the members it
-      // already has, which is the half that matters when the network is bad.
-      setPending([]);
+      // A failed poll costs one refresh. The card keeps the requests it had
+      // already listed: clearing them read as nobody waiting to join.
     }
   }, [owner]);
 

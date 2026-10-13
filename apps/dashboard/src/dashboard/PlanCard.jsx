@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { useSheet } from './useSheet.js';
 import { useT } from '@kidgate/web-ui/useT';
 import { useActivityTranslate } from './activityCopy.js';
 import Icon from '@kidgate/web-ui/Icon';
@@ -18,6 +19,7 @@ import { getPlanState } from '../lib/trial.js';
  */
 function PlanCompareSheet({ onClose }) {
   const { t } = useT();
+  const sheetRef = useSheet(onClose);
   const appT = useActivityTranslate();
   const closeRef = useRef(null);
 
@@ -38,6 +40,7 @@ function PlanCompareSheet({ onClose }) {
   return (
     <div className="sheet-backdrop" onClick={onClose}>
       <div
+        ref={sheetRef}
         className="sheet sheet-wide"
         role="dialog"
         aria-modal="true"

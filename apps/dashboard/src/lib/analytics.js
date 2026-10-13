@@ -23,7 +23,10 @@
  * is what separates the rows.
  *
  * **Nothing here identifies a child.** No device names, no app names, no
- * domains, no coordinates, no family id. Parameters are enums and booleans.
+ * domains, no coordinates. Parameters are enums and booleans. The one
+ * identifier is the `family_id` user property — the owner's uid, the phone's
+ * and the desktop agent's too — because a GA user is a browser, never a
+ * family, and nothing else joins the two (`docs/GA_OPERATIONS.md`).
  */
 
 import {
@@ -59,6 +62,19 @@ const projectId = import.meta.env.VITE_FIREBASE_PROJECT_ID || '';
 
 let instance = null;
 let ready = false;
+/** Held, because the family can resolve before `isSupported()` answers. */
+let familyId = null;
+
+function applyFamily() {
+  if (!instance) {
+    return;
+  }
+  try {
+    setUserProperties(instance, { family_id: familyId });
+  } catch {
+    // Ignore.
+  }
+}
 
 /**
  * Start analytics, or decide not to. Safe to call more than once.
@@ -82,6 +98,7 @@ export async function initAnalytics() {
   try {
     if (await isSupported()) {
       instance = getAnalytics(app);
+      applyFamily();
     }
   } catch {
     instance = null;
@@ -123,6 +140,15 @@ export function setParentRole() {
   } catch {
     // Ignore.
   }
+}
+
+/**
+ * `family_id`, the phone's user property: the owner's uid, which a co-parent
+ * resolves to as well. Null on sign-out.
+ */
+export function setFamily(id) {
+  familyId = id ?? null;
+  applyFamily();
 }
 
 /** `login` — the phone's event name and its `method` / `result` params. */

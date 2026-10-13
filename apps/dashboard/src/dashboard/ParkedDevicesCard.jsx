@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useSheet } from './useSheet.js';
 import { useT } from '@kidgate/web-ui/useT';
 import Icon from '@kidgate/web-ui/Icon';
 import {
@@ -58,6 +59,7 @@ export default function ParkedDevicesCard({
    * trial end, so without it a keyboard is left behind on the page underneath
    * a dialog that says `aria-modal`, with no way to reach the question.
    */
+  const sheetRef = useSheet(onDismiss, Boolean(onDismiss));
   const closeRef = useRef(null);
   useEffect(() => {
     if (onDismiss) closeRef.current?.focus();
@@ -204,6 +206,7 @@ export default function ParkedDevicesCard({
   return (
     <div className="sheet-backdrop" onClick={onDismiss}>
       <section
+        ref={sheetRef}
         className="sheet parked-card"
         role="dialog"
         aria-modal="true"

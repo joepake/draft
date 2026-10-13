@@ -19,6 +19,7 @@ export const notifications = {
   quietHoursActive: 'Тишина с {{start}} до {{end}}',
   quietHoursStart: 'С',
   quietHoursEnd: 'До',
+  quietHoursSameTime: 'Выберите разное время начала и окончания.',
   footnote:
     'Эти настройки действуют только на этом телефоне. У других родительских устройств свои.',
   toastSaveFailed: 'Не удалось сохранить. Попробуйте ещё раз.',

@@ -40,6 +40,8 @@ export const shared = {
   // Shown instead of an empty state when a live listener fails, so a broken
   // query never masquerades as "there is nothing here".
   loadFailed: 'تعذّر تحميل هذه القائمة. اسحب للأسفل لإعادة المحاولة.',
+  loadFailedTapRetry: 'تعذّر تحميل هذه القائمة.',
+  removeConfirm: 'إزالة «{{name}}»؟',
   loadFailedOffline: 'يتم عرض آخر نسخة محفوظة — يبدو أنك غير متصل بالإنترنت.',
   dismissMessage: 'إخفاء الرسالة',
   notNow: 'ليس الآن',

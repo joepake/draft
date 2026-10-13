@@ -216,6 +216,7 @@ export const webFilter = {
   siteRequestDeniedDescription: '{{deviceName}} पर {{domain}} अब भी ब्लॉक है।',
   siteRequestReceived: 'साइट का अनुरोध',
   siteRequestReceivedDescription: '{{deviceName}} ने {{domain}} खोलने को कहा।',
+  siteRequestAlsoAllows: 'यह साइट लोड हो सके, इसलिए {{domains}} को भी अनुमति मिलती है।',
   privateDnsStep1: 'इस डिवाइस पर सेटिंग्स खोलें।',
   privateDnsStep2: 'नेटवर्क और इंटरनेट चुनें।',
   privateDnsStep3: 'प्राइवेट DNS खोलें और बंद चुनें।',

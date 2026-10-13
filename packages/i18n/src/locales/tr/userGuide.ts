@@ -291,7 +291,7 @@ export const userGuide = {
         '1': 'Ebeveyn cihazında çocuğunuzun profilini (veya cihaz bir çocuğa atanmamışsa cihazı) açın.',
         '2': 'Bu çocuğun tüm cihazlarını kilitlemek için Tümünü kilitle’yi seçin ya da tek bir cihazı açıp Cihazı kilitle’yi seçin.',
         '3': 'Birkaç saniye bekleyin. Durum Kilitli olarak değişmelidir. Hiçbir şey değişmezse çocuk cihazında KidGate’i açın ve izinleri yeniden kontrol edin.',
-        '4': 'Erişimi geri yüklemek için Tümünün kilidini aç’ı (veya cihaz ekranında Kilidi aç’ı) seçin ve onaylayın.',
+        '4': 'Erişimi geri yüklemek için Tümünün kilidini aç’ı (veya cihaz ekranında Kilidi aç’ı) seçin.',
         '5': 'İsteğe bağlı: bu kısayollar cihaz kartında görünüyorsa Aile bölümünden de hızlıca kilitleyip kilidini açabilirsiniz.',
         '6': 'Kilitli bir telefon veya bilgisayar, çocuğunuzun SOS göndermesine yine izin verir. Android’de SOS ayrıca aramaları, haritaları ve mesajları 5 dakika boyunca açar; geri kalan her şey kilitli kalır ve bu durum “Etkinlikler”de görünür.',
       },

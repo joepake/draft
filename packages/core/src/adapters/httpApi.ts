@@ -83,6 +83,12 @@ export interface HttpApiAdapterOptions {
   messageKeys?: { unauthenticated?: string };
   /** Override for tests; defaults to `REQUEST_TIMEOUT_MS`. */
   timeoutMs?: number;
+  /**
+   * Firebase App Check token, sent as `X-Firebase-AppCheck`. Absent on the
+   * surfaces that cannot attest (`docs/FEASIBILITY.md`, "Firebase App
+   * Check"). Null or a throw sends nothing: the server only observes it yet.
+   */
+  appCheckToken?: () => Promise<string | null>;
 }
 
 /**
@@ -200,6 +206,11 @@ export function createHttpApiAdapter(options: HttpApiAdapterOptions): ApiPort {
         );
       }
       headers.Authorization = `Bearer ${idToken}`;
+    }
+
+    const appCheckToken = await options.appCheckToken?.().catch(() => null);
+    if (appCheckToken) {
+      headers['X-Firebase-AppCheck'] = appCheckToken;
     }
 
     let credentialFields: Record<string, JsonValue> = {};

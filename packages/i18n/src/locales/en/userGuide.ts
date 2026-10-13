@@ -288,7 +288,7 @@ export const userGuide = {
         '1': 'On the parent device, open your child (or the device, if no child is assigned to it).',
         '2': 'Select [[Lock all]] to lock every device of that child, or open one device and select [[Lock device]].',
         '3': 'Wait a few seconds. The status should change to Locked. If nothing changes, open KidGate on the child device and recheck permissions.',
-        '4': 'To restore access, select [[Unlock all]] (or [[Unlock]] on the device screen) and confirm.',
+        '4': 'To restore access, select [[Unlock all]] (or [[Unlock]] on the device screen).',
         '5': 'Optional: you can also lock or unlock quickly from Family if those shortcuts appear on the device card.',
         '6': 'A locked phone or computer still lets your child send an SOS. On Android, SOS also opens calls, maps and messages for 5 minutes while everything else stays locked, and it appears in [[Activities]].',
       },

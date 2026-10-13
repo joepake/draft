@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { useSheet } from './useSheet.js';
 import { useT } from '@kidgate/web-ui/useT';
 import { readGuideSteps } from '@kidgate/core/domain/userGuide';
 import { buildUserGuideSearchIndex } from '@kidgate/core/domain/userGuideSearch';
@@ -25,6 +26,7 @@ import { Highlighted, TopicRow, useUserGuidePack } from './UserGuide.jsx';
  */
 export default function SearchSheet({ appT, familyChildren, devices, open, onClose }) {
   const { t } = useT();
+  const sheetRef = useSheet(onClose);
   const guide = useUserGuidePack();
   const [query, setQuery] = useState('');
   const inputRef = useRef(null);
@@ -65,6 +67,7 @@ export default function SearchSheet({ appT, familyChildren, devices, open, onClo
   return (
     <div className="sheet-backdrop" onClick={onClose}>
       <div
+        ref={sheetRef}
         className="sheet sheet-search"
         role="dialog"
         aria-modal="true"

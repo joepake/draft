@@ -41,6 +41,8 @@ export const shared = {
   // query never masquerades as "there is nothing here".
   loadFailed:
     'Não foi possível carregar esta lista. Puxe para baixo para tentar de novo.',
+  loadFailedTapRetry: 'Não foi possível carregar esta lista.',
+  removeConfirm: 'Remover “{{name}}”?',
   loadFailedOffline: 'Mostrando a última cópia salva — parece que você está offline.',
   dismissMessage: 'Dispensar mensagem',
   notNow: 'Agora não',

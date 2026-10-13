@@ -1,5 +1,5 @@
 import { createHttpApiAdapter } from '@kidgate/core/adapters/httpApi';
-import { auth, functionsBaseUrl } from '../lib/firebase.js';
+import { appCheckToken, auth, functionsBaseUrl } from '../lib/firebase.js';
 
 /**
  * The transport lives in `@kidgate/core/adapters/httpApi` now, shared with
@@ -43,6 +43,7 @@ export function createApiAdapter() {
           },
         },
         messageKeys: { unauthenticated: 'authError.sessionExpired' },
+        appCheckToken,
       })
     : null;
 

@@ -17,6 +17,7 @@ export const notifications = {
   quietHoursActive: 'Senyap dari {{start}} sampai {{end}}',
   quietHoursStart: 'Dari',
   quietHoursEnd: 'Sampai',
+  quietHoursSameTime: 'Pilih dua waktu yang berbeda.',
   footnote:
     'Pengaturan ini hanya berlaku untuk ponsel ini. Perangkat orang tua lain punya pengaturannya sendiri.',
   toastSaveFailed: 'Tidak dapat menyimpan. Coba lagi.',

@@ -18,6 +18,7 @@ export const child = {
   outOfScreenTimeAskParent:
     'Waktu layar hari ini sudah habis. Kamu bisa meminta tambahan di bawah.',
   screenTimeToday: 'Waktu layar hari ini',
+  timeLeftToday: 'Sisa {{time}} hari ini',
   usedOverLimitMinutes: '{{used}} / {{limit}}',
   usedMinutesOnly: '{{used}}',
   outOfScreenTimeToday:

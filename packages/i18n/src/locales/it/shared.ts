@@ -41,6 +41,8 @@ export const shared = {
   // query never masquerades as "there is nothing here".
   loadFailed:
     'Impossibile caricare questo elenco. Trascina verso il basso per riprovare.',
+  loadFailedTapRetry: 'Impossibile caricare questo elenco.',
+  removeConfirm: 'Rimuovere “{{name}}”?',
   loadFailedOffline: 'Stai vedendo l’ultima copia salvata: sembra che tu sia offline.',
   dismissMessage: 'Ignora messaggio',
   notNow: 'Non ora',

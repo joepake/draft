@@ -72,7 +72,7 @@ export const sos = {
   deviceNeedsHelp: '{{deviceName}} нужна помощь',
   tapPhotoToEnlarge: 'Нажмите на фото, чтобы увеличить',
   noPhotoAttached: 'К этому оповещению не было приложено фото.',
-  sentRelativeTime: 'Отправлено {{relativeTime}}',
+  sentAtTime: 'Отправлено в {{time}} · {{relativeTime}}',
   imOnIt: 'Я разбираюсь',
   acknowledging: 'Подтверждение…',
   unableToAcknowledgeSos: 'Не удалось подтвердить. Попробуйте ещё раз через минуту.',

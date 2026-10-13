@@ -220,6 +220,8 @@ export const webFilter = {
   siteRequestDeniedDescription: '{{domain}} bleibt auf {{deviceName}} gesperrt.',
   siteRequestReceived: 'Website-Anfrage',
   siteRequestReceivedDescription: '{{deviceName}} möchte {{domain}} öffnen.',
+  siteRequestAlsoAllows:
+    'Erlaubt auch {{domains}}, damit diese Website vollständig lädt.',
   privateDnsStep1: 'Öffne die Einstellungen auf diesem Gerät.',
   privateDnsStep2: 'Wähle „Netzwerk & Internet“.',
   privateDnsStep3: 'Öffne „Privates DNS“ und wähle „Aus“.',

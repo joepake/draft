@@ -67,7 +67,7 @@ export const sos = {
   deviceNeedsHelp: '{{deviceName}} yardıma ihtiyaç duyuyor',
   tapPhotoToEnlarge: 'Büyütmek için fotoğrafa dokunun',
   noPhotoAttached: 'Bu uyarıya fotoğraf eklenmedi.',
-  sentRelativeTime: 'Gönderildi {{relativeTime}}',
+  sentAtTime: 'Gönderilme saati {{time}} · {{relativeTime}}',
   imOnIt: 'Ben ilgileniyorum',
   acknowledging: 'Onaylanıyor…',
   unableToAcknowledgeSos: 'Onaylanamadı. Lütfen birazdan tekrar deneyin.',

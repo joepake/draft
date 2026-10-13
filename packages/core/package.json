@@ -182,6 +182,7 @@
     "./domain/youtubeUrl": "./src/domain/youtubeUrl.ts",
     "./domain/webHistoryLabel": "./src/domain/webHistoryLabel.ts",
     "./domain/webServiceGroups": "./src/domain/webServiceGroups.ts",
+    "./domain/webSiteCompanions": "./src/domain/webSiteCompanions.ts",
     "./domain/webSignInQr": "./src/domain/webSignInQr.ts",
     "./domain/weeklyReportBadge": "./src/domain/weeklyReportBadge.ts",
     "./domain/weeklyReportSchedule": "./src/domain/weeklyReportSchedule.ts",

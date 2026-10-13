@@ -115,6 +115,15 @@ export class ControlError extends Error {
  * Function. Both become the one shape the dashboard's toast understands.
  */
 function toControlError(error) {
+  /*
+   * Ahead of `isApiFailure`, which takes any object with a string `code` — a
+   * `FirestoreError` from a direct write included — and so answered a rules
+   * refusal with "Try again" while this branch below it never ran.
+   */
+  if (error?.code === 'permissionDenied') {
+    return new ControlError(error.code, 'controlError.forbidden', error.message);
+  }
+
   if (isApiFailure(error)) {
     return new ControlError(
       error.code,
@@ -131,10 +140,6 @@ function toControlError(error) {
       error.detail,
       error.serverCode,
     );
-  }
-
-  if (error?.code === 'permissionDenied') {
-    return new ControlError(error.code, 'controlError.forbidden', error.message);
   }
 
   // The phone's sentence, through `activityT` like `APP_PACK_REFUSALS`.

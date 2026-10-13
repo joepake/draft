@@ -5,6 +5,7 @@ import type { FirestoreUser } from '@kidgate/schema/firestore';
 import type { AppLanguage } from '@kidgate/schema/language';
 import { SUPPORTED_LANGUAGES } from '@kidgate/schema/language';
 import { supportReportsCollection, userDoc } from '@kidgate/schema/paths';
+import { parentPinIsSet, type ParentPinProfileFields } from '../domain/parentPin';
 import type {
   SupportMessage,
   SupportReport,
@@ -227,6 +228,23 @@ export function createUserRepository(deps: UserRepositoryDeps) {
         createdAt: timestampToIso(data.createdAt) ?? '',
         updatedAt: timestampToIso(data.updatedAt) ?? '',
       } as FirestoreUser;
+    },
+
+    /**
+     * `parentPinIsSet` over the live family root. A child screen waits on the
+     * owner's phone to create the PIN, so a read taken once goes on saying
+     * "ask a parent to create one" after they have.
+     */
+    subscribeParentPinSet(
+      userId: string,
+      onChange: (pinSet: boolean) => void,
+      onError: (error: Error) => void,
+    ): Unsubscribe {
+      return db.onDoc<ParentPinProfileFields>(
+        userDoc(userId),
+        snapshot => onChange(parentPinIsSet(snapshot.exists ? snapshot.data() : null)),
+        onError,
+      );
     },
 
     async updateProfile(

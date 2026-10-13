@@ -40,6 +40,8 @@ export const shared = {
   // Shown instead of an empty state when a live listener fails, so a broken
   // query never masquerades as "there is nothing here".
   loadFailed: 'यह सूची लोड नहीं हो सकी। फिर से कोशिश करने के लिए नीचे खींचें।',
+  loadFailedTapRetry: 'यह सूची लोड नहीं हो सकी।',
+  removeConfirm: '“{{name}}” हटाएँ?',
   loadFailedOffline: 'आख़िरी सहेजी गई कॉपी दिखाई जा रही है — लगता है आप ऑफ़लाइन हैं।',
   dismissMessage: 'संदेश हटाएँ',
   notNow: 'अभी नहीं',

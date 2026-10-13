@@ -368,6 +368,8 @@ export default {
     checkingSession: 'Checking your session…',
     loadingFamily: 'Loading your family…',
     loadFailedTitle: 'Could not load your family',
+    partialLoadFailed:
+      'Some of this page did not load, so a list may look empty when it is not.',
     noAccessTitle: 'No family on this account',
     noAccess:
       'This account does not have access to a KidGate family. Sign in with the parent account you use in the app.',
@@ -1185,6 +1187,8 @@ export default {
     tvYoutubeTitle: 'How to set up KidGate on your child’s Android TV',
     outroTitle: 'You’re all set.',
     outroSub: 'We hope KidGate makes managing your family easier.',
+    // How-to 3.9: locating and ringing the child’s phone.
+    findDeviceTitle: 'Find your child’s device',
     allYoutubeTitle: 'How to set up KidGate on your phone and your child’s devices',
     allYoutubeDescription:
       'Every setup in one video: first your phone, then each of your child’s devices (iPhone or iPad, Android phone or tablet, Mac, Windows PC, Android TV, Chrome), and last the web dashboard. Pick your device from the list below.',

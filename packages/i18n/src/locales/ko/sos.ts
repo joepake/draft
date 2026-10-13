@@ -68,7 +68,7 @@ export const sos = {
   deviceNeedsHelp: '{{deviceName}}에게 도움이 필요해요',
   tapPhotoToEnlarge: '사진을 누르면 확대됩니다',
   noPhotoAttached: '이 알림에는 사진이 첨부되지 않았습니다.',
-  sentRelativeTime: '{{relativeTime}} 전송됨',
+  sentAtTime: '{{time}}에 전송됨 · {{relativeTime}}',
   imOnIt: '제가 확인할게요',
   acknowledging: '확인 처리 중…',
   unableToAcknowledgeSos: '확인하지 못했습니다. 잠시 후 다시 시도해 주세요.',

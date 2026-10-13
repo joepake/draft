@@ -292,7 +292,7 @@ export const userGuide = {
         '1': 'Di perangkat orang tua, buka profil anak (atau perangkat, jika perangkat belum ditetapkan ke anak).',
         '2': 'Pilih Kunci semua untuk mengunci semua perangkat milik anak tersebut, atau buka satu perangkat lalu pilih Kunci perangkat.',
         '3': 'Tunggu beberapa detik. Status akan berubah menjadi Terkunci. Jika tidak ada perubahan, buka KidGate di perangkat anak dan periksa kembali izinnya.',
-        '4': 'Untuk memulihkan akses, pilih Buka kunci semua (atau Buka kunci di layar perangkat) dan konfirmasi.',
+        '4': 'Untuk memulihkan akses, pilih Buka kunci semua (atau Buka kunci di layar perangkat).',
         '5': 'Opsional: Anda juga dapat mengunci atau membuka kunci dengan cepat dari Keluarga jika pintasan tersebut muncul di kartu perangkat.',
         '6': 'Ponsel atau komputer yang terkunci tetap memungkinkan anak Anda mengirim SOS. Di Android, SOS juga membuka panggilan, peta, dan pesan selama 5 menit sementara yang lain tetap terkunci, dan ini muncul di Aktivitas.',
       },

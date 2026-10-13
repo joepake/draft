@@ -296,7 +296,7 @@ export const userGuide = {
         '1': 'Sul dispositivo del genitore, apri il profilo di tuo figlio (o il dispositivo, se non è assegnato a nessun bambino).',
         '2': 'Seleziona “Blocca tutto” per bloccare tutti i dispositivi di tuo figlio, oppure apri un singolo dispositivo e seleziona “Blocca dispositivo”.',
         '3': 'Attendi qualche secondo. Lo stato dovrebbe cambiare in “Bloccato”. Se nulla cambia, apri KidGate sul dispositivo del bambino e ricontrolla i permessi.',
-        '4': 'Per ripristinare l’accesso, seleziona “Sblocca tutto” (oppure Sblocca nella schermata del dispositivo) e conferma.',
+        '4': 'Per ripristinare l’accesso, seleziona “Sblocca tutto” (oppure Sblocca nella schermata del dispositivo).',
         '5': 'Facoltativo: puoi anche bloccare o sbloccare rapidamente da Famiglia se queste scorciatoie compaiono sulla scheda del dispositivo.',
         '6': 'Un telefono o un computer bloccato permette comunque a tuo figlio di inviare un SOS. Su Android, l’SOS apre anche chiamate, mappe e messaggi per 5 minuti mentre tutto il resto resta bloccato, e compare in “Attività”.',
       },

@@ -4,6 +4,7 @@ import { MAX_DEVICE_NAME_LENGTH } from '@kidgate/schema/deviceName';
 import { useActivityTranslate } from './activityCopy.js';
 import Icon from '@kidgate/web-ui/Icon';
 import Card from './Card.jsx';
+import { pressNextOnEnter } from './enterPresses.js';
 
 /*
  * `appT` reads the APP key space through `@kidgate/i18n/activityFeed`. The
@@ -66,6 +67,7 @@ export default function DeviceAdmin({ device, actions, readOnly, busy, run }) {
             maxLength={MAX_DEVICE_NAME_LENGTH}
             disabled={readOnly || busy}
             onChange={event => setName(event.target.value)}
+            onKeyDown={pressNextOnEnter}
           />
           <button
             className="btn btn-sm"
@@ -79,7 +81,9 @@ export default function DeviceAdmin({ device, actions, readOnly, busy, run }) {
           </button>
         </div>
 
-        {tooLong ? (
+        {/* At the cap too, not only over it: `maxLength` stops the typing
+            with no reason given, which read as a broken field. */}
+        {tooLong || name.length >= MAX_DEVICE_NAME_LENGTH ? (
           <p className="hint">
             {appT('family.deviceNameTooLong', { max: MAX_DEVICE_NAME_LENGTH })}
           </p>

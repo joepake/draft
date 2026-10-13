@@ -40,6 +40,8 @@ export const shared = {
   // Shown instead of an empty state when a live listener fails, so a broken
   // query never masquerades as "there is nothing here".
   loadFailed: '목록을 불러오지 못했습니다. 아래로 당겨 다시 시도하세요.',
+  loadFailedTapRetry: '목록을 불러오지 못했습니다.',
+  removeConfirm: '“{{name}}”을(를) 삭제하시겠습니까?',
   loadFailedOffline:
     '마지막으로 저장된 사본을 표시 중입니다 — 오프라인 상태인 것 같습니다.',
   dismissMessage: '메시지 닫기',

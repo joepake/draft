@@ -215,6 +215,7 @@ export const webFilter = {
   siteRequestDeniedDescription: '{{deviceName}}에서 {{domain}}은(는) 계속 차단됩니다.',
   siteRequestReceived: '사이트 요청',
   siteRequestReceivedDescription: '{{deviceName}}이(가) {{domain}} 접속을 요청했어요.',
+  siteRequestAlsoAllows: '이 사이트를 불러올 수 있도록 {{domains}}도 함께 허용돼요.',
   privateDnsStep1: '이 기기에서 설정을 여세요.',
   privateDnsStep2: '네트워크 및 인터넷을 선택하세요.',
   privateDnsStep3: '비공개 DNS를 열고 사용 안 함을 선택하세요.',
