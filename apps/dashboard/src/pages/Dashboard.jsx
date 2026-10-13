@@ -28,7 +28,7 @@ import {
 } from '@kidgate/core/domain/premiumTeaser';
 import { otherAppsMinutes } from '@kidgate/core/domain/childUsage';
 import PremiumTeaser from '../dashboard/PremiumTeaser.jsx';
-import { deviceMinutesToday } from '@kidgate/core/domain/reportHub';
+import { deviceMinutesToday, usageTodayKey } from '@kidgate/core/domain/reportHub';
 import {
   MONITORED_SWAP_COOLDOWN_MS,
   summariseParking,
@@ -55,7 +55,6 @@ import {
   childLimitWithBonus,
   effectiveDailyLimitMinutes,
 } from '@kidgate/core/domain/dailyLimit';
-import { resolveLockEnforcement } from '@kidgate/core/domain/lockEnforcement';
 import { hasUnseenWeeklyReport } from '@kidgate/core/domain/weeklyReportBadge';
 import {
   readWeeklyReportSeen,
@@ -115,7 +114,7 @@ import {
 } from '../dashboard/charts.jsx';
 import ReportPanel from '../dashboard/ReportPanel.jsx';
 import ChildInitial from '../dashboard/ChildInitial.jsx';
-import DeviceDot, { STATUS_KEY, STATUS_TONE } from '../dashboard/DeviceDot.jsx';
+import DeviceDot, { STATUS_TONE, statusLabelKey } from '../dashboard/DeviceDot.jsx';
 import ChildHub from '../dashboard/ChildHub.jsx';
 import ControlCenter, { ACTION_TAB } from '../dashboard/ControlCenter.jsx';
 import DeviceChildRow from '../dashboard/DeviceChildRow.jsx';
@@ -441,46 +440,20 @@ function StatTile({ label, value, meta, tone = 'default', icon }) {
 }
 
 /**
- * What a locked device is actually doing, as three different sentences.
- *
  * `isLocked` is what the parent asked for, and this pill used to render it as
  * though it were what happened — so a television that was switched off, out of
  * range, or running a build with no push handler said **Locked** exactly like
- * one with the overlay covering the room. `@kidgate/core/domain/lockEnforcement`
- * decides which of the three is true and which surfaces can answer at all; the
- * phone's family list reads the same fold through `getDeviceListStatusKeys`.
- *
- * `notApplied` keeps the warning tone rather than gaining a louder one: the
- * pill has three tones and inventing a fourth for this would mean a colour
- * nothing else on the page uses. The sentence is what carries it.
+ * one with the overlay covering the room. The sentence is `statusLabelKey`,
+ * shared with the rail's dot; the phone's family list reads the same fold
+ * through `getDeviceListStatusKeys`.
  */
-const LOCK_STATE_KEY = {
-  sent: 'dash.statusLockSent',
-  notApplied: 'dash.statusLockNotApplied',
-};
-
 function StatusPill({ status, device }) {
   const { t } = useT();
   const known = STATUS_TONE[status] ? status : 'offline';
-  /*
-   * Off the raw fields, not off `known`.
-   *
-   * `getEffectiveDeviceStatus` stopped answering `'locked'` for a locked device
-   * that has gone quiet (2026-09-15), which is what this pill wanted all along
-   * — but reading the lock *through* it would then drop the three sentences
-   * below on exactly the device they were written for: a television switched
-   * off, which is the case `lockEnforcement` exists to name. `supportsLock` is
-   * still the gate, so an extension carrying a stale `isLocked` says nothing.
-   */
-  const lockState =
-    device && device.isLocked && supportsLock(device)
-      ? resolveLockEnforcement(device)
-      : null;
-  const labelKey = (lockState && LOCK_STATE_KEY[lockState]) || STATUS_KEY[known];
   return (
     <span className={`pill tone-${STATUS_TONE[known]}`}>
       <i className="pill-dot" aria-hidden="true" />
-      {t(labelKey)}
+      {t(statusLabelKey(status, device))}
     </span>
   );
 }
@@ -2089,7 +2062,7 @@ export default function Dashboard({
   const todayTopApps = resolveTodayTopApps({
     usageDay: device?.usage?.[device.usage.length - 1] ?? null,
     device: device ?? {},
-    todayKey,
+    todayKey: usageTodayKey(device?.timeZone, usageToday),
   });
   const todayApps = todayTopApps.apps;
   const todayMinutes = todayTopApps.totalMinutes;
