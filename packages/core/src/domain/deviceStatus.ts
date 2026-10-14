@@ -20,7 +20,12 @@ import { supportsLock } from './controlSupport';
 import { resolveLockEnforcement } from './lockEnforcement';
 import { INACTIVE_THRESHOLD_MS } from './protectionStatus';
 import { offlineThresholdForBeat } from './reportCadence';
-import { REPORT_REQUEST_UNANSWERED_MS, reportRequestedAtMs } from './reportRequest';
+import {
+  REPORT_REQUEST_MISSES_OFFLINE,
+  REPORT_REQUEST_UNANSWERED_MS,
+  reportRequestMisses,
+  reportRequestedAtMs,
+} from './reportRequest';
 
 type TranslateFn = (key: string, params?: TranslationParams) => string;
 
@@ -82,17 +87,27 @@ export function getEffectiveDeviceStatus(
    * beats on a two-hour floor and answers a request within seconds
    * (`./reportCadence`), so the request the console sent on opening is the
    * evidence that settles the question, in both directions: answered means a
-   * stamp newer than the request; unanswered past
-   * `REPORT_REQUEST_UNANSWERED_MS` — long enough for a phone in Doze — is
-   * offline whatever cadence the device published; and **unanswered but not
-   * yet overdue is the benefit of the doubt**, because the alternative is a
-   * red flash on every open, for every device, until the answer lands. A
-   * dead device therefore shows green for at most those five minutes, where
-   * it used to spend forty-five idle or ninety free.
+   * stamp newer than the request; **two asks in a row unanswered**, each
+   * given `REPORT_REQUEST_UNANSWERED_MS` — long enough for a phone in Doze —
+   * is offline whatever cadence the device published; and anything short of
+   * that is the benefit of the doubt, because the alternative is a red flash
+   * on every open, for every device, until the answer lands.
+   *
+   * **The count rides on the id** (`reportRequestMisses`, 2026-10-13). An
+   * open console re-asks every `CONSOLE_REASK_INTERVAL_MS`, and each write
+   * replaced the only request on the document, so the evidence that the last
+   * one went unanswered was erased on every re-ask and the doubt re-armed for
+   * the whole visit: a Windows PC silent eighteen hours read "Online" on
+   * device detail. One miss can be a dropped push; two is a device that is
+   * not there, and it stays offline across re-asks until it speaks.
    */
   const requestedAtMs = reportRequestedAtMs(device.reportRequestId);
   const awaitingAnswer = requestedAtMs !== null && requestedAtMs > lastActiveMs;
-  if (awaitingAnswer && nowMs - requestedAtMs > REPORT_REQUEST_UNANSWERED_MS) {
+  const missed = awaitingAnswer
+    ? reportRequestMisses(device.reportRequestId) +
+      (nowMs - requestedAtMs > REPORT_REQUEST_UNANSWERED_MS ? 1 : 0)
+    : 0;
+  if (missed >= REPORT_REQUEST_MISSES_OFFLINE) {
     return 'offline';
   }
   /*

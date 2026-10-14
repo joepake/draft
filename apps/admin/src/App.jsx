@@ -667,6 +667,7 @@ function Families() {
         family =>
           !needle ||
           fold(family.name).includes(needle) ||
+          fold(family.familyName).includes(needle) ||
           fold(family.uid).includes(needle),
       );
 
@@ -836,7 +837,8 @@ function Families() {
           <table className="table">
             <thead>
               <tr>
-                <th>{t('search.colName')}</th>
+                <th>{t('families.colOwner')}</th>
+                <th>{t('families.colFamilyName')}</th>
                 {/* Only a search answer carries an address — see `Families`. */}
                 {found ? <th>{t('search.colEmail')}</th> : null}
                 <th>{t('search.colPlan')}</th>
@@ -875,6 +877,7 @@ function Families() {
               {shown.map(family => (
                 <tr key={family.uid}>
                   <td>{family.name ?? t('family.noName')}</td>
+                  <td>{family.familyName ?? t('families.noFamilyName')}</td>
                   {found ? <td>{family.email ?? t('family.noEmail')}</td> : null}
                   <td>{family.planId ?? t('family.noPlan')}</td>
                   <td>{family.subscriptionStatus ?? t('families.noSubscription')}</td>

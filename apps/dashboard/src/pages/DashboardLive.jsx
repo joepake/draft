@@ -9,7 +9,7 @@ import { useT } from '@kidgate/web-ui/useT';
 import LanguagePicker from '@kidgate/web-ui/LanguagePicker';
 import { RichText } from '@kidgate/web-ui/RichText';
 import ThemeToggle from '../dashboard/ThemeToggle.jsx';
-import BrandLogo from '@kidgate/web-ui/BrandLogo';
+import BrandLoader from '@kidgate/web-ui/BrandLoader';
 import { downloadPageUrl } from '@kidgate/core/domain/siteLinks';
 import { trackScreen } from '../lib/analytics.js';
 import { useActivityTranslate } from '../dashboard/activityCopy.js';
@@ -26,27 +26,16 @@ function Splash({ children }) {
  * The first thing every arrival sees while Firebase decides who is signed in.
  *
  * No card: a sentence in a box read as a pause, and this is the brand's own
- * moment. The mark assembles itself — the parent ring, then the child's, then
- * the head — inside a ring that turns while the check runs. The stage fades in
- * after a short delay, so a session that resolves at once shows the page's
- * gradient and nothing that blinks.
+ * moment. The mark draws itself the way the intro video draws it — the
+ * product's one loader (`@kidgate/web-ui/BrandLoader`) — over the wordmark
+ * and the sentence. The stage fades in after a short delay, so a session that
+ * resolves at once shows the page's gradient and nothing that blinks.
  */
 function SessionSplash({ label }) {
   return (
-    <div className="login session-splash" role="status" aria-live="polite">
-      <div className="session-aura" aria-hidden="true">
-        <span className="session-blob session-blob-a" />
-        <span className="session-blob session-blob-b" />
-        <span className="session-blob session-blob-c" />
-      </div>
+    <div className="login" role="status" aria-live="polite">
       <div className="session-stage">
-        <div className="session-mark" aria-hidden="true">
-          <span className="session-halo" />
-          <span className="session-orbit" />
-          <span className="session-core">
-            <BrandLogo size={54} />
-          </span>
-        </div>
+        <BrandLoader size={88} />
         <p className="session-word">KidGate</p>
         <p className="session-status">{label}</p>
       </div>

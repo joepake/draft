@@ -64,9 +64,47 @@ export function usesReportRequestField(platform: unknown): boolean {
  * `locationRequestId`: unique per press so a second request is not mistaken
  * for the snapshot that merely re-delivers the first, and not a uuid because
  * nothing here needs to be unguessable.
+ *
+ * **`misses` rides on the end** (2026-10-13): how many asks in a row before
+ * this one the device left unanswered (`nextReportRequestMisses`). A re-ask
+ * overwrites the only request field there is, so without it every re-ask
+ * erased the evidence that the last one went unanswered (`./deviceStatus`).
+ * `~` because a device id may hold `-`, and `deviceRequestedAtMs` reads only
+ * the stamp before the first one. A server writer passes none, so its ask
+ * starts the count again.
  */
-export function reportRequestId(nowMs: number, deviceId: string): string {
-  return deviceRequestId(nowMs, deviceId);
+export function reportRequestId(nowMs: number, deviceId: string, misses = 0): string {
+  const id = deviceRequestId(nowMs, deviceId);
+  return misses > 0 ? `${id}~${misses}` : id;
+}
+
+/** Asks in a row left unanswered before this one; 0 for an id with no count. */
+export function reportRequestMisses(requestId: unknown): number {
+  if (typeof requestId !== 'string') {
+    return 0;
+  }
+  const match = /~(\d+)$/.exec(requestId);
+  return match ? Number(match[1]) : 0;
+}
+
+/**
+ * The count the next request carries: one more than the last request's when
+ * the device has not spoken since it was made, zero when it has.
+ */
+export function nextReportRequestMisses(device: {
+  reportRequestId?: string | null;
+  lastActiveAt?: string | null;
+}): number {
+  const askedAtMs = reportRequestedAtMs(device.reportRequestId);
+  if (askedAtMs === null) {
+    return 0;
+  }
+  const lastActiveMs = device.lastActiveAt
+    ? new Date(device.lastActiveAt).getTime()
+    : NaN;
+  return lastActiveMs >= askedAtMs
+    ? 0
+    : reportRequestMisses(device.reportRequestId) + 1;
 }
 
 /**
@@ -130,6 +168,13 @@ export const REPORT_REQUEST_STALE_AFTER_MS = 60 * 1000;
  * `getEffectiveDeviceStatus` on both consoles, so they agree.
  */
 export const REPORT_REQUEST_UNANSWERED_MS = 5 * 60 * 1000;
+
+/**
+ * Asks in a row a device may leave unanswered before a console calls it
+ * offline (operator's rule, 2026-10-13). Two, so one dropped push is not a red
+ * dot, and a device that has ignored two is not given a third chance at green.
+ */
+export const REPORT_REQUEST_MISSES_OFFLINE = 2;
 
 export interface ReportRequestInput {
   /**

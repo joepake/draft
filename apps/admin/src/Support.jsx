@@ -331,9 +331,7 @@ function Detail({ uid, id, version, onChanged }) {
         <div className="ticket-account">
           <div>
             <div className="tile-label">{t('support.account')}</div>
-            <div className="account-line">
-              {family.name || t('support.noFamilyName')}
-            </div>
+            <div className="account-line">{family.name || t('family.noName')}</div>
             <div className="account-line faint">
               {family.email || t('support.noEmail')}
             </div>

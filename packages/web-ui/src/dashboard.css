@@ -3626,61 +3626,12 @@ ol.attn-fix li + li {
 
 /* ---------- The session check: the brand's first moment ----------
  *
- * `.login` supplies the gradient and the palette; everything here is motion
- * and depth on top of it. Durations are multiples of the motion tokens, the
- * ambient loops included, so nothing here is a literal. Under reduced motion
- * the mark is simply drawn and only the orbit keeps turning — the one movement
- * that says the check is still running, as on the phone's `BrandLoader`.
+ * `.login` supplies the gradient and the palette; the mark is the product's
+ * one loader (`@kidgate/web-ui/brandLoader`, the phone's `BrandLoader` drawn
+ * for the browser), over the wordmark and the sentence. It replaced a tile,
+ * an orbit and a drifting aurora on 2026-10-13, when the operator settled on
+ * the intro-style drawing for every surface.
  */
-.session-splash {
-  position: relative;
-  overflow: hidden;
-  isolation: isolate;
-}
-
-.session-aura {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  filter: blur(64px);
-}
-
-.session-blob {
-  position: absolute;
-  width: 46vmax;
-  height: 46vmax;
-  border-radius: 50%;
-  opacity: 0.5;
-  animation: session-drift calc(var(--kg-motion-slow) * 60) ease-in-out infinite
-    alternate;
-}
-
-.session-blob-a {
-  top: -18vmax;
-  left: -12vmax;
-  background: color-mix(in srgb, var(--brand) 55%, transparent);
-}
-
-.session-blob-b {
-  right: -16vmax;
-  bottom: -20vmax;
-  background: color-mix(in srgb, var(--brand-2) 50%, transparent);
-  animation-direction: alternate-reverse;
-  animation-duration: calc(var(--kg-motion-slow) * 76);
-}
-
-/* Kept off the centre: under the stage it darkens the ground the status line
-   is measured against. */
-.session-blob-c {
-  top: 58%;
-  left: 6%;
-  width: 30vmax;
-  height: 30vmax;
-  background: color-mix(in srgb, var(--brand) 30%, var(--brand-2));
-  opacity: 0.28;
-  animation-duration: calc(var(--kg-motion-slow) * 50);
-}
-
 .session-stage {
   display: grid;
   justify-items: center;
@@ -3691,88 +3642,8 @@ ol.attn-fix li + li {
     var(--kg-motion-normal) backwards;
 }
 
-.session-mark {
-  position: relative;
-  width: 8.5rem;
-  height: 8.5rem;
-  display: grid;
-  place-items: center;
-  margin-bottom: 1.5rem;
-}
-
-.session-halo {
-  position: absolute;
-  inset: 1.5rem;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--brand), var(--brand-2));
-  filter: blur(28px);
-  opacity: 0.55;
-  animation: session-pulse calc(var(--kg-motion-slow) * 8) ease-in-out infinite;
-}
-
-/* A turning arc around the mark: a conic sweep cut to a 3px ring by a mask. */
-.session-orbit {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background: conic-gradient(
-    from 0deg,
-    transparent 0 52%,
-    color-mix(in srgb, var(--brand) 70%, transparent) 78%,
-    var(--brand-2) 100%
-  );
-  -webkit-mask: radial-gradient(
-    farthest-side,
-    transparent calc(100% - 3px),
-    var(--ink) calc(100% - 2.5px)
-  );
-  mask: radial-gradient(
-    farthest-side,
-    transparent calc(100% - 3px),
-    var(--ink) calc(100% - 2.5px)
-  );
-  animation: session-spin calc(var(--kg-motion-slow) * 4) linear infinite;
-}
-
-.session-core {
-  position: relative;
-  width: 5.25rem;
-  height: 5.25rem;
-  display: grid;
-  place-items: center;
-  border-radius: 30%;
-  background: linear-gradient(135deg, var(--brand), var(--brand-2));
-  color: var(--kg-onPrimary, var(--plane));
-  box-shadow:
-    0 18px 44px color-mix(in srgb, var(--brand) 38%, transparent),
-    inset 0 1px 0 color-mix(in srgb, var(--plane) 35%, transparent);
-  animation: session-float calc(var(--kg-motion-slow) * 10) ease-in-out infinite;
-}
-
-/* The mark assembles itself: the parent ring swings in, the child's ring
-   turns the other way into its arms, then the head lands. The rings are
-   filled outlines, so this is motion, never a stroke being drawn. Each part
-   turns about its own box, which for an open ring is close to its centre. */
-.session-core .brand-logo-parent,
-.session-core .brand-logo-ring,
-.session-core .brand-logo-head {
-  transform-box: fill-box;
-  transform-origin: center;
-}
-
-.session-core .brand-logo-parent {
-  animation: session-swing calc(var(--kg-motion-slow) * 3) var(--kg-ease-enter)
-    calc(var(--kg-motion-normal) * 2) backwards;
-}
-
-.session-core .brand-logo-ring {
-  animation: session-swing-back calc(var(--kg-motion-slow) * 3) var(--kg-ease-enter)
-    calc(var(--kg-motion-normal) * 3) backwards;
-}
-
-.session-core .brand-logo-head {
-  animation: session-dot calc(var(--kg-motion-slow) * 2) var(--kg-spring)
-    calc(var(--kg-motion-slow) * 4) backwards;
+.session-stage .kg-loader {
+  margin-bottom: 1.25rem;
 }
 
 .session-word {
@@ -3809,58 +3680,10 @@ ol.attn-fix li + li {
   animation: session-shimmer calc(var(--kg-motion-slow) * 8) linear infinite;
 }
 
-@keyframes session-drift {
-  from {
-    transform: translate3d(-5%, -4%, 0) scale(1);
-  }
-  to {
-    transform: translate3d(6%, 5%, 0) scale(1.18);
-  }
-}
-
 @keyframes session-rise {
   from {
     opacity: 0;
     transform: translateY(12px) scale(0.97);
-  }
-}
-
-@keyframes session-pulse {
-  50% {
-    opacity: 0.9;
-    transform: scale(1.12);
-  }
-}
-
-@keyframes session-spin {
-  to {
-    transform: rotate(1turn);
-  }
-}
-
-@keyframes session-float {
-  50% {
-    transform: translateY(-4px);
-  }
-}
-
-@keyframes session-swing {
-  from {
-    opacity: 0;
-    transform: rotate(-150deg) scale(0.7);
-  }
-}
-
-@keyframes session-swing-back {
-  from {
-    opacity: 0;
-    transform: rotate(200deg) scale(0.4);
-  }
-}
-
-@keyframes session-dot {
-  from {
-    transform: scale(0);
   }
 }
 
@@ -3873,14 +3696,10 @@ ol.attn-fix li + li {
   }
 }
 
+/* The loader keeps drawing under reduced motion — it is what says the check
+   is still running — and everything around it holds still. */
 @media (prefers-reduced-motion: reduce) {
-  .session-blob,
   .session-stage,
-  .session-halo,
-  .session-core,
-  .session-core .brand-logo-parent,
-  .session-core .brand-logo-ring,
-  .session-core .brand-logo-head,
   .session-status {
     animation: none;
   }
@@ -3889,6 +3708,21 @@ ol.attn-fix li + li {
     color: var(--ink-2);
     background: none;
   }
+}
+
+/* A card, or the sign-in card, waiting on its first answer. */
+.card-loading,
+.login-loading {
+  display: grid;
+  place-items: center;
+}
+
+.card-loading {
+  min-height: 10rem;
+}
+
+.login-loading {
+  padding-block: 1.5rem;
 }
 
 .login-brand {

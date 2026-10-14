@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import BrandLogo from '@kidgate/web-ui/BrandLogo';
+import BrandLoader from '@kidgate/web-ui/BrandLoader';
 import Icon from '@kidgate/web-ui/Icon';
 import { useT } from '@kidgate/web-ui/useT';
 import { reportNarrative, reportWeek } from '@kidgate/core/domain/reportView';
@@ -118,8 +119,8 @@ export default function ReportPanel({
 
   if (loading) {
     return (
-      <section className="card">
-        <p className="hint">{t('common.loading')}</p>
+      <section className="card card-loading">
+        <BrandLoader label={t('common.loading')} />
       </section>
     );
   }

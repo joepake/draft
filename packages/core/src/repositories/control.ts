@@ -227,7 +227,9 @@ export function createControlRepository(deps: ControlRepositoryDeps) {
       }
 
       await db.updateDoc(childDeviceDoc(userId, deviceId), payload);
-      return refusal;
+      // The reply carries the budget cap; returning only `refusal` here kept a
+      // phone on the old cap after the parent raised the limit (2026-10-13).
+      return reply === undefined ? refusal : { ...refusal, reply };
     },
 
     /**

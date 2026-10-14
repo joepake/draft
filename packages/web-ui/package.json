@@ -12,6 +12,8 @@
     "./LegalNote": "./src/LegalNote.jsx",
     "./RichText": "./src/RichText.jsx",
     "./BrandLogo": "./src/BrandLogo.jsx",
+    "./BrandLoader": "./src/BrandLoader.jsx",
+    "./brandLoader": "./src/brandLoader.js",
     "./Icon": "./src/Icon.jsx",
     "./PlanComparison": "./src/PlanComparison.jsx",
     "./index.css": "./src/index.css",

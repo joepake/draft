@@ -1,0 +1,86 @@
+/*
+ * The motion half of `brandLoader.js` — the same timeline as the phone's
+ * `BrandLoader.tsx`: one 2.4 s cycle (8 × `--kg-motion-slow`), the child's
+ * ring drawn by 35 %, the head landing by 42 %, the parent's ring swept from
+ * 25 % to 65 %, the mark held until 88 % and faded by 100 %.
+ *
+ * Reduced motion does not stop it, as the OS does not stop its own spinner:
+ * the drawing is what says the wait is still going. Each mask circle carries
+ * its own circumference as `--kg-loader-length`, which the keyframes read.
+ */
+.kg-loader {
+  display: inline-block;
+  line-height: 0;
+  color: var(--kg-primary);
+}
+
+.kg-loader svg {
+  display: block;
+  animation: kg-loader-breath calc(var(--kg-motion-slow) * 8) linear infinite;
+}
+
+.kg-loader-inner {
+  animation: kg-loader-inner calc(var(--kg-motion-slow) * 8) infinite;
+}
+
+.kg-loader-outer {
+  animation: kg-loader-outer calc(var(--kg-motion-slow) * 8) infinite;
+}
+
+/* Scale, not `r`: a CSS `r` is not animated by every WebView this ships in. */
+.kg-loader-head {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: kg-loader-head calc(var(--kg-motion-slow) * 8) infinite;
+}
+
+@keyframes kg-loader-breath {
+  0% {
+    opacity: 1;
+    transform: scale(0.88);
+  }
+  65%,
+  88% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes kg-loader-inner {
+  0% {
+    stroke-dashoffset: var(--kg-loader-length);
+    animation-timing-function: var(--kg-ease-enter);
+  }
+  35%,
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes kg-loader-outer {
+  0%,
+  25% {
+    stroke-dashoffset: var(--kg-loader-length);
+    animation-timing-function: var(--kg-ease-enter);
+  }
+  65%,
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes kg-loader-head {
+  0%,
+  30% {
+    transform: scale(0);
+    animation-timing-function: var(--kg-spring);
+  }
+  42%,
+  100% {
+    transform: scale(1);
+  }
+}

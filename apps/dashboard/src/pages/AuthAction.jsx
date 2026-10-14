@@ -5,6 +5,7 @@ import {
   verifyPasswordResetCode,
 } from 'firebase/auth';
 import BrandLogo from '@kidgate/web-ui/BrandLogo';
+import BrandLoader from '@kidgate/web-ui/BrandLoader';
 import LanguagePicker from '@kidgate/web-ui/LanguagePicker';
 import { useT } from '@kidgate/web-ui/useT';
 import { useActivityTranslate } from '../dashboard/activityCopy.js';
@@ -144,6 +145,11 @@ export default function AuthAction({ mode, oobCode }) {
           <LanguagePicker />
         </div>
         {heading && <h1>{t(heading)}</h1>}
+        {step === 'checking' && (
+          <div className="login-loading">
+            <BrandLoader label={t(heading)} />
+          </div>
+        )}
         {sub && <p className="login-sub">{sub}</p>}
         {error && (
           <div className="login-error" role="alert">

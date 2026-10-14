@@ -57,6 +57,13 @@ export function isUsageControlKey(key: string): key is UsageControlKey {
 export const REPORT_ONLY_CONTROL_KEYS = [
   'topApps',
   'timeline',
+  /*
+   * Missing until 2026-10-13, so the Android usage report landed it on the
+   * device document — and, being a "child" key, made `updateControls` drop
+   * `syncChildAgent`'s reply, budget cap included. A parent raising the
+   * Daily Limit left the phone locked at the old cap.
+   */
+  'hourlyApps',
   'idleMinutes',
   /*
    * The free tier's two counters (`docs/PRICING.md` §4). They ride

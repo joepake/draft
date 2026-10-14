@@ -27,7 +27,14 @@ import type {
 export interface FirestoreUser {
   id: string;
   email: string;
+  /** The account holder's own name — the person, never the household. */
   name: string;
+  /**
+   * The household's name. Absent until a parent names it or the phone names it
+   * with the fallback just before the first child pairing
+   * (`familyRepository.ensureOwnFamily`); cleared by "Join family".
+   */
+  familyName?: string;
   parentPinHash?: string | null;
   /** Non-sensitive "a parent PIN exists" flag maintained by setParentPin CF. */
   parentPinSet?: boolean;
@@ -150,6 +157,7 @@ export const FIRESTORE_USER_FIELDS = [
   'id',
   'email',
   'name',
+  'familyName',
   'parentPinHash',
   'parentPinSet',
   'trialStartedAt',

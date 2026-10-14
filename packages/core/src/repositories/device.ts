@@ -39,6 +39,7 @@ import {
   shouldRequestOtaCheck,
 } from '../domain/otaRequest';
 import {
+  nextReportRequestMisses,
   reportRequestId,
   reportRequestedAtMs,
   shouldRequestReport,
@@ -934,7 +935,11 @@ export function createDeviceRepository(deps: DeviceRepositoryDeps) {
           }
           try {
             await db.updateDoc(childDeviceDoc(userId, device.id), {
-              reportRequestId: reportRequestId(nowMs, device.id),
+              reportRequestId: reportRequestId(
+                nowMs,
+                device.id,
+                nextReportRequestMisses(device),
+              ),
             });
             asked += 1;
           } catch {

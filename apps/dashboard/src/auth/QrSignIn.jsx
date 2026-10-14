@@ -7,6 +7,7 @@ import {
 } from './webSession.js';
 import { describeAuthError, useAuth } from './AuthContext.jsx';
 import { RichText } from '@kidgate/web-ui/RichText';
+import BrandLoader from '@kidgate/web-ui/BrandLoader';
 import { useT } from '@kidgate/web-ui/useT';
 
 /** What the phone's scanner reads. The short code is all it needs. */
@@ -194,7 +195,7 @@ export default function QrSignIn({ onError, mode = 'signIn', autoStart = false }
         <div className="qr-code" dangerouslySetInnerHTML={{ __html: svg }} />
       ) : (
         <div className="qr-code qr-placeholder">
-          {status === 'starting' ? t('qr.generating') : ''}
+          {status === 'starting' ? <BrandLoader label={t('qr.generating')} /> : ''}
         </div>
       )}
 
