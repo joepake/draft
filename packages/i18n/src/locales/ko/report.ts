@@ -34,7 +34,7 @@ export const report = {
     '{{app}}은(는) 이번 주에 새로 등장해 벌써 {{duration}}을 차지했습니다.',
   findingAppSurge:
     '{{app}}이(가) 지난주보다 {{delta}} 늘어 모두 {{duration}}이 됐습니다.',
-  findingLimitHit: '하루 {{limit}} 한도에 {{count}}일 도달했습니다.',
+  findingLimitHit: '일일 제한({{limit}})에 {{count}}일 도달했습니다.',
   findingBlockedApps:
     '차단된 앱 실행 {{count}}건, 지난주에는 {{previous}}건이었습니다.',
   findingBlockedWeb: '필터된 사이트 {{count}}건, 지난주에는 {{previous}}건이었습니다.',
@@ -43,8 +43,7 @@ export const report = {
   // 보고서의 긍정적인 절반. 무슨 일이 있었는지와 그 근거가 되는 숫자만
   // 적습니다. 칭찬은 하지 않습니다 — `docs/COPY_STYLE.md`는 아첨을 경보만큼
   // 금지합니다.
-  findingLimitRespected:
-    '하루 사용 시간 제한({{limit}})이 {{count}}일 내내 지켜졌습니다.',
+  findingLimitRespected: '일일 제한({{limit}})이 {{count}}일 내내 지켜졌습니다.',
   findingLateNightGone:
     '이번 주에는 심야 사용이 없었습니다. 지난주에는 {{count}}일 있었습니다.',
   findingBlockedAppsDown:
@@ -76,7 +75,7 @@ export const report = {
   share: '공유',
   copySummary: '요약 복사',
   copied: '요약을 복사했습니다.',
-  shareFailed: '공유 메뉴를 열지 못했습니다.',
+  shareFailed: '공유 메뉴를 열지 못했습니다. 다시 시도해 주세요.',
   shareLinkCta: '{{url}} 에서 앱 받기',
   shareFooterDesc:
     'KidGate는 부모가 사용 시간을 관리하고, 위치를 확인하고, 웹을 필터링할 수 있도록 돕습니다.',
@@ -90,10 +89,10 @@ export const report = {
 
   emptyTitle: '아직 리포트가 없습니다',
   emptyBody:
-    '리포트는 매주 월요일 아침에 도착합니다. 지금 이번 주 리포트를 작성할 수도 있습니다. 최근 7일이 대상입니다.',
+    'Premium에서는 리포트가 매주 월요일 아침에 도착합니다. 지금 이번 주 리포트를 작성할 수도 있습니다. 최근 7일이 대상입니다.',
   noUsage:
     '지난 2주 동안 기록된 스크린 타임이 없어 아직 알려 드릴 내용이 없습니다. 오프라인 상태인 기기는 아무것도 보고하지 않으며, 그것은 조용한 한 주와는 다릅니다.',
-  rateLimited: '시도가 너무 잦습니다. 잠시 후 다시 시도하세요.',
+  rateLimited: '아직 다른 리포트를 작성할 수 없습니다. 1분 뒤에 다시 시도하세요.',
   loadFailedTitle: '리포트를 불러오지 못함',
   loadFailed: '리포트를 열지 못했습니다. 아래로 당겨 다시 시도하세요.',
   failed: '리포트를 작성하지 못했습니다. 잠시 후 다시 시도하세요.',
@@ -112,9 +111,9 @@ export const report = {
   // pack.
   childrenTitle: '자녀별',
   childrenNoteByChild:
-    '같은 2주간을 자녀별로, 사용하는 모든 기기를 합쳐서. 비율은 가족 합계 기준입니다.',
+    '이번 주를 자녀별로, 사용하는 모든 기기를 합쳐서. 비율은 가족 합계 기준입니다.',
   devicesTitle: '기기별',
-  childrenNote: '같은 2주간을 기기별로. 비율은 가족 합계 기준입니다.',
+  childrenNote: '이번 주를 기기별로. 비율은 가족 합계 기준입니다.',
   colChild: '자녀',
   colDevice: '기기',
   colScreenTime: '스크린 타임',
@@ -140,14 +139,14 @@ export const report = {
   guestPreviewHint: '예시입니다. 기기를 연결하면 실제 수치가 표시됩니다',
   guestTitle: '이번 주가 어디로 갔는지 보기',
   guestDescription:
-    '로그인하면 오늘을 평소와 비교하고, 아이들을 나란히 견주고, 매주 월요일에 리포트를 받아 볼 수 있습니다.',
+    '로그인하면 오늘을 평소와 비교하고, 아이들을 나란히 견줄 수 있습니다. Premium에서는 매주 월요일에 리포트도 받아 볼 수 있습니다.',
   guestBenefitTrendTitle: '오늘, 평소와 견주어',
   guestBenefitTrendBody:
     '숫자 하나만으로는 알 수 없습니다. 오늘은 늘 가족의 하루 평균과 나란히 그려집니다.',
   guestBenefitChildTitle: '아이마다 나란히',
   guestBenefitChildBody:
     '아이가 쓰는 모든 기기를 합쳐, 하루 중 각자의 몫을 고유한 색으로 보여 줍니다.',
-  guestBenefitWeeklyTitle: '매주 월요일 리포트',
+  guestBenefitWeeklyTitle: '매주 월요일 리포트(Premium)',
   guestBenefitWeeklyBody:
     '무엇이 달라졌는지, 어떤 앱이 늘었는지, 늦은 밤은 며칠이었는지 — 1년간 보관됩니다.',
   guestSignInButton: '로그인',

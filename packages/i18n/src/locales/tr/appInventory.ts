@@ -32,7 +32,7 @@ export const appInventory = {
   emptySubtitle: 'Cihaz, bir sonraki bağlantısında uygulama listesini gönderecek.',
   unsupportedTitle: 'Bu cihaz uygulamalarını listeleyemiyor',
   unsupportedIos:
-    'Apple hiçbir uygulamanın iPhone veya iPad’de neyin kurulu olduğunu okumasına izin vermez; bu yüzden KidGate uygulamaları yalnızca kullanıldıkça bildirebilir.',
+    'Apple hiçbir uygulamanın iPhone veya iPad’de neyin kurulu olduğunu okumasına izin vermez ve KidGate orada hangi uygulamaların kullanıldığını da göremez.',
   unsupportedGeneric: 'Bu cihaz üzerinde kurulu uygulamaları bildirmiyor.',
   incompleteNote:
     'Bazı uygulamalar burada görünmeyebilir; örneğin cihazın uygulama listesinde simgesi olmayan bir uygulama.',

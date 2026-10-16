@@ -10,7 +10,7 @@ export const pin = {
   toastPinUnlocked: 'Đã mở khóa mã PIN trên {{deviceName}}.',
   toastPinUnlockFailed: 'Không thể mở khóa mã PIN. Vui lòng thử lại.',
   toastPinSaved:
-    'Đã lưu mã PIN phụ huynh. Hãy dùng mã này trên thiết bị của trẻ trước khi thay đổi danh sách ứng dụng bị chặn.',
+    'Đã lưu mã PIN phụ huynh. Hãy dùng mã này trên thiết bị của trẻ trước khi thay đổi mục Chặn ứng dụng.',
   createParentPin: 'Tạo mã PIN phụ huynh',
   changeParentPin: 'Đổi mã PIN phụ huynh',
   parentPinSetupSubtitle:
@@ -24,9 +24,9 @@ export const pin = {
   parentPinRequired: 'Cần mã PIN phụ huynh',
   enterParentPinToContinue: 'Vui lòng nhập mã PIN phụ huynh 6 chữ số để tiếp tục.',
   parentPinLockoutMessage:
-    'Đã nhập sai quá nhiều lần. Hãy nhờ bố mẹ đã thiết lập KidGate mở khóa mã PIN trên điện thoại của bố mẹ, trong Cài đặt → Bảo mật.',
+    'Đã nhập sai quá nhiều lần. Hãy nhờ bố mẹ mở khóa mã PIN trên điện thoại của bố mẹ, trong Cài đặt → Bảo mật.',
   parentPinHelperText:
-    'Chỉ phụ huynh mới được thay đổi danh sách ứng dụng bị chặn hoặc đăng xuất — đó là mục đích của mã PIN. Nếu quên mã PIN, phụ huynh đã thiết lập KidGate có thể đặt lại trên điện thoại của mình, trong Cài đặt → Bảo mật.',
+    'Chỉ phụ huynh mới được thay đổi các cài đặt được bảo vệ, như mục Chặn ứng dụng — đó là mục đích của mã PIN. Nếu quên mã PIN, phụ huynh đã thiết lập KidGate có thể đặt lại trên điện thoại của mình, trong Cài đặt → Bảo mật.',
   forgotPin: 'Quên mã PIN?',
   resetPinNotice:
     'Bạn đang đặt lại mã PIN với tư cách chủ gia đình. Từ nay, thiết bị của trẻ sẽ yêu cầu mã PIN mới.',
@@ -45,20 +45,20 @@ export const pin = {
   savePin: 'Lưu mã PIN',
   pinLockedTitle: 'Mã PIN đã bị khóa',
   pinLockedBody:
-    'Đã nhập sai quá nhiều lần. Hãy nhờ bố mẹ đã thiết lập KidGate mở khóa mã PIN trên điện thoại của bố mẹ, trong Cài đặt → Bảo mật.',
+    'Đã nhập sai quá nhiều lần. Hãy nhờ bố mẹ mở khóa mã PIN trên điện thoại của bố mẹ, trong Cài đặt → Bảo mật.',
   parentAccessRequiredTitle: 'Cần quyền phụ huynh',
   parentAccessRequiredBody:
-    'Vui lòng nhập mã PIN để đổi tên thiết bị, chọn ứng dụng bị chặn hoặc đăng xuất.',
+    'Vui lòng nhập mã PIN để đổi tên thiết bị, thay đổi mục Chặn ứng dụng hoặc rời khỏi gia đình.',
   unlockWithParentPinButton: 'Mở khóa bằng mã PIN phụ huynh',
   whyPinTitle: 'Vì sao cần mã PIN?',
   whyPinBody:
-    'Mã PIN bảo đảm chỉ phụ huynh mới thay đổi được danh sách ứng dụng bị chặn hoặc đăng xuất khỏi KidGate. Việc đổi màu giao diện không cần mã PIN.',
+    'Mã PIN bảo đảm chỉ phụ huynh mới thay đổi được mục Chặn ứng dụng hoặc cho thiết bị này rời khỏi gia đình. Việc đổi màu giao diện không cần mã PIN.',
   pinLockedToast:
-    'Mã PIN đã bị khóa do nhập sai quá nhiều lần. Hãy nhờ bố mẹ đã thiết lập KidGate mở khóa trên điện thoại của bố mẹ, trong Cài đặt → Bảo mật.',
+    'Mã PIN đã bị khóa do nhập sai quá nhiều lần. Hãy nhờ bố mẹ mở khóa trên điện thoại của bố mẹ, trong Cài đặt → Bảo mật.',
   pinNotConfiguredToast:
     'Chưa có mã PIN phụ huynh. Phụ huynh đã thiết lập KidGate sẽ tạo mã này trên điện thoại của mình, trong Cài đặt → Bảo mật.',
   pairedNoPin:
-    'Chưa có mã PIN phụ huynh. Thiết bị của trẻ sẽ yêu cầu mã này trước khi thay đổi danh sách ứng dụng bị chặn hoặc đăng xuất thiết bị.',
+    'Chưa có mã PIN phụ huynh. Thiết bị của trẻ sẽ yêu cầu mã này trước khi thay đổi mục Chặn ứng dụng hoặc cho thiết bị rời khỏi gia đình.',
   enterSixDigitParentPin: 'Vui lòng nhập mã PIN phụ huynh 6 chữ số.',
   askParentCreatePin:
     'Hãy nhờ bố mẹ đã thiết lập KidGate tạo mã PIN phụ huynh trên điện thoại của bố mẹ, trong Cài đặt → Bảo mật.',

@@ -7,7 +7,7 @@ export const childSettings = {
   darkModeHint: '夜間でも目にやさしい表示',
   leaveFamilyAlertTitle: 'このファミリーから退出しますか？',
   leaveFamilyAlertMessage:
-    'このデバイスはファミリーから切断されます。再参加するには保護者の招待でもう一度ペアリングしてください。',
+    'このデバイスはファミリーから切断されます。再参加するには、保護者がご自身のKidGateアプリからこのデバイスをもう一度接続する必要があります。',
   leaveFamily: 'ファミリーから退出',
   uninstallProtectionSectionTitle: 'アンインストール防止',
   uninstallProtectionSectionDescription:
@@ -19,7 +19,7 @@ export const childSettings = {
   uninstallProtectionFailed:
     'アンインストール防止を変更できませんでした。もう一度お試しください。',
   deviceAdminExplanation:
-    '保護者なしでKidGateがアンインストールされるのを防ぎます。KidGateはこれ以外のデバイス管理権限を使いません。このデバイスの消去、画面ロックの変更、カメラの無効化はできません。',
+    'KidGateを簡単には削除できないようにします。アンインストールするには先にこれをオフにする必要があり、オフにすると保護者に通知されます。KidGateはこれ以外のデバイス管理権限を使いません。このデバイスの消去、画面ロックの変更、カメラの無効化はできません。',
   deviceAdminDisableWarning:
     'これをオフにすると、このデバイスからKidGateをアンインストールできるようになります。保護者に通知されます。',
   appPickerUnavailable:

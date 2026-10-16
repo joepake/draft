@@ -1,9 +1,9 @@
 export const pairing = {
   shareInviteButton: 'Chia sẻ mã',
   shareInviteMessage:
-    'Tham gia gia đình của tôi trên KidGate: mở ứng dụng, vào Gia đình → Quét mã, sau đó quét mã QR hoặc nhập mã {{code}}. Mã hết hạn sau 15 phút.',
+    'Tham gia gia đình của tôi trên KidGate: mở ứng dụng, vào Gia đình → Quét mã, sau đó quét mã QR hoặc nhập mã {{code}}. Mã hết hạn sau {{minutes}} phút.',
   shareChildCodeMessage:
-    'Kết nối thiết bị của trẻ trên KidGate: trên thiết bị phụ huynh mở KidGate → Gia đình → Quét mã, sau đó quét mã QR hoặc nhập mã {{code}}. Mã hết hạn sau 5 phút.',
+    'Kết nối thiết bị của trẻ trên KidGate: trên thiết bị phụ huynh mở KidGate → Gia đình → Quét mã, sau đó quét mã QR hoặc nhập mã {{code}}. Mã hết hạn sau {{minutes}} phút.',
   connectChildPhone: 'Kết nối thiết bị của trẻ',
   parentInstructions:
     'Mở KidGate trên thiết bị của trẻ. Trên điện thoại hoặc máy tính bảng, chọn Đây là thiết bị của trẻ. Sau đó nhập mã gồm 6 ký tự hiển thị trên màn hình.',
@@ -37,8 +37,8 @@ export const pairing = {
   parentAccount: 'Tài khoản phụ huynh',
   unknownParent: 'một phụ huynh',
   expiresIn: 'Hết hạn sau {{countdown}}',
-  inviteCodeExpired: 'Mã này đã hết hạn. Hãy chọn nút Tạo mã mới để lấy mã khác.',
-  codeExpired: 'Mã này đã hết hạn. Con chọn nút Tạo mã mới để lấy mã khác nhé.',
+  inviteCodeExpired: 'Mã này đã hết hạn.',
+  codeExpired: 'Mã này đã hết hạn.',
   scanQrTitle: 'Quét mã QR',
   scanQrSubtitle: 'Vui lòng đưa mã QR vào giữa khung hình.',
   enterCodeManually: 'Nhập mã thủ công',
@@ -57,7 +57,7 @@ export const pairing = {
     'Bạn đã thử quá nhiều lần. Vui lòng thử lại sau {{minutes}} phút.',
   inviteParentTitle: 'Thêm thiết bị phụ huynh khác',
   inviteParentInstructions:
-    'Trên thiết bị còn lại, mở KidGate → Gia đình → Quét mã, sau đó quét mã QR này hoặc nhập mã trong vòng 15 phút. Hãy duyệt yêu cầu tại đây để kết nối phụ huynh đó.',
+    'Trên thiết bị còn lại, mở KidGate → Gia đình → Quét mã, sau đó quét mã QR này hoặc nhập mã trong vòng {{minutes}} phút. Hãy duyệt yêu cầu tại đây để kết nối phụ huynh đó.',
   inviteCodeLabel: 'Hoặc chia sẻ mã này',
   joinFamilyTitle: 'Tham gia gia đình',
   joinFamilyScanInstructions: 'Quét mã QR mời từ một phụ huynh đã thuộc gia đình đó.',

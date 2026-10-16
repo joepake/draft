@@ -104,9 +104,12 @@ export default function ParentsCard({
       canvas,
       'kidgate-invite.png',
       appT('pairing.inviteParentTitle'),
-      appT('pairing.shareInviteMessage', { code: invite.code }),
+      appT('pairing.shareInviteMessage', {
+        code: invite.code,
+        minutes: invite.minutes,
+      }),
     );
-  }, [appT, invite?.code]);
+  }, [appT, invite?.code, invite?.minutes]);
 
   const refreshPending = useCallback(async () => {
     if (!owner) return;
@@ -236,7 +239,9 @@ export default function ParentsCard({
 
       {invite ? (
         <div className="invite-code">
-          <p className="hint">{appT('pairing.inviteParentInstructions')}</p>
+          <p className="hint">
+            {appT('pairing.inviteParentInstructions', { minutes: invite.minutes })}
+          </p>
           {inviteQr && (
             <div className="qr-code" dangerouslySetInnerHTML={{ __html: inviteQr }} />
           )}
@@ -280,7 +285,15 @@ export default function ParentsCard({
               actions.createParentInvite(),
             );
             if (result?.code) {
-              setInvite(result);
+              // The minutes the copy names are the server's own lifetime for
+              // this code (`expiresAtMs`), not a number repeated here.
+              setInvite({
+                ...result,
+                minutes: Math.max(
+                  1,
+                  Math.round((result.expiresAtMs - Date.now()) / 60000),
+                ),
+              });
               // The request appears seconds later, on the invitee's action —
               // this refresh only clears anything already waiting.
               refreshPending();

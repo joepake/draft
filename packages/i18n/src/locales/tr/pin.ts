@@ -25,9 +25,9 @@ export const pin = {
   parentPinRequired: 'Ebeveyn PIN’i gerekli',
   enterParentPinToContinue: 'Devam etmek için 6 haneli Ebeveyn PIN’ini gir.',
   parentPinLockoutMessage:
-    'Çok fazla yanlış deneme yapıldı. KidGate’i kuran ebeveynden PIN’in kilidini kendi telefonunda, Ayarlar → Güvenlik bölümünden açmasını iste.',
+    'Çok fazla yanlış deneme yapıldı. Bir ebeveynden PIN’in kilidini kendi telefonunda, Ayarlar → Güvenlik bölümünden açmasını iste.',
   parentPinHelperText:
-    'Engellenen uygulamaları değiştirebilecek veya oturumu kapatabilecek tek kişi bir ebeveyndir — PIN tam olarak bunun için var. PIN unutulursa, KidGate’i kuran ebeveyn kendi telefonunda, Ayarlar → Güvenlik bölümünden sıfırlayabilir.',
+    'Engellenen Uygulamalar gibi korumalı ayarları yalnızca bir ebeveyn değiştirebilir — PIN tam olarak bunun için var. PIN unutulursa, KidGate’i kuran ebeveyn kendi telefonunda, Ayarlar → Güvenlik bölümünden sıfırlayabilir.',
   forgotPin: 'PIN’inizi mi unuttunuz?',
   resetPinNotice:
     'PIN’i hesap sahibi olarak sıfırlıyorsunuz. Çocuk cihazları bundan sonra yeni PIN’i isteyecek.',
@@ -46,20 +46,20 @@ export const pin = {
   savePin: 'PIN’i Kaydet',
   pinLockedTitle: 'PIN kilitli',
   pinLockedBody:
-    'Çok fazla yanlış deneme yapıldı. KidGate’i kuran ebeveynden PIN’in kilidini kendi telefonunda, Ayarlar → Güvenlik bölümünden açmasını iste.',
+    'Çok fazla yanlış deneme yapıldı. Bir ebeveynden PIN’in kilidini kendi telefonunda, Ayarlar → Güvenlik bölümünden açmasını iste.',
   parentAccessRequiredTitle: 'Ebeveyn erişimi gerekli',
   parentAccessRequiredBody:
-    'Bu cihazı yeniden adlandırmak, Engellenen Uygulamalar’ı seçmek veya oturumu kapatmak için PIN’ini gir.',
+    'Bu cihazı yeniden adlandırmak, Engellenen Uygulamalar’ı seçmek veya aileden ayrılmak için PIN’ini gir.',
   unlockWithParentPinButton: 'Ebeveyn PIN’i ile Kilidi Aç',
   whyPinTitle: 'Neden PIN?',
   whyPinBody:
-    'Engellenen Uygulamalar’ı değiştirmesi veya bu cihazın KidGate oturumunu kapatması gereken tek kişi bir ebeveyndir. Tema renkleri için PIN gerekmez.',
+    'Engellenen Uygulamalar’ı değiştirmesi veya bu cihazı aileden çıkarması gereken tek kişi bir ebeveyndir. Tema renkleri için PIN gerekmez.',
   pinLockedToast:
-    'Çok fazla yanlış deneme sonrası PIN kilitlendi. KidGate’i kuran ebeveynden kilidi kendi telefonunda, Ayarlar → Güvenlik bölümünden açmasını iste.',
+    'Çok fazla yanlış deneme sonrası PIN kilitlendi. Bir ebeveynden kilidi kendi telefonunda, Ayarlar → Güvenlik bölümünden açmasını iste.',
   pinNotConfiguredToast:
     'Henüz Ebeveyn PIN’i yok. KidGate’i kuran ebeveyn bunu kendi telefonunda, Ayarlar → Güvenlik bölümünden oluşturur.',
   pairedNoPin:
-    'Henüz Ebeveyn PIN’i yok. Çocuk cihazları, Engellenen Uygulamalar değiştirilmeden veya bir cihazın oturumu kapatılmadan önce bunu ister.',
+    'Henüz Ebeveyn PIN’i yok. Çocuk cihazları, Engellenen Uygulamalar değiştirilmeden veya bir cihaz aileden ayrılmadan önce bunu ister.',
   enterSixDigitParentPin: '6 haneli Ebeveyn PIN’ini gir.',
   askParentCreatePin:
     'KidGate’i kuran ebeveynden kendi telefonunda, Ayarlar → Güvenlik bölümünden bir Ebeveyn PIN’i oluşturmasını iste.',

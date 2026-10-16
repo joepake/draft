@@ -2,7 +2,7 @@ export const webHistory = {
   title: 'Web geçmişi',
   fallbackDeviceName: 'Çocuk cihazı',
   syncNote:
-    'Web geçmişinin bu ekrana yansıması yaklaşık 15 dakikayı bulabilir — cihazın internet bağlantısı yoksa veya beklenmedik şekilde kapandıysa bu süre daha uzun olabilir.',
+    'Web geçmişi, bu ekrana bakarken yaklaşık 10 dakika, aksi halde 30 dakikaya kadar gecikmeyle gelebilir — cihazın internet bağlantısı yoksa veya beklenmedik şekilde kapandıysa bu süre daha uzun olabilir.',
   syncNoteTv:
     'Bu TV yalnızca belirli aralıklarla bağlanır, bu yüzden web geçmişinin bu ekrana yansıması bir saate kadar sürebilir — internet bağlantısı yoksa bu süre daha da uzar.',
   summarySites: 'Görülen siteler',
@@ -14,7 +14,7 @@ export const webHistory = {
   sourceNoteExtension:
     'Bu tarayıcıda KidGate gerçekten açılan sayfaları görür — yalnızca bu tarayıcı, bilgisayarın tamamı değil.',
   filterOffNoteAndroid:
-    'Web Filtresi kapalı, bu yüzden bu cihaz hiçbir şey kaydetmiyor ve engellemiyor. Cihazın hangi sitelere girdiğini görmek için açın.',
+    'Web filtresi kapalı, bu yüzden bu cihaz hiçbir şey kaydetmiyor ve engellemiyor. Cihazın hangi sitelere girdiğini görmek için açın.',
   filterOffNoteMacos:
     'Web filtresi kapalı, bu yüzden bu Mac hiçbir şey kaydetmiyor ve engellemiyor. Nereye gittiğini görmek için açın.',
   filterAll: 'Tüm siteler',
@@ -30,13 +30,17 @@ export const webHistory = {
   blockCategory: '{{category}} engelle',
   blockCategoryConfirmTitle: '{{category}} engellensin mi?',
   blockCategoryConfirmBody:
-    'KidGate’in {{category}} olarak sınıflandırdığı her site bu cihazda reddedilecek. Web Filtresi’nden yeniden kapatabilirsiniz.',
+    'KidGate’in {{category}} olarak sınıflandırdığı her site bu cihazda reddedilecek. Web filtresi’nden yeniden kapatabilirsiniz.',
+  blockCategoryConfirmBodyChild:
+    'KidGate’in {{category}} olarak sınıflandırdığı her site {{name}} adlı çocuğun tüm cihazlarında reddedilecek. Web filtresi’nden yeniden kapatabilirsiniz.',
   blockCategoryConfirmAction: 'Engelle',
   blockCategoryDone: '{{category}} artık engelli.',
   unblockCategory: '{{category}} engelini kaldır',
   unblockCategoryConfirmTitle: '{{category}} engeli kaldırılsın mı?',
   unblockCategoryConfirmBody:
     'KidGate’in {{category}} olarak sınıflandırdığı siteler bu cihazda yeniden açılacak.',
+  unblockCategoryConfirmBodyChild:
+    'KidGate’in {{category}} olarak sınıflandırdığı siteler {{name}} adlı çocuğun cihazlarında yeniden açılacak.',
   unblockCategoryConfirmAction: 'Engeli kaldır',
   unblockCategoryDone: '{{category}} artık engelli değil.',
   serviceSites: '{{count}} site',

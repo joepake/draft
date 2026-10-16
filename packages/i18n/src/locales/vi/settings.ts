@@ -41,7 +41,7 @@ export const settings = {
   accountLinkCredentialInUse:
     'Một tài khoản KidGate khác đang dùng email hoặc cách đăng nhập này.',
   accountLinkRequiresRecentLogin:
-    'Vì lý do bảo mật, vui lòng đăng xuất và đăng nhập lại trước khi liên kết phương thức này.',
+    'Để bảo mật, vui lòng đăng xuất và đăng nhập lại, rồi thử lại thao tác này.',
   accountLinkActionLink: 'Liên kết',
   accountLinkActionUnlink: 'Gỡ liên kết',
   accountLinkActionVerify: 'Xác thực',
@@ -86,7 +86,7 @@ export const settings = {
   reportAttachmentsTooMany: 'Bạn chỉ có thể đính kèm tối đa {{max}} ảnh.',
   reportAttachmentTooLarge:
     'Sau khi thu nhỏ vẫn còn {{size}} nên ảnh không được đính kèm. Giới hạn là {{limit}} mỗi ảnh.',
-  reportAttachmentUnreadable: 'Không đọc được tệp này. Vui lòng chọn ảnh khác.',
+  reportAttachmentUnreadable: 'Không thể đọc tệp này. Vui lòng chọn ảnh khác.',
   reportSendButton: 'Gửi báo cáo',
   reportSending: 'Đang gửi…',
   toastReportSent: 'Cảm ơn bạn — báo cáo đã được gửi đi.',
@@ -96,20 +96,22 @@ export const settings = {
     'Bạn sẽ đăng xuất khỏi thiết bị này, và KidGate sẽ hỏi lại thiết bị này dành cho ai. Vui lòng đăng nhập lại để tiếp tục quản lý thiết bị. Tài khoản, gia đình và các thiết bị của trẻ vẫn được giữ nguyên.',
   removeParentDeviceAlertTitle: 'Gỡ thiết bị phụ huynh?',
   removeParentDeviceAlertMessage:
-    '{{deviceName}} sẽ bị đăng xuất khỏi tài khoản này và không còn nhận thông báo. Người giữ máy có thể đăng nhập lại bằng mật khẩu.',
+    '{{deviceName}} sẽ bị đăng xuất khỏi tài khoản này và không còn nhận thông báo. Người giữ máy có thể đăng nhập lại.',
   toastParentDeviceRemoved: 'Đã gỡ {{deviceName}}.',
   signedOutByAnotherDevice:
     'Thiết bị này đã bị đăng xuất khỏi tài khoản phụ huynh từ một thiết bị khác. Vui lòng đăng nhập lại để tiếp tục.',
   deleteAccountTitle: 'Xóa tài khoản',
   deleteAccountSubtitleDefault: 'Xóa vĩnh viễn tài khoản và toàn bộ dữ liệu',
-  deleteAccountAlertTitle: 'Xóa vĩnh viễn tài khoản?',
+  deleteAccountSubtitleMember:
+    'Xóa vĩnh viễn thông tin đăng nhập và cài đặt riêng của bạn. Gia đình vẫn được giữ nguyên.',
+  deleteAccountAlertTitle: 'Lên lịch xóa tài khoản?',
   deleteAccountAlertMessage:
     'Thao tác này lên lịch xóa tài khoản gia đình của bạn. Chưa có dữ liệu nào bị xóa — bạn có thể đăng nhập và hủy bất cứ lúc nào trước ngày xóa. Sau ngày đó, toàn bộ dữ liệu (thiết bị, nhật ký hoạt động, lịch sử vị trí, ảnh SOS) của tất cả phụ huynh và trẻ sẽ bị xóa vĩnh viễn.',
   deleteAccountAlertMessageMember:
     'Thao tác này lên lịch xóa tài khoản của riêng bạn. Chưa có dữ liệu nào bị xóa — bạn có thể đăng nhập và hủy bất cứ lúc nào trước ngày xóa. Sau ngày đó, thông tin đăng nhập và cài đặt riêng của bạn sẽ bị xóa. Gia đình, các thiết bị và những phụ huynh khác không bị ảnh hưởng.',
   deleteAccountSubscriptionNotice:
     'Xóa tài khoản không hủy gói đăng ký. Vui lòng hủy gói trong App Store hoặc Google Play.',
-  sendRequestButton: 'Xóa vĩnh viễn',
+  sendRequestButton: 'Lên lịch xóa',
   toastDeletionAlreadyPending: 'Tài khoản đang trong quá trình xóa.',
   toastDeletionRequestFailed: 'Không thể bắt đầu xóa tài khoản. Vui lòng thử lại.',
   deletionRequestAlreadyPending: 'Tài khoản này đang trong quá trình xóa.',

@@ -171,7 +171,9 @@ export function mergeDevicePlaces(
 /**
  * The smallest radius worth offering, given how precisely this device reports
  * its position. A radius under roughly twice the error is not a smaller
- * geofence, it is a geofence that fires at random.
+ * geofence, it is one that can rarely tell inside from outside — and
+ * `functions/lib/placeAlerts.js` stays silent rather than guess, so arrivals
+ * and departures go unreported.
  *
  * Returns null when the device has not reported an accuracy — guessing one
  * would put a number in front of a parent that nothing measured — and null

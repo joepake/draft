@@ -27,7 +27,7 @@ export const child = {
   outOfScreenTimeToday:
     'You have used all of today’s screen time. You can request more from your parent.',
   devicePaused: 'Device locked',
-  devicePausedByParent: '{{deviceName}} is locked right now.',
+  devicePausedByParent: 'Your parent has locked {{deviceName}} for now.',
   phonePausedByParent: 'Your parent has locked this device for now.',
   pausedAskParentOrSos:
     'Ask your parent to unlock it when you need it again. In an emergency, you can still send an SOS.',
@@ -38,12 +38,13 @@ export const child = {
     'If you need this device now, ask your parent to change Blocked Hours. In an emergency, you can still send an SOS.',
   blockedHoursLockBodyUntil:
     'Blocked Hours are active until {{time}}. This is a good time to take a break.',
+  dailyLimitLockBody: 'You have used all of today’s screen time.',
   dailyLimitLockHint:
     'Ask your parent if you need more time. In an emergency, you can still send an SOS.',
   appClosedTitle: 'App closed',
   appClosedBody: 'KidGate closed it because it is blocked right now.',
   parentPausedAccess: 'Your parent has locked this device for now.',
-  parentRestoredAccess: 'Your parent unlocked this device. You can continue using it.',
+  parentRestoredAccess: 'Your parent unlocked this device.',
   toastDailyLimitIncreased:
     'Your parent added {{minutes}} more minutes of screen time.',
   toastDailyLimitIncreased_one:

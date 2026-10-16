@@ -6,7 +6,7 @@ export const trial = {
     'When the trial ends, only {{keeps}} of your {{using}} devices keeps sending reports and taking rule changes. The others keep their current rules, which you can only loosen, never tighten.',
   trialBannerTitle: 'Trial · {{remaining}}',
   trialUrgentBody:
-    'Your trial is almost over. Subscribe to Premium for {{price}}/month so nothing is interrupted.',
+    'Your trial is almost over. Every rule keeps working on the free plan. Subscribe to Premium for {{price}}/month to keep live activity, history and reports.',
   trialNormalBody:
     'Enjoying KidGate? Subscribe to Premium for {{price}}/month to keep the full experience after your trial ends.',
   impactTitle: 'Last day of your trial',
@@ -29,5 +29,5 @@ export const trial = {
   impactAppInstalled_one: 'Spotted a new app the day it appeared',
   impactSos: 'Delivered {{count}} SOS alerts straight to you',
   impactSos_one: 'Delivered an SOS alert straight to you',
-  impactKeepButton: 'Keep this protection',
+  impactKeepButton: 'See Premium',
 } as const;

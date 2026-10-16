@@ -6,7 +6,7 @@ export const trial = {
     'Deneme bittiğinde {{using}} cihazınızdan yalnızca {{keeps}} tanesi rapor göndermeyi ve kural değişikliklerini almayı sürdürür. Diğerleri mevcut kurallarını korur; bu kuralları yalnızca gevşetebilir, sıkılaştıramazsınız.',
   trialBannerTitle: 'Deneme · {{remaining}}',
   trialUrgentBody:
-    'Denemeniz bitmek üzere. Hiçbir şey kesintiye uğramasın diye ayda {{price}} karşılığında Premium’a abone olun.',
+    'Denemeniz bitmek üzere. Her kural ücretsiz planda çalışmaya devam eder. Canlı etkinliği, geçmişi ve raporları korumak için ayda {{price}} karşılığında Premium’a abone olun.',
   trialNormalBody:
     'KidGate’i beğendiniz mi? Deneme bittikten sonra tam deneyimi korumak için ayda {{price}} karşılığında Premium’a abone olun.',
   impactTitle: 'Deneme sürenizin son günü',
@@ -21,5 +21,5 @@ export const trial = {
   impactPlaceArrivals: 'Çocuğunuzun güvenle vardığını {{count}} kez bildirdik',
   impactAppInstalled: '{{count}} yeni uygulama, ortaya çıktığı gün yakalandı',
   impactSos: '{{count}} SOS uyarısı doğrudan size iletildi',
-  impactKeepButton: 'Bu korumayı sürdür',
+  impactKeepButton: 'Premium’u gör',
 } as const;

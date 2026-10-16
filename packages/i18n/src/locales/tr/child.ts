@@ -25,7 +25,7 @@ export const child = {
   outOfScreenTimeToday:
     'Bugünkü ekran süreni bitirdin. Ailenden daha fazlasını isteyebilirsin.',
   devicePaused: 'Cihaz kilitli',
-  devicePausedByParent: '{{deviceName}} şu anda kilitli.',
+  devicePausedByParent: '{{deviceName}} şimdilik ailen tarafından kilitlendi.',
   phonePausedByParent: 'Ailen bu cihazı şimdilik kilitledi.',
   pausedAskParentOrSos:
     'İhtiyacın olduğunda ailenden kilidi açmasını iste. Acil durumda yine de SOS gönderebilirsin.',
@@ -36,12 +36,13 @@ export const child = {
     'Bu cihaza şimdi ihtiyacın varsa ailenden Engellenen Saatler’i değiştirmesini iste. Acil durumda yine de SOS gönderebilirsin.',
   blockedHoursLockBodyUntil:
     'Engellenen Saatler {{time}} saatine kadar etkin. Mola vermek için iyi bir zaman.',
+  dailyLimitLockBody: 'Bugünkü ekran süreni bitirdin.',
   dailyLimitLockHint:
     'Daha fazla süreye ihtiyacın varsa ailenden iste. Acil durumda yine de SOS gönderebilirsin.',
   appClosedTitle: 'Uygulama kapatıldı',
   appClosedBody: 'Şu anda engellenen bir uygulama olduğu için KidGate kapattı.',
   parentPausedAccess: 'Ailen bu cihazı şimdilik kilitledi.',
-  parentRestoredAccess: 'Ailen cihazın kilidini açtı. Kullanmaya devam edebilirsin.',
+  parentRestoredAccess: 'Ailen bu cihazın kilidini açtı.',
   toastDailyLimitIncreased: 'Ailen {{minutes}} dakika daha ekran süresi ekledi.',
   errorDeviceNotRegistered:
     'Bu cihaz henüz hazır değil. Biraz sonra tekrar dene; sorun devam ederse cihazı yeniden eşleştir.',

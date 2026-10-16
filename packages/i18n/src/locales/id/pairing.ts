@@ -1,9 +1,9 @@
 export const pairing = {
   shareInviteButton: 'Bagikan kode',
   shareInviteMessage:
-    'Gabung ke keluarga kami di KidGate: buka aplikasi, masuk ke Keluarga → Pindai kode, lalu pindai kode QR atau masukkan kode {{code}}. Kode kedaluwarsa dalam 15 menit.',
+    'Gabung ke keluarga kami di KidGate: buka aplikasi, masuk ke Keluarga → Pindai kode, lalu pindai kode QR atau masukkan kode {{code}}. Kode kedaluwarsa dalam {{minutes}} menit.',
   shareChildCodeMessage:
-    'Hubungkan perangkat anak ini di KidGate: di perangkat orang tua buka KidGate → Keluarga → Pindai kode, lalu pindai kode QR atau masukkan kode {{code}}. Kode kedaluwarsa dalam 5 menit.',
+    'Hubungkan perangkat anak ini di KidGate: di perangkat orang tua buka KidGate → Keluarga → Pindai kode, lalu pindai kode QR atau masukkan kode {{code}}. Kode kedaluwarsa dalam {{minutes}} menit.',
   connectChildPhone: 'Sambungkan perangkat anak',
   parentInstructions:
     'Buka KidGate di perangkat anak. Di ponsel atau tablet, pilih “Ini perangkat anak”. Lalu masukkan kode 6 karakter yang ditampilkan.',
@@ -38,10 +38,8 @@ export const pairing = {
   parentAccount: 'Akun orang tua',
   unknownParent: 'orang tua',
   expiresIn: 'Kedaluwarsa dalam {{countdown}}',
-  inviteCodeExpired:
-    'Kode ini telah kedaluwarsa. Pilih Kode baru untuk mendapatkan kode lain.',
-  codeExpired:
-    'Kode ini telah kedaluwarsa. Pilih Kode baru untuk mendapatkan kode lain.',
+  inviteCodeExpired: 'Kode ini telah kedaluwarsa.',
+  codeExpired: 'Kode ini telah kedaluwarsa.',
   scanQrTitle: 'Pindai kode QR',
   scanQrSubtitle: 'Sejajarkan kode QR di dalam bingkai.',
   enterCodeManually: 'Masukkan kode secara manual',
@@ -61,7 +59,7 @@ export const pairing = {
     'Terlalu banyak percobaan. Silakan coba lagi dalam {{minutes}} menit.',
   inviteParentTitle: 'Tambahkan perangkat orang tua lain',
   inviteParentInstructions:
-    'Di perangkat lain, buka KidGate → Keluarga → Pindai kode, lalu pindai kode QR ini atau masukkan kodenya dalam 15 menit. Setujui permintaan di sini untuk menyambungkan orang tua tersebut.',
+    'Di perangkat lain, buka KidGate → Keluarga → Pindai kode, lalu pindai kode QR ini atau masukkan kodenya dalam {{minutes}} menit. Setujui permintaan di sini untuk menyambungkan orang tua tersebut.',
   inviteCodeLabel: 'Atau bagikan kode ini',
   joinFamilyTitle: 'Bergabung dengan keluarga',
   joinFamilyScanInstructions:

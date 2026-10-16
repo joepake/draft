@@ -16,7 +16,7 @@ export const usage = {
   insightDeviceLocked: 'Cihaz kilitli',
   signalLocksToday: 'Bugünkü kilitlemeler',
   signalUnlocksToday: 'Bugünkü kilit açmalar',
-  signalLocksPeriod: 'Kilitlemeler · 30 gün',
+  signalLocksPeriod: 'Son kilitlemeler',
   signalLocationsToday: 'Bugünkü konumlar',
   sectionWhatsTurnedOn: 'Neler açık',
   rowBlockedHours: 'Engellenen Saatler',
@@ -28,7 +28,7 @@ export const usage = {
   rowLocation: 'Konum',
   valueSharingOn: 'Paylaşım açık',
   sectionLatestActivity: 'Son etkinlik',
-  activityPeriodCount: 'Son 30 günde {{count}}',
+  activityPeriodCount: 'Yakın zamanda {{count}}',
   activityEmpty:
     'Henüz kaydedilmiş bir etkinlik yok. Kilitlemeler, kilit açmalar ve Ekran Süresi güncellemeleri burada görünecek.',
   usageReportAccessibility: 'Kullanım raporu. {{headline}}. Tam raporu aç.',
@@ -78,7 +78,7 @@ export const usage = {
   topAppsEmpty:
     'Henüz uygulama bazlı veri yok. Çocuğun cihazında KidGate’in uygulama kullanımını ölçmesine izin verildiğinden emin olun ve senkronizasyonu bekleyin.',
   protectionImpactTitle: 'Koruma etkisi',
-  protectionImpactHint: 'KidGate’in bu cihazda son zamanlarda durdurduğu olaylar.',
+  protectionImpactHint: 'Bu cihaz kurulduğundan beri toplamlar.',
   protectionBlockedApps: 'Engellenen uygulama açılışları',
   protectionWebBlocked: 'Engellenen web siteleri',
   protectionTamper: 'Koruma uyarıları',

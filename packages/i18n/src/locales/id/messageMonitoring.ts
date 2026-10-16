@@ -12,7 +12,8 @@ export const messageMonitoring = {
     'Di sini hanya pencarian yang bisa diperiksa. Pesan hanya bisa diperiksa di perangkat Android.',
   recentTitle: 'Peringatan terbaru',
   emptyTitle: 'Belum ada peringatan',
-  emptySubtitle: 'Tidak ada kata mengkhawatirkan yang terdeteksi di pesan.',
+  emptySubtitle:
+    'Saat kata yang mengkhawatirkan terdeteksi dalam pesan atau pencarian, kata itu muncul di sini.',
   emptySubtitleNotWatching:
     'Pesan sedang tidak diperiksa, jadi daftar ini akan tetap kosong apa pun yang terjadi.',
   flaggedTerm: 'Ditandai: “{{term}}”',
@@ -30,7 +31,7 @@ export const messageMonitoring = {
   categoryTobacco: 'Tembakau atau vape',
   categoryGambling: 'Judi',
   categoryProfanity: 'Bahasa kasar',
-  categoryUnknown: 'Pesan ditandai',
+  categoryUnknown: 'Pesan mengkhawatirkan',
   guidanceToggle: 'Langkah berikutnya',
   guidanceHide: 'Sembunyikan',
   guidanceFooter:
@@ -73,13 +74,13 @@ export const messageMonitoring = {
     'Browser dan YouTube. Hanya kata atau frasa yang ditandai yang dilaporkan, bukan isi pencariannya.',
   parentSearchHintNotGranted:
     'Memerlukan izin yang sama dengan “Pindai pesan yang diketik”. Aktifkan “Pindai pesan yang diterima”, lalu izinkan di perangkatnya.',
-  parentToggleHintGranted: 'Di ponsel ini.',
+  parentToggleHintGranted: 'Diizinkan di perangkatnya.',
   parentToggleHintNotGranted:
-    'Belum diizinkan di ponsel ini — buka KidGate di perangkatnya untuk memberi izin.',
+    'Belum diizinkan di perangkatnya — buka KidGate di perangkat itu untuk memberi izin.',
   parentProfanityLabel: 'Tandai juga kata-kata kasar',
   parentProfanityHint:
     'Nonaktif secara default — umpatan biasa sering muncul, ini juga menjadikannya peringatan.',
-  parentToggleSaveFailed: 'Perubahan tidak dapat disimpan.',
+  parentToggleSaveFailed: 'Perubahan tidak dapat disimpan. Coba lagi.',
   settingsTitle: 'Pengaturan Peringatan pesan',
   checkedTitle: 'Sudah diperiksa, aman',
   checkedSubtitle:
@@ -110,7 +111,7 @@ export const messageMonitoring = {
     'Android mematikan fitur ini. Berikan izinnya lagi agar yang kamu tulis tetap diperiksa.',
   outgoingDisclosureTitle: 'Sebelum kamu mengizinkan',
   outgoingDisclosureBody:
-    'Dengan izin ini, KidGate membaca apa yang kamu ketik di pesan teks (SMS dan MMS) dan aplikasi obrolan, lalu memeriksanya untuk mencari kata peringatan yang sama. Jika orang tuamu menyalakan peringatan pencarian, KidGate juga membaca apa yang kamu ketik di browser, YouTube, dan aplikasi Google, seperti pencarian. KidGate tidak pernah membaca kolom kata sandi. Pemeriksaan dilakukan di ponsel ini. Jika ada kata yang cocok, hanya kata atau frasa itu, kategorinya, aplikasinya, dan waktunya yang dikirim ke orang tuamu — sisa pesan atau pencariannya tidak pernah dikirim. Jika KidGate tiba-tiba berhenti, log error dikirim ke tim KidGate agar masalahnya bisa diperbaiki.',
+    'Dengan izin ini, KidGate membaca apa yang kamu ketik di pesan teks (SMS dan MMS) dan aplikasi obrolan, lalu memeriksanya untuk mencari kata peringatan yang sama. Jika orang tuamu menyalakan peringatan pencarian, KidGate juga membaca apa yang kamu ketik di browser, YouTube, dan aplikasi Google, seperti pencarian. KidGate tidak pernah membaca kolom kata sandi. Pemeriksaan dilakukan di ponsel ini. Jika ada kata yang cocok, hanya kata atau frasa itu, kategorinya, aplikasinya, dan waktunya yang dikirim ke orang tuamu — sisa pesan atau pencariannya tidak pernah dikirim. Jika kamu mengizinkan mikrofon, KidGate merekam suara hingga 15 detik saat kamu mengirim SOS, lalu mengirimkannya ke orang tuamu. Jika KidGate tiba-tiba berhenti, log error dikirim ke tim KidGate agar masalahnya bisa diperbaiki.',
   outgoingRestrictedHint:
     'Jika sakelarnya abu-abu, buka Setelan › Aplikasi › KidGate, ketuk menu ⋮ lalu pilih “Izinkan setelan terbatas”, kemudian kembali ke sini.',
   notice: {

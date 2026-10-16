@@ -16,7 +16,7 @@ export const usage = {
   insightDeviceLocked: 'الجهاز مقفل',
   signalLocksToday: 'عمليات القفل اليوم',
   signalUnlocksToday: 'عمليات إلغاء القفل اليوم',
-  signalLocksPeriod: 'القفل · 30 يومًا',
+  signalLocksPeriod: 'عمليات القفل الأخيرة',
   signalLocationsToday: 'مواقع اليوم',
   sectionWhatsTurnedOn: 'ما تم تفعيله',
   rowBlockedHours: 'ساعات الحظر',
@@ -28,7 +28,7 @@ export const usage = {
   rowLocation: 'الموقع',
   valueSharingOn: 'المشاركة مفعّلة',
   sectionLatestActivity: 'أحدث الأنشطة',
-  activityPeriodCount: '{{count}} خلال 30 يومًا',
+  activityPeriodCount: '{{count}} مؤخرًا',
   activityEmpty:
     'لا يوجد نشاط مسجل بعد. ستظهر هنا عمليات القفل وإلغاء القفل وتحديثات مدة استخدام الجهاز.',
   usageReportAccessibility: 'تقرير الاستخدام. {{headline}}. فتح التقرير الكامل.',
@@ -77,7 +77,7 @@ export const usage = {
   topAppsEmpty:
     'لا توجد بيانات لكل تطبيق بعد. على جهاز الطفل، تأكد من السماح لـ KidGate بقياس استخدام التطبيقات، ثم انتظر المزامنة.',
   protectionImpactTitle: 'أثر الحماية',
-  protectionImpactHint: 'أحداث حديثة أوقفها KidGate على هذا الجهاز.',
+  protectionImpactHint: 'الإجماليات منذ إعداد هذا الجهاز.',
   protectionBlockedApps: 'مرات فتح تطبيقات محظورة',
   protectionWebBlocked: 'مواقع محظورة',
   protectionTamper: 'تنبيهات الحماية',

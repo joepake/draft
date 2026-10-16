@@ -117,6 +117,8 @@ export function webFilterBlockerKey(device: {
       return 'deviceDetail.webFilterAwaitingApproval';
     case 'configurationDisabled':
       return 'deviceDetail.webFilterSwitchedOffOnDevice';
+    case 'privateDns':
+      return 'deviceDetail.webFilterPrivateDnsOnDevice';
     default:
       return null;
   }
@@ -151,11 +153,15 @@ export interface VpnWebFilterFacts {
  * resolving around it, read "Protected": the 2026-08-23 television failure,
  * on the phone.
  *
- * The two existing values are reused rather than a third coined, because each
- * already says the true thing: consent not given is waiting for approval (the
- * television maps its own VPN consent the same way), and a VPN that is down or
- * bypassed by a setting on the phone is switched off there. Consent comes
- * first — it is the one a person must act on before the others can matter.
+ * Three values, each naming the thing a person has to do. Consent not given is
+ * waiting for approval (the television maps its own VPN consent the same way),
+ * and a VPN that is down is switched off there. **A VPN that is up with a custom
+ * Private DNS resolving around it is `privateDns`** (2026-10-15) — it shared
+ * `configurationDisabled` with the stopped VPN, so a parent was told the filter
+ * was "switched off" over a VPN that was on, and sent to the wrong setting.
+ * Consent comes first — it is the one a person must act on before the others
+ * can matter — and a stopped VPN beats Private DNS, because with no VPN there
+ * is nothing for the setting to bypass.
  *
  * Unlike a Mac's, this blocker does **not** close the Web Filter card:
  * `supportsWebFiltering` still answers from the platform, so the parent can
@@ -170,10 +176,10 @@ export function vpnWebFilterBlocker(
   if (facts.needsVpnConsent) {
     return 'awaitingApproval';
   }
-  if (facts.privateDnsActive || !facts.vpnActive) {
+  if (!facts.vpnActive) {
     return 'configurationDisabled';
   }
-  return null;
+  return facts.privateDnsActive ? 'privateDns' : null;
 }
 
 /**

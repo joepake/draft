@@ -10,6 +10,7 @@ export const activities = {
   subtitleTimelineForDevice: 'Linha do tempo de {{deviceName}}',
   subtitleTimelineForChild: 'Linha do tempo de {{childName}}',
   fallbackDeviceName: 'dispositivo',
+  fallbackChildName: 'seu filho',
   liveBadge: 'Ao vivo',
   errorTitle: 'Não foi possível carregar as atividades',
   tryAgain: 'Tentar novamente',
@@ -43,13 +44,13 @@ export const activities = {
   activityTypeAppRemoved: 'Aplicativo removido',
   activityTypePlaceEnter: 'Entrou em um local',
   activityTypePlaceExit: 'Saiu de um local',
-  activityTypeTamper: 'Proteção',
+  activityTypeTamper: 'Alertas de proteção',
   activityTypeScreenTime: 'Tempo de Uso',
   activityTypeCheckIn: 'Check-in',
   activityTypeLocationRequest: 'Localização',
   activityTypeTimeRequest: 'Solicitações de tempo',
   activityTypeRewardTask: 'Tarefas com recompensa',
-  activityTypeSearchAlert: 'Alerta de busca',
+  activityTypeSearchAlert: 'Alertas de mensagens',
   activityTypeWebFilter: 'Filtro da web',
   activityTypeEmergency: 'SOS',
   activityTypeUnknown: 'Atividade',
@@ -79,7 +80,7 @@ export const activities = {
   appInstalledPendingBody:
     'O aplicativo {{appName}} foi instalado no dispositivo da criança e está bloqueado até você permiti-lo.',
 
-  messageAlertTitle: 'Conteúdo de mensagem preocupante',
+  messageAlertTitle: 'Mensagem preocupante',
   messageAlertBody: 'Uma palavra sinalizada foi vista em {{appName}}.',
   messageAlertBodyOutgoing:
     'Uma palavra sinalizada foi vista em uma mensagem que seu filho escreveu em {{appName}}.',
@@ -186,7 +187,8 @@ export const activities = {
   tamperWebFilterBody:
     'A VPN do KidGate neste dispositivo foi desligada ou substituída por outro aplicativo de VPN. Até ela ser ligada de novo, os sites não são filtrados nem registrados.',
   tamperUninstallProtectionTitle: 'Proteção contra desinstalação desligada',
-  tamperUninstallProtectionBody: 'Agora o KidGate pode ser removido deste telefone.',
+  tamperUninstallProtectionBody:
+    'Agora o KidGate pode ser removido do dispositivo da criança.',
   tamperReinstalledTitle: 'O KidGate foi reinstalado',
   tamperReinstalledBody:
     'O KidGate foi removido deste dispositivo e instalado de novo. Nada foi registrado nesse intervalo.',

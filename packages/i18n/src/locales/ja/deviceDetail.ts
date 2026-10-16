@@ -4,7 +4,7 @@ export const deviceDetail = {
   notFoundTitle: 'デバイス',
   dangerTitle: 'このデバイスを削除',
   dangerDescription:
-    'このデバイスをファミリーアカウントから削除します。このデバイスに関連する時間リクエストと利用履歴はすべて削除されます。',
+    'このデバイスをファミリーアカウントから削除します。位置情報の履歴、利用履歴、ウェブ履歴、視聴した動画、インストール済みアプリの一覧、時間延長リクエスト、サイトのリクエスト、ごほうびタスク、チェックイン、SOSアラート、アクティビティが削除されます。',
   removeButton: 'デバイスを削除',
   removingButton: '削除中…',
   showAllFeatures: 'すべての機能を表示',
@@ -12,7 +12,7 @@ export const deviceDetail = {
   essentialControls: '基本コントロール',
   dailyRulesAndDeviceAccess: '毎日のルールとデバイスアクセス',
   dailyLimit: '1日の上限',
-  setDailyScreenTimeCap: '1日のスクリーンタイム制限を設定',
+  setDailyScreenTimeCap: '1日の上限を設定',
   blockedHours: '休止時間',
   manageTimeRanges: '最大{{max}}件の時間帯を管理',
   blockedApps: 'ブロックされたアプリ',
@@ -38,7 +38,7 @@ export const deviceDetail = {
   placeAlerts: '場所',
   reviewPlaceAlerts: '到着・出発時に通知',
   noPlacesYet: '場所がありません',
-  tamperAlerts: '保護',
+  tamperAlerts: '保護アラート',
   reviewTamperAlerts: '保護が無効になったときに確認',
   editDeviceName: 'デバイス名を変更',
   editDeviceNameSubtitle:
@@ -63,13 +63,14 @@ export const deviceDetail = {
   notAvailableInExtension: '拡張機能では利用できません',
   webFilterAwaitingApproval: '{{platform}} での承認待ちです',
   webFilterSwitchedOffOnDevice: '{{platform}} でオフになっています',
+  webFilterPrivateDnsOnDevice: '{{platform}} のプライベートDNSで回避されています',
   unableToUpdateDeviceName:
     'デバイス名を更新できませんでした。もう一度お試しください。',
   renameOwnerOnly: 'デバイス名を変更できるのはファミリー管理者のみです。',
   removeOwnerOnly: 'デバイスを削除できるのはファミリー管理者のみです。',
   removeDeviceTitle: 'デバイスを削除しますか？',
   removeDeviceMessage:
-    '{{deviceName}}はアカウントから切断されます。関連する時間リクエストと利用履歴はすべて削除されます。',
+    '{{deviceName}}はアカウントから切断されます。位置情報の履歴、利用履歴、ウェブ履歴、視聴した動画、インストール済みアプリの一覧、時間延長リクエスト、サイトのリクエスト、ごほうびタスク、チェックイン、SOSアラート、アクティビティが削除されます。',
   unableToRemoveDevice: 'デバイスを削除できませんでした。もう一度お試しください。',
   checkInNotificationSent: '{{deviceName}}にチェックインリクエストを送信しました。',
   checkInOfflineTitle: 'このデバイスはオフラインのようです',
@@ -82,7 +83,7 @@ export const deviceDetail = {
     'チェックインを送信予約しました。{{deviceName}}がオンラインに戻ると届きます。',
   unableToRequestCheckIn:
     'チェックインをリクエストできませんでした。もう一度お試しください。',
-  tapToSetDailyCap: '1日の利用時間を設定',
+  tapToSetDailyCap: 'タップして1日の上限を設定',
   usageUpdatesFromChildDevice: '子どものデバイスからの利用状況',
   minutesUsedToday: '今日の利用時間 {{used}} / {{limit}}',
   noBlockedHours: '休止時間は未設定',
@@ -139,7 +140,7 @@ export const deviceDetail = {
   webHistoryDescription: '到達したサイトとブロックしたサイト',
   webHistorySitesUnit: 'サイト',
   managedAtChild:
-    'このデバイスのルール、ごほうび、チェックイン、アラートは{{childName}}のプロフィールで管理します',
+    'このデバイスのルール、ごほうび、チェックイン、アラートは{{childName}}のプロフィールで管理します。',
   pauseBrowsing: 'ブラウジングを一時停止',
   pauseBrowsingDescription:
     'しばらくの間ブラウジングを止めます。通話とオフラインのアプリは引き続き使えます。',

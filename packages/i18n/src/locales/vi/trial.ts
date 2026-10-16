@@ -6,7 +6,7 @@ export const trial = {
     'Khi hết dùng thử, chỉ {{keeps}} trong {{using}} thiết bị còn gửi báo cáo và chỉnh sửa quy tắc. Các thiết bị còn lại giữ nguyên quy tắc hiện tại, chỉ có thể nới lỏng, không thể siết chặt.',
   trialBannerTitle: 'Dùng thử · {{remaining}}',
   trialUrgentBody:
-    'Thời gian dùng thử của bạn sắp kết thúc. Vui lòng đăng ký Premium với giá {{price}}/tháng để trải nghiệm không bị gián đoạn.',
+    'Thời gian dùng thử của bạn sắp kết thúc. Mọi quy tắc vẫn hoạt động ở gói miễn phí. Hãy đăng ký Premium với giá {{price}}/tháng để giữ hoạt động trực tiếp, lịch sử và báo cáo.',
   trialNormalBody:
     'Bạn có hài lòng với KidGate? Hãy đăng ký Premium với giá {{price}}/tháng để tiếp tục sử dụng đầy đủ tính năng sau khi hết thời gian dùng thử.',
   impactTitle: 'Ngày cuối của bản dùng thử',
@@ -21,5 +21,5 @@ export const trial = {
   impactPlaceArrivals: 'Đã báo {{count}} lần con đến nơi an toàn',
   impactAppInstalled: 'Đã phát hiện {{count}} ứng dụng mới ngay khi xuất hiện',
   impactSos: 'Đã chuyển {{count}} cảnh báo SOS thẳng đến bạn',
-  impactKeepButton: 'Tiếp tục bảo vệ con',
+  impactKeepButton: 'Xem Premium',
 } as const;

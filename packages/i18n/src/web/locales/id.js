@@ -98,7 +98,7 @@ export default {
     heroLede:
       'KidGate memberi orang tua kendali yang tenang dan jelas atas waktu layar, aplikasi, dan keamanan — sementara anak tetap memegang ponsel yang terasa miliknya.',
     heroCheck1: 'Waktu Layar',
-    heroCheck2: 'Pemblokiran Aplikasi',
+    heroCheck2: 'Aplikasi yang Diblokir',
     heroCheck3: 'Filter web',
     heroCheck4: 'Lokasi',
     heroCheck5: 'SOS',
@@ -123,10 +123,10 @@ export default {
     featuresTitle: 'Semua yang dibutuhkan orang tua',
     featuresSub:
       'Dari batas harian sampai peringatan darurat — satu aplikasi untuk kesejahteraan digital seluruh keluarga.',
-    feature1Title: 'Waktu layar & batas harian',
+    feature1Title: 'Waktu Layar & Batas harian',
     feature1Text:
       'Tetapkan batas harian dan Jam Diblokir untuk sekolah dan waktu tidur. Perangkat mengunci sendiri saat waktu habis.',
-    feature2Title: 'Blokir aplikasi',
+    feature2Title: 'Aplikasi yang Diblokir',
     feature2Text:
       'Pilih aplikasi apa saja yang tidak boleh dibuka anak Anda, dilindungi PIN Orang Tua, dan nyalakan pemblokiran dari jauh.',
     feature3Title: 'Batas Aplikasi',
@@ -141,10 +141,10 @@ export default {
     feature6Title: 'Check-In & SOS',
     feature6Text:
       'Minta anak Anda memastikan dirinya aman; saat darurat, ponselnya langsung mengirim SOS kepada Anda, lengkap dengan lokasi.',
-    feature7Title: 'Peringatan perlindungan & aplikasi',
+    feature7Title: 'Peringatan perlindungan & peringatan aplikasi',
     feature7Text:
       'Ketahui saat sebuah izin penting dimatikan di ponsel anak Anda, dan setujui aplikasi baru sebelum bisa dibuka di Android, Android TV, atau komputer.',
-    feature8Title: 'Tugas hadiah & waktu tambahan',
+    feature8Title: 'Tugas hadiah & Permintaan waktu',
     feature8Text:
       'Anak mendapat menit tambahan dan bintang dengan menyelesaikan tugas, atau meminta waktu lebih — Anda menyetujui keduanya dari ponsel Anda.',
 
@@ -207,7 +207,7 @@ export default {
       'Enam hal yang kami periksa terhadap aplikasi pembanding pilihan orang tua. Masing-masing menyebut platform tempat hal itu berlaku.',
     only1Title: 'TV ruang keluarga juga',
     only1Text:
-      'Android TV mendapat Batas harian, Jam Diblokir, blokir aplikasi, dan Filter web. Di TV, pemblokiran hanya berupaya semampunya — aplikasi yang diblokir dikembalikan ke layar utama — dan tidak ada SOS atau permintaan waktu tambahan dari sofa. TV juga tidak membagikan lokasi. Kebanyakan kontrol orang tua berhenti di ponsel.',
+      'Android TV mendapat Batas harian, Jam Diblokir, Aplikasi yang Diblokir, dan Filter web. Di TV, pemblokiran hanya berupaya semampunya — aplikasi yang diblokir dikembalikan ke layar utama — dan tidak ada SOS atau permintaan waktu tambahan dari sofa. TV juga tidak membagikan lokasi. Kebanyakan kontrol orang tua berhenti di ponsel.',
     only2Title: 'Peringatan pesan yang tetap di ponsel',
     only2Text:
       'Dengan Premium di Android, pesan dicocokkan di perangkat itu sendiri dengan daftar kata kunci dalam hingga tiga bahasa pilihan Anda dari 14 bahasa, dan yang keluar dari ponsel hanyalah kata atau frasa yang cocok, tidak pernah isi percakapannya. Satu hal saja yang mengubahnya, dan hanya jika Anda memintanya: aktifkan konfirmasi AI, maka pesan masuk yang ambigu dikirim ke Gemini milik Google untuk dinilai, sehingga Anda tidak terbangun karena sebuah kata biasa.',
@@ -229,7 +229,7 @@ export default {
     faqSub: 'Jawaban singkat sebelum Anda mengunduh.',
     faq1Q: 'Apakah ada uji coba gratis?',
     faq1A:
-      'Ya. Uji coba 7 hari dimulai saat perangkat orang tua dan perangkat anak Anda pertama kali terhubung, dan mencakup semua fitur Premium. Setelah berakhir, aturan yang Anda buat — Batas harian, Jam Diblokir, Aplikasi yang Diblokir, Filter web, Kunci perangkat, permintaan waktu tambahan, dan tugas hadiah — tetap berjalan gratis di setiap perangkat anak, dan perangkat yang Anda pilih untuk tetap dipantau masih membagikan lokasinya. Aktivitas langsung, riwayat, laporan mingguan, dan pelacakan lokasi adalah yang dikembalikan oleh Premium.',
+      'Ya. Uji coba 7 hari dimulai saat perangkat orang tua dan perangkat anak Anda pertama kali terhubung, dan mencakup semua fitur Premium. Setelah berakhir, aturan yang Anda buat — Batas harian, Jam Diblokir, Aplikasi yang Diblokir, Filter web, Kunci perangkat, Permintaan waktu, dan Tugas hadiah — tetap berjalan gratis di setiap perangkat anak yang mendukungnya, dan satu perangkat yang Anda pilih untuk tetap dipantau masih membagikan lokasinya. Aktivitas langsung, riwayat, laporan mingguan, dan pelacakan lokasi adalah yang dikembalikan oleh Premium.',
     faq2Q: 'Berapa perangkat yang bisa saya kelola?',
     faq2A:
       'Premium mencakup hingga 25 perangkat anak dan 6 orang tua, termasuk Anda, dan setiap perangkat mengirim aktivitas. Paket gratis mencakup hingga 8 perangkat anak dan 3 orang tua. Setiap perangkat tetap menerapkan aturan yang Anda atur, tetapi hanya perangkat yang Anda pilih yang mengirim aktivitas; di perangkat lainnya, aturan itu bisa dilonggarkan tetapi tidak bisa diperketat.',
@@ -379,27 +379,13 @@ export default {
     day4: 'Kam',
     day5: 'Jum',
     day6: 'Sab',
-    timelineUsed: 'Sedang dipakai',
-    timelineIdle: 'Tidak dipakai',
-    timelineUnmeasured: 'Tidak terukur',
-    timelineUnmeasuredHint:
-      'KidGate tidak berjalan di perangkat, atau perangkat sedang tidur. Menit itu juga tidak masuk ke total.',
-    timelineUnsupported:
-      'Perangkat ini bisa melaporkan berapa lama dipakai, tetapi bukan kapan.',
-    timelinePending: 'Belum ada linimasa.',
   },
 
   perm: {
     screenTime: 'Waktu Layar',
     location: 'Lokasi',
-    notifications: 'Notifikasi',
     camera: 'Kamera',
     microphone: 'Mikrofon',
-    backgroundAppRefresh: 'Penyegaran latar belakang',
-    overlay: 'Tampil di atas aplikasi lain',
-    batteryOptimization: 'Baterai tanpa batasan',
-    exactAlarm: 'Alarm & pengingat',
-    accessibility: 'Aksesibilitas (bantuan kunci)',
   },
 
   webCat: {
@@ -483,7 +469,6 @@ export default {
     appVersion: 'Versi aplikasi',
     appVersionUpdate: '{{running}} · {{latest}} tersedia',
     appVersionRestart: '{{running}} · buka ulang aplikasi untuk menyelesaikan',
-    buildOutdated: 'Pembaruan tersedia',
     checkIn: 'Check-In',
     sending: 'Mengirim…',
     lockDevice: 'Kunci perangkat',
@@ -557,7 +542,6 @@ export default {
     attnCheckInMissed: 'Check-In terlewat',
     attnCheckInMissedMeta: 'Dikirim {{when}} · tanpa jawaban',
     attnLimitReached: 'Batas harian tercapai — perangkat terkunci',
-    attnLimitReachedMeta: '{{used}} terpakai hari ini',
     attnBatteryLow: 'Baterai lemah ({{level}}%)',
     attnBatteryLowMeta: 'Pembaruan lokasi bisa berhenti jika ponsel mati',
     attnReview: 'Tinjau',
@@ -588,11 +572,8 @@ export default {
 
     appUsageTitle: 'Penggunaan aplikasi hari ini',
     appUsageSub: 'Waktu yang dipakai per aplikasi',
-    topAppsOther: 'Aplikasi lain',
-    underAMinute: 'Kurang dari semenit',
     appUsageEmpty: 'Belum ada penggunaan aplikasi yang dilaporkan.',
-    appBlockingTitle: 'Pemblokiran Aplikasi',
-    appBlockingSub: 'Dipilih di perangkat anak dengan PIN Orang Tua',
+    appBlockingTitle: 'Aplikasi yang Diblokir',
     blockingLabel: 'Pemblokiran',
     appsBlocked: 'Aplikasi diblokir',
     categories: 'Kategori',
@@ -603,22 +584,16 @@ export default {
     webActivityTitle: 'Aktivitas web',
     webActivitySub: 'Domain paling sering dikunjungi, 30 hari terakhir',
     webActivityEmpty: 'Belum ada aktivitas web.',
-    inventoryTitle: 'Aplikasi terpasang',
-    inventorySub: 'Semua di perangkat ini, bukan hanya yang berubah',
     inventoryEmpty: 'Perangkat ini belum mengirim daftar aplikasinya.',
     inventoryFirstScan:
       'Pemindaian pertama, jadi KidGate belum tahu kapan aplikasi ini muncul.',
-    inventoryFlagged: 'Perlu diperiksa',
-    inventoryFlaggedLabel: 'Perlu ditinjau',
     inventoryOtherLabel: 'Dikenali',
     inventoryUnknownLabel: 'Belum dikenali',
     installAllow: 'Izinkan',
     pendingInstallsTitle: 'Aplikasi baru menunggu persetujuan',
     pendingInstallsSub:
       'Dipasang setelah persetujuan diaktifkan, diblokir sendiri oleh perangkat',
-    pendingInstallsEmpty: 'Tidak ada aplikasi baru yang menunggu persetujuan.',
     toastInstallAllowed: 'Aplikasi diizinkan',
-    rowInstallApproval: 'Setujui aplikasi baru',
     rowInstallApprovalDesc: '{{count}} aplikasi menunggu persetujuan',
     rowInstallApprovalDesc_one: '{{count}} aplikasi menunggu persetujuan',
     rowInstallApprovalDescIos:
@@ -627,7 +602,6 @@ export default {
     colVisits: 'Kunjungan',
     colBlocked: 'Diblokir',
     colLastSeen: 'Terakhir',
-    videosTitle: 'Video yang ditonton',
     videosSub: 'Apa yang ditonton di YouTube dan web',
     videosEmpty: 'Belum ada video.',
     colVideo: 'Video',
@@ -635,22 +609,13 @@ export default {
     colViews: 'Tontonan',
     filterRefusedTitle: 'Yang ditolak penyaring',
     filterRefusedSub: '{{count}} permintaan diblokir, 30 hari terakhir',
-    nothingBlockedYet: 'Belum ada yang diblokir.',
-    rollupNoteAi:
-      'Sebagian jenis disimpulkan dari nama situs, bukan dicocokkan dengan situs yang dikenal, jadi ada yang mungkin meleset.',
-    webBackgroundNote:
-      'Saat perangkat tidak dipakai, sebagian aplikasi tetap mengakses internet di latar belakang: pembaruan, rekomendasi, dan pemeriksaan berjalan sendiri.',
     filterHintIos:
       'iPhone atau iPad ini hanya menyaring dengan kontrol konten dewasa milik Apple. Perbarui KidGate di perangkat itu dan izinkan VPN KidGate untuk memblokir per kategori.',
     filterHintAndroid: 'Kategori ditegakkan oleh penyaring DNS di perangkat.',
-    filterHintMacos: 'Kategori ditegakkan oleh penyaring konten KidGate di Mac.',
 
     locationTitle: 'Lokasi',
-    locationSharingOff: 'Berbagi lokasi mati',
     locationUpdated: 'Diperbarui {{when}}',
     locationWaiting: 'Menunggu pembaruan pertama',
-    lastKnownLocation: 'Lokasi terakhir diketahui',
-    nearPlace: 'Dekat {{place}}',
     noPlaces:
       'Belum ada tempat tersimpan. Tambahkan satu di aplikasi untuk mendapat peringatan saat anak Anda tiba atau pergi.',
     placeRadius: '{{meters}} m · ',
@@ -662,7 +627,6 @@ export default {
     placeWebHint:
       'Di web, tempat hanya bisa dibuat di posisi terakhir yang dilaporkan perangkat. Pakai peta di aplikasi untuk memilih lokasi lain.',
     placeNeedsLocation: 'Menunggu lokasi dari perangkat ini.',
-    sosTitle: 'Peringatan SOS',
     sosSub: 'Sinyal darurat dari perangkat anak',
     sosEmpty:
       'Belum ada peringatan SOS. Cobalah sekali bersama agar Anda berdua tahu cara kerjanya.',
@@ -672,8 +636,6 @@ export default {
     checkInsTitle: 'Check-In',
     checkInsSub: 'Minta anak Anda memastikan dirinya aman',
     checkInSafe: 'Dipastikan aman',
-    checkInMissed: 'Tidak ada jawaban',
-    checkInWaiting: 'Menunggu',
     checkInPhotoRequested: 'foto dan lokasi diminta',
     checkInNoReply: 'belum ada balasan',
     checkInPhotoSkipped: 'foto dilewati',
@@ -683,8 +645,6 @@ export default {
 
     protectionAlertsTitle: 'Peringatan perlindungan',
     protectionAlertsSub: '{{count}} peristiwa sejak pemasangan',
-    protectionAlertsHint:
-      'Peringatan perlindungan berarti KidGate hanya bisa menegakkan lebih sedikit dari yang Anda atur. Pulihkan izinnya di perangkat anak untuk menghapusnya.',
 
     limitCardTitle: 'Batas harian',
     limitCardSub: 'Batasi menit yang tersedia setiap hari',
@@ -697,28 +657,20 @@ export default {
     limitSharedSpent: 'Hari ini terpakai {{used}} dari {{limit}}',
     limitSharedHint:
       'Ini satu hari penuh untuk anak ini, bukan batas perangkat ini saja — tiap perangkat mendapat sisa yang belum dipakai perangkat lain. Ubah di aplikasi KidGate.',
-    whatsOnTitle: 'Apa yang aktif',
     whatsOnSub: 'Perubahan disinkronkan ke perangkat anak',
     rowBlockedHours: 'Jam Diblokir',
     rowBlockedHoursDesc: '{{count}} rentang waktu · {{list}}',
-    rowAppBlocking: 'Pemblokiran Aplikasi',
-    rowAppBlockingApps: '{{count}} aplikasi',
-    rowAppBlockingApps_one: '{{count}} aplikasi',
-    rowAppBlockingCategories: '{{count}} kategori',
-    rowAppBlockingCategories_one: '{{count}} kategori',
+    rowAppBlocking: 'Aplikasi yang Diblokir',
     rowAppBlockingDesc: '{{apps}} · {{categories}}',
     rowWebFilter: 'Filter web',
     rowWebFilterDesc: '{{count}} kategori ditolak',
     rowNotSupported: 'Tidak didukung di perangkat ini',
-    rowWebFilterAwaitingApproval: 'Menunggu persetujuan di perangkat',
-    rowWebFilterSwitchedOff: 'Dimatikan di perangkat',
     rowLocation: 'Berbagi lokasi',
     rowLocationDesc: 'Pembaruan terakhir {{when}}',
     rowLocationNone: 'Belum ada lokasi',
     rowSearchMonitoring: 'Pemantauan pencarian',
-    rowSafeSearch: 'Paksa SafeSearch',
     rowSafeSearchDesc:
-      'Mengunci Google SafeSearch, Mode Terbatas YouTube, Bing, dan DuckDuckGo pada pengaturan ketat. Android, Android TV, dan Chrome. Pada level ini YouTube juga menyembunyikan komentar dan memblokir sebagian video biasa.',
+      'Mengunci Google SafeSearch, Bing, dan DuckDuckGo pada pengaturan ketat di Android, Android TV, dan Chrome. Di Android dan Chrome, ini juga mengunci Mode Terbatas YouTube, yang turut menyembunyikan komentar dan memblokir sebagian video biasa.',
 
     webFilterCatsTitle: 'Kategori Filter web',
     webFilterCatsSub: 'Jenis konten yang diblokir',
@@ -734,13 +686,9 @@ export default {
     rewardTaskStars: 'Tingkat kesulitan: {{count}} dari 3',
     rewardTaskWaiting: ' · menunggu persetujuan Anda',
     approve: 'Setujui',
-    siteRequestsTitle: 'Permintaan situs',
-    siteRequestsSub: 'Situs yang diminta perangkat ini untuk diizinkan',
     siteRequestAllow: 'Izinkan',
     siteRequestDeny: 'Nanti saja',
     attnSiteRequest: '{{name}} meminta membuka {{domain}}',
-    toastSiteAllowed: 'Situs diizinkan',
-    timelineTitle: 'Kapan perangkat dipakai',
     timelineSub:
       'Hari ini, dari tengah malam ke tengah malam. Hijau adalah waktu pemakaian perangkat.',
     timelineSubDay:
@@ -762,47 +710,16 @@ export default {
   },
 
   report: {
-    title: 'Laporan mingguan',
-    subtitle: 'Yang diperhatikan KidGate sepanjang minggu ini.',
-    weekOf: 'Minggu {{week}}',
     writtenAt: 'Ditulis {{when}}',
-    triggerScheduled: 'Dikirim Senin',
-    triggerManual: 'Dibuat oleh Anda',
-    highlights: 'Perlu diketahui',
-    narrativeTitle: 'Dalam satu kalimat',
-    finePrint:
-      'Angka mencakup {{from}} sampai {{to}}, di seluruh perangkat keluarga. Waktu Layar adalah yang dilaporkan perangkat; menit yang tidak terukur tidak masuk ke total mana pun.',
     shareImage: 'Simpan sebagai gambar',
     sharePdf: 'Simpan sebagai PDF',
-    copySummary: 'Salin ringkasan',
-    copied: 'Ringkasan disalin.',
     imageSaved: 'Gambar disimpan.',
-    shareFailed: 'Browser ini tidak bisa menyimpannya. Salin ringkasannya saja.',
-    emptyTitle: 'Belum ada laporan',
-    emptyBody: 'Laporan datang setiap Senin pagi dan mencakup tujuh hari sebelumnya.',
-    noUsage:
-      'Tidak ada waktu layar tercatat dalam dua minggu terakhir, jadi belum ada yang bisa dilaporkan. Perangkat yang luring tidak melaporkan apa pun, dan itu berbeda dengan minggu yang tenang.',
-    rateLimited: 'Terlalu banyak percobaan. Tunggu sebentar.',
-    loadFailedTitle: 'Laporan gagal dimuat',
+    shareFailed: 'Tidak dapat menyimpan dari browser ini. Salin ringkasannya saja.',
+    emptyBody:
+      'Dengan Premium, laporan datang setiap Senin pagi dan mencakup tujuh hari sebelumnya. Anda juga bisa menulis laporan minggu ini dari aplikasi KidGate di ponsel Anda.',
     loadFailed: 'Laporan tidak dapat dibuka. Muat ulang halaman untuk mencoba lagi.',
     retryLoad: 'Coba lagi',
-    failed: 'Laporan tidak dapat ditulis. Coba lagi sebentar.',
     existed: 'Minggu ini sudah punya laporan — ini dia.',
-    childrenTitle: 'Setiap anak',
-    childrenNote:
-      'Dua minggu yang sama, per perangkat. Persentase dihitung dari total keluarga.',
-    colScreenTime: 'Waktu Layar',
-    colShare: 'Porsi',
-    colChange: 'Dibanding minggu lalu',
-    colLimit: 'Melewati batas',
-    colLateNights: 'Malam larut',
-    colTopApp: 'Paling banyak dipakai',
-    noLimit: 'Tanpa batas',
-    busiest: 'Waktu layar terbanyak',
-
-    historyTitle: 'Minggu sebelumnya',
-    historyEmpty:
-      'Laporan yang Anda terima mulai sekarang disimpan di sini selama satu tahun.',
   },
 
   support: {
@@ -823,7 +740,7 @@ export default {
     start3:
       '**3. Sambungkan perangkat anak.** Pasang KidGate di perangkat anak Anda, lalu buka. Di ponsel atau tablet, pilih *Ini perangkat anak*. Di perangkat orang tua, buka *Keluarga* dan ketuk ikon pindai (*Pindai kode*), lalu pindai kode QR yang tampil di perangkat anak (atau masukkan kode 6 karakter). Jika perangkat anak meminta konfirmasi, konfirmasi sambungan di sana; TV akan tersambung sendiri.',
     start4:
-      '**4. Berikan izin di perangkat anak.** Buka layar *Status* di perangkat anak dan ketuk *Lanjutkan penyiapan* — layar ini memandu setiap izin yang dibutuhkan KidGate. Di Android: Notifikasi, Akses Penggunaan, Tampil di atas aplikasi lain, Aksesibilitas (bantuan kunci), Alarm & pengingat, dan Baterai tanpa batasan; di iOS: *Izinkan Penggunaan Aplikasi & Situs Web* (Durasi Layar), serta untuk Filter web, *Izinkan* saat iOS meminta untuk menambahkan konfigurasi VPN. Kendali tidak akan berfungsi penuh sampai semuanya aktif.',
+      '**4. Berikan izin di perangkat anak.** Buka layar *Status* di perangkat anak dan ketuk *Lanjutkan penyiapan* — layar ini memandu setiap izin yang dibutuhkan KidGate. Di Android: Notifikasi, Akses Penggunaan, Tampil di atas aplikasi lain, Aksesibilitas (bantuan kunci), Alarm & pengingat, Baterai tanpa batasan, koneksi VPN tempat Filter web berjalan, perlindungan penghapusan, dan, untuk Peringatan pesan, akses notifikasi; di iOS: *Izinkan Penggunaan Aplikasi & Situs Web* (Waktu Layar), serta untuk Filter web, *Izinkan* saat iOS meminta untuk menambahkan konfigurasi VPN. Kendali tidak akan berfungsi penuh sampai semuanya aktif.',
     start5:
       '**5. Atur kendali.** Dari perangkat orang tua, buka kartu perangkat anak dan tetapkan Batas harian, Jam Diblokir, Aplikasi yang Diblokir, Filter web, dan fitur lokasi.',
     startNote:
@@ -883,6 +800,47 @@ export default {
     legalDeletion: 'Penghapusan Akun & Data',
   },
 
+  deleteAccount: {
+    title: 'Penghapusan Akun & Data',
+    updated: 'Terakhir diperbarui: 18 September 2026',
+    intro:
+      'Halaman ini menjelaskan cara menghapus akun KidGate Anda beserta data yang terkait. Anda dapat meminta penghapusan kapan saja, dan Anda tidak perlu memasang aplikasinya untuk melakukannya.',
+    option1Title: 'Opsi 1: Hapus akun Anda di aplikasi',
+    option1Step1: 'Buka aplikasi KidGate dan masuk.',
+    option1Step2: 'Buka *Pengaturan → Akun → Hapus akun*.',
+    option1Step3: 'Konfirmasi penghapusan.',
+    option2Title: 'Opsi 2: Minta penghapusan lewat email',
+    option2Step1:
+      'Kirim email ke [support@kidgate.app](mailto:support@kidgate.app?subject=Account%20Deletion%20Request) dengan baris subjek “Account Deletion Request”.',
+    option2Step2:
+      'Kirim permintaan dari alamat email yang terkait dengan akun KidGate Anda agar kami dapat memverifikasi identitas Anda.',
+    option2Step3:
+      'Kami akan mengonfirmasi permintaan Anda dan menjadwalkan penghapusan. Penghapusan ditahan selama 14 hari, dan selama itu Anda dapat membatalkannya; setelah itu penghapusan berjalan dan tidak dapat dibatalkan.',
+    deletedTitle: 'Apa yang dihapus',
+    deletedIntro: 'Menghapus akun Anda akan menghapus secara permanen:',
+    deleted1: 'Informasi akun orang tua Anda (nama, alamat email).',
+    deleted2: 'Semua profil anak yang Anda buat.',
+    deleted3:
+      'Semua data aktivitas yang dikumpulkan dari perangkat yang dikelola, termasuk penggunaan aplikasi, riwayat waktu layar, aktivitas penjelajahan, riwayat lokasi, serta foto Check-In dan SOS.',
+    deleted4: 'Pengaturan dan preferensi kontrol orang tua Anda.',
+    deleted5:
+      'Permintaan dukungan yang Anda ajukan, beserta tangkapan layar yang dilampirkan.',
+    deleted6:
+      'Informasi masuk Anda itu sendiri, sehingga akun tidak dapat digunakan lagi.',
+    retentionTitle: 'Jangka waktu penyimpanan',
+    retention1:
+      'Data dihapus saat masa tahan **14 hari** pada permintaan yang telah diverifikasi berakhir. Penghapusan bersifat permanen dan tidak ada ekspor sesudahnya.',
+    retention2:
+      'Catatan bahwa penghapusan telah diminta dan diselesaikan — hash alamat email Anda dan tanggalnya, tidak lebih — disimpan selama **12 bulan** agar penghapusan yang dipersoalkan dapat dijawab.',
+    retention3:
+      'Kami dapat menyimpan sekumpulan catatan minimal jika diwajibkan oleh hukum (misalnya catatan transaksi untuk keperluan pajak), hanya selama diwajibkan secara hukum.',
+    partialTitle: 'Penghapusan sebagian',
+    partial:
+      'Anda dapat menghapus anak atau perangkat di aplikasi, yang menghentikan pengumpulan data darinya. Riwayat yang sudah terkumpul kedaluwarsa sesuai jadwal di Kebijakan Privasi (30 hari untuk riwayat penggunaan, web, dan lokasi serta umpan aktivitas; 90 hari untuk SOS, Check-In, dan Permintaan waktu); agar dihapus lebih cepat, kirim email ke [support@kidgate.app](mailto:support@kidgate.app).',
+    moreInfo:
+      'Untuk detail lebih lanjut tentang cara kami menangani data Anda, lihat [Kebijakan Privasi](/privacy-policy) kami.',
+  },
+
   download: {
     eyebrow: 'Unduh',
     qrScan: 'Pindai dengan kamera ponsel untuk mengunduh aplikasi',
@@ -926,7 +884,7 @@ export default {
       'Setiap platform membatasi apa yang boleh dipaksakan sebuah aplikasi. Di tempat KidGate hanya bisa berupaya semampunya — menutup aplikasi terblokir di komputer alih-alih mencegahnya terbuka — layarnya mengatakan begitu, bukan menampilkan centang hijau.',
     value4Title: 'Satu keluarga, satu paket',
     value4Text:
-      'Satu langganan Premium mencakup semua orang tua dan semua perangkat anak. Tanpa langganan pun, Batas harian, Jam Diblokir, Aplikasi yang Diblokir, Kunci perangkat, dan Filter web tetap berjalan di setiap perangkat anak, dan SOS selalu sampai kepada Anda, jadi aturan keselamatan dasar tidak pernah berada di balik paywall.',
+      'Satu langganan Premium mencakup semua orang tua dan semua perangkat anak. Tanpa langganan pun, Batas harian, Jam Diblokir, Aplikasi yang Diblokir, Kunci perangkat, dan Filter web tetap berjalan di setiap perangkat anak yang mendukungnya, dan SOS yang dikirim dari ponsel atau komputer selalu sampai kepada Anda, jadi aturan keselamatan dasar tidak pernah berada di balik paywall.',
     makeEyebrow: 'Yang kami buat',
     makeTitle: 'Satu KidGate, di mana pun layarnya',
     makeSub:
@@ -936,7 +894,7 @@ export default {
       'Batas harian, Jam Diblokir, dan pemblokiran aplikasi lewat framework Durasi Layar (Screen Time) milik Apple, serta Filter web lewat koneksi privat di perangkat itu sendiri.',
     make2Title: 'Android',
     make2Text:
-      'Batas waktu, blokir aplikasi, kunci layar penuh, dan Filter web, plus peringatan saat aplikasi baru muncul.',
+      'Batas waktu, Aplikasi yang Diblokir, kunci layar penuh, dan Filter web, plus peringatan saat aplikasi baru muncul.',
     make3Title: 'macOS',
     make3Text:
       'Agen desktop di Mac: jadwal yang sama dan batas yang sama, serta satu hari pemakaian yang benar-benar terbaca.',
@@ -948,7 +906,7 @@ export default {
       'Layar ruang keluarga, diperlakukan sebagai perangkat bersama keluarga dan bukan milik satu anak — dengan batas dan jadwal yang sama seperti di ponsel. TV tidak membagikan lokasi dan tidak punya SOS.',
     make6Title: 'Chrome',
     make6Text:
-      'Ekstensi browser yang membawa Filter web yang sama ke dalam Chrome, di komputer yang sudah memasang KidGate maupun di komputer yang tidak bisa. Ekstensi ini hanya memfilter web di Chrome — tidak mengukur waktu layar dan tidak memblokir aplikasi.',
+      'Ekstensi browser yang membawa Filter web yang sama ke dalam Chrome, di komputer yang sudah memasang KidGate maupun di komputer yang tidak bisa. Ekstensi ini hanya bekerja di dalam Chrome: selain memfilter, ia dapat merekam video YouTube yang ditonton dan menandai pencarian yang mengkhawatirkan jika Anda mengaktifkannya, serta melaporkan ekstensi lain yang terpasang. Tidak ada waktu layar dan tidak ada pemblokiran aplikasi.',
     make7Title: 'Dasbor orang tua',
     make7Text:
       'Browser adalah layar kedua orang tua. Masuk dari komputer mana pun dengan memindai kode memakai ponsel Anda; tidak ada yang perlu dipasang.',
@@ -1132,5 +1090,11 @@ export default {
     allYoutubeTitle: 'Cara menyiapkan KidGate di ponsel Anda dan perangkat anak Anda',
     allYoutubeDescription:
       'Semua penyiapan dalam satu video: pertama ponsel Anda, lalu setiap perangkat anak Anda (iPhone atau iPad, ponsel atau tablet Android, Mac, PC Windows, Android TV, Chrome), dan terakhir dasbor web. Pilih perangkat Anda dari daftar di bawah.',
+    // `guide-all`: every how-to in one video (operator, 2026-10-14).
+    guideAllYoutubeTitle: 'Cara menggunakan KidGate: semua fitur, langkah demi langkah',
+    guideAllYoutubeDescription:
+      'Semua fitur KidGate dalam satu video, langkah demi langkah, di iPhone orang tua dan ponsel Android anak. Pilih fitur yang Anda perlukan dari daftar di bawah.',
+    // `guide-parent-devices`' title card: the app's own wording for the device.
+    removeParentDeviceTitle: 'Hapus perangkat orang tua',
   },
 };

@@ -11,7 +11,8 @@ export const messageMonitoring = {
     'Only searches can be checked here. Messages can be checked only on Android devices.',
   recentTitle: 'Recent alerts',
   emptyTitle: 'No alerts yet',
-  emptySubtitle: 'No concerning words have been seen in messages.',
+  emptySubtitle:
+    'When a concerning word is flagged in a message or a search, it appears here.',
   emptySubtitleNotWatching:
     'Messages are not being checked right now, so this list stays empty whatever happens.',
   flaggedTerm: 'Flagged: “{{term}}”',
@@ -32,7 +33,7 @@ export const messageMonitoring = {
   categoryTobacco: 'Tobacco or vaping',
   categoryGambling: 'Gambling',
   categoryProfanity: 'Strong language',
-  categoryUnknown: 'Flagged message',
+  categoryUnknown: 'Concerning message',
   // An alert with no advice hands a parent a category and a word and leaves
   // them to work out what either means at the worst possible moment. One entry
   // per `MESSAGE_ALERT_CATEGORIES` id plus the unknown fallback; the row looks
@@ -90,13 +91,13 @@ export const messageMonitoring = {
   // the child's device offers that permission once receiving is switched on.
   parentSearchHintNotGranted:
     'Needs the same permission as Scan messages they type. Turn on Scan messages they receive, then allow it on their device.',
-  parentToggleHintGranted: 'On this phone.',
+  parentToggleHintGranted: 'Allowed on their device.',
   parentToggleHintNotGranted:
-    'Not allowed on this phone yet — open KidGate on their device to grant it.',
+    'Not allowed on their device yet — open KidGate on that device to grant it.',
   parentProfanityLabel: 'Also flag strong language',
   parentProfanityHint:
     'Off by default — plain swearing is common and this turns it into an alert too.',
-  parentToggleSaveFailed: 'Could not save that change.',
+  parentToggleSaveFailed: 'Unable to save that change. Try again.',
   settingsTitle: 'Message Alerts settings',
   consentTitle: 'AI message analysis',
   consentBody:
@@ -126,11 +127,12 @@ export const messageMonitoring = {
   // that one grant also carries the search half (`KidGateSearchApps`), which
   // reads any field in those apps, not only a search box. Play rejected the
   // app on 2026-10-09 because SMS/MMS, in-app messages, in-app search history
-  // and crash logs (Data Safety types) were not named here — keep all four.
+  // and crash logs (Data Safety types) were not named here — keep all four,
+  // and the SOS sound sentence (Voice or sound recordings, 2026-10-14).
   outgoingDisclosureBody:
-    'With this permission KidGate reads what you type in text messages (SMS and MMS) and chat apps, and checks it for the same warning words. If your parent turns on search alerts, it also reads what you type in browsers, YouTube and the Google app, such as searches. It never reads a password box. The check happens on this phone. When a word matches, only that word or phrase, its category, the app and the time are sent to your parent — never the rest of the message or search. If KidGate crashes, a crash log is sent to the KidGate team so the problem can be fixed.',
+    'With this permission KidGate reads what you type in text messages (SMS and MMS) and chat apps, and checks it for the same warning words. If your parent turns on search alerts, it also reads what you type in browsers, YouTube and the Google app, such as searches. It never reads a password box. The check happens on this phone. When a word matches, only that word or phrase, its category, the app and the time are sent to your parent — never the rest of the message or search. If you allow the microphone, KidGate records up to 15 seconds of sound when you send an SOS and sends it to your parent. If KidGate crashes, a crash log is sent to the KidGate team so the problem can be fixed.',
   outgoingRestrictedHint:
-    'If the switch is greyed out, open Settings › Apps › KidGate, tap the ⋮ menu and choose “Allow restricted settings”, then come back.',
+    'If the switch is grayed out, open Settings › Apps › KidGate, tap the ⋮ menu and choose “Allow restricted settings”, then come back.',
   notice: {
     revokedTitle: 'Message checking has stopped',
     revokedBody:

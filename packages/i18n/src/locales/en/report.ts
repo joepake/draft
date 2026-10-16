@@ -50,8 +50,8 @@ export const report = {
   findingLateNight_other: '{{count}} nights past 11pm — the latest ran to {{time}}.',
   findingNewTopApp: '{{app}} is new this week and already took {{duration}}.',
   findingAppSurge: '{{app}} is up {{delta}} on last week — {{duration}} in total.',
-  findingLimitHit_one: 'The daily limit of {{limit}} was reached on one day.',
-  findingLimitHit_other: 'The daily limit of {{limit}} was reached on {{count}} days.',
+  findingLimitHit_one: 'The Daily Limit of {{limit}} was reached on one day.',
+  findingLimitHit_other: 'The Daily Limit of {{limit}} was reached on {{count}} days.',
   findingBlockedApps: '{{count}} blocked app openings, against {{previous}} last week.',
   findingBlockedWeb: '{{count}} sites filtered, against {{previous}} last week.',
   findingQuietWeek: 'A quiet week — {{total}} in all, and nothing that needed you.',
@@ -63,12 +63,12 @@ export const report = {
    * the lines above — a parent should be able to repeat one to their child.
    * None of them praises: `docs/COPY_STYLE.md` rules out flattery as firmly as
    * it rules out alarm, and "well done" tells a parent nothing they can act on
-   * or repeat. "The daily limit held every day" does.
+   * or repeat. "The Daily Limit held every day" does.
    *
    * These render only when the generated narrative was rejected; the sentence
    * most families read is `digestNarrative`'s, already in their own language.
    */
-  findingLimitRespected: 'The daily limit of {{limit}} held on all {{count}} days.',
+  findingLimitRespected: 'The Daily Limit of {{limit}} held on all {{count}} days.',
   findingLateNightGone_one: 'No late nights this week, after one last week.',
   findingLateNightGone_other: 'No late nights this week, after {{count}} last week.',
   findingBlockedAppsDown:
@@ -108,7 +108,7 @@ export const report = {
   share: 'Share',
   copySummary: 'Copy summary',
   copied: 'Summary copied.',
-  shareFailed: 'Could not open the share sheet.',
+  shareFailed: 'Unable to open the share sheet. Try again.',
   // The message next to the shared image — the image already carries every
   // figure, so this is only the download link, not a second copy of the report.
   shareLinkCta: 'Get the app at {{url}}',
@@ -133,13 +133,13 @@ export const report = {
 
   emptyTitle: 'No report yet',
   emptyBody:
-    'A report arrives every Monday morning. You can write this week’s now — it covers the last seven days.',
+    'With Premium, a report arrives every Monday morning. You can write this week’s now — it covers the last seven days.',
   noUsage:
     'No screen time was recorded over the last two weeks, so there is nothing to report yet. A device that is offline reports nothing, which is not the same as a quiet week.',
-  rateLimited: 'Too many attempts. Give it a minute.',
+  rateLimited: 'Unable to write another report yet. Try again in a minute.',
   loadFailedTitle: 'Reports did not load',
-  loadFailed: 'Could not open your reports. Pull down to try again.',
-  failed: 'Could not write the report. Try again in a moment.',
+  loadFailed: 'Unable to open your reports. Pull down to try again.',
+  failed: 'Unable to write the report. Try again in a moment.',
 
   historyTitle: 'Earlier weeks',
   historyEmpty: 'Reports you receive from now on are kept here for a year.',
@@ -159,9 +159,9 @@ export const report = {
   // per child once two or more are set up, one per device before that.
   childrenTitle: 'Each child',
   childrenNoteByChild:
-    'Same fortnight, each child across every device they use. Percentages are of the family total.',
+    'This week, each child across every device they use. Percentages are of the family total.',
   devicesTitle: 'Each device',
-  childrenNote: 'Same fortnight, per device. Percentages are of the family total.',
+  childrenNote: 'This week, per device. Percentages are of the family total.',
   colChild: 'Child',
   colDevice: 'Device',
   colScreenTime: 'Screen Time',
@@ -188,14 +188,14 @@ export const report = {
   guestPreviewHint: 'Sample — real figures appear once you connect a device',
   guestTitle: 'See where the week went',
   guestDescription:
-    'Sign in to measure today against a normal day, compare your children side by side, and get a written report every Monday.',
+    'Sign in to measure today against a normal day, compare your children side by side, and, with Premium, get a written report every Monday.',
   guestBenefitTrendTitle: 'Today, against normal',
   guestBenefitTrendBody:
     'A figure on its own says nothing. Today is drawn against your family’s own daily average.',
   guestBenefitChildTitle: 'Every child, side by side',
   guestBenefitChildBody:
-    'Each child’s share of the day, in their own colour, across every device they use.',
-  guestBenefitWeeklyTitle: 'A report every Monday',
+    'Each child’s share of the day, in their own color, across every device they use.',
+  guestBenefitWeeklyTitle: 'A report every Monday, with Premium',
   guestBenefitWeeklyBody:
     'What changed, which apps grew, and the late nights — kept for a year.',
   guestSignInButton: 'Sign in',

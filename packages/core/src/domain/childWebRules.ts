@@ -159,7 +159,7 @@ export function mergeDeviceWebFilters(
 
 /** What one machine says about the one rule. Never summarised across rows. */
 export type WebFilterCoverageState =
-  'enforcing' | 'awaitingApproval' | 'configurationDisabled' | 'unsupported';
+  'enforcing' | 'unsupported' | NonNullable<DeviceCapabilities['webFilterBlocker']>;
 
 export interface WebFilterCoverageDevice {
   deviceId: string;

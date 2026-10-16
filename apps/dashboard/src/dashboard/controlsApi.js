@@ -24,6 +24,7 @@ import {
   safetyCheckInRepository,
   siteRequestRepository,
   timeRequestRepository,
+  webSessionRepository,
 } from '../adapters/repositories.js';
 
 /**
@@ -366,6 +367,25 @@ export function createActions({
       return counted(
         () => guard(() => familyRepository.removeMember(familyId, memberId)),
         result => trackParentAction('parent_remove', result),
+      );
+    },
+
+    /**
+     * The caller's own browsers that can make changes, newest first, and the
+     * way to end one. **Any parent, not the owner**: both endpoints scope to
+     * the caller's uid, so a co-parent lists and removes their own and nobody's
+     * else. Both need the WRITE session (`requireParentDevice`) — a browser
+     * that only views is refused, which is why the card is drawn for writers
+     * alone. The list is a read and is not counted; removing is.
+     */
+    listWebSessions() {
+      return guard(() => webSessionRepository.list());
+    },
+
+    revokeWebSession(webSessionId) {
+      return counted(
+        () => guard(() => webSessionRepository.revoke(webSessionId)),
+        result => trackParentAction('web_session_revoke', result),
       );
     },
 

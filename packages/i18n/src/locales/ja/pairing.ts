@@ -1,9 +1,9 @@
 export const pairing = {
   shareInviteButton: 'コードを共有',
   shareInviteMessage:
-    'KidGateでファミリーに参加してください。アプリを開き、ファミリー → コードをスキャン を選び、QRコードをスキャンするかコード {{code}} を入力してください。コードは15分で無効になります。',
+    'KidGateでファミリーに参加してください。アプリを開き、ファミリー → コードをスキャン を選び、QRコードをスキャンするかコード {{code}} を入力してください。コードは{{minutes}}分で無効になります。',
   shareChildCodeMessage:
-    'KidGateでこの子どものデバイスを接続: 保護者のデバイスでKidGateを開き → ファミリー → コードをスキャン を選び、QRコードをスキャンするかコード {{code}} を入力してください。コードは5分で期限切れになります。',
+    'KidGateでこの子どものデバイスを接続: 保護者のデバイスでKidGateを開き → ファミリー → コードをスキャン を選び、QRコードをスキャンするかコード {{code}} を入力してください。コードは{{minutes}}分で期限切れになります。',
   connectChildPhone: '子どものデバイスを接続',
   parentInstructions:
     '子どものデバイスでKidGateを開いてください。スマートフォンやタブレットでは「これはお子さまのデバイスです」を選んでください。その後、表示される6文字のコードを入力してください。',
@@ -39,10 +39,8 @@ export const pairing = {
   parentAccount: '保護者アカウント',
   unknownParent: '保護者',
   expiresIn: '{{countdown}}後に期限切れ',
-  inviteCodeExpired:
-    'このコードの有効期限が切れました。別のコードを取得するには「新しいコード」を選択してください。',
-  codeExpired:
-    'このコードの有効期限が切れました。別のコードを取得するには「新しいコード」を選択してください。',
+  inviteCodeExpired: 'このコードの有効期限が切れました。',
+  codeExpired: 'このコードの有効期限が切れました。',
   scanQrTitle: 'QRコードをスキャン',
   scanQrSubtitle: 'QRコードを枠内に合わせてください。',
   enterCodeManually: 'コードを手入力',
@@ -62,7 +60,7 @@ export const pairing = {
     '試行回数が多すぎます。{{minutes}}分後にもう一度お試しください。',
   inviteParentTitle: '別の保護者のデバイスを追加',
   inviteParentInstructions:
-    '別のデバイスでKidGateを開き、ファミリー → コードをスキャン を選び、15分以内にこのQRコードをスキャンするかコードを入力してください。ここでリクエストを承認すると、その保護者を接続できます。',
+    '別のデバイスでKidGateを開き、ファミリー → コードをスキャン を選び、{{minutes}}分以内にこのQRコードをスキャンするかコードを入力してください。ここでリクエストを承認すると、その保護者を接続できます。',
   inviteCodeLabel: 'またはこのコードを共有',
   joinFamilyTitle: 'ファミリーに参加',
   joinFamilyScanInstructions:

@@ -26,7 +26,7 @@ export const userGuide = {
     controls: {
       title: 'Günlük kontroller',
       description:
-        'Sınırlar, programlar, uygulama engelleme, cihaz kilitleme, ek süre ve ödüller',
+        'Günlük sınır, Engellenen Saatler, Engellenen Uygulamalar, Uygulama Sınırları, Cihaz Kilidi, Süre istekleri ve Ödül görevleri',
     },
     safety: {
       title: 'Güvenlik ve izleme',
@@ -55,8 +55,8 @@ export const userGuide = {
         '3': 'Aile bölümünde Aile oluştur’u seçin ve ailenize bir isim verin (örneğin, “Nguyen ailesi”). Bu isim başka ebeveynler katıldığında görünür. Ailenizi başka bir ebeveyn zaten oluşturduysa bunun yerine Aileye katıl’ı seçin.',
         '4': 'Ayarlar, ardından Güvenlik bölümünden bir Ebeveyn PIN’i (6 haneli) belirleyin. Ezberleyin veya güvenli bir yerde saklayın, çocuklarla paylaşmayın.',
         '5': 'Önerilir: başkalarının cihazınızda ebeveyn uygulamasını açamaması için Ayarlar’dan Uygulama Kilidi’ni ve biyometrik kilit açmayı etkinleştirin.',
-        '6': 'Aile’yi açın, + simgesine dokunun ve Çocuk cihazı ekle’yi seçin. Bu ekranı çocuk cihazında gösterilen QR kodu veya kodu okutmak için açık tutun.',
-        '7': 'Çocuk cihazı bağlandıktan sonra Aile bölümünde çocuğunuzun profilini (veya cihaz bir çocuğa atanmamışsa cihazı) açın. Günlük sınırı ve Engellenen Saatleri belirleyin, izinleri çocuğunuzla birlikte tamamlayın.',
+        '6': 'Aile’yi açın ve tarama simgesine dokunun (Kod tara). Kamera hemen açılır: çocuk cihazında gösterilen QR kodunu okutun ya da Kodu elle gir’i seçip kodu yazın.',
+        '7': 'Çocuk cihazı bağlandıktan sonra KidGate cihazı kimin kullandığını sorar: çocuğunuzu seçin (veya bir çocuk ekleyin) ya da ortak bir cihaz için “Hiç kimse” seçeneğini seçin. Ardından Aile bölümünde çocuğunuzun profilini (veya cihaz bir çocuğa atanmamışsa cihazı) açın. Günlük sınırı ve Engellenen Saatleri belirleyin, izinleri çocuğunuzla birlikte tamamlayın.',
       },
     },
     getStartedChild: {
@@ -68,8 +68,8 @@ export const userGuide = {
         '2': 'Eşleştirme ekranını açık tutun. QR kodunu ebeveyne gösterin veya 6 haneli kodu sesli okuyun.',
         '3': 'Ebeveyn cihazında QR kodunu tarayın veya kodu girin. Çocuk cihazında istendiğinde ebeveyni onaylayın — yalnızca tanıdığınız birini kabul edin.',
         '4': 'Ana ekranda cihazın bağlandığı gösterilene kadar bekleyin. Kurulum sırasında KidGate’i zorla kapatmayın.',
-        '5': 'Durum ekranında KidGate’in istediği tüm izinleri verin (bildirimler, konum, kamera ve platforma özgü izinler). İzin verildi olarak görünene kadar her satıra dokunun.',
-        '6': 'KidGate’i çocuk cihazında yüklü ve oturum açık bırakın. Bundan sonra ebeveynler sınırları kendi cihazlarından yönetir.',
+        '5': 'Durum ekranında “Kurulumu bir ebeveynle tamamla” kartındaki “Kuruluma devam et” seçeneğini seçin. Ardından “Korumayı ayarla”, KidGate’in ihtiyaç duyduğu her izni (bildirimler, konum, kamera ve platforma özgü izinler) tek tek ister. Her birine izin verin veya isteğe bağlı bir adımı şimdilik atlayın.',
+        '6': 'KidGate’i çocuk cihazında yüklü ve bağlı bırakın. Bundan sonra ebeveynler sınırları kendi cihazlarından yönetir.',
       },
     },
     connectChild: {
@@ -82,7 +82,7 @@ export const userGuide = {
         '3': 'Kamera hemen açılır: istenirse kameraya izin verin ve çocuk cihazındaki QR kodunu çerçeve içine hizalayın.',
         '4': 'Ya da kodu kullanın: Kodu elle gir’i seçin, çocuk cihazında gösterilen 6 karakteri yazın, sonra devam edin.',
         '5': 'Çocuk cihazında onay ekranını dikkatle okuyun. Ebeveyn adı doğruysa Evet, bağla’yı seçin.',
-        '6': 'Ebeveyn cihazının bağlantıyı onaylamasını bekleyin. Yeni cihaz Aile bölümünde görünür.',
+        '6': 'Ebeveyn cihazının bağlantıyı onaylamasını bekleyin. Ardından aile sahibine yeni cihazı kimin kullandığı sorulur: bir çocuk seçin veya ortak bir cihaz için “Hiç kimse” seçeneğini seçin. Cihaz Aile bölümünde görünür.',
         '7': 'Yeni cihazı açın ve Son etkinlik alanının güncellendiğini kontrol edin. Çevrimdışı kalmaya devam ederse çocuk cihazında KidGate’i yeniden açın ve ağ bağlantısını kontrol edin.',
         '8': 'Ardından çocuk cihazında izinleri verin (Uygulama izinleri grubuna bakın). Bu izinler açılana kadar kontroller tam olarak çalışmaz.',
       },
@@ -107,8 +107,8 @@ export const userGuide = {
       title: 'Android TV bağlama',
       summary:
         'KidGate’i bir Android TV’ye yükleyin ve kumandayla hiçbir şey yazmadan kendi cihazınızdan eşleştirin.',
-      keywords: 'android tv, google tv, televizyon, tv, fire tv, kutu',
-      tip: 'TV’de Konum, SOS, Check-In ve Süre istekleri yoktur; engellenen bir uygulama açılmadan önce durdurulmaz, açıldıktan sonra kapatılır. Ekran süresi verileri bir saate kadar gecikebilir.',
+      keywords: 'android tv, google tv, televizyon, tv, kutu',
+      tip: 'TV’de Konum, SOS, Check-In ve Süre istekleri yoktur; engellenen bir uygulama açılmadan önce durdurulmaz, açıldıktan sonra kapatılır. Ekran süresi verileri bir saate kadar gecikebilir. Google Play hizmetleri olmayan bir TV’ye anlık bildirim gelmez; bu yüzden bir kilidin, kilit açmanın veya kural değişikliğinin ulaşması 30 dakikaya kadar sürebilir.',
       steps: {
         '1': 'TV’de Google Play’i açın, KidGate’i arayın ve yükleyin.',
         '2': 'KidGate’i TV’de açın. Ekranda bir QR kodu ve 6 haneli bir kod görünür; oturum açmanız gerekmez.',
@@ -124,7 +124,7 @@ export const userGuide = {
       summary:
         'KidGate web filtresini Chromebook, Mac veya PC’deki Chrome’a ekleyin. Uzantı ayrı bir cihaz olarak görünür.',
       keywords: 'chromebook, chrome uzantısı, tarayıcı uzantısı',
-      tip: 'Uzantı yalnızca Chrome’u filtreler: diğer tarayıcıları filtrelemez, gizli pencereleri de siz izin vermedikçe filtrelemez. chrome://extensions sayfasında KidGate’in Ayrıntılar bölümünü açıp Gizli modda izin ver seçeneğini etkinleştirin.',
+      tip: 'Uzantı yalnızca Chrome’u filtreler: diğer tarayıcıları filtrelemez, gizli pencereleri de siz izin vermedikçe filtrelemez. chrome://extensions sayfasında KidGate’in Ayrıntılar bölümünü açıp Gizli modda izin ver seçeneğini etkinleştirin. Günlük sınır, Engellenen Saatler, Cihaz Kilidi, Engellenen Uygulamalar ve ekran süresi yoktur; bunlar için bir telefon, bilgisayar veya TV gerekir.',
       steps: {
         '1': 'Çocuğunuzun bilgisayarındaki Chrome’da Chrome Web Mağazası’nı açın, KidGate’i arayın ve “Chrome’a ekle”yi seçin.',
         '2': 'Chrome araç çubuğundaki KidGate simgesini seçin. Simgeyi göremiyorsanız Uzantılar (yapboz parçası) menüsünden sabitleyin. Açılır pencerede bir QR kodu ve 6 haneli bir kod görünür; eşleştirme bitene kadar pencereyi açık tutun.',
@@ -172,7 +172,7 @@ export const userGuide = {
         '2': 'Tüm ebeveynlerin bir bakışta tanıyacağı bir ad girin ve kaydedin.',
         '3': 'Bir cihazı kaldırmak için onu açın, ekranın altındaki “Cihazı kaldır”ı seçin ve onaylayın. Aile kartının “Çocuk cihazları” sekmesinde bir cihazı sola da kaydırabilirsiniz.',
         '4': 'Cihaz ailenizden ayrılır ve o cihazdaki KidGate, cihazın kaldırıldığını gösterir.',
-        '5': 'Cihazı yeniden kullanmak için, örneğin sıfırlamadan sonra ya da başka bir çocuğa geçtiğinde, “Aile”de “Çocuk cihazı ekle” ile yeni cihaz olarak eşleştirin.',
+        '5': 'Cihazı yeniden kullanmak için, örneğin sıfırlamadan sonra ya da başka bir çocuğa geçtiğinde, yeni cihaz olarak eşleştirin: Aile’yi açın ve tarama simgesine dokunun (Kod tara).',
       },
     },
     androidPermissions: {
@@ -180,17 +180,17 @@ export const userGuide = {
       summary:
         'Kullanım Erişimi, Diğer uygulamaların üzerinde göster, Erişilebilirlik, batarya ve ilgili izinleri açın.',
       keywords:
-        'erişilebilirlik, kullanım erişimi, diğer uygulamaların üzerinde göster, bildirimler, cihaz yöneticisi, vpn, izin ver',
-      tip: 'Eksiksizlik sıradan daha önemlidir. Kilitleme veya Engellenen Saatlere güvenmeden önce çocuğun Durum ekranındaki her kırmızı veya izin verilmemiş satır düzeltilmelidir.',
+        'erişilebilirlik, kullanım erişimi, diğer uygulamaların üzerinde göster, bildirimler, cihaz yöneticisi, kaldırma koruması, mikrofon, vpn, izin ver',
+      tip: 'Eksiksizlik sıradan daha önemlidir. Kilitleme veya Engellenen Saatlere güvenmeden önce kurulumun sunduğu her adımı, isteğe bağlı olanlar dahil, tamamlayın. Atladığınız bir adım, siz yapana kadar Durum ekranında kalır.',
       steps: {
-        '1': 'Çocuk cihazında KidGate, ardından Durum’u açın ve izin listesini yukarıdan aşağıya doğru tamamlayın.',
-        '2': 'Bildirimler: satıra dokunun, ardından İzin ver. Kilitleme komutları ve süre istekleri için ebeveynlerin push bildirimlerine ihtiyacı vardır.',
+        '1': 'Çocuk cihazında KidGate’i açıp Durum ekranına gidin. “Kurulumu bir ebeveynle tamamla” kartında “Kuruluma devam et” seçeneğini seçin. “Korumayı ayarla” izinleri tek tek ele alır; aşağıdaki adımlar her birini anlatır.',
+        '2': 'Bildirimler: İzin ver’i seçin. KidGate, süre onayları ve hatırlatmalar için bu cihazın bildirimlerine ihtiyaç duyar.',
         '3': 'Kullanım Erişimi: sistem ekranını açın, ardından KidGate’i bulun, ardından açın. Bu, ekran süresi takibi ve sınırlar için gereklidir.',
         '4': 'Diğer uygulamaların üzerinde göster: KidGate için izin verin. Kilit ekranının diğer uygulamaların üzerinde görünebilmesi için bu gereklidir.',
-        '5': 'Erişilebilirlik kilit yardımcısı: Ayarlar’ı, ardından Erişilebilirlik’i açın, KidGate’i Yüklü / indirilen uygulamalar altında bulup açın. Bu, kilidin etkin kalmasını sağlar.',
+        '5': 'Erişilebilirlik kilit yardımcısı: açıklamayı okuyup Kabul et’i seçin; Erişilebilirlik sayfası açılır. Bir liste açılırsa KidGate’i Yüklü / indirilen uygulamalar altında bulup açın ve Android’in onay ekranında İzin ver’i seçin. Bu, kilidin etkin kalmasını sağlar.',
         '6': 'Sınırsız pil: istendiğinde İzin ver’i seçin. İstem görünmüyorsa: Uygulama bilgisi, ardından Batarya, ardından Sınırsız.',
-        '7': 'Alarmlar ve hatırlatıcılar: Engellenen Saatlerin zamanında başlayıp bitmesi için buna izin verin.',
-        '8': 'Konum ve Kamera (Check-In veya SOS fotoğrafları kullanıyorsanız): KidGate istedikçe izin verin. Durum’a dönüp tüm satırların izinli olduğunu doğrulayın.',
+        '7': 'Alarmlar ve hatırlatıcılar: Engellenen Saatlerin zamanında başlayıp bitmesi için buna izin verin. Ardından Kaldırmayı engelle: İzin ver’i seçin, sonra Android’in onay ekranında Etkinleştir’e dokunun. Bundan sonra KidGate’i kaldırmak için önce bunu kapatmak gerekir ve bir ebeveyne uyarı gider.',
+        '8': 'Konum: “Her zaman izin ver” seçeneğini seçin, yoksa harita yalnızca KidGate açıkken güncellenir. Kamera (Check-In ve SOS fotoğrafları için) ve mikrofon (SOS sesi için): uygulamayı kullanırken izin verin. Ekranda “Her şey hazır” göründüğünde kurulum tamamdır.',
       },
     },
     iosScreenTime: {
@@ -200,10 +200,10 @@ export const userGuide = {
       keywords: 'ekran süresi, family controls, iphone, ipad, yetkilendir',
       tip: 'İzin Ver düğmesi görünmüyorsa iOS Ayarları, ardından Ekran Süresi’ni açın ve önce çocuk cihazında Ekran Süresi’nin etkin olduğundan emin olun.',
       steps: {
-        '1': 'KidGate’i açın ve “Durum” ekranında kalın.',
-        '2': 'Uygulama ve Web Sitesi Kullanımına İzin Ver’i (veya Ekran Süresi bannerını) seçin.',
+        '1': 'Çocuk cihazında KidGate’i açıp “Durum” ekranına gidin. “Kurulumu bir ebeveynle tamamla” kartında “Kuruluma devam et” seçeneğini seçin.',
+        '2': '“Korumayı ayarla” içinde “Uygulama ve Web Sitesi Kullanımına İzin Ver” seçeneğini seçin.',
         '3': 'Sistem iletişim kutusunda İzin Ver’i seçin. Lütfen bir seçim yapmadan iletişim kutusunu kapatmayın.',
-        '4': 'KidGate’e dönün. Yetkilendirme başarılı olduğunda banner kaybolur.',
+        '4': 'KidGate’e dönün. Yetkilendirme başarılı olduğunda kurulum bir sonraki adıma geçer.',
         '5': 'Yetkilendirme daha önce reddedildiyse: iOS Ayarları’nı açın, KidGate’i bulun, o sayfada Ekran Süresi’ni açın, ardından KidGate’i yeniden açın.',
         '6': 'Engellenecek uygulamaları seçmek için: çocuk cihazında KidGate Ayarları’nı açın, ardından “Ebeveyn PIN’i ile Kilidi Aç” düğmesini seçin, ardından Engellenen Uygulamalar’ı açın ve kaydedin.',
         '7': 'Ebeveyn cihazında çocuğunuzun profilini (veya cihaz bir çocuğa atanmamışsa cihazı) açın, ardından Engellenen Uygulamalar’a gidin ve listenin senkronize olduğunu doğrulayın. Hazır olduğunuzda engellemeyi açın.',
@@ -245,10 +245,10 @@ export const userGuide = {
       tip: 'Önce okul saatlerini ve yatış zamanlarını belirleyin. Programı anlaşılır tutmak için çakışan aralıklardan kaçının.',
       steps: {
         '1': 'Ebeveyn cihazında çocuğunuzun profilini (veya cihaz bir çocuğa atanmamışsa cihazı) açın, ardından Engellenen Saatler.',
-        '2': 'Engellenen zaman ekle’yi seçin, ardından başlangıç saatini, bitiş saatini ve tekrarlanacağı günleri belirleyin.',
-        '3': 'Aralığı kaydedin. Başka bir aralık eklemek için bu adımları tekrarlayın.',
-        '4': 'Bir etkinleştirme anahtarı gösteriliyorsa programı açın.',
-        '5': 'Çocuk cihazında programın zamanında çalışması için Alarmlar ve hatırlatıcılar ile Ekran Süresi izinlerinin hâlâ verili olduğunu doğrulayın.',
+        '2': '“Engellenen Saatleri Etkinleştir” anahtarını açın. Açılana kadar ekranda hiçbir zaman aralığı ve aralık ekleme yolu görünmez.',
+        '3': '“Engellenen zaman ekle” seçeneğini seçin, ardından başlangıç saatini, bitiş saatini ve tekrarlanacağı günleri belirleyin.',
+        '4': 'Ekranın altındaki “Kaydet” düğmesini seçin. Başka bir aralık eklemek için önce bir önceki adımı tekrarlayın.',
+        '5': 'Android çocuk cihazında, aralıkların zamanında başlayıp bitmesi için Alarmlar ve hatırlatıcılar izninin hâlâ verili olduğunu doğrulayın. iPhone veya iPad’de Ekran Süresi izninin hâlâ verili olduğunu doğrulayın.',
         '6': 'Aktif bir aralık sırasında cihaz kartında Engellenen Saatler aktif · kilitli yazar. Kilidi aç’ı yalnızca programı bilerek geçersiz kılmak istediğinizde kullanın.',
       },
     },
@@ -320,7 +320,7 @@ export const userGuide = {
         '2': 'Bir bildirim alırsınız. KidGate’i açın: istek, Aile’de, çocuğunuzun profilinde ve cihaz ekranındaki Onay bekliyor kartında görünür.',
         '3': 'Dakikaları ve nedeni kontrol edin, ardından tam bu dakikaları bugüne eklemek için Onayla’yı ya da reddetmek için Şimdi değil’i seçin.',
         '4': 'Yanıt çocuk cihazına iletilir ve onaylanan dakikalar hemen geçerli olur. Her cihazda aynı anda yalnızca bir bekleyen istek olabilir.',
-        '5': 'Yanıtlanan istekler Etkinlikler’de listelenir. Bu bildirimleri kendi cihazınızda kapatmak için Ayarlar’daki Anlık bildirimler bölümünde Ek süre istekleri’ni kapatın.',
+        '5': 'Yanıtlanan istekler Etkinlikler’de listelenir. Bu bildirimleri kendi cihazınızda kapatmak için Ayarlar’daki Anlık bildirimler bölümünde Süre istekleri’ni kapatın.',
       },
     },
     rewardTasks: {
@@ -329,7 +329,7 @@ export const userGuide = {
         'Çocuğunuzun bugün ekstra dakika kazanmak için bitirebileceği küçük görevler oluşturun.',
       tip: 'Bonus dakikalar yalnızca cihazda bir Günlük sınır varsa geçerli olur. Dakikalar, çocuğunuzun görevi tamamlandı olarak işaretlediği cihaza eklenir. Ödül görevleri Android TV’de ve Chrome uzantısında kullanılamaz.',
       steps: {
-        '1': 'Ebeveyn cihazında çocuğunuzun profilini (veya cihaz bir çocuğa atanmamışsa cihazı) açın, ardından Ödül görevleri.',
+        '1': 'Ebeveyn cihazında çocuğunuzun profilini (veya cihaz bir çocuğa atanmamışsa cihazı) açın, ardından Ödül görevleri’ni seçin.',
         '2': 'Yeni görev’i seçin veya bir şablonla başlayın. Görevi yazın; ödülü dakika cinsinden (5 ile 240 arası), zorluğu ve tekrarını (Her gün veya Tek seferlik) seçin, ardından Görev oluştur’u seçin.',
         '3': 'Görev, çocuk cihazında “Ekstra süre kazan” bölümünde görünür. Görev bitince çocuğunuz Yaptım’ı seçer.',
         '4': 'Bir bildirim alırsınız. İncelemeye hazır bölümünde (Ödül görevleri ekranında, Aile’de veya çocuğunuzun profilinde) dakikaları bugüne eklemek için Onayla’yı ya da çocuğunuzun tekrar deneyebilmesi için Geri gönder’i seçin.',
@@ -343,25 +343,25 @@ export const userGuide = {
       keywords: 'gps, harita, çocuğum nerede, telefonu bul, yerler',
       tip: 'Konum için çocuk cihazında izin ve kararlı bir ağ bağlantısı gerekir. Kapalı alanlarda GPS daha az hassas olabilir.',
       steps: {
-        '1': 'Çocuk cihazında istendiğinde (veya sistem Ayarları’ndan) KidGate için Konuma izin verin.',
+        '1': 'Çocuk cihazında istendiğinde (veya sistem Ayarları’ndan) KidGate için Konuma izin verin. Android’de “Her zaman izin ver”, iPhone veya iPad’de “Her Zaman” seçeneğini seçin; yoksa konum yalnızca KidGate açıkken güncellenir.',
         '2': 'Ebeveyn cihazında çocuğunuzun profilini (veya cihaz bir çocuğa atanmamışsa cihazı) açın, ardından Konum.',
         '3': 'Kapalıysa paylaşımı açın ve ilk güncellemeyi bekleyin.',
         '4': 'Durum hâlâ bekleniyor gösteriyorsa yenileme düğmesine dokunun veya ekranı yeniden açın.',
-        '5': 'İsteğe bağlı: çocuğunuzun profilini (veya cihaz bir çocuğa atanmamışsa cihazı), ardından Uyarılar bölümünü açıp Yerler’i seçerek, çocuğunuz kayıtlı bir yere girip çıktığında Yer uyarıları kurun.',
+        '5': 'İsteğe bağlı ve Premium’a dahil: çocuğunuzun profilini (veya cihaz bir çocuğa atanmamışsa cihazı), ardından Uyarılar bölümünü açıp Yerler’i seçerek, çocuğunuz kayıtlı bir yere girip çıktığında Yer uyarıları kurun.',
         '6': 'Telefon yakınlarda bir yerde kaldıysa Konum’u açıp Cihazı çaldır’a dokunun. iPhone sessiz moddayken ya da bir Odak açıkken ses çıkarmaz.',
       },
     },
     checkIn: {
       title: 'Check-In isteme',
       summary:
-        'Çocuğunuzdan konum ve isteğe bağlı bir fotoğrafla güvende olduğunu onaylamasını isteyin.',
-      tip: 'Fotoğraflı Check-In için çocuk cihazında kamera izni gereklidir.',
+        'Çocuğunuzdan, konumuyla birlikte (Premium’da ayrıca bir fotoğrafla) güvende olduğunu onaylamasını isteyin.',
+      tip: 'Fotoğraf Premium’a dahildir; ücretsiz plan yalnızca konum ister. Fotoğraf için çocuk cihazında kamera izni gereklidir.',
       steps: {
         '1': 'Ebeveyn cihazında çocuğunuzun profilini (veya cihaz bir çocuğa atanmamışsa cihazı) açın.',
         '2': 'Check-In’i (hızlı işlem veya Güvenlik takibi bölümündeki satır) seçin.',
         '3': 'Çocuk cihazı bir Check-In bildirimi ve ekranı alır. Çocuk, iyi olduğunu onaylamak veya yardım istemek için dokunur.',
-        '4': 'Kamera erişimine izin verilmişse KidGate mümkün olduğunda konumla birlikte bir fotoğraf ekler.',
-        '5': 'Ebeveyn cihazında son yanıtı ve fotoğrafı incelemek için Check-In geçmişini açın.',
+        '4': 'Premium’da kamera erişimine izin verilmişse KidGate mümkün olduğunda konumla birlikte bir fotoğraf ekler. Ücretsiz planda yalnızca konum gönderilir.',
+        '5': 'Ebeveyn cihazında aynı ekrandaki Check-In geçmişi, varsa son yanıtı ve fotoğrafı gösterir.',
       },
     },
     sos: {
@@ -370,7 +370,7 @@ export const userGuide = {
         'Bir çocuğun nasıl SOS gönderdiği, SOS’un neleri içerdiği ve ebeveynlerin nasıl yanıt verdiği.',
       keywords:
         'panik butonu, yardım, tehlike, güvensiz, ses, sesli kayıt, mikrofon, siren, e-posta, büyükanne, büyükbaba, komşu',
-      tip: 'SOS telefonlarda ve bilgisayarlarda çalışır; TV’de ve Chrome uzantısında çalışmaz. Ses yalnızca telefonlarda kaydedilir. Bir kez evde deneyin ve çocuğunuzla ne zaman SOS kullanılacağı, ne zaman Check-In’in yeterli olduğu konusunda anlaşın.',
+      tip: 'SOS telefonlarda ve bilgisayarlarda çalışır; TV’de ve Chrome uzantısında çalışmaz. Ses yalnızca telefonlarda kaydedilir. Bir kez evde deneyin, ancak Güvenilir kişiler’i eklemeden önce veya onlara haber verdikten sonra; çünkü her SOS onlara e-posta gönderir. Çocuğunuzla ne zaman SOS kullanılacağı, ne zaman Check-In’in yeterli olduğu konusunda anlaşın.',
       steps: {
         '1': 'Çocuk cihazında KidGate’te SOS’u açın. Telefonda bu, alt çubuğun ortasındaki düğmedir.',
         '2': 'SOS düğmesini 5 saniye basılı tutun. Daha önce bırakılırsa gönderim iptal edilir.',
@@ -385,14 +385,14 @@ export const userGuide = {
       summary:
         'Platformun desteklediği yerlerde uygunsuz içerik için Web filtresini açın.',
       keywords:
-        'site engelle, link engelle, bağlantı engelle, url, yetişkin içerik, güvenli arama, dns, vpn, iphone, ipad',
-      tip: 'Web filtreleme platform özelliklerine bağlıdır. Daha güçlü koruma için Engellenen Uygulamalar ile birlikte kullanın.',
+        'site engelle, link engelle, bağlantı engelle, url, yetişkin içerik, güvenli arama, youtube kısıtlı mod, kategoriler, dns, özel dns, vpn, iphone, ipad',
+      tip: 'Filtre sayfaları değil site adlarını okur ve ne kadar kapsadığı cihaza göre değişir. Telefonlar tarayıcıları ve birçok uygulamayı filtreler. Mac, tarayıcının adını gizlediği siteleri (ziyaretlerin yaklaşık yarısı) denetleyemez. Windows her tarayıcıyı yalnızca site adına göre denetler. Chrome uzantısı yalnızca Chrome’u filtreler. Kategori seçmek, kendi listelerinizi oluşturmak ve site isteklerini yanıtlamak Premium’a dahildir. Daha güçlü koruma için Web filtresini Engellenen Uygulamalar ile birlikte kullanın.',
       steps: {
         '1': 'Ebeveyn cihazında çocuğunuzun profilini (veya cihaz bir çocuğa atanmamışsa cihazı) açın, ardından Web filtresi.',
-        '2': 'Mevcut durumu (uygunsuz siteler sınırlı veya filtreleme kapalı) inceleyin.',
-        '3': 'Bir anahtar gösteriliyorsa filtrelemeyi açın ve kaydedin.',
+        '2': 'En üstteki “Uygunsuz siteleri filtrele” seçeneğini açın. Hemen uygulanır, kaydedilecek bir şey yoktur. Aynı ekrandaki “Güvenli Aramayı zorunlu kıl” ise Android, Android TV ve Chrome’da Google, Bing ve DuckDuckGo’yu güvenli sonuçlara, YouTube’u ise Kısıtlı Moda kilitler.',
+        '3': '“Neler engellensin” altında reddedilecek kategorileri seçin. Siteleri “Her zaman izin ver” veya “Her zaman engelle” listesine ekleyin ya da izin listeniz dışındaki her şeyi reddetmek için “Yalnızca izinli siteler” seçeneğini açın. Çocuğunuz engellenmiş bir siteyi açmak istediğinde istek “Site istekleri” altında bekler. Bu kontroller Premium’a dahildir; ücretsiz plan sabit bir kategori kümesi kullanır.',
         '4': 'Daha sonra aynı ekrandan tekrar kontrol edin. Durum Bekleniyor olarak kalırsa ayarların senkronize olması için çocuk cihazında KidGate’i yeniden açın.',
-        '5': 'Çocuk cihazı iPhone veya iPad ise cihazda KidGate’i açın, iOS VPN konfigürasyonları eklemek için izin istediğinde İzin Ver’i seçin ve ardından cihaz parolasını girin. Bu yalnızca bir kez sorulur.',
+        '5': 'Çocuk cihazında KidGate’i açıp filtreyi bir kez onaylayın. iPhone veya iPad’de, iOS VPN konfigürasyonları eklemek için izin istediğinde İzin Ver’i seçin, ardından cihaz parolasını girin. Android’de VPN isteğini onaylayın, ardından Ayarlar → Ağ ve internet → Özel DNS yolunu açıp Kapalı’yı seçin; çünkü Özel DNS açıkken tarayıcılar filtreyi atlayabilir.',
       },
     },
     protectionAlerts: {
@@ -400,7 +400,7 @@ export const userGuide = {
       summary: 'Çocuk cihazındaki önemli bir izin kapatıldığında bildirim alın.',
       tip: 'Bir koruma uyarısı, KidGate korumasının zayıfladığı anlamına gelir. İzni çocuk cihazında en kısa sürede geri yükleyin.',
       steps: {
-        '1': 'Ebeveyn cihazında çocuğunuzun profilini (veya cihaz bir çocuğa atanmamışsa cihazı) açın, ardından Uyarılar bölümünden Koruma’yı seçerek Koruma uyarıları’nı açın.',
+        '1': 'Ebeveyn cihazında çocuğunuzun profilini (veya cihaz bir çocuğa atanmamışsa cihazı) açın, ardından Uyarılar bölümünden Koruma uyarıları’nı seçin.',
         '2': 'Diğer uygulamaların üzerinde göster, Erişilebilirlik, Kullanım Erişimi, Kamera veya Konum gibi izinlerin kapatılması gibi son olayları inceleyin.',
         '3': 'Çocuk cihazında KidGate, ardından Durum’u açın ve belirtilen izni yeniden açın.',
         '4': 'Koruma uyarılarına dönün ve beklenmedik yeni bir olay olmadığını doğrulayın.',
@@ -411,7 +411,7 @@ export const userGuide = {
       title: 'Kullanım raporlarını okuma',
       summary:
         'Her cihazın bugün ve son 30 günde ne kadar kullanıldığını çocuk bazında ve her pazartesi gelen bir raporda görün.',
-      tip: 'Ücretsiz plandaki aileler bugünün toplamını ve en çok kullanılan 3 uygulamayı görür; bu bilgiler siz baktığınızda güncellenir. Premium ise 30 günlük geçmiş, her cihazın ne zaman kullanıldığı, tüm uygulamalar, her çocuk için bir rapor ve her pazartesi yeni bir haftalık rapor ekler. iPhone ve iPad yalnızca toplam süreyi bildirir.',
+      tip: 'Ücretsiz plandaki aileler bugünün toplamını ve en çok kullanılan 3 uygulamayı görür; bu bilgiler siz baktığınızda güncellenir. Premium ise 30 günlük geçmiş, her cihazın ne zaman kullanıldığı, en çok kullanılan 10 uygulama, her çocuk için bir rapor ve her pazartesi yeni bir haftalık rapor ekler. iPhone ve iPad yalnızca toplam süreyi bildirir.',
       steps: {
         '1': 'Raporlar’ı açın. “Bugün” bölümü tüm cihazları toplar; altında Haftalık rapor, her çocuk (Çocuğa göre) ve her cihaz (Cihaza göre) yer alır.',
         '2': 'Bir cihazın Kullanım Raporu’nu açmak için ona dokunun: Günlük sınıra göre bugünkü durum, “Son 30 gün”, “Ne zaman kullanıldı” ve “En çok kullanılan uygulamalar”. Bu raporu cihaz ekranındaki “Bugünkü kullanım” bölümünden de açabilirsiniz.',
@@ -454,7 +454,7 @@ export const userGuide = {
       summary:
         'Çocuğunuzun izlediği YouTube videolarının kanal ve saat bilgisiyle bir listesini tutun.',
       keywords: 'youtube, shorts, izlenen videolar, izleme geçmişi',
-      tip: 'İzlenen videolar özelliği Premium’a dahildir ve yalnızca YouTube’u kapsar. Android telefonlarda, Android TV’de ve Chrome uzantısında çalışır; iPhone ve iPad’de çalışmaz. Mac veya PC’de Chrome uzantısını ekleyin. TV’de Shorts listelenmez.',
+      tip: 'İzlenen videolar özelliği Premium’a dahildir ve yalnızca YouTube’u kapsar. Android telefonlarda ve Chrome uzantısında çalışır; iPhone ve iPad’de çalışmaz. Mac veya PC’de Chrome uzantısını ekleyin. Android TV, videoları yalnızca KidGate’in o TV’de bildirim erişimi olduğunda kaydeder; bu izni henüz hiçbir TV ekranından vermek mümkün değildir. O durumda bile Shorts listelenmez.',
       steps: {
         '1': 'Ebeveyn cihazında çocuğunuzun profilini (veya cihaz bir çocuğa atanmamışsa cihazı) açın, ardından Güvenlik takibi bölümündeki İzlenen videolar’a dokunun.',
         '2': 'İzlenen videoları kaydet seçeneğini açın. Siz açana kadar kapalı kalır ve çocuğunuzun profilinden açıldığında tüm cihazlarına uygulanır.',
@@ -482,7 +482,7 @@ export const userGuide = {
         'Çocuğunuzun Android telefonundaki mesajlarda veya arama sorgularında endişe verici bir kelime veya ifade göründüğünde uyarı alın. Mesajın kendisini asla görmezsiniz, yalnızca işaretlenen kelimeyi veya ifadeyi görürsünüz.',
       keywords:
         'sms, messenger, whatsapp, anahtar kelimeler, zorbalık, mesajları okuma',
-      tip: 'Mesaj uyarıları Premium’a dahildir ve yalnızca Android telefonlarda çalışır. Size yalnızca kategori ve işaretlenen kelime veya ifade ulaşır. Yapay zekâ analizi, bir ebeveyn aile için açmadıkça kapalı kalır.',
+      tip: 'Mesaj uyarıları Premium’a dahildir. Mesajlar yalnızca Android telefonlarda denetlenir; aramalar Chrome uzantısında da denetlenir. Size yalnızca kategori ve işaretlenen kelime veya ifade ulaşır. Yapay zekâ analizi, bir ebeveyn aile için açmadıkça kapalı kalır.',
       steps: {
         '1': 'Çocuğun Android telefonunda KidGate Ayarları’nı açın, “Ebeveyn PIN’i ile Kilidi Aç” düğmesini seçin, ardından Mesaj uyarıları bölümünde “Bildirim erişimine izin ver”i seçin ve açılan listede KidGate’i etkinleştirin.',
         '2': 'Kendi cihazınızda çocuğunuzun profilini (veya cihaz bir çocuğa atanmamışsa cihazı) açın, ardından Uyarılar bölümünden Mesaj uyarıları’nı açıp en üstteki ayarlar simgesine dokunun. Çocuğunuzun birden fazla cihazı varsa önce Android telefonu seçin.',
@@ -500,7 +500,7 @@ export const userGuide = {
         '1': 'Aile bölümünde + simgesine dokunun ve Çocuk ekle’yi seçin. Bir ad girip kaydedin.',
         '2': 'Yeni bir cihazı eşleştirdikten sonra KidGate cihazı kimin kullandığını sorar. Çocuğunuzu ya da ortak bir cihaz için Hiç kimse’yi seçin. Ardından KidGate başlangıç için bir koruma seti önerir: Korumayı aç’ı veya Şimdi değil’i seçin.',
         '3': 'Kimsenin seçilmediği bir cihaz, Aile bölümünde Atanmadı altında görünür. Kartındaki “Bir çocuğa ata…” seçeneğine dokunun.',
-        '4': 'Bir cihaz atandıktan sonra Günlük sınır, Engellenen Saatler, Web filtresi, Check-In, SOS, yerler ve Ödül görevleri çocuğunuzun profilinde ayarlanır ve tüm cihazlarına uygulanır. Günlük sınır, bu cihazların hepsi için tek bir toplam olur.',
+        '4': 'Bir cihaz atandıktan sonra Günlük sınır, Engellenen Saatler, Web filtresi, Check-In, SOS, Yer uyarıları ve Ödül görevleri çocuğunuzun profilinde ayarlanır ve tüm cihazlarına uygulanır. Günlük sınır, bu cihazların hepsi için tek bir toplam olur.',
         '5': 'Bir cihazı taşımak için onu kullanacak çocuğun profilini açın ve “Başka bir cihaz ata…” seçeneğine dokunun. Atamayı kaldırmak için cihazı çocuğunuzun profilinde kaydırın ve Kaldır’ı seçin. Bir çocuğun profilini silmek, cihazlarının eşleşmesini bozmaz.',
       },
     },
@@ -512,7 +512,7 @@ export const userGuide = {
       tip: 'Yalnızca aile sahibi abone olabilir veya bir satın alımı geri yükleyebilir; bu da yalnızca telefon uygulamasında yapılır. Tek bir plan tüm aileyi ve ailedeki her ebeveyni kapsar.',
       steps: {
         '1': 'Ayarlar’ı açın. En üstteki kart mevcut planınızı gösterir; Planları gör’ü seçin.',
-        '2': '7 günlük deneme, ilk çocuk cihazınız eşleştirildiğinde başlar ve Premium’daki her şeyi içerir.',
+        '2': '7 günlük deneme, ilk çocuk cihazınız eşleştirildiğinde başlar ve her Premium özelliğini içerir. Değişmeyen tek sınır ebeveyn sayısıdır: denemede en fazla 3, Premium ile en fazla 6.',
         '3': 'Ücretsiz planda tüm kurallar çalışmaya devam eder, ancak yalnızca bir cihaz rapor gönderir; bu rapor bugünün toplamını ve en çok kullanılan 3 uygulamayı içerir ve siz baktığınızda güncellenir. Premium ise canlı güncellemeler, tüm cihazlar, 30 günlük geçmiş, web ve video geçmişi ve haftalık raporlar ekler.',
         '4': 'Deneme sona erdiğinde birden fazla çocuk cihazı varsa KidGate sizden “Ana cihazınızı seçin” ekranında bir seçim yapmanızı ister. Seçilen cihaz rapor göndermeye devam eder; diğerleri Duraklatıldı olarak görünür ama kurallarını korur. Seçiminizi 7 günde bir değiştirebilirsiniz.',
         '5': 'Abone olmak için bir plan seçin ve “Premium’a abone ol” düğmesine dokunun. Abone olduğunuzda duraklatılmış tüm cihazlar yeniden rapor göndermeye başlar. Daha önce ödeme yaptıysanız Satın alımları geri yükle’yi seçin.',
@@ -525,8 +525,8 @@ export const userGuide = {
       tip: 'SOS her zaman ulaşır; her şey kapalıyken ve sessiz saatlerde bile. Bu ayarlar yalnızca bu telefon için geçerlidir; diğer ebeveynler kendi ayarlarını seçer.',
       steps: {
         '1': 'Ayarlar’ı, ardından Anlık bildirimler’i açın.',
-        '2': 'Uyarılar altında, bu telefonda istemediğiniz uyarı türlerini kapatın; örneğin “Ek süre istekleri” veya “Uygulama kuruldu veya kaldırıldı”.',
-        '3': 'Haftalık özet, haftalık rapor için gönderilen pazartesi bildirimini açıp kapatır.',
+        '2': 'Uyarılar altında, bu telefonda istemediğiniz uyarı türlerini kapatın; örneğin “Süre istekleri” veya “Uygulama kuruldu veya kaldırıldı”.',
+        '3': 'Haftalık rapor, yeni bir raporun hazır olduğunu bildiren pazartesi bildirimini açıp kapatır.',
         '4': 'Uyarıları gece boyunca susturmak için Sessiz saatler’i açın ve Başlangıç ile Bitiş saatlerini ayarlayın. Saatler bu telefonun saatine göre işler.',
         '5': 'Ayarlar’da Uygulama içi uyarılar ve SOS sireni ayrı seçeneklerdir: uygulama içinde görünen bildirimi ve bu telefondaki yüksek sesli SOS alarmını yönetirler.',
       },
@@ -544,10 +544,24 @@ export const userGuide = {
         '4': 'Web panelinde dili yan menünün hesap bölümünden değiştirin. Bu yalnızca o tarayıcı için geçerlidir.',
       },
     },
+    appearance: {
+      title: 'Uygulamanın görünümünü değiştirme',
+      summary: 'Her telefonda karanlık modu, tema stilini ve tema rengini seçin.',
+      keywords: 'tema, gece modu, renkler, pembe, koyu arka plan, kişiselleştirme',
+      tip: 'Her telefon kendi görünümünü korur; çocuğunuzun telefonundaki bir değişiklik sizinkini hiçbir zaman değiştirmez.',
+      steps: {
+        '1': 'Bir ebeveyn telefonunda “Ayarlar”ı açın. Karanlık mod, tema stili ve tema rengi “Görünüm” bölümündedir.',
+        '2': 'Ekranların daha koyu olması ve gece gözünüzü daha az yorması için “Karanlık mod”u açın.',
+        '3': '“Tema stili”ni seçin, ardından “Klasik”i ya da sıcak pastel tonlarıyla daha yumuşak ve neşeli bir görünüm sunan “Tatlı”yı seçin.',
+        '4': '“Tema rengi”ni seçin ve düğmeler ile vurgular için bir renk belirleyin. Sunulan renkler stile göre değişir: “Tatlı” yalnızca pembe tonları sunar.',
+        '5': 'Çocuğunuz aynı seçimleri kendi telefonunda, “Ayarlar”daki “Tercihler” bölümünden Ebeveyn PIN’i olmadan yapabilir.',
+        '6': 'Web panelinde yan menünün hesap bölümünden “Karanlık mod”u açın. Bu yalnızca o tarayıcı için geçerlidir.',
+      },
+    },
     webSignIn: {
       title: 'KidGate’i bilgisayarda kullanma',
       summary: 'Web paneline giriş yapın ve ailenizi bir tarayıcıdan yönetin.',
-      tip: 'Yalnızca kendiniz giriş yaptığınız bir tarayıcıya izin verin: o tarayıcı telefonunuzla aynı yetkiye sahip olur. Web paneli cihaz eşleştiremez ve plan satın alamaz. Bir tarayıcıda oturumu kapatmak için paneldeki Çıkış yap’ı kullanın.',
+      tip: 'Yalnızca kendiniz giriş yaptığınız bir tarayıcıya izin verin: o tarayıcı telefonunuzla aynı yetkiye sahip olur. Web paneli çocuk cihazı eşleştiremez ve plan satın alamaz. Bir tarayıcıda oturumu kapatmak için paneldeki Çıkış yap’ı kullanın. Bir tarayıcının değişiklik yapmasını durdurmak için Aile’yi, ardından Ebeveynler’i açın ve tarayıcıyı Değişiklik yapabilen tarayıcılar bölümünden kaldırın; oturumu kapatılana kadar ailenizi görüntülemeye devam edebilir.',
       steps: {
         '1': 'Bilgisayarda dashboard.kidgate.app adresini açın ve “KidGate uygulamasıyla giriş yap”ı seçin. Bir QR kodu görünür.',
         '2': 'Telefonunuzda Ayarlar’ı açın, ardından “Web’de giriş yap” seçeneğine dokunun. Aile bölümündeki tarama simgesiyle de tarayabilirsiniz.',
@@ -592,7 +606,7 @@ export const userGuide = {
       steps: {
         '1': 'Ayarlar’ı açın ve Hesap altında Hesabı sil’i seçin.',
         '2': 'Nelerin kaldırılacağını okuyun. Aile sahibiyseniz tüm ortak ebeveynler ve tüm çocuk cihazları da erişimini kaybeder.',
-        '3': 'Kimliğinizi doğrulayın (şifrenizle veya Google ya da Apple ile yeniden giriş yaparak), OK yazın ve Kalıcı olarak sil’i seçin.',
+        '3': 'Kimliğinizi doğrulayın (şifrenizle veya Google ya da Apple ile yeniden giriş yaparak), OK yazın ve Silmeyi planla’yı seçin. Bu yalnızca silme işlemini planlar: henüz hiçbir şey kaldırılmaz.',
         '4': 'Hesap, 14 günün sonunda silinir. O zamana kadar her şeyi korumak için KidGate’i açıp Silmeyi iptal et’i seçin.',
         '5': 'Bir ortak ebeveyn hesabını sildiğinde yalnızca kendi hesabı kaldırılır; aile olduğu gibi kalır. Hesabınızı silmeden bir aileden ayrılmak için Aile bölümünde aile kartını açın ve Aileden ayrıl’ı seçin.',
       },
@@ -601,5 +615,5 @@ export const userGuide = {
   onChildDevice: 'Çocuğun cihazında',
   onParentDevice: 'Sizin cihazınızda',
   handoffHint:
-    'KidGate bu adımları çocuğun cihazında adım adım gösterebilir: orada açın, Durum ekranına gidin ve Kurulumu bir ebeveynle tamamla seçeneğini seçin. Her adımda doğru ekranı açan bir düğme var.',
+    'KidGate bu adımları çocuğun cihazında adım adım gösterebilir: orada açın, Durum ekranına gidin ve Kurulumu bir ebeveynle tamamla kartında Kuruluma devam et seçeneğini seçin. Her adımda doğru ekranı açan bir düğme var.',
 } as const;

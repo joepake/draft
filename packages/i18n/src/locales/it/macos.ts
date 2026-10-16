@@ -10,13 +10,13 @@ export const macos = {
   headingRemovable: 'Quanto è facile da rimuovere',
 
   parentAccessBody:
-    'Inserisci il PIN genitore per scegliere quali app bloccare su questo Mac.',
+    'Inserisci il PIN genitore per scegliere quali app bloccare su questo dispositivo.',
   checking: 'Controllo…',
 
   enforcing: 'Protezione attiva',
   enforcingYes: 'Sì',
-  enforcingFailed: 'No — {{count}} controlli di fila non riusciti',
-  enforcingFailed_one: 'No — l’ultimo controllo non è riuscito',
+  enforcingFailed: 'Protezione interrotta · {{count}} controlli di fila non riusciti',
+  enforcingFailed_one: 'Protezione interrotta · l’ultimo controllo non è riuscito',
 
   lockState: 'Dispositivo bloccato',
   lockStateNo: 'No',
@@ -66,7 +66,7 @@ export const macos = {
   setupStepFilterSwitchWaiting:
     'Compare in Impostazioni di Sistema una volta approvato il passaggio qui sopra.',
   setupStepLocationBody:
-    'Permette alla tua famiglia di vedere dov’è questo dispositivo. Non viene condiviso nulla finché non attivi «Condividi posizione».',
+    'Permette alla tua famiglia di vedere dov’è questo dispositivo. Non viene condiviso nulla finché non attivi «Condividi posizione» nell’app KidGate.',
   setupStepCameraTitle: 'Fotocamera',
   setupStepCameraBody:
     'Allega una foto quando tuo figlio o tua figlia invia un SOS o risponde a un Check-in. Adesso non viene scattata nessuna foto.',
@@ -121,7 +121,7 @@ export const macos = {
 
   chooseApps: 'Scegli le app da bloccare',
   chooseAppsHint:
-    'Scegli le app da bloccare su questo Mac. Un genitore può attivare o disattivare il blocco dal proprio telefono.',
+    'Scegli le app da bloccare su questo dispositivo. Un genitore può attivare o disattivare il blocco dal proprio telefono.',
   saveSelection: 'Salva',
-  noAppsFound: 'Nessuna app trovata nella cartella Applicazioni.',
+  noAppsFound: 'Nessuna app trovata su questo dispositivo.',
 };

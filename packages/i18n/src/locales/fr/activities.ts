@@ -10,6 +10,7 @@ export const activities = {
   subtitleTimelineForDevice: 'Historique de {{deviceName}}',
   subtitleTimelineForChild: 'Chronologie de {{childName}}',
   fallbackDeviceName: 'appareil',
+  fallbackChildName: 'votre enfant',
   liveBadge: 'En direct',
   errorTitle: 'Impossible de charger l’activité',
   tryAgain: 'Réessayer',
@@ -43,13 +44,13 @@ export const activities = {
   activityTypeAppRemoved: 'Application désinstallée',
   activityTypePlaceEnter: 'Lieu rejoint',
   activityTypePlaceExit: 'Lieu quitté',
-  activityTypeTamper: 'Protection',
+  activityTypeTamper: 'Alertes de protection',
   activityTypeScreenTime: 'Temps d’écran',
   activityTypeCheckIn: 'Check-in',
   activityTypeLocationRequest: 'Localisation',
   activityTypeTimeRequest: 'Demandes de temps',
   activityTypeRewardTask: 'Tâches à récompense',
-  activityTypeSearchAlert: 'Alerte recherche',
+  activityTypeSearchAlert: 'Alertes de messages',
   activityTypeWebFilter: 'Filtre web',
   activityTypeEmergency: 'SOS',
   activityTypeUnknown: 'Activité',
@@ -81,7 +82,7 @@ export const activities = {
   appInstalledPendingBody:
     'L’application {{appName}} a été installée sur l’appareil de l’enfant et reste bloquée jusqu’à ce que vous l’autorisiez.',
 
-  messageAlertTitle: 'Contenu de message préoccupant',
+  messageAlertTitle: 'Message préoccupant',
   messageAlertBody: 'Un mot signalé a été détecté dans {{appName}}.',
   messageAlertBodyOutgoing:
     'Un mot signalé a été détecté dans un message écrit par votre enfant dans {{appName}}.',
@@ -193,7 +194,7 @@ export const activities = {
     'Le VPN de KidGate sur cet appareil a été désactivé ou remplacé par une autre application VPN. Tant qu’il n’est pas réactivé, les sites ne sont ni filtrés ni enregistrés.',
   tamperUninstallProtectionTitle: 'Protection contre la désinstallation désactivée',
   tamperUninstallProtectionBody:
-    'KidGate peut désormais être supprimé de ce téléphone.',
+    'KidGate peut désormais être supprimé de l’appareil de l’enfant.',
   tamperReinstalledTitle: 'KidGate a été réinstallé',
   tamperReinstalledBody:
     'KidGate a été supprimé de cet appareil puis réinstallé. Rien n’a été enregistré entre-temps.',

@@ -24,7 +24,7 @@ export const child = {
   outOfScreenTimeToday:
     '오늘의 스크린 타임을 모두 사용했어요. 부모님께 더 요청할 수 있어요.',
   devicePaused: '기기 잠김',
-  devicePausedByParent: '{{deviceName}}이(가) 지금 잠겨 있어요.',
+  devicePausedByParent: '부모님이 {{deviceName}}을(를) 잠시 잠갔어요.',
   phonePausedByParent: '부모님이 이 기기를 잠시 잠갔어요.',
   pausedAskParentOrSos:
     '필요할 때 부모님께 잠금 해제를 부탁하세요. 긴급 상황에는 여전히 SOS를 보낼 수 있어요.',
@@ -33,12 +33,13 @@ export const child = {
   blockedHoursLockHint:
     '지금 이 기기가 필요하면 부모님께 차단 시간을 바꿔 달라고 부탁하세요. 긴급 상황에는 여전히 SOS를 보낼 수 있어요.',
   blockedHoursLockBodyUntil: '차단 시간은 {{time}}까지예요. 쉬어 가기 좋은 시간이에요.',
+  dailyLimitLockBody: '오늘의 스크린 타임을 모두 사용했어요.',
   dailyLimitLockHint:
     '시간이 더 필요하면 부모님께 부탁하세요. 긴급 상황에는 여전히 SOS를 보낼 수 있어요.',
   appClosedTitle: '앱을 닫았어요',
   appClosedBody: '지금 차단된 앱이라 KidGate가 닫았어요.',
   parentPausedAccess: '부모님이 이 기기를 잠시 잠갔어요.',
-  parentRestoredAccess: '부모님이 기기 잠금을 해제했어요. 계속 사용할 수 있어요.',
+  parentRestoredAccess: '부모님이 이 기기의 잠금을 해제했어요.',
   toastDailyLimitIncreased: '부모님이 스크린 타임 {{minutes}}분을 추가했어요.',
   errorDeviceNotRegistered:
     '이 기기는 아직 준비되지 않았어요. 잠시 후 다시 시도해 보고, 계속 같은 문제가 생기면 다시 페어링하세요.',

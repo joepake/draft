@@ -82,6 +82,6 @@ export const blockedApps = {
   wizardStepChoose: 'Mở mục Chặn ứng dụng, tích các ứng dụng rồi lưu lại.',
   pickerSubtitle: 'Chọn ứng dụng và danh mục cần chặn trên thiết bị này.',
   pickerSubtitleAndroid:
-    'Các ứng dụng đã đánh dấu sẽ không mở được khi mục Chặn ứng dụng đang bật.',
+    'Các ứng dụng đã đánh dấu sẽ bị đóng ngay khi mở, trong lúc mục Chặn ứng dụng đang bật.',
   pickerEmpty: 'Không tìm thấy ứng dụng nào trên thiết bị này.',
 } as const;

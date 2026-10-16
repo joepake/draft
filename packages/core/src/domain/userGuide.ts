@@ -34,6 +34,7 @@ export type UserGuideTopicId =
   | 'blockedApps'
   | 'appLimits'
   | 'lockUnlock'
+  | 'siri'
   | 'pauseBrowsing'
   | 'timeRequests'
   | 'rewardTasks'
@@ -52,6 +53,7 @@ export type UserGuideTopicId =
   | 'plans'
   | 'notificationSettings'
   | 'appLanguage'
+  | 'appearance'
   | 'webSignIn'
   | 'securityPins'
   | 'reportProblem'
@@ -213,6 +215,14 @@ export const USER_GUIDE_TOPICS: UserGuideTopicConfig[] = [
     icon: 'lock',
     stepCount: 6,
   },
+  // iPhone only: `KidGateIntents.swift`. Every step happens on the parent's
+  // phone, so none is tagged.
+  {
+    id: 'siri',
+    groupId: 'controls',
+    icon: 'message',
+    stepCount: 6,
+  },
   {
     id: 'appLimits',
     groupId: 'controls',
@@ -338,6 +348,12 @@ export const USER_GUIDE_TOPICS: UserGuideTopicConfig[] = [
     stepCount: 4,
   },
   {
+    id: 'appearance',
+    groupId: 'account',
+    icon: 'palette',
+    stepCount: 6,
+  },
+  {
     id: 'webSignIn',
     groupId: 'account',
     icon: 'globe',
@@ -396,6 +412,7 @@ export const USER_GUIDE_GROUPS: UserGuideGroupConfig[] = [
       'blockedApps',
       'appLimits',
       'lockUnlock',
+      'siri',
       'pauseBrowsing',
       'timeRequests',
       'rewardTasks',
@@ -425,6 +442,7 @@ export const USER_GUIDE_GROUPS: UserGuideGroupConfig[] = [
       'plans',
       'notificationSettings',
       'appLanguage',
+      'appearance',
       'webSignIn',
       'securityPins',
       'reportProblem',

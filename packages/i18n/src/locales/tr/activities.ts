@@ -10,6 +10,7 @@ export const activities = {
   subtitleTimelineForDevice: '{{deviceName}} zaman çizelgesi',
   subtitleTimelineForChild: '{{childName}} zaman çizelgesi',
   fallbackDeviceName: 'cihaz',
+  fallbackChildName: 'çocuğunuz',
   liveBadge: 'Canlı',
   errorTitle: 'Etkinlikler yüklenemedi',
   tryAgain: 'Tekrar dene',
@@ -42,13 +43,13 @@ export const activities = {
   activityTypeAppRemoved: 'Uygulama kaldırıldı',
   activityTypePlaceEnter: 'Konuma giriş',
   activityTypePlaceExit: 'Konumdan ayrıldı',
-  activityTypeTamper: 'Koruma',
+  activityTypeTamper: 'Koruma uyarıları',
   activityTypeScreenTime: 'Ekran Süresi',
   activityTypeCheckIn: 'Check-In',
   activityTypeLocationRequest: 'Konum',
   activityTypeTimeRequest: 'Süre istekleri',
   activityTypeRewardTask: 'Ödül görevleri',
-  activityTypeSearchAlert: 'Arama uyarısı',
+  activityTypeSearchAlert: 'Mesaj uyarıları',
   activityTypeWebFilter: 'Web filtresi',
   activityTypeEmergency: 'SOS',
   activityTypeUnknown: 'Etkinlik',
@@ -77,7 +78,7 @@ export const activities = {
   appInstalledPendingBody:
     '{{appName}} uygulaması çocuğun cihazına yüklendi ve siz izin verene kadar engelli.',
 
-  messageAlertTitle: 'Endişe verici mesaj içeriği',
+  messageAlertTitle: 'Endişe verici mesaj',
   messageAlertBody: '{{appName}} içinde işaretli bir kelime tespit edildi.',
   messageAlertBodyOutgoing:
     'Çocuğunuzun {{appName}} içinde yazdığı bir mesajda işaretli bir kelime tespit edildi.',
@@ -182,7 +183,7 @@ export const activities = {
   tamperWebFilterBody:
     'Bu cihazdaki KidGate VPN kapatıldı ya da yerini başka bir VPN uygulaması aldı. Yeniden açılana kadar siteler filtrelenmez ve kaydedilmez.',
   tamperUninstallProtectionTitle: 'Kaldırma koruması kapatıldı',
-  tamperUninstallProtectionBody: 'KidGate artık bu telefondan kaldırılabilir.',
+  tamperUninstallProtectionBody: 'KidGate artık çocuk cihazından kaldırılabilir.',
   tamperReinstalledTitle: 'KidGate yeniden yüklendi',
   tamperReinstalledBody:
     'KidGate bu cihazdan kaldırılıp yeniden yüklendi. Bu arada hiçbir şey kaydedilmedi.',

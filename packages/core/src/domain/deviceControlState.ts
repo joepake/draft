@@ -36,6 +36,11 @@
  * A count of `0` is a measurement and still renders.
  */
 
+import type { Device } from '@kidgate/schema/device';
+
+import { supportsTamperAlerts } from './alertSupport';
+import { getProtectionSummaryKeys, type ProtectionLevel } from './protectionStatus';
+
 export type ControlCardTone = 'active' | 'attention' | 'roadmap';
 
 export interface ControlCardStatus {
@@ -98,9 +103,24 @@ export interface ControlStateFacts {
    */
   hasLocationFix?: boolean;
   locationStale?: boolean;
-  /** Either probe answering yes lights the card — a TV lists apps and reports no installs. */
+  /**
+   * The install feed and the app list are two probes. The card reports the feed
+   * first ("Monitoring on"); a machine that only lists what is installed — the
+   * television — reads "Lists installed apps", never a monitoring it lacks.
+   */
   reportsAppInstalls?: boolean;
   listsInstalledApps?: boolean;
+  /**
+   * `getProtectionSummaryKeys(device).level` — the same verdict the device hero
+   * and the Protection Alerts screen read, so the card cannot say "Watching"
+   * over a device whose grant was switched off. Over a set, the worst level
+   * among the devices that file tamper alerts.
+   *
+   * Absent keeps the card's old answer rather than going silent: a console
+   * that has not been taught this fact would otherwise lose the card to the
+   * "Coming soon" fallback. Feeding it is each console's job.
+   */
+  protectionLevel?: ProtectionLevel;
   /** From `resolveMessageMonitoringSummary`, which already answers in keys. */
   messageSummary?: { valueKey: string; tone: ControlCardTone } | null;
   /** False on a machine whose watches are recorded by the browser extension. */
@@ -333,13 +353,15 @@ export function resolveControlCardStatus(
       ) {
         return null;
       }
-      const observed =
-        facts.reportsAppInstalls === true || facts.listsInstalledApps === true;
-      return worded(
-        observed ? 'appAlerts.statusOn' : 'appAlerts.statusOff',
-        observed ? 'active' : 'roadmap',
-        'shared.view',
-      );
+      if (facts.reportsAppInstalls === true) {
+        return worded('appAlerts.statusOn', 'active', 'shared.view');
+      }
+      // Lists what is installed, reports no installs or removals: "Monitoring
+      // on" over that machine promised a feed it does not have.
+      if (facts.listsInstalledApps === true) {
+        return worded('appAlerts.statusInventory', 'active', 'shared.view');
+      }
+      return worded('appAlerts.statusOff', 'roadmap', 'shared.view');
     }
 
     case 'message-alerts': {
@@ -359,8 +381,17 @@ export function resolveControlCardStatus(
 
     case 'tamper-alerts':
       // No switch and no count: the agent watches for tampering whenever it is
-      // running at all, so the card reports that it is on and opens the log.
-      return worded('tamperAlerts.statusOn', 'active', 'shared.view');
+      // running at all. But a grant switched off, or an agent silent for a day,
+      // is the state this card exists to expose — "Watching" over it was the
+      // card vouching for protection that was not there.
+      switch (facts.protectionLevel) {
+        case 'warning':
+          return worded('protection.needsAttention', 'attention', 'shared.view');
+        case 'inactive':
+          return worded('protection.inactive', 'attention', 'shared.view');
+        default:
+          return worded('tamperAlerts.statusOn', 'active', 'shared.view');
+      }
 
     case 'video-history':
       /*
@@ -417,4 +448,37 @@ export function foldChildAppBlocking(
         d.controls.appBlockingEnabled === true,
     ),
   };
+}
+
+/** Worst first: a switched-off grant outranks a device that has gone quiet. */
+const PROTECTION_LEVEL_RANK: Record<ProtectionLevel, number> = {
+  protected: 0,
+  inactive: 1,
+  warning: 2,
+};
+
+/**
+ * The `protectionLevel` fact of a child's whole set, for the child hub on both
+ * consoles: the worst verdict among the devices that file tamper alerts at all,
+ * and `undefined` when none does — a television has no verdict to be worst at,
+ * and the card is not drawn for a set made only of those.
+ */
+export function foldChildProtectionLevel(
+  devices: readonly Device[],
+  nowMs: number,
+): ProtectionLevel | undefined {
+  let worst: ProtectionLevel | undefined;
+  for (const device of devices) {
+    if (!supportsTamperAlerts(device)) {
+      continue;
+    }
+    const level = getProtectionSummaryKeys(device, nowMs).level;
+    if (
+      worst === undefined ||
+      PROTECTION_LEVEL_RANK[level] > PROTECTION_LEVEL_RANK[worst]
+    ) {
+      worst = level;
+    }
+  }
+  return worst;
 }

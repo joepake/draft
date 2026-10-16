@@ -7,7 +7,7 @@ export const childSettings = {
   darkModeHint: 'Abends angenehmer für die Augen',
   leaveFamilyAlertTitle: 'Diese Familie verlassen?',
   leaveFamilyAlertMessage:
-    'Dieses Gerät wird von der Familie getrennt. Kopple es mit einer Eltern-Einladung erneut, um wieder beizutreten.',
+    'Dieses Gerät wird von der Familie getrennt. Um wieder beizutreten, muss ein Elternteil es in seiner KidGate-App erneut verbinden.',
   leaveFamily: 'Familie verlassen',
   uninstallProtectionSectionTitle: 'Deinstallationsschutz',
   uninstallProtectionSectionDescription:
@@ -21,7 +21,7 @@ export const childSettings = {
   uninstallProtectionFailed:
     'Der Deinstallationsschutz konnte nicht geändert werden. Bitte versuche es erneut.',
   deviceAdminExplanation:
-    'Verhindert, dass KidGate ohne ein Elternteil deinstalliert wird. KidGate nutzt keine weiteren Rechte zur Geräteverwaltung: Es kann dieses Gerät nicht löschen, die Displaysperre nicht ändern und die Kamera nicht ausschalten.',
+    'Erschwert das Entfernen von KidGate: Vor dem Deinstallieren muss dieser Schutz erst ausgeschaltet werden, und dabei wird ein Elternteil benachrichtigt. KidGate nutzt keine weiteren Rechte zur Geräteverwaltung: Es kann dieses Gerät nicht löschen, die Displaysperre nicht ändern und die Kamera nicht ausschalten.',
   deviceAdminDisableWarning:
     'Wenn du das ausschaltest, kann KidGate von diesem Gerät deinstalliert werden. Deine Eltern werden benachrichtigt.',
   appPickerUnavailable:

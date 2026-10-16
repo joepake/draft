@@ -3,10 +3,12 @@ export const videoHistory = {
   fallbackDeviceName: 'Çocuk cihazı',
   toggleLabel: 'İzlenen videoları kaydet',
   toggleHint:
-    'Tarayıcıda YouTube ve Android telefonlardaki ve TV’deki YouTube uygulaması. TV’de Shorts listelenmez; TV uygulaması bunları Shorts olarak tanımlamaz.',
+    'Android telefonlardaki ve TV’deki YouTube uygulamasında ve KidGate uzantılı Chrome’da izlenen videolar. TV’de Shorts listelenmez; TV uygulaması bunları Shorts olarak tanımlamaz.',
   toggleFailed: 'Video geçmişi güncellenemedi. Tekrar deneyin.',
   unsupportedNote:
     'Bu cihaz izlenen videoları bildiremez. Android, Android TV ve Chrome’da çalışır.',
+  unsupportedNoteTv:
+    'Bu TV izlenen videoları kaydetmiyor. KidGate’in bunun için TV’de bildirim erişimine ihtiyacı var; bu izin henüz TV ekranından verilemiyor.',
 
   unsupportedNeedsExtension:
     'Bu bilgisayardaki KidGate hangi videoların izlendiğini göremez — site adlarını okur, sayfanın içeriğini değil. Chrome için KidGate uzantısı görebilir: bu bilgisayara ekleyin, izlenen videoları ayrı bir cihaz olarak bildirir.',
@@ -42,5 +44,5 @@ export const videoHistory = {
     'Videolar henüz kaydedilmiyor: KidGate’in çocuğunuzun telefonunda bildirim erişimine ihtiyacı var. O telefonda KidGate Ayarları’nı açın, “Ebeveyn PIN’i ile Kilidi Aç” düğmesini seçin, ardından Mesaj uyarıları bölümünde “Bildirim erişimine izin ver”i seçin.',
   openAction: 'YouTube’da aç',
   searchAction: 'Bu videoyu YouTube’da ara',
-  openFailed: 'YouTube açılamadı.',
+  openFailed: 'YouTube açılamadı. Tekrar deneyin.',
 };

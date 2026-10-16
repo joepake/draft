@@ -13,7 +13,6 @@ import {
   searchUserGuide,
 } from '@kidgate/core/domain/userGuideSearch';
 import {
-  GUIDE_VIDEO_DEVICE_LABEL,
   resolveGuideTopicVideos,
   youtubeEmbedUrl,
   youtubeThumbnailUrl,
@@ -32,9 +31,6 @@ import Card from './Card.jsx';
  * `@kidgate/core/domain/userGuide` — the topics, their order, which device a
  * step happens on — so the two consoles cannot teach a feature differently.
  * The search is the phone's too (`userGuideSearch`), fold and ranking alike.
- *
- * What the phone has and this does not: the drawn mockups above some topics
- * (`apps/mobile/src/features/userGuide/mock`, React Native views). Steps alone.
  *
  * `topicId` is the URL's (`guide=` in `navUrl.js`). The query and the step a
  * result lands on are what a press did, so they are state here — which also
@@ -271,7 +267,7 @@ function useGuideVideos(topicId) {
  * once pressed — an iframe per video on open would load YouTube for every
  * topic a parent glances at. Same embed as the phone (`youtubeEmbedUrl`):
  * no recommendations, the parent's language, opening at the topic's mark.
- * Two videos are named by device, in the plans screen's own words.
+ * Two videos are named by `labelKey` — their device, or the screen each shows.
  */
 function GuideVideos({ videos, title, label }) {
   const appT = useActivityTranslate();
@@ -284,9 +280,7 @@ function GuideVideos({ videos, title, label }) {
       <div className="guide-video-row">
         {videos.map(video => {
           const name =
-            videos.length > 1 && video.device
-              ? appT(GUIDE_VIDEO_DEVICE_LABEL[video.device])
-              : label;
+            videos.length > 1 && video.labelKey ? appT(video.labelKey) : label;
           return playing === video.youtubeId ? (
             <div key={video.youtubeId} className="guide-video">
               <iframe

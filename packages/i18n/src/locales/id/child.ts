@@ -24,7 +24,7 @@ export const child = {
   outOfScreenTimeToday:
     'Waktu layar hari ini sudah habis. Kamu bisa meminta tambahan ke orang tuamu.',
   devicePaused: 'Perangkat terkunci',
-  devicePausedByParent: '{{deviceName}} sedang terkunci.',
+  devicePausedByParent: 'Orang tuamu telah mengunci {{deviceName}} untuk sementara.',
   phonePausedByParent: 'Orang tuamu mengunci perangkat ini untuk sementara.',
   pausedAskParentOrSos:
     'Minta orang tuamu membuka kunci saat kamu membutuhkannya. Dalam keadaan darurat, kamu tetap bisa mengirim SOS.',
@@ -34,13 +34,13 @@ export const child = {
     'Kalau kamu butuh perangkat ini sekarang, minta orang tuamu mengubah Jam Diblokir. Dalam keadaan darurat, kamu tetap bisa mengirim SOS.',
   blockedHoursLockBodyUntil:
     'Jam Diblokir berlaku sampai {{time}}. Waktu yang pas untuk istirahat.',
+  dailyLimitLockBody: 'Waktu layar hari ini sudah habis.',
   dailyLimitLockHint:
     'Minta ke orang tuamu kalau butuh waktu lagi. Dalam keadaan darurat, kamu tetap bisa mengirim SOS.',
   appClosedTitle: 'Aplikasi ditutup',
   appClosedBody: 'KidGate menutupnya karena aplikasi ini sedang diblokir.',
   parentPausedAccess: 'Orang tuamu mengunci perangkat ini untuk sementara.',
-  parentRestoredAccess:
-    'Orang tuamu membuka kunci perangkat ini. Kamu bisa memakainya lagi.',
+  parentRestoredAccess: 'Orang tuamu membuka kunci perangkat ini.',
   toastDailyLimitIncreased: 'Orang tuamu menambahkan {{minutes}} menit waktu layar.',
   errorDeviceNotRegistered:
     'Perangkat ini belum siap. Coba lagi sebentar lagi, atau pasangkan lagi jika ini terus terjadi.',

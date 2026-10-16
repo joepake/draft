@@ -33,7 +33,7 @@ export const child = {
   outOfScreenTimeToday: 'استهلكت كل وقت الشاشة لليوم. يمكنك طلب المزيد من والديك.',
   devicePaused: 'الجهاز مقفل',
   // See the RLM note in ar/sos.ts — the name lands first, so pin RTL here too.
-  devicePausedByParent: '\u200F{{deviceName}} مقفل الآن.',
+  devicePausedByParent: 'قفل والداك الجهاز {{deviceName}} مؤقتًا.',
   phonePausedByParent: 'قفل والداك هذا الجهاز مؤقتًا.',
   pausedAskParentOrSos:
     'يمكن طلب فتح القفل من والديك عند الحاجة. وفي الحالات الطارئة لا يزال بإمكانك إرسال SOS.',
@@ -43,12 +43,13 @@ export const child = {
     'إن احتجت هذا الجهاز الآن، يمكنك الطلب من والديك تغيير ساعات الحظر. وفي الحالات الطارئة لا يزال بإمكانك إرسال SOS.',
   blockedHoursLockBodyUntil:
     'ساعات الحظر نشطة حتى {{time}}. إنه وقت مناسب لأخذ استراحة.',
+  dailyLimitLockBody: 'استهلكت كل وقت الشاشة لليوم.',
   dailyLimitLockHint:
     'إن احتجت مزيدًا من الوقت، يمكنك الطلب من والديك. وفي الحالات الطارئة لا يزال بإمكانك إرسال SOS.',
   appClosedTitle: 'تم إغلاق التطبيق',
   appClosedBody: 'أغلقه KidGate لأنه محظور الآن.',
   parentPausedAccess: 'قفل والداك هذا الجهاز مؤقتًا.',
-  parentRestoredAccess: 'فتح والداك قفل الجهاز. يمكنك متابعة الاستخدام.',
+  parentRestoredAccess: 'فتح والداك قفل هذا الجهاز.',
   toastDailyLimitIncreased: 'أضاف والداك {{minutes}} دقيقة إضافية من وقت الشاشة.',
   toastDailyLimitIncreased_one: 'أضاف والداك دقيقة إضافية واحدة من وقت الشاشة.',
   toastDailyLimitIncreased_few: 'أضاف والداك {{minutes}} دقائق إضافية من وقت الشاشة.',

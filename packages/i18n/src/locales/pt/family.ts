@@ -280,7 +280,7 @@ export const family = {
   deviceRemovedAlertTitle: 'Dispositivo removido',
 
   deviceRemovedAlertMessage:
-    'Um responsável removeu este dispositivo da conta da família. Selecione novamente a função Criança para reconectá-lo.',
+    'Um responsável removeu este dispositivo da conta da família. Para reconectá-lo, selecione “Este é um dispositivo de uma criança”.',
 
   deviceNotRegistered: 'Este dispositivo ainda não está registrado.',
 
@@ -337,7 +337,7 @@ export const family = {
   editDeviceNameTitle: 'Editar nome do dispositivo',
 
   editDeviceNameSubtitle:
-    'Somente o proprietário da família pode renomear dispositivos. Máximo de {{maxLength}} caracteres.',
+    'Escolha um nome que os pais reconheçam rapidamente. Máximo de {{maxLength}} caracteres.',
 
   deviceNameInputLabel: 'Nome do dispositivo',
 
@@ -363,6 +363,8 @@ export const family = {
   youPausedThisDevice: 'Você bloqueou este dispositivo',
 
   lockSentWaitingForDevice: 'Bloqueio enviado — a aguardar o dispositivo',
+  lockDelayedOnDevice:
+    'O bloqueio e o desbloqueio podem demorar até {{minutes}} minutos a chegar a este dispositivo.',
 
   lockNotAppliedOnDevice: 'Este dispositivo não aplicou o bloqueio',
 

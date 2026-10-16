@@ -20,7 +20,7 @@ export const webSignIn = {
   // "later", and it must not read like it.
   confirmTitle: 'Bu tarayıcıya izin verilsin mi?',
   confirmBody:
-    'Bu telefonla aynı yetkiyi alır: çocuklarının nerede olduğunu görür, limitleri değiştirir, cihazları kilitler ve istekleri onaylar. Yalnızca giriş yapan sen isen izin ver.',
+    'Bu telefonla aynı yetkiyi alır: çocuklarının nerede olduğunu görür, limitleri değiştirir, cihazları kilitler ve istekleri onaylar. 7 gün boyunca değişiklik yapabilir ve Aile → Ebeveynler bölümünden her zaman kaldırılabilir. Yalnızca giriş yapan sen isen izin ver.',
   confirmCodeLabel: 'Bilgisayarındaki kod',
   approveButton: 'İzin ver',
   declineButton: 'İzin verme',
@@ -35,6 +35,21 @@ export const webSignIn = {
   alreadyUsed: 'Bu kod zaten kullanıldı. Bilgisayarında yeni bir kod göster.',
   notFound: 'Bu kod geçersiz. Altı karakteri kontrol edip tekrar dene.',
   failed: 'İstek tamamlanamadı. Lütfen tekrar dene.',
-
-  // Revocation screen (server side already ships; app screen is pending).
+  sessionsTitle: 'Değişiklik yapabilen tarayıcılar',
+  sessionsHint:
+    'Bu tarayıcılar web panelinde hesabınızla giriş yapmış durumda ve değişiklik yapabilir. Ailenizi yalnızca görüntüleyen bir tarayıcı burada listelenmez.',
+  sessionsEmpty:
+    'Değişiklik yapabilen tarayıcı yok. Bir tarayıcıya izin verdiğinizde burada görünür.',
+  sessionRow: '{{os}} üzerinde {{browser}}',
+  sessionRowUnknown: 'Web tarayıcısı',
+  sessionExpires: '{{date}} tarihine kadar değişiklik yapabilir',
+  sessionViaQr: 'QR kodla izin verildi',
+  sessionViaPin: 'Ebeveyn PIN’i ile izin verildi',
+  thisBrowser: 'Bu tarayıcı',
+  sessionsRevoke: 'Kaldır',
+  sessionsRevokeConfirmTitle: 'Bu tarayıcı kaldırılsın mı?',
+  sessionsRevokeConfirmBody:
+    'Artık ayarları değiştiremez ve cihazları kontrol edemez. Gösterilen tarihe kadar, ad gibi bazı cihaz bilgilerini değiştirmeye devam edebilir. Ancak orada biri oturumu kapatana kadar ailenizin bilgilerini göstermeye devam edebilir.',
+  revokedToast: 'Tarayıcı kaldırıldı.',
+  revokeFailed: 'Tarayıcı kaldırılamadı. Lütfen tekrar deneyin.',
 } as const;

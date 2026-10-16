@@ -82,6 +82,6 @@ export const blockedApps = {
   wizardStepPin: '설정에서 요청하면 부모 PIN을 입력하세요.',
   wizardStepChoose: '앱 차단에서 차단된 앱을 열고, 앱을 선택한 뒤 저장하세요.',
   pickerSubtitle: '이 기기에서 차단할 앱과 카테고리를 선택하세요.',
-  pickerSubtitleAndroid: '앱 차단이 켜져 있는 동안 체크한 앱은 열 수 없습니다.',
+  pickerSubtitleAndroid: '앱 차단이 켜져 있는 동안 체크한 앱은 열리는 즉시 닫힙니다.',
   pickerEmpty: '이 기기에서 앱을 찾을 수 없습니다.',
 } as const;

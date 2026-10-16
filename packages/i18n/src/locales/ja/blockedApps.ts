@@ -86,6 +86,7 @@ export const blockedApps = {
   wizardStepChoose:
     '「アプリブロック」の「ブロックされたアプリ」を開き、アプリにチェックを入れて保存します。',
   pickerSubtitle: 'このデバイスでブロックするアプリとカテゴリを選んでください。',
-  pickerSubtitleAndroid: 'アプリブロックがオンの間は、チェックしたアプリを開けません。',
+  pickerSubtitleAndroid:
+    'アプリブロックがオンの間は、チェックしたアプリは開いてもすぐに閉じられます。',
   pickerEmpty: 'このデバイスにアプリが見つかりません。',
 } as const;

@@ -45,6 +45,7 @@ export const screenTime = {
   noDailyLimitSet: '1日の上限は未設定',
   limitReachedStatus: '{{used}} / {{limit}} · 上限に達しました',
   minutesUsedStatus: '{{used}} / {{limit}} 使用',
-  usageUpdatesHint: 'スクリーンタイムの監視中は、数分ごとに利用状況が更新されます。',
+  usageUpdatesHint:
+    '利用状況がこの画面に反映されるまで、最大{{minutes}}分かかることがあります。',
   dailyLimitMinutes: '{{limitMinutes}}分',
 } as const;

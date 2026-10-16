@@ -10,13 +10,12 @@ export const macos = {
   headingRemovable: 'Kaldırması ne kadar kolay',
 
   parentAccessBody:
-    'Bu Mac’te hangi uygulamaların engelleneceğini seçmek için Ebeveyn PIN’ini girin.',
+    'Bu cihazda hangi uygulamaların engelleneceğini seçmek için Ebeveyn PIN’ini girin.',
   checking: 'Kontrol ediliyor…',
 
   enforcing: 'Koruma çalışıyor',
   enforcingYes: 'Evet',
-  enforcingFailed: 'Hayır — art arda {{count}} kontrol başarısız oldu',
-  enforcingFailed_one: 'Hayır — son kontrol başarısız oldu',
+  enforcingFailed: 'Koruma kesintiye uğradı · son {{count}} kontrol başarısız oldu',
 
   lockState: 'Cihaz kilitli',
   lockStateNo: 'Hayır',
@@ -66,7 +65,7 @@ export const macos = {
   setupStepFilterSwitchWaiting:
     'Yukarıdaki adım onaylandığında System Settings’te görünür.',
   setupStepLocationBody:
-    'Ailenizin bu cihazın nerede olduğunu görmesini sağlar. Siz “Konumu paylaş”ı açana kadar hiçbir şey paylaşılmaz.',
+    'Ailenizin bu cihazın nerede olduğunu görmesini sağlar. KidGate uygulamasında “Konumu paylaş” seçeneğini açana kadar hiçbir şey paylaşılmaz.',
   setupStepCameraTitle: 'Kamera',
   setupStepCameraBody:
     'Çocuğunuz SOS gönderdiğinde veya bir Check-In’i yanıtladığında fotoğraf ekler. Şimdi fotoğraf çekilmez.',
@@ -120,7 +119,7 @@ export const macos = {
 
   chooseApps: 'Engellenecek uygulamaları seç',
   chooseAppsHint:
-    'Bu Mac’te engellenecek uygulamaları seçin. Ebeveyn, engellemeyi telefonundan açıp kapatabilir.',
+    'Bu cihazda engellenecek uygulamaları seçin. Ebeveyn, engellemeyi telefonundan açıp kapatabilir.',
   saveSelection: 'Kaydet',
-  noAppsFound: 'Applications klasöründe uygulama bulunamadı.',
+  noAppsFound: 'Bu cihazda uygulama bulunamadı.',
 };

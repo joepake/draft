@@ -12,7 +12,8 @@ export const messageMonitoring = {
     'Hier lassen sich nur Suchanfragen prüfen. Nachrichten können nur auf Android-Geräten geprüft werden.',
   recentTitle: 'Neueste Warnungen',
   emptyTitle: 'Noch keine Warnungen',
-  emptySubtitle: 'In Nachrichten wurden keine bedenklichen Wörter gefunden.',
+  emptySubtitle:
+    'Wenn in einer Nachricht oder Suche ein bedenkliches Wort markiert wird, erscheint es hier.',
   emptySubtitleNotWatching:
     'Nachrichten werden derzeit nicht geprüft, daher bleibt diese Liste leer, was auch passiert.',
   flaggedTerm: 'Markiert: „{{term}}“',
@@ -30,7 +31,7 @@ export const messageMonitoring = {
   categoryTobacco: 'Tabak oder Vapes',
   categoryGambling: 'Glücksspiel',
   categoryProfanity: 'Vulgäre Sprache',
-  categoryUnknown: 'Markierte Nachricht',
+  categoryUnknown: 'Bedenkliche Nachricht',
   guidanceToggle: 'Was jetzt zu tun ist',
   guidanceHide: 'Ausblenden',
   guidanceFooter:
@@ -73,13 +74,14 @@ export const messageMonitoring = {
     'Browser und YouTube. Gemeldet wird nur das markierte Wort oder der markierte Ausdruck, nie die Suchanfrage selbst.',
   parentSearchHintNotGranted:
     'Braucht dieselbe Berechtigung wie „Getippte Nachrichten prüfen“. Schalte „Empfangene Nachrichten prüfen“ ein und erlaube sie dann auf dem Gerät deines Kindes.',
-  parentToggleHintGranted: 'Auf diesem Telefon.',
+  parentToggleHintGranted: 'Auf dem Gerät deines Kindes erlaubt.',
   parentToggleHintNotGranted:
-    'Auf diesem Telefon noch nicht erlaubt – öffne KidGate auf dem Gerät, um es zu erlauben.',
+    'Auf dem Gerät deines Kindes noch nicht erlaubt – öffne KidGate auf diesem Gerät, um es zu erlauben.',
   parentProfanityLabel: 'Auch Kraftausdrücke melden',
   parentProfanityHint:
     'Standardmäßig aus – normale Kraftausdrücke sind häufig, das macht auch sie zu einer Warnung.',
-  parentToggleSaveFailed: 'Änderung konnte nicht gespeichert werden.',
+  parentToggleSaveFailed:
+    'Die Änderung konnte nicht gespeichert werden. Versuche es erneut.',
   settingsTitle: 'Einstellungen für Nachrichtenwarnungen',
   checkedTitle: 'Geprüft und unbedenklich',
   checkedSubtitle:
@@ -110,7 +112,7 @@ export const messageMonitoring = {
     'Android hat das deaktiviert. Erteile die Berechtigung erneut, damit weiter geprüft wird, was du schreibst.',
   outgoingDisclosureTitle: 'Bevor du zustimmst',
   outgoingDisclosureBody:
-    'Mit dieser Berechtigung liest KidGate, was du in SMS und MMS und in Messenger-Apps tippst, und prüft es auf dieselben Warnwörter. Wenn deine Eltern Suchwarnungen einschalten, liest KidGate auch, was du in Browsern, YouTube und der Google-App tippst, zum Beispiel Suchanfragen. Passwortfelder liest KidGate nie. Die Prüfung läuft auf diesem Handy. Bei einem Treffer erhalten deine Eltern nur dieses Wort oder diesen Ausdruck, die Kategorie, die App und die Uhrzeit – nie den Rest der Nachricht oder Suche. Wenn KidGate abstürzt, wird ein Absturzprotokoll an das KidGate-Team gesendet, damit der Fehler behoben werden kann.',
+    'Mit dieser Berechtigung liest KidGate, was du in SMS und MMS und in Messenger-Apps tippst, und prüft es auf dieselben Warnwörter. Wenn deine Eltern Suchwarnungen einschalten, liest KidGate auch, was du in Browsern, YouTube und der Google-App tippst, zum Beispiel Suchanfragen. Passwortfelder liest KidGate nie. Die Prüfung läuft auf diesem Handy. Bei einem Treffer erhalten deine Eltern nur dieses Wort oder diesen Ausdruck, die Kategorie, die App und die Uhrzeit – nie den Rest der Nachricht oder Suche. Wenn du das Mikrofon erlaubst, nimmt KidGate beim Senden eines SOS bis zu 15 Sekunden Ton auf und sendet ihn an deine Eltern. Wenn KidGate abstürzt, wird ein Absturzprotokoll an das KidGate-Team gesendet, damit der Fehler behoben werden kann.',
   outgoingRestrictedHint:
     'Wenn der Schalter ausgegraut ist, öffne Einstellungen › Apps › KidGate, tippe auf das Menü ⋮ und wähle „Eingeschränkte Einstellungen zulassen“. Komm danach hierher zurück.',
   notice: {

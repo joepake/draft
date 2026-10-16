@@ -2,7 +2,7 @@ export const webHistory = {
   title: 'Lịch sử web',
   fallbackDeviceName: 'Thiết bị của trẻ',
   syncNote:
-    'Lịch sử web có thể mất tối đa khoảng 15 phút để hiện trên màn hình này — lâu hơn nếu thiết bị không có kết nối mạng hoặc bị đóng đột ngột.',
+    'Lịch sử web có thể đến chậm khoảng 10 phút khi bạn đang xem màn hình này, và tối đa 30 phút trong các lúc khác — lâu hơn nếu thiết bị không có kết nối mạng hoặc bị đóng đột ngột.',
   syncNoteTv:
     'TV này chỉ kết nối theo định kỳ, nên lịch sử web có thể mất tới một giờ để hiện trên màn hình này — lâu hơn nếu không có kết nối mạng.',
   summarySites: 'Trang truy cập',
@@ -32,12 +32,16 @@ export const webHistory = {
   blockCategoryConfirmTitle: 'Chặn {{category}}?',
   blockCategoryConfirmBody:
     'Mọi trang mà KidGate xếp vào {{category}} sẽ bị chặn trên máy này. Bạn có thể tắt lại trong mục Chặn nội dung web.',
+  blockCategoryConfirmBodyChild:
+    'Mọi trang mà KidGate xếp vào {{category}} sẽ bị chặn trên tất cả thiết bị của {{name}}. Bạn có thể tắt lại trong mục Chặn nội dung web.',
   blockCategoryConfirmAction: 'Chặn',
   blockCategoryDone: 'Đã chặn {{category}}.',
   unblockCategory: 'Bỏ chặn {{category}}',
   unblockCategoryConfirmTitle: 'Bỏ chặn {{category}}?',
   unblockCategoryConfirmBody:
     'Các trang KidGate xếp vào {{category}} sẽ vào lại được trên máy này.',
+  unblockCategoryConfirmBodyChild:
+    'Các trang KidGate xếp vào {{category}} sẽ vào lại được trên các thiết bị của {{name}}.',
   unblockCategoryConfirmAction: 'Bỏ chặn',
   unblockCategoryDone: 'Đã bỏ chặn {{category}}.',
   serviceSites: '{{count}} trang',
@@ -59,5 +63,5 @@ export const webHistory = {
   sourceNoteChild:
     'Dữ liệu này gộp từ {{count}} thiết bị. Mỗi thiết bị chỉ ghi lại những trang mà bộ lọc trên đó thấy được.',
   filterOffNoteChild:
-    'Bộ lọc web đang tắt trên mọi thiết bị nên lượt truy cập mới không được ghi lại.',
+    'Tính năng Chặn nội dung web đang tắt trên mọi thiết bị nên lượt truy cập mới không được ghi lại.',
 } as const;

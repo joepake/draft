@@ -16,7 +16,7 @@ export const usage = {
   insightDeviceLocked: 'El dispositivo está bloqueado',
   signalLocksToday: 'Bloqueos hoy',
   signalUnlocksToday: 'Desbloqueos hoy',
-  signalLocksPeriod: 'Bloqueos · 30 días',
+  signalLocksPeriod: 'Bloqueos recientes',
   signalLocationsToday: 'Ubicaciones hoy',
   sectionWhatsTurnedOn: 'Qué está activado',
   rowBlockedHours: 'Horas bloqueadas',
@@ -28,7 +28,7 @@ export const usage = {
   rowLocation: 'Ubicación',
   valueSharingOn: 'Uso compartido activado',
   sectionLatestActivity: 'Actividad reciente',
-  activityPeriodCount: '{{count}} en 30 días',
+  activityPeriodCount: '{{count}} recientes',
   activityEmpty:
     'Aún no hay actividad registrada. Aquí aparecerán los bloqueos, desbloqueos y actualizaciones de Tiempo de uso.',
   usageReportAccessibility: 'Informe de uso. {{headline}}. Abrir el informe completo.',
@@ -78,7 +78,7 @@ export const usage = {
   topAppsEmpty:
     'Aún no hay datos por app. En el dispositivo del niño, asegúrate de que KidGate tenga permiso para medir el uso de apps y espera una sincronización.',
   protectionImpactTitle: 'Impacto de la protección',
-  protectionImpactHint: 'Eventos recientes que KidGate detuvo en este dispositivo.',
+  protectionImpactHint: 'Totales desde que se configuró este dispositivo.',
   protectionBlockedApps: 'Aperturas de apps bloqueadas',
   protectionWebBlocked: 'Sitios web bloqueados',
   protectionTamper: 'Alertas de protección',

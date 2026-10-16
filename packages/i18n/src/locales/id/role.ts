@@ -2,7 +2,7 @@
 // yang tersisa hanya string penyandingan untuk
 // PairingCodeModal/PairingQrScanner.
 export const role = {
-  enterPairingCode: 'Masukkan kode 6 karakter dari perangkat anak.',
+  enterPairingCode: 'Masukkan kode 6 karakter.',
   unableToJoinWithCode: 'Kode salah atau sudah kedaluwarsa.',
   connecting: 'Menghubungkan…',
 };

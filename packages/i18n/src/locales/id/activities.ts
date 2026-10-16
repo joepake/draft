@@ -10,6 +10,7 @@ export const activities = {
   subtitleTimelineForDevice: 'Linimasa {{deviceName}}',
   subtitleTimelineForChild: 'Linimasa {{childName}}',
   fallbackDeviceName: 'perangkat',
+  fallbackChildName: 'anak Anda',
   liveBadge: 'Langsung',
   errorTitle: 'Tidak dapat memuat aktivitas',
   tryAgain: 'Coba lagi',
@@ -43,13 +44,13 @@ export const activities = {
   activityTypeAppRemoved: 'Aplikasi dihapus',
   activityTypePlaceEnter: 'Masuk tempat',
   activityTypePlaceExit: 'Keluar tempat',
-  activityTypeTamper: 'Perlindungan',
+  activityTypeTamper: 'Peringatan perlindungan',
   activityTypeScreenTime: 'Waktu Layar',
   activityTypeCheckIn: 'Check-In',
   activityTypeLocationRequest: 'Lokasi',
   activityTypeTimeRequest: 'Permintaan waktu',
   activityTypeRewardTask: 'Tugas hadiah',
-  activityTypeSearchAlert: 'Peringatan pencarian',
+  activityTypeSearchAlert: 'Peringatan pesan',
   activityTypeWebFilter: 'Filter web',
   activityTypeEmergency: 'SOS',
   activityTypeUnknown: 'Aktivitas',
@@ -79,7 +80,7 @@ export const activities = {
   appInstalledPendingBody:
     'Aplikasi {{appName}} dipasang di perangkat anak dan diblokir sampai Anda mengizinkannya.',
 
-  messageAlertTitle: 'Konten pesan mengkhawatirkan',
+  messageAlertTitle: 'Pesan mengkhawatirkan',
   messageAlertBody: 'Kata yang ditandai terdeteksi di {{appName}}.',
   messageAlertBodyOutgoing:
     'Kata yang ditandai terdeteksi di pesan yang ditulis anak Anda di {{appName}}.',
@@ -184,7 +185,7 @@ export const activities = {
   tamperWebFilterBody:
     'VPN KidGate di perangkat ini dimatikan atau digantikan aplikasi VPN lain. Sampai VPN aktif kembali, situs tidak difilter atau dicatat.',
   tamperUninstallProtectionTitle: 'Perlindungan hapus instal dimatikan',
-  tamperUninstallProtectionBody: 'KidGate kini bisa dihapus dari ponsel ini.',
+  tamperUninstallProtectionBody: 'KidGate kini bisa dihapus dari perangkat anak.',
   tamperReinstalledTitle: 'KidGate diinstal ulang',
   tamperReinstalledBody:
     'KidGate dihapus dari perangkat ini lalu diinstal lagi. Tidak ada yang tercatat selama itu.',

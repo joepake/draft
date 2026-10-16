@@ -6,7 +6,7 @@ export const controls = {
   quickPresets: 'Pilihan cepat',
   presetMinutes: '{{minutes}} mnt',
   customMinutes: 'Menit khusus',
-  dailyLimitEnterAtLeastMinutes: 'Masukkan minimal {{min}} menit.',
+  dailyLimitEnterAtLeastMinutes: 'Masukkan minimal {{count}} menit.',
   dailyLimitMaxMinutes: 'Batas harian maksimal {{max}} menit (24 jam).',
   rulesSectionTitle: 'Aturan dari orang tuamu',
   rulesSectionDescription: 'Aturan yang ditetapkan orang tuamu untuk perangkat ini.',

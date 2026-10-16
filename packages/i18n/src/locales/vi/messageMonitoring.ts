@@ -11,7 +11,8 @@ export const messageMonitoring = {
     'Ở đây chỉ có thể kiểm tra nội dung tìm kiếm. Tin nhắn chỉ kiểm tra được trên thiết bị Android.',
   recentTitle: 'Cảnh báo gần đây',
   emptyTitle: 'Chưa có cảnh báo',
-  emptySubtitle: 'Chưa phát hiện từ ngữ đáng lo ngại nào trong tin nhắn.',
+  emptySubtitle:
+    'Khi một từ ngữ đáng lo ngại bị đánh dấu trong tin nhắn hoặc nội dung tìm kiếm, cảnh báo sẽ hiện ở đây.',
   emptySubtitleNotWatching:
     'Tin nhắn hiện không được kiểm tra, nên danh sách này sẽ trống dù có chuyện gì xảy ra.',
   flaggedTerm: 'Từ ngữ bị đánh dấu: “{{term}}”',
@@ -32,7 +33,7 @@ export const messageMonitoring = {
   categoryTobacco: 'Thuốc lá hoặc thuốc lá điện tử',
   categoryGambling: 'Cờ bạc',
   categoryProfanity: 'Ngôn từ thô tục',
-  categoryUnknown: 'Tin nhắn bị đánh dấu',
+  categoryUnknown: 'Tin nhắn đáng lo ngại',
   guidanceToggle: 'Nên làm gì tiếp',
   guidanceHide: 'Ẩn',
   guidanceFooter:
@@ -75,13 +76,13 @@ export const messageMonitoring = {
     'Trình duyệt và YouTube. Chỉ từ hoặc cụm từ bị đánh dấu được báo, không bao giờ báo nội dung tìm kiếm.',
   parentSearchHintNotGranted:
     'Cần cùng quyền với mục Quét tin nhắn con gõ. Hãy bật Quét tin nhắn con nhận, rồi cho phép trên thiết bị của con.',
-  parentToggleHintGranted: 'Trên máy này.',
+  parentToggleHintGranted: 'Đã cho phép trên thiết bị của con.',
   parentToggleHintNotGranted:
-    'Máy này chưa cấp quyền — mở KidGate trên máy của con để cấp.',
+    'Chưa được cho phép trên thiết bị của con — mở KidGate trên thiết bị đó để cấp quyền.',
   parentProfanityLabel: 'Cảnh báo cả ngôn từ tục tĩu',
   parentProfanityHint:
     'Mặc định tắt — chửi thề thông thường rất phổ biến, bật lên sẽ khiến những từ này cũng thành cảnh báo.',
-  parentToggleSaveFailed: 'Không lưu được thay đổi.',
+  parentToggleSaveFailed: 'Không lưu được thay đổi. Vui lòng thử lại.',
   settingsTitle: 'Cài đặt Cảnh báo tin nhắn',
   consentTitle: 'Phân tích tin nhắn bằng AI',
   consentBody:
@@ -108,7 +109,7 @@ export const messageMonitoring = {
     'Android đã tắt mục này. Hãy cấp lại để tiếp tục kiểm tra những gì con viết.',
   outgoingDisclosureTitle: 'Trước khi con cho phép',
   outgoingDisclosureBody:
-    'Với quyền này, KidGate đọc những gì con gõ trong tin nhắn văn bản (SMS và MMS) và ứng dụng nhắn tin để tìm cùng các từ ngữ cảnh báo đó. Nếu bố mẹ bật cảnh báo tìm kiếm, KidGate cũng đọc những gì con gõ trên trình duyệt, YouTube và ứng dụng Google, ví dụ nội dung tìm kiếm. KidGate không bao giờ đọc ô mật khẩu. Việc kiểm tra diễn ra ngay trên điện thoại này. Khi có từ khớp, chỉ từ hoặc cụm từ đó, loại cảnh báo, tên ứng dụng và thời gian được gửi tới bố mẹ — phần còn lại của tin nhắn hay nội dung tìm kiếm không bao giờ được gửi đi. Nếu KidGate gặp sự cố, nhật ký sự cố sẽ được gửi tới đội ngũ KidGate để khắc phục.',
+    'Với quyền này, KidGate đọc những gì con gõ trong tin nhắn văn bản (SMS và MMS) và ứng dụng nhắn tin để tìm cùng các từ ngữ cảnh báo đó. Nếu bố mẹ bật cảnh báo tìm kiếm, KidGate cũng đọc những gì con gõ trên trình duyệt, YouTube và ứng dụng Google, ví dụ nội dung tìm kiếm. KidGate không bao giờ đọc ô mật khẩu. Việc kiểm tra diễn ra ngay trên điện thoại này. Khi có từ khớp, chỉ từ hoặc cụm từ đó, loại cảnh báo, tên ứng dụng và thời gian được gửi tới bố mẹ — phần còn lại của tin nhắn hay nội dung tìm kiếm không bao giờ được gửi đi. Nếu con cho phép dùng micrô, khi gửi SOS KidGate sẽ ghi tối đa 15 giây âm thanh rồi gửi cho bố mẹ. Nếu KidGate gặp sự cố, nhật ký sự cố sẽ được gửi tới đội ngũ KidGate để khắc phục.',
   outgoingRestrictedHint:
     'Nếu nút gạt bị mờ, hãy mở Cài đặt › Ứng dụng › KidGate, nhấn menu ⋮ rồi chọn “Cho phép cài đặt bị hạn chế”, sau đó quay lại.',
   notice: {

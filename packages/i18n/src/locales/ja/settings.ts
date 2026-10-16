@@ -44,7 +44,7 @@ export const settings = {
   accountLinkCredentialInUse:
     'このメールアドレスまたはプロバイダーはすでに別のKidGateアカウントで使用されています。',
   accountLinkRequiresRecentLogin:
-    'セキュリティのため、この方法を連携する前に一度サインアウトしてから再度サインインしてください。',
+    'セキュリティのため、一度サインアウトしてから再度サインインし、この操作をもう一度お試しください。',
   accountLinkActionLink: '連携',
   accountLinkActionUnlink: '連携解除',
   accountLinkActionVerify: '確認',
@@ -100,20 +100,22 @@ export const settings = {
     'この保護者セッションを終了し、保護者／子どもの選択画面に戻ります。デバイスを管理するには再度サインインしてください。アカウント、ファミリー、子どものデバイスは変更されません。',
   removeParentDeviceAlertTitle: '保護者のデバイスを削除しますか？',
   removeParentDeviceAlertMessage:
-    '{{deviceName}} はこのアカウントからログアウトされ、通知を受け取らなくなります。デバイスを持っている人はパスワードで再度ログインできます。',
+    '{{deviceName}} はこのアカウントからログアウトされ、通知を受け取らなくなります。デバイスを持っている人は、再度ログインできます。',
   toastParentDeviceRemoved: '{{deviceName}}を削除しました。',
   signedOutByAnotherDevice:
     'このデバイスは、別のデバイスからの操作で保護者アカウントからログアウトされました。続けるには、もう一度ログインしてください。',
   deleteAccountTitle: 'アカウントを削除',
   deleteAccountSubtitleDefault: 'アカウントとすべてのデータを完全に削除します',
-  deleteAccountAlertTitle: 'アカウントを完全に削除しますか？',
+  deleteAccountSubtitleMember:
+    'ご自身のログインと設定を完全に削除します。ファミリーは残ります。',
+  deleteAccountAlertTitle: 'アカウントの削除を予約しますか？',
   deleteAccountAlertMessage:
     'ファミリーアカウントの削除を予約します。まだ何も削除されていません。削除日までならログインしていつでもキャンセルできます。削除日を過ぎると、すべてのデータ（デバイス、アクティビティ、位置情報履歴、SOS写真）が保護者と子どものすべてについて完全に削除されます。',
   deleteAccountAlertMessageMember:
     'ご自身のアカウントの削除を予約します。まだ何も削除されていません。削除日までならログインしていつでもキャンセルできます。削除日を過ぎると、ご自身のログイン情報と設定が削除されます。家族、そのデバイス、ほかの保護者には影響しません。',
   deleteAccountSubscriptionNotice:
     'アカウントを削除しても、サブスクリプションは解約されません。App StoreまたはGoogle Playで解約してください。',
-  sendRequestButton: '完全に削除',
+  sendRequestButton: '削除を予約',
   toastDeletionAlreadyPending: 'アカウントの削除はすでに処理中です。',
   toastDeletionRequestFailed:
     'アカウントの削除を開始できませんでした。もう一度お試しください。',

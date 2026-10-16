@@ -43,6 +43,6 @@ export const screenTime = {
   limitReachedStatus: '{{used}} / {{limit}} · انتهى الحد',
   minutesUsedStatus: 'استُخدم {{used}} / {{limit}}',
   usageUpdatesHint:
-    'يُحدَّث الاستخدام كل بضع دقائق ما دامت مراقبة مدة استخدام الجهاز مفعّلة.',
+    'قد يستغرق وصول بيانات الاستخدام إلى هذه الشاشة حتى {{minutes}} دقيقة.',
   dailyLimitMinutes: '{{limitMinutes}} دقيقة',
 } as const;

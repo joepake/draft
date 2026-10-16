@@ -7,19 +7,19 @@ export const notifications = {
     'このスマートフォンでは、SOS が全画面ではなく小さなバナーで表示されるため、見逃しやすくなっています。全画面通知を許可してください。',
   sosFullScreenAllow: '全画面通知を許可',
   sectionAlerts: '通知',
-  sectionAlertsHint: 'このデバイスで受け取る通知を選びます。',
+  sectionAlertsHint: '保護者のスマートフォンに送信するアラートを選びます。',
   sectionSummary: 'サマリー',
   sectionQuietHours: 'サイレント時間',
   sectionQuietHoursHint:
-    'この時間帯は通知を鳴らしません。SOSは消音されず、最も重大なメッセージ警告も届きます。',
+    'この時間帯は通知が送信されず、終了後にあとから送信されることもありません。イベントはアクティビティには引き続き表示されます。SOSは決して保留されず、最も重大なメッセージ警告も引き続き届きます。',
   quietHoursLabel: 'サイレント時間',
   quietHoursOff: 'オフ — 通知はいつでも届きます',
-  quietHoursActive: '{{start}}〜{{end}} はサイレント',
+  quietHoursActive: '{{start}}〜{{end}} は通知なし',
   quietHoursStart: '開始',
   quietHoursEnd: '終了',
   quietHoursSameTime: '異なる2つの時刻を選んでください。',
   footnote:
-    'この設定はこのデバイスのみに適用されます。ほかの保護者デバイスは個別の設定を保ちます。',
+    'この設定は1台のスマートフォンにのみ適用されます。ほかの保護者デバイスは個別の設定を保ちます。',
   toastSaveFailed: '保存できませんでした。もう一度お試しください。',
   localReminderSetupTitle: '設定を完了しましょう',
   localReminderIdleTitle: 'ルールは引き続き有効です',
@@ -30,15 +30,15 @@ export const notifications = {
     '{{days}}日間誰もKidGateを開かないと、次に開かれるまで子どものデバイスからの報告が止まります。ルールはそのまま働いています。',
   alert: {
     tamperAlerts: {
-      label: '保護がオフになった',
+      label: '保護アラート',
       hint: 'お子さまのデバイスで、KidGateに必要な権限がオフにされたとき、日付・時刻・タイムゾーンが変更されたとき、またはロック中にSOSが押されたとき。SOSのアラート自体は常に届きます。',
     },
     placeAlerts: {
-      label: '到着と出発',
+      label: '場所アラート',
       hint: 'お子さまが登録した場所に到着・出発したとき。',
     },
     timeRequests: {
-      label: '延長リクエスト',
+      label: '時間延長リクエスト',
       hint: 'お子さまが利用時間の延長を求めたとき。',
     },
     siteRequests: {
@@ -50,7 +50,7 @@ export const notifications = {
       hint: 'お子さまが安全確認に返信したとき。',
     },
     rewardTasks: {
-      label: 'ごほうびの申請',
+      label: 'ごほうびタスク',
       hint: 'お子さまがごほうびタスクを完了として報告したとき。',
     },
     appActivity: {
@@ -62,7 +62,7 @@ export const notifications = {
       hint: 'お子さまのデバイスでいつもと違う使い方があったとき — 深夜の利用、急増、新しいアプリ。',
     },
     weeklyDigest: {
-      label: '週間サマリー',
+      label: '週次レポート',
       hint: '月曜日に届く利用時間とブロック回数のまとめ。',
     },
     messageAlerts: {

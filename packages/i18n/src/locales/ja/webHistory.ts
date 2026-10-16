@@ -2,7 +2,7 @@ export const webHistory = {
   title: 'ウェブ履歴',
   fallbackDeviceName: 'お子さまのデバイス',
   syncNote:
-    'ウェブ履歴がこの画面に反映されるまで最大15分ほどかかることがあります。デバイスがインターネットに接続していない場合や、予期せず終了した場合は、さらに時間がかかります。',
+    'ウェブ履歴は、この画面を開いている間は約10分、それ以外では最大30分遅れて届くことがあります。デバイスがインターネットに接続していない場合や、予期せず終了した場合は、さらに遅れます。',
   syncNoteTv:
     'このテレビは定期的にしか通信しないため、ウェブ履歴がこの画面に反映されるまで最大1時間かかることがあります。インターネットに接続していない場合はさらに時間がかかります。',
   summarySites: '見たサイト',
@@ -32,12 +32,16 @@ export const webHistory = {
   blockCategoryConfirmTitle: '{{category}}をブロックしますか？',
   blockCategoryConfirmBody:
     'KidGateが{{category}}に分類するすべてのサイトが、このデバイスで拒否されます。Webフィルターでいつでも解除できます。',
+  blockCategoryConfirmBodyChild:
+    'KidGateが{{category}}に分類するすべてのサイトが、{{name}}のすべてのデバイスで拒否されます。Webフィルターでいつでも解除できます。',
   blockCategoryConfirmAction: 'ブロック',
   blockCategoryDone: '{{category}}をブロックしました。',
   unblockCategory: '{{category}}のブロックを解除',
   unblockCategoryConfirmTitle: '{{category}}のブロックを解除しますか？',
   unblockCategoryConfirmBody:
     'KidGateが{{category}}に分類するサイトに、このデバイスから再びアクセスできるようになります。',
+  unblockCategoryConfirmBodyChild:
+    'KidGateが{{category}}に分類するサイトに、{{name}}のデバイスから再びアクセスできるようになります。',
   unblockCategoryConfirmAction: '解除',
   unblockCategoryDone: '{{category}}のブロックを解除しました。',
   serviceSites: '{{count}}件のサイト',

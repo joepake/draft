@@ -1,9 +1,9 @@
 export const pairing = {
   shareInviteButton: 'Share code',
   shareInviteMessage:
-    'Join our family on KidGate: open the app, go to Family → Scan a code, then scan the QR code or enter code {{code}}. The code expires in 15 minutes.',
+    'Join our family on KidGate: open the app, go to Family → Scan a code, then scan the QR code or enter code {{code}}. The code expires in {{minutes}} minutes.',
   shareChildCodeMessage:
-    'Connect this child device on KidGate: on the parent device open KidGate → Family → Scan a code, then scan the QR code or enter code {{code}}. The code expires in 5 minutes.',
+    'Connect this child device on KidGate: on the parent device open KidGate → Family → Scan a code, then scan the QR code or enter code {{code}}. The code expires in {{minutes}} minutes.',
   connectChildPhone: 'Connect a child device',
   parentInstructions:
     'Open KidGate on the child device. On a phone or tablet, choose This is a child device. Then enter the 6-character code it shows.',
@@ -40,8 +40,8 @@ export const pairing = {
   parentAccount: 'Parent account',
   unknownParent: 'a parent',
   expiresIn: 'Expires in {{countdown}}',
-  inviteCodeExpired: 'This code has expired. Select New code to get another one.',
-  codeExpired: 'This code has expired. Select New code to get another one.',
+  inviteCodeExpired: 'This code has expired.',
+  codeExpired: 'This code has expired.',
   scanQrTitle: 'Scan QR code',
   scanQrSubtitle: 'Align the QR code inside the frame.',
   enterCodeManually: 'Enter code manually',
@@ -63,7 +63,7 @@ export const pairing = {
   tooManyAttemptsWait: 'Too many attempts. Try again in {{minutes}} min.',
   inviteParentTitle: 'Add another parent device',
   inviteParentInstructions:
-    'On the other device, open KidGate → Family → Scan a code, then scan this QR code or enter the code within 15 minutes. Approve the request here to connect that parent.',
+    'On the other device, open KidGate → Family → Scan a code, then scan this QR code or enter the code within {{minutes}} minutes. Approve the request here to connect that parent.',
   inviteCodeLabel: 'Or share this code',
   joinFamilyTitle: 'Join family',
   joinFamilyScanInstructions:

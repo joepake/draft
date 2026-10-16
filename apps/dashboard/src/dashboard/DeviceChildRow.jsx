@@ -95,7 +95,7 @@ export default function DeviceChildRow({
                   <Icon name="globe" size={15} />
                 </span>
                 <span className="kid-meta">
-                  <strong>{t('dash.siteRequestsTitle')}</strong>
+                  <strong>{appT('webFilter.requestsTitle')}</strong>
                   <em>
                     {appT('family.chipRequestCount', { count: pendingSiteRequests })}
                   </em>

@@ -772,7 +772,7 @@ export default function ChildReport({
             {otherMinutes >= 1 && (
               <li className="creport-app-other">
                 <span className="creport-app-head">
-                  <strong>{t('dash.topAppsOther')}</strong>
+                  <strong>{appT('usage.topAppsOther')}</strong>
                   <em>{formatMinutes(otherMinutes)}</em>
                 </span>
               </li>

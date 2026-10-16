@@ -10,6 +10,7 @@ export const activities = {
   subtitleTimelineForDevice: '{{deviceName}} 타임라인',
   subtitleTimelineForChild: '{{childName}}의 타임라인',
   fallbackDeviceName: '기기',
+  fallbackChildName: '자녀',
   liveBadge: '실시간',
   errorTitle: '활동을 불러올 수 없습니다',
   tryAgain: '다시 시도',
@@ -41,13 +42,13 @@ export const activities = {
   activityTypeAppRemoved: '앱 삭제',
   activityTypePlaceEnter: '장소 도착',
   activityTypePlaceExit: '장소 이탈',
-  activityTypeTamper: '보호',
+  activityTypeTamper: '보호 알림',
   activityTypeScreenTime: '스크린 타임',
   activityTypeCheckIn: '체크인',
   activityTypeLocationRequest: '위치',
   activityTypeTimeRequest: '시간 연장 요청',
   activityTypeRewardTask: '보상 과제',
-  activityTypeSearchAlert: '검색 경고',
+  activityTypeSearchAlert: '메시지 경고',
   activityTypeWebFilter: '웹 필터',
   activityTypeEmergency: 'SOS',
   activityTypeUnknown: '활동',
@@ -76,7 +77,7 @@ export const activities = {
   appInstalledPendingBody:
     '자녀의 기기에 {{appName}} 앱이 설치되었으며, 허용할 때까지 차단됩니다.',
 
-  messageAlertTitle: '우려되는 메시지 내용',
+  messageAlertTitle: '우려되는 메시지',
   messageAlertBody: '{{appName}}에서 주의 단어가 감지되었습니다.',
   messageAlertBodyOutgoing:
     '자녀가 {{appName}}에서 작성한 메시지에서 주의 단어가 감지되었습니다.',
@@ -183,7 +184,7 @@ export const activities = {
   tamperWebFilterBody:
     '이 기기의 KidGate VPN이 꺼졌거나 다른 VPN 앱으로 대체되었습니다. 다시 켜질 때까지 사이트가 필터링되거나 기록되지 않습니다.',
   tamperUninstallProtectionTitle: '삭제 방지가 꺼졌습니다',
-  tamperUninstallProtectionBody: '이제 이 휴대폰에서 KidGate를 삭제할 수 있습니다.',
+  tamperUninstallProtectionBody: '이제 자녀 기기에서 KidGate를 삭제할 수 있습니다.',
   tamperReinstalledTitle: 'KidGate가 다시 설치되었습니다',
   tamperReinstalledBody:
     '이 기기에서 KidGate가 삭제되었다가 다시 설치되었습니다. 그 사이에는 아무것도 기록되지 않았습니다.',

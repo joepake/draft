@@ -45,6 +45,6 @@ export const screenTime = {
   limitReachedStatus: '{{used}} / {{limit}} · Batas tercapai',
   minutesUsedStatus: '{{used}} / {{limit}} terpakai',
   usageUpdatesHint:
-    'Penggunaan diperbarui setiap beberapa menit selama pemantauan Waktu Layar aktif.',
+    'Penggunaan bisa memerlukan waktu hingga {{minutes}} menit untuk muncul di layar ini.',
   dailyLimitMinutes: '{{limitMinutes}} mnt',
 } as const;

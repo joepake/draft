@@ -92,6 +92,6 @@ export const blockedApps = {
   pickerSubtitle:
     'Wähle die Apps und Kategorien aus, die auf diesem Gerät blockiert werden sollen.',
   pickerSubtitleAndroid:
-    'Angehakte Apps lassen sich nicht öffnen, solange die App-Blockierung aktiv ist.',
+    'Angehakte Apps werden sofort nach dem Öffnen geschlossen, solange die App-Blockierung aktiv ist.',
   pickerEmpty: 'Keine Apps auf diesem Gerät gefunden.',
 } as const;

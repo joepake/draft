@@ -25,7 +25,7 @@ export const child = {
   outOfScreenTimeToday:
     'Con đã dùng hết thời gian sử dụng hôm nay. Con có thể gửi yêu cầu thêm giờ cho bố mẹ.',
   devicePaused: 'Đã khóa thiết bị',
-  devicePausedByParent: '{{deviceName}} đang bị khóa.',
+  devicePausedByParent: 'Bố mẹ đang tạm khóa {{deviceName}}.',
   phonePausedByParent: 'Bố mẹ đang tạm khóa thiết bị này.',
   pausedAskParentOrSos:
     'Con hãy nhờ bố mẹ mở khóa khi cần dùng lại. Khi có việc khẩn cấp, con vẫn gửi được SOS.',
@@ -36,12 +36,13 @@ export const child = {
     'Nếu cần dùng thiết bị lúc này, con hãy nhờ bố mẹ đổi Giờ khóa thiết bị nhé. Khi có việc khẩn cấp, con vẫn gửi được SOS.',
   blockedHoursLockBodyUntil:
     'Giờ khóa thiết bị kéo dài đến {{time}}. Con nghỉ ngơi một chút nhé.',
+  dailyLimitLockBody: 'Con đã dùng hết thời gian sử dụng hôm nay.',
   dailyLimitLockHint:
     'Con hãy nhờ bố mẹ nếu cần thêm thời gian nhé. Khi có việc khẩn cấp, con vẫn gửi được SOS.',
   appClosedTitle: 'Đã đóng ứng dụng',
   appClosedBody: 'KidGate đã đóng ứng dụng này vì lúc này ứng dụng đang bị chặn.',
   parentPausedAccess: 'Bố mẹ đang tạm khóa thiết bị này.',
-  parentRestoredAccess: 'Bố mẹ đã mở khóa thiết bị. Con có thể dùng tiếp.',
+  parentRestoredAccess: 'Bố mẹ đã mở khóa thiết bị này.',
   toastDailyLimitIncreased: 'Bố mẹ đã cộng thêm {{minutes}} phút sử dụng cho con.',
   errorDeviceNotRegistered:
     'Thiết bị này chưa sẵn sàng. Vui lòng thử lại sau giây lát, hoặc ghép nối lại nếu lỗi vẫn tiếp diễn.',

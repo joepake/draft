@@ -32,7 +32,7 @@ export const appInventory = {
   emptySubtitle: '기기가 다음에 연결될 때 앱 목록을 보냅니다.',
   unsupportedTitle: '이 기기는 앱을 나열할 수 없습니다',
   unsupportedIos:
-    'Apple은 어떤 앱도 iPhone이나 iPad에 설치된 항목을 읽지 못하게 합니다. 그래서 KidGate는 앱이 사용될 때만 보고할 수 있습니다.',
+    'Apple은 어떤 앱도 iPhone이나 iPad에 설치된 항목을 읽지 못하게 합니다. KidGate는 그 기기에서 어떤 앱이 사용되는지도 알 수 없습니다.',
   unsupportedGeneric: '이 기기는 설치된 앱을 보고하지 않습니다.',
   incompleteNote:
     '일부 앱은 여기에 나타나지 않을 수 있습니다. 예를 들어 기기의 앱 목록에 아이콘이 없는 앱이 그렇습니다.',

@@ -10,6 +10,7 @@ export const activities = {
   subtitleTimelineForDevice: 'Хронология для {{deviceName}}',
   subtitleTimelineForChild: 'Хронология: {{childName}}',
   fallbackDeviceName: 'устройство',
+  fallbackChildName: 'ваш ребёнок',
   liveBadge: 'В реальном времени',
   errorTitle: 'Не удалось загрузить активность',
   tryAgain: 'Повторить',
@@ -38,13 +39,13 @@ export const activities = {
   activityTypeAppRemoved: 'Приложение удалено',
   activityTypePlaceEnter: 'Вход в место',
   activityTypePlaceExit: 'Выход из места',
-  activityTypeTamper: 'Защита',
+  activityTypeTamper: 'Оповещения о защите',
   activityTypeScreenTime: 'Экранное время',
   activityTypeCheckIn: 'Check-In',
   activityTypeLocationRequest: 'Местоположение',
   activityTypeTimeRequest: 'Запросы времени',
   activityTypeRewardTask: 'Задания с наградой',
-  activityTypeSearchAlert: 'Оповещение о поиске',
+  activityTypeSearchAlert: 'Оповещения о сообщениях',
   activityTypeWebFilter: 'Веб-фильтр',
   activityTypeEmergency: 'SOS',
   activityTypeUnknown: 'Активность',
@@ -72,7 +73,7 @@ export const activities = {
   appInstalledBody: 'На устройстве ребёнка установлено приложение {{appName}}.',
   appInstalledPendingBody:
     'На устройстве ребёнка установлено приложение {{appName}}, оно заблокировано, пока вы его не разрешите.',
-  messageAlertTitle: 'Тревожное содержание сообщения',
+  messageAlertTitle: 'Тревожное сообщение',
   messageAlertBody: 'В {{appName}} обнаружено отмеченное слово.',
   messageAlertBodyOutgoing:
     'В сообщении, написанном вашим ребёнком в {{appName}}, обнаружено отмеченное слово.',
@@ -159,7 +160,7 @@ export const activities = {
   tamperWebFilterBody:
     'VPN KidGate на этом устройстве выключили или заменили другим VPN-приложением. Пока он снова не включится, сайты не фильтруются и не записываются.',
   tamperUninstallProtectionTitle: 'Защита от удаления выключена',
-  tamperUninstallProtectionBody: 'Теперь KidGate можно удалить с этого телефона.',
+  tamperUninstallProtectionBody: 'Теперь KidGate можно удалить с детского устройства.',
   tamperReinstalledTitle: 'KidGate переустановлен',
   tamperReinstalledBody:
     'KidGate удалили с этого устройства и установили снова. За это время ничего не записано.',

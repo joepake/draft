@@ -16,7 +16,7 @@ export const usage = {
   insightDeviceLocked: 'डिवाइस लॉक है',
   signalLocksToday: 'आज लॉक',
   signalUnlocksToday: 'आज अनलॉक',
-  signalLocksPeriod: 'लॉक · 30 दिन',
+  signalLocksPeriod: 'हाल के लॉक',
   signalLocationsToday: 'आज स्थान',
   sectionWhatsTurnedOn: 'क्या चालू है',
   rowBlockedHours: 'ब्लॉक किए गए समय',
@@ -28,7 +28,7 @@ export const usage = {
   rowLocation: 'स्थान',
   valueSharingOn: 'साझाकरण चालू',
   sectionLatestActivity: 'हाल की गतिविधि',
-  activityPeriodCount: '30 दिनों में {{count}}',
+  activityPeriodCount: 'हाल के {{count}}',
   activityEmpty:
     'अभी तक कोई गतिविधि दर्ज नहीं हुई। लॉक, अनलॉक और स्क्रीन टाइम अपडेट यहाँ दिखाई देंगे।',
   usageReportAccessibility: 'उपयोग रिपोर्ट। {{headline}}। पूरी रिपोर्ट खोलें।',
@@ -78,7 +78,7 @@ export const usage = {
   topAppsEmpty:
     'अभी तक प्रति-ऐप डेटा नहीं है। बच्चे के डिवाइस पर सुनिश्चित करें कि KidGate को ऐप उपयोग मापने की अनुमति है, फिर सिंक होने की प्रतीक्षा करें।',
   protectionImpactTitle: 'सुरक्षा का प्रभाव',
-  protectionImpactHint: 'हाल की घटनाएँ जिन्हें KidGate ने इस डिवाइस पर रोका।',
+  protectionImpactHint: 'इस डिवाइस के सेट अप होने के बाद से कुल संख्या।',
   protectionBlockedApps: 'ऐप खोलने की रोकी गई कोशिशें',
   protectionWebBlocked: 'ब्लॉक की गई वेबसाइटें',
   protectionTamper: 'सुरक्षा अलर्ट',

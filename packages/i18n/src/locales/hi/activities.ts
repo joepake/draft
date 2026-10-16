@@ -10,6 +10,7 @@ export const activities = {
   subtitleTimelineForDevice: '{{deviceName}} की टाइमलाइन',
   subtitleTimelineForChild: '{{childName}} की टाइमलाइन',
   fallbackDeviceName: 'डिवाइस',
+  fallbackChildName: 'आपका बच्चा',
   liveBadge: 'लाइव',
   errorTitle: 'गतिविधि लोड नहीं की जा सकी',
   tryAgain: 'फिर से प्रयास करें',
@@ -43,13 +44,13 @@ export const activities = {
   activityTypeAppRemoved: 'ऐप हटाया गया',
   activityTypePlaceEnter: 'स्थान पर पहुँचा',
   activityTypePlaceExit: 'स्थान छोड़ा',
-  activityTypeTamper: 'सुरक्षा',
+  activityTypeTamper: 'सुरक्षा अलर्ट',
   activityTypeScreenTime: 'स्क्रीन टाइम',
   activityTypeCheckIn: 'चेक-इन',
   activityTypeLocationRequest: 'स्थान',
   activityTypeTimeRequest: 'समय अनुरोध',
   activityTypeRewardTask: 'इनाम वाले टास्क',
-  activityTypeSearchAlert: 'खोज चेतावनी',
+  activityTypeSearchAlert: 'संदेश चेतावनियाँ',
   activityTypeWebFilter: 'वेब फ़िल्टर',
   activityTypeEmergency: 'SOS',
   activityTypeUnknown: 'गतिविधि',
@@ -78,7 +79,7 @@ export const activities = {
   appInstalledPendingBody:
     'बच्चे के डिवाइस पर ऐप {{appName}} इंस्टॉल किया गया है और जब तक आप अनुमति नहीं देते, यह ब्लॉक रहेगा।',
 
-  messageAlertTitle: 'चिंताजनक संदेश सामग्री',
+  messageAlertTitle: 'चिंताजनक संदेश',
   messageAlertBody: '{{appName}} में एक चिह्नित शब्द मिला।',
   messageAlertBodyOutgoing:
     '{{appName}} में आपके बच्चे के लिखे संदेश में एक चिह्नित शब्द मिला।',
@@ -183,7 +184,7 @@ export const activities = {
   tamperWebFilterBody:
     'इस डिवाइस पर KidGate का VPN बंद कर दिया गया या किसी दूसरे VPN ऐप ने उसकी जगह ले ली। उसके दोबारा चालू होने तक साइटें न फ़िल्टर होंगी, न रिकॉर्ड होंगी।',
   tamperUninstallProtectionTitle: 'अनइंस्टॉल सुरक्षा बंद कर दी गई',
-  tamperUninstallProtectionBody: 'अब इस फ़ोन से KidGate हटाया जा सकता है।',
+  tamperUninstallProtectionBody: 'अब बच्चे के डिवाइस से KidGate हटाया जा सकता है।',
   tamperReinstalledTitle: 'KidGate फिर से इंस्टॉल किया गया',
   tamperReinstalledBody:
     'KidGate को इस डिवाइस से हटाकर फिर से इंस्टॉल किया गया। बीच के समय में कुछ भी रिकॉर्ड नहीं हुआ।',

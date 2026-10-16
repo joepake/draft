@@ -11,7 +11,7 @@ export const errors = {
   accountDisabled:
     'このアカウントは無効になっています。復元するには、KidGateサポートにお問い合わせください。',
   recentLoginRequired:
-    'セキュリティのため、もう一度サインインしてから、この操作をやり直してください。',
+    'セキュリティのため、一度サインアウトしてから再度サインインし、この操作をもう一度お試しください。',
   accountExistsDifferentMethod:
     'このメールアドレスには、別のサインイン方法のアカウントがすでにあります。その方法でサインインしてから、設定でこの方法を連携してください。',
   unableToCreateAccount: 'アカウントを作成できませんでした。もう一度お試しください。',
@@ -48,12 +48,12 @@ export const errors = {
   storageNotSetup:
     '現在写真をアップロードできません。しばらくしてからもう一度お試しください。',
   noNetworkConnection:
-    'ネットワークに接続されていません。Wi-Fiまたはモバイル通信を確認してもう一度お試しください。',
+    '接続できませんでした。通信状況を確認して、もう一度お試しください。',
   connectionFailedTitle: '接続に失敗しました',
   reconnect: '再接続',
   unableToUploadPhoto: '写真をアップロードできませんでした。もう一度お試しください。',
   premiumSubscriptionRequired:
-    'この機能にはPremiumが必要です。設定したルール（上限、休止時間、アプリのブロック、Webフィルター、位置情報、SOS）は無料のまま使えます。',
+    'この機能にはPremiumが必要です。1日の上限、休止時間、ブロックされたアプリ、アプリの利用時間制限、デバイスロック、SOS、位置情報、Webフィルターのスイッチ、セーフサーチは無料のまま使えます。',
   trialEndedCannotJoinFamily:
     '無料体験が終了しました。他のファミリーに参加するにはPremiumに登録してください。',
 
@@ -92,14 +92,15 @@ export const errors = {
   deviceClockOutOfRange:
     'このデバイスの日付または時刻が正しくありません。自動設定を有効にしてください。',
   locationSharingDisabled:
-    'このデバイスでは位置情報の共有がオフになっています。設定で有効にしてからもう一度お試しください。',
+    'このデバイスでは位置情報の共有がオフになっています。「位置情報を共有」をオンにして、もう一度お試しください。',
   childDeviceNoPushToken:
     '子どものデバイスはまだリクエストを受信できません。子どものデバイスでKidGateを開き、通知を許可してください。',
   unableToRequestLocation: '現在位置情報を更新できません。もう一度お試しください。',
   unableToVerifyPurchase:
     '購入を確認できませんでした。しばらくしてからもう一度お試しください。',
   noPurchasesToRestore: 'このアカウントには復元できる購入履歴がありません。',
-  noActiveSubscription: 'このアカウントに有効なサブスクリプションが見つかりません。',
+  noActiveSubscription:
+    '有効なサブスクリプションが見つかりません。登録時に使用したApp StoreまたはGoogle Playのアカウントでサインインしてから、もう一度お試しください。',
   unableToRestorePurchases: '購入を復元できませんでした。もう一度お試しください。',
   alreadyInFamily: 'すでにこのファミリーに参加しています。',
   leaveFamilyBeforeJoining:

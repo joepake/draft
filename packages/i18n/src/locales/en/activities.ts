@@ -12,6 +12,8 @@ export const activities = {
   subtitleTimelineForDevice: 'Timeline for {{deviceName}}',
   subtitleTimelineForChild: 'Timeline for {{childName}}',
   fallbackDeviceName: 'device',
+  // The name in `subtitleTimelineForChild` when the child chip is missing.
+  fallbackChildName: 'your child',
   liveBadge: 'Live',
   // Header pill next to the live badge; opens the weekly report.
   errorTitle: 'Unable to load activity',
@@ -41,13 +43,13 @@ export const activities = {
   activityTypeAppRemoved: 'App removed',
   activityTypePlaceEnter: 'Place entered',
   activityTypePlaceExit: 'Place left',
-  activityTypeTamper: 'Protection',
+  activityTypeTamper: 'Protection Alerts',
   activityTypeScreenTime: 'Screen Time',
   activityTypeCheckIn: 'Check-In',
   activityTypeLocationRequest: 'Location',
   activityTypeTimeRequest: 'Time Requests',
-  activityTypeRewardTask: 'Reward tasks',
-  activityTypeSearchAlert: 'Search alert',
+  activityTypeRewardTask: 'Reward Tasks',
+  activityTypeSearchAlert: 'Message Alerts',
   activityTypeWebFilter: 'Web Filter',
   activityTypeEmergency: 'SOS',
   activityTypeUnknown: 'Activity',
@@ -110,7 +112,7 @@ export const activities = {
   appInstalledBody: '{{appName}} was installed on the child device.',
   appInstalledPendingBody:
     '{{appName}} was installed on the child device and is blocked until you allow it.',
-  messageAlertTitle: 'Concerning message content',
+  messageAlertTitle: 'Concerning message',
   messageAlertBody: 'A flagged word was seen in {{appName}}.',
   messageAlertBodyOutgoing:
     'A flagged word was seen in a message your child wrote in {{appName}}.',
@@ -174,7 +176,7 @@ export const activities = {
   // server-corrected clock in the device's own time zone.
   tamperDeviceClockTitle: 'Date, time or time zone changed',
   tamperDeviceClockBody:
-    'The date, time or time zone on this device changed — travelling can do this too. Screen Time and Blocked Hours ignore a changed clock and follow the device’s time zone.',
+    'The date, time or time zone on this device changed — traveling can do this too. Screen Time and Blocked Hours ignore a changed clock and follow the device’s time zone.',
   /** @deprecated legacy description keys — kept for old activity docs */
   tamperOverlay: 'Display over other apps was turned off.',
   tamperAccessibility: 'The Accessibility service was turned off.',
@@ -199,7 +201,7 @@ export const activities = {
   tamperWebFilterBody:
     'The KidGate VPN on this device was turned off or replaced by another VPN app. Sites are not filtered or recorded until it is back on.',
   tamperUninstallProtectionTitle: 'Uninstall protection turned off',
-  tamperUninstallProtectionBody: 'KidGate can now be removed from this phone.',
+  tamperUninstallProtectionBody: 'KidGate can now be removed from the child device.',
   tamperReinstalledTitle: 'KidGate was reinstalled',
   tamperReinstalledBody:
     'KidGate was removed from this device and installed again. Nothing was recorded in between.',

@@ -8,19 +8,19 @@ export const notifications = {
     'On this phone an SOS shows as a small banner instead of filling the screen, so it is easier to miss. Allow full-screen alerts to fix this.',
   sosFullScreenAllow: 'Allow full-screen alerts',
   sectionAlerts: 'Alerts',
-  sectionAlertsHint: 'Choose what this phone is notified about.',
+  sectionAlertsHint: 'Choose which alerts are sent to a parent phone.',
   sectionSummary: 'Summary',
   sectionQuietHours: 'Quiet hours',
   sectionQuietHoursHint:
-    'Alerts stay silent during this window. SOS is never silenced, and the most serious Message Alerts still come through.',
+    'No alerts are sent during this window, and none are sent afterwards. Events still appear in Activities. SOS is never held back, and the most serious Message Alerts still come through.',
   quietHoursLabel: 'Quiet hours',
   quietHoursOff: 'Off — alerts arrive at any time',
-  quietHoursActive: 'Silent from {{start}} to {{end}}',
+  quietHoursActive: 'No alerts sent from {{start}} to {{end}}',
   quietHoursStart: 'From',
   quietHoursEnd: 'To',
   quietHoursSameTime: 'Choose two different times.',
   footnote:
-    'These settings apply to this phone only. Other parent devices keep their own.',
+    'These settings apply to one phone only. Other parent devices keep their own.',
   toastSaveFailed: 'Unable to save. Try again.',
   // Reminders the parent’s phone schedules for itself (`hooks/useLocalReminders`,
   // `@kidgate/core/domain/localReminders`). The setup reminder’s body is
@@ -34,15 +34,15 @@ export const notifications = {
     'If no one opens KidGate for {{days}} days, your child’s devices stop reporting until someone opens it again. Your rules keep working.',
   alert: {
     tamperAlerts: {
-      label: 'Protection turned off',
+      label: 'Protection Alerts',
       hint: 'On a child device, a permission KidGate needs was switched off, the date, time or time zone was changed, or SOS was pressed while it was locked. The SOS alert itself always comes through.',
     },
     placeAlerts: {
-      label: 'Arrivals and departures',
+      label: 'Place Alerts',
       hint: 'Your child arrives at or leaves a saved place.',
     },
     timeRequests: {
-      label: 'Extra time requests',
+      label: 'Time Requests',
       hint: 'Your child asks for more screen time.',
     },
     siteRequests: {
@@ -54,7 +54,7 @@ export const notifications = {
       hint: 'Your child replies to a safety Check-In.',
     },
     rewardTasks: {
-      label: 'Reward claims',
+      label: 'Reward Tasks',
       hint: 'Your child marks a reward task as done.',
     },
     appActivity: {
@@ -66,7 +66,7 @@ export const notifications = {
       hint: 'Out-of-pattern use on a child device — late nights, spikes, new apps.',
     },
     weeklyDigest: {
-      label: 'Weekly summary',
+      label: 'Weekly report',
       hint: 'A Monday recap of screen time and blocks.',
     },
     messageAlerts: {

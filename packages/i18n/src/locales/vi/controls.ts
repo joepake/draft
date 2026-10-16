@@ -7,7 +7,7 @@ export const controls = {
   quickPresets: 'Thiết lập nhanh',
   presetMinutes: '{{minutes}} phút',
   customMinutes: 'Số phút tùy chỉnh',
-  dailyLimitEnterAtLeastMinutes: 'Vui lòng nhập ít nhất {{min}} phút.',
+  dailyLimitEnterAtLeastMinutes: 'Vui lòng nhập ít nhất {{count}} phút.',
   dailyLimitMaxMinutes: 'Giới hạn hằng ngày tối đa là {{max}} phút (24 giờ).',
   rulesSectionTitle: 'Quy tắc bố mẹ đặt',
   rulesSectionDescription: 'Những quy tắc bố mẹ đã đặt cho thiết bị này.',

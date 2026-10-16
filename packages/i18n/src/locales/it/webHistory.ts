@@ -2,7 +2,7 @@ export const webHistory = {
   title: 'Cronologia web',
   fallbackDeviceName: 'Dispositivo del bambino',
   syncNote:
-    'La cronologia web può richiedere fino a circa 15 minuti per comparire in questa schermata — più a lungo se il dispositivo non ha connessione a Internet o si è chiuso in modo imprevisto.',
+    'La cronologia web può arrivare con circa 10 minuti di ritardo mentre guardi questa schermata, e con un ritardo fino a 30 minuti negli altri casi — anche di più se il dispositivo non ha connessione a Internet o si è chiuso in modo imprevisto.',
   syncNoteTv:
     'Questa TV si collega solo periodicamente, quindi la cronologia web può richiedere fino a un’ora per comparire in questa schermata — più a lungo senza connessione a Internet.',
   summarySites: 'Siti visti',
@@ -34,12 +34,16 @@ export const webHistory = {
   blockCategoryConfirmTitle: 'Bloccare {{category}}?',
   blockCategoryConfirmBody:
     'Ogni sito che KidGate classifica come {{category}} verrà rifiutato su questo dispositivo. Puoi disattivarlo di nuovo nel Filtro web.',
+  blockCategoryConfirmBodyChild:
+    'Ogni sito che KidGate classifica come {{category}} verrà rifiutato su tutti i dispositivi di {{name}}. Puoi disattivarlo di nuovo nel Filtro web.',
   blockCategoryConfirmAction: 'Blocca',
   blockCategoryDone: '{{category}} ora è bloccato.',
   unblockCategory: 'Sblocca {{category}}',
   unblockCategoryConfirmTitle: 'Sbloccare {{category}}?',
   unblockCategoryConfirmBody:
     'I siti che KidGate classifica come {{category}} torneranno raggiungibili su questo dispositivo.',
+  unblockCategoryConfirmBodyChild:
+    'I siti che KidGate classifica come {{category}} torneranno raggiungibili sui dispositivi di {{name}}.',
   unblockCategoryConfirmAction: 'Sblocca',
   unblockCategoryDone: '{{category}} non è più bloccato.',
   serviceSites: '{{count}} siti',
@@ -63,5 +67,5 @@ export const webHistory = {
   sourceNoteChild:
     'Unito da {{count}} dispositivi. Ognuno registra solo ciò che vede il proprio filtro.',
   filterOffNoteChild:
-    'Il filtro web è disattivato su tutti i dispositivi, quindi le nuove visite non vengono registrate.',
+    'Il Filtro web è disattivato su tutti i dispositivi, quindi le nuove visite non vengono registrate.',
 } as const;

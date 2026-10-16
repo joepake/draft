@@ -21,7 +21,7 @@ export const webSignIn = {
   // "later", and it must not read like it.
   confirmTitle: 'Izinkan browser ini?',
   confirmBody:
-    'Browser akan punya kendali yang sama dengan ponsel ini: melihat lokasi anak, mengubah batas, mengunci perangkat, dan menyetujui permintaan. Izinkan hanya jika Anda sendiri yang sedang masuk.',
+    'Browser akan punya kendali yang sama dengan ponsel ini: melihat lokasi anak, mengubah batas, mengunci perangkat, dan menyetujui permintaan. Browser dapat membuat perubahan selama 7 hari, dan Anda dapat menghapusnya kapan saja di Keluarga → Orang tua. Izinkan hanya jika Anda sendiri yang sedang masuk.',
   confirmCodeLabel: 'Kode di komputer Anda',
   approveButton: 'Izinkan',
   declineButton: 'Jangan izinkan',
@@ -36,6 +36,21 @@ export const webSignIn = {
   alreadyUsed: 'Kode sudah dipakai. Tampilkan kode baru di komputer.',
   notFound: 'Kode tidak valid. Periksa enam karakter lalu coba lagi.',
   failed: 'Tidak dapat menyelesaikan permintaan. Coba lagi.',
-
-  // Revocation screen (server side already ships; app screen is pending).
+  sessionsTitle: 'Browser yang dapat membuat perubahan',
+  sessionsHint:
+    'Browser ini masuk ke dasbor web dengan akun Anda dan dapat membuat perubahan. Browser yang hanya melihat keluarga Anda tidak tercantum di sini.',
+  sessionsEmpty:
+    'Tidak ada browser yang dapat membuat perubahan. Saat Anda mengizinkan satu browser, browser itu akan muncul di sini.',
+  sessionRow: '{{browser}} di {{os}}',
+  sessionRowUnknown: 'Browser web',
+  sessionExpires: 'Dapat membuat perubahan hingga {{date}}',
+  sessionViaQr: 'Diizinkan dengan kode QR',
+  sessionViaPin: 'Diizinkan dengan PIN Orang Tua',
+  thisBrowser: 'Browser ini',
+  sessionsRevoke: 'Hapus',
+  sessionsRevokeConfirmTitle: 'Hapus browser ini?',
+  sessionsRevokeConfirmBody:
+    'Browser ini tidak lagi dapat mengubah pengaturan atau mengontrol perangkat. Hingga tanggal yang ditampilkan, browser ini masih dapat mengubah beberapa detail perangkat, seperti nama. Namun, browser ini mungkin masih menampilkan informasi keluarga Anda sampai seseorang keluar dari akun di sana.',
+  revokedToast: 'Browser dihapus.',
+  revokeFailed: 'Tidak dapat menghapus browser itu. Coba lagi.',
 } as const;

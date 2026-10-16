@@ -23,11 +23,11 @@ export const placeAlerts = {
   radiusLabel: 'Rayon d’alerte',
   radiusValue: '{{meters}} m',
   radiusHint:
-    'À quelle distance l’appareil doit se trouver pour que ce lieu compte. Un rayon plus petit que l’erreur de position de l’appareil déclenche au hasard, pas plus précisément.',
+    'À quelle distance l’appareil doit se trouver pour que ce lieu compte. Un rayon plus petit que l’erreur de position de l’appareil ne rend pas les alertes plus précises : des arrivées et des départs risquent de ne pas être signalés.',
   radiusAccuracyHint:
     'Ici, cet appareil indique sa position à environ ±{{accuracy}} m près.',
   radiusBelowAccuracy:
-    'Ici, cet appareil n’est précis qu’à environ ±{{accuracy}} m. Utilisez {{minimum}} m ou plus, sinon ce lieu déclenchera au hasard.',
+    'Ici, cet appareil n’est précis qu’à environ ±{{accuracy}} m. Utilisez {{minimum}} m ou plus, sinon des arrivées et des départs pourraient ne pas être signalés pour ce lieu.',
   radiusDecrease: 'Rayon plus petit',
   radiusIncrease: 'Rayon plus grand',
   notifyEnterLabel: 'Alerter à l’arrivée',
@@ -55,7 +55,7 @@ export const placeAlerts = {
   samePinToast:
     'C’est le même endroit que « {{name}} ». Faites glisser la carte pour déplacer le repère.',
   overlapWarning:
-    '« {{name}} » est à {{meters}} m et son cercle atteint ce point. Tant que l’appareil est dans les deux, seul le plus proche alerte. Enregistrez à nouveau pour le conserver.',
+    '« {{name}} » est à {{meters}} m et les deux cercles se chevauchent. Tant que l’appareil est dans les deux, seul le plus proche alerte. Enregistrez à nouveau pour le conserver.',
   savedToast: 'Lieu enregistré.',
   updatedToast: 'Lieu mis à jour.',
   removedToast: 'Lieu supprimé.',

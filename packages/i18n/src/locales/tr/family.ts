@@ -274,7 +274,7 @@ export const family = {
   deviceRemovedAlertTitle: 'Cihaz kaldırıldı',
 
   deviceRemovedAlertMessage:
-    'Bir ebeveyn bu cihazı aile hesabından kaldırdı. Yeniden bağlamak için tekrar Çocuk rolünü seç.',
+    'Bir ebeveyn bu cihazı aile hesabından kaldırdı. Yeniden bağlamak için “Bu bir çocuk cihazı” seçeneğini seç.',
 
   deviceNotRegistered: 'Bu cihaz henüz kayıtlı değil.',
 
@@ -331,7 +331,7 @@ export const family = {
   editDeviceNameTitle: 'Cihaz adını düzenle',
 
   editDeviceNameSubtitle:
-    'Yalnızca aile sahibi cihazların adını değiştirebilir. En fazla {{maxLength}} karakter.',
+    'Ebeveynlerin hızlıca tanıyabileceği bir ad seçin. En fazla {{maxLength}} karakter.',
 
   deviceNameInputLabel: 'Cihaz adı',
 
@@ -356,6 +356,8 @@ export const family = {
   youPausedThisDevice: 'Bu cihazı kilitlediniz',
 
   lockSentWaitingForDevice: 'Kilit gönderildi — cihaz bekleniyor',
+  lockDelayedOnDevice:
+    'Kilitleme ve kilit açma işlemlerinin bu cihaza ulaşması {{minutes}} dakikayı bulabilir.',
 
   lockNotAppliedOnDevice: 'Bu cihaz kilidi uygulamadı',
 

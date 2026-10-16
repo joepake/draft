@@ -2,6 +2,7 @@ export const webFilter = {
   title: 'Filter web',
   fallbackDeviceName: 'Perangkat anak',
   appliesToAll: 'Berlaku untuk semua perangkat {{name}} ({{count}})',
+  appliesToSome: 'Berlaku untuk {{supported}} dari {{total}} perangkat {{name}}',
   coverageLine: 'Aktif di {{enforcing}} dari {{total}} perangkat',
   mergeNotice:
     'Perangkat {{name}} memiliki pengaturan filter web yang berbeda. Menyimpan di sini menerapkan satu pengaturan ke semuanya, digabungkan ke pilihan yang lebih ketat.',
@@ -16,17 +17,20 @@ export const webFilter = {
     'Menjalankan filter konten KidGate di Mac anak untuk memblokir situs tidak pantas yang dikenal di browser dan banyak aplikasi.',
   toggleHintIos:
     'Anak perlu mengizinkan VPN KidGate sekali dan memasukkan kode sandi perangkat. Biarkan VPN tetap terpasang agar filter bekerja.',
+  heroSubtitleIosApple:
+    'Menggunakan filter konten Waktu Layar Apple untuk membatasi konten dewasa di Safari dan browser dalam aplikasi pada iPhone atau iPad anak.',
+  toggleHintIosApple: 'Memerlukan izin Waktu Layar di perangkat anak.',
   toggleHintAndroid:
     'Anak perlu menyetujui koneksi VPN KidGate sekali. Biarkan VPN aktif agar filter bekerja.',
   toggleHintMacos:
-    'Anak harus menyetujui ekstensi filter KidGate sekali di Pengaturan Sistem. Jaga agar tetap disetujui agar filter berfungsi.',
+    'Anak harus menyetujui ekstensi filter KidGate sekali di Mac. Jaga agar tetap disetujui agar filter berfungsi.',
   toggleAccessibilityLabel: 'Aktifkan Filter web',
   safeSearchSectionTitle: 'Penelusuran aman & YouTube',
   safeSearchSectionSubtitle:
     'Paksa Google, Bing, dan DuckDuckGo menampilkan hasil aman dan kunci YouTube ke Mode Terbatas. Filter web harus aktif.',
   safeSearchLabel: 'Paksa SafeSearch',
   safeSearchHint:
-    'Mengunci Google SafeSearch, Mode Terbatas YouTube, Bing, dan DuckDuckGo pada pengaturan ketat. Android, Android TV, dan Chrome.',
+    'Mengunci Google SafeSearch, Mode Terbatas YouTube, Bing, dan DuckDuckGo pada pengaturan ketat. Android dan Chrome.',
   safeSearchStrictNote:
     'YouTube berjalan di level paling ketat: komentar disembunyikan dan sebagian video biasa ikut diblokir. Anak tidak bisa mematikannya dari akunnya sendiri.',
   infoTitle: 'Cara kerjanya',
@@ -36,6 +40,12 @@ export const webFilter = {
     'Filter konten dewasa Apple tetap aktif di Safari dan browser dalam aplikasi sebagai lapisan perlindungan kedua.',
   infoLine3Ios:
     'Ikon VPN muncul selama pemfilteran. Jika VPN dimatikan di Pengaturan, VPN akan aktif kembali dalam beberapa detik; jika dihapus, filter berhenti hingga diizinkan lagi di KidGate.',
+  infoLine1IosApple:
+    'Filter konten dewasa Apple membatasi situs web dewasa di Safari dan browser dalam aplikasi.',
+  infoLine2IosApple:
+    'Filter ini tidak memblokir semua yang ada di dalam aplikasi lain, dan hanya mencakup konten dewasa, bukan kategori lainnya.',
+  infoLine3IosApple:
+    'KidGate menerapkan pengaturan ini secara otomatis saat aplikasi di perangkat anak menyinkronkan kontrol.',
   infoLine1Android:
     'KidGate menjalankan koneksi privat di perangkat yang memeriksa situs mana yang sedang dibuka, lalu memblokir situs yang masuk kategori pilihan Anda.',
   infoLine2Android:
@@ -47,27 +57,28 @@ export const webFilter = {
   infoLine1Macos:
     'KidGate menjalankan filter konten di Mac yang memeriksa situs mana yang sedang dicari, dan memblokir yang termasuk kategori Anda.',
   infoLine2Macos:
-    'Jika filter terlihat belum disetujui di Mac anak, buka Pengaturan Sistem → Umum → Item Login & Ekstensi untuk menyetujuinya.',
+    'Jika filter terlihat belum disetujui di Mac anak, buka KidGate di sana lalu pilih Buka Pengaturan. Kemudian aktifkan KidGate di halaman yang terbuka.',
   infoLine3Macos:
     'Mac anak menampilkan filter sebagai aktif setelah disetujui. Jika dimatikan di sana, buka kembali KidGate untuk memulihkannya.',
   infoLine4Macos:
-    'Filter membaca nama situs, yang disembunyikan browser modern pada sekitar separuh kunjungan — situs tersebut tidak diperiksa terhadap kategori Anda. Filter tetap memblokir sebagian besar situs yang dijangkau anak dengan cara ini.',
+    'Filter menilai koneksi berdasarkan nama situs yang dibawanya. Dalam pengujian KidGate, sekitar separuh koneksi HTTPS tidak membawa nama yang dapat dibaca, sehingga koneksi itu tidak diperiksa terhadap kategori Anda dan sebagian situs yang diblokir masih bisa terbuka.',
   privateDnsBannerTitle: 'Matikan DNS Pribadi',
   privateDnsBannerBody:
     'DNS Pribadi aktif, jadi filter web bisa dilewati. Matikan agar filter bekerja.',
   privateDnsBannerButton: 'Buka pengaturan DNS',
   vpnConsentBannerTitle: 'Pulihkan VPN Filter web',
   vpnConsentBannerBody:
-    'VPN KidGate mati. Filter web dewasa memerlukan VPN yang tetap terhubung.',
+    'VPN KidGate mati. Filter web memerlukan VPN yang tetap terhubung.',
   vpnConsentBannerButton: 'Aktifkan VPN',
   vpnDisclosureNote:
     'Selama Filter web aktif, VPN KidGate hanya berjalan di perangkat ini. VPN ini melihat nama setiap situs yang dicari perangkat — tidak pernah halamannya, apa yang diketik, atau lalu lintas lainnya. VPN ini memblokir situs yang dipilih orang tuamu dan menunjukkan kepada mereka histori penjelajahan web perangkat ini (situs mana yang dikunjungi dan diblokir), disimpan selama 30 hari. KidGate tidak pernah menjual data ini atau menggunakannya untuk hal lain.',
   iosOnlyNote: 'Menggunakan koneksi privat dan Waktu Layar di iPhone',
+  iosAppleNote: 'Menggunakan filter konten Waktu Layar Apple di iPhone',
   androidVpnNote: 'Menggunakan VPN DNS lokal di Android',
   macosFilterNote: 'Menggunakan filter konten KidGate di Mac',
 
   heroSubtitleWindows:
-    'Menjalankan resolver milik KidGate di PC anak untuk memblokir situs tidak pantas yang dikenal di semua browser.',
+    'Menjalankan resolver milik KidGate di PC anak untuk memblokir situs tidak pantas yang dikenal di Chrome, Edge, dan Firefox.',
   heroSubtitleExtension:
     'Menjalankan ekstensi KidGate di Chrome pada komputer anak untuk memblokir situs tidak pantas yang sudah dikenal di browser itu.',
 
@@ -94,7 +105,7 @@ export const webFilter = {
   infoLine3Extension:
     'Jendela Samaran hanya difilter jika “Izinkan dalam mode Samaran” diaktifkan untuk ekstensi ini. Jendela Tamu tidak difilter.',
   infoLine4Extension:
-    'Dari halaman yang diblokir, anak Anda bisa meminta Anda mengizinkan situs itu. Menghapus atau menonaktifkan ekstensi akan menghentikan filter.',
+    'Selama keluarga memiliki Premium, dari halaman yang diblokir anak Anda bisa meminta Anda mengizinkan situs itu. Menghapus atau menonaktifkan ekstensi akan menghentikan filter.',
 
   windowsFilterNote: 'Memakai resolver milik KidGate di Windows',
   extensionFilterNote: 'Memakai ekstensi KidGate di Chrome',
@@ -125,11 +136,11 @@ export const webFilter = {
   domainPlaceholder: 'contoh.com',
   addDomain: 'Tambah situs',
   removeDomain: 'Hapus {{domain}}',
-  invalidDomain: 'Masukkan alamat situs, misalnya contoh.com',
+  invalidDomain: 'Masukkan alamat situs, misalnya contoh.com.',
   listFull: 'Anda bisa menyimpan hingga {{max}} situs di daftar ini.',
   openHistory: 'Riwayat web',
   openHistorySubtitle:
-    'Lihat situs mana yang dijangkau perangkat ini dan apa yang diblokir',
+    'Lihat situs mana yang dijangkau perangkat ini dan apa yang diblokir.',
   blockedPageTitle: 'Situs diblokir',
   blockedPageBody:
     'KidGate memblokir situs ini untuk keluargamu. Jika menurutmu ini keliru, tanyakan kepada orang tuamu.',
@@ -209,6 +220,8 @@ export const webFilter = {
   askToOpenPending: 'Kamu sudah meminta satu situs. Tunggu jawabannya.',
   askToOpenTooSoon: 'Kamu baru saja mengirim permintaan. Coba lagi semenit lagi.',
   askToOpenTooMany: 'Kamu hanya bisa meminta beberapa situs sekaligus.',
+  askToOpenUnavailable:
+    'Meminta izin untuk situs sedang tidak tersedia. Tanyakan langsung kepada orang tuamu.',
   requestsTitle: 'Permintaan situs',
   requestsSubtitle: 'Situs yang diminta perangkat ini untuk diizinkan.',
   siteRequestApproved: 'Situs diizinkan',

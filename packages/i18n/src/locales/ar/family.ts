@@ -292,7 +292,7 @@ export const family = {
   deviceRemovedAlertTitle: 'تمت إزالة الجهاز',
 
   deviceRemovedAlertMessage:
-    'قام أحد الوالدين بإزالة هذا الجهاز من حساب العائلة. يمكنك اختيار دور «الطفل» مرة أخرى لإعادة ربطه.',
+    'أزال أحد الوالدين هذا الجهاز من حساب العائلة. لإعادة ربطه، اختر «هذا جهاز طفل».',
 
   deviceNotRegistered: 'هذا الجهاز غير مسجل بعد.',
 
@@ -352,7 +352,7 @@ export const family = {
   editDeviceNameTitle: 'تعديل اسم الجهاز',
 
   editDeviceNameSubtitle:
-    'يمكن فقط لمالك العائلة إعادة تسمية الأجهزة. الحد الأقصى {{maxLength}} حرفًا.',
+    'اختر اسمًا يتعرّف عليه الوالدان بسرعة. الحد الأقصى {{maxLength}} حرفًا.',
 
   deviceNameInputLabel: 'اسم الجهاز',
 
@@ -383,6 +383,8 @@ export const family = {
   youPausedThisDevice: 'لقد قمت بقفل هذا الجهاز',
 
   lockSentWaitingForDevice: 'أُرسل القفل — في انتظار الجهاز',
+  lockDelayedOnDevice:
+    'قد يستغرق القفل وإلغاء القفل حتى {{minutes}} دقيقة ليصل إلى هذا الجهاز.',
 
   lockNotAppliedOnDevice: 'لم يطبّق هذا الجهاز القفل',
 

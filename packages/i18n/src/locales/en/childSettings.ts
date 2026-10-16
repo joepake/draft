@@ -7,7 +7,7 @@ export const childSettings = {
   darkModeHint: 'Easier on the eyes at night',
   leaveFamilyAlertTitle: 'Leave this family?',
   leaveFamilyAlertMessage:
-    'This device will be disconnected from the family. Pair again with a parent invite to rejoin.',
+    'This device will be disconnected from the family. To rejoin, a parent will need to connect it again from their KidGate app.',
   leaveFamily: 'Leave family',
   uninstallProtectionSectionTitle: 'Uninstall protection',
   uninstallProtectionSectionDescription:
@@ -23,7 +23,7 @@ export const childSettings = {
   // activation screen, usually to a parent setting up. The warning shows on the
   // deactivation screen, where the child is the reader.
   deviceAdminExplanation:
-    'Stops KidGate from being uninstalled without a parent. KidGate uses no other device administrator power: it cannot erase this device, change the screen lock or turn off the camera.',
+    'Makes KidGate harder to remove: uninstalling it means turning this off first, and a parent is alerted when that happens. KidGate uses no other device administrator power: it cannot erase this device, change the screen lock or turn off the camera.',
   deviceAdminDisableWarning:
     'Turning this off lets KidGate be uninstalled from this device. Your parent will be alerted.',
   // The app picker's `app_picker_unavailable`: iOS below 16, or a build without

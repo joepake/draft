@@ -2,7 +2,7 @@ export const webHistory = {
   title: 'Riwayat web',
   fallbackDeviceName: 'Perangkat anak',
   syncNote:
-    'Riwayat web bisa butuh hingga sekitar 15 menit untuk muncul di layar ini — lebih lama jika perangkat tidak memiliki koneksi internet atau ditutup secara tidak terduga.',
+    'Riwayat web bisa terlambat sekitar 10 menit saat Anda melihat layar ini, dan hingga 30 menit jika tidak — lebih lama jika perangkat tidak memiliki koneksi internet atau ditutup secara tidak terduga.',
   syncNoteTv:
     'TV ini hanya mengirim laporan secara berkala, jadi riwayat web bisa butuh waktu hingga satu jam untuk muncul di layar ini — lebih lama jika tidak ada koneksi internet.',
   summarySites: 'Situs terlihat',
@@ -32,12 +32,16 @@ export const webHistory = {
   blockCategoryConfirmTitle: 'Blokir {{category}}?',
   blockCategoryConfirmBody:
     'Setiap situs yang dikelompokkan KidGate sebagai {{category}} akan ditolak di perangkat ini. Anda bisa mematikannya lagi di Filter web.',
+  blockCategoryConfirmBodyChild:
+    'Setiap situs yang dikelompokkan KidGate sebagai {{category}} akan ditolak di semua perangkat {{name}}. Anda bisa mematikannya lagi di Filter web.',
   blockCategoryConfirmAction: 'Blokir',
   blockCategoryDone: '{{category}} sekarang diblokir.',
   unblockCategory: 'Buka blokir {{category}}',
   unblockCategoryConfirmTitle: 'Buka blokir {{category}}?',
   unblockCategoryConfirmBody:
     'Situs yang dikelompokkan KidGate sebagai {{category}} akan bisa diakses lagi di perangkat ini.',
+  unblockCategoryConfirmBodyChild:
+    'Situs yang dikelompokkan KidGate sebagai {{category}} akan bisa diakses lagi di perangkat {{name}}.',
   unblockCategoryConfirmAction: 'Buka blokir',
   unblockCategoryDone: '{{category}} tidak lagi diblokir.',
   serviceSites: '{{count}} situs',

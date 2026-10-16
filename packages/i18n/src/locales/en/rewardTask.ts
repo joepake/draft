@@ -25,7 +25,7 @@ export const rewardTask = {
   tryAgain: 'Send back',
   approveAndAdd: 'Add {{minutes}} min',
   approve: 'Approve',
-  screenTitle: 'Reward tasks',
+  screenTitle: 'Reward Tasks',
   fallbackDeviceName: 'Child device',
   heroUnit: 'min to earn',
   heroCaption: '{{count}} open tasks to complete',

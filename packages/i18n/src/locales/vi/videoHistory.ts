@@ -3,10 +3,12 @@ export const videoHistory = {
   fallbackDeviceName: 'Thiết bị của trẻ',
   toggleLabel: 'Ghi lại video đã xem',
   toggleHint:
-    'YouTube trên trình duyệt, và ứng dụng YouTube trên điện thoại Android lẫn TV. Riêng trên TV, Shorts không hiện trong danh sách vì ứng dụng TV không nhận diện chúng là Shorts.',
+    'Video xem trong ứng dụng YouTube trên điện thoại Android và TV, và trong Chrome có cài tiện ích KidGate. Riêng trên TV, Shorts không hiện trong danh sách vì ứng dụng TV không nhận diện chúng là Shorts.',
   toggleFailed: 'Không cập nhật được lịch sử video. Vui lòng thử lại.',
   unsupportedNote:
     'Thiết bị này không báo được video đã xem. Tính năng này chỉ hoạt động trên Android, Android TV và Chrome.',
+  unsupportedNoteTv:
+    'TV này chưa ghi lại video đã xem. KidGate cần quyền truy cập thông báo trên TV, mà hiện chưa thể cấp quyền đó từ màn hình TV.',
 
   unsupportedNeedsExtension:
     'KidGate trên máy tính này không thấy được video nào đang được xem — nó đọc tên trang, không đọc nội dung bên trong. Tiện ích KidGate cho Chrome thì thấy được: cài nó trên máy này, nó sẽ báo video đã xem như một thiết bị riêng.',
@@ -42,5 +44,5 @@ export const videoHistory = {
     'Chưa ghi lại được: KidGate cần quyền truy cập thông báo trên điện thoại của con. Trên điện thoại đó, mở Cài đặt KidGate, chọn Mở khóa bằng mã PIN phụ huynh, rồi chọn Cho phép truy cập thông báo trong mục Cảnh báo tin nhắn.',
   openAction: 'Mở trên YouTube',
   searchAction: 'Tìm video này trên YouTube',
-  openFailed: 'Không mở được YouTube.',
+  openFailed: 'Không mở được YouTube. Vui lòng thử lại.',
 };

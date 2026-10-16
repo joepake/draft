@@ -277,7 +277,7 @@ export const family = {
   deviceRemovedAlertTitle: 'デバイスが削除されました',
 
   deviceRemovedAlertMessage:
-    '保護者がこのデバイスをファミリーアカウントから削除しました。再接続するには、もう一度「子ども」の役割を選択してください。',
+    '保護者がこのデバイスをファミリーアカウントから削除しました。再接続するには、「これはお子さまのデバイスです」を選択してください。',
 
   deviceNotRegistered: 'このデバイスはまだ登録されていません。',
 
@@ -336,7 +336,7 @@ export const family = {
   editDeviceNameTitle: 'デバイス名を変更',
 
   editDeviceNameSubtitle:
-    'デバイス名を変更できるのはファミリー管理者のみです。{{maxLength}}文字まで入力できます。',
+    '保護者がすぐに分かる名前を付けてください。{{maxLength}}文字まで入力できます。',
 
   deviceNameInputLabel: 'デバイス名',
 
@@ -362,6 +362,8 @@ export const family = {
   youPausedThisDevice: 'あなたがこのデバイスをロックしました',
 
   lockSentWaitingForDevice: 'ロックを送信しました。デバイスの応答を待っています',
+  lockDelayedOnDevice:
+    'このデバイスでは、ロックとロック解除の反映に最大{{minutes}}分かかることがあります。',
 
   lockNotAppliedOnDevice: 'このデバイスはロックを適用していません',
 

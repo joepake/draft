@@ -10,6 +10,7 @@ export const activities = {
   subtitleTimelineForDevice: '{{deviceName}} のタイムライン',
   subtitleTimelineForChild: '{{childName}}のタイムライン',
   fallbackDeviceName: 'デバイス',
+  fallbackChildName: 'お子さま',
   liveBadge: 'ライブ',
   errorTitle: 'アクティビティを読み込めませんでした',
   tryAgain: '再試行',
@@ -42,13 +43,13 @@ export const activities = {
   activityTypeAppRemoved: 'アプリをアンインストールしました',
   activityTypePlaceEnter: '場所に到着',
   activityTypePlaceExit: '場所を出発',
-  activityTypeTamper: '保護',
+  activityTypeTamper: '保護アラート',
   activityTypeScreenTime: 'スクリーンタイム',
   activityTypeCheckIn: 'チェックイン',
   activityTypeLocationRequest: '位置情報',
   activityTypeTimeRequest: '時間延長リクエスト',
   activityTypeRewardTask: 'ごほうびタスク',
-  activityTypeSearchAlert: '検索警告',
+  activityTypeSearchAlert: 'メッセージ警告',
   activityTypeWebFilter: 'Webフィルター',
   activityTypeEmergency: 'SOS',
   activityTypeUnknown: 'アクティビティ',
@@ -77,7 +78,7 @@ export const activities = {
   appInstalledPendingBody:
     'お子さまのデバイスに{{appName}}がインストールされ、許可するまでブロックされています。',
 
-  messageAlertTitle: '気がかりなメッセージ内容',
+  messageAlertTitle: '気がかりなメッセージ',
   messageAlertBody: '{{appName}}で注意すべき語句が検出されました。',
   messageAlertBodyOutgoing:
     'お子さまが{{appName}}で書いたメッセージに注意すべき語句が検出されました。',
@@ -181,7 +182,7 @@ export const activities = {
   tamperWebFilterBody:
     'このデバイスのKidGateのVPNがオフにされたか、別のVPNアプリに置き換えられました。再びオンになるまで、サイトはフィルタリングも記録もされません。',
   tamperUninstallProtectionTitle: 'アンインストール防止がオフになりました',
-  tamperUninstallProtectionBody: 'このデバイスからKidGateを削除できる状態です。',
+  tamperUninstallProtectionBody: '子どものデバイスからKidGateを削除できる状態です。',
   tamperReinstalledTitle: 'KidGateが再インストールされました',
   tamperReinstalledBody:
     'このデバイスからKidGateが削除され、再びインストールされました。その間の記録はありません。',

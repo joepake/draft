@@ -1,92 +1,54 @@
-import { Link } from 'react-router-dom';
-import LegalNote from '@kidgate/web-ui/LegalNote';
+import { RichText } from '@kidgate/web-ui/RichText';
+import { useT } from '@kidgate/web-ui/useT';
+
+const OPTION_1 = [1, 2, 3];
+const OPTION_2 = [1, 2, 3];
+const DELETED = [1, 2, 3, 4, 5, 6];
+const RETENTION = [1, 2, 3];
 
 export default function DeleteAccount() {
+  const { t } = useT();
+
   return (
     <article className="legal">
-      <h1>Account &amp; Data Deletion</h1>
-      <p className="updated">Last updated: September 18, 2026</p>
-      <LegalNote />
+      <h1>{t('deleteAccount.title')}</h1>
+      <p className="updated">{t('deleteAccount.updated')}</p>
 
-      <p>
-        This page explains how to delete your KidGate account and the data associated
-        with it. You can request deletion at any time, and you do not need to have the
-        app installed to do so.
-      </p>
+      <p>{t('deleteAccount.intro')}</p>
 
-      <h2>Option 1: Delete your account in the app</h2>
+      <h2>{t('deleteAccount.option1Title')}</h2>
       <ul>
-        <li>Open the KidGate app and sign in.</li>
-        <li>
-          Go to <em>Settings &rarr; Account &rarr; Delete Account</em>.
-        </li>
-        <li>Confirm the deletion.</li>
+        {OPTION_1.map(n => (
+          <RichText as="li" key={n} text={t(`deleteAccount.option1Step${n}`)} />
+        ))}
       </ul>
 
-      <h2>Option 2: Request deletion by email</h2>
+      <h2>{t('deleteAccount.option2Title')}</h2>
       <ul>
-        <li>
-          Send an email to{' '}
-          <a href="mailto:support@kidgate.app?subject=Account%20Deletion%20Request">
-            support@kidgate.app
-          </a>{' '}
-          with the subject line &quot;Account Deletion Request&quot;.
-        </li>
-        <li>
-          Send the request from the email address associated with your KidGate account
-          so we can verify your identity.
-        </li>
-        <li>
-          We will confirm your request and schedule the deletion. It holds for 14 days,
-          during which you can cancel it; after that it runs and cannot be undone.
-        </li>
+        {OPTION_2.map(n => (
+          <RichText as="li" key={n} text={t(`deleteAccount.option2Step${n}`)} />
+        ))}
       </ul>
 
-      <h2>What is deleted</h2>
-      <p>Deleting your account permanently removes:</p>
+      <h2>{t('deleteAccount.deletedTitle')}</h2>
+      <p>{t('deleteAccount.deletedIntro')}</p>
       <ul>
-        <li>Your parent account information (name, email address).</li>
-        <li>All child profiles you created.</li>
-        <li>
-          All activity data collected from managed devices, including app usage,
-          screen-time history, browsing activity, location history, and Check-In and SOS
-          photos.
-        </li>
-        <li>Your parental control settings and preferences.</li>
-        <li>Support requests you filed, with any screenshot attached to them.</li>
-        <li>Your sign-in itself, so the account cannot be used again.</li>
+        {DELETED.map(n => (
+          <li key={n}>{t(`deleteAccount.deleted${n}`)}</li>
+        ))}
       </ul>
 
-      <h2>Retention timelines</h2>
+      <h2>{t('deleteAccount.retentionTitle')}</h2>
       <ul>
-        <li>
-          Data is deleted when the <strong>14-day</strong> hold on a verified request
-          ends. Deletion is permanent and there is no export afterwards.
-        </li>
-        <li>
-          A record that the deletion was requested and completed &mdash; a hash of your
-          email address and the dates, nothing else &mdash; is kept for{' '}
-          <strong>12 months</strong> so that a disputed deletion can be answered.
-        </li>
-        <li>
-          We may retain a minimal set of records where required by law (for example,
-          transaction records for tax purposes), for only as long as legally required.
-        </li>
+        {RETENTION.map(n => (
+          <RichText as="li" key={n} text={t(`deleteAccount.retention${n}`)} />
+        ))}
       </ul>
 
-      <h2>Partial deletion</h2>
-      <p>
-        You can remove a child or a device in the app, which stops collection from it.
-        History already collected expires on the schedule in the Privacy Policy (30 days
-        for usage, web and location history and the activity feed; 90 days for SOS,
-        Check-In and extra-time requests); to have it deleted sooner, email{' '}
-        <a href="mailto:support@kidgate.app">support@kidgate.app</a>.
-      </p>
+      <h2>{t('deleteAccount.partialTitle')}</h2>
+      <RichText as="p" text={t('deleteAccount.partial')} />
 
-      <p>
-        For more details about how we handle your data, see our{' '}
-        <Link to="/privacy-policy">Privacy Policy</Link>.
-      </p>
+      <RichText as="p" text={t('deleteAccount.moreInfo')} />
     </article>
   );
 }

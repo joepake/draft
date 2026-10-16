@@ -1,4 +1,5 @@
 export const shared = {
+  tryAgain: '再試行',
   // Short duration labels for countdowns (e.g. time-request cooldown).
   durationMinutesShort: '{{minutes}}分',
   durationHoursShort: '{{hours}}時間',

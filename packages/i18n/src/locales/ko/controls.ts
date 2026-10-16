@@ -6,7 +6,7 @@ export const controls = {
   quickPresets: '빠른 설정',
   presetMinutes: '{{minutes}}분',
   customMinutes: '직접 입력(분)',
-  dailyLimitEnterAtLeastMinutes: '최소 {{min}}분을 입력하세요.',
+  dailyLimitEnterAtLeastMinutes: '최소 {{count}}분을 입력하세요.',
   dailyLimitMaxMinutes: '일일 제한은 최대 {{max}}분(24시간)입니다.',
   rulesSectionTitle: '부모님의 규칙',
   rulesSectionDescription: '부모님이 이 기기에 설정한 규칙이에요.',

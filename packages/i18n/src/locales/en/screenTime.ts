@@ -42,7 +42,6 @@ export const screenTime = {
   noDailyLimitSet: 'No Daily Limit set',
   limitReachedStatus: '{{used}} / {{limit}} · Limit reached',
   minutesUsedStatus: 'Used {{used}} / {{limit}}',
-  usageUpdatesHint:
-    'Usage updates every few minutes while Screen Time monitoring is active.',
+  usageUpdatesHint: 'Usage can take up to {{minutes}} minutes to reach this screen.',
   dailyLimitMinutes: '{{limitMinutes}} min',
 } as const;

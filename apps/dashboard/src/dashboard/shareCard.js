@@ -1,5 +1,4 @@
-import { t as translate } from '@kidgate/i18n/web';
-import { formatRange, reportPresentation } from './reportCopy.js';
+import { appTranslate, formatRange, reportPresentation } from './reportCopy.js';
 
 /**
  * The weekly report as a picture a parent can send to the other parent.
@@ -145,6 +144,7 @@ export function buildShareModel(report, familyName) {
     // Three is what the layout below has room for. The digest already caps
     // findings at three, so this only bites if that cap ever changes.
     findings: presentation.findings.slice(0, 3),
+    highlightsTitle: appTranslate('report.highlights'),
     footer: 'kidgate.app',
   };
 }
@@ -287,7 +287,7 @@ export function drawShareCard(model) {
   if (model.findings.length > 0) {
     ctx.fillStyle = palette.textSecondary;
     ctx.font = font(stack, 26, 600);
-    ctx.fillText(translate('report.highlights').toUpperCase(), MARGIN, y);
+    ctx.fillText(model.highlightsTitle.toUpperCase(), MARGIN, y);
     y += 40;
 
     model.findings.forEach(entry => {

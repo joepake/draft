@@ -2,6 +2,7 @@ export const webFilter = {
   title: 'Webフィルター',
   fallbackDeviceName: '子どものデバイス',
   appliesToAll: '{{name}}のすべてのデバイス（{{count}}台）に適用されます',
+  appliesToSome: '{{name}}の{{total}}台のデバイスのうち{{supported}}台に適用されます',
   coverageLine: '{{total}}台中{{enforcing}}台で有効',
   mergeNotice:
     '{{name}}のデバイスごとにWebフィルター設定が異なっていました。ここで保存すると、より厳しい設定に統合された1つの設定がすべてに適用されます。',
@@ -16,17 +17,20 @@ export const webFilter = {
     '子どものMacでKidGateのコンテンツフィルターを実行し、ブラウザや多くのアプリで既知の不適切なサイトをブロックします。',
   toggleHintIos:
     'お子さまが一度KidGateのVPN接続を許可し、デバイスのパスコードを入力する必要があります。フィルターの動作にはVPNを削除せずに残してください。',
+  heroSubtitleIosApple:
+    'Appleのスクリーンタイムのコンテンツフィルターを使い、お子さまのiPhoneやiPadのSafariとアプリ内ブラウザでアダルトコンテンツを制限します。',
+  toggleHintIosApple: '子どものデバイスでスクリーンタイムの権限が必要です。',
   toggleHintAndroid:
     'お子さまが一度KidGateのVPN接続を承認する必要があります。フィルターの動作にはVPNをオンのままにしてください。',
   toggleHintMacos:
-    'お子さまがシステム設定でKidGateフィルター拡張機能を一度承認する必要があります。フィルターが機能するよう承認された状態を保ってください。',
+    'お子さまがMacでKidGateフィルター拡張機能を一度承認する必要があります。フィルターが機能するよう承認された状態を保ってください。',
   toggleAccessibilityLabel: 'Webフィルターを有効にする',
   safeSearchSectionTitle: 'セーフサーチと YouTube',
   safeSearchSectionSubtitle:
     'Google、Bing、DuckDuckGo を安全な結果に強制し、YouTube を制限付きモードに固定します。Webフィルターがオンになっている必要があります。',
   safeSearchLabel: 'セーフサーチを強制',
   safeSearchHint:
-    'Google セーフサーチ、YouTube 制限付きモード、Bing、DuckDuckGo を厳格設定に固定します。Android、Android TV、Chrome。',
+    'Google セーフサーチ、YouTube 制限付きモード、Bing、DuckDuckGo を厳格設定に固定します。AndroidとChrome。',
   safeSearchStrictNote:
     'YouTube は最も厳しいレベルで動作します。コメントは非表示になり、ふつうの動画も一部ブロックされます。子どもが自分のアカウントで解除することはできません。',
   infoTitle: '仕組み',
@@ -36,6 +40,12 @@ export const webFilter = {
     'Appleのアダルトコンテンツフィルターも、二重の保護としてSafariとアプリ内ブラウザで引き続き有効です。',
   infoLine3Ios:
     'フィルタリング中はVPNアイコンが表示されます。設定でVPNをオフにしても、数秒で自動的にオンに戻ります。VPNを削除すると、KidGateで再び許可されるまでフィルターは止まります。',
+  infoLine1IosApple:
+    'Appleのアダルトコンテンツフィルターが、Safariとアプリ内ブラウザでアダルトサイトを制限します。',
+  infoLine2IosApple:
+    'ほかのアプリ内のすべてをブロックするわけではなく、対象はアダルトコンテンツのみで、そのほかのカテゴリーは対象外です。',
+  infoLine3IosApple:
+    'お子さまのデバイスのアプリがルールを同期するときに、KidGateがこの設定を自動的に適用します。',
   infoLine1Android:
     'KidGateはデバイス上でプライベート接続を動かし、どのサイトが参照されているかを確認して、選んだカテゴリーに該当するサイトをブロックします。',
   infoLine2Android:
@@ -47,27 +57,28 @@ export const webFilter = {
   infoLine1Macos:
     'KidGateはMac上でコンテンツフィルターを実行し、アクセスされているサイトを確認して、設定したカテゴリに該当するものをブロックします。',
   infoLine2Macos:
-    '子どものMacでフィルターが未承認と表示される場合は、システム設定 → 一般 → ログイン項目と機能拡張を開いて承認してください。',
+    '子どものMacでフィルターが未承認と表示される場合は、そのMacでKidGateを開き、「設定を開く」を選択します。続いて、開いたページでKidGateをオンにします。',
   infoLine3Macos:
     '承認されると、子どものMacはフィルターを有効と表示します。そこでオフにされた場合は、KidGateを再度開いて復元してください。',
   infoLine4Macos:
-    'フィルターはサイト名を読み取りますが、最近のブラウザは訪問の約半分でこれを隠すため、それらのサイトはカテゴリーと照合されません。それでも、この方法で子どもがアクセスするほとんどのサイトはブロックされます。',
+    'フィルターは、接続に含まれるサイト名をもとに接続を判断します。KidGateのテストでは、HTTPS接続のおよそ半数に読み取れる名前が含まれていなかったため、それらはカテゴリーと照合されず、ブロック対象のサイトが開いてしまうことがあります。',
   privateDnsBannerTitle: 'プライベートDNSをオフにする',
   privateDnsBannerBody:
     'プライベートDNSがオンのため、Webフィルターが回避される可能性があります。フィルターを機能させるにはオフにしてください。',
   privateDnsBannerButton: 'DNS設定を開く',
   vpnConsentBannerTitle: 'WebフィルターのVPNを復旧',
   vpnConsentBannerBody:
-    'KidGateのVPNがオフです。アダルトフィルターにはVPNの接続維持が必要です。',
+    'KidGateのVPNがオフです。WebフィルターにはVPNの接続維持が必要です。',
   vpnConsentBannerButton: 'VPNを有効にする',
   vpnDisclosureNote:
     'Webフィルターがオンの間、KidGateのVPNはこのデバイス上でのみ動作します。VPNが確認するのは、デバイスがアクセスする各サイトの名前だけで、ページの内容、入力した文字、その他の通信は確認しません。保護者が選んだサイトをブロックし、このデバイスのウェブ閲覧履歴（閲覧・ブロックされたサイト）を保護者に表示します。この履歴は30日間保存されます。KidGateがこのデータを販売したり、ほかの目的に使ったりすることはありません。',
   iosOnlyNote: 'iPhoneではプライベート接続とスクリーンタイムを使用',
+  iosAppleNote: 'iPhoneではAppleのスクリーンタイムのコンテンツフィルターを使用',
   androidVpnNote: 'AndroidではローカルDNS VPNを使用',
   macosFilterNote: 'MacではKidGateのコンテンツフィルターを使用',
 
   heroSubtitleWindows:
-    'お子さまのPCでKidGate独自のリゾルバーを動かし、既知の不適切なサイトをすべてのブラウザーでブロックします。',
+    'お子さまのPCでKidGate独自のリゾルバーを動かし、既知の不適切なサイトをChrome、Edge、Firefoxでブロックします。',
   heroSubtitleExtension:
     'お子さまのパソコンのChromeでKidGate拡張機能を動かし、そのブラウザで既知の不適切なサイトをブロックします。',
 
@@ -94,7 +105,7 @@ export const webFilter = {
   infoLine3Extension:
     'シークレット ウィンドウがフィルタリングされるのは、拡張機能で「シークレット モードでの実行を許可する」がオンになっている場合だけです。ゲストモードのウィンドウはフィルタリングされません。',
   infoLine4Extension:
-    'ブロックされたページから、お子さまはそのサイトの許可をあなたに求められます。拡張機能を削除するかオフにすると、フィルターは停止します。',
+    'ファミリーがPremiumの間は、ブロックされたページからお子さまがそのサイトの許可をあなたに求められます。拡張機能を削除するかオフにすると、フィルターは停止します。',
 
   windowsFilterNote: 'WindowsではKidGate独自のリゾルバーを使用',
   extensionFilterNote: 'ChromeではKidGate拡張機能を使用',
@@ -123,10 +134,10 @@ export const webFilter = {
   domainPlaceholder: 'example.com',
   addDomain: 'サイトを追加',
   removeDomain: '{{domain}}を削除',
-  invalidDomain: 'example.com のようにサイトのアドレスを入力してください',
+  invalidDomain: 'example.com のようにサイトのアドレスを入力してください。',
   listFull: 'このリストには最大{{max}}件まで保存できます。',
   openHistory: 'ウェブ履歴',
-  openHistorySubtitle: 'このデバイスがどのサイトに到達し、何がブロックされたかを見る',
+  openHistorySubtitle: 'このデバイスがどのサイトに到達し、何がブロックされたかを見る。',
   blockedPageTitle: 'サイトはブロックされました',
   blockedPageBody:
     'KidGate がこのサイトをブロックしました。まちがいだと思ったら、保護者に聞いてみてください。',
@@ -207,6 +218,8 @@ export const webFilter = {
   askToOpenTooSoon:
     'リクエストを送ったばかりです。1分たってからもう一度お試しください。',
   askToOpenTooMany: '一度にリクエストできるサイトは少しだけです。',
+  askToOpenUnavailable:
+    'いまはサイトのリクエストができません。保護者に直接お願いしてください。',
   requestsTitle: 'サイトのリクエスト',
   requestsSubtitle: 'このデバイスが許可を求めたサイト。',
   siteRequestApproved: 'サイトを許可しました',

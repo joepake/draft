@@ -40,7 +40,7 @@ export const settings = {
   accountLinkCredentialInUse:
     'This email or provider is already used by another KidGate account.',
   accountLinkRequiresRecentLogin:
-    'For security, please sign out and sign in again before linking this method.',
+    'For your security, sign out and sign in again, then try this once more.',
   accountLinkActionLink: 'Link',
   accountLinkActionUnlink: 'Unlink',
   accountLinkActionVerify: 'Verify',
@@ -85,7 +85,7 @@ export const settings = {
   reportAttachmentsTooMany: 'You can attach up to {{max}} images.',
   reportAttachmentTooLarge:
     'Still {{size}} after resizing, so it was not attached. The limit is {{limit}} per image.',
-  reportAttachmentUnreadable: 'That file could not be read. Choose another image.',
+  reportAttachmentUnreadable: 'Unable to read that file. Choose another image.',
   reportSendButton: 'Send report',
   reportSending: 'Sending…',
   toastReportSent: 'Thank you — your report was sent.',
@@ -95,13 +95,17 @@ export const settings = {
     'You will be signed out on this device and asked again who this device is for. Sign in to manage devices. Your account, family, and child devices are unchanged.',
   removeParentDeviceAlertTitle: 'Remove parent device?',
   removeParentDeviceAlertMessage:
-    '{{deviceName}} will be signed out of this account and stop receiving notifications. Whoever has it can sign in again with the password.',
+    '{{deviceName}} will be signed out of this account and stop receiving notifications. Whoever has it can sign in again.',
   toastParentDeviceRemoved: '{{deviceName}} removed.',
   signedOutByAnotherDevice:
     'This device was signed out of the parent account from another device. Sign in again to continue.',
   deleteAccountTitle: 'Delete account',
   deleteAccountSubtitleDefault: 'Permanently delete your account and all data',
-  deleteAccountAlertTitle: 'Delete account permanently?',
+  // A co-parent's row: their deletion removes only their own sign-in and
+  // settings, so the owner's sentence would be false (see the Member alert).
+  deleteAccountSubtitleMember:
+    'Permanently delete your own sign-in and settings. The family stays.',
+  deleteAccountAlertTitle: 'Schedule account deletion?',
   deleteAccountAlertMessage:
     'This schedules your family account for deletion. Nothing is removed yet — you can sign in and cancel any time before the deletion date. After that, all data (devices, activity, location history, SOS photos) is permanently deleted for every parent and child.',
   // A co-parent's deletion removes only their own sign-in and settings
@@ -110,7 +114,7 @@ export const settings = {
     'This schedules your own account for deletion. Nothing is removed yet — you can sign in and cancel any time before the deletion date. After that, your sign-in and your own settings are deleted. The family, its devices and the other parents are not affected.',
   deleteAccountSubscriptionNotice:
     'Deleting your account does not cancel a subscription. Cancel it in the App Store or Google Play.',
-  sendRequestButton: 'Delete permanently',
+  sendRequestButton: 'Schedule deletion',
   toastDeletionAlreadyPending: 'Account deletion is already in progress.',
   toastDeletionRequestFailed: 'Unable to start account deletion. Try again.',
   deletionRequestAlreadyPending:
@@ -197,7 +201,7 @@ export const settings = {
   statusScheduled: 'Scheduled',
   toastDeletionScheduled:
     'Deletion scheduled. You can cancel any time before the deletion date.',
-  toastDeletionCancelled: 'Account deletion cancelled.',
+  toastDeletionCancelled: 'Account deletion canceled.',
   toastDeletionCancelFailed: 'Unable to cancel account deletion. Try again.',
   deletionCancelNotFound: 'No scheduled deletion found for this account.',
   deletionGateTitle: 'Account scheduled for deletion',
@@ -206,6 +210,6 @@ export const settings = {
   deletionGateBodyPending:
     'This account is scheduled for deletion. You can still cancel.',
   deletionGateNote:
-    'Cancelling restores everything — devices, activity and family members stay exactly as they are.',
+    'Canceling restores everything — devices, activity and family members stay exactly as they are.',
   deletionGateCancelButton: 'Cancel deletion',
 } as const;

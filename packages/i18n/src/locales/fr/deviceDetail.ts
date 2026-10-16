@@ -4,7 +4,7 @@ export const deviceDetail = {
   notFoundTitle: 'Appareil',
   dangerTitle: 'Supprimer cet appareil',
   dangerDescription:
-    'Supprimez cet appareil de votre compte familial. Toutes les demandes de temps et l’historique d’activité associés à cet appareil seront supprimés.',
+    'Supprimez cet appareil de votre compte familial. Cela efface son historique de position, son historique d’utilisation, son historique web, les vidéos regardées, la liste des applis installées, les Demandes de temps, les demandes de sites, les Tâches à récompense, les Check-ins, les alertes SOS et l’activité.',
   removeButton: 'Supprimer l’appareil',
   removingButton: 'Suppression…',
   showAllFeatures: 'Afficher toutes les fonctions',
@@ -12,7 +12,7 @@ export const deviceDetail = {
   essentialControls: 'Contrôles essentiels',
   dailyRulesAndDeviceAccess: 'Règles quotidiennes et accès à l’appareil',
   dailyLimit: 'Limite quotidienne',
-  setDailyScreenTimeCap: 'Définir une limite quotidienne de temps d’écran',
+  setDailyScreenTimeCap: 'Définir une Limite quotidienne',
   blockedHours: 'Heures bloquées',
   manageTimeRanges: 'Gérer jusqu’à {{max}} plages horaires',
   blockedApps: 'Applications bloquées',
@@ -38,7 +38,7 @@ export const deviceDetail = {
   placeAlerts: 'Lieux',
   reviewPlaceAlerts: 'Être averti à l’arrivée ou au départ',
   noPlacesYet: 'Aucun lieu',
-  tamperAlerts: 'Protection',
+  tamperAlerts: 'Alertes de protection',
   reviewTamperAlerts: 'Voir quand la protection est désactivée',
   editDeviceName: 'Modifier le nom de l’appareil',
   editDeviceNameSubtitle:
@@ -63,13 +63,14 @@ export const deviceDetail = {
   notAvailableInExtension: 'Indisponible dans l’extension',
   webFilterAwaitingApproval: 'En attente d’autorisation sur {{platform}}',
   webFilterSwitchedOffOnDevice: 'Désactivé sur {{platform}}',
+  webFilterPrivateDnsOnDevice: 'Contourné par le DNS privé sur {{platform}}',
   unableToUpdateDeviceName:
     'Impossible de mettre à jour le nom de l’appareil. Veuillez réessayer.',
   renameOwnerOnly: 'Seul le propriétaire de la famille peut renommer les appareils.',
   removeOwnerOnly: 'Seul le propriétaire de la famille peut supprimer les appareils.',
   removeDeviceTitle: 'Supprimer l’appareil ?',
   removeDeviceMessage:
-    '{{deviceName}} sera déconnecté de votre compte. Toutes les demandes de temps et l’historique d’activité associés seront supprimés.',
+    '{{deviceName}} sera déconnecté de votre compte. Cela efface son historique de position, son historique d’utilisation, son historique web, les vidéos regardées, la liste des applis installées, les Demandes de temps, les demandes de sites, les Tâches à récompense, les Check-ins, les alertes SOS et l’activité.',
   unableToRemoveDevice: 'Impossible de supprimer l’appareil. Veuillez réessayer.',
   checkInNotificationSent: '{{deviceName}} recevra une demande de Check-in.',
   checkInOfflineTitle: 'Cet appareil semble hors ligne',
@@ -82,7 +83,7 @@ export const deviceDetail = {
     'Check-in en attente — {{deviceName}} le recevra dès son retour en ligne.',
   unableToRequestCheckIn:
     'Impossible d’envoyer une demande de Check-in. Veuillez réessayer.',
-  tapToSetDailyCap: 'Définissez une limite quotidienne',
+  tapToSetDailyCap: 'Appuyez pour définir une Limite quotidienne',
   usageUpdatesFromChildDevice: 'Mises à jour d’utilisation de l’appareil de l’enfant',
   minutesUsedToday: 'Aujourd’hui : {{used}} / {{limit}}',
   noBlockedHours: 'Aucune heure bloquée',
@@ -144,7 +145,7 @@ export const deviceDetail = {
   webHistorySitesUnit: 'sites',
   webHistorySitesUnit_one: 'site',
   managedAtChild:
-    'Les règles, récompenses, check-ins et alertes de cet appareil se gèrent dans le profil de {{childName}}',
+    'Les règles, récompenses, check-ins et alertes de sécurité de cet appareil se gèrent dans le profil de {{childName}}.',
   pauseBrowsing: 'Mettre la navigation en pause',
   pauseBrowsingDescription:
     'Suspend la navigation un moment. Les appels et les applis hors ligne continuent de fonctionner.',

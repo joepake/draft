@@ -24,7 +24,7 @@ export const child = {
   outOfScreenTimeToday:
     'आज का स्क्रीन टाइम खत्म हो गया है। माता-पिता से और माँग सकते हैं।',
   devicePaused: 'डिवाइस लॉक है',
-  devicePausedByParent: '{{deviceName}} अभी लॉक है।',
+  devicePausedByParent: 'आपके माता-पिता ने फ़िलहाल {{deviceName}} को लॉक कर दिया है।',
   phonePausedByParent: 'आपके माता-पिता ने अभी यह डिवाइस लॉक कर दिया है।',
   pausedAskParentOrSos:
     'ज़रूरत पड़ने पर माता-पिता से अनलॉक करने को कहें। आपातकाल में आप फिर भी SOS भेज सकते हैं।',
@@ -34,13 +34,13 @@ export const child = {
     'अगर आपको अभी यह डिवाइस चाहिए, तो माता-पिता से ब्लॉक किए गए समय बदलने को कहें। आपातकाल में आप फिर भी SOS भेज सकते हैं।',
   blockedHoursLockBodyUntil:
     'ब्लॉक किए गए समय {{time}} तक चल रहे हैं। आराम करने का अच्छा समय है।',
+  dailyLimitLockBody: 'आज का स्क्रीन टाइम खत्म हो गया है।',
   dailyLimitLockHint:
     'और समय चाहिए तो माता-पिता से कहें। आपातकाल में आप फिर भी SOS भेज सकते हैं।',
   appClosedTitle: 'ऐप बंद हो गया',
   appClosedBody: 'KidGate ने इसे बंद कर दिया क्योंकि यह अभी ब्लॉक है।',
   parentPausedAccess: 'आपके माता-पिता ने अभी यह डिवाइस लॉक कर दिया है।',
-  parentRestoredAccess:
-    'आपके माता-पिता ने डिवाइस अनलॉक कर दिया। आप इस्तेमाल जारी रख सकते हैं।',
+  parentRestoredAccess: 'आपके माता-पिता ने यह डिवाइस अनलॉक कर दिया है।',
   toastDailyLimitIncreased: 'आपके माता-पिता ने {{minutes}} मिनट और स्क्रीन टाइम जोड़ा।',
   errorDeviceNotRegistered:
     'यह डिवाइस अभी तैयार नहीं है। थोड़ी देर बाद फिर से कोशिश करें, या अगर ऐसा बार-बार हो तो इसे फिर से पेयर करें।',

@@ -2,6 +2,7 @@ export const webFilter = {
   title: '웹 필터',
   fallbackDeviceName: '자녀 기기',
   appliesToAll: '{{name}}의 모든 기기({{count}}대)에 적용됩니다',
+  appliesToSome: '{{name}}의 기기 {{total}}대 중 {{supported}}대에 적용됩니다',
   coverageLine: '{{total}}대 중 {{enforcing}}대에서 적용 중',
   mergeNotice:
     '{{name}}의 기기마다 웹 필터 설정이 달랐습니다. 여기서 저장하면 더 엄격한 쪽으로 합쳐진 하나의 설정이 모든 기기에 적용됩니다.',
@@ -16,17 +17,20 @@ export const webFilter = {
     '브라우저와 여러 앱에서 알려진 부적절한 사이트를 차단하기 위해 자녀의 Mac에서 KidGate 콘텐츠 필터를 실행합니다.',
   toggleHintIos:
     '자녀가 KidGate VPN 연결을 한 번 허용하고 기기 암호를 입력해야 합니다. 필터가 작동하려면 VPN을 삭제하지 말고 그대로 두세요.',
+  heroSubtitleIosApple:
+    'Apple 스크린 타임의 콘텐츠 필터를 사용해 자녀의 iPhone이나 iPad에 있는 Safari와 앱 내 브라우저에서 성인 콘텐츠를 제한합니다.',
+  toggleHintIosApple: '자녀 기기에서 스크린 타임 권한이 필요합니다.',
   toggleHintAndroid:
     '자녀가 KidGate VPN 연결을 한 번 승인해야 합니다. 필터가 작동하려면 VPN을 켜 두세요.',
   toggleHintMacos:
-    '자녀는 시스템 설정에서 KidGate 필터 확장 프로그램을 한 번 승인해야 합니다. 필터가 작동하려면 승인 상태를 유지하세요.',
+    '자녀는 Mac에서 KidGate 필터 확장 프로그램을 한 번 승인해야 합니다. 필터가 작동하려면 승인 상태를 유지하세요.',
   toggleAccessibilityLabel: '웹 필터 켜기',
   safeSearchSectionTitle: '세이프서치 및 YouTube',
   safeSearchSectionSubtitle:
     'Google, Bing, DuckDuckGo를 안전한 결과로 강제하고 YouTube를 제한 모드로 잠급니다. 웹 필터가 켜져 있어야 합니다.',
   safeSearchLabel: '세이프서치 강제 적용',
   safeSearchHint:
-    'Google 세이프서치, YouTube 제한 모드, Bing, DuckDuckGo를 엄격 설정으로 고정합니다. Android, Android TV, Chrome.',
+    'Google 세이프서치, YouTube 제한 모드, Bing, DuckDuckGo를 엄격 설정으로 고정합니다. Android와 Chrome.',
   safeSearchStrictNote:
     'YouTube가 가장 엄격한 수준으로 작동합니다. 댓글이 숨겨지고 일반 동영상도 일부 차단됩니다. 아이가 자기 계정에서 끌 수 없습니다.',
   infoTitle: '작동 방식',
@@ -36,6 +40,12 @@ export const webFilter = {
     'Apple 성인 콘텐츠 필터도 이중 보호를 위해 Safari와 앱 내 브라우저에서 계속 켜져 있습니다.',
   infoLine3Ios:
     '필터링 중에는 VPN 아이콘이 표시됩니다. 설정에서 VPN을 꺼도 몇 초 안에 다시 켜지며, VPN을 삭제하면 KidGate에서 다시 허용할 때까지 필터가 중단됩니다.',
+  infoLine1IosApple:
+    'Apple 성인 콘텐츠 필터가 Safari와 앱 내 브라우저에서 성인 웹사이트를 제한합니다.',
+  infoLine2IosApple:
+    '다른 앱 안의 모든 것을 차단하지는 않으며, 성인 콘텐츠만 대상으로 하고 다른 카테고리는 포함하지 않습니다.',
+  infoLine3IosApple:
+    '자녀 기기의 앱이 규칙을 동기화할 때 KidGate가 이 설정을 자동으로 적용합니다.',
   infoLine1Android:
     'KidGate는 기기에서 비공개 연결을 실행해 어떤 사이트에 접속하려는지 확인하고, 선택한 카테고리에 해당하는 사이트를 차단합니다.',
   infoLine2Android:
@@ -47,27 +57,28 @@ export const webFilter = {
   infoLine1Macos:
     'KidGate는 Mac에서 콘텐츠 필터를 실행하여 조회 중인 사이트를 확인하고, 설정한 카테고리에 해당하는 사이트를 차단합니다.',
   infoLine2Macos:
-    '자녀의 Mac에서 필터가 승인되지 않은 것으로 표시되면, 시스템 설정 → 일반 → 로그인 항목 및 확장 프로그램을 열어 승인하세요.',
+    '자녀의 Mac에서 필터가 승인되지 않은 것으로 표시되면, 그 Mac에서 KidGate를 열고 “설정 열기”를 선택하세요. 그런 다음 열리는 페이지에서 KidGate를 켜세요.',
   infoLine3Macos:
     '승인되면 자녀의 Mac에 필터가 활성 상태로 표시됩니다. 거기서 꺼지면 KidGate를 다시 열어 복원하세요.',
   infoLine4Macos:
-    '필터는 사이트 이름을 읽지만, 최신 브라우저는 방문의 약 절반에서 이를 숨기므로 해당 사이트는 카테고리에 따라 확인되지 않습니다. 그래도 이 방식으로 자녀가 접근하는 대부분의 사이트는 계속 차단됩니다.',
+    '필터는 연결에 담긴 사이트 이름으로 연결을 판단합니다. KidGate의 테스트에서는 HTTPS 연결의 약 절반에 읽을 수 있는 이름이 없었으며, 이런 연결은 카테고리에 따라 확인되지 않아 일부 차단 대상 사이트가 열릴 수 있습니다.',
   privateDnsBannerTitle: '프라이빗 DNS 끄기',
   privateDnsBannerBody:
     '프라이빗 DNS가 켜져 있어 웹 필터가 우회될 수 있어요. 필터가 작동하도록 꺼 주세요.',
   privateDnsBannerButton: 'DNS 설정 열기',
   vpnConsentBannerTitle: '웹 필터 VPN 복원',
   vpnConsentBannerBody:
-    'KidGate VPN이 꺼져 있어요. 성인 웹 필터는 VPN 연결이 유지되어야 해요.',
+    'KidGate VPN이 꺼져 있어요. 웹 필터는 VPN 연결이 유지되어야 해요.',
   vpnConsentBannerButton: 'VPN 켜기',
   vpnDisclosureNote:
     '웹 필터가 켜져 있는 동안 KidGate VPN은 이 기기에서만 작동해요. 기기가 찾는 각 사이트의 이름만 보고, 페이지 내용이나 입력한 내용, 그 밖의 트래픽은 절대 보지 않아요. 부모님이 고른 사이트를 차단하고, 이 기기의 웹 탐색 기록(방문하거나 차단된 사이트)을 부모님에게 보여 줘요. 이 기록은 30일 동안 보관돼요. KidGate는 이 데이터를 판매하거나 다른 용도로 쓰지 않아요.',
   iosOnlyNote: 'iPhone에서는 비공개 연결과 스크린 타임 사용',
+  iosAppleNote: 'iPhone에서는 Apple 스크린 타임의 콘텐츠 필터 사용',
   androidVpnNote: 'Android에서는 로컬 DNS VPN 사용',
   macosFilterNote: 'Mac에서는 KidGate 콘텐츠 필터 사용',
 
   heroSubtitleWindows:
-    '아이의 PC에서 KidGate 자체 리졸버를 실행해 모든 브라우저에서 알려진 부적절한 사이트를 차단합니다.',
+    '자녀의 PC에서 KidGate 자체 리졸버를 실행해 Chrome, Edge, Firefox에서 알려진 부적절한 사이트를 차단합니다.',
   heroSubtitleExtension:
     '자녀 컴퓨터의 Chrome에서 KidGate 확장 프로그램을 실행해, 그 브라우저에서 알려진 부적절한 사이트를 차단합니다.',
 
@@ -94,7 +105,7 @@ export const webFilter = {
   infoLine3Extension:
     '시크릿 창은 확장 프로그램에 “시크릿 모드에서 허용”이 켜져 있을 때만 필터링됩니다. 게스트 창은 필터링되지 않습니다.',
   infoLine4Extension:
-    '차단된 페이지에서 자녀가 이 사이트를 허용해 달라고 요청할 수 있습니다. 확장 프로그램을 삭제하거나 끄면 필터가 멈춥니다.',
+    '가족이 Premium을 사용하는 동안에는 차단된 페이지에서 자녀가 이 사이트를 허용해 달라고 요청할 수 있습니다. 확장 프로그램을 삭제하거나 끄면 필터가 멈춥니다.',
 
   windowsFilterNote: 'Windows에서 KidGate 자체 리졸버 사용',
   extensionFilterNote: 'Chrome에서는 KidGate 확장 프로그램 사용',
@@ -123,10 +134,10 @@ export const webFilter = {
   domainPlaceholder: 'example.com',
   addDomain: '사이트 추가',
   removeDomain: '{{domain}} 제거',
-  invalidDomain: 'example.com 처럼 사이트 주소를 입력하세요',
+  invalidDomain: 'example.com 같은 사이트 주소를 입력하세요.',
   listFull: '이 목록에는 최대 {{max}}개까지 저장할 수 있습니다.',
   openHistory: '웹 기록',
-  openHistorySubtitle: '이 기기가 접속한 사이트와 차단된 항목 보기',
+  openHistorySubtitle: '이 기기가 접속한 사이트와 차단된 항목 보기.',
   blockedPageTitle: '사이트가 차단되었어요',
   blockedPageBody:
     'KidGate가 가족을 위해 이 사이트를 차단했어요. 잘못되었다고 생각되면 부모님께 물어보세요.',
@@ -206,6 +217,8 @@ export const webFilter = {
   askToOpenPending: '이미 사이트를 요청했어요. 답을 기다려 주세요.',
   askToOpenTooSoon: '방금 요청을 보냈어요. 1분 뒤에 다시 해 보세요.',
   askToOpenTooMany: '한 번에 몇 개까지만 요청할 수 있어요.',
+  askToOpenUnavailable:
+    '지금은 사이트를 요청할 수 없어요. 부모님께 직접 말씀드려 보세요.',
   requestsTitle: '사이트 요청',
   requestsSubtitle: '이 기기가 허용을 요청한 사이트예요.',
   siteRequestApproved: '사이트를 허용함',

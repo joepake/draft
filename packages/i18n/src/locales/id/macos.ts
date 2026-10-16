@@ -10,12 +10,12 @@ export const macos = {
   headingRemovable: 'Seberapa mudah KidGate dihapus dari perangkat ini',
 
   parentAccessBody:
-    'Masukkan PIN Orang Tua untuk memilih aplikasi yang diblokir di Mac ini.',
+    'Masukkan PIN Orang Tua untuk memilih aplikasi yang diblokir di perangkat ini.',
   checking: 'Memeriksa…',
 
   enforcing: 'Perlindungan berjalan',
   enforcingYes: 'Ya',
-  enforcingFailed: 'Tidak — {{count}} pemeriksaan berturut-turut gagal',
+  enforcingFailed: 'Perlindungan terganggu · {{count}} pemeriksaan terakhir gagal',
 
   lockState: 'Perangkat terkunci',
   lockStateNo: 'Tidak',
@@ -65,7 +65,7 @@ export const macos = {
   setupStepFilterSwitchWaiting:
     'Muncul di System Settings setelah langkah di atas disetujui.',
   setupStepLocationBody:
-    'Membuat keluarga Anda bisa melihat lokasi perangkat ini. Tidak ada yang dibagikan sampai Anda menyalakan “Bagikan lokasi”.',
+    'Membuat keluarga Anda bisa melihat lokasi perangkat ini. Tidak ada yang dibagikan sampai Anda menyalakan “Bagikan lokasi” di aplikasi KidGate.',
   setupStepCameraTitle: 'Kamera',
   setupStepCameraBody:
     'Melampirkan foto saat anak Anda mengirim SOS atau menjawab Check-In. Sekarang tidak ada foto yang diambil.',
@@ -120,7 +120,7 @@ export const macos = {
 
   chooseApps: 'Pilih aplikasi yang ingin diblokir',
   chooseAppsHint:
-    'Pilih aplikasi yang diblokir di Mac ini. Orang tua bisa menyalakan atau mematikan pemblokiran dari ponselnya.',
+    'Pilih aplikasi yang diblokir di perangkat ini. Orang tua bisa menyalakan atau mematikan pemblokiran dari ponselnya.',
   saveSelection: 'Simpan',
-  noAppsFound: 'Tidak ada aplikasi yang ditemukan di folder Applications.',
+  noAppsFound: 'Tidak ada aplikasi yang ditemukan di perangkat ini.',
 };

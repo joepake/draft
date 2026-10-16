@@ -7,19 +7,19 @@ export const notifications = {
     'Di ponsel ini, SOS muncul sebagai banner kecil, bukan memenuhi layar, jadi lebih mudah terlewat. Izinkan peringatan layar penuh untuk memperbaikinya.',
   sosFullScreenAllow: 'Izinkan peringatan layar penuh',
   sectionAlerts: 'Peringatan',
-  sectionAlertsHint: 'Pilih hal yang diberitahukan ke ponsel ini.',
+  sectionAlertsHint: 'Pilih peringatan mana yang dikirim ke ponsel orang tua.',
   sectionSummary: 'Ringkasan',
   sectionQuietHours: 'Jam tenang',
   sectionQuietHoursHint:
-    'Peringatan senyap selama rentang ini. SOS tidak pernah dibisukan, dan Peringatan pesan yang paling serius tetap masuk.',
+    'Tidak ada peringatan yang dikirim selama rentang ini, dan tidak ada yang dikirim setelahnya. Peristiwa tetap muncul di Aktivitas. SOS tidak pernah ditahan, dan Peringatan pesan yang paling serius tetap masuk.',
   quietHoursLabel: 'Jam tenang',
   quietHoursOff: 'Nonaktif — peringatan datang kapan saja',
-  quietHoursActive: 'Senyap dari {{start}} sampai {{end}}',
+  quietHoursActive: 'Tidak ada peringatan dikirim dari {{start}} sampai {{end}}',
   quietHoursStart: 'Dari',
   quietHoursEnd: 'Sampai',
   quietHoursSameTime: 'Pilih dua waktu yang berbeda.',
   footnote:
-    'Pengaturan ini hanya berlaku untuk ponsel ini. Perangkat orang tua lain punya pengaturannya sendiri.',
+    'Pengaturan ini hanya berlaku untuk satu ponsel. Perangkat orang tua lain punya pengaturannya sendiri.',
   toastSaveFailed: 'Tidak dapat menyimpan. Coba lagi.',
   localReminderSetupTitle: 'Selesaikan penyiapan KidGate',
   localReminderIdleTitle: 'Aturan Anda tetap berjalan',
@@ -30,15 +30,15 @@ export const notifications = {
     'Jika tidak ada yang membuka KidGate selama {{days}} hari, perangkat anak berhenti melapor sampai ada yang membukanya lagi. Aturan Anda tetap berjalan.',
   alert: {
     tamperAlerts: {
-      label: 'Perlindungan dimatikan',
+      label: 'Peringatan perlindungan',
       hint: 'Di perangkat anak, izin yang dibutuhkan KidGate dimatikan, tanggal, waktu, atau zona waktu diubah, atau SOS ditekan saat perangkat terkunci. Peringatan SOS itu sendiri selalu masuk.',
     },
     placeAlerts: {
-      label: 'Kedatangan dan kepergian',
+      label: 'Peringatan Tempat',
       hint: 'Anak Anda tiba di tempat tersimpan atau meninggalkannya.',
     },
     timeRequests: {
-      label: 'Permintaan waktu tambahan',
+      label: 'Permintaan waktu',
       hint: 'Anak Anda meminta tambahan waktu layar.',
     },
     siteRequests: {
@@ -50,7 +50,7 @@ export const notifications = {
       hint: 'Anak Anda membalas permintaan check-in keamanan.',
     },
     rewardTasks: {
-      label: 'Klaim hadiah',
+      label: 'Tugas hadiah',
       hint: 'Anak Anda menandai tugas hadiah sebagai selesai.',
     },
     appActivity: {
@@ -62,7 +62,7 @@ export const notifications = {
       hint: 'Penggunaan di luar kebiasaan pada perangkat anak — larut malam, lonjakan, aplikasi baru.',
     },
     weeklyDigest: {
-      label: 'Ringkasan mingguan',
+      label: 'Laporan mingguan',
       hint: 'Rekap hari Senin tentang waktu layar dan pemblokiran.',
     },
     messageAlerts: {

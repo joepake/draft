@@ -27,7 +27,7 @@ export const child = {
   outOfScreenTimeToday:
     'Has usado todo el tiempo de pantalla de hoy. Puedes pedir más a tu padre o madre.',
   devicePaused: 'Dispositivo bloqueado',
-  devicePausedByParent: '{{deviceName}} está bloqueado ahora.',
+  devicePausedByParent: 'Tu padre o madre bloqueó {{deviceName}} por ahora.',
   phonePausedByParent: 'Tu padre o madre ha bloqueado este dispositivo por ahora.',
   pausedAskParentOrSos:
     'Pide a tu padre o madre que lo desbloquee cuando lo necesites. En una emergencia, aún puedes enviar un SOS.',
@@ -38,13 +38,13 @@ export const child = {
     'Si necesitas este dispositivo ahora, pide a tu padre o madre que cambie las Horas bloqueadas. En una emergencia, aún puedes enviar un SOS.',
   blockedHoursLockBodyUntil:
     'Las Horas bloqueadas están activas hasta las {{time}}. Es un buen momento para descansar.',
+  dailyLimitLockBody: 'Has usado todo el tiempo de pantalla de hoy.',
   dailyLimitLockHint:
     'Si necesitas más tiempo, pídeselo a tu padre o madre. En una emergencia, aún puedes enviar un SOS.',
   appClosedTitle: 'App cerrada',
   appClosedBody: 'KidGate la cerró porque ahora está bloqueada.',
   parentPausedAccess: 'Tu padre o madre ha bloqueado este dispositivo por ahora.',
-  parentRestoredAccess:
-    'Tu padre o madre desbloqueó este dispositivo. Puedes seguir usándolo.',
+  parentRestoredAccess: 'Tu padre o madre desbloqueó este dispositivo.',
   toastDailyLimitIncreased:
     'Tu padre o madre añadió {{minutes}} minutos más de tiempo de pantalla.',
   toastDailyLimitIncreased_one:

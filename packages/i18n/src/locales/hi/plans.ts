@@ -9,7 +9,7 @@ export const plans = {
   pillTrialActiveFallback: 'ट्रायल सक्रिय',
   statusTrialEndedTitle: 'ट्रायल समाप्त',
   statusTrialEndedSubtitle:
-    'दैनिक सीमा, ब्लॉक किए गए समय, ब्लॉक किए गए ऐप्स, वेब फ़िल्टर और स्थान मुफ़्त में चलते रहते हैं। लाइव अपडेट, इतिहास, अलर्ट और रिपोर्ट के लिए सदस्यता लें।',
+    'दैनिक सीमा, ब्लॉक किए गए समय, ब्लॉक किए गए ऐप्स, स्थान और वेब फ़िल्टर का स्विच मुफ़्त में चलते रहते हैं। लाइव अपडेट, इतिहास, अलर्ट और रिपोर्ट के लिए सदस्यता लें।',
   pillTrialEnded: 'ट्रायल समाप्त',
   statusStartTrialTitle: 'अपना ट्रायल शुरू करें',
   statusStartTrialSubtitle:
@@ -33,8 +33,8 @@ export const plans = {
   compareDevicesFree: 'नियम सभी पर, रिपोर्ट 1 से',
   compareDevicesPremium: 'रिपोर्ट सभी से',
   compareParents: 'अभिभावक',
-  compareParentsFree: 'अधिकतम 3',
-  compareParentsPremium: 'अधिकतम 6',
+  compareParentsFree: 'अधिकतम 3, आप सहित',
+  compareParentsPremium: 'अधिकतम 6, आप सहित',
   compareSync: 'डिवाइस से अपडेट',
   compareSyncFree: 'जब आप खोलकर देखें',
   compareSyncPremium: 'लाइव',
@@ -54,7 +54,7 @@ export const plans = {
   compareSafety: 'सुरक्षा अलर्ट और चेक-इन',
   compareSafetyFree: 'अलर्ट + चेक-इन',
   compareSafetyPremium: 'हर चेक-इन के साथ फ़ोटो जोड़ता है',
-  compareControls: 'ऐप ब्लॉक और वेब फ़िल्टर',
+  compareControls: 'ब्लॉक किए गए ऐप्स और वेब फ़िल्टर',
   compareControlsFree: 'कोई भी ऐप, श्रेणियों का तय सेट',
   compareControlsPremium: 'श्रेणी के अनुसार, अपनी सूचियाँ, साइट के अनुरोध',
   compareReport: 'साप्ताहिक रिपोर्ट',
@@ -65,7 +65,7 @@ export const plans = {
   compareActivityFeedPremium: '30 दिन',
   compareChildReport: 'हर बच्चे की रिपोर्ट',
   compareIncluded:
-    'दोनों प्लान में एक परिवार के iPhone, Android, Mac और Windows पर दैनिक सीमा, ब्लॉक किए गए समय, ब्लॉक किए गए ऐप्स, ऐप सीमाएँ, नए ऐप्स की मंज़ूरी, वेब फ़िल्टर, डिवाइस लॉक, SOS, समय अनुरोध और इनाम वाले टास्क शामिल हैं, साथ ही वेब डैशबोर्ड भी। Android TV और Chromebook भी समर्थित हैं, हालाँकि उन पर कम नियंत्रण उपलब्ध हैं।',
+    'दोनों प्लान में एक परिवार के iPhone, Android, Mac और Windows पर दैनिक सीमा, ब्लॉक किए गए समय, ब्लॉक किए गए ऐप्स, नए ऐप्स की मंज़ूरी, वेब फ़िल्टर, डिवाइस लॉक, SOS, समय अनुरोध और इनाम वाले टास्क शामिल हैं, साथ ही वेब डैशबोर्ड भी, और Android, Mac और Windows पर ऐप सीमाएँ भी। Android TV और Chromebook भी समर्थित हैं, हालाँकि उन पर कम नियंत्रण उपलब्ध हैं।',
   sectionWhyPremium: 'Premium में क्या जुड़ता है',
   sectionWhyPremiumSubtitle:
     'हर नियम मुफ़्त में भी चलता रहता है। Premium में यह जुड़ता है कि आप क्या देख सकते हैं, और कितनी जल्दी।',
@@ -124,7 +124,7 @@ export const plans = {
   memberTrialActiveSubtitle:
     'यह परिवार ट्रायल पर है। ट्रायल खत्म होने पर हर नियम हर डिवाइस पर चलता रहेगा और एक डिवाइस रिपोर्ट भेजता रहेगा; मालिक लाइव गतिविधि, इतिहास और हर डिवाइस से रिपोर्ट के लिए सदस्यता ले सकता है।',
   memberTrialEndedSubtitle:
-    'इस परिवार का ट्रायल खत्म हो गया है। दैनिक सीमा, ब्लॉक किए गए समय, ब्लॉक किए गए ऐप्स, वेब फ़िल्टर और स्थान अब भी चलते हैं। लाइव अपडेट, इतिहास और अलर्ट के लिए परिवार के मालिक से सदस्यता लेने को कहें।',
+    'इस परिवार का ट्रायल खत्म हो गया है। दैनिक सीमा, ब्लॉक किए गए समय, ब्लॉक किए गए ऐप्स, स्थान और वेब फ़िल्टर का स्विच अब भी चलते हैं। लाइव अपडेट, इतिहास और अलर्ट के लिए परिवार के मालिक से सदस्यता लेने को कहें।',
   memberSetupTrialSubtitle:
     'जब स्वामी एक अभिभावक डिवाइस और एक बच्चे का डिवाइस कनेक्ट करता है, तब ट्रायल शुरू होता है।',
   premiumActivatedTitle: 'Premium अनलॉक हो गया',
@@ -143,7 +143,8 @@ export const plans = {
   subscriptionOfferNotConfigured:
     'यह सदस्यता अभी उपलब्ध नहीं है। कृपया बाद में पुनः प्रयास करें।',
   unableToStartPurchase: 'खरीदारी शुरू नहीं हो सकी। कृपया पुनः प्रयास करें।',
-  noActiveSubscription: 'कोई सक्रिय सदस्यता नहीं मिली।',
+  noActiveSubscription:
+    'कोई सक्रिय सदस्यता नहीं मिली। उसी App Store या Google Play खाते से साइन इन करें जिससे आपने सदस्यता ली थी, फिर दोबारा प्रयास करें।',
   purchasesRestored: 'खरीदारी पुनर्स्थापित हो गई।',
   unableToRestorePurchases: 'खरीदारी पुनर्स्थापित नहीं हो सकी। कृपया पुनः प्रयास करें।',
   purchaseVerificationFailed:
@@ -152,8 +153,8 @@ export const plans = {
   // has to name who needs to act instead of offering a button they can't use.
   familyPremiumEndedTitle: 'इस परिवार का Premium समाप्त हो गया है',
   familyPremiumEndedBody:
-    'दैनिक सीमा, ब्लॉक किए गए समय, ब्लॉक किए गए ऐप्स, वेब फ़िल्टर और स्थान अब भी चलते हैं। लाइव अपडेट, इतिहास, अलर्ट और रिपोर्ट तब तक रुके रहेंगे जब तक परिवार का मालिक Premium नवीनीकृत नहीं करता।',
-  pricesUnavailable: 'स्टोर से कीमतें लोड नहीं हो सकीं।',
+    'दैनिक सीमा, ब्लॉक किए गए समय, ब्लॉक किए गए ऐप्स, स्थान और वेब फ़िल्टर का स्विच अब भी चलते हैं। लाइव अपडेट, इतिहास, अलर्ट और रिपोर्ट तब तक रुके रहेंगे जब तक परिवार का मालिक Premium नवीनीकृत नहीं करता।',
+  pricesUnavailable: 'स्टोर से कीमतें लोड नहीं हो पा रहीं।',
   pricesRetry: 'फिर से प्रयास करें',
   featureRewardTasks: 'इनाम वाले टास्क',
   sectionChoosePlan: 'अपना प्लान चुनें',
@@ -183,11 +184,11 @@ export const plans = {
   platformMac: 'Mac',
   platformMacDetail: 'सिर्फ़ बच्चे का डिवाइस · macOS 12 या बाद का',
   platformIosLimits:
-    'ऐप सीमाएँ और संदेश सूचनाएँ उपलब्ध नहीं हैं, और ब्लॉक किए जाने वाले ऐप्स iPhone पर ही चुने जाते हैं।',
+    'ऐप सीमाएँ और संदेश चेतावनियाँ उपलब्ध नहीं हैं, और “ब्लॉक किए गए ऐप्स” के लिए ऐप्स iPhone पर ही चुने जाते हैं।',
   platformMacLimits: 'संदेश सूचनाएँ नहीं हैं, और स्थान अनुमानित है।',
   platformWindowsLimits: 'संदेश सूचनाएँ नहीं हैं, और स्थान अनुमानित है।',
   platformAndroidTvLimits:
-    'संदेश सूचनाएँ, स्थान, SOS और समय अनुरोध उपलब्ध नहीं हैं। ऐप ब्लॉकिंग यथासंभव ही काम करती है।',
+    'संदेश चेतावनियाँ, स्थान, SOS और समय अनुरोध उपलब्ध नहीं हैं। ब्लॉक किए गए ऐप्स की सुविधा यथासंभव ही काम करती है।',
   platformChromebookLimits:
     'सिर्फ़ वेब फ़िल्टर — दैनिक सीमा, ब्लॉक किए गए समय, ब्लॉक किए गए ऐप्स, डिवाइस लॉक, SOS और स्थान उपलब्ध नहीं हैं।',
   platformComingSoon: 'जल्द आ रहा है',

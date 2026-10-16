@@ -36,9 +36,9 @@ export const report = {
   findingNewTopApp: '{{app}} est nouvelle cette semaine et occupe déjà {{duration}}.',
   findingAppSurge:
     '{{app}} progresse de {{delta}} par rapport à la semaine dernière : {{duration}} au total.',
-  findingLimitHit_one: 'La limite quotidienne de {{limit}} a été atteinte un jour.',
+  findingLimitHit_one: 'La Limite quotidienne de {{limit}} a été atteinte un jour.',
   findingLimitHit_other:
-    'La limite quotidienne de {{limit}} a été atteinte {{count}} jours.',
+    'La Limite quotidienne de {{limit}} a été atteinte {{count}} jours.',
   findingBlockedApps:
     '{{count}} ouvertures d’applications bloquées, contre {{previous}} la semaine dernière.',
   findingBlockedWeb:
@@ -50,7 +50,7 @@ export const report = {
   // chiffre qui l’appuie ; aucune ne complimente — `docs/COPY_STYLE.md`
   // interdit la flatterie autant que l’alarme.
   findingLimitRespected:
-    'La limite quotidienne de {{limit}} a été respectée les {{count}} jours.',
+    'La Limite quotidienne de {{limit}} a été respectée les {{count}} jours.',
   findingLateNightGone_one:
     'Aucune nuit tardive cette semaine, après une nuit la semaine dernière.',
   findingLateNightGone_other:
@@ -88,7 +88,7 @@ export const report = {
   share: 'Partager',
   copySummary: 'Copier le résumé',
   copied: 'Résumé copié.',
-  shareFailed: 'Impossible d’ouvrir le menu de partage.',
+  shareFailed: 'Impossible d’ouvrir le menu de partage. Réessayez.',
   shareLinkCta: 'Téléchargez l’appli sur {{url}}',
   shareFooterDesc:
     'KidGate aide les parents à gérer le temps d’écran, à voir la position et à filtrer le web.',
@@ -102,10 +102,11 @@ export const report = {
 
   emptyTitle: 'Pas encore de rapport',
   emptyBody:
-    'Un rapport arrive chaque lundi matin. Vous pouvez aussi rédiger celui de cette semaine maintenant : il couvre les sept derniers jours.',
+    'Avec Premium, un rapport arrive chaque lundi matin. Vous pouvez aussi rédiger celui de cette semaine maintenant : il couvre les sept derniers jours.',
   noUsage:
     'Aucun temps d’écran n’a été enregistré ces deux dernières semaines, il n’y a donc rien à rapporter. Un appareil hors ligne ne signale rien, ce qui n’est pas la même chose qu’une semaine calme.',
-  rateLimited: 'Trop de tentatives. Patientez une minute.',
+  rateLimited:
+    'Impossible de rédiger un autre rapport pour le moment. Réessayez dans une minute.',
   loadFailedTitle: 'Rapports non chargés',
   loadFailed: 'Impossible d’ouvrir les rapports. Tirez vers le bas pour réessayer.',
   failed: 'Impossible de rédiger le rapport. Réessayez dans un instant.',
@@ -124,10 +125,10 @@ export const report = {
   // pack.
   childrenTitle: 'Chaque enfant',
   childrenNoteByChild:
-    'La même quinzaine, chaque enfant sur tous les appareils qu’il utilise. Les pourcentages portent sur le total de la famille.',
+    'Cette semaine, chaque enfant sur tous les appareils qu’il utilise. Les pourcentages portent sur le total de la famille.',
   devicesTitle: 'Chaque appareil',
   childrenNote:
-    'La même quinzaine, par appareil. Les pourcentages portent sur le total de la famille.',
+    'Cette semaine, par appareil. Les pourcentages portent sur le total de la famille.',
   colChild: 'Enfant',
   colDevice: 'Appareil',
   colScreenTime: 'Temps d’écran',
@@ -155,14 +156,14 @@ export const report = {
     'Exemple — les chiffres réels apparaissent dès qu’un appareil est connecté',
   guestTitle: 'Voir où est passée la semaine',
   guestDescription:
-    'Connectez-vous pour mesurer aujourd’hui face à une journée normale, comparer vos enfants côte à côte et recevoir un rapport chaque lundi.',
+    'Connectez-vous pour mesurer aujourd’hui face à une journée normale, comparer vos enfants côte à côte et, avec Premium, recevoir un rapport écrit chaque lundi.',
   guestBenefitTrendTitle: 'Aujourd’hui, face à l’ordinaire',
   guestBenefitTrendBody:
     'Un chiffre seul ne dit rien. Aujourd’hui est toujours tracé face à la moyenne quotidienne de votre propre famille.',
   guestBenefitChildTitle: 'Chaque enfant, côte à côte',
   guestBenefitChildBody:
     'La part de journée de chaque enfant, dans sa propre couleur, sur tous les appareils qu’il utilise.',
-  guestBenefitWeeklyTitle: 'Un rapport chaque lundi',
+  guestBenefitWeeklyTitle: 'Un rapport chaque lundi, avec Premium',
   guestBenefitWeeklyBody:
     'Ce qui a changé, quelles applis ont progressé et les soirées tardives — conservé un an.',
   guestSignInButton: 'Se connecter',

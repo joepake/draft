@@ -1,0 +1,61 @@
+import type { ApiPort } from '@kidgate/ports/api';
+
+/**
+ * Browsers authorised to act as a parent.
+ *
+ * Every call carries the parent device credential, which is the whole point: a
+ * browser is trusted because someone holding an already-paired parent phone
+ * approved it, not because someone knew a password. The credential is attached
+ * by the adapter — callers only declare `as: 'parent'`.
+ *
+ * The QR goes web → phone: the dashboard renders the code and the phone scans
+ * it to approve. See `apps/dashboard/CLAUDE.md`.
+ */
+
+/** How a browser was allowed: a paired phone scanned its QR, or the Parent PIN. */
+export type WebSessionGrant = 'qr' | 'parentPin';
+
+/**
+ * A browser that can make changes, as `listParentWebSessions` answers. Only the
+ * caller's own live sessions; a browser that merely views (Google, Apple or
+ * email sign-in) has none and is never listed. `userAgent` through
+ * `@kidgate/core/domain/webSessionLabel`. A `*AtMs` of 0 is unknown.
+ */
+export interface WebSession {
+  id: string;
+  userAgent: string;
+  grantedVia: WebSessionGrant;
+  createdAtMs: number;
+  redeemedAtMs: number;
+  sessionExpiresAtMs: number;
+}
+
+export interface WebSessionRepositoryDeps {
+  api: ApiPort;
+}
+
+export function createWebSessionRepository(deps: WebSessionRepositoryDeps) {
+  const { api } = deps;
+
+  return {
+    /** Approve or decline a sign-in request scanned from the web dashboard. */
+    async resolve(code: string, approve: boolean): Promise<void> {
+      await api.post('/approveParentWebSession', { code, approve }, { as: 'parent' });
+    },
+
+    async list(): Promise<WebSession[]> {
+      const response = await api.post<{ sessions?: WebSession[] }>(
+        '/listParentWebSessions',
+        {},
+        { as: 'parent' },
+      );
+      return response.sessions ?? [];
+    },
+
+    async revoke(webSessionId: string): Promise<void> {
+      await api.post('/revokeParentWebSession', { webSessionId }, { as: 'parent' });
+    },
+  };
+}
+
+export type WebSessionRepository = ReturnType<typeof createWebSessionRepository>;

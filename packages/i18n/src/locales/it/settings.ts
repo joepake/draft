@@ -40,7 +40,7 @@ export const settings = {
   accountLinkCredentialInUse:
     'Questa email o questo provider è già in uso in un altro account KidGate.',
   accountLinkRequiresRecentLogin:
-    'Per motivi di sicurezza, esci e accedi di nuovo prima di collegare questo metodo.',
+    'Per la tua sicurezza, esci e accedi di nuovo, poi riprova.',
   accountLinkActionLink: 'Collega',
   accountLinkActionUnlink: 'Scollega',
   accountLinkActionVerify: 'Verifica',
@@ -95,20 +95,22 @@ export const settings = {
     'Uscirai da questa sessione genitore e tornerai alla scelta Genitore / Bambino. Accedi di nuovo per gestire i dispositivi. Il tuo account, la famiglia e i dispositivi dei bambini non verranno modificati.',
   removeParentDeviceAlertTitle: 'Rimuovere il dispositivo del genitore?',
   removeParentDeviceAlertMessage:
-    '{{deviceName}} verrà disconnesso da questo account e smetterà di ricevere notifiche. Chi lo ha potrà accedere di nuovo con la password.',
+    '{{deviceName}} verrà disconnesso da questo account e smetterà di ricevere notifiche. Chi lo ha potrà accedere di nuovo.',
   toastParentDeviceRemoved: '{{deviceName}} rimosso.',
   signedOutByAnotherDevice:
     'Questo dispositivo è stato disconnesso dall’account genitore da un altro dispositivo. Accedi di nuovo per continuare.',
   deleteAccountTitle: 'Elimina account',
   deleteAccountSubtitleDefault: 'Elimina definitivamente il tuo account e tutti i dati',
-  deleteAccountAlertTitle: 'Eliminare definitivamente l’account?',
+  deleteAccountSubtitleMember:
+    'Elimina definitivamente il tuo accesso e le tue impostazioni. La famiglia resta.',
+  deleteAccountAlertTitle: 'Pianificare l’eliminazione dell’account?',
   deleteAccountAlertMessage:
     'Questa operazione programma l’eliminazione del tuo account famiglia. Non viene ancora rimosso nulla: puoi accedere e annullare in qualsiasi momento prima della data di eliminazione. Dopo quella data, tutti i dati (dispositivi, attività, cronologia posizione, foto SOS) vengono eliminati definitivamente per tutti i genitori e i bambini.',
   deleteAccountAlertMessageMember:
     'Questa operazione programma l’eliminazione del tuo account personale. Non viene ancora rimosso nulla: puoi accedere e annullare in qualsiasi momento prima della data di eliminazione. Dopo quella data vengono eliminati il tuo accesso e le tue impostazioni personali. La famiglia, i suoi dispositivi e gli altri genitori restano invariati.',
   deleteAccountSubscriptionNotice:
     'Eliminare l’account non disdice l’abbonamento. Disdicilo nell’App Store o su Google Play.',
-  sendRequestButton: 'Elimina definitivamente',
+  sendRequestButton: 'Pianifica eliminazione',
   toastDeletionAlreadyPending: 'L’eliminazione dell’account è già in corso.',
   toastDeletionRequestFailed:
     'Impossibile avviare l’eliminazione dell’account. Riprova.',

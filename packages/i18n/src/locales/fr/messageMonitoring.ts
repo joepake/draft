@@ -12,7 +12,8 @@ export const messageMonitoring = {
     'Seules les recherches peuvent être analysées ici. Les messages ne peuvent être analysés que sur les appareils Android.',
   recentTitle: 'Alertes récentes',
   emptyTitle: 'Aucune alerte pour l’instant',
-  emptySubtitle: 'Aucun mot préoccupant n’a été détecté dans les messages.',
+  emptySubtitle:
+    'Quand un mot préoccupant est signalé dans un message ou une recherche, il apparaît ici.',
   emptySubtitleNotWatching:
     'Les messages ne sont pas analysés en ce moment, cette liste restera donc vide quoi qu’il arrive.',
   flaggedTerm: 'Signalé : « {{term}} »',
@@ -30,7 +31,7 @@ export const messageMonitoring = {
   categoryTobacco: 'Tabac ou vapotage',
   categoryGambling: 'Jeux d’argent',
   categoryProfanity: 'Langage grossier',
-  categoryUnknown: 'Message signalé',
+  categoryUnknown: 'Message préoccupant',
   guidanceToggle: 'Que faire ensuite',
   guidanceHide: 'Masquer',
   guidanceFooter:
@@ -73,13 +74,13 @@ export const messageMonitoring = {
     'Navigateurs et YouTube. KidGate ne rapporte que le mot ou l’expression signalés, jamais la recherche elle-même.',
   parentSearchHintNotGranted:
     'Nécessite la même autorisation que « Analyser les messages écrits ». Activez « Analyser les messages reçus », puis accordez-la sur l’appareil de votre enfant.',
-  parentToggleHintGranted: 'Sur ce téléphone.',
+  parentToggleHintGranted: 'Autorisé sur son appareil.',
   parentToggleHintNotGranted:
-    'Pas encore autorisé sur ce téléphone — ouvrez KidGate sur son appareil pour l’autoriser.',
+    'Pas encore autorisé sur son appareil — ouvrez KidGate sur cet appareil pour l’autoriser.',
   parentProfanityLabel: 'Signaler aussi les grossièretés',
   parentProfanityHint:
     'Désactivé par défaut — les jurons ordinaires sont courants, ceci en fait aussi une alerte.',
-  parentToggleSaveFailed: 'Impossible d’enregistrer la modification.',
+  parentToggleSaveFailed: 'Impossible d’enregistrer la modification. Réessayez.',
   settingsTitle: 'Réglages des Alertes de messages',
   checkedTitle: 'Vérifié, rien à signaler',
   checkedSubtitle:
@@ -110,7 +111,7 @@ export const messageMonitoring = {
     'Android a désactivé cette fonction. Accorde-la à nouveau pour continuer à analyser ce que tu écris.',
   outgoingDisclosureTitle: 'Avant d’autoriser',
   outgoingDisclosureBody:
-    'Avec cette autorisation, KidGate lit ce que tu écris dans les SMS et MMS et dans les applis de messagerie, et y cherche les mêmes mots d’alerte. Si tes parents activent les alertes de recherche, il lit aussi ce que tu écris dans les navigateurs, YouTube et l’appli Google, comme tes recherches. Il ne lit jamais un champ de mot de passe. L’analyse se fait sur ce téléphone. Quand un mot correspond, seuls ce mot ou cette expression, sa catégorie, l’appli et l’heure sont envoyés à tes parents — jamais le reste du message ou de la recherche. Si KidGate plante, un journal de plantage est envoyé à l’équipe KidGate pour corriger le problème.',
+    'Avec cette autorisation, KidGate lit ce que tu écris dans les SMS et MMS et dans les applis de messagerie, et y cherche les mêmes mots d’alerte. Si tes parents activent les alertes de recherche, il lit aussi ce que tu écris dans les navigateurs, YouTube et l’appli Google, comme tes recherches. Il ne lit jamais un champ de mot de passe. L’analyse se fait sur ce téléphone. Quand un mot correspond, seuls ce mot ou cette expression, sa catégorie, l’appli et l’heure sont envoyés à tes parents — jamais le reste du message ou de la recherche. Si tu autorises le micro, KidGate enregistre jusqu’à 15 secondes de son lorsque tu envoies un SOS et transmet l’enregistrement à tes parents. Si KidGate plante, un journal de plantage est envoyé à l’équipe KidGate pour corriger le problème.',
   outgoingRestrictedHint:
     'Si l’interrupteur est grisé, ouvre Paramètres › Applications › KidGate, appuie sur le menu ⋮ et choisis « Autoriser les paramètres restreints », puis reviens ici.',
   notice: {

@@ -9,7 +9,7 @@ export const plans = {
   pillTrialActiveFallback: 'Testphase aktiv',
   statusTrialEndedTitle: 'Testphase beendet',
   statusTrialEndedSubtitle:
-    'Tageslimit, Sperrzeiten, Blockierte Apps, Webfilter und Standort laufen kostenlos weiter. Abonniere für Live-Updates, Verlauf, Warnungen und Berichte.',
+    'Tageslimit, Sperrzeiten, Blockierte Apps, Standort und der Webfilter-Schalter laufen kostenlos weiter. Abonniere für Live-Updates, Verlauf, Warnungen und Berichte.',
   pillTrialEnded: 'Testphase beendet',
   statusStartTrialTitle: 'Starte deine Testphase',
   statusStartTrialSubtitle:
@@ -33,8 +33,8 @@ export const plans = {
   compareDevicesFree: 'Regeln auf allen, Berichte von 1',
   compareDevicesPremium: 'Berichte von allen',
   compareParents: 'Elternteile',
-  compareParentsFree: 'Bis zu 3',
-  compareParentsPremium: 'Bis zu 6',
+  compareParentsFree: 'Bis zu 3, dich eingeschlossen',
+  compareParentsPremium: 'Bis zu 6, dich eingeschlossen',
   compareSync: 'Updates vom Gerät',
   compareSyncFree: 'Wenn du nachsiehst',
   compareSyncPremium: 'Live',
@@ -54,7 +54,7 @@ export const plans = {
   compareSafety: 'Schutzwarnungen und Check-in',
   compareSafetyFree: 'Warnungen + Check-in',
   compareSafetyPremium: 'Fügt jedem Check-in ein Foto hinzu',
-  compareControls: 'App-Blockierung und Webfilter',
+  compareControls: 'Blockierte Apps und Webfilter',
   compareControlsFree: 'Jede App, festgelegte Kategorien',
   compareControlsPremium: 'Nach Kategorie, eigene Listen, Website-Anfragen',
   compareReport: 'Wochenbericht',
@@ -65,7 +65,7 @@ export const plans = {
   compareActivityFeedPremium: '30 Tage',
   compareChildReport: 'Berichte pro Kind',
   compareIncluded:
-    'Beide Tarife enthalten Tageslimit, Sperrzeiten, Blockierte Apps, App-Limits, Genehmigung neuer Apps, Webfilter, Gerätesperre, SOS, Zeitanfragen und Belohnungsaufgaben auf iPhone, Android, Mac und Windows in einer Familie, dazu das Web-Dashboard. Android TV und Chromebook werden ebenfalls unterstützt, mit weniger Einstellmöglichkeiten.',
+    'Beide Tarife enthalten Tageslimit, Sperrzeiten, Blockierte Apps, Genehmigung neuer Apps, Webfilter, Gerätesperre, SOS, Zeitanfragen und Belohnungsaufgaben auf iPhone, Android, Mac und Windows in einer Familie, dazu das Web-Dashboard sowie App-Limits auf Android, Mac und Windows. Android TV und Chromebook werden ebenfalls unterstützt, mit weniger Einstellmöglichkeiten.',
   sectionWhyPremium: 'Was Premium dazugibt',
   sectionWhyPremiumSubtitle:
     'Jede Regel läuft auch kostenlos weiter. Premium erweitert, was du siehst – und wie schnell du es siehst.',
@@ -124,7 +124,7 @@ export const plans = {
   memberTrialActiveSubtitle:
     'Diese Familie ist in der Testphase. Danach laufen alle Regeln auf allen Geräten weiter, und ein Gerät sendet weiter Berichte; der Inhaber kann für Live-Aktivität, Verlauf und Berichte von allen Geräten abonnieren.',
   memberTrialEndedSubtitle:
-    'Die Testphase dieser Familie ist beendet. Tageslimit, Sperrzeiten, Blockierte Apps, Webfilter und Standort funktionieren weiterhin. Bitte den Familieninhaber, Premium für Live-Updates, Verlauf und Warnungen zu abonnieren.',
+    'Die Testphase dieser Familie ist beendet. Tageslimit, Sperrzeiten, Blockierte Apps, Standort und der Webfilter-Schalter funktionieren weiterhin. Frag den Familieninhaber, ob er Premium für Live-Updates, Verlauf und Warnungen abonniert.',
   memberSetupTrialSubtitle:
     'Die Testphase beginnt, sobald der Inhaber ein Elterngerät und ein Kindergerät verbindet.',
   premiumActivatedTitle: 'Premium freigeschaltet',
@@ -148,7 +148,8 @@ export const plans = {
     'Dieses Abo ist gerade nicht verfügbar. Bitte versuche es später erneut.',
   unableToStartPurchase:
     'Der Kauf konnte nicht gestartet werden. Bitte versuche es erneut.',
-  noActiveSubscription: 'Kein aktives Abo gefunden.',
+  noActiveSubscription:
+    'Es wurde kein aktives Abonnement gefunden. Melde dich mit dem App-Store- oder Google-Play-Konto an, mit dem du das Abonnement abgeschlossen hast, und versuche es dann erneut.',
   purchasesRestored: 'Käufe wiederhergestellt.',
   unableToRestorePurchases:
     'Käufe konnten nicht wiederhergestellt werden. Bitte versuche es erneut.',
@@ -158,8 +159,8 @@ export const plans = {
   // has to name who needs to act instead of offering a button they can't use.
   familyPremiumEndedTitle: 'Das Premium dieser Familie ist beendet',
   familyPremiumEndedBody:
-    'Tageslimit, Sperrzeiten, Blockierte Apps, Webfilter und Standort funktionieren weiterhin. Live-Updates, Verlauf, Warnungen und Berichte pausieren, bis der Familieninhaber Premium verlängert.',
-  pricesUnavailable: 'Preise konnten nicht aus dem Store geladen werden.',
+    'Tageslimit, Sperrzeiten, Blockierte Apps, Standort und der Webfilter-Schalter funktionieren weiterhin. Live-Updates, Verlauf, Warnungen und Berichte pausieren, bis der Familieninhaber Premium verlängert.',
+  pricesUnavailable: 'Die Preise konnten nicht aus dem Store geladen werden.',
   pricesRetry: 'Erneut versuchen',
   featureRewardTasks: 'Belohnungsaufgaben',
   sectionChoosePlan: 'Wähle deinen Plan',
@@ -189,11 +190,11 @@ export const plans = {
   platformMac: 'Mac',
   platformMacDetail: 'Nur Kindgerät · macOS 12 und neuer',
   platformIosLimits:
-    'Keine App-Limits und keine Nachrichtenhinweise. Blockierte Apps werden direkt auf dem iPhone ausgewählt.',
+    'Keine App-Limits und keine Nachrichtenwarnungen. Die Apps für Blockierte Apps werden direkt auf dem iPhone ausgewählt.',
   platformMacLimits: 'Keine Nachrichtenhinweise, und der Standort ist ungefähr.',
   platformWindowsLimits: 'Keine Nachrichtenhinweise, und der Standort ist ungefähr.',
   platformAndroidTvLimits:
-    'Keine Nachrichtenhinweise, kein Standort, kein SOS und keine Zeitanfragen. Die App-Blockierung erfolgt bestmöglich.',
+    'Keine Nachrichtenwarnungen, kein Standort, kein SOS und keine Zeitanfragen. Blockierte Apps werden nur nach bestem Bemühen durchgesetzt.',
   platformChromebookLimits:
     'Nur Webfilter – kein Tageslimit, keine Sperrzeiten, keine Blockierten Apps, keine Gerätesperre, kein SOS und kein Standort.',
   platformComingSoon: 'Demnächst',
@@ -202,7 +203,7 @@ export const plans = {
   platformAndroidTv: 'Android TV',
   platformAndroidTvDetail: 'Nur Kindgerät · Android TV 7 und neuer',
   platformChromebook: 'Chromebook',
-  platformChromebookDetail: 'Kindergerät · nur Webfilter in Chrome',
+  platformChromebookDetail: 'Kindergerät · Webfilter nur in Chrome',
   teaserCta: 'Premium ansehen',
   teaserProofOtherApps: 'Andere Apps: {{count}} · {{minutes}}',
   teaserProofOtherMinutes: 'Andere Apps: {{minutes}}',

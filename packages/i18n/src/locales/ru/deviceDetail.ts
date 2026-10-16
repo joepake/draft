@@ -4,7 +4,7 @@ export const deviceDetail = {
   notFoundTitle: 'Устройство',
   dangerTitle: 'Удалить это устройство',
   dangerDescription:
-    'Удалите это устройство из семейного аккаунта. Все запросы дополнительного времени и история активности, связанные с этим устройством, будут удалены.',
+    'Удалите это устройство из семейного аккаунта. Будут удалены история местоположения, история использования, история веба, просмотренные видео, список установленных приложений, Запросы времени, запросы сайтов, Задания с наградой, Check-In, оповещения SOS и история активности этого устройства.',
   removeButton: 'Удалить устройство',
   removingButton: 'Удаление…',
   showAllFeatures: 'Показать все функции',
@@ -12,7 +12,7 @@ export const deviceDetail = {
   essentialControls: 'Основные настройки',
   dailyRulesAndDeviceAccess: 'Ежедневные правила и доступ к устройству',
   dailyLimit: 'Дневной лимит',
-  setDailyScreenTimeCap: 'Установить дневной лимит экранного времени',
+  setDailyScreenTimeCap: 'Установить Дневной лимит',
   blockedHours: 'Заблокированные часы',
   manageTimeRanges: 'Настройте до {{max}} временных интервалов',
   blockedApps: 'Заблокированные приложения',
@@ -38,7 +38,7 @@ export const deviceDetail = {
   placeAlerts: 'Места',
   reviewPlaceAlerts: 'Получать уведомления о прибытии и уходе',
   noPlacesYet: 'Нет мест',
-  tamperAlerts: 'Защита',
+  tamperAlerts: 'Оповещения о защите',
   reviewTamperAlerts: 'Просмотреть случаи отключения защиты',
   editDeviceName: 'Изменить имя устройства',
   editDeviceNameSubtitle:
@@ -63,12 +63,13 @@ export const deviceDetail = {
   notAvailableInExtension: 'Недоступно в расширении',
   webFilterAwaitingApproval: 'Ожидает подтверждения на {{platform}}',
   webFilterSwitchedOffOnDevice: 'Выключено на {{platform}}',
+  webFilterPrivateDnsOnDevice: 'Обходится через частный DNS-сервер на {{platform}}',
   unableToUpdateDeviceName: 'Не удалось обновить имя устройства. Попробуйте снова.',
   renameOwnerOnly: 'Только владелец семьи может переименовывать устройства.',
   removeOwnerOnly: 'Только владелец семьи может удалять устройства.',
   removeDeviceTitle: 'Удалить устройство?',
   removeDeviceMessage:
-    '{{deviceName}} будет отключено от вашей учетной записи. Все связанные запросы экранного времени и история активности будут удалены.',
+    '{{deviceName}} будет отключено от вашего аккаунта. Будут удалены история местоположения, история использования, история веба, просмотренные видео, список установленных приложений, Запросы времени, запросы сайтов, Задания с наградой, Check-In, оповещения SOS и история активности этого устройства.',
   unableToRemoveDevice: 'Не удалось удалить устройство. Попробуйте снова.',
   checkInNotificationSent: '{{deviceName}} получит запрос Check-In.',
   checkInOfflineTitle: 'Похоже, это устройство не в сети',
@@ -80,7 +81,7 @@ export const deviceDetail = {
   checkInQueued:
     'Запрос поставлен в очередь — {{deviceName}} получит его, когда снова будет в сети.',
   unableToRequestCheckIn: 'Не удалось отправить запрос Check-In. Попробуйте снова.',
-  tapToSetDailyCap: 'Задайте дневной лимит',
+  tapToSetDailyCap: 'Задайте Дневной лимит',
   usageUpdatesFromChildDevice: 'Использование устройства ребёнком',
   minutesUsedToday: 'Сегодня: {{used}} / {{limit}}',
   noBlockedHours: 'Часы не настроены',
@@ -148,7 +149,7 @@ export const deviceDetail = {
   webHistorySitesUnit_one: 'сайт',
   webHistorySitesUnit_few: 'сайта',
   managedAtChild:
-    'Правила, награды, чек-ины и оповещения этого устройства настраиваются в профиле {{childName}}',
+    'Правила, награды, Check-In и оповещения о безопасности этого устройства настраиваются в профиле {{childName}}.',
   pauseBrowsing: 'Приостановить веб',
   pauseBrowsingDescription:
     'Приостанавливает просмотр сайтов на время. Звонки и офлайн-приложения продолжают работать.',

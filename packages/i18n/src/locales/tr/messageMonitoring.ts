@@ -11,7 +11,8 @@ export const messageMonitoring = {
     'Burada yalnızca aramalar kontrol edilebilir. Mesajlar yalnızca Android cihazlarda kontrol edilebilir.',
   recentTitle: 'Son uyarılar',
   emptyTitle: 'Henüz uyarı yok',
-  emptySubtitle: 'Mesajlarda endişe verici kelime görülmedi.',
+  emptySubtitle:
+    'Bir mesajda veya aramada endişe verici bir kelime işaretlendiğinde burada görünür.',
   emptySubtitleNotWatching:
     'Mesajlar şu anda kontrol edilmiyor, bu yüzden ne olursa olsun bu liste boş kalacak.',
   flaggedTerm: 'İşaretlenen: “{{term}}”',
@@ -29,7 +30,7 @@ export const messageMonitoring = {
   categoryTobacco: 'Tütün veya elektronik sigara',
   categoryGambling: 'Kumar',
   categoryProfanity: 'Kaba dil',
-  categoryUnknown: 'İşaretlenen mesaj',
+  categoryUnknown: 'Endişe verici mesaj',
   guidanceToggle: 'Şimdi ne yapmalı',
   guidanceHide: 'Gizle',
   guidanceFooter:
@@ -72,13 +73,13 @@ export const messageMonitoring = {
     'Tarayıcılar ve YouTube. Yalnızca işaretli kelime veya ifade bildirilir, aramanın kendisi asla bildirilmez.',
   parentSearchHintNotGranted:
     '“Yazılan mesajları tara” ile aynı izni gerektirir. “Gelen mesajları tara” seçeneğini açın, ardından çocuğunuzun cihazında izin verin.',
-  parentToggleHintGranted: 'Bu telefonda.',
+  parentToggleHintGranted: 'Çocuğun cihazında izin verildi.',
   parentToggleHintNotGranted:
-    'Bu telefonda henüz izin verilmedi — izin vermek için onun cihazında KidGate’i aç.',
+    'Çocuğun cihazında henüz izin verilmedi — izin vermek için o cihazda KidGate’i açın.',
   parentProfanityLabel: 'Küfürlü ifadeleri de işaretle',
   parentProfanityHint:
     'Varsayılan olarak kapalı — sıradan küfürler yaygındır, bunu açmak onları da uyarıya dönüştürür.',
-  parentToggleSaveFailed: 'Değişiklik kaydedilemedi.',
+  parentToggleSaveFailed: 'Değişiklik kaydedilemedi. Tekrar deneyin.',
   settingsTitle: 'Mesaj uyarıları ayarları',
   checkedTitle: 'Bakıldı, sorun yok',
   checkedSubtitle:
@@ -109,7 +110,7 @@ export const messageMonitoring = {
     'Android bunu kapattı. Yazdıklarının kontrol edilmeye devam etmesi için izni yeniden ver.',
   outgoingDisclosureTitle: 'İzin vermeden önce',
   outgoingDisclosureBody:
-    'Bu izinle KidGate kısa mesajlarda (SMS ve MMS) ve sohbet uygulamalarında yazdıklarını okur ve aynı uyarı kelimeleri için kontrol eder. Ailen arama uyarılarını açarsa tarayıcılarda, YouTube’da ve Google uygulamasında yazdıklarını, örneğin aramalarını da okur. Parola alanlarını asla okumaz. Kontrol bu telefonda yapılır. Bir kelime eşleşirse ailene yalnızca o kelime veya ifade, kategorisi, uygulama ve saat gönderilir; mesajın ya da aramanın geri kalanı asla gönderilmez. KidGate çökerse, sorunun giderilebilmesi için KidGate ekibine bir kilitlenme günlüğü gönderilir.',
+    'Bu izinle KidGate kısa mesajlarda (SMS ve MMS) ve sohbet uygulamalarında yazdıklarını okur ve aynı uyarı kelimeleri için kontrol eder. Ailen arama uyarılarını açarsa tarayıcılarda, YouTube’da ve Google uygulamasında yazdıklarını, örneğin aramalarını da okur. Parola alanlarını asla okumaz. Kontrol bu telefonda yapılır. Bir kelime eşleşirse ailene yalnızca o kelime veya ifade, kategorisi, uygulama ve saat gönderilir; mesajın ya da aramanın geri kalanı asla gönderilmez. Mikrofona izin verirsen, SOS gönderdiğinde KidGate 15 saniyeye kadar ses kaydeder ve kaydı ailene iletir. KidGate çökerse, sorunun giderilebilmesi için KidGate ekibine bir kilitlenme günlüğü gönderilir.',
   outgoingRestrictedHint:
     'Anahtar soluk görünüyorsa Ayarlar › Uygulamalar › KidGate yolunu açıp ⋮ menüsüne dokun ve “Kısıtlanmış ayarlara izin ver” seçeneğini seç, sonra buraya dön.',
   notice: {

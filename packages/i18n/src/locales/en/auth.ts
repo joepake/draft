@@ -47,7 +47,7 @@ export const auth = {
   orContinueWith: 'Or continue with',
   signInWithGoogle: 'Continue with Google',
   signInWithApple: 'Continue with Apple',
-  signInCancelled: 'Sign-in was cancelled.',
+  signInCancelled: 'Sign-in was canceled.',
   appleSignInNotConfigured:
     'Sign in with Apple is not available right now. Try another sign-in method.',
   googleSignInNotConfigured:

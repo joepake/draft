@@ -10,6 +10,7 @@ export const activities = {
   subtitleTimelineForDevice: 'Zeitverlauf für {{deviceName}}',
   subtitleTimelineForChild: 'Verlauf von {{childName}}',
   fallbackDeviceName: 'Gerät',
+  fallbackChildName: 'deinem Kind',
   liveBadge: 'Live',
   errorTitle: 'Aktivitäten konnten nicht geladen werden',
   tryAgain: 'Erneut versuchen',
@@ -44,13 +45,13 @@ export const activities = {
   activityTypeAppRemoved: 'App deinstalliert',
   activityTypePlaceEnter: 'Ort betreten',
   activityTypePlaceExit: 'Ort verlassen',
-  activityTypeTamper: 'Schutz',
+  activityTypeTamper: 'Schutzwarnungen',
   activityTypeScreenTime: 'Bildschirmzeit',
   activityTypeCheckIn: 'Check-in',
   activityTypeLocationRequest: 'Standort',
   activityTypeTimeRequest: 'Zeitanfragen',
   activityTypeRewardTask: 'Belohnungsaufgaben',
-  activityTypeSearchAlert: 'Suchwarnung',
+  activityTypeSearchAlert: 'Nachrichtenwarnungen',
   activityTypeWebFilter: 'Webfilter',
   activityTypeEmergency: 'SOS',
   activityTypeUnknown: 'Aktivität',
@@ -79,7 +80,7 @@ export const activities = {
   appInstalledPendingBody:
     'Die App {{appName}} wurde auf dem Gerät des Kindes installiert und ist blockiert, bis du sie erlaubst.',
 
-  messageAlertTitle: 'Bedenklicher Nachrichteninhalt',
+  messageAlertTitle: 'Bedenkliche Nachricht',
   messageAlertBody: 'Ein markiertes Wort wurde in {{appName}} erkannt.',
   messageAlertBodyOutgoing:
     'Ein markiertes Wort wurde in einer Nachricht erkannt, die dein Kind in {{appName}} geschrieben hat.',
@@ -187,7 +188,8 @@ export const activities = {
   tamperWebFilterBody:
     'Das KidGate-VPN auf diesem Gerät wurde ausgeschaltet oder durch eine andere VPN-App ersetzt. Bis es wieder läuft, werden Websites weder gefiltert noch erfasst.',
   tamperUninstallProtectionTitle: 'Deinstallationsschutz ausgeschaltet',
-  tamperUninstallProtectionBody: 'KidGate kann jetzt von diesem Handy entfernt werden.',
+  tamperUninstallProtectionBody:
+    'KidGate kann jetzt vom Gerät des Kindes entfernt werden.',
   tamperReinstalledTitle: 'KidGate wurde neu installiert',
   tamperReinstalledBody:
     'KidGate wurde von diesem Gerät entfernt und wieder installiert. In der Zwischenzeit wurde nichts aufgezeichnet.',

@@ -10,7 +10,8 @@ export const errors = {
   somethingWentWrong: 'Algo deu errado. Tente novamente.',
   accountDisabled:
     'Esta conta foi desativada. Entre em contato com o suporte do KidGate para restaurá-la.',
-  recentLoginRequired: 'Para sua segurança, entre novamente e tente mais uma vez.',
+  recentLoginRequired:
+    'Para sua segurança, saia da conta e entre de novo; depois, tente mais uma vez.',
   accountExistsDifferentMethod:
     'Este e-mail já tem uma conta com outro método de login. Entre por esse método e depois vincule este em Ajustes.',
   unableToCreateAccount: 'Não foi possível criar sua conta. Tente novamente.',
@@ -46,12 +47,12 @@ export const errors = {
   storageNotSetup:
     'Não foi possível enviar a foto no momento. Tente novamente em instantes.',
   noNetworkConnection:
-    'Sem conexão com a internet. Verifique o Wi-Fi ou os dados móveis e tente novamente.',
+    'Não foi possível conectar. Verifique sua conexão e tente novamente.',
   connectionFailedTitle: 'Falha na conexão',
   reconnect: 'Reconectar',
   unableToUploadPhoto: 'Não foi possível enviar a foto. Tente novamente.',
   premiumSubscriptionRequired:
-    'Este recurso precisa do Premium. Todas as regras que você definiu — limites, horário de dormir, bloqueio de apps, filtro da web, localização e SOS — continuam grátis.',
+    'Este recurso precisa do Premium. Limite diário, Horários bloqueados, Apps bloqueados, Limites de apps, Bloqueio do dispositivo, SOS, localização, a chave do Filtro da web e o SafeSearch continuam grátis.',
   trialEndedCannotJoinFamily:
     'Seu período de teste gratuito terminou. Assine o Premium para entrar em outra família.',
 
@@ -87,7 +88,7 @@ export const errors = {
   deviceClockOutOfRange:
     'A data e a hora deste dispositivo parecem incorretas. Ative a atualização automática.',
   locationSharingDisabled:
-    'O compartilhamento de localização está desativado neste dispositivo. Ative-o nas configurações do dispositivo e tente novamente.',
+    'O compartilhamento de localização está desativado neste dispositivo. Ative “Compartilhar localização” e tente novamente.',
   childDeviceNoPushToken:
     'Este dispositivo infantil ainda não pode receber solicitações. Abra o KidGate no dispositivo da criança e permita as notificações.',
   unableToRequestLocation:
@@ -95,7 +96,8 @@ export const errors = {
   unableToVerifyPurchase:
     'Não foi possível verificar esta compra. Tente novamente em instantes.',
   noPurchasesToRestore: 'Nenhuma compra para restaurar foi encontrada nesta conta.',
-  noActiveSubscription: 'Nenhuma assinatura ativa foi encontrada nesta conta.',
+  noActiveSubscription:
+    'Nenhuma assinatura ativa foi encontrada. Entre com a conta da App Store ou do Google Play usada na assinatura e tente novamente.',
   unableToRestorePurchases:
     'Não foi possível restaurar suas compras no momento. Tente novamente.',
   alreadyInFamily: 'Você já faz parte desta família.',

@@ -1,9 +1,9 @@
 export const pairing = {
   shareInviteButton: 'Partager le code',
   shareInviteMessage:
-    'Rejoignez notre famille sur KidGate : ouvrez l’application, allez dans Famille → Scanner un code, puis scannez le code QR ou saisissez le code {{code}}. Le code expire dans 15 minutes.',
+    'Rejoignez notre famille sur KidGate : ouvrez l’application, allez dans Famille → Scanner un code, puis scannez le code QR ou saisissez le code {{code}}. Le code expire dans {{minutes}} minutes.',
   shareChildCodeMessage:
-    'Connectez cet appareil enfant sur KidGate : sur l’appareil parent, ouvrez KidGate → Famille → Scanner un code, puis scannez le code QR ou saisissez le code {{code}}. Le code expire dans 5 minutes.',
+    'Connectez cet appareil enfant sur KidGate : sur l’appareil parent, ouvrez KidGate → Famille → Scanner un code, puis scannez le code QR ou saisissez le code {{code}}. Le code expire dans {{minutes}} minutes.',
   connectChildPhone: 'Connecter un appareil enfant',
   parentInstructions:
     'Ouvrez KidGate sur l’appareil de l’enfant. Sur un téléphone ou une tablette, choisissez « Ceci est un appareil enfant ». Saisissez ensuite le code à 6 caractères qui s’affiche.',
@@ -40,9 +40,8 @@ export const pairing = {
   parentAccount: 'Compte parent',
   unknownParent: 'un parent',
   expiresIn: 'Expire dans {{countdown}}',
-  inviteCodeExpired:
-    'Ce code a expiré. Sélectionnez Nouveau code pour en obtenir un autre.',
-  codeExpired: 'Ce code a expiré. Sélectionne Nouveau code pour en obtenir un autre.',
+  inviteCodeExpired: 'Ce code a expiré.',
+  codeExpired: 'Ce code a expiré.',
   scanQrTitle: 'Scanner le code QR',
   scanQrSubtitle: 'Alignez le code QR à l’intérieur du cadre.',
   enterCodeManually: 'Saisir le code manuellement',
@@ -62,7 +61,7 @@ export const pairing = {
   tooManyAttemptsWait: 'Trop de tentatives. Réessayez dans {{minutes}} min.',
   inviteParentTitle: 'Ajouter un autre appareil parent',
   inviteParentInstructions:
-    'Sur l’autre appareil, ouvrez KidGate → Famille → Scanner un code, puis scannez ce code QR ou saisissez le code dans les 15 minutes. Approuvez la demande ici pour connecter ce parent.',
+    'Sur l’autre appareil, ouvrez KidGate → Famille → Scanner un code, puis scannez ce code QR ou saisissez le code dans les {{minutes}} minutes. Approuvez la demande ici pour connecter ce parent.',
   inviteCodeLabel: 'Ou partagez ce code',
   joinFamilyTitle: 'Rejoindre une famille',
   joinFamilyScanInstructions:

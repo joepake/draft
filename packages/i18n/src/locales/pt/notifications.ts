@@ -8,19 +8,19 @@ export const notifications = {
     'Neste celular, um SOS aparece como um pequeno banner em vez de ocupar a tela inteira, então é mais fácil perdê-lo. Permita alertas em tela cheia para corrigir isso.',
   sosFullScreenAllow: 'Permitir alertas em tela cheia',
   sectionAlerts: 'Alertas',
-  sectionAlertsHint: 'Escolha sobre o que este telefone é notificado.',
+  sectionAlertsHint: 'Escolha quais alertas são enviados ao celular de um responsável.',
   sectionSummary: 'Resumo',
   sectionQuietHours: 'Horário silencioso',
   sectionQuietHoursHint:
-    'Os alertas ficam em silêncio neste intervalo. O SOS nunca é silenciado, e os Alertas de mensagens mais graves continuam chegando.',
+    'Nenhum alerta é enviado durante este período, e eles também não são enviados depois. Os eventos continuam aparecendo em Atividades. O SOS nunca é retido, e os Alertas de mensagens mais graves continuam chegando.',
   quietHoursLabel: 'Horário silencioso',
   quietHoursOff: 'Desativado — os alertas chegam a qualquer hora',
-  quietHoursActive: 'Em silêncio das {{start}} às {{end}}',
+  quietHoursActive: 'Sem alertas das {{start}} às {{end}}',
   quietHoursStart: 'Das',
   quietHoursEnd: 'Às',
   quietHoursSameTime: 'Escolha dois horários diferentes.',
   footnote:
-    'Estas configurações valem apenas para este telefone. Outros dispositivos dos responsáveis mantêm as suas.',
+    'Estas configurações valem para um só celular. Outros dispositivos dos responsáveis mantêm as suas.',
   toastSaveFailed: 'Não foi possível salvar. Tente novamente.',
   localReminderSetupTitle: 'Conclua a configuração',
   localReminderIdleTitle: 'Suas regras seguem ativas',
@@ -31,15 +31,15 @@ export const notifications = {
     'Se ninguém abrir o KidGate por {{days}} dias, os dispositivos do seu filho param de enviar relatórios até alguém abri-lo de novo. Suas regras continuam funcionando.',
   alert: {
     tamperAlerts: {
-      label: 'Proteção desativada',
+      label: 'Alertas de proteção',
       hint: 'Em um dispositivo da criança, uma permissão de que o KidGate precisa foi desativada, a data, a hora ou o fuso horário foi alterado, ou o SOS foi acionado enquanto ele estava bloqueado. O próprio alerta de SOS sempre chega.',
     },
     placeAlerts: {
-      label: 'Chegadas e saídas',
+      label: 'Alertas de locais',
       hint: 'Seu filho chega a um lugar salvo ou sai dele.',
     },
     timeRequests: {
-      label: 'Pedidos de tempo extra',
+      label: 'Solicitações de tempo',
       hint: 'Seu filho pede mais tempo de tela.',
     },
     siteRequests: {
@@ -51,7 +51,7 @@ export const notifications = {
       hint: 'Seu filho responde a um check-in de segurança.',
     },
     rewardTasks: {
-      label: 'Recompensas solicitadas',
+      label: 'Tarefas com recompensa',
       hint: 'Seu filho marca uma tarefa de recompensa como concluída.',
     },
     appActivity: {
@@ -63,7 +63,7 @@ export const notifications = {
       hint: 'Uso fora do padrão no dispositivo da criança — madrugadas, picos, apps novos.',
     },
     weeklyDigest: {
-      label: 'Resumo semanal',
+      label: 'Relatório semanal',
       hint: 'Uma retrospectiva de segunda-feira do tempo de tela e dos bloqueios.',
     },
     messageAlerts: {

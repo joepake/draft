@@ -28,9 +28,9 @@ export const pin = {
   parentPinRequired: 'Eltern-PIN erforderlich',
   enterParentPinToContinue: 'Gib die 6-stellige Eltern-PIN ein, um fortzufahren.',
   parentPinLockoutMessage:
-    'Zu viele falsche Versuche. Bitte den Elternteil, der KidGate eingerichtet hat, die PIN auf seinem Handy unter Einstellungen → Sicherheit zu entsperren.',
+    'Zu viele falsche Versuche. Frag einen Elternteil, die PIN auf seinem Handy unter Einstellungen → Sicherheit zu entsperren.',
   parentPinHelperText:
-    'Nur ein Elternteil kann blockierte Apps ändern oder sich abmelden – dafür ist die PIN da. Falls sie vergessen wurde, kann der Elternteil, der KidGate eingerichtet hat, sie auf seinem Handy unter Einstellungen → Sicherheit zurücksetzen.',
+    'Nur ein Elternteil kann geschützte Einstellungen wie Blockierte Apps ändern – dafür ist die PIN da. Falls sie vergessen wurde, kann der Elternteil, der KidGate eingerichtet hat, sie auf seinem Handy unter Einstellungen → Sicherheit zurücksetzen.',
   forgotPin: 'PIN vergessen?',
   resetPinNotice:
     'Du setzt die PIN als Kontoinhaber zurück. Kindergeräte fragen ab jetzt nach der neuen PIN.',
@@ -51,20 +51,20 @@ export const pin = {
   savePin: 'PIN speichern',
   pinLockedTitle: 'PIN gesperrt',
   pinLockedBody:
-    'Zu viele falsche Versuche. Bitte den Elternteil, der KidGate eingerichtet hat, die PIN auf seinem Handy unter Einstellungen → Sicherheit zu entsperren.',
+    'Zu viele falsche Versuche. Frag einen Elternteil, die PIN auf seinem Handy unter Einstellungen → Sicherheit zu entsperren.',
   parentAccessRequiredTitle: 'Elternzugriff erforderlich',
   parentAccessRequiredBody:
-    'Gib deine PIN ein, um dieses Gerät umzubenennen, Blockierte Apps auszuwählen oder dich abzumelden.',
+    'Gib deine PIN ein, um dieses Gerät umzubenennen, Blockierte Apps auszuwählen oder die Familie zu verlassen.',
   unlockWithParentPinButton: 'Mit Eltern-PIN entsperren',
   whyPinTitle: 'Warum eine PIN?',
   whyPinBody:
-    'Nur ein Elternteil sollte Blockierte Apps ändern oder dieses Gerät bei KidGate abmelden. Design-Farben benötigen keine PIN.',
+    'Nur ein Elternteil sollte Blockierte Apps ändern oder dieses Gerät die Familie verlassen lassen. Design-Farben benötigen keine PIN.',
   pinLockedToast:
-    'Die PIN wurde nach zu vielen falschen Versuchen gesperrt. Bitte den Elternteil, der KidGate eingerichtet hat, sie auf seinem Handy unter Einstellungen → Sicherheit zu entsperren.',
+    'Die PIN wurde nach zu vielen falschen Versuchen gesperrt. Frag einen Elternteil, sie auf seinem Handy unter Einstellungen → Sicherheit zu entsperren.',
   pinNotConfiguredToast:
     'Noch keine Eltern-PIN. Der Elternteil, der KidGate eingerichtet hat, erstellt sie auf seinem Handy unter Einstellungen → Sicherheit.',
   pairedNoPin:
-    'Noch keine Eltern-PIN. Die Geräte deiner Kinder fragen danach, bevor Blockierte Apps geändert werden oder ein Gerät abgemeldet wird.',
+    'Noch keine Eltern-PIN. Die Geräte deiner Kinder fragen danach, bevor Blockierte Apps geändert werden oder ein Gerät die Familie verlässt.',
   enterSixDigitParentPin: 'Gib die 6-stellige Eltern-PIN ein.',
   askParentCreatePin:
     'Bitte den Elternteil, der KidGate eingerichtet hat, auf seinem Handy unter Einstellungen → Sicherheit eine Eltern-PIN zu erstellen.',

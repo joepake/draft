@@ -6,7 +6,7 @@ export const appLimits = {
   emptySubtitle: 'Choisissez une app ci-dessous pour lui donner sa propre limite.',
   usedToday: '{{used}} sur {{limit}} aujourd’hui',
   addSectionTitle: 'Ajouter une limite',
-  addSectionSubtitle: 'Apps récemment utilisées par votre enfant.',
+  addSectionSubtitle: 'Les apps les plus utilisées aujourd’hui sur cet appareil.',
   candidateUsage: '{{duration}} aujourd’hui',
   noUsageYet:
     'Aucune utilisation signalée. Les limites apparaîtront dès que l’appareil enverra ses données.',

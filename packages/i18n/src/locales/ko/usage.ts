@@ -16,7 +16,7 @@ export const usage = {
   insightDeviceLocked: '기기가 잠겨 있음',
   signalLocksToday: '오늘 잠금 횟수',
   signalUnlocksToday: '오늘 잠금 해제 횟수',
-  signalLocksPeriod: '잠금 · 30일',
+  signalLocksPeriod: '최근 잠금',
   signalLocationsToday: '오늘 위치 업데이트',
   sectionWhatsTurnedOn: '켜져 있는 기능',
   rowBlockedHours: '차단 시간',
@@ -28,7 +28,7 @@ export const usage = {
   rowLocation: '위치',
   valueSharingOn: '공유 켜짐',
   sectionLatestActivity: '최근 활동',
-  activityPeriodCount: '30일간 {{count}}건',
+  activityPeriodCount: '최근 {{count}}건',
   activityEmpty:
     '아직 기록된 활동이 없습니다. 잠금, 잠금 해제, 스크린 타임 업데이트가 여기에 표시됩니다.',
   usageReportAccessibility: '사용 보고서. {{headline}}. 전체 보고서 열기.',
@@ -78,7 +78,7 @@ export const usage = {
   topAppsEmpty:
     '앱별 데이터가 아직 없습니다. 자녀 기기에서 KidGate가 앱 사용을 측정하도록 허용되어 있는지 확인한 뒤 동기화를 기다려 주세요.',
   protectionImpactTitle: '보호 효과',
-  protectionImpactHint: '이 기기에서 KidGate가 최근 차단한 이벤트입니다.',
+  protectionImpactHint: '이 기기를 설정한 이후의 합계입니다.',
   protectionBlockedApps: '차단된 앱 실행',
   protectionWebBlocked: '차단된 웹사이트',
   protectionTamper: '보호 알림',

@@ -23,11 +23,11 @@ export const placeAlerts = {
   radiusLabel: 'Raggio di allerta',
   radiusValue: '{{meters}} m',
   radiusHint:
-    'Quanto deve essere vicino il dispositivo perché questo luogo venga rilevato. Un raggio più piccolo dell’errore di posizione del dispositivo avvisa a caso, non con più precisione.',
+    'Quanto deve essere vicino il dispositivo perché questo luogo venga rilevato. Un raggio più piccolo dell’errore di posizione del dispositivo non rende gli avvisi più precisi — arrivi e partenze potrebbero non essere segnalati.',
   radiusAccuracyHint:
     'Qui questo dispositivo indica la propria posizione con circa ±{{accuracy}} m di scarto.',
   radiusBelowAccuracy:
-    'Qui il dispositivo è preciso solo a circa ±{{accuracy}} m. Usa {{minimum}} m o più, altrimenti questo luogo avviserà a caso.',
+    'Qui il dispositivo è preciso solo a circa ±{{accuracy}} m. Usa {{minimum}} m o più, altrimenti arrivi e partenze in questo luogo potrebbero non essere segnalati.',
   radiusDecrease: 'Riduci raggio',
   radiusIncrease: 'Aumenta raggio',
   notifyEnterLabel: 'Avvisa all’arrivo',
@@ -55,7 +55,7 @@ export const placeAlerts = {
   samePinToast:
     'È lo stesso punto di “{{name}}”. Trascina la mappa per spostare il segnaposto.',
   overlapWarning:
-    '“{{name}}” è a {{meters}} m e il suo cerchio arriva fin qui. Mentre il dispositivo è in entrambi, avvisa solo il più vicino. Salva di nuovo per mantenerlo.',
+    '“{{name}}” è a {{meters}} m e i due cerchi si sovrappongono. Mentre il dispositivo è in entrambi, avvisa solo il più vicino. Salva di nuovo per mantenerlo.',
   savedToast: 'Luogo salvato.',
   updatedToast: 'Luogo aggiornato.',
   removedToast: 'Luogo rimosso.',

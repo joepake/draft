@@ -44,6 +44,6 @@ export const screenTime = {
   limitReachedStatus: '{{used}} / {{limit}} · Đã hết giới hạn',
   minutesUsedStatus: 'Đã dùng {{used}} / {{limit}}',
   usageUpdatesHint:
-    'Dữ liệu được cập nhật vài phút một lần khi giám sát Thời gian sử dụng đang hoạt động.',
+    'Dữ liệu sử dụng có thể mất tới {{minutes}} phút để hiện trên màn hình này.',
   dailyLimitMinutes: '{{limitMinutes}} phút',
 } as const;

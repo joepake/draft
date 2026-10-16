@@ -3,10 +3,12 @@ export const videoHistory = {
   fallbackDeviceName: '자녀 기기',
   toggleLabel: '시청한 동영상 기록',
   toggleHint:
-    '브라우저의 YouTube와 Android 휴대폰 및 TV의 YouTube 앱. TV에서는 Shorts가 표시되지 않습니다. TV 앱에서는 Shorts라는 이름이 표시되지 않기 때문입니다.',
+    'Android 휴대폰과 TV의 YouTube 앱, 그리고 KidGate 확장 프로그램이 있는 Chrome에서 시청한 동영상. TV 앱이 Shorts로 식별하지 않으므로 TV에서는 Shorts가 표시되지 않습니다.',
   toggleFailed: '동영상 기록을 업데이트하지 못했습니다. 다시 시도하세요.',
   unsupportedNote:
     '이 기기는 시청한 동영상을 보고할 수 없습니다. Android, Android TV, Chrome에서 작동합니다.',
+  unsupportedNoteTv:
+    '이 TV는 시청한 동영상을 기록하지 않고 있습니다. KidGate에 이 TV의 알림 접근 권한이 필요하지만, 아직 TV 화면에서는 허용할 수 없습니다.',
 
   unsupportedNeedsExtension:
     '이 컴퓨터의 KidGate는 어떤 동영상을 봤는지 알 수 없습니다. 사이트 이름은 읽지만 페이지 내용은 읽지 않기 때문입니다. Chrome용 KidGate 확장 프로그램은 알 수 있습니다. 이 컴퓨터에 추가하면 시청한 동영상을 별도의 기기로 보고합니다.',
@@ -41,5 +43,5 @@ export const videoHistory = {
     '아직 동영상이 기록되지 않습니다. 자녀의 휴대폰에서 KidGate에 알림 접근 권한이 필요합니다. 해당 휴대폰에서 KidGate 설정을 열고 “부모 PIN으로 잠금 해제”를 선택한 다음, “메시지 경고” 아래의 “알림 접근 허용”을 선택하세요.',
   openAction: 'YouTube에서 열기',
   searchAction: '이 동영상을 YouTube에서 검색',
-  openFailed: 'YouTube를 열 수 없습니다.',
+  openFailed: 'YouTube를 열 수 없습니다. 다시 시도하세요.',
 };

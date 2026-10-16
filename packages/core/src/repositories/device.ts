@@ -33,6 +33,7 @@ import {
 import { isApiFailure } from '../domain/apiFailure';
 import type { BuildFreshness } from '../domain/buildFreshness';
 import { isDeviceFormFactor } from '../domain/deviceFormFactor';
+import { admitLockPress, LOCK_PRESS_WINDOW_MS } from '../domain/lockPress';
 import {
   otaRequestId,
   otaRequestedAtMs,
@@ -46,6 +47,7 @@ import {
 } from '../domain/reportRequest';
 import { timestampToIso } from '../domain/firestoreValue';
 import { parseOperatorHold } from '../domain/operatorHold';
+import { createOwnWriteGate } from '../domain/ownWriteSnapshot';
 import { parseParentPinVerifier } from '../domain/parentPinVerifier';
 import {
   newerPresence,
@@ -535,6 +537,8 @@ export interface DeviceRepositoryDeps {
 
 export function createDeviceRepository(deps: DeviceRepositoryDeps) {
   const { db, api, clock, cascades } = deps;
+  /** Recent Lock / Unlock presses per device, for `admitLockPress`. */
+  const lockPresses = new Map<string, number[]>();
 
   return {
     /*
@@ -658,10 +662,22 @@ export function createDeviceRepository(deps: DeviceRepositoryDeps) {
         }
         onDevice(device.exists ? mapChildDevice(device, presence) : null);
       };
+      /*
+       * The phone reads its own policy here, and merge-writes this document
+       * itself (registration, its push token, protection status). Before the
+       * server has sent it, such a write arrives as the whole document — no
+       * `controls`, no `isLocked` — and the child's phone would enforce the
+       * defaults and drop a parent's Lock until the real copy came
+       * (`domain/ownWriteSnapshot`).
+       */
+      const ownWrites = createOwnWriteGate();
 
       const stopDevice = db.onDoc(
         childDeviceDoc(userId, deviceId),
         snapshot => {
+          if (snapshot.exists && !ownWrites.admits(snapshot)) {
+            return;
+          }
           device = snapshot;
           emit();
         },
@@ -762,6 +778,21 @@ export function createDeviceRepository(deps: DeviceRepositoryDeps) {
       deviceId: string,
       locked: boolean,
     ): Promise<ChildDeviceRecord> {
+      // Before the read: a spammed button costs neither a read nor a request.
+      const nowMs = clock.now();
+      const presses = admitLockPress(lockPresses.get(deviceId) ?? [], nowMs);
+      if (!presses) {
+        const oldest = lockPresses.get(deviceId)?.[0] ?? nowMs;
+        const failure: ApiFailure = {
+          code: 'rateLimited',
+          messageKey: 'errors.tooManyRequests',
+          serverCode: 'rate/too-many-attempts',
+          retryAfterMs: Math.max(0, oldest + LOCK_PRESS_WINDOW_MS - nowMs),
+        };
+        throw failure;
+      }
+      lockPresses.set(deviceId, presses);
+
       const current = await this.fetchChildDevice(userId, deviceId);
       if (!current) {
         const failure: ApiFailure = {

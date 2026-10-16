@@ -44,7 +44,7 @@ export const settings = {
   accountLinkCredentialInUse:
     'Diese E-Mail-Adresse oder dieser Anbieter wird bereits von einem anderen KidGate-Konto verwendet.',
   accountLinkRequiresRecentLogin:
-    'Melde dich aus Sicherheitsgründen ab und wieder an, bevor du diese Methode verknüpfst.',
+    'Melde dich zu deiner Sicherheit ab und wieder an und versuche es dann noch einmal.',
   accountLinkActionLink: 'Verknüpfen',
   accountLinkActionUnlink: 'Verknüpfung aufheben',
   accountLinkActionVerify: 'Bestätigen',
@@ -90,7 +90,7 @@ export const settings = {
   reportAttachmentTooLarge:
     'Nach dem Verkleinern immer noch {{size}} – daher nicht angehängt. Erlaubt sind {{limit}} pro Bild.',
   reportAttachmentUnreadable:
-    'Diese Datei konnte nicht gelesen werden. Wähle ein anderes Bild.',
+    'Diese Datei lässt sich nicht lesen. Wähle ein anderes Bild.',
   reportSendButton: 'Bericht senden',
   reportSending: 'Wird gesendet…',
   toastReportSent: 'Danke – dein Bericht wurde gesendet.',
@@ -101,20 +101,22 @@ export const settings = {
     'Du verlässt diese Elternsitzung und kehrst zur Auswahl Eltern / Kind zurück. Melde dich erneut an, um Geräte zu verwalten. Dein Konto, deine Familie und die Kindergeräte bleiben unverändert.',
   removeParentDeviceAlertTitle: 'Elterngerät entfernen?',
   removeParentDeviceAlertMessage:
-    '{{deviceName}} wird von diesem Konto abgemeldet und erhält keine Benachrichtigungen mehr. Wer das Gerät hat, kann sich mit dem Passwort erneut anmelden.',
+    '{{deviceName}} wird von diesem Konto abgemeldet und erhält keine Benachrichtigungen mehr. Wer das Gerät hat, kann sich erneut anmelden.',
   toastParentDeviceRemoved: '{{deviceName}} entfernt.',
   signedOutByAnotherDevice:
     'Dieses Gerät wurde von einem anderen Gerät aus vom Elternkonto abgemeldet. Melde dich erneut an, um fortzufahren.',
   deleteAccountTitle: 'Konto löschen',
   deleteAccountSubtitleDefault: 'Lösche dein Konto und alle Daten dauerhaft',
-  deleteAccountAlertTitle: 'Konto dauerhaft löschen?',
+  deleteAccountSubtitleMember:
+    'Lösche deinen eigenen Zugang und deine Einstellungen dauerhaft. Die Familie bleibt bestehen.',
+  deleteAccountAlertTitle: 'Kontolöschung planen?',
   deleteAccountAlertMessage:
     'Damit wird die Löschung deines Familienkontos geplant. Es wird noch nichts gelöscht – du kannst dich anmelden und jederzeit vor dem Löschdatum abbrechen. Danach werden alle Daten (Geräte, Aktivitäten, Standortverlauf, SOS-Fotos) für alle Eltern und Kinder endgültig gelöscht.',
   deleteAccountAlertMessageMember:
     'Damit wird die Löschung deines eigenen Kontos geplant. Es wird noch nichts gelöscht – du kannst dich anmelden und jederzeit vor dem Löschdatum abbrechen. Danach werden deine Anmeldedaten und deine eigenen Einstellungen gelöscht. Die Familie, ihre Geräte und die anderen Eltern sind nicht betroffen.',
   deleteAccountSubscriptionNotice:
     'Das Löschen deines Kontos kündigt dein Abo nicht. Kündige es im App Store oder bei Google Play.',
-  sendRequestButton: 'Dauerhaft löschen',
+  sendRequestButton: 'Löschung planen',
   toastDeletionAlreadyPending: 'Die Kontolöschung läuft bereits.',
   toastDeletionRequestFailed:
     'Die Kontolöschung konnte nicht gestartet werden. Bitte versuche es erneut.',

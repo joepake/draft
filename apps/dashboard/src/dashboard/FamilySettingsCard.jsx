@@ -10,6 +10,7 @@ import NoDevicePanel from './NoDevicePanel.jsx';
 import ParentsCard from './ParentsCard.jsx';
 import Toggle from './Toggle.jsx';
 import TrustedContactsCard from './TrustedContactsCard.jsx';
+import WebSessionsCard from './WebSessionsCard.jsx';
 import { deviceIconName } from './deviceIcon.js';
 import { timeAgo } from './timeAgo.js';
 import { trustedContactRepository } from '../adapters/repositories.js';
@@ -61,6 +62,8 @@ export default function FamilySettingsCard({
   appT,
   onOpenChild,
   onOpenDevice,
+  onToast,
+  onWriteLost,
 }) {
   const { t } = useT();
   const isOwner = Boolean(actions?.isOwner);
@@ -211,6 +214,17 @@ export default function FamilySettingsCard({
         </Card>
       )}
 
+      {/* Outside the owner-only card above: every parent has browsers of their
+          own to see and remove. Only a browser that can make changes is
+          offered the list — both endpoints refuse one that merely views. */}
+      {tab === 'parents' && live && canWrite && (
+        <WebSessionsCard
+          actions={actions}
+          onToast={onToast}
+          onWriteLost={onWriteLost}
+        />
+      )}
+
       {tab === 'children' && (
         <Card title={appT('leaderboard.childrenTitle')}>
           {children.length === 0 ? (
@@ -353,6 +367,7 @@ export default function FamilySettingsCard({
                  (`adapters/oneShot.js`), so the card has to say when it has
                  changed something or the row a parent just added is not drawn. */
               onChanged={reload}
+              readOnly={readOnly}
             />
           ) : (
             <p className="hint">{appT('sos.trustedContactsEmpty')}</p>

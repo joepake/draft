@@ -20,7 +20,7 @@ export const webSignIn = {
   // "later", and it must not read like it.
   confirmTitle: 'このブラウザを許可しますか？',
   confirmBody:
-    'このスマートフォンと同じ権限になります。お子さまの居場所を見る、制限を変える、デバイスをロックする、リクエストを承認する、すべてできます。自分でログインしているときだけ許可してください。',
+    'このスマートフォンと同じ権限になります。お子さまの居場所を見る、制限を変える、デバイスをロックする、リクエストを承認する、すべてできます。変更を行えるのは7日間で、いつでも「ファミリー」→「保護者」から削除できます。自分でログインしているときだけ許可してください。',
   confirmCodeLabel: 'パソコンに表示されているコード',
   approveButton: '許可',
   declineButton: '許可しない',
@@ -36,6 +36,21 @@ export const webSignIn = {
     'このコードはすでに使用されています。パソコンで新しいコードを表示してください。',
   notFound: 'このコードは無効です。6文字を確認してもう一度お試しください。',
   failed: 'リクエストを完了できませんでした。もう一度お試しください。',
-
-  // Revocation screen (server side already ships; app screen is pending).
+  sessionsTitle: '変更できるブラウザ',
+  sessionsHint:
+    'これらのブラウザは、お使いのアカウントでWebダッシュボードにログインしていて、変更を行えます。ファミリーの情報を見るだけのブラウザは、ここには表示されません。',
+  sessionsEmpty:
+    '変更できるブラウザはありません。ブラウザを許可すると、ここに表示されます。',
+  sessionRow: '{{os}} の {{browser}}',
+  sessionRowUnknown: 'Webブラウザ',
+  sessionExpires: '{{date}} まで変更できます',
+  sessionViaQr: 'QR コードで許可されました',
+  sessionViaPin: '保護者PINで許可されました',
+  thisBrowser: 'このブラウザ',
+  sessionsRevoke: '削除',
+  sessionsRevokeConfirmTitle: 'このブラウザを削除しますか？',
+  sessionsRevokeConfirmBody:
+    'このブラウザは、設定の変更やデバイスの操作ができなくなります。表示されている日付までは、名前などデバイスの一部の情報を引き続き変更できます。ただし、そのブラウザで誰かがログアウトするまでは、ファミリーの情報が表示される場合があります。',
+  revokedToast: 'ブラウザを削除しました。',
+  revokeFailed: 'そのブラウザを削除できませんでした。もう一度お試しください。',
 } as const;

@@ -74,7 +74,7 @@ export const report = {
   share: 'Bagikan',
   copySummary: 'Salin ringkasan',
   copied: 'Ringkasan disalin.',
-  shareFailed: 'Tidak bisa membuka menu berbagi.',
+  shareFailed: 'Tidak bisa membuka menu berbagi. Coba lagi.',
   shareLinkCta: 'Unduh aplikasinya di {{url}}',
   shareFooterDesc:
     'KidGate membantu orang tua mengelola waktu layar, melihat lokasi, dan memfilter konten web.',
@@ -88,10 +88,10 @@ export const report = {
 
   emptyTitle: 'Belum ada laporan',
   emptyBody:
-    'Laporan datang setiap Senin pagi. Anda juga bisa menulis laporan minggu ini sekarang — mencakup tujuh hari terakhir.',
+    'Dengan Premium, laporan datang setiap Senin pagi. Anda juga bisa menulis laporan minggu ini sekarang — mencakup tujuh hari terakhir.',
   noUsage:
     'Tidak ada waktu layar yang tercatat selama dua minggu terakhir, jadi belum ada yang bisa dilaporkan. Perangkat yang offline tidak melaporkan apa pun, dan itu tidak sama dengan minggu yang tenang.',
-  rateLimited: 'Terlalu banyak percobaan. Tunggu satu menit.',
+  rateLimited: 'Belum bisa menulis laporan lagi. Coba lagi dalam satu menit.',
   loadFailedTitle: 'Laporan gagal dimuat',
   loadFailed: 'Laporan tidak dapat dibuka. Tarik ke bawah untuk mencoba lagi.',
   failed: 'Laporan tidak bisa ditulis. Coba lagi sebentar lagi.',
@@ -111,10 +111,9 @@ export const report = {
   // pack.
   childrenTitle: 'Setiap anak',
   childrenNoteByChild:
-    'Dua minggu yang sama, per anak di semua perangkat yang dipakainya. Persentase dihitung dari total keluarga.',
+    'Minggu ini, per anak di semua perangkat yang dipakainya. Persentase dihitung dari total keluarga.',
   devicesTitle: 'Setiap perangkat',
-  childrenNote:
-    'Dua minggu yang sama, per perangkat. Persentase dihitung dari total keluarga.',
+  childrenNote: 'Minggu ini, per perangkat. Persentase dihitung dari total keluarga.',
   colChild: 'Anak',
   colDevice: 'Perangkat',
   colScreenTime: 'Waktu Layar',
@@ -141,14 +140,14 @@ export const report = {
     'Contoh — angka sebenarnya muncul setelah Anda menghubungkan perangkat',
   guestTitle: 'Lihat minggu ini dihabiskan untuk apa',
   guestDescription:
-    'Masuk untuk membandingkan hari ini dengan hari biasa, melihat angka tiap anak berdampingan, dan menerima laporan setiap Senin.',
+    'Masuk untuk membandingkan hari ini dengan hari biasa, melihat angka tiap anak berdampingan, dan, dengan Premium, menerima laporan tertulis setiap Senin.',
   guestBenefitTrendTitle: 'Hari ini, dibanding hari biasa',
   guestBenefitTrendBody:
     'Satu angka saja tidak berarti apa-apa. Hari ini selalu digambar terhadap rata-rata harian keluarga Anda sendiri.',
   guestBenefitChildTitle: 'Setiap anak, berdampingan',
   guestBenefitChildBody:
     'Bagian hari milik tiap anak, dalam warnanya sendiri, di seluruh perangkat yang dipakainya.',
-  guestBenefitWeeklyTitle: 'Laporan setiap Senin',
+  guestBenefitWeeklyTitle: 'Laporan setiap Senin, dengan Premium',
   guestBenefitWeeklyBody:
     'Apa yang berubah, aplikasi mana yang naik, dan malam-malam larut — disimpan selama setahun.',
   guestSignInButton: 'Masuk',

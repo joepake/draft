@@ -1,4 +1,6 @@
 export const shared = {
+  // A retry button any surface may draw, child or parent — neutral on purpose.
+  tryAgain: 'Coba lagi',
   // Short duration labels for countdowns (e.g. time-request cooldown).
   durationMinutesShort: '{{minutes}} menit',
   durationHoursShort: '{{hours}} jam',

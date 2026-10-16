@@ -11,7 +11,7 @@ export const messageMonitoring = {
     'ここでチェックできるのは検索だけです。メッセージをチェックできるのはAndroidデバイスだけです。',
   recentTitle: '最近の警告',
   emptyTitle: 'まだ警告はありません',
-  emptySubtitle: 'メッセージに気がかりな語句は見つかっていません。',
+  emptySubtitle: 'メッセージや検索で気がかりな語句が検出されると、ここに表示されます。',
   emptySubtitleNotWatching:
     '現在メッセージはチェックされていないため、何が起きてもこの一覧は空のままです。',
   flaggedTerm: '検出された語句：「{{term}}」',
@@ -29,7 +29,7 @@ export const messageMonitoring = {
   categoryTobacco: 'たばこ・電子たばこ',
   categoryGambling: 'ギャンブル',
   categoryProfanity: '不適切な言葉',
-  categoryUnknown: '検出されたメッセージ',
+  categoryUnknown: '気がかりなメッセージ',
   guidanceToggle: '次にできること',
   guidanceHide: '閉じる',
   guidanceFooter:
@@ -72,13 +72,13 @@ export const messageMonitoring = {
     'ブラウザと YouTube。報告されるのは検出された語句だけで、検索内容そのものが報告されることはありません。',
   parentSearchHintNotGranted:
     '「入力したメッセージを確認」と同じ権限が必要です。「受信したメッセージを確認」をオンにしてから、お子さまのデバイスで許可してください。',
-  parentToggleHintGranted: 'このスマホで有効です。',
+  parentToggleHintGranted: 'お子さまのデバイスで許可されています。',
   parentToggleHintNotGranted:
-    'このスマホではまだ許可されていません。お子さまのデバイスでKidGateを開いて許可してください。',
+    'お子さまのデバイスではまだ許可されていません。そのデバイスでKidGateを開いて許可してください。',
   parentProfanityLabel: '汚い言葉も検出する',
   parentProfanityHint:
     'デフォルトはオフ。普通の悪態はよくあるため、オンにするとそれも警告の対象になります。',
-  parentToggleSaveFailed: '変更を保存できませんでした。',
+  parentToggleSaveFailed: '変更を保存できませんでした。もう一度お試しください。',
   settingsTitle: 'メッセージ警告の設定',
   checkedTitle: '確認済み、問題なし',
   checkedSubtitle:
@@ -108,7 +108,7 @@ export const messageMonitoring = {
     'Androidがこの機能をオフにしました。書いた内容のチェックを続けるにはもう一度許可してください。',
   outgoingDisclosureTitle: '許可する前に',
   outgoingDisclosureBody:
-    'この権限によりKidGateは、テキストメッセージ（SMS・MMS）やチャットアプリで入力した内容を読み取り、同じ警告ワードがないかをチェックします。保護者が検索のチェックをオンにした場合は、ブラウザ、YouTube、Googleアプリで入力した検索などの内容も読み取ります。パスワード欄を読むことはありません。チェックはこのスマホの中で行われます。一致する語句があった場合、保護者に届くのはその語句、カテゴリ、アプリ、時刻だけで、メッセージや検索のほかの部分が送られることはありません。KidGateがクラッシュした場合は、問題を修正するためにクラッシュログがKidGateチームに送信されます。',
+    'この権限によりKidGateは、テキストメッセージ（SMS・MMS）やチャットアプリで入力した内容を読み取り、同じ警告ワードがないかをチェックします。保護者が検索のチェックをオンにした場合は、ブラウザ、YouTube、Googleアプリで入力した検索などの内容も読み取ります。パスワード欄を読むことはありません。チェックはこのスマホの中で行われます。一致する語句があった場合、保護者に届くのはその語句、カテゴリ、アプリ、時刻だけで、メッセージや検索のほかの部分が送られることはありません。マイクを許可した場合は、SOSを送ったときにKidGateが最大15秒の音声を録音し、保護者に送信します。KidGateがクラッシュした場合は、問題を修正するためにクラッシュログがKidGateチームに送信されます。',
   outgoingRestrictedHint:
     'スイッチが灰色で押せない場合は、設定 › アプリ › KidGate を開き、⋮ メニューから「制限された設定を許可」を選んでから、ここへ戻ってください。',
   notice: {

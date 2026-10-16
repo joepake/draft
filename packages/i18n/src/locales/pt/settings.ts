@@ -42,7 +42,7 @@ export const settings = {
   accountLinkCredentialInUse:
     'Esse e-mail ou provedor já está sendo usado por outra conta do KidGate.',
   accountLinkRequiresRecentLogin:
-    'Por segurança, saia e entre novamente antes de vincular esse método.',
+    'Para sua segurança, saia da conta e entre de novo; depois, tente mais uma vez.',
   accountLinkActionLink: 'Vincular',
   accountLinkActionUnlink: 'Desvincular',
   accountLinkActionVerify: 'Verificar',
@@ -98,20 +98,22 @@ export const settings = {
     'Você sairá desta sessão de responsável e voltará à seleção Responsável / Criança. Entre novamente para gerenciar os dispositivos. Sua conta, família e dispositivos das crianças continuam inalterados.',
   removeParentDeviceAlertTitle: 'Remover dispositivo do responsável?',
   removeParentDeviceAlertMessage:
-    '{{deviceName}} será desconectado desta conta e deixará de receber notificações. Quem estiver com ele pode entrar de novo com a senha.',
+    '{{deviceName}} será desconectado desta conta e deixará de receber notificações. Quem estiver com ele pode entrar de novo.',
   toastParentDeviceRemoved: '{{deviceName}} removido.',
   signedOutByAnotherDevice:
     'Este dispositivo foi desconectado da conta de responsável a partir de outro dispositivo. Entre novamente para continuar.',
   deleteAccountTitle: 'Excluir conta',
   deleteAccountSubtitleDefault: 'Exclui permanentemente sua conta e todos os dados',
-  deleteAccountAlertTitle: 'Excluir a conta permanentemente?',
+  deleteAccountSubtitleMember:
+    'Exclui permanentemente seu próprio login e seus ajustes. A família continua.',
+  deleteAccountAlertTitle: 'Agendar a exclusão da conta?',
   deleteAccountAlertMessage:
     'Isto agenda a exclusão da sua conta familiar. Nada é removido ainda — você pode entrar e cancelar a qualquer momento antes da data de exclusão. Depois disso, todos os dados (dispositivos, atividade, histórico de localização, fotos SOS) são excluídos permanentemente para todos os pais e crianças.',
   deleteAccountAlertMessageMember:
     'Isto agenda a exclusão da sua própria conta. Nada é removido ainda — você pode entrar e cancelar a qualquer momento antes da data de exclusão. Depois disso, seu login e seus próprios ajustes são excluídos. A família, os dispositivos dela e os outros responsáveis não são afetados.',
   deleteAccountSubscriptionNotice:
     'Excluir sua conta não cancela uma assinatura. Cancele-a na App Store ou no Google Play.',
-  sendRequestButton: 'Excluir permanentemente',
+  sendRequestButton: 'Agendar exclusão',
   toastDeletionAlreadyPending: 'A exclusão da conta já está em andamento.',
   toastDeletionRequestFailed:
     'Não foi possível iniciar a exclusão da conta. Tente novamente.',

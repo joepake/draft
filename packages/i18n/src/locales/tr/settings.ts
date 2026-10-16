@@ -40,7 +40,7 @@ export const settings = {
   accountLinkCredentialInUse:
     'Bu e-posta veya sağlayıcı başka bir KidGate hesabında zaten kullanılıyor.',
   accountLinkRequiresRecentLogin:
-    'Güvenlik nedeniyle bu yöntemi bağlamadan önce çıkış yapıp tekrar giriş yapın.',
+    'Güvenliğiniz için oturumu kapatıp tekrar açın, ardından bu işlemi yeniden deneyin.',
   accountLinkActionLink: 'Bağla',
   accountLinkActionUnlink: 'Kaldır',
   accountLinkActionVerify: 'Doğrula',
@@ -95,20 +95,22 @@ export const settings = {
     'Bu ebeveyn oturumundan çıkacak ve Ebeveyn / Çocuk seçim ekranına döneceksiniz. Cihazları yönetmek için tekrar giriş yapın. Hesabınız, aileniz ve çocuk cihazlarınız değişmeden kalır.',
   removeParentDeviceAlertTitle: 'Ebeveyn cihazı kaldırılsın mı?',
   removeParentDeviceAlertMessage:
-    '{{deviceName}} bu hesaptan çıkış yapacak ve artık bildirim almayacak. Cihazı elinde bulunduran kişi şifreyle yeniden giriş yapabilir.',
+    '{{deviceName}} bu hesaptan çıkış yapacak ve artık bildirim almayacak. Cihazı elinde bulunduran kişi yeniden giriş yapabilir.',
   toastParentDeviceRemoved: '{{deviceName}} kaldırıldı.',
   signedOutByAnotherDevice:
     'Bu cihazın ebeveyn hesabı oturumu başka bir cihazdan kapatıldı. Devam etmek için tekrar oturum açın.',
   deleteAccountTitle: 'Hesabı sil',
   deleteAccountSubtitleDefault: 'Hesabınızı ve tüm verilerinizi kalıcı olarak siler',
-  deleteAccountAlertTitle: 'Hesap kalıcı olarak silinsin mi?',
+  deleteAccountSubtitleMember:
+    'Kendi giriş bilgilerinizi ve ayarlarınızı kalıcı olarak silin. Aile olduğu gibi kalır.',
+  deleteAccountAlertTitle: 'Hesap silme işlemi planlansın mı?',
   deleteAccountAlertMessage:
     'Bu işlem aile hesabınızın silinmesini planlar. Henüz hiçbir şey silinmedi — silme tarihinden önce istediğiniz zaman oturum açıp iptal edebilirsiniz. Bu tarihten sonra tüm veriler (cihazlar, etkinlik, konum geçmişi, SOS fotoğrafları) tüm ebeveynler ve çocuklar için kalıcı olarak silinir.',
   deleteAccountAlertMessageMember:
     'Bu işlem yalnızca kendi hesabınızın silinmesini planlar. Henüz hiçbir şey silinmedi — silme tarihinden önce istediğiniz zaman oturum açıp iptal edebilirsiniz. Bu tarihten sonra giriş bilgileriniz ve kendi ayarlarınız silinir. Aile, cihazları ve diğer ebeveynler bundan etkilenmez.',
   deleteAccountSubscriptionNotice:
     'Hesabınızı silmek aboneliği iptal etmez. Aboneliği App Store’dan veya Google Play’den iptal edin.',
-  sendRequestButton: 'Kalıcı olarak sil',
+  sendRequestButton: 'Silmeyi planla',
   toastDeletionAlreadyPending: 'Hesap silme işlemi zaten sürüyor.',
   toastDeletionRequestFailed:
     'Hesap silme işlemi başlatılamadı. Lütfen tekrar deneyin.',

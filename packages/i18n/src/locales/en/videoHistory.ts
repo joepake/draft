@@ -3,10 +3,15 @@ export const videoHistory = {
   fallbackDeviceName: 'Child device',
   toggleLabel: 'Record watched videos',
   toggleHint:
-    'YouTube in the browser, and the YouTube app on Android phones and TV. On TV, Shorts are not listed because the TV app does not identify them as Shorts.',
-  toggleFailed: 'Could not update video history. Try again.',
+    'Videos watched in the YouTube app on Android phones and TV, and in Chrome with the KidGate extension. On TV, Shorts are not listed because the TV app does not identify them as Shorts.',
+  toggleFailed: 'Unable to update video history. Try again.',
   unsupportedNote:
     'This device cannot report watched videos. It works on Android, Android TV and in Chrome.',
+  // An Android TV whose notification-access grant is missing (it publishes
+  // `videoHistory: false`). `TV_SETUP_STEPS` has no step that asks for the grant,
+  // so no screen on the TV can give it yet (`videoHistoryUnavailableKey`).
+  unsupportedNoteTv:
+    'This TV is not recording watched videos. KidGate needs notification access on it, which cannot be granted from a TV screen yet.',
   unsupportedNeedsExtension:
     'KidGate on this computer cannot see which videos are watched — it reads site names, not what is inside a page. The KidGate extension for Chrome can: add it on this computer and it reports watched videos as a device of its own.',
   viaExtension: 'Via extension',
@@ -43,5 +48,5 @@ export const videoHistory = {
     'Not recording yet: KidGate needs notification access on your child’s phone. On that phone, open KidGate Settings, select Unlock with Parent PIN, then Allow notification access under Message Alerts.',
   openAction: 'Open on YouTube',
   searchAction: 'Search YouTube for this video',
-  openFailed: 'Could not open YouTube.',
+  openFailed: 'Unable to open YouTube. Try again.',
 };

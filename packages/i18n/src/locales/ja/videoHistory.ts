@@ -3,10 +3,12 @@ export const videoHistory = {
   fallbackDeviceName: '子どものデバイス',
   toggleLabel: '視聴した動画を記録',
   toggleHint:
-    'ブラウザのYouTubeと、AndroidスマートフォンおよびテレビのYouTubeアプリ。テレビではShortsは表示されません。テレビ版アプリではShortsという名称が表示されないためです。',
+    'AndroidスマートフォンとテレビのYouTubeアプリ、およびKidGate拡張機能を入れたChromeで視聴した動画。テレビではShortsは表示されません。テレビ版アプリではShortsとして識別されないためです。',
   toggleFailed: '動画履歴を更新できませんでした。もう一度お試しください。',
   unsupportedNote:
     'このデバイスは視聴した動画を報告できません。Android、Android TV、Chrome で動作します。',
+  unsupportedNoteTv:
+    'このテレビでは視聴した動画を記録していません。KidGateにはこのテレビでの通知へのアクセス権が必要ですが、現時点ではテレビの画面から許可することはできません。',
 
   unsupportedNeedsExtension:
     'このコンピューターのKidGateは、どの動画が視聴されたかを見ることができません。サイト名は読みますが、ページの中身は読まないためです。Chrome用のKidGate拡張機能なら可能です。このコンピューターに追加すると、視聴した動画を独立したデバイスとして報告します。',
@@ -42,5 +44,5 @@ export const videoHistory = {
     'まだ動画は記録されていません。KidGateには、お子さまのスマートフォンでの通知へのアクセスが必要です。そのスマートフォンでKidGateの設定を開き、「保護者PINで解除」を選択してから、「メッセージ警告」セクションの「通知へのアクセスを許可」を選択してください。',
   openAction: 'YouTube で開く',
   searchAction: 'この動画を YouTube で検索',
-  openFailed: 'YouTube を開けませんでした。',
+  openFailed: 'YouTubeを開けませんでした。もう一度お試しください。',
 };

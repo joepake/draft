@@ -7,7 +7,8 @@ export const controls = {
   quickPresets: 'Schnellauswahl',
   presetMinutes: '{{minutes}} Min.',
   customMinutes: 'Eigene Minuten',
-  dailyLimitEnterAtLeastMinutes: 'Gib mindestens {{min}} Minuten ein.',
+  dailyLimitEnterAtLeastMinutes: 'Gib mindestens {{count}} Minuten ein.',
+  dailyLimitEnterAtLeastMinutes_one: 'Gib mindestens {{count}} Minute ein.',
   dailyLimitMaxMinutes:
     'Das Tageslimit kann höchstens {{max}} Minuten betragen (24 Stunden).',
   rulesSectionTitle: 'Regeln deiner Eltern',

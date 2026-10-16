@@ -9,7 +9,7 @@ export const plans = {
   pillTrialActiveFallback: 'Trial active',
   statusTrialEndedTitle: 'Trial ended',
   statusTrialEndedSubtitle:
-    'Daily Limit, Blocked Hours, Blocked Apps, Web Filter and location keep working for free. Subscribe for live updates, history, alerts and reports.',
+    'Daily Limit, Blocked Hours, Blocked Apps, location and the Web Filter switch keep working for free. Subscribe for live updates, history, alerts and reports.',
   pillTrialEnded: 'Trial ended',
   statusStartTrialTitle: 'Start your trial',
   statusStartTrialSubtitle:
@@ -35,8 +35,8 @@ export const plans = {
   compareDevicesFree: 'Rules on all, reports from 1',
   compareDevicesPremium: 'Reports from all',
   compareParents: 'Parents',
-  compareParentsFree: 'Up to 3',
-  compareParentsPremium: 'Up to 6',
+  compareParentsFree: 'Up to 3, including you',
+  compareParentsPremium: 'Up to 6, including you',
   compareSync: 'Updates from the device',
   compareSyncFree: 'When you check',
   compareSyncPremium: 'Live',
@@ -58,7 +58,7 @@ export const plans = {
   compareSafety: 'Protection alerts and Check-In',
   compareSafetyFree: 'Alerts + Check-In',
   compareSafetyPremium: 'Adds a photo to every Check-In',
-  compareControls: 'App blocking and web filter',
+  compareControls: 'Blocked Apps and Web Filter',
   compareControlsFree: 'Any app, a fixed set of categories',
   compareControlsPremium: 'By category, your own lists, site requests',
   compareReport: 'Weekly report',
@@ -69,7 +69,7 @@ export const plans = {
   compareActivityFeedPremium: '30 days',
   compareChildReport: 'Per-child reports',
   compareIncluded:
-    'Both plans include the Daily Limit, Blocked Hours, Blocked Apps, App Limits, approving new apps, the Web Filter, Device Lock, SOS, Time Requests and Reward tasks on iPhone, Android, Mac and Windows in one family, plus the web dashboard. Android TV and Chromebook are supported too, with fewer controls.',
+    'Both plans include the Daily Limit, Blocked Hours, Blocked Apps, approving new apps, the Web Filter, Device Lock, SOS, Time Requests and Reward Tasks on iPhone, Android, Mac and Windows in one family, plus the web dashboard, and App Limits on Android, Mac and Windows. Android TV and Chromebook are supported too, with fewer controls.',
   // The rows above, folded into the five reasons Premium sells
   // (`docs/PRICING.md` §5). Groups and their order: `planComparison` in
   // `@kidgate/core/domain`. A headline is one or two words; a tagline is one
@@ -132,7 +132,7 @@ export const plans = {
   memberTrialActiveSubtitle:
     'This family is on trial. When it ends, every rule keeps working on every device and one device keeps reporting; the owner can subscribe for live activity, history and reports from every device.',
   memberTrialEndedSubtitle:
-    'This family’s trial has ended. Daily Limit, Blocked Hours, Blocked Apps, Web Filter and location still work. Ask the owner to subscribe for live updates, history and alerts.',
+    'This family’s trial has ended. Daily Limit, Blocked Hours, Blocked Apps, location and the Web Filter switch still work. Ask the owner to subscribe for live updates, history and alerts.',
   memberSetupTrialSubtitle:
     'The trial starts when the owner connects a parent device and a child device.',
   premiumActivatedTitle: 'Premium unlocked',
@@ -151,7 +151,8 @@ export const plans = {
   subscriptionOfferNotConfigured:
     'This subscription is not available right now. Try again later.',
   unableToStartPurchase: 'Unable to start the purchase. Try again.',
-  noActiveSubscription: 'No active subscription found.',
+  noActiveSubscription:
+    'No active subscription was found. Sign in with the App Store or Google Play account you subscribed with, then try again.',
   purchasesRestored: 'Purchases restored.',
   unableToRestorePurchases: 'Unable to restore purchases. Try again.',
   purchaseVerificationFailed:
@@ -160,8 +161,8 @@ export const plans = {
   // has to name who needs to act instead of offering a button they can't use.
   familyPremiumEndedTitle: 'This family’s Premium has ended',
   familyPremiumEndedBody:
-    'Daily Limit, Blocked Hours, Blocked Apps, Web Filter and location still work. Live updates, history, alerts and reports are paused until the family owner renews Premium.',
-  pricesUnavailable: 'Could not load prices from the store.',
+    'Daily Limit, Blocked Hours, Blocked Apps, location and the Web Filter switch still work. Live updates, history, alerts and reports are paused until the family owner renews Premium.',
+  pricesUnavailable: 'Unable to load prices from the store.',
   pricesRetry: 'Try again',
   featureRewardTasks: 'Reward Tasks',
   sectionChoosePlan: 'Choose your plan',
@@ -191,11 +192,11 @@ export const plans = {
   platformMac: 'Mac',
   platformMacDetail: 'Child device only · macOS 12 and later',
   platformIosLimits:
-    'No App Limits or message alerts, and blocked apps are chosen on the iPhone itself.',
+    'No App Limits or Message Alerts, and the apps for Blocked Apps are chosen on the iPhone itself.',
   platformMacLimits: 'No message alerts, and location is approximate.',
   platformWindowsLimits: 'No message alerts, and location is approximate.',
   platformAndroidTvLimits:
-    'No message alerts, location, SOS or time requests. App blocking is best-effort.',
+    'No Message Alerts, location, SOS or Time Requests. Blocked Apps is best-effort.',
   platformChromebookLimits:
     'Web Filter only — no Daily Limit, Blocked Hours, Blocked Apps, Device Lock, SOS or location.',
   platformComingSoon: 'Coming soon',
@@ -204,7 +205,7 @@ export const plans = {
   platformAndroidTv: 'Android TV',
   platformAndroidTvDetail: 'Child device only · Android TV 7 and later',
   platformChromebook: 'Chromebook',
-  platformChromebookDetail: 'Child device · web filtering in Chrome only',
+  platformChromebookDetail: 'Child device · Web Filter in Chrome only',
   // The premium teasers (`@kidgate/core/domain/premiumTeaser`). Each body is
   // its `docs/PRICING.md` §4 row, said at the moment a parent misses it: a
   // comparison table asks them to imagine the gap, these measure it.

@@ -9,7 +9,7 @@ export const plans = {
   pillTrialActiveFallback: '체험 진행 중',
   statusTrialEndedTitle: '체험 종료',
   statusTrialEndedSubtitle:
-    '일일 제한, 차단 시간, 차단된 앱, 웹 필터, 위치는 무료로 계속 사용할 수 있습니다. 실시간 업데이트, 기록, 알림, 리포트를 쓰려면 구독하세요.',
+    '일일 제한, 차단 시간, 차단된 앱, 위치, 웹 필터 스위치는 무료로 계속 사용할 수 있습니다. 실시간 업데이트, 기록, 알림, 리포트를 쓰려면 구독하세요.',
   pillTrialEnded: '체험 종료',
   statusStartTrialTitle: '체험 시작하기',
   statusStartTrialSubtitle:
@@ -32,8 +32,8 @@ export const plans = {
   compareDevicesFree: '규칙은 전체, 보고는 1대',
   compareDevicesPremium: '모든 기기에서 보고',
   compareParents: '부모',
-  compareParentsFree: '최대 3명',
-  compareParentsPremium: '최대 6명',
+  compareParentsFree: '본인 포함 최대 3명',
+  compareParentsPremium: '본인 포함 최대 6명',
   compareSync: '기기에서 오는 업데이트',
   compareSyncFree: '열어서 확인할 때',
   compareSyncPremium: '실시간',
@@ -53,7 +53,7 @@ export const plans = {
   compareSafety: '보호 알림과 체크인',
   compareSafetyFree: '알림 + 체크인',
   compareSafetyPremium: '체크인마다 사진을 추가',
-  compareControls: '앱 차단과 웹 필터',
+  compareControls: '차단된 앱과 웹 필터',
   compareControlsFree: '모든 앱, 정해진 카테고리',
   compareControlsPremium: '카테고리별, 직접 만든 목록, 사이트 요청',
   compareReport: '주간 리포트',
@@ -64,7 +64,7 @@ export const plans = {
   compareActivityFeedPremium: '30일',
   compareChildReport: '자녀별 리포트',
   compareIncluded:
-    '두 플랜 모두 한 가족 안의 iPhone·Android·Mac·Windows에서 일일 제한, 차단 시간, 차단된 앱, 앱 시간 제한, 새 앱 승인, 웹 필터, 기기 잠금, SOS, 시간 연장 요청, 보상 과제를 제공하며, 웹 대시보드도 포함합니다. Android TV와 Chromebook도 지원하지만 제공되는 제어 기능은 더 적습니다.',
+    '두 플랜 모두 한 가족 안의 iPhone·Android·Mac·Windows에서 일일 제한, 차단 시간, 차단된 앱, 새 앱 승인, 웹 필터, 기기 잠금, SOS, 시간 연장 요청, 보상 과제를 제공하며, 웹 대시보드와 Android·Mac·Windows에서 쓸 수 있는 앱 시간 제한도 포함합니다. Android TV와 Chromebook도 지원하지만 제공되는 제어 기능은 더 적습니다.',
   sectionWhyPremium: 'Premium이 더하는 것',
   sectionWhyPremiumSubtitle:
     '모든 규칙은 무료에서도 계속 작동합니다. Premium은 무엇을, 얼마나 빨리 볼 수 있는지를 더합니다.',
@@ -121,7 +121,7 @@ export const plans = {
   memberTrialActiveSubtitle:
     '이 가족은 체험 중입니다. 체험이 끝나도 모든 규칙은 모든 기기에서 계속 작동하고 한 기기는 계속 보고합니다. 소유자가 구독하면 실시간 활동, 기록, 모든 기기의 보고를 이용할 수 있습니다.',
   memberTrialEndedSubtitle:
-    '이 가족의 체험이 끝났습니다. 일일 제한, 차단 시간, 차단된 앱, 웹 필터, 위치는 계속 사용할 수 있습니다. 실시간 업데이트, 기록, 알림은 가족 관리자에게 구독을 요청하세요.',
+    '이 가족의 체험이 끝났습니다. 일일 제한, 차단 시간, 차단된 앱, 위치, 웹 필터 스위치는 계속 사용할 수 있습니다. 실시간 업데이트, 기록, 알림은 가족 관리자에게 구독을 요청하세요.',
   memberSetupTrialSubtitle:
     '소유자가 부모 기기와 자녀 기기를 연결하면 체험이 시작됩니다.',
   premiumActivatedTitle: 'Premium이 활성화되었습니다',
@@ -140,7 +140,8 @@ export const plans = {
   subscriptionOfferNotConfigured:
     '이 구독 상품은 현재 이용할 수 없습니다. 나중에 다시 시도해 주세요.',
   unableToStartPurchase: '구매를 시작할 수 없습니다. 다시 시도해 주세요.',
-  noActiveSubscription: '활성화된 구독을 찾을 수 없습니다.',
+  noActiveSubscription:
+    '활성화된 구독을 찾을 수 없습니다. 구독할 때 사용한 App Store 또는 Google Play 계정으로 로그인한 후 다시 시도해 주세요.',
   purchasesRestored: '구매가 복원되었습니다.',
   unableToRestorePurchases: '구매를 복원할 수 없습니다. 다시 시도해 주세요.',
   purchaseVerificationFailed:
@@ -149,7 +150,7 @@ export const plans = {
   // has to name who needs to act instead of offering a button they can't use.
   familyPremiumEndedTitle: '이 가족의 Premium이 종료되었습니다',
   familyPremiumEndedBody:
-    '일일 제한, 차단 시간, 차단된 앱, 웹 필터, 위치는 계속 사용할 수 있습니다. 실시간 업데이트, 기록, 알림, 리포트는 가족 관리자가 Premium을 갱신할 때까지 멈춥니다.',
+    '일일 제한, 차단 시간, 차단된 앱, 위치, 웹 필터 스위치는 계속 사용할 수 있습니다. 실시간 업데이트, 기록, 알림, 리포트는 가족 관리자가 Premium을 갱신할 때까지 멈춥니다.',
   pricesUnavailable: '스토어에서 가격을 불러오지 못했습니다.',
   pricesRetry: '다시 시도',
   featureRewardTasks: '보상 과제',
@@ -180,11 +181,11 @@ export const plans = {
   platformMac: 'Mac',
   platformMacDetail: '자녀 기기 전용 · macOS 12 이상',
   platformIosLimits:
-    '앱 시간 제한과 메시지 알림은 제공되지 않습니다. 차단할 앱은 iPhone에서 직접 선택합니다.',
+    '앱 시간 제한과 메시지 알림은 제공되지 않습니다. 차단된 앱의 대상은 iPhone에서 직접 선택합니다.',
   platformMacLimits: '메시지 알림이 없고, 위치는 대략적입니다.',
   platformWindowsLimits: '메시지 알림이 없고, 위치는 대략적입니다.',
   platformAndroidTvLimits:
-    '메시지 알림, 위치, SOS, 시간 요청은 제공되지 않습니다. 앱 차단은 최선 노력 방식으로 동작합니다.',
+    '메시지 알림, 위치, SOS, 시간 연장 요청은 제공되지 않습니다. 차단된 앱은 최선 노력 방식으로 동작합니다.',
   platformChromebookLimits:
     '웹 필터만 제공 — 일일 제한, 차단 시간, 차단된 앱, 기기 잠금, SOS, 위치는 제공되지 않습니다.',
   platformComingSoon: '출시 예정',

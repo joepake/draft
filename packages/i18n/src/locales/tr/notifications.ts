@@ -7,19 +7,19 @@ export const notifications = {
     'Bu telefonda SOS tam ekran yerine küçük bir bildirim olarak görünüyor, bu yüzden gözden kaçabilir. Bunu düzeltmek için tam ekran uyarılara izin verin.',
   sosFullScreenAllow: 'Tam ekran uyarılara izin ver',
   sectionAlerts: 'Uyarılar',
-  sectionAlertsHint: 'Bu telefona hangi bildirimlerin geleceğini seçin.',
+  sectionAlertsHint: 'Ebeveyn telefonuna hangi uyarıların gönderileceğini seçin.',
   sectionSummary: 'Özet',
   sectionQuietHours: 'Sessiz saatler',
   sectionQuietHoursHint:
-    'Bu aralıkta uyarılar sessiz kalır. SOS hiçbir zaman susturulmaz ve en ciddi Mesaj uyarıları yine de gelir.',
+    'Bu aralıkta uyarı gönderilmez ve sonradan da gönderilmez. Olaylar yine de Etkinlikler’de görünür. SOS hiçbir zaman bekletilmez ve en ciddi Mesaj uyarıları yine de gelir.',
   quietHoursLabel: 'Sessiz saatler',
   quietHoursOff: 'Kapalı — uyarılar her saat gelebilir',
-  quietHoursActive: '{{start}} – {{end}} arası sessiz',
+  quietHoursActive: '{{start}} – {{end}} arası uyarı gönderilmez',
   quietHoursStart: 'Başlangıç',
   quietHoursEnd: 'Bitiş',
   quietHoursSameTime: 'İki farklı saat seçin.',
   footnote:
-    'Bu ayarlar yalnızca bu telefon için geçerlidir. Diğer ebeveyn cihazları kendi ayarlarını korur.',
+    'Bu ayarlar yalnızca tek bir telefon için geçerlidir. Diğer ebeveyn cihazları kendi ayarlarını korur.',
   toastSaveFailed: 'Kaydedilemedi. Lütfen tekrar deneyin.',
   localReminderSetupTitle: 'Kurulumu tamamlayın',
   localReminderIdleTitle: 'Kurallarınız çalışıyor',
@@ -30,15 +30,15 @@ export const notifications = {
     '{{days}} gün boyunca kimse KidGate’i açmazsa çocuğunuzun cihazları, biri tekrar açana kadar rapor göndermeyi bırakır. Kurallarınız çalışmaya devam eder.',
   alert: {
     tamperAlerts: {
-      label: 'Koruma kapatıldı',
+      label: 'Koruma uyarıları',
       hint: 'Bir çocuk cihazında KidGate’in ihtiyaç duyduğu bir izin kapatıldı, tarih, saat veya saat dilimi değiştirildi ya da cihaz kilitliyken SOS’a basıldı. SOS uyarısının kendisi her zaman gelir.',
     },
     placeAlerts: {
-      label: 'Varış ve ayrılış',
+      label: 'Yer uyarıları',
       hint: 'Çocuğunuz kayıtlı bir konuma varıyor ya da oradan ayrılıyor.',
     },
     timeRequests: {
-      label: 'Ek süre istekleri',
+      label: 'Süre istekleri',
       hint: 'Çocuğunuz daha fazla ekran süresi istiyor.',
     },
     siteRequests: {
@@ -50,7 +50,7 @@ export const notifications = {
       hint: 'Çocuğunuz güvenlik Check-In’ini yanıtlıyor.',
     },
     rewardTasks: {
-      label: 'Ödül talepleri',
+      label: 'Ödül görevleri',
       hint: 'Çocuğunuz bir ödül görevini tamamlandı olarak işaretliyor.',
     },
     appActivity: {
@@ -62,7 +62,7 @@ export const notifications = {
       hint: 'Çocuk cihazında alışılmışın dışında kullanım — gece geç saatler, ani artışlar, yeni uygulamalar.',
     },
     weeklyDigest: {
-      label: 'Haftalık özet',
+      label: 'Haftalık rapor',
       hint: 'Pazartesi günü gelen ekran süresi ve engelleme özeti.',
     },
     messageAlerts: {

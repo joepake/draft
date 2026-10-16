@@ -10,7 +10,8 @@ export const errors = {
   somethingWentWrong: '문제가 발생했습니다. 다시 시도해 주세요.',
   accountDisabled:
     '이 계정은 비활성화되었습니다. 복구하려면 KidGate 지원팀에 문의하세요.',
-  recentLoginRequired: '보안을 위해 다시 로그인한 뒤 이 작업을 한 번 더 시도하세요.',
+  recentLoginRequired:
+    '보안을 위해 로그아웃한 뒤 다시 로그인하고, 이 작업을 한 번 더 시도하세요.',
   accountExistsDifferentMethod:
     '이 이메일은 이미 다른 로그인 방법으로 만든 계정이 있습니다. 그 방법으로 로그인한 뒤 설정에서 이 방법을 연결하세요.',
   unableToCreateAccount: '계정을 만들 수 없습니다. 다시 시도해 주세요.',
@@ -39,13 +40,12 @@ export const errors = {
   storageUploadUnauthorized:
     '현재 사진을 업로드할 수 없습니다. 잠시 후 다시 시도해 주세요.',
   storageNotSetup: '현재 사진을 업로드할 수 없습니다. 잠시 후 다시 시도해 주세요.',
-  noNetworkConnection:
-    '네트워크에 연결되어 있지 않습니다. Wi-Fi 또는 모바일 데이터를 확인한 후 다시 시도해 주세요.',
+  noNetworkConnection: '연결하지 못했습니다. 연결 상태를 확인한 후 다시 시도해 주세요.',
   connectionFailedTitle: '연결 실패',
   reconnect: '다시 연결',
   unableToUploadPhoto: '사진을 업로드할 수 없습니다. 다시 시도해 주세요.',
   premiumSubscriptionRequired:
-    '이 기능에는 Premium이 필요합니다. 설정한 모든 규칙 — 제한, 취침 시간, 앱 차단, 웹 필터, 위치, SOS — 은 계속 무료입니다.',
+    '이 기능에는 Premium이 필요합니다. 일일 제한, 차단 시간, 차단된 앱, 앱 시간 제한, 기기 잠금, SOS, 위치, 웹 필터 스위치, 세이프서치는 계속 무료입니다.',
   trialEndedCannotJoinFamily:
     '무료 체험이 종료되었습니다. 다른 가족에 참여하려면 Premium을 구독하세요.',
 
@@ -80,14 +80,15 @@ export const errors = {
   deviceClockOutOfRange:
     '기기의 날짜 또는 시간이 올바르지 않습니다. 자동으로 설정해 주세요.',
   locationSharingDisabled:
-    '이 기기에서 위치 공유가 꺼져 있습니다. 기기 설정에서 켠 후 다시 시도해 주세요.',
+    '이 기기에서 위치 공유가 꺼져 있습니다. “위치 공유”를 켠 후 다시 시도해 주세요.',
   childDeviceNoPushToken:
     '자녀 기기가 아직 요청을 받을 수 없습니다. 자녀 기기에서 KidGate를 열고 알림을 허용해 주세요.',
   unableToRequestLocation:
     '현재 위치 업데이트를 요청할 수 없습니다. 다시 시도해 주세요.',
   unableToVerifyPurchase: '구매를 확인할 수 없습니다. 잠시 후 다시 시도해 주세요.',
   noPurchasesToRestore: '이 계정에서 복원할 구매 내역이 없습니다.',
-  noActiveSubscription: '이 계정에서 활성 구독을 찾을 수 없습니다.',
+  noActiveSubscription:
+    '활성 구독을 찾을 수 없습니다. 구독할 때 사용한 App Store 또는 Google Play 계정으로 로그인한 뒤 다시 시도해 주세요.',
   unableToRestorePurchases: '현재 구매를 복원할 수 없습니다. 다시 시도해 주세요.',
   alreadyInFamily: '이미 이 가족에 참여하고 있습니다.',
   leaveFamilyBeforeJoining: '다른 가족에 참여하기 전에 현재 가족에서 먼저 나가세요.',

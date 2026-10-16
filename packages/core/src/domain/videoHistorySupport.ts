@@ -75,10 +75,20 @@ export function videoHistoryBlockerKey(device: {
  * Only the desktops. iOS runs no Chrome extension, and an Android phone or TV
  * already reports through its own reader, so neither would be told to install
  * something that changes nothing for them.
+ *
+ * **A television gets its own sentence, because the generic one contradicts
+ * itself there.** A TV is in this branch only when its probe says `false` (or it
+ * runs the build with no reader), and "cannot report … works on Android TV" is
+ * false of the one platform it names. The truth is a missing grant: the reader
+ * needs notification access, and `apps/tv`'s setup wizard deliberately never
+ * asks for it (`TV_SETUP_STEPS`), so no screen on the set can give it yet.
  */
 export function videoHistoryUnavailableKey(device: VideoHistorySupportInput): string {
   if (device.platform === 'macos' || device.platform === 'windows') {
     return 'videoHistory.unsupportedNeedsExtension';
+  }
+  if (device.platform === 'androidtv') {
+    return 'videoHistory.unsupportedNoteTv';
   }
   return 'videoHistory.unsupportedNote';
 }

@@ -199,6 +199,12 @@ export function toDeviceView(record) {
      */
     capabilities: record.capabilities ?? null,
     protectionCounters: record.protectionCounters ?? { appBlocked: 0, tamper: 0 },
+    /*
+     * A tally only the Android phone, Android TV and the Chrome extension
+     * write. The 0 is "none yet" or "no writer" — the reader cannot tell them
+     * apart, so a surface shows the figure only where a writer exists (the
+     * Overview tile gates on `isAndroidLike || isBrowserOnlySurface`).
+     */
     webFilterBlockedCount: record.webFilterBlockedCount ?? 0,
     /*
      * The list as stored, untouched.

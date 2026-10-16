@@ -29,8 +29,7 @@ export const sos = {
   toastSent:
     'SOS gesendet. Bleib nach Möglichkeit an einem sicheren Ort – deine Eltern wurden benachrichtigt.',
   escapeGrantedTitle: 'SOS gesendet',
-  escapeGrantedBody:
-    'Deine Eltern wurden benachrichtigt. Dieses Gerät bleibt gesperrt.',
+  escapeGrantedBody: 'Deine Eltern wurden benachrichtigt.',
   toastSentWithoutPhoto: 'SOS ohne Foto gesendet.',
   toastSentWithoutPhotoCamera:
     'SOS ohne Foto gesendet. Damit du beim nächsten Mal eins hinzufügen kannst, erlaube die Kamera in den Einstellungen.',

@@ -3,6 +3,11 @@ export const webFilter = {
   fallbackDeviceName: 'Child device',
   appliesToAll: 'Applies to all {{count}} of {{name}}’s devices',
   appliesToAll_one: 'Applies to {{name}}’s device',
+  // The scope line of a child rule (Blocked Hours, Web Filter, Location) when
+  // some of the child's devices cannot hold it — a browser extension has no
+  // schedule, a television may have no filter. Counts are named
+  // `supported`/`total`, never `count`, so no plural variants are owed.
+  appliesToSome: 'Applies to {{supported}} of {{name}}’s {{total}} devices',
   coverageLine: 'Enforced on {{enforcing}} of {{total}} devices',
   mergeNotice:
     '{{name}}’s devices had different web filter settings. Saving here applies one set to all of them, combined toward the stricter choice.',
@@ -16,15 +21,19 @@ export const webFilter = {
   heroSubtitleMacos:
     'Runs KidGate’s content filter on the child’s Mac to block known inappropriate sites in browsers and many apps.',
   heroSubtitleWindows:
-    'Runs KidGate’s own resolver on the child’s PC to block known inappropriate sites in every browser.',
+    'Runs KidGate’s own resolver on the child’s PC to block known inappropriate sites in Chrome, Edge and Firefox.',
   heroSubtitleExtension:
     'Runs the KidGate extension in Chrome on the child’s computer to block known inappropriate sites in that browser.',
   toggleHintIos:
     'The child must allow the KidGate VPN once and enter the device passcode. Keep it installed for filtering to work.',
+  // An iPhone or iPad without the KidGate tunnel: Apple's adult filter alone.
+  heroSubtitleIosApple:
+    'Uses Apple’s Screen Time content filter to limit adult content in Safari and in-app browsers on the child iPhone or iPad.',
+  toggleHintIosApple: 'Requires the Screen Time permission on the child device.',
   toggleHintAndroid:
     'The child must approve the KidGate VPN connection once. Keep the VPN on for filtering to work.',
   toggleHintMacos:
-    'The child must approve the KidGate filter extension once in System Settings. Keep it approved for filtering to work.',
+    'The child must approve the KidGate filter extension once on the Mac. Keep it approved for filtering to work.',
   toggleHintWindows:
     'Nothing to approve on the PC. KidGate’s background service switches the filter on within a few seconds.',
   toggleHintExtension:
@@ -35,7 +44,7 @@ export const webFilter = {
     'Force Google, Bing and DuckDuckGo to safe results and lock YouTube to Restricted Mode. Needs the Web Filter on.',
   safeSearchLabel: 'Force SafeSearch',
   safeSearchHint:
-    'Locks Google SafeSearch, YouTube Restricted Mode, Bing and DuckDuckGo to their strict settings. Android, Android TV and Chrome.',
+    'Locks Google SafeSearch, YouTube Restricted Mode, Bing and DuckDuckGo to their strict settings. Android and Chrome.',
   safeSearchStrictNote:
     'YouTube runs at its strictest level: comments are hidden and some ordinary videos are blocked too. A child cannot switch it off from their account.',
   infoTitle: 'How it works',
@@ -45,6 +54,12 @@ export const webFilter = {
     'Apple’s adult-content filter stays on in Safari and in-app browsers as a second layer.',
   infoLine3Ios:
     'A VPN icon shows while filtering. Switching it off in Settings is undone within seconds; deleting it stops the filter until it is allowed again in KidGate.',
+  infoLine1IosApple:
+    'Apple’s adult-content filter limits adult websites in Safari and in-app browsers.',
+  infoLine2IosApple:
+    'It does not block everything inside other apps, and it covers adult content only, not the other categories.',
+  infoLine3IosApple:
+    'KidGate applies the setting automatically when the app on the child device syncs controls.',
   infoLine1Android:
     'KidGate runs a private connection on the device that checks which sites are being looked up, and blocks the ones on your categories.',
   infoLine2Android:
@@ -56,11 +71,11 @@ export const webFilter = {
   infoLine1Macos:
     'KidGate runs a content filter on the Mac that checks which sites are being looked up, and blocks the ones on your categories.',
   infoLine2Macos:
-    'If the filter shows as not approved on the child’s Mac, open System Settings → General → Login Items & Extensions to approve it.',
+    'If the filter shows as not approved on the child’s Mac, open KidGate there and select Open Settings. Then turn on KidGate on the page that opens.',
   infoLine3Macos:
     'The child’s Mac shows the filter as active once approved. If it gets switched off there, reopen KidGate to restore it.',
   infoLine4Macos:
-    'The filter reads site names, which modern browsers hide on roughly half of visits — those sites are not checked against your categories. It still stops most sites children reach this way.',
+    'The filter judges a connection by the site name it carries. In KidGate’s tests, roughly half of HTTPS connections carried no readable name, so those are not checked against your categories and some blocked sites can still open.',
   infoLine1Windows:
     'KidGate runs a resolver on the PC that checks which sites are being looked up, and blocks the ones on your categories.',
   infoLine2Windows:
@@ -76,18 +91,19 @@ export const webFilter = {
   infoLine3Extension:
     'Incognito windows are filtered only if “Allow in Incognito” is turned on for the extension. Guest windows are not filtered.',
   infoLine4Extension:
-    'A blocked page lets your child ask you to allow the site. Removing or turning off the extension stops the filter.',
+    'While the family has Premium, a blocked page lets your child ask you to allow the site. Removing or turning off the extension stops the filter.',
   privateDnsBannerTitle: 'Turn off Private DNS',
   privateDnsBannerBody:
     'Private DNS is on, so web filtering may be bypassed. Turn it off for the filter to work.',
   privateDnsBannerButton: 'Open DNS settings',
   vpnConsentBannerTitle: 'Restore the Web Filter VPN',
   vpnConsentBannerBody:
-    'The KidGate VPN is off. Adult web filtering needs the VPN to stay connected.',
+    'The KidGate VPN is off. The Web Filter needs the VPN to stay connected.',
   vpnConsentBannerButton: 'Enable VPN',
   vpnDisclosureNote:
     'While the Web Filter is on, KidGate’s VPN runs only on this device. It sees the name of each website the device looks up — never the pages, what is typed or any other traffic. It blocks the sites your parent chose and shows your parent this device’s web browsing history (which sites were visited and blocked), kept for 30 days. KidGate never sells this data or uses it for anything else.',
   iosOnlyNote: 'Uses a private connection and Screen Time on iPhone',
+  iosAppleNote: 'Uses Apple’s Screen Time content filter on iPhone',
   androidVpnNote: 'Uses a private connection on Android',
   macosFilterNote: 'Uses KidGate’s content filter on Mac',
   windowsFilterNote: 'Uses KidGate’s own resolver on Windows',
@@ -117,10 +133,10 @@ export const webFilter = {
   domainPlaceholder: 'example.com',
   addDomain: 'Add site',
   removeDomain: 'Remove {{domain}}',
-  invalidDomain: 'Enter a site address, like example.com',
+  invalidDomain: 'Enter a site address, such as example.com.',
   listFull: 'You can save up to {{max}} sites in this list.',
   openHistory: 'Web History',
-  openHistorySubtitle: 'See which sites this device reached, and what was blocked',
+  openHistorySubtitle: 'See which sites this device reached, and what was blocked.',
   blockedPageTitle: 'Site blocked',
   blockedPageBody:
     'KidGate blocked this site for your family. If you think this is a mistake, ask your parent.',
@@ -200,6 +216,10 @@ export const webFilter = {
   askToOpenPending: 'You already asked for a site. Wait for an answer.',
   askToOpenTooSoon: 'You just asked. Try again in a minute.',
   askToOpenTooMany: 'You can only ask for a few sites at a time.',
+  // The server refuses a site request from a family without Premium. Said to
+  // the child, so it names no plan and sends them to the person who can help.
+  askToOpenUnavailable:
+    'Asking for a site is not available right now. Ask your parent in person.',
   requestsTitle: 'Site requests',
   requestsSubtitle: 'Sites this device asked you to allow.',
   siteRequestApproved: 'Site allowed',

@@ -3,10 +3,12 @@ export const videoHistory = {
   fallbackDeviceName: 'Perangkat anak',
   toggleLabel: 'Rekam video yang ditonton',
   toggleHint:
-    'YouTube di browser, dan aplikasi YouTube di ponsel Android dan TV. Di TV, Shorts tidak dicantumkan karena aplikasi TV tidak mengenalinya sebagai Shorts.',
+    'Video yang ditonton di aplikasi YouTube pada ponsel Android dan TV, serta di Chrome dengan ekstensi KidGate. Di TV, Shorts tidak dicantumkan karena aplikasi TV tidak mengenalinya sebagai Shorts.',
   toggleFailed: 'Tidak dapat memperbarui riwayat video. Coba lagi.',
   unsupportedNote:
     'Perangkat ini tidak dapat melaporkan video yang ditonton. Fitur ini berfungsi di Android, Android TV, dan Chrome.',
+  unsupportedNoteTv:
+    'TV ini tidak merekam video yang ditonton. KidGate memerlukan akses notifikasi di TV ini, yang belum bisa diberikan dari layar TV.',
 
   unsupportedNeedsExtension:
     'KidGate di komputer ini tidak bisa melihat video apa yang ditonton — ia membaca nama situs, bukan isi halaman. Ekstensi KidGate untuk Chrome bisa: pasang di komputer ini, dan ia melaporkan video yang ditonton sebagai perangkat tersendiri.',
@@ -43,5 +45,5 @@ export const videoHistory = {
     'Video belum direkam: KidGate memerlukan akses notifikasi di ponsel anak Anda. Di ponsel itu, buka Pengaturan KidGate, pilih Buka kunci dengan PIN Orang Tua, lalu Izinkan akses notifikasi di bagian Peringatan pesan.',
   openAction: 'Buka di YouTube',
   searchAction: 'Cari video ini di YouTube',
-  openFailed: 'Tidak dapat membuka YouTube.',
+  openFailed: 'Tidak dapat membuka YouTube. Coba lagi.',
 };

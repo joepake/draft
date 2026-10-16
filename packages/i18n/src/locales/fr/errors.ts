@@ -10,7 +10,8 @@ export const errors = {
   somethingWentWrong: 'Une erreur est survenue. Veuillez réessayer.',
   accountDisabled:
     'Ce compte a été désactivé. Contactez l’assistance KidGate pour le rétablir.',
-  recentLoginRequired: 'Pour votre sécurité, reconnectez-vous, puis réessayez.',
+  recentLoginRequired:
+    'Pour votre sécurité, déconnectez-vous et reconnectez-vous, puis réessayez.',
   accountExistsDifferentMethod:
     'Cette adresse e-mail a déjà un compte avec une autre méthode de connexion. Connectez-vous de cette façon, puis liez celle-ci dans les Réglages.',
   unableToCreateAccount: 'Impossible de créer votre compte. Veuillez réessayer.',
@@ -47,12 +48,12 @@ export const errors = {
   storageNotSetup:
     'Impossible de téléverser la photo pour le moment. Veuillez réessayer dans un instant.',
   noNetworkConnection:
-    'Aucune connexion réseau. Vérifiez le Wi-Fi ou les données mobiles, puis réessayez.',
+    'Impossible de se connecter. Vérifiez votre connexion, puis réessayez.',
   connectionFailedTitle: 'Échec de la connexion',
   reconnect: 'Reconnecter',
   unableToUploadPhoto: 'Impossible de téléverser la photo. Veuillez réessayer.',
   premiumSubscriptionRequired:
-    'Cette fonction nécessite Premium. Toutes les règles que vous avez définies — limites, heures de coucher, blocage d’applis, filtre web, position et SOS — restent gratuites.',
+    'Cette fonction nécessite Premium. La Limite quotidienne, les Heures bloquées, les Applications bloquées, les Limites d’apps, le Verrouillage de l’appareil, le SOS, la position, l’interrupteur du Filtre web et SafeSearch restent gratuits.',
   trialEndedCannotJoinFamily:
     'Votre essai gratuit est terminé. Abonnez-vous à Premium pour rejoindre une autre famille.',
 
@@ -92,7 +93,7 @@ export const errors = {
   deviceClockOutOfRange:
     'La date et l’heure de cet appareil semblent incorrectes. Veuillez activer la mise à jour automatique.',
   locationSharingDisabled:
-    'Le partage de position est désactivé sur cet appareil. Activez-le dans les paramètres de l’appareil, puis réessayez.',
+    'Le partage de position est désactivé sur cet appareil. Activez « Partager la position », puis réessayez.',
   childDeviceNoPushToken:
     'Cet appareil enfant ne peut pas encore recevoir de demandes. Ouvrez KidGate sur l’appareil de l’enfant et autorisez les notifications.',
   unableToRequestLocation:
@@ -100,7 +101,8 @@ export const errors = {
   unableToVerifyPurchase:
     'Impossible de vérifier cet achat. Veuillez réessayer dans un instant.',
   noPurchasesToRestore: 'Aucun achat à restaurer pour ce compte.',
-  noActiveSubscription: 'Aucun abonnement actif n’a été trouvé pour ce compte.',
+  noActiveSubscription:
+    'Aucun abonnement actif n’a été trouvé. Connectez-vous avec le compte App Store ou Google Play utilisé pour vous abonner, puis réessayez.',
   unableToRestorePurchases:
     'Impossible de restaurer vos achats pour le moment. Veuillez réessayer.',
   alreadyInFamily: 'Vous faites déjà partie de cette famille.',

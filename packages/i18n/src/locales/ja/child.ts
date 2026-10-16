@@ -24,7 +24,7 @@ export const child = {
   outOfScreenTimeToday:
     '今日の利用時間を使い切りました。保護者に追加をお願いできます。',
   devicePaused: 'デバイスロック中',
-  devicePausedByParent: '{{deviceName}}は現在ロックされています。',
+  devicePausedByParent: '保護者が{{deviceName}}を一時的にロックしました。',
   phonePausedByParent: '保護者がこのデバイスを一時的にロックしました。',
   pausedAskParentOrSos:
     '必要なときは保護者にロック解除をお願いしてください。緊急時はSOSを送れます。',
@@ -33,12 +33,13 @@ export const child = {
   blockedHoursLockHint:
     'いまこのデバイスが必要なときは、保護者に休止時間を変更してもらってください。緊急のときは、ロック中でもSOSを送れます。',
   blockedHoursLockBodyUntil: '休止時間は{{time}}までです。休憩するのにいい時間です。',
+  dailyLimitLockBody: '今日の利用時間を使い切りました。',
   dailyLimitLockHint:
     'もっと時間が必要なときは、保護者にお願いしてください。緊急のときは、ロック中でもSOSを送れます。',
   appClosedTitle: 'アプリを終了しました',
   appClosedBody: 'ブロック中のアプリなので、KidGateが終了しました。',
   parentPausedAccess: '保護者がこのデバイスを一時的にロックしました。',
-  parentRestoredAccess: '保護者がロックを解除しました。引き続き使えます。',
+  parentRestoredAccess: '保護者がこのデバイスのロックを解除しました。',
   toastDailyLimitIncreased: '保護者が利用時間を{{minutes}}分追加しました。',
   errorDeviceNotRegistered:
     'このデバイスはまだ準備ができていません。少ししてからもう一度お試しください。何度も起きる場合は、もう一度ペアリングしてください。',

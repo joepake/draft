@@ -8,19 +8,19 @@ export const notifications = {
     'Auf diesem Handy erscheint ein SOS nur als kleines Banner statt im Vollbild und wird so leichter übersehen. Erlaube Vollbild-Hinweise, um das zu ändern.',
   sosFullScreenAllow: 'Vollbild-Hinweise erlauben',
   sectionAlerts: 'Hinweise',
-  sectionAlertsHint: 'Lege fest, worüber dieses Telefon informiert wird.',
+  sectionAlertsHint: 'Lege fest, welche Hinweise an ein Elterngerät gesendet werden.',
   sectionSummary: 'Zusammenfassung',
   sectionQuietHours: 'Ruhezeiten',
   sectionQuietHoursHint:
-    'In diesem Zeitraum bleiben Hinweise still. SOS wird nie stummgeschaltet, und die schwerwiegendsten Nachrichtenwarnungen kommen trotzdem durch.',
+    'In diesem Zeitraum werden keine Hinweise gesendet, und sie werden auch später nicht nachgeschickt. Ereignisse erscheinen weiterhin in den Aktivitäten. SOS wird nie zurückgehalten, und die schwerwiegendsten Nachrichtenwarnungen kommen trotzdem durch.',
   quietHoursLabel: 'Ruhezeiten',
   quietHoursOff: 'Aus – Hinweise kommen jederzeit',
-  quietHoursActive: 'Still von {{start}} bis {{end}}',
+  quietHoursActive: 'Keine Hinweise von {{start}} bis {{end}}',
   quietHoursStart: 'Von',
   quietHoursEnd: 'Bis',
   quietHoursSameTime: 'Wähle zwei verschiedene Uhrzeiten.',
   footnote:
-    'Diese Einstellungen gelten nur für dieses Telefon. Andere Elterngeräte behalten ihre eigenen.',
+    'Diese Einstellungen gelten nur für ein einzelnes Telefon. Andere Elterngeräte behalten ihre eigenen.',
   toastSaveFailed: 'Speichern nicht möglich. Bitte erneut versuchen.',
   localReminderSetupTitle: 'Einrichtung abschließen',
   localReminderIdleTitle: 'Deine Regeln laufen weiter',
@@ -31,15 +31,15 @@ export const notifications = {
     'Wenn {{days}} Tage lang niemand KidGate öffnet, senden die Geräte deines Kindes keine Berichte mehr, bis jemand die App wieder öffnet. Deine Regeln laufen weiter.',
   alert: {
     tamperAlerts: {
-      label: 'Schutz deaktiviert',
+      label: 'Schutzwarnungen',
       hint: 'Auf einem Kindergerät wurde eine Berechtigung, die KidGate braucht, ausgeschaltet, Datum, Uhrzeit oder Zeitzone wurden geändert, oder SOS wurde gedrückt, während das Gerät gesperrt war. Der SOS-Alarm selbst kommt immer durch.',
     },
     placeAlerts: {
-      label: 'Ankommen und Verlassen',
+      label: 'Ortsbenachrichtigungen',
       hint: 'Dein Kind kommt an einem gespeicherten Ort an oder verlässt ihn.',
     },
     timeRequests: {
-      label: 'Anfragen nach mehr Zeit',
+      label: 'Zeitanfragen',
       hint: 'Dein Kind bittet um mehr Bildschirmzeit.',
     },
     siteRequests: {
@@ -51,7 +51,7 @@ export const notifications = {
       hint: 'Dein Kind antwortet auf einen Sicherheits-Check-in.',
     },
     rewardTasks: {
-      label: 'Eingelöste Belohnungen',
+      label: 'Belohnungsaufgaben',
       hint: 'Dein Kind meldet eine Belohnungsaufgabe als erledigt.',
     },
     appActivity: {
@@ -63,7 +63,7 @@ export const notifications = {
       hint: 'Auffällige Nutzung auf einem Kindergerät – späte Nächte, Ausreißer, neue Apps.',
     },
     weeklyDigest: {
-      label: 'Wochenrückblick',
+      label: 'Wochenbericht',
       hint: 'Montägliche Übersicht über Bildschirmzeit und Sperren.',
     },
     messageAlerts: {

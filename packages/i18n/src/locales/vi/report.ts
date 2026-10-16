@@ -70,7 +70,7 @@ export const report = {
   share: 'Chia sẻ',
   copySummary: 'Sao chép tóm tắt',
   copied: 'Đã sao chép tóm tắt.',
-  shareFailed: 'Không mở được bảng chia sẻ.',
+  shareFailed: 'Không mở được bảng chia sẻ. Hãy thử lại.',
   shareLinkCta: 'Tải ứng dụng tại {{url}}',
   shareFooterDesc:
     'KidGate giúp bố mẹ quản lý thời gian sử dụng, xem vị trí và lọc nội dung web.',
@@ -84,10 +84,10 @@ export const report = {
 
   emptyTitle: 'Chưa có báo cáo',
   emptyBody:
-    'Báo cáo mới về vào sáng thứ Hai hằng tuần. Bạn cũng có thể viết ngay báo cáo tuần này — tính bảy ngày gần nhất.',
+    'Với Premium, báo cáo mới về vào sáng thứ Hai hằng tuần. Bạn cũng có thể viết ngay báo cáo tuần này — tính bảy ngày gần nhất.',
   noUsage:
     'Hai tuần qua không ghi nhận thời gian sử dụng nào nên chưa có gì để báo cáo. Thiết bị không kết nối mạng thì không báo gì cả, và điều đó khác với một tuần yên ắng.',
-  rateLimited: 'Bạn đã thử quá nhiều lần. Hãy đợi một phút rồi thử lại.',
+  rateLimited: 'Chưa viết thêm báo cáo được lúc này. Hãy thử lại sau một phút.',
   loadFailedTitle: 'Không tải được báo cáo',
   loadFailed: 'Không mở được báo cáo. Kéo xuống để thử lại.',
   failed: 'Không viết được báo cáo. Thử lại trong giây lát.',
@@ -106,10 +106,9 @@ export const report = {
   // pack.
   childrenTitle: 'Từng con',
   childrenNoteByChild:
-    'Cùng hai tuần ở trên, tính cho từng con trên mọi thiết bị con dùng. Phần trăm so với tổng cả nhà.',
+    'Tuần này, tính cho từng con trên mọi thiết bị con dùng. Phần trăm so với tổng cả nhà.',
   devicesTitle: 'Từng thiết bị',
-  childrenNote:
-    'Cùng hai tuần ở trên, tính theo từng thiết bị. Phần trăm so với tổng cả nhà.',
+  childrenNote: 'Tuần này, tính theo từng thiết bị. Phần trăm so với tổng cả nhà.',
   colChild: 'Con',
   colDevice: 'Thiết bị',
   colScreenTime: 'Thời gian sử dụng',
@@ -135,14 +134,14 @@ export const report = {
   guestPreviewHint: 'Ví dụ minh họa — số liệu thật hiển thị sau khi kết nối thiết bị',
   guestTitle: 'Xem cả tuần đã trôi đi đâu',
   guestDescription:
-    'Đăng nhập để so hôm nay với một ngày bình thường, đối chiếu các con cạnh nhau và nhận báo cáo mỗi thứ Hai.',
+    'Đăng nhập để so hôm nay với một ngày bình thường, đối chiếu các con cạnh nhau và, với Premium, nhận báo cáo mỗi thứ Hai.',
   guestBenefitTrendTitle: 'Hôm nay, so với ngày thường',
   guestBenefitTrendBody:
     'Một con số đứng riêng thì không nói lên điều gì. Hôm nay luôn được đặt cạnh mức trung bình mỗi ngày của chính gia đình bạn.',
   guestBenefitChildTitle: 'Từng con, cạnh nhau',
   guestBenefitChildBody:
     'Phần thời gian trong ngày của mỗi con, theo màu riêng, trên mọi thiết bị con dùng.',
-  guestBenefitWeeklyTitle: 'Báo cáo mỗi thứ Hai',
+  guestBenefitWeeklyTitle: 'Báo cáo mỗi thứ Hai, với Premium',
   guestBenefitWeeklyBody:
     'Điều gì đã thay đổi, ứng dụng nào tăng lên và những đêm thức khuya — lưu trong một năm.',
   guestSignInButton: 'Đăng nhập',

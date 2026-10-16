@@ -2,7 +2,7 @@ export const webHistory = {
   title: 'वेब इतिहास',
   fallbackDeviceName: 'बच्चे का डिवाइस',
   syncNote:
-    'वेब इतिहास को इस स्क्रीन तक पहुँचने में लगभग 15 मिनट तक लग सकते हैं — अगर डिवाइस में इंटरनेट कनेक्शन नहीं है या यह अचानक बंद हो गया था, तो इससे ज़्यादा समय लग सकता है।',
+    'इस स्क्रीन को देखते समय वेब इतिहास लगभग 10 मिनट देर से पहुँच सकता है, और अन्यथा 30 मिनट तक की देरी हो सकती है — अगर डिवाइस में इंटरनेट कनेक्शन नहीं है या यह अचानक बंद हो गया था, तो इससे ज़्यादा समय लग सकता है।',
   syncNoteTv:
     'यह टीवी समय-समय पर ही जानकारी भेजता है, इसलिए वेब इतिहास को यहाँ पहुँचने में एक घंटे तक का समय लग सकता है — इंटरनेट कनेक्शन न होने पर और ज़्यादा।',
   summarySites: 'देखी गई साइटें',
@@ -32,12 +32,16 @@ export const webHistory = {
   blockCategoryConfirmTitle: '{{category}} ब्लॉक करें?',
   blockCategoryConfirmBody:
     'KidGate जिन साइटों को {{category}} में रखता है, वे सब इस डिवाइस पर अस्वीकार हो जाएँगी। आप इसे वेब फ़िल्टर में वापस बंद कर सकते हैं।',
+  blockCategoryConfirmBodyChild:
+    'KidGate जिन साइटों को {{category}} में रखता है, वे सब {{name}} के हर डिवाइस पर अस्वीकार हो जाएँगी। आप इसे वेब फ़िल्टर में वापस बंद कर सकते हैं।',
   blockCategoryConfirmAction: 'ब्लॉक करें',
   blockCategoryDone: '{{category}} अब ब्लॉक है।',
   unblockCategory: '{{category}} अनब्लॉक करें',
   unblockCategoryConfirmTitle: '{{category}} अनब्लॉक करें?',
   unblockCategoryConfirmBody:
     'KidGate जिन साइटों को {{category}} में रखता है, वे इस डिवाइस पर फिर से खुल जाएँगी।',
+  unblockCategoryConfirmBodyChild:
+    'KidGate जिन साइटों को {{category}} में रखता है, वे {{name}} के सभी डिवाइस पर फिर से खुल जाएँगी।',
   unblockCategoryConfirmAction: 'अनब्लॉक करें',
   unblockCategoryDone: '{{category}} अब ब्लॉक नहीं है।',
   serviceSites: '{{count}} साइटें',

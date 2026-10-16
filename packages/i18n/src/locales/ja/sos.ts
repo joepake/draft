@@ -28,7 +28,7 @@ export const sos = {
   toastSent:
     'SOSを送信しました。できれば安全な場所にとどまってください。保護者に通知されました。',
   escapeGrantedTitle: 'SOSを送信しました',
-  escapeGrantedBody: '保護者に通知されました。このデバイスはロックされたままです。',
+  escapeGrantedBody: '保護者に通知されました。',
   toastSentWithoutPhoto: '写真なしでSOSを送信しました。',
   toastSentWithoutPhotoCamera:
     '写真なしでSOSを送信しました。次回写真を付けるには、設定でカメラを許可してください。',

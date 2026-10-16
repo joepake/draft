@@ -7,19 +7,19 @@ export const notifications = {
     'Trên điện thoại này, SOS chỉ hiện thành một thông báo nhỏ thay vì chiếm cả màn hình, nên dễ bị bỏ lỡ. Hãy cho phép cảnh báo toàn màn hình để khắc phục.',
   sosFullScreenAllow: 'Cho phép cảnh báo toàn màn hình',
   sectionAlerts: 'Cảnh báo',
-  sectionAlertsHint: 'Chọn những gì máy này được báo.',
+  sectionAlertsHint: 'Chọn những cảnh báo được gửi đến một điện thoại phụ huynh.',
   sectionSummary: 'Tổng kết',
   sectionQuietHours: 'Giờ yên tĩnh',
   sectionQuietHoursHint:
-    'Cảnh báo im lặng trong khung giờ này. SOS không bao giờ bị tắt, và các Cảnh báo tin nhắn nghiêm trọng nhất vẫn được báo.',
+    'Trong khung giờ này không có cảnh báo nào được gửi, và cũng không gửi bù sau đó. Sự kiện vẫn hiện trong Nhật ký. SOS không bao giờ bị giữ lại, và các Cảnh báo tin nhắn nghiêm trọng nhất vẫn được báo.',
   quietHoursLabel: 'Giờ yên tĩnh',
   quietHoursOff: 'Tắt — cảnh báo đến bất cứ lúc nào',
-  quietHoursActive: 'Im lặng từ {{start}} đến {{end}}',
+  quietHoursActive: 'Không gửi cảnh báo từ {{start}} đến {{end}}',
   quietHoursStart: 'Từ',
   quietHoursEnd: 'Đến',
   quietHoursSameTime: 'Vui lòng chọn hai giờ khác nhau.',
   footnote:
-    'Cài đặt này chỉ áp dụng cho máy này. Máy phụ huynh khác giữ cài đặt riêng.',
+    'Cài đặt này chỉ áp dụng cho một điện thoại. Máy phụ huynh khác giữ cài đặt riêng.',
   toastSaveFailed: 'Không lưu được. Vui lòng thử lại.',
   localReminderSetupTitle: 'Hoàn tất thiết lập KidGate',
   localReminderIdleTitle: 'Quy tắc của bạn vẫn chạy',
@@ -30,11 +30,11 @@ export const notifications = {
     'Nếu không ai mở KidGate trong {{days}} ngày, thiết bị của con sẽ ngừng báo cáo cho tới khi có người mở lại. Quy tắc của bạn vẫn hoạt động.',
   alert: {
     tamperAlerts: {
-      label: 'Bảo vệ bị tắt',
+      label: 'Cảnh báo bảo vệ',
       hint: 'Trên thiết bị của trẻ, một quyền KidGate cần đã bị tắt, ngày giờ hoặc múi giờ đã bị đổi, hoặc SOS được bấm khi máy đang khóa. Bản thân cảnh báo SOS luôn được gửi.',
     },
     placeAlerts: {
-      label: 'Khi đến và rời địa điểm',
+      label: 'Cảnh báo địa điểm',
       hint: 'Con đến hoặc rời một địa điểm đã lưu.',
     },
     timeRequests: {
@@ -50,7 +50,7 @@ export const notifications = {
       hint: 'Con phản hồi yêu cầu Báo an toàn.',
     },
     rewardTasks: {
-      label: 'Xin duyệt phần thưởng',
+      label: 'Nhiệm vụ thưởng',
       hint: 'Con báo đã hoàn thành nhiệm vụ thưởng.',
     },
     appActivity: {
@@ -62,7 +62,7 @@ export const notifications = {
       hint: 'Cách dùng khác thường trên thiết bị của trẻ — dùng khuya, tăng vọt, ứng dụng mới.',
     },
     weeklyDigest: {
-      label: 'Tổng kết tuần',
+      label: 'Báo cáo tuần',
       hint: 'Bản tóm tắt gửi vào thứ Hai hằng tuần về thời gian sử dụng và số lần chặn.',
     },
     messageAlerts: {

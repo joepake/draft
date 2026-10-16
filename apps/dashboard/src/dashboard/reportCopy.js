@@ -35,7 +35,7 @@ import { formatClock } from './locale.js';
  * already on its way, and a sentence that settles a moment later beats a blank
  * panel. Keys this panel owns rather than shares still go through `translate`.
  */
-function appTranslate(key, params) {
+export function appTranslate(key, params) {
   const language = getLanguage();
   const pack = peekActivityFeed(language);
   return activityTranslator(pack ?? peekActivityFeed('en'), pack ? language : 'en')(

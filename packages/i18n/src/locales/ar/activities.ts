@@ -9,6 +9,7 @@ export const activities = {
   subtitleTimelineForDevice: 'المخطط الزمني لـ {{deviceName}}',
   subtitleTimelineForChild: 'المخطط الزمني لـ {{childName}}',
   fallbackDeviceName: 'الجهاز',
+  fallbackChildName: 'طفلك',
   liveBadge: 'مباشر',
   errorTitle: 'تعذر تحميل النشاط',
   tryAgain: 'إعادة المحاولة',
@@ -41,13 +42,13 @@ export const activities = {
   activityTypeAppRemoved: 'تمت إزالة التطبيق',
   activityTypePlaceEnter: 'تم الوصول إلى المكان',
   activityTypePlaceExit: 'تمت مغادرة الموقع',
-  activityTypeTamper: 'الحماية',
+  activityTypeTamper: 'تنبيهات الحماية',
   activityTypeScreenTime: 'وقت استخدام الشاشة',
   activityTypeCheckIn: 'الاطمئنان',
   activityTypeLocationRequest: 'الموقع',
   activityTypeTimeRequest: 'طلبات الوقت',
   activityTypeRewardTask: 'مهام المكافآت',
-  activityTypeSearchAlert: 'تنبيه بحث',
+  activityTypeSearchAlert: 'تنبيهات الرسائل',
   activityTypeWebFilter: 'فلتر الويب',
   activityTypeEmergency: 'SOS',
   activityTypeUnknown: 'نشاط',
@@ -76,7 +77,7 @@ export const activities = {
   appInstalledPendingBody:
     'تم تثبيت التطبيق {{appName}} على جهاز الطفل، وهو محظور حتى تسمح به.',
 
-  messageAlertTitle: 'محتوى رسالة مقلق',
+  messageAlertTitle: 'رسالة مقلقة',
   messageAlertBody: 'تم رصد كلمة مُعلَّمة في {{appName}}.',
   messageAlertBodyOutgoing: 'تم رصد كلمة مُعلَّمة في رسالة كتبها طفلك في {{appName}}.',
   messageAlertTitleSearch: 'عملية بحث مقلقة',
@@ -179,7 +180,7 @@ export const activities = {
   tamperWebFilterBody:
     'تم إيقاف VPN الخاص بـKidGate على هذا الجهاز أو استبداله بتطبيق VPN آخر. لن تتم تصفية المواقع أو تسجيلها حتى يعود للعمل.',
   tamperUninstallProtectionTitle: 'تم إيقاف الحماية من إلغاء التثبيت',
-  tamperUninstallProtectionBody: 'أصبح بالإمكان إزالة KidGate من هذا الهاتف.',
+  tamperUninstallProtectionBody: 'أصبح بالإمكان إزالة KidGate من جهاز الطفل.',
   tamperReinstalledTitle: 'تمت إعادة تثبيت KidGate',
   tamperReinstalledBody:
     'تمت إزالة KidGate من هذا الجهاز ثم إعادة تثبيته. لم يُسجَّل أي شيء في الفترة بينهما.',

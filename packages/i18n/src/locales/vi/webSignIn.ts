@@ -21,7 +21,7 @@ export const webSignIn = {
   // "later", and it must not read like it.
   confirmTitle: 'Cho phép trình duyệt này?',
   confirmBody:
-    'Trình duyệt sẽ có quyền như điện thoại này: xem vị trí của con, đổi giới hạn, khóa thiết bị và duyệt yêu cầu. Chỉ cho phép nếu chính bạn đang đăng nhập.',
+    'Trình duyệt sẽ có quyền như điện thoại này: xem vị trí của con, đổi giới hạn, khóa thiết bị và duyệt yêu cầu. Trình duyệt được phép thay đổi trong 7 ngày, và bạn có thể gỡ bất cứ lúc nào tại Gia đình → Phụ huynh. Chỉ cho phép nếu chính bạn đang đăng nhập.',
   confirmCodeLabel: 'Mã trên máy tính',
   approveButton: 'Cho phép',
   declineButton: 'Không cho phép',
@@ -37,5 +37,26 @@ export const webSignIn = {
   notFound: 'Mã không hợp lệ. Kiểm tra lại 6 ký tự rồi thử lại.',
   failed: 'Không thể hoàn tất yêu cầu. Vui lòng thử lại.',
 
-  // Revocation screen (server side already ships; app screen is pending).
+  // Browsers list, Family → Parents and the dashboard's Parents area. Removing
+  // a browser ends its right to change things; it does not sign it out, and
+  // the confirmation says so rather than promising more.
+  // `{{browser}}` and `{{os}}` are brand names from `webSessionLabel`, never
+  // translated; `sessionRowUnknown` is for a user-agent that names no browser.
+  sessionsTitle: 'Trình duyệt được phép thay đổi',
+  sessionsHint:
+    'Các trình duyệt này đã đăng nhập bảng điều khiển web bằng tài khoản của bạn và được phép thay đổi. Trình duyệt chỉ xem gia đình bạn thì không nằm trong danh sách.',
+  sessionsEmpty:
+    'Hiện không có trình duyệt nào được phép thay đổi. Khi bạn cho phép một trình duyệt, nó sẽ hiện ở đây.',
+  sessionRow: '{{browser}} trên {{os}}',
+  sessionRowUnknown: 'Trình duyệt web',
+  sessionExpires: 'Được phép thay đổi đến {{date}}',
+  sessionViaQr: 'Cho phép bằng mã QR',
+  sessionViaPin: 'Cho phép bằng mã PIN phụ huynh',
+  thisBrowser: 'Trình duyệt này',
+  sessionsRevoke: 'Gỡ',
+  sessionsRevokeConfirmTitle: 'Gỡ trình duyệt này?',
+  sessionsRevokeConfirmBody:
+    'Trình duyệt sẽ không thể đổi cài đặt hay điều khiển thiết bị nữa. Đến ngày hiển thị, trình duyệt vẫn có thể đổi một số thông tin thiết bị, chẳng hạn tên. Trình duyệt vẫn có thể hiện thông tin gia đình bạn cho đến khi có người đăng xuất ở đó.',
+  revokedToast: 'Đã gỡ trình duyệt.',
+  revokeFailed: 'Không thể gỡ trình duyệt này. Vui lòng thử lại.',
 } as const;

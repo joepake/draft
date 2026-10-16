@@ -7,7 +7,7 @@ export const childSettings = {
   darkModeHint: 'Mais confortável para os olhos à noite',
   leaveFamilyAlertTitle: 'Sair desta família?',
   leaveFamilyAlertMessage:
-    'Este dispositivo será desconectado da família. Pareie novamente com um convite dos pais para voltar.',
+    'Este dispositivo será desconectado da família. Para voltar, um dos pais precisará conectá-lo de novo pelo app KidGate.',
   leaveFamily: 'Sair da família',
   uninstallProtectionSectionTitle: 'Proteção contra desinstalação',
   uninstallProtectionSectionDescription:
@@ -20,7 +20,7 @@ export const childSettings = {
   uninstallProtectionFailed:
     'Não foi possível alterar a proteção contra desinstalação. Tente novamente.',
   deviceAdminExplanation:
-    'Impede que o KidGate seja desinstalado sem um dos pais. O KidGate não usa nenhuma outra permissão de administrador do dispositivo: não pode apagar este dispositivo, mudar o bloqueio de tela nem desligar a câmera.',
+    'Torna o KidGate mais difícil de remover: para desinstalá-lo, é preciso desativar esta opção primeiro, e um dos pais é avisado quando isso acontece. O KidGate não usa nenhuma outra permissão de administrador do dispositivo: não pode apagar este dispositivo, mudar o bloqueio de tela nem desligar a câmera.',
   deviceAdminDisableWarning:
     'Se você desativar isso, o KidGate poderá ser desinstalado deste dispositivo. Seus pais serão avisados.',
   appPickerUnavailable:

@@ -4,7 +4,7 @@ export const deviceDetail = {
   notFoundTitle: 'الجهاز',
   dangerTitle: 'إزالة هذا الجهاز',
   dangerDescription:
-    'أزل هذا الجهاز من حساب العائلة. سيتم حذف جميع طلبات الوقت وسجل النشاط المرتبطين بهذا الجهاز.',
+    'أزل هذا الجهاز من حساب العائلة. سيؤدي ذلك إلى حذف سجل الموقع وسجل الاستخدام وسجل الويب ومقاطع الفيديو المُشاهَدة وقائمة التطبيقات المثبّتة وطلبات الوقت وطلبات المواقع ومهام المكافآت وتسجيلات الاطمئنان وتنبيهات SOS والنشاط الخاصة به.',
   removeButton: 'إزالة الجهاز',
   removingButton: 'جارٍ الإزالة…',
   showAllFeatures: 'عرض كل الميزات',
@@ -12,7 +12,7 @@ export const deviceDetail = {
   essentialControls: 'عناصر التحكم الأساسية',
   dailyRulesAndDeviceAccess: 'القواعد اليومية والوصول إلى الجهاز',
   dailyLimit: 'الحد اليومي',
-  setDailyScreenTimeCap: 'تعيين حد يومي لوقت استخدام الشاشة',
+  setDailyScreenTimeCap: 'تعيين الحد اليومي',
   blockedHours: 'ساعات الحظر',
   manageTimeRanges: 'إدارة ما يصل إلى {{max}} فترات زمنية',
   blockedApps: 'التطبيقات المحظورة',
@@ -38,7 +38,7 @@ export const deviceDetail = {
   placeAlerts: 'الأماكن',
   reviewPlaceAlerts: 'إشعار عند الوصول أو المغادرة',
   noPlacesYet: 'لا توجد أماكن',
-  tamperAlerts: 'الحماية',
+  tamperAlerts: 'تنبيهات الحماية',
   reviewTamperAlerts: 'عرض وقت إيقاف الحماية',
   editDeviceName: 'تعديل اسم الجهاز',
   editDeviceNameSubtitle:
@@ -63,12 +63,13 @@ export const deviceDetail = {
   notAvailableInExtension: 'غير متاح في الإضافة',
   webFilterAwaitingApproval: 'في انتظار الموافقة على {{platform}}',
   webFilterSwitchedOffOnDevice: 'مُعطَّل على {{platform}}',
+  webFilterPrivateDnsOnDevice: 'تم تجاوزه بسبب DNS الخاص على {{platform}}',
   unableToUpdateDeviceName: 'تعذر تحديث اسم الجهاز. يرجى المحاولة مرة أخرى.',
   renameOwnerOnly: 'يمكن لمالك العائلة فقط إعادة تسمية الأجهزة.',
   removeOwnerOnly: 'يمكن لمالك العائلة فقط إزالة الأجهزة.',
   removeDeviceTitle: 'إزالة الجهاز؟',
   removeDeviceMessage:
-    'سيتم فصل {{deviceName}} عن حسابك. وسيتم حذف جميع طلبات الوقت وسجل النشاط المرتبطين به.',
+    'سيتم فصل {{deviceName}} عن حسابك. سيؤدي ذلك إلى حذف سجل الموقع وسجل الاستخدام وسجل الويب ومقاطع الفيديو المُشاهَدة وقائمة التطبيقات المثبّتة وطلبات الوقت وطلبات المواقع ومهام المكافآت وتسجيلات الاطمئنان وتنبيهات SOS والنشاط الخاصة به.',
   unableToRemoveDevice: 'تعذر إزالة الجهاز. يرجى المحاولة مرة أخرى.',
   checkInNotificationSent: 'سيتلقى {{deviceName}} طلب اطمئنان.',
   checkInOfflineTitle: 'يبدو أن هذا الجهاز غير متصل',
@@ -157,7 +158,7 @@ export const deviceDetail = {
   webHistorySitesUnit_few: 'مواقع',
   webHistorySitesUnit_many: 'موقعًا',
   managedAtChild:
-    'تُدار قواعد هذا الجهاز ومكافآته وتسجيلات الاطمئنان وتنبيهاته في ملف {{childName}}',
+    'تُدار قواعد هذا الجهاز ومكافآته وتسجيلات الاطمئنان وتنبيهات السلامة الخاصة به في ملف {{childName}}.',
   pauseBrowsing: 'إيقاف التصفح مؤقتًا',
   pauseBrowsingDescription:
     'إيقاف التصفح لفترة. تستمر المكالمات والتطبيقات التي لا تحتاج إلى الإنترنت في العمل.',

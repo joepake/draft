@@ -1,9 +1,9 @@
 export const pairing = {
   shareInviteButton: '코드 공유',
   shareInviteMessage:
-    'KidGate에서 우리 가족에 참여하세요: 앱 열기 → 가족 → 코드 스캔을 선택한 뒤 QR 코드를 스캔하거나 코드 {{code}}를 입력하세요. 코드는 15분 후 만료됩니다.',
+    'KidGate에서 우리 가족에 참여하세요: 앱 열기 → 가족 → 코드 스캔을 선택한 뒤 QR 코드를 스캔하거나 코드 {{code}}를 입력하세요. 코드는 {{minutes}}분 후 만료됩니다.',
   shareChildCodeMessage:
-    'KidGate에서 이 자녀 기기를 연결하세요: 부모 기기에서 KidGate 열기 → 가족 → 코드 스캔을 선택한 뒤 QR 코드를 스캔하거나 코드 {{code}}를 입력하세요. 코드는 5분 후 만료됩니다.',
+    'KidGate에서 이 자녀 기기를 연결하세요: 부모 기기에서 KidGate 열기 → 가족 → 코드 스캔을 선택한 뒤 QR 코드를 스캔하거나 코드 {{code}}를 입력하세요. 코드는 {{minutes}}분 후 만료됩니다.',
   connectChildPhone: '자녀 기기 연결',
   parentInstructions:
     '자녀 기기에서 KidGate를 여세요. 휴대전화나 태블릿에서는 “자녀 기기입니다”를 선택하세요. 그런 다음 표시된 6자리 코드를 입력하세요.',
@@ -38,10 +38,8 @@ export const pairing = {
   parentAccount: '부모 계정',
   unknownParent: '부모',
   expiresIn: '{{countdown}} 후 만료',
-  inviteCodeExpired:
-    '이 코드는 만료되었습니다. 다른 코드를 받으려면 새 코드 버튼을 선택하세요.',
-  codeExpired:
-    '이 코드는 만료되었어요. 다른 코드를 받으려면 새 코드 버튼을 선택하세요.',
+  inviteCodeExpired: '이 코드는 만료되었습니다.',
+  codeExpired: '이 코드는 만료되었어요.',
   scanQrTitle: 'QR 코드 스캔',
   scanQrSubtitle: 'QR 코드를 프레임 안에 맞추세요.',
   enterCodeManually: '코드 직접 입력',
@@ -59,7 +57,7 @@ export const pairing = {
   tooManyAttemptsWait: '요청이 너무 많습니다. {{minutes}}분 후에 다시 시도해 주세요.',
   inviteParentTitle: '다른 부모 기기 추가',
   inviteParentInstructions:
-    '다른 기기에서 KidGate → 가족 → 코드 스캔을 선택한 뒤 15분 안에 이 QR 코드를 스캔하거나 코드를 입력하세요. 여기에서 요청을 승인하면 해당 부모가 연결됩니다.',
+    '다른 기기에서 KidGate → 가족 → 코드 스캔을 선택한 뒤 {{minutes}}분 안에 이 QR 코드를 스캔하거나 코드를 입력하세요. 여기에서 요청을 승인하면 해당 부모가 연결됩니다.',
   inviteCodeLabel: '또는 이 코드를 공유하세요',
   joinFamilyTitle: '가족에 참여',
   joinFamilyScanInstructions: '이미 해당 가족에 속한 부모의 초대 QR 코드를 스캔하세요.',

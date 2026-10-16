@@ -7,7 +7,7 @@ export const childSettings = {
   darkModeHint: 'Gece gözlerin için daha rahat',
   leaveFamilyAlertTitle: 'Bu aileden ayrılsın mı?',
   leaveFamilyAlertMessage:
-    'Bu cihazın aileyle bağlantısı kesilecek. Yeniden katılmak için ebeveyn davetiyle tekrar eşleştirilmesi gerekir.',
+    'Bu cihazın aileyle bağlantısı kesilecek. Yeniden katılmak için bir ebeveynin bu cihazı kendi KidGate uygulamasından tekrar bağlaması gerekir.',
   leaveFamily: 'Aileden ayrıl',
   uninstallProtectionSectionTitle: 'Kaldırma koruması',
   uninstallProtectionSectionDescription:
@@ -18,7 +18,7 @@ export const childSettings = {
   uninstallProtectionTurnedOff: 'Kaldırma koruması kapalı.',
   uninstallProtectionFailed: 'Kaldırma koruması değiştirilemedi. Tekrar dene.',
   deviceAdminExplanation:
-    'KidGate’in bir ebeveyn olmadan kaldırılmasını engeller. KidGate başka hiçbir cihaz yöneticisi yetkisi kullanmaz: bu cihazı silemez, ekran kilidini değiştiremez veya kamerayı kapatamaz.',
+    'KidGate’in kaldırılmasını zorlaştırır: kaldırmak için önce bunun kapatılması gerekir ve bu yapıldığında bir ebeveyne uyarı gönderilir. KidGate başka hiçbir cihaz yöneticisi yetkisi kullanmaz: bu cihazı silemez, ekran kilidini değiştiremez veya kamerayı kapatamaz.',
   deviceAdminDisableWarning:
     'Bunu kapatırsan KidGate bu cihazdan kaldırılabilir. Ailen bilgilendirilecek.',
   appPickerUnavailable: 'Engellenen Uygulamalar bu cihazda kullanılamıyor.',

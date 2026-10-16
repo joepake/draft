@@ -88,6 +88,6 @@ export const blockedApps = {
     'Em Bloqueio de apps, abra Apps bloqueados, marque os apps e salve.',
   pickerSubtitle: 'Escolha os apps e as categorias a bloquear neste dispositivo.',
   pickerSubtitleAndroid:
-    'Os apps marcados não abrem enquanto o Bloqueio de apps estiver ativado.',
+    'Enquanto o Bloqueio de apps estiver ativado, os apps marcados são fechados assim que abrem.',
   pickerEmpty: 'Nenhum app encontrado neste dispositivo.',
 } as const;

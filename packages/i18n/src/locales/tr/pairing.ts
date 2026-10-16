@@ -1,9 +1,9 @@
 export const pairing = {
   shareInviteButton: 'Kodu paylaş',
   shareInviteMessage:
-    'KidGate’te ailemize katılın: uygulamayı açın, Aile → Kod tara bölümüne gidin, ardından QR kodunu tarayın veya {{code}} kodunu girin. Kod 15 dakika içinde geçerliliğini yitirir.',
+    'KidGate’te ailemize katılın: uygulamayı açın, Aile → Kod tara bölümüne gidin, ardından QR kodunu tarayın veya {{code}} kodunu girin. Kod {{minutes}} dakika içinde geçerliliğini yitirir.',
   shareChildCodeMessage:
-    'Bu çocuk cihazını KidGate’te bağlayın: ebeveyn cihazında KidGate’i açın → Aile → Kod tara, ardından QR kodunu tarayın veya {{code}} kodunu girin. Kod 5 dakika içinde sona erer.',
+    'Bu çocuk cihazını KidGate’te bağlayın: ebeveyn cihazında KidGate’i açın → Aile → Kod tara, ardından QR kodunu tarayın veya {{code}} kodunu girin. Kod {{minutes}} dakika içinde sona erer.',
   connectChildPhone: 'Çocuk cihazını bağla',
   parentInstructions:
     'Çocuk cihazında KidGate’i açın. Telefon veya tablette “Bu bir çocuk cihazı” seçeneğini seçin. Ardından orada gösterilen 6 karakterlik kodu girin.',
@@ -38,9 +38,8 @@ export const pairing = {
   parentAccount: 'Ebeveyn hesabı',
   unknownParent: 'bir ebeveyn',
   expiresIn: '{{countdown}} içinde sona erer',
-  inviteCodeExpired:
-    'Bu kodun süresi doldu. Başka bir kod almak için Yeni kod’u seçin.',
-  codeExpired: 'Bu kodun süresi doldu. Başka bir kod almak için Yeni kod’u seç.',
+  inviteCodeExpired: 'Bu kodun süresi doldu.',
+  codeExpired: 'Bu kodun süresi doldu.',
   scanQrTitle: 'QR kodu tara',
   scanQrSubtitle: 'QR kodunu çerçevenin içine hizalayın.',
   enterCodeManually: 'Kodu elle gir',
@@ -59,7 +58,7 @@ export const pairing = {
     'Çok fazla deneme yapıldı. Lütfen {{minutes}} dk sonra tekrar deneyin.',
   inviteParentTitle: 'Başka bir ebeveyn cihazı ekle',
   inviteParentInstructions:
-    'Diğer cihazda KidGate → Aile → Kod tara’yı açın, ardından 15 dakika içinde bu QR kodunu tarayın veya kodu girin. O ebeveyni bağlamak için isteği burada onaylayın.',
+    'Diğer cihazda KidGate → Aile → Kod tara’yı açın, ardından {{minutes}} dakika içinde bu QR kodunu tarayın veya kodu girin. O ebeveyni bağlamak için isteği burada onaylayın.',
   inviteCodeLabel: 'Ya da bu kodu paylaşın',
   joinFamilyTitle: 'Aileye katıl',
   joinFamilyScanInstructions:

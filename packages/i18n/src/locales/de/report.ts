@@ -85,7 +85,7 @@ export const report = {
   share: 'Teilen',
   copySummary: 'Zusammenfassung kopieren',
   copied: 'Zusammenfassung kopiert.',
-  shareFailed: 'Das Teilen-Menü ließ sich nicht öffnen.',
+  shareFailed: 'Das Teilen-Menü ließ sich nicht öffnen. Versuche es erneut.',
   shareLinkCta: 'App unter {{url}} herunterladen',
   shareFooterDesc:
     'KidGate hilft Eltern, die Bildschirmzeit zu verwalten, den Standort zu sehen und das Web zu filtern.',
@@ -99,10 +99,11 @@ export const report = {
 
   emptyTitle: 'Noch kein Bericht',
   emptyBody:
-    'Jeden Montagmorgen kommt ein Bericht. Den Bericht für diese Woche kannst du auch jetzt schon schreiben – er deckt die letzten sieben Tage ab.',
+    'Mit Premium kommt jeden Montagmorgen ein Bericht. Den Bericht für diese Woche kannst du auch jetzt schon schreiben – er deckt die letzten sieben Tage ab.',
   noUsage:
     'In den letzten zwei Wochen wurde keine Bildschirmzeit erfasst, es gibt also noch nichts zu berichten. Ein Gerät ohne Verbindung meldet gar nichts, und das ist nicht dasselbe wie eine ruhige Woche.',
-  rateLimited: 'Zu viele Versuche. Warte eine Minute.',
+  rateLimited:
+    'Ein weiterer Bericht lässt sich noch nicht schreiben. Versuche es in einer Minute erneut.',
   loadFailedTitle: 'Berichte nicht geladen',
   loadFailed:
     'Die Berichte lassen sich nicht öffnen. Zum erneuten Laden nach unten ziehen.',
@@ -122,10 +123,10 @@ export const report = {
   // pack.
   childrenTitle: 'Jedes Kind',
   childrenNoteByChild:
-    'Dieselben zwei Wochen, jedes Kind über alle Geräte, die es nutzt. Prozentwerte beziehen sich auf die Familiensumme.',
+    'Diese Woche, jedes Kind über alle Geräte, die es nutzt. Prozentwerte beziehen sich auf die Familiensumme.',
   devicesTitle: 'Jedes Gerät',
   childrenNote:
-    'Dieselben zwei Wochen, pro Gerät. Prozentwerte beziehen sich auf die Familiensumme.',
+    'Diese Woche, pro Gerät. Prozentwerte beziehen sich auf die Familiensumme.',
   colChild: 'Kind',
   colDevice: 'Gerät',
   colScreenTime: 'Bildschirmzeit',
@@ -153,14 +154,14 @@ export const report = {
     'Beispiel – echte Zahlen erscheinen, sobald ein Gerät verbunden ist',
   guestTitle: 'Sehen, wohin die Woche ging',
   guestDescription:
-    'Melde dich an, um heute mit einem normalen Tag zu vergleichen, deine Kinder nebeneinander zu sehen und jeden Montag einen Bericht zu erhalten.',
+    'Melde dich an, um heute mit einem normalen Tag zu vergleichen, deine Kinder nebeneinander zu sehen und mit Premium jeden Montag einen schriftlichen Bericht zu erhalten.',
   guestBenefitTrendTitle: 'Heute, gegen den Normalfall',
   guestBenefitTrendBody:
     'Eine Zahl allein sagt nichts. Der heutige Wert wird immer am Tagesdurchschnitt deiner Familie gemessen.',
   guestBenefitChildTitle: 'Jedes Kind, nebeneinander',
   guestBenefitChildBody:
     'Der Anteil jedes Kindes am Tag, in seiner eigenen Farbe, über alle genutzten Geräte hinweg.',
-  guestBenefitWeeklyTitle: 'Jeden Montag ein Bericht',
+  guestBenefitWeeklyTitle: 'Mit Premium jeden Montag ein Bericht',
   guestBenefitWeeklyBody:
     'Was sich verändert hat, welche Apps zugelegt haben und die späten Nächte – ein Jahr lang gespeichert.',
   guestSignInButton: 'Anmelden',

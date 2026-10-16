@@ -41,7 +41,7 @@ export const settings = {
   accountLinkCredentialInUse:
     '이 이메일 또는 제공자는 이미 다른 KidGate 계정에서 사용 중입니다.',
   accountLinkRequiresRecentLogin:
-    '보안을 위해 이 방법을 연결하기 전에 로그아웃한 후 다시 로그인해 주세요.',
+    '보안을 위해 로그아웃한 뒤 다시 로그인하고, 이 작업을 한 번 더 시도하세요.',
   accountLinkActionLink: '연결',
   accountLinkActionUnlink: '연결 해제',
   accountLinkActionVerify: '인증',
@@ -96,20 +96,22 @@ export const settings = {
     '이 부모 세션을 종료하고 부모/자녀 선택 화면으로 돌아갑니다. 기기를 관리하려면 다시 로그인하세요. 계정, 가족, 자녀 기기는 변경되지 않습니다.',
   removeParentDeviceAlertTitle: '부모 기기를 삭제하시겠습니까?',
   removeParentDeviceAlertMessage:
-    '{{deviceName}}이(가) 이 계정에서 로그아웃되고 알림을 더 이상 받지 않습니다. 기기를 가진 사람은 비밀번호로 다시 로그인할 수 있습니다.',
+    '{{deviceName}}이(가) 이 계정에서 로그아웃되고 알림을 더 이상 받지 않습니다. 기기를 가진 사람은 다시 로그인할 수 있습니다.',
   toastParentDeviceRemoved: '{{deviceName}}이(가) 삭제되었습니다.',
   signedOutByAnotherDevice:
     '이 기기는 다른 기기에서 부모 계정으로부터 로그아웃되었습니다. 계속하려면 다시 로그인하세요.',
   deleteAccountTitle: '계정 삭제',
   deleteAccountSubtitleDefault: '계정과 모든 데이터를 영구적으로 삭제합니다',
-  deleteAccountAlertTitle: '계정을 영구적으로 삭제하시겠습니까?',
+  deleteAccountSubtitleMember:
+    '내 로그인 정보와 설정을 영구적으로 삭제합니다. 가족은 그대로 유지됩니다.',
+  deleteAccountAlertTitle: '계정 삭제를 예약하시겠습니까?',
   deleteAccountAlertMessage:
     '가족 계정 삭제를 예약합니다. 아직 삭제된 것은 없습니다. 삭제 예정일 전에는 언제든지 로그인해 취소할 수 있습니다. 그 이후에는 모든 데이터(기기, 활동, 위치 기록, SOS 사진)가 모든 부모와 자녀에 대해 영구적으로 삭제됩니다.',
   deleteAccountAlertMessageMember:
     '본인 계정의 삭제를 예약합니다. 아직 삭제된 것은 없습니다. 삭제 예정일 전에는 언제든지 로그인해 취소할 수 있습니다. 그 이후에는 본인의 로그인 정보와 설정이 삭제됩니다. 가족과 가족의 기기, 다른 부모에게는 영향이 없습니다.',
   deleteAccountSubscriptionNotice:
     '계정을 삭제해도 구독은 취소되지 않습니다. App Store 또는 Google Play에서 취소하세요.',
-  sendRequestButton: '영구적으로 삭제',
+  sendRequestButton: '삭제 예약',
   toastDeletionAlreadyPending: '계정 삭제가 이미 진행 중입니다.',
   toastDeletionRequestFailed: '계정 삭제를 시작하지 못했습니다. 다시 시도해 주세요.',
   deletionRequestAlreadyPending: '이 계정의 삭제가 이미 진행 중입니다.',

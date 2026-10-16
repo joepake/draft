@@ -10,7 +10,7 @@ export const plans = {
   pillTrialActiveFallback: 'Essai actif',
   statusTrialEndedTitle: 'Essai terminé',
   statusTrialEndedSubtitle:
-    'La Limite quotidienne, les Heures bloquées, les Applications bloquées, le Filtre web et la position continuent de fonctionner gratuitement. Abonnez-vous pour les mises à jour en direct, l’historique, les alertes et les rapports.',
+    'La Limite quotidienne, les Heures bloquées, les Applications bloquées, la position et l’interrupteur du Filtre web continuent de fonctionner gratuitement. Abonnez-vous pour les mises à jour en direct, l’historique, les alertes et les rapports.',
   pillTrialEnded: 'Essai terminé',
   statusStartTrialTitle: 'Démarrez votre essai',
   statusStartTrialSubtitle:
@@ -34,8 +34,8 @@ export const plans = {
   compareDevicesFree: 'Règles sur tous, rapports d’un seul',
   compareDevicesPremium: 'Rapports de tous',
   compareParents: 'Parents',
-  compareParentsFree: 'Jusqu’à 3',
-  compareParentsPremium: 'Jusqu’à 6',
+  compareParentsFree: 'Jusqu’à 3, vous compris',
+  compareParentsPremium: 'Jusqu’à 6, vous compris',
   compareSync: 'Mises à jour de l’appareil',
   compareSyncFree: 'Quand vous consultez l’app',
   compareSyncPremium: 'En direct',
@@ -56,7 +56,7 @@ export const plans = {
   compareSafety: 'Alertes de protection et Check-in',
   compareSafetyFree: 'Alertes + Check-In',
   compareSafetyPremium: 'Ajoute une photo à chaque Check-In',
-  compareControls: 'Blocage d’applications et filtre web',
+  compareControls: 'Applications bloquées et Filtre web',
   compareControlsFree: 'Toute application, catégories fixes',
   compareControlsPremium: 'Par catégorie, vos propres listes, demandes de sites',
   compareReport: 'Rapport hebdomadaire',
@@ -67,7 +67,7 @@ export const plans = {
   compareActivityFeedPremium: '30 jours',
   compareChildReport: 'Rapports par enfant',
   compareIncluded:
-    'Les deux offres incluent la Limite quotidienne, les Heures bloquées, les Applications bloquées, les Limites d’apps, l’approbation des nouvelles applications, le Filtre web, le Verrouillage de l’appareil, le SOS, les Demandes de temps et les Tâches à récompense sur iPhone, Android, Mac et Windows dans une même famille, ainsi que le tableau de bord web. Android TV et Chromebook sont aussi pris en charge, avec moins de contrôles.',
+    'Les deux offres incluent la Limite quotidienne, les Heures bloquées, les Applications bloquées, l’approbation des nouvelles applications, le Filtre web, le Verrouillage de l’appareil, le SOS, les Demandes de temps et les Tâches à récompense sur iPhone, Android, Mac et Windows dans une même famille, ainsi que le tableau de bord web et les Limites d’apps sur Android, Mac et Windows. Android TV et Chromebook sont aussi pris en charge, avec moins de contrôles.',
   sectionWhyPremium: 'Ce que Premium ajoute',
   sectionWhyPremiumSubtitle:
     'Toutes les règles continuent de fonctionner en Gratuit. Premium ajoute ce que vous voyez, et à quel moment.',
@@ -126,7 +126,7 @@ export const plans = {
   memberTrialActiveSubtitle:
     'Cette famille est en période d’essai. À la fin, toutes les règles continuent de fonctionner sur tous les appareils et un appareil continue d’envoyer ses rapports ; le propriétaire peut s’abonner pour l’activité en direct, l’historique et les rapports de tous les appareils.',
   memberTrialEndedSubtitle:
-    'L’essai de cette famille est terminé. La Limite quotidienne, les Heures bloquées, les Applications bloquées, le Filtre web et la position fonctionnent toujours. Demandez au propriétaire de s’abonner pour les mises à jour en direct, l’historique et les alertes.',
+    'L’essai de cette famille est terminé. La Limite quotidienne, les Heures bloquées, les Applications bloquées, la position et l’interrupteur du Filtre web fonctionnent toujours. Demandez au propriétaire de s’abonner pour les mises à jour en direct, l’historique et les alertes.',
   memberSetupTrialSubtitle:
     'L’essai démarre lorsque le propriétaire connecte un appareil parent et un appareil enfant.',
   premiumActivatedTitle: 'Premium débloqué',
@@ -147,7 +147,8 @@ export const plans = {
   subscriptionOfferNotConfigured:
     'Cet abonnement n’est pas disponible pour le moment. Veuillez réessayer plus tard.',
   unableToStartPurchase: 'Impossible de démarrer l’achat. Veuillez réessayer.',
-  noActiveSubscription: 'Aucun abonnement actif trouvé.',
+  noActiveSubscription:
+    'Aucun abonnement actif n’a été trouvé. Connectez-vous avec le compte App Store ou Google Play utilisé pour vous abonner, puis réessayez.',
   purchasesRestored: 'Achats restaurés.',
   unableToRestorePurchases: 'Impossible de restaurer les achats. Veuillez réessayer.',
   purchaseVerificationFailed:
@@ -156,7 +157,7 @@ export const plans = {
   // has to name who needs to act instead of offering a button they can't use.
   familyPremiumEndedTitle: 'Le Premium de cette famille a expiré',
   familyPremiumEndedBody:
-    'La Limite quotidienne, les Heures bloquées, les Applications bloquées, le Filtre web et la position fonctionnent toujours. Les mises à jour en direct, l’historique, les alertes et les rapports sont en pause jusqu’à ce que le propriétaire de la famille renouvelle Premium.',
+    'La Limite quotidienne, les Heures bloquées, les Applications bloquées, la position et l’interrupteur du Filtre web fonctionnent toujours. Les mises à jour en direct, l’historique, les alertes et les rapports sont en pause jusqu’à ce que le propriétaire de la famille renouvelle Premium.',
   pricesUnavailable: 'Impossible de charger les prix depuis la boutique.',
   pricesRetry: 'Réessayer',
   featureRewardTasks: 'Tâches à récompense',
@@ -188,11 +189,11 @@ export const plans = {
   platformMac: 'Mac',
   platformMacDetail: 'Appareil enfant uniquement · macOS 12 et versions ultérieures',
   platformIosLimits:
-    'Pas de Limites d’apps ni d’alertes de messages. Les applications bloquées se choisissent sur l’iPhone lui-même.',
+    'Pas de Limites d’apps ni d’alertes de messages, et les apps à bloquer dans Applications bloquées se choisissent sur l’iPhone lui-même.',
   platformMacLimits: 'Pas d’alertes de messages, et la position est approximative.',
   platformWindowsLimits: 'Pas d’alertes de messages, et la position est approximative.',
   platformAndroidTvLimits:
-    'Pas d’alertes de messages, de position, de SOS ni de demandes de temps. Le blocage d’applications se fait au mieux.',
+    'Pas d’alertes de messages, de position, de SOS ni de Demandes de temps. Les Applications bloquées fonctionnent au mieux.',
   platformChromebookLimits:
     'Filtre web uniquement — pas de Limite quotidienne, d’Heures bloquées, d’Applications bloquées, de Verrouillage de l’appareil, de SOS ni de position.',
   platformComingSoon: 'Bientôt',
@@ -203,7 +204,7 @@ export const plans = {
   platformAndroidTvDetail:
     'Appareil enfant uniquement · Android TV 7 et versions ultérieures',
   platformChromebook: 'Chromebook',
-  platformChromebookDetail: 'Appareil enfant · filtrage web dans Chrome uniquement',
+  platformChromebookDetail: 'Appareil enfant · Filtre web dans Chrome uniquement',
   teaserCta: 'Voir Premium',
   teaserProofOtherApps: 'Autres applis : {{count}} · {{minutes}}',
   teaserProofOtherMinutes: 'Autres applis : {{minutes}}',

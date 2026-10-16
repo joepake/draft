@@ -26,9 +26,9 @@ export const pin = {
   parentPinRequired: 'PIN dos pais necessário',
   enterParentPinToContinue: 'Digite o PIN dos pais de 6 dígitos para continuar.',
   parentPinLockoutMessage:
-    'Muitas tentativas incorretas. Peça ao responsável que configurou o KidGate para desbloquear o PIN pelo próprio celular, em Ajustes → Segurança.',
+    'Muitas tentativas incorretas. Peça a um dos pais para desbloquear o PIN pelo próprio celular, em Ajustes → Segurança.',
   parentPinHelperText:
-    'Somente um responsável pode mudar os apps bloqueados ou sair — é para isso que serve o PIN. Se o PIN for esquecido, o responsável que configurou o KidGate pode redefini-lo pelo próprio celular, em Ajustes → Segurança.',
+    'Somente um responsável pode mudar as configurações protegidas, como os Apps bloqueados — é para isso que serve o PIN. Se o PIN for esquecido, o responsável que configurou o KidGate pode redefini-lo pelo próprio celular, em Ajustes → Segurança.',
   forgotPin: 'Esqueceu o PIN?',
   resetPinNotice:
     'Você está redefinindo o PIN como dono da conta. A partir de agora os dispositivos das crianças pedirão o novo PIN.',
@@ -48,20 +48,20 @@ export const pin = {
   savePin: 'Salvar PIN',
   pinLockedTitle: 'PIN bloqueado',
   pinLockedBody:
-    'Muitas tentativas incorretas. Peça ao responsável que configurou o KidGate para desbloquear o PIN pelo próprio celular, em Ajustes → Segurança.',
+    'Muitas tentativas incorretas. Peça a um dos pais para desbloquear o PIN pelo próprio celular, em Ajustes → Segurança.',
   parentAccessRequiredTitle: 'Acesso dos pais necessário',
   parentAccessRequiredBody:
-    'Digite seu PIN para renomear este dispositivo, escolher Apps bloqueados ou sair.',
+    'Digite seu PIN para renomear este dispositivo, escolher Apps bloqueados ou sair da família.',
   unlockWithParentPinButton: 'Desbloquear com o PIN dos pais',
   whyPinTitle: 'Por que um PIN?',
   whyPinBody:
-    'Somente um responsável deve mudar os Apps bloqueados ou desconectar este dispositivo do KidGate. Cores do tema não exigem PIN.',
+    'Somente um responsável deve mudar os Apps bloqueados ou tirar este dispositivo da família. As cores do tema não exigem PIN.',
   pinLockedToast:
-    'O PIN foi bloqueado após muitas tentativas incorretas. Peça ao responsável que configurou o KidGate para desbloqueá-lo pelo próprio celular, em Ajustes → Segurança.',
+    'O PIN foi bloqueado após muitas tentativas incorretas. Peça a um dos pais para desbloqueá-lo pelo próprio celular, em Ajustes → Segurança.',
   pinNotConfiguredToast:
     'Ainda não há PIN dos pais. O responsável que configurou o KidGate cria o PIN pelo próprio celular, em Ajustes → Segurança.',
   pairedNoPin:
-    'Ainda não há PIN dos pais. Os dispositivos das crianças pedem o PIN antes de mudar os Apps bloqueados ou desconectar um dispositivo.',
+    'Ainda não há PIN dos pais. Os dispositivos das crianças pedem o PIN antes de mudar os Apps bloqueados ou de sair da família.',
   enterSixDigitParentPin: 'Digite o PIN dos pais de 6 dígitos.',
   askParentCreatePin:
     'Peça ao responsável que configurou o KidGate para criar um PIN dos pais pelo próprio celular, em Ajustes → Segurança.',

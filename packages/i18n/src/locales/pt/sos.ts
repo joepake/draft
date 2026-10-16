@@ -27,8 +27,7 @@ export const sos = {
   toastSent:
     'SOS enviado. Fique em um lugar seguro se puder — seus pais foram avisados.',
   escapeGrantedTitle: 'SOS enviado',
-  escapeGrantedBody:
-    'Seu pai ou sua mãe foi avisado. Este dispositivo continua bloqueado.',
+  escapeGrantedBody: 'Seus pais foram avisados.',
   toastSentWithoutPhoto: 'SOS enviado sem foto.',
   toastSentWithoutPhotoCamera:
     'SOS enviado sem foto. Para adicionar uma da próxima vez, permita o acesso à Câmera nos Ajustes.',

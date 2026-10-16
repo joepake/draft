@@ -27,7 +27,7 @@ export const userGuide = {
     controls: {
       title: 'Controlli quotidiani',
       description:
-        'Limiti, pianificazioni, blocco delle app, blocco del dispositivo, tempo extra e premi',
+        'Limite giornaliero, Orari di blocco, App bloccate, Limiti app, Blocco dispositivo, Richieste di tempo e Compiti premio',
     },
     safety: {
       title: 'Sicurezza e monitoraggio',
@@ -56,8 +56,8 @@ export const userGuide = {
         '3': 'In Famiglia, seleziona “Crea famiglia” e assegna un nome alla tua famiglia (ad esempio, “Famiglia Rossi”). Questo nome comparirà quando altri genitori si uniranno. Se un altro genitore ha già creato la tua famiglia, seleziona invece “Unisciti a una famiglia”.',
         '4': 'Imposta un PIN genitore (6 cifre) in Impostazioni, poi Sicurezza. Memorizzalo o conservalo in un luogo sicuro e non condividerlo con i bambini.',
         '5': 'Consigliato: attiva il Blocco app e lo sblocco biometrico in Impostazioni, così nessun altro potrà aprire l’app genitore sul tuo dispositivo.',
-        '6': 'Apri Famiglia, tocca + e scegli “Aggiungi dispositivo del bambino”. Tieni aperta questa schermata per il codice QR o il codice mostrato sul dispositivo del bambino.',
-        '7': 'Dopo che il dispositivo del bambino si è collegato, apri Famiglia, poi il profilo di tuo figlio (o il dispositivo, se non è assegnato a nessun bambino). Imposta il Limite giornaliero e gli Orari di blocco e completa i permessi insieme a tuo figlio.',
+        '6': 'Apri Famiglia e tocca l’icona di scansione (“Scansiona un codice”). La fotocamera si apre subito: scansiona il codice QR mostrato sul dispositivo del bambino oppure seleziona “Inserisci il codice manualmente” e digita il codice.',
+        '7': 'Dopo che il dispositivo del bambino si è collegato, KidGate chiede chi lo usa: scegli tuo figlio (o aggiungine uno), oppure “Nessuno” se è un dispositivo condiviso. Poi apri Famiglia, quindi il profilo di tuo figlio (o il dispositivo, se non è assegnato a nessun bambino). Imposta il Limite giornaliero e gli Orari di blocco e completa i permessi insieme a tuo figlio.',
       },
     },
     getStartedChild: {
@@ -69,8 +69,8 @@ export const userGuide = {
         '2': 'Tieni aperta la schermata di associazione. Mostra il codice QR al genitore oppure leggi ad alta voce il codice di 6 caratteri.',
         '3': 'Sul dispositivo del genitore, scansiona il codice QR o inserisci il codice. Sul dispositivo del bambino, conferma il genitore quando richiesto — accetta solo qualcuno che conosci.',
         '4': 'Attendi che la schermata principale mostri che il dispositivo è collegato. Non forzare la chiusura di KidGate durante la configurazione.',
-        '5': 'Nella schermata Stato, concedi tutti i permessi richiesti da KidGate (notifiche, posizione, fotocamera e permessi specifici della piattaforma). Tocca ogni voce finché non risulta consentita.',
-        '6': 'Lascia KidGate installato e con l’accesso effettuato sul dispositivo del bambino. Da questo momento i genitori gestiscono i limiti dal proprio dispositivo.',
+        '5': 'Nella schermata “Stato”, scegli “Continua configurazione” nella scheda “Completa la configurazione con un genitore”. “Configura la protezione” chiede poi ogni permesso di cui KidGate ha bisogno (notifiche, posizione, fotocamera e permessi specifici della piattaforma), un passaggio alla volta. Consenti ciascun permesso, oppure salta per ora un passaggio facoltativo.',
+        '6': 'Lascia KidGate installato e collegato sul dispositivo del bambino. Da questo momento i genitori gestiscono i limiti dal proprio dispositivo.',
       },
     },
     connectChild: {
@@ -84,7 +84,7 @@ export const userGuide = {
         '3': 'La fotocamera si apre subito: consenti l’accesso alla fotocamera se richiesto e allinea il codice QR del dispositivo del bambino all’interno del riquadro.',
         '4': 'Oppure usa il codice: seleziona “Inserisci il codice manualmente”, digita i 6 caratteri mostrati sul dispositivo del bambino, quindi continua.',
         '5': 'Sul dispositivo del bambino, leggi attentamente la schermata di conferma. Seleziona “Sì, connetti” solo se il nome del genitore è corretto.',
-        '6': 'Attendi che il dispositivo del genitore confermi la connessione. Il nuovo dispositivo comparirà in Famiglia.',
+        '6': 'Attendi che il dispositivo del genitore confermi la connessione. Poi al proprietario della famiglia viene chiesto chi usa il nuovo dispositivo: un bambino, oppure “Nessuno” se è condiviso. Il dispositivo comparirà in “Famiglia”.',
         '7': 'Apri il nuovo dispositivo e verifica che “Ultima attività” si aggiorni. Se rimane offline, riapri KidGate sul dispositivo del bambino e controlla la connessione di rete.',
         '8': 'Successivamente, concedi i permessi sul dispositivo del bambino (vedi il gruppo Permessi dell’app). I controlli non funzioneranno appieno finché questi permessi non saranno attivi.',
       },
@@ -109,8 +109,8 @@ export const userGuide = {
       title: 'Collega un’Android TV',
       summary:
         'Installa KidGate su un’Android TV e associala dal tuo dispositivo, senza digitare nulla con il telecomando.',
-      keywords: 'android tv, google tv, televisore, tv, fire tv, box',
-      tip: 'Una TV non offre Posizione, SOS, Check-in né Richieste di tempo, e un’app bloccata viene chiusa dopo essersi aperta, anziché essere bloccata prima di aprirsi. I dati sul tempo di utilizzo possono arrivare con un ritardo fino a un’ora.',
+      keywords: 'android tv, google tv, televisore, tv, box',
+      tip: 'Una TV non offre Posizione, SOS, Check-in né Richieste di tempo, e un’app bloccata viene chiusa dopo essersi aperta, anziché essere bloccata prima di aprirsi. I dati sul tempo di utilizzo possono arrivare con un ritardo fino a un’ora. Una TV senza servizi Google Play non riceve notifiche push, quindi un blocco, uno sblocco o una modifica alle regole possono impiegare fino a 30 minuti per arrivare.',
       steps: {
         '1': 'Sulla TV, apri Google Play, cerca KidGate e installalo.',
         '2': 'Apri KidGate sulla TV. Mostra un codice QR e un codice di 6 caratteri. Non serve accedere.',
@@ -126,7 +126,7 @@ export const userGuide = {
       summary:
         'Aggiungi il filtro web di KidGate a Chrome su un Chromebook, un Mac o un PC. L’estensione compare come un dispositivo a sé.',
       keywords: 'chromebook, estensione chrome, estensione del browser',
-      tip: 'L’estensione filtra solo Chrome: non gli altri browser, né le finestre in incognito, a meno che tu non lo consenta. In chrome://extensions, apri Dettagli di KidGate e attiva “Consenti in modalità in incognito”.',
+      tip: 'L’estensione filtra solo Chrome: non gli altri browser, né le finestre in incognito, a meno che tu non lo consenta. In chrome://extensions, apri Dettagli di KidGate e attiva “Consenti in modalità in incognito”. Non include Limite giornaliero, Orari di blocco, Blocco dispositivo, App bloccate né tempo di utilizzo: per questi serve un telefono, un computer o una TV.',
       steps: {
         '1': 'In Chrome, sul computer di tuo figlio, vai al Chrome Web Store, cerca KidGate e seleziona “Aggiungi a Chrome”.',
         '2': 'Seleziona l’icona di KidGate nella barra degli strumenti di Chrome. Se non la vedi, fissala dal menu Estensioni (l’icona a forma di puzzle). Il popup mostra un codice QR e un codice di 6 caratteri: tienilo aperto durante l’associazione.',
@@ -175,7 +175,7 @@ export const userGuide = {
         '2': 'Inserisci un nome che tutti i genitori riconoscano a colpo d’occhio, poi salva.',
         '3': 'Per rimuovere un dispositivo, aprilo, seleziona “Rimuovi dispositivo” in fondo alla schermata e conferma. Nella sezione “Dispositivi dei bambini” della scheda della famiglia puoi anche scorrere un dispositivo verso sinistra.',
         '4': 'Il dispositivo esce dalla tua famiglia, e KidGate su quel dispositivo indica che è stato rimosso.',
-        '5': 'Per riusare il dispositivo, per esempio dopo un ripristino o se passa a un altro figlio, collegalo come nuovo con “Aggiungi dispositivo del bambino” in “Famiglia”.',
+        '5': 'Per riusare il dispositivo, per esempio dopo un ripristino o se passa a un altro figlio, collegalo come nuovo: apri “Famiglia” e tocca l’icona di scansione (“Scansiona un codice”).',
       },
     },
     androidPermissions: {
@@ -183,17 +183,17 @@ export const userGuide = {
       summary:
         'Attiva Accesso ai dati di utilizzo, Visualizza sopra altre app, Accessibilità, batteria e i relativi permessi.',
       keywords:
-        'accessibilità, accesso ai dati di utilizzo, sovrapposizione ad altre app, notifiche, amministratore dispositivo, vpn, consentire',
-      tip: 'La completezza conta più dell’ordine. Ogni voce rossa o non consentita nella schermata Stato del bambino va risolta prima di affidarsi al blocco o agli Orari di blocco.',
+        'accessibilità, accesso ai dati di utilizzo, sovrapposizione ad altre app, notifiche, amministratore dispositivo, impedisci la disinstallazione, microfono, vpn, consentire',
+      tip: 'La completezza conta più dell’ordine. Esegui tutti i passaggi proposti dalla procedura guidata, anche quelli facoltativi, prima di affidarti al blocco o agli Orari di blocco. Un passaggio che salti resta nella schermata Stato finché non lo completi.',
       steps: {
-        '1': 'Sul dispositivo del bambino, apri KidGate, poi Stato e procedi dall’alto verso il basso nell’elenco dei permessi.',
-        '2': 'Notifiche: tocca la voce, poi Consenti. I genitori hanno bisogno delle notifiche push per i comandi di blocco e le richieste di tempo.',
+        '1': 'Apri KidGate sul dispositivo del bambino e vai su “Stato”. Nella scheda “Completa la configurazione con un genitore” scegli “Continua configurazione”. Poi “Configura la protezione” guida attraverso i permessi uno alla volta; i passaggi seguenti descrivono ciascuno di essi.',
+        '2': '“Notifiche”: scegli “Consenti”. KidGate ha bisogno delle notifiche di questo dispositivo per le approvazioni di tempo e i promemoria.',
         '3': 'Accesso ai dati di utilizzo: apri la schermata di sistema, poi trova KidGate, poi attivalo. È necessario per il monitoraggio del tempo di utilizzo e per i limiti.',
         '4': 'Visualizza sopra altre app: consenti a KidGate. È necessario affinché la schermata di blocco possa comparire sopra le altre app.',
-        '5': 'Assistente di blocco Accessibilità: apri Impostazioni, poi Accessibilità, trova KidGate in “App installate/scaricate” e attiva l’interruttore. Questo mantiene il blocco applicato.',
+        '5': 'Assistente di blocco “Accessibilità”: leggi l’informativa e scegli “Accetta”; si apre la pagina Accessibilità. Se si apre un elenco, trova KidGate in “App installate/scaricate”, attivalo e scegli “Consenti” nella conferma di Android. Questo mantiene il blocco applicato.',
         '6': 'Batteria senza limitazioni: seleziona Consenti quando richiesto. Se non compare alcuna richiesta, apri Informazioni app, poi Batteria, poi scegli Senza restrizioni.',
-        '7': 'Sveglie e promemoria: consentilo affinché gli Orari di blocco inizino e finiscano puntualmente.',
-        '8': 'Posizione e Fotocamera (se usi Check-in o le foto SOS): consentile quando richiesto da KidGate. Torna a Stato e conferma che ogni voce sia consentita.',
+        '7': '“Sveglie e promemoria”: consentilo affinché gli Orari di blocco inizino e finiscano puntualmente. Poi “Impedisci la disinstallazione”: scegli “Consenti”, poi Attiva nella schermata di conferma di Android. Da quel momento, per rimuovere KidGate occorre prima disattivare questa opzione, e un genitore riceve un avviso.',
+        '8': '“Posizione”: scegli “Consenti sempre”, altrimenti la mappa si aggiorna solo mentre KidGate è aperto. “Fotocamera” (per le foto di Check-in e SOS) e il microfono (per l’audio dell’SOS): consentili mentre usi l’app. Quando la procedura guidata mostra “Tutto pronto”, la configurazione è completata.',
       },
     },
     iosScreenTime: {
@@ -203,10 +203,10 @@ export const userGuide = {
       keywords: 'tempo di utilizzo, family controls, iphone, ipad, autorizzare',
       tip: 'Se il pulsante Consenti non è presente, apri Impostazioni iOS, poi Tempo di utilizzo e assicurati prima che Tempo di utilizzo sia attivo sul dispositivo del bambino.',
       steps: {
-        '1': 'Apri KidGate e resta nella schermata «Stato».',
-        '2': 'Seleziona “Consenti utilizzo di app e siti web” (oppure il banner di Tempo di utilizzo).',
+        '1': 'Apri KidGate sul dispositivo del bambino e vai su “Stato”. Nella scheda “Completa la configurazione con un genitore” scegli “Continua configurazione”.',
+        '2': 'In “Configura la protezione”, scegli “Consenti utilizzo di app e siti web”.',
         '3': 'Nella finestra di sistema, seleziona Consenti. Non chiudere la finestra senza effettuare una scelta.',
-        '4': 'Torna a KidGate. Il banner scompare non appena l’autorizzazione va a buon fine.',
+        '4': 'Torna a KidGate. La procedura guidata passa al passaggio successivo non appena l’autorizzazione va a buon fine.',
         '5': 'Se l’autorizzazione è stata negata in precedenza: apri Impostazioni iOS, trova KidGate, attiva Tempo di utilizzo in quella pagina, quindi riapri KidGate.',
         '6': 'Per scegliere le app da bloccare: sul dispositivo del bambino, apri Impostazioni di KidGate, seleziona “Sblocca con il PIN genitore”, apri App bloccate e salva.',
         '7': 'Sul dispositivo del genitore, apri il profilo di tuo figlio (o il dispositivo, se non è assegnato a nessun bambino), poi App bloccate, e conferma che l’elenco si sia sincronizzato. Attiva il blocco quando sei pronto.',
@@ -249,10 +249,10 @@ export const userGuide = {
       tip: 'Imposta prima gli orari scolastici e quelli della buonanotte. Evita fasce orarie sovrapposte per mantenere la pianificazione chiara.',
       steps: {
         '1': 'Sul dispositivo del genitore, apri il profilo di tuo figlio (o il dispositivo, se non è assegnato a nessun bambino), poi Orari di blocco.',
-        '2': 'Seleziona “Aggiungi fascia oraria”, poi imposta ora di inizio, ora di fine e i giorni in cui si ripete.',
-        '3': 'Salva la fascia oraria. Ripeti per aggiungerne un’altra.',
-        '4': 'Attiva la pianificazione se è presente un interruttore di attivazione.',
-        '5': 'Sul dispositivo del bambino, verifica che i permessi Sveglie e promemoria e Tempo di utilizzo siano ancora consentiti, così le pianificazioni funzionano puntualmente.',
+        '2': 'Attiva l’interruttore “Abilita gli Orari di blocco”. Finché non è attivo, la schermata non mostra fasce orarie né un modo per aggiungerne una.',
+        '3': 'Seleziona “Aggiungi fascia oraria”, poi imposta ora di inizio, ora di fine e i giorni in cui si ripete.',
+        '4': 'Seleziona “Salva” in fondo alla schermata. Per aggiungere un’altra fascia oraria, ripeti prima il passaggio precedente.',
+        '5': 'Su un dispositivo Android del bambino, verifica che “Sveglie e promemoria” sia ancora consentito, così le fasce orarie iniziano e finiscono puntualmente. Su un iPhone o iPad, verifica che “Tempo di utilizzo” sia ancora consentito.',
         '6': 'Durante una fascia attiva, la scheda del dispositivo mostra “Orario di blocco attivo · bloccato”. Usa Sblocca solo quando vuoi ignorare intenzionalmente la pianificazione.',
       },
     },
@@ -326,7 +326,7 @@ export const userGuide = {
         '2': 'Ricevi una notifica. Apri KidGate: la richiesta ti aspetta nella scheda “Richiede approvazione” in Famiglia, nel profilo di tuo figlio e sul dispositivo.',
         '3': 'Controlla i minuti e il motivo, poi seleziona Approva per aggiungere esattamente quei minuti per oggi, oppure “Non ora” per rifiutare.',
         '4': 'Il dispositivo del bambino riceve la risposta, e i minuti approvati valgono subito. Ogni dispositivo può avere una sola richiesta in attesa alla volta.',
-        '5': 'Le richieste a cui hai risposto sono elencate in Attività. Per non ricevere più queste notifiche sul tuo dispositivo, disattiva “Richieste di tempo extra” in “Notifiche push” nelle Impostazioni.',
+        '5': 'Le richieste a cui hai risposto sono elencate in “Attività”. Per non ricevere più queste notifiche sul tuo dispositivo, disattiva “Richieste di tempo” in “Notifiche push” nelle Impostazioni.',
       },
     },
     rewardTasks: {
@@ -350,25 +350,25 @@ export const userGuide = {
       keywords: 'gps, mappa, dov’è mio figlio, trovare il telefono, luoghi',
       tip: 'La posizione richiede un permesso sul dispositivo del bambino e una connessione di rete stabile. Il GPS al chiuso può essere meno preciso.',
       steps: {
-        '1': 'Sul dispositivo del bambino, consenti la Posizione a KidGate quando richiesto (oppure nelle Impostazioni di sistema).',
+        '1': 'Sul dispositivo del bambino, consenti la Posizione a KidGate quando richiesto (oppure nelle Impostazioni di sistema). Scegli “Consenti sempre” su Android o “Sempre” su iPhone o iPad, altrimenti la posizione si aggiorna solo mentre KidGate è aperto.',
         '2': 'Sul dispositivo del genitore, apri il profilo di tuo figlio (o il dispositivo, se non è assegnato a nessun bambino), poi Posizione.',
         '3': 'Attiva la condivisione se è disattivata, quindi attendi il primo aggiornamento.',
         '4': 'Se lo stato mostra ancora “In attesa”, tocca il pulsante per aggiornare oppure riapri la schermata.',
-        '5': 'Facoltativo: apri il profilo di tuo figlio (o il dispositivo, se non è assegnato a nessun bambino), poi la sezione Avvisi, e seleziona Luoghi per configurare gli Avvisi sui luoghi quando tuo figlio entra o esce da un luogo salvato.',
+        '5': 'Facoltativo, e fa parte di Premium: apri il profilo di tuo figlio (o il dispositivo, se non è assegnato a nessun bambino), poi la sezione Avvisi, e seleziona Luoghi per configurare gli Avvisi sui luoghi quando tuo figlio entra o esce da un luogo salvato.',
         '6': 'Se il telefono è stato smarrito nelle vicinanze, apri Posizione e tocca Fai squillare il dispositivo. Un iPhone resta silenzioso mentre è in modalità silenziosa o con una modalità Full immersion attiva.',
       },
     },
     checkIn: {
       title: 'Richiedi un Check-in',
       summary:
-        'Chiedi a tuo figlio di confermare di essere al sicuro, con posizione e una foto facoltativa.',
-      tip: 'Il permesso della fotocamera sul dispositivo del bambino è necessario per i Check-in con foto.',
+        'Chiedi a tuo figlio di confermare di essere al sicuro, con la sua posizione e, con Premium, una foto.',
+      tip: 'La foto fa parte di Premium; il piano gratuito chiede solo la posizione. Per la foto serve il permesso della fotocamera sul dispositivo del bambino.',
       steps: {
         '1': 'Sul dispositivo del genitore, apri il profilo di tuo figlio (o il dispositivo, se non è assegnato a nessun bambino).',
         '2': 'Seleziona Check-in (l’azione rapida oppure la riga nella sezione Monitoraggio della sicurezza).',
         '3': 'Il dispositivo del bambino riceve una notifica e una schermata di Check-in. Il bambino tocca per confermare di stare bene, oppure per chiedere aiuto.',
-        '4': 'Se l’accesso alla fotocamera è consentito, KidGate allega una foto insieme alla posizione, quando possibile.',
-        '5': 'Sul dispositivo del genitore, apri la cronologia dei Check-in per rivedere l’ultima risposta e la foto.',
+        '4': 'Con Premium, se l’accesso alla fotocamera è consentito, KidGate allega una foto insieme alla posizione, quando possibile. Con il piano gratuito viene inviata solo la posizione.',
+        '5': 'Sul dispositivo del genitore, “Cronologia check-in” nella stessa schermata mostra l’ultima risposta e la foto, se presente.',
       },
     },
     sos: {
@@ -377,7 +377,7 @@ export const userGuide = {
         'Come un bambino invia un SOS, cosa contiene e come rispondono i genitori.',
       keywords:
         'pulsante di emergenza, panico, aiuto, pericolo, insicuro, audio, voce, microfono, sirena, email, nonni, vicino',
-      tip: 'L’SOS funziona su telefoni e computer, non su una TV né nell’estensione Chrome. Il suono viene registrato solo sui telefoni. Provalo una volta a casa e concorda con tuo figlio quando usare l’SOS e quando basta un Check-in.',
+      tip: 'L’SOS funziona su telefoni e computer, non su una TV né nell’estensione Chrome. Il suono viene registrato solo sui telefoni. Provalo una volta a casa, prima di aggiungere i Contatti fidati o dopo averli avvisati, perché ogni SOS invia loro un’email. Concorda con tuo figlio quando usare l’SOS e quando basta un Check-in.',
       steps: {
         '1': 'Sul dispositivo del bambino, apri SOS in KidGate. Su un telefono è il pulsante al centro della barra in basso.',
         '2': 'Tieni premuto il pulsante SOS per 5 secondi. Se viene rilasciato prima, l’invio si annulla.',
@@ -392,14 +392,14 @@ export const userGuide = {
       summary:
         'Attiva il Filtro web per i contenuti inappropriati dove la piattaforma lo supporta.',
       keywords:
-        'bloccare sito, bloccare link, url, contenuti per adulti, ricerca sicura, dns, vpn, iphone, ipad',
-      tip: 'Il filtraggio web dipende dalle funzionalità della piattaforma. Combinalo con le App bloccate per una protezione più efficace.',
+        'bloccare sito, bloccare link, url, contenuti per adulti, ricerca sicura, modalità con restrizioni di youtube, categorie, dns, dns privato, vpn, iphone, ipad',
+      tip: 'Il filtro legge i nomi dei siti, non le pagine, e la sua portata dipende dal dispositivo. I telefoni filtrano i browser e molte app. Un Mac non può controllare i siti il cui nome è nascosto dal browser, circa la metà delle visite. Windows controlla ogni browser, ma solo in base al nome del sito. L’estensione Chrome filtra solo Chrome. Scegliere le categorie, usare elenchi propri e rispondere alle richieste di siti fanno parte di Premium. Combina il Filtro web con le App bloccate per una protezione più efficace.',
       steps: {
         '1': 'Sul dispositivo del genitore, apri il profilo di tuo figlio (o il dispositivo, se non è assegnato a nessun bambino), poi Filtro web.',
-        '2': 'Controlla lo stato attuale (siti inappropriati limitati, oppure filtro disattivato).',
-        '3': 'Attiva il filtro e salva se è presente un interruttore.',
+        '2': 'Attiva “Filtra i siti inappropriati” in alto. Si applica subito, quindi non c’è nulla da salvare. “Forza SafeSearch”, nella stessa schermata, blocca inoltre Google, Bing e DuckDuckGo sui risultati sicuri e YouTube sulla modalità con restrizioni, su Android, Android TV e Chrome.',
+        '3': 'In “Cosa bloccare” scegli le categorie da rifiutare. Aggiungi siti a “Consenti sempre” o “Blocca sempre”, oppure attiva “Solo siti consentiti” per rifiutare tutto tranne ciò che è nel tuo elenco dei consentiti. Quando tuo figlio chiede di aprire un sito bloccato, la richiesta resta in attesa in “Richieste di siti”. Questi controlli fanno parte di Premium; il piano gratuito usa un insieme fisso di categorie.',
         '4': 'Controlla di nuovo più tardi dalla stessa schermata. Se lo stato resta “In attesa”, riapri KidGate sul dispositivo del bambino per sincronizzare le impostazioni.',
-        '5': 'Su iPhone o iPad, apri KidGate sul dispositivo del bambino e seleziona Consenti quando iOS chiede di aggiungere configurazioni VPN, poi inserisci il codice del dispositivo. La richiesta compare una sola volta.',
+        '5': 'Sul dispositivo del bambino, apri KidGate e approva il filtro una volta. Su iPhone o iPad, seleziona Consenti quando iOS chiede di aggiungere configurazioni VPN, poi inserisci il codice del dispositivo. Su Android, approva la richiesta VPN, poi apri Impostazioni, poi Rete e internet, poi DNS privato, e scegli Disattivato, perché i browser possono aggirare il filtro mentre il DNS privato è attivo.',
       },
     },
     protectionAlerts: {
@@ -408,7 +408,7 @@ export const userGuide = {
         'Ricevi una notifica quando un permesso importante sul dispositivo del bambino viene disattivato.',
       tip: 'Un avviso di protezione significa che la protezione di KidGate si è indebolita. Ripristina il permesso sul dispositivo del bambino il prima possibile.',
       steps: {
-        '1': 'Sul dispositivo del genitore, apri il profilo di tuo figlio (o il dispositivo, se non è assegnato a nessun bambino), poi la sezione Avvisi, e seleziona Protezione per aprire gli Avvisi di protezione.',
+        '1': 'Sul dispositivo del genitore, apri il profilo di tuo figlio (o il dispositivo, se non è assegnato a nessun bambino), poi la sezione Avvisi, e seleziona Avvisi di protezione.',
         '2': 'Controlla gli eventi recenti, come la disattivazione di Visualizza sopra altre app, Accessibilità, Accesso ai dati di utilizzo, Fotocamera o Posizione.',
         '3': 'Sul dispositivo del bambino, apri KidGate, poi Stato e riattiva il permesso indicato.',
         '4': 'Torna agli Avvisi di protezione e verifica che non compaiano nuovi eventi imprevisti.',
@@ -419,7 +419,7 @@ export const userGuide = {
       title: 'Leggi i report di utilizzo',
       summary:
         'Vedi per quanto tempo è stato usato ogni dispositivo oggi e negli ultimi 30 giorni, per figlio, e in un report ogni lunedì.',
-      tip: 'Con il piano gratuito vedi il totale di oggi e le 3 app più usate, aggiornati quando controlli. Premium aggiunge 30 giorni di cronologia, quando è stato usato ogni dispositivo, tutte le app, un report per ogni figlio e un nuovo report settimanale ogni lunedì. iPhone e iPad inviano solo il totale.',
+      tip: 'Con il piano gratuito vedi il totale di oggi e le 3 app più usate, aggiornati quando controlli. Premium aggiunge 30 giorni di cronologia, quando è stato usato ogni dispositivo, le 10 app più usate, un report per ogni figlio e un nuovo report settimanale ogni lunedì. iPhone e iPad inviano solo il totale.',
       steps: {
         '1': 'Apri Report. La sezione Oggi somma tutti i dispositivi; sotto trovi il Report settimanale, ogni figlio (“Per figlio”) e ogni dispositivo (“Per dispositivo”).',
         '2': 'Tocca un dispositivo per aprire il suo Report di utilizzo: oggi rispetto al Limite giornaliero, “Ultimi 30 giorni”, “Quando è stato usato” e “App più usate”. Puoi aprirlo anche da “Utilizzo di oggi” nella schermata del dispositivo.',
@@ -462,7 +462,7 @@ export const userGuide = {
       summary:
         'Tieni un elenco dei video YouTube che guarda tuo figlio, con il canale e l’orario.',
       keywords: 'youtube, shorts, video guardati, cronologia visualizzazioni',
-      tip: 'La funzione Video guardati fa parte di Premium e riguarda solo YouTube. Funziona su telefoni Android, Android TV e nell’estensione Chrome, non su iPhone o iPad. Su un Mac o un PC, aggiungi l’estensione Chrome. Sulla TV gli Shorts non vengono elencati.',
+      tip: 'La funzione Video guardati fa parte di Premium e riguarda solo YouTube. Funziona su telefoni Android e nell’estensione Chrome, non su iPhone o iPad. Su un Mac o un PC, aggiungi l’estensione Chrome. Un’Android TV registra i video solo quando KidGate ha accesso alle notifiche su di essa, un accesso che dallo schermo di una TV non si può ancora concedere; anche allora, gli Shorts non vengono elencati.',
       steps: {
         '1': 'Sul dispositivo del genitore, apri il profilo di tuo figlio (o il dispositivo, se non è assegnato a nessun bambino), poi Video guardati nella sezione Monitoraggio della sicurezza.',
         '2': 'Attiva “Registra i video guardati”. La registrazione resta disattivata finché non la attivi e, dal profilo di tuo figlio, vale per tutti i suoi dispositivi.',
@@ -489,7 +489,7 @@ export const userGuide = {
       summary:
         'Ricevi un avviso quando una parola o una frase preoccupante compare nei messaggi o nelle ricerche sul telefono Android di tuo figlio. Vedi la parola o la frase segnalata, mai il messaggio.',
       keywords: 'sms, messenger, whatsapp, parole chiave, bullismo, leggere i messaggi',
-      tip: 'Gli Avvisi messaggi fanno parte di Premium e funzionano solo sui telefoni Android. Ti arrivano solo la categoria e la parola o la frase segnalata. L’analisi con IA resta disattivata, a meno che un genitore non la attivi per tutta la famiglia.',
+      tip: 'Gli Avvisi messaggi fanno parte di Premium. I messaggi vengono controllati solo sui telefoni Android; le ricerche vengono controllate anche nell’estensione Chrome. Ti arrivano solo la categoria e la parola o la frase segnalata. L’analisi con IA resta disattivata, a meno che un genitore non la attivi per tutta la famiglia.',
       steps: {
         '1': 'Sul telefono Android di tuo figlio, apri KidGate, poi Impostazioni, seleziona “Sblocca con il PIN genitore”, poi “Consenti accesso alle notifiche” nella sezione Avvisi messaggi, e attiva KidGate nell’elenco che si apre.',
         '2': 'Sul tuo dispositivo, apri il profilo di tuo figlio (o il dispositivo, se non è assegnato a nessun bambino), poi Avvisi messaggi nella sezione Avvisi, e tocca l’icona delle impostazioni in alto. Se tuo figlio ha più dispositivi, seleziona prima il telefono Android.',
@@ -507,7 +507,7 @@ export const userGuide = {
         '1': 'In Famiglia, tocca + e scegli “Aggiungi un figlio”. Inserisci un nome e salva.',
         '2': 'Dopo aver associato un nuovo dispositivo, KidGate chiede chi lo usa. Scegli tuo figlio, oppure Nessuno per un dispositivo condiviso. KidGate propone poi un set di protezioni di base: seleziona “Attiva protezione” o “Non ora”.',
         '3': 'Un dispositivo per cui non è stato ancora scelto nessuno compare in “Non assegnato” in Famiglia. Seleziona “Assegna a un bambino…” sulla sua scheda.',
-        '4': 'Una volta assegnato un dispositivo, Limite giornaliero, Orari di blocco, Filtro web, Check-in, SOS, luoghi e Compiti premio si impostano sul profilo di tuo figlio e valgono per tutti i suoi dispositivi. Il Limite giornaliero diventa un unico totale per quei dispositivi.',
+        '4': 'Una volta assegnato un dispositivo, Limite giornaliero, Orari di blocco, Filtro web, Check-in, SOS, Avvisi sui luoghi e Compiti premio si impostano sul profilo di tuo figlio e valgono per tutti i suoi dispositivi. Il Limite giornaliero diventa un unico totale per quei dispositivi.',
         '5': 'Per spostare un dispositivo, apri il profilo del figlio che deve averlo e seleziona “Assegna un altro dispositivo…”. Per annullare un’assegnazione, scorri il dispositivo nel profilo di tuo figlio e seleziona “Annulla assegnazione”. Se rimuovi il profilo di un figlio, i suoi dispositivi restano associati.',
       },
     },
@@ -520,7 +520,7 @@ export const userGuide = {
       tip: 'Solo il proprietario della famiglia può abbonarsi o ripristinare un acquisto, e solo nell’app sul telefono. Un solo piano copre tutta la famiglia e ogni genitore che ne fa parte.',
       steps: {
         '1': 'Apri Impostazioni. La scheda in alto mostra il tuo piano attuale; seleziona “Vedi i piani”.',
-        '2': 'La prova di 7 giorni inizia quando associ il primo dispositivo del bambino, e include tutto ciò che offre Premium.',
+        '2': 'La prova di 7 giorni inizia quando associ il primo dispositivo del bambino e include tutte le funzioni di Premium. L’unico limite che resta riguarda i genitori: fino a 3 durante la prova, fino a 6 con Premium.',
         '3': 'Con il piano gratuito tutte le regole continuano a funzionare, ma un solo dispositivo invia i dati: il totale di oggi e le 3 app più usate, aggiornati quando controlli. Premium aggiunge aggiornamenti in tempo reale, tutti i dispositivi, 30 giorni di cronologia, cronologia web e video, e report settimanali.',
         '4': 'Se la prova termina con più di un dispositivo del bambino, KidGate mostra “Scegli il dispositivo principale”. Quel dispositivo continua a inviare i dati; gli altri mostrano “In pausa” ma mantengono le loro regole. Puoi cambiare la scelta una volta ogni 7 giorni.',
         '5': 'Per abbonarti, scegli un piano e seleziona “Abbonati a Premium”. Con l’abbonamento tutti i dispositivi in pausa tornano a inviare i dati. Se hai già pagato in passato, seleziona “Ripristina acquisti”.',
@@ -533,8 +533,8 @@ export const userGuide = {
       tip: 'L’SOS arriva sempre, anche con tutto disattivato e durante le ore silenziose. Queste impostazioni valgono solo per questo telefono; gli altri genitori scelgono le proprie.',
       steps: {
         '1': 'Apri Impostazioni, poi “Notifiche push”.',
-        '2': 'Nella sezione Avvisi, disattiva ogni tipo di avviso che non vuoi su questo telefono, ad esempio “Richieste di tempo extra” o “App installate o rimosse”.',
-        '3': '“Riepilogo settimanale” controlla la notifica del lunedì per il report settimanale.',
+        '2': 'Nella sezione Avvisi, disattiva ogni tipo di avviso che non vuoi su questo telefono, ad esempio “Richieste di tempo” o “App installate o rimosse”.',
+        '3': '“Report settimanale” controlla la notifica del lunedì che avvisa che è pronto un nuovo report.',
         '4': 'Attiva “Ore silenziose” e imposta “Dalle” e “Alle” per silenziare gli avvisi durante la notte. Gli orari seguono l’orologio di questo telefono.',
         '5': 'In Impostazioni, “Avvisi in-app” e “Sirena SOS” sono voci separate: controllano il banner nell’app e il suono SOS ad alto volume su questo telefono.',
       },
@@ -553,10 +553,25 @@ export const userGuide = {
         '4': 'Nella dashboard web, cambia la lingua nella sezione dell’account del menu laterale. Vale solo per quel browser.',
       },
     },
+    appearance: {
+      title: 'Cambia l’aspetto dell’app',
+      summary:
+        'Scegli la modalità scura, uno stile e un colore del tema su ogni telefono.',
+      keywords: 'tema, modalità notte, colori, rosa, sfondo scuro, personalizzare',
+      tip: 'Ogni telefono mantiene il proprio aspetto, quindi una modifica sul telefono di tuo figlio non cambia mai il tuo.',
+      steps: {
+        '1': 'Sul telefono di un genitore, apri “Impostazioni”. Modalità scura, stile e colore del tema si trovano nella sezione “Aspetto”.',
+        '2': 'Attiva “Modalità scura” per schermi più scuri e più riposanti per gli occhi la sera.',
+        '3': 'Seleziona “Stile del tema” e scegli “Classico” o “Dolce”, con tonalità pastello calde e un aspetto più morbido e giocoso.',
+        '4': 'Seleziona “Colore del tema” e scegli il colore di pulsanti e dettagli. I colori disponibili dipendono dallo stile: “Dolce” offre solo tonalità di rosa.',
+        '5': 'Tuo figlio può fare le stesse scelte sul proprio telefono, in “Impostazioni”, nella sezione “Preferenze”, senza il PIN genitore.',
+        '6': 'Nella dashboard web, attiva “Modalità scura” nella sezione dell’account del menu laterale. Vale solo per quel browser.',
+      },
+    },
     webSignIn: {
       title: 'Usa KidGate su un computer',
       summary: 'Accedi alla dashboard web e gestisci la tua famiglia da un browser.',
-      tip: 'Autorizza solo un browser in cui stai accedendo tu: ottiene lo stesso controllo del tuo telefono. La dashboard web non può associare dispositivi né acquistare un piano. Per disconnettere un browser, usa Esci nella dashboard.',
+      tip: 'Autorizza solo un browser in cui stai accedendo tu: ottiene lo stesso controllo del tuo telefono. La dashboard web non può associare un dispositivo del bambino né acquistare un piano. Per disconnettere un browser, usa Esci nella dashboard. Per impedire a un browser di apportare modifiche, apri Famiglia, poi Genitori e rimuovilo da “Browser che possono apportare modifiche”; potrà comunque continuare a mostrare la tua famiglia finché non viene disconnesso.',
       steps: {
         '1': 'Sul computer, apri dashboard.kidgate.app e scegli “Accedi con l’app KidGate”. Compare un codice QR.',
         '2': 'Sul telefono, apri Impostazioni, poi “Accedi sul web”. Puoi anche scansionare da Famiglia con l’icona di scansione.',
@@ -601,7 +616,7 @@ export const userGuide = {
       steps: {
         '1': 'Apri Impostazioni e, nella sezione Account, seleziona “Elimina account”.',
         '2': 'Leggi cosa verrà rimosso. Se sei il proprietario della famiglia, perdono l’accesso anche tutti i co-genitori e tutti i dispositivi dei bambini.',
-        '3': 'Conferma che sei tu (con la password, oppure accedendo di nuovo con Google o Apple), digita “OK” e seleziona “Elimina definitivamente”.',
+        '3': 'Conferma che sei tu (con la password, oppure accedendo di nuovo con Google o Apple), digita “OK” e seleziona “Pianifica eliminazione”. Questo si limita a pianificare l’eliminazione: per ora non viene rimosso nulla.',
         '4': 'L’account viene eliminato dopo 14 giorni. Fino ad allora, apri KidGate e seleziona “Annulla eliminazione” per mantenere tutto.',
         '5': 'Se un co-genitore elimina il suo account, viene rimosso solo quell’account; la famiglia resta. Per lasciare una famiglia senza eliminare il tuo account, apri la scheda della famiglia in Famiglia e seleziona “Lascia la famiglia”.',
       },
@@ -610,5 +625,5 @@ export const userGuide = {
   onChildDevice: 'Sul dispositivo del bambino',
   onParentDevice: 'Sul tuo dispositivo',
   handoffHint:
-    'KidGate può guidare questi passaggi sul dispositivo del bambino: aprilo lì, vai su Stato e scegli Completa la configurazione con un genitore. Ogni passaggio ha un pulsante che apre la schermata giusta.',
+    'KidGate può guidare questi passaggi sul dispositivo del bambino: aprilo lì, vai su Stato e scegli “Continua configurazione” nella scheda “Completa la configurazione con un genitore”. Ogni passaggio ha un pulsante che apre la schermata giusta.',
 } as const;

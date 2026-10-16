@@ -9,7 +9,7 @@ export const plans = {
   pillTrialActiveFallback: 'Uji coba aktif',
   statusTrialEndedTitle: 'Uji coba berakhir',
   statusTrialEndedSubtitle:
-    'Batas harian, Jam Diblokir, Aplikasi yang Diblokir, Filter web, dan lokasi tetap berjalan gratis. Berlangganan untuk pembaruan langsung, riwayat, peringatan, dan laporan.',
+    'Batas harian, Jam Diblokir, Aplikasi yang Diblokir, lokasi, dan sakelar Filter web tetap berjalan gratis. Berlangganan untuk pembaruan langsung, riwayat, peringatan, dan laporan.',
   pillTrialEnded: 'Uji coba berakhir',
   statusStartTrialTitle: 'Mulai uji coba Anda',
   statusStartTrialSubtitle:
@@ -33,8 +33,8 @@ export const plans = {
   compareDevicesFree: 'Aturan di semua, laporan dari 1',
   compareDevicesPremium: 'Laporan dari semua',
   compareParents: 'Orang tua',
-  compareParentsFree: 'Hingga 3',
-  compareParentsPremium: 'Hingga 6',
+  compareParentsFree: 'Hingga 3, termasuk Anda',
+  compareParentsPremium: 'Hingga 6, termasuk Anda',
   compareSync: 'Pembaruan dari perangkat',
   compareSyncFree: 'Saat Anda memeriksa',
   compareSyncPremium: 'Langsung',
@@ -54,7 +54,7 @@ export const plans = {
   compareSafety: 'Peringatan perlindungan dan Check-In',
   compareSafetyFree: 'Peringatan + Check-In',
   compareSafetyPremium: 'Menambahkan foto di setiap Check-In',
-  compareControls: 'Pemblokiran aplikasi dan filter web',
+  compareControls: 'Aplikasi yang Diblokir dan Filter web',
   compareControlsFree: 'Aplikasi apa pun, kumpulan kategori tetap',
   compareControlsPremium: 'Per kategori, daftar Anda sendiri, permintaan situs',
   compareReport: 'Laporan mingguan',
@@ -65,7 +65,7 @@ export const plans = {
   compareActivityFeedPremium: '30 hari',
   compareChildReport: 'Laporan per anak',
   compareIncluded:
-    'Kedua paket mencakup Batas harian, Jam Diblokir, Aplikasi yang Diblokir, Batas Aplikasi, persetujuan aplikasi baru, Filter web, Kunci perangkat, SOS, Permintaan waktu, dan Tugas hadiah di iPhone, Android, Mac, dan Windows dalam satu keluarga, ditambah dasbor web. Android TV dan Chromebook juga didukung, dengan kontrol yang lebih sedikit.',
+    'Kedua paket mencakup Batas harian, Jam Diblokir, Aplikasi yang Diblokir, persetujuan aplikasi baru, Filter web, Kunci perangkat, SOS, Permintaan waktu, dan Tugas hadiah di iPhone, Android, Mac, dan Windows dalam satu keluarga, ditambah dasbor web, serta Batas Aplikasi di Android, Mac, dan Windows. Android TV dan Chromebook juga didukung, dengan kontrol yang lebih sedikit.',
   sectionWhyPremium: 'Apa yang ditambahkan Premium',
   sectionWhyPremiumSubtitle:
     'Semua aturan tetap berjalan di paket Gratis. Premium menambahkan apa yang bisa Anda lihat, dan seberapa cepat.',
@@ -124,7 +124,7 @@ export const plans = {
   memberTrialActiveSubtitle:
     'Keluarga ini sedang dalam masa uji coba. Setelah berakhir, semua aturan tetap berjalan di semua perangkat dan satu perangkat tetap melapor; pemilik dapat berlangganan untuk aktivitas langsung, riwayat, dan laporan dari semua perangkat.',
   memberTrialEndedSubtitle:
-    'Masa uji coba keluarga ini sudah berakhir. Batas harian, Jam Diblokir, Aplikasi yang Diblokir, Filter web, dan lokasi masih berjalan. Minta pemilik keluarga berlangganan untuk pembaruan langsung, riwayat, dan peringatan.',
+    'Masa uji coba keluarga ini sudah berakhir. Batas harian, Jam Diblokir, Aplikasi yang Diblokir, lokasi, dan sakelar Filter web masih berjalan. Minta pemilik keluarga berlangganan untuk pembaruan langsung, riwayat, dan peringatan.',
   memberSetupTrialSubtitle:
     'Uji coba dimulai saat pemilik menghubungkan satu perangkat orang tua dan satu perangkat anak.',
   premiumActivatedTitle: 'Premium terbuka',
@@ -143,7 +143,8 @@ export const plans = {
   subscriptionOfferNotConfigured:
     'Langganan ini tidak tersedia saat ini. Silakan coba lagi nanti.',
   unableToStartPurchase: 'Tidak dapat memulai pembelian. Silakan coba lagi.',
-  noActiveSubscription: 'Tidak ditemukan langganan aktif.',
+  noActiveSubscription:
+    'Tidak ditemukan langganan aktif. Masuk dengan akun App Store atau Google Play yang Anda pakai untuk berlangganan, lalu coba lagi.',
   purchasesRestored: 'Pembelian berhasil dipulihkan.',
   unableToRestorePurchases: 'Tidak dapat memulihkan pembelian. Silakan coba lagi.',
   purchaseVerificationFailed:
@@ -152,7 +153,7 @@ export const plans = {
   // has to name who needs to act instead of offering a button they can't use.
   familyPremiumEndedTitle: 'Premium keluarga ini telah berakhir',
   familyPremiumEndedBody:
-    'Batas harian, Jam Diblokir, Aplikasi yang Diblokir, Filter web, dan lokasi masih berjalan. Pembaruan langsung, riwayat, peringatan, dan laporan dijeda sampai pemilik keluarga memperpanjang Premium.',
+    'Batas harian, Jam Diblokir, Aplikasi yang Diblokir, lokasi, dan sakelar Filter web masih berjalan. Pembaruan langsung, riwayat, peringatan, dan laporan dijeda sampai pemilik keluarga memperpanjang Premium.',
   pricesUnavailable: 'Tidak dapat memuat harga dari toko.',
   pricesRetry: 'Coba lagi',
   featureRewardTasks: 'Tugas hadiah',
@@ -183,11 +184,11 @@ export const plans = {
   platformMac: 'Mac',
   platformMacDetail: 'Hanya perangkat anak · macOS 12 ke atas',
   platformIosLimits:
-    'Tidak ada Batas Aplikasi atau peringatan pesan, dan aplikasi yang diblokir dipilih di iPhone itu sendiri.',
+    'Tidak ada Batas Aplikasi atau peringatan pesan, dan untuk Aplikasi yang Diblokir, aplikasinya dipilih di iPhone itu sendiri.',
   platformMacLimits: 'Tidak ada peringatan pesan, dan lokasi bersifat perkiraan.',
   platformWindowsLimits: 'Tidak ada peringatan pesan, dan lokasi bersifat perkiraan.',
   platformAndroidTvLimits:
-    'Tidak ada peringatan pesan, lokasi, SOS, atau permintaan waktu. Pemblokiran aplikasi berjalan sebisanya.',
+    'Tidak ada peringatan pesan, lokasi, SOS, atau Permintaan waktu. Aplikasi yang Diblokir berjalan sebisanya.',
   platformChromebookLimits:
     'Hanya Filter web — tanpa Batas harian, Jam Diblokir, Aplikasi yang Diblokir, Kunci perangkat, SOS, atau lokasi.',
   platformComingSoon: 'Segera hadir',
@@ -196,7 +197,7 @@ export const plans = {
   platformAndroidTv: 'Android TV',
   platformAndroidTvDetail: 'Hanya perangkat anak · Android TV 7 ke atas',
   platformChromebook: 'Chromebook',
-  platformChromebookDetail: 'Perangkat anak · hanya filter web di Chrome',
+  platformChromebookDetail: 'Perangkat anak · Filter web hanya di Chrome',
   teaserCta: 'Lihat Premium',
   teaserProofOtherApps: 'Aplikasi lain: {{count}} · {{minutes}}',
   teaserProofOtherMinutes: 'Aplikasi lain: {{minutes}}',

@@ -11,7 +11,7 @@ export const errors = {
   accountDisabled:
     'Bu hesap devre dışı bırakıldı. Hesabı geri açmak için KidGate destek ekibiyle iletişime geçin.',
   recentLoginRequired:
-    'Güvenliğiniz için tekrar oturum açın, ardından bu işlemi yeniden deneyin.',
+    'Güvenliğiniz için oturumu kapatıp tekrar açın, ardından bu işlemi yeniden deneyin.',
   accountExistsDifferentMethod:
     'Bu e-posta adresiyle farklı bir giriş yöntemi kullanan bir hesap zaten var. O yöntemle oturum açın, ardından bu yöntemi Ayarlar’dan bağlayın.',
   unableToCreateAccount: 'Hesap oluşturulamadı. Lütfen tekrar deneyin.',
@@ -40,13 +40,12 @@ export const errors = {
   storageUploadUnauthorized:
     'Fotoğraf şu anda yüklenemiyor. Lütfen biraz sonra tekrar deneyin.',
   storageNotSetup: 'Fotoğraf şu anda yüklenemiyor. Lütfen biraz sonra tekrar deneyin.',
-  noNetworkConnection:
-    'İnternet bağlantısı yok. Wi-Fi veya mobil verinizi kontrol edip tekrar deneyin.',
+  noNetworkConnection: 'Bağlanılamadı. Bağlantınızı kontrol edip tekrar deneyin.',
   connectionFailedTitle: 'Bağlantı başarısız',
   reconnect: 'Yeniden Bağlan',
   unableToUploadPhoto: 'Fotoğraf yüklenemedi. Lütfen tekrar deneyin.',
   premiumSubscriptionRequired:
-    'Bu özellik Premium gerektirir. Belirlediğiniz tüm kurallar — sınırlar, uyku saati, uygulama engelleme, web filtresi, konum ve SOS — ücretsiz kalır.',
+    'Bu özellik Premium gerektirir. Günlük sınır, Engellenen Saatler, Engellenen Uygulamalar, Uygulama Sınırları, Cihaz Kilidi, SOS, konum, Web filtresi anahtarı ve Güvenli Arama ücretsiz kalır.',
   trialEndedCannotJoinFamily:
     'Ücretsiz deneme süreniz sona erdi. Başka bir aileye katılmak için Premium’a abone olun.',
 
@@ -81,14 +80,15 @@ export const errors = {
   deviceClockOutOfRange:
     'Bu cihazın tarih veya saati yanlış görünüyor. Otomatik tarih ve saati etkinleştirin.',
   locationSharingDisabled:
-    'Bu cihazda konum paylaşımı kapalı. Cihaz ayarlarından etkinleştirip tekrar deneyin.',
+    'Bu cihazda konum paylaşımı kapalı. “Konumu paylaş” seçeneğini açın, ardından tekrar deneyin.',
   childDeviceNoPushToken:
     'Çocuğun cihazı henüz istek alamıyor. Çocuğun cihazında KidGate’i açın ve bildirimlere izin verin.',
   unableToRequestLocation: 'Şu anda konum istenemiyor. Lütfen tekrar deneyin.',
   unableToVerifyPurchase:
     'Satın alma doğrulanamadı. Lütfen biraz sonra tekrar deneyin.',
   noPurchasesToRestore: 'Bu hesap için geri yüklenecek satın alma bulunamadı.',
-  noActiveSubscription: 'Bu hesapta etkin bir abonelik bulunamadı.',
+  noActiveSubscription:
+    'Etkin abonelik bulunamadı. Abone olurken kullandığınız App Store veya Google Play hesabıyla oturum açın, ardından tekrar deneyin.',
   unableToRestorePurchases:
     'Satın almalar şu anda geri yüklenemiyor. Lütfen tekrar deneyin.',
   alreadyInFamily: 'Zaten bu ailenin bir üyesisiniz.',

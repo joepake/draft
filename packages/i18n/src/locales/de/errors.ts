@@ -10,7 +10,7 @@ export const errors = {
   accountDisabled:
     'Dieses Konto wurde deaktiviert. Wende dich an den KidGate-Support, um es wiederherzustellen.',
   recentLoginRequired:
-    'Melde dich zu deiner Sicherheit erneut an und versuche es dann noch einmal.',
+    'Melde dich zu deiner Sicherheit ab und wieder an und versuche es dann noch einmal.',
   accountExistsDifferentMethod:
     'Für diese E-Mail-Adresse gibt es bereits ein Konto mit einer anderen Anmeldemethode. Melde dich auf diesem Weg an und verknüpfe diese Methode dann in den Einstellungen.',
   unableToCreateAccount:
@@ -47,13 +47,13 @@ export const errors = {
   storageNotSetup:
     'Das Foto konnte derzeit nicht hochgeladen werden. Bitte versuche es gleich noch einmal.',
   noNetworkConnection:
-    'Keine Netzwerkverbindung. Bitte überprüfe WLAN oder mobile Daten und versuche es erneut.',
+    'Verbindung nicht möglich. Prüfe deine Internetverbindung und versuche es erneut.',
   connectionFailedTitle: 'Verbindung fehlgeschlagen',
   reconnect: 'Erneut verbinden',
   unableToUploadPhoto:
     'Das Foto konnte nicht hochgeladen werden. Bitte versuche es erneut.',
   premiumSubscriptionRequired:
-    'Diese Funktion braucht Premium. Alle Regeln, die du gesetzt hast – Limits, Schlafenszeit, App-Sperre, Webfilter, Standort und SOS – bleiben kostenlos.',
+    'Diese Funktion braucht Premium. Tageslimit, Sperrzeiten, Blockierte Apps, App-Limits, Gerätesperre, SOS, Standort, der Webfilter-Schalter und SafeSearch bleiben kostenlos.',
   trialEndedCannotJoinFamily:
     'Deine kostenlose Testphase ist beendet. Bitte abonniere Premium, um einer anderen Familie beizutreten.',
 
@@ -95,7 +95,7 @@ export const errors = {
   deviceClockOutOfRange:
     'Datum und Uhrzeit auf diesem Gerät scheinen nicht korrekt zu sein. Bitte aktiviere die automatische Zeiteinstellung.',
   locationSharingDisabled:
-    'Die Standortfreigabe ist für dieses Gerät deaktiviert. Bitte aktiviere sie in den Geräteeinstellungen und versuche es erneut.',
+    'Die Standortfreigabe ist für dieses Gerät deaktiviert. Aktiviere „Standort teilen“ und versuche es dann erneut.',
   childDeviceNoPushToken:
     'Dieses Kindergerät kann noch keine Anfragen empfangen. Öffne KidGate auf dem Kindergerät und erlaube Benachrichtigungen.',
   unableToRequestLocation:
@@ -103,7 +103,8 @@ export const errors = {
   unableToVerifyPurchase:
     'Der Kauf konnte nicht überprüft werden. Bitte versuche es in einem Moment erneut.',
   noPurchasesToRestore: 'Für dieses Konto gibt es keine Käufe zum Wiederherstellen.',
-  noActiveSubscription: 'Für dieses Konto wurde kein aktives Abonnement gefunden.',
+  noActiveSubscription:
+    'Es wurde kein aktives Abonnement gefunden. Melde dich mit dem App-Store- oder Google-Play-Konto an, mit dem du das Abonnement abgeschlossen hast, und versuche es dann erneut.',
   unableToRestorePurchases:
     'Deine Käufe konnten derzeit nicht wiederhergestellt werden. Bitte versuche es erneut.',
   alreadyInFamily: 'Du bist bereits Mitglied dieser Familie.',

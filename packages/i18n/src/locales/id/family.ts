@@ -277,7 +277,7 @@ export const family = {
   deviceRemovedAlertTitle: 'Perangkat dihapus',
 
   deviceRemovedAlertMessage:
-    'Seorang orang tua telah menghapus perangkat ini dari akun keluarga. Pilih kembali peran Anak untuk menghubungkannya lagi.',
+    'Seorang orang tua telah menghapus perangkat ini dari akun keluarga. Untuk menghubungkannya lagi, pilih “Ini perangkat anak”.',
 
   deviceNotRegistered: 'Perangkat ini belum terdaftar.',
 
@@ -334,7 +334,7 @@ export const family = {
   editDeviceNameTitle: 'Ubah nama perangkat',
 
   editDeviceNameSubtitle:
-    'Hanya pemilik keluarga yang dapat mengganti nama perangkat. Maksimal {{maxLength}} karakter.',
+    'Pilih nama yang mudah dikenali orang tua. Maksimal {{maxLength}} karakter.',
 
   deviceNameInputLabel: 'Nama perangkat',
 
@@ -359,6 +359,8 @@ export const family = {
   youPausedThisDevice: 'Anda telah mengunci perangkat ini',
 
   lockSentWaitingForDevice: 'Perintah kunci terkirim — menunggu perangkat',
+  lockDelayedOnDevice:
+    'Perintah kunci dan buka kunci bisa butuh hingga {{minutes}} menit untuk sampai ke perangkat ini.',
 
   lockNotAppliedOnDevice: 'Perangkat ini belum menerapkan kuncian',
 

@@ -20,7 +20,7 @@ export const webSignIn = {
   // "later", and it must not read like it.
   confirmTitle: '이 브라우저를 허용할까요?',
   confirmBody:
-    '이 휴대폰과 같은 권한을 갖습니다. 아이의 위치를 보고, 제한을 바꾸고, 기기를 잠그고, 요청을 승인할 수 있습니다. 본인이 로그인하는 경우에만 허용하세요.',
+    '이 휴대폰과 같은 권한을 갖습니다. 아이의 위치를 보고, 제한을 바꾸고, 기기를 잠그고, 요청을 승인할 수 있습니다. 7일 동안 변경할 수 있으며, 가족 → 부모에서 언제든 삭제할 수 있습니다. 본인이 로그인하는 경우에만 허용하세요.',
   confirmCodeLabel: '컴퓨터에 표시된 코드',
   approveButton: '허용',
   declineButton: '허용 안 함',
@@ -35,6 +35,21 @@ export const webSignIn = {
   alreadyUsed: '이미 사용한 코드입니다. 컴퓨터에서 새 코드를 표시하세요.',
   notFound: '유효하지 않은 코드입니다. 여섯 자리를 확인하고 다시 시도하세요.',
   failed: '요청을 완료하지 못했습니다. 다시 시도해 주세요.',
-
-  // Revocation screen (server side already ships; app screen is pending).
+  sessionsTitle: '변경할 수 있는 브라우저',
+  sessionsHint:
+    '이 브라우저들은 이 계정으로 웹 대시보드에 로그인되어 있으며 변경할 수 있습니다. 가족 정보만 볼 수 있는 브라우저는 여기에 표시되지 않습니다.',
+  sessionsEmpty:
+    '변경할 수 있는 브라우저가 없습니다. 브라우저를 허용하면 여기에 표시됩니다.',
+  sessionRow: '{{os}}의 {{browser}}',
+  sessionRowUnknown: '웹 브라우저',
+  sessionExpires: '{{date}}까지 변경할 수 있습니다',
+  sessionViaQr: 'QR 코드로 허용했습니다',
+  sessionViaPin: '부모 PIN으로 허용했습니다',
+  thisBrowser: '이 브라우저',
+  sessionsRevoke: '삭제',
+  sessionsRevokeConfirmTitle: '이 브라우저를 삭제할까요?',
+  sessionsRevokeConfirmBody:
+    '이 브라우저는 더 이상 설정을 변경하거나 기기를 제어할 수 없습니다. 표시된 날짜까지는 이름 등 기기의 일부 정보를 계속 변경할 수 있습니다. 다만 누군가 그 브라우저에서 로그아웃할 때까지는 가족 정보가 계속 표시될 수 있습니다.',
+  revokedToast: '브라우저를 삭제했습니다.',
+  revokeFailed: '해당 브라우저를 삭제하지 못했습니다. 다시 시도해 주세요.',
 } as const;

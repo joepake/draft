@@ -21,7 +21,7 @@ export const webSignIn = {
   // "later", and it must not read like it.
   confirmTitle: 'Autorizar este navegador?',
   confirmBody:
-    'Ele terá o mesmo controle deste telefone: verá onde seus filhos estão, mudará limites, bloqueará dispositivos e aprovará pedidos. Só autorize se for você quem está entrando.',
+    'Ele terá o mesmo controle deste telefone: verá onde seus filhos estão, mudará limites, bloqueará dispositivos e aprovará pedidos. Poderá fazer alterações por 7 dias, e você pode removê-lo a qualquer momento em Família → Responsáveis. Só autorize se for você quem está entrando.',
   confirmCodeLabel: 'Código do seu computador',
   approveButton: 'Autorizar',
   declineButton: 'Não autorizar',
@@ -36,6 +36,21 @@ export const webSignIn = {
   alreadyUsed: 'Esse código já foi usado. Mostre um novo no computador.',
   notFound: 'Código inválido. Confira os seis caracteres e tente de novo.',
   failed: 'Não foi possível concluir a solicitação. Tente novamente.',
-
-  // Revocation screen (server side already ships; app screen is pending).
+  sessionsTitle: 'Navegadores que podem fazer alterações',
+  sessionsHint:
+    'Estes navegadores estão conectados ao painel web com sua conta e podem fazer alterações. Um navegador que apenas mostra sua família não aparece na lista.',
+  sessionsEmpty:
+    'Nenhum navegador pode fazer alterações. Quando você autorizar um, ele aparecerá aqui.',
+  sessionRow: '{{browser}} em {{os}}',
+  sessionRowUnknown: 'Navegador web',
+  sessionExpires: 'Pode fazer alterações até {{date}}',
+  sessionViaQr: 'Autorizado com um código QR',
+  sessionViaPin: 'Autorizado com o PIN dos pais',
+  thisBrowser: 'Este navegador',
+  sessionsRevoke: 'Remover',
+  sessionsRevokeConfirmTitle: 'Remover este navegador?',
+  sessionsRevokeConfirmBody:
+    'Ele não poderá mais alterar configurações nem controlar dispositivos. Até a data mostrada, ele ainda pode alterar alguns detalhes dos dispositivos, como o nome. Mas ainda pode mostrar as informações da sua família até que alguém se desconecte nele.',
+  revokedToast: 'Navegador removido.',
+  revokeFailed: 'Não foi possível remover esse navegador. Tente novamente.',
 } as const;

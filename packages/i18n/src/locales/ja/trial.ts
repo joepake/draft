@@ -6,7 +6,7 @@ export const trial = {
     '無料体験が終わると、{{using}}台のうち報告の送信とルールの変更を続けられるのは{{keeps}}台だけです。残りは今のルールのままで、緩めることはできても厳しくすることはできません。',
   trialBannerTitle: 'トライアル · {{remaining}}',
   trialUrgentBody:
-    'トライアルがまもなく終了します。月額{{price}}のPremiumに登録して、途切れなくご利用ください。',
+    'トライアルがまもなく終了します。無料プランでもすべてのルールは引き続き使えます。リアルタイムの利用状況、履歴、レポートを使い続けるには、月額{{price}}のPremiumに登録してください。',
   trialNormalBody:
     'KidGateはいかがですか？月額{{price}}のPremiumに登録すると、トライアル終了後もフル機能を使えます。',
   impactTitle: 'トライアル最終日',
@@ -21,5 +21,5 @@ export const trial = {
   impactPlaceArrivals: '無事に到着したことを{{count}}回お知らせしました',
   impactAppInstalled: '新しいアプリ{{count}}件を追加された当日に検出しました',
   impactSos: 'SOSアラート{{count}}件を直接お届けしました',
-  impactKeepButton: 'この保護を継続する',
+  impactKeepButton: 'Premiumを見る',
 } as const;

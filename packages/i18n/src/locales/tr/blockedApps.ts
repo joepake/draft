@@ -87,6 +87,7 @@ export const blockedApps = {
   wizardStepChoose:
     'Uygulama Engelleme altında Engellenen Uygulamalar’ı açın, uygulamaları işaretleyin ve kaydedin.',
   pickerSubtitle: 'Bu cihazda engellenecek uygulamaları ve kategorileri seçin.',
-  pickerSubtitleAndroid: 'Uygulama Engelleme açıkken işaretli uygulamalar açılamaz.',
+  pickerSubtitleAndroid:
+    'Uygulama Engelleme açıkken işaretli uygulamalar açılır açılmaz kapatılır.',
   pickerEmpty: 'Bu cihazda uygulama bulunamadı.',
 } as const;

@@ -6,7 +6,7 @@ export const trial = {
     'Quando la prova finisce, solo {{keeps}} dei tuoi {{using}} dispositivi continua a inviare i report e ad accettare modifiche alle regole. Gli altri mantengono le regole attuali, che puoi solo allentare, mai rendere più severe.',
   trialBannerTitle: 'Prova · {{remaining}}',
   trialUrgentBody:
-    'La prova sta per finire. Abbonati a Premium a {{price}}/mese per non interrompere nulla.',
+    'La prova sta per finire. Tutte le regole continuano a funzionare con il piano gratuito. Abbonati a Premium a {{price}}/mese per mantenere attività in tempo reale, cronologia e report.',
   trialNormalBody:
     'Ti piace KidGate? Abbonati a Premium a {{price}}/mese per mantenere l’esperienza completa dopo la prova.',
   impactTitle: 'Ultimo giorno di prova',
@@ -33,5 +33,5 @@ export const trial = {
     'Individuata una nuova app il giorno stesso in cui è comparsa',
   impactSos: '{{count}} allarmi SOS recapitati direttamente a te',
   impactSos_one: 'Un allarme SOS recapitato direttamente a te',
-  impactKeepButton: 'Mantieni questa protezione',
+  impactKeepButton: 'Scopri Premium',
 } as const;

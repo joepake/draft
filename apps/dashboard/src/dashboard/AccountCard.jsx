@@ -141,7 +141,9 @@ export default function AccountCard({
         subtitle={
           request
             ? appT('settings.deleteAccountSubtitleScheduled')
-            : appT('settings.deleteAccountSubtitleDefault')
+            : isFamilyOwner
+              ? appT('settings.deleteAccountSubtitleDefault')
+              : appT('settings.deleteAccountSubtitleMember')
         }
         action={
           request ? (
@@ -177,7 +179,7 @@ export default function AccountCard({
                   )
                 }
               >
-                {busy ? t('dash.working') : appT('settings.deleteAccountTitle')}
+                {busy ? t('dash.working') : appT('settings.sendRequestButton')}
               </button>
             </span>
           ) : (

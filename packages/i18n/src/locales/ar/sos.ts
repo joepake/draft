@@ -29,7 +29,7 @@ export const sos = {
   alertMessage: '\u200F{{childName}} بحاجة إلى مساعدة — تم إرسال SOS',
   toastSent: 'تم إرسال SOS. من الأفضل البقاء في مكان آمن إن أمكن — تم إشعار والديك.',
   escapeGrantedTitle: 'تم إرسال SOS',
-  escapeGrantedBody: 'تم إشعار والديك. سيبقى هذا الجهاز مقفلاً.',
+  escapeGrantedBody: 'تم إشعار والديك.',
   toastSentWithoutPhoto: 'تم إرسال SOS بدون صورة.',
   toastSentWithoutPhotoCamera:
     'تم إرسال SOS بدون صورة. لإضافة صورة في المرة القادمة، يمكنك السماح بالوصول إلى الكاميرا من الإعدادات.',

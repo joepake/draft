@@ -2,7 +2,7 @@ export const deviceDetail = {
   notFoundTitle: 'Device',
   dangerTitle: 'Remove this device',
   dangerDescription:
-    'Remove this device from your family account. All related time requests and activity history for this device will be deleted.',
+    'Remove this device from your family account. This deletes its location history, usage history, web history, videos watched, installed apps list, Time Requests, site requests, Reward Tasks, Check-Ins, SOS alerts and activity.',
   removeButton: 'Remove device',
   removingButton: 'Removing…',
   showAllFeatures: 'Show all features',
@@ -10,7 +10,7 @@ export const deviceDetail = {
   essentialControls: 'Essential controls',
   dailyRulesAndDeviceAccess: 'Daily rules and device access',
   dailyLimit: 'Daily Limit',
-  setDailyScreenTimeCap: 'Set a daily screen time cap',
+  setDailyScreenTimeCap: 'Set a Daily Limit',
   blockedHours: 'Blocked Hours',
   manageTimeRanges: 'Manage up to {{max}} time ranges',
   blockedApps: 'Blocked Apps',
@@ -36,7 +36,7 @@ export const deviceDetail = {
   placeAlerts: 'Places',
   reviewPlaceAlerts: 'Notify on arrival or departure',
   noPlacesYet: 'No places',
-  tamperAlerts: 'Protection',
+  tamperAlerts: 'Protection Alerts',
   reviewTamperAlerts: 'See when protection is turned off',
   editDeviceName: 'Edit device name',
   editDeviceNameSubtitle:
@@ -61,12 +61,13 @@ export const deviceDetail = {
   notAvailableInExtension: 'Not available in the extension',
   webFilterAwaitingApproval: 'Waiting for approval on {{platform}}',
   webFilterSwitchedOffOnDevice: 'Switched off on {{platform}}',
+  webFilterPrivateDnsOnDevice: 'Bypassed by Private DNS on {{platform}}',
   unableToUpdateDeviceName: 'Unable to update the device name. Try again.',
   renameOwnerOnly: 'Only the family owner can rename devices.',
   removeOwnerOnly: 'Only the family owner can remove devices.',
   removeDeviceTitle: 'Remove device?',
   removeDeviceMessage:
-    '{{deviceName}} will be disconnected from your account. All related time requests and activity history will be deleted.',
+    '{{deviceName}} will be disconnected from your account. This deletes its location history, usage history, web history, videos watched, installed apps list, Time Requests, site requests, Reward Tasks, Check-Ins, SOS alerts and activity.',
   unableToRemoveDevice: 'Unable to remove the device. Try again.',
   checkInNotificationSent: '{{deviceName}} will receive a Check-In request.',
   checkInOfflineTitle: 'This device looks offline',
@@ -77,7 +78,7 @@ export const deviceDetail = {
   checkInOfflineConfirm: 'Send anyway',
   checkInQueued: 'Check-In queued — {{deviceName}} will get it once it is back online.',
   unableToRequestCheckIn: 'Unable to request a Check-In. Try again.',
-  tapToSetDailyCap: 'Tap to set a daily cap',
+  tapToSetDailyCap: 'Tap to set a Daily Limit',
   usageUpdatesFromChildDevice: 'Usage updates from the child device',
   // Qualifier leads, as in every other locale. Trailing it ("2 hr 12 min /
   // 3 hr used") reads as though the 3 hr is what was used.
@@ -117,7 +118,7 @@ export const deviceDetail = {
     'Open KidGate Settings on the child device, enter the Parent PIN, then choose apps under App Blocking → Blocked Apps.',
   appPickerMustOpenOnChildTv:
     'Open KidGate on the TV, select “{{button}}”, enter the Parent PIN, and choose the apps to block.',
-  rewardTasks: 'Reward tasks',
+  rewardTasks: 'Reward Tasks',
   rewardTasksDescription: 'Award extra minutes for completed tasks',
   rewardTasksUnit: 'active tasks',
   rewardTasksUnit_one: 'active task',
@@ -141,7 +142,7 @@ export const deviceDetail = {
   webHistorySitesUnit: 'sites',
   webHistorySitesUnit_one: 'site',
   managedAtChild:
-    'Rules, rewards, check-ins and safety alerts for this device are managed in {{childName}}’s profile',
+    'Rules, rewards, check-ins and safety alerts for this device are managed in {{childName}}’s profile.',
   pauseBrowsing: 'Pause browsing',
   pauseBrowsingDescription:
     'Stop browsing for a while. Calls and offline apps keep working.',

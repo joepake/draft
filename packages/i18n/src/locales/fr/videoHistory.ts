@@ -3,10 +3,12 @@ export const videoHistory = {
   fallbackDeviceName: 'Appareil de l’enfant',
   toggleLabel: 'Enregistrer les vidéos regardées',
   toggleHint:
-    'YouTube dans le navigateur, ainsi que l’appli YouTube sur les téléphones Android et les téléviseurs. Sur TV, les Shorts ne sont pas listés, car l’appli TV ne les identifie pas comme des Shorts.',
+    'Vidéos regardées dans l’appli YouTube sur les téléphones Android et les téléviseurs, et dans Chrome avec l’extension KidGate. Sur TV, les Shorts ne sont pas listés, car l’appli TV ne les identifie pas comme des Shorts.',
   toggleFailed: 'Impossible de mettre à jour l’historique vidéo. Réessayez.',
   unsupportedNote:
     'Cet appareil ne peut pas signaler les vidéos regardées. Cette fonction est disponible sur Android, Android TV et dans Chrome.',
+  unsupportedNoteTv:
+    'Cette TV n’enregistre pas les vidéos regardées. KidGate y a besoin de l’accès aux notifications, qu’on ne peut pas encore accorder depuis un écran de TV.',
 
   unsupportedNeedsExtension:
     'KidGate ne peut pas voir sur cet ordinateur quelles vidéos sont regardées : il lit des noms de sites, pas le contenu d’une page. L’extension KidGate pour Chrome le peut : ajoutez-la sur cet ordinateur et elle signalera les vidéos regardées comme un appareil à part.',
@@ -43,5 +45,5 @@ export const videoHistory = {
     'Les vidéos ne sont pas encore enregistrées : KidGate a besoin de l’accès aux notifications sur le téléphone de votre enfant. Sur ce téléphone, ouvrez KidGate, puis Réglages, sélectionnez Déverrouiller avec le code PIN parent, puis Autoriser l’accès aux notifications dans la section Alertes de messages.',
   openAction: 'Ouvrir sur YouTube',
   searchAction: 'Rechercher cette vidéo sur YouTube',
-  openFailed: 'Impossible d’ouvrir YouTube.',
+  openFailed: 'Impossible d’ouvrir YouTube. Réessayez.',
 };

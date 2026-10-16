@@ -97,7 +97,7 @@ export default {
     heroLede:
       'KidGate는 스크린 타임, 앱, 안전을 부모가 차분하고 분명하게 관리하도록 해 줍니다. 아이의 손에는 여전히 "내 것" 같은 휴대폰이 남습니다.',
     heroCheck1: '스크린 타임',
-    heroCheck2: '앱 차단',
+    heroCheck2: '차단된 앱',
     heroCheck3: '웹 필터',
     heroCheck4: '위치',
     heroCheck5: 'SOS',
@@ -123,7 +123,7 @@ export default {
     feature1Title: '스크린 타임과 일일 제한',
     feature1Text:
       '등교 시간과 취침 시간에 맞춰 일일 제한과 차단 시간을 정하세요. 시간이 끝나면 기기가 스스로 잠깁니다.',
-    feature2Title: '앱 차단',
+    feature2Title: '차단된 앱',
     feature2Text:
       '아이가 열 수 없는 앱을 부모 PIN으로 보호하며 고르고, 차단은 원격으로 켤 수 있습니다.',
     feature3Title: '앱 시간 제한',
@@ -204,7 +204,7 @@ export default {
       '부모님들이 비교하는 앱들과 대조해 확인한 여섯 가지입니다. 각 항목에 어느 플랫폼에서 해당되는지 적었습니다.',
     only1Title: '거실 TV까지',
     only1Text:
-      'Android TV에는 일일 제한, 차단 시간, 앱 차단, 웹 필터가 적용됩니다. TV에서 차단은 최선의 노력까지입니다 — 차단된 앱은 홈 화면으로 되돌려 보내집니다 — 그리고 소파에서 보내는 SOS나 시간 연장 요청은 없습니다. TV는 위치도 공유하지 않습니다. 대부분의 자녀 보호 앱은 휴대폰에서 멈춥니다.',
+      'Android TV에는 일일 제한, 차단 시간, 차단된 앱, 웹 필터가 적용됩니다. TV에서 차단은 최선의 노력까지입니다 — 차단된 앱은 홈 화면으로 되돌려 보내집니다 — 그리고 소파에서 보내는 SOS나 시간 연장 요청은 없습니다. TV는 위치도 공유하지 않습니다. 대부분의 자녀 보호 앱은 휴대폰에서 멈춥니다.',
     only2Title: '휴대폰 안에서 끝나는 메시지 알림',
     only2Text:
       'Android의 Premium에서는 14개 언어 중 직접 고른 최대 세 개 언어의 키워드 목록과 메시지를 기기 안에서 대조하며, 휴대폰을 떠나는 것은 일치한 단어나 구절뿐이고 대화 내용은 결코 나가지 않습니다. 이를 바꾸는 것은 하나뿐이고, 그마저 요청했을 때만 적용됩니다. AI 확인을 켜면 애매한 수신 메시지가 판단을 위해 Google의 Gemini로 전송되어, 평범한 단어 때문에 한밤중에 깨는 일이 없습니다.',
@@ -226,7 +226,7 @@ export default {
     faqSub: '내려받기 전에 빠르게 확인하세요.',
     faq1Q: '무료 체험이 있나요?',
     faq1A:
-      '네. 7일 체험은 첫 부모 기기와 자녀 기기가 연결되면 시작되며 모든 Premium 기능이 포함됩니다. 체험이 끝나도 설정한 규칙(일일 제한, 차단 시간, 차단된 앱, 웹 필터, 기기 잠금, 시간 연장 요청, 보상 과제)은 모든 자녀 기기에서 무료로 계속 작동하고, 계속 모니터링하도록 고른 한 대는 위치를 계속 공유합니다. 실시간 활동, 기록, 주간 리포트, 위치 추적은 Premium이 다시 제공하는 기능입니다.',
+      '네. 7일 체험은 첫 부모 기기와 자녀 기기가 연결되면 시작되며 모든 Premium 기능이 포함됩니다. 체험이 끝나도 설정한 규칙(일일 제한, 차단 시간, 차단된 앱, 웹 필터, 기기 잠금, 시간 연장 요청, 보상 과제)은 해당 규칙을 지원하는 모든 자녀 기기에서 무료로 계속 작동하고, 모니터링을 유지하도록 고른 기기 한 대는 위치를 계속 공유합니다. Premium을 구독하면 실시간 활동, 기록, 주간 리포트, 위치 추적을 다시 사용할 수 있습니다.',
     faq2Q: '몇 대까지 관리할 수 있나요?',
     faq2A:
       'Premium에서는 자녀 기기 최대 25대와 부모 6명(본인 포함)까지 사용할 수 있고, 모든 기기가 활동을 전송합니다. 무료 요금제에서는 자녀 기기 최대 8대와 부모 3명까지입니다. 모든 기기가 설정한 규칙을 계속 적용하지만 활동은 부모가 고른 한 대만 전송하며, 나머지 기기에서는 그 규칙을 완화할 수만 있고 강화할 수는 없습니다.',
@@ -377,27 +377,13 @@ export default {
     day4: '목',
     day5: '금',
     day6: '토',
-    timelineUsed: '사용 중',
-    timelineIdle: '사용 안 함',
-    timelineUnmeasured: '측정 안 됨',
-    timelineUnmeasuredHint:
-      'KidGate가 기기에서 실행되지 않았거나 기기가 절전 상태였습니다. 이 시간은 총합에도 포함되지 않습니다.',
-    timelineUnsupported:
-      '이 기기는 얼마나 사용했는지는 알려줄 수 있지만, 언제 사용했는지는 알 수 없습니다.',
-    timelinePending: '아직 타임라인이 없습니다.',
   },
 
   perm: {
     screenTime: '스크린 타임',
     location: '위치',
-    notifications: '알림',
     camera: '카메라',
     microphone: '마이크',
-    backgroundAppRefresh: '백그라운드 앱 새로 고침',
-    overlay: '다른 앱 위에 표시',
-    batteryOptimization: '배터리 제한 없음',
-    exactAlarm: '알람 및 리마인더',
-    accessibility: '접근성(잠금 도우미)',
   },
 
   webCat: {
@@ -481,7 +467,6 @@ export default {
     appVersion: '앱 버전',
     appVersionUpdate: '{{running}} · {{latest}} 사용 가능',
     appVersionRestart: '{{running}} · 앱을 다시 열어 완료',
-    buildOutdated: '업데이트 있음',
     checkIn: '체크인',
     sending: '보내는 중…',
     lockDevice: '기기 잠금',
@@ -555,7 +540,6 @@ export default {
     attnCheckInMissed: '체크인에 응답하지 않았습니다',
     attnCheckInMissedMeta: '{{when}} 발송 · 응답 없음',
     attnLimitReached: '일일 제한 도달 — 기기가 잠겼습니다',
-    attnLimitReachedMeta: '오늘 {{used}} 사용',
     attnBatteryLow: '배터리가 부족합니다({{level}}%)',
     attnBatteryLowMeta: '휴대폰이 꺼지면 위치 업데이트가 멈출 수 있습니다',
     attnReview: '확인',
@@ -585,11 +569,8 @@ export default {
 
     appUsageTitle: '오늘의 앱 사용',
     appUsageSub: '앱별 사용 시간',
-    topAppsOther: '기타 앱',
-    underAMinute: '1분 미만',
     appUsageEmpty: '아직 앱 사용 기록이 없습니다.',
-    appBlockingTitle: '앱 차단',
-    appBlockingSub: '부모 PIN으로 아이 기기에서 선택합니다',
+    appBlockingTitle: '차단된 앱',
     blockingLabel: '차단',
     appsBlocked: '차단된 앱',
     categories: '카테고리',
@@ -600,20 +581,14 @@ export default {
     webActivityTitle: '웹 활동',
     webActivitySub: '가장 많이 방문한 도메인, 최근 30일',
     webActivityEmpty: '아직 웹 활동이 없습니다.',
-    inventoryTitle: '설치된 앱',
-    inventorySub: '변경된 것만이 아니라 이 기기의 모든 것',
     inventoryEmpty: '이 기기가 아직 앱 목록을 보내지 않았습니다.',
     inventoryFirstScan: '첫 번째 검사이므로 언제 추가되었는지 알 수 없습니다.',
-    inventoryFlagged: '확인해 볼 만함',
-    inventoryFlaggedLabel: '확인 필요',
     inventoryOtherLabel: '확인됨',
     inventoryUnknownLabel: '미확인',
     installAllow: '허용',
     pendingInstallsTitle: '승인을 기다리는 새 앱',
     pendingInstallsSub: '승인을 켠 뒤에 설치되어 기기가 스스로 차단한 앱입니다',
-    pendingInstallsEmpty: '승인을 기다리는 새 앱이 없습니다.',
     toastInstallAllowed: '앱을 허용했습니다',
-    rowInstallApproval: '새 앱 승인',
     rowInstallApprovalDesc: '{{count}}개의 앱이 승인을 기다리는 중',
     rowInstallApprovalDesc_one: '{{count}}개의 앱이 승인을 기다리는 중',
     rowInstallApprovalDescIos:
@@ -622,7 +597,6 @@ export default {
     colVisits: '방문',
     colBlocked: '차단',
     colLastSeen: '마지막',
-    videosTitle: '시청한 동영상',
     videosSub: 'YouTube와 웹에서 무엇을 봤는지',
     videosEmpty: '아직 동영상이 없습니다.',
     colVideo: '동영상',
@@ -630,22 +604,13 @@ export default {
     colViews: '조회수',
     filterRefusedTitle: '필터가 거부한 항목',
     filterRefusedSub: '차단된 조회 {{count}}건, 최근 30일',
-    nothingBlockedYet: '아직 차단된 항목이 없습니다.',
-    rollupNoteAi:
-      '일부는 알려진 사이트와 대조한 것이 아니라 사이트 이름에서 추정한 것이라 틀릴 수 있습니다.',
-    webBackgroundNote:
-      '아무도 기기를 쓰지 않을 때도 일부 앱은 백그라운드에서 인터넷에 접속합니다. 업데이트, 추천 콘텐츠, 정기 확인이 저절로 실행됩니다.',
     filterHintIos:
       '이 iPhone이나 iPad는 Apple의 성인 콘텐츠 제한으로만 필터링합니다. 카테고리별로 차단하려면 기기에서 KidGate를 업데이트하고 KidGate VPN을 허용하세요.',
     filterHintAndroid: '카테고리는 기기 내 DNS 필터가 적용합니다.',
-    filterHintMacos: '카테고리는 Mac의 KidGate 콘텐츠 필터가 적용합니다.',
 
     locationTitle: '위치',
-    locationSharingOff: '공유가 꺼져 있습니다',
     locationUpdated: '{{when}} 업데이트',
     locationWaiting: '첫 업데이트를 기다리는 중',
-    lastKnownLocation: '마지막으로 확인된 위치',
-    nearPlace: '{{place}} 근처',
     noPlaces:
       '저장된 장소가 없습니다. 앱에서 하나 추가하면 아이가 도착하거나 떠날 때 알림을 받을 수 있습니다.',
     placeRadius: '{{meters}}m · ',
@@ -657,7 +622,6 @@ export default {
     placeWebHint:
       '웹에서는 기기가 마지막으로 보고한 위치에만 장소를 만들 수 있습니다. 다른 곳은 앱의 지도에서 선택하세요.',
     placeNeedsLocation: '이 기기의 위치를 기다리는 중입니다.',
-    sosTitle: 'SOS 알림',
     sosSub: '아이 기기에서 보낸 긴급 신호',
     sosEmpty:
       'SOS 알림이 없습니다. 사용법을 서로 알 수 있도록 한 번 함께 시험해 보세요.',
@@ -667,8 +631,6 @@ export default {
     checkInsTitle: '체크인',
     checkInsSub: '아이에게 안전을 확인해 달라고 요청하세요',
     checkInSafe: '안전 확인됨',
-    checkInMissed: '응답 없음',
-    checkInWaiting: '대기 중',
     checkInPhotoRequested: '사진과 위치를 요청했습니다',
     checkInNoReply: '아직 답이 없습니다',
     checkInPhotoSkipped: '사진 건너뜀',
@@ -678,8 +640,6 @@ export default {
 
     protectionAlertsTitle: '보호 알림',
     protectionAlertsSub: '설치 이후 {{count}}건',
-    protectionAlertsHint:
-      '보호 알림은 KidGate가 설정한 것보다 적게만 적용할 수 있다는 뜻입니다. 아이 기기에서 권한을 다시 켜면 사라집니다.',
 
     limitCardTitle: '일일 제한',
     limitCardSub: '하루에 쓸 수 있는 시간을 제한합니다',
@@ -692,28 +652,20 @@ export default {
     limitSharedSpent: '오늘 {{limit}} 중 {{used}} 사용',
     limitSharedHint:
       '이 아이의 하루 전체이며 이 기기만의 한도가 아닙니다. 다른 기기가 쓰지 않은 시간이 각 기기로 돌아갑니다. 변경은 KidGate 앱에서 하세요.',
-    whatsOnTitle: '켜져 있는 기능',
     whatsOnSub: '변경 사항은 아이 기기에 동기화됩니다',
     rowBlockedHours: '차단 시간',
     rowBlockedHoursDesc: '{{count}}개 시간대 · {{list}}',
-    rowAppBlocking: '앱 차단',
-    rowAppBlockingApps: '{{count}}개의 앱',
-    rowAppBlockingApps_one: '{{count}}개의 앱',
-    rowAppBlockingCategories: '{{count}}개의 카테고리',
-    rowAppBlockingCategories_one: '{{count}}개의 카테고리',
+    rowAppBlocking: '차단된 앱',
     rowAppBlockingDesc: '{{apps}} · {{categories}}',
     rowWebFilter: '웹 필터',
     rowWebFilterDesc: '{{count}}개 카테고리 거부',
     rowNotSupported: '이 기기에서는 지원되지 않습니다',
-    rowWebFilterAwaitingApproval: '기기에서 승인 대기 중',
-    rowWebFilterSwitchedOff: '기기에서 꺼져 있음',
     rowLocation: '위치 공유',
     rowLocationDesc: '마지막 업데이트 {{when}}',
     rowLocationNone: '아직 위치 없음',
     rowSearchMonitoring: '검색 모니터링',
-    rowSafeSearch: '세이프서치 강제 적용',
     rowSafeSearchDesc:
-      'Google 세이프서치, YouTube 제한 모드, Bing, DuckDuckGo를 엄격 설정으로 고정합니다. Android, Android TV, Chrome. 이 수준에서는 YouTube가 댓글도 숨기고 일반 동영상도 일부 차단합니다.',
+      'Android, Android TV, Chrome에서 Google 세이프서치, Bing, DuckDuckGo를 엄격 설정으로 고정합니다. Android와 Chrome에서는 YouTube 제한 모드도 고정하며, 이 경우 댓글도 숨기고 일반 동영상도 일부 차단합니다.',
 
     webFilterCatsTitle: '웹 필터 카테고리',
     webFilterCatsSub: '차단할 콘텐츠 종류',
@@ -729,13 +681,9 @@ export default {
     rewardTaskStars: '난이도: 3단계 중 {{count}}',
     rewardTaskWaiting: ' · 승인 대기 중',
     approve: '승인',
-    siteRequestsTitle: '사이트 요청',
-    siteRequestsSub: '이 기기가 허용을 요청한 사이트입니다',
     siteRequestAllow: '허용',
     siteRequestDeny: '나중에',
     attnSiteRequest: '{{name}}이(가) {{domain}} 접속을 요청했습니다',
-    toastSiteAllowed: '사이트를 허용했습니다',
-    timelineTitle: '사용한 시간대',
     timelineSub: '오늘 자정부터 자정까지. 초록색은 기기를 사용한 시간입니다.',
     timelineSubDay: '{{date}} 자정부터 자정까지. 초록색은 기기를 사용한 시간입니다.',
   },
@@ -754,45 +702,16 @@ export default {
   },
 
   report: {
-    title: '주간 리포트',
-    subtitle: 'KidGate가 이번 주에 살펴본 내용입니다.',
-    weekOf: '{{week}} 주',
     writtenAt: '{{when}} 작성',
-    triggerScheduled: '월요일에 발송',
-    triggerManual: '직접 만든 리포트',
-    highlights: '알아 두면 좋은 점',
-    narrativeTitle: '한 문장으로',
-    finePrint:
-      '수치는 {{from}}부터 {{to}}까지, 가족의 모든 기기를 포함합니다. 스크린 타임은 기기가 보고한 값이며, 측정하지 못한 시간은 어느 합계에도 들어가지 않습니다.',
     shareImage: '이미지로 저장',
     sharePdf: 'PDF로 저장',
-    copySummary: '요약 복사',
-    copied: '요약을 복사했습니다.',
     imageSaved: '이미지를 저장했습니다.',
     shareFailed: '이 브라우저에서는 저장할 수 없습니다. 대신 요약을 복사해 주세요.',
-    emptyTitle: '아직 리포트가 없습니다',
-    emptyBody: '리포트는 매주 월요일 아침에 도착하며 그 전 7일을 다룹니다.',
-    noUsage:
-      '지난 2주 동안 사용 시간이 기록되지 않아 아직 알려 드릴 내용이 없습니다. 오프라인 상태인 기기는 아무것도 보고하지 않으며, 이는 조용한 한 주와는 다릅니다.',
-    rateLimited: '시도가 너무 많습니다. 1분만 기다려 주세요.',
-    loadFailedTitle: '리포트를 불러오지 못함',
+    emptyBody:
+      'Premium에서는 리포트가 매주 월요일 아침에 도착하며 그 전 7일을 다룹니다. 이번 주 리포트는 휴대폰의 KidGate 앱에서 직접 작성할 수도 있습니다.',
     loadFailed: '리포트를 열지 못했습니다. 페이지를 새로고침하세요.',
     retryLoad: '다시 시도',
-    failed: '리포트를 작성하지 못했습니다. 잠시 후 다시 시도해 주세요.',
     existed: '이번 주 리포트가 이미 있습니다. 여기 있습니다.',
-    childrenTitle: '자녀별',
-    childrenNote: '같은 2주간을 기기별로. 비율은 가족 합계 기준입니다.',
-    colScreenTime: '스크린 타임',
-    colShare: '비율',
-    colChange: '지난주 대비',
-    colLimit: '한도 초과',
-    colLateNights: '늦은 밤',
-    colTopApp: '가장 많이 사용',
-    noLimit: '한도 없음',
-    busiest: '사용 시간 최다',
-
-    historyTitle: '지난 주간',
-    historyEmpty: '지금부터 받는 리포트는 1년 동안 여기에 보관됩니다.',
   },
 
   support: {
@@ -813,7 +732,7 @@ export default {
     start3:
       '**3. 아이 기기를 연결하세요.** 아이 기기에 KidGate를 설치하고 엽니다. 휴대전화나 태블릿에서는 *자녀 기기입니다*를 선택합니다. 부모 기기에서 *가족*을 열고 스캔 아이콘(*코드 스캔*)을 탭한 뒤, 아이 기기에 표시된 QR 코드를 스캔하거나 6자리 코드를 입력하세요. 아이 기기에서 확인을 요청하면 그곳에서 연결을 확인합니다. TV는 자동으로 연결됩니다.',
     start4:
-      '**4. 아이 기기에서 권한을 허용하세요.** 아이 기기에서 *상태* 화면을 열고 *설정 계속하기*를 탭하세요. KidGate에 필요한 모든 권한을 차례로 안내합니다. Android에서는 알림, 사용 정보 접근, 다른 앱 위에 표시, 접근성(잠금 도우미), 알람 및 리마인더, 배터리 제한 없음. iOS에서는 *앱 및 웹 사이트 사용 허용*(스크린 타임), 그리고 웹 필터를 위해 iOS가 VPN 구성 추가를 요청할 때 *허용*. 이 권한들이 켜지기 전에는 제어 기능이 완전히 동작하지 않습니다.',
+      '**4. 아이 기기에서 권한을 허용하세요.** 아이 기기에서 *상태* 화면을 열고 *설정 계속하기*를 탭하세요. KidGate에 필요한 모든 권한을 차례로 안내합니다. Android에서는 알림, 사용 정보 접근, 다른 앱 위에 표시, 접근성(잠금 도우미), 알람 및 리마인더, 배터리 제한 없음, 웹 필터가 동작하는 VPN 연결, 삭제 방지, 그리고 메시지 경고를 위한 알림 접근. iOS에서는 *앱 및 웹 사이트 사용 허용*(스크린 타임), 그리고 웹 필터를 위해 iOS가 VPN 구성 추가를 요청할 때 *허용*. 이 권한들이 켜지기 전에는 제어 기능이 완전히 동작하지 않습니다.',
     start5:
       '**5. 제어 항목을 설정하세요.** 부모 기기에서 아이 기기 카드를 열고 일일 제한, 차단 시간, 차단된 앱, 웹 필터, 위치 기능을 설정합니다.',
     startNote:
@@ -873,6 +792,45 @@ export default {
     legalDeletion: '계정 및 데이터 삭제',
   },
 
+  deleteAccount: {
+    title: '계정 및 데이터 삭제',
+    updated: '최종 업데이트: 2026년 9월 18일',
+    intro:
+      '이 페이지는 KidGate 계정과 그에 연결된 데이터를 삭제하는 방법을 안내합니다. 삭제는 언제든지 요청할 수 있으며, 앱이 설치되어 있지 않아도 요청할 수 있습니다.',
+    option1Title: '방법 1: 앱에서 계정 삭제',
+    option1Step1: 'KidGate 앱을 열고 로그인하세요.',
+    option1Step2: '*설정 → 계정 → 계정 삭제*로 이동하세요.',
+    option1Step3: '삭제를 확인하세요.',
+    option2Title: '방법 2: 이메일로 삭제 요청',
+    option2Step1:
+      '[support@kidgate.app](mailto:support@kidgate.app?subject=Account%20Deletion%20Request)으로 제목을 “Account Deletion Request”로 하여 이메일을 보내세요.',
+    option2Step2:
+      '본인 확인을 위해 KidGate 계정에 연결된 이메일 주소에서 요청을 보내 주세요.',
+    option2Step3:
+      '요청을 확인한 뒤 삭제를 예약합니다. 요청은 14일 동안 보류되며 그 기간에는 취소할 수 있습니다. 그 기간이 지나면 삭제가 실행되며 되돌릴 수 없습니다.',
+    deletedTitle: '삭제되는 항목',
+    deletedIntro: '계정을 삭제하면 다음 항목이 영구적으로 삭제됩니다.',
+    deleted1: '보호자 계정 정보(이름, 이메일 주소).',
+    deleted2: '만든 모든 자녀 프로필.',
+    deleted3:
+      '관리 대상 기기에서 수집한 모든 활동 데이터(앱 사용 내역, 스크린 타임 기록, 탐색 활동, 위치 기록, 체크인 및 SOS 사진 포함).',
+    deleted4: '보호자가 설정한 제어 설정과 환경설정.',
+    deleted5: '제출한 지원 요청과 첨부된 스크린샷.',
+    deleted6: '로그인 정보 자체. 따라서 계정을 다시 사용할 수 없습니다.',
+    retentionTitle: '보관 기간',
+    retention1:
+      '확인된 요청에 대한 **14일** 보류 기간이 끝나면 데이터가 삭제됩니다. 삭제는 영구적이며 그 이후에는 데이터를 내보낼 수 없습니다.',
+    retention2:
+      '삭제가 요청되고 완료되었다는 기록(이메일 주소의 해시와 날짜만 있고 다른 정보는 없음)은 삭제에 대한 이의에 답할 수 있도록 **12개월** 동안 보관됩니다.',
+    retention3:
+      '법률상 필요한 경우(예: 세금 목적의 거래 기록) 최소한의 기록을 법에서 요구하는 기간 동안에만 보관할 수 있습니다.',
+    partialTitle: '부분 삭제',
+    partial:
+      '앱에서 자녀나 기기를 삭제하면 해당 대상의 수집이 중단됩니다. 이미 수집된 기록은 개인정보 처리방침에 정해진 일정에 따라 만료됩니다(사용 기록, 웹 기록, 위치 기록, 활동 피드는 30일, SOS, 체크인, 시간 연장 요청은 90일). 더 빨리 삭제하려면 [support@kidgate.app](mailto:support@kidgate.app)으로 이메일을 보내 주세요.',
+    moreInfo:
+      '데이터 처리 방식에 대한 자세한 내용은 [개인정보 처리방침](/privacy-policy)을 참고하세요.',
+  },
+
   download: {
     eyebrow: '다운로드',
     qrScan: '휴대폰 카메라로 스캔해 앱을 받으세요',
@@ -916,7 +874,7 @@ export default {
       '앱이 무엇을 강제할 수 있는지는 플랫폼마다 제한이 있습니다. KidGate가 최선의 노력까지만 할 수 있는 부분 — 컴퓨터에서 차단된 앱의 실행 자체를 막는 대신 종료시키는 경우 등 — 은 초록색 체크 대신 화면에 그대로 적어 둡니다.',
     value4Title: '한 가족, 하나의 요금제',
     value4Text:
-      'Premium 구독 하나로 모든 부모와 모든 자녀 기기를 포함합니다. 구독이 없어도 일일 제한, 차단 시간, 차단된 앱, 기기 잠금, 웹 필터는 모든 자녀 기기에서 계속 작동하고 SOS는 언제나 부모에게 전달되므로, 기본 안전 규칙이 결제 뒤에 놓이는 일은 없습니다.',
+      'Premium 구독 하나가 모든 부모와 모든 자녀 기기에 적용됩니다. 구독이 없어도 일일 제한, 차단 시간, 차단된 앱, 기기 잠금, 웹 필터는 이를 지원하는 모든 자녀 기기에서 계속 작동하고, 휴대폰이나 컴퓨터에서 보낸 SOS는 언제나 부모에게 전달됩니다. 기본 안전 규칙은 결제하지 않아도 언제나 사용할 수 있습니다.',
     makeEyebrow: '저희가 만드는 것',
     makeTitle: '화면이 있는 곳마다, 하나의 KidGate',
     makeSub: '같은 규칙을 한 번만 작성하고, 각 플랫폼이 허용하는 만큼 적용합니다.',
@@ -925,7 +883,7 @@ export default {
       '일일 제한, 차단 시간, 앱 차단은 Apple의 스크린 타임 프레임워크로, 웹 필터는 기기 자체의 비공개 연결로 처리합니다.',
     make2Title: 'Android',
     make2Text:
-      '시간 한도, 앱 차단, 전체 화면 잠금, 웹 필터에 더해 새 앱이 설치되면 알려 줍니다.',
+      '시간 한도, 차단된 앱, 전체 화면 잠금, 웹 필터에 더해 새 앱이 설치되면 알려 줍니다.',
     make3Title: 'macOS',
     make3Text:
       'Mac의 데스크톱 에이전트: 같은 일정과 같은 한도가 적용되고, 하루 사용을 부모가 실제로 읽을 수 있습니다.',
@@ -937,7 +895,7 @@ export default {
       '거실 화면을 한 아이의 기기가 아니라 가족이 함께 쓰는 기기로 다룹니다. 제한도 일정도 휴대폰과 같습니다. TV에는 위치 공유와 SOS가 없습니다.',
     make6Title: 'Chrome',
     make6Text:
-      'KidGate가 이미 설치된 컴퓨터에서도, 설치할 수 없는 컴퓨터에서도 Chrome 안에서 같은 웹 필터를 적용하는 브라우저 확장 프로그램입니다. Chrome에서 웹 필터만 적용하며, 스크린 타임을 측정하거나 앱을 차단하지는 않습니다.',
+      'KidGate가 이미 설치된 컴퓨터에서도, 설치할 수 없는 컴퓨터에서도 Chrome 안에서 같은 웹 필터를 적용하는 브라우저 확장 프로그램입니다. Chrome 안에서만 작동하며, 필터링 외에도 켜 두면 시청한 YouTube 동영상을 기록하고 우려되는 검색을 감지하며, 설치된 다른 확장 프로그램도 보고합니다. 스크린 타임이나 앱 차단은 없습니다.',
     make7Title: '부모 대시보드',
     make7Text:
       '브라우저는 부모의 두 번째 화면입니다. 휴대폰으로 코드를 스캔해 어느 컴퓨터에서나 로그인하세요. 설치할 것은 없습니다.',
@@ -1116,5 +1074,11 @@ export default {
     allYoutubeTitle: '부모 휴대폰과 자녀 기기에 KidGate를 설정하는 방법',
     allYoutubeDescription:
       '모든 설정을 영상 하나에 담았습니다. 먼저 부모 휴대폰, 이어서 자녀의 각 기기(iPhone 또는 iPad, Android 휴대폰 또는 태블릿, Mac, Windows PC, Android TV, Chrome), 마지막으로 웹 대시보드입니다. 아래 목록에서 기기를 선택하세요.',
+    // `guide-all`: every how-to in one video (operator, 2026-10-14).
+    guideAllYoutubeTitle: 'KidGate 사용법: 모든 기능을 단계별로',
+    guideAllYoutubeDescription:
+      'KidGate의 모든 기능을 영상 하나에 담았습니다. 부모의 iPhone과 자녀의 Android 휴대폰으로 한 단계씩 보여 드립니다. 아래 목록에서 원하는 기능을 선택하세요.',
+    // `guide-parent-devices`' title card: the app's own wording for the device.
+    removeParentDeviceTitle: '부모 기기 삭제하기',
   },
 };

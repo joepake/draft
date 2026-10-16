@@ -24,9 +24,9 @@ export const pin = {
   parentPinRequired: 'PIN Orang Tua diperlukan',
   enterParentPinToContinue: 'Masukkan PIN Orang Tua 6 digit untuk melanjutkan.',
   parentPinLockoutMessage:
-    'Terlalu banyak percobaan yang salah. Minta orang tua yang menyiapkan KidGate untuk membuka kunci PIN dari ponselnya, di Pengaturan → Keamanan.',
+    'Terlalu banyak percobaan yang salah. Minta orang tua untuk membuka kunci PIN dari ponselnya, di Pengaturan → Keamanan.',
   parentPinHelperText:
-    'Hanya orang tua yang dapat mengubah aplikasi yang diblokir atau keluar — untuk itulah PIN ini. Jika PIN terlupa, orang tua yang menyiapkan KidGate dapat mengatur ulang dari ponselnya, di Pengaturan → Keamanan.',
+    'Hanya orang tua yang dapat mengubah pengaturan yang dilindungi, seperti Aplikasi yang Diblokir — untuk itulah PIN ini. Jika PIN terlupa, orang tua yang menyiapkan KidGate dapat mengatur ulang dari ponselnya, di Pengaturan → Keamanan.',
   forgotPin: 'Lupa PIN?',
   resetPinNotice:
     'Anda mengatur ulang PIN sebagai pemilik akun. Perangkat anak akan meminta PIN baru mulai sekarang.',
@@ -46,20 +46,20 @@ export const pin = {
   savePin: 'Simpan PIN',
   pinLockedTitle: 'PIN terkunci',
   pinLockedBody:
-    'Terlalu banyak percobaan yang salah. Minta orang tua yang menyiapkan KidGate untuk membuka kunci PIN dari ponselnya, di Pengaturan → Keamanan.',
+    'Terlalu banyak percobaan yang salah. Minta orang tua untuk membuka kunci PIN dari ponselnya, di Pengaturan → Keamanan.',
   parentAccessRequiredTitle: 'Akses orang tua diperlukan',
   parentAccessRequiredBody:
-    'Masukkan PIN Orang Tua untuk mengganti nama perangkat ini, memilih Aplikasi yang Diblokir, atau keluar.',
+    'Masukkan PIN Orang Tua untuk mengganti nama perangkat ini, memilih Aplikasi yang Diblokir, atau keluar dari keluarga.',
   unlockWithParentPinButton: 'Buka kunci dengan PIN Orang Tua',
   whyPinTitle: 'Kenapa perlu PIN?',
   whyPinBody:
-    'Hanya orang tua yang boleh mengubah Aplikasi yang Diblokir atau mengeluarkan perangkat ini dari KidGate. Warna tema tidak memerlukan PIN.',
+    'Hanya orang tua yang boleh mengubah Aplikasi yang Diblokir atau mengeluarkan perangkat ini dari keluarga. Warna tema tidak memerlukan PIN.',
   pinLockedToast:
-    'PIN terkunci setelah terlalu banyak percobaan yang salah. Minta orang tua yang menyiapkan KidGate untuk membukanya dari ponselnya, di Pengaturan → Keamanan.',
+    'PIN terkunci setelah terlalu banyak percobaan yang salah. Minta orang tua untuk membukanya dari ponselnya, di Pengaturan → Keamanan.',
   pinNotConfiguredToast:
     'Belum ada PIN Orang Tua. Orang tua yang menyiapkan KidGate membuatnya dari ponselnya, di Pengaturan → Keamanan.',
   pairedNoPin:
-    'Belum ada PIN Orang Tua. Perangkat anak memintanya sebelum Aplikasi yang Diblokir diubah atau perangkat dikeluarkan dari KidGate.',
+    'Belum ada PIN Orang Tua. Perangkat anak memintanya sebelum Aplikasi yang Diblokir diubah atau perangkat keluar dari keluarga.',
   enterSixDigitParentPin: 'Masukkan PIN Orang Tua 6 digit.',
   askParentCreatePin:
     'Minta orang tua yang menyiapkan KidGate untuk membuat PIN Orang Tua dari ponselnya, di Pengaturan → Keamanan.',

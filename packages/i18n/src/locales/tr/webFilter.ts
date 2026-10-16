@@ -2,6 +2,7 @@ export const webFilter = {
   title: 'Web filtresi',
   fallbackDeviceName: 'Çocuk cihazı',
   appliesToAll: '{{name}} adlı çocuğun tüm cihazlarına uygulanır ({{count}} cihaz)',
+  appliesToSome: '{{name}} için {{total}} cihazdan {{supported}} tanesinde geçerli',
   coverageLine: '{{total}} cihazın {{enforcing}} tanesinde etkin',
   mergeNotice:
     '{{name}} adlı çocuğun cihazlarında farklı web filtresi ayarları vardı. Burada kaydetmek, daha katı seçeneğe göre birleştirilmiş tek bir ayarı tümüne uygular.',
@@ -16,17 +17,20 @@ export const webFilter = {
     'Tarayıcılarda ve birçok uygulamada bilinen uygunsuz siteleri engellemek için çocuğun Mac’inde KidGate’in içerik filtresini çalıştırır.',
   toggleHintIos:
     'Çocuğun KidGate VPN bağlantısına bir kez izin vermesi ve cihaz parolasını girmesi gerekir. Filtrenin çalışması için VPN’i cihazdan kaldırmayın.',
+  heroSubtitleIosApple:
+    'Çocuğun iPhone veya iPad’inde Safari’de ve uygulama içi tarayıcılarda yetişkin içeriği sınırlamak için Apple’ın Ekran Süresi içerik filtresini kullanır.',
+  toggleHintIosApple: 'Çocuk cihazında Ekran Süresi izni gerektirir.',
   toggleHintAndroid:
     'Çocuğun KidGate VPN bağlantısını bir kez onaylaması gerekir. Filtrenin çalışması için VPN’i açık tutun.',
   toggleHintMacos:
-    'Çocuğun Sistem Ayarları’nda KidGate filtre uzantısını bir kez onaylaması gerekir. Filtrenin çalışması için onaylı kalmasını sağlayın.',
+    'Çocuğun KidGate filtre uzantısını Mac’te bir kez onaylaması gerekir. Filtrenin çalışması için onaylı kalmasını sağlayın.',
   toggleAccessibilityLabel: 'Web filtresini aç',
   safeSearchSectionTitle: 'Güvenli arama ve YouTube',
   safeSearchSectionSubtitle:
     'Google, Bing ve DuckDuckGo’yu güvenli sonuçlara zorlar ve YouTube’u Kısıtlı Mod’a kilitler. Web filtresinin açık olmasını gerektirir.',
   safeSearchLabel: 'Güvenli Aramayı zorunlu kıl',
   safeSearchHint:
-    'Google SafeSearch, YouTube Kısıtlı Mod, Bing ve DuckDuckGo’yu katı ayarda kilitler. Android, Android TV ve Chrome.',
+    'Google SafeSearch, YouTube Kısıtlı Mod, Bing ve DuckDuckGo’yu katı ayarda kilitler. Android ve Chrome.',
   safeSearchStrictNote:
     'YouTube en katı seviyede çalışır: yorumlar gizlenir ve bazı sıradan videolar da engellenir. Çocuk bunu kendi hesabından kapatamaz.',
   infoTitle: 'Nasıl çalışır',
@@ -36,6 +40,12 @@ export const webFilter = {
     'Apple’ın yetişkin içerik filtresi, ikinci bir koruma katmanı olarak Safari’de ve uygulama içi tarayıcılarda açık kalır.',
   infoLine3Ios:
     'Filtreleme sırasında bir VPN simgesi görünür. VPN Ayarlar’dan kapatılırsa birkaç saniye içinde yeniden açılır; silinirse KidGate’te yeniden izin verilene kadar filtre durur.',
+  infoLine1IosApple:
+    'Apple’ın yetişkin içerik filtresi, Safari’de ve uygulama içi tarayıcılarda yetişkin web sitelerini sınırlar.',
+  infoLine2IosApple:
+    'Diğer uygulamaların içindeki her şeyi engellemez ve yalnızca yetişkin içeriği kapsar, diğer kategorileri kapsamaz.',
+  infoLine3IosApple:
+    'KidGate, çocuk cihazındaki uygulama kontrolleri eşitlediğinde ayarı otomatik olarak uygular.',
   infoLine1Android:
     'KidGate, cihazda özel bir bağlantı çalıştırır; hangi sitelere girilmek istendiğini görür ve seçtiğiniz kategorilerdeki siteleri engeller.',
   infoLine2Android:
@@ -47,27 +57,28 @@ export const webFilter = {
   infoLine1Macos:
     'KidGate, Mac’te hangi sitelerin arandığını kontrol eden bir içerik filtresi çalıştırır ve kategorilerinize giren siteleri engeller.',
   infoLine2Macos:
-    'Filtre çocuğun Mac’inde onaylanmamış görünüyorsa, onaylamak için Sistem Ayarları → Genel → Oturum Açma Öğeleri ve Uzantılar’ı açın.',
+    'Filtre çocuğun Mac’inde onaylanmamış görünüyorsa, orada KidGate’i açıp Ayarları aç’ı seçin. Ardından açılan sayfada KidGate’i açın.',
   infoLine3Macos:
     'Onaylandıktan sonra çocuğun Mac’i filtreyi etkin gösterir. Orada kapatılırsa, geri yüklemek için KidGate’i yeniden açın.',
   infoLine4Macos:
-    'Filtre site adlarını okur, ancak modern tarayıcılar ziyaretlerin yaklaşık yarısında bunu gizler — bu siteler kategorilerinize göre denetlenmez. Yine de filtre, çocukların bu yolla ulaştığı çoğu siteyi engellemeye devam eder.',
+    'Filtre bir bağlantıyı taşıdığı site adına göre değerlendirir. KidGate’in testlerinde HTTPS bağlantılarının yaklaşık yarısı okunabilir bir ad taşımadı; bu yüzden bunlar kategorilerinize göre denetlenmez ve engellenen bazı siteler yine de açılabilir.',
   privateDnsBannerTitle: 'Özel DNS’i kapat',
   privateDnsBannerBody:
     'Özel DNS açık olduğundan web filtresi atlanabilir. Filtrenin çalışması için kapat.',
   privateDnsBannerButton: 'DNS ayarlarını aç',
   vpnConsentBannerTitle: 'Web filtresi VPN’ini geri getir',
   vpnConsentBannerBody:
-    'KidGate VPN kapalı. Yetişkin web filtresi VPN bağlantısının sürmesini gerektirir.',
+    'KidGate VPN kapalı. Web filtresi, VPN bağlantısının sürmesini gerektirir.',
   vpnConsentBannerButton: 'VPN’i aç',
   vpnDisclosureNote:
     'Web filtresi açıkken KidGate VPN yalnızca bu cihazda çalışır. Cihazın açtığı her sitenin adını görür; sayfaları, yazılanları ya da başka hiçbir trafiği asla görmez. Ailenin seçtiği siteleri engeller ve bu cihazın web’de gezinme geçmişini (hangi sitelerin açıldığını ve engellendiğini) ailene gösterir; bu geçmiş 30 gün saklanır. KidGate bu verileri asla satmaz ve başka hiçbir şey için kullanmaz.',
   iosOnlyNote: 'iPhone’da özel bağlantı ve Ekran Süresi kullanır',
+  iosAppleNote: 'iPhone’da Apple’ın Ekran Süresi içerik filtresini kullanır',
   androidVpnNote: 'Android’de yerel DNS VPN kullanır',
   macosFilterNote: 'Mac’te KidGate’in içerik filtresini kullanır',
 
   heroSubtitleWindows:
-    'Çocuğun bilgisayarında KidGate’in kendi çözümleyicisini çalıştırarak bilinen uygunsuz siteleri her tarayıcıda engeller.',
+    'Çocuğun bilgisayarında KidGate’in kendi çözümleyicisini çalıştırarak bilinen uygunsuz siteleri Chrome, Edge ve Firefox’ta engeller.',
   heroSubtitleExtension:
     'Bilinen uygunsuz siteleri o tarayıcıda engellemek için çocuğun bilgisayarındaki Chrome’da KidGate uzantısını çalıştırır.',
 
@@ -94,7 +105,7 @@ export const webFilter = {
   infoLine3Extension:
     'Gizli pencereler yalnızca uzantı için “Gizli modda izin ver” açıksa filtrelenir. Misafir pencereleri filtrelenmez.',
   infoLine4Extension:
-    'Engellenen bir sayfadan çocuğunuz siteye izin vermenizi isteyebilir. Uzantıyı kaldırmak veya kapatmak filtreyi durdurur.',
+    'Aile Premium’dayken engellenen bir sayfadan çocuğunuz siteye izin vermenizi isteyebilir. Uzantıyı kaldırmak veya kapatmak filtreyi durdurur.',
 
   windowsFilterNote: 'Windows’ta KidGate’in kendi çözümleyicisini kullanır',
   extensionFilterNote: 'Chrome’da KidGate uzantısını kullanır',
@@ -123,11 +134,11 @@ export const webFilter = {
   domainPlaceholder: 'ornek.com',
   addDomain: 'Site ekle',
   removeDomain: '{{domain}} kaldır',
-  invalidDomain: 'ornek.com gibi bir adres girin',
+  invalidDomain: 'ornek.com gibi bir site adresi girin.',
   listFull: 'Bu listeye en fazla {{max}} site kaydedebilirsiniz.',
   openHistory: 'Web geçmişi',
   openHistorySubtitle:
-    'Bu cihazın hangi sitelere ulaştığını ve neyin engellendiğini görün',
+    'Bu cihazın hangi sitelere ulaştığını ve neyin engellendiğini görün.',
   blockedPageTitle: 'Site engellendi',
   blockedPageBody:
     'KidGate bu siteyi ailen için engelledi. Bunun bir hata olduğunu düşünüyorsan ailene sor.',
@@ -207,6 +218,8 @@ export const webFilter = {
   askToOpenPending: 'Zaten bir site istedin. Cevabı bekle.',
   askToOpenTooSoon: 'Az önce istek gönderdin. Bir dakika sonra dene.',
   askToOpenTooMany: 'Bir seferde sadece birkaç site isteyebilirsin.',
+  askToOpenUnavailable:
+    'Şu anda site isteği gönderemiyorsun. Bunu ailene yüz yüze sor.',
   requestsTitle: 'Site istekleri',
   requestsSubtitle: 'Bu cihazın izin istediği siteler.',
   siteRequestApproved: 'Siteye izin verildi',

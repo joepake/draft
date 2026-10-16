@@ -43,6 +43,6 @@ export const screenTime = {
   limitReachedStatus: '{{used}} / {{limit}} · 제한 도달',
   minutesUsedStatus: '{{used}} / {{limit}} 사용',
   usageUpdatesHint:
-    '스크린 타임 모니터링이 활성화된 동안 사용량은 몇 분마다 업데이트됩니다.',
+    '사용량이 이 화면에 반영되기까지 최대 {{minutes}}분 걸릴 수 있습니다.',
   dailyLimitMinutes: '{{limitMinutes}}분',
 } as const;

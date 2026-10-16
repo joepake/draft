@@ -12,7 +12,8 @@ export const messageMonitoring = {
     'Aqui só é possível verificar as buscas. As mensagens só podem ser verificadas em dispositivos Android.',
   recentTitle: 'Alertas recentes',
   emptyTitle: 'Ainda sem alertas',
-  emptySubtitle: 'Nenhuma palavra preocupante foi vista nas mensagens.',
+  emptySubtitle:
+    'Quando uma palavra preocupante é sinalizada em uma mensagem ou busca, ela aparece aqui.',
   emptySubtitleNotWatching:
     'As mensagens não estão sendo verificadas agora, então esta lista continuará vazia aconteça o que acontecer.',
   flaggedTerm: 'Sinalizado: “{{term}}”',
@@ -30,7 +31,7 @@ export const messageMonitoring = {
   categoryTobacco: 'Tabaco ou vape',
   categoryGambling: 'Jogos de aposta',
   categoryProfanity: 'Linguagem ofensiva',
-  categoryUnknown: 'Mensagem sinalizada',
+  categoryUnknown: 'Mensagem preocupante',
   guidanceToggle: 'O que fazer agora',
   guidanceHide: 'Ocultar',
   guidanceFooter:
@@ -73,13 +74,13 @@ export const messageMonitoring = {
     'Navegadores e YouTube. Só a palavra ou frase sinalizada é informada, nunca a busca em si.',
   parentSearchHintNotGranted:
     'Precisa da mesma permissão que “Verificar mensagens digitadas”. Ative “Verificar mensagens recebidas” e depois permita no dispositivo dele.',
-  parentToggleHintGranted: 'Neste celular.',
+  parentToggleHintGranted: 'Permitido no dispositivo da criança.',
   parentToggleHintNotGranted:
-    'Ainda não permitido neste celular — abra o KidGate no aparelho dele para conceder.',
+    'Ainda não permitido no dispositivo da criança — abra o KidGate nesse dispositivo para conceder.',
   parentProfanityLabel: 'Também sinalizar palavrões',
   parentProfanityHint:
     'Desativado por padrão — palavrões comuns são frequentes, isso também os transforma em alerta.',
-  parentToggleSaveFailed: 'Não foi possível salvar a alteração.',
+  parentToggleSaveFailed: 'Não foi possível salvar a alteração. Tente novamente.',
   settingsTitle: 'Configurações de Alertas de mensagens',
   checkedTitle: 'Verificado, sem problema',
   checkedSubtitle:
@@ -110,7 +111,7 @@ export const messageMonitoring = {
     'O Android desativou isto. Conceda novamente para continuar verificando o que você escreve.',
   outgoingDisclosureTitle: 'Antes de permitir',
   outgoingDisclosureBody:
-    'Com esta permissão, o KidGate lê o que você digita em mensagens de texto (SMS e MMS) e em aplicativos de mensagens, e verifica se há as mesmas palavras de alerta. Se seus pais ativarem os alertas de busca, ele também lê o que você digita em navegadores, no YouTube e no app do Google, como buscas. Ele nunca lê um campo de senha. A verificação acontece neste celular. Quando uma palavra corresponde, só essa palavra ou frase, a categoria, o app e o horário são enviados para seus pais — nunca o resto da mensagem ou da busca. Se o KidGate travar, um registro de falhas é enviado à equipe do KidGate para corrigir o problema.',
+    'Com esta permissão, o KidGate lê o que você digita em mensagens de texto (SMS e MMS) e em aplicativos de mensagens, e verifica se há as mesmas palavras de alerta. Se seus pais ativarem os alertas de busca, ele também lê o que você digita em navegadores, no YouTube e no app do Google, como buscas. Ele nunca lê um campo de senha. A verificação acontece neste celular. Quando uma palavra corresponde, só essa palavra ou frase, a categoria, o app e o horário são enviados para seus pais — nunca o resto da mensagem ou da busca. Se você permitir o acesso ao microfone, o KidGate grava até 15 segundos de som quando você envia um SOS e manda a gravação para seus pais. Se o KidGate travar, um registro de falhas é enviado à equipe do KidGate para corrigir o problema.',
   outgoingRestrictedHint:
     'Se o botão estiver esmaecido, abra Configurações › Aplicativos › KidGate, toque no menu ⋮ e escolha “Permitir configurações restritas”; depois volte aqui.',
   notice: {

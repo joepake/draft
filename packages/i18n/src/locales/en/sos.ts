@@ -25,15 +25,12 @@ export const sos = {
   alertMessage: '{{childName}} needs help — SOS was sent',
   toastSent:
     'SOS sent. Stay somewhere safe if you can — your parent has been notified.',
-  // Shown to the child on a *desktop* only, and only when the SOS lifted a
-  // lock. The lock window closes within about a second of the press, so the
-  // line above can be gone before it is read — and the child is left with a
-  // Mac that simply unlocked, which is the one thing this escape must not
-  // teach. Says the two things that line cannot: how long, and what happens
-  // after. The phone needs neither; its escape ends when the child leaves the
-  // SOS screen, with no lock involved.
+  // Shown to the child on a *desktop* after every SOS press. That agent has
+  // granted no escape since 2026-09-10, and the press can come from the SOS
+  // tab of a machine that was never locked, so the body says only what holds
+  // either way. The phone's own SOS screen says it instead.
   escapeGrantedTitle: 'SOS sent',
-  escapeGrantedBody: 'Your parent has been notified. This device stays locked.',
+  escapeGrantedBody: 'Your parent has been notified.',
   toastSentWithoutPhoto: 'SOS sent without a photo.',
   // Only when the camera permission is what stopped the photo. "Try again"
   // would mean a second SOS, so the step is for next time.
@@ -97,8 +94,7 @@ export const sos = {
     'Emailed with an SOS and its last known location, up to a few alerts an hour',
   trustedContactsRowSubtitle: 'People emailed when your child sends an SOS',
   trustedContactsListSection: 'Who gets the SOS',
-  trustedContactsEmpty:
-    'No one yet. Add a grandparent, a neighbour or a family friend.',
+  trustedContactsEmpty: 'No one yet. Add a grandparent, a neighbor or a family friend.',
   trustedContactsAddSection: 'Add a contact',
   trustedContactsAddHint:
     'Up to {{max}}. Tell them first — the email arrives with no warning.',

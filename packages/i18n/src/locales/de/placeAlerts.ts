@@ -23,11 +23,11 @@ export const placeAlerts = {
   radiusLabel: 'Alarmradius',
   radiusValue: '{{meters}} m',
   radiusHint:
-    'Wie nah das Gerät sein muss, damit dieser Ort zählt. Ein Radius, der kleiner ist als die Positionsungenauigkeit des Geräts, meldet zufällig statt genauer.',
+    'Wie nah das Gerät sein muss, damit dieser Ort zählt. Ein Radius, der kleiner ist als die Positionsungenauigkeit des Geräts, macht Alarme nicht genauer – Ankunft und Verlassen werden dann womöglich gar nicht gemeldet.',
   radiusAccuracyHint:
     'Dieses Gerät gibt seine Position hier auf etwa ±{{accuracy}} m genau an.',
   radiusBelowAccuracy:
-    'Hier ist das Gerät nur auf etwa ±{{accuracy}} m genau. Nimm {{minimum}} m oder mehr, sonst meldet dieser Ort zufällig.',
+    'Hier ist das Gerät nur auf etwa ±{{accuracy}} m genau. Nimm {{minimum}} m oder mehr, sonst werden Ankunft und Verlassen hier womöglich nicht gemeldet.',
   radiusDecrease: 'Kleinerer Radius',
   radiusIncrease: 'Größerer Radius',
   notifyEnterLabel: 'Alarm bei Ankunft',
@@ -54,7 +54,7 @@ export const placeAlerts = {
   samePinToast:
     'Das ist dieselbe Stelle wie „{{name}}“. Ziehe die Karte, um die Markierung zu verschieben.',
   overlapWarning:
-    '„{{name}}“ ist {{meters}} m entfernt und sein Kreis reicht bis hierher. Solange das Gerät in beiden ist, meldet nur der nähere Ort. Zum Behalten erneut speichern.',
+    '„{{name}}“ ist {{meters}} m entfernt und die beiden Kreise überschneiden sich. Solange das Gerät in beiden ist, meldet nur der nähere Ort. Speichere erneut, um ihn zu behalten.',
   savedToast: 'Ort gespeichert.',
   updatedToast: 'Ort aktualisiert.',
   removedToast: 'Ort entfernt.',

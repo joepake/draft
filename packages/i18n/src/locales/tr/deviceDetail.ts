@@ -4,7 +4,7 @@ export const deviceDetail = {
   notFoundTitle: 'Cihaz',
   dangerTitle: 'Bu cihazı kaldır',
   dangerDescription:
-    'Bu cihazı aile hesabınızdan kaldırın. Bu cihazla ilişkili tüm ek süre istekleri ve etkinlik geçmişi silinecektir.',
+    'Bu cihazı aile hesabınızdan kaldırın. Bu işlem cihazın konum geçmişini, kullanım geçmişini, web geçmişini, izlenen videoları, yüklü uygulama listesini, Süre isteklerini, site isteklerini, Ödül görevlerini, Check-In’leri, SOS uyarılarını ve etkinlik geçmişini siler.',
   removeButton: 'Cihazı kaldır',
   removingButton: 'Kaldırılıyor…',
   showAllFeatures: 'Tüm özellikleri göster',
@@ -12,7 +12,7 @@ export const deviceDetail = {
   essentialControls: 'Temel kontroller',
   dailyRulesAndDeviceAccess: 'Günlük kurallar ve cihaz erişimi',
   dailyLimit: 'Günlük sınır',
-  setDailyScreenTimeCap: 'Günlük ekran süresi sınırı belirle',
+  setDailyScreenTimeCap: 'Günlük sınır belirle',
   blockedHours: 'Engellenen Saatler',
   manageTimeRanges: 'En fazla {{max}} zaman aralığını yönetin',
   blockedApps: 'Engellenen Uygulamalar',
@@ -38,7 +38,7 @@ export const deviceDetail = {
   placeAlerts: 'Yerler',
   reviewPlaceAlerts: 'Varış ve ayrılış bildirimlerini al',
   noPlacesYet: 'Henüz yer yok',
-  tamperAlerts: 'Koruma',
+  tamperAlerts: 'Koruma uyarıları',
   reviewTamperAlerts: 'Korumanın devre dışı bırakıldığı zamanları incele',
   editDeviceName: 'Cihaz adını düzenle',
   editDeviceNameSubtitle:
@@ -63,12 +63,13 @@ export const deviceDetail = {
   notAvailableInExtension: 'Uzantıda kullanılamaz',
   webFilterAwaitingApproval: '{{platform}} cihazında onay bekliyor',
   webFilterSwitchedOffOnDevice: '{{platform}} cihazında kapalı',
+  webFilterPrivateDnsOnDevice: '{{platform}} üzerinde Özel DNS tarafından atlatılıyor',
   unableToUpdateDeviceName: 'Cihaz adı güncellenemedi. Lütfen tekrar deneyin.',
   renameOwnerOnly: 'Yalnızca aile sahibi cihazların adını değiştirebilir.',
   removeOwnerOnly: 'Yalnızca aile sahibi cihazları kaldırabilir.',
   removeDeviceTitle: 'Cihaz kaldırılsın mı?',
   removeDeviceMessage:
-    '{{deviceName}} hesabınızdan kaldırılacaktır. İlgili tüm ek süre istekleri ve etkinlik geçmişi silinecektir.',
+    '{{deviceName}} hesabınızdan kaldırılacak. Bu işlem cihazın konum geçmişini, kullanım geçmişini, web geçmişini, izlenen videoları, yüklü uygulama listesini, Süre isteklerini, site isteklerini, Ödül görevlerini, Check-In’leri, SOS uyarılarını ve etkinlik geçmişini siler.',
   unableToRemoveDevice: 'Cihaz kaldırılamadı. Lütfen tekrar deneyin.',
   checkInNotificationSent: '{{deviceName}} cihazına bir Check-In isteği gönderilecek.',
   checkInOfflineTitle: 'Bu cihaz çevrimdışı görünüyor',
@@ -80,7 +81,7 @@ export const deviceDetail = {
   checkInQueued:
     'Check-In isteği sıraya alındı — {{deviceName}} çevrimiçi olunca alacak.',
   unableToRequestCheckIn: 'Check-In isteği gönderilemedi. Lütfen tekrar deneyin.',
-  tapToSetDailyCap: 'Günlük limit belirleyin',
+  tapToSetDailyCap: 'Günlük sınır belirlemek için dokunun',
   usageUpdatesFromChildDevice: 'Çocuğun cihazından kullanım bilgileri',
   minutesUsedToday: 'Bugün: {{used}} / {{limit}}',
   noBlockedHours: 'Saat ayarlanmamış',
@@ -112,7 +113,7 @@ export const deviceDetail = {
   includedWithPremium: 'Premium’a dahildir',
   featureIncludedInPremium: '{{actionTitle}} Premium aboneliğine dahildir.',
   featureOnRoadmap:
-    '{{actionTitle}} yakında kullanıma sunulacak. Konum, Web Filtresi ve yukarıdaki özellikler zaten kullanılabilir.',
+    '{{actionTitle}} yakında kullanıma sunulacak. Konum, Web filtresi ve yukarıdaki özellikler zaten kullanılabilir.',
   chooseAppsOnChildIphone: 'Çocuğun cihazında uygulamaları seçin',
   appPickerMustOpenOnChildIphone:
     'Çocuğun cihazında KidGate Ayarları’nı açın, Ebeveyn PIN’ini girin, ardından Uygulama Engelleme → Engellenen Uygulamalar bölümünden uygulamaları seçin.',
@@ -137,7 +138,7 @@ export const deviceDetail = {
   webHistoryDescription: 'Ulaşılan ve engellenen siteler',
   webHistorySitesUnit: 'site',
   managedAtChild:
-    'Bu cihazın kuralları, ödülleri, check-in’leri ve uyarıları {{childName}} profilinden yönetilir',
+    'Bu cihazın kuralları, ödülleri, check-in’leri ve uyarıları {{childName}} profilinden yönetilir.',
   pauseBrowsing: 'Taramayı duraklat',
   pauseBrowsingDescription:
     'İnternette gezinmeyi bir süre durdurur. Aramalar ve çevrimdışı uygulamalar çalışmaya devam eder.',

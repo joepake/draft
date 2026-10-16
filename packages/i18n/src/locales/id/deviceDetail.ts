@@ -4,7 +4,7 @@ export const deviceDetail = {
   notFoundTitle: 'Perangkat',
   dangerTitle: 'Hapus perangkat ini',
   dangerDescription:
-    'Hapus perangkat ini dari akun keluarga Anda. Semua permintaan waktu dan riwayat aktivitas yang terkait dengan perangkat ini akan dihapus.',
+    'Hapus perangkat ini dari akun keluarga Anda. Tindakan ini menghapus riwayat lokasi, riwayat penggunaan, riwayat web, video yang ditonton, daftar aplikasi terpasang, Permintaan waktu, permintaan situs, Tugas hadiah, Check-In, peringatan SOS, dan aktivitasnya.',
   removeButton: 'Hapus perangkat',
   removingButton: 'Menghapus…',
   showAllFeatures: 'Tampilkan semua fitur',
@@ -12,7 +12,7 @@ export const deviceDetail = {
   essentialControls: 'Kontrol utama',
   dailyRulesAndDeviceAccess: 'Aturan harian dan akses perangkat',
   dailyLimit: 'Batas harian',
-  setDailyScreenTimeCap: 'Tetapkan batas waktu layar harian',
+  setDailyScreenTimeCap: 'Tetapkan Batas harian',
   blockedHours: 'Jam Diblokir',
   manageTimeRanges: 'Kelola hingga {{max}} rentang waktu',
   blockedApps: 'Aplikasi yang Diblokir',
@@ -38,7 +38,7 @@ export const deviceDetail = {
   placeAlerts: 'Lokasi',
   reviewPlaceAlerts: 'Dapatkan notifikasi saat tiba atau meninggalkan lokasi',
   noPlacesYet: 'Belum ada lokasi',
-  tamperAlerts: 'Perlindungan',
+  tamperAlerts: 'Peringatan perlindungan',
   reviewTamperAlerts: 'Lihat saat perlindungan dinonaktifkan',
   editDeviceName: 'Ubah nama perangkat',
   editDeviceNameSubtitle:
@@ -63,12 +63,13 @@ export const deviceDetail = {
   notAvailableInExtension: 'Tidak tersedia di ekstensi',
   webFilterAwaitingApproval: 'Menunggu persetujuan di {{platform}}',
   webFilterSwitchedOffOnDevice: 'Dimatikan di {{platform}}',
+  webFilterPrivateDnsOnDevice: 'Terlewati oleh DNS Pribadi di {{platform}}',
   unableToUpdateDeviceName: 'Gagal memperbarui nama perangkat. Silakan coba lagi.',
   renameOwnerOnly: 'Hanya pemilik keluarga yang dapat mengganti nama perangkat.',
   removeOwnerOnly: 'Hanya pemilik keluarga yang dapat menghapus perangkat.',
   removeDeviceTitle: 'Hapus perangkat?',
   removeDeviceMessage:
-    '{{deviceName}} akan diputuskan dari akun Anda. Semua permintaan waktu dan riwayat aktivitas terkait akan dihapus.',
+    '{{deviceName}} akan diputuskan dari akun Anda. Tindakan ini menghapus riwayat lokasi, riwayat penggunaan, riwayat web, video yang ditonton, daftar aplikasi terpasang, Permintaan waktu, permintaan situs, Tugas hadiah, Check-In, peringatan SOS, dan aktivitasnya.',
   unableToRemoveDevice: 'Tidak dapat menghapus perangkat. Silakan coba lagi.',
   checkInNotificationSent: '{{deviceName}} akan menerima permintaan Check-In.',
   checkInOfflineTitle: 'Perangkat ini tampaknya offline',
@@ -81,7 +82,7 @@ export const deviceDetail = {
     'Permintaan Check-In diantre — {{deviceName}} akan menerimanya setelah kembali online.',
   unableToRequestCheckIn:
     'Tidak dapat mengirim permintaan Check-In. Silakan coba lagi.',
-  tapToSetDailyCap: 'Atur batas harian',
+  tapToSetDailyCap: 'Ketuk untuk mengatur Batas harian',
   usageUpdatesFromChildDevice: 'Pembaruan penggunaan dari perangkat anak',
   minutesUsedToday: 'Hari ini: {{used}} / {{limit}}',
   noBlockedHours: 'Belum ada Jam Diblokir',
@@ -138,7 +139,7 @@ export const deviceDetail = {
   webHistoryDescription: 'Situs yang dijangkau dan diblokir',
   webHistorySitesUnit: 'situs',
   managedAtChild:
-    'Aturan, hadiah, check-in, dan peringatan perangkat ini dikelola di profil {{childName}}',
+    'Aturan, hadiah, check-in, dan peringatan perangkat ini dikelola di profil {{childName}}.',
   pauseBrowsing: 'Jeda penjelajahan',
   pauseBrowsingDescription:
     'Hentikan penjelajahan web sebentar. Telepon dan aplikasi offline tetap berjalan.',

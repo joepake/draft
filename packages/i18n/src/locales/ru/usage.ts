@@ -16,7 +16,7 @@ export const usage = {
   insightDeviceLocked: 'Устройство заблокировано',
   signalLocksToday: 'Блокировки сегодня',
   signalUnlocksToday: 'Разблокировки сегодня',
-  signalLocksPeriod: 'Блокировки · 30 дней',
+  signalLocksPeriod: 'Недавние блокировки',
   signalLocationsToday: 'Местоположения сегодня',
   sectionWhatsTurnedOn: 'Что включено',
   rowBlockedHours: 'Заблокированные часы',
@@ -28,7 +28,7 @@ export const usage = {
   rowLocation: 'Местоположение',
   valueSharingOn: 'Общий доступ включён',
   sectionLatestActivity: 'Последняя активность',
-  activityPeriodCount: '{{count}} за 30 дней',
+  activityPeriodCount: '{{count}} за последнее время',
   activityEmpty:
     'Активность пока не зафиксирована. Здесь будут отображаться блокировки, разблокировки и обновления Экранного времени.',
   usageReportAccessibility:
@@ -79,10 +79,10 @@ export const usage = {
   topAppsEmpty:
     'Данных по отдельным приложениям пока нет. Убедитесь, что на устройстве ребёнка KidGate разрешено измерять использование приложений, и дождитесь синхронизации.',
   protectionImpactTitle: 'Эффект защиты',
-  protectionImpactHint: 'Недавние события, остановленные KidGate на этом устройстве.',
+  protectionImpactHint: 'Итоги с момента настройки этого устройства.',
   protectionBlockedApps: 'Заблокированные запуски приложений',
   protectionWebBlocked: 'Заблокированные сайты',
-  protectionTamper: 'Оповещения защиты',
+  protectionTamper: 'Оповещения о защите',
   sectionTimeline: 'Когда устройством пользовались',
   timelineUsed: 'Используется',
   timelineIdle: 'Не используется',

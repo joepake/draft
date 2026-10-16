@@ -203,7 +203,7 @@ export function buildAttention({
       tone: 'warning',
       icon: 'lock',
       title: t('dash.attnLimitReached'),
-      meta: t('dash.attnLimitReachedMeta', {
+      meta: activityT('usage.minutesUsedTodayShort', {
         used: formatMinutes(c.minutesUsedToday),
       }),
       action: 'unlock',

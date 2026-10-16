@@ -3,10 +3,13 @@ export const videoHistory = {
   fallbackDeviceName: 'Kindergerät',
   toggleLabel: 'Angesehene Videos aufzeichnen',
   toggleHint:
-    'YouTube im Browser und die YouTube-App auf Android-Handys und Fernsehern. Auf dem Fernseher werden Shorts nicht aufgeführt, weil die TV-App sie nicht als Shorts erkennt.',
-  toggleFailed: 'Videoverlauf konnte nicht aktualisiert werden. Erneut versuchen.',
+    'Angesehene Videos in der YouTube-App auf Android-Handys und Fernsehern sowie in Chrome mit der KidGate-Erweiterung. Auf dem Fernseher werden Shorts nicht aufgeführt, weil die TV-App sie nicht als Shorts erkennt.',
+  toggleFailed:
+    'Der Videoverlauf konnte nicht aktualisiert werden. Versuche es erneut.',
   unsupportedNote:
     'Dieses Gerät kann keine angesehenen Videos melden. Das geht auf Android, Android TV und in Chrome.',
+  unsupportedNoteTv:
+    'Dieser Fernseher erfasst keine angesehenen Videos. KidGate braucht dort Zugriff auf Benachrichtigungen, der sich auf einem Fernseher bisher nicht erteilen lässt.',
 
   unsupportedNeedsExtension:
     'KidGate kann auf diesem Computer nicht sehen, welche Videos angesehen werden – es liest Seitennamen, nicht den Inhalt einer Seite. Die KidGate-Erweiterung für Chrome kann es: Füge sie auf diesem Computer hinzu, dann meldet sie angesehene Videos als eigenes Gerät.',
@@ -42,5 +45,5 @@ export const videoHistory = {
     'Videos werden noch nicht aufgezeichnet: KidGate braucht Benachrichtigungszugriff auf dem Handy deines Kindes. Öffne auf diesem Handy KidGate, dann Einstellungen, wähle „Mit Eltern-PIN entsperren“ und dann „Benachrichtigungszugriff erlauben“ im Bereich Nachrichtenwarnungen.',
   openAction: 'Auf YouTube öffnen',
   searchAction: 'Dieses Video auf YouTube suchen',
-  openFailed: 'YouTube konnte nicht geöffnet werden.',
+  openFailed: 'YouTube ließ sich nicht öffnen. Versuche es erneut.',
 };

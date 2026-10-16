@@ -35,6 +35,7 @@ const { repos, track } = vi.hoisted(() => ({
     safetyCheckInRepository: { createRequest: vi.fn() },
     siteRequestRepository: { resolveRequest: vi.fn() },
     timeRequestRepository: { resolveRequest: vi.fn() },
+    webSessionRepository: { list: vi.fn(), revoke: vi.fn() },
   },
   track: {
     trackCheckInRequest: vi.fn(),
@@ -301,6 +302,46 @@ describe('owner-only writes', () => {
     ];
     await owner().removeChild('c1', devices);
     expect(repos.childRepository.remove).toHaveBeenCalledWith(FAMILY, 'c1', devices);
+  });
+});
+
+/*
+ * Browsers that can make changes. Both endpoints scope to the caller's uid, so
+ * a co-parent lists and removes their own: the owner gate does not apply.
+ */
+describe('the browsers list', () => {
+  it("lists a co-parent's own browsers without a gate or a count", async () => {
+    const sessions = [{ id: 'w1', grantedVia: 'qr' }];
+    repos.webSessionRepository.list.mockResolvedValueOnce(sessions);
+    await expect(coParent().listWebSessions()).resolves.toBe(sessions);
+    expect(track.trackParentAction).not.toHaveBeenCalled();
+  });
+
+  it('removes one and counts it under parent_control, never a new event', async () => {
+    await coParent().revokeWebSession('w1');
+    expect(repos.webSessionRepository.revoke).toHaveBeenCalledWith('w1');
+    expect(track.trackParentAction).toHaveBeenCalledWith(
+      'web_session_revoke',
+      'success',
+    );
+  });
+
+  it.each([
+    ['forbidden', 'failed'],
+    ['unauthenticated', 'expired'],
+  ])('counts a %s removal as %s and still rejects', async (code, result) => {
+    repos.webSessionRepository.revoke.mockRejectedValueOnce({ code });
+    await expect(owner().revokeWebSession('w1')).rejects.toBeInstanceOf(ControlError);
+    expect(track.trackParentAction).toHaveBeenCalledWith('web_session_revoke', result);
+  });
+
+  // The page reads `code` to drop to view-only, `messageKey` to say a failed list.
+  it('says a refused list as a ControlError the card can read', async () => {
+    repos.webSessionRepository.list.mockRejectedValueOnce({ code: 'unauthenticated' });
+    await expect(owner().listWebSessions()).rejects.toMatchObject({
+      code: 'unauthenticated',
+      messageKey: 'controlError.sessionExpired',
+    });
   });
 });
 

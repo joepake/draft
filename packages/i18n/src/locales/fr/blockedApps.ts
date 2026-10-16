@@ -94,6 +94,6 @@ export const blockedApps = {
   pickerSubtitle:
     'Choisissez les applications et catégories à bloquer sur cet appareil.',
   pickerSubtitleAndroid:
-    'Les applications cochées ne peuvent pas s’ouvrir tant que le Blocage des applications est activé.',
+    'Les applications cochées sont fermées dès leur ouverture tant que le Blocage des applications est activé.',
   pickerEmpty: 'Aucune application trouvée sur cet appareil.',
 } as const;

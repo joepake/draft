@@ -14,12 +14,12 @@ export const macos = {
     'Những gì phụ huynh đã đặt, và máy Mac này giữ được chắc đến đâu.',
   headingRemovable: 'Mức độ dễ gỡ bỏ',
 
-  parentAccessBody: 'Nhập mã PIN phụ huynh để chọn ứng dụng bị chặn trên máy Mac này.',
+  parentAccessBody: 'Nhập mã PIN phụ huynh để chọn ứng dụng bị chặn trên thiết bị này.',
   checking: 'Đang kiểm tra…',
 
   enforcing: 'Bảo vệ đang chạy',
   enforcingYes: 'Có',
-  enforcingFailed: 'Không — {{count}} lần kiểm tra liên tiếp bị lỗi',
+  enforcingFailed: 'Bảo vệ bị gián đoạn · {{count}} lần kiểm tra liên tiếp bị lỗi',
 
   lockState: 'Thiết bị đang khóa',
   lockStateNo: 'Không',
@@ -40,7 +40,7 @@ export const macos = {
   filterInterrupted: 'Đã dừng sau sự cố — KidGate sẽ bật lại',
   filterNeedsService: 'Cần dịch vụ nền của KidGate',
   setupFilterApprovalBody:
-    'Bật KidGate trong Cài đặt hệ thống → Mục đăng nhập & Tiện ích mở rộng để bắt đầu lọc web.',
+    'Bật KidGate trong mục Network Extensions để bắt đầu lọc web.',
   setupFilterSwitchBody:
     'Mục “Lọc nội dung mạng” (Filter Network Content) đang tắt với KidGate. Bật lại để tiếp tục lọc.',
   setupOpenSettings: 'Mở Cài đặt',
@@ -69,7 +69,7 @@ export const macos = {
   setupStepFilterSwitchWaiting:
     'Chỉ xuất hiện trong Cài đặt hệ thống sau khi bước ở trên được phê duyệt.',
   setupStepLocationBody:
-    'Cho gia đình biết thiết bị này đang ở đâu. Không có gì được chia sẻ cho tới khi bạn bật “Chia sẻ vị trí”.',
+    'Cho gia đình biết thiết bị này đang ở đâu. Không có gì được chia sẻ cho tới khi bạn bật “Chia sẻ vị trí” trong ứng dụng KidGate.',
   setupStepCameraTitle: 'Camera',
   setupStepCameraBody:
     'Đính kèm ảnh khi con bạn gửi SOS hoặc trả lời Báo an toàn. Bây giờ chưa chụp ảnh nào.',
@@ -121,7 +121,7 @@ export const macos = {
 
   chooseApps: 'Chọn ứng dụng cần chặn',
   chooseAppsHint:
-    'Chọn những ứng dụng cần chặn trên máy Mac này. Phụ huynh bật hoặc tắt việc chặn từ điện thoại.',
+    'Chọn những ứng dụng cần chặn trên thiết bị này. Phụ huynh bật hoặc tắt việc chặn từ điện thoại.',
   saveSelection: 'Lưu',
-  noAppsFound: 'Không tìm thấy ứng dụng nào trong thư mục Ứng dụng (Applications).',
+  noAppsFound: 'Không tìm thấy ứng dụng nào trên thiết bị này.',
 };

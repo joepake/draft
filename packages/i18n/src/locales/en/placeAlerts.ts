@@ -23,10 +23,10 @@ export const placeAlerts = {
   radiusLabel: 'Alert radius',
   radiusValue: '{{meters}} m',
   radiusHint:
-    'How close the device must be for this place to count. A radius smaller than the device’s own position error alerts at random rather than more precisely.',
+    'How close the device must be for this place to count. A radius smaller than the device’s own position error does not make alerts more precise — arrivals and departures may go unreported.',
   radiusAccuracyHint: 'This device reports its position to about ±{{accuracy}} m here.',
   radiusBelowAccuracy:
-    'This device is only accurate to about ±{{accuracy}} m here. Use {{minimum}} m or more, or this place will alert at random.',
+    'This device is only accurate to about ±{{accuracy}} m here. Use {{minimum}} m or more, or arrivals and departures here may not be reported.',
   radiusDecrease: 'Smaller radius',
   radiusIncrease: 'Larger radius',
   notifyEnterLabel: 'Alert on arrival',
@@ -50,7 +50,7 @@ export const placeAlerts = {
   duplicateNameToast: 'A place with this name already exists.',
   samePinToast: 'This is the same spot as “{{name}}”. Drag the map to move the pin.',
   overlapWarning:
-    '“{{name}}” is {{meters}} m away and its circle reaches here. While the device is in both, only the nearer one alerts. Save again to keep it.',
+    '“{{name}}” is {{meters}} m away and the two circles overlap. While the device is in both, only the nearer one alerts. Save again to keep it.',
   savedToast: 'Place saved.',
   updatedToast: 'Place updated.',
   removedToast: 'Place removed.',

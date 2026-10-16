@@ -9,8 +9,8 @@
  * - `key_one` / `key_other` variants are selected by a numeric `count` param.
  * - `*text*`, `**text**` and `[label](/route)` are rendered by <RichText>.
  * - The Privacy Policy and Terms render the app pack's `legal` tree, in all
- *   fourteen languages; only `/delete-account` is still English-only, and it
- *   is hand-written in `apps/site`. Nothing from any of the three is here.
+ *   fourteen languages. `/delete-account` is the `deleteAccount` group below —
+ *   English and Vietnamese so far; the other twelve fall back to English.
  */
 export default {
   /**
@@ -111,7 +111,7 @@ export default {
     heroLede:
       'KidGate gives parents calm, clear control over screen time, apps and safety — while kids keep a phone that still feels like theirs.',
     heroCheck1: 'Screen Time',
-    heroCheck2: 'App Blocking',
+    heroCheck2: 'Blocked Apps',
     heroCheck3: 'Web Filter',
     heroCheck4: 'Location',
     heroCheck5: 'SOS',
@@ -136,10 +136,10 @@ export default {
     featuresTitle: 'Everything a parent needs',
     featuresSub:
       'From daily limits to emergency alerts — one app for the whole family’s digital wellbeing.',
-    feature1Title: 'Screen Time & Daily Limits',
+    feature1Title: 'Screen Time & Daily Limit',
     feature1Text:
       'Set a daily cap and Blocked Hours for school and bedtime. The device locks itself when time is up.',
-    feature2Title: 'App blocking',
+    feature2Title: 'Blocked Apps',
     feature2Text:
       'Choose which apps your child can’t open, protected by your Parent PIN, and switch blocking on remotely.',
     feature3Title: 'App Limits',
@@ -154,10 +154,10 @@ export default {
     feature6Title: 'Check-In & SOS',
     feature6Text:
       'Ask your child to confirm they are safe; in an emergency, their phone sends you an instant SOS with location.',
-    feature7Title: 'Protection & app alerts',
+    feature7Title: 'Protection Alerts & app alerts',
     feature7Text:
       'Know the moment an important permission is switched off on your child’s phone, and approve new apps before they open on Android, Android TV or a computer.',
-    feature8Title: 'Reward tasks & extra time',
+    feature8Title: 'Reward Tasks & Time Requests',
     feature8Text:
       'Children earn bonus minutes and stars for finished tasks, or ask for more time — you approve both from your phone.',
     feature9Title: 'Device Lock',
@@ -219,7 +219,7 @@ export default {
       'Six things we checked against the apps parents compare us with. Each one names the platform it is true on.',
     only1Title: 'The living-room TV, too',
     only1Text:
-      'Android TV gets a Daily Limit, Blocked Hours, app blocking and a Web Filter. Blocking is best-effort on a TV — a blocked app is sent back to the home screen — and there is no SOS or extra-time request from the sofa. A TV shares no location either. Most parental controls stop at the phone.',
+      'Android TV gets a Daily Limit, Blocked Hours, Blocked Apps and a Web Filter. Blocking is best-effort on a TV — a blocked app is sent back to the home screen — and there is no SOS or extra-time request from the sofa. A TV shares no location either. Most parental controls stop at the phone.',
     only2Title: 'Message alerts that stay on the phone',
     only2Text:
       'With Premium on Android, messages are checked on the device against keyword lists in up to three languages you choose, out of 14, and what leaves the phone is the matched word or phrase, never the conversation. One thing changes that, and only if you ask for it: turn on AI confirmation and an ambiguous incoming message is sent to Google’s Gemini to be judged, so you are not woken by an ordinary word.',
@@ -241,7 +241,7 @@ export default {
     faqSub: 'Quick answers before you download.',
     faq1Q: 'Is there a free trial?',
     faq1A:
-      'Yes. The 7-day trial starts when your first parent and child devices are connected, and includes every Premium feature. When it ends, the rules you set — Daily Limit, Blocked Hours, Blocked Apps, Web Filter, Device Lock, extra-time requests and reward tasks — keep working for free on every child device, and the one device you choose to keep monitored still shares its location. Live activity, history, weekly reports and location tracking are what Premium adds back.',
+      'Yes. The 7-day trial starts when your first parent and child devices are connected, and includes every Premium feature. When it ends, the rules you set — Daily Limit, Blocked Hours, Blocked Apps, Web Filter, Device Lock, Time Requests and Reward Tasks — keep working for free on every child device that supports them, and the one device you choose to keep monitored still shares its location. Live activity, history, weekly reports and location tracking are what Premium adds back.',
     faq2Q: 'How many devices can I manage?',
     faq2A:
       'Premium covers up to 25 child devices and 6 parents, you included, and every device sends activity. The free plan covers up to 8 child devices and 3 parents. Every device keeps enforcing the rules you set, but only the one you choose sends activity; on the others, those rules can be relaxed but not tightened.',
@@ -326,7 +326,7 @@ export default {
       'Too many sign-in codes from this network. Try again in {{minutes}} min.',
     tooManyRequests: 'Too many attempts. Wait a few minutes and try again.',
     popupClosed: 'Sign-in window was closed before finishing.',
-    popupCancelled: 'Sign-in was cancelled.',
+    popupCancelled: 'Sign-in was canceled.',
     popupBlocked:
       'Your browser blocked the sign-in window. Allow pop-ups for this site and try again.',
     accountExists:
@@ -412,26 +412,13 @@ export default {
     day4: 'Thu',
     day5: 'Fri',
     day6: 'Sat',
-    timelineUsed: 'In use',
-    timelineIdle: 'Not in use',
-    timelineUnmeasured: 'Not measured',
-    timelineUnmeasuredHint:
-      'KidGate was not running on the device, or the device was asleep. Those minutes are not in the total either.',
-    timelineUnsupported: 'This device can report how long it was used, but not when.',
-    timelinePending: 'No timeline reported yet.',
   },
 
   perm: {
     screenTime: 'Screen Time',
     location: 'Location',
-    notifications: 'Notifications',
     camera: 'Camera',
     microphone: 'Microphone',
-    backgroundAppRefresh: 'Background App Refresh',
-    overlay: 'Display over other apps',
-    batteryOptimization: 'Unrestricted battery',
-    exactAlarm: 'Alarms & reminders',
-    accessibility: 'Accessibility (lock helper)',
   },
 
   webCat: {
@@ -517,7 +504,6 @@ export default {
     appVersion: 'App version',
     appVersionUpdate: '{{running}} · {{latest}} available',
     appVersionRestart: '{{running}} · restart to finish updating',
-    buildOutdated: 'Update available',
     checkIn: 'Check-In',
     sending: 'Sending…',
     lockDevice: 'Lock device',
@@ -591,7 +577,6 @@ export default {
     attnCheckInMissed: 'Check-In was missed',
     attnCheckInMissedMeta: 'Sent {{when}} · no response',
     attnLimitReached: 'Daily Limit reached — device locked',
-    attnLimitReachedMeta: '{{used}} used today',
     attnBatteryLow: 'Battery is low ({{level}}%)',
     attnBatteryLowMeta: 'Location updates may pause if the phone dies',
     attnReview: 'Review',
@@ -624,11 +609,8 @@ export default {
 
     appUsageTitle: 'App usage today',
     appUsageSub: 'Time spent per app',
-    topAppsOther: 'Other apps',
-    underAMinute: 'Under a minute',
     appUsageEmpty: 'No app usage reported yet.',
-    appBlockingTitle: 'App Blocking',
-    appBlockingSub: 'Chosen on the child device with the Parent PIN',
+    appBlockingTitle: 'Blocked Apps',
     blockingLabel: 'Blocking',
     appsBlocked: 'Apps blocked',
     categories: 'Categories',
@@ -639,21 +621,15 @@ export default {
     webActivityTitle: 'Web activity',
     webActivitySub: 'Most visited domains, last 30 days',
     webActivityEmpty: 'No web activity yet.',
-    inventoryTitle: 'Installed apps',
-    inventorySub: 'Everything on this device, not only what changed',
     inventoryEmpty: 'This device has not published its app list yet.',
     inventoryFirstScan: 'First scan, so KidGate cannot say when any of these arrived.',
-    inventoryFlagged: 'Worth a look',
-    inventoryFlaggedLabel: 'Worth a look',
     inventoryOtherLabel: 'Identified',
     inventoryUnknownLabel: 'Not identified',
     installAllow: 'Allow',
     pendingInstallsTitle: 'New apps waiting for approval',
     pendingInstallsSub:
       'Installed after you turned on approval, blocked by the device on its own',
-    pendingInstallsEmpty: 'No new apps waiting for approval.',
     toastInstallAllowed: 'App allowed',
-    rowInstallApproval: 'Approve new apps',
     rowInstallApprovalDesc_one: '{{count}} app waiting for approval',
     rowInstallApprovalDesc_other: '{{count}} apps waiting for approval',
     rowInstallApprovalDescIos: 'Hides the App Store — Apple allows no per-app approval',
@@ -661,7 +637,6 @@ export default {
     colVisits: 'Visits',
     colBlocked: 'Blocked',
     colLastSeen: 'Last seen',
-    videosTitle: 'Videos watched',
     videosSub: 'What was watched on YouTube and the web',
     videosEmpty: 'No videos yet.',
     colVideo: 'Video',
@@ -670,23 +645,13 @@ export default {
     filterRefusedTitle: 'What the filter refused',
     filterRefusedSub_one: '{{count}} blocked lookup, last 30 days',
     filterRefusedSub_other: '{{count}} blocked lookups, last 30 days',
-    nothingBlockedYet: 'Nothing has been blocked yet.',
-    rollupNoteAi:
-      'Some kinds were worked out from the site name rather than matched to a known site, so a few may be off.',
-    webBackgroundNote:
-      'When nobody is using the device, some apps still reach the internet in the background — updates, recommendations and check-ins run on their own.',
     filterHintIos:
       'This iPhone or iPad filters with Apple’s adult-content control only. Update KidGate on it and allow the KidGate VPN to block by category.',
     filterHintAndroid: 'Categories are enforced by the on-device DNS filter.',
-    filterHintMacos:
-      'Categories are enforced by the KidGate content filter on the Mac.',
 
     locationTitle: 'Location',
-    locationSharingOff: 'Sharing is off',
     locationUpdated: 'Updated {{when}}',
     locationWaiting: 'Waiting for the first update',
-    lastKnownLocation: 'Last known location',
-    nearPlace: 'Near {{place}}',
     noPlaces:
       'No saved places yet. Add one in the app to get an alert when your child arrives or leaves.',
     placeRadius: '{{meters}}m · ',
@@ -698,7 +663,6 @@ export default {
     placeWebHint:
       'The web can only put a place where the device last reported itself. Use the app’s map to pick anywhere else.',
     placeNeedsLocation: 'Waiting for a location from this device.',
-    sosTitle: 'SOS alerts',
     sosSub: 'Emergency signals from the child device',
     sosEmpty: 'No SOS alerts. Test it once together so you both know how it works.',
     sosAcknowledged: 'acknowledged',
@@ -707,8 +671,6 @@ export default {
     checkInsTitle: 'Check-Ins',
     checkInsSub: 'Ask your child to confirm they are safe',
     checkInSafe: 'Confirmed safe',
-    checkInMissed: 'No response',
-    checkInWaiting: 'Waiting',
     checkInPhotoRequested: 'photo and location were requested',
     checkInNoReply: 'no reply yet',
     checkInPhotoSkipped: 'photo skipped',
@@ -719,8 +681,6 @@ export default {
     protectionAlertsTitle: 'Protection Alerts',
     protectionAlertsSub_one: '{{count}} event since install',
     protectionAlertsSub_other: '{{count}} events since install',
-    protectionAlertsHint:
-      'A protection alert means KidGate can enforce less than you set. Restore the permission on the child device to clear it.',
 
     limitCardTitle: 'Daily Limit',
     limitCardSub: 'Cap the minutes available each day',
@@ -733,30 +693,22 @@ export default {
     limitSharedSpent: '{{used}} of {{limit}} used today',
     limitSharedHint:
       'This is the whole day for this child, not a cap on this device — each device gets what the others have not used. Change it in the KidGate app.',
-    whatsOnTitle: 'What is turned on',
     whatsOnSub: 'Changes sync to the child device',
     rowBlockedHours: 'Blocked Hours',
     rowBlockedHoursDesc_one: '{{count}} time range · {{list}}',
     rowBlockedHoursDesc_other: '{{count}} time ranges · {{list}}',
-    rowAppBlocking: 'App Blocking',
-    rowAppBlockingApps: '{{count}} apps',
-    rowAppBlockingApps_one: '{{count}} app',
-    rowAppBlockingCategories: '{{count}} categories',
-    rowAppBlockingCategories_one: '{{count}} category',
+    rowAppBlocking: 'Blocked Apps',
     rowAppBlockingDesc: '{{apps}} · {{categories}}',
     rowWebFilter: 'Web Filter',
     rowWebFilterDesc_one: '{{count}} category refused',
     rowWebFilterDesc_other: '{{count}} categories refused',
     rowNotSupported: 'Not supported on this device',
-    rowWebFilterAwaitingApproval: 'Waiting for approval on the device',
-    rowWebFilterSwitchedOff: 'Switched off on the device',
     rowLocation: 'Location sharing',
     rowLocationDesc: 'Last update {{when}}',
     rowLocationNone: 'No location yet',
     rowSearchMonitoring: 'Search monitoring',
-    rowSafeSearch: 'Force SafeSearch',
     rowSafeSearchDesc:
-      'Locks Google SafeSearch, YouTube Restricted Mode, Bing and DuckDuckGo to their strict settings. Android, Android TV and Chrome. At this level YouTube also hides comments and blocks some ordinary videos.',
+      'Locks Google SafeSearch, Bing and DuckDuckGo to their strict settings on Android, Android TV and Chrome. On Android and Chrome it locks YouTube Restricted Mode too, which also hides comments and blocks some ordinary videos.',
 
     webFilterCatsTitle: 'Web Filter categories',
     webFilterCatsSub: 'Blocked content types',
@@ -766,19 +718,15 @@ export default {
     starChartSub: 'Stars earned this week, per child',
     starChartEmpty: 'Add a second child in the app to start the star chart.',
     starChartStars: '{{count}} stars',
-    rewardTasksTitle: 'Reward tasks',
+    rewardTasksTitle: 'Reward Tasks',
     rewardTasksSub: 'Earn extra minutes by finishing tasks',
     rewardTaskMeta: '+{{minutes}} min · {{cadence}}',
     rewardTaskStars: 'Difficulty: {{count}} of 3',
     rewardTaskWaiting: ' · waiting for your approval',
     approve: 'Approve',
-    siteRequestsTitle: 'Site requests',
-    siteRequestsSub: 'Sites this device asked you to allow',
     siteRequestAllow: 'Allow',
     siteRequestDeny: 'Not now',
     attnSiteRequest: '{{name}} asked to open {{domain}}',
-    toastSiteAllowed: 'Site allowed',
-    timelineTitle: 'When it was used',
     timelineSub: 'Today, midnight to midnight. Green is time spent on the device.',
     timelineSubDay:
       '{{date}}, midnight to midnight. Green is time spent on the device.',
@@ -793,53 +741,25 @@ export default {
    * a week and is often forwarded, so the copy states what happened and stops.
    * Nothing here diagnoses a child; a parent decides what four late nights mean
    * in their house (see the note on severity in `domain/digestFindings`).
+   *
+   * Only the web's own sentences are left here — saving, the empty page, a
+   * failed load. Every sentence the phone's report also says is read from the
+   * app pack's `report` through `appT`; the two packs held both until
+   * 2026-10-15, and `finePrint` had already drifted in eleven languages.
    */
   report: {
-    title: 'Weekly report',
-    subtitle: 'What KidGate noticed about the week.',
-    weekOf: 'Week {{week}}',
     writtenAt: 'Written {{when}}',
-    triggerScheduled: 'Sent Monday',
-    triggerManual: 'Created by you',
-
-    highlights: 'Worth knowing',
-
-    narrativeTitle: 'In a sentence',
-    finePrint:
-      'Figures cover {{from}} to {{to}}, across every device in the family. Screen Time is what the devices reported; minutes they could not measure are in neither total.',
 
     shareImage: 'Save as image',
     sharePdf: 'Save as PDF',
-    copySummary: 'Copy summary',
-    copied: 'Summary copied.',
     imageSaved: 'Image saved.',
-    shareFailed: 'This browser cannot save that. Copy the summary instead.',
+    shareFailed: 'Unable to save from this browser. Copy the summary instead.',
 
-    emptyTitle: 'No report yet',
     emptyBody:
-      'A report arrives every Monday morning and covers the seven days before it.',
-    noUsage:
-      'No screen time was recorded over the last two weeks, so there is nothing to report yet. A device that is offline reports nothing, which is not the same as a quiet week.',
-    rateLimited: 'Too many attempts. Give it a minute.',
-    loadFailedTitle: 'Reports did not load',
-    loadFailed: 'Could not open your reports. Reload the page to try again.',
+      'With Premium, a report arrives every Monday morning and covers the seven days before it. You can also write this week’s from the KidGate app on your phone.',
+    loadFailed: 'Unable to open your reports. Reload the page to try again.',
     retryLoad: 'Try again',
-    failed: 'Could not write the report. Try again in a moment.',
     existed: 'This week already had a report — here it is.',
-
-    childrenTitle: 'Each child',
-    childrenNote: 'Same fortnight, per device. Percentages are of the family total.',
-    colScreenTime: 'Screen Time',
-    colShare: 'Share',
-    colChange: 'vs last week',
-    colLimit: 'Over limit',
-    colLateNights: 'Late nights',
-    colTopApp: 'Most used',
-    noLimit: 'No limit',
-    busiest: 'Most screen time',
-
-    historyTitle: 'Earlier weeks',
-    historyEmpty: 'Reports you receive from now on are kept here for a year.',
   },
 
   support: {
@@ -860,7 +780,7 @@ export default {
     start3:
       '**3. Connect the child device.** Install KidGate on your child’s device and open it. On a phone or tablet, choose *This is a child device*. On the parent device, open *Family* and tap the scan icon (*Scan a code*), then scan the QR code shown on the child device (or enter the 6-character code). If the child device asks, confirm the connection there; a TV connects on its own.',
     start4:
-      '**4. Grant permissions on the child device.** Open the *Status* screen on the child device and tap *Continue setup* — it walks through every permission KidGate needs. On Android: notifications, Usage access, Display over other apps, Accessibility (lock helper), Alarms & reminders, and Unrestricted battery; on iOS: *Allow App & Website Usage* (Screen Time) and, for the Web Filter, *Allow* when iOS asks to add VPN configurations. Controls will not work fully until these are on.',
+      '**4. Grant permissions on the child device.** Open the *Status* screen on the child device and tap *Continue setup* — it walks through every permission KidGate needs. On Android: notifications, Usage access, Display over other apps, Accessibility (lock helper), Alarms & reminders, Unrestricted battery, the VPN connection the Web Filter runs on, uninstall protection and, for Message Alerts, notification access; on iOS: *Allow App & Website Usage* (Screen Time) and, for the Web Filter, *Allow* when iOS asks to add VPN configurations. Controls will not work fully until these are on.',
     start5:
       '**5. Configure controls.** From the parent device, open the child’s device card and set the Daily Limit, Blocked Hours, Blocked Apps, Web Filter, and location features.',
     startNote:
@@ -920,6 +840,55 @@ export default {
     legalDeletion: 'Account & Data Deletion',
   },
 
+  /**
+   * `/delete-account` — the page Google Play and the App Store link as the
+   * data-deletion route. The facts (the 14-day hold, the 12-month record) are
+   * the Privacy Policy's; change them there first.
+   */
+  deleteAccount: {
+    title: 'Account & Data Deletion',
+    updated: 'Last updated: September 18, 2026',
+    intro:
+      'This page explains how to delete your KidGate account and the data associated with it. You can request deletion at any time, and you do not need to have the app installed to do so.',
+
+    option1Title: 'Option 1: Delete your account in the app',
+    option1Step1: 'Open the KidGate app and sign in.',
+    option1Step2: 'Go to *Settings → Account → Delete account*.',
+    option1Step3: 'Confirm the deletion.',
+
+    option2Title: 'Option 2: Request deletion by email',
+    option2Step1:
+      'Send an email to [support@kidgate.app](mailto:support@kidgate.app?subject=Account%20Deletion%20Request) with the subject line “Account Deletion Request”.',
+    option2Step2:
+      'Send the request from the email address associated with your KidGate account so we can verify your identity.',
+    option2Step3:
+      'We will confirm your request and schedule the deletion. It holds for 14 days, during which you can cancel it; after that it runs and cannot be undone.',
+
+    deletedTitle: 'What is deleted',
+    deletedIntro: 'Deleting your account permanently removes:',
+    deleted1: 'Your parent account information (name, email address).',
+    deleted2: 'All child profiles you created.',
+    deleted3:
+      'All activity data collected from managed devices, including app usage, screen-time history, browsing activity, location history, and Check-In and SOS photos.',
+    deleted4: 'Your parental control settings and preferences.',
+    deleted5: 'Support requests you filed, with any screenshot attached to them.',
+    deleted6: 'Your sign-in itself, so the account cannot be used again.',
+
+    retentionTitle: 'Retention timelines',
+    retention1:
+      'Data is deleted when the **14-day** hold on a verified request ends. Deletion is permanent and there is no export afterwards.',
+    retention2:
+      'A record that the deletion was requested and completed — a hash of your email address and the dates, nothing else — is kept for **12 months** so that a disputed deletion can be answered.',
+    retention3:
+      'We may retain a minimal set of records where required by law (for example, transaction records for tax purposes), for only as long as legally required.',
+
+    partialTitle: 'Partial deletion',
+    partial:
+      'You can remove a child or a device in the app, which stops collection from it. History already collected expires on the schedule in the Privacy Policy (30 days for usage, web and location history and the activity feed; 90 days for SOS, Check-In and Time Requests); to have it deleted sooner, email [support@kidgate.app](mailto:support@kidgate.app).',
+    moreInfo:
+      'For more details about how we handle your data, see our [Privacy Policy](/privacy-policy).',
+  },
+
   download: {
     eyebrow: 'Download',
     qrScan: 'Scan with your phone’s camera to get the app',
@@ -929,7 +898,7 @@ export default {
     windowsRequires: 'Windows 10 or later, 64-bit.',
     button: 'Download',
     warningSub:
-      'Windows shows a SmartScreen warning for any app installed from outside its own store by a developer not yet on its verified list — it is not something found in KidGate. The Windows card above says how to allow it. The Mac package is signed with an Apple Developer ID and notarised by Apple, so it raises no warning. Download only from kidgate.app.',
+      'Windows shows a SmartScreen warning for any app installed from outside its own store by a developer not yet on its verified list — it is not something found in KidGate. The Windows card above says how to allow it. The Mac package is signed with an Apple Developer ID and notarized by Apple, so it raises no warning. Download only from kidgate.app.',
     macosSteps:
       'Open the downloaded package and follow the installer. macOS then asks you once to allow the KidGate system extension: open the settings that message points to and allow it there. The Web Filter does not run until you do.',
     windowsSteps:
@@ -976,7 +945,7 @@ export default {
       'Every platform limits what an app is allowed to enforce. Where KidGate is best-effort — quitting a blocked app on a computer rather than refusing to launch it — the screen says so instead of showing a green tick.',
     value4Title: 'One family, one plan',
     value4Text:
-      'One Premium subscription covers every parent and every child device. Without it, Daily Limit, Blocked Hours, Blocked Apps, Device Lock and the Web Filter keep working on every child device, and SOS always reaches you, so the basic safety rules are never the thing behind the paywall.',
+      'One Premium subscription covers every parent and every child device. Without it, Daily Limit, Blocked Hours, Blocked Apps, Device Lock and the Web Filter keep working on every child device that supports them, and an SOS sent from a phone or computer always reaches you, so the basic safety rules are never the thing behind the paywall.',
 
     makeEyebrow: 'What we make',
     makeTitle: 'One KidGate, wherever the screen is',
@@ -986,7 +955,7 @@ export default {
       'Daily Limit, Blocked Hours and app shielding through Apple’s own Screen Time framework, and the Web Filter through a private connection on the device itself.',
     make2Title: 'Android',
     make2Text:
-      'Limits, app blocking, a full-screen lock and the Web Filter, plus an alert when a new app appears.',
+      'Limits, Blocked Apps, a full-screen lock and the Web Filter, plus an alert when a new app appears.',
     make3Title: 'macOS',
     make3Text:
       'The desktop agent on a Mac: the same schedule and the same limits, and a day a parent can actually read.',
@@ -998,7 +967,7 @@ export default {
       'The living-room screen, treated as a shared family device rather than one child’s — the same limits and the same schedule as the phones. A TV shares no location and has no SOS.',
     make6Title: 'Chrome',
     make6Text:
-      'A browser extension carrying the same Web Filter inside Chrome, on a computer that already has KidGate and on one that cannot. It filters the web in Chrome and nothing else — no screen time, no app blocking.',
+      'A browser extension carrying the same Web Filter inside Chrome, on a computer that already has KidGate and on one that cannot. It works inside Chrome only: besides filtering, it can record the YouTube videos watched and flag concerning searches when you turn those on, and it reports the other extensions installed. There is no screen time and no app blocking.',
     make7Title: 'Parent dashboard',
     make7Text:
       'A browser is a parent’s second screen. Sign in from any computer by scanning a code with your phone; nothing to install.',
@@ -1192,5 +1161,11 @@ export default {
     allYoutubeTitle: 'How to set up KidGate on your phone and your child’s devices',
     allYoutubeDescription:
       'Every setup in one video: first your phone, then each of your child’s devices (iPhone or iPad, Android phone or tablet, Mac, Windows PC, Android TV, Chrome), and last the web dashboard. Pick your device from the list below.',
+    // `guide-all`: every how-to in one video (operator, 2026-10-14).
+    guideAllYoutubeTitle: 'How to use KidGate: every feature, step by step',
+    guideAllYoutubeDescription:
+      'Every KidGate feature in one video, step by step, on a parent’s iPhone and a child’s Android phone. Pick the feature you need from the list below.',
+    // `guide-parent-devices`' title card: the app's own wording for the device.
+    removeParentDeviceTitle: 'Remove a parent device',
   },
 };

@@ -10,6 +10,7 @@ export const activities = {
   subtitleTimelineForDevice: 'Dòng thời gian của {{deviceName}}',
   subtitleTimelineForChild: 'Dòng thời gian của {{childName}}',
   fallbackDeviceName: 'thiết bị',
+  fallbackChildName: 'con',
   liveBadge: 'Trực tiếp',
   errorTitle: 'Không tải được nhật ký',
   tryAgain: 'Thử lại',
@@ -38,13 +39,13 @@ export const activities = {
   activityTypeAppRemoved: 'Gỡ ứng dụng',
   activityTypePlaceEnter: 'Vào địa điểm',
   activityTypePlaceExit: 'Rời địa điểm',
-  activityTypeTamper: 'Bảo vệ',
+  activityTypeTamper: 'Cảnh báo bảo vệ',
   activityTypeScreenTime: 'Thời gian sử dụng',
   activityTypeCheckIn: 'Báo an toàn',
   activityTypeLocationRequest: 'Vị trí',
   activityTypeTimeRequest: 'Yêu cầu thêm giờ',
   activityTypeRewardTask: 'Nhiệm vụ thưởng',
-  activityTypeSearchAlert: 'Cảnh báo tìm kiếm',
+  activityTypeSearchAlert: 'Cảnh báo tin nhắn',
   activityTypeWebFilter: 'Chặn nội dung web',
   activityTypeEmergency: 'SOS',
   activityTypeUnknown: 'Hoạt động',
@@ -71,7 +72,7 @@ export const activities = {
   appInstalledBody: 'Ứng dụng {{appName}} vừa được cài đặt trên thiết bị của trẻ.',
   appInstalledPendingBody:
     'Ứng dụng {{appName}} vừa được cài đặt trên thiết bị của trẻ và bị chặn cho đến khi bạn cho phép.',
-  messageAlertTitle: 'Nội dung tin nhắn đáng lo ngại',
+  messageAlertTitle: 'Tin nhắn đáng lo ngại',
   messageAlertBody: 'Phát hiện từ ngữ đáng chú ý trong {{appName}}.',
   messageAlertBodyOutgoing:
     'Phát hiện từ ngữ đáng chú ý trong tin nhắn con bạn soạn trên {{appName}}.',
@@ -158,7 +159,7 @@ export const activities = {
   tamperWebFilterBody:
     'VPN của KidGate trên máy này đã bị tắt hoặc bị một ứng dụng VPN khác thay thế. Trang web sẽ không được lọc và ghi lại cho đến khi VPN bật lại.',
   tamperUninstallProtectionTitle: 'Đã tắt chống gỡ cài đặt',
-  tamperUninstallProtectionBody: 'Giờ có thể gỡ KidGate khỏi máy này.',
+  tamperUninstallProtectionBody: 'Giờ có thể gỡ KidGate khỏi thiết bị của trẻ.',
   tamperReinstalledTitle: 'KidGate đã được cài lại',
   tamperReinstalledBody:
     'KidGate đã bị gỡ khỏi thiết bị này rồi được cài lại. Khoảng thời gian ở giữa không được ghi nhận.',

@@ -30,7 +30,7 @@ export const report = {
   findingLateNight: '23.00’ten sonra {{count}} gece — en geç {{time}} saatine kadar.',
   findingNewTopApp: '{{app}} bu hafta yeni ve şimdiden {{duration}} aldı.',
   findingAppSurge: '{{app}} geçen haftaya göre {{delta}} arttı — toplam {{duration}}.',
-  findingLimitHit: '{{limit}} olan günlük sınıra {{count}} gün ulaşıldı.',
+  findingLimitHit: '{{limit}} olan Günlük sınıra {{count}} gün ulaşıldı.',
   findingBlockedApps:
     'Engellenen {{count}} uygulama açılışı; geçen hafta {{previous}} idi.',
   findingBlockedWeb: '{{count}} site filtrelendi; geçen hafta {{previous}} idi.',
@@ -40,7 +40,8 @@ export const report = {
   // Raporun olumlu yarısı. Her cümle ne olduğunu ve arkasındaki sayıyı söyler;
   // hiçbiri övmez — `docs/COPY_STYLE.md` yaltaklanmayı da alarmı da yasaklar.
   // "Engellenen", asla tek başına "Engelli".
-  findingLimitRespected: '{{limit}} günlük sınır {{count}} gün boyunca korundu.',
+  findingLimitRespected:
+    '{{limit}} olan Günlük sınır, {{count}} günün tamamında korundu.',
   findingLateNightGone:
     'Bu hafta geç saatte kullanım yok; geçen hafta {{count}} geceydi.',
   findingBlockedAppsDown:
@@ -71,7 +72,7 @@ export const report = {
   share: 'Paylaş',
   copySummary: 'Özeti kopyala',
   copied: 'Özet kopyalandı.',
-  shareFailed: 'Paylaşım menüsü açılamadı.',
+  shareFailed: 'Paylaşım menüsü açılamadı. Tekrar deneyin.',
   shareLinkCta: 'Uygulamayı {{url}} adresinden indirin',
   shareFooterDesc:
     'KidGate, ebeveynlerin ekran süresini yönetmesine, konumu görmesine ve web içeriğini filtrelemesine yardımcı olur.',
@@ -85,10 +86,10 @@ export const report = {
 
   emptyTitle: 'Henüz rapor yok',
   emptyBody:
-    'Rapor her pazartesi sabahı gelir. Bu haftanınkini şimdi de yazabilirsiniz — son yedi günü kapsar.',
+    'Premium ile her pazartesi sabahı bir rapor gelir. Bu haftanınkini şimdi de yazabilirsiniz — son yedi günü kapsar.',
   noUsage:
     'Son iki haftada ekran süresi kaydedilmedi, bu yüzden henüz raporlanacak bir şey yok. Çevrimdışı bir cihaz hiçbir şey bildirmez ve bu, sakin bir haftayla aynı şey değildir.',
-  rateLimited: 'Çok fazla deneme. Bir dakika bekleyin.',
+  rateLimited: 'Henüz başka bir rapor yazılamıyor. Bir dakika sonra tekrar deneyin.',
   loadFailedTitle: 'Raporlar yüklenemedi',
   loadFailed: 'Raporlar açılamadı. Yeniden denemek için aşağı çekin.',
   failed: 'Rapor yazılamadı. Birazdan tekrar deneyin.',
@@ -107,9 +108,9 @@ export const report = {
   // pack.
   childrenTitle: 'Her çocuk',
   childrenNoteByChild:
-    'Aynı iki hafta, her çocuk için kullandığı tüm cihazlarda. Yüzdeler ailenin toplamına göredir.',
+    'Bu hafta, her çocuk kullandığı tüm cihazlarda. Yüzdeler ailenin toplamına göredir.',
   devicesTitle: 'Her cihaz',
-  childrenNote: 'Aynı iki hafta, cihaz başına. Yüzdeler ailenin toplamına göredir.',
+  childrenNote: 'Bu hafta, cihaz başına. Yüzdeler ailenin toplamına göredir.',
   colChild: 'Çocuk',
   colDevice: 'Cihaz',
   colScreenTime: 'Ekran Süresi',
@@ -135,14 +136,14 @@ export const report = {
   guestPreviewHint: 'Örnek — gerçek rakamlar bir cihaz bağladığınızda görünür',
   guestTitle: 'Hafta nereye gitti, görün',
   guestDescription:
-    'Bugünü normal bir günle ölçmek, çocuklarınızı yan yana karşılaştırmak ve her pazartesi bir rapor almak için giriş yapın.',
+    'Bugünü normal bir günle ölçmek, çocuklarınızı yan yana karşılaştırmak ve Premium ile her pazartesi yazılı bir rapor almak için giriş yapın.',
   guestBenefitTrendTitle: 'Bugün, normale karşı',
   guestBenefitTrendBody:
     'Tek başına bir rakam hiçbir şey söylemez. Bugün her zaman ailenizin kendi günlük ortalamasına karşı çizilir.',
   guestBenefitChildTitle: 'Her çocuk, yan yana',
   guestBenefitChildBody:
     'Her çocuğun günden aldığı pay, kendi renginde, kullandığı tüm cihazlar boyunca.',
-  guestBenefitWeeklyTitle: 'Her pazartesi bir rapor',
+  guestBenefitWeeklyTitle: 'Premium ile her pazartesi bir rapor',
   guestBenefitWeeklyBody:
     'Ne değişti, hangi uygulamalar arttı ve geç saatler — bir yıl boyunca saklanır.',
   guestSignInButton: 'Giriş yap',

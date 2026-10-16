@@ -7,7 +7,7 @@ export const childSettings = {
   darkModeHint: 'Dễ nhìn hơn vào buổi tối',
   leaveFamilyAlertTitle: 'Rời khỏi gia đình này?',
   leaveFamilyAlertMessage:
-    'Thiết bị này sẽ ngắt kết nối khỏi gia đình. Hãy ghép nối lại bằng mã mời của bố mẹ để tham gia trở lại.',
+    'Thiết bị này sẽ ngắt kết nối khỏi gia đình. Muốn tham gia lại, bố mẹ cần kết nối lại thiết bị này từ ứng dụng KidGate của bố mẹ.',
   leaveFamily: 'Rời khỏi gia đình',
   uninstallProtectionSectionTitle: 'Chống gỡ cài đặt',
   uninstallProtectionSectionDescription:
@@ -18,7 +18,7 @@ export const childSettings = {
   uninstallProtectionTurnedOff: 'Đã tắt chống gỡ cài đặt.',
   uninstallProtectionFailed: 'Không thể thay đổi cài đặt chống gỡ. Vui lòng thử lại.',
   deviceAdminExplanation:
-    'Ngăn KidGate bị gỡ khỏi thiết bị khi không có phụ huynh. KidGate không dùng quyền quản trị thiết bị nào khác: không thể xóa dữ liệu thiết bị, đổi khóa màn hình hay tắt camera.',
+    'Giúp KidGate khó bị gỡ hơn: muốn gỡ phải tắt mục này trước, và phụ huynh sẽ được báo khi việc đó xảy ra. KidGate không dùng quyền quản trị thiết bị nào khác: không thể xóa dữ liệu thiết bị, đổi khóa màn hình hay tắt camera.',
   deviceAdminDisableWarning:
     'Tắt mục này sẽ cho phép gỡ KidGate khỏi thiết bị. Bố mẹ con sẽ nhận được cảnh báo.',
   appPickerUnavailable: 'Tính năng Chặn ứng dụng không khả dụng trên thiết bị này.',

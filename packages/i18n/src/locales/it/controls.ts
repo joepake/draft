@@ -7,7 +7,8 @@ export const controls = {
   quickPresets: 'Durate rapide',
   presetMinutes: '{{minutes}} min',
   customMinutes: 'Minuti personalizzati',
-  dailyLimitEnterAtLeastMinutes: 'Inserisci almeno {{min}} minuti.',
+  dailyLimitEnterAtLeastMinutes: 'Inserisci almeno {{count}} minuti.',
+  dailyLimitEnterAtLeastMinutes_one: 'Inserisci almeno {{count}} minuto.',
   dailyLimitMaxMinutes:
     'Il limite giornaliero può essere al massimo di {{max}} minuti (24 ore).',
   rulesSectionTitle: 'Regole dei tuoi genitori',

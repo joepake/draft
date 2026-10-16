@@ -9,7 +9,7 @@ export const plans = {
   pillTrialActiveFallback: 'Deneme aktif',
   statusTrialEndedTitle: 'Deneme sona erdi',
   statusTrialEndedSubtitle:
-    'Günlük sınır, Engellenen Saatler, Engellenen Uygulamalar, Web filtresi ve konum ücretsiz çalışmaya devam eder. Canlı güncellemeler, geçmiş, uyarılar ve raporlar için abone olun.',
+    'Günlük sınır, Engellenen Saatler, Engellenen Uygulamalar, konum ve Web filtresi anahtarı ücretsiz çalışmaya devam eder. Canlı güncellemeler, geçmiş, uyarılar ve raporlar için abone olun.',
   pillTrialEnded: 'Deneme sona erdi',
   statusStartTrialTitle: 'Denemenizi başlatın',
   statusStartTrialSubtitle:
@@ -33,8 +33,8 @@ export const plans = {
   compareDevicesFree: 'Kurallar hepsinde, raporlar 1 cihazdan',
   compareDevicesPremium: 'Raporlar hepsinden',
   compareParents: 'Ebeveynler',
-  compareParentsFree: 'En fazla 3',
-  compareParentsPremium: 'En fazla 6',
+  compareParentsFree: 'En fazla 3 (siz dahil)',
+  compareParentsPremium: 'En fazla 6 (siz dahil)',
   compareSync: 'Cihazdan gelen güncellemeler',
   compareSyncFree: 'Siz baktığınızda',
   compareSyncPremium: 'Canlı',
@@ -54,7 +54,7 @@ export const plans = {
   compareSafety: 'Koruma uyarıları ve Check-In',
   compareSafetyFree: 'Uyarılar + Check-In',
   compareSafetyPremium: 'Her Check-In’e fotoğraf ekler',
-  compareControls: 'Uygulama engelleme ve web filtresi',
+  compareControls: 'Engellenen Uygulamalar ve Web filtresi',
   compareControlsFree: 'Her uygulama, sabit kategori seti',
   compareControlsPremium: 'Kategoriye göre, kendi listeleriniz, site istekleri',
   compareReport: 'Haftalık rapor',
@@ -65,7 +65,7 @@ export const plans = {
   compareActivityFeedPremium: '30 gün',
   compareChildReport: 'Çocuk başına rapor',
   compareIncluded:
-    'Her iki plan da tek ailede iPhone, Android, Mac ve Windows’ta Günlük sınır, Engellenen Saatler, Engellenen Uygulamalar, Uygulama Sınırları, yeni uygulama onayı, Web filtresi, Cihaz Kilidi, SOS, Süre istekleri ve Ödül görevleri özelliklerini, ayrıca web panelini içerir. Android TV ve Chromebook da daha az kontrolle desteklenir.',
+    'Her iki plan da tek ailede iPhone, Android, Mac ve Windows’ta Günlük sınır, Engellenen Saatler, Engellenen Uygulamalar, yeni uygulama onayı, Web filtresi, Cihaz Kilidi, SOS, Süre istekleri ve Ödül görevleri özelliklerini ve web panelini, ayrıca Android, Mac ve Windows’ta Uygulama Sınırları’nı içerir. Android TV ve Chromebook da daha az kontrolle desteklenir.',
   sectionWhyPremium: 'Premium neler ekler',
   sectionWhyPremiumSubtitle:
     'Her kural Ücretsiz planda çalışmaya devam eder. Premium, neyi ne kadar erken gördüğünüzü ekler.',
@@ -124,7 +124,7 @@ export const plans = {
   memberTrialActiveSubtitle:
     'Bu aile deneme sürecinde. Deneme bittiğinde tüm kurallar her cihazda çalışmaya devam eder ve bir cihaz rapor göndermeyi sürdürür; aile sahibi canlı etkinlik, geçmiş ve tüm cihazlardan raporlar için abone olabilir.',
   memberTrialEndedSubtitle:
-    'Bu ailenin deneme süresi bitti. Günlük sınır, Engellenen Saatler, Engellenen Uygulamalar, Web filtresi ve konum çalışmaya devam ediyor. Canlı güncellemeler, geçmiş ve uyarılar için aile sahibinden abone olmasını isteyin.',
+    'Bu ailenin deneme süresi bitti. Günlük sınır, Engellenen Saatler, Engellenen Uygulamalar, konum ve Web filtresi anahtarı çalışmaya devam ediyor. Canlı güncellemeler, geçmiş ve uyarılar için aile sahibinden abone olmasını isteyin.',
   memberSetupTrialSubtitle:
     'Deneme, aile sahibi bir ebeveyn cihazı ve bir çocuk cihazı bağladığında başlar.',
   premiumActivatedTitle: 'Premium açıldı',
@@ -144,7 +144,8 @@ export const plans = {
   subscriptionOfferNotConfigured:
     'Bu abonelik şu anda kullanılamıyor. Lütfen daha sonra tekrar deneyin.',
   unableToStartPurchase: 'Satın alma başlatılamadı. Lütfen tekrar deneyin.',
-  noActiveSubscription: 'Etkin abonelik bulunamadı.',
+  noActiveSubscription:
+    'Etkin abonelik bulunamadı. Abone olurken kullandığınız App Store veya Google Play hesabıyla oturum açın, ardından tekrar deneyin.',
   purchasesRestored: 'Satın alımlar geri yüklendi.',
   unableToRestorePurchases: 'Satın alımlar geri yüklenemedi. Lütfen tekrar deneyin.',
   purchaseVerificationFailed:
@@ -153,7 +154,7 @@ export const plans = {
   // has to name who needs to act instead of offering a button they can't use.
   familyPremiumEndedTitle: 'Bu ailenin Premium’u sona erdi',
   familyPremiumEndedBody:
-    'Günlük sınır, Engellenen Saatler, Engellenen Uygulamalar, Web filtresi ve konum çalışmaya devam ediyor. Canlı güncellemeler, geçmiş, uyarılar ve raporlar aile sahibi Premium’u yenileyene kadar duraklatıldı.',
+    'Günlük sınır, Engellenen Saatler, Engellenen Uygulamalar, konum ve Web filtresi anahtarı çalışmaya devam ediyor. Canlı güncellemeler, geçmiş, uyarılar ve raporlar aile sahibi Premium’u yenileyene kadar duraklatıldı.',
   pricesUnavailable: 'Fiyatlar mağazadan yüklenemedi.',
   pricesRetry: 'Tekrar dene',
   featureRewardTasks: 'Ödül görevleri',
@@ -184,11 +185,11 @@ export const plans = {
   platformMac: 'Mac',
   platformMacDetail: 'Yalnızca çocuk cihazı · macOS 12 ve üzeri',
   platformIosLimits:
-    'Uygulama Sınırları ve mesaj uyarıları yok. Engellenen uygulamalar iPhone’un kendisinde seçilir.',
+    'Uygulama Sınırları ve mesaj uyarıları yok; Engellenen Uygulamalar için uygulamalar iPhone’un kendisinde seçilir.',
   platformMacLimits: 'Mesaj uyarıları yok, konum yaklaşıktır.',
   platformWindowsLimits: 'Mesaj uyarıları yok, konum yaklaşıktır.',
   platformAndroidTvLimits:
-    'Mesaj uyarıları, konum, SOS ve süre istekleri yok. Uygulama engelleme elden geldiğince çalışır.',
+    'Mesaj uyarıları, konum, SOS ve Süre istekleri yok. Engellenen Uygulamalar elden geldiğince çalışır.',
   platformChromebookLimits:
     'Yalnızca Web filtresi — Günlük sınır, Engellenen Saatler, Engellenen Uygulamalar, Cihaz Kilidi, SOS ve konum yok.',
   platformComingSoon: 'Yakında',
@@ -197,7 +198,7 @@ export const plans = {
   platformAndroidTv: 'Android TV',
   platformAndroidTvDetail: 'Yalnızca çocuk cihazı · Android TV 7 ve üzeri',
   platformChromebook: 'Chromebook',
-  platformChromebookDetail: 'Çocuk cihazı · yalnızca Chrome web filtresi',
+  platformChromebookDetail: 'Çocuk cihazı · yalnızca Chrome’da Web filtresi',
   teaserCta: 'Premium’u gör',
   teaserProofOtherApps: 'Diğer uygulamalar: {{count}} · {{minutes}}',
   teaserProofOtherMinutes: 'Diğer uygulamalar: {{minutes}}',

@@ -23,11 +23,11 @@ export const placeAlerts = {
   radiusLabel: 'Bán kính cảnh báo',
   radiusValue: '{{meters}} m',
   radiusHint:
-    'Thiết bị phải ở gần mức nào thì địa điểm này mới được tính. Bán kính nhỏ hơn sai số định vị của thiết bị sẽ báo sai liên tục chứ không chính xác hơn.',
+    'Thiết bị phải ở gần mức nào thì địa điểm này mới được tính. Bán kính nhỏ hơn sai số định vị của thiết bị không làm cảnh báo chính xác hơn — việc đến và rời đi có thể không được báo.',
   radiusAccuracyHint:
     'Ở đây thiết bị này báo vị trí với sai số khoảng ±{{accuracy}} m.',
   radiusBelowAccuracy:
-    'Ở đây thiết bị chỉ chính xác khoảng ±{{accuracy}} m. Hãy dùng {{minimum}} m trở lên, nếu không địa điểm này sẽ báo sai liên tục.',
+    'Ở đây thiết bị chỉ chính xác khoảng ±{{accuracy}} m. Hãy dùng {{minimum}} m trở lên, nếu không việc đến và rời khỏi địa điểm này có thể không được báo.',
   radiusDecrease: 'Giảm bán kính',
   radiusIncrease: 'Tăng bán kính',
   notifyEnterLabel: 'Cảnh báo khi đến',
@@ -53,7 +53,7 @@ export const placeAlerts = {
   duplicateNameToast: 'Đã tồn tại một địa điểm trùng tên.',
   samePinToast: 'Đây đúng là vị trí của “{{name}}”. Kéo bản đồ để di chuyển ghim.',
   overlapWarning:
-    '“{{name}}” cách đây {{meters}} m và vùng của địa điểm đó chạm tới đây. Khi thiết bị nằm trong cả hai vùng, chỉ địa điểm gần hơn gửi cảnh báo. Bấm Lưu lần nữa nếu bạn vẫn muốn giữ.',
+    '“{{name}}” cách đây {{meters}} m và hai vùng chồng lên nhau. Khi thiết bị nằm trong cả hai vùng, chỉ địa điểm gần hơn gửi cảnh báo. Bấm Lưu lần nữa nếu bạn vẫn muốn giữ.',
   savedToast: 'Đã lưu địa điểm.',
   updatedToast: 'Đã cập nhật địa điểm.',
   removedToast: 'Đã xóa địa điểm.',

@@ -4,7 +4,10 @@ import { useT } from '@kidgate/web-ui/useT';
 import { resolveChildPresence } from '@kidgate/core/domain/childPresence';
 import { supportsLock } from '@kidgate/core/domain/controlSupport';
 import { isActionSupported } from '@kidgate/core/domain/deviceDetailActions';
-import { foldChildAppBlocking } from '@kidgate/core/domain/deviceControlState';
+import {
+  foldChildAppBlocking,
+  foldChildProtectionLevel,
+} from '@kidgate/core/domain/deviceControlState';
 import {
   supportsVideoHistory,
   videoHistoryAwaitingGrant,
@@ -181,6 +184,13 @@ export default function ChildHub({
       listsInstalledApps: childDevices.length
         ? childDevices.some(supportsAppInventory)
         : undefined,
+      /*
+       * The worst verdict among the machines that file tamper alerts — the
+       * phone hub's fold, so the Protection Alerts card never says "Watching"
+       * over a child whose grant was switched off. `undefined` when none files
+       * any, and the resolver keeps its old answer.
+       */
+      protectionLevel: foldChildProtectionLevel(childDevices, Date.now()),
     };
   }, [budgetMinutes, child, childDevices, rules]);
 

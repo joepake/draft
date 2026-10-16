@@ -34,7 +34,7 @@ export const permissions = {
     'Trong mục Tự khởi động, hãy bật KidGate để tính năng bảo vệ được khôi phục sau khi khởi động lại thiết bị.',
   oemAutostartHintSamsung: 'Trong Pin, chọn Giới hạn sử dụng dưới nền.',
   oemAutostartHintSamsungAdd:
-    'Mở Ứng dụng không bao giờ ngủ và thêm KidGate. Nếu không thấy KidGate trong danh sách thì máy đã cho phép sẵn và bước này xong rồi.',
+    'Mở Ứng dụng không bao giờ ngủ, chọn Thêm, rồi chọn KidGate. Nếu KidGate đã có trong danh sách, bước này đã xong.',
   oemAutostartHintOppo: 'Trong Khởi động tự động (Auto-launch), hãy cho phép KidGate.',
   oemAutostartHintVivo:
     'Trong Tự khởi động, và trong mục cảnh báo ứng dụng hao pin nền, hãy cho phép KidGate.',
@@ -51,15 +51,15 @@ export const permissions = {
   accessibilityStepTurnOn:
     'Bật công tắc, sau đó chọn Cho phép trên hộp thoại xác nhận của Android.',
   restrictedSettingsStep:
-    'Nếu công tắc bị mờ, hãy mở Cài đặt › Ứng dụng › KidGate, nhấn menu ⋮ rồi chọn “Cho phép cài đặt bị hạn chế”, sau đó quay lại đây và thử lại.',
+    'Nếu công tắc bị mờ, hãy mở Cài đặt → Ứng dụng → KidGate, nhấn menu ⋮ rồi chọn “Cho phép cài đặt bị hạn chế”, sau đó quay lại đây và thử lại.',
   accessibilityWarningNote:
-    'Android sẽ cảnh báo rằng KidGate có thể quan sát thao tác của bạn. Với quyền này, KidGate biết ứng dụng nào đang mở để màn hình khóa luôn hiển thị đè lên. Khi mục Ghi lại video đã xem đang bật, KidGate còn đọc tiêu đề và tên kênh của từng video YouTube rồi gửi cho bố mẹ. Quyền này không đọc mật khẩu, tin nhắn hay những gì bạn gõ. Nếu bố mẹ bật Cảnh báo tin nhắn, một quyền thứ hai, được xin riêng, sẽ kiểm tra tin nhắn văn bản (SMS và MMS), tin nhắn trò chuyện và nội dung tìm kiếm bạn gõ, rồi chỉ gửi cho bố mẹ từ hoặc cụm từ bị đánh dấu. Nếu KidGate gặp sự cố, nhật ký sự cố sẽ được gửi tới đội ngũ KidGate để khắc phục.',
+    'Android sẽ cảnh báo rằng KidGate có thể quan sát thao tác của bạn. Với quyền này, KidGate biết ứng dụng nào đang mở để màn hình khóa luôn hiển thị đè lên. Khi mục Ghi lại video đã xem đang bật, KidGate còn đọc tiêu đề và tên kênh của từng video YouTube rồi gửi cho bố mẹ. Quyền này không đọc mật khẩu, tin nhắn hay những gì bạn gõ. Nếu bố mẹ bật Cảnh báo tin nhắn, một quyền thứ hai, được xin riêng, sẽ kiểm tra tin nhắn văn bản (SMS và MMS), tin nhắn trò chuyện và nội dung tìm kiếm bạn gõ, rồi chỉ gửi cho bố mẹ từ hoặc cụm từ bị đánh dấu. Nếu bạn cho phép dùng micrô, khi gửi SOS KidGate sẽ ghi tối đa 15 giây âm thanh rồi gửi cho bố mẹ. Nếu KidGate gặp sự cố, nhật ký sự cố sẽ được gửi tới đội ngũ KidGate để khắc phục.',
   accessibilityAgree: 'Đồng ý',
   accessibilityDecline: 'Không đồng ý',
   accessibilityTvNote:
-    'Với quyền này, KidGate biết ứng dụng nào đang mở để màn hình khóa luôn hiển thị đè lên. KidGate còn đếm thời gian dùng từng ứng dụng rồi gửi cho bố mẹ. KidGate không đọc nội dung trên màn hình, mật khẩu hay tin nhắn.',
+    'Với quyền này, KidGate biết ứng dụng nào đang mở để màn hình khóa luôn hiển thị đè lên, và đếm thời gian dùng từng ứng dụng. KidGate gửi cho bố mẹ thời gian đó, các ứng dụng đã cài trên TV này, lịch sử duyệt web (những trang đã truy cập và đã bị chặn) khi Chặn nội dung web đang bật, cùng tiêu đề và tên kênh của các video YouTube đã xem. KidGate không đọc nội dung trên màn hình, mật khẩu hay tin nhắn.',
   uninstallProtectionWizardBody:
-    'Ngăn gỡ cài đặt ứng dụng này khi chưa nhập mã PIN phụ huynh. Android sẽ hiển thị màn hình xác nhận riêng.',
+    'Giúp KidGate khó bị gỡ hơn: muốn gỡ phải tắt mục này trước, và phụ huynh sẽ được báo khi việc đó xảy ra. Android sẽ hiển thị màn hình xác nhận riêng.',
   notificationsWizardBody:
     'Cho phép thông báo để thiết bị này nhận ngay kết quả duyệt yêu cầu thêm giờ và các lời nhắc.',
   backgroundRefreshStepOpen: 'Mở trang KidGate trong Cài đặt.',

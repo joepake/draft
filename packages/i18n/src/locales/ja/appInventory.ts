@@ -32,7 +32,7 @@ export const appInventory = {
   emptySubtitle: 'デバイスは次回の接続時にアプリ一覧を送信します。',
   unsupportedTitle: 'このデバイスはアプリを一覧表示できません',
   unsupportedIos:
-    'Apple は iPhone や iPad にインストールされているものを読み取ることをどのアプリにも許可していません。そのため KidGate は使用されたアプリのみ報告できます。',
+    'Apple は、iPhone や iPad に何がインストールされているかを、どのアプリにも読み取らせていません。また KidGate は、そこでどのアプリが使われているかも確認できません。',
   unsupportedGeneric: 'このデバイスはインストール済みのアプリを報告しません。',
   incompleteNote:
     '一部のアプリはここに表示されないことがあります。たとえば、デバイスのアプリ一覧にアイコンがないアプリなどです。',

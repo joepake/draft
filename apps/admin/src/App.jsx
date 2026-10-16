@@ -876,7 +876,9 @@ function Families() {
             <tbody>
               {shown.map(family => (
                 <tr key={family.uid}>
-                  <td>{family.name ?? t('family.noName')}</td>
+                  {/* Same order as the phone's operator mode. A browse row
+                      carries an email only when the name is missing. */}
+                  <td>{family.name || family.email || family.uid}</td>
                   <td>{family.familyName ?? t('families.noFamilyName')}</td>
                   {found ? <td>{family.email ?? t('family.noEmail')}</td> : null}
                   <td>{family.planId ?? t('family.noPlan')}</td>
@@ -1075,7 +1077,7 @@ function FamilyDetail({ family }) {
       ) : null}
 
       <div className="ticket-meta" style={{ marginBottom: 12 }}>
-        <span>{family.name ?? t('family.noName')}</span>
+        <span>{family.name || family.email || t('family.noName')}</span>
         <span>{family.parentPinSet ? t('family.pinSet') : t('family.pinNotSet')}</span>
         <span>
           {family.messageAiConsent === null
@@ -1376,7 +1378,12 @@ export default function App() {
           unmounts the old one rather than leaving its state and its in-flight
           requests alive behind the new one.
         */}
-        <main className="content" key={route}>
+        {/* Families is ten-plus columns of tables; the reading width that suits
+            the other pages cuts it off at the uid. */}
+        <main
+          className={route === 'families' ? 'content content-wide' : 'content'}
+          key={route}
+        >
           {/*
             Per route, not around the whole shell: a page that throws must not
             take the sidebar with it, or the operator cannot navigate away from

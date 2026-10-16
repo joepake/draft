@@ -2,7 +2,7 @@ export const deviceDetail = {
   notFoundTitle: 'Gerät',
   dangerTitle: 'Dieses Gerät entfernen',
   dangerDescription:
-    'Entferne dieses Gerät aus deinem Familienkonto. Alle zugehörigen Zeitanfragen und der Aktivitätsverlauf dieses Geräts werden gelöscht.',
+    'Entferne dieses Gerät aus deinem Familienkonto. Dabei werden Standortverlauf, Nutzungsverlauf, Web-Verlauf, angesehene Videos, die Liste der installierten Apps, Zeitanfragen, Website-Anfragen, Belohnungsaufgaben, Check-ins, SOS-Alarme und Aktivitäten dieses Geräts gelöscht.',
   removeButton: 'Gerät entfernen',
   removingButton: 'Wird entfernt…',
   showAllFeatures: 'Alle Funktionen anzeigen',
@@ -10,7 +10,7 @@ export const deviceDetail = {
   essentialControls: 'Wichtige Steuerungen',
   dailyRulesAndDeviceAccess: 'Tägliche Regeln und Gerätezugriff',
   dailyLimit: 'Tageslimit',
-  setDailyScreenTimeCap: 'Tägliches Bildschirmzeitlimit festlegen',
+  setDailyScreenTimeCap: 'Tageslimit festlegen',
   blockedHours: 'Sperrzeiten',
   manageTimeRanges: 'Bis zu {{max}} Zeitbereiche verwalten',
   blockedApps: 'Blockierte Apps',
@@ -36,7 +36,7 @@ export const deviceDetail = {
   placeAlerts: 'Orte',
   reviewPlaceAlerts: 'Bei Ankunft oder Verlassen benachrichtigen',
   noPlacesYet: 'Keine Orte',
-  tamperAlerts: 'Schutz',
+  tamperAlerts: 'Schutzwarnungen',
   reviewTamperAlerts: 'Anzeigen, wenn der Schutz deaktiviert wird',
   editDeviceName: 'Gerätenamen bearbeiten',
   editDeviceNameSubtitle:
@@ -61,13 +61,14 @@ export const deviceDetail = {
   notAvailableInExtension: 'In der Erweiterung nicht verfügbar',
   webFilterAwaitingApproval: 'Wartet auf Freigabe auf {{platform}}',
   webFilterSwitchedOffOnDevice: 'Auf {{platform}} ausgeschaltet',
+  webFilterPrivateDnsOnDevice: 'Durch Privates DNS auf {{platform}} umgangen',
   unableToUpdateDeviceName:
     'Der Gerätename konnte nicht aktualisiert werden. Bitte versuche es erneut.',
   renameOwnerOnly: 'Nur der Familieninhaber kann Gerätenamen ändern.',
   removeOwnerOnly: 'Nur der Familieninhaber kann Geräte entfernen.',
   removeDeviceTitle: 'Gerät entfernen?',
   removeDeviceMessage:
-    '{{deviceName}} wird von deinem Konto getrennt. Alle zugehörigen Zeitanfragen und der Aktivitätsverlauf werden gelöscht.',
+    '{{deviceName}} wird von deinem Konto getrennt. Dabei werden Standortverlauf, Nutzungsverlauf, Web-Verlauf, angesehene Videos, die Liste der installierten Apps, Zeitanfragen, Website-Anfragen, Belohnungsaufgaben, Check-ins, SOS-Alarme und Aktivitäten gelöscht.',
   unableToRemoveDevice:
     'Das Gerät konnte nicht entfernt werden. Bitte versuche es erneut.',
   checkInNotificationSent: '{{deviceName}} erhält eine Check-in-Anfrage.',
@@ -81,7 +82,7 @@ export const deviceDetail = {
     'Check-in in der Warteschlange – {{deviceName}} erhält ihn, sobald das Gerät wieder online ist.',
   unableToRequestCheckIn:
     'Check-in-Anfrage konnte nicht gesendet werden. Bitte versuche es erneut.',
-  tapToSetDailyCap: 'Tageslimit festlegen',
+  tapToSetDailyCap: 'Tippe, um ein Tageslimit festzulegen',
   usageUpdatesFromChildDevice: 'Nutzungsdaten vom Kindergerät',
   minutesUsedToday: 'Heute: {{used}} / {{limit}}',
   noBlockedHours: 'Keine Sperrzeiten',
@@ -143,7 +144,7 @@ export const deviceDetail = {
   webHistorySitesUnit: 'Seiten',
   webHistorySitesUnit_one: 'Seite',
   managedAtChild:
-    'Regeln, Belohnungen, Check-ins und Warnungen dieses Geräts werden im Profil von {{childName}} verwaltet',
+    'Regeln, Belohnungen, Check-ins und Sicherheitswarnungen dieses Geräts werden im Profil von {{childName}} verwaltet.',
   pauseBrowsing: 'Surfen pausieren',
   pauseBrowsingDescription:
     'Pausiert das Surfen für eine Weile. Anrufe und Offline-Apps funktionieren weiter.',

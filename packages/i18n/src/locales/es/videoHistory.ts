@@ -3,10 +3,12 @@ export const videoHistory = {
   fallbackDeviceName: 'Dispositivo del niño',
   toggleLabel: 'Registrar vídeos vistos',
   toggleHint:
-    'YouTube en el navegador y la app de YouTube en Android y TV. En la TV, los Shorts no aparecen porque la app de TV no los identifica como Shorts.',
+    'Vídeos vistos en la app de YouTube en teléfonos Android y TV, y en Chrome con la extensión de KidGate. En la TV, los Shorts no aparecen porque la app de TV no los identifica como Shorts.',
   toggleFailed: 'No se pudo actualizar el historial de vídeos. Inténtalo de nuevo.',
   unsupportedNote:
     'Este dispositivo no puede informar de los vídeos vistos. Funciona en Android, Android TV y en Chrome.',
+  unsupportedNoteTv:
+    'Esta TV no está registrando los vídeos vistos. KidGate necesita acceso a las notificaciones en ella, algo que todavía no se puede conceder desde una pantalla de TV.',
 
   unsupportedNeedsExtension:
     'KidGate no puede ver en este ordenador qué vídeos se ven: lee nombres de sitios, no el contenido de una página. La extensión de KidGate para Chrome sí puede: añádela en este ordenador y registrará los vídeos vistos como un dispositivo propio.',
@@ -42,5 +44,5 @@ export const videoHistory = {
     'Todavía no se registran vídeos: KidGate necesita acceso a las notificaciones en el teléfono de tu hijo. En ese teléfono, abre Ajustes de KidGate, selecciona «Desbloquear con el PIN parental» y luego «Permitir acceso a notificaciones» en la sección Alertas de mensajes.',
   openAction: 'Abrir en YouTube',
   searchAction: 'Buscar este vídeo en YouTube',
-  openFailed: 'No se pudo abrir YouTube.',
+  openFailed: 'No se pudo abrir YouTube. Inténtalo de nuevo.',
 };

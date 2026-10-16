@@ -5480,6 +5480,27 @@ button.kid-pill {
   color: var(--muted);
 }
 
+/* ---------- Browsers that can make changes ----------
+ *
+ * `WebSessionsCard` draws the trusted-contacts row (`.tc-row`) — a glyph, two
+ * or three short lines and one remover — so it takes that row's look and adds
+ * only what a longer line needs: the row wraps instead of squeezing the name
+ * between the "This browser" pill and the remover on a phone-width pane. The
+ * remover is `.place-remove`, tinted red at rest like every row remover.
+ */
+.ws-row {
+  flex-wrap: wrap;
+}
+
+.ws-row .tc-body {
+  flex: 1 1 10rem;
+}
+
+.ws-row .pill,
+.ws-row .btn {
+  flex-shrink: 0;
+}
+
 /* The form, separated from the history by a rule — it files INTO the list
    above it, so it reads as the last thing on the card rather than a panel. */
 .support-compose {

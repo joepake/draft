@@ -9,12 +9,12 @@ export const macos = {
   headingRemovable: '解除のしやすさ',
 
   parentAccessBody:
-    'このMacでブロックするアプリを選ぶには、保護者PINを入力してください。',
+    'このデバイスでブロックするアプリを選ぶには、保護者PINを入力してください。',
   checking: '確認中…',
 
   enforcing: '保護は動作中',
   enforcingYes: 'はい',
-  enforcingFailed: 'いいえ — 連続{{count}}回の確認に失敗しました',
+  enforcingFailed: '保護が中断されました · 連続{{count}}回の確認に失敗しました',
 
   lockState: 'デバイスのロック',
   lockStateNo: 'いいえ',
@@ -63,7 +63,7 @@ export const macos = {
     'このPCでは別のプログラムがすでにWebアドレスを処理しているため、KidGateはここでフィルターできません。',
   setupStepFilterSwitchWaiting: '上の手順が承認されると、システム設定に表示されます。',
   setupStepLocationBody:
-    'このデバイスの場所をご家族が確認できるようになります。「位置情報を共有」をオンにするまで、何も共有されません。',
+    'このデバイスの場所をご家族が確認できるようになります。KidGateアプリで「位置情報を共有」をオンにするまで、何も共有されません。',
   setupStepCameraTitle: 'カメラ',
   setupStepCameraBody:
     'お子さまが SOS を送るときやチェックインに答えるときに写真を添えます。今は写真を撮りません。',
@@ -117,7 +117,7 @@ export const macos = {
 
   chooseApps: 'ブロックするアプリを選択',
   chooseAppsHint:
-    'このMacでブロックするアプリを選んでください。ブロックのオン・オフは保護者がスマートフォンから切り替えられます。',
+    'このデバイスでブロックするアプリを選んでください。ブロックのオン・オフは保護者がスマートフォンから切り替えられます。',
   saveSelection: '保存',
-  noAppsFound: 'Applicationsフォルダにアプリが見つかりませんでした。',
+  noAppsFound: 'このデバイスにアプリが見つかりませんでした。',
 };

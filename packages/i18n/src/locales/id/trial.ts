@@ -6,7 +6,7 @@ export const trial = {
     'Saat masa coba berakhir, hanya {{keeps}} dari {{using}} perangkat Anda yang tetap mengirim laporan dan menerima perubahan aturan. Sisanya mempertahankan aturan yang ada, yang hanya bisa Anda longgarkan, tidak bisa diperketat.',
   trialBannerTitle: 'Uji coba · {{remaining}}',
   trialUrgentBody:
-    'Uji coba Anda hampir berakhir. Berlangganan Premium seharga {{price}}/bulan agar tidak ada yang terputus.',
+    'Uji coba Anda hampir berakhir. Semua aturan tetap berjalan di paket gratis. Berlangganan Premium seharga {{price}}/bulan untuk mempertahankan aktivitas langsung, riwayat, dan laporan.',
   trialNormalBody:
     'Suka dengan KidGate? Berlangganan Premium seharga {{price}}/bulan untuk mempertahankan pengalaman lengkap setelah uji coba.',
   impactTitle: 'Hari terakhir masa uji coba',
@@ -22,5 +22,5 @@ export const trial = {
     'Memberi tahu Anda {{count}} kali bahwa mereka tiba dengan selamat',
   impactAppInstalled: 'Menemukan {{count}} aplikasi baru pada hari aplikasi itu muncul',
   impactSos: 'Mengirimkan {{count}} peringatan SOS langsung kepada Anda',
-  impactKeepButton: 'Pertahankan perlindungan ini',
+  impactKeepButton: 'Lihat Premium',
 } as const;

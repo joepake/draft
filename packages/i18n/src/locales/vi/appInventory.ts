@@ -34,7 +34,7 @@ export const appInventory = {
   emptySubtitle: 'Thiết bị sẽ gửi danh sách ứng dụng trong lần kết nối tới.',
   unsupportedTitle: 'Thiết bị này không liệt kê được ứng dụng',
   unsupportedIos:
-    'Apple không cho phép ứng dụng nào đọc danh sách đã cài trên iPhone hay iPad, nên KidGate chỉ báo được ứng dụng khi chúng được dùng.',
+    'Apple không cho phép ứng dụng nào đọc danh sách đã cài trên iPhone hay iPad, và KidGate cũng không biết được ứng dụng nào được dùng trên đó.',
   unsupportedGeneric: 'Thiết bị này không báo cáo các ứng dụng đã cài trên nó.',
   incompleteNote:
     'Một số ứng dụng có thể không có ở đây, chẳng hạn ứng dụng không có biểu tượng trong danh sách ứng dụng của thiết bị.',

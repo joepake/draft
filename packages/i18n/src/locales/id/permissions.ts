@@ -2,12 +2,12 @@ export const permissions = {
   cameraPermissionRequired: 'Akses kamera diperlukan untuk fitur ini.',
   allowCameraTitle: 'Izinkan kamera',
   cameraPermissionMessage:
-    'KidGate menggunakan kamera agar Anda dapat mengirim foto singkat dengan SOS dan Check-In.',
+    'KidGate menggunakan kamera agar kamu dapat mengirim foto singkat dengan SOS dan Check-In.',
   allow: 'Izinkan',
   notNow: 'Nanti saja',
   cameraTurnedOffTitle: 'Kamera dimatikan untuk KidGate',
   cameraTurnedOffMessage:
-    'Silakan buka Pengaturan dan izinkan Kamera agar Check-In dan peringatan SOS Anda dapat menyertakan foto.',
+    'Buka Pengaturan dan izinkan Kamera agar Check-In dan peringatan SOS yang kamu kirim dapat menyertakan foto.',
   openSettings: 'Buka Pengaturan',
   notificationsLabel: 'Notifikasi',
   notificationsAllowed: 'Notifikasi aktif untuk KidGate.',
@@ -35,7 +35,7 @@ export const permissions = {
     'Di Mulai otomatis, aktifkan KidGate agar perlindungan mulai lagi setelah perangkat dinyalakan ulang.',
   oemAutostartHintSamsung: 'Di Baterai, pilih Batas penggunaan latar belakang.',
   oemAutostartHintSamsungAdd:
-    'Buka Aplikasi yang tidak pernah tidur dan tambahkan KidGate. Jika KidGate tidak ada di daftar, berarti sudah diizinkan dan langkah ini selesai.',
+    'Buka Aplikasi yang tidak pernah tidur, pilih Tambah, lalu pilih KidGate. Jika KidGate sudah ada di daftar, langkah ini selesai.',
   oemAutostartHintOppo:
     'Di Aplikasi saat mulai / Peluncuran otomatis, izinkan KidGate.',
   oemAutostartHintVivo:
@@ -53,15 +53,15 @@ export const permissions = {
   accessibilityStepTurnOn:
     'Nyalakan sakelarnya, lalu pilih Izinkan pada konfirmasi Android.',
   restrictedSettingsStep:
-    'Jika sakelarnya abu-abu, buka Setelan › Aplikasi › KidGate, ketuk menu ⋮ lalu pilih “Izinkan setelan terbatas”, kemudian kembali ke sini dan coba lagi.',
+    'Jika sakelarnya abu-abu, buka Setelan → Aplikasi → KidGate, ketuk menu ⋮ lalu pilih “Izinkan setelan terbatas”, kemudian kembali ke sini dan coba lagi.',
   accessibilityWarningNote:
-    'Android memperingatkan bahwa KidGate dapat mengamati tindakan pengguna. Dengan izin ini, KidGate melihat aplikasi mana yang sedang terbuka agar kunci tetap tampil di atas. Saat video yang ditonton sedang direkam, KidGate juga membaca judul dan saluran setiap video YouTube lalu mengirimkannya ke orang tua. Izin ini tidak membaca kata sandi, pesan, atau apa yang diketik. Jika orang tua menyalakan Peringatan pesan, izin kedua yang diminta terpisah akan memeriksa pesan teks (SMS dan MMS), pesan obrolan, dan pencarian yang diketik, lalu hanya mengirimkan kata atau frasa yang ditandai ke orang tua. Jika KidGate tiba-tiba berhenti, log error dikirim ke tim KidGate agar masalahnya bisa diperbaiki.',
+    'Android memperingatkan bahwa KidGate dapat mengamati tindakan pengguna. Dengan izin ini, KidGate melihat aplikasi mana yang sedang terbuka agar kunci tetap tampil di atas. Saat video yang ditonton sedang direkam, KidGate juga membaca judul dan saluran setiap video YouTube lalu mengirimkannya ke orang tua. Izin ini tidak membaca kata sandi, pesan, atau apa yang diketik. Jika orang tua menyalakan Peringatan pesan, izin kedua yang diminta terpisah akan memeriksa pesan teks (SMS dan MMS), pesan obrolan, dan pencarian yang diketik, lalu hanya mengirimkan kata atau frasa yang ditandai ke orang tua. Jika mikrofon diizinkan, KidGate merekam suara hingga 15 detik saat SOS dikirim, lalu mengirimkannya ke orang tua. Jika KidGate tiba-tiba berhenti, log error dikirim ke tim KidGate agar masalahnya bisa diperbaiki.',
   accessibilityAgree: 'Setuju',
   accessibilityDecline: 'Tidak setuju',
   accessibilityTvNote:
-    'Dengan izin ini, KidGate melihat aplikasi mana yang sedang terbuka agar kunci tetap tampil di atas. KidGate juga menghitung berapa lama setiap aplikasi dipakai lalu mengirimkannya ke orang tuamu. KidGate tidak membaca isi layar, kata sandi, atau pesan.',
+    'Dengan izin ini, KidGate melihat aplikasi mana yang sedang terbuka agar kunci tetap tampil di atas, dan menghitung berapa lama setiap aplikasi dipakai. KidGate mengirimkan ke orang tuamu waktu tersebut, aplikasi yang terpasang di TV ini, histori penjelajahan web (situs yang dikunjungi dan diblokir) selama Filter web aktif, serta judul dan saluran video YouTube yang ditonton. KidGate tidak membaca isi layar, kata sandi, atau pesan.',
   uninstallProtectionWizardBody:
-    'Mencegah aplikasi ini dihapus tanpa PIN Orang Tua. Android menampilkan layar konfirmasinya sendiri.',
+    'Membuat KidGate lebih sulit dihapus: untuk menghapusnya, pengaturan ini harus dimatikan dulu, dan orang tua akan diberi tahu saat hal itu terjadi. Android menampilkan layar konfirmasinya sendiri.',
   notificationsWizardBody:
     'Izinkan notifikasi agar perangkat ini segera menerima persetujuan waktu dan pengingat.',
   backgroundRefreshStepOpen: 'Buka halaman KidGate di Pengaturan.',

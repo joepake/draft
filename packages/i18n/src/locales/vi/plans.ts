@@ -9,7 +9,7 @@ export const plans = {
   pillTrialActiveFallback: 'Đang dùng thử',
   statusTrialEndedTitle: 'Hết dùng thử',
   statusTrialEndedSubtitle:
-    'Giới hạn hằng ngày, Giờ khóa thiết bị, Chặn ứng dụng, Chặn nội dung web và vị trí vẫn hoạt động miễn phí. Đăng ký để có cập nhật trực tiếp, lịch sử, cảnh báo và báo cáo.',
+    'Giới hạn hằng ngày, Giờ khóa thiết bị, Chặn ứng dụng, vị trí và công tắc Chặn nội dung web vẫn hoạt động miễn phí. Đăng ký để có cập nhật trực tiếp, lịch sử, cảnh báo và báo cáo.',
   pillTrialEnded: 'Hết dùng thử',
   statusStartTrialTitle: 'Bắt đầu dùng thử',
   statusStartTrialSubtitle:
@@ -33,8 +33,8 @@ export const plans = {
   compareDevicesFree: 'Quy tắc ở mọi máy, báo cáo từ 1 máy',
   compareDevicesPremium: 'Mọi máy đều báo cáo',
   compareParents: 'Phụ huynh',
-  compareParentsFree: 'Tối đa 3',
-  compareParentsPremium: 'Tối đa 6',
+  compareParentsFree: 'Tối đa 3, tính cả bạn',
+  compareParentsPremium: 'Tối đa 6, tính cả bạn',
   compareSync: 'Cập nhật từ thiết bị',
   compareSyncFree: 'Khi bạn mở xem',
   compareSyncPremium: 'Trực tiếp',
@@ -55,7 +55,7 @@ export const plans = {
   compareSafety: 'Cảnh báo bảo vệ và Báo an toàn',
   compareSafetyFree: 'Cảnh báo + Báo an toàn',
   compareSafetyPremium: 'Thêm ảnh cho mỗi lần Báo an toàn',
-  compareControls: 'Chặn ứng dụng và chặn nội dung web',
+  compareControls: 'Chặn ứng dụng và Chặn nội dung web',
   compareControlsFree: 'Mọi ứng dụng, bộ danh mục cố định',
   compareControlsPremium: 'Theo danh mục, danh sách riêng, yêu cầu mở trang',
   compareReport: 'Báo cáo tuần',
@@ -66,7 +66,7 @@ export const plans = {
   compareActivityFeedPremium: '30 ngày',
   compareChildReport: 'Báo cáo từng trẻ',
   compareIncluded:
-    'Cả hai gói đều có Giới hạn hằng ngày, Giờ khóa thiết bị, Chặn ứng dụng, Giới hạn ứng dụng, Duyệt ứng dụng mới, Chặn nội dung web, Khóa thiết bị, SOS, Yêu cầu thêm giờ và Nhiệm vụ thưởng trên iPhone, Android, Mac và Windows trong một gia đình, cùng với bảng điều khiển web. Android TV và Chromebook cũng được hỗ trợ, với ít tính năng kiểm soát hơn.',
+    'Cả hai gói đều có Giới hạn hằng ngày, Giờ khóa thiết bị, Chặn ứng dụng, Duyệt ứng dụng mới, Chặn nội dung web, Khóa thiết bị, SOS, Yêu cầu thêm giờ và Nhiệm vụ thưởng trên iPhone, Android, Mac và Windows trong một gia đình, cùng với bảng điều khiển web, và Giới hạn ứng dụng trên Android, Mac và Windows. Android TV và Chromebook cũng được hỗ trợ, với ít tính năng kiểm soát hơn.',
   sectionWhyPremium: 'Premium thêm gì',
   sectionWhyPremiumSubtitle:
     'Mọi quy tắc vẫn hoạt động ở gói Miễn phí. Premium thêm những gì bạn thấy được, và thấy sớm đến đâu.',
@@ -122,7 +122,7 @@ export const plans = {
   memberTrialActiveSubtitle:
     'Gia đình này đang dùng thử. Khi hết hạn, mọi quy tắc vẫn hoạt động trên tất cả thiết bị và một thiết bị vẫn gửi báo cáo; chủ gia đình có thể đăng ký để có hoạt động trực tiếp, lịch sử và báo cáo từ mọi thiết bị.',
   memberTrialEndedSubtitle:
-    'Bản dùng thử của gia đình này đã kết thúc. Giới hạn hằng ngày, Giờ khóa thiết bị, Chặn ứng dụng, Chặn nội dung web và vị trí vẫn hoạt động. Hãy nhờ chủ gia đình đăng ký để có cập nhật trực tiếp, lịch sử và cảnh báo.',
+    'Bản dùng thử của gia đình này đã kết thúc. Giới hạn hằng ngày, Giờ khóa thiết bị, Chặn ứng dụng, vị trí và công tắc Chặn nội dung web vẫn hoạt động. Hãy nhờ chủ gia đình đăng ký để có cập nhật trực tiếp, lịch sử và cảnh báo.',
   memberSetupTrialSubtitle:
     'Thời gian dùng thử bắt đầu khi chủ gia đình kết nối một thiết bị phụ huynh và một thiết bị của trẻ.',
   premiumActivatedTitle: 'Đã mở khóa Premium',
@@ -140,7 +140,8 @@ export const plans = {
   subscriptionOfferNotConfigured:
     'Gói đăng ký này hiện chưa khả dụng. Vui lòng thử lại sau.',
   unableToStartPurchase: 'Không thể bắt đầu giao dịch. Vui lòng thử lại.',
-  noActiveSubscription: 'Không tìm thấy gói đăng ký đang hoạt động.',
+  noActiveSubscription:
+    'Không tìm thấy gói đăng ký đang hoạt động. Vui lòng đăng nhập đúng tài khoản App Store hoặc Google Play đã dùng để đăng ký, rồi thử lại.',
   purchasesRestored: 'Đã khôi phục giao dịch.',
   unableToRestorePurchases: 'Không thể khôi phục giao dịch. Vui lòng thử lại.',
   purchaseVerificationFailed:
@@ -149,8 +150,8 @@ export const plans = {
   // nên câu chữ phải nói rõ ai cần hành động thay vì đưa nút họ không dùng được.
   familyPremiumEndedTitle: 'Gói Premium của gia đình này đã kết thúc',
   familyPremiumEndedBody:
-    'Giới hạn hằng ngày, Giờ khóa thiết bị, Chặn ứng dụng, Chặn nội dung web và vị trí vẫn hoạt động. Cập nhật trực tiếp, lịch sử, cảnh báo và báo cáo tạm dừng cho tới khi chủ gia đình gia hạn Premium.',
-  pricesUnavailable: 'Không tải được giá từ cửa hàng.',
+    'Giới hạn hằng ngày, Giờ khóa thiết bị, Chặn ứng dụng, vị trí và công tắc Chặn nội dung web vẫn hoạt động. Cập nhật trực tiếp, lịch sử, cảnh báo và báo cáo tạm dừng cho tới khi chủ gia đình gia hạn Premium.',
+  pricesUnavailable: 'Không thể tải giá từ cửa hàng.',
   pricesRetry: 'Thử lại',
   featureRewardTasks: 'Nhiệm vụ thưởng',
   sectionChoosePlan: 'Chọn gói của bạn',
@@ -180,11 +181,11 @@ export const plans = {
   platformMac: 'Mac',
   platformMacDetail: 'Chỉ thiết bị của trẻ · macOS 12 trở lên',
   platformIosLimits:
-    'Không có Giới hạn ứng dụng và cảnh báo tin nhắn, còn ứng dụng bị chặn được chọn ngay trên iPhone.',
+    'Không có Giới hạn ứng dụng và cảnh báo tin nhắn, còn ứng dụng cho tính năng Chặn ứng dụng được chọn ngay trên iPhone.',
   platformMacLimits: 'Không có cảnh báo tin nhắn, vị trí chỉ ở mức tương đối.',
   platformWindowsLimits: 'Không có cảnh báo tin nhắn, vị trí chỉ ở mức tương đối.',
   platformAndroidTvLimits:
-    'Không có cảnh báo tin nhắn, vị trí, SOS và yêu cầu thêm giờ. Tính năng Chặn ứng dụng không bảo đảm chặn được mọi lúc.',
+    'Không có cảnh báo tin nhắn, vị trí, SOS và Yêu cầu thêm giờ. Tính năng Chặn ứng dụng không bảo đảm chặn được mọi lúc.',
   platformChromebookLimits:
     'Chỉ có tính năng Chặn nội dung web — không có Giới hạn hằng ngày, Giờ khóa thiết bị, tính năng Chặn ứng dụng, Khóa thiết bị, SOS và vị trí.',
   platformComingSoon: 'Sắp có',
@@ -193,7 +194,8 @@ export const plans = {
   platformAndroidTv: 'Android TV',
   platformAndroidTvDetail: 'Chỉ thiết bị của trẻ · Android TV 7 trở lên',
   platformChromebook: 'Chromebook',
-  platformChromebookDetail: 'Thiết bị của trẻ · chỉ lọc web trong Chrome',
+  platformChromebookDetail:
+    'Thiết bị của trẻ · tính năng Chặn nội dung web chỉ trong Chrome',
   teaserCta: 'Xem Premium',
   teaserProofOtherApps: 'Ứng dụng khác: {{count}} · {{minutes}}',
   teaserProofOtherMinutes: 'Ứng dụng khác: {{minutes}}',

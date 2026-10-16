@@ -26,7 +26,7 @@ export const userGuide = {
     controls: {
       title: 'Điều khiển hằng ngày',
       description:
-        'Giới hạn, lịch khóa, chặn ứng dụng, khóa thiết bị, thêm giờ và phần thưởng',
+        'Giới hạn hằng ngày, Giờ khóa thiết bị, Chặn ứng dụng, Giới hạn ứng dụng, Khóa thiết bị, Yêu cầu thêm giờ và Nhiệm vụ thưởng',
     },
     safety: {
       title: 'An toàn và theo dõi',
@@ -54,8 +54,8 @@ export const userGuide = {
         '3': 'Trong [[Gia đình]], chạm [[Tạo gia đình]] rồi đặt tên gia đình (ví dụ: “Gia đình Nguyễn”). Tên này sẽ hiển thị khi các phụ huynh khác tham gia. Nếu một phụ huynh khác đã tạo gia đình, hãy chạm [[Tham gia gia đình]].',
         '4': 'Thiết lập mã PIN phụ huynh (6 chữ số) trong Cài đặt, mục Bảo mật. Hãy ghi nhớ hoặc lưu giữ ở nơi an toàn và không chia sẻ với trẻ.',
         '5': 'Khuyến nghị: bật Khóa ứng dụng và mở khóa bằng sinh trắc học trong Cài đặt để người khác không thể mở ứng dụng phụ huynh trên thiết bị của bạn.',
-        '6': 'Mở [[Gia đình]], chạm + rồi chọn [[Thêm thiết bị của trẻ]]. Giữ màn hình này mở để quét mã QR hoặc nhập mã hiển thị trên thiết bị của trẻ.',
-        '7': 'Sau khi thiết bị của trẻ được kết nối, mở hồ sơ của con trong mục Gia đình (hoặc mở thiết bị, nếu thiết bị chưa được gán cho con). Hãy cùng con thiết lập Giới hạn hằng ngày, Giờ khóa thiết bị và hoàn tất việc cấp quyền.',
+        '6': 'Mở [[Gia đình]] rồi chạm biểu tượng quét ([[Quét mã]]). Camera sẽ mở ngay: quét mã QR trên thiết bị của trẻ, hoặc chạm [[Nhập mã thủ công]] rồi nhập mã.',
+        '7': 'Sau khi thiết bị của trẻ được kết nối, KidGate sẽ hỏi ai dùng thiết bị đó: chọn con của bạn (hoặc thêm con), hoặc [[Không gán cho ai]] nếu là thiết bị dùng chung. Sau đó mở hồ sơ của con trong mục Gia đình (hoặc mở thiết bị, nếu thiết bị chưa được gán cho con). Hãy cùng con thiết lập Giới hạn hằng ngày, Giờ khóa thiết bị và hoàn tất việc cấp quyền.',
       },
     },
     getStartedChild: {
@@ -67,8 +67,8 @@ export const userGuide = {
         '2': 'Giữ màn hình ghép nối luôn mở. Đưa mã QR cho phụ huynh hoặc đọc mã gồm 6 ký tự.',
         '3': 'Trên thiết bị phụ huynh, quét mã QR hoặc nhập mã. Trên thiết bị của trẻ, xác nhận phụ huynh khi được hỏi — chỉ chấp nhận người mà bạn biết rõ.',
         '4': 'Chờ đến khi màn hình chính hiển thị trạng thái đã kết nối. Không đóng hẳn KidGate trong quá trình thiết lập.',
-        '5': 'Tại màn hình Trạng thái, hãy cấp toàn bộ quyền mà KidGate yêu cầu (thông báo, vị trí, camera và các quyền riêng theo nền tảng). Chạm từng dòng cho đến khi hiển thị đã cho phép.',
-        '6': 'Hãy giữ KidGate được cài đặt và đăng nhập trên thiết bị của trẻ. Sau bước này, phụ huynh sẽ quản lý các giới hạn từ thiết bị của họ.',
+        '5': 'Tại màn hình [[Trạng thái]], chạm [[Tiếp tục thiết lập]] trên thẻ [[Hoàn tất thiết lập cùng bố mẹ]]. Màn hình [[Thiết lập bảo vệ]] sẽ lần lượt xin từng quyền KidGate cần (thông báo, vị trí, camera và các quyền riêng theo nền tảng). Hãy cho phép từng quyền, hoặc tạm bỏ qua một bước tùy chọn.',
+        '6': 'Hãy giữ KidGate được cài đặt và kết nối trên thiết bị của trẻ. Sau bước này, phụ huynh sẽ quản lý các giới hạn từ thiết bị của họ.',
       },
     },
     connectChild: {
@@ -82,7 +82,7 @@ export const userGuide = {
         '3': 'Camera sẽ mở ngay: cấp quyền camera nếu được hỏi, sau đó đưa mã QR trên thiết bị của trẻ vào khung hình.',
         '4': 'Hoặc dùng mã ký tự: chạm [[Nhập mã thủ công]], nhập 6 ký tự hiển thị trên thiết bị của trẻ rồi tiếp tục.',
         '5': 'Trên thiết bị của trẻ, đọc kỹ màn hình xác nhận. Chỉ chạm [[Đồng ý kết nối]] khi tên phụ huynh hiển thị chính xác.',
-        '6': 'Chờ thiết bị phụ huynh báo đã kết nối. Thiết bị mới sẽ xuất hiện trong mục [[Gia đình]].',
+        '6': 'Chờ thiết bị phụ huynh báo đã kết nối. Sau đó chủ gia đình sẽ được hỏi ai dùng thiết bị mới: chọn con dùng thiết bị, hoặc [[Không gán cho ai]] nếu là thiết bị dùng chung. Thiết bị mới xuất hiện trong mục [[Gia đình]].',
         '7': 'Mở thiết bị mới và kiểm tra mục [[Hoạt động lần cuối]] đã được cập nhật. Nếu vẫn ngoại tuyến, hãy mở lại KidGate trên thiết bị của trẻ và kiểm tra kết nối mạng.',
         '8': 'Tiếp theo, hãy cấp quyền trên thiết bị của trẻ (xem nhóm Cấp quyền ứng dụng). Các chức năng điều khiển sẽ chưa hoạt động đầy đủ nếu còn thiếu quyền.',
       },
@@ -107,8 +107,8 @@ export const userGuide = {
       title: 'Kết nối Android TV',
       summary:
         'Cài KidGate trên Android TV và ghép nối từ thiết bị của bạn, không cần gõ bằng điều khiển.',
-      keywords: 'android tv, google tv, tivi, ti vi, fire tv, tv box',
-      tip: 'TV không có Vị trí, SOS, Báo an toàn hay Yêu cầu thêm giờ, và ứng dụng bị chặn sẽ bị đóng sau khi mở chứ không bị ngăn mở. Số liệu thời gian sử dụng có thể cập nhật chậm tới một giờ.',
+      keywords: 'android tv, google tv, tivi, ti vi, tv box',
+      tip: 'TV không có Vị trí, SOS, Báo an toàn hay Yêu cầu thêm giờ, và ứng dụng bị chặn sẽ bị đóng sau khi mở chứ không bị ngăn mở. Số liệu thời gian sử dụng có thể cập nhật chậm tới một giờ. TV không có dịch vụ Google Play thì không nhận được thông báo đẩy, nên lệnh khóa, mở khóa hoặc thay đổi quy tắc có thể mất tới 30 phút mới đến nơi.',
       steps: {
         '1': 'Trên TV, mở Google Play, tìm KidGate rồi cài đặt.',
         '2': 'Mở KidGate trên TV. Màn hình sẽ hiện mã QR và mã gồm 6 ký tự; không cần đăng nhập.',
@@ -124,7 +124,7 @@ export const userGuide = {
       summary:
         'Thêm bộ lọc web KidGate vào Chrome trên Chromebook, Mac hoặc PC. Tiện ích hiển thị như một thiết bị riêng.',
       keywords: 'chromebook, tiện ích chrome, extension, tiện ích mở rộng',
-      tip: 'Tiện ích chỉ lọc trong Chrome: không lọc trình duyệt khác, và không lọc cửa sổ ẩn danh nếu bạn chưa cho phép. Vào chrome://extensions, mở Chi tiết của KidGate và bật Cho phép ở chế độ ẩn danh.',
+      tip: 'Tiện ích chỉ lọc trong Chrome: không lọc trình duyệt khác, và không lọc cửa sổ ẩn danh nếu bạn chưa cho phép. Vào chrome://extensions, mở Chi tiết của KidGate và bật Cho phép ở chế độ ẩn danh. Tiện ích không có Giới hạn hằng ngày, Giờ khóa thiết bị, Khóa thiết bị, Chặn ứng dụng hay thống kê thời gian sử dụng; những tính năng này cần điện thoại, máy tính hoặc TV.',
       steps: {
         '1': 'Trong Chrome trên máy tính của con, mở Chrome Web Store, tìm KidGate rồi chọn Thêm vào Chrome.',
         '2': 'Chọn biểu tượng KidGate trên thanh công cụ Chrome. Nếu không thấy, hãy ghim tiện ích từ menu Tiện ích (biểu tượng mảnh ghép). Cửa sổ bật lên sẽ hiện mã QR và mã gồm 6 ký tự; giữ cửa sổ này mở trong lúc ghép nối.',
@@ -172,7 +172,7 @@ export const userGuide = {
         '2': 'Nhập một cái tên mọi phụ huynh nhìn là nhận ra, rồi lưu.',
         '3': 'Để gỡ thiết bị, mở thiết bị và chọn [[Gỡ thiết bị]] ở cuối màn hình, rồi xác nhận. Trong tab [[Thiết bị của trẻ]] của thẻ gia đình, bạn cũng có thể vuốt sang trái trên thiết bị.',
         '4': 'Thiết bị rời khỏi gia đình, và KidGate trên máy đó báo rằng thiết bị đã bị gỡ.',
-        '5': 'Để dùng lại thiết bị, ví dụ sau khi cài lại máy hoặc chuyển cho con khác, hãy kết nối như thiết bị mới bằng [[Thêm thiết bị của trẻ]] trong [[Gia đình]].',
+        '5': 'Để dùng lại thiết bị, ví dụ sau khi cài lại máy hoặc chuyển cho con khác, hãy kết nối như thiết bị mới: mở [[Gia đình]] rồi chạm biểu tượng quét ([[Quét mã]]).',
       },
     },
     androidPermissions: {
@@ -180,17 +180,17 @@ export const userGuide = {
       summary:
         'Bật Truy cập mức sử dụng, Hiển thị trên ứng dụng khác, Trợ năng, quyền pin và các quyền liên quan.',
       keywords:
-        'trợ năng, quyền truy cập sử dụng, hiển thị trên ứng dụng khác, thông báo, quản trị thiết bị, vpn, cấp quyền',
-      tip: 'Điều quan trọng là cấp đủ quyền, không phải thứ tự thực hiện. Mọi mục còn báo đỏ hoặc chưa cho phép trên màn hình Trạng thái của thiết bị trẻ cần được xử lý trước khi sử dụng chức năng Khóa thiết bị hoặc Giờ khóa thiết bị.',
+        'trợ năng, quyền truy cập sử dụng, hiển thị trên ứng dụng khác, thông báo, quản trị thiết bị, ngăn gỡ cài đặt, micrô, vpn, cấp quyền',
+      tip: 'Điều quan trọng là cấp đủ quyền, không phải thứ tự thực hiện. Hãy làm mọi bước màn hình thiết lập đưa ra, kể cả bước tùy chọn, trước khi dựa vào chức năng Khóa thiết bị hoặc Giờ khóa thiết bị. Bước nào bạn bỏ qua sẽ ở lại màn hình Trạng thái cho đến khi bạn làm.',
       steps: {
-        '1': 'Mở KidGate, vào [[Trạng thái]] và làm lần lượt từ trên xuống trong danh sách quyền.',
-        '2': '[[Thông báo]]: chạm vào dòng tương ứng, rồi [[Cho phép]]. Phụ huynh cần thông báo đẩy cho lệnh khóa và yêu cầu thêm giờ.',
+        '1': 'Mở KidGate trên thiết bị của trẻ và vào [[Trạng thái]]. Trên thẻ [[Hoàn tất thiết lập cùng bố mẹ]], chạm [[Tiếp tục thiết lập]]. Màn hình [[Thiết lập bảo vệ]] sẽ dẫn qua từng quyền một; các bước dưới đây mô tả từng quyền.',
+        '2': '[[Thông báo]]: chạm [[Cho phép]]. KidGate cần thông báo của thiết bị này để nhận ngay kết quả duyệt yêu cầu thêm giờ và các lời nhắc.',
         '3': '[[Truy cập mức sử dụng]]: mở màn hình hệ thống, tìm KidGate rồi bật. Quyền này cần thiết để theo dõi thời gian sử dụng và áp dụng giới hạn.',
         '4': '[[Hiển thị trên ứng dụng khác]]: cho phép KidGate. Quyền này cần thiết để màn hình khóa hiển thị đè lên các ứng dụng khác.',
-        '5': '[[Trợ năng]] hỗ trợ khóa: mở [[Cài đặt]], vào [[Trợ năng]], tìm KidGate trong [[Ứng dụng đã cài đặt / Đã tải xuống]] rồi bật. Quyền này giúp duy trì khóa ổn định.',
+        '5': '[[Trợ năng]] hỗ trợ khóa: đọc phần giải thích rồi chạm [[Đồng ý]]; thao tác này mở trang Trợ năng. Nếu hiện một danh sách, tìm KidGate trong [[Ứng dụng đã cài đặt / Đã tải xuống]], bật lên rồi chạm [[Cho phép]] trên hộp thoại xác nhận của Android. Quyền này giúp duy trì khóa ổn định.',
         '6': '[[Pin không bị hạn chế]]: chạm [[Cho phép]] khi hệ thống hỏi. Nếu hộp thoại không xuất hiện, mở [[Thông tin ứng dụng]], vào [[Pin]] rồi chọn [[Không bị hạn chế]].',
-        '7': '[[Chuông báo và lời nhắc]]: cho phép để Giờ khóa thiết bị bắt đầu và kết thúc đúng giờ.',
-        '8': '[[Vị trí]] và [[Camera]] (cho Báo an toàn và SOS kèm ảnh): cấp quyền theo yêu cầu của KidGate. Sau đó quay lại [[Trạng thái]] và xác nhận mọi mục đã được cho phép.',
+        '7': '[[Chuông báo và lời nhắc]]: cho phép để Giờ khóa thiết bị bắt đầu và kết thúc đúng giờ. Tiếp theo là [[Ngăn gỡ cài đặt]]: chạm [[Cho phép]], rồi chạm Kích hoạt trên màn hình xác nhận của Android. Khi đó muốn gỡ KidGate phải tắt mục này trước, và phụ huynh sẽ được báo.',
+        '8': '[[Vị trí]]: chọn “Cho phép mọi lúc”, nếu không bản đồ chỉ cập nhật khi KidGate đang mở. [[Camera]] (cho ảnh Báo an toàn và SOS) và micrô (cho âm thanh SOS): cho phép khi đang dùng ứng dụng. Khi màn hình thiết lập báo [[Hoàn tất]], bạn đã xong.',
       },
     },
     iosScreenTime: {
@@ -201,10 +201,10 @@ export const userGuide = {
         'thời gian sử dụng, screen time, family controls, iphone, ipad, cho phép',
       tip: 'Nếu không thấy nút Cho phép, hãy mở Cài đặt iOS, vào Thời gian sử dụng và bật Thời gian sử dụng trên thiết bị của trẻ trước.',
       steps: {
-        '1': 'Mở KidGate và ở lại màn hình [[Trạng thái]].',
-        '2': 'Chạm [[Cho phép Sử dụng ứng dụng và Trang web]], hoặc chạm biểu ngữ Thời gian sử dụng.',
+        '1': 'Mở KidGate trên thiết bị của trẻ và vào [[Trạng thái]]. Trên thẻ [[Hoàn tất thiết lập cùng bố mẹ]], chạm [[Tiếp tục thiết lập]].',
+        '2': 'Trong [[Thiết lập bảo vệ]], chạm [[Cho phép Sử dụng ứng dụng và Trang web]].',
         '3': 'Trong hộp thoại hệ thống, chạm [[Cho phép]]. Đừng đóng hộp thoại khi chưa chọn.',
-        '4': 'Quay lại KidGate. Biểu ngữ sẽ biến mất khi quyền được cấp thành công.',
+        '4': 'Quay lại KidGate. Màn hình thiết lập tự chuyển sang bước tiếp theo khi quyền được cấp thành công.',
         '5': 'Nếu trước đó đã từ chối: mở [[Cài đặt]] iOS, tìm KidGate, bật [[Thời gian sử dụng]] trong trang đó, sau đó mở lại KidGate.',
         '6': 'Nếu muốn chọn ứng dụng cần chặn: mở [[Cài đặt]] KidGate, chọn [[Mở khóa bằng mã PIN phụ huynh]], mở mục [[Chặn ứng dụng]] rồi lưu lại.',
         '7': 'Mở hồ sơ của con (hoặc mở thiết bị, nếu thiết bị chưa được gán cho con), rồi mục [[Chặn ứng dụng]], và kiểm tra danh sách đã đồng bộ. Bật chặn khi bạn đã sẵn sàng.',
@@ -246,10 +246,10 @@ export const userGuide = {
       tip: 'Nên thiết lập khung giờ đi học và giờ ngủ trước. Hãy tránh các khung giờ chồng lấn để dễ theo dõi.',
       steps: {
         '1': 'Trên thiết bị phụ huynh, mở hồ sơ của con (hoặc mở thiết bị, nếu thiết bị chưa được gán cho con), rồi [[Giờ khóa thiết bị]].',
-        '2': 'Chạm [[Thêm khung giờ]], sau đó đặt giờ bắt đầu, giờ kết thúc và các ngày áp dụng.',
-        '3': 'Lưu khung giờ. Lặp lại các bước trên nếu muốn thêm khung giờ khác.',
-        '4': 'Bật lịch nếu màn hình có công tắc bật/tắt.',
-        '5': 'Trên thiết bị của trẻ, kiểm tra quyền [[Chuông báo và lời nhắc]] và quyền [[Thời gian sử dụng]] vẫn được cấp để lịch chạy đúng giờ.',
+        '2': 'Bật công tắc [[Bật Giờ khóa thiết bị]]. Khi chưa bật, màn hình không hiện khung giờ nào và cũng không có nút thêm.',
+        '3': 'Chạm [[Thêm khung giờ]], sau đó đặt giờ bắt đầu, giờ kết thúc và các ngày áp dụng.',
+        '4': 'Chạm [[Lưu]] ở cuối màn hình. Nếu muốn thêm khung giờ khác, hãy lặp lại bước trước rồi mới lưu.',
+        '5': 'Trên thiết bị Android của trẻ, kiểm tra quyền [[Chuông báo và lời nhắc]] vẫn được cấp để khung giờ bắt đầu và kết thúc đúng giờ. Trên iPhone hoặc iPad của trẻ, kiểm tra quyền [[Thời gian sử dụng]] vẫn được cấp.',
         '6': 'Khi đang trong khung giờ khóa, thẻ thiết bị sẽ hiển thị Trong Giờ khóa thiết bị · đã khóa. Chỉ chạm [[Mở khóa]] khi bạn chủ ý bỏ qua lịch.',
       },
     },
@@ -344,24 +344,24 @@ export const userGuide = {
       keywords: 'gps, bản đồ, con đang ở đâu, tìm điện thoại, định vị, địa điểm',
       tip: 'Cần cấp quyền vị trí trên thiết bị của trẻ và có kết nối mạng ổn định. Trong nhà, độ chính xác của GPS có thể giảm.',
       steps: {
-        '1': 'Trên thiết bị của trẻ, cấp quyền Vị trí cho KidGate khi được hỏi (hoặc trong Cài đặt hệ thống).',
+        '1': 'Trên thiết bị của trẻ, cấp quyền Vị trí cho KidGate khi được hỏi (hoặc trong Cài đặt hệ thống). Chọn “Cho phép mọi lúc” trên Android, hoặc “Luôn luôn” trên iPhone và iPad, nếu không vị trí chỉ cập nhật khi KidGate đang mở.',
         '2': 'Trên thiết bị phụ huynh, mở hồ sơ của con (hoặc mở thiết bị, nếu thiết bị chưa được gán cho con), rồi Vị trí.',
         '3': 'Bật chia sẻ vị trí nếu đang tắt, sau đó chờ lần cập nhật đầu tiên.',
         '4': 'Nếu vẫn hiển thị trạng thái đang chờ, hãy chạm nút làm mới hoặc mở lại màn hình.',
-        '5': 'Tùy chọn: mở hồ sơ của con (hoặc mở thiết bị, nếu thiết bị chưa được gán cho con), vào mục [[Cảnh báo]] rồi chọn [[Địa điểm]] để thiết lập Cảnh báo địa điểm khi con đến hoặc rời khỏi một địa điểm đã lưu.',
+        '5': 'Tùy chọn, và thuộc gói Premium: mở hồ sơ của con (hoặc mở thiết bị, nếu thiết bị chưa được gán cho con), vào mục [[Cảnh báo]] rồi chọn [[Địa điểm]] để thiết lập Cảnh báo địa điểm khi con đến hoặc rời khỏi một địa điểm đã lưu.',
         '6': 'Nếu điện thoại thất lạc ở gần, mở Vị trí rồi chạm [[Đổ chuông thiết bị]]. iPhone sẽ không kêu khi đang ở chế độ im lặng hoặc bật Tập trung.',
       },
     },
     checkIn: {
       title: 'Gửi yêu cầu Báo an toàn',
-      summary: 'Yêu cầu trẻ xác nhận vẫn an toàn, kèm vị trí và ảnh nếu có thể.',
-      tip: 'Cần cấp quyền Camera trên thiết bị của trẻ nếu bạn muốn Báo an toàn có kèm ảnh.',
+      summary: 'Yêu cầu trẻ xác nhận vẫn an toàn, kèm vị trí và, với Premium, cả ảnh.',
+      tip: 'Ảnh thuộc gói Premium; gói miễn phí chỉ yêu cầu vị trí. Muốn có ảnh, cần cấp quyền Camera trên thiết bị của trẻ.',
       steps: {
         '1': 'Trên thiết bị phụ huynh, mở hồ sơ của con (hoặc mở thiết bị, nếu thiết bị chưa được gán cho con).',
         '2': 'Chạm [[Báo an toàn]] (nút thao tác nhanh hoặc dòng trong mục [[Theo dõi an toàn]]).',
         '3': 'Thiết bị của trẻ sẽ nhận được thông báo và màn hình Báo an toàn. Trẻ chạm để xác nhận vẫn ổn hoặc cần trợ giúp.',
-        '4': 'Nếu quyền camera đã được cấp, KidGate sẽ gửi kèm ảnh và vị trí khi có thể.',
-        '5': 'Trên thiết bị phụ huynh, mở lịch sử Báo an toàn để xem phản hồi và ảnh mới nhất.',
+        '4': 'Với Premium, nếu quyền camera đã được cấp, KidGate sẽ gửi kèm ảnh và vị trí khi có thể. Với gói miễn phí, chỉ gửi vị trí.',
+        '5': 'Trên thiết bị phụ huynh, mục [[Lịch sử Báo an toàn]] ở cùng màn hình đó hiển thị phản hồi mới nhất, kèm ảnh nếu có.',
       },
     },
     sos: {
@@ -369,7 +369,7 @@ export const userGuide = {
       summary: 'Cách trẻ gửi SOS, cảnh báo gồm những gì và cách phụ huynh phản hồi.',
       keywords:
         'nút báo động, cầu cứu, nguy hiểm, không an toàn, ghi âm, giọng nói, micrô, còi, email, ông bà, hàng xóm, người thân',
-      tip: 'SOS dùng được trên điện thoại và máy tính, không có trên TV hay tiện ích Chrome. Chỉ điện thoại mới ghi âm. Hãy thử một lần tại nhà và thống nhất với con khi nào nên dùng SOS, khi nào chỉ cần Báo an toàn.',
+      tip: 'SOS dùng được trên điện thoại và máy tính, không có trên TV hay tiện ích Chrome. Chỉ điện thoại mới ghi âm. Hãy thử một lần tại nhà, trước khi thêm Liên hệ tin cậy hoặc sau khi đã báo cho họ, vì mỗi lần SOS họ đều nhận email. Thống nhất với con khi nào nên dùng SOS, khi nào chỉ cần Báo an toàn.',
       steps: {
         '1': 'Trên thiết bị của trẻ, mở SOS trong KidGate. Trên điện thoại, đó là nút ở giữa thanh dưới cùng.',
         '2': 'Giữ nút SOS trong 5 giây. Thả tay trước đó thì SOS bị hủy.',
@@ -384,14 +384,14 @@ export const userGuide = {
       summary:
         'Bật tính năng Chặn nội dung web để hạn chế các trang không phù hợp, nếu nền tảng có hỗ trợ.',
       keywords:
-        'chặn web, chặn link, chặn trang web, url, nội dung người lớn, web đen, tìm kiếm an toàn, dns, vpn, iphone, ipad',
-      tip: 'Khả năng lọc web phụ thuộc vào từng nền tảng. Nên kết hợp với mục Chặn ứng dụng để bảo vệ hiệu quả hơn.',
+        'chặn web, chặn link, chặn trang web, url, nội dung người lớn, web đen, tìm kiếm an toàn, chế độ hạn chế của youtube, danh mục, dns, dns riêng tư, vpn, iphone, ipad',
+      tip: 'Bộ lọc đọc tên trang web chứ không đọc nội dung trang, và phạm vi lọc phụ thuộc vào từng thiết bị. Điện thoại lọc được trình duyệt và nhiều ứng dụng. Máy Mac không kiểm tra được những trang mà trình duyệt giấu tên, khoảng một nửa số lượt truy cập. Windows kiểm tra mọi trình duyệt, chỉ theo tên trang. Tiện ích Chrome chỉ lọc trong Chrome. Chọn danh mục, lập danh sách riêng và trả lời yêu cầu mở trang đều thuộc gói Premium. Nên kết hợp tính năng Chặn nội dung web với mục Chặn ứng dụng để bảo vệ hiệu quả hơn.',
       steps: {
         '1': 'Trên thiết bị phụ huynh, mở hồ sơ của con (hoặc mở thiết bị, nếu thiết bị chưa được gán cho con), rồi mục Chặn nội dung web.',
-        '2': 'Xem trạng thái hiện tại (đã hạn chế trang không phù hợp hoặc chưa lọc).',
-        '3': 'Bật bộ lọc và lưu lại nếu màn hình có công tắc.',
+        '2': 'Bật [[Chặn nội dung không phù hợp]] ở trên cùng. Thay đổi có hiệu lực ngay nên không cần lưu. [[Bắt buộc tìm kiếm an toàn]] trên cùng màn hình còn khóa Google, Bing và DuckDuckGo ở kết quả an toàn và YouTube ở chế độ hạn chế, trên Android, Android TV và Chrome.',
+        '3': 'Trong [[Chặn những gì]], chọn các danh mục cần chặn. Thêm trang vào [[Luôn cho phép]] hoặc [[Luôn chặn]], hoặc bật [[Chỉ các trang được phép]] để chặn mọi thứ trừ danh sách cho phép của bạn. Khi con xin mở một trang bị chặn, yêu cầu sẽ chờ trong [[Yêu cầu mở trang]]. Các tùy chọn này thuộc gói Premium; gói miễn phí dùng một bộ danh mục cố định.',
         '4': 'Kiểm tra lại sau tại cùng màn hình. Nếu vẫn hiển thị Đang chờ, hãy mở lại KidGate trên thiết bị của trẻ để đồng bộ.',
-        '5': 'Trên iPhone hoặc iPad, mở KidGate trên thiết bị của con và chọn Cho phép khi iOS hỏi có cho KidGate thêm cấu hình VPN không, rồi nhập mật mã thiết bị. Việc này chỉ cần làm một lần.',
+        '5': 'Trên thiết bị của trẻ, mở KidGate và chấp thuận bộ lọc một lần. Trên iPhone hoặc iPad, chọn Cho phép khi iOS hỏi có cho KidGate thêm cấu hình VPN không, rồi nhập mật mã thiết bị. Trên Android, chấp thuận yêu cầu VPN, rồi mở Cài đặt, chọn Mạng và Internet, chọn DNS riêng tư rồi chọn Tắt, vì trình duyệt có thể lách bộ lọc khi DNS riêng tư đang bật.',
       },
     },
     protectionAlerts: {
@@ -399,7 +399,7 @@ export const userGuide = {
       summary: 'Nhận thông báo khi một quyền quan trọng trên thiết bị của trẻ bị tắt.',
       tip: 'Cảnh báo bảo vệ cho biết mức độ bảo vệ của KidGate đang suy giảm. Vui lòng bật lại quyền trên thiết bị của trẻ trong thời gian sớm nhất.',
       steps: {
-        '1': 'Trên thiết bị phụ huynh, mở hồ sơ của con (hoặc mở thiết bị, nếu thiết bị chưa được gán cho con), vào mục [[Cảnh báo]] rồi chọn [[Bảo vệ]] để mở Cảnh báo bảo vệ.',
+        '1': 'Trên thiết bị phụ huynh, mở hồ sơ của con (hoặc mở thiết bị, nếu thiết bị chưa được gán cho con), vào mục [[Cảnh báo]] rồi chọn [[Cảnh báo bảo vệ]].',
         '2': 'Xem các sự kiện gần đây, ví dụ Hiển thị trên ứng dụng khác, Trợ năng, Truy cập mức sử dụng, Camera hoặc Vị trí bị tắt.',
         '3': 'Trên thiết bị của trẻ, mở KidGate, rồi Trạng thái và bật lại quyền được nêu.',
         '4': 'Quay lại Cảnh báo bảo vệ và xác nhận không còn sự kiện bất thường mới.',
@@ -410,7 +410,7 @@ export const userGuide = {
       title: 'Xem báo cáo sử dụng',
       summary:
         'Xem mỗi thiết bị đã được dùng bao lâu hôm nay và trong 30 ngày qua, theo từng con, và qua báo cáo mỗi sáng thứ Hai.',
-      tip: 'Gói miễn phí hiển thị tổng thời gian hôm nay và 3 ứng dụng dùng nhiều nhất, cập nhật khi bạn mở xem. Premium có thêm lịch sử 30 ngày, khung giờ sử dụng của từng thiết bị, mọi ứng dụng, báo cáo riêng cho từng con và báo cáo tuần mới vào mỗi thứ Hai. iPhone và iPad chỉ báo cáo tổng thời gian.',
+      tip: 'Gói miễn phí hiển thị tổng thời gian hôm nay và 3 ứng dụng dùng nhiều nhất, cập nhật khi bạn mở xem. Premium có thêm lịch sử 30 ngày, khung giờ sử dụng của từng thiết bị, 10 ứng dụng dùng nhiều nhất, báo cáo riêng cho từng con và báo cáo tuần mới vào mỗi thứ Hai. iPhone và iPad chỉ báo cáo tổng thời gian.',
       steps: {
         '1': 'Mở [[Báo cáo]]. [[Hôm nay]] cộng dồn tất cả thiết bị; bên dưới là [[Báo cáo tuần]], từng con ([[Theo con]]) và từng thiết bị ([[Theo thiết bị]]).',
         '2': 'Chạm vào một thiết bị để xem [[Báo cáo sử dụng]] của thiết bị đó: hôm nay so với Giới hạn hằng ngày, [[30 ngày gần đây]], [[Khung giờ sử dụng]] và [[Ứng dụng dùng nhiều nhất]]. Bạn cũng có thể mở báo cáo này từ [[Mức sử dụng hôm nay]] trên màn hình thiết bị.',
@@ -452,7 +452,7 @@ export const userGuide = {
       title: 'Xem Video đã xem',
       summary: 'Lưu danh sách các video YouTube con đã xem, kèm kênh và thời điểm xem.',
       keywords: 'youtube, shorts, video đã xem, lịch sử xem',
-      tip: 'Video đã xem thuộc gói Premium và chỉ ghi lại YouTube. Tính năng hoạt động trên điện thoại Android, Android TV và tiện ích Chrome, không có trên iPhone và iPad. Trên máy Mac hoặc PC, hãy cài tiện ích Chrome. Trên TV, Shorts không được liệt kê.',
+      tip: 'Video đã xem thuộc gói Premium và chỉ ghi lại YouTube. Tính năng hoạt động trên điện thoại Android và tiện ích Chrome, không có trên iPhone và iPad. Trên máy Mac hoặc PC, hãy cài tiện ích Chrome. Android TV chỉ ghi lại video khi KidGate có quyền truy cập thông báo trên TV, mà hiện chưa có màn hình TV nào cấp được quyền đó; kể cả khi đã có, Shorts cũng không được liệt kê.',
       steps: {
         '1': 'Trên thiết bị phụ huynh, mở hồ sơ của con (hoặc mở thiết bị, nếu thiết bị chưa được gán cho con), rồi [[Video đã xem]] trong mục [[Theo dõi an toàn]].',
         '2': 'Bật [[Ghi lại video đã xem]]. Tính năng tắt cho đến khi bạn bật, và khi bật từ hồ sơ của con thì áp dụng cho tất cả thiết bị của con.',
@@ -479,7 +479,7 @@ export const userGuide = {
       summary:
         'Nhận cảnh báo khi một từ hoặc cụm từ đáng lo xuất hiện trong tin nhắn hoặc nội dung tìm kiếm trên điện thoại Android của con. Bạn chỉ thấy từ hoặc cụm từ bị đánh dấu, không bao giờ thấy tin nhắn.',
       keywords: 'sms, messenger, whatsapp, zalo, từ khoá, bắt nạt, đọc tin nhắn',
-      tip: 'Cảnh báo tin nhắn thuộc gói Premium và chỉ có trên điện thoại Android. Bạn chỉ nhận được loại cảnh báo và từ hoặc cụm từ bị đánh dấu. Phân tích bằng AI luôn tắt, trừ khi một phụ huynh bật cho cả gia đình.',
+      tip: 'Cảnh báo tin nhắn thuộc gói Premium. Tin nhắn chỉ được kiểm tra trên điện thoại Android; nội dung tìm kiếm còn được kiểm tra trong tiện ích Chrome. Bạn chỉ nhận được loại cảnh báo và từ hoặc cụm từ bị đánh dấu. Phân tích bằng AI luôn tắt, trừ khi một phụ huynh bật cho cả gia đình.',
       steps: {
         '1': 'Trên điện thoại Android của con, mở [[Cài đặt]] KidGate, chọn [[Mở khóa bằng mã PIN phụ huynh]], rồi chọn [[Cho phép truy cập thông báo]] trong mục [[Cảnh báo tin nhắn]] và bật KidGate trong danh sách vừa mở.',
         '2': 'Trên thiết bị của bạn, mở hồ sơ của con (hoặc mở thiết bị, nếu thiết bị chưa được gán cho con), rồi [[Cảnh báo tin nhắn]] trong mục [[Cảnh báo]], và chạm biểu tượng cài đặt ở trên cùng. Nếu con có nhiều thiết bị, hãy chọn điện thoại Android trước.',
@@ -497,7 +497,7 @@ export const userGuide = {
         '1': 'Trong [[Gia đình]], chạm + và chọn [[Thêm con]]. Nhập tên rồi lưu.',
         '2': 'Sau khi ghép nối một thiết bị mới, KidGate sẽ hỏi ai dùng thiết bị đó. Chọn con của bạn, hoặc [[Không gán cho ai]] nếu là thiết bị dùng chung. Sau đó KidGate đề xuất một bộ bảo vệ cơ bản: chọn [[Bật bảo vệ]] hoặc [[Để sau]].',
         '3': 'Thiết bị chưa được chọn cho ai sẽ nằm trong nhóm [[Chưa gán]] ở mục Gia đình. Chọn [[Gán cho trẻ…]] trên thẻ của thiết bị đó.',
-        '4': 'Khi thiết bị đã được gán, Giới hạn hằng ngày, Giờ khóa thiết bị, tính năng Chặn nội dung web, Báo an toàn, SOS, địa điểm và Nhiệm vụ thưởng được đặt trên hồ sơ của con và áp dụng cho tất cả thiết bị của con. Giới hạn hằng ngày trở thành một tổng chung cho các thiết bị đó.',
+        '4': 'Khi thiết bị đã được gán, Giới hạn hằng ngày, Giờ khóa thiết bị, tính năng Chặn nội dung web, Báo an toàn, SOS, Cảnh báo địa điểm và Nhiệm vụ thưởng được đặt trên hồ sơ của con và áp dụng cho tất cả thiết bị của con. Giới hạn hằng ngày trở thành một tổng chung cho các thiết bị đó.',
         '5': 'Để chuyển một thiết bị, mở hồ sơ của con sẽ dùng thiết bị đó và chọn [[Gán thêm thiết bị…]]. Để bỏ gán, vuốt thiết bị trong hồ sơ của con rồi chọn [[Bỏ gán]]. Xóa hồ sơ của con vẫn giữ các thiết bị ở trạng thái đã ghép nối.',
       },
     },
@@ -508,7 +508,7 @@ export const userGuide = {
       tip: 'Chỉ chủ gia đình mới đăng ký hoặc khôi phục giao dịch được, và chỉ trong ứng dụng trên điện thoại. Một gói dùng cho cả gia đình và mọi phụ huynh trong đó.',
       steps: {
         '1': 'Mở [[Cài đặt]]. Thẻ ở trên cùng hiển thị gói hiện tại; chọn [[Xem các gói]].',
-        '2': 'Bản dùng thử 7 ngày bắt đầu khi thiết bị đầu tiên của con được ghép nối, và có đầy đủ mọi tính năng Premium.',
+        '2': 'Bản dùng thử 7 ngày bắt đầu khi thiết bị đầu tiên của con được ghép nối, và có mọi tính năng Premium. Riêng số phụ huynh vẫn giữ nguyên giới hạn: tối đa 3 trong thời gian dùng thử, tối đa 6 với Premium.',
         '3': 'Với gói miễn phí, mọi quy tắc vẫn hoạt động, nhưng chỉ một thiết bị gửi báo cáo: tổng thời gian hôm nay và 3 ứng dụng dùng nhiều nhất, cập nhật khi bạn mở xem. Premium có thêm cập nhật trực tiếp, mọi thiết bị, lịch sử 30 ngày, lịch sử web và video, và báo cáo tuần.',
         '4': 'Nếu bản dùng thử kết thúc khi gia đình có nhiều hơn một thiết bị của con, KidGate sẽ yêu cầu bạn [[Chọn thiết bị chính]]. Thiết bị đó tiếp tục gửi báo cáo; các thiết bị khác hiện [[Ngừng báo cáo]] nhưng vẫn giữ quy tắc. Bạn có thể đổi lựa chọn mỗi 7 ngày một lần.',
         '5': 'Để đăng ký, chọn một gói rồi chạm [[Đăng ký Premium]]. Khi đăng ký, mọi thiết bị đang ngừng báo cáo sẽ hoạt động lại. Nếu bạn đã từng thanh toán, chọn [[Khôi phục giao dịch]].',
@@ -522,7 +522,7 @@ export const userGuide = {
       steps: {
         '1': 'Mở [[Cài đặt]], rồi [[Thông báo trên máy này]].',
         '2': 'Trong mục [[Cảnh báo]], tắt loại cảnh báo bạn không muốn nhận trên điện thoại này, ví dụ [[Yêu cầu thêm giờ]] hoặc [[Cài hoặc gỡ ứng dụng]].',
-        '3': '[[Tổng kết tuần]] bật hoặc tắt thông báo sáng thứ Hai cho báo cáo tuần.',
+        '3': '[[Báo cáo tuần]] bật hoặc tắt thông báo sáng thứ Hai báo rằng có báo cáo mới.',
         '4': 'Bật [[Giờ yên tĩnh]] và đặt [[Từ]], [[Đến]] để tắt tiếng cảnh báo vào ban đêm. Giờ được tính theo đồng hồ của điện thoại này.',
         '5': 'Trong Cài đặt, [[Thông báo trong ứng dụng]] và [[Âm báo SOS]] là hai mục riêng: chúng điều khiển biểu ngữ bên trong ứng dụng và âm thanh SOS lớn trên điện thoại này.',
       },
@@ -540,10 +540,25 @@ export const userGuide = {
         '4': 'Trên bảng điều khiển web, đổi ngôn ngữ ở phần tài khoản trong menu bên. Thay đổi chỉ áp dụng cho trình duyệt đó.',
       },
     },
+    appearance: {
+      title: 'Đổi giao diện ứng dụng',
+      summary: 'Chọn giao diện tối, phong cách và màu giao diện trên từng điện thoại.',
+      keywords:
+        'theme, chủ đề, chế độ tối, dark mode, màu sắc, màu hồng, nền đen, tùy chỉnh',
+      tip: 'Mỗi điện thoại giữ giao diện riêng, nên con đổi trên điện thoại của con sẽ không làm đổi điện thoại của bạn.',
+      steps: {
+        '1': 'Trên điện thoại của phụ huynh, mở [[Cài đặt]]. Giao diện tối, phong cách và màu giao diện nằm ở mục [[Giao diện]].',
+        '2': 'Bật [[Giao diện tối]] để màn hình tối hơn, dịu mắt hơn vào ban đêm.',
+        '3': 'Chọn [[Phong cách giao diện]] rồi chọn [[Cổ điển]] hoặc [[Ngọt ngào]], với tông pastel ấm và vẻ mềm mại, vui tươi hơn.',
+        '4': 'Chọn [[Màu giao diện]] rồi chọn màu cho nút và điểm nhấn. Các màu có sẵn tùy theo phong cách: [[Ngọt ngào]] chỉ có các tông hồng.',
+        '5': 'Con có thể tự chọn những mục này trên điện thoại của con, trong [[Cài đặt]] ở mục [[Tùy chọn]], không cần Mã PIN phụ huynh.',
+        '6': 'Trên bảng điều khiển web, bật [[Giao diện tối]] ở phần tài khoản trong menu bên. Thay đổi chỉ áp dụng cho trình duyệt đó.',
+      },
+    },
     webSignIn: {
       title: 'Dùng KidGate trên máy tính',
       summary: 'Đăng nhập bảng điều khiển trên web để quản lý gia đình từ trình duyệt.',
-      tip: 'Chỉ cho phép trình duyệt mà chính bạn đang đăng nhập: trình duyệt đó có quyền điều khiển như điện thoại của bạn. Bảng điều khiển trên web không ghép nối thiết bị hay mua gói được. Để đăng xuất một trình duyệt, dùng nút Đăng xuất trên bảng điều khiển.',
+      tip: 'Chỉ cho phép trình duyệt mà chính bạn đang đăng nhập: trình duyệt đó có quyền điều khiển như điện thoại của bạn. Bảng điều khiển trên web không ghép nối thiết bị của trẻ hay mua gói được. Để đăng xuất một trình duyệt, dùng nút Đăng xuất trên bảng điều khiển. Để trình duyệt không thay đổi được gì nữa, mở [[Gia đình]], rồi [[Phụ huynh]] và gỡ nó trong mục [[Trình duyệt được phép thay đổi]]; trình duyệt vẫn xem được thông tin gia đình cho đến khi được đăng xuất.',
       steps: {
         '1': 'Trên máy tính, mở dashboard.kidgate.app và chọn [[Đăng nhập bằng ứng dụng KidGate]]. Một mã QR sẽ hiện ra.',
         '2': 'Trên điện thoại, mở [[Cài đặt]], rồi [[Đăng nhập trên máy tính]]. Bạn cũng có thể quét từ [[Gia đình]] bằng biểu tượng quét.',
@@ -588,7 +603,7 @@ export const userGuide = {
       steps: {
         '1': 'Mở [[Cài đặt]] và trong mục [[Tài khoản]], chọn [[Xóa tài khoản]].',
         '2': 'Đọc kỹ những gì sẽ bị xóa. Nếu bạn là chủ gia đình, mọi đồng phụ huynh và mọi thiết bị của con cũng mất quyền truy cập.',
-        '3': 'Xác nhận danh tính (nhập mật khẩu, hoặc đăng nhập lại bằng Google hay Apple), gõ OK, rồi chọn [[Xóa vĩnh viễn]].',
+        '3': 'Xác nhận danh tính (nhập mật khẩu, hoặc đăng nhập lại bằng Google hay Apple), gõ OK, rồi chọn [[Lên lịch xóa]]. Bước này chỉ đặt lịch xóa: chưa có gì bị xóa.',
         '4': 'Tài khoản sẽ bị xóa sau 14 ngày. Trước thời điểm đó, mở KidGate và chọn [[Hủy yêu cầu xóa]] để giữ lại mọi thứ.',
         '5': 'Khi đồng phụ huynh xóa tài khoản, chỉ tài khoản của người đó bị xóa; gia đình vẫn còn. Để rời gia đình mà không xóa tài khoản, mở thẻ gia đình trong mục Gia đình và chọn [[Rời khỏi gia đình]].',
       },
@@ -597,5 +612,5 @@ export const userGuide = {
   onChildDevice: 'Trên máy của trẻ',
   onParentDevice: 'Trên máy của bạn',
   handoffHint:
-    'KidGate có thể hướng dẫn từng bước ngay trên máy của trẻ: mở ứng dụng ở đó, vào Trạng thái rồi chọn Hoàn tất thiết lập cùng bố mẹ. Mỗi bước có nút mở đúng màn hình cần vào.',
+    'KidGate có thể hướng dẫn từng bước ngay trên máy của trẻ: mở ứng dụng ở đó, vào Trạng thái rồi chạm Tiếp tục thiết lập trên thẻ Hoàn tất thiết lập cùng bố mẹ. Mỗi bước có nút mở đúng màn hình cần vào.',
 } as const;

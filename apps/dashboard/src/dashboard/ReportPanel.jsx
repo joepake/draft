@@ -111,7 +111,7 @@ export default function ReportPanel({
       await navigator.clipboard.writeText(
         reportSummaryText(report, familyName, view?.narrative),
       );
-      setNotice({ tone: 'good', text: t('report.copied') });
+      setNotice({ tone: 'good', text: appT('report.copied') });
     } catch {
       setNotice({ tone: 'critical', text: t('report.shareFailed') });
     }
@@ -144,7 +144,7 @@ export default function ReportPanel({
       return (
         <section className="card report-empty">
           <Icon name="fileText" size={30} />
-          <h2>{t('report.emptyTitle')}</h2>
+          <h2>{appT('report.emptyTitle')}</h2>
           <PremiumTeaser teaser={lockedTeaser} appT={appT} />
         </section>
       );
@@ -152,7 +152,9 @@ export default function ReportPanel({
     return (
       <section className="card report-empty">
         <Icon name={loadFailed ? 'alert' : 'fileText'} size={30} />
-        <h2>{loadFailed ? t('report.loadFailedTitle') : t('report.emptyTitle')}</h2>
+        <h2>
+          {loadFailed ? appT('report.loadFailedTitle') : appT('report.emptyTitle')}
+        </h2>
         <p className="hint">
           {loadFailed ? (loadError ?? t('report.loadFailed')) : t('report.emptyBody')}
         </p>
@@ -206,13 +208,13 @@ export default function ReportPanel({
       <section className="card report-history">
         <header className="card-head">
           <div>
-            <h2>{t('report.historyTitle')}</h2>
+            <h2>{appT('report.historyTitle')}</h2>
           </div>
         </header>
         {historyTeaser ? (
           <PremiumTeaser teaser={historyTeaser} appT={appT} />
         ) : (
-          reports.length === 1 && <p className="hint">{t('report.historyEmpty')}</p>
+          reports.length === 1 && <p className="hint">{appT('report.historyEmpty')}</p>
         )}
         <div className="report-history-list">
           {reports.map(entry => {
@@ -224,7 +226,7 @@ export default function ReportPanel({
                 onClick={() => setSelectedKey(entry.periodKey)}
               >
                 <strong>
-                  {week ? t('report.weekOf', { week: week.week }) : entry.periodKey}
+                  {week ? appT('report.weekOf', { week: week.week }) : entry.periodKey}
                 </strong>
                 <span>{formatMinutes(entry.screenMinutes)}</span>
               </button>
@@ -236,7 +238,7 @@ export default function ReportPanel({
       <div className="report-actions">
         <button className="btn" onClick={handleCopy}>
           <Icon name="fileText" size={16} />
-          {t('report.copySummary')}
+          {appT('report.copySummary')}
         </button>
         <button className="btn" onClick={() => window.print()}>
           <Icon name="fileText" size={16} />
@@ -264,17 +266,17 @@ export default function ReportPanel({
             KidGate
           </span>
           <span className="report-week">
-            {view.week ? t('report.weekOf', { week: view.week.week }) : ''}
+            {view.week ? appT('report.weekOf', { week: view.week.week }) : ''}
           </span>
         </header>
 
         <h2 className="report-title">{familyName}</h2>
         <p className="report-range">
-          {t('report.title')}
+          {appT('report.title')}
           <span className="dot-sep">·</span>
           {formatRange(report.fromDate, report.toDate)}
           <span className="dot-sep">·</span>
-          {t(
+          {appT(
             report.trigger === 'manual'
               ? 'report.triggerManual'
               : 'report.triggerScheduled',
@@ -325,7 +327,7 @@ export default function ReportPanel({
                 trust the wording should be able to see that at a glance. */}
             <h3 className="report-quote-head">
               <Icon name="sparkles" size={14} />
-              {t('report.narrativeTitle')}
+              {appT('report.narrativeTitle')}
             </h3>
             <p>{view.narrative}</p>
           </section>
@@ -333,7 +335,7 @@ export default function ReportPanel({
 
         {view.findings.length > 0 && (
           <section className="report-findings">
-            <h3>{t('report.highlights')}</h3>
+            <h3>{appT('report.highlights')}</h3>
             <ul>
               {view.findings.map(finding => (
                 <li key={finding.kind} className={`tone-${finding.tone}`}>
@@ -354,12 +356,12 @@ export default function ReportPanel({
                 <thead>
                   <tr>
                     <th scope="col">{view.childrenHeading.column}</th>
-                    <th scope="col">{t('report.colScreenTime')}</th>
-                    <th scope="col">{t('report.colShare')}</th>
-                    <th scope="col">{t('report.colChange')}</th>
-                    <th scope="col">{t('report.colLimit')}</th>
-                    <th scope="col">{t('report.colLateNights')}</th>
-                    <th scope="col">{t('report.colTopApp')}</th>
+                    <th scope="col">{appT('report.colScreenTime')}</th>
+                    <th scope="col">{appT('report.colShare')}</th>
+                    <th scope="col">{appT('report.colChange')}</th>
+                    <th scope="col">{appT('report.colLimit')}</th>
+                    <th scope="col">{appT('report.colLateNights')}</th>
+                    <th scope="col">{appT('report.colTopApp')}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -372,7 +374,7 @@ export default function ReportPanel({
                         {row.name}
                         {row.isBusiest && (
                           <span className="report-table-flag">
-                            {t('report.busiest')}
+                            {appT('report.busiest')}
                           </span>
                         )}
                       </th>
@@ -396,7 +398,7 @@ export default function ReportPanel({
             a parent, in the one part of the product that gets forwarded to
             somebody with no context around it. */}
         <p className="report-fine">
-          {t('report.finePrint', {
+          {appT('report.finePrint', {
             from: formatDayKey(report.fromDate),
             to: formatDayKey(report.toDate),
           })}

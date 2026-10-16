@@ -45,6 +45,6 @@ export const screenTime = {
   limitReachedStatus: '{{used}} / {{limit}} · Límite alcanzado',
   minutesUsedStatus: '{{used}} / {{limit}} de uso',
   usageUpdatesHint:
-    'El uso se actualiza cada pocos minutos mientras la supervisión de Tiempo de uso está activa.',
+    'El uso puede tardar hasta {{minutes}} minutos en llegar a esta pantalla.',
   dailyLimitMinutes: '{{limitMinutes}} min',
 } as const;

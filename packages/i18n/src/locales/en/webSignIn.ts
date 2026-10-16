@@ -20,7 +20,7 @@ export const webSignIn = {
   // "later", and it must not read like it.
   confirmTitle: 'Allow this browser?',
   confirmBody:
-    'It will get the same control as this phone: it can see where your children are, change limits, lock devices and approve requests. Only allow it if you are the one signing in.',
+    'It will get the same control as this phone: it can see where your children are, change limits, lock devices and approve requests. It can make changes for 7 days, and you can remove it any time in Family → Parents. Only allow it if you are the one signing in.',
   confirmCodeLabel: 'Code from your computer',
   approveButton: 'Allow',
   declineButton: 'Don’t allow',
@@ -36,5 +36,25 @@ export const webSignIn = {
   notFound: 'That code is not valid. Check the six characters and try again.',
   failed: 'Unable to complete the request. Try again.',
 
-  // Revocation screen (server side already ships; app screen is pending).
+  // Browsers list, Family → Parents and the dashboard's Parents area. Removing
+  // a browser ends its right to change things; it does not sign it out, and
+  // the confirmation says so rather than promising more.
+  // `{{browser}}` and `{{os}}` are brand names from `webSessionLabel`, never
+  // translated; `sessionRowUnknown` is for a user-agent that names no browser.
+  sessionsTitle: 'Browsers that can make changes',
+  sessionsHint:
+    'These browsers are signed in to the web dashboard with your account and can make changes. A browser that only views your family is not listed.',
+  sessionsEmpty: 'No browsers can make changes. When you allow one, it appears here.',
+  sessionRow: '{{browser}} on {{os}}',
+  sessionRowUnknown: 'Web browser',
+  sessionExpires: 'Can make changes until {{date}}',
+  sessionViaQr: 'Allowed with a QR code',
+  sessionViaPin: 'Allowed with the Parent PIN',
+  thisBrowser: 'This browser',
+  sessionsRevoke: 'Remove',
+  sessionsRevokeConfirmTitle: 'Remove this browser?',
+  sessionsRevokeConfirmBody:
+    'It can no longer change settings or control devices. Until the date shown, it can still change a few device details, such as a name. It may still show your family’s information until someone signs out there.',
+  revokedToast: 'Browser removed.',
+  revokeFailed: 'Unable to remove that browser. Try again.',
 } as const;

@@ -416,7 +416,9 @@ export function AppBars({ apps = [], limits = [], totalMinutes = 0 }) {
                 the reading that had a parent asking where a minute went.
               */}
                 <span className={`hbar-value${over ? ' is-over' : ''}`}>
-                  {a.minutes > 0 ? formatMinutes(a.minutes) : tr('dash.underAMinute')}
+                  {a.minutes > 0
+                    ? formatMinutes(a.minutes)
+                    : appT('usage.underAMinute')}
                   {cap && <em> / {formatMinutes(cap.minutes)}</em>}
                 </span>
               </div>
@@ -447,7 +449,7 @@ export function AppBars({ apps = [], limits = [], totalMinutes = 0 }) {
         {otherMinutes >= 1 && (
           <li className="hbar-other">
             <div className="hbar-head">
-              <span className="hbar-label">{tr('dash.topAppsOther')}</span>
+              <span className="hbar-label">{appT('usage.topAppsOther')}</span>
               <span className="hbar-value">{formatMinutes(otherMinutes)}</span>
             </div>
             {/* No bar on purpose: this is a fact about the day, not an app,
@@ -529,7 +531,7 @@ const TIMELINE_GRID = TIMELINE_TICKS.slice(1, -1);
 const TIMELINE_CLASS = { used: 'tl-used', idle: 'tl-idle', unknown: 'tl-unknown' };
 
 export function UsageDayTimeline({ day, platform, capability, lockedSlot }) {
-  const { t: tr } = useT();
+  const appT = useActivityTranslate();
   const availability = timelineAvailability({
     platform,
     capability,
@@ -556,8 +558,8 @@ export function UsageDayTimeline({ day, platform, capability, lockedSlot }) {
     return (
       <p className="tl-empty">
         {availability === 'unsupported'
-          ? tr('viz.timelineUnsupported')
-          : tr('viz.timelinePending')}
+          ? appT('usage.timelineUnsupported')
+          : appT('usage.timelinePending')}
       </p>
     );
   }
@@ -599,8 +601,12 @@ export function UsageDayTimeline({ day, platform, capability, lockedSlot }) {
                * single minute wide, which is a target no pointer can hold.
                * The legend carries the meaning; this carries the detail.
                */
-              title={`${formatClock(run.startMinute)}–${formatClock(run.endMinute + 1)} · ${tr(
-                `viz.timeline${run.state === 'unknown' ? 'Unmeasured' : run.state === 'used' ? 'Used' : 'Idle'}`,
+              title={`${formatClock(run.startMinute)}–${formatClock(run.endMinute + 1)} · ${appT(
+                run.state === 'unknown'
+                  ? 'usage.timelineUnmeasured'
+                  : run.state === 'used'
+                    ? 'usage.timelineUsed'
+                    : 'usage.timelineIdle',
               )}`}
             />
           );
@@ -617,7 +623,7 @@ export function UsageDayTimeline({ day, platform, capability, lockedSlot }) {
       <div className="viz-legend">
         <span>
           <i className="dot tl-used-dot" />
-          {tr('viz.timelineUsed')}
+          {appT('usage.timelineUsed')}
         </span>
         {/* A platform that builds the band from OS sessions (Android TV) never
             marks idle — every non-used minute stays unmeasured. A legend entry
@@ -626,13 +632,13 @@ export function UsageDayTimeline({ day, platform, capability, lockedSlot }) {
         {hasIdle && (
           <span>
             <i className="dot tl-idle-dot" />
-            {tr('viz.timelineIdle')}
+            {appT('usage.timelineIdle')}
           </span>
         )}
         {unmeasured > 0 && (
           <span>
             <i className="dot tl-unknown-dot" />
-            {tr('viz.timelineUnmeasured')}
+            {appT('usage.timelineUnmeasured')}
           </span>
         )}
       </div>
@@ -641,7 +647,9 @@ export function UsageDayTimeline({ day, platform, capability, lockedSlot }) {
           here, which is a tooltip on a 9px dot: no touch device shows it, and
           the one state a parent most needs explaining was the one state that
           explained itself only to a mouse. */}
-      {unmeasured > 0 && <p className="tl-hint">{tr('viz.timelineUnmeasuredHint')}</p>}
+      {unmeasured > 0 && (
+        <p className="tl-hint">{appT('usage.timelineUnmeasuredHint')}</p>
+      )}
     </div>
   );
 }

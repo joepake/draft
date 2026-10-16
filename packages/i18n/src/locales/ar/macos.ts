@@ -8,16 +8,16 @@ export const macos = {
   headingEnforceHint: 'ما ضبطه والداك، ومدى قوة هذا الـ Mac في الحفاظ عليه.',
   headingRemovable: 'مدى سهولة إزالته',
 
-  parentAccessBody: 'أدخل رمز PIN الوالدين لاختيار التطبيقات المحظورة على هذا الـ Mac.',
+  parentAccessBody: 'أدخل رمز PIN الوالدين لاختيار التطبيقات المحظورة على هذا الجهاز.',
   checking: 'جارٍ التحقق…',
 
   enforcing: 'الحماية تعمل',
   enforcingYes: 'نعم',
-  enforcingFailed: 'لا — فشل {{count}} تحقق متتالٍ',
-  enforcingFailed_one: 'لا — فشل التحقق الأخير',
-  enforcingFailed_two: 'لا — فشل تحققان متتاليان',
-  enforcingFailed_few: 'لا — فشلت {{count}} تحققات متتالية',
-  enforcingFailed_many: 'لا — فشل {{count}} تحققًا متتاليًا',
+  enforcingFailed: 'انقطعت الحماية · فشل {{count}} تحقق متتالٍ',
+  enforcingFailed_one: 'انقطعت الحماية · فشل التحقق الأخير',
+  enforcingFailed_two: 'انقطعت الحماية · فشل تحققان متتاليان',
+  enforcingFailed_few: 'انقطعت الحماية · فشلت {{count}} تحققات متتالية',
+  enforcingFailed_many: 'انقطعت الحماية · فشل {{count}} تحققًا متتاليًا',
 
   lockState: 'الجهاز مقفل',
   lockStateNo: 'لا',
@@ -64,7 +64,7 @@ export const macos = {
     'يوجد برنامج آخر على هذا الكمبيوتر يتولى عناوين الويب بالفعل، لذا لا يمكن لـ KidGate تصفيتها هنا.',
   setupStepFilterSwitchWaiting: 'يظهر في إعدادات النظام بمجرد اعتماد الخطوة أعلاه.',
   setupStepLocationBody:
-    'يتيح لعائلتك معرفة مكان هذا الجهاز. لا يُشارَك أي شيء حتى تفعّل «مشاركة الموقع».',
+    'يتيح لعائلتك معرفة مكان هذا الجهاز. لا يُشارَك أي شيء حتى تفعّل «مشاركة الموقع» في تطبيق KidGate.',
   setupStepCameraTitle: 'الكاميرا',
   setupStepCameraBody:
     'يرفق صورة عندما يرسل طفلك نداء SOS أو يردّ على الاطمئنان. لا تُلتقط أي صورة الآن.',
@@ -115,7 +115,7 @@ export const macos = {
 
   chooseApps: 'اختيار التطبيقات المراد حظرها',
   chooseAppsHint:
-    'اختر التطبيقات المحظورة على هذا الـ Mac. يمكن للوالدين تشغيل الحظر أو إيقافه من الهاتف.',
+    'اختر التطبيقات المراد حظرها على هذا الجهاز. يستطيع أحد الوالدين تشغيل الحظر وإيقافه من هاتفه.',
   saveSelection: 'حفظ',
-  noAppsFound: 'لم يُعثر على تطبيقات في مجلد Applications.',
+  noAppsFound: 'لم يُعثر على أي تطبيق في هذا الجهاز.',
 };

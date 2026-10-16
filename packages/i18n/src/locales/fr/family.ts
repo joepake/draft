@@ -250,7 +250,7 @@ export const family = {
 
   deviceRemovedAlertTitle: 'Appareil supprimé',
   deviceRemovedAlertMessage:
-    'Un parent a supprimé cet appareil du compte familial. Sélectionne à nouveau le rôle Enfant pour le reconnecter.',
+    'Un parent a supprimé cet appareil du compte familial. Pour le reconnecter, choisis « Ceci est un appareil enfant ».',
 
   deviceNotRegistered: 'Cet appareil n’est pas encore enregistré.',
 
@@ -296,7 +296,7 @@ export const family = {
   editDeviceNameTitle: 'Modifier le nom de l’appareil',
 
   editDeviceNameSubtitle:
-    'Seul le propriétaire de la famille peut renommer les appareils. Maximum {{maxLength}} caractères.',
+    'Le nom doit être facile à reconnaître pour les parents. Maximum {{maxLength}} caractères.',
 
   deviceNameInputLabel: 'Nom de l’appareil',
 
@@ -320,6 +320,8 @@ export const family = {
   youPausedThisDevice: 'Vous avez verrouillé cet appareil',
 
   lockSentWaitingForDevice: 'Verrouillage envoyé — en attente de l’appareil',
+  lockDelayedOnDevice:
+    'Le verrouillage et le déverrouillage peuvent mettre jusqu’à {{minutes}} minutes à atteindre cet appareil.',
 
   lockNotAppliedOnDevice: 'Cet appareil n’a pas appliqué le verrouillage',
 

@@ -1,4 +1,5 @@
 import { createHttpApiAdapter } from '@kidgate/core/adapters/httpApi';
+import { withRequestThrottle } from '@kidgate/core/adapters/throttledApi';
 import { appCheckToken, auth, functionsBaseUrl } from '../lib/firebase.js';
 
 /**
@@ -18,33 +19,37 @@ import { appCheckToken, auth, functionsBaseUrl } from '../lib/firebase.js';
  * `{ as: 'parent' }` and never learn which of the two happened.
  */
 export function createApiAdapter() {
+  // Throttled first: a button pressed into a loop is refused here, before
+  // it costs an invocation (`@kidgate/core/domain/requestThrottle`).
   const adapter = functionsBaseUrl
-    ? createHttpApiAdapter({
-        baseUrl: functionsBaseUrl,
-        credentials: {
-          async idToken(forceRefresh) {
-            const user = auth?.currentUser;
-            return user ? user.getIdToken(forceRefresh) : null;
+    ? withRequestThrottle(
+        createHttpApiAdapter({
+          baseUrl: functionsBaseUrl,
+          credentials: {
+            async idToken(forceRefresh) {
+              const user = auth?.currentUser;
+              return user ? user.getIdToken(forceRefresh) : null;
+            },
+
+            // A browser is never a child device. The shared adapter refuses
+            // `as: 'child'` outright when this is null — silently sending the
+            // parent token instead would let a child-scoped endpoint be called
+            // with parent authority, the mix-up `docs/DATA_MODEL.md` warns about.
+            childFields: null,
+
+            // The web session itself is the parent proof; no body fields.
+            parentFields: null,
+
+            // An expired ID token is the browser's stale credential. The retry's
+            // forced refresh is the re-issue, so recovery is always worth one try.
+            async reissue() {
+              return true;
+            },
           },
-
-          // A browser is never a child device. The shared adapter refuses
-          // `as: 'child'` outright when this is null — silently sending the
-          // parent token instead would let a child-scoped endpoint be called
-          // with parent authority, the mix-up `docs/DATA_MODEL.md` warns about.
-          childFields: null,
-
-          // The web session itself is the parent proof; no body fields.
-          parentFields: null,
-
-          // An expired ID token is the browser's stale credential. The retry's
-          // forced refresh is the re-issue, so recovery is always worth one try.
-          async reissue() {
-            return true;
-          },
-        },
-        messageKeys: { unauthenticated: 'authError.sessionExpired' },
-        appCheckToken,
-      })
+          messageKeys: { unauthenticated: 'authError.sessionExpired' },
+          appCheckToken,
+        }),
+      )
     : null;
 
   return {

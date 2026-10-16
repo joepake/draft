@@ -23,9 +23,9 @@ export const pin = {
   parentPinRequired: '부모 PIN이 필요해요',
   enterParentPinToContinue: '계속하려면 6자리 부모 PIN을 입력하세요.',
   parentPinLockoutMessage:
-    '입력 오류가 너무 많아요. KidGate를 설정한 부모님께 본인 휴대폰의 설정 → 보안에서 PIN 잠금을 해제해 달라고 부탁하세요.',
+    '입력 오류가 너무 많아요. 부모님께 본인 휴대폰의 설정 → 보안에서 PIN 잠금을 해제해 달라고 부탁하세요.',
   parentPinHelperText:
-    '차단된 앱을 바꾸거나 로그아웃할 수 있는 건 부모님뿐이에요 — PIN은 그래서 있는 거예요. PIN을 잊었다면 KidGate를 설정한 부모님이 본인 휴대폰의 설정 → 보안에서 재설정할 수 있어요.',
+    '차단된 앱 같은 보호된 설정은 부모님만 바꿀 수 있어요 — PIN은 그래서 있는 거예요. PIN을 잊었다면 KidGate를 설정한 부모님이 본인 휴대폰의 설정 → 보안에서 재설정할 수 있어요.',
   forgotPin: 'PIN을 잊으셨나요?',
   resetPinNotice:
     '계정 소유자로서 PIN을 재설정하는 중입니다. 이제부터 자녀 기기에서는 새 PIN을 입력해야 합니다.',
@@ -44,20 +44,20 @@ export const pin = {
   savePin: 'PIN 저장',
   pinLockedTitle: 'PIN 잠김',
   pinLockedBody:
-    '입력 오류가 너무 많아요. KidGate를 설정한 부모님께 본인 휴대폰의 설정 → 보안에서 PIN 잠금을 해제해 달라고 부탁하세요.',
+    '입력 오류가 너무 많아요. 부모님께 본인 휴대폰의 설정 → 보안에서 PIN 잠금을 해제해 달라고 부탁하세요.',
   parentAccessRequiredTitle: '부모님 확인이 필요해요',
   parentAccessRequiredBody:
-    '이 기기의 이름을 변경하거나, 차단할 앱을 선택하거나, 로그아웃하려면 PIN을 입력하세요.',
+    '이 기기의 이름을 변경하거나, 차단된 앱을 선택하거나, 가족에서 나가려면 PIN을 입력하세요.',
   unlockWithParentPinButton: '부모 PIN으로 잠금 해제',
   whyPinTitle: '왜 PIN이 필요한가요?',
   whyPinBody:
-    '차단된 앱을 변경하거나 이 기기를 KidGate에서 로그아웃하는 것은 부모님만 해야 해요. 테마 색상 변경에는 PIN이 필요하지 않아요.',
+    '차단된 앱을 변경하거나 이 기기를 가족에서 나가게 하는 것은 부모님만 해야 해요. 테마 색상 변경에는 PIN이 필요하지 않아요.',
   pinLockedToast:
-    '입력 오류가 너무 많아 PIN이 잠겼어요. KidGate를 설정한 부모님께 본인 휴대폰의 설정 → 보안에서 잠금을 해제해 달라고 부탁하세요.',
+    '입력 오류가 너무 많아 PIN이 잠겼어요. 부모님께 본인 휴대폰의 설정 → 보안에서 잠금을 해제해 달라고 부탁하세요.',
   pinNotConfiguredToast:
     '아직 부모 PIN이 없어요. KidGate를 설정한 부모님이 본인 휴대폰의 설정 → 보안에서 만들 수 있어요.',
   pairedNoPin:
-    '부모 PIN이 아직 없습니다. 차단된 앱을 변경하거나 기기를 로그아웃하기 전에 자녀 기기에서 이 PIN을 요청합니다.',
+    '부모 PIN이 아직 없습니다. 차단된 앱을 변경하거나 기기가 가족에서 나가기 전에 자녀 기기에서 이 PIN을 요청합니다.',
   enterSixDigitParentPin: '6자리 부모 PIN을 입력하세요.',
   askParentCreatePin:
     'KidGate를 설정한 부모님께 본인 휴대폰의 설정 → 보안에서 부모 PIN을 만들어 달라고 부탁하세요.',

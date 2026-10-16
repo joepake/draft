@@ -11,7 +11,7 @@ export const messageMonitoring = {
     '여기에서는 검색만 검사할 수 있습니다. 메시지는 Android 기기에서만 검사할 수 있습니다.',
   recentTitle: '최근 경고',
   emptyTitle: '아직 경고 없음',
-  emptySubtitle: '메시지에서 우려되는 단어가 발견되지 않았습니다.',
+  emptySubtitle: '메시지나 검색에서 우려되는 단어가 감지되면 여기에 표시됩니다.',
   emptySubtitleNotWatching:
     '지금은 메시지를 검사하지 않으므로 무슨 일이 있어도 이 목록은 비어 있습니다.',
   flaggedTerm: '감지됨: “{{term}}”',
@@ -29,7 +29,7 @@ export const messageMonitoring = {
   categoryTobacco: '담배 또는 전자담배',
   categoryGambling: '도박',
   categoryProfanity: '부적절한 언어',
-  categoryUnknown: '감지된 메시지',
+  categoryUnknown: '우려되는 메시지',
   guidanceToggle: '다음에 할 일',
   guidanceHide: '숨기기',
   guidanceFooter:
@@ -72,13 +72,13 @@ export const messageMonitoring = {
     '브라우저와 YouTube. 감지된 단어나 문구만 알려 드리며, 검색어 자체는 알려 드리지 않습니다.',
   parentSearchHintNotGranted:
     '“입력한 메시지 검사”와 같은 권한이 필요합니다. “받은 메시지 검사”를 켠 다음 자녀 기기에서 허용해 주세요.',
-  parentToggleHintGranted: '이 휴대폰에서 사용 중입니다.',
+  parentToggleHintGranted: '자녀 기기에서 허용되어 있습니다.',
   parentToggleHintNotGranted:
-    '이 휴대폰에서는 아직 허용되지 않았습니다. 자녀 기기에서 KidGate를 열어 허용해 주세요.',
+    '자녀 기기에서는 아직 허용되지 않았습니다. 그 기기에서 KidGate를 열어 허용해 주세요.',
   parentProfanityLabel: '욕설도 함께 감지',
   parentProfanityHint:
     '기본값은 꺼짐 — 일반적인 욕설은 흔하며, 켜면 이것도 알림 대상이 됩니다.',
-  parentToggleSaveFailed: '변경 내용을 저장하지 못했습니다.',
+  parentToggleSaveFailed: '변경 내용을 저장하지 못했습니다. 다시 시도해 주세요.',
   settingsTitle: '메시지 경고 설정',
   checkedTitle: '확인함, 문제 없음',
   checkedSubtitle:
@@ -108,7 +108,7 @@ export const messageMonitoring = {
     'Android가 이 기능을 껐어요. 작성한 내용 검사를 계속하려면 권한을 다시 허용해 주세요.',
   outgoingDisclosureTitle: '허용하기 전에',
   outgoingDisclosureBody:
-    '이 권한으로 KidGate는 문자 메시지(SMS 및 MMS)와 채팅 앱에 입력한 내용을 읽고 같은 경고 단어가 있는지 확인해요. 부모님이 검색 알림을 켜면 브라우저, YouTube, Google 앱에 입력한 검색어 같은 내용도 읽어요. 비밀번호 입력란은 절대 읽지 않아요. 확인은 이 휴대폰 안에서 이루어져요. 단어가 감지되면 그 단어나 문구, 분류, 앱, 시간만 부모님께 전달되고, 메시지나 검색의 나머지 내용은 절대 전송되지 않아요. KidGate에 오류가 발생해 앱이 종료되면 문제를 해결할 수 있도록 비정상 종료 로그가 KidGate 팀에 전송돼요.',
+    '이 권한으로 KidGate는 문자 메시지(SMS 및 MMS)와 채팅 앱에 입력한 내용을 읽고 같은 경고 단어가 있는지 확인해요. 부모님이 검색 알림을 켜면 브라우저, YouTube, Google 앱에 입력한 검색어 같은 내용도 읽어요. 비밀번호 입력란은 절대 읽지 않아요. 확인은 이 휴대폰 안에서 이루어져요. 단어가 감지되면 그 단어나 문구, 분류, 앱, 시간만 부모님께 전달되고, 메시지나 검색의 나머지 내용은 절대 전송되지 않아요. 마이크를 허용하면 SOS를 보낼 때 KidGate가 최대 15초 동안 소리를 녹음해 부모님께 보내요. KidGate에 오류가 발생해 앱이 종료되면 문제를 해결할 수 있도록 비정상 종료 로그가 KidGate 팀에 전송돼요.',
   outgoingRestrictedHint:
     '스위치가 흐리게 표시되면 설정 › 앱 › KidGate를 열고 ⋮ 메뉴에서 “제한된 설정 허용”을 선택한 뒤 다시 돌아오세요.',
   notice: {

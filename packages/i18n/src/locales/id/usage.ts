@@ -16,7 +16,7 @@ export const usage = {
   insightDeviceLocked: 'Perangkat terkunci',
   signalLocksToday: 'Kunci hari ini',
   signalUnlocksToday: 'Buka kunci hari ini',
-  signalLocksPeriod: 'Kunci · 30 hari',
+  signalLocksPeriod: 'Kunci terbaru',
   signalLocationsToday: 'Lokasi hari ini',
   sectionWhatsTurnedOn: 'Yang aktif',
   rowBlockedHours: 'Jam Diblokir',
@@ -28,7 +28,7 @@ export const usage = {
   rowLocation: 'Lokasi',
   valueSharingOn: 'Berbagi aktif',
   sectionLatestActivity: 'Aktivitas terbaru',
-  activityPeriodCount: '{{count}} dalam 30 hari',
+  activityPeriodCount: '{{count}} terbaru',
   activityEmpty:
     'Belum ada aktivitas yang tercatat. Kunci, buka kunci, dan pembaruan Waktu Layar akan muncul di sini.',
   usageReportAccessibility: 'Laporan penggunaan. {{headline}}. Buka laporan lengkap.',
@@ -77,7 +77,7 @@ export const usage = {
   topAppsEmpty:
     'Belum ada data per aplikasi. Di perangkat anak, pastikan KidGate diizinkan mengukur penggunaan aplikasi, lalu tunggu sinkronisasi.',
   protectionImpactTitle: 'Dampak perlindungan',
-  protectionImpactHint: 'Kejadian terbaru yang dihentikan KidGate di perangkat ini.',
+  protectionImpactHint: 'Total sejak perangkat ini disiapkan.',
   protectionBlockedApps: 'Pembukaan aplikasi diblokir',
   protectionWebBlocked: 'Situs web diblokir',
   protectionTamper: 'Peringatan perlindungan',

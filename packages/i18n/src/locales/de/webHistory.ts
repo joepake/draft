@@ -2,7 +2,7 @@ export const webHistory = {
   title: 'Web-Verlauf',
   fallbackDeviceName: 'Kindergerät',
   syncNote:
-    'Der Web-Verlauf kann bis zu etwa 15 Minuten brauchen, bis er hier angezeigt wird – länger, wenn das Gerät keine Internetverbindung hat oder unerwartet beendet wurde.',
+    'Solange du diesen Bildschirm ansiehst, kann der Web-Verlauf etwa 10 Minuten verspätet eintreffen, sonst bis zu 30 Minuten – länger, wenn das Gerät keine Internetverbindung hat oder unerwartet beendet wurde.',
   syncNoteTv:
     'Dieser Fernseher meldet sich nur in größeren Abständen, daher kann es bis zu einer Stunde dauern, bis der Web-Verlauf hier angezeigt wird – länger ohne Internetverbindung.',
   summarySites: 'Gesehene Seiten',
@@ -34,12 +34,16 @@ export const webHistory = {
   blockCategoryConfirmTitle: '{{category}} sperren?',
   blockCategoryConfirmBody:
     'Jede Seite, die KidGate unter {{category}} einordnet, wird auf diesem Gerät abgewiesen. Du kannst das im Webfilter wieder ausschalten.',
+  blockCategoryConfirmBodyChild:
+    'Jede Seite, die KidGate unter {{category}} einordnet, wird auf allen Geräten von {{name}} abgewiesen. Du kannst das im Webfilter wieder ausschalten.',
   blockCategoryConfirmAction: 'Sperren',
   blockCategoryDone: '{{category}} ist jetzt gesperrt.',
   unblockCategory: '{{category}} freigeben',
   unblockCategoryConfirmTitle: '{{category}} freigeben?',
   unblockCategoryConfirmBody:
     'Seiten, die KidGate unter {{category}} einordnet, sind auf diesem Gerät wieder erreichbar.',
+  unblockCategoryConfirmBodyChild:
+    'Seiten, die KidGate unter {{category}} einordnet, sind auf den Geräten von {{name}} wieder erreichbar.',
   unblockCategoryConfirmAction: 'Freigeben',
   unblockCategoryDone: '{{category}} ist nicht mehr gesperrt.',
   serviceSites: '{{count}} Seiten',

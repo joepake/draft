@@ -34,7 +34,7 @@ export const appInventory = {
     'Il dispositivo pubblicherà il suo elenco di app al prossimo collegamento.',
   unsupportedTitle: 'Questo dispositivo non può elencare le sue app',
   unsupportedIos:
-    'Apple non permette a nessuna app di leggere cosa è installato su un iPhone o iPad, perciò KidGate può segnalare le app solo mentre vengono usate.',
+    'Apple non permette a nessuna app di leggere cosa è installato su un iPhone o iPad, e KidGate non può vedere nemmeno quali app vengono usate.',
   unsupportedGeneric: 'Questo dispositivo non segnala le app installate su di esso.',
   incompleteNote:
     'Alcune app potrebbero non comparire qui, ad esempio quelle senza icona nell’elenco delle app del dispositivo.',

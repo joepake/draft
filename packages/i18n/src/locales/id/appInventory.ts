@@ -33,7 +33,7 @@ export const appInventory = {
     'Perangkat akan mengirim daftar aplikasinya saat terhubung berikutnya.',
   unsupportedTitle: 'Perangkat ini tidak dapat menampilkan daftar aplikasinya',
   unsupportedIos:
-    'Apple tidak mengizinkan aplikasi mana pun membaca apa yang terpasang di iPhone atau iPad, jadi KidGate hanya bisa melaporkan aplikasi saat digunakan.',
+    'Apple tidak mengizinkan aplikasi mana pun membaca apa yang terpasang di iPhone atau iPad, dan KidGate juga tidak bisa melihat aplikasi mana yang digunakan di sana.',
   unsupportedGeneric: 'Perangkat ini tidak melaporkan aplikasi yang terpasang padanya.',
   incompleteNote:
     'Beberapa aplikasi mungkin tidak muncul di sini, misalnya aplikasi yang tidak punya ikon di daftar aplikasi perangkat.',

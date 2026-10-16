@@ -43,6 +43,7 @@ import { useReaderToday, useTodayKey, zonesOf } from '../dashboard/useTodayKey.j
 import { readDeviceBattery } from '@kidgate/core/domain/battery';
 import { supportsWebFilterCategories } from '@kidgate/core/domain/webFilterSupport';
 import { isAndroidLike, isDesktopLike } from '@kidgate/core/domain/platformFamily';
+import { isBrowserOnlySurface } from '@kidgate/core/domain/deviceSurface';
 import { isKidGateOwnApp } from '@kidgate/core/domain/ownApp';
 import LocationMap from '../dashboard/LocationMap.jsx';
 import ChildLocationPanel from '../dashboard/ChildLocationPanel.jsx';
@@ -65,6 +66,7 @@ import {
   supportsAppBlocking,
   supportsAppLimits,
   supportsLock,
+  supportsSchedule,
   supportsScreenTime,
 } from '@kidgate/core/domain/controlSupport';
 import {
@@ -346,7 +348,9 @@ function osLabel(platform, osVersion) {
           ? 'Windows'
           : platform === 'androidtv'
             ? 'Android TV'
-            : 'Android';
+            : platform === 'chromeos'
+              ? 'ChromeOS'
+              : 'Android';
   const version = (osVersion || '').trim();
   if (!version) return base;
   return version.toLowerCase().startsWith(base.toLowerCase())
@@ -401,14 +405,25 @@ function permissionState(value) {
  * The Android names come from the **app** key space, through `activityT`: they
  * are the words the child's own screen shows, already translated into all
  * fourteen packs, and writing web copy for them would be a second set of names
- * for one setting, free to drift. Every other permission keeps its `perm.*`
- * label — only this one is called two things.
+ * for one setting, free to drift. The six the child's setup checklist already
+ * names (`permissions.*Label`) are read from there for the same reason; the
+ * four it has no label for — Screen Time, Location, Camera, Microphone — keep
+ * their `perm.*` one.
  */
+const APP_PERMISSION_LABELS = {
+  notifications: activityT => activityT('permissions.notificationsLabel'),
+  backgroundAppRefresh: activityT => activityT('permissions.backgroundRefreshLabel'),
+  overlay: activityT => activityT('permissions.overlayLabel'),
+  batteryOptimization: activityT => activityT('permissions.batteryOptimizationLabel'),
+  exactAlarm: activityT => activityT('permissions.exactAlarmLabel'),
+  accessibility: activityT => activityT('permissions.accessibilityLabel'),
+};
+
 function permissionName(t, activityT, key, platform) {
   if (key === 'screenTime' && isAndroidLike(platform)) {
     return activityT('protection.usageAccessPermission');
   }
-  return permissionLabel(t, key);
+  return APP_PERMISSION_LABELS[key]?.(activityT) ?? permissionLabel(t, key);
 }
 
 /**
@@ -472,7 +487,7 @@ function StatusPill({ status, device }) {
  * and an iPad is not drawn as an iPhone here.
  */
 function DeviceRow({ device, active, onSelect, latestBuilds }) {
-  const { t } = useT();
+  const activityT = useActivityTranslate();
   const outdated =
     resolveBuildFreshness(device, latestBuilds ?? {}).status === 'outdated';
   return (
@@ -496,7 +511,9 @@ function DeviceRow({ device, active, onSelect, latestBuilds }) {
           yet and every platform with nothing published to compare against, and
           a mark for that would sit on most rails saying nothing.
         */}
-        {outdated && <em className="kid-build-old">{t('dash.buildOutdated')}</em>}
+        {outdated && (
+          <em className="kid-build-old">{activityT('family.buildOutdated')}</em>
+        )}
       </span>
       <DeviceDot device={device} />
     </button>
@@ -583,10 +600,10 @@ function KidGroupHead({
     ? [
         fix.placeName ||
           (fix.nearbyPlaceName
-            ? t('dash.nearPlace', { place: fix.nearbyPlaceName })
+            ? appT('location.nearPlace', { place: fix.nearbyPlaceName })
             : fix.latitude != null && fix.longitude != null
               ? `${fix.latitude.toFixed(5)}, ${fix.longitude.toFixed(5)}`
-              : t('dash.lastKnownLocation')),
+              : appT('location.lastKnownLocation')),
         fix.updatedAt ? timeAgo(fix.updatedAt) : null,
       ]
         .filter(Boolean)
@@ -1470,6 +1487,13 @@ export default function Dashboard({
 
   const device = devices.find(d => d.id === deviceId) ?? null;
   const c = device?.controls ?? null;
+  /* Every device of this one's child, and the ones among them that can keep
+     a Blocked Hours schedule — the Blocked Hours card's scope line counts the
+     second against the first. */
+  const deviceSiblings = device?.childId
+    ? devices.filter(other => other.childId === device.childId)
+    : [];
+  const scheduleHolders = deviceSiblings.filter(supportsSchedule);
   /**
    * The device the main pane is actually showing, or null.
    *
@@ -2471,6 +2495,9 @@ export default function Dashboard({
       nowMs: Date.now(),
       reportsAppInstalls: supportsAppInstallAlerts(deviceView),
       listsInstalledApps: supportsAppInventory(deviceView),
+      /* The hero's own verdict, so the Protection Alerts card cannot say
+         "Watching" over a device the hero grades otherwise. */
+      protectionLevel: getProtectionSummaryKeys(deviceView, Date.now()).level,
       // One device, so the set is one long — the same resolver the phone's card
       // and this app's own Message Alerts banner read.
       messageSummary: resolveMessageMonitoringSummary([deviceView]),
@@ -2547,7 +2574,7 @@ export default function Dashboard({
       run(
         item.id,
         () => actions.resolveSiteRequest(documentId, true),
-        t('dash.toastSiteAllowed'),
+        activityT('webFilter.siteRequestApproved'),
       );
     } else if (item.action === 'resend') {
       run(item.id, () => actions.sendCheckIn(target), t('dash.toastCheckInResent'));
@@ -3024,6 +3051,19 @@ export default function Dashboard({
                     their own line here at any count: the hero has the room the
                     bare header did not, so the rule about a lone fact joining
                     the row above went with the paragraphs. */}
+                {/* The phone's caption under its Lock button, in the quiet line
+                    style: a device with no push channel (a TV box with no Play
+                    Services) hears Lock on its own check-in, and a parent
+                    watching "Lock sent" sit there deserves to know why. App
+                    pack, no `dash.*` twin. */}
+                {supportsLock(device) &&
+                  device.capabilities?.remoteCommandDelayMinutes > 0 && (
+                    <p className="dash-top-facts dash-top-facts-quiet">
+                      {activityT('family.lockDelayedOnDevice', {
+                        minutes: device.capabilities.remoteCommandDelayMinutes,
+                      })}
+                    </p>
+                  )}
                 {quietFacts.length > 0 && (
                   <p className="dash-top-facts dash-top-facts-quiet">{quietFacts}</p>
                 )}
@@ -3601,6 +3641,11 @@ export default function Dashboard({
               canWrite={canWrite}
               live={live}
               appT={activityT}
+              /* The browsers card ends a write grant (this browser's own, or one
+                 refused as gone) and says so on the page's toast, which outlives
+                 the card being unmounted by that very call. */
+              onToast={setToast}
+              onWriteLost={() => setWriteExpired(true)}
             />
           </section>
         )}
@@ -3913,16 +3958,25 @@ export default function Dashboard({
                   meta={t('dash.tileBlockedMeta')}
                 />
               )}
-              <StatTile
-                icon="globe"
-                label={t('dash.tileSites')}
-                value={device.webFilterBlockedCount}
-                meta={
-                  blockedTotal
-                    ? t('dash.tileCategoriesHit', { count: blockedByCategory.length })
-                    : t('dash.tileNothingBlocked')
-                }
-              />
+              {/* Only the Android phone, Android TV and the Chrome extension
+                  write `webFilterBlockedCount`; an iPhone, a Mac and a PC never
+                  do, and the record's reader fills the gap with 0 — so on those
+                  a "0" here is "cannot say", printed as a measurement. The
+                  extension is found by its probe, not its platform: on a Mac it
+                  reports `macos`. The phone's usage reports apply the same
+                  gate. */}
+              {(isAndroidLike(device.platform) || isBrowserOnlySurface(device)) && (
+                <StatTile
+                  icon="globe"
+                  label={t('dash.tileSites')}
+                  value={device.webFilterBlockedCount}
+                  meta={
+                    blockedTotal
+                      ? t('dash.tileCategoriesHit', { count: blockedByCategory.length })
+                      : t('dash.tileNothingBlocked')
+                  }
+                />
+              )}
               <StatTile
                 icon="alert"
                 label={t('dash.tileAttention')}
@@ -4207,7 +4261,7 @@ export default function Dashboard({
                 only when no bar is picked.
               */}
               <Card
-                title={t('dash.timelineTitle')}
+                title={activityT('usage.sectionTimeline')}
                 subtitle={
                   !timelineDay || timelineDay.date === todayKey
                     ? t('dash.timelineSub')
@@ -4246,11 +4300,17 @@ export default function Dashboard({
               */}
               {device.childId && device.child && (
                 <p className="hint">
-                  {activityT('webFilter.appliesToAll', {
-                    name: device.child.name ?? '',
-                    count: devices.filter(other => other.childId === device.childId)
-                      .length,
-                  })}
+                  {scheduleHolders.length < deviceSiblings.length &&
+                  scheduleHolders.length > 0
+                    ? activityT('webFilter.appliesToSome', {
+                        name: device.child.name ?? '',
+                        supported: scheduleHolders.length,
+                        total: deviceSiblings.length,
+                      })
+                    : activityT('webFilter.appliesToAll', {
+                        name: device.child.name ?? '',
+                        count: deviceSiblings.length,
+                      })}
                 </p>
               )}
               <ScheduleGrid windows={c.scheduleWindows} />
@@ -4317,7 +4377,7 @@ export default function Dashboard({
                 <Card
                   id="app-blocking"
                   title={t('dash.appBlockingTitle')}
-                  subtitle={t('dash.appBlockingSub')}
+                  subtitle={activityT('blockedApps.infoLine1')}
                 >
                   <div className="tiles tiles-inline">
                     <StatTile
@@ -4378,11 +4438,11 @@ export default function Dashboard({
             {supportsAppInventory(device) && (
               <Card
                 id="apps"
-                title={t('dash.inventoryTitle')}
+                title={activityT('deviceDetail.appInventory')}
                 subtitle={
                   inventorySummary
                     ? t(inventorySummary.key, inventorySummary.params)
-                    : t('dash.inventorySub')
+                    : activityT('appInventory.subtitle')
                 }
               >
                 {!inventory ? (
@@ -4442,7 +4502,7 @@ export default function Dashboard({
                     )}
                     {inventory.flagged.length > 0 && (
                       <>
-                        <p className="hint">{t('dash.inventoryFlagged')}</p>
+                        <p className="hint">{activityT('appInventory.flaggedTitle')}</p>
                         <ul className="events">
                           {inventory.flagged.map(row => renderFlaggedRow(row, false))}
                         </ul>
@@ -4464,7 +4524,7 @@ export default function Dashboard({
                     )}
                     <div className="tiles tiles-inline">
                       <StatTile
-                        label={t('dash.inventoryFlaggedLabel')}
+                        label={activityT('appInventory.flaggedTitle')}
                         value={inventory.flagged.length}
                         tone={inventory.flagged.length > 0 ? 'serious' : 'good'}
                       />
@@ -4571,7 +4631,7 @@ export default function Dashboard({
               {showsVideoHistoryCard(device) && (
                 <Card
                   id="video-history"
-                  title={t('dash.videosTitle')}
+                  title={activityT('videoHistory.title')}
                   subtitle={t('dash.videosSub')}
                 >
                   {!supportsVideoHistory(device) ? (
@@ -4703,7 +4763,7 @@ export default function Dashboard({
                   title={t('dash.locationTitle')}
                   subtitle={
                     !c.locationSharingEnabled
-                      ? t('dash.locationSharingOff')
+                      ? activityT('deviceDetail.sharingIsOff')
                       : device.lastLocation
                         ? t('dash.locationUpdated', {
                             when: timeAgo(device.lastLocation.updatedAt),
@@ -4775,10 +4835,10 @@ export default function Dashboard({
                                   ),
                                 })
                               : device.lastLocation.nearbyPlaceName
-                                ? t('dash.nearPlace', {
+                                ? activityT('location.nearPlace', {
                                     place: device.lastLocation.nearbyPlaceName,
                                   })
-                                : t('dash.lastKnownLocation'))}
+                                : activityT('location.lastKnownLocation'))}
                         </strong>
                         {device.lastLocation.address && (
                           <em>{device.lastLocation.address}</em>
@@ -4918,7 +4978,7 @@ export default function Dashboard({
               {supportsSos(device) && (
                 <Card
                   id="sos-alerts"
-                  title={t('dash.sosTitle')}
+                  title={activityT('sos.title')}
                   subtitle={t('dash.sosSub')}
                 >
                   {(sosAlerts[device.id] || []).length === 0 ? (
@@ -5006,13 +5066,11 @@ export default function Dashboard({
                             <strong>
                               {outcome === 'askedForHelp'
                                 ? activityT('checkIn.statusAskedForHelp')
-                                : t(
-                                    outcome === 'safe'
-                                      ? 'dash.checkInSafe'
-                                      : outcome === 'noResponse'
-                                        ? 'dash.checkInMissed'
-                                        : 'dash.checkInWaiting',
-                                  )}
+                                : outcome === 'safe'
+                                  ? t('dash.checkInSafe')
+                                  : outcome === 'noResponse'
+                                    ? activityT('checkIn.statusNoResponse')
+                                    : activityT('checkIn.statusWaiting')}
                             </strong>
                             {outcome === 'askedForHelp' ? (
                               /* The position and the photo went with the SOS,
@@ -5115,7 +5173,7 @@ export default function Dashboard({
                         );
                       })}
                   </ul>
-                  <p className="hint">{t('dash.protectionAlertsHint')}</p>
+                  <p className="hint">{activityT('tamperAlerts.infoLine1')}</p>
                 </Card>
               )}
 
@@ -5185,7 +5243,7 @@ export default function Dashboard({
               subtitle={t('dash.filterRefusedSub', { count: blockedTotal })}
             >
               {blockedByCategory.length === 0 ? (
-                <p className="empty">{t('dash.nothingBlockedYet')}</p>
+                <p className="empty">{activityT('webHistory.emptyBlockedBody')}</p>
               ) : (
                 <ul className="catbars">
                   {blockedByCategory.map(([cat, n], i) => (
@@ -5209,7 +5267,9 @@ export default function Dashboard({
                   ))}
                 </ul>
               )}
-              {blockedGuessed ? <p className="hint">{t('dash.rollupNoteAi')}</p> : null}
+              {blockedGuessed ? (
+                <p className="hint">{activityT('webHistory.rollupNoteAi')}</p>
+              ) : null}
               {/* Three mechanisms, not two. The Android sentence names a DNS
                       filter, which is what the phone's and the TV's VPN is and
                       what a Mac's NetworkExtension provider is not — a Mac fell
@@ -5218,14 +5278,21 @@ export default function Dashboard({
               {/* An iPhone with the KidGate tunnel runs the same DNS filter
                       as Android; only one without it is Apple's adult control
                       alone (`supportsWebFilterCategories`). */}
+              {/* The extension and the Windows resolver have no `dash.*` hint of
+                  their own, and fell into the Android DNS line (or the Mac's,
+                  for an extension hosted on one). The app pack already says
+                  both, in the phone's words. The extension is found by its
+                  probe, not its platform: it reports its host's. */}
               <p className="hint">
-                {t(
-                  device.platform === 'ios' && !supportsWebFilterCategories(device)
-                    ? 'dash.filterHintIos'
-                    : device.platform === 'macos'
-                      ? 'dash.filterHintMacos'
-                      : 'dash.filterHintAndroid',
-                )}
+                {isBrowserOnlySurface(device)
+                  ? activityT('webFilter.heroSubtitleExtension')
+                  : device.platform === 'windows'
+                    ? activityT('webFilter.heroSubtitleWindows')
+                    : device.platform === 'ios' && !supportsWebFilterCategories(device)
+                      ? t('dash.filterHintIos')
+                      : device.platform === 'macos'
+                        ? activityT('webFilter.infoLine4Macos')
+                        : t('dash.filterHintAndroid')}
               </p>
               {/* Why a refusal count can be large with nobody at the
                       device — a television nobody switched on produced 770 in
@@ -5233,7 +5300,7 @@ export default function Dashboard({
                       devices do rather than what this card contains, which is
                       what keeps it true where the filter counts openings
                       (the extension) instead of lookups. */}
-              <p className="hint">{t('dash.webBackgroundNote')}</p>
+              <p className="hint">{activityT('webHistory.backgroundNote')}</p>
             </Card>
           </>
         )}

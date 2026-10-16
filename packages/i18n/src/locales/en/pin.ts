@@ -22,13 +22,15 @@ export const pin = {
     'Only the family owner can create or change the Parent PIN used on child devices.',
   parentPinRequired: 'Parent PIN required',
   enterParentPinToContinue: 'Enter the 6-digit Parent PIN to continue.',
-  // Only the family owner can unlock or reset it, from Settings → Security on
-  // their phone (`ParentSettingsScreen`, `setParentPin`) — there is no screen
-  // called "Parent Settings", and a joined parent has no such row.
+  // Any family parent can unlock it, from Settings → Security on their phone
+  // (`ParentSettingsScreen` lists the locked device for a joined parent too, and
+  // `pinLockoutSafe` in firestore.rules allows it). Only the owner creates or
+  // resets the PIN, so "the parent who set up KidGate" stays on those strings.
+  // There is no screen called "Parent Settings".
   parentPinLockoutMessage:
-    'Too many incorrect attempts. Ask the parent who set up KidGate to unlock the PIN from their phone, in Settings → Security.',
+    'Too many incorrect attempts. Ask a parent to unlock the PIN from their phone, in Settings → Security.',
   parentPinHelperText:
-    'Only a parent can change blocked apps or sign out — that is what the PIN is for. If it is forgotten, the parent who set up KidGate can reset it from their phone, in Settings → Security.',
+    'Only a parent can change protected settings, such as Blocked Apps — that is what the PIN is for. If it is forgotten, the parent who set up KidGate can reset it from their phone, in Settings → Security.',
   forgotPin: 'Forgot PIN?',
   resetPinNotice:
     'You are resetting the PIN as the account owner. Child devices will ask for the new PIN from now on.',
@@ -47,20 +49,20 @@ export const pin = {
   savePin: 'Save PIN',
   pinLockedTitle: 'PIN locked',
   pinLockedBody:
-    'Too many incorrect attempts. Ask the parent who set up KidGate to unlock the PIN from their phone, in Settings → Security.',
+    'Too many incorrect attempts. Ask a parent to unlock the PIN from their phone, in Settings → Security.',
   parentAccessRequiredTitle: 'Parent access required',
   parentAccessRequiredBody:
-    'Enter your PIN to rename this device, choose Blocked Apps, or sign out.',
+    'Enter your PIN to rename this device, choose Blocked Apps, or leave the family.',
   unlockWithParentPinButton: 'Unlock with Parent PIN',
   whyPinTitle: 'Why a PIN?',
   whyPinBody:
-    'Only a parent should change Blocked Apps or sign this device out of KidGate. Theme colors do not require a PIN.',
+    'Only a parent should change Blocked Apps or have this device leave the family. Theme colors do not require a PIN.',
   pinLockedToast:
-    'The PIN is locked after too many incorrect attempts. Ask the parent who set up KidGate to unlock it from their phone, in Settings → Security.',
+    'The PIN is locked after too many incorrect attempts. Ask a parent to unlock it from their phone, in Settings → Security.',
   pinNotConfiguredToast:
     'No Parent PIN yet. The parent who set up KidGate creates it from their phone, in Settings → Security.',
   pairedNoPin:
-    'No Parent PIN yet. Child devices ask for it before Blocked Apps are changed or a device is signed out.',
+    'No Parent PIN yet. Child devices ask for it before Blocked Apps are changed or a device leaves the family.',
   enterSixDigitParentPin: 'Enter the 6-digit Parent PIN.',
   askParentCreatePin:
     'Ask the parent who set up KidGate to create a Parent PIN from their phone, in Settings → Security.',

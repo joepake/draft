@@ -225,7 +225,7 @@ export const family = {
   deviceNotFoundError: 'Device not found',
   deviceRemovedAlertTitle: 'Device removed',
   deviceRemovedAlertMessage:
-    'A parent removed this device from the family account. Choose the Child role again to reconnect.',
+    'A parent removed this device from the family account. To reconnect, choose “This is a child device”.',
   deviceNotRegistered: 'This device is not registered yet.',
   defaultDeviceName: 'Child device',
   fallbackDeviceName: 'Child device',
@@ -257,7 +257,7 @@ export const family = {
   deviceNameLabel: 'Device name',
   editDeviceNameTitle: 'Edit device name',
   editDeviceNameSubtitle:
-    'Only the family owner can rename devices. Up to {{maxLength}} characters.',
+    'Choose a name parents can recognize quickly. Up to {{maxLength}} characters.',
   deviceNameInputLabel: 'Device name',
   deviceNamePlaceholder: 'Sam’s iPhone',
   unableToUpdateDeviceName: 'Unable to update the device name. Try again.',
@@ -270,6 +270,8 @@ export const family = {
   timeRequestsWaiting_one: '{{count}} time request waiting',
   youPausedThisDevice: 'You locked this device',
   lockSentWaitingForDevice: 'Lock sent — waiting for the device',
+  lockDelayedOnDevice:
+    'Locking and unlocking can take up to {{minutes}} minutes to reach this device.',
   lockNotAppliedOnDevice: 'This device has not applied the lock',
   blockedHoursActiveNow: 'Blocked Hours active now',
   inactiveOpenKidGate: 'Inactive — please open KidGate on this device',

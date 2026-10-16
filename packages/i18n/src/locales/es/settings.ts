@@ -43,7 +43,7 @@ export const settings = {
   accountLinkCredentialInUse:
     'Este correo o proveedor ya está en uso por otra cuenta de KidGate.',
   accountLinkRequiresRecentLogin:
-    'Por seguridad, cierra sesión y vuelve a iniciarla antes de vincular este método.',
+    'Por tu seguridad, cierra sesión y vuelve a iniciar sesión; luego inténtalo otra vez.',
   accountLinkActionLink: 'Vincular',
   accountLinkActionUnlink: 'Desvincular',
   accountLinkActionVerify: 'Verificar',
@@ -98,20 +98,22 @@ export const settings = {
     'Saldrás de esta sesión de padre o madre y volverás al selector Padre / Niño. Vuelve a iniciar sesión para gestionar dispositivos. Tu cuenta, tu familia y los dispositivos de los niños no se ven afectados.',
   removeParentDeviceAlertTitle: '¿Eliminar el dispositivo de este padre o madre?',
   removeParentDeviceAlertMessage:
-    '{{deviceName}} cerrará sesión en esta cuenta y dejará de recibir notificaciones. Quien lo tenga podrá volver a iniciar sesión con la contraseña.',
+    '{{deviceName}} cerrará sesión en esta cuenta y dejará de recibir notificaciones. Quien lo tenga podrá volver a iniciar sesión.',
   toastParentDeviceRemoved: 'Se eliminó {{deviceName}}.',
   signedOutByAnotherDevice:
     'Se cerró la sesión de la cuenta parental en este dispositivo desde otro dispositivo. Vuelve a iniciar sesión para continuar.',
   deleteAccountTitle: 'Eliminar cuenta',
   deleteAccountSubtitleDefault: 'Elimina permanentemente tu cuenta y todos los datos',
-  deleteAccountAlertTitle: '¿Eliminar la cuenta de forma permanente?',
+  deleteAccountSubtitleMember:
+    'Elimina de forma permanente tu propio acceso y tus ajustes. La familia se mantiene.',
+  deleteAccountAlertTitle: '¿Programar la eliminación de la cuenta?',
   deleteAccountAlertMessage:
     'Esto programa la eliminación de tu cuenta familiar. Todavía no se borra nada: puedes iniciar sesión y cancelar en cualquier momento antes de la fecha de eliminación. Después de esa fecha, todos los datos (dispositivos, actividad, historial de ubicación, fotos SOS) se eliminan de forma permanente para todos los padres y niños.',
   deleteAccountAlertMessageMember:
     'Esto programa la eliminación de tu propia cuenta. Todavía no se borra nada: puedes iniciar sesión y cancelar en cualquier momento antes de la fecha de eliminación. Después de esa fecha, se eliminan tu inicio de sesión y tus propios ajustes. La familia, sus dispositivos y los demás padres no se ven afectados.',
   deleteAccountSubscriptionNotice:
     'Eliminar tu cuenta no cancela una suscripción. Cancélala en la App Store o en Google Play.',
-  sendRequestButton: 'Eliminar permanentemente',
+  sendRequestButton: 'Programar eliminación',
   toastDeletionAlreadyPending: 'La eliminación de la cuenta ya está en curso.',
   toastDeletionRequestFailed:
     'No se pudo iniciar la eliminación de la cuenta. Inténtalo de nuevo.',

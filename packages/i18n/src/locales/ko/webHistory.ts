@@ -2,7 +2,7 @@ export const webHistory = {
   title: '웹 기록',
   fallbackDeviceName: '자녀 기기',
   syncNote:
-    '웹 기록이 이 화면에 반영되기까지 최대 15분 정도 걸릴 수 있습니다. 기기에 인터넷 연결이 없거나 예기치 않게 종료된 경우 더 오래 걸립니다.',
+    '웹 기록은 이 화면을 보고 있는 동안에는 약 10분, 그 외에는 최대 30분 늦게 도착할 수 있습니다. 기기에 인터넷 연결이 없거나 예기치 않게 종료된 경우에는 더 늦어집니다.',
   syncNoteTv:
     '이 TV는 주기적으로만 접속하므로 웹 기록이 이 화면에 반영되기까지 최대 1시간이 걸릴 수 있습니다. 인터넷 연결이 없으면 더 오래 걸립니다.',
   summarySites: '확인된 사이트',
@@ -31,12 +31,16 @@ export const webHistory = {
   blockCategoryConfirmTitle: '{{category}}을(를) 차단할까요?',
   blockCategoryConfirmBody:
     'KidGate가 {{category}}(으)로 분류하는 모든 사이트가 이 기기에서 차단됩니다. 웹 필터에서 다시 끌 수 있습니다.',
+  blockCategoryConfirmBodyChild:
+    'KidGate가 {{category}}(으)로 분류하는 모든 사이트가 {{name}}의 모든 기기에서 차단됩니다. 웹 필터에서 다시 끌 수 있습니다.',
   blockCategoryConfirmAction: '차단',
   blockCategoryDone: '{{category}}을(를) 차단했습니다.',
   unblockCategory: '{{category}} 차단 해제',
   unblockCategoryConfirmTitle: '{{category}} 차단을 해제할까요?',
   unblockCategoryConfirmBody:
     'KidGate가 {{category}}(으)로 분류하는 사이트에 이 기기에서 다시 접속할 수 있게 됩니다.',
+  unblockCategoryConfirmBodyChild:
+    'KidGate가 {{category}}(으)로 분류하는 사이트에 {{name}}의 기기에서 다시 접속할 수 있게 됩니다.',
   unblockCategoryConfirmAction: '해제',
   unblockCategoryDone: '{{category}} 차단을 해제했습니다.',
   serviceSites: '사이트 {{count}}개',

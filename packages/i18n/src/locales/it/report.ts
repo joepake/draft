@@ -36,9 +36,9 @@ export const report = {
   findingAppSurge:
     '{{app}} sale di {{delta}} rispetto alla scorsa settimana: {{duration}} in totale.',
   findingLimitHit_one:
-    'Il limite giornaliero di {{limit}} è stato raggiunto in un giorno.',
+    'Il Limite giornaliero di {{limit}} è stato raggiunto in un giorno.',
   findingLimitHit_other:
-    'Il limite giornaliero di {{limit}} è stato raggiunto in {{count}} giorni.',
+    'Il Limite giornaliero di {{limit}} è stato raggiunto in {{count}} giorni.',
   findingBlockedApps:
     '{{count}} aperture di app bloccate, contro {{previous}} della settimana scorsa.',
   findingBlockedWeb:
@@ -50,7 +50,7 @@ export const report = {
   // lo sostiene; nessuna elogia — `docs/COPY_STYLE.md` vieta l’adulazione
   // quanto vieta l’allarme.
   findingLimitRespected:
-    'Il limite giornaliero di {{limit}} è stato rispettato tutti i {{count}} giorni.',
+    'Il Limite giornaliero di {{limit}} è stato rispettato tutti i {{count}} giorni.',
   findingLateNightGone_one:
     'Nessuna notte tarda questa settimana, dopo una notte la scorsa.',
   findingLateNightGone_other:
@@ -86,7 +86,7 @@ export const report = {
   share: 'Condividi',
   copySummary: 'Copia il riepilogo',
   copied: 'Riepilogo copiato.',
-  shareFailed: 'Non è stato possibile aprire il menu di condivisione.',
+  shareFailed: 'Impossibile aprire il menu di condivisione. Riprova.',
   shareLinkCta: 'Scarica l’app su {{url}}',
   shareFooterDesc:
     'KidGate aiuta i genitori a gestire il tempo di utilizzo, vedere la posizione e filtrare il web.',
@@ -100,14 +100,14 @@ export const report = {
 
   emptyTitle: 'Ancora nessun report',
   emptyBody:
-    'Un report arriva ogni lunedì mattina. Puoi anche scrivere quello di questa settimana adesso: copre gli ultimi sette giorni.',
+    'Con Premium, un report arriva ogni lunedì mattina. Puoi anche scrivere quello di questa settimana adesso: copre gli ultimi sette giorni.',
   noUsage:
     'Nelle ultime due settimane non è stato registrato alcun tempo di utilizzo, quindi non c’è ancora nulla da riportare. Un dispositivo offline non riporta nulla, e non è la stessa cosa di una settimana tranquilla.',
-  rateLimited: 'Troppi tentativi. Aspetta un minuto.',
+  rateLimited:
+    'Non è ancora possibile scrivere un altro report. Riprova tra un minuto.',
   loadFailedTitle: 'Report non caricati',
-  loadFailed:
-    'Non è stato possibile aprire i report. Trascina verso il basso per riprovare.',
-  failed: 'Non è stato possibile scrivere il report. Riprova tra poco.',
+  loadFailed: 'Impossibile aprire i report. Trascina verso il basso per riprovare.',
+  failed: 'Impossibile scrivere il report. Riprova tra poco.',
 
   historyTitle: 'Settimane precedenti',
   historyEmpty: 'I report che riceverai da ora restano qui per un anno.',
@@ -123,10 +123,10 @@ export const report = {
   // pack.
   childrenTitle: 'Ogni figlio',
   childrenNoteByChild:
-    'Le stesse due settimane, per ogni figlio su tutti i dispositivi che usa. Le percentuali sono sul totale della famiglia.',
+    'Questa settimana, per ogni figlio su tutti i dispositivi che usa. Le percentuali sono sul totale della famiglia.',
   devicesTitle: 'Ogni dispositivo',
   childrenNote:
-    'Le stesse due settimane, per dispositivo. Le percentuali sono sul totale della famiglia.',
+    'Questa settimana, per dispositivo. Le percentuali sono sul totale della famiglia.',
   colChild: 'Figlio',
   colDevice: 'Dispositivo',
   colScreenTime: 'Tempo di utilizzo',
@@ -153,14 +153,14 @@ export const report = {
   guestPreviewHint: 'Esempio — i dati reali compaiono quando colleghi un dispositivo',
   guestTitle: 'Scopri dov’è finita la settimana',
   guestDescription:
-    'Accedi per misurare oggi rispetto a un giorno normale, confrontare i tuoi figli fianco a fianco e ricevere un report ogni lunedì.',
+    'Accedi per misurare oggi rispetto a un giorno normale, confrontare i tuoi figli fianco a fianco e, con Premium, ricevere un report ogni lunedì.',
   guestBenefitTrendTitle: 'Oggi, rispetto al normale',
   guestBenefitTrendBody:
     'Un numero da solo non dice nulla. Oggi viene sempre tracciato rispetto alla media giornaliera della tua famiglia.',
   guestBenefitChildTitle: 'Ogni figlio, fianco a fianco',
   guestBenefitChildBody:
     'La quota di giornata di ogni figlio, nel suo colore, su tutti i dispositivi che usa.',
-  guestBenefitWeeklyTitle: 'Un report ogni lunedì',
+  guestBenefitWeeklyTitle: 'Un report ogni lunedì, con Premium',
   guestBenefitWeeklyBody:
     'Cosa è cambiato, quali app sono cresciute e le nottate tardi — conservato per un anno.',
   guestSignInButton: 'Accedi',

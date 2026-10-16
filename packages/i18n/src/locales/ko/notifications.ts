@@ -7,19 +7,19 @@ export const notifications = {
     '이 휴대폰에서는 SOS가 전체 화면 대신 작은 배너로 표시되어 놓치기 쉽습니다. 전체 화면 알림을 허용해 주세요.',
   sosFullScreenAllow: '전체 화면 알림 허용',
   sectionAlerts: '알림',
-  sectionAlertsHint: '이 기기에서 받을 알림을 선택하세요.',
+  sectionAlertsHint: '부모 휴대폰으로 전송할 알림을 선택하세요.',
   sectionSummary: '요약',
   sectionQuietHours: '방해 금지 시간',
   sectionQuietHoursHint:
-    '이 시간대에는 알림이 조용해집니다. SOS는 절대 무음 처리되지 않으며, 가장 심각한 메시지 경고는 계속 전달됩니다.',
+    '이 시간대에는 알림이 전송되지 않으며, 시간대가 끝난 뒤에도 보내지지 않습니다. 이벤트는 계속 활동에 표시됩니다. SOS는 절대 보류되지 않고, 가장 심각한 메시지 경고는 계속 전달됩니다.',
   quietHoursLabel: '방해 금지 시간',
   quietHoursOff: '꺼짐 — 알림이 언제든 도착합니다',
-  quietHoursActive: '{{start}}부터 {{end}}까지 무음',
+  quietHoursActive: '{{start}}부터 {{end}}까지 알림 없음',
   quietHoursStart: '시작',
   quietHoursEnd: '종료',
   quietHoursSameTime: '서로 다른 두 시간을 선택하세요.',
   footnote:
-    '이 설정은 이 기기에만 적용됩니다. 다른 부모 기기는 각자 설정을 유지합니다.',
+    '이 설정은 휴대폰 한 대에만 적용됩니다. 다른 부모 기기는 각자 설정을 유지합니다.',
   toastSaveFailed: '저장할 수 없습니다. 다시 시도해 주세요.',
   localReminderSetupTitle: 'KidGate 설정을 마치세요',
   localReminderIdleTitle: '규칙은 계속 작동합니다',
@@ -30,11 +30,11 @@ export const notifications = {
     '{{days}}일 동안 아무도 KidGate를 열지 않으면 누군가 다시 열 때까지 자녀 기기가 보고를 멈춥니다. 규칙은 계속 작동합니다.',
   alert: {
     tamperAlerts: {
-      label: '보호 기능 꺼짐',
+      label: '보호 알림',
       hint: '자녀 기기에서 KidGate에 필요한 권한이 꺼졌거나, 날짜·시간·시간대가 변경되었거나, 잠긴 상태에서 SOS를 눌렀을 때. SOS 알림 자체는 항상 전달됩니다.',
     },
     placeAlerts: {
-      label: '도착과 출발',
+      label: '장소 알림',
       hint: '자녀가 저장한 장소에 도착하거나 떠날 때.',
     },
     timeRequests: {
@@ -50,7 +50,7 @@ export const notifications = {
       hint: '자녀가 안전 확인에 답할 때.',
     },
     rewardTasks: {
-      label: '보상 요청',
+      label: '보상 과제',
       hint: '자녀가 보상 과제를 완료했다고 표시할 때.',
     },
     appActivity: {
@@ -62,7 +62,7 @@ export const notifications = {
       hint: '자녀 기기에서 평소와 다른 사용이 있을 때 — 늦은 밤 사용, 급증, 새 앱.',
     },
     weeklyDigest: {
-      label: '주간 요약',
+      label: '주간 리포트',
       hint: '월요일에 오는 사용 시간과 차단 횟수 정리.',
     },
     messageAlerts: {

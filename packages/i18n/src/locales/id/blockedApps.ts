@@ -87,6 +87,6 @@ export const blockedApps = {
     'Buka Aplikasi yang Diblokir di bagian Pemblokiran Aplikasi, centang aplikasinya, lalu simpan.',
   pickerSubtitle: 'Pilih aplikasi dan kategori yang akan diblokir di perangkat ini.',
   pickerSubtitleAndroid:
-    'Aplikasi yang dicentang tidak bisa dibuka selama Pemblokiran Aplikasi aktif.',
+    'Selama Pemblokiran Aplikasi aktif, aplikasi yang dicentang langsung ditutup begitu dibuka.',
   pickerEmpty: 'Tidak ada aplikasi yang ditemukan di perangkat ini.',
 } as const;

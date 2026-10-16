@@ -44,7 +44,7 @@ export const settings = {
   accountLinkCredentialInUse:
     'Cet e-mail ou ce fournisseur est déjà utilisé par un autre compte KidGate.',
   accountLinkRequiresRecentLogin:
-    'Pour des raisons de sécurité, veuillez vous déconnecter puis vous reconnecter avant de lier cette méthode.',
+    'Pour votre sécurité, déconnectez-vous et reconnectez-vous, puis réessayez.',
   accountLinkActionLink: 'Lier',
   accountLinkActionUnlink: 'Dissocier',
   accountLinkActionVerify: 'Vérifier',
@@ -90,7 +90,7 @@ export const settings = {
   reportAttachmentTooLarge:
     'Toujours {{size}} après redimensionnement : l’image n’a pas été jointe. La limite est de {{limit}} par image.',
   reportAttachmentUnreadable:
-    'Ce fichier n’a pas pu être lu. Choisissez une autre image.',
+    'Impossible de lire ce fichier. Choisissez une autre image.',
   reportSendButton: 'Envoyer le signalement',
   reportSending: 'Envoi…',
   toastReportSent: 'Merci — votre signalement a été envoyé.',
@@ -100,21 +100,23 @@ export const settings = {
     'Vous quitterez cette session parent et reviendrez à l’écran de sélection Parent / Enfant. Reconnectez-vous pour gérer les appareils. Votre compte, votre famille et les appareils enfants restent inchangés.',
   removeParentDeviceAlertTitle: 'Supprimer cet appareil parent ?',
   removeParentDeviceAlertMessage:
-    '{{deviceName}} sera déconnecté de ce compte et ne recevra plus de notifications. La personne qui l’a pourra se reconnecter avec le mot de passe.',
+    '{{deviceName}} sera déconnecté de ce compte et ne recevra plus de notifications. La personne qui l’a pourra se reconnecter.',
   toastParentDeviceRemoved: '{{deviceName}} supprimé.',
   signedOutByAnotherDevice:
     'Cet appareil a été déconnecté du compte parent depuis un autre appareil. Reconnectez-vous pour continuer.',
   deleteAccountTitle: 'Supprimer le compte',
   deleteAccountSubtitleDefault:
     'Supprimez définitivement votre compte et toutes les données',
-  deleteAccountAlertTitle: 'Supprimer définitivement le compte ?',
+  deleteAccountSubtitleMember:
+    'Supprimez définitivement votre propre accès et vos réglages. La famille reste en place.',
+  deleteAccountAlertTitle: 'Programmer la suppression du compte ?',
   deleteAccountAlertMessage:
     'Cette action programme la suppression de votre compte familial. Rien n’est encore supprimé : vous pouvez vous reconnecter et annuler à tout moment avant la date de suppression. Après cette date, toutes les données (appareils, activité, historique de localisation, photos SOS) sont définitivement supprimées pour tous les parents et enfants.',
   deleteAccountAlertMessageMember:
     'Cette action programme la suppression de votre propre compte. Rien n’est encore supprimé : vous pouvez vous reconnecter et annuler à tout moment avant la date de suppression. Après cette date, vos identifiants de connexion et vos propres réglages sont supprimés. La famille, ses appareils et les autres parents ne sont pas concernés.',
   deleteAccountSubscriptionNotice:
     'La suppression de votre compte n’annule pas l’abonnement. Annulez-le dans l’App Store ou sur Google Play.',
-  sendRequestButton: 'Supprimer définitivement',
+  sendRequestButton: 'Programmer la suppression',
   toastDeletionAlreadyPending: 'La suppression du compte est déjà en cours.',
   toastDeletionRequestFailed:
     'Impossible de lancer la suppression du compte. Veuillez réessayer.',

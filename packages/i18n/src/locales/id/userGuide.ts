@@ -26,7 +26,7 @@ export const userGuide = {
     controls: {
       title: 'Kontrol harian',
       description:
-        'Batas, jadwal, pemblokiran aplikasi, penguncian perangkat, waktu tambahan, dan hadiah',
+        'Batas harian, Jam Diblokir, Aplikasi yang Diblokir, Batas Aplikasi, Kunci perangkat, Permintaan waktu, dan Tugas hadiah',
     },
     safety: {
       title: 'Keamanan dan pemantauan',
@@ -55,8 +55,8 @@ export const userGuide = {
         '3': 'Di Keluarga, pilih Buat keluarga, lalu beri nama keluarga Anda (misalnya, “Keluarga Nguyen”). Nama ini akan muncul saat orang tua lain bergabung. Jika orang tua lain sudah membuat keluarga Anda, pilih Bergabung dengan keluarga.',
         '4': 'Atur PIN Orang Tua (6 digit) di Pengaturan, lalu Keamanan. Ingat atau simpan di tempat yang aman, dan jangan bagikan kepada anak.',
         '5': 'Disarankan: aktifkan Kunci Aplikasi dan buka kunci biometrik di Pengaturan agar orang lain tidak dapat membuka aplikasi orang tua di perangkat Anda.',
-        '6': 'Buka Keluarga, ketuk +, lalu pilih Tambahkan perangkat anak. Biarkan layar ini tetap terbuka untuk kode QR atau kode yang ditampilkan di perangkat anak.',
-        '7': 'Setelah perangkat anak tersambung, buka profil anak di Keluarga (atau perangkat, jika perangkat belum ditetapkan ke anak). Atur Batas harian dan Jam Diblokir, lalu selesaikan izin bersama anak Anda.',
+        '6': 'Buka Keluarga, lalu ketuk ikon pindai (Pindai kode). Kamera langsung terbuka: pindai kode QR di perangkat anak, atau pilih Masukkan kode secara manual dan ketik kodenya.',
+        '7': 'Setelah perangkat anak tersambung, KidGate menanyakan siapa yang memakainya: pilih anak Anda (atau tambahkan anak), atau “Tidak ada” untuk perangkat bersama. Lalu buka profil anak di Keluarga (atau perangkat, jika perangkat belum ditetapkan ke anak). Atur Batas harian dan Jam Diblokir, lalu selesaikan izin bersama anak Anda.',
       },
     },
     getStartedChild: {
@@ -68,8 +68,8 @@ export const userGuide = {
         '2': 'Biarkan layar penyandingan tetap terbuka. Tunjukkan kode QR ke orang tua, atau bacakan kode 6 karakternya.',
         '3': 'Di perangkat orang tua, pindai kode QR atau masukkan kodenya. Di perangkat anak, konfirmasi orang tua saat diminta — hanya terima orang yang Anda kenal.',
         '4': 'Tunggu hingga layar utama menunjukkan bahwa perangkat sudah tersambung. Jangan paksa tutup KidGate selama penyiapan.',
-        '5': 'Di layar Status, berikan setiap izin yang diminta KidGate (notifikasi, lokasi, kamera, dan hak khusus platform). Ketuk setiap baris hingga ditandai diizinkan.',
-        '6': 'Biarkan KidGate tetap terpasang dan masuk di perangkat anak. Selanjutnya orang tua mengelola batasan dari perangkat mereka sendiri.',
+        '5': 'Di layar Status, pilih “Lanjutkan penyiapan” pada kartu “Selesaikan penyiapan bersama orang tua”. “Siapkan perlindungan” lalu meminta setiap izin yang dibutuhkan KidGate (notifikasi, lokasi, kamera, dan hak khusus platform), satu langkah demi satu. Izinkan setiap izin, atau lewati langkah opsional untuk sementara.',
+        '6': 'Biarkan KidGate tetap terpasang dan terhubung di perangkat anak. Selanjutnya orang tua mengelola batasan dari perangkat mereka sendiri.',
       },
     },
     connectChild: {
@@ -83,7 +83,7 @@ export const userGuide = {
         '3': 'Kamera langsung terbuka: izinkan akses kamera jika diminta, lalu sejajarkan kode QR perangkat anak di dalam bingkai.',
         '4': 'Atau gunakan kode: pilih Masukkan kode secara manual, ketik 6 karakter yang ditampilkan di perangkat anak, lalu lanjutkan.',
         '5': 'Di perangkat anak, baca layar konfirmasi dengan saksama. Pilih Ya, sambungkan hanya jika nama orang tua sudah benar.',
-        '6': 'Tunggu perangkat orang tua mengonfirmasi koneksi. Perangkat baru akan muncul di bawah Keluarga.',
+        '6': 'Tunggu perangkat orang tua mengonfirmasi koneksi. Pemilik keluarga lalu ditanya siapa yang memakai perangkat baru: pilih anak, atau “Tidak ada” untuk perangkat bersama. Perangkat akan muncul di bawah Keluarga.',
         '7': 'Buka perangkat baru dan periksa apakah Terakhir aktif terus diperbarui. Jika tetap offline, buka lagi KidGate di perangkat anak dan periksa koneksi jaringan.',
         '8': 'Selanjutnya, berikan izin di perangkat anak (lihat grup Izin aplikasi). Kontrol tidak akan berfungsi penuh sampai izin tersebut aktif.',
       },
@@ -108,8 +108,8 @@ export const userGuide = {
       title: 'Sambungkan Android TV',
       summary:
         'Instal KidGate di Android TV dan sandingkan dari perangkat Anda, tanpa perlu mengetik dengan remote.',
-      keywords: 'android tv, google tv, televisi, tv, fire tv, box',
-      tip: 'TV tidak memiliki Lokasi, SOS, Check-In, maupun Permintaan waktu, dan aplikasi yang diblokir ditutup setelah terbuka, bukan dicegah terbuka. Data waktu layar bisa terlambat masuk hingga satu jam.',
+      keywords: 'android tv, google tv, televisi, tv, box',
+      tip: 'TV tidak memiliki Lokasi, SOS, Check-In, maupun Permintaan waktu, dan aplikasi yang diblokir ditutup setelah terbuka, bukan dicegah terbuka. Data waktu layar bisa terlambat masuk hingga satu jam. TV tanpa layanan Google Play tidak menerima push, sehingga perintah kunci, buka kunci, atau perubahan aturan bisa memerlukan hingga 30 menit untuk sampai.',
       steps: {
         '1': 'Di TV, buka Google Play, cari KidGate, lalu instal.',
         '2': 'Buka KidGate di TV. Aplikasi menampilkan kode QR dan kode 6 karakter; tidak perlu masuk ke akun.',
@@ -125,7 +125,7 @@ export const userGuide = {
       summary:
         'Tambahkan filter web KidGate ke Chrome di Chromebook, Mac, atau PC. Ekstensi ini muncul sebagai perangkat tersendiri.',
       keywords: 'chromebook, ekstensi chrome, ekstensi browser',
-      tip: 'Ekstensi ini hanya memfilter Chrome: tidak memfilter browser lain, dan tidak memfilter jendela Samaran kecuali Anda mengizinkannya. Di chrome://extensions, buka Detail untuk KidGate lalu aktifkan Izinkan dalam mode Samaran.',
+      tip: 'Ekstensi ini hanya memfilter Chrome: tidak memfilter browser lain, dan tidak memfilter jendela Samaran kecuali Anda mengizinkannya. Di chrome://extensions, buka Detail untuk KidGate lalu aktifkan Izinkan dalam mode Samaran. Ekstensi ini tidak memiliki Batas harian, Jam Diblokir, Kunci perangkat, Aplikasi yang Diblokir, atau waktu layar; semuanya memerlukan ponsel, komputer, atau TV.',
       steps: {
         '1': 'Di Chrome pada komputer anak Anda, buka Chrome Web Store, cari KidGate, lalu pilih Tambahkan ke Chrome.',
         '2': 'Pilih ikon KidGate di toolbar Chrome. Jika tidak terlihat, sematkan dari menu Ekstensi (ikon kepingan puzzle). Pop-up akan menampilkan kode QR dan kode 6 karakter; biarkan tetap terbuka selama penyandingan.',
@@ -173,7 +173,7 @@ export const userGuide = {
         '2': 'Masukkan nama yang langsung dikenali semua orang tua, lalu simpan.',
         '3': 'Untuk menghapus perangkat, buka perangkat, pilih Hapus perangkat di bagian bawah layarnya, lalu konfirmasi. Di tab Perangkat anak pada kartu keluarga, Anda juga bisa menggeser perangkat ke kiri.',
         '4': 'Perangkat keluar dari keluarga Anda, dan KidGate di perangkat itu menampilkan bahwa perangkat telah dihapus.',
-        '5': 'Untuk memakai perangkat lagi, misalnya setelah direset atau diberikan ke anak lain, sambungkan sebagai perangkat baru lewat Tambahkan perangkat anak di Keluarga.',
+        '5': 'Untuk memakai perangkat lagi, misalnya setelah direset atau diberikan ke anak lain, sambungkan sebagai perangkat baru: buka Keluarga, lalu ketuk ikon pindai (Pindai kode).',
       },
     },
     androidPermissions: {
@@ -181,17 +181,17 @@ export const userGuide = {
       summary:
         'Aktifkan Akses Penggunaan, Tampil di atas aplikasi lain, Aksesibilitas, baterai, dan izin terkait.',
       keywords:
-        'aksesibilitas, akses penggunaan, tampil di atas aplikasi lain, notifikasi, admin perangkat, vpn, izinkan',
-      tip: 'Kelengkapan lebih penting daripada urutan. Setiap baris merah atau belum diizinkan di layar Status anak harus diperbaiki sebelum Anda mengandalkan penguncian atau Jam Diblokir.',
+        'aksesibilitas, akses penggunaan, tampil di atas aplikasi lain, notifikasi, admin perangkat, perlindungan penghapusan, mikrofon, vpn, izinkan',
+      tip: 'Kelengkapan lebih penting daripada urutan. Selesaikan setiap langkah yang ditawarkan panduan penyiapan, termasuk yang opsional, sebelum Anda mengandalkan penguncian atau Jam Diblokir. Langkah yang Anda lewati tetap ada di layar Status sampai Anda menyelesaikannya.',
       steps: {
-        '1': 'Di perangkat anak, buka KidGate, lalu Status dan kerjakan daftar izin dari atas ke bawah.',
-        '2': 'Notifikasi: ketuk barisnya, lalu Izinkan. Orang tua memerlukan notifikasi push untuk perintah kunci dan permintaan waktu.',
+        '1': 'Buka KidGate di perangkat anak lalu masuk ke Status. Pada kartu “Selesaikan penyiapan bersama orang tua”, pilih “Lanjutkan penyiapan”. “Siapkan perlindungan” lalu memandu izin satu per satu; langkah di bawah menjelaskan masing-masing.',
+        '2': 'Notifikasi: pilih Izinkan. KidGate memerlukan notifikasi perangkat ini untuk persetujuan waktu dan pengingat.',
         '3': 'Akses Penggunaan: buka layar sistem, lalu cari KidGate, lalu aktifkan. Ini diperlukan untuk pelacakan waktu layar dan batasan.',
         '4': 'Tampil di atas aplikasi lain: izinkan KidGate. Ini diperlukan agar layar kunci dapat muncul di atas aplikasi lain.',
-        '5': 'Bantuan kunci Aksesibilitas: buka Pengaturan, lalu Aksesibilitas, cari KidGate di Aplikasi terpasang / diunduh, lalu aktifkan. Ini menjaga penguncian tetap diterapkan.',
+        '5': 'Bantuan kunci Aksesibilitas: baca penjelasan yang tampil lalu pilih Setuju; halaman Aksesibilitas akan terbuka. Jika daftar terbuka, cari KidGate di Aplikasi terpasang / diunduh, aktifkan, lalu pilih Izinkan pada konfirmasi Android. Ini menjaga penguncian tetap diterapkan.',
         '6': 'Baterai tanpa batasan: pilih Izinkan saat diminta. Jika tidak ada permintaan yang muncul: Info aplikasi, lalu Baterai, lalu Tanpa batasan.',
-        '7': 'Alarm & pengingat: izinkan agar Jam Diblokir mulai dan berakhir tepat waktu.',
-        '8': 'Lokasi dan Kamera (jika Anda menggunakan Check-In atau foto SOS): izinkan sesuai permintaan KidGate. Kembali ke Status dan pastikan setiap baris sudah diizinkan.',
+        '7': 'Alarm & pengingat: izinkan agar Jam Diblokir mulai dan berakhir tepat waktu. Lalu Cegah penghapusan: pilih Izinkan, kemudian Aktifkan pada layar konfirmasi Android. Setelah itu, untuk menghapus KidGate perlu mematikan ini terlebih dahulu, dan orang tua akan menerima peringatan.',
+        '8': 'Lokasi: pilih “Izinkan sepanjang waktu”, jika tidak peta hanya diperbarui saat KidGate terbuka. Kamera (untuk foto Check-In dan SOS) dan mikrofon (untuk suara SOS): izinkan saat aplikasi digunakan. Saat panduan menampilkan “Selesai”, penyiapan sudah rampung.',
       },
     },
     iosScreenTime: {
@@ -201,10 +201,10 @@ export const userGuide = {
       keywords: 'durasi layar, screen time, family controls, iphone, ipad, otorisasi',
       tip: 'Jika tombol Izinkan tidak muncul, buka Pengaturan iOS, lalu Waktu Layar dan pastikan Waktu Layar sudah diaktifkan di perangkat anak terlebih dahulu.',
       steps: {
-        '1': 'Buka KidGate dan tetap di layar “Status”.',
-        '2': 'Pilih Izinkan Penggunaan Aplikasi & Situs Web (atau banner Waktu Layar).',
+        '1': 'Buka KidGate di perangkat anak lalu masuk ke layar “Status”. Pada kartu “Selesaikan penyiapan bersama orang tua”, pilih “Lanjutkan penyiapan”.',
+        '2': 'Di “Siapkan perlindungan”, pilih “Izinkan Penggunaan Aplikasi & Situs Web”.',
         '3': 'Pada dialog sistem, pilih Izinkan. Mohon jangan menutup dialog tanpa memilih.',
-        '4': 'Kembali ke KidGate. Banner akan hilang setelah izin berhasil diberikan.',
+        '4': 'Kembali ke KidGate. Setelah otorisasi berhasil, panduan beralih ke langkah berikutnya.',
         '5': 'Jika izin sebelumnya ditolak: buka Pengaturan iOS, cari KidGate, aktifkan Waktu Layar di halaman itu, lalu buka lagi KidGate.',
         '6': 'Untuk memilih aplikasi yang diblokir: di perangkat anak, buka Pengaturan KidGate, lalu pilih Buka kunci dengan PIN Orang Tua, lalu buka Aplikasi yang Diblokir, lalu simpan.',
         '7': 'Di perangkat orang tua, buka profil anak (atau perangkat, jika perangkat belum ditetapkan ke anak), lalu Aplikasi yang Diblokir, dan pastikan daftarnya telah tersinkronisasi. Aktifkan pemblokiran saat sudah siap.',
@@ -246,10 +246,10 @@ export const userGuide = {
       tip: 'Atur dulu jam sekolah dan rentang waktu tidur. Hindari rentang waktu yang tumpang tindih agar jadwal tetap jelas.',
       steps: {
         '1': 'Di perangkat orang tua, buka profil anak (atau perangkat, jika perangkat belum ditetapkan ke anak), lalu Jam Diblokir.',
-        '2': 'Pilih Tambahkan waktu blokir, lalu tentukan waktu mulai, waktu selesai, dan hari pengulangannya.',
-        '3': 'Simpan rentangnya. Ulangi langkah ini untuk menambahkan rentang lain.',
-        '4': 'Aktifkan jadwal jika ada sakelar pengaktif yang ditampilkan.',
-        '5': 'Di perangkat anak, pastikan izin Alarm & pengingat dan Waktu Layar masih diizinkan agar jadwal berjalan tepat waktu.',
+        '2': 'Nyalakan sakelar “Aktifkan Jam Diblokir”. Sebelum aktif, layar tidak menampilkan rentang waktu dan tidak ada cara untuk menambahkannya.',
+        '3': 'Pilih “Tambahkan waktu blokir”, lalu tentukan waktu mulai, waktu selesai, dan hari pengulangannya.',
+        '4': 'Pilih “Simpan” di bagian bawah layar. Untuk menambahkan rentang lain, ulangi langkah sebelumnya terlebih dahulu.',
+        '5': 'Di perangkat anak Android, pastikan izin Alarm & pengingat masih diizinkan agar rentang waktu mulai dan berakhir tepat waktu. Di iPhone atau iPad, pastikan izin Waktu Layar masih diizinkan.',
         '6': 'Selama rentang aktif, kartu perangkat menampilkan Jam Diblokir aktif · terkunci. Gunakan Buka kunci hanya saat Anda sengaja mengesampingkan jadwal.',
       },
     },
@@ -321,7 +321,7 @@ export const userGuide = {
         '2': 'Anda akan menerima notifikasi. Buka KidGate: permintaan menunggu di kartu Perlu persetujuan di Keluarga, di profil anak, dan di perangkat.',
         '3': 'Periksa jumlah menit dan alasannya, lalu pilih Setujui untuk menambahkan tepat sejumlah menit itu untuk hari ini, atau Nanti saja untuk menolak.',
         '4': 'Perangkat anak menerima jawabannya, dan menit yang disetujui langsung berlaku. Setiap perangkat hanya bisa memiliki satu permintaan yang menunggu dalam satu waktu.',
-        '5': 'Permintaan yang sudah dijawab tercantum di Aktivitas. Untuk menghentikan notifikasi ini di perangkat Anda, nonaktifkan Permintaan waktu tambahan di Notifikasi push, di Pengaturan.',
+        '5': 'Permintaan yang sudah dijawab tercantum di Aktivitas. Untuk menghentikan notifikasi ini di perangkat Anda, nonaktifkan Permintaan waktu di Notifikasi push, di Pengaturan.',
       },
     },
     rewardTasks: {
@@ -344,25 +344,25 @@ export const userGuide = {
       keywords: 'gps, peta, di mana anak saya, cari ponsel, tempat',
       tip: 'Lokasi memerlukan izin di perangkat anak dan koneksi jaringan yang stabil. GPS di dalam ruangan bisa kurang akurat.',
       steps: {
-        '1': 'Di perangkat anak, izinkan Lokasi untuk KidGate saat diminta (atau di Pengaturan sistem).',
+        '1': 'Di perangkat anak, izinkan Lokasi untuk KidGate saat diminta (atau di Pengaturan sistem). Pilih “Izinkan sepanjang waktu” di Android, atau “Selalu” di iPhone atau iPad, jika tidak lokasi hanya diperbarui saat KidGate terbuka.',
         '2': 'Di perangkat orang tua, buka profil anak (atau perangkat, jika perangkat belum ditetapkan ke anak), lalu Lokasi.',
         '3': 'Aktifkan berbagi jika sedang nonaktif, lalu tunggu pembaruan pertama.',
         '4': 'Jika status masih menunggu, ketuk tombol perbarui, atau buka lagi layarnya.',
-        '5': 'Opsional: buka profil anak (atau perangkat, jika perangkat belum ditetapkan ke anak), lalu bagian Peringatan, dan pilih Lokasi untuk mengatur Peringatan Tempat saat anak Anda memasuki atau meninggalkan lokasi yang disimpan.',
+        '5': 'Opsional, dan termasuk dalam Premium: buka profil anak (atau perangkat, jika perangkat belum ditetapkan ke anak), lalu bagian Peringatan, dan pilih Lokasi untuk mengatur Peringatan Tempat saat anak Anda memasuki atau meninggalkan lokasi yang disimpan.',
         '6': 'Jika ponsel tertinggal di dekat Anda, buka Lokasi lalu ketuk Bunyikan perangkat. iPhone tidak akan berbunyi saat dalam mode senyap atau mode Fokus aktif.',
       },
     },
     checkIn: {
       title: 'Minta Check-In',
       summary:
-        'Minta anak Anda mengonfirmasi bahwa mereka aman, dengan lokasi dan foto opsional.',
-      tip: 'Izin kamera di perangkat anak diperlukan untuk Check-In dengan foto.',
+        'Minta anak Anda mengonfirmasi bahwa mereka aman, dengan lokasinya dan, dengan Premium, sebuah foto.',
+      tip: 'Foto termasuk dalam Premium; paket gratis hanya meminta lokasi. Izin kamera di perangkat anak diperlukan untuk foto.',
       steps: {
         '1': 'Di perangkat orang tua, buka profil anak (atau perangkat, jika perangkat belum ditetapkan ke anak).',
         '2': 'Pilih Check-In (tindakan cepat atau baris di bagian Pemantauan keamanan).',
         '3': 'Perangkat anak menerima notifikasi dan layar Check-In. Anak mengetuk untuk mengonfirmasi bahwa mereka baik-baik saja, atau untuk meminta bantuan.',
-        '4': 'Jika akses kamera diizinkan, KidGate melampirkan foto beserta lokasi jika memungkinkan.',
-        '5': 'Di perangkat orang tua, buka riwayat Check-In untuk meninjau respons dan foto terbaru.',
+        '4': 'Dengan Premium, jika akses kamera diizinkan, KidGate melampirkan foto beserta lokasi jika memungkinkan. Di paket gratis, hanya lokasi yang dikirim.',
+        '5': 'Di perangkat orang tua, Riwayat Check-In di layar yang sama menampilkan respons terbaru, dan fotonya jika ada.',
       },
     },
     sos: {
@@ -371,7 +371,7 @@ export const userGuide = {
         'Cara anak mengirim SOS, apa saja yang dikirim, dan cara orang tua menanggapinya.',
       keywords:
         'tombol panik, tolong, bantuan, bahaya, tidak aman, audio, suara, mikrofon, sirene, email, kakek, nenek, tetangga',
-      tip: 'SOS berfungsi di ponsel dan komputer, tidak di TV atau ekstensi Chrome. Suara hanya direkam di ponsel. Uji sekali di rumah, dan sepakati dengan anak Anda kapan menggunakan SOS dan kapan Check-In sudah cukup.',
+      tip: 'SOS berfungsi di ponsel dan komputer, tidak di TV atau ekstensi Chrome. Suara hanya direkam di ponsel. Uji sekali di rumah, sebelum Anda menambahkan Kontak tepercaya atau setelah Anda memberi tahu mereka, karena setiap SOS dikirim lewat email ke mereka. Sepakati dengan anak Anda kapan menggunakan SOS dan kapan Check-In sudah cukup.',
       steps: {
         '1': 'Di perangkat anak, buka SOS di KidGate. Di ponsel, ini adalah tombol di tengah bilah bawah.',
         '2': 'Tahan tombol SOS selama 5 detik. Jika dilepas lebih awal, pengiriman dibatalkan.',
@@ -386,14 +386,14 @@ export const userGuide = {
       summary:
         'Aktifkan Filter web untuk konten tidak pantas jika platform mendukungnya.',
       keywords:
-        'blokir situs, blokir link, blokir tautan, url, konten dewasa, pencarian aman, dns, vpn, iphone, ipad',
-      tip: 'Pemfilteran web bergantung pada kemampuan platform. Gabungkan dengan Aplikasi yang Diblokir untuk perlindungan yang lebih kuat.',
+        'blokir situs, blokir link, blokir tautan, url, konten dewasa, pencarian aman, mode terbatas youtube, kategori, dns, dns pribadi, vpn, iphone, ipad',
+      tip: 'Filter membaca nama situs, bukan halaman, dan jangkauannya bergantung pada perangkat. Ponsel memfilter browser dan banyak aplikasi. Mac tidak dapat memeriksa situs yang namanya disembunyikan browser, sekitar separuh kunjungan. Windows memeriksa setiap browser hanya berdasarkan nama situs. Ekstensi Chrome hanya memfilter Chrome. Memilih kategori, daftar milik Anda sendiri, dan menjawab permintaan situs termasuk dalam Premium. Gabungkan Filter web dengan Aplikasi yang Diblokir untuk perlindungan yang lebih kuat.',
       steps: {
         '1': 'Di perangkat orang tua, buka profil anak (atau perangkat, jika perangkat belum ditetapkan ke anak), lalu Filter web.',
-        '2': 'Tinjau status saat ini (situs tidak pantas dibatasi, atau pemfilteran nonaktif).',
-        '3': 'Aktifkan pemfilteran dan simpan jika ada sakelar yang ditampilkan.',
+        '2': 'Aktifkan “Filter situs web tidak pantas” di bagian atas. Perubahan langsung berlaku, jadi tidak ada yang perlu disimpan. “Paksa SafeSearch” di layar yang sama juga mengunci Google, Bing, dan DuckDuckGo ke hasil aman dan YouTube ke Mode Terbatas, di Android, Android TV, dan Chrome.',
+        '3': 'Di bawah “Apa yang diblokir”, pilih kategori yang ditolak. Tambahkan situs ke “Selalu izinkan” atau “Selalu blokir”, atau aktifkan “Hanya situs yang diizinkan” untuk menolak semuanya kecuali daftar izin Anda. Saat anak Anda meminta membuka situs yang diblokir, permintaannya menunggu di “Permintaan situs”. Kontrol ini termasuk dalam Premium; paket gratis memakai kumpulan kategori yang tetap.',
         '4': 'Periksa lagi nanti dari layar yang sama. Jika status tetap Menunggu, buka lagi KidGate di perangkat anak agar pengaturan dapat tersinkronisasi.',
-        '5': 'Jika perangkat anak adalah iPhone atau iPad, buka KidGate di perangkat itu, pilih Izinkan saat iOS meminta untuk menambahkan konfigurasi VPN, lalu masukkan kode sandi perangkat. Ini hanya diminta sekali.',
+        '5': 'Di perangkat anak, buka KidGate dan setujui filter sekali. Di iPhone atau iPad, pilih Izinkan saat iOS meminta untuk menambahkan konfigurasi VPN, lalu masukkan kode sandi perangkat. Di Android, setujui permintaan VPN, lalu buka Setelan → Jaringan & internet → DNS Pribadi dan pilih Nonaktif, karena browser dapat melewati filter selama DNS Pribadi aktif.',
       },
     },
     protectionAlerts: {
@@ -401,7 +401,7 @@ export const userGuide = {
       summary: 'Dapatkan notifikasi saat izin penting di perangkat anak dinonaktifkan.',
       tip: 'Peringatan perlindungan berarti perlindungan KidGate melemah. Mohon pulihkan izin tersebut di perangkat anak sesegera mungkin.',
       steps: {
-        '1': 'Di perangkat orang tua, buka profil anak (atau perangkat, jika perangkat belum ditetapkan ke anak), lalu bagian Peringatan, dan pilih Perlindungan untuk membuka Peringatan perlindungan.',
+        '1': 'Di perangkat orang tua, buka profil anak (atau perangkat, jika perangkat belum ditetapkan ke anak), lalu bagian Peringatan, dan pilih Peringatan perlindungan.',
         '2': 'Tinjau kejadian terbaru seperti Tampil di atas aplikasi lain, Aksesibilitas, Akses Penggunaan, Kamera, atau Lokasi yang dinonaktifkan.',
         '3': 'Di perangkat anak, buka KidGate, lalu Status dan aktifkan kembali izin yang disebutkan.',
         '4': 'Kembali ke Peringatan perlindungan dan pastikan tidak ada kejadian baru yang tidak terduga muncul.',
@@ -412,7 +412,7 @@ export const userGuide = {
       title: 'Lihat laporan penggunaan',
       summary:
         'Lihat berapa lama setiap perangkat dipakai hari ini dan selama 30 hari terakhir, juga per anak, dan dalam laporan setiap hari Senin.',
-      tip: 'Dengan paket gratis, Anda melihat total hari ini dan 3 aplikasi teratas, yang diperbarui saat Anda memeriksa. Premium menambahkan riwayat 30 hari, kapan setiap perangkat dipakai, semua aplikasi, laporan untuk setiap anak, dan laporan mingguan baru setiap hari Senin. iPhone dan iPad hanya melaporkan totalnya.',
+      tip: 'Dengan paket gratis, Anda melihat total hari ini dan 3 aplikasi teratas, yang diperbarui saat Anda memeriksa. Premium menambahkan riwayat 30 hari, kapan setiap perangkat dipakai, 10 aplikasi teratas, laporan untuk setiap anak, dan laporan mingguan baru setiap hari Senin. iPhone dan iPad hanya melaporkan totalnya.',
       steps: {
         '1': 'Buka Laporan. Bagian Hari ini menjumlahkan semua perangkat; di bawahnya ada Laporan mingguan, setiap anak (Per anak), dan setiap perangkat (Per perangkat).',
         '2': 'Ketuk perangkat untuk membuka Laporan Penggunaan perangkat itu: pemakaian hari ini dibandingkan Batas harian, 30 hari terakhir, Kapan perangkat dipakai, dan Aplikasi paling sering digunakan. Anda juga dapat membukanya dari Penggunaan hari ini di layar perangkat.',
@@ -455,7 +455,7 @@ export const userGuide = {
       summary:
         'Simpan daftar video YouTube yang ditonton anak Anda, beserta saluran dan waktunya.',
       keywords: 'youtube, shorts, video yang ditonton, riwayat tontonan',
-      tip: 'Video yang ditonton termasuk dalam Premium dan hanya mencakup YouTube. Fitur ini berfungsi di ponsel Android, Android TV, dan ekstensi Chrome, tetapi tidak di iPhone atau iPad. Di Mac atau PC, tambahkan ekstensi Chrome. Di TV, Shorts tidak dicantumkan.',
+      tip: 'Video yang ditonton termasuk dalam Premium dan hanya mencakup YouTube. Fitur ini berfungsi di ponsel Android dan di ekstensi Chrome, tetapi tidak di iPhone atau iPad. Di Mac atau PC, tambahkan ekstensi Chrome. Android TV hanya merekam video setelah KidGate memiliki akses notifikasi di TV tersebut, yang belum bisa diberikan dari layar TV mana pun; bahkan setelah itu, Shorts tidak dicantumkan.',
       steps: {
         '1': 'Di perangkat orang tua, buka profil anak (atau perangkat, jika perangkat belum ditetapkan ke anak), lalu Video yang ditonton di bagian Pemantauan keamanan.',
         '2': 'Aktifkan Rekam video yang ditonton. Opsi ini nonaktif sampai Anda mengaktifkannya, dan jika diaktifkan dari profil anak, berlaku untuk semua perangkatnya.',
@@ -482,7 +482,7 @@ export const userGuide = {
       summary:
         'Dapatkan peringatan saat kata atau frasa yang mengkhawatirkan muncul di pesan atau pencarian di ponsel Android anak Anda. Anda melihat kata atau frasa yang ditandai, tidak pernah isi pesannya.',
       keywords: 'sms, messenger, whatsapp, kata kunci, perundungan, membaca pesan',
-      tip: 'Peringatan pesan termasuk dalam Premium dan hanya berfungsi di ponsel Android. Hanya kategori dan kata atau frasa yang ditandai yang sampai kepada Anda. Analisis AI tetap nonaktif kecuali ada orang tua yang mengaktifkannya untuk keluarga.',
+      tip: 'Peringatan pesan termasuk dalam Premium. Pesan hanya diperiksa di ponsel Android; pencarian juga diperiksa di ekstensi Chrome. Hanya kategori dan kata atau frasa yang ditandai yang sampai kepada Anda. Analisis AI tetap nonaktif kecuali ada orang tua yang mengaktifkannya untuk keluarga.',
       steps: {
         '1': 'Di ponsel Android anak, buka Pengaturan KidGate, pilih Buka kunci dengan PIN Orang Tua, lalu Izinkan akses notifikasi di bagian Peringatan pesan, dan aktifkan KidGate di daftar yang terbuka.',
         '2': 'Di perangkat Anda, buka profil anak (atau perangkat, jika perangkat belum ditetapkan ke anak), lalu Peringatan pesan di bagian Peringatan, lalu ketuk ikon pengaturan di bagian atas. Jika anak Anda punya beberapa perangkat, pilih ponsel Android-nya terlebih dahulu.',
@@ -500,7 +500,7 @@ export const userGuide = {
         '1': 'Di Keluarga, ketuk + lalu pilih Tambah anak. Masukkan nama, lalu simpan.',
         '2': 'Setelah Anda menyandingkan perangkat baru, KidGate menanyakan siapa yang memakainya. Pilih anak Anda, atau Tidak ada untuk perangkat bersama. Setelah itu KidGate menawarkan serangkaian perlindungan awal: pilih Aktifkan perlindungan atau Nanti saja.',
         '3': 'Perangkat yang belum dipilihkan untuk siapa pun muncul di grup Belum ditetapkan di layar Keluarga. Pilih Tetapkan ke anak… di kartunya.',
-        '4': 'Setelah perangkat ditetapkan, Batas harian, Jam Diblokir, Filter web, Check-In, SOS, tempat, dan Tugas hadiah diatur di profil anak dan berlaku untuk semua perangkatnya. Batas harian menjadi satu total untuk semua perangkat tersebut.',
+        '4': 'Setelah perangkat ditetapkan, Batas harian, Jam Diblokir, Filter web, Check-In, SOS, Peringatan Tempat, dan Tugas hadiah diatur di profil anak dan berlaku untuk semua perangkatnya. Batas harian menjadi satu total untuk semua perangkat tersebut.',
         '5': 'Untuk memindahkan perangkat, pilih Tetapkan perangkat lain… di profil anak yang akan memakainya. Untuk melepaskannya dari anak, geser perangkat di profil anak lalu pilih Lepaskan. Jika profil anak dihapus, perangkatnya tetap tersanding.',
       },
     },
@@ -513,7 +513,7 @@ export const userGuide = {
       tip: 'Hanya pemilik keluarga yang dapat berlangganan atau memulihkan pembelian, dan hanya di aplikasi ponsel. Satu paket mencakup seluruh keluarga dan semua orang tua di dalamnya.',
       steps: {
         '1': 'Buka Pengaturan. Kartu di bagian atas menampilkan paket Anda saat ini; pilih Lihat paket.',
-        '2': 'Uji coba 7 hari dimulai setelah perangkat anak pertama Anda disandingkan, dan mencakup semua fitur Premium.',
+        '2': 'Uji coba 7 hari dimulai setelah perangkat anak pertama Anda disandingkan, dan mencakup setiap fitur Premium. Satu batas yang tetap berlaku adalah jumlah orang tua: hingga 3 selama uji coba, hingga 6 dengan Premium.',
         '3': 'Di paket gratis, semua aturan tetap berjalan, tetapi hanya satu perangkat yang melapor: total hari ini dan 3 aplikasi teratas, yang diperbarui saat Anda memeriksa. Premium menambahkan pembaruan langsung, semua perangkat, riwayat 30 hari, riwayat web dan video, serta laporan mingguan.',
         '4': 'Jika uji coba berakhir saat ada lebih dari satu perangkat anak, KidGate membuka layar Pilih perangkat utama. Perangkat yang dipilih tetap melapor; perangkat lain menampilkan Dijeda, tetapi aturannya tetap berlaku. Anda dapat mengganti pilihan sekali setiap 7 hari.',
         '5': 'Untuk berlangganan, pilih paket lalu pilih Berlangganan Premium. Setelah berlangganan, semua perangkat yang dijeda kembali melapor. Jika Anda pernah membayar sebelumnya, pilih Pulihkan pembelian.',
@@ -526,8 +526,8 @@ export const userGuide = {
       tip: 'SOS selalu sampai, meskipun semuanya dimatikan dan selama jam tenang. Pengaturan ini hanya berlaku untuk ponsel ini; orang tua lain memilih pengaturannya sendiri.',
       steps: {
         '1': 'Buka Pengaturan, lalu Notifikasi push.',
-        '2': 'Di bagian Peringatan, nonaktifkan jenis peringatan yang tidak Anda inginkan di ponsel ini, misalnya Permintaan waktu tambahan dan Aplikasi dipasang atau dihapus.',
-        '3': 'Opsi Ringkasan mingguan mengatur notifikasi hari Senin untuk laporan mingguan.',
+        '2': 'Di bagian Peringatan, nonaktifkan jenis peringatan yang tidak Anda inginkan di ponsel ini, misalnya Permintaan waktu atau Aplikasi dipasang atau dihapus.',
+        '3': 'Opsi Laporan mingguan mengatur notifikasi hari Senin bahwa laporan baru sudah siap.',
         '4': 'Aktifkan Jam tenang lalu atur waktu Dari dan Sampai untuk membisukan peringatan di malam hari. Waktunya mengikuti jam di ponsel ini.',
         '5': 'Di Pengaturan, Peringatan dalam aplikasi dan Sirene SOS adalah opsi terpisah: keduanya mengatur banner di dalam aplikasi dan bunyi SOS yang keras di ponsel ini.',
       },
@@ -545,10 +545,24 @@ export const userGuide = {
         '4': 'Di dasbor web, ganti bahasa di bagian akun pada menu samping. Pilihan ini hanya berlaku untuk browser itu.',
       },
     },
+    appearance: {
+      title: 'Ganti tampilan aplikasi',
+      summary: 'Pilih mode gelap, gaya tema, dan warna tema di setiap ponsel.',
+      keywords: 'tema, mode malam, warna, pink, merah muda, latar gelap, kustomisasi',
+      tip: 'Setiap ponsel menyimpan tampilannya sendiri, jadi perubahan di ponsel anak Anda tidak pernah mengubah ponsel Anda.',
+      steps: {
+        '1': 'Di ponsel orang tua, buka Pengaturan. Mode gelap, gaya tema, dan warna tema ada di bagian Tampilan.',
+        '2': 'Aktifkan Mode gelap agar layar lebih gelap dan lebih nyaman di mata pada malam hari.',
+        '3': 'Pilih Gaya tema, lalu pilih Klasik atau Manis, dengan warna pastel hangat dan nuansa yang lebih lembut dan ceria.',
+        '4': 'Pilih Warna tema, lalu pilih warna untuk tombol dan aksen. Warna yang tersedia mengikuti gaya: Manis hanya menawarkan nuansa merah muda.',
+        '5': 'Anak Anda dapat membuat pilihan yang sama di ponselnya sendiri, di Pengaturan bagian Preferensi, tanpa PIN Orang Tua.',
+        '6': 'Di dasbor web, aktifkan Mode gelap di bagian akun pada menu samping. Pilihan ini hanya berlaku untuk browser itu.',
+      },
+    },
     webSignIn: {
       title: 'Gunakan KidGate di komputer',
       summary: 'Masuk ke dasbor web dan kelola keluarga Anda dari browser.',
-      tip: 'Izinkan hanya browser yang Anda gunakan sendiri untuk masuk: browser itu mendapat kendali yang sama dengan ponsel Anda. Dasbor web tidak dapat menyandingkan perangkat atau membeli paket. Untuk mengeluarkan browser dari akun, gunakan Keluar di dasbor.',
+      tip: 'Izinkan hanya browser yang Anda gunakan sendiri untuk masuk: browser itu mendapat kendali yang sama dengan ponsel Anda. Dasbor web tidak dapat menyandingkan perangkat anak atau membeli paket. Untuk mengeluarkan browser dari akun, gunakan Keluar di dasbor. Untuk menghentikan browser membuat perubahan, buka Keluarga, lalu Orang tua, dan hapus browser itu di bagian Browser yang dapat membuat perubahan; browser itu tetap dapat melihat keluarga Anda sampai seseorang keluar dari akun di sana.',
       steps: {
         '1': 'Di komputer, buka dashboard.kidgate.app lalu pilih Masuk dengan aplikasi KidGate. Kode QR akan muncul.',
         '2': 'Di ponsel Anda, buka Pengaturan, lalu Masuk di web. Anda juga dapat memindai dari Keluarga dengan ikon pindai.',
@@ -593,7 +607,7 @@ export const userGuide = {
       steps: {
         '1': 'Buka Pengaturan, lalu di bagian Akun, pilih Hapus akun.',
         '2': 'Baca apa saja yang akan dihapus. Jika Anda pemilik keluarga, semua orang tua lain dan semua perangkat anak juga kehilangan akses.',
-        '3': 'Konfirmasi bahwa ini memang Anda (dengan kata sandi, atau masuk lagi dengan Google atau Apple), ketik OK, lalu pilih Hapus permanen.',
+        '3': 'Konfirmasi bahwa ini memang Anda (dengan kata sandi, atau masuk lagi dengan Google atau Apple), ketik OK, lalu pilih Jadwalkan penghapusan. Ini hanya menjadwalkan penghapusan: belum ada yang dihapus.',
         '4': 'Akun dihapus setelah 14 hari. Sebelum itu, buka KidGate dan pilih Batalkan penghapusan untuk mempertahankan semuanya.',
         '5': 'Jika orang tua lain yang bukan pemilik menghapus akunnya, hanya akun miliknya yang dihapus; keluarga tetap ada. Untuk keluar dari keluarga tanpa menghapus akun, buka kartu keluarga di Keluarga lalu pilih Keluar dari keluarga.',
       },
@@ -602,5 +616,5 @@ export const userGuide = {
   onChildDevice: 'Di perangkat anak',
   onParentDevice: 'Di perangkat Anda',
   handoffHint:
-    'KidGate dapat memandu langkah-langkah ini di perangkat anak: buka di sana, masuk ke Status lalu pilih Selesaikan penyiapan bersama orang tua. Setiap langkah punya tombol yang membuka layar yang tepat.',
+    'KidGate dapat memandu langkah-langkah ini di perangkat anak: buka di sana, masuk ke Status lalu pilih Lanjutkan penyiapan pada kartu Selesaikan penyiapan bersama orang tua. Setiap langkah punya tombol yang membuka layar yang tepat.',
 } as const;

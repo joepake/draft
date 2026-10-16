@@ -40,7 +40,7 @@ export const settings = {
   accountLinkCredentialInUse:
     'هذا البريد الإلكتروني أو مزوّد الخدمة مستخدَم بالفعل من قِبل حساب KidGate آخر.',
   accountLinkRequiresRecentLogin:
-    'لأسباب أمنية، يرجى تسجيل الخروج وإعادة تسجيل الدخول قبل ربط هذه الطريقة.',
+    'لحمايتك، سجّل الخروج ثم سجّل الدخول مرة أخرى، ثم أعد المحاولة.',
   accountLinkActionLink: 'ربط',
   accountLinkActionUnlink: 'إلغاء الربط',
   accountLinkActionVerify: 'تأكيد',
@@ -94,20 +94,22 @@ export const settings = {
     'ستغادر جلسة الوالد هذه وتعود إلى شاشة اختيار الوالد / الطفل. سجّل الدخول مرة أخرى لإدارة الأجهزة. يبقى حسابك وعائلتك وأجهزة أطفالك دون تغيير.',
   removeParentDeviceAlertTitle: 'إزالة جهاز الوالد؟',
   removeParentDeviceAlertMessage:
-    'سيتم تسجيل خروج {{deviceName}} من هذا الحساب وسيتوقف عن تلقي الإشعارات. يمكن لمن يحمله تسجيل الدخول مجددًا بكلمة المرور.',
+    'سيتم تسجيل خروج {{deviceName}} من هذا الحساب وسيتوقف عن تلقي الإشعارات. يمكن لمن يحمله تسجيل الدخول مجددًا.',
   toastParentDeviceRemoved: 'تمت إزالة {{deviceName}}.',
   signedOutByAnotherDevice:
     'تم تسجيل خروج هذا الجهاز من حساب الوالدين عبر جهاز آخر. سجّل الدخول مرة أخرى للمتابعة.',
   deleteAccountTitle: 'حذف الحساب',
   deleteAccountSubtitleDefault: 'حذف حسابك وجميع بياناتك نهائيًا',
-  deleteAccountAlertTitle: 'حذف الحساب نهائيًا؟',
+  deleteAccountSubtitleMember:
+    'احذف تسجيل دخولك وإعداداتك نهائيًا. تبقى العائلة كما هي.',
+  deleteAccountAlertTitle: 'جدولة حذف الحساب؟',
   deleteAccountAlertMessage:
     'يؤدي هذا إلى جدولة حذف حساب العائلة. لم يُحذف أي شيء بعد — يمكنك تسجيل الدخول والإلغاء في أي وقت قبل تاريخ الحذف. بعد ذلك التاريخ، تُحذف جميع البيانات (الأجهزة والنشاط وسجل المواقع وصور الاستغاثة) نهائيًا لكل الوالدين والأطفال.',
   deleteAccountAlertMessageMember:
     'يؤدي هذا إلى جدولة حذف حسابك أنت فقط. لم يُحذف أي شيء بعد — يمكنك تسجيل الدخول والإلغاء في أي وقت قبل تاريخ الحذف. بعد ذلك التاريخ، تُحذف بيانات تسجيل دخولك وإعداداتك الخاصة. ولا تتأثر العائلة ولا أجهزتها ولا أولياء الأمور الآخرون.',
   deleteAccountSubscriptionNotice:
     'حذف حسابك لا يلغي الاشتراك. ألغِه من App Store أو Google Play.',
-  sendRequestButton: 'حذف نهائيًا',
+  sendRequestButton: 'جدولة الحذف',
   toastDeletionAlreadyPending: 'حذف الحساب قيد التنفيذ بالفعل.',
   toastDeletionRequestFailed: 'تعذر بدء حذف الحساب. يرجى المحاولة مرة أخرى.',
   deletionRequestAlreadyPending: 'حذف هذا الحساب قيد التنفيذ بالفعل.',

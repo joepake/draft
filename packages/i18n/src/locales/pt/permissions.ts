@@ -34,7 +34,7 @@ export const permissions = {
     'Em Inicialização automática, ative o KidGate para que a proteção seja reiniciada após reiniciar o dispositivo.',
   oemAutostartHintSamsung: 'Em Bateria, selecione Limites de uso em segundo plano.',
   oemAutostartHintSamsungAdd:
-    'Abra Apps que nunca dormem e adicione o KidGate. Se o KidGate não estiver na lista, já está permitido e esta etapa está concluída.',
+    'Abra “Apps que nunca dormem”, toque em “Adicionar” e escolha o KidGate. Se o KidGate já estiver na lista, esta etapa está concluída.',
   oemAutostartHintOppo:
     'Em Apps de inicialização / Início automático, permita o KidGate.',
   oemAutostartHintVivo:
@@ -52,15 +52,15 @@ export const permissions = {
   accessibilityStepTurnOn:
     'Ligue a chave e depois selecione Permitir na confirmação do Android.',
   restrictedSettingsStep:
-    'Se a chave estiver esmaecida, abra Configurações › Aplicativos › KidGate, toque no menu ⋮ e escolha “Permitir configurações restritas”; depois volte aqui e tente de novo.',
+    'Se a chave estiver esmaecida, abra Configurações → Aplicativos → KidGate, toque no menu ⋮ e escolha “Permitir configurações restritas”; depois volte aqui e tente de novo.',
   accessibilityWarningNote:
-    'O Android avisa que o KidGate pode observar suas ações. Com esta permissão, o KidGate vê qual app está aberto, para que o bloqueio possa ficar por cima. Quando os vídeos assistidos estão sendo registrados, ele também lê o título e o canal de cada vídeo do YouTube e os envia para seus pais. Esta permissão não lê senhas, mensagens nem o que você digita. Se seus pais ativarem os Alertas de mensagens, uma segunda permissão, pedida separadamente, verifica as mensagens de texto (SMS e MMS), as mensagens de chat e as buscas que você digita, e envia a seus pais só uma palavra ou frase sinalizada. Se o KidGate travar, um registro de falhas é enviado à equipe do KidGate para corrigir o problema.',
+    'O Android avisa que o KidGate pode observar suas ações. Com esta permissão, o KidGate vê qual app está aberto, para que o bloqueio possa ficar por cima. Quando os vídeos assistidos estão sendo registrados, ele também lê o título e o canal de cada vídeo do YouTube e os envia para seus pais. Esta permissão não lê senhas, mensagens nem o que você digita. Se seus pais ativarem os Alertas de mensagens, uma segunda permissão, pedida separadamente, verifica as mensagens de texto (SMS e MMS), as mensagens de chat e as buscas que você digita, e envia a seus pais só uma palavra ou frase sinalizada. Se você permitir o acesso ao microfone, o KidGate grava até 15 segundos de som quando você envia um SOS e manda a gravação para seus pais. Se o KidGate travar, um registro de falhas é enviado à equipe do KidGate para corrigir o problema.',
   accessibilityAgree: 'Concordar',
   accessibilityDecline: 'Discordar',
   accessibilityTvNote:
-    'Com esta permissão, o KidGate vê qual app está aberto, para que o bloqueio possa ficar por cima. Ele também conta quanto tempo cada app é usado e envia isso para seus pais. Ele não lê o que está na tela, senhas nem mensagens.',
+    'Com esta permissão, o KidGate vê qual app está aberto, para que o bloqueio possa ficar por cima, e conta quanto tempo cada app é usado. O KidGate envia para seus pais esse tempo, os apps instalados nesta TV, o histórico de navegação na web (sites visitados e bloqueados) enquanto o Filtro da web estiver ativado e o título e o canal dos vídeos do YouTube assistidos. Ele não lê o que está na tela, senhas nem mensagens.',
   uninstallProtectionWizardBody:
-    'Impede que este app seja desinstalado sem o PIN dos pais. O Android mostra a própria tela de confirmação.',
+    'Torna o KidGate mais difícil de remover: para desinstalá-lo, é preciso desativar esta opção primeiro, e um dos pais é avisado quando isso acontece. O Android mostra a própria tela de confirmação.',
   notificationsWizardBody:
     'Permita notificações para que este dispositivo receba aprovações de tempo e lembretes na hora.',
   backgroundRefreshStepOpen: 'Abra a página do KidGate nos Ajustes.',

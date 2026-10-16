@@ -3,12 +3,12 @@ export const permissions = {
     'L’accès à l’appareil photo est nécessaire pour cette fonctionnalité.',
   allowCameraTitle: 'Autoriser l’appareil photo',
   cameraPermissionMessage:
-    'KidGate utilise l’appareil photo afin que vous puissiez envoyer une photo rapide avec le SOS et les Check-ins.',
+    'KidGate utilise l’appareil photo pour que tu puisses envoyer une photo rapide avec le SOS et les Check-ins.',
   allow: 'Autoriser',
   notNow: 'Pas maintenant',
   cameraTurnedOffTitle: 'L’appareil photo est désactivé pour KidGate',
   cameraTurnedOffMessage:
-    'Veuillez ouvrir les Réglages et autoriser l’appareil photo afin que vos Check-ins et alertes SOS puissent inclure une photo.',
+    'Ouvre les Réglages et autorise l’appareil photo pour que tes Check-ins et tes alertes SOS puissent inclure une photo.',
   openSettings: 'Ouvrir les Réglages',
   notificationsLabel: 'Notifications',
   notificationsAllowed: 'Les notifications sont activées pour KidGate.',
@@ -37,7 +37,7 @@ export const permissions = {
   oemAutostartHintSamsung:
     'Dans Batterie, sélectionnez Limites d’utilisation en arrière-plan.',
   oemAutostartHintSamsungAdd:
-    'Ouvrez Applications jamais en veille et ajoutez KidGate. Si KidGate n’apparaît pas dans la liste, il est déjà autorisé et cette étape est terminée.',
+    'Ouvrez Applications jamais en veille, sélectionnez Ajouter, puis choisissez KidGate. Si KidGate figure déjà dans la liste, cette étape est terminée.',
   oemAutostartHintOppo:
     'Dans Apps au démarrage / Lancement automatique, autorisez KidGate.',
   oemAutostartHintVivo:
@@ -55,15 +55,15 @@ export const permissions = {
   accessibilityStepTurnOn:
     'Activez l’interrupteur, puis sélectionnez Autoriser dans la confirmation d’Android.',
   restrictedSettingsStep:
-    'Si l’interrupteur est grisé, ouvrez Paramètres › Applications › KidGate, appuyez sur le menu ⋮ et choisissez « Autoriser les paramètres restreints », puis revenez ici et réessayez.',
+    'Si l’interrupteur est grisé, ouvrez Paramètres → Applications → KidGate, appuyez sur le menu ⋮ et choisissez « Autoriser les paramètres restreints », puis revenez ici et réessayez.',
   accessibilityWarningNote:
-    'Android prévient que KidGate peut observer vos actions. Grâce à cette autorisation, KidGate voit quelle application est ouverte, pour que le verrouillage reste au premier plan. Lorsque l’enregistrement des vidéos regardées est activé, KidGate lit aussi le titre et la chaîne de chaque vidéo YouTube et les envoie à vos parents. Cette autorisation ne lit pas les mots de passe, les messages ni ce que vous tapez. Si vos parents activent les Alertes de messages, une deuxième autorisation, demandée séparément, analyse les SMS et MMS, les messages de discussion et les recherches que vous tapez, et n’envoie à vos parents qu’un mot ou une expression signalés. Si KidGate plante, un journal de plantage est envoyé à l’équipe KidGate pour corriger le problème.',
+    'Android prévient que KidGate peut observer vos actions. Grâce à cette autorisation, KidGate voit quelle application est ouverte, pour que le verrouillage reste au premier plan. Lorsque l’enregistrement des vidéos regardées est activé, KidGate lit aussi le titre et la chaîne de chaque vidéo YouTube et les envoie à vos parents. Cette autorisation ne lit pas les mots de passe, les messages ni ce que vous tapez. Si vos parents activent les Alertes de messages, une deuxième autorisation, demandée séparément, analyse les SMS et MMS, les messages de discussion et les recherches que vous tapez, et n’envoie à vos parents qu’un mot ou une expression signalés. Si vous autorisez le micro, KidGate enregistre jusqu’à 15 secondes de son lorsque vous envoyez un SOS et transmet l’enregistrement à vos parents. Si KidGate plante, un journal de plantage est envoyé à l’équipe KidGate pour corriger le problème.',
   accessibilityAgree: 'Accepter',
   accessibilityDecline: 'Refuser',
   accessibilityTvNote:
-    'Grâce à cette autorisation, KidGate voit quelle application est ouverte, pour que le verrouillage reste au premier plan. KidGate compte aussi le temps passé dans chaque application et l’envoie à tes parents. Il ne lit ni le contenu de l’écran, ni les mots de passe, ni les messages.',
+    'Avec cette autorisation, KidGate voit quelle application est ouverte pour garder le verrouillage au premier plan, et compte le temps passé dans chacune. Il envoie à tes parents ce temps, les applications installées sur ce téléviseur, son historique de navigation web (sites visités et bloqués) si le Filtre web est actif, et le titre et la chaîne des vidéos YouTube regardées. Il ne lit ni l’écran, ni mots de passe, ni messages.',
   uninstallProtectionWizardBody:
-    'Empêche la désinstallation de cette app sans le code PIN parent. Android affiche son propre écran de confirmation.',
+    'Rend KidGate plus difficile à supprimer : pour le désinstaller, il faut d’abord désactiver cette protection, et un parent en est alors prévenu. Android affiche son propre écran de confirmation.',
   notificationsWizardBody:
     'Autorisez les notifications pour que cet appareil reçoive immédiatement les approbations de temps et les rappels.',
   backgroundRefreshStepOpen: 'Ouvrez la page KidGate dans les Réglages.',

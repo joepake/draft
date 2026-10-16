@@ -32,7 +32,7 @@ export const permissions = {
     '자동 시작에서 KidGate를 켜서 재부팅 후에도 보호 기능이 다시 시작되도록 하세요.',
   oemAutostartHintSamsung: '배터리에서 백그라운드 사용 제한을 선택하세요.',
   oemAutostartHintSamsungAdd:
-    '절전이 적용되지 않는 앱을 열고 KidGate를 추가하세요. 목록에 KidGate가 없으면 이미 허용된 상태이며 이 단계는 완료된 것입니다.',
+    '절전이 적용되지 않는 앱을 열고 “추가”를 선택한 다음 KidGate를 고르세요. 이미 KidGate가 목록에 있으면 이 단계는 완료된 것입니다.',
   oemAutostartHintOppo: '시작 앱 / 자동 실행에서 KidGate를 허용하세요.',
   oemAutostartHintVivo: '자동 시작 / 백그라운드 고성능에서 KidGate를 허용하세요.',
   oemAutostartHintHuawei:
@@ -46,15 +46,15 @@ export const permissions = {
     '목록이 열리면 설치된/다운로드한 앱에서 KidGate를 선택하세요.',
   accessibilityStepTurnOn: '스위치를 켠 다음 Android 확인 창에서 허용을 선택하세요.',
   restrictedSettingsStep:
-    '스위치가 흐리게 표시되면 설정 › 앱 › KidGate를 열고 ⋮ 메뉴에서 “제한된 설정 허용”을 선택한 뒤, 여기로 돌아와 다시 시도하세요.',
+    '스위치가 흐리게 표시되면 설정 → 앱 → KidGate를 열고 ⋮ 메뉴에서 “제한된 설정 허용”을 선택한 뒤, 여기로 돌아와 다시 시도하세요.',
   accessibilityWarningNote:
-    'Android는 KidGate가 사용자의 동작을 관찰할 수 있다고 경고합니다. 이 권한으로 KidGate는 잠금 화면이 항상 위에 표시되도록 어떤 앱이 열려 있는지 확인합니다. “시청한 동영상 기록”이 켜져 있으면 각 YouTube 동영상의 제목과 채널도 읽어 부모님에게 보냅니다. 이 권한은 비밀번호, 메시지, 입력한 내용을 읽지 않습니다. 부모님이 메시지 경고를 켜면, 따로 요청하는 두 번째 권한이 입력한 문자 메시지(SMS 및 MMS), 채팅 메시지, 검색어를 확인하고 감지된 단어나 문구만 부모님에게 보냅니다. KidGate에 오류가 발생해 앱이 종료되면 문제를 해결할 수 있도록 비정상 종료 로그가 KidGate 팀에 전송됩니다.',
+    'Android는 KidGate가 사용자의 동작을 관찰할 수 있다고 경고합니다. 이 권한으로 KidGate는 잠금 화면이 항상 위에 표시되도록 어떤 앱이 열려 있는지 확인합니다. “시청한 동영상 기록”이 켜져 있으면 각 YouTube 동영상의 제목과 채널도 읽어 부모님에게 보냅니다. 이 권한은 비밀번호, 메시지, 입력한 내용을 읽지 않습니다. 부모님이 메시지 경고를 켜면, 따로 요청하는 두 번째 권한이 입력한 문자 메시지(SMS 및 MMS), 채팅 메시지, 검색어를 확인하고 감지된 단어나 문구만 부모님에게 보냅니다. 마이크를 허용하면 SOS를 보낼 때 KidGate가 최대 15초 동안 소리를 녹음해 부모님에게 보냅니다. KidGate에 오류가 발생해 앱이 종료되면 문제를 해결할 수 있도록 비정상 종료 로그가 KidGate 팀에 전송됩니다.',
   accessibilityAgree: '동의',
   accessibilityDecline: '동의 안 함',
   accessibilityTvNote:
-    '이 권한으로 KidGate는 잠금 화면이 항상 위에 표시되도록 어떤 앱이 열려 있는지 확인해요. 또 앱마다 얼마나 사용했는지 세어 부모님에게 보내요. 화면 내용, 비밀번호, 메시지는 읽지 않아요.',
+    '이 권한으로 KidGate는 잠금 화면이 항상 위에 표시되도록 어떤 앱이 열려 있는지 확인하고, 앱마다 얼마나 사용했는지 계산해요. KidGate는 그 사용 시간, 이 TV에 설치된 앱, 웹 필터가 켜져 있는 동안의 웹 탐색 기록(방문하거나 차단된 사이트), 시청한 YouTube 동영상의 제목과 채널을 부모님에게 보내요. 화면 내용, 비밀번호, 메시지는 읽지 않아요.',
   uninstallProtectionWizardBody:
-    '부모 PIN 없이 이 앱이 삭제되지 않도록 막습니다. Android의 자체 확인 화면이 표시됩니다.',
+    'KidGate를 쉽게 삭제할 수 없게 합니다. 삭제하려면 먼저 이 설정을 꺼야 하며, 끄면 부모에게 알림이 갑니다. Android 자체 확인 화면이 표시됩니다.',
   notificationsWizardBody:
     '알림을 허용하면 이 기기가 시간 승인과 알림을 바로 받을 수 있습니다.',
   backgroundRefreshStepOpen: '설정에서 KidGate 페이지를 여세요.',

@@ -23,11 +23,11 @@ export const placeAlerts = {
   radiusLabel: 'Radius peringatan',
   radiusValue: '{{meters}} m',
   radiusHint:
-    'Seberapa dekat perangkat harus berada agar tempat ini dihitung. Radius yang lebih kecil dari galat posisi perangkat justru memberi tahu secara acak, bukan lebih tepat.',
+    'Seberapa dekat perangkat harus berada agar tempat ini dihitung. Radius yang lebih kecil dari galat posisi perangkat tidak membuat pemberitahuan lebih tepat — kedatangan dan kepergian bisa tidak dilaporkan.',
   radiusAccuracyHint:
     'Di sini perangkat ini melaporkan posisinya dengan ketelitian sekitar ±{{accuracy}} m.',
   radiusBelowAccuracy:
-    'Di sini perangkat hanya akurat sekitar ±{{accuracy}} m. Gunakan {{minimum}} m atau lebih, atau tempat ini akan memberi tahu secara acak.',
+    'Di sini perangkat hanya akurat sekitar ±{{accuracy}} m. Gunakan {{minimum}} m atau lebih, atau kedatangan dan kepergian di sini mungkin tidak dilaporkan.',
   radiusDecrease: 'Radius lebih kecil',
   radiusIncrease: 'Radius lebih besar',
   notifyEnterLabel: 'Beri tahu saat tiba',
@@ -54,7 +54,7 @@ export const placeAlerts = {
   samePinToast:
     'Ini titik yang sama dengan “{{name}}”. Geser peta untuk memindahkan pin.',
   overlapWarning:
-    '“{{name}}” berjarak {{meters}} m dan lingkarannya mencapai titik ini. Selama perangkat berada di keduanya, hanya yang lebih dekat yang memberi tahu. Simpan lagi untuk mempertahankannya.',
+    '“{{name}}” berjarak {{meters}} m dan kedua lingkaran saling tumpang tindih. Selama perangkat berada di keduanya, hanya yang lebih dekat yang memberi tahu. Simpan lagi untuk mempertahankannya.',
   savedToast: 'Tempat disimpan.',
   updatedToast: 'Tempat diperbarui.',
   removedToast: 'Tempat dihapus.',

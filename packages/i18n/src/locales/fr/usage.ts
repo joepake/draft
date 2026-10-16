@@ -16,7 +16,7 @@ export const usage = {
   insightDeviceLocked: 'Appareil verrouillé',
   signalLocksToday: 'Verrouillages aujourd’hui',
   signalUnlocksToday: 'Déverrouillages aujourd’hui',
-  signalLocksPeriod: 'Verrouillages · 30 jours',
+  signalLocksPeriod: 'Verrouillages récents',
   signalLocationsToday: 'Positions aujourd’hui',
   sectionWhatsTurnedOn: 'Ce qui est activé',
   rowBlockedHours: 'Heures bloquées',
@@ -28,7 +28,7 @@ export const usage = {
   rowLocation: 'Localisation',
   valueSharingOn: 'Partage activé',
   sectionLatestActivity: 'Activité récente',
-  activityPeriodCount: '{{count}} sur 30 jours',
+  activityPeriodCount: 'Récents : {{count}}',
   activityEmpty:
     'Aucune activité enregistrée pour le moment. Les verrouillages, déverrouillages et mises à jour de Temps d’écran apparaîtront ici.',
   usageReportAccessibility:
@@ -79,7 +79,7 @@ export const usage = {
   topAppsEmpty:
     'Aucune donnée par application pour le moment. Sur l’appareil de l’enfant, vérifiez que KidGate est autorisé à mesurer l’utilisation des applications, puis attendez une synchronisation.',
   protectionImpactTitle: 'Impact de la protection',
-  protectionImpactHint: 'Événements récents que KidGate a bloqués sur cet appareil.',
+  protectionImpactHint: 'Totaux depuis la configuration de cet appareil.',
   protectionBlockedApps: 'Ouvertures d’apps bloquées',
   protectionWebBlocked: 'Sites web bloqués',
   protectionTamper: 'Alertes de protection',

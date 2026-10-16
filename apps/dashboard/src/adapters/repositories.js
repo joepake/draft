@@ -21,6 +21,7 @@ import { createUserRepository } from '@kidgate/core/repositories/user';
 import { createNotificationPrefsRepository } from '@kidgate/core/repositories/notificationPrefs';
 import { createAccountDeletionRepository } from '@kidgate/core/repositories/accountDeletion';
 import { createWebHistoryRepository } from '@kidgate/core/repositories/webHistory';
+import { createWebSessionRepository } from '@kidgate/core/repositories/webSession';
 import { createVideoHistoryRepository } from '@kidgate/core/repositories/videoHistory';
 import { createAppFlagDismissalRepository } from '@kidgate/core/repositories/appFlagDismissal';
 import {
@@ -107,6 +108,12 @@ export const familyPlacesRepository = createFamilyPlacesRepository({ api });
  * owner still approves the request it produces.
  */
 export const parentInviteRepository = createParentInviteRepository({ api });
+/*
+ * Browsers that can make changes: list and remove. Both are endpoints that ask
+ * for the WRITE session (`requireParentDevice`), so a read-only sign-in is
+ * refused — the card is not drawn for one (`WebSessionsCard`).
+ */
+export const webSessionRepository = createWebSessionRepository({ api });
 export const leaderboardRepository = createLeaderboardRepository({ db });
 /** `config/setupGuides` — the User Guide's videos ride the same document as the wizard's. */
 export const fetchGuideConfig = () => fetchSetupGuides(db);

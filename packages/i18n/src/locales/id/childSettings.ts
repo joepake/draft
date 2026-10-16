@@ -7,7 +7,7 @@ export const childSettings = {
   darkModeHint: 'Lebih nyaman di mata saat malam',
   leaveFamilyAlertTitle: 'Keluar dari keluarga ini?',
   leaveFamilyAlertMessage:
-    'Perangkat ini akan diputus dari keluarga. Sandingkan lagi dengan undangan orang tua untuk bergabung kembali.',
+    'Perangkat ini akan diputus dari keluarga. Untuk bergabung kembali, orang tua perlu menghubungkannya lagi dari aplikasi KidGate mereka.',
   leaveFamily: 'Keluar dari keluarga',
   uninstallProtectionSectionTitle: 'Perlindungan hapus instal',
   uninstallProtectionSectionDescription:
@@ -19,7 +19,7 @@ export const childSettings = {
   uninstallProtectionFailed:
     'Tidak dapat mengubah perlindungan hapus instal. Silakan coba lagi.',
   deviceAdminExplanation:
-    'Mencegah KidGate dihapus dari perangkat tanpa orang tua. KidGate tidak memakai wewenang admin perangkat lainnya: KidGate tidak bisa menghapus data perangkat ini, mengubah kunci layar, atau mematikan kamera.',
+    'Membuat KidGate lebih sulit dihapus: untuk menghapusnya, pengaturan ini harus dimatikan dulu, dan orang tua akan diberi tahu saat hal itu terjadi. KidGate tidak memakai wewenang admin perangkat lainnya: KidGate tidak bisa menghapus data perangkat ini, mengubah kunci layar, atau mematikan kamera.',
   deviceAdminDisableWarning:
     'Kalau kamu mematikan ini, KidGate bisa dihapus dari perangkat ini. Orang tuamu akan diberi tahu.',
   appPickerUnavailable: 'Fitur Aplikasi yang Diblokir tidak tersedia di perangkat ini.',

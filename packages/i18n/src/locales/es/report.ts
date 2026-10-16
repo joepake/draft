@@ -35,8 +35,8 @@ export const report = {
   findingNewTopApp: '{{app}} es nueva esta semana y ya ocupó {{duration}}.',
   findingAppSurge:
     '{{app}} subió {{delta}} respecto a la semana pasada: {{duration}} en total.',
-  findingLimitHit_one: 'Se alcanzó el límite diario de {{limit}} un día.',
-  findingLimitHit_other: 'Se alcanzó el límite diario de {{limit}} en {{count}} días.',
+  findingLimitHit_one: 'Se alcanzó el Límite diario de {{limit}} un día.',
+  findingLimitHit_other: 'Se alcanzó el Límite diario de {{limit}} en {{count}} días.',
   findingBlockedApps:
     '{{count}} aperturas de apps bloqueadas, frente a {{previous}} la semana pasada.',
   findingBlockedWeb:
@@ -47,7 +47,7 @@ export const report = {
   // La mitad positiva del informe. Cada frase dice qué pasó y la cifra que lo
   // respalda; ninguna elogia — `docs/COPY_STYLE.md` prohíbe la adulación igual
   // que prohíbe la alarma.
-  findingLimitRespected: 'El límite diario de {{limit}} se respetó los {{count}} días.',
+  findingLimitRespected: 'El Límite diario de {{limit}} se respetó los {{count}} días.',
   findingLateNightGone_one:
     'Ninguna noche tardía esta semana, tras una la semana pasada.',
   findingLateNightGone_other:
@@ -84,7 +84,7 @@ export const report = {
   share: 'Compartir',
   copySummary: 'Copiar resumen',
   copied: 'Resumen copiado.',
-  shareFailed: 'No se pudo abrir el menú de compartir.',
+  shareFailed: 'No se pudo abrir el menú de compartir. Inténtalo de nuevo.',
   shareLinkCta: 'Descarga la app en {{url}}',
   shareFooterDesc:
     'KidGate ayuda a los padres a gestionar el tiempo de pantalla, ver la ubicación y filtrar la web.',
@@ -98,10 +98,11 @@ export const report = {
 
   emptyTitle: 'Todavía no hay informe',
   emptyBody:
-    'El informe llega cada lunes por la mañana. También puedes crear el de esta semana ahora: cubre los últimos siete días.',
+    'Con Premium, llega un informe cada lunes por la mañana. También puedes crear el de esta semana ahora: cubre los últimos siete días.',
   noUsage:
     'No se registró tiempo de pantalla en las últimas dos semanas, así que aún no hay nada que informar. Un dispositivo sin conexión no informa nada, y eso no es lo mismo que una semana tranquila.',
-  rateLimited: 'Demasiados intentos. Espera un minuto.',
+  rateLimited:
+    'Todavía no se puede crear otro informe. Inténtalo de nuevo en un minuto.',
   loadFailedTitle: 'No se cargaron los informes',
   loadFailed: 'No se pudieron abrir los informes. Desliza hacia abajo para reintentar.',
   failed: 'No se pudo crear el informe. Inténtalo de nuevo en un momento.',
@@ -121,10 +122,9 @@ export const report = {
   // pack.
   childrenTitle: 'Cada hijo',
   childrenNoteByChild:
-    'La misma quincena, cada hijo en todos los dispositivos que usa. Los porcentajes son del total familiar.',
+    'Esta semana, cada hijo en todos los dispositivos que usa. Los porcentajes son del total familiar.',
   devicesTitle: 'Cada dispositivo',
-  childrenNote:
-    'La misma quincena, por dispositivo. Los porcentajes son del total familiar.',
+  childrenNote: 'Esta semana, por dispositivo. Los porcentajes son del total familiar.',
   colChild: 'Hijo',
   colDevice: 'Dispositivo',
   colScreenTime: 'Tiempo de uso',
@@ -152,14 +152,14 @@ export const report = {
     'Ejemplo — las cifras reales aparecen cuando conectes un dispositivo',
   guestTitle: 'Mira adónde se fue la semana',
   guestDescription:
-    'Inicia sesión para medir hoy frente a un día normal, comparar a tus hijos lado a lado y recibir un informe cada lunes.',
+    'Inicia sesión para medir hoy frente a un día normal, comparar a tus hijos lado a lado y, con Premium, recibir un informe cada lunes.',
   guestBenefitTrendTitle: 'Hoy, frente a lo normal',
   guestBenefitTrendBody:
     'Una cifra sola no dice nada. Hoy siempre se dibuja frente al promedio diario de tu propia familia.',
   guestBenefitChildTitle: 'Cada hijo, lado a lado',
   guestBenefitChildBody:
     'La parte del día de cada hijo, en su propio color, en todos los dispositivos que usa.',
-  guestBenefitWeeklyTitle: 'Un informe cada lunes',
+  guestBenefitWeeklyTitle: 'Un informe cada lunes, con Premium',
   guestBenefitWeeklyBody:
     'Qué cambió, qué apps crecieron y las noches tardías: se guarda durante un año.',
   guestSignInButton: 'Iniciar sesión',

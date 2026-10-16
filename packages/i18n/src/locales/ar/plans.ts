@@ -9,7 +9,7 @@ export const plans = {
   pillTrialActiveFallback: 'الفترة التجريبية نشطة',
   statusTrialEndedTitle: 'انتهت التجربة',
   statusTrialEndedSubtitle:
-    'يظل الحد اليومي وساعات الحظر والتطبيقات المحظورة وفلتر الويب والموقع تعمل مجانًا. اشترك للحصول على التحديثات المباشرة والسجل والتنبيهات والتقارير.',
+    'يستمر عمل الحد اليومي وساعات الحظر والتطبيقات المحظورة والموقع ومفتاح فلتر الويب مجانًا. اشترك للحصول على التحديثات المباشرة والسجل والتنبيهات والتقارير.',
   pillTrialEnded: 'انتهت التجربة',
   statusStartTrialTitle: 'ابدأ فترتك التجريبية',
   statusStartTrialSubtitle:
@@ -32,8 +32,8 @@ export const plans = {
   compareDevicesFree: 'القواعد على الكل، والتقارير من 1',
   compareDevicesPremium: 'التقارير من الكل',
   compareParents: 'الوالدون',
-  compareParentsFree: 'حتى 3',
-  compareParentsPremium: 'حتى 6',
+  compareParentsFree: 'حتى 3، بمن فيهم أنت',
+  compareParentsPremium: 'حتى 6، بمن فيهم أنت',
   compareSync: 'التحديثات من الجهاز',
   compareSyncFree: 'عند فتحك KidGate',
   compareSyncPremium: 'مباشر',
@@ -53,7 +53,7 @@ export const plans = {
   compareSafety: 'تنبيهات الحماية والاطمئنان',
   compareSafetyFree: 'تنبيهات + تسجيل الوصول',
   compareSafetyPremium: 'يضيف صورة إلى كل تسجيل وصول',
-  compareControls: 'حظر التطبيقات وفلتر الويب',
+  compareControls: 'التطبيقات المحظورة وفلتر الويب',
   compareControlsFree: 'أي تطبيق، مجموعة ثابتة من الفئات',
   compareControlsPremium: 'حسب الفئة، قوائمك الخاصة، طلبات المواقع',
   compareReport: 'التقرير الأسبوعي',
@@ -64,7 +64,7 @@ export const plans = {
   compareActivityFeedPremium: '30 يومًا',
   compareChildReport: 'تقارير لكل طفل',
   compareIncluded:
-    'تشمل الخطتان الحد اليومي وساعات الحظر والتطبيقات المحظورة وحدود التطبيقات والموافقة على التطبيقات الجديدة وفلتر الويب وقفل الجهاز وSOS وطلبات الوقت ومهام المكافآت على أجهزة iPhone وAndroid وMac وWindows في عائلة واحدة، إضافة إلى لوحة الويب. ويدعم KidGate أيضًا Android TV وChromebook، مع عناصر تحكم أقل.',
+    'تشمل الخطتان الحد اليومي وساعات الحظر والتطبيقات المحظورة والموافقة على التطبيقات الجديدة وفلتر الويب وقفل الجهاز وSOS وطلبات الوقت ومهام المكافآت على أجهزة iPhone وAndroid وMac وWindows في عائلة واحدة، إضافة إلى لوحة الويب، وحدود التطبيقات على Android وMac وWindows. ويدعم KidGate أيضًا Android TV وChromebook، مع عناصر تحكم أقل.',
   sectionWhyPremium: 'ما الذي يضيفه Premium',
   sectionWhyPremiumSubtitle:
     'كل القواعد تستمر في العمل في الخطة المجانية. يضيف Premium ما يمكنك رؤيته، ومتى.',
@@ -121,7 +121,7 @@ export const plans = {
   memberTrialActiveSubtitle:
     'هذه العائلة في فترة تجريبية. وعند انتهائها، تستمر كل القواعد في العمل على كل الأجهزة ويواصل جهاز واحد إرسال التقارير؛ ويمكن للمالك الاشتراك للحصول على النشاط المباشر والسجل والتقارير من كل الأجهزة.',
   memberTrialEndedSubtitle:
-    'انتهت تجربة هذه العائلة. لا يزال الحد اليومي وساعات الحظر والتطبيقات المحظورة وفلتر الويب والموقع يعمل. اطلب من مالك العائلة الاشتراك للحصول على التحديثات المباشرة والسجل والتنبيهات.',
+    'انتهت تجربة هذه العائلة. يستمر عمل الحد اليومي وساعات الحظر والتطبيقات المحظورة والموقع ومفتاح فلتر الويب. اطلب من مالك العائلة الاشتراك للحصول على التحديثات المباشرة والسجل والتنبيهات.',
   memberSetupTrialSubtitle:
     'تبدأ الفترة التجريبية عندما يربط المالك جهاز أحد الوالدين وجهاز طفل.',
   premiumActivatedTitle: 'تم فتح Premium',
@@ -140,7 +140,8 @@ export const plans = {
   subscriptionOfferNotConfigured:
     'هذا الاشتراك غير متاح حاليًا. يرجى المحاولة مرة أخرى لاحقًا.',
   unableToStartPurchase: 'تعذر بدء عملية الشراء. يرجى المحاولة مرة أخرى.',
-  noActiveSubscription: 'لم يتم العثور على اشتراك نشط.',
+  noActiveSubscription:
+    'لم يُعثر على اشتراك نشط. سجّل الدخول بحساب App Store أو Google Play الذي اشتركت من خلاله، ثم أعد المحاولة.',
   purchasesRestored: 'تمت استعادة المشتريات.',
   unableToRestorePurchases: 'تعذرت استعادة المشتريات. يرجى المحاولة مرة أخرى.',
   purchaseVerificationFailed:
@@ -149,7 +150,7 @@ export const plans = {
   // has to name who needs to act instead of offering a button they can't use.
   familyPremiumEndedTitle: 'انتهى اشتراك Premium لهذه العائلة',
   familyPremiumEndedBody:
-    'لا يزال الحد اليومي وساعات الحظر والتطبيقات المحظورة وفلتر الويب والموقع يعمل. تتوقف التحديثات المباشرة والسجل والتنبيهات والتقارير حتى يجدد مالك العائلة Premium.',
+    'يستمر عمل الحد اليومي وساعات الحظر والتطبيقات المحظورة والموقع ومفتاح فلتر الويب. تتوقف التحديثات المباشرة والسجل والتنبيهات والتقارير حتى يجدد مالك العائلة Premium.',
   pricesUnavailable: 'تعذّر تحميل الأسعار من المتجر.',
   pricesRetry: 'إعادة المحاولة',
   featureRewardTasks: 'مهام المكافآت',
@@ -180,11 +181,11 @@ export const plans = {
   platformMac: 'Mac',
   platformMacDetail: 'جهاز طفل فقط · macOS 12 أو أحدث',
   platformIosLimits:
-    'لا تتوفر حدود التطبيقات ولا تنبيهات الرسائل، وتُختار التطبيقات المحظورة على جهاز iPhone نفسه.',
+    'لا تتوفر حدود التطبيقات ولا تنبيهات الرسائل، وتُختار التطبيقات الخاصة بميزة «التطبيقات المحظورة» على جهاز iPhone نفسه.',
   platformMacLimits: 'لا تتوفر تنبيهات الرسائل، والموقع تقريبي.',
   platformWindowsLimits: 'لا تتوفر تنبيهات الرسائل، والموقع تقريبي.',
   platformAndroidTvLimits:
-    'لا تتوفر تنبيهات الرسائل ولا الموقع ولا SOS ولا طلبات الوقت. ويعمل حظر التطبيقات قدر الإمكان.',
+    'لا تتوفر تنبيهات الرسائل ولا الموقع ولا SOS ولا طلبات الوقت. وتعمل ميزة «التطبيقات المحظورة» قدر الإمكان.',
   platformChromebookLimits:
     'فلتر الويب فقط — لا يتوفر الحد اليومي ولا ساعات الحظر ولا التطبيقات المحظورة ولا قفل الجهاز ولا SOS ولا الموقع.',
   platformComingSoon: 'قريبًا',
@@ -193,7 +194,7 @@ export const plans = {
   platformAndroidTv: 'Android TV',
   platformAndroidTvDetail: 'جهاز طفل فقط · Android TV 7 أو أحدث',
   platformChromebook: 'Chromebook',
-  platformChromebookDetail: 'جهاز طفل · تصفية الويب في Chrome فقط',
+  platformChromebookDetail: 'جهاز طفل · فلتر الويب في Chrome فقط',
   teaserCta: 'اطّلع على Premium',
   teaserProofOtherApps: 'تطبيقات أخرى: {{count}} · {{minutes}}',
   teaserProofOtherMinutes: 'تطبيقات أخرى: {{minutes}}',

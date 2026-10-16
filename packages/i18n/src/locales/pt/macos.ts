@@ -10,13 +10,13 @@ export const macos = {
   headingRemovable: 'Quão fácil é remover',
 
   parentAccessBody:
-    'Digite o PIN dos pais para escolher quais apps ficam bloqueados neste Mac.',
+    'Digite o PIN dos pais para escolher quais apps ficam bloqueados neste dispositivo.',
   checking: 'Verificando…',
 
   enforcing: 'Proteção em execução',
   enforcingYes: 'Sim',
-  enforcingFailed: 'Não — {{count}} verificações seguidas falharam',
-  enforcingFailed_one: 'Não — a última verificação falhou',
+  enforcingFailed: 'Proteção interrompida · {{count}} verificações seguidas falharam',
+  enforcingFailed_one: 'Proteção interrompida · a última verificação falhou',
 
   lockState: 'Dispositivo bloqueado',
   lockStateNo: 'Não',
@@ -66,7 +66,7 @@ export const macos = {
   setupStepFilterSwitchWaiting:
     'Aparece nos Ajustes do Sistema assim que a etapa acima for aprovada.',
   setupStepLocationBody:
-    'Permite que sua família veja onde este dispositivo está. Nada é compartilhado até você ativar “Compartilhar localização”.',
+    'Permite que sua família veja onde este dispositivo está. Nada é compartilhado até você ativar “Compartilhar localização” no app KidGate.',
   setupStepCameraTitle: 'Câmera',
   setupStepCameraBody:
     'Anexa uma foto quando seu filho ou filha envia um SOS ou responde a um Check-in. Nenhuma foto é tirada agora.',
@@ -120,7 +120,7 @@ export const macos = {
 
   chooseApps: 'Escolher apps para bloquear',
   chooseAppsHint:
-    'Escolha os apps a bloquear neste Mac. Os pais podem ativar ou desativar o bloqueio pelo telefone.',
+    'Escolha os apps a bloquear neste dispositivo. Um dos pais pode ativar ou desativar o bloqueio pelo celular.',
   saveSelection: 'Salvar',
-  noAppsFound: 'Nenhum app encontrado na pasta Applications.',
+  noAppsFound: 'Nenhum app encontrado neste dispositivo.',
 };

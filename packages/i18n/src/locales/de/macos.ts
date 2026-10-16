@@ -10,13 +10,13 @@ export const macos = {
   headingRemovable: 'Wie leicht sich das entfernen lässt',
 
   parentAccessBody:
-    'Eltern-PIN eingeben, um festzulegen, welche Apps auf diesem Mac blockiert werden.',
+    'Eltern-PIN eingeben, um festzulegen, welche Apps auf diesem Gerät blockiert werden.',
   checking: 'Wird geprüft…',
 
   enforcing: 'Schutz aktiv',
   enforcingYes: 'Ja',
-  enforcingFailed: 'Nein – {{count}} Prüfungen in Folge fehlgeschlagen',
-  enforcingFailed_one: 'Nein – die letzte Prüfung ist fehlgeschlagen',
+  enforcingFailed: 'Schutz unterbrochen · {{count}} Prüfungen in Folge fehlgeschlagen',
+  enforcingFailed_one: 'Schutz unterbrochen · die letzte Prüfung ist fehlgeschlagen',
 
   lockState: 'Gerät gesperrt',
   lockStateNo: 'Nein',
@@ -66,10 +66,10 @@ export const macos = {
   setupStepFilterSwitchWaiting:
     'Erscheint in den Systemeinstellungen, sobald der Schritt darüber freigegeben ist.',
   setupStepLocationBody:
-    'Zeigt deiner Familie, wo dieses Gerät ist. Geteilt wird nichts, solange „Standort teilen“ aus ist.',
+    'Zeigt deiner Familie, wo dieses Gerät ist. Es wird nichts geteilt, bis du in der KidGate-App „Standort teilen“ aktivierst.',
   setupStepCameraTitle: 'Kamera',
   setupStepCameraBody:
-    'Hängt ein Foto an, wenn dein Kind einen SOS sendet oder auf einen Check-in antwortet. Jetzt wird kein Foto aufgenommen.',
+    'Hängt ein Foto an, wenn dein Kind SOS auslöst oder einen Check-in beantwortet. Jetzt wird kein Foto aufgenommen.',
   setupStepDone: 'Eingerichtet – hier ist nichts mehr zu tun.',
   setupStepBlocked:
     'Zuvor abgelehnt. macOS fragt nur einmal – aktiviere KidGate unter „Datenschutz & Sicherheit“.',
@@ -121,7 +121,7 @@ export const macos = {
 
   chooseApps: 'Apps zum Blockieren auswählen',
   chooseAppsHint:
-    'Die Apps auswählen, die auf diesem Mac blockiert werden. Ein Elternteil kann die Blockierung vom Telefon aus ein- und ausschalten.',
+    'Die Apps auswählen, die auf diesem Gerät blockiert werden sollen. Ein Elternteil kann die Blockierung vom Telefon aus ein- und ausschalten.',
   saveSelection: 'Speichern',
-  noAppsFound: 'Keine Apps im Ordner „Programme“ gefunden.',
+  noAppsFound: 'Keine Apps auf diesem Gerät gefunden.',
 };

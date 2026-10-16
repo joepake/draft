@@ -8,19 +8,19 @@ export const notifications = {
     'En este teléfono, un SOS aparece como un aviso pequeño en lugar de ocupar toda la pantalla, así que es más fácil pasarlo por alto. Permite las alertas a pantalla completa para solucionarlo.',
   sosFullScreenAllow: 'Permitir alertas a pantalla completa',
   sectionAlerts: 'Alertas',
-  sectionAlertsHint: 'Elige de qué se notifica este teléfono.',
+  sectionAlertsHint: 'Elige qué alertas se envían a un teléfono de padre o madre.',
   sectionSummary: 'Resumen',
   sectionQuietHours: 'Horas de silencio',
   sectionQuietHoursHint:
-    'Las alertas quedan en silencio en este intervalo. El SOS nunca se silencia, y las Alertas de mensajes más graves siguen llegando.',
+    'No se envía ninguna alerta durante este intervalo, ni se envía después. Los eventos siguen apareciendo en Actividad. El SOS nunca se retiene, y las Alertas de mensajes más graves siguen llegando.',
   quietHoursLabel: 'Horas de silencio',
   quietHoursOff: 'Desactivado: las alertas llegan a cualquier hora',
-  quietHoursActive: 'En silencio de {{start}} a {{end}}',
+  quietHoursActive: 'No se envían alertas de {{start}} a {{end}}',
   quietHoursStart: 'Desde',
   quietHoursEnd: 'Hasta',
   quietHoursSameTime: 'Elige dos horas distintas.',
   footnote:
-    'Estos ajustes solo se aplican a este teléfono. Los demás dispositivos de madres y padres mantienen los suyos.',
+    'Estos ajustes se aplican a un solo teléfono. Los demás dispositivos de madres y padres mantienen los suyos.',
   toastSaveFailed: 'No se pudo guardar. Inténtalo de nuevo.',
   localReminderSetupTitle: 'Termina de configurar KidGate',
   localReminderIdleTitle: 'Tus reglas siguen funcionando',
@@ -31,15 +31,15 @@ export const notifications = {
     'Si nadie abre KidGate durante {{days}} días, los dispositivos de tu hijo dejan de enviar informes hasta que alguien vuelva a abrirlo. Tus reglas siguen funcionando.',
   alert: {
     tamperAlerts: {
-      label: 'Protección desactivada',
+      label: 'Alertas de protección',
       hint: 'En un dispositivo del niño se desactivó un permiso que KidGate necesita, se cambió la fecha, la hora o la zona horaria, o se pulsó SOS mientras estaba bloqueado. La propia alerta de SOS siempre llega.',
     },
     placeAlerts: {
-      label: 'Llegadas y salidas',
+      label: 'Alertas de lugares',
       hint: 'Tu hijo o hija llega a un lugar guardado o sale de él.',
     },
     timeRequests: {
-      label: 'Peticiones de tiempo extra',
+      label: 'Solicitudes de tiempo',
       hint: 'Tu hijo o hija pide más tiempo de pantalla.',
     },
     siteRequests: {
@@ -51,7 +51,7 @@ export const notifications = {
       hint: 'Tu hijo o hija responde a un Check-in.',
     },
     rewardTasks: {
-      label: 'Recompensas reclamadas',
+      label: 'Tareas con recompensa',
       hint: 'Tu hijo o hija marca una tarea de recompensa como hecha.',
     },
     appActivity: {
@@ -63,7 +63,7 @@ export const notifications = {
       hint: 'Uso fuera de lo habitual en un dispositivo infantil: uso nocturno, picos, apps nuevas.',
     },
     weeklyDigest: {
-      label: 'Resumen semanal',
+      label: 'Informe semanal',
       hint: 'Un repaso de los lunes del tiempo de pantalla y los bloqueos.',
     },
     messageAlerts: {

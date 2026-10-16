@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useT } from '@kidgate/web-ui/useT';
 import { formatMinutes } from './charts.jsx';
+import { useActivityTranslate } from './activityCopy.js';
 
 /**
  * Round numbers a parent thinks in. The phone's child hub offers the same set;
@@ -9,8 +10,8 @@ import { formatMinutes } from './charts.jsx';
 const BUDGET_PRESETS = [30, 60, 90, 120, 180, 240];
 
 /*
- * No new key and no crossing: every label here is a duration this file already
- * formats, and "No limit" is `report.noLimit`, already in the web pack.
+ * No new key: every label here is a duration this file already formats, and
+ * "No limit" is the app pack's `report.noLimit`, through `appT`.
  */
 
 /**
@@ -28,6 +29,7 @@ const BUDGET_PRESETS = [30, 60, 90, 120, 180, 240];
  */
 export default function ChildBudgetEditor({ minutes, readOnly, busy, onSave }) {
   const { t } = useT();
+  const appT = useActivityTranslate();
   const [draft, setDraft] = useState(minutes);
 
   // The other parent's phone writes the same field.
@@ -68,7 +70,7 @@ export default function ChildBudgetEditor({ minutes, readOnly, busy, onSave }) {
             title={readOnly ? t('dash.unlockToChange') : undefined}
             onClick={() => commit(null)}
           >
-            {t('report.noLimit')}
+            {appT('report.noLimit')}
           </button>
         </li>
       </ul>

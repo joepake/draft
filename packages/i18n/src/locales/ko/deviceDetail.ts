@@ -4,7 +4,7 @@ export const deviceDetail = {
   notFoundTitle: '기기',
   dangerTitle: '이 기기 삭제',
   dangerDescription:
-    '이 기기를 가족 계정에서 삭제합니다. 이 기기와 관련된 모든 시간 요청 및 활동 기록이 삭제됩니다.',
+    '이 기기를 가족 계정에서 삭제합니다. 위치 기록, 사용 기록, 웹 기록, 시청한 동영상, 설치된 앱 목록, 시간 연장 요청, 사이트 요청, 보상 과제, 체크인, SOS 알림, 활동이 삭제됩니다.',
   removeButton: '기기 삭제',
   removingButton: '삭제 중…',
   showAllFeatures: '모든 기능 표시',
@@ -12,7 +12,7 @@ export const deviceDetail = {
   essentialControls: '기본 관리',
   dailyRulesAndDeviceAccess: '일일 규칙 및 기기 접근',
   dailyLimit: '일일 제한',
-  setDailyScreenTimeCap: '하루 화면 사용 시간 제한 설정',
+  setDailyScreenTimeCap: '일일 제한 설정',
   blockedHours: '차단 시간',
   manageTimeRanges: '최대 {{max}}개의 시간대를 관리',
   blockedApps: '차단된 앱',
@@ -38,7 +38,7 @@ export const deviceDetail = {
   placeAlerts: '장소',
   reviewPlaceAlerts: '도착 또는 출발 시 알림',
   noPlacesYet: '등록된 장소 없음',
-  tamperAlerts: '보호',
+  tamperAlerts: '보호 알림',
   reviewTamperAlerts: '보호 기능이 꺼진 시점 확인',
   editDeviceName: '기기 이름 변경',
   editDeviceNameSubtitle:
@@ -63,12 +63,13 @@ export const deviceDetail = {
   notAvailableInExtension: '확장 프로그램에서는 사용할 수 없습니다',
   webFilterAwaitingApproval: '{{platform}}에서 승인 대기 중',
   webFilterSwitchedOffOnDevice: '{{platform}}에서 꺼져 있음',
+  webFilterPrivateDnsOnDevice: '{{platform}}에서 프라이빗 DNS로 우회됨',
   unableToUpdateDeviceName: '기기 이름을 변경할 수 없습니다. 다시 시도해 주세요.',
   renameOwnerOnly: '가족 소유자만 기기 이름을 변경할 수 있습니다.',
   removeOwnerOnly: '가족 소유자만 기기를 삭제할 수 있습니다.',
   removeDeviceTitle: '기기를 삭제하시겠습니까?',
   removeDeviceMessage:
-    '{{deviceName}}이(가) 계정에서 연결 해제됩니다. 관련된 모든 시간 요청 및 활동 기록이 삭제됩니다.',
+    '{{deviceName}}이(가) 계정에서 연결 해제됩니다. 위치 기록, 사용 기록, 웹 기록, 시청한 동영상, 설치된 앱 목록, 시간 연장 요청, 사이트 요청, 보상 과제, 체크인, SOS 알림, 활동이 삭제됩니다.',
   unableToRemoveDevice: '기기를 삭제하지 못했습니다. 다시 시도해 주세요.',
   checkInNotificationSent: '{{deviceName}}에 체크인 요청이 전송됩니다.',
   checkInOfflineTitle: '이 기기는 오프라인인 것 같습니다',
@@ -80,7 +81,7 @@ export const deviceDetail = {
   checkInQueued:
     '확인 요청을 대기열에 넣었습니다. {{deviceName}}이(가) 온라인이 되면 전달됩니다.',
   unableToRequestCheckIn: '체크인 요청을 보낼 수 없습니다. 다시 시도해 주세요.',
-  tapToSetDailyCap: '일일 사용 시간 설정',
+  tapToSetDailyCap: '탭하여 일일 제한 설정',
   usageUpdatesFromChildDevice: '자녀 기기 사용 현황',
   minutesUsedToday: '오늘 {{used}} / {{limit}} 사용',
   noBlockedHours: '차단 시간 없음',
@@ -137,7 +138,7 @@ export const deviceDetail = {
   webHistoryDescription: '접속한 사이트와 차단된 사이트',
   webHistorySitesUnit: '사이트',
   managedAtChild:
-    '이 기기의 규칙, 보상, 체크인, 알림은 {{childName}} 프로필에서 관리합니다',
+    '이 기기의 규칙, 보상, 체크인, 알림은 {{childName}} 프로필에서 관리합니다.',
   pauseBrowsing: '웹 사용 일시중지',
   pauseBrowsingDescription:
     '잠시 웹 사용을 멈춥니다. 통화와 오프라인 앱은 계속 사용할 수 있습니다.',

@@ -9,12 +9,12 @@ export const macos = {
     '부모님이 설정한 내용과 이 Mac이 얼마나 강하게 지킬 수 있는지입니다.',
   headingRemovable: '제거가 얼마나 쉬운지',
 
-  parentAccessBody: '이 Mac에서 차단할 앱을 고르려면 부모 PIN을 입력하세요.',
+  parentAccessBody: '이 기기에서 차단할 앱을 고르려면 부모 PIN을 입력하세요.',
   checking: '확인 중…',
 
   enforcing: '보호 실행 중',
   enforcingYes: '예',
-  enforcingFailed: '아니요 — 연속 {{count}}회 확인에 실패했습니다',
+  enforcingFailed: '보호 중단됨 · 연속 {{count}}회 확인에 실패했습니다',
 
   lockState: '기기 잠금',
   lockStateNo: '아니요',
@@ -62,7 +62,7 @@ export const macos = {
     '이 PC에서 다른 프로그램이 이미 웹 주소를 처리하고 있어 KidGate가 여기서 필터링할 수 없습니다.',
   setupStepFilterSwitchWaiting: '위 단계가 승인되면 시스템 설정에 나타납니다.',
   setupStepLocationBody:
-    '가족이 이 기기의 위치를 볼 수 있게 합니다. ‘위치 공유’를 켜기 전까지는 아무것도 공유되지 않습니다.',
+    '가족이 이 기기의 위치를 볼 수 있게 합니다. KidGate 앱에서 ‘위치 공유’를 켜기 전까지는 아무것도 공유되지 않습니다.',
   setupStepCameraTitle: '카메라',
   setupStepCameraBody:
     '아이가 SOS를 보내거나 체크인에 답할 때 사진을 함께 보냅니다. 지금은 사진을 찍지 않습니다.',
@@ -115,7 +115,7 @@ export const macos = {
 
   chooseApps: '차단할 앱 선택',
   chooseAppsHint:
-    '이 Mac에서 차단할 앱을 고르세요. 부모는 휴대전화에서 차단을 켜거나 끌 수 있습니다.',
+    '이 기기에서 차단할 앱을 고르세요. 부모는 휴대전화에서 차단을 켜거나 끌 수 있습니다.',
   saveSelection: '저장',
-  noAppsFound: 'Applications 폴더에서 앱을 찾지 못했습니다.',
+  noAppsFound: '이 기기에서 앱을 찾지 못했습니다.',
 };

@@ -21,7 +21,7 @@ export const webSignIn = {
   // "later", and it must not read like it.
   confirmTitle: 'Autorizzare questo browser?',
   confirmBody:
-    'Avrà lo stesso controllo di questo telefono: potrà vedere dove sono i tuoi figli, cambiare i limiti, bloccare i dispositivi e approvare le richieste. Autorizzalo solo se sei tu ad accedere.',
+    'Avrà lo stesso controllo di questo telefono: potrà vedere dove sono i tuoi figli, cambiare i limiti, bloccare i dispositivi e approvare le richieste. Potrà apportare modifiche per 7 giorni e puoi rimuoverlo in qualsiasi momento da Famiglia → Genitori. Autorizzalo solo se sei tu ad accedere.',
   confirmCodeLabel: 'Codice mostrato sul computer',
   approveButton: 'Autorizza',
   declineButton: 'Non autorizzare',
@@ -36,6 +36,21 @@ export const webSignIn = {
   alreadyUsed: 'Il codice è già stato usato. Mostrane uno nuovo sul computer.',
   notFound: 'Codice non valido. Controlla i sei caratteri e riprova.',
   failed: 'Impossibile completare la richiesta. Riprova.',
-
-  // Revocation screen (server side already ships; app screen is pending).
+  sessionsTitle: 'Browser che possono apportare modifiche',
+  sessionsHint:
+    'Questi browser hanno effettuato l’accesso alla dashboard web con il tuo account e possono apportare modifiche. Un browser che si limita a mostrare la tua famiglia non compare nell’elenco.',
+  sessionsEmpty:
+    'Nessun browser può apportare modifiche. Quando ne autorizzi uno, comparirà qui.',
+  sessionRow: '{{browser}} su {{os}}',
+  sessionRowUnknown: 'Browser web',
+  sessionExpires: 'Può apportare modifiche fino al {{date}}',
+  sessionViaQr: 'Autorizzato con un codice QR',
+  sessionViaPin: 'Autorizzato con il PIN genitore',
+  thisBrowser: 'Questo browser',
+  sessionsRevoke: 'Rimuovi',
+  sessionsRevokeConfirmTitle: 'Rimuovere questo browser?',
+  sessionsRevokeConfirmBody:
+    'Non potrà più modificare le impostazioni né controllare i dispositivi. Fino alla data indicata, può ancora modificare alcuni dettagli dei dispositivi, come il nome. Potrebbe però continuare a mostrare le informazioni della tua famiglia finché qualcuno non si disconnette da lì.',
+  revokedToast: 'Browser rimosso.',
+  revokeFailed: 'Impossibile rimuovere questo browser. Riprova.',
 } as const;

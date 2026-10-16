@@ -280,7 +280,7 @@ export const family = {
   deviceRemovedAlertTitle: 'Gerät entfernt',
 
   deviceRemovedAlertMessage:
-    'Ein Elternteil hat dieses Gerät aus dem Familienkonto entfernt. Wähle erneut die Rolle „Kind“, um es wieder zu verbinden.',
+    'Ein Elternteil hat dieses Gerät aus dem Familienkonto entfernt. Um es wieder zu verbinden, wähle „Dies ist ein Kindergerät“.',
 
   deviceNotRegistered: 'Dieses Gerät ist noch nicht registriert.',
 
@@ -337,7 +337,7 @@ export const family = {
   editDeviceNameTitle: 'Gerätenamen bearbeiten',
 
   editDeviceNameSubtitle:
-    'Nur der Familieninhaber kann Geräte umbenennen. Maximal {{maxLength}} Zeichen.',
+    'Wähle einen Namen, den Eltern schnell erkennen. Maximal {{maxLength}} Zeichen.',
 
   deviceNameInputLabel: 'Gerätename',
 
@@ -363,6 +363,8 @@ export const family = {
   youPausedThisDevice: 'Du hast dieses Gerät gesperrt',
 
   lockSentWaitingForDevice: 'Sperre gesendet – warten auf das Gerät',
+  lockDelayedOnDevice:
+    'Sperren und Entsperren können bis zu {{minutes}} Minuten brauchen, bis sie auf diesem Gerät ankommen.',
 
   lockNotAppliedOnDevice: 'Dieses Gerät hat die Sperre nicht angewendet',
 

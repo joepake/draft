@@ -33,7 +33,7 @@ export const appInventory = {
   emptySubtitle: 'O dispositivo publicará sua lista de aplicativos na próxima conexão.',
   unsupportedTitle: 'Este dispositivo não consegue listar seus aplicativos',
   unsupportedIos:
-    'A Apple não permite que nenhum aplicativo leia o que está instalado em um iPhone ou iPad, então o KidGate só consegue relatar aplicativos conforme eles são usados.',
+    'A Apple não permite que nenhum aplicativo leia o que está instalado em um iPhone ou iPad, e o KidGate também não consegue ver quais aplicativos são usados nele.',
   unsupportedGeneric: 'Este dispositivo não relata os aplicativos instalados nele.',
   incompleteNote:
     'Alguns aplicativos podem não aparecer aqui, como um que não tenha ícone na lista de aplicativos do dispositivo.',

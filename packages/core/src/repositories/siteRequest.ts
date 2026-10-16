@@ -3,6 +3,7 @@ import type { DocSnapshot, FirestorePort, Unsubscribe } from '@kidgate/ports/fir
 import type { SiteRequest, SiteRequestStatus } from '@kidgate/schema/siteRequest';
 import { siteRequestsCollection } from '@kidgate/schema/paths';
 import { isApiFailure } from '../domain/apiFailure';
+import { PREMIUM_REQUIRED_CODE } from '../domain/premiumLapse';
 import { normalizeWebDomain } from '../domain/webDomain';
 import { deleteAllInBatches } from '../domain/batchDelete';
 import { timestampToIso } from '../domain/firestoreValue';
@@ -34,6 +35,9 @@ export interface SiteRequestRepositoryDeps {
 /** A family only ever has a handful pending; the cap is a safety net. */
 const PAGE_SIZE = 50;
 
+/** `createSiteRequest`'s 403 when `childDevices/{deviceId}` is gone. */
+export const DEVICE_NOT_CHILD_CODE = 'device/not-child';
+
 /**
  * What to tell the child when the ask did not go through.
  *
@@ -45,8 +49,31 @@ const PAGE_SIZE = 50;
  * is the generic failure, which is the honest answer for a network that died.
  */
 export function siteRequestMessageKey(error: unknown): string {
+  /*
+   * A family without Premium is refused (403 `billing/premium-required`, no
+   * `messageKey`) because a parent could not answer the request either. It
+   * used to fall through to the generic "Try again" — advice that can never
+   * work — and the server's own key for it, `errors.premiumSubscriptionRequired`,
+   * is a sentence about buying a plan said to the person who cannot buy one.
+   * Every surface that asks (phone, Mac and PC popup, the browser's block page)
+   * gets the child's sentence from here.
+   */
+  if (isApiFailure(error) && error.serverCode === PREMIUM_REQUIRED_CODE) {
+    return 'webFilter.askToOpenUnavailable';
+  }
+  /*
+   * The family no longer has this device — a parent removed it and this
+   * install never noticed. "Try again" can never work; a re-pair can. Seen on
+   * prod 2026-10-15 from a second Chrome profile still holding a removed
+   * extension's session.
+   */
+  if (isApiFailure(error) && error.serverCode === DEVICE_NOT_CHILD_CODE) {
+    return 'timeRequest.toastDeviceNotRegistered';
+  }
   if (isApiFailure(error) && error.messageKey) {
-    return error.messageKey;
+    return error.messageKey === 'errors.premiumSubscriptionRequired'
+      ? 'webFilter.askToOpenUnavailable'
+      : error.messageKey;
   }
   // No response at all carries no key; said as "send failed" it read the
   // same as a refusal, and a child cannot fix a refusal by finding Wi-Fi.

@@ -9,7 +9,7 @@ export const plans = {
   pillTrialActiveFallback: 'トライアル中',
   statusTrialEndedTitle: 'トライアル終了',
   statusTrialEndedSubtitle:
-    '1日の上限、休止時間、ブロックされたアプリ、Webフィルター、位置情報は無料のまま使えます。リアルタイムの更新、履歴、通知、レポートには登録が必要です。',
+    '1日の上限、休止時間、ブロックされたアプリ、位置情報、Webフィルターのスイッチは無料のまま使えます。リアルタイムの更新、履歴、通知、レポートには登録が必要です。',
   pillTrialEnded: 'トライアル終了',
   statusStartTrialTitle: 'トライアルを開始',
   statusStartTrialSubtitle:
@@ -33,8 +33,8 @@ export const plans = {
   compareDevicesFree: 'ルールは全台、報告は1台',
   compareDevicesPremium: '全台から報告',
   compareParents: '保護者',
-  compareParentsFree: '最大3人',
-  compareParentsPremium: '最大6人',
+  compareParentsFree: '最大3人（ご自身を含む）',
+  compareParentsPremium: '最大6人（ご自身を含む）',
   compareSync: 'デバイスからの更新',
   compareSyncFree: '開いて確認したとき',
   compareSyncPremium: 'リアルタイム',
@@ -54,7 +54,7 @@ export const plans = {
   compareSafety: '保護の通知とチェックイン',
   compareSafetyFree: '通知 + チェックイン',
   compareSafetyPremium: 'チェックインごとに写真を追加',
-  compareControls: 'アプリのブロックとWebフィルター',
+  compareControls: 'ブロックされたアプリとWebフィルター',
   compareControlsFree: 'すべてのアプリ、固定のカテゴリ',
   compareControlsPremium: 'カテゴリ別、独自のリスト、サイトのリクエスト',
   compareReport: '週次レポート',
@@ -65,7 +65,7 @@ export const plans = {
   compareActivityFeedPremium: '30日分',
   compareChildReport: 'お子さまごとのレポート',
   compareIncluded:
-    'どちらのプランにも、1つの家族のiPhone・Android・Mac・Windowsで使える1日の上限、休止時間、ブロックされたアプリ、アプリの利用時間制限、新しいアプリの承認、Webフィルター、デバイスロック、SOS、時間延長リクエスト、ごほうびタスクに加え、Webダッシュボードが含まれます。Android TVとChromebookにも対応していますが、使える管理機能は少なめです。',
+    'どちらのプランにも、1つの家族のiPhone・Android・Mac・Windowsで使える1日の上限、休止時間、ブロックされたアプリ、新しいアプリの承認、Webフィルター、デバイスロック、SOS、時間延長リクエスト、ごほうびタスクに加え、Webダッシュボードと、Android・Mac・Windowsで使えるアプリの利用時間制限が含まれます。Android TVとChromebookにも対応していますが、使える管理機能は少なめです。',
   sectionWhyPremium: 'Premiumで加わるもの',
   sectionWhyPremiumSubtitle:
     'ルールはすべて無料版でも動き続けます。Premiumでは、見えるものと、それがどれだけ早く届くかが加わります。',
@@ -124,7 +124,7 @@ export const plans = {
   memberTrialActiveSubtitle:
     'この家族はお試し期間中です。終了後も、すべてのルールがすべてのデバイスで働き続け、1台のデバイスは報告を続けます。オーナーが登録すると、リアルタイムの利用状況、履歴、すべてのデバイスからの報告が使えるようになります。',
   memberTrialEndedSubtitle:
-    'このご家族のお試しは終了しました。1日の上限、休止時間、ブロックされたアプリ、Webフィルター、位置情報はそのまま使えます。リアルタイムの更新、履歴、通知は管理者の登録が必要です。',
+    'このご家族のお試しは終了しました。1日の上限、休止時間、ブロックされたアプリ、位置情報、Webフィルターのスイッチはそのまま使えます。リアルタイムの更新、履歴、通知は管理者の登録が必要です。',
   memberSetupTrialSubtitle:
     '管理者が保護者のデバイスと子どものデバイスを接続すると、トライアルが開始します。',
   premiumActivatedTitle: 'Premiumが有効になりました',
@@ -144,7 +144,8 @@ export const plans = {
   subscriptionOfferNotConfigured:
     'このサブスクリプションは現在ご利用いただけません。しばらくしてからもう一度お試しください。',
   unableToStartPurchase: '購入を開始できませんでした。もう一度お試しください。',
-  noActiveSubscription: '有効なサブスクリプションが見つかりません。',
+  noActiveSubscription:
+    '有効なサブスクリプションが見つかりません。登録時に使用したApp StoreまたはGoogle Playのアカウントでサインインしてから、もう一度お試しください。',
   purchasesRestored: '購入を復元しました。',
   unableToRestorePurchases: '購入を復元できませんでした。もう一度お試しください。',
   purchaseVerificationFailed:
@@ -153,7 +154,7 @@ export const plans = {
   // has to name who needs to act instead of offering a button they can't use.
   familyPremiumEndedTitle: 'このファミリーのPremiumは終了しました',
   familyPremiumEndedBody:
-    '1日の上限、休止時間、ブロックされたアプリ、Webフィルター、位置情報はそのまま使えます。リアルタイムの更新、履歴、通知、レポートは、管理者がPremiumを更新するまで停止します。',
+    '1日の上限、休止時間、ブロックされたアプリ、位置情報、Webフィルターのスイッチはそのまま使えます。リアルタイムの更新、履歴、通知、レポートは、管理者がPremiumを更新するまで停止します。',
   pricesUnavailable: 'ストアから価格を読み込めませんでした。',
   pricesRetry: '再試行',
   featureRewardTasks: 'ごほうびタスク',
@@ -184,11 +185,11 @@ export const plans = {
   platformMac: 'Mac',
   platformMacDetail: 'お子さま用のみ · macOS 12以降',
   platformIosLimits:
-    'アプリの利用時間制限とメッセージの通知はありません。ブロックするアプリはiPhone本体で選びます。',
+    'アプリの利用時間制限とメッセージの通知はありません。ブロックされたアプリの対象は、iPhone本体で選びます。',
   platformMacLimits: 'メッセージの通知はなく、位置情報はおおよそです。',
   platformWindowsLimits: 'メッセージの通知はなく、位置情報はおおよそです。',
   platformAndroidTvLimits:
-    'メッセージの通知、位置情報、SOS、時間のリクエストはありません。アプリのブロックはベストエフォートです。',
+    'メッセージの通知、位置情報、SOS、時間延長リクエストはありません。ブロックされたアプリはベストエフォートです。',
   platformChromebookLimits:
     'Webフィルターのみ — 1日の上限、休止時間、ブロックされたアプリ、デバイスロック、SOS、位置情報はありません。',
   platformComingSoon: '近日対応',
@@ -197,7 +198,7 @@ export const plans = {
   platformAndroidTv: 'Android TV',
   platformAndroidTvDetail: 'お子さま用のみ · Android TV 7以降',
   platformChromebook: 'Chromebook',
-  platformChromebookDetail: 'お子さま用 · Chromeのウェブフィルタのみ',
+  platformChromebookDetail: 'お子さま用 · ChromeのWebフィルターのみ',
   teaserCta: 'Premium を見る',
   teaserProofOtherApps: 'その他のアプリ: {{count}} · {{minutes}}',
   teaserProofOtherMinutes: 'その他のアプリ: {{minutes}}',

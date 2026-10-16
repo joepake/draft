@@ -44,6 +44,6 @@ export const screenTime = {
   limitReachedStatus: '{{used}} / {{limit}} · Sınıra ulaşıldı',
   minutesUsedStatus: '{{used}} / {{limit}} kullanıldı',
   usageUpdatesHint:
-    'Ekran Süresi izleme etkinken kullanım birkaç dakikada bir güncellenir.',
+    'Kullanımın bu ekrana yansıması {{minutes}} dakikaya kadar sürebilir.',
   dailyLimitMinutes: '{{limitMinutes}} dk',
 } as const;

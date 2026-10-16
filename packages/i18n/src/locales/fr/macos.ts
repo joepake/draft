@@ -10,13 +10,14 @@ export const macos = {
   headingRemovable: 'À quel point c’est facile à retirer',
 
   parentAccessBody:
-    'Saisissez le code PIN parent pour choisir les applications bloquées sur ce Mac.',
+    'Saisissez le code PIN parent pour choisir les applications bloquées sur cet appareil.',
   checking: 'Vérification…',
 
   enforcing: 'Protection active',
   enforcingYes: 'Oui',
-  enforcingFailed: 'Non — {{count}} vérifications d’affilée ont échoué',
-  enforcingFailed_one: 'Non — la dernière vérification a échoué',
+  enforcingFailed:
+    'Protection interrompue · {{count}} vérifications d’affilée ont échoué',
+  enforcingFailed_one: 'Protection interrompue · la dernière vérification a échoué',
 
   lockState: 'Appareil verrouillé',
   lockStateNo: 'Non',
@@ -67,7 +68,7 @@ export const macos = {
   setupStepFilterSwitchWaiting:
     'Apparaît dans Réglages Système une fois l’étape ci-dessus autorisée.',
   setupStepLocationBody:
-    'Permet à votre famille de voir où se trouve cet appareil. Rien n’est partagé tant que « Partager la position » est désactivé.',
+    'Permet à votre famille de voir où se trouve cet appareil. Rien n’est partagé tant que vous n’avez pas activé « Partager la position » dans l’application KidGate.',
   setupStepCameraTitle: 'Caméra',
   setupStepCameraBody:
     'Joint une photo quand votre enfant envoie un SOS ou répond à un Check-in. Aucune photo n’est prise maintenant.',
@@ -122,7 +123,7 @@ export const macos = {
 
   chooseApps: 'Choisir les applications à bloquer',
   chooseAppsHint:
-    'Choisissez les applications à bloquer sur ce Mac. Un parent peut activer ou désactiver le blocage depuis son téléphone.',
+    'Choisissez les applications à bloquer sur cet appareil. Un parent peut activer ou désactiver le blocage depuis son téléphone.',
   saveSelection: 'Enregistrer',
-  noAppsFound: 'Aucune application trouvée dans le dossier Applications.',
+  noAppsFound: 'Aucune application trouvée sur cet appareil.',
 };

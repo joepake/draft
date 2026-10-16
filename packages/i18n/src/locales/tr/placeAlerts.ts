@@ -23,11 +23,11 @@ export const placeAlerts = {
   radiusLabel: 'Uyarı yarıçapı',
   radiusValue: '{{meters}} m',
   radiusHint:
-    'Bu yerin sayılması için cihazın ne kadar yakın olması gerektiği. Cihazın kendi konum hatasından küçük bir yarıçap daha hassas değil, rastgele uyarır.',
+    'Bu yerin sayılması için cihazın ne kadar yakın olması gerektiği. Cihazın kendi konum hatasından küçük bir yarıçap uyarıları daha hassas yapmaz — varışlar ve ayrılışlar bildirilmeyebilir.',
   radiusAccuracyHint:
     'Bu cihaz burada konumunu yaklaşık ±{{accuracy}} m hassasiyetle bildiriyor.',
   radiusBelowAccuracy:
-    'Cihaz burada yalnızca yaklaşık ±{{accuracy}} m hassasiyetinde. {{minimum}} m veya daha fazlasını kullanın, yoksa bu yer rastgele uyarır.',
+    'Cihaz burada yalnızca yaklaşık ±{{accuracy}} m hassasiyetinde. {{minimum}} m veya daha fazlasını kullanın, yoksa buradaki varışlar ve ayrılışlar bildirilmeyebilir.',
   radiusDecrease: 'Yarıçapı küçült',
   radiusIncrease: 'Yarıçapı büyüt',
   notifyEnterLabel: 'Varışta uyar',
@@ -52,7 +52,7 @@ export const placeAlerts = {
   samePinToast:
     'Burası “{{name}}” ile aynı nokta. İşaretçiyi taşımak için haritayı sürükleyin.',
   overlapWarning:
-    '“{{name}}” {{meters}} m uzakta ve çemberi buraya kadar uzanıyor. Cihaz her ikisindeyken yalnızca daha yakın olan uyarır. Korumak için tekrar kaydedin.',
+    '“{{name}}” {{meters}} m uzakta ve iki çember çakışıyor. Cihaz her ikisindeyken yalnızca daha yakın olan uyarır. Korumak için tekrar kaydedin.',
   savedToast: 'Yer kaydedildi.',
   updatedToast: 'Yer güncellendi.',
   removedToast: 'Yer kaldırıldı.',

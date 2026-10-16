@@ -30,6 +30,10 @@ import {
   webFilterBlockerKey,
 } from '@kidgate/core/domain/webFilterSupport';
 import {
+  platformLabelKey,
+  resolveDisplayFormFactor,
+} from '@kidgate/core/domain/deviceFormFactor';
+import {
   supportsAppBlocking,
   supportsDailyLimit,
   supportsSchedule,
@@ -133,6 +137,13 @@ const CONTROL_FIELDS = {
 function isChildRuleSwitch(key) {
   return CHILD_RULE_KEYS.includes(CONTROL_FIELDS[key]);
 }
+
+/** The predicate each child-rule row is gated on, for its scope line. */
+const HOLDS_CHILD_RULE = {
+  schedule: supportsSchedule,
+  webFilter: supportsWebFiltering,
+  location: supportsLocation,
+};
 
 /** Where the slider sits for a family that has no daily limit set. */
 const DEFAULT_LIMIT_MINUTES = 180;
@@ -444,7 +455,8 @@ export default function ControlsTab({
    * A Mac that could filter and is waiting on a person beats the flat "not
    * supported": the same distinction the phone's card draws, from the same
    * field, so the two parent surfaces cannot describe one machine differently.
-   * The key is the app key space's; `dash.*` carries this side's wording.
+   * The key is the app key space's and is said as the phone says it, naming
+   * the platform.
    */
   const filterBlocker = canWebFilter ? null : webFilterBlockerKey(device);
 
@@ -453,13 +465,28 @@ export default function ControlsTab({
    * the rows that write the same child rules. Only those: app blocking, the
    * install gate and search monitoring stay on this one machine.
    */
-  const childRuleScope =
-    device.childId && device.child
-      ? activityT('webFilter.appliesToAll', {
-          name: device.child.name ?? '',
-          count: siblingDevices.length,
+  const childRuleScope = key => {
+    if (!(device.childId && device.child)) return null;
+    const name = device.child.name ?? '';
+    /* The write reaches every device the child holds, but not every device
+       can hold the rule — a browser extension keeps no schedule or location,
+       and a machine with no filter has nothing for the Web Filter to switch
+       on. "All" over a set containing one is the phone's header defect,
+       counted here the way its Blocked Hours screen counts it, by the same
+       predicates the rows themselves are gated on. */
+    const holds = HOLDS_CHILD_RULE[key];
+    const holders = holds ? siblingDevices.filter(holds).length : siblingDevices.length;
+    return holders > 0 && holders < siblingDevices.length
+      ? activityT('webFilter.appliesToSome', {
+          name,
+          supported: holders,
+          total: siblingDevices.length,
         })
-      : null;
+      : activityT('webFilter.appliesToAll', {
+          name,
+          count: siblingDevices.length,
+        });
+  };
 
   const rows = [
     /*
@@ -491,8 +518,10 @@ export default function ControlsTab({
       // `count` — so each half is pluralised on its own and then joined.
       desc: supportsAppBlocking(device)
         ? t('dash.rowAppBlockingDesc', {
-            apps: t('dash.rowAppBlockingApps', { count: c.blockedAppCount }),
-            categories: t('dash.rowAppBlockingCategories', {
+            apps: activityT('blockedApps.blockedAppCount', {
+              count: c.blockedAppCount,
+            }),
+            categories: activityT('blockedApps.blockedCategoryCount', {
               count: c.blockedCategoryCount,
             }),
           })
@@ -501,7 +530,7 @@ export default function ControlsTab({
     },
     {
       key: 'installApproval',
-      title: t('dash.rowInstallApproval'),
+      title: activityT('blockedApps.installApprovalTitle'),
       // The platform decides the shape (`installApprovalMode`): Android and
       // the TV quarantine, iOS hides the App Store, everything else has no
       // switch to offer and says so like the rows around it.
@@ -518,11 +547,13 @@ export default function ControlsTab({
       title: t('dash.rowWebFilter'),
       desc: canWebFilter
         ? t('dash.rowWebFilterDesc', { count: c.webFilterCategories.length })
-        : filterBlocker === 'deviceDetail.webFilterAwaitingApproval'
-          ? t('dash.rowWebFilterAwaitingApproval')
-          : filterBlocker === 'deviceDetail.webFilterSwitchedOffOnDevice'
-            ? t('dash.rowWebFilterSwitchedOff')
-            : t('dash.rowNotSupported'),
+        : filterBlocker
+          ? activityT(filterBlocker, {
+              platform: activityT(
+                platformLabelKey(device.platform, resolveDisplayFormFactor(device)),
+              ),
+            })
+          : t('dash.rowNotSupported'),
       unsupported: !canWebFilter,
     },
     {
@@ -556,7 +587,7 @@ export default function ControlsTab({
     },
     {
       key: 'safeSearch',
-      title: t('dash.rowSafeSearch'),
+      title: activityT('webFilter.safeSearchLabel'),
       desc: supportsSafeSearch(device)
         ? t('dash.rowSafeSearchDesc')
         : t('dash.rowNotSupported'),
@@ -660,7 +691,7 @@ export default function ControlsTab({
           subtitle={t('dash.pendingInstallsSub')}
         >
           {pendingInstalls.length === 0 ? (
-            <p className="empty">{t('dash.pendingInstallsEmpty')}</p>
+            <p className="empty">{activityT('blockedApps.pendingEmpty')}</p>
           ) : (
             <ul className="events">
               {pendingInstalls.map(app => (
@@ -701,7 +732,10 @@ export default function ControlsTab({
         — a row there carries the Allow, and this card carries both answers.
       */}
       {siteRequests.length > 0 && (
-        <Card title={t('dash.siteRequestsTitle')} subtitle={t('dash.siteRequestsSub')}>
+        <Card
+          title={activityT('webFilter.requestsTitle')}
+          subtitle={activityT('webFilter.requestsSubtitle')}
+        >
           <ul className="events">
             {siteRequests.map(req => (
               <li key={req.id}>
@@ -744,7 +778,7 @@ export default function ControlsTab({
                     run(
                       `site-allow-${req.id}`,
                       () => actions.resolveSiteRequest(req.id, true),
-                      t('dash.toastSiteAllowed'),
+                      activityT('webFilter.siteRequestApproved'),
                     )
                   }
                 >
@@ -856,7 +890,10 @@ export default function ControlsTab({
           )}
         </Card>
 
-        <Card title={t('dash.whatsOnTitle')} subtitle={t('dash.whatsOnSub')}>
+        <Card
+          title={activityT('usage.sectionWhatsTurnedOn')}
+          subtitle={t('dash.whatsOnSub')}
+        >
           <ul className="ctrl-rows">
             {rows.map(r => (
               <li key={r.key} className={r.unsupported ? 'is-unsupported' : undefined}>
@@ -865,9 +902,10 @@ export default function ControlsTab({
                   <em>{r.desc}</em>
                   {/* With its switch only: a row the device cannot hold
                       has nothing here to apply anywhere. */}
-                  {childRuleScope && isChildRuleSwitch(r.key) && !r.unsupported && (
-                    <em>{childRuleScope}</em>
-                  )}
+                  {device.childId &&
+                    device.child &&
+                    isChildRuleSwitch(r.key) &&
+                    !r.unsupported && <em>{childRuleScope(r.key)}</em>}
                 </span>
                 {/*
                  * The row stays and the switch goes. Hiding the row entirely
@@ -1066,7 +1104,7 @@ export default function ControlsTab({
                         >
                           {busy === `reward-reject-${task.id}`
                             ? '…'
-                            : t('dash.rewardReject')}
+                            : activityT('rewardTask.tryAgain')}
                         </button>
                         <button
                           className="btn btn-sm btn-primary"
@@ -1092,9 +1130,11 @@ export default function ControlsTab({
                         <button
                           className="btn btn-sm"
                           disabled={readOnly || busy === `reward-${task.id}`}
-                          aria-label={t('dash.rewardDelete')}
+                          aria-label={activityT('rewardTask.deleteTask')}
                           title={
-                            readOnly ? t('dash.unlockToChange') : t('dash.rewardDelete')
+                            readOnly
+                              ? t('dash.unlockToChange')
+                              : activityT('rewardTask.deleteTask')
                           }
                           onClick={() => {
                             // Asked first, with the phone's own sentences: one

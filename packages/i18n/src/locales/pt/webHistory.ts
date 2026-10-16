@@ -2,7 +2,7 @@ export const webHistory = {
   title: 'Histórico da web',
   fallbackDeviceName: 'Dispositivo da criança',
   syncNote:
-    'O histórico da web pode levar até cerca de 15 minutos para aparecer nesta tela — mais tempo se o dispositivo não tiver conexão com a internet ou tiver sido fechado inesperadamente.',
+    'O histórico da web pode chegar com cerca de 10 minutos de atraso enquanto você olha esta tela, e com até 30 minutos de atraso nos outros casos — mais tempo se o dispositivo não tiver conexão com a internet ou tiver sido fechado inesperadamente.',
   syncNoteTv:
     'Esta TV só se conecta periodicamente, então o histórico da web pode levar até uma hora para aparecer nesta tela — mais tempo sem conexão com a internet.',
   summarySites: 'Sites vistos',
@@ -14,7 +14,7 @@ export const webHistory = {
   sourceNoteExtension:
     'Neste navegador o KidGate vê as páginas realmente abertas — só este navegador, não o resto do computador.',
   filterOffNoteAndroid:
-    'O Filtro web está desligado, então este dispositivo não registra nem bloqueia nada. Ative o filtro para ver quais sites ele acessa.',
+    'O Filtro da web está desligado, então este dispositivo não registra nem bloqueia nada. Ative o filtro para ver quais sites ele acessa.',
   filterOffNoteMacos:
     'O filtro web está desligado, então este Mac não registra nem bloqueia nada. Ligue para ver por onde ele passa.',
   filterAll: 'Todos os sites',
@@ -33,13 +33,17 @@ export const webHistory = {
   blockCategory: 'Bloquear {{category}}',
   blockCategoryConfirmTitle: 'Bloquear {{category}}?',
   blockCategoryConfirmBody:
-    'Todos os sites que o KidGate classifica como {{category}} serão recusados neste dispositivo. Você pode desativar isso no Filtro web.',
+    'Todos os sites que o KidGate classifica como {{category}} serão recusados neste dispositivo. Você pode desativar isso no Filtro da web.',
+  blockCategoryConfirmBodyChild:
+    'Todos os sites que o KidGate classifica como {{category}} serão recusados em todos os dispositivos de {{name}}. Você pode desativar isso no Filtro da web.',
   blockCategoryConfirmAction: 'Bloquear',
   blockCategoryDone: '{{category}} está agora bloqueado.',
   unblockCategory: 'Desbloquear {{category}}',
   unblockCategoryConfirmTitle: 'Desbloquear {{category}}?',
   unblockCategoryConfirmBody:
     'Os sites que o KidGate classifica como {{category}} voltarão a estar acessíveis neste dispositivo.',
+  unblockCategoryConfirmBodyChild:
+    'Os sites que o KidGate classifica como {{category}} voltarão a estar acessíveis nos dispositivos de {{name}}.',
   unblockCategoryConfirmAction: 'Desbloquear',
   unblockCategoryDone: '{{category}} já não está bloqueado.',
   serviceSites: '{{count}} sites',
@@ -63,5 +67,5 @@ export const webHistory = {
   sourceNoteChild:
     'Combinado de {{count}} dispositivos. Cada um registra só o que o próprio filtro vê.',
   filterOffNoteChild:
-    'O filtro da web está desligado em todos os dispositivos, então novas visitas não são registradas.',
+    'O Filtro da web está desligado em todos os dispositivos, então novas visitas não são registradas.',
 } as const;

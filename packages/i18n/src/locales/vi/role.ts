@@ -2,7 +2,7 @@
 // thiết bị) đã bị xóa vì là dead code không thể hiển thị — chỉ còn các key
 // mã ghép đôi bên dưới, dùng bởi PairingCodeModal/PairingQrScanner.
 export const role = {
-  enterPairingCode: 'Nhập mã gồm 6 ký tự từ thiết bị của trẻ.',
+  enterPairingCode: 'Vui lòng nhập mã gồm 6 ký tự.',
   unableToJoinWithCode: 'Mã không chính xác hoặc đã hết hạn.',
   connecting: 'Đang kết nối…',
 };

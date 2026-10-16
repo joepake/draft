@@ -12,7 +12,8 @@ export const messageMonitoring = {
     'Aquí solo se pueden revisar las búsquedas. Los mensajes solo se pueden revisar en dispositivos Android.',
   recentTitle: 'Alertas recientes',
   emptyTitle: 'Aún no hay alertas',
-  emptySubtitle: 'No se han detectado palabras preocupantes en los mensajes.',
+  emptySubtitle:
+    'Cuando se marca una palabra preocupante en un mensaje o en una búsqueda, aparece aquí.',
   emptySubtitleNotWatching:
     'Ahora mismo no se están revisando los mensajes, así que esta lista seguirá vacía pase lo que pase.',
   flaggedTerm: 'Marcado: «{{term}}»',
@@ -30,7 +31,7 @@ export const messageMonitoring = {
   categoryTobacco: 'Tabaco o vapeo',
   categoryGambling: 'Juegos de apuestas',
   categoryProfanity: 'Lenguaje ofensivo',
-  categoryUnknown: 'Mensaje marcado',
+  categoryUnknown: 'Mensaje preocupante',
   guidanceToggle: 'Qué hacer ahora',
   guidanceHide: 'Ocultar',
   guidanceFooter:
@@ -73,13 +74,13 @@ export const messageMonitoring = {
     'Navegadores y YouTube. Solo se informa la palabra o frase marcada, nunca la búsqueda en sí.',
   parentSearchHintNotGranted:
     'Necesita el mismo permiso que «Revisar los mensajes que escribe». Activa «Revisar los mensajes que recibe» y luego permítelo en su dispositivo.',
-  parentToggleHintGranted: 'En este teléfono.',
+  parentToggleHintGranted: 'Permitido en su dispositivo.',
   parentToggleHintNotGranted:
-    'Aún no se ha permitido en este teléfono: abre KidGate en su dispositivo para concederlo.',
+    'Aún no está permitido en su dispositivo: abre KidGate en ese dispositivo para concederlo.',
   parentProfanityLabel: 'Marcar también el lenguaje soez',
   parentProfanityHint:
     'Desactivado por defecto — las groserías comunes son frecuentes, y esto también las convierte en alerta.',
-  parentToggleSaveFailed: 'No se pudo guardar el cambio.',
+  parentToggleSaveFailed: 'No se pudo guardar el cambio. Inténtalo de nuevo.',
   settingsTitle: 'Ajustes de Alertas de mensajes',
   checkedTitle: 'Revisado y sin problema',
   checkedSubtitle:
@@ -109,7 +110,7 @@ export const messageMonitoring = {
     'Android desactivó esto. Vuelve a concederlo para seguir revisando lo que escribes.',
   outgoingDisclosureTitle: 'Antes de permitirlo',
   outgoingDisclosureBody:
-    'Con este permiso KidGate lee lo que escribes en mensajes de texto (SMS y MMS) y en apps de mensajería, y lo revisa en busca de las mismas palabras de aviso. Si tu padre o madre activa las alertas de búsqueda, también lee lo que escribes en navegadores, YouTube y la app de Google, como las búsquedas. Nunca lee un campo de contraseña. La revisión se hace en este teléfono. Cuando una palabra coincide, solo esa palabra o frase, su categoría, la app y la hora se envían a tu padre o madre, nunca el resto del mensaje o la búsqueda. Si KidGate se cierra por un error, se envía un registro de fallos al equipo de KidGate para poder solucionarlo.',
+    'Con este permiso KidGate lee lo que escribes en mensajes de texto (SMS y MMS) y en apps de mensajería, y lo revisa en busca de las mismas palabras de aviso. Si tu padre o madre activa las alertas de búsqueda, también lee lo que escribes en navegadores, YouTube y la app de Google, como las búsquedas. Nunca lee un campo de contraseña. La revisión se hace en este teléfono. Cuando una palabra coincide, solo esa palabra o frase, su categoría, la app y la hora se envían a tu padre o madre, nunca el resto del mensaje o la búsqueda. Si permites el acceso al micrófono, KidGate graba hasta 15 segundos de sonido cuando envías un SOS y se lo envía a tu padre o madre. Si KidGate se cierra por un error, se envía un registro de fallos al equipo de KidGate para poder solucionarlo.',
   outgoingRestrictedHint:
     'Si el interruptor aparece atenuado, abre Ajustes › Aplicaciones › KidGate, toca el menú ⋮ y elige «Permitir ajustes restringidos»; después vuelve aquí.',
   notice: {

@@ -82,6 +82,8 @@ function wrapDoc<T>(snapshot: DocumentSnapshot<DocumentData>): DocSnapshot<T> {
     // write does not contain it yet, so "absent" is only a decision when it
     // came from the server. See `DocSnapshot.fromCache`.
     fromCache: snapshot.metadata.fromCache,
+    // See `DocSnapshot.hasPendingWrites`.
+    hasPendingWrites: snapshot.metadata.hasPendingWrites,
   };
 }
 

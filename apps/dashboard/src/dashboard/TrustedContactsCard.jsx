@@ -26,13 +26,21 @@ export default function TrustedContactsCard({
   contacts = [],
   /** Told when this card has changed the list its parent reads. `useReload`. */
   onChanged = null,
+  /**
+   * A browser without the write grant, as on every other Family card. The
+   * rules let a view-only sign-in write here, but a contact added is emailed
+   * the child's location on SOS — not a change to make from a locked page.
+   */
+  readOnly = false,
 }) {
-  const { language } = useT();
+  const { language, t } = useT();
   const appT = useActivityTranslate();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState(null);
+  const locked = busy || readOnly;
+  const lockedTitle = readOnly ? t('dash.unlockToChange') : undefined;
 
   const isFull = contacts.length >= TRUSTED_CONTACTS_MAX;
 
@@ -126,7 +134,8 @@ export default function TrustedContactsCard({
               </span>
               <button
                 className="btn btn-sm place-remove"
-                disabled={busy}
+                disabled={locked}
+                title={lockedTitle}
                 aria-label={appT('sos.trustedContactsRemoveAccessibility', {
                   name: contact.name,
                 })}
@@ -162,7 +171,7 @@ export default function TrustedContactsCard({
                 className="reward-input"
                 value={name}
                 maxLength={60}
-                disabled={busy}
+                disabled={locked}
                 autoComplete="off"
                 onChange={event => setName(event.target.value)}
               />
@@ -176,7 +185,7 @@ export default function TrustedContactsCard({
                 className="reward-input"
                 type="email"
                 value={email}
-                disabled={busy}
+                disabled={locked}
                 autoComplete="off"
                 onChange={event => setEmail(event.target.value)}
               />
@@ -191,7 +200,8 @@ export default function TrustedContactsCard({
             <button
               type="submit"
               className="btn btn-sm btn-primary"
-              disabled={busy || !name.trim() || !email.trim()}
+              disabled={locked || !name.trim() || !email.trim()}
+              title={lockedTitle}
             >
               <Icon name="plus" size={13} />
               {appT('sos.trustedContactsAddButton')}

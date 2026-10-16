@@ -4,7 +4,7 @@ export const deviceDetail = {
   notFoundTitle: 'डिवाइस',
   dangerTitle: 'इस डिवाइस को हटाएँ',
   dangerDescription:
-    'इस डिवाइस को अपने परिवार खाते से हटाएँ। इस डिवाइस से संबंधित सभी समय अनुरोध और गतिविधि इतिहास हटा दिए जाएँगे।',
+    'इस डिवाइस को अपने परिवार खाते से हटाएँ। इससे इसका यह सारा डेटा हट जाएगा: स्थान इतिहास, उपयोग इतिहास, वेब इतिहास, देखे गए वीडियो, इंस्टॉल किए गए ऐप्स की सूची, समय अनुरोध, साइट के अनुरोध, इनाम वाले टास्क, चेक-इन, SOS अलर्ट और गतिविधि।',
   removeButton: 'डिवाइस हटाएँ',
   removingButton: 'हटाया जा रहा है…',
   showAllFeatures: 'सभी सुविधाएं दिखाएं',
@@ -12,7 +12,7 @@ export const deviceDetail = {
   essentialControls: 'मुख्य नियंत्रण',
   dailyRulesAndDeviceAccess: 'दैनिक नियम और डिवाइस एक्सेस',
   dailyLimit: 'दैनिक सीमा',
-  setDailyScreenTimeCap: 'दैनिक स्क्रीन समय सीमा निर्धारित करें',
+  setDailyScreenTimeCap: 'दैनिक सीमा सेट करें',
   blockedHours: 'ब्लॉक किए गए समय',
   manageTimeRanges: 'अधिकतम {{max}} समय अवधि प्रबंधित करें',
   blockedApps: 'ब्लॉक किए गए ऐप्स',
@@ -38,7 +38,7 @@ export const deviceDetail = {
   placeAlerts: 'स्थान',
   reviewPlaceAlerts: 'आने या जाने पर सूचना दें',
   noPlacesYet: 'कोई स्थान नहीं',
-  tamperAlerts: 'सुरक्षा',
+  tamperAlerts: 'सुरक्षा अलर्ट',
   reviewTamperAlerts: 'देखें कि सुरक्षा कब बंद की गई',
   editDeviceName: 'डिवाइस का नाम बदलें',
   editDeviceNameSubtitle:
@@ -63,13 +63,14 @@ export const deviceDetail = {
   notAvailableInExtension: 'एक्सटेंशन में उपलब्ध नहीं',
   webFilterAwaitingApproval: '{{platform}} पर मंज़ूरी का इंतज़ार',
   webFilterSwitchedOffOnDevice: '{{platform}} पर बंद है',
+  webFilterPrivateDnsOnDevice: '{{platform}} पर प्राइवेट DNS से बायपास हो रहा है',
   unableToUpdateDeviceName:
     'डिवाइस का नाम अपडेट नहीं किया जा सका। कृपया पुनः प्रयास करें।',
   renameOwnerOnly: 'केवल परिवार का मालिक ही डिवाइस का नाम बदल सकता है।',
   removeOwnerOnly: 'केवल परिवार का मालिक ही डिवाइस हटा सकता है।',
   removeDeviceTitle: 'डिवाइस हटाएँ?',
   removeDeviceMessage:
-    '{{deviceName}} आपके खाते से डिस्कनेक्ट हो जाएगा। इससे संबंधित सभी समय अनुरोध और गतिविधि इतिहास हटा दिए जाएँगे।',
+    '{{deviceName}} आपके खाते से डिस्कनेक्ट हो जाएगा। इससे इसका यह सारा डेटा हट जाएगा: स्थान इतिहास, उपयोग इतिहास, वेब इतिहास, देखे गए वीडियो, इंस्टॉल किए गए ऐप्स की सूची, समय अनुरोध, साइट के अनुरोध, इनाम वाले टास्क, चेक-इन, SOS अलर्ट और गतिविधि।',
   unableToRemoveDevice: 'डिवाइस हटाया नहीं जा सका। कृपया पुनः प्रयास करें।',
   checkInNotificationSent: '{{deviceName}} को चेक-इन अनुरोध भेजा जाएगा।',
   checkInOfflineTitle: 'यह डिवाइस ऑफ़लाइन लग रहा है',
@@ -80,7 +81,7 @@ export const deviceDetail = {
   checkInOfflineConfirm: 'फिर भी भेजें',
   checkInQueued: 'चेक-इन कतार में है — {{deviceName}} के ऑनलाइन होते ही पहुँच जाएगा।',
   unableToRequestCheckIn: 'चेक-इन अनुरोध भेजा नहीं जा सका। कृपया पुनः प्रयास करें।',
-  tapToSetDailyCap: 'दैनिक सीमा सेट करें',
+  tapToSetDailyCap: 'दैनिक सीमा सेट करने के लिए टैप करें',
   usageUpdatesFromChildDevice: 'बच्चे के डिवाइस से उपयोग अपडेट',
   minutesUsedToday: 'आज: {{used}} / {{limit}}',
   noBlockedHours: 'कोई ब्लॉक किया गया समय सेट नहीं',
@@ -140,7 +141,7 @@ export const deviceDetail = {
   webHistorySitesUnit: 'साइटें',
   webHistorySitesUnit_one: 'साइट',
   managedAtChild:
-    'इस डिवाइस के नियम, इनाम, चेक-इन और अलर्ट {{childName}} की प्रोफ़ाइल में प्रबंधित होते हैं',
+    'इस डिवाइस के नियम, इनाम, चेक-इन और सुरक्षा अलर्ट {{childName}} की प्रोफ़ाइल में प्रबंधित किए जाते हैं।',
   pauseBrowsing: 'ब्राउज़िंग रोकें',
   pauseBrowsingDescription:
     'कुछ देर के लिए ब्राउज़िंग रोकें। कॉल और ऑफ़लाइन ऐप चलते रहेंगे।',

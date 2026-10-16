@@ -10,7 +10,8 @@ export const errors = {
   somethingWentWrong: 'Terjadi kesalahan. Silakan coba lagi.',
   accountDisabled:
     'Akun ini telah dinonaktifkan. Hubungi dukungan KidGate untuk memulihkannya.',
-  recentLoginRequired: 'Demi keamanan Anda, masuk lagi, lalu coba sekali lagi.',
+  recentLoginRequired:
+    'Demi keamanan Anda, keluar lalu masuk lagi, kemudian coba sekali lagi.',
   accountExistsDifferentMethod:
     'Email ini sudah memiliki akun dengan metode masuk yang berbeda. Masuk dengan metode itu, lalu tautkan metode ini di Pengaturan.',
   unableToCreateAccount: 'Tidak dapat membuat akun Anda. Silakan coba lagi.',
@@ -43,13 +44,12 @@ export const errors = {
     'Tidak dapat mengunggah foto saat ini. Silakan coba lagi sebentar lagi.',
   storageNotSetup:
     'Tidak dapat mengunggah foto saat ini. Silakan coba lagi sebentar lagi.',
-  noNetworkConnection:
-    'Tidak ada koneksi internet. Periksa Wi-Fi atau data seluler, lalu coba lagi.',
+  noNetworkConnection: 'Tidak dapat terhubung. Periksa koneksi, lalu coba lagi.',
   connectionFailedTitle: 'Koneksi gagal',
   reconnect: 'Hubungkan kembali',
   unableToUploadPhoto: 'Tidak dapat mengunggah foto. Silakan coba lagi.',
   premiumSubscriptionRequired:
-    'Fitur ini butuh Premium. Semua aturan yang Anda buat — batas, jam tidur, pemblokiran aplikasi, filter web, lokasi, dan SOS — tetap gratis.',
+    'Fitur ini butuh Premium. Batas harian, Jam Diblokir, Aplikasi yang Diblokir, Batas Aplikasi, Kunci perangkat, SOS, lokasi, sakelar Filter web, dan SafeSearch tetap gratis.',
   trialEndedCannotJoinFamily:
     'Masa uji coba gratis Anda telah berakhir. Silakan berlangganan Premium untuk bergabung dengan keluarga lain.',
 
@@ -89,7 +89,7 @@ export const errors = {
   deviceClockOutOfRange:
     'Tanggal dan waktu pada perangkat ini tampaknya tidak benar. Atur agar diperbarui secara otomatis.',
   locationSharingDisabled:
-    'Berbagi lokasi dinonaktifkan pada perangkat ini. Aktifkan di Pengaturan perangkat, lalu coba lagi.',
+    'Berbagi lokasi dinonaktifkan pada perangkat ini. Aktifkan “Bagikan lokasi”, lalu coba lagi.',
   childDeviceNoPushToken:
     'Perangkat anak ini belum dapat menerima permintaan. Buka KidGate di perangkat anak dan izinkan Notifikasi.',
   unableToRequestLocation:
@@ -97,7 +97,8 @@ export const errors = {
   unableToVerifyPurchase:
     'Tidak dapat memverifikasi pembelian tersebut. Silakan coba lagi sebentar lagi.',
   noPurchasesToRestore: 'Tidak ada pembelian yang dapat dipulihkan untuk akun ini.',
-  noActiveSubscription: 'Tidak ditemukan langganan aktif untuk akun ini.',
+  noActiveSubscription:
+    'Tidak ditemukan langganan aktif. Masuk dengan akun App Store atau Google Play yang Anda pakai untuk berlangganan, lalu coba lagi.',
   unableToRestorePurchases:
     'Tidak dapat memulihkan pembelian Anda saat ini. Silakan coba lagi.',
   alreadyInFamily: 'Anda sudah menjadi anggota keluarga ini.',

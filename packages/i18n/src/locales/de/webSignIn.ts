@@ -21,7 +21,7 @@ export const webSignIn = {
   // "later", and it must not read like it.
   confirmTitle: 'Diesen Browser zulassen?',
   confirmBody:
-    'Er bekommt die gleiche Kontrolle wie dieses Telefon: Er sieht, wo deine Kinder sind, ändert Limits, sperrt Geräte und genehmigt Anfragen. Lass ihn nur zu, wenn du selbst dich anmeldest.',
+    'Er bekommt die gleiche Kontrolle wie dieses Telefon: Er sieht, wo deine Kinder sind, ändert Limits, sperrt Geräte und genehmigt Anfragen. Er kann 7 Tage lang Änderungen vornehmen, und du kannst ihn jederzeit unter Familie → Elternteile entfernen. Lass ihn nur zu, wenn du selbst dich anmeldest.',
   confirmCodeLabel: 'Code von deinem Computer',
   approveButton: 'Zulassen',
   declineButton: 'Nicht zulassen',
@@ -37,6 +37,21 @@ export const webSignIn = {
     'Dieser Code wurde bereits verwendet. Lass auf deinem Computer einen neuen anzeigen.',
   notFound: 'Dieser Code ist ungültig. Prüfe die sechs Zeichen und versuche es erneut.',
   failed: 'Anfrage konnte nicht abgeschlossen werden. Bitte versuche es erneut.',
-
-  // Revocation screen (server side already ships; app screen is pending).
+  sessionsTitle: 'Browser, die Änderungen vornehmen können',
+  sessionsHint:
+    'Diese Browser sind mit deinem Konto im Web-Dashboard angemeldet und können Änderungen vornehmen. Ein Browser, der deine Familie nur anzeigt, wird hier nicht aufgeführt.',
+  sessionsEmpty:
+    'Kein Browser kann Änderungen vornehmen. Sobald du einen zulässt, erscheint er hier.',
+  sessionRow: '{{browser}} auf {{os}}',
+  sessionRowUnknown: 'Webbrowser',
+  sessionExpires: 'Kann bis {{date}} Änderungen vornehmen',
+  sessionViaQr: 'Mit einem QR-Code zugelassen',
+  sessionViaPin: 'Mit der Eltern-PIN zugelassen',
+  thisBrowser: 'Dieser Browser',
+  sessionsRevoke: 'Entfernen',
+  sessionsRevokeConfirmTitle: 'Diesen Browser entfernen?',
+  sessionsRevokeConfirmBody:
+    'Er kann keine Einstellungen mehr ändern und keine Geräte mehr steuern. Bis zum angezeigten Datum kann er noch einige Gerätedetails ändern, etwa einen Namen. Die Daten deiner Familie kann er aber weiterhin anzeigen, bis sich dort jemand abmeldet.',
+  revokedToast: 'Browser entfernt.',
+  revokeFailed: 'Dieser Browser konnte nicht entfernt werden. Versuche es erneut.',
 } as const;

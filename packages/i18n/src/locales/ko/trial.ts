@@ -6,7 +6,7 @@ export const trial = {
     '체험이 끝나면 {{using}}대 중 {{keeps}}대만 계속 보고를 보내고 규칙 변경을 받습니다. 나머지 기기는 지금의 규칙을 유지하며, 규칙을 완화만 할 수 있고 강화할 수는 없습니다.',
   trialBannerTitle: '체험 · {{remaining}}',
   trialUrgentBody:
-    '체험이 곧 끝납니다. 월 {{price}}의 Premium을 구독하면 중단 없이 사용할 수 있습니다.',
+    '체험이 곧 끝납니다. 무료 플랜에서도 모든 규칙은 계속 작동합니다. 실시간 활동, 기록, 리포트를 계속 쓰려면 월 {{price}}의 Premium을 구독하세요.',
   trialNormalBody:
     'KidGate가 마음에 드시나요? 월 {{price}}의 Premium을 구독하면 체험 후에도 전체 기능을 이용할 수 있습니다.',
   impactTitle: '체험판 마지막 날',
@@ -21,5 +21,5 @@ export const trial = {
   impactPlaceArrivals: '자녀가 안전하게 도착했다고 {{count}}회 알려드렸어요',
   impactAppInstalled: '새 앱 {{count}}개를 설치된 당일에 찾아냈어요',
   impactSos: 'SOS 알림 {{count}}건을 바로 전달했어요',
-  impactKeepButton: '이 보호 유지하기',
+  impactKeepButton: 'Premium 보기',
 } as const;

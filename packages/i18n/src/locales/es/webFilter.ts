@@ -3,6 +3,7 @@ export const webFilter = {
   fallbackDeviceName: 'Dispositivo del niño',
   appliesToAll: 'Se aplica a los {{count}} dispositivos de {{name}}',
   appliesToAll_one: 'Se aplica al dispositivo de {{name}}',
+  appliesToSome: 'Se aplica a {{supported}} de los {{total}} dispositivos de {{name}}',
   coverageLine: 'Activo en {{enforcing}} de {{total}} dispositivos',
   mergeNotice:
     'Los dispositivos de {{name}} tenían ajustes de filtro web distintos. Al guardar aquí se aplica un solo conjunto a todos, y en cada ajuste se conserva la opción más estricta.',
@@ -17,17 +18,21 @@ export const webFilter = {
     'Ejecuta el filtro de contenido de KidGate en el Mac del niño para bloquear sitios inapropiados conocidos en navegadores y muchas apps.',
   toggleHintIos:
     'El niño debe permitir la VPN de KidGate una vez e introducir el código del dispositivo. Mantén la VPN instalada para que el filtro funcione.',
+  heroSubtitleIosApple:
+    'Usa el filtro de contenido de Tiempo de uso de Apple para limitar el contenido para adultos en Safari y en los navegadores integrados de las apps en el iPhone o iPad del niño.',
+  toggleHintIosApple:
+    'Requiere el permiso de Tiempo de uso en el dispositivo del niño.',
   toggleHintAndroid:
     'El niño debe aprobar la conexión VPN de KidGate una vez. Mantén la VPN activa para que el filtro funcione.',
   toggleHintMacos:
-    'El niño debe aprobar la extensión de filtro de KidGate una vez en Ajustes del sistema. Mantenla aprobada para que el filtro funcione.',
+    'El niño debe aprobar la extensión de filtro de KidGate una vez en el Mac. Mantenla aprobada para que el filtro funcione.',
   toggleAccessibilityLabel: 'Activar Filtro web',
   safeSearchSectionTitle: 'Búsqueda segura y YouTube',
   safeSearchSectionSubtitle:
     'Fuerza resultados seguros en Google, Bing y DuckDuckGo y fija YouTube en el modo restringido. Requiere el Filtro web activado.',
   safeSearchLabel: 'Forzar SafeSearch',
   safeSearchHint:
-    'Fija Google SafeSearch, el modo restringido de YouTube, Bing y DuckDuckGo en su ajuste estricto. Android, Android TV y Chrome.',
+    'Fija Google SafeSearch, el modo restringido de YouTube, Bing y DuckDuckGo en su ajuste estricto. Android y Chrome.',
   safeSearchStrictNote:
     'YouTube funciona en su nivel más estricto: los comentarios se ocultan y algunos vídeos normales también se bloquean. Un niño no puede desactivarlo desde su cuenta.',
   infoTitle: 'Cómo funciona',
@@ -37,6 +42,12 @@ export const webFilter = {
     'El filtro de contenido adulto de Apple sigue activo en Safari y en los navegadores integrados en las apps como segunda capa de protección.',
   infoLine3Ios:
     'Aparece un icono de VPN mientras el filtro funciona. Si se desactiva la VPN en Ajustes, vuelve a activarse en unos segundos; si se elimina, el filtro se detiene hasta que se vuelva a permitir en KidGate.',
+  infoLine1IosApple:
+    'El filtro de contenido para adultos de Apple limita los sitios web para adultos en Safari y en los navegadores integrados de las apps.',
+  infoLine2IosApple:
+    'No bloquea todo lo que hay dentro de otras apps y solo cubre el contenido para adultos, no las demás categorías.',
+  infoLine3IosApple:
+    'KidGate aplica el ajuste automáticamente cuando la app del dispositivo del niño sincroniza los controles.',
   infoLine1Android:
     'KidGate mantiene una conexión privada en el dispositivo que comprueba qué sitios se consultan y bloquea los de tus categorías.',
   infoLine2Android:
@@ -48,27 +59,28 @@ export const webFilter = {
   infoLine1Macos:
     'KidGate ejecuta un filtro de contenido en el Mac que revisa qué sitios se están buscando y bloquea los que están en tus categorías.',
   infoLine2Macos:
-    'Si el filtro aparece como no aprobado en el Mac del niño, abre Ajustes del sistema → General → Elementos de inicio de sesión y extensiones para aprobarlo.',
+    'Si el filtro aparece como no aprobado en el Mac del niño, abre KidGate allí y selecciona Abrir Ajustes. Después activa KidGate en la página que se abre.',
   infoLine3Macos:
     'El Mac del niño muestra el filtro como activo una vez aprobado. Si se desactiva allí, vuelve a abrir KidGate para restaurarlo.',
   infoLine4Macos:
-    'El filtro lee los nombres de los sitios, que los navegadores modernos ocultan en aproximadamente la mitad de las visitas; esos sitios no se comparan con tus categorías. Aun así, bloquea la mayoría de los sitios a los que los niños llegan de esta forma.',
+    'El filtro juzga una conexión por el nombre de sitio que lleva. En las pruebas de KidGate, aproximadamente la mitad de las conexiones HTTPS no llevaba un nombre legible, por lo que no se comprueban con tus categorías y algunos sitios bloqueados aún pueden abrirse.',
   privateDnsBannerTitle: 'Desactiva el DNS privado',
   privateDnsBannerBody:
     'El DNS privado está activo, así que el filtro web puede eludirse. Desactívalo para que el filtro funcione.',
   privateDnsBannerButton: 'Abrir ajustes de DNS',
   vpnConsentBannerTitle: 'Restaurar la VPN del Filtro web',
   vpnConsentBannerBody:
-    'La VPN de KidGate está desactivada. El filtrado de contenido adulto necesita que la VPN siga conectada.',
+    'La VPN de KidGate está desactivada. El Filtro web necesita que la VPN siga conectada.',
   vpnConsentBannerButton: 'Activar VPN',
   vpnDisclosureNote:
     'Mientras el Filtro web está activado, la VPN de KidGate funciona solo en este dispositivo. Ve el nombre de cada sitio web que consulta el dispositivo, nunca las páginas, lo que se escribe ni ningún otro tráfico. Bloquea los sitios que eligió tu padre o madre y le muestra el historial de navegación web de este dispositivo (qué sitios se visitaron y se bloquearon), que se guarda durante 30 días. KidGate nunca vende estos datos ni los usa para nada más.',
   iosOnlyNote: 'Usa una conexión privada y Tiempo de uso en iPhone',
+  iosAppleNote: 'Usa el filtro de contenido de Tiempo de uso de Apple en el iPhone',
   androidVpnNote: 'Usa una VPN DNS local en Android',
   macosFilterNote: 'Usa el filtro de contenido de KidGate en Mac',
 
   heroSubtitleWindows:
-    'Ejecuta el propio resolutor de KidGate en el PC del niño para bloquear sitios inapropiados conocidos en todos los navegadores.',
+    'Ejecuta el propio resolutor de KidGate en el PC del niño para bloquear sitios inapropiados conocidos en Chrome, Edge y Firefox.',
   heroSubtitleExtension:
     'Ejecuta la extensión de KidGate en Chrome, en el ordenador del niño, para bloquear sitios inapropiados conocidos en ese navegador.',
 
@@ -95,7 +107,7 @@ export const webFilter = {
   infoLine3Extension:
     'Las ventanas de incógnito solo se filtran si «Permitir en modo incógnito» está activado para la extensión. Las ventanas de invitado no se filtran.',
   infoLine4Extension:
-    'Una página bloqueada permite a tu hijo pedirte que permitas el sitio. Quitar o desactivar la extensión detiene el filtro.',
+    'Mientras la familia tenga Premium, una página bloqueada permite a tu hijo o hija pedirte que permitas el sitio. Quitar o desactivar la extensión detiene el filtro.',
 
   windowsFilterNote: 'Usa el propio resolutor de KidGate en Windows',
   extensionFilterNote: 'Usa la extensión de KidGate en Chrome',
@@ -125,10 +137,10 @@ export const webFilter = {
   domainPlaceholder: 'ejemplo.com',
   addDomain: 'Añadir sitio',
   removeDomain: 'Quitar {{domain}}',
-  invalidDomain: 'Escribe una dirección, como ejemplo.com',
+  invalidDomain: 'Escribe una dirección de sitio, como ejemplo.com.',
   listFull: 'Puedes guardar hasta {{max}} sitios en esta lista.',
   openHistory: 'Historial web',
-  openHistorySubtitle: 'Mira a qué sitios llegó este dispositivo y qué se bloqueó',
+  openHistorySubtitle: 'Mira a qué sitios llegó este dispositivo y qué se bloqueó.',
   blockedPageTitle: 'Sitio bloqueado',
   blockedPageBody:
     'KidGate bloqueó este sitio para tu familia. Si crees que es un error, pregunta a tu padre o madre.',
@@ -208,6 +220,8 @@ export const webFilter = {
   askToOpenPending: 'Ya pediste un sitio. Espera la respuesta.',
   askToOpenTooSoon: 'Acabas de pedirlo. Prueba otra vez en un minuto.',
   askToOpenTooMany: 'Solo puedes pedir unos pocos sitios a la vez.',
+  askToOpenUnavailable:
+    'Ahora mismo no se puede pedir un sitio. Pídeselo en persona a tu padre o madre.',
   requestsTitle: 'Peticiones de sitios',
   requestsSubtitle: 'Sitios que este dispositivo pidió permitir.',
   siteRequestApproved: 'Sitio permitido',

@@ -264,8 +264,12 @@ export function resolveSetupGuide(
 export type GuideTopicVideoView = {
   youtubeId: string;
   startSeconds: number | null;
-  /** Named on screen only when the topic has more than one video. */
   device: GuideVideoDevice | null;
+  /**
+   * The app-pack key naming this video beside its siblings — its device's, or
+   * `GUIDE_TOPIC_VIDEO_LABELS`'. Drawn only when the topic has more than one.
+   */
+  labelKey: string | null;
 };
 
 /** At most one video per device the product installs on, and then some. */
@@ -283,6 +287,17 @@ export const GUIDE_VIDEO_DEVICE_LABEL: Record<GuideVideoDevice, string> = {
 };
 
 /**
+ * Two videos of one topic on the same device, named by the screen each one
+ * happens on, in the order `apps/videos/scripts/guides.mjs` lists them —
+ * without a name both read "Show me how". Existing labels only, so no new copy.
+ */
+export const GUIDE_TOPIC_VIDEO_LABELS: Record<string, readonly string[] | undefined> = {
+  manageDevices: ['settings.sectionFamilyChildrenTitle', 'settings.familyOtherDevices'],
+  locationSharing: ['deviceDetail.location', 'placeAlerts.title'],
+  webFilter: ['deviceDetail.webFilter', 'webFilter.requestsTitle'],
+};
+
+/**
  * A User Guide topic's videos, in order, or none.
  *
  * Same allowlist as a step's (YouTube ids only), and the same rule that none
@@ -297,7 +312,7 @@ export function resolveGuideTopicVideos(
     return [];
   }
   return list
-    .flatMap(video => {
+    .flatMap((video, index) => {
       const youtubeId = parseYoutubeId(video?.youtube);
       if (youtubeId === null) {
         return [];
@@ -307,7 +322,10 @@ export function resolveGuideTopicVideos(
         : null;
       const startSeconds =
         toStartSeconds(video.start) ?? parseYoutubeStart(video.youtube);
-      return [{ youtubeId, startSeconds, device }];
+      const labelKey = device
+        ? GUIDE_VIDEO_DEVICE_LABEL[device]
+        : (GUIDE_TOPIC_VIDEO_LABELS[topicId]?.[index] ?? null);
+      return [{ youtubeId, startSeconds, device, labelKey }];
     })
     .slice(0, MAX_TOPIC_VIDEOS);
 }

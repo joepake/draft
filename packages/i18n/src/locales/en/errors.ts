@@ -8,7 +8,8 @@ export const errors = {
   somethingWentWrong: 'Something went wrong. Try again.',
   accountDisabled:
     'This account has been disabled. Contact KidGate support to restore it.',
-  recentLoginRequired: 'For your security, sign in again, then try this once more.',
+  recentLoginRequired:
+    'For your security, sign out and sign in again, then try this once more.',
   accountExistsDifferentMethod:
     'This email already has an account with a different sign-in method. Sign in that way, then link this one in Settings.',
   unableToCreateAccount: 'Unable to create your account. Try again.',
@@ -25,7 +26,7 @@ export const errors = {
   unableToPollChildPairing: 'Unable to check the pairing status. Try again.',
   unableToConfirmChildPairing: 'Unable to confirm this pairing. Try again.',
   unableToRejectChildPairing: 'Unable to decline this pairing. Try again.',
-  photoCaptureCancelled: 'Photo capture was cancelled.',
+  photoCaptureCancelled: 'Photo capture was canceled.',
   unableToOpenCamera:
     'Unable to open the camera. Allow Camera access in device Settings.',
   noPhotoCaptured: 'No photo was captured.',
@@ -39,13 +40,12 @@ export const errors = {
   storageUploadUnauthorized:
     'Unable to upload the photo right now. Try again in a moment.',
   storageNotSetup: 'Unable to upload the photo right now. Try again in a moment.',
-  noNetworkConnection:
-    'No network connection. Check Wi‑Fi or mobile data and try again.',
+  noNetworkConnection: 'Unable to connect. Check your connection and try again.',
   connectionFailedTitle: 'Connection failed',
   reconnect: 'Reconnect',
   unableToUploadPhoto: 'Unable to upload the photo. Try again.',
   premiumSubscriptionRequired:
-    'This feature needs Premium. Every rule you set — limits, bedtime, app blocking, web filter, location and SOS — stays free.',
+    'This feature needs Premium. Daily Limit, Blocked Hours, Blocked Apps, App Limits, Device Lock, SOS, location, the Web Filter switch and SafeSearch stay free.',
   trialEndedCannotJoinFamily:
     'Your free trial has ended. Subscribe to Premium to join another family.',
   // Server-reported failures. Keyed from Cloud Functions error codes in
@@ -81,14 +81,15 @@ export const errors = {
   deviceClockOutOfRange:
     'The date and time on this device appear to be incorrect. Set them to update automatically.',
   locationSharingDisabled:
-    'Location sharing is turned off for this device. Turn it on in the device settings, then try again.',
+    'Location sharing is turned off for this device. Turn on “Share location”, then try again.',
   childDeviceNoPushToken:
     'This child device cannot receive requests yet. Open KidGate on the child device and allow Notifications.',
   unableToRequestLocation:
     'Unable to request an updated location right now. Try again.',
   unableToVerifyPurchase: 'Unable to verify that purchase. Try again in a moment.',
   noPurchasesToRestore: 'There are no purchases to restore on this account.',
-  noActiveSubscription: 'No active subscription was found for this account.',
+  noActiveSubscription:
+    'No active subscription was found. Sign in with the App Store or Google Play account you subscribed with, then try again.',
   unableToRestorePurchases: 'Unable to restore your purchases right now. Try again.',
   alreadyInFamily: 'You are already in this family.',
   leaveFamilyBeforeJoining: 'Leave your current family before joining another.',

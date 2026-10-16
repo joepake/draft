@@ -2,7 +2,7 @@ export const webHistory = {
   title: 'Web History',
   fallbackDeviceName: 'Child device',
   syncNote:
-    'Web history can take up to about 15 minutes to reach this screen — longer if the device has no internet connection or was closed unexpectedly.',
+    'Web history can arrive about 10 minutes late while you are looking at this screen, and up to 30 minutes late otherwise — longer if the device has no internet connection or was closed unexpectedly.',
   syncNoteTv:
     'This television only checks in periodically, so web history can take up to an hour to reach this screen — longer with no internet connection.',
   summarySites: 'Sites seen',
@@ -33,12 +33,16 @@ export const webHistory = {
   blockCategoryConfirmTitle: 'Block {{category}}?',
   blockCategoryConfirmBody:
     'Every site KidGate files under {{category}} will be refused on this device. You can turn it back off in Web Filter.',
+  blockCategoryConfirmBodyChild:
+    'Every site KidGate files under {{category}} will be refused on all of {{name}}’s devices. You can turn it back off in Web Filter.',
   blockCategoryConfirmAction: 'Block',
   blockCategoryDone: '{{category}} is now blocked.',
   unblockCategory: 'Unblock {{category}}',
   unblockCategoryConfirmTitle: 'Unblock {{category}}?',
   unblockCategoryConfirmBody:
     'Sites KidGate files under {{category}} will be reachable on this device again.',
+  unblockCategoryConfirmBodyChild:
+    'Sites KidGate files under {{category}} will be reachable on {{name}}’s devices again.',
   unblockCategoryConfirmAction: 'Unblock',
   unblockCategoryDone: '{{category}} is no longer blocked.',
   serviceSites: '{{count}} sites',
@@ -62,5 +66,5 @@ export const webHistory = {
   sourceNoteChild:
     'Combined from {{count}} devices. Each records only what its own filter can see.',
   filterOffNoteChild:
-    'Web filtering is off on every device, so new visits are not being recorded.',
+    'The Web Filter is off on every device, so new visits are not being recorded.',
 } as const;

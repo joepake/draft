@@ -17,13 +17,15 @@ export const macos = {
   headingRemovable: 'How removable this is',
 
   parentAccessBody:
-    'Enter the Parent PIN to choose which apps are blocked on this Mac.',
+    'Enter the Parent PIN to choose which apps are blocked on this device.',
   checking: 'Checking…',
 
   enforcing: 'Protection running',
   enforcingYes: 'Yes',
-  enforcingFailed: 'No — {{count}} checks in a row failed',
-  enforcingFailed_one: 'No — the last check failed',
+  // A standalone label: `childStatusLabel` hands it to the hero badge and the
+  // tray line, not to the "Protection running" row it once answered.
+  enforcingFailed: 'Protection interrupted · {{count}} checks in a row failed',
+  enforcingFailed_one: 'Protection interrupted · the last check failed',
 
   lockState: 'Device locked',
   lockStateNo: 'No',
@@ -156,11 +158,11 @@ export const macos = {
     'Appears in System Settings once the step above is approved.',
 
   setupStepLocationBody:
-    'Lets your family see where this device is. Nothing is shared until you turn Share location on.',
+    'Lets your family see where this device is. Nothing is shared until you turn on Share location in the KidGate app.',
 
   setupStepCameraTitle: 'Camera',
   setupStepCameraBody:
-    'Attaches a photo when your child sends an SOS or answers a check-in. No photo is taken now.',
+    'Attaches a photo when your child sends an SOS or answers a Check-In. No photo is taken now.',
 
   setupStepDone: 'Set up — nothing more to do here.',
   /*
@@ -271,7 +273,7 @@ export const macos = {
    */
   chooseApps: 'Choose apps to block',
   chooseAppsHint:
-    'Pick the apps to block on this Mac. A parent can turn blocking on and off from their phone.',
+    'Pick the apps to block on this device. A parent can turn blocking on and off from their phone.',
   saveSelection: 'Save',
-  noAppsFound: 'No apps found in the Applications folder.',
+  noAppsFound: 'No apps found on this device.',
 };

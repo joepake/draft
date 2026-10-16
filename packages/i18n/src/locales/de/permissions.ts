@@ -34,7 +34,7 @@ export const permissions = {
     'Schalte KidGate unter Autostart ein, damit der Schutz nach einem Neustart wieder startet.',
   oemAutostartHintSamsung: 'Wähle unter Akku die Grenzwerte für Hintergrundnutzung.',
   oemAutostartHintSamsungAdd:
-    'Öffne Nie inaktive Apps und füge KidGate hinzu. Fehlt KidGate in der Liste, ist es bereits erlaubt und dieser Schritt ist erledigt.',
+    'Öffne Nie inaktive Apps, wähle Hinzufügen und dann KidGate. Steht KidGate bereits in der Liste, ist dieser Schritt erledigt.',
   oemAutostartHintOppo: 'Erlaube KidGate unter Startup-Apps / Auto-Start.',
   oemAutostartHintVivo:
     'Erlaube KidGate unter Autostart / Hintergrund mit hoher Leistung.',
@@ -51,15 +51,15 @@ export const permissions = {
   accessibilityStepTurnOn:
     'Schalte den Regler ein und wähle dann in Androids Abfrage „Erlauben“.',
   restrictedSettingsStep:
-    'Ist der Schalter ausgegraut: Einstellungen › Apps › KidGate öffnen, auf das Menü ⋮ tippen und „Eingeschränkte Einstellungen zulassen“ wählen, dann hierher zurückkehren und es erneut versuchen.',
+    'Ist der Schalter ausgegraut, öffne Einstellungen → Apps → KidGate, tippe auf das Menü ⋮ und wähle „Eingeschränkte Einstellungen zulassen“. Kehre danach hierher zurück und versuche es erneut.',
   accessibilityWarningNote:
-    'Android warnt, dass KidGate deine Aktionen beobachten kann. Mit dieser Berechtigung sieht KidGate, welche App geöffnet ist, damit die Sperre im Vordergrund bleibt. Wenn angesehene Videos aufgezeichnet werden, liest KidGate außerdem Titel und Kanal jedes YouTube-Videos und sendet sie an deine Eltern. Diese Berechtigung liest keine Passwörter, Nachrichten oder Eingaben. Wenn deine Eltern Nachrichtenwarnungen einschalten, prüft eine zweite, separat angefragte Berechtigung die SMS und MMS, Chatnachrichten und Suchanfragen, die du tippst, und sendet deinen Eltern nur ein markiertes Wort oder einen markierten Ausdruck. Wenn KidGate abstürzt, wird ein Absturzprotokoll an das KidGate-Team gesendet, damit der Fehler behoben werden kann.',
+    'Android warnt, dass KidGate deine Aktionen beobachten kann. Mit dieser Berechtigung sieht KidGate, welche App geöffnet ist, damit die Sperre im Vordergrund bleibt. Wenn angesehene Videos aufgezeichnet werden, liest KidGate außerdem Titel und Kanal jedes YouTube-Videos und sendet sie an deine Eltern. Diese Berechtigung liest keine Passwörter, Nachrichten oder Eingaben. Wenn deine Eltern Nachrichtenwarnungen einschalten, prüft eine zweite, separat angefragte Berechtigung die SMS und MMS, Chatnachrichten und Suchanfragen, die du tippst, und sendet deinen Eltern nur ein markiertes Wort oder einen markierten Ausdruck. Wenn du das Mikrofon erlaubst, nimmt KidGate beim Senden eines SOS bis zu 15 Sekunden Ton auf und sendet ihn an deine Eltern. Wenn KidGate abstürzt, wird ein Absturzprotokoll an das KidGate-Team gesendet, damit der Fehler behoben werden kann.',
   accessibilityAgree: 'Zustimmen',
   accessibilityDecline: 'Ablehnen',
   accessibilityTvNote:
-    'Mit dieser Berechtigung sieht KidGate, welche App geöffnet ist, damit die Sperre im Vordergrund bleibt. Außerdem zählt KidGate, wie lange jede App genutzt wird, und sendet das an deine Eltern. Bildschirminhalte, Passwörter und Nachrichten liest KidGate nicht.',
+    'Mit dieser Berechtigung sieht KidGate, welche App geöffnet ist, damit die Sperre im Vordergrund bleibt, und zählt, wie lange jede App genutzt wird. KidGate sendet deinen Eltern diese Zeit, die auf diesem Fernseher installierten Apps, den Web-Browserverlauf (besuchte und blockierte Seiten) bei aktivem Webfilter sowie Titel und Kanal angesehener YouTube-Videos. Bildschirminhalte, Passwörter und Nachrichten liest KidGate nicht.',
   uninstallProtectionWizardBody:
-    'Verhindert, dass diese App ohne die Eltern-PIN deinstalliert wird. Android zeigt dazu einen eigenen Bestätigungsbildschirm an.',
+    'Erschwert das Entfernen von KidGate: Vor dem Deinstallieren muss dieser Schutz erst ausgeschaltet werden, und dabei wird ein Elternteil benachrichtigt. Android zeigt dazu einen eigenen Bestätigungsbildschirm an.',
   notificationsWizardBody:
     'Erlaube Benachrichtigungen, damit dieses Gerät Zeitfreigaben und Erinnerungen sofort erhält.',
   backgroundRefreshStepOpen: 'Öffne die KidGate-Seite in den Einstellungen.',

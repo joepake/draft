@@ -2,7 +2,7 @@ export const webHistory = {
   title: 'سجل الويب',
   fallbackDeviceName: 'جهاز الطفل',
   syncNote:
-    'قد يستغرق سجل الويب ما يصل إلى 15 دقيقة تقريبًا ليظهر في هذه الشاشة — وقتًا أطول إذا لم يكن الجهاز متصلاً بالإنترنت أو إذا أُغلق بشكل غير متوقع.',
+    'قد يصل سجل الويب متأخرًا بنحو 10 دقائق أثناء وجودك على هذه الشاشة، وبما يصل إلى 30 دقيقة في غير ذلك — وقتًا أطول إذا لم يكن الجهاز متصلاً بالإنترنت أو إذا أُغلق بشكل غير متوقع.',
   syncNoteTv:
     'يتصل هذا التلفاز بشكل دوري فقط، لذا قد يستغرق ظهور سجل الويب في هذه الشاشة حتى ساعة — وقتًا أطول في حال عدم وجود اتصال بالإنترنت.',
   summarySites: 'مواقع ظهرت',
@@ -31,12 +31,16 @@ export const webHistory = {
   blockCategoryConfirmTitle: 'حظر {{category}}؟',
   blockCategoryConfirmBody:
     'سيتم رفض كل موقع يصنّفه KidGate ضمن {{category}} على هذا الجهاز. يمكنك إيقاف ذلك من شاشة «فلتر الويب».',
+  blockCategoryConfirmBodyChild:
+    'سيتم رفض كل موقع يصنّفه KidGate ضمن {{category}} على أجهزة {{name}} كلها. يمكنك إيقاف ذلك من شاشة «فلتر الويب».',
   blockCategoryConfirmAction: 'حظر',
   blockCategoryDone: 'تم حظر {{category}}.',
   unblockCategory: 'رفع الحظر عن {{category}}',
   unblockCategoryConfirmTitle: 'رفع الحظر عن {{category}}؟',
   unblockCategoryConfirmBody:
     'ستعود المواقع التي يصنّفها KidGate ضمن {{category}} متاحة على هذا الجهاز.',
+  unblockCategoryConfirmBodyChild:
+    'ستعود المواقع التي يصنّفها KidGate ضمن {{category}} متاحة على أجهزة {{name}}.',
   unblockCategoryConfirmAction: 'رفع الحظر',
   unblockCategoryDone: 'تم رفع الحظر عن {{category}}.',
   serviceSites: '{{count}} موقع',
@@ -57,5 +61,5 @@ export const webHistory = {
   hoursEmpty: 'لا صفحات اليوم بعد.',
   sourceNoteChild: 'مدمج من {{count}} أجهزة. يسجّل كل جهاز ما يراه مرشحه فقط.',
   filterOffNoteChild:
-    'مرشح الويب متوقف على جميع الأجهزة، لذا لا تُسجَّل الزيارات الجديدة.',
+    'فلتر الويب متوقف على جميع الأجهزة، لذا لا تُسجَّل الزيارات الجديدة.',
 } as const;

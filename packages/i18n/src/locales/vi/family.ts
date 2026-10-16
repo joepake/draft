@@ -211,7 +211,7 @@ export const family = {
   deviceNotFoundError: 'Không tìm thấy thiết bị',
   deviceRemovedAlertTitle: 'Thiết bị đã bị gỡ',
   deviceRemovedAlertMessage:
-    'Bố mẹ đã gỡ thiết bị này khỏi tài khoản gia đình. Vui lòng chọn lại Đây là thiết bị của trẻ để kết nối lại.',
+    'Bố mẹ đã gỡ thiết bị này khỏi tài khoản gia đình. Để kết nối lại, hãy chọn “Đây là thiết bị của trẻ”.',
   deviceNotRegistered: 'Thiết bị này chưa được đăng ký.',
   defaultDeviceName: 'Thiết bị của trẻ',
   fallbackDeviceName: 'Thiết bị của trẻ',
@@ -242,8 +242,7 @@ export const family = {
   deviceSectionTitle: 'Thiết bị',
   deviceNameLabel: 'Tên thiết bị',
   editDeviceNameTitle: 'Đổi tên thiết bị',
-  editDeviceNameSubtitle:
-    'Chỉ chủ gia đình mới có thể đổi tên thiết bị. Tối đa {{maxLength}} ký tự.',
+  editDeviceNameSubtitle: 'Đặt tên dễ nhận biết. Tối đa {{maxLength}} ký tự.',
   deviceNameInputLabel: 'Tên thiết bị',
   deviceNamePlaceholder: 'iPhone của Na',
   unableToUpdateDeviceName: 'Không thể cập nhật tên thiết bị. Vui lòng thử lại.',
@@ -255,6 +254,8 @@ export const family = {
   timeRequestsWaiting: '{{count}} yêu cầu thêm giờ đang chờ',
   youPausedThisDevice: 'Bạn đã khóa thiết bị này',
   lockSentWaitingForDevice: 'Đã gửi lệnh khóa — đang chờ thiết bị',
+  lockDelayedOnDevice:
+    'Lệnh khóa và mở khóa có thể mất tới {{minutes}} phút mới đến thiết bị này.',
   lockNotAppliedOnDevice: 'Thiết bị này chưa áp dụng lệnh khóa',
   blockedHoursActiveNow: 'Đang trong Giờ khóa thiết bị',
   inactiveOpenKidGate: 'Không hoạt động — vui lòng mở KidGate trên thiết bị này',

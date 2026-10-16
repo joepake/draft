@@ -36,6 +36,7 @@ import { webFilter as enWebFilter } from './locales/en/webFilter';
 import { usage as enUsage } from './locales/en/usage';
 import { webHistory as enWebHistory } from './locales/en/webHistory';
 import { pin as enPin } from './locales/en/pin';
+import { webSignIn as enWebSignIn } from './locales/en/webSignIn';
 import { translateIn, type LocaleTree } from './translateIn';
 import type { TranslationParams } from './types';
 
@@ -224,6 +225,9 @@ export interface ActivityFeedPack extends LocaleTree {
   /** A child device locked out of the Parent PIN, and the reset any parent
    *  may make — `unlockChildPinTitle` and its toasts, on both consoles. */
   pin: unknown;
+  /** Only the browsers list (`sessions*`, `thisBrowser`, `revokedToast`,
+   *  `revokeFailed`) is read from here — the sign-in screens stay the phone's. */
+  webSignIn: unknown;
 }
 
 /**
@@ -268,6 +272,7 @@ const en: ActivityFeedPack = {
   usage: enUsage,
   webHistory: enWebHistory,
   pin: enPin,
+  webSignIn: enWebSignIn,
 };
 
 /** The namespaces a feed row can name. Anything outside them falls to `en`. */
@@ -346,6 +351,11 @@ const NAMESPACES = [
      family parent clear it, and the dashboard offers that in its attention
      list with the sentences the phone already says. */
   'pin',
+  /* The list of browsers that can make changes, in the Family section's
+     Parents tab. The phone's Family screen says the same rows; the sign-in
+     screens in this namespace are the phone's alone and the dashboard never
+     draws them. */
+  'webSignIn',
 ] as const;
 
 type Namespace = (typeof NAMESPACES)[number];
@@ -407,6 +417,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     childReport: () => import('./locales/ar/childReport'),
     webHistory: () => import('./locales/ar/webHistory'),
     pin: () => import('./locales/ar/pin'),
+    webSignIn: () => import('./locales/ar/webSignIn'),
   },
   de: {
     activities: () => import('./locales/de/activities'),
@@ -446,6 +457,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     childReport: () => import('./locales/de/childReport'),
     webHistory: () => import('./locales/de/webHistory'),
     pin: () => import('./locales/de/pin'),
+    webSignIn: () => import('./locales/de/webSignIn'),
   },
   es: {
     activities: () => import('./locales/es/activities'),
@@ -485,6 +497,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     childReport: () => import('./locales/es/childReport'),
     webHistory: () => import('./locales/es/webHistory'),
     pin: () => import('./locales/es/pin'),
+    webSignIn: () => import('./locales/es/webSignIn'),
   },
   fr: {
     activities: () => import('./locales/fr/activities'),
@@ -524,6 +537,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     childReport: () => import('./locales/fr/childReport'),
     webHistory: () => import('./locales/fr/webHistory'),
     pin: () => import('./locales/fr/pin'),
+    webSignIn: () => import('./locales/fr/webSignIn'),
   },
   hi: {
     activities: () => import('./locales/hi/activities'),
@@ -563,6 +577,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     childReport: () => import('./locales/hi/childReport'),
     webHistory: () => import('./locales/hi/webHistory'),
     pin: () => import('./locales/hi/pin'),
+    webSignIn: () => import('./locales/hi/webSignIn'),
   },
   id: {
     activities: () => import('./locales/id/activities'),
@@ -602,6 +617,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     childReport: () => import('./locales/id/childReport'),
     webHistory: () => import('./locales/id/webHistory'),
     pin: () => import('./locales/id/pin'),
+    webSignIn: () => import('./locales/id/webSignIn'),
   },
   it: {
     activities: () => import('./locales/it/activities'),
@@ -641,6 +657,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     childReport: () => import('./locales/it/childReport'),
     webHistory: () => import('./locales/it/webHistory'),
     pin: () => import('./locales/it/pin'),
+    webSignIn: () => import('./locales/it/webSignIn'),
   },
   ja: {
     activities: () => import('./locales/ja/activities'),
@@ -680,6 +697,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     childReport: () => import('./locales/ja/childReport'),
     webHistory: () => import('./locales/ja/webHistory'),
     pin: () => import('./locales/ja/pin'),
+    webSignIn: () => import('./locales/ja/webSignIn'),
   },
   ko: {
     activities: () => import('./locales/ko/activities'),
@@ -719,6 +737,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     childReport: () => import('./locales/ko/childReport'),
     webHistory: () => import('./locales/ko/webHistory'),
     pin: () => import('./locales/ko/pin'),
+    webSignIn: () => import('./locales/ko/webSignIn'),
   },
   pt: {
     activities: () => import('./locales/pt/activities'),
@@ -758,6 +777,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     childReport: () => import('./locales/pt/childReport'),
     webHistory: () => import('./locales/pt/webHistory'),
     pin: () => import('./locales/pt/pin'),
+    webSignIn: () => import('./locales/pt/webSignIn'),
   },
   ru: {
     activities: () => import('./locales/ru/activities'),
@@ -797,6 +817,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     childReport: () => import('./locales/ru/childReport'),
     webHistory: () => import('./locales/ru/webHistory'),
     pin: () => import('./locales/ru/pin'),
+    webSignIn: () => import('./locales/ru/webSignIn'),
   },
   tr: {
     activities: () => import('./locales/tr/activities'),
@@ -836,6 +857,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     childReport: () => import('./locales/tr/childReport'),
     webHistory: () => import('./locales/tr/webHistory'),
     pin: () => import('./locales/tr/pin'),
+    webSignIn: () => import('./locales/tr/webSignIn'),
   },
   vi: {
     activities: () => import('./locales/vi/activities'),
@@ -875,6 +897,7 @@ const IMPORTS: Record<Exclude<AppLanguage, 'en'>, NamespaceImports> = {
     childReport: () => import('./locales/vi/childReport'),
     webHistory: () => import('./locales/vi/webHistory'),
     pin: () => import('./locales/vi/pin'),
+    webSignIn: () => import('./locales/vi/webSignIn'),
   },
 };
 

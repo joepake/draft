@@ -24,6 +24,16 @@ export interface DocSnapshot<T = DocData> {
    * server. An implementation with no cache reports false.
    */
   fromCache: boolean;
+  /**
+   * True while this client's own write to the document is not yet confirmed.
+   *
+   * Load-bearing too: on a document the client has never had from the server,
+   * a merge write is delivered to an attached listener as the whole document —
+   * only the written fields, `exists` true. Measured 2026-10-14 on the JS SDK;
+   * `agent/controlsSync` applied one as a device's policy. An implementation
+   * with no local writes reports false.
+   */
+  hasPendingWrites: boolean;
 }
 
 export interface QuerySnapshot<T = DocData> {

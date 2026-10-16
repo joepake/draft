@@ -116,6 +116,13 @@ export interface DeviceCapabilities {
    *   someone to approve it in System Settings.
    * - `configurationDisabled` — approved, and *Filter Network Content* has been
    *   switched off for this app.
+   * - `privateDns` — **a phone only**: the VPN is up and a custom Private DNS
+   *   provider resolves around it, so the filter runs and sees nothing. Its own
+   *   value because the fix is a different setting from the VPN's, and
+   *   "switched off" over a running VPN sent a parent looking for a switch that
+   *   was on. A parent app older than 2026-10-15 reads an unknown value as no
+   *   blocker at all, which is the "Protected over a bypassed filter" failure
+   *   until it updates.
    *
    * **Absent means there is nothing to tell them**, not that the filter works:
    * read `webFilter` for that. A build carrying no extension sets nothing here,
@@ -126,18 +133,27 @@ export interface DeviceCapabilities {
    * **An Android phone publishes this field alone**, with no `webFilter` beside
    * it (`@kidgate/core/domain/webFilterSupport.vpnWebFilterBlocker`, since
    * 2026-09-25): VPN consent not accepted is `awaitingApproval`, a VPN that is
-   * down or bypassed by Private DNS is `configurationDisabled`. The phone's
+   * down is `configurationDisabled`, one bypassed by Private DNS is
+   * `privateDns` (2026-10-15; both were `configurationDisabled` before). The phone's
    * filter is still assumed from its platform, so there it names a fault for
    * the parent's summary without closing the Web Filter card. **An iPhone**
    * writes the same field from its tunnel's state and `webFilter: 'vpn'`
    * beside it (2026-10-04) — the one probe field a phone publishes, because an
    * iPhone without the tunnel is a genuinely smaller filter.
    */
-  webFilterBlocker?: 'awaitingApproval' | 'configurationDisabled';
+  webFilterBlocker?: 'awaitingApproval' | 'configurationDisabled' | 'privateDns';
   schedule: boolean;
   dailyLimit: boolean;
   /** Can present a full-screen lock the child cannot dismiss. */
   lock: boolean;
+  /**
+   * The longest a parent's Lock, Unlock or rule change can take to reach this
+   * device, in minutes, when it has no push channel and waits for its own
+   * check-in — an Android TV box with no Play Services, so no FCM. The parent's
+   * device screen says so under the Lock button. **Absent is "by push, within
+   * seconds" or unknown**; no device publishes a number it does not wait.
+   */
+  remoteCommandDelayMinutes?: number;
   appInstallAlerts: boolean;
   /**
    * The device can watch message notifications and raise an alert when a

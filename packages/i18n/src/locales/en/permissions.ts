@@ -31,7 +31,7 @@ export const permissions = {
     'In Autostart, turn KidGate on so protection restarts after a reboot.',
   oemAutostartHintSamsung: 'In Battery, select Background usage limits.',
   oemAutostartHintSamsungAdd:
-    'Open Never sleeping apps and add KidGate. If KidGate is not on that list it is already allowed, and this step is done.',
+    'Open Never sleeping apps, select Add, then choose KidGate. If KidGate is already on the list, this step is done.',
   oemAutostartHintOppo: 'In Startup apps / Auto-launch, allow KidGate.',
   oemAutostartHintVivo: 'In Autostart / Background high power, allow KidGate.',
   oemAutostartHintHuawei:
@@ -47,18 +47,25 @@ export const permissions = {
   accessibilityStepTurnOn:
     'Turn the switch on, then select Allow on Android’s confirmation.',
   restrictedSettingsStep:
-    'If the switch is greyed out, open Settings › Apps › KidGate, select the ⋮ menu and choose “Allow restricted settings”, then return here and try again.',
+    'If the switch is grayed out, open Settings → Apps → KidGate, select the ⋮ menu and choose “Allow restricted settings”, then return here and try again.',
   // Play's prominent disclosure for the lock helper. It must name every data
   // type the app declares, the typing service's included (rejected 2026-10-09
   // for leaving out SMS/MMS, in-app messages, search history and crash logs).
+  // The SOS sound sentence names Data safety's "Voice or sound recordings",
+  // declared 2026-10-14 for the SOS clip, before a reviewer asks for it.
   accessibilityWarningNote:
-    'Android warns that KidGate can observe your actions. With this permission KidGate sees which app is open, so the lock can stay on top. When watched videos are recorded, it also reads the title and channel of each YouTube video and sends them to your parent. This permission does not read passwords, messages or what you type. If your parent turns on Message Alerts, a second permission, asked for separately, checks the text messages (SMS and MMS), chat messages and searches you type, and sends your parent only a flagged word or phrase. If KidGate crashes, a crash log is sent to the KidGate team so the problem can be fixed.',
+    'Android warns that KidGate can observe your actions. With this permission KidGate sees which app is open, so the lock can stay on top. When watched videos are recorded, it also reads the title and channel of each YouTube video and sends them to your parent. This permission does not read passwords, messages or what you type. If your parent turns on Message Alerts, a second permission, asked for separately, checks the text messages (SMS and MMS), chat messages and searches you type, and sends your parent only a flagged word or phrase. If you allow the microphone, KidGate records up to 15 seconds of sound when you send an SOS and sends it to your parent. If KidGate crashes, a crash log is sent to the KidGate team so the problem can be fixed.',
   accessibilityAgree: 'Agree',
   accessibilityDecline: 'Disagree',
+  // apps/tv's prominent disclosure. Names every type the TV uploads (app time,
+  // installed apps, web browsing history, YouTube titles) — the phone's 10-09
+  // rejection was a type missing here. No crash logs: the TV has no Crashlytics.
+  // It shares the setup screen's unscrolled slot with `vpnDisclosureNote`, so each
+  // locale stays no longer than its own copy of that note.
   accessibilityTvNote:
-    'With this permission KidGate sees which app is open, so the lock can stay on top. It also counts how long each app is used and sends that to your parent. It does not read what is on the screen, passwords or messages.',
+    'With this permission KidGate sees which app is open, so the lock can stay on top, and counts how long each app is used. KidGate sends your parent that time, the apps installed on this TV, its web browsing history (sites visited and blocked) while the Web Filter is on, and the title and channel of YouTube videos watched. It does not read what is on the screen, passwords or messages.',
   uninstallProtectionWizardBody:
-    'Stops this app from being uninstalled without the Parent PIN. Android shows its own confirmation screen.',
+    'Makes KidGate harder to remove: uninstalling it means turning this off first, and a parent is alerted when that happens. Android shows its own confirmation screen.',
   notificationsWizardBody:
     'Allow notifications so this device gets time approvals and reminders right away.',
   backgroundRefreshStepOpen: 'Open the KidGate page in Settings.',

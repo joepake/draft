@@ -89,6 +89,6 @@ export const blockedApps = {
   wizardStepChoose: 'Apri App bloccate in Blocco delle app, seleziona le app e salva.',
   pickerSubtitle: 'Scegli le app e le categorie da bloccare su questo dispositivo.',
   pickerSubtitleAndroid:
-    'Le app spuntate non si possono aprire finché il Blocco delle app è attivo.',
+    'Mentre il Blocco delle app è attivo, le app spuntate vengono chiuse appena si aprono.',
   pickerEmpty: 'Nessuna app trovata su questo dispositivo.',
 } as const;

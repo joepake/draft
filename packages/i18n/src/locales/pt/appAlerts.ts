@@ -4,6 +4,7 @@ export const appAlerts = {
   heroSubtitle:
     'O KidGate monitora instalações e desinstalações de apps neste dispositivo e as registra em Atividades.',
   statusOn: 'Monitoramento ativo',
+  statusInventory: 'Lista os apps instalados',
   statusOff: 'Indisponível',
   emptyTitle: 'Nenhuma mudança de app ainda',
   emptySubtitle:
@@ -14,6 +15,16 @@ export const appAlerts = {
   infoLine2:
     'Os pais recebem uma notificação push sempre que um app é instalado ou removido.',
   infoLine3: 'Revise a lista aqui e bloqueie apps de risco em Apps bloqueados.',
+  heroTitleExtension: 'Acompanhe instalações e remoções de extensões',
+  heroSubtitleExtension:
+    'O KidGate monitora instalações e remoções de extensões no perfil do Chrome em que está instalado e as registra em Atividades.',
+  emptyTitleExtension: 'Nenhuma mudança de extensão ainda',
+  emptySubtitleExtension:
+    'Quando a criança instalar ou remover uma extensão do Chrome, o evento aparecerá aqui e em Atividades.',
+  infoLine1Extension:
+    'A extensão do KidGate informa quando outras extensões são instaladas ou removidas no Chrome.',
+  infoLine2Extension:
+    'Os pais recebem uma notificação push sempre que uma extensão é instalada ou removida.',
   recentTitle: 'Mudanças recentes',
   statInstalled: 'Instalado',
   statRemoved: 'Removido',

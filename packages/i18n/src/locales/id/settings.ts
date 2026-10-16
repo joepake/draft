@@ -41,7 +41,7 @@ export const settings = {
   accountLinkCredentialInUse:
     'Email atau penyedia ini sudah digunakan oleh akun KidGate lain.',
   accountLinkRequiresRecentLogin:
-    'Demi keamanan, silakan keluar lalu masuk lagi sebelum menautkan metode ini.',
+    'Demi keamanan Anda, keluar lalu masuk lagi, kemudian coba sekali lagi.',
   accountLinkActionLink: 'Tautkan',
   accountLinkActionUnlink: 'Lepas tautan',
   accountLinkActionVerify: 'Verifikasi',
@@ -96,20 +96,22 @@ export const settings = {
     'Anda akan keluar dari sesi orang tua ini dan kembali ke pemilihan Orang Tua / Anak. Masuk lagi untuk mengelola perangkat. Akun, keluarga, dan perangkat anak Anda tidak akan berubah.',
   removeParentDeviceAlertTitle: 'Hapus perangkat orang tua?',
   removeParentDeviceAlertMessage:
-    '{{deviceName}} akan dikeluarkan dari akun ini dan berhenti menerima notifikasi. Siapa pun yang memegangnya dapat masuk lagi dengan kata sandi.',
+    '{{deviceName}} akan dikeluarkan dari akun ini dan berhenti menerima notifikasi. Siapa pun yang memegangnya dapat masuk lagi.',
   toastParentDeviceRemoved: '{{deviceName}} dihapus.',
   signedOutByAnotherDevice:
     'Perangkat ini telah dikeluarkan dari akun orang tua melalui perangkat lain. Masuk lagi untuk melanjutkan.',
   deleteAccountTitle: 'Hapus akun',
   deleteAccountSubtitleDefault: 'Hapus permanen akun dan semua data Anda',
-  deleteAccountAlertTitle: 'Hapus akun secara permanen?',
+  deleteAccountSubtitleMember:
+    'Hapus permanen informasi masuk dan pengaturan Anda sendiri. Keluarga tetap ada.',
+  deleteAccountAlertTitle: 'Jadwalkan penghapusan akun?',
   deleteAccountAlertMessage:
     'Ini menjadwalkan penghapusan akun keluarga Anda. Belum ada yang dihapus — Anda bisa masuk dan membatalkan kapan saja sebelum tanggal penghapusan. Setelah itu, semua data (perangkat, aktivitas, riwayat lokasi, foto SOS) dihapus permanen untuk semua orang tua dan anak.',
   deleteAccountAlertMessageMember:
     'Ini menjadwalkan penghapusan akun Anda sendiri. Belum ada yang dihapus — Anda bisa masuk dan membatalkan kapan saja sebelum tanggal penghapusan. Setelah itu, akses masuk dan pengaturan pribadi Anda dihapus. Keluarga, perangkatnya, dan orang tua lainnya tidak terpengaruh.',
   deleteAccountSubscriptionNotice:
     'Menghapus akun tidak membatalkan langganan. Batalkan langganan di App Store atau Google Play.',
-  sendRequestButton: 'Hapus permanen',
+  sendRequestButton: 'Jadwalkan penghapusan',
   toastDeletionAlreadyPending: 'Penghapusan akun sudah sedang berlangsung.',
   toastDeletionRequestFailed:
     'Penghapusan akun tidak dapat dimulai. Silakan coba lagi.',

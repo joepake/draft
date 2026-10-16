@@ -6,7 +6,7 @@ export const trial = {
     'Wenn die Testphase endet, sendet nur {{keeps}} von deinen {{using}} Geräten weiter Berichte und nimmt Regeländerungen an. Die übrigen behalten ihre aktuellen Regeln, die du nur noch lockern, aber nicht verschärfen kannst.',
   trialBannerTitle: 'Testphase · {{remaining}}',
   trialUrgentBody:
-    'Deine Testphase endet bald. Abonniere Premium für {{price}}/Monat, damit nichts unterbrochen wird.',
+    'Deine Testphase endet bald. Jede Regel funktioniert im Gratis-Tarif weiter. Abonniere Premium für {{price}}/Monat, um Live-Aktivität, Verlauf und Berichte zu behalten.',
   trialNormalBody:
     'Gefällt dir KidGate? Abonniere Premium für {{price}}/Monat und behalte den vollen Umfang nach der Testphase.',
   impactTitle: 'Letzter Tag deiner Testphase',
@@ -29,5 +29,5 @@ export const trial = {
   impactAppInstalled_one: 'Eine neue App am Tag ihres Auftauchens entdeckt',
   impactSos: '{{count}} SOS-Warnungen direkt an dich übermittelt',
   impactSos_one: 'Eine SOS-Warnung direkt an dich übermittelt',
-  impactKeepButton: 'Diesen Schutz behalten',
+  impactKeepButton: 'Premium ansehen',
 } as const;

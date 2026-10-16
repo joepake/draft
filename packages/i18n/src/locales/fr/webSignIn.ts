@@ -21,7 +21,7 @@ export const webSignIn = {
   // "later", and it must not read like it.
   confirmTitle: 'Autoriser ce navigateur ?',
   confirmBody:
-    'Il aura le même contrôle que ce téléphone : voir où sont vos enfants, modifier les limites, verrouiller les appareils et approuver les demandes. N’autorisez que si c’est bien vous qui vous connectez.',
+    'Il aura le même contrôle que ce téléphone : voir où sont vos enfants, modifier les limites, verrouiller les appareils et approuver les demandes. Il pourra effectuer des modifications pendant 7 jours, et vous pouvez le retirer à tout moment dans Famille → Parents. N’autorisez que si c’est bien vous qui vous connectez.',
   confirmCodeLabel: 'Code affiché sur votre ordinateur',
   approveButton: 'Autoriser',
   declineButton: 'Ne pas autoriser',
@@ -37,6 +37,21 @@ export const webSignIn = {
     'Ce code a déjà été utilisé. Affichez-en un nouveau sur votre ordinateur.',
   notFound: 'Ce code n’est pas valide. Vérifiez les six caractères et réessayez.',
   failed: 'Impossible de terminer la demande. Veuillez réessayer.',
-
-  // Revocation screen (server side already ships; app screen is pending).
+  sessionsTitle: 'Navigateurs pouvant effectuer des modifications',
+  sessionsHint:
+    'Ces navigateurs sont connectés au tableau de bord web avec votre compte et peuvent effectuer des modifications. Un navigateur qui ne fait qu’afficher votre famille n’apparaît pas ici.',
+  sessionsEmpty:
+    'Aucun navigateur ne peut effectuer de modifications. Quand vous en autorisez un, il apparaît ici.',
+  sessionRow: '{{browser}} sur {{os}}',
+  sessionRowUnknown: 'Navigateur web',
+  sessionExpires: 'Peut effectuer des modifications jusqu’au {{date}}',
+  sessionViaQr: 'Autorisé avec un code QR',
+  sessionViaPin: 'Autorisé avec le code PIN parent',
+  thisBrowser: 'Ce navigateur',
+  sessionsRevoke: 'Retirer',
+  sessionsRevokeConfirmTitle: 'Retirer ce navigateur ?',
+  sessionsRevokeConfirmBody:
+    'Il ne pourra plus modifier les réglages ni contrôler les appareils. Jusqu’à la date indiquée, il peut encore modifier quelques détails des appareils, comme un nom. Il peut toutefois encore afficher les informations de votre famille, jusqu’à ce que quelqu’un s’y déconnecte.',
+  revokedToast: 'Navigateur retiré.',
+  revokeFailed: 'Impossible de retirer ce navigateur. Réessayez.',
 } as const;

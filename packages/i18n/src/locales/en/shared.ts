@@ -1,4 +1,6 @@
 export const shared = {
+  // A retry button any surface may draw, child or parent — neutral on purpose.
+  tryAgain: 'Try again',
   // Short duration labels for countdowns (e.g. time-request cooldown).
   durationMinutesShort: '{{minutes}} min',
   durationHoursShort: '{{hours}} hr',

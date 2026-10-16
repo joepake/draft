@@ -8,7 +8,8 @@ export const errors = {
   somethingWentWrong: 'Đã có lỗi xảy ra. Vui lòng thử lại.',
   accountDisabled:
     'Tài khoản này đã bị vô hiệu hóa. Vui lòng liên hệ bộ phận hỗ trợ KidGate để khôi phục.',
-  recentLoginRequired: 'Để bảo mật, vui lòng đăng nhập lại rồi thử lại thao tác này.',
+  recentLoginRequired:
+    'Để bảo mật, vui lòng đăng xuất và đăng nhập lại, rồi thử lại thao tác này.',
   accountExistsDifferentMethod:
     'Email này đã có tài khoản với cách đăng nhập khác. Vui lòng đăng nhập bằng cách đó, rồi liên kết cách này trong Cài đặt.',
   unableToCreateAccount: 'Không thể tạo tài khoản. Vui lòng thử lại.',
@@ -36,13 +37,12 @@ export const errors = {
   storageUploadUnauthorized:
     'Không thể tải ảnh lên vào lúc này. Vui lòng thử lại sau ít phút.',
   storageNotSetup: 'Không thể tải ảnh lên vào lúc này. Vui lòng thử lại sau ít phút.',
-  noNetworkConnection:
-    'Không có kết nối mạng. Vui lòng kiểm tra Wi‑Fi hoặc dữ liệu di động rồi thử lại.',
+  noNetworkConnection: 'Không thể kết nối. Vui lòng kiểm tra kết nối mạng rồi thử lại.',
   connectionFailedTitle: 'Kết nối không thành công',
   reconnect: 'Kết nối lại',
   unableToUploadPhoto: 'Không thể tải ảnh lên. Vui lòng thử lại.',
   premiumSubscriptionRequired:
-    'Tính năng này cần gói Premium. Mọi quy tắc bạn đặt — giới hạn, giờ khóa, chặn ứng dụng, chặn nội dung web, vị trí và SOS — vẫn miễn phí.',
+    'Tính năng này cần gói Premium. Giới hạn hằng ngày, Giờ khóa thiết bị, Chặn ứng dụng, Giới hạn ứng dụng, Khóa thiết bị, SOS, vị trí, công tắc Chặn nội dung web và tìm kiếm an toàn vẫn miễn phí.',
   trialEndedCannotJoinFamily:
     'Thời gian dùng thử đã kết thúc. Vui lòng đăng ký Premium để tham gia gia đình khác.',
   // Lỗi do server trả về. Khớp theo mã lỗi Cloud Functions trong
@@ -78,14 +78,15 @@ export const errors = {
   deviceClockOutOfRange:
     'Ngày giờ trên thiết bị này có vẻ không chính xác. Vui lòng mở Cài đặt → Ngày và giờ rồi bật đặt giờ tự động.',
   locationSharingDisabled:
-    'Thiết bị này đang tắt chia sẻ vị trí. Vui lòng bật lại trong cài đặt thiết bị rồi thử lại.',
+    'Thiết bị này đang tắt chia sẻ vị trí. Vui lòng bật “Chia sẻ vị trí” rồi thử lại.',
   childDeviceNoPushToken:
     'Thiết bị của trẻ chưa thể nhận yêu cầu. Vui lòng mở KidGate trên thiết bị của trẻ và cấp quyền Thông báo.',
   unableToRequestLocation:
     'Không thể yêu cầu cập nhật vị trí vào lúc này. Vui lòng thử lại.',
   unableToVerifyPurchase: 'Không thể xác minh giao dịch. Vui lòng thử lại sau ít phút.',
   noPurchasesToRestore: 'Tài khoản này không có giao dịch nào để khôi phục.',
-  noActiveSubscription: 'Không tìm thấy gói đăng ký đang hoạt động cho tài khoản này.',
+  noActiveSubscription:
+    'Không tìm thấy gói đăng ký đang hoạt động. Vui lòng đăng nhập đúng tài khoản App Store hoặc Google Play đã dùng để đăng ký, rồi thử lại.',
   unableToRestorePurchases:
     'Không thể khôi phục giao dịch vào lúc này. Vui lòng thử lại.',
   alreadyInFamily: 'Bạn đã ở trong gia đình này.',

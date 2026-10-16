@@ -7,7 +7,7 @@ export const controls = {
   quickPresets: 'Hızlı seçenekler',
   presetMinutes: '{{minutes}} dk',
   customMinutes: 'Özel dakika',
-  dailyLimitEnterAtLeastMinutes: 'En az {{min}} dakika gir.',
+  dailyLimitEnterAtLeastMinutes: 'En az {{count}} dakika gir.',
   dailyLimitMaxMinutes: 'Günlük sınır en fazla {{max}} dakika (24 saat) olabilir.',
   rulesSectionTitle: 'Ebeveynlerinin kuralları',
   rulesSectionDescription: 'Ebeveynlerinin bu cihaz için belirlediği kurallar.',

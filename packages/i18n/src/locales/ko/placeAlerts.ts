@@ -23,10 +23,10 @@ export const placeAlerts = {
   radiusLabel: '알림 반경',
   radiusValue: '{{meters}} m',
   radiusHint:
-    '이 장소로 인정되려면 기기가 얼마나 가까워야 하는지입니다. 기기의 위치 오차보다 작은 반경은 더 정확한 것이 아니라 무작위로 알립니다.',
+    '이 장소로 인정되려면 기기가 얼마나 가까워야 하는지입니다. 반경을 기기의 위치 오차보다 작게 해도 알림이 더 정확해지지 않으며, 도착이나 출발 알림이 오지 않을 수 있습니다.',
   radiusAccuracyHint: '이 기기는 여기에서 위치를 약 ±{{accuracy}} m 오차로 보고합니다.',
   radiusBelowAccuracy:
-    '여기에서 기기의 정확도는 약 ±{{accuracy}} m뿐입니다. {{minimum}} m 이상으로 설정하세요. 그렇지 않으면 이 장소는 무작위로 알립니다.',
+    '여기에서 이 기기의 정확도는 약 ±{{accuracy}} m뿐입니다. {{minimum}} m 이상으로 설정하세요. 그렇지 않으면 이곳의 도착이나 출발 알림이 오지 않을 수 있습니다.',
   radiusDecrease: '반경 줄이기',
   radiusIncrease: '반경 늘리기',
   notifyEnterLabel: '도착 시 알림',
@@ -51,7 +51,7 @@ export const placeAlerts = {
   duplicateNameToast: '이 이름의 장소가 이미 있습니다.',
   samePinToast: '“{{name}}”과(와) 같은 지점입니다. 지도를 드래그하여 핀을 옮기세요.',
   overlapWarning:
-    '“{{name}}”이(가) {{meters}} m 떨어져 있고 그 범위가 여기까지 닿습니다. 기기가 두 곳에 모두 있을 때는 더 가까운 곳만 알립니다. 그대로 두려면 다시 저장하세요.',
+    '“{{name}}”이(가) {{meters}} m 떨어져 있고 두 원이 겹칩니다. 기기가 두 곳에 모두 있을 때는 더 가까운 곳만 알립니다. 그대로 두려면 다시 저장하세요.',
   savedToast: '장소를 저장했습니다.',
   updatedToast: '장소를 업데이트했습니다.',
   removedToast: '장소를 삭제했습니다.',

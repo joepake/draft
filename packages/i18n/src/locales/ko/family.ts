@@ -270,7 +270,7 @@ export const family = {
   deviceRemovedAlertTitle: '기기가 삭제되었어요',
 
   deviceRemovedAlertMessage:
-    '부모님이 이 기기를 가족 계정에서 삭제했어요. 다시 연결하려면 자녀 역할을 다시 선택하세요.',
+    '부모님이 이 기기를 가족 계정에서 삭제했어요. 다시 연결하려면 “자녀 기기입니다”를 선택하세요.',
 
   deviceNotRegistered: '이 기기는 아직 등록되지 않았어요.',
 
@@ -327,7 +327,7 @@ export const family = {
   editDeviceNameTitle: '기기 이름 변경',
 
   editDeviceNameSubtitle:
-    '가족 소유자만 기기 이름을 변경할 수 있습니다. 최대 {{maxLength}}자까지 가능합니다.',
+    '부모가 바로 알아볼 수 있는 이름을 정하세요. 최대 {{maxLength}}자까지 가능합니다.',
 
   deviceNameInputLabel: '기기 이름',
 
@@ -352,6 +352,8 @@ export const family = {
   youPausedThisDevice: '이 기기를 잠갔습니다',
 
   lockSentWaitingForDevice: '잠금을 보냈습니다 — 기기 응답 대기 중',
+  lockDelayedOnDevice:
+    '이 기기에서는 잠금과 잠금 해제가 반영되기까지 최대 {{minutes}}분이 걸릴 수 있습니다.',
 
   lockNotAppliedOnDevice: '이 기기가 잠금을 적용하지 않았습니다',
 

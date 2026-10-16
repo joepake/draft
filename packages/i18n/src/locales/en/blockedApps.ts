@@ -81,10 +81,11 @@ export const blockedApps = {
   noAppsSelected: 'No apps were selected.',
   unableToOpenAppPicker: 'Unable to open the app picker. Try again.',
   wizardStepPin: 'Enter the Parent PIN when Settings asks.',
-  wizardStepChoose: 'Open Blocked Apps under App Blocking, tick the apps, and save.',
+  wizardStepChoose: 'Open Blocked Apps under App Blocking, select the apps, and save.',
   pickerSubtitle: 'Choose the apps and categories to block on this device.',
   // Android's own picker (`KidGateAppPickerActivity`) lists apps only, so it
   // cannot say categories the way iOS's `pickerSubtitle` does.
-  pickerSubtitleAndroid: 'Ticked apps cannot open while App Blocking is on.',
+  pickerSubtitleAndroid:
+    'Ticked apps are closed as soon as they open while App Blocking is on.',
   pickerEmpty: 'No apps found on this device.',
 } as const;

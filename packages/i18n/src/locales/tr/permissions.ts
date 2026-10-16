@@ -2,12 +2,12 @@ export const permissions = {
   cameraPermissionRequired: 'Bu özellik için kamera erişimi gerekir.',
   allowCameraTitle: 'Kameraya izin ver',
   cameraPermissionMessage:
-    'KidGate, SOS ve Check-In ile hızlı bir fotoğraf gönderebilmeniz için kamerayı kullanır.',
+    'KidGate, SOS ve Check-In ile hızlıca bir fotoğraf gönderebilmen için kamerayı kullanır.',
   allow: 'İzin ver',
   notNow: 'Şimdi değil',
   cameraTurnedOffTitle: 'Kamera KidGate için kapalı',
   cameraTurnedOffMessage:
-    'Check-In’lerinize ve SOS uyarılarınıza fotoğraf eklenebilmesi için lütfen Ayarlar’ı açıp Kamera’ya izin verin.',
+    'Check-In’lerine ve SOS uyarılarına fotoğraf eklenebilmesi için Ayarlar’ı açıp Kamera’ya izin ver.',
   openSettings: 'Ayarları aç',
   notificationsLabel: 'Bildirimler',
   notificationsAllowed: 'KidGate için bildirimler açık.',
@@ -34,7 +34,7 @@ export const permissions = {
     'Otomatik başlatma’da, yeniden başlatmadan sonra korumanın yeniden başlaması için KidGate’i açın.',
   oemAutostartHintSamsung: 'Pil bölümünde Arka planda kullanım sınırları’nı seçin.',
   oemAutostartHintSamsungAdd:
-    'Hiç uyumayan uygulamalar’ı açıp KidGate’i ekleyin. KidGate listede yoksa zaten izinlidir ve bu adım tamamlanmıştır.',
+    'Hiç uyumayan uygulamalar’ı açıp Ekle’yi seçin, ardından KidGate’i seçin. KidGate zaten listedeyse bu adım tamamlanmıştır.',
   oemAutostartHintOppo:
     'Başlangıç uygulamaları / Otomatik başlatma bölümünde KidGate’e izin verin.',
   oemAutostartHintVivo:
@@ -53,15 +53,15 @@ export const permissions = {
   accessibilityStepTurnOn:
     'Anahtarı açın, ardından Android’in onay penceresinde İzin ver’i seçin.',
   restrictedSettingsStep:
-    'Anahtar soluk görünüyorsa Ayarlar › Uygulamalar › KidGate yolunu açıp ⋮ menüsüne dokunun ve “Kısıtlanmış ayarlara izin ver” seçeneğini seçin, ardından buraya dönüp tekrar deneyin.',
+    'Anahtar soluk görünüyorsa Ayarlar → Uygulamalar → KidGate yolunu açıp ⋮ menüsüne dokunun ve “Kısıtlanmış ayarlara izin ver” seçeneğini seçin, ardından buraya dönüp tekrar deneyin.',
   accessibilityWarningNote:
-    'Android, KidGate’in işlemlerinizi izleyebileceği uyarısını gösterir. Bu izinle KidGate hangi uygulamanın açık olduğunu görür, böylece kilit en üstte kalabilir. İzlenen videolar kaydediliyorsa her YouTube videosunun başlığını ve kanalını da okur ve bunları ailenize gönderir. Bu izin parolaları, mesajları veya yazdıklarınızı okumaz. Aileniz Mesaj uyarılarını açarsa, ayrıca istenen ikinci bir izin yazdığınız kısa mesajları (SMS ve MMS), sohbet mesajlarını ve aramaları kontrol eder ve ailenize yalnızca işaretlenen bir kelime veya ifadeyi gönderir. KidGate çökerse, sorunun giderilebilmesi için KidGate ekibine bir kilitlenme günlüğü gönderilir.',
+    'Android, KidGate’in işlemlerinizi izleyebileceği uyarısını gösterir. Bu izinle KidGate hangi uygulamanın açık olduğunu görür, böylece kilit en üstte kalabilir. İzlenen videolar kaydediliyorsa her YouTube videosunun başlığını ve kanalını da okur ve bunları ailenize gönderir. Bu izin parolaları, mesajları veya yazdıklarınızı okumaz. Aileniz Mesaj uyarılarını açarsa, ayrıca istenen ikinci bir izin yazdığınız kısa mesajları (SMS ve MMS), sohbet mesajlarını ve aramaları kontrol eder ve ailenize yalnızca işaretlenen bir kelime veya ifadeyi gönderir. Mikrofona izin verirseniz, SOS gönderdiğinizde KidGate 15 saniyeye kadar ses kaydeder ve kaydı ailenize iletir. KidGate çökerse, sorunun giderilebilmesi için KidGate ekibine bir kilitlenme günlüğü gönderilir.',
   accessibilityAgree: 'Kabul et',
   accessibilityDecline: 'Reddet',
   accessibilityTvNote:
-    'Bu izinle KidGate hangi uygulamanın açık olduğunu görür, böylece kilit en üstte kalabilir. Ayrıca her uygulamanın ne kadar süre kullanıldığını sayar ve bunu ailene gönderir. Ekrandakileri, parolaları veya mesajları okumaz.',
+    'Bu izinle KidGate hangi uygulamanın açık olduğunu görür, böylece kilit en üstte kalabilir; ayrıca her uygulamanın ne kadar süre kullanıldığını sayar. KidGate bu süreyi, bu TV’de kurulu uygulamaları, Web filtresi açıkken web’de gezinme geçmişini (açılan ve engellenen siteler) ve izlenen YouTube videolarının başlığını ve kanalını ailene gönderir. Ekrandakileri, parolaları veya mesajları okumaz.',
   uninstallProtectionWizardBody:
-    'Ebeveyn PIN’i girilmeden bu uygulamanın kaldırılmasını engeller. Android kendi onay ekranını gösterir.',
+    'KidGate’in kaldırılmasını zorlaştırır: kaldırmak için önce bunun kapatılması gerekir ve bu yapıldığında bir ebeveyne uyarı gönderilir. Android kendi onay ekranını gösterir.',
   notificationsWizardBody:
     'Bu cihazın süre onaylarını ve hatırlatmaları hemen alması için bildirimlere izin verin.',
   backgroundRefreshStepOpen: 'Ayarlar’da KidGate sayfasını açın.',

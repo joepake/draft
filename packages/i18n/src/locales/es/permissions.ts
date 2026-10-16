@@ -34,7 +34,7 @@ export const permissions = {
     'En Inicio automático, activa KidGate para que la protección se reinicie tras un reinicio del dispositivo.',
   oemAutostartHintSamsung: 'En Batería, selecciona Límites de uso en segundo plano.',
   oemAutostartHintSamsungAdd:
-    'Abre Aplicaciones que nunca duermen y añade KidGate. Si KidGate no aparece en la lista ya está permitido y este paso está hecho.',
+    'Abre Aplicaciones que nunca duermen, selecciona Añadir y elige KidGate. Si KidGate ya está en la lista, este paso está hecho.',
   oemAutostartHintOppo: 'En Apps de inicio / Inicio automático, permite KidGate.',
   oemAutostartHintVivo:
     'En Inicio automático / Alto rendimiento en segundo plano, permite KidGate.',
@@ -51,15 +51,15 @@ export const permissions = {
   accessibilityStepTurnOn:
     'Activa el interruptor y luego selecciona Permitir en el aviso de Android.',
   restrictedSettingsStep:
-    'Si el interruptor aparece atenuado, abre Ajustes › Aplicaciones › KidGate, toca el menú ⋮ y elige «Permitir ajustes restringidos»; después vuelve aquí e inténtalo de nuevo.',
+    'Si el interruptor aparece atenuado, abre Ajustes → Aplicaciones → KidGate, toca el menú ⋮ y elige «Permitir ajustes restringidos»; después vuelve aquí e inténtalo de nuevo.',
   accessibilityWarningNote:
-    'Android avisa de que KidGate puede observar tus acciones. Con este permiso KidGate ve qué app está abierta, para que el bloqueo pueda mantenerse encima. Cuando se registran los vídeos vistos, también lee el título y el canal de cada vídeo de YouTube y se los envía a tu padre o madre. Este permiso no lee contraseñas, mensajes ni lo que escribes. Si tu padre o madre activa las Alertas de mensajes, un segundo permiso, que se pide aparte, revisa los mensajes de texto (SMS y MMS), los mensajes de chat y las búsquedas que escribes, y solo le envía una palabra o frase marcada. Si KidGate se cierra por un error, se envía un registro de fallos al equipo de KidGate para poder solucionarlo.',
+    'Android avisa de que KidGate puede observar tus acciones. Con este permiso KidGate ve qué app está abierta, para que el bloqueo pueda mantenerse encima. Cuando se registran los vídeos vistos, también lee el título y el canal de cada vídeo de YouTube y se los envía a tu padre o madre. Este permiso no lee contraseñas, mensajes ni lo que escribes. Si tu padre o madre activa las Alertas de mensajes, un segundo permiso, que se pide aparte, revisa los mensajes de texto (SMS y MMS), los mensajes de chat y las búsquedas que escribes, y solo le envía una palabra o frase marcada. Si permites el acceso al micrófono, KidGate graba hasta 15 segundos de sonido cuando envías un SOS y se lo envía a tu padre o madre. Si KidGate se cierra por un error, se envía un registro de fallos al equipo de KidGate para poder solucionarlo.',
   accessibilityAgree: 'Aceptar',
   accessibilityDecline: 'Rechazar',
   accessibilityTvNote:
-    'Con este permiso KidGate ve qué app está abierta, para que el bloqueo pueda mantenerse encima. También cuenta cuánto tiempo se usa cada app y se lo envía a tu padre o madre. No lee lo que hay en la pantalla, contraseñas ni mensajes.',
+    'Con este permiso KidGate ve qué app está abierta, para que el bloqueo pueda mantenerse encima, y cuenta cuánto tiempo se usa cada app. KidGate le envía a tu padre o madre ese tiempo, las apps instaladas en este televisor, su historial de navegación web (sitios visitados y bloqueados) mientras el Filtro web está activado, y el título y el canal de los vídeos de YouTube vistos. No lee lo que hay en la pantalla, contraseñas ni mensajes.',
   uninstallProtectionWizardBody:
-    'Impide que esta app se desinstale sin el PIN parental. Android muestra su propia pantalla de confirmación.',
+    'Hace que KidGate sea más difícil de quitar: para desinstalarlo, primero hay que desactivar esta opción, y se avisa a un padre o una madre cuando eso ocurre. Android muestra su propia pantalla de confirmación.',
   notificationsWizardBody:
     'Permite las notificaciones para que este dispositivo reciba aprobaciones de tiempo y recordatorios al instante.',
   backgroundRefreshStepOpen: 'Abre la página de KidGate en Ajustes.',

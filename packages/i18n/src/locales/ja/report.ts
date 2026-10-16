@@ -35,7 +35,7 @@ export const report = {
     '{{app}} は今週から使われはじめ、すでに {{duration}} を占めています。',
   findingAppSurge:
     '{{app}} が先週より {{delta}} 増え、合計 {{duration}} になりました。',
-  findingLimitHit: '1 日 {{limit}} の上限に {{count}} 日到達しました。',
+  findingLimitHit: '1日の上限（{{limit}}）に{{count}}日到達しました。',
   findingBlockedApps:
     'ブロックしたアプリ起動は {{count}} 回。先週は {{previous}} 回でした。',
   findingBlockedWeb:
@@ -46,8 +46,7 @@ export const report = {
   // レポートの良い半分。何があったかとその数字だけを述べ、ほめません
   // （`docs/COPY_STYLE.md` はお世辞を警告と同じくらい禁じています）。
   // 表記は「お子さま」「デバイス」で統一します。
-  findingLimitRespected:
-    '1日の利用時間制限（{{limit}}）が{{count}}日間すべてで守られました。',
+  findingLimitRespected: '1日の上限（{{limit}}）が{{count}}日間すべてで守られました。',
   findingLateNightGone:
     '今週は深夜の利用がありませんでした。先週は{{count}}日ありました。',
   findingBlockedAppsDown:
@@ -79,7 +78,7 @@ export const report = {
   share: '共有',
   copySummary: '要約をコピー',
   copied: '要約をコピーしました。',
-  shareFailed: '共有メニューを開けませんでした。',
+  shareFailed: '共有メニューを開けませんでした。もう一度お試しください。',
   shareLinkCta: '{{url}} でアプリを入手',
   shareFooterDesc:
     'KidGateで、保護者は利用時間の管理、位置情報の確認、Webのフィルタリングができます。',
@@ -93,10 +92,11 @@ export const report = {
 
   emptyTitle: 'まだレポートがありません',
   emptyBody:
-    'レポートは毎週月曜の朝に届きます。今週の分をここで作成することもできます（直近 7 日間が対象です）。',
+    'Premiumでは、レポートが毎週月曜の朝に届きます。今週の分をここで作成することもできます（直近 7 日間が対象です）。',
   noUsage:
     'この 2 週間、利用時間が記録されていないため、まだ報告できることがありません。オフラインのデバイスは何も報告しませんが、それは穏やかな一週間とは別のことです。',
-  rateLimited: '試行が多すぎます。1 分ほど待ってください。',
+  rateLimited:
+    'まだ新しいレポートは作成できません。1 分ほどしてからもう一度お試しください。',
   loadFailedTitle: 'レポートを読み込めません',
   loadFailed: 'レポートを開けませんでした。下に引いて再試行してください。',
   failed: 'レポートを作成できませんでした。少し後にもう一度お試しください。',
@@ -115,9 +115,9 @@ export const report = {
   // pack.
   childrenTitle: 'お子さまごと',
   childrenNoteByChild:
-    '同じ 2 週間を、お子さまごとに、使っているすべてのデバイスを合わせて。割合はご家族の合計に対するものです。',
+    '今週分を、お子さまごとに、使っているすべてのデバイスを合わせて。割合はご家族の合計に対するものです。',
   devicesTitle: 'デバイスごと',
-  childrenNote: '同じ 2 週間を、デバイスごとに。割合はご家族の合計に対するものです。',
+  childrenNote: '今週分を、デバイスごとに。割合はご家族の合計に対するものです。',
   colChild: 'お子さま',
   colDevice: 'デバイス',
   colScreenTime: 'スクリーンタイム',
@@ -143,14 +143,14 @@ export const report = {
   guestPreviewHint: 'サンプルです。デバイスを接続すると実際の数値が表示されます',
   guestTitle: '今週がどこへ消えたかを見る',
   guestDescription:
-    'ログインすると、今日を普段の日と比べ、子どもたちを並べて確認し、毎週月曜日にレポートを受け取れます。',
+    'ログインすると、今日を普段の日と比べたり、子どもたちを並べて確認したりできます。Premiumなら、毎週月曜日にレポートも届きます。',
   guestBenefitTrendTitle: '今日と、普段の比較',
   guestBenefitTrendBody:
     '数字だけでは何もわかりません。今日は必ずご家庭自身の1日平均と並べて描かれます。',
   guestBenefitChildTitle: '子どもごとに並べて',
   guestBenefitChildBody:
     '各デバイスを通じた1日の使用割合を、子どもごとの色で表示します。',
-  guestBenefitWeeklyTitle: '毎週月曜日のレポート',
+  guestBenefitWeeklyTitle: '毎週月曜日のレポート（Premium）',
   guestBenefitWeeklyBody:
     '何が変わったか、どのアプリが増えたか、夜更かしは何度か。1年間保存されます。',
   guestSignInButton: 'ログイン',

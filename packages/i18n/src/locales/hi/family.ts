@@ -293,7 +293,7 @@ export const family = {
   deviceRemovedAlertTitle: 'डिवाइस हटा दिया गया',
 
   deviceRemovedAlertMessage:
-    'किसी अभिभावक ने इस डिवाइस को परिवार खाते से हटा दिया है। इसे फिर से कनेक्ट करने के लिए “बच्चा” भूमिका दोबारा चुनें।',
+    'किसी अभिभावक ने इस डिवाइस को परिवार खाते से हटा दिया है। दोबारा कनेक्ट करने के लिए “यह बच्चे का डिवाइस है” चुनें।',
 
   deviceNotRegistered: 'यह डिवाइस अभी तक पंजीकृत नहीं है।',
 
@@ -350,7 +350,7 @@ export const family = {
   editDeviceNameTitle: 'डिवाइस का नाम बदलें',
 
   editDeviceNameSubtitle:
-    'केवल परिवार का स्वामी ही डिवाइस का नाम बदल सकता है। अधिकतम {{maxLength}} अक्षर।',
+    'ऐसा नाम चुनें जिसे माता-पिता जल्दी पहचान सकें। अधिकतम {{maxLength}} अक्षर।',
 
   deviceNameInputLabel: 'डिवाइस का नाम',
 
@@ -376,6 +376,8 @@ export const family = {
   youPausedThisDevice: 'आपने इस डिवाइस को लॉक कर दिया है',
 
   lockSentWaitingForDevice: 'लॉक भेजा गया — डिवाइस का इंतज़ार',
+  lockDelayedOnDevice:
+    'इस डिवाइस तक लॉक और अनलॉक पहुँचने में {{minutes}} मिनट तक लग सकते हैं।',
 
   lockNotAppliedOnDevice: 'इस डिवाइस ने लॉक लागू नहीं किया',
 

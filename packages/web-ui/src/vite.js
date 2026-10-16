@@ -109,10 +109,15 @@ export function kidgateHead({
      * package is tested on React 19 and the apps run 18, so yarn cannot hoist
      * one copy — and the `Link` reads a context nothing provides. Measured
      * 2026-10-04: `kidgate.app/support` rendered blank in production, "Cannot
-     * destructure property 'basename'". `@vitejs/plugin-react` does the same
-     * for `react`, which is why only the router broke.
+     * destructure property 'basename'". `@vitejs/plugin-react` 4 does the same
+     * for `react`, which is why only the router broke — and 5 does not: the
+     * desktop agent, on 5, crashed on `BrandLoader`'s first hook (2026-10-14,
+     * `apps/desktop/vite.config.ts`). Named here too, so a plugin upgrade on
+     * `apps/site` or `apps/dashboard` cannot bring that back.
      */
-    config: () => ({ resolve: { dedupe: ['react-router', 'react-router-dom'] } }),
+    config: () => ({
+      resolve: { dedupe: ['react', 'react-dom', 'react-router', 'react-router-dom'] },
+    }),
     transformIndexHtml() {
       return {
         tags: [

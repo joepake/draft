@@ -16,7 +16,7 @@ export const usage = {
   insightDeviceLocked: 'Gerät ist gesperrt',
   signalLocksToday: 'Sperrungen heute',
   signalUnlocksToday: 'Entsperrungen heute',
-  signalLocksPeriod: 'Sperrungen · 30 Tage',
+  signalLocksPeriod: 'Letzte Sperrungen',
   signalLocationsToday: 'Standorte heute',
   sectionWhatsTurnedOn: 'Was aktiviert ist',
   rowBlockedHours: 'Sperrzeiten',
@@ -28,7 +28,7 @@ export const usage = {
   rowLocation: 'Standort',
   valueSharingOn: 'Freigabe aktiv',
   sectionLatestActivity: 'Letzte Aktivität',
-  activityPeriodCount: '{{count}} in 30 Tagen',
+  activityPeriodCount: 'Zuletzt: {{count}}',
   activityEmpty:
     'Noch keine Aktivität erfasst. Sperrungen, Entsperrungen und Bildschirmzeit-Aktualisierungen erscheinen hier.',
   usageReportAccessibility:
@@ -79,8 +79,7 @@ export const usage = {
   topAppsEmpty:
     'Noch keine App-Daten. Stelle auf dem Kindergerät sicher, dass KidGate die App-Nutzung messen darf, und warte auf eine Synchronisierung.',
   protectionImpactTitle: 'Schutzwirkung',
-  protectionImpactHint:
-    'Kürzliche Ereignisse, die KidGate auf diesem Gerät gestoppt hat.',
+  protectionImpactHint: 'Gesamtwerte seit der Einrichtung dieses Geräts.',
   protectionBlockedApps: 'Blockierte App-Starts',
   protectionWebBlocked: 'Blockierte Websites',
   protectionTamper: 'Schutzwarnungen',
