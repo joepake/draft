@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { Fragment, useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { loadPlans, plansTranslator } from '@kidgate/i18n/plansPack';
 import Icon from '@kidgate/web-ui/Icon';
@@ -256,14 +256,25 @@ function LaunchCountdown() {
   }, []);
   if (isReleased(now)) return null;
   const s = Math.ceil((RELEASE_AT - now) / 1000);
-  const pad = n => String(n).padStart(2, '0');
+  const parts = [Math.floor(s / 3600), Math.floor(s / 60) % 60, s % 60].map(n =>
+    String(n).padStart(2, '0'),
+  );
   return (
-    <p className="launch-countdown">
-      {t('home.launchCountdown')}{' '}
-      <time dateTime={new Date(RELEASE_AT).toISOString()}>
-        {pad(Math.floor(s / 3600))}:{pad(Math.floor(s / 60) % 60)}:{pad(s % 60)}
+    <div className="launch-countdown">
+      <span className="launch-countdown-label">{t('home.launchCountdown')}</span>
+      <time dateTime={new Date(RELEASE_AT).toISOString()} aria-label={parts.join(':')}>
+        {parts.map((p, i) => (
+          <Fragment key={i}>
+            {i > 0 && (
+              <span className="launch-countdown-sep" aria-hidden="true">
+                :
+              </span>
+            )}
+            <span className="launch-countdown-tile">{p}</span>
+          </Fragment>
+        ))}
       </time>
-    </p>
+    </div>
   );
 }
 
@@ -546,7 +557,6 @@ export default function Home() {
               <span className="accent">{t('home.heroTitleAccent')}</span>
             </h1>
             <p className="lede">{t('home.heroLede')}</p>
-            <LaunchCountdown />
             <ul className="hero-checks">
               {HERO_CHECKS.map(n => (
                 <li key={n}>
@@ -555,6 +565,7 @@ export default function Home() {
                 </li>
               ))}
             </ul>
+            <LaunchCountdown />
             <HeroGet />
           </div>
 
