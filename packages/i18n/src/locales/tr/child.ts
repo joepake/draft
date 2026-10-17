@@ -14,6 +14,9 @@ export const child = {
   limitReached: 'Sınıra ulaşıldı',
   active: 'Etkin',
   parentPausedThisDevice: 'Ailen bu cihazı şimdilik kilitledi.',
+  browsingPausedUntil: 'Tarama {{time}} saatine kadar duraklatıldı',
+  browsingPausedHint:
+    'O zamana kadar tarayıcılar kapatılır. Bir yanlışlık varsa ailene sor.',
   blockedHoursOnPaused:
     'Şu anda Engellenen Saatler etkin. Mola vermek için iyi bir zaman.',
   outOfScreenTimeAskParent:

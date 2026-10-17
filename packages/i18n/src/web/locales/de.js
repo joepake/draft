@@ -93,6 +93,7 @@ export default {
 
   home: {
     heroBadge: 'Kindersicherung, richtig gemacht',
+    launchCountdown: 'Start in',
     heroTitle: 'Schütze deine Kinder',
     heroTitleAccent: 'ohne ihnen ihre Freiheit zu nehmen.',
     heroLede:

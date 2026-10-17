@@ -302,6 +302,22 @@ export const userGuide = {
         '6': 'Un téléphone ou un ordinateur verrouillé permet toujours à votre enfant d’envoyer un SOS. Sur Android, le SOS ouvre aussi les appels, les plans et les messages pendant 5 minutes, tout le reste restant verrouillé, et cela apparaît dans Activité.',
       },
     },
+    siri: {
+      title: 'Utiliser Siri sur votre iPhone',
+      summary:
+        'À la voix, verrouillez ou déverrouillez les appareils d’un enfant, donnez des minutes en plus et écoutez son temps d’écran du jour.',
+      keywords:
+        'voix, commande vocale, parler, mains libres, assistant vocal, Raccourcis, voice',
+      tip: 'Les commandes vocales fonctionnent sur l’iPhone d’un parent, pour tous les parents de la famille, dans la langue réglée pour Siri. Les téléphones Android et le tableau de bord web n’en ont pas.',
+      steps: {
+        '1': 'Connectez-vous à KidGate sur votre iPhone et ouvrez l’app une fois. C’est ainsi que Siri apprend les prénoms de vos enfants, et un enfant ou un appareil ajouté ensuite est connu de Siri dès que vous rouvrez KidGate. Si Siri répond « Connectez-vous d’abord à KidGate. », ouvrez KidGate sur cet iPhone.',
+        '2': 'Dites à Siri « KidGate, verrouille Léa », avec le prénom de votre enfant. Tous les appareils de cet enfant se verrouillent, comme avec Tout verrouiller. Un appareil qui n’est attribué à aucun enfant répond à son propre nom.',
+        '3': 'Dites « KidGate, déverrouille Léa » pour rétablir l’accès. Pour tous les appareils de la famille à la fois, dites « KidGate, verrouille tout » ou « KidGate, déverrouille tout ».',
+        '4': 'Dites « KidGate, donne des minutes en plus à Léa » pour ajouter 15 minutes aujourd’hui sur tous les appareils de cet enfant. Le temps en plus prend fin à minuit.',
+        '5': 'Dites « KidGate temps d’écran de Léa » pour entendre le temps d’écran du jour. Siri lit les derniers chiffres que KidGate vous a affichés. Ouvrez d’abord KidGate pour avoir les plus récents.',
+        '6': 'L’app Raccourcis liste les mêmes commandes sous KidGate, à lancer d’un toucher. Pour donner une autre durée, de 5 à 180 minutes, ajoutez l’action « Donner des minutes supplémentaires à un enfant » à votre propre raccourci et réglez-y les minutes.',
+      },
+    },
     pauseBrowsing: {
       title: 'Mettre la navigation en pause un moment',
       summary:
@@ -419,7 +435,7 @@ export const userGuide = {
       title: 'Consulter les rapports d’utilisation',
       summary:
         'Voyez combien de temps chaque appareil a été utilisé aujourd’hui et sur les 30 derniers jours, par enfant, et dans un rapport chaque lundi.',
-      tip: 'Avec l’offre gratuite, vous voyez le total du jour et les 3 applications les plus utilisées, mis à jour quand vous consultez l’app. Premium ajoute 30 jours d’historique, les moments où chaque appareil a été utilisé, les 10 applications les plus utilisées, un rapport pour chaque enfant et un nouveau rapport hebdomadaire chaque lundi. L’iPhone et l’iPad ne transmettent que le total.',
+      tip: 'Avec l’offre gratuite, vous voyez le total du jour et les 3 applications les plus utilisées, mis à jour quand vous consultez l’app. Premium ajoute 30 jours d’historique, les moments où chaque appareil a été utilisé, les 10 applications les plus utilisées, un rapport pour chaque enfant et un nouveau rapport hebdomadaire chaque lundi. L’iPhone et l’iPad ne transmettent que le total. Le jour où un appareil rejoint la famille, l’utilisation antérieure peut être incomplète ou comptée dans « Autres applications ».',
       steps: {
         '1': 'Ouvrez Rapports. La section Aujourd’hui additionne tous les appareils ; en dessous se trouvent le Rapport hebdomadaire, chaque enfant (Par enfant) et chaque appareil (Par appareil).',
         '2': 'Appuyez sur un appareil pour ouvrir son Rapport d’utilisation : aujourd’hui par rapport à la Limite quotidienne, Les 30 derniers jours, Quand l’appareil a été utilisé et Applications les plus utilisées. Vous pouvez aussi l’ouvrir depuis Utilisation aujourd’hui sur l’écran de l’appareil.',

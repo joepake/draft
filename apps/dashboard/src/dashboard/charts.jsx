@@ -376,7 +376,7 @@ export function UsageRing({ used, limit, bonus = 0, size = 168 }) {
  * day, and a chart that throws takes the whole dashboard down with it — React
  * unmounts the tree and the parent gets a white page, not a missing card.
  */
-export function AppBars({ apps = [], limits = [], totalMinutes = 0 }) {
+export function AppBars({ apps = [], limits = [], totalMinutes = 0, joinedAt = null }) {
   const { t: tr } = useT();
   const appT = useActivityTranslate();
   /*
@@ -458,6 +458,13 @@ export function AppBars({ apps = [], limits = [], totalMinutes = 0 }) {
           </li>
         )}
       </ul>
+      {joinedAt && (
+        <p className="hint app-cat-note">
+          {appT('usage.topAppsJoinedNote', {
+            time: formatClock(joinedAt.getHours() * 60 + joinedAt.getMinutes()),
+          })}
+        </p>
+      )}
       <AppCategoryNote appT={appT} entries={categories.values()} />
     </>
   );

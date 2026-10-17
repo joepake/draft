@@ -183,6 +183,10 @@ export const activities = {
   tamperWebFilterTitle: 'वेब फ़िल्टर बंद कर दिया गया',
   tamperWebFilterBody:
     'इस डिवाइस पर KidGate का VPN बंद कर दिया गया या किसी दूसरे VPN ऐप ने उसकी जगह ले ली। उसके दोबारा चालू होने तक साइटें न फ़िल्टर होंगी, न रिकॉर्ड होंगी।',
+  tamperWebFilterMacBody:
+    'इस Mac पर System Settings में वेब फ़िल्टर बंद कर दिया गया। उसके दोबारा चालू होने तक साइटें न फ़िल्टर होंगी, न रिकॉर्ड होंगी।',
+  tamperWebFilterWindowsBody:
+    'इस PC पर KidGate की बैकग्राउंड सेवा बंद कर दी गई या हटा दी गई। उसके दोबारा चालू होने तक साइटें न फ़िल्टर होंगी, न रिकॉर्ड होंगी।',
   tamperUninstallProtectionTitle: 'अनइंस्टॉल सुरक्षा बंद कर दी गई',
   tamperUninstallProtectionBody: 'अब बच्चे के डिवाइस से KidGate हटाया जा सकता है।',
   tamperReinstalledTitle: 'KidGate फिर से इंस्टॉल किया गया',

@@ -184,6 +184,10 @@ export const activities = {
   tamperWebFilterTitle: 'Filter web dimatikan',
   tamperWebFilterBody:
     'VPN KidGate di perangkat ini dimatikan atau digantikan aplikasi VPN lain. Sampai VPN aktif kembali, situs tidak difilter atau dicatat.',
+  tamperWebFilterMacBody:
+    'Filter web dimatikan di System Settings pada Mac ini. Sampai aktif kembali, situs tidak difilter atau dicatat.',
+  tamperWebFilterWindowsBody:
+    'Layanan latar belakang KidGate di PC ini dihentikan atau dihapus. Sampai aktif kembali, situs tidak difilter atau dicatat.',
   tamperUninstallProtectionTitle: 'Perlindungan hapus instal dimatikan',
   tamperUninstallProtectionBody: 'KidGate kini bisa dihapus dari perangkat anak.',
   tamperReinstalledTitle: 'KidGate diinstal ulang',

@@ -297,6 +297,22 @@ export const userGuide = {
         '6': 'Ponsel atau komputer yang terkunci tetap memungkinkan anak Anda mengirim SOS. Di Android, SOS juga membuka panggilan, peta, dan pesan selama 5 menit sementara yang lain tetap terkunci, dan ini muncul di Aktivitas.',
       },
     },
+    siri: {
+      title: 'Gunakan Siri di iPhone',
+      summary:
+        'Kunci atau buka kunci perangkat anak, beri menit ekstra, dan dengarkan waktu layar hari ini dengan suara.',
+      keywords:
+        'suara, perintah suara, bicara, tanpa tangan, asisten, Pintasan, voice, inggris',
+      tip: 'Siri belum mendukung bahasa Indonesia, jadi atur bahasa Siri ke English dan ucapkan perintah berbahasa Inggris di bawah. Perintah suara berfungsi di iPhone orang tua, untuk setiap orang tua dalam keluarga. Ponsel Android dan dasbor web tidak memilikinya.',
+      steps: {
+        '1': 'Masuk ke KidGate di iPhone Anda dan buka aplikasinya sekali. Dari situ Siri mengenal nama anak-anak Anda, dan anak atau perangkat yang ditambahkan kemudian dikenali Siri saat Anda membuka KidGate berikutnya. Jika Siri meminta Anda masuk lebih dulu, buka KidGate di iPhone ini.',
+        '2': 'Ucapkan kepada Siri “KidGate, lock Rina”, dengan nama anak Anda. Semua perangkat anak itu terkunci, sama seperti Kunci semua. Perangkat yang belum ditetapkan ke anak dipanggil dengan namanya sendiri.',
+        '3': 'Ucapkan “KidGate, unlock Rina” untuk mengembalikan akses. Untuk semua perangkat keluarga sekaligus, ucapkan “KidGate, lock everything” atau “KidGate, unlock everything”.',
+        '4': 'Ucapkan “KidGate, give Rina extra minutes” untuk menambah 15 menit hari ini di semua perangkat anak itu. Waktu ekstra berakhir tengah malam.',
+        '5': 'Ucapkan “KidGate screen time for Rina” untuk mendengar waktu layar hari ini. Siri membacakan angka terakhir yang ditampilkan KidGate kepada Anda, jadi buka KidGate dulu untuk angka terbaru.',
+        '6': 'Aplikasi Pintasan menampilkan perintah yang sama di bawah KidGate, siap dijalankan dengan satu ketukan. Untuk memberi jumlah lain, dari 5 sampai 180 menit, tambahkan tindakan Beri anak menit ekstra ke pintasan Anda sendiri dan atur menitnya di sana.',
+      },
+    },
     pauseBrowsing: {
       title: 'Jeda penjelajahan untuk sementara',
       summary:
@@ -412,7 +428,7 @@ export const userGuide = {
       title: 'Lihat laporan penggunaan',
       summary:
         'Lihat berapa lama setiap perangkat dipakai hari ini dan selama 30 hari terakhir, juga per anak, dan dalam laporan setiap hari Senin.',
-      tip: 'Dengan paket gratis, Anda melihat total hari ini dan 3 aplikasi teratas, yang diperbarui saat Anda memeriksa. Premium menambahkan riwayat 30 hari, kapan setiap perangkat dipakai, 10 aplikasi teratas, laporan untuk setiap anak, dan laporan mingguan baru setiap hari Senin. iPhone dan iPad hanya melaporkan totalnya.',
+      tip: 'Dengan paket gratis, Anda melihat total hari ini dan 3 aplikasi teratas, yang diperbarui saat Anda memeriksa. Premium menambahkan riwayat 30 hari, kapan setiap perangkat dipakai, 10 aplikasi teratas, laporan untuk setiap anak, dan laporan mingguan baru setiap hari Senin. iPhone dan iPad hanya melaporkan totalnya. Pada hari perangkat bergabung dengan keluarga, penggunaan sebelum itu mungkin tidak lengkap atau dihitung dalam “Aplikasi lain”.',
       steps: {
         '1': 'Buka Laporan. Bagian Hari ini menjumlahkan semua perangkat; di bawahnya ada Laporan mingguan, setiap anak (Per anak), dan setiap perangkat (Per perangkat).',
         '2': 'Ketuk perangkat untuk membuka Laporan Penggunaan perangkat itu: pemakaian hari ini dibandingkan Batas harian, 30 hari terakhir, Kapan perangkat dipakai, dan Aplikasi paling sering digunakan. Anda juga dapat membukanya dari Penggunaan hari ini di layar perangkat.',

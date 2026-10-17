@@ -75,6 +75,8 @@ export const usage = {
   appMinAge: 'Nhà phát hành đề xuất {{age}}+',
   underAMinute: 'Dưới 1 phút',
   topAppsOther: 'Ứng dụng khác',
+  topAppsJoinedNote:
+    'Thiết bị này vào gia đình lúc {{time}}. Thời gian sử dụng trước đó có thể chưa đầy đủ hoặc được tính vào “Ứng dụng khác”.',
   topAppsEmpty:
     'Chưa có dữ liệu theo từng ứng dụng. Trên thiết bị của trẻ, hãy đảm bảo KidGate được phép đo mức dùng ứng dụng, sau đó chờ đồng bộ.',
   protectionImpactTitle: 'Hiệu quả bảo vệ',

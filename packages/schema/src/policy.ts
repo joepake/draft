@@ -66,6 +66,12 @@ export interface AppPolicy {
   limits: Record<AppRefId, Minutes>;
   /** Absent when the parent's install-approval switch is off. */
   installApproval?: AppInstallApprovalPolicy;
+  /**
+   * Quit for the length of a browsing pause, whatever the app-blocking switch
+   * says — the desktop agents' pause (`@kidgate/core/domain/browserApps`).
+   * Absent outside a pause and on a host that cannot quit apps.
+   */
+  pauseQuit?: AppRef[];
 }
 
 export interface DevicePolicy {

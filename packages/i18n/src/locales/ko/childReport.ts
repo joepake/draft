@@ -41,6 +41,8 @@ export const childReport = {
   sectionApps: '가장 많이 쓴 앱',
   appOnDevices: '기기 {{count}}대에서',
   appsEmpty: '앱별 내역이 아직 없습니다.',
+  deviceJoinedNote:
+    '{{device}}은(는) {{time}}에 가족에 추가되었습니다. 그 이전의 사용 시간은 불완전하거나 ‘기타 앱’에 포함될 수 있습니다.',
 
   emptyNoDevices: '이 아이에게 아직 배정된 기기가 없습니다.',
   emptyAssign: '기기 배정',

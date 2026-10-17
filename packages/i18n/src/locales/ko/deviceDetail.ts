@@ -142,6 +142,7 @@ export const deviceDetail = {
   pauseBrowsing: '웹 사용 일시중지',
   pauseBrowsingDescription:
     '잠시 웹 사용을 멈춥니다. 통화와 오프라인 앱은 계속 사용할 수 있습니다.',
+  pauseBrowsingDesktopNote: '컴퓨터에서는 일시중지가 끝날 때까지 브라우저가 닫힙니다.',
   pauseBrowsingOff: '중지 안 함',
   pauseBrowsingLeft: '일시중지 · {{minutes}}분 남음',
   pauseBrowsingFor: '{{minutes}}분 중지',

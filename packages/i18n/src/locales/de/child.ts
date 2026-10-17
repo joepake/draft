@@ -16,6 +16,9 @@ export const child = {
   limitReached: 'Limit erreicht',
   active: 'Aktiv',
   parentPausedThisDevice: 'Deine Eltern haben dieses Gerät vorerst gesperrt.',
+  browsingPausedUntil: 'Surfen pausiert bis {{time}}',
+  browsingPausedHint:
+    'Bis dahin werden Browser geschlossen. Wenn das falsch aussieht, frag deine Eltern.',
   blockedHoursOnPaused:
     'Gerade sind Sperrzeiten aktiv. Ein guter Moment für eine Pause.',
   outOfScreenTimeAskParent:

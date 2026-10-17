@@ -153,6 +153,7 @@ export const deviceDetail = {
   pauseBrowsing: 'Приостановить веб',
   pauseBrowsingDescription:
     'Приостанавливает просмотр сайтов на время. Звонки и офлайн-приложения продолжают работать.',
+  pauseBrowsingDesktopNote: 'На компьютере браузеры закрываются до конца паузы.',
   pauseBrowsingOff: 'Не приостановлено',
   pauseBrowsingLeft: 'Пауза · осталось {{minutes}} мин',
   pauseBrowsingFor: 'Пауза на {{minutes}} мин',

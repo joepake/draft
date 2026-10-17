@@ -138,6 +138,8 @@ export const deviceDetail = {
   pauseBrowsing: 'Tạm dừng duyệt web',
   pauseBrowsingDescription:
     'Tạm dừng duyệt web một lúc. Gọi điện và ứng dụng ngoại tuyến vẫn dùng được.',
+  pauseBrowsingDesktopNote:
+    'Trên máy tính, trình duyệt sẽ bị đóng cho đến khi hết tạm dừng.',
   pauseBrowsingOff: 'Chưa tạm dừng',
   pauseBrowsingLeft: 'Đang dừng · còn {{minutes}} phút',
   pauseBrowsingFor: 'Dừng {{minutes}} phút',

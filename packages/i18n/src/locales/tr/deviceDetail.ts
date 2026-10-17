@@ -142,6 +142,8 @@ export const deviceDetail = {
   pauseBrowsing: 'Taramayı duraklat',
   pauseBrowsingDescription:
     'İnternette gezinmeyi bir süre durdurur. Aramalar ve çevrimdışı uygulamalar çalışmaya devam eder.',
+  pauseBrowsingDesktopNote:
+    'Bilgisayarda tarayıcılar duraklatma bitene kadar kapatılır.',
   pauseBrowsingOff: 'Duraklatılmadı',
   pauseBrowsingLeft: 'Duraklatıldı · {{minutes}} dk kaldı',
   pauseBrowsingFor: '{{minutes}} dk duraklat',

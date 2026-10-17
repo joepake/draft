@@ -115,6 +115,18 @@ export const STORE_LINKS = {
 };
 
 /**
+ * Public launch. Until then every platform reads "coming soon" whatever its
+ * flag, the `/get` code is blurred and the hero counts down to this instant;
+ * at zero the page reloads and the links are live. Set 2026-10-18 to 80 hours
+ * out — a slipped rollout is this one line, then a deploy.
+ */
+export const RELEASE_AT = Date.parse('2026-10-21T11:00:00+07:00');
+
+export function isReleased(now = Date.now()) {
+  return now >= RELEASE_AT;
+}
+
+/**
  * The flag, and for Chrome also a real id. A placeholder id answers "not
  * available" even with the flag on, so a launch that forgets the id ships a
  * "coming soon" rather than a link to a listing that does not exist. The test
@@ -122,7 +134,7 @@ export const STORE_LINKS = {
  */
 function isLive(platform) {
   const { url, available } = STORE_LINKS[platform];
-  return available && !url.includes(CHROME_WEB_STORE_ID_PLACEHOLDER);
+  return isReleased() && available && !url.includes(CHROME_WEB_STORE_ID_PLACEHOLDER);
 }
 
 /** Whether this platform's build can be reached at all today. */

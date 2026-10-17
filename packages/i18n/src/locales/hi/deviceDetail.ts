@@ -145,6 +145,7 @@ export const deviceDetail = {
   pauseBrowsing: 'ब्राउज़िंग रोकें',
   pauseBrowsingDescription:
     'कुछ देर के लिए ब्राउज़िंग रोकें। कॉल और ऑफ़लाइन ऐप चलते रहेंगे।',
+  pauseBrowsingDesktopNote: 'कंप्यूटर पर, ठहराव खत्म होने तक ब्राउज़र बंद रहते हैं।',
   pauseBrowsingOff: 'रुकी नहीं है',
   pauseBrowsingLeft: 'रुकी हुई · {{minutes}} मिनट बाकी',
   pauseBrowsingFor: '{{minutes}} मिनट के लिए रोकें',

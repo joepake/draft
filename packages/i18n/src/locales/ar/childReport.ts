@@ -49,6 +49,8 @@ export const childReport = {
   appOnDevices_few: 'على {{count}} أجهزة',
   appOnDevices_many: 'على {{count}} جهازًا',
   appsEmpty: 'لا يوجد تفصيل حسب التطبيق بعد.',
+  deviceJoinedNote:
+    'انضم {{device}} إلى العائلة الساعة {{time}}. قد يكون استخدامه قبل ذلك غير مكتمل أو محسوبًا ضمن «تطبيقات أخرى».',
 
   emptyNoDevices: 'لم يُسنَد أي جهاز إلى هذا الطفل بعد.',
   emptyAssign: 'إسناد جهاز',

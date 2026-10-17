@@ -146,6 +146,7 @@ export const deviceDetail = {
   pauseBrowsing: 'Pause browsing',
   pauseBrowsingDescription:
     'Stop browsing for a while. Calls and offline apps keep working.',
+  pauseBrowsingDesktopNote: 'On a computer, browsers are closed until the pause ends.',
   pauseBrowsingOff: 'Not paused',
   pauseBrowsingLeft: 'Paused · {{minutes}} min left',
   pauseBrowsingFor: 'Pause for {{minutes}} min',

@@ -93,6 +93,7 @@ export default {
 
   home: {
     heroBadge: 'Control parental, como debe ser',
+    launchCountdown: 'Lanzamiento en',
     heroTitle: 'Protege a tus hijos',
     heroTitleAccent: 'sin quitarles su libertad.',
     heroLede:

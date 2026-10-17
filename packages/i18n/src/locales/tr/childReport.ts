@@ -42,6 +42,8 @@ export const childReport = {
   sectionApps: 'En çok kullanılan',
   appOnDevices: '{{count}} cihazda',
   appsEmpty: 'Henüz uygulama dökümü bildirilmedi.',
+  deviceJoinedNote:
+    '{{device}} cihazının aileye katılma saati: {{time}}. Öncesindeki kullanım eksik olabilir ya da “Diğer uygulamalar” altında sayılabilir.',
 
   emptyNoDevices: 'Bu çocuğa henüz bir cihaz atanmadı.',
   emptyAssign: 'Cihaz ata',

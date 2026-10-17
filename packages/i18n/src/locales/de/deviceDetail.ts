@@ -148,6 +148,8 @@ export const deviceDetail = {
   pauseBrowsing: 'Surfen pausieren',
   pauseBrowsingDescription:
     'Pausiert das Surfen für eine Weile. Anrufe und Offline-Apps funktionieren weiter.',
+  pauseBrowsingDesktopNote:
+    'Auf einem Computer werden Browser geschlossen, bis die Pause endet.',
   pauseBrowsingOff: 'Nicht pausiert',
   pauseBrowsingLeft: 'Pausiert · noch {{minutes}} Min.',
   pauseBrowsingFor: 'Für {{minutes}} Min. pausieren',

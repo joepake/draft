@@ -33,6 +33,7 @@ export const macos = {
   notSupportedOnThisDevice: 'Bu cihazda desteklenmiyor',
   filterAwaitingApproval: 'System Settings’te onay bekleniyor',
   filterSwitchedOff: 'System Settings’te kapatıldı',
+  webFilterOffChip: 'Web filtresi kapalı',
   filterInterrupted: 'Bir sorundan sonra durdu — KidGate geri yükleyecek',
   filterNeedsService: 'KidGate arka plan hizmeti gerekir',
   setupFilterApprovalBody:

@@ -158,6 +158,10 @@ export const activities = {
   tamperWebFilterTitle: 'Đã tắt tính năng Chặn nội dung web',
   tamperWebFilterBody:
     'VPN của KidGate trên máy này đã bị tắt hoặc bị một ứng dụng VPN khác thay thế. Trang web sẽ không được lọc và ghi lại cho đến khi VPN bật lại.',
+  tamperWebFilterMacBody:
+    'Tính năng Chặn nội dung web đã bị tắt trong Cài đặt hệ thống trên máy Mac này. Trang web sẽ không được lọc và ghi lại cho đến khi bật lại.',
+  tamperWebFilterWindowsBody:
+    'Dịch vụ nền của KidGate trên máy tính này đã bị dừng hoặc gỡ bỏ. Trang web sẽ không được lọc và ghi lại cho đến khi bật lại.',
   tamperUninstallProtectionTitle: 'Đã tắt chống gỡ cài đặt',
   tamperUninstallProtectionBody: 'Giờ có thể gỡ KidGate khỏi thiết bị của trẻ.',
   tamperReinstalledTitle: 'KidGate đã được cài lại',

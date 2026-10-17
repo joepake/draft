@@ -93,6 +93,7 @@ export default {
 
   home: {
     heroBadge: 'Kontrol orang tua, sebagaimana mestinya',
+    launchCountdown: 'Rilis dalam',
     heroTitle: 'Lindungi anak Anda',
     heroTitleAccent: 'tanpa merampas kebebasannya.',
     heroLede:

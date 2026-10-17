@@ -49,6 +49,8 @@ export const childReport = {
   sectionApps: 'Dùng nhiều nhất',
   appOnDevices: 'Trên {{count}} thiết bị',
   appsEmpty: 'Chưa có số liệu theo từng ứng dụng.',
+  deviceJoinedNote:
+    '{{device}} vào gia đình lúc {{time}}. Thời gian sử dụng trước đó có thể chưa đầy đủ hoặc được tính vào “Ứng dụng khác”.',
 
   emptyNoDevices: 'Chưa gán thiết bị nào cho con này.',
   emptyAssign: 'Gán thiết bị',

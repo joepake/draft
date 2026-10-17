@@ -14,6 +14,9 @@ export const child = {
   limitReached: 'सीमा पूरी हुई',
   active: 'सक्रिय',
   parentPausedThisDevice: 'आपके माता-पिता ने अभी यह डिवाइस लॉक कर दिया है।',
+  browsingPausedUntil: '{{time}} तक ब्राउज़िंग रुकी हुई है',
+  browsingPausedHint:
+    'तब तक ब्राउज़र बंद रहेंगे। अगर यह गलत लगे, तो अपने माता-पिता से पूछें।',
   blockedHoursOnPaused: 'अभी ब्लॉक किए गए घंटे चल रहे हैं। आराम करने का अच्छा समय है।',
   outOfScreenTimeAskParent:
     'आज का स्क्रीन टाइम खत्म हो गया है। आप नीचे दिए गए बटन से और समय माँग सकते हैं।',

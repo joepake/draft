@@ -37,7 +37,13 @@ export type TamperPermissionKey =
    * `domain/reinstallActivity` builds the row; each agent detects it its own
    * way (iOS: the Keychain, `apps/mobile/src/services/auth/freshInstallGuard.ts`).
    */
-  | 'reinstalled';
+  | 'reinstalled'
+  /**
+   * The web filter stopped: Android's VPN revoked (`KidGateVpnService.onRevoke`)
+   * or, since 2026-10-17, a Mac's filter switched off in System Settings
+   * (`apps/desktop/src/consentWatch.ts`). The body differs per platform.
+   */
+  | 'webFilter';
 
 /**
  * The icon vocabulary these alerts draw from. A plain string union, not a
@@ -120,6 +126,12 @@ const PERMISSION_COPY: Record<
     bodyKey: 'activities.tamperReinstalledBody',
     icon: 'shieldAlert',
   },
+  // The neutral body is Android's VPN sentence — the first writer.
+  webFilter: {
+    titleKey: 'activities.tamperWebFilterTitle',
+    bodyKey: 'activities.tamperWebFilterBody',
+    icon: 'shieldAlert',
+  },
 };
 
 /**
@@ -133,9 +145,27 @@ const PERMISSION_COPY: Record<
 const PLATFORM_COPY: Partial<
   Record<
     TamperPermissionKey,
-    Record<'ios' | 'android', { titleKey: string; bodyKey: string }>
+    Partial<
+      Record<
+        'ios' | 'android' | 'macos' | 'windows',
+        { titleKey: string; bodyKey: string }
+      >
+    >
   >
 > = {
+  // A desktop has no KidGate VPN to replace: a Mac's filter is a switch in
+  // System Settings, a PC's is the KidGate background service, and the VPN
+  // sentence would send the parent looking for one.
+  webFilter: {
+    macos: {
+      titleKey: 'activities.tamperWebFilterTitle',
+      bodyKey: 'activities.tamperWebFilterMacBody',
+    },
+    windows: {
+      titleKey: 'activities.tamperWebFilterTitle',
+      bodyKey: 'activities.tamperWebFilterWindowsBody',
+    },
+  },
   screenTime: {
     ios: {
       titleKey: 'activities.tamperScreenTimeIosTitle',
@@ -150,9 +180,11 @@ const PLATFORM_COPY: Partial<
 
 function resolveDevicePlatform(
   params?: Record<string, unknown> | null,
-): 'ios' | 'android' | null {
+): 'ios' | 'android' | 'macos' | 'windows' | null {
   const raw = params?.platform;
-  return raw === 'ios' || raw === 'android' ? raw : null;
+  return raw === 'ios' || raw === 'android' || raw === 'macos' || raw === 'windows'
+    ? raw
+    : null;
 }
 
 /** Legacy descriptionKey → permission (old events used generic tamperTitle). */

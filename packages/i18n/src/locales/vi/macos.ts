@@ -37,6 +37,7 @@ export const macos = {
   notSupportedOnThisDevice: 'Thiết bị này không hỗ trợ',
   filterAwaitingApproval: 'Đang chờ phê duyệt trong Cài đặt hệ thống',
   filterSwitchedOff: 'Đang tắt trong Cài đặt hệ thống',
+  webFilterOffChip: 'Chặn nội dung web đang tắt',
   filterInterrupted: 'Đã dừng sau sự cố — KidGate sẽ bật lại',
   filterNeedsService: 'Cần dịch vụ nền của KidGate',
   setupFilterApprovalBody:

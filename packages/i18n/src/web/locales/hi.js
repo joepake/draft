@@ -93,6 +93,7 @@ export default {
 
   home: {
     heroBadge: 'पैरेंटल कंट्रोल, सही तरीके से',
+    launchCountdown: 'लॉन्च में बाकी',
     heroTitle: 'अपने बच्चों की सुरक्षा करें',
     heroTitleAccent: 'उनकी आज़ादी छीने बिना।',
     heroLede:

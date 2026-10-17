@@ -182,6 +182,10 @@ export const activities = {
   tamperWebFilterTitle: 'Web filtresi kapatıldı',
   tamperWebFilterBody:
     'Bu cihazdaki KidGate VPN kapatıldı ya da yerini başka bir VPN uygulaması aldı. Yeniden açılana kadar siteler filtrelenmez ve kaydedilmez.',
+  tamperWebFilterMacBody:
+    'Web filtresi bu Mac’te System Settings’ten kapatıldı. Yeniden açılana kadar siteler filtrelenmez ve kaydedilmez.',
+  tamperWebFilterWindowsBody:
+    'Bu bilgisayardaki KidGate arka plan hizmeti durduruldu veya kaldırıldı. Yeniden açılana kadar siteler filtrelenmez ve kaydedilmez.',
   tamperUninstallProtectionTitle: 'Kaldırma koruması kapatıldı',
   tamperUninstallProtectionBody: 'KidGate artık çocuk cihazından kaldırılabilir.',
   tamperReinstalledTitle: 'KidGate yeniden yüklendi',

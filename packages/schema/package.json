@@ -10,6 +10,7 @@
     "./aiWebDomains": "./src/aiWebDomains.ts",
     "./activity": "./src/activity.ts",
     "./api": "./src/api.ts",
+    "./doorbell": "./src/doorbell.ts",
     "./appFlagDismissal": "./src/appFlagDismissal.ts",
     "./appInventory": "./src/appInventory.ts",
     "./appRelease": "./src/appRelease.ts",

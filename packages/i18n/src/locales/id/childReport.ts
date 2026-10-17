@@ -43,6 +43,8 @@ export const childReport = {
   sectionApps: 'Paling banyak dipakai',
   appOnDevices: 'Di {{count}} perangkat',
   appsEmpty: 'Belum ada rincian per aplikasi.',
+  deviceJoinedNote:
+    '{{device}} bergabung dengan keluarga pukul {{time}}. Penggunaannya sebelum itu mungkin tidak lengkap atau dihitung dalam “Aplikasi lain”.',
 
   emptyNoDevices: 'Belum ada perangkat yang ditetapkan untuk anak ini.',
   emptyAssign: 'Tetapkan perangkat',

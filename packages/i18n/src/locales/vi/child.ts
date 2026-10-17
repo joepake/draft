@@ -14,6 +14,9 @@ export const child = {
   limitReached: 'Đã hết giới hạn',
   active: 'Đang sử dụng',
   parentPausedThisDevice: 'Bố mẹ đang tạm khóa thiết bị này.',
+  browsingPausedUntil: 'Đang tạm dừng duyệt web đến {{time}}',
+  browsingPausedHint:
+    'Trình duyệt sẽ bị đóng đến lúc đó. Nếu thấy nhầm, hãy hỏi bố mẹ nhé.',
   blockedHoursOnPaused:
     'Bây giờ đang trong Giờ khóa thiết bị. Con nghỉ ngơi một chút nhé.',
   outOfScreenTimeAskParent:

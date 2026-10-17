@@ -192,6 +192,10 @@ export const activities = {
   tamperWebFilterTitle: 'Filtre web désactivé',
   tamperWebFilterBody:
     'Le VPN de KidGate sur cet appareil a été désactivé ou remplacé par une autre application VPN. Tant qu’il n’est pas réactivé, les sites ne sont ni filtrés ni enregistrés.',
+  tamperWebFilterMacBody:
+    'Le filtre web a été désactivé dans Réglages Système sur ce Mac. Tant qu’il n’est pas réactivé, les sites ne sont ni filtrés ni enregistrés.',
+  tamperWebFilterWindowsBody:
+    'Le service KidGate en arrière-plan sur ce PC a été arrêté ou supprimé. Tant qu’il n’est pas réactivé, les sites ne sont ni filtrés ni enregistrés.',
   tamperUninstallProtectionTitle: 'Protection contre la désinstallation désactivée',
   tamperUninstallProtectionBody:
     'KidGate peut désormais être supprimé de l’appareil de l’enfant.',

@@ -14,6 +14,9 @@ export const child = {
   limitReached: '제한 도달',
   active: '사용 중',
   parentPausedThisDevice: '부모님이 이 기기를 잠시 잠갔어요.',
+  browsingPausedUntil: '{{time}}까지 웹 사용 일시중지 중',
+  browsingPausedHint:
+    '그때까지 브라우저가 닫혀요. 잘못된 것 같으면 부모님께 물어보세요.',
   blockedHoursOnPaused: '지금은 차단 시간대예요. 쉬어 가기 좋은 시간이에요.',
   outOfScreenTimeAskParent:
     '오늘의 스크린 타임을 모두 사용했어요. 아래에서 더 요청할 수 있어요.',

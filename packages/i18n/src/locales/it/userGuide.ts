@@ -301,6 +301,22 @@ export const userGuide = {
         '6': 'Un telefono o un computer bloccato permette comunque a tuo figlio di inviare un SOS. Su Android, l’SOS apre anche chiamate, mappe e messaggi per 5 minuti mentre tutto il resto resta bloccato, e compare in “Attività”.',
       },
     },
+    siri: {
+      title: 'Usare Siri sull’iPhone',
+      summary:
+        'Con la voce, blocca o sblocca i dispositivi di tuo figlio, dai minuti extra e ascolta il tempo di utilizzo di oggi.',
+      keywords:
+        'voce, comando vocale, parlare, mani libere, assistente, Comandi Rapidi, voice',
+      tip: 'I comandi vocali funzionano sull’iPhone di un genitore, per tutti i genitori della famiglia, nella lingua impostata per Siri. I telefoni Android e la dashboard web non li hanno.',
+      steps: {
+        '1': 'Accedi a KidGate sul tuo iPhone e aprilo una volta. Così Siri impara i nomi dei tuoi figli, e un figlio o un dispositivo aggiunto dopo arriva a Siri la prossima volta che apri KidGate. Se Siri dice “Prima accedi a KidGate.”, apri KidGate su questo iPhone.',
+        '2': 'Chiedi a Siri “KidGate, blocca Sofia”, con il nome di tuo figlio. Tutti i suoi dispositivi si bloccano, come con “Blocca tutto”. Un dispositivo non assegnato a nessun bambino risponde al proprio nome.',
+        '3': 'Di’ “KidGate, sblocca Sofia” per ridargli l’accesso. Per tutti i dispositivi della famiglia insieme, di’ “KidGate, blocca tutto” o “KidGate, sblocca tutto”.',
+        '4': 'Di’ “KidGate, dai minuti extra a Sofia” per aggiungere 15 minuti per oggi su tutti i suoi dispositivi. Il tempo extra finisce a mezzanotte.',
+        '5': 'Di’ “KidGate tempo di schermo di Sofia” per sentire il tempo di utilizzo di oggi. Siri legge gli ultimi dati che KidGate ti ha mostrato, quindi apri prima KidGate per avere i più recenti.',
+        '6': 'L’app Comandi Rapidi elenca gli stessi comandi sotto KidGate, da avviare con un tocco. Per dare un’altra quantità, da 5 a 180 minuti, aggiungi l’azione “Dai minuti extra a un figlio” a un tuo comando rapido e imposta lì i minuti.',
+      },
+    },
     pauseBrowsing: {
       title: 'Sospendi la navigazione per un po’',
       summary:
@@ -419,7 +435,7 @@ export const userGuide = {
       title: 'Leggi i report di utilizzo',
       summary:
         'Vedi per quanto tempo è stato usato ogni dispositivo oggi e negli ultimi 30 giorni, per figlio, e in un report ogni lunedì.',
-      tip: 'Con il piano gratuito vedi il totale di oggi e le 3 app più usate, aggiornati quando controlli. Premium aggiunge 30 giorni di cronologia, quando è stato usato ogni dispositivo, le 10 app più usate, un report per ogni figlio e un nuovo report settimanale ogni lunedì. iPhone e iPad inviano solo il totale.',
+      tip: 'Con il piano gratuito vedi il totale di oggi e le 3 app più usate, aggiornati quando controlli. Premium aggiunge 30 giorni di cronologia, quando è stato usato ogni dispositivo, le 10 app più usate, un report per ogni figlio e un nuovo report settimanale ogni lunedì. iPhone e iPad inviano solo il totale. Il giorno in cui un dispositivo si unisce alla famiglia, l’utilizzo precedente potrebbe essere incompleto o conteggiato in “Altre app”.',
       steps: {
         '1': 'Apri Report. La sezione Oggi somma tutti i dispositivi; sotto trovi il Report settimanale, ogni figlio (“Per figlio”) e ogni dispositivo (“Per dispositivo”).',
         '2': 'Tocca un dispositivo per aprire il suo Report di utilizzo: oggi rispetto al Limite giornaliero, “Ultimi 30 giorni”, “Quando è stato usato” e “App più usate”. Puoi aprirlo anche da “Utilizzo di oggi” nella schermata del dispositivo.',

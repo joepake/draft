@@ -181,6 +181,10 @@ export const activities = {
   tamperWebFilterTitle: 'Webフィルターがオフになりました',
   tamperWebFilterBody:
     'このデバイスのKidGateのVPNがオフにされたか、別のVPNアプリに置き換えられました。再びオンになるまで、サイトはフィルタリングも記録もされません。',
+  tamperWebFilterMacBody:
+    'このMacのシステム設定でWebフィルターがオフにされました。再びオンになるまで、サイトはフィルタリングも記録もされません。',
+  tamperWebFilterWindowsBody:
+    'このPCのKidGateのバックグラウンドサービスが停止または削除されました。再びオンになるまで、サイトはフィルタリングも記録もされません。',
   tamperUninstallProtectionTitle: 'アンインストール防止がオフになりました',
   tamperUninstallProtectionBody: '子どものデバイスからKidGateを削除できる状態です。',
   tamperReinstalledTitle: 'KidGateが再インストールされました',

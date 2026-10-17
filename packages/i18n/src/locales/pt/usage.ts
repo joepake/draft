@@ -76,6 +76,8 @@ export const usage = {
   appMinAge: 'Classificado {{age}}+',
   underAMinute: 'Menos de um minuto',
   topAppsOther: 'Outros apps',
+  topAppsJoinedNote:
+    'Este dispositivo entrou na família às {{time}}. O uso antes disso pode estar incompleto ou contado em “Outros apps”.',
   topAppsEmpty:
     'Ainda não há dados por app. No dispositivo da criança, confirme que o KidGate pode medir o uso de apps e aguarde uma sincronização.',
   protectionImpactTitle: 'Impacto da proteção',

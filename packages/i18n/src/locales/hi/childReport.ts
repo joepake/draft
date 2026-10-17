@@ -42,6 +42,8 @@ export const childReport = {
   sectionApps: 'सबसे ज़्यादा इस्तेमाल',
   appOnDevices: '{{count}} डिवाइस पर',
   appsEmpty: 'ऐप के अनुसार ब्यौरा अभी नहीं है।',
+  deviceJoinedNote:
+    '{{device}} {{time}} बजे परिवार से जुड़ा। उससे पहले का इसका इस्तेमाल अधूरा हो सकता है या “अन्य ऐप्स” में गिना जा सकता है।',
 
   emptyNoDevices: 'इस बच्चे को अभी कोई डिवाइस नहीं सौंपा गया है।',
   emptyAssign: 'डिवाइस सौंपें',

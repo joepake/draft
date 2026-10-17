@@ -12,7 +12,7 @@ export type UsageAppBreakdown = {
  * and the client repository truncates on the way out. Three cuts at three
  * different numbers is a list whose length depends on which one was smallest,
  * which is unexplainable from any screen — so they read this, and the two that
- * cannot (Kotlin, Swift) are pinned to it by
+ * cannot (Kotlin, Swift, the desktop's Rust) are pinned to it by
  * `packages/core/src/domain/__tests__/usageTopAppsLimitParity.test.ts`.
  *
  * **Raised from 8 to 10 on 2026-08-27.** `AppLimitsScreen` offers exactly
@@ -23,9 +23,10 @@ export type UsageAppBreakdown = {
  *
  * Two things it does not do. It does not backfill: a day document written
  * before the bump keeps its eight rows forever, and nothing re-derives them.
- * And it reaches a phone only through a store build — Android and iOS hold two
- * of the five copies in native code, so a server deploy alone widens what is
- * accepted and changes nothing about what arrives.
+ * And it reaches a device only through a build — Android, iOS and the desktop
+ * hold three of the six copies in native code, so a server deploy alone widens
+ * what is accepted and changes nothing about what arrives. The desktop's copy
+ * missed the bump and stayed at eight until 2026-10-17.
  *
  * Cost of the two extra rows is not the classifier: `appCategories/{package}`
  * is keyed product-wide, so a new row costs the model only for an identifier

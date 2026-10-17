@@ -114,6 +114,7 @@ export default {
 
   home: {
     heroBadge: 'Quản lý thiết bị cho cả nhà',
+    launchCountdown: 'Ra mắt sau',
     heroTitle: 'Bảo vệ con bạn',
     heroTitleAccent: 'mà không lấy đi sự tự do của con.',
     heroLede:

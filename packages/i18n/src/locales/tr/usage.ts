@@ -75,6 +75,8 @@ export const usage = {
   appMinAge: '{{age}}+ olarak derecelendirilmiş',
   underAMinute: 'Bir dakikadan az',
   topAppsOther: 'Diğer uygulamalar',
+  topAppsJoinedNote:
+    'Bu cihazın aileye katılma saati: {{time}}. Öncesindeki kullanım eksik olabilir ya da “Diğer uygulamalar” altında sayılabilir.',
   topAppsEmpty:
     'Henüz uygulama bazlı veri yok. Çocuğun cihazında KidGate’in uygulama kullanımını ölçmesine izin verildiğinden emin olun ve senkronizasyonu bekleyin.',
   protectionImpactTitle: 'Koruma etkisi',

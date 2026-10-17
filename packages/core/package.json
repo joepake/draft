@@ -31,6 +31,7 @@
     "./domain/accountIdentity": "./src/domain/accountIdentity.ts",
     "./domain/activityActor": "./src/domain/activityActor.ts",
     "./domain/activityCopy": "./src/domain/activityCopy.ts",
+    "./domain/browserApps": "./src/domain/browserApps.ts",
     "./domain/activityKind": "./src/domain/activityKind.ts",
     "./domain/alertSupport": "./src/domain/alertSupport.ts",
     "./domain/apiErrorMessages": "./src/domain/apiErrorMessages.ts",

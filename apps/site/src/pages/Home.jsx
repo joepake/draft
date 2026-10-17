@@ -5,7 +5,12 @@ import Icon from '@kidgate/web-ui/Icon';
 import PlanComparison from '@kidgate/web-ui/PlanComparison';
 import { useT } from '@kidgate/web-ui/useT';
 import { trackDownloadClick } from '../lib/analytics.js';
-import { isPlatformAvailable, storeHref } from '../lib/storeLinks.js';
+import {
+  RELEASE_AT,
+  isPlatformAvailable,
+  isReleased,
+  storeHref,
+} from '../lib/storeLinks.js';
 import { useReveal } from '../lib/useReveal.js';
 import familyEn from '../assets/dashboard-family-en.webp';
 import familyVi from '../assets/dashboard-family-vi.webp';
@@ -223,8 +228,42 @@ function PhoneGet({ centered = false }) {
       <div className="store-buttons phone-get-stores">
         <PhoneStoreButtons />
       </div>
-      <img className="get-qr" src={getQr} width="116" height="116" alt="" />
+      <img
+        className={`get-qr${isReleased() ? '' : ' get-qr--locked'}`}
+        src={getQr}
+        width="116"
+        height="116"
+        alt=""
+      />
     </div>
+  );
+}
+
+/**
+ * Hours:minutes:seconds to `RELEASE_AT`, hours uncapped (80:00:00, not days),
+ * so the digits need no unit words in fourteen languages. At zero the page
+ * reloads: every `storeHref` above was read once at render.
+ */
+function LaunchCountdown() {
+  const { t } = useT();
+  const [now, setNow] = useState(Date.now);
+  useEffect(() => {
+    const id = setInterval(() => {
+      if (isReleased()) window.location.reload();
+      else setNow(Date.now());
+    }, 1000);
+    return () => clearInterval(id);
+  }, []);
+  if (isReleased(now)) return null;
+  const s = Math.ceil((RELEASE_AT - now) / 1000);
+  const pad = n => String(n).padStart(2, '0');
+  return (
+    <p className="launch-countdown">
+      {t('home.launchCountdown')}{' '}
+      <time dateTime={new Date(RELEASE_AT).toISOString()}>
+        {pad(Math.floor(s / 3600))}:{pad(Math.floor(s / 60) % 60)}:{pad(s % 60)}
+      </time>
+    </p>
   );
 }
 
@@ -507,6 +546,7 @@ export default function Home() {
               <span className="accent">{t('home.heroTitleAccent')}</span>
             </h1>
             <p className="lede">{t('home.heroLede')}</p>
+            <LaunchCountdown />
             <ul className="hero-checks">
               {HERO_CHECKS.map(n => (
                 <li key={n}>

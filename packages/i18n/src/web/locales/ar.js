@@ -103,6 +103,7 @@ export default {
 
   home: {
     heroBadge: 'رقابة أبوية كما ينبغي',
+    launchCountdown: 'الإطلاق خلال',
     heroTitle: 'احمِ أطفالك',
     heroTitleAccent: 'دون أن تسلبهم حريتهم.',
     heroLede:

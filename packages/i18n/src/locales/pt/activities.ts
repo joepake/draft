@@ -186,6 +186,10 @@ export const activities = {
   tamperWebFilterTitle: 'Filtro da web desligado',
   tamperWebFilterBody:
     'A VPN do KidGate neste dispositivo foi desligada ou substituída por outro aplicativo de VPN. Até ela ser ligada de novo, os sites não são filtrados nem registrados.',
+  tamperWebFilterMacBody:
+    'O filtro da web foi desativado nos Ajustes do Sistema deste Mac. Até ele ser ligado de novo, os sites não são filtrados nem registrados.',
+  tamperWebFilterWindowsBody:
+    'O serviço em segundo plano do KidGate neste PC foi parado ou removido. Até ele ser ligado de novo, os sites não são filtrados nem registrados.',
   tamperUninstallProtectionTitle: 'Proteção contra desinstalação desligada',
   tamperUninstallProtectionBody:
     'Agora o KidGate pode ser removido do dispositivo da criança.',

@@ -14,6 +14,9 @@ export const child = {
   limitReached: 'Batas tercapai',
   active: 'Aktif',
   parentPausedThisDevice: 'Orang tuamu mengunci perangkat ini untuk sementara.',
+  browsingPausedUntil: 'Penjelajahan dijeda sampai {{time}}',
+  browsingPausedHint:
+    'Browser ditutup sampai saat itu. Kalau ini terasa salah, tanyakan ke orang tuamu.',
   blockedHoursOnPaused: 'Sekarang sedang Jam Diblokir. Waktu yang pas untuk istirahat.',
   outOfScreenTimeAskParent:
     'Waktu layar hari ini sudah habis. Kamu bisa meminta tambahan di bawah.',

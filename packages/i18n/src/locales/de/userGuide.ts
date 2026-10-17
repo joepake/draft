@@ -299,6 +299,22 @@ export const userGuide = {
         '6': 'Ein gesperrtes Handy oder ein gesperrter Computer lässt dein Kind weiterhin einen SOS-Alarm senden. Auf Android öffnet SOS außerdem 5 Minuten lang Anrufe, Karten und Nachrichten, während alles andere gesperrt bleibt, und es erscheint unter „Aktivitäten“.',
       },
     },
+    siri: {
+      title: 'Siri auf dem iPhone verwenden',
+      summary:
+        'Per Stimme die Geräte eines Kindes sperren oder entsperren, Extra-Minuten geben und die heutige Bildschirmzeit hören.',
+      keywords:
+        'Stimme, Sprachbefehl, sprechen, freihändig, Sprachassistent, Kurzbefehle, voice',
+      tip: 'Sprachbefehle funktionieren auf dem iPhone eines Elternteils, für alle Eltern der Familie, in der Sprache, die für Siri eingestellt ist. Android-Smartphones und das Web-Dashboard haben keine.',
+      steps: {
+        '1': 'Melde dich auf deinem iPhone bei KidGate an und öffne die App einmal. So lernt Siri die Namen deiner Kinder, und ein später hinzugefügtes Kind oder Gerät kennt Siri, sobald du KidGate das nächste Mal öffnest. Sagt Siri „Melde dich zuerst bei KidGate an.“, öffne KidGate auf diesem iPhone.',
+        '2': 'Sag zu Siri „KidGate, sperre Lena“, mit dem Namen deines Kindes. Alle Geräte dieses Kindes werden gesperrt, wie mit „Alle sperren“. Ein Gerät, das keinem Kind zugewiesen ist, hört auf seinen eigenen Namen.',
+        '3': 'Sag „KidGate, entsperre Lena“, um den Zugriff wiederherzustellen. Für alle Geräte der Familie auf einmal sag „KidGate, sperre alles“ oder „KidGate, entsperre alles“.',
+        '4': 'Sag „KidGate, gib Lena Extra-Minuten“, um heute 15 Minuten auf allen Geräten dieses Kindes hinzuzufügen. Die Extrazeit endet um Mitternacht.',
+        '5': 'Sag „KidGate Bildschirmzeit von Lena“, um die heutige Bildschirmzeit zu hören. Siri liest die letzten Zahlen vor, die KidGate dir angezeigt hat. Öffne KidGate vorher, um die neuesten zu bekommen.',
+        '6': 'Die App Kurzbefehle listet dieselben Befehle unter KidGate auf, mit einem Tippen ausführbar. Für eine andere Anzahl von 5 bis 180 Minuten füge die Aktion „Einem Kind Extra-Minuten geben“ zu einem eigenen Kurzbefehl hinzu und stelle die Minuten dort ein.',
+      },
+    },
     pauseBrowsing: {
       title: 'Surfen eine Weile pausieren',
       summary:
@@ -415,7 +431,7 @@ export const userGuide = {
       title: 'Nutzungsberichte lesen',
       summary:
         'Sieh, wie lange jedes Gerät heute und in den letzten 30 Tagen genutzt wurde – pro Kind und jeden Montag in einem Bericht.',
-      tip: 'Im Gratis-Tarif siehst du die heutige Gesamtzeit und die Top 3 Apps, aktualisiert, wenn du nachsiehst. Premium ergänzt 30 Tage Verlauf, wann jedes Gerät genutzt wurde, die Top 10 Apps, einen Bericht für jedes Kind und jeden Montag einen neuen Wochenbericht. iPhone und iPad melden nur die Gesamtzeit.',
+      tip: 'Im Gratis-Tarif siehst du die heutige Gesamtzeit und die Top 3 Apps, aktualisiert, wenn du nachsiehst. Premium ergänzt 30 Tage Verlauf, wann jedes Gerät genutzt wurde, die Top 10 Apps, einen Bericht für jedes Kind und jeden Montag einen neuen Wochenbericht. iPhone und iPad melden nur die Gesamtzeit. Am Tag, an dem ein Gerät der Familie beitritt, kann die Nutzung davor unvollständig sein oder unter „Andere Apps“ gezählt werden.',
       steps: {
         '1': 'Öffne Berichte. „Heute“ zählt alle Geräte zusammen; darunter folgen der Wochenbericht, jedes Kind („Nach Kind“) und jedes Gerät („Nach Gerät“).',
         '2': 'Tippe auf ein Gerät, um seinen Nutzungsbericht zu öffnen: heute im Vergleich zum Tageslimit, „Letzte 30 Tage“, „Wann es genutzt wurde“ und „Meistgenutzte Apps“. Du kannst ihn auch über „Nutzung heute“ auf dem Gerätebildschirm öffnen.',

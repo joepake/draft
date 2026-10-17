@@ -144,6 +144,8 @@ export const deviceDetail = {
   pauseBrowsing: 'ブラウジングを一時停止',
   pauseBrowsingDescription:
     'しばらくの間ブラウジングを止めます。通話とオフラインのアプリは引き続き使えます。',
+  pauseBrowsingDesktopNote:
+    'パソコンでは、一時停止が終わるまでブラウザが閉じられます。',
   pauseBrowsingOff: '停止していません',
   pauseBrowsingLeft: '一時停止中 · 残り{{minutes}}分',
   pauseBrowsingFor: '{{minutes}}分停止する',

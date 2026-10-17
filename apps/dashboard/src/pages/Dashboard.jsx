@@ -26,7 +26,7 @@ import {
   resolveLockedTeaser,
   resolveTopAppsTeaser,
 } from '@kidgate/core/domain/premiumTeaser';
-import { otherAppsMinutes } from '@kidgate/core/domain/childUsage';
+import { joinedOnDay, otherAppsMinutes } from '@kidgate/core/domain/childUsage';
 import PremiumTeaser from '../dashboard/PremiumTeaser.jsx';
 import { deviceMinutesToday, usageTodayKey } from '@kidgate/core/domain/reportHub';
 import {
@@ -3317,6 +3317,7 @@ export default function Dashboard({
             onChoose={startPauseBrowsing}
             resumeMinutes={pauseResumeMinutes}
             onResume={resumePauseBrowsing}
+            desktop={isDesktopLike(device?.platform)}
             onClose={() => {
               setPauseSheetOpen(false);
               setPauseResumeMinutes(null);
@@ -4238,6 +4239,7 @@ export default function Dashboard({
                   apps={screenTopApps.apps}
                   limits={c.appLimits}
                   totalMinutes={screenTopApps.totalMinutes}
+                  joinedAt={joinedOnDay(device.createdAt, screenDay.date)}
                 />
                 {/*
                   The teaser carries both free cases now — under today's three

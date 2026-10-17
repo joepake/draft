@@ -32,6 +32,8 @@ export default function PauseBrowsingSheet({
   onClose,
   resumeMinutes = null,
   onResume,
+  // A Mac or a PC: the pause closes its browsers, and the parent is told.
+  desktop = false,
 }) {
   const { t } = useT();
   const sheetRef = useSheet(onClose);
@@ -80,6 +82,9 @@ export default function PauseBrowsingSheet({
               })
             : appT('deviceDetail.pauseBrowsingDescription')}
         </p>
+        {!resuming && desktop ? (
+          <p className="sheet-body">{appT('deviceDetail.pauseBrowsingDesktopNote')}</p>
+        ) : null}
         {resuming ? (
           <button className="btn btn-block" onClick={onResume}>
             {appT('deviceDetail.pauseBrowsingResume')}

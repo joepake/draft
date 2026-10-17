@@ -296,6 +296,22 @@ export const userGuide = {
         '6': 'Kilitli bir telefon veya bilgisayar, çocuğunuzun SOS göndermesine yine izin verir. Android’de SOS ayrıca aramaları, haritaları ve mesajları 5 dakika boyunca açar; geri kalan her şey kilitli kalır ve bu durum “Etkinlikler”de görünür.',
       },
     },
+    siri: {
+      title: 'iPhone’da Siri’yi kullanma',
+      summary:
+        'Bir çocuğun cihazlarını sesle kilitleyin veya kilidini açın, ek dakika verin ve bugünkü ekran süresini dinleyin.',
+      keywords:
+        'ses, sesli komut, konuşmak, eller serbest, asistan, Kestirmeler, voice',
+      tip: 'Sesli komutlar bir ebeveynin iPhone’unda, ailedeki her ebeveyn için, Siri’nin ayarlı olduğu dilde çalışır. Android telefonlarda ve web panelinde yoktur.',
+      steps: {
+        '1': 'iPhone’unuzda KidGate’e giriş yapın ve uygulamayı bir kez açın. Siri çocuklarınızın adlarını böyle öğrenir, sonradan eklenen bir çocuk veya cihaz da KidGate’i bir sonraki açışınızda Siri’ye ulaşır. Siri “Önce KidGate’e giriş yapın.” derse KidGate’i bu iPhone’da açın.',
+        '2': 'Siri’ye çocuğunuzun adıyla “KidGate, Elif kilitle” deyin. O çocuğun tüm cihazları, Tümünü kilitle’deki gibi kilitlenir. Bir çocuğa atanmamış cihaz kendi adıyla çağrılır.',
+        '3': 'Erişimi geri vermek için “KidGate, Elif kilidini aç” deyin. Ailedeki tüm cihazlar için aynı anda “KidGate, hepsini kilitle” veya “KidGate, hepsinin kilidini aç” deyin.',
+        '4': '“KidGate, Elif ek dakika ver” derseniz o çocuğun tüm cihazlarına bugün için 15 dakika eklenir. Ek süre gece yarısı biter.',
+        '5': 'Bugünkü ekran süresini duymak için “KidGate Elif ekran süresi” deyin. Siri, KidGate’in size en son gösterdiği verileri okur. En güncelini duymak için önce KidGate’i açın.',
+        '6': 'Kestirmeler uygulaması aynı komutları KidGate altında listeler ve tek dokunuşla çalıştırılabilir. 5 ile 180 dakika arasında farklı bir süre vermek için Bir çocuğa ek dakika ver eylemini kendi kestirmenize ekleyin ve dakikayı orada ayarlayın.',
+      },
+    },
     pauseBrowsing: {
       title: 'Taramayı bir süreliğine duraklatma',
       summary:
@@ -411,7 +427,7 @@ export const userGuide = {
       title: 'Kullanım raporlarını okuma',
       summary:
         'Her cihazın bugün ve son 30 günde ne kadar kullanıldığını çocuk bazında ve her pazartesi gelen bir raporda görün.',
-      tip: 'Ücretsiz plandaki aileler bugünün toplamını ve en çok kullanılan 3 uygulamayı görür; bu bilgiler siz baktığınızda güncellenir. Premium ise 30 günlük geçmiş, her cihazın ne zaman kullanıldığı, en çok kullanılan 10 uygulama, her çocuk için bir rapor ve her pazartesi yeni bir haftalık rapor ekler. iPhone ve iPad yalnızca toplam süreyi bildirir.',
+      tip: 'Ücretsiz plandaki aileler bugünün toplamını ve en çok kullanılan 3 uygulamayı görür; bu bilgiler siz baktığınızda güncellenir. Premium ise 30 günlük geçmiş, her cihazın ne zaman kullanıldığı, en çok kullanılan 10 uygulama, her çocuk için bir rapor ve her pazartesi yeni bir haftalık rapor ekler. iPhone ve iPad yalnızca toplam süreyi bildirir. Bir cihazın aileye katıldığı gün, öncesindeki kullanım eksik olabilir ya da “Diğer uygulamalar” altında sayılabilir.',
       steps: {
         '1': 'Raporlar’ı açın. “Bugün” bölümü tüm cihazları toplar; altında Haftalık rapor, her çocuk (Çocuğa göre) ve her cihaz (Cihaza göre) yer alır.',
         '2': 'Bir cihazın Kullanım Raporu’nu açmak için ona dokunun: Günlük sınıra göre bugünkü durum, “Son 30 gün”, “Ne zaman kullanıldı” ve “En çok kullanılan uygulamalar”. Bu raporu cihaz ekranındaki “Bugünkü kullanım” bölümünden de açabilirsiniz.',

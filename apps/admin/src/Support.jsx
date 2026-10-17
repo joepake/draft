@@ -333,7 +333,10 @@ function Detail({ uid, id, version, onChanged }) {
             <div className="tile-label">{t('support.account')}</div>
             <div className="account-line">{family.name || t('family.noName')}</div>
             <div className="account-line faint">
-              {family.email || t('support.noEmail')}
+              {/* The report's own address first: `users/{uid}` holds none in
+                  prod, so `family.email` alone printed "no email" on every
+                  ticket a parent filed. */}
+              {report.email || family.email || t('support.noEmail')}
             </div>
           </div>
           <div>

@@ -448,6 +448,8 @@ export interface Device {
    */
   childId?: string;
   role: 'child';
+  /** When it joined the family, ISO. Absent where the record carried none. */
+  createdAt?: string;
   platform?: DevicePlatform;
   /**
    * Phone or tablet, for the devices whose platform does not say. An iPad and

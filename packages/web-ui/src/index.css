@@ -695,6 +695,21 @@ label[for] {
   box-shadow: 0 4px 14px color-mix(in srgb, var(--kg-shadow) 18%, transparent);
 }
 
+/* Before `RELEASE_AT` (`apps/site` storeLinks.js): unscannable on purpose. */
+.get-qr--locked {
+  filter: blur(5px);
+}
+
+.launch-countdown {
+  font-weight: 600;
+  color: var(--brand);
+}
+
+.launch-countdown time {
+  font-variant-numeric: tabular-nums;
+  font-size: 1.4em;
+}
+
 /* `#download`: the group centred under the heading, its caption under it. */
 .download-get {
   margin-bottom: 2.5rem;

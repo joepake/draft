@@ -146,6 +146,8 @@ export const deviceDetail = {
   pauseBrowsing: 'Sospendi la navigazione',
   pauseBrowsingDescription:
     'Sospendi la navigazione per un po’. Chiamate e app offline continuano a funzionare.',
+  pauseBrowsingDesktopNote:
+    'Su un computer, i browser vengono chiusi finché la pausa non termina.',
   pauseBrowsingOff: 'Non sospesa',
   pauseBrowsingLeft: 'Sospesa · restano {{minutes}} min',
   pauseBrowsingFor: 'Sospendi per {{minutes}} min',

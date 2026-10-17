@@ -159,6 +159,10 @@ export const activities = {
   tamperWebFilterTitle: 'Веб-фильтр выключен',
   tamperWebFilterBody:
     'VPN KidGate на этом устройстве выключили или заменили другим VPN-приложением. Пока он снова не включится, сайты не фильтруются и не записываются.',
+  tamperWebFilterMacBody:
+    'Веб-фильтр отключили в Системных настройках на этом Mac. Пока он снова не включится, сайты не фильтруются и не записываются.',
+  tamperWebFilterWindowsBody:
+    'Фоновую службу KidGate на этом ПК остановили или удалили. Пока она снова не включится, сайты не фильтруются и не записываются.',
   tamperUninstallProtectionTitle: 'Защита от удаления выключена',
   tamperUninstallProtectionBody: 'Теперь KidGate можно удалить с детского устройства.',
   tamperReinstalledTitle: 'KidGate переустановлен',

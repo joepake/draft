@@ -74,6 +74,8 @@ export const usage = {
   appMinAge: 'Rating {{age}}+',
   underAMinute: 'Kurang dari semenit',
   topAppsOther: 'Aplikasi lain',
+  topAppsJoinedNote:
+    'Perangkat ini bergabung dengan keluarga pukul {{time}}. Penggunaan sebelum itu mungkin tidak lengkap atau dihitung dalam “Aplikasi lain”.',
   topAppsEmpty:
     'Belum ada data per aplikasi. Di perangkat anak, pastikan KidGate diizinkan mengukur penggunaan aplikasi, lalu tunggu sinkronisasi.',
   protectionImpactTitle: 'Dampak perlindungan',

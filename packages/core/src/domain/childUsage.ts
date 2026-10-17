@@ -51,6 +51,7 @@
 import type { UsageAppBreakdown, UsageTimeline } from '@kidgate/schema/usageDay';
 import { USAGE_TIMELINE_MINUTES } from '@kidgate/schema/usageDay';
 import { lateNightHits } from './digestFindings';
+import { toLocalDateKey } from './placeVisits';
 import {
   isTimeline,
   mergeTimelines,
@@ -431,6 +432,30 @@ export function otherAppsMinutes(
   }
   const listed = topApps.reduce((sum, app) => sum + safeMinutes(app.minutes), 0);
   return Math.max(0, Math.round(safeMinutes(totalMinutes) - listed));
+}
+
+/**
+ * When the device joined the family, if that happened on `dateKey`'s day.
+ *
+ * The day a device is paired is the one day its report is partly about a
+ * machine nobody here was watching. Measured 2026-10-15: a Mac re-paired at
+ * 10:59 kept the morning's 282 minutes in its total (`policy.rs` keeps the
+ * tally so unpairing cannot hand back the limit) and lost their app names
+ * (`forget_child_activity` drops those as the last child's), so the parent read
+ * "Other apps 4h42m" under eight rows of which the smallest was six minutes.
+ * Other platforms differ in which half survives, so the sentence this feeds
+ * says "may" and the parent is told the time rather than left to subtract.
+ *
+ * Local day of the reader, like every other date key on these screens.
+ */
+export function joinedOnDay(
+  createdAt: string | null | undefined,
+  dateKey: string | null | undefined,
+): Date | null {
+  if (!createdAt || !dateKey || toLocalDateKey(createdAt) !== dateKey) {
+    return null;
+  }
+  return new Date(createdAt);
 }
 
 /** The apps that took the most of this person's window, largest first. */

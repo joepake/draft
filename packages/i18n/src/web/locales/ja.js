@@ -93,6 +93,7 @@ export default {
 
   home: {
     heroBadge: '正しいかたちのペアレンタルコントロール',
+    launchCountdown: 'リリースまで',
     heroTitle: '子どもを守る、',
     heroTitleAccent: 'その自由を奪わずに。',
     heroLede:

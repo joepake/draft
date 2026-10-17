@@ -143,6 +143,7 @@ export const deviceDetail = {
   pauseBrowsing: 'Jeda penjelajahan',
   pauseBrowsingDescription:
     'Hentikan penjelajahan web sebentar. Telepon dan aplikasi offline tetap berjalan.',
+  pauseBrowsingDesktopNote: 'Di komputer, browser ditutup sampai jeda berakhir.',
   pauseBrowsingOff: 'Tidak dijeda',
   pauseBrowsingLeft: 'Dijeda · sisa {{minutes}} mnt',
   pauseBrowsingFor: 'Jeda {{minutes}} mnt',

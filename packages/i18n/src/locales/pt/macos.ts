@@ -34,6 +34,7 @@ export const macos = {
   notSupportedOnThisDevice: 'Não compatível com este dispositivo',
   filterAwaitingApproval: 'Aguardando aprovação nos Ajustes do Sistema',
   filterSwitchedOff: 'Desativado nos Ajustes do Sistema',
+  webFilterOffChip: 'Filtro da web desativado',
   filterInterrupted: 'Parado após um problema — o KidGate vai restaurá-lo',
   filterNeedsService: 'Precisa do serviço em segundo plano do KidGate',
   setupFilterApprovalBody:

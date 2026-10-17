@@ -467,8 +467,8 @@ function mapChildDevice(
      * offline forever, and a request written on every parent app open because
      * the throttle can never see the last one.
      *
-     * `data.beatIntervalMs` travels with the stamp beside it — the fold above
-     * keeps each interval with the stamp it describes.
+     * `beat.beatIntervalMs` is presence's whenever presence has one, whichever
+     * stamp is newer — the fold above says why.
      */
     ...(typeof beat.beatIntervalMs === 'number'
       ? { beatIntervalMs: beat.beatIntervalMs }
@@ -645,11 +645,19 @@ export function createDeviceRepository(deps: DeviceRepositoryDeps) {
      * beat lands, so a listener there would pay a read per beat to deliver the
      * device its own timestamp — the self-read the presence split was made to
      * end, back under a new name. A child screen renders no `lastActiveAt`.
+     *
+     * `meta.fromCache` is the device document's own. A copy the SDK served
+     * from its on-device cache can be any age, so a caller that keeps the copy
+     * to answer later questions must tell the two apart (`apps/mobile`'s
+     * `childDeviceSnapshot`).
      */
     subscribeChildDevice(
       userId: string,
       deviceId: string,
-      onDevice: (device: ChildDeviceRecord | null) => void,
+      onDevice: (
+        device: ChildDeviceRecord | null,
+        meta: { fromCache: boolean },
+      ) => void,
       onError: (error: Error) => void,
       options: { presence?: boolean } = {},
     ): Unsubscribe {
@@ -660,7 +668,9 @@ export function createDeviceRepository(deps: DeviceRepositoryDeps) {
         if (!device || !presenceSettled) {
           return;
         }
-        onDevice(device.exists ? mapChildDevice(device, presence) : null);
+        onDevice(device.exists ? mapChildDevice(device, presence) : null, {
+          fromCache: device.fromCache,
+        });
       };
       /*
        * The phone reads its own policy here, and merge-writes this document

@@ -162,6 +162,7 @@ export const deviceDetail = {
   pauseBrowsing: 'إيقاف التصفح مؤقتًا',
   pauseBrowsingDescription:
     'إيقاف التصفح لفترة. تستمر المكالمات والتطبيقات التي لا تحتاج إلى الإنترنت في العمل.',
+  pauseBrowsingDesktopNote: 'على الكمبيوتر، تُغلق المتصفحات حتى ينتهي الإيقاف المؤقت.',
   pauseBrowsingOff: 'غير متوقف',
   pauseBrowsingLeft: 'متوقف · يتبقى {{minutes}} دقيقة',
   pauseBrowsingFor: 'إيقاف لمدة {{minutes}} دقيقة',

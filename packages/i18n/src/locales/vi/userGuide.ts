@@ -297,6 +297,22 @@ export const userGuide = {
         '6': 'Điện thoại hoặc máy tính đang bị khóa vẫn cho con gửi SOS. Trên Android, SOS còn mở gọi điện, bản đồ và tin nhắn trong 5 phút trong khi mọi thứ khác vẫn khóa, và việc này hiện trong [[Nhật ký]].',
       },
     },
+    siri: {
+      title: 'Dùng Siri trên iPhone',
+      summary:
+        'Khóa hoặc mở khóa thiết bị của con, cho con thêm phút và nghe thời gian sử dụng hôm nay bằng giọng nói.',
+      keywords:
+        'giọng nói, ra lệnh bằng giọng nói, nói, rảnh tay, trợ lý ảo, phím tắt, shortcuts, voice',
+      tip: 'Lệnh giọng nói dùng được trên iPhone của phụ huynh, cho mọi phụ huynh trong gia đình, bằng ngôn ngữ đang đặt cho Siri. Điện thoại Android và bảng điều khiển web không có lệnh giọng nói.',
+      steps: {
+        '1': 'Đăng nhập KidGate trên iPhone và mở ứng dụng một lần. Nhờ đó Siri biết tên các con, và con hoặc thiết bị thêm sau sẽ được Siri nhận ra vào lần tới bạn mở KidGate. Nếu Siri nói “Hãy đăng nhập KidGate trước.”, hãy mở KidGate trên iPhone này.',
+        '2': 'Nói với Siri “KidGate, khóa Minh”, thay bằng tên của con. Mọi thiết bị của con sẽ bị khóa, giống như chạm [[Khóa tất cả]]. Thiết bị chưa được gán cho con thì gọi bằng tên của chính thiết bị đó.',
+        '3': 'Nói “KidGate, mở khóa Minh” để cho phép sử dụng trở lại. Để khóa hoặc mở khóa mọi thiết bị trong gia đình cùng lúc, nói “KidGate, khóa hết” hoặc “KidGate, mở khóa hết”.',
+        '4': 'Nói “KidGate, cho Minh thêm phút” để cộng 15 phút cho hôm nay trên mọi thiết bị của con. Thời gian thêm hết hiệu lực lúc nửa đêm.',
+        '5': 'Nói “KidGate thời gian sử dụng của Minh” để nghe thời gian sử dụng hôm nay. Siri đọc số liệu mới nhất KidGate đã hiển thị cho bạn, nên hãy mở KidGate trước để có số mới nhất.',
+        '6': 'Ứng dụng Phím tắt liệt kê các lệnh này dưới mục KidGate để chạy bằng một lần chạm. Để cho số phút khác, từ 5 đến 180 phút, hãy thêm tác vụ Cho con thêm phút vào phím tắt của riêng bạn rồi đặt số phút ở đó.',
+      },
+    },
     pauseBrowsing: {
       title: 'Tạm dừng duyệt web một lúc',
       summary:
@@ -410,7 +426,7 @@ export const userGuide = {
       title: 'Xem báo cáo sử dụng',
       summary:
         'Xem mỗi thiết bị đã được dùng bao lâu hôm nay và trong 30 ngày qua, theo từng con, và qua báo cáo mỗi sáng thứ Hai.',
-      tip: 'Gói miễn phí hiển thị tổng thời gian hôm nay và 3 ứng dụng dùng nhiều nhất, cập nhật khi bạn mở xem. Premium có thêm lịch sử 30 ngày, khung giờ sử dụng của từng thiết bị, 10 ứng dụng dùng nhiều nhất, báo cáo riêng cho từng con và báo cáo tuần mới vào mỗi thứ Hai. iPhone và iPad chỉ báo cáo tổng thời gian.',
+      tip: 'Gói miễn phí hiển thị tổng thời gian hôm nay và 3 ứng dụng dùng nhiều nhất, cập nhật khi bạn mở xem. Premium có thêm lịch sử 30 ngày, khung giờ sử dụng của từng thiết bị, 10 ứng dụng dùng nhiều nhất, báo cáo riêng cho từng con và báo cáo tuần mới vào mỗi thứ Hai. iPhone và iPad chỉ báo cáo tổng thời gian. Riêng ngày thiết bị mới được thêm vào gia đình, thời gian trước lúc thêm có thể chưa đầy đủ hoặc nằm trong “Ứng dụng khác”.',
       steps: {
         '1': 'Mở [[Báo cáo]]. [[Hôm nay]] cộng dồn tất cả thiết bị; bên dưới là [[Báo cáo tuần]], từng con ([[Theo con]]) và từng thiết bị ([[Theo thiết bị]]).',
         '2': 'Chạm vào một thiết bị để xem [[Báo cáo sử dụng]] của thiết bị đó: hôm nay so với Giới hạn hằng ngày, [[30 ngày gần đây]], [[Khung giờ sử dụng]] và [[Ứng dụng dùng nhiều nhất]]. Bạn cũng có thể mở báo cáo này từ [[Mức sử dụng hôm nay]] trên màn hình thiết bị.',

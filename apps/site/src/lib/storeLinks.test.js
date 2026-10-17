@@ -1,7 +1,8 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import {
   CHROME_WEB_STORE_ID,
   CHROME_WEB_STORE_ID_PLACEHOLDER,
+  RELEASE_AT,
   STORE_LINKS,
   TV_BUNDLE_ID,
   isPlatformAvailable,
@@ -50,6 +51,22 @@ describe('store links', () => {
     expect(STORE_LINKS.androidtv.url).toBe(
       'https://play.google.com/store/apps/details?id=com.kidgate.app.tv',
     );
+  });
+
+  it('hands out no link before the launch, and the flagged ones after', () => {
+    vi.useFakeTimers();
+    try {
+      vi.setSystemTime(RELEASE_AT - 1);
+      for (const platform of Object.keys(STORE_LINKS)) {
+        expect(storeHref(platform)).toBeNull();
+      }
+      vi.setSystemTime(RELEASE_AT);
+      expect(storeHref('ios')).toBe(
+        STORE_LINKS.ios.available ? STORE_LINKS.ios.url : null,
+      );
+    } finally {
+      vi.useRealTimers();
+    }
   });
 
   it('answers no link for a platform that has not shipped', () => {

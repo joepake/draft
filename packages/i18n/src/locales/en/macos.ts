@@ -59,6 +59,7 @@ export const macos = {
    * on purpose, since there is none to flip; the agent restores it itself.
    */
   filterSwitchedOff: 'Switched off in System Settings',
+  webFilterOffChip: 'Web Filter off',
   filterInterrupted: 'Stopped after a problem — KidGate will restore it',
   /*
    * Windows, and the one filter state there a person can fix: the LocalSystem

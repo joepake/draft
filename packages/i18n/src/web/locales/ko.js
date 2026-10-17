@@ -92,6 +92,7 @@ export default {
 
   home: {
     heroBadge: '제대로 만든 자녀 보호',
+    launchCountdown: '출시까지',
     heroTitle: '아이를 지키세요,',
     heroTitleAccent: '아이의 자유는 그대로 둔 채.',
     heroLede:

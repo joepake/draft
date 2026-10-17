@@ -94,6 +94,7 @@ export default {
 
   home: {
     heroBadge: 'Ebeveyn denetimi, olması gerektiği gibi',
+    launchCountdown: 'Çıkışa kalan',
     heroTitle: 'Çocuklarınızı koruyun,',
     heroTitleAccent: 'özgürlüklerini ellerinden almadan.',
     heroLede:

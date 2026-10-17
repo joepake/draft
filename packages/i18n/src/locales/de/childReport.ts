@@ -44,6 +44,8 @@ export const childReport = {
   appOnDevices: 'Auf {{count}} Geräten',
   appOnDevices_one: 'Auf {{count}} Gerät',
   appsEmpty: 'Noch keine App-Aufschlüsselung gemeldet.',
+  deviceJoinedNote:
+    '{{device}} ist der Familie um {{time}} beigetreten. Die Nutzung davor kann unvollständig sein oder unter „Andere Apps“ gezählt werden.',
 
   emptyNoDevices: 'Diesem Kind ist noch kein Gerät zugewiesen.',
   emptyAssign: 'Gerät zuweisen',

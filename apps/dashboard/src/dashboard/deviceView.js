@@ -143,6 +143,8 @@ export function toDeviceView(record) {
     ...(record.appVersion ? { appVersion: record.appVersion } : {}),
     ...(record.appBuild ? { appBuild: record.appBuild } : {}),
     ...(record.otaVersion !== undefined ? { otaVersion: record.otaVersion } : {}),
+    // When it joined the family — `joinedOnDay` notes the pairing day's report.
+    ...(record.createdAt ? { createdAt: record.createdAt } : {}),
     status: record.isLocked ? 'locked' : record.status || 'offline',
     isLocked: record.isLocked,
     // The child typed a wrong Parent PIN too often; any parent may clear it.

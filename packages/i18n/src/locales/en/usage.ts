@@ -94,6 +94,10 @@ export const usage = {
   // A fact about the day, not an app — no rank, no bar, same voice as the
   // idle row beside it.
   topAppsOther: 'Other apps',
+  // Under the rows on the day the device was paired. “Other apps” must stay
+  // word-for-word `topAppsOther` in every locale — it names the row above.
+  topAppsJoinedNote:
+    'This device joined the family at {{time}}. Usage from before then may be incomplete or counted under “Other apps”.',
   // The free tier's three, and where the rest is (`docs/PRICING.md` §4).
   topAppsEmpty:
     'No per-app data yet. On the child device, make sure KidGate is allowed to measure app usage, then wait for a sync.',

@@ -7,6 +7,7 @@ import {
   THIN_COVERAGE,
   childDeviceShares,
   childTopApps,
+  joinedOnDay,
   lateNightHits,
   otherAppsMinutes,
 } from '@kidgate/core/domain/childUsage';
@@ -23,7 +24,8 @@ import {
 } from './charts.jsx';
 import { useAppCategories } from './useAppCategories.js';
 import { buildChildShareModel, shareChildReportImage } from './childShareCard.js';
-import { formatPercent } from './locale.js';
+import { formatClock, formatPercent } from './locale.js';
+import { useTodayKey } from './useTodayKey.js';
 import { CHILD_TOP_APPS_LIMIT, useChildUsage } from './useChildUsage.js';
 
 /**
@@ -125,6 +127,14 @@ export default function ChildReport({
     pickedDate !== null && totals.days.some(day => day.date === pickedDate)
       ? pickedDate
       : null;
+
+  // Devices paired on the one day the rows describe — the phone's rule.
+  const todayKey = useTodayKey();
+  const noteDate = scopeDate ?? (period === 'today' ? todayKey : null);
+  const joinedDevices = childDevices.flatMap(device => {
+    const at = joinedOnDay(device.createdAt, noteDate);
+    return at ? [{ device, at }] : [];
+  });
 
   /*
    * Shares and apps over the focused day, by the same domain arithmetic that
@@ -779,6 +789,14 @@ export default function ChildReport({
             )}
           </ul>
         )}
+        {joinedDevices.map(({ device, at }) => (
+          <p key={device.id} className="hint app-cat-note">
+            {appT('childReport.deviceJoinedNote', {
+              device: device.name,
+              time: formatClock(at.getHours() * 60 + at.getMinutes()),
+            })}
+          </p>
+        ))}
         <AppCategoryNote appT={appT} entries={appCategories.values()} />
       </div>
     </section>

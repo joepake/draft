@@ -75,6 +75,8 @@ export const usage = {
   appMinAge: '{{age}}세 이상',
   underAMinute: '1분 미만',
   topAppsOther: '기타 앱',
+  topAppsJoinedNote:
+    '이 기기는 {{time}}에 가족에 추가되었습니다. 그 이전의 사용 시간은 불완전하거나 ‘기타 앱’에 포함될 수 있습니다.',
   topAppsEmpty:
     '앱별 데이터가 아직 없습니다. 자녀 기기에서 KidGate가 앱 사용을 측정하도록 허용되어 있는지 확인한 뒤 동기화를 기다려 주세요.',
   protectionImpactTitle: '보호 효과',

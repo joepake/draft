@@ -293,6 +293,21 @@ export const userGuide = {
         '6': 'A locked phone or computer still lets your child send an SOS. On Android, SOS also opens calls, maps and messages for 5 minutes while everything else stays locked, and it appears in [[Activities]].',
       },
     },
+    siri: {
+      title: 'Use Siri on your iPhone',
+      summary:
+        'Lock or unlock a child’s devices, give extra minutes and hear today’s screen time by voice.',
+      keywords: 'voice, voice command, speak, talk, hands-free, assistant, shortcuts',
+      tip: 'Voice commands work on a parent’s iPhone, for every parent in the family, in the language Siri is set to. Android phones and the web dashboard have none.',
+      steps: {
+        '1': 'Sign in to KidGate on your iPhone and open it once. That is how Siri learns your children’s names, and a child or device added later reaches Siri the next time you open KidGate. If Siri says “Sign in to KidGate first.”, open KidGate on this iPhone.',
+        '2': 'Ask Siri “KidGate, lock Alice”, with your child’s name. Every device of that child locks, the same as [[Lock all]]. A device not assigned to a child goes by its own name.',
+        '3': 'Say “KidGate, unlock Alice” to restore access. For every device in the family at once, say “KidGate, lock everything” or “KidGate, unlock everything”.',
+        '4': 'Say “KidGate, give Alice extra minutes” to add 15 minutes for today on every device of that child. Extra time ends at midnight.',
+        '5': 'Say “KidGate screen time for Alice” to hear today’s screen time. Siri reads the last figures KidGate showed you, so open KidGate first for the latest.',
+        '6': 'The Shortcuts app lists the same commands under KidGate, ready to run with a tap. To give a different amount, from 5 to 180 minutes, add the Give a child extra minutes action to your own shortcut and set the minutes there.',
+      },
+    },
     pauseBrowsing: {
       title: 'Pause browsing for a while',
       summary:
@@ -408,7 +423,7 @@ export const userGuide = {
       title: 'Read usage reports',
       summary:
         'See how long each device was used today and over the last 30 days, per child, and in a report every Monday.',
-      tip: 'Free families see today’s total and the top 3 apps, updated when you check. Premium adds 30 days of history, when each device was used, the top 10 apps, a report for each child, and a new weekly report every Monday. iPhone and iPad report the total only.',
+      tip: 'Free families see today’s total and the top 3 apps, updated when you check. Premium adds 30 days of history, when each device was used, the top 10 apps, a report for each child, and a new weekly report every Monday. iPhone and iPad report the total only. On the day a device joins the family, usage from before then may be incomplete or counted under “Other apps”.',
       steps: {
         '1': 'Open [[Reports]]. [[Today]] adds up every device; below it are the [[Weekly report]], each child ([[By child]]) and each device ([[By device]]).',
         '2': 'Tap a device for its [[Usage Report]]: today against the Daily Limit, [[Last 30 days]], [[When it was used]] and [[Most used apps]]. You can also open it from [[Usage today]] on the device’s screen.',

@@ -45,6 +45,8 @@ export const childReport = {
   appOnDevices: 'Em {{count}} dispositivos',
   appOnDevices_one: 'Em {{count}} dispositivo',
   appsEmpty: 'Ainda sem detalhamento por aplicativo.',
+  deviceJoinedNote:
+    '{{device}} entrou na família às {{time}}. O uso antes disso pode estar incompleto ou contado em “Outros apps”.',
 
   emptyNoDevices: 'Ainda não há nenhum dispositivo atribuído a esta criança.',
   emptyAssign: 'Atribuir um dispositivo',

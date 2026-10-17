@@ -179,6 +179,10 @@ export const activities = {
   tamperWebFilterTitle: 'تم إيقاف فلتر الويب',
   tamperWebFilterBody:
     'تم إيقاف VPN الخاص بـKidGate على هذا الجهاز أو استبداله بتطبيق VPN آخر. لن تتم تصفية المواقع أو تسجيلها حتى يعود للعمل.',
+  tamperWebFilterMacBody:
+    'تم تعطيل فلتر الويب في إعدادات النظام على جهاز Mac هذا. لن تتم تصفية المواقع أو تسجيلها حتى يعود للعمل.',
+  tamperWebFilterWindowsBody:
+    'تم إيقاف خدمة KidGate التي تعمل في الخلفية على هذا الكمبيوتر أو إزالتها. لن تتم تصفية المواقع أو تسجيلها حتى تعود للعمل.',
   tamperUninstallProtectionTitle: 'تم إيقاف الحماية من إلغاء التثبيت',
   tamperUninstallProtectionBody: 'أصبح بالإمكان إزالة KidGate من جهاز الطفل.',
   tamperReinstalledTitle: 'تمت إعادة تثبيت KidGate',

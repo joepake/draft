@@ -299,6 +299,21 @@ export const userGuide = {
         '6': 'Um celular ou computador bloqueado ainda deixa seu filho enviar um SOS. No Android, o SOS também abre chamadas, mapas e mensagens por 5 minutos enquanto todo o resto continua bloqueado, e isso aparece em Atividades.',
       },
     },
+    siri: {
+      title: 'Usar a Siri no iPhone',
+      summary:
+        'Por voz, bloqueie ou desbloqueie os dispositivos de uma criança, dê minutos extras e ouça o tempo de uso de hoje.',
+      keywords: 'voz, comando de voz, falar, mãos livres, assistente, Atalhos, voice',
+      tip: 'Os comandos de voz funcionam no iPhone de um dos pais, para todos os pais da família, no idioma definido para a Siri. Celulares Android e o painel web não têm comandos de voz.',
+      steps: {
+        '1': 'Entre no KidGate no seu iPhone e abra o app uma vez. É assim que a Siri aprende os nomes dos seus filhos, e uma criança ou dispositivo adicionado depois chega à Siri na próxima vez que você abrir o KidGate. Se a Siri disser “Entre no KidGate primeiro.”, abra o KidGate neste iPhone.',
+        '2': 'Diga à Siri “KidGate, bloquear Ana”, com o nome da criança. Todos os dispositivos dela são bloqueados, como em Bloquear tudo. Um dispositivo sem criança atribuída atende pelo próprio nome.',
+        '3': 'Diga “KidGate, desbloquear Ana” para devolver o acesso. Para todos os dispositivos da família de uma vez, diga “KidGate, bloquear tudo” ou “KidGate, desbloquear tudo”.',
+        '4': 'Diga “KidGate, dar minutos extras a Ana” para adicionar 15 minutos hoje em todos os dispositivos da criança. O tempo extra termina à meia-noite.',
+        '5': 'Diga “KidGate Tempo de Uso de Ana” para ouvir o tempo de uso de hoje. A Siri lê os últimos dados que o KidGate mostrou a você, então abra o KidGate antes para ter os mais recentes.',
+        '6': 'O app Atalhos lista os mesmos comandos em KidGate, prontos para rodar com um toque. Para dar outra quantidade, de 5 a 180 minutos, adicione a ação Dar minutos extras a um filho a um atalho seu e ajuste os minutos ali.',
+      },
+    },
     pauseBrowsing: {
       title: 'Pausar a navegação por um tempo',
       summary:
@@ -415,7 +430,7 @@ export const userGuide = {
       title: 'Ver relatórios de uso',
       summary:
         'Veja por quanto tempo cada dispositivo foi usado hoje e nos últimos 30 dias, também por criança, e em um relatório toda segunda-feira.',
-      tip: 'No plano gratuito, você vê o total de hoje e os 3 apps principais, atualizados quando você consulta o KidGate. O Premium adiciona 30 dias de histórico, quando cada dispositivo foi usado, os 10 apps principais, um relatório para cada criança e um novo relatório semanal toda segunda-feira. iPhone e iPad informam apenas o total.',
+      tip: 'No plano gratuito, você vê o total de hoje e os 3 apps principais, atualizados quando você consulta o KidGate. O Premium adiciona 30 dias de histórico, quando cada dispositivo foi usado, os 10 apps principais, um relatório para cada criança e um novo relatório semanal toda segunda-feira. iPhone e iPad informam apenas o total. No dia em que um dispositivo entra na família, o uso antes disso pode estar incompleto ou contado em “Outros apps”.',
       steps: {
         '1': 'Abra Relatórios. A seção Hoje soma todos os dispositivos; abaixo dela ficam o Relatório semanal, cada criança (Por criança) e cada dispositivo (Por dispositivo).',
         '2': 'Toque em um dispositivo para ver o Relatório de uso dele: o uso de hoje em relação ao Limite diário, Últimos 30 dias, Quando foi usado e Apps mais usados. Você também pode abri-lo em Uso de hoje, na tela do dispositivo.',

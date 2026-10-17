@@ -186,6 +186,21 @@ export function createLocationHistoryRepository(deps: LocationHistoryRepositoryD
     },
 
     /**
+     * How many fixes have landed since `sinceIso`, without reading them.
+     *
+     * One aggregation read per thousand points. Usage Reports' "Locations
+     * today" tile used to hold `subscribe` open to count the day's points off
+     * the 200 newest — up to 200 billed reads a visit for one number
+     * (measured on `kidgate`, 2026-10-16). `updatedAt` is an ISO string on
+     * every writer, so `>=` on it is chronological.
+     */
+    countSince(userId: string, deviceId: string, sinceIso: string): Promise<number> {
+      return db.countDocs(locationHistoryCollection(userId, deviceId), {
+        where: [['updatedAt', '>=', sinceIso]],
+      });
+    },
+
+    /**
      * Every fix this device ever reported, on removal.
      *
      * The retention sweep above trims by age and by count while a device is in

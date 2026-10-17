@@ -32,6 +32,7 @@ export const macos = {
   notSupportedOnThisDevice: '이 기기에서는 지원되지 않습니다',
   filterAwaitingApproval: '시스템 설정에서 승인 대기 중',
   filterSwitchedOff: '시스템 설정에서 꺼져 있음',
+  webFilterOffChip: '웹 필터 꺼짐',
   filterInterrupted: '문제로 중지됨 — KidGate가 다시 켭니다',
   filterNeedsService: 'KidGate 백그라운드 서비스가 필요합니다',
   setupFilterApprovalBody: '웹 필터링을 시작하려면 네트워크 확장에서 KidGate를 켜세요.',

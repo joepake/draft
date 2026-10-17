@@ -81,6 +81,10 @@ export const childReport = {
   appOnDevices: 'On {{count}} devices',
   appOnDevices_one: 'On {{count}} device',
   appsEmpty: 'No app breakdown reported yet.',
+  // Under the ranking, one per device paired on the day shown. “Other apps”
+  // must stay word-for-word `usage.topAppsOther` in every locale.
+  deviceJoinedNote:
+    '{{device}} joined the family at {{time}}. Its usage from before then may be incomplete or counted under “Other apps”.',
 
   emptyNoDevices: 'No device is assigned to this child yet.',
   emptyAssign: 'Assign a device',

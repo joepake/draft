@@ -18,6 +18,9 @@ export const child = {
   limitReached: 'Лимит исчерпан',
   active: 'Активно',
   parentPausedThisDevice: 'Родители пока заблокировали это устройство.',
+  browsingPausedUntil: 'Веб приостановлен до {{time}}',
+  browsingPausedHint:
+    'До этого времени браузеры закрываются. Если это ошибка, спроси родителей.',
   blockedHoursOnPaused:
     'Сейчас действуют Заблокированные часы. Хорошее время для перерыва.',
   outOfScreenTimeAskParent:

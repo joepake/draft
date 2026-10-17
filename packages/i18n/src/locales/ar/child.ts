@@ -24,6 +24,8 @@ export const child = {
   limitReached: 'انتهى الحد',
   active: 'نشط',
   parentPausedThisDevice: 'قفل والداك هذا الجهاز مؤقتًا.',
+  browsingPausedUntil: 'التصفح متوقف مؤقتًا حتى {{time}}',
+  browsingPausedHint: 'تُغلق المتصفحات حتى ذلك الوقت. إذا بدا لك هذا خطأ، اسأل والديك.',
   blockedHoursOnPaused: 'ساعات الحظر نشطة الآن. إنه وقت مناسب لأخذ استراحة.',
   outOfScreenTimeAskParent: 'استهلكت كل وقت الشاشة لليوم. يمكنك طلب المزيد أدناه.',
   screenTimeToday: 'وقت الشاشة اليوم',

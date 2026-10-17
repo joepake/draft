@@ -34,6 +34,7 @@ export const macos = {
   notSupportedOnThisDevice: 'غير مدعوم على هذا الجهاز',
   filterAwaitingApproval: 'في انتظار الموافقة في إعدادات النظام',
   filterSwitchedOff: 'مُعطَّل في إعدادات النظام',
+  webFilterOffChip: 'فلتر الويب معطّل',
   filterInterrupted: 'توقّف بعد مشكلة — سيعيده KidGate',
   filterNeedsService: 'تحتاج إلى خدمة KidGate التي تعمل في الخلفية',
   setupFilterApprovalBody: 'فعّل KidGate في إضافات الشبكة لتبدأ تصفية الويب.',

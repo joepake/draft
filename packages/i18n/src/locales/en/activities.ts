@@ -200,6 +200,10 @@ export const activities = {
   tamperWebFilterTitle: 'Web Filter turned off',
   tamperWebFilterBody:
     'The KidGate VPN on this device was turned off or replaced by another VPN app. Sites are not filtered or recorded until it is back on.',
+  tamperWebFilterMacBody:
+    'Web Filter was switched off in System Settings on this Mac. Sites are not filtered or recorded until it is back on.',
+  tamperWebFilterWindowsBody:
+    'The KidGate background service on this PC was stopped or removed. Sites are not filtered or recorded until it is back on.',
   tamperUninstallProtectionTitle: 'Uninstall protection turned off',
   tamperUninstallProtectionBody: 'KidGate can now be removed from the child device.',
   tamperReinstalledTitle: 'KidGate was reinstalled',

@@ -43,12 +43,27 @@ function stampMs(value: string | null | undefined): number | null {
  * The reading a console should believe, from the device document's own pair
  * and the presence document's.
  *
- * Newer `lastActiveAt` wins **as a pair**: `beatIntervalMs` travels with the
- * stamp it describes, because the agent writes them in one call and a console
- * judges the one against the other (`offlineThresholdForBeat`). Mixing the
- * newest stamp with the other source's interval would judge a free-tier beat
- * by the live window, which is the "permanently Offline" failure
- * `domain/reportCadence` exists to prevent.
+ * The newer `lastActiveAt` wins; **the interval is presence's whenever
+ * presence has one**, and the device document's only when it never did.
+ *
+ * A stamp says when the device was last heard from, an interval how often it
+ * beats, and the two homes are not equal on the second question. Every
+ * current agent beats into presence and publishes its floor on every beat
+ * (`agent/childBeat`, `publishedAliveIntervalMs`); the device document's
+ * stamp moves on writes that are not beats at all — the server's location
+ * fix, `updateChildProtectionStatus`, registration — and its interval is
+ * whatever a pre-split build last left there. Folded as a pair, a location
+ * fix landing after the beat handed consoles that build's interval or none,
+ * and none reads as the live cadence: never asked to report, judged by the
+ * three-minute window (prod, 2026-10-16: an iPhone on the two-hour floor
+ * skipped by three consoles; `functions/lib/anomalies.js` measured the stale
+ * interval on 2026-10-03).
+ *
+ * This is not the mixing that once judged a free-tier beat by the live
+ * window: a newer presence beat still brings its own interval. Presence
+ * without one means no current agent ever beat there, so the device
+ * document's interval is the live one — an un-updated Mac. Neither having one
+ * stays absent, the live cadence an old build keeps.
  *
  * A source with no stamp contributes nothing — an interval on its own says
  * how often something beats, not when it last did.
@@ -60,13 +75,17 @@ export function newerPresence(
   const legacyMs = stampMs(legacy.lastActiveAt);
   const presenceMs = presence ? stampMs(presence.lastActiveAt) : null;
 
-  if (presenceMs === null) {
+  if (!presence || presenceMs === null) {
     return legacyMs === null ? {} : legacy;
   }
-  if (legacyMs === null || presenceMs >= legacyMs) {
-    return presence as PresenceReading;
+  if (legacyMs === null) {
+    return presence;
   }
-  return legacy;
+  const beatIntervalMs = presence.beatIntervalMs ?? legacy.beatIntervalMs;
+  return {
+    lastActiveAt: (presenceMs >= legacyMs ? presence : legacy).lastActiveAt ?? null,
+    ...(beatIntervalMs !== undefined ? { beatIntervalMs } : {}),
+  };
 }
 
 /**

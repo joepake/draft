@@ -74,6 +74,8 @@ export const usage = {
   appMinAge: '{{age}}歳以上',
   underAMinute: '1分未満',
   topAppsOther: 'その他のアプリ',
+  topAppsJoinedNote:
+    'このデバイスは{{time}}にファミリーに参加しました。それ以前の使用時間は不完全か、「その他のアプリ」に含まれている場合があります。',
   topAppsEmpty:
     'アプリ別のデータはまだありません。お子さまのデバイスでKidGateがアプリ使用状況を計測できることを確認し、同期を待ってください。',
   protectionImpactTitle: '保護の効果',

@@ -95,6 +95,7 @@ export default {
 
   home: {
     heroBadge: 'Родительский контроль — как надо',
+    launchCountdown: 'Запуск через',
     heroTitle: 'Защитите своих детей',
     heroTitleAccent: 'не отнимая у них свободу.',
     heroLede:

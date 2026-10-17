@@ -42,6 +42,8 @@ export const childReport = {
   sectionApps: 'よく使ったアプリ',
   appOnDevices: '{{count}} 台で使用',
   appsEmpty: 'アプリ別の内訳はまだありません。',
+  deviceJoinedNote:
+    '{{device}}は{{time}}にファミリーに参加しました。それ以前の使用時間は不完全か、「その他のアプリ」に含まれている場合があります。',
 
   emptyNoDevices: 'この子にはまだデバイスが割り当てられていません。',
   emptyAssign: 'デバイスを割り当てる',
