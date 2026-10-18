@@ -16,6 +16,42 @@ export interface BatteryReading {
   isLow: boolean;
 }
 
+/** One home's battery fields, parsed — the device document's or presence's. */
+export interface BatteryFields {
+  batteryLevel?: number;
+  batteryCharging?: boolean;
+  /** ISO. */
+  batteryUpdatedAt?: string;
+}
+
+/**
+ * The battery from whichever of its two homes is newer.
+ *
+ * `apps/desktop` reports it on the usage report since 2026-10-18, which lands
+ * on `devicePresence`; the phone's location upload and every desktop build
+ * from before that write the device document. A reading is taken whole from
+ * one home — never a level from one and a charger from the other — and a home
+ * with no level is no reading. Presence wins a tie, because the new server
+ * writes nowhere else.
+ */
+export function newerBattery(
+  device: BatteryFields,
+  presence: BatteryFields | null | undefined,
+): BatteryFields {
+  if (typeof presence?.batteryLevel !== 'number') {
+    return device;
+  }
+  if (typeof device.batteryLevel !== 'number') {
+    return presence;
+  }
+  const deviceAt = Date.parse(device.batteryUpdatedAt ?? '');
+  const presenceAt = Date.parse(presence.batteryUpdatedAt ?? '');
+  if (Number.isNaN(presenceAt)) {
+    return Number.isNaN(deviceAt) ? presence : device;
+  }
+  return Number.isNaN(deviceAt) || presenceAt >= deviceAt ? presence : device;
+}
+
 /**
  * The battery to show for a device, or null when there is nothing truthful to
  * show.

@@ -147,6 +147,67 @@ export function getEffectiveDeviceStatus(
 }
 
 /**
+ * How recent a person's use must be for a console to say Online — operator's
+ * rule, 2026-10-18.
+ */
+export const IN_USE_WINDOW_MS = 10 * 60_000;
+
+/**
+ * Whether the Online dot follows use (`Device.lastUsedAt`) on this device.
+ * Every agent reports use — the band, the desktop's input clock, the
+ * extension's `chrome.idle` — except the iPhone: Screen Time checkpoints fire
+ * only at coarse marks of a day's total and the app uploads only when iOS
+ * wakes it, so its dot keeps the check-in rule (operator, 2026-10-18).
+ */
+function measuresUse(device: Device): boolean {
+  return device.platform !== 'ios';
+}
+
+/**
+ * The status a console **shows** — the word, the dot, and the "n/m online"
+ * count: Online means a person used the device in the last ten minutes
+ * (keyboard, mouse, touch, or an app in front such as a video playing).
+ *
+ * `getEffectiveDeviceStatus` stays the reachability answer and still drives
+ * every alert — the 24-hour inactive warning, the Check-In confirmation, the
+ * lock — because a laptop nobody is using is not a fault. This only narrows
+ * what the chip calls Online. Parked and Locked pass through, and a device
+ * that cannot say when it was used (the iPhone) keeps the check-in rule
+ * rather than reading Offline forever.
+ */
+export function getShownDeviceStatus(device: Device, nowMs: number): Device['status'] {
+  const status = getChipDeviceStatus(getEffectiveDeviceStatus(device, nowMs), device);
+  if (status !== 'online' || !measuresUse(device)) {
+    return status;
+  }
+  const usedMs = device.lastUsedAt ? Date.parse(device.lastUsedAt) : NaN;
+  return nowMs - usedMs <= IN_USE_WINDOW_MS ? 'online' : 'offline';
+}
+
+/**
+ * The "last active" line a console prints: when a person last used the device
+ * where the agent can tell, else when it last checked in.
+ *
+ * The two must never share a word. A check-in is what an idle Mac does the
+ * moment a parent opens the app (`onReportRequest`), so printing it as
+ * activity told a parent their machine was used two minutes ago while nobody
+ * was near it (2026-10-18). `used: false` is the console's cue to say
+ * "last connected" instead.
+ */
+export function lastActivity(source: {
+  lastActiveAt?: string | null;
+  lastUsedAt?: string | null;
+}): { at: string; used: boolean } | null {
+  if (source.lastUsedAt) {
+    return { at: source.lastUsedAt, used: true };
+  }
+  if (source.lastActiveAt) {
+    return { at: source.lastActiveAt, used: false };
+  }
+  return null;
+}
+
+/**
  * The status a chip may both **word and paint**.
  *
  * `getEffectiveDeviceStatus` answers `'locked'` off `isLocked`, which is what

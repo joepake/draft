@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import Icon from '@kidgate/web-ui/Icon';
-import { getEffectiveDeviceStatus } from '@kidgate/core/domain/deviceStatus';
+import { getShownDeviceStatus } from '@kidgate/core/domain/deviceStatus';
 import { getProtectionSummaryKeys } from '@kidgate/core/domain/protectionStatus';
 import { isWithinAnyScheduleWindow } from '@kidgate/core/domain/scheduleWindow';
 import {
@@ -65,7 +65,7 @@ export function useFamilyCounts({ devices, timeRequests, checkIns, sosAlerts }) 
     /** deviceId → what that machine contributes. */
     const byDevice = new Map();
     for (const device of devices) {
-      const status = getEffectiveDeviceStatus(device, now);
+      const status = getShownDeviceStatus(device, now);
       const level = getProtectionSummaryKeys(device, now).level;
       byDevice.set(device.id, {
         online: status === 'online' || status === 'locked',

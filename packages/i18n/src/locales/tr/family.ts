@@ -313,6 +313,7 @@ export const family = {
   deviceNameTooLong: 'Cihaz adı en fazla {{max}} karakter olabilir.',
 
   lastActiveDate: 'Son etkinlik: {{date}}',
+  lastSeenDate: 'Son bağlantı: {{date}}',
 
   lastActiveUnknown: 'Yakın zamanda etkinlik yok',
 

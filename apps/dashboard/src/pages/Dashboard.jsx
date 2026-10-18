@@ -101,7 +101,7 @@ import {
   formatBuildLabel,
   resolveBuildFreshness,
 } from '@kidgate/core/domain/buildFreshness';
-import { getEffectiveDeviceStatus } from '@kidgate/core/domain/deviceStatus';
+import { getShownDeviceStatus, lastActivity } from '@kidgate/core/domain/deviceStatus';
 import { resolveChildPresence } from '@kidgate/core/domain/childPresence';
 import { resolveChildLocationView } from '@kidgate/core/domain/childLocation';
 import { resolveChipTargetDevice } from '@kidgate/core/domain/familySummary';
@@ -203,7 +203,7 @@ function useMediaQuery(query) {
  * clock through both.
  */
 function deviceStatusOf(device) {
-  return getEffectiveDeviceStatus(device, Date.now());
+  return getShownDeviceStatus(device, Date.now());
 }
 
 // No `icon` field, and no bar to draw them in since 2026-09-16: the
@@ -570,8 +570,11 @@ function KidGroupHead({
    * child holds is the only honest reading of "when did we last hear".
    */
   const presence = resolveChildPresence(group.devices, Date.now());
-  const lastActiveLabel = presence.lastActiveAt
-    ? appT('family.lastActiveDate', { date: timeAgo(presence.lastActiveAt) })
+  const activity = lastActivity(presence);
+  const lastActiveLabel = activity
+    ? appT(activity.used ? 'family.lastActiveDate' : 'family.lastSeenDate', {
+        date: timeAgo(activity.at),
+      })
     : presence.online
       ? null
       : appT('family.lastActiveUnknown');
@@ -727,7 +730,18 @@ function KidGroupHead({
       )}
 
       {lastActiveLabel && (
-        <p className="kid-last-active">
+        <p
+          className="kid-last-active"
+          title={
+            activity
+              ? appT(
+                  activity.used
+                    ? 'deviceDetail.lastActiveInfo'
+                    : 'deviceDetail.lastSeenInfo',
+                )
+              : undefined
+          }
+        >
           <Icon name="activity" size={12} />
           {lastActiveLabel}
         </p>
@@ -774,7 +788,7 @@ function KidGroupHead({
         {group.devices.map(d => (
           <span
             className={`kid-device-chip${
-              getEffectiveDeviceStatus(d, Date.now()) === 'online' ? '' : ' is-alert'
+              getShownDeviceStatus(d, Date.now()) === 'online' ? '' : ' is-alert'
             }`}
             key={d.id}
           >
@@ -3036,13 +3050,25 @@ export default function Dashboard({
                   {device.lastActiveAt && (
                     <>
                       <span className="dot-sep">·</span>
-                      {slowBeatMinutes(device.beatIntervalMs) !== null
-                        ? activityT('family.freeTierCadenceHint', {
-                            date: timeAgo(device.lastActiveAt),
-                          })
-                        : t('dash.lastActive', {
-                            when: timeAgo(device.lastActiveAt),
-                          })}
+                      <span
+                        title={activityT(
+                          device.lastUsedAt
+                            ? 'deviceDetail.lastActiveInfo'
+                            : 'deviceDetail.lastSeenInfo',
+                        )}
+                      >
+                        {device.lastUsedAt
+                          ? t('dash.lastActive', {
+                              when: timeAgo(device.lastUsedAt),
+                            })
+                          : slowBeatMinutes(device.beatIntervalMs) !== null
+                            ? activityT('family.freeTierCadenceHint', {
+                                date: timeAgo(device.lastActiveAt),
+                              })
+                            : activityT('family.lastSeenDate', {
+                                date: timeAgo(device.lastActiveAt),
+                              })}
+                      </span>
                     </>
                   )}
                 </p>

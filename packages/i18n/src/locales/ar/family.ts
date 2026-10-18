@@ -331,6 +331,7 @@ export const family = {
   deviceNameTooLong: 'يجب ألا يتجاوز اسم الجهاز {{max}} حرفًا.',
 
   lastActiveDate: 'آخر نشاط: {{date}}',
+  lastSeenDate: 'آخر اتصال: {{date}}',
 
   lastActiveUnknown: 'لا يوجد نشاط حديث',
 

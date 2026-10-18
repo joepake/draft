@@ -18,7 +18,7 @@
 
 import type { Device } from '@kidgate/schema/device';
 import { isDeviceParked } from './deviceParking';
-import { getEffectiveDeviceStatus } from './deviceStatus';
+import { getShownDeviceStatus } from './deviceStatus';
 
 export interface ChildPresence {
   /** True when at least one device has checked in inside the offline window. */
@@ -38,6 +38,11 @@ export interface ChildPresence {
    * has ever reported. Lets a screen say "last seen" without a second fold.
    */
   lastActiveAt: string | null;
+  /**
+   * The most recent `lastUsedAt` across the set — when a person was last on
+   * any of them, where an agent can tell. Null when none can, or none has.
+   */
+  lastUsedAt: string | null;
 }
 
 export function resolveChildPresence(
@@ -47,6 +52,7 @@ export function resolveChildPresence(
   let onlineCount = 0;
   let pausedCount = 0;
   let lastActiveAt: string | null = null;
+  let lastUsedAt: string | null = null;
 
   for (const device of devices) {
     // 'locked' still means the agent checked in — a locked phone is reachable,
@@ -66,12 +72,17 @@ export function resolveChildPresence(
     if (parked) {
       pausedCount += 1;
     }
-    const status = getEffectiveDeviceStatus(device, nowMs);
+    // What the chips show — a person on it in the last ten minutes — so the
+    // "n/m online" line and the device rows under it cannot disagree.
+    const status = getShownDeviceStatus(device, nowMs);
     if (!parked && (status === 'online' || status === 'locked')) {
       onlineCount += 1;
     }
     if (device.lastActiveAt && (!lastActiveAt || device.lastActiveAt > lastActiveAt)) {
       lastActiveAt = device.lastActiveAt;
+    }
+    if (device.lastUsedAt && (!lastUsedAt || device.lastUsedAt > lastUsedAt)) {
+      lastUsedAt = device.lastUsedAt;
     }
   }
 
@@ -81,5 +92,6 @@ export function resolveChildPresence(
     pausedCount,
     totalCount: devices.length,
     lastActiveAt,
+    lastUsedAt,
   };
 }

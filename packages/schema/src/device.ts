@@ -502,7 +502,14 @@ export interface Device {
    */
   otaVersion?: number;
   status: DeviceStatus;
+  /** When the agent last checked in — presence, not use. */
   lastActiveAt?: string;
+  /**
+   * When a person last used the device — `DevicePresenceRecord.lastUsedAt`.
+   * Absent where the agent cannot tell (iOS) or has
+   * not reported a used minute since the server learned to store it.
+   */
+  lastUsedAt?: string;
   isLocked: boolean;
   /**
    * When a parent last changed `isLocked`, server-stamped by `setDeviceLock`.

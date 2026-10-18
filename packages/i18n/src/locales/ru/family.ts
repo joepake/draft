@@ -320,6 +320,7 @@ export const family = {
   deviceNameTooLong: 'Имя устройства не должно превышать {{max}} символов.',
 
   lastActiveDate: 'Последняя активность: {{date}}',
+  lastSeenDate: 'Последнее подключение: {{date}}',
 
   lastActiveUnknown: 'Недавней активности нет',
 

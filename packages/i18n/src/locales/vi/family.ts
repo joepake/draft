@@ -234,6 +234,7 @@ export const family = {
   deviceNameRequired: 'Vui lòng nhập tên thiết bị.',
   deviceNameTooLong: 'Tên thiết bị tối đa {{max}} ký tự.',
   lastActiveDate: 'Hoạt động lần cuối: {{date}}',
+  lastSeenDate: 'Kết nối lần cuối: {{date}}',
   lastActiveUnknown: 'Chưa có hoạt động gần đây',
   thisDevice: 'Thiết bị này',
   thisDeviceYou: 'Thiết bị này (Bạn)',

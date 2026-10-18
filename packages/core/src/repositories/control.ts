@@ -1,6 +1,6 @@
 import type { ApiPort } from '@kidgate/ports/api';
 import type { ClockPort } from '@kidgate/ports/clock';
-import type { DocData, FirestorePort } from '@kidgate/ports/firestore';
+import type { FirestorePort } from '@kidgate/ports/firestore';
 import {
   isParentControlKey,
   isReportOnlyControlKey,
@@ -12,7 +12,6 @@ import type {
 } from '@kidgate/schema/device';
 import type { DeviceControls, DeviceLocation } from '@kidgate/schema/deviceControls';
 import { childDeviceDoc } from '@kidgate/schema/paths';
-import type { BatteryStatus } from '@kidgate/schema/telemetry';
 import { toJsonBody } from '../domain/jsonBody';
 import type { BufferedUsageDay } from '../domain/parkedBuffer';
 import { readTimeZone } from '../domain/timeZone';
@@ -257,7 +256,11 @@ export function createControlRepository(deps: ControlRepositoryDeps) {
     async reportUsage(
       userId: string,
       deviceId: string,
-      usage: Partial<DeviceControls>,
+      /**
+       * `lastInputAt` is not a control: epoch ms of the device's last observed
+       * use, for `DevicePresenceRecord.lastUsedAt` (`functions/lib/lastUsed.js`).
+       */
+      usage: Partial<DeviceControls> & { lastInputAt?: number },
     ): Promise<unknown> {
       /*
        * **A report needs a day and something to say, and minutes are no longer
@@ -348,6 +351,12 @@ export function createControlRepository(deps: ControlRepositoryDeps) {
           Number.isFinite(usage.newAppsToday) &&
           usage.newAppsToday >= 0
             ? { newAppsToday: Math.floor(usage.newAppsToday) }
+            : {}),
+          // The device's last observed use — the parent's Online dot.
+          ...(typeof usage.lastInputAt === 'number' &&
+          Number.isFinite(usage.lastInputAt) &&
+          usage.lastInputAt > 0
+            ? { lastInputAt: Math.floor(usage.lastInputAt) }
             : {}),
           /*
            * The zone `usageDate` above was written on, so a console can judge
@@ -448,12 +457,11 @@ export function createControlRepository(deps: ControlRepositoryDeps) {
      * "Locate now", answered — clear the request the parent left on the device
      * document.
      *
-     * A plain document write rather than an endpoint, for the reason
-     * `reportBattery` below is one: `locationRequestId` is deliberately not a
-     * control, so `parentControlsUnchanged()` does not pin it and the child's
-     * own session may write it. A child that clears the field without answering
-     * is exactly as dishonest as one that never uploads a fix, which no rule
-     * can prevent either.
+     * A plain document write rather than an endpoint: `locationRequestId` is
+     * deliberately not a control, so `parentControlsUnchanged()` does not pin
+     * it and the child's own session may write it. A child that clears the
+     * field without answering is exactly as dishonest as one that never
+     * uploads a fix, which no rule can prevent either.
      *
      * **Cleared whether or not a fix was obtained**, by every caller. Sharing
      * may be off, CoreLocation may still be deciding, the Mac may be in a
@@ -490,53 +498,6 @@ export function createControlRepository(deps: ControlRepositoryDeps) {
         locationRequestId: null,
         locationRequestResult: { ...result },
       });
-    },
-
-    /**
-     * The child device's own battery reading.
-     *
-     * Written straight to the device document rather than posted, and that is
-     * the divergence from `apps/mobile` worth knowing about: on a phone the
-     * reading rides along on the location upload
-     * (`readBatteryPayload` in `functions/http/location.js`), because a phone
-     * uploading a fix is the moment a phone is awake. A desktop agent runs all
-     * day and may have location switched off entirely, so tying its battery to
-     * a location upload would mean a laptop that never reports one.
-     *
-     * `firestore.rules` allows it: `batteryLevel` is not in
-     * `parentControlsUnchanged()`, `usageCountersUnchanged()` or
-     * `protectionCountersUnchanged()`, so it is child-reported state in the
-     * same class as `blockedAppsConfigured` — only the device can observe it,
-     * and nothing about enforcement depends on it being honest.
-     *
-     * A partial reading is written partially. `BatteryStatus` models both
-     * fields as nullable because a machine may know it is charging without
-     * knowing by how much, and coercing an unknown level to 0 sends a parent
-     * looking for a child whose laptop is fine.
-     */
-    async reportBattery(
-      userId: string,
-      deviceId: string,
-      status: BatteryStatus,
-    ): Promise<void> {
-      const patch: DocData = {};
-
-      if (typeof status.level === 'number' && Number.isFinite(status.level)) {
-        patch.batteryLevel = Math.min(100, Math.max(0, Math.round(status.level)));
-        patch.batteryUpdatedAt = db.fieldValues.serverTimestamp();
-      }
-      if (typeof status.charging === 'boolean') {
-        patch.batteryCharging = status.charging;
-      }
-
-      // Nothing usable. An empty `updateDoc` would still cost a write and would
-      // still refresh `lastActiveAt`, which would make an unknown battery look
-      // like a heartbeat.
-      if (Object.keys(patch).length === 0) {
-        return;
-      }
-
-      await db.updateDoc(childDeviceDoc(userId, deviceId), patch);
     },
 
     /**

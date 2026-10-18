@@ -332,6 +332,7 @@ export const family = {
   deviceNameTooLong: 'डिवाइस का नाम अधिकतम {{max}} अक्षरों का हो सकता है।',
 
   lastActiveDate: 'अंतिम गतिविधि: {{date}}',
+  lastSeenDate: 'अंतिम कनेक्शन: {{date}}',
 
   lastActiveUnknown: 'हाल की कोई गतिविधि नहीं',
 

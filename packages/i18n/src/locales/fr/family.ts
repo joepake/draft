@@ -282,6 +282,7 @@ export const family = {
   deviceNameTooLong: 'Le nom de l’appareil ne peut pas dépasser {{max}} caractères.',
 
   lastActiveDate: 'Dernière activité : {{date}}',
+  lastSeenDate: 'Dernière connexion : {{date}}',
   lastActiveUnknown: 'Aucune activité récente',
 
   thisDevice: 'Cet appareil',

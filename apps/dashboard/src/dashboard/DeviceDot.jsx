@@ -1,6 +1,6 @@
 import { useT } from '@kidgate/web-ui/useT';
 import { supportsLock } from '@kidgate/core/domain/controlSupport';
-import { getEffectiveDeviceStatus } from '@kidgate/core/domain/deviceStatus';
+import { getShownDeviceStatus } from '@kidgate/core/domain/deviceStatus';
 import { resolveLockEnforcement } from '@kidgate/core/domain/lockEnforcement';
 
 /*
@@ -70,7 +70,7 @@ export function statusLabelKey(status, device) {
  */
 export default function DeviceDot({ device }) {
   const { t } = useT();
-  const status = getEffectiveDeviceStatus(device, Date.now());
+  const status = getShownDeviceStatus(device, Date.now());
   const label = t(statusLabelKey(status, device));
   return (
     <i

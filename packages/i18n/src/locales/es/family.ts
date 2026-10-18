@@ -324,6 +324,7 @@ export const family = {
     'El nombre del dispositivo debe tener como máximo {{max}} caracteres.',
 
   lastActiveDate: 'Última actividad: {{date}}',
+  lastSeenDate: 'Última conexión: {{date}}',
 
   lastActiveUnknown: 'Sin actividad reciente',
 

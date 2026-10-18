@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Icon from '@kidgate/web-ui/Icon';
 import { useT } from '@kidgate/web-ui/useT';
-import { getEffectiveDeviceStatus } from '@kidgate/core/domain/deviceStatus';
+import { getShownDeviceStatus, lastActivity } from '@kidgate/core/domain/deviceStatus';
 import { leaderboardResetParams } from '@kidgate/core/domain/leaderboardReset';
 import { getLocaleTag } from '@kidgate/i18n/web';
 import Card from './Card.jsx';
@@ -324,18 +324,37 @@ export default function FamilySettingsCard({
                       {/* Last active, on the row the phone puts it — the one
                           fact that says whether this machine is still with the
                           family at all. */}
-                      <span className="kid-last-active">
-                        <Icon name="activity" size={11} />
-                        {device.lastActiveAt
-                          ? appT('family.lastActiveDate', {
-                              date: timeAgo(device.lastActiveAt),
-                            })
-                          : appT('family.lastActiveUnknown')}
-                      </span>
+                      {(() => {
+                        const seen = lastActivity(device);
+                        return (
+                          <span
+                            className="kid-last-active"
+                            title={
+                              seen
+                                ? appT(
+                                    seen.used
+                                      ? 'deviceDetail.lastActiveInfo'
+                                      : 'deviceDetail.lastSeenInfo',
+                                  )
+                                : undefined
+                            }
+                          >
+                            <Icon name="activity" size={11} />
+                            {seen
+                              ? appT(
+                                  seen.used
+                                    ? 'family.lastActiveDate'
+                                    : 'family.lastSeenDate',
+                                  { date: timeAgo(seen.at) },
+                                )
+                              : appT('family.lastActiveUnknown')}
+                          </span>
+                        );
+                      })()}
                     </span>
                     <i
                       className={`kid-dot tone-${
-                        getEffectiveDeviceStatus(device, Date.now()) === 'online'
+                        getShownDeviceStatus(device, Date.now()) === 'online'
                           ? 'good'
                           : 'muted'
                       }`}

@@ -50,6 +50,11 @@ export const deviceDetail = {
   quickPause: 'Kilitle',
   quickCheckIn: 'Check-In',
   lastActive: 'Son etkinlik',
+  lastSeen: 'Son bağlantı',
+  lastActiveInfo:
+    'Cihazın en son kullanıldığı zaman: dokunma, tuşa basma, fare hareketi ya da ekranda açık bir uygulama (örneğin oynatılan bir video). Son 10 dakika içinde kullanıldıysa cihaz Çevrimiçi görünür.',
+  lastSeenInfo:
+    'Cihazın KidGate ile en son bağlantı kurduğu zaman. Cihaz ne zaman kullanıldığını bildiremez; bu, çocuğunuzun cihazı kullandığı anlamına gelmez. Burada Çevrimiçi, KidGate’in cihaza hâlâ ulaşabildiği anlamına gelir.',
   appVersion: 'Uygulama sürümü',
   otaUpdateNow: 'Şimdi güncelle',
   otaAsked: 'Bu cihazdan güncelleme istendi',

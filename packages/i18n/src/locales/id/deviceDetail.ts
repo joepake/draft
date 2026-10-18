@@ -50,6 +50,11 @@ export const deviceDetail = {
   quickPause: 'Kunci',
   quickCheckIn: 'Check-In',
   lastActive: 'Terakhir aktif',
+  lastSeen: 'Terakhir terhubung',
+  lastActiveInfo:
+    'Terakhir kali seseorang memakai perangkat ini: ketukan, ketikan, gerakan mouse, atau aplikasi yang terbuka di layar, seperti video yang sedang diputar. Perangkat tampil Online jika dipakai dalam 10 menit terakhir.',
+  lastSeenInfo:
+    'Terakhir kali perangkat ini terhubung ke KidGate. Perangkat ini tidak bisa mengetahui kapan seseorang memakainya, jadi ini tidak berarti anak Anda sedang memakainya. Online di sini berarti KidGate masih bisa menjangkaunya.',
   appVersion: 'Versi aplikasi',
   otaUpdateNow: 'Perbarui sekarang',
   otaAsked: 'Perangkat ini diminta memperbarui',

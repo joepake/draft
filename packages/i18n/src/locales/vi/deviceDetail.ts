@@ -47,6 +47,11 @@ export const deviceDetail = {
   quickPause: 'Khóa',
   quickCheckIn: 'Báo an toàn',
   lastActive: 'Hoạt động lần cuối',
+  lastSeen: 'Kết nối lần cuối',
+  lastActiveInfo:
+    'Lần cuối có người dùng thiết bị: chạm, gõ phím, di chuột hoặc có ứng dụng đang mở trên màn hình, như đang xem video. Thiết bị hiện Trực tuyến khi có người dùng trong 10 phút gần nhất.',
+  lastSeenInfo:
+    'Lần cuối thiết bị kết nối với KidGate. Thiết bị này không cho biết khi nào có người dùng, nên thời điểm này không có nghĩa là trẻ đang dùng máy. Trực tuyến ở đây nghĩa là KidGate vẫn liên lạc được với thiết bị.',
   appVersion: 'Phiên bản ứng dụng',
   otaUpdateNow: 'Cập nhật ngay',
   otaAsked: 'Đã yêu cầu thiết bị này cập nhật',

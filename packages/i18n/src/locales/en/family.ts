@@ -248,6 +248,7 @@ export const family = {
   deviceNameRequired: 'Enter a device name.',
   deviceNameTooLong: 'The device name must be {{max}} characters or fewer.',
   lastActiveDate: 'Last active: {{date}}',
+  lastSeenDate: 'Last connected: {{date}}',
   lastActiveUnknown: 'No recent activity',
   thisDevice: 'This device',
   thisDeviceYou: 'This device (You)',

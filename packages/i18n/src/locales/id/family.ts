@@ -316,6 +316,7 @@ export const family = {
   deviceNameTooLong: 'Nama perangkat maksimal {{max}} karakter.',
 
   lastActiveDate: 'Terakhir aktif: {{date}}',
+  lastSeenDate: 'Terakhir terhubung: {{date}}',
 
   lastActiveUnknown: 'Belum ada aktivitas terbaru',
 

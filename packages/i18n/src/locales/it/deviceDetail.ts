@@ -50,6 +50,11 @@ export const deviceDetail = {
   quickPause: 'Blocca',
   quickCheckIn: 'Check-in',
   lastActive: 'Ultima attività',
+  lastSeen: 'Ultima connessione',
+  lastActiveInfo:
+    'L’ultima volta che qualcuno ha usato questo dispositivo: un tocco, un tasto, un movimento del mouse o un’app aperta sullo schermo, come un video in riproduzione. Il dispositivo risulta Online se è stato usato negli ultimi 10 minuti.',
+  lastSeenInfo:
+    'L’ultima volta che questo dispositivo si è collegato a KidGate. Non può sapere quando qualcuno lo usa, quindi non significa che tuo figlio lo stesse usando. Online qui significa che KidGate riesce ancora a raggiungerlo.',
   appVersion: 'Versione app',
   otaUpdateNow: 'Aggiorna ora',
   otaAsked: 'Aggiornamento richiesto a questo dispositivo',

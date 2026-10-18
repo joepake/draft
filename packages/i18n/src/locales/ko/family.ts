@@ -309,6 +309,7 @@ export const family = {
   deviceNameTooLong: '기기 이름은 최대 {{max}}자까지 입력할 수 있습니다.',
 
   lastActiveDate: '마지막 활동: {{date}}',
+  lastSeenDate: '마지막 연결: {{date}}',
 
   lastActiveUnknown: '최근 활동 없음',
 

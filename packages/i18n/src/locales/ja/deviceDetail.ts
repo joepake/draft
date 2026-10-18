@@ -50,6 +50,11 @@ export const deviceDetail = {
   quickPause: 'ロック',
   quickCheckIn: 'チェックイン',
   lastActive: '最終利用',
+  lastSeen: '最終接続',
+  lastActiveInfo:
+    '最後にこのデバイスが使われた時刻です。タップ、キー入力、マウス操作、または動画再生など画面に開いているアプリが対象です。直近10分以内に使われていれば、オンラインと表示されます。',
+  lastSeenInfo:
+    'このデバイスが最後にKidGateと接続した時刻です。このデバイスは使われているかどうかを判別できないため、お子さまが使っていたという意味ではありません。ここでのオンラインは、KidGateがまだデバイスと通信できることを示します。',
   appVersion: 'アプリのバージョン',
   otaUpdateNow: '今すぐ更新',
   otaAsked: 'このデバイスに更新を依頼しました',

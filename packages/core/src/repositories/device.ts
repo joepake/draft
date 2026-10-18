@@ -54,6 +54,7 @@ import {
   presenceUsageWins,
   type PresenceReading,
 } from '../domain/devicePresence';
+import { newerBattery, type BatteryFields } from '../domain/battery';
 
 /**
  * The family's devices — reading them, renaming them, locking them, removing
@@ -290,6 +291,7 @@ function mapChildDevice(
     },
     presence?.beat,
   );
+  const lastUsedAt = timestampToIso(presence?.data.lastUsedAt);
   const lastLocation = parseLastLocation(data);
   const otaRequestResult = parseOtaRequestResult(data);
   const locationRequestResult = parseLocationRequestResult(data);
@@ -455,6 +457,9 @@ function mapChildDevice(
      * device on the other side of it paints offline.
      */
     lastActiveAt: beat.lastActiveAt ?? '',
+    // Presence only: the server writes it from the usage report, and nothing
+    // ever wrote it on the device document.
+    ...(lastUsedAt ? { lastUsedAt } : {}),
     /*
      * The cadence this device says it is keeping, and the last "report now" it
      * was sent. Both are read by a parent console off this record and nowhere
@@ -507,11 +512,25 @@ function mapChildDevice(
         : 0,
     parentPinLocked: data.parentPinLocked === true,
     ...(verifier ? { parentPinVerifier: verifier } : {}),
-    batteryLevel: parseBatteryLevel(data.batteryLevel),
-    batteryCharging:
-      typeof data.batteryCharging === 'boolean' ? data.batteryCharging : undefined,
-    batteryUpdatedAt: timestampToIso(data.batteryUpdatedAt),
+    /*
+     * From whichever home is newer: the desktop's usage report lands it on
+     * presence since 2026-10-18, the phone's location upload and older
+     * desktop builds on this document (`newerBattery`).
+     */
+    ...newerBattery(parseBattery(data), presence ? parseBattery(presence.data) : null),
   } as ChildDeviceRecord;
+}
+
+function parseBattery(data: Record<string, unknown>): BatteryFields {
+  const level = parseBatteryLevel(data.batteryLevel);
+  const updatedAt = timestampToIso(data.batteryUpdatedAt);
+  return {
+    ...(level !== undefined ? { batteryLevel: level } : {}),
+    ...(typeof data.batteryCharging === 'boolean'
+      ? { batteryCharging: data.batteryCharging }
+      : {}),
+    ...(updatedAt ? { batteryUpdatedAt: updatedAt } : {}),
+  };
 }
 
 /** Everything a device removal has to clean up alongside the device document. */

@@ -159,6 +159,9 @@ export function toDeviceView(record) {
     ...(record.lockRequestedAt ? { lockRequestedAt: record.lockRequestedAt } : {}),
     ...(record.lockEnforcement ? { lockEnforcement: record.lockEnforcement } : {}),
     lastActiveAt: record.lastActiveAt || undefined,
+    // Read before the check-in above by every "last active" line
+    // (`lastActivity`); the phone's `toDeviceView` carries it too.
+    lastUsedAt: record.lastUsedAt || undefined,
     /*
      * The cadence this device keeps and the last "report now" it was sent.
      * `getEffectiveDeviceStatus` judges `lastActiveAt` against the first — a

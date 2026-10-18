@@ -313,6 +313,8 @@ export interface ChildDeviceRecord {
   lockRequestedAt?: string;
   lockEnforcement?: DeviceLockEnforcement;
   lastActiveAt: string;
+  /** When a person last used it — `DevicePresenceRecord.lastUsedAt`. */
+  lastUsedAt?: string;
   /**
    * How often this device is currently beating — what `lastActiveAt` above is
    * to be judged against. See `Device.beatIntervalMs`; absent is the live

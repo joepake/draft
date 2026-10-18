@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import Icon from '@kidgate/web-ui/Icon';
 import { useT } from '@kidgate/web-ui/useT';
 import { resolveChildPresence } from '@kidgate/core/domain/childPresence';
+import { lastActivity } from '@kidgate/core/domain/deviceStatus';
 import { supportsLock } from '@kidgate/core/domain/controlSupport';
 import { isActionSupported } from '@kidgate/core/domain/deviceDetailActions';
 import {
@@ -93,6 +94,8 @@ export default function ChildHub({
     () => resolveChildPresence(childDevices, Date.now()),
     [childDevices],
   );
+  // Use where any device can tell, else the check-in under its own word.
+  const activity = lastActivity(presence);
 
   // Memoised, not a bare `?? {}`: the fallback is a fresh object every render,
   // and `controlFacts` below depends on it.
@@ -286,11 +289,24 @@ export default function ChildHub({
                   so it printed "Last active" with the time silently dropped.
                   Measured in the browser 2026-09-15. */}
               <span className="dot-sep">·</span>
-              {presence.lastActiveAt
-                ? appT('family.lastActiveDate', {
-                    date: timeAgo(presence.lastActiveAt),
-                  })
-                : appT('family.lastActiveUnknown')}
+              {activity ? (
+                <span
+                  title={appT(
+                    activity.used
+                      ? 'deviceDetail.lastActiveInfo'
+                      : 'deviceDetail.lastSeenInfo',
+                  )}
+                >
+                  {appT(
+                    activity.used ? 'family.lastActiveDate' : 'family.lastSeenDate',
+                    {
+                      date: timeAgo(activity.at),
+                    },
+                  )}
+                </span>
+              ) : (
+                appT('family.lastActiveUnknown')
+              )}
             </p>
           )}
         </div>
