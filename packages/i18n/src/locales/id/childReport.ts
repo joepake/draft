@@ -39,6 +39,7 @@ export const childReport = {
 
   sectionDevices: 'Perangkat mana',
   openDeviceReport: 'Buka laporan {{name}}',
+  deviceNoScreenTime: 'Tidak mengukur waktu layar',
 
   sectionApps: 'Paling banyak dipakai',
   appOnDevices: 'Di {{count}} perangkat',

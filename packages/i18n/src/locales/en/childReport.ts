@@ -76,6 +76,10 @@ export const childReport = {
 
   sectionDevices: 'Which device',
   openDeviceReport: 'Open the report for {{name}}',
+  // A device that measures no screen time (the browser extension): its row
+  // says so in place of a share and opens no report, because that report
+  // would be empty. Not the iPhone's caveat — an iPhone measures how long.
+  deviceNoScreenTime: 'Does not measure screen time',
 
   sectionApps: 'Most used',
   appOnDevices: 'On {{count}} devices',

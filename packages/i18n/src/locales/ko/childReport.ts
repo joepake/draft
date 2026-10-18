@@ -37,6 +37,7 @@ export const childReport = {
 
   sectionDevices: '어느 기기인지',
   openDeviceReport: '{{name}} 리포트 열기',
+  deviceNoScreenTime: '스크린 타임을 측정하지 않습니다',
 
   sectionApps: '가장 많이 쓴 앱',
   appOnDevices: '기기 {{count}}대에서',

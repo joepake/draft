@@ -649,8 +649,6 @@ export default function ChildReport({
                   own colour from the split below, so the two read together. */}
               {usageDevices.map(entry => {
                 const device = childDevices.find(item => item.id === entry.deviceId);
-                // No screen time, no band — the phone's rule (ChildReportScreen).
-                if (device && !supportsScreenTime(device)) return null;
                 const row = entry.days.find(day => day.date === bandDate);
                 return (
                   <div className="creport-band-block" key={entry.deviceId}>
@@ -663,11 +661,17 @@ export default function ChildReport({
                       </span>
                       {entry.name ?? NO_FIGURE}
                     </p>
-                    <UsageDayTimeline
-                      day={row}
-                      platform={entry.platform}
-                      capability={device?.capabilities?.usageTimeline}
-                    />
+                    {/* Not the band's "how long, but not when" — the iPhone's
+                        sentence; a browser extension measures neither. */}
+                    {device && !supportsScreenTime(device) ? (
+                      <p className="empty">{appT('childReport.deviceNoScreenTime')}</p>
+                    ) : (
+                      <UsageDayTimeline
+                        day={row}
+                        platform={entry.platform}
+                        capability={device?.capabilities?.usageTimeline}
+                      />
+                    )}
                   </div>
                 );
               })}
@@ -693,6 +697,33 @@ export default function ChildReport({
         <ul className="creport-rows">
           {activeShares.map((row, i) => {
             const device = childDevices.find(item => item.id === row.deviceId);
+            /*
+             * A device that measures no screen time says so and opens nothing:
+             * its report could only ever be empty. The phone's DeviceRow does
+             * the same.
+             */
+            if (device && !supportsScreenTime(device)) {
+              return (
+                <li key={row.deviceId} style={{ '--i': i }}>
+                  <div className="rhub-row rhub-row-static">
+                    <span
+                      className="creport-swatch"
+                      style={{ background: deviceColor(row.deviceId) }}
+                    >
+                      <Icon name={deviceIconName(device)} size={13} />
+                    </span>
+                    <span className="rhub-row-body">
+                      <span className="rhub-row-head">
+                        <strong>{row.name ?? NO_FIGURE}</strong>
+                      </span>
+                      <span className="empty">
+                        {appT('childReport.deviceNoScreenTime')}
+                      </span>
+                    </span>
+                  </div>
+                </li>
+              );
+            }
             return (
               // The stagger `.rhub-bar-fill` reads; see `dashboard.css`.
               <li key={row.deviceId} style={{ '--i': i }}>

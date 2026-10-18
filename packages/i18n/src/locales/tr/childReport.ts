@@ -38,6 +38,7 @@ export const childReport = {
 
   sectionDevices: 'Hangi cihaz',
   openDeviceReport: '{{name}} raporunu aç',
+  deviceNoScreenTime: 'Ekran süresini ölçmez',
 
   sectionApps: 'En çok kullanılan',
   appOnDevices: '{{count}} cihazda',

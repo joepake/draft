@@ -45,6 +45,7 @@ export const childReport = {
 
   sectionDevices: 'Theo thiết bị',
   openDeviceReport: 'Mở báo cáo của {{name}}',
+  deviceNoScreenTime: 'Không đo thời gian sử dụng',
 
   sectionApps: 'Dùng nhiều nhất',
   appOnDevices: 'Trên {{count}} thiết bị',

@@ -40,6 +40,7 @@ export const childReport = {
 
   sectionDevices: 'Qual dispositivo',
   openDeviceReport: 'Abrir o relatório de {{name}}',
+  deviceNoScreenTime: 'Não mede o tempo de uso',
 
   sectionApps: 'Mais usados',
   appOnDevices: 'Em {{count}} dispositivos',

@@ -6438,6 +6438,11 @@ button.kid-pill {
   background: color-mix(in srgb, var(--brand) 6%, transparent);
 }
 
+/* A row that opens nothing (a device with no screen time) is not a control. */
+.rhub-row-static:hover {
+  background: transparent;
+}
+
 .rhub-row-icon {
   display: grid;
   place-items: center;

@@ -41,6 +41,7 @@ export const childReport = {
 
   sectionDevices: 'أي جهاز',
   openDeviceReport: 'فتح تقرير {{name}}',
+  deviceNoScreenTime: 'لا يقيس وقت استخدام الشاشة',
 
   sectionApps: 'الأكثر استخدامًا',
   appOnDevices: 'على {{count}} جهاز',

@@ -39,6 +39,7 @@ export const childReport = {
 
   sectionDevices: 'Какое устройство',
   openDeviceReport: 'Открыть отчёт «{{name}}»',
+  deviceNoScreenTime: 'Не измеряет экранное время',
 
   sectionApps: 'Чаще всего',
   appOnDevices: 'На устройствах: {{count}}',

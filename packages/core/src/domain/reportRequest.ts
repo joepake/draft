@@ -14,9 +14,11 @@
  * travels as an id the device compares against the last one it answered.
  * Two differences, both deliberate:
  *
- * - **The listener list is longer.** Location is refused by a television that
- *   has no position to give; a report is something every child surface can
- *   answer, so `androidtv` and `chromeos` join the desktops.
+ * - **The push token picks the channel, not the platform** (2026-10-18).
+ *   Every device holding one is woken by a silent push, the television
+ *   included; the desktops and the extension hold none and read the field off
+ *   their own listener (`functions/lib/deviceMessages.js`). Location keeps a
+ *   platform list, because a television has no position to give.
  * - **A paying device is asked too, since 2026-09-23 — when it is idle.** It
  *   beats on a two-hour floor while no console has asked to see it
  *   (`IDLE_ALIVE_INTERVAL_MS`) and every three minutes for
@@ -26,38 +28,8 @@
  *   already beating live is still never asked: the request would buy nothing.
  */
 
-import type { DevicePlatform } from '@kidgate/schema/capabilities';
 import { deviceRequestId, deviceRequestedAtMs } from './deviceRequestId';
 import { ALIVE_MIN_INTERVAL_MS } from './reportCadence';
-
-/**
- * Platforms whose agent takes the request off its own device document.
- *
- * Everything with a live Firestore listener and no push token. The two phones
- * are the exception rather than the rule here: an app that is usually not
- * running can only be woken by FCM, which is why `ios` and `android` are
- * absent and get a silent data message instead
- * (`functions/triggers/deviceCommands.js`).
- *
- * `androidtv` and `chromeos` are present, unlike in `./locationRequest` —
- * there they are excluded because a television has no location to answer with
- * and a request written to one would stand forever. Both can say how long they
- * have been used and that they are alive, which is exactly what this asks for.
- */
-export const LISTENER_REPORT_PLATFORMS: readonly DevicePlatform[] = [
-  'macos',
-  'windows',
-  'androidtv',
-  'chromeos',
-];
-
-/** Whether this device takes report requests as a document field. */
-export function usesReportRequestField(platform: unknown): boolean {
-  return (
-    typeof platform === 'string' &&
-    LISTENER_REPORT_PLATFORMS.includes(platform as DevicePlatform)
-  );
-}
 
 /**
  * The id a request carries. Same construction and same reasons as
