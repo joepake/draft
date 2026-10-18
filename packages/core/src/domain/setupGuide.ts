@@ -180,9 +180,11 @@ export function formatGuideStart(seconds: number): string {
  * `hl` puts the player's own chrome in the app's language. The setup videos
  * speak English with English captions drawn into the picture, and carry one
  * caption track per app language, so for any other language `cc_load_policy`
- * turns that track on and `cc_lang_pref` picks it; for English it stays off,
- * or the same sentence would sit on screen twice. A video without that track
- * falls back to whatever YouTube has.
+ * turns that track on and `cc_lang_pref` picks it. English sends
+ * `cc_load_policy=0` rather than nothing, or the same sentence sits on screen
+ * twice: left out, the player falls back to the captions choice it remembers
+ * (on after a session in another language, or the viewer's own setting). A
+ * video without the language's track falls back to whatever YouTube has.
  *
  * It plays as soon as it opens. Waiting for a tap left the player on the
  * video's poster — one frame of one step, the same for every step — which read
@@ -197,7 +199,9 @@ export function youtubeEmbedUrl(
 ): string {
   const lang = encodeURIComponent(captionLanguage);
   const captions =
-    captionLanguage === 'en' ? '' : `&cc_load_policy=1&cc_lang_pref=${lang}`;
+    captionLanguage === 'en'
+      ? '&cc_load_policy=0'
+      : `&cc_load_policy=1&cc_lang_pref=${lang}`;
   const base =
     `https://www.youtube-nocookie.com/embed/${videoId}?rel=0&modestbranding=1&playsinline=1&fs=0` +
     `${captions}&hl=${lang}&autoplay=1`;

@@ -479,6 +479,11 @@ label[for] {
   scroll-margin-top: 5rem;
 }
 
+.legal h3 {
+  font-size: 1.05rem;
+  margin: 1.75rem 0 0.6rem;
+}
+
 .legal p {
   margin-bottom: 1.15rem;
 }

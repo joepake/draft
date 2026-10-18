@@ -54,7 +54,9 @@ export const deviceDetail = {
   lastActiveInfo:
     'La última vez que alguien usó este dispositivo: un toque, una tecla, un movimiento del ratón o una app abierta en pantalla, como un vídeo reproduciéndose. El dispositivo aparece En línea si se ha usado en los últimos 10 minutos.',
   lastSeenInfo:
-    'La última vez que este dispositivo se conectó con KidGate. No puede saber cuándo alguien lo usa, así que esto no significa que tu hijo lo estuviera usando. En línea aquí significa que KidGate todavía puede comunicarse con él.',
+    'La última vez que el iPhone se conectó con KidGate. Un iPhone no puede saber cuándo alguien lo usa, así que en un iPhone, En línea significa que KidGate todavía puede comunicarse con él, no que tu hijo lo esté usando.',
+  lastSeenInfoNoUse:
+    'La última vez que este dispositivo se conectó con KidGate. Nadie lo ha usado recientemente. El dispositivo aparece En línea si se ha usado en los últimos 10 minutos.',
   appVersion: 'Versión de la app',
   otaUpdateNow: 'Actualizar ahora',
   otaAsked: 'Se pidió a este dispositivo que se actualice',

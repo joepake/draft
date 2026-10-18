@@ -51,7 +51,9 @@ export const deviceDetail = {
   lastActiveInfo:
     'Lần cuối có người dùng thiết bị: chạm, gõ phím, di chuột hoặc có ứng dụng đang mở trên màn hình, như đang xem video. Thiết bị hiện Trực tuyến khi có người dùng trong 10 phút gần nhất.',
   lastSeenInfo:
-    'Lần cuối thiết bị kết nối với KidGate. Thiết bị này không cho biết khi nào có người dùng, nên thời điểm này không có nghĩa là trẻ đang dùng máy. Trực tuyến ở đây nghĩa là KidGate vẫn liên lạc được với thiết bị.',
+    'Lần cuối iPhone kết nối với KidGate. iPhone không cho biết khi nào có người dùng, nên với iPhone, Trực tuyến nghĩa là KidGate vẫn liên lạc được với máy, không có nghĩa là trẻ đang dùng.',
+  lastSeenInfoNoUse:
+    'Lần cuối thiết bị kết nối với KidGate. Gần đây chưa ghi nhận ai dùng thiết bị này. Thiết bị hiện Trực tuyến khi có người dùng trong 10 phút gần nhất.',
   appVersion: 'Phiên bản ứng dụng',
   otaUpdateNow: 'Cập nhật ngay',
   otaAsked: 'Đã yêu cầu thiết bị này cập nhật',

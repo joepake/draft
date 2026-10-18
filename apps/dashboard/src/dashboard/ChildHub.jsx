@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import Icon from '@kidgate/web-ui/Icon';
 import { useT } from '@kidgate/web-ui/useT';
 import { resolveChildPresence } from '@kidgate/core/domain/childPresence';
-import { lastActivity } from '@kidgate/core/domain/deviceStatus';
+import { lastActivity, lastActivityInfoKey } from '@kidgate/core/domain/deviceStatus';
 import { supportsLock } from '@kidgate/core/domain/controlSupport';
 import { isActionSupported } from '@kidgate/core/domain/deviceDetailActions';
 import {
@@ -290,13 +290,7 @@ export default function ChildHub({
                   Measured in the browser 2026-09-15. */}
               <span className="dot-sep">·</span>
               {activity ? (
-                <span
-                  title={appT(
-                    activity.used
-                      ? 'deviceDetail.lastActiveInfo'
-                      : 'deviceDetail.lastSeenInfo',
-                  )}
-                >
+                <span title={appT(lastActivityInfoKey(activity, childDevices))}>
                   {appT(
                     activity.used ? 'family.lastActiveDate' : 'family.lastSeenDate',
                     {

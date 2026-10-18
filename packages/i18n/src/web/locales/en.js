@@ -918,72 +918,72 @@ export default {
    */
   about: {
     eyebrow: 'About us',
-    title: 'Parental control a family can',
-    titleAccent: 'actually agree on.',
-    lede: 'We work on one product, so KidGate gets all of our attention. Our whole posture is that a parent should be able to trust what the app says — including the parts where it says it cannot help.',
+    title: 'Helping children use technology more safely,',
+    titleAccent: 'and families worry a little less.',
+    lede: 'Phones, computers and TVs are part of a child’s life now. That isn’t necessarily a bad thing — what matters is how they use them, for how long, and whether they are protected from content that isn’t right for them. KidGate helps parents set the limits that matter in a way that is simple, open and fair — for parents and children alike.',
 
     storyEyebrow: 'Why KidGate exists',
-    storyTitle: 'Screen time became the argument in every house',
+    storyTitle: 'It starts with a moment every family knows',
     storyP1:
-      'Most families have the same evening: a timer nobody agreed on, a phone taken away, and a child certain the rules changed while they were not looking. The tools meant to fix that mostly made it worse — a lock with no explanation on one side, a dashboard that reads like surveillance on the other.',
+      '“Just five more minutes!” Then five minutes pass. A parent asks again, the child gets upset, and something small turns into an argument nobody wanted. We don’t think every family needs stricter rules. Sometimes what they need is rules that are clear, that everyone understands and can trust.',
     storyP2:
-      'So we built the version we wanted at home. A parent sets a Daily Limit, Blocked Hours, Blocked Apps and a Web Filter once, and the device holds them. The child sees the same numbers the parent sees, can ask for more time, and can reach a parent with SOS whenever the device is online. KidGate does not pretend not to be there.',
+      'With KidGate, a parent sets a Daily Limit, Blocked Hours, Blocked Apps and the Web Filter once, and the rules then run on their own, as far as each device allows. Children can see their limits too, know when the device will lock, and ask for more time when they need it.',
     storyP3:
-      'It runs on iPhone, Android, Mac, Windows and Android TV, with a Chrome extension for the Web Filter and a dashboard parents open in any browser. One family, one subscription, every device.',
+      'Parents don’t have to remind them every day. Children don’t have to guess whether the rules changed today. Fewer arguments, more time together.',
 
-    valuesEyebrow: 'What we believe',
-    valuesTitle: 'Four rules we do not break',
-    valuesSub:
-      'Written down before the first feature, and checked against every one since.',
-    value1Title: 'A child is not a suspect',
+    valuesEyebrow: 'What matters to us',
+    valuesTitle: 'What we always hold on to',
+    valuesSub: 'Every KidGate feature starts from these four things.',
+    value1Title: 'Open with parents and children alike',
     value1Text:
-      'The rules are visible on the device they apply to. A child can see what is set and how much time is left, ask for more, and raise SOS at any moment. Control that has to stay secret is not control a family can talk about.',
-    value2Title: 'Your family’s data is not for sale',
+      'Children have a right to know the rules on their own device. Parents have the tools to protect them; children can understand their limits, ask for more time, and reach a parent with SOS on supported devices. We want technology to help a family understand each other, not drift apart.',
+    value2Title: 'Your family’s privacy is respected',
     value2Text:
-      'No ads, ever. Nothing about a child is used for advertising or sold on. You can ask to erase your family account and everything in it at any time — from inside the app, or by email as this site explains — and it is gone 14 days later.',
-    value3Title: 'We say what we cannot do',
+      'KidGate shows no ads and never sells your child’s data to anyone. You can ask us to erase your family account and the data that goes with it — from inside the app, or by email as this site explains — and it is erased 14 days later under the process we publish.',
+    value3Title: 'Honest about what KidGate can do',
     value3Text:
-      'Every platform limits what an app is allowed to enforce. Where KidGate is best-effort — quitting a blocked app on a computer rather than refusing to launch it — the screen says so instead of showing a green tick.',
-    value4Title: 'One family, one plan',
+      'Every device has its own limits, so some features work differently on iPhone, Android, Mac, Windows and TV. We say so on the screen, rather than promising everything works the same everywhere. Protecting a family takes good tools, and information you can rely on.',
+    value4Title: 'One family, one Premium plan',
     value4Text:
-      'One Premium subscription covers every parent and every child device. Without it, Daily Limit, Blocked Hours, Blocked Apps, Device Lock and the Web Filter keep working on every child device that supports them, and an SOS sent from a phone or computer always reaches you, so the basic safety rules are never the thing behind the paywall.',
+      'One Premium subscription covers every parent and every child device — nothing to buy device by device. Without it, Daily Limit, Blocked Hours, Blocked Apps, Device Lock and the Web Filter keep working on supported devices, and SOS is never behind the paywall — because the essential safety tools should always be within reach.',
 
     makeEyebrow: 'What we make',
-    makeTitle: 'One KidGate, wherever the screen is',
-    makeSub: 'The same rules, written once, enforced by whatever each platform allows.',
+    makeTitle: 'One app, many devices',
+    makeSub:
+      'Children use a phone when they are out, a computer for school and a TV to relax, so looking after them shouldn’t stop at one device. Each platform has its own strengths, but the goal stays the same: easier for parents, clearer for children.',
     make1Title: 'iPhone and iPad',
     make1Text:
-      'Daily Limit, Blocked Hours and app shielding through Apple’s own Screen Time framework, and the Web Filter through a private connection on the device itself.',
+      'Daily Limit, Blocked Hours and Blocked Apps built on Apple’s own Screen Time, plus the Web Filter right on the device.',
     make2Title: 'Android',
     make2Text:
-      'Limits, Blocked Apps, a full-screen lock and the Web Filter, plus an alert when a new app appears.',
+      'Limits, Blocked Apps, a screen lock and the Web Filter, plus a heads-up when your child installs a new app.',
     make3Title: 'macOS',
     make3Text:
-      'The desktop agent on a Mac: the same schedule and the same limits, and a day a parent can actually read.',
+      'The same schedule and the same limits as the phones, plus a daily summary a parent can read at a glance.',
     make4Title: 'Windows',
     make4Text:
-      'The same agent on a PC, with a background service that starts it again if it is closed or ended.',
+      'The same rules on a PC, and KidGate starts itself again if it is closed or ended.',
     make5Title: 'Android TV',
     make5Text:
-      'The living-room screen, treated as a shared family device rather than one child’s — the same limits and the same schedule as the phones. A TV shares no location and has no SOS.',
+      'The family’s shared screen in the living room, with the same limits and the same schedule as the phones. A TV shares no location and has no SOS.',
     make6Title: 'Chrome',
     make6Text:
-      'A browser extension carrying the same Web Filter inside Chrome, on a computer that already has KidGate and on one that cannot. It works inside Chrome only: besides filtering, it can record the YouTube videos watched and flag concerning searches when you turn those on, and it reports the other extensions installed. There is no screen time and no app blocking.',
+      'The Chrome extension brings the Web Filter into the browser, even on a computer that cannot run KidGate. When you turn them on, it also records the YouTube videos your child watched, flags worrying searches, and tells you which other extensions are installed. It does not measure screen time or block apps.',
     make7Title: 'Parent dashboard',
     make7Text:
-      'A browser is a parent’s second screen. Sign in from any computer by scanning a code with your phone; nothing to install.',
+      'Look after the whole family from a browser on any computer. Sign in by scanning a code with your phone — nothing to install.',
 
     factsEyebrow: 'KidGate today',
     factsTitle: 'Four numbers',
-    fact1Label: 'languages, Arabic to Vietnamese',
-    fact2Label: 'platforms, plus the dashboard',
-    fact3Label: 'ads, ever',
-    fact4Label: 'subscription per family',
+    fact1Label: 'languages, so every family can use it in their own',
+    fact2Label: 'platforms, plus the web dashboard',
+    fact3Label: 'ads in KidGate',
+    fact4Label: 'Premium plan for the whole family',
 
-    contactEyebrow: 'Talk to us',
-    contactTitle: 'A person reads every message',
+    contactEyebrow: 'We’re listening',
+    contactTitle: 'Every message is read by a person',
     contactSub:
-      'A support question, a bug, a feature your family needs, or a translation that reads wrong in your language — write to us.',
+      'Something not working as expected, a feature your family needs, or a translation that doesn’t sound natural in your language — write to us. Every note helps make KidGate more useful for the families using it every day.',
     contactEmail: 'Email us',
     contactSupport: 'Support and guides',
     contactPrivacy: 'How we handle data',

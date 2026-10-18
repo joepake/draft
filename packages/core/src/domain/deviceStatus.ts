@@ -159,8 +159,28 @@ export const IN_USE_WINDOW_MS = 10 * 60_000;
  * only at coarse marks of a day's total and the app uploads only when iOS
  * wakes it, so its dot keeps the check-in rule (operator, 2026-10-18).
  */
-function measuresUse(device: Device): boolean {
+export function reportsUse(device: Pick<Device, 'platform'>): boolean {
   return device.platform !== 'ios';
+}
+
+/**
+ * The tooltip under the "last active" / "last connected" line, for one device
+ * or a child's set. "Last connected" means two different things and the note
+ * must not mix them: on an iPhone, Online is reachability; anywhere else it is
+ * use, and the line only says nobody has used the device lately — a TV with an
+ * Offline chip must not be told "Online here means KidGate can reach it"
+ * (2026-10-18).
+ */
+export function lastActivityInfoKey(
+  activity: { used: boolean } | null,
+  devices: readonly Pick<Device, 'platform'>[],
+): string {
+  if (activity?.used) {
+    return 'deviceDetail.lastActiveInfo';
+  }
+  return devices.some(device => !reportsUse(device))
+    ? 'deviceDetail.lastSeenInfo'
+    : 'deviceDetail.lastSeenInfoNoUse';
 }
 
 /**
@@ -177,7 +197,7 @@ function measuresUse(device: Device): boolean {
  */
 export function getShownDeviceStatus(device: Device, nowMs: number): Device['status'] {
   const status = getChipDeviceStatus(getEffectiveDeviceStatus(device, nowMs), device);
-  if (status !== 'online' || !measuresUse(device)) {
+  if (status !== 'online' || !reportsUse(device)) {
     return status;
   }
   const usedMs = device.lastUsedAt ? Date.parse(device.lastUsedAt) : NaN;

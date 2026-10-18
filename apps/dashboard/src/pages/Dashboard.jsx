@@ -101,7 +101,11 @@ import {
   formatBuildLabel,
   resolveBuildFreshness,
 } from '@kidgate/core/domain/buildFreshness';
-import { getShownDeviceStatus, lastActivity } from '@kidgate/core/domain/deviceStatus';
+import {
+  getShownDeviceStatus,
+  lastActivity,
+  lastActivityInfoKey,
+} from '@kidgate/core/domain/deviceStatus';
 import { resolveChildPresence } from '@kidgate/core/domain/childPresence';
 import { resolveChildLocationView } from '@kidgate/core/domain/childLocation';
 import { resolveChipTargetDevice } from '@kidgate/core/domain/familySummary';
@@ -733,13 +737,7 @@ function KidGroupHead({
         <p
           className="kid-last-active"
           title={
-            activity
-              ? appT(
-                  activity.used
-                    ? 'deviceDetail.lastActiveInfo'
-                    : 'deviceDetail.lastSeenInfo',
-                )
-              : undefined
+            activity ? appT(lastActivityInfoKey(activity, group.devices)) : undefined
           }
         >
           <Icon name="activity" size={12} />
@@ -3052,9 +3050,7 @@ export default function Dashboard({
                       <span className="dot-sep">·</span>
                       <span
                         title={activityT(
-                          device.lastUsedAt
-                            ? 'deviceDetail.lastActiveInfo'
-                            : 'deviceDetail.lastSeenInfo',
+                          lastActivityInfoKey(lastActivity(device), [device]),
                         )}
                       >
                         {device.lastUsedAt

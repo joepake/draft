@@ -29,6 +29,12 @@ export interface LegalLink {
 
 export interface LegalSection {
   readonly title: string;
+  /**
+   * Blocks separated by a blank line (`\n\n`). A block starting `### ` is a
+   * sub-heading; a block whose every line starts `• ` is a list; anything else
+   * is a paragraph. `intro` follows the same rules. `apps/site`'s
+   * `LegalDocument` is the only reader.
+   */
   readonly body: string;
   /**
    * Structured rather than URLs inline in `body`, because the alternative is

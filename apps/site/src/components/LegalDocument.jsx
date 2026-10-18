@@ -51,12 +51,12 @@ export default function LegalDocument({ documentKey }) {
     <article className="legal">
       <h1>{doc.title}</h1>
       <p className="updated">{doc.effectiveDate}</p>
-      <p>{doc.intro}</p>
+      <LegalBody text={doc.intro} />
 
       {doc.sections.map(section => (
         <section key={section.title}>
           <h2>{section.title}</h2>
-          <p>{section.body}</p>
+          <LegalBody text={section.body} />
           {section.links?.length ? (
             <ul>
               {section.links.map(link => (
@@ -88,4 +88,27 @@ export default function LegalDocument({ documentKey }) {
       ))}
     </article>
   );
+}
+
+const LIST_ITEM = '• ';
+const SUBHEADING = '### ';
+
+/** A section body: blank-line blocks, `### ` sub-headings, `• ` lists (`LegalSection.body`). */
+function LegalBody({ text }) {
+  return text.split('\n\n').map((block, i) => {
+    if (block.startsWith(SUBHEADING)) {
+      return <h3 key={i}>{block.slice(SUBHEADING.length)}</h3>;
+    }
+    const lines = block.split('\n');
+    if (lines.every(line => line.startsWith(LIST_ITEM))) {
+      return (
+        <ul key={i}>
+          {lines.map(line => (
+            <li key={line}>{line.slice(LIST_ITEM.length)}</li>
+          ))}
+        </ul>
+      );
+    }
+    return <p key={i}>{block}</p>;
+  });
 }

@@ -54,7 +54,9 @@ export const deviceDetail = {
   lastActiveInfo:
     'Cihazın en son kullanıldığı zaman: dokunma, tuşa basma, fare hareketi ya da ekranda açık bir uygulama (örneğin oynatılan bir video). Son 10 dakika içinde kullanıldıysa cihaz Çevrimiçi görünür.',
   lastSeenInfo:
-    'Cihazın KidGate ile en son bağlantı kurduğu zaman. Cihaz ne zaman kullanıldığını bildiremez; bu, çocuğunuzun cihazı kullandığı anlamına gelmez. Burada Çevrimiçi, KidGate’in cihaza hâlâ ulaşabildiği anlamına gelir.',
+    'iPhone’un KidGate ile en son bağlantı kurduğu zaman. iPhone ne zaman kullanıldığını bildiremez; bu yüzden iPhone’da Çevrimiçi, KidGate’in cihaza hâlâ ulaşabildiği anlamına gelir, çocuğunuzun onu kullandığı anlamına gelmez.',
+  lastSeenInfoNoUse:
+    'Cihazın KidGate ile en son bağlantı kurduğu zaman. Son zamanlarda kimse bu cihazı kullanmadı. Son 10 dakika içinde kullanıldıysa cihaz Çevrimiçi görünür.',
   appVersion: 'Uygulama sürümü',
   otaUpdateNow: 'Şimdi güncelle',
   otaAsked: 'Bu cihazdan güncelleme istendi',

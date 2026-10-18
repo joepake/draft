@@ -54,16 +54,16 @@ export const permissions = {
   // The SOS sound sentence names Data safety's "Voice or sound recordings",
   // declared 2026-10-14 for the SOS clip, before a reviewer asks for it.
   accessibilityWarningNote:
-    'Android warns that KidGate can observe your actions. With this permission KidGate sees which app is open, so the lock can stay on top. When watched videos are recorded, it also reads the title and channel of each YouTube video and sends them to your parent. This permission does not read passwords, messages or what you type. If your parent turns on Message Alerts, a second permission, asked for separately, checks the text messages (SMS and MMS), chat messages and searches you type, and sends your parent only a flagged word or phrase. If you allow the microphone, KidGate records up to 15 seconds of sound when you send an SOS and sends it to your parent. If KidGate crashes, a crash log is sent to the KidGate team so the problem can be fixed.',
+    'Android warns that KidGate can observe your actions. With this permission KidGate sees which app is open, so the lock can stay on top. When watched videos are recorded, it also reads the title and channel of each YouTube video and sends them to your parent. This permission does not read passwords, messages or what you type. If your parent turns on Message Alerts, a second permission, asked for separately, checks the text messages (SMS and MMS), chat messages and searches you type, and sends your parent only a flagged word or phrase. If you allow the microphone, KidGate records up to 15 seconds of sound when you send an SOS and sends it to your parent. If KidGate crashes, a crash log is sent to the KidGate team so the problem can be fixed. A device ID that KidGate creates is also sent, so the family account can tell devices apart.',
   accessibilityAgree: 'Agree',
   accessibilityDecline: 'Disagree',
   // apps/tv's prominent disclosure. Names every type the TV uploads (app time,
-  // installed apps, web browsing history, YouTube titles) — the phone's 10-09
-  // rejection was a type missing here. No crash logs: the TV has no Crashlytics.
-  // It shares the setup screen's unscrolled slot with `vpnDisclosureNote`, so each
-  // locale stays no longer than its own copy of that note.
+  // installed apps, web browsing history, YouTube titles, device ID) — Play
+  // rejected the phone 10-09 and the TV 10-18 ("Device or other identifiers")
+  // for a type missing here. No crash logs: the TV has no Crashlytics. The setup
+  // screen does not scroll, so check the longest locale (ru) on a 1080p set.
   accessibilityTvNote:
-    'With this permission KidGate sees which app is open, so the lock can stay on top, and counts how long each app is used. KidGate sends your parent that time, the apps installed on this TV, its web browsing history (sites visited and blocked) while the Web Filter is on, and the title and channel of YouTube videos watched. It does not read what is on the screen, passwords or messages.',
+    'With this permission KidGate sees which app is open, so the lock can stay on top, and counts how long each app is used. KidGate sends your parent that time, the apps installed on this TV, its web browsing history (sites visited and blocked) while the Web Filter is on, and the title and channel of YouTube videos watched. It also sends a device ID that identifies this TV. It does not read what is on the screen, passwords or messages.',
   uninstallProtectionWizardBody:
     'Makes KidGate harder to remove: uninstalling it means turning this off first, and a parent is alerted when that happens. Android shows its own confirmation screen.',
   notificationsWizardBody:

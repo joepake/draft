@@ -52,7 +52,9 @@ export const deviceDetail = {
   lastActiveInfo:
     'Wann das Gerät zuletzt benutzt wurde: Tippen, Tastatur, Maus oder eine geöffnete App auf dem Bildschirm, etwa ein laufendes Video. Das Gerät zeigt Online, wenn es in den letzten 10 Minuten benutzt wurde.',
   lastSeenInfo:
-    'Wann sich das Gerät zuletzt bei KidGate gemeldet hat. Es kann nicht erkennen, wann jemand es benutzt – das heißt also nicht, dass dein Kind daran war. Online bedeutet hier, dass KidGate das Gerät noch erreicht.',
+    'Wann sich das iPhone zuletzt bei KidGate gemeldet hat. Ein iPhone kann nicht erkennen, wann es benutzt wird – Online heißt beim iPhone also, dass KidGate es noch erreicht, nicht dass dein Kind daran ist.',
+  lastSeenInfoNoUse:
+    'Wann sich das Gerät zuletzt bei KidGate gemeldet hat. In letzter Zeit hat es niemand benutzt. Das Gerät zeigt Online, wenn es in den letzten 10 Minuten benutzt wurde.',
   appVersion: 'App-Version',
   otaUpdateNow: 'Jetzt aktualisieren',
   otaAsked: 'Dieses Gerät wurde zum Aktualisieren aufgefordert',

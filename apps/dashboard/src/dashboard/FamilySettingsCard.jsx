@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react';
 import Icon from '@kidgate/web-ui/Icon';
 import { useT } from '@kidgate/web-ui/useT';
-import { getShownDeviceStatus, lastActivity } from '@kidgate/core/domain/deviceStatus';
+import {
+  getShownDeviceStatus,
+  lastActivity,
+  lastActivityInfoKey,
+} from '@kidgate/core/domain/deviceStatus';
 import { leaderboardResetParams } from '@kidgate/core/domain/leaderboardReset';
 import { getLocaleTag } from '@kidgate/i18n/web';
 import Card from './Card.jsx';
@@ -331,11 +335,7 @@ export default function FamilySettingsCard({
                             className="kid-last-active"
                             title={
                               seen
-                                ? appT(
-                                    seen.used
-                                      ? 'deviceDetail.lastActiveInfo'
-                                      : 'deviceDetail.lastSeenInfo',
-                                  )
+                                ? appT(lastActivityInfoKey(seen, [device]))
                                 : undefined
                             }
                           >
