@@ -176,6 +176,22 @@ export const REPORT_REQUEST_UNANSWERED_MS = 5 * 60 * 1000;
  */
 export const REPORT_REQUEST_MISSES_OFFLINE = 2;
 
+/**
+ * Asks in a row a device may leave unanswered before a console stops asking
+ * on every open, and how often it asks after that (2026-10-18).
+ *
+ * Measured on `kidgate` that day: two phones silent for five and fourteen days
+ * were asked 32 times each — a device-document write, an `onChildDeviceUpdated`
+ * run and a push per ask, none answered. Past the cap the console asks once per
+ * `REPORT_REQUEST_MISSED_RETRY_MS` rather than never, because an iPhone drops
+ * silent pushes and a slow retry is the chance one gets through. The count
+ * resets the moment the device speaks (`nextReportRequestMisses`), so a device
+ * that comes back is asked exactly as before. One above
+ * `REPORT_REQUEST_MISSES_OFFLINE`, so the dot is red before the asking slows.
+ */
+export const REPORT_REQUEST_MAX_MISSES = 3;
+export const REPORT_REQUEST_MISSED_RETRY_MS = 6 * 60 * 60 * 1000;
+
 export interface ReportRequestInput {
   /**
    * The cadence this device says it is keeping (`Device.beatIntervalMs`).
@@ -206,6 +222,11 @@ export interface ReportRequestInput {
   lastRequestedAtMs: number | null;
   /** `Device.lastActiveAt`, as stored. Absent for a device that never reported. */
   lastActiveAt: string | null | undefined;
+  /**
+   * Asks in a row this device has left unanswered, the standing one included —
+   * `nextReportRequestMisses(device)`. Absent reads as none.
+   */
+  misses?: number;
   nowMs: number;
 }
 
@@ -230,6 +251,14 @@ export function shouldRequestReport(input: ReportRequestInput): boolean {
   if (
     input.lastRequestedAtMs !== null &&
     input.nowMs - input.lastRequestedAtMs < REPORT_REQUEST_MIN_INTERVAL_MS
+  ) {
+    return false;
+  }
+
+  if (
+    (input.misses ?? 0) >= REPORT_REQUEST_MAX_MISSES &&
+    input.lastRequestedAtMs !== null &&
+    input.nowMs - input.lastRequestedAtMs < REPORT_REQUEST_MISSED_RETRY_MS
   ) {
     return false;
   }

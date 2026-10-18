@@ -260,7 +260,15 @@ export function createControlRepository(deps: ControlRepositoryDeps) {
        * `lastInputAt` is not a control: epoch ms of the device's last observed
        * use, for `DevicePresenceRecord.lastUsedAt` (`functions/lib/lastUsed.js`).
        */
-      usage: Partial<DeviceControls> & { lastInputAt?: number },
+      usage: Partial<DeviceControls> & {
+        lastInputAt?: number;
+        /**
+         * The all-time count of refused lookups, for
+         * `DevicePresenceRecord.webFilterBlockedCount` — the television's way
+         * of telling a parent without a device-document write per change.
+         */
+        webFilterBlockedCount?: number;
+      },
     ): Promise<unknown> {
       /*
        * **A report needs a day and something to say, and minutes are no longer
@@ -351,6 +359,12 @@ export function createControlRepository(deps: ControlRepositoryDeps) {
           Number.isFinite(usage.newAppsToday) &&
           usage.newAppsToday >= 0
             ? { newAppsToday: Math.floor(usage.newAppsToday) }
+            : {}),
+          // The all-time refused-lookup count, stored on presence by the server.
+          ...(typeof usage.webFilterBlockedCount === 'number' &&
+          Number.isFinite(usage.webFilterBlockedCount) &&
+          usage.webFilterBlockedCount >= 0
+            ? { webFilterBlockedCount: Math.floor(usage.webFilterBlockedCount) }
             : {}),
           // The device's last observed use — the parent's Online dot.
           ...(typeof usage.lastInputAt === 'number' &&

@@ -385,8 +385,18 @@ function mapChildDevice(
     ...(data.monitoredChangedAt
       ? { monitoredChangedAt: timestampToIso(data.monitoredChangedAt) ?? '' }
       : {}),
-    webFilterBlockedCount:
+    /*
+     * The larger of the two homes. The television reports it on its usage
+     * report, which lands on presence (2026-10-18); the phone and the
+     * extension still write this document. The count only grows and presence
+     * is deleted with the device, so the larger is always the newer.
+     */
+    webFilterBlockedCount: Math.max(
       typeof data.webFilterBlockedCount === 'number' ? data.webFilterBlockedCount : 0,
+      typeof presence?.data.webFilterBlockedCount === 'number'
+        ? presence.data.webFilterBlockedCount
+        : 0,
+    ),
     ...(webToday ? { webToday } : {}),
     /*
      * The device's own capability probe, passed through unparsed and absent
@@ -983,11 +993,13 @@ export function createDeviceRepository(deps: DeviceRepositoryDeps) {
 
       await Promise.all(
         devices.map(async device => {
+          const misses = nextReportRequestMisses(device);
           if (
             !shouldRequestReport({
               beatIntervalMs: device.beatIntervalMs,
               lastRequestedAtMs: reportRequestedAtMs(device.reportRequestId),
               lastActiveAt: device.lastActiveAt,
+              misses,
               nowMs,
             })
           ) {
@@ -995,11 +1007,7 @@ export function createDeviceRepository(deps: DeviceRepositoryDeps) {
           }
           try {
             await db.updateDoc(childDeviceDoc(userId, device.id), {
-              reportRequestId: reportRequestId(
-                nowMs,
-                device.id,
-                nextReportRequestMisses(device),
-              ),
+              reportRequestId: reportRequestId(nowMs, device.id, misses),
             });
             asked += 1;
           } catch {

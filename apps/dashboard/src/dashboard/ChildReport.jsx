@@ -13,6 +13,7 @@ import {
 } from '@kidgate/core/domain/childUsage';
 import { reportBarPercent, reportPeak } from '@kidgate/core/domain/reportHub';
 import { isBandTooThin } from '@kidgate/core/domain/usageTimeline';
+import { supportsScreenTime } from '@kidgate/core/domain/controlSupport';
 import ChildInitial from './ChildInitial.jsx';
 import Toast from './Toast.jsx';
 import { deviceIconName } from './deviceIcon.js';
@@ -648,6 +649,8 @@ export default function ChildReport({
                   own colour from the split below, so the two read together. */}
               {usageDevices.map(entry => {
                 const device = childDevices.find(item => item.id === entry.deviceId);
+                // No screen time, no band — the phone's rule (ChildReportScreen).
+                if (device && !supportsScreenTime(device)) return null;
                 const row = entry.days.find(day => day.date === bandDate);
                 return (
                   <div className="creport-band-block" key={entry.deviceId}>
