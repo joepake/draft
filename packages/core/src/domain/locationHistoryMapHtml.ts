@@ -77,9 +77,40 @@ export const PARENT_TILES = { fromParent: true } as const;
 /** A HERE key, `PARENT_TILES`, or `null` for the "map unavailable" document. */
 export type MapTileSource = string | typeof PARENT_TILES | null;
 
-function buildHereTileLayerScript(tiles: Exclude<MapTileSource, null>): string {
-  if (typeof tiles !== 'string') {
-    return `
+/*
+ * **Every executable script below is a constant; what varies rides in a JSON
+ * block.** The dashboard renders these documents as `srcDoc`, which inherits
+ * its CSP, and a CSP admits an inline script only by hash. When the points,
+ * the colours and the key were spliced into the script body, every render
+ * hashed differently (measured 2026-10-19, two renders, two hashes), so the
+ * only way to enforce the dashboard's CSP was `'unsafe-inline'`. A
+ * `type="application/json"` block is never executed, so no policy covers it.
+ *
+ * `MAP_PAGE_SCRIPTS` is what gets hashed: `mapScriptHashes.json` beside this
+ * file holds the hashes, a test recomputes them, and `scripts/sync-web-repo.mjs`
+ * reads that file into the dashboard's `script-src`. Edit a script and the
+ * test fails until the file is updated — that is the point.
+ *
+ * The block escapes `<`, so a device title holding `</script>` cannot end it
+ * and start markup of its own; the spliced version had no such guard.
+ */
+const MAP_DATA_ID = 'kg-map-data';
+
+function mapData(data: unknown): string {
+  const json = JSON.stringify(data).replace(/</g, '\\u003c');
+  return `<script type="application/json" id="${MAP_DATA_ID}">${json}</script>`;
+}
+
+const READ_MAP_DATA = `
+      const data = JSON.parse(document.getElementById('${MAP_DATA_ID}').textContent);`;
+
+/** `tileUrl` null asks the parent for each tile (`PARENT_TILES`). */
+const ADD_TILES = `
+      function addTiles(map, tileUrl) {
+        if (tileUrl) {
+          L.tileLayer(tileUrl, { maxZoom: 19 }).addTo(map);
+          return;
+        }
         const pendingTiles = new Map();
         let nextTileId = 0;
         window.addEventListener('message', event => {
@@ -115,19 +146,28 @@ function buildHereTileLayerScript(tiles: Exclude<MapTileSource, null>): string {
           },
         });
         new ParentTiles({ maxZoom: 19 }).addTo(map);
-  `;
-  }
-  const escapedKey = tiles.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
-  return `
-        L.tileLayer(
-          'https://maps.hereapi.com/v3/base/mc/{z}/{x}/{y}/png8?style=explore.day&size=256&apiKey=${escapedKey}',
-          { maxZoom: 19 }
-        ).addTo(map);
-  `;
+      }`;
+
+function hereTileUrl(tiles: Exclude<MapTileSource, null>): string | null {
+  if (typeof tiles !== 'string') return null;
+  return `https://maps.hereapi.com/v3/base/mc/{z}/{x}/{y}/png8?style=explore.day&size=256&apiKey=${encodeURIComponent(tiles)}`;
 }
 
+/** The "no locations yet" panel both list maps draw in place of a map. */
+const SHOW_EMPTY = `
+      function showEmpty(mapEl, message, extraStyle) {
+        const box = document.createElement('div');
+        box.style.cssText =
+          'display:flex;align-items:center;justify-content:center;height:100%;color:#475569;font:600 14px -apple-system,sans-serif;' + extraStyle;
+        box.textContent = message;
+        mapEl.appendChild(box);
+      }`;
+
+const MISSING_KEY_SCRIPT = `${READ_MAP_DATA}
+      document.body.textContent = data.message;
+    `;
+
 function missingKeyDocument(softBg: string, message: string): string {
-  const emptyMessage = JSON.stringify(message);
   return `<!DOCTYPE html>
 <html>
   <head>
@@ -149,10 +189,71 @@ function missingKeyDocument(softBg: string, message: string): string {
     </style>
   </head>
   <body>
-    <script>document.body.textContent = ${emptyMessage};</script>
+    ${mapData({ message })}
+    <script>${MISSING_KEY_SCRIPT}</script>
   </body>
 </html>`;
 }
+
+const HISTORY_SCRIPT = `${READ_MAP_DATA}${ADD_TILES}${SHOW_EMPTY}
+      const points = data.points;
+      const focusId = data.focusId;
+      const mapEl = document.getElementById('map');
+
+      if (!points.length) {
+        showEmpty(mapEl, data.emptyMessage, '');
+      } else {
+        const map = L.map('map', {
+          zoomControl: false,
+          attributionControl: false,
+        });
+
+        addTiles(map, data.tileUrl);
+
+        const path = points
+          .slice()
+          .reverse()
+          .map(point => [point.lat, point.lng]);
+
+        if (path.length > 1) {
+          L.polyline(path, {
+            color: data.accentColor,
+            weight: 4,
+            opacity: 0.9,
+          }).addTo(map);
+        }
+
+        const bounds = L.latLngBounds(path);
+        map.fitBounds(bounds, { padding: [36, 36], maxZoom: 15 });
+
+        points.forEach(point => {
+          const isFocused = focusId && point.id === focusId;
+          const className =
+            'dot ' +
+            (point.isLatest ? 'dot-latest' : 'dot-past') +
+            (isFocused ? ' dot-focus' : '');
+          const size = point.isLatest ? 16 : 12;
+
+          L.marker([point.lat, point.lng], {
+            title: point.title,
+            icon: L.divIcon({
+              className: '',
+              html: '<div class="' + className + '"></div>',
+              iconSize: [size, size],
+              iconAnchor: [size / 2, size / 2],
+            }),
+            zIndexOffset: isFocused || point.isLatest ? 200 : 0,
+          }).addTo(map);
+        });
+
+        if (focusId) {
+          const focusPoint = points.find(point => point.id === focusId);
+          if (focusPoint) {
+            map.setView([focusPoint.lat, focusPoint.lng], Math.max(map.getZoom(), 15));
+          }
+        }
+      }
+    `;
 
 export function buildLocationHistoryMapHtml(
   points: LocationHistoryMapPoint[],
@@ -167,10 +268,13 @@ export function buildLocationHistoryMapHtml(
     return missingKeyDocument(softBg, messages.mapUnavailable);
   }
 
-  const payload = JSON.stringify(points);
-  const focusId = JSON.stringify(highlightId ?? null);
-  const tileLayerScript = buildHereTileLayerScript(tiles);
-  const emptyMessage = JSON.stringify(messages.mapNoLocationsEmpty);
+  const data = {
+    points,
+    focusId: highlightId ?? null,
+    tileUrl: hereTileUrl(tiles),
+    emptyMessage: messages.mapNoLocationsEmpty,
+    accentColor,
+  };
 
   return `<!DOCTYPE html>
 <html>
@@ -216,66 +320,8 @@ export function buildLocationHistoryMapHtml(
   </head>
   <body>
     <div id="map"></div>
-    <script>
-      const points = ${payload};
-      const focusId = ${focusId};
-      const mapEl = document.getElementById('map');
-
-      if (!points.length) {
-        mapEl.innerHTML =
-          '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:#475569;font:600 14px -apple-system,sans-serif;">' + ${emptyMessage} + '</div>';
-      } else {
-        const map = L.map('map', {
-          zoomControl: false,
-          attributionControl: false,
-        });
-
-        ${tileLayerScript}
-
-        const path = points
-          .slice()
-          .reverse()
-          .map(point => [point.lat, point.lng]);
-
-        if (path.length > 1) {
-          L.polyline(path, {
-            color: '${accentColor}',
-            weight: 4,
-            opacity: 0.9,
-          }).addTo(map);
-        }
-
-        const bounds = L.latLngBounds(path);
-        map.fitBounds(bounds, { padding: [36, 36], maxZoom: 15 });
-
-        points.forEach(point => {
-          const isFocused = focusId && point.id === focusId;
-          const className =
-            'dot ' +
-            (point.isLatest ? 'dot-latest' : 'dot-past') +
-            (isFocused ? ' dot-focus' : '');
-          const size = point.isLatest ? 16 : 12;
-
-          L.marker([point.lat, point.lng], {
-            title: point.title,
-            icon: L.divIcon({
-              className: '',
-              html: '<div class="' + className + '"></div>',
-              iconSize: [size, size],
-              iconAnchor: [size / 2, size / 2],
-            }),
-            zIndexOffset: isFocused || point.isLatest ? 200 : 0,
-          }).addTo(map);
-        });
-
-        if (focusId) {
-          const focusPoint = points.find(point => point.id === focusId);
-          if (focusPoint) {
-            map.setView([focusPoint.lat, focusPoint.lng], Math.max(map.getZoom(), 15));
-          }
-        }
-      }
-    </script>
+    ${mapData(data)}
+    <script>${HISTORY_SCRIPT}</script>
   </body>
 </html>`;
 }
@@ -317,6 +363,129 @@ export interface ChildDeviceTrail {
   carried: boolean;
 }
 
+const CHILD_DEVICES_SCRIPT = `${READ_MAP_DATA}${ADD_TILES}${SHOW_EMPTY}
+      const points = data.points;
+      const trails = data.trails;
+      const mapEl = document.getElementById('map');
+
+      if (!points.length) {
+        showEmpty(mapEl, data.emptyMessage, 'padding:16px;text-align:center;');
+      } else {
+        const map = L.map('map', {
+          zoomControl: false,
+          attributionControl: false,
+        });
+
+        addTiles(map, data.tileUrl);
+
+        // The view has to hold the routes as well as the current fixes —
+        // fitting the markers alone cropped a trail that left the frame.
+        const boundPoints = points.map(point => [point.lat, point.lng]);
+        trails.forEach(trail => {
+          trail.path.forEach(step => boundPoints.push([step.lat, step.lng]));
+        });
+        // The error circles too: a 20 km circle cropped to its centre is the
+        // confident pin the circle exists to correct.
+        const circleRadius = point =>
+          typeof point.accuracy === 'number' && point.accuracy > 0
+            ? point.accuracy
+            : null;
+        points.forEach(point => {
+          const radius = circleRadius(point);
+          if (radius === null) return;
+          const dLat = radius / 111320;
+          const dLng =
+            radius / (111320 * Math.max(Math.cos((point.lat * Math.PI) / 180), 0.01));
+          boundPoints.push(
+            [point.lat + dLat, point.lng + dLng],
+            [point.lat - dLat, point.lng - dLng],
+          );
+        });
+        map.fitBounds(L.latLngBounds(boundPoints), {
+          padding: [48, 48],
+          maxZoom: 15,
+        });
+
+        // Error circles under everything else, only where the platform gave
+        // a radius: a Wi-Fi fix's 50 m is a faint ring, an IP lookup's 20 km
+        // is the whole city — which is the honest picture of it.
+        points.forEach(point => {
+          const radius = circleRadius(point);
+          if (radius === null) return;
+          const color =
+            point.color || (point.kind === 'carried' ? data.accentColor : '#64748B');
+          L.circle([point.lat, point.lng], {
+            radius,
+            color,
+            weight: 1,
+            opacity: 0.5,
+            fillColor: color,
+            fillOpacity: 0.08,
+            interactive: false,
+          }).addTo(map);
+        });
+
+        const escapeHtml = value =>
+          String(value).replace(/[&<>"']/g, ch => ({
+            '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
+          })[ch]);
+
+        // Routes first, so a marker always sits above the line that ends at
+        // it rather than being covered by a neighbouring device's path.
+        trails.forEach(trail => {
+          const path = trail.path.map(step => [step.lat, step.lng]);
+          L.polyline(path, {
+            color: trail.color,
+            weight: trail.carried ? 4 : 3,
+            opacity: trail.carried ? 0.9 : 0.55,
+            lineJoin: 'round',
+            lineCap: 'round',
+          }).addTo(map);
+
+          // Where the route began, so a line has a readable direction without
+          // arrowheads the WebView would have to draw per segment.
+          const start = path[0];
+          if (start) {
+            L.circleMarker(start, {
+              radius: 4,
+              color: '#fff',
+              weight: 2,
+              fillColor: trail.color,
+              fillOpacity: 1,
+            }).addTo(map);
+          }
+        });
+
+        points.forEach(point => {
+          const carried = point.kind === 'carried';
+          const dotStyle = point.color
+            ? ' style="background:' + escapeHtml(point.color) + '"'
+            : '';
+          const chipStyle = point.color && carried
+            ? ' style="background:' + escapeHtml(point.color) + ';color:#fff"'
+            : '';
+          const html =
+            '<div class="device-pin">' +
+            '<div class="device-dot ' + (carried ? 'device-dot-carried' : 'device-dot-other') + '"' + dotStyle + '></div>' +
+            '<div class="device-chip' + (carried ? ' device-chip-carried' : '') + '"' + chipStyle + '>' +
+            escapeHtml(point.title) +
+            '</div>' +
+            '</div>';
+
+          L.marker([point.lat, point.lng], {
+            title: point.title,
+            icon: L.divIcon({
+              className: '',
+              html,
+              iconSize: [120, 40],
+              iconAnchor: [60, carried ? 9 : 6],
+            }),
+            zIndexOffset: carried ? 200 : 0,
+          }).addTo(map);
+        });
+      }
+    `;
+
 /**
  * The child-level map: one marker per device, plus **one route per device**.
  *
@@ -344,12 +513,15 @@ export function buildChildDevicesMapHtml(
     return missingKeyDocument(softBg, messages.mapUnavailable);
   }
 
-  const payload = JSON.stringify(points);
-  // A single-point run is a marker, not a line — filtered here so the page
-  // script has nothing degenerate to guard against.
-  const trailPayload = JSON.stringify(trails.filter(trail => trail.path.length > 1));
-  const tileLayerScript = buildHereTileLayerScript(tiles);
-  const emptyMessage = JSON.stringify(messages.mapNoLocationsEmpty);
+  const data = {
+    points,
+    // A single-point run is a marker, not a line — filtered here so the page
+    // script has nothing degenerate to guard against.
+    trails: trails.filter(trail => trail.path.length > 1),
+    tileUrl: hereTileUrl(tiles),
+    emptyMessage: messages.mapNoLocationsEmpty,
+    accentColor,
+  };
 
   return `<!DOCTYPE html>
 <html>
@@ -415,197 +587,21 @@ export function buildChildDevicesMapHtml(
   </head>
   <body>
     <div id="map"></div>
-    <script>
-      const points = ${payload};
-      const trails = ${trailPayload};
-      const mapEl = document.getElementById('map');
-
-      if (!points.length) {
-        mapEl.innerHTML =
-          '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:#475569;font:600 14px -apple-system,sans-serif;padding:16px;text-align:center;">' + ${emptyMessage} + '</div>';
-      } else {
-        const map = L.map('map', {
-          zoomControl: false,
-          attributionControl: false,
-        });
-
-        ${tileLayerScript}
-
-        // The view has to hold the routes as well as the current fixes —
-        // fitting the markers alone cropped a trail that left the frame.
-        const boundPoints = points.map(point => [point.lat, point.lng]);
-        trails.forEach(trail => {
-          trail.path.forEach(step => boundPoints.push([step.lat, step.lng]));
-        });
-        // The error circles too: a 20 km circle cropped to its centre is the
-        // confident pin the circle exists to correct.
-        const circleRadius = point =>
-          typeof point.accuracy === 'number' && point.accuracy > 0
-            ? point.accuracy
-            : null;
-        points.forEach(point => {
-          const radius = circleRadius(point);
-          if (radius === null) return;
-          const dLat = radius / 111320;
-          const dLng =
-            radius / (111320 * Math.max(Math.cos((point.lat * Math.PI) / 180), 0.01));
-          boundPoints.push(
-            [point.lat + dLat, point.lng + dLng],
-            [point.lat - dLat, point.lng - dLng],
-          );
-        });
-        map.fitBounds(L.latLngBounds(boundPoints), {
-          padding: [48, 48],
-          maxZoom: 15,
-        });
-
-        // Error circles under everything else, only where the platform gave
-        // a radius: a Wi-Fi fix's 50 m is a faint ring, an IP lookup's 20 km
-        // is the whole city — which is the honest picture of it.
-        points.forEach(point => {
-          const radius = circleRadius(point);
-          if (radius === null) return;
-          const color =
-            point.color || (point.kind === 'carried' ? '${accentColor}' : '#64748B');
-          L.circle([point.lat, point.lng], {
-            radius,
-            color,
-            weight: 1,
-            opacity: 0.5,
-            fillColor: color,
-            fillOpacity: 0.08,
-            interactive: false,
-          }).addTo(map);
-        });
-
-        const escapeHtml = value =>
-          String(value).replace(/[&<>"']/g, ch => ({
-            '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
-          })[ch]);
-
-        // Routes first, so a marker always sits above the line that ends at
-        // it rather than being covered by a neighbouring device's path.
-        trails.forEach(trail => {
-          const path = trail.path.map(step => [step.lat, step.lng]);
-          L.polyline(path, {
-            color: trail.color,
-            weight: trail.carried ? 4 : 3,
-            opacity: trail.carried ? 0.9 : 0.55,
-            lineJoin: 'round',
-            lineCap: 'round',
-          }).addTo(map);
-
-          // Where the route began, so a line has a readable direction without
-          // arrowheads the WebView would have to draw per segment.
-          const start = path[0];
-          if (start) {
-            L.circleMarker(start, {
-              radius: 4,
-              color: '#fff',
-              weight: 2,
-              fillColor: trail.color,
-              fillOpacity: 1,
-            }).addTo(map);
-          }
-        });
-
-        points.forEach(point => {
-          const carried = point.kind === 'carried';
-          const dotStyle = point.color
-            ? ' style="background:' + point.color + '"'
-            : '';
-          const chipStyle = point.color && carried
-            ? ' style="background:' + point.color + ';color:#fff"'
-            : '';
-          const html =
-            '<div class="device-pin">' +
-            '<div class="device-dot ' + (carried ? 'device-dot-carried' : 'device-dot-other') + '"' + dotStyle + '></div>' +
-            '<div class="device-chip' + (carried ? ' device-chip-carried' : '') + '"' + chipStyle + '>' +
-            escapeHtml(point.title) +
-            '</div>' +
-            '</div>';
-
-          L.marker([point.lat, point.lng], {
-            title: point.title,
-            icon: L.divIcon({
-              className: '',
-              html,
-              iconSize: [120, 40],
-              iconAnchor: [60, carried ? 9 : 6],
-            }),
-            zIndexOffset: carried ? 200 : 0,
-          }).addTo(map);
-        });
-      }
-    </script>
+    ${mapData(data)}
+    <script>${CHILD_DEVICES_SCRIPT}</script>
   </body>
 </html>`;
 }
 
-export function buildPlacePickerMapHtml(
-  latitude: number,
-  longitude: number,
-  tiles: MapTileSource,
-  messages: Pick<LocationMapMessages, 'mapUnavailable'>,
-  accentColor = '#0F766E',
-): string {
-  const softBg = `${accentColor}14`;
-  if (!tiles) {
-    return missingKeyDocument(softBg, messages.mapUnavailable);
-  }
-
-  const tileLayerScript = buildHereTileLayerScript(tiles);
-  const lat = Number(latitude);
-  const lng = Number(longitude);
-
-  return `<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-    />
-    ${LEAFLET_ASSETS}
-    <style>
-      html, body, #map {
-        height: 100%;
-        width: 100%;
-        margin: 0;
-        padding: 0;
-        background: ${softBg};
-        touch-action: none;
-      }
-      .leaflet-container {
-        background: ${softBg};
-      }
-      .leaflet-control-zoom a {
-        width: 34px !important;
-        height: 34px !important;
-        line-height: 34px !important;
-        font-size: 18px !important;
-      }
-      .pin {
-        width: 18px;
-        height: 18px;
-        border-radius: 999px;
-        background: ${accentColor};
-        border: 3px solid #fff;
-        box-shadow: 0 2px 8px rgba(15, 23, 42, 0.35);
-      }
-    </style>
-  </head>
-  <body>
-    <div id="map"></div>
-    <script>
+const PLACE_PICKER_SCRIPT = `${READ_MAP_DATA}${ADD_TILES}
       const map = L.map('map', {
         zoomControl: false,
         attributionControl: false,
-      }).setView([${lat}, ${lng}], 16);
+      }).setView([data.lat, data.lng], 16);
 
       L.control.zoom({ position: 'topright' }).addTo(map);
 
-      ${tileLayerScript}
+      addTiles(map, data.tileUrl);
 
       const icon = L.divIcon({
         className: '',
@@ -614,7 +610,7 @@ export function buildPlacePickerMapHtml(
         iconAnchor: [9, 9],
       });
 
-      let marker = L.marker([${lat}, ${lng}], { icon: icon, draggable: true }).addTo(map);
+      let marker = L.marker([data.lat, data.lng], { icon: icon, draggable: true }).addTo(map);
 
       function post(payload) {
         if (window.ReactNativeWebView && window.ReactNativeWebView.postMessage) {
@@ -659,7 +655,75 @@ export function buildPlacePickerMapHtml(
       document.addEventListener('touchstart', function () { setGesture(true); }, { passive: true });
       document.addEventListener('touchend', function () { setGesture(false); }, { passive: true });
       document.addEventListener('touchcancel', function () { setGesture(false); }, { passive: true });
-    </script>
+    `;
+
+export function buildPlacePickerMapHtml(
+  latitude: number,
+  longitude: number,
+  tiles: MapTileSource,
+  messages: Pick<LocationMapMessages, 'mapUnavailable'>,
+  accentColor = '#0F766E',
+): string {
+  const softBg = `${accentColor}14`;
+  if (!tiles) {
+    return missingKeyDocument(softBg, messages.mapUnavailable);
+  }
+
+  const data = {
+    lat: Number(latitude),
+    lng: Number(longitude),
+    tileUrl: hereTileUrl(tiles),
+  };
+
+  return `<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    ${LEAFLET_ASSETS}
+    <style>
+      html, body, #map {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        background: ${softBg};
+        touch-action: none;
+      }
+      .leaflet-container {
+        background: ${softBg};
+      }
+      .leaflet-control-zoom a {
+        width: 34px !important;
+        height: 34px !important;
+        line-height: 34px !important;
+        font-size: 18px !important;
+      }
+      .pin {
+        width: 18px;
+        height: 18px;
+        border-radius: 999px;
+        background: ${accentColor};
+        border: 3px solid #fff;
+        box-shadow: 0 2px 8px rgba(15, 23, 42, 0.35);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    ${mapData(data)}
+    <script>${PLACE_PICKER_SCRIPT}</script>
   </body>
 </html>`;
 }
+
+/** Every inline script these documents can contain — the hash list's source. */
+export const MAP_PAGE_SCRIPTS = [
+  MISSING_KEY_SCRIPT,
+  HISTORY_SCRIPT,
+  CHILD_DEVICES_SCRIPT,
+  PLACE_PICKER_SCRIPT,
+] as const;

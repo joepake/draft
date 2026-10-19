@@ -27,6 +27,22 @@
           "value": "frame-ancestors 'self' tauri://localhost http://tauri.localhost http://localhost:5175 http://127.0.0.1:5175"
         }
       ]
+    },
+    {
+      "source": "/(.*)",
+      "missing": [
+        {
+          "type": "query",
+          "key": "embed",
+          "value": "1"
+        }
+      ],
+      "headers": [
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        }
+      ]
     }
   ]
 }

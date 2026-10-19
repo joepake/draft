@@ -167,6 +167,42 @@ export interface UserRepositoryDeps {
 
 export function createUserRepository(deps: UserRepositoryDeps) {
   const { db, api, appVersion, appVersionCode, platform } = deps;
+  /*
+   * One trial ask per account per process (2026-10-19). A parent's launch hit
+   * `ensureTrialStarted` four times on prod — sign-in, `SubscriptionProvider`'s
+   * two effects, and the first of those again when `isFamilyOwner` resolved —
+   * and an account that never gets a trial (a joined parent's own uid, no child
+   * device) read the document and posted every time. Nothing a later ask could
+   * find changes mid-process: pairing starts the clock server-side
+   * (`childDeviceCreated`, `ensureDeviceCredential`). A failed ask is forgotten
+   * so the next caller tries again.
+   */
+  const trialAsks = new Map<string, Promise<EnsureTrialStartedResult>>();
+
+  async function askTrialStarted(userId: string): Promise<EnsureTrialStartedResult> {
+    try {
+      const snapshot = await db.getDoc(userDoc(userId));
+      const existing = (snapshot.data() as Record<string, unknown> | undefined)
+        ?.trialStartedAt;
+      if (existing) {
+        return { trialStartedAt: timestampToIso(existing) ?? null, started: false };
+      }
+    } catch {
+      // Offline, or a permission hiccup mid-session. Let the function be the
+      // source of truth rather than reporting "no trial" from a failed read.
+    }
+
+    const response = await api.post<{ started?: boolean; trialStartedAt?: string }>(
+      '/ensureTrialStarted',
+      {},
+      { as: 'parent' },
+    );
+
+    return {
+      trialStartedAt: response.trialStartedAt ?? null,
+      started: response.started === true,
+    };
+  }
 
   return {
     async createProfile(
@@ -267,31 +303,18 @@ export function createUserRepository(deps: UserRepositoryDeps) {
      * call earned another full trial, repeatedly.
      *
      * Reads the document first so the common case, a trial already running,
-     * costs one document read instead of a function round-trip.
+     * costs one document read instead of a function round-trip; and asks once
+     * per account per process (`trialAsks` above).
      */
-    async ensureTrialStarted(userId: string): Promise<EnsureTrialStartedResult> {
-      try {
-        const snapshot = await db.getDoc(userDoc(userId));
-        const existing = (snapshot.data() as Record<string, unknown> | undefined)
-          ?.trialStartedAt;
-        if (existing) {
-          return { trialStartedAt: timestampToIso(existing) ?? null, started: false };
-        }
-      } catch {
-        // Offline, or a permission hiccup mid-session. Let the function be the
-        // source of truth rather than reporting "no trial" from a failed read.
+    ensureTrialStarted(userId: string): Promise<EnsureTrialStartedResult> {
+      const pending = trialAsks.get(userId);
+      if (pending) {
+        return pending;
       }
-
-      const response = await api.post<{ started?: boolean; trialStartedAt?: string }>(
-        '/ensureTrialStarted',
-        {},
-        { as: 'parent' },
-      );
-
-      return {
-        trialStartedAt: response.trialStartedAt ?? null,
-        started: response.started === true,
-      };
+      const ask = askTrialStarted(userId);
+      trialAsks.set(userId, ask);
+      ask.catch(() => trialAsks.delete(userId));
+      return ask;
     },
 
     /**
