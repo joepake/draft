@@ -348,7 +348,7 @@ export const userGuide = {
         '1': 'Ebeveyn cihazında çocuğunuzun profilini (veya cihaz bir çocuğa atanmamışsa cihazı) açın, ardından Ödül görevleri’ni seçin.',
         '2': 'Yeni görev’i seçin veya bir şablonla başlayın. Görevi yazın; ödülü dakika cinsinden (5 ile 240 arası), zorluğu ve tekrarını (Her gün veya Tek seferlik) seçin, ardından Görev oluştur’u seçin.',
         '3': 'Görev, çocuk cihazında “Ekstra süre kazan” bölümünde görünür. Görev bitince çocuğunuz Yaptım’ı seçer.',
-        '4': 'Bir bildirim alırsınız. İncelemeye hazır bölümünde (Ödül görevleri ekranında, Aile’de veya çocuğunuzun profilinde) dakikaları bugüne eklemek için Onayla’yı ya da çocuğunuzun tekrar deneyebilmesi için Geri gönder’i seçin.',
+        '4': 'Bir bildirim alırsınız. Görev, Onay bekliyor bölümünde (Aile’de ve çocuğunuzun profilinde) ve İncelemeye hazır bölümünde (Ödül görevleri ekranında) görünür. Dakikaları bugüne eklemek için Onayla’yı ya da çocuğunuzun tekrar deneyebilmesi için Geri gönder’i seçin.',
         '5': 'Düzenlemek veya silmek için bir göreve dokunun. Ücretsiz planda aynı anda en fazla 10 etkin görev olabilir; Premium’da bu sayı 20’dir.',
         '6': 'Her görev zorluğuna göre 1 ile 3 yıldız değerindedir ve yıldızlar görevi onayladığınızda sayılır. Çocuklarınızın bu haftaki yıldızları karşılaştırabilmesi için aile sahibi “Aile”yi, ardından aile kartını açar ve “Çocuklar” sekmesinde “Yıldız tablosu”nu açar. Her çocuk tabloyu kendi cihazındaki KidGate’te görür. Tablo her hafta yeniden başlar.',
       },
@@ -405,9 +405,9 @@ export const userGuide = {
       tip: 'Filtre sayfaları değil site adlarını okur ve ne kadar kapsadığı cihaza göre değişir. Telefonlar tarayıcıları ve birçok uygulamayı filtreler. Mac, tarayıcının adını gizlediği siteleri (ziyaretlerin yaklaşık yarısı) denetleyemez. Windows her tarayıcıyı yalnızca site adına göre denetler. Chrome uzantısı yalnızca Chrome’u filtreler. Kategori seçmek, kendi listelerinizi oluşturmak ve site isteklerini yanıtlamak Premium’a dahildir. Daha güçlü koruma için Web filtresini Engellenen Uygulamalar ile birlikte kullanın.',
       steps: {
         '1': 'Ebeveyn cihazında çocuğunuzun profilini (veya cihaz bir çocuğa atanmamışsa cihazı) açın, ardından Web filtresi.',
-        '2': 'En üstteki “Uygunsuz siteleri filtrele” seçeneğini açın. Hemen uygulanır, kaydedilecek bir şey yoktur. Aynı ekrandaki “Güvenli Aramayı zorunlu kıl” ise Android, Android TV ve Chrome’da Google, Bing ve DuckDuckGo’yu güvenli sonuçlara, YouTube’u ise Kısıtlı Moda kilitler.',
+        '2': 'En üstteki “Uygunsuz siteleri filtrele” seçeneğini açın. Hemen uygulanır, kaydedilecek bir şey yoktur. Aynı ekrandaki “Güvenli Aramayı zorunlu kıl” ise Android, Android TV ve Chrome’da Google, Bing ve DuckDuckGo’yu güvenli sonuçlara, YouTube’u ise Kısıtlı Moda kilitler. YouTube’da Kısıtlı Mod yorumları da gizler ve bazı sıradan videoları da engeller; bu yüzden KidGate açmadan önce onay ister.',
         '3': '“Neler engellensin” altında reddedilecek kategorileri seçin. Siteleri “Her zaman izin ver” veya “Her zaman engelle” listesine ekleyin ya da izin listeniz dışındaki her şeyi reddetmek için “Yalnızca izinli siteler” seçeneğini açın. Çocuğunuz engellenmiş bir siteyi açmak istediğinde istek “Site istekleri” altında bekler. Bu kontroller Premium’a dahildir; ücretsiz plan sabit bir kategori kümesi kullanır.',
-        '4': 'Daha sonra aynı ekrandan tekrar kontrol edin. Durum Bekleniyor olarak kalırsa ayarların senkronize olması için çocuk cihazında KidGate’i yeniden açın.',
+        '4': 'Daha sonra aynı ekrandan tekrar kontrol edin. Bir değişiklik birkaç dakika içinde çocuk cihazına ulaşır; orada zaten açık olan bir site, tarayıcı kapatılana kadar yüklenmeye devam edebilir. Değişiklik o zamana kadar ulaşmazsa veya durum Bekleniyor olarak kalırsa ayarların senkronize olması için çocuk cihazında KidGate’i yeniden açın.',
         '5': 'Çocuk cihazında KidGate’i açıp filtreyi bir kez onaylayın. iPhone veya iPad’de, iOS VPN konfigürasyonları eklemek için izin istediğinde İzin Ver’i seçin, ardından cihaz parolasını girin. Android’de VPN isteğini onaylayın, ardından Ayarlar → Ağ ve internet → Özel DNS yolunu açıp Kapalı’yı seçin; çünkü Özel DNS açıkken tarayıcılar filtreyi atlayabilir.',
       },
     },
@@ -434,6 +434,21 @@ export const userGuide = {
         '3': 'Tüm cihazlarını kapsayan tek bir rapor için bir çocuğa dokunun; süre olarak “Bugün”, “7 gün” veya “30 gün” seçilebilir. Aynı anda iki ekranda geçen süre bir kez sayılır, bu yüzden bu toplam cihazların ayrı ayrı toplamından düşük olabilir.',
         '4': 'Her pazartesi sabahı bir bildirimle birlikte yeni bir Haftalık rapor gelir. Rapor, değiştirebileceğiniz bir şeyi önerir ve ilgili ayarı açar.',
         '5': 'KidGate’i açtığınızda her cihazdan güncel veriler istenir, bu yüzden rakamların güncellenmesi birkaç dakika sürebilir. İnternet bağlantısı olmayan bir cihaz, yeniden çevrimiçi olduğunda veri gönderir.',
+      },
+    },
+    screenTimeCounting: {
+      title: 'Ekran süresi nasıl sayılır',
+      summary:
+        'Günlük sınıra ve kullanım raporlarına hangi sürelerin eklendiği, küçük bir kayan pencerede oynatılan video dahil.',
+      keywords:
+        'pencere içinde pencere, pip, kayan video, mini oynatıcı, küçük pencere, youtube, müzik, duraklatıldı, arka plan',
+      tip: 'iPhone ve iPad’de neyin sayılacağına Apple’ın Ekran Süresi karar verir. Mac’te bir videonun sesi kilidin arkasında çalmaya devam edebilir.',
+      steps: {
+        '1': 'Bir uygulama çocuğun ekranında açık olduğu sürece süre sayılır. Ana ekran, bilgisayarın masaüstü, kilit ekranı ve KidGate’in kendisi sayılmaz.',
+        '2': 'Android telefonda veya bilgisayarda, küçük bir kayan pencerede (pencere içinde pencere, PIP) oynatılan video, önde başka bir uygulama açıkken bile onu oynatan uygulamaya sayılır.',
+        '3': 'Bu kayan video başka bir uygulamanın üzerinde oynatıldığında iki uygulama da bu süreyi “En çok kullanılan uygulamalar” bölümünde gösterir, ancak günün toplamı onu yalnızca bir kez sayar.',
+        '4': 'Kayan penceresinde bırakılan duraklatılmış bir video, pencere ekranda kaldığı sürece sayılmaya devam eder. Saymayı durdurmak için pencereyi kapatın.',
+        '5': 'Bilgisayar kilitliyken geçen süre sayılmaz. Windows bilgisayarda kilit ayrıca çoğu uygulamadaki video ve müziği duraklatır; kilit kalktığında da duraklatılmış kalırlar.',
       },
     },
     widget: {

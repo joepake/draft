@@ -355,7 +355,7 @@ export const userGuide = {
         '1': 'Sur l’appareil parent, ouvrez le profil de votre enfant (ou l’appareil, s’il n’est attribué à aucun enfant), puis Tâches à récompense.',
         '2': 'Sélectionnez Nouvelle tâche, ou partez d’un modèle. Saisissez la tâche, choisissez la récompense en minutes (de 5 à 240), une difficulté et la répétition (Chaque jour ou Une fois), puis sélectionnez Créer la tâche.',
         '3': 'Sur l’appareil de l’enfant, la tâche apparaît sous Gagne du temps en plus. Une fois la tâche faite, votre enfant sélectionne C’est fait.',
-        '4': 'Vous recevez une notification. Dans À approuver (sur l’écran Tâches à récompense, dans Famille ou dans le profil de votre enfant), sélectionnez Approuver pour ajouter les minutes pour aujourd’hui, ou Renvoyer pour que votre enfant puisse réessayer.',
+        '4': 'Vous recevez une notification. La tâche apparaît dans Approbation requise (dans Famille et dans le profil de votre enfant) et dans À approuver (sur l’écran Tâches à récompense). Sélectionnez Approuver pour ajouter les minutes pour aujourd’hui, ou Renvoyer pour que votre enfant puisse réessayer.',
         '5': 'Appuyez sur une tâche pour la modifier ou la supprimer. L’offre gratuite permet jusqu’à 10 tâches actives à la fois, et Premium en permet 20.',
         '6': 'Chaque tâche vaut 1 à 3 étoiles selon sa difficulté, et les étoiles comptent une fois la tâche approuvée. Pour que vos enfants comparent leurs étoiles de la semaine, le propriétaire de la famille ouvre Famille, puis la fiche de la famille, et active le Tableau des étoiles dans l’onglet Enfants. Chaque enfant le voit ensuite dans KidGate sur son appareil. Il repart de zéro chaque semaine.',
       },
@@ -412,9 +412,9 @@ export const userGuide = {
       tip: 'Le filtre lit les noms de sites, pas les pages, et sa portée dépend de l’appareil. Les téléphones filtrent les navigateurs et de nombreuses apps. Un Mac ne peut pas vérifier les sites dont le navigateur masque le nom, soit environ la moitié des visites. Windows vérifie chaque navigateur, mais uniquement d’après le nom du site. L’extension Chrome ne filtre que Chrome. Le choix des catégories, vos propres listes et les réponses aux demandes de sites font partie de Premium. Combinez le Filtre web avec les Applications bloquées pour une protection renforcée.',
       steps: {
         '1': 'Sur l’appareil parent, ouvrez le profil de votre enfant (ou l’appareil, s’il n’est attribué à aucun enfant), puis Filtre web.',
-        '2': 'Activez « Filtrer les sites inappropriés » en haut. Le réglage s’applique immédiatement, il n’y a rien à enregistrer. « Imposer SafeSearch » sur le même écran verrouille aussi Google, Bing et DuckDuckGo sur des résultats sûrs et YouTube sur le mode restreint, sur Android, Android TV et Chrome.',
+        '2': 'Activez « Filtrer les sites inappropriés » en haut. Le réglage s’applique immédiatement, il n’y a rien à enregistrer. « Imposer SafeSearch » sur le même écran verrouille aussi Google, Bing et DuckDuckGo sur des résultats sûrs et YouTube sur le mode restreint, sur Android, Android TV et Chrome. Sur YouTube, le mode restreint masque aussi les commentaires et bloque certaines vidéos ordinaires ; KidGate vous demande donc confirmation avant de l’activer.',
         '3': 'Sous « Que bloquer », choisissez les catégories à refuser. Ajoutez des sites à « Toujours autoriser » ou « Toujours bloquer », ou activez « Sites autorisés uniquement » pour refuser tout ce qui ne figure pas dans votre liste d’autorisation. Quand votre enfant demande à ouvrir un site bloqué, la demande attend sous « Demandes de sites ». Ces réglages font partie de Premium ; l’offre gratuite utilise un ensemble fixe de catégories.',
-        '4': 'Vérifiez à nouveau plus tard depuis le même écran. Si le statut reste En attente, rouvrez KidGate sur l’appareil de l’enfant afin que les réglages puissent se synchroniser.',
+        '4': 'Vérifiez à nouveau plus tard depuis le même écran. Une modification arrive sur l’appareil de l’enfant en quelques minutes, et un site déjà ouvert dessus peut continuer à se charger jusqu’à la fermeture du navigateur. Si elle n’est toujours pas arrivée, ou si le statut reste En attente, rouvrez KidGate sur l’appareil de l’enfant afin que les réglages puissent se synchroniser.',
         '5': 'Sur l’appareil de l’enfant, ouvrez KidGate et approuvez le filtre une fois. Sur un iPhone ou un iPad, sélectionnez Autoriser quand iOS demande d’ajouter des configurations VPN, puis saisissez le code de l’appareil. Sur Android, acceptez la demande de VPN, puis ouvrez Paramètres, puis Réseau et Internet, puis DNS privé, et choisissez Désactivé, car les navigateurs peuvent contourner le filtre tant que le DNS privé est activé.',
       },
     },
@@ -442,6 +442,21 @@ export const userGuide = {
         '3': 'Appuyez sur un enfant pour voir un seul rapport couvrant tous ses appareils, pour Aujourd’hui, 7 jours ou 30 jours. Le temps passé sur deux écrans à la fois n’est compté qu’une fois : le total peut donc être inférieur à la somme des appareils.',
         '4': 'Un nouveau Rapport hebdomadaire arrive chaque lundi matin, avec une notification. Il suggère une chose que vous pourriez changer et ouvre le bon réglage.',
         '5': 'Quand vous ouvrez KidGate, chaque appareil est invité à envoyer des chiffres à jour : la mise à jour peut donc prendre quelques minutes. Un appareil sans connexion Internet envoie ses données dès qu’il est de nouveau en ligne.',
+      },
+    },
+    screenTimeCounting: {
+      title: 'Comment le temps d’écran est compté',
+      summary:
+        'Ce qui s’ajoute à la Limite quotidienne et aux rapports d’utilisation, y compris une vidéo lue dans une petite fenêtre flottante.',
+      keywords:
+        'image dans l’image, picture-in-picture, pip, vidéo flottante, mini-lecteur, petite fenêtre, youtube, musique, en pause, arrière-plan',
+      tip: 'Sur iPhone et iPad, c’est Temps d’écran d’Apple qui décide de ce qui est compté. Sur un Mac, le son d’une vidéo peut continuer derrière le verrouillage.',
+      steps: {
+        '1': 'Le temps est compté tant qu’une application est ouverte sur l’écran de votre enfant. L’écran d’accueil, le bureau de l’ordinateur, l’écran de verrouillage et KidGate lui-même ne sont pas comptés.',
+        '2': 'Sur un téléphone Android ou un ordinateur, une vidéo lue dans une petite fenêtre flottante (image dans l’image, PIP) est comptée pour l’application qui la lit, même quand une autre application est au premier plan.',
+        '3': 'Quand cette vidéo flottante est lue par-dessus une autre application, les deux applications affichent ce temps dans Applications les plus utilisées, mais le total du jour ne le compte qu’une fois.',
+        '4': 'Une vidéo en pause laissée dans sa fenêtre flottante reste comptée tant que la fenêtre est à l’écran. Fermez la fenêtre pour arrêter le décompte.',
+        '5': 'Sur un ordinateur, le temps passé derrière le verrouillage n’est pas compté. Sur un ordinateur Windows, le verrouillage met aussi en pause les vidéos et la musique dans la plupart des applications, et elles restent en pause quand le verrouillage est levé.',
       },
     },
     widget: {

@@ -353,7 +353,7 @@ export const userGuide = {
         '1': 'En el dispositivo del padre, abre el perfil del niño (o el dispositivo, si no está asignado a ningún niño), luego Tareas con recompensa.',
         '2': 'Selecciona «Nueva tarea» o empieza con una plantilla. Escribe la tarea y elige la recompensa en minutos (de 5 a 240), la dificultad y si se repite «Cada día» o «Una vez»; luego selecciona «Crear tarea».',
         '3': 'En el dispositivo del niño, la tarea aparece en «Gana tiempo extra». Cuando la termine, tu hijo selecciona «Ya lo hice».',
-        '4': 'Recibes una notificación. En «Listas para revisar» (en la pantalla Tareas con recompensa, en Familia o en el perfil del niño), selecciona «Aprobar» para sumar los minutos a hoy, o «Devolver» para que tu hijo lo intente de nuevo.',
+        '4': 'Recibes una notificación. La tarea aparece en «Requiere aprobación» (en Familia y en el perfil del niño) y en «Listas para revisar» (en la pantalla Tareas con recompensa). Selecciona «Aprobar» para sumar los minutos a hoy, o «Devolver» para que tu hijo lo intente de nuevo.',
         '5': 'Toca una tarea para editarla o eliminarla. El plan gratuito permite hasta 10 tareas activas a la vez; Premium permite 20.',
         '6': 'Cada tarea vale de 1 a 3 estrellas según su dificultad, y las estrellas cuentan cuando apruebas la tarea. Para que tus hijos comparen las estrellas de la semana, el propietario de la familia abre «Familia», luego la tarjeta de la familia, y activa la «Tabla de estrellas» en la pestaña «Hijos». Cada hijo la verá en KidGate en su dispositivo. Empieza de nuevo cada semana.',
       },
@@ -410,9 +410,9 @@ export const userGuide = {
       tip: 'El filtro lee los nombres de los sitios, no las páginas, y su alcance depende del dispositivo. Los teléfonos filtran los navegadores y muchas apps. Un Mac no puede comprobar los sitios cuyo nombre oculta el navegador, aproximadamente la mitad de las visitas. Windows comprueba todos los navegadores, solo por el nombre del sitio. La extensión de Chrome filtra solo Chrome. Elegir categorías, tener tus propias listas y responder a las peticiones de sitios forman parte de Premium. Combina el Filtro web con las Apps bloqueadas para una protección más sólida.',
       steps: {
         '1': 'En el dispositivo del padre, abre el perfil del niño (o el dispositivo, si no está asignado a ningún niño), luego Filtro web.',
-        '2': 'Activa «Filtrar sitios web inapropiados» en la parte superior. Se aplica al instante, así que no hay nada que guardar. «Forzar SafeSearch», en la misma pantalla, también fija Google, Bing y DuckDuckGo en resultados seguros y YouTube en el modo restringido, en Android, Android TV y Chrome.',
+        '2': 'Activa «Filtrar sitios web inapropiados» en la parte superior. Se aplica al instante, así que no hay nada que guardar. «Forzar SafeSearch», en la misma pantalla, también fija Google, Bing y DuckDuckGo en resultados seguros y YouTube en el modo restringido, en Android, Android TV y Chrome. En YouTube, el modo restringido también oculta los comentarios y bloquea algunos vídeos normales, por eso KidGate pregunta antes de activarlo.',
         '3': 'En «Qué bloquear», elige las categorías que quieres rechazar. Añade sitios a «Permitir siempre» o «Bloquear siempre», o activa «Solo sitios permitidos» para rechazar todo lo que no esté en tu lista de permitidos. Cuando tu hijo o hija pide abrir un sitio bloqueado, la petición queda en espera en «Peticiones de sitios». Estos controles forman parte de Premium; el plan gratuito usa un conjunto fijo de categorías.',
-        '4': 'Vuelve a comprobarlo más tarde en la misma pantalla. Si el estado sigue en «Esperando», vuelve a abrir KidGate en el dispositivo del niño para que los ajustes se sincronicen.',
+        '4': 'Vuelve a comprobarlo más tarde en la misma pantalla. Un cambio llega al dispositivo del niño en unos minutos, y un sitio que ya esté abierto allí puede seguir cargando hasta que se cierre el navegador. Si para entonces no ha llegado, o el estado sigue en «Esperando», vuelve a abrir KidGate en el dispositivo del niño para que los ajustes se sincronicen.',
         '5': 'En el dispositivo del niño, abre KidGate y aprueba el filtro una vez. En un iPhone o iPad, selecciona Permitir cuando iOS pida añadir configuraciones VPN y luego introduce el código del dispositivo. En Android, aprueba la solicitud de VPN y después abre Ajustes, luego Red e Internet, luego DNS privado, y elige Desactivado, porque los navegadores pueden saltarse el filtro mientras el DNS privado esté activado.',
       },
     },
@@ -440,6 +440,21 @@ export const userGuide = {
         '3': 'Toca el perfil de un hijo para ver un único informe de todos sus dispositivos, en «Hoy», «7 días» o «30 días». El tiempo en dos pantallas a la vez cuenta una sola vez, así que el total puede ser menor que la suma de los dispositivos.',
         '4': 'Cada lunes por la mañana llega un nuevo Informe semanal, con una notificación. Sugiere un cambio que podrías hacer y abre el ajuste correspondiente.',
         '5': 'Al abrir KidGate se piden datos nuevos a cada dispositivo, así que pueden tardar unos minutos en actualizarse. Un dispositivo sin conexión a Internet envía sus datos cuando vuelve a conectarse.',
+      },
+    },
+    screenTimeCounting: {
+      title: 'Cómo se cuenta el tiempo de pantalla',
+      summary:
+        'Qué suma minutos al Límite diario y a los informes de uso, incluido un vídeo que se reproduce en una pequeña ventana flotante.',
+      keywords:
+        'imagen en imagen, pip, vídeo flotante, minirreproductor, ventana pequeña, youtube, música, en pausa, segundo plano',
+      tip: 'En iPhone y iPad, Tiempo de uso de Apple decide qué cuenta. En un Mac, el sonido de un vídeo puede seguir sonando detrás del bloqueo.',
+      steps: {
+        '1': 'El tiempo cuenta mientras una app está abierta en la pantalla de tu hijo. La pantalla de inicio, el escritorio del ordenador, la pantalla de bloqueo y el propio KidGate no cuentan.',
+        '2': 'En un teléfono Android o un ordenador, un vídeo que se reproduce en una pequeña ventana flotante (imagen en imagen, PIP) cuenta para la app que lo reproduce, aunque otra app esté en primer plano.',
+        '3': 'Cuando ese vídeo flotante se reproduce sobre otra app, las dos apps muestran ese tiempo en «Apps más usadas», pero el total del día lo cuenta una sola vez.',
+        '4': 'Un vídeo en pausa que se queda en su ventana flotante sigue contando mientras la ventana esté en pantalla. Cierra la ventana para que deje de contar.',
+        '5': 'En un ordenador, el tiempo detrás del bloqueo no cuenta. En un ordenador con Windows, el bloqueo además pausa los vídeos y la música en la mayoría de las apps, y siguen en pausa cuando se levanta el bloqueo.',
       },
     },
     widget: {

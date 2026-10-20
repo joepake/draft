@@ -44,6 +44,7 @@ export type UserGuideTopicId =
   | 'webFilter'
   | 'protectionAlerts'
   | 'usageReports'
+  | 'screenTimeCounting'
   | 'widget'
   | 'webHistory'
   | 'videoHistory'
@@ -288,6 +289,15 @@ export const USER_GUIDE_TOPICS: UserGuideTopicConfig[] = [
     icon: 'chart',
     stepCount: 5,
   },
+  // What counts, per platform: `KidGateUsageTimeline.fold` on Android,
+  // `policy.rs` `fold_sample` and `workspace::pip_apps` on a computer, the
+  // TV's `excludedIds`. iPhone and iPad are Apple's Screen Time (the tip).
+  {
+    id: 'screenTimeCounting',
+    groupId: 'reports',
+    icon: 'hourglass',
+    stepCount: 5,
+  },
   {
     id: 'widget',
     groupId: 'reports',
@@ -428,6 +438,7 @@ export const USER_GUIDE_GROUPS: UserGuideGroupConfig[] = [
     icon: 'chart',
     topicIds: [
       'usageReports',
+      'screenTimeCounting',
       'widget',
       'webHistory',
       'videoHistory',

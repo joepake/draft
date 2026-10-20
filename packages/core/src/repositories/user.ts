@@ -179,9 +179,28 @@ export function createUserRepository(deps: UserRepositoryDeps) {
    */
   const trialAsks = new Map<string, Promise<EnsureTrialStartedResult>>();
 
+  /*
+   * Overlapping reads of one user document share a single read (2026-10-19).
+   * The auth listener fires twice on launch and each callback fetched the
+   * profile, ~80 ms apart. Pending reads only — a settled one is never reused,
+   * so nothing is ever served stale.
+   */
+  const pendingUserDocs = new Map<string, ReturnType<typeof db.getDoc>>();
+  function readUserDoc(userId: string): ReturnType<typeof db.getDoc> {
+    const pending = pendingUserDocs.get(userId);
+    if (pending) {
+      return pending;
+    }
+    const read = db
+      .getDoc(userDoc(userId))
+      .finally(() => pendingUserDocs.delete(userId));
+    pendingUserDocs.set(userId, read);
+    return read;
+  }
+
   async function askTrialStarted(userId: string): Promise<EnsureTrialStartedResult> {
     try {
-      const snapshot = await db.getDoc(userDoc(userId));
+      const snapshot = await readUserDoc(userId);
       const existing = (snapshot.data() as Record<string, unknown> | undefined)
         ?.trialStartedAt;
       if (existing) {
@@ -226,7 +245,7 @@ export function createUserRepository(deps: UserRepositoryDeps) {
     },
 
     async getProfile(userId: string): Promise<FirestoreUser | null> {
-      const snapshot = await db.getDoc(userDoc(userId));
+      const snapshot = await readUserDoc(userId);
       if (!snapshot.exists) {
         return null;
       }

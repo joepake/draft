@@ -836,6 +836,11 @@ export default function Dashboard({
   /** The signed-in uid — see `DashboardLive`. Null in a rendering with no auth. */
   accountId = null,
   accountEmail = null,
+  /**
+   * Told whether the Web panel is open, so the video history is read only
+   * there (`useFamilyData`'s `watchVideos`). Absent in the design preview.
+   */
+  onWebPanelChange = null,
 }) {
   const {
     family,
@@ -957,6 +962,9 @@ export default function Dashboard({
     }
   }, [compact, section, supportOpen]);
   const [tab, setTab] = useState(boot.tab);
+  useEffect(() => {
+    onWebPanelChange?.(tab === 'web');
+  }, [tab, onWebPanelChange]);
   /* Which card the control-centre grid was asked for, so the panel it lands on
      can say so. Cleared once it has been pointed at — it is a hand-off, not a
      selection, and a card that stayed lit would read as a filter. */

@@ -404,9 +404,9 @@ export const userGuide = {
       tip: 'Bộ lọc đọc tên trang web chứ không đọc nội dung trang, và phạm vi lọc phụ thuộc vào từng thiết bị. Điện thoại lọc được trình duyệt và nhiều ứng dụng. Máy Mac không kiểm tra được những trang mà trình duyệt giấu tên, khoảng một nửa số lượt truy cập. Windows kiểm tra mọi trình duyệt, chỉ theo tên trang. Tiện ích Chrome chỉ lọc trong Chrome. Chọn danh mục, lập danh sách riêng và trả lời yêu cầu mở trang đều thuộc gói Premium. Nên kết hợp tính năng Chặn nội dung web với mục Chặn ứng dụng để bảo vệ hiệu quả hơn.',
       steps: {
         '1': 'Trên thiết bị phụ huynh, mở hồ sơ của con (hoặc mở thiết bị, nếu thiết bị chưa được gán cho con), rồi mục Chặn nội dung web.',
-        '2': 'Bật [[Chặn nội dung không phù hợp]] ở trên cùng. Thay đổi có hiệu lực ngay nên không cần lưu. [[Bắt buộc tìm kiếm an toàn]] trên cùng màn hình còn khóa Google, Bing và DuckDuckGo ở kết quả an toàn và YouTube ở chế độ hạn chế, trên Android, Android TV và Chrome.',
+        '2': 'Bật [[Chặn nội dung không phù hợp]] ở trên cùng. Thay đổi có hiệu lực ngay nên không cần lưu. [[Bắt buộc tìm kiếm an toàn]] trên cùng màn hình còn khóa Google, Bing và DuckDuckGo ở kết quả an toàn và YouTube ở chế độ hạn chế, trên Android, Android TV và Chrome. Trên YouTube, chế độ hạn chế còn ẩn bình luận và chặn cả một số video bình thường, nên KidGate sẽ hỏi lại trước khi bật.',
         '3': 'Trong [[Chặn những gì]], chọn các danh mục cần chặn. Thêm trang vào [[Luôn cho phép]] hoặc [[Luôn chặn]], hoặc bật [[Chỉ các trang được phép]] để chặn mọi thứ trừ danh sách cho phép của bạn. Khi con xin mở một trang bị chặn, yêu cầu sẽ chờ trong [[Yêu cầu mở trang]]. Các tùy chọn này thuộc gói Premium; gói miễn phí dùng một bộ danh mục cố định.',
-        '4': 'Kiểm tra lại sau tại cùng màn hình. Nếu vẫn hiển thị Đang chờ, hãy mở lại KidGate trên thiết bị của trẻ để đồng bộ.',
+        '4': 'Kiểm tra lại sau tại cùng màn hình. Thay đổi sẽ tới thiết bị của trẻ trong vòng vài phút, và trang web đang mở sẵn trên đó có thể vẫn tải được cho tới khi đóng trình duyệt. Nếu sau đó vẫn chưa có hiệu lực, hoặc vẫn hiển thị Đang chờ, hãy mở lại KidGate trên thiết bị của trẻ để đồng bộ.',
         '5': 'Trên thiết bị của trẻ, mở KidGate và chấp thuận bộ lọc một lần. Trên iPhone hoặc iPad, chọn Cho phép khi iOS hỏi có cho KidGate thêm cấu hình VPN không, rồi nhập mật mã thiết bị. Trên Android, chấp thuận yêu cầu VPN, rồi mở Cài đặt, chọn Mạng và Internet, chọn DNS riêng tư rồi chọn Tắt, vì trình duyệt có thể lách bộ lọc khi DNS riêng tư đang bật.',
       },
     },
@@ -433,6 +433,21 @@ export const userGuide = {
         '3': 'Chạm vào một con để xem một báo cáo chung cho tất cả thiết bị của con, theo [[Hôm nay]], [[7 ngày]] hoặc [[30 ngày]]. Thời gian dùng hai màn hình cùng lúc chỉ được tính một lần, nên con số có thể thấp hơn tổng của từng thiết bị.',
         '4': '[[Báo cáo tuần]] mới đến vào mỗi sáng thứ Hai, kèm thông báo. Báo cáo gợi ý một việc bạn có thể thay đổi và mở đúng phần cài đặt đó.',
         '5': 'Khi bạn mở KidGate, ứng dụng sẽ yêu cầu từng thiết bị gửi số liệu mới, nên có thể mất vài phút để cập nhật. Thiết bị mất kết nối mạng sẽ gửi báo cáo khi có mạng trở lại.',
+      },
+    },
+    screenTimeCounting: {
+      title: 'Cách tính thời gian sử dụng',
+      summary:
+        'Những gì được cộng vào Giới hạn hằng ngày và báo cáo sử dụng, kể cả video đang phát trong cửa sổ nổi nhỏ.',
+      keywords:
+        'hình trong hình, pip, video nổi, cửa sổ nhỏ, trình phát mini, youtube, nhạc, tạm dừng, chạy nền',
+      tip: 'Trên iPhone và iPad, Thời gian sử dụng của Apple quyết định những gì được tính. Trên máy Mac, tiếng của video có thể vẫn phát phía sau màn hình khóa.',
+      steps: {
+        '1': 'Thời gian được tính khi một ứng dụng đang mở trên màn hình của con. Màn hình chính, màn hình nền máy tính, màn hình khóa và chính KidGate không được tính.',
+        '2': 'Trên điện thoại Android hoặc máy tính, video đang phát trong cửa sổ nổi nhỏ (hình trong hình, PIP) được tính cho ứng dụng đang phát nó, kể cả khi có ứng dụng khác đang mở phía trước.',
+        '3': 'Khi video nổi đó phát đè lên một ứng dụng khác, cả hai ứng dụng đều hiện khoảng thời gian này trong [[Ứng dụng dùng nhiều nhất]], nhưng tổng thời gian trong ngày chỉ tính nó một lần.',
+        '4': 'Video đã tạm dừng nhưng vẫn để trong cửa sổ nổi vẫn được tính chừng nào cửa sổ còn trên màn hình. Hãy đóng cửa sổ đó để ngừng tính.',
+        '5': 'Thời gian máy tính bị khóa không được tính. Trên máy tính Windows, khóa máy còn tạm dừng video và nhạc trong hầu hết ứng dụng, và chúng vẫn dừng khi hết khóa.',
       },
     },
     widget: {

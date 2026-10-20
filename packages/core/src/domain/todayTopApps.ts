@@ -68,17 +68,42 @@ export function resolveTodayTopApps({
   const dayIsToday =
     usageDay !== null && (usageDay.date === undefined || usageDay.date === todayKey);
 
-  if (usageDay && dayIsToday && usageDay.topApps.length > 0) {
-    return {
-      apps: [...usageDay.topApps],
-      totalMinutes: usageDay.minutes,
-      source: 'usageDay',
-    };
-  }
-
   const controls = device.controls;
   const deviceIsToday = controls?.usageDate === todayKey;
   const fromDevice = device.topAppsToday ?? [];
+
+  if (usageDay && dayIsToday && usageDay.topApps.length > 0) {
+    /*
+     * **The day document can be fifteen minutes behind the device's three**
+     * (`USAGE_DAY_WRITE_INTERVAL_MS`, `functions/lib/usageReport.js`): every
+     * report rewrites presence, the day document only every quarter hour. A
+     * YouTube capped and closed at 30 read 23/30 on App Limits for as long as
+     * the phone had nothing new to say (SM-A325N, 2026-10-19). Within one day
+     * a figure only grows, so the larger of the two is the newer, and taking
+     * it per app costs no request and no write.
+     */
+    const fresher = deviceIsToday ? fromDevice : [];
+    const minutesOf = new Map(fresher.map(app => [app.packageName, app.minutes]));
+    const apps = usageDay.topApps.map(app => {
+      const minutes = minutesOf.get(app.packageName);
+      return minutes !== undefined && minutes > app.minutes ? { ...app, minutes } : app;
+    });
+    const listed = new Set(apps.map(app => app.packageName));
+    for (const app of fresher) {
+      if (!listed.has(app.packageName)) {
+        apps.push(app);
+      }
+    }
+    apps.sort((a, b) => b.minutes - a.minutes);
+    return {
+      apps,
+      totalMinutes: Math.max(
+        usageDay.minutes,
+        deviceIsToday ? (controls?.minutesUsedToday ?? 0) : 0,
+      ),
+      source: 'usageDay',
+    };
+  }
 
   if (deviceIsToday && fromDevice.length > 0) {
     return {

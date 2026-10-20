@@ -343,7 +343,7 @@ export const userGuide = {
         '1': 'On the parent device, open your child (or the device, if no child is assigned to it), then [[Reward Tasks]].',
         '2': 'Select [[New task]], or start from a template. Enter the task, choose the reward in minutes (5 to 240), a difficulty, and whether it repeats [[Every day]] or [[One time]], then select [[Create task]].',
         '3': 'On the child device, the task appears under [[Earn extra time]]. When it is done, your child selects [[I did it]].',
-        '4': 'You get a notification. In [[Ready to review]] (on the Reward Tasks screen, on Family, or on your child), select [[Approve]] to add the minutes to today, or [[Send back]] so your child can try again.',
+        '4': 'You get a notification. The task waits in [[Needs approval]] (on Family and on your child) and in [[Ready to review]] (on the Reward Tasks screen). Select [[Approve]] to add the minutes to today, or [[Send back]] so your child can try again.',
         '5': 'Tap a task to edit or delete it. The free plan runs up to 10 active tasks at once; Premium allows 20.',
         '6': 'Each task is worth 1 to 3 stars, set by its difficulty, and stars count once you approve the task. To let your children compare this week’s stars, the family owner opens [[Family]], then the family card, and turns on [[Star chart]] in the [[Children]] tab. Each child then sees it in KidGate on their device. It starts again every week.',
       },
@@ -400,9 +400,9 @@ export const userGuide = {
       tip: 'The filter reads site names, not pages, and how far it reaches depends on the device. Phones filter browsers and many apps. A Mac cannot check sites whose name the browser hides, roughly half of visits. Windows checks every browser by site name only. The Chrome extension filters Chrome only. Choosing categories, your own lists and answering site requests are part of Premium. Combine the Web Filter with Blocked Apps for stronger protection.',
       steps: {
         '1': 'On the parent device, open your child (or the device, if no child is assigned to it), then Web Filter.',
-        '2': 'Turn on [[Filter inappropriate websites]] at the top. It applies straight away, so there is nothing to save. [[Force SafeSearch]] on the same screen also locks Google, Bing and DuckDuckGo to safe results and YouTube to Restricted Mode, on Android, Android TV and Chrome.',
+        '2': 'Turn on [[Filter inappropriate websites]] at the top. It applies straight away, so there is nothing to save. [[Force SafeSearch]] on the same screen also locks Google, Bing and DuckDuckGo to safe results and YouTube to Restricted Mode, on Android, Android TV and Chrome. On YouTube, Restricted Mode also hides comments and blocks some ordinary videos, so KidGate asks before turning it on.',
         '3': 'Under [[What to block]], choose the categories to refuse. Add sites to [[Always allow]] or [[Always block]], or turn on [[Allowed sites only]] to refuse everything except your allow list. When your child asks to open a blocked site, the request waits under [[Site requests]]. These controls are part of Premium; the free plan uses a fixed set of categories.',
-        '4': 'Check again later from the same screen. If the status stays Waiting, reopen KidGate on the child device so settings can sync.',
+        '4': 'Check again later from the same screen. A change reaches the child device within a few minutes, and a site already open there can keep loading until the browser is closed. If it has not arrived by then, or the status stays Waiting, reopen KidGate on the child device so settings can sync.',
         '5': 'On the child device, open KidGate and approve the filter once. On an iPhone or iPad, select Allow when iOS asks to add VPN configurations, then enter the device passcode. On Android, approve the VPN request, then open Settings, then Network & internet, then Private DNS, and choose Off, because browsers can bypass the filter while Private DNS is on.',
       },
     },
@@ -430,6 +430,21 @@ export const userGuide = {
         '3': 'Tap a child for one report across all their devices, for [[Today]], [[7 days]] or [[30 days]]. Time on two screens at once counts once, so it can be lower than the devices added up.',
         '4': 'A new [[Weekly report]] arrives every Monday morning, with a notification. It suggests one thing you could change and opens the right setting.',
         '5': 'Opening KidGate asks each device for fresh numbers, so they can take a few minutes to update. A device with no internet connection reports when it is back online.',
+      },
+    },
+    screenTimeCounting: {
+      title: 'How screen time is counted',
+      summary:
+        'What adds minutes to the Daily Limit and the usage reports, including a video playing in a small floating window.',
+      keywords:
+        'picture in picture, pip, floating video, mini player, small window, youtube, music, paused, background',
+      tip: 'On iPhone and iPad, Apple’s Screen Time decides what counts. On a Mac, the sound of a video can keep playing behind the lock.',
+      steps: {
+        '1': 'Time counts while an app is open on the child’s screen. The home screen, the computer desktop, the lock screen and KidGate itself do not count.',
+        '2': 'On an Android phone or a computer, a video playing in a small floating window (picture-in-picture, PIP) counts for the app playing it, even while another app is in front.',
+        '3': 'When that floating video plays over another app, both apps show the time in [[Most used apps]], but the day’s total counts it only once.',
+        '4': 'A paused video left in its floating window still counts for as long as the window stays on screen. Close the window to stop counting it.',
+        '5': 'Time behind the lock on a computer does not count. On a Windows computer, locking also pauses video and music in most apps, and they stay paused when the lock lifts.',
       },
     },
     widget: {

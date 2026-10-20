@@ -152,6 +152,8 @@ function LiveDashboard({ user, deviceId, onDeviceChange, signOut }) {
   const { canWrite } = useAuth();
   const { t, language } = useT();
   const appT = useActivityTranslate();
+  // Whether the Web panel is open — the only reader of the video history.
+  const [watchVideos, setWatchVideos] = useState(false);
   const {
     data,
     loading,
@@ -162,7 +164,7 @@ function LiveDashboard({ user, deviceId, onDeviceChange, signOut }) {
     refresh,
     refreshing,
     feedFailed,
-  } = useFamilyData(user, deviceId);
+  } = useFamilyData(user, deviceId, watchVideos);
   const reports = useFamilyReports(familyId);
   // No `getIdToken`: the API adapter reads the current session itself, which is
   // what lets a repository ask for `{ as: 'parent' }` and learn nothing about
@@ -301,6 +303,7 @@ function LiveDashboard({ user, deviceId, onDeviceChange, signOut }) {
       refreshing={refreshing}
       partialFailure={feedFailed}
       onDeviceChange={onDeviceChange}
+      onWebPanelChange={setWatchVideos}
       sideFooter={
         <div className="side-account">
           {/*

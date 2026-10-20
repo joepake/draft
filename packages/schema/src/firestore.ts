@@ -127,6 +127,12 @@ export interface FirestoreUser {
    * says where it is.
    */
   dashboardTimeZone?: string;
+  /**
+   * The UTC hour of the three-hourly fire inside this family's morning band —
+   * the one fire `anomalyAlerts` reads the family on
+   * (`functions/lib/anomalySweep.js`). Server-written; not a client key.
+   */
+  anomalyFireHourUtc?: number;
   createdAt: string;
   updatedAt: string;
 }
@@ -170,6 +176,7 @@ export const FIRESTORE_USER_FIELDS = [
   'screenTimeBoardEnabled',
   'messageAiConsent',
   'dashboardTimeZone',
+  'anomalyFireHourUtc',
   'createdAt',
   'updatedAt',
 ] as const satisfies ReadonlyArray<keyof FirestoreUser>;

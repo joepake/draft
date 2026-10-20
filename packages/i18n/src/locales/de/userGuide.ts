@@ -351,7 +351,7 @@ export const userGuide = {
         '1': 'Öffne auf dem Elterngerät das Profil deines Kindes (oder das Gerät, falls es keinem Kind zugewiesen ist), dann Belohnungsaufgaben.',
         '2': 'Wähle „Neue Aufgabe“ oder starte mit einer Vorlage. Gib die Aufgabe ein, wähle die Belohnung in Minuten (5 bis 240), einen Schwierigkeitsgrad und die Wiederholung („Täglich“ oder „Einmalig“) und wähle dann „Aufgabe erstellen“.',
         '3': 'Auf dem Kindergerät erscheint die Aufgabe unter „Extra-Zeit verdienen“. Ist sie erledigt, wählt dein Kind „Geschafft“.',
-        '4': 'Du erhältst eine Mitteilung. Wähle unter „Bereit zur Prüfung“ (auf dem Bildschirm Belohnungsaufgaben, unter Familie oder im Profil deines Kindes) „Genehmigen“, um die Minuten für heute gutzuschreiben, oder „Zurückgeben“, damit dein Kind es noch einmal versuchen kann.',
+        '4': 'Du erhältst eine Mitteilung. Die Aufgabe erscheint unter „Genehmigung erforderlich“ (unter Familie und im Profil deines Kindes) und unter „Bereit zur Prüfung“ (auf dem Bildschirm Belohnungsaufgaben). Wähle „Genehmigen“, um die Minuten für heute gutzuschreiben, oder „Zurückgeben“, damit dein Kind es noch einmal versuchen kann.',
         '5': 'Tippe auf eine Aufgabe, um sie zu bearbeiten oder zu löschen. Im Gratis-Tarif laufen bis zu 10 aktive Aufgaben gleichzeitig, mit Premium 20.',
         '6': 'Jede Aufgabe ist je nach Schwierigkeit 1 bis 3 Sterne wert, und Sterne zählen, sobald du die Aufgabe genehmigst. Damit deine Kinder die Sterne dieser Woche vergleichen können, öffnet der Familieninhaber „Familie“, dann die Familienkarte, und schaltet im Tab „Kinder“ die „Sternetafel“ ein. Jedes Kind sieht sie dann in KidGate auf seinem Gerät. Sie beginnt jede Woche neu.',
       },
@@ -408,9 +408,9 @@ export const userGuide = {
       tip: 'Der Filter liest Website-Namen, nicht Seiten, und seine Reichweite hängt vom Gerät ab. Handys filtern Browser und viele Apps. Ein Mac kann Websites nicht prüfen, deren Namen der Browser verbirgt – etwa die Hälfte der Besuche. Windows prüft jeden Browser, aber nur anhand des Website-Namens. Die Chrome-Erweiterung filtert nur Chrome. Die Auswahl von Kategorien, eigene Listen und das Beantworten von Website-Anfragen gehören zu Premium. Kombiniere den Webfilter mit Blockierten Apps für einen stärkeren Schutz.',
       steps: {
         '1': 'Öffne auf dem Elterngerät das Profil deines Kindes (oder das Gerät, falls es keinem Kind zugewiesen ist), dann Webfilter.',
-        '2': 'Schalte oben „Ungeeignete Websites filtern“ ein. Die Einstellung gilt sofort, du musst nichts speichern. „SafeSearch erzwingen“ auf demselben Bildschirm sperrt außerdem Google, Bing und DuckDuckGo auf sichere Ergebnisse und YouTube auf den eingeschränkten Modus, auf Android, Android TV und Chrome.',
+        '2': 'Schalte oben „Ungeeignete Websites filtern“ ein. Die Einstellung gilt sofort, du musst nichts speichern. „SafeSearch erzwingen“ auf demselben Bildschirm sperrt außerdem Google, Bing und DuckDuckGo auf sichere Ergebnisse und YouTube auf den eingeschränkten Modus, auf Android, Android TV und Chrome. Auf YouTube blendet der eingeschränkte Modus außerdem Kommentare aus und blockiert auch manche harmlosen Videos, deshalb fragt KidGate vor dem Einschalten nach.',
         '3': 'Wähle unter „Was blockiert wird“ die Kategorien, die gesperrt werden sollen. Füge Websites zu „Immer erlauben“ oder „Immer blockieren“ hinzu, oder aktiviere „Nur erlaubte Seiten“, um alles außer deiner Liste erlaubter Seiten zu sperren. Wenn dein Kind bittet, eine blockierte Website zu öffnen, wartet die Anfrage unter „Website-Anfragen“. Diese Einstellungen gehören zu Premium; der Gratis-Tarif nutzt eine feste Auswahl an Kategorien.',
-        '4': 'Überprüfe später erneut denselben Bildschirm. Bleibt der Status „Wartet“, öffne KidGate erneut auf dem Kindergerät, damit die Einstellungen synchronisieren können.',
+        '4': 'Überprüfe später erneut denselben Bildschirm. Eine Änderung erreicht das Kindergerät innerhalb weniger Minuten, und eine dort bereits geöffnete Website kann weiter laden, bis der Browser geschlossen wird. Ist sie bis dahin nicht angekommen oder bleibt der Status „Wartet“, öffne KidGate erneut auf dem Kindergerät, damit die Einstellungen synchronisieren können.',
         '5': 'Öffne auf dem Kindergerät KidGate und genehmige den Filter einmalig. Wähle auf einem iPhone oder iPad „Erlauben“, wenn iOS fragt, ob VPN-Konfigurationen hinzugefügt werden dürfen, und gib dann den Gerätecode ein. Bestätige auf Android die VPN-Anfrage, öffne dann Einstellungen, dann Netzwerk & Internet, dann Privates DNS und wähle „Aus“, denn Browser können den Filter umgehen, solange Privates DNS aktiv ist.',
       },
     },
@@ -438,6 +438,21 @@ export const userGuide = {
         '3': 'Tippe auf ein Kind, um einen gemeinsamen Bericht über alle seine Geräte zu sehen, für „Heute“, „7 Tage“ oder „30 Tage“. Zeit auf zwei Bildschirmen gleichzeitig zählt nur einmal, daher kann die Summe niedriger sein als die Werte der einzelnen Geräte zusammen.',
         '4': 'Jeden Montagmorgen kommt ein neuer Wochenbericht, zusammen mit einer Mitteilung. Er schlägt eine Sache vor, die du ändern könntest, und öffnet die passende Einstellung.',
         '5': 'Beim Öffnen von KidGate wird jedes Gerät nach aktuellen Zahlen gefragt, daher kann die Aktualisierung ein paar Minuten dauern. Ein Gerät ohne Internetverbindung sendet seine Daten, sobald es wieder online ist.',
+      },
+    },
+    screenTimeCounting: {
+      title: 'So wird die Bildschirmzeit gezählt',
+      summary:
+        'Was auf das Tageslimit und die Nutzungsberichte angerechnet wird – auch ein Video, das in einem kleinen schwebenden Fenster läuft.',
+      keywords:
+        'Bild-im-Bild, BiB, PiP, schwebendes Video, Mini-Player, kleines Fenster, YouTube, Musik, pausiert, Hintergrund',
+      tip: 'Auf iPhone und iPad entscheidet die Bildschirmzeit von Apple, was zählt. Auf einem Mac kann der Ton eines Videos hinter der Sperre weiterlaufen.',
+      steps: {
+        '1': 'Zeit zählt, solange eine App auf dem Bildschirm deines Kindes geöffnet ist. Der Startbildschirm, der Desktop des Computers, der Sperrbildschirm und KidGate selbst zählen nicht.',
+        '2': 'Auf einem Android-Handy oder einem Computer zählt ein Video in einem kleinen schwebenden Fenster (Bild-im-Bild, PIP) für die App, die es abspielt – auch während eine andere App im Vordergrund ist.',
+        '3': 'Läuft dieses Video über einer anderen App, zeigen beide Apps die Zeit unter „Meistgenutzte Apps“, die Gesamtzeit des Tages zählt sie aber nur einmal.',
+        '4': 'Ein pausiertes Video, das in seinem schwebenden Fenster bleibt, zählt weiter, solange das Fenster zu sehen ist. Schließe das Fenster, damit es nicht mehr zählt.',
+        '5': 'Zeit hinter der Sperre zählt auf einem Computer nicht. Auf einem Windows-Computer pausiert die Sperre außerdem Videos und Musik in den meisten Apps, und sie bleiben pausiert, wenn die Sperre endet.',
       },
     },
     widget: {

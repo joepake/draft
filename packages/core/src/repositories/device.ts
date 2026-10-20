@@ -9,6 +9,7 @@ import type {
 } from '@kidgate/ports/firestore';
 import type { Device, DeviceLockEnforcement } from '@kidgate/schema/device';
 import type { ChildDeviceRecord, ParentDeviceRecord } from '@kidgate/schema/firestore';
+import type { ReadTally } from '@kidgate/schema/readTally';
 import {
   childDeviceDoc,
   childDevicesCollection,
@@ -951,12 +952,32 @@ export function createDeviceRepository(deps: DeviceRepositoryDeps) {
      * long absence. Opportunistic — a failure leaves the family looked-at on
      * the next open and never blocks a screen — so it answers `null` rather
      * than throwing.
+     *
+     * `reads` carries the console's daily read tally when it is due, so the
+     * server can log it (`@kidgate/schema/readTally`); the presence work is
+     * the same either way.
      */
-    async touchParentPresence(userId: string): Promise<{ woke: number } | null> {
+    async touchParentPresence(
+      userId: string,
+      reads?: readonly ReadTally[],
+    ): Promise<{ woke: number } | null> {
       try {
         const answer = await api.post<{ ok: true; woke: number }>(
           '/touchParentPresence',
-          { familyOwnerUserId: userId },
+          {
+            familyOwnerUserId: userId,
+            ...(reads && reads.length > 0
+              ? {
+                  reads: reads.map(row => ({
+                    pattern: row.pattern,
+                    oneShotReads: row.oneShotReads,
+                    listeners: row.listeners,
+                    serverDeliveries: row.serverDeliveries,
+                    docsDelivered: row.docsDelivered,
+                  })),
+                }
+              : {}),
+          },
           { as: 'parent' },
         );
         return { woke: typeof answer?.woke === 'number' ? answer.woke : 0 };

@@ -84,7 +84,7 @@ function softFailure(setFeedFailed, label) {
   };
 }
 
-export function useFamilyData(user, selectedDeviceId) {
+export function useFamilyData(user, selectedDeviceId, watchVideos = false) {
   /*
    * Bumped by `refresh()`, and in the deps of every read below: this is how
    * the page asks for the data again now that nothing streams it. The Refresh
@@ -532,23 +532,29 @@ export function useFamilyData(user, selectedDeviceId) {
    */
   useEffect(() => {
     if (!familyId || !selectedDeviceId) return;
-    const soft = name => softFailure(setFeedFailed, `${name} read`);
-    const subs = [
-      webHistoryRepository.subscribe(
-        familyId,
-        selectedDeviceId,
-        entries => setWeb({ [selectedDeviceId]: entries }),
-        soft('webHistory'),
-      ),
-      videoHistoryRepository.subscribe(
-        familyId,
-        selectedDeviceId,
-        entries => setVideos({ [selectedDeviceId]: entries }),
-        soft('videoHistory'),
-      ),
-    ];
-    return () => subs.forEach(unsubscribe => unsubscribe());
+    return webHistoryRepository.subscribe(
+      familyId,
+      selectedDeviceId,
+      entries => setWeb({ [selectedDeviceId]: entries }),
+      softFailure(setFeedFailed, 'webHistory read'),
+    );
   }, [familyId, selectedDeviceId, version]);
+
+  /*
+   * The video half waits for the Web panel (`watchVideos`, 2026-10-20): it is
+   * the only panel that shows them, and the 300 documents were read on every
+   * arrival for parents who never opened it. The web half stays eager — the
+   * Overview's blocked-sites tile counts its categories.
+   */
+  useEffect(() => {
+    if (!familyId || !selectedDeviceId || !watchVideos) return;
+    return videoHistoryRepository.subscribe(
+      familyId,
+      selectedDeviceId,
+      entries => setVideos({ [selectedDeviceId]: entries }),
+      softFailure(setFeedFailed, 'videoHistory read'),
+    );
+  }, [familyId, selectedDeviceId, version, watchVideos]);
 
   // 4. The usage range: one read for the window, one listener for today.
   //

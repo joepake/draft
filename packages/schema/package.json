@@ -45,6 +45,7 @@
     "./safetyCheckIn": "./src/safetyCheckIn.ts",
     "./setupGuide": "./src/setupGuide.ts",
     "./qrClick": "./src/qrClick.ts",
+    "./readTally": "./src/readTally.ts",
     "./sosAlert": "./src/sosAlert.ts",
     "./subscription": "./src/subscription.ts",
     "./syncAgentReply": "./src/syncAgentReply.ts",

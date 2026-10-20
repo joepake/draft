@@ -43,6 +43,7 @@
  */
 
 import type { Millis } from '@kidgate/schema/primitives';
+import type { ReadTally } from '@kidgate/schema/readTally';
 import type { StoragePort } from '@kidgate/ports/storage';
 import type {
   DocData,
@@ -53,18 +54,8 @@ import type {
   Unsubscribe,
 } from '@kidgate/ports/firestore';
 
-export interface ReadTally {
-  /** The path with its document ids replaced — see `patternFor`. */
-  pattern: string;
-  /** `getDoc` calls plus documents returned by `getDocs`, plus `countDocs`. */
-  oneShotReads: number;
-  /** Listeners opened on this pattern. */
-  listeners: number;
-  /** Non-cached callbacks. The lower bound on this pattern's listener reads. */
-  serverDeliveries: number;
-  /** Documents carried by those callbacks. The upper bound. */
-  docsDelivered: number;
-}
+/** The row shape, which crosses to the server — see `patternFor` for `pattern`. */
+export type { ReadTally };
 
 export interface FirestoreReadCounterDeps {
   /**

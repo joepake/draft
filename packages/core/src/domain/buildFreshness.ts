@@ -24,6 +24,7 @@
  */
 
 import type { DevicePlatform } from '@kidgate/schema/capabilities';
+import { isBrowserOnlySurface, type DeviceSurfaceFacts } from './deviceSurface';
 
 /**
  * The newest build published for one platform.
@@ -51,7 +52,7 @@ export interface LatestBuild {
 export type LatestBuilds = Partial<Record<DevicePlatform, LatestBuild>>;
 
 /** What a device document says about the build it is running. */
-export interface RunningBuildRow {
+export interface RunningBuildRow extends DeviceSurfaceFacts {
   platform?: DevicePlatform;
   appVersion?: string;
   appBuild?: string;
@@ -177,7 +178,12 @@ export function resolveBuildFreshness(
   row: RunningBuildRow | null | undefined,
   latest: LatestBuilds,
 ): BuildFreshness {
-  if (!row?.platform) {
+  /*
+   * The extension reports the platform of the machine it runs on, so a Chrome
+   * on a Mac would be measured against the desktop app's release — a build
+   * number from another product, and an update the Web Store does on its own.
+   */
+  if (!row?.platform || isBrowserOnlySurface(row)) {
     return { status: 'unknown' };
   }
 

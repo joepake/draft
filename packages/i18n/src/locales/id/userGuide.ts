@@ -349,7 +349,7 @@ export const userGuide = {
         '1': 'Di perangkat orang tua, buka profil anak (atau perangkat, jika perangkat belum ditetapkan ke anak), lalu Tugas hadiah.',
         '2': 'Pilih Tugas baru, atau mulai dengan templat. Masukkan tugasnya, pilih hadiah dalam menit (5 hingga 240), tingkat kesulitan, dan apakah tugas diulang Setiap hari atau Sekali, lalu pilih Buat tugas.',
         '3': 'Di perangkat anak, tugas muncul di bagian Dapatkan waktu ekstra. Setelah selesai, anak Anda memilih Sudah selesai.',
-        '4': 'Anda akan menerima notifikasi. Di Siap ditinjau (di layar Tugas hadiah, di Keluarga, atau di profil anak), pilih Setujui untuk menambahkan menitnya ke hari ini, atau Kembalikan agar anak Anda bisa mencoba lagi.',
+        '4': 'Anda akan menerima notifikasi. Tugas muncul di Perlu persetujuan (di Keluarga dan di profil anak) dan di Siap ditinjau (di layar Tugas hadiah). Pilih Setujui untuk menambahkan menitnya ke hari ini, atau Kembalikan agar anak Anda bisa mencoba lagi.',
         '5': 'Ketuk tugas untuk mengedit atau menghapusnya. Paket gratis dapat menjalankan hingga 10 tugas aktif sekaligus; Premium hingga 20.',
         '6': 'Setiap tugas bernilai 1 sampai 3 bintang sesuai tingkat kesulitannya, dan bintang dihitung setelah Anda menyetujui tugas. Agar anak-anak bisa membandingkan bintang minggu ini, pemilik keluarga membuka Keluarga, lalu kartu keluarga, dan menyalakan Papan bintang di tab Anak. Setiap anak lalu melihatnya di KidGate pada perangkatnya. Papan dimulai ulang setiap minggu.',
       },
@@ -406,9 +406,9 @@ export const userGuide = {
       tip: 'Filter membaca nama situs, bukan halaman, dan jangkauannya bergantung pada perangkat. Ponsel memfilter browser dan banyak aplikasi. Mac tidak dapat memeriksa situs yang namanya disembunyikan browser, sekitar separuh kunjungan. Windows memeriksa setiap browser hanya berdasarkan nama situs. Ekstensi Chrome hanya memfilter Chrome. Memilih kategori, daftar milik Anda sendiri, dan menjawab permintaan situs termasuk dalam Premium. Gabungkan Filter web dengan Aplikasi yang Diblokir untuk perlindungan yang lebih kuat.',
       steps: {
         '1': 'Di perangkat orang tua, buka profil anak (atau perangkat, jika perangkat belum ditetapkan ke anak), lalu Filter web.',
-        '2': 'Aktifkan “Filter situs web tidak pantas” di bagian atas. Perubahan langsung berlaku, jadi tidak ada yang perlu disimpan. “Paksa SafeSearch” di layar yang sama juga mengunci Google, Bing, dan DuckDuckGo ke hasil aman dan YouTube ke Mode Terbatas, di Android, Android TV, dan Chrome.',
+        '2': 'Aktifkan “Filter situs web tidak pantas” di bagian atas. Perubahan langsung berlaku, jadi tidak ada yang perlu disimpan. “Paksa SafeSearch” di layar yang sama juga mengunci Google, Bing, dan DuckDuckGo ke hasil aman dan YouTube ke Mode Terbatas, di Android, Android TV, dan Chrome. Di YouTube, Mode Terbatas juga menyembunyikan komentar dan ikut memblokir sebagian video biasa, jadi KidGate meminta konfirmasi sebelum menyalakannya.',
         '3': 'Di bawah “Apa yang diblokir”, pilih kategori yang ditolak. Tambahkan situs ke “Selalu izinkan” atau “Selalu blokir”, atau aktifkan “Hanya situs yang diizinkan” untuk menolak semuanya kecuali daftar izin Anda. Saat anak Anda meminta membuka situs yang diblokir, permintaannya menunggu di “Permintaan situs”. Kontrol ini termasuk dalam Premium; paket gratis memakai kumpulan kategori yang tetap.',
-        '4': 'Periksa lagi nanti dari layar yang sama. Jika status tetap Menunggu, buka lagi KidGate di perangkat anak agar pengaturan dapat tersinkronisasi.',
+        '4': 'Periksa lagi nanti dari layar yang sama. Perubahan sampai ke perangkat anak dalam beberapa menit, dan situs yang sudah terbuka di sana bisa tetap dimuat sampai browser ditutup. Jika setelah itu perubahan belum sampai, atau status tetap Menunggu, buka lagi KidGate di perangkat anak agar pengaturan dapat tersinkronisasi.',
         '5': 'Di perangkat anak, buka KidGate dan setujui filter sekali. Di iPhone atau iPad, pilih Izinkan saat iOS meminta untuk menambahkan konfigurasi VPN, lalu masukkan kode sandi perangkat. Di Android, setujui permintaan VPN, lalu buka Setelan → Jaringan & internet → DNS Pribadi dan pilih Nonaktif, karena browser dapat melewati filter selama DNS Pribadi aktif.',
       },
     },
@@ -435,6 +435,21 @@ export const userGuide = {
         '3': 'Ketuk profil anak untuk melihat satu laporan dari semua perangkatnya, untuk Hari ini, 7 hari, atau 30 hari. Waktu di dua layar sekaligus hanya dihitung sekali, jadi angkanya bisa lebih rendah daripada jumlah semua perangkat.',
         '4': 'Setiap Senin pagi, Laporan mingguan terbaru tiba, disertai notifikasi. Laporan ini menyarankan satu hal yang bisa Anda ubah dan membuka pengaturan yang tepat.',
         '5': 'Saat KidGate dibuka, setiap perangkat diminta mengirim angka terbaru, jadi pembaruannya bisa memakan waktu beberapa menit. Perangkat tanpa koneksi internet akan melapor saat kembali online.',
+      },
+    },
+    screenTimeCounting: {
+      title: 'Cara waktu layar dihitung',
+      summary:
+        'Apa saja yang menambah menit ke Batas harian dan laporan penggunaan, termasuk video yang diputar di jendela mengambang kecil.',
+      keywords:
+        'picture-in-picture, pip, video mengambang, pemutar mini, jendela kecil, youtube, musik, dijeda, latar belakang',
+      tip: 'Di iPhone dan iPad, Durasi Layar Apple yang menentukan apa yang dihitung. Di Mac, suara video bisa tetap terdengar di balik kunci.',
+      steps: {
+        '1': 'Waktu dihitung selama sebuah aplikasi terbuka di layar anak. Layar utama, desktop komputer, layar kunci, dan KidGate sendiri tidak dihitung.',
+        '2': 'Di ponsel Android atau komputer, video yang diputar di jendela mengambang kecil (picture-in-picture, PIP) dihitung untuk aplikasi yang memutarnya, bahkan saat aplikasi lain sedang terbuka di depan.',
+        '3': 'Saat video mengambang itu diputar di atas aplikasi lain, kedua aplikasi menampilkan waktu itu di Aplikasi paling sering digunakan, tetapi total hari itu hanya menghitungnya sekali.',
+        '4': 'Video yang dijeda dan dibiarkan di jendela mengambangnya tetap dihitung selama jendela itu ada di layar. Tutup jendela itu agar tidak dihitung lagi.',
+        '5': 'Di komputer, waktu saat perangkat terkunci tidak dihitung. Di komputer Windows, penguncian juga menjeda video dan musik di sebagian besar aplikasi, dan keduanya tetap terjeda saat kunci dibuka.',
       },
     },
     widget: {

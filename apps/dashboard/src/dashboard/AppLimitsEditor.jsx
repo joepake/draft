@@ -89,7 +89,7 @@ export default function AppLimitsEditor({
             <button
               disabled={readOnly || busy || limit.minutes <= APP_LIMIT_MIN_MINUTES}
               aria-label={appT('appLimits.decreaseAccessibility', { app: limit.label })}
-              onClick={() => setMinutes(limit.id, limit.minutes - 15)}
+              onClick={() => setMinutes(limit.id, limit.minutes - 5)}
             >
               <Icon name="minus" size={14} />
             </button>
@@ -97,7 +97,7 @@ export default function AppLimitsEditor({
             <button
               disabled={readOnly || busy || limit.minutes >= APP_LIMIT_MAX_MINUTES}
               aria-label={appT('appLimits.increaseAccessibility', { app: limit.label })}
-              onClick={() => setMinutes(limit.id, limit.minutes + 15)}
+              onClick={() => setMinutes(limit.id, limit.minutes + 5)}
             >
               <Icon name="plus" size={14} />
             </button>

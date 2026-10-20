@@ -312,6 +312,15 @@ export default function ControlsTab({
    * the switch stays a local one.
    */
   const set = key => async next => {
+    // The phone's rule: turning SafeSearch on is asked first, because on
+    // YouTube it hides every comment and a stray click reads as breakage.
+    if (
+      key === 'safeSearch' &&
+      next &&
+      !window.confirm(activityT('webFilter.safeSearchStrictNote'))
+    ) {
+      return;
+    }
     setState(s => ({ ...s, [key]: next }));
     if (!live || readOnly) {
       return;

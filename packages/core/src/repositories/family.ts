@@ -429,9 +429,21 @@ export function createFamilyRepository(deps: FamilyRepositoryDeps) {
 
       const profile = await db.getDoc(userDoc(ownUid)).catch(() => null);
       const data = profile?.data() as Record<string, unknown> | undefined;
-      return typeof data?.memberFamilyId === 'string' && data.memberFamilyId
-        ? data.memberFamilyId
-        : null;
+      const mirrored =
+        typeof data?.memberFamilyId === 'string' && data.memberFamilyId
+          ? data.memberFamilyId
+          : null;
+      /*
+       * Kept for the next launch (2026-10-19), as the app did before this moved
+       * into core. Without it a parent who signed in rather than joined on this
+       * install opened every family-scoped listener on their own empty root and
+       * re-subscribed when this answered — measured on a simulator: seventeen
+       * queries thrown away per cold launch.
+       */
+      if (mirrored) {
+        await storage.set(ACTIVE_FAMILY_STORAGE_KEY, mirrored);
+      }
+      return mirrored;
     },
 
     /**
