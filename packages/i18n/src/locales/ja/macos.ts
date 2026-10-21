@@ -115,6 +115,8 @@ export const macos = {
   updateAvailableTitle: 'KidGateの新しいバージョンがあります',
   updateAvailableBody: 'KidGate {{version}} をダウンロードできます。',
   updateAction: 'アップデートを入手',
+  updateDownloading: 'ダウンロード中…',
+  updateImportant: '重要なアップデート',
 
   chooseApps: 'ブロックするアプリを選択',
   chooseAppsHint:

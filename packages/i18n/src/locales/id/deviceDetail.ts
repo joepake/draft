@@ -64,6 +64,9 @@ export const deviceDetail = {
   otaSkipped: 'Pembaruan dimatikan di perangkat ini',
   otaStoreUpdate: 'Perlu pembaruan dari toko dulu',
   otaFailed: 'Pembaruan gagal dipasang',
+  desktopUpdateHint:
+    'Versi {{version}} sudah tersedia. Di komputer itu, buka KidGate dan pilih “Ambil pembaruan” — Anda akan diminta kata sandi administrator.',
+  updateImportant: 'Pembaruan penting',
   androidPauseNote:
     'Di Android, mengunci perangkat juga akan memblokir aplikasi lain jika Aksesibilitas dan Tampil di atas aplikasi lain diaktifkan.',
   notAvailableOnPlatform: 'Tidak tersedia di {{platform}}',

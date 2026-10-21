@@ -64,6 +64,9 @@ export const deviceDetail = {
   otaSkipped: 'इस डिवाइस पर अपडेट बंद हैं',
   otaStoreUpdate: 'पहले स्टोर से अपडेट चाहिए',
   otaFailed: 'अपडेट इंस्टॉल नहीं हुआ',
+  desktopUpdateHint:
+    'वर्शन {{version}} आ गया है। उस कंप्यूटर पर KidGate खोलें और “अपडेट पाएँ” चुनें — यह एडमिनिस्ट्रेटर पासवर्ड माँगेगा।',
+  updateImportant: 'ज़रूरी अपडेट',
   androidPauseNote:
     'Android पर, यदि Accessibility और Display over other apps सक्षम हैं, तो लॉक करने पर अन्य ऐप्स भी ब्लॉक हो जाएँगे।',
   notAvailableOnPlatform: '{{platform}} पर उपलब्ध नहीं',

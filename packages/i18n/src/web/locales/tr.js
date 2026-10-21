@@ -864,9 +864,9 @@ export default {
     warningSub:
       'Windows, kendi mağazası dışından, henüz doğrulanmış listesinde olmayan bir geliştirici tarafından kurulan her uygulama için bir SmartScreen uyarısı gösterir — KidGate’te bulunan bir şeyi işaret etmez. Yukarıdaki Windows kartı buna nasıl izin verileceğini anlatır. Mac paketi bir Apple Developer ID ile imzalanmış ve Apple tarafından onaylanmıştır; bu yüzden hiçbir uyarı vermez. Yalnızca kidgate.app üzerinden indirin.',
     macosSteps:
-      'İndirdiğiniz paketi açın ve yükleyiciyi izleyin. Ardından macOS, KidGate sistem uzantısına izin vermenizi bir kez ister: bu mesajın gösterdiği ayarları açın ve izni orada verin. Siz izin verene kadar Web filtresi çalışmaz.',
+      'İndirdiğiniz paketi açın ve yükleyiciyi izleyin. Ardından macOS, KidGate sistem uzantısına izin vermenizi bir kez ister: bu mesajın gösterdiği ayarları açın ve izni orada verin. Siz izin verene kadar Web filtresi çalışmaz. Kurulumdan sonra KidGate, menü çubuğundaki simgesiyle çalışmayı sürdürür; pencereyi açmak için simgeye tıklayın.',
     windowsSteps:
-      'Tarayıcınız önce dosyanın yaygın olarak indirilmediği konusunda uyarabilir — dosyayı saklamayı seçin. Sonra Windows bilgisayarınızı koruduğunu söylediğinde Ek bilgi’yi, ardından Yine de çalıştır’ı seçin.',
+      'Tarayıcınız önce dosyanın yaygın olarak indirilmediği konusunda uyarabilir — dosyayı saklamayı seçin. Sonra Windows bilgisayarınızı koruduğunu söylediğinde Ek bilgi’yi, ardından Yine de çalıştır’ı seçin. Kurulumdan sonra KidGate, bildirim alanındaki simgesiyle çalışmayı sürdürür; pencereyi açmak için simgeye tıklayın.',
   },
   about: {
     eyebrow: 'Hakkımızda',

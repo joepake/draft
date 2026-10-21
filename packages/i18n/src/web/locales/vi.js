@@ -878,9 +878,9 @@ export default {
     warningSub:
       'Windows hiện cảnh báo SmartScreen với mọi ứng dụng cài từ ngoài cửa hàng của Windows khi nhà phát triển chưa nằm trong danh sách đã xác minh — không phải do phát hiện điều gì trong KidGate. Thẻ Windows ở trên ghi cách cho phép. Gói cài cho Mac đã được ký bằng Apple Developer ID và được Apple kiểm tra (notarize), nên không hiện cảnh báo nào. Chỉ tải KidGate từ kidgate.app.',
     macosSteps:
-      'Mở gói cài đã tải và làm theo trình cài đặt. Sau đó macOS sẽ hỏi bạn một lần để cho phép tiện ích hệ thống của KidGate: mở phần cài đặt mà thông báo đó chỉ tới và cho phép tại đó. Tính năng Chặn nội dung web chỉ hoạt động sau khi bạn cho phép.',
+      'Mở gói cài đã tải và làm theo trình cài đặt. Sau đó macOS sẽ hỏi bạn một lần để cho phép tiện ích hệ thống của KidGate: mở phần cài đặt mà thông báo đó chỉ tới và cho phép tại đó. Tính năng Chặn nội dung web chỉ hoạt động sau khi bạn cho phép. Sau khi cài xong, KidGate chạy từ biểu tượng trên thanh menu; bấm vào biểu tượng để mở cửa sổ.',
     windowsSteps:
-      'Trình duyệt có thể cảnh báo trước rằng tệp này không thường được tải xuống — chọn giữ lại tệp. Sau đó, khi Windows báo đã bảo vệ máy, chọn Thông tin thêm (More info), rồi Vẫn chạy (Run anyway).',
+      'Trình duyệt có thể cảnh báo trước rằng tệp này không thường được tải xuống — chọn giữ lại tệp. Sau đó, khi Windows báo đã bảo vệ máy, chọn Thông tin thêm (More info), rồi Vẫn chạy (Run anyway). Sau khi cài xong, KidGate chạy từ biểu tượng ở khu vực thông báo; bấm vào biểu tượng để mở cửa sổ.',
   },
   about: {
     eyebrow: 'Về chúng tôi',

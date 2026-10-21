@@ -1926,20 +1926,27 @@ export default function Dashboard({
     const running = formatBuildLabel(device?.appVersion, device?.appBuild) || '';
     const freshness = resolveBuildFreshness(device, latestBuilds ?? {});
     if (freshness.status === 'outdated') {
+      const text = t(
+        freshness.kind === 'app'
+          ? 'dash.appVersionUpdate'
+          : // A bundle behind needs a relaunch, not a download. See the same
+            // branch in `DeviceDetailHero`.
+            'dash.appVersionRestart',
+        { running: running || freshness.running, latest: freshness.latest },
+      );
+      // The release row's `force`, said in the words the phone's hero and the
+      // agent's banner use — a colour alone told nobody what it meant.
+      const important = latestBuilds?.[device?.platform]?.required === true;
       return {
         outdated: true,
-        text: t(
-          freshness.kind === 'app'
-            ? 'dash.appVersionUpdate'
-            : // A bundle behind needs a relaunch, not a download. See the same
-              // branch in `DeviceDetailHero`.
-              'dash.appVersionRestart',
-          { running: running || freshness.running, latest: freshness.latest },
-        ),
+        important,
+        text: important
+          ? `${activityT('deviceDetail.updateImportant')} · ${text}`
+          : text,
       };
     }
     return running ? { outdated: false, text: running } : null;
-  }, [device, latestBuilds, t]);
+  }, [device, latestBuilds, t, activityT]);
 
   /*
    * The header's second line — settings reached, battery, build — built here
@@ -1976,7 +1983,16 @@ export default function Dashboard({
           // Last: the one a parent goes looking for rather than reads. Drawn at
           // all only once the device has reported a version, so records written
           // before agents did stay silent instead of showing an empty field.
-          <span key="build" className={buildLine.outdated ? 'build-old' : undefined}>
+          <span
+            key="build"
+            className={
+              buildLine.important
+                ? 'build-old build-important'
+                : buildLine.outdated
+                  ? 'build-old'
+                  : undefined
+            }
+          >
             {buildLine.text}
           </span>
         ),

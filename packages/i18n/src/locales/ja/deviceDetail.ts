@@ -64,6 +64,9 @@ export const deviceDetail = {
   otaSkipped: 'このデバイスでは更新が無効です',
   otaStoreUpdate: '先にストアからの更新が必要です',
   otaFailed: '更新をインストールできませんでした',
+  desktopUpdateHint:
+    'バージョン {{version}} が公開されました。そのパソコンで KidGate を開き「アップデートを入手」を選んでください。管理者パスワードの入力を求められます。',
+  updateImportant: '重要なアップデート',
   androidPauseNote:
     'Androidでは、ユーザー補助機能と「他のアプリの上に表示」が有効な場合、ロックすると他のアプリもブロックされます。',
   notAvailableOnPlatform: '{{platform}}では利用できません',

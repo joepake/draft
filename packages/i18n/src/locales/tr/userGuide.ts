@@ -96,11 +96,26 @@ export const userGuide = {
       steps: {
         '1': 'Bilgisayarda kidgate.app/download adresini açın ve Mac veya Windows için KidGate’i indirin.',
         '2': 'Yükleyiciyi çalıştırın ve yönetici izni istemini onaylayın. Windows bilgisayarınızı koruduğunu söylerse Ek bilgi’yi, ardından Yine de çalıştır’ı seçin.',
-        '3': 'KidGate’i bilgisayarda açın. Ekranda bir QR kodu ve 6 haneli bir kod görünür; oturum açmanız gerekmez.',
+        '3': 'KidGate’i bilgisayarda açın. Ekranda bir QR kodu ve 6 haneli bir kod görünür; oturum açmanız gerekmez. Pencere kapalıysa menü çubuğundaki (Mac) ya da bildirim alanındaki (Windows) KidGate simgesine tıklayın.',
         '4': 'Kendi cihazınızda Aile’yi açın, tarama simgesine dokunun (Kod tara) ve QR kodunu tarayın — ya da Kodu elle gir’i seçip kodu yazın.',
         '5': 'Bilgisayarda ebeveyn adını kontrol edin ve Evet, bağla’yı seçin.',
         '6': '“Bu cihazın kurulumunu tamamlayın” listesindeki adımları sırayla uygulayın. Mac’te “Web filtrelemeyi onaylayın” satırının yanındaki Ayarları aç’ı seçin ve açılan sayfada KidGate’i etkinleştirin — bunu yapana kadar Web filtresi çalışmaz. Konum ve Kamera için İzin ver’i seçin.',
         '7': 'Kendi cihazınıza dönüp bilgisayarı hangi çocuğun kullandığını seçin. Engellenecek uygulamalar, Ebeveyn PIN’i girildikten sonra bilgisayarın kendisinde seçilir (Engellenecek uygulamaları seç).',
+      },
+    },
+    updateComputer: {
+      title: 'Bilgisayardaki KidGate’i güncelleme',
+      summary:
+        'Yeni sürümü çocuğunuzun Mac’ine veya Windows PC’sine yükleyin. Bu, kendi cihazınızdan değil, bilgisayarın başında ve yönetici parolasıyla yapılır.',
+      keywords:
+        'yükseltme, eski sürüm, son sürüm, versiyon, yeniden yükleme, admin, şifre, kullanıcı hesabı denetimi, uac, macbook, imac, dizüstü, laptop',
+      tip: 'Çocuğunuzun hesabı, bilgisayarı bağlarken önerildiği gibi standart (yönetici olmayan) bir hesapsa, güncelleme bir yöneticinin adını ve parolasını ister; böylece çocuğunuz güncellemeyi tek başına yükleyemez. Hesap değiştirmenize gerek yok: bunları açılan pencereye yazmanız yeterli. Bilgisayar bağlı kalır ve kurallarını korur; yeniden eşleştirme gerekmez.',
+      steps: {
+        '1': 'Güncellenmesi gereken her bilgisayar için bir bildirim alırsınız; bilgisayarın sayfasında da güncel olmadığı görünür. Kendi cihazınızdan yüklenecek bir şey yok: bilgisayarın başına geçin.',
+        '2': 'Bilgisayarda KidGate’i açın. Pencere kapalıysa menü çubuğundaki (Mac) ya da bildirim alanındaki (Windows) KidGate simgesine tıklayın. Durum ekranının üst kısmında “KidGate’in daha yeni bir sürümü var” yazan bir şerit görünür; güncelleme bekletilmemesi gerekiyorsa şerit kırmızıdır ve üzerinde “Önemli güncelleme” yazar.',
+        '3': '“Güncellemeyi al” düğmesini seçin. KidGate yeni sürümü indirir ve yükleyiciyi açar. İndirme başarısız olursa bunun yerine kidgate.app/download açılır: KidGate’i oradan indirip ilk kurulumdaki gibi çalıştırın.',
+        '4': 'Mac’te yükleyicinin adımlarını izleyin ve sorulduğunda yöneticinin adını ve parolasını girin. Windows’ta önce Windows, uygulamanın değişiklik yapmasına izin verilip verilmeyeceğini sorar: istenirse yöneticinin parolasını girin, Evet’i seçin, ardından yükleyicinin adımlarını izleyin.',
+        '5': 'KidGate kendiliğinden yeniden açılana kadar bilgisayarı kapatmayın. Kendi cihazınızda, bilgisayarın güncel olmadığını belirten uyarı artık görünmez (web panelinde sayfayı yenileyin).',
       },
     },
     connectTv: {

@@ -794,6 +794,8 @@ export const ICONS = {
     { kind: 'path', d: 'M20 12a8 8 0 1 1-2.3-5.6' },
     { kind: 'path', d: 'M20 4v4.5h-4.5' },
   ],
+  /** An arrow into a tray: something to fetch. The desktop agent's update banner. */
+  download: [{ kind: 'path', d: 'M12 4v11M7 10l5 5 5-5M5 20h14' }],
   /**
    * The three paint dots are filled, not stroked — the one place in this set
    * where part of a glyph is solid.

@@ -61,6 +61,9 @@ export const deviceDetail = {
   otaSkipped: 'Cập nhật đang tắt trên thiết bị này',
   otaStoreUpdate: 'Cần cập nhật từ cửa hàng trước',
   otaFailed: 'Bản cập nhật chưa cài được',
+  desktopUpdateHint:
+    'Đã có bản {{version}}. Trên máy đó, mở KidGate và chọn “Tải bản mới” — máy sẽ hỏi mật khẩu quản trị.',
+  updateImportant: 'Cập nhật quan trọng',
   androidPauseNote:
     'Trên Android, khi đã cấp quyền Trợ năng và Hiển thị trên ứng dụng khác, thao tác khóa cũng chặn được các ứng dụng khác.',
   notAvailableOnPlatform: 'Không khả dụng trên {{platform}}',

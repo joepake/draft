@@ -1033,6 +1033,13 @@
   margin-bottom: 0.7rem;
 }
 
+/* A computer behind on a release the operator marked `force`: "Important
+   update" before the version, in the error tone the phone's hero uses. */
+.dash-top-facts .build-important {
+  color: var(--kg-errorStrong);
+  font-weight: 700;
+}
+
 /*
  * The second line of facts: same row, quieter, and separated by air rather
  * than by dots. Six segments in one grey run read as a paragraph, and a dot

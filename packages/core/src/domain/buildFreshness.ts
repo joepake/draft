@@ -47,6 +47,12 @@ export interface LatestBuild {
    * sent a bundle is not behind in any way a parent could act on.
    */
   otaVersion?: number;
+  /**
+   * The `config/appReleases` row's `force`: this release matters. On a desktop
+   * it is a colour and the words "Important update" on every surface that
+   * offers it, never a wall (`supportsForcedUpdate` refuses both desktops).
+   */
+  required?: boolean;
 }
 
 export type LatestBuilds = Partial<Record<DevicePlatform, LatestBuild>>;

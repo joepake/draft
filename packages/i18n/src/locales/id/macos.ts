@@ -118,6 +118,8 @@ export const macos = {
   updateAvailableTitle: 'Tersedia KidGate versi lebih baru',
   updateAvailableBody: 'KidGate {{version}} siap diunduh.',
   updateAction: 'Ambil pembaruan',
+  updateDownloading: 'Mengunduh…',
+  updateImportant: 'Pembaruan penting',
 
   chooseApps: 'Pilih aplikasi yang ingin diblokir',
   chooseAppsHint:

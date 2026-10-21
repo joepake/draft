@@ -62,6 +62,9 @@ export const deviceDetail = {
   otaSkipped: 'Updates are off on this device',
   otaStoreUpdate: 'Needs a store update first',
   otaFailed: 'The update did not install',
+  desktopUpdateHint:
+    '{{version}} is ready. On that computer, open KidGate and choose “Get the update” — it asks for an administrator password.',
+  updateImportant: 'Important update',
   androidPauseNote:
     'On Android, locking also blocks other apps when Accessibility and Display over other apps are enabled.',
   notAvailableOnPlatform: 'Not available on {{platform}}',

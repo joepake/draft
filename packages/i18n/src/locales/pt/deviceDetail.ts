@@ -64,6 +64,9 @@ export const deviceDetail = {
   otaSkipped: 'As atualizações estão desativadas neste dispositivo',
   otaStoreUpdate: 'Precisa primeiro de uma atualização da loja',
   otaFailed: 'A atualização não foi instalada',
+  desktopUpdateHint:
+    'A versão {{version}} chegou. Nesse computador, abra o KidGate e escolha “Obter a atualização” — ele vai pedir uma senha de administrador.',
+  updateImportant: 'Atualização importante',
   androidPauseNote:
     'No Android, bloquear o dispositivo também bloqueia outros aplicativos quando Acessibilidade e “Exibir sobre outros aplicativos” estão ativados.',
   notAvailableOnPlatform: 'Não disponível no {{platform}}',

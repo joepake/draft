@@ -98,11 +98,26 @@ export const userGuide = {
       steps: {
         '1': 'En el ordenador, abre kidgate.app/download y descarga KidGate para Mac o Windows.',
         '2': 'Ejecuta el instalador y aprueba la solicitud de permisos de administrador. En Windows, si un mensaje indica que Windows protegió tu PC, elige «Más información» y luego «Ejecutar de todas formas».',
-        '3': 'Abre KidGate en el ordenador. Muestra un código QR y un código de 6 caracteres; no hace falta iniciar sesión.',
+        '3': 'Abre KidGate en el ordenador. Muestra un código QR y un código de 6 caracteres; no hace falta iniciar sesión. Si su ventana está cerrada, haz clic en el icono de KidGate en la barra de menús (Mac) o en el área de notificación (Windows).',
         '4': 'En tu dispositivo, abre Familia, pulsa el icono de escaneo («Escanear código») y escanea el código QR, o selecciona «Introducir el código manualmente» y escribe el código.',
         '5': 'En el ordenador, comprueba el nombre del padre o madre y selecciona «Sí, conectar».',
         '6': 'Sigue los pasos de «Terminar de configurar este dispositivo». En un Mac, selecciona «Abrir Ajustes» junto a «Aprobar el filtro web» y activa KidGate en la página que se abre: el Filtro web no funciona hasta que lo hagas. Selecciona «Permitir» para Ubicación y Cámara.',
         '7': 'De vuelta en tu dispositivo, elige qué hijo usa el ordenador. Las apps que quieres bloquear se eligen en el propio ordenador, con el PIN parental («Elegir apps para bloquear»).',
+      },
+    },
+    updateComputer: {
+      title: 'Actualizar KidGate en un ordenador',
+      summary:
+        'Instala una nueva versión en el Mac o el PC con Windows de tu hijo. Se hace en el propio ordenador, con la contraseña de administrador, no desde tu dispositivo.',
+      keywords:
+        'upgrade, obsoleto, versión antigua, versión vieja, última versión, reinstalar, admin, control de cuentas de usuario, macbook, imac, portátil, laptop, computadora',
+      tip: 'Si tu hijo usa una cuenta estándar (no de administrador), como se recomienda al conectar el ordenador, la actualización pide el nombre y la contraseña de un administrador, así que tu hijo no puede instalarla solo. No hace falta cambiar de cuenta: escríbelos en la ventana que aparece. El ordenador sigue conectado y conserva sus reglas; no hay que volver a vincular nada.',
+      steps: {
+        '1': 'Recibes una notificación por cada ordenador que necesita la actualización, y la página del ordenador indica que está desactualizado. No hay nada que instalar desde tu dispositivo: ve al ordenador.',
+        '2': 'En el ordenador, abre KidGate. Si su ventana está cerrada, haz clic en el icono de KidGate en la barra de menús (Mac) o en el área de notificación (Windows). En la parte superior de la pantalla Estado, un aviso indica «Hay una versión más reciente de KidGate»; si la actualización no debe esperar, aparece en rojo con «Actualización importante».',
+        '3': 'Selecciona «Obtener la actualización». KidGate descarga la nueva versión y abre el instalador. Si la descarga falla, se abre kidgate.app/download: descarga KidGate allí y ejecútalo, como la primera vez que lo instalaste.',
+        '4': 'En un Mac, sigue el instalador e introduce el nombre y la contraseña del administrador cuando se te pidan. En Windows, primero Windows pregunta si quieres permitir que la aplicación haga cambios: introduce la contraseña del administrador si se te pide, selecciona «Sí» y luego sigue el instalador.',
+        '5': 'Mantén el ordenador encendido hasta que KidGate se vuelva a abrir por sí solo. De vuelta en tu dispositivo, el ordenador ya no aparece como desactualizado (en el panel web, recarga la página).',
       },
     },
     connectTv: {

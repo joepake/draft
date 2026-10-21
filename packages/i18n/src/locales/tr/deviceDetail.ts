@@ -64,6 +64,9 @@ export const deviceDetail = {
   otaSkipped: 'Bu cihazda güncellemeler kapalı',
   otaStoreUpdate: 'Önce mağazadan güncelleme gerekiyor',
   otaFailed: 'Güncelleme yüklenmedi',
+  desktopUpdateHint:
+    '{{version}} sürümü çıktı. O bilgisayarda KidGate’i açın ve “Güncellemeyi al”a tıklayın; yönetici parolası istenecek.',
+  updateImportant: 'Önemli güncelleme',
   androidPauseNote:
     'Android’de Erişilebilirlik ve “Diğer uygulamaların üzerinde göster” izinleri etkinse, kilitleme diğer uygulamaları da engeller.',
   notAvailableOnPlatform: '{{platform}} için kullanılamaz',

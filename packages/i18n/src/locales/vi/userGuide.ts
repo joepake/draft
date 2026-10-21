@@ -96,11 +96,26 @@ export const userGuide = {
       steps: {
         '1': 'Trên máy tính, mở kidgate.app/download và tải KidGate cho Mac hoặc Windows.',
         '2': 'Chạy trình cài đặt và chấp thuận yêu cầu quyền quản trị viên. Trên Windows, nếu thấy thông báo Windows đã bảo vệ máy, chọn Thông tin thêm (More info), rồi Vẫn chạy (Run anyway).',
-        '3': 'Mở KidGate trên máy tính. Màn hình sẽ hiện mã QR và mã gồm 6 ký tự; không cần đăng nhập.',
+        '3': 'Mở KidGate trên máy tính. Màn hình sẽ hiện mã QR và mã gồm 6 ký tự; không cần đăng nhập. Nếu cửa sổ đã đóng, bấm vào biểu tượng KidGate trên thanh menu (Mac) hoặc ở khu vực thông báo (Windows).',
         '4': 'Trên thiết bị của bạn, mở [[Gia đình]], chạm biểu tượng quét ([[Quét mã]]) rồi quét mã QR — hoặc chọn [[Nhập mã thủ công]] và nhập mã.',
         '5': 'Trên máy tính, kiểm tra tên phụ huynh rồi chọn [[Đồng ý kết nối]].',
         '6': 'Làm lần lượt các mục trong [[Hoàn tất thiết lập thiết bị này]]. Trên Mac, chọn [[Mở Cài đặt]] ở mục [[Phê duyệt lọc web]] rồi bật KidGate trong trang vừa mở — tính năng Chặn nội dung web chỉ hoạt động sau bước này. Chọn [[Cho phép]] cho Vị trí và Camera.',
         '7': 'Quay lại thiết bị của bạn, chọn con nào dùng máy tính này. Ứng dụng cần chặn được chọn ngay trên máy tính, sau khi nhập mã PIN phụ huynh ([[Chọn ứng dụng cần chặn]]).',
+      },
+    },
+    updateComputer: {
+      title: 'Cập nhật KidGate trên máy tính',
+      summary:
+        'Cài phiên bản mới trên máy Mac hoặc máy tính Windows của con. Việc này làm ngay trên máy tính, bằng mật khẩu quản trị viên — không làm từ thiết bị của bạn.',
+      keywords:
+        'nâng cấp, lỗi thời, phiên bản cũ, mới nhất, cài lại, update, admin, uac, kiểm soát tài khoản người dùng, macbook, imac, laptop, pc',
+      tip: 'Nếu con dùng tài khoản thường (không phải quản trị viên) như khuyến nghị khi kết nối máy tính, mỗi lần cập nhật cần tên và mật khẩu của quản trị viên, nên con không thể tự cài. Bạn không cần đổi tài khoản: chỉ cần nhập chúng vào hộp thoại hiện ra. Máy tính vẫn được kết nối và giữ nguyên các quy tắc; không cần ghép nối lại.',
+      steps: {
+        '1': 'Bạn sẽ nhận được thông báo cho từng máy tính cần cập nhật, và trang của máy tính đó sẽ báo cần cập nhật. Không cần cài gì trên thiết bị của bạn: hãy đến chỗ máy tính.',
+        '2': 'Trên máy tính, mở KidGate. Nếu cửa sổ đã đóng, bấm vào biểu tượng KidGate trên thanh menu (Mac) hoặc ở khu vực thông báo (Windows). Gần đầu màn hình Trạng thái có dòng [[Đã có KidGate phiên bản mới]] — chuyển sang màu đỏ, kèm [[Cập nhật quan trọng]], khi bản này cần cài ngay.',
+        '3': 'Chọn [[Tải bản mới]]. KidGate sẽ tải phiên bản mới và mở trình cài đặt. Nếu tải không thành công, trang kidgate.app/download sẽ mở ra: tải KidGate ở đó rồi chạy, giống như lần cài đầu tiên.',
+        '4': 'Trên Mac, làm theo trình cài đặt và nhập tên, mật khẩu của quản trị viên khi được hỏi. Trên Windows, trước tiên Windows hỏi có cho phép ứng dụng thực hiện thay đổi không: nhập mật khẩu quản trị viên nếu được hỏi, chọn Có (Yes), rồi làm theo trình cài đặt.',
+        '5': 'Giữ máy tính bật cho đến khi KidGate tự khởi động lại. Quay lại thiết bị của bạn, máy tính sẽ không còn báo cần cập nhật (trên bảng điều khiển trên web, hãy tải lại trang).',
       },
     },
     connectTv: {

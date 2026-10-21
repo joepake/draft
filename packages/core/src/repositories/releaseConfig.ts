@@ -162,6 +162,7 @@ export async function fetchLatestBuilds(db: FirestorePort): Promise<LatestBuilds
       ...latest[key],
       ...(row.versionName ? { version: row.versionName } : {}),
       ...(typeof row.versionCode === 'number' ? { versionCode: row.versionCode } : {}),
+      ...(row.force === true ? { required: true } : {}),
     };
   }
 

@@ -863,9 +863,9 @@ export default {
     warningSub:
       'O Windows mostra um aviso do SmartScreen para qualquer app instalado fora da loja dele por um desenvolvedor que ainda não está na sua lista verificada — ele não aponta nada encontrado no KidGate. O card do Windows acima explica como permitir. O pacote do Mac é assinado com um Apple Developer ID e autenticado pela Apple, por isso não gera nenhum aviso. Baixe somente em kidgate.app.',
     macosSteps:
-      'Abra o pacote baixado e siga o instalador. Depois o macOS pede uma vez para você permitir a extensão de sistema do KidGate: abra os ajustes que essa mensagem indica e permita a extensão ali. O Filtro da web não funciona até você fazer isso.',
+      'Abra o pacote baixado e siga o instalador. Depois o macOS pede uma vez para você permitir a extensão de sistema do KidGate: abra os ajustes que essa mensagem indica e permita a extensão ali. O Filtro da web não funciona até você fazer isso. Depois de instalado, o KidGate continua funcionando pelo ícone na barra de menus; clique no ícone para abrir a janela.',
     windowsSteps:
-      'Seu navegador pode avisar primeiro que o arquivo não costuma ser baixado — escolha mantê-lo. Em seguida, quando o Windows disser que protegeu seu PC, escolha Mais informações e depois Executar assim mesmo.',
+      'Seu navegador pode avisar primeiro que o arquivo não costuma ser baixado — escolha mantê-lo. Em seguida, quando o Windows disser que protegeu seu PC, escolha Mais informações e depois Executar assim mesmo. Depois de instalado, o KidGate continua funcionando pelo ícone na área de notificação; clique no ícone para abrir a janela.',
   },
   about: {
     eyebrow: 'Sobre nós',

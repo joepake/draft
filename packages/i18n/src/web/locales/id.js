@@ -853,9 +853,9 @@ export default {
     warningSub:
       'Windows menampilkan peringatan SmartScreen untuk aplikasi apa pun yang dipasang di luar tokonya sendiri oleh pengembang yang belum masuk daftar terverifikasi — bukan karena menemukan sesuatu di KidGate. Kartu Windows di atas menjelaskan cara mengizinkannya. Paket Mac ditandatangani dengan Apple Developer ID dan dinotarisasi oleh Apple sehingga tidak memunculkan peringatan. Unduh hanya dari kidgate.app.',
     macosSteps:
-      'Buka paket yang telah diunduh lalu ikuti pemasangnya. Setelah itu macOS meminta Anda sekali untuk mengizinkan ekstensi sistem KidGate: buka pengaturan yang ditunjuk pesan itu dan izinkan di sana. Filter web belum berjalan sebelum Anda mengizinkannya.',
+      'Buka paket yang telah diunduh lalu ikuti pemasangnya. Setelah itu macOS meminta Anda sekali untuk mengizinkan ekstensi sistem KidGate: buka pengaturan yang ditunjuk pesan itu dan izinkan di sana. Filter web belum berjalan sebelum Anda mengizinkannya. Setelah terpasang, KidGate tetap berjalan lewat ikonnya di bilah menu; klik ikon itu untuk membuka jendelanya.',
     windowsSteps:
-      'Browser Anda mungkin lebih dulu memperingatkan bahwa file ini jarang diunduh — pilih untuk menyimpannya. Setelah itu, saat Windows berkata telah melindungi PC Anda, pilih Info selengkapnya (More info), lalu Tetap jalankan (Run anyway).',
+      'Browser Anda mungkin lebih dulu memperingatkan bahwa file ini jarang diunduh — pilih untuk menyimpannya. Setelah itu, saat Windows berkata telah melindungi PC Anda, pilih Info selengkapnya (More info), lalu Tetap jalankan (Run anyway). Setelah terpasang, KidGate tetap berjalan lewat ikonnya di area notifikasi; klik ikon itu untuk membuka jendelanya.',
   },
   about: {
     eyebrow: 'Tentang kami',

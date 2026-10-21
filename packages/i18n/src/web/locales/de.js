@@ -876,9 +876,9 @@ export default {
     warningSub:
       'Windows zeigt eine SmartScreen-Warnung bei jeder App, die außerhalb des eigenen Stores von einem Entwickler installiert wird, der noch nicht auf der verifizierten Liste steht — sie beruht nicht auf einem Fund in KidGate. Auf der Windows-Karte oben steht, wie du sie erlaubst. Das Mac-Paket ist mit einer Apple Developer ID signiert und von Apple notarisiert und löst deshalb keine Warnung aus. Lade KidGate nur von kidgate.app herunter.',
     macosSteps:
-      'Öffne das geladene Paket und folge dem Installationsprogramm. macOS fragt dich danach einmal, ob du die KidGate-Systemerweiterung erlauben möchtest: Öffne die Einstellungen, auf die diese Meldung verweist, und erlaube sie dort. Der Webfilter läuft erst, wenn du das getan hast.',
+      'Öffne das geladene Paket und folge dem Installationsprogramm. macOS fragt dich danach einmal, ob du die KidGate-Systemerweiterung erlauben möchtest: Öffne die Einstellungen, auf die diese Meldung verweist, und erlaube sie dort. Der Webfilter läuft erst, wenn du das getan hast. Nach der Installation läuft KidGate über sein Symbol in der Menüleiste weiter; klicke auf das Symbol, um das Fenster zu öffnen.',
     windowsSteps:
-      'Dein Browser warnt möglicherweise zuerst, dass die Datei nicht häufig heruntergeladen wird — behalte sie. Wenn Windows danach meldet, dass es deinen PC geschützt hat, wähle Weitere Informationen und dann Trotzdem ausführen.',
+      'Dein Browser warnt möglicherweise zuerst, dass die Datei nicht häufig heruntergeladen wird — behalte sie. Wenn Windows danach meldet, dass es deinen PC geschützt hat, wähle Weitere Informationen und dann Trotzdem ausführen. Nach der Installation läuft KidGate über sein Symbol im Infobereich weiter; klicke auf das Symbol, um das Fenster zu öffnen.',
   },
   about: {
     eyebrow: 'Über uns',

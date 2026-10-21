@@ -119,6 +119,8 @@ export const macos = {
   updateAvailableTitle: 'Đã có KidGate phiên bản mới',
   updateAvailableBody: 'KidGate {{version}} đã sẵn sàng để tải về.',
   updateAction: 'Tải bản mới',
+  updateDownloading: 'Đang tải…',
+  updateImportant: 'Cập nhật quan trọng',
 
   chooseApps: 'Chọn ứng dụng cần chặn',
   chooseAppsHint:

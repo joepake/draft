@@ -64,6 +64,9 @@ export const deviceDetail = {
   otaSkipped: '이 기기에서 업데이트가 꺼져 있습니다',
   otaStoreUpdate: '먼저 스토어 업데이트가 필요합니다',
   otaFailed: '업데이트를 설치하지 못했습니다',
+  desktopUpdateHint:
+    '{{version}} 버전이 나왔어요. 그 컴퓨터에서 KidGate를 열고 ‘업데이트 받기’를 선택하세요. 관리자 암호를 물어봐요.',
+  updateImportant: '중요 업데이트',
   androidPauseNote:
     'Android에서는 접근성 및 “다른 앱 위에 표시” 권한이 활성화되어 있으면 잠금 시 다른 앱도 차단됩니다.',
   notAvailableOnPlatform: '{{platform}}에서는 사용할 수 없습니다',

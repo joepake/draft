@@ -121,6 +121,8 @@ export const macos = {
   updateAvailableTitle: 'Une version plus récente de KidGate est disponible',
   updateAvailableBody: 'KidGate {{version}} est prêt à être téléchargé.',
   updateAction: 'Obtenir la mise à jour',
+  updateDownloading: 'Téléchargement…',
+  updateImportant: 'Mise à jour importante',
 
   chooseApps: 'Choisir les applications à bloquer',
   chooseAppsHint:

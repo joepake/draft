@@ -95,11 +95,26 @@ export const userGuide = {
       steps: {
         '1': 'On the computer, open kidgate.app/download and download KidGate for Mac or Windows.',
         '2': 'Run the installer and approve the administrator prompt. On Windows, if a message says Windows protected your PC, choose More info, then Run anyway.',
-        '3': 'Open KidGate on the computer. It shows a QR code and a 6-character code; no sign-in is needed.',
+        '3': 'Open KidGate on the computer. It shows a QR code and a 6-character code; no sign-in is needed. If its window is closed, click the KidGate icon in the menu bar (Mac) or the notification area (Windows).',
         '4': 'On your device, open [[Family]], tap the scan icon ([[Scan a code]]), and scan the QR code — or select [[Enter code manually]] and type the code.',
         '5': 'On the computer, check the parent name and select [[Yes, connect]].',
         '6': 'Work through [[Finish setting up this device]]. On a Mac, select [[Open Settings]] next to [[Approve web filtering]] and turn KidGate on in the page that opens — the Web Filter does not run until you do. Select [[Allow]] for Location and Camera.',
         '7': 'Back on your device, choose which child uses the computer. Blocked apps are chosen on the computer itself, behind the Parent PIN ([[Choose apps to block]]).',
+      },
+    },
+    updateComputer: {
+      title: 'Update KidGate on a computer',
+      summary:
+        'Install a new version on your child’s Mac or Windows PC. It is done at the computer itself, with its administrator password — not from your device.',
+      keywords:
+        'upgrade, outdated, old version, latest version, reinstall, admin, user account control, macbook, imac, laptop',
+      tip: 'With a standard (non-administrator) account for your child, as recommended when you connected the computer, an update needs an administrator’s name and password, so your child cannot install it alone. You do not need to switch accounts: type them into the prompt that appears. The computer stays connected and keeps its rules; nothing needs pairing again.',
+      steps: {
+        '1': 'You get a notification for each computer that needs the update, and the computer’s page shows that it is out of date. There is nothing to install from your device: go to the computer.',
+        '2': 'On the computer, open KidGate. If its window is closed, click the KidGate icon in the menu bar (Mac) or the notification area (Windows). Near the top of the Status screen, a banner says [[A newer KidGate is available]] — in red, with [[Important update]], when it should not wait.',
+        '3': 'Select [[Get the update]]. KidGate downloads the new version and opens the installer. If the download fails, kidgate.app/download opens instead: download KidGate there and run it, as when you first installed it.',
+        '4': 'On a Mac, follow the installer and enter the administrator’s name and password when asked. On Windows, Windows first asks whether to allow the app to make changes: enter the administrator’s password if asked, select Yes, then follow the installer.',
+        '5': 'Keep the computer on until KidGate starts again by itself. Back on your device, the computer no longer shows as out of date (on the web dashboard, refresh the page).',
       },
     },
     connectTv: {

@@ -64,6 +64,9 @@ export const deviceDetail = {
   otaSkipped: 'Les mises à jour sont désactivées sur cet appareil',
   otaStoreUpdate: 'Nécessite d’abord une mise à jour depuis le store',
   otaFailed: 'La mise à jour ne s’est pas installée',
+  desktopUpdateHint:
+    'La version {{version}} est disponible. Sur cet ordinateur, ouvrez KidGate et choisissez « Obtenir la mise à jour » : un mot de passe administrateur vous sera demandé.',
+  updateImportant: 'Mise à jour importante',
   androidPauseNote:
     'Sur Android, le verrouillage bloque également les autres applications lorsque les services d’accessibilité et l’option « Afficher par-dessus les autres applications » sont activés.',
   notAvailableOnPlatform: 'Indisponible sur {{platform}}',

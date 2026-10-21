@@ -1,5 +1,8 @@
 /**
- * The macOS agent's own window.
+ * The desktop agent's own window — **macOS and Windows both**. Named `macos`
+ * because the Mac shipped first; `apps/desktop` is one codebase and every
+ * screen reads `macos.*` on a PC unchanged (`StatusScreen`'s `t`), so a key
+ * here is a Windows string too. There is no `windows` namespace.
  *
  * Parent register: calm, factual, no reassurance the platform cannot back up.
  * Most of this namespace exists to say what a Mac *cannot* do, because the
@@ -265,6 +268,8 @@ export const macos = {
   updateAvailableTitle: 'A newer KidGate is available',
   updateAvailableBody: 'KidGate {{version}} is ready to download.',
   updateAction: 'Get the update',
+  updateDownloading: 'Downloading…',
+  updateImportant: 'Important update',
 
   /*
    * The app picker. macOS is the only platform with one of its own: iOS hands

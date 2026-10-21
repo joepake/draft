@@ -64,6 +64,9 @@ export const deviceDetail = {
   otaSkipped: 'التحديثات موقوفة على هذا الجهاز',
   otaStoreUpdate: 'يحتاج أولًا إلى تحديث من المتجر',
   otaFailed: 'لم يتم تثبيت التحديث',
+  desktopUpdateHint:
+    'الإصدار {{version}} متاح. على ذلك الكمبيوتر، افتح KidGate واختر «الحصول على التحديث»، وستُطلب منك كلمة مرور المسؤول.',
+  updateImportant: 'تحديث مهم',
   androidPauseNote:
     'على Android، يؤدي القفل أيضًا إلى حظر التطبيقات الأخرى عند تفعيل خدمات إمكانية الوصول وميزة «الظهور فوق التطبيقات الأخرى».',
   notAvailableOnPlatform: 'غير متاح على {{platform}}',

@@ -117,6 +117,8 @@ export const macos = {
   updateAvailableTitle: 'KidGate’in daha yeni bir sürümü var',
   updateAvailableBody: 'KidGate {{version}} indirilmeye hazır.',
   updateAction: 'Güncellemeyi al',
+  updateDownloading: 'İndiriliyor…',
+  updateImportant: 'Önemli güncelleme',
 
   chooseApps: 'Engellenecek uygulamaları seç',
   chooseAppsHint:

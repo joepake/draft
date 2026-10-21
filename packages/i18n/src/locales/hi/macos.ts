@@ -118,6 +118,8 @@ export const macos = {
   updateAvailableTitle: 'KidGate का नया संस्करण उपलब्ध है',
   updateAvailableBody: 'KidGate {{version}} डाउनलोड के लिए तैयार है।',
   updateAction: 'अपडेट पाएँ',
+  updateDownloading: 'डाउनलोड हो रहा है…',
+  updateImportant: 'ज़रूरी अपडेट',
 
   chooseApps: 'ब्लॉक करने के लिए ऐप्स चुनें',
   chooseAppsHint:

@@ -97,11 +97,26 @@ export const userGuide = {
       steps: {
         '1': 'Di komputer, buka kidgate.app/download lalu unduh KidGate untuk Mac atau Windows.',
         '2': 'Jalankan penginstal dan setujui permintaan akses administrator. Di Windows, jika muncul pesan bahwa Windows telah melindungi PC Anda, pilih Info selengkapnya (More info), lalu Tetap jalankan (Run anyway).',
-        '3': 'Buka KidGate di komputer. Aplikasi menampilkan kode QR dan kode 6 karakter; tidak perlu masuk ke akun.',
+        '3': 'Buka KidGate di komputer. Aplikasi menampilkan kode QR dan kode 6 karakter; tidak perlu masuk ke akun. Jika jendelanya tertutup, klik ikon KidGate di bilah menu (Mac) atau di area notifikasi (Windows).',
         '4': 'Di perangkat Anda, buka Keluarga, ketuk ikon pindai (Pindai kode), lalu pindai kode QR — atau pilih Masukkan kode secara manual dan ketik kodenya.',
         '5': 'Di komputer, periksa nama orang tua, lalu pilih Ya, sambungkan.',
         '6': 'Ikuti langkah-langkah di Selesaikan penyiapan perangkat ini. Di Mac, pilih Buka Pengaturan di samping Setujui pemfilteran web, lalu aktifkan KidGate di halaman yang terbuka — Filter web tidak akan berjalan sebelum Anda melakukannya. Pilih Izinkan untuk Lokasi dan Kamera.',
         '7': 'Kembali ke perangkat Anda, pilih anak yang menggunakan komputer ini. Aplikasi yang ingin diblokir dipilih di komputer itu sendiri, dengan PIN Orang Tua (Pilih aplikasi yang ingin diblokir).',
+      },
+    },
+    updateComputer: {
+      title: 'Perbarui KidGate di komputer',
+      summary:
+        'Instal versi baru di Mac atau PC Windows anak Anda. Pembaruan dilakukan langsung di komputer tersebut, dengan kata sandi administratornya — bukan dari perangkat Anda.',
+      keywords:
+        'update, upgrade, versi terbaru, versi lama, kedaluwarsa, instal ulang, pasang ulang, admin, kontrol akun pengguna, uac, macbook, imac, laptop',
+      tip: 'Jika anak Anda memakai akun standar (bukan administrator), seperti yang disarankan saat menyambungkan komputer, pembaruan memerlukan nama dan kata sandi administrator, sehingga anak Anda tidak dapat menginstalnya sendiri. Anda tidak perlu berganti akun: ketikkan keduanya di permintaan yang muncul. Komputer tetap tersambung dan aturannya tetap berlaku; tidak ada yang perlu disandingkan ulang.',
+      steps: {
+        '1': 'Anda menerima notifikasi untuk setiap komputer yang perlu diperbarui, dan halaman komputer tersebut menunjukkan bahwa versinya sudah usang. Tidak ada yang perlu diinstal dari perangkat Anda: datangi komputer tersebut.',
+        '2': 'Di komputer, buka KidGate. Jika jendelanya tertutup, klik ikon KidGate di bilah menu (Mac) atau di area notifikasi (Windows). Di dekat bagian atas layar Status, ada banner bertuliskan Tersedia KidGate versi lebih baru — berwarna merah, dengan Pembaruan penting, jika pembaruan sebaiknya tidak ditunda.',
+        '3': 'Pilih Ambil pembaruan. KidGate mengunduh versi baru lalu membuka penginstal. Jika unduhan gagal, kidgate.app/download akan terbuka: unduh KidGate di sana lalu jalankan, seperti saat pertama kali Anda menginstalnya.',
+        '4': 'Di Mac, ikuti petunjuk penginstal dan masukkan nama serta kata sandi administrator saat diminta. Di Windows, Windows terlebih dahulu menanyakan apakah aplikasi ini boleh membuat perubahan: masukkan kata sandi administrator jika diminta, pilih Ya (Yes), lalu ikuti petunjuk penginstal.',
+        '5': 'Biarkan komputer menyala sampai KidGate berjalan lagi dengan sendirinya. Kembali ke perangkat Anda, komputer tersebut tidak lagi ditandai usang (di dasbor web, muat ulang halamannya).',
       },
     },
     connectTv: {

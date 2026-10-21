@@ -21,6 +21,7 @@ export type UserGuideTopicId =
   | 'getStartedChild'
   | 'connectChild'
   | 'connectComputer'
+  | 'updateComputer'
   | 'connectTv'
   | 'connectChrome'
   | 'inviteParent'
@@ -123,6 +124,19 @@ export const USER_GUIDE_TOPICS: UserGuideTopicConfig[] = [
     icon: 'mac',
     stepCount: 7,
     stepDevices: ['child', 'child', 'child', 'parent', 'child', 'child', 'parent'],
+  },
+  {
+    /*
+     * The parent installs it at the computer: an install needs an
+     * administrator, and the self-updater that would have done it remotely
+     * was rejected (`docs/FEASIBILITY.md`, "The desktop updates its own
+     * binary"). The push and the device page start it on the parent's side.
+     */
+    id: 'updateComputer',
+    groupId: 'connection',
+    icon: 'download',
+    stepCount: 5,
+    stepDevices: ['parent', 'child', 'child', 'child', 'parent'],
   },
   {
     id: 'connectTv',
@@ -401,6 +415,7 @@ export const USER_GUIDE_GROUPS: UserGuideGroupConfig[] = [
     topicIds: [
       'connectChild',
       'connectComputer',
+      'updateComputer',
       'connectTv',
       'connectChrome',
       'inviteParent',
