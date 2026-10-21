@@ -22,6 +22,7 @@ import ParkedDevicesCard from '../dashboard/ParkedDevicesCard.jsx';
 import ParkReviewCard from '../dashboard/ParkReviewCard.jsx';
 import { waitForParentPresence } from '../dashboard/parentPresence.js';
 import { resolveTodayTopApps } from '@kidgate/core/domain/todayTopApps';
+import { compareByName } from '@kidgate/core/domain/deviceListPriority';
 import {
   resolveLockedTeaser,
   resolveTopAppsTeaser,
@@ -1859,7 +1860,9 @@ export default function Dashboard({
         unassigned.push(d);
       }
     }
-    const groups = (children ?? [])
+    // A–Z, as on the phone (`compareByName`).
+    const groups = [...(children ?? [])]
+      .sort(compareByName)
       .filter(child => byChild.has(child.id))
       .map(child => ({ key: child.id, child, devices: byChild.get(child.id) }));
     if (unassigned.length > 0) {
@@ -1880,7 +1883,9 @@ export default function Dashboard({
    */
   const childrenWithoutDevice = useMemo(
     () =>
-      (children ?? []).filter(child => !devices.some(d => d.child?.id === child.id)),
+      [...(children ?? [])]
+        .sort(compareByName)
+        .filter(child => !devices.some(d => d.child?.id === child.id)),
     [children, devices],
   );
 
@@ -1916,7 +1921,7 @@ export default function Dashboard({
    * Null on a device that has never reported a version, which is every record
    * written before the agents started sending one.
    */
-  const latestBuilds = useLatestBuilds();
+  const latestBuilds = useLatestBuilds(loadedAt);
   const buildLine = useMemo(() => {
     const running = formatBuildLabel(device?.appVersion, device?.appBuild) || '';
     const freshness = resolveBuildFreshness(device, latestBuilds ?? {});

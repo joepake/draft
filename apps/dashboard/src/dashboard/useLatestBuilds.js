@@ -9,15 +9,17 @@ import { getLatestBuilds } from '../adapters/repositories.js';
  * same `@kidgate/core` repository and decide "behind" with the same
  * `domain/buildFreshness`, so they cannot disagree about the same Mac.
  *
- * Read once per page load, not subscribed. The documents change when an
- * operator publishes a release; a listener would be two open streams for a
- * value that is constant for the life of the tab.
+ * Not subscribed, like everything here (`adapters/oneShot.js`). Read on load
+ * and again on every refresh — `reloadKey` is `useFamilyData`'s `loadedAt`,
+ * which the header button and every landed write move. A tab left open across
+ * a release kept "up to date" until a full reload before 2026-10-21; now the
+ * refresh that brings the devices back brings the release rows with them.
  *
- * `undefined` while in flight, `{}` if the read failed — and `{}` needs no
- * handling, because an absent platform entry reads as unknown and draws
- * nothing.
+ * `undefined` while the first read is in flight, `{}` if it failed — and `{}`
+ * needs no handling, because an absent platform entry reads as unknown and
+ * draws nothing. A re-read keeps the previous answer on screen until it lands.
  */
-export function useLatestBuilds() {
+export function useLatestBuilds(reloadKey) {
   const [builds, setBuilds] = useState(undefined);
 
   useEffect(() => {
@@ -32,7 +34,7 @@ export function useLatestBuilds() {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [reloadKey]);
 
   return builds;
 }

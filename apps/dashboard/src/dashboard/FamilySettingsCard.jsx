@@ -6,6 +6,7 @@ import {
   lastActivity,
   lastActivityInfoKey,
 } from '@kidgate/core/domain/deviceStatus';
+import { sortByMostRecent } from '@kidgate/core/domain/deviceListPriority';
 import { leaderboardResetParams } from '@kidgate/core/domain/leaderboardReset';
 import { getLocaleTag } from '@kidgate/i18n/web';
 import Card from './Card.jsx';
@@ -72,6 +73,8 @@ export default function FamilySettingsCard({
   const { t } = useT();
   const isOwner = Boolean(actions?.isOwner);
   const readOnly = live && !canWrite;
+  // Most recently active first, off the stamp each Devices row prints.
+  const devicesByRecent = sortByMostRecent(devices, device => lastActivity(device)?.at);
 
   const [tab, setTab] = useState('parents');
   const [renaming, setRenaming] = useState(false);
@@ -312,7 +315,7 @@ export default function FamilySettingsCard({
             />
           ) : (
             <ul className="child-device-list">
-              {devices.map(device => (
+              {devicesByRecent.map(device => (
                 <li key={device.id}>
                   <button className="kid" onClick={() => onOpenDevice(device.id)}>
                     <span className="kid-avatar">
