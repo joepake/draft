@@ -102,8 +102,6 @@ export const family = {
 
   headerHintEmpty: '자녀의 기기를 관리하고 보호하세요',
 
-  headerHintGuest: '자유롭게 둘러보세요. 기기를 연결할 준비가 되면 로그인하세요.',
-
   familyCardManage: '가족, 부모 및 기기 관리',
 
   familyCardJoined: '부모로 참여 중',
@@ -142,6 +140,7 @@ export const family = {
   healthNeedsSetup: '설정 필요',
   healthOffline: '오프라인',
   devicePausedLabel: '일시중지',
+  deviceCheckingLabel: '확인 중…',
   devicePausedHint: '무료 플랜에서 일시중지됨 — 모든 규칙은 계속 적용됩니다',
   // What Paused means, said where the choice is made: the choose-a-device sheet on
   // both consoles. Checked against every agent 2026-09-28 — enforcement never
@@ -214,27 +213,26 @@ export const family = {
   switchToJoinMessage:
     '현재 비어 있는 가족이 삭제되며 초대 코드를 사용해 다른 가족에 참여할 수 있습니다. 이미 자녀 기기가 연결되어 있다면 먼저 해당 기기를 처리해야 합니다.',
 
-  guestEmptyTitle: '여기서 가족을 시작하세요',
+  guestEmptyTitle: '가족 관리, 여기서 시작하세요',
 
   guestEmptyDescription:
-    '로그인하여 자녀의 기기를 연결하고, 알림을 받고, 건강한 화면 사용 시간 제한을 설정하세요.',
+    '로그인하면 자녀 기기를 연결하고, 알림을 받고, 화면 사용 시간을 알맞게 제한할 수 있습니다.',
 
   guestConnectButton: '로그인',
 
-  guestCreateAccount: '부모 계정 만들기',
-
   guestBenefitLimitsTitle: '화면 사용 시간 및 앱 제한',
 
-  guestBenefitLimitsBody: '기기를 잠그고 일일 사용 일정을 설정하세요.',
+  guestBenefitLimitsBody:
+    '일일 제한, 차단 시간, 앱 시간 제한을 설정하거나 기기를 바로 잠글 수 있습니다.',
 
   guestBenefitAlertsTitle: 'SOS 및 활동 알림',
 
-  guestBenefitAlertsBody: '주의가 필요한 상황이 발생하면 즉시 알림을 받으세요.',
+  guestBenefitAlertsBody: '확인이 필요한 일이 생기면 바로 알 수 있습니다.',
 
   guestBenefitLocationTitle: '위치 및 체크인',
 
   guestBenefitLocationBody:
-    '자녀의 위치를 확인하고 안전 여부를 체크인으로 확인할 수 있습니다.',
+    '자녀의 위치를 확인하고, 체크인으로 무사한지 알려 달라고 할 수 있습니다.',
 
   stepsHeading: '시작하기',
 
@@ -371,6 +369,12 @@ export const family = {
 
   sos: 'SOS',
 
+  browsingPaused: '웹 사용 일시중지됨',
+  browsingResumed: '웹 사용 재개됨',
+  parentPausedBrowsing:
+    '{{actorName}}님이 이 자녀 기기의 웹 사용을 {{minutes}}분 동안 일시중지했습니다.',
+  parentResumedBrowsing:
+    '{{actorName}}님이 이 자녀 기기의 웹 사용 일시중지를 종료했습니다.',
   deviceLocked: '기기 잠김',
 
   deviceUnlocked: '기기 잠금이 해제되었습니다',

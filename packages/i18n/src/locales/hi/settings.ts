@@ -69,10 +69,9 @@ export const settings = {
   themeStyleLabel: 'थीम शैली',
   themeColorLabel: 'थीम रंग',
   signOutButton: 'साइन आउट',
-  signInButton: 'साइन इन करें',
   switchToChildDevice: 'इस फ़ोन को बच्चे के डिवाइस के रूप में सेट करें',
   guestAccountHint:
-    'डिवाइस, अलर्ट और अपनी फ़ैमिली प्लान सिंक करने के लिए साइन इन करें।',
+    'साइन इन करें, ताकि डिवाइस, अलर्ट और आपका फ़ैमिली प्लान आपके खाते में सहेजे रहें।',
   reportModalTitle: 'समस्या की रिपोर्ट करें',
   reportMessageLabel: 'कृपया आपको आ रही समस्या का वर्णन करें।',
   reportMessagePlaceholder: 'बग या समस्या का वर्णन करें…',

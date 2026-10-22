@@ -104,9 +104,6 @@ export const family = {
 
   headerHintEmpty: 'Kelola dan lindungi perangkat anak Anda',
 
-  headerHintGuest:
-    'Jelajahi aplikasi dengan bebas. Masuk saat Anda siap menghubungkan perangkat.',
-
   familyCardManage: 'Kelola keluarga, orang tua, dan perangkat',
 
   familyCardJoined: 'Bergabung sebagai orang tua',
@@ -145,6 +142,7 @@ export const family = {
   healthNeedsSetup: 'Perlu disiapkan',
   healthOffline: 'Offline',
   devicePausedLabel: 'Dijeda',
+  deviceCheckingLabel: 'Memeriksa…',
   devicePausedHint: 'Dijeda di paket gratis — semua aturan tetap berlaku',
   // What Paused means, said where the choice is made: the choose-a-device sheet on
   // both consoles. Checked against every agent 2026-09-28 — enforcement never
@@ -220,18 +218,17 @@ export const family = {
   switchToJoinMessage:
     'Keluarga kosong Anda akan dihapus sehingga Anda dapat bergabung ke keluarga lain menggunakan kode undangan. Jika sudah ada perangkat anak yang terhubung, tangani dulu perangkat itu.',
 
-  guestEmptyTitle: 'Mulai keluarga Anda di sini',
+  guestEmptyTitle: 'Langkah pertama untuk keluarga Anda',
 
   guestEmptyDescription:
     'Masuk untuk menghubungkan perangkat anak, menerima notifikasi, dan menetapkan batas waktu layar yang sehat.',
 
   guestConnectButton: 'Masuk',
 
-  guestCreateAccount: 'Buat akun orang tua',
-
   guestBenefitLimitsTitle: 'Waktu layar dan batas aplikasi',
 
-  guestBenefitLimitsBody: 'Kunci perangkat dan atur jadwal harian.',
+  guestBenefitLimitsBody:
+    'Atur Batas harian, Jam Diblokir, dan Batas Aplikasi, atau langsung kunci perangkat.',
 
   guestBenefitAlertsTitle: 'Peringatan SOS dan aktivitas',
 
@@ -378,6 +375,12 @@ export const family = {
 
   sos: 'SOS',
 
+  browsingPaused: 'Penjelajahan dijeda',
+  browsingResumed: 'Penjelajahan dilanjutkan',
+  parentPausedBrowsing:
+    '{{actorName}} menjeda penjelajahan di perangkat anak ini selama {{minutes}} mnt.',
+  parentResumedBrowsing:
+    '{{actorName}} mengakhiri jeda penjelajahan di perangkat anak ini.',
   deviceLocked: 'Perangkat terkunci',
 
   deviceUnlocked: 'Kunci perangkat dibuka',

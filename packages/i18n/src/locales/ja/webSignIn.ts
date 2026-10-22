@@ -36,11 +36,7 @@ export const webSignIn = {
     'このコードはすでに使用されています。パソコンで新しいコードを表示してください。',
   notFound: 'このコードは無効です。6文字を確認してもう一度お試しください。',
   failed: 'リクエストを完了できませんでした。もう一度お試しください。',
-  sessionsTitle: '変更できるブラウザ',
-  sessionsHint:
-    'これらのブラウザは、お使いのアカウントでWebダッシュボードにログインしていて、変更を行えます。ファミリーの情報を見るだけのブラウザは、ここには表示されません。',
-  sessionsEmpty:
-    '変更できるブラウザはありません。ブラウザを許可すると、ここに表示されます。',
+  sessionsTitle: 'ダッシュボード',
   sessionRow: '{{os}} の {{browser}}',
   sessionRowUnknown: 'Webブラウザ',
   sessionExpires: '{{date}} まで変更できます',

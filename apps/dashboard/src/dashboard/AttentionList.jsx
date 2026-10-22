@@ -17,12 +17,17 @@ import { useT } from '@kidgate/web-ui/useT';
 const ALLOWED_READ_ONLY = new Set(['resend', 'howToFix']);
 
 const ACTION_LABEL = {
-  review: 'dash.attnReview',
   siteAllow: 'dash.siteRequestAllow',
   resend: 'dash.attnResend',
   howToFix: 'dash.attnHowToFix',
   unlock: 'dash.attnUnlock',
   pinReset: 'dash.attnUnlock',
+};
+
+/** A time request's two answers, in the phone's own words (`timeRequest`). */
+const APP_ACTION_LABEL = {
+  review: 'timeRequest.approve',
+  decline: 'timeRequest.notNow',
 };
 
 export default function AttentionList({
@@ -37,6 +42,8 @@ export default function AttentionList({
   const { t } = useT();
   /** Which row has its steps open. One at a time. */
   const [fixOpen, setFixOpen] = useState(null);
+  const label = action =>
+    APP_ACTION_LABEL[action] ? appT(APP_ACTION_LABEL[action]) : t(ACTION_LABEL[action]);
 
   return (
     <ul className={`attn ${className}`}>
@@ -69,6 +76,16 @@ export default function AttentionList({
                 </button>
               )}
             </span>
+            {item.secondary && (
+              <button
+                className="btn btn-sm"
+                disabled={blocked || busyId === item.id}
+                title={blocked ? t('dash.attnAppOnly') : undefined}
+                onClick={() => onAction({ ...item, action: item.secondary })}
+              >
+                {label(item.secondary)}
+              </button>
+            )}
             {item.action && (
               <button
                 className="btn btn-sm"
@@ -94,7 +111,7 @@ export default function AttentionList({
                   onAction(item);
                 }}
               >
-                {busyId === item.id ? '…' : t(ACTION_LABEL[item.action])}
+                {busyId === item.id ? '…' : label(item.action)}
               </button>
             )}
             {fixOpen === item.id &&

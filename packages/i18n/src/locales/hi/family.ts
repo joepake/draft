@@ -105,9 +105,6 @@ export const family = {
 
   headerHintEmpty: 'अपने बच्चों के डिवाइस प्रबंधित करें और सुरक्षित रखें',
 
-  headerHintGuest:
-    'ऐप को स्वतंत्र रूप से देखें। डिवाइस कनेक्ट करने के लिए तैयार होने पर साइन इन करें।',
-
   familyCardManage: 'परिवार, अभिभावकों और डिवाइस का प्रबंधन करें',
 
   familyCardJoined: 'आप अभिभावक के रूप में जुड़े हैं',
@@ -149,6 +146,7 @@ export const family = {
   healthOffline: 'ऑफ़लाइन',
 
   devicePausedLabel: 'रुका हुआ',
+  deviceCheckingLabel: 'जाँच हो रही है…',
 
   devicePausedHint: 'फ़्री प्लान में रुका हुआ — सभी नियम अब भी लागू हैं',
   // What Paused means, said where the choice is made: the choose-a-device sheet on
@@ -236,27 +234,26 @@ export const family = {
   switchToJoinMessage:
     'आपका खाली परिवार हटा दिया जाएगा ताकि आप निमंत्रण कोड का उपयोग करके किसी अन्य परिवार से जुड़ सकें। यदि कोई बच्चे का डिवाइस पहले से जुड़ा है, तो पहले उसे संभालना होगा।',
 
-  guestEmptyTitle: 'यहीं से आपका परिवार शुरू होता है',
+  guestEmptyTitle: 'आपके परिवार से जुड़ा सब कुछ यहीं से शुरू होता है',
 
   guestEmptyDescription:
-    'अपने बच्चों के डिवाइस कनेक्ट करने, सूचनाएँ प्राप्त करने और स्वस्थ स्क्रीन समय सीमाएँ निर्धारित करने के लिए साइन इन करें।',
+    'अपने बच्चों के डिवाइस कनेक्ट करने, अलर्ट पाने और स्क्रीन टाइम की संतुलित सीमाएँ तय करने के लिए साइन इन करें।',
 
   guestConnectButton: 'साइन इन करें',
 
-  guestCreateAccount: 'अभिभावक खाता बनाएँ',
+  guestBenefitLimitsTitle: 'स्क्रीन टाइम और ऐप सीमाएँ',
 
-  guestBenefitLimitsTitle: 'स्क्रीन समय और ऐप सीमाएँ',
-
-  guestBenefitLimitsBody: 'डिवाइस लॉक करें और दैनिक समय-सारणी निर्धारित करें।',
+  guestBenefitLimitsBody:
+    'दैनिक सीमा, ब्लॉक किए गए समय और ऐप सीमाएँ तय करें, या किसी डिवाइस को तुरंत लॉक करें।',
 
   guestBenefitAlertsTitle: 'SOS और गतिविधि अलर्ट',
 
-  guestBenefitAlertsBody: 'जब भी आपके ध्यान की आवश्यकता हो, तुरंत सूचना प्राप्त करें।',
+  guestBenefitAlertsBody: 'जब भी किसी बात पर आपका ध्यान चाहिए, आपको तुरंत पता चलेगा।',
 
   guestBenefitLocationTitle: 'स्थान और चेक-इन',
 
   guestBenefitLocationBody:
-    'अपने बच्चे का स्थान देखें और उससे सुरक्षित होने की पुष्टि करने के लिए कहें।',
+    'देखें कि आपका बच्चा कहाँ है, और उससे पुष्टि करवाएँ कि वह सुरक्षित है।',
 
   stepsHeading: 'शुरुआत करें',
 
@@ -395,6 +392,12 @@ export const family = {
 
   sos: 'SOS',
 
+  browsingPaused: 'ब्राउज़िंग रोकी गई',
+  browsingResumed: 'ब्राउज़िंग फिर से शुरू',
+  parentPausedBrowsing:
+    '{{actorName}} ने इस बच्चे के डिवाइस पर ब्राउज़िंग {{minutes}} मिनट के लिए रोक दी है।',
+  parentResumedBrowsing:
+    '{{actorName}} ने इस बच्चे के डिवाइस पर ब्राउज़िंग का विराम खत्म कर दिया है।',
   deviceLocked: 'डिवाइस लॉक है',
 
   deviceUnlocked: 'डिवाइस अनलॉक है',

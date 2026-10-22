@@ -6,6 +6,7 @@ export const auth = {
   createAccountTitle: 'Tạo tài khoản phụ huynh',
   createAccountSubtitle:
     'Sử dụng email và mật khẩu để có thể đăng nhập trên mọi thiết bị về sau.',
+  joinKidGate: 'Tham gia KidGate',
   linkEmailTitle: 'Liên kết email và mật khẩu',
   linkEmailSubtitle:
     'Thêm phương thức đăng nhập dự phòng bằng email cho tài khoản phụ huynh này.',

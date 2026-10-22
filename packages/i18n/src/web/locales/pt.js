@@ -549,7 +549,6 @@ export default {
     attnBatteryLow: 'Bateria fraca ({{level}}%)',
     attnBatteryLowMeta:
       'As atualizações de localização podem parar se o celular desligar',
-    attnReview: 'Revisar',
     attnResend: 'Reenviar',
     attnHowToFix: 'Como resolver',
     attnUnlock: 'Desbloquear',
@@ -589,7 +588,7 @@ export default {
     limitsMax: 'Um aparelho guarda no máximo {{max}} apps limitados.',
     perDay: '{{value}}/dia',
     webActivityTitle: 'Atividade na web',
-    webActivitySub: 'Domínios mais visitados, últimos 30 dias',
+    webActivitySub: 'Domínios mais visitados, últimos 7 dias',
     webActivityEmpty: 'Ainda não há atividade na web.',
     inventoryEmpty: 'Este dispositivo ainda não publicou sua lista de aplicativos.',
     inventoryFirstScan:
@@ -615,8 +614,8 @@ export default {
     colChannel: 'Canal',
     colViews: 'Visualizações',
     filterRefusedTitle: 'O que o filtro recusou',
-    filterRefusedSub_one: '{{count}} consulta bloqueada, últimos 30 dias',
-    filterRefusedSub_other: '{{count}} consultas bloqueadas, últimos 30 dias',
+    filterRefusedSub_one: '{{count}} consulta bloqueada, últimos 7 dias',
+    filterRefusedSub_other: '{{count}} consultas bloqueadas, últimos 7 dias',
     filterHintIos:
       'Este iPhone ou iPad filtra apenas com o controle de conteúdo adulto da Apple. Atualize o KidGate nele e permita a VPN do KidGate para bloquear por categoria.',
     filterHintAndroid: 'As categorias são aplicadas pelo filtro DNS no aparelho.',

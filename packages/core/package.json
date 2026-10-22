@@ -204,6 +204,7 @@
     "./repositories/device": "./src/repositories/device.ts",
     "./repositories/deviceCredential": "./src/repositories/deviceCredential.ts",
     "./repositories/deviceRegistration": "./src/repositories/deviceRegistration.ts",
+    "./repositories/deviceRing": "./src/repositories/deviceRing.ts",
     "./repositories/family": "./src/repositories/family.ts",
     "./repositories/familyPlaces": "./src/repositories/familyPlaces.ts",
     "./repositories/familyReport": "./src/repositories/familyReport.ts",

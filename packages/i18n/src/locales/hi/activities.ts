@@ -22,19 +22,16 @@ export const activities = {
   emptyDescriptionDevice:
     'कोई अन्य डिवाइस चुनें या इस डिवाइस से लॉक, अनलॉक और SOS घटनाओं की प्रतीक्षा करें।',
 
-  guestEmptyTitle: 'आपकी गतिविधि',
+  guestEmptyTitle: 'आपके बच्चों की गतिविधि',
   guestEmptyDescription:
-    'बच्चे का डिवाइस कनेक्ट होने के बाद, लॉक, अनलॉक, SOS और ऐप से जुड़ी गतिविधियाँ यहाँ रीयल-टाइम में दिखाई देंगी।',
-  guestSignInButton: 'साइन इन करें',
-  guestCreateAccount: 'अभिभावक खाता बनाएँ',
+    'आपके बच्चे का डिवाइस कनेक्ट होने के बाद, लॉक, अनलॉक, SOS और ऐप खुलने, ब्लॉक होने, इंस्टॉल होने या हटाए जाने की जानकारी यहाँ तुरंत दिखेगी।',
   guestSubtitle: 'अपने बच्चे के डिवाइस की गतिविधि देखने के लिए साइन इन करें।',
 
-  guestPreviewHeading: 'आप क्या देखेंगे',
+  guestPreviewHeading: 'आपको कुछ ऐसा दिखेगा',
   guestPreviewLock: 'डिवाइस लॉक है',
   guestPreviewSos: 'SOS अलर्ट',
   guestPreviewScreenTime: 'स्क्रीन टाइम अपडेट',
-  guestPreviewHint:
-    'उदाहरण — डिवाइस कनेक्ट होने के बाद वास्तविक गतिविधियाँ दिखाई देंगी।',
+  guestPreviewHint: 'नमूना — डिवाइस कनेक्ट करते ही असली गतिविधियाँ यहाँ दिखने लगेंगी।',
 
   activityTypeLocked: 'लॉक',
   activityTypeUnlocked: 'अनलॉक',

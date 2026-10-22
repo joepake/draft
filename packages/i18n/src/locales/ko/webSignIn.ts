@@ -35,11 +35,7 @@ export const webSignIn = {
   alreadyUsed: '이미 사용한 코드입니다. 컴퓨터에서 새 코드를 표시하세요.',
   notFound: '유효하지 않은 코드입니다. 여섯 자리를 확인하고 다시 시도하세요.',
   failed: '요청을 완료하지 못했습니다. 다시 시도해 주세요.',
-  sessionsTitle: '변경할 수 있는 브라우저',
-  sessionsHint:
-    '이 브라우저들은 이 계정으로 웹 대시보드에 로그인되어 있으며 변경할 수 있습니다. 가족 정보만 볼 수 있는 브라우저는 여기에 표시되지 않습니다.',
-  sessionsEmpty:
-    '변경할 수 있는 브라우저가 없습니다. 브라우저를 허용하면 여기에 표시됩니다.',
+  sessionsTitle: '대시보드',
   sessionRow: '{{os}}의 {{browser}}',
   sessionRowUnknown: '웹 브라우저',
   sessionExpires: '{{date}}까지 변경할 수 있습니다',

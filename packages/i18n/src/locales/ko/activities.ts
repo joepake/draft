@@ -21,18 +21,16 @@ export const activities = {
   emptyDescriptionDevice:
     '다른 기기를 선택하거나 이 기기에서 잠금, 잠금 해제 및 SOS 이벤트가 발생할 때까지 기다려 주세요.',
 
-  guestEmptyTitle: '활동',
+  guestEmptyTitle: '자녀의 활동 기록',
   guestEmptyDescription:
-    '자녀 기기를 연결하면 잠금, 잠금 해제, SOS 및 앱 이벤트가 실시간으로 여기에 표시됩니다.',
-  guestSignInButton: '로그인',
-  guestCreateAccount: '부모 계정 만들기',
+    '자녀 기기를 연결하면 잠금과 잠금 해제, SOS, 앱 차단·설치·삭제 등이 일어나는 즉시 여기에 나타납니다.',
   guestSubtitle: '로그인하여 자녀 기기의 활동을 확인하세요.',
 
-  guestPreviewHeading: '표시되는 내용',
+  guestPreviewHeading: '확인할 수 있는 내용',
   guestPreviewLock: '기기 잠김',
   guestPreviewSos: 'SOS 알림',
   guestPreviewScreenTime: '스크린 타임 업데이트',
-  guestPreviewHint: '예시입니다. 기기를 연결하면 실제 이벤트가 표시됩니다.',
+  guestPreviewHint: '예시 화면입니다. 기기를 연결하면 실제 활동이 나타납니다.',
 
   activityTypeLocked: '잠금',
   activityTypeUnlocked: '잠금 해제',

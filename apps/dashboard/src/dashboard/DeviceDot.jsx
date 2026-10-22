@@ -2,6 +2,7 @@ import { useT } from '@kidgate/web-ui/useT';
 import { supportsLock } from '@kidgate/core/domain/controlSupport';
 import { getShownDeviceStatus } from '@kidgate/core/domain/deviceStatus';
 import { resolveLockEnforcement } from '@kidgate/core/domain/lockEnforcement';
+import { useActivityTranslate } from './activityCopy.js';
 
 /*
  * `parked` is muted, not critical: a parked device is quiet by design — the
@@ -13,13 +14,22 @@ export const STATUS_TONE = {
   offline: 'muted',
   locked: 'warning',
   parked: 'muted',
+  checking: 'muted',
 };
+
+/*
+ * `checking` is the app pack's word, the one the phone's chip says
+ * (`getDeviceStatusLabel`), so `statusLabel` reads it through `appT`; the
+ * rest are web keys.
+ */
+const CHECKING_KEY = 'family.deviceCheckingLabel';
 
 export const STATUS_KEY = {
   online: 'dash.statusOnline',
   offline: 'dash.statusOffline',
   locked: 'dash.statusLocked',
   parked: 'dash.statusPaused',
+  checking: CHECKING_KEY,
 };
 
 /**
@@ -55,6 +65,12 @@ export function statusLabelKey(status, device) {
   );
 }
 
+/** `statusLabelKey`, said through whichever pack holds the key. */
+export function statusLabel(status, device, t, appT) {
+  const key = statusLabelKey(status, device);
+  return key === CHECKING_KEY ? appT(key) : t(key);
+}
+
 /**
  * The dot that says whether one device is reachable.
  *
@@ -70,8 +86,9 @@ export function statusLabelKey(status, device) {
  */
 export default function DeviceDot({ device }) {
   const { t } = useT();
+  const appT = useActivityTranslate();
   const status = getShownDeviceStatus(device, Date.now());
-  const label = t(statusLabelKey(status, device));
+  const label = statusLabel(status, device, t, appT);
   return (
     <i
       className={`kid-dot tone-${STATUS_TONE[status] ?? STATUS_TONE.offline}`}

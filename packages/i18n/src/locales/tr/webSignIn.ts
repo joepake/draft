@@ -35,11 +35,7 @@ export const webSignIn = {
   alreadyUsed: 'Bu kod zaten kullanıldı. Bilgisayarında yeni bir kod göster.',
   notFound: 'Bu kod geçersiz. Altı karakteri kontrol edip tekrar dene.',
   failed: 'İstek tamamlanamadı. Lütfen tekrar dene.',
-  sessionsTitle: 'Değişiklik yapabilen tarayıcılar',
-  sessionsHint:
-    'Bu tarayıcılar web panelinde hesabınızla giriş yapmış durumda ve değişiklik yapabilir. Ailenizi yalnızca görüntüleyen bir tarayıcı burada listelenmez.',
-  sessionsEmpty:
-    'Değişiklik yapabilen tarayıcı yok. Bir tarayıcıya izin verdiğinizde burada görünür.',
+  sessionsTitle: 'Panel',
   sessionRow: '{{os}} üzerinde {{browser}}',
   sessionRowUnknown: 'Web tarayıcısı',
   sessionExpires: '{{date}} tarihine kadar değişiklik yapabilir',

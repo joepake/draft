@@ -463,6 +463,7 @@ const en = {
 
   'webFilterBlocker.awaitingApproval': 'Awaiting approval',
   'webFilterBlocker.configurationDisabled': 'Switched off',
+  'webFilterBlocker.privateDns': 'Private DNS set on the phone',
 
   'lock.inForce': 'In force',
   'lock.notApplied': 'Says not locked',
@@ -1074,6 +1075,7 @@ const vi = {
 
   'webFilterBlocker.awaitingApproval': 'Chờ duyệt',
   'webFilterBlocker.configurationDisabled': 'Bị tắt',
+  'webFilterBlocker.privateDns': 'Điện thoại đặt Private DNS riêng',
 
   'lock.inForce': 'Đang khóa',
   'lock.notApplied': 'Báo không khóa',

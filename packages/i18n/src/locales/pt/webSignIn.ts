@@ -36,11 +36,7 @@ export const webSignIn = {
   alreadyUsed: 'Esse código já foi usado. Mostre um novo no computador.',
   notFound: 'Código inválido. Confira os seis caracteres e tente de novo.',
   failed: 'Não foi possível concluir a solicitação. Tente novamente.',
-  sessionsTitle: 'Navegadores que podem fazer alterações',
-  sessionsHint:
-    'Estes navegadores estão conectados ao painel web com sua conta e podem fazer alterações. Um navegador que apenas mostra sua família não aparece na lista.',
-  sessionsEmpty:
-    'Nenhum navegador pode fazer alterações. Quando você autorizar um, ele aparecerá aqui.',
+  sessionsTitle: 'Painel',
   sessionRow: '{{browser}} em {{os}}',
   sessionRowUnknown: 'Navegador web',
   sessionExpires: 'Pode fazer alterações até {{date}}',

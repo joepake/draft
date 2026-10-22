@@ -100,9 +100,6 @@ export const family = {
 
   headerHintEmpty: 'إدارة أجهزة أطفالك وحمايتها',
 
-  headerHintGuest:
-    'استكشف التطبيق بحرية، وسجّل الدخول عندما تكون مستعدًا لربط الأجهزة.',
-
   familyCardManage: 'إدارة العائلة والوالدين والأجهزة',
 
   familyCardJoined: 'انضممت كأحد الوالدين',
@@ -154,6 +151,7 @@ export const family = {
   healthOffline: 'غير متصل',
 
   devicePausedLabel: 'متوقف مؤقتًا',
+  deviceCheckingLabel: 'جارٍ التحقق…',
 
   devicePausedHint: 'متوقف مؤقتًا في الخطة المجانية — كل القواعد لا تزال سارية',
   // What Paused means, said where the choice is made: the choose-a-device sheet on
@@ -237,26 +235,25 @@ export const family = {
   switchToJoinMessage:
     'سيؤدي هذا إلى إزالة عائلتك الفارغة حتى تتمكن من الانضمام إلى عائلة أخرى باستخدام رمز الدعوة. إذا كان هناك جهاز طفل مرتبط بالفعل، فيجب معالجة ذلك أولاً.',
 
-  guestEmptyTitle: 'ابدأ عائلتك من هنا',
+  guestEmptyTitle: 'كل ما يخص عائلتك يبدأ من هنا',
 
   guestEmptyDescription:
     'سجّل الدخول لربط أجهزة أطفالك، وتلقي التنبيهات، ووضع حدود صحية لوقت الشاشة.',
 
   guestConnectButton: 'تسجيل الدخول',
 
-  guestCreateAccount: 'إنشاء حساب ولي أمر',
-
   guestBenefitLimitsTitle: 'وقت الشاشة وحدود التطبيقات',
 
-  guestBenefitLimitsBody: 'اقفل الأجهزة وحدد جداول يومية.',
+  guestBenefitLimitsBody:
+    'اضبط الحد اليومي وساعات الحظر وحدود التطبيقات، أو اقفل الجهاز فورًا.',
 
   guestBenefitAlertsTitle: 'تنبيهات SOS والنشاط',
 
-  guestBenefitAlertsBody: 'تلقَّ إشعارًا فورًا عند الحاجة إلى انتباهك.',
+  guestBenefitAlertsBody: 'اعرف فورًا حين يحدث ما يستدعي انتباهك.',
 
   guestBenefitLocationTitle: 'الموقع والاطمئنان',
 
-  guestBenefitLocationBody: 'اعرف مكان طفلك واطلب منه تأكيد أنه بخير.',
+  guestBenefitLocationBody: 'اعرف أين طفلك، واطلب منه أن يؤكد لك أنه بخير.',
 
   stepsHeading: 'البدء',
 
@@ -402,6 +399,12 @@ export const family = {
 
   sos: 'SOS',
 
+  browsingPaused: 'تم إيقاف التصفح مؤقتًا',
+  browsingResumed: 'تم استئناف التصفح',
+  parentPausedBrowsing:
+    'قام {{actorName}} بإيقاف التصفح مؤقتًا على جهاز الطفل هذا لمدة {{minutes}} دقيقة.',
+  parentResumedBrowsing:
+    'قام {{actorName}} بإنهاء الإيقاف المؤقت للتصفح على جهاز الطفل هذا.',
   deviceLocked: 'الجهاز مقفل',
 
   deviceUnlocked: 'تم إلغاء قفل الجهاز',

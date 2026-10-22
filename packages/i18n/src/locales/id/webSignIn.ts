@@ -36,11 +36,7 @@ export const webSignIn = {
   alreadyUsed: 'Kode sudah dipakai. Tampilkan kode baru di komputer.',
   notFound: 'Kode tidak valid. Periksa enam karakter lalu coba lagi.',
   failed: 'Tidak dapat menyelesaikan permintaan. Coba lagi.',
-  sessionsTitle: 'Browser yang dapat membuat perubahan',
-  sessionsHint:
-    'Browser ini masuk ke dasbor web dengan akun Anda dan dapat membuat perubahan. Browser yang hanya melihat keluarga Anda tidak tercantum di sini.',
-  sessionsEmpty:
-    'Tidak ada browser yang dapat membuat perubahan. Saat Anda mengizinkan satu browser, browser itu akan muncul di sini.',
+  sessionsTitle: 'Dasbor',
   sessionRow: '{{browser}} di {{os}}',
   sessionRowUnknown: 'Browser web',
   sessionExpires: 'Dapat membuat perubahan hingga {{date}}',

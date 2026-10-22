@@ -22,6 +22,7 @@ import { createNotificationPrefsRepository } from '@kidgate/core/repositories/no
 import { createAccountDeletionRepository } from '@kidgate/core/repositories/accountDeletion';
 import { createWebHistoryRepository } from '@kidgate/core/repositories/webHistory';
 import { createWebSessionRepository } from '@kidgate/core/repositories/webSession';
+import { createDeviceRingRepository } from '@kidgate/core/repositories/deviceRing';
 import { createVideoHistoryRepository } from '@kidgate/core/repositories/videoHistory';
 import { createAppFlagDismissalRepository } from '@kidgate/core/repositories/appFlagDismissal';
 import {
@@ -114,6 +115,8 @@ export const parentInviteRepository = createParentInviteRepository({ api });
  * refused — the card is not drawn for one (`WebSessionsCard`).
  */
 export const webSessionRepository = createWebSessionRepository({ api });
+/* "Ring device" asks for the ID token alone, so a read-only sign-in rings too. */
+export const deviceRingRepository = createDeviceRingRepository({ api });
 export const leaderboardRepository = createLeaderboardRepository({ db });
 /** `config/setupGuides` — the User Guide's videos ride the same document as the wizard's. */
 export const fetchGuideConfig = () => fetchSetupGuides(db);

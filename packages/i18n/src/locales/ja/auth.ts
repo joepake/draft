@@ -6,6 +6,7 @@ export const auth = {
   createAccountTitle: '保護者アカウントを作成',
   createAccountSubtitle:
     'メールとパスワードを設定しておくと、後でどのデバイスからでもサインインできます。',
+  joinKidGate: 'KidGateをはじめる',
   linkEmailTitle: 'メールとパスワードを連携',
   linkEmailSubtitle: 'この保護者アカウントに予備のメールサインインを追加します。',
   forgotPasswordTitle: 'パスワードをリセット',

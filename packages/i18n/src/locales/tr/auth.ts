@@ -6,6 +6,7 @@ export const auth = {
   createAccountTitle: 'Ebeveyn hesabı oluştur',
   createAccountSubtitle:
     'Daha sonra herhangi bir cihazdan giriş yapabilmek için bir e-posta ve şifre kullanın.',
+  joinKidGate: 'KidGate’e katılın',
   linkEmailTitle: 'E-posta ve şifreyi bağla',
   linkEmailSubtitle: 'Bu ebeveyn hesabına yedek bir e-posta girişi ekleyin.',
   forgotPasswordTitle: 'Şifreyi sıfırla',

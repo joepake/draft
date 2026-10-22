@@ -33,6 +33,9 @@ export const API_ERROR_CODE_MESSAGES: Readonly<Record<string, string>> = {
    * daily.
    */
   'location/daily-limit-reached': 'errors.locationDailyLimitFree',
+  // A parked device is refused before the allowance is counted
+  // (`docs/TRIAL_TO_FREE.md` C6); the sentence is the location card's own.
+  'location/device-parked': 'location.cardPaused',
   // No longer sent since 2026-09-27 — a joiner's own plan stopped mattering —
   // but a deployment older than that still answers with it.
   'billing/premium-required-join': 'errors.trialEndedCannotJoinFamily',

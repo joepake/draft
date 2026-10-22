@@ -70,10 +70,9 @@ export const settings = {
   themeStyleLabel: 'Phong cách giao diện',
   themeColorLabel: 'Màu giao diện',
   signOutButton: 'Đăng xuất',
-  signInButton: 'Đăng nhập',
   switchToChildDevice: 'Chuyển điện thoại này thành thiết bị của trẻ',
   guestAccountHint:
-    'Đăng nhập để đồng bộ thiết bị, cảnh báo và gói dịch vụ của gia đình.',
+    'Đăng nhập để giữ thiết bị, cảnh báo và gói của gia đình trên mọi máy bạn dùng.',
   reportModalTitle: 'Báo cáo sự cố',
   reportMessageLabel: 'Vui lòng mô tả vấn đề bạn đang gặp phải.',
   reportMessagePlaceholder: 'Mô tả lỗi hoặc vấn đề…',

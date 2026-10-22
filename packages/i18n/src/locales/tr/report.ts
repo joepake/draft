@@ -134,18 +134,16 @@ export const report = {
   // drawn from constants, and a week nobody measured has to say so.
   guestPreviewHeading: 'Görecekleriniz',
   guestPreviewHint: 'Örnek — gerçek rakamlar bir cihaz bağladığınızda görünür',
-  guestTitle: 'Hafta nereye gitti, görün',
+  guestTitle: 'Haftalık ekran süresinin nereye gittiğini görün',
   guestDescription:
-    'Bugünü normal bir günle ölçmek, çocuklarınızı yan yana karşılaştırmak ve Premium ile her pazartesi yazılı bir rapor almak için giriş yapın.',
-  guestBenefitTrendTitle: 'Bugün, normale karşı',
+    'Bugünü normal bir günle kıyaslamak ve çocuklarınızı yan yana görmek için giriş yapın. Premium ile her pazartesi yazılı bir rapor da alırsınız.',
+  guestBenefitTrendTitle: 'Bugün, normal bir güne göre',
   guestBenefitTrendBody:
-    'Tek başına bir rakam hiçbir şey söylemez. Bugün her zaman ailenizin kendi günlük ortalamasına karşı çizilir.',
-  guestBenefitChildTitle: 'Her çocuk, yan yana',
+    'Tek başına bir rakam hiçbir şey ifade etmez. Bugün, ailenizin kendi günlük ortalamasıyla karşılaştırılır.',
+  guestBenefitChildTitle: 'Çocuklarınızı yan yana görün',
   guestBenefitChildBody:
-    'Her çocuğun günden aldığı pay, kendi renginde, kullandığı tüm cihazlar boyunca.',
+    'Her çocuğun ekran süresi kendi renginde gösterilir ve kullandığı tüm cihazları kapsar.',
   guestBenefitWeeklyTitle: 'Premium ile her pazartesi bir rapor',
   guestBenefitWeeklyBody:
-    'Ne değişti, hangi uygulamalar arttı ve geç saatler — bir yıl boyunca saklanır.',
-  guestSignInButton: 'Giriş yap',
-  guestCreateAccount: 'Ebeveyn hesabı oluştur',
+    'Değişenler, kullanımı artan uygulamalar ve gece geç saatlerdeki kullanım — bir yıl boyunca saklanır.',
 } as const;

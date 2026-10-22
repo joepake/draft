@@ -554,7 +554,6 @@ export default {
     attnBatteryLow: 'Batterie faible ({{level}} %)',
     attnBatteryLowMeta:
       'Les mises à jour de position peuvent s’arrêter si le téléphone s’éteint',
-    attnReview: 'Examiner',
     attnResend: 'Renvoyer',
     attnHowToFix: 'Comment corriger',
     attnUnlock: 'Déverrouiller',
@@ -594,7 +593,7 @@ export default {
     limitsMax: 'Un appareil ne peut pas dépasser {{max}} applis limitées.',
     perDay: '{{value}}/jour',
     webActivityTitle: 'Activité web',
-    webActivitySub: 'Domaines les plus visités, 30 derniers jours',
+    webActivitySub: 'Domaines les plus visités, 7 derniers jours',
     webActivityEmpty: 'Aucune activité web pour l’instant.',
     inventoryEmpty: 'Cet appareil n’a pas encore publié sa liste d’applications.',
     inventoryFirstScan:
@@ -620,8 +619,8 @@ export default {
     colChannel: 'Chaîne',
     colViews: 'Vues',
     filterRefusedTitle: 'Ce que le filtre a refusé',
-    filterRefusedSub_one: '{{count}} requête bloquée, 30 derniers jours',
-    filterRefusedSub_other: '{{count}} requêtes bloquées, 30 derniers jours',
+    filterRefusedSub_one: '{{count}} requête bloquée, 7 derniers jours',
+    filterRefusedSub_other: '{{count}} requêtes bloquées, 7 derniers jours',
     filterHintIos:
       'Cet iPhone ou iPad ne filtre qu’avec le contrôle des contenus pour adultes d’Apple. Mettez KidGate à jour sur l’appareil et autorisez le VPN de KidGate pour bloquer par catégorie.',
     filterHintAndroid:

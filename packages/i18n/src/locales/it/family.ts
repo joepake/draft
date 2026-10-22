@@ -107,9 +107,6 @@ export const family = {
 
   headerHintEmpty: 'Gestisci e proteggi i dispositivi dei tuoi figli',
 
-  headerHintGuest:
-    'Esplora liberamente: accedi quando sei pronto per collegare i dispositivi.',
-
   familyCardManage: 'Gestisci famiglia, genitori e dispositivi',
 
   familyCardJoined: 'Fai parte della famiglia come genitore',
@@ -150,6 +147,7 @@ export const family = {
   healthNeedsSetup: 'Configurazione richiesta',
   healthOffline: 'Offline',
   devicePausedLabel: 'In pausa',
+  deviceCheckingLabel: 'Controllo…',
   devicePausedHint: 'In pausa con il piano gratuito: tutte le regole restano attive',
   // What Paused means, said where the choice is made: the choose-a-device sheet on
   // both consoles. Checked against every agent 2026-09-28 — enforcement never
@@ -225,28 +223,27 @@ export const family = {
   switchToJoinMessage:
     'La tua famiglia vuota verrà rimossa così potrai unirti a un’altra utilizzando un codice di invito. Se è già collegato un dispositivo del bambino, dovrai prima gestirlo.',
 
-  guestEmptyTitle: 'La tua famiglia inizia qui',
+  guestEmptyTitle: 'Il punto di partenza per la tua famiglia',
 
   guestEmptyDescription:
-    'Accedi per collegare i dispositivi dei tuoi figli, ricevere avvisi e impostare limiti salutari per il tempo di utilizzo.',
+    'Accedi per collegare i dispositivi dei tuoi figli, ricevere avvisi e impostare limiti equilibrati al tempo di utilizzo.',
 
   guestConnectButton: 'Accedi',
 
-  guestCreateAccount: 'Crea un account genitore',
-
   guestBenefitLimitsTitle: 'Tempo di utilizzo e limiti delle app',
 
-  guestBenefitLimitsBody: 'Blocca i dispositivi e imposta programmi giornalieri.',
+  guestBenefitLimitsBody:
+    'Imposta un Limite giornaliero, gli Orari di blocco e i Limiti app, oppure blocca subito un dispositivo.',
 
-  guestBenefitAlertsTitle: 'Avvisi SOS e attività',
+  guestBenefitAlertsTitle: 'Avvisi SOS e di attività',
 
   guestBenefitAlertsBody:
-    'Ricevi una notifica immediata quando è richiesta la tua attenzione.',
+    'Ricevi un avviso appena qualcosa richiede la tua attenzione.',
 
   guestBenefitLocationTitle: 'Posizione e Check-in',
 
   guestBenefitLocationBody:
-    'Scopri dove si trova tuo figlio e chiedigli di confermare che è al sicuro.',
+    'Scopri dove si trova tuo figlio e chiedigli di confermare di essere al sicuro.',
 
   stepsHeading: 'Primi passi',
 
@@ -385,6 +382,12 @@ export const family = {
 
   sos: 'SOS',
 
+  browsingPaused: 'Navigazione sospesa',
+  browsingResumed: 'Navigazione ripresa',
+  parentPausedBrowsing:
+    '{{actorName}} ha sospeso la navigazione su questo dispositivo del bambino per {{minutes}} min.',
+  parentResumedBrowsing:
+    '{{actorName}} ha terminato la sospensione della navigazione su questo dispositivo del bambino.',
   deviceLocked: 'Dispositivo bloccato',
 
   deviceUnlocked: 'Dispositivo sbloccato',

@@ -135,20 +135,18 @@ export const report = {
   // The signed-out reports tab: a sample week, what the tab is for, and the
   // two ways in. `guestPreviewHint` is not decoration — the chart above it is
   // drawn from constants, and a week nobody measured has to say so.
-  guestPreviewHeading: '표시되는 내용',
-  guestPreviewHint: '예시입니다. 기기를 연결하면 실제 수치가 표시됩니다',
-  guestTitle: '이번 주가 어디로 갔는지 보기',
+  guestPreviewHeading: '확인할 수 있는 내용',
+  guestPreviewHint: '예시 화면입니다. 기기를 연결하면 실제 수치가 나타납니다.',
+  guestTitle: '한 주 동안 무엇에 시간을 썼는지 확인하세요',
   guestDescription:
-    '로그인하면 오늘을 평소와 비교하고, 아이들을 나란히 견줄 수 있습니다. Premium에서는 매주 월요일에 리포트도 받아 볼 수 있습니다.',
-  guestBenefitTrendTitle: '오늘, 평소와 견주어',
+    '로그인하면 오늘 사용 시간을 평소와 비교하고, 자녀별 사용 시간을 나란히 볼 수 있습니다. Premium을 이용하면 매주 월요일 리포트도 받아 볼 수 있습니다.',
+  guestBenefitTrendTitle: '오늘을 평소와 비교',
   guestBenefitTrendBody:
-    '숫자 하나만으로는 알 수 없습니다. 오늘은 늘 가족의 하루 평균과 나란히 그려집니다.',
-  guestBenefitChildTitle: '아이마다 나란히',
+    '숫자만으로는 많은지 적은지 알 수 없습니다. 오늘 사용 시간을 가족의 하루 평균과 나란히 보여 줍니다.',
+  guestBenefitChildTitle: '자녀별로 나란히 보기',
   guestBenefitChildBody:
-    '아이가 쓰는 모든 기기를 합쳐, 하루 중 각자의 몫을 고유한 색으로 보여 줍니다.',
+    '모든 기기 사용량을 합쳐, 하루 중 자녀별 비중을 각자의 색으로 보여 줍니다.',
   guestBenefitWeeklyTitle: '매주 월요일 리포트(Premium)',
   guestBenefitWeeklyBody:
-    '무엇이 달라졌는지, 어떤 앱이 늘었는지, 늦은 밤은 며칠이었는지 — 1년간 보관됩니다.',
-  guestSignInButton: '로그인',
-  guestCreateAccount: '부모 계정 만들기',
+    '달라진 점, 사용이 늘어난 앱, 밤늦게까지 사용한 날을 담아 1년간 보관합니다.',
 } as const;

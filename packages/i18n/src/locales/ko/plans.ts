@@ -9,7 +9,7 @@ export const plans = {
   pillTrialActiveFallback: '체험 진행 중',
   statusTrialEndedTitle: '체험 종료',
   statusTrialEndedSubtitle:
-    '일일 제한, 차단 시간, 차단된 앱, 위치, 웹 필터 스위치는 무료로 계속 사용할 수 있습니다. 실시간 업데이트, 기록, 알림, 리포트를 쓰려면 구독하세요.',
+    '규칙은 무료로 계속 작동합니다. 실시간 업데이트, 기록, 알림, 리포트를 쓰려면 구독하세요.',
   pillTrialEnded: '체험 종료',
   statusStartTrialTitle: '체험 시작하기',
   statusStartTrialSubtitle:
@@ -64,7 +64,7 @@ export const plans = {
   compareActivityFeedPremium: '30일',
   compareChildReport: '자녀별 리포트',
   compareIncluded:
-    '두 플랜 모두 한 가족 안의 iPhone·Android·Mac·Windows에서 일일 제한, 차단 시간, 차단된 앱, 새 앱 승인, 웹 필터, 기기 잠금, SOS, 시간 연장 요청, 보상 과제를 제공하며, 웹 대시보드와 Android·Mac·Windows에서 쓸 수 있는 앱 시간 제한도 포함합니다. Android TV와 Chromebook도 지원하지만 제공되는 제어 기능은 더 적습니다.',
+    '두 플랜 모두 일일 제한, 차단 시간, 앱 시간 제한, 기기 잠금, SOS, 시간 연장 요청, 보상 과제, 웹 대시보드를 포함합니다.',
   sectionWhyPremium: 'Premium이 더하는 것',
   sectionWhyPremiumSubtitle:
     '모든 규칙은 무료에서도 계속 작동합니다. Premium은 무엇을, 얼마나 빨리 볼 수 있는지를 더합니다.',
@@ -116,12 +116,10 @@ export const plans = {
   viewPlans: '플랜 보기',
   viewFamilyPlanStatus: '요금제 상태 보기',
   onlyOwnerCanSubscribe: '가족 소유자만 구독하거나 구매를 복원할 수 있습니다.',
-  memberSubscriptionNotice:
-    '하나의 요금제로 온 가족을 이용할 수 있으며, 결제는 소유자만 합니다. 가족이 체험 중인지 구독 중인지 확인할 수 있습니다.',
   memberTrialActiveSubtitle:
     '이 가족은 체험 중입니다. 체험이 끝나도 모든 규칙은 모든 기기에서 계속 작동하고 한 기기는 계속 보고합니다. 소유자가 구독하면 실시간 활동, 기록, 모든 기기의 보고를 이용할 수 있습니다.',
   memberTrialEndedSubtitle:
-    '이 가족의 체험이 끝났습니다. 일일 제한, 차단 시간, 차단된 앱, 위치, 웹 필터 스위치는 계속 사용할 수 있습니다. 실시간 업데이트, 기록, 알림은 가족 관리자에게 구독을 요청하세요.',
+    '가족 규칙은 계속 작동합니다. 실시간 업데이트, 기록, 알림은 가족 관리자에게 구독을 요청하세요.',
   memberSetupTrialSubtitle:
     '소유자가 부모 기기와 자녀 기기를 연결하면 체험이 시작됩니다.',
   premiumActivatedTitle: 'Premium이 활성화되었습니다',
@@ -172,7 +170,7 @@ export const plans = {
   sectionFreePlan: '구독하지 않는 경우',
   devicesUnlimited: '모든 자녀 기기에서 보고',
   featureFootnotePlatforms:
-    '일부 기능은 플랫폼이 허용하는 범위에 따라 달라져, 모든 기기에서 사용할 수 있는 것은 아닙니다.',
+    '플랫폼별 제한으로 인해 일부 기능은 모든 기기에서 사용하지 못할 수 있습니다.',
   sectionPlatforms: 'KidGate를 쓸 수 있는 기기',
   platformIos: 'iPhone·iPad',
   platformIosDetail: '부모 또는 자녀 기기 · iOS 16 이상',

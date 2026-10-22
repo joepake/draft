@@ -50,9 +50,9 @@ export const userGuide = {
       tip: 'Set the Parent PIN early. You need it to change sensitive settings and unlock controls on the child device.',
       steps: {
         '1': 'Install KidGate on your device. Open the app and choose This is a parent device.',
-        '2': 'Sign in with Google or Apple, or create an email account.',
+        '2': 'Select [[Join KidGate]], then sign in with Google or Apple, or create an email account.',
         '3': 'In [[Family]], select [[Create family]] and name your family (for example, “Nguyen family”). This name appears when other parents join. If another parent already created your family, select [[Join family]] instead.',
-        '4': 'Set a Parent PIN (6 digits) in Settings, under Security. Memorize it or store it somewhere safe, and do not share it with children.',
+        '4': 'If you are the family owner, set a Parent PIN (6 digits) in Settings, under Security. Memorize it or store it somewhere safe, and do not share it with children.',
         '5': 'Recommended: turn on App Lock and biometric unlock in Settings so others cannot open the parent app on your device.',
         '6': 'Open [[Family]] and tap the scan icon ([[Scan a code]]). The camera opens right away: scan the QR code on the child device, or select [[Enter code manually]] and type the code.',
         '7': 'After the child device connects, KidGate asks who uses it: pick your child (or add one), or [[No one]] for a shared device. Then open your child in Family (or the device, if no child is assigned to it). Set the Daily Limit and Blocked Hours and complete permissions together with your child.',
@@ -74,7 +74,7 @@ export const userGuide = {
     connectChild: {
       title: 'Connect a child’s phone or tablet',
       summary: 'Pair a new child device to your family with a QR code or a code.',
-      tip: 'Codes expire. If pairing fails, select New code on the child device and try again.',
+      tip: 'Codes expire. If pairing fails, select New code on the child device and try again. The free plan reports from one device and lets you tighten rules only there, so another device you pair starts paused.',
       steps: {
         '1': 'On the child device: open KidGate and choose [[This is a child device]]. Leave the QR code screen visible.',
         '2': 'On the parent device: open [[Family]] and tap the scan icon ([[Scan a code]]).',
@@ -82,7 +82,7 @@ export const userGuide = {
         '4': 'Or use the code: select [[Enter code manually]], type the 6 characters shown on the child device, then continue.',
         '5': 'On the child device, read the confirmation screen carefully. Select [[Yes, connect]] only if the parent name is correct.',
         '6': 'Wait for the parent device to confirm the connection. The family owner is then asked who uses the new device: pick a child, or [[No one]] for a shared device. The device appears under [[Family]].',
-        '7': 'Open the new device and check that [[Last active]] is updating. If it stays offline, reopen KidGate on the child device and check the network connection.',
+        '7': 'Open the new device and check that it shows a [[Last active]] time (Last connected on an iPhone). Online means someone used the device in the last 10 minutes, so a device nobody is using reads Offline while it is still connected. If no time appears, reopen KidGate on the child device and check the network connection.',
         '8': 'Next, grant permissions on the child device (see the App permissions group). Controls will not work fully until those permissions are on.',
       },
     },
@@ -98,8 +98,8 @@ export const userGuide = {
         '3': 'Open KidGate on the computer. It shows a QR code and a 6-character code; no sign-in is needed. If its window is closed, click the KidGate icon in the menu bar (Mac) or the notification area (Windows).',
         '4': 'On your device, open [[Family]], tap the scan icon ([[Scan a code]]), and scan the QR code — or select [[Enter code manually]] and type the code.',
         '5': 'On the computer, check the parent name and select [[Yes, connect]].',
-        '6': 'Work through [[Finish setting up this device]]. On a Mac, select [[Open Settings]] next to [[Approve web filtering]] and turn KidGate on in the page that opens — the Web Filter does not run until you do. Select [[Allow]] for Location and Camera.',
-        '7': 'Back on your device, choose which child uses the computer. Blocked apps are chosen on the computer itself, behind the Parent PIN ([[Choose apps to block]]).',
+        '6': 'Work through [[Finish setting up this device]]. On a Mac, select [[Open Settings]] next to [[Approve web filtering]] and turn KidGate on in the page that opens — the Web Filter does not run until you do. On a Mac, select [[Allow]] for Location and Camera. On Windows, turn KidGate on for both in Settings, under Privacy & security, if the step asks you to.',
+        '7': 'Back on your device, the family owner chooses which child uses the computer. Blocked apps are chosen on the computer itself, behind the Parent PIN ([[Choose apps to block]]).',
       },
     },
     updateComputer: {
@@ -128,9 +128,9 @@ export const userGuide = {
         '2': 'Open KidGate on the TV. It shows a QR code and a 6-character code; no sign-in is needed.',
         '3': 'On your device, open [[Family]], tap the scan icon ([[Scan a code]]), and scan the QR code on the TV — or select [[Enter code manually]] and type the code.',
         '4': 'The TV connects on its own within a few seconds. There is nothing to confirm with the remote.',
-        '5': 'Follow [[Set up protection]] on the TV: select [[Open Settings]] to turn on Accessibility, Usage access and Display over other apps, then approve the VPN connection so the Web Filter can run.',
+        '5': 'Follow [[Set up protection]] on the TV: select [[Agree]] to turn on Accessibility, [[Open Settings]] for Usage access and Display over other apps, then [[Enable VPN]] and approve the connection so the Web Filter can run.',
         '6': 'If a setting does not stay on, restart the TV and try again. You can reopen [[Set up protection]] from KidGate’s main screen on the TV.',
-        '7': 'Back on your device, choose which child uses the TV. Blocked apps are chosen on the TV itself, behind the Parent PIN.',
+        '7': 'Back on your device, the family owner chooses which child uses the TV. Blocked apps are chosen on the TV itself, behind the Parent PIN.',
       },
     },
     connectChrome: {
@@ -144,8 +144,8 @@ export const userGuide = {
         '2': 'Select the KidGate icon in the Chrome toolbar. If you do not see it, pin it from the Extensions (puzzle piece) menu. The pop-up shows a QR code and a 6-character code; keep it open while you pair.',
         '3': 'On your device, open [[Family]], tap the scan icon ([[Scan a code]]), and scan the QR code — or select [[Enter code manually]] and type the code.',
         '4': 'In the KidGate pop-up, check the parent name and select [[Yes, connect]].',
-        '5': 'Back on your device, choose which child uses the extension, then turn on the Web Filter for it. Until then, the extension shows [[Inactive]].',
-        '6': 'Optional: to see which videos are watched, open [[Videos watched]] and turn on [[Record watched videos]] for the extension.',
+        '5': 'Back on your device, the family owner chooses which child uses the extension; then turn on the Web Filter for it. Until then, the extension shows [[Inactive]].',
+        '6': 'Optional, with Premium: to see which videos are watched, open [[Videos watched]] and turn on [[Record watched videos]] for the extension.',
       },
     },
     inviteParent: {
@@ -154,8 +154,8 @@ export const userGuide = {
         'Let a second parent join the same family and manage the same child devices.',
       tip: 'Only the family owner can approve join requests. Approve promptly, as requests can expire. A family can have up to 3 parents on the free plan and during the trial, and up to 6 with Premium.',
       steps: {
-        '1': 'On the family owner device, open Family, tap +, and choose Invite parent.',
-        '2': 'If you have not created a family name yet, enter one and select Create family.',
+        '1': 'On the family owner device, open Family. If your family has no name yet, tap +, choose Create family, and name it.',
+        '2': 'Tap + and choose Invite parent.',
         '3': 'Show the invite QR code to the other parent, or share the invite code with them.',
         '4': 'On the other parent device: open KidGate as a parent, open Family, and tap the scan icon (Scan a code). Then scan the invite QR code or enter the code.',
         '5': 'Back on the owner device, open the pending request and select Approve. Decline if you do not recognize the person.',
@@ -180,12 +180,12 @@ export const userGuide = {
         'Give a device a name everyone recognizes, or disconnect one your child no longer uses.',
       keywords:
         'unpair, disconnect, delete device, old phone, new phone, sold, change name, reset',
-      tip: 'Only the family owner can rename or remove devices. Removing a device cannot be undone: its time requests and activity history are deleted. To protect it again, pair it as a new device.',
+      tip: 'Only the family owner can rename or remove devices. Removing a device cannot be undone: its screen time, location, web and video history, activity, app list, SOS alerts, Check-Ins, requests and reward tasks are deleted. To protect it again, pair it as a new device.',
       steps: {
         '1': 'To rename a device, open it from [[Family]] or from your child, then select [[Edit]] next to its name.',
         '2': 'Enter a name every parent will recognize at a glance, then save.',
         '3': 'To remove a device, open it, select [[Remove device]] at the bottom of its screen, then confirm. On the family card’s [[Child devices]] tab, you can also swipe left on a device.',
-        '4': 'The device leaves your family, and KidGate on that device shows that it was removed.',
+        '4': 'The device leaves your family. A phone shows that it was removed; a computer, a TV or the Chrome extension goes back to its pairing screen.',
         '5': 'To use the device again, for example after a reset or when it passes to another child, pair it as a new device: open [[Family]] and tap the scan icon ([[Scan a code]]).',
       },
     },
@@ -197,14 +197,14 @@ export const userGuide = {
         'accessibility, usage access, display over other apps, notifications, device admin, uninstall protection, microphone, vpn, grant',
       tip: 'Completeness matters more than order. Do every step the wizard offers, optional ones included, before you rely on locking or Blocked Hours. A step you skip stays on the Status screen until you do it.',
       steps: {
-        '1': 'Open KidGate on the child device and go to [[Status]]. On the [[Finish setup with a parent]] card, select [[Continue setup]]. [[Set up protection]] then walks through the permissions one at a time; the steps below describe each one.',
-        '2': '[[Notifications]]: select [[Allow]]. KidGate needs this device’s notifications for time approvals and reminders.',
-        '3': '[[Usage access]]: open the system screen, find KidGate, and turn it on. This is required for screen time tracking and limits.',
-        '4': '[[Display over other apps]]: allow KidGate. This is required so the lock screen can appear above other apps.',
-        '5': '[[Accessibility]] lock helper: read the disclosure and select [[Agree]]; it opens the Accessibility page. If a list opens, find KidGate under [[Installed / Downloaded apps]], turn it on, and select [[Allow]] on Android’s confirmation. This keeps the lock enforced.',
+        '1': 'Open KidGate on the child device and go to [[Status]]. On the [[Finish setup with a parent]] card, select [[Continue setup]] (once the must-have steps are done, the card reads [[Core protection is on]], with [[Strengthen it now]]). [[Set up protection]] then walks through the permissions one at a time, in the order below.',
+        '2': '[[Usage access]]: open the system screen, find KidGate, and turn it on. This is required for screen time tracking and limits.',
+        '3': '[[Accessibility]] lock helper: read the disclosure and select [[Agree]]; it opens the Accessibility page. If a list opens, find KidGate under [[Installed / Downloaded apps]], turn it on, and select [[Allow]] on Android’s confirmation. This keeps the lock enforced.',
+        '4': '[[Display over other apps]]: allow KidGate, so the lock screen can appear above other apps. Then [[Notifications]]: select [[Allow]]. KidGate needs this device’s notifications for time approvals and reminders.',
+        '5': '[[Location]]: choose “Allow all the time”, or the map only updates while KidGate is open. If the Web Filter is on, the next step asks for its VPN: select [[Enable VPN]] and approve Android’s request.',
         '6': '[[Unrestricted battery]]: select [[Allow]] when prompted. If no prompt appears, open [[App info]], then [[Battery]], and choose [[Unrestricted]].',
         '7': '[[Alarms & reminders]]: allow this so Blocked Hours start and end on time. Then [[Prevent uninstall]]: select [[Allow]], then Activate on Android’s confirmation screen. Removing KidGate then means turning this off first, and a parent is alerted.',
-        '8': '[[Location]]: choose “Allow all the time”, or the map only updates while KidGate is open. [[Camera]] (for Check-In and SOS photos) and the microphone (for the SOS sound): allow them while using the app. When the wizard shows [[All set]], setup is done.',
+        '8': '[[Message Alerts]]: select [[Allow notification access]] and turn KidGate on in the list that opens; it only matters once a parent turns Message Alerts on. Then [[Camera]] (for Check-In and SOS photos) and the microphone (for the SOS sound): allow them while using the app. When the wizard shows [[All set]], setup is done.',
       },
     },
     iosScreenTime: {
@@ -212,9 +212,9 @@ export const userGuide = {
       summary:
         'Allow App & Website Usage so locking, schedules, and app selection can work.',
       keywords: 'screen time, family controls, iphone, ipad, authorize',
-      tip: 'If the Allow button is missing, open iOS Settings, go to Screen Time, and make sure Screen Time is enabled on the child device first.',
+      tip: 'If authorization fails, KidGate says why: the device needs a passcode, another app already controls Screen Time, or a restriction stops KidGate from using it. Fix that in iOS Settings, then try again.',
       steps: {
-        '1': 'Open KidGate on the child device and go to [[Status]]. On the [[Finish setup with a parent]] card, select [[Continue setup]].',
+        '1': 'Open KidGate on the child device and go to [[Status]]. On the [[Finish setup with a parent]] card, select [[Continue setup]] (once the must-have steps are done, the card reads [[Core protection is on]], with [[Strengthen it now]]).',
         '2': 'In [[Set up protection]], select [[Allow App & Website Usage]].',
         '3': 'In the system dialog, select [[Allow]]. Do not dismiss the dialog without choosing.',
         '4': 'Return to KidGate. The wizard moves on to the next step once authorization succeeds.',
@@ -231,25 +231,25 @@ export const userGuide = {
         'xiaomi, samsung, oppo, vivo, huawei, realme, battery saver, autostart, stops working, killed in background',
       tip: 'After changing battery rules, restart the child device once, reopen KidGate, then test locking from the parent device.',
       steps: {
-        '1': 'Open KidGate, go to [[Status]], and find the [[Allow autostart]] step. It appears only on devices whose manufacturer needs it.',
+        '1': 'Open KidGate, go to [[Status]], and open [[Set up protection]]. Find the [[Allow autostart]] step; it appears only on devices whose manufacturer needs it.',
         '2': 'Allow [[Autostart]] for KidGate in the manufacturer security screen (the wording varies by device).',
         '3': 'Set battery usage for KidGate to [[Unrestricted]] in both Android settings and the vendor battery menu, if both exist.',
         '4': 'Disable any “sleeping apps”, “deep sleeping apps”, or “put apps to sleep” lists that include KidGate.',
         '5': 'If a shortcut does not work, open the Security or Device care app manually and search for KidGate, [[Autostart]], or [[Battery]].',
-        '6': 'Mark each row [[Done]] in KidGate after you complete it, so you can see what remains.',
+        '6': 'KidGate cannot read the manufacturer’s settings, so select [[Done]] on the [[Allow autostart]] step once you have allowed it there.',
       },
     },
     dailyLimit: {
       title: 'Set a Daily Limit',
-      summary: 'Cap how many minutes the child may use the device each day.',
+      summary: 'Cap how many minutes a child may use their devices each day.',
       keywords: 'screen time, hours per day, time is up, budget, extend',
       tip: 'Usage data comes from the child device. If the counter looks stuck, open KidGate on the child device and wait for a sync.',
       steps: {
         '1': 'On the parent device, open [[Family]], then tap your child (or the device, if no child is assigned to it).',
         '2': 'Under [[Essential controls]], select [[Daily Limit]].',
-        '3': 'Choose a minutes-per-day value (or edit the existing cap), then save.',
+        '3': 'Choose a minutes-per-day value (or edit the existing cap), then save. For a child, it is one total shared by all their devices.',
         '4': 'Confirm the device card shows today’s used and limit minutes after the child device syncs.',
-        '5': 'When the limit is reached, the device locks according to platform rules. Select [[Unlock]] on the device screen if you want to restore access early.',
+        '5': 'When the limit is reached, the device locks until midnight. To give more time today, approve a time request or raise the Daily Limit. [[Unlock]] only lifts a lock you set yourself.',
       },
     },
     blockedHours: {
@@ -260,10 +260,10 @@ export const userGuide = {
       steps: {
         '1': 'On the parent device, open your child (or the device, if no child is assigned to it), then [[Blocked Hours]].',
         '2': 'Turn on the [[Enable Blocked Hours]] switch. Until it is on, the screen shows no time ranges and no way to add one.',
-        '3': 'Select [[Add blocked time]], then set a start time, an end time, and the days it repeats.',
-        '4': 'Select [[Save]] at the bottom of the screen. To add another range, repeat the previous step first.',
+        '3': 'A new schedule starts with one range, 22:00 to 07:00: set its start time, end time and the days it repeats. Select [[Add blocked time]] for another range.',
+        '4': 'Select [[Save]] at the bottom of the screen, once every range is set.',
         '5': 'On an Android child device, confirm [[Alarms & reminders]] is still allowed so ranges start and end on time. On an iPhone or iPad, confirm [[Screen Time]] is still allowed.',
-        '6': 'During an active range, the device card shows Blocked Hours active · locked. Use [[Unlock]] only when you intentionally override the schedule.',
+        '6': 'During an active range, the Blocked Hours card shows Blocked Hours active · locked. [[Unlock]] does not end a range: to end one early, turn off [[Enable Blocked Hours]] or change its times.',
       },
     },
     blockedApps: {
@@ -273,9 +273,9 @@ export const userGuide = {
       keywords: 'block app, tiktok, facebook, instagram, games, roblox, hide app',
       tip: 'On iOS, Apple may hide exact app names from parent devices. Selection still happens on the child device with the Parent PIN.',
       steps: {
-        '1': 'Use the child device directly. Open KidGate, then Settings.',
-        '2': 'Select Unlock with Parent PIN and enter the Parent PIN.',
-        '3': 'Open Blocked Apps (on a computer or TV: Choose apps to block). Select the apps (and categories, if shown), then save on the child device.',
+        '1': 'Use the child device directly. Open KidGate, then Settings. On a TV, select Choose apps to block on the Status screen instead.',
+        '2': 'Select Unlock with Parent PIN and enter the Parent PIN. The family owner sets it first, in the phone app.',
+        '3': 'Open Blocked Apps. Select the apps (and categories, if shown), then save on the child device.',
         '4': 'On the parent device, open your child (or the device, if no child is assigned to it), then Blocked Apps, and wait for the selected list to appear.',
         '5': 'Turn on Enable App Blocking. The status should read Blocking is on.',
         '6': 'Test by opening a blocked app on the child device. It should be restricted according to platform rules.',
@@ -289,7 +289,7 @@ export const userGuide = {
       tip: 'App Limits is not available on iPhone or iPad. On a computer or TV, an app that reaches its cap is closed after it opens rather than stopped from opening.',
       steps: {
         '1': 'On the parent device, open your child (or the device, if no child is assigned to it), then [[App Limits]]. If your child uses more than one device, choose which one: each device has its own list.',
-        '2': 'Under [[Add a limit]], tap an app. Only apps used today on that device are listed, and each starts with a 60-minute cap.',
+        '2': 'Under [[Add a limit]], tap an app. The list holds the apps used most on that device today (up to 10, or 3 on the free plan), and each starts with a 60-minute cap.',
         '3': 'Set each cap with the dial or a preset, from 5 minutes to 8 hours a day. You can cap up to 20 apps.',
         '4': 'Select [[Save]]. Limits reset at midnight on the child device.',
         '5': 'The Daily Limit still applies to the whole device, so an app can be locked before its own cap runs out. To remove a limit, select [[Remove]] on its card, then save.',
@@ -298,14 +298,14 @@ export const userGuide = {
     lockUnlock: {
       title: 'Lock and unlock the device',
       summary: 'Immediately lock the child device, or restore access.',
-      tip: 'On Android, locking is strongest when Display over other apps and Accessibility are both enabled. On iOS, locking depends on Screen Time authorization.',
+      tip: 'On Android, locking is strongest when Display over other apps and Accessibility are both enabled. On iOS, locking depends on Screen Time authorization, and if KidGate was closed on the iPhone, the lock appears once KidGate runs again.',
       steps: {
         '1': 'On the parent device, open your child (or the device, if no child is assigned to it).',
         '2': 'Select [[Lock all]] to lock every device of that child, or open one device and select [[Lock device]].',
         '3': 'Wait a few seconds. The status should change to Locked. If nothing changes, open KidGate on the child device and recheck permissions.',
         '4': 'To restore access, select [[Unlock all]] (or [[Unlock]] on the device screen).',
         '5': 'Optional: you can also lock or unlock quickly from Family if those shortcuts appear on the device card.',
-        '6': 'A locked phone or computer still lets your child send an SOS. On Android, SOS also opens calls, maps and messages for 5 minutes while everything else stays locked, and it appears in [[Activities]].',
+        '6': 'A locked phone or computer still lets your child send an SOS. On Android, calls always work, and SOS also opens maps and messages for 5 minutes while everything else stays locked; the SOS appears in [[Activities]].',
       },
     },
     siri: {
@@ -313,7 +313,7 @@ export const userGuide = {
       summary:
         'Lock or unlock a child’s devices, give extra minutes and hear today’s screen time by voice.',
       keywords: 'voice, voice command, speak, talk, hands-free, assistant, shortcuts',
-      tip: 'Voice commands work on a parent’s iPhone, for every parent in the family, in the language Siri is set to. Android phones and the web dashboard have none.',
+      tip: 'Voice commands work on a parent’s iPhone, for every parent in the family, in the language Siri is set to. In some languages Siri does not catch the spoken name KidGate (it does not in Vietnamese): type the command to Siri instead, or run it from the Shortcuts app. Android phones and the web dashboard have none.',
       steps: {
         '1': 'Sign in to KidGate on your iPhone and open it once. That is how Siri learns your children’s names, and a child or device added later reaches Siri the next time you open KidGate. If Siri says “Sign in to KidGate first.”, open KidGate on this iPhone.',
         '2': 'Ask Siri “KidGate, lock Alice”, with your child’s name. Every device of that child locks, the same as [[Lock all]]. A device not assigned to a child goes by its own name.',
@@ -332,7 +332,7 @@ export const userGuide = {
       steps: {
         '1': 'On the parent device, open your child (or the device, if no child is assigned to it), then [[Pause browsing]] in the [[Safety monitoring]] section.',
         '2': 'Choose a length with the dial or a quick preset (30, 60 or 120 minutes), then confirm.',
-        '3': 'The web stays blocked on that device until the time runs out. Your Web Filter settings are not changed, and the pause works even when the Web Filter is off.',
+        '3': 'The web stays blocked on that device until the time runs out. Your Web Filter settings are not changed, and the pause works even when the Web Filter is off. On a computer, browsers are closed until the pause ends.',
         '4': 'To end it early, open the device, tap the [[Pause browsing]] card, and select [[Resume]]. The minutes left are not kept.',
         '5': 'From your child’s profile, a pause applies to one device. If your child uses several, pause each one from its own device screen.',
       },
@@ -356,11 +356,11 @@ export const userGuide = {
       tip: 'Bonus minutes only count when the device has a Daily Limit. The minutes go to the device your child used to mark the task done. Reward Tasks are not available on Android TV or in the Chrome extension.',
       steps: {
         '1': 'On the parent device, open your child (or the device, if no child is assigned to it), then [[Reward Tasks]].',
-        '2': 'Select [[New task]], or start from a template. Enter the task, choose the reward in minutes (5 to 240), a difficulty, and whether it repeats [[Every day]] or [[One time]], then select [[Create task]].',
+        '2': 'Select [[New task]] (while the list is empty, you can also start from a template). Enter the task, choose the reward in minutes (5 to 240), a difficulty, and whether it repeats [[Every day]] or [[One time]], then select [[Create task]].',
         '3': 'On the child device, the task appears under [[Earn extra time]]. When it is done, your child selects [[I did it]].',
         '4': 'You get a notification. The task waits in [[Needs approval]] (on Family and on your child) and in [[Ready to review]] (on the Reward Tasks screen). Select [[Approve]] to add the minutes to today, or [[Send back]] so your child can try again.',
         '5': 'Tap a task to edit or delete it. The free plan runs up to 10 active tasks at once; Premium allows 20.',
-        '6': 'Each task is worth 1 to 3 stars, set by its difficulty, and stars count once you approve the task. To let your children compare this week’s stars, the family owner opens [[Family]], then the family card, and turns on [[Star chart]] in the [[Children]] tab. Each child then sees it in KidGate on their device. It starts again every week.',
+        '6': 'Each task is worth 1 to 3 stars, set by its difficulty, and stars count once you approve the task. In a family with 2 or more children, each child sees this week’s star chart in KidGate on their device; it starts again every week. To hide it, the family owner opens [[Family]], then the family card, and turns off [[Star chart]] in the [[Children]] tab.',
       },
     },
     locationSharing: {
@@ -400,7 +400,7 @@ export const userGuide = {
       steps: {
         '1': 'On the child device, open SOS in KidGate. On a phone, it is the button in the middle of the bottom bar.',
         '2': 'Hold the SOS button for 5 seconds. Letting go earlier cancels it.',
-        '3': 'The alert goes out right away, with the location if it is available. On a phone, the camera then opens for a photo, which can be skipped. If the microphone was allowed during setup, up to 15 seconds of sound is recorded from the moment the SOS is sent.',
+        '3': 'The alert goes out as soon as KidGate has the location, which can take up to half a minute; without one, it is sent anyway. On a phone, the camera then opens for a photo, which can be skipped. If the microphone was allowed during setup, up to 15 seconds of sound is recorded from the moment the SOS is sent.',
         '4': 'Parents receive an urgent notification, even during quiet hours. If KidGate is open, the alert appears on screen, with the SOS siren unless it is turned off in Settings.',
         '5': 'Open your child (or the device, if no child is assigned to it), then the [[Alerts]] section, and choose [[SOS]]. Each alert shows the location ([[Open in Maps]]), the photo and the [[Sound recording]], which can arrive a little after the alert. Select [[I’m on it]] to mark it as responded.',
         '6': 'To also email people outside the family, open [[Family]], then your family card, and choose [[Trusted contacts]]. Select [[Add contact]] to add up to 5. Each SOS emails them the device name and last known location, never the photo or sound. Tell them first.',
@@ -412,13 +412,13 @@ export const userGuide = {
         'Turn on the Web Filter for inappropriate content where the platform supports it.',
       keywords:
         'block website, block link, url, adult content, safe search, youtube restricted mode, categories, dns, private dns, vpn, iphone, ipad',
-      tip: 'The filter reads site names, not pages, and how far it reaches depends on the device. Phones filter browsers and many apps. A Mac cannot check sites whose name the browser hides, roughly half of visits. Windows checks every browser by site name only. The Chrome extension filters Chrome only. Choosing categories, your own lists and answering site requests are part of Premium. Combine the Web Filter with Blocked Apps for stronger protection.',
+      tip: 'The filter reads site names, not pages, and how far it reaches depends on the device. Phones filter browsers and many apps. A Mac cannot check sites whose name the browser hides, roughly half of visits. Windows checks Chrome, Edge and Firefox, by site name only. The Chrome extension filters Chrome only. Choosing categories, your own lists and answering site requests are part of Premium. Combine the Web Filter with Blocked Apps for stronger protection.',
       steps: {
         '1': 'On the parent device, open your child (or the device, if no child is assigned to it), then Web Filter.',
         '2': 'Turn on [[Filter inappropriate websites]] at the top. It applies straight away, so there is nothing to save. [[Force SafeSearch]] on the same screen also locks Google, Bing and DuckDuckGo to safe results and YouTube to Restricted Mode, on Android, Android TV and Chrome. On YouTube, Restricted Mode also hides comments and blocks some ordinary videos, so KidGate asks before turning it on.',
         '3': 'Under [[What to block]], choose the categories to refuse. Add sites to [[Always allow]] or [[Always block]], or turn on [[Allowed sites only]] to refuse everything except your allow list. When your child asks to open a blocked site, the request waits under [[Site requests]]. These controls are part of Premium; the free plan uses a fixed set of categories.',
-        '4': 'Check again later from the same screen. A change reaches the child device within a few minutes, and a site already open there can keep loading until the browser is closed. If it has not arrived by then, or the status stays Waiting, reopen KidGate on the child device so settings can sync.',
-        '5': 'On the child device, open KidGate and approve the filter once. On an iPhone or iPad, select Allow when iOS asks to add VPN configurations, then enter the device passcode. On Android, approve the VPN request, then open Settings, then Network & internet, then Private DNS, and choose Off, because browsers can bypass the filter while Private DNS is on.',
+        '4': 'Check again later from the same screen. A change reaches the child device within a few minutes, and a site already open there can keep loading until the browser is closed. If it has not arrived by then, reopen KidGate on the child device so settings can sync.',
+        '5': 'On the child device, open KidGate and approve the filter once. On an iPhone or iPad, select Allow when iOS asks to add VPN configurations, then enter the device passcode. On Android, approve the VPN request, then open Settings, then Network & internet, then Private DNS, and choose Off, because browsers can bypass the filter while Private DNS is on. On a Mac, select [[Open Settings]] next to [[Approve web filtering]] and turn KidGate on.',
       },
     },
     protectionAlerts: {
@@ -443,7 +443,7 @@ export const userGuide = {
         '1': 'Open [[Reports]]. [[Today]] adds up every device; below it are the [[Weekly report]], each child ([[By child]]) and each device ([[By device]]).',
         '2': 'Tap a device for its [[Usage Report]]: today against the Daily Limit, [[Last 30 days]], [[When it was used]] and [[Most used apps]]. You can also open it from [[Usage today]] on the device’s screen.',
         '3': 'Tap a child for one report across all their devices, for [[Today]], [[7 days]] or [[30 days]]. Time on two screens at once counts once, so it can be lower than the devices added up.',
-        '4': 'A new [[Weekly report]] arrives every Monday morning, with a notification. It suggests one thing you could change and opens the right setting.',
+        '4': 'With Premium, a new [[Weekly report]] arrives every Monday morning, with a notification, for any week a device was used. When one device stands out, it suggests one thing to change and opens the right setting.',
         '5': 'Opening KidGate asks each device for fresh numbers, so they can take a few minutes to update. A device with no internet connection reports when it is back online.',
       },
     },
@@ -472,8 +472,8 @@ export const userGuide = {
       steps: {
         '1': 'Open [[Settings]] and select [[Add widget to Home Screen]]. On most Android phones, you only confirm where it goes. Otherwise, KidGate shows the steps to add it yourself.',
         '2': 'To add it yourself, touch and hold an empty spot on the home screen. On iPhone, tap Edit (or + on older versions), then Add Widget. On Android, tap Widgets. Find KidGate and choose the Screen time widget.',
-        '3': 'Each child’s row shows today’s screen time against their Daily Limit, and children who reached it come first. It fits up to 2 children on iPhone and up to 3 on Android.',
-        '4': 'It updates when you open KidGate. While the app is closed, it updates at most every 20 minutes, and only while a child is using a device.',
+        '3': 'Each child’s row shows today’s screen time against their Daily Limit, and children who reached it come first. It fits up to 2 children on iPhone and up to 3 on Android. Devices not assigned to a child are not shown.',
+        '4': 'It updates when you open KidGate. While the app is closed, with Premium, it updates at most every 20 minutes, and only while a child is using a device.',
         '5': 'On your child’s phone, add the Screen time left widget the same way. It shows how much time is left today, or why the device is locked, and updates while KidGate is open on that phone.',
       },
     },
@@ -488,7 +488,7 @@ export const userGuide = {
         '2': 'Each day lists sites by kind, with how many times each was reached. Select [[Blocked only]] to see just what the Web Filter stopped.',
         '3': 'To block a whole kind of site, open its section and select the Block button at the end of it. From your child’s profile, this applies to all their devices.',
         '4': 'History comes from the Web Filter, so it only fills while the filter is running on that device.',
-        '5': 'History is kept for 30 days. When your child asks to open a blocked site, the request appears in [[Needs approval]], not here.',
+        '5': 'The screen shows the last 7 days. When your child asks to open a blocked site, the request appears in [[Needs approval]], not here.',
       },
     },
     videoHistory: {
@@ -528,7 +528,7 @@ export const userGuide = {
         '1': 'On the child’s Android phone, open KidGate [[Settings]], select [[Unlock with Parent PIN]], then [[Allow notification access]] under [[Message Alerts]], and turn KidGate on in the list that opens.',
         '2': 'On your device, open your child (or the device, if no child is assigned to it), then [[Message Alerts]] in the [[Alerts]] section, and tap the settings icon at the top. If your child has several devices, select the Android phone first.',
         '3': 'Turn on [[Scan messages they receive]]. [[Also flag strong language]] is optional, and you can choose up to 3 [[Languages scanned]].',
-        '4': 'To also scan what your child types and searches: on the child device, select [[Allow this]] under [[Message Alerts]], then turn on [[Scan messages they type]] and [[Scan what they search for]] on your device.',
+        '4': 'To also scan what your child types and searches: once [[Scan messages they receive]] is on, the child device shows [[Before you allow]] under [[Message Alerts]]. Select [[Agree]] there, then turn on [[Scan messages they type]] and [[Scan what they search for]] on your device.',
         '5': 'Alerts appear under [[Recent alerts]] with the category and the flagged word or phrase. Select [[What to do next]] for advice on talking about it.',
       },
     },
@@ -539,7 +539,7 @@ export const userGuide = {
       tip: 'Only the family owner can add children and assign devices. A new device is not assigned to anyone until you choose.',
       steps: {
         '1': 'In [[Family]], tap + and choose [[Add a child]]. Enter a name and save.',
-        '2': 'After you pair a new device, KidGate asks who uses it. Pick your child, or [[No one]] for a shared device. KidGate then offers a starter set of protections: select [[Turn on protection]] or [[Not now]].',
+        '2': 'After you pair a new device, KidGate asks the family owner who uses it. Pick your child, or [[No one]] for a shared device. If you picked a child, KidGate then offers a starter set of protections: select [[Turn on protection]] or [[Not now]].',
         '3': 'A device that nobody has been picked for appears under [[Not assigned]] in Family. Select [[Assign to a child…]] on its card.',
         '4': 'Once a device is assigned, the Daily Limit, Blocked Hours, Web Filter, Check-In, SOS, Place Alerts and Reward Tasks are set on your child and apply to all their devices. The Daily Limit becomes one total across those devices.',
         '5': 'To move a device, open the child who should have it and select [[Assign another device…]]. To unassign one, swipe it on your child’s profile and select [[Unassign]]. Removing a child’s profile keeps their devices paired.',
@@ -555,7 +555,7 @@ export const userGuide = {
         '1': 'Open [[Settings]]. The card at the top shows your current plan; select [[View plans]].',
         '2': 'The 7-day trial starts once your first child device is paired, and includes every Premium feature. The one limit that stays is parents: up to 3 during the trial, up to 6 with Premium.',
         '3': 'On the free plan, every rule keeps working, but only one device reports: today’s total and the top 3 apps, updated when you check. Premium adds live updates, every device, 30 days of history, web and video history, and weekly reports.',
-        '4': 'If the trial ends with more than one child device, KidGate asks you to [[Choose your primary device]]. That one keeps reporting; the others show [[Paused]] but keep their rules. You can change the choice once every 7 days.',
+        '4': 'If the trial ends with more than one child device, KidGate asks you to [[Choose your primary device]]. That one keeps reporting; the others show [[Paused]] and keep their rules, but a rule can only be loosened there, not tightened. Any parent can change the choice once every 7 days.',
         '5': 'To subscribe, choose a plan and select [[Subscribe to Premium]]. Subscribing brings every paused device back. If you have paid before, select [[Restore purchases]].',
       },
     },
@@ -602,9 +602,9 @@ export const userGuide = {
     webSignIn: {
       title: 'Use KidGate on a computer',
       summary: 'Sign in to the web dashboard and manage your family from a browser.',
-      tip: 'Only allow a browser you are signing in to yourself: it gets the same control as your phone. The web dashboard cannot pair a child device or buy a plan. To sign a browser out, use Sign out on the dashboard. To stop a browser making changes, open [[Family]], then [[Parents]], and remove it under [[Browsers that can make changes]]; it can still view your family until it is signed out.',
+      tip: 'Only allow a browser you are signing in to yourself: it gets the same control as your phone. The web dashboard cannot pair a child device or buy a plan. To sign a browser out, use Sign out on the dashboard. To stop a browser making changes, open [[Family]], then [[Parents]], and remove it under [[Dashboard]]; it can still view your family until it is signed out.',
       steps: {
-        '1': 'On the computer, open dashboard.kidgate.app and choose [[Sign in with the KidGate app]]. A QR code appears.',
+        '1': 'On the computer, open dashboard.kidgate.app. A QR code appears straight away.',
         '2': 'On your phone, open [[Settings]], then [[Sign in on the web]]. You can also scan from [[Family]] with the scan icon.',
         '3': 'Scan the QR code in the browser. If the camera cannot read it, enter the 6-character code instead.',
         '4': 'Check that the code matches, then select [[Allow]]. Select [[Don’t allow]] if you did not start this sign-in.',
@@ -636,7 +636,7 @@ export const userGuide = {
         '2': 'Select [[Report a problem]], or [[New report]] if you have sent one before.',
         '3': 'Describe what happened and on which device, attach up to 5 screenshots if they help, then select [[Send report]].',
         '4': 'Each report shows its status: [[Received]], [[In review]] or [[Resolved]]. The reply from KidGate appears under the report.',
-        '5': 'You can reply under the report until it is closed. For a different problem, send a new report.',
+        '5': 'Once KidGate has replied, you can answer under the report, one message per reply, until it is [[Resolved]]. For a different problem, send a new report.',
       },
     },
     deleteAccount: {
@@ -655,6 +655,7 @@ export const userGuide = {
   },
   onChildDevice: 'On the child device',
   onParentDevice: 'On your device',
+  onParentPhone: 'In the app on your phone',
   handoffHint:
     'KidGate can walk these steps on the child device itself: open it there, go to Status and select Continue setup on the Finish setup with a parent card. Every step gets a button that opens the right screen.',
 } as const;

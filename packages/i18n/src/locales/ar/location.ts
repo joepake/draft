@@ -80,6 +80,10 @@ export const location = {
     'لم يتمكن هذا الجهاز إلا من تقدير موقعه من اتصال الإنترنت. قم بتشغيل Wi-Fi على الجهاز (لا حاجة للاتصال بشبكة) ثم حاول مرة أخرى.',
   requestUnsupported: 'لا يستطيع هذا الجهاز الإبلاغ عن موقعه.',
   cardSharingOff: 'مشاركة الموقع متوقفة',
+  cardPaused: 'متوقف مؤقتًا — لم يعد هذا الجهاز يشارك موقعه',
+  pausedChoiceNote:
+    'يُعرض موقع {{deviceName}}: {{pausedName}} متوقف مؤقتًا ولم يعد يشارك موقعه',
+  pausedLocateHint: 'اجعله الجهاز الذي يُبلغ لترى مكانه الآن',
   cardPermissionOff: 'الموقع غير مسموح به على هذا الجهاز',
   cardForegroundOnly: 'لا يتم تحديث الموقع إلا أثناء فتح KidGate على هذا الجهاز',
   cardIpOnly:

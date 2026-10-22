@@ -103,17 +103,16 @@ export default function WebSessionsCard({ actions, onToast, onWriteLost }) {
     }
   }
 
+  // No card until there is a row (the phone's section does the same); what a
+  // browser here can do is said in the removal confirmation, nowhere else.
+  if (!error && !sessions?.length) return null;
+
   return (
-    <Card
-      title={appT('webSignIn.sessionsTitle')}
-      subtitle={appT('webSignIn.sessionsHint')}
-    >
+    <Card title={appT('webSignIn.sessionsTitle')}>
       {error ? (
         <p className="hint" role="alert">
           {t(error.messageKey ?? 'controlError.generic')}
         </p>
-      ) : sessions && sessions.length === 0 ? (
-        <p className="hint">{appT('webSignIn.sessionsEmpty')}</p>
       ) : (
         sessions && (
           <ul className="tc-list">

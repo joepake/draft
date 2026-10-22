@@ -6,6 +6,7 @@ export const auth = {
   createAccountTitle: 'إنشاء حساب للوالدين',
   createAccountSubtitle:
     'استخدم بريدًا إلكترونيًا وكلمة مرور لتتمكن لاحقًا من تسجيل الدخول من أي جهاز.',
+  joinKidGate: 'انضم إلى KidGate',
   linkEmailTitle: 'ربط البريد الإلكتروني وكلمة المرور',
   linkEmailSubtitle: 'أضف طريقة دخول احتياطية بالبريد الإلكتروني لحساب الوالدين هذا.',
   forgotPasswordTitle: 'إعادة تعيين كلمة المرور',

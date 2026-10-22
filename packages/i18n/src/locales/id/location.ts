@@ -89,6 +89,10 @@ export const location = {
     'Perangkat ini hanya bisa menebak posisinya dari koneksi internet. Aktifkan Wi-Fi di perangkat (tidak perlu tersambung), lalu coba lagi.',
   requestUnsupported: 'Perangkat ini tidak bisa melaporkan lokasinya.',
   cardSharingOff: 'Berbagi lokasi nonaktif',
+  cardPaused: 'Dijeda — perangkat ini tidak lagi membagikan lokasinya',
+  pausedChoiceNote:
+    'Menampilkan {{deviceName}}: {{pausedName}} dijeda dan tidak lagi membagikan lokasinya',
+  pausedLocateHint: 'Jadikan perangkat yang melapor untuk melihat lokasinya sekarang',
   cardPermissionOff: 'Lokasi belum diizinkan di perangkat ini',
   cardForegroundOnly: 'Lokasi hanya diperbarui saat KidGate terbuka di perangkat ini',
   cardIpOnly:

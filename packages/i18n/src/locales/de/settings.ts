@@ -73,10 +73,9 @@ export const settings = {
   themeStyleLabel: 'Design-Stil',
   themeColorLabel: 'Themenfarbe',
   signOutButton: 'Abmelden',
-  signInButton: 'Anmelden',
   switchToChildDevice: 'Dieses Telefon stattdessen als Kindergerät einrichten',
   guestAccountHint:
-    'Melde dich an, um Geräte, Benachrichtigungen und deinen Familienplan zu synchronisieren.',
+    'Melde dich an, um Geräte, Benachrichtigungen und deinen Familienplan mit deinem Konto zu verknüpfen.',
   reportModalTitle: 'Problem melden',
   reportMessageLabel: 'Bitte beschreibe das Problem, das du hast.',
   reportMessagePlaceholder: 'Beschreibe den Fehler oder das Problem…',

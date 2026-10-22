@@ -54,8 +54,8 @@ export default function PlanComparison({ t }) {
         ))}
       </table>
       <p className="plan-compare-included">{t('plans.compareIncluded')}</p>
-      {/* The phone says this under the same table, so a parent comparing
-          here and paying there reads one caveat rather than two. */}
+      {/* The phone says this over its "Where KidGate runs" tiles; the
+          dashboard's plan card has no such list, so it stays under the table. */}
       <p className="plan-compare-included">{t('plans.featureFootnotePlatforms')}</p>
     </div>
   );

@@ -70,7 +70,6 @@ export const settings = {
   themeStyleLabel: 'Theme style',
   themeColorLabel: 'Theme color',
   signOutButton: 'Sign out',
-  signInButton: 'Sign in',
   switchToChildDevice: 'Set this phone up as a child device instead',
   guestAccountHint: 'Sign in to sync devices, alerts, and your family plan.',
   reportModalTitle: 'Report a problem',

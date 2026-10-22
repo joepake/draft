@@ -88,6 +88,11 @@ export const location = {
     'このデバイスはインターネット接続から位置を推定することしかできませんでした。デバイスの Wi-Fi をオンにして（接続する必要はありません）、もう一度お試しください。',
   requestUnsupported: 'このデバイスは位置情報を報告できません。',
   cardSharingOff: '位置情報の共有がオフです',
+  cardPaused: '一時停止中：このデバイスは位置情報を共有していません',
+  pausedChoiceNote:
+    '{{deviceName}}の位置を表示しています。{{pausedName}}は一時停止中のため、位置情報を共有していません',
+  pausedLocateHint:
+    '今どこにあるかを見るには、このデバイスを報告するデバイスにしてください',
   cardPermissionOff: 'このデバイスでは位置情報が許可されていません',
   cardForegroundOnly:
     'このデバイスではKidGateを開いている間しか位置情報が更新されません',

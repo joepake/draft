@@ -8,7 +8,6 @@ export const usage = {
   statLeftLabel: 'Kalan',
   statLimitLabel: 'Sınır',
   limitOff: 'Kapalı',
-  sectionStatusNow: 'Mevcut durum',
   insightDailyLimitReached: 'Günlük sınıra ulaşıldı',
   insightNearDailyLimit: 'Günlük sınıra yaklaşıldı',
   insightNoDailyLimit: 'Günlük sınır ayarlanmadı',

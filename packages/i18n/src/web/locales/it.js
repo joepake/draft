@@ -552,7 +552,6 @@ export default {
     attnBatteryLow: 'Batteria quasi scarica ({{level}}%)',
     attnBatteryLowMeta:
       'Gli aggiornamenti di posizione possono fermarsi se il telefono si spegne',
-    attnReview: 'Controlla',
     attnResend: 'Rinvia',
     attnHowToFix: 'Come risolvere',
     attnUnlock: 'Sblocca',
@@ -592,7 +591,7 @@ export default {
     limitsMax: 'Un dispositivo tiene al massimo {{max}} app limitate.',
     perDay: '{{value}}/giorno',
     webActivityTitle: 'Attività web',
-    webActivitySub: 'Domini più visitati, ultimi 30 giorni',
+    webActivitySub: 'Domini più visitati, ultimi 7 giorni',
     webActivityEmpty: 'Nessuna attività web finora.',
     inventoryEmpty: 'Questo dispositivo non ha ancora pubblicato il suo elenco di app.',
     inventoryFirstScan:
@@ -618,8 +617,8 @@ export default {
     colChannel: 'Canale',
     colViews: 'Visualizzazioni',
     filterRefusedTitle: 'Cosa ha rifiutato il filtro',
-    filterRefusedSub_one: '{{count}} richiesta bloccata, ultimi 30 giorni',
-    filterRefusedSub_other: '{{count}} richieste bloccate, ultimi 30 giorni',
+    filterRefusedSub_one: '{{count}} richiesta bloccata, ultimi 7 giorni',
+    filterRefusedSub_other: '{{count}} richieste bloccate, ultimi 7 giorni',
     filterHintIos:
       'Questo iPhone o iPad filtra solo con il controllo dei contenuti per adulti di Apple. Aggiorna KidGate sul dispositivo e consenti la VPN di KidGate per bloccare per categoria.',
     filterHintAndroid: 'Le categorie sono applicate dal filtro DNS sul dispositivo.',

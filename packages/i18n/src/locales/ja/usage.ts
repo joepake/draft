@@ -8,7 +8,6 @@ export const usage = {
   statLeftLabel: '残り',
   statLimitLabel: '上限',
   limitOff: 'オフ',
-  sectionStatusNow: '現在の状態',
   insightDailyLimitReached: '1日の上限に達しました',
   insightNearDailyLimit: '1日の上限に近づいています',
   insightNoDailyLimit: '1日の上限は未設定',

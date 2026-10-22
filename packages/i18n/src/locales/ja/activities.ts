@@ -22,18 +22,17 @@ export const activities = {
   emptyDescriptionDevice:
     '別のデバイスを選択するか、このデバイスでロック、ロック解除、SOSイベントが発生するまでお待ちください。',
 
-  guestEmptyTitle: 'アクティビティ',
+  guestEmptyTitle: 'お子さまのアクティビティ',
   guestEmptyDescription:
-    'お子さまのデバイスを接続すると、ロック、ロック解除、SOS、アプリに関するイベントがリアルタイムで表示されます。',
-  guestSignInButton: 'ログイン',
-  guestCreateAccount: '保護者アカウントを作成',
+    'お子さまのデバイスを接続すると、ロック・ロック解除、SOS、アプリのブロックや追加・削除などが、すぐにここに表示されます。',
   guestSubtitle: 'ログインすると、お子さまのデバイスのアクティビティを確認できます。',
 
-  guestPreviewHeading: '表示内容',
+  guestPreviewHeading: '確認できる内容',
   guestPreviewLock: 'デバイスロック中',
   guestPreviewSos: 'SOSアラート',
   guestPreviewScreenTime: 'スクリーンタイムの更新',
-  guestPreviewHint: 'サンプルです。デバイスを接続すると実際のイベントが表示されます。',
+  guestPreviewHint:
+    'サンプルです。デバイスを接続すると、実際のアクティビティが表示されます。',
 
   activityTypeLocked: 'ロック',
   activityTypeUnlocked: 'ロック解除',

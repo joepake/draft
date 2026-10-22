@@ -8,7 +8,6 @@ export const usage = {
   statLeftLabel: 'शेष',
   statLimitLabel: 'सीमा',
   limitOff: 'बंद',
-  sectionStatusNow: 'मौजूदा स्थिति',
   insightDailyLimitReached: 'दैनिक सीमा पूरी हुई',
   insightNearDailyLimit: 'दैनिक सीमा के करीब',
   insightNoDailyLimit: 'दैनिक सीमा सेट नहीं है',

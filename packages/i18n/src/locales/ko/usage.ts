@@ -8,7 +8,6 @@ export const usage = {
   statLeftLabel: '남음',
   statLimitLabel: '제한',
   limitOff: '꺼짐',
-  sectionStatusNow: '현재 상태',
   insightDailyLimitReached: '일일 제한 도달',
   insightNearDailyLimit: '일일 제한에 근접',
   insightNoDailyLimit: '일일 제한이 없습니다',

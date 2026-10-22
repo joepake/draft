@@ -200,6 +200,7 @@ export default function Fleet() {
       webFilterBlocker: {
         awaitingApproval: t('webFilterBlocker.awaitingApproval'),
         configurationDisabled: t('webFilterBlocker.configurationDisabled'),
+        privateDns: t('webFilterBlocker.privateDns'),
       },
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps -- `t` reads `language`
@@ -292,6 +293,7 @@ export default function Fleet() {
   const webFilterBlocked = sumOf(fleet.webFilterBlocker, [
     'awaitingApproval',
     'configurationDisabled',
+    'privateDns',
   ]);
   const ota = fleet.otaPublished;
   // Rows written before this field carry no `otaPublished` key at all; a row

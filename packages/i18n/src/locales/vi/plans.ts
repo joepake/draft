@@ -9,7 +9,7 @@ export const plans = {
   pillTrialActiveFallback: 'Đang dùng thử',
   statusTrialEndedTitle: 'Hết dùng thử',
   statusTrialEndedSubtitle:
-    'Giới hạn hằng ngày, Giờ khóa thiết bị, Chặn ứng dụng, vị trí và công tắc Chặn nội dung web vẫn hoạt động miễn phí. Đăng ký để có cập nhật trực tiếp, lịch sử, cảnh báo và báo cáo.',
+    'Quy tắc của bạn vẫn hoạt động miễn phí. Đăng ký để có cập nhật trực tiếp, lịch sử, cảnh báo và báo cáo.',
   pillTrialEnded: 'Hết dùng thử',
   statusStartTrialTitle: 'Bắt đầu dùng thử',
   statusStartTrialSubtitle:
@@ -66,7 +66,7 @@ export const plans = {
   compareActivityFeedPremium: '30 ngày',
   compareChildReport: 'Báo cáo từng trẻ',
   compareIncluded:
-    'Cả hai gói đều có Giới hạn hằng ngày, Giờ khóa thiết bị, Chặn ứng dụng, Duyệt ứng dụng mới, Chặn nội dung web, Khóa thiết bị, SOS, Yêu cầu thêm giờ và Nhiệm vụ thưởng trên iPhone, Android, Mac và Windows trong một gia đình, cùng với bảng điều khiển web, và Giới hạn ứng dụng trên Android, Mac và Windows. Android TV và Chromebook cũng được hỗ trợ, với ít tính năng kiểm soát hơn.',
+    'Cả hai gói đều có Giới hạn hằng ngày, Giờ khóa thiết bị, Giới hạn ứng dụng, Khóa thiết bị, SOS, Yêu cầu thêm giờ, Nhiệm vụ thưởng và bảng điều khiển web.',
   sectionWhyPremium: 'Premium thêm gì',
   sectionWhyPremiumSubtitle:
     'Mọi quy tắc vẫn hoạt động ở gói Miễn phí. Premium thêm những gì bạn thấy được, và thấy sớm đến đâu.',
@@ -117,12 +117,10 @@ export const plans = {
   viewFamilyPlanStatus: 'Xem trạng thái gói',
   onlyOwnerCanSubscribe:
     'Chỉ chủ gia đình mới có thể đăng ký hoặc khôi phục giao dịch.',
-  memberSubscriptionNotice:
-    'Mỗi gia đình chỉ cần một gói duy nhất và chỉ chủ gia đình thực hiện thanh toán. Bạn có thể xem gia đình đang dùng thử hay đã đăng ký Premium.',
   memberTrialActiveSubtitle:
     'Gia đình này đang dùng thử. Khi hết hạn, mọi quy tắc vẫn hoạt động trên tất cả thiết bị và một thiết bị vẫn gửi báo cáo; chủ gia đình có thể đăng ký để có hoạt động trực tiếp, lịch sử và báo cáo từ mọi thiết bị.',
   memberTrialEndedSubtitle:
-    'Bản dùng thử của gia đình này đã kết thúc. Giới hạn hằng ngày, Giờ khóa thiết bị, Chặn ứng dụng, vị trí và công tắc Chặn nội dung web vẫn hoạt động. Hãy nhờ chủ gia đình đăng ký để có cập nhật trực tiếp, lịch sử và cảnh báo.',
+    'Quy tắc của gia đình vẫn hoạt động. Hãy nhờ chủ gia đình đăng ký để có cập nhật trực tiếp, lịch sử và cảnh báo.',
   memberSetupTrialSubtitle:
     'Thời gian dùng thử bắt đầu khi chủ gia đình kết nối một thiết bị phụ huynh và một thiết bị của trẻ.',
   premiumActivatedTitle: 'Đã mở khóa Premium',
@@ -172,7 +170,7 @@ export const plans = {
   sectionFreePlan: 'Nếu bạn không đăng ký',
   devicesUnlimited: 'Mọi thiết bị của trẻ đều gửi báo cáo',
   featureFootnotePlatforms:
-    'Một số tính năng phụ thuộc vào giới hạn của từng nền tảng, nên không phải tính năng nào cũng có trên mọi thiết bị.',
+    'Do giới hạn của từng nền tảng, một số tính năng có thể chưa khả dụng trên tất cả thiết bị.',
   sectionPlatforms: 'Nền tảng hỗ trợ',
   platformIos: 'iPhone và iPad',
   platformIosDetail: 'Thiết bị phụ huynh hoặc trẻ · iOS 16 trở lên',

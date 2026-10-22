@@ -22,20 +22,18 @@ export const activities = {
   emptyDescriptionDevice:
     'Wähle ein anderes Gerät aus oder warte auf Sperr-, Entsperr- und SOS-Ereignisse dieses Geräts.',
 
-  guestEmptyTitle: 'Deine Aktivitäten',
+  guestEmptyTitle: 'Aktivitäten deiner Kinder',
   guestEmptyDescription:
-    'Sobald ein Kindergerät verbunden ist, werden Sperr-, Entsperr-, SOS- und App-Ereignisse hier in Echtzeit angezeigt.',
-  guestSignInButton: 'Anmelden',
-  guestCreateAccount: 'Elternkonto erstellen',
+    'Sobald ein Kindergerät verbunden ist, erscheinen hier sofort Sperren und Entsperren, SOS-Alarme und Meldungen zu Apps.',
   guestSubtitle:
-    'Melde dich an, um die Aktivitäten der Geräte deiner Kinder zu verfolgen',
+    'Melde dich an, um die Aktivität auf den Geräten deiner Kinder zu verfolgen',
 
-  guestPreviewHeading: 'Das wird angezeigt',
+  guestPreviewHeading: 'So sieht es aus',
   guestPreviewLock: 'Gerät gesperrt',
   guestPreviewSos: 'SOS-Alarm',
   guestPreviewScreenTime: 'Bildschirmzeit aktualisiert',
   guestPreviewHint:
-    'Beispiel – echte Ereignisse erscheinen nach dem Verbinden eines Geräts',
+    'Beispiel – echte Einträge erscheinen, sobald ein Gerät verbunden ist',
 
   activityTypeLocked: 'Gesperrt',
   activityTypeUnlocked: 'Entsperrt',

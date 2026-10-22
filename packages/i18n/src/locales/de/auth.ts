@@ -7,6 +7,7 @@ export const auth = {
   createAccountTitle: 'Elternkonto erstellen',
   createAccountSubtitle:
     'Nutze E-Mail und Passwort, damit du dich später auf jedem Gerät anmelden kannst.',
+  joinKidGate: 'KidGate beitreten',
   linkEmailTitle: 'E-Mail und Passwort verknüpfen',
   linkEmailSubtitle: 'Füge diesem Elternkonto eine E-Mail-Anmeldung als Backup hinzu.',
   forgotPasswordTitle: 'Passwort zurücksetzen',

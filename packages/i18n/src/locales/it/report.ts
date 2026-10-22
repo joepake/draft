@@ -149,20 +149,18 @@ export const report = {
   // The signed-out reports tab: a sample week, what the tab is for, and the
   // two ways in. `guestPreviewHint` is not decoration — the chart above it is
   // drawn from constants, and a week nobody measured has to say so.
-  guestPreviewHeading: 'Cosa vedrai',
+  guestPreviewHeading: 'Ecco cosa vedrai',
   guestPreviewHint: 'Esempio — i dati reali compaiono quando colleghi un dispositivo',
-  guestTitle: 'Scopri dov’è finita la settimana',
+  guestTitle: 'Scopri com’è andata la settimana davanti allo schermo',
   guestDescription:
-    'Accedi per misurare oggi rispetto a un giorno normale, confrontare i tuoi figli fianco a fianco e, con Premium, ricevere un report ogni lunedì.',
-  guestBenefitTrendTitle: 'Oggi, rispetto al normale',
+    'Accedi per confrontare oggi con una giornata tipo e i tuoi figli tra loro. Con Premium ricevi anche un report scritto ogni lunedì.',
+  guestBenefitTrendTitle: 'Oggi, rispetto al solito',
   guestBenefitTrendBody:
-    'Un numero da solo non dice nulla. Oggi viene sempre tracciato rispetto alla media giornaliera della tua famiglia.',
-  guestBenefitChildTitle: 'Ogni figlio, fianco a fianco',
+    'Il dato di oggi viene confrontato con la media giornaliera della tua famiglia: da solo direbbe poco.',
+  guestBenefitChildTitle: 'Tutti i tuoi figli a confronto',
   guestBenefitChildBody:
-    'La quota di giornata di ogni figlio, nel suo colore, su tutti i dispositivi che usa.',
+    'La quota di ogni figlio nel tempo di utilizzo del giorno, con il suo colore, su tutti i dispositivi che usa.',
   guestBenefitWeeklyTitle: 'Un report ogni lunedì, con Premium',
   guestBenefitWeeklyBody:
-    'Cosa è cambiato, quali app sono cresciute e le nottate tardi — conservato per un anno.',
-  guestSignInButton: 'Accedi',
-  guestCreateAccount: 'Crea un account genitore',
+    'Cos’è cambiato, le app in crescita e l’uso a tarda notte — tutto conservato per un anno.',
 } as const;

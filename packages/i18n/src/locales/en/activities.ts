@@ -27,8 +27,6 @@ export const activities = {
   guestEmptyTitle: 'Your activity feed',
   guestEmptyDescription:
     'Once a child device is connected, lock, unlock, SOS, and app events appear here in real time.',
-  guestSignInButton: 'Sign in',
-  guestCreateAccount: 'Create a parent account',
   guestSubtitle: 'Sign in to follow activity on your child devices',
   guestPreviewHeading: 'What you will see',
   guestPreviewLock: 'Device locked',

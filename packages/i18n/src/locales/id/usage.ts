@@ -8,7 +8,6 @@ export const usage = {
   statLeftLabel: 'Sisa',
   statLimitLabel: 'Batas',
   limitOff: 'Nonaktif',
-  sectionStatusNow: 'Status saat ini',
   insightDailyLimitReached: 'Batas Harian tercapai',
   insightNearDailyLimit: 'Mendekati Batas Harian',
   insightNoDailyLimit: 'Batas harian belum diatur',

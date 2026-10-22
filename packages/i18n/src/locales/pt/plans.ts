@@ -10,7 +10,7 @@ export const plans = {
   pillTrialActiveFallback: 'Teste ativo',
   statusTrialEndedTitle: 'Teste encerrado',
   statusTrialEndedSubtitle:
-    'O Limite diário, os Horários bloqueados, os Apps bloqueados, a localização e a chave do Filtro da web continuam funcionando de graça. Assine para ter atualizações ao vivo, histórico, alertas e relatórios.',
+    'Suas regras continuam funcionando de graça. Assine para ter atualizações ao vivo, histórico, alertas e relatórios.',
   pillTrialEnded: 'Teste encerrado',
   statusStartTrialTitle: 'Comece seu teste',
   statusStartTrialSubtitle:
@@ -66,7 +66,7 @@ export const plans = {
   compareActivityFeedPremium: '30 dias',
   compareChildReport: 'Relatórios por filho',
   compareIncluded:
-    'Os dois planos incluem o Limite diário, os Horários bloqueados, os Apps bloqueados, a aprovação de novos apps, o Filtro da web, o Bloqueio do dispositivo, SOS, as Solicitações de tempo e as Tarefas com recompensa no iPhone, Android, Mac e Windows em uma mesma família, além do painel web e dos Limites de apps no Android, Mac e Windows. Android TV e Chromebook também são compatíveis, com menos controles.',
+    'Os dois planos incluem o Limite diário, os Horários bloqueados, os Limites de apps, o Bloqueio do dispositivo, SOS, as Solicitações de tempo, as Tarefas com recompensa e o painel web.',
   sectionWhyPremium: 'O que o Premium adiciona',
   sectionWhyPremiumSubtitle:
     'Todas as regras continuam funcionando no Grátis. O Premium adiciona o que você vê, e quando.',
@@ -119,12 +119,10 @@ export const plans = {
   viewPlans: 'Ver planos',
   viewFamilyPlanStatus: 'Ver status do plano',
   onlyOwnerCanSubscribe: 'Somente o dono da família pode assinar ou restaurar compras.',
-  memberSubscriptionNotice:
-    'Um único plano cobre toda a família e somente o dono paga. Você pode ver se a família está em teste ou já assinou.',
   memberTrialActiveSubtitle:
     'Esta família está no período de teste. Quando ele terminar, todas as regras continuam funcionando em todos os dispositivos e um dispositivo continua enviando relatórios; o responsável principal pode assinar para ter atividade ao vivo, histórico e relatórios de todos os dispositivos.',
   memberTrialEndedSubtitle:
-    'O teste desta família terminou. O Limite diário, os Horários bloqueados, os Apps bloqueados, a localização e a chave do Filtro da web continuam funcionando. Peça a quem criou a família para assinar e ter atualizações ao vivo, histórico e alertas.',
+    'As regras da família continuam funcionando. Peça a quem criou a família para assinar e ter atualizações ao vivo, histórico e alertas.',
   memberSetupTrialSubtitle:
     'O teste começa quando o dono conectar um dispositivo dos pais e um dispositivo da criança.',
   premiumActivatedTitle: 'Premium desbloqueado',
@@ -176,7 +174,7 @@ export const plans = {
   sectionFreePlan: 'Se você nunca assinar',
   devicesUnlimited: 'Todos os dispositivos da criança enviam relatórios',
   featureFootnotePlatforms:
-    'Alguns recursos dependem do que cada plataforma permite, então nem todos estão disponíveis em todos os dispositivos.',
+    'Devido às limitações de cada plataforma, alguns recursos podem não estar disponíveis em todos os dispositivos.',
   sectionPlatforms: 'Onde o KidGate funciona',
   platformIos: 'iPhone e iPad',
   platformIosDetail: 'Dispositivo de responsável ou de criança · iOS 16 ou posterior',

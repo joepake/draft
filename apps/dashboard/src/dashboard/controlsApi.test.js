@@ -4,6 +4,8 @@ import { ControlError, createActions } from './controlsApi.js';
 
 const { repos, track } = vi.hoisted(() => ({
   repos: {
+    activityRepository: { createActivity: vi.fn() },
+    deviceRingRepository: { ring: vi.fn() },
     childRepository: {
       rename: vi.fn(),
       create: vi.fn(),
@@ -402,6 +404,53 @@ describe('what a write sends', () => {
       ['d1', 'd2'],
     );
     expect(repos.childRulesRepository.updateRules).not.toHaveBeenCalled();
+  });
+});
+
+describe('ringDevice', () => {
+  const phone = { id: 'd1', name: 'An’s phone' };
+
+  it('rings, then logs the row the phone logs', async () => {
+    repos.deviceRingRepository.ring.mockResolvedValueOnce({ locating: true });
+    repos.activityRepository.createActivity.mockResolvedValueOnce(undefined);
+
+    await expect(owner().ringDevice(phone)).resolves.toEqual({ locating: true });
+    expect(repos.deviceRingRepository.ring).toHaveBeenCalledWith(FAMILY, 'd1');
+    expect(repos.activityRepository.createActivity).toHaveBeenCalledWith(FAMILY, {
+      deviceId: 'd1',
+      type: 'screen_time',
+      titleKey: 'location.activityTitleRingRequested',
+      descriptionKey: 'location.activityDescriptionRingRequested',
+      params: { deviceName: 'An’s phone' },
+    });
+    expect(track.trackParentAction).toHaveBeenCalledWith('device_ring', 'success');
+  });
+
+  it('still answers success when the log row is refused — the ring went out', async () => {
+    vi.spyOn(console, 'warn').mockImplementation(() => {});
+    repos.deviceRingRepository.ring.mockResolvedValueOnce({ locating: false });
+    repos.activityRepository.createActivity.mockRejectedValueOnce({
+      code: 'permissionDenied',
+    });
+
+    await expect(owner().ringDevice(phone)).resolves.toEqual({ locating: false });
+  });
+
+  it('names the device when it has no push token, in the phone’s sentence', async () => {
+    repos.deviceRingRepository.ring.mockRejectedValueOnce({
+      code: 'unknown',
+      serverCode: 'ring/child-no-push-token',
+    });
+
+    const error = await owner()
+      .ringDevice(phone)
+      .catch(e => e);
+    expect(error).toMatchObject({
+      appMessageKey: 'location.ringNotificationsOff',
+      appMessageParams: { deviceName: 'An’s phone' },
+    });
+    expect(repos.activityRepository.createActivity).not.toHaveBeenCalled();
+    expect(track.trackParentAction).toHaveBeenCalledWith('device_ring', 'failed');
   });
 });
 

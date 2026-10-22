@@ -95,6 +95,10 @@ export const location = {
     'Dieses Gerät konnte seine Position nur über die Internetverbindung schätzen. Schalte das WLAN am Gerät ein (eine Verbindung ist nicht nötig) und versuche es erneut.',
   requestUnsupported: 'Dieses Gerät kann seinen Standort nicht melden.',
   cardSharingOff: 'Standortfreigabe ist aus',
+  cardPaused: 'Pausiert – dieses Gerät teilt seinen Standort nicht mehr',
+  pausedChoiceNote:
+    'Angezeigt wird {{deviceName}}: {{pausedName}} ist pausiert und teilt seinen Standort nicht mehr',
+  pausedLocateHint: 'Mach es zum berichtenden Gerät, um zu sehen, wo es gerade ist',
   cardPermissionOff: 'Standort ist auf diesem Gerät nicht erlaubt',
   cardForegroundOnly:
     'Standort wird nur aktualisiert, solange KidGate auf diesem Gerät geöffnet ist',

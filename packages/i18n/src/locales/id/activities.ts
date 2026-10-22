@@ -22,19 +22,17 @@ export const activities = {
   emptyDescriptionDevice:
     'Pilih perangkat lain, atau tunggu peristiwa kunci, buka kunci, dan SOS dari perangkat ini.',
 
-  guestEmptyTitle: 'Umpan aktivitas Anda',
+  guestEmptyTitle: 'Aktivitas anak Anda',
   guestEmptyDescription:
-    'Setelah perangkat anak terhubung, peristiwa kunci, buka kunci, SOS, dan aplikasi akan muncul di sini secara langsung.',
-  guestSignInButton: 'Masuk',
-  guestCreateAccount: 'Buat akun orang tua',
-  guestSubtitle: 'Masuk untuk mengikuti aktivitas di perangkat anak Anda',
+    'Setelah perangkat anak terhubung, kunci dan buka kunci perangkat, SOS, serta aplikasi yang dibuka, diblokir, dipasang, atau dihapus langsung muncul di sini.',
+  guestSubtitle: 'Masuk untuk memantau aktivitas di perangkat anak Anda',
 
   guestPreviewHeading: 'Yang akan Anda lihat',
   guestPreviewLock: 'Perangkat terkunci',
   guestPreviewSos: 'Peringatan SOS',
   guestPreviewScreenTime: 'Pembaruan Waktu Layar',
   guestPreviewHint:
-    'Contoh — peristiwa asli muncul setelah Anda menghubungkan perangkat',
+    'Contoh — aktivitas sebenarnya muncul setelah Anda menghubungkan perangkat',
 
   activityTypeLocked: 'Terkunci',
   activityTypeUnlocked: 'Kunci dibuka',

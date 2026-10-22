@@ -137,20 +137,18 @@ export const report = {
   // The signed-out reports tab: a sample week, what the tab is for, and the
   // two ways in. `guestPreviewHint` is not decoration — the chart above it is
   // drawn from constants, and a week nobody measured has to say so.
-  guestPreviewHeading: 'आप क्या देखेंगे',
+  guestPreviewHeading: 'आपको कुछ ऐसा दिखेगा',
   guestPreviewHint: 'नमूना — कोई डिवाइस जोड़ते ही असली आंकड़े दिखने लगेंगे',
-  guestTitle: 'देखें कि हफ़्ता कहाँ बीता',
+  guestTitle: 'देखें कि इस हफ़्ते बच्चों का स्क्रीन टाइम कहाँ गया',
   guestDescription:
-    'साइन इन करें और आज की तुलना एक सामान्य दिन से करें, बच्चों को साथ-साथ देखें, और Premium के साथ हर सोमवार एक लिखित रिपोर्ट पाएँ।',
-  guestBenefitTrendTitle: 'आज, सामान्य के मुक़ाबले',
+    'साइन इन करके देखें कि आज का स्क्रीन टाइम आम दिनों से ज़्यादा है या कम, और अपने बच्चों की आपस में तुलना करें। Premium के साथ हर सोमवार एक लिखित रिपोर्ट भी मिलती है।',
+  guestBenefitTrendTitle: 'आम दिनों के मुक़ाबले आज',
   guestBenefitTrendBody:
-    'अकेला आंकड़ा कुछ नहीं कहता। आज को हमेशा आपके अपने परिवार के दैनिक औसत के सामने रखा जाता है।',
-  guestBenefitChildTitle: 'हर बच्चा, साथ-साथ',
+    'अकेली संख्या से कुछ पता नहीं चलता, इसलिए आज की तुलना आपके परिवार के ही रोज़ के औसत से होती है।',
+  guestBenefitChildTitle: 'सभी बच्चे एक ही नज़र में',
   guestBenefitChildBody:
-    'हर बच्चे के दिन का हिस्सा, उसके अपने रंग में, उसके हर डिवाइस पर।',
+    'दिन के स्क्रीन टाइम में हर बच्चे का हिस्सा उसके अपने रंग में दिखता है, उसके सभी डिवाइस मिलाकर।',
   guestBenefitWeeklyTitle: 'Premium के साथ हर सोमवार एक रिपोर्ट',
   guestBenefitWeeklyBody:
-    'क्या बदला, कौन-से ऐप बढ़े और देर रात का समय — एक साल तक सहेजा जाता है।',
-  guestSignInButton: 'साइन इन करें',
-  guestCreateAccount: 'अभिभावक खाता बनाएँ',
+    'क्या बदला, किन ऐप का इस्तेमाल बढ़ा और देर रात तक चला स्क्रीन टाइम — रिपोर्टें एक साल तक सहेजी रहती हैं।',
 } as const;

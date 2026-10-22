@@ -105,6 +105,10 @@ export function buildAttention({
             })
           : timeAgo(req.createdAt),
         action: 'review',
+        // The phone's two answers. The rail's one-action rule is about site
+        // requests, whose decline has a home on Controls; a time request has
+        // no other place on this surface, so "Not now" sits beside Approve.
+        secondary: 'decline',
       }),
     );
   /*

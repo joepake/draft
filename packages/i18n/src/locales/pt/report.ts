@@ -151,18 +151,16 @@ export const report = {
   guestPreviewHeading: 'O que você verá',
   guestPreviewHint:
     'Exemplo — os números reais aparecem depois de conectar um dispositivo',
-  guestTitle: 'Veja para onde foi a semana',
+  guestTitle: 'Veja onde foi parar o tempo nesta semana',
   guestDescription:
-    'Entre para medir hoje contra um dia normal, comparar seus filhos lado a lado e, com o Premium, receber um relatório por escrito toda segunda-feira.',
-  guestBenefitTrendTitle: 'Hoje, contra o normal',
+    'Entre para ver como hoje se compara a um dia normal e comparar seus filhos lado a lado. Com o Premium, você também recebe um relatório escrito toda segunda-feira.',
+  guestBenefitTrendTitle: 'Hoje comparado a um dia normal',
   guestBenefitTrendBody:
-    'Um número sozinho não diz nada. Hoje é sempre traçado contra a média diária da sua própria família.',
-  guestBenefitChildTitle: 'Cada filho, lado a lado',
+    'O uso de hoje aparece ao lado da média diária da sua família, para você saber se é muito ou pouco.',
+  guestBenefitChildTitle: 'Compare seus filhos lado a lado',
   guestBenefitChildBody:
-    'A parte do dia de cada filho, na cor dele, em todos os dispositivos que usa.',
+    'Veja o tempo de cada criança no dia, cada uma com sua cor, somando todos os dispositivos que usa.',
   guestBenefitWeeklyTitle: 'Um relatório toda segunda-feira, com o Premium',
   guestBenefitWeeklyBody:
-    'O que mudou, quais apps cresceram e as noites tarde — guardado por um ano.',
-  guestSignInButton: 'Entrar',
-  guestCreateAccount: 'Criar conta de responsável',
+    'O que mudou, o uso noturno e em quais apps o tempo aumentou. Os relatórios ficam salvos por um ano.',
 } as const;

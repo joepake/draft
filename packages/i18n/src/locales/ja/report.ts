@@ -139,20 +139,18 @@ export const report = {
   // The signed-out reports tab: a sample week, what the tab is for, and the
   // two ways in. `guestPreviewHint` is not decoration — the chart above it is
   // drawn from constants, and a week nobody measured has to say so.
-  guestPreviewHeading: '表示内容',
-  guestPreviewHint: 'サンプルです。デバイスを接続すると実際の数値が表示されます',
-  guestTitle: '今週がどこへ消えたかを見る',
+  guestPreviewHeading: '確認できる内容',
+  guestPreviewHint: 'サンプルです。デバイスを接続すると、実際の数値が表示されます。',
+  guestTitle: '1週間の時間の使い道がわかります',
   guestDescription:
-    'ログインすると、今日を普段の日と比べたり、子どもたちを並べて確認したりできます。Premiumなら、毎週月曜日にレポートも届きます。',
-  guestBenefitTrendTitle: '今日と、普段の比較',
+    'ログインすると、今日の利用時間を普段と比べたり、お子さま同士を並べて見比べたりできます。Premiumなら、毎週月曜日にレポートも届きます。',
+  guestBenefitTrendTitle: '今日を普段と比べる',
   guestBenefitTrendBody:
-    '数字だけでは何もわかりません。今日は必ずご家庭自身の1日平均と並べて描かれます。',
-  guestBenefitChildTitle: '子どもごとに並べて',
+    '数字だけでは多いか少ないかわかりません。今日の利用時間を、ご家庭の1日平均と並べて表示します。',
+  guestBenefitChildTitle: '子どもごとに並べて比べる',
   guestBenefitChildBody:
-    '各デバイスを通じた1日の使用割合を、子どもごとの色で表示します。',
+    'すべてのデバイスの利用を合わせて、1日の内訳をお子さまごとに色分けして表示します。',
   guestBenefitWeeklyTitle: '毎週月曜日のレポート（Premium）',
   guestBenefitWeeklyBody:
-    '何が変わったか、どのアプリが増えたか、夜更かしは何度か。1年間保存されます。',
-  guestSignInButton: 'ログイン',
-  guestCreateAccount: '保護者アカウントを作成',
+    '何が変わったか、どのアプリの利用が増えたか、夜更かしは何度あったか。1年間保存されます。',
 } as const;

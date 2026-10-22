@@ -80,6 +80,16 @@ export type UserGuideTopicConfig = {
   /** One entry per step, in order. Length is pinned to `stepCount` by a test. */
   stepDevices?: GuideStepDevice[];
   /**
+   * The parent steps, 1-based, that walk the phone app's own screens.
+   *
+   * The dashboard renders the same words, and a browser has no scan, no PIN
+   * setup, no widget and a different path to most editors — 2026-10-22 counted
+   * over thirty steps a web parent could not follow. Tagging is cheaper than a
+   * second set of steps in fourteen packs that would drift from the first. Only
+   * the dashboard reads it; the phone is already where these steps happen.
+   */
+  phoneSteps?: number[];
+  /**
    * Show the pointer to the child device's own setup wizard.
    *
    * For the permission topics that is the better route by a distance: the
@@ -101,18 +111,31 @@ export const USER_GUIDE_TOPICS: UserGuideTopicConfig[] = [
     groupId: 'gettingStarted',
     icon: 'user',
     stepCount: 7,
+    phoneSteps: [1, 2, 3, 4, 5, 6, 7],
   },
   {
     id: 'getStartedChild',
     groupId: 'gettingStarted',
     icon: 'smartphone',
     stepCount: 6,
+    phoneSteps: [3],
   },
   {
     id: 'connectChild',
     groupId: 'connection',
     icon: 'devices',
     stepCount: 8,
+    stepDevices: [
+      'child',
+      'parent',
+      'parent',
+      'parent',
+      'child',
+      'parent',
+      'parent',
+      'child',
+    ],
+    phoneSteps: [2, 3, 4, 6],
   },
   // The three non-phone agents: each pairs from the parent's phone but is
   // installed and set up on the child's own screen, so every step is tagged.
@@ -123,6 +146,7 @@ export const USER_GUIDE_TOPICS: UserGuideTopicConfig[] = [
     groupId: 'connection',
     icon: 'mac',
     stepCount: 7,
+    phoneSteps: [4],
     stepDevices: ['child', 'child', 'child', 'parent', 'child', 'child', 'parent'],
   },
   {
@@ -143,6 +167,7 @@ export const USER_GUIDE_TOPICS: UserGuideTopicConfig[] = [
     groupId: 'connection',
     icon: 'tv',
     stepCount: 7,
+    phoneSteps: [3],
     stepDevices: ['child', 'child', 'parent', 'child', 'child', 'child', 'parent'],
   },
   {
@@ -150,6 +175,7 @@ export const USER_GUIDE_TOPICS: UserGuideTopicConfig[] = [
     groupId: 'connection',
     icon: 'extension',
     stepCount: 6,
+    phoneSteps: [3, 6],
     stepDevices: ['child', 'child', 'parent', 'child', 'parent', 'parent'],
   },
   {
@@ -157,18 +183,21 @@ export const USER_GUIDE_TOPICS: UserGuideTopicConfig[] = [
     groupId: 'connection',
     icon: 'mail',
     stepCount: 6,
+    phoneSteps: [1, 2, 4],
   },
   {
     id: 'joinFamily',
     groupId: 'connection',
     icon: 'home',
     stepCount: 5,
+    phoneSteps: [1, 2, 3, 4],
   },
   {
     id: 'manageDevices',
     groupId: 'connection',
     icon: 'pencil',
     stepCount: 5,
+    phoneSteps: [1, 3, 5],
   },
   {
     id: 'androidPermissions',
@@ -217,12 +246,15 @@ export const USER_GUIDE_TOPICS: UserGuideTopicConfig[] = [
     groupId: 'controls',
     icon: 'moon',
     stepCount: 6,
+    phoneSteps: [2, 4],
   },
   {
     id: 'blockedApps',
     groupId: 'controls',
     icon: 'ban',
     stepCount: 7,
+    stepDevices: ['child', 'child', 'child', 'parent', 'parent', 'child', 'child'],
+    phoneSteps: [5],
   },
   {
     id: 'lockUnlock',
@@ -237,18 +269,21 @@ export const USER_GUIDE_TOPICS: UserGuideTopicConfig[] = [
     groupId: 'controls',
     icon: 'message',
     stepCount: 6,
+    phoneSteps: [1, 2, 3, 4, 5, 6],
   },
   {
     id: 'appLimits',
     groupId: 'controls',
     icon: 'apps',
     stepCount: 5,
+    phoneSteps: [1, 3, 4, 5],
   },
   {
     id: 'pauseBrowsing',
     groupId: 'controls',
     icon: 'hourglass',
     stepCount: 5,
+    phoneSteps: [2],
   },
   // Both are a round trip between the two phones — the child asks or claims,
   // the parent answers — so every step is tagged.
@@ -257,6 +292,7 @@ export const USER_GUIDE_TOPICS: UserGuideTopicConfig[] = [
     groupId: 'controls',
     icon: 'plus',
     stepCount: 5,
+    phoneSteps: [2, 3, 5],
     stepDevices: ['child', 'parent', 'parent', 'child', 'parent'],
   },
   {
@@ -264,6 +300,7 @@ export const USER_GUIDE_TOPICS: UserGuideTopicConfig[] = [
     groupId: 'controls',
     icon: 'star',
     stepCount: 6,
+    phoneSteps: [2, 4, 5],
     stepDevices: ['parent', 'parent', 'child', 'parent', 'parent', 'parent'],
   },
   {
@@ -271,6 +308,7 @@ export const USER_GUIDE_TOPICS: UserGuideTopicConfig[] = [
     groupId: 'safety',
     icon: 'mapPin',
     stepCount: 6,
+    phoneSteps: [3, 4, 6],
   },
   {
     id: 'checkIn',
@@ -283,25 +321,30 @@ export const USER_GUIDE_TOPICS: UserGuideTopicConfig[] = [
     groupId: 'safety',
     icon: 'siren',
     stepCount: 6,
+    phoneSteps: [4, 5],
     stepDevices: ['child', 'child', 'child', 'parent', 'parent', 'parent'],
   },
   {
     id: 'webFilter',
     groupId: 'safety',
     icon: 'globe',
-    stepCount: 4,
+    stepCount: 5,
+    stepDevices: ['parent', 'parent', 'parent', 'parent', 'child'],
+    phoneSteps: [3],
   },
   {
     id: 'protectionAlerts',
     groupId: 'safety',
     icon: 'shieldAlert',
     stepCount: 5,
+    phoneSteps: [5],
   },
   {
     id: 'usageReports',
     groupId: 'reports',
     icon: 'chart',
     stepCount: 5,
+    phoneSteps: [1, 2],
   },
   // What counts, per platform: `KidGateUsageTimeline.fold` on Android,
   // `policy.rs` `fold_sample` and `workspace::pip_apps` on a computer, the
@@ -317,6 +360,7 @@ export const USER_GUIDE_TOPICS: UserGuideTopicConfig[] = [
     groupId: 'reports',
     icon: 'grid',
     stepCount: 5,
+    phoneSteps: [1, 2, 3, 4],
     stepDevices: ['parent', 'parent', 'parent', 'parent', 'child'],
   },
   {
@@ -324,12 +368,14 @@ export const USER_GUIDE_TOPICS: UserGuideTopicConfig[] = [
     groupId: 'reports',
     icon: 'activity',
     stepCount: 5,
+    phoneSteps: [2, 3],
   },
   {
     id: 'videoHistory',
     groupId: 'reports',
     icon: 'play',
     stepCount: 5,
+    phoneSteps: [2],
     // Step 3 is the notification-access grant on the child's Android phone:
     // without it the switch reads "Recording" and the list stays empty.
     stepDevices: ['parent', 'parent', 'child', 'parent', 'parent'],
@@ -339,12 +385,14 @@ export const USER_GUIDE_TOPICS: UserGuideTopicConfig[] = [
     groupId: 'reports',
     icon: 'appInstall',
     stepCount: 5,
+    phoneSteps: [2, 4],
   },
   {
     id: 'messageAlerts',
     groupId: 'reports',
     icon: 'message',
     stepCount: 5,
+    phoneSteps: [2, 3],
     stepDevices: ['child', 'parent', 'parent', 'child', 'parent'],
   },
   {
@@ -352,42 +400,49 @@ export const USER_GUIDE_TOPICS: UserGuideTopicConfig[] = [
     groupId: 'gettingStarted',
     icon: 'users',
     stepCount: 5,
+    phoneSteps: [1, 2, 3, 5],
   },
   {
     id: 'plans',
     groupId: 'account',
     icon: 'crown',
     stepCount: 5,
+    phoneSteps: [1, 5],
   },
   {
     id: 'notificationSettings',
     groupId: 'account',
     icon: 'bell',
     stepCount: 5,
+    phoneSteps: [1, 2, 3, 4, 5],
   },
   {
     id: 'appLanguage',
     groupId: 'account',
     icon: 'globe',
     stepCount: 4,
+    phoneSteps: [1, 2, 3],
   },
   {
     id: 'appearance',
     groupId: 'account',
     icon: 'palette',
     stepCount: 6,
+    phoneSteps: [1, 2, 3, 4],
   },
   {
     id: 'webSignIn',
     groupId: 'account',
     icon: 'globe',
     stepCount: 5,
+    phoneSteps: [2, 3, 4],
   },
   {
     id: 'securityPins',
     groupId: 'account',
     icon: 'key',
     stepCount: 5,
+    phoneSteps: [1, 3, 5],
   },
   {
     id: 'reportProblem',
@@ -400,6 +455,7 @@ export const USER_GUIDE_TOPICS: UserGuideTopicConfig[] = [
     groupId: 'account',
     icon: 'trash',
     stepCount: 5,
+    phoneSteps: [1, 3],
   },
 ];
 

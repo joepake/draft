@@ -72,10 +72,9 @@ export const settings = {
   themeStyleLabel: 'Estilo del tema',
   themeColorLabel: 'Color del tema',
   signOutButton: 'Cerrar sesión',
-  signInButton: 'Iniciar sesión',
   switchToChildDevice: 'Usar este teléfono como dispositivo del niño',
   guestAccountHint:
-    'Inicia sesión para sincronizar dispositivos, alertas y tu plan familiar.',
+    'Inicia sesión para tener al día los dispositivos, las alertas y tu plan familiar.',
   reportModalTitle: 'Informar de un problema',
   reportMessageLabel: 'Describe el problema que estás experimentando.',
   reportMessagePlaceholder: 'Describe el error o problema…',

@@ -9,7 +9,7 @@ export const plans = {
   pillTrialActiveFallback: 'Testphase aktiv',
   statusTrialEndedTitle: 'Testphase beendet',
   statusTrialEndedSubtitle:
-    'Tageslimit, Sperrzeiten, Blockierte Apps, Standort und der Webfilter-Schalter laufen kostenlos weiter. Abonniere für Live-Updates, Verlauf, Warnungen und Berichte.',
+    'Deine Regeln laufen kostenlos weiter. Abonniere für Live-Updates, Verlauf, Warnungen und Berichte.',
   pillTrialEnded: 'Testphase beendet',
   statusStartTrialTitle: 'Starte deine Testphase',
   statusStartTrialSubtitle:
@@ -65,7 +65,7 @@ export const plans = {
   compareActivityFeedPremium: '30 Tage',
   compareChildReport: 'Berichte pro Kind',
   compareIncluded:
-    'Beide Tarife enthalten Tageslimit, Sperrzeiten, Blockierte Apps, Genehmigung neuer Apps, Webfilter, Gerätesperre, SOS, Zeitanfragen und Belohnungsaufgaben auf iPhone, Android, Mac und Windows in einer Familie, dazu das Web-Dashboard sowie App-Limits auf Android, Mac und Windows. Android TV und Chromebook werden ebenfalls unterstützt, mit weniger Einstellmöglichkeiten.',
+    'Beide Tarife enthalten Tageslimit, Sperrzeiten, App-Limits, Gerätesperre, SOS, Zeitanfragen, Belohnungsaufgaben und das Web-Dashboard.',
   sectionWhyPremium: 'Was Premium dazugibt',
   sectionWhyPremiumSubtitle:
     'Jede Regel läuft auch kostenlos weiter. Premium erweitert, was du siehst – und wie schnell du es siehst.',
@@ -119,12 +119,10 @@ export const plans = {
   viewFamilyPlanStatus: 'Planstatus ansehen',
   onlyOwnerCanSubscribe:
     'Nur der Familieninhaber kann abonnieren oder Käufe wiederherstellen.',
-  memberSubscriptionNotice:
-    'Ein Plan deckt die gesamte Familie ab, und nur der Inhaber zahlt. Du kannst sehen, ob die Familie in der Testphase ist oder abonniert hat.',
   memberTrialActiveSubtitle:
     'Diese Familie ist in der Testphase. Danach laufen alle Regeln auf allen Geräten weiter, und ein Gerät sendet weiter Berichte; der Inhaber kann für Live-Aktivität, Verlauf und Berichte von allen Geräten abonnieren.',
   memberTrialEndedSubtitle:
-    'Die Testphase dieser Familie ist beendet. Tageslimit, Sperrzeiten, Blockierte Apps, Standort und der Webfilter-Schalter funktionieren weiterhin. Frag den Familieninhaber, ob er Premium für Live-Updates, Verlauf und Warnungen abonniert.',
+    'Die Regeln der Familie laufen weiter. Frag den Familieninhaber, ob er Premium für Live-Updates, Verlauf und Warnungen abonniert.',
   memberSetupTrialSubtitle:
     'Die Testphase beginnt, sobald der Inhaber ein Elterngerät und ein Kindergerät verbindet.',
   premiumActivatedTitle: 'Premium freigeschaltet',
@@ -181,7 +179,7 @@ export const plans = {
   sectionFreePlan: 'Wenn du nie abonnierst',
   devicesUnlimited: 'Jedes Kindergerät sendet Berichte',
   featureFootnotePlatforms:
-    'Einige Funktionen hängen davon ab, was die jeweilige Plattform zulässt, also sind nicht alle auf jedem Gerät verfügbar.',
+    'Aufgrund der Einschränkungen der jeweiligen Plattform sind manche Funktionen möglicherweise nicht auf allen Geräten verfügbar.',
   sectionPlatforms: 'Wo KidGate läuft',
   platformIos: 'iPhone und iPad',
   platformIosDetail: 'Eltern- oder Kindgerät · iOS 16 und neuer',

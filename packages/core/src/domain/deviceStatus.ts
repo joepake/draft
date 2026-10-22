@@ -101,24 +101,11 @@ export function getEffectiveDeviceStatus(
    * device detail. One miss can be a dropped push; two is a device that is
    * not there, and it stays offline across re-asks until it speaks.
    */
-  const requestedAtMs = reportRequestedAtMs(device.reportRequestId);
-  const awaitingAnswer = requestedAtMs !== null && requestedAtMs > lastActiveMs;
-  const missed = awaitingAnswer
-    ? reportRequestMisses(device.reportRequestId) +
-      (nowMs - requestedAtMs > REPORT_REQUEST_UNANSWERED_MS ? 1 : 0)
-    : 0;
-  if (missed >= REPORT_REQUEST_MISSES_OFFLINE) {
+  const evidence = requestEvidence(device, nowMs, lastActiveMs);
+  if (evidence === 'missed') {
     return 'offline';
   }
-  /*
-   * **The doubt stops where the protection summary says "inactive".** The
-   * phone console re-asks every five minutes while the family screen is open,
-   * so each new request re-armed it: a Windows PC silent for days showed a
-   * green dot inside a red "1 offline over 24 hours" pill on the same card
-   * (2026-10-04). Past `INACTIVE_THRESHOLD_MS` the request is no evidence.
-   */
-  const doubted = awaitingAnswer && age <= INACTIVE_THRESHOLD_MS;
-  if (age > thresholdMs && !doubted) {
+  if (age > thresholdMs && evidence !== 'awaited') {
     return 'offline';
   }
 
@@ -145,6 +132,60 @@ export function getEffectiveDeviceStatus(
 
   return 'online';
 }
+
+/**
+ * What the console's last report request says about this device:
+ * `'missed'` — two asks in a row unanswered, offline whatever else is true;
+ * `'awaited'` — asked, not answered yet, and still worth the doubt; null —
+ * never asked, answered since, or silent too long for a request to count.
+ */
+function requestEvidence(
+  device: Device,
+  nowMs: number,
+  lastActiveMs: number,
+): 'missed' | 'awaited' | null {
+  const requestedAtMs = reportRequestedAtMs(device.reportRequestId);
+  if (!(requestedAtMs !== null && requestedAtMs > lastActiveMs)) {
+    return null;
+  }
+  const missed =
+    reportRequestMisses(device.reportRequestId) +
+    (nowMs - requestedAtMs > REPORT_REQUEST_UNANSWERED_MS ? 1 : 0);
+  if (missed >= REPORT_REQUEST_MISSES_OFFLINE) {
+    return 'missed';
+  }
+  /*
+   * **The doubt stops where the protection summary says "inactive".** The
+   * phone console re-asks every five minutes while the family screen is open,
+   * so each new request re-armed it: a Windows PC silent for days showed a
+   * green dot inside a red "1 offline over 24 hours" pill on the same card
+   * (2026-10-04). Past `INACTIVE_THRESHOLD_MS` the request is no evidence.
+   */
+  return nowMs - lastActiveMs <= INACTIVE_THRESHOLD_MS ? 'awaited' : null;
+}
+
+/**
+ * Whether `getEffectiveDeviceStatus`'s Online rests on the doubt alone: the
+ * device's own stamp is past its offline window and only an unanswered
+ * request is keeping it green.
+ */
+function onlineOnDoubtAlone(device: Device, nowMs: number): boolean {
+  if (device.monitoringState === 'parked' || !device.lastActiveAt) {
+    return false;
+  }
+  const lastActiveMs = new Date(device.lastActiveAt).getTime();
+  return (
+    nowMs - lastActiveMs > offlineThresholdForBeat(device.beatIntervalMs) &&
+    requestEvidence(device, nowMs, lastActiveMs) === 'awaited'
+  );
+}
+
+/**
+ * What a console's chip can say: the stored statuses plus `'checking'`, which
+ * is a console's word alone — never written, never sent, so it is not in
+ * `@kidgate/schema/device`'s `DeviceStatus`.
+ */
+export type ShownDeviceStatus = Device['status'] | 'checking';
 
 /**
  * How recent a person's use must be for a console to say Online — operator's
@@ -194,10 +235,22 @@ export function lastActivityInfoKey(
  * what the chip calls Online. Parked and Locked pass through, and a device
  * that cannot say when it was used (the iPhone) keeps the check-in rule
  * rather than reading Offline forever.
+ *
+ * **Checking, not Online, while the doubt is all there is** (operator,
+ * 2026-10-22). An iPhone silent seven hours read "Online" beside "last
+ * connected 7 hours ago" for the minutes the console's request was out — the
+ * doubt is right not to paint it red, and wrong to call it reachable before it
+ * has answered. Muted on every surface, and not counted online.
  */
-export function getShownDeviceStatus(device: Device, nowMs: number): Device['status'] {
+export function getShownDeviceStatus(device: Device, nowMs: number): ShownDeviceStatus {
   const status = getChipDeviceStatus(getEffectiveDeviceStatus(device, nowMs), device);
-  if (status !== 'online' || !reportsUse(device)) {
+  if (status !== 'online') {
+    return status;
+  }
+  if (onlineOnDoubtAlone(device, nowMs)) {
+    return 'checking';
+  }
+  if (!reportsUse(device)) {
     return status;
   }
   const usedMs = device.lastUsedAt ? Date.parse(device.lastUsedAt) : NaN;
@@ -256,9 +309,9 @@ export function lastActivity(source: {
  * makes the same exception for the same reason.
  */
 export function getChipDeviceStatus(
-  status: Device['status'],
+  status: ShownDeviceStatus,
   device: Device,
-): Device['status'] {
+): ShownDeviceStatus {
   if (status !== 'locked' || device.monitoringState === 'parked') {
     return status;
   }
@@ -272,7 +325,7 @@ export function getChipDeviceStatus(
  * through `getChipDeviceStatus`; passing it twice is the same answer.
  */
 export function getDeviceStatusLabel(
-  status: Device['status'],
+  status: ShownDeviceStatus,
   t: TranslateFn,
   device?: Device,
 ): string {
@@ -287,6 +340,9 @@ export function getDeviceStatusLabel(
   // app pack and does not have `shared` on its list.
   if (shown === 'parked') {
     return t('family.devicePausedLabel');
+  }
+  if (shown === 'checking') {
+    return t('family.deviceCheckingLabel');
   }
   return t('shared.offline');
 }

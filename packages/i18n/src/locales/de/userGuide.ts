@@ -52,9 +52,9 @@ export const userGuide = {
       tip: 'Lege die Eltern-PIN frühzeitig fest. Du benötigst sie, um sensible Einstellungen zu ändern und Steuerungen auf dem Kindergerät zu entsperren.',
       steps: {
         '1': 'Installiere KidGate auf deinem Gerät. Öffne die App und wähle „Dies ist ein Elterngerät“.',
-        '2': 'Melde dich mit Google oder Apple an, oder erstelle ein E-Mail-Konto.',
+        '2': 'Wähle „KidGate beitreten“ und melde dich mit Google oder Apple an, oder erstelle ein E-Mail-Konto.',
         '3': 'Öffne Familie, wähle „Familie erstellen“ und gib deiner Familie einen Namen (zum Beispiel „Familie Müller“). Dieser Name wird angezeigt, wenn andere Elternteile beitreten. Hat ein anderer Elternteil deine Familie bereits erstellt, wähle stattdessen „Familie beitreten“.',
-        '4': 'Lege eine Eltern-PIN (6 Ziffern) unter Einstellungen, dann Sicherheit fest. Merke sie dir oder bewahre sie an einem sicheren Ort auf und teile sie nicht mit Kindern.',
+        '4': 'Wenn du der Familieninhaber bist, lege eine Eltern-PIN (6 Ziffern) unter Einstellungen, dann Sicherheit fest. Merke sie dir oder bewahre sie an einem sicheren Ort auf und teile sie nicht mit Kindern.',
         '5': 'Empfohlen: Aktiviere App-Sperre und biometrische Entsperrung in den Einstellungen, damit niemand sonst die Eltern-App auf deinem Gerät öffnen kann.',
         '6': 'Öffne Familie und tippe auf das Scan-Symbol („Code scannen“). Die Kamera öffnet sich sofort: Scanne den QR-Code auf dem Kindergerät oder wähle „Code manuell eingeben“ und gib den Code ein.',
         '7': 'Sobald das Kindergerät verbunden ist, fragt KidGate, wer es nutzt: Wähle dein Kind (oder füge eines hinzu) oder „Niemand“ für ein geteiltes Gerät. Öffne dann unter Familie das Profil deines Kindes (oder das Gerät, falls es keinem Kind zugewiesen ist). Lege gemeinsam mit deinem Kind das Tageslimit und die Sperrzeiten fest und schließe die Berechtigungen ab.',
@@ -78,7 +78,7 @@ export const userGuide = {
       title: 'Das Handy oder Tablet eines Kindes verbinden',
       summary:
         'Koppele ein neues Kindergerät mit deiner Familie per QR-Code oder Code.',
-      tip: 'Codes laufen ab. Wenn die Kopplung fehlschlägt, wähle auf dem Kindergerät „Neuer Code“ und versuche es erneut.',
+      tip: 'Codes laufen ab. Wenn die Kopplung fehlschlägt, wähle auf dem Kindergerät „Neuer Code“ und versuche es erneut. Im Gratis-Tarif sendet nur ein Gerät Berichte, und nur dort kannst du Regeln verschärfen – ein weiteres Gerät, das du koppelst, startet deshalb pausiert.',
       steps: {
         '1': 'Auf dem Kindergerät: Öffne KidGate, dann „Dies ist ein Kindergerät“. Lasse den QR-Code-Bildschirm sichtbar.',
         '2': 'Auf dem Elterngerät: Öffne Familie und tippe auf das Scan-Symbol („Code scannen“).',
@@ -86,7 +86,7 @@ export const userGuide = {
         '4': 'Oder verwende den Code: Wähle „Code manuell eingeben“, gib die 6 auf dem Kindergerät angezeigten Zeichen ein und fahre fort.',
         '5': 'Lies auf dem Kindergerät den Bestätigungsbildschirm sorgfältig durch. Wähle „Ja, verbinden“ nur, wenn der Elternname korrekt ist.',
         '6': 'Warte, bis das Elterngerät die Verbindung bestätigt. Der Familieninhaber wird dann gefragt, wer das neue Gerät nutzt: Wähle ein Kind oder „Niemand“ für ein geteiltes Gerät. Das Gerät erscheint unter „Familie“.',
-        '7': 'Öffne das neue Gerät und prüfe, ob sich „Zuletzt aktiv“ aktualisiert. Bleibt es offline, öffne KidGate erneut auf dem Kindergerät und überprüfe die Netzwerkverbindung.',
+        '7': 'Öffne das neue Gerät und prüfe, ob „Zuletzt aktiv“ eine Zeit anzeigt (auf einem iPhone: Zuletzt verbunden). Online bedeutet, dass jemand das Gerät in den letzten 10 Minuten genutzt hat – ein Gerät, das niemand nutzt, wird daher als Offline angezeigt, obwohl es noch verbunden ist. Erscheint keine Zeit, öffne KidGate erneut auf dem Kindergerät und überprüfe die Netzwerkverbindung.',
         '8': 'Erteile als Nächstes die Berechtigungen auf dem Kindergerät (siehe die Gruppe App-Berechtigungen). Die Steuerungen funktionieren erst vollständig, wenn diese Berechtigungen aktiv sind.',
       },
     },
@@ -102,8 +102,8 @@ export const userGuide = {
         '3': 'Öffne KidGate auf dem Computer. Die App zeigt einen QR-Code und einen 6-stelligen Code an; eine Anmeldung ist nicht nötig. Ist das Fenster geschlossen, klicke auf das KidGate-Symbol in der Menüleiste (Mac) oder im Infobereich (Windows).',
         '4': 'Öffne auf deinem Gerät Familie, tippe auf das Scan-Symbol („Code scannen“) und scanne den QR-Code – oder wähle „Code manuell eingeben“ und gib den Code ein.',
         '5': 'Prüfe auf dem Computer den Elternnamen und wähle „Ja, verbinden“.',
-        '6': 'Gehe die Schritte unter „Einrichtung dieses Geräts abschließen“ durch. Wähle auf einem Mac bei „Webfilter freigeben“ die Option „Einstellungen öffnen“ und schalte KidGate auf der Seite ein, die sich dann öffnet – der Webfilter läuft erst, wenn du das getan hast. Wähle „Erlauben“ für Standort und Kamera.',
-        '7': 'Wähle anschließend auf deinem Gerät aus, welches Kind den Computer nutzt. Die zu blockierenden Apps werden direkt auf dem Computer ausgewählt, nach Eingabe der Eltern-PIN („Apps zum Blockieren auswählen“).',
+        '6': 'Gehe die Schritte unter „Einrichtung dieses Geräts abschließen“ durch. Wähle auf einem Mac bei „Webfilter freigeben“ die Option „Einstellungen öffnen“ und schalte KidGate auf der Seite ein, die sich dann öffnet – der Webfilter läuft erst, wenn du das getan hast. Wähle auf einem Mac „Erlauben“ für Standort und Kamera. Schalte unter Windows KidGate für beide in den Einstellungen unter Datenschutz & Sicherheit ein, wenn der Schritt dich dazu auffordert.',
+        '7': 'Auf deinem Gerät wählt anschließend der Familieninhaber aus, welches Kind den Computer nutzt. Die zu blockierenden Apps werden direkt auf dem Computer ausgewählt, nach Eingabe der Eltern-PIN („Apps zum Blockieren auswählen“).',
       },
     },
     updateComputer: {
@@ -132,9 +132,9 @@ export const userGuide = {
         '2': 'Öffne KidGate auf dem Fernseher. Die App zeigt einen QR-Code und einen 6-stelligen Code an; eine Anmeldung ist nicht nötig.',
         '3': 'Öffne auf deinem Gerät Familie, tippe auf das Scan-Symbol („Code scannen“) und scanne den QR-Code auf dem Fernseher – oder wähle „Code manuell eingeben“ und gib den Code ein.',
         '4': 'Der Fernseher verbindet sich innerhalb weniger Sekunden von selbst. Mit der Fernbedienung musst du nichts bestätigen.',
-        '5': 'Folge auf dem Fernseher den Schritten unter „Schutz einrichten“: Wähle „Einstellungen öffnen“, um Bedienungshilfen, Nutzungszugriff und Über anderen Apps anzeigen einzuschalten, und bestätige dann die VPN-Verbindung, damit der Webfilter laufen kann.',
+        '5': 'Folge auf dem Fernseher den Schritten unter „Schutz einrichten“: Wähle „Zustimmen“, um Bedienungshilfen einzuschalten, und „Einstellungen öffnen“ für Nutzungszugriff und Über anderen Apps anzeigen, dann „VPN aktivieren“ und bestätige die Verbindung, damit der Webfilter laufen kann.',
         '6': 'Bleibt eine Einstellung nicht aktiv, starte den Fernseher neu und versuche es erneut. Du kannst „Schutz einrichten“ über den Hauptbildschirm von KidGate auf dem Fernseher erneut öffnen.',
-        '7': 'Wähle anschließend auf deinem Gerät aus, welches Kind den Fernseher nutzt. Die zu blockierenden Apps werden direkt auf dem Fernseher ausgewählt, nach Eingabe der Eltern-PIN.',
+        '7': 'Auf deinem Gerät wählt anschließend der Familieninhaber aus, welches Kind den Fernseher nutzt. Die zu blockierenden Apps werden direkt auf dem Fernseher ausgewählt, nach Eingabe der Eltern-PIN.',
       },
     },
     connectChrome: {
@@ -148,8 +148,8 @@ export const userGuide = {
         '2': 'Wähle das KidGate-Symbol in der Chrome-Symbolleiste. Siehst du es nicht, pinne es über das Menü „Erweiterungen“ (Puzzleteil-Symbol) an. Das Pop-up zeigt einen QR-Code und einen 6-stelligen Code; lasse es geöffnet, während du koppelst.',
         '3': 'Öffne auf deinem Gerät Familie, tippe auf das Scan-Symbol („Code scannen“) und scanne den QR-Code – oder wähle „Code manuell eingeben“ und gib den Code ein.',
         '4': 'Prüfe im KidGate-Pop-up den Elternnamen und wähle „Ja, verbinden“.',
-        '5': 'Wähle anschließend auf deinem Gerät aus, welches Kind die Erweiterung nutzt, und schalte dann den Webfilter für sie ein. Bis dahin zeigt die Erweiterung „Inaktiv“ an.',
-        '6': 'Optional: Um zu sehen, welche Videos angesehen werden, öffne „Angesehene Videos“ und schalte „Angesehene Videos aufzeichnen“ für die Erweiterung ein.',
+        '5': 'Auf deinem Gerät wählt anschließend der Familieninhaber aus, welches Kind die Erweiterung nutzt; schalte dann den Webfilter für sie ein. Bis dahin zeigt die Erweiterung „Inaktiv“ an.',
+        '6': 'Optional, mit Premium: Um zu sehen, welche Videos angesehen werden, öffne „Angesehene Videos“ und schalte „Angesehene Videos aufzeichnen“ für die Erweiterung ein.',
       },
     },
     inviteParent: {
@@ -158,8 +158,8 @@ export const userGuide = {
         'Lass einen zweiten Elternteil derselben Familie beitreten und dieselben Kindergeräte verwalten.',
       tip: 'Nur der Familieninhaber kann Beitrittsanfragen genehmigen. Genehmige zeitnah, da Anfragen ablaufen können. Eine Familie kann im Gratis-Tarif und während der Testphase bis zu 3 Elternteile haben, mit Premium bis zu 6.',
       steps: {
-        '1': 'Öffne auf dem Gerät des Familieninhabers Familie, dann tippe auf +, dann „Elternteil einladen“.',
-        '2': 'Falls du noch keinen Familiennamen erstellt hast, gib einen ein und wähle „Familie erstellen“.',
+        '1': 'Öffne auf dem Gerät des Familieninhabers Familie. Hat deine Familie noch keinen Namen, tippe auf +, wähle „Familie erstellen“ und gib ihr einen Namen.',
+        '2': 'Tippe auf + und wähle „Elternteil einladen“.',
         '3': 'Zeige dem anderen Elternteil den Einladungs-QR-Code oder teile den Einladungscode mit ihm.',
         '4': 'Auf dem anderen Elterngerät: Öffne KidGate als Elternteil, dann Familie, und tippe auf das Scan-Symbol („Code scannen“). Scanne dann den Einladungs-QR-Code oder gib den Code ein.',
         '5': 'Öffne auf dem Gerät des Inhabers die ausstehende Anfrage und wähle „Genehmigen“. Lehne ab, wenn du die Person nicht erkennst.',
@@ -184,12 +184,12 @@ export const userGuide = {
         'Gib einem Gerät einen Namen, den alle erkennen, oder trenne eines, das dein Kind nicht mehr nutzt.',
       keywords:
         'koppeln aufheben, trennen, gerät löschen, altes handy, neues handy, verkauft, name ändern, zurücksetzen',
-      tip: 'Nur der Familieninhaber kann Geräte umbenennen oder entfernen. Das Entfernen lässt sich nicht rückgängig machen: Zeitanfragen und Aktivitätsverlauf des Geräts werden gelöscht. Um es wieder zu schützen, kopple es als neues Gerät.',
+      tip: 'Nur der Familieninhaber kann Geräte umbenennen oder entfernen. Das Entfernen lässt sich nicht rückgängig machen: Bildschirmzeit, Standort, Web- und Videoverlauf, Aktivitäten, App-Liste, SOS-Alarme, Check-ins, Anfragen und Belohnungsaufgaben des Geräts werden gelöscht. Um es wieder zu schützen, kopple es als neues Gerät.',
       steps: {
         '1': 'Um ein Gerät umzubenennen, öffne es über „Familie“ oder über dein Kind und wähle „Bearbeiten“ neben seinem Namen.',
         '2': 'Gib einen Namen ein, den alle Eltern auf einen Blick erkennen, und speichere ihn.',
         '3': 'Um ein Gerät zu entfernen, öffne es, wähle unten auf seinem Bildschirm „Gerät entfernen“ und bestätige. Im Tab „Kindergeräte“ der Familienkarte kannst du ein Gerät auch nach links wischen.',
-        '4': 'Das Gerät verlässt deine Familie, und KidGate zeigt auf dem Gerät an, dass es entfernt wurde.',
+        '4': 'Das Gerät verlässt deine Familie. Ein Handy zeigt an, dass es entfernt wurde; ein Computer, ein Fernseher oder die Chrome-Erweiterung kehrt zum Kopplungsbildschirm zurück.',
         '5': 'Um das Gerät wieder zu nutzen, etwa nach einem Zurücksetzen oder wenn es an ein anderes Kind geht, kopple es als neues Gerät: Öffne „Familie“ und tippe auf das Scan-Symbol („Code scannen“).',
       },
     },
@@ -201,14 +201,14 @@ export const userGuide = {
         'bedienungshilfen, nutzungszugriff, über anderen apps anzeigen, benachrichtigungen, geräteadministrator, deinstallationsschutz, mikrofon, vpn, erlauben',
       tip: 'Vollständigkeit ist wichtiger als die Reihenfolge. Führe jeden Schritt aus, den der Assistent anbietet, auch die optionalen, bevor du dich auf die Sperre oder Sperrzeiten verlässt. Ein übersprungener Schritt bleibt auf dem Status-Bildschirm stehen, bis du ihn erledigst.',
       steps: {
-        '1': 'Öffne KidGate auf dem Kindergerät und gehe zu „Status“. Wähle in der Karte „Einrichtung mit einem Elternteil abschließen“ den Eintrag „Einrichtung fortsetzen“. „Schutz einrichten“ führt dann Schritt für Schritt durch die Berechtigungen; die folgenden Schritte beschreiben jede einzelne.',
-        '2': 'Mitteilungen: Wähle „Erlauben“. KidGate braucht die Mitteilungen dieses Geräts für Zeitfreigaben und Erinnerungen.',
-        '3': 'Nutzungszugriff: Öffne den Systembildschirm, dann suche KidGate, dann schalte ihn ein. Dies ist für die Bildschirmzeit-Erfassung und Limits erforderlich.',
-        '4': 'Über anderen Apps anzeigen: Erlaube dies für KidGate. Dies ist erforderlich, damit der Sperrbildschirm über anderen Apps erscheinen kann.',
-        '5': 'Bedienungshilfen-Sperrfunktion: Lies den Hinweis und wähle „Zustimmen“; dann öffnet sich die Seite „Bedienungshilfen“. Öffnet sich eine Liste, suche KidGate unter „Installierte/Heruntergeladene Apps“, schalte es ein und wähle in der Bestätigung von Android „Erlauben“. So bleibt die Sperre durchgesetzt.',
+        '1': 'Öffne KidGate auf dem Kindergerät und gehe zu „Status“. Wähle in der Karte „Einrichtung mit einem Elternteil abschließen“ den Eintrag „Einrichtung fortsetzen“ (sobald die Pflichtschritte erledigt sind, steht auf der Karte „Der Basisschutz ist aktiv“ mit „Jetzt verstärken“). „Schutz einrichten“ führt dann Schritt für Schritt durch die Berechtigungen, in der Reihenfolge der folgenden Schritte.',
+        '2': 'Nutzungszugriff: Öffne den Systembildschirm, dann suche KidGate, dann schalte ihn ein. Dies ist für die Bildschirmzeit-Erfassung und Limits erforderlich.',
+        '3': 'Bedienungshilfen-Sperrfunktion: Lies den Hinweis und wähle „Zustimmen“; dann öffnet sich die Seite „Bedienungshilfen“. Öffnet sich eine Liste, suche KidGate unter „Installierte/Heruntergeladene Apps“, schalte es ein und wähle in der Bestätigung von Android „Erlauben“. So bleibt die Sperre durchgesetzt.',
+        '4': 'Über anderen Apps anzeigen: Erlaube dies für KidGate, damit der Sperrbildschirm über anderen Apps erscheinen kann. Danach Mitteilungen: Wähle „Erlauben“. KidGate braucht die Mitteilungen dieses Geräts für Zeitfreigaben und Erinnerungen.',
+        '5': 'Standort: Wähle „Immer zulassen“, sonst wird die Karte nur aktualisiert, solange KidGate geöffnet ist. Ist der Webfilter eingeschaltet, verlangt der nächste Schritt das zugehörige VPN: Wähle „VPN aktivieren“ und bestätige die Anfrage von Android.',
         '6': 'Akku ohne Einschränkung: Wähle bei Aufforderung „Erlauben“. Erscheint keine Aufforderung: App-Info, dann Akku, dann Ohne Einschränkung.',
         '7': 'Wecker und Erinnerungen: Erlaube dies, damit Sperrzeiten pünktlich beginnen und enden. Als Nächstes Deinstallation verhindern: Wähle „Erlauben“ und dann auf dem Bestätigungsbildschirm von Android „Aktivieren“. Danach lässt sich KidGate nur entfernen, wenn man dies zuerst ausschaltet, und ein Elternteil wird benachrichtigt.',
-        '8': 'Standort: Wähle „Immer zulassen“, sonst wird die Karte nur aktualisiert, solange KidGate geöffnet ist. Kamera (für Check-in- und SOS-Fotos) und Mikrofon (für den SOS-Ton): Erlaube sie bei Nutzung der App. Sobald der Assistent „Alles bereit“ zeigt, ist die Einrichtung abgeschlossen.',
+        '8': 'Nachrichtenwarnungen: Wähle „Benachrichtigungszugriff erlauben“ und schalte KidGate in der Liste ein, die sich öffnet; das spielt erst eine Rolle, sobald ein Elternteil die Nachrichtenwarnungen einschaltet. Dann Kamera (für Check-in- und SOS-Fotos) und Mikrofon (für den SOS-Ton): Erlaube sie bei Nutzung der App. Sobald der Assistent „Alles bereit“ zeigt, ist die Einrichtung abgeschlossen.',
       },
     },
     iosScreenTime: {
@@ -216,9 +216,9 @@ export const userGuide = {
       summary:
         'Erlaube App- & Websitenutzung, damit Sperre, Zeitpläne und App-Auswahl funktionieren können.',
       keywords: 'bildschirmzeit, family controls, iphone, ipad, autorisieren',
-      tip: 'Fehlt der Erlauben-Button, öffne iOS-Einstellungen, dann Bildschirmzeit und stelle sicher, dass Bildschirmzeit auf dem Kindergerät zuerst aktiviert ist.',
+      tip: 'Schlägt die Autorisierung fehl, nennt KidGate den Grund: Das Gerät braucht einen Gerätecode, eine andere App steuert Bildschirmzeit bereits, oder eine Einschränkung hindert KidGate an der Nutzung. Behebe das in den iOS-Einstellungen und versuche es dann erneut.',
       steps: {
-        '1': 'Öffne KidGate auf dem Kindergerät und gehe zu „Status“. Wähle in der Karte „Einrichtung mit einem Elternteil abschließen“ den Eintrag „Einrichtung fortsetzen“.',
+        '1': 'Öffne KidGate auf dem Kindergerät und gehe zu „Status“. Wähle in der Karte „Einrichtung mit einem Elternteil abschließen“ den Eintrag „Einrichtung fortsetzen“ (sobald die Pflichtschritte erledigt sind, steht auf der Karte „Der Basisschutz ist aktiv“ mit „Jetzt verstärken“).',
         '2': 'Wähle in „Schutz einrichten“ die Option „App- & Websitenutzung erlauben“.',
         '3': 'Wähle im Systemdialog „Erlauben“. Bitte schließe den Dialog nicht ohne eine Auswahl.',
         '4': 'Kehre zu KidGate zurück. Der Assistent geht zum nächsten Schritt weiter, sobald die Autorisierung erfolgreich ist.',
@@ -235,25 +235,25 @@ export const userGuide = {
         'xiaomi, samsung, oppo, vivo, huawei, realme, energiesparmodus, autostart, funktioniert nicht mehr, im hintergrund beendet',
       tip: 'Starte das Kindergerät nach Ändern der Akkuregeln einmal neu, öffne KidGate erneut und teste dann die Sperre vom Elterngerät aus.',
       steps: {
-        '1': 'Öffne auf dem Android-Kindergerät KidGate, dann Status, und suche den Schritt „Autostart erlauben“. Er erscheint nur auf Geräten, deren Hersteller ihn benötigt.',
+        '1': 'Öffne KidGate, dann Status, und öffne „Schutz einrichten“. Suche den Schritt „Autostart erlauben“; er erscheint nur auf Geräten, deren Hersteller ihn benötigt.',
         '2': 'Erlaube den Autostart für KidGate im Sicherheitsbildschirm des Herstellers (der Wortlaut variiert je nach Gerät).',
         '3': 'Stelle die Akkunutzung für KidGate sowohl in den Android-Einstellungen als auch im Akkumenü des Herstellers, falls beide vorhanden sind, auf „Ohne Einschränkung“.',
         '4': 'Deaktiviere alle „Ruhende Apps“-, „Tiefschlaf-Apps“- oder „Apps in den Ruhezustand versetzen“-Listen, die KidGate enthalten.',
         '5': 'Funktioniert eine Verknüpfung nicht, öffne die Sicherheits-/Geräteschutz-App manuell und suche nach KidGate, Autostart oder Akku.',
-        '6': 'Markiere in KidGate jede Zeile als „Fertig“, sobald du sie abgeschlossen hast, damit du siehst, was noch fehlt.',
+        '6': 'KidGate kann die Einstellungen des Herstellers nicht auslesen. Wähle daher beim Schritt „Autostart erlauben“ die Option „Fertig“, sobald du es dort erlaubt hast.',
       },
     },
     dailyLimit: {
       title: 'Ein Tageslimit festlegen',
-      summary: 'Begrenze, wie viele Minuten das Kind das Gerät täglich nutzen darf.',
+      summary: 'Begrenze, wie viele Minuten ein Kind seine Geräte täglich nutzen darf.',
       keywords: 'bildschirmzeit, stunden pro tag, zeit abgelaufen, budget, verlängern',
       tip: 'Die Nutzungsdaten stammen vom Kindergerät. Wirkt der Zähler festgefahren, öffne KidGate auf dem Kindergerät und warte auf eine Synchronisierung.',
       steps: {
         '1': 'Öffne auf dem Elterngerät Familie, dann tippe auf das Profil deines Kindes (oder das Gerät, falls es keinem Kind zugewiesen ist).',
         '2': 'Wähle unter Wichtige Steuerungen „Tageslimit“.',
-        '3': 'Wähle einen Minutenwert pro Tag (oder bearbeite das bestehende Limit) und speichere.',
+        '3': 'Wähle einen Minutenwert pro Tag (oder bearbeite das bestehende Limit) und speichere. Für ein Kind gilt eine Gesamtzeit, die sich alle seine Geräte teilen.',
         '4': 'Bestätige, dass die Gerätekarte nach der Synchronisierung des Kindergeräts die heute genutzten Minuten und das Limit anzeigt.',
-        '5': 'Ist das Limit erreicht, sperrt sich das Gerät gemäß Plattformregeln. Wähle „Entsperren“ auf dem Gerätebildschirm, wenn du den Zugriff vorzeitig wiederherstellen möchtest.',
+        '5': 'Ist das Limit erreicht, sperrt sich das Gerät bis Mitternacht. Um heute mehr Zeit zu geben, genehmige eine Zeitanfrage oder erhöhe das Tageslimit. „Entsperren“ hebt nur eine Sperre auf, die du selbst gesetzt hast.',
       },
     },
     blockedHours: {
@@ -264,10 +264,10 @@ export const userGuide = {
       steps: {
         '1': 'Öffne auf dem Elterngerät das Profil deines Kindes (oder das Gerät, falls es keinem Kind zugewiesen ist), dann Sperrzeiten.',
         '2': 'Schalte den Schalter „Sperrzeiten aktivieren“ ein. Solange er aus ist, zeigt der Bildschirm keine Zeiträume und keine Möglichkeit, einen hinzuzufügen.',
-        '3': 'Wähle „Sperrzeit hinzufügen“ und lege dann Startzeit, Endzeit und Wochentage fest.',
-        '4': 'Wähle unten auf dem Bildschirm „Speichern“. Um einen weiteren Zeitraum hinzuzufügen, wiederhole zuerst den vorherigen Schritt.',
+        '3': 'Ein neuer Zeitplan beginnt mit einem Zeitraum von 22:00 bis 07:00: Lege Startzeit, Endzeit und die Wochentage fest, an denen er sich wiederholt. Wähle „Sperrzeit hinzufügen“ für einen weiteren Zeitraum.',
+        '4': 'Wähle unten auf dem Bildschirm „Speichern“, sobald jeder Zeitraum festgelegt ist.',
         '5': 'Bestätige auf einem Android-Kindergerät, dass „Wecker und Erinnerungen“ weiterhin erlaubt ist, damit die Zeiträume pünktlich beginnen und enden. Bestätige auf einem iPhone oder iPad, dass „Bildschirmzeit“ weiterhin erlaubt ist.',
-        '6': 'Während eines aktiven Zeitraums zeigt die Gerätekarte „Sperrzeiten aktiv · gesperrt“. Verwende „Entsperren“ nur, wenn du den Zeitplan bewusst außer Kraft setzt.',
+        '6': 'Während eines aktiven Zeitraums zeigt die Sperrzeiten-Karte „Sperrzeiten aktiv · gesperrt“. „Entsperren“ beendet keinen Zeitraum: Um einen vorzeitig zu beenden, schalte „Sperrzeiten aktivieren“ aus oder ändere die Zeiten.',
       },
     },
     blockedApps: {
@@ -278,9 +278,9 @@ export const userGuide = {
         'app sperren, tiktok, facebook, instagram, spiele, roblox, app verstecken',
       tip: 'Unter iOS kann Apple die genauen App-Namen vor Elterngeräten verbergen. Die Auswahl erfolgt weiterhin auf dem Kindergerät mit der Eltern-PIN.',
       steps: {
-        '1': 'Verwende direkt das Kindergerät. Öffne KidGate, dann Einstellungen.',
-        '2': 'Wähle „Mit Eltern-PIN entsperren“ und gib dann die Eltern-PIN ein.',
-        '3': 'Öffne Blockierte Apps (auf einem Computer oder Fernseher: „Apps zum Blockieren auswählen“). Wähle die Apps (und Kategorien, falls angezeigt) und speichere auf dem Kindergerät.',
+        '1': 'Verwende direkt das Kindergerät. Öffne KidGate, dann Einstellungen. Wähle auf einem Fernseher stattdessen auf dem Bildschirm „Status“ den Eintrag „Apps zum Blockieren auswählen“.',
+        '2': 'Wähle „Mit Eltern-PIN entsperren“ und gib dann die Eltern-PIN ein. Der Familieninhaber legt sie zuerst in der App auf dem Handy fest.',
+        '3': 'Öffne Blockierte Apps. Wähle die Apps (und Kategorien, falls angezeigt) und speichere auf dem Kindergerät.',
         '4': 'Öffne auf dem Elterngerät das Profil deines Kindes (oder das Gerät, falls es keinem Kind zugewiesen ist), dann Blockierte Apps, und warte, bis die ausgewählte Liste erscheint.',
         '5': 'Schalte „App-Blockierung aktivieren“ ein. Der Status sollte „Sperre aktiviert“ anzeigen.',
         '6': 'Teste dies, indem du eine blockierte App auf dem Kindergerät öffnest. Sie sollte gemäß Plattformregeln eingeschränkt sein.',
@@ -295,7 +295,7 @@ export const userGuide = {
       tip: 'App-Limits gibt es nicht auf iPhone und iPad. Auf einem Computer oder Fernseher wird eine App, die ihr Limit erreicht hat, nach dem Öffnen geschlossen, statt gar nicht erst zu starten.',
       steps: {
         '1': 'Öffne auf dem Elterngerät das Profil deines Kindes (oder das Gerät, falls es keinem Kind zugewiesen ist), dann App-Limits. Nutzt dein Kind mehr als ein Gerät, wähle eines aus: Jedes Gerät hat seine eigene Liste.',
-        '2': 'Tippe unter „Limit hinzufügen“ auf eine App. Aufgeführt sind nur Apps, die heute auf diesem Gerät genutzt wurden, und jede startet mit einem Limit von 60 Minuten.',
+        '2': 'Tippe unter „Limit hinzufügen“ auf eine App. Die Liste enthält die Apps, die heute auf diesem Gerät am meisten genutzt wurden (bis zu 10, im Gratis-Tarif 3), und jede startet mit einem Limit von 60 Minuten.',
         '3': 'Stelle jedes Limit mit dem Drehregler oder einer Voreinstellung ein, von 5 Minuten bis 8 Stunden pro Tag. Du kannst bis zu 20 Apps begrenzen.',
         '4': 'Wähle „Speichern“. Limits setzen sich um Mitternacht auf dem Kindergerät zurück.',
         '5': 'Das Tageslimit gilt weiterhin für das ganze Gerät, daher kann eine App gesperrt werden, bevor ihr eigenes Limit aufgebraucht ist. Um ein Limit zu entfernen, wähle auf seiner Karte „Entfernen“ und speichere dann.',
@@ -304,14 +304,14 @@ export const userGuide = {
     lockUnlock: {
       title: 'Das Gerät sperren und entsperren',
       summary: 'Sperre das Kindergerät sofort oder stelle den Zugriff wieder her.',
-      tip: 'Unter Android ist die Sperre am stärksten, wenn sowohl Über anderen Apps anzeigen als auch Bedienungshilfen aktiviert sind. Unter iOS hängt die Sperre von der Bildschirmzeit-Autorisierung ab.',
+      tip: 'Unter Android ist die Sperre am stärksten, wenn sowohl Über anderen Apps anzeigen als auch Bedienungshilfen aktiviert sind. Unter iOS hängt die Sperre von der Bildschirmzeit-Autorisierung ab; war KidGate auf dem iPhone geschlossen, erscheint die Sperre, sobald KidGate wieder läuft.',
       steps: {
         '1': 'Öffne auf dem Elterngerät das Profil deines Kindes (oder das Gerät, falls es keinem Kind zugewiesen ist).',
         '2': 'Wähle „Alle sperren“, um alle Geräte dieses Kindes zu sperren, oder öffne ein einzelnes Gerät und wähle „Gerät sperren“.',
         '3': 'Warte einige Sekunden. Der Status sollte auf „Gesperrt“ wechseln. Ändert sich nichts, öffne KidGate auf dem Kindergerät und überprüfe die Berechtigungen erneut.',
         '4': 'Um den Zugriff wiederherzustellen, wähle „Alle entsperren“ (oder „Entsperren“ auf dem Gerätebildschirm).',
         '5': 'Optional: Du kannst ein Gerät auch schnell aus Familie sperren oder entsperren, wenn diese Verknüpfungen auf der Gerätekarte erscheinen.',
-        '6': 'Ein gesperrtes Handy oder ein gesperrter Computer lässt dein Kind weiterhin einen SOS-Alarm senden. Auf Android öffnet SOS außerdem 5 Minuten lang Anrufe, Karten und Nachrichten, während alles andere gesperrt bleibt, und es erscheint unter „Aktivitäten“.',
+        '6': 'Ein gesperrtes Handy oder ein gesperrter Computer lässt dein Kind weiterhin einen SOS-Alarm senden. Auf Android funktionieren Anrufe immer, und SOS öffnet außerdem 5 Minuten lang Karten und Nachrichten, während alles andere gesperrt bleibt; der SOS-Alarm erscheint unter „Aktivitäten“.',
       },
     },
     siri: {
@@ -320,7 +320,7 @@ export const userGuide = {
         'Per Stimme die Geräte eines Kindes sperren oder entsperren, Extra-Minuten geben und die heutige Bildschirmzeit hören.',
       keywords:
         'Stimme, Sprachbefehl, sprechen, freihändig, Sprachassistent, Kurzbefehle, voice',
-      tip: 'Sprachbefehle funktionieren auf dem iPhone eines Elternteils, für alle Eltern der Familie, in der Sprache, die für Siri eingestellt ist. Android-Smartphones und das Web-Dashboard haben keine.',
+      tip: 'Sprachbefehle funktionieren auf dem iPhone eines Elternteils, für alle Eltern der Familie, in der Sprache, die für Siri eingestellt ist. In manchen Sprachen versteht Siri den gesprochenen Namen KidGate nicht (auf Vietnamesisch nicht): Gib den Befehl stattdessen per Tastatur bei Siri ein oder führe ihn in der App Kurzbefehle aus. Android-Smartphones und das Web-Dashboard haben keine.',
       steps: {
         '1': 'Melde dich auf deinem iPhone bei KidGate an und öffne die App einmal. So lernt Siri die Namen deiner Kinder, und ein später hinzugefügtes Kind oder Gerät kennt Siri, sobald du KidGate das nächste Mal öffnest. Sagt Siri „Melde dich zuerst bei KidGate an.“, öffne KidGate auf diesem iPhone.',
         '2': 'Sag zu Siri „KidGate, sperre Lena“, mit dem Namen deines Kindes. Alle Geräte dieses Kindes werden gesperrt, wie mit „Alle sperren“. Ein Gerät, das keinem Kind zugewiesen ist, hört auf seinen eigenen Namen.',
@@ -339,7 +339,7 @@ export const userGuide = {
       steps: {
         '1': 'Öffne auf dem Elterngerät das Profil deines Kindes (oder das Gerät, falls es keinem Kind zugewiesen ist), dann „Surfen pausieren“ im Bereich Sicherheitsüberwachung.',
         '2': 'Wähle eine Dauer mit dem Drehregler oder einer Schnellauswahl (30, 60 oder 120 Minuten) und bestätige.',
-        '3': 'Das Web bleibt auf diesem Gerät blockiert, bis die Zeit abgelaufen ist. Deine Webfilter-Einstellungen werden nicht geändert, und die Pause wirkt auch, wenn der Webfilter aus ist.',
+        '3': 'Das Web bleibt auf diesem Gerät blockiert, bis die Zeit abgelaufen ist. Deine Webfilter-Einstellungen werden nicht geändert, und die Pause wirkt auch, wenn der Webfilter aus ist. Auf einem Computer sind Browser bis zum Ende der Pause geschlossen.',
         '4': 'Um sie vorzeitig zu beenden, öffne das Gerät, tippe auf die Karte „Surfen pausieren“ und wähle „Fortsetzen“. Die restlichen Minuten verfallen.',
         '5': 'Vom Profil deines Kindes aus gilt eine Pause für ein einzelnes Gerät. Nutzt dein Kind mehrere, pausiere jedes über seinen eigenen Gerätebildschirm.',
       },
@@ -364,11 +364,11 @@ export const userGuide = {
       tip: 'Bonusminuten zählen nur, wenn das Gerät ein Tageslimit hat. Die Minuten gehen an das Gerät, auf dem dein Kind die Aufgabe als erledigt markiert hat. Belohnungsaufgaben sind auf Android TV und in der Chrome-Erweiterung nicht verfügbar.',
       steps: {
         '1': 'Öffne auf dem Elterngerät das Profil deines Kindes (oder das Gerät, falls es keinem Kind zugewiesen ist), dann Belohnungsaufgaben.',
-        '2': 'Wähle „Neue Aufgabe“ oder starte mit einer Vorlage. Gib die Aufgabe ein, wähle die Belohnung in Minuten (5 bis 240), einen Schwierigkeitsgrad und die Wiederholung („Täglich“ oder „Einmalig“) und wähle dann „Aufgabe erstellen“.',
+        '2': 'Wähle „Neue Aufgabe“ (solange die Liste leer ist, kannst du auch mit einer Vorlage starten). Gib die Aufgabe ein, wähle die Belohnung in Minuten (5 bis 240), einen Schwierigkeitsgrad und die Wiederholung („Täglich“ oder „Einmalig“) und wähle dann „Aufgabe erstellen“.',
         '3': 'Auf dem Kindergerät erscheint die Aufgabe unter „Extra-Zeit verdienen“. Ist sie erledigt, wählt dein Kind „Geschafft“.',
         '4': 'Du erhältst eine Mitteilung. Die Aufgabe erscheint unter „Genehmigung erforderlich“ (unter Familie und im Profil deines Kindes) und unter „Bereit zur Prüfung“ (auf dem Bildschirm Belohnungsaufgaben). Wähle „Genehmigen“, um die Minuten für heute gutzuschreiben, oder „Zurückgeben“, damit dein Kind es noch einmal versuchen kann.',
         '5': 'Tippe auf eine Aufgabe, um sie zu bearbeiten oder zu löschen. Im Gratis-Tarif laufen bis zu 10 aktive Aufgaben gleichzeitig, mit Premium 20.',
-        '6': 'Jede Aufgabe ist je nach Schwierigkeit 1 bis 3 Sterne wert, und Sterne zählen, sobald du die Aufgabe genehmigst. Damit deine Kinder die Sterne dieser Woche vergleichen können, öffnet der Familieninhaber „Familie“, dann die Familienkarte, und schaltet im Tab „Kinder“ die „Sternetafel“ ein. Jedes Kind sieht sie dann in KidGate auf seinem Gerät. Sie beginnt jede Woche neu.',
+        '6': 'Jede Aufgabe ist je nach Schwierigkeit 1 bis 3 Sterne wert, und Sterne zählen, sobald du die Aufgabe genehmigst. In einer Familie mit 2 oder mehr Kindern sieht jedes Kind die Sternetafel dieser Woche in KidGate auf seinem Gerät; sie beginnt jede Woche neu. Um sie auszublenden, öffnet der Familieninhaber „Familie“, dann die Familienkarte, und schaltet im Tab „Kinder“ die „Sternetafel“ aus.',
       },
     },
     locationSharing: {
@@ -408,7 +408,7 @@ export const userGuide = {
       steps: {
         '1': 'Öffne auf dem Kindergerät SOS in KidGate. Auf einem Handy ist es die Taste in der Mitte der unteren Leiste.',
         '2': 'Halte die SOS-Taste 5 Sekunden lang gedrückt. Wird sie früher losgelassen, wird der Alarm abgebrochen.',
-        '3': 'Der Alarm wird sofort gesendet, mit dem Standort, sofern verfügbar. Auf einem Handy öffnet sich danach die Kamera für ein Foto, das übersprungen werden kann. Wurde das Mikrofon bei der Einrichtung erlaubt, werden ab dem Senden bis zu 15 Sekunden Ton aufgenommen.',
+        '3': 'Der Alarm wird gesendet, sobald KidGate den Standort hat, was bis zu einer halben Minute dauern kann; ohne Standort wird er trotzdem gesendet. Auf einem Handy öffnet sich danach die Kamera für ein Foto, das übersprungen werden kann. Wurde das Mikrofon bei der Einrichtung erlaubt, werden ab dem Senden bis zu 15 Sekunden Ton aufgenommen.',
         '4': 'Eltern erhalten eine dringende Mitteilung, auch während der „Ruhezeiten“. Ist KidGate geöffnet, erscheint der Alarm auf dem Bildschirm, mit der „SOS-Sirene“, sofern sie in den Einstellungen nicht ausgeschaltet ist.',
         '5': 'Öffne das Profil deines Kindes (oder das Gerät, falls es keinem Kind zugewiesen ist), dann den Bereich „Benachrichtigungen“, und wähle „SOS“. Jeder Alarm zeigt den Standort („In Karten öffnen“), das Foto und die „Tonaufnahme“, die etwas nach dem Alarm eintreffen kann. Wähle „Ich kümmere mich darum“, um ihn als beantwortet zu markieren.',
         '6': 'Um auch Personen außerhalb der Familie per E-Mail zu benachrichtigen, öffne „Familie“, dann die Familienkarte, und wähle „Vertrauenskontakte“. Wähle „Kontakt hinzufügen“, um bis zu 5 hinzuzufügen. Bei jedem SOS erhalten sie per E-Mail den Gerätenamen und den letzten bekannten Standort, nie das Foto oder den Ton. Sag ihnen vorher Bescheid.',
@@ -420,13 +420,13 @@ export const userGuide = {
         'Aktiviere den Webfilter für ungeeignete Inhalte, wo die Plattform dies unterstützt.',
       keywords:
         'webseite sperren, link sperren, url, erwachseneninhalte, sichere suche, youtube eingeschränkter modus, kategorien, dns, privates dns, vpn, iphone, ipad',
-      tip: 'Der Filter liest Website-Namen, nicht Seiten, und seine Reichweite hängt vom Gerät ab. Handys filtern Browser und viele Apps. Ein Mac kann Websites nicht prüfen, deren Namen der Browser verbirgt – etwa die Hälfte der Besuche. Windows prüft jeden Browser, aber nur anhand des Website-Namens. Die Chrome-Erweiterung filtert nur Chrome. Die Auswahl von Kategorien, eigene Listen und das Beantworten von Website-Anfragen gehören zu Premium. Kombiniere den Webfilter mit Blockierten Apps für einen stärkeren Schutz.',
+      tip: 'Der Filter liest Website-Namen, nicht Seiten, und seine Reichweite hängt vom Gerät ab. Handys filtern Browser und viele Apps. Ein Mac kann Websites nicht prüfen, deren Namen der Browser verbirgt – etwa die Hälfte der Besuche. Windows prüft Chrome, Edge und Firefox, aber nur anhand des Website-Namens. Die Chrome-Erweiterung filtert nur Chrome. Die Auswahl von Kategorien, eigene Listen und das Beantworten von Website-Anfragen gehören zu Premium. Kombiniere den Webfilter mit Blockierten Apps für einen stärkeren Schutz.',
       steps: {
         '1': 'Öffne auf dem Elterngerät das Profil deines Kindes (oder das Gerät, falls es keinem Kind zugewiesen ist), dann Webfilter.',
         '2': 'Schalte oben „Ungeeignete Websites filtern“ ein. Die Einstellung gilt sofort, du musst nichts speichern. „SafeSearch erzwingen“ auf demselben Bildschirm sperrt außerdem Google, Bing und DuckDuckGo auf sichere Ergebnisse und YouTube auf den eingeschränkten Modus, auf Android, Android TV und Chrome. Auf YouTube blendet der eingeschränkte Modus außerdem Kommentare aus und blockiert auch manche harmlosen Videos, deshalb fragt KidGate vor dem Einschalten nach.',
         '3': 'Wähle unter „Was blockiert wird“ die Kategorien, die gesperrt werden sollen. Füge Websites zu „Immer erlauben“ oder „Immer blockieren“ hinzu, oder aktiviere „Nur erlaubte Seiten“, um alles außer deiner Liste erlaubter Seiten zu sperren. Wenn dein Kind bittet, eine blockierte Website zu öffnen, wartet die Anfrage unter „Website-Anfragen“. Diese Einstellungen gehören zu Premium; der Gratis-Tarif nutzt eine feste Auswahl an Kategorien.',
-        '4': 'Überprüfe später erneut denselben Bildschirm. Eine Änderung erreicht das Kindergerät innerhalb weniger Minuten, und eine dort bereits geöffnete Website kann weiter laden, bis der Browser geschlossen wird. Ist sie bis dahin nicht angekommen oder bleibt der Status „Wartet“, öffne KidGate erneut auf dem Kindergerät, damit die Einstellungen synchronisieren können.',
-        '5': 'Öffne auf dem Kindergerät KidGate und genehmige den Filter einmalig. Wähle auf einem iPhone oder iPad „Erlauben“, wenn iOS fragt, ob VPN-Konfigurationen hinzugefügt werden dürfen, und gib dann den Gerätecode ein. Bestätige auf Android die VPN-Anfrage, öffne dann Einstellungen, dann Netzwerk & Internet, dann Privates DNS und wähle „Aus“, denn Browser können den Filter umgehen, solange Privates DNS aktiv ist.',
+        '4': 'Überprüfe später erneut denselben Bildschirm. Eine Änderung erreicht das Kindergerät innerhalb weniger Minuten, und eine dort bereits geöffnete Website kann weiter laden, bis der Browser geschlossen wird. Ist sie bis dahin nicht angekommen, öffne KidGate erneut auf dem Kindergerät, damit die Einstellungen synchronisieren können.',
+        '5': 'Öffne auf dem Kindergerät KidGate und genehmige den Filter einmalig. Wähle auf einem iPhone oder iPad „Erlauben“, wenn iOS fragt, ob VPN-Konfigurationen hinzugefügt werden dürfen, und gib dann den Gerätecode ein. Bestätige auf Android die VPN-Anfrage, öffne dann Einstellungen, dann Netzwerk & Internet, dann Privates DNS und wähle „Aus“, denn Browser können den Filter umgehen, solange Privates DNS aktiv ist. Wähle auf einem Mac bei „Webfilter freigeben“ die Option „Einstellungen öffnen“ und schalte KidGate ein.',
       },
     },
     protectionAlerts: {
@@ -451,7 +451,7 @@ export const userGuide = {
         '1': 'Öffne Berichte. „Heute“ zählt alle Geräte zusammen; darunter folgen der Wochenbericht, jedes Kind („Nach Kind“) und jedes Gerät („Nach Gerät“).',
         '2': 'Tippe auf ein Gerät, um seinen Nutzungsbericht zu öffnen: heute im Vergleich zum Tageslimit, „Letzte 30 Tage“, „Wann es genutzt wurde“ und „Meistgenutzte Apps“. Du kannst ihn auch über „Nutzung heute“ auf dem Gerätebildschirm öffnen.',
         '3': 'Tippe auf ein Kind, um einen gemeinsamen Bericht über alle seine Geräte zu sehen, für „Heute“, „7 Tage“ oder „30 Tage“. Zeit auf zwei Bildschirmen gleichzeitig zählt nur einmal, daher kann die Summe niedriger sein als die Werte der einzelnen Geräte zusammen.',
-        '4': 'Jeden Montagmorgen kommt ein neuer Wochenbericht, zusammen mit einer Mitteilung. Er schlägt eine Sache vor, die du ändern könntest, und öffnet die passende Einstellung.',
+        '4': 'Mit Premium kommt jeden Montagmorgen ein neuer Wochenbericht, zusammen mit einer Mitteilung, für jede Woche, in der ein Gerät genutzt wurde. Fällt ein Gerät besonders auf, schlägt er eine Sache vor, die du ändern könntest, und öffnet die passende Einstellung.',
         '5': 'Beim Öffnen von KidGate wird jedes Gerät nach aktuellen Zahlen gefragt, daher kann die Aktualisierung ein paar Minuten dauern. Ein Gerät ohne Internetverbindung sendet seine Daten, sobald es wieder online ist.',
       },
     },
@@ -480,8 +480,8 @@ export const userGuide = {
       steps: {
         '1': 'Öffne „Einstellungen“ und wähle „Widget zum Home-Bildschirm hinzufügen“. Auf den meisten Android-Handys bestätigst du nur noch, wo es hin soll. Andernfalls zeigt KidGate die Schritte, um es selbst hinzuzufügen.',
         '2': 'Um es selbst hinzuzufügen, halte eine freie Stelle auf dem Home-Bildschirm gedrückt. Tippe auf dem iPhone auf „Bearb.“ (bei älteren Versionen auf +) und dann auf „Widget hinzufügen“. Tippe auf Android auf „Widgets“. Suche KidGate und wähle das Widget „Bildschirmzeit“.',
-        '3': 'Jede Zeile zeigt die heutige Bildschirmzeit eines Kindes im Vergleich zu seinem Tageslimit; Kinder, die es erreicht haben, stehen oben. Auf dem iPhone passen bis zu 2 Kinder hinein, auf Android bis zu 3.',
-        '4': 'Es aktualisiert sich, wenn du KidGate öffnest. Ist die App geschlossen, höchstens alle 20 Minuten und nur, während ein Kind ein Gerät nutzt.',
+        '3': 'Jede Zeile zeigt die heutige Bildschirmzeit eines Kindes im Vergleich zu seinem Tageslimit; Kinder, die es erreicht haben, stehen oben. Auf dem iPhone passen bis zu 2 Kinder hinein, auf Android bis zu 3. Geräte, die keinem Kind zugewiesen sind, werden nicht angezeigt.',
+        '4': 'Es aktualisiert sich, wenn du KidGate öffnest. Ist die App geschlossen, aktualisiert es sich mit Premium höchstens alle 20 Minuten und nur, während ein Kind ein Gerät nutzt.',
         '5': 'Füge auf dem Handy deines Kindes das Widget „Verbleibende Zeit“ auf die gleiche Weise hinzu. Es zeigt, wie viel Zeit heute noch übrig ist oder warum das Gerät gesperrt ist, und aktualisiert sich, während KidGate auf diesem Handy geöffnet ist.',
       },
     },
@@ -496,7 +496,7 @@ export const userGuide = {
         '2': 'Für jeden Tag werden die Websites nach Art gruppiert aufgelistet, jeweils mit der Anzahl der Aufrufe. Wähle „Nur blockierte“, um nur zu sehen, was der Webfilter gestoppt hat.',
         '3': 'Um eine ganze Art von Websites zu sperren, öffne ihren Abschnitt und wähle den Button zum Sperren an dessen Ende. Vom Profil deines Kindes aus gilt das für alle seine Geräte.',
         '4': 'Der Verlauf stammt aus dem Webfilter, er füllt sich also nur, solange der Filter auf diesem Gerät läuft.',
-        '5': 'Der Verlauf wird 30 Tage lang aufbewahrt. Bittet dein Kind darum, eine blockierte Website zu öffnen, erscheint die Anfrage in der Karte „Genehmigung erforderlich“, nicht hier.',
+        '5': 'Der Bildschirm zeigt die letzten 7 Tage. Bittet dein Kind darum, eine blockierte Website zu öffnen, erscheint die Anfrage in der Karte „Genehmigung erforderlich“, nicht hier.',
       },
     },
     videoHistory: {
@@ -536,7 +536,7 @@ export const userGuide = {
         '1': 'Öffne auf dem Android-Handy deines Kindes KidGate, dann Einstellungen, wähle „Mit Eltern-PIN entsperren“ und dann „Benachrichtigungszugriff erlauben“ im Bereich Nachrichtenwarnungen, und schalte KidGate in der Liste ein, die sich öffnet.',
         '2': 'Öffne auf deinem Gerät das Profil deines Kindes (oder das Gerät, falls es keinem Kind zugewiesen ist), dann Nachrichtenwarnungen im Bereich Benachrichtigungen, und tippe oben auf das Einstellungssymbol. Hat dein Kind mehrere Geräte, wähle zuerst das Android-Handy aus.',
         '3': 'Schalte „Empfangene Nachrichten prüfen“ ein. „Auch Kraftausdrücke melden“ ist optional, und unter „Geprüfte Sprachen“ kannst du bis zu 3 Sprachen wählen.',
-        '4': 'Um auch zu prüfen, was dein Kind tippt und sucht: Wähle auf dem Kindergerät „Erlauben“ im Bereich Nachrichtenwarnungen und schalte dann auf deinem Gerät „Getippte Nachrichten prüfen“ und „Suchanfragen prüfen“ ein.',
+        '4': 'Um auch zu prüfen, was dein Kind tippt und sucht: Sobald „Empfangene Nachrichten prüfen“ eingeschaltet ist, zeigt das Kindergerät im Bereich Nachrichtenwarnungen „Bevor du zustimmst“. Wähle dort „Zustimmen“ und schalte dann auf deinem Gerät „Getippte Nachrichten prüfen“ und „Suchanfragen prüfen“ ein.',
         '5': 'Warnungen erscheinen unter „Neueste Warnungen“ mit der Kategorie und dem markierten Wort oder dem markierten Ausdruck. Wähle „Was jetzt zu tun ist“, um Tipps zu bekommen, wie du das Thema ansprechen kannst.',
       },
     },
@@ -547,7 +547,7 @@ export const userGuide = {
       tip: 'Nur der Familieninhaber kann Kinder hinzufügen und Geräte zuweisen. Ein neues Gerät ist niemandem zugewiesen, bis du eine Auswahl triffst.',
       steps: {
         '1': 'Tippe in Familie auf + und wähle „Kind hinzufügen“. Gib einen Namen ein und speichere.',
-        '2': 'Nachdem du ein neues Gerät gekoppelt hast, fragt KidGate, wer es nutzt. Wähle dein Kind oder „Niemand“ für ein geteiltes Gerät. Danach bietet KidGate ein Starter-Set an Schutzfunktionen an: Wähle „Schutz einschalten“ oder „Nicht jetzt“.',
+        '2': 'Nachdem du ein neues Gerät gekoppelt hast, fragt KidGate den Familieninhaber, wer es nutzt. Wähle dein Kind oder „Niemand“ für ein geteiltes Gerät. Hast du ein Kind gewählt, bietet KidGate danach ein Starter-Set an Schutzfunktionen an: Wähle „Schutz einschalten“ oder „Nicht jetzt“.',
         '3': 'Ein Gerät, für das noch niemand ausgewählt wurde, erscheint in Familie unter „Nicht zugeordnet“. Wähle auf seiner Karte „Einem Kind zuweisen…“.',
         '4': 'Sobald ein Gerät zugewiesen ist, werden Tageslimit, Sperrzeiten, Webfilter, Check-in, SOS, Ortsbenachrichtigungen und Belohnungsaufgaben im Profil deines Kindes festgelegt und gelten für alle seine Geräte. Das Tageslimit wird dann zu einer gemeinsamen Summe über diese Geräte.',
         '5': 'Um ein Gerät zu verschieben, öffne das Profil des Kindes, das es bekommen soll, und wähle „Weiteres Gerät zuweisen…“. Um eine Zuordnung aufzuheben, wische im Profil deines Kindes über das Gerät und wähle „Zuordnung aufheben“. Wenn du das Profil eines Kindes entfernst, bleiben seine Geräte gekoppelt.',
@@ -564,7 +564,7 @@ export const userGuide = {
         '1': 'Öffne Einstellungen. Die Karte oben zeigt deinen aktuellen Plan; wähle „Pläne ansehen“.',
         '2': 'Die 7-tägige Testphase beginnt, sobald dein erstes Kindergerät gekoppelt ist, und umfasst alle Premium-Funktionen. Eine Grenze bleibt bestehen: die Zahl der Elternteile – bis zu 3 während der Testphase, bis zu 6 mit Premium.',
         '3': 'Im Gratis-Tarif funktionieren alle Regeln weiter, aber nur ein Gerät sendet Berichte: die heutige Gesamtzeit und die Top 3 Apps, aktualisiert, wenn du nachsiehst. Premium ergänzt Live-Updates, alle Geräte, 30 Tage Verlauf, Web- und Videoverlauf sowie Wochenberichte.',
-        '4': 'Endet die Testphase mit mehr als einem Kindergerät, zeigt KidGate „Wähle dein Hauptgerät“ an. Dieses Gerät sendet weiter Berichte; die anderen zeigen „Pausiert“, behalten aber ihre Regeln. Du kannst die Wahl alle 7 Tage einmal ändern.',
+        '4': 'Endet die Testphase mit mehr als einem Kindergerät, zeigt KidGate „Wähle dein Hauptgerät“ an. Dieses Gerät sendet weiter Berichte; die anderen zeigen „Pausiert“ und behalten ihre Regeln, aber eine Regel lässt sich dort nur lockern, nicht verschärfen. Jeder Elternteil kann die Wahl alle 7 Tage einmal ändern.',
         '5': 'Um zu abonnieren, wähle einen Plan und dann „Premium abonnieren“. Mit einem Abo senden alle pausierten Geräte wieder Berichte. Hast du schon einmal bezahlt, wähle „Käufe wiederherstellen“.',
       },
     },
@@ -611,9 +611,9 @@ export const userGuide = {
     webSignIn: {
       title: 'KidGate am Computer nutzen',
       summary: 'Melde dich im Web-Dashboard an und verwalte deine Familie im Browser.',
-      tip: 'Lass nur einen Browser zu, in dem du dich selbst anmeldest: Er bekommt die gleiche Kontrolle wie dein Handy. Im Web-Dashboard kannst du kein Kindergerät koppeln und keinen Plan kaufen. Um einen Browser abzumelden, wähle im Dashboard „Abmelden“. Damit ein Browser nichts mehr ändern kann, öffne „Familie“, dann „Elternteile“ und entferne ihn unter „Browser, die Änderungen vornehmen können“; er kann deine Familie aber weiterhin anzeigen, bis er abgemeldet ist.',
+      tip: 'Lass nur einen Browser zu, in dem du dich selbst anmeldest: Er bekommt die gleiche Kontrolle wie dein Handy. Im Web-Dashboard kannst du kein Kindergerät koppeln und keinen Plan kaufen. Um einen Browser abzumelden, wähle im Dashboard „Abmelden“. Damit ein Browser nichts mehr ändern kann, öffne „Familie“, dann „Elternteile“ und entferne ihn unter „Dashboard“; er kann deine Familie aber weiterhin anzeigen, bis er abgemeldet ist.',
       steps: {
-        '1': 'Öffne auf dem Computer dashboard.kidgate.app und wähle „Mit der KidGate-App anmelden“. Ein QR-Code erscheint.',
+        '1': 'Öffne auf dem Computer dashboard.kidgate.app. Ein QR-Code erscheint sofort.',
         '2': 'Öffne auf deinem Handy Einstellungen, dann „Im Web anmelden“. Du kannst auch in Familie über das Scan-Symbol scannen.',
         '3': 'Scanne den QR-Code im Browser. Kann die Kamera ihn nicht lesen, gib stattdessen den 6-stelligen Code ein.',
         '4': 'Prüfe, ob der Code übereinstimmt, und wähle dann „Zulassen“. Wähle „Nicht zulassen“, wenn du diese Anmeldung nicht selbst gestartet hast.',
@@ -645,7 +645,7 @@ export const userGuide = {
         '2': 'Wähle „Problem melden“ oder „Neue Meldung“, wenn du schon einmal eine gesendet hast.',
         '3': 'Beschreibe, was passiert ist und auf welchem Gerät, hänge bei Bedarf bis zu 5 Screenshots an und wähle „Bericht senden“.',
         '4': 'Jede Meldung zeigt ihren Status: „Eingegangen“, „In Bearbeitung“ oder „Gelöst“. Die Antwort von KidGate erscheint unter der Meldung.',
-        '5': 'Du kannst unter der Meldung antworten, bis sie geschlossen ist. Für ein anderes Problem sende eine neue Meldung.',
+        '5': 'Sobald KidGate geantwortet hat, kannst du unter der Meldung antworten, eine Nachricht pro Antwort, bis sie „Gelöst“ ist. Für ein anderes Problem sende eine neue Meldung.',
       },
     },
     deleteAccount: {
@@ -663,6 +663,7 @@ export const userGuide = {
   },
   onChildDevice: 'Auf dem Kindergerät',
   onParentDevice: 'Auf deinem Gerät',
+  onParentPhone: 'In der App auf deinem Handy',
   handoffHint:
     'KidGate kann diese Schritte auf dem Kindergerät selbst durchgehen: dort öffnen, zu „Status“ gehen und in der Karte „Einrichtung mit einem Elternteil abschließen“ die Option „Einrichtung fortsetzen“ wählen. Jeder Schritt hat einen Button, der den richtigen Bildschirm öffnet.',
 } as const;

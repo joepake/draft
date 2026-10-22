@@ -69,10 +69,9 @@ export const settings = {
   themeStyleLabel: 'Tema stili',
   themeColorLabel: 'Tema rengi',
   signOutButton: 'Çıkış yap',
-  signInButton: 'Giriş yap',
   switchToChildDevice: 'Bu telefonu çocuk cihazı olarak ayarla',
   guestAccountHint:
-    'Cihazları, uyarıları ve aile planınızı senkronize etmek için giriş yapın.',
+    'Cihazlarınızı, uyarılarınızı ve aile planınızı tek hesapta toplamak için giriş yapın.',
   reportModalTitle: 'Sorun bildir',
   reportMessageLabel: 'Yaşadığınız sorunu açıklayın.',
   reportMessagePlaceholder: 'Hatayı veya sorunu açıklayın…',

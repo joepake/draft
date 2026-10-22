@@ -149,19 +149,17 @@ export const report = {
   // drawn from constants, and a week nobody measured has to say so.
   guestPreviewHeading: 'Lo que verás',
   guestPreviewHint:
-    'Ejemplo — las cifras reales aparecen cuando conectes un dispositivo',
-  guestTitle: 'Mira adónde se fue la semana',
+    'Ejemplo: las cifras reales aparecerán cuando conectes un dispositivo',
+  guestTitle: 'Mira en qué se fue el tiempo esta semana',
   guestDescription:
-    'Inicia sesión para medir hoy frente a un día normal, comparar a tus hijos lado a lado y, con Premium, recibir un informe cada lunes.',
-  guestBenefitTrendTitle: 'Hoy, frente a lo normal',
+    'Inicia sesión para ver cómo va el día frente a uno normal y comparar a tus hijos entre sí. Con Premium, también recibirás un informe escrito cada lunes.',
+  guestBenefitTrendTitle: 'Hoy frente a un día normal',
   guestBenefitTrendBody:
-    'Una cifra sola no dice nada. Hoy siempre se dibuja frente al promedio diario de tu propia familia.',
-  guestBenefitChildTitle: 'Cada hijo, lado a lado',
+    'El uso de hoy aparece junto al promedio diario de tu familia, para que sepas si es mucho o poco.',
+  guestBenefitChildTitle: 'Compara a tus hijos de un vistazo',
   guestBenefitChildBody:
-    'La parte del día de cada hijo, en su propio color, en todos los dispositivos que usa.',
+    'Verás el tiempo de cada hijo en el día, con su propio color y sumando todos sus dispositivos.',
   guestBenefitWeeklyTitle: 'Un informe cada lunes, con Premium',
   guestBenefitWeeklyBody:
-    'Qué cambió, qué apps crecieron y las noches tardías: se guarda durante un año.',
-  guestSignInButton: 'Iniciar sesión',
-  guestCreateAccount: 'Crear una cuenta para padres',
+    'Qué cambió, el uso nocturno y en qué apps subió el tiempo. Los informes se guardan un año.',
 } as const;

@@ -565,7 +565,6 @@ export default {
     attnLimitReached: 'Đã đạt Giới hạn hằng ngày — thiết bị đã khóa',
     attnBatteryLow: 'Pin yếu ({{level}}%)',
     attnBatteryLowMeta: 'Cập nhật vị trí có thể dừng nếu máy hết pin',
-    attnReview: 'Xem',
     attnResend: 'Gửi lại',
     attnHowToFix: 'Cách khắc phục',
     attnUnlock: 'Mở khóa',
@@ -602,7 +601,7 @@ export default {
     limitsMax: 'Mỗi thiết bị giới hạn được nhiều nhất {{max}} ứng dụng.',
     perDay: '{{value}}/ngày',
     webActivityTitle: 'Hoạt động web',
-    webActivitySub: 'Tên miền vào nhiều nhất, 30 ngày gần nhất',
+    webActivitySub: 'Tên miền vào nhiều nhất, 7 ngày gần nhất',
     webActivityEmpty: 'Chưa có hoạt động web.',
     inventoryEmpty: 'Thiết bị này chưa gửi danh sách ứng dụng.',
     inventoryFirstScan:
@@ -626,7 +625,7 @@ export default {
     colChannel: 'Kênh',
     colViews: 'Lượt xem',
     filterRefusedTitle: 'Bộ lọc đã chặn những gì',
-    filterRefusedSub: '{{count}} lượt truy cập bị chặn, 30 ngày gần nhất',
+    filterRefusedSub: '{{count}} lượt truy cập bị chặn, 7 ngày gần nhất',
     filterHintIos:
       'iPhone hoặc iPad này chỉ lọc bằng cơ chế chặn nội dung người lớn của Apple. Hãy cập nhật KidGate trên máy và cho phép VPN của KidGate để chặn theo danh mục.',
     filterHintAndroid: 'Các danh mục được chặn bằng bộ lọc DNS ngay trên máy.',

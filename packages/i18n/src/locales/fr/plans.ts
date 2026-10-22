@@ -10,7 +10,7 @@ export const plans = {
   pillTrialActiveFallback: 'Essai actif',
   statusTrialEndedTitle: 'Essai terminé',
   statusTrialEndedSubtitle:
-    'La Limite quotidienne, les Heures bloquées, les Applications bloquées, la position et l’interrupteur du Filtre web continuent de fonctionner gratuitement. Abonnez-vous pour les mises à jour en direct, l’historique, les alertes et les rapports.',
+    'Vos règles continuent de fonctionner gratuitement. Abonnez-vous pour les mises à jour en direct, l’historique, les alertes et les rapports.',
   pillTrialEnded: 'Essai terminé',
   statusStartTrialTitle: 'Démarrez votre essai',
   statusStartTrialSubtitle:
@@ -67,7 +67,7 @@ export const plans = {
   compareActivityFeedPremium: '30 jours',
   compareChildReport: 'Rapports par enfant',
   compareIncluded:
-    'Les deux offres incluent la Limite quotidienne, les Heures bloquées, les Applications bloquées, l’approbation des nouvelles applications, le Filtre web, le Verrouillage de l’appareil, le SOS, les Demandes de temps et les Tâches à récompense sur iPhone, Android, Mac et Windows dans une même famille, ainsi que le tableau de bord web et les Limites d’apps sur Android, Mac et Windows. Android TV et Chromebook sont aussi pris en charge, avec moins de contrôles.',
+    'Les deux offres incluent la Limite quotidienne, les Heures bloquées, les Limites d’apps, le Verrouillage de l’appareil, le SOS, les Demandes de temps, les Tâches à récompense et le tableau de bord web.',
   sectionWhyPremium: 'Ce que Premium ajoute',
   sectionWhyPremiumSubtitle:
     'Toutes les règles continuent de fonctionner en Gratuit. Premium ajoute ce que vous voyez, et à quel moment.',
@@ -121,12 +121,10 @@ export const plans = {
   viewFamilyPlanStatus: 'Voir l’état de la formule',
   onlyOwnerCanSubscribe:
     'Seul le propriétaire de la famille peut s’abonner ou restaurer des achats.',
-  memberSubscriptionNotice:
-    'Une seule formule couvre toute la famille et seul le propriétaire paie. Vous pouvez voir si la famille est en essai ou abonnée.',
   memberTrialActiveSubtitle:
     'Cette famille est en période d’essai. À la fin, toutes les règles continuent de fonctionner sur tous les appareils et un appareil continue d’envoyer ses rapports ; le propriétaire peut s’abonner pour l’activité en direct, l’historique et les rapports de tous les appareils.',
   memberTrialEndedSubtitle:
-    'L’essai de cette famille est terminé. La Limite quotidienne, les Heures bloquées, les Applications bloquées, la position et l’interrupteur du Filtre web fonctionnent toujours. Demandez au propriétaire de s’abonner pour les mises à jour en direct, l’historique et les alertes.',
+    'Les règles de la famille fonctionnent toujours. Demandez au propriétaire de s’abonner pour les mises à jour en direct, l’historique et les alertes.',
   memberSetupTrialSubtitle:
     'L’essai démarre lorsque le propriétaire connecte un appareil parent et un appareil enfant.',
   premiumActivatedTitle: 'Premium débloqué',
@@ -179,7 +177,7 @@ export const plans = {
   sectionFreePlan: 'Si vous ne vous abonnez jamais',
   devicesUnlimited: 'Chaque appareil enfant envoie ses rapports',
   featureFootnotePlatforms:
-    'Certaines fonctionnalités dépendent de ce que chaque plateforme autorise, donc toutes ne sont pas disponibles sur chaque appareil.',
+    'En raison des limites de chaque plateforme, certaines fonctionnalités peuvent ne pas être disponibles sur tous les appareils.',
   sectionPlatforms: 'Où KidGate fonctionne',
   platformIos: 'iPhone et iPad',
   platformIosDetail: 'Appareil parent ou enfant · iOS 16 et versions ultérieures',

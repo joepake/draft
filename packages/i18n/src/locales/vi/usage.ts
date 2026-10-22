@@ -8,7 +8,6 @@ export const usage = {
   statLeftLabel: 'Còn lại',
   statLimitLabel: 'Giới hạn',
   limitOff: 'Tắt',
-  sectionStatusNow: 'Trạng thái hiện tại',
   insightDailyLimitReached: 'Đã đạt giới hạn hằng ngày',
   insightNearDailyLimit: 'Sắp đạt giới hạn hằng ngày',
   insightNoDailyLimit: 'Chưa đặt giới hạn hằng ngày',

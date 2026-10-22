@@ -33,6 +33,9 @@ export const ACTIVITY_ICON = {
   message_checked: 'message',
   device_locked: 'lock',
   device_unlocked: 'unlock',
+  // The Pause browsing card's own glyph; the web back on when it ends early.
+  browsing_paused: 'hourglass',
+  browsing_resumed: 'globe',
   // Whatever is left in the bucket once the four below are taken out of it:
   // a legacy usage row, or a `type` this build does not know.
   screen_time: 'clock',

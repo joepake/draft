@@ -69,10 +69,9 @@ export const settings = {
   themeStyleLabel: 'Стиль темы',
   themeColorLabel: 'Цвет темы',
   signOutButton: 'Выйти',
-  signInButton: 'Войти',
   switchToChildDevice: 'Настроить этот телефон как устройство ребёнка',
   guestAccountHint:
-    'Войдите, чтобы синхронизировать устройства, оповещения и семейный план.',
+    'Войдите, чтобы привязать устройства, оповещения и семейный план к своему аккаунту.',
   reportModalTitle: 'Сообщить о проблеме',
   reportMessageLabel: 'Опишите проблему, с которой вы столкнулись.',
   reportMessagePlaceholder: 'Опишите ошибку или проблему…',

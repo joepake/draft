@@ -130,20 +130,18 @@ export const report = {
   // The signed-out reports tab: a sample week, what the tab is for, and the
   // two ways in. `guestPreviewHint` is not decoration — the chart above it is
   // drawn from constants, and a week nobody measured has to say so.
-  guestPreviewHeading: 'Bạn sẽ thấy những gì',
-  guestPreviewHint: 'Ví dụ minh họa — số liệu thật hiển thị sau khi kết nối thiết bị',
-  guestTitle: 'Xem cả tuần đã trôi đi đâu',
+  guestPreviewHeading: 'Bạn sẽ thấy như thế này',
+  guestPreviewHint:
+    'Đây là số liệu mẫu — số liệu thật sẽ hiện khi bạn kết nối máy của con',
+  guestTitle: 'Tuần qua con dùng máy thế nào',
   guestDescription:
-    'Đăng nhập để so hôm nay với một ngày bình thường, đối chiếu các con cạnh nhau và, với Premium, nhận báo cáo mỗi thứ Hai.',
-  guestBenefitTrendTitle: 'Hôm nay, so với ngày thường',
+    'Đăng nhập để so hôm nay với ngày thường, xem các con cùng lúc, và nhận báo cáo mỗi thứ Hai nếu dùng Premium.',
+  guestBenefitTrendTitle: 'Hôm nay so với mọi ngày',
   guestBenefitTrendBody:
-    'Một con số đứng riêng thì không nói lên điều gì. Hôm nay luôn được đặt cạnh mức trung bình mỗi ngày của chính gia đình bạn.',
-  guestBenefitChildTitle: 'Từng con, cạnh nhau',
-  guestBenefitChildBody:
-    'Phần thời gian trong ngày của mỗi con, theo màu riêng, trên mọi thiết bị con dùng.',
-  guestBenefitWeeklyTitle: 'Báo cáo mỗi thứ Hai, với Premium',
+    'Chỉ một con số thì khó biết nhiều hay ít. Hôm nay được so với mức trung bình mỗi ngày của chính nhà bạn.',
+  guestBenefitChildTitle: 'Xem các con cùng lúc',
+  guestBenefitChildBody: 'Mỗi con một màu, cộng thời gian trên mọi máy con dùng.',
+  guestBenefitWeeklyTitle: 'Báo cáo mỗi thứ Hai (gói Premium)',
   guestBenefitWeeklyBody:
-    'Điều gì đã thay đổi, ứng dụng nào tăng lên và những đêm thức khuya — lưu trong một năm.',
-  guestSignInButton: 'Đăng nhập',
-  guestCreateAccount: 'Tạo tài khoản phụ huynh',
+    'Tuần qua có gì khác, ứng dụng nào dùng nhiều lên, những đêm thức khuya — lưu lại một năm.',
 } as const;

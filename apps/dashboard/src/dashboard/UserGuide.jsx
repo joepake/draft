@@ -125,6 +125,8 @@ export default function UserGuide({ topicId, onOpenTopic, landing = null }) {
         <ol className="guide-steps">
           {steps.map((step, stepIndex) => {
             const device = topic.stepDevices?.[stepIndex];
+            const onPhone =
+              device !== 'child' && topic.phoneSteps?.includes(stepIndex + 1);
             return (
               <li
                 key={stepIndex}
@@ -137,13 +139,15 @@ export default function UserGuide({ topicId, onOpenTopic, landing = null }) {
                     {stepIndex + 1}
                   </span>
                   <strong>{guideT('userGuide.stepLabel', { n: stepIndex + 1 })}</strong>
-                  {device && (
+                  {(device || onPhone) && (
                     <span
-                      className={`guide-device${device === 'parent' ? ' is-parent' : ''}`}
+                      className={`guide-device${device === 'child' ? '' : ' is-parent'}`}
                     >
-                      {device === 'parent'
-                        ? guideT('userGuide.onParentDevice')
-                        : guideT('userGuide.onChildDevice')}
+                      {onPhone
+                        ? guideT('userGuide.onParentPhone')
+                        : device === 'parent'
+                          ? guideT('userGuide.onParentDevice')
+                          : guideT('userGuide.onChildDevice')}
                     </span>
                   )}
                 </div>

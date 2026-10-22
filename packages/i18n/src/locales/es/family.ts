@@ -106,9 +106,6 @@ export const family = {
 
   headerHintEmpty: 'Administra y protege los dispositivos de tus hijos',
 
-  headerHintGuest:
-    'Explora libremente; inicia sesión cuando estés listo para conectar dispositivos.',
-
   familyCardManage: 'Administrar la familia, los padres y los dispositivos',
 
   familyCardJoined: 'Te has unido como padre',
@@ -149,6 +146,7 @@ export const family = {
   healthNeedsSetup: 'Requiere configuración',
   healthOffline: 'Sin conexión',
   devicePausedLabel: 'En pausa',
+  deviceCheckingLabel: 'Comprobando…',
   devicePausedHint: 'En pausa en el plan gratis: todas las reglas siguen vigentes',
   // What Paused means, said where the choice is made: the choose-a-device sheet on
   // both consoles. Checked against every agent 2026-09-28 — enforcement never
@@ -225,18 +223,17 @@ export const family = {
   switchToJoinMessage:
     'Esto eliminará tu familia vacía para que puedas unirte a otra mediante un código de invitación. Si ya hay un dispositivo del niño vinculado, primero deberás administrarlo.',
 
-  guestEmptyTitle: 'Tu familia comienza aquí',
+  guestEmptyTitle: 'Configura aquí tu familia',
 
   guestEmptyDescription:
     'Inicia sesión para vincular los dispositivos de tus hijos, recibir alertas y establecer límites saludables de tiempo de pantalla.',
 
   guestConnectButton: 'Iniciar sesión',
 
-  guestCreateAccount: 'Crear una cuenta para padres',
-
   guestBenefitLimitsTitle: 'Tiempo de pantalla y límites de aplicaciones',
 
-  guestBenefitLimitsBody: 'Bloquea dispositivos y establece horarios diarios.',
+  guestBenefitLimitsBody:
+    'Fija un Límite diario, Horas bloqueadas y Límites de apps, o bloquea un dispositivo al instante.',
 
   guestBenefitAlertsTitle: 'Alertas SOS y de actividad',
 
@@ -387,6 +384,12 @@ export const family = {
 
   sos: 'SOS',
 
+  browsingPaused: 'Navegación pausada',
+  browsingResumed: 'Navegación reanudada',
+  parentPausedBrowsing:
+    '{{actorName}} pausó la navegación en este dispositivo del niño durante {{minutes}} min.',
+  parentResumedBrowsing:
+    '{{actorName}} puso fin a la pausa de navegación en este dispositivo del niño.',
   deviceLocked: 'Dispositivo bloqueado',
 
   deviceUnlocked: 'Dispositivo desbloqueado',

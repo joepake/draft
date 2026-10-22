@@ -37,11 +37,7 @@ export const webSignIn = {
     'Dieser Code wurde bereits verwendet. Lass auf deinem Computer einen neuen anzeigen.',
   notFound: 'Dieser Code ist ungültig. Prüfe die sechs Zeichen und versuche es erneut.',
   failed: 'Anfrage konnte nicht abgeschlossen werden. Bitte versuche es erneut.',
-  sessionsTitle: 'Browser, die Änderungen vornehmen können',
-  sessionsHint:
-    'Diese Browser sind mit deinem Konto im Web-Dashboard angemeldet und können Änderungen vornehmen. Ein Browser, der deine Familie nur anzeigt, wird hier nicht aufgeführt.',
-  sessionsEmpty:
-    'Kein Browser kann Änderungen vornehmen. Sobald du einen zulässt, erscheint er hier.',
+  sessionsTitle: 'Dashboard',
   sessionRow: '{{browser}} auf {{os}}',
   sessionRowUnknown: 'Webbrowser',
   sessionExpires: 'Kann bis {{date}} Änderungen vornehmen',

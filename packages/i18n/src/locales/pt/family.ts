@@ -105,9 +105,6 @@ export const family = {
 
   headerHintEmpty: 'Gerencie e proteja os dispositivos dos seus filhos',
 
-  headerHintGuest:
-    'Explore livremente — faça login quando estiver pronto para conectar dispositivos.',
-
   familyCardManage: 'Gerenciar família, responsáveis e dispositivos',
 
   familyCardJoined: 'Você entrou como responsável',
@@ -148,6 +145,7 @@ export const family = {
   healthNeedsSetup: 'Configuração necessária',
   healthOffline: 'Offline',
   devicePausedLabel: 'Pausado',
+  deviceCheckingLabel: 'Verificando…',
   devicePausedHint: 'Pausado no plano gratuito: todas as regras continuam valendo',
   // What Paused means, said where the choice is made: the choose-a-device sheet on
   // both consoles. Checked against every agent 2026-09-28 — enforcement never
@@ -222,18 +220,17 @@ export const family = {
   switchToJoinMessage:
     'Isso removerá sua família vazia para que você possa entrar em outra usando um código de convite. Se já houver um dispositivo de criança vinculado, será necessário resolvê-lo primeiro.',
 
-  guestEmptyTitle: 'Sua família começa aqui',
+  guestEmptyTitle: 'Configure sua família aqui',
 
   guestEmptyDescription:
     'Faça login para vincular os dispositivos dos seus filhos, receber alertas e definir limites saudáveis de tempo de tela.',
 
   guestConnectButton: 'Entrar',
 
-  guestCreateAccount: 'Criar conta de responsável',
-
   guestBenefitLimitsTitle: 'Tempo de tela e limites de aplicativos',
 
-  guestBenefitLimitsBody: 'Bloqueie dispositivos e defina horários diários.',
+  guestBenefitLimitsBody:
+    'Defina um Limite diário, Horários bloqueados e Limites de apps, ou bloqueie um dispositivo na hora.',
 
   guestBenefitAlertsTitle: 'Alertas de SOS e atividade',
 
@@ -243,7 +240,7 @@ export const family = {
   guestBenefitLocationTitle: 'Localização e Check-ins',
 
   guestBenefitLocationBody:
-    'Veja onde seu filho está e peça que confirme que está em segurança.',
+    'Veja onde seu filho está e peça para ele confirmar que está em segurança.',
 
   stepsHeading: 'Primeiros passos',
 
@@ -382,6 +379,12 @@ export const family = {
 
   sos: 'SOS',
 
+  browsingPaused: 'Navegação pausada',
+  browsingResumed: 'Navegação retomada',
+  parentPausedBrowsing:
+    '{{actorName}} pausou a navegação neste dispositivo da criança por {{minutes}} min.',
+  parentResumedBrowsing:
+    '{{actorName}} encerrou a pausa de navegação neste dispositivo da criança.',
   deviceLocked: 'Dispositivo bloqueado',
 
   deviceUnlocked: 'Dispositivo desbloqueado',

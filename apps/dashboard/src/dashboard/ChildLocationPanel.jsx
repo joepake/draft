@@ -4,9 +4,14 @@ import {
   TRAIL_RENDER_MAX_POINTS,
   buildDeviceTrails,
 } from '@kidgate/core/domain/locationTrail';
-import { resolveChildLocationView } from '@kidgate/core/domain/childLocation';
+import {
+  childLocationPausedChoiceNote,
+  resolveChildLocationView,
+} from '@kidgate/core/domain/childLocation';
 import { supportsLocation } from '@kidgate/core/domain/locationSupport';
+import { supportsRing } from '@kidgate/core/domain/ringSupport';
 import { getSeriesSwatch } from '@kidgate/tokens/accents';
+import Icon from '@kidgate/web-ui/Icon';
 import { locationHistoryRepository } from '../adapters/repositories.js';
 import HereMapFrame from './HereMapFrame.jsx';
 import { mapTiles } from './hereTiles.js';
@@ -50,16 +55,28 @@ export default function ChildLocationPanel({
   childDevices,
   messages,
   title,
+  appT,
   reloadKey = 0,
+  /** Absent draws no Ring button — a preview with no actions. */
+  onRing,
+  ringBusy = false,
 }) {
   const capable = useMemo(
     () => (childDevices ?? []).filter(supportsLocation),
     [childDevices],
   );
-  const carriedId = useMemo(
-    () => resolveChildLocationView(child, childDevices ?? []).carried?.id ?? null,
+  const view = useMemo(
+    () => resolveChildLocationView(child, childDevices ?? []),
     [child, childDevices],
   );
+  const carriedId = view.carried?.id ?? null;
+  // Whose fix is drawn when the designated device is paused — the phone's line.
+  const pausedNote = childLocationPausedChoiceNote(view);
+  // The phone's `ChildLocationScreen`: ring the device a refresh would ask —
+  // the one the child carries — and only from a build that answers it.
+  const refreshTarget = view.carried ?? capable[0] ?? null;
+  const ringTarget =
+    onRing && refreshTarget && supportsRing(refreshTarget) ? refreshTarget : null;
   /** `{ [deviceId]: entries }`, filled as each device's read answers. */
   const [historyByDevice, setHistoryByDevice] = useState({});
 
@@ -140,6 +157,9 @@ export default function ChildLocationPanel({
 
   return (
     <section className="child-location">
+      {pausedNote && appT ? (
+        <p className="muted">{appT(pausedNote.key, pausedNote.params)}</p>
+      ) : null}
       {/* The document takes the builder's default accent, so it is always
           light. The sandbox and the tiles are `HereMapFrame`'s. */}
       <HereMapFrame
@@ -147,6 +167,17 @@ export default function ChildLocationPanel({
         title={title}
         html={buildChildDevicesMapHtml(points, mapTiles, messages, undefined, trails)}
       />
+      {ringTarget ? (
+        <button
+          type="button"
+          className="btn btn-block"
+          disabled={ringBusy}
+          onClick={() => onRing(ringTarget)}
+        >
+          <Icon name="bell" size={14} />
+          {appT('location.ringButton')}
+        </button>
+      ) : null}
     </section>
   );
 }

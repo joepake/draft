@@ -154,18 +154,16 @@ export const report = {
   guestPreviewHeading: 'Ce que vous verrez',
   guestPreviewHint:
     'Exemple — les chiffres réels apparaissent dès qu’un appareil est connecté',
-  guestTitle: 'Voir où est passée la semaine',
+  guestTitle: 'Voyez où est passé le temps d’écran de la semaine',
   guestDescription:
-    'Connectez-vous pour mesurer aujourd’hui face à une journée normale, comparer vos enfants côte à côte et, avec Premium, recevoir un rapport écrit chaque lundi.',
-  guestBenefitTrendTitle: 'Aujourd’hui, face à l’ordinaire',
+    'Connectez-vous pour comparer aujourd’hui à une journée habituelle et vos enfants entre eux. Avec Premium, recevez en plus un rapport écrit chaque lundi.',
+  guestBenefitTrendTitle: 'Aujourd’hui, par rapport à la normale',
   guestBenefitTrendBody:
-    'Un chiffre seul ne dit rien. Aujourd’hui est toujours tracé face à la moyenne quotidienne de votre propre famille.',
-  guestBenefitChildTitle: 'Chaque enfant, côte à côte',
+    'Le chiffre du jour est comparé à la moyenne quotidienne de votre famille, pour lui donner du sens.',
+  guestBenefitChildTitle: 'Tous vos enfants, côte à côte',
   guestBenefitChildBody:
-    'La part de journée de chaque enfant, dans sa propre couleur, sur tous les appareils qu’il utilise.',
+    'La part de chaque enfant dans le temps d’écran du jour, dans sa couleur, tous appareils confondus.',
   guestBenefitWeeklyTitle: 'Un rapport chaque lundi, avec Premium',
   guestBenefitWeeklyBody:
-    'Ce qui a changé, quelles applis ont progressé et les soirées tardives — conservé un an.',
-  guestSignInButton: 'Se connecter',
-  guestCreateAccount: 'Créer un compte parent',
+    'Ce qui a changé, les applis en hausse et les écrans tard le soir — le tout conservé un an.',
 } as const;

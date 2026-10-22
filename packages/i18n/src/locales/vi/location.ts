@@ -85,6 +85,10 @@ export const location = {
     'Thiết bị này chỉ đoán được vị trí từ đường mạng internet. Hãy bật Wi-Fi trên máy (không cần kết nối) rồi thử lại.',
   requestUnsupported: 'Thiết bị này không báo cáo được vị trí.',
   cardSharingOff: 'Chia sẻ vị trí đang tắt',
+  cardPaused: 'Ngừng báo cáo — thiết bị này không còn chia sẻ vị trí',
+  pausedChoiceNote:
+    'Đang hiện vị trí của {{deviceName}}: {{pausedName}} đã ngừng báo cáo nên không còn chia sẻ vị trí',
+  pausedLocateHint: 'Đặt thiết bị này làm thiết bị báo cáo để xem vị trí hiện tại',
   cardPermissionOff: 'Thiết bị này chưa cho phép truy cập vị trí',
   cardForegroundOnly: 'Vị trí chỉ cập nhật khi KidGate đang mở trên thiết bị này',
   cardIpOnly:

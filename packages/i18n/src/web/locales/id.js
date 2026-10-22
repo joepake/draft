@@ -545,7 +545,6 @@ export default {
     attnLimitReached: 'Batas harian tercapai — perangkat terkunci',
     attnBatteryLow: 'Baterai lemah ({{level}}%)',
     attnBatteryLowMeta: 'Pembaruan lokasi bisa berhenti jika ponsel mati',
-    attnReview: 'Tinjau',
     attnResend: 'Kirim ulang',
     attnHowToFix: 'Cara memperbaiki',
     attnUnlock: 'Buka kunci',
@@ -583,7 +582,7 @@ export default {
     limitsMax: 'Satu perangkat paling banyak membatasi {{max}} aplikasi.',
     perDay: '{{value}}/hari',
     webActivityTitle: 'Aktivitas web',
-    webActivitySub: 'Domain paling sering dikunjungi, 30 hari terakhir',
+    webActivitySub: 'Domain paling sering dikunjungi, 7 hari terakhir',
     webActivityEmpty: 'Belum ada aktivitas web.',
     inventoryEmpty: 'Perangkat ini belum mengirim daftar aplikasinya.',
     inventoryFirstScan:
@@ -609,7 +608,7 @@ export default {
     colChannel: 'Kanal',
     colViews: 'Tontonan',
     filterRefusedTitle: 'Yang ditolak penyaring',
-    filterRefusedSub: '{{count}} permintaan diblokir, 30 hari terakhir',
+    filterRefusedSub: '{{count}} permintaan diblokir, 7 hari terakhir',
     filterHintIos:
       'iPhone atau iPad ini hanya menyaring dengan kontrol konten dewasa milik Apple. Perbarui KidGate di perangkat itu dan izinkan VPN KidGate untuk memblokir per kategori.',
     filterHintAndroid: 'Kategori ditegakkan oleh penyaring DNS di perangkat.',

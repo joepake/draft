@@ -8,7 +8,6 @@ export const usage = {
   statLeftLabel: 'Осталось',
   statLimitLabel: 'Лимит',
   limitOff: 'Выкл.',
-  sectionStatusNow: 'Текущее состояние',
   insightDailyLimitReached: 'Дневной лимит достигнут',
   insightNearDailyLimit: 'Скоро дневной лимит',
   insightNoDailyLimit: 'Дневной лимит не задан',

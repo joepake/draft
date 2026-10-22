@@ -79,6 +79,7 @@ import {
   resolveCheckInOutcome,
   supportsCheckIn,
 } from '@kidgate/core/domain/checkInSupport';
+import { ringBlocker, supportsRing } from '@kidgate/core/domain/ringSupport';
 import { supportsSos } from '@kidgate/core/domain/sosSupport';
 import {
   supportsAppInstallAlerts,
@@ -121,7 +122,7 @@ import {
 } from '../dashboard/charts.jsx';
 import ReportPanel from '../dashboard/ReportPanel.jsx';
 import ChildInitial from '../dashboard/ChildInitial.jsx';
-import DeviceDot, { STATUS_TONE, statusLabelKey } from '../dashboard/DeviceDot.jsx';
+import DeviceDot, { STATUS_TONE, statusLabel } from '../dashboard/DeviceDot.jsx';
 import ChildHub from '../dashboard/ChildHub.jsx';
 import ControlCenter, { ACTION_TAB } from '../dashboard/ControlCenter.jsx';
 import DeviceChildRow from '../dashboard/DeviceChildRow.jsx';
@@ -469,11 +470,12 @@ function StatTile({ label, value, meta, tone = 'default', icon }) {
  */
 function StatusPill({ status, device }) {
   const { t } = useT();
+  const appT = useActivityTranslate();
   const known = STATUS_TONE[status] ? status : 'offline';
   return (
     <span className={`pill tone-${STATUS_TONE[known]}`}>
       <i className="pill-dot" aria-hidden="true" />
-      {t(statusLabelKey(status, device))}
+      {statusLabel(status, device, t, appT)}
     </span>
   );
 }
@@ -787,7 +789,9 @@ function KidGroupHead({
         {group.devices.map(d => (
           <span
             className={`kid-device-chip${
-              getShownDeviceStatus(d, Date.now()) === 'online' ? '' : ' is-alert'
+              ['online', 'checking'].includes(getShownDeviceStatus(d, Date.now()))
+                ? ''
+                : ' is-alert'
             }`}
             key={d.id}
           >
@@ -1200,7 +1204,7 @@ export default function Dashboard({
            * be one refusal with two wordings.
            */
           e.appMessageKey
-            ? activityT(e.appMessageKey)
+            ? activityT(e.appMessageKey, e.appMessageParams)
             : e.messageKey
               ? t(e.messageKey)
               : t('controlError.generic'),
@@ -1209,6 +1213,33 @@ export default function Dashboard({
     } finally {
       setBusy(null);
     }
+  }
+
+  /*
+   * "Ring device", shared by both location screens as on the phone
+   * (`useRingDevice`). A device that has said its notifications are off is told
+   * so instead of rung — the server would accept the push and the phone would
+   * stay silent. The sentence says what each platform does with it.
+   */
+  function ringDevice(device) {
+    const deviceName = device.name;
+    if (ringBlocker(device)) {
+      setToast({
+        tone: 'warning',
+        text: activityT('location.ringNotificationsOff', { deviceName }),
+      });
+      return;
+    }
+    run(
+      'ring',
+      () => actions.ringDevice(device),
+      activityT(
+        device.platform === 'ios'
+          ? 'location.toastRingSentIos'
+          : 'location.toastRingSentAndroid',
+        { deviceName },
+      ),
+    );
   }
 
   /*
@@ -2611,6 +2642,12 @@ export default function Dashboard({
         () => actions.resolveTimeRequest(documentId, true),
         t('dash.toastTimeApproved'),
       );
+    } else if (item.action === 'decline') {
+      run(
+        item.id,
+        () => actions.resolveTimeRequest(documentId, false),
+        activityT('timeRequest.timeRequestDenied'),
+      );
     } else if (item.action === 'siteAllow') {
       run(
         item.id,
@@ -3714,7 +3751,10 @@ export default function Dashboard({
             child={childView}
             childDevices={childDevices}
             title={t('dash.locationTitle')}
+            appT={activityT}
             reloadKey={loadedAt}
+            onRing={live ? ringDevice : undefined}
+            ringBusy={busy === 'ring'}
             messages={{
               mapUnavailable: activityT('location.mapUnavailable'),
               mapNoLocationsEmpty: t('dash.locationWaiting'),
@@ -4992,6 +5032,22 @@ export default function Dashboard({
                       </ul>
                     )}
                   </div>
+                  {/* The phone's button beside its map, on the same probe:
+                      absent is no, because an older build takes the push and
+                      stays silent (`@kidgate/core/domain/ringSupport`). */}
+                  {supportsRing(device) && (
+                    <button
+                      type="button"
+                      className="btn btn-block"
+                      disabled={busy === 'ring'}
+                      onClick={() => live && ringDevice(device)}
+                    >
+                      <Icon name="bell" size={14} />
+                      {busy === 'ring'
+                        ? t('dash.sending')
+                        : activityT('location.ringButton')}
+                    </button>
+                  )}
                   {(places[device.id] || []).length === 0 && (
                     <p className="empty">{t('dash.noPlaces')}</p>
                   )}

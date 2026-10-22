@@ -71,10 +71,9 @@ export const settings = {
   themeStyleLabel: 'Estilo do tema',
   themeColorLabel: 'Cor do tema',
   signOutButton: 'Sair',
-  signInButton: 'Entrar',
   switchToChildDevice: 'Configurar este celular como dispositivo da criança',
   guestAccountHint:
-    'Entre para sincronizar dispositivos, alertas e seu plano familiar.',
+    'Entre para manter atualizados os dispositivos, os alertas e seu plano familiar.',
   reportModalTitle: 'Relatar um problema',
   reportMessageLabel: 'Descreva o problema que você está enfrentando.',
   reportMessagePlaceholder: 'Descreva o bug ou problema…',

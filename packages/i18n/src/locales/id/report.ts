@@ -138,18 +138,16 @@ export const report = {
   guestPreviewHeading: 'Yang akan Anda lihat',
   guestPreviewHint:
     'Contoh — angka sebenarnya muncul setelah Anda menghubungkan perangkat',
-  guestTitle: 'Lihat minggu ini dihabiskan untuk apa',
+  guestTitle: 'Lihat untuk apa saja waktu layar seminggu terpakai',
   guestDescription:
-    'Masuk untuk membandingkan hari ini dengan hari biasa, melihat angka tiap anak berdampingan, dan, dengan Premium, menerima laporan tertulis setiap Senin.',
+    'Masuk untuk membandingkan hari ini dengan hari biasa dan melihat angka tiap anak berdampingan. Dengan Premium, Anda juga menerima laporan tertulis setiap Senin.',
   guestBenefitTrendTitle: 'Hari ini, dibanding hari biasa',
   guestBenefitTrendBody:
-    'Satu angka saja tidak berarti apa-apa. Hari ini selalu digambar terhadap rata-rata harian keluarga Anda sendiri.',
-  guestBenefitChildTitle: 'Setiap anak, berdampingan',
+    'Angka hari ini baru berarti jika ada pembandingnya: rata-rata harian keluarga Anda sendiri.',
+  guestBenefitChildTitle: 'Lihat semua anak berdampingan',
   guestBenefitChildBody:
-    'Bagian hari milik tiap anak, dalam warnanya sendiri, di seluruh perangkat yang dipakainya.',
+    'Waktu layar tiap anak per hari punya warnanya sendiri dan mencakup semua perangkat yang dipakainya.',
   guestBenefitWeeklyTitle: 'Laporan setiap Senin, dengan Premium',
   guestBenefitWeeklyBody:
-    'Apa yang berubah, aplikasi mana yang naik, dan malam-malam larut — disimpan selama setahun.',
-  guestSignInButton: 'Masuk',
-  guestCreateAccount: 'Buat akun orang tua',
+    'Apa yang berubah, aplikasi mana yang makin banyak dipakai, dan pemakaian larut malam — disimpan selama setahun.',
 } as const;

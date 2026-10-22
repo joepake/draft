@@ -103,9 +103,6 @@ export const family = {
 
   headerHintEmpty: 'Çocuklarınızın cihazlarını yönetin ve koruyun',
 
-  headerHintGuest:
-    'Uygulamayı özgürce keşfedin — cihaz bağlamaya hazır olduğunuzda oturum açın.',
-
   familyCardManage: 'Aileyi, ebeveynleri ve cihazları yönet',
 
   familyCardJoined: 'Ebeveyn olarak katıldınız',
@@ -144,6 +141,7 @@ export const family = {
   healthNeedsSetup: 'Kurulum gerekli',
   healthOffline: 'Çevrimdışı',
   devicePausedLabel: 'Duraklatıldı',
+  deviceCheckingLabel: 'Kontrol ediliyor…',
   devicePausedHint: 'Ücretsiz planda duraklatıldı — tüm kurallar geçerli',
   // What Paused means, said where the choice is made: the choose-a-device sheet on
   // both consoles. Checked against every agent 2026-09-28 — enforcement never
@@ -218,18 +216,17 @@ export const family = {
   switchToJoinMessage:
     'Boş aileniz kaldırılacak ve davet kodu kullanarak başka bir aileye katılabileceksiniz. Bağlı bir çocuk cihazı varsa önce onunla ilgili işlemleri tamamlamanız gerekir.',
 
-  guestEmptyTitle: 'Aileniz burada başlıyor',
+  guestEmptyTitle: 'Aileniz için ilk adım',
 
   guestEmptyDescription:
-    'Çocuklarınızın cihazlarını bağlamak, bildirim almak ve sağlıklı ekran süresi sınırları belirlemek için oturum açın.',
+    'Çocuklarınızın cihazlarını bağlamak, bildirim almak ve sağlıklı ekran süresi sınırları belirlemek için giriş yapın.',
 
   guestConnectButton: 'Giriş yap',
 
-  guestCreateAccount: 'Ebeveyn hesabı oluştur',
-
   guestBenefitLimitsTitle: 'Ekran süresi ve uygulama sınırları',
 
-  guestBenefitLimitsBody: 'Cihazları kilitleyin ve günlük programlar oluşturun.',
+  guestBenefitLimitsBody:
+    'Günlük sınır, Engellenen Saatler ve Uygulama Sınırları belirleyin ya da bir cihazı hemen kilitleyin.',
 
   guestBenefitAlertsTitle: 'SOS ve etkinlik uyarıları',
 
@@ -375,6 +372,12 @@ export const family = {
 
   sos: 'SOS',
 
+  browsingPaused: 'Tarama duraklatıldı',
+  browsingResumed: 'Tarama sürdürüldü',
+  parentPausedBrowsing:
+    '{{actorName}} bu çocuk cihazında taramayı {{minutes}} dk duraklattı.',
+  parentResumedBrowsing:
+    '{{actorName}} bu çocuk cihazında tarama duraklatmasını sonlandırdı.',
   deviceLocked: 'Cihaz kilitli',
 
   deviceUnlocked: 'Cihazın kilidi açıldı',

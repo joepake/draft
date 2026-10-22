@@ -9,7 +9,7 @@ export const plans = {
   pillTrialActiveFallback: 'Uji coba aktif',
   statusTrialEndedTitle: 'Uji coba berakhir',
   statusTrialEndedSubtitle:
-    'Batas harian, Jam Diblokir, Aplikasi yang Diblokir, lokasi, dan sakelar Filter web tetap berjalan gratis. Berlangganan untuk pembaruan langsung, riwayat, peringatan, dan laporan.',
+    'Aturan Anda tetap berjalan gratis. Berlangganan untuk pembaruan langsung, riwayat, peringatan, dan laporan.',
   pillTrialEnded: 'Uji coba berakhir',
   statusStartTrialTitle: 'Mulai uji coba Anda',
   statusStartTrialSubtitle:
@@ -65,7 +65,7 @@ export const plans = {
   compareActivityFeedPremium: '30 hari',
   compareChildReport: 'Laporan per anak',
   compareIncluded:
-    'Kedua paket mencakup Batas harian, Jam Diblokir, Aplikasi yang Diblokir, persetujuan aplikasi baru, Filter web, Kunci perangkat, SOS, Permintaan waktu, dan Tugas hadiah di iPhone, Android, Mac, dan Windows dalam satu keluarga, ditambah dasbor web, serta Batas Aplikasi di Android, Mac, dan Windows. Android TV dan Chromebook juga didukung, dengan kontrol yang lebih sedikit.',
+    'Kedua paket mencakup Batas harian, Jam Diblokir, Batas Aplikasi, Kunci perangkat, SOS, Permintaan waktu, Tugas hadiah, dan dasbor web.',
   sectionWhyPremium: 'Apa yang ditambahkan Premium',
   sectionWhyPremiumSubtitle:
     'Semua aturan tetap berjalan di paket Gratis. Premium menambahkan apa yang bisa Anda lihat, dan seberapa cepat.',
@@ -119,12 +119,10 @@ export const plans = {
   viewFamilyPlanStatus: 'Lihat status paket',
   onlyOwnerCanSubscribe:
     'Hanya pemilik keluarga yang dapat berlangganan atau memulihkan pembelian.',
-  memberSubscriptionNotice:
-    'Satu paket mencakup seluruh keluarga dan hanya pemilik yang membayar. Anda dapat melihat apakah keluarga sedang uji coba atau sudah berlangganan.',
   memberTrialActiveSubtitle:
     'Keluarga ini sedang dalam masa uji coba. Setelah berakhir, semua aturan tetap berjalan di semua perangkat dan satu perangkat tetap melapor; pemilik dapat berlangganan untuk aktivitas langsung, riwayat, dan laporan dari semua perangkat.',
   memberTrialEndedSubtitle:
-    'Masa uji coba keluarga ini sudah berakhir. Batas harian, Jam Diblokir, Aplikasi yang Diblokir, lokasi, dan sakelar Filter web masih berjalan. Minta pemilik keluarga berlangganan untuk pembaruan langsung, riwayat, dan peringatan.',
+    'Aturan keluarga masih berjalan. Minta pemilik keluarga berlangganan untuk pembaruan langsung, riwayat, dan peringatan.',
   memberSetupTrialSubtitle:
     'Uji coba dimulai saat pemilik menghubungkan satu perangkat orang tua dan satu perangkat anak.',
   premiumActivatedTitle: 'Premium terbuka',
@@ -175,7 +173,7 @@ export const plans = {
   sectionFreePlan: 'Jika Anda tidak pernah berlangganan',
   devicesUnlimited: 'Semua perangkat anak melapor',
   featureFootnotePlatforms:
-    'Beberapa fitur bergantung pada apa yang diizinkan setiap platform, jadi tidak semuanya tersedia di setiap perangkat.',
+    'Karena batasan tiap platform, beberapa fitur mungkin belum tersedia di semua perangkat.',
   sectionPlatforms: 'Tempat KidGate berjalan',
   platformIos: 'iPhone dan iPad',
   platformIosDetail: 'Perangkat orang tua atau anak · iOS 16 ke atas',

@@ -554,7 +554,6 @@ export default {
     attnLimitReached: 'Tageslimit erreicht — Gerät gesperrt',
     attnBatteryLow: 'Akku ist schwach ({{level}} %)',
     attnBatteryLowMeta: 'Standort-Updates können pausieren, wenn das Handy ausgeht',
-    attnReview: 'Prüfen',
     attnResend: 'Erneut senden',
     attnHowToFix: 'So behebst du das',
     attnUnlock: 'Entsperren',
@@ -594,7 +593,7 @@ export default {
     limitsMax: 'Mehr als {{max}} begrenzte Apps kann ein Gerät nicht halten.',
     perDay: '{{value}}/Tag',
     webActivityTitle: 'Web-Aktivität',
-    webActivitySub: 'Meistbesuchte Domains, letzte 30 Tage',
+    webActivitySub: 'Meistbesuchte Domains, letzte 7 Tage',
     webActivityEmpty: 'Noch keine Web-Aktivität.',
     inventoryEmpty: 'Dieses Gerät hat seine App-Liste noch nicht veröffentlicht.',
     inventoryFirstScan:
@@ -620,8 +619,8 @@ export default {
     colChannel: 'Kanal',
     colViews: 'Aufrufe',
     filterRefusedTitle: 'Was der Filter abgewiesen hat',
-    filterRefusedSub_one: '{{count}} blockierte Anfrage, letzte 30 Tage',
-    filterRefusedSub_other: '{{count}} blockierte Anfragen, letzte 30 Tage',
+    filterRefusedSub_one: '{{count}} blockierte Anfrage, letzte 7 Tage',
+    filterRefusedSub_other: '{{count}} blockierte Anfragen, letzte 7 Tage',
     filterHintIos:
       'Dieses iPhone oder iPad filtert nur mit Apples Sperre für Erwachseneninhalte. Aktualisiere KidGate darauf und erlaube das KidGate-VPN, um nach Kategorien zu blockieren.',
     filterHintAndroid: 'Die Kategorien setzt der DNS-Filter auf dem Gerät durch.',

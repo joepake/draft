@@ -6,6 +6,7 @@ export const auth = {
   createAccountTitle: 'Create parent account',
   createAccountSubtitle:
     'Use an email and password so you can sign in on any device later.',
+  joinKidGate: 'Join KidGate',
   linkEmailTitle: 'Link email and password',
   linkEmailSubtitle: 'Add an email sign-in backup for this parent account.',
   forgotPasswordTitle: 'Reset password',

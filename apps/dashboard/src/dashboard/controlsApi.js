@@ -13,10 +13,12 @@ import {
   trackTimeRequest,
 } from '../lib/analytics.js';
 import {
+  activityRepository,
   childRepository,
   childRulesRepository,
   controlRepository,
   deviceRepository,
+  deviceRingRepository,
   familyPlacesRepository,
   familyRepository,
   parentInviteRepository,
@@ -271,6 +273,47 @@ export function createActions({
           ),
         trackCheckInRequest,
       );
+    },
+
+    /**
+     * "Ring device" — the phone's `useRingDevice`, through the same endpoint.
+     *
+     * The log row is written after the ring lands and is best-effort, as the
+     * ring has already gone out: a parent told "failed" over a phone that is
+     * ringing presses again. It is also the one half a read-only sign-in is
+     * refused (`webWriteAllowed`), while the endpoint asks for the ID token
+     * alone — so such a session rings and leaves no row.
+     *
+     * A phone with no push token is told in the phone's sentence, which names
+     * the device.
+     */
+    async ringDevice(device) {
+      const result = await counted(
+        () =>
+          guard(() => deviceRingRepository.ring(familyId, device.id)).catch(error => {
+            if (error?.serverCode === 'ring/child-no-push-token') {
+              error.appMessageKey = 'location.ringNotificationsOff';
+              error.appMessageParams = { deviceName: device.name };
+            }
+            throw error;
+          }),
+        outcome => trackParentAction('device_ring', outcome),
+      );
+      activityRepository
+        .createActivity(familyId, {
+          deviceId: device.id,
+          type: 'screen_time',
+          titleKey: 'location.activityTitleRingRequested',
+          descriptionKey: 'location.activityDescriptionRingRequested',
+          params: { deviceName: device.name },
+        })
+        .catch(error =>
+          console.warn(
+            '[kidgate] ring activity not written:',
+            error?.code || error?.message,
+          ),
+        );
+      return result;
     },
 
     /**

@@ -8,7 +8,6 @@ export const usage = {
   statLeftLabel: 'المتبقي',
   statLimitLabel: 'الحد',
   limitOff: 'إيقاف',
-  sectionStatusNow: 'الحالة الحالية',
   insightDailyLimitReached: 'تم الوصول إلى الحد اليومي',
   insightNearDailyLimit: 'اقتراب من الحد اليومي',
   insightNoDailyLimit: 'لا يوجد حد يومي',

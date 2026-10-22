@@ -94,6 +94,10 @@ export const location = {
     'Este dispositivo só conseguiu estimar a posição pela conexão com a internet. Ative o Wi-Fi dele (não precisa se conectar) e tente de novo.',
   requestUnsupported: 'Este dispositivo não consegue informar a localização.',
   cardSharingOff: 'O compartilhamento de localização está desativado',
+  cardPaused: 'Pausado: este dispositivo não compartilha mais a localização',
+  pausedChoiceNote:
+    'Mostrando {{deviceName}}: {{pausedName}} está pausado e não compartilha mais a localização',
+  pausedLocateHint: 'Torne-o o dispositivo que reporta para ver onde ele está agora',
   cardPermissionOff: 'A localização não é permitida neste dispositivo',
   cardForegroundOnly:
     'A localização só é atualizada enquanto o KidGate está aberto neste dispositivo',

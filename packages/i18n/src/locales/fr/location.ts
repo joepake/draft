@@ -93,6 +93,11 @@ export const location = {
     'Cet appareil n’a pu qu’estimer sa position à partir de sa connexion Internet. Activez son Wi-Fi (pas besoin de se connecter), puis réessayez.',
   requestUnsupported: 'Cet appareil ne peut pas signaler sa position.',
   cardSharingOff: 'Le partage de position est désactivé',
+  cardPaused: 'En pause : cet appareil ne partage plus sa position',
+  pausedChoiceNote:
+    'Position de {{deviceName}} affichée : {{pausedName}} est en pause et ne partage plus sa position',
+  pausedLocateHint:
+    'Faites-en l’appareil qui envoie ses rapports pour voir où il se trouve maintenant',
   cardPermissionOff: 'La position n’est pas autorisée sur cet appareil',
   cardForegroundOnly:
     'La position ne se met à jour que lorsque KidGate est ouvert sur cet appareil',

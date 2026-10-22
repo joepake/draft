@@ -8,6 +8,14 @@ export type ActivityType =
   | 'tamper'
   | 'device_locked'
   | 'device_unlocked'
+  /**
+   * A parent paused browsing on the device, or ended a running pause early.
+   * Written by `updateDeviceControls` from what it actually stored, as
+   * `setDeviceLock` writes the Lock's two rows. `browsing_paused` params carry
+   * `minutes`.
+   */
+  | 'browsing_paused'
+  | 'browsing_resumed'
   | 'screen_time'
   /** A parent answered a child's request for one website. `siteRequest.ts`. */
   | 'web_filter'
@@ -87,6 +95,8 @@ export const ACTIVITY_TYPES = [
   'tamper',
   'device_locked',
   'device_unlocked',
+  'browsing_paused',
+  'browsing_resumed',
   'screen_time',
   'web_filter',
   'message_alert',

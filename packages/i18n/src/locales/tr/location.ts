@@ -89,6 +89,10 @@ export const location = {
     'Bu cihaz konumunu yalnızca internet bağlantısından tahmin edebildi. Cihazda Wi-Fi’yi açın (bağlanması gerekmez) ve tekrar deneyin.',
   requestUnsupported: 'Bu cihaz konumunu bildiremiyor.',
   cardSharingOff: 'Konum paylaşımı kapalı',
+  cardPaused: 'Duraklatıldı — bu cihaz artık konumunu paylaşmıyor',
+  pausedChoiceNote:
+    '{{deviceName}} gösteriliyor: {{pausedName}} duraklatıldı ve artık konumunu paylaşmıyor',
+  pausedLocateHint: 'Şu an nerede olduğunu görmek için onu raporlayan cihaz yapın',
   cardPermissionOff: 'Bu cihazda konuma izin verilmiyor',
   cardForegroundOnly: 'Konum yalnızca bu cihazda KidGate açıkken güncellenir',
   cardIpOnly:

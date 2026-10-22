@@ -170,19 +170,18 @@ export const report = {
   // The signed-out reports tab: a sample week, what the tab is for, and the
   // two ways in. `guestPreviewHint` is not decoration — the chart above it is
   // drawn from constants, and a week nobody measured has to say so.
-  guestPreviewHeading: 'ما الذي ستراه',
+  guestPreviewHeading: 'هذا ما ستراه',
   guestPreviewHint: 'مثال توضيحي — تظهر الأرقام الحقيقية بعد ربط جهاز',
-  guestTitle: 'اعرف أين ذهب الأسبوع',
+  guestTitle: 'اعرف كيف قضى أطفالك أسبوعهم أمام الشاشات',
   guestDescription:
-    'سجّل الدخول لتقيس اليوم مقابل يوم عادي، وتقارن أبناءك جنبًا إلى جنب، وتستلم مع Premium تقريرًا مكتوبًا كل اثنين.',
-  guestBenefitTrendTitle: 'اليوم، مقابل المعتاد',
+    'سجّل الدخول لتعرف إن كان استخدام اليوم أكثر من المعتاد أو أقل، وتقارن بين أطفالك. ومع Premium يصلك تقرير مكتوب كل يوم اثنين.',
+  guestBenefitTrendTitle: 'اليوم مقارنةً بالمعتاد',
   guestBenefitTrendBody:
-    'الرقم وحده لا يعني شيئًا. يُرسم اليوم دائمًا مقابل المتوسط اليومي لعائلتك نفسها.',
-  guestBenefitChildTitle: 'كل طفل، جنبًا إلى جنب',
-  guestBenefitChildBody: 'حصة كل طفل من اليوم، بلونه الخاص، عبر كل جهاز يستخدمه.',
-  guestBenefitWeeklyTitle: 'تقرير كل اثنين مع Premium',
+    'الرقم وحده لا يخبرك بالكثير، لذا نقارن استخدام اليوم بالمتوسط اليومي لعائلتك نفسها.',
+  guestBenefitChildTitle: 'مقارنة بين أطفالك',
+  guestBenefitChildBody:
+    'يظهر كل طفل بلونه الخاص، مع نصيبه من وقت الشاشة اليوم على جميع أجهزته.',
+  guestBenefitWeeklyTitle: 'تقرير كل يوم اثنين مع Premium',
   guestBenefitWeeklyBody:
-    'ما الذي تغيّر، وأي التطبيقات ازداد استخدامها، والسهر المتأخر — محفوظ لمدة سنة.',
-  guestSignInButton: 'تسجيل الدخول',
-  guestCreateAccount: 'إنشاء حساب ولي أمر',
+    'ما الذي تغيّر، وأي التطبيقات زاد استخدامها، وليالي السهر — وتُحفظ التقارير لمدة سنة.',
 } as const;

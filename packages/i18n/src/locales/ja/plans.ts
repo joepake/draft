@@ -9,7 +9,7 @@ export const plans = {
   pillTrialActiveFallback: 'トライアル中',
   statusTrialEndedTitle: 'トライアル終了',
   statusTrialEndedSubtitle:
-    '1日の上限、休止時間、ブロックされたアプリ、位置情報、Webフィルターのスイッチは無料のまま使えます。リアルタイムの更新、履歴、通知、レポートには登録が必要です。',
+    '設定したルールは無料のまま使えます。リアルタイムの更新、履歴、通知、レポートには登録が必要です。',
   pillTrialEnded: 'トライアル終了',
   statusStartTrialTitle: 'トライアルを開始',
   statusStartTrialSubtitle:
@@ -65,7 +65,7 @@ export const plans = {
   compareActivityFeedPremium: '30日分',
   compareChildReport: 'お子さまごとのレポート',
   compareIncluded:
-    'どちらのプランにも、1つの家族のiPhone・Android・Mac・Windowsで使える1日の上限、休止時間、ブロックされたアプリ、新しいアプリの承認、Webフィルター、デバイスロック、SOS、時間延長リクエスト、ごほうびタスクに加え、Webダッシュボードと、Android・Mac・Windowsで使えるアプリの利用時間制限が含まれます。Android TVとChromebookにも対応していますが、使える管理機能は少なめです。',
+    'どちらのプランにも、1日の上限、休止時間、アプリの利用時間制限、デバイスロック、SOS、時間延長リクエスト、ごほうびタスク、Webダッシュボードが含まれます。',
   sectionWhyPremium: 'Premiumで加わるもの',
   sectionWhyPremiumSubtitle:
     'ルールはすべて無料版でも動き続けます。Premiumでは、見えるものと、それがどれだけ早く届くかが加わります。',
@@ -119,12 +119,10 @@ export const plans = {
   viewFamilyPlanStatus: 'プランの状況を見る',
   onlyOwnerCanSubscribe:
     'サブスクリプションの登録や購入の復元はファミリー管理者のみ行えます。',
-  memberSubscriptionNotice:
-    '1つのプランで家族全員をカバーし、支払いを行うのは管理者のみです。家族がトライアル中か登録済みかを確認できます。',
   memberTrialActiveSubtitle:
     'この家族はお試し期間中です。終了後も、すべてのルールがすべてのデバイスで働き続け、1台のデバイスは報告を続けます。オーナーが登録すると、リアルタイムの利用状況、履歴、すべてのデバイスからの報告が使えるようになります。',
   memberTrialEndedSubtitle:
-    'このご家族のお試しは終了しました。1日の上限、休止時間、ブロックされたアプリ、位置情報、Webフィルターのスイッチはそのまま使えます。リアルタイムの更新、履歴、通知は管理者の登録が必要です。',
+    '設定したルールはそのまま使えます。リアルタイムの更新、履歴、通知は管理者の登録が必要です。',
   memberSetupTrialSubtitle:
     '管理者が保護者のデバイスと子どものデバイスを接続すると、トライアルが開始します。',
   premiumActivatedTitle: 'Premiumが有効になりました',
@@ -176,7 +174,7 @@ export const plans = {
   sectionFreePlan: 'ご登録されない場合',
   devicesUnlimited: 'お子さまのすべてのデバイスから報告',
   featureFootnotePlatforms:
-    '一部の機能はプラットフォームが許可する範囲に左右されるため、すべてのデバイスで使えるわけではありません。',
+    '各プラットフォームの制限により、一部の機能はすべてのデバイスで使えるとは限りません。',
   sectionPlatforms: 'KidGateが使えるデバイス',
   platformIos: 'iPhone・iPad',
   platformIosDetail: '保護者用・お子さま用 · iOS 16以降',

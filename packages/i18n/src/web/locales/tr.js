@@ -551,7 +551,6 @@ export default {
     attnLimitReached: 'Günlük sınıra ulaşıldı — cihaz kilitlendi',
     attnBatteryLow: 'Pil düşük (%{{level}})',
     attnBatteryLowMeta: 'Telefon kapanırsa konum güncellemeleri durabilir',
-    attnReview: 'İncele',
     attnResend: 'Yeniden gönder',
     attnHowToFix: 'Nasıl düzeltilir',
     attnUnlock: 'Kilidi aç',
@@ -591,7 +590,7 @@ export default {
     limitsMax: 'Bir cihaz en fazla {{max}} sınırlı uygulama tutar.',
     perDay: '{{value}}/gün',
     webActivityTitle: 'Web etkinliği',
-    webActivitySub: 'En çok ziyaret edilen alan adları, son 30 gün',
+    webActivitySub: 'En çok ziyaret edilen alan adları, son 7 gün',
     webActivityEmpty: 'Henüz web etkinliği yok.',
     inventoryEmpty: 'Bu cihaz uygulama listesini henüz göndermedi.',
     inventoryFirstScan:
@@ -617,8 +616,8 @@ export default {
     colChannel: 'Kanal',
     colViews: 'Görüntüleme',
     filterRefusedTitle: 'Filtrenin reddettikleri',
-    filterRefusedSub_one: '{{count}} engellenen sorgu, son 30 gün',
-    filterRefusedSub_other: '{{count}} engellenen sorgu, son 30 gün',
+    filterRefusedSub_one: '{{count}} engellenen sorgu, son 7 gün',
+    filterRefusedSub_other: '{{count}} engellenen sorgu, son 7 gün',
     filterHintIos:
       'Bu iPhone veya iPad yalnızca Apple’ın yetişkin içerik denetimiyle filtreleme yapıyor. Kategoriye göre engelleme için cihazda KidGate’i güncelleyin ve KidGate VPN’ine izin verin.',
     filterHintAndroid: 'Kategoriler cihazdaki DNS filtresi tarafından uygulanır.',

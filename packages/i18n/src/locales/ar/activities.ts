@@ -21,18 +21,16 @@ export const activities = {
   emptyDescriptionDevice:
     'اختر جهازًا آخر أو انتظر حتى تظهر أحداث القفل وإلغاء القفل وSOS لهذا الجهاز.',
 
-  guestEmptyTitle: 'نشاطك',
+  guestEmptyTitle: 'نشاط أطفالك',
   guestEmptyDescription:
-    'بعد ربط جهاز الطفل، ستظهر هنا أحداث القفل وإلغاء القفل وSOS والتطبيقات في الوقت الفعلي.',
-  guestSignInButton: 'تسجيل الدخول',
-  guestCreateAccount: 'إنشاء حساب ولي أمر',
+    'بعد ربط جهاز طفلك، ترى هنا أولًا بأول قفل الجهاز وفتحه، وتنبيهات SOS، وتشغيل التطبيقات أو حظرها أو تثبيتها أو حذفها.',
   guestSubtitle: 'سجّل الدخول لمتابعة نشاط أجهزة أطفالك.',
 
-  guestPreviewHeading: 'ما الذي ستراه',
+  guestPreviewHeading: 'هذا ما ستراه',
   guestPreviewLock: 'الجهاز مقفل',
   guestPreviewSos: 'تنبيه SOS',
   guestPreviewScreenTime: 'تحديث وقت استخدام الشاشة',
-  guestPreviewHint: 'مثال — ستظهر الأحداث الحقيقية بعد ربط جهاز.',
+  guestPreviewHint: 'مثال توضيحي — يظهر النشاط الحقيقي بعد ربط جهاز',
 
   activityTypeLocked: 'مقفل',
   activityTypeUnlocked: 'تم إلغاء القفل',

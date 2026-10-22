@@ -99,7 +99,6 @@ export const family = {
   manualCodeLabel: 'Nhập mã gồm 6 ký tự',
   manualInstructions: 'Nhập mã gồm 6 ký tự hiển thị trên thiết bị kia.',
   headerHintEmpty: 'Quản lý và bảo vệ thiết bị của trẻ',
-  headerHintGuest: 'Bạn có thể xem trước — đăng nhập khi sẵn sàng kết nối thiết bị',
   familyCardManage: 'Quản lý gia đình, phụ huynh và thiết bị',
   familyCardJoined: 'Đã tham gia với vai trò phụ huynh',
   chipDeviceCount: '{{count}} thiết bị',
@@ -120,6 +119,7 @@ export const family = {
   healthNeedsSetup: 'Cần thiết lập',
   healthOffline: 'Ngoại tuyến',
   devicePausedLabel: 'Ngừng báo cáo',
+  deviceCheckingLabel: 'Đang kiểm tra…',
   devicePausedHint: 'Ngừng báo cáo trên gói miễn phí — mọi quy tắc vẫn áp dụng',
   // What Paused means, said where the choice is made: the choose-a-device sheet on
   // both consoles. Checked against every agent 2026-09-28 — enforcement never
@@ -181,17 +181,17 @@ export const family = {
   switchToJoinTitle: 'Tham gia gia đình khác?',
   switchToJoinMessage:
     'Thao tác này sẽ xóa tên gia đình trống của bạn để nhập mã mời. Nếu đã có thiết bị của trẻ được kết nối, bạn cần xử lý thiết bị đó trước.',
-  guestEmptyTitle: 'Gia đình của bạn bắt đầu từ đây',
+  guestEmptyTitle: 'Gia đình bạn sẽ hiện ở đây',
   guestEmptyDescription:
-    'Đăng nhập để ghép nối thiết bị của trẻ, nhận cảnh báo và thiết lập giới hạn thời gian sử dụng hợp lý.',
+    'Đăng nhập để kết nối thiết bị của con, nhận cảnh báo và đặt giới hạn thời gian dùng máy.',
   guestConnectButton: 'Đăng nhập',
-  guestCreateAccount: 'Tạo tài khoản phụ huynh',
   guestBenefitLimitsTitle: 'Giới hạn thời gian và ứng dụng',
-  guestBenefitLimitsBody: 'Tạm khóa thiết bị và thiết lập lịch sử dụng hằng ngày.',
+  guestBenefitLimitsBody:
+    'Đặt Giới hạn hằng ngày, Giờ khóa thiết bị và Giới hạn ứng dụng, hoặc khóa máy ngay.',
   guestBenefitAlertsTitle: 'Cảnh báo SOS và hoạt động',
-  guestBenefitAlertsBody: 'Nhận thông báo ngay khi có việc cần bạn xử lý.',
+  guestBenefitAlertsBody: 'Biết ngay khi có chuyện cần bạn để ý.',
   guestBenefitLocationTitle: 'Vị trí và Báo an toàn',
-  guestBenefitLocationBody: 'Xem con đang ở đâu và nhờ con xác nhận mình an toàn.',
+  guestBenefitLocationBody: 'Xem con đang ở đâu và nhờ con báo là con vẫn an toàn.',
   stepsHeading: 'Các bước bắt đầu',
   step1Title: 'Mở KidGate trên thiết bị của trẻ',
   step1Description:
@@ -265,6 +265,12 @@ export const family = {
   dailyLimitOn: 'Giới hạn hằng ngày đang bật',
   deviceReady: 'Sẵn sàng',
   sos: 'SOS',
+  browsingPaused: 'Đã tạm dừng duyệt web',
+  browsingResumed: 'Đã tiếp tục duyệt web',
+  parentPausedBrowsing:
+    '{{actorName}} đã tạm dừng duyệt web trên thiết bị của trẻ trong {{minutes}} phút.',
+  parentResumedBrowsing:
+    '{{actorName}} đã kết thúc tạm dừng duyệt web trên thiết bị của trẻ.',
   deviceLocked: 'Đã khóa thiết bị',
   deviceUnlocked: 'Đã mở khóa thiết bị',
   parentPausedChildDevice: '{{actorName}} đã khóa thiết bị của trẻ.',

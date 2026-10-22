@@ -104,9 +104,6 @@ export const family = {
 
   headerHintEmpty: 'お子さまのデバイスを管理・保護しましょう',
 
-  headerHintGuest:
-    '自由にお試しください。デバイスを接続する準備ができたらログインしてください。',
-
   familyCardManage: 'ファミリー・保護者・デバイスを管理',
 
   familyCardJoined: '保護者として参加中',
@@ -145,6 +142,7 @@ export const family = {
   healthNeedsSetup: '設定が必要',
   healthOffline: 'オフライン',
   devicePausedLabel: '一時停止',
+  deviceCheckingLabel: '確認中…',
   devicePausedHint: '無料プランで一時停止中 — ルールはすべて有効です',
   // What Paused means, said where the choice is made: the choose-a-device sheet on
   // both consoles. Checked against every agent 2026-09-28 — enforcement never
@@ -220,27 +218,26 @@ export const family = {
   switchToJoinMessage:
     '現在の空のファミリーは削除され、招待コードを使って別のファミリーに参加できます。すでに子どものデバイスが接続されている場合は、先にそのデバイスの接続を解除してください。',
 
-  guestEmptyTitle: 'ここからファミリーを始めましょう',
+  guestEmptyTitle: '家族の見守りはここから',
 
   guestEmptyDescription:
-    'ログインすると、お子さまのデバイスを接続し、通知を受け取り、健全なスクリーンタイムの制限を設定できます。',
+    'ログインすると、お子さまのデバイスを接続して、通知を受け取ったり、スクリーンタイムを適度に制限したりできます。',
 
   guestConnectButton: 'ログイン',
 
-  guestCreateAccount: '保護者アカウントを作成',
-
   guestBenefitLimitsTitle: 'スクリーンタイムとアプリ制限',
 
-  guestBenefitLimitsBody: 'デバイスをロックし、毎日の利用スケジュールを設定できます。',
+  guestBenefitLimitsBody:
+    '1日の上限、休止時間、アプリの利用時間制限を設定したり、デバイスをすぐにロックしたりできます。',
 
   guestBenefitAlertsTitle: 'SOS・アクティビティ通知',
 
-  guestBenefitAlertsBody: '対応が必要なときにすぐ通知を受け取れます。',
+  guestBenefitAlertsBody: '確認が必要なことが起きると、すぐにわかります。',
 
   guestBenefitLocationTitle: '位置情報とチェックイン',
 
   guestBenefitLocationBody:
-    'お子さまの現在地を確認し、安全を確認するチェックインを依頼できます。',
+    'お子さまの現在地を確認したり、チェックインで無事を知らせてもらったりできます。',
 
   stepsHeading: 'はじめに',
 
@@ -381,6 +378,12 @@ export const family = {
 
   sos: 'SOS',
 
+  browsingPaused: 'ブラウジング一時停止',
+  browsingResumed: 'ブラウジング再開',
+  parentPausedBrowsing:
+    '{{actorName}}がこの子どものデバイスのブラウジングを{{minutes}}分間一時停止しました。',
+  parentResumedBrowsing:
+    '{{actorName}}がこの子どものデバイスのブラウジングの一時停止を終了しました。',
   deviceLocked: 'デバイスロック中',
 
   deviceUnlocked: 'デバイスのロックを解除しました',

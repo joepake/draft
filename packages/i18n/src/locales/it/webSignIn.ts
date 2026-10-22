@@ -36,11 +36,7 @@ export const webSignIn = {
   alreadyUsed: 'Il codice è già stato usato. Mostrane uno nuovo sul computer.',
   notFound: 'Codice non valido. Controlla i sei caratteri e riprova.',
   failed: 'Impossibile completare la richiesta. Riprova.',
-  sessionsTitle: 'Browser che possono apportare modifiche',
-  sessionsHint:
-    'Questi browser hanno effettuato l’accesso alla dashboard web con il tuo account e possono apportare modifiche. Un browser che si limita a mostrare la tua famiglia non compare nell’elenco.',
-  sessionsEmpty:
-    'Nessun browser può apportare modifiche. Quando ne autorizzi uno, comparirà qui.',
+  sessionsTitle: 'Dashboard',
   sessionRow: '{{browser}} su {{os}}',
   sessionRowUnknown: 'Browser web',
   sessionExpires: 'Può apportare modifiche fino al {{date}}',

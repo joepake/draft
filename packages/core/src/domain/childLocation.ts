@@ -33,7 +33,9 @@ import type {
   DeviceLocationRequestResult,
   DeviceLocationRequestStatus,
   DeviceLocationSensing,
+  DeviceMonitoringState,
 } from '@kidgate/schema/device';
+import { isDeviceParked } from './deviceParking';
 import { supportsLocation } from './locationSupport';
 
 /** What this module reads off a device document — no screen state. */
@@ -52,6 +54,8 @@ export interface ChildLocationDeviceFacts {
   lastActiveAt?: string | null;
   /** `Device.locationSensing` — `'ip'` is a desktop that can only guess. */
   locationSensing?: DeviceLocationSensing | null;
+  /** `Device.monitoringState` — a parked device keeps its last fix and sends no new one. */
+  monitoringState?: DeviceMonitoringState;
 }
 
 export interface ChildLocationView<
@@ -75,6 +79,15 @@ export interface ChildLocationView<
    * the parent to name the carried device, and must not summarise meanwhile.
    */
   needsChoice: boolean;
+  /**
+   * The parent's designated device, passed over because it is paused
+   * (`monitoringState: 'parked'`) and another one reports. Its fix is frozen
+   * at the park, so answering with it is the wrong answer with a confident
+   * face this module exists to refuse (`docs/TRIAL_TO_FREE.md` 5.2). The
+   * choice stays in the data; it is skipped only while it cannot answer, and
+   * screens name both devices (`childLocationPausedChoiceNote`).
+   */
+  pausedChoice: D | null;
 }
 
 const fixTime = (device: ChildLocationDeviceFacts): number => {
@@ -89,6 +102,12 @@ const byFreshness = (
   b: ChildLocationDeviceFacts,
 ): number => fixTime(b) - fixTime(a);
 
+/**
+ * Paused devices are absent from the choice while one that reports exists,
+ * and only then. When every capable device is paused there is no live answer
+ * to prefer, and the screens say "paused" over the frozen fix
+ * (`resolveChildLocationBlocker`) rather than hiding the last position known.
+ */
 export function resolveChildLocationView<D extends ChildLocationDeviceFacts>(
   child: { locationDeviceId?: string },
   assignedDevices: D[],
@@ -96,28 +115,39 @@ export function resolveChildLocationView<D extends ChildLocationDeviceFacts>(
   const capable = assignedDevices
     .filter(device => supportsLocation(device))
     .sort(byFreshness);
+  const reporting = capable.filter(device => !isDeviceParked(device));
+  const candidates = reporting.length > 0 ? reporting : capable;
+  const othersThan = (carried: D | null) =>
+    capable.filter(device => device.id !== carried?.id);
 
   // A dangling id — device unassigned or unpaired since the choice — reads
   // as unchosen, never as a fifth state.
   const designated = child.locationDeviceId
     ? (capable.find(device => device.id === child.locationDeviceId) ?? null)
     : null;
+  const pausedChoice =
+    designated && isDeviceParked(designated) && reporting.length > 0
+      ? designated
+      : null;
 
-  if (designated) {
+  if (designated && !pausedChoice) {
     return {
       carried: designated,
       chosen: true,
-      others: capable.filter(device => device.id !== designated.id),
+      others: othersThan(designated),
       needsChoice: false,
+      pausedChoice: null,
     };
   }
 
-  if (capable.length === 1) {
+  if (candidates.length === 1) {
+    const carried = candidates[0] ?? null;
     return {
-      carried: capable[0] ?? null,
+      carried,
       chosen: false,
-      others: [],
+      others: othersThan(carried),
       needsChoice: false,
+      pausedChoice,
     };
   }
 
@@ -125,7 +155,27 @@ export function resolveChildLocationView<D extends ChildLocationDeviceFacts>(
     carried: null,
     chosen: false,
     others: capable,
-    needsChoice: capable.length >= 2,
+    needsChoice: candidates.length >= 2,
+    pausedChoice,
+  };
+}
+
+/**
+ * The line that names both devices when the designated one is paused: whose
+ * fix is on screen, and why it is not the one the parent picked.
+ */
+export function childLocationPausedChoiceNote(
+  view: Pick<ChildLocationView, 'carried' | 'pausedChoice'>,
+): { key: string; params: { pausedName: string; deviceName: string } } | null {
+  if (!view.pausedChoice || !view.carried) {
+    return null;
+  }
+  return {
+    key: 'location.pausedChoiceNote',
+    params: {
+      pausedName: view.pausedChoice.name ?? '',
+      deviceName: view.carried.name ?? '',
+    },
   };
 }
 
@@ -151,6 +201,12 @@ export function resolveChildLocationView<D extends ChildLocationDeviceFacts>(
  * active: 3 minutes ago" with no explanation anywhere.
  */
 export type ChildLocationBlocker =
+  /**
+   * The carried device is parked: its fix is frozen at the moment it stopped
+   * reporting, and a "Locate now" is refused (`location/device-parked`).
+   * Ahead of every other cause, which it explains.
+   */
+  | 'paused'
   | 'sharingOff'
   | 'permission'
   /**
@@ -223,6 +279,10 @@ export function resolveChildLocationBlocker(input: {
     return null;
   }
 
+  if (isDeviceParked(carried)) {
+    return 'paused';
+  }
+
   if (!sharingEnabled) {
     return 'sharingOff';
   }
@@ -278,6 +338,8 @@ export function resolveChildLocationBlocker(input: {
 /** The sentence for a blocker, as an i18n key every parent surface renders. */
 export function childLocationBlockerKey(blocker: ChildLocationBlocker): string {
   switch (blocker) {
+    case 'paused':
+      return 'location.cardPaused';
     case 'sharingOff':
       return 'location.cardSharingOff';
     case 'permission':

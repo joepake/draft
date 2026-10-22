@@ -22,19 +22,16 @@ export const activities = {
   emptyDescriptionDevice:
     'Seleziona un altro dispositivo oppure attendi gli eventi di blocco, sblocco e SOS di questo dispositivo.',
 
-  guestEmptyTitle: 'La tua attività',
+  guestEmptyTitle: 'L’attività dei tuoi figli',
   guestEmptyDescription:
-    'Dopo aver collegato un dispositivo del bambino, gli eventi di blocco, sblocco, SOS e delle app verranno visualizzati qui in tempo reale.',
-  guestSignInButton: 'Accedi',
-  guestCreateAccount: 'Crea un account genitore',
-  guestSubtitle: 'Accedi per seguire l’attività dei dispositivi dei tuoi figli.',
+    'Appena colleghi un dispositivo di tuo figlio, qui compaiono blocchi, sblocchi, avvisi SOS e azioni sulle app, man mano che avvengono.',
+  guestSubtitle: 'Accedi per seguire l’attività sui dispositivi dei tuoi figli',
 
-  guestPreviewHeading: 'Cosa vedrai',
+  guestPreviewHeading: 'Ecco cosa vedrai',
   guestPreviewLock: 'Dispositivo bloccato',
   guestPreviewSos: 'Avviso SOS',
   guestPreviewScreenTime: 'Aggiornamento Tempo di utilizzo',
-  guestPreviewHint:
-    'Esempio: gli eventi reali verranno visualizzati dopo aver collegato un dispositivo.',
+  guestPreviewHint: 'Esempio — l’attività reale compare quando colleghi un dispositivo',
 
   activityTypeLocked: 'Bloccato',
   activityTypeUnlocked: 'Sbloccato',

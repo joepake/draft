@@ -198,6 +198,4 @@ export const report = {
   guestBenefitWeeklyTitle: 'A report every Monday, with Premium',
   guestBenefitWeeklyBody:
     'What changed, which apps grew, and the late nights — kept for a year.',
-  guestSignInButton: 'Sign in',
-  guestCreateAccount: 'Create a parent account',
 } as const;

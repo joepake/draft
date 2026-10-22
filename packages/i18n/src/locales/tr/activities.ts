@@ -22,18 +22,16 @@ export const activities = {
   emptyDescriptionDevice:
     'Başka bir cihaz seçin veya bu cihazdan kilitleme, kilit açma ve SOS olaylarının gelmesini bekleyin.',
 
-  guestEmptyTitle: 'Etkinlikleriniz',
+  guestEmptyTitle: 'Çocuğunuzun etkinlikleri',
   guestEmptyDescription:
-    'Bir çocuk cihazı bağlandıktan sonra kilitleme, kilit açma, SOS ve uygulama olayları burada gerçek zamanlı olarak görüntülenir.',
-  guestSignInButton: 'Giriş yap',
-  guestCreateAccount: 'Ebeveyn hesabı oluştur',
+    'Bir çocuk cihazı bağlandıktan sonra kilitleme, kilit açma, SOS ve açılan, engellenen, yüklenen ya da kaldırılan uygulamalar burada anında görünür.',
   guestSubtitle: 'Çocuğunuzun cihaz etkinliklerini takip etmek için giriş yapın.',
 
   guestPreviewHeading: 'Görecekleriniz',
   guestPreviewLock: 'Cihaz kilitli',
   guestPreviewSos: 'SOS uyarısı',
   guestPreviewScreenTime: 'Ekran Süresi güncellemesi',
-  guestPreviewHint: 'Örnek — gerçek etkinlikler cihaz bağlandıktan sonra görüntülenir.',
+  guestPreviewHint: 'Örnek — gerçek etkinlikler bir cihaz bağladığınızda görünür',
 
   activityTypeLocked: 'Kilitlendi',
   activityTypeUnlocked: 'Kilidi açıldı',

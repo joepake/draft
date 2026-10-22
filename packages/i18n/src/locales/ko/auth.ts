@@ -6,6 +6,7 @@ export const auth = {
   createAccountTitle: '부모 계정 만들기',
   createAccountSubtitle:
     '이메일과 비밀번호를 설정해 두면 나중에 어느 기기에서든 로그인할 수 있습니다.',
+  joinKidGate: 'KidGate 시작하기',
   linkEmailTitle: '이메일·비밀번호 연결',
   linkEmailSubtitle: '이 부모 계정에 예비 이메일 로그인을 추가합니다.',
   forgotPasswordTitle: '비밀번호 재설정',

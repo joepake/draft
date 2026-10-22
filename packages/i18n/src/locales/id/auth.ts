@@ -6,6 +6,7 @@ export const auth = {
   createAccountTitle: 'Buat akun orang tua',
   createAccountSubtitle:
     'Gunakan email dan kata sandi agar nanti bisa masuk dari perangkat mana pun.',
+  joinKidGate: 'Gabung ke KidGate',
   linkEmailTitle: 'Tautkan email dan kata sandi',
   linkEmailSubtitle: 'Tambahkan cadangan masuk lewat email untuk akun orang tua ini.',
   forgotPasswordTitle: 'Atur ulang kata sandi',

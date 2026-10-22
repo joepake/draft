@@ -10,7 +10,7 @@ export const plans = {
   pillTrialActiveFallback: 'Prova attiva',
   statusTrialEndedTitle: 'Prova terminata',
   statusTrialEndedSubtitle:
-    'Limite giornaliero, Orari di blocco, App bloccate, posizione e l’interruttore del Filtro web restano attivi gratis. Abbonati per aggiornamenti in tempo reale, cronologia, avvisi e report.',
+    'Le tue regole restano attive gratis. Abbonati per aggiornamenti in tempo reale, cronologia, avvisi e report.',
   pillTrialEnded: 'Prova terminata',
   statusStartTrialTitle: 'Inizia la tua prova',
   statusStartTrialSubtitle:
@@ -66,7 +66,7 @@ export const plans = {
   compareActivityFeedPremium: '30 giorni',
   compareChildReport: 'Report per figlio',
   compareIncluded:
-    'Entrambi i piani includono il Limite giornaliero, gli Orari di blocco, le App bloccate, l’approvazione delle nuove app, il Filtro web, il Blocco dispositivo, SOS, le Richieste di tempo e i Compiti premio su iPhone, Android, Mac e Windows in una stessa famiglia, oltre alla dashboard web, e i Limiti app su Android, Mac e Windows. Anche Android TV e Chromebook sono supportati, con meno controlli.',
+    'Entrambi i piani includono il Limite giornaliero, gli Orari di blocco, i Limiti app, il Blocco dispositivo, SOS, le Richieste di tempo, i Compiti premio e la dashboard web.',
   sectionWhyPremium: 'Cosa aggiunge Premium',
   sectionWhyPremiumSubtitle:
     'Ogni regola continua a funzionare con Gratis. Premium aggiunge ciò che puoi vedere, e quando.',
@@ -120,12 +120,10 @@ export const plans = {
   viewFamilyPlanStatus: 'Visualizza lo stato del piano',
   onlyOwnerCanSubscribe:
     'Solo il proprietario della famiglia può abbonarsi o ripristinare gli acquisti.',
-  memberSubscriptionNotice:
-    'Un solo piano copre tutta la famiglia e solo il proprietario paga. Puoi vedere se la famiglia è in prova o abbonata.',
   memberTrialActiveSubtitle:
     'Questa famiglia è in prova. Alla fine, tutte le regole restano attive su ogni dispositivo e un dispositivo continua a inviare i report; il proprietario può abbonarsi per attività in tempo reale, cronologia e report da tutti i dispositivi.',
   memberTrialEndedSubtitle:
-    'La prova di questa famiglia è terminata. Limite giornaliero, Orari di blocco, App bloccate, posizione e l’interruttore del Filtro web funzionano ancora. Chiedi al titolare di abbonarsi per aggiornamenti in tempo reale, cronologia e avvisi.',
+    'Le regole della famiglia funzionano ancora. Chiedi al titolare di abbonarsi per aggiornamenti in tempo reale, cronologia e avvisi.',
   memberSetupTrialSubtitle:
     'La prova inizia quando il proprietario collega un dispositivo del genitore e uno del bambino.',
   premiumActivatedTitle: 'Premium sbloccato',
@@ -177,7 +175,7 @@ export const plans = {
   sectionFreePlan: 'Se non ti abboni mai',
   devicesUnlimited: 'Ogni dispositivo del bambino invia i report',
   featureFootnotePlatforms:
-    'Alcune funzioni dipendono da ciò che ogni piattaforma consente, quindi non tutte sono disponibili su ogni dispositivo.',
+    'A causa dei limiti di ciascuna piattaforma, alcune funzioni potrebbero non essere disponibili su tutti i dispositivi.',
   sectionPlatforms: 'Dove funziona KidGate',
   platformIos: 'iPhone e iPad',
   platformIosDetail: 'Dispositivo genitore o figlio · iOS 16 o successivo',

@@ -6,6 +6,7 @@ export const auth = {
   createAccountTitle: 'अभिभावक खाता बनाएँ',
   createAccountSubtitle:
     'ईमेल और पासवर्ड रखें ताकि बाद में किसी भी डिवाइस से साइन इन कर सकें।',
+  joinKidGate: 'KidGate से जुड़ें',
   linkEmailTitle: 'ईमेल और पासवर्ड जोड़ें',
   linkEmailSubtitle: 'इस अभिभावक खाते के लिए बैकअप ईमेल साइन-इन जोड़ें।',
   forgotPasswordTitle: 'पासवर्ड रीसेट करें',

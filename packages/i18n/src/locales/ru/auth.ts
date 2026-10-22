@@ -6,6 +6,7 @@ export const auth = {
   createAccountTitle: 'Создать родительский аккаунт',
   createAccountSubtitle:
     'Укажите почту и пароль, чтобы потом входить с любого устройства.',
+  joinKidGate: 'Присоединиться к KidGate',
   linkEmailTitle: 'Привязать почту и пароль',
   linkEmailSubtitle:
     'Добавьте резервный вход по почте для этого родительского аккаунта.',

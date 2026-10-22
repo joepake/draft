@@ -9,7 +9,7 @@ export const plans = {
   pillTrialActiveFallback: 'Deneme aktif',
   statusTrialEndedTitle: 'Deneme sona erdi',
   statusTrialEndedSubtitle:
-    'Günlük sınır, Engellenen Saatler, Engellenen Uygulamalar, konum ve Web filtresi anahtarı ücretsiz çalışmaya devam eder. Canlı güncellemeler, geçmiş, uyarılar ve raporlar için abone olun.',
+    'Kurallarınız ücretsiz çalışmaya devam eder. Canlı güncellemeler, geçmiş, uyarılar ve raporlar için abone olun.',
   pillTrialEnded: 'Deneme sona erdi',
   statusStartTrialTitle: 'Denemenizi başlatın',
   statusStartTrialSubtitle:
@@ -65,7 +65,7 @@ export const plans = {
   compareActivityFeedPremium: '30 gün',
   compareChildReport: 'Çocuk başına rapor',
   compareIncluded:
-    'Her iki plan da tek ailede iPhone, Android, Mac ve Windows’ta Günlük sınır, Engellenen Saatler, Engellenen Uygulamalar, yeni uygulama onayı, Web filtresi, Cihaz Kilidi, SOS, Süre istekleri ve Ödül görevleri özelliklerini ve web panelini, ayrıca Android, Mac ve Windows’ta Uygulama Sınırları’nı içerir. Android TV ve Chromebook da daha az kontrolle desteklenir.',
+    'Her iki plan da Günlük sınır, Engellenen Saatler, Uygulama Sınırları, Cihaz Kilidi, SOS, Süre istekleri ve Ödül görevleri özelliklerini, ayrıca web panelini içerir.',
   sectionWhyPremium: 'Premium neler ekler',
   sectionWhyPremiumSubtitle:
     'Her kural Ücretsiz planda çalışmaya devam eder. Premium, neyi ne kadar erken gördüğünüzü ekler.',
@@ -119,12 +119,10 @@ export const plans = {
   viewFamilyPlanStatus: 'Plan durumunu görüntüle',
   onlyOwnerCanSubscribe:
     'Yalnızca aile sahibi abone olabilir veya satın alımları geri yükleyebilir.',
-  memberSubscriptionNotice:
-    'Tek bir plan tüm aileyi kapsar ve yalnızca aile sahibi öder. Ailenin denemede mi yoksa abone mi olduğunu görebilirsiniz.',
   memberTrialActiveSubtitle:
     'Bu aile deneme sürecinde. Deneme bittiğinde tüm kurallar her cihazda çalışmaya devam eder ve bir cihaz rapor göndermeyi sürdürür; aile sahibi canlı etkinlik, geçmiş ve tüm cihazlardan raporlar için abone olabilir.',
   memberTrialEndedSubtitle:
-    'Bu ailenin deneme süresi bitti. Günlük sınır, Engellenen Saatler, Engellenen Uygulamalar, konum ve Web filtresi anahtarı çalışmaya devam ediyor. Canlı güncellemeler, geçmiş ve uyarılar için aile sahibinden abone olmasını isteyin.',
+    'Ailenin kuralları çalışmaya devam ediyor. Canlı güncellemeler, geçmiş ve uyarılar için aile sahibinden abone olmasını isteyin.',
   memberSetupTrialSubtitle:
     'Deneme, aile sahibi bir ebeveyn cihazı ve bir çocuk cihazı bağladığında başlar.',
   premiumActivatedTitle: 'Premium açıldı',
@@ -176,7 +174,7 @@ export const plans = {
   sectionFreePlan: 'Hiç abone olmazsanız',
   devicesUnlimited: 'Her çocuk cihazı rapor gönderir',
   featureFootnotePlatforms:
-    'Bazı özellikler her platformun izin verdiğine bağlıdır, bu yüzden hepsi her cihazda kullanılamaz.',
+    'Her platformun sınırlamaları nedeniyle bazı özellikler tüm cihazlarda kullanılamayabilir.',
   sectionPlatforms: 'KidGate nerede çalışır',
   platformIos: 'iPhone ve iPad',
   platformIosDetail: 'Ebeveyn veya çocuk cihazı · iOS 16 ve üzeri',

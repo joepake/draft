@@ -41,10 +41,7 @@ export const webSignIn = {
   // the confirmation says so rather than promising more.
   // `{{browser}}` and `{{os}}` are brand names from `webSessionLabel`, never
   // translated; `sessionRowUnknown` is for a user-agent that names no browser.
-  sessionsTitle: 'Browsers that can make changes',
-  sessionsHint:
-    'These browsers are signed in to the web dashboard with your account and can make changes. A browser that only views your family is not listed.',
-  sessionsEmpty: 'No browsers can make changes. When you allow one, it appears here.',
+  sessionsTitle: 'Dashboard',
   sessionRow: '{{browser}} on {{os}}',
   sessionRowUnknown: 'Web browser',
   sessionExpires: 'Can make changes until {{date}}',

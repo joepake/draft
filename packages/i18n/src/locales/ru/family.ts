@@ -103,9 +103,6 @@ export const family = {
 
   headerHintEmpty: 'Управляйте устройствами детей и защищайте их',
 
-  headerHintGuest:
-    'Изучайте приложение свободно — войдите в аккаунт, когда будете готовы подключить устройства.',
-
   familyCardManage: 'Управление семьей, родителями и устройствами',
 
   familyCardJoined: 'Вы присоединились как родитель',
@@ -148,6 +145,7 @@ export const family = {
   healthNeedsSetup: 'Требуется настройка',
   healthOffline: 'Не в сети',
   devicePausedLabel: 'На паузе',
+  deviceCheckingLabel: 'Проверка…',
   devicePausedHint: 'На паузе в бесплатном тарифе — все правила по-прежнему действуют',
   // What Paused means, said where the choice is made: the choose-a-device sheet on
   // both consoles. Checked against every agent 2026-09-28 — enforcement never
@@ -222,23 +220,21 @@ export const family = {
   switchToJoinMessage:
     'Ваша пустая семья будет удалена, после чего вы сможете присоединиться к другой семье по коду приглашения. Если устройство ребёнка уже подключено, сначала необходимо решить этот вопрос.',
 
-  guestEmptyTitle: 'Ваша семья начинается здесь',
+  guestEmptyTitle: 'Здесь появится ваша семья',
 
   guestEmptyDescription:
-    'Войдите в аккаунт, чтобы подключить устройства детей, получать уведомления и устанавливать полезные ограничения экранного времени.',
+    'Войдите в аккаунт, чтобы подключить устройства детей, получать оповещения и устанавливать разумные ограничения экранного времени.',
 
   guestConnectButton: 'Войти',
 
-  guestCreateAccount: 'Создать аккаунт родителя',
-
   guestBenefitLimitsTitle: 'Экранное время и лимиты приложений',
 
-  guestBenefitLimitsBody: 'Блокируйте устройства и задавайте ежедневные расписания.',
+  guestBenefitLimitsBody:
+    'Задайте Дневной лимит, Заблокированные часы и Лимиты приложений или сразу заблокируйте устройство.',
 
-  guestBenefitAlertsTitle: 'SOS и уведомления об активности',
+  guestBenefitAlertsTitle: 'SOS и оповещения об активности',
 
-  guestBenefitAlertsBody:
-    'Получайте уведомления сразу, когда потребуется ваше внимание.',
+  guestBenefitAlertsBody: 'Узнавайте сразу, если что-то требует вашего внимания.',
 
   guestBenefitLocationTitle: 'Местоположение и Check-In',
 
@@ -384,6 +380,11 @@ export const family = {
 
   sos: 'SOS',
 
+  browsingPaused: 'Веб приостановлен',
+  browsingResumed: 'Веб возобновлён',
+  parentPausedBrowsing:
+    '{{actorName}}: веб на устройстве ребёнка приостановлен на {{minutes}} мин.',
+  parentResumedBrowsing: '{{actorName}}: пауза веба на устройстве ребёнка завершена.',
   deviceLocked: 'Устройство заблокировано',
 
   deviceUnlocked: 'Устройство разблокировано',

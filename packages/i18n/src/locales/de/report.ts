@@ -149,21 +149,19 @@ export const report = {
   // The signed-out reports tab: a sample week, what the tab is for, and the
   // two ways in. `guestPreviewHint` is not decoration — the chart above it is
   // drawn from constants, and a week nobody measured has to say so.
-  guestPreviewHeading: 'Das wird angezeigt',
+  guestPreviewHeading: 'So sieht es aus',
   guestPreviewHint:
     'Beispiel – echte Zahlen erscheinen, sobald ein Gerät verbunden ist',
-  guestTitle: 'Sehen, wohin die Woche ging',
+  guestTitle: 'Sieh, wie die Woche am Bildschirm lief',
   guestDescription:
-    'Melde dich an, um heute mit einem normalen Tag zu vergleichen, deine Kinder nebeneinander zu sehen und mit Premium jeden Montag einen schriftlichen Bericht zu erhalten.',
-  guestBenefitTrendTitle: 'Heute, gegen den Normalfall',
+    'Melde dich an, um den heutigen Tag mit einem normalen zu vergleichen und deine Kinder nebeneinander zu sehen. Mit Premium bekommst du außerdem jeden Montag einen Wochenbericht.',
+  guestBenefitTrendTitle: 'Heute im Vergleich zu sonst',
   guestBenefitTrendBody:
-    'Eine Zahl allein sagt nichts. Der heutige Wert wird immer am Tagesdurchschnitt deiner Familie gemessen.',
-  guestBenefitChildTitle: 'Jedes Kind, nebeneinander',
+    'Erst der Vergleich mit dem Tagesdurchschnitt deiner Familie zeigt, ob es heute mehr oder weniger ist.',
+  guestBenefitChildTitle: 'Alle Kinder im Vergleich',
   guestBenefitChildBody:
-    'Der Anteil jedes Kindes am Tag, in seiner eigenen Farbe, über alle genutzten Geräte hinweg.',
+    'Du siehst den Anteil jedes Kindes am Tag in seiner Farbe – über alle Geräte, die es nutzt.',
   guestBenefitWeeklyTitle: 'Mit Premium jeden Montag ein Bericht',
   guestBenefitWeeklyBody:
-    'Was sich verändert hat, welche Apps zugelegt haben und die späten Nächte – ein Jahr lang gespeichert.',
-  guestSignInButton: 'Anmelden',
-  guestCreateAccount: 'Elternkonto erstellen',
+    'Was sich geändert hat, welche Apps zugelegt haben und wie spät es wurde – ein Jahr lang gespeichert.',
 } as const;

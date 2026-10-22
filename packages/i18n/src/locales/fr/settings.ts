@@ -73,10 +73,9 @@ export const settings = {
   themeStyleLabel: 'Style du thème',
   themeColorLabel: 'Couleur du thème',
   signOutButton: 'Se déconnecter',
-  signInButton: 'Se connecter',
   switchToChildDevice: 'Utiliser ce téléphone comme appareil enfant',
   guestAccountHint:
-    'Connectez-vous pour synchroniser les appareils, les alertes et votre formule familiale.',
+    'Connectez-vous pour gérer les appareils, les alertes et votre formule familiale.',
   reportModalTitle: 'Signaler un problème',
   reportMessageLabel: 'Veuillez décrire le problème que vous rencontrez.',
   reportMessagePlaceholder: 'Décrivez le bug ou le problème…',

@@ -557,7 +557,6 @@ export default {
     attnBatteryLow: 'Низкий заряд батареи ({{level}} %)',
     attnBatteryLowMeta:
       'Если телефон разрядится, обновления местоположения могут прекратиться',
-    attnReview: 'Просмотреть',
     attnResend: 'Отправить снова',
     attnHowToFix: 'Как исправить',
     attnUnlock: 'Разблокировать',
@@ -601,7 +600,7 @@ export default {
     limitsMax: 'Устройство хранит не больше {{max}} ограниченных приложений.',
     perDay: '{{value}}/день',
     webActivityTitle: 'Активность в вебе',
-    webActivitySub: 'Самые посещаемые домены, последние 30 дней',
+    webActivitySub: 'Самые посещаемые домены, последние 7 дней',
     webActivityEmpty: 'Активности в интернете пока нет.',
     inventoryEmpty: 'Это устройство ещё не отправило список приложений.',
     inventoryFirstScan:
@@ -628,10 +627,10 @@ export default {
     colChannel: 'Канал',
     colViews: 'Просмотры',
     filterRefusedTitle: 'Что отклонил фильтр',
-    filterRefusedSub_one: '{{count}} заблокированный запрос, последние 30 дней',
-    filterRefusedSub_few: '{{count}} заблокированных запроса, последние 30 дней',
-    filterRefusedSub_many: '{{count}} заблокированных запросов, последние 30 дней',
-    filterRefusedSub_other: '{{count}} заблокированных запросов, последние 30 дней',
+    filterRefusedSub_one: '{{count}} заблокированный запрос, последние 7 дней',
+    filterRefusedSub_few: '{{count}} заблокированных запроса, последние 7 дней',
+    filterRefusedSub_many: '{{count}} заблокированных запросов, последние 7 дней',
+    filterRefusedSub_other: '{{count}} заблокированных запросов, последние 7 дней',
     filterHintIos:
       'Этот iPhone или iPad фильтрует только средством Apple для ограничения контента для взрослых. Обновите на нём KidGate и разрешите VPN-подключение KidGate, чтобы блокировать по категориям.',
     filterHintAndroid: 'Категории применяет DNS-фильтр на самом устройстве.',

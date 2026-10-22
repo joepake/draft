@@ -70,10 +70,9 @@ export const settings = {
   themeStyleLabel: 'Gaya tema',
   themeColorLabel: 'Warna tema',
   signOutButton: 'Keluar',
-  signInButton: 'Masuk',
   switchToChildDevice: 'Gunakan ponsel ini sebagai perangkat anak',
   guestAccountHint:
-    'Masuk untuk menyinkronkan perangkat, peringatan, dan paket keluarga Anda.',
+    'Masuk untuk menyatukan perangkat, peringatan, dan paket keluarga Anda dalam satu akun.',
   reportModalTitle: 'Laporkan masalah',
   reportMessageLabel: 'Jelaskan masalah yang Anda alami.',
   reportMessagePlaceholder: 'Jelaskan bug atau masalahnya…',

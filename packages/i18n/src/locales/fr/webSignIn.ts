@@ -37,11 +37,7 @@ export const webSignIn = {
     'Ce code a déjà été utilisé. Affichez-en un nouveau sur votre ordinateur.',
   notFound: 'Ce code n’est pas valide. Vérifiez les six caractères et réessayez.',
   failed: 'Impossible de terminer la demande. Veuillez réessayer.',
-  sessionsTitle: 'Navigateurs pouvant effectuer des modifications',
-  sessionsHint:
-    'Ces navigateurs sont connectés au tableau de bord web avec votre compte et peuvent effectuer des modifications. Un navigateur qui ne fait qu’afficher votre famille n’apparaît pas ici.',
-  sessionsEmpty:
-    'Aucun navigateur ne peut effectuer de modifications. Quand vous en autorisez un, il apparaît ici.',
+  sessionsTitle: 'Tableau de bord',
   sessionRow: '{{browser}} sur {{os}}',
   sessionRowUnknown: 'Navigateur web',
   sessionExpires: 'Peut effectuer des modifications jusqu’au {{date}}',

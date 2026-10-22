@@ -6,7 +6,7 @@ export const webSignIn = {
   // computer — without them the QR the parent is told to scan is nowhere
   // to be found.
   intro:
-    'Trình duyệt chỉ xem được gia đình bạn sau khi bạn cho phép từ điện thoại này.',
+    'Trình duyệt chỉ vào được gia đình bạn sau khi bạn cho phép từ điện thoại này.',
   stepsTitle: 'Trên máy tính',
   step1: 'Mở {{url}} bằng trình duyệt.',
   step2: 'Chờ trang đăng nhập hiện mã QR.',
@@ -21,7 +21,7 @@ export const webSignIn = {
   // "later", and it must not read like it.
   confirmTitle: 'Cho phép trình duyệt này?',
   confirmBody:
-    'Trình duyệt sẽ có quyền như điện thoại này: xem vị trí của con, đổi giới hạn, khóa thiết bị và duyệt yêu cầu. Trình duyệt được phép thay đổi trong 7 ngày, và bạn có thể gỡ bất cứ lúc nào tại Gia đình → Phụ huynh. Chỉ cho phép nếu chính bạn đang đăng nhập.',
+    'Trình duyệt sẽ có quyền như điện thoại này: xem vị trí của con, đổi giới hạn, khóa thiết bị và duyệt yêu cầu. Trình duyệt đổi được cài đặt trong 7 ngày, và bạn có thể gỡ bất cứ lúc nào tại Gia đình → Phụ huynh. Chỉ cho phép nếu chính bạn đang đăng nhập.',
   confirmCodeLabel: 'Mã trên máy tính',
   approveButton: 'Cho phép',
   declineButton: 'Không cho phép',
@@ -42,21 +42,17 @@ export const webSignIn = {
   // the confirmation says so rather than promising more.
   // `{{browser}}` and `{{os}}` are brand names from `webSessionLabel`, never
   // translated; `sessionRowUnknown` is for a user-agent that names no browser.
-  sessionsTitle: 'Trình duyệt được phép thay đổi',
-  sessionsHint:
-    'Các trình duyệt này đã đăng nhập bảng điều khiển web bằng tài khoản của bạn và được phép thay đổi. Trình duyệt chỉ xem gia đình bạn thì không nằm trong danh sách.',
-  sessionsEmpty:
-    'Hiện không có trình duyệt nào được phép thay đổi. Khi bạn cho phép một trình duyệt, nó sẽ hiện ở đây.',
+  sessionsTitle: 'Bảng điều khiển',
   sessionRow: '{{browser}} trên {{os}}',
   sessionRowUnknown: 'Trình duyệt web',
-  sessionExpires: 'Được phép thay đổi đến {{date}}',
-  sessionViaQr: 'Cho phép bằng mã QR',
-  sessionViaPin: 'Cho phép bằng mã PIN phụ huynh',
+  sessionExpires: 'Đổi được cài đặt đến {{date}}',
+  sessionViaQr: 'Đã duyệt bằng mã QR',
+  sessionViaPin: 'Đã mở khóa bằng mã PIN phụ huynh',
   thisBrowser: 'Trình duyệt này',
   sessionsRevoke: 'Gỡ',
   sessionsRevokeConfirmTitle: 'Gỡ trình duyệt này?',
   sessionsRevokeConfirmBody:
-    'Trình duyệt sẽ không thể đổi cài đặt hay điều khiển thiết bị nữa. Đến ngày hiển thị, trình duyệt vẫn có thể đổi một số thông tin thiết bị, chẳng hạn tên. Trình duyệt vẫn có thể hiện thông tin gia đình bạn cho đến khi có người đăng xuất ở đó.',
+    'Trình duyệt này sẽ không đổi được cài đặt hay điều khiển thiết bị nữa. Riêng một vài thông tin của thiết bị, như tên, thì nó vẫn sửa được đến ngày ghi trên dòng này. Nó cũng vẫn xem được thông tin gia đình cho đến khi có người bấm Đăng xuất trên trình duyệt đó.',
   revokedToast: 'Đã gỡ trình duyệt.',
   revokeFailed: 'Không thể gỡ trình duyệt này. Vui lòng thử lại.',
 } as const;

@@ -22,11 +22,9 @@ export const activities = {
   emptyDescriptionDevice:
     'Sélectionnez un autre appareil ou attendez que des événements de verrouillage, déverrouillage et SOS soient enregistrés sur cet appareil.',
 
-  guestEmptyTitle: 'Votre activité',
+  guestEmptyTitle: 'L’activité de vos enfants',
   guestEmptyDescription:
-    'Une fois qu’un appareil enfant est connecté, les événements de verrouillage, déverrouillage, SOS et applications apparaîtront ici en temps réel.',
-  guestSignInButton: 'Se connecter',
-  guestCreateAccount: 'Créer un compte parent',
+    'Dès qu’un appareil enfant est connecté, les verrouillages, déverrouillages, alertes SOS et actions sur les applis s’affichent ici au fur et à mesure.',
   guestSubtitle: 'Connectez-vous pour suivre l’activité des appareils de vos enfants',
 
   guestPreviewHeading: 'Ce que vous verrez',
@@ -34,7 +32,7 @@ export const activities = {
   guestPreviewSos: 'Alerte SOS',
   guestPreviewScreenTime: 'Mise à jour du Temps d’écran',
   guestPreviewHint:
-    'Exemple — les événements réels apparaîtront une fois l’appareil connecté',
+    'Exemple — l’activité réelle apparaît dès qu’un appareil est connecté',
 
   activityTypeLocked: 'Verrouillé',
   activityTypeUnlocked: 'Déverrouillé',

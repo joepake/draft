@@ -104,9 +104,6 @@ export const family = {
 
   headerHintEmpty: 'Verwalte und schütze die Geräte deiner Kinder',
 
-  headerHintGuest:
-    'Du kannst die App frei erkunden – melde dich an, wenn du Geräte verbinden möchtest.',
-
   familyCardManage: 'Familie, Eltern und Geräte verwalten',
 
   familyCardJoined: 'Als Elternmitglied beigetreten',
@@ -146,6 +143,7 @@ export const family = {
   healthNeedsSetup: 'Einrichtung erforderlich',
   healthOffline: 'Offline',
   devicePausedLabel: 'Pausiert',
+  deviceCheckingLabel: 'Wird geprüft…',
   devicePausedHint: 'Im Gratis-Tarif pausiert – alle Regeln gelten weiter',
   // What Paused means, said where the choice is made: the choose-a-device sheet on
   // both consoles. Checked against every agent 2026-09-28 — enforcement never
@@ -221,18 +219,17 @@ export const family = {
   switchToJoinMessage:
     'Dadurch wird dein leerer Familienbereich entfernt, sodass du mit einem Einladungscode einer anderen Familie beitreten kannst. Falls bereits ein Gerät eines Kindes verbunden ist, musst du dieses zuerst verwalten.',
 
-  guestEmptyTitle: 'Deine Familie beginnt hier',
+  guestEmptyTitle: 'Hier richtest du deine Familie ein',
 
   guestEmptyDescription:
     'Melde dich an, um die Geräte deiner Kinder zu koppeln, Benachrichtigungen zu erhalten und gesunde Bildschirmzeitlimits festzulegen.',
 
   guestConnectButton: 'Anmelden',
 
-  guestCreateAccount: 'Elternkonto erstellen',
-
   guestBenefitLimitsTitle: 'Bildschirmzeit- und App-Limits',
 
-  guestBenefitLimitsBody: 'Geräte sperren und tägliche Zeitpläne festlegen.',
+  guestBenefitLimitsBody:
+    'Lege ein Tageslimit, Sperrzeiten und App-Limits fest oder sperre ein Gerät sofort.',
 
   guestBenefitAlertsTitle: 'SOS- und Aktivitätsbenachrichtigungen',
 
@@ -382,6 +379,12 @@ export const family = {
 
   sos: 'SOS',
 
+  browsingPaused: 'Surfen pausiert',
+  browsingResumed: 'Surfen fortgesetzt',
+  parentPausedBrowsing:
+    '{{actorName}} hat das Surfen auf diesem Gerät des Kindes für {{minutes}} Min. pausiert.',
+  parentResumedBrowsing:
+    '{{actorName}} hat die Surfpause auf diesem Gerät des Kindes beendet.',
   deviceLocked: 'Gerät gesperrt',
 
   deviceUnlocked: 'Gerät entsperrt',

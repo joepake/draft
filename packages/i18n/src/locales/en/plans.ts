@@ -9,7 +9,7 @@ export const plans = {
   pillTrialActiveFallback: 'Trial active',
   statusTrialEndedTitle: 'Trial ended',
   statusTrialEndedSubtitle:
-    'Daily Limit, Blocked Hours, Blocked Apps, location and the Web Filter switch keep working for free. Subscribe for live updates, history, alerts and reports.',
+    'Your rules keep working for free. Subscribe for live updates, history, alerts and reports.',
   pillTrialEnded: 'Trial ended',
   statusStartTrialTitle: 'Start your trial',
   statusStartTrialSubtitle:
@@ -69,7 +69,7 @@ export const plans = {
   compareActivityFeedPremium: '30 days',
   compareChildReport: 'Per-child reports',
   compareIncluded:
-    'Both plans include the Daily Limit, Blocked Hours, Blocked Apps, approving new apps, the Web Filter, Device Lock, SOS, Time Requests and Reward Tasks on iPhone, Android, Mac and Windows in one family, plus the web dashboard, and App Limits on Android, Mac and Windows. Android TV and Chromebook are supported too, with fewer controls.',
+    'Both plans include the Daily Limit, Blocked Hours, App Limits, Device Lock, SOS, Time Requests, Reward Tasks and the web dashboard.',
   // The rows above, folded into the five reasons Premium sells
   // (`docs/PRICING.md` §5). Groups and their order: `planComparison` in
   // `@kidgate/core/domain`. A headline is one or two words; a tagline is one
@@ -127,12 +127,10 @@ export const plans = {
   viewPlans: 'View plans',
   viewFamilyPlanStatus: 'View plan status',
   onlyOwnerCanSubscribe: 'Only the family owner can subscribe or restore purchases.',
-  memberSubscriptionNotice:
-    'One plan covers the whole family and only the owner pays. You can see whether the family is on trial or subscribed.',
   memberTrialActiveSubtitle:
     'This family is on trial. When it ends, every rule keeps working on every device and one device keeps reporting; the owner can subscribe for live activity, history and reports from every device.',
   memberTrialEndedSubtitle:
-    'This family’s trial has ended. Daily Limit, Blocked Hours, Blocked Apps, location and the Web Filter switch still work. Ask the owner to subscribe for live updates, history and alerts.',
+    'The family’s rules keep working. Ask the owner to subscribe for live updates, history and alerts.',
   memberSetupTrialSubtitle:
     'The trial starts when the owner connects a parent device and a child device.',
   premiumActivatedTitle: 'Premium unlocked',
@@ -183,7 +181,7 @@ export const plans = {
   sectionFreePlan: 'If you never subscribe',
   devicesUnlimited: 'Every child device reports',
   featureFootnotePlatforms:
-    'A few features depend on what each platform allows, so not all of them are available on every device.',
+    'Due to platform limits, some features may not be available on every device.',
   sectionPlatforms: 'Where KidGate runs',
   platformIos: 'iPhone and iPad',
   platformIosDetail: 'Parent or child device · iOS 16 and later',

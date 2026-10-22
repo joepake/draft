@@ -102,7 +102,6 @@ export const family = {
   manualCodeLabel: 'Enter the 6-character code',
   manualInstructions: 'Enter the 6-character code shown on the other device.',
   headerHintEmpty: 'Manage and protect your child devices',
-  headerHintGuest: 'Browse freely — sign in when you are ready to connect devices',
   familyCardManage: 'Manage family, parents, and devices',
   familyCardJoined: 'Joined as a parent member',
   chipDeviceCount: '{{count}} devices',
@@ -131,6 +130,7 @@ export const family = {
   // A parked device and the choice it asks for (`docs/PRICING.md` §6).
   // `family`, not `plans`: the dashboard reads this namespace.
   devicePausedLabel: 'Paused',
+  deviceCheckingLabel: 'Checking…',
   devicePausedHint: 'Paused on the free plan — every rule still applies',
   // What Paused means, said where the choice is made: the choose-a-device sheet on
   // both consoles. Checked against every agent 2026-09-28 — enforcement never
@@ -198,9 +198,9 @@ export const family = {
   guestEmptyDescription:
     'Sign in to pair child devices, receive alerts, and set healthy screen time limits.',
   guestConnectButton: 'Sign in',
-  guestCreateAccount: 'Create a parent account',
   guestBenefitLimitsTitle: 'Screen time and app limits',
-  guestBenefitLimitsBody: 'Lock devices and set daily schedules.',
+  guestBenefitLimitsBody:
+    'Set a Daily Limit, Blocked Hours and App Limits, or lock a device right away.',
   guestBenefitAlertsTitle: 'SOS and activity alerts',
   guestBenefitAlertsBody: 'Know as soon as something needs your attention.',
   guestBenefitLocationTitle: 'Location and Check-Ins',
@@ -281,6 +281,11 @@ export const family = {
   dailyLimitOn: 'Daily Limit on',
   deviceReady: 'Ready',
   sos: 'SOS',
+  browsingPaused: 'Browsing paused',
+  browsingResumed: 'Browsing resumed',
+  parentPausedBrowsing:
+    '{{actorName}} paused browsing on this child device for {{minutes}} min.',
+  parentResumedBrowsing: '{{actorName}} ended the browsing pause on this child device.',
   deviceLocked: 'Device locked',
   deviceUnlocked: 'Device unlocked',
   parentPausedChildDevice: '{{actorName}} locked this child device.',

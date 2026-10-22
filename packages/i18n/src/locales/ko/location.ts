@@ -86,6 +86,10 @@ export const location = {
     '이 기기는 인터넷 연결로 위치를 추측하는 것만 가능했습니다. 기기의 Wi-Fi를 켠 후(연결할 필요는 없습니다) 다시 시도해 주세요.',
   requestUnsupported: '이 기기는 위치를 보고할 수 없습니다.',
   cardSharingOff: '위치 공유가 꺼져 있습니다',
+  cardPaused: '일시중지됨 — 이 기기는 더 이상 위치를 공유하지 않습니다',
+  pausedChoiceNote:
+    '{{deviceName}}의 위치를 표시하고 있습니다. {{pausedName}}은(는) 일시중지되어 더 이상 위치를 공유하지 않습니다',
+  pausedLocateHint: '지금 어디에 있는지 보려면 이 기기를 보고하는 기기로 설정하세요',
   cardPermissionOff: '이 기기에서 위치 권한이 허용되지 않았습니다',
   cardForegroundOnly: '이 기기에서는 KidGate가 열려 있을 때만 위치가 업데이트됩니다',
   cardIpOnly:

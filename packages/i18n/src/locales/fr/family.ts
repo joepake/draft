@@ -103,8 +103,6 @@ export const family = {
   manualCodeLabel: 'Saisissez le code à 6 caractères',
   manualInstructions: 'Saisissez le code à 6 caractères affiché sur l’autre appareil.',
   headerHintEmpty: 'Gérez et protégez les appareils de vos enfants',
-  headerHintGuest:
-    'Parcourez librement — connectez-vous lorsque vous êtes prêt à connecter des appareils',
   familyCardManage: 'Gérer la famille, les parents et les appareils',
   familyCardJoined: 'Rejoint en tant que parent',
   chipDeviceCount: '{{count}} appareils',
@@ -132,6 +130,7 @@ export const family = {
   healthNeedsSetup: 'Configuration requise',
   healthOffline: 'Hors ligne',
   devicePausedLabel: 'En pause',
+  deviceCheckingLabel: 'Vérification…',
   devicePausedHint:
     'En pause avec l’offre gratuite : toutes les règles restent actives',
   // What Paused means, said where the choice is made: the choose-a-device sheet on
@@ -202,20 +201,19 @@ export const family = {
   switchToJoinMessage:
     'Cette action supprimera votre famille vide afin que vous puissiez rejoindre une autre famille à l’aide d’un code d’invitation. Si un appareil enfant est déjà associé, vous devrez d’abord le gérer.',
 
-  guestEmptyTitle: 'Votre famille commence ici',
+  guestEmptyTitle: 'Votre espace famille commence ici',
   guestEmptyDescription:
     'Connectez-vous pour associer les appareils de vos enfants, recevoir des alertes et définir des limites de temps d’écran adaptées.',
 
   guestConnectButton: 'Se connecter',
-  guestCreateAccount: 'Créer un compte parent',
 
   guestBenefitLimitsTitle: 'Temps d’écran et limites d’applications',
   guestBenefitLimitsBody:
-    'Verrouillez les appareils et définissez des horaires quotidiens.',
+    'Définissez une Limite quotidienne, des Heures bloquées et des Limites d’apps, ou verrouillez un appareil tout de suite.',
 
   guestBenefitAlertsTitle: 'Alertes SOS et d’activité',
   guestBenefitAlertsBody:
-    'Soyez informé immédiatement lorsqu’une intervention est nécessaire.',
+    'Recevez une alerte dès que quelque chose demande votre attention.',
 
   guestBenefitLocationTitle: 'Position et Check-ins',
   guestBenefitLocationBody:
@@ -339,6 +337,12 @@ export const family = {
 
   sos: 'SOS',
 
+  browsingPaused: 'Navigation en pause',
+  browsingResumed: 'Navigation reprise',
+  parentPausedBrowsing:
+    '{{actorName}} a mis la navigation en pause sur cet appareil enfant pendant {{minutes}} min.',
+  parentResumedBrowsing:
+    '{{actorName}} a mis fin à la pause de navigation sur cet appareil enfant.',
   deviceLocked: 'Appareil verrouillé',
 
   deviceUnlocked: 'Appareil déverrouillé',

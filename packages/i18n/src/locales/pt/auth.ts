@@ -7,6 +7,7 @@ export const auth = {
   createAccountTitle: 'Criar conta de responsável',
   createAccountSubtitle:
     'Use um e-mail e uma senha para poder entrar em qualquer dispositivo depois.',
+  joinKidGate: 'Junte-se ao KidGate',
   linkEmailTitle: 'Vincular e-mail e senha',
   linkEmailSubtitle:
     'Adicione um acesso reserva por e-mail a esta conta de responsável.',
