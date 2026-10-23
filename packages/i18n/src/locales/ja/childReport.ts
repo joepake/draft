@@ -12,10 +12,6 @@ export const childReport = {
   heroRange: '{{low}} – {{high}}',
   heroRangeNote:
     '推定値です。使った長さは分かっても、いつ使ったかを報告できないデバイスがあります。',
-  heroOverlap:
-    'うち {{value}} は 2 画面を同時に使用。デバイスを合計すると二重に数えられます。',
-  barsExplain:
-    '2 台を同時に使った 1 分は、デバイスを合計すると 2 分として数えられます。',
   heroEmpty: 'まだ使用状況の報告がありません',
 
   trendUp: '前の期間より {{value}} 多い',
@@ -31,7 +27,6 @@ export const childReport = {
 
   sectionDays: '日ごと',
   backToPeriod: '期間全体の表示に戻す',
-  bandLatestDay: '最後に計測した日',
   sectionWhen: '画面が点いていた時間帯',
   bandMerged: 'すべてのデバイス',
   bandTooThin: 'この日は計測できた部分が少なすぎて描けません。',

@@ -23,13 +23,10 @@ export const blockedApps = {
   installApprovalInfoLine2Ios: 'Các ứng dụng đã có trên thiết bị vẫn dùng bình thường.',
   installApprovalInfoLine3Ios:
     'Muốn cho cài một ứng dụng, hãy tắt tính năng này, cài ứng dụng đó rồi bật lại.',
-  pendingSectionTitle: 'Đã tự động chặn, đang chờ bạn',
-  pendingSectionSubtitle:
-    'Được cài đặt sau khi bạn bật tính năng duyệt. Không mục nào ở đây do thiết bị của trẻ chọn.',
+  pendingSectionTitle: 'Ứng dụng mới đang bị chặn',
   pendingInstalledAt: 'Đã cài {{when}}',
   pendingEmpty: 'Không có ứng dụng mới nào đang chờ duyệt.',
   allowApp: 'Cho phép',
-  allowingApp: 'Đang cho phép…',
   toastAppAllowed: '{{appName}} giờ đã có thể mở.',
   toastAllowFailed: 'Không thể cho phép ứng dụng này. Vui lòng thử lại.',
   toastInstallApprovalSaveFailed: 'Không thể lưu. Vui lòng thử lại.',
@@ -37,12 +34,10 @@ export const blockedApps = {
     'Hãy chọn ứng dụng trước: mở Cài đặt KidGate trên thiết bị của trẻ và nhập mã PIN phụ huynh.',
   toastSaveFailed: 'Không thể lưu. Vui lòng thử lại.',
   statusBlockingOn: 'Đang chặn',
-  statusBlockingOff: 'Chưa chặn',
+  statusBlockingOff: 'Ứng dụng đã chọn được mở bình thường',
   heroTitle: 'Ứng dụng đã chọn để chặn',
   heroSubtitle:
     'Danh sách ứng dụng và danh mục được chọn trên thiết bị của trẻ. KidGate đồng bộ về đây để bạn xem lại.',
-  statAppsLabel: 'Ứng dụng',
-  statCategoriesLabel: 'Danh mục',
   toggleTitle: 'Bật chặn ứng dụng',
   toggleSubtitleOn: 'Các ứng dụng đã chọn sẽ bị chặn trên thiết bị của trẻ.',
   toggleSubtitleOff: 'Bật để chặn từ xa các ứng dụng đã chọn.',

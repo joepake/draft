@@ -3,6 +3,12 @@ export const protection = {
     'Esta permissão está desativada no dispositivo da criança.',
   permissionNotSetUpYet: 'Esta permissão ainda não foi configurada.',
   permissionRestrictedByIos: 'Esta permissão está restrita pelos ajustes do iOS.',
+  permissionStateAllowed: 'Permitido',
+  permissionStateWhileOpen: 'Só com o app aberto',
+  permissionStateOff: 'Desligado',
+  permissionStateNotAsked: 'Ainda não solicitado',
+  permissionStateRestricted: 'Restrito',
+  permissionStateUnknown: 'Desconhecido',
   permissionStatusUnknown: 'O KidGate não conseguiu ler o status desta permissão.',
   kidGateOffline: 'KidGate em silêncio há mais de 24 h',
   childAppMayBeOffline:

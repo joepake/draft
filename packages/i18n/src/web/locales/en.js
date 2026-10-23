@@ -415,13 +415,6 @@ export default {
     day6: 'Sat',
   },
 
-  perm: {
-    screenTime: 'Screen Time',
-    location: 'Location',
-    camera: 'Camera',
-    microphone: 'Microphone',
-  },
-
   webCat: {
     adult: 'Adult content',
     selfHarm: 'Self-harm & eating disorders',
@@ -492,14 +485,6 @@ export default {
     statusLockSent: 'Lock sent',
     statusLockNotApplied: 'Lock not applied',
     statusPaused: 'Paused',
-
-    stateAllowed: 'Allowed',
-    stateForegroundOnly: 'Only while open',
-    stateDenied: 'Turned off',
-    stateNotDetermined: 'Not asked yet',
-    stateRestricted: 'Restricted',
-    stateUnavailable: 'Not available',
-    stateUnknown: 'Unknown',
 
     lastActive: 'Last active {{when}}',
     appVersion: 'App version',
@@ -626,9 +611,6 @@ export default {
     inventoryOtherLabel: 'Identified',
     inventoryUnknownLabel: 'Not identified',
     installAllow: 'Allow',
-    pendingInstallsTitle: 'New apps waiting for approval',
-    pendingInstallsSub:
-      'Installed after you turned on approval, blocked by the device on its own',
     toastInstallAllowed: 'App allowed',
     rowInstallApprovalDesc_one: '{{count}} app waiting for approval',
     rowInstallApprovalDesc_other: '{{count}} apps waiting for approval',

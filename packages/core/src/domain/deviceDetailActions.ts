@@ -147,8 +147,8 @@ export function getActionSections(
           feature: 'Individual App Blocking',
           // `'best-effort'` counts — that is the desktop and TV agents, and the
           // weakness is reported in the same field rather than hidden;
-          // `useDeviceDetailScreen` reads `appBlockingNoteKey` off that same
-          // probe and says it on the card.
+          // `appBlockingNoteKey` reads that same probe; the dashboard says it
+          // under its Blocked Apps card (the phone dropped it, 2026-10-23).
           supportedBy: supportsAppBlocking,
         },
         {

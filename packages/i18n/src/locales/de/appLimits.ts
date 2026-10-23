@@ -1,12 +1,11 @@
 export const appLimits = {
   title: 'App-Limits',
-  intro:
-    'Lege fest, wie lange jede App pro Tag genutzt werden darf. Das gilt zusätzlich zum Tageslimit.',
   emptyTitle: 'Noch keine Limits',
   emptySubtitle: 'Wähle unten eine App und gib ihr ein eigenes Limit.',
   usedToday: '{{used}} von {{limit}} heute',
+  activeSectionTitle: 'Aktuelle Limits',
   addSectionTitle: 'Limit hinzufügen',
-  addSectionSubtitle: 'Die heute am meisten genutzten Apps auf diesem Gerät.',
+  addSectionSubtitle: 'Heute am meisten genutzt',
   candidateUsage: '{{duration}} heute',
   noUsageYet:
     'Noch keine Nutzung gemeldet. Limits lassen sich einstellen, sobald das Kindergerät die Nutzung meldet.',

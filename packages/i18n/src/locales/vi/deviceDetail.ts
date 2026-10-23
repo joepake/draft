@@ -104,7 +104,6 @@ export const deviceDetail = {
   setHours: 'Thiết lập',
   items: 'đã chọn',
   blockingOn: 'Đang chặn',
-  blockingOff: 'Chưa chặn',
   openWithChildToChooseApps: 'Trên thiết bị của trẻ',
   manageApps: 'Quản lý ứng dụng',
   adultSitesLimited: 'Đã hạn chế trang không phù hợp',

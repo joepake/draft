@@ -17,8 +17,6 @@ export const childReport = {
   heroAtLeast: '≥ {{value}}',
   heroRange: '{{low}} – {{high}}',
   heroRangeNote: 'رقم تقديري — أحد الأجهزة يذكر مدة الاستخدام دون أن يذكر وقته.',
-  heroOverlap: 'منها {{value}} على شاشتين في وقت واحد، وتُحتسب مرتين عند جمع الأجهزة.',
-  barsExplain: 'الدقيقة على جهازين في وقت واحد تُحتسب دقيقتين عند جمع الأجهزة.',
   heroEmpty: 'لا يوجد استخدام مسجّل بعد',
 
   trendUp: 'أكثر بمقدار {{value}} عن الفترة السابقة',
@@ -34,7 +32,6 @@ export const childReport = {
 
   sectionDays: 'يومًا بيوم',
   backToPeriod: 'العودة إلى الفترة كاملة',
-  bandLatestDay: 'آخر يوم تم قياسه',
   sectionWhen: 'متى كانت الشاشات مضاءة',
   bandMerged: 'كل الأجهزة',
   bandTooThin: 'ما قيس من هذا اليوم أقل من أن يُرسم.',

@@ -1,14 +1,10 @@
 export const tamperAlerts = {
   title: 'Peringatan perlindungan',
   fallbackDeviceName: 'Perangkat anak',
-  heroTitle: 'Pantau jika perlindungan dimatikan',
-  heroSubtitle:
-    'Saat izin penting berubah dari aktif menjadi nonaktif di perangkat ini, KidGate mencatatnya di sini dan dapat memberi tahu Anda.',
   statusOn: 'Memantau',
   emptyTitle: 'Belum ada perubahan izin',
   emptySubtitle:
     'Semua izin yang dipantau aktif — perlindungan berfungsi baik. Jika ada izin yang dimatikan di perangkat anak, akan muncul di sini.',
-  recentTitle: 'Terbaru',
   watchedTitle: 'Izin yang dipantau',
   watchedOverlay: 'Tampil di atas aplikasi lain',
   watchedAccessibility: 'Aksesibilitas',
@@ -19,6 +15,7 @@ export const tamperAlerts = {
   watchedNotifications: 'Notifikasi',
   watchedLocation: 'Lokasi',
   watchedCamera: 'Kamera',
+  watchedMicrophone: 'Mikrofon',
   watchedBackgroundRefresh: 'Penyegaran latar belakang',
   infoTitle: 'Yang harus dilakukan',
   infoLine1:

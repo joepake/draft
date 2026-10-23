@@ -23,13 +23,10 @@ export const blockedApps = {
   installApprovalInfoLine2Ios: 'すでにデバイスにあるアプリは引き続き使えます。',
   installApprovalInfoLine3Ios:
     'アプリを1つ入れたいときは、この機能をオフにしてインストールし、その後もう一度オンにしてください。',
-  pendingSectionTitle: '自動的にブロックされ、承認待ち',
-  pendingSectionSubtitle:
-    '承認機能をオンにした後にインストールされたものです。ここにあるものはお子さまのデバイスで選んだものではありません。',
+  pendingSectionTitle: '保留中の新しいアプリ',
   pendingInstalledAt: '{{when}}にインストール',
   pendingEmpty: '承認待ちの新しいアプリはありません。',
   allowApp: '許可',
-  allowingApp: '許可中…',
   toastAppAllowed: '{{appName}}を今すぐ開けるようになりました。',
   toastAllowFailed: 'このアプリを許可できませんでした。もう一度お試しください。',
   toastInstallApprovalSaveFailed: '保存できませんでした。もう一度お試しください。',
@@ -37,12 +34,10 @@ export const blockedApps = {
     '先にアプリを選んでください。お子さまのデバイスでKidGateの設定を開き、保護者PINを入力します。',
   toastSaveFailed: '保存できませんでした。もう一度お試しください。',
   statusBlockingOn: 'ブロック中',
-  statusBlockingOff: 'ブロックなし',
+  statusBlockingOff: '選択したアプリは自由に開けます',
   heroTitle: 'ブロック対象として選択されたアプリ',
   heroSubtitle:
     'これらのアプリとカテゴリはお子さまのデバイスで選択されます。KidGate がリストを同期し、ここで確認できます。',
-  statAppsLabel: 'アプリ',
-  statCategoriesLabel: 'カテゴリ',
   toggleTitle: 'アプリブロックを有効にする',
   toggleSubtitleOn: '選択したアプリはお子さまのデバイスでブロックされています。',
   toggleSubtitleOff: 'オンにすると、選択したアプリをリモートでブロックできます。',

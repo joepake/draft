@@ -1,14 +1,10 @@
 export const tamperAlerts = {
   title: 'Avvisi di protezione',
   fallbackDeviceName: 'Dispositivo del bambino',
-  heroTitle: 'Scopri se la protezione viene disattivata',
-  heroSubtitle:
-    'Quando un permesso importante passa da attivo a disattivo su questo dispositivo, KidGate lo registra qui e può avvisarti.',
   statusOn: 'Monitoraggio attivo',
   emptyTitle: 'Ancora nessuna modifica ai permessi',
   emptySubtitle:
     'Tutti i permessi monitorati sono attivi: la protezione funziona. Se uno viene disattivato sul dispositivo del bambino, comparirà qui.',
-  recentTitle: 'Recenti',
   watchedTitle: 'Permessi monitorati',
   watchedOverlay: 'Visualizza sopra altre app',
   watchedAccessibility: 'Accessibilità',
@@ -19,6 +15,7 @@ export const tamperAlerts = {
   watchedNotifications: 'Notifiche',
   watchedLocation: 'Posizione',
   watchedCamera: 'Fotocamera',
+  watchedMicrophone: 'Microfono',
   watchedBackgroundRefresh: 'Aggiornamento in background',
   infoTitle: 'Cosa fare',
   infoLine1:

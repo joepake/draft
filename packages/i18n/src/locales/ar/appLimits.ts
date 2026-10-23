@@ -1,11 +1,11 @@
 export const appLimits = {
   title: 'حدود التطبيقات',
-  intro: 'حدّد مدة استخدام كل تطبيق يوميًا. يُطبَّق ذلك إضافةً إلى الحد اليومي.',
   emptyTitle: 'لا توجد حدود بعد',
   emptySubtitle: 'اختر تطبيقًا بالأسفل لتمنحه حدًا خاصًا به.',
   usedToday: '{{used}} من {{limit}} اليوم',
+  activeSectionTitle: 'الحدود الحالية',
   addSectionTitle: 'إضافة حد',
-  addSectionSubtitle: 'التطبيقات الأكثر استخدامًا على هذا الجهاز اليوم.',
+  addSectionSubtitle: 'الأكثر استخدامًا اليوم',
   candidateUsage: '{{duration}} اليوم',
   noUsageYet:
     'لا يوجد استخدام مُبلَّغ بعد. ستظهر الحدود بمجرد أن يرسل جهاز الطفل بياناته.',

@@ -159,6 +159,7 @@
     "./domain/supportAttachments": "./src/domain/supportAttachments.ts",
     "./domain/supportThread": "./src/domain/supportThread.ts",
     "./domain/tamperAlerts": "./src/domain/tamperAlerts.ts",
+    "./domain/permissionChecklist": "./src/domain/permissionChecklist.ts",
     "./domain/timeRequestCopy": "./src/domain/timeRequestCopy.ts",
     "./domain/timeZone": "./src/domain/timeZone.ts",
     "./domain/todayTopApps": "./src/domain/todayTopApps.ts",

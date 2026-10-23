@@ -3,6 +3,12 @@ export const protection = {
   permissionNotSetUpYet: 'Diese Berechtigung wurde noch nicht eingerichtet.',
   permissionRestrictedByIos:
     'Diese Berechtigung ist durch iOS-Einstellungen eingeschränkt.',
+  permissionStateAllowed: 'Erlaubt',
+  permissionStateWhileOpen: 'Nur bei geöffneter App',
+  permissionStateOff: 'Ausgeschaltet',
+  permissionStateNotAsked: 'Noch nicht angefragt',
+  permissionStateRestricted: 'Eingeschränkt',
+  permissionStateUnknown: 'Unbekannt',
   permissionStatusUnknown: 'KidGate konnte den Status dieser Berechtigung nicht lesen.',
   kidGateOffline: 'KidGate meldet sich seit über 24 Std. nicht',
   childAppMayBeOffline:

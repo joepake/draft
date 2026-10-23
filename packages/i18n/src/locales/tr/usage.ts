@@ -71,7 +71,7 @@ export const usage = {
   tryAgain: 'Tekrar dene',
   // Shown only when the rating is known — it is 0 for much of the long
   // tail, and 0 does not mean "suitable for everyone".
-  appMinAge: '{{age}}+ olarak derecelendirilmiş',
+  appMinAge: '{{age}}+ yaş',
   underAMinute: 'Bir dakikadan az',
   topAppsOther: 'Diğer uygulamalar',
   topAppsJoinedNote:

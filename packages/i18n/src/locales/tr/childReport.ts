@@ -12,10 +12,6 @@ export const childReport = {
   heroRange: '{{low}} – {{high}}',
   heroRangeNote:
     'Bir tahmin — bir cihaz ne kadar kullanıldığını bildiriyor ama ne zaman kullanıldığını bildirmiyor.',
-  heroOverlap:
-    'Bunun {{value}} kadarı aynı anda iki ekranda; cihazlar toplanırken iki kez sayılıyor.',
-  barsExplain:
-    'Aynı anda iki cihazda geçen bir dakika, cihazlar toplanırken iki dakika sayılır.',
   heroEmpty: 'Henüz kullanım bildirilmedi',
 
   trendUp: 'Önceki dönemden {{value}} fazla',
@@ -31,7 +27,6 @@ export const childReport = {
 
   sectionDays: 'Gün gün',
   backToPeriod: 'Tüm döneme geri dön',
-  bandLatestDay: 'Ölçülen son gün',
   sectionWhen: 'Ekranlar ne zaman açıktı',
   bandMerged: 'Tüm cihazlar',
   bandTooThin: 'Bu günün ölçülen kısmı çizilemeyecek kadar az.',

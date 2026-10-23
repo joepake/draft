@@ -110,7 +110,6 @@ export const deviceDetail = {
   setHours: 'إعداد',
   items: 'محدد',
   blockingOn: 'الحظر مفعل',
-  blockingOff: 'الحظر غير مفعل',
   openWithChildToChooseApps: 'على جهاز الطفل',
   manageApps: 'إدارة التطبيقات',
   adultSitesLimited: 'تم تقييد المواقع غير المناسبة',

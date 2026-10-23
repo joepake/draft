@@ -109,7 +109,6 @@ export const deviceDetail = {
   setHours: 'Настроить',
   items: 'выбрано',
   blockingOn: 'Блокировка включена',
-  blockingOff: 'Блокировка отключена',
   openWithChildToChooseApps: 'На устройстве ребёнка',
   manageApps: 'Управлять',
   adultSitesLimited: 'Нежелательные сайты ограничены',

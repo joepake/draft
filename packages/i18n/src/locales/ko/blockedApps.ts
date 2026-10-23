@@ -22,13 +22,10 @@ export const blockedApps = {
   installApprovalInfoLine2Ios: '기기에 이미 있는 앱은 계속 작동합니다.',
   installApprovalInfoLine3Ios:
     '앱 하나를 설치하게 하려면 이 기능을 끄고 앱을 설치한 다음 다시 켜세요.',
-  pendingSectionTitle: '자동으로 차단되어 승인을 기다리는 중',
-  pendingSectionSubtitle:
-    '승인 기능을 켠 후 설치된 앱입니다. 여기 있는 항목은 자녀의 기기에서 선택한 것이 아닙니다.',
+  pendingSectionTitle: '보류 중인 새 앱',
   pendingInstalledAt: '{{when}} 설치됨',
   pendingEmpty: '승인을 기다리는 새 앱이 없습니다.',
   allowApp: '허용',
-  allowingApp: '허용하는 중…',
   toastAppAllowed: '이제 {{appName}}을(를) 열 수 있습니다.',
   toastAllowFailed: '이 앱을 허용할 수 없습니다. 다시 시도해 주세요.',
   toastInstallApprovalSaveFailed: '저장할 수 없습니다. 다시 시도해 주세요.',
@@ -36,12 +33,10 @@ export const blockedApps = {
     '먼저 앱을 선택하세요. 자녀 기기에서 KidGate 설정을 열고 부모 PIN을 입력하면 됩니다.',
   toastSaveFailed: '저장할 수 없습니다. 다시 시도해 주세요.',
   statusBlockingOn: '차단 켜짐',
-  statusBlockingOff: '차단 꺼짐',
+  statusBlockingOff: '선택한 앱이 자유롭게 열립니다',
   heroTitle: '차단하도록 선택된 앱',
   heroSubtitle:
     '이 앱과 카테고리는 자녀의 기기에서 선택됩니다. KidGate가 목록을 동기화하여 여기에서 확인할 수 있습니다.',
-  statAppsLabel: '앱',
-  statCategoriesLabel: '카테고리',
   toggleTitle: '앱 차단 사용',
   toggleSubtitleOn: '선택한 앱이 자녀의 기기에서 차단됩니다.',
   toggleSubtitleOff: '선택한 앱을 원격으로 차단하려면 켜세요.',

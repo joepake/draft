@@ -108,7 +108,6 @@ export const deviceDetail = {
   setHours: '설정하기',
   items: '개 선택됨',
   blockingOn: '차단 켜짐',
-  blockingOff: '차단 꺼짐',
   openWithChildToChooseApps: '자녀 기기에서 설정',
   manageApps: '앱 관리',
   adultSitesLimited: '부적절한 사이트 제한됨',

@@ -384,13 +384,6 @@ export default {
     day6: 'сб',
   },
 
-  perm: {
-    screenTime: 'Экранное время',
-    location: 'Местоположение',
-    camera: 'Камера',
-    microphone: 'Микрофон',
-  },
-
   webCat: {
     adult: 'Контент 18+',
     selfHarm: 'Самоповреждение и расстройства пищевого поведения',
@@ -465,14 +458,6 @@ export default {
     statusLockSent: 'Блокировка отправлена',
     statusLockNotApplied: 'Блокировка не применена',
     statusPaused: 'На паузе',
-
-    stateAllowed: 'Разрешено',
-    stateForegroundOnly: 'Только при открытом приложении',
-    stateDenied: 'Отключено',
-    stateNotDetermined: 'Ещё не запрашивалось',
-    stateRestricted: 'Ограничено',
-    stateUnavailable: 'Недоступно',
-    stateUnknown: 'Неизвестно',
 
     lastActive: 'Последняя активность {{when}}',
     appVersion: 'Версия приложения',
@@ -608,9 +593,6 @@ export default {
     inventoryOtherLabel: 'Определены',
     inventoryUnknownLabel: 'Не определены',
     installAllow: 'Разрешить',
-    pendingInstallsTitle: 'Новые приложения ждут подтверждения',
-    pendingInstallsSub:
-      'Установлены после включения подтверждения и заблокированы устройством самостоятельно',
     toastInstallAllowed: 'Приложение разрешено',
     rowInstallApprovalDesc: '{{count}} приложений ждут подтверждения',
     rowInstallApprovalDesc_few: '{{count}} приложения ждут подтверждения',

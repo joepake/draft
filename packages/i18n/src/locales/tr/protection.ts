@@ -2,6 +2,12 @@ export const protection = {
   permissionOffOnChildDevice: 'Bu izin çocuğun cihazında kapalı.',
   permissionNotSetUpYet: 'Bu izin henüz ayarlanmadı.',
   permissionRestrictedByIos: 'Bu izin iOS ayarları tarafından kısıtlanmış.',
+  permissionStateAllowed: 'İzin verildi',
+  permissionStateWhileOpen: 'Yalnızca uygulama açıkken',
+  permissionStateOff: 'Kapalı',
+  permissionStateNotAsked: 'Henüz sorulmadı',
+  permissionStateRestricted: 'Kısıtlı',
+  permissionStateUnknown: 'Bilinmiyor',
   permissionStatusUnknown: 'KidGate bu iznin durumunu okuyamadı.',
   kidGateOffline: 'KidGate 24 saatten uzun süredir sessiz',
   childAppMayBeOffline:

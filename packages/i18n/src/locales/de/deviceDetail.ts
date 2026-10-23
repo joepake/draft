@@ -109,7 +109,6 @@ export const deviceDetail = {
   setHours: 'Einrichten',
   items: 'ausgewählt',
   blockingOn: 'Sperre aktiviert',
-  blockingOff: 'Keine Sperre',
   openWithChildToChooseApps: 'Auf dem Gerät des Kindes',
   manageApps: 'Apps verwalten',
   adultSitesLimited: 'Ungeeignete Websites eingeschränkt',

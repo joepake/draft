@@ -1,14 +1,10 @@
 export const tamperAlerts = {
   title: 'Cảnh báo bảo vệ',
   fallbackDeviceName: 'Thiết bị của trẻ',
-  heroTitle: 'Theo dõi khi quyền bảo vệ bị tắt',
-  heroSubtitle:
-    'Khi một quyền quan trọng chuyển từ bật sang tắt trên thiết bị này, KidGate sẽ ghi lại tại đây và có thể gửi thông báo cho bạn.',
   statusOn: 'Đang theo dõi',
   emptyTitle: 'Chưa có thay đổi về quyền',
   emptySubtitle:
     'Mọi quyền được theo dõi đều đang bật — thiết bị đang được bảo vệ đầy đủ. Nếu một quyền bị tắt trên thiết bị của trẻ, cảnh báo sẽ hiển thị tại đây.',
-  recentTitle: 'Gần đây',
   watchedTitle: 'Các quyền đang được theo dõi',
   watchedOverlay: 'Hiển thị trên ứng dụng khác',
   watchedAccessibility: 'Trợ năng',
@@ -19,6 +15,7 @@ export const tamperAlerts = {
   watchedNotifications: 'Thông báo',
   watchedLocation: 'Vị trí',
   watchedCamera: 'Camera',
+  watchedMicrophone: 'Micrô',
   watchedBackgroundRefresh: 'Làm mới ứng dụng nền',
   infoTitle: 'Bạn cần làm gì',
   infoLine1:

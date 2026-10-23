@@ -23,13 +23,10 @@ export const blockedApps = {
   installApprovalInfoLine2Ios: 'تستمر التطبيقات الموجودة على الجهاز في العمل.',
   installApprovalInfoLine3Ios:
     'للسماح بتطبيق واحد، أوقف هذا الخيار، وثبّت التطبيق، ثم فعّله مرة أخرى.',
-  pendingSectionTitle: 'محظورة تلقائيًا، بانتظارك',
-  pendingSectionSubtitle:
-    'تم تثبيتها بعد تفعيل الموافقة. لم يُختر شيء هنا على جهاز الطفل.',
+  pendingSectionTitle: 'تطبيقات جديدة محظورة',
   pendingInstalledAt: 'تم التثبيت {{when}}',
   pendingEmpty: 'لا توجد تطبيقات جديدة بانتظار الموافقة.',
   allowApp: 'سماح',
-  allowingApp: 'جارٍ السماح…',
   toastAppAllowed: 'يمكن فتح {{appName}} الآن.',
   toastAllowFailed: 'تعذر السماح بهذا التطبيق. يرجى المحاولة مرة أخرى.',
   toastInstallApprovalSaveFailed: 'تعذر الحفظ. يرجى المحاولة مرة أخرى.',
@@ -37,12 +34,10 @@ export const blockedApps = {
     'اختر التطبيقات أولًا: افتح إعدادات KidGate على جهاز الطفل وأدخل رمز PIN الوالدين.',
   toastSaveFailed: 'تعذر الحفظ. يرجى المحاولة مرة أخرى.',
   statusBlockingOn: 'الحظر مفعل',
-  statusBlockingOff: 'الحظر غير مفعل',
+  statusBlockingOff: 'التطبيقات المحددة تُفتح بحرية',
   heroTitle: 'التطبيقات المحددة للحظر',
   heroSubtitle:
     'يتم اختيار هذه التطبيقات والفئات على جهاز الطفل. يقوم KidGate بمزامنة القائمة هنا لتتمكن من مراجعتها.',
-  statAppsLabel: 'التطبيقات',
-  statCategoriesLabel: 'الفئات',
   toggleTitle: 'تفعيل حظر التطبيقات',
   toggleSubtitleOn: 'التطبيقات المحددة محظورة على جهاز الطفل.',
   toggleSubtitleOff: 'فعّل هذا الخيار لحظر التطبيقات المحددة عن بُعد.',

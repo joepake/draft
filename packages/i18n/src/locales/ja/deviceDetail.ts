@@ -110,7 +110,6 @@ export const deviceDetail = {
   setHours: '設定する',
   items: '件を選択',
   blockingOn: 'ブロック中',
-  blockingOff: 'ブロックなし',
   openWithChildToChooseApps: '子どものデバイスで設定',
   manageApps: 'アプリを管理',
   adultSitesLimited: '不適切なサイトを制限中',

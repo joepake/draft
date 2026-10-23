@@ -1,12 +1,11 @@
 export const appLimits = {
   title: 'Batas Aplikasi',
-  intro:
-    'Batasi berapa lama tiap aplikasi boleh dipakai per hari. Batas ini berlaku di samping Batas harian.',
   emptyTitle: 'Belum ada batas',
   emptySubtitle: 'Pilih aplikasi di bawah untuk memberinya batas sendiri.',
   usedToday: '{{used}} dari {{limit}} hari ini',
+  activeSectionTitle: 'Batas saat ini',
   addSectionTitle: 'Tambah batas',
-  addSectionSubtitle: 'Aplikasi yang paling banyak dipakai di perangkat ini hari ini.',
+  addSectionSubtitle: 'Paling sering dipakai hari ini',
   candidateUsage: '{{duration}} hari ini',
   noUsageYet:
     'Belum ada laporan pemakaian. Batas muncul begitu perangkat anak mengirim datanya.',

@@ -13,10 +13,6 @@ export const childReport = {
   heroRange: '{{low}} – {{high}}',
   heroRangeNote:
     'Uma estimativa: um dispositivo informa por quanto tempo foi usado, mas não quando.',
-  heroOverlap:
-    'Desses, {{value}} com duas telas ao mesmo tempo, contado duas vezes ao somar os dispositivos.',
-  barsExplain:
-    'Um minuto em dois dispositivos ao mesmo tempo conta como dois ao somar os dispositivos.',
   heroEmpty: 'Ainda sem uso registrado',
 
   trendUp: '{{value}} a mais que no período anterior',
@@ -33,7 +29,6 @@ export const childReport = {
 
   sectionDays: 'Dia a dia',
   backToPeriod: 'Voltar a todo o período',
-  bandLatestDay: 'Último dia medido',
   sectionWhen: 'Quando as telas estiveram ligadas',
   bandMerged: 'Todos os dispositivos',
   bandTooThin: 'Foi medido pouco demais deste dia para desenhá-lo.',

@@ -382,13 +382,6 @@ export default {
     day6: 'Sab',
   },
 
-  perm: {
-    screenTime: 'Waktu Layar',
-    location: 'Lokasi',
-    camera: 'Kamera',
-    microphone: 'Mikrofon',
-  },
-
   webCat: {
     adult: 'Konten dewasa',
     selfHarm: 'Melukai diri & gangguan makan',
@@ -457,14 +450,6 @@ export default {
     statusLockSent: 'Perintah kunci terkirim',
     statusLockNotApplied: 'Kuncian belum diterapkan',
     statusPaused: 'Dijeda',
-
-    stateAllowed: 'Diizinkan',
-    stateForegroundOnly: 'Hanya saat aplikasi terbuka',
-    stateDenied: 'Dimatikan',
-    stateNotDetermined: 'Belum diminta',
-    stateRestricted: 'Dibatasi',
-    stateUnavailable: 'Tidak tersedia',
-    stateUnknown: 'Tidak diketahui',
 
     lastActive: 'Terakhir aktif {{when}}',
     appVersion: 'Versi aplikasi',
@@ -590,9 +575,6 @@ export default {
     inventoryOtherLabel: 'Dikenali',
     inventoryUnknownLabel: 'Belum dikenali',
     installAllow: 'Izinkan',
-    pendingInstallsTitle: 'Aplikasi baru menunggu persetujuan',
-    pendingInstallsSub:
-      'Dipasang setelah persetujuan diaktifkan, diblokir sendiri oleh perangkat',
     toastInstallAllowed: 'Aplikasi diizinkan',
     rowInstallApprovalDesc: '{{count}} aplikasi menunggu persetujuan',
     rowInstallApprovalDesc_one: '{{count}} aplikasi menunggu persetujuan',

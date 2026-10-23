@@ -110,7 +110,6 @@ export const deviceDetail = {
   setHours: 'Configurar',
   items: 'selecionados',
   blockingOn: 'Bloqueio ativado',
-  blockingOff: 'Sem bloqueio',
   openWithChildToChooseApps: 'No dispositivo da criança',
   manageApps: 'Gerenciar apps',
   adultSitesLimited: 'Sites inadequados limitados',

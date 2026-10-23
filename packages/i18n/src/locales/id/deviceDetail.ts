@@ -109,7 +109,6 @@ export const deviceDetail = {
   setHours: 'Siapkan',
   items: 'dipilih',
   blockingOn: 'Pemblokiran aktif',
-  blockingOff: 'Tidak memblokir',
   openWithChildToChooseApps: 'Di perangkat anak',
   manageApps: 'Kelola aplikasi',
   adultSitesLimited: 'Situs tidak pantas dibatasi',

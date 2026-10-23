@@ -380,13 +380,6 @@ export default {
     day6: 'शनि',
   },
 
-  perm: {
-    screenTime: 'स्क्रीन टाइम',
-    location: 'स्थान',
-    camera: 'कैमरा',
-    microphone: 'माइक्रोफ़ोन',
-  },
-
   webCat: {
     adult: 'वयस्क सामग्री',
     selfHarm: 'आत्म-नुकसान और खानपान विकार',
@@ -457,14 +450,6 @@ export default {
     statusLockSent: 'लॉक भेजा गया',
     statusLockNotApplied: 'लॉक लागू नहीं हुआ',
     statusPaused: 'रुका हुआ',
-
-    stateAllowed: 'अनुमति है',
-    stateForegroundOnly: 'सिर्फ़ ऐप खुला होने पर',
-    stateDenied: 'बंद है',
-    stateNotDetermined: 'अभी माँगी नहीं',
-    stateRestricted: 'प्रतिबंधित',
-    stateUnavailable: 'उपलब्ध नहीं',
-    stateUnknown: 'अज्ञात',
 
     lastActive: 'अंतिम सक्रियता {{when}}',
     appVersion: 'ऐप वर्शन',
@@ -591,8 +576,6 @@ export default {
     inventoryOtherLabel: 'पहचाने गए',
     inventoryUnknownLabel: 'अपहचाने',
     installAllow: 'अनुमति दें',
-    pendingInstallsTitle: 'मंज़ूरी का इंतज़ार कर रहे नए ऐप्स',
-    pendingInstallsSub: 'मंज़ूरी चालू करने के बाद इंस्टॉल हुए, डिवाइस ने खुद ब्लॉक किए',
     toastInstallAllowed: 'ऐप को अनुमति दी',
     rowInstallApprovalDesc: '{{count}} ऐप्स मंज़ूरी का इंतज़ार कर रहे हैं',
     rowInstallApprovalDesc_one: '{{count}} ऐप मंज़ूरी का इंतज़ार कर रहा है',

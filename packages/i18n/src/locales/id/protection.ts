@@ -2,6 +2,12 @@ export const protection = {
   permissionOffOnChildDevice: 'Izin ini nonaktif di perangkat anak.',
   permissionNotSetUpYet: 'Izin ini belum disiapkan.',
   permissionRestrictedByIos: 'Izin ini dibatasi oleh pengaturan iOS.',
+  permissionStateAllowed: 'Diizinkan',
+  permissionStateWhileOpen: 'Hanya saat aplikasi terbuka',
+  permissionStateOff: 'Dimatikan',
+  permissionStateNotAsked: 'Belum diminta',
+  permissionStateRestricted: 'Dibatasi',
+  permissionStateUnknown: 'Tidak diketahui',
   permissionStatusUnknown: 'KidGate tidak dapat membaca status izin ini.',
   kidGateOffline: 'KidGate diam lebih dari 24 jam',
   childAppMayBeOffline:

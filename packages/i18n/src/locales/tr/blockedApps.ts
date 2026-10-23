@@ -24,13 +24,10 @@ export const blockedApps = {
     'Cihazda zaten yüklü olan uygulamalar çalışmaya devam eder.',
   installApprovalInfoLine3Ios:
     'Bir uygulamanın yüklenmesine izin vermek için bunu kapatın, uygulamayı yükleyin, ardından yeniden açın.',
-  pendingSectionTitle: 'Otomatik olarak engellendi, sizi bekliyor',
-  pendingSectionSubtitle:
-    'Onayı açtıktan sonra yüklendi. Buradakilerin hiçbiri çocuğun cihazında seçilmedi.',
+  pendingSectionTitle: 'Bekletilen yeni uygulamalar',
   pendingInstalledAt: '{{when}} yüklendi',
   pendingEmpty: 'Onay bekleyen yeni uygulama yok.',
   allowApp: 'İzin ver',
-  allowingApp: 'İzin veriliyor…',
   toastAppAllowed: '{{appName}} artık açılabilir.',
   toastAllowFailed: 'Bu uygulamaya izin verilemedi. Lütfen tekrar deneyin.',
   toastInstallApprovalSaveFailed: 'Kaydedilemedi. Lütfen tekrar deneyin.',
@@ -38,12 +35,10 @@ export const blockedApps = {
     'Önce uygulamaları seçin: çocuğun cihazında KidGate Ayarları’nı açın ve Ebeveyn PIN’ini girin.',
   toastSaveFailed: 'Kaydedilemedi. Lütfen tekrar deneyin.',
   statusBlockingOn: 'Engelleme açık',
-  statusBlockingOff: 'Engelleme kapalı',
+  statusBlockingOff: 'Seçilen uygulamalar serbestçe açılıyor',
   heroTitle: 'Engellenmek üzere seçilen uygulamalar',
   heroSubtitle:
     'Bu uygulamalar ve kategoriler çocuğun cihazında seçilir. KidGate, incelemeniz için listeyi buraya senkronize eder.',
-  statAppsLabel: 'Uygulamalar',
-  statCategoriesLabel: 'Kategoriler',
   toggleTitle: 'Uygulama Engellemeyi Etkinleştir',
   toggleSubtitleOn: 'Seçilen uygulamalar çocuğun cihazında engelleniyor.',
   toggleSubtitleOff: 'Seçilen uygulamaları uzaktan engellemek için açın.',

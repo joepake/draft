@@ -1,14 +1,10 @@
 export const tamperAlerts = {
   title: 'Оповещения о защите',
   fallbackDeviceName: 'Устройство ребёнка',
-  heroTitle: 'Узнавайте, когда защиту отключают',
-  heroSubtitle:
-    'Когда важное разрешение на этом устройстве переключается из «вкл.» в «выкл.», KidGate записывает это здесь и может уведомить вас.',
   statusOn: 'Наблюдение',
   emptyTitle: 'Изменений разрешений пока нет',
   emptySubtitle:
     'Все отслеживаемые разрешения включены — защита работает. Если какое-то из них отключат на устройстве ребёнка, это появится здесь.',
-  recentTitle: 'Недавние',
   watchedTitle: 'Отслеживаемые разрешения',
   watchedOverlay: 'Поверх других приложений',
   watchedAccessibility: 'Специальные возможности',
@@ -19,6 +15,7 @@ export const tamperAlerts = {
   watchedNotifications: 'Уведомления',
   watchedLocation: 'Местоположение',
   watchedCamera: 'Камера',
+  watchedMicrophone: 'Микрофон',
   watchedBackgroundRefresh: 'Обновление контента',
   infoTitle: 'Что делать',
   infoLine1:

@@ -398,13 +398,6 @@ export default {
     day6: 'سبت',
   },
 
-  perm: {
-    screenTime: 'وقت استخدام الشاشة',
-    location: 'الموقع',
-    camera: 'الكاميرا',
-    microphone: 'الميكروفون',
-  },
-
   webCat: {
     adult: 'محتوى للبالغين',
     selfHarm: 'إيذاء النفس واضطرابات الأكل',
@@ -481,14 +474,6 @@ export default {
     statusLockSent: 'أُرسل القفل',
     statusLockNotApplied: 'لم يُطبَّق القفل',
     statusPaused: 'متوقف مؤقتًا',
-
-    stateAllowed: 'مسموح',
-    stateForegroundOnly: 'أثناء فتح التطبيق فقط',
-    stateDenied: 'مُطفأ',
-    stateNotDetermined: 'لم يُطلب بعد',
-    stateRestricted: 'مقيَّد',
-    stateUnavailable: 'غير متاح',
-    stateUnknown: 'غير معروف',
 
     lastActive: 'آخر نشاط {{when}}',
     appVersion: 'إصدار التطبيق',
@@ -623,8 +608,6 @@ export default {
     inventoryOtherLabel: 'محدّدة',
     inventoryUnknownLabel: 'غير محدّدة',
     installAllow: 'السماح',
-    pendingInstallsTitle: 'تطبيقات جديدة بانتظار الموافقة',
-    pendingInstallsSub: 'ثُبِّتت بعد تفعيل الموافقة، وحظرها الجهاز من تلقاء نفسه',
     toastInstallAllowed: 'تم السماح بالتطبيق',
     rowInstallApprovalDesc_few: '{{count}} تطبيقات بانتظار الموافقة',
     rowInstallApprovalDesc_many: '{{count}} تطبيقًا بانتظار الموافقة',

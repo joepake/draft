@@ -19,10 +19,6 @@ export const childReport = {
   heroRange: '{{low}} – {{high}}',
   heroRangeNote:
     'Là con số ước lượng — có thiết bị chỉ báo dùng bao lâu, không báo dùng lúc nào.',
-  heroOverlap:
-    'Trong đó {{value}} là lúc mở hai màn hình cùng lúc — phần này bị tính hai lần khi cộng tổng thời gian các thiết bị.',
-  barsExplain:
-    'Một phút dùng hai thiết bị cùng lúc sẽ bị tính thành hai phút khi cộng tổng thời gian các thiết bị.',
   heroEmpty: 'Chưa có dữ liệu sử dụng',
 
   trendUp: 'Nhiều hơn kỳ trước {{value}}',
@@ -38,7 +34,6 @@ export const childReport = {
 
   sectionDays: 'Theo từng ngày',
   backToPeriod: 'Xem lại cả kỳ',
-  bandLatestDay: 'Ngày đo gần nhất',
   sectionWhen: 'Thời điểm màn hình bật',
   bandMerged: 'Tất cả thiết bị',
   bandTooThin: 'Ngày này đo được quá ít nên chưa vẽ được biểu đồ giờ.',

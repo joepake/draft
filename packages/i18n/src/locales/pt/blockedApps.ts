@@ -24,13 +24,10 @@ export const blockedApps = {
     'Os apps que já estão no dispositivo continuam funcionando.',
   installApprovalInfoLine3Ios:
     'Para liberar um app, desative isto, instale o app e depois ative de novo.',
-  pendingSectionTitle: 'Bloqueados automaticamente, aguardando você',
-  pendingSectionSubtitle:
-    'Instalados depois que você ativou a aprovação. Nada aqui foi escolhido no dispositivo da criança.',
+  pendingSectionTitle: 'Novos apps em espera',
   pendingInstalledAt: 'Instalado {{when}}',
   pendingEmpty: 'Nenhum app novo aguardando aprovação.',
   allowApp: 'Permitir',
-  allowingApp: 'Permitindo…',
   toastAppAllowed: '{{appName}} já pode ser aberto.',
   toastAllowFailed: 'Não foi possível permitir este app. Tente novamente.',
   toastInstallApprovalSaveFailed: 'Não foi possível salvar. Tente novamente.',
@@ -38,12 +35,10 @@ export const blockedApps = {
     'Escolha os apps primeiro: abra os Ajustes do KidGate no dispositivo da criança e digite o PIN dos pais.',
   toastSaveFailed: 'Não foi possível salvar. Tente novamente.',
   statusBlockingOn: 'Bloqueio ativado',
-  statusBlockingOff: 'Sem bloqueio',
+  statusBlockingOff: 'Os apps selecionados abrem livremente',
   heroTitle: 'Apps selecionados para bloquear',
   heroSubtitle:
     'Esses apps e categorias são escolhidos no dispositivo da criança. O KidGate sincroniza a lista aqui para você revisar.',
-  statAppsLabel: 'Apps',
-  statCategoriesLabel: 'Categorias',
   toggleTitle: 'Ativar o bloqueio de apps',
   toggleSubtitleOn: 'Os apps selecionados estão bloqueados no dispositivo da criança.',
   toggleSubtitleOff: 'Ative para bloquear remotamente os apps selecionados.',

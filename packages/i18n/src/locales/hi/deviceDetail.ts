@@ -108,7 +108,6 @@ export const deviceDetail = {
   setHours: 'सेट करें',
   items: 'चयनित',
   blockingOn: 'ब्लॉकिंग चालू है',
-  blockingOff: 'ब्लॉकिंग बंद है',
   openWithChildToChooseApps: 'बच्चे के डिवाइस पर',
   manageApps: 'ऐप्स प्रबंधित करें',
   adultSitesLimited: 'अनुपयुक्त वेबसाइटें सीमित हैं',

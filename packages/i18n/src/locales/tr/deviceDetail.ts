@@ -108,7 +108,6 @@ export const deviceDetail = {
   setHours: 'Kur',
   items: 'seçildi',
   blockingOn: 'Engelleme açık',
-  blockingOff: 'Engelleme kapalı',
   openWithChildToChooseApps: 'Çocuğun cihazında',
   manageApps: 'Yönet',
   adultSitesLimited: 'Uygunsuz siteler sınırlandı',

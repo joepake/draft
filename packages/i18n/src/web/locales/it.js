@@ -384,13 +384,6 @@ export default {
     day6: 'sab',
   },
 
-  perm: {
-    screenTime: 'Tempo di utilizzo',
-    location: 'Posizione',
-    camera: 'Fotocamera',
-    microphone: 'Microfono',
-  },
-
   webCat: {
     adult: 'Contenuti per adulti',
     selfHarm: 'Autolesionismo e disturbi alimentari',
@@ -462,14 +455,6 @@ export default {
     statusLockSent: 'Blocco inviato',
     statusLockNotApplied: 'Blocco non applicato',
     statusPaused: 'In pausa',
-
-    stateAllowed: 'Consentito',
-    stateForegroundOnly: 'Solo con l’app aperta',
-    stateDenied: 'Disattivato',
-    stateNotDetermined: 'Non ancora richiesto',
-    stateRestricted: 'Limitato',
-    stateUnavailable: 'Non disponibile',
-    stateUnknown: 'Sconosciuto',
 
     lastActive: 'Ultima attività {{when}}',
     appVersion: 'Versione app',
@@ -599,9 +584,6 @@ export default {
     inventoryOtherLabel: 'Identificate',
     inventoryUnknownLabel: 'Non identificate',
     installAllow: 'Consenti',
-    pendingInstallsTitle: 'Nuove app in attesa di approvazione',
-    pendingInstallsSub:
-      'Installate dopo l’attivazione dell’approvazione, bloccate automaticamente dal dispositivo',
     toastInstallAllowed: 'App permessa',
     rowInstallApprovalDesc: '{{count}} app in attesa di approvazione',
     rowInstallApprovalDesc_one: '{{count}} app in attesa di approvazione',

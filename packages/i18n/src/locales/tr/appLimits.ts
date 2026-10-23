@@ -1,12 +1,11 @@
 export const appLimits = {
   title: 'Uygulama Sınırları',
-  intro:
-    'Her uygulamanın günde ne kadar kullanılabileceğini belirleyin. Bu, Günlük sınıra ek olarak çalışır.',
   emptyTitle: 'Henüz sınır yok',
   emptySubtitle: 'Aşağıdan bir uygulama seçip ona kendi sınırını verin.',
   usedToday: 'Bugün {{used}} / {{limit}}',
+  activeSectionTitle: 'Mevcut sınırlar',
   addSectionTitle: 'Sınır ekle',
-  addSectionSubtitle: 'Bu cihazda bugün en çok kullanılan uygulamalar.',
+  addSectionSubtitle: 'Bugün en çok kullanılanlar',
   candidateUsage: 'Bugün {{duration}}',
   noUsageYet:
     'Henüz kullanım bildirilmedi. Çocuk cihazı veri gönderince sınırlar burada görünür.',

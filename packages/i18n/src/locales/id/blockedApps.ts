@@ -23,13 +23,10 @@ export const blockedApps = {
   installApprovalInfoLine2Ios: 'Aplikasi yang sudah ada di perangkat tetap berfungsi.',
   installApprovalInfoLine3Ios:
     'Untuk mengizinkan satu aplikasi, matikan fitur ini, pasang aplikasinya, lalu aktifkan lagi.',
-  pendingSectionTitle: 'Diblokir otomatis, menunggu Anda',
-  pendingSectionSubtitle:
-    'Dipasang setelah Anda mengaktifkan persetujuan. Tidak satu pun di antaranya dipilih di perangkat anak.',
+  pendingSectionTitle: 'Aplikasi baru yang ditahan',
   pendingInstalledAt: 'Dipasang {{when}}',
   pendingEmpty: 'Tidak ada aplikasi baru yang menunggu persetujuan.',
   allowApp: 'Izinkan',
-  allowingApp: 'Mengizinkan…',
   toastAppAllowed: '{{appName}} sekarang bisa dibuka.',
   toastAllowFailed: 'Tidak dapat mengizinkan aplikasi ini. Silakan coba lagi.',
   toastInstallApprovalSaveFailed: 'Tidak dapat menyimpan. Silakan coba lagi.',
@@ -37,12 +34,10 @@ export const blockedApps = {
     'Pilih aplikasinya dulu: buka Pengaturan KidGate di perangkat anak dan masukkan PIN Orang Tua.',
   toastSaveFailed: 'Tidak dapat menyimpan. Silakan coba lagi.',
   statusBlockingOn: 'Pemblokiran aktif',
-  statusBlockingOff: 'Tidak memblokir',
+  statusBlockingOff: 'Aplikasi yang dipilih terbuka bebas',
   heroTitle: 'Aplikasi yang dipilih untuk diblokir',
   heroSubtitle:
     'Aplikasi dan kategori ini dipilih di perangkat anak. KidGate menyinkronkan daftar ini agar Anda dapat meninjaunya.',
-  statAppsLabel: 'Aplikasi',
-  statCategoriesLabel: 'Kategori',
   toggleTitle: 'Aktifkan Pemblokiran Aplikasi',
   toggleSubtitleOn: 'Aplikasi yang dipilih diblokir di perangkat anak.',
   toggleSubtitleOff: 'Aktifkan untuk memblokir aplikasi yang dipilih dari jarak jauh.',

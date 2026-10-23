@@ -1,31 +1,11 @@
-import { PROTECTION_PERMISSION_KEYS } from '@kidgate/schema/device';
-
 /**
- * Which keys the child device may report, and therefore which are worth
- * rendering. The list comes from `@kidgate/schema` — it was duplicated here by
- * hand, and a permission added to the app would have gone unlabelled on the
- * web until someone noticed.
+ * Web-filter category labels, from the web pack (`webCat.*`).
  *
- * The labels themselves live in the locale packs (`webCat.*`, `perm.*`). A
- * field the schema does not know about is left out rather than shown raw: a
- * parent reading `backgroundRefreshV2` learns less than they would from a gap.
- *
- * Web-filter categories used to have their own flat list here. They now come
- * from `WEB_FILTER_CATEGORY_GROUPS` in `@kidgate/core`, which the phone draws
- * from too — one order, one grouping, both parent surfaces.
+ * Categories used to have their own flat list here. They now come from
+ * `WEB_FILTER_CATEGORY_GROUPS` in `@kidgate/core`, which the phone draws from
+ * too — one order, one grouping, both parent surfaces. Permission names went
+ * the same way on 2026-10-23: `@kidgate/core/domain/permissionChecklist`.
  */
-export const PERMISSION_KEYS = PROTECTION_PERMISSION_KEYS;
-
-const PERMISSION_SET = new Set(PERMISSION_KEYS);
-
-export function isKnownPermission(key) {
-  return PERMISSION_SET.has(key);
-}
-
-export function permissionLabel(t, key) {
-  return t(`perm.${key}`);
-}
-
 export function webCategoryLabel(t, key) {
   return t(`webCat.${key}`);
 }

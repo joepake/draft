@@ -2,6 +2,12 @@ export const protection = {
   permissionOffOnChildDevice: 'This permission is off on the child device.',
   permissionNotSetUpYet: 'This permission has not been set up yet.',
   permissionRestrictedByIos: 'This permission is restricted by iOS settings.',
+  permissionStateAllowed: 'Allowed',
+  permissionStateWhileOpen: 'Only while open',
+  permissionStateOff: 'Turned off',
+  permissionStateNotAsked: 'Not asked yet',
+  permissionStateRestricted: 'Restricted',
+  permissionStateUnknown: 'Unknown',
   permissionStatusUnknown: 'KidGate could not read the status of this permission.',
   kidGateOffline: 'KidGate silent for over 24h',
   childAppMayBeOffline:

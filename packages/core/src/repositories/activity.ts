@@ -26,6 +26,8 @@ import { timestampToIso } from '../domain/firestoreValue';
  * usefully deep at half the cost of the old 100.
  */
 const ACTIVITY_LIMIT = 50;
+/** `fetchRecentOfType`'s ceiling — a month of one rare kind of row. */
+const TYPE_WINDOW_LIMIT = 200;
 
 /**
  * From the schema, never hand-listed again.
@@ -136,6 +138,41 @@ export function createActivityRepository(deps: ActivityRepositoryDeps) {
       const activities = snapshot.docs.map(mapActivity);
       return sortActivities(
         deviceId ? activities.filter(a => a.deviceId === deviceId) : activities,
+      );
+    },
+
+    /**
+     * Every row of one kind since `sinceMs`, newest first — not the newest
+     * fifty of every kind filtered down.
+     *
+     * The Protection alerts screen filtered a device's newest fifty rows for
+     * tamper ones, so on a busy phone a week-old "accessibility off" had left
+     * the window long before the 30-day retention sweep removes the row
+     * (2026-10-23). The cutoff is a `Date`: `createdAt` is stored as a server
+     * Timestamp, and a string cutoff matches nothing. Ascending, to ride the
+     * `(type, createdAt ASC)` index already deployed, then re-sorted; the
+     * device is narrowed client-side, since these rows are rare.
+     */
+    async fetchRecentOfType(
+      userId: string,
+      type: ActivityType,
+      sinceMs: number,
+      deviceId?: string,
+    ): Promise<Activity[]> {
+      const snapshot = await db.getDocs(activitiesCollection(userId), {
+        where: [
+          ['type', '==', type] as const,
+          ['createdAt', '>=', new Date(sinceMs)] as const,
+        ],
+        orderBy: [['createdAt', 'asc']],
+        // ponytail: ascending + cap keeps the OLDEST 200 of a month; a family
+        // filing more tamper rows than that needs a (type, createdAt DESC) index.
+        limit: TYPE_WINDOW_LIMIT,
+      });
+      const activities = snapshot.docs.map(mapActivity);
+      return sortActivities(
+        deviceId ? activities.filter(a => a.deviceId === deviceId) : activities,
+        TYPE_WINDOW_LIMIT,
       );
     },
 

@@ -380,13 +380,6 @@ export default {
     day6: '토',
   },
 
-  perm: {
-    screenTime: '스크린 타임',
-    location: '위치',
-    camera: '카메라',
-    microphone: '마이크',
-  },
-
   webCat: {
     adult: '성인 콘텐츠',
     selfHarm: '자해·섭식장애',
@@ -455,14 +448,6 @@ export default {
     statusLockSent: '잠금 전송됨',
     statusLockNotApplied: '잠금 미적용',
     statusPaused: '일시중지',
-
-    stateAllowed: '허용됨',
-    stateForegroundOnly: '앱이 열려 있을 때만',
-    stateDenied: '꺼짐',
-    stateNotDetermined: '아직 요청 안 함',
-    stateRestricted: '제한됨',
-    stateUnavailable: '사용 불가',
-    stateUnknown: '알 수 없음',
 
     lastActive: '마지막 활동 {{when}}',
     appVersion: '앱 버전',
@@ -586,8 +571,6 @@ export default {
     inventoryOtherLabel: '확인됨',
     inventoryUnknownLabel: '미확인',
     installAllow: '허용',
-    pendingInstallsTitle: '승인을 기다리는 새 앱',
-    pendingInstallsSub: '승인을 켠 뒤에 설치되어 기기가 스스로 차단한 앱입니다',
     toastInstallAllowed: '앱을 허용했습니다',
     rowInstallApprovalDesc: '{{count}}개의 앱이 승인을 기다리는 중',
     rowInstallApprovalDesc_one: '{{count}}개의 앱이 승인을 기다리는 중',

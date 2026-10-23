@@ -45,13 +45,6 @@ export const childReport = {
   heroAtLeast: '≥ {{value}}',
   heroRange: '{{low}} – {{high}}',
   heroRangeNote: 'An estimate — one device reports how long it was used, but not when.',
-  heroOverlap:
-    '{{value}} of that was two screens at once, counted twice when the devices are added up.',
-  // Shown in the same slot when the overlap cannot be known but the two bars
-  // still differ. Without it the parent sees one bar shorter than the other
-  // and is left to guess why.
-  barsExplain:
-    'One minute on two devices at once counts as two when the devices are added up.',
   heroEmpty: 'No usage reported yet',
 
   trendUp: '{{value}} more than the period before',
@@ -67,7 +60,6 @@ export const childReport = {
 
   sectionDays: 'Day by day',
   backToPeriod: 'Show the whole period again',
-  bandLatestDay: 'Latest measured day',
   sectionWhen: 'When the screens were on',
   bandMerged: 'All devices',
   // Replaces the band rather than drawing one. A 24-hour strip that is 85%

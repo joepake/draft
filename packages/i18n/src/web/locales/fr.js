@@ -386,13 +386,6 @@ export default {
     day6: 'sam',
   },
 
-  perm: {
-    screenTime: 'Temps d’écran',
-    location: 'Localisation',
-    camera: 'Appareil photo',
-    microphone: 'Micro',
-  },
-
   webCat: {
     adult: 'Contenu adulte',
     selfHarm: 'Automutilation et troubles alimentaires',
@@ -464,14 +457,6 @@ export default {
     statusLockSent: 'Verrouillage envoyé',
     statusLockNotApplied: 'Verrouillage non appliqué',
     statusPaused: 'En pause',
-
-    stateAllowed: 'Autorisé',
-    stateForegroundOnly: 'Seulement si l’app est ouverte',
-    stateDenied: 'Désactivé',
-    stateNotDetermined: 'Pas encore demandé',
-    stateRestricted: 'Restreint',
-    stateUnavailable: 'Indisponible',
-    stateUnknown: 'Inconnu',
 
     lastActive: 'Dernière activité {{when}}',
     appVersion: 'Version de l’app',
@@ -601,9 +586,6 @@ export default {
     inventoryOtherLabel: 'Identifiées',
     inventoryUnknownLabel: 'Non identifiées',
     installAllow: 'Autoriser',
-    pendingInstallsTitle: 'Nouvelles applications en attente d’approbation',
-    pendingInstallsSub:
-      'Installées après l’activation de l’approbation, bloquées automatiquement par l’appareil',
     toastInstallAllowed: 'Appli autorisée',
     rowInstallApprovalDesc: '{{count}} applications en attente d’approbation',
     rowInstallApprovalDesc_one: '{{count}} application en attente d’approbation',

@@ -12,10 +12,6 @@ export const childReport = {
   heroRange: '{{low}} – {{high}}',
   heroRangeNote:
     'Perkiraan — ada perangkat yang melaporkan berapa lama dipakai, tetapi tidak kapan.',
-  heroOverlap:
-    '{{value}} di antaranya dua layar sekaligus, yang terhitung dua kali saat perangkat dijumlahkan.',
-  barsExplain:
-    'Satu menit di dua perangkat sekaligus terhitung dua menit saat perangkat dijumlahkan.',
   heroEmpty: 'Belum ada penggunaan yang dilaporkan',
 
   trendUp: '{{value}} lebih banyak dari periode sebelumnya',
@@ -32,7 +28,6 @@ export const childReport = {
 
   sectionDays: 'Per hari',
   backToPeriod: 'Kembali ke seluruh periode',
-  bandLatestDay: 'Hari terukur terakhir',
   sectionWhen: 'Kapan layar menyala',
   bandMerged: 'Semua perangkat',
   bandTooThin: 'Terlalu sedikit bagian dari hari itu yang terukur untuk digambar.',

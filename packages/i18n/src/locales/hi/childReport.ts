@@ -12,10 +12,6 @@ export const childReport = {
   heroRange: '{{low}} – {{high}}',
   heroRangeNote:
     'यह अनुमान है — एक डिवाइस बताता है कि कितनी देर चला, पर कब चला यह नहीं।',
-  heroOverlap:
-    'इसमें से {{value}} दो स्क्रीन एक साथ — डिवाइस जोड़ने पर यह दो बार गिना जाता है।',
-  barsExplain:
-    'दो डिवाइस पर एक साथ बीता एक मिनट, डिवाइस जोड़ने पर दो मिनट गिना जाता है।',
   heroEmpty: 'अभी तक कोई उपयोग दर्ज नहीं',
 
   trendUp: 'पिछली अवधि से {{value}} ज़्यादा',
@@ -31,7 +27,6 @@ export const childReport = {
 
   sectionDays: 'दिन-प्रतिदिन',
   backToPeriod: 'पूरी अवधि पर वापस जाएँ',
-  bandLatestDay: 'अंतिम मापा गया दिन',
   sectionWhen: 'स्क्रीन कब चालू थीं',
   bandMerged: 'सभी डिवाइस',
   bandTooThin: 'इस दिन का इतना कम मापा गया कि उसे दिखाया नहीं जा सकता।',

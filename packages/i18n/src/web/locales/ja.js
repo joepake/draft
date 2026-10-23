@@ -386,13 +386,6 @@ export default {
     day6: '土',
   },
 
-  perm: {
-    screenTime: 'スクリーンタイム',
-    location: '位置情報',
-    camera: 'カメラ',
-    microphone: 'マイク',
-  },
-
   webCat: {
     adult: 'アダルト',
     selfHarm: '自傷・摂食障害',
@@ -461,14 +454,6 @@ export default {
     statusLockSent: 'ロック送信済み',
     statusLockNotApplied: 'ロック未適用',
     statusPaused: '一時停止',
-
-    stateAllowed: '許可済み',
-    stateForegroundOnly: 'アプリを開いている間のみ',
-    stateDenied: 'オフ',
-    stateNotDetermined: '未確認',
-    stateRestricted: '制限あり',
-    stateUnavailable: '利用不可',
-    stateUnknown: '不明',
 
     lastActive: '最終アクティブ {{when}}',
     appVersion: 'アプリのバージョン',
@@ -593,9 +578,6 @@ export default {
     inventoryOtherLabel: '判別済み',
     inventoryUnknownLabel: '未判別',
     installAllow: '許可',
-    pendingInstallsTitle: '承認待ちの新しいアプリ',
-    pendingInstallsSub:
-      '承認をオンにしたあとにインストールされ、デバイスが自動でブロックしたアプリです',
     toastInstallAllowed: 'アプリを許可しました',
     rowInstallApprovalDesc: '{{count}} 個のアプリが承認待ちです',
     rowInstallApprovalDesc_one: '{{count}} 個のアプリが承認待ちです',

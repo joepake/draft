@@ -1,14 +1,10 @@
 export const tamperAlerts = {
   title: 'Koruma uyarıları',
   fallbackDeviceName: 'Çocuk cihazı',
-  heroTitle: 'Koruma kapatılırsa haberiniz olsun',
-  heroSubtitle:
-    'Bu cihazda önemli bir izin açıktan kapalıya geçtiğinde KidGate bunu buraya kaydeder ve size bildirim gönderebilir.',
   statusOn: 'İzleniyor',
   emptyTitle: 'Henüz izin değişikliği yok',
   emptySubtitle:
     'İzlenen tüm izinler açık — koruma çalışıyor. Çocuğun cihazında bir izin kapatılırsa burada görünür.',
-  recentTitle: 'Son olaylar',
   watchedTitle: 'İzlenen izinler',
   watchedOverlay: 'Diğer uygulamaların üzerinde göster',
   watchedAccessibility: 'Erişilebilirlik',
@@ -19,6 +15,7 @@ export const tamperAlerts = {
   watchedNotifications: 'Bildirimler',
   watchedLocation: 'Konum',
   watchedCamera: 'Kamera',
+  watchedMicrophone: 'Mikrofon',
   watchedBackgroundRefresh: 'Arka Planda Yenileme',
   infoTitle: 'Ne yapmalı',
   infoLine1: 'Çocuk cihazında KidGate’i açın ve uyarıda belirtilen izni geri açın.',

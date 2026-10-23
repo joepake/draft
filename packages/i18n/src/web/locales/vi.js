@@ -400,13 +400,6 @@ export default {
     day6: 'T7',
   },
 
-  perm: {
-    screenTime: 'Thời gian sử dụng',
-    location: 'Vị trí',
-    camera: 'Camera',
-    microphone: 'Micrô',
-  },
-
   webCat: {
     adult: 'Nội dung người lớn',
     selfHarm: 'Tự làm hại bản thân & rối loạn ăn uống',
@@ -476,14 +469,6 @@ export default {
     statusLockSent: 'Đã gửi lệnh khóa',
     statusLockNotApplied: 'Chưa áp dụng lệnh khóa',
     statusPaused: 'Ngừng báo cáo',
-
-    stateAllowed: 'Đã cho phép',
-    stateForegroundOnly: 'Chỉ khi ứng dụng đang mở',
-    stateDenied: 'Đã tắt',
-    stateNotDetermined: 'Chưa hỏi',
-    stateRestricted: 'Bị hạn chế',
-    stateUnavailable: 'Không khả dụng',
-    stateUnknown: 'Không rõ',
 
     lastActive: 'Hoạt động lần cuối {{when}}',
     appVersion: 'Phiên bản ứng dụng',
@@ -609,8 +594,6 @@ export default {
     inventoryOtherLabel: 'Đã nhận diện',
     inventoryUnknownLabel: 'Chưa nhận diện',
     installAllow: 'Cho phép',
-    pendingInstallsTitle: 'Ứng dụng mới đang chờ duyệt',
-    pendingInstallsSub: 'Được cài sau khi bạn bật duyệt, thiết bị tự chặn',
     toastInstallAllowed: 'Đã cho phép ứng dụng',
     rowInstallApprovalDesc: '{{count}} ứng dụng đang chờ duyệt',
     rowInstallApprovalDescIos:

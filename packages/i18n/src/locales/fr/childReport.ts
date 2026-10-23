@@ -13,10 +13,6 @@ export const childReport = {
   heroRange: '{{low}} – {{high}}',
   heroRangeNote:
     'Une estimation : un appareil indique combien de temps il a servi, mais pas quand.',
-  heroOverlap:
-    'Dont {{value}} sur deux écrans à la fois, compté deux fois quand on cumule les appareils.',
-  barsExplain:
-    'Une minute sur deux appareils à la fois compte double quand on cumule les appareils.',
   heroEmpty: 'Aucune utilisation signalée pour le moment',
 
   trendUp: '{{value}} de plus que la période précédente',
@@ -32,7 +28,6 @@ export const childReport = {
 
   sectionDays: 'Jour par jour',
   backToPeriod: 'Revenir à toute la période',
-  bandLatestDay: 'Dernier jour mesuré',
   sectionWhen: 'Quand les écrans étaient allumés',
   bandMerged: 'Tous les appareils',
   bandTooThin: 'Cette journée a été trop peu mesurée pour être tracée.',

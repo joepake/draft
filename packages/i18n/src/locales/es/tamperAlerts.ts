@@ -1,14 +1,10 @@
 export const tamperAlerts = {
   title: 'Alertas de protección',
   fallbackDeviceName: 'Dispositivo del niño',
-  heroTitle: 'Vigila si se desactiva la protección',
-  heroSubtitle:
-    'Cuando un permiso clave pasa de activado a desactivado en este dispositivo, KidGate lo registra aquí y puede avisarte.',
   statusOn: 'Vigilando',
   emptyTitle: 'Aún no hay cambios de permisos',
   emptySubtitle:
     'Todos los permisos supervisados están activados: la protección funciona. Si alguno se desactiva en el dispositivo del niño, aparecerá aquí.',
-  recentTitle: 'Recientes',
   watchedTitle: 'Permisos vigilados',
   watchedOverlay: 'Mostrar sobre otras aplicaciones',
   watchedAccessibility: 'Accesibilidad',
@@ -19,6 +15,7 @@ export const tamperAlerts = {
   watchedNotifications: 'Notificaciones',
   watchedLocation: 'Ubicación',
   watchedCamera: 'Cámara',
+  watchedMicrophone: 'Micrófono',
   watchedBackgroundRefresh: 'Actualización en segundo plano',
   infoTitle: 'Qué hacer',
   infoLine1:

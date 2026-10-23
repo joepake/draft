@@ -2,6 +2,12 @@ export const protection = {
   permissionOffOnChildDevice: 'Это разрешение отключено на устройстве ребёнка.',
   permissionNotSetUpYet: 'Это разрешение ещё не настроено.',
   permissionRestrictedByIos: 'Это разрешение ограничено настройками iOS.',
+  permissionStateAllowed: 'Разрешено',
+  permissionStateWhileOpen: 'Только при открытом приложении',
+  permissionStateOff: 'Отключено',
+  permissionStateNotAsked: 'Ещё не запрашивалось',
+  permissionStateRestricted: 'Ограничено',
+  permissionStateUnknown: 'Неизвестно',
   permissionStatusUnknown: 'KidGate не смог определить состояние этого разрешения.',
   kidGateOffline: 'KidGate молчит более 24 ч',
   childAppMayBeOffline:

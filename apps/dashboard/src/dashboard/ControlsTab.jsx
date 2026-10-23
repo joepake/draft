@@ -695,10 +695,7 @@ export default function ControlsTab({
         rows from the daily scan; this one is the feed's immediate answer.
       */}
       {installMode === 'quarantine' && state.installApproval && (
-        <Card
-          title={t('dash.pendingInstallsTitle')}
-          subtitle={t('dash.pendingInstallsSub')}
-        >
+        <Card title={activityT('blockedApps.pendingSectionTitle')}>
           {pendingInstalls.length === 0 ? (
             <p className="empty">{activityT('blockedApps.pendingEmpty')}</p>
           ) : (

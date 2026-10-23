@@ -2,6 +2,12 @@ export const protection = {
   permissionOffOnChildDevice: 'Quyền đang tắt trên thiết bị của trẻ.',
   permissionNotSetUpYet: 'Quyền này chưa được thiết lập.',
   permissionRestrictedByIos: 'Cài đặt iOS đang hạn chế quyền này.',
+  permissionStateAllowed: 'Đã cho phép',
+  permissionStateWhileOpen: 'Chỉ khi ứng dụng đang mở',
+  permissionStateOff: 'Đã tắt',
+  permissionStateNotAsked: 'Chưa hỏi',
+  permissionStateRestricted: 'Bị hạn chế',
+  permissionStateUnknown: 'Không rõ',
   permissionStatusUnknown: 'KidGate không đọc được trạng thái của quyền này.',
   kidGateOffline: 'KidGate không báo về quá 24 giờ',
   childAppMayBeOffline:

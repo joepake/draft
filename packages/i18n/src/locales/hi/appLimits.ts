@@ -1,12 +1,11 @@
 export const appLimits = {
   title: 'ऐप सीमाएँ',
-  intro:
-    'तय करें कि हर ऐप रोज़ कितनी देर इस्तेमाल हो सकता है। यह दैनिक सीमा के अलावा लागू होता है।',
   emptyTitle: 'अभी कोई सीमा नहीं',
   emptySubtitle: 'नीचे से कोई ऐप चुनें और उसके लिए अलग सीमा तय करें।',
   usedToday: 'आज {{limit}} में से {{used}}',
+  activeSectionTitle: 'मौजूदा सीमाएँ',
   addSectionTitle: 'सीमा जोड़ें',
-  addSectionSubtitle: 'आज इस डिवाइस पर सबसे ज़्यादा इस्तेमाल हुए ऐप्स।',
+  addSectionSubtitle: 'आज सबसे ज़्यादा इस्तेमाल',
   candidateUsage: 'आज {{duration}}',
   noUsageYet:
     'अभी कोई उपयोग दर्ज नहीं हुआ। बच्चे का डिवाइस उपयोग की जानकारी भेजते ही सीमाएँ यहाँ दिखने लगेंगी।',

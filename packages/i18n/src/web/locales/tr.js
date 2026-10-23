@@ -384,13 +384,6 @@ export default {
     day6: 'Cmt',
   },
 
-  perm: {
-    screenTime: 'Ekran Süresi',
-    location: 'Konum',
-    camera: 'Kamera',
-    microphone: 'Mikrofon',
-  },
-
   webCat: {
     adult: 'Yetişkin içerik',
     selfHarm: 'Kendine zarar verme ve yeme bozuklukları',
@@ -462,14 +455,6 @@ export default {
     statusLockSent: 'Kilit gönderildi',
     statusLockNotApplied: 'Kilit uygulanmadı',
     statusPaused: 'Duraklatıldı',
-
-    stateAllowed: 'İzin verildi',
-    stateForegroundOnly: 'Yalnızca uygulama açıkken',
-    stateDenied: 'Kapalı',
-    stateNotDetermined: 'Henüz sorulmadı',
-    stateRestricted: 'Kısıtlı',
-    stateUnavailable: 'Kullanılamıyor',
-    stateUnknown: 'Bilinmiyor',
 
     lastActive: 'Son etkinlik {{when}}',
     appVersion: 'Uygulama sürümü',
@@ -598,9 +583,6 @@ export default {
     inventoryOtherLabel: 'Tanımlandı',
     inventoryUnknownLabel: 'Tanımlanmadı',
     installAllow: 'İzin ver',
-    pendingInstallsTitle: 'Onay bekleyen yeni uygulamalar',
-    pendingInstallsSub:
-      'Onayı açtıktan sonra yüklendi ve cihaz tarafından kendiliğinden engellendi',
     toastInstallAllowed: 'Uygulamaya izin verildi',
     rowInstallApprovalDesc: '{{count}} uygulama onay bekliyor',
     rowInstallApprovalDesc_one: '{{count}} uygulama onay bekliyor',

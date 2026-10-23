@@ -1,12 +1,11 @@
 export const appLimits = {
   title: 'Giới hạn ứng dụng',
-  intro:
-    'Đặt thời lượng tối đa mỗi ngày cho từng ứng dụng. Giới hạn này áp dụng thêm, bên cạnh Giới hạn hằng ngày.',
   emptyTitle: 'Chưa có giới hạn nào',
   emptySubtitle: 'Chọn một ứng dụng bên dưới để đặt giới hạn riêng cho ứng dụng đó.',
   usedToday: '{{used}} / {{limit}} hôm nay',
+  activeSectionTitle: 'Đang giới hạn',
   addSectionTitle: 'Thêm giới hạn',
-  addSectionSubtitle: 'Những ứng dụng được dùng nhiều nhất trên thiết bị này hôm nay.',
+  addSectionSubtitle: 'Dùng nhiều nhất hôm nay',
   candidateUsage: '{{duration}} hôm nay',
   noUsageYet:
     'Chưa có dữ liệu sử dụng ứng dụng. Khi thiết bị của trẻ báo về, bạn sẽ đặt được giới hạn cho từng ứng dụng ở đây.',

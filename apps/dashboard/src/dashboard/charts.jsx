@@ -508,7 +508,12 @@ export function AppCategoryLine({ appT, entry }) {
 export function AppCategoryNote({ appT, entries }) {
   for (const entry of entries) {
     if (isShowableAppCategory(entry)) {
-      return <p className="hint app-cat-note">{appT('usage.topAppsAiNote')}</p>;
+      // A footnote's star, as on the phone.
+      return (
+        <p className="hint app-cat-note">
+          <span className="footnote-star">*</span> {appT('usage.topAppsAiNote')}
+        </p>
+      );
     }
   }
   return null;
@@ -537,7 +542,17 @@ const TIMELINE_TICKS = [0, 3, 6, 9, 12, 15, 18, 21, 24];
 const TIMELINE_GRID = TIMELINE_TICKS.slice(1, -1);
 const TIMELINE_CLASS = { used: 'tl-used', idle: 'tl-idle', unknown: 'tl-unknown' };
 
-export function UsageDayTimeline({ day, platform, capability, lockedSlot }) {
+export function UsageDayTimeline({
+  day,
+  platform,
+  capability,
+  lockedSlot,
+  // False where several bands share one card, which draws one
+  // `UsageTimelineLegend` under all of them — the phone's prop.
+  legend = true,
+  // False under another band on the same card, which carries the hours.
+  hours = true,
+}) {
   const appT = useActivityTranslate();
   const availability = timelineAvailability({
     platform,
@@ -572,21 +587,21 @@ export function UsageDayTimeline({ day, platform, capability, lockedSlot }) {
   }
 
   const runs = timelineRuns(day.timeline);
-  const unmeasured = timelineMinutesUnmeasured(day.timeline);
-  const hasIdle = runs.some(run => run.state === 'idle');
 
   return (
     <div className="tl">
       {/* Bare numbers, as the phone's `UsageTimelineBand` draws them: nine
           labels each carrying a unit ("0h 3h 6h…") is the unit printed nine
           times for a row whose whole job is to be read at a glance. */}
-      <div className="tl-hours">
-        {TIMELINE_TICKS.map(h => (
-          <span key={h} style={{ left: `${(h / 24) * 100}%` }}>
-            {h}
-          </span>
-        ))}
-      </div>
+      {hours && (
+        <div className="tl-hours">
+          {TIMELINE_TICKS.map(h => (
+            <span key={h} style={{ left: `${(h / 24) * 100}%` }}>
+              {h}
+            </span>
+          ))}
+        </div>
+      )}
 
       <div className="tl-track">
         {TIMELINE_GRID.map(h => (
@@ -620,6 +635,28 @@ export function UsageDayTimeline({ day, platform, capability, lockedSlot }) {
         })}
       </div>
 
+      {legend && <UsageTimelineLegend timelines={[day.timeline]} />}
+    </div>
+  );
+}
+
+/*
+ * The colour names and the unmeasured sentence, once per card — the child
+ * report repeated both under the merged band and every device's (2026-10-23).
+ * A state is named when any of `timelines` holds it: the merge ranks used over
+ * idle over unknown, so a device's idle or unmeasured stretch can be missing
+ * from the merged band. The phone's `UsageTimelineLegend` is this.
+ */
+export function UsageTimelineLegend({ timelines }) {
+  const appT = useActivityTranslate();
+  const present = timelines.filter(Boolean);
+  const hasIdle = present.some(timeline =>
+    timelineRuns(timeline).some(run => run.state === 'idle'),
+  );
+  const unmeasured = present.some(timeline => timelineMinutesUnmeasured(timeline) > 0);
+
+  return (
+    <>
       {/* Colour names only, as on the phone. Each carried its own duration
           next to a card whose total for the same day was smaller, because the
           two are counted differently on purpose — the total sums attributed
@@ -642,7 +679,7 @@ export function UsageDayTimeline({ day, platform, capability, lockedSlot }) {
             {appT('usage.timelineIdle')}
           </span>
         )}
-        {unmeasured > 0 && (
+        {unmeasured && (
           <span>
             <i className="dot tl-unknown-dot" />
             {appT('usage.timelineUnmeasured')}
@@ -654,10 +691,8 @@ export function UsageDayTimeline({ day, platform, capability, lockedSlot }) {
           here, which is a tooltip on a 9px dot: no touch device shows it, and
           the one state a parent most needs explaining was the one state that
           explained itself only to a mouse. */}
-      {unmeasured > 0 && (
-        <p className="tl-hint">{appT('usage.timelineUnmeasuredHint')}</p>
-      )}
-    </div>
+      {unmeasured && <p className="tl-hint">{appT('usage.timelineUnmeasuredHint')}</p>}
+    </>
   );
 }
 

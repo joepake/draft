@@ -1,14 +1,10 @@
 export const tamperAlerts = {
   title: 'Schutzwarnungen',
   fallbackDeviceName: 'Kindergerät',
-  heroTitle: 'Erkenne, wenn der Schutz abgeschaltet wird',
-  heroSubtitle:
-    'Wenn eine wichtige Berechtigung auf diesem Gerät von an auf aus wechselt, hält KidGate das hier fest und kann dich benachrichtigen.',
   statusOn: 'Überwachung läuft',
   emptyTitle: 'Noch keine Berechtigungsänderungen',
   emptySubtitle:
     'Alle überwachten Berechtigungen sind aktiv – der Schutz funktioniert. Wird eine auf dem Gerät des Kindes deaktiviert, erscheint sie hier.',
-  recentTitle: 'Zuletzt',
   watchedTitle: 'Überwachte Berechtigungen',
   watchedOverlay: 'Über anderen Apps anzeigen',
   watchedAccessibility: 'Bedienungshilfen',
@@ -19,6 +15,7 @@ export const tamperAlerts = {
   watchedNotifications: 'Mitteilungen',
   watchedLocation: 'Standort',
   watchedCamera: 'Kamera',
+  watchedMicrophone: 'Mikrofon',
   watchedBackgroundRefresh: 'Hintergrundaktualisierung',
   infoTitle: 'Was zu tun ist',
   infoLine1:

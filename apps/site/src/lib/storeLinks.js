@@ -118,10 +118,10 @@ export const STORE_LINKS = {
  * Public launch. Until then every platform reads "coming soon" whatever its
  * flag, the `/get` code is blurred and the hero counts down to this instant;
  * at zero the page reloads and the links are live. Set 2026-10-18 to 80 hours
- * out, slipped 72 hours on 2026-10-21 — a slipped rollout is this one line,
- * then a deploy.
+ * out, slipped 72 hours on 2026-10-21 and 48 more on 2026-10-23 — a slipped
+ * rollout is this one line, then a deploy.
  */
-export const RELEASE_AT = Date.parse('2026-10-24T11:00:00+07:00');
+export const RELEASE_AT = Date.parse('2026-10-26T11:00:00+07:00');
 
 export function isReleased(now = Date.now()) {
   return now >= RELEASE_AT;

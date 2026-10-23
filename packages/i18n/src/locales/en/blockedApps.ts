@@ -23,13 +23,10 @@ export const blockedApps = {
   installApprovalInfoLine2Ios: 'Apps already on the device keep working.',
   installApprovalInfoLine3Ios:
     'To let one app in, turn this off, install it, then turn this back on.',
-  pendingSectionTitle: 'Blocked automatically, waiting for you',
-  pendingSectionSubtitle:
-    'Installed after you turned on approval. Nothing here was chosen on the child device.',
+  pendingSectionTitle: 'New apps on hold',
   pendingInstalledAt: 'Installed {{when}}',
   pendingEmpty: 'No new apps waiting for approval.',
   allowApp: 'Allow',
-  allowingApp: 'Allowing…',
   toastAppAllowed: '{{appName}} can open now.',
   toastAllowFailed: 'Unable to allow this app. Try again.',
   toastInstallApprovalSaveFailed: 'Unable to save. Try again.',
@@ -37,12 +34,10 @@ export const blockedApps = {
     'Choose the apps first: open KidGate Settings on the child device and enter the Parent PIN.',
   toastSaveFailed: 'Unable to save. Try again.',
   statusBlockingOn: 'Blocking is on',
-  statusBlockingOff: 'Not blocking',
+  statusBlockingOff: 'Selected apps open freely',
   heroTitle: 'Selected apps to block',
   heroSubtitle:
     'These apps and categories are chosen on the child device. KidGate syncs the list here for you to review.',
-  statAppsLabel: 'Apps',
-  statCategoriesLabel: 'Categories',
   toggleTitle: 'Enable App Blocking',
   toggleSubtitleOn: 'Selected apps are blocked on the child device.',
   toggleSubtitleOff: 'Turn on to block the selected apps remotely.',

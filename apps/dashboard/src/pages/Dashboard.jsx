@@ -1,10 +1,10 @@
 import { useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { webCategoryLabel } from '../dashboard/labels.js';
 import {
-  isKnownPermission,
-  permissionLabel,
-  webCategoryLabel,
-} from '../dashboard/labels.js';
+  devicePermissionRows,
+  PERMISSION_STATE_LABEL_KEYS,
+} from '@kidgate/core/domain/permissionChecklist';
 import { activityCopy, useActivityTranslate } from '../dashboard/activityCopy.js';
 import { GUIDE_INDEX, navScreenSlug, navSearch, readNav } from '../dashboard/navUrl.js';
 import { trackScreen } from '../lib/analytics.js';
@@ -365,72 +365,21 @@ function osLabel(platform, osVersion) {
 }
 
 /**
- * Permission states are not binary. Lumping everything that is not
- * `authorized` under "Turned off" accuses a parent of switching something off
- * that was in fact never asked for, and it disagrees with the attention list,
- * which counts only real denials.
+ * How each `devicePermissionRows` state looks here. The rows, their names and
+ * the state words are `@kidgate/core/domain/permissionChecklist`, shared with
+ * the phone's Protection alerts screen since 2026-10-23 — this page read the
+ * checklist itself before, phones only, with its own names and words. States
+ * are not binary: lumping "never asked" under "Turned off" accuses a parent of
+ * switching off something nobody asked for.
  */
-const PERMISSION_STATE = {
-  authorized: { labelKey: 'dash.stateAllowed', tone: 'good', icon: 'check' },
-  // Location allowed only while KidGate is open. Read as `unknown` by a build
-  // without this row, never as allowed.
-  foregroundOnly: {
-    labelKey: 'dash.stateForegroundOnly',
-    tone: 'warning',
-    icon: 'alert',
-  },
-  denied: { labelKey: 'dash.stateDenied', tone: 'critical', icon: 'ban' },
-  notDetermined: {
-    labelKey: 'dash.stateNotDetermined',
-    tone: 'muted',
-    icon: 'clock',
-  },
-  restricted: { labelKey: 'dash.stateRestricted', tone: 'warning', icon: 'alert' },
-  unavailable: {
-    labelKey: 'dash.stateUnavailable',
-    tone: 'muted',
-    icon: 'minus',
-  },
-  unknown: { labelKey: 'dash.stateUnknown', tone: 'muted', icon: 'clock' },
+const PERMISSION_TONE = {
+  allowed: { tone: 'good', icon: 'check' },
+  whileOpen: { tone: 'warning', icon: 'alert' },
+  off: { tone: 'critical', icon: 'ban' },
+  notAsked: { tone: 'muted', icon: 'clock' },
+  restricted: { tone: 'warning', icon: 'alert' },
+  unknown: { tone: 'muted', icon: 'clock' },
 };
-
-function permissionState(value) {
-  return PERMISSION_STATE[value] || PERMISSION_STATE.unknown;
-}
-
-/**
- * One permission, two names — the split `@kidgate/core/domain/protectionStatus`
- * already makes for the phone's Protection screen, made here too.
- *
- * `screenTime` is the field every child device writes its usage grant into, and
- * Android calls that grant **Usage access**. This page printed Apple's word for
- * it on every device in the fleet, so a parent with an Android phone or an
- * Android TV was told to go and find a "Screen Time" setting their device has
- * never had — the same instruction the app deliberately avoids giving.
- *
- * The Android names come from the **app** key space, through `activityT`: they
- * are the words the child's own screen shows, already translated into all
- * fourteen packs, and writing web copy for them would be a second set of names
- * for one setting, free to drift. The six the child's setup checklist already
- * names (`permissions.*Label`) are read from there for the same reason; the
- * four it has no label for — Screen Time, Location, Camera, Microphone — keep
- * their `perm.*` one.
- */
-const APP_PERMISSION_LABELS = {
-  notifications: activityT => activityT('permissions.notificationsLabel'),
-  backgroundAppRefresh: activityT => activityT('permissions.backgroundRefreshLabel'),
-  overlay: activityT => activityT('permissions.overlayLabel'),
-  batteryOptimization: activityT => activityT('permissions.batteryOptimizationLabel'),
-  exactAlarm: activityT => activityT('permissions.exactAlarmLabel'),
-  accessibility: activityT => activityT('permissions.accessibilityLabel'),
-};
-
-function permissionName(t, activityT, key, platform) {
-  if (key === 'screenTime' && isAndroidLike(platform)) {
-    return activityT('protection.usageAccessPermission');
-  }
-  return APP_PERMISSION_LABELS[key]?.(activityT) ?? permissionLabel(t, key);
-}
 
 /**
  * Reads the module-level `t`: it is called from `useMemo` bodies and from
@@ -4117,31 +4066,35 @@ export default function Dashboard({
                     screen on every section rather than one tab deep. The count
                     stays as a tile above, which is a reading rather than a
                     second copy of the rows. */}
-                {/* Only the phone apps sync a permission checklist; a Mac or
-                    PC never writes one, and an empty card with a blank
-                    "last checked" would read as something being wrong. */}
-                {Object.keys(device.protectionStatus).some(isKnownPermission) && (
+                {/* The phone's list (`devicePermissionRows`): a Mac or a TV
+                    draws the rows its probe reports, and a device with none
+                    draws no card — an empty one would read as something wrong.
+                    "Last checked" is the phone checklist's stamp; a probe-only
+                    device has none to show. */}
+                {devicePermissionRows(device).length > 0 && (
                   <Card
                     title={t('dash.cardProtection')}
-                    subtitle={t('dash.cardProtectionSub', {
-                      when: timeAgo(device.protectionStatus.lastCheckedAt),
-                    })}
+                    subtitle={
+                      device.protectionStatus?.lastCheckedAt
+                        ? t('dash.cardProtectionSub', {
+                            when: timeAgo(device.protectionStatus.lastCheckedAt),
+                          })
+                        : undefined
+                    }
                   >
                     <ul className="perms">
-                      {Object.entries(device.protectionStatus)
-                        .filter(([k]) => isKnownPermission(k))
-                        .map(([k, v]) => {
-                          const state = permissionState(v);
-                          return (
-                            <li key={k}>
-                              <span className={`perm-state tone-${state.tone}`}>
-                                <Icon name={state.icon} size={13} />
-                              </span>
-                              {permissionName(t, activityT, k, device.platform)}
-                              <em>{t(state.labelKey)}</em>
-                            </li>
-                          );
-                        })}
+                      {devicePermissionRows(device).map(row => {
+                        const look = PERMISSION_TONE[row.state];
+                        return (
+                          <li key={row.key}>
+                            <span className={`perm-state tone-${look.tone}`}>
+                              <Icon name={look.icon} size={13} />
+                            </span>
+                            {activityT(row.labelKey)}
+                            <em>{activityT(PERMISSION_STATE_LABEL_KEYS[row.state])}</em>
+                          </li>
+                        );
+                      })}
                     </ul>
                   </Card>
                 )}
@@ -5259,28 +5212,27 @@ export default function Dashboard({
                   })}
                 >
                   <ul className="timeline">
+                    {/* Every filing its own row, title only — the phone's
+                        Protection alerts list (2026-10-23): the description
+                        restated the title. */}
                     {(activities[device.id] || [])
                       .filter(a => a.type === 'tamper')
-                      .map(a => {
-                        const copy = activityCopy(
-                          a,
-                          activityT,
-                          device.name,
-                          actorNames,
-                        );
-                        return (
-                          <li key={a.id}>
-                            <span className="tl-icon type-tamper">
-                              <Icon name="alert" size={15} />
-                            </span>
-                            <span className="tl-body">
-                              <strong>{copy.title}</strong>
-                              <em>{copy.description}</em>
-                            </span>
-                            <time>{timeAgo(a.createdAt)}</time>
-                          </li>
-                        );
-                      })}
+                      .map(a => (
+                        <li key={a.id}>
+                          <span className="tl-icon type-tamper">
+                            <Icon name="alert" size={15} />
+                          </span>
+                          <span className="tl-body">
+                            <strong>
+                              {
+                                activityCopy(a, activityT, device.name, actorNames)
+                                  .title
+                              }
+                            </strong>
+                          </span>
+                          <time>{timeAgo(a.createdAt)}</time>
+                        </li>
+                      ))}
                   </ul>
                   <p className="hint">{activityT('tamperAlerts.infoLine1')}</p>
                 </Card>

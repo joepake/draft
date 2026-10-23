@@ -1,14 +1,10 @@
 export const tamperAlerts = {
   title: 'Protection Alerts',
   fallbackDeviceName: 'Child device',
-  heroTitle: 'Watch for protection being turned off',
-  heroSubtitle:
-    'When a key permission changes from on to off on this device, KidGate records it here and can notify you.',
   statusOn: 'Watching',
   emptyTitle: 'No permission changes yet',
   emptySubtitle:
     'All watched permissions are on — protection is working. If one is ever turned off on the child device, it will show up here.',
-  recentTitle: 'Recent',
   watchedTitle: 'Watched permissions',
   watchedOverlay: 'Display over other apps',
   watchedAccessibility: 'Accessibility',
@@ -19,6 +15,7 @@ export const tamperAlerts = {
   watchedNotifications: 'Notifications',
   watchedLocation: 'Location',
   watchedCamera: 'Camera',
+  watchedMicrophone: 'Microphone',
   watchedBackgroundRefresh: 'Background App Refresh',
   infoTitle: 'What to do',
   infoLine1:

@@ -23,13 +23,10 @@ export const blockedApps = {
   installApprovalInfoLine2Ios: 'डिवाइस पर पहले से मौजूद ऐप्स चलते रहते हैं।',
   installApprovalInfoLine3Ios:
     'कोई एक ऐप इंस्टॉल होने देने के लिए इसे बंद करें, वह ऐप इंस्टॉल करें, फिर इसे वापस चालू करें।',
-  pendingSectionTitle: 'अपने आप ब्लॉक हुआ, आपके निर्णय का इंतज़ार',
-  pendingSectionSubtitle:
-    'स्वीकृति चालू करने के बाद इंस्टॉल हुए। यहाँ कुछ भी बच्चे के डिवाइस पर नहीं चुना गया था।',
+  pendingSectionTitle: 'ब्लॉक किए गए नए ऐप्स',
   pendingInstalledAt: 'इंस्टॉल किया गया {{when}}',
   pendingEmpty: 'स्वीकृति का इंतज़ार करने वाला कोई नया ऐप नहीं है।',
   allowApp: 'अनुमति दें',
-  allowingApp: 'अनुमति दी जा रही है…',
   toastAppAllowed: '{{appName}} अब खुल सकता है।',
   toastAllowFailed: 'इस ऐप को अनुमति नहीं दी जा सकी। कृपया पुनः प्रयास करें।',
   toastInstallApprovalSaveFailed: 'सहेजा नहीं जा सका। कृपया पुनः प्रयास करें।',
@@ -37,12 +34,10 @@ export const blockedApps = {
     'पहले ऐप्स चुनें: बच्चे के डिवाइस पर KidGate सेटिंग्स खोलें और Parent PIN दर्ज करें।',
   toastSaveFailed: 'सहेजा नहीं जा सका। कृपया पुनः प्रयास करें।',
   statusBlockingOn: 'ब्लॉकिंग चालू है',
-  statusBlockingOff: 'ब्लॉकिंग बंद है',
+  statusBlockingOff: 'चुने गए ऐप्स स्वतंत्र रूप से खुलते हैं',
   heroTitle: 'ब्लॉक करने के लिए चुने गए ऐप्स',
   heroSubtitle:
     'ये ऐप्स और श्रेणियाँ बच्चे के डिवाइस पर चुनी जाती हैं। KidGate इस सूची को यहाँ सिंक करता है ताकि आप इसे देख सकें।',
-  statAppsLabel: 'ऐप्स',
-  statCategoriesLabel: 'श्रेणियाँ',
   toggleTitle: 'ऐप ब्लॉकिंग सक्षम करें',
   toggleSubtitleOn: 'चुने गए ऐप्स बच्चे के डिवाइस पर ब्लॉक हैं।',
   toggleSubtitleOff: 'चुने गए ऐप्स को दूर से ब्लॉक करने के लिए इसे चालू करें।',

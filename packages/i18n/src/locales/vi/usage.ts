@@ -71,7 +71,7 @@ export const usage = {
   tryAgain: 'Thử lại',
   // Shown only when the rating is known — it is 0 for much of the long
   // tail, and 0 does not mean "suitable for everyone".
-  appMinAge: 'Nhà phát hành đề xuất {{age}}+',
+  appMinAge: 'Từ {{age}} tuổi',
   underAMinute: 'Dưới 1 phút',
   topAppsOther: 'Ứng dụng khác',
   topAppsJoinedNote:
@@ -88,7 +88,7 @@ export const usage = {
   timelineIdle: 'Không dùng',
   timelineUnmeasured: 'Không đo được',
   timelineUnmeasuredHint:
-    'KidGate không chạy trên thiết bị, hoặc thiết bị ở chế độ ngủ. Khoảng thời gian này cũng không được tính vào tổng.',
+    'Lúc KidGate không chạy hoặc máy đang ngủ thì không đo được và không tính vào thời gian sử dụng.',
   timelineUnsupported:
     'Thiết bị này chỉ báo được thời lượng sử dụng, không báo được thời điểm.',
   timelinePending: 'Chưa có dữ liệu theo giờ.',

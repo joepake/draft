@@ -21,6 +21,7 @@ import {
   AppCategoryLine,
   AppCategoryNote,
   UsageDayTimeline,
+  UsageTimelineLegend,
   formatMinutes,
 } from './charts.jsx';
 import { useAppCategories } from './useAppCategories.js';
@@ -58,9 +59,26 @@ const PERIODS = [
 /** Unmeasured, which is not zero. */
 const NO_FIGURE = '—';
 
+/** Stands in for a device name in a sentence, so the name can be set apart. */
+const NAME_MARK = '\uE000';
+
 /** A day key rendered the reader's way, not ISO. */
 function shortDay(dateKey, options) {
   return new Date(`${dateKey}T00:00:00`).toLocaleDateString(getLocaleTag(), options);
+}
+
+/**
+ * Today, yesterday, or the date with its year — the phone's `dayLabel`. The
+ * hour band's day, named rather than described as "latest measured day".
+ */
+function relativeDay(dateKey, todayKey, appT) {
+  if (dateKey === todayKey) return appT('activities.dateToday');
+  const yesterday = new Date(`${todayKey}T00:00:00`);
+  yesterday.setDate(yesterday.getDate() - 1);
+  if (new Date(`${dateKey}T00:00:00`).toDateString() === yesterday.toDateString()) {
+    return appT('activities.dateYesterday');
+  }
+  return shortDay(dateKey, { day: 'numeric', month: 'short', year: 'numeric' });
 }
 
 /**
@@ -434,9 +452,8 @@ export default function ChildReport({
           <p className="creport-hero-empty">{appT('childReport.heroEmpty')}</p>
         )}
 
-        {!totals.exact && hasUsage && (
-          <p className="creport-hero-note">{appT('childReport.heroRangeNote')}</p>
-        )}
+        {/* No "an estimate" line: the "≥" says it, and the operator cut the
+            hero's stacked caveats (2026-10-23), as on the phone. */}
 
         {/* The two totals as two bars, because the gap between them IS the
             finding: added up, a minute on two screens counts twice. */}
@@ -485,20 +502,12 @@ export default function ChildReport({
           </div>
         )}
 
-        {/* Without this the parent sees one bar shorter than the other and is
-            left to guess why. The overlap is named when it can be known. */}
-        {hasUsage && (
-          <p className="creport-hero-note">
-            {totals.overlapMinutes > 0
-              ? appT('childReport.heroOverlap', {
-                  value: formatMinutes(totals.overlapMinutes),
-                })
-              : appT('childReport.barsExplain')}
-          </p>
-        )}
+        {/* No overlap sentence under the bars — the longer one is labelled
+            "all devices added up", which is the explanation (2026-10-23). */}
 
-        {/* Two wells, value over label — scannable in one sweep. */}
-        {hasUsage && (
+        {/* A well per figure there is. Late nights from one up: a well for
+            "0" was the loudest thing in the hero for a fact that is not news. */}
+        {hasUsage && (dailyAverage !== null || lateNightDates.length > 0) && (
           <div className="creport-stats">
             {dailyAverage !== null && (
               <span className="creport-stat">
@@ -506,12 +515,12 @@ export default function ChildReport({
                 <em>{appT('report.statDailyAverage')}</em>
               </span>
             )}
-            <span className="creport-stat">
-              <strong className={lateNightDates.length > 0 ? 'is-warning' : ''}>
-                {lateNightDates.length}
-              </strong>
-              <em>{appT('childReport.wellLateNights')}</em>
-            </span>
+            {lateNightDates.length > 0 && (
+              <span className="creport-stat">
+                <strong className="is-warning">{lateNightDates.length}</strong>
+                <em>{appT('childReport.wellLateNights')}</em>
+              </span>
+            )}
           </div>
         )}
 
@@ -630,9 +639,7 @@ export default function ChildReport({
           <header className="creport-card-head">
             <h3>{appT('childReport.sectionWhen')}</h3>
             <em className="creport-scope">
-              {bandDate === latestMeasuredDate
-                ? appT('childReport.bandLatestDay')
-                : shortDay(bandDate, { day: 'numeric', month: 'short' })}
+              {relativeDay(bandDay.date, todayKey, appT)}
             </em>
           </header>
 
@@ -641,7 +648,7 @@ export default function ChildReport({
           ) : (
             <>
               <p className="creport-band-label">{appT('childReport.bandMerged')}</p>
-              <UsageDayTimeline day={bandDay} capability />
+              <UsageDayTimeline day={bandDay} capability legend={false} />
 
               {/* One strip per device under the merged one. A band that goes
                   quiet at nine in the evening raises "which machine?", and the
@@ -649,6 +656,10 @@ export default function ChildReport({
                   own colour from the split below, so the two read together. */}
               {usageDevices.map(entry => {
                 const device = childDevices.find(item => item.id === entry.deviceId);
+                // A device that measures no screen time says so in the device
+                // card below; saying it here too was one line twice, as on the
+                // phone.
+                if (device && !supportsScreenTime(device)) return null;
                 const row = entry.days.find(day => day.date === bandDate);
                 return (
                   <div className="creport-band-block" key={entry.deviceId}>
@@ -661,20 +672,27 @@ export default function ChildReport({
                       </span>
                       {entry.name ?? NO_FIGURE}
                     </p>
-                    {/* Not the band's "how long, but not when" — the iPhone's
-                        sentence; a browser extension measures neither. */}
-                    {device && !supportsScreenTime(device) ? (
-                      <p className="empty">{appT('childReport.deviceNoScreenTime')}</p>
-                    ) : (
-                      <UsageDayTimeline
-                        day={row}
-                        platform={entry.platform}
-                        capability={device?.capabilities?.usageTimeline}
-                      />
-                    )}
+                    {/* Hours once, over the merged band, which every band here
+                        lines up with. */}
+                    <UsageDayTimeline
+                      day={row}
+                      platform={entry.platform}
+                      capability={device?.capabilities?.usageTimeline}
+                      legend={false}
+                      hours={false}
+                    />
                   </div>
                 );
               })}
+
+              <UsageTimelineLegend
+                timelines={[
+                  bandDay.timeline,
+                  ...usageDevices.map(
+                    entry => entry.days.find(day => day.date === bandDate)?.timeline,
+                  ),
+                ]}
+              />
             </>
           )}
         </div>
@@ -823,14 +841,21 @@ export default function ChildReport({
             )}
           </ul>
         )}
-        {joinedDevices.map(({ device, at }) => (
-          <p key={device.id} className="hint app-cat-note">
-            {appT('childReport.deviceJoinedNote', {
-              device: device.name,
-              time: formatClock(at.getHours() * 60 + at.getMinutes()),
-            })}
-          </p>
-        ))}
+        {joinedDevices.map(({ device, at }) => {
+          // Split at the name rather than splitting the key: the name moves
+          // with each language's word order. The phone does the same.
+          const [before, after = ''] = appT('childReport.deviceJoinedNote', {
+            device: NAME_MARK,
+            time: formatClock(at.getHours() * 60 + at.getMinutes()),
+          }).split(NAME_MARK);
+          return (
+            <p key={device.id} className="hint app-cat-note">
+              <span className="footnote-star">*</span> {before}
+              <strong>{device.name}</strong>
+              {after}
+            </p>
+          );
+        })}
         <AppCategoryNote appT={appT} entries={appCategories.values()} />
       </div>
     </section>
