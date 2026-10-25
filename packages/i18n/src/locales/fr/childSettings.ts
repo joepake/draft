@@ -7,7 +7,7 @@ export const childSettings = {
   darkModeHint: 'Plus agréable pour les yeux le soir',
   leaveFamilyAlertTitle: 'Quitter cette famille ?',
   leaveFamilyAlertMessage:
-    'Cet appareil sera déconnecté de la famille. Pour la rejoindre, un parent devra le connecter de nouveau depuis son appli KidGate.',
+    'Cet appareil quittera la famille. Pour l’utiliser de nouveau, un parent devra le reconnecter.',
   leaveFamily: 'Quitter la famille',
   uninstallProtectionSectionTitle: 'Protection contre la désinstallation',
   uninstallProtectionSectionDescription:

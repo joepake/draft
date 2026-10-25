@@ -12,7 +12,6 @@ export const controls = {
   dailyLimitMaxMinutes:
     'O Limite diário pode ser de no máximo {{max}} minutos (24 horas).',
   rulesSectionTitle: 'Regras dos seus pais',
-  rulesSectionDescription: 'Regras que seus pais definiram para este dispositivo.',
   blockedHoursLabel: 'Horários bloqueados',
   dailyLimitLabel: 'Limite diário',
   webFilterLabel: 'Filtro da web',

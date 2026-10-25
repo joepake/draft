@@ -7,7 +7,7 @@ export const childSettings = {
   darkModeHint: 'Dễ nhìn hơn vào buổi tối',
   leaveFamilyAlertTitle: 'Rời khỏi gia đình này?',
   leaveFamilyAlertMessage:
-    'Thiết bị này sẽ ngắt kết nối khỏi gia đình. Muốn tham gia lại, bố mẹ cần kết nối lại thiết bị này từ ứng dụng KidGate của bố mẹ.',
+    'Thiết bị sẽ ngắt khỏi gia đình. Bố mẹ cần kết nối lại nếu muốn dùng tiếp.',
   leaveFamily: 'Rời khỏi gia đình',
   uninstallProtectionSectionTitle: 'Chống gỡ cài đặt',
   uninstallProtectionSectionDescription:

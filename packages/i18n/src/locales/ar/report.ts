@@ -9,6 +9,7 @@ export const report = {
   title: 'التقرير الأسبوعي',
   subtitle: 'ما لاحظه KidGate خلال الأسبوع.',
   weekOf: 'الأسبوع {{week}}',
+  weekOfYear: 'الأسبوع {{week}} - {{year}}',
   range: '{{from}} – {{to}}',
   triggerScheduled: 'أُرسل يوم الاثنين',
   triggerManual: 'أنشأته بنفسك',
@@ -51,7 +52,8 @@ export const report = {
   findingLimitHit_other: 'بلغ الاستخدام الحد اليومي {{limit}} في {{count}} يوم.',
   findingBlockedApps:
     'حُظرت {{count}} محاولة فتح للتطبيقات، مقابل {{previous}} الأسبوع الماضي.',
-  findingBlockedWeb: 'تمت تصفية {{count}} موقعًا، مقابل {{previous}} الأسبوع الماضي.',
+  findingBlockedWeb:
+    'زيارات لمواقع محظورة: {{count}}، مقابل {{previous}} الأسبوع الماضي.',
   findingQuietWeek: 'أسبوع هادئ — {{total}} إجمالًا، ولا شيء يحتاج إليك.',
 
   // النصف الإيجابي من التقرير. كل جملة تذكر ما حدث والرقم الذي يسنده، ولا
@@ -72,7 +74,7 @@ export const report = {
   findingBlockedAppsDown:
     '{{count}} عمليات فتح لتطبيقات محظورة، مقابل {{previous}} الأسبوع الماضي.',
   findingBlockedWebDown:
-    '{{count}} مواقع تمت تصفيتها، مقابل {{previous}} الأسبوع الماضي.',
+    'زيارات لمواقع محظورة: {{count}}، انخفاضًا من {{previous}} الأسبوع الماضي.',
   findingLearningTime: '{{duration}} في تطبيقات تعليمية، معظمها في {{app}}.',
   findingTasksDone_one: 'مهمة واحدة أُنجزت، بمكافأة {{bonus}}.',
   findingTasksDone_two: 'مهمتان أُنجزتا، بمكافأة {{bonus}}.',
@@ -125,7 +127,7 @@ export const report = {
     'لم يُسجَّل أي وقت شاشة خلال الأسبوعين الماضيين، فلا شيء لنبلغ عنه بعد. الجهاز غير المتصل لا يبلغ عن شيء، وهذا يختلف عن أسبوع هادئ.',
   rateLimited: 'تعذّرت كتابة تقرير آخر الآن. حاول بعد دقيقة.',
   loadFailedTitle: 'تعذّر تحميل التقارير',
-  loadFailed: 'تعذّر فتح التقارير. اسحب للأسفل للمحاولة مرة أخرى.',
+  loadFailed: 'تعذّر فتح التقارير.',
   failed: 'تعذّرت كتابة التقرير. حاول بعد قليل.',
 
   historyTitle: 'الأسابيع السابقة',

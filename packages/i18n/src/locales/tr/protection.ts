@@ -16,7 +16,7 @@ export const protection = {
   openKidGateOnChildPhone: 'Lütfen çocuğun cihazında KidGate’i bir kez açın.',
   screenTimePermission: 'Ekran Süresi izni',
   screenTimeAccessOff:
-    'Ekran Süresi erişimi kapalı; bu yüzden uygulama engelleme ve limitler çalışmayı durdurabilir.',
+    'Ekran Süresi erişimi kapalı; bu yüzden Engellenen Uygulamalar özelliği ve limitler çalışmayı durdurabilir.',
   screenTimeSetupIncomplete: 'Çocuğun cihazında Ekran Süresi kurulumu tamamlanmamış.',
   usageAccessPermission: 'Kullanım Erişimi',
   usageAccessOff:

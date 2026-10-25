@@ -4,7 +4,6 @@ export const placeAlerts = {
   mergedFromDevices:
     'हर डिवाइस के मौजूदा स्थानों को मिलाकर बनाई गई है। सहेजने पर यही एक सूची बच्चों के सभी डिवाइस पर लागू होगी।',
   fallbackDeviceName: 'बच्चे का डिवाइस',
-  statusReady: 'स्थान तैयार है',
   statusNeedLocation: 'बच्चे के डिवाइस के स्थान की प्रतीक्षा है',
   tabPlaces: 'स्थान',
   tabActivity: 'गतिविधि',
@@ -22,8 +21,6 @@ export const placeAlerts = {
   editPlaceAccessibility: '{{name}} संपादित करें',
   radiusLabel: 'अलर्ट त्रिज्या',
   radiusValue: '{{meters}} m',
-  radiusHint:
-    'यह जगह गिने जाने के लिए डिवाइस को कितना पास होना चाहिए। डिवाइस की अपनी स्थिति-त्रुटि से छोटा दायरा अलर्ट को ज़्यादा सटीक नहीं बनाता — पहुँचने और निकलने की सूचना छूट सकती है।',
   radiusAccuracyHint:
     'यहाँ यह डिवाइस अपनी स्थिति लगभग ±{{accuracy}} मीटर की सटीकता से बताता है।',
   radiusBelowAccuracy:
@@ -44,8 +41,6 @@ export const placeAlerts = {
   emptyEventsTitle: 'अभी तक कोई स्थान गतिविधि नहीं',
   emptyEventsSubtitle:
     'जब यह डिवाइस किसी सहेजे गए स्थान में प्रवेश करता है या वहाँ से निकलता है, तो घटनाएँ यहाँ दिखाई देंगी।',
-  emptyPlaces:
-    'मानचित्र पर कोई स्थान चुनें, उसका नाम रखें, फिर सहेजें। अधिकतम {{max}} स्थान।',
   noLocationToast: 'कृपया पहले बच्चे के डिवाइस से स्थान अपडेट की प्रतीक्षा करें।',
   maxPlacesToast: 'आप अधिकतम {{max}} स्थान सहेज सकते हैं।',
   nameRequiredToast: 'कृपया स्थान का नाम दर्ज करें।',

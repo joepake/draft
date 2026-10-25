@@ -17,7 +17,7 @@ export const protection = {
   openKidGateOnChildPhone: 'Abre KidGate una vez en el dispositivo del niño.',
   screenTimePermission: 'Permiso de Tiempo de uso',
   screenTimeAccessOff:
-    'El acceso a Tiempo de uso está desactivado, por lo que el bloqueo de apps y los límites pueden dejar de funcionar.',
+    'El acceso a Tiempo de uso está desactivado, por lo que la función Apps bloqueadas y los límites pueden dejar de funcionar.',
   screenTimeSetupIncomplete:
     'La configuración de Tiempo de uso está incompleta en el dispositivo del niño.',
   usageAccessPermission: 'Acceso de uso',

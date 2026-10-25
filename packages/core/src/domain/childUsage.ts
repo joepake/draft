@@ -458,6 +458,31 @@ export function joinedOnDay(
   return new Date(createdAt);
 }
 
+/**
+ * The per-day figure every report draws: the mean, over the days something
+ * measured, of each day's union — its floor where the day is only bounded.
+ *
+ * **Measured is not non-zero.** A day a device reported as zero counts; a day
+ * padded in for the chart's width (`screenOnMinutes` null and no minutes)
+ * does not. The child report's hero tile divided by the window and its bars'
+ * line by the measured days — "10h a day" over a line marked 11h 40m for one
+ * week (2026-10-24) — so both call this. Null when nothing was measured.
+ */
+export function dailyMeanMinutes(days: readonly ChildUsageDayTotal[]): number | null {
+  const measured = days.filter(
+    day => day.screenOnMinutes !== null || day.deviceMinutes > 0,
+  );
+  if (measured.length === 0) {
+    return null;
+  }
+  return (
+    measured.reduce(
+      (sum, day) => sum + (day.screenOnMinutes ?? day.screenOnLowMinutes),
+      0,
+    ) / measured.length
+  );
+}
+
 /** The apps that took the most of this person's window, largest first. */
 export function childTopApps(
   devices: readonly ChildUsageDevice[],

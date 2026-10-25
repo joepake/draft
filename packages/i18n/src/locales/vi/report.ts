@@ -2,6 +2,7 @@ export const report = {
   title: 'Báo cáo tuần',
   subtitle: 'Những gì KidGate ghi nhận trong tuần.',
   weekOf: 'Tuần {{week}}',
+  weekOfYear: 'Tuần {{week}} - {{year}}',
   range: '{{from}} – {{to}}',
   triggerScheduled: 'Đã gửi thứ Hai',
   triggerManual: 'Do bạn tạo',
@@ -34,7 +35,7 @@ export const report = {
   findingAppSurge: '{{app}} tăng {{delta}} so với tuần trước — tổng {{duration}}.',
   findingLimitHit: 'Có {{count}} ngày chạm Giới hạn hằng ngày ({{limit}}).',
   findingBlockedApps: '{{count}} lần mở ứng dụng bị chặn, tuần trước là {{previous}}.',
-  findingBlockedWeb: '{{count}} trang web bị lọc, tuần trước là {{previous}}.',
+  findingBlockedWeb: '{{count}} lượt truy cập web bị chặn, tuần trước là {{previous}}.',
   findingQuietWeek:
     'Một tuần yên ắng — tổng cộng {{total}}, và không có gì cần bạn xử lý.',
 
@@ -47,7 +48,8 @@ export const report = {
     'Tuần này không có đêm nào dùng máy muộn, tuần trước có {{count}} đêm.',
   findingBlockedAppsDown:
     '{{count}} lần mở ứng dụng bị chặn, giảm từ {{previous}} tuần trước.',
-  findingBlockedWebDown: '{{count}} trang web bị lọc, giảm từ {{previous}} tuần trước.',
+  findingBlockedWebDown:
+    '{{count}} lượt truy cập web bị chặn, giảm từ {{previous}} tuần trước.',
   findingLearningTime: '{{duration}} ở ứng dụng học tập, phần lớn là {{app}}.',
   findingTasksDone: '{{count}} nhiệm vụ hoàn thành, nhận {{bonus}}.',
   findingAskedFirst: '{{count}} lần con gửi yêu cầu thay vì tự ý dùng thêm.',
@@ -89,7 +91,7 @@ export const report = {
     'Hai tuần qua không ghi nhận thời gian sử dụng nào nên chưa có gì để báo cáo. Thiết bị không kết nối mạng thì không báo gì cả, và điều đó khác với một tuần yên ắng.',
   rateLimited: 'Chưa viết thêm báo cáo được lúc này. Hãy thử lại sau một phút.',
   loadFailedTitle: 'Không tải được báo cáo',
-  loadFailed: 'Không mở được báo cáo. Kéo xuống để thử lại.',
+  loadFailed: 'Không mở được báo cáo.',
   failed: 'Không viết được báo cáo. Thử lại trong giây lát.',
 
   historyTitle: 'Các tuần trước',

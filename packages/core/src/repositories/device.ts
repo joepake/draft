@@ -25,15 +25,18 @@ import {
   parseLocationRequestResult,
   parseOtaRequestResult,
   parseMessageMonitoring,
+  parseParentBlockedApps,
   parseProtectionCounters,
   parseProtectionStatus,
   parseTopAppsOtherToday,
   parseTopAppsToday,
   parseWeekCounters,
 } from '../domain/deviceControlsMapper';
+import { apiErrorMessageKey } from '../domain/apiErrorMessages';
 import { isApiFailure } from '../domain/apiFailure';
 import type { BuildFreshness } from '../domain/buildFreshness';
 import { isDeviceFormFactor } from '../domain/deviceFormFactor';
+import { humanizeMachineModel } from '../domain/deviceName';
 import { admitLockPress, LOCK_PRESS_WINDOW_MS } from '../domain/lockPress';
 import {
   otaRequestId,
@@ -177,7 +180,8 @@ function parseWebToday(data: Record<string, unknown>): ChildDeviceRecord['webTod
  * and the UI supplies its own fallback in the reader's language.
  */
 function deviceName(data: Record<string, unknown>): string {
-  return text(data.name) ?? text(data.deviceLabel) ?? text(data.modelName) ?? '';
+  const name = text(data.name) ?? text(data.deviceLabel) ?? text(data.modelName);
+  return name ? humanizeMachineModel(name) : '';
 }
 
 function isLiveParentDevice(device: ParentDeviceRecord): boolean {
@@ -344,6 +348,7 @@ function mapChildDevice(
   const lockRequestedAt = timestampToIso(data.lockRequestedAt);
   const lockEnforcement = parseLockEnforcement(data.lockEnforcement);
   const operatorHold = parseOperatorHold(data.operatorHold);
+  const parentBlockedApps = parseParentBlockedApps(data);
 
   return {
     places: parseDevicePlaces(data),
@@ -381,6 +386,8 @@ function mapChildDevice(
     // parked state because it is what that state means when billing did not
     // decide it (`domain/operatorHold`).
     ...(operatorHold ? { operatorHold } : {}),
+    // A parent's Blocks from the console, by inventory id; absent is none.
+    ...(parentBlockedApps.length > 0 ? { parentBlockedApps } : {}),
     // The swap cooldown's readable half, absent on every device that has
     // never been the chosen one.
     ...(data.monitoredChangedAt
@@ -934,7 +941,7 @@ export function createDeviceRepository(deps: DeviceRepositoryDeps) {
             messageKey:
               error.serverCode === 'monitored/cooldown'
                 ? 'family.monitoredCooldown'
-                : (error.messageKey ?? 'family.monitoredChooseFailed'),
+                : apiErrorMessageKey(error, 'family.monitoredChooseFailed'),
           };
           throw failure;
         }

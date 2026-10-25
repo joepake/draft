@@ -11,7 +11,7 @@ export const notifications = {
   sectionSummary: 'Tổng kết',
   sectionQuietHours: 'Giờ yên tĩnh',
   sectionQuietHoursHint:
-    'Trong khung giờ này không có cảnh báo nào được gửi, và cũng không gửi bù sau đó. Sự kiện vẫn hiện trong Nhật ký. SOS không bao giờ bị giữ lại, và các Cảnh báo tin nhắn nghiêm trọng nhất vẫn được báo.',
+    'Chỉ SOS và các Cảnh báo tin nhắn nghiêm trọng nhất được gửi trong khung giờ này. Không gửi bù sau đó; sự kiện vẫn có trong Nhật ký.',
   quietHoursLabel: 'Giờ yên tĩnh',
   quietHoursOff: 'Tắt — cảnh báo đến bất cứ lúc nào',
   quietHoursActive: 'Không gửi cảnh báo từ {{start}} đến {{end}}',
@@ -31,7 +31,7 @@ export const notifications = {
   alert: {
     tamperAlerts: {
       label: 'Cảnh báo bảo vệ',
-      hint: 'Trên thiết bị của trẻ, một quyền KidGate cần đã bị tắt, ngày giờ hoặc múi giờ đã bị đổi, hoặc SOS được bấm khi máy đang khóa. Bản thân cảnh báo SOS luôn được gửi.',
+      hint: 'Một quyền KidGate cần bị tắt trên thiết bị của trẻ, ngày giờ hoặc múi giờ bị đổi, hoặc SOS được bấm khi máy đang khóa.',
     },
     placeAlerts: {
       label: 'Cảnh báo địa điểm',

@@ -11,6 +11,8 @@ export const macos = {
 
   parentAccessBody:
     'इस डिवाइस पर कौन से ऐप्स ब्लॉक होंगे, यह चुनने के लिए Parent PIN डालें।',
+  parentAccessBodyMac:
+    'इस Mac का सेटअप पूरा करने या लॉगिन पर KidGate खुलने की सेटिंग बदलने के लिए Parent PIN डालें।',
   checking: 'जाँच हो रही है…',
 
   enforcing: 'सुरक्षा चालू है',
@@ -24,10 +26,6 @@ export const macos = {
   lockStateParent: 'हाँ — माता-पिता ने लॉक किया है',
   lockStateSchedule: 'हाँ — ब्लॉक किए गए समय',
   lockStateDailyLimit: 'हाँ — दैनिक सीमा पूरी हो गई',
-
-  appBlocking: 'ऐप ब्लॉकिंग',
-  appBlockingBestEffort:
-    'यथासंभव — ऐप्स खुलने के बाद बंद किए जाते हैं, खुलने से नहीं रोके जाते',
 
   webFilterLabel: 'वेब फ़िल्टरिंग',
   webFilterUnavailable: 'इस Mac पर उपलब्ध नहीं',

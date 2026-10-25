@@ -4,7 +4,7 @@ export const webHistory = {
   syncNote:
     'Web history can arrive about 10 minutes late while you are looking at this screen, and up to 30 minutes late otherwise — longer if the device has no internet connection or was closed unexpectedly.',
   syncNoteTv:
-    'This television only checks in periodically, so web history can take up to an hour to reach this screen — longer with no internet connection.',
+    'This television only connects periodically, so web history can take up to an hour to reach this screen — longer with no internet connection.',
   summarySites: 'Sites seen',
   summaryBlocked: 'Sites blocked',
   sourceNoteFilter:

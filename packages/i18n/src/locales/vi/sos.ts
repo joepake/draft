@@ -1,6 +1,5 @@
 export const sos = {
   title: 'Cảnh báo SOS',
-  subtitle: '{{deviceName}} · ảnh sẽ hiển thị bên dưới nếu được gửi kèm',
   fallbackDeviceName: 'Thiết bị của trẻ',
   fallbackChildName: 'Con bạn',
   locationUnavailable: 'Không có thông tin vị trí',
@@ -9,7 +8,6 @@ export const sos = {
   viewPhotoAccessibility: 'Xem ảnh SOS',
   photoTapHint: 'Chạm để xem ảnh đầy đủ',
   photoLoadFailed: 'Không tải được ảnh. Vui lòng kiểm tra kết nối mạng rồi thử lại.',
-  noPhoto: 'Cảnh báo này không kèm ảnh.',
   audioLabel: 'Đoạn ghi âm',
   audioPlayAccessibility: 'Phát đoạn ghi âm SOS',
   audioStopAccessibility: 'Dừng phát đoạn ghi âm SOS',
@@ -17,7 +15,6 @@ export const sos = {
   acknowledgedAt: 'Đã phản hồi lúc {{time}}',
   openInMaps: 'Mở trong Bản đồ',
   acknowledgeButton: 'Đã thấy, đang xử lý',
-  acknowledgingButton: 'Đang lưu…',
   toastAcknowledgeFailed: 'Không thể ghi nhận phản hồi. Vui lòng thử lại sau ít phút.',
   emptyTitle: 'Chưa có cảnh báo SOS',
   emptyDescription:

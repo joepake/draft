@@ -4,7 +4,6 @@ export const placeAlerts = {
   mergedFromDevices:
     'دُمجت من الأماكن الموجودة على كل جهاز. الحفظ يطبّق هذه القائمة الواحدة على كل أجهزة الأطفال.',
   fallbackDeviceName: 'جهاز الطفل',
-  statusReady: 'الموقع جاهز',
   statusNeedLocation: 'بانتظار موقع جهاز الطفل',
   tabPlaces: 'الأماكن',
   tabActivity: 'نشاط',
@@ -22,8 +21,6 @@ export const placeAlerts = {
   editPlaceAccessibility: 'تعديل {{name}}',
   radiusLabel: 'نطاق التنبيه',
   radiusValue: '{{meters}} م',
-  radiusHint:
-    'مدى القرب المطلوب من الجهاز حتى يُحتسب هذا المكان. النطاق الأصغر من خطأ تحديد موقع الجهاز نفسه لا يجعل التنبيهات أدق — بل قد لا يُبلَّغ عن الوصول والمغادرة.',
   radiusAccuracyHint: 'يبلّغ هذا الجهاز عن موقعه هنا بدقة تقارب ±{{accuracy}} م.',
   radiusBelowAccuracy:
     'دقة الجهاز هنا لا تتجاوز نحو ±{{accuracy}} م. استخدم {{minimum}} م أو أكثر، وإلا فقد لا يُبلَّغ عن الوصول إلى هذا المكان ومغادرته.',
@@ -43,7 +40,6 @@ export const placeAlerts = {
   emptyEventsTitle: 'لا يوجد نشاط أماكن بعد',
   emptyEventsSubtitle:
     'عندما يدخل هذا الجهاز مكانًا محفوظًا أو يغادره، تظهر الأحداث هنا.',
-  emptyPlaces: 'اختر نقطة على الخريطة، سمّها، ثم احفظ. حتى {{max}} أماكن.',
   noLocationToast: 'يرجى انتظار تحديث الموقع من جهاز الطفل أولاً.',
   maxPlacesToast: 'يمكنك حفظ حتى {{max}} أماكن.',
   nameRequiredToast: 'يرجى إدخال اسم المكان.',

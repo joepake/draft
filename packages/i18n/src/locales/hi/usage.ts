@@ -2,12 +2,10 @@ export const usage = {
   title: 'उपयोग रिपोर्ट',
   fallbackDeviceName: 'बच्चे का डिवाइस',
   sectionToday: 'आज',
-  percentOfLimit: 'सीमा का {{percent}}%',
   reportedAt: '{{time}} पर अपडेट किया गया',
   statUsedLabel: 'इस्तेमाल किया गया',
   statLeftLabel: 'शेष',
   statLimitLabel: 'सीमा',
-  limitOff: 'बंद',
   insightDailyLimitReached: 'दैनिक सीमा पूरी हुई',
   insightNearDailyLimit: 'दैनिक सीमा के करीब',
   insightNoDailyLimit: 'दैनिक सीमा सेट नहीं है',
@@ -49,24 +47,21 @@ export const usage = {
   syncNoteTv:
     'यह टीवी समय-समय पर ही जानकारी भेजता है, इसलिए स्क्रीन टाइम को यहाँ पहुँचने में एक घंटे तक का समय लग सकता है — इंटरनेट कनेक्शन न होने पर और ज़्यादा।',
   sectionLast30Days: 'पिछले 30 दिन',
-  comparePeriodTotal: '30 दिन का कुल योग',
+  comparePeriodTotal: 'कुल',
   compareDayAvg: 'दैनिक औसत',
-  compareVsYesterday: 'कल की तुलना में',
+  compareVsYesterdaySameTime: 'कल इसी समय की तुलना में {{value}}',
   dayTodayShort: 'आज',
   chartEmpty: 'उपयोग चार्ट अभी उपलब्ध नहीं है।',
   chartNoDataYet:
     'जैसे-जैसे बच्चे का डिवाइस दैनिक उपयोग सिंक करता है, बार भरते जाते हैं। आज का डेटा लाइव मिनटों से अपडेट होता है।',
   chartDayNone: 'कोई उपयोग नहीं',
   bonusMinutesChip: '+{{minutes}} मिनट बोनस',
-  dailyLimitGuide: 'दैनिक सीमा {{duration}}',
-  sectionTopApps: 'सबसे ज़्यादा इस्तेमाल किए गए ऐप्स',
   topAppsHint:
     'बच्चे के डिवाइस पर आज सबसे ज़्यादा इस्तेमाल किए गए ऐप्स। स्क्रीन टाइम / उपयोग की पहुँच सिंक होने पर डेटा जमा होता जाता है।',
   topAppsExcludedNote:
     'स्क्रीनसेवर, होम स्क्रीन और खुद KidGate की स्क्रीन को इस्तेमाल के समय में नहीं गिना जाता। जब डिवाइस चालू हो लेकिन कोई उसे इस्तेमाल न कर रहा हो, तो वे मिनट “इस्तेमाल में नहीं” के रूप में दर्ज होते हैं।',
   topAppsAiNote:
     'कुछ श्रेणियाँ किसी ज्ञात ऐप से मिलान करके नहीं, बल्कि ऐप के नाम से अंदाज़ा लगाकर तय की गई हैं — इसलिए कुछ ग़लत हो सकती हैं।',
-  errorTitle: 'उपयोग लोड नहीं किया जा सका',
   errorDescription: 'कृपया अपना कनेक्शन जांचें और फिर से प्रयास करें।',
   tryAgain: 'फिर से प्रयास करें',
   // Shown only when the rating is known — it is 0 for much of the long
@@ -83,9 +78,10 @@ export const usage = {
   protectionBlockedApps: 'ऐप खोलने की रोकी गई कोशिशें',
   protectionWebBlocked: 'ब्लॉक की गई वेबसाइटें',
   protectionTamper: 'सुरक्षा अलर्ट',
-  sectionTimeline: 'कब इस्तेमाल हुआ',
+  sectionTimeline: 'स्क्रीन कब चालू थी',
   timelineUsed: 'इस्तेमाल में',
   timelineIdle: 'इस्तेमाल में नहीं',
+  idleRow: 'स्क्रीन चालू, इस्तेमाल में नहीं',
   timelineUnmeasured: 'मापा नहीं गया',
   timelineUnmeasuredHint:
     'KidGate डिवाइस पर चल नहीं रहा था, या डिवाइस सो रहा था। ये मिनट कुल में भी नहीं गिने जाते।',

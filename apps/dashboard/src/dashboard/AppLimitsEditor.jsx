@@ -22,7 +22,7 @@ const MINUTE_PRESETS = [15, 30, 45, 60, 90, 120];
  * different decision from "no TikTok".
  *
  * The bounds come from `@kidgate/schema/deviceControls` and the clamp from
- * `@kidgate/core/domain/appLimits`, shared with `AppLimitsScreen` since
+ * `@kidgate/core/domain/appLimits`, shared with `AppLimitsPanel` since
  * 2026-09-03. `APP_LIMIT_MAX_MINUTES` is a platform contract, not a
  * preference: Apple caps events per DeviceActivity activity, so a screen
  * clamping to its own number writes a limit iOS silently stops enforcing —

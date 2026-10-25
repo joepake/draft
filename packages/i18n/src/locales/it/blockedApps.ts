@@ -17,7 +17,7 @@ export const blockedApps = {
   installApprovalInfoLine2:
     'Ricevi una notifica e l’app compare qui sotto, in App bloccate, finché non la consenti.',
   installApprovalInfoLine3:
-    'Consentire un’app le permette di aprirsi subito. Un’app che non consenti resta semplicemente bloccata.',
+    'Un’app che consenti si apre entro un minuto su un dispositivo del bambino connesso. Un’app che non consenti resta bloccata.',
   installApprovalInfoLine1Ios:
     'Finché questa opzione è attiva, l’App Store è nascosto sul dispositivo del bambino, quindi non si possono installare nuove app.',
   installApprovalInfoLine2Ios:
@@ -39,13 +39,13 @@ export const blockedApps = {
   heroTitle: 'App selezionate per il blocco',
   heroSubtitle:
     'Queste app e categorie vengono selezionate sul dispositivo del bambino. KidGate sincronizza l’elenco qui per permetterti di controllarlo.',
-  toggleTitle: 'Abilita il blocco delle app',
+  toggleTitle: 'Abilita le App bloccate',
   toggleSubtitleOn: 'Le app selezionate sono bloccate sul dispositivo del bambino.',
   toggleSubtitleOff: 'Attiva per bloccare da remoto le app selezionate.',
-  toggleAccessibilityLabel: 'Abilita il blocco delle app',
+  toggleAccessibilityLabel: 'Abilita le App bloccate',
   emptyTitle: 'Nessuna app bloccata',
   emptySubtitle:
-    'Sul dispositivo del bambino apri le Impostazioni di KidGate, inserisci il PIN genitore, poi apri Blocco delle app → App bloccate e salva la selezione.',
+    'Blocca un’app da “App installate”. Su un iPhone, scegli le app sull’iPhone stesso.',
   emptySubtitleTv:
     'Sulla TV apri KidGate, seleziona “{{button}}”, inserisci il PIN genitore, poi scegli le app e salva.',
   sectionTitle: 'Elenco delle app bloccate',
@@ -54,11 +54,11 @@ export const blockedApps = {
     'Su iOS Apple potrebbe nascondere i nomi esatti delle app ai dispositivi dei genitori. Sugli altri dispositivi i nomi delle app selezionate vengono sincronizzati qui. Per modificare l’elenco è comunque necessario il PIN genitore sul dispositivo del bambino.',
   infoTitle: 'Come funziona',
   infoLine1:
-    'Seleziona le app sul dispositivo del bambino dopo aver inserito il PIN genitore.',
+    'Blocca le app da “App installate”. Su un iPhone, scegline sull’iPhone stesso con il PIN genitore.',
   infoLine2:
     'Il Blocco dispositivo, gli Orari di blocco e il Limite giornaliero continuano a bloccare tutte le app.',
   infoLine3:
-    'Puoi attivare o disattivare il blocco in qualsiasi momento da questa schermata.',
+    'Puoi attivare o disattivare il blocco in qualsiasi momento da questa schermata. Un dispositivo del bambino connesso riceve ogni modifica entro un minuto.',
   appKind: 'App',
   categoryKind: 'Categoria',
   websiteKind: 'Sito web',
@@ -73,7 +73,7 @@ export const blockedApps = {
   blockedAppsLabel: 'App bloccate',
   appsConfiguredChip: 'App configurate',
   appsNotSetChip: 'App non configurate',
-  appBlockingSectionTitle: 'Blocco delle app',
+  appBlockingSectionTitle: 'App bloccate',
   appBlockingSectionDescription:
     'Scegli quali app i genitori possono bloccare su questo dispositivo.',
   savedItemsForBlocking: '{{count}} elementi salvati per il blocco.',
@@ -81,9 +81,10 @@ export const blockedApps = {
   noAppsSelected: 'Nessuna app selezionata.',
   unableToOpenAppPicker: 'Impossibile aprire il selettore delle app. Riprova.',
   wizardStepPin: 'Inserisci il PIN genitore quando le Impostazioni lo chiedono.',
-  wizardStepChoose: 'Apri App bloccate in Blocco delle app, seleziona le app e salva.',
+  wizardStepChoose: 'Apri App bloccate, seleziona le app e salva.',
   pickerSubtitle: 'Scegli le app e le categorie da bloccare su questo dispositivo.',
   pickerSubtitleAndroid:
-    'Mentre il Blocco delle app è attivo, le app spuntate vengono chiuse appena si aprono.',
+    'Mentre le App bloccate sono attive, le app spuntate vengono chiuse appena si aprono.',
   pickerEmpty: 'Nessuna app trovata su questo dispositivo.',
+  blockingOffPill: 'App bloccate disattivate',
 } as const;

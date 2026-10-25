@@ -78,6 +78,11 @@ export const location = {
   childNoneOnline: 'Tidak ada perangkat online',
   childPickCarriedA11y:
     'Tandai {{deviceName}} sebagai perangkat yang dibawa {{childName}}',
+  carriedFrom: 'Lokasi dari {{deviceName}}',
+  changeCarried: 'Ganti perangkat',
+  carriedSuggestion: '{{deviceName}} mengirim lokasi {{time}}.',
+  useCarried: 'Gunakan {{deviceName}}',
+  carriedBadge: 'Dibawa',
   stayRange: '{{from}} – {{to}}',
   wizardStepAllow:
     'Pilih Izinkan, lalu Selalu agar pembaruan tetap berjalan di latar belakang.',

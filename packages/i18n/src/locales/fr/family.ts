@@ -102,7 +102,6 @@ export const family = {
     'Pointez la caméra vers le code d’un appareil enfant, une invitation familiale ou un code de connexion web.',
   manualCodeLabel: 'Saisissez le code à 6 caractères',
   manualInstructions: 'Saisissez le code à 6 caractères affiché sur l’autre appareil.',
-  headerHintEmpty: 'Gérez et protégez les appareils de vos enfants',
   familyCardManage: 'Gérer la famille, les parents et les appareils',
   familyCardJoined: 'Rejoint en tant que parent',
   chipDeviceCount: '{{count}} appareils',
@@ -123,8 +122,7 @@ export const family = {
   chipHealthWarnCount_one: '{{count}} à configurer',
   chipHealthInactiveCount: '{{count}} inactifs depuis plus de 24 h',
   chipLocationBlocked: 'Position non reçue',
-  chipBlockedCount: '{{count}} bloqués',
-  chipBlockedCount_one: '{{count}} bloqué',
+  chipBlockedCount: '{{count}} en Heures bloquées',
   healthProtected: 'Protégé',
   buildOutdated: 'Mise à jour disponible',
   healthNeedsSetup: 'Configuration requise',
@@ -145,7 +143,7 @@ export const family = {
   rulesPausedBehind: 'En pause — conserve un réglage antérieur',
   rulesTightenRefused:
     'Sur un appareil en pause, les règles ne peuvent qu’être assouplies, jamais renforcées. Passez à Premium pour changer cela sur tous les appareils.',
-  parkedBannerTitle: 'Choisissez l’appareil que vous continuez à suivre',
+  parkedBannerTitle: 'Choisissez l’appareil qui envoie ses rapports',
   parkedBannerBody:
     'Vos règles continuent de s’appliquer sur tous les appareils. L’offre gratuite reçoit les rapports d’un seul appareil et ne permet de renforcer les règles que là : choisissez cet appareil, ou passez à Premium pour les garder tous.',
   parkedBannerAction: 'Choisir l’appareil',
@@ -169,10 +167,10 @@ export const family = {
     'L’offre gratuite reçoit les rapports d’un seul appareil et ne permet de renforcer les règles que sur celui-ci, donc cet appareil démarre en pause.',
   pairingWillStartPaused:
     'L’offre gratuite reçoit les rapports d’un seul appareil et ne permet de renforcer les règles que sur celui-ci, donc le nouvel appareil démarrera en pause.',
-  chooseMonitoredTitle: 'Choisissez votre appareil principal',
+  chooseMonitoredTitle: 'Choisissez l’appareil qui envoie ses rapports',
   chooseMonitoredBody:
     'Toutes les règles restent actives sur tous. L’appareil que vous choisissez envoie le temps d’écran et la position, et c’est le seul dont vous pouvez encore renforcer les règles : sur les autres, vous ne pouvez plus que les assouplir. Vous pouvez changer d’appareil une fois tous les {{days}} jours.',
-  chooseMonitoredConfirm: 'Suivre cet appareil',
+  chooseMonitoredConfirm: 'Définir comme appareil qui envoie ses rapports',
   chooseMonitoredUpgrade: 'Garder tous les appareils : passer à Premium',
   chooseMonitoredDone: '{{name}} est désormais l’appareil qui envoie ses rapports',
   chooseMonitoredCurrent: 'Envoie actuellement ses rapports',
@@ -192,6 +190,9 @@ export const family = {
   emptyTitle: 'Aucun appareil d’enfant',
   emptyDescription:
     'Ajoutez l’appareil de votre enfant pour commencer à surveiller le temps d’écran et l’utilisation des applications.',
+
+  emptyPairSteps:
+    'Installez KidGate sur le téléphone, la tablette, la TV ou l’ordinateur de votre enfant, choisissez « Ceci est un appareil enfant » si on vous le demande, puis scannez le code affiché.',
 
   setupFamilyTitle: 'Configurer votre famille',
   createFamilyButton: 'Créer une famille',
@@ -219,15 +220,9 @@ export const family = {
   guestBenefitLocationBody:
     'Voyez où se trouve votre enfant et demandez-lui de confirmer qu’il est en sécurité.',
 
-  stepsHeading: 'Premiers pas',
-
   step1Title: 'Ouvrez KidGate sur l’appareil de l’enfant',
   step1Description:
     'Installez KidGate sur le téléphone, la tablette, la TV ou l’ordinateur de votre enfant. Sur un téléphone ou une tablette, choisissez « Ceci est un appareil enfant ». Un QR code et un code à 6 caractères s’affichent.',
-
-  step2Title: 'Appuyez ici sur « Ajouter un appareil d’enfant »',
-  step2Description:
-    'Scannez ce QR code avec ce téléphone, ou saisissez le code à 6 caractères.',
 
   connectChildButton: 'Connecter un appareil enfant',
   listHint: 'Faites glisser un appareil vers la gauche pour le supprimer',

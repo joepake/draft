@@ -12,7 +12,6 @@ export const activities = {
   fallbackDeviceName: '기기',
   fallbackChildName: '자녀',
   liveBadge: '실시간',
-  errorTitle: '활동을 불러올 수 없습니다',
   tryAgain: '다시 시도',
 
   emptyTitleAll: '아직 활동이 없습니다',
@@ -112,7 +111,7 @@ export const activities = {
 
   tamperAccessibilityTitle: '접근성 권한이 비활성화되었습니다',
   tamperAccessibilityBody:
-    '접근성 권한이 다시 활성화될 때까지 앱 차단 및 보호 기능이 정상적으로 작동하지 않을 수 있습니다.',
+    '접근성 권한이 다시 활성화될 때까지 “차단된 앱” 및 보호 기능이 정상적으로 작동하지 않을 수 있습니다.',
   tamperUsageAccessTitle: '앱 사용 정보 접근 권한이 꺼졌습니다',
   tamperUsageAccessBody:
     '자녀 기기에서 KidGate가 앱 사용 정보를 다시 읽을 수 있을 때까지 앱 사용 제한과 차단 시간이 작동하지 않을 수 있습니다.',

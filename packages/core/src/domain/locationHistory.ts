@@ -12,12 +12,41 @@ export function getLocationHistoryTitle(entry: LocationHistoryEntry): string {
   );
 }
 
-export function getLocationHistorySubtitle(entry: LocationHistoryEntry): string {
+/**
+ * `title` is the line the row prints above this one; the address loses the
+ * leading segments that repeat it (`addressBelowTitle`).
+ */
+export function getLocationHistorySubtitle(
+  entry: LocationHistoryEntry,
+  title?: string,
+): string {
   if (entry.address && entry.address !== entry.placeName) {
-    return entry.address;
+    return title ? addressBelowTitle(entry.address, title) : entry.address;
   }
 
   return `${entry.latitude.toFixed(5)}, ${entry.longitude.toFixed(5)}`;
+}
+
+/**
+ * An address to print under a title that may already be its first segment.
+ *
+ * HERE's `placeName` is usually the street and the address opens with the
+ * same street, so "Đường Ngõ Dâu" over "Đường Ngõ Dâu, Phường Trung Văn, …"
+ * said it twice on every row and on the hero (2026-10-24). Leading segments
+ * equal to the title go; the rest is the part the title does not say. Empty
+ * when nothing is left — the caller drops the line.
+ */
+export function addressBelowTitle(address: string, title: string): string {
+  const key = title.trim().toLocaleLowerCase();
+  const parts = address
+    .split(',')
+    .map(part => part.trim())
+    .filter(Boolean);
+  let start = 0;
+  while (start < parts.length && parts[start]?.toLocaleLowerCase() === key) {
+    start += 1;
+  }
+  return parts.slice(start).join(', ');
 }
 
 /**

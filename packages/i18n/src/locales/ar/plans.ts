@@ -79,6 +79,7 @@ export const plans = {
   footerLegalAndroid:
     'تتم الفوترة عبر Google Play. تتجدد الاشتراكات تلقائيًا إلى أن تلغيها من Google Play. أما الشراء لمرة واحدة فلا يتجدد ويظل ساريًا طوال توفر KidGate.',
   subscribeButton: 'الاشتراك في Premium',
+  buyLifetimeButton: 'شراء مدى الحياة',
   restoringPurchases: 'جارٍ الاستعادة…',
   restorePurchases: 'استعادة المشتريات',
   premiumDescription:
@@ -161,7 +162,7 @@ export const plans = {
   trustNoAds: 'بدون إعلانات',
   freePlanName: 'مجاني',
   freeDescription:
-    'تستمر الأساسيات في العمل على كل أجهزة الطفل، مع تقارير من جهاز واحد. ولا تنتهي صلاحيتها أبدًا.',
+    'تستمر قواعدك في العمل على كل أجهزة الطفل، ويواصل جهاز واحد إرسال التقارير. ولا تنتهي صلاحيتها أبدًا.',
   featureOneChildDevice: 'تقارير من جهاز طفل واحد',
   termLifetime: 'مدى الحياة',
   badgeOneTime: 'دفعة واحدة',
@@ -219,5 +220,7 @@ export const plans = {
   teaserProofParents: 'الوالدون: {{count}}',
   teaserParentCap:
     'هذا كل ما يمكن أن تضمّه العائلة من الوالدين دون Premium. Premium يسمح بضعف العدد.',
+  teaserApps:
+    'يتيح لك Premium حظر التطبيقات من هاتفك، ويخبرك عند تثبيت تطبيق أو إزالته.',
   teaserDeviceNote: 'الجهاز الذي تراقبه هو وحده الذي يرسل التقارير.',
 } as const;

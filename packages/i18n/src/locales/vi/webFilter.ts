@@ -66,7 +66,7 @@ export const webFilter = {
   privateDnsBannerBody:
     'DNS riêng tư đang bật nên Chặn nội dung web có thể bị bỏ qua. Vui lòng tắt để bộ lọc hoạt động.',
   privateDnsBannerButton: 'Mở cài đặt DNS',
-  vpnConsentBannerTitle: 'Bật lại VPN cho tính năng Chặn nội dung web',
+  vpnConsentBannerTitle: 'Bật lại VPN của KidGate',
   vpnConsentBannerBody:
     'VPN của KidGate đang tắt. Tính năng Chặn nội dung web cần VPN duy trì kết nối để hoạt động.',
   vpnConsentBannerButton: 'Bật VPN',
@@ -212,6 +212,7 @@ export const webFilter = {
   categoriesOnCount: 'Đang bật {{on}}/{{total}}',
   askToOpen: 'Xin bố mẹ',
   askToOpenSubtitle: 'Nếu bố mẹ đồng ý, trang này sẽ mở được.',
+  askToOpenHomeSubtitle: 'Xin bố mẹ mở một trang vừa bị chặn.',
   askToOpenDomainLabel: 'Trang nào?',
   askToOpenBlockedLabel: 'Vừa bị chặn',
   askToOpenPending: 'Con đã xin một trang rồi. Chờ bố mẹ trả lời nhé.',

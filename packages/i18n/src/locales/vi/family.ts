@@ -98,7 +98,6 @@ export const family = {
     'Hướng camera vào mã trên thiết bị của con, lời mời gia đình, hoặc mã đăng nhập web.',
   manualCodeLabel: 'Nhập mã gồm 6 ký tự',
   manualInstructions: 'Nhập mã gồm 6 ký tự hiển thị trên thiết bị kia.',
-  headerHintEmpty: 'Quản lý và bảo vệ thiết bị của trẻ',
   familyCardManage: 'Quản lý gia đình, phụ huynh và thiết bị',
   familyCardJoined: 'Đã tham gia với vai trò phụ huynh',
   chipDeviceCount: '{{count}} thiết bị',
@@ -113,7 +112,7 @@ export const family = {
   chipHealthWarnCount: '{{count}} cần thiết lập',
   chipHealthInactiveCount: '{{count}} mất kết nối quá 24 giờ',
   chipLocationBlocked: 'Không nhận được vị trí',
-  chipBlockedCount: '{{count}} đang bị chặn',
+  chipBlockedCount: '{{count}} đang trong Giờ khóa thiết bị',
   healthProtected: 'Đang được bảo vệ',
   buildOutdated: 'Có bản mới',
   healthNeedsSetup: 'Cần thiết lập',
@@ -133,7 +132,7 @@ export const family = {
   rulesPausedBehind: 'Ngừng báo cáo — vẫn giữ thiết lập cũ',
   rulesTightenRefused:
     'Thiết bị đang ngừng báo cáo chỉ nới lỏng được quy tắc, không siết chặt thêm được. Nâng cấp để đổi trên mọi máy.',
-  parkedBannerTitle: 'Chọn thiết bị để tiếp tục theo dõi',
+  parkedBannerTitle: 'Chọn thiết bị báo cáo',
   parkedBannerBody:
     'Quy tắc của bạn vẫn chạy trên mọi thiết bị. Gói miễn phí chỉ nhận báo cáo từ một máy và chỉ cho siết chặt quy tắc ở máy đó — hãy chọn máy, hoặc nâng cấp để giữ tất cả.',
   parkedBannerAction: 'Chọn thiết bị',
@@ -155,10 +154,10 @@ export const family = {
     'Gói miễn phí chỉ nhận báo cáo từ một máy và chỉ cho siết chặt quy tắc ở máy đó, nên thiết bị này bắt đầu ở trạng thái ngừng báo cáo.',
   pairingWillStartPaused:
     'Gói miễn phí chỉ nhận báo cáo từ một máy và chỉ cho siết chặt quy tắc ở máy đó, nên thiết bị mới sẽ bắt đầu ở trạng thái ngừng báo cáo.',
-  chooseMonitoredTitle: 'Chọn thiết bị chính',
+  chooseMonitoredTitle: 'Chọn thiết bị báo cáo',
   chooseMonitoredBody:
     'Mọi quy tắc vẫn hoạt động trên tất cả. Máy bạn chọn sẽ gửi thời gian sử dụng và vị trí, và là máy duy nhất bạn còn siết chặt được quy tắc — những máy còn lại chỉ nới lỏng được. Bạn có thể đổi máy mỗi {{days}} ngày một lần.',
-  chooseMonitoredConfirm: 'Theo dõi thiết bị này',
+  chooseMonitoredConfirm: 'Đặt làm thiết bị báo cáo',
   chooseMonitoredUpgrade: 'Giữ tất cả thiết bị — nâng cấp',
   chooseMonitoredDone: '{{name}} giờ là thiết bị báo cáo',
   chooseMonitoredCurrent: 'Đang báo cáo',
@@ -175,6 +174,8 @@ export const family = {
   emptyTitle: 'Chưa có thiết bị của trẻ',
   emptyDescription:
     'Thêm thiết bị của con để bắt đầu theo dõi thời gian sử dụng và các ứng dụng con dùng.',
+  emptyPairSteps:
+    'Cài KidGate trên điện thoại, máy tính bảng, TV hoặc máy tính mà trẻ dùng, chọn Đây là thiết bị của trẻ nếu được hỏi, rồi quét mã hiện ra.',
   setupFamilyTitle: 'Thiết lập gia đình',
   createFamilyButton: 'Tạo gia đình',
   joinFamilyButton: 'Tham gia gia đình',
@@ -192,12 +193,9 @@ export const family = {
   guestBenefitAlertsBody: 'Biết ngay khi có chuyện cần bạn để ý.',
   guestBenefitLocationTitle: 'Vị trí và Báo an toàn',
   guestBenefitLocationBody: 'Xem con đang ở đâu và nhờ con báo là con vẫn an toàn.',
-  stepsHeading: 'Các bước bắt đầu',
   step1Title: 'Mở KidGate trên thiết bị của trẻ',
   step1Description:
     'Cài KidGate trên điện thoại, máy tính bảng, TV hoặc máy tính mà trẻ dùng. Trên điện thoại hoặc máy tính bảng, chọn Đây là thiết bị của trẻ. Màn hình sẽ hiện mã QR và mã gồm 6 ký tự.',
-  step2Title: 'Chạm Thêm thiết bị của trẻ tại đây',
-  step2Description: 'Quét mã QR đó bằng điện thoại này, hoặc nhập mã gồm 6 ký tự.',
   connectChildButton: 'Kết nối thiết bị của trẻ',
   listHint: 'Vuốt sang trái để gỡ thiết bị',
   removeAlertTitle: 'Gỡ thiết bị?',

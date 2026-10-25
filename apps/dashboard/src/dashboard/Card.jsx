@@ -1,3 +1,5 @@
+import InfoTooltip from './InfoTooltip.jsx';
+
 /**
  * The dashboard's card.
  *
@@ -15,10 +17,16 @@
  * scrolls to `id` and flashes it; the id is the action's own
  * (`@kidgate/core/domain/deviceDetailActions`), so the two lists cannot drift.
  */
+/**
+ * `info` is the phone's `titleAccessory` `InfoTooltip`: what the card has to
+ * qualify, behind an ⓘ beside the title instead of a paragraph under it.
+ */
 export default function Card({
   id,
   title,
   subtitle,
+  info,
+  infoLabel,
   action,
   className = '',
   children,
@@ -28,7 +36,15 @@ export default function Card({
       {(title || action) && (
         <header className="card-head">
           <div>
-            {title && <h2>{title}</h2>}
+            {title &&
+              (info ? (
+                <div className="card-title">
+                  <h2>{title}</h2>
+                  <InfoTooltip text={info} label={infoLabel} />
+                </div>
+              ) : (
+                <h2>{title}</h2>
+              ))}
             {subtitle && <p>{subtitle}</p>}
           </div>
           {action}

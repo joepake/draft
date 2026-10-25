@@ -246,14 +246,16 @@ export const USER_GUIDE_TOPICS: UserGuideTopicConfig[] = [
     groupId: 'controls',
     icon: 'moon',
     stepCount: 6,
-    phoneSteps: [2, 4],
+    phoneSteps: [2, 3, 4],
   },
   {
     id: 'blockedApps',
     groupId: 'controls',
     icon: 'ban',
     stepCount: 7,
-    stepDevices: ['child', 'child', 'child', 'parent', 'parent', 'child', 'child'],
+    // Blocked from the parent's App list since 2026-10-24; steps 4 and 7 are
+    // the iPhone/PC picker that remains on the child device.
+    stepDevices: ['parent', 'parent', 'child', 'child', 'parent', 'child', 'child'],
     phoneSteps: [5],
   },
   {
@@ -276,7 +278,7 @@ export const USER_GUIDE_TOPICS: UserGuideTopicConfig[] = [
     groupId: 'controls',
     icon: 'apps',
     stepCount: 5,
-    phoneSteps: [1, 3, 4, 5],
+    phoneSteps: [1, 2, 3, 4, 5],
   },
   {
     id: 'pauseBrowsing',
@@ -315,6 +317,7 @@ export const USER_GUIDE_TOPICS: UserGuideTopicConfig[] = [
     groupId: 'safety',
     icon: 'userCheck',
     stepCount: 5,
+    phoneSteps: [2],
   },
   {
     id: 'sos',
@@ -337,7 +340,7 @@ export const USER_GUIDE_TOPICS: UserGuideTopicConfig[] = [
     groupId: 'safety',
     icon: 'shieldAlert',
     stepCount: 5,
-    phoneSteps: [5],
+    phoneSteps: [2, 4, 5],
   },
   {
     id: 'usageReports',
@@ -385,7 +388,7 @@ export const USER_GUIDE_TOPICS: UserGuideTopicConfig[] = [
     groupId: 'reports',
     icon: 'appInstall',
     stepCount: 5,
-    phoneSteps: [2, 4],
+    phoneSteps: [2, 3, 4],
   },
   {
     id: 'messageAlerts',

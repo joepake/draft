@@ -12,7 +12,7 @@ export const notifications = {
   sectionSummary: 'Riepilogo',
   sectionQuietHours: 'Ore silenziose',
   sectionQuietHoursHint:
-    'Durante questa fascia non viene inviato alcun avviso, e non ne verrà inviato nessuno in seguito. Gli eventi restano visibili in Attività. L’SOS non viene mai trattenuto, e gli Avvisi messaggi più gravi arrivano comunque.',
+    'In questa fascia arrivano solo l’SOS e gli Avvisi messaggi più gravi. Dopo non viene inviato nulla; gli eventi restano visibili in Attività.',
   quietHoursLabel: 'Ore silenziose',
   quietHoursOff: 'Disattivate — gli avvisi arrivano a qualsiasi ora',
   quietHoursActive: 'Nessun avviso inviato dalle {{start}} alle {{end}}',
@@ -32,7 +32,7 @@ export const notifications = {
   alert: {
     tamperAlerts: {
       label: 'Avvisi di protezione',
-      hint: 'Su un dispositivo del bambino è stato disattivato un permesso necessario a KidGate, sono stati modificati la data, l’ora o il fuso orario, oppure è stato premuto SOS mentre era bloccato. L’avviso SOS in sé arriva sempre.',
+      hint: 'Su un dispositivo del bambino viene disattivato un permesso necessario a KidGate, viene modificato l’orologio o il fuso orario, oppure viene premuto SOS mentre è bloccato.',
     },
     placeAlerts: {
       label: 'Avvisi sui luoghi',

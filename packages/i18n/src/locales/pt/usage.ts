@@ -2,12 +2,10 @@ export const usage = {
   title: 'Relatório de uso',
   fallbackDeviceName: 'Dispositivo da criança',
   sectionToday: 'Hoje',
-  percentOfLimit: '{{percent}}% do limite',
   reportedAt: 'Atualizado às {{time}}',
   statUsedLabel: 'Usado',
   statLeftLabel: 'Restante',
   statLimitLabel: 'Limite',
-  limitOff: 'Desativado',
   insightDailyLimitReached: 'Limite diário atingido',
   insightNearDailyLimit: 'Perto do Limite diário',
   insightNoDailyLimit: 'Sem Limite diário',
@@ -50,24 +48,21 @@ export const usage = {
   syncNoteTv:
     'Esta TV só se conecta periodicamente, então o tempo de uso pode levar até uma hora para aparecer nesta tela — mais tempo sem conexão com a internet.',
   sectionLast30Days: 'Últimos 30 dias',
-  comparePeriodTotal: 'Total de 30 dias',
+  comparePeriodTotal: 'Total',
   compareDayAvg: 'Média diária',
-  compareVsYesterday: 'vs. ontem',
+  compareVsYesterdaySameTime: '{{value}} em relação a ontem no mesmo horário',
   dayTodayShort: 'Hoje',
   chartEmpty: 'O gráfico de uso está indisponível no momento.',
   chartNoDataYet:
     'As barras são preenchidas à medida que o dispositivo da criança sincroniza o uso diário. A barra de hoje é atualizada com os minutos em tempo real.',
   chartDayNone: 'Sem uso',
   bonusMinutesChip: '+{{minutes}} min de bônus',
-  dailyLimitGuide: 'Limite diário {{duration}}',
-  sectionTopApps: 'Apps mais usados',
   topAppsHint:
     'Apps mais usados hoje no dispositivo da criança. Os dados se acumulam conforme o Tempo de tela / Acesso de uso sincroniza.',
   topAppsExcludedNote:
     'A proteção de tela, a tela inicial e a própria tela do KidGate não contam como tempo de uso. Quando o dispositivo está ligado mas ninguém está usando, esses minutos são registrados como “Sem uso”.',
   topAppsAiNote:
     'Alguns tipos foram deduzidos do nome do app em vez de corresponderem a um app conhecido, então alguns podem estar errados.',
-  errorTitle: 'Não foi possível carregar o uso',
   errorDescription: 'Verifique sua conexão e tente novamente.',
   tryAgain: 'Tentar novamente',
   // Shown only when the rating is known — it is 0 for much of the long
@@ -84,9 +79,10 @@ export const usage = {
   protectionBlockedApps: 'Aberturas de apps bloqueadas',
   protectionWebBlocked: 'Sites bloqueados',
   protectionTamper: 'Alertas de proteção',
-  sectionTimeline: 'Quando foi usado',
+  sectionTimeline: 'Quando a tela esteve ligada',
   timelineUsed: 'Em uso',
   timelineIdle: 'Sem uso',
+  idleRow: 'Tela ligada, sem uso',
   timelineUnmeasured: 'Não medido',
   timelineUnmeasuredHint:
     'O KidGate não estava em execução no dispositivo, ou o dispositivo estava suspenso. Esses minutos também não entram no total.',

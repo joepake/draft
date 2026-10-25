@@ -1,5 +1,4 @@
 export const appInventory = {
-  title: 'Bu cihazdaki uygulamalar',
   pendingTitle: 'Onayınız bekleniyor',
   pendingBadge: 'İzin verene kadar engelli',
   approvedBadge: 'Sizin tarafınızdan izin verildi',
@@ -15,7 +14,6 @@ export const appInventory = {
   newBadge: 'Yeni',
   ageBadge: '{{age}}+',
   browserExtension: 'Chrome uzantısı',
-  titleExtension: 'Bu tarayıcıdaki uzantılar',
   subtitleExtension:
     'KidGate’in tarayıcıda bulduğu tüm uzantılar, yalnızca değişenler değil.',
   summaryFlaggedExtension:
@@ -39,8 +37,17 @@ export const appInventory = {
   blockHint:
     'Bir uygulamayı engellemek için cihazın kendisinde Engellenen Uygulamalar’ı açın.',
   howItWorksLabel: 'Bu liste nasıl çalışır',
-  markSafe: 'Güvenli',
+  markSafe: 'Güvenli olarak işaretle',
   dismissedTitle: 'Güvenli olarak işaretledikleriniz',
   undoSafe: 'Geri al',
+  tabGeneral: 'Genel bakış',
+  searchPlaceholder: 'Uygulama ara',
+  searchEmpty: 'Eşleşen uygulama yok.',
+  blockedBadge: 'Engelli',
+  setLimit: 'Süre sınırı belirle',
+  editLimit: 'Süre sınırını değiştir',
   howToBlock: 'Nasıl engellenir',
+  blockApp: 'Engelle',
+  unblockApp: 'Engeli kaldır',
+  iosBlockOnDevice: 'iPhone’da uygulamalar doğrudan çocuğun iPhone’undan engellenir.',
 } as const;

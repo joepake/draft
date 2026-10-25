@@ -334,6 +334,8 @@ export interface ChildDeviceRecord {
   monitoringState?: DeviceMonitoringState;
   /** KidGate's own hold on this device. See `Device.operatorHold`. */
   operatorHold?: OperatorHold;
+  /** A parent's Blocks from the console. See `Device.parentBlockedApps`. */
+  parentBlockedApps?: string[];
   /** When this device became the monitored one, ISO. See `Device.monitoredChangedAt`. */
   monitoredChangedAt?: string;
   /** The trailing week's counts, child-written. See `DeviceWeekCounters`. */

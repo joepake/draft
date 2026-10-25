@@ -2,12 +2,10 @@ export const usage = {
   title: 'Kullanım Raporu',
   fallbackDeviceName: 'Çocuk cihazı',
   sectionToday: 'Bugün',
-  percentOfLimit: 'Sınırın %{{percent}}’i',
   reportedAt: '{{time}} güncellendi',
   statUsedLabel: 'Kullanılan',
   statLeftLabel: 'Kalan',
   statLimitLabel: 'Sınır',
-  limitOff: 'Kapalı',
   insightDailyLimitReached: 'Günlük sınıra ulaşıldı',
   insightNearDailyLimit: 'Günlük sınıra yaklaşıldı',
   insightNoDailyLimit: 'Günlük sınır ayarlanmadı',
@@ -49,24 +47,21 @@ export const usage = {
   syncNoteTv:
     'Bu TV yalnızca belirli aralıklarla bağlanır, bu yüzden ekran süresinin bu ekrana yansıması bir saate kadar sürebilir — internet bağlantısı yoksa bu süre daha da uzar.',
   sectionLast30Days: 'Son 30 gün',
-  comparePeriodTotal: '30 günlük toplam',
+  comparePeriodTotal: 'Toplam',
   compareDayAvg: 'Günlük ortalama',
-  compareVsYesterday: 'düne göre',
+  compareVsYesterdaySameTime: '{{value}} dün aynı saate göre',
   dayTodayShort: 'Bugün',
   chartEmpty: 'Kullanım grafiği şu anda kullanılamıyor.',
   chartNoDataYet:
     'Çocuğun cihazı günlük kullanımı senkronize ettikçe çubuklar dolar. Bugünün çubuğu, o anda sayılan dakikalarla güncellenir.',
   chartDayNone: 'Kullanım yok',
   bonusMinutesChip: '+{{minutes}} dk bonus',
-  dailyLimitGuide: 'Günlük sınır {{duration}}',
-  sectionTopApps: 'En çok kullanılan uygulamalar',
   topAppsHint:
     'Çocuğun cihazında bugün en çok kullanılan uygulamalar. Ekran Süresi / Kullanım Erişimi senkronize oldukça veriler birikir.',
   topAppsExcludedNote:
     'Ekran koruyucu, ana ekran ve KidGate’in kendi ekranı kullanım süresine sayılmaz. Cihaz açıkken kimse kullanmıyorsa, o dakikalar “Kullanılmıyor” olarak kaydedilir.',
   topAppsAiNote:
     'Bazı türler, bilinen bir uygulamayla eşleştirilmek yerine uygulamanın adına bakılarak tahmin edildi, bu yüzden birkaçı yanlış olabilir.',
-  errorTitle: 'Kullanım verisi yüklenemedi',
   errorDescription: 'Lütfen bağlantınızı kontrol edip tekrar deneyin.',
   tryAgain: 'Tekrar dene',
   // Shown only when the rating is known — it is 0 for much of the long
@@ -83,9 +78,10 @@ export const usage = {
   protectionBlockedApps: 'Engellenen uygulama açılışları',
   protectionWebBlocked: 'Engellenen web siteleri',
   protectionTamper: 'Koruma uyarıları',
-  sectionTimeline: 'Ne zaman kullanıldı',
+  sectionTimeline: 'Ekran ne zaman açıktı',
   timelineUsed: 'Kullanımda',
   timelineIdle: 'Kullanılmıyor',
+  idleRow: 'Ekran açık, kullanılmıyor',
   timelineUnmeasured: 'Ölçülmedi',
   timelineUnmeasuredHint:
     'KidGate cihazda çalışmıyordu ya da cihaz uykudaydı. O dakikalar toplama da dahil değil.',

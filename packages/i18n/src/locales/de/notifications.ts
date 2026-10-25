@@ -12,7 +12,7 @@ export const notifications = {
   sectionSummary: 'Zusammenfassung',
   sectionQuietHours: 'Ruhezeiten',
   sectionQuietHoursHint:
-    'In diesem Zeitraum werden keine Hinweise gesendet, und sie werden auch später nicht nachgeschickt. Ereignisse erscheinen weiterhin in den Aktivitäten. SOS wird nie zurückgehalten, und die schwerwiegendsten Nachrichtenwarnungen kommen trotzdem durch.',
+    'In diesem Zeitraum kommen nur SOS und die schwerwiegendsten Nachrichtenwarnungen durch. Danach wird nichts nachgeschickt; Ereignisse erscheinen weiterhin in den Aktivitäten.',
   quietHoursLabel: 'Ruhezeiten',
   quietHoursOff: 'Aus – Hinweise kommen jederzeit',
   quietHoursActive: 'Keine Hinweise von {{start}} bis {{end}}',
@@ -32,7 +32,7 @@ export const notifications = {
   alert: {
     tamperAlerts: {
       label: 'Schutzwarnungen',
-      hint: 'Auf einem Kindergerät wurde eine Berechtigung, die KidGate braucht, ausgeschaltet, Datum, Uhrzeit oder Zeitzone wurden geändert, oder SOS wurde gedrückt, während das Gerät gesperrt war. Der SOS-Alarm selbst kommt immer durch.',
+      hint: 'Eine Berechtigung, die KidGate braucht, wird auf einem Kindergerät ausgeschaltet, seine Uhrzeit oder Zeitzone wird geändert, oder SOS wird gedrückt, während es gesperrt ist.',
     },
     placeAlerts: {
       label: 'Ortsbenachrichtigungen',

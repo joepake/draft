@@ -2,6 +2,7 @@ export const report = {
   title: '週次レポート',
   subtitle: 'KidGate が今週見つけたこと。',
   weekOf: '第 {{week}} 週',
+  weekOfYear: '第 {{week}} 週 - {{year}}',
   range: '{{from}} – {{to}}',
   triggerScheduled: '月曜に送信',
   triggerManual: 'あなたが作成',
@@ -39,7 +40,7 @@ export const report = {
   findingBlockedApps:
     'ブロックしたアプリ起動は {{count}} 回。先週は {{previous}} 回でした。',
   findingBlockedWeb:
-    'フィルタしたサイトは {{count}} 件。先週は {{previous}} 件でした。',
+    'ブロックされたサイトへのアクセスは{{count}}回で、先週は{{previous}}回でした。',
   findingQuietWeek:
     '穏やかな一週間でした。合計 {{total}}、対応が必要なことはありません。',
 
@@ -52,7 +53,7 @@ export const report = {
   findingBlockedAppsDown:
     'ブロックされたアプリ起動は{{count}}回で、先週の{{previous}}回から減りました。',
   findingBlockedWebDown:
-    'フィルターされたサイトは{{count}}件で、先週の{{previous}}件から減りました。',
+    'ブロックされたサイトへのアクセスは{{count}}回で、先週の{{previous}}回から減りました。',
   findingLearningTime: '学習アプリの利用が{{duration}}、その多くは{{app}}でした。',
   findingTasksDone: 'お手伝いを{{count}}件達成し、{{bonus}}のボーナスを獲得しました。',
   findingAskedFirst: 'ルールを回避せず、{{count}}件のリクエストが送られました。',
@@ -98,7 +99,7 @@ export const report = {
   rateLimited:
     'まだ新しいレポートは作成できません。1 分ほどしてからもう一度お試しください。',
   loadFailedTitle: 'レポートを読み込めません',
-  loadFailed: 'レポートを開けませんでした。下に引いて再試行してください。',
+  loadFailed: 'レポートを開けませんでした。',
   failed: 'レポートを作成できませんでした。少し後にもう一度お試しください。',
 
   historyTitle: 'これまでの週',

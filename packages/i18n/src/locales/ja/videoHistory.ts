@@ -3,7 +3,9 @@ export const videoHistory = {
   fallbackDeviceName: '子どものデバイス',
   toggleLabel: '視聴した動画を記録',
   toggleHint:
-    'AndroidスマートフォンとテレビのYouTubeアプリ、およびKidGate拡張機能を入れたChromeで視聴した動画。テレビではShortsは表示されません。テレビ版アプリではShortsとして識別されないためです。',
+    'AndroidスマートフォンとテレビのYouTube、およびKidGate拡張機能を入れたChromeが対象です。',
+  tvShortsInfo:
+    'テレビではShortsは一覧に表示されません。テレビ版のYouTubeアプリがShortsとして識別しないためです。',
   toggleFailed: '動画履歴を更新できませんでした。もう一度お試しください。',
   unsupportedNote:
     'このデバイスは視聴した動画を報告できません。Android、Android TV、Chrome で動作します。',
@@ -23,7 +25,6 @@ export const videoHistory = {
   extensionStepEnable: 'そのデバイスで「視聴した動画を記録」をオンにする',
   emptyTitle: 'まだ視聴なし',
   emptyBody: 'KidGate が動作中にお子さまが視聴すると、動画がここに表示されます。',
-  emptyBodyOff: '視聴した動画を一覧するには、上の記録をオンにしてください。',
   viewsMeta_one: '{{count}} 回',
   viewsMeta: '{{count}} 回',
   dayToday: '今日',

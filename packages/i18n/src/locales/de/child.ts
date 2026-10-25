@@ -1,10 +1,5 @@
 export const child = {
   pageTitle: 'Status',
-  statusPaused: 'Gesperrt',
-  statusActive: 'Aktiv',
-  readyTitle: 'Alles bereit',
-  readyBody:
-    'Wenn du mehr Bildschirmzeit brauchst, kannst du oben eine Anfrage an deine Eltern senden. Im Notfall nutze die SOS-Taste.',
   setupCollapsedTitle: 'Einrichtung mit einem Elternteil abschließen',
   setupCollapsedRequiredCount: '{{count}} erforderliche Schritte',
   setupCollapsedRequiredCount_one: '{{count}} erforderlicher Schritt',

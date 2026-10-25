@@ -17,7 +17,7 @@ export const blockedApps = {
   installApprovalInfoLine2:
     'Bir bildirim alırsınız ve uygulama, siz izin verene kadar aşağıda, Engellenen Uygulamalar’da görünür.',
   installApprovalInfoLine3:
-    'Bir uygulamaya izin vermek onun hemen açılmasını sağlar. İzin vermediğiniz bir uygulama ise engelli kalmaya devam eder.',
+    'İzin verdiğiniz bir uygulama, bağlı bir çocuk cihazında bir dakika içinde açılır. İzin vermediğiniz bir uygulama engelli kalır.',
   installApprovalInfoLine1Ios:
     'Bu açıkken App Store çocuğun cihazında gizlenir, bu yüzden yeni uygulama yüklenemez.',
   installApprovalInfoLine2Ios:
@@ -39,13 +39,13 @@ export const blockedApps = {
   heroTitle: 'Engellenmek üzere seçilen uygulamalar',
   heroSubtitle:
     'Bu uygulamalar ve kategoriler çocuğun cihazında seçilir. KidGate, incelemeniz için listeyi buraya senkronize eder.',
-  toggleTitle: 'Uygulama Engellemeyi Etkinleştir',
+  toggleTitle: 'Engellenen Uygulamaları Etkinleştir',
   toggleSubtitleOn: 'Seçilen uygulamalar çocuğun cihazında engelleniyor.',
   toggleSubtitleOff: 'Seçilen uygulamaları uzaktan engellemek için açın.',
-  toggleAccessibilityLabel: 'Uygulama Engellemeyi Etkinleştir',
+  toggleAccessibilityLabel: 'Engellenen Uygulamaları Etkinleştir',
   emptyTitle: 'Henüz engellenen uygulama yok',
   emptySubtitle:
-    'Çocuğun cihazında KidGate Ayarları’nı açın, Ebeveyn PIN’ini girin, ardından Uygulama Engelleme → Engellenen Uygulamalar’ı açıp seçimi kaydedin.',
+    'Bir uygulamayı Yüklü uygulamalar bölümünden engelleyin. iPhone’da uygulamaları iPhone’un kendisinde seçin.',
   emptySubtitleTv:
     'TV’de KidGate’i açın, “{{button}}” düğmesini seçin, Ebeveyn PIN’ini girin, ardından uygulamaları seçip kaydedin.',
   sectionTitle: 'Engelleme listesi',
@@ -53,10 +53,12 @@ export const blockedApps = {
   privacySubtitle:
     'iOS’ta Apple, uygulamaların gerçek adlarını ebeveyn cihazlarından gizleyebilir. Diğer cihazlarda seçilen uygulama adları buraya senkronize edilir. Listeyi değiştirmek için yine de çocuğun cihazında Ebeveyn PIN’i gerekir.',
   infoTitle: 'Nasıl çalışır',
-  infoLine1: 'Ebeveyn PIN’ini girdikten sonra uygulamaları çocuğun cihazında seçin.',
+  infoLine1:
+    'Uygulamaları Yüklü uygulamalar bölümünden engelleyin. iPhone’da bunları Ebeveyn PIN’i ile iPhone’un kendisinde seçin.',
   infoLine2:
     'Kilit, Engellenen Saatler ve Günlük Limit yine tüm uygulamaları engeller.',
-  infoLine3: 'Engellemeyi bu ekrandan istediğiniz zaman açıp kapatabilirsiniz.',
+  infoLine3:
+    'Engellemeyi bu ekrandan istediğiniz zaman açıp kapatabilirsiniz. Bağlı bir çocuk cihazı her değişikliği bir dakika içinde alır.',
   appKind: 'Uygulama',
   categoryKind: 'Kategori',
   websiteKind: 'Web sitesi',
@@ -71,7 +73,7 @@ export const blockedApps = {
   blockedAppsLabel: 'Engellenen Uygulamalar',
   appsConfiguredChip: 'Uygulamalar ayarlandı',
   appsNotSetChip: 'Uygulamalar ayarlanmadı',
-  appBlockingSectionTitle: 'Uygulama Engelleme',
+  appBlockingSectionTitle: 'Engellenen Uygulamalar',
   appBlockingSectionDescription:
     'Ebeveynlerin bu cihazda hangi uygulamaları engelleyebileceğini seçin.',
   savedItemsForBlocking: 'Engelleme için {{count}} öğe kaydedildi.',
@@ -80,9 +82,10 @@ export const blockedApps = {
   unableToOpenAppPicker: 'Uygulama seçici açılamadı. Lütfen tekrar deneyin.',
   wizardStepPin: 'Ayarlar sorduğunda ebeveyn PIN’ini girin.',
   wizardStepChoose:
-    'Uygulama Engelleme altında Engellenen Uygulamalar’ı açın, uygulamaları işaretleyin ve kaydedin.',
+    'Engellenen Uygulamalar’ı açın, uygulamaları işaretleyin ve kaydedin.',
   pickerSubtitle: 'Bu cihazda engellenecek uygulamaları ve kategorileri seçin.',
   pickerSubtitleAndroid:
-    'Uygulama Engelleme açıkken işaretli uygulamalar açılır açılmaz kapatılır.',
+    'Engellenen Uygulamalar açıkken işaretli uygulamalar açılır açılmaz kapatılır.',
   pickerEmpty: 'Bu cihazda uygulama bulunamadı.',
+  blockingOffPill: 'Engellenen Uygulamalar kapalı',
 } as const;

@@ -184,7 +184,7 @@ export default {
       'Pasang KidGate di ponsel anak Anda dan sambungkan dengan memindai kode QR. Kurang dari satu menit.',
     step3Title: 'Tetapkan aturan Anda',
     step3Text:
-      'Pilih Batas harian dan Jam Diblokir, lalu nyalakan lokasi dan pemblokiran aplikasi dari ponsel Anda sendiri. Aplikasi yang akan diblokir dipilih sekali di perangkat anak Anda, dengan PIN Orang Tua Anda.',
+      'Pilih Batas harian dan Jam Diblokir, lalu nyalakan lokasi dan Aplikasi yang Diblokir dari ponsel Anda sendiri. Aplikasi yang akan diblokir dipilih sekali di perangkat anak Anda, dengan PIN Orang Tua Anda.',
 
     whyEyebrow: 'Mengapa KidGate',
     whyTitle: 'Dibangun untuk kepercayaan, bukan pengawasan',
@@ -246,8 +246,8 @@ export default {
     faqMore: 'Masih ada pertanyaan? Kunjungi Dukungan',
 
     ctaTitle: 'Mulai lindungi keluarga Anda hari ini',
-    ctaSub: 'Uji coba gratis 7 hari dengan akses penuh.',
-    ctaNote: 'Batalkan kapan saja lewat App Store atau Google Play.',
+    ctaSub: 'Uji coba gratis 7 hari dengan akses penuh. Tidak perlu kartu.',
+    ctaNote: 'Setelah berakhir, aturan Anda tetap berjalan di paket gratis.',
   },
 
   login: {
@@ -463,8 +463,7 @@ export default {
     save: 'Simpan',
 
     unlockTitle: 'Perubahan sedang terkunci.',
-    unlockBody:
-      'Melihat data langsung bisa. Untuk mengunci perangkat, mengubah batas, atau menyetujui permintaan, buka kunci browser ini dengan PIN Orang Tua — atau setujui dengan memindai kode QR lewat aplikasi KidGate. Check-In tetap bisa dikirim dalam kedua cara.',
+    unlockBody: 'Anda tetap bisa melihat semuanya dan mengirim Check-In.',
     unlockCta: 'Buka kunci perubahan',
     unlockToChange: 'Buka kunci perubahan dulu',
     refresh: 'Muat ulang',
@@ -504,9 +503,6 @@ export default {
     tileDeltaDown: '↓ {{percent}}% dibanding rata-rata 7 hari',
     tileBlocked: 'Upaya diblokir',
     tileBlockedMeta: 'Aplikasi yang dihentikan sejak pemasangan',
-    tileSites: 'Situs disaring',
-    tileCategoriesHit: '{{count}} kategori terkena',
-    tileNothingBlocked: 'Belum ada yang diblokir',
     tileAttention: 'Butuh perhatian',
     tileOpenItems: 'Item terbuka di bawah',
     tileAllClear: 'Semua aman',
@@ -562,8 +558,6 @@ export default {
     blockingLabel: 'Pemblokiran',
     appsBlocked: 'Aplikasi diblokir',
     categories: 'Kategori',
-    perAppHint:
-      'Batas tiap aplikasi berjalan terpisah dari daftar blokir — “30 menit TikTok” adalah keputusan yang berbeda dari “tidak ada TikTok”.',
     limitsMax: 'Satu perangkat paling banyak membatasi {{max}} aplikasi.',
     perDay: '{{value}}/hari',
     webActivityTitle: 'Aktivitas web',
@@ -589,12 +583,10 @@ export default {
     colVideo: 'Video',
     colChannel: 'Kanal',
     colViews: 'Tontonan',
-    filterRefusedTitle: 'Yang ditolak penyaring',
+    filterRefusedTitle: 'Yang diblokir penyaring',
     filterRefusedSub: '{{count}} permintaan diblokir, 7 hari terakhir',
     filterHintIos:
       'iPhone atau iPad ini hanya menyaring dengan kontrol konten dewasa milik Apple. Perbarui KidGate di perangkat itu dan izinkan VPN KidGate untuk memblokir per kategori.',
-    filterHintAndroid: 'Kategori ditegakkan oleh penyaring DNS di perangkat.',
-
     locationTitle: 'Lokasi',
     locationUpdated: 'Diperbarui {{when}}',
     locationWaiting: 'Menunggu pembaruan pertama',
@@ -645,7 +637,7 @@ export default {
     rowAppBlocking: 'Aplikasi yang Diblokir',
     rowAppBlockingDesc: '{{apps}} · {{categories}}',
     rowWebFilter: 'Filter web',
-    rowWebFilterDesc: '{{count}} kategori ditolak',
+    rowWebFilterDesc: '{{count}} kategori diblokir',
     rowNotSupported: 'Tidak didukung di perangkat ini',
     rowLocation: 'Berbagi lokasi',
     rowLocationDesc: 'Pembaruan terakhir {{when}}',
@@ -657,7 +649,7 @@ export default {
     webFilterCatsTitle: 'Kategori Filter web',
     webFilterCatsSub: 'Jenis konten yang diblokir',
     dnsHint:
-      'Resolver DNS terenkripsi selalu ditolak selama penyaring berjalan — membiarkannya terjangkau justru yang memungkinkan browser melewati semua kategori lain.',
+      'DNS terenkripsi selalu diblokir selama penyaring berjalan, sehingga browser tidak bisa menghindarinya.',
     starChartTitle: 'Papan bintang',
     starChartSub: 'Bintang yang dikumpulkan minggu ini, per anak',
     starChartEmpty: 'Tambahkan anak kedua di aplikasi untuk memulai papan bintang.',
@@ -699,7 +691,7 @@ export default {
     shareFailed: 'Tidak dapat menyimpan dari browser ini. Salin ringkasannya saja.',
     emptyBody:
       'Dengan Premium, laporan datang setiap Senin pagi dan mencakup tujuh hari sebelumnya. Anda juga bisa menulis laporan minggu ini dari aplikasi KidGate di ponsel Anda.',
-    loadFailed: 'Laporan tidak dapat dibuka. Muat ulang halaman untuk mencoba lagi.',
+    loadFailed: 'Laporan tidak dapat dibuka.',
     retryLoad: 'Coba lagi',
     existed: 'Minggu ini sudah punya laporan — ini dia.',
   },
@@ -764,7 +756,7 @@ export default {
 
     faq9Q: 'Bagaimana cara memblokir aplikasi tertentu?',
     faq9A:
-      'Pemilihan aplikasi dilakukan di perangkat anak: buka *KidGate → Pengaturan*, ketuk *Buka kunci dengan PIN Orang Tua*, buka *Aplikasi yang Diblokir*, pilih aplikasinya, lalu simpan. Setelah itu, di perangkat orang tua, buka layar *Aplikasi yang Diblokir* milik perangkat itu dan nyalakan *Aktifkan Pemblokiran Aplikasi*. Di iOS, Apple mungkin menyembunyikan nama aplikasi yang persis dari perangkat orang tua — itu batasan platform.',
+      'Di perangkat orang tua, buka *Aplikasi* milik anak Anda, lalu *Aplikasi terpasang*, ketuk sebuah aplikasi dan pilih *Blokir*. Di iPhone, aplikasi dipilih langsung di iPhone itu: buka *KidGate → Pengaturan*, ketuk *Buka kunci dengan PIN Orang Tua*, buka *Aplikasi yang Diblokir*, pilih aplikasinya, lalu simpan. Setelah itu nyalakan *Aktifkan Aplikasi yang Diblokir* di perangkat orang tua. Perangkat anak yang terhubung menerima setiap perubahan dalam satu menit. Di iOS, Apple mungkin menyembunyikan nama aplikasi yang persis dari perangkat orang tua.',
 
     faq10Q: 'Kenapa lokasi anak saya tidak diperbarui?',
     faq10A:

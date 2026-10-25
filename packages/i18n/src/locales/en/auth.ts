@@ -1,6 +1,6 @@
 export const auth = {
-  welcomeBack: 'Welcome back',
-  loginSubtitle: 'Sign in to manage and protect your child devices.',
+  welcomeBack: 'Sign in to KidGate',
+  loginSubtitle: 'Manage and protect your child devices.',
   emailSignInTitle: 'Sign in with email',
   emailSignInSubtitle: 'Use your parent email and password.',
   createAccountTitle: 'Create parent account',

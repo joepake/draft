@@ -2,6 +2,7 @@ export const report = {
   title: '주간 리포트',
   subtitle: 'KidGate가 이번 주에 확인한 내용입니다.',
   weekOf: '{{week}}주 차',
+  weekOfYear: '{{week}}주 차 - {{year}}',
   range: '{{from}} – {{to}}',
   triggerScheduled: '월요일에 발송',
   triggerManual: '직접 생성',
@@ -37,7 +38,8 @@ export const report = {
   findingLimitHit: '일일 제한({{limit}})에 {{count}}일 도달했습니다.',
   findingBlockedApps:
     '차단된 앱 실행 {{count}}건, 지난주에는 {{previous}}건이었습니다.',
-  findingBlockedWeb: '필터된 사이트 {{count}}건, 지난주에는 {{previous}}건이었습니다.',
+  findingBlockedWeb:
+    '차단된 사이트 방문 {{count}}회, 지난주에는 {{previous}}회였습니다.',
   findingQuietWeek: '조용한 한 주였습니다. 모두 {{total}}, 손댈 일은 없었습니다.',
 
   // 보고서의 긍정적인 절반. 무슨 일이 있었는지와 그 근거가 되는 숫자만
@@ -49,7 +51,7 @@ export const report = {
   findingBlockedAppsDown:
     '차단된 앱 실행 {{count}}회로, 지난주 {{previous}}회에서 줄었습니다.',
   findingBlockedWebDown:
-    '필터링된 사이트 {{count}}개로, 지난주 {{previous}}개에서 줄었습니다.',
+    '차단된 사이트 방문 {{count}}회로, 지난주 {{previous}}회에서 줄었습니다.',
   findingLearningTime: '학습 앱에 {{duration}}, 대부분 {{app}}입니다.',
   findingTasksDone: '과제 {{count}}개를 완료해 {{bonus}}를 받았습니다.',
   findingAskedFirst: '규칙을 우회하지 않고 {{count}}번 요청을 보냈습니다.',
@@ -94,7 +96,7 @@ export const report = {
     '지난 2주 동안 기록된 스크린 타임이 없어 아직 알려 드릴 내용이 없습니다. 오프라인 상태인 기기는 아무것도 보고하지 않으며, 그것은 조용한 한 주와는 다릅니다.',
   rateLimited: '아직 다른 리포트를 작성할 수 없습니다. 1분 뒤에 다시 시도하세요.',
   loadFailedTitle: '리포트를 불러오지 못함',
-  loadFailed: '리포트를 열지 못했습니다. 아래로 당겨 다시 시도하세요.',
+  loadFailed: '리포트를 열지 못했습니다.',
   failed: '리포트를 작성하지 못했습니다. 잠시 후 다시 시도하세요.',
 
   historyTitle: '지난 주간 리포트',

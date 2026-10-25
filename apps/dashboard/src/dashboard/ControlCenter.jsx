@@ -58,8 +58,6 @@ import { resolveControlCardStatus } from '@kidgate/core/domain/deviceControlStat
 export const ACTION_TAB = {
   'daily-limit': 'screen',
   schedule: 'screen',
-  'app-blocking': 'apps',
-  'app-limits': 'apps',
   'reward-tasks': 'controls',
   /* Safety, where the check-in HISTORY is. It pointed at Overview, which holds
      no check-in card at all — and the header's Check in button is on every
@@ -184,7 +182,9 @@ export default function ControlCenter({
       {sections.map(section => (
         <div className="control-section" key={section.title}>
           <h3 className="control-section-title">{section.title}</h3>
-          <p className="control-section-sub">{section.subtitle}</p>
+          {section.subtitle && (
+            <p className="control-section-sub">{section.subtitle}</p>
+          )}
           <div className="control-grid">
             {section.actions.map((action, i) => {
               const can = supported(action);
@@ -234,7 +234,12 @@ export default function ControlCenter({
                       )}
                     </span>
                   )}
-                  <em>{can ? action.description : unavailableLabel}</em>
+                  {/* No description under an unset Daily Limit: "Set Daily
+                      Limit" repeated the card's own button, as on the phone. */}
+                  {action.id === 'daily-limit' &&
+                  status?.valueKey === 'shared.notSet' ? null : (
+                    <em>{can ? action.description : unavailableLabel}</em>
+                  )}
                   {status && (
                     <span className="control-card-cta">
                       {appT(status.actionLabelKey)}

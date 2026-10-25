@@ -25,7 +25,7 @@ export function appLimitUsedMinutes(
  * A parent's typed or dragged number, folded into what may be stored.
  *
  * Here rather than in each parent screen because there are two of them now —
- * `apps/mobile`'s `AppLimitsScreen` and `apps/dashboard` — and the bounds are a
+ * `apps/mobile`'s `AppLimitsPanel` and `apps/dashboard` — and the bounds are a
  * platform contract, not a preference: `APP_LIMIT_MAX_MINUTES` exists because
  * iOS caps events per DeviceActivity activity, and a screen that clamped to its
  * own number would write a limit the device silently refuses to enforce.

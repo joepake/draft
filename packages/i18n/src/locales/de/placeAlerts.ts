@@ -4,7 +4,6 @@ export const placeAlerts = {
   mergedFromDevices:
     'Zusammengeführt aus den vorhandenen Orten jedes Geräts. Beim Speichern gilt diese eine Liste für alle Kindergeräte.',
   fallbackDeviceName: 'Kindergerät',
-  statusReady: 'Standort bereit',
   statusNeedLocation: 'Warte auf den Standort des Kindergeräts',
   tabPlaces: 'Orte',
   tabActivity: 'Aktivität',
@@ -22,8 +21,6 @@ export const placeAlerts = {
   editPlaceAccessibility: '{{name}} bearbeiten',
   radiusLabel: 'Alarmradius',
   radiusValue: '{{meters}} m',
-  radiusHint:
-    'Wie nah das Gerät sein muss, damit dieser Ort zählt. Ein Radius, der kleiner ist als die Positionsungenauigkeit des Geräts, macht Alarme nicht genauer – Ankunft und Verlassen werden dann womöglich gar nicht gemeldet.',
   radiusAccuracyHint:
     'Dieses Gerät gibt seine Position hier auf etwa ±{{accuracy}} m genau an.',
   radiusBelowAccuracy:
@@ -44,8 +41,6 @@ export const placeAlerts = {
   emptyEventsTitle: 'Noch keine Ortsaktivität',
   emptyEventsSubtitle:
     'Wenn dieses Gerät einen gespeicherten Ort betritt oder verlässt, erscheinen hier Ereignisse.',
-  emptyPlaces:
-    'Wähle einen Punkt auf der Karte, benenne ihn und speichere. Bis zu {{max}} Orte.',
   noLocationToast:
     'Bitte warte zuerst auf eine Standortaktualisierung vom Kindergerät.',
   maxPlacesToast: 'Du kannst bis zu {{max}} Orte speichern.',

@@ -215,6 +215,7 @@ export const webFilter = {
   categoriesOnCount: '{{on}} dari {{total}} aktif',
   askToOpen: 'Minta izin orang tua',
   askToOpenSubtitle: 'Kalau diizinkan, situs ini akan terbuka.',
+  askToOpenHomeSubtitle: 'Minta orang tuamu membuka situs yang diblokir.',
   askToOpenDomainLabel: 'Situs yang mana?',
   askToOpenBlockedLabel: 'Baru saja diblokir',
   askToOpenPending: 'Kamu sudah meminta satu situs. Tunggu jawabannya.',

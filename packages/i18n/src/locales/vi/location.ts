@@ -74,6 +74,11 @@ export const location = {
   childDevicesOnline: '{{online}}/{{total}} thiết bị đang trực tuyến',
   childNoneOnline: 'Không có thiết bị nào trực tuyến',
   childPickCarriedA11y: 'Đánh dấu {{deviceName}} là thiết bị {{childName}} mang theo',
+  carriedFrom: 'Vị trí lấy từ {{deviceName}}',
+  changeCarried: 'Đổi máy',
+  carriedSuggestion: '{{deviceName}} đã gửi vị trí {{time}}.',
+  useCarried: 'Dùng {{deviceName}}',
+  carriedBadge: 'Mang theo',
   stayRange: '{{from}} – {{to}}',
   wizardStepAllow:
     'Chạm Cho phép, rồi chọn Luôn luôn để vị trí vẫn cập nhật khi chạy nền.',

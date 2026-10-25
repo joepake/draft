@@ -1,5 +1,4 @@
 export const appInventory = {
-  title: 'Applications sur cet appareil',
   pendingTitle: 'En attente de votre approbation',
   pendingBadge: 'Bloquée jusqu’à ce que vous l’autorisiez',
   approvedBadge: 'Autorisée par vous',
@@ -16,7 +15,6 @@ export const appInventory = {
   newBadge: 'Nouveau',
   ageBadge: '{{age}}+',
   browserExtension: 'Extension Chrome',
-  titleExtension: 'Extensions de ce navigateur',
   subtitleExtension:
     'Toutes les extensions que KidGate a trouvées dans le navigateur, pas seulement les changements.',
   summaryFlaggedExtension:
@@ -42,8 +40,18 @@ export const appInventory = {
   blockHint:
     'Pour bloquer une application, ouvrez Applications bloquées sur l’appareil lui-même.',
   howItWorksLabel: 'Comment fonctionne cette liste',
-  markSafe: 'Sans risque',
+  markSafe: 'Marquer sans risque',
   dismissedTitle: 'Marquées sans risque par vous',
   undoSafe: 'Annuler',
+  tabGeneral: 'Aperçu',
+  searchPlaceholder: 'Rechercher une application',
+  searchEmpty: 'Aucune application ne correspond.',
+  blockedBadge: 'Bloquée',
+  setLimit: 'Définir une limite de temps',
+  editLimit: 'Modifier la limite de temps',
   howToBlock: 'Comment bloquer',
+  blockApp: 'Bloquer',
+  unblockApp: 'Débloquer',
+  iosBlockOnDevice:
+    'Sur un iPhone, les applications se bloquent depuis l’iPhone de l’enfant lui-même.',
 } as const;

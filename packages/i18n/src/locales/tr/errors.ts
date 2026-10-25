@@ -100,6 +100,7 @@ export const errors = {
     'Bu aile, KidGate’in kapsadığı cihaz sayısına ulaştı. Artık kullanmadığınız bir cihazı kaldırın, ardından tekrar deneyin.',
   rewardTaskLimitReached:
     'Aynı anda izin verilen sayıda etkin görev zaten var. Birini kaldırın ya da biri tamamlanana kadar bekleyin, ardından tekrar deneyin.',
+  rewardTaskAlreadyDone: 'Bu görev zaten tamamlandı olarak bildirildi.',
   deviceNotPaired:
     'Bu cihaz artık ailene bağlı değil. Ailenden cihazı yeniden eşleştirmesini iste.',
   bonusMinutesOutOfRange:

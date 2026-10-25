@@ -17,6 +17,7 @@ export const childReport = {
   heroAtLeast: '≥ {{value}}',
   heroRange: '{{low}} – {{high}}',
   heroRangeNote: 'رقم تقديري — أحد الأجهزة يذكر مدة الاستخدام دون أن يذكر وقته.',
+  barsExplain: 'الدقيقة على جهازين في وقت واحد تُحتسب دقيقتين عند جمع الأجهزة.',
   heroEmpty: 'لا يوجد استخدام مسجّل بعد',
 
   trendUp: 'أكثر بمقدار {{value}} عن الفترة السابقة',

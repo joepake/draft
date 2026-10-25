@@ -1,5 +1,4 @@
 export const appInventory = {
-  title: 'Aplikasi di perangkat ini',
   pendingTitle: 'Menunggu persetujuan Anda',
   pendingBadge: 'Diblokir sampai Anda mengizinkannya',
   approvedBadge: 'Diizinkan oleh Anda',
@@ -15,7 +14,6 @@ export const appInventory = {
   newBadge: 'Baru',
   ageBadge: '{{age}}+',
   browserExtension: 'Ekstensi Chrome',
-  titleExtension: 'Ekstensi di browser ini',
   subtitleExtension:
     'Semua ekstensi yang ditemukan KidGate di browser, bukan hanya yang berubah.',
   summaryFlaggedExtension: '{{flagged}} dari {{total}} ekstensi Chrome perlu dilihat',
@@ -40,8 +38,17 @@ export const appInventory = {
   blockHint:
     'Untuk menghentikan aplikasi, buka Aplikasi yang Diblokir di perangkat itu sendiri.',
   howItWorksLabel: 'Cara kerja daftar ini',
-  markSafe: 'Aman',
+  markSafe: 'Tandai aman',
   dismissedTitle: 'Ditandai aman oleh Anda',
   undoSafe: 'Urungkan',
+  tabGeneral: 'Ringkasan',
+  searchPlaceholder: 'Cari aplikasi',
+  searchEmpty: 'Tidak ada aplikasi yang cocok.',
+  blockedBadge: 'Diblokir',
+  setLimit: 'Atur batas waktu',
+  editLimit: 'Ubah batas waktu',
   howToBlock: 'Cara memblokir',
+  blockApp: 'Blokir',
+  unblockApp: 'Buka blokir',
+  iosBlockOnDevice: 'Di iPhone, aplikasi diblokir langsung dari iPhone anak.',
 } as const;

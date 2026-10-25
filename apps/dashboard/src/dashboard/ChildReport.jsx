@@ -7,6 +7,7 @@ import {
   THIN_COVERAGE,
   childDeviceShares,
   childTopApps,
+  dailyMeanMinutes,
   joinedOnDay,
   lateNightHits,
   otherAppsMinutes,
@@ -208,12 +209,9 @@ export default function ChildReport({
    * a child whose agent was dead on four of seven days has a three-day average.
    * Never for a one-day window, where it would restate the hero.
    */
-  const dailyAverage =
-    days <= 1 || totals.days.length === 0
-      ? null
-      : Math.round(
-          (totals.screenOnMinutes ?? totals.screenOnLowMinutes) / totals.days.length,
-        );
+  // `dailyMeanMinutes` — the phone's tile and bar line share it (2026-10-24).
+  const mean = days <= 1 ? null : dailyMeanMinutes(totals.days);
+  const dailyAverage = mean === null ? null : Math.round(mean);
 
   const lateNightDates = useMemo(
     () => lateNightHits(totals.days).map(hit => hit.date),
@@ -502,8 +500,13 @@ export default function ChildReport({
           </div>
         )}
 
-        {/* No overlap sentence under the bars — the longer one is labelled
-            "all devices added up", which is the explanation (2026-10-23). */}
+        {/* Why the two bars differ, as on the phone: the one hero caveat the
+            operator kept (2026-10-23). */}
+        {hasUsage &&
+          totals.deviceMinutes >
+            (totals.screenOnMinutes ?? totals.screenOnLowMinutes) && (
+            <p className="creport-hero-note">{appT('childReport.barsExplain')}</p>
+          )}
 
         {/* A well per figure there is. Late nights from one up: a well for
             "0" was the loudest thing in the hero for a fact that is not news. */}

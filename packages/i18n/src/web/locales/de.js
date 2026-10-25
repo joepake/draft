@@ -185,7 +185,7 @@ export default {
       'Installiere KidGate auf dem Handy deines Kindes und verbinde es per QR-Code. Unter einer Minute.',
     step3Title: 'Lege deine Regeln fest',
     step3Text:
-      'Wähle ein Tageslimit und Sperrzeiten und schalte Standort und App-Blockierung von deinem eigenen Handy aus ein. Welche Apps blockiert werden, wählst du einmal auf dem Gerät deines Kindes aus, mit deiner Eltern-PIN.',
+      'Wähle ein Tageslimit und Sperrzeiten und schalte Standort und „Blockierte Apps“ von deinem eigenen Handy aus ein. Welche Apps blockiert werden, wählst du einmal auf dem Gerät deines Kindes aus, mit deiner Eltern-PIN.',
 
     whyEyebrow: 'Warum KidGate',
     whyTitle: 'Für Vertrauen gebaut, nicht für Überwachung',
@@ -247,8 +247,8 @@ export default {
     faqMore: 'Noch Fragen? Zum Support',
 
     ctaTitle: 'Schütze deine Familie ab heute',
-    ctaSub: '7 Tage kostenlose Testphase mit vollem Zugriff.',
-    ctaNote: 'Jederzeit im App Store oder bei Google Play kündbar.',
+    ctaSub: '7 Tage kostenlose Testphase mit vollem Zugriff. Keine Kreditkarte nötig.',
+    ctaNote: 'Danach laufen deine Regeln im kostenlosen Tarif weiter.',
   },
 
   login: {
@@ -471,8 +471,7 @@ export default {
     save: 'Speichern',
 
     unlockTitle: 'Änderungen sind gesperrt.',
-    unlockBody:
-      'Ansehen geht sofort. Um ein Gerät zu sperren, Limits zu ändern oder Anfragen zu genehmigen, entsperre diesen Browser mit deiner Eltern-PIN – oder bestätige ihn, indem du den QR-Code mit der KidGate-App scannst. Check-ins funktionieren in beiden Fällen.',
+    unlockBody: 'Du kannst weiterhin alles ansehen und Check-ins senden.',
     unlockCta: 'Änderungen entsperren',
     unlockToChange: 'Erst Änderungen entsperren',
     refresh: 'Aktualisieren',
@@ -512,10 +511,6 @@ export default {
     tileDeltaDown: '↓ {{percent}} % gegenüber dem 7-Tage-Durchschnitt',
     tileBlocked: 'Blockierte Versuche',
     tileBlockedMeta: 'Seit der Installation gestoppte Apps',
-    tileSites: 'Gefilterte Seiten',
-    tileCategoriesHit_one: '{{count}} Kategorie betroffen',
-    tileCategoriesHit_other: '{{count}} Kategorien betroffen',
-    tileNothingBlocked: 'Noch nichts blockiert',
     tileAttention: 'Braucht Aufmerksamkeit',
     tileOpenItems: 'Offene Punkte unten',
     tileAllClear: 'Alles in Ordnung',
@@ -573,8 +568,6 @@ export default {
     blockingLabel: 'Blockierung',
     appsBlocked: 'Blockierte Apps',
     categories: 'Kategorien',
-    perAppHint:
-      'App-Limits laufen unabhängig von der Sperrliste — „30 Minuten TikTok“ ist eine andere Entscheidung als „kein TikTok“.',
     limitsMax: 'Mehr als {{max}} begrenzte Apps kann ein Gerät nicht halten.',
     perDay: '{{value}}/Tag',
     webActivityTitle: 'Web-Aktivität',
@@ -600,12 +593,11 @@ export default {
     colVideo: 'Video',
     colChannel: 'Kanal',
     colViews: 'Aufrufe',
-    filterRefusedTitle: 'Was der Filter abgewiesen hat',
+    filterRefusedTitle: 'Was der Filter blockiert hat',
     filterRefusedSub_one: '{{count}} blockierte Anfrage, letzte 7 Tage',
     filterRefusedSub_other: '{{count}} blockierte Anfragen, letzte 7 Tage',
     filterHintIos:
       'Dieses iPhone oder iPad filtert nur mit Apples Sperre für Erwachseneninhalte. Aktualisiere KidGate darauf und erlaube das KidGate-VPN, um nach Kategorien zu blockieren.',
-    filterHintAndroid: 'Die Kategorien setzt der DNS-Filter auf dem Gerät durch.',
 
     locationTitle: 'Standort',
     locationUpdated: 'Aktualisiert {{when}}',
@@ -659,8 +651,8 @@ export default {
     rowAppBlocking: 'Blockierte Apps',
     rowAppBlockingDesc: '{{apps}} · {{categories}}',
     rowWebFilter: 'Webfilter',
-    rowWebFilterDesc_one: '{{count}} Kategorie abgewiesen',
-    rowWebFilterDesc_other: '{{count}} Kategorien abgewiesen',
+    rowWebFilterDesc_one: '{{count}} Kategorie blockiert',
+    rowWebFilterDesc_other: '{{count}} Kategorien blockiert',
     rowNotSupported: 'Auf diesem Gerät nicht unterstützt',
     rowLocation: 'Standortfreigabe',
     rowLocationDesc: 'Letzte Aktualisierung {{when}}',
@@ -672,7 +664,7 @@ export default {
     webFilterCatsTitle: 'Webfilter-Kategorien',
     webFilterCatsSub: 'Blockierte Inhaltstypen',
     dnsHint:
-      'Verschlüsselte DNS-Resolver werden immer abgewiesen, solange der Filter läuft — sie erreichbar zu lassen ist genau das, was einem Browser erlaubt, alle anderen Kategorien zu umgehen.',
+      'Verschlüsseltes DNS wird immer blockiert, solange der Filter läuft, damit ein Browser ihn nicht umgehen kann.',
     starChartTitle: 'Sternetafel',
     starChartSub: 'Diese Woche gesammelte Sterne, pro Kind',
     starChartEmpty:
@@ -717,8 +709,7 @@ export default {
       'Aus diesem Browser lässt sich nicht speichern. Kopiere stattdessen die Zusammenfassung.',
     emptyBody:
       'Mit Premium kommt jeden Montagmorgen ein Bericht, der die sieben Tage davor abdeckt. Den Bericht für diese Woche kannst du auch in der KidGate-App auf deinem Handy schreiben.',
-    loadFailed:
-      'Die Berichte lassen sich nicht öffnen. Seite neu laden, um es erneut zu versuchen.',
+    loadFailed: 'Die Berichte lassen sich nicht öffnen.',
     retryLoad: 'Erneut versuchen',
     existed: 'Für diese Woche gibt es bereits einen Bericht — hier ist er.',
   },
@@ -783,7 +774,7 @@ export default {
 
     faq9Q: 'Wie sperre ich bestimmte Apps?',
     faq9A:
-      'Die App-Auswahl passiert auf dem Kindergerät: Öffne *KidGate → Einstellungen*, tippe auf *Mit Eltern-PIN entsperren*, öffne *Blockierte Apps*, wähle die Apps aus und speichere. Öffne danach auf dem Elterngerät den Bildschirm *Blockierte Apps* dieses Geräts und schalte *App-Blockierung aktivieren* ein. Unter iOS blendet Apple exakte App-Namen für das Elterngerät möglicherweise aus — das ist eine Plattformgrenze.',
+      'Öffne auf dem Elterngerät die *Apps* deines Kindes, dann *Installierte Apps*, tippe auf eine App und wähle *Sperren*. Auf einem iPhone werden die Apps stattdessen auf dem iPhone ausgewählt: Öffne *KidGate → Einstellungen*, tippe auf *Mit Eltern-PIN entsperren*, öffne *Blockierte Apps*, wähle die Apps aus und speichere. Schalte danach auf dem Elterngerät *Blockierte Apps aktivieren* ein. Ein verbundenes Kindergerät erhält jede Änderung innerhalb einer Minute. Unter iOS blendet Apple exakte App-Namen für das Elterngerät möglicherweise aus.',
 
     faq10Q: 'Warum wird der Standort meines Kindes nicht aktualisiert?',
     faq10A:

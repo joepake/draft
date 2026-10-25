@@ -1,5 +1,6 @@
 export const rewardTask = {
-  rewardTasksNote: 'Los minutos aprobados se suman al límite de hoy.',
+  rewardTasksNote:
+    'Los minutos aprobados se suman al límite del día en que se aprueban.',
   unableToCreate: 'No se pudo crear la tarea. Inténtalo de nuevo.',
   unableToUpdate: 'No se pudo guardar la tarea. Inténtalo de nuevo.',
   unableToDelete: 'No se pudo eliminar la tarea. Inténtalo de nuevo.',
@@ -8,8 +9,6 @@ export const rewardTask = {
   unableToClaim: 'No se pudo enviar a tu padre o madre. Inténtalo de nuevo.',
   newTask: 'Nueva tarea',
   editTask: 'Editar tarea',
-  formSubtitle:
-    'La recompensa se suma al tiempo de pantalla de hoy cuando la apruebes.',
   titleLabel: 'Tarea',
   titlePlaceholder: 'Ej.: Leer un libro 20 minutos',
   minutesLabel: 'Recompensa',
@@ -68,8 +67,7 @@ export const rewardTask = {
   taskRejectedDescription:
     '«{{title}}» fue devuelta a {{deviceName}} para otro intento.',
   starsLabel: 'Dificultad',
-  starsHint:
-    'Lo difícil que es esta tarea. Tu hijo o hija va coleccionando estas estrellas.',
+  starsHint: 'Tu hijo o hija colecciona esa cantidad de estrellas.',
   starsEasy: 'Fácil',
   starsMedium: 'Media',
   starsHard: 'Difícil',

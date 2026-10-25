@@ -16,7 +16,7 @@ export const protection = {
   openKidGateOnChildPhone: 'يرجى فتح KidGate مرة واحدة على جهاز الطفل.',
   screenTimePermission: 'إذن مدة استخدام الجهاز',
   screenTimeAccessOff:
-    'الوصول إلى مدة استخدام الجهاز متوقف، لذا قد يتوقف حظر التطبيقات والحدود عن العمل.',
+    'الوصول إلى مدة استخدام الجهاز متوقف، لذا قد تتوقف ميزة «التطبيقات المحظورة» والحدود عن العمل.',
   screenTimeSetupIncomplete: 'إعداد مدة استخدام الجهاز غير مكتمل على جهاز الطفل.',
   usageAccessPermission: 'الوصول إلى الاستخدام',
   usageAccessOff:

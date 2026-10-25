@@ -19,6 +19,8 @@ export const childReport = {
   heroRange: '{{low}} – {{high}}',
   heroRangeNote:
     'Là con số ước lượng — có thiết bị chỉ báo dùng bao lâu, không báo dùng lúc nào.',
+  barsExplain:
+    'Một phút dùng hai thiết bị cùng lúc sẽ bị tính thành hai phút khi cộng tổng thời gian các thiết bị.',
   heroEmpty: 'Chưa có dữ liệu sử dụng',
 
   trendUp: 'Nhiều hơn kỳ trước {{value}}',

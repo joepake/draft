@@ -1,6 +1,6 @@
 export const auth = {
-  welcomeBack: '다시 오신 것을 환영합니다',
-  loginSubtitle: '로그인하여 자녀의 기기를 관리하고 보호하세요.',
+  welcomeBack: 'KidGate에 로그인',
+  loginSubtitle: '자녀의 기기를 관리하고 보호하세요.',
   emailSignInTitle: '이메일로 로그인',
   emailSignInSubtitle: '부모 이메일과 비밀번호를 사용하세요.',
   createAccountTitle: '부모 계정 만들기',

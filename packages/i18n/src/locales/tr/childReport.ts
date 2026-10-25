@@ -12,6 +12,8 @@ export const childReport = {
   heroRange: '{{low}} – {{high}}',
   heroRangeNote:
     'Bir tahmin — bir cihaz ne kadar kullanıldığını bildiriyor ama ne zaman kullanıldığını bildirmiyor.',
+  barsExplain:
+    'Aynı anda iki cihazda geçen bir dakika, cihazlar toplanırken iki dakika sayılır.',
   heroEmpty: 'Henüz kullanım bildirilmedi',
 
   trendUp: 'Önceki dönemden {{value}} fazla',

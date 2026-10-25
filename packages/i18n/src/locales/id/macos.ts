@@ -11,6 +11,8 @@ export const macos = {
 
   parentAccessBody:
     'Masukkan PIN Orang Tua untuk memilih aplikasi yang diblokir di perangkat ini.',
+  parentAccessBodyMac:
+    'Masukkan PIN Orang Tua untuk menyelesaikan penyiapan Mac ini atau mengubah apakah KidGate dibuka saat masuk.',
   checking: 'Memeriksa…',
 
   enforcing: 'Perlindungan berjalan',
@@ -23,10 +25,6 @@ export const macos = {
   lockStateParent: 'Ya — dikunci orang tua',
   lockStateSchedule: 'Ya — Jam Diblokir',
   lockStateDailyLimit: 'Ya — Batas harian tercapai',
-
-  appBlocking: 'Pemblokiran aplikasi',
-  appBlockingBestEffort:
-    'Sebisanya — aplikasi ditutup setelah terbuka, bukan dicegah terbuka',
 
   webFilterLabel: 'Pemfilteran web',
   webFilterUnavailable: 'Tidak tersedia di Mac ini',

@@ -1,10 +1,5 @@
 export const child = {
   pageTitle: 'Durum',
-  statusPaused: 'Kilitli',
-  statusActive: 'Etkin',
-  readyTitle: 'Her şey hazır',
-  readyBody:
-    'Daha fazla ekran süresine ihtiyacın olursa yukarıdan ailene istek gönderebilirsin. Acil durumda SOS düğmesini kullan.',
   setupCollapsedTitle: 'Kurulumu bir ebeveynle tamamla',
   setupCollapsedRequiredCount: '{{count}} zorunlu adım',
   setupCollapsedOptionalCount: '{{count}} isteğe bağlı adım',

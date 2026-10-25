@@ -36,9 +36,28 @@ import {
   reportChildren,
   reportChildrenHeading,
 } from './reportView';
-import { isCurrentPeriod } from './familyReport';
+import { isCurrentPeriod, isoWeekKey } from './familyReport';
 
 export type ReportTranslate = (key: string, params?: TranslationParams) => string;
+
+/**
+ * "Week 2", or "Week 53 - 2026" for a week whose ISO year is not now's: a row
+ * of chips running 2, 1, 53, 52 reads as a sorting bug without the year. Empty
+ * for a key that is not a week.
+ */
+export function reportWeekLabel(
+  periodKey: string,
+  t: ReportTranslate,
+  nowMs: number,
+): string {
+  const week = reportWeek(periodKey);
+  if (!week) {
+    return '';
+  }
+  return week.year === reportWeek(isoWeekKey(nowMs))?.year
+    ? t('report.weekOf', { week: week.week })
+    : t('report.weekOfYear', { week: week.week, year: week.year });
+}
 
 /** Minutes as the reader's own duration format — "1h 35m", "45m". */
 export type FormatReportDuration = (minutes: number) => string;
@@ -435,7 +454,6 @@ export function buildReportPresentation(
 ): ReportPresentation {
   const stats = reportStats(report);
   const trend = reportTrend(report);
-  const week = reportWeek(report.periodKey);
   const hero = stats[0];
   const thisWeek = Math.max(0, report.screenMinutes || 0);
   const lastWeek = Math.max(0, report.previousScreenMinutes || 0);
@@ -444,7 +462,7 @@ export function buildReportPresentation(
   return {
     familyName,
     title: deps.t('report.title'),
-    week: week ? deps.t('report.weekOf', { week: week.week }) : '',
+    week: reportWeekLabel(report.periodKey, deps.t, atMs ?? Date.now()),
     hero: {
       label: statLabel(hero.key, deps.t),
       value: statValue(hero, deps),

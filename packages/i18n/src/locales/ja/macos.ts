@@ -10,6 +10,8 @@ export const macos = {
 
   parentAccessBody:
     'このデバイスでブロックするアプリを選ぶには、保護者PINを入力してください。',
+  parentAccessBodyMac:
+    'このMacの設定を完了したり、ログイン時にKidGateを開くかどうかを変更したりするには、保護者PINを入力してください。',
   checking: '確認中…',
 
   enforcing: '保護は動作中',
@@ -22,10 +24,6 @@ export const macos = {
   lockStateParent: 'はい — 保護者がロックしました',
   lockStateSchedule: 'はい — 休止時間',
   lockStateDailyLimit: 'はい — 1日の上限に達しました',
-
-  appBlocking: 'アプリのブロック',
-  appBlockingBestEffort:
-    'ベストエフォート — アプリは起動後に終了され、起動そのものは止められません',
 
   webFilterLabel: 'Webフィルター',
   webFilterUnavailable: 'このMacでは利用できません',

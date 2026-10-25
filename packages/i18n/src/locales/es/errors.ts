@@ -110,6 +110,7 @@ export const errors = {
     'Esta familia alcanzó el número de dispositivos que cubre KidGate. Quita un dispositivo que ya no uses y vuelve a intentarlo.',
   rewardTaskLimitReached:
     'Ya hay tantas tareas activas como se permiten a la vez. Elimina una o espera a que se complete alguna y vuelve a intentarlo.',
+  rewardTaskAlreadyDone: 'Esta tarea ya se marcó como completada.',
   deviceNotPaired:
     'Este dispositivo ya no está vinculado a tu familia. Pide a tu padre o madre que lo vuelva a vincular.',
   bonusMinutesOutOfRange:

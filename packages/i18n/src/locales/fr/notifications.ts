@@ -12,7 +12,7 @@ export const notifications = {
   sectionSummary: 'Récapitulatif',
   sectionQuietHours: 'Heures silencieuses',
   sectionQuietHoursHint:
-    'Aucune alerte n’est envoyée pendant cette plage, et aucune ne l’est après coup. Les événements apparaissent toujours dans Activité. Le SOS n’est jamais retenu, et les Alertes de messages les plus graves passent quand même.',
+    'Seuls le SOS et les Alertes de messages les plus graves passent pendant cette plage. Rien n’est envoyé après coup ; les événements apparaissent toujours dans Activité.',
   quietHoursLabel: 'Heures silencieuses',
   quietHoursOff: 'Désactivé — les alertes arrivent à toute heure',
   quietHoursActive: 'Aucune alerte envoyée de {{start}} à {{end}}',
@@ -32,7 +32,7 @@ export const notifications = {
   alert: {
     tamperAlerts: {
       label: 'Alertes de protection',
-      hint: 'Sur un appareil enfant, une autorisation nécessaire à KidGate a été désactivée, la date, l’heure ou le fuseau horaire a été modifié, ou le SOS a été pressé pendant que l’appareil était verrouillé. L’alerte SOS elle-même passe toujours.',
+      hint: 'Une autorisation nécessaire à KidGate est désactivée sur un appareil enfant, son horloge ou son fuseau horaire est modifié, ou le SOS est pressé alors qu’il est verrouillé.',
     },
     placeAlerts: {
       label: 'Alertes de lieux',

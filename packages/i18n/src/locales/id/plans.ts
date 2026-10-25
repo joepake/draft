@@ -80,6 +80,7 @@ export const plans = {
   footerLegalAndroid:
     'Ditagih melalui Google Play. Langganan diperpanjang otomatis sampai Anda membatalkannya di Google Play. Pembelian sekali bayar tidak diperpanjang dan berlaku selama KidGate tersedia.',
   subscribeButton: 'Berlangganan Premium',
+  buyLifetimeButton: 'Beli paket seumur hidup',
   restoringPurchases: 'Memulihkan…',
   restorePurchases: 'Pulihkan pembelian',
   premiumDescription:
@@ -164,7 +165,7 @@ export const plans = {
   trustNoAds: 'Tanpa iklan',
   freePlanName: 'Gratis',
   freeDescription:
-    'Fitur dasar tetap berjalan di setiap perangkat anak, dengan laporan dari satu perangkat. Paket ini tidak pernah kedaluwarsa.',
+    'Aturan Anda tetap berjalan di setiap perangkat anak, dan satu perangkat tetap melapor. Paket ini tidak pernah kedaluwarsa.',
   featureOneChildDevice: 'Laporan dari satu perangkat anak',
   termLifetime: 'Seumur hidup',
   badgeOneTime: 'Sekali bayar',
@@ -228,5 +229,7 @@ export const plans = {
   teaserProofParents: 'Orang tua: {{count}}',
   teaserParentCap:
     'Itu batas orang tua dalam satu keluarga tanpa Premium. Premium menggandakannya.',
+  teaserApps:
+    'Premium memungkinkan Anda memblokir aplikasi dari ponsel Anda, dan memberi tahu saat ada aplikasi yang dipasang atau dihapus.',
   teaserDeviceNote: 'Hanya satu perangkat yang Anda pantau yang mengirim laporan.',
 } as const;

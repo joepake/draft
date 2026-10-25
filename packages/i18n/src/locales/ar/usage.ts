@@ -2,12 +2,10 @@ export const usage = {
   title: 'تقرير الاستخدام',
   fallbackDeviceName: 'جهاز الطفل',
   sectionToday: 'اليوم',
-  percentOfLimit: '{{percent}}% من الحد',
   reportedAt: 'تم التحديث {{time}}',
   statUsedLabel: 'المستخدم',
   statLeftLabel: 'المتبقي',
   statLimitLabel: 'الحد',
-  limitOff: 'إيقاف',
   insightDailyLimitReached: 'تم الوصول إلى الحد اليومي',
   insightNearDailyLimit: 'اقتراب من الحد اليومي',
   insightNoDailyLimit: 'لا يوجد حد يومي',
@@ -48,24 +46,21 @@ export const usage = {
   syncNoteTv:
     'يتصل هذا التلفاز بشكل دوري فقط، لذا قد يستغرق ظهور وقت استخدام الشاشة في هذه الشاشة حتى ساعة — وقتًا أطول في حال عدم وجود اتصال بالإنترنت.',
   sectionLast30Days: 'آخر 30 يومًا',
-  comparePeriodTotal: 'إجمالي 30 يومًا',
+  comparePeriodTotal: 'المجموع',
   compareDayAvg: 'المتوسط اليومي',
-  compareVsYesterday: 'مقارنة بالأمس',
+  compareVsYesterdaySameTime: 'مقارنةً بالوقت نفسه أمس: {{value}}',
   dayTodayShort: 'اليوم',
   chartEmpty: 'مخطط الاستخدام غير متاح حاليًا.',
   chartNoDataYet:
     'تُملأ الأعمدة تدريجيًا مع مزامنة جهاز الطفل لاستخدامه اليومي. يتحدّث عمود اليوم من الدقائق الحية.',
   chartDayNone: 'لا يوجد استخدام',
   bonusMinutesChip: '+{{minutes}} دقيقة مكافأة',
-  dailyLimitGuide: 'الحد اليومي {{duration}}',
-  sectionTopApps: 'التطبيقات الأكثر استخدامًا',
   topAppsHint:
     'أكثر التطبيقات استخدامًا اليوم على جهاز الطفل. تتراكم البيانات مع مزامنة مدة استخدام الجهاز / الوصول إلى الاستخدام.',
   topAppsExcludedNote:
     'لا تُحتسب شاشة التوقف ولا الشاشة الرئيسية ولا شاشة KidGate نفسها ضمن وقت الاستخدام. وعندما يكون الجهاز مشغّلاً دون أن يستخدمه أحد، تُسجّل تلك الدقائق بوصفها «غير مستخدم».',
   topAppsAiNote:
     'بعض الفئات استُنتجت من اسم التطبيق بدل مطابقتها بتطبيق معروف، لذا قد يكون بعضها غير دقيق.',
-  errorTitle: 'تعذّر تحميل الاستخدام',
   errorDescription: 'يرجى التحقق من اتصالك والمحاولة مرة أخرى.',
   tryAgain: 'إعادة المحاولة',
   // Shown only when the rating is known — it is 0 for much of the long
@@ -82,9 +77,10 @@ export const usage = {
   protectionBlockedApps: 'مرات فتح تطبيقات محظورة',
   protectionWebBlocked: 'مواقع محظورة',
   protectionTamper: 'تنبيهات الحماية',
-  sectionTimeline: 'متى تم الاستخدام',
+  sectionTimeline: 'متى كانت الشاشة مضاءة',
   timelineUsed: 'قيد الاستخدام',
   timelineIdle: 'غير مستخدم',
+  idleRow: 'الشاشة مضاءة دون استخدام',
   timelineUnmeasured: 'غير مُقاس',
   timelineUnmeasuredHint:
     'لم يكن KidGate يعمل على الجهاز، أو كان الجهاز في وضع السكون. هذه الدقائق غير محتسبة في الإجمالي أيضًا.',

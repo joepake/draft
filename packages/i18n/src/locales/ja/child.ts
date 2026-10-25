@@ -1,10 +1,5 @@
 export const child = {
   pageTitle: 'ステータス',
-  statusPaused: 'ロック中',
-  statusActive: '利用中',
-  readyTitle: '準備完了',
-  readyBody:
-    '利用時間がもっと必要なときは、上の欄から保護者にリクエストを送れます。緊急時はSOSボタンを使ってください。',
   setupCollapsedTitle: '保護者と一緒に設定を完了',
   setupCollapsedRequiredCount: '必須 {{count}}件',
   setupCollapsedOptionalCount: '任意 {{count}}件',

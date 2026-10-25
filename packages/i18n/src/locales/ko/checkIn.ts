@@ -1,13 +1,12 @@
 export const checkIn = {
   noPhotoBadge: '사진 없음',
   historyTitle: '체크인 기록',
-  historyHint:
-    '사진을 누르면 확대됩니다. 위에서 언제든 새 체크인을 요청할 수 있습니다.',
+  historyHint: '사진을 누르면 확대됩니다.',
   historyEmpty: '아직 체크인이 없습니다.',
   screenTitle: '체크인',
   statusSafe: '안전',
   statusNoResponse: '응답 없음',
-  statusAskedForHelp: '도움 요청 (SOS)',
+  statusAskedForHelp: 'SOS 전송됨',
   statusWaiting: '대기 중',
   metaWaitingForLocationAndPhoto: '위치와 사진 대기 중',
   metaWaitingForLocation: '위치 대기 중',
@@ -34,6 +33,7 @@ export const checkIn = {
   checkInConfirmedDescription: '{{deviceName}}이(가) 안전하다고 확인했습니다.',
   childDeviceFallback: '자녀 기기',
   requestCheckIn: '체크인 요청',
+  send: '보내기',
   requestCheckInNote:
     '자녀 기기에 위치를 요청하고, 휴대전화나 태블릿이면 전면 카메라 사진도 요청합니다.',
   requestCheckInNoteLocationOnly: '자녀 기기에 위치를 요청합니다.',

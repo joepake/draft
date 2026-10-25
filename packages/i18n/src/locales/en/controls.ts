@@ -11,7 +11,6 @@ export const controls = {
   dailyLimitEnterAtLeastMinutes_one: 'Enter at least {{count}} minute.',
   dailyLimitMaxMinutes: 'The Daily Limit can be at most {{max}} minutes (24 hours).',
   rulesSectionTitle: 'Rules from your parent',
-  rulesSectionDescription: 'Rules your parent set for this device.',
   blockedHoursLabel: 'Blocked Hours',
   dailyLimitLabel: 'Daily Limit',
   webFilterLabel: 'Web Filter',

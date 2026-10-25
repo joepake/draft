@@ -1,6 +1,5 @@
 export const sos = {
   title: 'Peringatan SOS',
-  subtitle: '{{deviceName}} · foto muncul di bawah setelah dikirim',
   fallbackDeviceName: 'Perangkat anak',
   fallbackChildName: 'Anak',
   locationUnavailable: 'Lokasi tidak tersedia',
@@ -9,7 +8,6 @@ export const sos = {
   viewPhotoAccessibility: 'Lihat foto SOS',
   photoTapHint: 'Ketuk untuk melihat foto secara penuh',
   photoLoadFailed: 'Tidak dapat memuat foto ini. Periksa koneksi Anda dan coba lagi.',
-  noPhoto: 'Tidak ada foto yang dilampirkan pada peringatan ini.',
   audioLabel: 'Rekaman suara',
   audioPlayAccessibility: 'Putar rekaman SOS',
   audioStopAccessibility: 'Hentikan pemutaran rekaman SOS',
@@ -17,7 +15,6 @@ export const sos = {
   acknowledgedAt: 'Ditanggapi {{time}}',
   openInMaps: 'Buka di Maps',
   acknowledgeButton: 'Segera saya tangani',
-  acknowledgingButton: 'Menyimpan…',
   toastAcknowledgeFailed: 'Tidak dapat menanggapi. Coba lagi sebentar lagi.',
   emptyTitle: 'Belum ada peringatan SOS',
   emptyDescription:

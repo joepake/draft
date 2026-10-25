@@ -4,7 +4,6 @@ export const placeAlerts = {
   mergedFromDevices:
     '各デバイスの既存の場所を統合しました。保存すると、このリストがすべての子どもデバイスに適用されます。',
   fallbackDeviceName: '子どものデバイス',
-  statusReady: '位置情報の準備完了',
   statusNeedLocation: '子どものデバイスの位置情報を待っています',
   tabPlaces: '場所',
   tabActivity: 'アクティビティ',
@@ -22,8 +21,6 @@ export const placeAlerts = {
   editPlaceAccessibility: '{{name}}を編集',
   radiusLabel: '通知半径',
   radiusValue: '{{meters}} m',
-  radiusHint:
-    'この場所として認識されるために、デバイスがどれだけ近づく必要があるかです。デバイス自身の位置誤差より小さい半径にしても通知は正確にならず、到着や出発が通知されないことがあります。',
   radiusAccuracyHint:
     'このデバイスはここでは位置を約 ±{{accuracy}} m の精度で報告しています。',
   radiusBelowAccuracy:
@@ -44,8 +41,6 @@ export const placeAlerts = {
   emptyEventsTitle: 'まだ場所のアクティビティはありません',
   emptyEventsSubtitle:
     'このデバイスが保存された場所に出入りすると、ここにイベントが表示されます。',
-  emptyPlaces:
-    '地図上で場所を選び、名前を付けて保存してください。最大{{max}}件まで登録できます。',
   noLocationToast: 'まず子どものデバイスからの位置情報の更新をお待ちください。',
   maxPlacesToast: '保存できる場所は最大{{max}}件までです。',
   nameRequiredToast: '場所の名前を入力してください。',

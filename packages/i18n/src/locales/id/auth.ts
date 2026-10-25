@@ -1,6 +1,6 @@
 export const auth = {
-  welcomeBack: 'Selamat datang kembali',
-  loginSubtitle: 'Masuk untuk mengelola dan melindungi perangkat anak Anda.',
+  welcomeBack: 'Masuk ke KidGate',
+  loginSubtitle: 'Kelola dan lindungi perangkat anak Anda.',
   emailSignInTitle: 'Masuk dengan email',
   emailSignInSubtitle: 'Gunakan email dan kata sandi orang tua Anda.',
   createAccountTitle: 'Buat akun orang tua',

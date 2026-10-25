@@ -1,10 +1,5 @@
 export const child = {
   pageTitle: 'Status',
-  statusPaused: 'Locked',
-  statusActive: 'Active',
-  readyTitle: 'You are all set',
-  readyBody:
-    'If you need more screen time, you can send a request to your parent above. In an emergency, use the SOS button.',
   setupCollapsedTitle: 'Finish setup with a parent',
   setupCollapsedRequiredCount: '{{count}} required steps',
   setupCollapsedRequiredCount_one: '{{count}} required step',

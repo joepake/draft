@@ -283,7 +283,12 @@ export function createSosAlertRepository(deps: SosAlertRepositoryDeps) {
           options,
           snapshot => {
             byQuery.set(index, snapshot.docs.map(mapSosAlert));
-            emit();
+            // Only once every join has answered: the first one alone is half
+            // the feed, and an empty half read as "no SOS alerts" before the
+            // rest arrived.
+            if (byQuery.size === queries.length) {
+              emit();
+            }
           },
           onError,
         ),

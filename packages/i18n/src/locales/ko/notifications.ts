@@ -11,7 +11,7 @@ export const notifications = {
   sectionSummary: '요약',
   sectionQuietHours: '방해 금지 시간',
   sectionQuietHoursHint:
-    '이 시간대에는 알림이 전송되지 않으며, 시간대가 끝난 뒤에도 보내지지 않습니다. 이벤트는 계속 활동에 표시됩니다. SOS는 절대 보류되지 않고, 가장 심각한 메시지 경고는 계속 전달됩니다.',
+    '이 시간대에는 SOS와 가장 심각한 메시지 경고만 전달됩니다. 끝난 뒤에 보내지는 알림은 없으며, 이벤트는 계속 활동에 표시됩니다.',
   quietHoursLabel: '방해 금지 시간',
   quietHoursOff: '꺼짐 — 알림이 언제든 도착합니다',
   quietHoursActive: '{{start}}부터 {{end}}까지 알림 없음',
@@ -31,7 +31,7 @@ export const notifications = {
   alert: {
     tamperAlerts: {
       label: '보호 알림',
-      hint: '자녀 기기에서 KidGate에 필요한 권한이 꺼졌거나, 날짜·시간·시간대가 변경되었거나, 잠긴 상태에서 SOS를 눌렀을 때. SOS 알림 자체는 항상 전달됩니다.',
+      hint: '자녀 기기에서 KidGate에 필요한 권한이 꺼졌거나, 기기의 날짜·시간이나 시간대가 변경되었거나, 잠긴 상태에서 SOS를 눌렀을 때.',
     },
     placeAlerts: {
       label: '장소 알림',

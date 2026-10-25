@@ -3,7 +3,9 @@ export const videoHistory = {
   fallbackDeviceName: '자녀 기기',
   toggleLabel: '시청한 동영상 기록',
   toggleHint:
-    'Android 휴대폰과 TV의 YouTube 앱, 그리고 KidGate 확장 프로그램이 있는 Chrome에서 시청한 동영상. TV 앱이 Shorts로 식별하지 않으므로 TV에서는 Shorts가 표시되지 않습니다.',
+    'Android 휴대폰과 TV의 YouTube, 그리고 KidGate 확장 프로그램이 있는 Chrome이 대상입니다.',
+  tvShortsInfo:
+    'TV에서는 Shorts가 목록에 표시되지 않습니다. TV용 YouTube 앱이 Shorts로 식별하지 않기 때문입니다.',
   toggleFailed: '동영상 기록을 업데이트하지 못했습니다. 다시 시도하세요.',
   unsupportedNote:
     '이 기기는 시청한 동영상을 보고할 수 없습니다. Android, Android TV, Chrome에서 작동합니다.',
@@ -22,7 +24,6 @@ export const videoHistory = {
   extensionStepEnable: '해당 기기에서 “시청한 동영상 기록” 켜기',
   emptyTitle: '아직 시청 없음',
   emptyBody: 'KidGate가 실행 중일 때 자녀가 시청하면 동영상이 여기에 표시됩니다.',
-  emptyBodyOff: '시청한 동영상을 나열하려면 위에서 기록을 켜세요.',
   viewsMeta_one: '{{count}}회',
   viewsMeta: '{{count}}회',
   dayToday: '오늘',

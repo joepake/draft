@@ -7,7 +7,7 @@ export const childSettings = {
   darkModeHint: 'Gece gözlerin için daha rahat',
   leaveFamilyAlertTitle: 'Bu aileden ayrılsın mı?',
   leaveFamilyAlertMessage:
-    'Bu cihazın aileyle bağlantısı kesilecek. Yeniden katılmak için bir ebeveynin bu cihazı kendi KidGate uygulamasından tekrar bağlaması gerekir.',
+    'Bu cihaz aileden ayrılacak. Tekrar kullanmak için ebeveynlerinden birinin cihazı yeniden bağlaması gerekir.',
   leaveFamily: 'Aileden ayrıl',
   uninstallProtectionSectionTitle: 'Kaldırma koruması',
   uninstallProtectionSectionDescription:

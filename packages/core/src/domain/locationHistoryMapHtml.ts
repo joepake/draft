@@ -363,12 +363,58 @@ export interface ChildDeviceTrail {
   carried: boolean;
 }
 
-const CHILD_DEVICES_SCRIPT = `${READ_MAP_DATA}${ADD_TILES}${SHOW_EMPTY}
+/** A saved place, drawn as its geofence with the name over the top edge. */
+export interface ChildDevicesMapPlace {
+  id: string;
+  lat: number;
+  lng: number;
+  /** Metres — the same circle the server tests a fix against. */
+  radius: number;
+  name: string;
+}
+
+/**
+ * Where each device's name chip goes so two devices at one spot do not print
+ * one name over the other (2026-10-24: an iPhone's chip sat hidden under the
+ * Mac's, both at home). Pins arrive in container pixels, carried first; a pin
+ * within a chip's width and a row of the first pin of a group stacks its chip
+ * one row under that group's last. The dots stay where the fixes are — the
+ * carried one is drawn on top — and only the names move.
+ *
+ * Page script, not TypeScript, because it runs inside the map's WebView;
+ * exported so a test can evaluate it (`new Function`) and check the
+ * arithmetic.
+ */
+export const STACK_DEVICE_CHIPS = `
+      const CHIP_STEP = 22;
+      function stackChipOffsets(pins) {
+        const groups = [];
+        return pins.map(pin => {
+          const group = groups.find(
+            candidate =>
+              Math.abs(pin.x - candidate.x) < 100 &&
+              Math.abs(pin.y - candidate.y) < 30,
+          );
+          if (!group) {
+            groups.push({ x: pin.x, y: pin.y, chipTop: pin.chipTop, size: 1 });
+            return { dx: 0, dy: 0 };
+          }
+          const offset = {
+            dx: group.x - pin.x,
+            dy: group.y + group.chipTop + group.size * CHIP_STEP - (pin.y + pin.chipTop),
+          };
+          group.size += 1;
+          return offset;
+        });
+      }`;
+
+const CHILD_DEVICES_SCRIPT = `${READ_MAP_DATA}${ADD_TILES}${SHOW_EMPTY}${STACK_DEVICE_CHIPS}
       const points = data.points;
       const trails = data.trails;
+      const places = data.places;
       const mapEl = document.getElementById('map');
 
-      if (!points.length) {
+      if (!points.length && !places.length) {
         showEmpty(mapEl, data.emptyMessage, 'padding:16px;text-align:center;');
       } else {
         const map = L.map('map', {
@@ -401,9 +447,50 @@ const CHILD_DEVICES_SCRIPT = `${READ_MAP_DATA}${ADD_TILES}${SHOW_EMPTY}
             [point.lat - dLat, point.lng - dLng],
           );
         });
+        // A place whose ring is half out of frame reads as a smaller place.
+        places.forEach(place => {
+          const box = L.latLng(place.lat, place.lng).toBounds(place.radius * 2);
+          boundPoints.push(
+            [box.getNorth(), box.getEast()],
+            [box.getSouth(), box.getWest()],
+          );
+        });
         map.fitBounds(L.latLngBounds(boundPoints), {
           padding: [48, 48],
           maxZoom: 15,
+        });
+
+        const escapeHtml = value =>
+          String(value).replace(/[&<>"']/g, ch => ({
+            '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
+          })[ch]);
+
+        // Places under everything: the ring is where an alert fires, and
+        // the name sits on its top edge so a device dot at the centre — the
+        // child at home — never covers it.
+        places.forEach(place => {
+          L.circle([place.lat, place.lng], {
+            radius: place.radius,
+            color: data.accentColor,
+            weight: 1.5,
+            opacity: 0.8,
+            fillColor: data.accentColor,
+            fillOpacity: 0.12,
+            interactive: false,
+          }).addTo(map);
+          L.marker([place.lat + place.radius / 111320, place.lng], {
+            interactive: false,
+            keyboard: false,
+            icon: L.divIcon({
+              className: '',
+              html:
+                '<div class="place-pin"><div class="place-chip">' +
+                escapeHtml(place.name) +
+                '</div></div>',
+              iconSize: [140, 20],
+              iconAnchor: [70, 22],
+            }),
+          }).addTo(map);
         });
 
         // Error circles under everything else, only where the platform gave
@@ -424,11 +511,6 @@ const CHILD_DEVICES_SCRIPT = `${READ_MAP_DATA}${ADD_TILES}${SHOW_EMPTY}
             interactive: false,
           }).addTo(map);
         });
-
-        const escapeHtml = value =>
-          String(value).replace(/[&<>"']/g, ch => ({
-            '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
-          })[ch]);
 
         // Routes first, so a marker always sits above the line that ends at
         // it rather than being covered by a neighbouring device's path.
@@ -456,7 +538,12 @@ const CHILD_DEVICES_SCRIPT = `${READ_MAP_DATA}${ADD_TILES}${SHOW_EMPTY}
           }
         });
 
-        points.forEach(point => {
+        // Carried first, so it heads its group of chips.
+        const pins = [];
+        points
+          .slice()
+          .sort((a, b) => (b.kind === 'carried') - (a.kind === 'carried'))
+          .forEach(point => {
           const carried = point.kind === 'carried';
           const dotStyle = point.color
             ? ' style="background:' + escapeHtml(point.color) + '"'
@@ -472,7 +559,7 @@ const CHILD_DEVICES_SCRIPT = `${READ_MAP_DATA}${ADD_TILES}${SHOW_EMPTY}
             '</div>' +
             '</div>';
 
-          L.marker([point.lat, point.lng], {
+          const marker = L.marker([point.lat, point.lng], {
             title: point.title,
             icon: L.divIcon({
               className: '',
@@ -480,9 +567,37 @@ const CHILD_DEVICES_SCRIPT = `${READ_MAP_DATA}${ADD_TILES}${SHOW_EMPTY}
               iconSize: [120, 40],
               iconAnchor: [60, carried ? 9 : 6],
             }),
-            zIndexOffset: carried ? 200 : 0,
+            // Leaflet stacks markers by y + this offset, so it has to beat
+            // any height a map can have, or a device further south covers
+            // the carried dot.
+            zIndexOffset: carried ? 10000 : 0,
           }).addTo(map);
+          // The chip's top below the anchor: dot height + 3px gap - anchor y.
+          pins.push({ marker, point, chipTop: carried ? 12 : 9 });
         });
+
+        // Distances between pins change with zoom, so the stack is redone
+        // on every zoom rather than once.
+        function restackChips() {
+          const offsets = stackChipOffsets(
+            pins.map(pin => {
+              const at = map.latLngToContainerPoint([pin.point.lat, pin.point.lng]);
+              return { x: at.x, y: at.y, chipTop: pin.chipTop };
+            }),
+          );
+          pins.forEach((pin, index) => {
+            const element = pin.marker.getElement();
+            const chip = element && element.querySelector('.device-chip');
+            const offset = offsets[index];
+            if (!chip) return;
+            chip.style.transform =
+              offset.dx || offset.dy
+                ? 'translate(' + offset.dx + 'px,' + offset.dy + 'px)'
+                : '';
+          });
+        }
+        restackChips();
+        map.on('zoomend', restackChips);
       }
     `;
 
@@ -500,6 +615,7 @@ const CHILD_DEVICES_SCRIPT = `${READ_MAP_DATA}${ADD_TILES}${SHOW_EMPTY}
  * The caller windows and caps the points (`domain/locationTrail`); this
  * function draws exactly what it is handed. The carried device gets the ring,
  * the heavier line and the top z-index; the rest stay present but quieter.
+ * `places` draws the family's saved geofences under all of it.
  */
 export function buildChildDevicesMapHtml(
   points: ChildDevicesMapPoint[],
@@ -507,6 +623,7 @@ export function buildChildDevicesMapHtml(
   messages: LocationMapMessages,
   accentColor = '#0F766E',
   trails: ChildDeviceTrail[] = [],
+  places: ChildDevicesMapPlace[] = [],
 ): string {
   const softBg = `${accentColor}14`;
   if (!tiles) {
@@ -518,6 +635,7 @@ export function buildChildDevicesMapHtml(
     // A single-point run is a marker, not a line — filtered here so the page
     // script has nothing degenerate to guard against.
     trails: trails.filter(trail => trail.path.length > 1),
+    places: places.filter(place => place.radius > 0),
     tileUrl: hereTileUrl(tiles),
     emptyMessage: messages.mapNoLocationsEmpty,
     accentColor,
@@ -583,6 +701,23 @@ export function buildChildDevicesMapHtml(
         background: ${accentColor};
         color: #fff;
       }
+      .place-pin {
+        display: flex;
+        justify-content: center;
+      }
+      .place-chip {
+        max-width: 140px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        border-radius: 999px;
+        padding: 2px 8px;
+        font-weight: 700;
+        font-size: 11px;
+        background: rgba(255, 255, 255, 0.92);
+        color: ${accentColor};
+        box-shadow: 0 1px 3px rgba(15, 23, 42, 0.2);
+      }
     </style>
   </head>
   <body>
@@ -612,6 +747,44 @@ const PLACE_PICKER_SCRIPT = `${READ_MAP_DATA}${ADD_TILES}
 
       let marker = L.marker([data.lat, data.lng], { icon: icon, draggable: true }).addTo(map);
 
+      // The geofence being drawn, so the radius is a ring the parent sees
+      // around the pin rather than a number beside it.
+      const circle = data.radius > 0
+        ? L.circle([data.lat, data.lng], {
+            radius: data.radius,
+            color: data.accentColor,
+            weight: 1.5,
+            opacity: 0.8,
+            fillColor: data.accentColor,
+            fillOpacity: 0.12,
+            interactive: false,
+          }).addTo(map)
+        : null;
+
+      function frame() {
+        if (circle) {
+          // The bottom pad clears the one-line address bar the app lays over
+          // the map; anything more starves a short map of ring.
+          map.fitBounds(marker.getLatLng().toBounds(circle.getRadius() * 2), {
+            paddingTopLeft: [16, 16],
+            paddingBottomRight: [16, 52],
+            maxZoom: 17,
+          });
+        } else {
+          map.setView(marker.getLatLng(), Math.max(map.getZoom(), 16));
+        }
+      }
+
+      function moveTo(latlng) {
+        marker.setLatLng(latlng);
+        if (circle) circle.setLatLng(latlng);
+      }
+
+      frame();
+      // The sheet gives the map what its other rows leave, so the size moves
+      // — a keyboard, a layout pass after load — and the ring is re-framed.
+      map.on('resize', frame);
+
       function post(payload) {
         if (window.ReactNativeWebView && window.ReactNativeWebView.postMessage) {
           window.ReactNativeWebView.postMessage(JSON.stringify(payload));
@@ -631,19 +804,27 @@ const PLACE_PICKER_SCRIPT = `${READ_MAP_DATA}${ADD_TILES}
       }
 
       window.__setPlacePicker = function (lat, lng) {
-        const next = L.latLng(lat, lng);
-        marker.setLatLng(next);
-        map.setView(next, Math.max(map.getZoom(), 16));
+        moveTo(L.latLng(lat, lng));
+        frame();
+      };
+
+      window.__setPlaceRadius = function (meters) {
+        if (!circle) return;
+        circle.setRadius(meters);
+        frame();
       };
 
       marker.on('dragstart', function () { setGesture(true); });
+      marker.on('drag', function () {
+        if (circle) circle.setLatLng(marker.getLatLng());
+      });
       marker.on('dragend', function () {
         setGesture(false);
         postCoords(marker.getLatLng());
       });
 
       map.on('click', function (event) {
-        marker.setLatLng(event.latlng);
+        moveTo(event.latlng);
         postCoords(event.latlng);
       });
 
@@ -663,6 +844,8 @@ export function buildPlacePickerMapHtml(
   tiles: MapTileSource,
   messages: Pick<LocationMapMessages, 'mapUnavailable'>,
   accentColor = '#0F766E',
+  /** Draws the geofence ring around the pin; 0 draws none. */
+  radiusMeters = 0,
 ): string {
   const softBg = `${accentColor}14`;
   if (!tiles) {
@@ -672,6 +855,8 @@ export function buildPlacePickerMapHtml(
   const data = {
     lat: Number(latitude),
     lng: Number(longitude),
+    radius: Number(radiusMeters) || 0,
+    accentColor,
     tileUrl: hereTileUrl(tiles),
   };
 

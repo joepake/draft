@@ -11,6 +11,8 @@ export const macos = {
 
   parentAccessBody:
     'Введите PIN родителя, чтобы выбрать, какие приложения блокируются на этом устройстве.',
+  parentAccessBodyMac:
+    'Введите PIN родителя, чтобы завершить настройку этого Mac или изменить, запускается ли KidGate при входе.',
   checking: 'Проверка…',
 
   enforcing: 'Защита работает',
@@ -25,10 +27,6 @@ export const macos = {
   lockStateParent: 'Да — заблокировано родителем',
   lockStateSchedule: 'Да — Заблокированные часы',
   lockStateDailyLimit: 'Да — Дневной лимит исчерпан',
-
-  appBlocking: 'Блокировка приложений',
-  appBlockingBestEffort:
-    'По возможности — приложения закрываются после запуска, а не останавливаются до него',
 
   webFilterLabel: 'Веб-фильтрация',
   webFilterUnavailable: 'Недоступно на этом Mac',

@@ -44,7 +44,7 @@ import {
   resolveInstallApprovalPolicy,
   withApprovedPackage,
 } from '@kidgate/core/domain/appInstallApproval';
-import { childLimitWithBonus } from '@kidgate/core/domain/dailyLimit';
+import { childLimitWithBonus, dailyLimitOrNone } from '@kidgate/core/domain/dailyLimit';
 import { supportsLocation } from '@kidgate/core/domain/locationSupport';
 import { supportsSearchMonitoring } from '@kidgate/core/domain/alertSupport';
 import { searchMonitoringGranted } from '@kidgate/core/domain/messageMonitoringStatus';
@@ -118,14 +118,15 @@ const CONTROL_FIELDS = {
   appBlocking: 'appBlockingEnabled',
   webFilter: 'webFilterEnabled',
   location: 'locationSharingEnabled',
-  // Per-device like app blocking, not a child rule: an Android phone and the
+  // Per-device, not a child rule: an Android phone and the
   // Chrome extension on the same child read it through different agents, and
   // the phone's screen (`MessageAlertsScreen`) writes it per device too.
   search: 'searchMonitoringEnabled',
   // A child rule like the web filter it rides on: fanned out by the server.
   safeSearch: 'safeSearchEnabled',
-  // Per-device: the approved list is package names on one machine, and the
-  // server stamps the "since" line per device (`functions/http/controls.js`).
+  // A child rule since 2026-10-24, like app blocking: the switch fans out,
+  // while the approved list stays package names on one machine and the
+  // server stamps the "since" line per device (`approvalSincePatch`).
   installApproval: 'appInstallApprovalEnabled',
 };
 
@@ -143,6 +144,8 @@ const HOLDS_CHILD_RULE = {
   schedule: supportsSchedule,
   webFilter: supportsWebFiltering,
   location: supportsLocation,
+  appBlocking: supportsAppBlocking,
+  installApproval: device => installApprovalMode(device) !== null,
 };
 
 /** Where the slider sits for a family that has no daily limit set. */
@@ -325,11 +328,11 @@ export default function ControlsTab({
     if (!live || readOnly) {
       return;
     }
-    // Web filter, blocked hours and location sharing belong to the child
-    // when the device is assigned to one: the server fans the write out to
-    // every sibling device, so a Mac and the Chrome extension on it cannot
-    // diverge again. App blocking stays per-device — its list of packages
-    // only exists on the one machine. See docs/FEASIBILITY.md (2026-08-26).
+    // Web filter, blocked hours, location sharing and the two app switches
+    // belong to the child when the device is assigned to one: the server fans
+    // the write out to every sibling device, so a Mac and the Chrome extension
+    // on it cannot diverge again. What each machine blocks stays per-device —
+    // its picks only exist there. See docs/FEASIBILITY.md (2026-08-26).
     const ok = await run(`ctrl-${key}`, () =>
       isChildRuleSwitch(key) && device.childId
         ? actions.updateChildRules(device.childId, {
@@ -379,7 +382,8 @@ export default function ControlsTab({
    * editor stays here because the hub draws none. Reading stays — a parent
    * still needs to see where the day stands.
    */
-  const childBudgetMinutes = device.child?.rules?.dailyLimitMinutes ?? null;
+  // A stored full day is no budget (`dailyLimitOrNone`), as on the phone.
+  const childBudgetMinutes = dailyLimitOrNone(device.child?.rules?.dailyLimitMinutes);
   /*
    * ASSIGNED, not "already has a budget" (2026-09-16). It read the latter, so
    * a child with no budget yet got the per-device slider — a number the next

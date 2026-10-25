@@ -11,7 +11,7 @@ export const notifications = {
   sectionSummary: 'Ringkasan',
   sectionQuietHours: 'Jam tenang',
   sectionQuietHoursHint:
-    'Tidak ada peringatan yang dikirim selama rentang ini, dan tidak ada yang dikirim setelahnya. Peristiwa tetap muncul di Aktivitas. SOS tidak pernah ditahan, dan Peringatan pesan yang paling serius tetap masuk.',
+    'Dalam rentang ini hanya SOS dan Peringatan pesan yang paling serius yang masuk. Tidak ada yang dikirim setelahnya; peristiwa tetap muncul di Aktivitas.',
   quietHoursLabel: 'Jam tenang',
   quietHoursOff: 'Nonaktif — peringatan datang kapan saja',
   quietHoursActive: 'Tidak ada peringatan dikirim dari {{start}} sampai {{end}}',
@@ -31,7 +31,7 @@ export const notifications = {
   alert: {
     tamperAlerts: {
       label: 'Peringatan perlindungan',
-      hint: 'Di perangkat anak, izin yang dibutuhkan KidGate dimatikan, tanggal, waktu, atau zona waktu diubah, atau SOS ditekan saat perangkat terkunci. Peringatan SOS itu sendiri selalu masuk.',
+      hint: 'Izin yang dibutuhkan KidGate dimatikan di perangkat anak, jam atau zona waktunya diubah, atau SOS ditekan saat perangkat terkunci.',
     },
     placeAlerts: {
       label: 'Peringatan Tempat',

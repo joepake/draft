@@ -80,6 +80,7 @@ export const plans = {
   footerLegalAndroid:
     'Abrechnung über Google Play. Abos verlängern sich automatisch, bis du sie in Google Play kündigst. Der Einmalkauf verlängert sich nicht und gilt, solange es KidGate gibt.',
   subscribeButton: 'Premium abonnieren',
+  buyLifetimeButton: 'Lebenslang kaufen',
   restoringPurchases: 'Wird wiederhergestellt…',
   restorePurchases: 'Käufe wiederherstellen',
   premiumDescription:
@@ -170,7 +171,7 @@ export const plans = {
   trustNoAds: 'Keine Werbung',
   freePlanName: 'Kostenlos',
   freeDescription:
-    'Die Grundfunktionen laufen auf jedem Kindergerät, mit Berichten von einem davon. Der Plan läuft nie ab.',
+    'Deine Regeln laufen weiterhin auf jedem Kindergerät, und eines davon sendet weiter Berichte. Der Plan läuft nie ab.',
   featureOneChildDevice: 'Berichte von einem Kindergerät',
   termLifetime: 'Lebenslang',
   badgeOneTime: 'Einmalig',
@@ -233,5 +234,7 @@ export const plans = {
   teaserProofParents: 'Elternteile: {{count}}',
   teaserParentCap:
     'Mehr Elternteile sind ohne Premium in einer Familie nicht möglich. Premium erlaubt doppelt so viele.',
+  teaserApps:
+    'Premium sperrt Apps von deinem Handy aus und sagt dir, wenn eine installiert oder entfernt wird.',
   teaserDeviceNote: 'Nur dein überwachtes Gerät meldet Daten.',
 } as const;

@@ -1,5 +1,5 @@
 export const rewardTask = {
-  rewardTasksNote: '承認された分は今日の上限に追加されます。',
+  rewardTasksNote: '承認された分は、承認した日の上限に追加されます。',
   unableToCreate: 'タスクを作成できませんでした。もう一度お試しください。',
   unableToUpdate: 'タスクを保存できませんでした。もう一度お試しください。',
   unableToDelete: 'タスクを削除できませんでした。もう一度お試しください。',
@@ -8,7 +8,6 @@ export const rewardTask = {
   unableToClaim: '送信できませんでした。もう一度お試しください。',
   newTask: '新しいタスク',
   editTask: 'タスクを編集',
-  formSubtitle: '承認すると、ごほうびが今日のスクリーンタイムに追加されます。',
   titleLabel: 'タスク',
   titlePlaceholder: '例：本を20分読む',
   minutesLabel: 'ごほうび',
@@ -65,7 +64,7 @@ export const rewardTask = {
   taskRejected: 'ごほうびタスクを差し戻し',
   taskRejectedDescription: '「{{title}}」を{{deviceName}}に差し戻しました。',
   starsLabel: 'むずかしさ',
-  starsHint: 'このタスクのむずかしさです。お子さまはこの星を集めます。',
+  starsHint: 'お子さまはその数だけ星を集めます。',
   starsEasy: 'かんたん',
   starsMedium: 'ふつう',
   starsHard: 'むずかしい',

@@ -81,6 +81,7 @@ export const plans = {
   footerLegalAndroid:
     'Thanh toán qua Google Play. Gói đăng ký tự động gia hạn cho đến khi bạn hủy trong Google Play. Gói trả một lần không gia hạn và có hiệu lực chừng nào KidGate còn hoạt động.',
   subscribeButton: 'Đăng ký Premium',
+  buyLifetimeButton: 'Mua gói Trọn đời',
   restoringPurchases: 'Đang khôi phục…',
   restorePurchases: 'Khôi phục giao dịch',
   premiumDescription:
@@ -161,7 +162,7 @@ export const plans = {
   trustNoAds: 'Không quảng cáo',
   freePlanName: 'Miễn phí',
   freeDescription:
-    'Những tính năng cơ bản vẫn chạy trên mọi thiết bị của trẻ, và một thiết bị gửi báo cáo. Gói này không bao giờ hết hạn.',
+    'Quy tắc vẫn chạy trên mọi thiết bị của trẻ, và một thiết bị vẫn gửi báo cáo. Gói này không bao giờ hết hạn.',
   featureOneChildDevice: 'Báo cáo từ một thiết bị của trẻ',
   termLifetime: 'Trọn đời',
   badgeOneTime: 'Trả một lần',
@@ -222,5 +223,7 @@ export const plans = {
   teaserProofParents: 'Phụ huynh: {{count}}',
   teaserParentCap:
     'Đó là số phụ huynh tối đa một gia đình có được khi chưa có Premium. Premium cho phép gấp đôi.',
+  teaserApps:
+    'Premium cho bạn chặn ứng dụng ngay từ điện thoại của mình, và báo khi có ứng dụng được cài đặt hoặc gỡ.',
   teaserDeviceNote: 'Chỉ thiết bị đang được giám sát mới gửi báo cáo.',
 } as const;

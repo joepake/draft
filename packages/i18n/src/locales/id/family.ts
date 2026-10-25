@@ -102,8 +102,6 @@ export const family = {
   manualCodeLabel: 'Masukkan kode 6 karakter',
   manualInstructions: 'Masukkan kode 6 karakter yang ditampilkan di perangkat lain.',
 
-  headerHintEmpty: 'Kelola dan lindungi perangkat anak Anda',
-
   familyCardManage: 'Kelola keluarga, orang tua, dan perangkat',
 
   familyCardJoined: 'Bergabung sebagai orang tua',
@@ -135,7 +133,7 @@ export const family = {
   chipHealthInactiveCount: '{{count}} tidak aktif lebih dari 24 jam',
   chipLocationBlocked: 'Lokasi tidak diterima',
 
-  chipBlockedCount: '{{count}} diblokir',
+  chipBlockedCount: '{{count}} dalam Jam Diblokir',
 
   healthProtected: 'Terlindungi',
   buildOutdated: 'Pembaruan tersedia',
@@ -156,7 +154,7 @@ export const family = {
   rulesPausedBehind: 'Dijeda — masih memakai pengaturan lama',
   rulesTightenRefused:
     'Aturan di perangkat yang dijeda hanya bisa dilonggarkan, tidak bisa diperketat. Upgrade untuk mengubahnya di semua perangkat.',
-  parkedBannerTitle: 'Pilih perangkat yang tetap dipantau',
+  parkedBannerTitle: 'Pilih perangkat yang melapor',
   parkedBannerBody:
     'Aturan Anda tetap berjalan di semua perangkat. Paket gratis menerima laporan dari satu perangkat dan hanya di perangkat itu Anda bisa memperketat aturan — pilih perangkat tersebut, atau upgrade untuk mempertahankan semuanya.',
   parkedBannerAction: 'Pilih perangkat',
@@ -178,10 +176,10 @@ export const family = {
     'Paket gratis menerima laporan dari satu perangkat dan hanya di perangkat itu Anda bisa memperketat aturan, jadi perangkat ini mulai dalam keadaan dijeda.',
   pairingWillStartPaused:
     'Paket gratis menerima laporan dari satu perangkat dan hanya di perangkat itu Anda bisa memperketat aturan, jadi perangkat baru akan mulai dalam keadaan dijeda.',
-  chooseMonitoredTitle: 'Pilih perangkat utama',
+  chooseMonitoredTitle: 'Pilih perangkat yang melapor',
   chooseMonitoredBody:
     'Semua aturan tetap berjalan di semua perangkat. Perangkat yang Anda pilih mengirim waktu layar dan lokasi, dan hanya di perangkat itu aturan masih bisa diperketat — pada perangkat lain aturan hanya bisa dilonggarkan. Anda bisa mengganti pilihan sekali setiap {{days}} hari.',
-  chooseMonitoredConfirm: 'Pantau perangkat ini',
+  chooseMonitoredConfirm: 'Jadikan perangkat yang melapor',
   chooseMonitoredUpgrade: 'Pertahankan semua perangkat — upgrade',
   chooseMonitoredDone: '{{name}} kini menjadi perangkat yang melapor',
   chooseMonitoredCurrent: 'Sedang melapor',
@@ -206,6 +204,9 @@ export const family = {
 
   emptyDescription:
     'Tambahkan perangkat anak untuk mulai memantau waktu layar dan penggunaan aplikasi.',
+
+  emptyPairSteps:
+    'Instal KidGate di ponsel, tablet, TV, atau komputer yang dipakai anak Anda, pilih “Ini perangkat anak” jika diminta, lalu pindai kode yang ditampilkan.',
 
   setupFamilyTitle: 'Siapkan keluarga',
 
@@ -239,17 +240,10 @@ export const family = {
   guestBenefitLocationBody:
     'Lihat lokasi anak Anda dan minta dia mengonfirmasi bahwa dia aman.',
 
-  stepsHeading: 'Langkah pertama',
-
   step1Title: 'Buka KidGate di perangkat anak',
 
   step1Description:
     'Instal KidGate di ponsel, tablet, TV, atau komputer yang dipakai anak Anda. Di ponsel atau tablet, pilih “Ini perangkat anak”. Kode QR dan kode 6 karakter akan muncul.',
-
-  step2Title: 'Ketuk “Tambahkan perangkat anak” di sini',
-
-  step2Description:
-    'Pindai kode QR itu dengan ponsel ini, atau masukkan kode 6 karakter.',
 
   connectChildButton: 'Hubungkan perangkat anak',
   listHint: 'Geser perangkat ke kiri untuk menghapusnya',

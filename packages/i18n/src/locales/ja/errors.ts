@@ -111,6 +111,7 @@ export const errors = {
     'この家族では、KidGateで管理できるデバイス数の上限に達しています。使わなくなったデバイスを削除してから、もう一度お試しください。',
   rewardTaskLimitReached:
     '同時に有効にできるタスクの数が上限に達しています。1つ削除するか、どれかが完了するまで待ってから、もう一度お試しください。',
+  rewardTaskAlreadyDone: 'このタスクはすでに完了として報告されています。',
   deviceNotPaired:
     'このデバイスは、家族とのペアリングが解除されています。保護者にもう一度ペアリングしてもらってください。',
   bonusMinutesOutOfRange:

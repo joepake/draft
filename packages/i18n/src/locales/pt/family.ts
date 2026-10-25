@@ -103,8 +103,6 @@ export const family = {
   manualCodeLabel: 'Digite o código de 6 caracteres',
   manualInstructions: 'Digite o código de 6 caracteres exibido no outro dispositivo.',
 
-  headerHintEmpty: 'Gerencie e proteja os dispositivos dos seus filhos',
-
   familyCardManage: 'Gerenciar família, responsáveis e dispositivos',
 
   familyCardJoined: 'Você entrou como responsável',
@@ -137,8 +135,7 @@ export const family = {
   chipHealthInactiveCount: '{{count}} inativos há mais de 24 h',
   chipLocationBlocked: 'Localização não recebida',
 
-  chipBlockedCount: '{{count}} bloqueados',
-  chipBlockedCount_one: '{{count}} bloqueado',
+  chipBlockedCount: '{{count}} em Horários bloqueados',
 
   healthProtected: 'Protegido',
   buildOutdated: 'Atualização disponível',
@@ -159,7 +156,7 @@ export const family = {
   rulesPausedBehind: 'Em pausa — ainda com um ajuste anterior',
   rulesTightenRefused:
     'Num dispositivo em pausa, as regras só podem ser afrouxadas, nunca apertadas. Faça upgrade para mudar isso em todos os dispositivos.',
-  parkedBannerTitle: 'Escolha o dispositivo que você vai continuar acompanhando',
+  parkedBannerTitle: 'Escolha o dispositivo que reporta',
   parkedBannerBody:
     'Suas regras continuam funcionando em todos os dispositivos. O plano gratuito recebe relatórios de um dispositivo e só nele você pode apertar as regras: escolha esse dispositivo, ou faça upgrade para manter todos.',
   parkedBannerAction: 'Escolher dispositivo',
@@ -181,10 +178,10 @@ export const family = {
     'O plano gratuito recebe relatórios de um dispositivo e só nele você pode apertar as regras, então este dispositivo começa em pausa.',
   pairingWillStartPaused:
     'O plano gratuito recebe relatórios de um dispositivo e só nele você pode apertar as regras, então o novo dispositivo começará em pausa.',
-  chooseMonitoredTitle: 'Escolha seu dispositivo principal',
+  chooseMonitoredTitle: 'Escolha o dispositivo que reporta',
   chooseMonitoredBody:
     'Todas as regras continuam ativas em todos. O dispositivo que você escolher envia tempo de tela e localização, e é o único em que você ainda pode apertar as regras: nos outros dá só para afrouxar. Você pode trocar de dispositivo uma vez a cada {{days}} dias.',
-  chooseMonitoredConfirm: 'Acompanhar este dispositivo',
+  chooseMonitoredConfirm: 'Definir como dispositivo que reporta',
   chooseMonitoredUpgrade: 'Manter todos: fazer upgrade',
   chooseMonitoredDone: '{{name}} agora é o dispositivo que reporta',
   chooseMonitoredCurrent: 'Reportando agora',
@@ -208,6 +205,9 @@ export const family = {
 
   emptyDescription:
     'Adicione o dispositivo do seu filho para começar a monitorar o tempo de tela e o uso de aplicativos.',
+
+  emptyPairSteps:
+    'Instale o KidGate no celular, tablet, TV ou computador que seu filho usa, escolha “Este é um dispositivo de uma criança” se o app perguntar e escaneie o código que aparecer.',
 
   setupFamilyTitle: 'Configure sua família',
 
@@ -242,17 +242,10 @@ export const family = {
   guestBenefitLocationBody:
     'Veja onde seu filho está e peça para ele confirmar que está em segurança.',
 
-  stepsHeading: 'Primeiros passos',
-
   step1Title: 'Abra o KidGate no dispositivo da criança',
 
   step1Description:
     'Instale o KidGate no celular, tablet, TV ou computador que seu filho usa. Em um celular ou tablet, escolha “Este é um dispositivo de uma criança”. Um QR Code e um código de 6 caracteres vão aparecer.',
-
-  step2Title: 'Toque aqui em “Adicionar dispositivo da criança”',
-
-  step2Description:
-    'Escaneie esse QR Code com este celular ou digite o código de 6 caracteres.',
 
   connectChildButton: 'Conectar dispositivo da criança',
   listHint: 'Deslize um dispositivo para a esquerda para removê-lo',

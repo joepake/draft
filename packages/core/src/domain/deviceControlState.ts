@@ -39,9 +39,21 @@
 import type { Device } from '@kidgate/schema/device';
 
 import { supportsTamperAlerts } from './alertSupport';
+import { dailyLimitOrNone } from './dailyLimit';
 import { getProtectionSummaryKeys, type ProtectionLevel } from './protectionStatus';
 
-export type ControlCardTone = 'active' | 'attention' | 'roadmap';
+/**
+ * - `active` — the rule is on, the feed has something: the ordinary case.
+ * - `idle` — off, not set, nothing yet: the resting state of a control a
+ *   parent has not used. Quiet on both consoles.
+ * - `attention` — asks the parent for something now: protection down, an
+ *   unanswered SOS, a running pause, a Check-In waiting. Coloured on both.
+ *
+ * `idle` was split out of `attention` on 2026-10-25. One tone for both meant
+ * the phone drew "Protection inactive" as quietly as "Off", and the dashboard
+ * drew every "Off" in amber.
+ */
+export type ControlCardTone = 'active' | 'idle' | 'attention' | 'roadmap';
 
 export interface ControlCardStatus {
   /**
@@ -110,6 +122,12 @@ export interface ControlStateFacts {
    */
   reportsAppInstalls?: boolean;
   listsInstalledApps?: boolean;
+  /**
+   * `Device.parentBlockedApps.length` — a parent's Blocks from the console,
+   * over a set the sum. Root, not `controls`, so it arrives as a fact; absent
+   * is none. Counted whatever the switch says, as the agents enforce them.
+   */
+  parentBlockedCount?: number;
   /**
    * `getProtectionSummaryKeys(device).level` — the same verdict the device hero
    * and the Protection Alerts screen read, so the card cannot say "Watching"
@@ -183,7 +201,10 @@ export function resolveControlCardStatus(
 
   switch (actionId) {
     case 'daily-limit': {
-      const minutes = controls.dailyLimitMinutes ?? 0;
+      // A stored full day is none (`dailyLimitOrNone`). Unset says "Not set",
+      // the short word its neighbours use when off — "No limit" at the
+      // value's size outweighed every card beside it (2026-10-24).
+      const minutes = dailyLimitOrNone(controls.dailyLimitMinutes) ?? 0;
       return minutes > 0
         ? counted(
             minutes,
@@ -191,7 +212,7 @@ export function resolveControlCardStatus(
             'active',
             'deviceDetail.editLimit',
           )
-        : worded('shared.unlimited', 'attention', 'deviceDetail.setLimit');
+        : worded('shared.notSet', 'idle', 'deviceDetail.setLimit');
     }
 
     case 'schedule': {
@@ -203,34 +224,7 @@ export function resolveControlCardStatus(
             'active',
             'deviceDetail.editHours',
           )
-        : worded('shared.off', 'attention', 'deviceDetail.setHours');
-    }
-
-    case 'app-limits': {
-      const limits = controls.appLimits?.length ?? 0;
-      return limits > 0
-        ? counted(limits, 'deviceDetail.appLimitsUnit', 'active', 'shared.edit')
-        : worded('shared.off', 'attention', 'deviceDetail.appLimitsSetUp');
-    }
-
-    case 'app-blocking': {
-      /*
-       * "Not set", not "Set up": the value is a STATE, and its siblings say
-       * Off / None / Ready. A verb here reads as a command and duplicates the
-       * button under it.
-       */
-      if (!controls.blockedAppsConfigured) {
-        return worded('shared.notSet', 'attention', 'shared.setUp');
-      }
-      const apps = controls.blockedAppCount ?? 0;
-      const categories = controls.blockedCategoryCount ?? 0;
-      const enabled = controls.appBlockingEnabled === true;
-      return counted(
-        apps + categories || apps || categories,
-        'deviceDetail.items',
-        enabled ? 'active' : 'attention',
-        enabled ? 'deviceDetail.manageApps' : 'shared.turnOn',
-      );
+        : worded('shared.off', 'idle', 'deviceDetail.setHours');
     }
 
     case 'reward-tasks': {
@@ -240,13 +234,13 @@ export function resolveControlCardStatus(
       }
       return tasks > 0
         ? counted(tasks, 'deviceDetail.rewardTasksUnit', 'active', 'shared.manage')
-        : worded('shared.notSet', 'attention', 'shared.setUp');
+        : worded('shared.notSet', 'idle', 'shared.setUp');
     }
 
     case 'web-filter':
       return controls.webFilterEnabled
         ? worded('shared.on', 'active', 'shared.manage')
-        : worded('shared.off', 'attention', 'shared.turnOn');
+        : worded('shared.off', 'idle', 'shared.turnOn');
 
     case 'pause-browsing': {
       if (facts.nowMs === undefined) {
@@ -266,10 +260,11 @@ export function resolveControlCardStatus(
        * `deviceDetail.pauseBrowsingLeft`).
        *
        * A running pause is `attention` and a device browsing normally is
-       * `active`: the tone is what a parent scans the grid for, and the card
+       * `idle`: the tone is what a parent scans the grid for, and the card
        * worth finding is the one still blocking. "Not paused" is the resting
-       * state of every device and must not nag — that is the "Off reads as a
-       * switch somebody forgot" trap recorded on the app-blocking card.
+       * state of every device and must not nag — and must not shout either:
+       * as `active` its "Off" sat in black at display size like a rule in
+       * force (2026-10-25).
        */
       /*
        * The verb differs from every other card's, because the press does. A
@@ -286,7 +281,7 @@ export function resolveControlCardStatus(
             'attention',
             'deviceDetail.pauseBrowsingResume',
           )
-        : worded('deviceDetail.pauseBrowsingOff', 'active', 'shared.manage');
+        : worded('deviceDetail.pauseBrowsingOff', 'idle', 'shared.manage');
     }
 
     case 'web-history': {
@@ -302,7 +297,7 @@ export function resolveControlCardStatus(
             'shared.view',
             day.capped,
           )
-        : worded('shared.none', 'attention', 'shared.view');
+        : worded('shared.none', 'idle', 'shared.view');
     }
 
     case 'request-check-in': {
@@ -315,18 +310,20 @@ export function resolveControlCardStatus(
       if (facts.checkInStatus === 'safe') {
         return worded('shared.done', 'active', 'shared.view');
       }
-      return worded('shared.ready', 'attention', 'shared.view');
+      return worded('shared.ready', 'idle', 'shared.view');
     }
 
     case 'location': {
       if (!controls.locationSharingEnabled) {
-        return worded('shared.off', 'attention', 'shared.setUp');
+        return worded('shared.off', 'idle', 'shared.setUp');
       }
       if (!facts.hasLocationFix) {
-        return worded('deviceDetail.waiting', 'attention', 'shared.openMap');
+        return worded('deviceDetail.waiting', 'idle', 'shared.openMap');
       }
+      // An old fix is the device being quiet, which the hero already says —
+      // not something this card can ask the parent to fix.
       return facts.locationStale
-        ? worded('shared.offline', 'attention', 'shared.openMap')
+        ? worded('shared.offline', 'idle', 'shared.openMap')
         : worded('shared.live', 'active', 'shared.openMap');
     }
 
@@ -341,12 +338,50 @@ export function resolveControlCardStatus(
         // red "2" beside the word "alerts" reads slower than a red 2.
         return counted(active, null, 'attention', 'shared.view');
       }
+      // Answered and quiet: nothing to look at, so it rests with the cards
+      // that are off rather than lighting up like one in use.
       return total > 0
-        ? worded('deviceDetail.sosAllClear', 'active', 'shared.view')
-        : worded('shared.none', 'attention', 'shared.view');
+        ? worded('deviceDetail.sosAllClear', 'idle', 'shared.view')
+        : worded('shared.none', 'idle', 'shared.view');
     }
 
     case 'apps': {
+      /*
+       * Blocking, per-app limits and the app list on one card since
+       * 2026-10-24. The figure is the strongest rule in force — what is
+       * blocked, then what is capped — and only with neither does the card
+       * fall back to what the device reports about its apps.
+       *
+       * A pick counts once the child has picked AND the switch is on: a
+       * picked list with the switch off blocks nothing, so it reads Off with
+       * Turn on rather than a count (prod 2026-10-13, `foldChildAppBlocking`).
+       * A parent's Block counts always — no switch gates it.
+       */
+      const picksInForce =
+        controls.blockedAppsConfigured === true && controls.appBlockingEnabled === true;
+      const parentBlocked = facts.parentBlockedCount ?? 0;
+      if (picksInForce || parentBlocked > 0) {
+        return counted(
+          (picksInForce
+            ? (controls.blockedAppCount ?? 0) + (controls.blockedCategoryCount ?? 0)
+            : 0) + parentBlocked,
+          'deviceDetail.appsBlockedUnit',
+          'active',
+          'shared.manage',
+        );
+      }
+      const limits = controls.appLimits?.length ?? 0;
+      if (limits > 0) {
+        return counted(
+          limits,
+          'deviceDetail.appsLimitedUnit',
+          'active',
+          'shared.manage',
+        );
+      }
+      if (controls.blockedAppsConfigured === true) {
+        return worded('shared.off', 'idle', 'shared.turnOn');
+      }
       if (
         facts.reportsAppInstalls === undefined &&
         facts.listsInstalledApps === undefined
@@ -354,14 +389,16 @@ export function resolveControlCardStatus(
         return null;
       }
       if (facts.reportsAppInstalls === true) {
-        return worded('appAlerts.statusOn', 'active', 'shared.view');
+        return worded('appAlerts.statusOn', 'active', 'shared.manage');
       }
       // Lists what is installed, reports no installs or removals: "Monitoring
       // on" over that machine promised a feed it does not have.
       if (facts.listsInstalledApps === true) {
-        return worded('appAlerts.statusInventory', 'active', 'shared.view');
+        return worded('appAlerts.statusInventory', 'active', 'shared.manage');
       }
-      return worded('appAlerts.statusOff', 'roadmap', 'shared.view');
+      // An iPhone: nothing listed or reported, and blocking still to set up —
+      // "Unavailable" here would hide the one part it can do.
+      return worded('shared.notSet', 'idle', 'shared.setUp');
     }
 
     case 'message-alerts': {
@@ -376,7 +413,7 @@ export function resolveControlCardStatus(
       }
       return places > 0
         ? counted(places, null, 'active', 'shared.view')
-        : worded('deviceDetail.noPlacesYet', 'attention', 'shared.view');
+        : worded('deviceDetail.noPlacesYet', 'idle', 'shared.view');
     }
 
     case 'tamper-alerts':
@@ -400,10 +437,10 @@ export function resolveControlCardStatus(
        * the parent forgot, so the value names the route instead.
        */
       if (facts.supportsVideoHistory === false) {
-        return worded('videoHistory.viaExtension', 'attention', 'shared.view');
+        return worded('videoHistory.viaExtension', 'idle', 'shared.view');
       }
       if (controls.videoHistoryEnabled !== true) {
-        return worded('shared.off', 'attention', 'shared.view');
+        return worded('shared.off', 'idle', 'shared.view');
       }
       // Switched on, but the phone's reader has no grant to run on: "Recording"
       // here was the card vouching for a list that stays empty.
@@ -416,6 +453,23 @@ export function resolveControlCardStatus(
   }
 }
 
+/**
+ * The verbs that only open the card's screen. A phone card draws these as a
+ * chevron, not a button — a button is kept for a press that does something
+ * (turn on, set up, open the map, give the web back), and for every card
+ * asking the parent for something, whatever its verb.
+ */
+const OPEN_ONLY_ACTIONS: ReadonlySet<string> = new Set([
+  'shared.view',
+  'shared.manage',
+  'deviceDetail.editLimit',
+  'deviceDetail.editHours',
+]);
+
+export function isOpenOnlyActionKey(actionLabelKey: string): boolean {
+  return OPEN_ONLY_ACTIONS.has(actionLabelKey);
+}
+
 type AppBlockingControls = Pick<
   ControlStateControls,
   | 'blockedAppsConfigured'
@@ -425,7 +479,7 @@ type AppBlockingControls = Pick<
 >;
 
 /**
- * The `app-blocking` controls of a child's whole set, for the child hub on
+ * The app-blocking controls of a child's whole set, for the child hub on
  * both consoles. Configured is any-of and the counts sum; **on means one
  * machine has its OWN list and its OWN switch** — what the agent enforces
  * (`./childPolicy`). The phone hub read the list alone and said

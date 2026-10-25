@@ -1,10 +1,5 @@
 export const child = {
   pageTitle: 'Trạng thái',
-  statusPaused: 'Đã khóa',
-  statusActive: 'Đang sử dụng',
-  readyTitle: 'Mọi thứ đã sẵn sàng',
-  readyBody:
-    'Nếu cần thêm thời gian sử dụng, con có thể gửi yêu cầu cho bố mẹ ở phía trên. Khi có việc khẩn cấp, hãy dùng nút SOS.',
   setupCollapsedTitle: 'Hoàn tất thiết lập cùng bố mẹ',
   setupCollapsedRequiredCount: '{{count}} mục bắt buộc',
   setupCollapsedOptionalCount: '{{count}} mục tùy chọn',

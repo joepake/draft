@@ -10,6 +10,8 @@ export const macos = {
   headingRemovable: '제거가 얼마나 쉬운지',
 
   parentAccessBody: '이 기기에서 차단할 앱을 고르려면 부모 PIN을 입력하세요.',
+  parentAccessBodyMac:
+    '이 Mac의 설정을 마치거나 로그인 시 KidGate를 여는 설정을 바꾸려면 부모 PIN을 입력하세요.',
   checking: '확인 중…',
 
   enforcing: '보호 실행 중',
@@ -22,10 +24,6 @@ export const macos = {
   lockStateParent: '예 — 부모가 잠갔습니다',
   lockStateSchedule: '예 — 차단 시간',
   lockStateDailyLimit: '예 — 일일 제한 도달',
-
-  appBlocking: '앱 차단',
-  appBlockingBestEffort:
-    '최선 노력 — 앱이 열린 뒤에 닫히며, 열리는 것 자체를 막지는 못합니다',
 
   webFilterLabel: '웹 필터링',
   webFilterUnavailable: '이 Mac에서는 사용할 수 없습니다',

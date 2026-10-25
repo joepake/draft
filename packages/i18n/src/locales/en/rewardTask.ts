@@ -1,5 +1,6 @@
 export const rewardTask = {
-  rewardTasksNote: 'Approved minutes are added to today’s daily limit.',
+  rewardTasksNote:
+    'Approved minutes are added to the daily limit on the day you approve them.',
   unableToCreate: 'Unable to create the task. Try again.',
   unableToUpdate: 'Unable to save the task. Try again.',
   unableToDelete: 'Unable to delete the task. Try again.',
@@ -8,7 +9,6 @@ export const rewardTask = {
   unableToClaim: 'Unable to send this to your parent. Try again.',
   newTask: 'New task',
   editTask: 'Edit task',
-  formSubtitle: 'The reward is added to today’s screen time once you approve it.',
   titleLabel: 'Task',
   titlePlaceholder: 'e.g. Read a book for 20 minutes',
   minutesLabel: 'Reward',
@@ -67,7 +67,7 @@ export const rewardTask = {
   taskRejectedDescription:
     '“{{title}}” was sent back to {{deviceName}} for another try.',
   starsLabel: 'Difficulty',
-  starsHint: 'How hard this one is. Your child collects these as stars.',
+  starsHint: 'Your child collects that many stars.',
   starsEasy: 'Easy',
   starsMedium: 'Medium',
   starsHard: 'Hard',

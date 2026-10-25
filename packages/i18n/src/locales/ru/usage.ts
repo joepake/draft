@@ -2,12 +2,10 @@ export const usage = {
   title: 'Отчёт об использовании',
   fallbackDeviceName: 'Устройство ребёнка',
   sectionToday: 'Сегодня',
-  percentOfLimit: '{{percent}}% от лимита',
   reportedAt: 'Обновлено в {{time}}',
   statUsedLabel: 'Использовано',
   statLeftLabel: 'Осталось',
   statLimitLabel: 'Лимит',
-  limitOff: 'Выкл.',
   insightDailyLimitReached: 'Дневной лимит достигнут',
   insightNearDailyLimit: 'Скоро дневной лимит',
   insightNoDailyLimit: 'Дневной лимит не задан',
@@ -35,7 +33,7 @@ export const usage = {
   dailyLimitReached: 'Дневной лимит достигнут',
   minutesLeftToday: 'Осталось {{remaining}} сегодня',
   minutesUsedTodayShort: 'Использовано {{used}} сегодня',
-  noUsageDataYet: 'Данных об использовании пока нет',
+  noUsageDataYet: 'Данных пока нет',
   usageToday: 'Использование сегодня',
   report: 'Отчёт',
   setDailyLimitToTrack:
@@ -50,24 +48,21 @@ export const usage = {
   syncNoteTv:
     'Этот телевизор выходит на связь только периодически, поэтому экранное время может появиться здесь только через час — дольше при отсутствии подключения к интернету.',
   sectionLast30Days: 'Последние 30 дней',
-  comparePeriodTotal: 'Итог за 30 дней',
+  comparePeriodTotal: 'Всего',
   compareDayAvg: 'Среднее за день',
-  compareVsYesterday: 'по сравнению со вчера',
+  compareVsYesterdaySameTime: '{{value}} по сравнению со вчерашним днём к этому часу',
   dayTodayShort: 'Сегодня',
   chartEmpty: 'График использования сейчас недоступен.',
   chartNoDataYet:
     'Столбцы заполняются по мере синхронизации ежедневного использования с устройства ребёнка. Данные за сегодня обновляются в реальном времени.',
   chartDayNone: 'Нет использования',
   bonusMinutesChip: '+{{minutes}} мин бонуса',
-  dailyLimitGuide: 'Дневной лимит {{duration}}',
-  sectionTopApps: 'Самые используемые приложения',
   topAppsHint:
     'Самые используемые сегодня приложения на устройстве ребёнка. Данные накапливаются по мере синхронизации Экранного времени / доступа к данным об использовании.',
   topAppsExcludedNote:
     'Заставка, главный экран и сам экран KidGate не считаются экранным временем. Когда устройство включено, но им никто не пользуется, эти минуты записываются как «Не используется».',
   topAppsAiNote:
     'Некоторые типы выведены из названия приложения, а не сопоставлены с известным приложением, поэтому часть может быть неточной.',
-  errorTitle: 'Не удалось загрузить использование',
   errorDescription: 'Проверьте подключение и попробуйте снова.',
   tryAgain: 'Повторить',
   // Shown only when the rating is known — it is 0 for much of the long
@@ -84,9 +79,10 @@ export const usage = {
   protectionBlockedApps: 'Заблокированные запуски приложений',
   protectionWebBlocked: 'Заблокированные сайты',
   protectionTamper: 'Оповещения о защите',
-  sectionTimeline: 'Когда устройством пользовались',
+  sectionTimeline: 'Когда экран был включён',
   timelineUsed: 'Используется',
   timelineIdle: 'Не используется',
+  idleRow: 'Экран включён, не используется',
   timelineUnmeasured: 'Не измерено',
   timelineUnmeasuredHint:
     'KidGate не работал на устройстве, или устройство спало. Эти минуты не входят и в общее время.',

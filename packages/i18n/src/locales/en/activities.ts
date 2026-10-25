@@ -16,7 +16,6 @@ export const activities = {
   fallbackChildName: 'your child',
   liveBadge: 'Live',
   // Header pill next to the live badge; opens the weekly report.
-  errorTitle: 'Unable to load activity',
   tryAgain: 'Try again',
   emptyTitleAll: 'No activity yet',
   emptyTitleDevice: 'No activity for this device',
@@ -139,7 +138,7 @@ export const activities = {
     'The lock screen may stop appearing over other apps until Display over other apps is turned back on.',
   tamperAccessibilityTitle: 'Accessibility turned off',
   tamperAccessibilityBody:
-    'App blocking and lock enforcement may weaken until Accessibility is turned back on.',
+    'Blocked Apps and the lock may not hold until Accessibility is turned back on.',
   tamperUsageAccessTitle: 'App usage access turned off',
   tamperUsageAccessBody:
     'App limits and Blocked Hours may stop until KidGate can measure app usage on the child device again.',

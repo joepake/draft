@@ -1,8 +1,5 @@
 export const appAlerts = {
   fallbackDeviceName: 'Appareil de l’enfant',
-  heroTitle: 'Surveillez les installations et suppressions d’apps',
-  heroSubtitle:
-    'KidGate surveille les installations et désinstallations d’apps sur cet appareil et les enregistre dans Activité.',
   statusOn: 'Surveillance active',
   statusInventory: 'Liste les apps installées',
   statusOff: 'Indisponible',
@@ -16,9 +13,6 @@ export const appAlerts = {
     'Les parents reçoivent une notification push à chaque installation ou suppression d’app.',
   infoLine3:
     'Consultez la liste ici, puis bloquez les applications à risque depuis Applications bloquées.',
-  heroTitleExtension: 'Surveillez les installations et suppressions d’extensions',
-  heroSubtitleExtension:
-    'KidGate surveille les installations et suppressions d’extensions dans le profil Chrome où il est installé et les enregistre dans Activité.',
   emptyTitleExtension: 'Aucun changement d’extension pour le moment',
   emptySubtitleExtension:
     'Quand votre enfant installe ou supprime une extension Chrome, l’événement apparaît ici et dans Activité.',
@@ -27,8 +21,6 @@ export const appAlerts = {
   infoLine2Extension:
     'Les parents reçoivent une notification push à chaque installation ou suppression d’extension.',
   recentTitle: 'Changements récents',
-  statInstalled: 'Installée',
-  statRemoved: 'Supprimée',
   pendingBadge: 'Bloquée jusqu’à ce que vous l’autorisiez',
   approvedBadge: 'Autorisée',
   allowApp: 'Autoriser',

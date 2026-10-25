@@ -75,6 +75,11 @@ export const location = {
   childDevicesOnline: '{{online}} of {{total}} online',
   childNoneOnline: 'No device online',
   childPickCarriedA11y: 'Mark {{deviceName}} as the device {{childName}} carries',
+  carriedFrom: 'Location from {{deviceName}}',
+  changeCarried: 'Change device',
+  carriedSuggestion: '{{deviceName}} sent a location {{time}}.',
+  useCarried: 'Use {{deviceName}}',
+  carriedBadge: 'Carried',
   stayRange: '{{from}} – {{to}}',
   wizardStepAllow:
     'Select Allow, then choose Always so updates keep coming in the background.',

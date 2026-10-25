@@ -16,7 +16,7 @@ export const blockedApps = {
   installApprovalInfoLine2:
     '알림을 받게 되며, 해당 앱은 허용할 때까지 아래 “차단된 앱”에 표시됩니다.',
   installApprovalInfoLine3:
-    '앱을 허용하면 바로 열 수 있습니다. 허용하지 않은 앱은 계속 차단된 상태로 남습니다.',
+    '허용한 앱은 연결된 자녀 기기에서 1분 안에 열 수 있습니다. 허용하지 않은 앱은 계속 차단된 상태로 남습니다.',
   installApprovalInfoLine1Ios:
     '이 기능이 켜져 있는 동안에는 자녀 기기에서 App Store가 숨겨지므로 새 앱을 설치할 수 없습니다.',
   installApprovalInfoLine2Ios: '기기에 이미 있는 앱은 계속 작동합니다.',
@@ -37,13 +37,13 @@ export const blockedApps = {
   heroTitle: '차단하도록 선택된 앱',
   heroSubtitle:
     '이 앱과 카테고리는 자녀의 기기에서 선택됩니다. KidGate가 목록을 동기화하여 여기에서 확인할 수 있습니다.',
-  toggleTitle: '앱 차단 사용',
+  toggleTitle: '차단된 앱 사용',
   toggleSubtitleOn: '선택한 앱이 자녀의 기기에서 차단됩니다.',
   toggleSubtitleOff: '선택한 앱을 원격으로 차단하려면 켜세요.',
-  toggleAccessibilityLabel: '앱 차단 사용',
+  toggleAccessibilityLabel: '차단된 앱 사용',
   emptyTitle: '아직 차단된 앱이 없습니다',
   emptySubtitle:
-    '자녀 기기에서 KidGate 설정을 열고 부모 PIN을 입력한 다음, 앱 차단 → 차단된 앱을 열어 선택 내용을 저장하세요.',
+    '“설치된 앱”에서 앱을 차단하세요. iPhone에서는 iPhone에서 직접 앱을 선택하세요.',
   emptySubtitleTv:
     'TV에서 KidGate를 열고 “{{button}}”을(를) 선택한 다음 부모 PIN을 입력하고, 앱을 선택해 저장하세요.',
   sectionTitle: '차단 목록',
@@ -51,9 +51,11 @@ export const blockedApps = {
   privacySubtitle:
     'iOS에서는 Apple 정책에 따라 부모 기기에서 정확한 앱 이름이 숨겨질 수 있습니다. 다른 기기에서는 선택한 앱 이름이 여기로 동기화됩니다. 목록을 변경하려면 자녀의 기기에서 부모 PIN이 필요합니다.',
   infoTitle: '작동 방식',
-  infoLine1: '부모 PIN을 입력한 후 자녀의 기기에서 앱을 선택하세요.',
+  infoLine1:
+    '“설치된 앱”에서 앱을 차단하세요. iPhone에서는 부모 PIN을 입력한 후 iPhone에서 직접 선택하세요.',
   infoLine2: '잠금, 차단 시간 및 일일 제한은 계속해서 모든 앱을 차단합니다.',
-  infoLine3: '이 화면에서 언제든지 차단을 켜거나 끌 수 있습니다.',
+  infoLine3:
+    '이 화면에서 언제든지 차단을 켜거나 끌 수 있습니다. 연결된 자녀 기기는 모든 변경을 1분 안에 받습니다.',
   appKind: '앱',
   categoryKind: '카테고리',
   websiteKind: '웹사이트',
@@ -68,15 +70,17 @@ export const blockedApps = {
   blockedAppsLabel: '차단된 앱',
   appsConfiguredChip: '앱 설정 완료',
   appsNotSetChip: '앱 미설정',
-  appBlockingSectionTitle: '앱 차단',
+  appBlockingSectionTitle: '차단된 앱',
   appBlockingSectionDescription: '부모가 이 기기에서 차단할 수 있는 앱을 선택하세요.',
   savedItemsForBlocking: '차단할 {{count}}개의 항목을 저장했습니다.',
   savedItemsForBlocking_one: '차단할 {{count}}개의 항목을 저장했습니다.',
   noAppsSelected: '선택된 앱이 없습니다.',
   unableToOpenAppPicker: '앱 선택기를 열 수 없습니다. 다시 시도해 주세요.',
   wizardStepPin: '설정에서 요청하면 부모 PIN을 입력하세요.',
-  wizardStepChoose: '앱 차단에서 차단된 앱을 열고, 앱을 선택한 뒤 저장하세요.',
+  wizardStepChoose: '“차단된 앱”을 열고, 앱을 선택한 뒤 저장하세요.',
   pickerSubtitle: '이 기기에서 차단할 앱과 카테고리를 선택하세요.',
-  pickerSubtitleAndroid: '앱 차단이 켜져 있는 동안 체크한 앱은 열리는 즉시 닫힙니다.',
+  pickerSubtitleAndroid:
+    '“차단된 앱”이 켜져 있는 동안 체크한 앱은 열리는 즉시 닫힙니다.',
   pickerEmpty: '이 기기에서 앱을 찾을 수 없습니다.',
+  blockingOffPill: '차단된 앱 꺼짐',
 } as const;

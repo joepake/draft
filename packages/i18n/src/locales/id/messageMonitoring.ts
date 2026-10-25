@@ -119,10 +119,9 @@ export const messageMonitoring = {
     revokedBody:
       'Android mematikan izin yang dibutuhkan KidGate, jadi pesan tidak lagi diperiksa. Buka KidGate di perangkat anak Anda dan berikan izinnya lagi.',
     offTitle: 'Peringatan pesan belum aktif',
-    offBody:
-      'Tidak ada yang diperiksa di perangkat anak Anda, jadi tidak ada peringatan yang bisa muncul di sini. Buka KidGate di perangkatnya untuk menyiapkannya.',
+    offBody: 'Buka KidGate di perangkat anak Anda untuk menyiapkannya.',
     switchedOffBody:
-      'Tidak ada yang sedang diperiksa di perangkat anak Anda, jadi tidak ada peringatan yang bisa muncul di sini. Aktifkan “Pindai pesan yang diterima” di pengaturan pada layar ini.',
+      'Aktifkan “Pindai pesan yang diterima” di pengaturan pada layar ini.',
     pendingTitle: 'Menunggu perangkat anak menerapkannya',
     pendingBody:
       'Anda sudah menyalakannya. Perangkat anak akan mengambil perubahan ini saat terhubung berikutnya, biasanya dalam beberapa menit — lebih cepat jika ponselnya sedang menyala. Tidak ada yang perlu Anda lakukan.',

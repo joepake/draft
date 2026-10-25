@@ -11,6 +11,8 @@ export const macos = {
 
   parentAccessBody:
     'Saisissez le code PIN parent pour choisir les applications bloquées sur cet appareil.',
+  parentAccessBodyMac:
+    'Saisissez le code PIN parent pour terminer la configuration de ce Mac ou choisir d’ouvrir ou non KidGate à l’ouverture de session.',
   checking: 'Vérification…',
 
   enforcing: 'Protection active',
@@ -25,10 +27,6 @@ export const macos = {
   lockStateParent: 'Oui — verrouillé par un parent',
   lockStateSchedule: 'Oui — Heures bloquées',
   lockStateDailyLimit: 'Oui — Limite quotidienne atteinte',
-
-  appBlocking: 'Blocage d’applications',
-  appBlockingBestEffort:
-    'Au mieux — les applications sont fermées après leur ouverture, pas empêchées de s’ouvrir',
 
   webFilterLabel: 'Filtrage web',
   webFilterUnavailable: 'Indisponible sur ce Mac',

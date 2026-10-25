@@ -100,8 +100,6 @@ export const family = {
   manualCodeLabel: '6자리 코드 입력',
   manualInstructions: '다른 기기에 표시된 6자리 코드를 입력하세요.',
 
-  headerHintEmpty: '자녀의 기기를 관리하고 보호하세요',
-
   familyCardManage: '가족, 부모 및 기기 관리',
 
   familyCardJoined: '부모로 참여 중',
@@ -133,7 +131,7 @@ export const family = {
   chipHealthInactiveCount: '{{count}}대 24시간 넘게 무응답',
   chipLocationBlocked: '위치 수신 안 됨',
 
-  chipBlockedCount: '{{count}}개 차단됨',
+  chipBlockedCount: '{{count}}대 차단 시간 중',
 
   healthProtected: '보호 중',
   buildOutdated: '업데이트 있음',
@@ -154,7 +152,7 @@ export const family = {
   rulesPausedBehind: '일시중지됨 — 아직 이전 설정입니다',
   rulesTightenRefused:
     '일시중지된 기기는 규칙을 완화만 할 수 있고 강화할 수 없습니다. 모든 기기에서 변경하려면 업그레이드하세요.',
-  parkedBannerTitle: '계속 지켜볼 기기를 선택하세요',
+  parkedBannerTitle: '보고하는 기기를 선택하세요',
   parkedBannerBody:
     '규칙은 모든 기기에서 계속 작동합니다. 무료 플랜은 한 기기에서만 보고를 받고, 규칙을 더 엄격하게 바꾸는 것도 그 기기에서만 가능합니다 — 그 기기를 선택하거나, 업그레이드해 모두 유지하세요.',
   parkedBannerAction: '기기 선택',
@@ -176,10 +174,10 @@ export const family = {
     '무료 플랜은 한 기기에서만 보고를 받고 규칙을 더 엄격하게 바꾸는 것도 그 기기에서만 가능하므로, 이 기기는 일시중지된 상태로 시작됩니다.',
   pairingWillStartPaused:
     '무료 플랜은 한 기기에서만 보고를 받고 규칙을 더 엄격하게 바꾸는 것도 그 기기에서만 가능하므로, 새 기기는 일시중지된 상태로 시작됩니다.',
-  chooseMonitoredTitle: '주 기기를 선택하세요',
+  chooseMonitoredTitle: '보고하는 기기를 선택하세요',
   chooseMonitoredBody:
     '모든 기기에서 규칙은 그대로 유지됩니다. 선택한 기기가 사용 시간과 위치를 보내고, 규칙을 더 엄격하게 바꿀 수 있는 것도 그 기기뿐입니다 — 나머지 기기에서는 완화만 할 수 있습니다. 선택한 기기는 {{days}}일에 한 번 바꿀 수 있습니다.',
-  chooseMonitoredConfirm: '이 기기 지켜보기',
+  chooseMonitoredConfirm: '보고하는 기기로 설정',
   chooseMonitoredUpgrade: '모든 기기 유지 — 업그레이드',
   chooseMonitoredDone: '이제 {{name}}이(가) 보고하는 기기입니다',
   chooseMonitoredCurrent: '지금 보고하는 기기',
@@ -201,6 +199,9 @@ export const family = {
   emptyTitle: '등록된 자녀 기기가 없습니다',
 
   emptyDescription: '자녀 기기를 추가하고 화면 사용 시간과 앱 사용을 관리하세요.',
+
+  emptyPairSteps:
+    '자녀가 사용하는 휴대전화, 태블릿, TV 또는 컴퓨터에 KidGate를 설치하고, 물어보면 “자녀 기기입니다”를 선택한 뒤 표시되는 코드를 스캔하세요.',
 
   setupFamilyTitle: '가족 설정',
 
@@ -234,16 +235,10 @@ export const family = {
   guestBenefitLocationBody:
     '자녀의 위치를 확인하고, 체크인으로 무사한지 알려 달라고 할 수 있습니다.',
 
-  stepsHeading: '시작하기',
-
   step1Title: '자녀 기기에서 KidGate 열기',
 
   step1Description:
     '자녀가 사용하는 휴대전화, 태블릿, TV 또는 컴퓨터에 KidGate를 설치하세요. 휴대전화나 태블릿에서는 “자녀 기기입니다”를 선택하세요. QR 코드와 6자리 코드가 표시됩니다.',
-
-  step2Title: '여기서 “자녀 기기 추가”를 누르세요',
-
-  step2Description: '이 휴대전화로 그 QR 코드를 스캔하거나 6자리 코드를 입력하세요.',
 
   connectChildButton: '자녀 기기 연결',
   listHint: '기기를 왼쪽으로 밀어 삭제하세요',

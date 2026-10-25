@@ -431,6 +431,13 @@ export interface DeviceOtaRequestResult {
   atMs: number;
 }
 
+/**
+ * Most ids `Device.parentBlockedApps` may hold — `setParentAppBlock` refuses
+ * the next Block past it. The list rides the document every console reads and
+ * every enforcement tick compares, so it is capped like `MAX_APPROVED_PACKAGES`.
+ */
+export const MAX_PARENT_BLOCKED_APPS = 200;
+
 export interface Device {
   id: string;
   name: string;
@@ -691,6 +698,20 @@ export interface Device {
    * Server-written; `firestore.rules` pins it.
    */
   operatorHold?: OperatorHold;
+  /**
+   * Apps a parent blocked from the parent console, by inventory id — the same
+   * `AppRef.id` this device's scan lists and its enforcement matches.
+   *
+   * At the document root, not in `controls`, and written only by
+   * `setParentAppBlock` (Admin SDK); `firestore.rules` pins it for every
+   * client inside an existing `affectedKeys()` check, because the device
+   * rule has no room for another comparison. Enforced beside the child's own
+   * picks, never instead of them, and whatever `appBlockingEnabled` says —
+   * that switch is the picks' (`docs/FEASIBILITY.md`, "Parent-set app
+   * blocking", macOS first). Only an agent publishing
+   * `capabilities.parentAppBlocking` reads it; absent is none.
+   */
+  parentBlockedApps?: string[];
   /**
    * When this device became the monitored one, ISO. Absent on every device
    * that has never been chosen, which is most of them.

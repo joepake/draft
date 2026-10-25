@@ -212,6 +212,7 @@ export const webFilter = {
   categoriesOnCount: '{{total}}개 중 {{on}}개 켜짐',
   askToOpen: '부모님께 요청하기',
   askToOpenSubtitle: '허락하면 이 사이트를 열 수 있어요.',
+  askToOpenHomeSubtitle: '부모님께 차단된 사이트를 열어 달라고 요청해 보세요.',
   askToOpenDomainLabel: '어떤 사이트인가요?',
   askToOpenBlockedLabel: '최근에 차단된 사이트',
   askToOpenPending: '이미 사이트를 요청했어요. 답을 기다려 주세요.',

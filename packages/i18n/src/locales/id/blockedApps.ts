@@ -17,7 +17,7 @@ export const blockedApps = {
   installApprovalInfoLine2:
     'Anda akan menerima notifikasi, dan aplikasi itu muncul di bawah, di Aplikasi yang Diblokir, sampai Anda mengizinkannya.',
   installApprovalInfoLine3:
-    'Mengizinkan aplikasi membuatnya bisa langsung dibuka. Aplikasi yang tidak Anda izinkan akan tetap diblokir.',
+    'Aplikasi yang Anda izinkan terbuka dalam satu menit di perangkat anak yang terhubung. Aplikasi yang tidak Anda izinkan tetap diblokir.',
   installApprovalInfoLine1Ios:
     'Selama fitur ini aktif, App Store disembunyikan di perangkat anak, jadi aplikasi baru tidak bisa dipasang.',
   installApprovalInfoLine2Ios: 'Aplikasi yang sudah ada di perangkat tetap berfungsi.',
@@ -38,13 +38,13 @@ export const blockedApps = {
   heroTitle: 'Aplikasi yang dipilih untuk diblokir',
   heroSubtitle:
     'Aplikasi dan kategori ini dipilih di perangkat anak. KidGate menyinkronkan daftar ini agar Anda dapat meninjaunya.',
-  toggleTitle: 'Aktifkan Pemblokiran Aplikasi',
+  toggleTitle: 'Aktifkan Aplikasi yang Diblokir',
   toggleSubtitleOn: 'Aplikasi yang dipilih diblokir di perangkat anak.',
   toggleSubtitleOff: 'Aktifkan untuk memblokir aplikasi yang dipilih dari jarak jauh.',
-  toggleAccessibilityLabel: 'Aktifkan Pemblokiran Aplikasi',
+  toggleAccessibilityLabel: 'Aktifkan Aplikasi yang Diblokir',
   emptyTitle: 'Belum ada aplikasi yang diblokir',
   emptySubtitle:
-    'Di perangkat anak, buka Pengaturan KidGate, masukkan PIN Orang Tua, lalu buka Pemblokiran Aplikasi → Aplikasi yang Diblokir dan simpan pilihan.',
+    'Blokir aplikasi dari “Aplikasi terpasang”. Di iPhone, pilih aplikasinya langsung di iPhone itu.',
   emptySubtitleTv:
     'Di TV, buka KidGate, pilih “{{button}}”, masukkan PIN Orang Tua, lalu pilih aplikasinya dan simpan.',
   sectionTitle: 'Daftar blokir',
@@ -52,10 +52,11 @@ export const blockedApps = {
   privacySubtitle:
     'Di iOS, Apple mungkin menyembunyikan nama aplikasi yang sebenarnya dari perangkat orang tua. Di perangkat lain, nama aplikasi yang dipilih akan disinkronkan ke sini. Untuk mengubah daftar, PIN Orang Tua tetap harus dimasukkan di perangkat anak.',
   infoTitle: 'Cara kerjanya',
-  infoLine1: 'Pilih aplikasi di perangkat anak setelah memasukkan PIN Orang Tua.',
+  infoLine1:
+    'Blokir aplikasi dari “Aplikasi terpasang”. Di iPhone, pilih aplikasinya langsung di iPhone dengan PIN Orang Tua.',
   infoLine2: 'Kunci, Jam Diblokir, dan Batas Harian tetap memblokir semua aplikasi.',
   infoLine3:
-    'Anda dapat mengaktifkan atau menonaktifkan pemblokiran kapan saja dari layar ini.',
+    'Anda dapat mengaktifkan atau menonaktifkan pemblokiran kapan saja dari layar ini. Perangkat anak yang terhubung menerima setiap perubahan dalam satu menit.',
   appKind: 'Aplikasi',
   categoryKind: 'Kategori',
   websiteKind: 'Situs web',
@@ -70,7 +71,7 @@ export const blockedApps = {
   blockedAppsLabel: 'Aplikasi yang Diblokir',
   appsConfiguredChip: 'Aplikasi telah dikonfigurasi',
   appsNotSetChip: 'Aplikasi belum dikonfigurasi',
-  appBlockingSectionTitle: 'Pemblokiran Aplikasi',
+  appBlockingSectionTitle: 'Aplikasi yang Diblokir',
   appBlockingSectionDescription:
     'Pilih aplikasi yang dapat diblokir oleh orang tua di perangkat ini.',
   savedItemsForBlocking: '{{count}} item disimpan untuk diblokir.',
@@ -78,10 +79,10 @@ export const blockedApps = {
   noAppsSelected: 'Tidak ada aplikasi yang dipilih.',
   unableToOpenAppPicker: 'Tidak dapat membuka pemilih aplikasi. Silakan coba lagi.',
   wizardStepPin: 'Masukkan PIN orang tua saat Pengaturan memintanya.',
-  wizardStepChoose:
-    'Buka Aplikasi yang Diblokir di bagian Pemblokiran Aplikasi, centang aplikasinya, lalu simpan.',
+  wizardStepChoose: 'Buka Aplikasi yang Diblokir, centang aplikasinya, lalu simpan.',
   pickerSubtitle: 'Pilih aplikasi dan kategori yang akan diblokir di perangkat ini.',
   pickerSubtitleAndroid:
-    'Selama Pemblokiran Aplikasi aktif, aplikasi yang dicentang langsung ditutup begitu dibuka.',
+    'Selama fitur Aplikasi yang Diblokir aktif, aplikasi yang dicentang langsung ditutup begitu dibuka.',
   pickerEmpty: 'Tidak ada aplikasi yang ditemukan di perangkat ini.',
+  blockingOffPill: 'Fitur Aplikasi yang Diblokir nonaktif',
 } as const;

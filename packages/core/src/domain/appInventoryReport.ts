@@ -257,6 +257,15 @@ function byLabel(a: InventoryRow, b: InventoryRow): number {
  * reached. A caller that passes an incomplete map gets those apps in
  * `unclassified`, which is the honest answer to "we did not look it up".
  */
+/**
+ * KidGate's own row in a scan: `kidgate.exe` on Windows, `com.kidgate.*` as the
+ * Android, TV and Mac package/bundle id.
+ */
+export function isKidGateApp(id: string): boolean {
+  const lower = id.toLowerCase();
+  return lower === 'kidgate.exe' || lower.startsWith('com.kidgate.');
+}
+
 export function buildAppInventoryReport(
   inventory: AppInventory,
   categories: ReadonlyMap<string, AppCategoryEntry | null>,
@@ -323,6 +332,8 @@ export function buildAppInventoryReport(
   let hiddenCount = 0;
 
   for (const app of inventory.apps) {
+    // KidGate itself is not an app a parent can block or review.
+    if (isKidGateApp(app.id)) continue;
     const entry = categories.get(app.id) ?? null;
     if (entry && !isShowableAppCategory(entry)) {
       hiddenCount += 1;

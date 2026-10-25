@@ -4,7 +4,6 @@ export const placeAlerts = {
   mergedFromDevices:
     'Fusionnée à partir des lieux existants de chaque appareil. Enregistrer applique cette liste unique à tous les appareils.',
   fallbackDeviceName: 'Appareil de l’enfant',
-  statusReady: 'Position prête',
   statusNeedLocation: 'En attente de la position de l’appareil de l’enfant',
   tabPlaces: 'Lieux',
   tabActivity: 'Activité',
@@ -22,8 +21,6 @@ export const placeAlerts = {
   editPlaceAccessibility: 'Modifier {{name}}',
   radiusLabel: 'Rayon d’alerte',
   radiusValue: '{{meters}} m',
-  radiusHint:
-    'À quelle distance l’appareil doit se trouver pour que ce lieu compte. Un rayon plus petit que l’erreur de position de l’appareil ne rend pas les alertes plus précises : des arrivées et des départs risquent de ne pas être signalés.',
   radiusAccuracyHint:
     'Ici, cet appareil indique sa position à environ ±{{accuracy}} m près.',
   radiusBelowAccuracy:
@@ -45,8 +42,6 @@ export const placeAlerts = {
   emptyEventsTitle: 'Aucune activité de lieu pour le moment',
   emptyEventsSubtitle:
     'Lorsque cet appareil entre dans un lieu enregistré ou en sort, les événements apparaissent ici.',
-  emptyPlaces:
-    'Choisissez un endroit sur la carte, nommez-le, puis enregistrez. Jusqu’à {{max}} lieux.',
   noLocationToast:
     'Veuillez d’abord attendre une mise à jour de position de l’appareil de l’enfant.',
   maxPlacesToast: 'Vous pouvez enregistrer jusqu’à {{max}} lieux.',

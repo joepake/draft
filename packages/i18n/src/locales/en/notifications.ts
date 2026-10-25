@@ -12,7 +12,7 @@ export const notifications = {
   sectionSummary: 'Summary',
   sectionQuietHours: 'Quiet hours',
   sectionQuietHoursHint:
-    'No alerts are sent during this window, and none are sent afterwards. Events still appear in Activities. SOS is never held back, and the most serious Message Alerts still come through.',
+    'Only SOS and the most serious Message Alerts come through in this window. Nothing is sent afterwards; events still appear in Activities.',
   quietHoursLabel: 'Quiet hours',
   quietHoursOff: 'Off — alerts arrive at any time',
   quietHoursActive: 'No alerts sent from {{start}} to {{end}}',
@@ -35,7 +35,7 @@ export const notifications = {
   alert: {
     tamperAlerts: {
       label: 'Protection Alerts',
-      hint: 'On a child device, a permission KidGate needs was switched off, the date, time or time zone was changed, or SOS was pressed while it was locked. The SOS alert itself always comes through.',
+      hint: 'A permission KidGate needs is switched off on a child device, its clock or time zone is changed, or SOS is pressed while it is locked.',
     },
     placeAlerts: {
       label: 'Place Alerts',

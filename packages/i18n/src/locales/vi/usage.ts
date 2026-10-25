@@ -2,12 +2,10 @@ export const usage = {
   title: 'Báo cáo sử dụng',
   fallbackDeviceName: 'Thiết bị của trẻ',
   sectionToday: 'Hôm nay',
-  percentOfLimit: '{{percent}}% giới hạn',
   reportedAt: 'Cập nhật lúc {{time}}',
   statUsedLabel: 'Đã dùng',
   statLeftLabel: 'Còn lại',
   statLimitLabel: 'Giới hạn',
-  limitOff: 'Tắt',
   insightDailyLimitReached: 'Đã đạt giới hạn hằng ngày',
   insightNearDailyLimit: 'Sắp đạt giới hạn hằng ngày',
   insightNoDailyLimit: 'Chưa đặt giới hạn hằng ngày',
@@ -49,24 +47,21 @@ export const usage = {
   syncNoteTv:
     'TV này chỉ kết nối theo định kỳ, nên thời gian sử dụng có thể mất tới một giờ để hiện trên màn hình này — lâu hơn nếu không có kết nối mạng.',
   sectionLast30Days: '30 ngày gần đây',
-  comparePeriodTotal: 'Tổng 30 ngày',
+  comparePeriodTotal: 'Tổng',
   compareDayAvg: 'Trung bình/ngày',
-  compareVsYesterday: 'so với hôm qua',
+  compareVsYesterdaySameTime: '{{value}} so với cùng giờ hôm qua',
   dayTodayShort: 'Hôm nay',
   chartEmpty: 'Không tải được biểu đồ vào lúc này.',
   chartNoDataYet:
     'Các cột sẽ được điền khi thiết bị của trẻ đồng bộ dữ liệu từng ngày. Số liệu hôm nay được cập nhật theo thời gian thực.',
   chartDayNone: 'Chưa sử dụng',
   bonusMinutesChip: '+{{minutes}} phút thưởng',
-  dailyLimitGuide: 'Giới hạn hằng ngày {{duration}}',
-  sectionTopApps: 'Ứng dụng dùng nhiều nhất',
   topAppsHint:
     'Các ứng dụng được dùng nhiều nhất hôm nay trên thiết bị của trẻ. Dữ liệu được bổ sung khi Thời gian sử dụng / Truy cập mức sử dụng đồng bộ.',
   topAppsExcludedNote:
     'Màn hình chờ, màn hình chính và màn hình của KidGate không được tính vào thời gian sử dụng. Khi thiết bị bật nhưng không có hoạt động sử dụng thực tế, thời gian đó được ghi nhận là “Không dùng”.',
   topAppsAiNote:
     'Một số danh mục được suy ra từ tên ứng dụng chứ không khớp với ứng dụng đã biết, nên có thể lệch đôi chút.',
-  errorTitle: 'Không tải được báo cáo sử dụng',
   errorDescription: 'Vui lòng kiểm tra kết nối mạng rồi thử lại.',
   tryAgain: 'Thử lại',
   // Shown only when the rating is known — it is 0 for much of the long
@@ -83,9 +78,10 @@ export const usage = {
   protectionBlockedApps: 'Lượt mở ứng dụng bị chặn',
   protectionWebBlocked: 'Trang web bị chặn',
   protectionTamper: 'Cảnh báo bảo vệ',
-  sectionTimeline: 'Khung giờ sử dụng',
+  sectionTimeline: 'Thời điểm màn hình bật',
   timelineUsed: 'Có dùng',
   timelineIdle: 'Không dùng',
+  idleRow: 'Màn hình bật, không dùng',
   timelineUnmeasured: 'Không đo được',
   timelineUnmeasuredHint:
     'Lúc KidGate không chạy hoặc máy đang ngủ thì không đo được và không tính vào thời gian sử dụng.',

@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import Icon from '@kidgate/web-ui/Icon';
 import { getShownDeviceStatus } from '@kidgate/core/domain/deviceStatus';
+import { isDeviceParked } from '@kidgate/core/domain/deviceParking';
 import { getProtectionSummaryKeys } from '@kidgate/core/domain/protectionStatus';
 import { isWithinAnyScheduleWindow } from '@kidgate/core/domain/scheduleWindow';
 import {
@@ -68,7 +69,10 @@ export function useFamilyCounts({ devices, timeRequests, checkIns, sosAlerts }) 
       const status = getShownDeviceStatus(device, now);
       const level = getProtectionSummaryKeys(device, now).level;
       byDevice.set(device.id, {
-        online: status === 'online' || status === 'locked',
+        // `resolveChildPresence`'s rule, so this count and the child cards
+        // agree: a parked device is not reachable even when its status says
+        // `'locked'` (the lock wins the status for a parked set).
+        online: !isDeviceParked(device) && (status === 'online' || status === 'locked'),
         level,
         blocked: inBlockedHours(device, position),
       });

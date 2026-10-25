@@ -1,8 +1,5 @@
 export const appAlerts = {
   fallbackDeviceName: 'Perangkat anak',
-  heroTitle: 'Pantau pemasangan dan penghapusan aplikasi',
-  heroSubtitle:
-    'KidGate memantau pemasangan dan penghapusan aplikasi di perangkat ini dan mencatatnya di Aktivitas.',
   statusOn: 'Pemantauan aktif',
   statusInventory: 'Mencantumkan aplikasi terpasang',
   statusOff: 'Tidak tersedia',
@@ -16,9 +13,6 @@ export const appAlerts = {
     'Orang tua menerima notifikasi push setiap kali aplikasi dipasang atau dihapus.',
   infoLine3:
     'Tinjau daftarnya di sini, lalu blokir aplikasi berisiko dari Aplikasi Diblokir.',
-  heroTitleExtension: 'Pantau pemasangan dan penghapusan ekstensi',
-  heroSubtitleExtension:
-    'KidGate memantau pemasangan dan penghapusan ekstensi di profil Chrome tempat KidGate terpasang dan mencatatnya di Aktivitas.',
   emptyTitleExtension: 'Belum ada perubahan ekstensi',
   emptySubtitleExtension:
     'Saat anak Anda memasang atau menghapus ekstensi Chrome, peristiwa itu muncul di sini dan di Aktivitas.',
@@ -27,8 +21,6 @@ export const appAlerts = {
   infoLine2Extension:
     'Orang tua menerima notifikasi push setiap kali ekstensi dipasang atau dihapus.',
   recentTitle: 'Perubahan terbaru',
-  statInstalled: 'Terpasang',
-  statRemoved: 'Terhapus',
   pendingBadge: 'Diblokir sampai Anda mengizinkannya',
   approvedBadge: 'Diizinkan',
   allowApp: 'Izinkan',

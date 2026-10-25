@@ -12,7 +12,6 @@ export const activities = {
   fallbackDeviceName: 'thiết bị',
   fallbackChildName: 'con',
   liveBadge: 'Trực tiếp',
-  errorTitle: 'Không tải được nhật ký',
   tryAgain: 'Thử lại',
   emptyTitleAll: 'Chưa có nhật ký',
   emptyTitleDevice: 'Thiết bị này chưa có nhật ký',
@@ -100,7 +99,7 @@ export const activities = {
     'Màn hình khóa có thể ngừng hiển thị đè lên ứng dụng khác cho đến khi bật lại quyền Hiển thị trên ứng dụng khác.',
   tamperAccessibilityTitle: 'Đã tắt Trợ năng',
   tamperAccessibilityBody:
-    'Việc chặn ứng dụng và duy trì khóa có thể không còn hoạt động đầy đủ cho đến khi bật lại Trợ năng.',
+    'Tính năng Chặn ứng dụng và việc duy trì khóa có thể không còn hoạt động đầy đủ cho đến khi bật lại Trợ năng.',
   tamperUsageAccessTitle: 'Đã tắt quyền theo dõi mức sử dụng ứng dụng',
   tamperUsageAccessBody:
     'Giới hạn ứng dụng và Giờ khóa thiết bị có thể ngừng hoạt động cho đến khi KidGate đọc lại được mức sử dụng ứng dụng trên thiết bị của trẻ.',

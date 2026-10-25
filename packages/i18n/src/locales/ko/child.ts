@@ -1,10 +1,5 @@
 export const child = {
   pageTitle: '상태',
-  statusPaused: '잠김',
-  statusActive: '사용 중',
-  readyTitle: '모든 준비 완료',
-  readyBody:
-    '스크린 타임이 더 필요하면 위에서 부모님께 요청을 보낼 수 있어요. 긴급 상황에는 SOS 버튼을 사용하세요.',
   setupCollapsedTitle: '부모님과 함께 설정 마무리',
   setupCollapsedRequiredCount: '필수 {{count}}개',
   setupCollapsedOptionalCount: '선택 {{count}}개',

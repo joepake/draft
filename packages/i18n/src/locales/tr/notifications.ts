@@ -11,7 +11,7 @@ export const notifications = {
   sectionSummary: 'Özet',
   sectionQuietHours: 'Sessiz saatler',
   sectionQuietHoursHint:
-    'Bu aralıkta uyarı gönderilmez ve sonradan da gönderilmez. Olaylar yine de Etkinlikler’de görünür. SOS hiçbir zaman bekletilmez ve en ciddi Mesaj uyarıları yine de gelir.',
+    'Bu aralıkta yalnızca SOS ve en ciddi Mesaj uyarıları gelir. Sonradan hiçbir şey gönderilmez; olaylar yine de Etkinlikler’de görünür.',
   quietHoursLabel: 'Sessiz saatler',
   quietHoursOff: 'Kapalı — uyarılar her saat gelebilir',
   quietHoursActive: '{{start}} – {{end}} arası uyarı gönderilmez',
@@ -31,7 +31,7 @@ export const notifications = {
   alert: {
     tamperAlerts: {
       label: 'Koruma uyarıları',
-      hint: 'Bir çocuk cihazında KidGate’in ihtiyaç duyduğu bir izin kapatıldı, tarih, saat veya saat dilimi değiştirildi ya da cihaz kilitliyken SOS’a basıldı. SOS uyarısının kendisi her zaman gelir.',
+      hint: 'Bir çocuk cihazında KidGate’in ihtiyaç duyduğu bir izin kapatılır, cihazın saati veya saat dilimi değiştirilir ya da cihaz kilitliyken SOS’a basılır.',
     },
     placeAlerts: {
       label: 'Yer uyarıları',

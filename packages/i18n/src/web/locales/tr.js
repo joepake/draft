@@ -185,7 +185,7 @@ export default {
       'Çocuğunuzun telefonuna KidGate’i yükleyin ve bir QR kodu okutarak bağlayın. Bir dakikadan kısa sürer.',
     step3Title: 'Kurallarınızı belirleyin',
     step3Text:
-      'Kendi telefonunuzdan bir Günlük sınır ve Engellenen Saatler seçin, konumu ve uygulama engellemeyi açın. Engellenecek uygulamalar, Ebeveyn PIN’inizle çocuğunuzun cihazında bir kez seçilir.',
+      'Kendi telefonunuzdan bir Günlük sınır ve Engellenen Saatler seçin, konumu ve Engellenen Uygulamalar’ı açın. Engellenecek uygulamalar, Ebeveyn PIN’inizle çocuğunuzun cihazında bir kez seçilir.',
 
     whyEyebrow: 'Neden KidGate',
     whyTitle: 'Gözetim için değil, güven için',
@@ -247,8 +247,8 @@ export default {
     faqMore: 'Başka sorunuz mu var? Destek sayfasına gidin',
 
     ctaTitle: 'Ailenizi korumaya bugün başlayın',
-    ctaSub: 'Tam erişimli 7 günlük ücretsiz deneme.',
-    ctaNote: 'App Store veya Google Play üzerinden istediğiniz zaman iptal edin.',
+    ctaSub: 'Tam erişimli 7 günlük ücretsiz deneme. Kart gerekmez.',
+    ctaNote: 'Deneme bittiğinde kurallarınız ücretsiz planda çalışmaya devam eder.',
   },
 
   login: {
@@ -468,8 +468,7 @@ export default {
     save: 'Kaydet',
 
     unlockTitle: 'Değişiklikler kilitli.',
-    unlockBody:
-      'Görüntüleme hemen çalışır. Bir cihazı kilitlemek, sınırları değiştirmek veya istekleri onaylamak için bu tarayıcının kilidini Ebeveyn PIN’inizle açın — ya da KidGate uygulamasıyla QR kodu okutarak onaylayın. Check-In her iki durumda da çalışır.',
+    unlockBody: 'Yine de her şeyi okuyabilir ve Check-In isteği gönderebilirsiniz.',
     unlockCta: 'Değişikliklerin kilidini aç',
     unlockToChange: 'Önce değişikliklerin kilidini açın',
     refresh: 'Yenile',
@@ -509,10 +508,6 @@ export default {
     tileDeltaDown: '↓ 7 günlük ortalamaya göre %{{percent}}',
     tileBlocked: 'Engellenen denemeler',
     tileBlockedMeta: 'Kurulumdan bu yana durdurulan uygulamalar',
-    tileSites: 'Filtrelenen siteler',
-    tileCategoriesHit_one: '{{count}} kategori etkilendi',
-    tileCategoriesHit_other: '{{count}} kategori etkilendi',
-    tileNothingBlocked: 'Henüz engellenen bir şey yok',
     tileAttention: 'Dikkat gerekiyor',
     tileOpenItems: 'Açık maddeler aşağıda',
     tileAllClear: 'Her şey yolunda',
@@ -570,8 +565,6 @@ export default {
     blockingLabel: 'Engelleme',
     appsBlocked: 'Engellenen uygulamalar',
     categories: 'Kategoriler',
-    perAppHint:
-      'Uygulama başına sınırlar engelleme listesinden bağımsız çalışır — “30 dakika TikTok”, “TikTok yok”tan farklı bir karardır.',
     limitsMax: 'Bir cihaz en fazla {{max}} sınırlı uygulama tutar.',
     perDay: '{{value}}/gün',
     webActivityTitle: 'Web etkinliği',
@@ -597,12 +590,11 @@ export default {
     colVideo: 'Video',
     colChannel: 'Kanal',
     colViews: 'Görüntüleme',
-    filterRefusedTitle: 'Filtrenin reddettikleri',
+    filterRefusedTitle: 'Filtrenin engelledikleri',
     filterRefusedSub_one: '{{count}} engellenen sorgu, son 7 gün',
     filterRefusedSub_other: '{{count}} engellenen sorgu, son 7 gün',
     filterHintIos:
       'Bu iPhone veya iPad yalnızca Apple’ın yetişkin içerik denetimiyle filtreleme yapıyor. Kategoriye göre engelleme için cihazda KidGate’i güncelleyin ve KidGate VPN’ine izin verin.',
-    filterHintAndroid: 'Kategoriler cihazdaki DNS filtresi tarafından uygulanır.',
 
     locationTitle: 'Konum',
     locationUpdated: '{{when}} güncellendi',
@@ -656,8 +648,8 @@ export default {
     rowAppBlocking: 'Engellenen Uygulamalar',
     rowAppBlockingDesc: '{{apps}} · {{categories}}',
     rowWebFilter: 'Web filtresi',
-    rowWebFilterDesc_one: '{{count}} kategori reddedildi',
-    rowWebFilterDesc_other: '{{count}} kategori reddedildi',
+    rowWebFilterDesc_one: '{{count}} kategori engellendi',
+    rowWebFilterDesc_other: '{{count}} kategori engellendi',
     rowNotSupported: 'Bu cihazda desteklenmiyor',
     rowLocation: 'Konum paylaşımı',
     rowLocationDesc: 'Son güncelleme {{when}}',
@@ -669,7 +661,7 @@ export default {
     webFilterCatsTitle: 'Web filtresi kategorileri',
     webFilterCatsSub: 'Engellenen içerik türleri',
     dnsHint:
-      'Filtre çalışırken şifreli DNS çözücüleri her zaman reddedilir — onları erişilebilir bırakmak, bir tarayıcının diğer bütün kategorileri dolaşmasına izin veren şeydir.',
+      'Filtre çalışırken şifreli DNS her zaman engellenir, böylece bir tarayıcı filtreyi dolaşamaz.',
     starChartTitle: 'Yıldız tablosu',
     starChartSub: 'Bu hafta her çocuğun topladığı yıldızlar',
     starChartEmpty:
@@ -712,7 +704,7 @@ export default {
     shareFailed: 'Bu tarayıcıdan kaydedilemiyor. Bunun yerine özeti kopyalayın.',
     emptyBody:
       'Premium ile her pazartesi sabahı bir rapor gelir ve önceki yedi günü kapsar. Bu haftanınkini telefonunuzdaki KidGate uygulamasından da yazabilirsiniz.',
-    loadFailed: 'Raporlar açılamadı. Yeniden denemek için sayfayı yenileyin.',
+    loadFailed: 'Raporlar açılamadı.',
     retryLoad: 'Tekrar dene',
     existed: 'Bu haftanın raporu zaten vardı — işte burada.',
   },
@@ -777,7 +769,7 @@ export default {
 
     faq9Q: 'Belirli uygulamaları nasıl engellerim?',
     faq9A:
-      'Uygulama seçimi çocuk cihazında yapılır: *KidGate → Ayarlar* bölümünü açın, *Ebeveyn PIN’i ile Kilidi Aç* seçeneğine dokunun, *Engellenen Uygulamalar* bölümünü açın, uygulamaları seçip kaydedin. Ardından ebeveyn cihazında o cihazın *Engellenen Uygulamalar* ekranını açıp *Uygulama Engellemeyi Etkinleştir* seçeneğini açın. iOS’ta Apple, tam uygulama adlarını ebeveyn cihazından gizleyebilir — bu bir platform sınırlamasıdır.',
+      'Ebeveyn cihazında çocuğunuzun *Uygulamalar* bölümünü, ardından *Yüklü uygulamalar* bölümünü açın, bir uygulamaya dokunun ve *Engelle* seçeneğini seçin. iPhone’da uygulamalar iPhone’un kendisinde seçilir: *KidGate → Ayarlar* bölümünü açın, *Ebeveyn PIN’i ile Kilidi Aç* seçeneğine dokunun, *Engellenen Uygulamalar* bölümünü açın, uygulamaları seçip kaydedin. Ardından ebeveyn cihazında *Engellenen Uygulamaları Etkinleştir* seçeneğini açın. Bağlı bir çocuk cihazı her değişikliği bir dakika içinde alır. iOS’ta Apple, tam uygulama adlarını ebeveyn cihazından gizleyebilir.',
 
     faq10Q: 'Çocuğumun konumu neden güncellenmiyor?',
     faq10A:

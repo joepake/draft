@@ -17,7 +17,7 @@ export const blockedApps = {
   installApprovalInfoLine2:
     '通知が届き、そのアプリは許可するまで、下の「ブロックされたアプリ」に表示されます。',
   installApprovalInfoLine3:
-    'アプリを許可すると、すぐに開けるようになります。許可しなければ、ブロックされたままです。',
+    '許可したアプリは、接続中のお子さまのデバイスで1分以内に開けるようになります。許可しなければ、ブロックされたままです。',
   installApprovalInfoLine1Ios:
     'この機能がオンの間は、お子さまのデバイスでApp Storeが非表示になるため、新しいアプリをインストールできません。',
   installApprovalInfoLine2Ios: 'すでにデバイスにあるアプリは引き続き使えます。',
@@ -38,13 +38,13 @@ export const blockedApps = {
   heroTitle: 'ブロック対象として選択されたアプリ',
   heroSubtitle:
     'これらのアプリとカテゴリはお子さまのデバイスで選択されます。KidGate がリストを同期し、ここで確認できます。',
-  toggleTitle: 'アプリブロックを有効にする',
+  toggleTitle: 'ブロックされたアプリを有効にする',
   toggleSubtitleOn: '選択したアプリはお子さまのデバイスでブロックされています。',
   toggleSubtitleOff: 'オンにすると、選択したアプリをリモートでブロックできます。',
-  toggleAccessibilityLabel: 'アプリブロックを有効にする',
+  toggleAccessibilityLabel: 'ブロックされたアプリを有効にする',
   emptyTitle: 'ブロックされたアプリはありません',
   emptySubtitle:
-    'お子さまのデバイスでKidGateの設定を開いて保護者PINを入力し、「アプリブロック」→「ブロックされたアプリ」を開いて選択を保存してください。',
+    'アプリは「インストール済みのアプリ」からブロックします。iPhoneでは、iPhone本体でアプリを選択してください。',
   emptySubtitleTv:
     'テレビでKidGateを開いて「{{button}}」を選び、保護者PINを入力してから、アプリを選んで保存してください。',
   sectionTitle: 'ブロックリスト',
@@ -52,10 +52,12 @@ export const blockedApps = {
   privacySubtitle:
     'iOS では Apple の仕様により、保護者のデバイスでアプリ名が表示されない場合があります。その他のデバイスでは選択したアプリ名がここに同期されます。リストを変更するには、お子さまのデバイスで保護者 PIN が必要です。',
   infoTitle: '仕組み',
-  infoLine1: '保護者 PIN を入力した後、お子さまのデバイスでアプリを選択します。',
+  infoLine1:
+    'アプリは「インストール済みのアプリ」からブロックします。iPhoneでは、保護者 PIN を入力して iPhone 本体で選択します。',
   infoLine2:
     'ロック、休止時間、1日の上限では、引き続きすべてのアプリがブロックされます。',
-  infoLine3: 'この画面からいつでもブロックのオン・オフを切り替えられます。',
+  infoLine3:
+    'この画面からいつでもブロックのオン・オフを切り替えられます。接続中のお子さまのデバイスには、変更が1分以内に届きます。',
   appKind: 'アプリ',
   categoryKind: 'カテゴリ',
   websiteKind: 'ウェブサイト',
@@ -70,7 +72,7 @@ export const blockedApps = {
   blockedAppsLabel: 'ブロックされたアプリ',
   appsConfiguredChip: 'アプリ設定済み',
   appsNotSetChip: 'アプリ未設定',
-  appBlockingSectionTitle: 'アプリブロック',
+  appBlockingSectionTitle: 'ブロックされたアプリ',
   appBlockingSectionDescription:
     '保護者がこのデバイスでブロックできるアプリを選択します。',
   savedItemsForBlocking: 'ブロック対象を {{count}} 件保存しました。',
@@ -79,9 +81,10 @@ export const blockedApps = {
   unableToOpenAppPicker: 'アプリ一覧を開けませんでした。もう一度お試しください。',
   wizardStepPin: '設定で求められたら保護者PINを入力します。',
   wizardStepChoose:
-    '「アプリブロック」の「ブロックされたアプリ」を開き、アプリにチェックを入れて保存します。',
+    '「ブロックされたアプリ」を開き、アプリにチェックを入れて保存します。',
   pickerSubtitle: 'このデバイスでブロックするアプリとカテゴリを選んでください。',
   pickerSubtitleAndroid:
-    'アプリブロックがオンの間は、チェックしたアプリは開いてもすぐに閉じられます。',
+    '「ブロックされたアプリ」がオンの間は、チェックしたアプリは開いてもすぐに閉じられます。',
   pickerEmpty: 'このデバイスにアプリが見つかりません。',
+  blockingOffPill: 'ブロックされたアプリはオフ',
 } as const;

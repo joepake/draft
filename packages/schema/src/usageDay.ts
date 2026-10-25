@@ -15,7 +15,7 @@ export type UsageAppBreakdown = {
  * cannot (Kotlin, Swift, the desktop's Rust) are pinned to it by
  * `packages/core/src/domain/__tests__/usageTopAppsLimitParity.test.ts`.
  *
- * **Raised from 8 to 10 on 2026-08-27.** `AppLimitsScreen` offers exactly
+ * **Raised from 8 to 10 on 2026-08-27.** `AppLimitsPanel` offers exactly
  * these rows as the apps a parent may cap — a saved limit uses one up, so a
  * family with five caps was choosing their sixth from three candidates. Ten is
  * a judgement about that screen, not about the ranking, which nothing below

@@ -12,7 +12,6 @@ export const activities = {
   fallbackDeviceName: 'डिवाइस',
   fallbackChildName: 'आपका बच्चा',
   liveBadge: 'लाइव',
-  errorTitle: 'गतिविधि लोड नहीं की जा सकी',
   tryAgain: 'फिर से प्रयास करें',
 
   emptyTitleAll: 'अभी तक कोई गतिविधि नहीं',
@@ -111,7 +110,7 @@ export const activities = {
 
   tamperAccessibilityTitle: 'सुलभता बंद कर दी गई',
   tamperAccessibilityBody:
-    'सुलभता दोबारा चालू होने तक ऐप ब्लॉकिंग और सुरक्षा सुविधाएँ ठीक से काम नहीं कर सकतीं।',
+    'सुलभता दोबारा चालू होने तक ब्लॉक किए गए ऐप्स की सुविधा और सुरक्षा सुविधाएँ ठीक से काम नहीं कर सकतीं।',
   tamperUsageAccessTitle: 'ऐप उपयोग की पहुँच बंद कर दी गई',
   tamperUsageAccessBody:
     'जब तक KidGate बच्चे के डिवाइस पर ऐप उपयोग दोबारा नहीं पढ़ पाता, तब तक ऐप सीमाएँ और ब्लॉक किए गए समय काम करना बंद कर सकते हैं।',

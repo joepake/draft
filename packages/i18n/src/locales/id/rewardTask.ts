@@ -1,5 +1,6 @@
 export const rewardTask = {
-  rewardTasksNote: 'Menit yang disetujui ditambahkan ke batas hari ini.',
+  rewardTasksNote:
+    'Menit yang disetujui ditambahkan ke batas pada hari Anda menyetujuinya.',
   unableToCreate: 'Tidak dapat membuat tugas. Silakan coba lagi.',
   unableToUpdate: 'Tidak dapat menyimpan tugas. Silakan coba lagi.',
   unableToDelete: 'Tidak dapat menghapus tugas. Silakan coba lagi.',
@@ -8,8 +9,6 @@ export const rewardTask = {
   unableToClaim: 'Tidak dapat mengirim ke orang tuamu. Silakan coba lagi.',
   newTask: 'Tugas baru',
   editTask: 'Edit tugas',
-  formSubtitle:
-    'Hadiah ditambahkan ke waktu layar hari ini setelah Anda menyetujuinya.',
   titleLabel: 'Tugas',
   titlePlaceholder: 'Mis. Membaca buku 20 menit',
   minutesLabel: 'Hadiah',
@@ -67,7 +66,7 @@ export const rewardTask = {
   taskRejectedDescription:
     '“{{title}}” dikembalikan ke {{deviceName}} untuk dicoba lagi.',
   starsLabel: 'Tingkat kesulitan',
-  starsHint: 'Seberapa sulit tugas ini. Anak Anda mengumpulkan bintang-bintang ini.',
+  starsHint: 'Anak Anda mengumpulkan bintang sebanyak itu.',
   starsEasy: 'Mudah',
   starsMedium: 'Sedang',
   starsHard: 'Sulit',

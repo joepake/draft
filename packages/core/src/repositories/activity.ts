@@ -1,4 +1,9 @@
-import type { DocSnapshot, FirestorePort, Unsubscribe } from '@kidgate/ports/firestore';
+import type {
+  DocSnapshot,
+  FirestorePort,
+  QuerySpec,
+  Unsubscribe,
+} from '@kidgate/ports/firestore';
 import { activitiesCollection } from '@kidgate/schema/paths';
 import {
   ACTIVITY_TYPES,
@@ -124,6 +129,12 @@ export interface ActivityRepositoryDeps {
   db: FirestorePort;
 }
 
+/** Which rows a feed covers: one device, a child's set, or (neither) the family. */
+export interface ActivityFeedScope {
+  deviceId?: string;
+  deviceIds?: readonly string[];
+}
+
 export function createActivityRepository(deps: ActivityRepositoryDeps) {
   const { db } = deps;
 
@@ -199,6 +210,101 @@ export function createActivityRepository(deps: ActivityRepositoryDeps) {
         },
         onError,
       );
+    },
+
+    /**
+     * The newest rows of a few kinds, live, for one device, a set of devices
+     * (a child), or the family — what the alert screens read.
+     *
+     * `subscribe` is the newest fifty rows of EVERY kind, and the screens used
+     * to filter those down: on a busy device a week-old alert fell out of the
+     * window and the screen said there were none (Message Alerts, Place
+     * Alerts, app installs; Tamper first, 2026-10-23). Filtering here keeps
+     * the read the same size and makes it the right rows.
+     *
+     * One `in` per query — a second is not something every transport this
+     * package runs on is known to take — so a set is chunked by ten, as
+     * `sosAlert.subscribeRecentForChild` does, and asked one kind at a time.
+     * Indexes: `(type, createdAt DESC)` for the family and
+     * `(deviceId, type, createdAt DESC)` for everything scoped
+     * (`firestore.indexes.json`); both must be READY before a build that asks.
+     * Emits only once every query has answered, so a merged list never shows
+     * half of itself as "nothing yet". An empty set answers `[]` and reads
+     * nothing.
+     */
+    subscribeOfTypes(
+      userId: string,
+      types: readonly ActivityType[],
+      scope: ActivityFeedScope,
+      onActivities: (activities: Activity[]) => void,
+      onError: (error: Error) => void,
+      limit: number = ACTIVITY_LIMIT,
+    ): Unsubscribe {
+      const queries: QuerySpec[] = [];
+      let allowed: ReadonlySet<string> | null = null;
+      if (types.length > 0) {
+        const newest = { orderBy: [['createdAt', 'desc']] as const, limit };
+        const ofTypes =
+          types.length === 1
+            ? (['type', '==', types[0]] as const)
+            : (['type', 'in', [...types]] as const);
+        if (scope.deviceId) {
+          allowed = new Set([scope.deviceId]);
+          queries.push({
+            where: [['deviceId', '==', scope.deviceId], ofTypes],
+            ...newest,
+          });
+        } else if (scope.deviceIds) {
+          allowed = new Set(scope.deviceIds);
+          for (let start = 0; start < scope.deviceIds.length; start += 10) {
+            const chunk = [...scope.deviceIds.slice(start, start + 10)];
+            for (const type of types) {
+              queries.push({
+                where: [
+                  ['deviceId', 'in', chunk],
+                  ['type', '==', type],
+                ],
+                ...newest,
+              });
+            }
+          }
+        } else {
+          queries.push({ where: [ofTypes], ...newest });
+        }
+      }
+
+      if (queries.length === 0) {
+        onActivities([]);
+        return () => undefined;
+      }
+
+      const byQuery = new Map<number, Activity[]>();
+      const unsubscribes = queries.map((spec, index) =>
+        db.onQuery(
+          activitiesCollection(userId),
+          spec,
+          snapshot => {
+            byQuery.set(index, snapshot.docs.map(mapActivity));
+            if (byQuery.size < queries.length) {
+              return;
+            }
+            const byId = new Map<string, Activity>();
+            for (const activity of [...byQuery.values()].flat()) {
+              if (!allowed || allowed.has(activity.deviceId)) {
+                byId.set(activity.id, activity);
+              }
+            }
+            onActivities(sortActivities([...byId.values()], limit));
+          },
+          onError,
+        ),
+      );
+
+      return () => {
+        for (const unsubscribe of unsubscribes) {
+          unsubscribe();
+        }
+      };
     },
 
     /**

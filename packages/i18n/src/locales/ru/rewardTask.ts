@@ -1,5 +1,6 @@
 export const rewardTask = {
-  rewardTasksNote: 'Одобренные минуты добавляются к сегодняшнему лимиту.',
+  rewardTasksNote:
+    'Одобренные минуты добавляются к лимиту того дня, в который они одобрены.',
   unableToCreate: 'Не удалось создать задание. Попробуйте ещё раз.',
   unableToUpdate: 'Не удалось сохранить задание. Попробуйте ещё раз.',
   unableToDelete: 'Не удалось удалить задание. Попробуйте ещё раз.',
@@ -8,8 +9,6 @@ export const rewardTask = {
   unableToClaim: 'Не удалось отправить родителям. Попробуй ещё раз.',
   newTask: 'Новое задание',
   editTask: 'Изменить задание',
-  formSubtitle:
-    'Награда добавится к сегодняшнему экранному времени после вашего одобрения.',
   titleLabel: 'Задание',
   titlePlaceholder: 'Напр.: читать книгу 20 минут',
   minutesLabel: 'Награда',
@@ -67,7 +66,7 @@ export const rewardTask = {
   taskRejected: 'Задание с наградой возвращено',
   taskRejectedDescription: '«{{title}}» возвращено {{deviceName}} для новой попытки.',
   starsLabel: 'Сложность',
-  starsHint: 'Насколько сложное это задание. Ребёнок собирает эти звёзды.',
+  starsHint: 'Столько звёзд соберёт ребёнок.',
   starsEasy: 'Лёгкое',
   starsMedium: 'Среднее',
   starsHard: 'Сложное',

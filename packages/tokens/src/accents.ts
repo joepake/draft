@@ -591,7 +591,9 @@ type AccentDefinition = {
 const SEMANTIC_LIGHT = {
   error: '#DC2626',
   errorSoft: '#FEE2E2',
-  errorStrong: '#991B1B', // 6.80:1 on errorSoft
+  // The brightest red still at AA on errorSoft; #991B1B (6.80:1) read as
+  // maroon on the grey `background` buttons (operator, 2026-10-24).
+  errorStrong: '#CC1F1F', // 4.54:1 on errorSoft, 4.90:1 on background
   success: '#059669',
   successSoft: '#D1FAE5',
   successStrong: '#065F46', // 6.78:1 on successSoft

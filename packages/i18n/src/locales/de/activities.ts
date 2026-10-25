@@ -12,7 +12,6 @@ export const activities = {
   fallbackDeviceName: 'Gerät',
   fallbackChildName: 'deinem Kind',
   liveBadge: 'Live',
-  errorTitle: 'Aktivitäten konnten nicht geladen werden',
   tryAgain: 'Erneut versuchen',
 
   emptyTitleAll: 'Noch keine Aktivitäten',
@@ -116,7 +115,7 @@ export const activities = {
 
   tamperAccessibilityTitle: 'Bedienungshilfen wurden deaktiviert',
   tamperAccessibilityBody:
-    'App-Sperren und Schutzfunktionen funktionieren möglicherweise nicht mehr vollständig, bis die Bedienungshilfen wieder aktiviert werden.',
+    '„Blockierte Apps“ und Schutzfunktionen funktionieren möglicherweise nicht mehr vollständig, bis die Bedienungshilfen wieder aktiviert werden.',
   tamperUsageAccessTitle: 'Zugriff auf die App-Nutzung wurde deaktiviert',
   tamperUsageAccessBody:
     'App-Limits und Sperrzeiten funktionieren möglicherweise nicht mehr, bis KidGate die App-Nutzung auf dem Kindergerät wieder auslesen kann.',

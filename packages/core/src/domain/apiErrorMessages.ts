@@ -138,6 +138,13 @@ export const API_ERROR_CODE_MESSAGES: Readonly<Record<string, string>> = {
   'billing/owner-only': 'plans.onlyOwnerCanSubscribe',
   // The active-task cap, free or paid (`functions/http/rewardTasks.js`).
   'rewardTask/too-many': 'errors.rewardTaskLimitReached',
+  // An edit or a claim racing the child's claim or the parent's approval.
+  'rewardTask/not-open': 'errors.rewardTaskAlreadyDone',
+  // A daily task claimed again on the day it was earned.
+  'rewardTask/not-yet': 'rewardTask.childBackTomorrow',
+  // Two parents answering one claim — the time request's race and sentence;
+  // a claim sits in the same Requests card.
+  'rewardTask/already-resolved': 'errors.timeRequestAlreadyResolved',
   // Six location requests a minute per device (`functions/http/location.js`).
   'request/rate-limited': 'errors.tooManyRequests',
   // `generateWeeklyReport` (`functions/http/familyReport.js`); the same two

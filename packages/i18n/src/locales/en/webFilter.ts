@@ -211,6 +211,9 @@ export const webFilter = {
   categoriesOnCount: '{{on}} of {{total}} on',
   askToOpen: 'Ask a parent',
   askToOpenSubtitle: 'If they allow it, this site will open.',
+  // The child's home screen, where no one site is in view yet: the ask picks
+  // from the sites blocked recently.
+  askToOpenHomeSubtitle: 'Ask your parent to open a site that was blocked.',
   askToOpenDomainLabel: 'Which site?',
   askToOpenBlockedLabel: 'Blocked recently',
   askToOpenPending: 'You already asked for a site. Wait for an answer.',

@@ -17,7 +17,7 @@ export const blockedApps = {
   installApprovalInfoLine2:
     'Bạn sẽ nhận được thông báo, và ứng dụng đó hiện ra ở danh sách bên dưới, trong mục Chặn ứng dụng, cho đến khi bạn cho phép.',
   installApprovalInfoLine3:
-    'Khi bạn cho phép, ứng dụng đó dùng được ngay. Ứng dụng bạn không cho phép sẽ tiếp tục bị chặn.',
+    'Ứng dụng bạn cho phép sẽ mở được trong vòng 1 phút trên thiết bị của trẻ đang kết nối. Ứng dụng bạn không cho phép sẽ tiếp tục bị chặn.',
   installApprovalInfoLine1Ios:
     'Khi bật tính năng này, App Store bị ẩn trên thiết bị của trẻ nên không cài được ứng dụng mới.',
   installApprovalInfoLine2Ios: 'Các ứng dụng đã có trên thiết bị vẫn dùng bình thường.',
@@ -44,7 +44,7 @@ export const blockedApps = {
   toggleAccessibilityLabel: 'Bật chặn ứng dụng',
   emptyTitle: 'Chưa chặn ứng dụng nào',
   emptySubtitle:
-    'Trên thiết bị của trẻ, mở Cài đặt KidGate, nhập mã PIN phụ huynh, rồi mở mục Chặn ứng dụng, chọn ứng dụng và lưu lại.',
+    'Chặn một ứng dụng trong mục Danh sách ứng dụng. Trên iPhone, hãy chọn ứng dụng ngay trên iPhone.',
   emptySubtitleTv:
     'Trên TV, mở KidGate, chọn “{{button}}”, nhập mã PIN phụ huynh, rồi chọn ứng dụng và lưu lại.',
   sectionTitle: 'Danh sách chặn',
@@ -52,10 +52,12 @@ export const blockedApps = {
   privacySubtitle:
     'Trên iOS, Apple có thể ẩn tên ứng dụng khỏi thiết bị phụ huynh. Trên các thiết bị khác, tên các ứng dụng đã chọn sẽ được đồng bộ về đây. Việc thay đổi danh sách vẫn cần mã PIN phụ huynh trên thiết bị của trẻ.',
   infoTitle: 'Cách hoạt động',
-  infoLine1: 'Chọn ứng dụng trên thiết bị của trẻ sau khi nhập mã PIN phụ huynh.',
+  infoLine1:
+    'Chặn ứng dụng trong mục Danh sách ứng dụng. Trên iPhone, hãy chọn ứng dụng ngay trên iPhone bằng mã PIN phụ huynh.',
   infoLine2:
     'Khóa thiết bị, Giờ khóa thiết bị và Giới hạn hằng ngày vẫn chặn toàn bộ ứng dụng.',
-  infoLine3: 'Bật hoặc tắt chặn bất cứ lúc nào ngay tại màn hình này.',
+  infoLine3:
+    'Bật hoặc tắt chặn bất cứ lúc nào ngay tại màn hình này. Thiết bị của trẻ đang kết nối sẽ nhận mỗi thay đổi trong vòng 1 phút.',
   appKind: 'Ứng dụng',
   categoryKind: 'Danh mục',
   websiteKind: 'Trang web',
@@ -79,4 +81,5 @@ export const blockedApps = {
   pickerSubtitleAndroid:
     'Các ứng dụng đã đánh dấu sẽ bị đóng ngay khi mở, trong lúc mục Chặn ứng dụng đang bật.',
   pickerEmpty: 'Không tìm thấy ứng dụng nào trên thiết bị này.',
+  blockingOffPill: 'Chặn ứng dụng đang tắt',
 } as const;

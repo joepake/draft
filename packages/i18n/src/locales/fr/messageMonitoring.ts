@@ -119,10 +119,9 @@ export const messageMonitoring = {
     revokedBody:
       'Android a désactivé une autorisation dont KidGate a besoin : les messages ne sont plus analysés. Ouvrez KidGate sur l’appareil de votre enfant et accordez-la à nouveau.',
     offTitle: 'Les Alertes de messages ne sont pas activées',
-    offBody:
-      'Rien n’est analysé sur l’appareil de votre enfant, aucune alerte ne peut donc apparaître ici. Ouvrez KidGate sur son appareil pour la configurer.',
+    offBody: 'Ouvrez KidGate sur l’appareil de votre enfant pour la configurer.',
     switchedOffBody:
-      'Rien n’est analysé sur l’appareil de votre enfant, aucune alerte ne peut donc apparaître ici. Activez « Analyser les messages reçus » dans les réglages de cet écran.',
+      'Activez « Analyser les messages reçus » dans les réglages de cet écran.',
     pendingTitle: 'En attente de l’appareil de votre enfant',
     pendingBody:
       'Vous venez d’activer cette option. L’appareil de votre enfant la prendra en compte à sa prochaine connexion, en général en quelques minutes — plus vite si le téléphone est allumé. Rien d’autre à faire.',

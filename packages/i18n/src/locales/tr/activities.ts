@@ -12,7 +12,6 @@ export const activities = {
   fallbackDeviceName: 'cihaz',
   fallbackChildName: 'çocuğunuz',
   liveBadge: 'Canlı',
-  errorTitle: 'Etkinlikler yüklenemedi',
   tryAgain: 'Tekrar dene',
 
   emptyTitleAll: 'Henüz etkinlik yok',
@@ -111,7 +110,7 @@ export const activities = {
 
   tamperAccessibilityTitle: 'Erişilebilirlik devre dışı bırakıldı',
   tamperAccessibilityBody:
-    'Erişilebilirlik yeniden etkinleştirilene kadar uygulama engelleme ve koruma özellikleri tam olarak çalışmayabilir.',
+    'Erişilebilirlik yeniden etkinleştirilene kadar Engellenen Uygulamalar özelliği ve diğer koruma özellikleri tam olarak çalışmayabilir.',
   tamperUsageAccessTitle: 'Uygulama kullanım erişimi kapatıldı',
   tamperUsageAccessBody:
     'KidGate çocuğun cihazında uygulama kullanımını yeniden okuyabilene kadar uygulama sınırları ve Engellenen Saatler çalışmayabilir.',

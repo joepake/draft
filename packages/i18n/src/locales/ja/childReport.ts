@@ -12,6 +12,8 @@ export const childReport = {
   heroRange: '{{low}} – {{high}}',
   heroRangeNote:
     '推定値です。使った長さは分かっても、いつ使ったかを報告できないデバイスがあります。',
+  barsExplain:
+    '2 台を同時に使った 1 分は、デバイスを合計すると 2 分として数えられます。',
   heroEmpty: 'まだ使用状況の報告がありません',
 
   trendUp: '前の期間より {{value}} 多い',

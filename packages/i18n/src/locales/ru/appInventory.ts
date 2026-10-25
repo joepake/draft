@@ -1,5 +1,4 @@
 export const appInventory = {
-  title: 'Приложения на этом устройстве',
   pendingTitle: 'Ожидает вашего подтверждения',
   pendingBadge: 'Заблокировано, пока вы не разрешите',
   approvedBadge: 'Разрешено вами',
@@ -15,7 +14,6 @@ export const appInventory = {
   newBadge: 'Новое',
   ageBadge: '{{age}}+',
   browserExtension: 'Расширение Chrome',
-  titleExtension: 'Расширения в этом браузере',
   subtitleExtension:
     'Все расширения, которые KidGate нашёл в браузере, а не только изменения.',
   summaryFlaggedExtension:
@@ -39,8 +37,17 @@ export const appInventory = {
   blockHint:
     'Чтобы заблокировать приложение, откройте «Заблокированные приложения» на самом устройстве.',
   howItWorksLabel: 'Как работает этот список',
-  markSafe: 'Безопасно',
+  markSafe: 'Отметить как безопасное',
   dismissedTitle: 'Вы отметили как безопасные',
   undoSafe: 'Отменить',
+  tabGeneral: 'Обзор',
+  searchPlaceholder: 'Поиск приложений',
+  searchEmpty: 'Ничего не найдено.',
+  blockedBadge: 'Заблокировано',
+  setLimit: 'Задать лимит времени',
+  editLimit: 'Изменить лимит времени',
   howToBlock: 'Как заблокировать',
+  blockApp: 'Заблокировать',
+  unblockApp: 'Разблокировать',
+  iosBlockOnDevice: 'На iPhone приложения блокируются на самом iPhone ребёнка.',
 } as const;

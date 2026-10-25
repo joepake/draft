@@ -2,6 +2,7 @@ export const report = {
   title: 'Report settimanale',
   subtitle: 'Che cosa ha notato KidGate durante la settimana.',
   weekOf: 'Settimana {{week}}',
+  weekOfYear: 'Settimana {{week}} - {{year}}',
   range: '{{from}} – {{to}}',
   triggerScheduled: 'Inviato lunedì',
   triggerManual: 'Creato da te',
@@ -42,7 +43,7 @@ export const report = {
   findingBlockedApps:
     '{{count}} aperture di app bloccate, contro {{previous}} della settimana scorsa.',
   findingBlockedWeb:
-    '{{count}} siti filtrati, contro {{previous}} della settimana scorsa.',
+    '{{count}} visite a siti bloccati, contro {{previous}} della settimana scorsa.',
   findingQuietWeek:
     'Una settimana tranquilla: {{total}} in tutto e niente che abbia richiesto il tuo intervento.',
 
@@ -58,7 +59,7 @@ export const report = {
   findingBlockedAppsDown:
     '{{count}} aperture di app bloccate, contro {{previous}} la scorsa settimana.',
   findingBlockedWebDown:
-    '{{count}} siti filtrati, contro {{previous}} la scorsa settimana.',
+    '{{count}} visite a siti bloccati, in calo rispetto alle {{previous}} della settimana scorsa.',
   findingLearningTime: '{{duration}} in app didattiche, soprattutto {{app}}.',
   findingTasksDone_one: 'Un compito completato, con {{bonus}} di bonus.',
   findingTasksDone_other: '{{count}} compiti completati, con {{bonus}} di bonus.',
@@ -106,7 +107,7 @@ export const report = {
   rateLimited:
     'Non è ancora possibile scrivere un altro report. Riprova tra un minuto.',
   loadFailedTitle: 'Report non caricati',
-  loadFailed: 'Impossibile aprire i report. Trascina verso il basso per riprovare.',
+  loadFailed: 'Impossibile aprire i report.',
   failed: 'Impossibile scrivere il report. Riprova tra poco.',
 
   historyTitle: 'Settimane precedenti',

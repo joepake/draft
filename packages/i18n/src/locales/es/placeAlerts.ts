@@ -4,7 +4,6 @@ export const placeAlerts = {
   mergedFromDevices:
     'Combinada a partir de los lugares existentes de cada dispositivo. Al guardar, esta única lista se aplica a todos los dispositivos.',
   fallbackDeviceName: 'Dispositivo del niño',
-  statusReady: 'Ubicación lista',
   statusNeedLocation: 'Esperando la ubicación del dispositivo del niño',
   tabPlaces: 'Lugares',
   tabActivity: 'Actividad',
@@ -22,8 +21,6 @@ export const placeAlerts = {
   editPlaceAccessibility: 'Editar {{name}}',
   radiusLabel: 'Radio de alerta',
   radiusValue: '{{meters}} m',
-  radiusHint:
-    'Qué tan cerca debe estar el dispositivo para que este lugar cuente. Un radio menor que el propio error de posición del dispositivo no hace que las alertas sean más precisas — puede que no se avise de las llegadas y salidas.',
   radiusAccuracyHint:
     'Aquí este dispositivo indica su posición con unos ±{{accuracy}} m.',
   radiusBelowAccuracy:
@@ -45,8 +42,6 @@ export const placeAlerts = {
   emptyEventsTitle: 'Aún no hay actividad de lugares',
   emptyEventsSubtitle:
     'Cuando este dispositivo entre o salga de un lugar guardado, los eventos aparecerán aquí.',
-  emptyPlaces:
-    'Elige un punto en el mapa, ponle un nombre y guárdalo. Hasta {{max}} lugares.',
   noLocationToast:
     'Espera primero una actualización de ubicación del dispositivo del niño.',
   maxPlacesToast: 'Puedes guardar hasta {{max}} lugares.',

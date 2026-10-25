@@ -28,6 +28,14 @@ import type { IsoDate } from '@kidgate/schema/primitives';
 export const MAX_SCHEDULE_WINDOWS = 5;
 
 /**
+ * The step a parent sets a time of day in, on both consoles — Blocked Hours
+ * and quiet hours alike: the phone's 24-hour ring snaps to it, the
+ * dashboard's time inputs step by it. A window typed at 08:05 on the web
+ * could not be set again on the phone (2026-10-24).
+ */
+export const SCHEDULE_TIME_STEP_MINUTES = 15;
+
+/**
  * `HH:MM` to minutes since midnight.
  *
  * Returns 0 for anything unparseable, matching both existing implementations.

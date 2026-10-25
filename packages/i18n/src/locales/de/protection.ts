@@ -17,7 +17,7 @@ export const protection = {
   openKidGateOnChildPhone: 'Bitte öffne KidGate einmal auf dem Kindergerät.',
   screenTimePermission: 'Bildschirmzeit-Berechtigung',
   screenTimeAccessOff:
-    'Der Bildschirmzeit-Zugriff ist deaktiviert – App-Blockierung und Limits funktionieren daher möglicherweise nicht mehr.',
+    'Der Bildschirmzeit-Zugriff ist deaktiviert – „Blockierte Apps“ und Limits funktionieren daher möglicherweise nicht mehr.',
   screenTimeSetupIncomplete:
     'Die Bildschirmzeit-Einrichtung auf dem Kindergerät ist unvollständig.',
   usageAccessPermission: 'Nutzungszugriff',

@@ -1,6 +1,6 @@
 export const auth = {
-  welcomeBack: 'Tekrar hoş geldiniz',
-  loginSubtitle: 'Çocuklarınızın cihazlarını yönetmek ve korumak için giriş yapın.',
+  welcomeBack: 'KidGate’e giriş yap',
+  loginSubtitle: 'Çocuklarınızın cihazlarını yönetin ve koruyun.',
   emailSignInTitle: 'E-posta ile giriş yap',
   emailSignInSubtitle: 'Ebeveyn e-postanızı ve şifrenizi kullanın.',
   createAccountTitle: 'Ebeveyn hesabı oluştur',

@@ -184,7 +184,7 @@ export default {
       'Instala KidGate en el móvil de tu hijo y conéctalo escaneando un código QR. Menos de un minuto.',
     step3Title: 'Define tus reglas',
     step3Text:
-      'Elige un Límite diario y Horas bloqueadas, y activa la ubicación y el bloqueo de apps desde tu propio móvil. Las apps que se bloquean se eligen una sola vez en el dispositivo de tu hijo, con tu PIN parental.',
+      'Elige un Límite diario y Horas bloqueadas, y activa la ubicación y Apps bloqueadas desde tu propio móvil. Las apps que se bloquean se eligen una sola vez en el dispositivo de tu hijo, con tu PIN parental.',
 
     whyEyebrow: 'Por qué KidGate',
     whyTitle: 'Creado para la confianza, no para la vigilancia',
@@ -246,8 +246,8 @@ export default {
     faqMore: '¿Más preguntas? Visita Soporte',
 
     ctaTitle: 'Empieza hoy a proteger a tu familia',
-    ctaSub: 'Prueba gratuita de 7 días con acceso completo.',
-    ctaNote: 'Cancela cuando quieras desde el App Store o Google Play.',
+    ctaSub: 'Prueba gratuita de 7 días con acceso completo. No hace falta tarjeta.',
+    ctaNote: 'Al terminar, tus reglas siguen funcionando en el plan gratuito.',
   },
 
   login: {
@@ -469,8 +469,7 @@ export default {
     save: 'Guardar',
 
     unlockTitle: 'Los cambios están bloqueados.',
-    unlockBody:
-      'Consultar funciona al momento. Para bloquear un dispositivo, cambiar límites o aprobar solicitudes, desbloquea este navegador con tu PIN parental, o apruébalo escaneando el código QR con la app de KidGate. Los Check-in funcionan en ambos casos.',
+    unlockBody: 'Aún puedes consultarlo todo y enviar Check-in.',
     unlockCta: 'Desbloquear cambios',
     unlockToChange: 'Desbloquea los cambios primero',
     refresh: 'Actualizar',
@@ -510,10 +509,6 @@ export default {
     tileDeltaDown: '↓ {{percent}} % frente a la media de 7 días',
     tileBlocked: 'Intentos bloqueados',
     tileBlockedMeta: 'Apps detenidas desde la instalación',
-    tileSites: 'Sitios filtrados',
-    tileCategoriesHit_one: '{{count}} categoría afectada',
-    tileCategoriesHit_other: '{{count}} categorías afectadas',
-    tileNothingBlocked: 'Aún no se ha bloqueado nada',
     tileAttention: 'Necesita atención',
     tileOpenItems: 'Elementos abiertos abajo',
     tileAllClear: 'Todo en orden',
@@ -572,8 +567,6 @@ export default {
     blockingLabel: 'Bloqueo',
     appsBlocked: 'Apps bloqueadas',
     categories: 'Categorías',
-    perAppHint:
-      'Los topes por app funcionan aparte de la lista de bloqueo: «30 minutos de TikTok» es una decisión distinta de «nada de TikTok».',
     limitsMax: 'Un dispositivo admite {{max}} apps limitadas como máximo.',
     perDay: '{{value}}/día',
     webActivityTitle: 'Actividad web',
@@ -599,12 +592,11 @@ export default {
     colVideo: 'Vídeo',
     colChannel: 'Canal',
     colViews: 'Visualizaciones',
-    filterRefusedTitle: 'Lo que rechazó el filtro',
+    filterRefusedTitle: 'Lo que bloqueó el filtro',
     filterRefusedSub_one: '{{count}} consulta bloqueada, últimos 7 días',
     filterRefusedSub_other: '{{count}} consultas bloqueadas, últimos 7 días',
     filterHintIos:
       'Este iPhone o iPad solo filtra con el control de contenido para adultos de Apple. Actualiza KidGate en él y permite la VPN de KidGate para bloquear por categorías.',
-    filterHintAndroid: 'Las categorías las aplica el filtro DNS del dispositivo.',
 
     locationTitle: 'Ubicación',
     locationUpdated: 'Actualizado {{when}}',
@@ -658,8 +650,8 @@ export default {
     rowAppBlocking: 'Apps bloqueadas',
     rowAppBlockingDesc: '{{apps}} · {{categories}}',
     rowWebFilter: 'Filtro web',
-    rowWebFilterDesc_one: '{{count}} categoría rechazada',
-    rowWebFilterDesc_other: '{{count}} categorías rechazadas',
+    rowWebFilterDesc_one: '{{count}} categoría bloqueada',
+    rowWebFilterDesc_other: '{{count}} categorías bloqueadas',
     rowNotSupported: 'No compatible con este dispositivo',
     rowLocation: 'Compartir ubicación',
     rowLocationDesc: 'Última actualización {{when}}',
@@ -671,7 +663,7 @@ export default {
     webFilterCatsTitle: 'Categorías del filtro web',
     webFilterCatsSub: 'Tipos de contenido bloqueados',
     dnsHint:
-      'Los resolutores de DNS cifrado siempre se rechazan mientras el filtro funciona: dejarlos accesibles es lo que permite a un navegador esquivar todas las demás categorías.',
+      'El DNS cifrado siempre se bloquea mientras el filtro está activo, así que un navegador no puede esquivarlo.',
     starChartTitle: 'Tabla de estrellas',
     starChartSub: 'Estrellas conseguidas esta semana, por hijo',
     starChartEmpty:
@@ -715,7 +707,7 @@ export default {
       'No se puede guardar desde este navegador. Copia el resumen en su lugar.',
     emptyBody:
       'Con Premium, cada lunes por la mañana llega un informe que cubre los siete días anteriores. También puedes crear el de esta semana desde la app de KidGate en tu teléfono.',
-    loadFailed: 'No se pudieron abrir los informes. Recarga la página para reintentar.',
+    loadFailed: 'No se pudieron abrir los informes.',
     retryLoad: 'Reintentar',
     existed: 'Esta semana ya tenía un informe: aquí está.',
   },
@@ -780,7 +772,7 @@ export default {
 
     faq9Q: '¿Cómo bloqueo apps concretas?',
     faq9A:
-      'La selección de apps se hace en el dispositivo del niño: abre *KidGate → Ajustes*, toca *Desbloquear con el PIN parental*, abre *Apps bloqueadas*, elige las apps y guarda. Después, en el dispositivo del padre, abre la pantalla *Apps bloqueadas* de ese dispositivo y activa *Activar el bloqueo de apps*. En iOS, Apple puede ocultar los nombres exactos de las apps al dispositivo del padre: es una limitación de la plataforma.',
+      'En el dispositivo del padre, abre las *Apps* de tu hijo, luego *Aplicaciones instaladas*, toca una app y elige *Bloquear*. En un iPhone, las apps se eligen en el propio iPhone: abre *KidGate → Ajustes*, toca *Desbloquear con el PIN parental*, abre *Apps bloqueadas*, elige las apps y guarda. Después activa *Activar Apps bloqueadas* en el dispositivo del padre. Un dispositivo del niño conectado recibe cada cambio en un minuto. En iOS, Apple puede ocultar los nombres exactos de las apps al dispositivo del padre.',
 
     faq10Q: '¿Por qué no se actualiza la ubicación de mi hijo?',
     faq10A:

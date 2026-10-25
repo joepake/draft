@@ -94,9 +94,10 @@
    * got an outline it was designed not to need and never got the lift that was
    * meant to replace it.
    *
-   * `--line` keeps its own job, unchanged, on lines that MEAN something —
-   * dividers, input edges, unselected chips, the rail's right edge. Only the
-   * ten frames that are a card reach for these two.
+   * `--line` keeps its own job on lines that MEAN something — dividers and
+   * the rail's right edge. A control draws no edge: its fill separates it, and
+   * its transparent border is there for a state to colour. Only the frames that
+   * are a card reach for these two.
    */
   --card-line: var(--kg-cardOutline);
   --card-lift: var(--kg-shadow-sm);
@@ -277,7 +278,7 @@
      read as a separate header bar floating over the list below it; the rail
      is one surface and the hairline is what separates it from the page. */
   background: color-mix(in srgb, var(--plane) 94%, var(--ink));
-  border-right: 1px solid var(--line);
+  border-inline-end: 1px solid var(--line);
   padding: 1.1rem 0.75rem 0.9rem;
   display: flex;
   flex-direction: column;
@@ -347,7 +348,7 @@
   min-height: 2.5rem;
   padding: 0.4rem 0.55rem;
   border-radius: var(--dash-radius-1);
-  text-align: left;
+  text-align: start;
   transition:
     background var(--kg-motion-fast) ease,
     color var(--kg-motion-fast) ease;
@@ -595,6 +596,19 @@
   transform: rotate(90deg);
 }
 
+/* Every glyph that points along the line points the way the language runs.
+   Under `:where`, so a rule that turns one for an open state
+   (`.support-item.is-open .support-chev`) still wins in both directions.
+   Before `App.jsx` set `dir`, none of the RTL rules here applied at all. */
+:where([dir='rtl'])
+  .icon:is(
+    [data-icon='chevronRight'],
+    [data-icon='chevronLeft'],
+    [data-icon='arrowRight']
+  ) {
+  transform: scaleX(-1);
+}
+
 /* Turned the other way in a right-to-left rail, and then turned again when
    open — the fold points down in both directions. */
 [dir='rtl'] .kid-group-chevron {
@@ -688,7 +702,7 @@
 }
 
 .nav-badge {
-  margin-left: auto;
+  margin-inline-start: auto;
   background: var(--warning);
   color: var(--plane);
   font-size: var(--dash-text-1);
@@ -1109,7 +1123,7 @@
   border-radius: 999px;
   padding: 0.18rem 0.6rem;
   background: color-mix(in srgb, var(--ink) 7%, transparent);
-  border: 1px solid var(--line);
+  border: 1px solid transparent;
 }
 
 .pill-dot {
@@ -1199,7 +1213,7 @@
   font-size: var(--dash-text-3);
   font-weight: 600;
   background: color-mix(in srgb, var(--ink) 8%, transparent);
-  border: 1px solid var(--line);
+  border: 1px solid transparent;
   transition:
     background var(--kg-motion-fast) ease,
     transform var(--kg-motion-fast) ease;
@@ -1322,6 +1336,57 @@
   font-size: var(--dash-text-3);
   color: var(--muted);
   margin-top: 0.2rem;
+}
+
+/* The phone's `InfoTooltip` (`dashboard/InfoTooltip.jsx`): the card's own ink
+   on a 7% wash of it, a 15px glyph in a 25px disc. Colourless on purpose —
+   amber read as a warning on the phone (2026-10-24). */
+.card-title,
+.kid-hub-last {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.card-title {
+  display: flex;
+}
+
+.dash .info-tip {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 25px;
+  height: 25px;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--ink) 7%, transparent);
+  color: var(--ink-2);
+  cursor: pointer;
+}
+
+.dash .info-tip:hover {
+  background: color-mix(in srgb, var(--ink) 12%, transparent);
+}
+
+.info-tip-bubble {
+  position: absolute;
+  inset: auto;
+  margin: 0;
+  max-width: calc(100vw - 32px);
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--card-line);
+  border-radius: var(--dash-radius-2);
+  background: var(--surface);
+  color: var(--ink);
+  font-size: var(--dash-text-3);
+  line-height: 1.5;
+  box-shadow: 0 12px 30px color-mix(in srgb, var(--kg-shadow) 45%, transparent);
+}
+
+.info-tip-bubble p + p {
+  margin-top: 0.5rem;
 }
 
 /*
@@ -2424,7 +2489,7 @@ ol.attn-fix li + li {
 
 .perms em,
 .places em {
-  margin-left: auto;
+  margin-inline-start: auto;
   font-style: normal;
   font-size: var(--dash-text-2);
   color: var(--muted);
@@ -2478,7 +2543,7 @@ ol.attn-fix li + li {
 }
 
 .tbl th {
-  text-align: left;
+  text-align: start;
   font-size: var(--dash-text-2);
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -2498,14 +2563,14 @@ ol.attn-fix li + li {
 
 .tbl th:first-child,
 .tbl td:first-child {
-  padding-left: 0;
+  padding-inline-start: 0;
   white-space: normal;
 }
 
 .tbl th:last-child,
 .tbl td:last-child {
-  padding-right: 0;
-  text-align: right;
+  padding-inline-end: 0;
+  text-align: end;
 }
 
 .tbl tr:last-child td {
@@ -2517,7 +2582,7 @@ ol.attn-fix li + li {
 }
 
 .tbl .num {
-  text-align: right;
+  text-align: end;
   font-variant-numeric: tabular-nums;
 }
 
@@ -2542,14 +2607,14 @@ ol.attn-fix li + li {
 }
 
 .video-link-mark {
-  margin-left: 0.35rem;
+  margin-inline-start: 0.35rem;
   color: var(--muted);
   font-size: 0.85em;
 }
 
 .tag {
   display: inline-block;
-  margin-left: 0.45rem;
+  margin-inline-start: 0.45rem;
   font-size: var(--dash-text-1);
   color: var(--critical);
   background: color-mix(in srgb, var(--critical-fill) 14%, transparent);
@@ -2618,7 +2683,7 @@ ol.attn-fix li + li {
 .support-line {
   border-radius: var(--dash-radius-2);
   padding: 0.55rem 0.75rem;
-  border: 1px solid var(--line);
+  border: 1px solid transparent;
   background: var(--plane);
 }
 
@@ -2677,7 +2742,7 @@ ol.attn-fix li + li {
  */
 /* The HERE map, in a sandboxed iframe. Sized here rather than inside the
    document so the page keeps control of its own layout; `border: 0` because a
-   frame carries one by default and it would double the panel's. */
+   frame carries one by default. */
 .loc-map {
   display: block;
   width: 100%;
@@ -2694,7 +2759,7 @@ ol.attn-fix li + li {
   padding: 0.85rem 0.95rem;
   margin-bottom: 1rem;
   border-radius: var(--dash-radius-2);
-  border: 1px solid var(--line);
+  border: 1px solid transparent;
   background: var(--plane);
 }
 
@@ -2755,7 +2820,7 @@ ol.attn-fix li + li {
 .seg {
   display: inline-flex;
   background: color-mix(in srgb, var(--ink) 6%, transparent);
-  border: 1px solid var(--line);
+  border: 1px solid transparent;
   border-radius: var(--dash-radius-1);
   padding: 2px;
   gap: 2px;
@@ -2818,7 +2883,7 @@ ol.attn-fix li + li {
   border-radius: 999px;
   padding: 0.28rem 0.7rem;
   background: color-mix(in srgb, var(--ink) 7%, transparent);
-  border: 1px solid var(--line);
+  border: 1px solid transparent;
   color: var(--ink-2);
 }
 
@@ -2932,7 +2997,7 @@ ol.attn-fix li + li {
   /* Text only, and on a phone it sits over the bottom tab bar: a tap there
      must reach the tab, not die on the toast. */
   pointer-events: none;
-  right: 1.25rem;
+  inset-inline-end: 1.25rem;
   bottom: 1.25rem;
   /* Over the sticky tab bar and the chart tooltip, both 5. */
   z-index: 40;
@@ -3060,7 +3125,7 @@ ol.attn-fix li + li {
    what explains the button, and a parent who read one has read the other. */
 .write-note .btn {
   display: inline-block;
-  margin-left: 0.5rem;
+  margin-inline-start: 0.5rem;
   vertical-align: baseline;
 }
 
@@ -3092,8 +3157,8 @@ ol.attn-fix li + li {
   overflow-y: auto;
   padding: 1.3rem;
   border-radius: var(--dash-radius-3);
-  border: 1px solid var(--line);
-  background: var(--plane);
+  border: 1px solid var(--card-line);
+  background: var(--surface);
   box-shadow: var(--kg-shadow-lg, 0 18px 48px rgb(0 0 0 / 35%));
 }
 
@@ -3166,7 +3231,7 @@ ol.attn-fix li + li {
   margin-bottom: 0.6rem;
   padding: 0.6rem 0.7rem;
   border-radius: var(--dash-radius-1);
-  border: 1px solid var(--line);
+  border: 1px solid transparent;
   background: var(--bg);
   color: var(--ink);
   /* Six digits read as six digits, not as a word. */
@@ -3218,8 +3283,9 @@ ol.attn-fix li + li {
   display: grid;
   gap: 0.5rem;
   padding: 0.6rem 0.7rem;
-  border: 1px solid var(--line);
+  border: 1px solid transparent;
   border-radius: var(--dash-radius-2);
+  background: var(--plane);
 }
 
 /* Advisory, so it is tinted rather than marked as an error — both windows do
@@ -3245,20 +3311,20 @@ ol.attn-fix li + li {
 .sched-times input {
   padding: 0.35rem 0.45rem;
   border-radius: var(--dash-radius-1);
-  border: 1px solid var(--line);
-  background: var(--bg);
+  border: 1px solid transparent;
+  background: var(--surface);
   color: var(--ink);
   font-size: var(--dash-text-3);
 }
 
 .sched-remove {
-  margin-left: auto;
+  margin-inline-start: auto;
   display: grid;
   place-items: center;
   width: 2rem;
   height: 2rem;
   border-radius: var(--dash-radius-1);
-  border: 1px solid var(--line);
+  border: 1px solid transparent;
   background: transparent;
   color: var(--ink-2);
 }
@@ -3322,11 +3388,20 @@ ol.attn-fix li + li {
   gap: 0.35rem;
 }
 
+/* Each label a fixed box centred on its hour, the row hanging half a box past
+   both track ends (the phone's WeekScheduleStrip). space-between over bare
+   digits evened the gaps, not the centres: "12" sat left of noon. */
 .sched-week-hours > span:last-child {
   display: flex;
   justify-content: space-between;
+  margin-inline: -1em;
   font-size: var(--dash-text-1);
   color: var(--ink-2);
+}
+
+.sched-week-hours > span:last-child > span {
+  width: 2em;
+  text-align: center;
 }
 
 .sched-week-day {
@@ -3339,7 +3414,7 @@ ol.attn-fix li + li {
   display: block;
   height: 0.8rem;
   border-radius: 0.3rem;
-  border: 1px solid var(--line);
+  border: 1px solid transparent;
   background: var(--bg);
   overflow: hidden;
 }
@@ -3348,6 +3423,23 @@ ol.attn-fix li + li {
   position: absolute;
   top: 0;
   bottom: 0;
+  background: var(--brand);
+}
+
+/* Starts under the tracks: the day column (2.2rem) plus the row gap. */
+.sched-week-legend {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0.3rem 0 0 2.55rem;
+  font-size: var(--dash-text-1);
+  color: var(--ink-2);
+}
+
+.sched-week-legend-dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 0.15rem;
   background: var(--brand);
 }
 
@@ -3367,8 +3459,9 @@ ol.attn-fix li + li {
   display: grid;
   gap: 0.35rem;
   padding: 0.55rem 0.7rem;
-  border: 1px solid var(--line);
+  border: 1px solid transparent;
   border-radius: var(--dash-radius-2);
+  background: var(--plane);
 }
 
 .limit-name {
@@ -3388,8 +3481,8 @@ ol.attn-fix li + li {
   width: 1.75rem;
   height: 1.75rem;
   border-radius: 0.45rem;
-  border: 1px solid var(--line);
-  background: transparent;
+  border: 1px solid transparent;
+  background: var(--surface);
   color: var(--ink-2);
   cursor: pointer;
 }
@@ -3407,7 +3500,7 @@ ol.attn-fix li + li {
 }
 
 .limit-remove {
-  margin-left: auto;
+  margin-inline-start: auto;
 }
 
 .limit-remove:hover:not(:disabled) {
@@ -3441,7 +3534,7 @@ ol.attn-fix li + li {
   width: 100%;
   padding: 0.5rem 0.6rem;
   border-radius: var(--dash-radius-1);
-  border: 1px solid var(--line);
+  border: 1px solid transparent;
   background: var(--bg);
   color: var(--ink);
   font: inherit;
@@ -3632,7 +3725,7 @@ ol.attn-fix li + li {
   width: 100%;
   max-width: 420px;
   background: color-mix(in srgb, var(--surface) 82%, transparent);
-  border: 1px solid var(--line);
+  border: 1px solid var(--card-line);
   border-radius: var(--dash-radius-3);
   padding: 2rem;
   backdrop-filter: blur(10px);
@@ -3857,9 +3950,9 @@ ol.attn-fix li + li {
 }
 
 .qr-steps {
-  text-align: left;
+  text-align: start;
   margin: 0;
-  padding-left: 1.15rem;
+  padding-inline-start: 1.15rem;
   font-size: var(--dash-text-3);
   color: var(--ink-2);
   line-height: 1.7;
@@ -3875,7 +3968,7 @@ ol.attn-fix li + li {
 
 .qr-hero {
   background: color-mix(in srgb, var(--ink) 5%, transparent);
-  border: 1px solid var(--line);
+  border: 1px solid transparent;
   border-radius: var(--dash-radius-3);
   padding: 1.3rem 1.1rem 1.15rem;
   margin-bottom: 1.1rem;
@@ -4009,7 +4102,7 @@ ol.attn-fix li + li {
   font-size: var(--dash-text-4);
   color: var(--ink);
   background: color-mix(in srgb, var(--ink) 6%, transparent);
-  border: 1px solid var(--line);
+  border: 1px solid transparent;
   border-radius: var(--dash-radius-1);
   padding: 0.6rem 0.8rem;
   width: 100%;
@@ -4026,7 +4119,7 @@ ol.attn-fix li + li {
   font-size: var(--dash-text-4);
   font-weight: 600;
   background: color-mix(in srgb, var(--ink) 8%, transparent);
-  border: 1px solid var(--line);
+  border: 1px solid transparent;
 }
 
 .login .btn-primary {
@@ -4154,8 +4247,8 @@ ol.attn-fix li + li {
  * It was grey text with a chevron, flush against the page's left edge — on a
  * stack four deep (family → child → device → panel) that is the only control
  * on screen that undoes a step, and it read as a caption. It carries the
- * surface and the hairline every other small control here has now; the tint on
- * hover is the same one the control cards take.
+ * surface fill every other small control here has now; the tint on hover is the
+ * same one the control cards take.
  */
 .dash-back {
   display: inline-flex;
@@ -4163,7 +4256,7 @@ ol.attn-fix li + li {
   gap: 0.3rem;
   margin-bottom: 0.45rem;
   padding: 0.3rem 0.65rem 0.3rem 0.45rem;
-  border: 1px solid var(--line);
+  border: 1px solid transparent;
   border-radius: 999px;
   background: var(--surface);
   font-size: var(--dash-text-2);
@@ -4330,7 +4423,7 @@ ol.attn-fix li + li {
   padding: 0.85rem 0.85rem 0.75rem;
   text-align: start;
   border-radius: var(--dash-radius-2);
-  border: 1px solid var(--line);
+  border: 1px solid transparent;
   background: var(--plane);
   transition:
     background var(--kg-motion-fast) ease,
@@ -4434,6 +4527,14 @@ ol.attn-fix li + li {
 
 .control-card-state.tone-roadmap b {
   color: var(--muted);
+}
+
+/* "Off", "Not set", "All clear": the resting state, quiet and at text size —
+   display size is for figures and for a state that is on or asking. Split
+   from `attention` on 2026-10-25, when every "Off" here was amber. */
+.control-card-state.tone-idle b {
+  color: var(--muted);
+  font-size: var(--dash-text-3);
 }
 
 /* The verb, last — where the phone's card ends. Text rather than a button: the
@@ -4554,7 +4655,7 @@ ol.attn-fix li + li {
 
 .kid-avatar-wrap .kid-dot {
   position: absolute;
-  right: -1px;
+  inset-inline-end: -1px;
   bottom: -1px;
   width: 0.7rem;
   height: 0.7rem;
@@ -4892,7 +4993,8 @@ button.kid-pill {
      told a parent nothing the dot beside it had not already said. */
   padding: 0.1rem 0.4rem;
   border-radius: 999px;
-  border: 1px solid var(--line);
+  border: 1px solid transparent;
+  background: var(--plane);
   font-size: var(--dash-text-1);
   color: var(--muted);
 }
@@ -5052,8 +5154,9 @@ button.kid-pill {
   align-items: center;
   gap: 0.4rem;
   padding-inline-end: 0.4rem;
-  border: 1px solid var(--line);
+  border: 1px solid transparent;
   border-radius: var(--dash-radius-2);
+  background: var(--plane);
   transition: border-color var(--kg-motion-fast) ease;
 }
 
@@ -5087,8 +5190,8 @@ button.kid-pill {
   padding: 0.3rem 0.6rem;
   font-size: var(--dash-text-2);
   color: var(--muted);
-  background: transparent;
-  border: 1px solid var(--line);
+  background: var(--surface);
+  border: 1px solid transparent;
   border-radius: var(--dash-radius-1);
   transition:
     color var(--kg-motion-fast) ease,
@@ -5170,19 +5273,20 @@ button.kid-pill {
 }
 
 .support-item {
-  border: 1px solid var(--line);
+  border: 1px solid transparent;
   border-radius: var(--dash-radius-2);
   background: var(--plane);
   overflow: hidden;
   transition: border-color var(--kg-motion-fast) ease;
 }
 
-/* The card rises to the surface it sits on, the same way a control tile does
-   — nothing MOVES: `apps/dashboard` imports only this file and the
-   reduced-motion reset lives in `index.css`. */
+/* Tinted and lifted, the same way a control tile is — plain `--surface` was
+   white on its white card. Nothing MOVES: `apps/dashboard` imports only this
+   file and the reduced-motion reset lives in `index.css`. */
 .support-item:hover {
-  border-color: var(--card-line);
-  background: var(--surface);
+  border-color: color-mix(in srgb, var(--brand) 35%, transparent);
+  background: color-mix(in srgb, var(--brand) 7%, var(--surface));
+  box-shadow: var(--kg-shadow-sm);
 }
 
 .support-item.is-open {
@@ -5326,8 +5430,9 @@ button.kid-pill {
   justify-items: center;
   gap: 0.3rem;
   padding: 1.6rem 1rem;
-  border: 1px dashed var(--line);
+  border: 1px solid transparent;
   border-radius: var(--dash-radius-2);
+  background: var(--plane);
   text-align: center;
 }
 
@@ -5367,7 +5472,7 @@ button.kid-pill {
   align-items: center;
   gap: 0.7rem;
   padding: 0.6rem 0.7rem;
-  border: 1px solid var(--line);
+  border: 1px solid transparent;
   border-radius: var(--dash-radius-2);
   background: var(--plane);
 }
@@ -5611,7 +5716,7 @@ button.kid-pill {
   margin-top: 0.35rem;
   border-radius: 999px;
   color: var(--muted);
-  border: 1px solid var(--line);
+  border: 1px solid transparent;
   background: var(--surface);
   /* Over the rail, not under it: the glyph's own ground is what breaks the
      line into segments. */
@@ -5741,7 +5846,7 @@ button.kid-pill {
   min-height: 2rem;
   padding: 0.3rem 0.7rem;
   border-radius: 999px;
-  border: 1px solid var(--line);
+  border: 1px solid transparent;
   background: var(--surface);
   color: var(--muted);
   font-size: var(--dash-text-2);
@@ -5845,7 +5950,7 @@ button.kid-pill {
     gap: 0;
     padding: 0.3rem 0.4rem;
     padding-bottom: max(0.3rem, env(safe-area-inset-bottom));
-    border-right: 0;
+    border-inline-end: 0;
     border-top: 1px solid var(--line);
     /* Opaque: the page scrolls under it. The rail's own mix is against
        `--plane`, which is the ground it is now floating over. */
@@ -6108,8 +6213,8 @@ button.kid-pill {
 .lang-side .lang-menu {
   top: auto;
   bottom: calc(100% + 0.4rem);
-  left: 0;
-  right: auto;
+  inset-inline-start: 0;
+  inset-inline-end: auto;
 }
 
 .login-head {
@@ -6237,7 +6342,7 @@ button.kid-pill {
   gap: 1rem;
   align-items: center;
   background: var(--surface-2);
-  border: 1px solid var(--line);
+  border: 1px solid transparent;
   border-radius: var(--dash-radius-3);
   padding: 1.25rem 1.4rem;
   margin: 1.2rem 0 1.15rem;
@@ -6566,6 +6671,11 @@ button.kid-pill {
   font-size: var(--dash-text-3);
   color: var(--muted);
   line-height: 1.55;
+}
+
+/* On the page, not a card: `.reward-input`'s own grey is the page's. */
+.guide > .reward-input {
+  background: var(--surface);
 }
 
 .guide-topics {
@@ -7254,7 +7364,7 @@ button.kid-pill {
   grid-area: 1 / 2;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
-  text-align: right;
+  text-align: end;
 }
 
 /* ---------- The four remaining figures ---------- */
@@ -7271,7 +7381,7 @@ button.kid-pill {
 
 .report-stat {
   background: var(--surface-2);
-  border: 1px solid var(--line);
+  border: 1px solid transparent;
   border-radius: var(--dash-radius-3);
   padding: 0.95rem 1.05rem;
 }
@@ -7293,7 +7403,7 @@ button.kid-pill {
 /* ---------- The generated sentence ---------- */
 
 .report-quote {
-  border-left: 3px solid var(--brand);
+  border-inline-start: 3px solid var(--brand);
   padding: 0.15rem 0 0.15rem 1rem;
   margin: 1.3rem 0 0;
 }
@@ -7337,17 +7447,17 @@ button.kid-pill {
   align-items: baseline;
   gap: 0.75rem;
   background: var(--surface-2);
-  border: 1px solid var(--line);
-  border-left: 3px solid var(--muted);
+  border: 1px solid transparent;
+  border-inline-start: 3px solid var(--muted);
   border-radius: var(--dash-radius-2);
   padding: 0.75rem 0.95rem;
 }
 
 .report-findings li.tone-warning {
-  border-left-color: var(--warning);
+  border-inline-start-color: var(--warning);
 }
 .report-findings li.tone-good {
-  border-left-color: var(--good);
+  border-inline-start-color: var(--good);
 }
 
 .report-finding-badge {
@@ -7403,7 +7513,7 @@ button.kid-pill {
  */
 .report-table-wrap {
   overflow-x: auto;
-  border: 1px solid var(--line);
+  border: 1px solid transparent;
   border-radius: var(--dash-radius-3);
   background: var(--surface-2);
 }
@@ -7510,9 +7620,9 @@ button.kid-pill {
 .report-chip {
   display: grid;
   gap: 0.25rem;
-  text-align: left;
+  text-align: start;
   background: var(--surface-2);
-  border: 1px solid var(--line);
+  border: 1px solid transparent;
   border-radius: var(--dash-radius-2);
   padding: 0.55rem 0.8rem;
 }
@@ -7864,7 +7974,7 @@ button.kid-pill {
   display: flex;
   align-items: flex-start;
   gap: 0.5rem;
-  text-align: left;
+  text-align: start;
   padding: 0.7rem 0.9rem;
   margin-bottom: 1.15rem;
   border-radius: var(--dash-radius-2);
@@ -7974,7 +8084,7 @@ button.kid-pill {
   display: flex;
   align-items: flex-start;
   gap: 0.5rem;
-  text-align: left;
+  text-align: start;
   padding: 0.5rem 0.6rem;
   border: 0;
   border-radius: var(--dash-radius-1);
@@ -8038,13 +8148,14 @@ button.kid-pill {
   gap: 0.5rem;
   padding: 0.55rem 0.7rem;
   border-radius: var(--kg-radius-md);
-  border: 1px solid var(--kg-border);
+  border: 1px solid transparent;
+  background: var(--plane);
   cursor: pointer;
 }
 
 .parked-option.is-checked {
   border-color: var(--kg-primary);
-  background: var(--kg-primary-soft);
+  background: var(--kg-primarySoft);
 }
 
 .parked-option-name {
@@ -8170,7 +8281,8 @@ button.kid-pill {
   justify-items: center;
   padding: 0.8rem;
   border-radius: var(--dash-radius-2);
-  border: 1px dashed var(--line);
+  border: 1px solid transparent;
+  background: var(--plane);
 }
 
 .invite-code strong {

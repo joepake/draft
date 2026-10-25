@@ -1,12 +1,12 @@
 export const checkIn = {
   noPhotoBadge: 'بلا صورة',
   historyTitle: 'سجلّ الاطمئنان',
-  historyHint: 'اضغط على صورة لتكبيرها. يمكنك طلب اطمئنان جديد من الأعلى في أي وقت.',
+  historyHint: 'اضغط على صورة لتكبيرها.',
   historyEmpty: 'لا توجد طلبات اطمئنان بعد.',
   screenTitle: 'الاطمئنان',
   statusSafe: 'بأمان',
   statusNoResponse: 'لا يوجد رد',
-  statusAskedForHelp: 'تم طلب المساعدة (SOS)',
+  statusAskedForHelp: 'تم إرسال SOS',
   statusWaiting: 'في الانتظار',
   metaWaitingForLocationAndPhoto: 'بانتظار الموقع والصورة',
   metaWaitingForLocation: 'بانتظار الموقع',
@@ -32,6 +32,7 @@ export const checkIn = {
   checkInConfirmedDescription: 'أكّد {{deviceName}} أنه بأمان.',
   childDeviceFallback: 'جهاز الطفل',
   requestCheckIn: 'طلب اطمئنان',
+  send: 'إرسال',
   requestCheckInNote:
     'يطلب من جهاز الطفل موقعه، مع صورة من الكاميرا الأمامية إن كان هاتفًا أو جهازًا لوحيًا.',
   requestCheckInNoteLocationOnly: 'يطلب من جهاز الطفل موقعه.',

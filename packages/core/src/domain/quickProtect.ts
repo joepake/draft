@@ -25,6 +25,7 @@
  */
 
 import type { ChildRules } from '@kidgate/schema/childRules';
+import { dailyLimitOrNone } from './dailyLimit';
 
 /** The five things the sheet can turn on, in the order it shows them. */
 export type QuickProtectKey =
@@ -71,7 +72,7 @@ export function hasCopyableRules(rules: ChildRules | undefined): boolean {
   }
   return (
     rules.scheduleEnabled === true ||
-    typeof rules.dailyLimitMinutes === 'number' ||
+    dailyLimitOrNone(rules.dailyLimitMinutes) !== null ||
     rules.webFilterEnabled === true ||
     rules.locationSharingEnabled === true ||
     rules.videoHistoryEnabled === true
@@ -93,7 +94,8 @@ export function quickProtectAlreadyOn(
 ): QuickProtectFlags {
   return {
     bedtime: rules?.scheduleEnabled === true,
-    dailyLimit: typeof rules?.dailyLimitMinutes === 'number',
+    // A stored full day is no limit, so the row still offers one.
+    dailyLimit: dailyLimitOrNone(rules?.dailyLimitMinutes) !== null,
     webFilter: rules?.webFilterEnabled === true && rules?.safeSearchEnabled === true,
     location: rules?.locationSharingEnabled === true,
     videoHistory: rules?.videoHistoryEnabled === true,

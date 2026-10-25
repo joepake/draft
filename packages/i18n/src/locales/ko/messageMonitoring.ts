@@ -116,10 +116,8 @@ export const messageMonitoring = {
     revokedBody:
       'KidGate에 필요한 권한이 Android에서 꺼져 메시지가 더 이상 검사되지 않습니다. 자녀 기기에서 KidGate를 열고 다시 허용해 주세요.',
     offTitle: '메시지 경고가 켜져 있지 않습니다',
-    offBody:
-      '자녀 기기에서 아무것도 검사하지 않으므로 여기에 알림이 표시될 수 없습니다. 설정하려면 자녀 기기에서 KidGate를 열어 주세요.',
-    switchedOffBody:
-      '자녀 기기에서 아무것도 검사하지 않으므로 여기에 알림이 표시될 수 없습니다. 이 화면의 설정에서 “받은 메시지 검사”를 켜세요.',
+    offBody: '설정하려면 자녀 기기에서 KidGate를 열어 주세요.',
+    switchedOffBody: '이 화면의 설정에서 “받은 메시지 검사”를 켜세요.',
     pendingTitle: '자녀 기기에 적용되기를 기다리는 중',
     pendingBody:
       '켜 두셨습니다. 자녀 기기가 다음에 연결될 때 반영되며, 보통 몇 분 안에, 휴대폰을 쓰는 중이면 더 빨리 적용됩니다. 따로 하실 일은 없습니다.',

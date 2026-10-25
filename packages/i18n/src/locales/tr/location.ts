@@ -78,6 +78,11 @@ export const location = {
   childNoneOnline: 'Çevrimiçi cihaz yok',
   childPickCarriedA11y:
     '{{deviceName}} cihazını {{childName}} yanında taşıdığı cihaz olarak işaretle',
+  carriedFrom: 'Konum kaynağı: {{deviceName}}',
+  changeCarried: 'Cihazı değiştir',
+  carriedSuggestion: '{{deviceName}} {{time}} konum gönderdi.',
+  useCarried: '{{deviceName}} cihazını kullan',
+  carriedBadge: 'Yanında',
   stayRange: '{{from}} – {{to}}',
   wizardStepAllow:
     'İzin ver’i, ardından Her zaman’ı seç; böylece güncellemeler arka planda sürer.',

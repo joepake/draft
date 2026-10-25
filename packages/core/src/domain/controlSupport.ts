@@ -22,6 +22,7 @@
  */
 
 import type { DeviceCapabilities, DevicePlatform } from '@kidgate/schema/capabilities';
+import { isKidGateOwnApp } from './ownApp';
 
 /**
  * The three flags these rules read, each optional on its own — the shape
@@ -36,7 +37,74 @@ interface ControlSupportFacts {
     appBlock?: DeviceCapabilities['appBlock'];
     lock?: DeviceCapabilities['lock'];
     screenTime?: DeviceCapabilities['screenTime'];
+    parentAppBlocking?: DeviceCapabilities['parentAppBlocking'];
   } | null;
+}
+
+/**
+ * A parent's Block from the console (`Device.parentBlockedApps`).
+ *
+ * **Absent is no** — the one rule in this file that reads it so. An agent that
+ * predates the list ignores it, so the device's own yes is the only answer, and
+ * a Block drawn over a device that drops it is the switch that flips nothing.
+ */
+export function supportsParentAppBlocking(device: ControlSupportFacts): boolean {
+  return device.capabilities?.parentAppBlocking === true;
+}
+
+/**
+ * Packages Android's accessibility service lets through before any rule is
+ * read — `ALLOWED_EXACT` and `ALLOWED_PREFIXES` in
+ * `KidGateAccessibilityService.kt`: telecom, the dialers, the launchers, the
+ * VPN consent dialog. A Block or a cap on one is stored and shown as set and
+ * never enforced, and the dialer is in the inventory, so the Apps sheet
+ * offered both. The keyboard is let through too, read from the setting, so it
+ * cannot be listed. Pinned to the Kotlin by `androidAllowedAppsParity.test.ts`.
+ */
+export const ANDROID_ALWAYS_ALLOWED_APP_IDS: readonly string[] = [
+  'com.android.systemui',
+  'com.android.phone',
+  'com.android.server.telecom',
+  'com.android.emergency',
+  'com.google.android.dialer',
+  'com.samsung.android.dialer',
+  'com.android.launcher',
+  'com.android.launcher3',
+  'com.google.android.apps.nexuslauncher',
+  'com.sec.android.app.launcher',
+  'com.miui.home',
+  'com.mi.android.globallauncher',
+  'com.poco.home',
+  'com.huawei.android.launcher',
+  'com.oppo.launcher',
+  'com.vivo.launcher',
+  'com.android.vpndialogs',
+];
+
+export const ANDROID_ALWAYS_ALLOWED_APP_PREFIXES: readonly string[] = [
+  'com.android.systemui',
+  'com.samsung.android.app.telephonyui',
+];
+
+/**
+ * Whether a Block or a cap on this app could ever stop it on this device:
+ * never KidGate itself (every agent skips its own app), never what Android's
+ * accessibility service lets through first.
+ */
+export function canStopApp(
+  device: { platform?: string | null },
+  appId: string,
+): boolean {
+  if (isKidGateOwnApp(appId)) {
+    return false;
+  }
+  if (device.platform !== 'android') {
+    return true;
+  }
+  return (
+    !ANDROID_ALWAYS_ALLOWED_APP_IDS.includes(appId) &&
+    !ANDROID_ALWAYS_ALLOWED_APP_PREFIXES.some(prefix => appId.startsWith(prefix))
+  );
 }
 
 /** A cap on the day's minutes. Needs both a measurement and something to stop. */

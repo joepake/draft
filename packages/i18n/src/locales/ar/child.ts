@@ -1,10 +1,5 @@
 export const child = {
   pageTitle: 'الحالة',
-  statusPaused: 'مقفل',
-  statusActive: 'نشط',
-  readyTitle: 'كل شيء جاهز',
-  readyBody:
-    'إذا احتجت إلى مزيد من وقت الشاشة، يمكنك إرسال طلب إلى والديك من القسم أعلاه. وفي الحالات الطارئة يمكنك استخدام زر SOS.',
   setupCollapsedTitle: 'إكمال الإعداد مع أحد الوالدين',
   setupCollapsedRequiredCount: '{{count}} خطوة مطلوبة',
   setupCollapsedRequiredCount_one: 'خطوة مطلوبة واحدة',

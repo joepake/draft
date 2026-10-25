@@ -16,7 +16,7 @@ export const protection = {
   openKidGateOnChildPhone: 'Open KidGate once on the child device.',
   screenTimePermission: 'Screen Time permission',
   screenTimeAccessOff:
-    'Screen Time access is off, so app blocking and limits may stop working.',
+    'Screen Time access is off, so Blocked Apps and limits may stop working.',
   screenTimeSetupIncomplete: 'Screen Time setup is incomplete on the child device.',
   usageAccessPermission: 'Usage access',
   usageAccessOff:

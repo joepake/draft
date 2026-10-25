@@ -263,17 +263,13 @@ export default function MessageAlertsCard({
       ) : alerts.length === 0 ? (
         /*
          * Which empty this is has already been answered above: with a notice on
-         * screen the list is empty because nothing was watching, and without one
-         * it is empty because nothing was found. Two sentences for the two
-         * cases, because they mean opposite things.
+         * screen the list is empty because nothing was watching, and the notice
+         * says so — a second sentence repeated it (operator, 2026-10-25, the
+         * phone too). Without one it is empty because nothing was found.
          */
-        <p className="empty">
-          {appT(
-            notice && notice.kind !== 'outgoingAvailable'
-              ? 'messageMonitoring.emptySubtitleNotWatching'
-              : 'messageMonitoring.emptySubtitle',
-          )}
-        </p>
+        notice && notice.kind !== 'outgoingAvailable' ? null : (
+          <p className="empty">{appT('messageMonitoring.emptySubtitle')}</p>
+        )
       ) : (
         <ul className="attn">
           {alerts.map(alert => {

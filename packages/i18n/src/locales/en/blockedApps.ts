@@ -17,7 +17,7 @@ export const blockedApps = {
   installApprovalInfoLine2:
     'You get a notification, and the app appears below, in Blocked Apps, until you allow it.',
   installApprovalInfoLine3:
-    'Allowing an app lets it open right away. An app you do not allow simply stays blocked.',
+    'An app you allow opens within a minute on a connected child device. An app you do not allow stays blocked.',
   installApprovalInfoLine1Ios:
     'While this is on, the App Store is hidden on the child device, so no new app can be installed.',
   installApprovalInfoLine2Ios: 'Apps already on the device keep working.',
@@ -38,13 +38,13 @@ export const blockedApps = {
   heroTitle: 'Selected apps to block',
   heroSubtitle:
     'These apps and categories are chosen on the child device. KidGate syncs the list here for you to review.',
-  toggleTitle: 'Enable App Blocking',
+  toggleTitle: 'Enable Blocked Apps',
   toggleSubtitleOn: 'Selected apps are blocked on the child device.',
   toggleSubtitleOff: 'Turn on to block the selected apps remotely.',
-  toggleAccessibilityLabel: 'Enable App Blocking',
+  toggleAccessibilityLabel: 'Enable Blocked Apps',
   emptyTitle: 'No blocked apps yet',
   emptySubtitle:
-    'On the child device, open KidGate Settings, enter the Parent PIN, then open App Blocking → Blocked Apps and save the selection.',
+    'Block an app from Installed apps. On an iPhone, choose the apps on the iPhone itself.',
   emptySubtitleTv:
     'On the TV, open KidGate, select “{{button}}”, enter the Parent PIN, then choose the apps and save.',
   sectionTitle: 'Blocked list',
@@ -52,9 +52,11 @@ export const blockedApps = {
   privacySubtitle:
     'On iOS, Apple may hide exact app names from parent devices. On other devices, selected app names sync here. Changing the list still requires the Parent PIN on the child device.',
   infoTitle: 'How it works',
-  infoLine1: 'Choose apps on the child device after entering the Parent PIN.',
+  infoLine1:
+    'Block apps from Installed apps. On an iPhone, choose them on the iPhone with the Parent PIN.',
   infoLine2: 'Lock, Blocked Hours, and Daily Limit still block all apps.',
-  infoLine3: 'Turn blocking on or off at any time from this screen.',
+  infoLine3:
+    'Turn blocking on or off at any time from this screen. A connected child device gets each change within a minute.',
   appKind: 'App',
   categoryKind: 'Category',
   websiteKind: 'Website',
@@ -69,18 +71,19 @@ export const blockedApps = {
   blockedAppsLabel: 'Blocked Apps',
   appsConfiguredChip: 'Apps configured',
   appsNotSetChip: 'Apps not set',
-  appBlockingSectionTitle: 'App Blocking',
+  appBlockingSectionTitle: 'Blocked Apps',
   appBlockingSectionDescription: 'Choose which apps parents can block on this device.',
   savedItemsForBlocking: 'Saved {{count}} items for blocking.',
   savedItemsForBlocking_one: 'Saved {{count}} item for blocking.',
   noAppsSelected: 'No apps were selected.',
   unableToOpenAppPicker: 'Unable to open the app picker. Try again.',
   wizardStepPin: 'Enter the Parent PIN when Settings asks.',
-  wizardStepChoose: 'Open Blocked Apps under App Blocking, select the apps, and save.',
+  wizardStepChoose: 'Open Blocked Apps, select the apps, and save.',
   pickerSubtitle: 'Choose the apps and categories to block on this device.',
   // Android's own picker (`KidGateAppPickerActivity`) lists apps only, so it
   // cannot say categories the way iOS's `pickerSubtitle` does.
   pickerSubtitleAndroid:
-    'Ticked apps are closed as soon as they open while App Blocking is on.',
+    'Ticked apps are closed as soon as they open while Blocked Apps is on.',
   pickerEmpty: 'No apps found on this device.',
+  blockingOffPill: 'Blocked Apps is off',
 } as const;

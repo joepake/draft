@@ -3,7 +3,9 @@ export const videoHistory = {
   fallbackDeviceName: 'Çocuk cihazı',
   toggleLabel: 'İzlenen videoları kaydet',
   toggleHint:
-    'Android telefonlardaki ve TV’deki YouTube uygulamasında ve KidGate uzantılı Chrome’da izlenen videolar. TV’de Shorts listelenmez; TV uygulaması bunları Shorts olarak tanımlamaz.',
+    'Android telefonlarda ve TV’de YouTube’da, ayrıca KidGate uzantılı Chrome’da.',
+  tvShortsInfo:
+    'TV’de Shorts listelenmez, çünkü YouTube’un TV uygulaması bunları Shorts olarak tanımlamaz.',
   toggleFailed: 'Video geçmişi güncellenemedi. Tekrar deneyin.',
   unsupportedNote:
     'Bu cihaz izlenen videoları bildiremez. Android, Android TV ve Chrome’da çalışır.',
@@ -23,7 +25,6 @@ export const videoHistory = {
   extensionStepEnable: 'O cihaz için “İzlenen videoları kaydet” seçeneğini açın',
   emptyTitle: 'Henüz izlenen yok',
   emptyBody: 'KidGate çalışırken çocuğunuz izlediğinde videolar burada görünür.',
-  emptyBodyOff: 'İzlenen videoları listelemek için yukarıdan kaydı açın.',
   viewsMeta_one: '{{count}} kez',
   viewsMeta: '{{count}} kez',
   dayToday: 'Bugün',

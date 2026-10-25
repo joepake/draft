@@ -101,7 +101,6 @@ export const family = {
     'Point the camera at the code on a child device, a family invite, or a web sign-in code.',
   manualCodeLabel: 'Enter the 6-character code',
   manualInstructions: 'Enter the 6-character code shown on the other device.',
-  headerHintEmpty: 'Manage and protect your child devices',
   familyCardManage: 'Manage family, parents, and devices',
   familyCardJoined: 'Joined as a parent member',
   chipDeviceCount: '{{count}} devices',
@@ -122,7 +121,7 @@ export const family = {
   chipHealthWarnCount_one: '{{count}} needs setup',
   chipHealthInactiveCount: '{{count}} inactive 24h+',
   chipLocationBlocked: 'Not receiving location',
-  chipBlockedCount: '{{count}} blocked',
+  chipBlockedCount: '{{count}} in Blocked Hours',
   healthProtected: 'Protected',
   buildOutdated: 'Update available',
   healthNeedsSetup: 'Needs setup',
@@ -144,7 +143,7 @@ export const family = {
   rulesPausedBehind: 'Paused — keeping an earlier setting',
   rulesTightenRefused:
     'A paused device can only have its rules loosened, never tightened. Upgrade to change this on every device.',
-  parkedBannerTitle: 'Choose the device to keep watching',
+  parkedBannerTitle: 'Choose the reporting device',
   parkedBannerBody:
     'Your rules keep running on every device. The free plan reports from one device and lets you tighten rules only there — pick that device, or upgrade to keep them all.',
   parkedBannerAction: 'Choose device',
@@ -168,10 +167,10 @@ export const family = {
   // read as the parent’s own phone.
   pairingWillStartPaused:
     'The free plan reports from one device and lets you tighten rules only there, so the new device will start paused.',
-  chooseMonitoredTitle: 'Choose your primary device',
+  chooseMonitoredTitle: 'Choose the reporting device',
   chooseMonitoredBody:
     'Every rule keeps working on all of them. The device you pick reports screen time and location, and is the only one whose rules you can still tighten — on the others you can only loosen them. You can change your pick once every {{days}} days.',
-  chooseMonitoredConfirm: 'Watch this device',
+  chooseMonitoredConfirm: 'Set as reporting device',
   chooseMonitoredUpgrade: 'Keep all devices — upgrade',
   chooseMonitoredDone: '{{name}} is now the reporting device',
   chooseMonitoredCurrent: 'Reporting now',
@@ -188,6 +187,11 @@ export const family = {
   emptyTitle: 'No child devices yet',
   emptyDescription:
     'Add your child’s device to start monitoring screen time and app usage.',
+  // The no-device Family screen: the whole pairing in one sentence, the button
+  // under it. The role choice stays — skipped, a parent sets the child's phone
+  // up as a parent console.
+  emptyPairSteps:
+    'Install KidGate on the phone, tablet, TV or computer your child uses, choose This is a child device if it asks, then scan the code it shows.',
   setupFamilyTitle: 'Set up your family',
   createFamilyButton: 'Create family',
   joinFamilyButton: 'Join family',
@@ -206,12 +210,9 @@ export const family = {
   guestBenefitLocationTitle: 'Location and Check-Ins',
   guestBenefitLocationBody:
     'See where your child is and ask them to confirm they are safe.',
-  stepsHeading: 'Get started',
   step1Title: 'Open KidGate on your child’s device',
   step1Description:
     'Install it on the phone, tablet, TV or computer your child uses. On a phone or tablet, choose This is a child device. A QR code and a 6-character code appear.',
-  step2Title: 'Tap Add child device here',
-  step2Description: 'Scan that QR code with this phone, or type the 6-character code.',
   connectChildButton: 'Connect child device',
   listHint: 'Swipe left on a device to remove it',
   removeAlertTitle: 'Remove device?',

@@ -1,5 +1,4 @@
 export const appInventory = {
-  title: 'Ứng dụng trên thiết bị này',
   pendingTitle: 'Đang chờ bạn duyệt',
   pendingBadge: 'Bị chặn cho đến khi bạn cho phép',
   approvedBadge: 'Đã được bạn cho phép',
@@ -16,7 +15,6 @@ export const appInventory = {
   newBadge: 'Mới',
   ageBadge: '{{age}}+',
   browserExtension: 'Tiện ích Chrome',
-  titleExtension: 'Tiện ích mở rộng trên trình duyệt này',
   subtitleExtension:
     'Tất cả tiện ích mở rộng KidGate thấy đã cài trong trình duyệt, không chỉ những thay đổi gần đây.',
   summaryFlaggedExtension:
@@ -41,8 +39,18 @@ export const appInventory = {
   blockHint:
     'Để không cho con dùng một ứng dụng, hãy mở mục Chặn ứng dụng ngay trên thiết bị đó.',
   howItWorksLabel: 'Danh sách này hoạt động thế nào',
-  markSafe: 'An toàn',
+  markSafe: 'Đánh dấu an toàn',
   dismissedTitle: 'Bạn đã đánh dấu an toàn',
   undoSafe: 'Bỏ đánh dấu',
+  tabGeneral: 'Thông tin chung',
+  searchPlaceholder: 'Tìm ứng dụng',
+  searchEmpty: 'Không có ứng dụng nào khớp.',
+  blockedBadge: 'Đang chặn',
+  setLimit: 'Đặt giới hạn thời gian',
+  editLimit: 'Đổi giới hạn thời gian',
   howToBlock: 'Cách chặn',
+  blockApp: 'Chặn',
+  unblockApp: 'Bỏ chặn',
+  iosBlockOnDevice:
+    'Trên iPhone, việc chặn ứng dụng cần thao tác ngay trên iPhone của con.',
 } as const;

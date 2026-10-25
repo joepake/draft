@@ -1,13 +1,12 @@
 export const checkIn = {
   noPhotoBadge: 'Kein Foto',
   historyTitle: 'Check-in-Verlauf',
-  historyHint:
-    'Tippe auf ein Foto, um es zu vergrößern. Oben kannst du jederzeit einen neuen Check-in anfordern.',
+  historyHint: 'Tippe auf ein Foto, um es zu vergrößern.',
   historyEmpty: 'Noch keine Check-ins.',
   screenTitle: 'Check-in',
   statusSafe: 'In Sicherheit',
   statusNoResponse: 'Keine Antwort',
-  statusAskedForHelp: 'Um Hilfe gebeten (SOS)',
+  statusAskedForHelp: 'SOS gesendet',
   statusWaiting: 'Wartet',
   metaWaitingForLocationAndPhoto: 'Warte auf Standort und Foto',
   metaWaitingForLocation: 'Warte auf Standort',
@@ -35,6 +34,7 @@ export const checkIn = {
     '{{deviceName}} hat bestätigt, dass alles in Ordnung ist.',
   childDeviceFallback: 'Kindergerät',
   requestCheckIn: 'Check-in anfordern',
+  send: 'Senden',
   requestCheckInNote:
     'Fragt das Kindergerät nach seinem Standort und, bei einem Handy oder Tablet, nach einem Foto der Frontkamera.',
   requestCheckInNoteLocationOnly: 'Fragt das Kindergerät nach seinem Standort.',

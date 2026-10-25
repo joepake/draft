@@ -212,6 +212,8 @@ export const webFilter = {
   categoriesOnCount: '{{total}}件中{{on}}件がオン',
   askToOpen: '保護者に聞く',
   askToOpenSubtitle: '許可されると、このサイトを開けます。',
+  askToOpenHomeSubtitle:
+    'ブロックされたサイトを開きたいときは、保護者に聞いてください。',
   askToOpenDomainLabel: 'どのサイト？',
   askToOpenBlockedLabel: '最近ブロックされたサイト',
   askToOpenPending: 'すでにリクエストを送っています。返事を待ってください。',

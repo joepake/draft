@@ -114,6 +114,7 @@ export const errors = {
     'Cette famille a atteint le nombre d’appareils couverts par KidGate. Supprimez un appareil que vous n’utilisez plus, puis réessayez.',
   rewardTaskLimitReached:
     'Le nombre maximal de tâches actives en même temps est déjà atteint. Supprimez-en une ou attendez qu’une tâche soit terminée, puis réessayez.',
+  rewardTaskAlreadyDone: 'Cette tâche a déjà été signalée comme terminée.',
   deviceNotPaired:
     'Cet appareil n’est plus associé à ta famille. Demande à tes parents de l’associer de nouveau.',
   bonusMinutesOutOfRange:

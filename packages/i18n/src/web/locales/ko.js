@@ -181,7 +181,7 @@ export default {
       '아이 휴대폰에 KidGate를 설치하고 QR 코드를 스캔해 연결하세요. 1분이면 충분합니다.',
     step3Title: '규칙 정하기',
     step3Text:
-      '일일 제한과 차단 시간을 정하고, 위치와 앱 차단을 내 휴대폰에서 켜세요. 차단할 앱은 아이 기기에서 부모 PIN으로 한 번만 고르면 됩니다.',
+      '일일 제한과 차단 시간을 정하고, 위치와 “차단된 앱”을 내 휴대폰에서 켜세요. 차단할 앱은 아이 기기에서 부모 PIN으로 한 번만 고르면 됩니다.',
 
     whyEyebrow: 'KidGate를 쓰는 이유',
     whyTitle: '감시가 아니라 신뢰를 위해',
@@ -243,8 +243,8 @@ export default {
     faqMore: '더 궁금한 점이 있나요? 고객지원 보기',
 
     ctaTitle: '오늘부터 가족을 지키세요',
-    ctaSub: '모든 기능을 쓸 수 있는 7일 무료 체험.',
-    ctaNote: 'App Store 또는 Google Play에서 언제든 해지할 수 있습니다.',
+    ctaSub: '모든 기능을 쓸 수 있는 7일 무료 체험. 카드 등록은 필요 없습니다.',
+    ctaNote: '체험이 끝나도 규칙은 무료 플랜에서 계속 작동합니다.',
   },
 
   login: {
@@ -461,8 +461,7 @@ export default {
     save: '저장',
 
     unlockTitle: '변경이 잠겨 있습니다.',
-    unlockBody:
-      '조회는 바로 됩니다. 기기를 잠그거나 한도를 바꾸거나 요청을 승인하려면 부모 PIN으로 이 브라우저를 잠금 해제하세요. KidGate 앱으로 QR 코드를 스캔해 승인해도 됩니다. 체크인은 어느 쪽이든 됩니다.',
+    unlockBody: '모든 내용을 계속 볼 수 있고, 체크인도 보낼 수 있습니다.',
     unlockCta: '변경 잠금 해제',
     unlockToChange: '먼저 변경을 잠금 해제하세요',
     refresh: '새로고침',
@@ -502,9 +501,6 @@ export default {
     tileDeltaDown: '↓ 최근 7일 평균 대비 {{percent}}%',
     tileBlocked: '차단된 시도',
     tileBlockedMeta: '설치 이후 막은 앱',
-    tileSites: '필터링된 사이트',
-    tileCategoriesHit: '{{count}}개 카테고리 해당',
-    tileNothingBlocked: '아직 차단된 항목 없음',
     tileAttention: '확인 필요',
     tileOpenItems: '아래에 미처리 항목이 있습니다',
     tileAllClear: '이상 없음',
@@ -559,8 +555,6 @@ export default {
     blockingLabel: '차단',
     appsBlocked: '차단된 앱',
     categories: '카테고리',
-    perAppHint:
-      '앱별 한도는 차단 목록과 별개로 작동합니다. "TikTok 30분"은 "TikTok 금지"와는 다른 결정입니다.',
     limitsMax: '기기 한 대에 상한을 건 앱은 최대 {{max}}개입니다.',
     perDay: '{{value}}/일',
     webActivityTitle: '웹 활동',
@@ -585,11 +579,10 @@ export default {
     colVideo: '동영상',
     colChannel: '채널',
     colViews: '조회수',
-    filterRefusedTitle: '필터가 거부한 항목',
+    filterRefusedTitle: '필터가 차단한 항목',
     filterRefusedSub: '차단된 조회 {{count}}건, 최근 7일',
     filterHintIos:
       '이 iPhone이나 iPad는 Apple의 성인 콘텐츠 제한으로만 필터링합니다. 카테고리별로 차단하려면 기기에서 KidGate를 업데이트하고 KidGate VPN을 허용하세요.',
-    filterHintAndroid: '카테고리는 기기 내 DNS 필터가 적용합니다.',
 
     locationTitle: '위치',
     locationUpdated: '{{when}} 업데이트',
@@ -641,7 +634,7 @@ export default {
     rowAppBlocking: '차단된 앱',
     rowAppBlockingDesc: '{{apps}} · {{categories}}',
     rowWebFilter: '웹 필터',
-    rowWebFilterDesc: '{{count}}개 카테고리 거부',
+    rowWebFilterDesc: '{{count}}개 카테고리 차단',
     rowNotSupported: '이 기기에서는 지원되지 않습니다',
     rowLocation: '위치 공유',
     rowLocationDesc: '마지막 업데이트 {{when}}',
@@ -653,7 +646,7 @@ export default {
     webFilterCatsTitle: '웹 필터 카테고리',
     webFilterCatsSub: '차단할 콘텐츠 종류',
     dnsHint:
-      '필터가 작동하는 동안 암호화 DNS 리졸버는 항상 거부됩니다. 이를 열어 두면 브라우저가 다른 모든 카테고리를 우회할 수 있습니다.',
+      '필터가 작동하는 동안 암호화 DNS는 항상 차단되므로 브라우저가 우회할 수 없습니다.',
     starChartTitle: '별 순위표',
     starChartSub: '이번 주 아이별로 모은 별',
     starChartEmpty: '앱에서 아이를 한 명 더 추가하면 별 순위표가 시작됩니다.',
@@ -692,7 +685,7 @@ export default {
     shareFailed: '이 브라우저에서는 저장할 수 없습니다. 대신 요약을 복사해 주세요.',
     emptyBody:
       'Premium에서는 리포트가 매주 월요일 아침에 도착하며 그 전 7일을 다룹니다. 이번 주 리포트는 휴대폰의 KidGate 앱에서 직접 작성할 수도 있습니다.',
-    loadFailed: '리포트를 열지 못했습니다. 페이지를 새로고침하세요.',
+    loadFailed: '리포트를 열지 못했습니다.',
     retryLoad: '다시 시도',
     existed: '이번 주 리포트가 이미 있습니다. 여기 있습니다.',
   },
@@ -757,7 +750,7 @@ export default {
 
     faq9Q: '특정 앱은 어떻게 차단하나요?',
     faq9A:
-      '앱 선택은 아이 기기에서 합니다. *KidGate → 설정*을 열고 *부모 PIN으로 잠금 해제*를 탭한 뒤 *차단된 앱*을 열어 앱을 고르고 저장하세요. 그다음 부모 기기에서 해당 기기의 *차단된 앱* 화면을 열고 *앱 차단 사용*을 켭니다. iOS에서는 Apple이 정확한 앱 이름을 부모 기기에서 숨길 수 있습니다. 이는 플랫폼의 제약입니다.',
+      '부모 기기에서 아이의 *앱*을 열고 *설치된 앱*에서 앱을 탭해 *차단*을 고르세요. iPhone에서는 iPhone에서 직접 앱을 고릅니다. *KidGate → 설정*을 열고 *부모 PIN으로 잠금 해제*를 탭한 뒤 *차단된 앱*을 열어 앱을 고르고 저장하세요. 그다음 부모 기기에서 *차단된 앱 사용*을 켭니다. 연결된 아이 기기는 모든 변경을 1분 안에 받습니다. iOS에서는 Apple이 정확한 앱 이름을 부모 기기에서 숨길 수 있습니다.',
 
     faq10Q: '아이의 위치가 갱신되지 않는 이유는 무엇인가요?',
     faq10A:

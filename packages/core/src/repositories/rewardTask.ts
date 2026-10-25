@@ -6,6 +6,8 @@ import type {
   RewardTaskStars,
   RewardTaskStatus,
 } from '@kidgate/schema/rewardTask';
+import { apiErrorMessageKey } from '../domain/apiErrorMessages';
+import { isApiFailure } from '../domain/apiFailure';
 import { deleteAllInBatches } from '../domain/batchDelete';
 import { timestampToIso } from '../domain/firestoreValue';
 
@@ -74,6 +76,20 @@ function failure(code: ApiFailure['code'], messageKey: string): ApiFailure {
   return { code, messageKey };
 }
 
+/**
+ * The failure carrying the sentence `apiErrorMessage` would pick — the
+ * server's key, its code's, the call's — and `fallbackKey` only after those.
+ *
+ * A bare `catch` here turned the cap (`rewardTask/too-many`), a task the child
+ * had just claimed (`not-open`) and a daily task claimed twice (`not-yet`)
+ * into "try again" — a retry that can never work, over a sentence that
+ * already existed.
+ */
+function reasonOr(error: unknown, fallbackKey: string): ApiFailure {
+  const messageKey = apiErrorMessageKey(error, fallbackKey);
+  return isApiFailure(error) ? { ...error, messageKey } : failure('server', messageKey);
+}
+
 export interface RewardTaskRepositoryDeps {
   db: FirestorePort;
   api: ApiPort;
@@ -124,8 +140,8 @@ export function createRewardTaskRepository(deps: RewardTaskRepositoryDeps) {
           { ...input, familyOwnerUserId: familyId },
           { as: 'parent' },
         );
-      } catch {
-        throw failure('server', 'rewardTask.unableToCreate');
+      } catch (error) {
+        throw reasonOr(error, 'rewardTask.unableToCreate');
       }
     },
 
@@ -145,8 +161,8 @@ export function createRewardTaskRepository(deps: RewardTaskRepositoryDeps) {
           { taskId, ...changes, familyOwnerUserId: familyId },
           { as: 'parent' },
         );
-      } catch {
-        throw failure('server', 'rewardTask.unableToUpdate');
+      } catch (error) {
+        throw reasonOr(error, 'rewardTask.unableToUpdate');
       }
     },
 
@@ -162,9 +178,9 @@ export function createRewardTaskRepository(deps: RewardTaskRepositoryDeps) {
           { taskId, approved, familyOwnerUserId: familyId },
           { as: 'parent' },
         );
-      } catch {
-        throw failure(
-          'server',
+      } catch (error) {
+        throw reasonOr(
+          error,
           approved ? 'rewardTask.unableToApprove' : 'rewardTask.unableToReject',
         );
       }
@@ -188,8 +204,8 @@ export function createRewardTaskRepository(deps: RewardTaskRepositoryDeps) {
           { taskId: task.id, deviceId: claimDeviceId || task.deviceId },
           { as: 'child' },
         );
-      } catch {
-        throw failure('server', 'rewardTask.unableToClaim');
+      } catch (error) {
+        throw reasonOr(error, 'rewardTask.unableToClaim');
       }
     },
 

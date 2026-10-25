@@ -1,10 +1,5 @@
 export const child = {
   pageTitle: 'Статус',
-  statusPaused: 'Заблокировано',
-  statusActive: 'Активно',
-  readyTitle: 'Всё готово',
-  readyBody:
-    'Если нужно больше экранного времени, можешь отправить запрос родителям в разделе выше. В экстренной ситуации используй кнопку SOS.',
   setupCollapsedTitle: 'Заверши настройку вместе с родителем',
   setupCollapsedRequiredCount: '{{count}} обязательных шагов',
   setupCollapsedRequiredCount_one: '{{count}} обязательный шаг',

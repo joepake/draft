@@ -74,7 +74,7 @@
  *
  * `bypass` is deliberately one label covering four kinds of app — VPNs, remote
  * desktop, hidden-vault apps disguised as calculators, and third-party app
- * stores or emulators that install around `BlockedAppsScreen`. A model asked
+ * stores or emulators that install around the device's own blocked-app picker. A model asked
  * "is this app for getting around parental control" answers far more reliably
  * than one asked to tell AnyDesk from a photo vault, and the parent needs
  * exactly one sentence out of it. It joins the serious six for the same reason
@@ -152,7 +152,7 @@ export type AppCategory = (typeof APP_CATEGORIES)[number];
  *
  * **This does not auto-block anything.** The web equivalent extends a device's
  * `blockedDomains` because a domain is enforced server-side against a list; an
- * app is blocked by a parent choosing it on `BlockedAppsScreen`, and a machine
+ * app is blocked by a pick on the child device behind the Parent PIN, and a machine
  * that silently blocked a child's app would be discovered as a broken phone
  * rather than as a policy.
  */

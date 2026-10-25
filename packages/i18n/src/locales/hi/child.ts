@@ -1,10 +1,5 @@
 export const child = {
   pageTitle: 'स्थिति',
-  statusPaused: 'लॉक है',
-  statusActive: 'सक्रिय',
-  readyTitle: 'सब तैयार है',
-  readyBody:
-    'अगर आपको और स्क्रीन टाइम चाहिए, तो आप ऊपर से माता-पिता को अनुरोध भेज सकते हैं। आपातकाल में SOS बटन इस्तेमाल करें।',
   setupCollapsedTitle: 'माता-पिता के साथ सेटअप पूरा करें',
   setupCollapsedRequiredCount: '{{count}} आवश्यक चरण',
   setupCollapsedOptionalCount: '{{count}} वैकल्पिक चरण',

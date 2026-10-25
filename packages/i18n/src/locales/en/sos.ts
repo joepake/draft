@@ -1,6 +1,5 @@
 export const sos = {
   title: 'SOS Alerts',
-  subtitle: '{{deviceName}} · photos appear below when sent',
   fallbackDeviceName: 'Child device',
   fallbackChildName: 'Child',
   locationUnavailable: 'Location unavailable',
@@ -9,7 +8,6 @@ export const sos = {
   viewPhotoAccessibility: 'View SOS photo',
   photoTapHint: 'Tap to view the full photo',
   photoLoadFailed: 'Unable to load this photo. Check your connection and try again.',
-  noPhoto: 'No photo attached to this alert.',
   audioLabel: 'Sound recording',
   audioPlayAccessibility: 'Play SOS recording',
   audioStopAccessibility: 'Stop playing SOS recording',
@@ -17,7 +15,6 @@ export const sos = {
   acknowledgedAt: 'Responded {{time}}',
   openInMaps: 'Open in Maps',
   acknowledgeButton: 'I’m on it',
-  acknowledgingButton: 'Saving…',
   toastAcknowledgeFailed: 'Unable to acknowledge. Try again in a moment.',
   emptyTitle: 'No SOS alerts yet',
   emptyDescription:

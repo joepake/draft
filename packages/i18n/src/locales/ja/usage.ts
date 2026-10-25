@@ -2,12 +2,10 @@ export const usage = {
   title: '利用レポート',
   fallbackDeviceName: '子どものデバイス',
   sectionToday: '今日',
-  percentOfLimit: '上限の{{percent}}%',
   reportedAt: '{{time}} に更新',
   statUsedLabel: '使用時間',
   statLeftLabel: '残り',
   statLimitLabel: '上限',
-  limitOff: 'オフ',
   insightDailyLimitReached: '1日の上限に達しました',
   insightNearDailyLimit: '1日の上限に近づいています',
   insightNoDailyLimit: '1日の上限は未設定',
@@ -48,24 +46,21 @@ export const usage = {
   syncNoteTv:
     'このテレビは定期的にしか通信しないため、スクリーンタイムがこの画面に反映されるまで最大1時間かかることがあります。インターネットに接続していない場合はさらに時間がかかります。',
   sectionLast30Days: '過去30日間',
-  comparePeriodTotal: '30日間の合計',
+  comparePeriodTotal: '合計',
   compareDayAvg: '1日の平均',
-  compareVsYesterday: '昨日との比較',
+  compareVsYesterdaySameTime: '昨日の同じ時刻と比べて {{value}}',
   dayTodayShort: '今日',
   chartEmpty: '利用状況のグラフは現在利用できません。',
   chartNoDataYet:
     '子どものデバイスが1日の利用状況を同期するとバーが表示されます。今日の分はリアルタイムの利用時間で更新されます。',
   chartDayNone: '利用なし',
   bonusMinutesChip: 'ボーナス+{{minutes}}分',
-  dailyLimitGuide: '1日の上限 {{duration}}',
-  sectionTopApps: 'よく使うアプリ',
   topAppsHint:
     '子どものデバイスで本日最もよく使われたアプリです。スクリーンタイム／使用状況へのアクセスが同期されるとデータが蓄積されます。',
   topAppsExcludedNote:
     'スクリーンセーバー、ホーム画面、KidGate 自体の画面は使用時間に含まれません。デバイスがついていても実際に使われていない間は、その分が「未使用」として記録されます。',
   topAppsAiNote:
     '一部はアプリ名からの推定で、既知のアプリとの照合ではありません。外れているものもあります。',
-  errorTitle: '利用状況を読み込めません',
   errorDescription: '接続を確認して、もう一度お試しください。',
   tryAgain: '再試行',
   // Shown only when the rating is known — it is 0 for much of the long
@@ -82,9 +77,10 @@ export const usage = {
   protectionBlockedApps: 'ブロックしたアプリ起動',
   protectionWebBlocked: 'ブロックしたサイト',
   protectionTamper: '保護アラート',
-  sectionTimeline: '使った時間帯',
+  sectionTimeline: '画面が点いていた時間帯',
   timelineUsed: '使用中',
   timelineIdle: '未使用',
+  idleRow: '画面点灯・未使用',
   timelineUnmeasured: '計測できず',
   timelineUnmeasuredHint:
     'KidGate がデバイスで動いていなかったか、デバイスがスリープしていました。この時間は合計にも含まれません。',

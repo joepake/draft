@@ -1,13 +1,12 @@
 export const checkIn = {
   noPhotoBadge: 'कोई फ़ोटो नहीं',
   historyTitle: 'चेक-इन इतिहास',
-  historyHint:
-    'फ़ोटो बड़ी करने के लिए उस पर टैप करें। ऊपर से कभी भी नया चेक-इन माँग सकते हैं।',
+  historyHint: 'फ़ोटो बड़ी करने के लिए उस पर टैप करें।',
   historyEmpty: 'अभी तक कोई चेक-इन नहीं।',
   screenTitle: 'चेक-इन',
   statusSafe: 'सुरक्षित',
   statusNoResponse: 'कोई जवाब नहीं',
-  statusAskedForHelp: 'मदद माँगी (SOS)',
+  statusAskedForHelp: 'SOS भेजा गया',
   statusWaiting: 'प्रतीक्षा में',
   metaWaitingForLocationAndPhoto: 'लोकेशन और फ़ोटो की प्रतीक्षा',
   metaWaitingForLocation: 'स्थान की प्रतीक्षा की जा रही है',
@@ -34,6 +33,7 @@ export const checkIn = {
   checkInConfirmedDescription: '{{deviceName}} ने सुरक्षित होने की पुष्टि की।',
   childDeviceFallback: 'बच्चे का डिवाइस',
   requestCheckIn: 'चेक-इन माँगें',
+  send: 'भेजें',
   requestCheckInNote:
     'बच्चे के डिवाइस से उसका स्थान माँगता है, और फ़ोन या टैबलेट हो तो फ्रंट कैमरे की फ़ोटो भी।',
   requestCheckInNoteLocationOnly: 'बच्चे के डिवाइस से उसका स्थान माँगता है।',

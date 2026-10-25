@@ -2,6 +2,7 @@ export const report = {
   title: 'साप्ताहिक रिपोर्ट',
   subtitle: 'इस हफ़्ते KidGate ने क्या देखा।',
   weekOf: 'सप्ताह {{week}}',
+  weekOfYear: 'सप्ताह {{week}} - {{year}}',
   range: '{{from}} – {{to}}',
   triggerScheduled: 'सोमवार को भेजी गई',
   triggerManual: 'आपने बनाई',
@@ -34,7 +35,8 @@ export const report = {
   findingLimitHit: '{{limit}} की दैनिक सीमा {{count}} दिन पूरी हुई।',
   findingBlockedApps:
     '{{count}} बार ब्लॉक किए ऐप खोलने की कोशिश, पिछले हफ़्ते {{previous}} थी।',
-  findingBlockedWeb: '{{count}} साइटें फ़िल्टर हुईं, पिछले हफ़्ते {{previous}} थीं।',
+  findingBlockedWeb:
+    '{{count}} ब्लॉक की गई साइटों पर जाने के प्रयास, पिछले हफ़्ते {{previous}} थे।',
   findingQuietWeek:
     'शांत हफ़्ता — कुल {{total}}, और ऐसा कुछ नहीं जिसमें आपकी ज़रूरत पड़ी हो।',
 
@@ -50,7 +52,7 @@ export const report = {
   findingBlockedAppsDown:
     '{{count}} बार ब्लॉक किए गए ऐप खोलने की कोशिश हुई, पिछले हफ़्ते {{previous}} थीं।',
   findingBlockedWebDown:
-    '{{count}} साइटें फ़िल्टर हुईं, पिछले हफ़्ते {{previous}} थीं।',
+    '{{count}} ब्लॉक की गई साइटों पर जाने के प्रयास, पिछले हफ़्ते के {{previous}} से कम।',
   findingLearningTime: 'शिक्षा ऐप्स में {{duration}}, ज़्यादातर {{app}} में।',
   findingTasksDone: '{{count}} काम पूरे हुए, {{bonus}} का बोनस मिला।',
   findingAskedFirst: 'नियम तोड़ने के बजाय {{count}} अनुरोध भेजे गए।',
@@ -95,7 +97,7 @@ export const report = {
     'पिछले दो हफ़्तों में कोई स्क्रीन टाइम दर्ज नहीं हुआ, इसलिए अभी बताने को कुछ नहीं है। ऑफ़लाइन डिवाइस कुछ नहीं बताता, और यह शांत हफ़्ते जैसा नहीं है।',
   rateLimited: 'अभी एक और रिपोर्ट नहीं लिखी जा सकती। एक मिनट बाद फिर से प्रयास करें।',
   loadFailedTitle: 'रिपोर्ट लोड नहीं हुईं',
-  loadFailed: 'आपकी रिपोर्ट नहीं खुल सकीं। दोबारा प्रयास करने के लिए नीचे खींचें।',
+  loadFailed: 'आपकी रिपोर्ट नहीं खुल सकीं।',
   failed: 'रिपोर्ट नहीं लिखी जा सकी। थोड़ी देर बाद फिर से प्रयास करें।',
 
   historyTitle: 'पिछले हफ़्तों की रिपोर्ट',

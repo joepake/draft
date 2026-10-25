@@ -1,6 +1,6 @@
 /**
  * Rules that belong to the CHILD, not to a device: the web filter, blocked
- * hours, and location sharing.
+ * hours, location sharing, and the app-blocking and install-approval switches.
  *
  * Gated 2026-08-26 in `docs/FEASIBILITY.md` ("Web filter policy moves from
  * the device to the child"; schedule and location joined the same fan-out the
@@ -74,6 +74,17 @@ export interface ChildRules {
   /** Whether this child's devices report location. Free-tier writable. */
   locationSharingEnabled?: boolean;
   /**
+   * The app-blocking and install-quarantine switches, once for every device
+   * since 2026-10-24 — a parent sets the same rule on all of them, and two
+   * switches per machine were two chances for siblings to disagree. Only the
+   * switches: which apps a device blocks is picked on that device
+   * (`blockedAppPreview`), `approvedPackages` answers one device's install,
+   * and the quarantine's `appInstallApprovalSinceMs` is stamped per device by
+   * the fan-out from that device's own controls. Both free-tier writable.
+   */
+  appBlockingEnabled?: boolean;
+  appInstallApprovalEnabled?: boolean;
+  /**
    * The child's shared daily screen-time budget, in minutes. Null clears it.
    *
    * Deliberately NOT in `CHILD_RULE_KEYS`: fanned out as
@@ -109,8 +120,10 @@ export interface ChildRules {
  * here silently stops reaching any device.
  *
  * Deliberately NOT here: `dailyLimitMinutes` (the multiplication trap above),
- * `appLimits` and `appBlockingEnabled` (package names only exist on the one
- * machine that holds them).
+ * `appLimits` and `approvedPackages` (package names only exist on the one
+ * machine that holds them). `appBlockingEnabled` sat in that list until
+ * 2026-10-24 for the same reason, but it is a switch, not a list: the picks
+ * stay per device and the switch now turns them all on at once.
  */
 export const CHILD_RULE_KEYS = [
   'webFilterEnabled',
@@ -123,6 +136,8 @@ export const CHILD_RULE_KEYS = [
   'locationSharingEnabled',
   'safeSearchEnabled',
   'videoHistoryEnabled',
+  'appBlockingEnabled',
+  'appInstallApprovalEnabled',
 ] as const satisfies ReadonlyArray<keyof ChildRules>;
 
 export type ChildRuleKey = (typeof CHILD_RULE_KEYS)[number];

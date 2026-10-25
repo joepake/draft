@@ -118,10 +118,8 @@ export const messageMonitoring = {
     revokedBody:
       'Android, KidGate’in ihtiyaç duyduğu bir izni kapattı; mesajlar artık kontrol edilmiyor. Çocuğunuzun cihazında KidGate’i açıp izni yeniden verin.',
     offTitle: 'Mesaj uyarıları açık değil',
-    offBody:
-      'Çocuğunuzun cihazında hiçbir şey kontrol edilmiyor, bu yüzden burada uyarı çıkamaz. Kurmak için cihazında KidGate’i açın.',
-    switchedOffBody:
-      'Çocuğunuzun cihazında hiçbir şey kontrol edilmiyor, bu yüzden burada uyarı çıkamaz. Bu ekrandaki ayarlardan “Gelen mesajları tara” seçeneğini açın.',
+    offBody: 'Kurmak için çocuğunuzun cihazında KidGate’i açın.',
+    switchedOffBody: 'Bu ekrandaki ayarlardan “Gelen mesajları tara” seçeneğini açın.',
     pendingTitle: 'Çocuğunuzun cihazının bunu uygulaması bekleniyor',
     pendingBody:
       'Bunu açtınız. Çocuğunuzun cihazı değişikliği bir sonraki bağlanışında alacak, genelde birkaç dakika içinde — telefon kullanılıyorsa daha da hızlı. Yapmanız gereken başka bir şey yok.',

@@ -247,6 +247,27 @@ export function timelineMinutesUsed(timeline: UsageTimeline): number {
   return used;
 }
 
+/**
+ * Minutes marked used before `minute` of the day — a day "so far", so a day
+ * in progress can be held against another at the same hour. Today at 00:30
+ * against all of yesterday read "10h less than yesterday" every morning
+ * (2026-10-24).
+ */
+export function timelineMinutesUsedBefore(
+  timeline: UsageTimeline,
+  minute: number,
+): number {
+  const valid = normaliseTimeline(timeline);
+  const end = Math.max(0, Math.min(Math.floor(minute), USAGE_TIMELINE_MINUTES));
+  let used = 0;
+  for (let index = 0; index < end; index += 1) {
+    if (valid[index] === USAGE_TIMELINE_USED) {
+      used += 1;
+    }
+  }
+  return used;
+}
+
 /** How many minutes nobody was watching. The honesty number. */
 export function timelineMinutesUnmeasured(timeline: UsageTimeline): number {
   let unknown = 0;

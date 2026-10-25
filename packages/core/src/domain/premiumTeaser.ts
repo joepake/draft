@@ -70,7 +70,8 @@ export type PremiumTeaserId =
   | 'weeklyReport'
   | 'usageTimeline'
   | 'rewardTaskCap'
-  | 'parentCap';
+  | 'parentCap'
+  | 'apps';
 
 /**
  * The free-tier reading the offer leads with, or `null` on a structural id.
@@ -146,6 +147,13 @@ const BODY_KEYS: Record<PremiumTeaserId, string> = {
    * (`FREE_MAX_PARENTS_PER_FAMILY`, `resolveParentCapTeaser`).
    */
   parentCap: 'plans.teaserParentCap',
+  /*
+   * The app list and the install feed inside the Apps screen. That card was
+   * locked whole until 2026-10-24, when blocking and per-app limits — both
+   * free — moved onto it; the two premium halves now say so in place, so a
+   * free family reaches the two free ones without meeting a crown.
+   */
+  apps: 'plans.teaserApps',
 };
 
 /**

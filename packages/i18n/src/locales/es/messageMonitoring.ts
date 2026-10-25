@@ -118,10 +118,9 @@ export const messageMonitoring = {
     revokedBody:
       'Android desactivó un permiso que KidGate necesita, así que los mensajes ya no se revisan. Abre KidGate en el dispositivo de tu hijo o hija y concédelo de nuevo.',
     offTitle: 'Las Alertas de mensajes no están activadas',
-    offBody:
-      'No se está revisando nada en el dispositivo, así que aquí no puede aparecer ninguna alerta. Abre KidGate en su dispositivo para configurarlo.',
+    offBody: 'Abre KidGate en el dispositivo de tu hijo para configurarlo.',
     switchedOffBody:
-      'No se está revisando nada en el dispositivo de tu hijo, así que aquí no puede aparecer ninguna alerta. Activa «Revisar los mensajes que recibe» en los ajustes de esta pantalla.',
+      'Activa «Revisar los mensajes que recibe» en los ajustes de esta pantalla.',
     pendingTitle: 'Esperando a que el dispositivo lo aplique',
     pendingBody:
       'Has activado esto. El dispositivo recogerá el cambio en su próxima conexión, normalmente en unos minutos, y antes si el teléfono está en uso. No tienes que hacer nada más.',

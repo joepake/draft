@@ -45,6 +45,11 @@ export const childReport = {
   heroAtLeast: '≥ {{value}}',
   heroRange: '{{low}} – {{high}}',
   heroRangeNote: 'An estimate — one device reports how long it was used, but not when.',
+  // Under the hero's two bars whenever they differ: the gap is the double-
+  // counted time, and the operator kept this one line of the hero's caveats.
+  // Without it the parent sees one bar shorter than the other and guesses why.
+  barsExplain:
+    'One minute on two devices at once counts as two when the devices are added up.',
   heroEmpty: 'No usage reported yet',
 
   trendUp: '{{value}} more than the period before',

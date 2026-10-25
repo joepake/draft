@@ -2,6 +2,7 @@ import type { ClockPort } from '@kidgate/ports/clock';
 import type { ApiPort } from '@kidgate/ports/api';
 import type { DocSnapshot, FirestorePort, Unsubscribe } from '@kidgate/ports/firestore';
 import type { TimeRequest, TimeRequestStatus } from '@kidgate/schema/timeRequest';
+import { apiErrorMessageKey } from '../domain/apiErrorMessages';
 import { isApiFailure } from '../domain/apiFailure';
 import { deleteAllInBatches } from '../domain/batchDelete';
 import { timestampToIso } from '../domain/firestoreValue';
@@ -237,13 +238,17 @@ export function createTimeRequestRepository(deps: TimeRequestRepositoryDeps) {
         );
       } catch (error) {
         if (isApiFailure(error)) {
+          // The whole chain, not `messageKey ?? fallback`: the fallback set as
+          // `messageKey` hid `timeRequest/already-resolved` — the race between
+          // two parents this endpoint exists for — behind "unable to approve".
           throw {
             ...error,
-            messageKey:
-              error.messageKey ??
-              (approved
+            messageKey: apiErrorMessageKey(
+              error,
+              approved
                 ? 'timeRequest.unableToApproveRequest'
-                : 'timeRequest.unableToDeclineRequest'),
+                : 'timeRequest.unableToDeclineRequest',
+            ),
           };
         }
         throw error;

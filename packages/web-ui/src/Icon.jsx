@@ -95,6 +95,7 @@ export default function Icon({
   return (
     <svg
       className={`icon ${className}`.trim()}
+      data-icon={name}
       width={size}
       height={size}
       viewBox={ICON_VIEWBOX}

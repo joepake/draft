@@ -52,7 +52,19 @@ export function useSheet(onClose, enabled = true) {
         first.focus();
       }
     };
-    const onBack = () => closeRef.current?.();
+    /*
+     * Back closes the sheet and nothing else. The sheet holds an entry of its
+     * own — the same URL, so the router sees no move — and Back pops that,
+     * not the page under it: before, one press closed the sheet AND left the
+     * page it was opened on. The token is this sheet's, so a sheet stacked
+     * on another closes alone, and only a sheet still on its own entry hands
+     * it back when it closes some other way (Escape, ✕, a choice).
+     */
+    const token = Math.random().toString(36).slice(2);
+    window.history.pushState({ ...window.history.state, kgSheet: token }, '');
+    const onBack = () => {
+      if (window.history.state?.kgSheet !== token) closeRef.current?.();
+    };
     window.addEventListener('keydown', onKey);
     window.addEventListener('popstate', onBack);
     return () => {
@@ -60,6 +72,14 @@ export function useSheet(onClose, enabled = true) {
       window.removeEventListener('popstate', onBack);
       document.body.style.overflow = overflow;
       opener?.focus?.();
+      // After the commit, so a sheet re-mounted in the same pass (StrictMode)
+      // owns the top entry by then and this one is left alone.
+      // ponytail: a sheet closed by a choice that also navigates (Search)
+      // leaves its entry under the new page — one Back there lands on the
+      // same page. Drop the entry from the navigation itself if that bites.
+      setTimeout(() => {
+        if (window.history.state?.kgSheet === token) window.history.back();
+      }, 0);
     };
   }, [enabled]);
 

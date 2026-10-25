@@ -83,6 +83,11 @@ export const location = {
   childNoneOnline: 'Nenhum dispositivo online',
   childPickCarriedA11y:
     'Marcar {{deviceName}} como o dispositivo que {{childName}} leva',
+  carriedFrom: 'Localização de {{deviceName}}',
+  changeCarried: 'Trocar dispositivo',
+  carriedSuggestion: '{{deviceName}} enviou uma localização {{time}}.',
+  useCarried: 'Usar {{deviceName}}',
+  carriedBadge: 'Vai junto',
   stayRange: '{{from}} – {{to}}',
   wizardStepAllow:
     'Selecione Permitir e depois Sempre para que as atualizações continuem em segundo plano.',

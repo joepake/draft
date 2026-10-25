@@ -1,13 +1,12 @@
 export const checkIn = {
   noPhotoBadge: 'Tanpa foto',
   historyTitle: 'Riwayat Check-In',
-  historyHint:
-    'Ketuk foto untuk memperbesar. Anda bisa meminta Check-In baru di atas kapan saja.',
+  historyHint: 'Ketuk foto untuk memperbesar.',
   historyEmpty: 'Belum ada Check-In.',
   screenTitle: 'Check-In',
   statusSafe: 'Aman',
   statusNoResponse: 'Tidak ada respons',
-  statusAskedForHelp: 'Meminta bantuan (SOS)',
+  statusAskedForHelp: 'SOS terkirim',
   statusWaiting: 'Menunggu',
   metaWaitingForLocationAndPhoto: 'Menunggu lokasi dan foto',
   metaWaitingForLocation: 'Menunggu lokasi',
@@ -34,6 +33,7 @@ export const checkIn = {
   checkInConfirmedDescription: '{{deviceName}} mengonfirmasi bahwa dia aman.',
   childDeviceFallback: 'Perangkat anak',
   requestCheckIn: 'Minta Check-In',
+  send: 'Kirim',
   requestCheckInNote:
     'Meminta lokasi dari perangkat anak, ditambah foto kamera depan jika perangkatnya ponsel atau tablet.',
   requestCheckInNoteLocationOnly: 'Meminta lokasi dari perangkat anak.',

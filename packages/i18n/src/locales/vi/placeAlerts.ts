@@ -4,7 +4,6 @@ export const placeAlerts = {
   mergedFromDevices:
     'Gộp từ các địa điểm sẵn có trên từng thiết bị. Khi bạn lưu, danh sách này sẽ áp dụng cho mọi thiết bị của trẻ.',
   fallbackDeviceName: 'Thiết bị của trẻ',
-  statusReady: 'Đã có vị trí',
   statusNeedLocation: 'Đang chờ vị trí từ thiết bị của trẻ',
   tabPlaces: 'Địa điểm',
   tabActivity: 'Hoạt động',
@@ -22,8 +21,6 @@ export const placeAlerts = {
   editPlaceAccessibility: 'Sửa {{name}}',
   radiusLabel: 'Bán kính cảnh báo',
   radiusValue: '{{meters}} m',
-  radiusHint:
-    'Thiết bị phải ở gần mức nào thì địa điểm này mới được tính. Bán kính nhỏ hơn sai số định vị của thiết bị không làm cảnh báo chính xác hơn — việc đến và rời đi có thể không được báo.',
   radiusAccuracyHint:
     'Ở đây thiết bị này báo vị trí với sai số khoảng ±{{accuracy}} m.',
   radiusBelowAccuracy:
@@ -45,8 +42,6 @@ export const placeAlerts = {
   emptyEventsTitle: 'Chưa có hoạt động địa điểm',
   emptyEventsSubtitle:
     'Khi thiết bị vào hoặc rời một địa điểm đã lưu, sự kiện sẽ hiển thị tại đây.',
-  emptyPlaces:
-    'Chọn một vị trí trên bản đồ, đặt tên rồi lưu lại. Tối đa {{max}} địa điểm.',
   noLocationToast: 'Vui lòng chờ thiết bị của trẻ gửi cập nhật vị trí trước.',
   maxPlacesToast: 'Bạn chỉ có thể lưu tối đa {{max}} địa điểm.',
   nameRequiredToast: 'Vui lòng nhập tên địa điểm.',

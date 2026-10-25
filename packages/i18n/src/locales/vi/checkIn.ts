@@ -1,13 +1,12 @@
 export const checkIn = {
   noPhotoBadge: 'Không có ảnh kèm theo',
   historyTitle: 'Lịch sử Báo an toàn',
-  historyHint:
-    'Chạm vào ảnh để phóng to. Ở phần phía trên, bạn có thể gửi yêu cầu Báo an toàn mới bất cứ lúc nào.',
+  historyHint: 'Chạm vào ảnh để phóng to.',
   historyEmpty: 'Chưa có Báo an toàn nào.',
   screenTitle: 'Báo an toàn',
   statusSafe: 'An toàn',
   statusNoResponse: 'Chưa phản hồi',
-  statusAskedForHelp: 'Đã yêu cầu trợ giúp (SOS)',
+  statusAskedForHelp: 'Đã gửi SOS',
   statusWaiting: 'Đang chờ',
   metaWaitingForLocationAndPhoto: 'Đang chờ vị trí và ảnh',
   metaWaitingForLocation: 'Đang chờ vị trí',
@@ -34,6 +33,7 @@ export const checkIn = {
   checkInConfirmedDescription: '{{deviceName}} đã xác nhận an toàn.',
   childDeviceFallback: 'Thiết bị của trẻ',
   requestCheckIn: 'Gửi yêu cầu Báo an toàn',
+  send: 'Gửi',
   requestCheckInNote:
     'Yêu cầu thiết bị của trẻ gửi vị trí, kèm một ảnh từ camera trước nếu là điện thoại hoặc máy tính bảng.',
   requestCheckInNoteLocationOnly: 'Yêu cầu thiết bị của trẻ gửi vị trí.',

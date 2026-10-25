@@ -12,7 +12,6 @@ export const activities = {
   fallbackDeviceName: 'perangkat',
   fallbackChildName: 'anak Anda',
   liveBadge: 'Langsung',
-  errorTitle: 'Tidak dapat memuat aktivitas',
   tryAgain: 'Coba lagi',
 
   emptyTitleAll: 'Belum ada aktivitas',
@@ -113,7 +112,7 @@ export const activities = {
 
   tamperAccessibilityTitle: 'Aksesibilitas dimatikan',
   tamperAccessibilityBody:
-    'Pemblokiran aplikasi dan penguncian mungkin tidak berjalan penuh sampai Aksesibilitas diaktifkan kembali.',
+    'Fitur Aplikasi yang Diblokir dan penguncian mungkin tidak berjalan penuh sampai Aksesibilitas diaktifkan kembali.',
   tamperUsageAccessTitle: 'Akses penggunaan aplikasi dimatikan',
   tamperUsageAccessBody:
     'Batas aplikasi dan Jam Diblokir mungkin berhenti bekerja sampai KidGate dapat membaca penggunaan aplikasi di perangkat anak lagi.',

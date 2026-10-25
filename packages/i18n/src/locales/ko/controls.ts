@@ -9,7 +9,6 @@ export const controls = {
   dailyLimitEnterAtLeastMinutes: '최소 {{count}}분을 입력하세요.',
   dailyLimitMaxMinutes: '일일 제한은 최대 {{max}}분(24시간)입니다.',
   rulesSectionTitle: '부모님의 규칙',
-  rulesSectionDescription: '부모님이 이 기기에 설정한 규칙이에요.',
   blockedHoursLabel: '차단 시간',
   dailyLimitLabel: '일일 제한',
   webFilterLabel: '웹 필터',

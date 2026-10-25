@@ -120,10 +120,9 @@ export const messageMonitoring = {
     revokedBody:
       'Android hat eine Berechtigung deaktiviert, die KidGate braucht, deshalb werden Nachrichten nicht mehr geprüft. Öffne KidGate auf dem Gerät deines Kindes und erteile sie erneut.',
     offTitle: 'Nachrichtenwarnungen sind nicht eingeschaltet',
-    offBody:
-      'Auf dem Gerät wird nichts geprüft, hier kann also keine Warnung erscheinen. Öffne KidGate auf dem Gerät, um es einzurichten.',
+    offBody: 'Öffne KidGate auf dem Gerät deines Kindes, um es einzurichten.',
     switchedOffBody:
-      'Auf dem Gerät deines Kindes wird nichts geprüft, daher kann hier keine Warnung erscheinen. Schalte „Empfangene Nachrichten prüfen“ in den Einstellungen auf diesem Bildschirm ein.',
+      'Schalte „Empfangene Nachrichten prüfen“ in den Einstellungen auf diesem Bildschirm ein.',
     pendingTitle: 'Wartet darauf, dass das Gerät des Kindes das übernimmt',
     pendingBody:
       'Du hast das eingeschaltet. Das Gerät des Kindes übernimmt die Änderung bei der nächsten Verbindung, meist innerhalb weniger Minuten – schneller, wenn das Telefon gerade benutzt wird. Du musst nichts weiter tun.',

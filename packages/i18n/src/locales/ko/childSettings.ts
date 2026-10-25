@@ -7,7 +7,7 @@ export const childSettings = {
   darkModeHint: '밤에 눈이 더 편안해요',
   leaveFamilyAlertTitle: '이 가족에서 나갈까요?',
   leaveFamilyAlertMessage:
-    '이 기기는 가족과의 연결이 해제돼요. 다시 참여하려면 부모님이 자신의 KidGate 앱에서 이 기기를 다시 연결해야 해요.',
+    '이 기기는 가족에서 나가게 돼요. 다시 사용하려면 부모님이 이 기기를 다시 연결해야 해요.',
   leaveFamily: '가족 나가기',
   uninstallProtectionSectionTitle: '삭제 방지',
   uninstallProtectionSectionDescription:

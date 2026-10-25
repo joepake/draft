@@ -1,5 +1,6 @@
 export const rewardTask = {
-  rewardTasksNote: 'मंज़ूर मिनट आज की सीमा में जुड़ते हैं।',
+  rewardTasksNote:
+    'मंज़ूर मिनट उसी दिन की सीमा में जुड़ते हैं जिस दिन आप उन्हें मंज़ूर करते हैं।',
   unableToCreate: 'टास्क नहीं बन सका। कृपया फिर कोशिश करें।',
   unableToUpdate: 'टास्क सेव नहीं हो सका। कृपया फिर कोशिश करें।',
   unableToDelete: 'टास्क हटाया नहीं जा सका। कृपया फिर कोशिश करें।',
@@ -8,7 +9,6 @@ export const rewardTask = {
   unableToClaim: 'माता-पिता को नहीं भेजा जा सका। कृपया फिर कोशिश करें।',
   newTask: 'नया टास्क',
   editTask: 'टास्क बदलें',
-  formSubtitle: 'आपकी मंज़ूरी के बाद इनाम आज के स्क्रीन टाइम में जुड़ जाता है।',
   titleLabel: 'टास्क',
   titlePlaceholder: 'जैसे: 20 मिनट किताब पढ़ना',
   minutesLabel: 'इनाम',
@@ -67,7 +67,7 @@ export const rewardTask = {
   taskRejectedDescription:
     '“{{title}}” को दोबारा कोशिश के लिए {{deviceName}} को वापस भेजा गया।',
   starsLabel: 'कठिनाई',
-  starsHint: 'यह टास्क कितना मुश्किल है। आपका बच्चा ये सितारे जमा करता है।',
+  starsHint: 'आपका बच्चा उतने ही सितारे जमा करता है।',
   starsEasy: 'आसान',
   starsMedium: 'मध्यम',
   starsHard: 'मुश्किल',

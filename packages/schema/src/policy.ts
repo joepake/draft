@@ -72,6 +72,12 @@ export interface AppPolicy {
    * Absent outside a pause and on a host that cannot quit apps.
    */
   pauseQuit?: AppRef[];
+  /**
+   * Blocked by a parent from the console (`Device.parentBlockedApps`),
+   * whatever the app-blocking switch says — that switch gates `blocked`, the
+   * child's own picks. Absent is none, and on a host that does not read it.
+   */
+  parentBlocked?: AppRefId[];
 }
 
 export interface DevicePolicy {

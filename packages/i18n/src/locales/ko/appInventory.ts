@@ -1,5 +1,4 @@
 export const appInventory = {
-  title: '이 기기의 앱',
   pendingTitle: '승인을 기다리는 중',
   pendingBadge: '허용할 때까지 차단됨',
   approvedBadge: '허용함',
@@ -15,7 +14,6 @@ export const appInventory = {
   newBadge: '신규',
   ageBadge: '{{age}}+',
   browserExtension: 'Chrome 확장 프로그램',
-  titleExtension: '이 브라우저의 확장 프로그램',
   subtitleExtension:
     '변경된 것뿐 아니라 KidGate가 브라우저에서 찾은 모든 확장 프로그램입니다.',
   summaryFlaggedExtension:
@@ -38,8 +36,17 @@ export const appInventory = {
     '일부 앱은 여기에 나타나지 않을 수 있습니다. 예를 들어 기기의 앱 목록에 아이콘이 없는 앱이 그렇습니다.',
   blockHint: '앱을 막으려면 자녀 기기에서 직접 ‘차단된 앱’ 화면을 여세요.',
   howItWorksLabel: '이 목록이 작동하는 방식',
-  markSafe: '안전함',
+  markSafe: '안전하다고 표시',
   dismissedTitle: '안전하다고 표시함',
   undoSafe: '실행 취소',
+  tabGeneral: '개요',
+  searchPlaceholder: '앱 검색',
+  searchEmpty: '일치하는 앱이 없습니다.',
+  blockedBadge: '차단됨',
+  setLimit: '시간 제한 설정',
+  editLimit: '시간 제한 변경',
   howToBlock: '차단하는 방법',
+  blockApp: '차단',
+  unblockApp: '차단 해제',
+  iosBlockOnDevice: 'iPhone에서는 자녀의 iPhone에서 직접 앱을 차단하세요.',
 } as const;

@@ -4,6 +4,7 @@ import { useActivityTranslate } from './activityCopy.js';
 import Icon from '@kidgate/web-ui/Icon';
 import {
   MAX_SCHEDULE_WINDOWS,
+  SCHEDULE_TIME_STEP_MINUTES,
   findOverlappingScheduleWindowPairs,
   formatMinutesAsTime,
   isOvernightScheduleWindow,
@@ -64,6 +65,11 @@ export default function ScheduleEditor({ windows, readOnly, busy, onSave }) {
   }, [stored]);
 
   const overlapping = new Set(findOverlappingScheduleWindowPairs(draft).flat());
+  // The rows the refusal below is about, so it is said on them and not under
+  // the list, rows away from the one at fault.
+  const invalid = new Set(
+    draft.flatMap((w, i) => (normalizeScheduleWindows([w]) ? [] : [i])),
+  );
 
   /**
    * Write only when something actually differs from the stored list.
@@ -105,7 +111,7 @@ export default function ScheduleEditor({ windows, readOnly, busy, onSave }) {
       : [...current, day].sort((a, b) => a - b);
     /*
      * Unticking the LAST day does nothing — the phone's answer
-     * (`BlockedHoursScreen`, "if (next.length === 0) return window").
+     * (`ScheduleWindowModal`'s `toggleDay`, "if (next.length > 0)").
      *
      * It cannot be allowed through, and an error message is not the fix
      * either. `normalizeScheduleDays` folds an empty list to `null`, which the
@@ -139,6 +145,7 @@ export default function ScheduleEditor({ windows, readOnly, busy, onSave }) {
               <span>{appT('blockedHours.timeStartLabel')}</span>
               <input
                 type="time"
+                step={SCHEDULE_TIME_STEP_MINUTES * 60}
                 value={window.start}
                 disabled={readOnly || busy}
                 onChange={event =>
@@ -154,6 +161,7 @@ export default function ScheduleEditor({ windows, readOnly, busy, onSave }) {
               <span>{appT('blockedHours.timeEndLabel')}</span>
               <input
                 type="time"
+                step={SCHEDULE_TIME_STEP_MINUTES * 60}
                 value={window.end}
                 disabled={readOnly || busy}
                 onChange={event =>
@@ -180,6 +188,8 @@ export default function ScheduleEditor({ windows, readOnly, busy, onSave }) {
               <Icon name="trash" size={15} />
             </button>
           </div>
+
+          {error && invalid.has(index) && <p className="sched-error">{error}</p>}
 
           <div className="sched-days-head">
             <span className="sched-days-label">{appT('blockedHours.daysLabel')}</span>
@@ -240,8 +250,6 @@ export default function ScheduleEditor({ windows, readOnly, busy, onSave }) {
         </div>
       ))}
 
-      {error && <p className="sched-error">{error}</p>}
-
       <button
         className="btn btn-sm"
         disabled={readOnly || busy || draft.length >= MAX_SCHEDULE_WINDOWS}
@@ -289,6 +297,7 @@ export default function ScheduleEditor({ windows, readOnly, busy, onSave }) {
         windows={draft}
         title={appT('blockedHours.weekPreviewTitle')}
         emptyLabel={appT('blockedHours.off')}
+        legendLabel={appT('blockedHours.title')}
         dayLabel={day => t(`viz.day${day}`)}
       />
     </div>
@@ -314,7 +323,7 @@ const TICK_HOURS = [0, 6, 12, 18, 24];
  * Percentages rather than a measured width: CSS resolves them per row, so the
  * browser needs none of the `onLayout` arithmetic React Native does.
  */
-function WeekStrip({ windows, title, emptyLabel, dayLabel }) {
+function WeekStrip({ windows, title, emptyLabel, legendLabel, dayLabel }) {
   const week = scheduleWeekSegments(windows);
 
   return (
@@ -364,6 +373,13 @@ function WeekStrip({ windows, title, emptyLabel, dayLabel }) {
           </div>
         );
       })}
+
+      {/* Which colour is the lock — the phone's legend; a brand bar on a grey
+          lane reads as allowed time as readily as blocked. */}
+      <p className="sched-week-legend">
+        <span className="sched-week-legend-dot" aria-hidden="true" />
+        {legendLabel}
+      </p>
     </div>
   );
 }

@@ -12,7 +12,6 @@ export const activities = {
   fallbackDeviceName: 'dispositivo',
   fallbackChildName: 'seu filho',
   liveBadge: 'Ao vivo',
-  errorTitle: 'Não foi possível carregar as atividades',
   tryAgain: 'Tentar novamente',
 
   emptyTitleAll: 'Nenhuma atividade ainda',
@@ -115,7 +114,7 @@ export const activities = {
 
   tamperAccessibilityTitle: 'A Acessibilidade foi desativada',
   tamperAccessibilityBody:
-    'O bloqueio de aplicativos e a aplicação das restrições podem não funcionar corretamente até que a Acessibilidade seja ativada novamente.',
+    'O recurso Apps bloqueados e a aplicação das restrições podem não funcionar corretamente até que a Acessibilidade seja ativada novamente.',
   tamperUsageAccessTitle: 'O acesso ao uso de aplicativos foi desativado',
   tamperUsageAccessBody:
     'Os limites de aplicativos e os Horários bloqueados podem parar de funcionar até que o KidGate volte a medir o uso de aplicativos no dispositivo da criança.',

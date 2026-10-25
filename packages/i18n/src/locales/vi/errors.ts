@@ -98,6 +98,7 @@ export const errors = {
     'Gia đình này đã đạt số thiết bị tối đa KidGate hỗ trợ. Vui lòng gỡ một thiết bị không còn dùng rồi thử lại.',
   rewardTaskLimitReached:
     'Số nhiệm vụ đang hoạt động đã đạt mức tối đa cùng lúc. Hãy xóa bớt một nhiệm vụ hoặc chờ một nhiệm vụ hoàn thành, rồi thử lại.',
+  rewardTaskAlreadyDone: 'Nhiệm vụ này đã được báo xong.',
   deviceNotPaired:
     'Thiết bị này không còn được ghép nối với gia đình. Con hãy nhờ bố mẹ ghép nối lại nhé.',
   bonusMinutesOutOfRange:

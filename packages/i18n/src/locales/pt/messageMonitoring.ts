@@ -119,10 +119,9 @@ export const messageMonitoring = {
     revokedBody:
       'O Android desativou uma permissão de que o KidGate precisa, então as mensagens não estão mais sendo verificadas. Abra o KidGate no dispositivo do seu filho e conceda novamente.',
     offTitle: 'Os Alertas de mensagens não estão ativados',
-    offBody:
-      'Nada está sendo verificado no dispositivo, então nenhum alerta pode aparecer aqui. Abra o KidGate no dispositivo dele para configurar.',
+    offBody: 'Abra o KidGate no dispositivo do seu filho para configurar.',
     switchedOffBody:
-      'Nada está sendo verificado no dispositivo do seu filho, então nenhum alerta pode aparecer aqui. Ative “Verificar mensagens recebidas” nas configurações desta tela.',
+      'Ative “Verificar mensagens recebidas” nas configurações desta tela.',
     pendingTitle: 'Aguardando o aparelho aplicar',
     pendingBody:
       'Você ativou isso. O aparelho vai receber a mudança na próxima conexão, normalmente em alguns minutos — mais rápido se o celular estiver em uso. Não precisa fazer mais nada.',

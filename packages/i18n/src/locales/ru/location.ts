@@ -85,6 +85,11 @@ export const location = {
   childNoneOnline: 'Нет устройств в сети',
   childPickCarriedA11y:
     'Отметить {{deviceName}} как устройство, которое {{childName}} носит с собой',
+  carriedFrom: 'Местоположение с {{deviceName}}',
+  changeCarried: 'Сменить устройство',
+  carriedSuggestion: 'Местоположение с {{deviceName}} получено {{time}}.',
+  useCarried: 'Использовать {{deviceName}}',
+  carriedBadge: 'С собой',
   stayRange: '{{from}} – {{to}}',
   wizardStepAllow:
     'Выбери «Разрешить», затем «Всегда», чтобы обновления приходили в фоне.',

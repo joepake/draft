@@ -12,7 +12,7 @@ export const notifications = {
   sectionSummary: 'Resumo',
   sectionQuietHours: 'Horário silencioso',
   sectionQuietHoursHint:
-    'Nenhum alerta é enviado durante este período, e eles também não são enviados depois. Os eventos continuam aparecendo em Atividades. O SOS nunca é retido, e os Alertas de mensagens mais graves continuam chegando.',
+    'Neste período, só chegam o SOS e os Alertas de mensagens mais graves. Nada é enviado depois; os eventos continuam aparecendo em Atividades.',
   quietHoursLabel: 'Horário silencioso',
   quietHoursOff: 'Desativado — os alertas chegam a qualquer hora',
   quietHoursActive: 'Sem alertas das {{start}} às {{end}}',
@@ -32,7 +32,7 @@ export const notifications = {
   alert: {
     tamperAlerts: {
       label: 'Alertas de proteção',
-      hint: 'Em um dispositivo da criança, uma permissão de que o KidGate precisa foi desativada, a data, a hora ou o fuso horário foi alterado, ou o SOS foi acionado enquanto ele estava bloqueado. O próprio alerta de SOS sempre chega.',
+      hint: 'Uma permissão de que o KidGate precisa é desativada em um dispositivo da criança, a data, a hora ou o fuso horário é alterado, ou o SOS é acionado enquanto ele está bloqueado.',
     },
     placeAlerts: {
       label: 'Alertas de locais',

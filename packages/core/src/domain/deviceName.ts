@@ -35,6 +35,18 @@ export const GENERIC_DEVICE_NAMES = new Set([
 
 const MACHINE_MODEL = /^i(Phone|Pad)\d+,\d+$/i;
 
+/**
+ * "iPhone12,5" names the board, not anything a parent would recognise — the
+ * family word says more. Both words are brand names, identical in every pack.
+ */
+export function humanizeMachineModel(name: string): string {
+  const trimmed = name.trim();
+  if (!MACHINE_MODEL.test(trimmed)) {
+    return name;
+  }
+  return /^ipad/i.test(trimmed) ? 'iPad' : 'iPhone';
+}
+
 /** Local device ids must never be shown as display names. */
 export function isGeneratedDeviceId(name?: string | null): boolean {
   return /^device_\d+_/i.test(name?.trim() ?? '');
@@ -101,18 +113,21 @@ export function resolveStoredDeviceName(device: StoredDeviceNameSource): string 
   }
 
   if (label && !isGenericDeviceName(label)) {
-    return label;
+    return humanizeMachineModel(label);
   }
 
-  if (name && !isGenericDeviceName(name) && !isGeneratedDeviceId(name)) {
+  if (
+    name &&
+    !isGenericDeviceName(name) &&
+    !isGeneratedDeviceId(name) &&
+    !MACHINE_MODEL.test(name)
+  ) {
     return name;
   }
 
-  if (model && !isGenericDeviceName(model)) {
-    return model;
-  }
-
-  return model;
+  // A machine identifier as the name gives way to a real model name.
+  const fallback = model ?? (MACHINE_MODEL.test(name) ? name : null);
+  return fallback ? humanizeMachineModel(fallback) : null;
 }
 
 /** The reason a name is refused, already translated. Null when it is fine. */

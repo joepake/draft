@@ -98,6 +98,7 @@ export const errors = {
     '이 가족은 KidGate가 지원하는 기기 수에 도달했습니다. 더 이상 사용하지 않는 기기를 삭제한 뒤 다시 시도하세요.',
   rewardTaskLimitReached:
     '동시에 진행할 수 있는 과제 수가 이미 최대입니다. 과제 하나를 삭제하거나 완료될 때까지 기다린 뒤 다시 시도하세요.',
+  rewardTaskAlreadyDone: '이 과제는 이미 완료로 표시되었습니다.',
   deviceNotPaired:
     '이 기기는 더 이상 가족과 페어링되어 있지 않아요. 부모님께 다시 페어링해 달라고 부탁하세요.',
   bonusMinutesOutOfRange:

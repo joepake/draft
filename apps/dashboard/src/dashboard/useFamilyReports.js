@@ -61,9 +61,9 @@ export function useFamilyReports(familyId) {
         const reason = e?.code || e?.message || 'unknown';
         console.warn('[kidgate] reports read failed:', reason);
         setReports([]);
-        // The code rides along for the same reason it does on the phone: three
-        // different failures render one sentence otherwise.
-        setError(`${t('report.loadFailed')} (${reason})`);
+        // The code stays in the log line above, as on the phone: a raw
+        // "(permission-denied)" told a parent nothing they could act on.
+        setError(t('report.loadFailed'));
         setLoadFailed(true);
       } finally {
         if (isActive()) setLoading(false);

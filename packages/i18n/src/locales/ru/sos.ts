@@ -1,6 +1,5 @@
 export const sos = {
   title: 'Оповещения SOS',
-  subtitle: '{{deviceName}} · фото появляются ниже после отправки',
   fallbackDeviceName: 'Устройство ребёнка',
   fallbackChildName: 'Ребёнок',
   locationUnavailable: 'Местоположение недоступно',
@@ -10,7 +9,6 @@ export const sos = {
   photoTapHint: 'Нажмите, чтобы увидеть фото полностью',
   photoLoadFailed:
     'Не удалось загрузить это фото. Проверьте подключение и попробуйте ещё раз.',
-  noPhoto: 'К этому оповещению фото не приложено.',
   audioLabel: 'Аудиозапись',
   audioPlayAccessibility: 'Воспроизвести запись SOS',
   audioStopAccessibility: 'Остановить воспроизведение записи SOS',
@@ -18,7 +16,6 @@ export const sos = {
   acknowledgedAt: 'Подтверждено {{time}}',
   openInMaps: 'Открыть в Картах',
   acknowledgeButton: 'Я разбираюсь',
-  acknowledgingButton: 'Сохранение…',
   toastAcknowledgeFailed: 'Не удалось подтвердить. Попробуйте ещё раз через минуту.',
   emptyTitle: 'Пока нет оповещений SOS',
   emptyDescription:

@@ -16,7 +16,7 @@ export const protection = {
   openKidGateOnChildPhone: '자녀 기기에서 KidGate를 한 번 열어 주세요.',
   screenTimePermission: '스크린 타임 권한',
   screenTimeAccessOff:
-    '스크린 타임 접근이 꺼져 있어 앱 차단과 제한이 작동하지 않을 수 있습니다.',
+    '스크린 타임 접근이 꺼져 있어 “차단된 앱”과 제한이 작동하지 않을 수 있습니다.',
   screenTimeSetupIncomplete: '자녀 기기에서 스크린 타임 설정이 완료되지 않았습니다.',
   usageAccessPermission: '사용 정보 접근',
   usageAccessOff:

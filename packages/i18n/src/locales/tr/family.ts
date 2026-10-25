@@ -101,8 +101,6 @@ export const family = {
   manualCodeLabel: '6 haneli kodu girin',
   manualInstructions: 'Diğer cihazda gösterilen 6 haneli kodu girin.',
 
-  headerHintEmpty: 'Çocuklarınızın cihazlarını yönetin ve koruyun',
-
   familyCardManage: 'Aileyi, ebeveynleri ve cihazları yönet',
 
   familyCardJoined: 'Ebeveyn olarak katıldınız',
@@ -134,7 +132,7 @@ export const family = {
   chipHealthInactiveCount: '{{count}} 24 saatten uzun süredir yanıtsız',
   chipLocationBlocked: 'Konum alınamıyor',
 
-  chipBlockedCount: '{{count}} engellendi',
+  chipBlockedCount: '{{count}} Engellenen Saatlerde',
 
   healthProtected: 'Korunuyor',
   buildOutdated: 'Güncelleme var',
@@ -155,7 +153,7 @@ export const family = {
   rulesPausedBehind: 'Duraklatıldı — hâlâ eski ayarda',
   rulesTightenRefused:
     'Duraklatılmış bir cihazda kurallar yalnızca gevşetilebilir, sıkılaştırılamaz. Her cihazda değiştirmek için yükseltin.',
-  parkedBannerTitle: 'İzlemeye devam edeceğiniz cihazı seçin',
+  parkedBannerTitle: 'Raporlayan cihazı seçin',
   parkedBannerBody:
     'Kurallarınız her cihazda çalışmaya devam eder. Ücretsiz plan yalnızca bir cihazdan rapor alır ve kuralları yalnızca orada sıkılaştırabilirsiniz — o cihazı seçin ya da hepsini korumak için yükseltin.',
   parkedBannerAction: 'Cihaz seç',
@@ -178,10 +176,10 @@ export const family = {
     'Ücretsiz plan yalnızca bir cihazdan rapor alır ve kuralları yalnızca orada sıkılaştırabilirsiniz, bu yüzden bu cihaz duraklatılmış olarak başlar.',
   pairingWillStartPaused:
     'Ücretsiz plan yalnızca bir cihazdan rapor alır ve kuralları yalnızca orada sıkılaştırabilirsiniz, bu yüzden yeni cihaz duraklatılmış olarak başlayacak.',
-  chooseMonitoredTitle: 'Ana cihazınızı seçin',
+  chooseMonitoredTitle: 'Raporlayan cihazı seçin',
   chooseMonitoredBody:
     'Tüm kurallar hepsinde çalışmaya devam eder. Seçtiğiniz cihaz ekran süresi ve konum gönderir; kuralları hâlâ sıkılaştırabileceğiniz tek cihaz odur — diğerlerinde yalnızca gevşetebilirsiniz. Seçiminizi {{days}} günde bir değiştirebilirsiniz.',
-  chooseMonitoredConfirm: 'Bu cihazı izle',
+  chooseMonitoredConfirm: 'Raporlayan cihaz yap',
   chooseMonitoredUpgrade: 'Tüm cihazları koru — yükselt',
   chooseMonitoredDone: '{{name}} artık raporlayan cihaz',
   chooseMonitoredCurrent: 'Şu anda raporlayan cihaz',
@@ -204,6 +202,9 @@ export const family = {
 
   emptyDescription:
     'Ekran süresini ve uygulama kullanımını izlemeye başlamak için çocuğunuzun cihazını ekleyin.',
+
+  emptyPairSteps:
+    'KidGate’i çocuğunuzun kullandığı telefona, tablete, TV’ye veya bilgisayara yükleyin; sorarsa “Bu bir çocuk cihazı” seçeneğini seçin, ardından gösterdiği kodu tarayın.',
 
   setupFamilyTitle: 'Ailenizi oluşturun',
 
@@ -237,16 +238,10 @@ export const family = {
   guestBenefitLocationBody:
     'Çocuğunuzun nerede olduğunu görün ve güvende olduğunu doğrulamasını isteyin.',
 
-  stepsHeading: 'İlk adımlar',
-
   step1Title: 'Çocuğun cihazında KidGate’i açın',
 
   step1Description:
     'KidGate’i çocuğunuzun kullandığı telefona, tablete, TV’ye veya bilgisayara yükleyin. Telefon veya tablette “Bu bir çocuk cihazı” seçeneğini seçin. Bir QR kodu ve 6 karakterlik bir kod görünür.',
-
-  step2Title: 'Burada “Çocuk cihazı ekle” düğmesine dokunun',
-
-  step2Description: 'Bu QR kodunu bu telefonla tarayın veya 6 karakterlik kodu girin.',
 
   connectChildButton: 'Çocuk cihazını bağla',
   listHint: 'Kaldırmak için cihazı sola kaydırın',

@@ -52,6 +52,7 @@ import { buildAttention, buildFamilyAttention } from '../dashboard/attentionItem
 import AttentionRail from '../dashboard/AttentionRail.jsx';
 import AttentionList from '../dashboard/AttentionList.jsx';
 import { getProtectionSummaryKeys } from '@kidgate/core/domain/protectionStatus';
+import { isWeekCountersCurrent } from '@kidgate/core/domain/weekCounters';
 import {
   activeBonusMinutes,
   childLimitWithBonus,
@@ -110,6 +111,7 @@ import {
 } from '@kidgate/core/domain/deviceStatus';
 import { resolveChildPresence } from '@kidgate/core/domain/childPresence';
 import { resolveChildLocationView } from '@kidgate/core/domain/childLocation';
+import { addressBelowTitle } from '@kidgate/core/domain/locationHistory';
 import { resolveChipTargetDevice } from '@kidgate/core/domain/familySummary';
 import { slowBeatMinutes } from '@kidgate/core/domain/reportCadence';
 import {
@@ -510,6 +512,7 @@ function KidGroupHead({
   onlineCount = 0,
   stars = 0,
   hasActiveSos = false,
+  sosDeviceIds = new Set(),
   usedMinutes = null,
   limitMinutes = null,
   onLockAll = null,
@@ -733,14 +736,20 @@ function KidGroupHead({
         Named chips, not anonymous dots: those said how many machines were
         reachable and never which. A chip whose device needs attention is
         tinted, so the card answers "which one" without being opened.
+
+        Needs attention is the phone's rule (`FamilyScreen`): an SOS, or a
+        device silent past the protection window. Tinting every status but
+        online painted a locked phone and a parked one — both doing exactly
+        what was asked — as faults; the dot beside the name still says which.
       */}
       <div className="kid-chips">
         {group.devices.map(d => (
           <span
             className={`kid-device-chip${
-              ['online', 'checking'].includes(getShownDeviceStatus(d, Date.now()))
-                ? ''
-                : ' is-alert'
+              sosDeviceIds.has(d.id) ||
+              getProtectionSummaryKeys(d, Date.now()).level === 'inactive'
+                ? ' is-alert'
+                : ''
             }`}
             key={d.id}
           >
@@ -801,6 +810,7 @@ export default function Dashboard({
     devices,
     children,
     activities,
+    messageAlerts = {},
     familyActivities = [],
     familyTimeRequests = [],
     familyCheckIns = [],
@@ -1812,9 +1822,12 @@ export default function Dashboard({
     const target = resolveChipTargetDevice(idsFor());
     if (!target) return;
     setDeviceId(target);
-    /* SOS and check-ins are read on Safety and Overview respectively — the
-       same two panels `ControlCenter`'s own mapping sends those cards to. */
-    goTab(key === 'sos' ? 'safety' : 'overview');
+    /* SOS and check-ins are both read on Safety — the panel `ControlCenter`'s
+       own mapping sends those cards to. A check-in chip used to land on
+       Overview, which holds no check-in card; it now opens Safety at that
+       card. */
+    goTab(key === 'sos' || key === 'check-in' ? 'safety' : 'overview');
+    if (key === 'check-in') setFocusCard('request-check-in');
     setDeviceOpen(true);
   };
 
@@ -2028,7 +2041,18 @@ export default function Dashboard({
       bonus,
       effLimit,
       left: effLimit && used !== null ? Math.max(0, effLimit - used) : null,
-      delta: used === null ? null : avg7 ? Math.round(((used - avg7) / avg7) * 100) : 0,
+      /*
+       * `undefined` until there is a week to compare against: an empty
+       * history averaged to 0, and 0 printed "Same as the 7-day average" under
+       * every new device and every free family's (`usage` holds only reported
+       * days). `null` stays "not reported today".
+       */
+      delta:
+        used === null
+          ? null
+          : last7.length < 7 || !avg7
+            ? undefined
+            : Math.round(((used - avg7) / avg7) * 100),
     };
   }, [device, c, usageToday]);
 
@@ -2298,10 +2322,10 @@ export default function Dashboard({
   /**
    * "How to block" — a sentence, not an act.
    *
-   * No parent-set remote block exists on any platform in this product
-   * (`docs/FEASIBILITY.md`, "Parent-set app blocking" and the Chromebook
-   * gate's E2), so the button names the answer it shows rather than an act it
-   * cannot perform. The copy is the app pack's existing hint, said the same
+   * A parent-set block exists for a Mac, an Android phone and a TV, and only
+   * on the phone's sheet so far (`docs/FEASIBILITY.md`, "Parent-set app blocking", and the
+   * Chromebook gate's E2; the gap is in this app's `CLAUDE.md`), so the
+   * button names the answer it shows rather than an act it cannot perform. The copy is the app pack's existing hint, said the same
    * way on both parent surfaces.
    */
   const blockHelp = row =>
@@ -2516,6 +2540,7 @@ export default function Dashboard({
       nowMs: Date.now(),
       reportsAppInstalls: supportsAppInstallAlerts(deviceView),
       listsInstalledApps: supportsAppInventory(deviceView),
+      parentBlockedCount: deviceView?.parentBlockedApps?.length ?? 0,
       /* The hero's own verdict, so the Protection Alerts card cannot say
          "Watching" over a device the hero grades otherwise. */
       protectionLevel: getProtectionSummaryKeys(deviceView, Date.now()).level,
@@ -3552,6 +3577,7 @@ export default function Dashboard({
                         hasActiveSos={group.devices.some(d =>
                           familyCounts.sosDeviceIds.has(d.id),
                         )}
+                        sosDeviceIds={familyCounts.sosDeviceIds}
                         usedMinutes={childMinutesUsedToday(group.devices)}
                         limitMinutes={childLimitWithBonus(
                           group.child?.rules?.dailyLimitMinutes,
@@ -3979,14 +4005,18 @@ export default function Dashboard({
                   meta={
                     stats.delta === null
                       ? activityT('deviceDetail.usageUpdatesFromChildDevice')
-                      : stats.delta === 0
-                        ? t('dash.tileSameAsAverage')
-                        : t(
-                            stats.delta > 0 ? 'dash.tileDeltaUp' : 'dash.tileDeltaDown',
-                            {
-                              percent: Math.abs(stats.delta),
-                            },
-                          )
+                      : stats.delta === undefined
+                        ? undefined
+                        : stats.delta === 0
+                          ? t('dash.tileSameAsAverage')
+                          : t(
+                              stats.delta > 0
+                                ? 'dash.tileDeltaUp'
+                                : 'dash.tileDeltaDown',
+                              {
+                                percent: Math.abs(stats.delta),
+                              },
+                            )
                   }
                   tone={stats.delta > 25 ? 'warning' : 'default'}
                 />
@@ -4005,19 +4035,26 @@ export default function Dashboard({
                   a "0" here is "cannot say", printed as a measurement. The
                   extension is found by its probe, not its platform: on a Mac it
                   reports `macos`. The phone's usage reports apply the same
-                  gate. */}
-              {(isAndroidLike(device.platform) || isBrowserOnlySurface(device)) && (
-                <StatTile
-                  icon="globe"
-                  label={t('dash.tileSites')}
-                  value={device.webFilterBlockedCount}
-                  meta={
-                    blockedTotal
-                      ? t('dash.tileCategoriesHit', { count: blockedByCategory.length })
-                      : t('dash.tileNothingBlocked')
-                  }
-                />
-              )}
+                  gate.
+
+                  The figure is the last seven days (`weekCounters`, the
+                  device's rolling count, server-written on every report so a
+                  free family has it too). It was the all-time
+                  `webFilterBlockedCount` over a line read from the 7-day web
+                  history, which printed "512" above "Nothing blocked yet".
+                  Lookups, not sites — the label says so, in the phone's own
+                  words — and drawn only while the window is current: a stale
+                  week shown as this one is a filter that looks like it
+                  stopped. */}
+              {(isAndroidLike(device.platform) || isBrowserOnlySurface(device)) &&
+                isWeekCountersCurrent(device.weekCounters, todayKey) && (
+                  <StatTile
+                    icon="globe"
+                    label={activityT('report.statBlockedWebVisits')}
+                    value={device.weekCounters.blockedSites}
+                    meta={activityT('childReport.periodWeek')}
+                  />
+                )}
               <StatTile
                 icon="alert"
                 label={t('dash.tileAttention')}
@@ -4407,7 +4444,10 @@ export default function Dashboard({
             <div className="grid-2">
               {supportsScreenTime(device) && (
                 <Card
-                  id="app-limits"
+                  /* The grid's one Apps card lands on the panel's first card
+                     (blocking, limits and the list were three cards until
+                     2026-10-24), so the id goes to whichever draws first. */
+                  id="apps"
                   title={t('dash.appUsageTitle')}
                   subtitle={t('dash.appUsageSub')}
                 >
@@ -4419,11 +4459,15 @@ export default function Dashboard({
                 </Card>
               )}
 
-              {(supportsAppBlocking(device) || supportsAppLimits(device)) && (
+              {supportsAppBlocking(device) && (
                 <Card
-                  id="app-blocking"
+                  id={supportsScreenTime(device) ? undefined : 'apps'}
                   title={t('dash.appBlockingTitle')}
-                  subtitle={activityT('blockedApps.infoLine1')}
+                  info={[
+                    activityT('blockedApps.infoLine1'),
+                    activityT('blockedApps.infoLine2'),
+                  ]}
+                  infoLabel={activityT('blockedApps.infoTitle')}
                 >
                   <div className="tiles tiles-inline">
                     <StatTile
@@ -4445,15 +4489,36 @@ export default function Dashboard({
                   {appBlockingNoteKey(device) && (
                     <p className="hint">{activityT(appBlockingNoteKey(device))}</p>
                   )}
-                  {/*
-                    The three tiles above are summaries the DEVICE writes —
-                    which apps are blocked is chosen in a native picker on the
-                    child's machine, and on iOS the selection is an opaque
-                    `ApplicationToken` that exists nowhere else. So blocking
-                    stays read-only here on purpose; per-app limits do not,
-                    because `appLimits` is a parent-owned list of package names.
-                  */}
-                  <p className="hint">{t('dash.perAppHint')}</p>
+                </Card>
+              )}
+
+              {/*
+                Per-app limits are their own card, as they are their own
+                section on the phone's Apps screen — the same title and count
+                (`appLimits.activeSectionTitle`, "Current limits · 2"). Inside
+                the blocking card they needed a sentence explaining they were
+                a different feature (`dash.perAppHint`, 2026-10-25).
+
+                The blocking tiles are summaries the DEVICE writes — which apps
+                are blocked is chosen in a native picker on the child's machine,
+                and on iOS the selection is an opaque `ApplicationToken` that
+                exists nowhere else. So blocking stays read-only here on
+                purpose; per-app limits do not, because `appLimits` is a
+                parent-owned list of package names.
+              */}
+              {supportsAppLimits(device) && (
+                <Card
+                  id={
+                    supportsScreenTime(device) || supportsAppBlocking(device)
+                      ? undefined
+                      : 'apps'
+                  }
+                  title={
+                    c.appLimits?.length
+                      ? `${activityT('appLimits.activeSectionTitle')} · ${c.appLimits.length}`
+                      : activityT('appLimits.activeSectionTitle')
+                  }
+                >
                   <AppLimitsEditor
                     limits={c.appLimits}
                     candidates={limitCandidates}
@@ -4483,7 +4548,13 @@ export default function Dashboard({
             */}
             {supportsAppInventory(device) && (
               <Card
-                id="apps"
+                id={
+                  supportsScreenTime(device) ||
+                  supportsAppBlocking(device) ||
+                  supportsAppLimits(device)
+                    ? undefined
+                    : 'apps'
+                }
                 title={activityT('deviceDetail.appInventory')}
                 subtitle={
                   inventorySummary
@@ -4807,6 +4878,7 @@ export default function Dashboard({
                 <Card
                   id="location"
                   title={t('dash.locationTitle')}
+                  info={activityT('location.syncNote')}
                   subtitle={
                     !c.locationSharingEnabled
                       ? activityT('deviceDetail.sharingIsOff')
@@ -4886,8 +4958,15 @@ export default function Dashboard({
                                   })
                                 : activityT('location.lastKnownLocation'))}
                         </strong>
+                        {/* Without the street the title already says —
+                            same rule as the phone's location hero. */}
                         {device.lastLocation.address && (
-                          <em>{device.lastLocation.address}</em>
+                          <em>
+                            {addressBelowTitle(
+                              device.lastLocation.address,
+                              device.lastLocation.placeName ?? '',
+                            )}
+                          </em>
                         )}
                         {/*
                           Why this badge is a coordinate pair, when the reason
@@ -5033,7 +5112,6 @@ export default function Dashboard({
                       </li>
                     ))}
                   </ul>
-                  <p className="hint">{activityT('location.syncNote')}</p>
                 </Card>
               )}
 
@@ -5207,6 +5285,11 @@ export default function Dashboard({
                 <Card
                   id="tamper-alerts"
                   title={t('dash.protectionAlertsTitle')}
+                  info={[
+                    activityT('tamperAlerts.infoLine1'),
+                    activityT('tamperAlerts.infoLine2'),
+                  ]}
+                  infoLabel={activityT('tamperAlerts.infoTitle')}
                   subtitle={t('dash.protectionAlertsSub', {
                     count: device.protectionCounters.tamper,
                   })}
@@ -5234,7 +5317,6 @@ export default function Dashboard({
                         </li>
                       ))}
                   </ul>
-                  <p className="hint">{activityT('tamperAlerts.infoLine1')}</p>
                 </Card>
               )}
 
@@ -5250,11 +5332,11 @@ export default function Dashboard({
               <Card
                 id="message-alerts"
                 title={activityT('messageMonitoring.actionTitle')}
-                subtitle={activityT('messageMonitoring.heroSubtitle')}
+                info={activityT('messageMonitoring.heroSubtitle')}
               >
                 <MessageAlertsCard
                   device={device}
-                  activities={activities[device.id] || []}
+                  activities={messageAlerts[device.id] || []}
                   readOnly={live && !canWrite}
                   actions={actions}
                   run={run}
@@ -5299,9 +5381,34 @@ export default function Dashboard({
               panels away from the filter, so a parent who pressed "Block web
               content" never saw it. `web` keeps web history and videos.
             */}
+            {/* What qualifies the bars, behind the ⓘ as the phone's Web
+                history keeps it (`aboutNotes`). Three mechanisms, not two:
+                the extension and the Windows resolver say the app pack's own
+                sentence, a Mac its NetworkExtension one, an iPhone without
+                the tunnel Apple's adult control alone
+                (`supportsWebFilterCategories`). The DNS-filter devices
+                (Android, TV, an iPhone with the tunnel) say nothing since
+                2026-10-25 — "enforced by the on-device DNS filter" named a
+                mechanism, not something a parent can act on. The last note
+                is why a count can be large with nobody at the device: a
+                television nobody switched on produced 770 in a day. */}
             <Card
               title={t('dash.filterRefusedTitle')}
               subtitle={t('dash.filterRefusedSub', { count: blockedTotal })}
+              info={[
+                blockedGuessed && activityT('webHistory.rollupNoteAi'),
+                isBrowserOnlySurface(device)
+                  ? activityT('webFilter.heroSubtitleExtension')
+                  : device.platform === 'windows'
+                    ? activityT('webFilter.heroSubtitleWindows')
+                    : device.platform === 'macos'
+                      ? activityT('webFilter.infoLine4Macos')
+                      : device.platform === 'ios' &&
+                          !supportsWebFilterCategories(device)
+                        ? t('dash.filterHintIos')
+                        : null,
+                activityT('webHistory.backgroundNote'),
+              ]}
             >
               {blockedByCategory.length === 0 ? (
                 <p className="empty">{activityT('webHistory.emptyBlockedBody')}</p>
@@ -5328,40 +5435,6 @@ export default function Dashboard({
                   ))}
                 </ul>
               )}
-              {blockedGuessed ? (
-                <p className="hint">{activityT('webHistory.rollupNoteAi')}</p>
-              ) : null}
-              {/* Three mechanisms, not two. The Android sentence names a DNS
-                      filter, which is what the phone's and the TV's VPN is and
-                      what a Mac's NetworkExtension provider is not — a Mac fell
-                      into it only because this branch had nowhere else to put
-                      anything that was not an iPhone. */}
-              {/* An iPhone with the KidGate tunnel runs the same DNS filter
-                      as Android; only one without it is Apple's adult control
-                      alone (`supportsWebFilterCategories`). */}
-              {/* The extension and the Windows resolver have no `dash.*` hint of
-                  their own, and fell into the Android DNS line (or the Mac's,
-                  for an extension hosted on one). The app pack already says
-                  both, in the phone's words. The extension is found by its
-                  probe, not its platform: it reports its host's. */}
-              <p className="hint">
-                {isBrowserOnlySurface(device)
-                  ? activityT('webFilter.heroSubtitleExtension')
-                  : device.platform === 'windows'
-                    ? activityT('webFilter.heroSubtitleWindows')
-                    : device.platform === 'ios' && !supportsWebFilterCategories(device)
-                      ? t('dash.filterHintIos')
-                      : device.platform === 'macos'
-                        ? activityT('webFilter.infoLine4Macos')
-                        : t('dash.filterHintAndroid')}
-              </p>
-              {/* Why a refusal count can be large with nobody at the
-                      device — a television nobody switched on produced 770 in
-                      a day. One sentence for every platform, and it says what
-                      devices do rather than what this card contains, which is
-                      what keeps it true where the filter counts openings
-                      (the extension) instead of lookups. */}
-              <p className="hint">{activityT('webHistory.backgroundNote')}</p>
             </Card>
           </>
         )}

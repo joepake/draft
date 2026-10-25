@@ -102,8 +102,6 @@ export const family = {
   manualInstructions:
     'Gib den 6-stelligen Code ein, der auf dem anderen Gerät angezeigt wird.',
 
-  headerHintEmpty: 'Verwalte und schütze die Geräte deiner Kinder',
-
   familyCardManage: 'Familie, Eltern und Geräte verwalten',
 
   familyCardJoined: 'Als Elternmitglied beigetreten',
@@ -136,7 +134,7 @@ export const family = {
   chipHealthInactiveCount: '{{count}} seit über 24 Std. inaktiv',
   chipLocationBlocked: 'Standort kommt nicht an',
 
-  chipBlockedCount: '{{count}} blockiert',
+  chipBlockedCount: '{{count}} in Sperrzeiten',
 
   healthProtected: 'Geschützt',
   buildOutdated: 'Update verfügbar',
@@ -157,7 +155,7 @@ export const family = {
   rulesPausedBehind: 'Pausiert – noch mit einer älteren Einstellung',
   rulesTightenRefused:
     'Auf einem pausierten Gerät lassen sich Regeln nur lockern, nie verschärfen. Upgrade, um das auf jedem Gerät zu ändern.',
-  parkedBannerTitle: 'Wähle das Gerät, das du weiter im Blick behältst',
+  parkedBannerTitle: 'Wähle das berichtende Gerät',
   parkedBannerBody:
     'Deine Regeln laufen weiter auf jedem Gerät. Der Gratis-Tarif erhält Berichte von einem Gerät und lässt dich nur dort Regeln verschärfen – wähle dieses Gerät oder upgrade, um alle zu behalten.',
   parkedBannerAction: 'Gerät wählen',
@@ -180,10 +178,10 @@ export const family = {
     'Der Gratis-Tarif erhält Berichte von einem Gerät und lässt dich nur dort Regeln verschärfen – deshalb startet dieses Gerät pausiert.',
   pairingWillStartPaused:
     'Der Gratis-Tarif erhält Berichte von einem Gerät und lässt dich nur dort Regeln verschärfen – deshalb startet das neue Gerät pausiert.',
-  chooseMonitoredTitle: 'Wähle dein Hauptgerät',
+  chooseMonitoredTitle: 'Wähle das berichtende Gerät',
   chooseMonitoredBody:
     'Alle Regeln laufen auf allen Geräten weiter. Das gewählte Gerät sendet Bildschirmzeit und Standort und ist das einzige, dessen Regeln du noch verschärfen kannst – auf den anderen kannst du sie nur lockern. Deine Wahl kannst du alle {{days}} Tage einmal ändern.',
-  chooseMonitoredConfirm: 'Dieses Gerät beobachten',
+  chooseMonitoredConfirm: 'Als berichtendes Gerät festlegen',
   chooseMonitoredUpgrade: 'Alle Geräte behalten – Upgrade',
   chooseMonitoredDone: '{{name}} ist jetzt das berichtende Gerät',
   chooseMonitoredCurrent: 'Berichtet derzeit',
@@ -207,6 +205,9 @@ export const family = {
 
   emptyDescription:
     'Füge das Gerät deines Kindes hinzu, um Bildschirmzeit und App-Nutzung zu überwachen.',
+
+  emptyPairSteps:
+    'Installiere KidGate auf dem Smartphone, Tablet, Fernseher oder Computer deines Kindes, wähle „Dies ist ein Kindergerät“, falls danach gefragt wird, und scanne dann den angezeigten Code.',
 
   setupFamilyTitle: 'Familie einrichten',
 
@@ -240,17 +241,10 @@ export const family = {
   guestBenefitLocationBody:
     'Sieh, wo dein Kind ist, und bitte es zu bestätigen, dass alles in Ordnung ist.',
 
-  stepsHeading: 'Erste Schritte',
-
   step1Title: 'KidGate auf dem Gerät deines Kindes öffnen',
 
   step1Description:
     'Installiere KidGate auf dem Smartphone, Tablet, Fernseher oder Computer deines Kindes. Wähle auf einem Smartphone oder Tablet „Dies ist ein Kindergerät“. Dann erscheinen ein QR-Code und ein 6-stelliger Code.',
-
-  step2Title: 'Hier auf „Gerät eines Kindes hinzufügen“ tippen',
-
-  step2Description:
-    'Scanne diesen QR-Code mit diesem Smartphone oder gib den 6-stelligen Code ein.',
 
   connectChildButton: 'Kindergerät verbinden',
   listHint: 'Wische auf einem Gerät nach links, um es zu entfernen',

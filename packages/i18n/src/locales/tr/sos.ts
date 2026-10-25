@@ -1,6 +1,5 @@
 export const sos = {
   title: 'SOS uyarıları',
-  subtitle: '{{deviceName}} · gönderildiğinde fotoğraflar aşağıda görünür',
   fallbackDeviceName: 'Çocuk cihazı',
   fallbackChildName: 'Çocuk',
   locationUnavailable: 'Konum kullanılamıyor',
@@ -9,7 +8,6 @@ export const sos = {
   viewPhotoAccessibility: 'SOS fotoğrafını görüntüle',
   photoTapHint: 'Fotoğrafın tamamını görmek için dokunun',
   photoLoadFailed: 'Bu fotoğraf yüklenemedi. Bağlantınızı kontrol edip tekrar deneyin.',
-  noPhoto: 'Bu uyarıya fotoğraf eklenmedi.',
   audioLabel: 'Ses kaydı',
   audioPlayAccessibility: 'SOS kaydını oynat',
   audioStopAccessibility: 'SOS kaydını oynatmayı durdur',
@@ -17,7 +15,6 @@ export const sos = {
   acknowledgedAt: 'Onaylandı {{time}}',
   openInMaps: 'Haritalar’da aç',
   acknowledgeButton: 'Ben ilgileniyorum',
-  acknowledgingButton: 'Kaydediliyor…',
   toastAcknowledgeFailed: 'Onaylanamadı. Lütfen birazdan tekrar deneyin.',
   emptyTitle: 'Henüz SOS uyarısı yok',
   emptyDescription:

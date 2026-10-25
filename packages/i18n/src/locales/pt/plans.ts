@@ -81,6 +81,7 @@ export const plans = {
   footerLegalAndroid:
     'Cobrado pelo Google Play. As assinaturas renovam automaticamente até você cancelar no Google Play. A compra única não renova e vale enquanto o KidGate estiver disponível.',
   subscribeButton: 'Assinar o Premium',
+  buyLifetimeButton: 'Comprar Vitalício',
   restoringPurchases: 'Restaurando…',
   restorePurchases: 'Restaurar compras',
   premiumDescription:
@@ -165,7 +166,7 @@ export const plans = {
   trustNoAds: 'Sem anúncios',
   freePlanName: 'Grátis',
   freeDescription:
-    'O básico continua funcionando em todos os dispositivos da criança, com relatórios de um. Nunca expira.',
+    'Suas regras continuam funcionando em todos os dispositivos da criança, e um deles continua enviando relatórios. Nunca expira.',
   featureOneChildDevice: 'Relatórios de um dispositivo da criança',
   termLifetime: 'Vitalício',
   badgeOneTime: 'Pagamento único',
@@ -229,5 +230,7 @@ export const plans = {
   teaserProofParents: 'Responsáveis: {{count}}',
   teaserParentCap:
     'Esse é o número de responsáveis que uma família pode ter sem o Premium. O Premium dobra esse limite.',
+  teaserApps:
+    'O Premium bloqueia apps pelo seu celular e avisa quando um é instalado ou removido.',
   teaserDeviceNote: 'Apenas o dispositivo monitorado envia dados.',
 } as const;

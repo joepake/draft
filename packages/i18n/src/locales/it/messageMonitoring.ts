@@ -119,10 +119,9 @@ export const messageMonitoring = {
     revokedBody:
       'Android ha disattivato un’autorizzazione che serve a KidGate, quindi i messaggi non vengono più controllati. Apri KidGate sul dispositivo di tuo figlio e concedila di nuovo.',
     offTitle: 'Gli Avvisi messaggi non sono attivi',
-    offBody:
-      'Sul dispositivo non viene controllato nulla, quindi qui non può comparire alcun avviso. Apri KidGate sul suo dispositivo per configurarla.',
+    offBody: 'Apri KidGate sul dispositivo di tuo figlio per configurarla.',
     switchedOffBody:
-      'Sul dispositivo di tuo figlio non viene controllato nulla, quindi qui non può comparire alcun avviso. Attiva “Controlla i messaggi ricevuti” nelle impostazioni di questa schermata.',
+      'Attiva “Controlla i messaggi ricevuti” nelle impostazioni di questa schermata.',
     pendingTitle: 'In attesa che il dispositivo lo applichi',
     pendingBody:
       'Hai attivato questa opzione. Il dispositivo la riceverà al prossimo collegamento, di solito entro pochi minuti — prima se il telefono è in uso. Non devi fare altro.',

@@ -12,6 +12,8 @@ export const childReport = {
   heroRange: '{{low}} – {{high}}',
   heroRangeNote:
     'Perkiraan — ada perangkat yang melaporkan berapa lama dipakai, tetapi tidak kapan.',
+  barsExplain:
+    'Satu menit di dua perangkat sekaligus terhitung dua menit saat perangkat dijumlahkan.',
   heroEmpty: 'Belum ada penggunaan yang dilaporkan',
 
   trendUp: '{{value}} lebih banyak dari periode sebelumnya',

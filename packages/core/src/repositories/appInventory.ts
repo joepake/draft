@@ -23,6 +23,7 @@ import {
   appInventoryCollection,
   appInventoryDoc,
   isUsableInventoryId,
+  MAX_INVENTORY_AGENT_BUILD_LENGTH,
   MAX_INVENTORY_APPS,
   MAX_INVENTORY_LABEL_LENGTH,
   type AppInventory,
@@ -80,6 +81,9 @@ function mapInventory(snapshot: DocSnapshot): AppInventory | null {
     truncated: data.truncated === true,
     totalSeen:
       Number.isFinite(totalSeen) && totalSeen >= apps.length ? totalSeen : apps.length,
+    ...(typeof data.agentBuild === 'string' && data.agentBuild
+      ? { agentBuild: data.agentBuild }
+      : {}),
   };
 }
 
@@ -187,6 +191,7 @@ export async function publishAppInventory(
   deviceId: string,
   scanned: readonly { id: string; label: string; installedAt?: number }[],
   scannedAt: number,
+  agentBuild?: string,
 ): Promise<AppInventory> {
   const path = appInventoryDoc(userId, deviceId);
   let previous: AppInventory | null = null;
@@ -198,12 +203,15 @@ export async function publishAppInventory(
     // reads true, which suppresses the "added" copy rather than firing it.
   }
 
-  const next = mergeInventoryScan(previous, scanned, scannedAt);
+  const merged = mergeInventoryScan(previous, scanned, scannedAt);
+  const build = agentBuild?.trim().slice(0, MAX_INVENTORY_AGENT_BUILD_LENGTH);
+  const next: AppInventory = build ? { ...merged, agentBuild: build } : merged;
   await firestore.setDoc(path, {
     apps: next.apps,
     scannedAt: next.scannedAt,
     truncated: next.truncated,
     totalSeen: next.totalSeen,
+    ...(next.agentBuild ? { agentBuild: next.agentBuild } : {}),
   });
   return next;
 }

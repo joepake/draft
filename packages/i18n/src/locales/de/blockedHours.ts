@@ -1,52 +1,36 @@
 export const blockedHours = {
   title: 'Sperrzeiten',
   errorInvalidTimes:
-    'Gib für jede Sperrzeit eine gültige Start- und Endzeit (HH:mm) ein.',
+    'Gib für jeden Zeitraum eine gültige Start- und Endzeit (HH:mm) ein.',
   toastSaveFailed: 'Speichern fehlgeschlagen. Bitte versuche es erneut.',
   toastSaveSuccess: 'Sperrzeiten wurden gespeichert.',
   unsavedTitle: 'Änderungen verwerfen?',
-  unsavedMessage:
-    'Du hast ungespeicherte Änderungen an den Sperrzeiten. Ohne Speichern verlassen?',
   discardChanges: 'Verwerfen',
-  statusEnabled: 'Aktiviert',
-  statusDisabled: 'Deaktiviert',
   statusActiveNow: 'Jetzt aktiv',
   heroSubtitle:
     'Lege bis zu {{max}} Zeiträume fest, in denen die Gerätenutzung gesperrt ist.',
   statTimeRangesLabel: 'Zeiträume',
-  statMaxAllowedLabel: 'Maximum',
   toggleTitle: 'Sperrzeiten aktivieren',
   toggleSubtitleOn:
     'Die Gerätenutzung ist während der unten angegebenen Zeiten gesperrt.',
   toggleSubtitleOff:
     'Aktiviere diese Option, um die Gerätenutzung nach einem Zeitplan zu sperren.',
   toggleAccessibilityLabel: 'Sperrzeiten aktivieren',
-  sectionTitle: 'Sperrzeiten',
-  sectionSubtitleConfigured: '{{current}}/{{max}} eingerichtet',
+  sectionTitle: 'Zeiträume',
   windowTitle: 'Zeitraum {{number}}',
   windowOvernightSuffix: '· über Nacht',
   removeButton: 'Entfernen',
   timeStartLabel: 'Beginn',
   timeEndLabel: 'Ende',
-  placeholderStartTime: '22:00',
-  placeholderEndTime: '07:00',
-  timeInputAccessibilityLabel: '{{label}}-Zeit',
-  stepperMinusHourAccessibility: '{{label}} minus 1 Stunde',
   stepperMinus15Accessibility: '{{label}} minus 15 Minuten',
   stepperPlus15Accessibility: '{{label}} plus 15 Minuten',
-  stepperPlusHourAccessibility: '{{label}} plus 1 Stunde',
-  stepperMinusHour: '−1 Std.',
   stepperMinus15: '−15',
   stepperPlus15: '+15',
-  stepperPlusHour: '+1 Std.',
-  addBlockedTime: 'Sperrzeit hinzufügen',
+  addBlockedTime: 'Zeitraum hinzufügen',
   quickAddTitle: 'Schnell hinzufügen',
   presetBedtime: 'Schlafenszeit',
   presetSchool: 'Schule',
   presetStudy: 'Lernen',
-  disabledTitle: 'Sperrzeiten sind deaktiviert',
-  disabledSubtitle:
-    'Aktiviere den Schalter oben, um festzulegen, wann die Gerätenutzung gesperrt ist.',
   infoTitle: 'So funktioniert es',
   infoLine1:
     'Während der Sperrzeiten werden Apps auf dem Gerät deines Kindes blockiert.',
@@ -54,6 +38,10 @@ export const blockedHours = {
     'Zeiträume über Mitternacht werden unterstützt, z. B. von 22:00 bis 07:00 Uhr.',
   infoLine3:
     'Auf iPhone und iPad muss Bildschirmzeit auf dem Gerät deines Kindes erlaubt sein.',
+  infoSkippedExtension: 'Sperrzeiten sind in der Erweiterung {{name}} nicht verfügbar.',
+  infoSkippedLockNotReady:
+    'Sperrzeiten gelten auf {{name}} erst, wenn das Gerät den Bildschirm sperren darf.',
+  infoSkippedPlatform: 'Sperrzeiten sind auf {{name}} nicht verfügbar.',
   off: 'Aus',
   blockedHoursChip: 'Sperrzeiten',
   blockedHoursOnChip: 'Sperrzeiten eingerichtet',
@@ -73,10 +61,8 @@ export const blockedHours = {
   daysEveryDay: 'Täglich',
   daysWeekdays: 'Wochentags',
   daysWeekend: 'Wochenende',
-  daysSchoolNights: 'Vor Schultagen',
-  daysWeekendNights: 'Wochenendnächte',
   daysOvernightHint: 'Zeiträume über Nacht zählen zu der Nacht, in der sie beginnen.',
   overlapWarning:
-    'Diese Zeit überschneidet sich mit einer anderen gesperrten Zeit – beide gelten weiterhin.',
+    'Dieser Zeitraum überschneidet sich mit einem anderen – beide gelten weiterhin.',
   weekPreviewTitle: 'Deine Woche',
 } as const;

@@ -16,7 +16,7 @@ export const protection = {
   openKidGateOnChildPhone: 'Vui lòng mở KidGate một lần trên thiết bị của trẻ.',
   screenTimePermission: 'Quyền Thời gian sử dụng',
   screenTimeAccessOff:
-    'Quyền Thời gian sử dụng đang tắt nên việc chặn ứng dụng và áp dụng giới hạn có thể ngừng hoạt động.',
+    'Quyền Thời gian sử dụng đang tắt nên tính năng Chặn ứng dụng và việc áp dụng giới hạn có thể ngừng hoạt động.',
   screenTimeSetupIncomplete:
     'Thiết lập Thời gian sử dụng trên thiết bị của trẻ chưa hoàn tất.',
   usageAccessPermission: 'Truy cập mức sử dụng',

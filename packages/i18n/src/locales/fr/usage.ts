@@ -2,12 +2,10 @@ export const usage = {
   title: 'Rapport d’utilisation',
   fallbackDeviceName: 'Appareil de l’enfant',
   sectionToday: 'Aujourd’hui',
-  percentOfLimit: '{{percent}} % de la limite',
   reportedAt: 'Mis à jour à {{time}}',
   statUsedLabel: 'Utilisé',
   statLeftLabel: 'Restant',
   statLimitLabel: 'Limite',
-  limitOff: 'Désactivée',
   insightDailyLimitReached: 'Limite quotidienne atteinte',
   insightNearDailyLimit: 'Proche de la Limite quotidienne',
   insightNoDailyLimit: 'Aucune Limite quotidienne définie',
@@ -35,7 +33,7 @@ export const usage = {
   dailyLimitReached: 'Limite quotidienne atteinte',
   minutesLeftToday: 'Reste {{remaining}} aujourd’hui',
   minutesUsedTodayShort: '{{used}} d’utilisation aujourd’hui',
-  noUsageDataYet: 'Aucune donnée d’utilisation pour le moment',
+  noUsageDataYet: 'Aucune donnée pour le moment',
   usageToday: 'Utilisation aujourd’hui',
   report: 'Rapport',
   setDailyLimitToTrack:
@@ -50,24 +48,21 @@ export const usage = {
   syncNoteTv:
     'Cette télévision ne se connecte que périodiquement, le temps d’écran peut donc mettre jusqu’à une heure à apparaître sur cet écran — plus longtemps sans connexion Internet.',
   sectionLast30Days: 'Les 30 derniers jours',
-  comparePeriodTotal: 'Total sur 30 jours',
+  comparePeriodTotal: 'Total',
   compareDayAvg: 'Moyenne quotidienne',
-  compareVsYesterday: 'vs hier',
+  compareVsYesterdaySameTime: '{{value}} par rapport à hier à la même heure',
   dayTodayShort: 'Aujourd’hui',
   chartEmpty: 'Le graphique d’utilisation est indisponible pour le moment.',
   chartNoDataYet:
     'Les barres se remplissent au fur et à mesure que l’appareil de l’enfant synchronise son utilisation quotidienne. Aujourd’hui se met à jour à partir des minutes en direct.',
   chartDayNone: 'Aucune utilisation',
   bonusMinutesChip: '+{{minutes}} min bonus',
-  dailyLimitGuide: 'Limite quotidienne {{duration}}',
-  sectionTopApps: 'Applications les plus utilisées',
   topAppsHint:
     'Applications les plus utilisées aujourd’hui sur l’appareil de l’enfant. Les données s’accumulent au fur et à mesure de la synchronisation de Temps d’écran / Accès à l’utilisation.',
   topAppsExcludedNote:
     'L’économiseur d’écran, l’écran d’accueil et l’écran de KidGate lui-même ne comptent pas comme temps d’écran. Quand l’appareil est allumé sans que personne s’en serve, ces minutes sont enregistrées en « Non utilisé ».',
   topAppsAiNote:
     'Certains types ont été déduits du nom de l’application au lieu de correspondre à une application connue — quelques-uns peuvent être faux.',
-  errorTitle: 'Impossible de charger l’utilisation',
   errorDescription: 'Veuillez vérifier votre connexion et réessayer.',
   tryAgain: 'Réessayer',
   // Shown only when the rating is known — it is 0 for much of the long
@@ -84,9 +79,10 @@ export const usage = {
   protectionBlockedApps: 'Ouvertures d’apps bloquées',
   protectionWebBlocked: 'Sites web bloqués',
   protectionTamper: 'Alertes de protection',
-  sectionTimeline: 'Quand l’appareil a été utilisé',
+  sectionTimeline: 'Quand l’écran était allumé',
   timelineUsed: 'En cours d’utilisation',
   timelineIdle: 'Non utilisé',
+  idleRow: 'Écran allumé, non utilisé',
   timelineUnmeasured: 'Non mesuré',
   timelineUnmeasuredHint:
     'KidGate ne fonctionnait pas sur l’appareil, ou l’appareil était en veille. Ces minutes ne sont pas non plus dans le total.',

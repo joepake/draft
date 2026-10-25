@@ -3,7 +3,8 @@ import BrandLogo from '@kidgate/web-ui/BrandLogo';
 import BrandLoader from '@kidgate/web-ui/BrandLoader';
 import Icon from '@kidgate/web-ui/Icon';
 import { useT } from '@kidgate/web-ui/useT';
-import { reportNarrative, reportWeek } from '@kidgate/core/domain/reportView';
+import { reportNarrative } from '@kidgate/core/domain/reportView';
+import { reportWeekLabel } from '@kidgate/core/domain/reportCopy';
 import { resolveLockedTeaser } from '@kidgate/core/domain/premiumTeaser';
 import { useActivityTranslate } from './activityCopy.js';
 import PremiumTeaser from './PremiumTeaser.jsx';
@@ -81,7 +82,6 @@ export default function ReportPanel({
     if (!report) return null;
     return {
       ...reportPresentation(report, familyName),
-      week: reportWeek(report.periodKey),
       narrative: reportNarrative(report, language),
     };
     // `language` rather than `t`: the sentences come from `reportCopy`, which
@@ -218,7 +218,6 @@ export default function ReportPanel({
         )}
         <div className="report-history-list">
           {reports.map(entry => {
-            const week = reportWeek(entry.periodKey);
             return (
               <button
                 key={entry.periodKey}
@@ -226,7 +225,8 @@ export default function ReportPanel({
                 onClick={() => setSelectedKey(entry.periodKey)}
               >
                 <strong>
-                  {week ? appT('report.weekOf', { week: week.week }) : entry.periodKey}
+                  {reportWeekLabel(entry.periodKey, appT, Date.now()) ||
+                    entry.periodKey}
                 </strong>
                 <span>{formatMinutes(entry.screenMinutes)}</span>
               </button>
@@ -265,9 +265,7 @@ export default function ReportPanel({
             </span>
             KidGate
           </span>
-          <span className="report-week">
-            {view.week ? appT('report.weekOf', { week: view.week.week }) : ''}
-          </span>
+          <span className="report-week">{view.week}</span>
         </header>
 
         <h2 className="report-title">{familyName}</h2>

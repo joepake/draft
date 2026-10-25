@@ -1,7 +1,5 @@
 export const appAlerts = {
   fallbackDeviceName: '자녀 기기',
-  heroTitle: '앱 설치·삭제 지켜보기',
-  heroSubtitle: 'KidGate는 이 기기의 앱 설치와 삭제를 모니터링하고 활동에 기록합니다.',
   statusOn: '모니터링 중',
   statusInventory: '설치된 앱 목록 표시',
   statusOff: '사용 불가',
@@ -11,9 +9,6 @@ export const appAlerts = {
   infoLine1: '자녀 기기가 앱 설치·삭제 이벤트를 KidGate에 알립니다.',
   infoLine2: '앱이 설치되거나 삭제될 때마다 부모에게 푸시 알림이 전송됩니다.',
   infoLine3: '여기서 목록을 확인하고, 위험한 앱은 차단된 앱에서 차단하세요.',
-  heroTitleExtension: '확장 프로그램 설치·삭제 지켜보기',
-  heroSubtitleExtension:
-    'KidGate는 설치된 Chrome 프로필에서 확장 프로그램의 설치와 삭제를 모니터링하고 활동에 기록합니다.',
   emptyTitleExtension: '아직 확장 프로그램 변경 사항이 없습니다',
   emptySubtitleExtension:
     '자녀가 Chrome 확장 프로그램을 설치하거나 삭제하면 여기와 활동에 표시됩니다.',
@@ -22,8 +17,6 @@ export const appAlerts = {
   infoLine2Extension:
     '확장 프로그램이 설치되거나 삭제될 때마다 부모에게 푸시 알림이 전송됩니다.',
   recentTitle: '최근 변경',
-  statInstalled: '설치됨',
-  statRemoved: '삭제됨',
   pendingBadge: '허용할 때까지 차단됨',
   approvedBadge: '허용됨',
   allowApp: '허용',

@@ -2,7 +2,9 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import DashboardLive from './pages/DashboardLive.jsx';
 import AuthAction, { readAuthAction } from './pages/AuthAction.jsx';
 import ErrorBoundary from './ErrorBoundary.jsx';
+import { useEffect } from 'react';
 import { useT } from '@kidgate/web-ui/useT';
+import { isRtlLanguage } from '@kidgate/i18n/web/languages';
 import '@kidgate/web-ui/dashboard.css';
 
 /**
@@ -17,7 +19,13 @@ import '@kidgate/web-ui/dashboard.css';
  */
 
 export default function App() {
-  const { t } = useT();
+  const { t, language } = useT();
+  // The direction is this app's call, as on the site (`apps/site/src/App.jsx`):
+  // the i18n runtime sets `lang` only, so Arabic laid this console out left to
+  // right and the `[dir='rtl']` rules in `dashboard.css` never applied.
+  useEffect(() => {
+    document.documentElement.dir = isRtlLanguage(language) ? 'rtl' : 'ltr';
+  }, [language]);
   // At the root: Firebase appends its query to whatever URL the console holds,
   // and `/` needs no route of its own (`docs/EMAIL_TEMPLATES.md`).
   const authAction = readAuthAction();

@@ -1,5 +1,5 @@
 export const rewardTask = {
-  rewardTasksNote: '승인된 시간은 오늘의 사용 한도에 더해집니다.',
+  rewardTasksNote: '승인된 시간은 승인한 날의 사용 한도에 더해집니다.',
   unableToCreate: '과제를 만들지 못했어요. 다시 시도해 주세요.',
   unableToUpdate: '과제를 저장하지 못했어요. 다시 시도해 주세요.',
   unableToDelete: '과제를 삭제하지 못했어요. 다시 시도해 주세요.',
@@ -8,7 +8,6 @@ export const rewardTask = {
   unableToClaim: '부모님께 보내지 못했어요. 다시 시도해 주세요.',
   newTask: '새 과제',
   editTask: '과제 수정',
-  formSubtitle: '승인하면 보상이 오늘의 스크린 타임에 더해져요.',
   titleLabel: '과제',
   titlePlaceholder: '예: 책 20분 읽기',
   minutesLabel: '보상',
@@ -65,7 +64,7 @@ export const rewardTask = {
   taskRejected: '보상 과제 돌려보냄',
   taskRejectedDescription: '“{{title}}” 과제를 {{deviceName}}에게 돌려보냈어요.',
   starsLabel: '난이도',
-  starsHint: '이 과제가 얼마나 어려운지 정합니다. 아이는 이 별을 모읍니다.',
+  starsHint: '아이는 그만큼 별을 모읍니다.',
   starsEasy: '쉬움',
   starsMedium: '보통',
   starsHard: '어려움',

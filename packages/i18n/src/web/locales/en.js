@@ -196,7 +196,7 @@ export default {
       'Install KidGate on your child’s phone and connect it by scanning a QR code. Under a minute.',
     step3Title: 'Set your rules',
     step3Text:
-      'Pick a Daily Limit and Blocked Hours, and turn on location and app blocking from your own phone. The apps to block are chosen once on your child’s device, with your Parent PIN.',
+      'Pick a Daily Limit and Blocked Hours, and turn on location and Blocked Apps from your own phone. The apps to block are chosen once on your child’s device, with your Parent PIN.',
 
     whyEyebrow: 'Why KidGate',
     whyTitle: 'Built for trust, not surveillance',
@@ -258,8 +258,10 @@ export default {
     faqMore: 'More questions? Visit Support',
 
     ctaTitle: 'Start protecting your family today',
-    ctaSub: '7-day free trial with full access.',
-    ctaNote: 'Cancel anytime from the App Store or Google Play.',
+    ctaSub: '7-day free trial with full access. No card needed.',
+    // Not "cancel anytime": nothing is charged when the trial ends, so there
+    // is nothing to cancel (2026-10-25).
+    ctaNote: 'When it ends, your rules keep working on the free plan.',
   },
 
   login: {
@@ -498,8 +500,7 @@ export default {
     save: 'Save',
 
     unlockTitle: 'Changes are locked.',
-    unlockBody:
-      'Reading works straight away. To lock a device, change limits or approve requests, unlock this browser with your Parent PIN — or approve it by scanning the QR code with the KidGate app. Check-Ins work either way.',
+    unlockBody: 'You can still read everything and send Check-Ins.',
     unlockCta: 'Unlock changes',
     unlockToChange: 'Unlock changes first',
     refresh: 'Refresh',
@@ -538,10 +539,6 @@ export default {
     tileDeltaDown: '↓ {{percent}}% vs 7-day average',
     tileBlocked: 'Blocked attempts',
     tileBlockedMeta: 'Apps stopped since install',
-    tileSites: 'Sites filtered',
-    tileCategoriesHit_one: '{{count}} category hit',
-    tileCategoriesHit_other: '{{count}} categories hit',
-    tileNothingBlocked: 'Nothing blocked yet',
     tileAttention: 'Needs attention',
     tileOpenItems: 'Open items below',
     tileAllClear: 'All clear',
@@ -599,8 +596,6 @@ export default {
     blockingLabel: 'Blocking',
     appsBlocked: 'Apps blocked',
     categories: 'Categories',
-    perAppHint:
-      'Per-app caps run independently of the blocklist — “30 minutes of TikTok” is a different decision from “no TikTok”.',
     limitsMax: '{{max}} capped apps is the most a device can hold.',
     perDay: '{{value}}/day',
     webActivityTitle: 'Web activity',
@@ -624,12 +619,11 @@ export default {
     colVideo: 'Video',
     colChannel: 'Channel',
     colViews: 'Views',
-    filterRefusedTitle: 'What the filter refused',
+    filterRefusedTitle: 'What the filter blocked',
     filterRefusedSub_one: '{{count}} blocked lookup, last 7 days',
     filterRefusedSub_other: '{{count}} blocked lookups, last 7 days',
     filterHintIos:
       'This iPhone or iPad filters with Apple’s adult-content control only. Update KidGate on it and allow the KidGate VPN to block by category.',
-    filterHintAndroid: 'Categories are enforced by the on-device DNS filter.',
 
     locationTitle: 'Location',
     locationUpdated: 'Updated {{when}}',
@@ -682,8 +676,8 @@ export default {
     rowAppBlocking: 'Blocked Apps',
     rowAppBlockingDesc: '{{apps}} · {{categories}}',
     rowWebFilter: 'Web Filter',
-    rowWebFilterDesc_one: '{{count}} category refused',
-    rowWebFilterDesc_other: '{{count}} categories refused',
+    rowWebFilterDesc_one: '{{count}} category blocked',
+    rowWebFilterDesc_other: '{{count}} categories blocked',
     rowNotSupported: 'Not supported on this device',
     rowLocation: 'Location sharing',
     rowLocationDesc: 'Last update {{when}}',
@@ -695,7 +689,7 @@ export default {
     webFilterCatsTitle: 'Web Filter categories',
     webFilterCatsSub: 'Blocked content types',
     dnsHint:
-      'Encrypted-DNS resolvers are always refused while the filter runs — leaving them reachable is what lets a browser route around every other category.',
+      'Encrypted DNS is always blocked while the filter runs, so a browser cannot get around it.',
     starChartTitle: 'Star chart',
     starChartSub: 'Stars earned this week, per child',
     starChartEmpty: 'Add a second child in the app to start the star chart.',
@@ -739,7 +733,7 @@ export default {
 
     emptyBody:
       'With Premium, a report arrives every Monday morning and covers the seven days before it. You can also write this week’s from the KidGate app on your phone.',
-    loadFailed: 'Unable to open your reports. Reload the page to try again.',
+    loadFailed: 'Unable to open your reports.',
     retryLoad: 'Try again',
     existed: 'This week already had a report — here it is.',
   },
@@ -804,7 +798,7 @@ export default {
 
     faq9Q: 'How do I block specific apps?',
     faq9A:
-      'App selection happens on the child device: open *KidGate → Settings*, tap *Unlock with Parent PIN*, open *Blocked Apps*, choose the apps and save. Then, on the parent device, open the device’s *Blocked Apps* screen and turn on *Enable App Blocking*. On iOS, Apple may hide exact app names from the parent device — that’s a platform limitation.',
+      'On the parent device, open your child’s *Apps*, then *Installed apps*, tap an app and choose *Block*. On an iPhone, apps are chosen on the iPhone instead: open *KidGate → Settings*, tap *Unlock with Parent PIN*, open *Blocked Apps*, choose the apps and save, then turn on *Enable Blocked Apps* on the parent device. A connected child device gets each change within a minute. On iOS, Apple may hide exact app names from the parent device.',
 
     faq10Q: 'Why is the child’s location not updating?',
     faq10A:

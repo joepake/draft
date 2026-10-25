@@ -205,7 +205,7 @@ export default {
       'Cài KidGate trên điện thoại của con và kết nối bằng cách quét mã QR. Chưa tới một phút.',
     step3Title: 'Đặt quy tắc của bạn',
     step3Text:
-      'Đặt Giới hạn hằng ngày và Giờ khóa thiết bị, bật vị trí và chặn ứng dụng ngay từ điện thoại của bạn. Danh sách ứng dụng cần chặn được chọn một lần trên thiết bị của con, bằng mã PIN phụ huynh.',
+      'Đặt Giới hạn hằng ngày và Giờ khóa thiết bị, bật vị trí và tính năng Chặn ứng dụng ngay từ điện thoại của bạn. Danh sách ứng dụng cần chặn được chọn một lần trên thiết bị của con, bằng mã PIN phụ huynh.',
 
     whyEyebrow: 'Vì sao chọn KidGate',
     whyTitle: 'Dựa trên niềm tin, không phải sự giám sát',
@@ -267,8 +267,8 @@ export default {
     faqMore: 'Còn câu hỏi khác? Xem trang Hỗ trợ',
 
     ctaTitle: 'Bắt đầu bảo vệ gia đình bạn hôm nay',
-    ctaSub: 'Dùng thử miễn phí 7 ngày, đầy đủ tính năng.',
-    ctaNote: 'Hủy bất cứ lúc nào từ App Store hoặc Google Play.',
+    ctaSub: 'Dùng thử miễn phí 7 ngày, đầy đủ tính năng. Không cần thẻ.',
+    ctaNote: 'Hết dùng thử, quy tắc vẫn chạy ở gói miễn phí.',
   },
 
   login: {
@@ -482,8 +482,7 @@ export default {
     save: 'Lưu',
 
     unlockTitle: 'Các thay đổi đang bị khóa.',
-    unlockBody:
-      'Xem thì được ngay. Muốn khóa thiết bị, đổi giới hạn hay duyệt yêu cầu, hãy mở khóa trình duyệt này bằng mã PIN phụ huynh — hoặc duyệt bằng cách dùng ứng dụng KidGate quét mã QR. Báo an toàn thì gửi được trong cả hai trường hợp.',
+    unlockBody: 'Bạn vẫn xem được mọi thứ và gửi được Báo an toàn.',
     unlockCta: 'Mở khóa thay đổi',
     unlockToChange: 'Mở khóa thay đổi trước đã',
     refresh: 'Tải lại',
@@ -523,9 +522,6 @@ export default {
     tileDeltaDown: '↓ {{percent}}% so với trung bình 7 ngày',
     tileBlocked: 'Lượt bị chặn',
     tileBlockedMeta: 'Lượt mở ứng dụng bị chặn, kể từ khi cài',
-    tileSites: 'Trang web bị chặn',
-    tileCategoriesHit: '{{count}} danh mục bị chặn',
-    tileNothingBlocked: 'Chưa chặn gì',
     tileAttention: 'Cần chú ý',
     tileOpenItems: 'Các mục cần xử lý bên dưới',
     tileAllClear: 'Mọi thứ ổn',
@@ -581,8 +577,6 @@ export default {
     blockingLabel: 'Chặn',
     appsBlocked: 'Ứng dụng bị chặn',
     categories: 'Danh mục',
-    perAppHint:
-      'Giới hạn ứng dụng chạy độc lập với danh sách chặn — “30 phút TikTok” là một quyết định khác với “không TikTok”.',
     limitsMax: 'Mỗi thiết bị giới hạn được nhiều nhất {{max}} ứng dụng.',
     perDay: '{{value}}/ngày',
     webActivityTitle: 'Hoạt động web',
@@ -611,7 +605,6 @@ export default {
     filterRefusedSub: '{{count}} lượt truy cập bị chặn, 7 ngày gần nhất',
     filterHintIos:
       'iPhone hoặc iPad này chỉ lọc bằng cơ chế chặn nội dung người lớn của Apple. Hãy cập nhật KidGate trên máy và cho phép VPN của KidGate để chặn theo danh mục.',
-    filterHintAndroid: 'Các danh mục được chặn bằng bộ lọc DNS ngay trên máy.',
 
     locationTitle: 'Vị trí',
     locationUpdated: 'Đã cập nhật {{when}}',
@@ -675,7 +668,7 @@ export default {
     webFilterCatsTitle: 'Danh mục bị chặn',
     webFilterCatsSub: 'Các loại nội dung bị chặn',
     dnsHint:
-      'Khi bộ lọc đang chạy, mọi máy chủ DNS mã hóa đều bị chặn — nếu vẫn cho phép truy cập chúng, trình duyệt sẽ đi vòng qua toàn bộ các danh mục còn lại.',
+      'Khi bộ lọc đang chạy, DNS mã hóa luôn bị chặn để trình duyệt không đi vòng qua bộ lọc được.',
     starChartTitle: 'Bảng tích sao',
     starChartSub: 'Số sao mỗi con kiếm được trong tuần này',
     starChartEmpty: 'Thêm hồ sơ trẻ thứ hai trong ứng dụng để bắt đầu Bảng tích sao.',
@@ -717,7 +710,7 @@ export default {
 
     emptyBody:
       'Với Premium, báo cáo về vào sáng thứ Hai hằng tuần, tính bảy ngày trước đó. Bạn cũng có thể viết ngay báo cáo tuần này trong ứng dụng KidGate trên điện thoại.',
-    loadFailed: 'Không mở được báo cáo. Tải lại trang để thử lại.',
+    loadFailed: 'Không mở được báo cáo.',
     retryLoad: 'Thử lại',
     existed: 'Tuần này đã có báo cáo — đây rồi.',
   },
@@ -782,7 +775,7 @@ export default {
 
     faq9Q: 'Chặn ứng dụng cụ thể thế nào?',
     faq9A:
-      'Việc chọn ứng dụng diễn ra trên thiết bị của con: mở *KidGate → Cài đặt*, chạm *Mở khóa bằng mã PIN phụ huynh*, mở *Chặn ứng dụng*, chọn ứng dụng rồi lưu. Sau đó, trên thiết bị phụ huynh, mở màn hình *Chặn ứng dụng* của thiết bị đó rồi gạt công tắc *Bật chặn ứng dụng*. Trên iOS, Apple có thể ẩn tên ứng dụng chính xác khỏi thiết bị phụ huynh — đó là giới hạn của nền tảng.',
+      'Trên thiết bị phụ huynh, mở *Ứng dụng* của con, chọn *Danh sách ứng dụng*, chạm vào một ứng dụng rồi chọn *Chặn*. Trên iPhone, ứng dụng được chọn ngay trên iPhone: mở *KidGate → Cài đặt*, chạm *Mở khóa bằng mã PIN phụ huynh*, mở *Chặn ứng dụng*, chọn ứng dụng rồi lưu, sau đó bật *Bật chặn ứng dụng* trên thiết bị phụ huynh. Thiết bị của trẻ đang kết nối sẽ nhận mỗi thay đổi trong vòng 1 phút. Trên iOS, Apple có thể ẩn tên ứng dụng chính xác khỏi thiết bị phụ huynh.',
 
     faq10Q: 'Vì sao vị trí của con không cập nhật?',
     faq10A:

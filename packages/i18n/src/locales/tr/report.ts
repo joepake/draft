@@ -2,6 +2,7 @@ export const report = {
   title: 'Haftalık rapor',
   subtitle: 'KidGate’in bu hafta fark ettikleri.',
   weekOf: '{{week}}. hafta',
+  weekOfYear: '{{week}}. hafta - {{year}}',
   range: '{{from}} – {{to}}',
   triggerScheduled: 'Pazartesi günü gönderildi',
   triggerManual: 'Siz oluşturdunuz',
@@ -33,7 +34,8 @@ export const report = {
   findingLimitHit: '{{limit}} olan Günlük sınıra {{count}} gün ulaşıldı.',
   findingBlockedApps:
     'Engellenen {{count}} uygulama açılışı; geçen hafta {{previous}} idi.',
-  findingBlockedWeb: '{{count}} site filtrelendi; geçen hafta {{previous}} idi.',
+  findingBlockedWeb:
+    'Engellenen {{count}} site ziyareti; geçen hafta {{previous}} idi.',
   findingQuietWeek:
     'Sakin bir hafta — toplam {{total}} ve ilginizi gerektiren hiçbir şey olmadı.',
 
@@ -46,7 +48,8 @@ export const report = {
     'Bu hafta geç saatte kullanım yok; geçen hafta {{count}} geceydi.',
   findingBlockedAppsDown:
     'Engellenen {{count}} uygulama açılışı, geçen hafta {{previous}}.',
-  findingBlockedWebDown: 'Filtrelenen {{count}} site, geçen hafta {{previous}}.',
+  findingBlockedWebDown:
+    'Engellenen {{count}} site ziyareti, geçen hafta {{previous}}.',
   findingLearningTime: 'Eğitim uygulamalarında {{duration}}, çoğu {{app}}.',
   findingTasksDone: '{{count}} görev tamamlandı, {{bonus}} kazanıldı.',
   findingAskedFirst: 'Kuralları aşmak yerine {{count}} istek gönderildi.',
@@ -91,7 +94,7 @@ export const report = {
     'Son iki haftada ekran süresi kaydedilmedi, bu yüzden henüz raporlanacak bir şey yok. Çevrimdışı bir cihaz hiçbir şey bildirmez ve bu, sakin bir haftayla aynı şey değildir.',
   rateLimited: 'Henüz başka bir rapor yazılamıyor. Bir dakika sonra tekrar deneyin.',
   loadFailedTitle: 'Raporlar yüklenemedi',
-  loadFailed: 'Raporlar açılamadı. Yeniden denemek için aşağı çekin.',
+  loadFailed: 'Raporlar açılamadı.',
   failed: 'Rapor yazılamadı. Birazdan tekrar deneyin.',
 
   historyTitle: 'Önceki haftalar',

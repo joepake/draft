@@ -4,7 +4,6 @@ export const placeAlerts = {
   mergedFromDevices:
     'Combined from each device’s existing places. Saving applies this one list to every child device.',
   fallbackDeviceName: 'Child device',
-  statusReady: 'Location ready',
   statusNeedLocation: 'Waiting for the child device location',
   tabPlaces: 'Places',
   tabActivity: 'Activity',
@@ -22,8 +21,6 @@ export const placeAlerts = {
   editPlaceAccessibility: 'Edit {{name}}',
   radiusLabel: 'Alert radius',
   radiusValue: '{{meters}} m',
-  radiusHint:
-    'How close the device must be for this place to count. A radius smaller than the device’s own position error does not make alerts more precise — arrivals and departures may go unreported.',
   radiusAccuracyHint: 'This device reports its position to about ±{{accuracy}} m here.',
   radiusBelowAccuracy:
     'This device is only accurate to about ±{{accuracy}} m here. Use {{minimum}} m or more, or arrivals and departures here may not be reported.',
@@ -43,7 +40,6 @@ export const placeAlerts = {
   emptyEventsTitle: 'No place activity yet',
   emptyEventsSubtitle:
     'When this device enters or leaves a saved place, events appear here.',
-  emptyPlaces: 'Pick a spot on the map, name it, then save. Up to {{max}} places.',
   noLocationToast: 'Wait for a location update from the child device first.',
   maxPlacesToast: 'You can save up to {{max}} places.',
   nameRequiredToast: 'Enter a place name.',

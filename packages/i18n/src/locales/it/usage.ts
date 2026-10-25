@@ -2,12 +2,10 @@ export const usage = {
   title: 'Report di utilizzo',
   fallbackDeviceName: 'Dispositivo del bambino',
   sectionToday: 'Oggi',
-  percentOfLimit: '{{percent}}% del limite',
   reportedAt: 'Aggiornato {{time}}',
   statUsedLabel: 'Usato',
   statLeftLabel: 'Rimanente',
   statLimitLabel: 'Limite',
-  limitOff: 'Disattivato',
   insightDailyLimitReached: 'Limite giornaliero raggiunto',
   insightNearDailyLimit: 'Vicino al limite giornaliero',
   insightNoDailyLimit: 'Nessun Limite giornaliero impostato',
@@ -35,7 +33,7 @@ export const usage = {
   dailyLimitReached: 'Limite giornaliero raggiunto',
   minutesLeftToday: 'Oggi restano {{remaining}}',
   minutesUsedTodayShort: '{{used}} di utilizzo oggi',
-  noUsageDataYet: 'Nessun dato di utilizzo ancora disponibile',
+  noUsageDataYet: 'Ancora nessun dato di utilizzo',
   usageToday: 'Utilizzo di oggi',
   report: 'Report',
   setDailyLimitToTrack:
@@ -50,24 +48,21 @@ export const usage = {
   syncNoteTv:
     'Questa TV si collega solo periodicamente, quindi il tempo di schermo può richiedere fino a un’ora per comparire in questa schermata — più a lungo senza connessione a Internet.',
   sectionLast30Days: 'Ultimi 30 giorni',
-  comparePeriodTotal: 'Totale 30 giorni',
+  comparePeriodTotal: 'Totale',
   compareDayAvg: 'Media giornaliera',
-  compareVsYesterday: 'rispetto a ieri',
+  compareVsYesterdaySameTime: '{{value}} rispetto a ieri alla stessa ora',
   dayTodayShort: 'Oggi',
   chartEmpty: 'Il grafico di utilizzo non è disponibile al momento.',
   chartNoDataYet:
     'Le barre si riempiono man mano che il dispositivo del bambino sincronizza l’utilizzo giornaliero. La barra di oggi si aggiorna in base ai minuti in tempo reale.',
   chartDayNone: 'Nessun utilizzo',
   bonusMinutesChip: '+{{minutes}} min bonus',
-  dailyLimitGuide: 'Limite giornaliero {{duration}}',
-  sectionTopApps: 'App più usate',
   topAppsHint:
     'Le app più usate oggi sul dispositivo del bambino. I dati si accumulano man mano che Tempo di utilizzo / Accesso ai dati di utilizzo si sincronizza.',
   topAppsExcludedNote:
     'Il salvaschermo, la schermata Home e la schermata di KidGate non contano come tempo di utilizzo. Quando il dispositivo è acceso ma nessuno lo sta usando, quei minuti vengono registrati come “Non in uso”.',
   topAppsAiNote:
     'Alcuni tipi sono stati dedotti dal nome dell’app invece di essere riconosciuti, quindi alcuni potrebbero essere sbagliati.',
-  errorTitle: 'Impossibile caricare l’utilizzo',
   errorDescription: 'Controlla la connessione e riprova.',
   tryAgain: 'Riprova',
   // Shown only when the rating is known — it is 0 for much of the long
@@ -84,9 +79,10 @@ export const usage = {
   protectionBlockedApps: 'Aperture di app bloccate',
   protectionWebBlocked: 'Siti web bloccati',
   protectionTamper: 'Avvisi di protezione',
-  sectionTimeline: 'Quando è stato usato',
+  sectionTimeline: 'Quando lo schermo era acceso',
   timelineUsed: 'In uso',
   timelineIdle: 'Non in uso',
+  idleRow: 'Schermo acceso, non in uso',
   timelineUnmeasured: 'Non misurato',
   timelineUnmeasuredHint:
     'KidGate non era in esecuzione sul dispositivo, oppure il dispositivo era sospeso. Quei minuti non rientrano nemmeno nel totale.',

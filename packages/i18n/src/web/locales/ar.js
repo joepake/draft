@@ -192,7 +192,7 @@ export default {
     step2Text: 'ثبّت KidGate على هاتف طفلك واربطه بمسح رمز QR. أقل من دقيقة.',
     step3Title: 'ضع قواعدك',
     step3Text:
-      'اختر الحد اليومي وساعات الحظر، وفعّل الموقع وحظر التطبيقات من هاتفك. أما التطبيقات المراد حظرها فتُختار مرة واحدة على جهاز طفلك، برمز PIN الوالدين.',
+      'اختر الحد اليومي وساعات الحظر، وفعّل الموقع و«التطبيقات المحظورة» من هاتفك. أما التطبيقات المراد حظرها فتُختار مرة واحدة على جهاز طفلك، برمز PIN الوالدين.',
 
     whyEyebrow: 'لماذا KidGate',
     whyTitle: 'بُني للثقة لا للمراقبة',
@@ -253,8 +253,8 @@ export default {
     faqMore: 'أسئلة أخرى؟ زر صفحة الدعم',
 
     ctaTitle: 'ابدأ حماية عائلتك اليوم',
-    ctaSub: 'تجربة مجانية 7 أيام بوصول كامل.',
-    ctaNote: 'ألغِ متى شئت من App Store أو Google Play.',
+    ctaSub: 'تجربة مجانية 7 أيام بوصول كامل. لا حاجة إلى بطاقة.',
+    ctaNote: 'عند انتهاء التجربة تستمر قواعدك في العمل على الخطة المجانية.',
   },
 
   login: {
@@ -487,8 +487,7 @@ export default {
     save: 'حفظ',
 
     unlockTitle: 'التغييرات مقفلة.',
-    unlockBody:
-      'الاطّلاع متاح فورًا. لقفل جهاز أو تغيير الحدود أو الموافقة على الطلبات، افتح هذا المتصفّح برمز PIN الوالدين — أو وافق عليه بمسح رمز QR بتطبيق KidGate. أمّا طلبات الاطمئنان فتعمل في الحالتين.',
+    unlockBody: 'ما زال بإمكانك الاطّلاع على كل شيء وإرسال طلبات الاطمئنان.',
     unlockCta: 'فتح التغييرات',
     unlockToChange: 'افتح التغييرات أولًا',
     refresh: 'تحديث',
@@ -528,13 +527,6 @@ export default {
     tileDeltaDown: '↓ {{percent}}٪ مقارنةً بمتوسط 7 أيام',
     tileBlocked: 'المحاولات المحظورة',
     tileBlockedMeta: 'تطبيقات أُوقفت منذ التثبيت',
-    tileSites: 'مواقع مُصفّاة',
-    tileCategoriesHit_one: 'فئة واحدة متأثرة',
-    tileCategoriesHit_two: 'فئتان متأثرتان',
-    tileCategoriesHit_few: '{{count}} فئات متأثرة',
-    tileCategoriesHit_many: '{{count}} فئة متأثرة',
-    tileCategoriesHit_other: '{{count}} فئة متأثرة',
-    tileNothingBlocked: 'لم يُحظر شيء بعد',
     tileAttention: 'يحتاج انتباهًا',
     tileOpenItems: 'عناصر مفتوحة بالأسفل',
     tileAllClear: 'كل شيء على ما يرام',
@@ -596,8 +588,6 @@ export default {
     blockingLabel: 'الحظر',
     appsBlocked: 'تطبيقات محظورة',
     categories: 'الفئات',
-    perAppHint:
-      'تعمل حدود كل تطبيق باستقلال عن قائمة الحظر — «30 دقيقة من TikTok» قرار مختلف عن «لا TikTok».',
     limitsMax: 'يحتفظ الجهاز بحدود لـ {{max}} تطبيقًا كحدّ أقصى.',
     perDay: '{{value}}/يوم',
     webActivityTitle: 'نشاط الويب',
@@ -625,7 +615,7 @@ export default {
     colVideo: 'فيديو',
     colChannel: 'القناة',
     colViews: 'المشاهدات',
-    filterRefusedTitle: 'ما رفضه المرشِّح',
+    filterRefusedTitle: 'ما حظره المرشِّح',
     filterRefusedSub_one: 'استعلام محظور واحد، آخر 7 أيام',
     filterRefusedSub_two: 'استعلامان محظوران، آخر 7 أيام',
     filterRefusedSub_few: '{{count}} استعلامات محظورة، آخر 7 أيام',
@@ -633,7 +623,6 @@ export default {
     filterRefusedSub_other: '{{count}} استعلام محظور، آخر 7 أيام',
     filterHintIos:
       'يعتمد جهاز iPhone أو iPad هذا على ضوابط Apple لمحتوى البالغين فقط. لحظر المواقع حسب الفئة، حدِّث KidGate عليه واسمح باتصال VPN من KidGate.',
-    filterHintAndroid: 'تُطبَّق الفئات عبر مرشِّح DNS داخل الجهاز.',
 
     locationTitle: 'الموقع',
     locationUpdated: 'حُدّث {{when}}',
@@ -692,11 +681,11 @@ export default {
     rowAppBlocking: 'التطبيقات المحظورة',
     rowAppBlockingDesc: '{{apps}} · {{categories}}',
     rowWebFilter: 'فلتر الويب',
-    rowWebFilterDesc_one: 'فئة واحدة مرفوضة',
-    rowWebFilterDesc_two: 'فئتان مرفوضتان',
-    rowWebFilterDesc_few: '{{count}} فئات مرفوضة',
-    rowWebFilterDesc_many: '{{count}} فئة مرفوضة',
-    rowWebFilterDesc_other: '{{count}} فئة مرفوضة',
+    rowWebFilterDesc_one: 'فئة واحدة محظورة',
+    rowWebFilterDesc_two: 'فئتان محظورتان',
+    rowWebFilterDesc_few: '{{count}} فئات محظورة',
+    rowWebFilterDesc_many: '{{count}} فئة محظورة',
+    rowWebFilterDesc_other: '{{count}} فئة محظورة',
     rowNotSupported: 'غير مدعوم على هذا الجهاز',
     rowLocation: 'مشاركة الموقع',
     rowLocationDesc: 'آخر تحديث {{when}}',
@@ -708,7 +697,7 @@ export default {
     webFilterCatsTitle: 'فئات فلتر الويب',
     webFilterCatsSub: 'أنواع المحتوى المحظورة',
     dnsHint:
-      'تُرفض دائمًا خوادم DNS المشفّرة أثناء عمل المرشِّح — فتركها متاحة هو ما يسمح للمتصفح بالالتفاف على كل الفئات الأخرى.',
+      'يُحظر DNS المشفّر دائمًا أثناء عمل المرشِّح، لذا لا يستطيع المتصفح الالتفاف عليه.',
     starChartTitle: 'لوحة النجوم',
     starChartSub: 'النجوم المكتسبة هذا الأسبوع لكل طفل',
     starChartEmpty: 'أضف طفلاً ثانياً في التطبيق لبدء لوحة النجوم.',
@@ -748,7 +737,7 @@ export default {
     shareFailed: 'تعذّر الحفظ من هذا المتصفح. انسخ الملخّص بدلًا من ذلك.',
     emptyBody:
       'مع Premium يصل تقرير كل صباح اثنين، ويغطي الأيام السبعة التي سبقته. ويمكنك أيضًا كتابة تقرير هذا الأسبوع من تطبيق KidGate على هاتفك.',
-    loadFailed: 'تعذّر فتح التقارير. أعد تحميل الصفحة للمحاولة مرة أخرى.',
+    loadFailed: 'تعذّر فتح التقارير.',
     retryLoad: 'أعد المحاولة',
     existed: 'كان لهذا الأسبوع تقرير بالفعل — ها هو.',
   },
@@ -814,7 +803,7 @@ export default {
 
     faq9Q: 'كيف أحظر تطبيقات محددة؟',
     faq9A:
-      'يتم اختيار التطبيقات على جهاز الطفل: افتح *KidGate ← الإعدادات*، واضغط *إلغاء القفل برمز PIN الوالدين*، وافتح *التطبيقات المحظورة*، واختر التطبيقات ثم احفظ. بعدها، من جهاز ولي الأمر، افتح شاشة *التطبيقات المحظورة* للجهاز وفعّل *تفعيل حظر التطبيقات*. على iOS قد تخفي Apple أسماء التطبيقات الدقيقة عن جهاز ولي الأمر — وهذا قيد من المنصة.',
+      'على جهاز ولي الأمر، افتح *التطبيقات* الخاصة بطفلك ثم *التطبيقات المثبّتة*، واضغط تطبيقًا واختر *حظر*. على iPhone يتم اختيار التطبيقات على iPhone نفسه: افتح *KidGate ← الإعدادات*، واضغط *إلغاء القفل برمز PIN الوالدين*، وافتح *التطبيقات المحظورة*، واختر التطبيقات ثم احفظ، ثم فعّل *تفعيل التطبيقات المحظورة* على جهاز ولي الأمر. يتلقى جهاز الطفل المتصل كل تغيير خلال دقيقة. على iOS قد تخفي Apple أسماء التطبيقات الدقيقة عن جهاز ولي الأمر.',
 
     faq10Q: 'لماذا لا يتحدث موقع طفلي؟',
     faq10A:

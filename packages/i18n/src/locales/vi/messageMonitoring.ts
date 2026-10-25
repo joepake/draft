@@ -116,11 +116,10 @@ export const messageMonitoring = {
     revokedTitle: 'Việc kiểm tra tin nhắn đã dừng',
     revokedBody:
       'Android đã tắt một quyền KidGate cần, nên tin nhắn không còn được kiểm tra. Hãy mở KidGate trên thiết bị của con và cấp lại quyền.',
-    offTitle: 'Tính năng Cảnh báo tin nhắn chưa được bật',
-    offBody:
-      'Thiết bị của con chưa kiểm tra gì cả, nên sẽ không có cảnh báo nào xuất hiện ở đây. Hãy mở KidGate trên thiết bị của con để thiết lập.',
+    offTitle: 'Cảnh báo tin nhắn chưa bật',
+    offBody: 'Hãy mở KidGate trên thiết bị của con để thiết lập.',
     switchedOffBody:
-      'Thiết bị của con chưa kiểm tra gì cả, nên sẽ không có cảnh báo nào xuất hiện ở đây. Hãy bật “Quét tin nhắn con nhận” trong phần cài đặt ở màn hình này.',
+      'Hãy bật “Quét tin nhắn con nhận” trong phần cài đặt ở màn hình này.',
     pendingTitle: 'Đang chờ thiết bị của con áp dụng',
     pendingBody:
       'Bạn đã bật mục này. Thiết bị của con sẽ nhận thay đổi ở lần kết nối tiếp theo, thường trong vài phút — nhanh hơn nếu máy đang mở. Bạn không cần làm gì thêm.',

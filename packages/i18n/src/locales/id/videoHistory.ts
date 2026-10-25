@@ -3,7 +3,9 @@ export const videoHistory = {
   fallbackDeviceName: 'Perangkat anak',
   toggleLabel: 'Rekam video yang ditonton',
   toggleHint:
-    'Video yang ditonton di aplikasi YouTube pada ponsel Android dan TV, serta di Chrome dengan ekstensi KidGate. Di TV, Shorts tidak dicantumkan karena aplikasi TV tidak mengenalinya sebagai Shorts.',
+    'YouTube di ponsel Android dan TV, serta di Chrome dengan ekstensi KidGate.',
+  tvShortsInfo:
+    'Di TV, Shorts tidak dicantumkan karena aplikasi YouTube TV tidak mengenalinya sebagai Shorts.',
   toggleFailed: 'Tidak dapat memperbarui riwayat video. Coba lagi.',
   unsupportedNote:
     'Perangkat ini tidak dapat melaporkan video yang ditonton. Fitur ini berfungsi di Android, Android TV, dan Chrome.',
@@ -23,8 +25,6 @@ export const videoHistory = {
   extensionStepEnable: 'Nyalakan “Rekam video yang ditonton” untuk perangkat itu',
   emptyTitle: 'Belum ada yang ditonton',
   emptyBody: 'Video muncul di sini saat anak Anda menonton dengan KidGate berjalan.',
-  emptyBodyOff:
-    'Aktifkan perekaman di atas untuk mulai membuat daftar video yang ditonton.',
   viewsMeta_one: '{{count}} kali',
   viewsMeta: '{{count}} kali',
   dayToday: 'Hari ini',

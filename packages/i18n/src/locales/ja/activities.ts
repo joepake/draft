@@ -12,7 +12,6 @@ export const activities = {
   fallbackDeviceName: 'デバイス',
   fallbackChildName: 'お子さま',
   liveBadge: 'ライブ',
-  errorTitle: 'アクティビティを読み込めませんでした',
   tryAgain: '再試行',
 
   emptyTitleAll: 'まだアクティビティはありません',
@@ -111,7 +110,7 @@ export const activities = {
 
   tamperAccessibilityTitle: 'ユーザー補助が無効になりました',
   tamperAccessibilityBody:
-    '再度有効になるまで、アプリのブロックや制限機能が正しく動作しない可能性があります。',
+    '再度有効になるまで、「ブロックされたアプリ」や制限機能が正しく動作しない可能性があります。',
   tamperUsageAccessTitle: 'アプリ利用状況へのアクセスが無効になりました',
   tamperUsageAccessBody:
     'お子さまのデバイスでKidGateがアプリの利用状況を再び読み取れるようになるまで、アプリの利用制限や休止時間が機能しない場合があります。',

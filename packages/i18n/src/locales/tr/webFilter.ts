@@ -213,6 +213,7 @@ export const webFilter = {
   categoriesOnCount: '{{total}} kategoriden {{on}} tanesi açık',
   askToOpen: 'Ailene sor',
   askToOpenSubtitle: 'İzin verirlerse bu site açılır.',
+  askToOpenHomeSubtitle: 'Engellenen bir siteyi açmaları için ailene sor.',
   askToOpenDomainLabel: 'Hangi site?',
   askToOpenBlockedLabel: 'Son engellenenler',
   askToOpenPending: 'Zaten bir site istedin. Cevabı bekle.',

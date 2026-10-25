@@ -156,6 +156,15 @@ export function useFamilyData(user, selectedDeviceId, watchVideos = false) {
 
   const [activityRows, setActivityRows] = useState([]);
   /*
+   * Message Alerts' own rows, asked for by kind (`subscribeOfTypes`). The
+   * device's newest fifty rows of every kind, filtered on the card, lost a
+   * busy device's alerts; the phone's screen left that window on 2026-10-25.
+   * Two queries at the card's two caps, so the checked rows — the list that
+   * grows fastest when a keyword misfires — cannot crowd the alerts out.
+   */
+  const [messageAlertRows, setMessageAlertRows] = useState([]);
+  const [messageCheckedRows, setMessageCheckedRows] = useState([]);
+  /*
    * The same collection, unscoped: the Activity section is about the family,
    * the way the phone's Activities tab is, so it cannot read the per-device
    * rows below — those are filtered to whichever device the Family section
@@ -472,6 +481,22 @@ export function useFamilyData(user, selectedDeviceId, watchVideos = false) {
         soft('activities'),
         selectedDeviceId,
       ),
+      activityRepository.subscribeOfTypes(
+        familyId,
+        ['message_alert'],
+        { deviceId: selectedDeviceId },
+        setMessageAlertRows,
+        soft('messageAlerts'),
+        30,
+      ),
+      activityRepository.subscribeOfTypes(
+        familyId,
+        ['message_checked'],
+        { deviceId: selectedDeviceId },
+        setMessageCheckedRows,
+        soft('messageChecked'),
+        10,
+      ),
       timeRequestRepository.subscribePending(
         familyId,
         setTimeRequestRows,
@@ -734,6 +759,11 @@ export function useFamilyData(user, selectedDeviceId, watchVideos = false) {
           user && familyId && user.uid === familyId ? user.displayName : null,
       },
       activities: forDevice(selectedDeviceId, activityRows),
+      /** Message Alerts' rows, both kinds in one list; the card splits them. */
+      messageAlerts: forDevice(selectedDeviceId, [
+        ...messageAlertRows,
+        ...messageCheckedRows,
+      ]),
       /** Every device's rows, newest first — what the Activity section reads. */
       familyActivities: familyActivityRows,
       /** The family-wide counts the Family screen's summary row folds. */
@@ -790,6 +820,8 @@ export function useFamilyData(user, selectedDeviceId, watchVideos = false) {
     user,
     selectedDeviceId,
     activityRows,
+    messageAlertRows,
+    messageCheckedRows,
     familyActivityRows,
     familyTimeRequests,
     familyCheckIns,

@@ -1,6 +1,6 @@
 export const auth = {
-  welcomeBack: 'مرحبًا بعودتك',
-  loginSubtitle: 'سجّل الدخول لإدارة أجهزة أطفالك وحمايتها.',
+  welcomeBack: 'تسجيل الدخول إلى KidGate',
+  loginSubtitle: 'إدارة أجهزة أطفالك وحمايتها.',
   emailSignInTitle: 'تسجيل الدخول بالبريد الإلكتروني',
   emailSignInSubtitle: 'استخدم بريد الوالدين وكلمة المرور.',
   createAccountTitle: 'إنشاء حساب للوالدين',

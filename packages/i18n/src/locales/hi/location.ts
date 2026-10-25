@@ -78,6 +78,11 @@ export const location = {
   childNoneOnline: 'कोई डिवाइस ऑनलाइन नहीं',
   childPickCarriedA11y:
     '{{deviceName}} को वह डिवाइस चिह्नित करें जो {{childName}} साथ रखता है',
+  carriedFrom: '{{deviceName}} से स्थान',
+  changeCarried: 'डिवाइस बदलें',
+  carriedSuggestion: '{{deviceName}} ने {{time}} स्थान भेजा।',
+  useCarried: '{{deviceName}} इस्तेमाल करें',
+  carriedBadge: 'साथ रहता है',
   stayRange: '{{from}} – {{to}}',
   wizardStepAllow:
     '“अनुमति दें” चुनें, फिर हमेशा चुनें ताकि बैकग्राउंड में भी अपडेट आते रहें।',

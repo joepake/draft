@@ -241,20 +241,25 @@ export function lastActivityInfoKey(
  * connected 7 hours ago" for the minutes the console's request was out — the
  * doubt is right not to paint it red, and wrong to call it reachable before it
  * has answered. Muted on every surface, and not counted online.
+ *
+ * **Use is read before the doubt** (2026-10-24). A Windows PC switched off for
+ * a day read "Checking" while one idle for an hour read "Offline": on a device
+ * that follows use, the answer can only turn the chip Online if someone is
+ * using it, and nobody has. Checking stays for the iPhone, and for recent use
+ * whose check-in is late.
  */
 export function getShownDeviceStatus(device: Device, nowMs: number): ShownDeviceStatus {
   const status = getChipDeviceStatus(getEffectiveDeviceStatus(device, nowMs), device);
   if (status !== 'online') {
     return status;
   }
-  if (onlineOnDoubtAlone(device, nowMs)) {
-    return 'checking';
+  if (reportsUse(device)) {
+    const usedMs = device.lastUsedAt ? Date.parse(device.lastUsedAt) : NaN;
+    if (!(nowMs - usedMs <= IN_USE_WINDOW_MS)) {
+      return 'offline';
+    }
   }
-  if (!reportsUse(device)) {
-    return status;
-  }
-  const usedMs = device.lastUsedAt ? Date.parse(device.lastUsedAt) : NaN;
-  return nowMs - usedMs <= IN_USE_WINDOW_MS ? 'online' : 'offline';
+  return onlineOnDoubtAlone(device, nowMs) ? 'checking' : 'online';
 }
 
 /**

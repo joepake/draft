@@ -1,6 +1,5 @@
 export const sos = {
   title: 'SOSアラート',
-  subtitle: '{{deviceName}}・送信された写真はこの下に表示されます',
   fallbackDeviceName: '子どものデバイス',
   fallbackChildName: 'お子さま',
   locationUnavailable: '位置情報なし',
@@ -10,7 +9,6 @@ export const sos = {
   photoTapHint: 'タップして写真全体を表示',
   photoLoadFailed:
     'この写真を読み込めませんでした。接続を確認してもう一度お試しください。',
-  noPhoto: 'このアラートに写真は添付されていません。',
   audioLabel: '録音',
   audioPlayAccessibility: 'SOSの録音を再生',
   audioStopAccessibility: 'SOSの録音の再生を停止',
@@ -18,7 +16,6 @@ export const sos = {
   acknowledgedAt: '{{time}}に確認済み',
   openInMaps: 'マップで開く',
   acknowledgeButton: '対応します',
-  acknowledgingButton: '保存中…',
   toastAcknowledgeFailed:
     '確認できませんでした。しばらくしてからもう一度お試しください。',
   emptyTitle: 'まだSOSアラートはありません',

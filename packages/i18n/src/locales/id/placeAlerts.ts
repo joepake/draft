@@ -4,7 +4,6 @@ export const placeAlerts = {
   mergedFromDevices:
     'Digabung dari tempat yang sudah ada di tiap perangkat. Menyimpan menerapkan satu daftar ini ke semua perangkat anak.',
   fallbackDeviceName: 'Perangkat anak',
-  statusReady: 'Lokasi siap',
   statusNeedLocation: 'Menunggu lokasi perangkat anak',
   tabPlaces: 'Lokasi',
   tabActivity: 'Aktivitas',
@@ -22,8 +21,6 @@ export const placeAlerts = {
   editPlaceAccessibility: 'Edit {{name}}',
   radiusLabel: 'Radius peringatan',
   radiusValue: '{{meters}} m',
-  radiusHint:
-    'Seberapa dekat perangkat harus berada agar tempat ini dihitung. Radius yang lebih kecil dari galat posisi perangkat tidak membuat pemberitahuan lebih tepat — kedatangan dan kepergian bisa tidak dilaporkan.',
   radiusAccuracyHint:
     'Di sini perangkat ini melaporkan posisinya dengan ketelitian sekitar ±{{accuracy}} m.',
   radiusBelowAccuracy:
@@ -45,7 +42,6 @@ export const placeAlerts = {
   emptyEventsTitle: 'Belum ada aktivitas tempat',
   emptyEventsSubtitle:
     'Saat perangkat ini masuk atau keluar dari tempat yang disimpan, kejadiannya akan muncul di sini.',
-  emptyPlaces: 'Pilih titik di peta, beri nama, lalu simpan. Hingga {{max}} tempat.',
   noLocationToast:
     'Silakan tunggu pembaruan lokasi dari perangkat anak terlebih dahulu.',
   maxPlacesToast: 'Anda dapat menyimpan hingga {{max}} tempat.',

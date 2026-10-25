@@ -11,7 +11,6 @@ export const activities = {
   fallbackDeviceName: 'الجهاز',
   fallbackChildName: 'طفلك',
   liveBadge: 'مباشر',
-  errorTitle: 'تعذر تحميل النشاط',
   tryAgain: 'إعادة المحاولة',
 
   emptyTitleAll: 'لا توجد أنشطة حتى الآن',
@@ -108,7 +107,7 @@ export const activities = {
 
   tamperAccessibilityTitle: 'تم تعطيل إمكانية الوصول',
   tamperAccessibilityBody:
-    'قد لا تعمل ميزة حظر التطبيقات وفرض القيود بشكل صحيح حتى تتم إعادة تفعيل إمكانية الوصول.',
+    'قد لا تعمل ميزة «التطبيقات المحظورة» وفرض القيود بشكل صحيح حتى تتم إعادة تفعيل إمكانية الوصول.',
   tamperUsageAccessTitle: 'تم إيقاف الوصول إلى استخدام التطبيقات',
   tamperUsageAccessBody:
     'قد تتوقف حدود التطبيقات وساعات الحظر حتى يتمكن KidGate من قراءة استخدام التطبيقات على جهاز الطفل مرة أخرى.',

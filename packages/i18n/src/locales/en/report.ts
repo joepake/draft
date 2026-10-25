@@ -20,6 +20,7 @@ export const report = {
   title: 'Weekly report',
   subtitle: 'What KidGate noticed about the week.',
   weekOf: 'Week {{week}}',
+  weekOfYear: 'Week {{week}} - {{year}}',
   range: '{{from}} – {{to}}',
   triggerScheduled: 'Sent Monday',
   triggerManual: 'Created by you',
@@ -53,7 +54,7 @@ export const report = {
   findingLimitHit_one: 'The Daily Limit of {{limit}} was reached on one day.',
   findingLimitHit_other: 'The Daily Limit of {{limit}} was reached on {{count}} days.',
   findingBlockedApps: '{{count}} blocked app openings, against {{previous}} last week.',
-  findingBlockedWeb: '{{count}} sites filtered, against {{previous}} last week.',
+  findingBlockedWeb: '{{count}} blocked site visits, against {{previous}} last week.',
   findingQuietWeek: 'A quiet week — {{total}} in all, and nothing that needed you.',
 
   /*
@@ -73,7 +74,8 @@ export const report = {
   findingLateNightGone_other: 'No late nights this week, after {{count}} last week.',
   findingBlockedAppsDown:
     '{{count}} blocked app openings, down from {{previous}} last week.',
-  findingBlockedWebDown: '{{count}} sites filtered, down from {{previous}} last week.',
+  findingBlockedWebDown:
+    '{{count}} blocked site visits, down from {{previous}} last week.',
   findingLearningTime: '{{duration}} in education apps, most of it in {{app}}.',
   findingTasksDone_one: 'One task finished, earning {{bonus}}.',
   findingTasksDone_other: '{{count}} tasks finished, earning {{bonus}}.',
@@ -138,7 +140,7 @@ export const report = {
     'No screen time was recorded over the last two weeks, so there is nothing to report yet. A device that is offline reports nothing, which is not the same as a quiet week.',
   rateLimited: 'Unable to write another report yet. Try again in a minute.',
   loadFailedTitle: 'Reports did not load',
-  loadFailed: 'Unable to open your reports. Pull down to try again.',
+  loadFailed: 'Unable to open your reports.',
   failed: 'Unable to write the report. Try again in a moment.',
 
   historyTitle: 'Earlier weeks',

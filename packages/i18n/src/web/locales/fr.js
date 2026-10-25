@@ -185,7 +185,7 @@ export default {
       'Installez KidGate sur le téléphone de votre enfant et connectez-le en scannant un QR code. Moins d’une minute.',
     step3Title: 'Définissez vos règles',
     step3Text:
-      'Choisissez une Limite quotidienne et des Heures bloquées, puis activez la localisation et le blocage des applications depuis votre propre téléphone. Les applis à bloquer se choisissent une seule fois sur l’appareil de votre enfant, avec votre code PIN parent.',
+      'Choisissez une Limite quotidienne et des Heures bloquées, puis activez la localisation et « Applications bloquées » depuis votre propre téléphone. Les applis à bloquer se choisissent une seule fois sur l’appareil de votre enfant, avec votre code PIN parent.',
 
     whyEyebrow: 'Pourquoi KidGate',
     whyTitle: 'Conçu pour la confiance, pas pour la surveillance',
@@ -247,8 +247,10 @@ export default {
     faqMore: 'D’autres questions ? Voir l’assistance',
 
     ctaTitle: 'Commencez à protéger votre famille dès aujourd’hui',
-    ctaSub: 'Essai gratuit de 7 jours avec accès complet.',
-    ctaNote: 'Annulez à tout moment depuis l’App Store ou Google Play.',
+    ctaSub:
+      'Essai gratuit de 7 jours avec accès complet. Aucune carte bancaire requise.',
+    ctaNote:
+      'Une fois l’essai terminé, vos règles continuent de fonctionner avec la formule gratuite.',
   },
 
   login: {
@@ -470,8 +472,7 @@ export default {
     save: 'Enregistrer',
 
     unlockTitle: 'Les modifications sont verrouillées.',
-    unlockBody:
-      'La consultation fonctionne tout de suite. Pour verrouiller un appareil, changer les limites ou approuver des demandes, déverrouillez ce navigateur avec votre code PIN parent — ou validez-le en scannant le QR code avec l’application KidGate. Les Check-in fonctionnent dans les deux cas.',
+    unlockBody: 'Vous pouvez toujours tout consulter et envoyer des Check-ins.',
     unlockCta: 'Déverrouiller les modifications',
     unlockToChange: 'Déverrouillez d’abord les modifications',
     refresh: 'Actualiser',
@@ -511,10 +512,6 @@ export default {
     tileDeltaDown: '↓ {{percent}} % par rapport à la moyenne sur 7 jours',
     tileBlocked: 'Tentatives bloquées',
     tileBlockedMeta: 'Applis stoppées depuis l’installation',
-    tileSites: 'Sites filtrés',
-    tileCategoriesHit_one: '{{count}} catégorie touchée',
-    tileCategoriesHit_other: '{{count}} catégories touchées',
-    tileNothingBlocked: 'Rien de bloqué pour le moment',
     tileAttention: 'Attention requise',
     tileOpenItems: 'Points ouverts ci-dessous',
     tileAllClear: 'Tout va bien',
@@ -573,8 +570,6 @@ export default {
     blockingLabel: 'Blocage',
     appsBlocked: 'Applications bloquées',
     categories: 'Catégories',
-    perAppHint:
-      'Les plafonds par appli sont indépendants de la liste de blocage — « 30 minutes de TikTok » n’est pas la même décision que « pas de TikTok ».',
     limitsMax: 'Un appareil ne peut pas dépasser {{max}} applis limitées.',
     perDay: '{{value}}/jour',
     webActivityTitle: 'Activité web',
@@ -600,13 +595,11 @@ export default {
     colVideo: 'Vidéo',
     colChannel: 'Chaîne',
     colViews: 'Vues',
-    filterRefusedTitle: 'Ce que le filtre a refusé',
+    filterRefusedTitle: 'Ce que le filtre a bloqué',
     filterRefusedSub_one: '{{count}} requête bloquée, 7 derniers jours',
     filterRefusedSub_other: '{{count}} requêtes bloquées, 7 derniers jours',
     filterHintIos:
       'Cet iPhone ou iPad ne filtre qu’avec le contrôle des contenus pour adultes d’Apple. Mettez KidGate à jour sur l’appareil et autorisez le VPN de KidGate pour bloquer par catégorie.',
-    filterHintAndroid:
-      'Les catégories sont appliquées par le filtre DNS de l’appareil.',
 
     locationTitle: 'Localisation',
     locationUpdated: 'Mis à jour {{when}}',
@@ -660,8 +653,8 @@ export default {
     rowAppBlocking: 'Applications bloquées',
     rowAppBlockingDesc: '{{apps}} · {{categories}}',
     rowWebFilter: 'Filtre web',
-    rowWebFilterDesc_one: '{{count}} catégorie refusée',
-    rowWebFilterDesc_other: '{{count}} catégories refusées',
+    rowWebFilterDesc_one: '{{count}} catégorie bloquée',
+    rowWebFilterDesc_other: '{{count}} catégories bloquées',
     rowNotSupported: 'Non pris en charge sur cet appareil',
     rowLocation: 'Partage de position',
     rowLocationDesc: 'Dernière mise à jour {{when}}',
@@ -673,7 +666,7 @@ export default {
     webFilterCatsTitle: 'Catégories du filtre web',
     webFilterCatsSub: 'Types de contenu bloqués',
     dnsHint:
-      'Les résolveurs DNS chiffrés sont toujours refusés tant que le filtre tourne — les laisser accessibles, c’est précisément ce qui permet à un navigateur de contourner toutes les autres catégories.',
+      'Le DNS chiffré est toujours bloqué tant que le filtre tourne, pour qu’un navigateur ne puisse pas le contourner.',
     starChartTitle: 'Tableau des étoiles',
     starChartSub: 'Étoiles gagnées cette semaine, par enfant',
     starChartEmpty:
@@ -717,7 +710,7 @@ export default {
       'Impossible d’enregistrer depuis ce navigateur. Copiez plutôt le résumé.',
     emptyBody:
       'Avec Premium, un rapport arrive chaque lundi matin et couvre les sept jours précédents. Vous pouvez aussi rédiger celui de cette semaine depuis l’app KidGate sur votre téléphone.',
-    loadFailed: 'Impossible d’ouvrir les rapports. Rechargez la page pour réessayer.',
+    loadFailed: 'Impossible d’ouvrir les rapports.',
     retryLoad: 'Réessayer',
     existed: 'Cette semaine avait déjà un rapport — le voici.',
   },
@@ -782,7 +775,7 @@ export default {
 
     faq9Q: 'Comment bloquer des applis précises ?',
     faq9A:
-      'La sélection des applis se fait sur l’appareil de l’enfant : ouvrez *KidGate → Réglages*, touchez *Déverrouiller avec le code PIN parent*, ouvrez *Applications bloquées*, choisissez les applis et enregistrez. Ensuite, sur l’appareil parent, ouvrez l’écran *Applications bloquées* de cet appareil et activez *Activer le blocage des applications*. Sur iOS, Apple peut masquer les noms exacts des applis à l’appareil parent — c’est une limite de la plateforme.',
+      'Sur l’appareil parent, ouvrez les *Applis* de votre enfant, puis *Applications installées*, touchez une application et choisissez *Bloquer*. Sur un iPhone, les applis se choisissent sur l’iPhone lui-même : ouvrez *KidGate → Réglages*, touchez *Déverrouiller avec le code PIN parent*, ouvrez *Applications bloquées*, choisissez les applis et enregistrez. Activez ensuite *Activer les Applications bloquées* sur l’appareil parent. Un appareil d’enfant connecté reçoit chaque changement en une minute. Sur iOS, Apple peut masquer les noms exacts des applis à l’appareil parent.',
 
     faq10Q: 'Pourquoi la position de mon enfant ne se met-elle pas à jour ?',
     faq10A:

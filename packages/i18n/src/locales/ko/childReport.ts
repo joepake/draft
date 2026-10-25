@@ -12,6 +12,7 @@ export const childReport = {
   heroRange: '{{low}} – {{high}}',
   heroRangeNote:
     '추정값입니다. 얼마나 썼는지는 알려주지만 언제 썼는지는 알려주지 못하는 기기가 있습니다.',
+  barsExplain: '두 기기를 동시에 쓴 1분은 기기를 더하면 2분으로 세어집니다.',
   heroEmpty: '아직 사용 기록이 없습니다',
 
   trendUp: '지난 기간보다 {{value}} 많음',

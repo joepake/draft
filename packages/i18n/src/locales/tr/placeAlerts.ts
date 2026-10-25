@@ -4,7 +4,6 @@ export const placeAlerts = {
   mergedFromDevices:
     'Her cihazdaki mevcut yerlerden birleştirildi. Kaydetmek bu tek listeyi tüm çocuk cihazlarına uygular.',
   fallbackDeviceName: 'Çocuk cihazı',
-  statusReady: 'Konum hazır',
   statusNeedLocation: 'Çocuk cihazının konumu bekleniyor',
   tabPlaces: 'Yerler',
   tabActivity: 'Etkinlik',
@@ -22,8 +21,6 @@ export const placeAlerts = {
   editPlaceAccessibility: '{{name}} öğesini düzenle',
   radiusLabel: 'Uyarı yarıçapı',
   radiusValue: '{{meters}} m',
-  radiusHint:
-    'Bu yerin sayılması için cihazın ne kadar yakın olması gerektiği. Cihazın kendi konum hatasından küçük bir yarıçap uyarıları daha hassas yapmaz — varışlar ve ayrılışlar bildirilmeyebilir.',
   radiusAccuracyHint:
     'Bu cihaz burada konumunu yaklaşık ±{{accuracy}} m hassasiyetle bildiriyor.',
   radiusBelowAccuracy:
@@ -44,7 +41,6 @@ export const placeAlerts = {
   emptyEventsTitle: 'Henüz yer etkinliği yok',
   emptyEventsSubtitle:
     'Bu cihaz kayıtlı bir yere girdiğinde veya oradan ayrıldığında olaylar burada görünür.',
-  emptyPlaces: 'Haritada bir nokta seçin, ad verin ve kaydedin. En fazla {{max}} yer.',
   noLocationToast: 'Lütfen önce çocuk cihazından bir konum güncellemesi bekleyin.',
   maxPlacesToast: 'En fazla {{max}} yer kaydedebilirsiniz.',
   nameRequiredToast: 'Lütfen bir yer adı girin.',

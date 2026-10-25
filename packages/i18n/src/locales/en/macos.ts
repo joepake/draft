@@ -21,6 +21,10 @@ export const macos = {
 
   parentAccessBody:
     'Enter the Parent PIN to choose which apps are blocked on this device.',
+  // A Mac has no on-device app picker since 2026-10-24 (the parent blocks
+  // from the phone), so the gate opens setup and startup only.
+  parentAccessBodyMac:
+    'Enter the Parent PIN to finish setting up this Mac or change whether KidGate starts at login.',
   checking: 'Checking…',
 
   enforcing: 'Protection running',
@@ -36,9 +40,6 @@ export const macos = {
   lockStateParent: 'Yes — locked by a parent',
   lockStateSchedule: 'Yes — Blocked Hours',
   lockStateDailyLimit: 'Yes — Daily Limit reached',
-
-  appBlocking: 'App blocking',
-  appBlockingBestEffort: 'Best effort — apps are closed after they open, not stopped',
 
   webFilterLabel: 'Web filtering',
   webFilterUnavailable: 'Not available on this Mac',

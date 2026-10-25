@@ -1,6 +1,5 @@
 export const sos = {
   title: 'Avvisi SOS',
-  subtitle: '{{deviceName}} · le foto compaiono qui sotto dopo l’invio',
   fallbackDeviceName: 'Dispositivo del bambino',
   fallbackChildName: 'Bambino',
   locationUnavailable: 'Posizione non disponibile',
@@ -10,7 +9,6 @@ export const sos = {
   photoTapHint: 'Tocca per vedere la foto intera',
   photoLoadFailed:
     'Impossibile caricare questa foto. Controlla la connessione e riprova.',
-  noPhoto: 'Nessuna foto allegata a questo avviso.',
   audioLabel: 'Registrazione audio',
   audioPlayAccessibility: 'Riproduci la registrazione SOS',
   audioStopAccessibility: 'Interrompi la riproduzione della registrazione SOS',
@@ -18,7 +16,6 @@ export const sos = {
   acknowledgedAt: 'Confermato {{time}}',
   openInMaps: 'Apri in Mappe',
   acknowledgeButton: 'Ci penso io',
-  acknowledgingButton: 'Salvataggio…',
   toastAcknowledgeFailed: 'Impossibile confermare. Riprova tra poco.',
   emptyTitle: 'Ancora nessun avviso SOS',
   emptyDescription:

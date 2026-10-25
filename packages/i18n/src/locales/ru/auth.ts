@@ -1,6 +1,6 @@
 export const auth = {
-  welcomeBack: 'С возвращением',
-  loginSubtitle: 'Войдите, чтобы управлять устройствами детей и защищать их.',
+  welcomeBack: 'Вход в KidGate',
+  loginSubtitle: 'Управляйте устройствами детей и защищайте их.',
   emailSignInTitle: 'Вход по электронной почте',
   emailSignInSubtitle: 'Используйте родительскую почту и пароль.',
   createAccountTitle: 'Создать родительский аккаунт',

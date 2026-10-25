@@ -2,6 +2,7 @@ export const report = {
   title: 'Relatório semanal',
   subtitle: 'O que o KidGate notou na semana.',
   weekOf: 'Semana {{week}}',
+  weekOfYear: 'Semana {{week}} - {{year}}',
   range: '{{from}} – {{to}}',
   triggerScheduled: 'Enviado na segunda-feira',
   triggerManual: 'Criado por você',
@@ -40,7 +41,7 @@ export const report = {
   findingBlockedApps:
     '{{count}} aberturas de apps bloqueadas, contra {{previous}} na semana passada.',
   findingBlockedWeb:
-    '{{count}} sites filtrados, contra {{previous}} na semana passada.',
+    '{{count}} visitas a sites bloqueados, contra {{previous}} na semana passada.',
   findingQuietWeek:
     'Uma semana tranquila: {{total}} no total e nada que exigisse sua atenção.',
 
@@ -56,7 +57,7 @@ export const report = {
   findingBlockedAppsDown:
     '{{count}} aberturas de apps bloqueadas, contra {{previous}} na semana passada.',
   findingBlockedWebDown:
-    '{{count}} sites filtrados, contra {{previous}} na semana passada.',
+    '{{count}} visitas a sites bloqueados, menos que as {{previous}} da semana passada.',
   findingLearningTime: '{{duration}} em apps educativos, sobretudo {{app}}.',
   findingTasksDone_one: 'Uma tarefa concluída, ganhando {{bonus}}.',
   findingTasksDone_other: '{{count}} tarefas concluídas, ganhando {{bonus}}.',
@@ -104,8 +105,7 @@ export const report = {
   rateLimited:
     'Não foi possível criar outro relatório ainda. Tente de novo em um minuto.',
   loadFailedTitle: 'Relatórios não carregados',
-  loadFailed:
-    'Não foi possível abrir os relatórios. Puxe para baixo para tentar de novo.',
+  loadFailed: 'Não foi possível abrir os relatórios.',
   failed: 'Não foi possível criar o relatório. Tente de novo em instantes.',
 
   historyTitle: 'Semanas anteriores',

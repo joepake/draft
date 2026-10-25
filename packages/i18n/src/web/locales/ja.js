@@ -184,7 +184,7 @@ export default {
       '子どものスマホに KidGate をインストールし、QR コードを読み取って接続します。1 分もかかりません。',
     step3Title: 'ルールを決める',
     step3Text:
-      '1 日の上限と休止時間を決め、位置情報とアプリのブロックを自分のスマホからオンにします。ブロックするアプリは、お子さまのデバイスで保護者 PIN を使って一度だけ選びます。',
+      '1 日の上限と休止時間を決め、位置情報と「ブロックされたアプリ」を自分のスマホからオンにします。ブロックするアプリは、お子さまのデバイスで保護者 PIN を使って一度だけ選びます。',
 
     whyEyebrow: 'KidGate を選ぶ理由',
     whyTitle: '監視ではなく、信頼のために',
@@ -246,8 +246,8 @@ export default {
     faqMore: 'ほかにも質問がありますか？ サポートへ',
 
     ctaTitle: '今日から家族を守りはじめましょう',
-    ctaSub: 'すべての機能を使える 7 日間の無料トライアル。',
-    ctaNote: 'App Store または Google Play からいつでも解約できます。',
+    ctaSub: 'すべての機能を使える 7 日間の無料トライアル。カード登録は不要です。',
+    ctaNote: 'トライアルが終わっても、ルールは無料プランで働き続けます。',
   },
 
   login: {
@@ -467,8 +467,7 @@ export default {
     save: '保存',
 
     unlockTitle: '変更はロックされています。',
-    unlockBody:
-      '閲覧はそのまま使えます。デバイスのロック、上限の変更、リクエストの承認を行うには、保護者 PIN でこのブラウザのロックを解除してください。KidGate アプリで QR コードを読み取って承認することもできます。チェックインはどちらの場合でも使えます。',
+    unlockBody: 'すべて閲覧でき、チェックインも送信できます。',
     unlockCta: '変更のロックを解除',
     unlockToChange: '先に変更のロックを解除してください',
     refresh: '更新',
@@ -508,9 +507,6 @@ export default {
     tileDeltaDown: '↓ 過去 7 日間の平均比 {{percent}}%',
     tileBlocked: 'ブロックした回数',
     tileBlockedMeta: 'インストール以降に止めたアプリ',
-    tileSites: 'フィルタしたサイト',
-    tileCategoriesHit: '{{count}} カテゴリに該当',
-    tileNothingBlocked: 'まだブロックはありません',
     tileAttention: '要対応',
     tileOpenItems: '未処理の項目は下にあります',
     tileAllClear: '問題ありません',
@@ -566,8 +562,6 @@ export default {
     blockingLabel: 'ブロック',
     appsBlocked: 'ブロック中のアプリ',
     categories: 'カテゴリ',
-    perAppHint:
-      'アプリごとの上限はブロックリストとは別に動きます。「TikTok を 30 分」は「TikTok は禁止」とは別の判断です。',
     limitsMax: '1 台につき上限付きアプリは最大 {{max}} 件です。',
     perDay: '{{value}}/日',
     webActivityTitle: 'ウェブの利用状況',
@@ -592,11 +586,10 @@ export default {
     colVideo: '動画',
     colChannel: 'チャンネル',
     colViews: '視聴回数',
-    filterRefusedTitle: 'フィルタが拒否した内容',
+    filterRefusedTitle: 'フィルタがブロックした内容',
     filterRefusedSub: 'ブロックした照会 {{count}} 件、直近 7 日間',
     filterHintIos:
       'この iPhone/iPad は Apple のアダルトコンテンツ制限だけでフィルタしています。カテゴリ別にブロックするには、KidGate を最新にして KidGate の VPN を許可してください。',
-    filterHintAndroid: 'カテゴリはデバイス内の DNS フィルタが適用します。',
 
     locationTitle: '位置情報',
     locationUpdated: '更新 {{when}}',
@@ -648,7 +641,7 @@ export default {
     rowAppBlocking: 'ブロックされたアプリ',
     rowAppBlockingDesc: '{{apps}} · {{categories}}',
     rowWebFilter: 'Webフィルター',
-    rowWebFilterDesc: '{{count}} カテゴリを拒否',
+    rowWebFilterDesc: '{{count}} カテゴリをブロック',
     rowNotSupported: 'このデバイスでは対応していません',
     rowLocation: '位置情報の共有',
     rowLocationDesc: '最終更新 {{when}}',
@@ -660,7 +653,7 @@ export default {
     webFilterCatsTitle: 'Webフィルターのカテゴリ',
     webFilterCatsSub: 'ブロックするコンテンツの種類',
     dnsHint:
-      'フィルタの動作中、暗号化 DNS リゾルバは常に拒否されます。これを通してしまうと、ブラウザは他のすべてのカテゴリを迂回できてしまいます。',
+      'フィルタの動作中は暗号化 DNS を常にブロックするため、ブラウザが迂回することはできません。',
     starChartTitle: 'スターボード',
     starChartSub: '今週お子さまごとに集めた星',
     starChartEmpty:
@@ -702,7 +695,7 @@ export default {
     shareFailed: 'このブラウザでは保存できません。代わりに概要をコピーしてください。',
     emptyBody:
       'Premium では、レポートが毎週月曜の朝に届き、その前の 7 日間が対象です。今週の分は、スマートフォンの KidGate アプリから作成することもできます。',
-    loadFailed: 'レポートを開けませんでした。ページを再読み込みしてください。',
+    loadFailed: 'レポートを開けませんでした。',
     retryLoad: 'もう一度試す',
     existed: '今週のレポートはすでにあります。こちらです。',
   },
@@ -767,7 +760,7 @@ export default {
 
     faq9Q: '特定のアプリをブロックするには？',
     faq9A:
-      'アプリの選択は子どものデバイスで行います。*KidGate → 設定*を開き、*保護者PINで解除*をタップし、*ブロックされたアプリ*を開いてアプリを選び、保存します。次に保護者のデバイスで、そのデバイスの*ブロックされたアプリ*画面を開き、*アプリブロックを有効にする*をオンにします。iOS では Apple が正確なアプリ名を保護者のデバイスに表示しないことがあります。これはプラットフォームの制約です。',
+      '保護者のデバイスで、お子さまの*アプリ*を開き、*インストール済みのアプリ*でアプリをタップして*ブロック*を選びます。iPhoneでは、アプリはiPhone本体で選択します。*KidGate → 設定*を開き、*保護者PINで解除*をタップし、*ブロックされたアプリ*を開いてアプリを選び、保存します。そのあと保護者のデバイスで*ブロックされたアプリを有効にする*をオンにします。接続中のお子さまのデバイスには、変更が1分以内に届きます。iOS では Apple が正確なアプリ名を保護者のデバイスに表示しないことがあります。',
 
     faq10Q: '子どもの位置情報が更新されないのはなぜですか？',
     faq10A:

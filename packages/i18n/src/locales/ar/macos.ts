@@ -9,6 +9,8 @@ export const macos = {
   headingRemovable: 'مدى سهولة إزالته',
 
   parentAccessBody: 'أدخل رمز PIN الوالدين لاختيار التطبيقات المحظورة على هذا الجهاز.',
+  parentAccessBodyMac:
+    'أدخل رمز PIN الوالدين لإكمال إعداد هذا الـ Mac أو لتغيير ما إذا كان KidGate يُفتح عند تسجيل الدخول.',
   checking: 'جارٍ التحقق…',
 
   enforcing: 'الحماية تعمل',
@@ -25,9 +27,6 @@ export const macos = {
   lockStateParent: 'نعم — قفله أحد الوالدين',
   lockStateSchedule: 'نعم — ساعات الحظر',
   lockStateDailyLimit: 'نعم — تم بلوغ الحد اليومي',
-
-  appBlocking: 'حظر التطبيقات',
-  appBlockingBestEffort: 'قدر الإمكان — تُغلق التطبيقات بعد فتحها ولا يُمنع فتحها',
 
   webFilterLabel: 'تصفية الويب',
   webFilterUnavailable: 'غير متاح على هذا الـ Mac',

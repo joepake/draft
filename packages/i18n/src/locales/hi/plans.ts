@@ -80,6 +80,7 @@ export const plans = {
   footerLegalAndroid:
     'Google Play के माध्यम से बिल किया जाता है। सदस्यताएँ तब तक स्वतः नवीनीकृत होती रहती हैं जब तक आप उन्हें Google Play में रद्द नहीं करते। एक बार की खरीद नवीनीकृत नहीं होती और जब तक KidGate उपलब्ध है तब तक चलती है।',
   subscribeButton: 'Premium की सदस्यता लें',
+  buyLifetimeButton: 'आजीवन प्लान खरीदें',
   restoringPurchases: 'पुनर्स्थापित हो रहा है…',
   restorePurchases: 'खरीदारी पुनर्स्थापित करें',
   premiumDescription:
@@ -164,7 +165,7 @@ export const plans = {
   trustNoAds: 'कोई विज्ञापन नहीं',
   freePlanName: 'मुफ़्त',
   freeDescription:
-    'बुनियादी सुविधाएँ बच्चे के हर डिवाइस पर चलती रहती हैं, और एक डिवाइस से रिपोर्ट मिलती है। यह प्लान कभी खत्म नहीं होता।',
+    'आपके नियम बच्चे के हर डिवाइस पर चलते रहते हैं, और एक डिवाइस रिपोर्ट भेजता रहता है। यह प्लान कभी खत्म नहीं होता।',
   featureOneChildDevice: 'बच्चे के एक डिवाइस से रिपोर्ट',
   termLifetime: 'आजीवन',
   badgeOneTime: 'एक बार',
@@ -224,5 +225,7 @@ export const plans = {
   teaserProofParents: 'अभिभावक: {{count}}',
   teaserParentCap:
     'Premium के बिना एक परिवार में इतने ही अभिभावक हो सकते हैं। Premium इसे दोगुना कर देता है।',
+  teaserApps:
+    'Premium से आप अपने फ़ोन से ही ऐप ब्लॉक कर सकते हैं, और कोई ऐप इंस्टॉल होने या हटने पर यह आपको बताता है।',
   teaserDeviceNote: 'रिपोर्ट सिर्फ़ आपके मॉनिटर किए गए डिवाइस से आती है।',
 } as const;

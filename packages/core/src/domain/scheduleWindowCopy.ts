@@ -74,16 +74,22 @@ const DAYTIME_DAY_PRESETS: readonly ScheduleDayPreset[] = [
 ];
 
 /**
- * Overnight windows: **"School nights" is Sunday-through-Thursday, not
+ * Overnight windows: **"Weekdays" is Sunday-through-Thursday night, not
  * Monday-through-Friday**. An overnight curfew is stamped by the night it
  * starts, so the nights before school are Sun–Thu, and Friday and Saturday
  * nights are the weekend. Getting that backwards ships a curfew that lets the
  * child stay up on a school night and blocks them on a Friday.
+ *
+ * Same labels as the daytime pair since 2026-10-24: "School nights" and
+ * "Weekend nights" swapped in under the parent's finger as a window was wound
+ * across midnight, at different lengths (operator). The days still follow the
+ * night; the day chips show which, and `blockedHours.daysOvernightHint` says
+ * why.
  */
 const OVERNIGHT_DAY_PRESETS: readonly ScheduleDayPreset[] = [
   EVERY_DAY_PRESET,
-  { labelKey: 'blockedHours.daysSchoolNights', days: [0, 1, 2, 3, 4] },
-  { labelKey: 'blockedHours.daysWeekendNights', days: [5, 6] },
+  { labelKey: 'blockedHours.daysWeekdays', days: [0, 1, 2, 3, 4] },
+  { labelKey: 'blockedHours.daysWeekend', days: [5, 6] },
 ];
 
 /**
@@ -94,8 +100,8 @@ const OVERNIGHT_DAY_PRESETS: readonly ScheduleDayPreset[] = [
  * 08:00–16:00 window "Weekend" wrote Friday and Saturday, blocking a school
  * Friday and leaving Sunday free. A daytime window's days are the days the
  * block runs, so it gets Weekdays (Mon–Fri) and Weekend (Sat+Sun); an overnight
- * window keeps the night-stamped pair and says "nights" in both labels. Both
- * parent surfaces read this rather than retyping either table.
+ * window keeps the night-stamped pair under the same two labels. Both parent
+ * surfaces read this rather than retyping either table.
  */
 export function scheduleDayPresets(
   window: ScheduleWindow,

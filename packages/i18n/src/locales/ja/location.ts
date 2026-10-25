@@ -77,6 +77,11 @@ export const location = {
   childDevicesOnline: '{{total}} 台中 {{online}} 台がオンライン',
   childNoneOnline: 'オンラインのデバイスはありません',
   childPickCarriedA11y: '{{deviceName}}を{{childName}}が持ち歩くデバイスに設定',
+  carriedFrom: '{{deviceName}}の位置情報',
+  changeCarried: 'デバイスを変更',
+  carriedSuggestion: '{{deviceName}}が{{time}}に位置情報を送信しました。',
+  useCarried: '{{deviceName}}を使用',
+  carriedBadge: '持ち歩き',
   stayRange: '{{from}} – {{to}}',
   wizardStepAllow:
     '「許可」を選び、続いて「常に許可」を選ぶと、バックグラウンドでも更新が続きます。',

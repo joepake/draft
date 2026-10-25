@@ -5,6 +5,7 @@ import {
   DEFAULT_NOTIFICATION_PREFS,
 } from '@kidgate/schema/notificationPrefs';
 import { isValidQuietHoursWindow } from '@kidgate/core/domain/notificationPrefs';
+import { SCHEDULE_TIME_STEP_MINUTES } from '@kidgate/core/domain/scheduleWindow';
 import { notificationPrefsRepository } from '../adapters/repositories.js';
 import Card from './Card.jsx';
 import Toggle from './Toggle.jsx';
@@ -222,6 +223,7 @@ export default function NotificationPrefsCard({
             id="quiet-start"
             className="reward-input"
             type="time"
+            step={SCHEDULE_TIME_STEP_MINUTES * 60}
             value={prefs.quietHours?.start ?? ''}
             disabled={disabled}
             onChange={event =>
@@ -235,6 +237,7 @@ export default function NotificationPrefsCard({
             id="quiet-end"
             className="reward-input"
             type="time"
+            step={SCHEDULE_TIME_STEP_MINUTES * 60}
             value={prefs.quietHours?.end ?? ''}
             disabled={disabled}
             onChange={event =>

@@ -88,6 +88,9 @@ export const plans = {
   footerLegalAndroid:
     'Billed through Google Play. Subscriptions renew automatically until you cancel them in Google Play. The one-time purchase does not renew and lasts for as long as KidGate is available.',
   subscribeButton: 'Subscribe to Premium',
+  // The same button when Lifetime is picked: a one-time purchase is not a
+  // subscription, and the store review reads the button against the term.
+  buyLifetimeButton: 'Buy Lifetime',
   restoringPurchases: 'Restoring…',
   restorePurchases: 'Restore purchases',
   premiumDescription:
@@ -172,7 +175,7 @@ export const plans = {
   trustNoAds: 'No ads, ever',
   freePlanName: 'Free',
   freeDescription:
-    'The basics keep running on every child device, with reports from one. It never expires.',
+    'Your rules keep working on every child device, and one keeps reporting. It never expires.',
   featureOneChildDevice: 'Reports from one child device',
   termLifetime: 'Lifetime',
   badgeOneTime: 'One-time',
@@ -240,5 +243,7 @@ export const plans = {
   teaserProofParents: 'Parents: {{count}}',
   teaserParentCap:
     'That is every parent a family can have without Premium. Premium allows twice as many.',
+  teaserApps:
+    'Premium blocks apps from your phone, and tells you when one is installed or removed.',
   teaserDeviceNote: 'Only your one monitored device reports.',
 } as const;

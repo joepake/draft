@@ -7,7 +7,7 @@ export const childSettings = {
   darkModeHint: '夜間でも目にやさしい表示',
   leaveFamilyAlertTitle: 'このファミリーから退出しますか？',
   leaveFamilyAlertMessage:
-    'このデバイスはファミリーから切断されます。再参加するには、保護者がご自身のKidGateアプリからこのデバイスをもう一度接続する必要があります。',
+    'このデバイスはファミリーから退出します。もう一度使うには、保護者が再接続する必要があります。',
   leaveFamily: 'ファミリーから退出',
   uninstallProtectionSectionTitle: 'アンインストール防止',
   uninstallProtectionSectionDescription:

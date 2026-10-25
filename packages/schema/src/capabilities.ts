@@ -297,6 +297,17 @@ export interface DeviceCapabilities {
    * do (`@kidgate/core/domain/ringSupport`).
    */
   ring?: boolean;
+  /**
+   * The device enforces `Device.parentBlockedApps` — a parent's Block from the
+   * console reaches it. Published by the macOS agent (the bundle id its thread
+   * quits, measured), an Android phone whose binary has the store (native
+   * `getCapabilities`, so an OTA'd bundle cannot claim it) and a TV while its
+   * accessibility grant holds (`docs/FEASIBILITY.md`, "Parent-set app
+   * blocking"). Never Windows yet, never iOS. **Absent is "cannot", never
+   * unknown**, as with `ring`: every agent before it ignores the list, and a
+   * Block that blocks nothing is the button that must not be drawn.
+   */
+  parentAppBlocking?: boolean;
 
   /**
    * Probe time. A capability set that predates an OS upgrade or a revoked
@@ -330,4 +341,13 @@ export interface MonitoringStatus {
   minutesUsedToday: Minutes;
   /** Device-local day the counters belong to. Null when never reported. */
   usageDate: IsoDate | null;
+  /**
+   * The parent's Blocked Apps and Web Filter switches as this agent last
+   * applied them — what a child's status screen needs to say "On" or "Off by
+   * your parent" rather than only whether the device could. **Absent is
+   * unknown**: the phone's bridges and the desktop do not report them, and
+   * `apps/tv` only once a snapshot has said.
+   */
+  appBlockingEnabled?: boolean;
+  webFilterEnabled?: boolean;
 }

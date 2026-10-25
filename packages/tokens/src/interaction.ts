@@ -16,8 +16,8 @@ export const MIN_TOUCH_TARGET = 44;
  * A control that is present and cannot act.
  *
  * 0.5, which is what `apps/mobile` already draws — `PairingCodeModal`,
- * `SwipeToDeleteRow`, `ParentNameSetupModal`, `PairingQrScanner`,
- * `TimeStepperField` and a dozen more each write `opacity: 0.5` by hand, and
+ * `SwipeToDeleteRow`, `ParentNameSetupModal`, `PairingQrScanner` and a
+ * dozen more each write `opacity: 0.5` by hand, and
  * two of them have drifted to 0.55. Named here because `apps/tv` was about to
  * pick a third number from scratch: a disabled control is the same statement on
  * every surface, and it should not be re-decided per screen.

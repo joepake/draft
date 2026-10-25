@@ -1,5 +1,4 @@
 export const appInventory = {
-  title: 'इस डिवाइस के ऐप',
   pendingTitle: 'आपकी स्वीकृति का इंतज़ार',
   pendingBadge: 'जब तक आप अनुमति नहीं देते, ब्लॉक',
   approvedBadge: 'आपने अनुमति दी',
@@ -15,7 +14,6 @@ export const appInventory = {
   newBadge: 'नया',
   ageBadge: '{{age}}+',
   browserExtension: 'Chrome एक्सटेंशन',
-  titleExtension: 'इस ब्राउज़र के एक्सटेंशन',
   subtitleExtension: 'सिर्फ़ बदलाव नहीं — KidGate को ब्राउज़र में मिले सभी एक्सटेंशन।',
   summaryFlaggedExtension:
     '{{total}} में से {{flagged}} Chrome एक्सटेंशन देखने लायक हैं',
@@ -37,8 +35,17 @@ export const appInventory = {
     'कुछ ऐप्स शायद यहाँ न दिखें, जैसे ऐसा ऐप जिसका डिवाइस की ऐप सूची में कोई आइकॉन नहीं है।',
   blockHint: 'किसी ऐप को रोकने के लिए, डिवाइस पर ही “ब्लॉक किए गए ऐप्स” खोलें।',
   howItWorksLabel: 'यह सूची कैसे काम करती है',
-  markSafe: 'सुरक्षित',
+  markSafe: 'सुरक्षित बताएं',
   dismissedTitle: 'आपने सुरक्षित बताया',
   undoSafe: 'पहले जैसा करें',
+  tabGeneral: 'सारांश',
+  searchPlaceholder: 'ऐप खोजें',
+  searchEmpty: 'कोई ऐप मेल नहीं खाता।',
+  blockedBadge: 'ब्लॉक है',
+  setLimit: 'समय सीमा तय करें',
+  editLimit: 'समय सीमा बदलें',
   howToBlock: 'कैसे ब्लॉक करें',
+  blockApp: 'ब्लॉक करें',
+  unblockApp: 'अनब्लॉक करें',
+  iosBlockOnDevice: 'iPhone पर, ऐप्स बच्चे के iPhone से ही ब्लॉक किए जाते हैं।',
 } as const;

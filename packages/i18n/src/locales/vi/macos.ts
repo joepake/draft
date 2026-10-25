@@ -15,6 +15,8 @@ export const macos = {
   headingRemovable: 'Mức độ dễ gỡ bỏ',
 
   parentAccessBody: 'Nhập mã PIN phụ huynh để chọn ứng dụng bị chặn trên thiết bị này.',
+  parentAccessBodyMac:
+    'Nhập mã PIN phụ huynh để hoàn tất thiết lập máy Mac này hoặc đổi việc mở KidGate khi đăng nhập.',
   checking: 'Đang kiểm tra…',
 
   enforcing: 'Bảo vệ đang chạy',
@@ -27,10 +29,6 @@ export const macos = {
   lockStateParent: 'Có — phụ huynh đã khóa',
   lockStateSchedule: 'Có — Giờ khóa thiết bị',
   lockStateDailyLimit: 'Có — đã hết Giới hạn hằng ngày',
-
-  appBlocking: 'Chặn ứng dụng',
-  appBlockingBestEffort:
-    'Ở mức tương đối — ứng dụng bị đóng sau khi mở, không bị ngăn từ đầu',
 
   webFilterLabel: 'Lọc web',
   webFilterUnavailable: 'Không dùng được trên máy Mac này',

@@ -368,6 +368,52 @@ export function isLocationBlocked(blocker: ChildLocationBlocker | null): boolean
 }
 
 /**
+ * Blockers another device can cure. `sharingOff` is the child's rule and
+ * silences every device; `paused` is skipped by `resolveChildLocationView`
+ * already whenever another device reports.
+ */
+const CURED_BY_ANOTHER_DEVICE: readonly ChildLocationBlocker[] = [
+  'permission',
+  'ipOnly',
+  'waiting',
+  'notUpdating',
+];
+
+/**
+ * A sibling worth offering in the carried device's place: the carried one has
+ * no usable position and this one sent a real fix, newer than the carried
+ * one's, within `freshWithinMs`.
+ *
+ * An offer, never an answer — the parent presses it and the designation moves,
+ * so nothing here picks. Without it the way out of "waiting" over a fix that
+ * landed seconds ago on the child's other machine was a caption-sized badge
+ * nobody read as a control (2026-10-24: a Windows PC designated, the Mac the
+ * one carried). An IP-only fix is never offered — it is the ISP's city centre.
+ */
+export function suggestCarriedSwitch<D extends ChildLocationDeviceFacts>(input: {
+  view: Pick<ChildLocationView<D>, 'carried' | 'others'>;
+  blocker: ChildLocationBlocker | null;
+  nowMs: number;
+  freshWithinMs?: number;
+}): D | null {
+  const { view, blocker, nowMs, freshWithinMs = LOCATION_STALE_AFTER_MS } = input;
+  if (!view.carried || !blocker || !CURED_BY_ANOTHER_DEVICE.includes(blocker)) {
+    return null;
+  }
+  const carriedFixMs = fixTime(view.carried);
+  // `others` is freshest first, so the first match is the best offer.
+  return (
+    view.others.find(
+      device =>
+        !isDeviceParked(device) &&
+        device.locationSensing !== 'ip' &&
+        fixTime(device) > carriedFixMs &&
+        nowMs - fixTime(device) <= freshWithinMs,
+    ) ?? null
+  );
+}
+
+/**
  * The device's own answer to the last "Locate now", when that answer is a
  * failure a parent screen should still be showing.
  *

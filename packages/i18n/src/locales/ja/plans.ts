@@ -80,6 +80,7 @@ export const plans = {
   footerLegalAndroid:
     'Google Play経由で請求されます。サブスクリプションはGoogle Playで解約するまで自動更新されます。買い切りは自動更新されず、KidGateが提供されている間ご利用いただけます。',
   subscribeButton: 'Premiumに登録',
+  buyLifetimeButton: '買い切りで購入',
   restoringPurchases: '復元中…',
   restorePurchases: '購入を復元',
   premiumDescription:
@@ -165,7 +166,7 @@ export const plans = {
   trustNoAds: '広告なし',
   freePlanName: '無料',
   freeDescription:
-    '基本機能はお子さまのすべてのデバイスで動き続け、報告は1台から届きます。期限はありません。',
+    'ルールはお子さまのすべてのデバイスで動き続け、1台は報告も続けます。期限はありません。',
   featureOneChildDevice: 'お子さまのデバイス1台からの報告',
   termLifetime: '買い切り',
   badgeOneTime: '一回のみ',
@@ -227,5 +228,7 @@ export const plans = {
   teaserProofParents: '保護者: {{count}}',
   teaserParentCap:
     'Premium なしで 1 つのファミリーに登録できる保護者はここまでです。Premium ではこの 2 倍になります。',
+  teaserApps:
+    'Premium なら、ご自身のスマートフォンからアプリをブロックでき、アプリのインストールや削除も通知されます。',
   teaserDeviceNote: '報告するのは監視中の 1 台だけです。',
 } as const;

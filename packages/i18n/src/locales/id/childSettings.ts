@@ -7,7 +7,7 @@ export const childSettings = {
   darkModeHint: 'Lebih nyaman di mata saat malam',
   leaveFamilyAlertTitle: 'Keluar dari keluarga ini?',
   leaveFamilyAlertMessage:
-    'Perangkat ini akan diputus dari keluarga. Untuk bergabung kembali, orang tua perlu menghubungkannya lagi dari aplikasi KidGate mereka.',
+    'Perangkat ini akan keluar dari keluarga. Untuk memakainya lagi, orang tuamu perlu menghubungkannya kembali.',
   leaveFamily: 'Keluar dari keluarga',
   uninstallProtectionSectionTitle: 'Perlindungan hapus instal',
   uninstallProtectionSectionDescription:

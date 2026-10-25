@@ -1,13 +1,12 @@
 export const checkIn = {
   noPhotoBadge: 'No photo',
   historyTitle: 'Check-In History',
-  historyHint:
-    'Tap a photo to enlarge it. You can request a new Check-In above at any time.',
+  historyHint: 'Tap a photo to enlarge it.',
   historyEmpty: 'No Check-Ins yet.',
   screenTitle: 'Check-In',
   statusSafe: 'Safe',
   statusNoResponse: 'No response',
-  statusAskedForHelp: 'Asked for help (SOS)',
+  statusAskedForHelp: 'SOS sent',
   statusWaiting: 'Waiting',
   metaWaitingForLocationAndPhoto: 'Waiting for location and photo',
   metaWaitingForLocation: 'Waiting for location',
@@ -34,6 +33,7 @@ export const checkIn = {
   checkInConfirmedDescription: '{{deviceName}} confirmed they are safe.',
   childDeviceFallback: 'Child device',
   requestCheckIn: 'Request Check-In',
+  send: 'Send',
   requestCheckInNote:
     'Asks the child device for its location, plus a front-camera photo from a phone or tablet.',
   requestCheckInNoteLocationOnly: 'Asks the child device for its location.',

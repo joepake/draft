@@ -100,6 +100,8 @@ export const errors = {
   // `rewardTask/too-many` — the cap on active tasks at once, free or paid.
   rewardTaskLimitReached:
     'There are already as many active tasks as allowed at once. Remove one or wait until one is done, then try again.',
+  // `rewardTask/not-open` — an edit or a claim on a task already claimed or approved.
+  rewardTaskAlreadyDone: 'This task has already been marked done.',
   // `device/not-paired` — read by a child agent whose device was unpaired.
   deviceNotPaired:
     'This device is no longer paired with your family. Ask your parent to pair it again.',

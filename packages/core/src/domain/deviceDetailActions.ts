@@ -109,13 +109,17 @@ export function getActionSections(
   canUsePremiumControls = true,
 ): Array<{
   title: string;
-  subtitle: string;
+  /**
+   * None of the sections carries one since 2026-10-25: each restated what its
+   * cards already say ("Daily rules and device access" over Daily Limit and
+   * Blocked Hours). Kept optional for a section whose cards cannot.
+   */
+  subtitle?: string;
   actions: DeviceAction[];
 }> {
   return [
     {
       title: t('deviceDetail.essentialControls'),
-      subtitle: t('deviceDetail.dailyRulesAndDeviceAccess'),
       actions: [
         {
           id: 'daily-limit',
@@ -140,30 +144,33 @@ export function getActionSections(
           supportedBy: supportsSchedule,
         },
         {
-          id: 'app-blocking',
-          title: t('deviceDetail.blockedApps'),
-          description: t('deviceDetail.viewAndManageBlockedApps'),
-          icon: 'ban',
-          feature: 'Individual App Blocking',
-          // `'best-effort'` counts — that is the desktop and TV agents, and the
-          // weakness is reported in the same field rather than hidden;
-          // `appBlockingNoteKey` reads that same probe; the dashboard says it
-          // under its Blocked Apps card (the phone dropped it, 2026-10-23).
-          supportedBy: supportsAppBlocking,
-        },
-        {
-          id: 'app-limits',
-          title: t('deviceDetail.appLimits'),
-          description: t('deviceDetail.appLimitsDescription'),
+          id: 'apps',
+          title: t('deviceDetail.appAlerts'),
+          description: t('deviceDetail.appsDescription'),
           icon: 'apps',
           feature: 'Individual App Blocking',
-          // A per-app cap needs to know which app is being used and for how
-          // long, *and* something able to stop it — so the rule reads both
-          // flags rather than a platform. `APP_LIMIT_PLATFORMS` in
-          // `@kidgate/core/domain/controlSupport` is only the fallback for a
-          // phone, which publishes no probe; the argument for excluding iOS,
-          // and for what a browser on a Mac does to a platform list, is there.
-          supportedBy: supportsAppLimits,
+          /*
+           * Blocked apps, per-app limits and the app list on one card since
+           * 2026-10-24 — three cards about one object, each drawing its own
+           * list of the child's apps, so an app seen in one could not be acted
+           * on from it. Lit when ANY of the four probes answers yes; the screen
+           * behind it shows each part only where its own probe does:
+           *
+           * - `supportsAppBlocking` — `'best-effort'` counts (the desktop and
+           *   TV agents), and `appBlockingNoteKey` reads that same probe.
+           * - `supportsAppLimits` — reads `appBlock` and `screenTime` together
+           *   rather than a platform; `APP_LIMIT_PLATFORMS` is only a phone's
+           *   fallback, and the argument for excluding iOS is there.
+           * - `appInstallAlerts` and `appInventory` answer different questions
+           *   and can disagree: the television publishes `appInstallAlerts:
+           *   false` (no package receiver in `com.kidgate.app.tv`) and
+           *   `appInventory: true`, so neither flag speaks for the other.
+           */
+          supportedBy: device =>
+            supportsAppBlocking(device) ||
+            supportsAppLimits(device) ||
+            supportsAppInstallAlerts(device) ||
+            supportsAppInventory(device),
         },
         {
           id: 'reward-tasks',
@@ -182,7 +189,6 @@ export function getActionSections(
     },
     {
       title: t('deviceDetail.safetyMonitoring'),
-      subtitle: t('deviceDetail.locationAndWebSafety'),
       actions: [
         {
           id: 'request-check-in',
@@ -283,7 +289,6 @@ export function getActionSections(
     },
     {
       title: t('deviceDetail.alerts'),
-      subtitle: t('deviceDetail.alertsSubtitle'),
       actions: [
         {
           id: 'sos-alerts',
@@ -297,9 +302,9 @@ export function getActionSections(
           // `domain/sosSupport`.
           supportedBy: supportsSos,
         },
-        // Icons in this grid are the primary scan signal, so all fourteen
-        // cards carry a distinct one: `siren` is SOS, `shieldAlert` is tamper,
-        // `home` is place alerts and `appInstall` is app alerts.
+        // Icons in this grid are the primary scan signal, so all twelve
+        // cards carry a distinct one: `siren` is SOS, `shieldAlert` is tamper
+        // and `home` is place alerts.
         {
           id: 'tamper-alerts',
           title: t('deviceDetail.tamperAlerts'),
@@ -318,25 +323,6 @@ export function getActionSections(
           // a geofence crossing, and a device with no fix to compare against
           // one can never cross it.
           supportedBy: supportsLocation,
-        },
-        {
-          id: 'apps',
-          title: t('deviceDetail.appAlerts'),
-          description: t('deviceDetail.reviewAppInstallAlerts'),
-          icon: 'appInstall',
-          feature: 'App Review Reminders',
-          /*
-           * One card, two probes behind it — `appInstallAlerts` (a live
-           * install/uninstall feed) and `appInventory` (a full launcher-query
-           * snapshot) answer different questions and can disagree: the
-           * television publishes `appInstallAlerts: false` (no package
-           * receiver in `com.kidgate.app.tv`) and `appInventory: true`. The
-           * card stays lit if EITHER probe is true; the screen behind it
-           * struck-out whichever tab its own probe says no to, so neither
-           * flag has to speak for the other.
-           */
-          supportedBy: device =>
-            supportsAppInstallAlerts(device) || supportsAppInventory(device),
         },
         {
           id: 'message-alerts',
@@ -374,8 +360,8 @@ export function getActionSections(
  * **Before adding an id, ask: could a device with no `childId` still do it
  * standalone?** An unassigned device keeps the full grid — there is no profile
  * to defer to, and that is the honest floor rather than a lesser mode. Still
- * per-device on purpose: app-blocking, app-limits, location, tamper-alerts,
- * apps, web-history (`docs/CHILD_HUB.md`).
+ * per-device on purpose: apps, location, tamper-alerts, web-history
+ * (`docs/CHILD_HUB.md`).
  */
 export const PERSON_LEVEL_ACTION_IDS: ReadonlySet<string> = new Set([
   /*
@@ -469,7 +455,7 @@ export function getVisibleActionSectionsForDevices(
   devices: readonly DeviceSupportFacts[],
   showUnsupported: boolean,
   canUsePremiumControls = true,
-): Array<{ title: string; subtitle: string; actions: DeviceAction[] }> {
+): Array<{ title: string; subtitle?: string; actions: DeviceAction[] }> {
   const sections = getActionSections(t, canUsePremiumControls);
   if (showUnsupported) {
     return sections;
@@ -516,7 +502,7 @@ export function getVisibleActionSections(
   device: DeviceSupportFacts,
   showUnsupported: boolean,
   canUsePremiumControls = true,
-): Array<{ title: string; subtitle: string; actions: DeviceAction[] }> {
+): Array<{ title: string; subtitle?: string; actions: DeviceAction[] }> {
   const sections = getActionSections(t, canUsePremiumControls);
   if (showUnsupported) {
     return sections;

@@ -1,5 +1,5 @@
 export const rewardTask = {
-  rewardTasksNote: 'تُضاف الدقائق المعتمدة إلى حد اليوم.',
+  rewardTasksNote: 'تُضاف الدقائق المعتمدة إلى حد يوم اعتمادها.',
   unableToCreate: 'تعذّر إنشاء المهمة. حاول مرة أخرى.',
   unableToUpdate: 'تعذّر حفظ المهمة. حاول مرة أخرى.',
   unableToDelete: 'تعذّر حذف المهمة. حاول مرة أخرى.',
@@ -8,7 +8,6 @@ export const rewardTask = {
   unableToClaim: 'تعذّر الإرسال إلى والديك. حاول مرة أخرى.',
   newTask: 'مهمة جديدة',
   editTask: 'تعديل المهمة',
-  formSubtitle: 'تُضاف المكافأة إلى وقت الشاشة لليوم بعد موافقتك.',
   titleLabel: 'المهمة',
   titlePlaceholder: 'مثال: قراءة كتاب لمدة 20 دقيقة',
   minutesLabel: 'المكافأة',
@@ -66,7 +65,7 @@ export const rewardTask = {
   taskRejected: 'أُعيدت مهمة المكافأة',
   taskRejectedDescription: 'أُعيدت «{{title}}» إلى {{deviceName}} لمحاولة أخرى.',
   starsLabel: 'الصعوبة',
-  starsHint: 'مدى صعوبة هذه المهمة. يجمع طفلك هذه النجوم.',
+  starsHint: 'يجمع طفلك هذا العدد من النجوم.',
   starsEasy: 'سهلة',
   starsMedium: 'متوسطة',
   starsHard: 'صعبة',

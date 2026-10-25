@@ -2,12 +2,10 @@ export const usage = {
   title: 'Laporan Penggunaan',
   fallbackDeviceName: 'Perangkat anak',
   sectionToday: 'Hari ini',
-  percentOfLimit: '{{percent}}% dari batas',
   reportedAt: 'Diperbarui {{time}}',
   statUsedLabel: 'Terpakai',
   statLeftLabel: 'Sisa',
   statLimitLabel: 'Batas',
-  limitOff: 'Nonaktif',
   insightDailyLimitReached: 'Batas Harian tercapai',
   insightNearDailyLimit: 'Mendekati Batas Harian',
   insightNoDailyLimit: 'Batas harian belum diatur',
@@ -46,26 +44,23 @@ export const usage = {
   syncNoteIos:
     'Di iPhone, waktu layar baru masuk setelah KidGate berjalan di perangkat anak, jadi bisa tertinggal beberapa jam jika aplikasinya belum dibuka.',
   syncNoteTv:
-    'TV ini hanya memeriksa secara berkala, jadi waktu layar bisa butuh waktu hingga satu jam untuk muncul di layar ini — lebih lama jika tidak ada koneksi internet.',
+    'TV ini hanya mengirim laporan secara berkala, jadi waktu layar bisa butuh waktu hingga satu jam untuk muncul di layar ini — lebih lama jika tidak ada koneksi internet.',
   sectionLast30Days: '30 hari terakhir',
-  comparePeriodTotal: 'Total 30 hari',
+  comparePeriodTotal: 'Total',
   compareDayAvg: 'Rata-rata harian',
-  compareVsYesterday: 'vs kemarin',
+  compareVsYesterdaySameTime: '{{value}} dibanding kemarin di jam yang sama',
   dayTodayShort: 'Hari ini',
   chartEmpty: 'Grafik penggunaan sedang tidak tersedia.',
   chartNoDataYet:
     'Batang akan terisi seiring perangkat anak menyinkronkan penggunaan harian. Hari ini diperbarui dari menit langsung.',
   chartDayNone: 'Tidak ada penggunaan',
   bonusMinutesChip: 'Bonus +{{minutes}} mnt',
-  dailyLimitGuide: 'Batas Harian {{duration}}',
-  sectionTopApps: 'Aplikasi paling sering digunakan',
   topAppsHint:
     'Aplikasi paling sering digunakan hari ini di perangkat anak. Data bertambah seiring sinkronisasi Waktu Layar / Akses Penggunaan.',
   topAppsExcludedNote:
     'Screensaver, layar utama, dan layar KidGate sendiri tidak dihitung sebagai waktu penggunaan. Saat perangkat menyala tetapi tidak ada yang memakainya, menit-menit itu dicatat sebagai “Tidak dipakai”.',
   topAppsAiNote:
     'Sebagian jenis disimpulkan dari nama aplikasi, bukan dicocokkan dengan aplikasi yang dikenal, jadi ada yang mungkin meleset.',
-  errorTitle: 'Tidak dapat memuat data penggunaan',
   errorDescription: 'Periksa koneksi Anda dan coba lagi.',
   tryAgain: 'Coba lagi',
   // Shown only when the rating is known — it is 0 for much of the long
@@ -82,9 +77,10 @@ export const usage = {
   protectionBlockedApps: 'Pembukaan aplikasi diblokir',
   protectionWebBlocked: 'Situs web diblokir',
   protectionTamper: 'Peringatan perlindungan',
-  sectionTimeline: 'Kapan perangkat dipakai',
+  sectionTimeline: 'Kapan layar menyala',
   timelineUsed: 'Sedang dipakai',
   timelineIdle: 'Tidak dipakai',
+  idleRow: 'Layar menyala, tidak dipakai',
   timelineUnmeasured: 'Tidak terukur',
   timelineUnmeasuredHint:
     'KidGate tidak berjalan di perangkat, atau perangkat sedang tidur. Menit itu juga tidak masuk ke total.',

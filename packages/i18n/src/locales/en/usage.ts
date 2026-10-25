@@ -2,12 +2,10 @@ export const usage = {
   title: 'Usage Report',
   fallbackDeviceName: 'Child device',
   sectionToday: 'Today',
-  percentOfLimit: '{{percent}}% of limit',
   reportedAt: 'Updated {{time}}',
   statUsedLabel: 'Used',
   statLeftLabel: 'Left',
   statLimitLabel: 'Limit',
-  limitOff: 'Off',
   insightDailyLimitReached: 'Daily Limit reached',
   insightNearDailyLimit: 'Near the Daily Limit',
   insightNoDailyLimit: 'No Daily Limit set',
@@ -48,19 +46,17 @@ export const usage = {
   syncNoteIos:
     'On iPhone, screen time arrives only after KidGate has run on the child device, so it can be hours behind if the app has not been opened.',
   syncNoteTv:
-    'This television only checks in periodically, so screen time can take up to an hour to reach this screen — longer with no internet connection.',
+    'This television only connects periodically, so screen time can take up to an hour to reach this screen — longer with no internet connection.',
   sectionLast30Days: 'Last 30 days',
-  comparePeriodTotal: '30-day total',
+  comparePeriodTotal: 'Total',
   compareDayAvg: 'Daily average',
-  compareVsYesterday: 'vs yesterday',
+  compareVsYesterdaySameTime: '{{value}} vs this time yesterday',
   dayTodayShort: 'Today',
   chartEmpty: 'The usage chart is unavailable right now.',
   chartNoDataYet:
     'Bars fill in as the child device syncs daily usage. Today updates from live minutes.',
   chartDayNone: 'No usage',
   bonusMinutesChip: '+{{minutes}} min bonus',
-  dailyLimitGuide: 'Daily Limit {{duration}}',
-  sectionTopApps: 'Most used apps',
   topAppsHint:
     'Today’s most used apps on the child device. Data builds up as Screen Time / Usage Access syncs.',
   // Said rather than left to be noticed, on every platform that excludes
@@ -82,7 +78,6 @@ export const usage = {
   // and concludes something from it.
   topAppsAiNote:
     'Some kinds were worked out from the app’s name rather than matched to a known app, so a few may be off.',
-  errorTitle: 'Unable to load usage',
   errorDescription: 'Check your connection and try again.',
   tryAgain: 'Try again',
   // Shown only when the rating is known — it is 0 for much of the long
@@ -105,9 +100,12 @@ export const usage = {
   protectionBlockedApps: 'Blocked app opens',
   protectionWebBlocked: 'Websites blocked',
   protectionTamper: 'Protection Alerts',
-  sectionTimeline: 'When it was used',
+  sectionTimeline: 'When the screen was on',
   timelineUsed: 'In use',
   timelineIdle: 'Not in use',
+  // The idle minutes as a row under an app list, where the legend word alone
+  // read as "not used at all for 1h 39m".
+  idleRow: 'Screen on, not in use',
   timelineUnmeasured: 'Not measured',
   timelineUnmeasuredHint:
     'KidGate was not running on the device, or the device was asleep. Those minutes are not in the total either.',

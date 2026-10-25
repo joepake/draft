@@ -1,5 +1,4 @@
 export const appInventory = {
-  title: 'このデバイスのアプリ',
   pendingTitle: '承認待ち',
   pendingBadge: '許可するまでブロック',
   approvedBadge: 'あなたが許可済み',
@@ -16,7 +15,6 @@ export const appInventory = {
   newBadge: '新規',
   ageBadge: '{{age}}+',
   browserExtension: 'Chrome 拡張機能',
-  titleExtension: 'このブラウザの拡張機能',
   subtitleExtension:
     '変更点だけでなく、KidGate がブラウザで見つけた拡張機能すべてです。',
   summaryFlaggedExtension:
@@ -39,8 +37,17 @@ export const appInventory = {
   blockHint:
     'アプリを止めるには、デバイス本体で「ブロックされたアプリ」を開いてください。',
   howItWorksLabel: 'このリストの仕組み',
-  markSafe: '問題なし',
+  markSafe: '問題なしにする',
   dismissedTitle: 'あなたが問題なしとしたもの',
   undoSafe: '取り消す',
+  tabGeneral: '概要',
+  searchPlaceholder: 'アプリを検索',
+  searchEmpty: '一致するアプリはありません。',
+  blockedBadge: 'ブロック中',
+  setLimit: '時間の上限を設定',
+  editLimit: '時間の上限を変更',
   howToBlock: 'ブロックする方法',
+  blockApp: 'ブロック',
+  unblockApp: 'ブロックを解除',
+  iosBlockOnDevice: 'iPhoneでは、アプリのブロックはお子さまのiPhone本体で設定します。',
 } as const;

@@ -1,5 +1,6 @@
 export const rewardTask = {
-  rewardTasksNote: 'Genehmigte Minuten werden dem heutigen Limit hinzugefügt.',
+  rewardTasksNote:
+    'Genehmigte Minuten werden dem Limit des Tages hinzugefügt, an dem sie genehmigt werden.',
   unableToCreate: 'Aufgabe konnte nicht erstellt werden. Bitte erneut versuchen.',
   unableToUpdate: 'Aufgabe konnte nicht gespeichert werden. Bitte erneut versuchen.',
   unableToDelete: 'Aufgabe konnte nicht gelöscht werden. Bitte erneut versuchen.',
@@ -9,8 +10,6 @@ export const rewardTask = {
     'Konnte nicht an deine Eltern gesendet werden. Bitte erneut versuchen.',
   newTask: 'Neue Aufgabe',
   editTask: 'Aufgabe bearbeiten',
-  formSubtitle:
-    'Die Belohnung wird nach deiner Genehmigung zur heutigen Bildschirmzeit hinzugefügt.',
   titleLabel: 'Aufgabe',
   titlePlaceholder: 'z. B. 20 Minuten ein Buch lesen',
   minutesLabel: 'Belohnung',
@@ -72,7 +71,7 @@ export const rewardTask = {
   taskRejectedDescription:
     '„{{title}}“ wurde an {{deviceName}} für einen neuen Versuch zurückgegeben.',
   starsLabel: 'Schwierigkeit',
-  starsHint: 'Wie schwer diese Aufgabe ist. Dein Kind sammelt diese Sterne.',
+  starsHint: 'Dein Kind sammelt so viele Sterne.',
   starsEasy: 'Leicht',
   starsMedium: 'Mittel',
   starsHard: 'Schwer',

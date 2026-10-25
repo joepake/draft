@@ -1,6 +1,6 @@
 export const auth = {
-  welcomeBack: 'おかえりなさい',
-  loginSubtitle: 'サインインして、お子さまのデバイスを管理・保護しましょう。',
+  welcomeBack: 'KidGateにサインイン',
+  loginSubtitle: 'お子さまのデバイスを管理・保護します。',
   emailSignInTitle: 'メールでサインイン',
   emailSignInSubtitle: '保護者のメールアドレスとパスワードを使います。',
   createAccountTitle: '保護者アカウントを作成',

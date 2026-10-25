@@ -4,7 +4,6 @@ export const placeAlerts = {
   mergedFromDevices:
     '각 기기에 있던 장소를 합쳤습니다. 저장하면 이 목록 하나가 모든 자녀 기기에 적용됩니다.',
   fallbackDeviceName: '자녀 기기',
-  statusReady: '위치 정보 준비 완료',
   statusNeedLocation: '자녀 기기의 위치 정보를 기다리는 중',
   tabPlaces: '장소',
   tabActivity: '활동',
@@ -22,8 +21,6 @@ export const placeAlerts = {
   editPlaceAccessibility: '{{name}} 편집',
   radiusLabel: '알림 반경',
   radiusValue: '{{meters}} m',
-  radiusHint:
-    '이 장소로 인정되려면 기기가 얼마나 가까워야 하는지입니다. 반경을 기기의 위치 오차보다 작게 해도 알림이 더 정확해지지 않으며, 도착이나 출발 알림이 오지 않을 수 있습니다.',
   radiusAccuracyHint: '이 기기는 여기에서 위치를 약 ±{{accuracy}} m 오차로 보고합니다.',
   radiusBelowAccuracy:
     '여기에서 이 기기의 정확도는 약 ±{{accuracy}} m뿐입니다. {{minimum}} m 이상으로 설정하세요. 그렇지 않으면 이곳의 도착이나 출발 알림이 오지 않을 수 있습니다.',
@@ -43,8 +40,6 @@ export const placeAlerts = {
   emptyEventsTitle: '아직 장소 활동이 없습니다',
   emptyEventsSubtitle:
     '이 기기가 저장된 장소에 들어가거나 나가면 여기에 이벤트가 표시됩니다.',
-  emptyPlaces:
-    '지도에서 위치를 선택하고 이름을 지정한 후 저장하세요. 최대 {{max}}개까지 등록할 수 있습니다.',
   noLocationToast: '먼저 자녀 기기의 위치 업데이트를 기다려 주세요.',
   maxPlacesToast: '최대 {{max}}개의 장소까지 저장할 수 있습니다.',
   nameRequiredToast: '장소 이름을 입력하세요.',

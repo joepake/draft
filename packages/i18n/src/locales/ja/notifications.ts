@@ -11,7 +11,7 @@ export const notifications = {
   sectionSummary: 'サマリー',
   sectionQuietHours: 'サイレント時間',
   sectionQuietHoursHint:
-    'この時間帯は通知が送信されず、終了後にあとから送信されることもありません。イベントはアクティビティには引き続き表示されます。SOSは決して保留されず、最も重大なメッセージ警告も引き続き届きます。',
+    'この時間帯はSOSと、最も重大なメッセージ警告だけが届きます。あとから送信されることはありません。イベントはアクティビティに引き続き表示されます。',
   quietHoursLabel: 'サイレント時間',
   quietHoursOff: 'オフ — 通知はいつでも届きます',
   quietHoursActive: '{{start}}〜{{end}} は通知なし',
@@ -31,7 +31,7 @@ export const notifications = {
   alert: {
     tamperAlerts: {
       label: '保護アラート',
-      hint: 'お子さまのデバイスで、KidGateに必要な権限がオフにされたとき、日付・時刻・タイムゾーンが変更されたとき、またはロック中にSOSが押されたとき。SOSのアラート自体は常に届きます。',
+      hint: 'お子さまのデバイスで、KidGateに必要な権限がオフにされたとき、日付・時刻やタイムゾーンが変更されたとき、またはロック中にSOSが押されたとき。',
     },
     placeAlerts: {
       label: '場所アラート',

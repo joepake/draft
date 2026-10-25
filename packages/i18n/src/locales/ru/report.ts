@@ -8,6 +8,7 @@ export const report = {
   title: 'Отчёт за неделю',
   subtitle: 'Что KidGate заметил за неделю.',
   weekOf: 'Неделя {{week}}',
+  weekOfYear: 'Неделя {{week}} - {{year}}',
   range: '{{from}} – {{to}}',
   triggerScheduled: 'Отправлен в понедельник',
   triggerManual: 'Создан вами',
@@ -44,7 +45,7 @@ export const report = {
   findingBlockedApps:
     'Заблокированных запусков приложений — {{count}}, на прошлой неделе было {{previous}}.',
   findingBlockedWeb:
-    'Отфильтровано сайтов — {{count}}, на прошлой неделе было {{previous}}.',
+    'Посещений заблокированных сайтов — {{count}}, на прошлой неделе было {{previous}}.',
   findingQuietWeek:
     'Спокойная неделя — всего {{total}}, и ничего, что потребовало бы вашего внимания.',
 
@@ -61,7 +62,7 @@ export const report = {
   findingBlockedAppsDown:
     'Заблокированных запусков — {{count}}, на прошлой неделе было {{previous}}.',
   findingBlockedWebDown:
-    'Отфильтрованных сайтов — {{count}}, на прошлой неделе было {{previous}}.',
+    'Посещений заблокированных сайтов стало меньше — {{count}}, на прошлой неделе было {{previous}}.',
   findingLearningTime: '{{duration}} в учебных приложениях, большая часть — {{app}}.',
   findingTasksDone: 'Выполненных заданий — {{count}}, начислено {{bonus}}.',
   findingAskedFirst: 'Отправлено запросов — {{count}}, вместо обхода правил.',
@@ -107,7 +108,7 @@ export const report = {
   rateLimited:
     'Пока не удаётся составить ещё один отчёт. Повторите попытку через минуту.',
   loadFailedTitle: 'Отчёты не загрузились',
-  loadFailed: 'Не удалось открыть отчёты. Потяните вниз, чтобы повторить.',
+  loadFailed: 'Не удалось открыть отчёты.',
   failed: 'Не удалось составить отчёт. Попробуйте чуть позже.',
 
   historyTitle: 'Прошлые недели',

@@ -1,6 +1,6 @@
 export const auth = {
-  welcomeBack: 'वापसी पर स्वागत है',
-  loginSubtitle: 'अपने बच्चों के डिवाइस प्रबंधित और सुरक्षित करने के लिए साइन इन करें।',
+  welcomeBack: 'KidGate में साइन इन करें',
+  loginSubtitle: 'अपने बच्चों के डिवाइस प्रबंधित करें और सुरक्षित रखें।',
   emailSignInTitle: 'ईमेल से साइन इन करें',
   emailSignInSubtitle: 'अपना अभिभावक ईमेल और पासवर्ड इस्तेमाल करें।',
   createAccountTitle: 'अभिभावक खाता बनाएँ',

@@ -82,6 +82,7 @@ export const plans = {
   footerLegalAndroid:
     'Facturé via Google Play. Les abonnements se renouvellent automatiquement jusqu’à ce que vous les annuliez dans Google Play. L’achat unique ne se renouvelle pas et vaut tant que KidGate existe.',
   subscribeButton: 'S’abonner à Premium',
+  buyLifetimeButton: 'Acheter à vie',
   restoringPurchases: 'Restauration…',
   restorePurchases: 'Restaurer les achats',
   premiumDescription:
@@ -168,7 +169,7 @@ export const plans = {
   trustNoAds: 'Sans publicité',
   freePlanName: 'Gratuit',
   freeDescription:
-    'L’essentiel reste actif sur chaque appareil enfant, avec les rapports d’un seul. Cette formule n’expire jamais.',
+    'Vos règles restent actives sur chaque appareil enfant, et un seul continue d’envoyer ses rapports. Cette formule n’expire jamais.',
   featureOneChildDevice: 'Rapports d’un appareil enfant',
   termLifetime: 'À vie',
   badgeOneTime: 'Paiement unique',
@@ -237,5 +238,7 @@ export const plans = {
   teaserProofParents: 'Parents : {{count}}',
   teaserParentCap:
     'C’est le maximum de parents pour une famille sans Premium. Premium en autorise deux fois plus.',
+  teaserApps:
+    'Premium bloque des applications depuis votre téléphone et vous prévient quand l’une est installée ou supprimée.',
   teaserDeviceNote: 'Seul l’appareil surveillé envoie des données.',
 } as const;

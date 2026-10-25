@@ -3,7 +3,9 @@ export const videoHistory = {
   fallbackDeviceName: 'बच्चे का डिवाइस',
   toggleLabel: 'देखे गए वीडियो रिकॉर्ड करें',
   toggleHint:
-    'Android फ़ोन और TV पर YouTube ऐप में, और KidGate एक्सटेंशन वाले Chrome में देखे गए वीडियो। TV पर Shorts सूची में नहीं दिखते, क्योंकि TV ऐप उन्हें Shorts के रूप में नहीं पहचानता।',
+    'Android फ़ोन और TV पर YouTube में, और KidGate एक्सटेंशन वाले Chrome में।',
+  tvShortsInfo:
+    'TV पर Shorts सूची में नहीं दिखते, क्योंकि YouTube TV ऐप उन्हें Shorts के रूप में नहीं पहचानता।',
   toggleFailed: 'वीडियो इतिहास अपडेट नहीं हो सका। फिर से प्रयास करें।',
   unsupportedNote:
     'यह डिवाइस देखे गए वीडियो नहीं बता सकता। यह Android, Android TV और Chrome पर काम करता है।',
@@ -23,7 +25,6 @@ export const videoHistory = {
   extensionStepEnable: 'उस डिवाइस के लिए “देखे गए वीडियो रिकॉर्ड करें” चालू करें',
   emptyTitle: 'अभी तक कुछ नहीं देखा',
   emptyBody: 'जब आपका बच्चा KidGate चालू रहते देखेगा, वीडियो यहाँ दिखेंगे।',
-  emptyBodyOff: 'देखे गए वीडियो सूचीबद्ध करने के लिए ऊपर रिकॉर्डिंग चालू करें।',
   viewsMeta_one: '{{count}} बार',
   viewsMeta: '{{count}} बार',
   dayToday: 'आज',

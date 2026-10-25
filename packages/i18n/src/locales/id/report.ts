@@ -2,6 +2,7 @@ export const report = {
   title: 'Laporan mingguan',
   subtitle: 'Yang diperhatikan KidGate sepanjang minggu ini.',
   weekOf: 'Minggu {{week}}',
+  weekOfYear: 'Minggu {{week}} - {{year}}',
   range: '{{from}} – {{to}}',
   triggerScheduled: 'Dikirim Senin',
   triggerManual: 'Dibuat oleh Anda',
@@ -35,7 +36,8 @@ export const report = {
   findingLimitHit: 'Batas harian {{limit}} tercapai pada {{count}} hari.',
   findingBlockedApps:
     '{{count}} pembukaan aplikasi diblokir, dibanding {{previous}} minggu lalu.',
-  findingBlockedWeb: '{{count}} situs difilter, dibanding {{previous}} minggu lalu.',
+  findingBlockedWeb:
+    '{{count}} kunjungan ke situs diblokir, dibanding {{previous}} minggu lalu.',
   findingQuietWeek:
     'Minggu yang tenang — total {{total}}, dan tidak ada yang perlu Anda tangani.',
 
@@ -48,7 +50,7 @@ export const report = {
   findingBlockedAppsDown:
     '{{count}} pembukaan aplikasi diblokir, turun dari {{previous}} minggu lalu.',
   findingBlockedWebDown:
-    '{{count}} situs difilter, turun dari {{previous}} minggu lalu.',
+    '{{count}} kunjungan ke situs diblokir, turun dari {{previous}} minggu lalu.',
   findingLearningTime: '{{duration}} di aplikasi edukasi, sebagian besar di {{app}}.',
   findingTasksDone: '{{count}} tugas selesai, memperoleh {{bonus}}.',
   findingAskedFirst: '{{count}} permintaan dikirim, bukan mengakali aturan.',
@@ -93,7 +95,7 @@ export const report = {
     'Tidak ada waktu layar yang tercatat selama dua minggu terakhir, jadi belum ada yang bisa dilaporkan. Perangkat yang offline tidak melaporkan apa pun, dan itu tidak sama dengan minggu yang tenang.',
   rateLimited: 'Belum bisa menulis laporan lagi. Coba lagi dalam satu menit.',
   loadFailedTitle: 'Laporan gagal dimuat',
-  loadFailed: 'Laporan tidak dapat dibuka. Tarik ke bawah untuk mencoba lagi.',
+  loadFailed: 'Laporan tidak dapat dibuka.',
   failed: 'Laporan tidak bisa ditulis. Coba lagi sebentar lagi.',
 
   historyTitle: 'Minggu-minggu sebelumnya',

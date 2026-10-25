@@ -3,7 +3,9 @@ export const videoHistory = {
   fallbackDeviceName: 'Kindergerät',
   toggleLabel: 'Angesehene Videos aufzeichnen',
   toggleHint:
-    'Angesehene Videos in der YouTube-App auf Android-Handys und Fernsehern sowie in Chrome mit der KidGate-Erweiterung. Auf dem Fernseher werden Shorts nicht aufgeführt, weil die TV-App sie nicht als Shorts erkennt.',
+    'YouTube auf Android-Handys und Fernsehern sowie in Chrome mit der KidGate-Erweiterung.',
+  tvShortsInfo:
+    'Auf einem Fernseher werden Shorts nicht aufgeführt, weil die YouTube-App auf dem Fernseher sie nicht als Shorts erkennt.',
   toggleFailed:
     'Der Videoverlauf konnte nicht aktualisiert werden. Versuche es erneut.',
   unsupportedNote:
@@ -24,7 +26,6 @@ export const videoHistory = {
   extensionStepEnable: '„Angesehene Videos aufzeichnen“ für dieses Gerät einschalten',
   emptyTitle: 'Noch nichts angesehen',
   emptyBody: 'Videos erscheinen hier, sobald dein Kind mit laufendem KidGate zusieht.',
-  emptyBodyOff: 'Aktiviere oben die Aufzeichnung, um angesehene Videos aufzulisten.',
   viewsMeta_one: '{{count}} Mal',
   viewsMeta: '{{count}} Mal',
   dayToday: 'Heute',

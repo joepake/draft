@@ -2,12 +2,10 @@ export const usage = {
   title: '사용 보고서',
   fallbackDeviceName: '자녀 기기',
   sectionToday: '오늘',
-  percentOfLimit: '한도의 {{percent}}%',
   reportedAt: '{{time}} 업데이트됨',
   statUsedLabel: '사용',
   statLeftLabel: '남음',
   statLimitLabel: '제한',
-  limitOff: '꺼짐',
   insightDailyLimitReached: '일일 제한 도달',
   insightNearDailyLimit: '일일 제한에 근접',
   insightNoDailyLimit: '일일 제한이 없습니다',
@@ -49,24 +47,21 @@ export const usage = {
   syncNoteTv:
     '이 TV는 주기적으로만 접속하므로 스크린 타임이 이 화면에 반영되기까지 최대 1시간이 걸릴 수 있습니다. 인터넷 연결이 없으면 더 오래 걸립니다.',
   sectionLast30Days: '최근 30일',
-  comparePeriodTotal: '30일 합계',
+  comparePeriodTotal: '합계',
   compareDayAvg: '일 평균',
-  compareVsYesterday: '어제 대비',
+  compareVsYesterdaySameTime: '어제 같은 시간 대비 {{value}}',
   dayTodayShort: '오늘',
   chartEmpty: '지금은 사용 그래프를 사용할 수 없습니다.',
   chartNoDataYet:
     '자녀 기기가 하루 사용량을 동기화하면 막대가 채워집니다. 오늘 항목은 실시간 사용 시간으로 업데이트됩니다.',
   chartDayNone: '사용 없음',
   bonusMinutesChip: '보너스 +{{minutes}}분',
-  dailyLimitGuide: '일일 제한 {{duration}}',
-  sectionTopApps: '가장 많이 사용한 앱',
   topAppsHint:
     '자녀 기기에서 오늘 가장 많이 사용한 앱입니다. 스크린 타임/사용 정보 접근이 동기화되면서 데이터가 쌓입니다.',
   topAppsExcludedNote:
     '화면 보호기, 홈 화면, KidGate 자체 화면은 사용 시간에 포함되지 않습니다. 기기가 켜져 있어도 실제로 사용하지 않은 시간은 ‘사용 안 함’으로 기록됩니다.',
   topAppsAiNote:
     '일부 분류는 알려진 앱과 대조한 것이 아니라 앱 이름에서 추정한 것이라 정확하지 않을 수 있습니다.',
-  errorTitle: '사용 정보를 불러올 수 없습니다',
   errorDescription: '연결 상태를 확인한 후 다시 시도해 주세요.',
   tryAgain: '다시 시도',
   // Shown only when the rating is known — it is 0 for much of the long
@@ -83,9 +78,10 @@ export const usage = {
   protectionBlockedApps: '차단된 앱 실행',
   protectionWebBlocked: '차단된 웹사이트',
   protectionTamper: '보호 알림',
-  sectionTimeline: '사용한 시간대',
+  sectionTimeline: '화면이 켜져 있던 시간대',
   timelineUsed: '사용 중',
   timelineIdle: '사용 안 함',
+  idleRow: '화면 켜짐, 사용 안 함',
   timelineUnmeasured: '측정 안 됨',
   timelineUnmeasuredHint:
     'KidGate가 기기에서 실행되지 않았거나 기기가 절전 상태였습니다. 이 시간은 총합에도 포함되지 않습니다.',

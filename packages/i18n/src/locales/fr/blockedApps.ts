@@ -17,7 +17,7 @@ export const blockedApps = {
   installApprovalInfoLine2:
     'Vous recevez une notification, et l’application apparaît ci-dessous, dans Applications bloquées, jusqu’à ce que vous l’autorisiez.',
   installApprovalInfoLine3:
-    'Autoriser une application lui permet de s’ouvrir immédiatement. Une application que vous n’autorisez pas reste simplement bloquée.',
+    'Une application que vous autorisez s’ouvre en une minute sur un appareil d’enfant connecté. Une application que vous n’autorisez pas reste bloquée.',
   installApprovalInfoLine1Ios:
     'Tant que cette option est activée, l’App Store est masqué sur l’appareil de l’enfant : aucune nouvelle application ne peut donc être installée.',
   installApprovalInfoLine2Ios:
@@ -39,15 +39,15 @@ export const blockedApps = {
   heroTitle: 'Applications sélectionnées pour le blocage',
   heroSubtitle:
     'Ces applications et catégories sont sélectionnées sur l’appareil de l’enfant. KidGate synchronise cette liste afin que vous puissiez la consulter.',
-  toggleTitle: 'Activer le blocage des applications',
+  toggleTitle: 'Activer les Applications bloquées',
   toggleSubtitleOn:
     'Les applications sélectionnées sont bloquées sur l’appareil de l’enfant.',
   toggleSubtitleOff:
     'Activez cette option pour bloquer à distance les applications sélectionnées.',
-  toggleAccessibilityLabel: 'Activer le blocage des applications',
+  toggleAccessibilityLabel: 'Activer les Applications bloquées',
   emptyTitle: 'Aucune application bloquée',
   emptySubtitle:
-    'Sur l’appareil de l’enfant, ouvrez les Réglages KidGate, saisissez le code PIN parent, puis ouvrez Blocage des applications → Applications bloquées et enregistrez la sélection.',
+    'Bloquez une application depuis Applications installées. Sur un iPhone, choisissez les applications sur l’iPhone lui-même.',
   emptySubtitleTv:
     'Sur la TV, ouvrez KidGate, sélectionnez « {{button}} », saisissez le code PIN parent, puis choisissez les applications et enregistrez.',
   sectionTitle: 'Liste des applications bloquées',
@@ -56,11 +56,11 @@ export const blockedApps = {
     'Sous iOS, Apple peut masquer les noms exacts des applications sur les appareils des parents. Sur les autres appareils, les noms des applications sélectionnées sont synchronisés ici. Pour modifier la liste, le code PIN parent est toujours requis sur l’appareil de l’enfant.',
   infoTitle: 'Fonctionnement',
   infoLine1:
-    'Sélectionnez les applications sur l’appareil de l’enfant après avoir saisi le code PIN parent.',
+    'Bloquez des applications depuis Applications installées. Sur un iPhone, choisissez-les sur l’iPhone avec le code PIN parent.',
   infoLine2:
     'Le verrouillage, les Heures bloquées et la Limite quotidienne continuent de bloquer toutes les applications.',
   infoLine3:
-    'Vous pouvez activer ou désactiver le blocage à tout moment depuis cet écran.',
+    'Vous pouvez activer ou désactiver le blocage à tout moment depuis cet écran. Un appareil d’enfant connecté reçoit chaque changement en une minute.',
   appKind: 'Application',
   categoryKind: 'Catégorie',
   websiteKind: 'Site Web',
@@ -75,7 +75,7 @@ export const blockedApps = {
   blockedAppsLabel: 'Applications bloquées',
   appsConfiguredChip: 'Applications configurées',
   appsNotSetChip: 'Applications non configurées',
-  appBlockingSectionTitle: 'Blocage des applications',
+  appBlockingSectionTitle: 'Applications bloquées',
   appBlockingSectionDescription:
     'Choisissez les applications que les parents peuvent bloquer sur cet appareil.',
   savedItemsForBlocking: '{{count}} éléments enregistrés pour le blocage.',
@@ -85,10 +85,11 @@ export const blockedApps = {
     'Impossible d’ouvrir le sélecteur d’applications. Veuillez réessayer.',
   wizardStepPin: 'Saisissez le code PIN parent lorsque les Réglages le demandent.',
   wizardStepChoose:
-    'Ouvrez « Applications bloquées » dans « Blocage des applications », cochez les applications et enregistrez.',
+    'Ouvrez « Applications bloquées », cochez les applications et enregistrez.',
   pickerSubtitle:
     'Choisissez les applications et catégories à bloquer sur cet appareil.',
   pickerSubtitleAndroid:
-    'Les applications cochées sont fermées dès leur ouverture tant que le Blocage des applications est activé.',
+    'Les applications cochées sont fermées dès leur ouverture tant que « Applications bloquées » est activé.',
   pickerEmpty: 'Aucune application trouvée sur cet appareil.',
+  blockingOffPill: 'Applications bloquées : désactivé',
 } as const;

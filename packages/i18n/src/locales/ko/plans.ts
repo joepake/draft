@@ -79,6 +79,7 @@ export const plans = {
   footerLegalAndroid:
     'Google Play를 통해 결제됩니다. 구독은 Google Play에서 해지할 때까지 자동 갱신됩니다. 일회성 결제는 갱신되지 않으며 KidGate가 제공되는 동안 유지됩니다.',
   subscribeButton: 'Premium 구독하기',
+  buyLifetimeButton: '평생 이용권 구매하기',
   restoringPurchases: '복원 중…',
   restorePurchases: '구매 복원',
   premiumDescription:
@@ -161,7 +162,7 @@ export const plans = {
   trustNoAds: '광고 없음',
   freePlanName: '무료',
   freeDescription:
-    '기본 기능은 모든 자녀 기기에서 계속 작동하고, 보고는 1대에서 받습니다. 기한이 없습니다.',
+    '규칙은 모든 자녀 기기에서 계속 작동하고, 한 대는 계속 보고합니다. 기한이 없습니다.',
   featureOneChildDevice: '자녀 기기 1대에서 보고',
   termLifetime: '평생',
   badgeOneTime: '1회 결제',
@@ -220,5 +221,7 @@ export const plans = {
   teaserProofParents: '부모: {{count}}',
   teaserParentCap:
     'Premium 없이 한 가족에 둘 수 있는 부모는 여기까지입니다. Premium은 두 배입니다.',
+  teaserApps:
+    'Premium을 사용하면 내 휴대폰에서 앱을 차단할 수 있고, 앱이 설치되거나 삭제되면 알려 줍니다.',
   teaserDeviceNote: '보고는 모니터링 중인 기기 1대에서만 옵니다.',
 } as const;

@@ -139,17 +139,16 @@ export const messageMonitoring = {
       'Android turned off a permission KidGate needs, so messages are no longer being checked. Open KidGate on your child’s device and allow it again.',
     offTitle: 'Message Alerts are not switched on',
     // Never granted: the fix is on the child's device.
-    offBody:
-      'Nothing is being checked on your child’s device, so no alert can appear here. Open KidGate on their device to set it up.',
+    offBody: 'Open KidGate on your child’s device to set it up.',
     // Granted, and the parent's switch is off: the fix is on this screen.
     switchedOffBody:
-      'Nothing is being checked on your child’s device, so no alert can appear here. Turn on “Scan messages they receive” in the settings on this screen.',
+      'Turn on “Scan messages they receive” in the settings on this screen.',
     pendingTitle: 'Waiting for your child’s device to apply this',
     pendingBody:
-      'You have switched this on. Your child’s device picks the change up the next time it checks in, which is usually within a couple of minutes — sooner if their phone is awake. Nothing for you to do.',
+      'You have switched this on. Your child’s device picks the change up the next time it connects, which is usually within a couple of minutes — sooner if their phone is awake. Nothing for you to do.',
     unknownTitle: 'Waiting for your child’s device',
     unknownBody:
-      'This device has not reported yet whether Message Alerts are running, so an empty list does not tell you much. It should update the next time the device checks in.',
+      'This device has not reported yet whether Message Alerts are running, so an empty list does not tell you much. It should update the next time the device connects.',
     outgoingAvailableTitle: 'Also check what your child writes',
     outgoingAvailableBody:
       'Messages your child receives are being checked. KidGate can check what they type in chat apps too — bullying and self-harm show up there far more often. Set it up on their device.',

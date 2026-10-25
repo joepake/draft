@@ -1,8 +1,5 @@
 export const appAlerts = {
   fallbackDeviceName: 'جهاز الطفل',
-  heroTitle: 'راقب تثبيت التطبيقات وإزالتها',
-  heroSubtitle:
-    'يراقب KidGate عمليات تثبيت التطبيقات وإزالتها على هذا الجهاز ويسجّلها في الأنشطة.',
   statusOn: 'المراقبة مفعّلة',
   statusInventory: 'يسرد التطبيقات المثبّتة',
   statusOff: 'غير متاح',
@@ -12,17 +9,12 @@ export const appAlerts = {
   infoLine1: 'يبلّغ جهاز الطفل تطبيق KidGate بأحداث تثبيت التطبيقات وإزالتها.',
   infoLine2: 'يتلقى الوالدان إشعارًا فوريًا عند تثبيت أي تطبيق أو إزالته.',
   infoLine3: 'راجع القائمة هنا، ثم احظر التطبيقات الخطرة من شاشة «التطبيقات المحظورة».',
-  heroTitleExtension: 'راقب تثبيت الإضافات وإزالتها',
-  heroSubtitleExtension:
-    'يراقب KidGate عمليات تثبيت الإضافات وإزالتها في ملف Chrome الشخصي الذي ثُبّت فيه، ويسجّلها في الأنشطة.',
   emptyTitleExtension: 'لا توجد تغييرات في الإضافات بعد',
   emptySubtitleExtension:
     'عندما يثبّت طفلك إضافة Chrome أو يزيلها، سيظهر الحدث هنا وفي الأنشطة.',
   infoLine1Extension: 'تبلّغ إضافة KidGate بتثبيت إضافات أخرى أو إزالتها في Chrome.',
   infoLine2Extension: 'يتلقى الوالدان إشعارًا فوريًا عند تثبيت أي إضافة أو إزالتها.',
   recentTitle: 'التغييرات الأخيرة',
-  statInstalled: 'تم التثبيت',
-  statRemoved: 'تمت الإزالة',
   pendingBadge: 'محظور حتى تسمح به',
   approvedBadge: 'مسموح به',
   allowApp: 'سماح',

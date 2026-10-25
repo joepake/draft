@@ -18,7 +18,7 @@ export const protection = {
     'Veuillez ouvrir KidGate une fois sur l’appareil de l’enfant.',
   screenTimePermission: 'Autorisation Temps d’écran',
   screenTimeAccessOff:
-    'L’accès à Temps d’écran est désactivé : le blocage des apps et les limites risquent de ne plus fonctionner.',
+    'L’accès à Temps d’écran est désactivé : la fonction « Applications bloquées » et les limites risquent de ne plus fonctionner.',
   screenTimeSetupIncomplete:
     'La configuration de Temps d’écran est incomplète sur l’appareil de l’enfant.',
   usageAccessPermission: 'Accès à l’utilisation',

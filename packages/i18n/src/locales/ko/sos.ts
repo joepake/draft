@@ -1,6 +1,5 @@
 export const sos = {
   title: 'SOS 알림',
-  subtitle: '{{deviceName}} · 전송된 사진이 아래에 표시됩니다',
   fallbackDeviceName: '자녀 기기',
   fallbackChildName: '자녀',
   locationUnavailable: '위치 정보 없음',
@@ -10,7 +9,6 @@ export const sos = {
   photoTapHint: '눌러서 전체 사진 보기',
   photoLoadFailed:
     '이 사진을 불러오지 못했습니다. 연결 상태를 확인한 후 다시 시도해 주세요.',
-  noPhoto: '이 알림에 첨부된 사진이 없습니다.',
   audioLabel: '녹음',
   audioPlayAccessibility: 'SOS 녹음 재생',
   audioStopAccessibility: 'SOS 녹음 재생 중지',
@@ -18,7 +16,6 @@ export const sos = {
   acknowledgedAt: '{{time}} 확인함',
   openInMaps: '지도에서 열기',
   acknowledgeButton: '제가 확인할게요',
-  acknowledgingButton: '저장 중…',
   toastAcknowledgeFailed: '확인하지 못했습니다. 잠시 후 다시 시도해 주세요.',
   emptyTitle: '아직 SOS 알림이 없어요',
   emptyDescription:

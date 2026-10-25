@@ -11,6 +11,8 @@ export const macos = {
 
   parentAccessBody:
     'Bu cihazda hangi uygulamaların engelleneceğini seçmek için Ebeveyn PIN’ini girin.',
+  parentAccessBodyMac:
+    'Bu Mac’in kurulumunu tamamlamak ya da KidGate’in oturum açılınca başlamasını değiştirmek için Ebeveyn PIN’ini girin.',
   checking: 'Kontrol ediliyor…',
 
   enforcing: 'Koruma çalışıyor',
@@ -23,10 +25,6 @@ export const macos = {
   lockStateParent: 'Evet — bir ebeveyn kilitledi',
   lockStateSchedule: 'Evet — Engellenen Saatler',
   lockStateDailyLimit: 'Evet — Günlük Limit doldu',
-
-  appBlocking: 'Uygulama engelleme',
-  appBlockingBestEffort:
-    'Elden geldiğince — uygulamalar açıldıktan sonra kapatılır, açılmaları önlenmez',
 
   webFilterLabel: 'Web filtresi',
   webFilterUnavailable: 'Bu Mac’te kullanılamıyor',

@@ -80,6 +80,7 @@ export const plans = {
   footerLegalAndroid:
     'Оплата через Google Play. Подписки продлеваются автоматически до отмены в Google Play. Разовая покупка не продлевается и действует, пока KidGate доступен.',
   subscribeButton: 'Оформить Premium',
+  buyLifetimeButton: 'Купить навсегда',
   restoringPurchases: 'Восстановление…',
   restorePurchases: 'Восстановить покупки',
   premiumDescription:
@@ -164,7 +165,7 @@ export const plans = {
   trustNoAds: 'Без рекламы',
   freePlanName: 'Бесплатно',
   freeDescription:
-    'Базовые функции работают на всех устройствах ребёнка, отчёты приходят с одного. Без срока действия.',
+    'Ваши правила продолжают работать на всех устройствах ребёнка, а отчёты приходят с одного из них. Без срока действия.',
   featureOneChildDevice: 'Отчёты с одного устройства ребёнка',
   termLifetime: 'Навсегда',
   badgeOneTime: 'Разовый платёж',
@@ -228,5 +229,7 @@ export const plans = {
   teaserProofParents: 'Родителей: {{count}}',
   teaserParentCap:
     'Столько родителей может быть в семье без Premium. Premium позволяет вдвое больше.',
+  teaserApps:
+    'Premium позволяет блокировать приложения с вашего телефона и сообщает, когда приложение установлено или удалено.',
   teaserDeviceNote: 'Отчёты присылает только отслеживаемое устройство.',
 } as const;

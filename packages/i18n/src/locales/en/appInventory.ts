@@ -1,5 +1,4 @@
 export const appInventory = {
-  title: 'Apps on this device',
   pendingTitle: 'Waiting for your approval',
   pendingBadge: 'Blocked until you allow it',
   approvedBadge: 'Allowed by you',
@@ -10,12 +9,11 @@ export const appInventory = {
   flaggedTitle: 'Worth a look',
   otherTitle: 'Everything else',
   scannedLabel: 'Last scan',
-  staleNote: 'This list is out of date. It refreshes when the device next checks in.',
+  staleNote: 'This list is out of date. It refreshes when the device next connects.',
   truncatedNote: 'Showing {{shown}} of {{total}} apps found.',
   newBadge: 'New',
   ageBadge: '{{age}}+',
   browserExtension: 'Chrome extension',
-  titleExtension: 'Extensions in this browser',
   subtitleExtension:
     'Everything KidGate found installed in the browser, not only what changed.',
   summaryFlaggedExtension:
@@ -27,9 +25,9 @@ export const appInventory = {
     'To remove an extension, open the browser’s own extensions page on that device.',
   emptyTitleExtension: 'Nothing scanned yet',
   emptySubtitleExtension:
-    'The browser publishes its extension list the next time it checks in.',
+    'The browser publishes its extension list the next time it connects.',
   emptyTitle: 'Nothing scanned yet',
-  emptySubtitle: 'The device publishes its app list the next time it checks in.',
+  emptySubtitle: 'The device publishes its app list the next time it connects.',
   unsupportedTitle: 'This device cannot list its apps',
   unsupportedIos:
     'Apple does not let any app read what is installed on an iPhone or iPad, and KidGate cannot see which apps are used there either.',
@@ -38,8 +36,17 @@ export const appInventory = {
     'Some apps may not appear here, such as one with no icon in the device’s app list.',
   blockHint: 'To stop an app, open Blocked Apps on the device itself.',
   howItWorksLabel: 'How this list works',
-  markSafe: 'Safe',
+  markSafe: 'Mark safe',
   dismissedTitle: 'Marked safe by you',
   undoSafe: 'Undo',
+  tabGeneral: 'Overview',
+  searchPlaceholder: 'Search apps',
+  searchEmpty: 'No app matches that.',
+  blockedBadge: 'Blocked',
+  setLimit: 'Set a time limit',
+  editLimit: 'Change the time limit',
   howToBlock: 'How to block',
+  blockApp: 'Block',
+  unblockApp: 'Unblock',
+  iosBlockOnDevice: 'On an iPhone, apps are blocked from the child’s iPhone itself.',
 } as const;

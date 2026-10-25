@@ -4,7 +4,6 @@ export const sos = {
   // or child name in the first slot makes the bidi algorithm read the whole
   // line as LTR, which left-aligns it against its Arabic neighbours and throws
   // the trailing punctuation to the wrong end.
-  subtitle: '\u200F{{deviceName}} · تظهر الصور أدناه عند إرسالها',
   fallbackDeviceName: 'جهاز الطفل',
   fallbackChildName: 'الطفل',
   locationUnavailable: 'الموقع غير متاح',
@@ -13,7 +12,6 @@ export const sos = {
   viewPhotoAccessibility: 'عرض صورة SOS',
   photoTapHint: 'اضغط لعرض الصورة كاملة',
   photoLoadFailed: 'تعذر تحميل هذه الصورة. يرجى التحقق من اتصالك والمحاولة مرة أخرى.',
-  noPhoto: 'لا توجد صورة مرفقة بهذا التنبيه.',
   audioLabel: 'تسجيل صوتي',
   audioPlayAccessibility: 'تشغيل تسجيل SOS',
   audioStopAccessibility: 'إيقاف تشغيل تسجيل SOS',
@@ -21,7 +19,6 @@ export const sos = {
   acknowledgedAt: 'تم الاطلاع {{time}}',
   openInMaps: 'فتح في الخرائط',
   acknowledgeButton: 'سأتولى الأمر',
-  acknowledgingButton: 'جارٍ الحفظ…',
   toastAcknowledgeFailed: 'تعذر تأكيد الاطلاع. يرجى المحاولة مرة أخرى بعد قليل.',
   emptyTitle: 'لا توجد تنبيهات SOS بعد',
   emptyDescription:

@@ -9,8 +9,10 @@ import {
 } from '@kidgate/schema/rewardTask';
 import { defaultStarsForMinutes } from '@kidgate/core/domain/rewardTasks';
 
-/** A preference, not a contract — the phone's modal offers the same six. */
-const MINUTE_PRESETS = [10, 15, 20, 30, 45, 60];
+/** A preference, not a contract — the phone's modal offers the same three. */
+const MINUTE_PRESETS = [10, 30, 60];
+/** The phone's modal opens on the same 30. */
+const DEFAULT_MINUTES = 30;
 
 /**
  * Creating a reward task from the web.
@@ -41,7 +43,7 @@ export default function RewardTaskForm({ device, readOnly, busy, onCreate }) {
   const appT = useActivityTranslate();
   const [open, setOpen] = useState(false);
   const [title, setTitle] = useState('');
-  const [minutes, setMinutes] = useState(15);
+  const [minutes, setMinutes] = useState(DEFAULT_MINUTES);
   const [daily, setDaily] = useState(false);
 
   const trimmed = title.trim();
@@ -84,7 +86,7 @@ export default function RewardTaskForm({ device, readOnly, busy, onCreate }) {
     });
     if (ok) {
       setTitle('');
-      setMinutes(15);
+      setMinutes(DEFAULT_MINUTES);
       setDaily(false);
       setOpen(false);
     }
@@ -92,7 +94,9 @@ export default function RewardTaskForm({ device, readOnly, busy, onCreate }) {
 
   return (
     <form className="reward-form" onSubmit={submit}>
-      <label className="sheet-label" htmlFor="reward-title">
+      {/* Read, not drawn — the phone's form shows no label over this field
+          either; the placeholder says what to type. */}
+      <label className="sr-only" htmlFor="reward-title">
         {appT('rewardTask.titleLabel')}
       </label>
       <input

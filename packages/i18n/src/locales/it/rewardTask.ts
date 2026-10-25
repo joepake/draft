@@ -1,5 +1,6 @@
 export const rewardTask = {
-  rewardTasksNote: 'I minuti approvati si aggiungono al limite di oggi.',
+  rewardTasksNote:
+    'I minuti approvati si aggiungono al limite del giorno in cui li approvi.',
   unableToCreate: 'Impossibile creare il compito. Riprova.',
   unableToUpdate: 'Impossibile salvare il compito. Riprova.',
   unableToDelete: 'Impossibile eliminare il compito. Riprova.',
@@ -8,8 +9,6 @@ export const rewardTask = {
   unableToClaim: 'Impossibile inviare ai tuoi genitori. Riprova.',
   newTask: 'Nuovo compito',
   editTask: 'Modifica compito',
-  formSubtitle:
-    'Il premio si aggiunge al tempo di utilizzo di oggi dopo la tua approvazione.',
   titleLabel: 'Compito',
   titlePlaceholder: 'Es.: Leggere un libro per 20 minuti',
   minutesLabel: 'Premio',
@@ -69,8 +68,7 @@ export const rewardTask = {
   taskRejectedDescription:
     '“{{title}}” è stato rimandato a {{deviceName}} per un nuovo tentativo.',
   starsLabel: 'Difficoltà',
-  starsHint:
-    'Quanto è impegnativo questo compito. Tuo figlio colleziona queste stelle.',
+  starsHint: 'Tuo figlio colleziona altrettante stelle.',
   starsEasy: 'Facile',
   starsMedium: 'Media',
   starsHard: 'Difficile',

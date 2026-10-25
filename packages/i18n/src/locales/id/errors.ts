@@ -110,6 +110,7 @@ export const errors = {
     'Keluarga ini sudah mencapai jumlah perangkat yang didukung KidGate. Hapus perangkat yang tidak lagi dipakai, lalu coba lagi.',
   rewardTaskLimitReached:
     'Jumlah tugas aktif sudah mencapai batas yang diizinkan sekaligus. Hapus satu tugas atau tunggu sampai ada yang selesai, lalu coba lagi.',
+  rewardTaskAlreadyDone: 'Tugas ini sudah ditandai selesai.',
   deviceNotPaired:
     'Perangkat ini tidak lagi terhubung dengan keluargamu. Minta orang tuamu memasangkannya lagi.',
   bonusMinutesOutOfRange:

@@ -328,7 +328,8 @@ export function resolveMessageMonitoringNotice(
  *
  * Keys, not sentences: `packages/core` renders no copy.
  */
-export type MessageMonitoringSummaryTone = 'active' | 'attention' | 'roadmap';
+/** `ControlCardTone`'s four: `idle` is off and quiet, `attention` asks. */
+export type MessageMonitoringSummaryTone = 'active' | 'idle' | 'attention' | 'roadmap';
 
 export interface MessageMonitoringSummary {
   valueKey: string;
@@ -342,10 +343,12 @@ const NOTICE_SUMMARY: Record<MessageMonitoringNoticeKind, MessageMonitoringSumma
     detailKey: 'messageMonitoring.notice.revokedTitle',
     tone: 'attention',
   },
+  // What the feature does, not "Message Alerts are not switched on" under a
+  // card titled Message Alerts reading Off (2026-10-25).
   off: {
     valueKey: 'shared.off',
-    detailKey: 'messageMonitoring.notice.offTitle',
-    tone: 'attention',
+    detailKey: 'messageMonitoring.actionDescription',
+    tone: 'idle',
   },
   // "Waiting", not "Off", and deliberately not `attention`: the parent has
   // done everything asked of them and the only thing left is the device
@@ -359,7 +362,7 @@ const NOTICE_SUMMARY: Record<MessageMonitoringNoticeKind, MessageMonitoringSumma
   unknown: {
     valueKey: 'deviceDetail.waiting',
     detailKey: 'messageMonitoring.notice.unknownTitle',
-    tone: 'attention',
+    tone: 'idle',
   },
   // Watching, and the half that catches bullying and self-harm is missing. The
   // card stays green because the feed it opens is real — the tip is the detail

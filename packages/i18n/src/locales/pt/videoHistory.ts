@@ -3,7 +3,9 @@ export const videoHistory = {
   fallbackDeviceName: 'Dispositivo da criança',
   toggleLabel: 'Registrar vídeos assistidos',
   toggleHint:
-    'Vídeos assistidos no app do YouTube em celulares Android e na TV, e no Chrome com a extensão do KidGate. Na TV, os Shorts não aparecem porque o app de TV não os identifica como Shorts.',
+    'YouTube em celulares Android e na TV, e no Chrome com a extensão do KidGate.',
+  tvShortsInfo:
+    'Na TV, os Shorts não aparecem na lista, porque o app YouTube da TV não os identifica como Shorts.',
   toggleFailed: 'Não foi possível atualizar o histórico de vídeos. Tente novamente.',
   unsupportedNote:
     'Este dispositivo não consegue informar os vídeos assistidos. Funciona no Android, no Android TV e no Chrome.',
@@ -24,7 +26,6 @@ export const videoHistory = {
   emptyTitle: 'Nada assistido ainda',
   emptyBody:
     'Os vídeos aparecem aqui quando seu filho assiste com o KidGate em execução.',
-  emptyBodyOff: 'Ative o registro acima para começar a listar os vídeos assistidos.',
   viewsMeta_one: '{{count}} vez',
   viewsMeta: '{{count}} vezes',
   dayToday: 'Hoje',

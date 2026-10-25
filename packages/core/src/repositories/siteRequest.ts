@@ -2,6 +2,7 @@ import type { ApiPort } from '@kidgate/ports/api';
 import type { DocSnapshot, FirestorePort, Unsubscribe } from '@kidgate/ports/firestore';
 import type { SiteRequest, SiteRequestStatus } from '@kidgate/schema/siteRequest';
 import { siteRequestsCollection } from '@kidgate/schema/paths';
+import { apiErrorMessageKey } from '../domain/apiErrorMessages';
 import { isApiFailure } from '../domain/apiFailure';
 import { PREMIUM_REQUIRED_CODE } from '../domain/premiumLapse';
 import { normalizeWebDomain } from '../domain/webDomain';
@@ -235,11 +236,12 @@ export function createSiteRequestRepository(deps: SiteRequestRepositoryDeps) {
         if (isApiFailure(error)) {
           throw {
             ...error,
-            messageKey:
-              error.messageKey ??
-              (approved
+            messageKey: apiErrorMessageKey(
+              error,
+              approved
                 ? 'timeRequest.toastApproveFailed'
-                : 'timeRequest.toastDeclineFailed'),
+                : 'timeRequest.toastDeclineFailed',
+            ),
           };
         }
         throw error;

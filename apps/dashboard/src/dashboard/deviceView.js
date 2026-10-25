@@ -203,6 +203,8 @@ export function toDeviceView(record) {
      * treat an absent probe as "unknown" rather than as "cannot".
      */
     capabilities: record.capabilities ?? null,
+    // A parent's Blocks from the console; the Apps card counts them.
+    parentBlockedApps: record.parentBlockedApps ?? [],
     protectionCounters: record.protectionCounters ?? { appBlocked: 0, tamper: 0 },
     /*
      * A tally only the Android phone, Android TV and the Chrome extension

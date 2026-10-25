@@ -1,10 +1,5 @@
 export const child = {
   pageTitle: 'Status',
-  statusPaused: 'Terkunci',
-  statusActive: 'Aktif',
-  readyTitle: 'Semua siap',
-  readyBody:
-    'Jika butuh waktu layar tambahan, kamu bisa mengirim permintaan ke orang tuamu lewat bagian di atas. Dalam keadaan darurat, gunakan tombol SOS.',
   setupCollapsedTitle: 'Selesaikan penyiapan bersama orang tua',
   setupCollapsedRequiredCount: '{{count}} langkah wajib',
   setupCollapsedOptionalCount: '{{count}} langkah opsional',

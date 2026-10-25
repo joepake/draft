@@ -102,8 +102,6 @@ export const family = {
   manualCodeLabel: '6文字のコードを入力',
   manualInstructions: '他のデバイスに表示されている6桁のコードを入力してください。',
 
-  headerHintEmpty: 'お子さまのデバイスを管理・保護しましょう',
-
   familyCardManage: 'ファミリー・保護者・デバイスを管理',
 
   familyCardJoined: '保護者として参加中',
@@ -156,7 +154,7 @@ export const family = {
   rulesPausedBehind: '一時停止中 — 以前の設定のままです',
   rulesTightenRefused:
     '一時停止中のデバイスはルールを緩めることしかできず、厳しくすることはできません。すべてのデバイスで変更するにはアップグレードしてください。',
-  parkedBannerTitle: '見守りを続けるデバイスを選んでください',
+  parkedBannerTitle: '報告するデバイスを選んでください',
   parkedBannerBody:
     'ルールはすべてのデバイスで働き続けます。無料プランで報告できるのは1台だけで、ルールを厳しくできるのもその1台だけです。そのデバイスを選ぶか、アップグレードしてすべて残してください。',
   parkedBannerAction: 'デバイスを選ぶ',
@@ -179,10 +177,10 @@ export const family = {
     '無料プランで報告できるのは1台だけで、ルールを厳しくできるのもその1台だけなので、このデバイスは一時停止中の状態で始まります。',
   pairingWillStartPaused:
     '無料プランで報告できるのは1台だけで、ルールを厳しくできるのもその1台だけなので、新しいデバイスは一時停止中の状態で始まります。',
-  chooseMonitoredTitle: 'メインのデバイスを選ぶ',
+  chooseMonitoredTitle: '報告するデバイスを選ぶ',
   chooseMonitoredBody:
     'ルールはすべてのデバイスでそのまま働きます。選んだデバイスが利用時間と位置情報を送り、ルールを厳しくできるのもそのデバイスだけです。ほかのデバイスではルールを緩めることしかできません。選んだデバイスの変更は{{days}}日に1回できます。',
-  chooseMonitoredConfirm: 'このデバイスを見守る',
+  chooseMonitoredConfirm: '報告するデバイスにする',
   chooseMonitoredUpgrade: 'すべてのデバイスを残す — アップグレード',
   chooseMonitoredDone: '{{name}}が報告するデバイスになりました',
   chooseMonitoredCurrent: 'いま報告しているデバイス',
@@ -206,6 +204,9 @@ export const family = {
 
   emptyDescription:
     '子どものデバイスを追加して、スクリーンタイムやアプリの利用状況の管理を始めましょう。',
+
+  emptyPairSteps:
+    'お子さまが使うスマートフォン、タブレット、テレビ、パソコンにKidGateをインストールし、確認されたら「これはお子さまのデバイスです」を選んで、表示されるコードをスキャンします。',
 
   setupFamilyTitle: 'ファミリーを設定',
 
@@ -239,17 +240,10 @@ export const family = {
   guestBenefitLocationBody:
     'お子さまの現在地を確認したり、チェックインで無事を知らせてもらったりできます。',
 
-  stepsHeading: 'はじめに',
-
   step1Title: 'お子さまのデバイスで KidGate を開く',
 
   step1Description:
     'お子さまが使うスマートフォン、タブレット、テレビ、またはパソコンに KidGate をインストールします。スマートフォンやタブレットでは「これはお子さまのデバイスです」を選んでください。QRコードと6文字のコードが表示されます。',
-
-  step2Title: 'この画面で「子どものデバイスを追加」をタップ',
-
-  step2Description:
-    'そのQRコードをこのスマートフォンで読み取るか、6文字のコードを入力してください。',
 
   connectChildButton: '子どものデバイスを接続',
   listHint: 'デバイスを左にスワイプすると削除できます',

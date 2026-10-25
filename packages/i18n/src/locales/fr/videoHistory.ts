@@ -3,7 +3,9 @@ export const videoHistory = {
   fallbackDeviceName: 'Appareil de l’enfant',
   toggleLabel: 'Enregistrer les vidéos regardées',
   toggleHint:
-    'Vidéos regardées dans l’appli YouTube sur les téléphones Android et les téléviseurs, et dans Chrome avec l’extension KidGate. Sur TV, les Shorts ne sont pas listés, car l’appli TV ne les identifie pas comme des Shorts.',
+    'YouTube sur les téléphones Android et les téléviseurs, et dans Chrome avec l’extension KidGate.',
+  tvShortsInfo:
+    'Sur un téléviseur, les Shorts ne sont pas listés, car l’appli YouTube sur TV ne les identifie pas comme des Shorts.',
   toggleFailed: 'Impossible de mettre à jour l’historique vidéo. Réessayez.',
   unsupportedNote:
     'Cet appareil ne peut pas signaler les vidéos regardées. Cette fonction est disponible sur Android, Android TV et dans Chrome.',
@@ -24,7 +26,6 @@ export const videoHistory = {
   emptyTitle: 'Rien de regardé pour l’instant',
   emptyBody:
     'Les vidéos apparaissent ici dès que votre enfant regarde avec KidGate actif.',
-  emptyBodyOff: 'Activez l’enregistrement ci-dessus pour lister les vidéos regardées.',
   viewsMeta_one: '{{count}} fois',
   viewsMeta: '{{count}} fois',
   dayToday: 'Aujourd’hui',

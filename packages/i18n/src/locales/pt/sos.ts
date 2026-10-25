@@ -1,6 +1,5 @@
 export const sos = {
   title: 'Alertas de SOS',
-  subtitle: '{{deviceName}} · as fotos aparecem abaixo quando enviadas',
   fallbackDeviceName: 'Dispositivo da criança',
   fallbackChildName: 'Criança',
   locationUnavailable: 'Localização indisponível',
@@ -10,7 +9,6 @@ export const sos = {
   photoTapHint: 'Toque para ver a foto completa',
   photoLoadFailed:
     'Não foi possível carregar esta foto. Verifique sua conexão e tente novamente.',
-  noPhoto: 'Nenhuma foto anexada a este alerta.',
   audioLabel: 'Gravação de áudio',
   audioPlayAccessibility: 'Reproduzir a gravação do SOS',
   audioStopAccessibility: 'Parar a reprodução da gravação do SOS',
@@ -18,7 +16,6 @@ export const sos = {
   acknowledgedAt: 'Confirmado {{time}}',
   openInMaps: 'Abrir no Mapas',
   acknowledgeButton: 'Deixa comigo',
-  acknowledgingButton: 'Salvando…',
   toastAcknowledgeFailed: 'Não foi possível confirmar. Tente novamente em instantes.',
   emptyTitle: 'Nenhum alerta de SOS ainda',
   emptyDescription:

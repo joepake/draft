@@ -1,5 +1,5 @@
 export const rewardTask = {
-  rewardTasksNote: 'Onaylanan dakikalar bugünün limitine eklenir.',
+  rewardTasksNote: 'Onaylanan dakikalar, onaylandıkları günün limitine eklenir.',
   unableToCreate: 'Görev oluşturulamadı. Lütfen tekrar dene.',
   unableToUpdate: 'Görev kaydedilemedi. Lütfen tekrar dene.',
   unableToDelete: 'Görev silinemedi. Lütfen tekrar dene.',
@@ -8,7 +8,6 @@ export const rewardTask = {
   unableToClaim: 'Ailene gönderilemedi. Lütfen tekrar dene.',
   newTask: 'Yeni görev',
   editTask: 'Görevi düzenle',
-  formSubtitle: 'Onayladığında ödül, bugünün ekran süresine eklenir.',
   titleLabel: 'Görev',
   titlePlaceholder: 'Örn. 20 dakika kitap oku',
   minutesLabel: 'Ödül',
@@ -67,7 +66,7 @@ export const rewardTask = {
   taskRejectedDescription:
     '“{{title}}”, yeni bir deneme için {{deviceName}} cihazına geri gönderildi.',
   starsLabel: 'Zorluk',
-  starsHint: 'Bu görevin ne kadar zor olduğu. Çocuğunuz bu yıldızları biriktirir.',
+  starsHint: 'Çocuğunuz bu kadar yıldız biriktirir.',
   starsEasy: 'Kolay',
   starsMedium: 'Orta',
   starsHard: 'Zor',

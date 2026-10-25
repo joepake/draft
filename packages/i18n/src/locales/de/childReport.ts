@@ -13,6 +13,8 @@ export const childReport = {
   heroRange: '{{low}} – {{high}}',
   heroRangeNote:
     'Ein Schätzwert – ein Gerät meldet, wie lange es genutzt wurde, aber nicht wann.',
+  barsExplain:
+    'Eine Minute auf zwei Geräten gleichzeitig zählt doppelt, wenn die Geräte zusammengezählt werden.',
   heroEmpty: 'Noch keine Nutzung gemeldet',
 
   trendUp: '{{value}} mehr als im Zeitraum davor',

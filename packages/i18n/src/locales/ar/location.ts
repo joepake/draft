@@ -70,6 +70,11 @@ export const location = {
   childDevicesOnline: '{{online}} من {{total}} متصل',
   childNoneOnline: 'لا يوجد جهاز متصل',
   childPickCarriedA11y: 'تعيين {{deviceName}} كالجهاز الذي يحمله {{childName}}',
+  carriedFrom: 'الموقع من {{deviceName}}',
+  changeCarried: 'تغيير الجهاز',
+  carriedSuggestion: 'أرسل {{deviceName}} موقعًا {{time}}.',
+  useCarried: 'استخدام {{deviceName}}',
+  carriedBadge: 'الجهاز المرافق',
   stayRange: '{{from}} – {{to}}',
   wizardStepAllow: 'اختيار «سماح» ثم «دائمًا» حتى تستمر التحديثات في الخلفية.',
   wizardStepAllowAndroid:

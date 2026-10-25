@@ -1,6 +1,5 @@
 export const sos = {
   title: 'SOS अलर्ट',
-  subtitle: '{{deviceName}} · भेजे जाने पर फ़ोटो नीचे दिखाई देती हैं',
   fallbackDeviceName: 'बच्चे का डिवाइस',
   fallbackChildName: 'बच्चा',
   locationUnavailable: 'स्थान उपलब्ध नहीं',
@@ -10,7 +9,6 @@ export const sos = {
   photoTapHint: 'पूरी फ़ोटो देखने के लिए टैप करें',
   photoLoadFailed:
     'यह फ़ोटो लोड नहीं हो सकी। कृपया अपना कनेक्शन जांचें और पुनः प्रयास करें।',
-  noPhoto: 'इस अलर्ट के साथ कोई फ़ोटो नहीं जुड़ी है।',
   audioLabel: 'ऑडियो रिकॉर्डिंग',
   audioPlayAccessibility: 'SOS रिकॉर्डिंग चलाएँ',
   audioStopAccessibility: 'SOS रिकॉर्डिंग चलाना बंद करें',
@@ -18,7 +16,6 @@ export const sos = {
   acknowledgedAt: '{{time}} स्वीकार किया गया',
   openInMaps: 'मैप्स में खोलें',
   acknowledgeButton: 'मैंने संभाल लिया',
-  acknowledgingButton: 'सहेजा जा रहा है…',
   toastAcknowledgeFailed:
     'स्वीकार नहीं किया जा सका। कृपया थोड़ी देर में पुनः प्रयास करें।',
   emptyTitle: 'अभी तक कोई SOS अलर्ट नहीं',

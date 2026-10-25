@@ -232,6 +232,45 @@ export function createControlRepository(deps: ControlRepositoryDeps) {
     },
 
     /**
+     * Block or unblock one app on one device from the console
+     * (`Device.parentBlockedApps`). One id per call, so two parents pressing
+     * at once add to the list rather than overwrite it. A Block on a parked
+     * device is refused (`parking/loosen-only`) and rejects like any refusal.
+     */
+    async setParentAppBlock(
+      userId: string,
+      deviceId: string,
+      appId: string,
+      blocked: boolean,
+    ): Promise<void> {
+      await api.post(
+        '/setParentAppBlock',
+        { deviceId, familyOwnerUserId: userId, appId, blocked },
+        { as: 'parent' },
+      );
+    },
+
+    /**
+     * The child device hands its own picker's apps to `parentBlockedApps` as
+     * the picker goes (`adoptPickedApps`): add-only and idempotent. Answers
+     * with the stored list; the device clears its own copy only of what that
+     * list holds, so no moved app is ever open in between.
+     */
+    async adoptPickedApps(
+      deviceId: string,
+      appIds: readonly string[],
+    ): Promise<string[]> {
+      const reply = await api.post<{ parentBlockedApps?: unknown }>(
+        '/adoptPickedApps',
+        { deviceId, appIds: [...appIds] },
+        { as: 'child' },
+      );
+      return Array.isArray(reply?.parentBlockedApps)
+        ? reply.parentBlockedApps.filter((id): id is string => typeof id === 'string')
+        : [];
+    },
+
+    /**
      * Report screen-time usage.
      *
      * A partial payload — say only `dailyLimitExceeded` — carries no reading to

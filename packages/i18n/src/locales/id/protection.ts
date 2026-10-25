@@ -16,7 +16,7 @@ export const protection = {
   openKidGateOnChildPhone: 'Buka KidGate sekali di perangkat anak.',
   screenTimePermission: 'Izin Waktu Layar',
   screenTimeAccessOff:
-    'Akses Waktu Layar nonaktif, jadi pemblokiran aplikasi dan batas waktu bisa berhenti berfungsi.',
+    'Akses Waktu Layar nonaktif, jadi fitur Aplikasi yang Diblokir dan batas waktu bisa berhenti berfungsi.',
   screenTimeSetupIncomplete: 'Penyiapan Waktu Layar belum selesai di perangkat anak.',
   usageAccessPermission: 'Akses Penggunaan',
   usageAccessOff:

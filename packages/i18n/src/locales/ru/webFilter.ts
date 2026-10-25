@@ -217,6 +217,7 @@ export const webFilter = {
   categoriesOnCount: 'Включено {{on}} из {{total}}',
   askToOpen: 'Спросить родителей',
   askToOpenSubtitle: 'Если разрешат, сайт откроется.',
+  askToOpenHomeSubtitle: 'Попроси родителя открыть заблокированный сайт.',
   askToOpenDomainLabel: 'Какой сайт?',
   askToOpenBlockedLabel: 'Недавно заблокированные',
   askToOpenPending: 'Запрос уже отправлен. Дождись ответа.',

@@ -75,6 +75,11 @@ export const location = {
   childNoneOnline: '온라인 기기 없음',
   childPickCarriedA11y:
     '{{deviceName}}을(를) {{childName}}이(가) 가지고 다니는 기기로 지정',
+  carriedFrom: '{{deviceName}}의 위치',
+  changeCarried: '기기 변경',
+  carriedSuggestion: '{{deviceName}}에서 {{time}} 위치를 보냈습니다.',
+  useCarried: '{{deviceName}} 사용',
+  carriedBadge: '가지고 다님',
   stayRange: '{{from}} – {{to}}',
   wizardStepAllow:
     '허용을 선택한 뒤 항상 허용을 선택하면 백그라운드에서도 업데이트돼요.',

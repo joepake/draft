@@ -80,6 +80,7 @@ export const plans = {
   footerLegalAndroid:
     'Google Play üzerinden faturalandırılır. Abonelikler, Google Play’de iptal edene kadar otomatik yenilenir. Tek seferlik satın alma yenilenmez ve KidGate sunulduğu sürece geçerlidir.',
   subscribeButton: 'Premium’a abone ol',
+  buyLifetimeButton: 'Ömür boyu satın al',
   restoringPurchases: 'Geri yükleniyor…',
   restorePurchases: 'Satın alımları geri yükle',
   premiumDescription:
@@ -165,7 +166,7 @@ export const plans = {
   trustNoAds: 'Reklam yok',
   freePlanName: 'Ücretsiz',
   freeDescription:
-    'Temel özellikler her çocuk cihazında çalışmaya devam eder, raporlar ise bir cihazdan gelir. Süresi hiç dolmaz.',
+    'Kurallarınız her çocuk cihazında çalışmaya devam eder; bir cihaz da rapor göndermeyi sürdürür. Süresi hiç dolmaz.',
   featureOneChildDevice: 'Bir çocuk cihazından raporlar',
   termLifetime: 'Ömür boyu',
   badgeOneTime: 'Tek seferlik',
@@ -226,5 +227,7 @@ export const plans = {
   teaserProofParents: 'Ebeveynler: {{count}}',
   teaserParentCap:
     'Premium olmadan bir ailede olabilecek ebeveyn sayısı bu kadar. Premium bunun iki katına izin verir.',
+  teaserApps:
+    'Premium, uygulamaları kendi telefonunuzdan engellemenizi sağlar ve bir uygulama yüklendiğinde ya da kaldırıldığında size haber verir.',
   teaserDeviceNote: 'Yalnızca izlenen cihaz rapor gönderir.',
 } as const;

@@ -137,7 +137,20 @@ export interface AppInventory {
    * was cut, and so a device reporting a wildly wrong count is visible.
    */
   totalSeen: number;
+  /**
+   * The agent build that scanned, `version+versionCode` (`1.0.205+205`).
+   *
+   * A build differing from the scanning one re-scans at once instead of
+   * waiting out `INVENTORY_RESCAN_INTERVAL_MS`: the Windows agent learning to
+   * list Store apps (2026-10-25) otherwise reached the parent a day after it
+   * was installed. Absent on lists written before the field, which every
+   * agent that sends one therefore re-scans once.
+   */
+  agentBuild?: string;
 }
+
+/** Longest `agentBuild` stored; `firestore.rules` holds the same bound. */
+export const MAX_INVENTORY_AGENT_BUILD_LENGTH = 64;
 
 export function appInventoryDoc(userId: string, deviceId: string): string {
   return `${appInventoryCollection(userId, deviceId)}/${APP_INVENTORY_DOC_ID}`;

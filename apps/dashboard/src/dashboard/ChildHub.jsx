@@ -1,3 +1,4 @@
+import { dailyLimitOrNone } from '@kidgate/core/domain/dailyLimit';
 import { useEffect, useMemo, useState } from 'react';
 import Icon from '@kidgate/web-ui/Icon';
 import { useT } from '@kidgate/web-ui/useT';
@@ -29,6 +30,7 @@ import { deviceIconName } from './deviceIcon.js';
 import ControlCenter from './ControlCenter.jsx';
 import ChildInitial from './ChildInitial.jsx';
 import NoDevicePanel from './NoDevicePanel.jsx';
+import InfoTooltip from './InfoTooltip.jsx';
 import { timeAgo } from './timeAgo.js';
 import { pressNextOnEnter } from './enterPresses.js';
 
@@ -100,7 +102,8 @@ export default function ChildHub({
   // Memoised, not a bare `?? {}`: the fallback is a fresh object every render,
   // and `controlFacts` below depends on it.
   const rules = useMemo(() => child.rules ?? {}, [child.rules]);
-  const budgetMinutes = rules.dailyLimitMinutes ?? null;
+  // A stored full day is no budget (`dailyLimitOrNone`), as on the phone.
+  const budgetMinutes = dailyLimitOrNone(rules.dailyLimitMinutes);
 
   /**
    * What the control cards say, asked of the PERSON.
@@ -187,6 +190,10 @@ export default function ChildHub({
       listsInstalledApps: childDevices.length
         ? childDevices.some(supportsAppInventory)
         : undefined,
+      parentBlockedCount: childDevices.reduce(
+        (total, device) => total + (device.parentBlockedApps?.length ?? 0),
+        0,
+      ),
       /*
        * The worst verdict among the machines that file tamper alerts — the
        * phone hub's fold, so the Protection Alerts card never says "Watching"
@@ -279,10 +286,14 @@ export default function ChildHub({
             <p className="child-hero-meta">
               <span className={`pill tone-${presence.online ? 'good' : 'muted'}`}>
                 <i className="pill-dot" aria-hidden="true" />
-                {appT('family.childDetailOnlineCount', {
-                  online: presence.onlineCount,
-                  total: presence.totalCount,
-                })}
+                {/* Every device parked is Paused, not "0/2 online" — the
+                    phone's child screen says the same (`ChildDetailScreen`). */}
+                {presence.pausedCount === presence.totalCount
+                  ? appT('family.devicePausedLabel')
+                  : appT('family.childDetailOnlineCount', {
+                      online: presence.onlineCount,
+                      total: presence.totalCount,
+                    })}
               </span>
               {/* `family.lastActiveDate`, not `deviceDetail.lastActive` — the
                   latter is a bare row LABEL on the phone with no placeholder,
@@ -290,13 +301,18 @@ export default function ChildHub({
                   Measured in the browser 2026-09-15. */}
               <span className="dot-sep">·</span>
               {activity ? (
-                <span title={appT(lastActivityInfoKey(activity, childDevices))}>
+                <span className="kid-hub-last">
                   {appT(
                     activity.used ? 'family.lastActiveDate' : 'family.lastSeenDate',
                     {
                       date: timeAgo(activity.at),
                     },
                   )}
+                  {/* The phone's ⓘ beside last active (`ChildDetailScreen`):
+                      a `title` here said it to a mouse and to nobody else. */}
+                  <InfoTooltip
+                    text={appT(lastActivityInfoKey(activity, childDevices))}
+                  />
                 </span>
               ) : (
                 appT('family.lastActiveUnknown')

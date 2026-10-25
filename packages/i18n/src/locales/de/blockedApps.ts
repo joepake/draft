@@ -17,7 +17,7 @@ export const blockedApps = {
   installApprovalInfoLine2:
     'Du erhältst eine Benachrichtigung, und die App erscheint unten in „Blockierte Apps“, bis du sie erlaubst.',
   installApprovalInfoLine3:
-    'Wenn du eine App erlaubst, lässt sie sich sofort öffnen. Eine App, die du nicht erlaubst, bleibt einfach blockiert.',
+    'Eine App, die du erlaubst, öffnet sich innerhalb einer Minute auf einem verbundenen Kindergerät. Eine App, die du nicht erlaubst, bleibt blockiert.',
   installApprovalInfoLine1Ios:
     'Solange das eingeschaltet ist, ist der App Store auf dem Gerät deines Kindes ausgeblendet, sodass keine neue App installiert werden kann.',
   installApprovalInfoLine2Ios:
@@ -39,14 +39,14 @@ export const blockedApps = {
   heroTitle: 'Zum Blockieren ausgewählte Apps',
   heroSubtitle:
     'Diese Apps und Kategorien werden auf dem Gerät deines Kindes ausgewählt. KidGate synchronisiert die Liste hierher, damit du sie überprüfen kannst.',
-  toggleTitle: 'App-Blockierung aktivieren',
+  toggleTitle: 'Blockierte Apps aktivieren',
   toggleSubtitleOn: 'Die ausgewählten Apps sind auf dem Gerät deines Kindes blockiert.',
   toggleSubtitleOff:
     'Aktiviere diese Option, um die ausgewählten Apps aus der Ferne zu blockieren.',
-  toggleAccessibilityLabel: 'App-Blockierung aktivieren',
+  toggleAccessibilityLabel: 'Blockierte Apps aktivieren',
   emptyTitle: 'Noch keine blockierten Apps',
   emptySubtitle:
-    'Öffne auf dem Gerät deines Kindes die KidGate-Einstellungen, gib die Eltern-PIN ein, öffne dann „App-Blockierung → Blockierte Apps“ und speichere die Auswahl.',
+    'Sperre eine App über „Installierte Apps“. Auf einem iPhone wählst du die Apps auf dem iPhone selbst aus.',
   emptySubtitleTv:
     'Öffne auf dem Fernseher KidGate, wähle „{{button}}“, gib die Eltern-PIN ein, wähle dann die Apps aus und speichere.',
   sectionTitle: 'Blockierungsliste',
@@ -55,10 +55,10 @@ export const blockedApps = {
     'Unter iOS kann Apple die genauen App-Namen auf Eltern-Geräten ausblenden. Auf anderen Geräten werden die ausgewählten App-Namen hier synchronisiert. Zum Ändern der Liste ist weiterhin die Eltern-PIN auf dem Gerät deines Kindes erforderlich.',
   infoTitle: 'So funktioniert es',
   infoLine1:
-    'Wähle die Apps auf dem Gerät deines Kindes aus, nachdem du die Eltern-PIN eingegeben hast.',
+    'Sperre Apps über „Installierte Apps“. Auf einem iPhone wählst du sie mit der Eltern-PIN auf dem iPhone selbst aus.',
   infoLine2: 'Sperre, Sperrzeiten und Tageslimit blockieren weiterhin alle Apps.',
   infoLine3:
-    'Du kannst die Blockierung jederzeit auf diesem Bildschirm ein- oder ausschalten.',
+    'Du kannst die Blockierung jederzeit auf diesem Bildschirm ein- oder ausschalten. Ein verbundenes Kindergerät erhält jede Änderung innerhalb einer Minute.',
   appKind: 'App',
   categoryKind: 'Kategorie',
   websiteKind: 'Website',
@@ -73,7 +73,7 @@ export const blockedApps = {
   blockedAppsLabel: 'Blockierte Apps',
   appsConfiguredChip: 'Apps eingerichtet',
   appsNotSetChip: 'Apps nicht eingerichtet',
-  appBlockingSectionTitle: 'App-Blockierung',
+  appBlockingSectionTitle: 'Blockierte Apps',
   appBlockingSectionDescription:
     'Wähle aus, welche Apps Eltern auf diesem Gerät blockieren können.',
   savedItemsForBlocking: '{{count}} Elemente zum Blockieren gespeichert.',
@@ -82,11 +82,11 @@ export const blockedApps = {
   unableToOpenAppPicker:
     'Die App-Auswahl konnte nicht geöffnet werden. Bitte versuche es erneut.',
   wizardStepPin: 'Gib die Eltern-PIN ein, wenn die Einstellungen danach fragen.',
-  wizardStepChoose:
-    'Öffne „Blockierte Apps“ unter „App-Blockierung“, hake die Apps ab und speichere.',
+  wizardStepChoose: 'Öffne „Blockierte Apps“, hake die Apps ab und speichere.',
   pickerSubtitle:
     'Wähle die Apps und Kategorien aus, die auf diesem Gerät blockiert werden sollen.',
   pickerSubtitleAndroid:
-    'Angehakte Apps werden sofort nach dem Öffnen geschlossen, solange die App-Blockierung aktiv ist.',
+    'Angehakte Apps werden sofort nach dem Öffnen geschlossen, solange „Blockierte Apps“ aktiv ist.',
   pickerEmpty: 'Keine Apps auf diesem Gerät gefunden.',
+  blockingOffPill: 'Blockierte Apps: aus',
 } as const;

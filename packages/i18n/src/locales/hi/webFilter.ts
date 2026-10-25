@@ -214,6 +214,8 @@ export const webFilter = {
   categoriesOnCount: '{{total}} में से {{on}} चालू',
   askToOpen: 'माता-पिता से पूछें',
   askToOpenSubtitle: 'अगर वे इजाज़त दें, तो यह साइट खुल जाएगी।',
+  askToOpenHomeSubtitle:
+    'अपने माता-पिता से किसी ब्लॉक की गई साइट को खोलने के लिए कहें।',
   askToOpenDomainLabel: 'कौन सी साइट?',
   askToOpenBlockedLabel: 'हाल में ब्लॉक हुईं',
   askToOpenPending: 'आपने पहले ही एक साइट माँगी है। जवाब का इंतज़ार करें।',

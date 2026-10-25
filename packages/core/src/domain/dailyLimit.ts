@@ -62,6 +62,26 @@ export function activeBonusMinutes(
 }
 
 /**
+ * A Daily Limit this long is no limit. A day holds 1440 minutes, so one
+ * device can never reach it, and the dial's top notch says "No limit" and
+ * saves none — while a stored 24h still drew a limit, a bar and "23h left"
+ * on every screen, and a shared budget of 24h could still lock two devices
+ * used at once (2026-10-24).
+ */
+export const DAILY_LIMIT_NONE_MINUTES = 24 * 60;
+
+/**
+ * A stored Daily Limit as the product reads it: null for none, and for a
+ * full day or more. Zero and below are kept — zero is "blocked all day".
+ */
+export function dailyLimitOrNone(minutes: Minutes | null | undefined): Minutes | null {
+  if (minutes === null || minutes === undefined || !Number.isFinite(minutes)) {
+    return null;
+  }
+  return minutes >= DAILY_LIMIT_NONE_MINUTES ? null : minutes;
+}
+
+/**
  * Base limit plus any live bonus. Null means no limit.
  *
  * A base of zero or below is returned untouched rather than having a bonus added
@@ -73,9 +93,9 @@ export function effectiveDailyLimitMinutes(
   nowMs: Millis,
   localDateOf: (ms: Millis) => IsoDate = localIsoDate,
 ): Minutes | null {
-  const base = controls.dailyLimitMinutes;
-  if (base === null || base === undefined || base <= 0) {
-    return base ?? null;
+  const base = dailyLimitOrNone(controls.dailyLimitMinutes);
+  if (base === null || base <= 0) {
+    return base;
   }
   return base + activeBonusMinutes(controls, nowMs, localDateOf);
 }
@@ -96,11 +116,12 @@ export function childLimitWithBonus(
   nowMs: Millis,
   localDateOf: (ms: Millis) => IsoDate = localIsoDate,
 ): Minutes | null {
-  if (budget === null || budget === undefined || budget <= 0) {
-    return budget ?? null;
+  const limit = dailyLimitOrNone(budget);
+  if (limit === null || limit <= 0) {
+    return limit;
   }
   const bonuses = devices.map(controls =>
     controls ? activeBonusMinutes(controls, nowMs, localDateOf) : 0,
   );
-  return budget + Math.max(0, ...bonuses);
+  return limit + Math.max(0, ...bonuses);
 }

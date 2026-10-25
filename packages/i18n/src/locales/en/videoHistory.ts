@@ -3,7 +3,10 @@ export const videoHistory = {
   fallbackDeviceName: 'Child device',
   toggleLabel: 'Record watched videos',
   toggleHint:
-    'Videos watched in the YouTube app on Android phones and TV, and in Chrome with the KidGate extension. On TV, Shorts are not listed because the TV app does not identify them as Shorts.',
+    'YouTube on Android phones and TV, and in Chrome with the KidGate extension.',
+  // The header's ⓘ: what the switch's one line leaves out.
+  tvShortsInfo:
+    'On a TV, Shorts are not listed, because the YouTube TV app does not identify them as Shorts.',
   toggleFailed: 'Unable to update video history. Try again.',
   unsupportedNote:
     'This device cannot report watched videos. It works on Android, Android TV and in Chrome.',
@@ -25,7 +28,6 @@ export const videoHistory = {
   extensionStepEnable: 'Turn on “Record watched videos” for that device',
   emptyTitle: 'Nothing watched yet',
   emptyBody: 'Videos appear here once your child watches with KidGate running.',
-  emptyBodyOff: 'Turn on recording above to start listing watched videos.',
   viewsMeta_one: '{{count}} time',
   viewsMeta: '{{count}} times',
   dayToday: 'Today',

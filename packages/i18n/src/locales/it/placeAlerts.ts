@@ -4,7 +4,6 @@ export const placeAlerts = {
   mergedFromDevices:
     'Unita dai luoghi già presenti su ogni dispositivo. Salvando, questa unica lista si applica a tutti i dispositivi.',
   fallbackDeviceName: 'Dispositivo del bambino',
-  statusReady: 'Posizione pronta',
   statusNeedLocation: 'In attesa della posizione del dispositivo del bambino',
   tabPlaces: 'Luoghi',
   tabActivity: 'Attività',
@@ -22,8 +21,6 @@ export const placeAlerts = {
   editPlaceAccessibility: 'Modifica {{name}}',
   radiusLabel: 'Raggio di allerta',
   radiusValue: '{{meters}} m',
-  radiusHint:
-    'Quanto deve essere vicino il dispositivo perché questo luogo venga rilevato. Un raggio più piccolo dell’errore di posizione del dispositivo non rende gli avvisi più precisi — arrivi e partenze potrebbero non essere segnalati.',
   radiusAccuracyHint:
     'Qui questo dispositivo indica la propria posizione con circa ±{{accuracy}} m di scarto.',
   radiusBelowAccuracy:
@@ -45,8 +42,6 @@ export const placeAlerts = {
   emptyEventsTitle: 'Ancora nessuna attività nei luoghi',
   emptyEventsSubtitle:
     'Quando questo dispositivo entra o esce da un luogo salvato, gli eventi appariranno qui.',
-  emptyPlaces:
-    'Scegli un punto sulla mappa, assegnagli un nome, quindi salva. Fino a {{max}} luoghi.',
   noLocationToast:
     'Attendi prima un aggiornamento della posizione dal dispositivo del bambino.',
   maxPlacesToast: 'Puoi salvare fino a {{max}} luoghi.',

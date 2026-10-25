@@ -32,6 +32,7 @@ import {
   type WebFilterCategory,
 } from '@kidgate/schema/webActivity';
 import { MAX_AI_WEB_DOMAINS } from '@kidgate/schema/aiWebDomains';
+import { MAX_PARENT_BLOCKED_APPS } from '@kidgate/schema/device';
 import { timestampToIso } from './firestoreValue';
 import { normalizeWebDomain } from './webDomain';
 
@@ -189,6 +190,31 @@ export function parseAiWebDomains(data?: Record<string, unknown>): string[] {
     }
   }
   return [...seen];
+}
+
+/**
+ * A parent's Blocks off the device document root (`Device.parentBlockedApps`).
+ *
+ * Root for the reason `parseAiWebDomains` gives — server-written, pinned for
+ * every client — and capped again on the way in, because every enforcement
+ * tick compares against it. Sorted, so the policy key moves only when the set
+ * does.
+ */
+export function parseParentBlockedApps(data?: Record<string, unknown>): string[] {
+  const value = data?.parentBlockedApps;
+  if (!Array.isArray(value)) {
+    return [];
+  }
+  const seen = new Set<string>();
+  for (const entry of value) {
+    if (typeof entry === 'string' && entry.trim()) {
+      seen.add(entry.trim());
+    }
+    if (seen.size >= MAX_PARENT_BLOCKED_APPS) {
+      break;
+    }
+  }
+  return [...seen].sort();
 }
 
 export function parseDeviceControls(data?: Record<string, unknown>): DeviceControls {

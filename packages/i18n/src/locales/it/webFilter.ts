@@ -216,6 +216,7 @@ export const webFilter = {
   categoriesOnCount: '{{on}} su {{total}} attivi',
   askToOpen: 'Chiedi a un genitore',
   askToOpenSubtitle: 'Se ti dà il permesso, il sito si aprirà.',
+  askToOpenHomeSubtitle: 'Chiedi a un genitore di aprire un sito che è stato bloccato.',
   askToOpenDomainLabel: 'Quale sito?',
   askToOpenBlockedLabel: 'Bloccati di recente',
   askToOpenPending: 'Hai già chiesto un sito. Aspetta la risposta.',

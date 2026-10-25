@@ -217,6 +217,7 @@ export const webFilter = {
   categoriesOnCount: '{{on}} من {{total}} مفعّلة',
   askToOpen: 'طلب الإذن من والديك',
   askToOpenSubtitle: 'إذا سمحا لك، سيُفتح هذا الموقع.',
+  askToOpenHomeSubtitle: 'طلب فتح موقع محظور من والديك.',
   askToOpenDomainLabel: 'أي موقع؟',
   askToOpenBlockedLabel: 'محظورة مؤخرًا',
   askToOpenPending: 'لقد طلبت موقعًا بالفعل. يُرجى انتظار الرد.',

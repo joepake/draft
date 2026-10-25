@@ -3,7 +3,9 @@ export const videoHistory = {
   fallbackDeviceName: 'Устройство ребёнка',
   toggleLabel: 'Записывать просмотренные видео',
   toggleHint:
-    'Видео, просмотренные в приложении YouTube на Android-телефонах и телевизорах, а также в Chrome с расширением KidGate. На телевизоре Shorts не отображаются, потому что приложение для ТВ не распознаёт их как Shorts.',
+    'YouTube на Android-телефонах и телевизорах, а также в Chrome с расширением KidGate.',
+  tvShortsInfo:
+    'На телевизоре Shorts не показываются в списке, потому что приложение YouTube для телевизоров не распознаёт их как Shorts.',
   toggleFailed: 'Не удалось обновить историю видео. Повторите попытку.',
   unsupportedNote:
     'Это устройство не может сообщать о просмотренных видео. Функция работает на Android, Android TV и в Chrome.',
@@ -23,7 +25,6 @@ export const videoHistory = {
   extensionStepEnable: 'Включите «Записывать просмотренные видео» для этого устройства',
   emptyTitle: 'Пока ничего не просмотрено',
   emptyBody: 'Видео появятся здесь, когда ребёнок смотрит с работающим KidGate.',
-  emptyBodyOff: 'Включите запись выше, чтобы видеть просмотренные видео.',
   viewsMeta_one: '{{count}} раз',
   viewsMeta: '{{count}} раз',
   dayToday: 'Сегодня',

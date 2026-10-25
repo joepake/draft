@@ -13,6 +13,8 @@ export const childReport = {
   heroRange: '{{low}} – {{high}}',
   heroRangeNote:
     'Una estimación: un dispositivo informa cuánto se usó, pero no cuándo.',
+  barsExplain:
+    'Un minuto en dos dispositivos a la vez cuenta como dos al sumar los dispositivos.',
   heroEmpty: 'Aún no hay uso registrado',
 
   trendUp: '{{value}} más que en el periodo anterior',

@@ -1,5 +1,6 @@
 export const rewardTask = {
-  rewardTasksNote: 'Số phút được duyệt sẽ cộng vào Giới hạn hằng ngày của hôm nay.',
+  rewardTasksNote:
+    'Số phút được duyệt sẽ cộng vào Giới hạn hằng ngày của ngày bạn duyệt.',
   unableToCreate: 'Không thể tạo nhiệm vụ. Vui lòng thử lại.',
   unableToUpdate: 'Không thể lưu nhiệm vụ. Vui lòng thử lại.',
   unableToDelete: 'Không thể xóa nhiệm vụ. Vui lòng thử lại.',
@@ -8,8 +9,6 @@ export const rewardTask = {
   unableToClaim: 'Không gửi được cho bố mẹ. Vui lòng thử lại.',
   newTask: 'Nhiệm vụ mới',
   editTask: 'Sửa nhiệm vụ',
-  formSubtitle:
-    'Phần thưởng sẽ được cộng vào thời gian sử dụng hôm nay sau khi bạn duyệt.',
   titleLabel: 'Nhiệm vụ',
   titlePlaceholder: 'VD: Đọc sách 20 phút',
   minutesLabel: 'Phần thưởng',
@@ -66,7 +65,7 @@ export const rewardTask = {
   taskRejected: 'Nhiệm vụ thưởng bị trả lại',
   taskRejectedDescription: '“{{title}}” được trả lại cho {{deviceName}} để thử lại.',
   starsLabel: 'Độ khó',
-  starsHint: 'Mức độ khó của nhiệm vụ này. Con sẽ tích được số sao tương ứng.',
+  starsHint: 'Con sẽ tích được số sao tương ứng.',
   starsEasy: 'Dễ',
   starsMedium: 'Vừa',
   starsHard: 'Khó',

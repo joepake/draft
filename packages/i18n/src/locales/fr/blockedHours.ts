@@ -5,16 +5,11 @@ export const blockedHours = {
   toastSaveFailed: 'Impossible d’enregistrer. Veuillez réessayer.',
   toastSaveSuccess: 'Heures bloquées enregistrées.',
   unsavedTitle: 'Ignorer les modifications ?',
-  unsavedMessage:
-    'Des modifications des Heures bloquées n’ont pas été enregistrées. Quitter sans enregistrer ?',
   discardChanges: 'Ignorer',
-  statusEnabled: 'Activé',
-  statusDisabled: 'Désactivé',
   statusActiveNow: 'Actif maintenant',
   heroSubtitle:
     'Configurez jusqu’à {{max}} plages horaires pendant lesquelles l’utilisation de l’appareil est bloquée.',
   statTimeRangesLabel: 'Plages horaires',
-  statMaxAllowedLabel: 'Maximum autorisé',
   toggleTitle: 'Activer les Heures bloquées',
   toggleSubtitleOn:
     'L’utilisation de l’appareil est bloquée pendant les horaires ci-dessous.',
@@ -22,31 +17,20 @@ export const blockedHours = {
     'Activez cette option pour bloquer l’utilisation de l’appareil selon un horaire.',
   toggleAccessibilityLabel: 'Activer les Heures bloquées',
   sectionTitle: 'Plages horaires bloquées',
-  sectionSubtitleConfigured: '{{current}}/{{max}} configurées',
   windowTitle: 'Plage {{number}}',
   windowOvernightSuffix: '· pendant la nuit',
   removeButton: 'Supprimer',
   timeStartLabel: 'Début',
   timeEndLabel: 'Fin',
-  placeholderStartTime: '22:00',
-  placeholderEndTime: '07:00',
-  timeInputAccessibilityLabel: 'Heure de {{label}}',
-  stepperMinusHourAccessibility: '{{label}} moins 1 heure',
   stepperMinus15Accessibility: '{{label}} moins 15 minutes',
   stepperPlus15Accessibility: '{{label}} plus 15 minutes',
-  stepperPlusHourAccessibility: '{{label}} plus 1 heure',
-  stepperMinusHour: '−1 h',
   stepperMinus15: '−15',
   stepperPlus15: '+15',
-  stepperPlusHour: '+1 h',
   addBlockedTime: 'Ajouter une plage horaire',
   quickAddTitle: 'Ajout rapide',
   presetBedtime: 'Heure du coucher',
   presetSchool: 'École',
   presetStudy: 'Études',
-  disabledTitle: 'Les Heures bloquées sont désactivées',
-  disabledSubtitle:
-    'Activez le commutateur ci-dessus pour choisir quand l’utilisation de l’appareil est bloquée.',
   infoTitle: 'Fonctionnement',
   infoLine1:
     'Pendant les Heures bloquées, les applications sont bloquées sur l’appareil de l’enfant.',
@@ -54,6 +38,11 @@ export const blockedHours = {
     'Les plages horaires de nuit sont prises en charge, par exemple de 22:00 à 07:00.',
   infoLine3:
     'Sur iPhone et iPad, Temps d’écran doit être autorisé sur l’appareil de l’enfant.',
+  infoSkippedExtension:
+    'Les Heures bloquées ne sont pas disponibles dans l’extension {{name}}.',
+  infoSkippedLockNotReady:
+    'Les Heures bloquées ne s’appliqueront pas sur {{name}} tant que l’appareil n’est pas autorisé à verrouiller l’écran.',
+  infoSkippedPlatform: 'Les Heures bloquées ne sont pas disponibles sur {{name}}.',
   off: 'Désactivé',
   blockedHoursChip: 'Heures bloquées',
   blockedHoursOnChip: 'Heures bloquées configurées',
@@ -74,10 +63,8 @@ export const blockedHours = {
   daysEveryDay: 'Tous les jours',
   daysWeekdays: 'En semaine',
   daysWeekend: 'Week-end',
-  daysSchoolNights: 'Veilles d’école',
-  daysWeekendNights: 'Nuits du week-end',
   daysOvernightHint: 'Les plages de nuit comptent pour la nuit où elles commencent.',
   overlapWarning:
-    'Cette période chevauche une autre plage bloquée : les deux restent actives.',
+    'Cette plage horaire en chevauche une autre : les deux restent actives.',
   weekPreviewTitle: 'Votre semaine',
 } as const;

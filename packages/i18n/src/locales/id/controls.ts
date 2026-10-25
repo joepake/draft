@@ -9,7 +9,6 @@ export const controls = {
   dailyLimitEnterAtLeastMinutes: 'Masukkan minimal {{count}} menit.',
   dailyLimitMaxMinutes: 'Batas harian maksimal {{max}} menit (24 jam).',
   rulesSectionTitle: 'Aturan dari orang tuamu',
-  rulesSectionDescription: 'Aturan yang ditetapkan orang tuamu untuk perangkat ini.',
   blockedHoursLabel: 'Jam Diblokir',
   dailyLimitLabel: 'Batas harian',
   webFilterLabel: 'Filter web',

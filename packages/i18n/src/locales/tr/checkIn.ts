@@ -1,13 +1,12 @@
 export const checkIn = {
   noPhotoBadge: 'Fotoğraf yok',
   historyTitle: 'Check-In geçmişi',
-  historyHint:
-    'Büyütmek için fotoğrafa dokunun. Yukarıdan istediğiniz zaman yeni bir Check-In isteyebilirsiniz.',
+  historyHint: 'Büyütmek için fotoğrafa dokunun.',
   historyEmpty: 'Henüz Check-In yok.',
   screenTitle: 'Check-In',
   statusSafe: 'Güvende',
   statusNoResponse: 'Yanıt yok',
-  statusAskedForHelp: 'Yardım istedi (SOS)',
+  statusAskedForHelp: 'SOS gönderildi',
   statusWaiting: 'Bekleniyor',
   metaWaitingForLocationAndPhoto: 'Konum ve fotoğraf bekleniyor',
   metaWaitingForLocation: 'Konum bekleniyor',
@@ -34,6 +33,7 @@ export const checkIn = {
   checkInConfirmedDescription: '{{deviceName}} güvende olduğunu doğruladı.',
   childDeviceFallback: 'Çocuk cihazı',
   requestCheckIn: 'Check-In iste',
+  send: 'Gönder',
   requestCheckInNote:
     'Çocuk cihazından konumunu ister; cihaz telefon veya tablet ise ön kameradan bir fotoğraf da ister.',
   requestCheckInNoteLocationOnly: 'Çocuk cihazından konumunu ister.',
