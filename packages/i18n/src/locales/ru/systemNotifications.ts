@@ -23,7 +23,7 @@ export const systemNotifications = {
   monitorBodyAccessibility:
     'Включи KidGate в разделе «Специальные возможности» в настройках. Без этого другие приложения всё ещё можно открыть.',
   monitorBodyDailyLimit: 'Дневной лимит исчерпан',
-  monitorBodySchedule: 'Сейчас действуют Заблокированные часы',
+  monitorBodySchedule: 'Сейчас действуют Часы блокировки',
   monitorBodyAppBlocking: 'Блокируются приложения, выбранные родителями',
   monitorBodyReady: 'Правила родителей готовы к применению',
   sosTitle: 'SOS — нужна помощь',

@@ -16,7 +16,6 @@ export const child = {
   outOfScreenTimeAskParent:
     '오늘의 스크린 타임을 모두 사용했어요. 아래에서 더 요청할 수 있어요.',
   screenTimeToday: '오늘의 스크린 타임',
-  timeLeftToday: '오늘 {{time}} 남음',
   usedOverLimitMinutes: '{{used}} / {{limit}}',
   usedMinutesOnly: '{{used}}',
   outOfScreenTimeToday:

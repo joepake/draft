@@ -145,7 +145,7 @@ export default {
     feature7Title: 'Schutzwarnungen & App-Warnungen',
     feature7Text:
       'Erfahre sofort, wenn auf dem Handy deines Kindes eine wichtige Berechtigung ausgeschaltet wird, und gib neue Apps auf Android, Android TV oder einem Computer frei, bevor sie sich öffnen.',
-    feature8Title: 'Belohnungsaufgaben & Zeitanfragen',
+    feature8Title: 'Bonusaufgaben & Zeitanfragen',
     feature8Text:
       'Kinder verdienen Bonusminuten und Sterne mit erledigten Aufgaben oder bitten um mehr Zeit — beides gibst du auf deinem Handy frei.',
 
@@ -210,7 +210,7 @@ export default {
     only1Title: 'Auch der Fernseher im Wohnzimmer',
     only1Text:
       'Android TV bekommt ein Tageslimit, Sperrzeiten, Blockierte Apps und einen Webfilter. Auf einem Fernseher sperrt KidGate nur so gut es geht — eine gesperrte App wird zurück auf den Startbildschirm geschickt — und vom Sofa aus gibt es weder SOS noch eine Anfrage nach zusätzlicher Zeit. Einen Standort teilt der Fernseher auch nicht. Die meisten Kindersicherungen hören beim Handy auf.',
-    only2Title: 'Nachrichtenwarnungen, die auf dem Handy bleiben',
+    only2Title: 'Chatwarnungen, die auf dem Handy bleiben',
     only2Text:
       'Mit Premium auf Android werden Nachrichten direkt auf dem Gerät mit Stichwortlisten in bis zu drei Sprachen abgeglichen, die du aus 14 auswählst, und was das Handy verlässt, ist das gefundene Wort oder der gefundene Ausdruck, niemals das Gespräch. Eines ändert das, und nur wenn du es willst: Schaltest du die KI-Bestätigung ein, wird eine mehrdeutige eingehende Nachricht zur Beurteilung an Gemini von Google gesendet, damit dich nicht ein gewöhnliches Wort aus dem Schlaf reißt.',
     only3Title: 'Jede App, keine App-Liste',
@@ -231,7 +231,7 @@ export default {
     faqSub: 'Schnelle Antworten vor dem Download.',
     faq1Q: 'Gibt es eine kostenlose Testphase?',
     faq1A:
-      'Ja. Die 7-tägige Testphase beginnt, sobald dein erstes Eltern- und Kindergerät verbunden sind, und umfasst alle Premium-Funktionen. Danach laufen die Regeln, die du gesetzt hast — Tageslimit, Sperrzeiten, Blockierte Apps, Webfilter, Gerätesperre, Zeitanfragen und Belohnungsaufgaben — auf jedem Kindergerät, das sie unterstützt, kostenlos weiter, und das eine Gerät, das du für die weitere Überwachung auswählst, teilt weiterhin seinen Standort. Live-Aktivität, Verlauf, Wochenberichte und Standortverfolgung bringt Premium zurück.',
+      'Ja. Die 7-tägige Testphase beginnt, sobald dein erstes Eltern- und Kindergerät verbunden sind, und umfasst alle Premium-Funktionen. Danach laufen die Regeln, die du gesetzt hast — Tageslimit, Sperrzeiten, Blockierte Apps, Webfilter, Gerätesperre, Zeitanfragen und Bonusaufgaben — auf jedem Kindergerät, das sie unterstützt, kostenlos weiter, und das eine Gerät, das du für die weitere Überwachung auswählst, teilt weiterhin seinen Standort. Live-Aktivität, Verlauf, Wochenberichte und Standortverfolgung bringt Premium zurück.',
     faq2Q: 'Wie viele Geräte kann ich verwalten?',
     faq2A:
       'Premium umfasst bis zu 25 Kindergeräte und 6 Elternteile, dich eingeschlossen, und jedes Gerät sendet Aktivität. Der kostenlose Tarif umfasst bis zu 8 Kindergeräte und 3 Elternteile. Jedes Gerät setzt deine Regeln weiter durch, aber nur das von dir gewählte sendet Aktivität; auf den anderen lassen sich diese Regeln lockern, aber nicht verschärfen.',
@@ -639,7 +639,7 @@ export default {
     limitScaleMin: '30 Min.',
     limitScaleMax: '8 Std.',
     limitHint:
-      'Bonusminuten aus Belohnungsaufgaben und genehmigten Zeitanfragen kommen obendrauf, nur für diesen Tag.',
+      'Bonusminuten aus Bonusaufgaben und genehmigten Zeitanfragen kommen obendrauf, nur für diesen Tag.',
     limitShared: 'Für alle Geräte zusammen',
     limitSharedSpent: 'Heute {{used}} von {{limit}} genutzt',
     limitSharedHint:
@@ -670,7 +670,7 @@ export default {
     starChartEmpty:
       'Füge in der App ein zweites Kind hinzu, um die Sternetafel zu starten.',
     starChartStars: '{{count}} Sterne',
-    rewardTasksTitle: 'Belohnungsaufgaben',
+    rewardTasksTitle: 'Bonusaufgaben',
     rewardTasksSub: 'Verdiene Extraminuten durch erledigte Aufgaben',
     rewardTaskMeta: '+{{minutes}} Min. · {{cadence}}',
     rewardTaskStars: 'Schwierigkeit: {{count}} von 3',
@@ -732,7 +732,7 @@ export default {
     start3:
       '**3. Verbinde das Kindergerät.** Installiere KidGate auf dem Gerät deines Kindes und öffne es. Wähle auf einem Smartphone oder Tablet *Dies ist ein Kindergerät*. Öffne auf dem Elterngerät *Familie* und tippe auf das Scan-Symbol (*Code scannen*), scanne dann den QR-Code auf dem Kindergerät (oder gib den 6-stelligen Code ein). Fragt das Kindergerät nach, bestätige dort die Verbindung; ein Fernseher verbindet sich von selbst.',
     start4:
-      '**4. Erteile Berechtigungen auf dem Kindergerät.** Öffne den Bildschirm *Status* auf dem Kindergerät und tippe auf *Einrichtung fortsetzen* — die App führt dich durch jede Berechtigung, die KidGate braucht. Unter Android: Mitteilungen, Nutzungszugriff, Über anderen Apps anzeigen, Bedienungshilfen (Sperrfunktion), Wecker und Erinnerungen, Akku ohne Einschränkung, die VPN-Verbindung, auf der der Webfilter läuft, Deinstallationsschutz und, für Nachrichtenwarnungen, Zugriff auf Benachrichtigungen; unter iOS: *App- & Websitenutzung erlauben* (Bildschirmzeit) und für den Webfilter *Erlauben*, wenn iOS fragt, ob VPN-Konfigurationen hinzugefügt werden dürfen. Die Steuerung funktioniert erst vollständig, wenn diese aktiv sind.',
+      '**4. Erteile Berechtigungen auf dem Kindergerät.** Öffne den Bildschirm *Status* auf dem Kindergerät und tippe auf *Einrichtung fortsetzen* — die App führt dich durch jede Berechtigung, die KidGate braucht. Unter Android: Mitteilungen, Nutzungszugriff, Über anderen Apps anzeigen, Bedienungshilfen (Sperrfunktion), Wecker und Erinnerungen, Akku ohne Einschränkung, die VPN-Verbindung, auf der der Webfilter läuft, Deinstallationsschutz und, für Chatwarnungen, Zugriff auf Benachrichtigungen; unter iOS: *App- & Websitenutzung erlauben* (Bildschirmzeit) und für den Webfilter *Erlauben*, wenn iOS fragt, ob VPN-Konfigurationen hinzugefügt werden dürfen. Die Steuerung funktioniert erst vollständig, wenn diese aktiv sind.',
     start5:
       '**5. Richte die Steuerung ein.** Öffne auf dem Elterngerät die Gerätekarte des Kindes und lege Tageslimit, Sperrzeiten, Blockierte Apps, Webfilter und Standortfunktionen fest.',
     startNote:

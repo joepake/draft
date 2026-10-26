@@ -45,6 +45,7 @@ export const blockedApps = {
   emptyTitle: 'अभी तक कोई ऐप ब्लॉक नहीं किया गया',
   emptySubtitle:
     '“इंस्टॉल किए गए ऐप” से कोई ऐप ब्लॉक करें। iPhone पर, ऐप्स उसी iPhone पर चुनें।',
+  emptySubtitleNoIphone: '“इंस्टॉल किए गए ऐप” से कोई ऐप ब्लॉक करें।',
   emptySubtitleTv:
     'TV पर KidGate खोलें, “{{button}}” चुनें, Parent PIN दर्ज करें, फिर ऐप्स चुनें और सहेजें।',
   sectionTitle: 'ब्लॉक सूची',

@@ -372,8 +372,8 @@ export const family = {
 
   sos: 'SOS',
 
-  browsingPaused: 'ブラウジング一時停止',
-  browsingResumed: 'ブラウジング再開',
+  browsingPaused: 'ウェブ一時停止',
+  browsingResumed: 'ウェブ再開',
   parentPausedBrowsing:
     '{{actorName}}がこの子どものデバイスのブラウジングを{{minutes}}分間一時停止しました。',
   parentResumedBrowsing:

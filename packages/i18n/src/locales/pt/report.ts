@@ -74,7 +74,7 @@ export const report = {
   actionTitle: 'Algo que pode fazer',
   actionDailyLimit: 'Definir um Limite diário de {{duration}}',
   actionDailyLimitWhy: 'Foi essa a média diária da semana passada.',
-  actionBlockedHours: 'Definir Horários bloqueados',
+  actionBlockedHours: 'Definir Horas bloqueadas',
   actionBlockedHoursLateNight: 'Bloquear as horas da madrugada',
   actionOnDevice: 'Em {{device}}',
   finePrint:

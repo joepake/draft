@@ -1,9 +1,9 @@
 export const messageMonitoring = {
-  actionTitle: 'Alertes de messages',
+  actionTitle: 'Alertes messages',
   actionDescription:
     'Soyez averti lorsque des mots préoccupants apparaissent dans les messages',
-  title: 'Alertes de messages',
-  heroTitle: 'Alertes de messages',
+  title: 'Alertes messages',
+  heroTitle: 'Alertes messages',
   heroSubtitle:
     'KidGate signale les mots préoccupants dans les messages et les recherches de votre enfant, et vous avertit. Vous ne voyez que le mot ou l’expression signalés, jamais le message ni la recherche.',
   androidOnlyNote:
@@ -60,11 +60,11 @@ export const messageMonitoring = {
     unknown:
       'Cette alerte vient d’un appareil ou d’une liste de mots que cette version ne nomme plus. Posez vos questions sur le mot ou l’expression signalés ci-dessus ; rien d’autre du message n’a été conservé.',
   },
-  setupTitle: 'Alertes de messages',
+  setupTitle: 'Alertes messages',
   setupBody:
     'Quand tes parents activent cette option, KidGate analyse les messages que tu reçois pour y repérer des mots d’alerte, directement sur ce téléphone. Tes parents ne voient que le mot ou l’expression signalés, jamais tes messages. S’ils activent aussi l’Analyse des messages par IA, un message ambigu peut être envoyé à un service d’IA pour vérification, après suppression des adresses e-mail, numéros de téléphone, liens et @pseudos.',
   setupGrant: 'Autoriser l’accès aux notifications',
-  setupEnable: 'Alertes de messages',
+  setupEnable: 'Alertes messages',
   controlledByParentHint:
     'S’active ou se désactive depuis l’app parent ou le tableau de bord web, pas ici.',
   parentIncomingLabel: 'Analyser les messages reçus',
@@ -81,7 +81,7 @@ export const messageMonitoring = {
   parentProfanityHint:
     'Désactivé par défaut — les jurons ordinaires sont courants, ceci en fait aussi une alerte.',
   parentToggleSaveFailed: 'Impossible d’enregistrer la modification. Réessayez.',
-  settingsTitle: 'Réglages des Alertes de messages',
+  settingsTitle: 'Réglages des Alertes messages',
   checkedTitle: 'Vérifié, rien à signaler',
   checkedSubtitle:
     'Des mots surveillés sont apparus mais se sont révélés inoffensifs dans leur contexte : aucune alerte ne vous a été envoyée. Ils sont affichés ici pour que vous voyiez ce qui est filtré à votre place — dites-le-nous si l’un d’eux aurait dû vous parvenir.',
@@ -118,7 +118,7 @@ export const messageMonitoring = {
     revokedTitle: 'L’analyse des messages s’est arrêtée',
     revokedBody:
       'Android a désactivé une autorisation dont KidGate a besoin : les messages ne sont plus analysés. Ouvrez KidGate sur l’appareil de votre enfant et accordez-la à nouveau.',
-    offTitle: 'Les Alertes de messages ne sont pas activées',
+    offTitle: 'Les Alertes messages ne sont pas activées',
     offBody: 'Ouvrez KidGate sur l’appareil de votre enfant pour la configurer.',
     switchedOffBody:
       'Activez « Analyser les messages reçus » dans les réglages de cet écran.',
@@ -127,7 +127,7 @@ export const messageMonitoring = {
       'Vous venez d’activer cette option. L’appareil de votre enfant la prendra en compte à sa prochaine connexion, en général en quelques minutes — plus vite si le téléphone est allumé. Rien d’autre à faire.',
     unknownTitle: 'En attente de l’appareil',
     unknownBody:
-      'Cet appareil n’a pas encore indiqué si les Alertes de messages fonctionnent : une liste vide ne veut donc pas dire grand-chose. Cela devrait se mettre à jour à la prochaine connexion de l’appareil.',
+      'Cet appareil n’a pas encore indiqué si les Alertes messages fonctionnent : une liste vide ne veut donc pas dire grand-chose. Cela devrait se mettre à jour à la prochaine connexion de l’appareil.',
     outgoingAvailableTitle: 'Analyser aussi ce que votre enfant écrit',
     outgoingAvailableBody:
       'Les messages reçus sont déjà analysés. KidGate peut aussi analyser ce que votre enfant écrit dans les applis de messagerie — le harcèlement et l’automutilation y apparaissent bien plus souvent. Configurez-le sur son appareil.',

@@ -1,9 +1,9 @@
 export const messageMonitoring = {
-  actionTitle: 'Nachrichtenwarnungen',
+  actionTitle: 'Chatwarnungen',
   actionDescription:
     'Werde benachrichtigt, wenn bedenkliche Wörter in Nachrichten auftauchen',
-  title: 'Nachrichtenwarnungen',
-  heroTitle: 'Nachrichtenwarnungen',
+  title: 'Chatwarnungen',
+  heroTitle: 'Chatwarnungen',
   heroSubtitle:
     'KidGate markiert bedenkliche Wörter in den Nachrichten und Suchanfragen deines Kindes und benachrichtigt dich. Du siehst nur das markierte Wort oder den markierten Ausdruck, nie die Nachricht oder die Suchanfrage.',
   androidOnlyNote:
@@ -60,11 +60,11 @@ export const messageMonitoring = {
     unknown:
       'Diese Meldung kommt von einem Gerät oder einer Wortliste, die diese Version nicht mehr benennt. Frag nach dem markierten Wort oder Ausdruck oben; sonst wurde nichts von der Nachricht behalten.',
   },
-  setupTitle: 'Nachrichtenwarnungen',
+  setupTitle: 'Chatwarnungen',
   setupBody:
     'Wenn deine Eltern das einschalten, prüft KidGate die Nachrichten, die du bekommst, direkt auf diesem Handy auf Warnwörter. Deine Eltern sehen nur ein markiertes Wort oder einen markierten Ausdruck, nie deine Nachrichten. Wenn sie zusätzlich die KI-Nachrichtenanalyse einschalten, kann eine unklare Nachricht zur Prüfung an einen KI-Dienst gesendet werden – ohne E-Mail-Adressen, Telefonnummern, Links und @Nutzernamen.',
   setupGrant: 'Benachrichtigungszugriff erlauben',
-  setupEnable: 'Nachrichtenwarnungen',
+  setupEnable: 'Chatwarnungen',
   controlledByParentHint:
     'Wird in der Eltern-App oder im Web-Dashboard ein- oder ausgeschaltet, nicht hier.',
   parentIncomingLabel: 'Empfangene Nachrichten prüfen',
@@ -82,7 +82,7 @@ export const messageMonitoring = {
     'Standardmäßig aus – normale Kraftausdrücke sind häufig, das macht auch sie zu einer Warnung.',
   parentToggleSaveFailed:
     'Die Änderung konnte nicht gespeichert werden. Versuche es erneut.',
-  settingsTitle: 'Einstellungen für Nachrichtenwarnungen',
+  settingsTitle: 'Einstellungen für Chatwarnungen',
   checkedTitle: 'Geprüft und unbedenklich',
   checkedSubtitle:
     'Beobachtete Wörter, die aufgetaucht sind, im Zusammenhang aber harmlos waren – deshalb gab es keine Warnung. Hier steht, was stellvertretend herausgefiltert wird – sag Bescheid, wenn etwas davon hätte ankommen sollen.',
@@ -119,7 +119,7 @@ export const messageMonitoring = {
     revokedTitle: 'Die Nachrichtenprüfung wurde gestoppt',
     revokedBody:
       'Android hat eine Berechtigung deaktiviert, die KidGate braucht, deshalb werden Nachrichten nicht mehr geprüft. Öffne KidGate auf dem Gerät deines Kindes und erteile sie erneut.',
-    offTitle: 'Nachrichtenwarnungen sind nicht eingeschaltet',
+    offTitle: 'Chatwarnungen sind nicht eingeschaltet',
     offBody: 'Öffne KidGate auf dem Gerät deines Kindes, um es einzurichten.',
     switchedOffBody:
       'Schalte „Empfangene Nachrichten prüfen“ in den Einstellungen auf diesem Bildschirm ein.',
@@ -128,7 +128,7 @@ export const messageMonitoring = {
       'Du hast das eingeschaltet. Das Gerät des Kindes übernimmt die Änderung bei der nächsten Verbindung, meist innerhalb weniger Minuten – schneller, wenn das Telefon gerade benutzt wird. Du musst nichts weiter tun.',
     unknownTitle: 'Warten auf das Gerät',
     unknownBody:
-      'Dieses Gerät hat noch nicht gemeldet, ob die Nachrichtenwarnungen laufen – eine leere Liste sagt daher wenig aus. Das sollte sich beim nächsten Kontakt des Geräts aktualisieren.',
+      'Dieses Gerät hat noch nicht gemeldet, ob die Chatwarnungen laufen – eine leere Liste sagt daher wenig aus. Das sollte sich beim nächsten Kontakt des Geräts aktualisieren.',
     outgoingAvailableTitle: 'Auch prüfen, was dein Kind schreibt',
     outgoingAvailableBody:
       'Empfangene Nachrichten werden bereits geprüft. KidGate kann auch prüfen, was dein Kind in Messenger-Apps tippt – Mobbing und Selbstverletzung tauchen dort deutlich häufiger auf. Richte es auf dem Gerät ein.',

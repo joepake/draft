@@ -16,7 +16,6 @@ export const child = {
   outOfScreenTimeAskParent:
     'आज का स्क्रीन टाइम खत्म हो गया है। आप नीचे दिए गए बटन से और समय माँग सकते हैं।',
   screenTimeToday: 'आज का स्क्रीन टाइम',
-  timeLeftToday: 'आज {{time}} बाकी',
   usedOverLimitMinutes: '{{used}} / {{limit}}',
   usedMinutesOnly: '{{used}}',
   outOfScreenTimeToday:

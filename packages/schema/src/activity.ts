@@ -58,12 +58,11 @@ export type ActivityType =
    */
   | 'sos_alert'
   /**
-   * A KidGate operator entered the family account for support. Written by
-   * `functions/admin/impersonate.js` at session start — the one copy of the
-   * entry log the family can read (Privacy Policy §10). `deviceId` is empty:
-   * no device was involved. Params carry `ticketRef` when the operator named
-   * one. It records the entry only; nothing records what a session changed
-   * (`docs/OPERATOR_ACCESS.md`).
+   * A KidGate operator entered the family account for support. **No longer
+   * written** — `functions/admin/impersonate.js` stopped on 2026-10-25 so the
+   * family is not alarmed. Kept so rows already stored still parse until the
+   * feed's 30-day sweep; delete after 2026-11-25. `deviceId` empty, params may
+   * carry `ticketRef` (`docs/OPERATOR_ACCESS.md`).
    */
   | 'support_session';
 

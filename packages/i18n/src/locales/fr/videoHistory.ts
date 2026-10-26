@@ -43,7 +43,7 @@ export const videoHistory = {
   readerLayoutChanged:
     'Les Shorts ne sont pas enregistrés sur cet appareil pour le moment : l’application YouTube a changé et KidGate doit être mis à jour. Les autres vidéos sont toujours enregistrées.',
   grantNeeded:
-    'Les vidéos ne sont pas encore enregistrées : KidGate a besoin de l’accès aux notifications sur le téléphone de votre enfant. Sur ce téléphone, ouvrez KidGate, puis Réglages, sélectionnez Déverrouiller avec le code PIN parent, puis Autoriser l’accès aux notifications dans la section Alertes de messages.',
+    'Les vidéos ne sont pas encore enregistrées : KidGate a besoin de l’accès aux notifications sur le téléphone de votre enfant. Sur ce téléphone, ouvrez KidGate, puis Réglages, sélectionnez Déverrouiller avec le code PIN parent, puis Autoriser l’accès aux notifications dans la section Alertes messages.',
   openAction: 'Ouvrir sur YouTube',
   searchAction: 'Rechercher cette vidéo sur YouTube',
   openFailed: 'Impossible d’ouvrir YouTube. Réessayez.',

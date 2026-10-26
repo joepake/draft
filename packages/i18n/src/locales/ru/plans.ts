@@ -65,7 +65,7 @@ export const plans = {
   compareActivityFeedPremium: '30 дней',
   compareChildReport: 'Отчёты по ребёнку',
   compareIncluded:
-    'Оба тарифа включают Дневной лимит, Заблокированные часы, Лимиты приложений, Блокировку устройства, SOS, Запросы времени, Задания с наградой и веб-панель.',
+    'Оба тарифа включают Дневной лимит, Часы блокировки, Лимиты приложений, Блокировку устройства, SOS, Запросы времени, Бонус-задания и веб-панель.',
   sectionWhyPremium: 'Что добавляет Premium',
   sectionWhyPremiumSubtitle:
     'Все правила продолжают работать бесплатно. Premium добавляет то, что вы видите, и как скоро.',
@@ -90,7 +90,7 @@ export const plans = {
   // app does not keep.
   featurePausePhone: 'Блокировка устройства',
   featureDailyLimits: 'Дневной лимит',
-  featureBlockedHours: 'Заблокированные часы',
+  featureBlockedHours: 'Часы блокировки',
   featureAppLimits: 'Лимиты приложений',
   featureInstallApproval: 'Подтверждение новых приложений',
   featureTimeRequests: 'Запросы времени',
@@ -152,10 +152,10 @@ export const plans = {
   // has to name who needs to act instead of offering a button they can't use.
   familyPremiumEndedTitle: 'Premium этой семьи закончился',
   familyPremiumEndedBody:
-    'Дневной лимит, Заблокированные часы, Заблокированные приложения, местоположение и переключатель Веб-фильтра продолжают работать. Обновления в реальном времени, история, оповещения и отчёты приостановлены, пока владелец не продлит Premium.',
+    'Дневной лимит, Часы блокировки, Заблокированные приложения, местоположение и переключатель Веб-фильтра продолжают работать. Обновления в реальном времени, история, оповещения и отчёты приостановлены, пока владелец не продлит Premium.',
   pricesUnavailable: 'Не удалось загрузить цены из магазина.',
   pricesRetry: 'Повторить',
-  featureRewardTasks: 'Задания с наградой',
+  featureRewardTasks: 'Бонус-задания',
   sectionChoosePlan: 'Выберите тариф',
   saveBadge: 'Экономия {{percent}}%',
   billedMonthly: 'Оплата каждый месяц',
@@ -189,7 +189,7 @@ export const plans = {
   platformAndroidTvLimits:
     'Нет оповещений о сообщениях, местоположения, SOS и Запросов времени. Заблокированные приложения работают по возможности.',
   platformChromebookLimits:
-    'Только Веб-фильтр — нет Дневного лимита, Заблокированных часов, Заблокированных приложений, Блокировки устройства, SOS и местоположения.',
+    'Только Веб-фильтр — нет Дневного лимита, Часов блокировки, Заблокированных приложений, Блокировки устройства, SOS и местоположения.',
   platformComingSoon: 'Скоро',
   platformWindows: 'Windows',
   platformWindowsDetail: 'Только устройство ребёнка · Windows 10 и новее',

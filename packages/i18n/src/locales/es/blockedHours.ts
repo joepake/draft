@@ -42,8 +42,6 @@ export const blockedHours = {
     'Las Horas bloqueadas no se aplicarán en {{name}} hasta que el dispositivo tenga permiso para bloquear la pantalla.',
   infoSkippedPlatform: 'Las Horas bloqueadas no están disponibles en {{name}}.',
   off: 'Desactivado',
-  blockedHoursChip: 'Horas bloqueadas',
-  blockedHoursOnChip: 'Horas bloqueadas configuradas',
   blockedHoursStatusActiveNow: 'Activo ahora',
   blockedHoursStatusOn: 'Activado',
   blockedHoursStatusOff: 'Desactivado',

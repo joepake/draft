@@ -50,7 +50,7 @@ export const plans = {
   compareWebPremium: 'Welche Seiten, mit Namen',
   compareNewApps: 'Neu installierte Apps',
   compareNewAppsPremium: 'Welche Apps, mit Namen',
-  compareMessages: 'Nachrichtenwarnungen (Android)',
+  compareMessages: 'Chatwarnungen (Android)',
   compareSafety: 'Schutzwarnungen und Check-in',
   compareSafetyFree: 'Warnungen + Check-in',
   compareSafetyPremium: 'Fügt jedem Check-in ein Foto hinzu',
@@ -65,7 +65,7 @@ export const plans = {
   compareActivityFeedPremium: '30 Tage',
   compareChildReport: 'Berichte pro Kind',
   compareIncluded:
-    'Beide Tarife enthalten Tageslimit, Sperrzeiten, App-Limits, Gerätesperre, SOS, Zeitanfragen, Belohnungsaufgaben und das Web-Dashboard.',
+    'Beide Tarife enthalten Tageslimit, Sperrzeiten, App-Limits, Gerätesperre, SOS, Zeitanfragen, Bonusaufgaben und das Web-Dashboard.',
   sectionWhyPremium: 'Was Premium dazugibt',
   sectionWhyPremiumSubtitle:
     'Jede Regel läuft auch kostenlos weiter. Premium erweitert, was du siehst – und wie schnell du es siehst.',
@@ -161,7 +161,7 @@ export const plans = {
     'Tageslimit, Sperrzeiten, Blockierte Apps, Standort und der Webfilter-Schalter funktionieren weiterhin. Live-Updates, Verlauf, Warnungen und Berichte pausieren, bis der Familieninhaber Premium verlängert.',
   pricesUnavailable: 'Die Preise konnten nicht aus dem Store geladen werden.',
   pricesRetry: 'Erneut versuchen',
-  featureRewardTasks: 'Belohnungsaufgaben',
+  featureRewardTasks: 'Bonusaufgaben',
   sectionChoosePlan: 'Wähle deinen Plan',
   saveBadge: '{{percent}} % sparen',
   billedMonthly: 'Monatliche Abrechnung',
@@ -189,11 +189,11 @@ export const plans = {
   platformMac: 'Mac',
   platformMacDetail: 'Nur Kindgerät · macOS 12 und neuer',
   platformIosLimits:
-    'Keine App-Limits und keine Nachrichtenwarnungen. Die Apps für Blockierte Apps werden direkt auf dem iPhone ausgewählt.',
+    'Keine App-Limits und keine Chatwarnungen. Die Apps für Blockierte Apps werden direkt auf dem iPhone ausgewählt.',
   platformMacLimits: 'Keine Nachrichtenhinweise, und der Standort ist ungefähr.',
   platformWindowsLimits: 'Keine Nachrichtenhinweise, und der Standort ist ungefähr.',
   platformAndroidTvLimits:
-    'Keine Nachrichtenwarnungen, kein Standort, kein SOS und keine Zeitanfragen. Blockierte Apps werden nur nach bestem Bemühen durchgesetzt.',
+    'Keine Chatwarnungen, kein Standort, kein SOS und keine Zeitanfragen. Blockierte Apps werden nur nach bestem Bemühen durchgesetzt.',
   platformChromebookLimits:
     'Nur Webfilter – kein Tageslimit, keine Sperrzeiten, keine Blockierten Apps, keine Gerätesperre, kein SOS und kein Standort.',
   platformComingSoon: 'Demnächst',

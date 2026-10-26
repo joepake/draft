@@ -46,6 +46,7 @@ export const blockedApps = {
   emptyTitle: 'Henüz engellenen uygulama yok',
   emptySubtitle:
     'Bir uygulamayı Yüklü uygulamalar bölümünden engelleyin. iPhone’da uygulamaları iPhone’un kendisinde seçin.',
+  emptySubtitleNoIphone: 'Bir uygulamayı Yüklü uygulamalar bölümünden engelleyin.',
   emptySubtitleTv:
     'TV’de KidGate’i açın, “{{button}}” düğmesini seçin, Ebeveyn PIN’ini girin, ardından uygulamaları seçip kaydedin.',
   sectionTitle: 'Engelleme listesi',

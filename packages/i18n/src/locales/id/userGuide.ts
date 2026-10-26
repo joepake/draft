@@ -147,7 +147,7 @@ export const userGuide = {
         '3': 'Di perangkat Anda, buka Keluarga, ketuk ikon pindai (Pindai kode), lalu pindai kode QR — atau pilih Masukkan kode secara manual dan ketik kodenya.',
         '4': 'Di pop-up KidGate, periksa nama orang tua, lalu pilih Ya, sambungkan.',
         '5': 'Kembali ke perangkat Anda, pemilik keluarga memilih anak yang menggunakan ekstensi ini; lalu aktifkan Filter web untuknya. Sebelum itu, ekstensi akan menampilkan Tidak aktif.',
-        '6': 'Opsional, dengan Premium: untuk melihat video apa saja yang ditonton, buka Video yang ditonton dan aktifkan Rekam video yang ditonton untuk ekstensi ini.',
+        '6': 'Opsional, dengan Premium: untuk melihat video apa saja yang ditonton, buka Riwayat video dan aktifkan Rekam video yang ditonton untuk ekstensi ini.',
       },
     },
     inviteParent: {
@@ -498,13 +498,13 @@ export const userGuide = {
       },
     },
     videoHistory: {
-      title: 'Lihat Video yang ditonton',
+      title: 'Lihat Riwayat video',
       summary:
         'Simpan daftar video YouTube yang ditonton anak Anda, beserta saluran dan waktunya.',
       keywords: 'youtube, shorts, video yang ditonton, riwayat tontonan',
-      tip: 'Video yang ditonton termasuk dalam Premium dan hanya mencakup YouTube. Fitur ini berfungsi di ponsel Android dan di ekstensi Chrome, tetapi tidak di iPhone atau iPad. Di Mac atau PC, tambahkan ekstensi Chrome. Android TV hanya merekam video setelah KidGate memiliki akses notifikasi di TV tersebut, yang belum bisa diberikan dari layar TV mana pun; bahkan setelah itu, Shorts tidak dicantumkan.',
+      tip: 'Riwayat video termasuk dalam Premium dan hanya mencakup YouTube. Fitur ini berfungsi di ponsel Android dan di ekstensi Chrome, tetapi tidak di iPhone atau iPad. Di Mac atau PC, tambahkan ekstensi Chrome. Android TV hanya merekam video setelah KidGate memiliki akses notifikasi di TV tersebut, yang belum bisa diberikan dari layar TV mana pun; bahkan setelah itu, Shorts tidak dicantumkan.',
       steps: {
-        '1': 'Di perangkat orang tua, buka profil anak (atau perangkat, jika perangkat belum ditetapkan ke anak), lalu Video yang ditonton di bagian Pemantauan keamanan.',
+        '1': 'Di perangkat orang tua, buka profil anak (atau perangkat, jika perangkat belum ditetapkan ke anak), lalu Riwayat video di bagian Pemantauan keamanan.',
         '2': 'Aktifkan Rekam video yang ditonton. Opsi ini nonaktif sampai Anda mengaktifkannya, dan jika diaktifkan dari profil anak, berlaku untuk semua perangkatnya.',
         '3': 'Di ponsel Android, KidGate juga memerlukan akses notifikasi: di perangkat anak, buka Pengaturan KidGate, pilih Buka kunci dengan PIN Orang Tua, lalu Izinkan akses notifikasi di bagian Peringatan pesan. Shorts juga memerlukan Aksesibilitas.',
         '4': 'Video muncul per hari, beserta salurannya dan berapa kali masing-masing diputar. Ketuk salah satunya untuk mencarinya di YouTube.',

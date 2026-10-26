@@ -4,7 +4,7 @@ export const deviceDetail = {
   notFoundTitle: 'Dispositivo',
   dangerTitle: 'Remover este dispositivo',
   dangerDescription:
-    'Remova este dispositivo da sua conta da família. Isso exclui o histórico de localização, o histórico de uso, o histórico da web, os vídeos assistidos, a lista de apps instalados, as Solicitações de tempo, os pedidos de sites, as Tarefas com recompensa, os Check-ins, os alertas de SOS e as atividades.',
+    'Remova este dispositivo da sua conta da família. Isso exclui o histórico de localização, o histórico de uso, o histórico da web, os vídeos assistidos, a lista de apps instalados, as Solicitações de tempo, os pedidos de sites, as Tarefas bônus, os Check-ins, os alertas de SOS e as atividades.',
   removeButton: 'Remover dispositivo',
   removingButton: 'Removendo…',
   showAllFeatures: 'Mostrar todos os recursos',
@@ -12,7 +12,7 @@ export const deviceDetail = {
   essentialControls: 'Controles principais',
   dailyLimit: 'Limite diário',
   setDailyScreenTimeCap: 'Definir um Limite diário',
-  blockedHours: 'Horários bloqueados',
+  blockedHours: 'Horas bloqueadas',
   manageTimeRanges: 'Gerencie até {{max}} faixas de horário',
   blockedApps: 'Apps bloqueados',
   appBlockingBestEffort:
@@ -79,7 +79,7 @@ export const deviceDetail = {
   removeOwnerOnly: 'Somente o proprietário da família pode remover dispositivos.',
   removeDeviceTitle: 'Remover dispositivo?',
   removeDeviceMessage:
-    '{{deviceName}} será desconectado da sua conta. Isso exclui o histórico de localização, o histórico de uso, o histórico da web, os vídeos assistidos, a lista de apps instalados, as Solicitações de tempo, os pedidos de sites, as Tarefas com recompensa, os Check-ins, os alertas de SOS e as atividades.',
+    '{{deviceName}} será desconectado da sua conta. Isso exclui o histórico de localização, o histórico de uso, o histórico da web, os vídeos assistidos, a lista de apps instalados, as Solicitações de tempo, os pedidos de sites, as Tarefas bônus, os Check-ins, os alertas de SOS e as atividades.',
   unableToRemoveDevice: 'Não foi possível remover o dispositivo. Tente novamente.',
   checkInNotificationSent: '{{deviceName}} receberá uma solicitação de Check-in.',
   checkInOfflineTitle: 'Este dispositivo parece estar off-line',
@@ -94,7 +94,7 @@ export const deviceDetail = {
     'Não foi possível enviar a solicitação de Check-in. Tente novamente.',
   usageUpdatesFromChildDevice: 'Atualizações de uso do dispositivo da criança',
   minutesUsedToday: 'Hoje: {{used}} / {{limit}}',
-  noBlockedHours: 'Sem horários bloqueados',
+  noBlockedHours: 'Sem horas bloqueadas',
   sharingIsOff: 'Compartilhamento desativado',
   waitingForUpdate: 'Aguardando atualização',
   minsPerDay: 'min/dia',
@@ -103,7 +103,7 @@ export const deviceDetail = {
   setLimit: 'Definir limite',
   timeRanges: 'faixas de horário',
   timeRanges_one: 'faixa de horário',
-  activeNowLocked: 'Horário bloqueado ativo · dispositivo bloqueado',
+  activeNowLocked: 'Horas bloqueadas ativas · dispositivo bloqueado',
   editHours: 'Editar',
   setHours: 'Configurar',
   adultSitesLimited: 'Sites inadequados limitados',
@@ -119,7 +119,7 @@ export const deviceDetail = {
   featureIncludedInPremium: '{{actionTitle}} está incluído no Premium.',
   featureOnRoadmap:
     '{{actionTitle}} estará disponível em breve. Localização, Filtro da Web e os controles acima já estão disponíveis.',
-  rewardTasks: 'Tarefas com recompensa',
+  rewardTasks: 'Tarefas bônus',
   rewardTasksDescription: 'Premie tarefas concluídas com minutos extras',
   rewardTasksUnit: 'tarefas ativas',
   rewardTasksUnit_one: 'tarefa ativa',
@@ -141,7 +141,7 @@ export const deviceDetail = {
   webHistorySitesUnit_one: 'site',
   managedAtChild:
     'Regras, recompensas, check-ins e alertas de segurança deste dispositivo são gerenciados no perfil de {{childName}}.',
-  pauseBrowsing: 'Pausar a navegação',
+  pauseBrowsing: 'Pausar a web',
   pauseBrowsingDescription:
     'Interrompa a navegação por um tempo. Chamadas e apps offline continuam funcionando.',
   pauseBrowsingDesktopNote:

@@ -47,8 +47,8 @@ export const activities = {
   activityTypeCheckIn: 'Check-in',
   activityTypeLocationRequest: 'Standort',
   activityTypeTimeRequest: 'Zeitanfragen',
-  activityTypeRewardTask: 'Belohnungsaufgaben',
-  activityTypeSearchAlert: 'Nachrichtenwarnungen',
+  activityTypeRewardTask: 'Bonusaufgaben',
+  activityTypeSearchAlert: 'Chatwarnungen',
   activityTypeWebFilter: 'Webfilter',
   activityTypeEmergency: 'SOS',
   activityTypeUnknown: 'Aktivität',
@@ -84,7 +84,7 @@ export const activities = {
   messageAlertTitleSearch: 'Bedenkliche Suche',
   messageAlertBodySearch:
     'Ein markiertes Wort wurde in einer Suche auf {{appName}} erkannt.',
-  activityTypeMessageAlert: 'Nachrichtenwarnungen',
+  activityTypeMessageAlert: 'Chatwarnungen',
   messageCheckedTitle: 'Geprüft, nichts Bedenkliches',
   messageCheckedBody:
     'Ein beobachtetes Wort tauchte in {{appName}} auf und war im Zusammenhang harmlos.',

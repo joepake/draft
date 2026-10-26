@@ -27,7 +27,7 @@ export const userGuide = {
     controls: {
       title: 'Contrôles quotidiens',
       description:
-        'Limite quotidienne, Heures bloquées, Applications bloquées, Limites d’apps, Verrouillage de l’appareil, Demandes de temps et Tâches à récompense',
+        'Limite quotidienne, Heures bloquées, Applications bloquées, Limites d’apps, Verrouillage de l’appareil, Demandes de temps et Tâches bonus',
     },
     safety: {
       title: 'Sécurité et surveillance',
@@ -185,7 +185,7 @@ export const userGuide = {
         'Donnez à un appareil un nom que tout le monde reconnaît, ou déconnectez celui que votre enfant n’utilise plus.',
       keywords:
         'dissocier, déconnecter, effacer l’appareil, ancien téléphone, nouveau téléphone, vendu, changer le nom, réinitialiser',
-      tip: 'Seul le propriétaire de la famille peut renommer ou supprimer des appareils. La suppression est définitive : le temps d’écran, la localisation, l’historique web et vidéo, l’activité, la liste des apps, les alertes SOS, les Check-ins, les demandes et les tâches à récompense de l’appareil sont effacés. Pour le protéger à nouveau, connectez-le comme un nouvel appareil.',
+      tip: 'Seul le propriétaire de la famille peut renommer ou supprimer des appareils. La suppression est définitive : le temps d’écran, la localisation, l’historique web et vidéo, l’activité, la liste des apps, les alertes SOS, les Check-ins, les demandes et les tâches bonus de l’appareil sont effacés. Pour le protéger à nouveau, connectez-le comme un nouvel appareil.',
       steps: {
         '1': 'Pour renommer un appareil, ouvrez-le depuis Famille ou depuis votre enfant, puis sélectionnez Modifier à côté de son nom.',
         '2': 'Saisissez un nom que tous les parents reconnaîtront d’un coup d’œil, puis enregistrez.',
@@ -209,7 +209,7 @@ export const userGuide = {
         '5': 'Localisation : choisissez « Toujours autoriser », sinon la carte ne se met à jour que lorsque KidGate est ouvert. Si le Filtre web est activé, l’étape suivante demande son VPN : sélectionnez « Activer le VPN » et acceptez la demande d’Android.',
         '6': 'Batterie sans restriction : sélectionnez Autoriser quand demandé. Si aucune invite n’apparaît : Infos sur l’app, puis Batterie, puis Sans restriction.',
         '7': 'Alarmes et rappels : autorisez-le pour que les Heures bloquées commencent et se terminent à l’heure. Ensuite, Empêcher la désinstallation : sélectionnez « Autoriser », puis Activer sur l’écran de confirmation d’Android. Il faudra alors désactiver cette option avant de pouvoir supprimer KidGate, et un parent en est alerté.',
-        '8': 'Alertes de messages : sélectionnez « Autoriser l’accès aux notifications » et activez KidGate dans la liste qui s’ouvre ; cela n’a d’importance que lorsqu’un parent active les Alertes de messages. Ensuite, Caméra (pour le Check-in et les photos SOS) et microphone (pour le son du SOS) : autorisez-les pendant l’utilisation de l’app. Quand l’assistant affiche « Tout est prêt », la configuration est terminée.',
+        '8': 'Alertes messages : sélectionnez « Autoriser l’accès aux notifications » et activez KidGate dans la liste qui s’ouvre ; cela n’a d’importance que lorsqu’un parent active les Alertes messages. Ensuite, Caméra (pour le Check-in et les photos SOS) et microphone (pour le son du SOS) : autorisez-les pendant l’utilisation de l’app. Quand l’assistant affiche « Tout est prêt », la configuration est terminée.',
       },
     },
     iosScreenTime: {
@@ -341,10 +341,10 @@ export const userGuide = {
         'couper internet, mettre le wifi en pause, pas de réseau, hors ligne, pause',
       tip: 'Dans l’extension Chrome, une pause ne concerne que Chrome. Pour une pause qui se répète chaque jour, utilisez plutôt les Heures bloquées.',
       steps: {
-        '1': 'Sur l’appareil parent, ouvrez le profil de votre enfant (ou l’appareil, s’il n’est attribué à aucun enfant), puis l’option Mettre la navigation en pause dans la section Surveillance de la sécurité.',
+        '1': 'Sur l’appareil parent, ouvrez le profil de votre enfant (ou l’appareil, s’il n’est attribué à aucun enfant), puis l’option Pause Internet dans la section Surveillance de la sécurité.',
         '2': 'Choisissez une durée avec le cadran ou un préréglage rapide (30, 60 ou 120 minutes), puis confirmez.',
         '3': 'Le Web reste bloqué sur cet appareil jusqu’à la fin du temps choisi. Vos réglages du Filtre web ne sont pas modifiés, et la pause fonctionne même lorsque le Filtre web est désactivé. Sur un ordinateur, les navigateurs sont fermés jusqu’à la fin de la pause.',
-        '4': 'Pour y mettre fin plus tôt, ouvrez l’appareil, appuyez sur la fiche Mettre la navigation en pause et sélectionnez Reprendre. Les minutes restantes ne sont pas conservées.',
+        '4': 'Pour y mettre fin plus tôt, ouvrez l’appareil, appuyez sur la fiche Pause Internet et sélectionnez Reprendre. Les minutes restantes ne sont pas conservées.',
         '5': 'Depuis le profil de votre enfant, une pause s’applique à un seul appareil. Si votre enfant en utilise plusieurs, mettez chacun en pause depuis son propre écran d’appareil.',
       },
     },
@@ -362,15 +362,15 @@ export const userGuide = {
       },
     },
     rewardTasks: {
-      title: 'Configurer les Tâches à récompense',
+      title: 'Configurer les Tâches bonus',
       summary:
         'Créez de petites tâches que votre enfant peut accomplir pour gagner des minutes en plus aujourd’hui.',
-      tip: 'Les minutes bonus ne comptent que si l’appareil a une Limite quotidienne. Elles sont ajoutées à l’appareil sur lequel votre enfant a indiqué que la tâche était faite. Les Tâches à récompense ne sont pas disponibles sur Android TV ni dans l’extension Chrome.',
+      tip: 'Les minutes bonus ne comptent que si l’appareil a une Limite quotidienne. Elles sont ajoutées à l’appareil sur lequel votre enfant a indiqué que la tâche était faite. Les Tâches bonus ne sont pas disponibles sur Android TV ni dans l’extension Chrome.',
       steps: {
-        '1': 'Sur l’appareil parent, ouvrez le profil de votre enfant (ou l’appareil, s’il n’est attribué à aucun enfant), puis Tâches à récompense.',
+        '1': 'Sur l’appareil parent, ouvrez le profil de votre enfant (ou l’appareil, s’il n’est attribué à aucun enfant), puis Tâches bonus.',
         '2': 'Sélectionnez Nouvelle tâche (tant que la liste est vide, vous pouvez aussi partir d’un modèle). Saisissez la tâche, choisissez la récompense en minutes (de 5 à 240), une difficulté et la répétition (Chaque jour ou Une fois), puis sélectionnez Créer la tâche.',
         '3': 'Sur l’appareil de l’enfant, la tâche apparaît sous Gagne du temps en plus. Une fois la tâche faite, votre enfant sélectionne C’est fait.',
-        '4': 'Vous recevez une notification. La tâche apparaît dans Approbation requise (dans Famille et dans le profil de votre enfant) et dans À approuver (sur l’écran Tâches à récompense). Sélectionnez Approuver pour ajouter les minutes pour aujourd’hui, ou Renvoyer pour que votre enfant puisse réessayer.',
+        '4': 'Vous recevez une notification. La tâche apparaît dans Approbation requise (dans Famille et dans le profil de votre enfant) et dans À approuver (sur l’écran Tâches bonus). Sélectionnez Approuver pour ajouter les minutes pour aujourd’hui, ou Renvoyer pour que votre enfant puisse réessayer.',
         '5': 'Appuyez sur une tâche pour la modifier ou la supprimer. L’offre gratuite permet jusqu’à 10 tâches actives à la fois, et Premium en permet 20.',
         '6': 'Chaque tâche vaut 1 à 3 étoiles selon sa difficulté, et les étoiles comptent une fois la tâche approuvée. Dans une famille de 2 enfants ou plus, chaque enfant voit le Tableau des étoiles de la semaine dans KidGate sur son appareil ; il repart de zéro chaque semaine. Pour le masquer, le propriétaire de la famille ouvre Famille, puis la fiche de la famille, et désactive le Tableau des étoiles dans l’onglet Enfants.',
       },
@@ -434,15 +434,15 @@ export const userGuide = {
       },
     },
     protectionAlerts: {
-      title: 'Alertes de protection',
+      title: 'Alertes protection',
       summary:
         'Soyez averti lorsqu’une autorisation importante sur l’appareil de l’enfant est désactivée.',
       tip: 'Une alerte de protection signifie que la protection KidGate s’est affaiblie. Merci de rétablir l’autorisation sur l’appareil de l’enfant dès que possible.',
       steps: {
-        '1': 'Sur l’appareil parent, ouvrez le profil de votre enfant (ou l’appareil, s’il n’est attribué à aucun enfant), puis la section Alertes, et sélectionnez Alertes de protection.',
+        '1': 'Sur l’appareil parent, ouvrez le profil de votre enfant (ou l’appareil, s’il n’est attribué à aucun enfant), puis la section Alertes, et sélectionnez Alertes protection.',
         '2': 'La section « Autorisations surveillées » indique si chaque autorisation dont KidGate a besoin est toujours activée. En dessous figurent tous les changements des 30 derniers jours, par exemple la désactivation de l’Accessibilité ou de la Localisation.',
         '3': 'Sur l’appareil de l’enfant, ouvrez KidGate, puis État et réactivez l’autorisation indiquée.',
-        '4': 'Retournez sur Alertes de protection et vérifiez que l’autorisation apparaît de nouveau comme activée sous « Autorisations surveillées ».',
+        '4': 'Retournez sur Alertes protection et vérifiez que l’autorisation apparaît de nouveau comme activée sous « Autorisations surveillées ».',
         '5': 'Gardez les notifications activées sur l’appareil parent afin d’être informé rapidement des changements.',
       },
     },
@@ -512,7 +512,7 @@ export const userGuide = {
       steps: {
         '1': 'Sur l’appareil parent, ouvrez le profil de votre enfant (ou l’appareil, s’il n’est attribué à aucun enfant), puis Vidéos regardées dans la section Surveillance de la sécurité.',
         '2': 'Activez Enregistrer les vidéos regardées. L’enregistrement reste désactivé tant que vous ne l’activez pas et, depuis le profil de votre enfant, il s’applique à tous ses appareils.',
-        '3': 'Sur un téléphone Android, KidGate a aussi besoin de l’accès aux notifications : sur l’appareil de l’enfant, ouvrez KidGate, puis Réglages, sélectionnez Déverrouiller avec le code PIN parent, puis Autoriser l’accès aux notifications dans la section Alertes de messages. Les Shorts nécessitent aussi l’autorisation Accessibilité.',
+        '3': 'Sur un téléphone Android, KidGate a aussi besoin de l’accès aux notifications : sur l’appareil de l’enfant, ouvrez KidGate, puis Réglages, sélectionnez Déverrouiller avec le code PIN parent, puis Autoriser l’accès aux notifications dans la section Alertes messages. Les Shorts nécessitent aussi l’autorisation Accessibilité.',
         '4': 'Les vidéos s’affichent par jour, avec la chaîne et le nombre de lectures. Appuyez sur une vidéo pour la retrouver sur YouTube.',
         '5': 'Sur un Mac ou un PC, l’écran explique plutôt comment ajouter l’extension Chrome. L’extension enregistre les vidéos comme un appareil à part.',
       },
@@ -531,16 +531,16 @@ export const userGuide = {
       },
     },
     messageAlerts: {
-      title: 'Activer les Alertes de messages',
+      title: 'Activer les Alertes messages',
       summary:
         'Soyez averti quand un mot ou une expression préoccupants apparaissent dans les messages ou les recherches sur le téléphone Android de votre enfant. Vous voyez le mot ou l’expression signalés, jamais le message.',
       keywords: 'sms, messenger, whatsapp, mots-clés, harcèlement, lire les messages',
-      tip: 'Les Alertes de messages font partie de Premium. Les messages ne sont vérifiés que sur les téléphones Android ; les recherches le sont aussi dans l’extension Chrome. Seuls la catégorie et le mot ou l’expression signalés vous parviennent. L’analyse par IA reste désactivée, sauf si un parent l’active pour toute la famille.',
+      tip: 'Les Alertes messages font partie de Premium. Les messages ne sont vérifiés que sur les téléphones Android ; les recherches le sont aussi dans l’extension Chrome. Seuls la catégorie et le mot ou l’expression signalés vous parviennent. L’analyse par IA reste désactivée, sauf si un parent l’active pour toute la famille.',
       steps: {
-        '1': 'Sur le téléphone Android de votre enfant, ouvrez KidGate, puis Réglages, sélectionnez Déverrouiller avec le code PIN parent, puis Autoriser l’accès aux notifications dans la section Alertes de messages, et activez KidGate dans la liste qui s’ouvre.',
-        '2': 'Sur votre appareil, ouvrez le profil de votre enfant (ou l’appareil, s’il n’est attribué à aucun enfant), puis Alertes de messages dans la section Alertes, et appuyez sur l’icône des réglages en haut. Si votre enfant a plusieurs appareils, sélectionnez d’abord le téléphone Android.',
+        '1': 'Sur le téléphone Android de votre enfant, ouvrez KidGate, puis Réglages, sélectionnez Déverrouiller avec le code PIN parent, puis Autoriser l’accès aux notifications dans la section Alertes messages, et activez KidGate dans la liste qui s’ouvre.',
+        '2': 'Sur votre appareil, ouvrez le profil de votre enfant (ou l’appareil, s’il n’est attribué à aucun enfant), puis Alertes messages dans la section Alertes, et appuyez sur l’icône des réglages en haut. Si votre enfant a plusieurs appareils, sélectionnez d’abord le téléphone Android.',
         '3': 'Activez Analyser les messages reçus. L’option Signaler aussi les grossièretés est facultative, et vous pouvez choisir jusqu’à 3 langues dans Langues analysées.',
-        '4': 'Pour analyser aussi ce que votre enfant écrit et recherche : une fois Analyser les messages reçus activé, l’appareil de l’enfant affiche Avant d’autoriser dans la section Alertes de messages. Sélectionnez Accepter à cet endroit, puis activez Analyser les messages écrits et Analyser ses recherches sur votre appareil.',
+        '4': 'Pour analyser aussi ce que votre enfant écrit et recherche : une fois Analyser les messages reçus activé, l’appareil de l’enfant affiche Avant d’autoriser dans la section Alertes messages. Sélectionnez Accepter à cet endroit, puis activez Analyser les messages écrits et Analyser ses recherches sur votre appareil.',
         '5': 'Les alertes apparaissent sous Alertes récentes, avec la catégorie et le mot ou l’expression signalés. Sélectionnez Que faire ensuite pour obtenir des conseils sur la façon d’en parler.',
       },
     },
@@ -553,7 +553,7 @@ export const userGuide = {
         '1': 'Dans Famille, appuyez sur + et choisissez Ajouter un enfant. Saisissez un prénom et enregistrez.',
         '2': 'Après l’appairage d’un nouvel appareil, KidGate demande au propriétaire de la famille qui l’utilise. Choisissez votre enfant, ou Personne pour un appareil partagé. Si vous avez choisi un enfant, KidGate propose ensuite un ensemble de protections de départ : sélectionnez Activer la protection ou Pas maintenant.',
         '3': 'Un appareil pour lequel personne n’a encore été choisi apparaît sous Non attribué dans Famille. Sélectionnez Attribuer à un enfant… sur sa fiche.',
-        '4': 'Une fois l’appareil attribué, la Limite quotidienne, les Heures bloquées, le Filtre web, le Check-in, le SOS, les Alertes de lieux et les Tâches à récompense se règlent sur le profil de votre enfant et s’appliquent à tous ses appareils. La Limite quotidienne devient un total commun à ces appareils.',
+        '4': 'Une fois l’appareil attribué, la Limite quotidienne, les Heures bloquées, le Filtre web, le Check-in, le SOS, les Alertes de lieux et les Tâches bonus se règlent sur le profil de votre enfant et s’appliquent à tous ses appareils. La Limite quotidienne devient un total commun à ces appareils.',
         '5': 'Pour déplacer un appareil, ouvrez le profil de l’enfant qui doit l’avoir et sélectionnez Attribuer un autre appareil…. Pour retirer un appareil d’un profil, balayez-le sur le profil de votre enfant et sélectionnez Retirer. Supprimer le profil d’un enfant laisse ses appareils appairés.',
       },
     },

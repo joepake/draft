@@ -1,5 +1,5 @@
 export const videoHistory = {
-  title: 'Просмотренные видео',
+  title: 'История видео',
   fallbackDeviceName: 'Устройство ребёнка',
   toggleLabel: 'Записывать просмотренные видео',
   toggleHint:

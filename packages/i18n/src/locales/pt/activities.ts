@@ -46,7 +46,7 @@ export const activities = {
   activityTypeCheckIn: 'Check-in',
   activityTypeLocationRequest: 'Localização',
   activityTypeTimeRequest: 'Solicitações de tempo',
-  activityTypeRewardTask: 'Tarefas com recompensa',
+  activityTypeRewardTask: 'Tarefas bônus',
   activityTypeSearchAlert: 'Alertas de mensagens',
   activityTypeWebFilter: 'Filtro da web',
   activityTypeEmergency: 'SOS',
@@ -117,15 +117,15 @@ export const activities = {
     'O recurso Apps bloqueados e a aplicação das restrições podem não funcionar corretamente até que a Acessibilidade seja ativada novamente.',
   tamperUsageAccessTitle: 'O acesso ao uso de aplicativos foi desativado',
   tamperUsageAccessBody:
-    'Os limites de aplicativos e os Horários bloqueados podem parar de funcionar até que o KidGate volte a medir o uso de aplicativos no dispositivo da criança.',
+    'Os limites de aplicativos e as Horas bloqueadas podem parar de funcionar até que o KidGate volte a medir o uso de aplicativos no dispositivo da criança.',
   // iOS and Android name this permission differently; the neutral pair
   // above is what old events fall back to. See utils/tamperAlerts.ts.
   tamperScreenTimeIosTitle: 'O acesso ao Tempo de Uso foi desativado',
   tamperScreenTimeIosBody:
-    'Os limites de aplicativos e os Horários bloqueados podem parar de funcionar até que o acesso ao Tempo de Uso seja permitido novamente no dispositivo da criança.',
+    'Os limites de aplicativos e as Horas bloqueadas podem parar de funcionar até que o acesso ao Tempo de Uso seja permitido novamente no dispositivo da criança.',
   tamperUsageAccessAndroidTitle: 'O Acesso de uso foi desativado',
   tamperUsageAccessAndroidBody:
-    'Os limites de aplicativos e os Horários bloqueados podem parar de funcionar até que o Acesso de uso seja reativado para o KidGate no dispositivo da criança.',
+    'Os limites de aplicativos e as Horas bloqueadas podem parar de funcionar até que o Acesso de uso seja reativado para o KidGate no dispositivo da criança.',
 
   tamperBatteryTitle: 'O uso irrestrito da bateria foi desativado',
   tamperBatteryBody:
@@ -133,7 +133,7 @@ export const activities = {
 
   tamperExactAlarmTitle: 'Alarmes e lembretes foram desativados',
   tamperExactAlarmBody:
-    'Os Horários bloqueados podem começar ou terminar atrasados até que Alarmes e lembretes seja permitido de novo.',
+    'As Horas bloqueadas podem começar ou terminar atrasadas até que Alarmes e lembretes seja permitido de novo.',
 
   tamperNotificationsTitle: 'As notificações foram desativadas',
   tamperNotificationsBody:
@@ -153,7 +153,7 @@ export const activities = {
 
   tamperDeviceClockTitle: 'A data, a hora ou o fuso horário mudou',
   tamperDeviceClockBody:
-    'A data, a hora ou o fuso horário deste dispositivo mudou — viajar também pode causar isso. O Tempo de Uso e os Horários bloqueados ignoram mudanças no relógio e seguem o fuso horário do dispositivo.',
+    'A data, a hora ou o fuso horário deste dispositivo mudou — viajar também pode causar isso. O Tempo de Uso e as Horas bloqueadas ignoram mudanças no relógio e seguem o fuso horário do dispositivo.',
 
   /** @deprecated legacy description keys — kept for old activity docs */
   tamperOverlay: 'A permissão Exibir sobre outros aplicativos foi desativada.',

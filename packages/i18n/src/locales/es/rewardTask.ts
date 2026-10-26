@@ -25,7 +25,7 @@ export const rewardTask = {
   tryAgain: 'Devolver',
   approveAndAdd: 'Sumar {{minutes}} min',
   approve: 'Aprobar',
-  screenTitle: 'Tareas con recompensa',
+  screenTitle: 'Tareas premiadas',
   fallbackDeviceName: 'Dispositivo del niño',
   heroUnit: 'min por ganar',
   heroCaption: '{{count}} tareas pendientes',
@@ -60,10 +60,10 @@ export const rewardTask = {
   childSentBackToast: '«{{title}}» fue devuelta — inténtalo otra vez.',
   childApprovedTitle: 'Tarea aprobada',
   childApprovedSubtitle: 'Ganaste {{minutes}} minutos extra para hoy.',
-  taskApproved: 'Tarea con recompensa aprobada',
+  taskApproved: 'Tarea premiada aprobada',
   taskApprovedDescription:
     '{{deviceName}} ganó {{minutes}} minutos extra por «{{title}}».',
-  taskRejected: 'Tarea con recompensa devuelta',
+  taskRejected: 'Tarea premiada devuelta',
   taskRejectedDescription:
     '«{{title}}» fue devuelta a {{deviceName}} para otro intento.',
   starsLabel: 'Dificultad',

@@ -36,8 +36,6 @@ export const blockedHours = {
     'Blocked Hours won’t apply on {{name}} until it’s allowed to lock the screen.',
   infoSkippedPlatform: 'Blocked Hours isn’t available on {{name}}.',
   off: 'Off',
-  blockedHoursChip: 'Blocked Hours',
-  blockedHoursOnChip: 'Blocked Hours set',
   blockedHoursStatusActiveNow: 'Active now',
   blockedHoursStatusOn: 'On',
   blockedHoursStatusOff: 'Off',

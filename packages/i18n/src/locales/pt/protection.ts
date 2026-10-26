@@ -31,7 +31,7 @@ export const protection = {
     'Permita o uso de bateria sem restrições para que o KidGate mantenha as proteções ativas.',
   exactAlarmPermission: 'Alarmes e lembretes',
   exactAlarmOff:
-    'Ative Alarmes e lembretes para que os Horários bloqueados comecem na hora certa.',
+    'Ative Alarmes e lembretes para que as Horas bloqueadas comecem na hora certa.',
   accessibilityPermission: 'Acessibilidade (assistente de bloqueio)',
   accessibilityOff:
     'Ative a Acessibilidade para o KidGate para que o bloqueio permaneça sobre os outros apps.',

@@ -129,7 +129,7 @@ export const deviceDetail = {
   webHistorySitesUnit: 'trang web',
   managedAtChild:
     'Quy tắc, nhiệm vụ thưởng, báo an toàn và cảnh báo của thiết bị này được quản lý trong hồ sơ của {{childName}}.',
-  pauseBrowsing: 'Tạm dừng duyệt web',
+  pauseBrowsing: 'Tạm dừng web',
   pauseBrowsingDescription:
     'Tạm dừng duyệt web một lúc. Gọi điện và ứng dụng ngoại tuyến vẫn dùng được.',
   pauseBrowsingDesktopNote:

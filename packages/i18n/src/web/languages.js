@@ -48,21 +48,19 @@ export const LANGUAGE_META = {
 /**
  * Arabic is the only right-to-left script shipped.
  *
- * **`apps/site` now mirrors; `apps/dashboard` still does not.** The stylesheet
- * project this comment used to defer has landed for one of the two: every
- * physical `margin-left` / `border-right` / `text-align: left` in
- * `@kidgate/web-ui/index.css` is a logical property, so the site sets
- * `document.documentElement.dir` from this set and lays out correctly in both
- * directions. `dashboard.css` still holds two dozen physical declarations, and
- * flipping `dir` there would reverse its flex rows while leaving every offset
- * on its original side — the half-mirrored page that is worse than a
- * consistently LTR one, and the same reason the phone pins LTR
- * (`apps/mobile/src/i18n/rtl.ts`).
+ * **Both web apps mirror since 2026-10-25.** Every physical `margin-left` /
+ * `border-right` / `text-align: left` in `@kidgate/web-ui/index.css` and, since
+ * that day, in `dashboard.css` is a logical property, so each app sets
+ * `document.documentElement.dir` from this set. What stays physical in
+ * `dashboard.css` is deliberate: the charts (`direction: ltr` on `.viz`, `.tl`,
+ * `.sched`, `.hbar-track`), the toggle knob and the QR code text. The phone
+ * still pins LTR (`apps/mobile/src/i18n/rtl.ts`) — its styles are not
+ * converted, and a half-mirrored screen is worse than a consistently LTR one.
  *
- * So the direction is applied **per app, by the app** (`useDocumentMeta` in
- * `apps/site/src/App.jsx`), not by this runtime — a shared runtime setting
- * `dir` would turn it on for the dashboard too, which is not ready. This module
- * answers "which languages are RTL"; it does not decide who acts on it.
+ * The direction is applied **per app, by the app** (`useDocumentMeta` in
+ * `apps/site/src/App.jsx`, `App.jsx` in `apps/dashboard`), not by this runtime.
+ * This module answers "which languages are RTL"; it does not decide who acts
+ * on it.
  */
 export const RTL_LANGUAGES = new Set(['ar']);
 

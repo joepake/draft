@@ -609,6 +609,17 @@
   transform: scaleX(-1);
 }
 
+/* The charts keep one direction. Their ticks, caps and tooltips sit on
+   physical `left: %` while bars and segments flow with the text, so under RTL
+   the two halves of one chart would point opposite ways. The labels around
+   them still mirror. */
+.viz,
+.tl,
+.sched,
+.hbar-track {
+  direction: ltr;
+}
+
 /* Turned the other way in a right-to-left rail, and then turned again when
    open — the fold points down in both directions. */
 [dir='rtl'] .kid-group-chevron {
@@ -1957,6 +1968,12 @@
   font-size: var(--dash-text-1);
   font-style: normal;
   color: var(--muted);
+}
+
+/* The kind's glyph before the words, as on the phone's report rows. */
+.app-cat-icon {
+  margin-inline-end: 0.3rem;
+  vertical-align: -0.1em;
 }
 
 .app-cat.is-serious {
@@ -7317,6 +7334,12 @@ button.kid-pill {
   font-style: normal;
   font-size: var(--dash-text-1);
   color: var(--muted);
+}
+
+/* Air between the ranked apps and the remainder line, as on the phone. */
+.dash .hbar-other,
+.dash .creport-app-other {
+  margin-top: 0.5rem;
 }
 
 /* A fact about the period, not an app — so no bar. One would invite comparing

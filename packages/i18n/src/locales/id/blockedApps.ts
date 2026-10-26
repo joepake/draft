@@ -45,6 +45,7 @@ export const blockedApps = {
   emptyTitle: 'Belum ada aplikasi yang diblokir',
   emptySubtitle:
     'Blokir aplikasi dari “Aplikasi terpasang”. Di iPhone, pilih aplikasinya langsung di iPhone itu.',
+  emptySubtitleNoIphone: 'Blokir aplikasi dari “Aplikasi terpasang”.',
   emptySubtitleTv:
     'Di TV, buka KidGate, pilih “{{button}}”, masukkan PIN Orang Tua, lalu pilih aplikasinya dan simpan.',
   sectionTitle: 'Daftar blokir',

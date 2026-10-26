@@ -45,6 +45,7 @@ export const blockedApps = {
   emptyTitle: 'Chưa chặn ứng dụng nào',
   emptySubtitle:
     'Chặn một ứng dụng trong mục Danh sách ứng dụng. Trên iPhone, hãy chọn ứng dụng ngay trên iPhone.',
+  emptySubtitleNoIphone: 'Chặn một ứng dụng trong mục Danh sách ứng dụng.',
   emptySubtitleTv:
     'Trên TV, mở KidGate, chọn “{{button}}”, nhập mã PIN phụ huynh, rồi chọn ứng dụng và lưu lại.',
   sectionTitle: 'Danh sách chặn',

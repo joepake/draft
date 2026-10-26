@@ -127,7 +127,7 @@ export const deviceDetail = {
   appLimitsUnit: 'aplikasi',
   appLimitsReached: '{{count}} aplikasi mencapai batasnya',
   webHistory: 'Riwayat web',
-  videoHistory: 'Video yang ditonton',
+  videoHistory: 'Riwayat video',
   videoHistoryDescription: 'Video yang ditonton di YouTube',
   videoHistoryOn: 'Merekam',
   webHistoryDescription: 'Situs yang dijangkau dan diblokir',

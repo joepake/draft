@@ -135,7 +135,7 @@ export const deviceDetail = {
   webHistorySitesUnit: 'サイト',
   managedAtChild:
     'このデバイスのルール、ごほうび、チェックイン、アラートは{{childName}}のプロフィールで管理します。',
-  pauseBrowsing: 'ブラウジングを一時停止',
+  pauseBrowsing: 'ウェブ一時停止',
   pauseBrowsingDescription:
     'しばらくの間ブラウジングを止めます。通話とオフラインのアプリは引き続き使えます。',
   pauseBrowsingDesktopNote:

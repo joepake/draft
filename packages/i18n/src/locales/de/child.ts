@@ -19,7 +19,6 @@ export const child = {
   outOfScreenTimeAskParent:
     'Du hast die heutige Bildschirmzeit aufgebraucht. Unten kannst du mehr anfragen.',
   screenTimeToday: 'Bildschirmzeit heute',
-  timeLeftToday: 'Heute noch {{time}}',
   usedOverLimitMinutes: '{{used}} / {{limit}}',
   usedMinutesOnly: '{{used}}',
   outOfScreenTimeToday:

@@ -43,8 +43,6 @@ export const blockedHours = {
     'Sperrzeiten gelten auf {{name}} erst, wenn das Gerät den Bildschirm sperren darf.',
   infoSkippedPlatform: 'Sperrzeiten sind auf {{name}} nicht verfügbar.',
   off: 'Aus',
-  blockedHoursChip: 'Sperrzeiten',
-  blockedHoursOnChip: 'Sperrzeiten eingerichtet',
   blockedHoursStatusActiveNow: 'Jetzt aktiv',
   blockedHoursStatusOn: 'Ein',
   blockedHoursStatusOff: 'Aus',

@@ -25,7 +25,7 @@ export const systemNotifications = {
   monitorBodyAccessibility:
     'Ative o KidGate nas configurações de Acessibilidade. Sem isso, outros apps ainda podem abrir.',
   monitorBodyDailyLimit: 'Limite diário atingido',
-  monitorBodySchedule: 'Horários bloqueados ativos',
+  monitorBodySchedule: 'Horas bloqueadas ativas',
   monitorBodyAppBlocking: 'Bloqueando os apps que seus pais escolheram',
   monitorBodyReady: 'Pronto para aplicar as regras dos seus pais',
   sosTitle: 'SOS — ajuda necessária',

@@ -45,6 +45,7 @@ export const blockedApps = {
   emptyTitle: 'لا توجد تطبيقات محظورة حتى الآن',
   emptySubtitle:
     'احظر تطبيقًا من «التطبيقات المثبّتة». على iPhone، اختر التطبيقات على iPhone نفسه.',
+  emptySubtitleNoIphone: 'احظر تطبيقًا من «التطبيقات المثبّتة».',
   emptySubtitleTv:
     'على التلفزيون، افتح KidGate، واختر «{{button}}»، وأدخل رمز PIN الوالدين، ثم اختر التطبيقات واحفظ.',
   sectionTitle: 'قائمة الحظر',

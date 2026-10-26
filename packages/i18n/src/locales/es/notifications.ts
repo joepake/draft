@@ -51,8 +51,8 @@ export const notifications = {
       hint: 'Tu hijo o hija responde a un Check-in.',
     },
     rewardTasks: {
-      label: 'Tareas con recompensa',
-      hint: 'Tu hijo o hija marca una tarea de recompensa como hecha.',
+      label: 'Tareas premiadas',
+      hint: 'Tu hijo o hija marca una tarea premiada como hecha.',
     },
     appActivity: {
       label: 'Apps instaladas o eliminadas',

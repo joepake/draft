@@ -19,7 +19,6 @@ export const child = {
   outOfScreenTimeAskParent:
     'Hai usato tutto il tempo di oggi. Puoi chiederne di più qui sotto.',
   screenTimeToday: 'Tempo di utilizzo oggi',
-  timeLeftToday: 'Ancora {{time}} oggi',
   usedOverLimitMinutes: '{{used}} / {{limit}}',
   usedMinutesOnly: '{{used}}',
   outOfScreenTimeToday:

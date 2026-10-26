@@ -24,11 +24,11 @@ export const permissions = {
   batteryOptimizationHint: 'Impede que o Android pause o KidGate em segundo plano.',
   exactAlarmLabel: 'Alarmes e lembretes',
   exactAlarmHint:
-    'Permita Alarmes e lembretes para que os Horários bloqueados comecem e terminem na hora certa.',
+    'Permita Alarmes e lembretes para que as Horas bloqueadas comecem e terminem na hora certa.',
   accessibilityLabel: 'Assistente de bloqueio por Acessibilidade',
   accessibilityHint: 'Mantém o bloqueio do KidGate sobre outros apps.',
   oemSectionDescription:
-    'Dispositivos {{brand}} costumam pausar apps em segundo plano. Complete estas etapas para que o bloqueio e os Horários bloqueados continuem funcionando.',
+    'Dispositivos {{brand}} costumam pausar apps em segundo plano. Complete estas etapas para que o bloqueio e as Horas bloqueadas continuem funcionando.',
   oemAutostartLabel: 'Permitir inicialização automática',
   oemAutostartHintXiaomi:
     'Em Inicialização automática, ative o KidGate para que a proteção seja reiniciada após reiniciar o dispositivo.',

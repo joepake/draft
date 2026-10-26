@@ -77,7 +77,7 @@ export const report = {
   actionTitle: 'Что можно сделать',
   actionDailyLimit: 'Установить Дневной лимит {{duration}}',
   actionDailyLimitWhy: 'Столько в среднем за день выходило на прошлой неделе.',
-  actionBlockedHours: 'Установить Заблокированные часы',
+  actionBlockedHours: 'Установить Часы блокировки',
   actionBlockedHoursLateNight: 'Заблокировать ночные часы',
   actionOnDevice: 'На устройстве {{device}}',
   finePrint:

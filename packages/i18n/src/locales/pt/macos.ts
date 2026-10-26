@@ -24,7 +24,7 @@ export const macos = {
   lockStateNo: 'Não',
   stateNotChecked: 'Ainda não verificado',
   lockStateParent: 'Sim — bloqueado pelos pais',
-  lockStateSchedule: 'Sim — Horários bloqueados',
+  lockStateSchedule: 'Sim — Horas bloqueadas',
   lockStateDailyLimit: 'Sim — Limite diário atingido',
 
   webFilterLabel: 'Filtro da web',
@@ -73,7 +73,7 @@ export const macos = {
   setupStepBlocked:
     'Foi recusado antes. O macOS só pergunta uma vez — ative o KidGate em “Privacidade e Segurança”.',
 
-  scheduleLabel: 'Horários bloqueados',
+  scheduleLabel: 'Horas bloqueadas',
   dailyLimitLabel: 'Limite diário',
   enforcedHere: 'Ativado, aplicado pelo KidGate',
 

@@ -36,8 +36,6 @@ export const blockedHours = {
     '{{name}}에 화면 잠금 권한이 허용될 때까지 차단 시간이 적용되지 않습니다.',
   infoSkippedPlatform: '{{name}}에서는 차단 시간을 사용할 수 없습니다.',
   off: '꺼짐',
-  blockedHoursChip: '차단 시간',
-  blockedHoursOnChip: '차단 시간 설정됨',
   blockedHoursStatusActiveNow: '현재 적용 중',
   blockedHoursStatusOn: '켜짐',
   blockedHoursStatusOff: '꺼짐',

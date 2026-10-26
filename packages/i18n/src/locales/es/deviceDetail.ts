@@ -4,7 +4,7 @@ export const deviceDetail = {
   notFoundTitle: 'Dispositivo',
   dangerTitle: 'Eliminar este dispositivo',
   dangerDescription:
-    'Elimina este dispositivo de tu cuenta familiar. Se eliminarán su historial de ubicación, el historial de uso, el historial web, los vídeos vistos, la lista de apps instaladas, las Solicitudes de tiempo, las peticiones de sitios, las Tareas con recompensa, los Check-in, las alertas SOS y la actividad.',
+    'Elimina este dispositivo de tu cuenta familiar. Se eliminarán su historial de ubicación, el historial de uso, el historial web, los vídeos vistos, la lista de apps instaladas, las Solicitudes de tiempo, las peticiones de sitios, las Tareas premiadas, los Check-in, las alertas SOS y la actividad.',
   removeButton: 'Eliminar dispositivo',
   removingButton: 'Eliminando…',
   showAllFeatures: 'Mostrar todas las funciones',
@@ -80,7 +80,7 @@ export const deviceDetail = {
   removeOwnerOnly: 'Solo el propietario de la familia puede eliminar dispositivos.',
   removeDeviceTitle: '¿Eliminar dispositivo?',
   removeDeviceMessage:
-    '{{deviceName}} se desconectará de tu cuenta. Se eliminarán su historial de ubicación, el historial de uso, el historial web, los vídeos vistos, la lista de apps instaladas, las Solicitudes de tiempo, las peticiones de sitios, las Tareas con recompensa, los Check-in, las alertas SOS y la actividad.',
+    '{{deviceName}} se desconectará de tu cuenta. Se eliminarán su historial de ubicación, el historial de uso, el historial web, los vídeos vistos, la lista de apps instaladas, las Solicitudes de tiempo, las peticiones de sitios, las Tareas premiadas, los Check-in, las alertas SOS y la actividad.',
   unableToRemoveDevice: 'No se pudo eliminar el dispositivo. Inténtalo de nuevo.',
   checkInNotificationSent: '{{deviceName}} recibirá una solicitud de Check-in.',
   checkInOfflineTitle: 'Este dispositivo parece sin conexión',
@@ -119,7 +119,7 @@ export const deviceDetail = {
   featureIncludedInPremium: '{{actionTitle}} está incluido en Premium.',
   featureOnRoadmap:
     '{{actionTitle}} estará disponible próximamente. La ubicación, el filtro web y los controles anteriores ya están disponibles.',
-  rewardTasks: 'Tareas con recompensa',
+  rewardTasks: 'Tareas premiadas',
   rewardTasksDescription: 'Premia con minutos extra las tareas completadas',
   rewardTasksUnit: 'tareas activas',
   rewardTasksUnit_one: 'tarea activa',
@@ -141,7 +141,7 @@ export const deviceDetail = {
   webHistorySitesUnit_one: 'sitio',
   managedAtChild:
     'Las reglas, recompensas, check-ins y alertas de este dispositivo se gestionan en el perfil de {{childName}}.',
-  pauseBrowsing: 'Pausar la navegación',
+  pauseBrowsing: 'Pausar la web',
   pauseBrowsingDescription:
     'Detén la navegación un rato. Las llamadas y las apps sin conexión siguen funcionando.',
   pauseBrowsingDesktopNote:

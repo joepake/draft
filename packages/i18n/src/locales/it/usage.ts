@@ -78,7 +78,7 @@ export const usage = {
   protectionImpactHint: 'Totali da quando è stato configurato questo dispositivo.',
   protectionBlockedApps: 'Aperture di app bloccate',
   protectionWebBlocked: 'Siti web bloccati',
-  protectionTamper: 'Avvisi di protezione',
+  protectionTamper: 'Avvisi protezione',
   sectionTimeline: 'Quando lo schermo era acceso',
   timelineUsed: 'In uso',
   timelineIdle: 'Non in uso',

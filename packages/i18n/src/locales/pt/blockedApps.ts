@@ -46,6 +46,7 @@ export const blockedApps = {
   emptyTitle: 'Nenhum app bloqueado ainda',
   emptySubtitle:
     'Bloqueie um app em “Aplicativos instalados”. Em um iPhone, escolha os apps no próprio iPhone.',
+  emptySubtitleNoIphone: 'Bloqueie um app em “Aplicativos instalados”.',
   emptySubtitleTv:
     'Na TV, abra o KidGate, selecione “{{button}}”, digite o PIN dos pais, depois escolha os apps e salve.',
   sectionTitle: 'Lista de bloqueio',
@@ -56,7 +57,7 @@ export const blockedApps = {
   infoLine1:
     'Escolha os apps em “Aplicativos instalados”. Em um iPhone, escolha-os no próprio iPhone com o PIN dos pais.',
   infoLine2:
-    'Bloqueio, Horários bloqueados e Limite diário continuam bloqueando todos os apps.',
+    'Bloqueio, Horas bloqueadas e Limite diário continuam bloqueando todos os apps.',
   infoLine3:
     'Ative ou desative o bloqueio a qualquer momento nesta tela. Um dispositivo da criança conectado recebe cada mudança em um minuto.',
   appKind: 'App',

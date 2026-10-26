@@ -12,7 +12,7 @@ export const notifications = {
   sectionSummary: 'Récapitulatif',
   sectionQuietHours: 'Heures silencieuses',
   sectionQuietHoursHint:
-    'Seuls le SOS et les Alertes de messages les plus graves passent pendant cette plage. Rien n’est envoyé après coup ; les événements apparaissent toujours dans Activité.',
+    'Seuls le SOS et les Alertes messages les plus graves passent pendant cette plage. Rien n’est envoyé après coup ; les événements apparaissent toujours dans Activité.',
   quietHoursLabel: 'Heures silencieuses',
   quietHoursOff: 'Désactivé — les alertes arrivent à toute heure',
   quietHoursActive: 'Aucune alerte envoyée de {{start}} à {{end}}',
@@ -31,7 +31,7 @@ export const notifications = {
     'Si personne n’ouvre KidGate pendant {{days}} jours, les appareils de votre enfant cessent d’envoyer des rapports jusqu’à ce que quelqu’un l’ouvre à nouveau. Vos règles fonctionnent toujours.',
   alert: {
     tamperAlerts: {
-      label: 'Alertes de protection',
+      label: 'Alertes protection',
       hint: 'Une autorisation nécessaire à KidGate est désactivée sur un appareil enfant, son horloge ou son fuseau horaire est modifié, ou le SOS est pressé alors qu’il est verrouillé.',
     },
     placeAlerts: {
@@ -51,8 +51,8 @@ export const notifications = {
       hint: 'Votre enfant répond à un Check-in.',
     },
     rewardTasks: {
-      label: 'Tâches à récompense',
-      hint: 'Votre enfant déclare une tâche récompense comme terminée.',
+      label: 'Tâches bonus',
+      hint: 'Votre enfant déclare une tâche bonus comme terminée.',
     },
     appActivity: {
       label: 'Applis installées ou supprimées',
@@ -67,7 +67,7 @@ export const notifications = {
       hint: 'Récapitulatif du lundi sur le temps d’écran et les blocages.',
     },
     messageAlerts: {
-      label: 'Alertes de messages',
+      label: 'Alertes messages',
       hint: 'Des mots préoccupants apparaissent dans les messages ou les recherches de votre enfant.',
     },
     billing: {

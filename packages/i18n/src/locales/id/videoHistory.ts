@@ -1,5 +1,5 @@
 export const videoHistory = {
-  title: 'Video yang ditonton',
+  title: 'Riwayat video',
   fallbackDeviceName: 'Perangkat anak',
   toggleLabel: 'Rekam video yang ditonton',
   toggleHint:

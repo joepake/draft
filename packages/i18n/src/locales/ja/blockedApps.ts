@@ -45,6 +45,7 @@ export const blockedApps = {
   emptyTitle: 'ブロックされたアプリはありません',
   emptySubtitle:
     'アプリは「インストール済みのアプリ」からブロックします。iPhoneでは、iPhone本体でアプリを選択してください。',
+  emptySubtitleNoIphone: 'アプリは「インストール済みのアプリ」からブロックします。',
   emptySubtitleTv:
     'テレビでKidGateを開いて「{{button}}」を選び、保護者PINを入力してから、アプリを選んで保存してください。',
   sectionTitle: 'ブロックリスト',

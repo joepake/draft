@@ -105,7 +105,7 @@ export default {
     heroCheck5: 'SOS',
 
     phoneDailyLimit: 'Limite diário',
-    phoneBlockedHours: 'Horários bloqueados',
+    phoneBlockedHours: 'Horas bloqueadas',
     phoneScheduleOn: 'Agenda ativa',
     phoneLocation: 'Localização',
     phoneCheckIn: 'Check-in OK',
@@ -126,7 +126,7 @@ export default {
       'De limites diários a alertas de emergência — um app para o bem-estar digital da família inteira.',
     feature1Title: 'Tempo de Uso e Limite diário',
     feature1Text:
-      'Defina um limite diário e Horários bloqueados para a escola e a hora de dormir. O aparelho se bloqueia sozinho quando o tempo acaba.',
+      'Defina um limite diário e Horas bloqueadas para a escola e a hora de dormir. O aparelho se bloqueia sozinho quando o tempo acaba.',
     feature2Title: 'Apps bloqueados',
     feature2Text:
       'Escolha quais apps seu filho não pode abrir, com a escolha protegida pelo seu PIN dos pais, e ligue o bloqueio à distância.',
@@ -145,7 +145,7 @@ export default {
     feature7Title: 'Alertas de proteção e de apps',
     feature7Text:
       'Saiba na hora em que uma permissão importante é desligada no celular do seu filho e aprove novos apps antes que abram no Android, na Android TV ou num computador.',
-    feature8Title: 'Tarefas com recompensa e Solicitações de tempo',
+    feature8Title: 'Tarefas bônus e Solicitações de tempo',
     feature8Text:
       'As crianças ganham minutos extras e estrelas concluindo tarefas, ou pedem mais tempo — você aprova os dois pelo seu celular.',
 
@@ -184,7 +184,7 @@ export default {
       'Instale o KidGate no celular do seu filho e conecte lendo um QR code. Menos de um minuto.',
     step3Title: 'Defina suas regras',
     step3Text:
-      'Escolha um Limite diário e Horários bloqueados, e ative a localização e os Apps bloqueados pelo seu próprio celular. Os apps a bloquear são escolhidos uma vez no dispositivo do seu filho, com o seu PIN dos pais.',
+      'Escolha um Limite diário e Horas bloqueadas, e ative a localização e os Apps bloqueados pelo seu próprio celular. Os apps a bloquear são escolhidos uma vez no dispositivo do seu filho, com o seu PIN dos pais.',
 
     whyEyebrow: 'Por que o KidGate',
     whyTitle: 'Feito para a confiança, não para a vigilância',
@@ -208,7 +208,7 @@ export default {
       'Seis pontos conferidos contra os apps com que os pais nos comparam. Cada um diz em qual plataforma é verdade.',
     only1Title: 'A TV da sala também',
     only1Text:
-      'A Android TV recebe Limite diário, Horários bloqueados, Apps bloqueados e Filtro da web. Na TV, o bloqueio faz o melhor possível — um app bloqueado é mandado de volta para a tela inicial — e não há SOS nem pedido de tempo extra a partir do sofá. A TV também não compartilha localização. A maioria dos controles parentais para no celular.',
+      'A Android TV recebe Limite diário, Horas bloqueadas, Apps bloqueados e Filtro da web. Na TV, o bloqueio faz o melhor possível — um app bloqueado é mandado de volta para a tela inicial — e não há SOS nem pedido de tempo extra a partir do sofá. A TV também não compartilha localização. A maioria dos controles parentais para no celular.',
     only2Title: 'Alertas de mensagens que ficam no celular',
     only2Text:
       'Com o Premium no Android, as mensagens são conferidas no próprio aparelho contra listas de palavras-chave em até três idiomas que você escolhe, entre 14, e o que sai do celular é a palavra ou frase encontrada, nunca a conversa. Só uma coisa muda isso, e apenas se você pedir: ligue a confirmação por IA e uma mensagem recebida ambígua é enviada ao Gemini, do Google, para ser avaliada, para que você não seja acordado por uma palavra comum.',
@@ -220,7 +220,7 @@ export default {
       'Segurar o SOS por cinco segundos num celular avisa você na hora, com a localização; no Android, também libera chamadas, mapas e mensagens por cinco minutos, mesmo com o celular bloqueado. Quem consegue pedir ajuda pela tela de bloqueio não tem motivo para brigar com o app.',
     only5Title: 'Regras que valem sem internet',
     only5Text:
-      'Horários bloqueados e Limite diário são aplicados no próprio aparelho, então desligar o roteador não muda nada. A TV aceita até o seu PIN dos pais sem conexão nenhuma.',
+      'Horas bloqueadas e Limite diário são aplicados no próprio aparelho, então desligar o roteador não muda nada. A TV aceita até o seu PIN dos pais sem conexão nenhuma.',
     only6Title: 'Crédito quando a semana mereceu',
     only6Text:
       'Com o Premium, todo relatório semanal guarda espaço para o que deu certo — um limite respeitado, nenhuma madrugada, uma tarefa concluída — e só diz isso quando a semana foi medida de verdade.',
@@ -230,7 +230,7 @@ export default {
     faqSub: 'Respostas rápidas antes de baixar.',
     faq1Q: 'Existe teste gratuito?',
     faq1A:
-      'Sim. O teste de 7 dias começa quando seus primeiros dispositivos de responsável e de criança são conectados, e inclui todos os recursos Premium. Quando termina, as regras que você definiu — Limite diário, Horários bloqueados, Apps bloqueados, Filtro da web, Bloqueio do dispositivo, Solicitações de tempo e Tarefas com recompensa — continuam funcionando de graça em todos os dispositivos compatíveis das crianças, e o dispositivo que você escolher manter monitorado continua compartilhando a localização. A atividade ao vivo, o histórico, os relatórios semanais e o rastreamento de localização são o que o Premium traz de volta.',
+      'Sim. O teste de 7 dias começa quando seus primeiros dispositivos de responsável e de criança são conectados, e inclui todos os recursos Premium. Quando termina, as regras que você definiu — Limite diário, Horas bloqueadas, Apps bloqueados, Filtro da web, Bloqueio do dispositivo, Solicitações de tempo e Tarefas bônus — continuam funcionando de graça em todos os dispositivos compatíveis das crianças, e o dispositivo que você escolher manter monitorado continua compartilhando a localização. A atividade ao vivo, o histórico, os relatórios semanais e o rastreamento de localização são o que o Premium traz de volta.',
     faq2Q: 'Quantos aparelhos posso gerenciar?',
     faq2A:
       'O Premium cobre até 25 dispositivos das crianças e 6 responsáveis, contando com você, e todos os dispositivos enviam atividade. O plano gratuito cobre até 8 dispositivos das crianças e 3 responsáveis. Todos os dispositivos seguem aplicando as regras que você definiu, mas só o que você escolher envia atividade; nos outros, essas regras podem ser afrouxadas mas não apertadas.',
@@ -373,7 +373,7 @@ export default {
     ofLimit: 'de {{value}}',
     noLimit: 'sem limite definido',
     blocked: 'Bloqueado',
-    blockedHours: 'Horários bloqueados',
+    blockedHours: 'Horas bloqueadas',
     day0: 'dom',
     day1: 'seg',
     day2: 'ter',
@@ -549,7 +549,7 @@ export default {
     trendTitle: 'Tendência do Tempo de Uso',
     trendSub: 'Últimos {{count}} dias',
     rangeDays: '{{count}} d',
-    blockedHoursTitle: 'Horários bloqueados',
+    blockedHoursTitle: 'Horas bloqueadas',
     blockedHoursSub_one:
       '{{count}} faixa de horário · o aparelho fica bloqueado dentro dos blocos sombreados',
     blockedHoursSub_other:
@@ -635,13 +635,13 @@ export default {
     limitScaleMin: '30 min',
     limitScaleMax: '8 h',
     limitHint:
-      'Os minutos de bônus das tarefas com recompensa e das solicitações de tempo aprovadas entram por cima, só naquele dia.',
+      'Os minutos extras das tarefas bônus e das solicitações de tempo aprovadas entram por cima, só naquele dia.',
     limitShared: 'Compartilhado entre todos os dispositivos',
     limitSharedSpent: 'Hoje foram usados {{used}} de {{limit}}',
     limitSharedHint:
       'É o dia inteiro desta criança, não um limite deste dispositivo — cada dispositivo recebe o que os outros não usaram. Altere isso no app KidGate.',
     whatsOnSub: 'As mudanças sincronizam com o aparelho da criança',
-    rowBlockedHours: 'Horários bloqueados',
+    rowBlockedHours: 'Horas bloqueadas',
     rowBlockedHoursDesc_one: '{{count}} faixa de horário · {{list}}',
     rowBlockedHoursDesc_other: '{{count}} faixas de horário · {{list}}',
     rowAppBlocking: 'Apps bloqueados',
@@ -666,7 +666,7 @@ export default {
     starChartEmpty:
       'Adicione um segundo filho no aplicativo para começar o quadro de estrelas.',
     starChartStars: '{{count}} estrelas',
-    rewardTasksTitle: 'Tarefas com recompensa',
+    rewardTasksTitle: 'Tarefas bônus',
     rewardTasksSub: 'Ganhe minutos extras concluindo tarefas',
     rewardTaskMeta: '+{{minutes}} min · {{cadence}}',
     rewardTaskStars: 'Dificuldade: {{count}} de 3',
@@ -727,7 +727,7 @@ export default {
     start4:
       '**4. Conceda permissões no aparelho da criança.** Abra a tela *Status* no aparelho da criança e toque em *Continuar configuração* — ela conduz você por todas as permissões de que o KidGate precisa. No Android: notificações, Acesso de uso, Exibir sobre outros apps, Assistente de bloqueio por Acessibilidade, Alarmes e lembretes, Bateria sem restrições, a conexão VPN em que o Filtro da web funciona, a proteção contra desinstalação e, para os Alertas de mensagens, o acesso às notificações; no iOS: *Permitir uso de apps e sites* (Tempo de Uso) e, para o Filtro da web, *Permitir* quando o iOS pedir para adicionar configurações de VPN. Os controles não funcionarão por completo até que estejam ligados.',
     start5:
-      '**5. Configure os controles.** No aparelho do responsável, abra o cartão do aparelho da criança e defina o limite diário, os horários bloqueados, os apps bloqueados, o filtro da web e os recursos de localização.',
+      '**5. Configure os controles.** No aparelho do responsável, abra o cartão do aparelho da criança e defina o limite diário, as horas bloqueadas, os apps bloqueados, o filtro da web e os recursos de localização.',
     startNote:
       'O app também traz um guia passo a passo: *Ajustes → Guia do usuário*, com detalhes sobre conexão de aparelhos, permissões, controles do dia a dia e recursos de segurança.',
 
@@ -761,7 +761,7 @@ export default {
     faq7A:
       'Os dados de uso vêm do aparelho da criança. Verifique se ele está on-line, abra o KidGate nele e veja a tela *Status* — todas as linhas de permissão devem aparecer como permitidas (no Android, o Acesso de uso é necessário para acompanhar o tempo de uso). Os relatórios podem levar alguns minutos para sincronizar.',
 
-    faq8Q: 'Por que o bloqueio ou os horários bloqueados não funcionam?',
+    faq8Q: 'Por que o bloqueio ou as horas bloqueadas não funcionam?',
     faq8A:
       'No Android, o bloqueio precisa de *Exibir sobre outros apps* e do assistente de *Acessibilidade* ativados, além de bateria sem restrições. Em Xiaomi, Samsung, Oppo, Vivo e aparelhos parecidos, permita também a inicialização automática e tire o KidGate de qualquer lista de “apps em suspensão” (veja *Status → Permitir inicialização automática* no aparelho da criança). No iOS, o bloqueio depende da autorização do Tempo de Uso. Se uma permissão for desligada depois, você receberá um alerta de proteção no dispositivo dos pais.',
 
@@ -850,7 +850,7 @@ export default {
     storyP1:
       '“Só mais cinco minutinhos!” Aí os cinco minutos passam. O pai ou a mãe pede de novo, a criança fica chateada, e uma coisa pequena vira uma briga que ninguém queria. Não achamos que toda família precise de regras mais rígidas. Às vezes, o que falta são regras claras, que todo mundo entende e em que todo mundo confia.',
     storyP2:
-      'Com o KidGate, os pais configuram uma vez o Limite diário, os Horários bloqueados, os Apps bloqueados e o Filtro da web, e depois as regras funcionam sozinhas, até onde cada dispositivo permite. As crianças também veem os próprios limites, sabem quando o dispositivo vai bloquear e podem pedir mais tempo quando precisarem.',
+      'Com o KidGate, os pais configuram uma vez o Limite diário, as Horas bloqueadas, os Apps bloqueados e o Filtro da web, e depois as regras funcionam sozinhas, até onde cada dispositivo permite. As crianças também veem os próprios limites, sabem quando o dispositivo vai bloquear e podem pedir mais tempo quando precisarem.',
     storyP3:
       'Os pais não precisam lembrar todo dia. As crianças não precisam adivinhar se as regras mudaram hoje. Menos brigas, mais tempo juntos.',
     valuesEyebrow: 'O que importa para nós',
@@ -867,14 +867,14 @@ export default {
       'Cada dispositivo tem seus próprios limites, então algumas funções funcionam de um jeito diferente no iPhone, no Android, no Mac, no Windows e na TV. A gente avisa isso na tela, em vez de prometer que tudo funciona igual em todo lugar. Proteger uma família exige boas ferramentas e informações em que você possa confiar.',
     value4Title: 'Uma família, um plano Premium',
     value4Text:
-      'Uma única assinatura Premium cobre todos os responsáveis e todos os dispositivos das crianças — nada de comprar aparelho por aparelho. Sem ela, Limite diário, Horários bloqueados, Apps bloqueados, Bloqueio do dispositivo e o Filtro da web continuam funcionando nos dispositivos compatíveis, e o SOS nunca fica atrás do paywall — porque as ferramentas essenciais de segurança devem estar sempre ao alcance.',
+      'Uma única assinatura Premium cobre todos os responsáveis e todos os dispositivos das crianças — nada de comprar aparelho por aparelho. Sem ela, Limite diário, Horas bloqueadas, Apps bloqueados, Bloqueio do dispositivo e o Filtro da web continuam funcionando nos dispositivos compatíveis, e o SOS nunca fica atrás do paywall — porque as ferramentas essenciais de segurança devem estar sempre ao alcance.',
     makeEyebrow: 'O que fazemos',
     makeTitle: 'Um app, vários dispositivos',
     makeSub:
       'As crianças usam o celular quando saem, o computador para a escola e a TV para relaxar, então cuidar delas não deveria parar em um único aparelho. Cada plataforma tem seus pontos fortes, mas o objetivo é o mesmo: mais fácil para os pais, mais claro para as crianças.',
     make1Title: 'iPhone e iPad',
     make1Text:
-      'Limite diário, Horários bloqueados e Apps bloqueados com base no próprio Tempo de Uso da Apple, e o Filtro da web direto no dispositivo.',
+      'Limite diário, Horas bloqueadas e Apps bloqueados com base no próprio Tempo de Uso da Apple, e o Filtro da web direto no dispositivo.',
     make2Title: 'Android',
     make2Text:
       'Limites, Apps bloqueados, bloqueio de tela e o Filtro da web, além de um aviso quando seu filho instala um app novo.',

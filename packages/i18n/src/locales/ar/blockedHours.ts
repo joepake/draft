@@ -37,8 +37,6 @@ export const blockedHours = {
     'لن تُطبَّق ساعات الحظر على الجهاز {{name}} حتى يُسمح له بقفل الشاشة.',
   infoSkippedPlatform: 'ساعات الحظر غير متاحة على الجهاز {{name}}.',
   off: 'إيقاف',
-  blockedHoursChip: 'ساعات الحظر',
-  blockedHoursOnChip: 'تم إعداد ساعات الحظر',
   blockedHoursStatusActiveNow: 'نشط الآن',
   blockedHoursStatusOn: 'تشغيل',
   blockedHoursStatusOff: 'إيقاف',

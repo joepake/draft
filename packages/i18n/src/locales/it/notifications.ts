@@ -31,7 +31,7 @@ export const notifications = {
     'Se nessuno apre KidGate per {{days}} giorni, i dispositivi di tuo figlio smettono di inviare report finché qualcuno non lo riapre. Le tue regole restano attive.',
   alert: {
     tamperAlerts: {
-      label: 'Avvisi di protezione',
+      label: 'Avvisi protezione',
       hint: 'Su un dispositivo del bambino viene disattivato un permesso necessario a KidGate, viene modificato l’orologio o il fuso orario, oppure viene premuto SOS mentre è bloccato.',
     },
     placeAlerts: {

@@ -37,7 +37,7 @@ export const deviceDetail = {
   placeAlerts: 'Luoghi',
   reviewPlaceAlerts: 'Ricevi notifiche all’arrivo o alla partenza',
   noPlacesYet: 'Nessun luogo',
-  tamperAlerts: 'Avvisi di protezione',
+  tamperAlerts: 'Avvisi protezione',
   reviewTamperAlerts: 'Controlla quando la protezione viene disattivata',
   editDeviceName: 'Modifica nome del dispositivo',
   editDeviceNameSubtitle:
@@ -138,7 +138,7 @@ export const deviceDetail = {
   webHistorySitesUnit_one: 'sito',
   managedAtChild:
     'Regole, premi, check-in e avvisi di questo dispositivo si gestiscono nel profilo di {{childName}}.',
-  pauseBrowsing: 'Sospendi la navigazione',
+  pauseBrowsing: 'Pausa navigazione',
   pauseBrowsingDescription:
     'Sospendi la navigazione per un po’. Chiamate e app offline continuano a funzionare.',
   pauseBrowsingDesktopNote:

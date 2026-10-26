@@ -12,7 +12,7 @@ export const controls = {
   dailyLimitEnterAtLeastMinutes_few: 'Введи не менее {{count}} минут.',
   dailyLimitMaxMinutes: 'Дневной лимит не может превышать {{max}} минут (24 часа).',
   rulesSectionTitle: 'Правила от родителей',
-  blockedHoursLabel: 'Заблокированные часы',
+  blockedHoursLabel: 'Часы блокировки',
   dailyLimitLabel: 'Дневной лимит',
   webFilterLabel: 'Веб-фильтр',
 } as const;

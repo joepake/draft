@@ -25,7 +25,7 @@ export const macos = {
   lockStateNo: 'Нет',
   stateNotChecked: 'Ещё не проверялось',
   lockStateParent: 'Да — заблокировано родителем',
-  lockStateSchedule: 'Да — Заблокированные часы',
+  lockStateSchedule: 'Да — Часы блокировки',
   lockStateDailyLimit: 'Да — Дневной лимит исчерпан',
 
   webFilterLabel: 'Веб-фильтрация',
@@ -74,7 +74,7 @@ export const macos = {
   setupStepBlocked:
     'Ранее было отклонено. macOS спрашивает только один раз — включите KidGate в разделе «Конфиденциальность и безопасность».',
 
-  scheduleLabel: 'Заблокированные часы',
+  scheduleLabel: 'Часы блокировки',
   dailyLimitLabel: 'Дневной лимит',
   enforcedHere: 'Включено, обеспечивает KidGate',
 

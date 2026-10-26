@@ -40,8 +40,6 @@ export const blockedHours = {
     'Giờ khóa thiết bị chưa áp dụng cho {{name}} vì thiết bị chưa được cấp quyền khóa màn hình.',
   infoSkippedPlatform: 'Giờ khóa thiết bị không khả dụng trên {{name}}.',
   off: 'Tắt',
-  blockedHoursChip: 'Giờ khóa thiết bị',
-  blockedHoursOnChip: 'Đã đặt Giờ khóa thiết bị',
   blockedHoursStatusActiveNow: 'Đang khóa',
   blockedHoursStatusOn: 'Bật',
   blockedHoursStatusOff: 'Tắt',

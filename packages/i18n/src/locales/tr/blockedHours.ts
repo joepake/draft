@@ -39,8 +39,6 @@ export const blockedHours = {
     '{{name}} cihazına ekranı kilitleme izni verilene kadar Engellenen Saatler uygulanmaz.',
   infoSkippedPlatform: 'Engellenen Saatler {{name}} cihazında kullanılamaz.',
   off: 'Kapalı',
-  blockedHoursChip: 'Engellenen Saatler',
-  blockedHoursOnChip: 'Engellenen Saatler ayarlandı',
   blockedHoursStatusActiveNow: 'Şu anda etkin',
   blockedHoursStatusOn: 'Açık',
   blockedHoursStatusOff: 'Kapalı',

@@ -340,10 +340,10 @@ export const userGuide = {
         'spegnere internet, mettere in pausa il wifi, senza rete, offline, pausa',
       tip: 'Nell’estensione Chrome la sospensione riguarda solo Chrome. Per una pausa che si ripete ogni giorno, usa invece gli Orari di blocco.',
       steps: {
-        '1': 'Sul dispositivo del genitore, apri il profilo di tuo figlio (o il dispositivo, se non è assegnato a nessun bambino), poi “Sospendi la navigazione” nella sezione Monitoraggio della sicurezza.',
+        '1': 'Sul dispositivo del genitore, apri il profilo di tuo figlio (o il dispositivo, se non è assegnato a nessun bambino), poi “Pausa navigazione” nella sezione Monitoraggio della sicurezza.',
         '2': 'Scegli una durata con il selettore circolare o un valore rapido (30, 60 o 120 minuti), poi conferma.',
         '3': 'Il Web resta bloccato su quel dispositivo finché il tempo non scade. Le impostazioni del Filtro web non cambiano, e la sospensione funziona anche quando il Filtro web è disattivato. Su un computer, i browser vengono chiusi finché la sospensione non termina.',
-        '4': 'Per terminarla prima, apri il dispositivo, tocca la scheda “Sospendi la navigazione” e seleziona Riprendi. I minuti rimanenti non vengono conservati.',
+        '4': 'Per terminarla prima, apri il dispositivo, tocca la scheda “Pausa navigazione” e seleziona Riprendi. I minuti rimanenti non vengono conservati.',
         '5': 'Dal profilo di tuo figlio, una sospensione vale per un solo dispositivo. Se tuo figlio ne usa diversi, sospendi ciascuno dalla schermata del relativo dispositivo.',
       },
     },
@@ -434,15 +434,15 @@ export const userGuide = {
       },
     },
     protectionAlerts: {
-      title: 'Avvisi di protezione',
+      title: 'Avvisi protezione',
       summary:
         'Ricevi una notifica quando un permesso importante sul dispositivo del bambino viene disattivato.',
-      tip: 'Un avviso di protezione significa che la protezione di KidGate si è indebolita. Ripristina il permesso sul dispositivo del bambino il prima possibile.',
+      tip: 'Un avviso da Avvisi protezione significa che la protezione di KidGate si è indebolita. Ripristina il permesso sul dispositivo del bambino il prima possibile.',
       steps: {
-        '1': 'Sul dispositivo del genitore, apri il profilo di tuo figlio (o il dispositivo, se non è assegnato a nessun bambino), poi la sezione Avvisi, e seleziona Avvisi di protezione.',
+        '1': 'Sul dispositivo del genitore, apri il profilo di tuo figlio (o il dispositivo, se non è assegnato a nessun bambino), poi la sezione Avvisi, e seleziona Avvisi protezione.',
         '2': '“Permessi monitorati” mostra se ogni permesso di cui KidGate ha bisogno è ancora attivo. Sotto trovi ogni modifica degli ultimi 30 giorni, come la disattivazione di Accessibilità o Posizione.',
         '3': 'Sul dispositivo del bambino, apri KidGate, poi Stato e riattiva il permesso indicato.',
-        '4': 'Torna agli Avvisi di protezione e verifica che il permesso risulti di nuovo attivo in “Permessi monitorati”.',
+        '4': 'Torna agli Avvisi protezione e verifica che il permesso risulti di nuovo attivo in “Permessi monitorati”.',
         '5': 'Mantieni le notifiche attive sul dispositivo del genitore per essere informato rapidamente dei cambiamenti.',
       },
     },

@@ -37,8 +37,6 @@ export const blockedHours = {
     'Jam Diblokir tidak berlaku di {{name}} sampai perangkat itu diizinkan mengunci layar.',
   infoSkippedPlatform: 'Jam Diblokir tidak tersedia di {{name}}.',
   off: 'Nonaktif',
-  blockedHoursChip: 'Jam Diblokir',
-  blockedHoursOnChip: 'Jam Diblokir diatur',
   blockedHoursStatusActiveNow: 'Sedang aktif',
   blockedHoursStatusOn: 'Aktif',
   blockedHoursStatusOff: 'Nonaktif',

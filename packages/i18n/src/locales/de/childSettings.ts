@@ -26,7 +26,7 @@ export const childSettings = {
     'Wenn du das ausschaltest, kann KidGate von diesem Gerät deinstalliert werden. Deine Eltern werden benachrichtigt.',
   appPickerUnavailable:
     'Die Funktion „Blockierte Apps“ ist auf diesem Gerät nicht verfügbar.',
-  messageSafetySectionTitle: 'Nachrichtenwarnungen',
+  messageSafetySectionTitle: 'Chatwarnungen',
   messageSafetySectionDescription:
-    'Erteile die Berechtigung hier. Nachrichtenwarnungen werden in der Eltern-App oder im Web-Dashboard ein- oder ausgeschaltet.',
+    'Erteile die Berechtigung hier. Chatwarnungen werden in der Eltern-App oder im Web-Dashboard ein- oder ausgeschaltet.',
 } as const;

@@ -27,7 +27,7 @@ export const rewardTask = {
   tryAgain: 'Zurückgeben',
   approveAndAdd: '{{minutes}} Min. gutschreiben',
   approve: 'Genehmigen',
-  screenTitle: 'Belohnungsaufgaben',
+  screenTitle: 'Bonusaufgaben',
   fallbackDeviceName: 'Kindergerät',
   heroUnit: 'Min. zu verdienen',
   heroCaption: '{{count}} offene Aufgaben',
@@ -64,10 +64,10 @@ export const rewardTask = {
   childSentBackToast: '„{{title}}“ wurde zurückgegeben – versuch es nochmal.',
   childApprovedTitle: 'Aufgabe genehmigt',
   childApprovedSubtitle: 'Du hast {{minutes}} Extra-Minuten für heute verdient.',
-  taskApproved: 'Belohnungsaufgabe genehmigt',
+  taskApproved: 'Bonusaufgabe genehmigt',
   taskApprovedDescription:
     '{{deviceName}} hat {{minutes}} Bonusminuten für „{{title}}“ verdient.',
-  taskRejected: 'Belohnungsaufgabe zurückgegeben',
+  taskRejected: 'Bonusaufgabe zurückgegeben',
   taskRejectedDescription:
     '„{{title}}“ wurde an {{deviceName}} für einen neuen Versuch zurückgegeben.',
   starsLabel: 'Schwierigkeit',

@@ -27,7 +27,7 @@ export const childSettings = {
     'Si tu désactives ceci, KidGate pourra être désinstallé de cet appareil. Tes parents seront prévenus.',
   appPickerUnavailable:
     'La fonction Applications bloquées n’est pas disponible sur cet appareil.',
-  messageSafetySectionTitle: 'Alertes de messages',
+  messageSafetySectionTitle: 'Alertes messages',
   messageSafetySectionDescription:
-    'L’autorisation s’accorde ici. Les Alertes de messages s’activent ou se désactivent depuis l’app parent ou le tableau de bord web.',
+    'L’autorisation s’accorde ici. Les Alertes messages s’activent ou se désactivent depuis l’app parent ou le tableau de bord web.',
 } as const;

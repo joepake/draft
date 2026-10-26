@@ -25,7 +25,7 @@ export const rewardTask = {
   tryAgain: 'Renvoyer',
   approveAndAdd: 'Ajouter {{minutes}} min',
   approve: 'Approuver',
-  screenTitle: 'Tâches à récompense',
+  screenTitle: 'Tâches bonus',
   fallbackDeviceName: 'Appareil de l’enfant',
   heroUnit: 'min à gagner',
   heroCaption: '{{count}} tâches à faire',
@@ -62,10 +62,10 @@ export const rewardTask = {
   childSentBackToast: '« {{title}} » a été renvoyée — réessaie.',
   childApprovedTitle: 'Tâche approuvée',
   childApprovedSubtitle: 'Tu as gagné {{minutes}} minutes en plus pour aujourd’hui.',
-  taskApproved: 'Tâche à récompense approuvée',
+  taskApproved: 'Tâche bonus approuvée',
   taskApprovedDescription:
     '{{deviceName}} a gagné {{minutes}} minutes bonus pour « {{title}} ».',
-  taskRejected: 'Tâche à récompense renvoyée',
+  taskRejected: 'Tâche bonus renvoyée',
   taskRejectedDescription:
     '« {{title}} » a été renvoyée à {{deviceName}} pour un nouvel essai.',
   starsLabel: 'Difficulté',

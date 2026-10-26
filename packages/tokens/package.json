@@ -16,6 +16,7 @@
     "./motion": "./src/motion.ts",
     "./interaction": "./src/interaction.ts",
     "./icons": "./src/icons.ts",
+    "./appCategoryIcons": "./src/appCategoryIcons.ts",
     "./sweetDecor": "./src/sweetDecor.ts",
     "./brandMark": "./src/brandMark.ts"
   }

@@ -66,7 +66,7 @@ export const plans = {
   compareActivityFeedPremium: '30 dias',
   compareChildReport: 'Relatórios por filho',
   compareIncluded:
-    'Os dois planos incluem o Limite diário, os Horários bloqueados, os Limites de apps, o Bloqueio do dispositivo, SOS, as Solicitações de tempo, as Tarefas com recompensa e o painel web.',
+    'Os dois planos incluem o Limite diário, as Horas bloqueadas, os Limites de apps, o Bloqueio do dispositivo, SOS, as Solicitações de tempo, as Tarefas bônus e o painel web.',
   sectionWhyPremium: 'O que o Premium adiciona',
   sectionWhyPremiumSubtitle:
     'Todas as regras continuam funcionando no Grátis. O Premium adiciona o que você vê, e quando.',
@@ -91,7 +91,7 @@ export const plans = {
   // app does not keep.
   featurePausePhone: 'Bloqueio do dispositivo',
   featureDailyLimits: 'Limite diário',
-  featureBlockedHours: 'Horários bloqueados',
+  featureBlockedHours: 'Horas bloqueadas',
   featureAppLimits: 'Limites de apps',
   featureInstallApproval: 'Aprovar novos apps',
   featureTimeRequests: 'Solicitações de tempo',
@@ -153,10 +153,10 @@ export const plans = {
   // has to name who needs to act instead of offering a button they can't use.
   familyPremiumEndedTitle: 'O Premium desta família terminou',
   familyPremiumEndedBody:
-    'O Limite diário, os Horários bloqueados, os Apps bloqueados, a localização e a chave do Filtro da web continuam funcionando. As atualizações ao vivo, o histórico, os alertas e os relatórios ficam pausados até o dono da família renovar o Premium.',
+    'O Limite diário, as Horas bloqueadas, os Apps bloqueados, a localização e a chave do Filtro da web continuam funcionando. As atualizações ao vivo, o histórico, os alertas e os relatórios ficam pausados até o dono da família renovar o Premium.',
   pricesUnavailable: 'Não foi possível carregar os preços da loja.',
   pricesRetry: 'Tentar novamente',
-  featureRewardTasks: 'Tarefas com recompensa',
+  featureRewardTasks: 'Tarefas bônus',
   sectionChoosePlan: 'Escolha seu plano',
   saveBadge: 'Economize {{percent}}%',
   billedMonthly: 'Cobrança mensal',
@@ -191,7 +191,7 @@ export const plans = {
   platformAndroidTvLimits:
     'Sem avisos de mensagens, localização, SOS nem Solicitações de tempo. A função Apps bloqueados funciona na medida do possível.',
   platformChromebookLimits:
-    'Apenas Filtro da web — sem Limite diário, Horários bloqueados, Apps bloqueados, Bloqueio do dispositivo, SOS nem localização.',
+    'Apenas Filtro da web — sem Limite diário, Horas bloqueadas, Apps bloqueados, Bloqueio do dispositivo, SOS nem localização.',
   platformComingSoon: 'Em breve',
   platformWindows: 'Windows',
   platformWindowsDetail: 'Somente dispositivo da criança · Windows 10 ou posterior',

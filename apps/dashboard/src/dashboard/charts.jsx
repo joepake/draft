@@ -1,6 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import { getLocaleTag, t } from '@kidgate/i18n/web';
 import { useT } from '@kidgate/web-ui/useT';
+import Icon from '@kidgate/web-ui/Icon';
+import {
+  APP_CATEGORY_ICONS,
+  DEFAULT_APP_CATEGORY_ICON,
+  UNCLASSIFIED_APP_ICON,
+} from '@kidgate/tokens/appCategoryIcons';
 import { isSeriousAppCategory, isShowableAppCategory } from '@kidgate/schema/aiApps';
 import {
   timelineAvailability,
@@ -484,7 +490,14 @@ export function AppBars({ apps = [], limits = [], totalMinutes = 0, joinedAt = n
  * "95 minutes in loginwindow" teaches a parent nothing.
  */
 export function AppCategoryLine({ appT, entry }) {
-  if (!isShowableAppCategory(entry)) return null;
+  // No kind yet: the plain app glyph, so every row keeps its mark.
+  if (!isShowableAppCategory(entry)) {
+    return (
+      <em className="app-cat">
+        <Icon name={UNCLASSIFIED_APP_ICON} size={12} className="app-cat-icon" />
+      </em>
+    );
+  }
 
   const name = appT(`webFilter.category.${entry.category}`);
   // Shown only when the rating is known: 0 is the common answer and does not
@@ -493,6 +506,11 @@ export function AppCategoryLine({ appT, entry }) {
 
   return (
     <em className={`app-cat${isSeriousAppCategory(entry) ? ' is-serious' : ''}`}>
+      <Icon
+        name={APP_CATEGORY_ICONS[entry.category] ?? DEFAULT_APP_CATEGORY_ICON}
+        size={12}
+        className="app-cat-icon"
+      />
       {age ? `${name} · ${age}` : name}
     </em>
   );

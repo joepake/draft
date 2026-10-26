@@ -39,8 +39,6 @@ export const blockedHours = {
     '{{name}}が画面をロックできるよう許可されるまで、休止時間は適用されません。',
   infoSkippedPlatform: '休止時間は{{name}}では利用できません。',
   off: 'オフ',
-  blockedHoursChip: '休止時間',
-  blockedHoursOnChip: '休止時間設定済み',
   blockedHoursStatusActiveNow: '現在有効',
   blockedHoursStatusOn: 'オン',
   blockedHoursStatusOff: 'オフ',

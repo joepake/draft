@@ -30,7 +30,7 @@ export const family = {
   quickProtectSourceDefault: 'Настройки KidGate по умолчанию',
   quickProtectSourceBody:
     'Копирует правила {{childName}}, включая разрешённые и заблокированные сайты.',
-  quickProtectBedtime: 'Заблокированные часы на ночь',
+  quickProtectBedtime: 'Часы блокировки на ночь',
   quickProtectBedtimeHint: 'Блокирует использование устройства ночью, с 22:00 до 7:00.',
   quickProtectDailyLimit: 'Дневной лимит',
   quickProtectDailyLimitHint:
@@ -136,7 +136,7 @@ export const family = {
   chipHealthInactiveCount: '{{count}} без связи более 24 ч',
   chipLocationBlocked: 'Местоположение не поступает',
 
-  chipBlockedCount: '{{count}} в Заблокированных часах',
+  chipBlockedCount: '{{count}} в Часах блокировки',
 
   healthProtected: 'Защищено',
   buildOutdated: 'Есть обновление',
@@ -231,7 +231,7 @@ export const family = {
   guestBenefitLimitsTitle: 'Экранное время и лимиты приложений',
 
   guestBenefitLimitsBody:
-    'Задайте Дневной лимит, Заблокированные часы и Лимиты приложений или сразу заблокируйте устройство.',
+    'Задайте Дневной лимит, Часы блокировки и Лимиты приложений или сразу заблокируйте устройство.',
 
   guestBenefitAlertsTitle: 'SOS и оповещения об активности',
 
@@ -361,7 +361,7 @@ export const family = {
 
   lockNotAppliedOnDevice: 'Это устройство не применило блокировку',
 
-  blockedHoursActiveNow: 'Сейчас действуют Заблокированные часы',
+  blockedHoursActiveNow: 'Сейчас действуют Часы блокировки',
 
   inactiveOpenKidGate: 'Неактивно — откройте KidGate на этом устройстве',
 

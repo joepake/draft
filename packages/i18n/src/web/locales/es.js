@@ -145,7 +145,7 @@ export default {
     feature7Title: 'Alertas de protección y de apps',
     feature7Text:
       'Entérate en el momento en que se desactiva un permiso importante en el móvil de tu hijo, y aprueba las apps nuevas antes de que se abran en Android, Android TV o un ordenador.',
-    feature8Title: 'Tareas con recompensa y Solicitudes de tiempo',
+    feature8Title: 'Tareas premiadas y Solicitudes de tiempo',
     feature8Text:
       'Los niños ganan minutos extra y estrellas completando tareas, o piden más tiempo; tú apruebas ambas cosas desde tu móvil.',
 
@@ -230,7 +230,7 @@ export default {
     faqSub: 'Respuestas rápidas antes de descargar.',
     faq1Q: '¿Hay una prueba gratuita?',
     faq1A:
-      'Sí. La prueba de 7 días empieza cuando conectas tu primer dispositivo de padre y de hijo, e incluye todas las funciones Premium. Cuando termina, las reglas que configuraste (Límite diario, Horas bloqueadas, Apps bloqueadas, Filtro web, Bloqueo de dispositivo, Solicitudes de tiempo y Tareas con recompensa) siguen funcionando gratis en todos los dispositivos infantiles que las admiten, y el único dispositivo que elijas mantener supervisado sigue compartiendo su ubicación. Con Premium recuperas la actividad en vivo, el historial, los informes semanales y el seguimiento de ubicación.',
+      'Sí. La prueba de 7 días empieza cuando conectas tu primer dispositivo de padre y de hijo, e incluye todas las funciones Premium. Cuando termina, las reglas que configuraste (Límite diario, Horas bloqueadas, Apps bloqueadas, Filtro web, Bloqueo de dispositivo, Solicitudes de tiempo y Tareas premiadas) siguen funcionando gratis en todos los dispositivos infantiles que las admiten, y el único dispositivo que elijas mantener supervisado sigue compartiendo su ubicación. Con Premium recuperas la actividad en vivo, el historial, los informes semanales y el seguimiento de ubicación.',
     faq2Q: '¿Cuántos dispositivos puedo gestionar?',
     faq2A:
       'Premium cubre hasta 25 dispositivos infantiles y 6 padres o madres, contándote a ti, y todos los dispositivos envían actividad. El plan gratuito cubre hasta 8 dispositivos infantiles y 3 padres o madres. Todos los dispositivos siguen aplicando las reglas que pusiste, pero solo el que tú eliges envía actividad; en los demás, esas reglas pueden relajarse pero no endurecerse.',
@@ -638,7 +638,7 @@ export default {
     limitScaleMin: '30 min',
     limitScaleMax: '8 h',
     limitHint:
-      'Los minutos extra de las tareas con recompensa y de las solicitudes de tiempo aprobadas se suman encima, solo ese día.',
+      'Los minutos extra de las tareas premiadas y de las solicitudes de tiempo aprobadas se suman encima, solo ese día.',
     limitShared: 'Compartido entre todos los dispositivos',
     limitSharedSpent: 'Hoy se han usado {{used}} de {{limit}}',
     limitSharedHint:
@@ -669,7 +669,7 @@ export default {
     starChartEmpty:
       'Añade un segundo hijo en la app para empezar la tabla de estrellas.',
     starChartStars: '{{count}} estrellas',
-    rewardTasksTitle: 'Tareas con recompensa',
+    rewardTasksTitle: 'Tareas premiadas',
     rewardTasksSub: 'Gana minutos extra completando tareas',
     rewardTaskMeta: '+{{minutes}} min · {{cadence}}',
     rewardTaskStars: 'Dificultad: {{count}} de 3',

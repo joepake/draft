@@ -52,7 +52,7 @@ export const plans = {
   compareNewApps: 'App appena installate',
   compareNewAppsPremium: 'Quali app, con il nome',
   compareMessages: 'Avvisi messaggi (Android)',
-  compareSafety: 'Avvisi di protezione e Check-in',
+  compareSafety: 'Avvisi protezione e Check-in',
   compareSafetyFree: 'Avvisi + Check-In',
   compareSafetyPremium: 'Aggiunge una foto a ogni Check-In',
   compareControls: 'App bloccate e Filtro web',

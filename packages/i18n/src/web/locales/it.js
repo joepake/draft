@@ -142,7 +142,7 @@ export default {
     feature6Title: 'Check-in e SOS',
     feature6Text:
       'Chiedi a tuo figlio di confermare che sta bene; in caso di emergenza, il suo telefono ti invia subito un SOS con la posizione.',
-    feature7Title: 'Avvisi di protezione e sulle app',
+    feature7Title: 'Avvisi protezione e avvisi sulle app',
     feature7Text:
       'Scopri nell’istante in cui un permesso importante viene disattivato sul telefono di tuo figlio, e approva le nuove app prima che si aprano su Android, Android TV o un computer.',
     feature8Title: 'Compiti premio e Richieste di tempo',
@@ -236,7 +236,7 @@ export default {
       'Premium copre fino a 25 dispositivi dei figli e 6 genitori, contando anche te, e ogni dispositivo invia attività. Il piano gratuito copre fino a 8 dispositivi dei figli e 3 genitori. Ogni dispositivo continua ad applicare le regole che hai impostato, ma solo quello che scegli tu invia attività; sugli altri quelle regole si possono allentare ma non rendere più severe.',
     faq3Q: 'Mio figlio può disinstallare o aggirare KidGate?',
     faq3A:
-      'Le impostazioni sensibili sono protette dal PIN genitore e gli avvisi di protezione ti segnalano subito se un permesso chiave viene disattivato sul dispositivo del bambino.',
+      'Le impostazioni sensibili sono protette dal PIN genitore e gli Avvisi protezione ti segnalano subito se un permesso chiave viene disattivato sul dispositivo del bambino.',
     faq4Q: 'Posso gestire tutto dal computer?',
     faq4A:
       'Sì. La dashboard genitori si apre in qualsiasi browser. Scansiona il codice che mostra con l’app KidGate sul tuo telefono e vedi la stessa famiglia, gli stessi dispositivi e le stesse impostazioni, con i comandi sbloccati. Puoi anche accedere con il tuo account per consultare; bloccare un dispositivo o modificare un limite richiede allora il PIN genitore.',
@@ -629,7 +629,7 @@ export default {
     checkInNoPhoto: 'nessuna foto richiesta',
     sendCheckIn: 'Invia un check-in adesso',
 
-    protectionAlertsTitle: 'Avvisi di protezione',
+    protectionAlertsTitle: 'Avvisi protezione',
     protectionAlertsSub_one: '{{count}} evento dall’installazione',
     protectionAlertsSub_other: '{{count}} eventi dall’installazione',
 
@@ -768,7 +768,7 @@ export default {
 
     faq8Q: 'Perché il blocco o gli orari di blocco non funzionano?',
     faq8A:
-      'Su Android il blocco richiede *Mostra sopra le altre app* e l’assistente *Accessibilità* attivi, oltre alla batteria senza restrizioni. Su Xiaomi, Samsung, Oppo, Vivo e dispositivi simili consenti anche l’avvio automatico e togli KidGate da eventuali elenchi di «app in sospensione» (vedi *Stato → Consenti l’avvio automatico* sul dispositivo del bambino). Su iOS il blocco dipende dall’autorizzazione a Tempo di utilizzo. Se un permesso viene disattivato in seguito, riceverai un avviso di protezione sul dispositivo del genitore.',
+      'Su Android il blocco richiede *Mostra sopra le altre app* e l’assistente *Accessibilità* attivi, oltre alla batteria senza restrizioni. Su Xiaomi, Samsung, Oppo, Vivo e dispositivi simili consenti anche l’avvio automatico e togli KidGate da eventuali elenchi di «app in sospensione» (vedi *Stato → Consenti l’avvio automatico* sul dispositivo del bambino). Su iOS il blocco dipende dall’autorizzazione a Tempo di utilizzo. Se un permesso viene disattivato in seguito, riceverai un avviso da Avvisi protezione sul dispositivo del genitore.',
 
     faq9Q: 'Come blocco app specifiche?',
     faq9A:

@@ -2,7 +2,7 @@ export const deviceDetail = {
   notFoundTitle: 'Gerät',
   dangerTitle: 'Dieses Gerät entfernen',
   dangerDescription:
-    'Entferne dieses Gerät aus deinem Familienkonto. Dabei werden Standortverlauf, Nutzungsverlauf, Web-Verlauf, angesehene Videos, die Liste der installierten Apps, Zeitanfragen, Website-Anfragen, Belohnungsaufgaben, Check-ins, SOS-Alarme und Aktivitäten dieses Geräts gelöscht.',
+    'Entferne dieses Gerät aus deinem Familienkonto. Dabei werden Standortverlauf, Nutzungsverlauf, Web-Verlauf, Videoverlauf, die Liste der installierten Apps, Zeitanfragen, Website-Anfragen, Bonusaufgaben, Check-ins, SOS-Alarme und Aktivitäten dieses Geräts gelöscht.',
   removeButton: 'Gerät entfernen',
   removingButton: 'Wird entfernt…',
   showAllFeatures: 'Alle Funktionen anzeigen',
@@ -76,7 +76,7 @@ export const deviceDetail = {
   removeOwnerOnly: 'Nur der Familieninhaber kann Geräte entfernen.',
   removeDeviceTitle: 'Gerät entfernen?',
   removeDeviceMessage:
-    '{{deviceName}} wird von deinem Konto getrennt. Dabei werden Standortverlauf, Nutzungsverlauf, Web-Verlauf, angesehene Videos, die Liste der installierten Apps, Zeitanfragen, Website-Anfragen, Belohnungsaufgaben, Check-ins, SOS-Alarme und Aktivitäten gelöscht.',
+    '{{deviceName}} wird von deinem Konto getrennt. Dabei werden Standortverlauf, Nutzungsverlauf, Web-Verlauf, Videoverlauf, die Liste der installierten Apps, Zeitanfragen, Website-Anfragen, Bonusaufgaben, Check-ins, SOS-Alarme und Aktivitäten gelöscht.',
   unableToRemoveDevice:
     'Das Gerät konnte nicht entfernt werden. Bitte versuche es erneut.',
   checkInNotificationSent: '{{deviceName}} erhält eine Check-in-Anfrage.',
@@ -117,7 +117,7 @@ export const deviceDetail = {
   featureIncludedInPremium: '{{actionTitle}} ist in Premium enthalten.',
   featureOnRoadmap:
     '{{actionTitle}} kommt bald. Standort, Webfilter und die oben genannten Funktionen sind bereits verfügbar.',
-  rewardTasks: 'Belohnungsaufgaben',
+  rewardTasks: 'Bonusaufgaben',
   rewardTasksDescription: 'Extra-Minuten für erledigte Aufgaben',
   rewardTasksUnit: 'aktive Aufgaben',
   rewardTasksUnit_one: 'aktive Aufgabe',
@@ -131,7 +131,7 @@ export const deviceDetail = {
   appLimitsReached_one: '{{count}} App hat ihr Limit erreicht',
   appLimitsReached: '{{count}} Apps haben ihr Limit erreicht',
   webHistory: 'Web-Verlauf',
-  videoHistory: 'Angesehene Videos',
+  videoHistory: 'Videoverlauf',
   videoHistoryDescription: 'Auf YouTube angesehene Videos',
   videoHistoryOn: 'Aufzeichnung',
   webHistoryDescription: 'Erreichte und blockierte Seiten',

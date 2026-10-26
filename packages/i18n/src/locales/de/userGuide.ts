@@ -27,7 +27,7 @@ export const userGuide = {
     controls: {
       title: 'Tägliche Steuerungen',
       description:
-        'Tageslimit, Sperrzeiten, Blockierte Apps, App-Limits, Gerätesperre, Zeitanfragen und Belohnungsaufgaben',
+        'Tageslimit, Sperrzeiten, Blockierte Apps, App-Limits, Gerätesperre, Zeitanfragen und Bonusaufgaben',
     },
     safety: {
       title: 'Sicherheit und Überwachung',
@@ -36,7 +36,7 @@ export const userGuide = {
     reports: {
       title: 'Berichte und Verlauf',
       description:
-        'Berichte zur Bildschirmzeit, Web- und Videoverlauf, App- und Nachrichtenwarnungen',
+        'Berichte zur Bildschirmzeit, Web- und Videoverlauf, App- und Chatwarnungen',
     },
     account: {
       title: 'Konto und Plan',
@@ -149,7 +149,7 @@ export const userGuide = {
         '3': 'Öffne auf deinem Gerät Familie, tippe auf das Scan-Symbol („Code scannen“) und scanne den QR-Code – oder wähle „Code manuell eingeben“ und gib den Code ein.',
         '4': 'Prüfe im KidGate-Pop-up den Elternnamen und wähle „Ja, verbinden“.',
         '5': 'Auf deinem Gerät wählt anschließend der Familieninhaber aus, welches Kind die Erweiterung nutzt; schalte dann den Webfilter für sie ein. Bis dahin zeigt die Erweiterung „Inaktiv“ an.',
-        '6': 'Optional, mit Premium: Um zu sehen, welche Videos angesehen werden, öffne „Angesehene Videos“ und schalte „Angesehene Videos aufzeichnen“ für die Erweiterung ein.',
+        '6': 'Optional, mit Premium: Um zu sehen, welche Videos angesehen werden, öffne „Videoverlauf“ und schalte „Videoverlauf aufzeichnen“ für die Erweiterung ein.',
       },
     },
     inviteParent: {
@@ -184,7 +184,7 @@ export const userGuide = {
         'Gib einem Gerät einen Namen, den alle erkennen, oder trenne eines, das dein Kind nicht mehr nutzt.',
       keywords:
         'koppeln aufheben, trennen, gerät löschen, altes handy, neues handy, verkauft, name ändern, zurücksetzen',
-      tip: 'Nur der Familieninhaber kann Geräte umbenennen oder entfernen. Das Entfernen lässt sich nicht rückgängig machen: Bildschirmzeit, Standort, Web- und Videoverlauf, Aktivitäten, App-Liste, SOS-Alarme, Check-ins, Anfragen und Belohnungsaufgaben des Geräts werden gelöscht. Um es wieder zu schützen, kopple es als neues Gerät.',
+      tip: 'Nur der Familieninhaber kann Geräte umbenennen oder entfernen. Das Entfernen lässt sich nicht rückgängig machen: Bildschirmzeit, Standort, Web- und Videoverlauf, Aktivitäten, App-Liste, SOS-Alarme, Check-ins, Anfragen und Bonusaufgaben des Geräts werden gelöscht. Um es wieder zu schützen, kopple es als neues Gerät.',
       steps: {
         '1': 'Um ein Gerät umzubenennen, öffne es über „Familie“ oder über dein Kind und wähle „Bearbeiten“ neben seinem Namen.',
         '2': 'Gib einen Namen ein, den alle Eltern auf einen Blick erkennen, und speichere ihn.',
@@ -208,7 +208,7 @@ export const userGuide = {
         '5': 'Standort: Wähle „Immer zulassen“, sonst wird die Karte nur aktualisiert, solange KidGate geöffnet ist. Ist der Webfilter eingeschaltet, verlangt der nächste Schritt das zugehörige VPN: Wähle „VPN aktivieren“ und bestätige die Anfrage von Android.',
         '6': 'Akku ohne Einschränkung: Wähle bei Aufforderung „Erlauben“. Erscheint keine Aufforderung: App-Info, dann Akku, dann Ohne Einschränkung.',
         '7': 'Wecker und Erinnerungen: Erlaube dies, damit Sperrzeiten pünktlich beginnen und enden. Als Nächstes Deinstallation verhindern: Wähle „Erlauben“ und dann auf dem Bestätigungsbildschirm von Android „Aktivieren“. Danach lässt sich KidGate nur entfernen, wenn man dies zuerst ausschaltet, und ein Elternteil wird benachrichtigt.',
-        '8': 'Nachrichtenwarnungen: Wähle „Benachrichtigungszugriff erlauben“ und schalte KidGate in der Liste ein, die sich öffnet; das spielt erst eine Rolle, sobald ein Elternteil die Nachrichtenwarnungen einschaltet. Dann Kamera (für Check-in- und SOS-Fotos) und Mikrofon (für den SOS-Ton): Erlaube sie bei Nutzung der App. Sobald der Assistent „Alles bereit“ zeigt, ist die Einrichtung abgeschlossen.',
+        '8': 'Chatwarnungen: Wähle „Benachrichtigungszugriff erlauben“ und schalte KidGate in der Liste ein, die sich öffnet; das spielt erst eine Rolle, sobald ein Elternteil die Chatwarnungen einschaltet. Dann Kamera (für Check-in- und SOS-Fotos) und Mikrofon (für den SOS-Ton): Erlaube sie bei Nutzung der App. Sobald der Assistent „Alles bereit“ zeigt, ist die Einrichtung abgeschlossen.',
       },
     },
     iosScreenTime: {
@@ -358,15 +358,15 @@ export const userGuide = {
       },
     },
     rewardTasks: {
-      title: 'Belohnungsaufgaben einrichten',
+      title: 'Bonusaufgaben einrichten',
       summary:
         'Erstelle kleine Aufgaben, mit denen sich dein Kind heute zusätzliche Minuten verdienen kann.',
-      tip: 'Bonusminuten zählen nur, wenn das Gerät ein Tageslimit hat. Die Minuten gehen an das Gerät, auf dem dein Kind die Aufgabe als erledigt markiert hat. Belohnungsaufgaben sind auf Android TV und in der Chrome-Erweiterung nicht verfügbar.',
+      tip: 'Bonusminuten zählen nur, wenn das Gerät ein Tageslimit hat. Die Minuten gehen an das Gerät, auf dem dein Kind die Aufgabe als erledigt markiert hat. Bonusaufgaben sind auf Android TV und in der Chrome-Erweiterung nicht verfügbar.',
       steps: {
-        '1': 'Öffne auf dem Elterngerät das Profil deines Kindes (oder das Gerät, falls es keinem Kind zugewiesen ist), dann Belohnungsaufgaben.',
+        '1': 'Öffne auf dem Elterngerät das Profil deines Kindes (oder das Gerät, falls es keinem Kind zugewiesen ist), dann Bonusaufgaben.',
         '2': 'Wähle „Neue Aufgabe“ (solange die Liste leer ist, kannst du auch mit einer Vorlage starten). Gib die Aufgabe ein, wähle die Belohnung in Minuten (5 bis 240), einen Schwierigkeitsgrad und die Wiederholung („Täglich“ oder „Einmalig“) und wähle dann „Aufgabe erstellen“.',
         '3': 'Auf dem Kindergerät erscheint die Aufgabe unter „Extra-Zeit verdienen“. Ist sie erledigt, wählt dein Kind „Geschafft“.',
-        '4': 'Du erhältst eine Mitteilung. Die Aufgabe erscheint unter „Genehmigung erforderlich“ (unter Familie und im Profil deines Kindes) und unter „Bereit zur Prüfung“ (auf dem Bildschirm Belohnungsaufgaben). Wähle „Genehmigen“, um die Minuten für heute gutzuschreiben, oder „Zurückgeben“, damit dein Kind es noch einmal versuchen kann.',
+        '4': 'Du erhältst eine Mitteilung. Die Aufgabe erscheint unter „Genehmigung erforderlich“ (unter Familie und im Profil deines Kindes) und unter „Bereit zur Prüfung“ (auf dem Bildschirm Bonusaufgaben). Wähle „Genehmigen“, um die Minuten für heute gutzuschreiben, oder „Zurückgeben“, damit dein Kind es noch einmal versuchen kann.',
         '5': 'Tippe auf eine Aufgabe, um sie zu bearbeiten oder zu löschen. Im Gratis-Tarif laufen bis zu 10 aktive Aufgaben gleichzeitig, mit Premium 20.',
         '6': 'Jede Aufgabe ist je nach Schwierigkeit 1 bis 3 Sterne wert, und Sterne zählen, sobald du die Aufgabe genehmigst. In einer Familie mit 2 oder mehr Kindern sieht jedes Kind die Sternetafel dieser Woche in KidGate auf seinem Gerät; sie beginnt jede Woche neu. Um sie auszublenden, öffnet der Familieninhaber „Familie“, dann die Familienkarte, und schaltet im Tab „Kinder“ die „Sternetafel“ aus.',
       },
@@ -500,15 +500,15 @@ export const userGuide = {
       },
     },
     videoHistory: {
-      title: 'Angesehene Videos prüfen',
+      title: 'Videoverlauf prüfen',
       summary:
         'Halte fest, welche YouTube-Videos dein Kind ansieht – mit Kanal und Uhrzeit.',
-      keywords: 'youtube, shorts, angesehene videos, wiedergabeverlauf',
-      tip: '„Angesehene Videos“ gehört zu Premium und erfasst nur YouTube. Die Funktion läuft auf Android-Handys und in der Chrome-Erweiterung, nicht auf iPhone oder iPad. Füge auf einem Mac oder PC die Chrome-Erweiterung hinzu. Ein Android TV erfasst Videos erst, wenn KidGate dort Zugriff auf Benachrichtigungen hat, was sich auf einem Fernseher bisher nicht erteilen lässt; selbst dann werden Shorts nicht aufgeführt.',
+      keywords: 'youtube, shorts, videoverlauf, angesehene videos, wiedergabeverlauf',
+      tip: '„Videoverlauf“ gehört zu Premium und erfasst nur YouTube. Die Funktion läuft auf Android-Handys und in der Chrome-Erweiterung, nicht auf iPhone oder iPad. Füge auf einem Mac oder PC die Chrome-Erweiterung hinzu. Ein Android TV erfasst Videos erst, wenn KidGate dort Zugriff auf Benachrichtigungen hat, was sich auf einem Fernseher bisher nicht erteilen lässt; selbst dann werden Shorts nicht aufgeführt.',
       steps: {
-        '1': 'Öffne auf dem Elterngerät das Profil deines Kindes (oder das Gerät, falls es keinem Kind zugewiesen ist), dann „Angesehene Videos“ im Bereich Sicherheitsüberwachung.',
-        '2': 'Schalte „Angesehene Videos aufzeichnen“ ein. Die Aufzeichnung bleibt aus, bis du sie einschaltest, und vom Profil deines Kindes aus gilt sie für alle seine Geräte.',
-        '3': 'Auf einem Android-Handy braucht KidGate außerdem Benachrichtigungszugriff: Öffne auf dem Kindergerät KidGate, dann Einstellungen, wähle „Mit Eltern-PIN entsperren“ und dann „Benachrichtigungszugriff erlauben“ im Bereich Nachrichtenwarnungen. Für Shorts sind zusätzlich Bedienungshilfen nötig.',
+        '1': 'Öffne auf dem Elterngerät das Profil deines Kindes (oder das Gerät, falls es keinem Kind zugewiesen ist), dann „Videoverlauf“ im Bereich Sicherheitsüberwachung.',
+        '2': 'Schalte „Videoverlauf aufzeichnen“ ein. Die Aufzeichnung bleibt aus, bis du sie einschaltest, und vom Profil deines Kindes aus gilt sie für alle seine Geräte.',
+        '3': 'Auf einem Android-Handy braucht KidGate außerdem Benachrichtigungszugriff: Öffne auf dem Kindergerät KidGate, dann Einstellungen, wähle „Mit Eltern-PIN entsperren“ und dann „Benachrichtigungszugriff erlauben“ im Bereich Chatwarnungen. Für Shorts sind zusätzlich Bedienungshilfen nötig.',
         '4': 'Die Videos erscheinen nach Tagen geordnet, mit Kanal und der Anzahl der Wiedergaben. Tippe auf ein Video, um es auf YouTube zu finden.',
         '5': 'Auf einem Mac oder PC zeigt der Bildschirm stattdessen, wie du die Chrome-Erweiterung hinzufügst. Die Erweiterung zeichnet Videos als eigenes Gerät auf.',
       },
@@ -527,16 +527,16 @@ export const userGuide = {
       },
     },
     messageAlerts: {
-      title: 'Nachrichtenwarnungen einschalten',
+      title: 'Chatwarnungen einschalten',
       summary:
         'Werde gewarnt, wenn ein bedenkliches Wort oder ein bedenklicher Ausdruck in Nachrichten oder Suchanfragen auf dem Android-Handy deines Kindes auftaucht. Du siehst das markierte Wort oder den markierten Ausdruck, nie die Nachricht.',
       keywords: 'sms, messenger, whatsapp, schlüsselwörter, mobbing, nachrichten lesen',
-      tip: 'Nachrichtenwarnungen gehören zu Premium. Nachrichten werden nur auf Android-Handys geprüft; Suchanfragen werden auch in der Chrome-Erweiterung geprüft. Dich erreichen nur die Kategorie und das markierte Wort oder der markierte Ausdruck. Die KI-Analyse bleibt aus, solange kein Elternteil sie für die Familie einschaltet.',
+      tip: 'Chatwarnungen gehören zu Premium. Nachrichten werden nur auf Android-Handys geprüft; Suchanfragen werden auch in der Chrome-Erweiterung geprüft. Dich erreichen nur die Kategorie und das markierte Wort oder der markierte Ausdruck. Die KI-Analyse bleibt aus, solange kein Elternteil sie für die Familie einschaltet.',
       steps: {
-        '1': 'Öffne auf dem Android-Handy deines Kindes KidGate, dann Einstellungen, wähle „Mit Eltern-PIN entsperren“ und dann „Benachrichtigungszugriff erlauben“ im Bereich Nachrichtenwarnungen, und schalte KidGate in der Liste ein, die sich öffnet.',
-        '2': 'Öffne auf deinem Gerät das Profil deines Kindes (oder das Gerät, falls es keinem Kind zugewiesen ist), dann Nachrichtenwarnungen im Bereich Benachrichtigungen, und tippe oben auf das Einstellungssymbol. Hat dein Kind mehrere Geräte, wähle zuerst das Android-Handy aus.',
+        '1': 'Öffne auf dem Android-Handy deines Kindes KidGate, dann Einstellungen, wähle „Mit Eltern-PIN entsperren“ und dann „Benachrichtigungszugriff erlauben“ im Bereich Chatwarnungen, und schalte KidGate in der Liste ein, die sich öffnet.',
+        '2': 'Öffne auf deinem Gerät das Profil deines Kindes (oder das Gerät, falls es keinem Kind zugewiesen ist), dann Chatwarnungen im Bereich Benachrichtigungen, und tippe oben auf das Einstellungssymbol. Hat dein Kind mehrere Geräte, wähle zuerst das Android-Handy aus.',
         '3': 'Schalte „Empfangene Nachrichten prüfen“ ein. „Auch Kraftausdrücke melden“ ist optional, und unter „Geprüfte Sprachen“ kannst du bis zu 3 Sprachen wählen.',
-        '4': 'Um auch zu prüfen, was dein Kind tippt und sucht: Sobald „Empfangene Nachrichten prüfen“ eingeschaltet ist, zeigt das Kindergerät im Bereich Nachrichtenwarnungen „Bevor du zustimmst“. Wähle dort „Zustimmen“ und schalte dann auf deinem Gerät „Getippte Nachrichten prüfen“ und „Suchanfragen prüfen“ ein.',
+        '4': 'Um auch zu prüfen, was dein Kind tippt und sucht: Sobald „Empfangene Nachrichten prüfen“ eingeschaltet ist, zeigt das Kindergerät im Bereich Chatwarnungen „Bevor du zustimmst“. Wähle dort „Zustimmen“ und schalte dann auf deinem Gerät „Getippte Nachrichten prüfen“ und „Suchanfragen prüfen“ ein.',
         '5': 'Warnungen erscheinen unter „Neueste Warnungen“ mit der Kategorie und dem markierten Wort oder dem markierten Ausdruck. Wähle „Was jetzt zu tun ist“, um Tipps zu bekommen, wie du das Thema ansprechen kannst.',
       },
     },
@@ -549,7 +549,7 @@ export const userGuide = {
         '1': 'Tippe in Familie auf + und wähle „Kind hinzufügen“. Gib einen Namen ein und speichere.',
         '2': 'Nachdem du ein neues Gerät gekoppelt hast, fragt KidGate den Familieninhaber, wer es nutzt. Wähle dein Kind oder „Niemand“ für ein geteiltes Gerät. Hast du ein Kind gewählt, bietet KidGate danach ein Starter-Set an Schutzfunktionen an: Wähle „Schutz einschalten“ oder „Nicht jetzt“.',
         '3': 'Ein Gerät, für das noch niemand ausgewählt wurde, erscheint in Familie unter „Nicht zugeordnet“. Wähle auf seiner Karte „Einem Kind zuweisen…“.',
-        '4': 'Sobald ein Gerät zugewiesen ist, werden Tageslimit, Sperrzeiten, Webfilter, Check-in, SOS, Ortsbenachrichtigungen und Belohnungsaufgaben im Profil deines Kindes festgelegt und gelten für alle seine Geräte. Das Tageslimit wird dann zu einer gemeinsamen Summe über diese Geräte.',
+        '4': 'Sobald ein Gerät zugewiesen ist, werden Tageslimit, Sperrzeiten, Webfilter, Check-in, SOS, Ortsbenachrichtigungen und Bonusaufgaben im Profil deines Kindes festgelegt und gelten für alle seine Geräte. Das Tageslimit wird dann zu einer gemeinsamen Summe über diese Geräte.',
         '5': 'Um ein Gerät zu verschieben, öffne das Profil des Kindes, das es bekommen soll, und wähle „Weiteres Gerät zuweisen…“. Um eine Zuordnung aufzuheben, wische im Profil deines Kindes über das Gerät und wähle „Zuordnung aufheben“. Wenn du das Profil eines Kindes entfernst, bleiben seine Geräte gekoppelt.',
       },
     },

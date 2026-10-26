@@ -4,7 +4,7 @@ export const deviceDetail = {
   notFoundTitle: 'Appareil',
   dangerTitle: 'Supprimer cet appareil',
   dangerDescription:
-    'Supprimez cet appareil de votre compte familial. Cela efface son historique de position, son historique d’utilisation, son historique web, les vidéos regardées, la liste des applis installées, les Demandes de temps, les demandes de sites, les Tâches à récompense, les Check-ins, les alertes SOS et l’activité.',
+    'Supprimez cet appareil de votre compte familial. Cela efface son historique de position, son historique d’utilisation, son historique web, les vidéos regardées, la liste des applis installées, les Demandes de temps, les demandes de sites, les Tâches bonus, les Check-ins, les alertes SOS et l’activité.',
   removeButton: 'Supprimer l’appareil',
   removingButton: 'Suppression…',
   showAllFeatures: 'Afficher toutes les fonctions',
@@ -38,7 +38,7 @@ export const deviceDetail = {
   placeAlerts: 'Lieux',
   reviewPlaceAlerts: 'Être averti à l’arrivée ou au départ',
   noPlacesYet: 'Aucun lieu',
-  tamperAlerts: 'Alertes de protection',
+  tamperAlerts: 'Alertes protection',
   reviewTamperAlerts: 'Voir quand la protection est désactivée',
   editDeviceName: 'Modifier le nom de l’appareil',
   editDeviceNameSubtitle:
@@ -80,7 +80,7 @@ export const deviceDetail = {
   removeOwnerOnly: 'Seul le propriétaire de la famille peut supprimer les appareils.',
   removeDeviceTitle: 'Supprimer l’appareil ?',
   removeDeviceMessage:
-    '{{deviceName}} sera déconnecté de votre compte. Cela efface son historique de position, son historique d’utilisation, son historique web, les vidéos regardées, la liste des applis installées, les Demandes de temps, les demandes de sites, les Tâches à récompense, les Check-ins, les alertes SOS et l’activité.',
+    '{{deviceName}} sera déconnecté de votre compte. Cela efface son historique de position, son historique d’utilisation, son historique web, les vidéos regardées, la liste des applis installées, les Demandes de temps, les demandes de sites, les Tâches bonus, les Check-ins, les alertes SOS et l’activité.',
   unableToRemoveDevice: 'Impossible de supprimer l’appareil. Veuillez réessayer.',
   checkInNotificationSent: '{{deviceName}} recevra une demande de Check-in.',
   checkInOfflineTitle: 'Cet appareil semble hors ligne',
@@ -120,7 +120,7 @@ export const deviceDetail = {
   featureIncludedInPremium: '{{actionTitle}} est inclus dans Premium.',
   featureOnRoadmap:
     '{{actionTitle}} sera bientôt disponible. La localisation, le filtre Web et les contrôles ci-dessus sont déjà disponibles.',
-  rewardTasks: 'Tâches à récompense',
+  rewardTasks: 'Tâches bonus',
   rewardTasksDescription: 'Des minutes en plus pour les tâches accomplies',
   rewardTasksUnit: 'tâches actives',
   rewardTasksUnit_one: 'tâche active',
@@ -142,7 +142,7 @@ export const deviceDetail = {
   webHistorySitesUnit_one: 'site',
   managedAtChild:
     'Les règles, récompenses, check-ins et alertes de sécurité de cet appareil se gèrent dans le profil de {{childName}}.',
-  pauseBrowsing: 'Mettre la navigation en pause',
+  pauseBrowsing: 'Pause Internet',
   pauseBrowsingDescription:
     'Suspend la navigation un moment. Les appels et les applis hors ligne continuent de fonctionner.',
   pauseBrowsingDesktopNote:

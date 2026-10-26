@@ -1,5 +1,5 @@
 export const tamperAlerts = {
-  title: 'Alertes de protection',
+  title: 'Alertes protection',
   fallbackDeviceName: 'Appareil de l’enfant',
   statusOn: 'Surveillance active',
   emptyTitle: 'Aucun changement d’autorisation pour le moment',

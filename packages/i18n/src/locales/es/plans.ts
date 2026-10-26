@@ -67,7 +67,7 @@ export const plans = {
   compareActivityFeedPremium: '30 días',
   compareChildReport: 'Informes por hijo',
   compareIncluded:
-    'Ambos planes incluyen el Límite diario, las Horas bloqueadas, los Límites de apps, el Bloqueo de dispositivo, SOS, las Solicitudes de tiempo, las Tareas con recompensa y el panel web.',
+    'Ambos planes incluyen el Límite diario, las Horas bloqueadas, los Límites de apps, el Bloqueo de dispositivo, SOS, las Solicitudes de tiempo, las Tareas premiadas y el panel web.',
   sectionWhyPremium: 'Qué añade Premium',
   sectionWhyPremiumSubtitle:
     'Todas las reglas siguen funcionando en Gratis. Premium añade lo que puedes ver, y cuándo.',
@@ -158,7 +158,7 @@ export const plans = {
     'El Límite diario, las Horas bloqueadas, las Apps bloqueadas, la ubicación y el interruptor del Filtro web siguen funcionando. Las actualizaciones en vivo, el historial, las alertas y los informes quedan en pausa hasta que el propietario de la familia renueve Premium.',
   pricesUnavailable: 'No se pudieron cargar los precios de la tienda.',
   pricesRetry: 'Intentar de nuevo',
-  featureRewardTasks: 'Tareas con recompensa',
+  featureRewardTasks: 'Tareas premiadas',
   sectionChoosePlan: 'Elige tu plan',
   saveBadge: 'Ahorra un {{percent}} %',
   billedMonthly: 'Facturación mensual',

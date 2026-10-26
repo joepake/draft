@@ -52,8 +52,8 @@ export const plans = {
   compareWebPremium: 'Quels sites, avec leur nom',
   compareNewApps: 'Applications récemment installées',
   compareNewAppsPremium: 'Quelles applications, avec leur nom',
-  compareMessages: 'Alertes de messages (Android)',
-  compareSafety: 'Alertes de protection et Check-in',
+  compareMessages: 'Alertes messages (Android)',
+  compareSafety: 'Alertes protection et Check-in',
   compareSafetyFree: 'Alertes + Check-In',
   compareSafetyPremium: 'Ajoute une photo à chaque Check-In',
   compareControls: 'Applications bloquées et Filtre web',
@@ -67,7 +67,7 @@ export const plans = {
   compareActivityFeedPremium: '30 jours',
   compareChildReport: 'Rapports par enfant',
   compareIncluded:
-    'Les deux offres incluent la Limite quotidienne, les Heures bloquées, les Limites d’apps, le Verrouillage de l’appareil, le SOS, les Demandes de temps, les Tâches à récompense et le tableau de bord web.',
+    'Les deux offres incluent la Limite quotidienne, les Heures bloquées, les Limites d’apps, le Verrouillage de l’appareil, le SOS, les Demandes de temps, les Tâches bonus et le tableau de bord web.',
   sectionWhyPremium: 'Ce que Premium ajoute',
   sectionWhyPremiumSubtitle:
     'Toutes les règles continuent de fonctionner en Gratuit. Premium ajoute ce que vous voyez, et à quel moment.',
@@ -159,7 +159,7 @@ export const plans = {
     'La Limite quotidienne, les Heures bloquées, les Applications bloquées, la position et l’interrupteur du Filtre web fonctionnent toujours. Les mises à jour en direct, l’historique, les alertes et les rapports sont en pause jusqu’à ce que le propriétaire de la famille renouvelle Premium.',
   pricesUnavailable: 'Impossible de charger les prix depuis la boutique.',
   pricesRetry: 'Réessayer',
-  featureRewardTasks: 'Tâches à récompense',
+  featureRewardTasks: 'Tâches bonus',
   sectionChoosePlan: 'Choisissez votre formule',
   saveBadge: 'Économisez {{percent}} %',
   billedMonthly: 'Facturation mensuelle',
@@ -188,11 +188,11 @@ export const plans = {
   platformMac: 'Mac',
   platformMacDetail: 'Appareil enfant uniquement · macOS 12 et versions ultérieures',
   platformIosLimits:
-    'Pas de Limites d’apps ni d’alertes de messages, et les apps à bloquer dans Applications bloquées se choisissent sur l’iPhone lui-même.',
-  platformMacLimits: 'Pas d’alertes de messages, et la position est approximative.',
-  platformWindowsLimits: 'Pas d’alertes de messages, et la position est approximative.',
+    'Pas de Limites d’apps ni d’alertes messages, et les apps à bloquer dans Applications bloquées se choisissent sur l’iPhone lui-même.',
+  platformMacLimits: 'Pas d’alertes messages, et la position est approximative.',
+  platformWindowsLimits: 'Pas d’alertes messages, et la position est approximative.',
   platformAndroidTvLimits:
-    'Pas d’alertes de messages, de position, de SOS ni de Demandes de temps. Les Applications bloquées fonctionnent au mieux.',
+    'Pas d’alertes messages, de position, de SOS ni de Demandes de temps. Les Applications bloquées fonctionnent au mieux.',
   platformChromebookLimits:
     'Filtre web uniquement — pas de Limite quotidienne, d’Heures bloquées, d’Applications bloquées, de Verrouillage de l’appareil, de SOS ni de position.',
   platformComingSoon: 'Bientôt',

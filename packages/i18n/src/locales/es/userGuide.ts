@@ -27,7 +27,7 @@ export const userGuide = {
     controls: {
       title: 'Controles diarios',
       description:
-        'Límite diario, Horas bloqueadas, Apps bloqueadas, Límites de apps, Bloqueo de dispositivo, Solicitudes de tiempo y Tareas con recompensa',
+        'Límite diario, Horas bloqueadas, Apps bloqueadas, Límites de apps, Bloqueo de dispositivo, Solicitudes de tiempo y Tareas premiadas',
     },
     safety: {
       title: 'Seguridad y supervisión',
@@ -184,7 +184,7 @@ export const userGuide = {
         'Pon a un dispositivo un nombre que todos reconozcan, o desconecta uno que tu hijo ya no use.',
       keywords:
         'desvincular, desconectar, borrar dispositivo, móvil viejo, móvil nuevo, vendido, cambiar nombre, restablecer',
-      tip: 'Solo el propietario de la familia puede cambiar el nombre de los dispositivos o eliminarlos. Eliminar no se puede deshacer: se borran el tiempo de pantalla, la ubicación, el historial web y de vídeos, la actividad, la lista de apps, las alertas de SOS, los Check-in, las solicitudes y las tareas con recompensa del dispositivo. Para protegerlo de nuevo, vincúlalo como un dispositivo nuevo.',
+      tip: 'Solo el propietario de la familia puede cambiar el nombre de los dispositivos o eliminarlos. Eliminar no se puede deshacer: se borran el tiempo de pantalla, la ubicación, el historial web y de vídeos, la actividad, la lista de apps, las alertas de SOS, los Check-in, las solicitudes y las tareas premiadas del dispositivo. Para protegerlo de nuevo, vincúlalo como un dispositivo nuevo.',
       steps: {
         '1': 'Para cambiar el nombre de un dispositivo, ábrelo desde «Familia» o desde el perfil de tu hijo y selecciona «Editar» junto a su nombre.',
         '2': 'Escribe un nombre que todos los padres reconozcan de un vistazo y guárdalo.',
@@ -333,16 +333,16 @@ export const userGuide = {
       },
     },
     pauseBrowsing: {
-      title: 'Pausar la navegación un rato',
+      title: 'Pausar la web un rato',
       summary:
         'Bloquea la web en un dispositivo entre 5 minutos y 8 horas. Las llamadas y las apps sin conexión siguen funcionando.',
       keywords: 'apagar internet, pausar wifi, sin red, sin conexión, pausa',
       tip: 'En la extensión de Chrome, la pausa solo afecta a Chrome. Para un descanso que se repita cada día, usa las Horas bloqueadas.',
       steps: {
-        '1': 'En el dispositivo del padre, abre el perfil del niño (o el dispositivo, si no está asignado a ningún niño), luego «Pausar la navegación» en la sección Supervisión de seguridad.',
+        '1': 'En el dispositivo del padre, abre el perfil del niño (o el dispositivo, si no está asignado a ningún niño), luego «Pausar la web» en la sección Supervisión de seguridad.',
         '2': 'Elige una duración con el selector o con un valor rápido (30, 60 o 120 minutos) y confirma.',
         '3': 'La web queda bloqueada en ese dispositivo hasta que se acabe el tiempo. Los ajustes del Filtro web no cambian, y la pausa funciona aunque el Filtro web esté desactivado. En un ordenador, los navegadores se cierran hasta que termina la pausa.',
-        '4': 'Para terminarla antes, abre el dispositivo, toca la tarjeta «Pausar la navegación» y selecciona «Reanudar». Los minutos restantes no se guardan.',
+        '4': 'Para terminarla antes, abre el dispositivo, toca la tarjeta «Pausar la web» y selecciona «Reanudar». Los minutos restantes no se guardan.',
         '5': 'Desde el perfil del niño, la pausa se aplica a un solo dispositivo. Si tu hijo usa varios, pausa cada uno desde la pantalla de ese dispositivo.',
       },
     },
@@ -360,15 +360,15 @@ export const userGuide = {
       },
     },
     rewardTasks: {
-      title: 'Configura las Tareas con recompensa',
+      title: 'Configura las Tareas premiadas',
       summary:
         'Crea pequeñas tareas que tu hijo pueda completar para ganar minutos extra hoy.',
-      tip: 'Los minutos extra solo cuentan si el dispositivo tiene un Límite diario. Los minutos van al dispositivo con el que tu hijo marcó la tarea como hecha. Las Tareas con recompensa no están disponibles en Android TV ni en la extensión de Chrome.',
+      tip: 'Los minutos extra solo cuentan si el dispositivo tiene un Límite diario. Los minutos van al dispositivo con el que tu hijo marcó la tarea como hecha. Las Tareas premiadas no están disponibles en Android TV ni en la extensión de Chrome.',
       steps: {
-        '1': 'En el dispositivo del padre, abre el perfil del niño (o el dispositivo, si no está asignado a ningún niño), luego Tareas con recompensa.',
+        '1': 'En el dispositivo del padre, abre el perfil del niño (o el dispositivo, si no está asignado a ningún niño), luego Tareas premiadas.',
         '2': 'Selecciona «Nueva tarea» (mientras la lista está vacía, también puedes empezar con una plantilla). Escribe la tarea y elige la recompensa en minutos (de 5 a 240), la dificultad y si se repite «Cada día» o «Una vez»; luego selecciona «Crear tarea».',
         '3': 'En el dispositivo del niño, la tarea aparece en «Gana tiempo extra». Cuando la termine, tu hijo selecciona «Ya lo hice».',
-        '4': 'Recibes una notificación. La tarea aparece en «Requiere aprobación» (en Familia y en el perfil del niño) y en «Listas para revisar» (en la pantalla Tareas con recompensa). Selecciona «Aprobar» para sumar los minutos a hoy, o «Devolver» para que tu hijo lo intente de nuevo.',
+        '4': 'Recibes una notificación. La tarea aparece en «Requiere aprobación» (en Familia y en el perfil del niño) y en «Listas para revisar» (en la pantalla Tareas premiadas). Selecciona «Aprobar» para sumar los minutos a hoy, o «Devolver» para que tu hijo lo intente de nuevo.',
         '5': 'Toca una tarea para editarla o eliminarla. El plan gratuito permite hasta 10 tareas activas a la vez; Premium permite 20.',
         '6': 'Cada tarea vale de 1 a 3 estrellas según su dificultad, y las estrellas cuentan cuando apruebas la tarea. En una familia con 2 o más hijos, cada hijo ve la Tabla de estrellas de esta semana en KidGate en su dispositivo; empieza de nuevo cada semana. Para ocultarla, el propietario de la familia abre «Familia», luego la tarjeta de la familia, y desactiva la «Tabla de estrellas» en la pestaña «Hijos».',
       },
@@ -551,7 +551,7 @@ export const userGuide = {
         '1': 'En Familia, pulsa + y selecciona «Añadir un hijo». Escribe un nombre y guarda.',
         '2': 'Después de vincular un dispositivo nuevo, KidGate pregunta al propietario de la familia quién lo usa. Elige a tu hijo, o «Nadie» si es un dispositivo compartido. Si elegiste a un hijo, KidGate ofrece un conjunto inicial de protecciones: selecciona «Activar protección» o «Ahora no».',
         '3': 'Un dispositivo para el que no se ha elegido a nadie aparece en «Sin asignar», en Familia. Selecciona «Asignar a un niño…» en su tarjeta.',
-        '4': 'Cuando un dispositivo está asignado, el Límite diario, las Horas bloqueadas, el Filtro web, el Check-in, SOS, las Alertas de lugares y las Tareas con recompensa se configuran en el perfil del niño y se aplican a todos sus dispositivos. El Límite diario pasa a ser un total compartido entre esos dispositivos.',
+        '4': 'Cuando un dispositivo está asignado, el Límite diario, las Horas bloqueadas, el Filtro web, el Check-in, SOS, las Alertas de lugares y las Tareas premiadas se configuran en el perfil del niño y se aplican a todos sus dispositivos. El Límite diario pasa a ser un total compartido entre esos dispositivos.',
         '5': 'Para mover un dispositivo, abre el perfil del niño que debe tenerlo y selecciona «Asignar otro dispositivo…». Para quitarlo de un niño, deslízalo en su perfil y selecciona «Quitar». Si eliminas el perfil de un niño, sus dispositivos siguen vinculados.',
       },
     },

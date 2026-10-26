@@ -7,7 +7,7 @@ export const child = {
   setupCollapsedOptionalCount_one: '{{count}} passo opcional',
   oneMoment: 'Um momento, por favor…',
   paused: 'Bloqueado',
-  blockedHours: 'Horários bloqueados',
+  blockedHours: 'Horas bloqueadas',
   limitReached: 'Limite atingido',
   active: 'Ativo',
   parentPausedThisDevice: 'Seus pais bloquearam este dispositivo por enquanto.',
@@ -15,11 +15,10 @@ export const child = {
   browsingPausedHint:
     'Os navegadores ficam fechados até lá. Se parecer um erro, fale com seus pais.',
   blockedHoursOnPaused:
-    'Os Horários bloqueados estão ativos agora. É uma boa hora para descansar.',
+    'As Horas bloqueadas estão ativas agora. É uma boa hora para descansar.',
   outOfScreenTimeAskParent:
     'Você usou todo o tempo de tela de hoje. Pode pedir mais aqui embaixo.',
   screenTimeToday: 'Tempo de tela hoje',
-  timeLeftToday: 'Restam {{time}} hoje',
   usedOverLimitMinutes: '{{used}} / {{limit}}',
   usedMinutesOnly: '{{used}}',
   outOfScreenTimeToday:
@@ -29,13 +28,13 @@ export const child = {
   phonePausedByParent: 'Seus pais bloquearam este dispositivo por enquanto.',
   pausedAskParentOrSos:
     'Peça aos seus pais para desbloquear quando você precisar. Em uma emergência, você ainda pode enviar um SOS.',
-  blockedHoursLockTitle: 'Horários bloqueados',
+  blockedHoursLockTitle: 'Horas bloqueadas',
   blockedHoursLockBody:
-    'Os Horários bloqueados estão ativos agora. É uma boa hora para descansar.',
+    'As Horas bloqueadas estão ativas agora. É uma boa hora para descansar.',
   blockedHoursLockHint:
-    'Se precisar deste dispositivo agora, peça aos seus pais para mudar os Horários bloqueados. Em uma emergência, você ainda pode enviar um SOS.',
+    'Se precisar deste dispositivo agora, peça aos seus pais para mudar as Horas bloqueadas. Em uma emergência, você ainda pode enviar um SOS.',
   blockedHoursLockBodyUntil:
-    'Os Horários bloqueados estão ativos até {{time}}. É uma boa hora para descansar.',
+    'As Horas bloqueadas estão ativas até {{time}}. É uma boa hora para descansar.',
   dailyLimitLockBody: 'Você usou todo o tempo de tela de hoje.',
   dailyLimitLockHint:
     'Se precisar de mais tempo, peça aos seus pais. Em uma emergência, você ainda pode enviar um SOS.',

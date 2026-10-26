@@ -12,7 +12,7 @@ export const notifications = {
   sectionSummary: 'Zusammenfassung',
   sectionQuietHours: 'Ruhezeiten',
   sectionQuietHoursHint:
-    'In diesem Zeitraum kommen nur SOS und die schwerwiegendsten Nachrichtenwarnungen durch. Danach wird nichts nachgeschickt; Ereignisse erscheinen weiterhin in den Aktivitäten.',
+    'In diesem Zeitraum kommen nur SOS und die schwerwiegendsten Chatwarnungen durch. Danach wird nichts nachgeschickt; Ereignisse erscheinen weiterhin in den Aktivitäten.',
   quietHoursLabel: 'Ruhezeiten',
   quietHoursOff: 'Aus – Hinweise kommen jederzeit',
   quietHoursActive: 'Keine Hinweise von {{start}} bis {{end}}',
@@ -51,8 +51,8 @@ export const notifications = {
       hint: 'Dein Kind antwortet auf einen Sicherheits-Check-in.',
     },
     rewardTasks: {
-      label: 'Belohnungsaufgaben',
-      hint: 'Dein Kind meldet eine Belohnungsaufgabe als erledigt.',
+      label: 'Bonusaufgaben',
+      hint: 'Dein Kind meldet eine Bonusaufgabe als erledigt.',
     },
     appActivity: {
       label: 'Apps installiert oder entfernt',
@@ -67,7 +67,7 @@ export const notifications = {
       hint: 'Montägliche Übersicht über Bildschirmzeit und Sperren.',
     },
     messageAlerts: {
-      label: 'Nachrichtenwarnungen',
+      label: 'Chatwarnungen',
       hint: 'Bedenkliche Wörter tauchen in den Nachrichten oder Suchanfragen deines Kindes auf.',
     },
     billing: {

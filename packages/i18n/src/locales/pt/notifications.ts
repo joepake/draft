@@ -51,7 +51,7 @@ export const notifications = {
       hint: 'Seu filho responde a um check-in de segurança.',
     },
     rewardTasks: {
-      label: 'Tarefas com recompensa',
+      label: 'Tarefas bônus',
       hint: 'Seu filho marca uma tarefa de recompensa como concluída.',
     },
     appActivity: {

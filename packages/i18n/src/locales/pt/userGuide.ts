@@ -27,7 +27,7 @@ export const userGuide = {
     controls: {
       title: 'Controles diários',
       description:
-        'Limite diário, Horários bloqueados, Apps bloqueados, Limites de apps, Bloqueio do dispositivo, Solicitações de tempo e Tarefas com recompensa',
+        'Limite diário, Horas bloqueadas, Apps bloqueados, Limites de apps, Bloqueio do dispositivo, Solicitações de tempo e Tarefas bônus',
     },
     safety: {
       title: 'Segurança e monitoramento',
@@ -57,7 +57,7 @@ export const userGuide = {
         '4': 'Se você é o dono da família, defina um PIN dos pais (6 dígitos) em Ajustes, depois Segurança. Memorize-o ou guarde-o em local seguro e não o compartilhe com as crianças.',
         '5': 'Recomendado: ative o Bloqueio do app e o desbloqueio biométrico em Ajustes para que outras pessoas não abram o app dos pais no seu dispositivo.',
         '6': 'Abra Família e toque no ícone de escanear (Escanear código). A câmera abre imediatamente: escaneie o código QR mostrado no dispositivo da criança ou selecione Digitar código manualmente e digite o código.',
-        '7': 'Depois que o dispositivo da criança se conectar, o KidGate pergunta quem o usa: escolha seu filho (ou adicione um) ou “Ninguém” para um dispositivo compartilhado. Em seguida, abra o perfil da criança em Família (ou o dispositivo, se não estiver atribuído a nenhuma criança). Defina o Limite diário e os Horários bloqueados e conclua as permissões junto com seu filho.',
+        '7': 'Depois que o dispositivo da criança se conectar, o KidGate pergunta quem o usa: escolha seu filho (ou adicione um) ou “Ninguém” para um dispositivo compartilhado. Em seguida, abra o perfil da criança em Família (ou o dispositivo, se não estiver atribuído a nenhuma criança). Defina o Limite diário e as Horas bloqueadas e conclua as permissões junto com seu filho.',
       },
     },
     getStartedChild: {
@@ -141,7 +141,7 @@ export const userGuide = {
       summary:
         'Adicione o filtro da web do KidGate ao Chrome em um Chromebook, Mac ou PC. Ela aparece como um dispositivo próprio.',
       keywords: 'chromebook, extensão do chrome, extensão do navegador',
-      tip: 'A extensão filtra apenas o Chrome: não filtra outros navegadores nem janelas anônimas, a menos que você permita. Em chrome://extensions, abra os Detalhes do KidGate e ative Permitir no modo anônimo. Ela não tem Limite diário, Horários bloqueados, Bloqueio do dispositivo, Apps bloqueados nem tempo de tela; isso exige um celular, um computador ou uma TV.',
+      tip: 'A extensão filtra apenas o Chrome: não filtra outros navegadores nem janelas anônimas, a menos que você permita. Em chrome://extensions, abra os Detalhes do KidGate e ative Permitir no modo anônimo. Ela não tem Limite diário, Horas bloqueadas, Bloqueio do dispositivo, Apps bloqueados nem tempo de tela; isso exige um celular, um computador ou uma TV.',
       steps: {
         '1': 'No Chrome do computador do seu filho, abra a Chrome Web Store, pesquise KidGate e selecione Usar no Chrome.',
         '2': 'Selecione o ícone do KidGate na barra de ferramentas do Chrome. Se não o encontrar, fixe-o pelo menu Extensões (ícone de quebra-cabeça). O pop-up mostra um código QR e um código de 6 caracteres; mantenha-o aberto durante o pareamento.',
@@ -183,7 +183,7 @@ export const userGuide = {
         'Dê a um dispositivo um nome que todos reconheçam, ou desconecte um que seu filho não usa mais.',
       keywords:
         'desvincular, desconectar, apagar dispositivo, celular antigo, celular novo, vendido, mudar nome, redefinir',
-      tip: 'Somente o dono da família pode renomear ou remover dispositivos. A remoção não pode ser desfeita: o tempo de tela, a localização, o histórico da web e de vídeos, a atividade, a lista de apps, os alertas de SOS, os Check-ins, os pedidos e as tarefas com recompensa do dispositivo são apagados. Para protegê-lo de novo, conecte-o como um dispositivo novo.',
+      tip: 'Somente o dono da família pode renomear ou remover dispositivos. A remoção não pode ser desfeita: o tempo de tela, a localização, o histórico da web e de vídeos, a atividade, a lista de apps, os alertas de SOS, os Check-ins, os pedidos e as tarefas bônus do dispositivo são apagados. Para protegê-lo de novo, conecte-o como um dispositivo novo.',
       steps: {
         '1': 'Para renomear um dispositivo, abra-o em Família ou no perfil do seu filho e selecione Editar ao lado do nome.',
         '2': 'Digite um nome que todos os responsáveis reconheçam de relance e salve.',
@@ -198,7 +198,7 @@ export const userGuide = {
         'Ative o Acesso de uso, Exibir sobre outros apps, Acessibilidade, bateria e permissões relacionadas.',
       keywords:
         'acessibilidade, acesso de uso, sobrepor a outros apps, notificações, administrador do dispositivo, proteção contra desinstalação, microfone, vpn, permitir',
-      tip: 'O importante é concluir tudo, não a ordem. Faça todas as etapas que o assistente oferece, inclusive as opcionais, antes de confiar no bloqueio ou nos Horários bloqueados. Uma etapa que você pular continua na tela Status até ser concluída.',
+      tip: 'O importante é concluir tudo, não a ordem. Faça todas as etapas que o assistente oferece, inclusive as opcionais, antes de confiar no bloqueio ou nas Horas bloqueadas. Uma etapa que você pular continua na tela Status até ser concluída.',
       steps: {
         '1': 'Abra o KidGate no dispositivo da criança e vá em “Status”. No cartão “Termine a configuração com um responsável”, selecione “Continuar configuração” (quando os passos indispensáveis estiverem concluídos, o cartão mostra “A proteção principal está ativada”, com “Reforçar agora”). “Configurar proteção” então percorre as permissões uma de cada vez, na ordem abaixo.',
         '2': '“Acesso de uso”: abra a tela do sistema, encontre o KidGate e ative a opção. Isso é necessário para o acompanhamento do tempo de tela e dos limites.',
@@ -206,7 +206,7 @@ export const userGuide = {
         '4': '“Exibir sobre outros apps”: permita para o KidGate, para que a tela de bloqueio apareça sobre outros apps. Depois, “Notificações”: selecione “Permitir”. O KidGate precisa das notificações deste dispositivo para aprovações de tempo e lembretes.',
         '5': '“Localização”: escolha “Permitir o tempo todo”; do contrário, o mapa só é atualizado enquanto o KidGate está aberto. Se o Filtro da web estiver ativado, o próximo passo pede a VPN dele: selecione “Ativar VPN” e aprove o pedido do Android.',
         '6': 'Bateria sem restrições: selecione Permitir quando solicitado. Se nenhuma solicitação aparecer: Informações do app, depois Bateria, depois Sem restrições.',
-        '7': '“Alarmes e lembretes”: permita para que os Horários bloqueados comecem e terminem no horário certo. Depois, “Impedir desinstalação”: selecione “Permitir” e, na tela de confirmação do Android, toque em Ativar. Para remover o KidGate será preciso desativar isso primeiro, e os pais são avisados.',
+        '7': '“Alarmes e lembretes”: permita para que as Horas bloqueadas comecem e terminem no horário certo. Depois, “Impedir desinstalação”: selecione “Permitir” e, na tela de confirmação do Android, toque em Ativar. Para remover o KidGate será preciso desativar isso primeiro, e os pais são avisados.',
         '8': '“Alertas de mensagens”: selecione “Permitir acesso às notificações” e ative o KidGate na lista que abrir; isso só importa quando um dos pais ativa os Alertas de mensagens. Depois, “Câmera” (para Check-in e fotos de SOS) e o microfone (para o som do SOS): permita durante o uso do app. Quando o assistente mostrar “Tudo pronto”, a configuração está concluída.',
       },
     },
@@ -257,18 +257,18 @@ export const userGuide = {
       },
     },
     blockedHours: {
-      title: 'Definir Horários bloqueados',
+      title: 'Definir Horas bloqueadas',
       summary:
         'Agende os intervalos de horário em que o dispositivo deve permanecer bloqueado.',
       keywords: 'hora de dormir, noite, horário escolar, agenda, pausa',
       tip: 'Defina primeiro os horários escolares e de dormir. Evite intervalos sobrepostos para manter a agenda clara.',
       steps: {
-        '1': 'No dispositivo dos pais, abra o perfil da criança (ou o dispositivo, se não estiver atribuído a nenhuma criança), depois Horários bloqueados.',
-        '2': 'Ative a chave “Ativar Horários bloqueados”. Enquanto ela estiver desligada, a tela não mostra nenhuma faixa de horário nem como adicionar uma.',
+        '1': 'No dispositivo dos pais, abra o perfil da criança (ou o dispositivo, se não estiver atribuído a nenhuma criança), depois Horas bloqueadas.',
+        '2': 'Ative a chave “Ativar Horas bloqueadas”. Enquanto ela estiver desligada, a tela não mostra nenhuma faixa de horário nem como adicionar uma.',
         '3': 'Uma nova agenda começa com uma faixa, das 22:00 às 07:00. Toque em uma faixa para definir os horários dela no círculo e os dias em que se repete. Para outra faixa, selecione “Adicionar faixa” ou uma das opções de “Adição rápida”.',
         '4': 'Cada alteração é salva assim que você a faz. Para remover uma faixa, deslize-a para a esquerda, ou abra-a e selecione “Remover”.',
         '5': 'Em um dispositivo Android da criança, confirme que “Alarmes e lembretes” continua permitido para que as faixas comecem e terminem no horário certo. Em um iPhone ou iPad, confirme que “Tempo de Uso” continua permitido.',
-        '6': 'Durante uma faixa ativa, o cartão de Horários bloqueados mostra Horário bloqueado ativo · dispositivo bloqueado. “Desbloquear” não encerra uma faixa: para encerrar uma mais cedo, desative “Ativar Horários bloqueados” ou mude os horários dela.',
+        '6': 'Durante uma faixa ativa, o cartão de Horas bloqueadas mostra Horas bloqueadas ativas · dispositivo bloqueado. “Desbloquear” não encerra uma faixa: para encerrar uma mais cedo, desative “Ativar Horas bloqueadas” ou mude os horários dela.',
       },
     },
     blockedApps: {
@@ -331,16 +331,16 @@ export const userGuide = {
       },
     },
     pauseBrowsing: {
-      title: 'Pausar a navegação por um tempo',
+      title: 'Pausar a web por um tempo',
       summary:
         'Bloqueie a web em um dispositivo por 5 minutos a 8 horas. Chamadas e apps offline continuam funcionando.',
       keywords: 'desligar internet, pausar wifi, sem rede, offline, pausa',
-      tip: 'Na extensão do Chrome, a pausa vale apenas para o Chrome. Para uma pausa que se repete todos os dias, use os Horários bloqueados.',
+      tip: 'Na extensão do Chrome, a pausa vale apenas para o Chrome. Para uma pausa que se repete todos os dias, use as Horas bloqueadas.',
       steps: {
-        '1': 'No dispositivo dos pais, abra o perfil da criança (ou o dispositivo, se não estiver atribuído a nenhuma criança), depois Pausar a navegação na seção Monitoramento de segurança.',
+        '1': 'No dispositivo dos pais, abra o perfil da criança (ou o dispositivo, se não estiver atribuído a nenhuma criança), depois Pausar a web na seção Monitoramento de segurança.',
         '2': 'Escolha a duração com o seletor ou um atalho rápido (30, 60 ou 120 minutos) e confirme.',
         '3': 'A web fica bloqueada nesse dispositivo até o tempo acabar. As configurações do Filtro da web não mudam, e a pausa funciona mesmo com o Filtro da web desativado. Em um computador, os navegadores são fechados até a pausa terminar.',
-        '4': 'Para encerrar antes, abra o dispositivo, toque no cartão Pausar a navegação e selecione Retomar. Os minutos restantes não são mantidos.',
+        '4': 'Para encerrar antes, abra o dispositivo, toque no cartão Pausar a web e selecione Retomar. Os minutos restantes não são mantidos.',
         '5': 'Pelo perfil da criança, a pausa vale para um único dispositivo. Se seu filho usa vários, pause cada um na tela do próprio dispositivo.',
       },
     },
@@ -348,7 +348,7 @@ export const userGuide = {
       title: 'Responder às Solicitações de tempo',
       summary:
         'Seu filho pode pedir minutos extras quando o Limite diário estiver acabando, e você aprova ou recusa pelo seu dispositivo.',
-      tip: 'As solicitações só aparecem quando o dispositivo tem um Limite diário. Os minutos aprovados valem para hoje, no dispositivo que pediu, e não suspendem um bloqueio feito por você nem os Horários bloqueados. A Android TV e a extensão do Chrome não podem enviar solicitações.',
+      tip: 'As solicitações só aparecem quando o dispositivo tem um Limite diário. Os minutos aprovados valem para hoje, no dispositivo que pediu, e não suspendem um bloqueio feito por você nem as Horas bloqueadas. A Android TV e a extensão do Chrome não podem enviar solicitações.',
       steps: {
         '1': 'No dispositivo da criança, seu filho seleciona Pedir mais tempo na tela inicial do KidGate (no Android, também na tela de bloqueio quando o limite é atingido), escolhe os minutos, adiciona um motivo se quiser e envia.',
         '2': 'Você recebe uma notificação. Abra o KidGate: a solicitação aguarda no cartão Precisa de aprovação em Família, no perfil da criança e no dispositivo.',
@@ -358,15 +358,15 @@ export const userGuide = {
       },
     },
     rewardTasks: {
-      title: 'Configurar Tarefas com recompensa',
+      title: 'Configurar Tarefas bônus',
       summary:
         'Crie pequenas tarefas que seu filho pode concluir para ganhar minutos extras hoje.',
-      tip: 'Os minutos extras só contam quando o dispositivo tem um Limite diário. Eles vão para o dispositivo que seu filho usou para marcar a tarefa como feita. Tarefas com recompensa não estão disponíveis na Android TV nem na extensão do Chrome.',
+      tip: 'Os minutos extras só contam quando o dispositivo tem um Limite diário. Eles vão para o dispositivo que seu filho usou para marcar a tarefa como feita. Tarefas bônus não estão disponíveis na Android TV nem na extensão do Chrome.',
       steps: {
-        '1': 'No dispositivo dos pais, abra o perfil da criança (ou o dispositivo, se não estiver atribuído a nenhuma criança), depois Tarefas com recompensa.',
+        '1': 'No dispositivo dos pais, abra o perfil da criança (ou o dispositivo, se não estiver atribuído a nenhuma criança), depois Tarefas bônus.',
         '2': 'Selecione “Nova tarefa” (enquanto a lista estiver vazia, você também pode começar com um modelo). Digite a tarefa, escolha a recompensa em minutos (de 5 a 240), a dificuldade e se ela se repete “Todos os dias” ou “Uma vez”; depois selecione “Criar tarefa”.',
         '3': 'No dispositivo da criança, a tarefa aparece em Ganhe tempo extra. Quando terminar, seu filho seleciona Já fiz.',
-        '4': 'Você recebe uma notificação. A tarefa aparece em Precisa de aprovação (em Família e no perfil da criança) e em Prontas para revisar (na tela Tarefas com recompensa). Selecione Aprovar para somar os minutos ao dia de hoje, ou Devolver para que seu filho tente de novo.',
+        '4': 'Você recebe uma notificação. A tarefa aparece em Precisa de aprovação (em Família e no perfil da criança) e em Prontas para revisar (na tela Tarefas bônus). Selecione Aprovar para somar os minutos ao dia de hoje, ou Devolver para que seu filho tente de novo.',
         '5': 'Toque em uma tarefa para editá-la ou excluí-la. O plano gratuito permite até 10 tarefas ativas ao mesmo tempo; o Premium permite 20.',
         '6': 'Cada tarefa vale de 1 a 3 estrelas conforme a dificuldade, e as estrelas contam quando você aprova a tarefa. Em uma família com 2 ou mais filhos, cada filho vê o Quadro de estrelas desta semana no KidGate do próprio dispositivo; ele recomeça toda semana. Para ocultá-lo, o dono da família abre “Família”, depois o cartão da família, e desativa o “Quadro de estrelas” na aba “Filhos”.',
       },
@@ -549,7 +549,7 @@ export const userGuide = {
         '1': 'Em Família, toque em + e escolha Adicionar filho. Digite um nome e salve.',
         '2': 'Depois de parear um dispositivo novo, o KidGate pergunta ao dono da família quem o usa. Escolha seu filho, ou “Ninguém” para um dispositivo compartilhado. Se você escolheu uma criança, o KidGate oferece um conjunto inicial de proteções: selecione “Ativar proteção” ou “Agora não”.',
         '3': 'Um dispositivo para o qual ninguém foi escolhido aparece em Sem atribuição, na tela Família. Selecione Atribuir a uma criança… no cartão dele.',
-        '4': 'Depois que um dispositivo é atribuído, o Limite diário, os Horários bloqueados, o Filtro da web, o Check-in, o SOS, os Alertas de locais e as Tarefas com recompensa são definidos no perfil da criança e valem para todos os dispositivos dela. O Limite diário vira um total único para esses dispositivos.',
+        '4': 'Depois que um dispositivo é atribuído, o Limite diário, as Horas bloqueadas, o Filtro da web, o Check-in, o SOS, os Alertas de locais e as Tarefas bônus são definidos no perfil da criança e valem para todos os dispositivos dela. O Limite diário vira um total único para esses dispositivos.',
         '5': 'Para mover um dispositivo, selecione Atribuir outro dispositivo… no perfil da criança que deve ficar com ele. Para desfazer a atribuição, deslize o dispositivo no perfil da criança e selecione Remover. Se você remover o perfil de uma criança, os dispositivos dela continuam pareados.',
       },
     },

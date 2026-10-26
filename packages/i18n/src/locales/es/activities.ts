@@ -47,7 +47,7 @@ export const activities = {
   activityTypeCheckIn: 'Check-in',
   activityTypeLocationRequest: 'Ubicación',
   activityTypeTimeRequest: 'Solicitudes de tiempo',
-  activityTypeRewardTask: 'Tareas con recompensa',
+  activityTypeRewardTask: 'Tareas premiadas',
   activityTypeSearchAlert: 'Alertas de mensajes',
   activityTypeWebFilter: 'Filtro web',
   activityTypeEmergency: 'SOS',

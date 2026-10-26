@@ -9,14 +9,13 @@ export const child = {
   limitReached: '上限に達しました',
   active: '利用中',
   parentPausedThisDevice: '保護者がこのデバイスを一時的にロックしました。',
-  browsingPausedUntil: '{{time}}までブラウジングを一時停止中',
+  browsingPausedUntil: '{{time}}までウェブを一時停止中',
   browsingPausedHint:
     'それまでブラウザは閉じられます。間違いだと思ったら、保護者に聞いてください。',
   blockedHoursOnPaused: '今は休止時間です。休憩するのにいい時間です。',
   outOfScreenTimeAskParent:
     '今日の利用時間を使い切りました。下から追加をリクエストできます。',
   screenTimeToday: '今日の利用時間',
-  timeLeftToday: '今日の残り {{time}}',
   usedOverLimitMinutes: '{{used}} / {{limit}}',
   usedMinutesOnly: '{{used}}',
   outOfScreenTimeToday:

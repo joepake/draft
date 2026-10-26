@@ -1,7 +1,7 @@
 export const videoHistory = {
-  title: 'Angesehene Videos',
+  title: 'Videoverlauf',
   fallbackDeviceName: 'Kindergerät',
-  toggleLabel: 'Angesehene Videos aufzeichnen',
+  toggleLabel: 'Videoverlauf aufzeichnen',
   toggleHint:
     'YouTube auf Android-Handys und Fernsehern sowie in Chrome mit der KidGate-Erweiterung.',
   tvShortsInfo:
@@ -23,7 +23,7 @@ export const videoHistory = {
   extensionStepInstall: '„Zu Chrome hinzufügen“ klicken',
   extensionStepConnect:
     'KidGate in Chrome öffnen und verbinden – sie erscheint als eigenes Gerät',
-  extensionStepEnable: '„Angesehene Videos aufzeichnen“ für dieses Gerät einschalten',
+  extensionStepEnable: '„Videoverlauf aufzeichnen“ für dieses Gerät einschalten',
   emptyTitle: 'Noch nichts angesehen',
   emptyBody: 'Videos erscheinen hier, sobald dein Kind mit laufendem KidGate zusieht.',
   viewsMeta_one: '{{count}} Mal',
@@ -43,7 +43,7 @@ export const videoHistory = {
   readerLayoutChanged:
     'Shorts werden auf diesem Gerät gerade nicht aufgezeichnet – die YouTube-App hat sich geändert und KidGate braucht ein Update. Andere Videos werden weiter aufgezeichnet.',
   grantNeeded:
-    'Videos werden noch nicht aufgezeichnet: KidGate braucht Benachrichtigungszugriff auf dem Handy deines Kindes. Öffne auf diesem Handy KidGate, dann Einstellungen, wähle „Mit Eltern-PIN entsperren“ und dann „Benachrichtigungszugriff erlauben“ im Bereich Nachrichtenwarnungen.',
+    'Videos werden noch nicht aufgezeichnet: KidGate braucht Benachrichtigungszugriff auf dem Handy deines Kindes. Öffne auf diesem Handy KidGate, dann Einstellungen, wähle „Mit Eltern-PIN entsperren“ und dann „Benachrichtigungszugriff erlauben“ im Bereich Chatwarnungen.',
   openAction: 'Auf YouTube öffnen',
   searchAction: 'Dieses Video auf YouTube suchen',
   openFailed: 'YouTube ließ sich nicht öffnen. Versuche es erneut.',

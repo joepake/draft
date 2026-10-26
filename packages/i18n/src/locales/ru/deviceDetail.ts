@@ -4,7 +4,7 @@ export const deviceDetail = {
   notFoundTitle: 'Устройство',
   dangerTitle: 'Удалить это устройство',
   dangerDescription:
-    'Удалите это устройство из семейного аккаунта. Будут удалены история местоположения, история использования, история веба, просмотренные видео, список установленных приложений, Запросы времени, запросы сайтов, Задания с наградой, Check-In, оповещения SOS и история активности этого устройства.',
+    'Удалите это устройство из семейного аккаунта. Будут удалены история местоположения, история использования, история веба, просмотренные видео, список установленных приложений, Запросы времени, запросы сайтов, Бонус-задания, Check-In, оповещения SOS и история активности этого устройства.',
   removeButton: 'Удалить устройство',
   removingButton: 'Удаление…',
   showAllFeatures: 'Показать все функции',
@@ -12,7 +12,7 @@ export const deviceDetail = {
   essentialControls: 'Основные настройки',
   dailyLimit: 'Дневной лимит',
   setDailyScreenTimeCap: 'Установить Дневной лимит',
-  blockedHours: 'Заблокированные часы',
+  blockedHours: 'Часы блокировки',
   manageTimeRanges: 'Настройте до {{max}} периодов',
   blockedApps: 'Заблокированные приложения',
   appBlockingBestEffort:
@@ -77,7 +77,7 @@ export const deviceDetail = {
   removeOwnerOnly: 'Только владелец семьи может удалять устройства.',
   removeDeviceTitle: 'Удалить устройство?',
   removeDeviceMessage:
-    '{{deviceName}} будет отключено от вашего аккаунта. Будут удалены история местоположения, история использования, история веба, просмотренные видео, список установленных приложений, Запросы времени, запросы сайтов, Задания с наградой, Check-In, оповещения SOS и история активности этого устройства.',
+    '{{deviceName}} будет отключено от вашего аккаунта. Будут удалены история местоположения, история использования, история веба, просмотренные видео, список установленных приложений, Запросы времени, запросы сайтов, Бонус-задания, Check-In, оповещения SOS и история активности этого устройства.',
   unableToRemoveDevice: 'Не удалось удалить устройство. Попробуйте снова.',
   checkInNotificationSent: '{{deviceName}} получит запрос Check-In.',
   checkInOfflineTitle: 'Похоже, это устройство не в сети',
@@ -101,7 +101,7 @@ export const deviceDetail = {
   timeRanges: 'периодов',
   timeRanges_one: 'период',
   timeRanges_few: 'периода',
-  activeNowLocked: 'Заблокированные часы активны · устройство заблокировано',
+  activeNowLocked: 'Часы блокировки активны · устройство заблокировано',
   editHours: 'Изменить',
   setHours: 'Настроить',
   adultSitesLimited: 'Нежелательные сайты ограничены',
@@ -117,7 +117,7 @@ export const deviceDetail = {
   featureIncludedInPremium: '{{actionTitle}} входит в подписку Premium.',
   featureOnRoadmap:
     '{{actionTitle}} скоро появится. Местоположение, Веб-фильтр и функции выше уже доступны.',
-  rewardTasks: 'Задания с наградой',
+  rewardTasks: 'Бонус-задания',
   rewardTasksDescription: 'Дарите минуты за выполненные задания',
   rewardTasksUnit: 'активных заданий',
   rewardTasksUnit_one: 'активное задание',
@@ -135,7 +135,7 @@ export const deviceDetail = {
   appLimitsReached_few: '{{count}} приложения достигли лимита',
   appLimitsReached: '{{count}} приложений достигли лимита',
   webHistory: 'История веба',
-  videoHistory: 'Просмотренные видео',
+  videoHistory: 'История видео',
   videoHistoryDescription: 'Просмотренные видео на YouTube',
   videoHistoryOn: 'Запись',
   webHistoryDescription: 'Открытые и заблокированные сайты',
@@ -144,7 +144,7 @@ export const deviceDetail = {
   webHistorySitesUnit_few: 'сайта',
   managedAtChild:
     'Правила, награды, Check-In и оповещения о безопасности этого устройства настраиваются в профиле {{childName}}.',
-  pauseBrowsing: 'Приостановить веб',
+  pauseBrowsing: 'Веб-пауза',
   pauseBrowsingDescription:
     'Приостанавливает просмотр сайтов на время. Звонки и офлайн-приложения продолжают работать.',
   pauseBrowsingDesktopNote: 'На компьютере браузеры закрываются до конца паузы.',

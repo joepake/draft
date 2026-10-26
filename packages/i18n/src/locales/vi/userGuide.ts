@@ -335,10 +335,10 @@ export const userGuide = {
       keywords: 'tắt mạng, tắt internet, tắt wifi, ngắt mạng, tạm dừng',
       tip: 'Với tiện ích Chrome, chỉ Chrome bị tạm dừng. Nếu muốn con nghỉ vào cùng một khung giờ mỗi ngày, hãy dùng Giờ khóa thiết bị.',
       steps: {
-        '1': 'Trên thiết bị phụ huynh, mở hồ sơ của con (hoặc mở thiết bị, nếu thiết bị chưa được gán cho con), rồi chạm [[Tạm dừng duyệt web]] trong mục [[Theo dõi an toàn]].',
+        '1': 'Trên thiết bị phụ huynh, mở hồ sơ của con (hoặc mở thiết bị, nếu thiết bị chưa được gán cho con), rồi chạm [[Tạm dừng web]] trong mục [[Theo dõi an toàn]].',
         '2': 'Chọn thời lượng bằng thanh chỉnh hoặc mức có sẵn (30, 60 hoặc 120 phút), rồi xác nhận.',
         '3': 'Web bị chặn trên thiết bị đó cho đến khi hết giờ. Cài đặt của tính năng Chặn nội dung web không bị thay đổi, và việc tạm dừng vẫn có tác dụng kể cả khi tính năng Chặn nội dung web đang tắt. Trên máy tính, trình duyệt sẽ bị đóng cho đến khi hết tạm dừng.',
-        '4': 'Muốn kết thúc sớm, hãy mở thiết bị, chạm thẻ [[Tạm dừng duyệt web]] rồi chọn [[Tiếp tục]]. Số phút còn lại sẽ không được giữ.',
+        '4': 'Muốn kết thúc sớm, hãy mở thiết bị, chạm thẻ [[Tạm dừng web]] rồi chọn [[Tiếp tục]]. Số phút còn lại sẽ không được giữ.',
         '5': 'Khi tạm dừng từ hồ sơ của con, chỉ một thiết bị được áp dụng. Nếu con dùng nhiều thiết bị, hãy tạm dừng từng thiết bị trên màn hình của thiết bị đó.',
       },
     },

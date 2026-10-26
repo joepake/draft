@@ -40,7 +40,7 @@ export const activities = {
   activityTypeAppRemoved: 'App disinstallata',
   activityTypePlaceEnter: 'Ingresso in un luogo',
   activityTypePlaceExit: 'Uscita da un luogo',
-  activityTypeTamper: 'Avvisi di protezione',
+  activityTypeTamper: 'Avvisi protezione',
   activityTypeScreenTime: 'Tempo di utilizzo',
   activityTypeCheckIn: 'Check-in',
   activityTypeLocationRequest: 'Posizione',

@@ -47,6 +47,7 @@ export const blockedApps = {
   emptyTitle: 'Noch keine blockierten Apps',
   emptySubtitle:
     'Sperre eine App über „Installierte Apps“. Auf einem iPhone wählst du die Apps auf dem iPhone selbst aus.',
+  emptySubtitleNoIphone: 'Sperre eine App über „Installierte Apps“.',
   emptySubtitleTv:
     'Öffne auf dem Fernseher KidGate, wähle „{{button}}“, gib die Eltern-PIN ein, wähle dann die Apps aus und speichere.',
   sectionTitle: 'Blockierungsliste',

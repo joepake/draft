@@ -52,7 +52,7 @@ export const errors = {
   reconnect: 'Reconectar',
   unableToUploadPhoto: 'Não foi possível enviar a foto. Tente novamente.',
   premiumSubscriptionRequired:
-    'Este recurso precisa do Premium. Limite diário, Horários bloqueados, Apps bloqueados, Limites de apps, Bloqueio do dispositivo, SOS, localização, a chave do Filtro da web e o SafeSearch continuam grátis.',
+    'Este recurso precisa do Premium. Limite diário, Horas bloqueadas, Apps bloqueados, Limites de apps, Bloqueio do dispositivo, SOS, localização, a chave do Filtro da web e o SafeSearch continuam grátis.',
   trialEndedCannotJoinFamily:
     'Seu período de teste gratuito terminou. Assine o Premium para entrar em outra família.',
 

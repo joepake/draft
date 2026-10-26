@@ -39,8 +39,6 @@ export const blockedHours = {
     'जब तक {{name}} को स्क्रीन लॉक करने की अनुमति नहीं मिलती, तब तक ब्लॉक किए गए समय उस पर लागू नहीं होंगे।',
   infoSkippedPlatform: 'ब्लॉक किए गए समय {{name}} पर उपलब्ध नहीं हैं।',
   off: 'बंद',
-  blockedHoursChip: 'ब्लॉक किए गए समय',
-  blockedHoursOnChip: 'ब्लॉक किए गए समय सेट हैं',
   blockedHoursStatusActiveNow: 'अभी सक्रिय',
   blockedHoursStatusOn: 'चालू',
   blockedHoursStatusOff: 'बंद',

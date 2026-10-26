@@ -33,6 +33,9 @@ import NoDevicePanel from './NoDevicePanel.jsx';
 import InfoTooltip from './InfoTooltip.jsx';
 import { timeAgo } from './timeAgo.js';
 import { pressNextOnEnter } from './enterPresses.js';
+import PauseBrowsingSheet from './PauseBrowsingSheet.jsx';
+import { supportsWebFiltering } from '@kidgate/core/domain/webFilterSupport';
+import { isDesktopLike } from '@kidgate/core/domain/platformFamily';
 
 /**
  * The child hub — the person, not one of their machines.
@@ -105,6 +108,50 @@ export default function ChildHub({
   // A stored full day is no budget (`dailyLimitOrNone`), as on the phone.
   const budgetMinutes = dailyLimitOrNone(rules.dailyLimitMinutes);
 
+  /*
+   * A pause is one device's deadline, never a child rule — so here, as on the
+   * phone's hub, it is pressed on every machine that can hold one, and the
+   * card reads the latest deadline still running on any of them.
+   */
+  const pauseDevices = useMemo(
+    () => childDevices.filter(device => supportsWebFiltering(device)),
+    [childDevices],
+  );
+  const pausedUntil = pauseDevices.reduce((latest, device) => {
+    const until = device.controls?.browsingPausedUntil;
+    return typeof until === 'number' && until > (latest ?? 0) ? until : latest;
+  }, null);
+  const [pauseSheetOpen, setPauseSheetOpen] = useState(false);
+  // Minutes left while the sheet asks whether to end; null asks how long.
+  const [pauseResumeMinutes, setPauseResumeMinutes] = useState(null);
+
+  const pressPauseBrowsing = () => {
+    if (!live || pauseDevices.length === 0) return;
+    setPauseResumeMinutes(
+      pausedUntil !== null && pausedUntil > Date.now()
+        ? Math.max(1, Math.round((pausedUntil - Date.now()) / 60_000))
+        : null,
+    );
+    setPauseSheetOpen(true);
+  };
+
+  /*
+   * Per device through `run`, which re-reads the family. A partial refusal on
+   * any machine is still said: the first `refusedMessageKey` is handed back.
+   */
+  const setBrowsingPause = until => {
+    setPauseSheetOpen(false);
+    setPauseResumeMinutes(null);
+    if (!live) return;
+    run('pause-browsing', () =>
+      Promise.all(
+        pauseDevices.map(device =>
+          actions.updateControls(device.id, { browsingPausedUntil: until }),
+        ),
+      ).then(results => results.find(result => result?.refusedMessageKey) ?? true),
+    );
+  };
+
   /**
    * What the control cards say, asked of the PERSON.
    *
@@ -160,7 +207,10 @@ export default function ChildHub({
         videoHistoryEnabled: childDevices.some(
           item => item.controls?.videoHistoryEnabled === true,
         ),
+        browsingPausedUntil: pausedUntil,
       },
+      // The pause card counts down, as on the device page: as old as the read.
+      nowMs: Date.now(),
       hasLocationFix: fixAt !== null,
       locationStale: fixAt !== null && Date.now() - fixAt > LOCATION_STALE_AFTER_MS,
       supportsVideoHistory: childDevices.some(supportsVideoHistory),
@@ -202,7 +252,7 @@ export default function ChildHub({
        */
       protectionLevel: foldChildProtectionLevel(childDevices, Date.now()),
     };
-  }, [budgetMinutes, child, childDevices, rules]);
+  }, [budgetMinutes, child, childDevices, pausedUntil, rules]);
 
   const lockable = useMemo(() => childDevices.filter(supportsLock), [childDevices]);
   const allLocked = lockable.length > 0 && lockable.every(d => d.isLocked);
@@ -511,20 +561,29 @@ export default function ChildHub({
               onOpenLocation();
               return;
             }
+            // Answers in place, on every machine — see `pressPauseBrowsing`.
+            if (action?.id === 'pause-browsing') {
+              pressPauseBrowsing();
+              return;
+            }
             const target =
               childDevices.find(device => isActionSupported(action, device)) ??
               childDevices[0];
-            /*
-             * Pausing is the one card that ANSWERS in place rather than opening
-             * a panel, and here there is nothing to answer for: a pause blocks
-             * one machine, and "the first device that supports it" would pick
-             * which of a child's two gets cut off. So this lands on that
-             * device's grid — `manage`, where the card is — and the parent
-             * presses it against the machine they meant. `ACTION_TAB` maps it
-             * nowhere, which without this would drop them on Overview, a page
-             * with nothing about a pause on it.
-             */
-            onOpenDevice(target.id, action?.id === 'pause-browsing' ? 'manage' : tab);
+            onOpenDevice(target.id, tab);
+          }}
+        />
+      )}
+
+      {pauseSheetOpen && (
+        <PauseBrowsingSheet
+          appT={appT}
+          onChoose={minutes => setBrowsingPause(Date.now() + minutes * 60_000)}
+          resumeMinutes={pauseResumeMinutes}
+          onResume={() => setBrowsingPause(null)}
+          desktop={pauseDevices.some(device => isDesktopLike(device.platform))}
+          onClose={() => {
+            setPauseSheetOpen(false);
+            setPauseResumeMinutes(null);
           }}
         />
       )}
