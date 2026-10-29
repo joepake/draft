@@ -56,11 +56,17 @@ export default function InfoTooltip({ text, label }) {
       >
         <Icon name="info" size={15} />
       </button>
-      <div ref={bubbleRef} id={id} popover="auto" className="info-tip-bubble">
+      {/* Spans, not a div of p's: the trigger sits inside a sentence (the
+          child hub's "Last active" line is a <p>), where block children are
+          invalid DOM and React says so on every render. The CSS makes them
+          blocks. */}
+      <span ref={bubbleRef} id={id} popover="auto" className="info-tip-bubble">
         {paragraphs.map(paragraph => (
-          <p key={paragraph}>{paragraph}</p>
+          <span key={paragraph} className="info-tip-para">
+            {paragraph}
+          </span>
         ))}
-      </div>
+      </span>
     </>
   );
 }

@@ -65,6 +65,8 @@ export const rewardTask = {
   taskRejected: 'Ödül görevi geri gönderildi',
   taskRejectedDescription:
     '“{{title}}”, yeni bir deneme için {{deviceName}} cihazına geri gönderildi.',
+  taskClaimed: 'Görev tamamlandı',
+  taskClaimedDescription: '{{deviceName}} “{{title}}” görevini bitirdi.',
   starsLabel: 'Zorluk',
   starsHint: 'Çocuğunuz bu kadar yıldız biriktirir.',
   starsEasy: 'Kolay',

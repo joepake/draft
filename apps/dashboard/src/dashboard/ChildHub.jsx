@@ -21,7 +21,7 @@ import {
   resolveDisplayFormFactor,
 } from '@kidgate/core/domain/deviceFormFactor';
 import {
-  LOCATION_STALE_AFTER_MS,
+  LOCATION_LIVE_WITHIN_MS,
   resolveChildLocationView,
 } from '@kidgate/core/domain/childLocation';
 import Card from './Card.jsx';
@@ -31,10 +31,14 @@ import ControlCenter from './ControlCenter.jsx';
 import ChildInitial from './ChildInitial.jsx';
 import NoDevicePanel from './NoDevicePanel.jsx';
 import InfoTooltip from './InfoTooltip.jsx';
+import { setLockEach } from './lockReadiness.js';
 import { timeAgo } from './timeAgo.js';
 import { pressNextOnEnter } from './enterPresses.js';
 import PauseBrowsingSheet from './PauseBrowsingSheet.jsx';
-import { supportsWebFiltering } from '@kidgate/core/domain/webFilterSupport';
+import {
+  supportsWebFiltering,
+  webFilterComingSoon,
+} from '@kidgate/core/domain/webFilterSupport';
 import { isDesktopLike } from '@kidgate/core/domain/platformFamily';
 
 /**
@@ -114,7 +118,12 @@ export default function ChildHub({
    * card reads the latest deadline still running on any of them.
    */
   const pauseDevices = useMemo(
-    () => childDevices.filter(device => supportsWebFiltering(device)),
+    // Same answer as the card's `supportedBy`: an iPhone without its tunnel
+    // has no pause to hold.
+    () =>
+      childDevices.filter(
+        device => supportsWebFiltering(device) && !webFilterComingSoon(device),
+      ),
     [childDevices],
   );
   const pausedUntil = pauseDevices.reduce((latest, device) => {
@@ -212,7 +221,7 @@ export default function ChildHub({
       // The pause card counts down, as on the device page: as old as the read.
       nowMs: Date.now(),
       hasLocationFix: fixAt !== null,
-      locationStale: fixAt !== null && Date.now() - fixAt > LOCATION_STALE_AFTER_MS,
+      locationStale: fixAt !== null && Date.now() - fixAt > LOCATION_LIVE_WITHIN_MS,
       supportsVideoHistory: childDevices.some(supportsVideoHistory),
       // The phone hub's rule: waiting only when every device that could record
       // lacks the grant, so a child whose extension records reads Recording.
@@ -384,11 +393,9 @@ export default function ChildHub({
                 : appT('family.lockAllA11y', { childName: child.name })
             }
             onClick={() =>
-              run(`child-lock-${child.id}`, async () => {
-                for (const device of lockable) {
-                  await actions.setLock(device.id, !allLocked);
-                }
-              })
+              run(`child-lock-${child.id}`, () =>
+                setLockEach(lockable, !allLocked, actions, appT),
+              )
             }
           >
             {allLocked ? appT('family.unlockAll') : appT('family.lockAll')}
@@ -566,10 +573,17 @@ export default function ChildHub({
               pressPauseBrowsing();
               return;
             }
+            // Place arrivals are the carried device's, as on the phone hub —
+            // the first capable machine may be the tablet left at home.
+            const carried =
+              action?.id === 'place-alerts'
+                ? resolveChildLocationView(child, childDevices).carried
+                : null;
             const target =
+              carried ??
               childDevices.find(device => isActionSupported(action, device)) ??
               childDevices[0];
-            onOpenDevice(target.id, tab);
+            onOpenDevice(target.id, tab, action);
           }}
         />
       )}
@@ -581,6 +595,17 @@ export default function ChildHub({
           resumeMinutes={pauseResumeMinutes}
           onResume={() => setBrowsingPause(null)}
           desktop={pauseDevices.some(device => isDesktopLike(device.platform))}
+          // The phone's scope line: a machine that cannot hold a pause is
+          // not stopped by this sheet, and the sheet says so.
+          scope={
+            pauseDevices.length > 0 && pauseDevices.length < childDevices.length
+              ? appT('webFilter.appliesToSome', {
+                  name: child.name ?? '',
+                  supported: pauseDevices.length,
+                  total: childDevices.length,
+                })
+              : null
+          }
           onClose={() => {
             setPauseSheetOpen(false);
             setPauseResumeMinutes(null);

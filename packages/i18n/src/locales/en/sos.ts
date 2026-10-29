@@ -22,12 +22,15 @@ export const sos = {
   alertMessage: '{{childName}} needs help — SOS was sent',
   toastSent:
     'SOS sent. Stay somewhere safe if you can — your parent has been notified.',
-  // Shown to the child on a *desktop* after every SOS press. That agent has
-  // granted no escape since 2026-09-10, and the press can come from the SOS
-  // tab of a machine that was never locked, so the body says only what holds
-  // either way. The phone's own SOS screen says it instead.
+  // Shown to the child after an SOS press: by the desktop agent, and on the
+  // phone's SOS screen, which keeps it up until a parent responds
+  // (`sentParentSaw` replaces the body then). The desktop has granted no escape
+  // since 2026-09-10 and its press can come from a machine never locked, so the
+  // body says only what holds either way.
   escapeGrantedTitle: 'SOS sent',
   escapeGrantedBody: 'Your parent has been notified.',
+  // A parent pressed "I'm on it" — seen, which is all that press says.
+  sentParentSaw: 'Your parent saw your SOS.',
   toastSentWithoutPhoto: 'SOS sent without a photo.',
   // Only when the camera permission is what stopped the photo. "Try again"
   // would mean a second SOS, so the step is for next time.
@@ -103,5 +106,5 @@ export const sos = {
   trustedContactsSaveFailed: 'Could not save. Try again in a moment.',
   trustedContactsRemoveAccessibility: 'Remove {{name}}',
   trustedContactsPrivacyNote:
-    'Each contact receives the device name and the last known location by email. No photo is sent.',
+    'Each contact receives the sender’s name and the last known location by email. No photo is sent.',
 } as const;

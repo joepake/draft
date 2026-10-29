@@ -7,8 +7,12 @@ export const messageMonitoring = {
     'KidGate는 자녀의 메시지와 검색에서 우려되는 단어를 감지해 알려 드립니다. 감지된 단어나 문구만 보이며, 메시지나 검색 내용은 보이지 않습니다.',
   androidOnlyNote:
     '메시지는 Android 기기에서만 검사할 수 있습니다. 검색은 Chrome 확장 프로그램에서도 검사할 수 있습니다.',
+  androidOnlyNoteIos:
+    'iPhone·iPad에서는 메시지를 검사할 수 없습니다. 검색은 Chrome 확장 프로그램에서도 검사할 수 있습니다.',
   searchOnlyNote:
     '여기에서는 검색만 검사할 수 있습니다. 메시지는 Android 기기에서만 검사할 수 있습니다.',
+  searchOnlyNoteIos:
+    '여기에서는 검색만 검사할 수 있습니다. iPhone·iPad에서는 메시지를 검사할 수 없습니다.',
   recentTitle: '최근 경고',
   emptyTitle: '아직 경고 없음',
   emptySubtitle: '메시지나 검색에서 우려되는 단어가 감지되면 여기에 표시됩니다.',

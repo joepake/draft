@@ -17,6 +17,7 @@ export const timeRequest = {
   statusWaitingForApproval:
     '保護者の返信を待っています（{{minutes}}分をリクエスト中）。',
   statusCooldown: '{{time}}後に新しいリクエストを送信できます。',
+  statusDeclined: '今回は保護者が見送りました。',
   statusDailyLimitExceeded:
     '今日の利用時間をすべて使い切りました。アプリは明日また使えるようになります。保護者が時間を追加すれば、それより早く使えます。',
   errorDeviceNotRegistered:

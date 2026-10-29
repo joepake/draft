@@ -8,8 +8,12 @@ export const messageMonitoring = {
     'KidGate menandai kata yang mengkhawatirkan di pesan dan pencarian anak Anda, lalu memberi tahu Anda. Anda hanya melihat kata atau frasa yang ditandai, tidak pernah isi pesan atau pencariannya.',
   androidOnlyNote:
     'Pesan hanya bisa diperiksa di perangkat Android. Pencarian juga bisa diperiksa di ekstensi Chrome.',
+  androidOnlyNoteIos:
+    'Pesan tidak bisa diperiksa di iPhone atau iPad. Pencarian juga bisa diperiksa di ekstensi Chrome.',
   searchOnlyNote:
     'Di sini hanya pencarian yang bisa diperiksa. Pesan hanya bisa diperiksa di perangkat Android.',
+  searchOnlyNoteIos:
+    'Di sini hanya pencarian yang bisa diperiksa. Pesan tidak bisa diperiksa di iPhone atau iPad.',
   recentTitle: 'Peringatan terbaru',
   emptyTitle: 'Belum ada peringatan',
   emptySubtitle:

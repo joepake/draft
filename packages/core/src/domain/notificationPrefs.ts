@@ -21,6 +21,38 @@ import {
  * missing key is the default, not a crash on the settings screen.
  */
 
+/**
+ * The alert switches in the order both parent consoles list them: what
+ * happened to the child first, then what they ask, then the informative, the
+ * plan last. The weekly report is not an alert and sits apart under Summary
+ * (`DIGEST_ALERT_KEY`). The dashboard drew `ALERT_PREF_KEYS`' storage order
+ * with the report among the alerts (2026-10-29).
+ */
+export const ALERT_ROW_ORDER = [
+  'tamperAlerts',
+  'placeAlerts',
+  'messageAlerts',
+  'timeRequests',
+  'siteRequests',
+  'checkIn',
+  'rewardTasks',
+  'appActivity',
+  'anomalyAlerts',
+  'billing',
+] as const satisfies readonly AlertPrefKey[];
+
+export const DIGEST_ALERT_KEY = 'weeklyDigest' satisfies AlertPrefKey;
+
+// Fails `yarn typecheck` when a key joins `ALERT_PREF_KEYS` with no place here.
+type UnorderedAlertKey = Exclude<
+  AlertPrefKey,
+  (typeof ALERT_ROW_ORDER)[number] | typeof DIGEST_ALERT_KEY
+>;
+const EVERY_ALERT_KEY_IS_ORDERED: [UnorderedAlertKey] extends [never]
+  ? true
+  : UnorderedAlertKey = true;
+void EVERY_ALERT_KEY_IS_ORDERED;
+
 export function normalizeAlertPrefs(value: unknown): AlertPrefs {
   const source =
     value && typeof value === 'object' ? (value as Record<string, unknown>) : {};

@@ -64,6 +64,8 @@ export const rewardTask = {
     'كسب {{deviceName}} مكافأة {{minutes}} دقيقة عن «{{title}}».',
   taskRejected: 'أُعيدت مهمة المكافأة',
   taskRejectedDescription: 'أُعيدت «{{title}}» إلى {{deviceName}} لمحاولة أخرى.',
+  taskClaimed: 'اكتملت المهمة',
+  taskClaimedDescription: 'أنهى {{deviceName}} «{{title}}».',
   starsLabel: 'الصعوبة',
   starsHint: 'يجمع طفلك هذا العدد من النجوم.',
   starsEasy: 'سهلة',

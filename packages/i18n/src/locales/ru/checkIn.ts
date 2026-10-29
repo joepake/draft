@@ -13,7 +13,6 @@ export const checkIn = {
   metaNoLocation: 'Без геопозиции',
   viewPhotoAccessibility: 'Посмотреть фото Check-In',
   responseMessage: 'Я в порядке.',
-  toastSuccess: 'Спасибо. Твой ответ отправлен родителям.',
   toastFailed: 'Не удалось отправить Check-In. Попробуй ещё раз.',
   quickCheckInBadge: 'Check-In',
   areYouOkay: 'Ты в порядке?',
@@ -21,6 +20,10 @@ export const checkIn = {
     'Родители хотят убедиться, что ты в порядке. KidGate отправит твою геопозицию и, если возможно, фото.',
   checkInLocationOnlyBody:
     'Родители хотят убедиться, что ты в порядке. KidGate отправит твою геопозицию, если возможно.',
+  checkInPhotoNoLocationBody:
+    'Родители хотят убедиться, что ты в порядке. Геопозиция на этом устройстве выключена, поэтому KidGate отправит фото, если возможно.',
+  checkInAnswerOnlyBody:
+    'Родители хотят убедиться, что ты в порядке. Геопозиция на этом устройстве выключена, поэтому отправится только твой ответ.',
   yesImOkay: 'Я в порядке',
   yesImOkaySending: 'Отправка…',
   iNeedHelp: 'Мне нужна помощь',

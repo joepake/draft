@@ -25,6 +25,7 @@ export const sos = {
     'SOS enviado. Quédate en un lugar seguro si puedes; se ha notificado a tu padre o madre.',
   escapeGrantedTitle: 'SOS enviado',
   escapeGrantedBody: 'Se ha notificado a tu padre o madre.',
+  sentParentSaw: 'Tu padre o madre ha visto tu SOS.',
   toastSentWithoutPhoto: 'SOS enviado sin foto.',
   toastSentWithoutPhotoCamera:
     'SOS enviado sin foto. Para añadir una la próxima vez, permite el acceso a la Cámara en Ajustes.',
@@ -102,5 +103,5 @@ export const sos = {
   trustedContactsSaveFailed: 'No se pudo guardar. Inténtalo de nuevo en un momento.',
   trustedContactsRemoveAccessibility: 'Eliminar a {{name}}',
   trustedContactsPrivacyNote:
-    'Cada contacto recibe por correo el nombre del dispositivo y la última ubicación conocida. No se envía ninguna foto.',
+    'Cada contacto recibe por correo el nombre del remitente y la última ubicación conocida. No se envía ninguna foto.',
 } as const;

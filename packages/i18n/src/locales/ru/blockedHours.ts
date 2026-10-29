@@ -10,6 +10,9 @@ export const blockedHours = {
   heroSubtitle:
     'Настройте до {{max}} периодов, когда использование устройства заблокировано.',
   statTimeRangesLabel: 'Периоды',
+  statTimeRangesLabel_one: 'Период',
+  statTimeRangesLabel_few: 'Периода',
+  statTimeRangesLabel_many: 'Периодов',
   toggleTitle: 'Включить Часы блокировки',
   toggleSubtitleOn: 'Использование устройства заблокировано в указанные ниже периоды.',
   toggleSubtitleOff:

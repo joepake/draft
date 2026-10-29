@@ -4,11 +4,15 @@ export const videoHistory = {
   toggleLabel: 'Записывать просмотренные видео',
   toggleHint:
     'YouTube на Android-телефонах и телевизорах, а также в Chrome с расширением KidGate.',
+  toggleHintIos:
+    'YouTube на других телефонах и Google TV, а также в Chrome с расширением KidGate.',
   tvShortsInfo:
     'На телевизоре Shorts не показываются в списке, потому что приложение YouTube для телевизоров не распознаёт их как Shorts.',
   toggleFailed: 'Не удалось обновить историю видео. Повторите попытку.',
   unsupportedNote:
     'Это устройство не может сообщать о просмотренных видео. Функция работает на Android, Android TV и в Chrome.',
+  unsupportedNoteIos:
+    'Это устройство не может сообщать о просмотренных видео. Функция работает на других телефонах, Google TV и в Chrome.',
   unsupportedNoteTv:
     'Этот телевизор не записывает просмотренные видео. KidGate нужен доступ к уведомлениям на нём, а выдать его с экрана телевизора пока нельзя.',
 

@@ -16,7 +16,11 @@ import type { IconName } from '@kidgate/tokens/icons';
 import type { TranslationParams } from '@kidgate/i18n/types';
 import type { DevicePlatform } from '@kidgate/schema/capabilities';
 import type { Device } from '@kidgate/schema/device';
-import { supportsWebFiltering, supportsWebHistory } from './webFilterSupport';
+import {
+  supportsWebFiltering,
+  supportsWebHistory,
+  webFilterComingSoon,
+} from './webFilterSupport';
 import { showsVideoHistoryCard } from './videoHistorySupport';
 import { supportsLocation } from './locationSupport';
 import { supportsCheckIn } from './checkInSupport';
@@ -65,7 +69,36 @@ export type DeviceAction = {
    * absent probe as unknown rather than as no — phones publish none.
    */
   supportedBy?: (device: DeviceSupportFacts) => boolean;
+  /**
+   * The feature is planned for this device but not in its build yet. Such a
+   * card is unsupported AND drawn — muted, untappable, labelled Coming soon —
+   * even where unsupported cards are hidden. Both consoles read it through
+   * `isActionComingSoon`.
+   */
+  comingSoon?: (device: DeviceSupportFacts) => boolean;
 };
+
+/** Whether this card is shown as Coming soon on this device. */
+export function isActionComingSoon(
+  action: DeviceAction,
+  device: DeviceSupportFacts,
+): boolean {
+  return !isActionSupported(action, device) && (action.comingSoon?.(device) ?? false);
+}
+
+/**
+ * The child-hub twin: Coming soon when no device can do it yet and at least
+ * one of them is waiting for it.
+ */
+export function isActionComingSoonForDevices(
+  action: DeviceAction,
+  devices: readonly DeviceSupportFacts[],
+): boolean {
+  return (
+    !isActionSupportedByAnyDevice(action, devices) &&
+    devices.some(device => action.comingSoon?.(device) ?? false)
+  );
+}
 
 /** Whether this device can do what the action opens. */
 export function isActionSupported(
@@ -246,7 +279,12 @@ export function getActionSections(
           // .all(except: [])` and a flag of its own — never through
           // allow-list-only with an empty list, which falls to `.auto(except:)`
           // there, Apple's adult filter and not a pause (`KidGateControls.swift`).
-          supportedBy: supportsWebFiltering,
+          //
+          // No tunnel in the iOS build since 2026-10-26, and the pause rode the
+          // tunnel alone since 2026-10-21, so an iPhone is Coming soon.
+          supportedBy: device =>
+            supportsWebFiltering(device) && !webFilterComingSoon(device),
+          comingSoon: webFilterComingSoon,
         },
         {
           id: 'web-history',
@@ -257,6 +295,7 @@ export function getActionSections(
           // Follows web filtering: a device with nothing inspecting traffic has
           // no history to keep. Argued in `domain/webFilterSupport`.
           supportedBy: supportsWebHistory,
+          comingSoon: webFilterComingSoon,
         },
         {
           id: 'video-history',
@@ -463,6 +502,7 @@ export function getVisibleActionSectionsForDevices(
   return sections
     .map(section => ({
       ...section,
+      // A Coming-soon card is not something they can do yet, so it hides too.
       actions: section.actions.filter(action =>
         isActionSupportedByAnyDevice(action, devices),
       ),

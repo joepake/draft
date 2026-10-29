@@ -25,7 +25,8 @@ export const plans = {
   termAnnual: 'Ежегодно',
   bestValueBadge: 'Выгоднее всего',
   premiumManageBillingNote:
-    'Управляйте оплатой в настройках App Store или Google Play.',
+    'Управляйте оплатой в настройках вашего магазина приложений.',
+  paidThrough: 'Оплачено до {{date}}',
   compareTitle: 'Бесплатно и Premium рядом',
   compareColumnFree: 'Бесплатно',
   compareColumnPremium: 'Premium',
@@ -51,6 +52,7 @@ export const plans = {
   compareNewApps: 'Недавно установленные приложения',
   compareNewAppsPremium: 'Какие приложения, по названиям',
   compareMessages: 'Оповещения о сообщениях (Android)',
+  compareMessagesIos: 'Оповещения о сообщениях (другие телефоны)',
   compareSafety: 'Оповещения защиты и Check-In',
   compareSafetyFree: 'Оповещения + отметка «Я на месте»',
   compareSafetyPremium: 'Добавляет фото к каждой отметке',
@@ -143,7 +145,7 @@ export const plans = {
     'Эта подписка сейчас недоступна. Повторите попытку позже.',
   unableToStartPurchase: 'Не удалось начать покупку. Повторите попытку.',
   noActiveSubscription:
-    'Активная подписка не найдена. Войдите в аккаунт App Store или Google Play, через который вы оформляли подписку, и повторите попытку.',
+    'Активная подписка не найдена. Войдите в аккаунт магазина приложений, через который вы оформляли подписку, и повторите попытку.',
   purchasesRestored: 'Покупки восстановлены.',
   unableToRestorePurchases: 'Не удалось восстановить покупки. Повторите попытку.',
   purchaseVerificationFailed:
@@ -180,6 +182,8 @@ export const plans = {
   platformIosDetail: 'Устройство родителя или ребёнка · iOS 16 и новее',
   platformAndroid: 'Android',
   platformAndroidDetail: 'Устройство родителя или ребёнка · Android 7 и новее',
+  platformOtherPhones: 'Другие телефоны и планшеты',
+  platformOtherPhonesDetail: 'Устройство родителя или ребёнка',
   platformMac: 'Mac',
   platformMacDetail: 'Только устройство ребёнка · macOS 12 и новее',
   platformIosLimits:
@@ -195,6 +199,8 @@ export const plans = {
   platformWindowsDetail: 'Только устройство ребёнка · Windows 10 и новее',
   platformAndroidTv: 'Android TV',
   platformAndroidTvDetail: 'Только устройство ребёнка · Android TV 7 и новее',
+  platformGoogleTv: 'Google TV',
+  platformGoogleTvDetail: 'Только устройство ребёнка',
   platformChromebook: 'Chromebook',
   platformChromebookDetail: 'Устройство ребёнка · только Веб-фильтр в Chrome',
   teaserCta: 'Посмотреть Premium',
@@ -216,6 +222,8 @@ export const plans = {
     'Premium добавляет отчёт по каждому ребёнку и новый каждую неделю.',
   teaserMessageAlerts:
     'Premium сообщает, когда сообщение требует вашего внимания. Только Android.',
+  teaserMessageAlertsIos:
+    'Premium сообщает, когда сообщение требует вашего внимания. Недоступно на iPhone и iPad.',
   teaserWebFilterAdvanced:
     'Premium фильтрует по категориям, принимает ваши списки разрешённых и заблокированных сайтов и позволяет ребёнку попросить разблокировать сайт.',
   teaserWeeklyReport:

@@ -24,8 +24,8 @@ export const plans = {
   termMonthly: 'Bulanan',
   termAnnual: 'Tahunan',
   bestValueBadge: 'Paling hemat',
-  premiumManageBillingNote:
-    'Kelola penagihan di pengaturan App Store atau Google Play Anda.',
+  premiumManageBillingNote: 'Kelola penagihan di pengaturan toko aplikasi Anda.',
+  paidThrough: 'Dibayar hingga {{date}}',
   compareTitle: 'Gratis dan Premium, berdampingan',
   compareColumnFree: 'Gratis',
   compareColumnPremium: 'Premium',
@@ -51,6 +51,7 @@ export const plans = {
   compareNewApps: 'Aplikasi yang baru dipasang',
   compareNewAppsPremium: 'Aplikasi mana, lengkap dengan namanya',
   compareMessages: 'Peringatan pesan (Android)',
+  compareMessagesIos: 'Peringatan pesan (ponsel lain)',
   compareSafety: 'Peringatan perlindungan dan Check-In',
   compareSafetyFree: 'Peringatan + Check-In',
   compareSafetyPremium: 'Menambahkan foto di setiap Check-In',
@@ -143,7 +144,7 @@ export const plans = {
     'Langganan ini tidak tersedia saat ini. Silakan coba lagi nanti.',
   unableToStartPurchase: 'Tidak dapat memulai pembelian. Silakan coba lagi.',
   noActiveSubscription:
-    'Tidak ditemukan langganan aktif. Masuk dengan akun App Store atau Google Play yang Anda pakai untuk berlangganan, lalu coba lagi.',
+    'Tidak ditemukan langganan aktif. Masuk dengan akun toko aplikasi yang Anda pakai untuk berlangganan, lalu coba lagi.',
   purchasesRestored: 'Pembelian berhasil dipulihkan.',
   unableToRestorePurchases: 'Tidak dapat memulihkan pembelian. Silakan coba lagi.',
   purchaseVerificationFailed:
@@ -180,6 +181,8 @@ export const plans = {
   platformIosDetail: 'Perangkat orang tua atau anak · iOS 16 ke atas',
   platformAndroid: 'Android',
   platformAndroidDetail: 'Perangkat orang tua atau anak · Android 7 ke atas',
+  platformOtherPhones: 'Ponsel dan tablet lain',
+  platformOtherPhonesDetail: 'Perangkat orang tua atau anak',
   platformMac: 'Mac',
   platformMacDetail: 'Hanya perangkat anak · macOS 12 ke atas',
   platformIosLimits:
@@ -195,6 +198,8 @@ export const plans = {
   platformWindowsDetail: 'Hanya perangkat anak · Windows 10 ke atas',
   platformAndroidTv: 'Android TV',
   platformAndroidTvDetail: 'Hanya perangkat anak · Android TV 7 ke atas',
+  platformGoogleTv: 'Google TV',
+  platformGoogleTvDetail: 'Hanya perangkat anak',
   platformChromebook: 'Chromebook',
   platformChromebookDetail: 'Perangkat anak · Filter web hanya di Chrome',
   teaserCta: 'Lihat Premium',
@@ -216,6 +221,8 @@ export const plans = {
     'Premium menambah laporan untuk tiap anak, dan yang baru tiap minggu.',
   teaserMessageAlerts:
     'Premium memberi tahu saat sebuah pesan perlu perhatian Anda. Hanya Android.',
+  teaserMessageAlertsIos:
+    'Premium memberi tahu saat sebuah pesan perlu perhatian Anda. Tidak tersedia di iPhone atau iPad.',
   teaserWebFilterAdvanced:
     'Premium memfilter per kategori, menerima daftar izin dan blokir milik Anda sendiri, dan membiarkan anak meminta membuka satu situs.',
   teaserWeeklyReport:

@@ -86,7 +86,7 @@ export const errors = {
   unableToVerifyPurchase: 'Không thể xác minh giao dịch. Vui lòng thử lại sau ít phút.',
   noPurchasesToRestore: 'Tài khoản này không có giao dịch nào để khôi phục.',
   noActiveSubscription:
-    'Không tìm thấy gói đăng ký đang hoạt động. Vui lòng đăng nhập đúng tài khoản App Store hoặc Google Play đã dùng để đăng ký, rồi thử lại.',
+    'Không tìm thấy gói đăng ký đang hoạt động. Vui lòng đăng nhập đúng tài khoản kho ứng dụng đã dùng để đăng ký, rồi thử lại.',
   unableToRestorePurchases:
     'Không thể khôi phục giao dịch vào lúc này. Vui lòng thử lại.',
   alreadyInFamily: 'Bạn đã ở trong gia đình này.',

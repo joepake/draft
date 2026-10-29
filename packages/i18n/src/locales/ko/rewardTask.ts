@@ -63,6 +63,8 @@ export const rewardTask = {
     '{{deviceName}}이(가) “{{title}}” 과제로 보너스 {{minutes}}분을 얻었어요.',
   taskRejected: '보상 과제 돌려보냄',
   taskRejectedDescription: '“{{title}}” 과제를 {{deviceName}}에게 돌려보냈어요.',
+  taskClaimed: '과제 완료',
+  taskClaimedDescription: '{{deviceName}}이(가) “{{title}}”을(를) 완료했어요.',
   starsLabel: '난이도',
   starsHint: '아이는 그만큼 별을 모읍니다.',
   starsEasy: '쉬움',

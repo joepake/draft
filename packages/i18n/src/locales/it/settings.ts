@@ -108,7 +108,7 @@ export const settings = {
   deleteAccountAlertMessageMember:
     'Questa operazione programma l’eliminazione del tuo account personale. Non viene ancora rimosso nulla: puoi accedere e annullare in qualsiasi momento prima della data di eliminazione. Dopo quella data vengono eliminati il tuo accesso e le tue impostazioni personali. La famiglia, i suoi dispositivi e gli altri genitori restano invariati.',
   deleteAccountSubscriptionNotice:
-    'Eliminare l’account non disdice l’abbonamento. Disdicilo nell’App Store o su Google Play.',
+    'Eliminare l’account non disdice l’abbonamento. Disdicilo nel tuo store delle app.',
   sendRequestButton: 'Pianifica eliminazione',
   toastDeletionAlreadyPending: 'L’eliminazione dell’account è già in corso.',
   toastDeletionRequestFailed:

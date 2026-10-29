@@ -8,6 +8,8 @@ import {
   defaultShowsAllControls,
   getVisibleActionSections,
   getVisibleActionSectionsForDevices,
+  isActionComingSoon,
+  isActionComingSoonForDevices,
   isActionSupported,
   isActionSupportedByAnyDevice,
   omitPersonLevelActions,
@@ -56,7 +58,10 @@ import { resolveControlCardStatus } from '@kidgate/core/domain/deviceControlStat
  * respond is worse than one that lands a panel away.
  */
 export const ACTION_TAB = {
-  'daily-limit': 'screen',
+  /* Controls, where the limit is set — the slider, or the child's budget. It
+     pointed at the Screen panel, which reads the limit and edits nothing, so
+     the hub's "Edit limit" landed on a page with no editor (2026-10-29). */
+  'daily-limit': 'controls',
   schedule: 'screen',
   'reward-tasks': 'controls',
   /* Safety, where the check-in HISTORY is. It pointed at Overview, which holds
@@ -136,6 +141,14 @@ export default function ControlCenter({
       ? isActionSupportedByAnyDevice(action, devices)
       : isActionSupported(action, device);
 
+  /* Planned for this device, not in its build yet (an iPhone's VPN rows while
+     `IOS_WEB_FILTER_VPN_ENABLED` is false): inert like a struck-out card, but
+     it says Coming soon rather than blaming the platform. */
+  const comingSoon = action =>
+    devices
+      ? isActionComingSoonForDevices(action, devices)
+      : isActionComingSoon(action, device);
+
   /*
    * What a struck-out card says, and it is not one sentence.
    *
@@ -188,6 +201,7 @@ export default function ControlCenter({
           <div className="control-grid">
             {section.actions.map((action, i) => {
               const can = supported(action);
+              const soon = !can && comingSoon(action);
               /* Only for a card that is lit. A machine that cannot carry the
                  feature has no state to report, and "Off" over a struck-out
                  card reads as a switch somebody forgot rather than as a thing
@@ -221,6 +235,9 @@ export default function ControlCenter({
                     <Icon name={action.icon} size={18} />
                   </span>
                   <strong>{action.title}</strong>
+                  {soon && (
+                    <span className="pill tone-muted">{t('common.comingSoon')}</span>
+                  )}
                   {status && (
                     <span className={`control-card-state tone-${status.tone}`}>
                       <b>
@@ -234,11 +251,18 @@ export default function ControlCenter({
                       )}
                     </span>
                   )}
-                  {/* No description under an unset Daily Limit: "Set Daily
-                      Limit" repeated the card's own button, as on the phone. */}
-                  {action.id === 'daily-limit' &&
-                  status?.valueKey === 'shared.notSet' ? null : (
-                    <em>{can ? action.description : unavailableLabel}</em>
+                  {/* A Daily Limit's description is an instruction, "Set a
+                      Daily Limit": under an unset one it repeated the button,
+                      under "180 min/day" it read as no limit (2026-10-29). The
+                      hub says the phone hub's sentence instead — the number is
+                      a total across every device. */}
+                  {action.id === 'daily-limit' && status ? (
+                    devices &&
+                    status.valueKey !== 'shared.notSet' && (
+                      <em>{appT('family.childDetailLimitShared')}</em>
+                    )
+                  ) : (
+                    <em>{can || soon ? action.description : unavailableLabel}</em>
                   )}
                   {status && (
                     <span className="control-card-cta">

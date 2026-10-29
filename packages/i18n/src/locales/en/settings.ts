@@ -112,7 +112,7 @@ export const settings = {
   deleteAccountAlertMessageMember:
     'This schedules your own account for deletion. Nothing is removed yet — you can sign in and cancel any time before the deletion date. After that, your sign-in and your own settings are deleted. The family, its devices and the other parents are not affected.',
   deleteAccountSubscriptionNotice:
-    'Deleting your account does not cancel a subscription. Cancel it in the App Store or Google Play.',
+    'Deleting your account does not cancel a subscription. Cancel it in your app store.',
   sendRequestButton: 'Schedule deletion',
   toastDeletionAlreadyPending: 'Account deletion is already in progress.',
   toastDeletionRequestFailed: 'Unable to start account deletion. Try again.',

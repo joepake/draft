@@ -1,10 +1,12 @@
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
+import Icon from '@kidgate/web-ui/Icon';
 import { useT } from '@kidgate/web-ui/useT';
+import { DEFAULT_NOTIFICATION_PREFS } from '@kidgate/schema/notificationPrefs';
 import {
-  ALERT_PREF_KEYS,
-  DEFAULT_NOTIFICATION_PREFS,
-} from '@kidgate/schema/notificationPrefs';
-import { isValidQuietHoursWindow } from '@kidgate/core/domain/notificationPrefs';
+  ALERT_ROW_ORDER,
+  DIGEST_ALERT_KEY,
+  isValidQuietHoursWindow,
+} from '@kidgate/core/domain/notificationPrefs';
 import { SCHEDULE_TIME_STEP_MINUTES } from '@kidgate/core/domain/scheduleWindow';
 import { notificationPrefsRepository } from '../adapters/repositories.js';
 import Card from './Card.jsx';
@@ -30,7 +32,7 @@ import { useReload } from './useReload.js';
  * the same string, which is exactly what would make the wrong one work in
  * testing and fail for everybody else.
  *
- * One row per `ALERT_PREF_KEYS` entry, in that order, so a key the schema adds
+ * One row per `ALERT_PREF_KEYS` entry, in core's `ALERT_ROW_ORDER` (which fails typecheck on a missing key), so a key the schema adds
  * arrives here with no edit — `billing`, the trial's win-back offers, did on
  * 2026-09-28. Its hint says the notice that a plan ended cannot be switched off.
  * A browser-only parent has no document to hold a switch and gets no card; it
@@ -126,8 +128,15 @@ export default function NotificationPrefsCard({
       title={appT('notifications.sectionAlerts')}
       subtitle={appT('notifications.sectionAlertsHint')}
     >
-      {/* Which phone. Hidden at one, where a picker offering a single option
-          teaches that the control does nothing. */}
+      {/* Which phone. At one, its name instead of a picker offering a single
+          option: the footnote says these apply to one phone only, and with
+          nothing here it never said which (2026-10-29). */}
+      {parentDevices.length === 1 && (
+        <p className="hint prefs-phone">
+          <Icon name="smartphone" size={14} />
+          {parentDevices[0].name}
+        </p>
+      )}
       {parentDevices.length > 1 && (
         <div className="device-admin-row">
           <select
@@ -149,39 +158,46 @@ export default function NotificationPrefsCard({
           can turn off. */}
       <p className="hint">{appT('notifications.sosAlwaysOn')}</p>
 
-      {ALERT_PREF_KEYS.map(key => (
-        <div className="row-between" key={key}>
-          <span className="row-between-label">
-            {/* A template, like the phone's: the labels are nested two levels
+      {/* The phone's order and its Summary split, from core: the weekly report
+          is not an alert, and it sat among them here (2026-10-29). */}
+      {[...ALERT_ROW_ORDER, DIGEST_ALERT_KEY].map(key => (
+        <Fragment key={key}>
+          {key === DIGEST_ALERT_KEY && (
+            <h3 className="feed-day-head">{appT('notifications.sectionSummary')}</h3>
+          )}
+          <div className="row-between">
+            <span className="row-between-label">
+              {/* A template, like the phone's: the labels are nested two levels
                 deep under `alert`, and a literal key would be reported missing
                 by `yarn i18n:missing`, which reads top-level entries only. */}
-            <strong>{appT(`notifications.alert.${key}.label`)}</strong>
-            <span className="row-between-hint">
-              {appT(`notifications.alert.${key}.hint`)}
+              <strong>{appT(`notifications.alert.${key}.label`)}</strong>
+              <span className="row-between-hint">
+                {appT(`notifications.alert.${key}.hint`)}
+              </span>
             </span>
-          </span>
-          <Toggle
-            /* `on`, not `checked` — this switch is a `<button role="switch">`,
+            <Toggle
+              /* `on`, not `checked` — this switch is a `<button role="switch">`,
                not an `<input type="checkbox">`, and the wrong prop name leaves
                it permanently off with `aria-checked="false"` under a document
                that says true. Caught in the browser 2026-09-15. */
-            on={prefs.alerts?.[key] !== false}
-            label={appT(`notifications.alert.${key}.label`)}
-            disabled={disabled}
-            onChange={next =>
-              write(
-                () =>
-                  notificationPrefsRepository.setAlertPref(
-                    accountId,
-                    deviceId,
-                    key,
-                    next,
-                  ),
-                { ...prefs, alerts: { ...prefs.alerts, [key]: next } },
-              )
-            }
-          />
-        </div>
+              on={prefs.alerts?.[key] !== false}
+              label={appT(`notifications.alert.${key}.label`)}
+              disabled={disabled}
+              onChange={next =>
+                write(
+                  () =>
+                    notificationPrefsRepository.setAlertPref(
+                      accountId,
+                      deviceId,
+                      key,
+                      next,
+                    ),
+                  { ...prefs, alerts: { ...prefs.alerts, [key]: next } },
+                )
+              }
+            />
+          </div>
+        </Fragment>
       ))}
 
       <h3 className="feed-day-head">{appT('notifications.sectionQuietHours')}</h3>

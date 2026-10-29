@@ -13,7 +13,6 @@ export const checkIn = {
   metaNoLocation: 'लोकेशन नहीं जुड़ी',
   viewPhotoAccessibility: 'चेक-इन फ़ोटो देखें',
   responseMessage: 'मैं सुरक्षित हूँ।',
-  toastSuccess: 'धन्यवाद। आपका जवाब आपके माता-पिता को भेज दिया गया है।',
   toastFailed: 'चेक-इन नहीं भेजा जा सका। फिर से कोशिश करें।',
   quickCheckInBadge: 'चेक-इन',
   areYouOkay: 'क्या आप ठीक हैं?',
@@ -21,6 +20,10 @@ export const checkIn = {
     'आपके माता-पिता जानना चाहते हैं कि आप ठीक हैं। KidGate आपकी लोकेशन और हो सके तो एक फ़ोटो भेजेगा।',
   checkInLocationOnlyBody:
     'आपके माता-पिता जानना चाहते हैं कि आप ठीक हैं। KidGate हो सके तो आपकी लोकेशन भेजेगा।',
+  checkInPhotoNoLocationBody:
+    'आपके माता-पिता जानना चाहते हैं कि आप ठीक हैं। इस डिवाइस पर लोकेशन बंद है, इसलिए KidGate हो सके तो एक फ़ोटो भेजेगा।',
+  checkInAnswerOnlyBody:
+    'आपके माता-पिता जानना चाहते हैं कि आप ठीक हैं। इस डिवाइस पर लोकेशन बंद है, इसलिए सिर्फ़ आपका जवाब भेजा जाएगा।',
   yesImOkay: 'मैं ठीक हूँ',
   yesImOkaySending: 'भेजा जा रहा है…',
   iNeedHelp: 'मुझे मदद चाहिए',

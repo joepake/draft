@@ -24,8 +24,8 @@ export const plans = {
   termMonthly: 'मासिक',
   termAnnual: 'वार्षिक',
   bestValueBadge: 'सबसे किफ़ायती',
-  premiumManageBillingNote:
-    'अपने App Store या Google Play सेटिंग्स में बिलिंग प्रबंधित करें।',
+  premiumManageBillingNote: 'अपने ऐप स्टोर की सेटिंग्स में बिलिंग प्रबंधित करें।',
+  paidThrough: '{{date}} तक भुगतान किया गया',
   compareTitle: 'मुफ़्त और Premium की तुलना',
   compareColumnFree: 'मुफ़्त',
   compareColumnPremium: 'Premium',
@@ -51,6 +51,7 @@ export const plans = {
   compareNewApps: 'नए इंस्टॉल हुए ऐप्स',
   compareNewAppsPremium: 'कौन-से ऐप, नाम के साथ',
   compareMessages: 'संदेश चेतावनियाँ (Android)',
+  compareMessagesIos: 'संदेश चेतावनियाँ (दूसरे फ़ोन)',
   compareSafety: 'सुरक्षा अलर्ट और चेक-इन',
   compareSafetyFree: 'अलर्ट + चेक-इन',
   compareSafetyPremium: 'हर चेक-इन के साथ फ़ोटो जोड़ता है',
@@ -143,7 +144,7 @@ export const plans = {
     'यह सदस्यता अभी उपलब्ध नहीं है। कृपया बाद में पुनः प्रयास करें।',
   unableToStartPurchase: 'खरीदारी शुरू नहीं हो सकी। कृपया पुनः प्रयास करें।',
   noActiveSubscription:
-    'कोई सक्रिय सदस्यता नहीं मिली। उसी App Store या Google Play खाते से साइन इन करें जिससे आपने सदस्यता ली थी, फिर दोबारा प्रयास करें।',
+    'कोई सक्रिय सदस्यता नहीं मिली। उसी ऐप स्टोर खाते से साइन इन करें जिससे आपने सदस्यता ली थी, फिर दोबारा प्रयास करें।',
   purchasesRestored: 'खरीदारी पुनर्स्थापित हो गई।',
   unableToRestorePurchases: 'खरीदारी पुनर्स्थापित नहीं हो सकी। कृपया पुनः प्रयास करें।',
   purchaseVerificationFailed:
@@ -180,6 +181,8 @@ export const plans = {
   platformIosDetail: 'माता-पिता या बच्चे का डिवाइस · iOS 16 या बाद का',
   platformAndroid: 'Android',
   platformAndroidDetail: 'माता-पिता या बच्चे का डिवाइस · Android 7 या बाद का',
+  platformOtherPhones: 'दूसरे फ़ोन और टैबलेट',
+  platformOtherPhonesDetail: 'माता-पिता या बच्चे का डिवाइस',
   platformMac: 'Mac',
   platformMacDetail: 'सिर्फ़ बच्चे का डिवाइस · macOS 12 या बाद का',
   platformIosLimits:
@@ -195,6 +198,8 @@ export const plans = {
   platformWindowsDetail: 'सिर्फ़ बच्चे का डिवाइस · Windows 10 या बाद का',
   platformAndroidTv: 'Android TV',
   platformAndroidTvDetail: 'सिर्फ़ बच्चे का डिवाइस · Android TV 7 या बाद का',
+  platformGoogleTv: 'Google TV',
+  platformGoogleTvDetail: 'सिर्फ़ बच्चे का डिवाइस',
   platformChromebook: 'Chromebook',
   platformChromebookDetail: 'बच्चे का डिवाइस · सिर्फ़ Chrome में वेब फ़िल्टर',
   teaserCta: 'Premium देखें',
@@ -213,6 +218,8 @@ export const plans = {
   teaserChildReport: 'Premium हर बच्चे के लिए अलग रिपोर्ट देता है, और हर हफ़्ते नई।',
   teaserMessageAlerts:
     'Premium तब बताता है जब किसी संदेश पर आपका ध्यान चाहिए। सिर्फ़ Android पर।',
+  teaserMessageAlertsIos:
+    'Premium तब बताता है जब किसी संदेश पर आपका ध्यान चाहिए। iPhone या iPad पर उपलब्ध नहीं।',
   teaserWebFilterAdvanced:
     'Premium श्रेणी के अनुसार फ़िल्टर करता है, आपकी अपनी अनुमति और ब्लॉक सूचियाँ लेता है, और बच्चे को किसी साइट को खोलने का अनुरोध भेजने देता है।',
   teaserWeeklyReport:

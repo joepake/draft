@@ -89,7 +89,7 @@ export const errors = {
   unableToVerifyPurchase: 'Unable to verify that purchase. Try again in a moment.',
   noPurchasesToRestore: 'There are no purchases to restore on this account.',
   noActiveSubscription:
-    'No active subscription was found. Sign in with the App Store or Google Play account you subscribed with, then try again.',
+    'No active subscription was found. Sign in with the app store account you subscribed with, then try again.',
   unableToRestorePurchases: 'Unable to restore your purchases right now. Try again.',
   alreadyInFamily: 'You are already in this family.',
   leaveFamilyBeforeJoining: 'Leave your current family before joining another.',

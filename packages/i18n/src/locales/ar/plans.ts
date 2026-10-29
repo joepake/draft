@@ -24,7 +24,8 @@ export const plans = {
   termMonthly: 'شهري',
   termAnnual: 'سنوي',
   bestValueBadge: 'الأفضل قيمة',
-  premiumManageBillingNote: 'أدر الفوترة من إعدادات App Store أو Google Play.',
+  premiumManageBillingNote: 'أدر الفوترة من إعدادات متجر التطبيقات.',
+  paidThrough: 'مدفوع حتى {{date}}',
   compareTitle: 'المجاني وPremium جنبًا إلى جنب',
   compareColumnFree: 'مجاني',
   compareColumnPremium: 'Premium',
@@ -50,6 +51,7 @@ export const plans = {
   compareNewApps: 'التطبيقات المثبَّتة حديثًا',
   compareNewAppsPremium: 'أي التطبيقات، بأسمائها',
   compareMessages: 'تنبيهات الرسائل (Android)',
+  compareMessagesIos: 'تنبيهات الرسائل (هواتف أخرى)',
   compareSafety: 'تنبيهات الحماية والاطمئنان',
   compareSafetyFree: 'تنبيهات + تسجيل الوصول',
   compareSafetyPremium: 'يضيف صورة إلى كل تسجيل وصول',
@@ -140,7 +142,7 @@ export const plans = {
     'هذا الاشتراك غير متاح حاليًا. يرجى المحاولة مرة أخرى لاحقًا.',
   unableToStartPurchase: 'تعذر بدء عملية الشراء. يرجى المحاولة مرة أخرى.',
   noActiveSubscription:
-    'لم يُعثر على اشتراك نشط. سجّل الدخول بحساب App Store أو Google Play الذي اشتركت من خلاله، ثم أعد المحاولة.',
+    'لم يُعثر على اشتراك نشط. سجّل الدخول بحساب متجر التطبيقات الذي اشتركت من خلاله، ثم أعد المحاولة.',
   purchasesRestored: 'تمت استعادة المشتريات.',
   unableToRestorePurchases: 'تعذرت استعادة المشتريات. يرجى المحاولة مرة أخرى.',
   purchaseVerificationFailed:
@@ -177,6 +179,8 @@ export const plans = {
   platformIosDetail: 'جهاز ولي أمر أو طفل · iOS 16 أو أحدث',
   platformAndroid: 'Android',
   platformAndroidDetail: 'جهاز ولي أمر أو طفل · Android 7 أو أحدث',
+  platformOtherPhones: 'هواتف وأجهزة لوحية أخرى',
+  platformOtherPhonesDetail: 'جهاز ولي أمر أو طفل',
   platformMac: 'Mac',
   platformMacDetail: 'جهاز طفل فقط · macOS 12 أو أحدث',
   platformIosLimits:
@@ -192,6 +196,8 @@ export const plans = {
   platformWindowsDetail: 'جهاز طفل فقط · Windows 10 أو أحدث',
   platformAndroidTv: 'Android TV',
   platformAndroidTvDetail: 'جهاز طفل فقط · Android TV 7 أو أحدث',
+  platformGoogleTv: 'Google TV',
+  platformGoogleTvDetail: 'جهاز طفل فقط',
   platformChromebook: 'Chromebook',
   platformChromebookDetail: 'جهاز طفل · فلتر الويب في Chrome فقط',
   teaserCta: 'اطّلع على Premium',
@@ -208,6 +214,8 @@ export const plans = {
   teaserActivityWindow: 'الخطة المجانية تعرض اليوم. Premium يحتفظ بـ 30 يومًا.',
   teaserChildReport: 'يضيف Premium تقريرًا لكل طفل، وتقريرًا جديدًا كل أسبوع.',
   teaserMessageAlerts: 'ينبّهك Premium عندما تحتاج رسالة إلى انتباهك. على Android فقط.',
+  teaserMessageAlertsIos:
+    'ينبّهك Premium عندما تحتاج رسالة إلى انتباهك. غير متوفر على iPhone وiPad.',
   teaserWebFilterAdvanced:
     'يفلتر Premium حسب الفئة، ويقبل قوائم السماح والحظر الخاصة بك، ويتيح لطفلك طلب فتح موقع.',
   teaserWeeklyReport:

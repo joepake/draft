@@ -66,6 +66,8 @@ export const rewardTask = {
   taskRejected: 'Tarea premiada devuelta',
   taskRejectedDescription:
     '«{{title}}» fue devuelta a {{deviceName}} para otro intento.',
+  taskClaimed: 'Tarea terminada',
+  taskClaimedDescription: '{{deviceName}} terminó “{{title}}”.',
   starsLabel: 'Dificultad',
   starsHint: 'Tu hijo o hija colecciona esa cantidad de estrellas.',
   starsEasy: 'Fácil',

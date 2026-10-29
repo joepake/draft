@@ -65,6 +65,8 @@ export const rewardTask = {
   taskRejected: 'Tugas hadiah dikembalikan',
   taskRejectedDescription:
     '“{{title}}” dikembalikan ke {{deviceName}} untuk dicoba lagi.',
+  taskClaimed: 'Tugas selesai',
+  taskClaimedDescription: '{{deviceName}} menyelesaikan “{{title}}”.',
   starsLabel: 'Tingkat kesulitan',
   starsHint: 'Anak Anda mengumpulkan bintang sebanyak itu.',
   starsEasy: 'Mudah',

@@ -67,6 +67,8 @@ export const rewardTask = {
   taskRejected: 'Compito premio rimandato',
   taskRejectedDescription:
     '“{{title}}” è stato rimandato a {{deviceName}} per un nuovo tentativo.',
+  taskClaimed: 'Compito completato',
+  taskClaimedDescription: '{{deviceName}} ha completato “{{title}}”.',
   starsLabel: 'Difficoltà',
   starsHint: 'Tuo figlio colleziona altrettante stelle.',
   starsEasy: 'Facile',

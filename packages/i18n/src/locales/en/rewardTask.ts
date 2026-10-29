@@ -66,6 +66,8 @@ export const rewardTask = {
   taskRejected: 'Reward task sent back',
   taskRejectedDescription:
     '“{{title}}” was sent back to {{deviceName}} for another try.',
+  taskClaimed: 'Task finished',
+  taskClaimedDescription: '{{deviceName}} finished “{{title}}”.',
   starsLabel: 'Difficulty',
   starsHint: 'Your child collects that many stars.',
   starsEasy: 'Easy',

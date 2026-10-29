@@ -17,6 +17,7 @@ export const timeRequest = {
   statusWaitingForApproval:
     'Menunggu tanggapan orang tuamu ({{minutes}} menit diminta).',
   statusCooldown: 'Kamu bisa mengirim permintaan baru dalam {{time}}.',
+  statusDeclined: 'Orang tuamu belum mengizinkan kali ini.',
   statusDailyLimitExceeded:
     'Waktu layar hari ini sudah habis. Aplikasi akan terbuka lagi besok — atau lebih cepat jika orang tuamu menambah waktu.',
   errorDeviceNotRegistered:

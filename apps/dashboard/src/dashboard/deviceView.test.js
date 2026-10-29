@@ -153,4 +153,18 @@ describe('what a device row says about where it is', () => {
       alertOnExit: false,
     });
   });
+
+  /*
+   * Dropped until 2026-10-29: `resolveMessageMonitoring` read every Android
+   * phone as "told us nothing", and the card said Waiting where the phone
+   * said Off. Absent stays absent — unknown, never off.
+   */
+  it("keeps the device's Message Alerts answer, and leaves an absent one absent", () => {
+    const messageMonitoring = {
+      incoming: { granted: true, enabled: false },
+      outgoing: { granted: false, enabled: false },
+    };
+    expect(view({ messageMonitoring }).messageMonitoring).toBe(messageMonitoring);
+    expect('messageMonitoring' in view({})).toBe(false);
+  });
 });

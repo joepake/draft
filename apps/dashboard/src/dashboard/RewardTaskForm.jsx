@@ -13,6 +13,12 @@ import { defaultStarsForMinutes } from '@kidgate/core/domain/rewardTasks';
 const MINUTE_PRESETS = [10, 30, 60];
 /** The phone's modal opens on the same 30. */
 const DEFAULT_MINUTES = 30;
+/** The phone's three levels, `RewardTaskFormModal`'s `STAR_OPTIONS`. */
+const STAR_OPTIONS = [
+  { value: 1, labelKey: 'rewardTask.starsEasy' },
+  { value: 2, labelKey: 'rewardTask.starsMedium' },
+  { value: 3, labelKey: 'rewardTask.starsHard' },
+];
 
 /**
  * Creating a reward task from the web.
@@ -27,9 +33,10 @@ const DEFAULT_MINUTES = 30;
  * client that silently trimmed 300 to 240 would be showing a number the family
  * never chose.
  *
- * Stars are not asked for. `defaultStarsForMinutes` derives the band from the
- * minutes exactly as the server does, and a picker here would let the two
- * disagree about the same task depending on which side wrote it last.
+ * Difficulty is the phone's picker: it follows the minutes through
+ * `defaultStarsForMinutes`, as the server does for a body without stars, until
+ * the parent picks one. This form sent the derived band only, so a task set
+ * "Hard" on the phone could not be set from here (2026-10-29).
  */
 /*
  * `appT` reads the APP key space through `@kidgate/i18n/activityFeed`, the
@@ -45,6 +52,8 @@ export default function RewardTaskForm({ device, readOnly, busy, onCreate }) {
   const [title, setTitle] = useState('');
   const [minutes, setMinutes] = useState(DEFAULT_MINUTES);
   const [daily, setDaily] = useState(false);
+  const [pickedStars, setPickedStars] = useState(null);
+  const stars = pickedStars ?? defaultStarsForMinutes(minutes);
 
   const trimmed = title.trim();
   const valid =
@@ -81,13 +90,14 @@ export default function RewardTaskForm({ device, readOnly, busy, onCreate }) {
       deviceName: device.name,
       title: trimmed,
       bonusMinutes: minutes,
-      stars: defaultStarsForMinutes(minutes),
+      stars,
       repeat: daily ? 'daily' : 'once',
     });
     if (ok) {
       setTitle('');
       setMinutes(DEFAULT_MINUTES);
       setDaily(false);
+      setPickedStars(null);
       setOpen(false);
     }
   };
@@ -127,6 +137,35 @@ export default function RewardTaskForm({ device, readOnly, busy, onCreate }) {
         ))}
       </ul>
 
+      <ul className="chips chips-toggle" aria-label={appT('rewardTask.starsLabel')}>
+        {STAR_OPTIONS.map(option => (
+          <li key={option.value} className={stars === option.value ? 'is-on' : ''}>
+            <button
+              type="button"
+              disabled={busy}
+              aria-pressed={stars === option.value}
+              onClick={() => setPickedStars(option.value)}
+            >
+              {appT(option.labelKey)}
+            </button>
+          </li>
+        ))}
+      </ul>
+      {/* The phone's hint: the stars the child collects for this level. */}
+      <p
+        className="hint reward-stars-hint"
+        aria-label={`${appT('rewardTask.starsA11y', { count: stars })}. ${appT(
+          'rewardTask.starsHint',
+        )}`}
+      >
+        <span className="reward-stars" aria-hidden="true">
+          {Array.from({ length: stars }, (_, index) => (
+            <Icon key={index} name="star" size={11} />
+          ))}
+        </span>
+        <span>{appT('rewardTask.starsHint')}</span>
+      </p>
+
       <label className="reward-repeat">
         <input
           type="checkbox"
@@ -149,14 +188,6 @@ export default function RewardTaskForm({ device, readOnly, busy, onCreate }) {
           {busy ? t('dash.working') : appT('rewardTask.createTask')}
         </button>
       </div>
-
-      {/* `dash.rewardTaskStars` is the key the task list already uses for the
-          same number. A second sentence for it would be two ways of saying one
-          difficulty on one screen. */}
-      <p className="hint">
-        <Icon name="star" size={12} />{' '}
-        {t('dash.rewardTaskStars', { count: defaultStarsForMinutes(minutes) })}
-      </p>
     </form>
   );
 }

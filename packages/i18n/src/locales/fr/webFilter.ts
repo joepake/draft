@@ -33,6 +33,8 @@ export const webFilter = {
   safeSearchLabel: 'Imposer SafeSearch',
   safeSearchHint:
     'Verrouille Google SafeSearch, le mode restreint de YouTube, Bing et DuckDuckGo sur leur réglage strict. Android et Chrome.',
+  safeSearchHintIos:
+    'Verrouille Google SafeSearch, le mode restreint de YouTube, Bing et DuckDuckGo sur leur réglage strict. Non disponible sur iPhone et iPad.',
   safeSearchStrictNote:
     'YouTube passe à son niveau le plus strict : les commentaires sont masqués et certaines vidéos ordinaires sont aussi bloquées. Un enfant ne peut pas le désactiver depuis son compte.',
   infoTitle: 'Fonctionnement',

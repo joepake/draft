@@ -603,8 +603,8 @@ export default {
     locationUpdated: 'Aktualisiert {{when}}',
     locationWaiting: 'Warte auf die erste Aktualisierung',
     noPlaces:
-      'Noch keine Orte gespeichert. Füge in der App einen hinzu, um benachrichtigt zu werden, wenn dein Kind ankommt oder geht.',
-    placeRadius: '{{meters}} m · ',
+      'Noch keine Orte gespeichert. Füge einen hinzu, um benachrichtigt zu werden, wenn dein Kind ankommt oder geht.',
+    placeRadius: '{{meters}} m',
     placeArrive: 'Ankunft',
     placeLeave: 'Abfahrt',
     placeNoAlerts: 'keine Warnungen',
@@ -643,7 +643,7 @@ export default {
     limitShared: 'Für alle Geräte zusammen',
     limitSharedSpent: 'Heute {{used}} von {{limit}} genutzt',
     limitSharedHint:
-      'Das ist der ganze Tag dieses Kindes, kein Limit für dieses eine Gerät — jedes Gerät bekommt, was die anderen übrig lassen. Änderbar in der KidGate-App.',
+      'Das ist der ganze Tag dieses Kindes, kein Limit für dieses eine Gerät — jedes Gerät bekommt, was die anderen übrig lassen.',
     whatsOnSub: 'Änderungen werden mit dem Kindergerät synchronisiert',
     rowBlockedHours: 'Sperrzeiten',
     rowBlockedHoursDesc_one: '{{count}} Zeitfenster · {{list}}',
@@ -667,8 +667,7 @@ export default {
       'Verschlüsseltes DNS wird immer blockiert, solange der Filter läuft, damit ein Browser ihn nicht umgehen kann.',
     starChartTitle: 'Sternetafel',
     starChartSub: 'Diese Woche gesammelte Sterne, pro Kind',
-    starChartEmpty:
-      'Füge in der App ein zweites Kind hinzu, um die Sternetafel zu starten.',
+    starChartEmpty: 'Füge ein zweites Kind hinzu, um die Sternetafel zu starten.',
     starChartStars: '{{count}} Sterne',
     rewardTasksTitle: 'Bonusaufgaben',
     rewardTasksSub: 'Verdiene Extraminuten durch erledigte Aufgaben',

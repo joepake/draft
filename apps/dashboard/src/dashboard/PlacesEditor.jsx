@@ -169,7 +169,9 @@ export default function PlacesEditor({ device, readOnly, busy, onSave }) {
             <button
               className="icon-button place-remove"
               disabled={readOnly || busy}
-              aria-label={appT('placeAlerts.deletePlace', { name: place.name })}
+              // The phone's label: the key is the bare "Delete", so the name
+              // passed to it was dropped and every row read the same.
+              aria-label={`${appT('placeAlerts.deletePlace')}, ${place.name}`}
               title={readOnly ? t('dash.unlockToChange') : undefined}
               onClick={() => {
                 // Asked first: this sits beside Edit, and a mis-tap deleted

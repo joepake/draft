@@ -36,6 +36,8 @@ export const webFilter = {
   safeSearchLabel: 'فرض البحث الآمن',
   safeSearchHint:
     'يثبّت البحث الآمن في Google، والوضع المقيّد في YouTube، وBing وDuckDuckGo على الإعداد الصارم. Android وChrome.',
+  safeSearchHintIos:
+    'يثبّت البحث الآمن في Google، والوضع المقيّد في YouTube، وBing وDuckDuckGo على الإعداد الصارم. لا يعمل على iPhone وiPad.',
   safeSearchStrictNote:
     'يعمل YouTube بأشد مستوى تقييد: تُخفى التعليقات ويُحظر أيضًا بعض مقاطع الفيديو العادية. لا يستطيع الطفل إيقاف ذلك من حسابه.',
   infoTitle: 'كيف يعمل',

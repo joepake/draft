@@ -8,6 +8,7 @@ export const blockedHours = {
   statusActiveNow: 'Active now',
   heroSubtitle: 'Set up to {{max}} time ranges when device use is blocked.',
   statTimeRangesLabel: 'Time ranges',
+  statTimeRangesLabel_one: 'Time range',
   toggleTitle: 'Enable Blocked Hours',
   toggleSubtitleOn: 'Device use is blocked during the times below.',
   toggleSubtitleOff: 'Turn on to block device use on a schedule.',

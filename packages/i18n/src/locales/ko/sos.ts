@@ -25,6 +25,7 @@ export const sos = {
     'SOS를 보냈어요. 가능하면 안전한 곳에 있어 주세요 — 부모님에게 알림이 갔어요.',
   escapeGrantedTitle: 'SOS를 보냈어요',
   escapeGrantedBody: '부모님에게 알림이 갔어요.',
+  sentParentSaw: '부모님이 SOS를 확인했어요.',
   toastSentWithoutPhoto: 'SOS를 사진 없이 보냈어요.',
   toastSentWithoutPhotoCamera:
     'SOS를 사진 없이 보냈어요. 다음에 사진을 함께 보내려면 설정에서 카메라를 허용하세요.',
@@ -95,5 +96,5 @@ export const sos = {
   trustedContactsSaveFailed: '저장하지 못했습니다. 잠시 후 다시 시도하세요.',
   trustedContactsRemoveAccessibility: '{{name}} 삭제',
   trustedContactsPrivacyNote:
-    '각 연락처는 기기 이름과 마지막 확인 위치를 이메일로 받습니다. 사진은 전송되지 않습니다.',
+    '각 연락처는 보낸 사람의 이름과 마지막 확인 위치를 이메일로 받습니다. 사진은 전송되지 않습니다.',
 } as const;

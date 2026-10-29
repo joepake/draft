@@ -111,7 +111,7 @@ export const settings = {
   deleteAccountAlertMessageMember:
     'Esto programa la eliminación de tu propia cuenta. Todavía no se borra nada: puedes iniciar sesión y cancelar en cualquier momento antes de la fecha de eliminación. Después de esa fecha, se eliminan tu inicio de sesión y tus propios ajustes. La familia, sus dispositivos y los demás padres no se ven afectados.',
   deleteAccountSubscriptionNotice:
-    'Eliminar tu cuenta no cancela una suscripción. Cancélala en la App Store o en Google Play.',
+    'Eliminar tu cuenta no cancela una suscripción. Cancélala en tu tienda de aplicaciones.',
   sendRequestButton: 'Programar eliminación',
   toastDeletionAlreadyPending: 'La eliminación de la cuenta ya está en curso.',
   toastDeletionRequestFailed:

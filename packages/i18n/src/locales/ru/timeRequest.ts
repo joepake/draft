@@ -24,6 +24,7 @@ export const timeRequest = {
   statusWaitingForApproval_few:
     'Ожидание ответа родителей (запрошено {{minutes}} минуты).',
   statusCooldown: 'Сможешь отправить новый запрос через {{time}}.',
+  statusDeclined: 'Родители в этот раз ответили «не сейчас».',
   statusDailyLimitExceeded:
     'Экранное время на сегодня закончилось. Приложения снова откроются завтра — или раньше, если родители добавят время.',
   errorDeviceNotRegistered:

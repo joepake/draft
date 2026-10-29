@@ -123,7 +123,9 @@ export const USER_GUIDE_TOPICS: UserGuideTopicConfig[] = [
   {
     id: 'connectChild',
     groupId: 'connection',
-    icon: 'devices',
+    // A phone, not `devices`: that glyph is a monitor on a stand, and it sat
+    // above "Connect a computer" reading as the computer topic (2026-10-29).
+    icon: 'smartphone',
     stepCount: 8,
     stepDevices: [
       'child',

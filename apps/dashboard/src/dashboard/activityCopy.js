@@ -72,10 +72,12 @@ function readable(value, key) {
  * render the literal `{{actorName}}`, which is what this dashboard shipped:
  * the row stores `actorUserId` / `actorParentDeviceId`, never a name, so the
  * parent who pressed the button is resolved here or not at all.
+ * `childName` names the subject of a row about the child, not the machine.
  */
-export function activityCopy(activity, translate, deviceName, actorNames) {
+export function activityCopy(activity, translate, deviceName, actorNames, childName) {
   const copy = resolveActivityCopy(activity, translate, {
     deviceName,
+    childName,
     actorName: resolveActivityActorName(
       actorNames ?? EMPTY_ACTIVITY_ACTOR_NAMES,
       translate,

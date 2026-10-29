@@ -1,6 +1,8 @@
 import {
   getVisibleActionSections,
   getVisibleActionSectionsForDevices,
+  isActionComingSoon,
+  isActionComingSoonForDevices,
   isActionSupported,
   isPersonLevelAction,
   omitPersonLevelActions,
@@ -77,32 +79,41 @@ export function buildSearchSections({
         getVisibleActionSections(appT, device, false),
         device.childId,
       ).flatMap(section =>
-        section.actions.map(action => ({
-          key: `${device.id}:${action.id}`,
-          icon: action.icon,
-          title: action.title,
-          subtitle: [device.name, owner].filter(Boolean).join(' · '),
-          match: action.description,
-          open: () => open.card(device, action),
-        })),
+        // A Coming soon card is drawn on the grid but opens nothing to find.
+        section.actions
+          .filter(action => !isActionComingSoon(action, device))
+          .map(action => ({
+            key: `${device.id}:${action.id}`,
+            icon: action.icon,
+            title: action.title,
+            subtitle: [device.name, owner].filter(Boolean).join(' · '),
+            match: action.description,
+            open: () => open.card(device, action),
+          })),
       );
     }),
     ...familyChildren.flatMap(child => {
       const carried = devices.filter(device => device.childId === child.id);
       if (carried.length === 0) return [];
       return getVisibleActionSectionsForDevices(appT, carried, false).flatMap(section =>
-        section.actions.filter(isPersonLevelAction).map(action => ({
-          key: `${child.id}:${action.id}`,
-          icon: action.icon,
-          title: action.title,
-          subtitle: child.name,
-          match: action.description,
-          open: () =>
-            open.card(
-              carried.find(device => isActionSupported(action, device)) ?? carried[0],
-              action,
-            ),
-        })),
+        section.actions
+          .filter(
+            action =>
+              isPersonLevelAction(action) &&
+              !isActionComingSoonForDevices(action, carried),
+          )
+          .map(action => ({
+            key: `${child.id}:${action.id}`,
+            icon: action.icon,
+            title: action.title,
+            subtitle: child.name,
+            match: action.description,
+            open: () =>
+              open.card(
+                carried.find(device => isActionSupported(action, device)) ?? carried[0],
+                action,
+              ),
+          })),
       );
     }),
   ];

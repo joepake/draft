@@ -23,7 +23,34 @@ export type ResolveActivityCopyOptions = {
   deviceName?: string | null;
   /** Live parent/actor name — overrides baked actorName param. */
   actorName?: string | null;
+  /**
+   * The child the device counts for. Names the subject of the rows in
+   * `CHILD_SUBJECT_KEYS`, whose `{{deviceName}}` is a person, not a machine.
+   */
+  childName?: string | null;
 };
+
+/**
+ * Rows whose `{{deviceName}}` is who did or was asked something — "Mia
+ * confirmed they are safe", not "iPhone 17 Pro …" (2026-10-29). The pushes
+ * already say the child (`functions/lib/childName.js`); the feed said the
+ * machine. A row about a device ("stays blocked on {{deviceName}}") stays off
+ * this list.
+ */
+const CHILD_SUBJECT_KEYS: ReadonlySet<string> = new Set([
+  'timeRequest.timeRequestSentDescription',
+  'timeRequest.timeRequestApprovedDescription',
+  'timeRequest.timeRequestDeniedDescription',
+  'timeRequest.bonusGrantedDescription',
+  'rewardTask.taskClaimedDescription',
+  'rewardTask.taskApprovedDescription',
+  'rewardTask.taskRejectedDescription',
+  'checkIn.checkInRequestedDescription',
+  'checkIn.checkInRequestedDescriptionLocation',
+  'checkIn.checkInConfirmedDescription',
+  'sos.sosAlertSentDescription',
+  'webFilter.siteRequestReceivedDescription',
+]);
 
 /** Older lock events wrote devices.* — remap to family.* */
 function normalizeActivityKey(key: string): string {
@@ -39,8 +66,11 @@ function normalizeActivityKey(key: string): string {
 function resolveActivityParams(
   params: Activity['params'],
   options?: ResolveActivityCopyOptions,
+  childSubject = false,
 ): TranslationParams | undefined {
-  const deviceName = options?.deviceName?.trim();
+  const childName = options?.childName?.trim();
+  const deviceName =
+    (childSubject ? childName : undefined) || options?.deviceName?.trim();
   const actorName = options?.actorName?.trim();
   if (!deviceName && !actorName && !params) {
     return undefined;
@@ -51,7 +81,7 @@ function resolveActivityParams(
     ...(deviceName
       ? {
           deviceName,
-          childName: deviceName,
+          childName: childName || deviceName,
         }
       : {}),
     ...(actorName ? { actorName } : {}),
@@ -78,13 +108,16 @@ export function resolveActivityCopy(
     };
   }
 
-  const params = resolveActivityParams(activity.params, options);
-
   if (activity.titleKey) {
     const titleKey = normalizeActivityKey(activity.titleKey);
     const descriptionKey = activity.descriptionKey
       ? normalizeActivityKey(activity.descriptionKey)
       : undefined;
+    const params = resolveActivityParams(
+      activity.params,
+      options,
+      CHILD_SUBJECT_KEYS.has(descriptionKey ?? ''),
+    );
     return {
       title: translate(titleKey, params),
       description: descriptionKey ? translate(descriptionKey, params) : undefined,

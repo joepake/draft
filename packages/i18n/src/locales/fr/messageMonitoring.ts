@@ -8,8 +8,12 @@ export const messageMonitoring = {
     'KidGate signale les mots préoccupants dans les messages et les recherches de votre enfant, et vous avertit. Vous ne voyez que le mot ou l’expression signalés, jamais le message ni la recherche.',
   androidOnlyNote:
     'Les messages ne peuvent être analysés que sur les appareils Android. Les recherches peuvent aussi être analysées dans l’extension Chrome.',
+  androidOnlyNoteIos:
+    'Les messages ne peuvent pas être analysés sur iPhone et iPad. Les recherches peuvent aussi être analysées dans l’extension Chrome.',
   searchOnlyNote:
     'Seules les recherches peuvent être analysées ici. Les messages ne peuvent être analysés que sur les appareils Android.',
+  searchOnlyNoteIos:
+    'Seules les recherches peuvent être analysées ici. Les messages ne peuvent pas être analysés sur iPhone et iPad.',
   recentTitle: 'Alertes récentes',
   emptyTitle: 'Aucune alerte pour l’instant',
   emptySubtitle:

@@ -403,7 +403,7 @@ export const userGuide = {
         '3': 'The alert goes out as soon as KidGate has the location, which can take up to half a minute; without one, it is sent anyway. On a phone, the camera then opens for a photo, which can be skipped. If the microphone was allowed during setup, up to 15 seconds of sound is recorded from the moment the SOS is sent.',
         '4': 'Parents receive an urgent notification, even during quiet hours. If KidGate is open, the alert appears on screen, with the SOS siren unless it is turned off in Settings.',
         '5': 'Open your child (or the device, if no child is assigned to it), then the [[Alerts]] section, and choose [[SOS]]. Each alert shows the location ([[Open in Maps]]), the photo and the [[Sound recording]], which can arrive a little after the alert. Select [[I’m on it]] to mark it as responded.',
-        '6': 'To also email people outside the family, open [[Family]], then your family card, and choose [[Trusted contacts]]. Select [[Add contact]] to add up to 5. Each SOS emails them the device name and last known location, never the photo or sound. Tell them first.',
+        '6': 'To also email people outside the family, open [[Family]], then your family card, and choose [[Trusted contacts]]. Select [[Add contact]] to add up to 5. Each SOS emails them the sender’s name and last known location, never the photo or sound. Tell them first.',
       },
     },
     webFilter: {
@@ -650,6 +650,79 @@ export const userGuide = {
         '3': 'Confirm it is you (your password, or signing in again with Google or Apple), type OK, and select [[Schedule deletion]]. This only schedules the deletion: nothing is removed yet.',
         '4': 'The account is deleted after 14 days. Until then, open KidGate and select [[Cancel deletion]] to keep everything.',
         '5': 'A co-parent’s deletion removes only their own account; the family stays. To leave a family without deleting your account, open the family card in Family and select [[Leave family]].',
+      },
+    },
+  },
+  // What an iOS build shows in place of the `topics` field of the same path:
+  // the sentence without Android's name (App Review 2.3.10, 2026-10-26).
+  // `apps/mobile` swaps `t()` keys and overlays steps by number; the dashboard
+  // never reads this.
+  ios: {
+    blockedHours: {
+      steps: {
+        '5': 'On the child device, confirm KidGate still has the permissions it asked for during setup, so ranges start and end on time. On an iPhone or iPad, confirm [[Screen Time]] is still allowed.',
+      },
+    },
+    lockUnlock: {
+      tip: 'On an iPhone or iPad, locking depends on Screen Time authorization, and if KidGate was closed on the iPhone, the lock appears once KidGate runs again. On other devices, locking is strongest once every permission KidGate asks for is allowed.',
+      steps: {
+        '6': 'A locked phone or computer still lets your child send an SOS, and the SOS appears in [[Activities]]. On some child phones, calls always work and SOS also opens maps and messages for 5 minutes while everything else stays locked.',
+      },
+    },
+    siri: {
+      tip: 'Voice commands work on a parent’s iPhone, for every parent in the family, in the language Siri is set to. In some languages Siri does not catch the spoken name KidGate (it does not in Vietnamese): type the command to Siri instead, or run it from the Shortcuts app. The web dashboard has none.',
+    },
+    timeRequests: {
+      tip: 'Requests only appear when the device has a Daily Limit. Approved minutes count for today, on the device that asked, and do not lift a lock you set or Blocked Hours. TVs and the Chrome extension cannot send requests.',
+      steps: {
+        '1': 'On the child device, your child selects [[Request more time]] on the KidGate home screen (on some phones, also from the lock screen when the limit is reached), picks the minutes, adds an optional reason, and sends it.',
+      },
+    },
+    rewardTasks: {
+      tip: 'Bonus minutes only count when the device has a Daily Limit. The minutes go to the device your child used to mark the task done. Reward Tasks are not available on a TV or in the Chrome extension.',
+    },
+    locationSharing: {
+      steps: {
+        '1': 'On the child device, allow Location for KidGate when prompted (or in system Settings). Choose “Always” on iPhone or iPad, or “Allow all the time” on other phones, or the location only updates while KidGate is open.',
+      },
+    },
+    webFilter: {
+      steps: {
+        '2': 'Turn on [[Filter inappropriate websites]] at the top. It applies straight away, so there is nothing to save. [[Force SafeSearch]] on the same screen also locks Google, Bing and DuckDuckGo to safe results and YouTube to Restricted Mode, on other phones, TVs and Chrome, not on iPhone or iPad. On YouTube, Restricted Mode also hides comments and blocks some ordinary videos, so KidGate asks before turning it on.',
+        '5': 'On the child device, open KidGate and approve the filter once. On an iPhone or iPad, Apple’s adult-content filter applies through Screen Time, with no extra step. On another phone, approve the request it shows, then turn Private DNS off in its network settings, because browsers can bypass the filter while Private DNS is on. On a Mac, select [[Open Settings]] next to [[Approve web filtering]] and turn KidGate on.',
+      },
+    },
+    screenTimeCounting: {
+      steps: {
+        '2': 'On a computer and on some phones, a video playing in a small floating window (picture-in-picture, PIP) counts for the app playing it, even while another app is in front.',
+      },
+    },
+    widget: {
+      keywords:
+        'home screen, launcher, at a glance, minutes left, remaining, iphone, ipad',
+      tip: 'Widgets work on phones and tablets, not on a computer or TV. A widget shows the last numbers KidGate received and the time of that update.',
+      steps: {
+        '1': 'Open [[Settings]] and select [[Add widget to Home Screen]]. On some phones, you only confirm where it goes. Otherwise, KidGate shows the steps to add it yourself.',
+        '2': 'To add it yourself, touch and hold an empty spot on the home screen. On iPhone, tap Edit (or + on older versions), then Add Widget. Find KidGate and choose the Screen time widget.',
+        '3': 'Each child’s row shows today’s screen time against their Daily Limit, and children who reached it come first. It fits up to 2 children on iPhone. Devices not assigned to a child are not shown.',
+      },
+    },
+    webHistory: {
+      tip: 'Web History is part of Premium. It lists sites, not pages or minutes, and some rows are background traffic from apps. A TV can be up to an hour behind.',
+    },
+    videoHistory: {
+      tip: 'Videos watched is part of Premium and covers YouTube only. It works on other phones and in the Chrome extension, not on iPhone or iPad. On a Mac or PC, add the Chrome extension. A TV records videos only once KidGate has notification access on it, which no TV screen can grant yet; even then, Shorts are not listed.',
+      steps: {
+        '3': 'On other phones, KidGate also needs notification access: on the child device, open KidGate [[Settings]], select [[Unlock with Parent PIN]], then [[Allow notification access]] under [[Message Alerts]]. Shorts also need Accessibility.',
+      },
+    },
+    messageAlerts: {
+      summary:
+        'Get alerted when a worrying word or phrase appears in messages or searches on your child’s phone. You see the flagged word or phrase, never the message.',
+      tip: 'Message Alerts is part of Premium. Messages cannot be checked on iPhone or iPad; searches are also checked in the Chrome extension. Only the category and the flagged word or phrase reach you. AI analysis stays off unless a parent turns it on for the family.',
+      steps: {
+        '1': 'On your child’s phone, open KidGate [[Settings]], select [[Unlock with Parent PIN]], then [[Allow notification access]] under [[Message Alerts]], and turn KidGate on in the list that opens.',
+        '2': 'On your device, open your child (or the device, if no child is assigned to it), then [[Message Alerts]] in the [[Alerts]] section, and tap the settings icon at the top. If your child has several devices, select their phone first.',
       },
     },
   },

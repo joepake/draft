@@ -70,6 +70,8 @@ export const rewardTask = {
   taskRejected: 'Bonusaufgabe zurückgegeben',
   taskRejectedDescription:
     '„{{title}}“ wurde an {{deviceName}} für einen neuen Versuch zurückgegeben.',
+  taskClaimed: 'Aufgabe erledigt',
+  taskClaimedDescription: '{{deviceName}} hat „{{title}}“ erledigt.',
   starsLabel: 'Schwierigkeit',
   starsHint: 'Dein Kind sammelt so viele Sterne.',
   starsEasy: 'Leicht',

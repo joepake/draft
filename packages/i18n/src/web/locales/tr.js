@@ -600,8 +600,8 @@ export default {
     locationUpdated: '{{when}} güncellendi',
     locationWaiting: 'İlk güncelleme bekleniyor',
     noPlaces:
-      'Henüz kayıtlı yer yok. Çocuğunuz geldiğinde ya da ayrıldığında uyarı almak için uygulamadan bir yer ekleyin.',
-    placeRadius: '{{meters}} m · ',
+      'Henüz kayıtlı yer yok. Çocuğunuz geldiğinde ya da ayrıldığında uyarı almak için bir yer ekleyin.',
+    placeRadius: '{{meters}} m',
     placeArrive: 'varış',
     placeLeave: 'ayrılış',
     placeNoAlerts: 'uyarı yok',
@@ -640,7 +640,7 @@ export default {
     limitShared: 'Tüm cihazlar için ortak',
     limitSharedSpent: 'Bugün {{limit}} sürenin {{used}} kadarı kullanıldı',
     limitSharedHint:
-      'Bu, bu çocuğun tüm günüdür; bu cihaza özel bir sınır değildir — her cihaz, diğerlerinin kullanmadığı süreyi alır. KidGate uygulamasından değiştirin.',
+      'Bu, bu çocuğun tüm günüdür; bu cihaza özel bir sınır değildir — her cihaz, diğerlerinin kullanmadığı süreyi alır.',
     whatsOnSub: 'Değişiklikler çocuk cihazıyla eşitlenir',
     rowBlockedHours: 'Engellenen Saatler',
     rowBlockedHoursDesc_one: '{{count}} zaman aralığı · {{list}}',
@@ -664,8 +664,7 @@ export default {
       'Filtre çalışırken şifreli DNS her zaman engellenir, böylece bir tarayıcı filtreyi dolaşamaz.',
     starChartTitle: 'Yıldız tablosu',
     starChartSub: 'Bu hafta her çocuğun topladığı yıldızlar',
-    starChartEmpty:
-      'Yıldız tablosunu başlatmak için uygulamada ikinci bir çocuk ekleyin.',
+    starChartEmpty: 'Yıldız tablosunu başlatmak için ikinci bir çocuk ekleyin.',
     starChartStars: '{{count}} yıldız',
     rewardTasksTitle: 'Ödül görevleri',
     rewardTasksSub: 'Görevleri tamamlayarak ek dakika kazanın',

@@ -88,7 +88,7 @@ export const errors = {
   unableToVerifyPurchase: '구매를 확인할 수 없습니다. 잠시 후 다시 시도해 주세요.',
   noPurchasesToRestore: '이 계정에서 복원할 구매 내역이 없습니다.',
   noActiveSubscription:
-    '활성 구독을 찾을 수 없습니다. 구독할 때 사용한 App Store 또는 Google Play 계정으로 로그인한 뒤 다시 시도해 주세요.',
+    '활성화된 구독을 찾을 수 없습니다. 구독할 때 사용한 앱 스토어 계정으로 로그인한 후 다시 시도해 주세요.',
   unableToRestorePurchases: '현재 구매를 복원할 수 없습니다. 다시 시도해 주세요.',
   alreadyInFamily: '이미 이 가족에 참여하고 있습니다.',
   leaveFamilyBeforeJoining: '다른 가족에 참여하기 전에 현재 가족에서 먼저 나가세요.',

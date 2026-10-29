@@ -8,7 +8,7 @@ import {
   MAX_APP_LIMITS,
 } from '@kidgate/schema/deviceControls';
 import { clampAppLimitMinutes } from '@kidgate/core/domain/appLimits';
-import { formatMinutes } from './charts.jsx';
+import { formatLimitMinutes } from './charts.jsx';
 
 /** Round numbers a parent actually thinks in, the phone screen's own list. */
 const MINUTE_PRESETS = [15, 30, 45, 60, 90, 120];
@@ -93,7 +93,7 @@ export default function AppLimitsEditor({
             >
               <Icon name="minus" size={14} />
             </button>
-            <span className="limit-value">{formatMinutes(limit.minutes)}</span>
+            <span className="limit-value">{formatLimitMinutes(limit.minutes)}</span>
             <button
               disabled={readOnly || busy || limit.minutes >= APP_LIMIT_MAX_MINUTES}
               aria-label={appT('appLimits.increaseAccessibility', { app: limit.label })}
@@ -126,7 +126,7 @@ export default function AppLimitsEditor({
                   aria-pressed={limit.minutes === minutes}
                   onClick={() => setMinutes(limit.id, minutes)}
                 >
-                  {formatMinutes(minutes)}
+                  {formatLimitMinutes(minutes)}
                 </button>
               </li>
             ))}

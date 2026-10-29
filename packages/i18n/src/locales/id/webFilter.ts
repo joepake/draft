@@ -31,6 +31,8 @@ export const webFilter = {
   safeSearchLabel: 'Paksa SafeSearch',
   safeSearchHint:
     'Mengunci Google SafeSearch, Mode Terbatas YouTube, Bing, dan DuckDuckGo pada pengaturan ketat. Android dan Chrome.',
+  safeSearchHintIos:
+    'Mengunci Google SafeSearch, Mode Terbatas YouTube, Bing, dan DuckDuckGo pada pengaturan ketat. Tidak di iPhone atau iPad.',
   safeSearchStrictNote:
     'YouTube berjalan di level paling ketat: komentar disembunyikan dan sebagian video biasa ikut diblokir. Anak tidak bisa mematikannya dari akunnya sendiri.',
   infoTitle: 'Cara kerjanya',

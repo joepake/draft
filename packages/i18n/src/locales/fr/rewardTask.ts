@@ -68,6 +68,8 @@ export const rewardTask = {
   taskRejected: 'Tâche bonus renvoyée',
   taskRejectedDescription:
     '« {{title}} » a été renvoyée à {{deviceName}} pour un nouvel essai.',
+  taskClaimed: 'Tâche terminée',
+  taskClaimedDescription: '{{deviceName}} a terminé « {{title}} ».',
   starsLabel: 'Difficulté',
   starsHint: 'Votre enfant collectionne autant d’étoiles.',
   starsEasy: 'Facile',

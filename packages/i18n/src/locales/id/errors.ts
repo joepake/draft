@@ -98,7 +98,7 @@ export const errors = {
     'Tidak dapat memverifikasi pembelian tersebut. Silakan coba lagi sebentar lagi.',
   noPurchasesToRestore: 'Tidak ada pembelian yang dapat dipulihkan untuk akun ini.',
   noActiveSubscription:
-    'Tidak ditemukan langganan aktif. Masuk dengan akun App Store atau Google Play yang Anda pakai untuk berlangganan, lalu coba lagi.',
+    'Tidak ditemukan langganan aktif. Masuk dengan akun toko aplikasi yang Anda pakai untuk berlangganan, lalu coba lagi.',
   unableToRestorePurchases:
     'Tidak dapat memulihkan pembelian Anda saat ini. Silakan coba lagi.',
   alreadyInFamily: 'Anda sudah menjadi anggota keluarga ini.',

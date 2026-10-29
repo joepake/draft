@@ -99,7 +99,7 @@ export const errors = {
     'No se pudo verificar esa compra. Inténtalo de nuevo dentro de unos instantes.',
   noPurchasesToRestore: 'No hay compras para restaurar en esta cuenta.',
   noActiveSubscription:
-    'No se encontró ninguna suscripción activa. Inicia sesión con la cuenta de App Store o de Google Play con la que te suscribiste e inténtalo de nuevo.',
+    'No se encontró ninguna suscripción activa. Inicia sesión con la cuenta de la tienda de aplicaciones con la que te suscribiste e inténtalo de nuevo.',
   unableToRestorePurchases:
     'No se pudieron restaurar tus compras en este momento. Inténtalo de nuevo.',
   alreadyInFamily: 'Ya formas parte de esta familia.',

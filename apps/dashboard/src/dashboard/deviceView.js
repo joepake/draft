@@ -203,6 +203,16 @@ export function toDeviceView(record) {
      * treat an absent probe as "unknown" rather than as "cannot".
      */
     capabilities: record.capabilities ?? null,
+    /*
+     * The device's own Message Alerts answer — both halves' grant and switch.
+     * Dropped here until 2026-10-29, so `resolveMessageMonitoring` read every
+     * Android phone as "told us nothing": the card said Waiting where the
+     * phone said Off, and `MessageAlertsCard` asked for a grant already given.
+     * Absent stays absent (unknown), as `parseMessageMonitoring` returns it.
+     */
+    ...(record.messageMonitoring
+      ? { messageMonitoring: record.messageMonitoring }
+      : {}),
     // A parent's Blocks from the console; the Apps card counts them.
     parentBlockedApps: record.parentBlockedApps ?? [],
     protectionCounters: record.protectionCounters ?? { appBlocked: 0, tamper: 0 },

@@ -23,6 +23,7 @@ export const timeRequest = {
   statusWaitingForApproval: 'بانتظار رد والديك ({{minutes}} دقيقة مطلوبة).',
   statusWaitingForApproval_few: 'بانتظار رد والديك ({{minutes}} دقائق مطلوبة).',
   statusCooldown: 'يمكنك إرسال طلب جديد خلال {{time}}.',
+  statusDeclined: 'لم يوافق والداك هذه المرة.',
   statusDailyLimitExceeded:
     'لقد استخدمت كل وقت الشاشة المخصص لليوم. ستُفتح التطبيقات مرة أخرى غدًا — أو قبل ذلك إذا أضاف والداك مزيدًا من الوقت.',
   errorDeviceNotRegistered:

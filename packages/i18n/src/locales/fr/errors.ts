@@ -102,7 +102,7 @@ export const errors = {
     'Impossible de vérifier cet achat. Veuillez réessayer dans un instant.',
   noPurchasesToRestore: 'Aucun achat à restaurer pour ce compte.',
   noActiveSubscription:
-    'Aucun abonnement actif n’a été trouvé. Connectez-vous avec le compte App Store ou Google Play utilisé pour vous abonner, puis réessayez.',
+    'Aucun abonnement actif n’a été trouvé. Connectez-vous avec le compte de la boutique d’applications utilisé pour vous abonner, puis réessayez.',
   unableToRestorePurchases:
     'Impossible de restaurer vos achats pour le moment. Veuillez réessayer.',
   alreadyInFamily: 'Vous faites déjà partie de cette famille.',

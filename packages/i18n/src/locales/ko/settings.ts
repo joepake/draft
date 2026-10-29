@@ -110,7 +110,7 @@ export const settings = {
   deleteAccountAlertMessageMember:
     '본인 계정의 삭제를 예약합니다. 아직 삭제된 것은 없습니다. 삭제 예정일 전에는 언제든지 로그인해 취소할 수 있습니다. 그 이후에는 본인의 로그인 정보와 설정이 삭제됩니다. 가족과 가족의 기기, 다른 부모에게는 영향이 없습니다.',
   deleteAccountSubscriptionNotice:
-    '계정을 삭제해도 구독은 취소되지 않습니다. App Store 또는 Google Play에서 취소하세요.',
+    '계정을 삭제해도 구독은 취소되지 않습니다. 사용 중인 앱 스토어에서 취소하세요.',
   sendRequestButton: '삭제 예약',
   toastDeletionAlreadyPending: '계정 삭제가 이미 진행 중입니다.',
   toastDeletionRequestFailed: '계정 삭제를 시작하지 못했습니다. 다시 시도해 주세요.',

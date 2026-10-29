@@ -7,8 +7,12 @@ export const messageMonitoring = {
     'KidGate çocuğunuzun mesajlarındaki ve aramalarındaki endişe verici kelimeleri işaretler ve sizi uyarır. Yalnızca işaretlenen kelimeyi veya ifadeyi görürsünüz; mesajın ya da aramanın kendisini asla görmezsiniz.',
   androidOnlyNote:
     'Mesajlar yalnızca Android cihazlarda kontrol edilebilir. Aramalar Chrome uzantısında da kontrol edilebilir.',
+  androidOnlyNoteIos:
+    'Mesajlar iPhone ve iPad’de kontrol edilemez. Aramalar Chrome uzantısında da kontrol edilebilir.',
   searchOnlyNote:
     'Burada yalnızca aramalar kontrol edilebilir. Mesajlar yalnızca Android cihazlarda kontrol edilebilir.',
+  searchOnlyNoteIos:
+    'Burada yalnızca aramalar kontrol edilebilir. Mesajlar iPhone ve iPad’de kontrol edilemez.',
   recentTitle: 'Son uyarılar',
   emptyTitle: 'Henüz uyarı yok',
   emptySubtitle:

@@ -26,7 +26,8 @@ export const plans = {
   termAnnual: 'Anual',
   bestValueBadge: 'Mejor precio',
   premiumManageBillingNote:
-    'Administra la facturación en tu configuración de App Store o Google Play.',
+    'Administra la facturación en la configuración de tu tienda de aplicaciones.',
+  paidThrough: 'Pagado hasta el {{date}}',
   compareTitle: 'Gratis y Premium, lado a lado',
   compareColumnFree: 'Gratis',
   compareColumnPremium: 'Premium',
@@ -53,6 +54,7 @@ export const plans = {
   compareNewApps: 'Apps recién instaladas',
   compareNewAppsPremium: 'Qué apps, por nombre',
   compareMessages: 'Alertas de mensajes (Android)',
+  compareMessagesIos: 'Alertas de mensajes (otros teléfonos)',
   compareSafety: 'Alertas de protección y Check-in',
   compareSafetyFree: 'Alertas + Check-in',
   compareSafetyPremium: 'Añade una foto a cada Check-In',
@@ -146,7 +148,7 @@ export const plans = {
     'Esta suscripción no está disponible en este momento. Inténtalo de nuevo más tarde.',
   unableToStartPurchase: 'No se pudo iniciar la compra. Inténtalo de nuevo.',
   noActiveSubscription:
-    'No se encontró ninguna suscripción activa. Inicia sesión con la cuenta de App Store o de Google Play con la que te suscribiste e inténtalo de nuevo.',
+    'No se encontró ninguna suscripción activa. Inicia sesión con la cuenta de la tienda de aplicaciones con la que te suscribiste e inténtalo de nuevo.',
   purchasesRestored: 'Compras restauradas.',
   unableToRestorePurchases: 'No se pudieron restaurar las compras. Inténtalo de nuevo.',
   purchaseVerificationFailed:
@@ -183,6 +185,8 @@ export const plans = {
   platformIosDetail: 'Dispositivo parental o infantil · iOS 16 o posterior',
   platformAndroid: 'Android',
   platformAndroidDetail: 'Dispositivo parental o infantil · Android 7 o posterior',
+  platformOtherPhones: 'Otros teléfonos y tabletas',
+  platformOtherPhonesDetail: 'Dispositivo parental o infantil',
   platformMac: 'Mac',
   platformMacDetail: 'Solo dispositivo infantil · macOS 12 o posterior',
   platformIosLimits:
@@ -198,6 +202,8 @@ export const plans = {
   platformWindowsDetail: 'Solo dispositivo infantil · Windows 10 o posterior',
   platformAndroidTv: 'Android TV',
   platformAndroidTvDetail: 'Solo dispositivo infantil · Android TV 7 o posterior',
+  platformGoogleTv: 'Google TV',
+  platformGoogleTvDetail: 'Solo dispositivo infantil',
   platformChromebook: 'Chromebook',
   platformChromebookDetail: 'Dispositivo infantil · solo Filtro web en Chrome',
   teaserCta: 'Ver Premium',
@@ -216,6 +222,8 @@ export const plans = {
   teaserChildReport: 'Premium añade un informe por cada hijo, y uno nuevo cada semana.',
   teaserMessageAlerts:
     'Premium te avisa cuando un mensaje necesita tu atención. Solo en Android.',
+  teaserMessageAlertsIos:
+    'Premium te avisa cuando un mensaje necesita tu atención. No disponible en iPhone ni iPad.',
   teaserWebFilterAdvanced:
     'Premium filtra por categoría, admite tus propias listas de permitidos y bloqueados, y deja que tu hijo pida desbloquear un sitio.',
   teaserWeeklyReport:

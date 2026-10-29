@@ -7,8 +7,12 @@ export const messageMonitoring = {
     'KidGate flags concerning words in your child’s messages and searches, and alerts you. You see only the flagged word or phrase, never the message or the search.',
   androidOnlyNote:
     'Messages can be checked only on Android devices. Searches can also be checked in the Chrome extension.',
+  androidOnlyNoteIos:
+    'Messages cannot be checked on iPhone or iPad. Searches can also be checked in the Chrome extension.',
   searchOnlyNote:
     'Only searches can be checked here. Messages can be checked only on Android devices.',
+  searchOnlyNoteIos:
+    'Only searches can be checked here. Messages cannot be checked on iPhone or iPad.',
   recentTitle: 'Recent alerts',
   emptyTitle: 'No alerts yet',
   emptySubtitle:

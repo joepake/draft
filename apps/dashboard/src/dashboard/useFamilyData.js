@@ -5,6 +5,8 @@ import {
 } from '@kidgate/core/domain/activityActor';
 import { resolveStoredDeviceName } from '@kidgate/core/domain/deviceName';
 import { webHistoryLabel } from '@kidgate/core/domain/webHistoryLabel';
+import { latestDaySiteCount } from './webDaySites.js';
+import { rewardTaskRows } from './rewardTaskRows.js';
 import { isPremiumSubscriptionActive } from '@kidgate/core/domain/subscription';
 import { t } from '@kidgate/i18n/web';
 import {
@@ -154,7 +156,7 @@ export function useFamilyData(user, selectedDeviceId, watchVideos = false) {
   /** The star chart's family switch, read with the rest of the meta. */
   const [leaderboardEnabled, setLeaderboardEnabled] = useState(true);
 
-  const [activityRows, setActivityRows] = useState([]);
+  const [activityRows, setActivityRows] = useState(null);
   /*
    * Message Alerts' own rows, asked for by kind (`subscribeOfTypes`). The
    * device's newest fifty rows of every kind, filtered on the card, lost a
@@ -172,7 +174,9 @@ export function useFamilyData(user, selectedDeviceId, watchVideos = false) {
    * not a family feed. `subscribe`'s `deviceId` argument is optional for
    * exactly this, so no new repository method is needed.
    */
-  const [familyActivityRows, setFamilyActivityRows] = useState([]);
+  // `null` until the listener answers: the feed said "No activity yet" over a
+  // family with 35 rows while the first snapshot was in flight (2026-10-29).
+  const [familyActivityRows, setFamilyActivityRows] = useState(null);
   /*
    * The three counts the Family screen's chip row needs, family-wide.
    *
@@ -403,11 +407,10 @@ export function useFamilyData(user, selectedDeviceId, watchVideos = false) {
     if (!familyId) return undefined;
     const soft = name => softFailure(setFeedFailed, `${name} listener`);
     const subs = [
-      activityRepository.subscribe(
-        familyId,
-        setFamilyActivityRows,
-        soft('familyActivities'),
-      ),
+      activityRepository.subscribe(familyId, setFamilyActivityRows, error => {
+        setFamilyActivityRows(rows => rows ?? []);
+        soft('familyActivities')(error);
+      }),
       /* No `deviceId` argument: that optional last parameter is what scopes
          the per-device copy further down, and its absence is what makes this
          one the family's. */
@@ -473,12 +476,17 @@ export function useFamilyData(user, selectedDeviceId, watchVideos = false) {
     if (!familyId || !selectedDeviceId) return;
 
     const soft = name => softFailure(setFeedFailed, `${name} listener`);
+    // The previous device's rows are not this one's: loading until it answers.
+    setActivityRows(null);
 
     const subs = [
       activityRepository.subscribe(
         familyId,
         setActivityRows,
-        soft('activities'),
+        error => {
+          setActivityRows(rows => rows ?? []);
+          soft('activities')(error);
+        },
         selectedDeviceId,
       ),
       activityRepository.subscribeOfTypes(
@@ -671,8 +679,23 @@ export function useFamilyData(user, selectedDeviceId, watchVideos = false) {
     );
   }, [web, selectedDeviceId]);
 
+  /*
+   * The newest recorded day's site count, for the Web History control card —
+   * the phone card's figure. Read off the raw rows: the roll-up above keeps no
+   * date, and the card read one off it and said None over a week of sites
+   * (2026-10-29).
+   */
+  const webLatestDaySites = useMemo(
+    () =>
+      forDevice(
+        selectedDeviceId,
+        latestDaySiteCount(selectedDeviceId ? (web[selectedDeviceId] ?? []) : []),
+      ),
+    [web, selectedDeviceId],
+  );
+
   const rewardTasks = useMemo(
-    () => forDevice(selectedDeviceId, [...openTasks, ...approvedTasks]),
+    () => forDevice(selectedDeviceId, rewardTaskRows(openTasks, approvedTasks)),
     [openTasks, approvedTasks, selectedDeviceId],
   );
 
@@ -795,6 +818,7 @@ export function useFamilyData(user, selectedDeviceId, watchVideos = false) {
       rewardTasks,
       places: Object.fromEntries(withUsage.map(device => [device.id, device.places])),
       webHistory,
+      webLatestDaySites,
       videoHistory: videos,
     };
   }, [
@@ -803,6 +827,7 @@ export function useFamilyData(user, selectedDeviceId, watchVideos = false) {
     devices,
     usage,
     webHistory,
+    webLatestDaySites,
     videos,
     rewardTasks,
     leaderboardRows,

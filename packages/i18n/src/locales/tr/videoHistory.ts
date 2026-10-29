@@ -4,11 +4,15 @@ export const videoHistory = {
   toggleLabel: 'İzlenen videoları kaydet',
   toggleHint:
     'Android telefonlarda ve TV’de YouTube’da, ayrıca KidGate uzantılı Chrome’da.',
+  toggleHintIos:
+    'Diğer telefonlarda ve Google TV’de YouTube’da, ayrıca KidGate uzantılı Chrome’da.',
   tvShortsInfo:
     'TV’de Shorts listelenmez, çünkü YouTube’un TV uygulaması bunları Shorts olarak tanımlamaz.',
   toggleFailed: 'Video geçmişi güncellenemedi. Tekrar deneyin.',
   unsupportedNote:
     'Bu cihaz izlenen videoları bildiremez. Android, Android TV ve Chrome’da çalışır.',
+  unsupportedNoteIos:
+    'Bu cihaz izlenen videoları bildiremez. Diğer telefonlarda, Google TV’de ve Chrome’da çalışır.',
   unsupportedNoteTv:
     'Bu TV izlenen videoları kaydetmiyor. KidGate’in bunun için TV’de bildirim erişimine ihtiyacı var; bu izin henüz TV ekranından verilemiyor.',
 

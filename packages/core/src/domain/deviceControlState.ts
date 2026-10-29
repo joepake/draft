@@ -224,7 +224,12 @@ export function resolveControlCardStatus(
             'active',
             'deviceDetail.editHours',
           )
-        : worded('shared.off', 'idle', 'deviceDetail.setHours');
+        : // Ranges saved and switched off need turning on, not setting up.
+          worded(
+            'shared.off',
+            'idle',
+            windows > 0 ? 'shared.turnOn' : 'deviceDetail.setHours',
+          );
     }
 
     case 'reward-tasks': {

@@ -108,7 +108,7 @@ export const settings = {
   deleteAccountAlertMessageMember:
     'Bu işlem yalnızca kendi hesabınızın silinmesini planlar. Henüz hiçbir şey silinmedi — silme tarihinden önce istediğiniz zaman oturum açıp iptal edebilirsiniz. Bu tarihten sonra giriş bilgileriniz ve kendi ayarlarınız silinir. Aile, cihazları ve diğer ebeveynler bundan etkilenmez.',
   deleteAccountSubscriptionNotice:
-    'Hesabınızı silmek aboneliği iptal etmez. Aboneliği App Store’dan veya Google Play’den iptal edin.',
+    'Hesabınızı silmek aboneliği iptal etmez. Aboneliği uygulama mağazanızdan iptal edin.',
   sendRequestButton: 'Silmeyi planla',
   toastDeletionAlreadyPending: 'Hesap silme işlemi zaten sürüyor.',
   toastDeletionRequestFailed:

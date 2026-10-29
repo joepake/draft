@@ -4,11 +4,15 @@ export const videoHistory = {
   toggleLabel: 'देखे गए वीडियो रिकॉर्ड करें',
   toggleHint:
     'Android फ़ोन और TV पर YouTube में, और KidGate एक्सटेंशन वाले Chrome में।',
+  toggleHintIos:
+    'दूसरे फ़ोन और Google TV पर YouTube में, और KidGate एक्सटेंशन वाले Chrome में।',
   tvShortsInfo:
     'TV पर Shorts सूची में नहीं दिखते, क्योंकि YouTube TV ऐप उन्हें Shorts के रूप में नहीं पहचानता।',
   toggleFailed: 'वीडियो इतिहास अपडेट नहीं हो सका। फिर से प्रयास करें।',
   unsupportedNote:
     'यह डिवाइस देखे गए वीडियो नहीं बता सकता। यह Android, Android TV और Chrome पर काम करता है।',
+  unsupportedNoteIos:
+    'यह डिवाइस देखे गए वीडियो नहीं बता सकता। यह दूसरे फ़ोन, Google TV और Chrome पर काम करता है।',
   unsupportedNoteTv:
     'यह टीवी देखे गए वीडियो दर्ज नहीं कर रहा है। KidGate को इस पर सूचना एक्सेस चाहिए, जो अभी टीवी स्क्रीन से नहीं दिया जा सकता।',
 

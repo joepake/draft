@@ -31,6 +31,8 @@ export const webFilter = {
   safeSearchLabel: 'Güvenli Aramayı zorunlu kıl',
   safeSearchHint:
     'Google SafeSearch, YouTube Kısıtlı Mod, Bing ve DuckDuckGo’yu katı ayarda kilitler. Android ve Chrome.',
+  safeSearchHintIos:
+    'Google SafeSearch, YouTube Kısıtlı Mod, Bing ve DuckDuckGo’yu katı ayarda kilitler. iPhone ve iPad hariç.',
   safeSearchStrictNote:
     'YouTube en katı seviyede çalışır: yorumlar gizlenir ve bazı sıradan videolar da engellenir. Çocuk bunu kendi hesabından kapatamaz.',
   infoTitle: 'Nasıl çalışır',

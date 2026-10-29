@@ -13,7 +13,6 @@ export const checkIn = {
   metaNoLocation: 'Tanpa lokasi',
   viewPhotoAccessibility: 'Lihat foto Check-In',
   responseMessage: 'Aku aman.',
-  toastSuccess: 'Terima kasih. Jawabanmu sudah dikirim ke orang tuamu.',
   toastFailed: 'Tidak dapat mengirim Check-In. Coba lagi.',
   quickCheckInBadge: 'Check-In',
   areYouOkay: 'Kamu baik-baik saja?',
@@ -21,6 +20,10 @@ export const checkIn = {
     'Orang tuamu ingin tahu kamu baik-baik saja. KidGate akan mengirim lokasimu dan foto jika memungkinkan.',
   checkInLocationOnlyBody:
     'Orang tuamu ingin tahu kamu baik-baik saja. KidGate akan mengirim lokasimu jika memungkinkan.',
+  checkInPhotoNoLocationBody:
+    'Orang tuamu ingin tahu kamu baik-baik saja. Lokasi mati di perangkat ini, jadi KidGate akan mengirim foto jika memungkinkan.',
+  checkInAnswerOnlyBody:
+    'Orang tuamu ingin tahu kamu baik-baik saja. Lokasi mati di perangkat ini, jadi hanya jawabanmu yang dikirim.',
   yesImOkay: 'Aku baik-baik saja',
   yesImOkaySending: 'Mengirim…',
   iNeedHelp: 'Aku butuh bantuan',

@@ -18,6 +18,7 @@ export const timeRequest = {
   statusWaitingForApproval:
     'Waiting for your parent to respond ({{minutes}} minutes requested).',
   statusCooldown: 'You can send a new request in {{time}}.',
+  statusDeclined: 'Your parent said not now this time.',
   statusDailyLimitExceeded:
     'You have used all of today’s screen time. Apps will open again tomorrow — or sooner if your parent adds more time.',
   errorDeviceNotRegistered:

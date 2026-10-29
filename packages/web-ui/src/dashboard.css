@@ -256,6 +256,13 @@
   vertical-align: -2px;
 }
 
+/* The one parent phone the Alerts card edits, named where a picker would be. */
+.prefs-phone {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
 /* ---------- Sidebar ----------
  *
  * Three bands stacked: the brand, the four sections, and the account footer.
@@ -1396,7 +1403,12 @@
   box-shadow: 0 12px 30px color-mix(in srgb, var(--kg-shadow) 45%, transparent);
 }
 
-.info-tip-bubble p + p {
+.info-tip-bubble:popover-open,
+.info-tip-para {
+  display: block;
+}
+
+.info-tip-para + .info-tip-para {
   margin-top: 0.5rem;
 }
 
@@ -2489,8 +2501,11 @@ ol.attn-fix li + li {
   color: var(--muted);
 }
 
+/* `.place-row` is PlacesEditor's row — name, radius, Edit, Delete. It had no
+   rule at all, and the radius ran into the name: "Art class150m" (2026-10-30). */
 .perms li,
-.places li {
+.places li,
+.place-row {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -2505,7 +2520,8 @@ ol.attn-fix li + li {
 }
 
 .perms em,
-.places em {
+.places em,
+.place-row em {
   margin-inline-start: auto;
   font-style: normal;
   font-size: var(--dash-text-2);
@@ -3555,6 +3571,14 @@ ol.attn-fix li + li {
   background: var(--bg);
   color: var(--ink);
   font: inherit;
+}
+
+/* The picked level's stars, in the list's own star column, then the phone's hint. */
+.reward-stars-hint {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
 }
 
 .reward-repeat {

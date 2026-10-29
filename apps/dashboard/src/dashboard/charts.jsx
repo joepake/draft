@@ -51,6 +51,12 @@ export function formatMinutes(min) {
   return t('viz.hoursMinutes', { hours: h, minutes: m });
 }
 
+/** A limit, always in minutes — the phone's `formatLimitMinutes`. */
+export function formatLimitMinutes(min) {
+  if (min == null) return t('viz.none');
+  return t('viz.minutes', { count: Math.round(min) });
+}
+
 function Tooltip({ x, y, children }) {
   return (
     <div className="viz-tip" style={{ left: x, top: y }}>
@@ -140,7 +146,7 @@ export function UsageBars({ data, limit, days = 14, selectedDate, onSelectDate }
                   textAnchor="start"
                   dominantBaseline="middle"
                 >
-                  {tr('viz.limit', { value: formatMinutes(limit) })}
+                  {tr('viz.limit', { value: formatLimitMinutes(limit) })}
                 </text>
               )}
             </g>
@@ -361,10 +367,14 @@ export function UsageRing({ used, limit, bonus = 0, size = 168 }) {
         )}
       </svg>
       <div className="ring-center">
-        <strong>{formatMinutes(used)}</strong>
+        {/* Read against the limit, so minutes beside it (`formatLimitMinutes`);
+            with no limit the figure stands alone and keeps hours. */}
+        <strong>
+          {effectiveLimit ? formatLimitMinutes(used) : formatMinutes(used)}
+        </strong>
         <span>
           {effectiveLimit
-            ? tr('viz.ofLimit', { value: formatMinutes(effectiveLimit) })
+            ? tr('viz.ofLimit', { value: formatLimitMinutes(effectiveLimit) })
             : tr('viz.noLimit')}
         </span>
       </div>

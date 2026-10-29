@@ -4,12 +4,16 @@ export const videoHistory = {
   toggleLabel: 'Videoverlauf aufzeichnen',
   toggleHint:
     'YouTube auf Android-Handys und Fernsehern sowie in Chrome mit der KidGate-Erweiterung.',
+  toggleHintIos:
+    'YouTube auf anderen Handys und Google TV sowie in Chrome mit der KidGate-Erweiterung.',
   tvShortsInfo:
     'Auf einem Fernseher werden Shorts nicht aufgeführt, weil die YouTube-App auf dem Fernseher sie nicht als Shorts erkennt.',
   toggleFailed:
     'Der Videoverlauf konnte nicht aktualisiert werden. Versuche es erneut.',
   unsupportedNote:
     'Dieses Gerät kann keine angesehenen Videos melden. Das geht auf Android, Android TV und in Chrome.',
+  unsupportedNoteIos:
+    'Dieses Gerät kann keine angesehenen Videos melden. Das geht auf anderen Handys, Google TV und in Chrome.',
   unsupportedNoteTv:
     'Dieser Fernseher erfasst keine angesehenen Videos. KidGate braucht dort Zugriff auf Benachrichtigungen, der sich auf einem Fernseher bisher nicht erteilen lässt.',
 

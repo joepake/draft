@@ -13,7 +13,6 @@ export const checkIn = {
   metaNoLocation: 'Không kèm vị trí',
   viewPhotoAccessibility: 'Xem ảnh Báo an toàn',
   responseMessage: 'Con vẫn an toàn.',
-  toastSuccess: 'Cảm ơn con. Câu trả lời đã được gửi cho bố mẹ.',
   toastFailed: 'Không gửi được Báo an toàn. Vui lòng thử lại.',
   quickCheckInBadge: 'Báo an toàn',
   areYouOkay: 'Con vẫn ổn chứ?',
@@ -21,6 +20,10 @@ export const checkIn = {
     'Bố mẹ muốn biết con có ổn không. KidGate sẽ gửi vị trí và một tấm ảnh nếu có thể.',
   checkInLocationOnlyBody:
     'Bố mẹ muốn biết con có ổn không. KidGate sẽ gửi vị trí nếu có thể.',
+  checkInPhotoNoLocationBody:
+    'Bố mẹ muốn biết con có ổn không. Vị trí đang tắt trên thiết bị này, nên KidGate sẽ gửi một tấm ảnh nếu có thể.',
+  checkInAnswerOnlyBody:
+    'Bố mẹ muốn biết con có ổn không. Vị trí đang tắt trên thiết bị này, nên chỉ câu trả lời của con được gửi đi.',
   yesImOkay: 'Con vẫn ổn',
   yesImOkaySending: 'Đang gửi…',
   iNeedHelp: 'Con cần trợ giúp',

@@ -317,7 +317,13 @@ function mapReportData(id: string, data: Record<string, unknown>): FamilyReport 
       : null,
     model: typeof data.model === 'string' ? data.model : null,
     createdAt: typeof data.createdAt === 'string' ? data.createdAt : '',
-    trigger: data.trigger === 'manual' ? 'manual' : 'scheduled',
+    // `trialEnd` kept apart: it is seven days up to the trial's last day, not
+    // a finished week, and folding it into `scheduled` printed "Sent Monday"
+    // over a report written on a Tuesday (2026-10-29).
+    trigger:
+      data.trigger === 'manual' || data.trigger === 'trialEnd'
+        ? data.trigger
+        : 'scheduled',
   };
 }
 

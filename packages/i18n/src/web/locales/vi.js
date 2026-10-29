@@ -610,8 +610,8 @@ export default {
     locationUpdated: 'Đã cập nhật {{when}}',
     locationWaiting: 'Đang chờ lần cập nhật đầu tiên',
     noPlaces:
-      'Chưa lưu địa điểm nào. Hãy thêm một địa điểm trong ứng dụng để được báo khi con đến hoặc rời đi.',
-    placeRadius: '{{meters}}m · ',
+      'Chưa lưu địa điểm nào. Hãy thêm một địa điểm để được báo khi con đến hoặc rời đi.',
+    placeRadius: '{{meters}}m',
     placeArrive: 'đến',
     placeLeave: 'rời',
     placeNoAlerts: 'không cảnh báo',
@@ -649,7 +649,7 @@ export default {
     limitShared: 'Dùng chung cho mọi thiết bị',
     limitSharedSpent: 'Hôm nay đã dùng {{used}} trên {{limit}}',
     limitSharedHint:
-      'Đây là cả ngày của con, không phải giới hạn riêng của thiết bị này — mỗi máy nhận phần các máy khác chưa dùng. Thay đổi trong ứng dụng KidGate.',
+      'Đây là cả ngày của con, không phải giới hạn riêng của thiết bị này — mỗi máy nhận phần các máy khác chưa dùng.',
     whatsOnSub: 'Thay đổi sẽ đồng bộ về thiết bị của con',
     rowBlockedHours: 'Giờ khóa thiết bị',
     rowBlockedHoursDesc: '{{count}} khung giờ · {{list}}',
@@ -671,7 +671,7 @@ export default {
       'Khi bộ lọc đang chạy, DNS mã hóa luôn bị chặn để trình duyệt không đi vòng qua bộ lọc được.',
     starChartTitle: 'Bảng tích sao',
     starChartSub: 'Số sao mỗi con kiếm được trong tuần này',
-    starChartEmpty: 'Thêm hồ sơ trẻ thứ hai trong ứng dụng để bắt đầu Bảng tích sao.',
+    starChartEmpty: 'Thêm hồ sơ trẻ thứ hai để bắt đầu Bảng tích sao.',
     starChartStars: '{{count}} sao',
     rewardTasksTitle: 'Nhiệm vụ thưởng',
     rewardTasksSub: 'Hoàn thành nhiệm vụ để được cộng thêm phút',

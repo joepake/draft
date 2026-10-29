@@ -24,6 +24,7 @@ export const sos = {
     'SOS terkirim. Tetaplah di tempat yang aman jika bisa — orang tuamu sudah diberi tahu.',
   escapeGrantedTitle: 'SOS terkirim',
   escapeGrantedBody: 'Orang tuamu sudah diberi tahu.',
+  sentParentSaw: 'Orang tuamu sudah melihat SOS-mu.',
   toastSentWithoutPhoto: 'SOS terkirim tanpa foto.',
   toastSentWithoutPhotoCamera:
     'SOS terkirim tanpa foto. Agar lain kali bisa menambahkan foto, izinkan Kamera di Pengaturan.',
@@ -100,5 +101,5 @@ export const sos = {
   trustedContactsSaveFailed: 'Tidak dapat menyimpan. Coba lagi sebentar lagi.',
   trustedContactsRemoveAccessibility: 'Hapus {{name}}',
   trustedContactsPrivacyNote:
-    'Setiap kontak menerima nama perangkat dan lokasi terakhir melalui email. Tidak ada foto yang dikirim.',
+    'Setiap kontak menerima nama pengirim dan lokasi terakhir melalui email. Tidak ada foto yang dikirim.',
 } as const;

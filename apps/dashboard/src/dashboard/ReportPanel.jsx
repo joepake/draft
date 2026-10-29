@@ -273,11 +273,17 @@ export default function ReportPanel({
           {appT('report.title')}
           <span className="dot-sep">·</span>
           {formatRange(report.fromDate, report.toDate)}
-          <span className="dot-sep">·</span>
-          {appT(
-            report.trigger === 'manual'
-              ? 'report.triggerManual'
-              : 'report.triggerScheduled',
+          {/* No line for a trial-end report: it was neither sent on a Monday
+              nor made by the parent, and neither label is true of it. */}
+          {report.trigger !== 'trialEnd' && (
+            <>
+              <span className="dot-sep">·</span>
+              {appT(
+                report.trigger === 'manual'
+                  ? 'report.triggerManual'
+                  : 'report.triggerScheduled',
+              )}
+            </>
           )}
         </p>
 

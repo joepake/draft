@@ -9,6 +9,8 @@ export const blockedHours = {
   heroSubtitle:
     'يمكنك إعداد ما يصل إلى {{max}} فترات زمنية يُحظر خلالها استخدام الجهاز.',
   statTimeRangesLabel: 'الفترات الزمنية',
+  statTimeRangesLabel_one: 'الفترة الزمنية',
+  statTimeRangesLabel_two: 'الفترتان الزمنيتان',
   toggleTitle: 'تفعيل ساعات الحظر',
   toggleSubtitleOn: 'يُحظر استخدام الجهاز خلال الأوقات المحددة أدناه.',
   toggleSubtitleOff: 'فعّل هذا الخيار لحظر استخدام الجهاز وفق جدول زمني.',

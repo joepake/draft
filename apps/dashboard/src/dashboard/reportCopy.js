@@ -4,7 +4,7 @@ import {
   buildReportPresentation,
   reportSummaryLines,
 } from '@kidgate/core/domain/reportCopy';
-import { formatMinutes } from './charts.jsx';
+import { formatLimitMinutes, formatMinutes } from './charts.jsx';
 import { formatClock } from './locale.js';
 
 /**
@@ -47,6 +47,7 @@ export function appTranslate(key, params) {
 const deps = {
   t: appTranslate,
   formatDuration: formatMinutes,
+  formatLimit: formatLimitMinutes,
   formatTime: formatClock,
   formatDay: dayKey => formatDayKey(dayKey),
 };

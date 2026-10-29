@@ -66,6 +66,8 @@ export const rewardTask = {
   taskRejected: 'इनाम वाला टास्क वापस भेजा गया',
   taskRejectedDescription:
     '“{{title}}” को दोबारा कोशिश के लिए {{deviceName}} को वापस भेजा गया।',
+  taskClaimed: 'टास्क पूरा हुआ',
+  taskClaimedDescription: '{{deviceName}} ने “{{title}}” पूरा किया।',
   starsLabel: 'कठिनाई',
   starsHint: 'आपका बच्चा उतने ही सितारे जमा करता है।',
   starsEasy: 'आसान',

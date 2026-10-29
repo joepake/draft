@@ -33,6 +33,8 @@ export const webFilter = {
   safeSearchLabel: 'SafeSearch erzwingen',
   safeSearchHint:
     'Sperrt Google SafeSearch, den eingeschränkten YouTube-Modus, Bing und DuckDuckGo auf die strenge Einstellung. Android und Chrome.',
+  safeSearchHintIos:
+    'Sperrt Google SafeSearch, den eingeschränkten YouTube-Modus, Bing und DuckDuckGo auf die strenge Einstellung. Nicht auf iPhone oder iPad.',
   safeSearchStrictNote:
     'YouTube läuft in der strengsten Stufe: Kommentare werden ausgeblendet und manche harmlosen Videos ebenfalls blockiert. Ein Kind kann das im eigenen Konto nicht abschalten.',
   infoTitle: 'So funktioniert es',

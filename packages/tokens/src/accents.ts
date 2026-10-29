@@ -241,6 +241,12 @@ type NeutralTokens = {
   textSecondary: string;
   textInverse: string;
   /**
+   * Primary copy and glyphs on `backgroundDark`, dark in both themes. The lock
+   * overlays drew their title in `textInverse`, which flips to near-black in
+   * dark mode — "Device locked" vanished on the child's screen (2026-10-29).
+   */
+  textOnDark: string;
+  /**
    * Secondary / tertiary copy on a surface that is dark in *both* themes —
    * `backgroundDark`, i.e. the lock overlays. Safe to keep light-on-dark.
    */
@@ -283,6 +289,7 @@ const NEUTRAL_LIGHT: NeutralTokens = {
   text: '#0F172A',
   textSecondary: '#5B6676',
   textInverse: '#FFFFFF',
+  textOnDark: '#FFFFFF',
   textOnDarkMuted: '#E2E8F0',
   textOnDarkSubtle: '#CBD5E1',
   border: '#E4E7EC',
@@ -309,6 +316,7 @@ const NEUTRAL_DARK: NeutralTokens = {
   // themes, so the text over it must not flip. The old dark-mode values were
   // mid-greys (and inverted — "muted" was darker than "subtle"), leaving the
   // lock-overlay copy at 4.19:1 on a near-black scrim.
+  textOnDark: '#FFFFFF',
   textOnDarkMuted: '#E2E8F0',
   textOnDarkSubtle: '#CBD5E1',
   // Both of these are read against `surface`, so raising `surface` had to
@@ -354,6 +362,7 @@ const NEUTRAL_LIGHT_SWEET: NeutralTokens = {
   // accent's `primarySoft`.
   textSecondary: '#6E4B5C',
   textInverse: '#FFFFFF',
+  textOnDark: '#FFFFFF',
   textOnDarkMuted: '#F3E3EC',
   textOnDarkSubtle: '#E2CBDA',
   border: '#F6D3E3',
@@ -385,6 +394,7 @@ const NEUTRAL_DARK_SWEET: NeutralTokens = {
   textInverse: '#120A10',
   // Unchanged between modes on purpose, exactly as in the classic pack:
   // `backgroundDark` is dark in both, so copy over it must not flip.
+  textOnDark: '#FFFFFF',
   textOnDarkMuted: '#F3E3EC',
   textOnDarkSubtle: '#E2CBDA',
   border: '#3A2A36',

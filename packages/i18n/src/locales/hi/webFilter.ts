@@ -33,6 +33,8 @@ export const webFilter = {
   safeSearchLabel: 'SafeSearch लागू करें',
   safeSearchHint:
     'Google SafeSearch, YouTube प्रतिबंधित मोड, Bing और DuckDuckGo को सख्त सेटिंग पर लॉक करता है। Android और Chrome।',
+  safeSearchHintIos:
+    'Google SafeSearch, YouTube प्रतिबंधित मोड, Bing और DuckDuckGo को सख्त सेटिंग पर लॉक करता है। iPhone या iPad पर नहीं।',
   safeSearchStrictNote:
     'YouTube सबसे सख़्त स्तर पर चलता है: टिप्पणियाँ छिप जाती हैं और कुछ सामान्य वीडियो भी ब्लॉक हो जाते हैं। बच्चा इसे अपने खाते से बंद नहीं कर सकता।',
   infoTitle: 'यह कैसे काम करता है',

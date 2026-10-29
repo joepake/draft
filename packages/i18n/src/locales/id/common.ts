@@ -7,7 +7,7 @@ export const common = {
   updatingNewVersion: 'Memperbarui ke versi baru…',
   updateAvailableTitle: 'Pembaruan tersedia',
   updateRequiredTitle: 'Pembaruan diperlukan',
-  updateBody: 'Versi baru KidGate sudah tersedia di App Store atau Google Play.',
+  updateBody: 'Versi baru KidGate sudah tersedia di toko aplikasi Anda.',
   updateNow: 'Perbarui sekarang',
   updateLater: 'Nanti',
   updateVersionLabel: 'Versi {{version}}',

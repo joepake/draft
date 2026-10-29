@@ -31,6 +31,8 @@ export const webFilter = {
   safeSearchLabel: 'セーフサーチを強制',
   safeSearchHint:
     'Google セーフサーチ、YouTube 制限付きモード、Bing、DuckDuckGo を厳格設定に固定します。AndroidとChrome。',
+  safeSearchHintIos:
+    'Google セーフサーチ、YouTube 制限付きモード、Bing、DuckDuckGo を厳格設定に固定します。iPhone・iPadは対象外です。',
   safeSearchStrictNote:
     'YouTube は最も厳しいレベルで動作します。コメントは非表示になり、ふつうの動画も一部ブロックされます。子どもが自分のアカウントで解除することはできません。',
   infoTitle: '仕組み',

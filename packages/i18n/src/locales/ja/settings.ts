@@ -113,7 +113,7 @@ export const settings = {
   deleteAccountAlertMessageMember:
     'ご自身のアカウントの削除を予約します。まだ何も削除されていません。削除日までならログインしていつでもキャンセルできます。削除日を過ぎると、ご自身のログイン情報と設定が削除されます。家族、そのデバイス、ほかの保護者には影響しません。',
   deleteAccountSubscriptionNotice:
-    'アカウントを削除しても、サブスクリプションは解約されません。App StoreまたはGoogle Playで解約してください。',
+    'アカウントを削除しても、サブスクリプションは解約されません。ご利用のアプリストアで解約してください。',
   sendRequestButton: '削除を予約',
   toastDeletionAlreadyPending: 'アカウントの削除はすでに処理中です。',
   toastDeletionRequestFailed:

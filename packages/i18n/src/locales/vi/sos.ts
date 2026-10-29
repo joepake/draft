@@ -23,6 +23,7 @@ export const sos = {
   toastSent: 'Đã gửi SOS. Hãy ở nơi an toàn nếu có thể — bố mẹ đã nhận được tin.',
   escapeGrantedTitle: 'Đã gửi SOS',
   escapeGrantedBody: 'Bố mẹ đã nhận được tin.',
+  sentParentSaw: 'Bố mẹ đã xem tin SOS.',
   toastSentWithoutPhoto: 'Đã gửi SOS nhưng không kèm ảnh.',
   toastSentWithoutPhotoCamera:
     'Đã gửi SOS nhưng không kèm ảnh. Để lần sau gửi được ảnh, con hãy cho phép Camera trong Cài đặt nhé.',
@@ -96,5 +97,5 @@ export const sos = {
   trustedContactsSaveFailed: 'Không lưu được. Thử lại sau giây lát.',
   trustedContactsRemoveAccessibility: 'Xóa {{name}}',
   trustedContactsPrivacyNote:
-    'Mỗi liên hệ nhận tên thiết bị và vị trí gần nhất qua email. Không gửi ảnh.',
+    'Mỗi liên hệ nhận tên người gửi và vị trí gần nhất qua email. Không gửi ảnh.',
 } as const;

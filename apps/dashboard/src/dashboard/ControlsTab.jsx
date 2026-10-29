@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { Fragment, useEffect, useMemo, useState } from 'react';
 import { webCategoryGroupLabel, webCategoryLabel } from './labels.js';
 import { useActivityTranslate } from './activityCopy.js';
 import RewardTaskForm from './RewardTaskForm.jsx';
@@ -22,18 +22,25 @@ import PremiumTeaser from './PremiumTeaser.jsx';
 import { childMinutesUsedToday } from './childBudgetSpent.js';
 import Icon from '@kidgate/web-ui/Icon';
 import { WEB_FILTER_CATEGORY_GROUPS } from '@kidgate/core/domain/webFilterCategoryGroups';
-import { WEB_FILTER_CATEGORIES } from '@kidgate/schema/webActivity';
+import {
+  IOS_SUPPORTED_WEB_FILTER_CATEGORIES,
+  WEB_FILTER_CATEGORIES,
+} from '@kidgate/schema/webActivity';
 import { CHILD_RULE_KEYS } from '@kidgate/schema/childRules';
 import { resolveTaskStars } from '@kidgate/core/domain/rewardTasks';
+import { rewardTaskRepeatKey } from './rewardTaskRows.js';
+import { useTodayKey } from './useTodayKey.js';
 import {
   supportsWebFiltering,
   webFilterBlockerKey,
+  webFilterComingSoon,
 } from '@kidgate/core/domain/webFilterSupport';
 import {
   platformLabelKey,
   resolveDisplayFormFactor,
 } from '@kidgate/core/domain/deviceFormFactor';
 import {
+  iosScreenTimeWithheld,
   supportsAppBlocking,
   supportsDailyLimit,
   supportsSchedule,
@@ -50,7 +57,7 @@ import { supportsSearchMonitoring } from '@kidgate/core/domain/alertSupport';
 import { searchMonitoringGranted } from '@kidgate/core/domain/messageMonitoringStatus';
 import { supportsSafeSearch } from '@kidgate/core/domain/safeSearchSupport';
 import { supportsRewardTasks } from '@kidgate/core/domain/rewardTaskSupport';
-import { formatMinutes } from './charts.jsx';
+import { formatLimitMinutes } from './charts.jsx';
 import { formatHm } from './locale.js';
 import { useT } from '@kidgate/web-ui/useT';
 
@@ -141,8 +148,10 @@ function isChildRuleSwitch(key) {
 
 /** The predicate each child-rule row is gated on, for its scope line. */
 const HOLDS_CHILD_RULE = {
-  schedule: supportsSchedule,
-  webFilter: supportsWebFiltering,
+  // An iPhone without its Screen Time grant holds neither, and publishes no
+  // probe to say so (`iosScreenTimeWithheld`) — the phone's screens count it out.
+  schedule: device => supportsSchedule(device) && !iosScreenTimeWithheld(device),
+  webFilter: device => supportsWebFiltering(device) && !iosScreenTimeWithheld(device),
   location: supportsLocation,
   appBlocking: supportsAppBlocking,
   installApproval: device => installApprovalMode(device) !== null,
@@ -190,6 +199,7 @@ export default function ControlsTab({
   );
   const { t } = useT();
   const activityT = useActivityTranslate();
+  const todayKey = useTodayKey();
   const c = device.controls;
   const live = Boolean(actions);
   /*
@@ -464,6 +474,10 @@ export default function ControlsTab({
    * turning on a protection that was never going to run.
    */
   const canWebFilter = supportsWebFiltering(device);
+  /* An iPhone whose build carries no tunnel (`IOS_WEB_FILTER_VPN_ENABLED`):
+     Apple's adult filter still works, every other category is Coming soon —
+     the phone's Web Filter screen draws the same. */
+  const webSoon = webFilterComingSoon(device);
   /*
    * A Mac that could filter and is waiting on a person beats the flat "not
    * supported": the same distinction the phone's card draws, from the same
@@ -801,7 +815,11 @@ export default function ControlsTab({
       )}
 
       <div className="grid-2">
-        <Card title={t('dash.limitCardTitle')} subtitle={t('dash.limitCardSub')}>
+        <Card
+          id="daily-limit"
+          title={t('dash.limitCardTitle')}
+          subtitle={t('dash.limitCardSub')}
+        >
           {/*
             The card stays, the slider goes — the same call the rows beside it
             make. A cap on the day's minutes needs something to measure them
@@ -825,15 +843,15 @@ export default function ControlsTab({
                     than a dash a parent has to interpret. */}
                 <strong>
                   {childBudgetMinutes
-                    ? formatMinutes(childBudgetMinutes)
+                    ? formatLimitMinutes(childBudgetMinutes)
                     : t('dash.off')}
                 </strong>
                 <p className="hint">{t('dash.limitShared')}</p>
                 {childBudgetMinutes && budgetSpentMinutes !== null ? (
                   <p className="hint">
                     {t('dash.limitSharedSpent', {
-                      used: formatMinutes(budgetSpentMinutes),
-                      limit: formatMinutes(
+                      used: formatLimitMinutes(budgetSpentMinutes),
+                      limit: formatLimitMinutes(
                         childLimitWithBonus(
                           childBudgetMinutes,
                           siblingDevices.map(d => d.controls),
@@ -868,7 +886,7 @@ export default function ControlsTab({
             <>
               <div className="limit-edit">
                 <strong>
-                  {limitShown ? formatMinutes(limitShown) : t('dash.off')}
+                  {limitShown ? formatLimitMinutes(limitShown) : t('dash.off')}
                 </strong>
                 <input
                   type="range"
@@ -944,6 +962,11 @@ export default function ControlsTab({
           id="web-filter"
           title={t('dash.webFilterCatsTitle')}
           subtitle={t('dash.webFilterCatsSub')}
+          action={
+            webSoon && canWebFilter ? (
+              <span className="pill tone-muted">{t('common.comingSoon')}</span>
+            ) : undefined
+          }
         >
           {/*
            * Follows the row above. A category list on a device with no filter
@@ -957,12 +980,7 @@ export default function ControlsTab({
                   they hold changes with a chip. The phone's Web Filter screen
                   heads itself with this same line, through the same key. */}
               {device.childId && device.child && (
-                <p className="hint">
-                  {activityT('webFilter.appliesToAll', {
-                    name: device.child.name ?? '',
-                    count: siblingDevices.length,
-                  })}
-                </p>
+                <p className="hint">{childRuleScope('webFilter')}</p>
               )}
               {/* Free filters on `DEFAULT_WEB_FILTER_CATEGORIES` and cannot
                   narrow or widen it: `functions/lib/freeTier.js` drops
@@ -986,7 +1004,11 @@ export default function ControlsTab({
                         <li key={key} className={on ? 'is-on' : ''}>
                           <button
                             disabled={
-                              readOnly || busy === 'web-categories' || !hasFullAccess
+                              readOnly ||
+                              busy === 'web-categories' ||
+                              !hasFullAccess ||
+                              (webSoon &&
+                                !IOS_SUPPORTED_WEB_FILTER_CATEGORIES.includes(key))
                             }
                             aria-pressed={on}
                             title={readOnly ? t('dash.unlockToChange') : undefined}
@@ -1029,45 +1051,55 @@ export default function ControlsTab({
                 refuses the eleventh active task and nothing said so first. */}
               <PremiumTeaser teaser={rewardCapTeaser} appT={activityT} />
               <ul className="events">
-                {(rewardTasks[device.id] || []).map(task => (
-                  <li key={task.id}>
-                    <span
-                      className={`ev-state tone-${
-                        task.status === 'approved'
-                          ? 'good'
-                          : task.status === 'claimed'
-                            ? 'warning'
-                            : 'muted'
-                      }`}
-                    >
-                      <Icon
-                        name={
+                {(rewardTasks[device.id] || []).map((task, index, list) => (
+                  <Fragment key={task.id}>
+                    {/* Open tasks first, then the history under the phone's
+                      "Done" — eight identical approved rows after the two to
+                      do read as one list of ten (2026-10-29). */}
+                    {task.status === 'approved' &&
+                      list[index - 1]?.status !== 'approved' && (
+                        <li className="feed-day-head">
+                          {activityT('rewardTask.tabDone')}
+                        </li>
+                      )}
+                    <li>
+                      <span
+                        className={`ev-state tone-${
                           task.status === 'approved'
-                            ? 'check'
+                            ? 'good'
                             : task.status === 'claimed'
-                              ? 'alert'
-                              : 'clock'
-                        }
-                        size={13}
-                      />
-                    </span>
-                    <span
-                      className="reward-stars"
-                      title={t('dash.rewardTaskStars', {
-                        count: resolveTaskStars(task),
-                      })}
-                      aria-label={t('dash.rewardTaskStars', {
-                        count: resolveTaskStars(task),
-                      })}
-                    >
-                      {Array.from({ length: resolveTaskStars(task) }, (_, index) => (
-                        <Icon key={index} name="star" size={11} />
-                      ))}
-                    </span>
-                    <span className="ev-body">
-                      <strong>{task.title}</strong>
-                      <em>
-                        {/*
+                              ? 'warning'
+                              : 'muted'
+                        }`}
+                      >
+                        <Icon
+                          name={
+                            task.status === 'approved'
+                              ? 'check'
+                              : task.status === 'claimed'
+                                ? 'alert'
+                                : 'clock'
+                          }
+                          size={13}
+                        />
+                      </span>
+                      <span
+                        className="reward-stars"
+                        title={t('dash.rewardTaskStars', {
+                          count: resolveTaskStars(task),
+                        })}
+                        aria-label={t('dash.rewardTaskStars', {
+                          count: resolveTaskStars(task),
+                        })}
+                      >
+                        {Array.from({ length: resolveTaskStars(task) }, (_, index) => (
+                          <Icon key={index} name="star" size={11} />
+                        ))}
+                      </span>
+                      <span className="ev-body">
+                        <strong>{task.title}</strong>
+                        <em>
+                          {/*
                         `bonusMinutes` and `repeat` are the field names the
                         repository maps. This read `task.minutes` and
                         `task.cadence` until 2026-09-03 and rendered
@@ -1075,20 +1107,26 @@ export default function ControlsTab({
                         nothing failed, because both halves were interpolated
                         into a string nobody asserted on.
                       */}
-                        {t('dash.rewardTaskMeta', {
-                          minutes: task.bonusMinutes,
-                          cadence: t(
-                            task.repeat === 'daily'
-                              ? 'dash.rewardDaily'
-                              : 'dash.rewardOnce',
-                          ),
-                        })}
-                        {task.status === 'claimed' ? t('dash.rewardTaskWaiting') : ''}
-                      </em>
-                    </span>
-                    {task.status === 'claimed' ? (
-                      <>
-                        {/* Both answers, and the Approve button had no `onClick`
+                          {/* The app pack's words: `dash.rewardDaily` and
+                            `dash.rewardOnce` left the web pack and these
+                            printed as raw keys — a key built in a ternary is
+                            one `yarn i18n:missing` cannot see. A finished
+                            task says when, as the phone's Done row does, and
+                            a daily task done today says it is back tomorrow,
+                            as the phone's row and the child's do. */}
+                          {t('dash.rewardTaskMeta', {
+                            minutes: task.bonusMinutes,
+                            cadence:
+                              task.status === 'approved' && task.resolvedAt
+                                ? timeAgo(task.resolvedAt)
+                                : activityT(rewardTaskRepeatKey(task, todayKey)),
+                          })}
+                          {task.status === 'claimed' ? t('dash.rewardTaskWaiting') : ''}
+                        </em>
+                      </span>
+                      {task.status === 'claimed' ? (
+                        <>
+                          {/* Both answers, and the Approve button had no `onClick`
                           at all until 2026-09-03 — `resolveRewardClaim` was
                           built and never called.
 
@@ -1098,72 +1136,73 @@ export default function ControlsTab({
                           frozen card for the length of the round trip. Both go
                           disabled, the pressed one shows the ellipsis — the
                           same rule the phone's claims inbox follows. */}
-                        <button
-                          className="btn btn-sm"
-                          disabled={
-                            readOnly ||
-                            busy === `reward-reject-${task.id}` ||
-                            busy === `reward-approve-${task.id}`
-                          }
-                          title={readOnly ? t('dash.unlockToChange') : undefined}
-                          onClick={() =>
-                            run(`reward-reject-${task.id}`, () =>
-                              actions.resolveRewardClaim(task.id, false),
-                            )
-                          }
-                        >
-                          {busy === `reward-reject-${task.id}`
-                            ? '…'
-                            : activityT('rewardTask.tryAgain')}
-                        </button>
-                        <button
-                          className="btn btn-sm btn-primary"
-                          disabled={
-                            readOnly ||
-                            busy === `reward-approve-${task.id}` ||
-                            busy === `reward-reject-${task.id}`
-                          }
-                          title={readOnly ? t('dash.unlockToChange') : undefined}
-                          onClick={() =>
-                            run(`reward-approve-${task.id}`, () =>
-                              actions.resolveRewardClaim(task.id, true),
-                            )
-                          }
-                        >
-                          {busy === `reward-approve-${task.id}`
-                            ? '…'
-                            : t('dash.approve')}
-                        </button>
-                      </>
-                    ) : (
-                      task.status === 'open' && (
-                        <button
-                          className="btn btn-sm"
-                          disabled={readOnly || busy === `reward-${task.id}`}
-                          aria-label={activityT('rewardTask.deleteTask')}
-                          title={
-                            readOnly
-                              ? t('dash.unlockToChange')
-                              : activityT('rewardTask.deleteTask')
-                          }
-                          onClick={() => {
-                            // Asked first, with the phone's own sentences: one
-                            // click used to delete with no way back.
-                            const question = `${activityT('rewardTask.deleteConfirmTitle')}\n\n${activityT(
-                              'rewardTask.deleteConfirmBody',
-                              { title: task.title },
-                            )}`;
-                            if (!window.confirm(question)) return;
-                            run(`reward-${task.id}`, () =>
-                              actions.deleteRewardTask(task.id),
-                            );
-                          }}
-                        >
-                          <Icon name="trash" size={13} />
-                        </button>
-                      )
-                    )}
-                  </li>
+                          <button
+                            className="btn btn-sm"
+                            disabled={
+                              readOnly ||
+                              busy === `reward-reject-${task.id}` ||
+                              busy === `reward-approve-${task.id}`
+                            }
+                            title={readOnly ? t('dash.unlockToChange') : undefined}
+                            onClick={() =>
+                              run(`reward-reject-${task.id}`, () =>
+                                actions.resolveRewardClaim(task.id, false),
+                              )
+                            }
+                          >
+                            {busy === `reward-reject-${task.id}`
+                              ? '…'
+                              : activityT('rewardTask.tryAgain')}
+                          </button>
+                          <button
+                            className="btn btn-sm btn-primary"
+                            disabled={
+                              readOnly ||
+                              busy === `reward-approve-${task.id}` ||
+                              busy === `reward-reject-${task.id}`
+                            }
+                            title={readOnly ? t('dash.unlockToChange') : undefined}
+                            onClick={() =>
+                              run(`reward-approve-${task.id}`, () =>
+                                actions.resolveRewardClaim(task.id, true),
+                              )
+                            }
+                          >
+                            {busy === `reward-approve-${task.id}`
+                              ? '…'
+                              : t('dash.approve')}
+                          </button>
+                        </>
+                      ) : (
+                        task.status === 'open' && (
+                          <button
+                            className="btn btn-sm"
+                            disabled={readOnly || busy === `reward-${task.id}`}
+                            aria-label={activityT('rewardTask.deleteTask')}
+                            title={
+                              readOnly
+                                ? t('dash.unlockToChange')
+                                : activityT('rewardTask.deleteTask')
+                            }
+                            onClick={() => {
+                              // Asked first, with the phone's own sentences: one
+                              // click used to delete with no way back.
+                              const question = `${activityT('rewardTask.deleteConfirmTitle')}\n\n${activityT(
+                                'rewardTask.deleteConfirmBody',
+                                { title: task.title },
+                              )}`;
+                              if (!window.confirm(question)) return;
+                              run(`reward-${task.id}`, () =>
+                                actions.deleteRewardTask(task.id),
+                              );
+                            }}
+                          >
+                            <Icon name="trash" size={13} />
+                          </button>
+                        )
+                      )}
+                    </li>
+                  </Fragment>
                 ))}
               </ul>
             </>

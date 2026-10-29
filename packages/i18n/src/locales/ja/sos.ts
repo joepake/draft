@@ -26,6 +26,7 @@ export const sos = {
     'SOSを送信しました。できれば安全な場所にとどまってください。保護者に通知されました。',
   escapeGrantedTitle: 'SOSを送信しました',
   escapeGrantedBody: '保護者に通知されました。',
+  sentParentSaw: '保護者がSOSを確認しました。',
   toastSentWithoutPhoto: '写真なしでSOSを送信しました。',
   toastSentWithoutPhotoCamera:
     '写真なしでSOSを送信しました。次回写真を付けるには、設定でカメラを許可してください。',
@@ -99,5 +100,5 @@ export const sos = {
     '保存できませんでした。しばらくしてからもう一度お試しください。',
   trustedContactsRemoveAccessibility: '{{name}}を削除',
   trustedContactsPrivacyNote:
-    '各連絡先にはデバイス名と最後に確認された位置がメールで届きます。写真は送られません。',
+    '各連絡先には送信者の名前と最後に確認された位置がメールで届きます。写真は送られません。',
 } as const;

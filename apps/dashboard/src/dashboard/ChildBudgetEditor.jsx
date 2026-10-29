@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useT } from '@kidgate/web-ui/useT';
-import { formatMinutes } from './charts.jsx';
+import { formatLimitMinutes } from './charts.jsx';
 import { useActivityTranslate } from './activityCopy.js';
 
 /**
@@ -55,7 +55,7 @@ export default function ChildBudgetEditor({ minutes, readOnly, busy, onSave }) {
               title={readOnly ? t('dash.unlockToChange') : undefined}
               onClick={() => commit(value)}
             >
-              {formatMinutes(value)}
+              {formatLimitMinutes(value)}
             </button>
           </li>
         ))}

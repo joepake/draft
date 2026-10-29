@@ -723,7 +723,9 @@ export default function ChildReport({
              * its report could only ever be empty. The phone's DeviceRow does
              * the same.
              */
-            if (device && !supportsScreenTime(device)) {
+            // A device that sent no day here says so, never "0m" (the phone's
+            // DeviceRow does the same).
+            if ((device && !supportsScreenTime(device)) || !row.reported) {
               return (
                 <li key={row.deviceId} style={{ '--i': i }}>
                   <div className="rhub-row rhub-row-static">
@@ -731,14 +733,18 @@ export default function ChildReport({
                       className="creport-swatch"
                       style={{ background: deviceColor(row.deviceId) }}
                     >
-                      <Icon name={deviceIconName(device)} size={13} />
+                      {device && <Icon name={deviceIconName(device)} size={13} />}
                     </span>
                     <span className="rhub-row-body">
                       <span className="rhub-row-head">
                         <strong>{row.name ?? NO_FIGURE}</strong>
                       </span>
                       <span className="empty">
-                        {appT('childReport.deviceNoScreenTime')}
+                        {appT(
+                          device && !supportsScreenTime(device)
+                            ? 'childReport.deviceNoScreenTime'
+                            : 'childReport.heroEmpty',
+                        )}
                       </span>
                     </span>
                   </div>

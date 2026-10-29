@@ -66,6 +66,8 @@ export const rewardTask = {
   taskRejected: 'Tarefa bônus devolvida',
   taskRejectedDescription:
     '“{{title}}” foi devolvida a {{deviceName}} para nova tentativa.',
+  taskClaimed: 'Tarefa concluída',
+  taskClaimedDescription: '{{deviceName}} concluiu “{{title}}”.',
   starsLabel: 'Dificuldade',
   starsHint: 'Seu filho ou sua filha coleciona essa quantidade de estrelas.',
   starsEasy: 'Fácil',

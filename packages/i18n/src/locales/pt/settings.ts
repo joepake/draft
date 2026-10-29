@@ -111,7 +111,7 @@ export const settings = {
   deleteAccountAlertMessageMember:
     'Isto agenda a exclusão da sua própria conta. Nada é removido ainda — você pode entrar e cancelar a qualquer momento antes da data de exclusão. Depois disso, seu login e seus próprios ajustes são excluídos. A família, os dispositivos dela e os outros responsáveis não são afetados.',
   deleteAccountSubscriptionNotice:
-    'Excluir sua conta não cancela uma assinatura. Cancele-a na App Store ou no Google Play.',
+    'Excluir sua conta não cancela uma assinatura. Cancele-a na sua loja de apps.',
   sendRequestButton: 'Agendar exclusão',
   toastDeletionAlreadyPending: 'A exclusão da conta já está em andamento.',
   toastDeletionRequestFailed:

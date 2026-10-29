@@ -10,6 +10,7 @@ export const blockedHours = {
   heroSubtitle:
     'Cihaz kullanımının engellendiği en fazla {{max}} zaman aralığı ayarlayın.',
   statTimeRangesLabel: 'Zaman aralıkları',
+  statTimeRangesLabel_one: 'Zaman aralığı',
   toggleTitle: 'Engellenen Saatleri Etkinleştir',
   toggleSubtitleOn: 'Cihaz kullanımı aşağıdaki saatlerde engellenir.',
   toggleSubtitleOff: 'Cihaz kullanımını programa göre engellemek için açın.',

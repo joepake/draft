@@ -109,7 +109,7 @@ export const settings = {
   deleteAccountAlertMessageMember:
     'Thao tác này lên lịch xóa tài khoản của riêng bạn. Chưa có dữ liệu nào bị xóa — bạn có thể đăng nhập và hủy bất cứ lúc nào trước ngày xóa. Sau ngày đó, thông tin đăng nhập và cài đặt riêng của bạn sẽ bị xóa. Gia đình, các thiết bị và những phụ huynh khác không bị ảnh hưởng.',
   deleteAccountSubscriptionNotice:
-    'Xóa tài khoản không hủy gói đăng ký. Vui lòng hủy gói trong App Store hoặc Google Play.',
+    'Xóa tài khoản không hủy gói đăng ký. Vui lòng hủy gói trong kho ứng dụng của bạn.',
   sendRequestButton: 'Lên lịch xóa',
   toastDeletionAlreadyPending: 'Tài khoản đang trong quá trình xóa.',
   toastDeletionRequestFailed: 'Không thể bắt đầu xóa tài khoản. Vui lòng thử lại.',

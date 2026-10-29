@@ -595,8 +595,8 @@ export default {
     locationUpdated: '更新 {{when}}',
     locationWaiting: '最初の更新を待っています',
     noPlaces:
-      '保存された場所はまだありません。アプリで追加すると、子どもの到着・出発を通知で受け取れます。',
-    placeRadius: '{{meters}} m · ',
+      '保存された場所はまだありません。追加すると、子どもの到着・出発を通知で受け取れます。',
+    placeRadius: '{{meters}} m',
     placeArrive: '到着',
     placeLeave: '出発',
     placeNoAlerts: '通知なし',
@@ -634,7 +634,7 @@ export default {
     limitShared: 'すべてのデバイス共通',
     limitSharedSpent: '今日は {{limit}} のうち {{used}} を使用',
     limitSharedHint:
-      'これはお子さまの一日全体で、このデバイスだけの上限ではありません。ほかのデバイスが使わなかった分が各デバイスに回ります。変更は KidGate アプリから行えます。',
+      'これはお子さまの一日全体で、このデバイスだけの上限ではありません。ほかのデバイスが使わなかった分が各デバイスに回ります。',
     whatsOnSub: '変更は子どものデバイスに同期されます',
     rowBlockedHours: '休止時間',
     rowBlockedHoursDesc: '{{count}} 個の時間帯 · {{list}}',
@@ -656,8 +656,7 @@ export default {
       'フィルタの動作中は暗号化 DNS を常にブロックするため、ブラウザが迂回することはできません。',
     starChartTitle: 'スターボード',
     starChartSub: '今週お子さまごとに集めた星',
-    starChartEmpty:
-      'アプリでお子さまをもうひとり追加すると、スターボードが始まります。',
+    starChartEmpty: 'お子さまをもうひとり追加すると、スターボードが始まります。',
     starChartStars: '星{{count}}個',
     rewardTasksTitle: 'ごほうびタスク',
     rewardTasksSub: 'タスクを終えると追加の時間がもらえます',

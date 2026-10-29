@@ -24,8 +24,8 @@ export const plans = {
   termMonthly: '月額プラン',
   termAnnual: '年額プラン',
   bestValueBadge: '一番お得',
-  premiumManageBillingNote:
-    'お支払いの管理はApp StoreまたはGoogle Playの設定から行えます。',
+  premiumManageBillingNote: 'お支払いの管理はご利用のアプリストアの設定から行えます。',
+  paidThrough: '{{date}}までお支払い済み',
   compareTitle: '無料版とPremiumの比較',
   compareColumnFree: '無料',
   compareColumnPremium: 'Premium',
@@ -51,6 +51,7 @@ export const plans = {
   compareNewApps: '新しくインストールされたアプリ',
   compareNewAppsPremium: 'どのアプリか、名前で表示',
   compareMessages: 'メッセージ警告（Android）',
+  compareMessagesIos: 'メッセージ警告（その他のスマートフォン）',
   compareSafety: '保護の通知とチェックイン',
   compareSafetyFree: '通知 + チェックイン',
   compareSafetyPremium: 'チェックインごとに写真を追加',
@@ -144,7 +145,7 @@ export const plans = {
     'このサブスクリプションは現在ご利用いただけません。しばらくしてからもう一度お試しください。',
   unableToStartPurchase: '購入を開始できませんでした。もう一度お試しください。',
   noActiveSubscription:
-    '有効なサブスクリプションが見つかりません。登録時に使用したApp StoreまたはGoogle Playのアカウントでサインインしてから、もう一度お試しください。',
+    '有効なサブスクリプションが見つかりません。登録時に使用したアプリストアのアカウントでサインインしてから、もう一度お試しください。',
   purchasesRestored: '購入を復元しました。',
   unableToRestorePurchases: '購入を復元できませんでした。もう一度お試しください。',
   purchaseVerificationFailed:
@@ -181,6 +182,8 @@ export const plans = {
   platformIosDetail: '保護者用・お子さま用 · iOS 16以降',
   platformAndroid: 'Android',
   platformAndroidDetail: '保護者用・お子さま用 · Android 7以降',
+  platformOtherPhones: 'その他のスマートフォン・タブレット',
+  platformOtherPhonesDetail: '保護者用・お子さま用',
   platformMac: 'Mac',
   platformMacDetail: 'お子さま用のみ · macOS 12以降',
   platformIosLimits:
@@ -196,6 +199,8 @@ export const plans = {
   platformWindowsDetail: 'お子さま用のみ · Windows 10以降',
   platformAndroidTv: 'Android TV',
   platformAndroidTvDetail: 'お子さま用のみ · Android TV 7以降',
+  platformGoogleTv: 'Google TV',
+  platformGoogleTvDetail: 'お子さま用のみ',
   platformChromebook: 'Chromebook',
   platformChromebookDetail: 'お子さま用 · ChromeのWebフィルターのみ',
   teaserCta: 'Premium を見る',
@@ -215,6 +220,8 @@ export const plans = {
     'Premium ならお子さまごとのレポートが増え、毎週新しいものが届きます。',
   teaserMessageAlerts:
     'Premium はメッセージに注意が必要なときに知らせます。Android のみ。',
+  teaserMessageAlertsIos:
+    'Premium はメッセージに注意が必要なときに知らせます。iPhone・iPad では使えません。',
   teaserWebFilterAdvanced:
     'Premium はカテゴリで絞り込み、独自の許可リストとブロックリストを使え、お子さまがサイトの解除を申請できます。',
   teaserWeeklyReport:

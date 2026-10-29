@@ -24,7 +24,8 @@ export const plans = {
   termMonthly: 'Monthly',
   termAnnual: 'Yearly',
   bestValueBadge: 'Best value',
-  premiumManageBillingNote: 'Manage billing in your App Store or Google Play settings.',
+  premiumManageBillingNote: 'Manage billing in your app store settings.',
+  paidThrough: 'Paid through {{date}}',
   // The comparison table. Rows and their order: `planComparison` in
   // `@kidgate/core/domain` — only rows where the two columns differ are rows,
   // and everything both plans carry is `compareIncluded` below.
@@ -55,6 +56,7 @@ export const plans = {
   compareNewApps: 'New apps installed',
   compareNewAppsPremium: 'Which apps, by name',
   compareMessages: 'Message Alerts (Android)',
+  compareMessagesIos: 'Message Alerts (other phones)',
   compareSafety: 'Protection alerts and Check-In',
   compareSafetyFree: 'Alerts + Check-In',
   compareSafetyPremium: 'Adds a photo to every Check-In',
@@ -153,7 +155,7 @@ export const plans = {
     'This subscription is not available right now. Try again later.',
   unableToStartPurchase: 'Unable to start the purchase. Try again.',
   noActiveSubscription:
-    'No active subscription was found. Sign in with the App Store or Google Play account you subscribed with, then try again.',
+    'No active subscription was found. Sign in with the app store account you subscribed with, then try again.',
   purchasesRestored: 'Purchases restored.',
   unableToRestorePurchases: 'Unable to restore purchases. Try again.',
   purchaseVerificationFailed:
@@ -190,6 +192,8 @@ export const plans = {
   platformIosDetail: 'Parent or child device · iOS 16 and later',
   platformAndroid: 'Android',
   platformAndroidDetail: 'Parent or child device · Android 7 and later',
+  platformOtherPhones: 'Other phones and tablets',
+  platformOtherPhonesDetail: 'Parent or child device',
   platformMac: 'Mac',
   platformMacDetail: 'Child device only · macOS 12 and later',
   platformIosLimits:
@@ -205,6 +209,8 @@ export const plans = {
   platformWindowsDetail: 'Child device only · Windows 10 and later',
   platformAndroidTv: 'Android TV',
   platformAndroidTvDetail: 'Child device only · Android TV 7 and later',
+  platformGoogleTv: 'Google TV',
+  platformGoogleTvDetail: 'Child device only',
   platformChromebook: 'Chromebook',
   platformChromebookDetail: 'Child device · Web Filter in Chrome only',
   // The premium teasers (`@kidgate/core/domain/premiumTeaser`). Each body is
@@ -229,6 +235,8 @@ export const plans = {
   teaserChildReport: 'Premium adds a report for each child, and a new one every week.',
   teaserMessageAlerts:
     'Premium tells you when a message needs your attention. Android only.',
+  teaserMessageAlertsIos:
+    'Premium tells you when a message needs your attention. Not available on iPhone or iPad.',
   // §3's axis, for a surface comparing plans rather than missing a feature.
   teaserWebFilterAdvanced:
     'Premium filters by category, takes your own allow and block lists, and lets your child ask to unblock a site.',

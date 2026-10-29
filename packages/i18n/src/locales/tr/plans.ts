@@ -25,7 +25,8 @@ export const plans = {
   termAnnual: 'Yıllık',
   bestValueBadge: 'En avantajlı',
   premiumManageBillingNote:
-    'Faturalandırmayı App Store veya Google Play ayarlarınızdan yönetin.',
+    'Faturalandırmayı uygulama mağazanızın ayarlarından yönetin.',
+  paidThrough: '{{date}} tarihine kadar ödendi',
   compareTitle: 'Ücretsiz ve Premium yan yana',
   compareColumnFree: 'Ücretsiz',
   compareColumnPremium: 'Premium',
@@ -51,6 +52,7 @@ export const plans = {
   compareNewApps: 'Yeni yüklenen uygulamalar',
   compareNewAppsPremium: 'Hangi uygulamalar, adlarıyla',
   compareMessages: 'Mesaj uyarıları (Android)',
+  compareMessagesIos: 'Mesaj uyarıları (diğer telefonlar)',
   compareSafety: 'Koruma uyarıları ve Check-In',
   compareSafetyFree: 'Uyarılar + Check-In',
   compareSafetyPremium: 'Her Check-In’e fotoğraf ekler',
@@ -144,7 +146,7 @@ export const plans = {
     'Bu abonelik şu anda kullanılamıyor. Lütfen daha sonra tekrar deneyin.',
   unableToStartPurchase: 'Satın alma başlatılamadı. Lütfen tekrar deneyin.',
   noActiveSubscription:
-    'Etkin abonelik bulunamadı. Abone olurken kullandığınız App Store veya Google Play hesabıyla oturum açın, ardından tekrar deneyin.',
+    'Etkin abonelik bulunamadı. Abone olurken kullandığınız uygulama mağazası hesabıyla oturum açın, ardından tekrar deneyin.',
   purchasesRestored: 'Satın alımlar geri yüklendi.',
   unableToRestorePurchases: 'Satın alımlar geri yüklenemedi. Lütfen tekrar deneyin.',
   purchaseVerificationFailed:
@@ -181,6 +183,8 @@ export const plans = {
   platformIosDetail: 'Ebeveyn veya çocuk cihazı · iOS 16 ve üzeri',
   platformAndroid: 'Android',
   platformAndroidDetail: 'Ebeveyn veya çocuk cihazı · Android 7 ve üzeri',
+  platformOtherPhones: 'Diğer telefonlar ve tabletler',
+  platformOtherPhonesDetail: 'Ebeveyn veya çocuk cihazı',
   platformMac: 'Mac',
   platformMacDetail: 'Yalnızca çocuk cihazı · macOS 12 ve üzeri',
   platformIosLimits:
@@ -196,6 +200,8 @@ export const plans = {
   platformWindowsDetail: 'Yalnızca çocuk cihazı · Windows 10 ve üzeri',
   platformAndroidTv: 'Android TV',
   platformAndroidTvDetail: 'Yalnızca çocuk cihazı · Android TV 7 ve üzeri',
+  platformGoogleTv: 'Google TV',
+  platformGoogleTvDetail: 'Yalnızca çocuk cihazı',
   platformChromebook: 'Chromebook',
   platformChromebookDetail: 'Çocuk cihazı · yalnızca Chrome’da Web filtresi',
   teaserCta: 'Premium’u gör',
@@ -214,6 +220,8 @@ export const plans = {
   teaserChildReport: 'Premium her çocuk için ayrı rapor ekler, her hafta da yenisini.',
   teaserMessageAlerts:
     'Premium bir mesaj dikkatinizi gerektirdiğinde haber verir. Yalnızca Android.',
+  teaserMessageAlertsIos:
+    'Premium bir mesaj dikkatinizi gerektirdiğinde haber verir. iPhone ve iPad’de kullanılamaz.',
   teaserWebFilterAdvanced:
     'Premium kategoriye göre filtreler, kendi izin ve engelleme listelerinizi alır ve çocuğunuzun bir siteyi açma isteği göndermesine izin verir.',
   teaserWeeklyReport:

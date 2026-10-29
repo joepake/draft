@@ -109,7 +109,7 @@ export const settings = {
   deleteAccountAlertMessageMember:
     'Ini menjadwalkan penghapusan akun Anda sendiri. Belum ada yang dihapus — Anda bisa masuk dan membatalkan kapan saja sebelum tanggal penghapusan. Setelah itu, akses masuk dan pengaturan pribadi Anda dihapus. Keluarga, perangkatnya, dan orang tua lainnya tidak terpengaruh.',
   deleteAccountSubscriptionNotice:
-    'Menghapus akun tidak membatalkan langganan. Batalkan langganan di App Store atau Google Play.',
+    'Menghapus akun tidak membatalkan langganan. Batalkan langganan di toko aplikasi Anda.',
   sendRequestButton: 'Jadwalkan penghapusan',
   toastDeletionAlreadyPending: 'Penghapusan akun sudah sedang berlangsung.',
   toastDeletionRequestFailed:

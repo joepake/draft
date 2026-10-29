@@ -10,6 +10,7 @@ export const blockedHours = {
   heroSubtitle:
     'Lege bis zu {{max}} Zeiträume fest, in denen die Gerätenutzung gesperrt ist.',
   statTimeRangesLabel: 'Zeiträume',
+  statTimeRangesLabel_one: 'Zeitraum',
   toggleTitle: 'Sperrzeiten aktivieren',
   toggleSubtitleOn:
     'Die Gerätenutzung ist während der unten angegebenen Zeiten gesperrt.',

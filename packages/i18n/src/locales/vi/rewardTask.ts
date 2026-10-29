@@ -64,6 +64,8 @@ export const rewardTask = {
     '{{deviceName}} nhận {{minutes}} phút thưởng cho “{{title}}”.',
   taskRejected: 'Nhiệm vụ thưởng bị trả lại',
   taskRejectedDescription: '“{{title}}” được trả lại cho {{deviceName}} để thử lại.',
+  taskClaimed: 'Nhiệm vụ hoàn thành',
+  taskClaimedDescription: '{{deviceName}} đã xong “{{title}}”.',
   starsLabel: 'Độ khó',
   starsHint: 'Con sẽ tích được số sao tương ứng.',
   starsEasy: 'Dễ',

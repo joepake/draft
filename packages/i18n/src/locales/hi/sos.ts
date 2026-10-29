@@ -26,6 +26,7 @@ export const sos = {
     'SOS भेज दिया गया। हो सके तो किसी सुरक्षित जगह रहें — आपके माता-पिता को सूचित कर दिया गया है।',
   escapeGrantedTitle: 'SOS भेजा गया',
   escapeGrantedBody: 'आपके माता-पिता को सूचित कर दिया गया है।',
+  sentParentSaw: 'आपके माता-पिता ने आपका SOS देख लिया है।',
   toastSentWithoutPhoto: 'SOS बिना फ़ोटो के भेज दिया गया।',
   toastSentWithoutPhotoCamera:
     'SOS बिना फ़ोटो के भेज दिया गया। अगली बार फ़ोटो जोड़ने के लिए सेटिंग्स में कैमरे की अनुमति दें।',
@@ -100,5 +101,5 @@ export const sos = {
   trustedContactsSaveFailed: 'सहेजा नहीं जा सका। थोड़ी देर बाद फिर कोशिश करें।',
   trustedContactsRemoveAccessibility: '{{name}} को हटाएँ',
   trustedContactsPrivacyNote:
-    'हर संपर्क को ईमेल से डिवाइस का नाम और आख़िरी ज्ञात स्थान मिलता है। कोई फ़ोटो नहीं भेजी जाती।',
+    'हर संपर्क को ईमेल से भेजने वाले का नाम और आख़िरी ज्ञात स्थान मिलता है। कोई फ़ोटो नहीं भेजी जाती।',
 } as const;

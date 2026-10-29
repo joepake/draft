@@ -164,6 +164,13 @@ export interface ChildDeviceShare {
   share: number;
   /** False for a device that can only say how much. Drives the "≈" affordance. */
   hasTimeline: boolean;
+  /**
+   * False when no day in the window holds minutes or a timeline. Callers
+   * gap-fill (`UsageDayRepository.fetchRecent` pads with zero rows), so a
+   * padded zero cannot be told from a stored one; this reads both as the
+   * hero's "No usage reported yet" does, instead of "0m · 0%" (2026-10-29).
+   */
+  reported: boolean;
 }
 
 /**
@@ -380,6 +387,7 @@ export function childDeviceShares(
       minutes,
       share: 0,
       hasTimeline,
+      reported: minutes > 0 || hasTimeline,
     } satisfies ChildDeviceShare;
   });
 

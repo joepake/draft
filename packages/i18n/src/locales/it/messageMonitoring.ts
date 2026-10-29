@@ -8,8 +8,12 @@ export const messageMonitoring = {
     'KidGate segnala le parole preoccupanti nei messaggi e nelle ricerche di tuo figlio e ti avvisa. Vedi solo la parola o la frase segnalata, mai il messaggio né la ricerca.',
   androidOnlyNote:
     'I messaggi possono essere controllati solo sui dispositivi Android. Le ricerche possono essere controllate anche nell’estensione per Chrome.',
+  androidOnlyNoteIos:
+    'I messaggi non possono essere controllati su iPhone e iPad. Le ricerche possono essere controllate anche nell’estensione per Chrome.',
   searchOnlyNote:
     'Qui si possono controllare solo le ricerche. I messaggi possono essere controllati solo sui dispositivi Android.',
+  searchOnlyNoteIos:
+    'Qui si possono controllare solo le ricerche. I messaggi non possono essere controllati su iPhone e iPad.',
   recentTitle: 'Avvisi recenti',
   emptyTitle: 'Ancora nessun avviso',
   emptySubtitle:

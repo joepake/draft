@@ -10,6 +10,7 @@ export const blockedHours = {
   heroSubtitle:
     'Configura fino a {{max}} fasce orarie in cui l’uso del dispositivo è bloccato.',
   statTimeRangesLabel: 'Fasce orarie',
+  statTimeRangesLabel_one: 'Fascia oraria',
   toggleTitle: 'Abilita gli Orari di blocco',
   toggleSubtitleOn: 'L’uso del dispositivo è bloccato negli orari indicati di seguito.',
   toggleSubtitleOff:

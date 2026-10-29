@@ -101,6 +101,34 @@ export function effectiveDailyLimitMinutes(
 }
 
 /**
+ * The Daily Limit a child's own screen names, for a device assigned to them.
+ *
+ * The device's figure when it has one. A device that has never reported has
+ * none — the server sizes its share of the child's budget off the report
+ * (`functions/lib/childBudget.js`) — and an iPhone without Screen Time never
+ * reports, so the screen said "Unlimited" while the parent read 3 hr 15 min
+ * for the same child (2026-10-28). Until then it names the child's budget
+ * plus this device's bonus: the rule the parent set. Display only — what a
+ * device enforces is never derived from this.
+ */
+export function childFacingDailyLimit(
+  deviceLimit: Minutes | null,
+  childBudget: Minutes | null | undefined,
+  controls: BonusControls,
+  nowMs: Millis,
+  localDateOf: (ms: Millis) => IsoDate = localIsoDate,
+): Minutes | null {
+  if (deviceLimit !== null) {
+    return deviceLimit;
+  }
+  return effectiveDailyLimitMinutes(
+    { ...controls, dailyLimitMinutes: childBudget ?? null },
+    nowMs,
+    localDateOf,
+  );
+}
+
+/**
  * A child's shared Daily Limit plus today's bonus, for a parent's card.
  *
  * A bonus lands on the device that asked, and the server caps each device at

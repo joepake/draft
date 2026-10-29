@@ -28,6 +28,28 @@ export function isRewardTaskAvailable(
 }
 
 /**
+ * The bonus minutes still to earn today: open tasks the child can claim now.
+ *
+ * A daily task approved today respawns open but locked until tomorrow, so
+ * counting every open task told the parent "30 bonus minutes to earn today"
+ * while the child's row read "Back tomorrow" (2026-10-29). `today` as above.
+ */
+export function earnableRewardMinutes(
+  tasks: ReadonlyArray<
+    Pick<RewardTask, 'status' | 'bonusMinutes' | 'availableAfterDate'>
+  >,
+  today: IsoDate,
+): number {
+  return tasks.reduce(
+    (sum, task) =>
+      task.status === 'open' && isRewardTaskAvailable(task, today)
+        ? sum + task.bonusMinutes
+        : sum,
+    0,
+  );
+}
+
+/**
  * The difficulty a parent gets offered before touching the star control.
  *
  * Bonus minutes are the only signal available at that moment, so the bands in

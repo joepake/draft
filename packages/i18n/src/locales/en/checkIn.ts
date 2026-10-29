@@ -13,7 +13,6 @@ export const checkIn = {
   metaNoLocation: 'No location attached',
   viewPhotoAccessibility: 'View Check-In photo',
   responseMessage: 'I’m safe.',
-  toastSuccess: 'Thank you. Your answer was sent to your parent.',
   toastFailed: 'Unable to send your Check-In. Try again.',
   quickCheckInBadge: 'Check-In',
   areYouOkay: 'Are you okay?',
@@ -21,6 +20,10 @@ export const checkIn = {
     'Your parent would like to know you are okay. KidGate will send your location and a photo if possible.',
   checkInLocationOnlyBody:
     'Your parent would like to know you are safe. KidGate will send your location if possible.',
+  checkInPhotoNoLocationBody:
+    'Your parent would like to know you are okay. Location is off on this device, so KidGate will send a photo if possible.',
+  checkInAnswerOnlyBody:
+    'Your parent would like to know you are safe. Location is off on this device, so only your answer is sent.',
   yesImOkay: 'I’m okay',
   yesImOkaySending: 'Sending…',
   iNeedHelp: 'I need help',

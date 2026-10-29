@@ -8,8 +8,12 @@ export const messageMonitoring = {
     'KidGate markiert bedenkliche Wörter in den Nachrichten und Suchanfragen deines Kindes und benachrichtigt dich. Du siehst nur das markierte Wort oder den markierten Ausdruck, nie die Nachricht oder die Suchanfrage.',
   androidOnlyNote:
     'Nachrichten können nur auf Android-Geräten geprüft werden. Suchanfragen lassen sich auch in der Chrome-Erweiterung prüfen.',
+  androidOnlyNoteIos:
+    'Auf iPhone und iPad können keine Nachrichten geprüft werden. Suchanfragen lassen sich auch in der Chrome-Erweiterung prüfen.',
   searchOnlyNote:
     'Hier lassen sich nur Suchanfragen prüfen. Nachrichten können nur auf Android-Geräten geprüft werden.',
+  searchOnlyNoteIos:
+    'Hier lassen sich nur Suchanfragen prüfen. Auf iPhone und iPad können keine Nachrichten geprüft werden.',
   recentTitle: 'Neueste Warnungen',
   emptyTitle: 'Noch keine Warnungen',
   emptySubtitle:

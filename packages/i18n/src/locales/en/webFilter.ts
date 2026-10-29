@@ -45,6 +45,8 @@ export const webFilter = {
   safeSearchLabel: 'Force SafeSearch',
   safeSearchHint:
     'Locks Google SafeSearch, YouTube Restricted Mode, Bing and DuckDuckGo to their strict settings. Android and Chrome.',
+  safeSearchHintIos:
+    'Locks Google SafeSearch, YouTube Restricted Mode, Bing and DuckDuckGo to their strict settings. Not on iPhone or iPad.',
   safeSearchStrictNote:
     'YouTube runs at its strictest level: comments are hidden and some ordinary videos are blocked too. A child cannot switch it off from their account.',
   infoTitle: 'How it works',

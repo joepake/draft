@@ -65,6 +65,8 @@ export const rewardTask = {
     '{{deviceName}} получает {{minutes}} бонусных минут за «{{title}}».',
   taskRejected: 'Бонус-задание возвращено',
   taskRejectedDescription: '«{{title}}» возвращено {{deviceName}} для новой попытки.',
+  taskClaimed: 'Задание выполнено',
+  taskClaimedDescription: '{{deviceName}} выполнил «{{title}}».',
   starsLabel: 'Сложность',
   starsHint: 'Столько звёзд соберёт ребёнок.',
   starsEasy: 'Лёгкое',

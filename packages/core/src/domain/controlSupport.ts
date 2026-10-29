@@ -118,6 +118,31 @@ export function supportsSchedule(device: ControlSupportFacts): boolean {
 }
 
 /**
+ * An iPhone or iPad whose Screen Time grant is known and not given.
+ *
+ * Everything an iPhone enforces — a lock, Blocked Hours, Apple's web filter —
+ * rides that one grant, and a phone publishes no probe to say so, so a parent
+ * screen counting which devices hold a rule asks this beside the probe. Before
+ * it, a child's Blocked Hours read "Applies to all 2 devices · Active now" and
+ * the web filter "Enforced on 2 of 2" over an iPhone that had refused Screen
+ * Time and enforced nothing (2026-10-28).
+ *
+ * Known, never guessed: no status yet, or a build with no Screen Time API at
+ * all (`unavailable`), answers false — the lock check's own reading
+ * (`protectionStatus.getLockEnforcementIssueKeys`).
+ */
+export function iosScreenTimeWithheld(device: {
+  platform?: DevicePlatform | null;
+  protectionStatus?: { screenTime?: string } | null;
+}): boolean {
+  if (device.platform !== 'ios') {
+    return false;
+  }
+  const grant = device.protectionStatus?.screenTime;
+  return grant !== undefined && grant !== 'approved' && grant !== 'unavailable';
+}
+
+/**
  * Blocking a named app.
  *
  * `'best-effort'` counts: the desktop agent quits a blocked app after it

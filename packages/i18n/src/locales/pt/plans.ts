@@ -26,7 +26,8 @@ export const plans = {
   termAnnual: 'Anual',
   bestValueBadge: 'Melhor oferta',
   premiumManageBillingNote:
-    'Gerencie a cobrança nas configurações da App Store ou do Google Play.',
+    'Gerencie a cobrança nas configurações da sua loja de apps.',
+  paidThrough: 'Pago até {{date}}',
   compareTitle: 'Grátis e Premium, lado a lado',
   compareColumnFree: 'Grátis',
   compareColumnPremium: 'Premium',
@@ -52,6 +53,7 @@ export const plans = {
   compareNewApps: 'Apps recém-instalados',
   compareNewAppsPremium: 'Quais apps, pelo nome',
   compareMessages: 'Alertas de mensagens (Android)',
+  compareMessagesIos: 'Alertas de mensagens (outros celulares)',
   compareSafety: 'Alertas de proteção e Check-in',
   compareSafetyFree: 'Alertas + Check-In',
   compareSafetyPremium: 'Adiciona uma foto a cada Check-In',
@@ -144,7 +146,7 @@ export const plans = {
     'Esta assinatura não está disponível no momento. Tente novamente mais tarde.',
   unableToStartPurchase: 'Não foi possível iniciar a compra. Tente novamente.',
   noActiveSubscription:
-    'Nenhuma assinatura ativa foi encontrada. Entre com a conta da App Store ou do Google Play usada na assinatura e tente novamente.',
+    'Nenhuma assinatura ativa foi encontrada. Entre com a conta da loja de apps usada na assinatura e tente novamente.',
   purchasesRestored: 'Compras restauradas.',
   unableToRestorePurchases: 'Não foi possível restaurar as compras. Tente novamente.',
   purchaseVerificationFailed:
@@ -182,6 +184,8 @@ export const plans = {
   platformAndroid: 'Android',
   platformAndroidDetail:
     'Dispositivo de responsável ou de criança · Android 7 ou posterior',
+  platformOtherPhones: 'Outros celulares e tablets',
+  platformOtherPhonesDetail: 'Dispositivo de responsável ou de criança',
   platformMac: 'Mac',
   platformMacDetail: 'Somente dispositivo da criança · macOS 12 ou posterior',
   platformIosLimits:
@@ -197,6 +201,8 @@ export const plans = {
   platformWindowsDetail: 'Somente dispositivo da criança · Windows 10 ou posterior',
   platformAndroidTv: 'Android TV',
   platformAndroidTvDetail: 'Somente dispositivo da criança · Android TV 7 ou posterior',
+  platformGoogleTv: 'Google TV',
+  platformGoogleTvDetail: 'Somente dispositivo da criança',
   platformChromebook: 'Chromebook',
   platformChromebookDetail: 'Dispositivo da criança · apenas Filtro da web no Chrome',
   teaserCta: 'Ver o Premium',
@@ -217,6 +223,8 @@ export const plans = {
     'O Premium adiciona um relatório por filho, e um novo a cada semana.',
   teaserMessageAlerts:
     'O Premium avisa quando uma mensagem precisa da sua atenção. Só no Android.',
+  teaserMessageAlertsIos:
+    'O Premium avisa quando uma mensagem precisa da sua atenção. Não disponível no iPhone nem no iPad.',
   teaserWebFilterAdvanced:
     'O Premium filtra por categoria, aceita as suas próprias listas de permitidos e bloqueados e deixa o seu filho pedir para desbloquear um site.',
   teaserWeeklyReport:

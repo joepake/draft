@@ -588,8 +588,8 @@ export default {
     locationUpdated: '{{when}} 업데이트',
     locationWaiting: '첫 업데이트를 기다리는 중',
     noPlaces:
-      '저장된 장소가 없습니다. 앱에서 하나 추가하면 아이가 도착하거나 떠날 때 알림을 받을 수 있습니다.',
-    placeRadius: '{{meters}}m · ',
+      '저장된 장소가 없습니다. 하나 추가하면 아이가 도착하거나 떠날 때 알림을 받을 수 있습니다.',
+    placeRadius: '{{meters}}m',
     placeArrive: '도착',
     placeLeave: '출발',
     placeNoAlerts: '알림 없음',
@@ -627,7 +627,7 @@ export default {
     limitShared: '모든 기기 공용',
     limitSharedSpent: '오늘 {{limit}} 중 {{used}} 사용',
     limitSharedHint:
-      '이 아이의 하루 전체이며 이 기기만의 한도가 아닙니다. 다른 기기가 쓰지 않은 시간이 각 기기로 돌아갑니다. 변경은 KidGate 앱에서 하세요.',
+      '이 아이의 하루 전체이며 이 기기만의 한도가 아닙니다. 다른 기기가 쓰지 않은 시간이 각 기기로 돌아갑니다.',
     whatsOnSub: '변경 사항은 아이 기기에 동기화됩니다',
     rowBlockedHours: '차단 시간',
     rowBlockedHoursDesc: '{{count}}개 시간대 · {{list}}',
@@ -649,7 +649,7 @@ export default {
       '필터가 작동하는 동안 암호화 DNS는 항상 차단되므로 브라우저가 우회할 수 없습니다.',
     starChartTitle: '별 순위표',
     starChartSub: '이번 주 아이별로 모은 별',
-    starChartEmpty: '앱에서 아이를 한 명 더 추가하면 별 순위표가 시작됩니다.',
+    starChartEmpty: '아이를 한 명 더 추가하면 별 순위표가 시작됩니다.',
     starChartStars: '별 {{count}}개',
     rewardTasksTitle: '보상 과제',
     rewardTasksSub: '과제를 마치면 추가 시간을 받습니다',

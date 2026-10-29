@@ -1,5 +1,7 @@
 import { useMemo, useState } from 'react';
+import BrandLoader from '@kidgate/web-ui/BrandLoader';
 import Icon from '@kidgate/web-ui/Icon';
+import { useT } from '@kidgate/web-ui/useT';
 import { getLocaleTag } from '@kidgate/i18n/web';
 import ChildInitial from './ChildInitial.jsx';
 import { resolveActivityKind } from '@kidgate/core/domain/activityKind';
@@ -40,7 +42,10 @@ export default function ActivityFeed({
   appT,
   teaserSlot = null,
   deviceScope = null,
+  // The listener has not answered yet — not the empty state, which is a fact.
+  loading = false,
 }) {
+  const { t } = useT();
   /*
    * Two tiers, like the phone: a child, then one of that child's devices.
    * Device is reset by the child chips rather than kept — a device id that
@@ -190,7 +195,11 @@ export default function ActivityFeed({
         </div>
       )}
 
-      {groups.length === 0 ? (
+      {loading ? (
+        <section className="card card-loading">
+          <BrandLoader label={t('common.loading')} />
+        </section>
+      ) : groups.length === 0 ? (
         /* Two empty states, because they are two different facts: nothing has
            happened in this family, or nothing has happened on the one device
            being filtered to. The phone splits them the same way. */
@@ -223,6 +232,7 @@ export default function ActivityFeed({
                      that wrote it — a removed phone still has history. */
                   device?.name || appT('activities.unknownDevice'),
                   actorNames,
+                  child?.name,
                 );
                 const kind = resolveActivityKind(activity);
                 const at = new Date(activity.createdAt);

@@ -72,6 +72,11 @@ export interface ReportCopyDeps {
   t: ReportTranslate;
   formatDuration: FormatReportDuration;
   /**
+   * A limit, always in minutes ("180 min") — `limitDurationTemplate` says
+   * why. Optional: a caller without one gets `formatDuration`'s wording.
+   */
+  formatLimit?: FormatReportDuration;
+  /**
    * Optional: a 24-hour clock is the fallback, because `Intl` is a platform
    * question in this package — Hermes can ship without it — and every caller
    * that has a locale-aware formatter should pass its own.
@@ -134,6 +139,7 @@ export function findingSentence(
   deps: ReportCopyDeps,
 ): string | null {
   const { t, formatDuration } = deps;
+  const formatLimit = deps.formatLimit ?? formatDuration;
   const formatTime = deps.formatTime ?? defaultTime;
   const params = finding?.params ?? {};
 
@@ -177,7 +183,7 @@ export function findingSentence(
     case 'limitHitRepeatedly':
       return t('report.findingLimitHit', {
         count: Number(params.days ?? 0),
-        limit: formatDuration(Number(params.limitMinutes ?? 0)),
+        limit: formatLimit(Number(params.limitMinutes ?? 0)),
       });
 
     case 'blockedSpike':
@@ -204,7 +210,7 @@ export function findingSentence(
     // and each string states what happened and the figure behind it.
     case 'limitRespected':
       return t('report.findingLimitRespected', {
-        limit: formatDuration(Number(params.limitMinutes ?? 0)),
+        limit: formatLimit(Number(params.limitMinutes ?? 0)),
         count: Number(params.days ?? 0),
       });
 

@@ -24,7 +24,8 @@ export const plans = {
   termMonthly: '월간 결제',
   termAnnual: '연간 결제',
   bestValueBadge: '최고 가성비',
-  premiumManageBillingNote: 'App Store 또는 Google Play 설정에서 결제를 관리하세요.',
+  premiumManageBillingNote: '사용 중인 앱 스토어 설정에서 결제를 관리하세요.',
+  paidThrough: '{{date}}까지 결제됨',
   compareTitle: '무료와 Premium 비교',
   compareColumnFree: '무료',
   compareColumnPremium: 'Premium',
@@ -50,6 +51,7 @@ export const plans = {
   compareNewApps: '새로 설치된 앱',
   compareNewAppsPremium: '어떤 앱인지 이름으로 표시',
   compareMessages: '메시지 경고 (Android)',
+  compareMessagesIos: '메시지 경고 (다른 휴대폰)',
   compareSafety: '보호 알림과 체크인',
   compareSafetyFree: '알림 + 체크인',
   compareSafetyPremium: '체크인마다 사진을 추가',
@@ -140,7 +142,7 @@ export const plans = {
     '이 구독 상품은 현재 이용할 수 없습니다. 나중에 다시 시도해 주세요.',
   unableToStartPurchase: '구매를 시작할 수 없습니다. 다시 시도해 주세요.',
   noActiveSubscription:
-    '활성화된 구독을 찾을 수 없습니다. 구독할 때 사용한 App Store 또는 Google Play 계정으로 로그인한 후 다시 시도해 주세요.',
+    '활성화된 구독을 찾을 수 없습니다. 구독할 때 사용한 앱 스토어 계정으로 로그인한 후 다시 시도해 주세요.',
   purchasesRestored: '구매가 복원되었습니다.',
   unableToRestorePurchases: '구매를 복원할 수 없습니다. 다시 시도해 주세요.',
   purchaseVerificationFailed:
@@ -177,6 +179,8 @@ export const plans = {
   platformIosDetail: '부모 또는 자녀 기기 · iOS 16 이상',
   platformAndroid: 'Android',
   platformAndroidDetail: '부모 또는 자녀 기기 · Android 7 이상',
+  platformOtherPhones: '다른 휴대폰 및 태블릿',
+  platformOtherPhonesDetail: '부모 또는 자녀 기기',
   platformMac: 'Mac',
   platformMacDetail: '자녀 기기 전용 · macOS 12 이상',
   platformIosLimits:
@@ -192,6 +196,8 @@ export const plans = {
   platformWindowsDetail: '자녀 기기 전용 · Windows 10 이상',
   platformAndroidTv: 'Android TV',
   platformAndroidTvDetail: '자녀 기기 전용 · Android TV 7 이상',
+  platformGoogleTv: 'Google TV',
+  platformGoogleTvDetail: '자녀 기기 전용',
   platformChromebook: 'Chromebook',
   platformChromebookDetail: '자녀 기기 · Chrome 웹 필터만',
   teaserCta: 'Premium 보기',
@@ -209,6 +215,8 @@ export const plans = {
   teaserChildReport: 'Premium은 자녀별 리포트를 추가하고 매주 새로 만들어 줍니다.',
   teaserMessageAlerts:
     'Premium은 주의가 필요한 메시지가 있을 때 알려줍니다. Android만 지원합니다.',
+  teaserMessageAlertsIos:
+    'Premium은 주의가 필요한 메시지가 있을 때 알려줍니다. iPhone·iPad에서는 지원하지 않습니다.',
   teaserWebFilterAdvanced:
     'Premium은 카테고리로 필터링하고, 직접 만든 허용·차단 목록을 쓰며, 아이가 사이트 차단 해제를 요청할 수 있습니다.',
   teaserWeeklyReport:

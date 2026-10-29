@@ -88,7 +88,7 @@ export const errors = {
     'Satın alma doğrulanamadı. Lütfen biraz sonra tekrar deneyin.',
   noPurchasesToRestore: 'Bu hesap için geri yüklenecek satın alma bulunamadı.',
   noActiveSubscription:
-    'Etkin abonelik bulunamadı. Abone olurken kullandığınız App Store veya Google Play hesabıyla oturum açın, ardından tekrar deneyin.',
+    'Etkin abonelik bulunamadı. Abone olurken kullandığınız uygulama mağazası hesabıyla oturum açın, ardından tekrar deneyin.',
   unableToRestorePurchases:
     'Satın almalar şu anda geri yüklenemiyor. Lütfen tekrar deneyin.',
   alreadyInFamily: 'Zaten bu ailenin bir üyesisiniz.',

@@ -7,8 +7,7 @@ export const common = {
   updatingNewVersion: 'Atualizando para a nova versão…',
   updateAvailableTitle: 'Atualização disponível',
   updateRequiredTitle: 'Atualização obrigatória',
-  updateBody:
-    'Uma nova versão do KidGate está disponível na App Store ou no Google Play.',
+  updateBody: 'Uma nova versão do KidGate está disponível na sua loja de apps.',
   updateNow: 'Atualizar agora',
   updateLater: 'Mais tarde',
   updateVersionLabel: 'Versão {{version}}',

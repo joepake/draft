@@ -13,7 +13,6 @@ export const checkIn = {
   metaNoLocation: '위치 정보 없음',
   viewPhotoAccessibility: '체크인 사진 보기',
   responseMessage: '저는 안전해요.',
-  toastSuccess: '고마워요. 답변을 부모님께 보냈어요.',
   toastFailed: '체크인을 보내지 못했어요. 다시 시도해 주세요.',
   quickCheckInBadge: '체크인',
   areYouOkay: '괜찮나요?',
@@ -21,6 +20,10 @@ export const checkIn = {
     '부모님이 괜찮은지 알고 싶어 해요. 가능하면 KidGate가 위치와 사진을 보내요.',
   checkInLocationOnlyBody:
     '부모님이 괜찮은지 알고 싶어 해요. 가능하면 KidGate가 위치를 보내요.',
+  checkInPhotoNoLocationBody:
+    '부모님이 괜찮은지 알고 싶어 해요. 이 기기는 위치가 꺼져 있어서, 가능하면 KidGate가 사진을 보내요.',
+  checkInAnswerOnlyBody:
+    '부모님이 괜찮은지 알고 싶어 해요. 이 기기는 위치가 꺼져 있어서 답만 보내요.',
   yesImOkay: '저는 괜찮아요',
   yesImOkaySending: '보내는 중…',
   iNeedHelp: '도움이 필요해요',

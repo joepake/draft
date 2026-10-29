@@ -31,6 +31,8 @@ export const webFilter = {
   safeSearchLabel: 'Bắt buộc tìm kiếm an toàn',
   safeSearchHint:
     'Khóa Tìm kiếm an toàn của Google, chế độ hạn chế của YouTube, và đặt Bing cùng DuckDuckGo ở mức nghiêm ngặt. Áp dụng cho Android và Chrome.',
+  safeSearchHintIos:
+    'Khóa Tìm kiếm an toàn của Google, chế độ hạn chế của YouTube, và đặt Bing cùng DuckDuckGo ở mức nghiêm ngặt. Không áp dụng cho iPhone và iPad.',
   safeSearchStrictNote:
     'YouTube chạy ở mức nghiêm ngặt nhất: bình luận bị ẩn và một số video bình thường cũng bị chặn. Trẻ không thể tắt chế độ này trong tài khoản của mình.',
   infoTitle: 'Cách hoạt động',

@@ -52,10 +52,13 @@ import { buildAttention, buildFamilyAttention } from '../dashboard/attentionItem
 import AttentionRail from '../dashboard/AttentionRail.jsx';
 import AttentionList from '../dashboard/AttentionList.jsx';
 import { getProtectionSummaryKeys } from '@kidgate/core/domain/protectionStatus';
+import { setLockEach } from '../dashboard/lockReadiness.js';
 import { isWeekCountersCurrent } from '@kidgate/core/domain/weekCounters';
 import {
   activeBonusMinutes,
+  childFacingDailyLimit,
   childLimitWithBonus,
+  dailyLimitOrNone,
   effectiveDailyLimitMinutes,
 } from '@kidgate/core/domain/dailyLimit';
 import { hasUnseenWeeklyReport } from '@kidgate/core/domain/weeklyReportBadge';
@@ -65,6 +68,7 @@ import {
 } from '../dashboard/reportSeen.js';
 import {
   appBlockingNoteKey,
+  iosScreenTimeWithheld,
   supportsAppBlocking,
   supportsAppLimits,
   supportsLock,
@@ -87,7 +91,8 @@ import {
   supportsTamperAlerts,
 } from '@kidgate/core/domain/alertSupport';
 import { resolveMessageMonitoringSummary } from '@kidgate/core/domain/messageMonitoringStatus';
-import { LOCATION_STALE_AFTER_MS } from '@kidgate/core/domain/childLocation';
+import { LOCATION_LIVE_WITHIN_MS } from '@kidgate/core/domain/childLocation';
+import { sosAlertChildName } from '@kidgate/core/domain/sosAlertCopy';
 import {
   showsVideoHistoryCard,
   supportsVideoHistory,
@@ -116,6 +121,7 @@ import { resolveChipTargetDevice } from '@kidgate/core/domain/familySummary';
 import { slowBeatMinutes } from '@kidgate/core/domain/reportCadence';
 import {
   AppBars,
+  formatLimitMinutes,
   formatMinutes,
   ScheduleGrid,
   UsageBars,
@@ -212,6 +218,19 @@ function useMediaQuery(query) {
  */
 function deviceStatusOf(device) {
   return getShownDeviceStatus(device, Date.now());
+}
+
+/**
+ * An SOS row's params, naming the child. The server stamps `childName` since
+ * 2026-10-28; an older alert carries the device's own name there, so the
+ * device's assignment answers instead — the phone's `useSosAlertChildName`
+ * rule. This row read "Child Android needs help" over Mia's SOS (2026-10-29).
+ */
+function sosParams(alert, device) {
+  const childName =
+    sosAlertChildName({ params: alert.params, deviceName: alert.deviceName ?? '' }) ??
+    device.child?.name?.trim();
+  return childName ? { ...alert.params, childName } : alert.params;
 }
 
 // No `icon` field, and no bar to draw them in since 2026-09-16: the
@@ -712,8 +731,8 @@ function KidGroupHead({
           <strong>
             {limitMinutes
               ? t('dash.limitSharedSpent', {
-                  used: formatMinutes(usedMinutes),
-                  limit: formatMinutes(limitMinutes),
+                  used: formatLimitMinutes(usedMinutes),
+                  limit: formatLimitMinutes(limitMinutes),
                 })
               : `${t('dash.todayTitle')} · ${formatMinutes(usedMinutes)}`}
           </strong>
@@ -825,6 +844,7 @@ export default function Dashboard({
     timeRequests,
     siteRequests,
     webHistory,
+    webLatestDaySites = {},
     videoHistory,
   } = data;
 
@@ -1095,7 +1115,11 @@ export default function Dashboard({
        * did land, just not everywhere, and a toast reading a raw key is worse
        * than one that undersells.
        */
-      const refusal = refusedMessageKey ? activityT(refusedMessageKey) : '';
+      // Or a sentence the caller already rendered (`lockReadiness`), which
+      // names the grants a key alone could not.
+      const refusal =
+        result?.refusedMessage ??
+        (refusedMessageKey ? activityT(refusedMessageKey) : '');
       if (refusal && refusal !== refusedMessageKey) {
         setToast({ tone: 'warning', text: refusal });
       } else if (okMessage) {
@@ -1504,7 +1528,9 @@ export default function Dashboard({
   const deviceSiblings = device?.childId
     ? devices.filter(other => other.childId === device.childId)
     : [];
-  const scheduleHolders = deviceSiblings.filter(supportsSchedule);
+  const scheduleHolders = deviceSiblings.filter(
+    other => supportsSchedule(other) && !iosScreenTimeWithheld(other),
+  );
   /**
    * The device the main pane is actually showing, or null.
    *
@@ -2034,11 +2060,26 @@ export default function Dashboard({
      */
     const nowMs = Date.now();
     const bonus = activeBonusMinutes(c, nowMs);
-    const effLimit = effectiveDailyLimitMinutes(c, nowMs);
+    /*
+     * An assigned device that has not reported holds no share of the child's
+     * budget yet, and this card said "no limit set · Daily Limit Off" over a
+     * child limited to three hours (2026-10-29). The child's budget stands in,
+     * as on the phone — `childFacingDailyLimit`, display only.
+     */
+    const childBudget = device.childId ? device.child?.rules?.dailyLimitMinutes : null;
+    const limit =
+      dailyLimitOrNone(c.dailyLimitMinutes) ?? dailyLimitOrNone(childBudget);
+    const effLimit = childFacingDailyLimit(
+      effectiveDailyLimitMinutes(c, nowMs),
+      childBudget,
+      c,
+      nowMs,
+    );
     return {
       avg7,
       used,
       bonus,
+      limit,
       effLimit,
       left: effLimit && used !== null ? Math.max(0, effLimit - used) : null,
       /*
@@ -2503,9 +2544,10 @@ export default function Dashboard({
        yesterday" is a fact a parent can act on, while a sum over whatever the
        page happened to fetch moves for reasons nobody can explain. Never
        capped here: this surface subscribes to the history document rather than
-       to a card-sized page, so the count is the day's whole total. */
-    const latestDate = web[0]?.date ?? null;
-    const day = latestDate ? web.filter(entry => entry.date === latestDate) : [];
+       to a card-sized page, so the count is the day's whole total. Counted in
+       `useFamilyData` off the raw rows; `web` is the per-domain roll-up and
+       carries no date. */
+    const daySites = webLatestDaySites[deviceView.id] ?? 0;
 
     const fixAt = deviceView.lastLocation?.updatedAt
       ? new Date(deviceView.lastLocation.updatedAt).getTime()
@@ -2524,14 +2566,13 @@ export default function Dashboard({
       sosTotalCount: deviceSos.length,
       placeCount: (places[deviceView.id] ?? []).length,
       checkInStatus: deviceCheckIns[0]?.status ?? null,
-      webHistory: day.length > 0 ? { sites: day.length, capped: false } : null,
+      webHistory: daySites > 0 ? { sites: daySites, capped: false } : null,
       hasLocationFix: fixAt !== null,
-      /* A day, from `@kidgate/core/domain/childLocation` — the same threshold
-         every location surface here judges a fix by. The phone uses twice the
-         background update interval it negotiated with the device, which no
-         browser is told; this is the shared rule, and it is the conservative
-         one. */
-      locationStale: fixAt !== null && Date.now() - fixAt > LOCATION_STALE_AFTER_MS,
+      /* The phone's rule, from `@kidgate/core/domain/childLocation`: twice the
+         background interval, which is a server constant a browser can know.
+         A day here called a four-hour-old fix Live while the phone said
+         Offline (2026-10-29). */
+      locationStale: fixAt !== null && Date.now() - fixAt > LOCATION_LIVE_WITHIN_MS,
       /* The pause card's value is a countdown, so it needs a clock. Stamped
          with the rest of the fold and therefore as old as the last read, which
          is this console's whole shape — it counts what the last read said. A
@@ -2550,7 +2591,7 @@ export default function Dashboard({
       supportsVideoHistory: supportsVideoHistory(deviceView),
       videoHistoryAwaitingGrant: videoHistoryAwaitingGrant(deviceView),
     };
-  }, [checkIns, deviceView, places, rewardTasks, sosAlerts, web]);
+  }, [checkIns, deviceView, places, rewardTasks, sosAlerts, webLatestDaySites]);
 
   const videos = useMemo(
     () => (device && videoHistory?.[device.id]) || [],
@@ -3017,7 +3058,9 @@ export default function Dashboard({
                 onClick={() => {
                   if (live && !canWrite) setStepUpOpen(true);
                   else if (live) {
-                    run('lock', () => actions.setLock(device.id, !device.isLocked));
+                    run('lock', () =>
+                      setLockEach([device], !device.isLocked, actions, activityT),
+                    );
                   }
                 }}
               >
@@ -3589,14 +3632,11 @@ export default function Dashboard({
                         onLockAll={
                           live
                             ? (lockable, allLocked) =>
-                                run(`lock-all-${group.key}`, async () => {
-                                  /* Each device in turn: `setLock` is per
-                                     machine, and there is no child-level lock
-                                     field an agent reads. */
-                                  for (const device of lockable) {
-                                    await actions.setLock(device.id, !allLocked);
-                                  }
-                                })
+                                run(`lock-all-${group.key}`, () =>
+                                  /* Each device in turn: there is no
+                                     child-level lock field an agent reads. */
+                                  setLockEach(lockable, !allLocked, actions, activityT),
+                                )
                             : null
                         }
                         onActivate={() =>
@@ -3754,9 +3794,18 @@ export default function Dashboard({
                and landing on Overview every time would make one click into
                two. */
             onOpenLocation={() => setChildLocationOpen(true)}
-            onOpenDevice={(id, tab) => {
+            onOpenDevice={(id, tab, action) => {
               setDeviceId(id);
-              if (tab) goTab(tab);
+              /* A card lands on ITS card, as the device's own grid does:
+                 through `goTab` the hub's Reward Tasks opened the Controls
+                 panel at its top, the card 2,900px below (2026-10-29). */
+              if (tab && action) {
+                setTab(tab);
+                setFocusCard(action.id);
+                setOpenedAction({ ...action, tab, deviceId: id });
+              } else if (tab) {
+                goTab(tab);
+              }
               setDeviceOpen(true);
             }}
             onLeave={() => setOpenChildId(null)}
@@ -3765,7 +3814,8 @@ export default function Dashboard({
 
         {section === 'activity' && (
           <ActivityFeed
-            activities={familyActivities}
+            activities={familyActivities ?? []}
+            loading={familyActivities === null}
             devices={devices}
             children={children}
             actorNames={actorNames}
@@ -4021,14 +4071,21 @@ export default function Dashboard({
                   tone={stats.delta > 25 ? 'warning' : 'default'}
                 />
               )}
-              {supportsAppBlocking(device) && (
-                <StatTile
-                  icon="ban"
-                  label={t('dash.tileBlocked')}
-                  value={device.protectionCounters.appBlocked}
-                  meta={t('dash.tileBlockedMeta')}
-                />
-              )}
+              {/* `protectionCounters.appBlocked` counts `app_blocked` rows,
+                  and only `apps/desktop` writes them; on a phone, a TV or the
+                  extension a "0" is "cannot say" — the phone's usage report
+                  hides it there, and this tile read "0" on an iPhone
+                  (2026-10-29). A non-zero count is a writer's own proof. */}
+              {supportsAppBlocking(device) &&
+                ((isDesktopLike(device.platform) && !isBrowserOnlySurface(device)) ||
+                  device.protectionCounters.appBlocked > 0) && (
+                  <StatTile
+                    icon="ban"
+                    label={t('dash.tileBlocked')}
+                    value={device.protectionCounters.appBlocked}
+                    meta={t('dash.tileBlockedMeta')}
+                  />
+                )}
               {/* Only the Android phone, Android TV and the Chrome extension
                   write `webFilterBlockedCount`; an iPhone, a Mac and a PC never
                   do, and the record's reader fills the gap with 0 — so on those
@@ -4163,6 +4220,7 @@ export default function Dashboard({
         {deviceView && tab === 'log' && (
           <ActivityFeed
             activities={activities[device.id] || []}
+            loading={activities[device.id] === null}
             devices={devices}
             children={children}
             actorNames={actorNames}
@@ -4181,40 +4239,32 @@ export default function Dashboard({
               about a day somebody chose. Everything below it answers for the
               day picked in the chart under this one.
             */}
-            <Card
-              id="daily-limit"
-              title={t('dash.todayTitle')}
-              subtitle={t('dash.todaySub')}
-            >
+            <Card title={t('dash.todayTitle')} subtitle={t('dash.todaySub')}>
               <div className="today">
-                <UsageRing
-                  used={stats.used}
-                  limit={c.dailyLimitMinutes}
-                  bonus={stats.bonus}
-                />
+                <UsageRing used={stats.used} limit={stats.limit} bonus={stats.bonus} />
                 <ul className="today-stats">
                   <li>
                     <span>{t('dash.used')}</span>
-                    <strong>{formatMinutes(stats.used)}</strong>
+                    <strong>{formatLimitMinutes(stats.used)}</strong>
                   </li>
                   <li>
                     <span>{t('dash.left')}</span>
                     <strong className={stats.left === 0 ? 'tone-critical' : ''}>
-                      {stats.left == null ? t('viz.none') : formatMinutes(stats.left)}
+                      {formatLimitMinutes(stats.left)}
                     </strong>
                   </li>
                   <li>
                     <span>{t('dash.dailyLimit')}</span>
                     <strong>
-                      {c.dailyLimitMinutes
-                        ? formatMinutes(c.dailyLimitMinutes)
-                        : t('dash.off')}
+                      {stats.limit ? formatLimitMinutes(stats.limit) : t('dash.off')}
                     </strong>
                   </li>
                   <li>
                     <span>{t('dash.bonusToday')}</span>
                     <strong>
-                      {stats.bonus ? `+${formatMinutes(stats.bonus)}` : t('viz.none')}
+                      {stats.bonus
+                        ? `+${formatLimitMinutes(stats.bonus)}`
+                        : t('viz.none')}
                     </strong>
                   </li>
                 </ul>
@@ -4320,7 +4370,10 @@ export default function Dashboard({
                   apps={screenTopApps.apps}
                   limits={c.appLimits}
                   totalMinutes={screenTopApps.totalMinutes}
-                  joinedAt={joinedOnDay(device.createdAt, screenDay.date)}
+                  // No bar picked is today, as `screenDayIsToday` reads it. A
+                  // bare `screenDay.date` threw on every first open of this
+                  // tab and took the whole page down (2026-10-29).
+                  joinedAt={joinedOnDay(device.createdAt, screenDay?.date ?? todayKey)}
                 />
                 {/*
                   The teaser carries both free cases now — under today's three
@@ -4889,6 +4942,21 @@ export default function Dashboard({
                         : t('dash.locationWaiting')
                   }
                 >
+                  {/* The device cannot locate, said above the last fix it
+                      managed before — the phone's Location screen has the same
+                      row (2026-10-29). Core's issue, so the words match. */}
+                  {(() => {
+                    const issue = getProtectionSummaryKeys(
+                      device,
+                      Date.now(),
+                    ).issues.find(entry => entry.key === 'location');
+                    return issue && c.locationSharingEnabled ? (
+                      <p className="hint tone-warning">
+                        <strong>{activityT(issue.labelKey)}</strong> ·{' '}
+                        {activityT(issue.detailKey)}
+                      </p>
+                    ) : null;
+                  })()}
                   {/*
                     What stood here until 2026-09-17 was a DRAWING of a map: a
                     CSS gradient under a grid pattern, each place laid out by
@@ -5001,19 +5069,15 @@ export default function Dashboard({
                             <em>
                               {activityT('location.namesNeedPremium')} ·{' '}
                               {/*
-                                The date only when this build was told the
-                                trial length — `VITE_TRIAL_DAYS`, read through
-                                `lib/trial.js`, which answers null rather than
-                                assuming 7. Absent, the notice is the two
-                                sentences it was before the constant existed;
-                                present, it says the day like the phone does.
+                                "Your trial has ended" only when this build was
+                                told the trial length — `VITE_TRIAL_DAYS`, read
+                                through `lib/trial.js`, which answers null
+                                rather than assuming 7. The sentence names no
+                                day: a `date` passed here had no placeholder in
+                                any pack and was dropped (2026-10-30).
                               */}
                               {trialEndsAt
-                                ? `${activityT('location.namesNeedPremiumTrialEnded', {
-                                    date: trialEndsAt.toLocaleDateString(
-                                      getLocaleTag(),
-                                    ),
-                                  })} `
+                                ? `${activityT('location.namesNeedPremiumTrialEnded')} `
                                 : ''}
                               {activityT('location.namesNeedPremiumStill')}
                             </em>
@@ -5101,7 +5165,9 @@ export default function Dashboard({
                         </span>
                         {p.name}
                         <em>
-                          {p.radius ? t('dash.placeRadius', { meters: p.radius }) : ''}
+                          {p.radius
+                            ? `${t('dash.placeRadius', { meters: p.radius })} · `
+                            : ''}
                           {[
                             p.alertOnEnter && t('dash.placeArrive'),
                             p.alertOnExit && t('dash.placeLeave'),
@@ -5135,7 +5201,7 @@ export default function Dashboard({
                               carries frozen text, a current one a key. */}
                             <strong>
                               {s.messageKey
-                                ? activityT(s.messageKey, s.params)
+                                ? activityT(s.messageKey, sosParams(s, device))
                                 : s.message}
                             </strong>
                             <em>

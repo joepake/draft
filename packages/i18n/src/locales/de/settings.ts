@@ -114,7 +114,7 @@ export const settings = {
   deleteAccountAlertMessageMember:
     'Damit wird die Löschung deines eigenen Kontos geplant. Es wird noch nichts gelöscht – du kannst dich anmelden und jederzeit vor dem Löschdatum abbrechen. Danach werden deine Anmeldedaten und deine eigenen Einstellungen gelöscht. Die Familie, ihre Geräte und die anderen Eltern sind nicht betroffen.',
   deleteAccountSubscriptionNotice:
-    'Das Löschen deines Kontos kündigt dein Abo nicht. Kündige es im App Store oder bei Google Play.',
+    'Das Löschen deines Kontos kündigt dein Abo nicht. Kündige es in deinem App-Store.',
   sendRequestButton: 'Löschung planen',
   toastDeletionAlreadyPending: 'Die Kontolöschung läuft bereits.',
   toastDeletionRequestFailed:

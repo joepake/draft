@@ -92,7 +92,7 @@ export const errors = {
   unableToVerifyPurchase: 'Impossibile verificare questo acquisto. Riprova tra poco.',
   noPurchasesToRestore: 'Non ci sono acquisti da ripristinare per questo account.',
   noActiveSubscription:
-    'Nessun abbonamento attivo trovato. Accedi con l’account App Store o Google Play con cui hai sottoscritto l’abbonamento, poi riprova.',
+    'Nessun abbonamento attivo trovato. Accedi con l’account dello store delle app con cui hai sottoscritto l’abbonamento, poi riprova.',
   unableToRestorePurchases:
     'Impossibile ripristinare gli acquisti in questo momento. Riprova.',
   alreadyInFamily: 'Fai già parte di questa famiglia.',

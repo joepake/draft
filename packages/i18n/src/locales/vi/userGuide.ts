@@ -407,7 +407,7 @@ export const userGuide = {
         '3': 'Cảnh báo được gửi ngay khi KidGate lấy được vị trí, việc này có thể mất tới nửa phút; nếu không lấy được, cảnh báo vẫn được gửi. Trên điện thoại, camera sẽ mở để chụp ảnh, có thể bỏ qua. Nếu micrô đã được cho phép lúc thiết lập, KidGate ghi tối đa 15 giây âm thanh kể từ lúc gửi SOS.',
         '4': 'Phụ huynh nhận thông báo khẩn, kể cả trong giờ yên tĩnh. Nếu KidGate đang mở, cảnh báo hiện ngay trên màn hình, kèm âm báo SOS nếu bạn chưa tắt trong Cài đặt.',
         '5': 'Mở hồ sơ của con (hoặc mở thiết bị, nếu thiết bị chưa được gán cho con), vào mục [[Cảnh báo]] rồi chọn [[SOS]]. Mỗi cảnh báo có vị trí ([[Mở trong Bản đồ]]), ảnh và [[Đoạn ghi âm]]; đoạn ghi âm có thể đến sau cảnh báo một chút. Chọn [[Đã thấy, đang xử lý]] để đánh dấu là đã phản hồi.',
-        '6': 'Để gửi email cho cả người ngoài gia đình, mở [[Gia đình]], chọn thẻ gia đình rồi chọn [[Liên hệ tin cậy]]. Chọn [[Thêm liên hệ]] để thêm tối đa 5 người. Mỗi lần có SOS, họ nhận email gồm tên thiết bị và vị trí gần nhất, không kèm ảnh hay âm thanh. Hãy báo trước cho họ.',
+        '6': 'Để gửi email cho cả người ngoài gia đình, mở [[Gia đình]], chọn thẻ gia đình rồi chọn [[Liên hệ tin cậy]]. Chọn [[Thêm liên hệ]] để thêm tối đa 5 người. Mỗi lần có SOS, họ nhận email gồm tên người gửi và vị trí gần nhất, không kèm ảnh hay âm thanh. Hãy báo trước cho họ.',
       },
     },
     webFilter: {
@@ -652,6 +652,75 @@ export const userGuide = {
         '3': 'Xác nhận danh tính (nhập mật khẩu, hoặc đăng nhập lại bằng Google hay Apple), gõ OK, rồi chọn [[Lên lịch xóa]]. Bước này chỉ đặt lịch xóa: chưa có gì bị xóa.',
         '4': 'Tài khoản sẽ bị xóa sau 14 ngày. Trước thời điểm đó, mở KidGate và chọn [[Hủy yêu cầu xóa]] để giữ lại mọi thứ.',
         '5': 'Khi đồng phụ huynh xóa tài khoản, chỉ tài khoản của người đó bị xóa; gia đình vẫn còn. Để rời gia đình mà không xóa tài khoản, mở thẻ gia đình trong mục Gia đình và chọn [[Rời khỏi gia đình]].',
+      },
+    },
+  },
+  ios: {
+    blockedHours: {
+      steps: {
+        '5': 'Trên thiết bị của trẻ, kiểm tra KidGate vẫn còn các quyền đã xin khi cài đặt để khung giờ bắt đầu và kết thúc đúng giờ. Trên iPhone hoặc iPad của trẻ, kiểm tra quyền [[Thời gian sử dụng]] vẫn được cấp.',
+      },
+    },
+    lockUnlock: {
+      tip: 'Trên iPhone hoặc iPad, chức năng khóa phụ thuộc vào quyền Thời gian sử dụng, và nếu KidGate đã bị đóng trên iPhone, khóa sẽ hiện khi KidGate chạy lại. Trên thiết bị khác, chức năng khóa hoạt động hiệu quả nhất khi đã cấp mọi quyền KidGate yêu cầu.',
+      steps: {
+        '6': 'Điện thoại hoặc máy tính đang bị khóa vẫn cho con gửi SOS, và lần SOS đó hiện trong [[Nhật ký]]. Trên một số điện thoại của con, gọi điện luôn dùng được, và SOS còn mở bản đồ và tin nhắn trong 5 phút trong khi mọi thứ khác vẫn khóa.',
+      },
+    },
+    siri: {
+      tip: 'Lệnh giọng nói dùng được trên iPhone của phụ huynh, cho mọi phụ huynh trong gia đình, bằng ngôn ngữ đang đặt cho Siri. Với một số ngôn ngữ, Siri không nghe ra tên KidGate khi nói (tiếng Việt là một ví dụ): hãy gõ lệnh cho Siri, hoặc chạy lệnh trong ứng dụng Phím tắt. Bảng điều khiển web không có lệnh giọng nói.',
+    },
+    timeRequests: {
+      tip: 'Chỉ thiết bị có Giới hạn hằng ngày mới gửi được yêu cầu. Số phút được đồng ý chỉ tính cho hôm nay, trên thiết bị đã gửi yêu cầu, và không mở khóa khi bạn đã khóa thiết bị hoặc đang trong Giờ khóa thiết bị. TV và tiện ích Chrome không gửi được yêu cầu.',
+      steps: {
+        '1': 'Trên thiết bị của con, con chạm [[Yêu cầu thêm giờ]] ở màn hình chính của KidGate (trên một số điện thoại, còn có thể gửi từ màn hình khóa khi hết giờ), chọn số phút, thêm lý do nếu muốn rồi gửi.',
+      },
+    },
+    rewardTasks: {
+      tip: 'Phút thưởng chỉ có tác dụng khi thiết bị có Giới hạn hằng ngày. Số phút được cộng vào thiết bị mà con dùng để báo đã xong nhiệm vụ. Nhiệm vụ thưởng không có trên TV và tiện ích Chrome.',
+    },
+    locationSharing: {
+      steps: {
+        '1': 'Trên thiết bị của trẻ, cấp quyền Vị trí cho KidGate khi được hỏi (hoặc trong Cài đặt hệ thống). Chọn “Luôn luôn” trên iPhone và iPad, hoặc “Cho phép mọi lúc” trên điện thoại khác, nếu không vị trí chỉ cập nhật khi KidGate đang mở.',
+      },
+    },
+    webFilter: {
+      steps: {
+        '2': 'Bật [[Chặn nội dung không phù hợp]] ở trên cùng. Thay đổi có hiệu lực ngay nên không cần lưu. [[Bắt buộc tìm kiếm an toàn]] trên cùng màn hình còn khóa Google, Bing và DuckDuckGo ở kết quả an toàn và YouTube ở chế độ hạn chế, trên điện thoại khác, TV và Chrome, không có trên iPhone và iPad. Trên YouTube, chế độ hạn chế còn ẩn bình luận và chặn cả một số video bình thường, nên KidGate sẽ hỏi lại trước khi bật.',
+        '5': 'Trên thiết bị của trẻ, mở KidGate và chấp thuận bộ lọc một lần. Trên iPhone hoặc iPad, bộ lọc nội dung người lớn của Apple có hiệu lực qua Thời gian sử dụng, không cần thêm bước nào. Trên điện thoại khác, chấp thuận yêu cầu hiện ra, rồi tắt DNS riêng tư trong cài đặt mạng của điện thoại, vì trình duyệt có thể lách bộ lọc khi DNS riêng tư đang bật. Trên Mac, chọn [[Mở Cài đặt]] ở mục [[Phê duyệt lọc web]] rồi bật KidGate.',
+      },
+    },
+    screenTimeCounting: {
+      steps: {
+        '2': 'Trên máy tính và một số điện thoại, video đang phát trong cửa sổ nổi nhỏ (hình trong hình, PIP) được tính cho ứng dụng đang phát nó, kể cả khi có ứng dụng khác đang mở phía trước.',
+      },
+    },
+    widget: {
+      keywords:
+        'màn hình chính, tiện ích, xem nhanh, còn lại, bao nhiêu phút, iphone, ipad',
+      tip: 'Widget dùng được trên điện thoại và máy tính bảng, không có trên máy tính hay TV. Widget hiển thị số liệu mới nhất KidGate nhận được và thời điểm cập nhật.',
+      steps: {
+        '1': 'Mở [[Cài đặt]] rồi chọn [[Thêm widget vào màn hình chính]]. Trên một số điện thoại, bạn chỉ cần xác nhận vị trí đặt. Nếu không, KidGate sẽ hiện các bước để bạn tự thêm.',
+        '2': 'Để tự thêm, chạm và giữ một chỗ trống trên màn hình chính. Trên iPhone, chạm Sửa (hoặc + ở phiên bản cũ), rồi Thêm tiện ích. Tìm KidGate và chọn widget Thời gian sử dụng.',
+        '3': 'Mỗi dòng là thời gian sử dụng hôm nay của một con so với Giới hạn hằng ngày; con nào đã hết giờ được xếp lên đầu. Widget hiện tối đa 2 con trên iPhone. Thiết bị chưa gán cho con nào sẽ không hiện.',
+      },
+    },
+    webHistory: {
+      tip: 'Lịch sử web thuộc gói Premium. Danh sách ghi theo trang web, không theo từng trang con hay số phút, và một số dòng là lưu lượng chạy nền của ứng dụng. TV có thể chậm tới một giờ.',
+    },
+    videoHistory: {
+      tip: 'Video đã xem thuộc gói Premium và chỉ ghi lại YouTube. Tính năng hoạt động trên điện thoại khác và tiện ích Chrome, không có trên iPhone và iPad. Trên máy Mac hoặc PC, hãy cài tiện ích Chrome. TV chỉ ghi lại video khi KidGate có quyền truy cập thông báo trên TV, mà hiện chưa có màn hình TV nào cấp được quyền đó; kể cả khi đã có, Shorts cũng không được liệt kê.',
+      steps: {
+        '3': 'Trên điện thoại khác, KidGate còn cần quyền truy cập thông báo: trên thiết bị của con, mở [[Cài đặt]] KidGate, chọn [[Mở khóa bằng mã PIN phụ huynh]], rồi chọn [[Cho phép truy cập thông báo]] trong mục [[Cảnh báo tin nhắn]]. Shorts cần thêm quyền Trợ năng.',
+      },
+    },
+    messageAlerts: {
+      summary:
+        'Nhận cảnh báo khi một từ hoặc cụm từ đáng lo xuất hiện trong tin nhắn hoặc nội dung tìm kiếm trên điện thoại của con. Bạn chỉ thấy từ hoặc cụm từ bị đánh dấu, không bao giờ thấy tin nhắn.',
+      tip: 'Cảnh báo tin nhắn thuộc gói Premium. Tin nhắn không kiểm tra được trên iPhone và iPad; nội dung tìm kiếm còn được kiểm tra trong tiện ích Chrome. Bạn chỉ nhận được loại cảnh báo và từ hoặc cụm từ bị đánh dấu. Phân tích bằng AI luôn tắt, trừ khi một phụ huynh bật cho cả gia đình.',
+      steps: {
+        '1': 'Trên điện thoại của con, mở [[Cài đặt]] KidGate, chọn [[Mở khóa bằng mã PIN phụ huynh]], rồi chọn [[Cho phép truy cập thông báo]] trong mục [[Cảnh báo tin nhắn]] và bật KidGate trong danh sách vừa mở.',
+        '2': 'Trên thiết bị của bạn, mở hồ sơ của con (hoặc mở thiết bị, nếu thiết bị chưa được gán cho con), rồi [[Cảnh báo tin nhắn]] trong mục [[Cảnh báo]], và chạm biểu tượng cài đặt ở trên cùng. Nếu con có nhiều thiết bị, hãy chọn điện thoại của con trước.',
       },
     },
   },

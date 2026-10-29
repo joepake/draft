@@ -114,7 +114,7 @@ export const settings = {
   deleteAccountAlertMessageMember:
     'Cette action programme la suppression de votre propre compte. Rien n’est encore supprimé : vous pouvez vous reconnecter et annuler à tout moment avant la date de suppression. Après cette date, vos identifiants de connexion et vos propres réglages sont supprimés. La famille, ses appareils et les autres parents ne sont pas concernés.',
   deleteAccountSubscriptionNotice:
-    'La suppression de votre compte n’annule pas l’abonnement. Annulez-le dans l’App Store ou sur Google Play.',
+    'La suppression de votre compte n’annule pas l’abonnement. Annulez-le dans votre boutique d’applications.',
   sendRequestButton: 'Programmer la suppression',
   toastDeletionAlreadyPending: 'La suppression du compte est déjà en cours.',
   toastDeletionRequestFailed:

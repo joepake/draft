@@ -13,13 +13,16 @@ export const checkIn = {
   metaNoLocation: 'بدون موقع',
   viewPhotoAccessibility: 'عرض صورة الاطمئنان',
   responseMessage: 'أنا بخير.',
-  toastSuccess: 'شكرًا لك. أُرسلت إجابتك إلى والديك.',
   toastFailed: 'تعذّر إرسال الاطمئنان. حاول مرة أخرى.',
   quickCheckInBadge: 'الاطمئنان',
   areYouOkay: 'هل أنت بخير؟',
   checkInWithPhotoBody:
     'يريد والداك الاطمئنان عليك. سيرسل KidGate موقعك وصورة إن أمكن.',
   checkInLocationOnlyBody: 'يريد والداك الاطمئنان عليك. سيرسل KidGate موقعك إن أمكن.',
+  checkInPhotoNoLocationBody:
+    'يريد والداك الاطمئنان عليك. الموقع متوقف على هذا الجهاز، لذا سيرسل KidGate صورة إن أمكن.',
+  checkInAnswerOnlyBody:
+    'يريد والداك الاطمئنان عليك. الموقع متوقف على هذا الجهاز، لذا سيُرسَل ردّك فقط.',
   yesImOkay: 'أنا بخير',
   yesImOkaySending: 'جارٍ الإرسال…',
   iNeedHelp: 'أحتاج إلى مساعدة',

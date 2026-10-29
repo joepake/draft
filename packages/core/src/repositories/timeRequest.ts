@@ -69,6 +69,8 @@ export interface RequestGate {
   reasonKey?: RequestBlockReason;
   retryAt?: string;
   pendingRequest?: TimeRequest;
+  /** This device's newest request, answered or not — read for how it ended. */
+  latestRequest?: TimeRequest;
 }
 
 function timeRequestsPath(userId: string): string {
@@ -137,11 +139,12 @@ export function createTimeRequestRepository(deps: TimeRequestRepositoryDeps) {
             canRequest: false,
             retryAt: new Date(retryAtMs).toISOString(),
             reasonKey: 'timeRequest.waitBeforeAnotherRequest',
+            latestRequest: latest,
           };
         }
       }
 
-      return { canRequest: true };
+      return { canRequest: true, ...(latest ? { latestRequest: latest } : {}) };
     },
 
     /**

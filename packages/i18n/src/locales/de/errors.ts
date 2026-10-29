@@ -104,7 +104,7 @@ export const errors = {
     'Der Kauf konnte nicht überprüft werden. Bitte versuche es in einem Moment erneut.',
   noPurchasesToRestore: 'Für dieses Konto gibt es keine Käufe zum Wiederherstellen.',
   noActiveSubscription:
-    'Es wurde kein aktives Abonnement gefunden. Melde dich mit dem App-Store- oder Google-Play-Konto an, mit dem du das Abonnement abgeschlossen hast, und versuche es dann erneut.',
+    'Es wurde kein aktives Abonnement gefunden. Melde dich mit dem App-Store-Konto an, mit dem du das Abonnement abgeschlossen hast, und versuche es dann erneut.',
   unableToRestorePurchases:
     'Deine Käufe konnten derzeit nicht wiederhergestellt werden. Bitte versuche es erneut.',
   alreadyInFamily: 'Du bist bereits Mitglied dieser Familie.',

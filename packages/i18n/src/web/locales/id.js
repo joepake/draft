@@ -591,8 +591,8 @@ export default {
     locationUpdated: 'Diperbarui {{when}}',
     locationWaiting: 'Menunggu pembaruan pertama',
     noPlaces:
-      'Belum ada tempat tersimpan. Tambahkan satu di aplikasi untuk mendapat peringatan saat anak Anda tiba atau pergi.',
-    placeRadius: '{{meters}} m · ',
+      'Belum ada tempat tersimpan. Tambahkan satu untuk mendapat peringatan saat anak Anda tiba atau pergi.',
+    placeRadius: '{{meters}} m',
     placeArrive: 'tiba',
     placeLeave: 'pergi',
     placeNoAlerts: 'tanpa peringatan',
@@ -630,7 +630,7 @@ export default {
     limitShared: 'Dipakai bersama semua perangkat',
     limitSharedSpent: 'Hari ini terpakai {{used}} dari {{limit}}',
     limitSharedHint:
-      'Ini satu hari penuh untuk anak ini, bukan batas perangkat ini saja — tiap perangkat mendapat sisa yang belum dipakai perangkat lain. Ubah di aplikasi KidGate.',
+      'Ini satu hari penuh untuk anak ini, bukan batas perangkat ini saja — tiap perangkat mendapat sisa yang belum dipakai perangkat lain.',
     whatsOnSub: 'Perubahan disinkronkan ke perangkat anak',
     rowBlockedHours: 'Jam Diblokir',
     rowBlockedHoursDesc: '{{count}} rentang waktu · {{list}}',
@@ -652,7 +652,7 @@ export default {
       'DNS terenkripsi selalu diblokir selama penyaring berjalan, sehingga browser tidak bisa menghindarinya.',
     starChartTitle: 'Papan bintang',
     starChartSub: 'Bintang yang dikumpulkan minggu ini, per anak',
-    starChartEmpty: 'Tambahkan anak kedua di aplikasi untuk memulai papan bintang.',
+    starChartEmpty: 'Tambahkan anak kedua untuk memulai papan bintang.',
     starChartStars: '{{count}} bintang',
     rewardTasksTitle: 'Tugas hadiah',
     rewardTasksSub: 'Dapatkan menit tambahan dengan menyelesaikan tugas',

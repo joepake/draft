@@ -4,11 +4,15 @@ export const videoHistory = {
   toggleLabel: 'Rekam video yang ditonton',
   toggleHint:
     'YouTube di ponsel Android dan TV, serta di Chrome dengan ekstensi KidGate.',
+  toggleHintIos:
+    'YouTube di ponsel lain dan Google TV, serta di Chrome dengan ekstensi KidGate.',
   tvShortsInfo:
     'Di TV, Shorts tidak dicantumkan karena aplikasi YouTube TV tidak mengenalinya sebagai Shorts.',
   toggleFailed: 'Tidak dapat memperbarui riwayat video. Coba lagi.',
   unsupportedNote:
     'Perangkat ini tidak dapat melaporkan video yang ditonton. Fitur ini berfungsi di Android, Android TV, dan Chrome.',
+  unsupportedNoteIos:
+    'Perangkat ini tidak dapat melaporkan video yang ditonton. Fitur ini berfungsi di ponsel lain, Google TV, dan Chrome.',
   unsupportedNoteTv:
     'TV ini tidak merekam video yang ditonton. KidGate memerlukan akses notifikasi di TV ini, yang belum bisa diberikan dari layar TV.',
 

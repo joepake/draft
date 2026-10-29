@@ -240,6 +240,16 @@ export type ChildLocationBlocker =
  */
 export const LOCATION_STALE_AFTER_MS = 24 * 60 * 60 * 1000;
 
+/**
+ * How long a fix reads "Live" on a parent's location card: two of the
+ * 300-second background intervals the server hands every phone
+ * (`functions/http/location.js`) — the phone console's own rule. Not
+ * `LOCATION_STALE_AFTER_MS`, which is about a broken device: the dashboard
+ * called a four-hour-old fix Live with it while the phone said Offline
+ * (2026-10-29).
+ */
+export const LOCATION_LIVE_WITHIN_MS = 2 * 300 * 1000;
+
 /** Statuses that mean the parent will get no position until someone acts. */
 const BLOCKING_PERMISSION: readonly ProtectionPermissionStatus[] = [
   'denied',

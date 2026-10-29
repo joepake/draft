@@ -605,8 +605,8 @@ export default {
     locationUpdated: 'Mis à jour {{when}}',
     locationWaiting: 'En attente de la première mise à jour',
     noPlaces:
-      'Aucun lieu enregistré. Ajoutez-en un dans l’appli pour être prévenu quand votre enfant arrive ou repart.',
-    placeRadius: '{{meters}} m · ',
+      'Aucun lieu enregistré. Ajoutez-en un pour être prévenu quand votre enfant arrive ou repart.',
+    placeRadius: '{{meters}} m',
     placeArrive: 'arrivée',
     placeLeave: 'départ',
     placeNoAlerts: 'aucune alerte',
@@ -645,7 +645,7 @@ export default {
     limitShared: 'Partagé entre tous les appareils',
     limitSharedSpent: '{{used}} sur {{limit}} utilisés aujourd’hui',
     limitSharedHint:
-      'C’est la journée entière de cet enfant, pas une limite propre à cet appareil : chaque appareil reçoit ce que les autres n’ont pas utilisé. Modifiable dans l’application KidGate.',
+      'C’est la journée entière de cet enfant, pas une limite propre à cet appareil : chaque appareil reçoit ce que les autres n’ont pas utilisé.',
     whatsOnSub: 'Les changements se synchronisent avec l’appareil de l’enfant',
     rowBlockedHours: 'Heures bloquées',
     rowBlockedHoursDesc_one: '{{count}} plage horaire · {{list}}',
@@ -669,8 +669,7 @@ export default {
       'Le DNS chiffré est toujours bloqué tant que le filtre tourne, pour qu’un navigateur ne puisse pas le contourner.',
     starChartTitle: 'Tableau des étoiles',
     starChartSub: 'Étoiles gagnées cette semaine, par enfant',
-    starChartEmpty:
-      'Ajoutez un deuxième enfant dans l’application pour lancer le tableau des étoiles.',
+    starChartEmpty: 'Ajoutez un deuxième enfant pour lancer le tableau des étoiles.',
     starChartStars: '{{count}} étoiles',
     rewardTasksTitle: 'Tâches bonus',
     rewardTasksSub: 'Gagnez des minutes en accomplissant des tâches',

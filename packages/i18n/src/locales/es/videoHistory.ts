@@ -4,11 +4,15 @@ export const videoHistory = {
   toggleLabel: 'Registrar vídeos vistos',
   toggleHint:
     'YouTube en teléfonos Android y TV, y en Chrome con la extensión de KidGate.',
+  toggleHintIos:
+    'YouTube en otros teléfonos y Google TV, y en Chrome con la extensión de KidGate.',
   tvShortsInfo:
     'En una TV no se muestran los Shorts, porque la app de YouTube para TV no los identifica como Shorts.',
   toggleFailed: 'No se pudo actualizar el historial de vídeos. Inténtalo de nuevo.',
   unsupportedNote:
     'Este dispositivo no puede informar de los vídeos vistos. Funciona en Android, Android TV y en Chrome.',
+  unsupportedNoteIos:
+    'Este dispositivo no puede informar de los vídeos vistos. Funciona en otros teléfonos, Google TV y en Chrome.',
   unsupportedNoteTv:
     'Esta TV no está registrando los vídeos vistos. KidGate necesita acceso a las notificaciones en ella, algo que todavía no se puede conceder desde una pantalla de TV.',
 

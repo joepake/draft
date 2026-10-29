@@ -602,8 +602,8 @@ export default {
     locationUpdated: 'Actualizado {{when}}',
     locationWaiting: 'Esperando la primera actualización',
     noPlaces:
-      'Aún no hay lugares guardados. Añade uno en la app para recibir un aviso cuando tu hijo llegue o salga.',
-    placeRadius: '{{meters}} m · ',
+      'Aún no hay lugares guardados. Añade uno para recibir un aviso cuando tu hijo llegue o salga.',
+    placeRadius: '{{meters}} m',
     placeArrive: 'llegada',
     placeLeave: 'salida',
     placeNoAlerts: 'sin avisos',
@@ -642,7 +642,7 @@ export default {
     limitShared: 'Compartido entre todos los dispositivos',
     limitSharedSpent: 'Hoy se han usado {{used}} de {{limit}}',
     limitSharedHint:
-      'Es el día completo de este niño, no un límite de este dispositivo: cada dispositivo recibe lo que los demás no han usado. Se cambia en la app de KidGate.',
+      'Es el día completo de este niño, no un límite de este dispositivo: cada dispositivo recibe lo que los demás no han usado.',
     whatsOnSub: 'Los cambios se sincronizan con el dispositivo del niño',
     rowBlockedHours: 'Horas bloqueadas',
     rowBlockedHoursDesc_one: '{{count}} franja horaria · {{list}}',
@@ -666,8 +666,7 @@ export default {
       'El DNS cifrado siempre se bloquea mientras el filtro está activo, así que un navegador no puede esquivarlo.',
     starChartTitle: 'Tabla de estrellas',
     starChartSub: 'Estrellas conseguidas esta semana, por hijo',
-    starChartEmpty:
-      'Añade un segundo hijo en la app para empezar la tabla de estrellas.',
+    starChartEmpty: 'Añade un segundo hijo para empezar la tabla de estrellas.',
     starChartStars: '{{count}} estrellas',
     rewardTasksTitle: 'Tareas premiadas',
     rewardTasksSub: 'Gana minutos extra completando tareas',

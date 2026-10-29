@@ -10,6 +10,7 @@ export const blockedHours = {
   heroSubtitle:
     'Configura hasta {{max}} franjas horarias en las que el uso del dispositivo está bloqueado.',
   statTimeRangesLabel: 'Franjas',
+  statTimeRangesLabel_one: 'Franja',
   toggleTitle: 'Activar Horas bloqueadas',
   toggleSubtitleOn:
     'El uso del dispositivo está bloqueado durante las franjas de abajo.',

@@ -100,7 +100,7 @@ export const errors = {
     '購入を確認できませんでした。しばらくしてからもう一度お試しください。',
   noPurchasesToRestore: 'このアカウントには復元できる購入履歴がありません。',
   noActiveSubscription:
-    '有効なサブスクリプションが見つかりません。登録時に使用したApp StoreまたはGoogle Playのアカウントでサインインしてから、もう一度お試しください。',
+    '有効なサブスクリプションが見つかりません。登録時に使用したアプリストアのアカウントでサインインしてから、もう一度お試しください。',
   unableToRestorePurchases: '購入を復元できませんでした。もう一度お試しください。',
   alreadyInFamily: 'すでにこのファミリーに参加しています。',
   leaveFamilyBeforeJoining:

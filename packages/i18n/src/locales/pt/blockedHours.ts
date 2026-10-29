@@ -9,6 +9,7 @@ export const blockedHours = {
   heroSubtitle:
     'Configure até {{max}} faixas de horário em que o uso do dispositivo fica bloqueado.',
   statTimeRangesLabel: 'Faixas',
+  statTimeRangesLabel_one: 'Faixa',
   toggleTitle: 'Ativar Horas bloqueadas',
   toggleSubtitleOn: 'O uso do dispositivo fica bloqueado durante os horários abaixo.',
   toggleSubtitleOff: 'Ative para bloquear o uso do dispositivo por agenda.',

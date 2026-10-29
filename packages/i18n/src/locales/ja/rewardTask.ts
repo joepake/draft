@@ -63,6 +63,8 @@ export const rewardTask = {
     '{{deviceName}}が「{{title}}」で{{minutes}}分のボーナスを獲得しました。',
   taskRejected: 'ごほうびタスクを差し戻し',
   taskRejectedDescription: '「{{title}}」を{{deviceName}}に差し戻しました。',
+  taskClaimed: 'タスク完了報告',
+  taskClaimedDescription: '{{deviceName}}が「{{title}}」を完了しました。',
   starsLabel: 'むずかしさ',
   starsHint: 'お子さまはその数だけ星を集めます。',
   starsEasy: 'かんたん',

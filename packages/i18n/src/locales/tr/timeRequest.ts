@@ -16,6 +16,7 @@ export const timeRequest = {
   toastLockFailed: 'Cihaz kilitlenemedi. Lütfen tekrar deneyin.',
   statusWaitingForApproval: 'Ailenin yanıtı bekleniyor ({{minutes}} dakika istendi).',
   statusCooldown: 'Yeni bir isteği {{time}} sonra gönderebilirsin.',
+  statusDeclined: 'Ailen bu sefer hayır dedi.',
   statusDailyLimitExceeded:
     'Bugünkü ekran süreni bitirdin. Uygulamalar yarın tekrar açılacak — ailen daha fazla süre eklerse daha erken.',
   errorDeviceNotRegistered:

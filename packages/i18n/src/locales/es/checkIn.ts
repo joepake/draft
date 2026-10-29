@@ -13,7 +13,6 @@ export const checkIn = {
   metaNoLocation: 'Sin ubicación adjunta',
   viewPhotoAccessibility: 'Ver la foto del Check-in',
   responseMessage: 'Estoy bien.',
-  toastSuccess: 'Gracias. Tu respuesta se envió a tu padre o madre.',
   toastFailed: 'No se pudo enviar el Check-in. Inténtalo de nuevo.',
   quickCheckInBadge: 'Check-in',
   areYouOkay: '¿Estás bien?',
@@ -21,6 +20,10 @@ export const checkIn = {
     'Tus padres quieren saber si estás bien. KidGate enviará tu ubicación y una foto si es posible.',
   checkInLocationOnlyBody:
     'Tus padres quieren saber si estás bien. KidGate enviará tu ubicación si es posible.',
+  checkInPhotoNoLocationBody:
+    'Tus padres quieren saber si estás bien. La ubicación está desactivada en este dispositivo, así que KidGate enviará una foto si es posible.',
+  checkInAnswerOnlyBody:
+    'Tus padres quieren saber si estás bien. La ubicación está desactivada en este dispositivo, así que solo se enviará tu respuesta.',
   yesImOkay: 'Estoy bien',
   yesImOkaySending: 'Enviando…',
   iNeedHelp: 'Necesito ayuda',

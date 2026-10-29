@@ -3,11 +3,15 @@ export const videoHistory = {
   fallbackDeviceName: 'جهاز الطفل',
   toggleLabel: 'تسجيل المقاطع المُشاهَدة',
   toggleHint: 'في YouTube على هواتف Android والتلفزيون، وفي Chrome مع إضافة KidGate.',
+  toggleHintIos:
+    'في YouTube على الهواتف الأخرى وGoogle TV، وفي Chrome مع إضافة KidGate.',
   tvShortsInfo:
     'على التلفزيون لا تظهر مقاطع Shorts في القائمة، لأن تطبيق YouTube للتلفزيون لا يعرّفها على أنها Shorts.',
   toggleFailed: 'تعذّر تحديث سجل الفيديو. حاول مرة أخرى.',
   unsupportedNote:
     'لا يمكن لهذا الجهاز الإبلاغ عن المقاطع المُشاهَدة. تعمل هذه الميزة على Android وAndroid TV وفي Chrome.',
+  unsupportedNoteIos:
+    'لا يمكن لهذا الجهاز الإبلاغ عن المقاطع المُشاهَدة. تعمل هذه الميزة على الهواتف الأخرى وGoogle TV وفي Chrome.',
   unsupportedNoteTv:
     'لا يسجّل هذا التلفزيون مقاطع الفيديو المُشاهَدة. يحتاج KidGate إلى إذن الوصول إلى الإشعارات عليه، وهو ما لا يمكن منحه من شاشة التلفزيون حتى الآن.',
 

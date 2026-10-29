@@ -410,7 +410,7 @@ export const userGuide = {
         '3': 'Peringatan terkirim begitu KidGate mendapatkan lokasi, yang bisa memakan waktu hingga setengah menit; tanpa lokasi, peringatan tetap dikirim. Di ponsel, kamera lalu terbuka untuk mengambil foto, yang bisa dilewati. Jika mikrofon diizinkan saat penyiapan, suara hingga 15 detik direkam sejak SOS dikirim.',
         '4': 'Orang tua menerima notifikasi mendesak, bahkan selama Jam tenang. Jika KidGate sedang terbuka, peringatan muncul di layar, dengan Sirene SOS kecuali dinonaktifkan di Pengaturan.',
         '5': 'Buka profil anak (atau perangkat, jika perangkat belum ditetapkan ke anak), lalu bagian Peringatan, dan pilih SOS. Setiap peringatan menampilkan lokasi (Buka di Maps), foto, dan Rekaman suara, yang bisa tiba sedikit setelah peringatan. Pilih Segera saya tangani untuk menandainya sudah ditanggapi.',
-        '6': 'Agar orang di luar keluarga juga menerima email, buka Keluarga, lalu kartu keluarga, dan pilih Kontak tepercaya. Pilih Tambah kontak untuk menambahkan hingga 5 orang. Setiap ada SOS, mereka menerima email berisi nama perangkat dan lokasi terakhir yang diketahui, tanpa foto atau suara. Beri tahu mereka lebih dulu.',
+        '6': 'Agar orang di luar keluarga juga menerima email, buka Keluarga, lalu kartu keluarga, dan pilih Kontak tepercaya. Pilih Tambah kontak untuk menambahkan hingga 5 orang. Setiap ada SOS, mereka menerima email berisi nama pengirim dan lokasi terakhir yang diketahui, tanpa foto atau suara. Beri tahu mereka lebih dulu.',
       },
     },
     webFilter: {
@@ -657,6 +657,75 @@ export const userGuide = {
         '3': 'Konfirmasi bahwa ini memang Anda (dengan kata sandi, atau masuk lagi dengan Google atau Apple), ketik OK, lalu pilih Jadwalkan penghapusan. Ini hanya menjadwalkan penghapusan: belum ada yang dihapus.',
         '4': 'Akun dihapus setelah 14 hari. Sebelum itu, buka KidGate dan pilih Batalkan penghapusan untuk mempertahankan semuanya.',
         '5': 'Jika orang tua lain yang bukan pemilik menghapus akunnya, hanya akun miliknya yang dihapus; keluarga tetap ada. Untuk keluar dari keluarga tanpa menghapus akun, buka kartu keluarga di Keluarga lalu pilih Keluar dari keluarga.',
+      },
+    },
+  },
+  ios: {
+    blockedHours: {
+      steps: {
+        '5': 'Di perangkat anak, pastikan KidGate masih memiliki izin yang diminta saat penyiapan agar rentang waktu mulai dan berakhir tepat waktu. Di iPhone atau iPad, pastikan izin Waktu Layar masih diizinkan.',
+      },
+    },
+    lockUnlock: {
+      tip: 'Di iPhone atau iPad, penguncian bergantung pada izin Waktu Layar, dan jika KidGate ditutup di iPhone, kunci muncul setelah KidGate berjalan lagi. Di perangkat lain, penguncian paling kuat saat semua izin yang diminta KidGate sudah diizinkan.',
+      steps: {
+        '6': 'Ponsel atau komputer yang terkunci tetap memungkinkan anak Anda mengirim SOS, dan SOS itu muncul di Aktivitas. Di sebagian ponsel anak, panggilan selalu berfungsi, dan SOS juga membuka peta dan pesan selama 5 menit sementara yang lain tetap terkunci.',
+      },
+    },
+    siri: {
+      tip: 'Siri belum mendukung bahasa Indonesia, jadi atur bahasa Siri ke English dan ucapkan perintah berbahasa Inggris di bawah. Perintah suara berfungsi di iPhone orang tua, untuk setiap orang tua dalam keluarga. Dasbor web tidak memilikinya.',
+    },
+    timeRequests: {
+      tip: 'Permintaan hanya muncul jika perangkat memiliki Batas harian. Menit yang disetujui berlaku untuk hari ini, di perangkat yang meminta, dan tidak membuka kunci yang Anda pasang maupun Jam Diblokir. TV dan ekstensi Chrome tidak dapat mengirim permintaan.',
+      steps: {
+        '1': 'Di perangkat anak, anak Anda memilih Minta waktu tambahan di layar utama KidGate (di sebagian ponsel, juga dari layar kunci saat batas tercapai), memilih jumlah menit, menambahkan alasan jika mau, lalu mengirimnya.',
+      },
+    },
+    rewardTasks: {
+      tip: 'Menit bonus hanya dihitung jika perangkat memiliki Batas harian. Menit ditambahkan ke perangkat yang dipakai anak Anda untuk menandai tugas selesai. Tugas hadiah tidak tersedia di TV atau di ekstensi Chrome.',
+    },
+    locationSharing: {
+      steps: {
+        '1': 'Di perangkat anak, izinkan Lokasi untuk KidGate saat diminta (atau di Pengaturan sistem). Pilih “Selalu” di iPhone atau iPad, atau “Izinkan sepanjang waktu” di ponsel lain, jika tidak lokasi hanya diperbarui saat KidGate terbuka.',
+      },
+    },
+    webFilter: {
+      steps: {
+        '2': 'Aktifkan “Filter situs web tidak pantas” di bagian atas. Perubahan langsung berlaku, jadi tidak ada yang perlu disimpan. “Paksa SafeSearch” di layar yang sama juga mengunci Google, Bing, dan DuckDuckGo ke hasil aman dan YouTube ke Mode Terbatas, di ponsel lain, TV, dan Chrome, tidak di iPhone atau iPad. Di YouTube, Mode Terbatas juga menyembunyikan komentar dan ikut memblokir sebagian video biasa, jadi KidGate meminta konfirmasi sebelum menyalakannya.',
+        '5': 'Di perangkat anak, buka KidGate dan setujui filter sekali. Di iPhone atau iPad, filter konten dewasa dari Apple berlaku lewat Waktu Layar, tanpa langkah tambahan. Di ponsel lain, setujui permintaan yang muncul, lalu nonaktifkan DNS Pribadi di pengaturan jaringannya, karena browser dapat melewati filter selama DNS Pribadi aktif. Di Mac, pilih Buka Pengaturan di samping Setujui pemfilteran web, lalu aktifkan KidGate.',
+      },
+    },
+    screenTimeCounting: {
+      steps: {
+        '2': 'Di komputer dan di sebagian ponsel, video yang diputar di jendela mengambang kecil (picture-in-picture, PIP) dihitung untuk aplikasi yang memutarnya, bahkan saat aplikasi lain sedang terbuka di depan.',
+      },
+    },
+    widget: {
+      keywords:
+        'layar utama, peluncur, sekali lihat, sisa waktu, sisa menit, iphone, ipad',
+      tip: 'Widget berfungsi di ponsel dan tablet, tidak di komputer atau TV. Widget menampilkan angka terakhir yang diterima KidGate dan waktu pembaruan itu.',
+      steps: {
+        '1': 'Buka Pengaturan dan pilih Tambahkan widget ke layar utama. Di sebagian ponsel, Anda cukup mengonfirmasi letaknya. Jika tidak, KidGate menampilkan langkah untuk menambahkannya sendiri.',
+        '2': 'Untuk menambahkannya sendiri, tekan lama area kosong di layar utama. Di iPhone, ketuk Edit (atau + di versi lama), lalu Tambah Widget. Cari KidGate dan pilih widget Waktu layar.',
+        '3': 'Setiap baris menampilkan waktu layar hari ini milik seorang anak dibandingkan dengan Batas harian, dan anak yang sudah mencapainya tampil paling atas. Maksimal 2 anak di iPhone. Perangkat yang tidak ditetapkan ke seorang anak tidak ditampilkan.',
+      },
+    },
+    webHistory: {
+      tip: 'Riwayat web termasuk dalam Premium. Riwayat ini mencantumkan situs, bukan halaman atau menit, dan sebagian baris adalah lalu lintas latar belakang dari aplikasi. TV bisa terlambat hingga satu jam.',
+    },
+    videoHistory: {
+      tip: 'Riwayat video termasuk dalam Premium dan hanya mencakup YouTube. Fitur ini berfungsi di ponsel lain dan di ekstensi Chrome, tetapi tidak di iPhone atau iPad. Di Mac atau PC, tambahkan ekstensi Chrome. TV hanya merekam video setelah KidGate memiliki akses notifikasi di TV tersebut, yang belum bisa diberikan dari layar TV mana pun; bahkan setelah itu, Shorts tidak dicantumkan.',
+      steps: {
+        '3': 'Di ponsel lain, KidGate juga memerlukan akses notifikasi: di perangkat anak, buka Pengaturan KidGate, pilih Buka kunci dengan PIN Orang Tua, lalu Izinkan akses notifikasi di bagian Peringatan pesan. Shorts juga memerlukan Aksesibilitas.',
+      },
+    },
+    messageAlerts: {
+      summary:
+        'Dapatkan peringatan saat kata atau frasa yang mengkhawatirkan muncul di pesan atau pencarian di ponsel anak Anda. Anda melihat kata atau frasa yang ditandai, tidak pernah isi pesannya.',
+      tip: 'Peringatan pesan termasuk dalam Premium. Pesan tidak dapat diperiksa di iPhone atau iPad; pencarian juga diperiksa di ekstensi Chrome. Hanya kategori dan kata atau frasa yang ditandai yang sampai kepada Anda. Analisis AI tetap nonaktif kecuali ada orang tua yang mengaktifkannya untuk keluarga.',
+      steps: {
+        '1': 'Di ponsel anak Anda, buka Pengaturan KidGate, pilih Buka kunci dengan PIN Orang Tua, lalu Izinkan akses notifikasi di bagian Peringatan pesan, dan aktifkan KidGate di daftar yang terbuka.',
+        '2': 'Di perangkat Anda, buka profil anak (atau perangkat, jika perangkat belum ditetapkan ke anak), lalu Peringatan pesan di bagian Peringatan, lalu ketuk ikon pengaturan di bagian atas. Jika anak Anda punya beberapa perangkat, pilih ponselnya terlebih dahulu.',
       },
     },
   },

@@ -4,11 +4,15 @@ export const videoHistory = {
   toggleLabel: '視聴した動画を記録',
   toggleHint:
     'AndroidスマートフォンとテレビのYouTube、およびKidGate拡張機能を入れたChromeが対象です。',
+  toggleHintIos:
+    'その他のスマートフォンとGoogle TVのYouTube、およびKidGate拡張機能を入れたChromeが対象です。',
   tvShortsInfo:
     'テレビではShortsは一覧に表示されません。テレビ版のYouTubeアプリがShortsとして識別しないためです。',
   toggleFailed: '動画履歴を更新できませんでした。もう一度お試しください。',
   unsupportedNote:
     'このデバイスは視聴した動画を報告できません。Android、Android TV、Chrome で動作します。',
+  unsupportedNoteIos:
+    'このデバイスは視聴した動画を報告できません。その他のスマートフォン、Google TV、Chrome で動作します。',
   unsupportedNoteTv:
     'このテレビでは視聴した動画を記録していません。KidGateにはこのテレビでの通知へのアクセス権が必要ですが、現時点ではテレビの画面から許可することはできません。',
 

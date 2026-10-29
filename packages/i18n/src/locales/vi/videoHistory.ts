@@ -3,11 +3,15 @@ export const videoHistory = {
   fallbackDeviceName: 'Thiết bị của trẻ',
   toggleLabel: 'Ghi lại video đã xem',
   toggleHint: 'YouTube trên điện thoại Android, TV và Chrome có tiện ích KidGate.',
+  toggleHintIos:
+    'YouTube trên điện thoại khác, Google TV và Chrome có tiện ích KidGate.',
   tvShortsInfo:
     'Trên TV, Shorts không hiện trong danh sách vì ứng dụng YouTube trên TV không nhận diện chúng là Shorts.',
   toggleFailed: 'Không cập nhật được lịch sử video. Vui lòng thử lại.',
   unsupportedNote:
     'Thiết bị này không báo được video đã xem. Tính năng này chỉ hoạt động trên Android, Android TV và Chrome.',
+  unsupportedNoteIos:
+    'Thiết bị này không báo được video đã xem. Tính năng này hoạt động trên điện thoại khác, Google TV và Chrome.',
   unsupportedNoteTv:
     'TV này chưa ghi lại video đã xem. KidGate cần quyền truy cập thông báo trên TV, mà hiện chưa thể cấp quyền đó từ màn hình TV.',
 

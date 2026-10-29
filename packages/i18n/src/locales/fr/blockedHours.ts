@@ -10,6 +10,7 @@ export const blockedHours = {
   heroSubtitle:
     'Configurez jusqu’à {{max}} plages horaires pendant lesquelles l’utilisation de l’appareil est bloquée.',
   statTimeRangesLabel: 'Plages horaires',
+  statTimeRangesLabel_one: 'Plage horaire',
   toggleTitle: 'Activer les Heures bloquées',
   toggleSubtitleOn:
     'L’utilisation de l’appareil est bloquée pendant les horaires ci-dessous.',

@@ -7,8 +7,12 @@ export const messageMonitoring = {
     'KidGate phát hiện từ ngữ đáng lo ngại trong tin nhắn và nội dung tìm kiếm của con, rồi báo cho bạn. Bạn chỉ thấy từ hoặc cụm từ bị đánh dấu, không bao giờ thấy nội dung tin nhắn hay nội dung tìm kiếm.',
   androidOnlyNote:
     'Chỉ có thể kiểm tra tin nhắn trên thiết bị Android. Nội dung tìm kiếm còn có thể được kiểm tra qua tiện ích Chrome.',
+  androidOnlyNoteIos:
+    'Không thể kiểm tra tin nhắn trên iPhone và iPad. Nội dung tìm kiếm còn có thể được kiểm tra qua tiện ích Chrome.',
   searchOnlyNote:
     'Ở đây chỉ có thể kiểm tra nội dung tìm kiếm. Tin nhắn chỉ kiểm tra được trên thiết bị Android.',
+  searchOnlyNoteIos:
+    'Ở đây chỉ có thể kiểm tra nội dung tìm kiếm. Tin nhắn không kiểm tra được trên iPhone và iPad.',
   recentTitle: 'Cảnh báo gần đây',
   emptyTitle: 'Chưa có cảnh báo',
   emptySubtitle:

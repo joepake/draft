@@ -23,6 +23,7 @@ export const sos = {
   toastSent: 'SOS gönderildi. Mümkünse güvenli bir yerde kal — ailen bilgilendirildi.',
   escapeGrantedTitle: 'SOS gönderildi',
   escapeGrantedBody: 'Ailene haber verildi.',
+  sentParentSaw: 'Ailen SOS mesajını gördü.',
   toastSentWithoutPhoto: 'SOS fotoğrafsız gönderildi.',
   toastSentWithoutPhotoCamera:
     'SOS fotoğrafsız gönderildi. Bir dahaki sefere fotoğraf ekleyebilmek için Ayarlar’dan Kamera’ya izin ver.',
@@ -96,5 +97,5 @@ export const sos = {
   trustedContactsSaveFailed: 'Kaydedilemedi. Birazdan tekrar deneyin.',
   trustedContactsRemoveAccessibility: '{{name}} kişisini kaldır',
   trustedContactsPrivacyNote:
-    'Her kişi cihaz adını ve bilinen son konumu e-postayla alır. Fotoğraf gönderilmez.',
+    'Her kişi gönderenin adını ve bilinen son konumu e-postayla alır. Fotoğraf gönderilmez.',
 } as const;

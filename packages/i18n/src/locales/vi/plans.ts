@@ -25,7 +25,8 @@ export const plans = {
   termAnnual: 'Hằng năm',
   bestValueBadge: 'Tiết kiệm nhất',
   premiumManageBillingNote:
-    'Quản lý thanh toán trong phần cài đặt App Store hoặc Google Play.',
+    'Quản lý thanh toán trong phần cài đặt kho ứng dụng của bạn.',
+  paidThrough: 'Đã thanh toán đến {{date}}',
   compareTitle: 'So sánh Miễn phí và Premium',
   compareColumnFree: 'Miễn phí',
   compareColumnPremium: 'Premium',
@@ -52,6 +53,7 @@ export const plans = {
   compareNewApps: 'Ứng dụng mới cài',
   compareNewAppsPremium: 'Tên từng ứng dụng',
   compareMessages: 'Cảnh báo tin nhắn (Android)',
+  compareMessagesIos: 'Cảnh báo tin nhắn (điện thoại khác)',
   compareSafety: 'Cảnh báo bảo vệ và Báo an toàn',
   compareSafetyFree: 'Cảnh báo + Báo an toàn',
   compareSafetyPremium: 'Thêm ảnh cho mỗi lần Báo an toàn',
@@ -140,7 +142,7 @@ export const plans = {
     'Gói đăng ký này hiện chưa khả dụng. Vui lòng thử lại sau.',
   unableToStartPurchase: 'Không thể bắt đầu giao dịch. Vui lòng thử lại.',
   noActiveSubscription:
-    'Không tìm thấy gói đăng ký đang hoạt động. Vui lòng đăng nhập đúng tài khoản App Store hoặc Google Play đã dùng để đăng ký, rồi thử lại.',
+    'Không tìm thấy gói đăng ký đang hoạt động. Vui lòng đăng nhập đúng tài khoản kho ứng dụng đã dùng để đăng ký, rồi thử lại.',
   purchasesRestored: 'Đã khôi phục giao dịch.',
   unableToRestorePurchases: 'Không thể khôi phục giao dịch. Vui lòng thử lại.',
   purchaseVerificationFailed:
@@ -177,6 +179,8 @@ export const plans = {
   platformIosDetail: 'Thiết bị phụ huynh hoặc trẻ · iOS 16 trở lên',
   platformAndroid: 'Android',
   platformAndroidDetail: 'Thiết bị phụ huynh hoặc trẻ · Android 7 trở lên',
+  platformOtherPhones: 'Điện thoại và máy tính bảng khác',
+  platformOtherPhonesDetail: 'Thiết bị phụ huynh hoặc trẻ',
   platformMac: 'Mac',
   platformMacDetail: 'Chỉ thiết bị của trẻ · macOS 12 trở lên',
   platformIosLimits:
@@ -192,6 +196,8 @@ export const plans = {
   platformWindowsDetail: 'Chỉ thiết bị của trẻ · Windows 10 trở lên',
   platformAndroidTv: 'Android TV',
   platformAndroidTvDetail: 'Chỉ thiết bị của trẻ · Android TV 7 trở lên',
+  platformGoogleTv: 'Google TV',
+  platformGoogleTvDetail: 'Chỉ thiết bị của trẻ',
   platformChromebook: 'Chromebook',
   platformChromebookDetail:
     'Thiết bị của trẻ · tính năng Chặn nội dung web chỉ trong Chrome',
@@ -210,6 +216,8 @@ export const plans = {
   teaserChildReport: 'Premium có báo cáo riêng cho từng con, và mỗi tuần một bản mới.',
   teaserMessageAlerts:
     'Premium báo cho bạn khi có tin nhắn cần để ý. Chỉ trên Android.',
+  teaserMessageAlertsIos:
+    'Premium báo cho bạn khi có tin nhắn cần để ý. Không có trên iPhone và iPad.',
   teaserWebFilterAdvanced:
     'Premium lọc theo danh mục và cho bạn tự chọn trang nào luôn vào được, trang nào luôn bị chặn. Con cũng có thể xin bạn mở một trang đang bị chặn.',
   teaserWeeklyReport:

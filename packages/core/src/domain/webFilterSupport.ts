@@ -35,6 +35,21 @@ export const WEB_FILTER_FALLBACK_PLATFORMS: readonly DevicePlatform[] = [
   'android',
 ];
 
+/**
+ * Whether the iPhone build carries the KidGate packet tunnel (`ios/KidGateTunnel`).
+ *
+ * False since 2026-10-26: App Review 5.4 takes VPN apps only from an
+ * organization account, and this team is an individual. While false the
+ * iPhone clears `capabilities.webFilter`, skips the VPN wizard step and status
+ * poll, and both parent consoles show Pause Browsing, Web History and the
+ * filter categories as Coming soon on an iPhone (`webFilterComingSoon`).
+ *
+ * **Flip it together with the native steps in `docs/MOBILE_IOS.md`**
+ * ("Out of the build since 2026-10-26") — true over a build with no tunnel
+ * publishes `'vpn'` from a phone that filters nothing.
+ */
+export const IOS_WEB_FILTER_VPN_ENABLED: boolean = false;
+
 export interface WebFilterSupportInput {
   /** `Device.platform`. Absent on records written before the field existed. */
   platform?: DevicePlatform | null;
@@ -87,7 +102,9 @@ export function supportsWebFiltering(device: WebFilterSupportInput): boolean {
  */
 export function supportsWebHistory(device: WebFilterSupportInput): boolean {
   if (device.platform === 'ios') {
-    return device.capabilities?.webFilter === 'vpn';
+    // A phone still on a tunnel build keeps publishing `'vpn'` until it
+    // updates, so the build flag decides first.
+    return IOS_WEB_FILTER_VPN_ENABLED && device.capabilities?.webFilter === 'vpn';
   }
   return supportsWebFiltering(device);
 }
@@ -240,6 +257,18 @@ export function supportsWebFilterCategories(device: WebFilterSupportInput): bool
     device.platform === 'macos' ||
     device.platform === 'windows' ||
     device.platform === 'chromeos' ||
-    (device.platform === 'ios' && device.capabilities?.webFilter === 'vpn')
+    (device.platform === 'ios' &&
+      IOS_WEB_FILTER_VPN_ENABLED &&
+      device.capabilities?.webFilter === 'vpn')
   );
+}
+
+/**
+ * Whether a parent screen should show this device's VPN-carried features —
+ * Pause Browsing, Web History, the filter categories — as Coming soon rather
+ * than hiding them or offering a switch that flips nothing. True only for an
+ * iPhone while `IOS_WEB_FILTER_VPN_ENABLED` is false.
+ */
+export function webFilterComingSoon(device: WebFilterSupportInput): boolean {
+  return !IOS_WEB_FILTER_VPN_ENABLED && device.platform === 'ios';
 }

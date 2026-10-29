@@ -107,7 +107,7 @@ export const settings = {
   deleteAccountAlertMessageMember:
     'يؤدي هذا إلى جدولة حذف حسابك أنت فقط. لم يُحذف أي شيء بعد — يمكنك تسجيل الدخول والإلغاء في أي وقت قبل تاريخ الحذف. بعد ذلك التاريخ، تُحذف بيانات تسجيل دخولك وإعداداتك الخاصة. ولا تتأثر العائلة ولا أجهزتها ولا أولياء الأمور الآخرون.',
   deleteAccountSubscriptionNotice:
-    'حذف حسابك لا يلغي الاشتراك. ألغِه من App Store أو Google Play.',
+    'حذف حسابك لا يلغي الاشتراك. ألغِه من متجر التطبيقات.',
   sendRequestButton: 'جدولة الحذف',
   toastDeletionAlreadyPending: 'حذف الحساب قيد التنفيذ بالفعل.',
   toastDeletionRequestFailed: 'تعذر بدء حذف الحساب. يرجى المحاولة مرة أخرى.',

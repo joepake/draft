@@ -17,6 +17,7 @@ export const timeRequest = {
   statusWaitingForApproval:
     'Đang chờ bố mẹ phản hồi (con đã xin thêm {{minutes}} phút).',
   statusCooldown: 'Con có thể gửi yêu cầu mới sau {{time}}.',
+  statusDeclined: 'Bố mẹ chưa đồng ý lần này.',
   statusDailyLimitExceeded:
     'Con đã dùng hết thời gian sử dụng hôm nay. Các ứng dụng sẽ mở lại vào ngày mai — hoặc sớm hơn nếu bố mẹ cho thêm giờ.',
   errorDeviceNotRegistered:

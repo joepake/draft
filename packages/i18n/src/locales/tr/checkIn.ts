@@ -13,7 +13,6 @@ export const checkIn = {
   metaNoLocation: 'Konum eklenmedi',
   viewPhotoAccessibility: 'Check-In fotoğrafını gör',
   responseMessage: 'İyiyim.',
-  toastSuccess: 'Teşekkürler. Yanıtın ailene gönderildi.',
   toastFailed: 'Check-In gönderilemedi. Lütfen tekrar dene.',
   quickCheckInBadge: 'Check-In',
   areYouOkay: 'İyi misin?',
@@ -21,6 +20,10 @@ export const checkIn = {
     'Ailen iyi olup olmadığını öğrenmek istiyor. KidGate mümkünse konumunu ve bir fotoğraf gönderecek.',
   checkInLocationOnlyBody:
     'Ailen iyi olup olmadığını öğrenmek istiyor. KidGate mümkünse konumunu gönderecek.',
+  checkInPhotoNoLocationBody:
+    'Ailen iyi olup olmadığını öğrenmek istiyor. Bu cihazda konum kapalı, bu yüzden KidGate mümkünse bir fotoğraf gönderecek.',
+  checkInAnswerOnlyBody:
+    'Ailen iyi olup olmadığını öğrenmek istiyor. Bu cihazda konum kapalı, bu yüzden yalnızca cevabın gönderilecek.',
   yesImOkay: 'İyiyim',
   yesImOkaySending: 'Gönderiliyor…',
   iNeedHelp: 'Yardıma ihtiyacım var',

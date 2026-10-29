@@ -31,6 +31,8 @@ export const webFilter = {
   safeSearchLabel: '세이프서치 강제 적용',
   safeSearchHint:
     'Google 세이프서치, YouTube 제한 모드, Bing, DuckDuckGo를 엄격 설정으로 고정합니다. Android와 Chrome.',
+  safeSearchHintIos:
+    'Google 세이프서치, YouTube 제한 모드, Bing, DuckDuckGo를 엄격 설정으로 고정합니다. iPhone·iPad는 제외됩니다.',
   safeSearchStrictNote:
     'YouTube가 가장 엄격한 수준으로 작동합니다. 댓글이 숨겨지고 일반 동영상도 일부 차단됩니다. 아이가 자기 계정에서 끌 수 없습니다.',
   infoTitle: '작동 방식',

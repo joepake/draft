@@ -18,6 +18,7 @@ export const timeRequest = {
   statusWaitingForApproval:
     'In attesa della risposta dei tuoi genitori ({{minutes}} minuti richiesti).',
   statusCooldown: 'Potrai inviare una nuova richiesta tra {{time}}.',
+  statusDeclined: 'I tuoi genitori hanno detto di no, per questa volta.',
   statusDailyLimitExceeded:
     'Hai esaurito il tempo di utilizzo di oggi. Le app si sbloccheranno domani, o prima se i tuoi genitori aggiungono altro tempo.',
   errorDeviceNotRegistered:

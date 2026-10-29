@@ -409,7 +409,7 @@ export const userGuide = {
         '3': 'Uyarı, KidGate konumu alır almaz gönderilir; bu yarım dakikaya kadar sürebilir. Konum alınamazsa uyarı yine de gönderilir. Telefonda ardından fotoğraf için kamera açılır; bu adım atlanabilir. Kurulum sırasında mikrofona izin verildiyse SOS gönderildiği andan itibaren 15 saniyeye kadar ses kaydedilir.',
         '4': 'Ebeveynler “Sessiz saatler” sırasında bile acil bir bildirim alır. KidGate açıksa uyarı ekranda belirir; Ayarlar’da kapatılmadıysa “SOS sireni” de çalar.',
         '5': 'Çocuğunuzun profilini (veya cihaz bir çocuğa atanmamışsa cihazı) açın, ardından “Uyarılar” bölümünden “SOS”u seçin. Her uyarıda konum (“Haritalar’da aç”), fotoğraf ve uyarıdan biraz sonra gelebilen “Ses kaydı” bulunur. Yanıt verildi olarak işaretlemek için “Ben ilgileniyorum”u seçin.',
-        '6': 'Aile dışındaki kişilere de e-posta gitmesi için “Aile”yi, ardından aile kartını açın ve “Güvenilir kişiler”i seçin. En fazla 5 kişi eklemek için “Kişi ekle”yi seçin. Her SOS’ta bu kişilere e-postayla cihaz adı ve bilinen son konum gider; fotoğraf ve ses asla gönderilmez. Önce onlara haber verin.',
+        '6': 'Aile dışındaki kişilere de e-posta gitmesi için “Aile”yi, ardından aile kartını açın ve “Güvenilir kişiler”i seçin. En fazla 5 kişi eklemek için “Kişi ekle”yi seçin. Her SOS’ta bu kişilere e-postayla gönderenin adı ve bilinen son konum gider; fotoğraf ve ses asla gönderilmez. Önce onlara haber verin.',
       },
     },
     webFilter: {
@@ -656,6 +656,75 @@ export const userGuide = {
         '3': 'Kimliğinizi doğrulayın (şifrenizle veya Google ya da Apple ile yeniden giriş yaparak), OK yazın ve Silmeyi planla’yı seçin. Bu yalnızca silme işlemini planlar: henüz hiçbir şey kaldırılmaz.',
         '4': 'Hesap, 14 günün sonunda silinir. O zamana kadar her şeyi korumak için KidGate’i açıp Silmeyi iptal et’i seçin.',
         '5': 'Bir ortak ebeveyn hesabını sildiğinde yalnızca kendi hesabı kaldırılır; aile olduğu gibi kalır. Hesabınızı silmeden bir aileden ayrılmak için Aile bölümünde aile kartını açın ve Aileden ayrıl’ı seçin.',
+      },
+    },
+  },
+  ios: {
+    blockedHours: {
+      steps: {
+        '5': 'Çocuk cihazında, aralıkların zamanında başlayıp bitmesi için KidGate’in kurulum sırasında istediği izinlerin hâlâ verili olduğunu doğrulayın. iPhone veya iPad’de Ekran Süresi izninin hâlâ verili olduğunu doğrulayın.',
+      },
+    },
+    lockUnlock: {
+      tip: 'iPhone veya iPad’de kilitleme Ekran Süresi yetkilendirmesine bağlıdır ve KidGate iPhone’da kapatılmışsa kilit, KidGate yeniden çalıştığında görünür. Diğer cihazlarda kilitleme, KidGate’in istediği tüm izinler verildiğinde en güçlüdür.',
+      steps: {
+        '6': 'Kilitli bir telefon veya bilgisayar, çocuğunuzun SOS göndermesine yine izin verir; SOS “Etkinlikler”de görünür. Bazı çocuk telefonlarında aramalar her zaman çalışır; SOS ayrıca haritaları ve mesajları 5 dakika boyunca açar, geri kalan her şey kilitli kalır.',
+      },
+    },
+    siri: {
+      tip: 'Sesli komutlar bir ebeveynin iPhone’unda, ailedeki her ebeveyn için, Siri’nin ayarlı olduğu dilde çalışır. Bazı dillerde Siri, söylenen KidGate adını yakalamaz (Vietnamcada yakalamaz): bunun yerine komutu Siri’ye yazın veya Kestirmeler uygulamasından çalıştırın. Web panelinde yoktur.',
+    },
+    timeRequests: {
+      tip: 'İstekler yalnızca cihazda bir Günlük sınır varsa görünür. Onaylanan dakikalar bugün için ve yalnızca isteği gönderen cihazda geçerlidir; sizin koyduğunuz bir kilidi veya Engellenen Saatleri kaldırmaz. TV ve Chrome uzantısı istek gönderemez.',
+      steps: {
+        '1': 'Çocuğunuz kendi cihazında KidGate ana ekranından Daha fazla süre iste’yi seçer (bazı telefonlarda sınıra ulaşıldığında kilit ekranından da), dakikaları belirler, isterse bir neden ekler ve gönderir.',
+      },
+    },
+    rewardTasks: {
+      tip: 'Bonus dakikalar yalnızca cihazda bir Günlük sınır varsa geçerli olur. Dakikalar, çocuğunuzun görevi tamamlandı olarak işaretlediği cihaza eklenir. Ödül görevleri TV’de ve Chrome uzantısında kullanılamaz.',
+    },
+    locationSharing: {
+      steps: {
+        '1': 'Çocuk cihazında istendiğinde (veya sistem Ayarları’ndan) KidGate için Konuma izin verin. iPhone veya iPad’de “Her Zaman”, diğer telefonlarda “Her zaman izin ver” seçeneğini seçin; yoksa konum yalnızca KidGate açıkken güncellenir.',
+      },
+    },
+    webFilter: {
+      steps: {
+        '2': 'En üstteki “Uygunsuz siteleri filtrele” seçeneğini açın. Hemen uygulanır, kaydedilecek bir şey yoktur. Aynı ekrandaki “Güvenli Aramayı zorunlu kıl” ise diğer telefonlarda, TV’lerde ve Chrome’da (iPhone veya iPad’de değil) Google, Bing ve DuckDuckGo’yu güvenli sonuçlara, YouTube’u ise Kısıtlı Moda kilitler. YouTube’da Kısıtlı Mod yorumları da gizler ve bazı sıradan videoları da engeller; bu yüzden KidGate açmadan önce onay ister.',
+        '5': 'Çocuk cihazında KidGate’i açıp filtreyi bir kez onaylayın. iPhone veya iPad’de Apple’ın yetişkin içerik filtresi Ekran Süresi üzerinden uygulanır, ek bir adım gerekmez. Diğer telefonlarda gösterdiği isteği onaylayın, ardından ağ ayarlarından Özel DNS’i kapatın; çünkü Özel DNS açıkken tarayıcılar filtreyi atlayabilir. Mac’te “Web filtrelemeyi onaylayın” satırının yanındaki Ayarları aç’ı seçin ve KidGate’i etkinleştirin.',
+      },
+    },
+    screenTimeCounting: {
+      steps: {
+        '2': 'Bilgisayarda ve bazı telefonlarda, küçük bir kayan pencerede (pencere içinde pencere, PIP) oynatılan video, önde başka bir uygulama açıkken bile onu oynatan uygulamaya sayılır.',
+      },
+    },
+    widget: {
+      keywords:
+        'ana ekran, başlatıcı, bir bakışta, kalan süre, kalan dakika, araç takımı, iphone, ipad',
+      tip: 'Widget’lar telefonlarda ve tabletlerde çalışır; bilgisayarda ve TV’de çalışmaz. Widget, KidGate’in aldığı son verileri ve bu güncellemenin saatini gösterir.',
+      steps: {
+        '1': '“Ayarlar”ı açın ve “Ana ekrana widget ekle”yi seçin. Bazı telefonlarda yalnızca nereye yerleştirileceğini onaylarsınız. Aksi halde KidGate, widget’ı kendiniz eklemeniz için adımları gösterir.',
+        '2': 'Kendiniz eklemek için ana ekranda boş bir alana basılı tutun. iPhone’da + simgesine, ardından “Araç Takımı Ekle”ye dokunun. KidGate’i bulun ve “Ekran süresi” widget’ını seçin.',
+        '3': 'Her satır, bir çocuğun bugünkü ekran süresini Günlük sınırıyla karşılaştırır; sınırına ulaşan çocuklar en üstte yer alır. iPhone’da en fazla 2 çocuk gösterilir. Bir çocuğa atanmamış cihazlar gösterilmez.',
+      },
+    },
+    webHistory: {
+      tip: 'Web geçmişi Premium’a dahildir. Sayfaları veya dakikaları değil siteleri listeler ve bazı satırlar uygulamaların arka plan trafiğidir. TV’de veriler bir saate kadar gecikebilir.',
+    },
+    videoHistory: {
+      tip: 'İzlenen videolar özelliği Premium’a dahildir ve yalnızca YouTube’u kapsar. Diğer telefonlarda ve Chrome uzantısında çalışır; iPhone ve iPad’de çalışmaz. Mac veya PC’de Chrome uzantısını ekleyin. TV, videoları yalnızca KidGate’in o TV’de bildirim erişimi olduğunda kaydeder; bu izni henüz hiçbir TV ekranından vermek mümkün değildir. O durumda bile Shorts listelenmez.',
+      steps: {
+        '3': 'Diğer telefonlarda KidGate’in ayrıca bildirim erişimine ihtiyacı vardır: çocuk cihazında KidGate Ayarları’nı açın, “Ebeveyn PIN’i ile Kilidi Aç” düğmesini seçin, ardından Mesaj uyarıları bölümünde “Bildirim erişimine izin ver”i seçin. Shorts için ayrıca Erişilebilirlik gerekir.',
+      },
+    },
+    messageAlerts: {
+      summary:
+        'Çocuğunuzun telefonundaki mesajlarda veya arama sorgularında endişe verici bir kelime veya ifade göründüğünde uyarı alın. Mesajın kendisini asla görmezsiniz, yalnızca işaretlenen kelimeyi veya ifadeyi görürsünüz.',
+      tip: 'Mesaj uyarıları Premium’a dahildir. Mesajlar iPhone ve iPad’de denetlenemez; aramalar Chrome uzantısında da denetlenir. Size yalnızca kategori ve işaretlenen kelime veya ifade ulaşır. Yapay zekâ analizi, bir ebeveyn aile için açmadıkça kapalı kalır.',
+      steps: {
+        '1': 'Çocuğun telefonunda KidGate Ayarları’nı açın, “Ebeveyn PIN’i ile Kilidi Aç” düğmesini seçin, ardından Mesaj uyarıları bölümünde “Bildirim erişimine izin ver”i seçin ve açılan listede KidGate’i etkinleştirin.',
+        '2': 'Kendi cihazınızda çocuğunuzun profilini (veya cihaz bir çocuğa atanmamışsa cihazı) açın, ardından Uyarılar bölümünden Mesaj uyarıları’nı açıp en üstteki ayarlar simgesine dokunun. Çocuğunuzun birden fazla cihazı varsa önce telefonunu seçin.',
       },
     },
   },

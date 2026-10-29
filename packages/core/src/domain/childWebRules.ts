@@ -36,6 +36,7 @@ import {
   DEFAULT_WEB_FILTER_CATEGORIES,
   WEB_FILTER_CATEGORIES,
 } from '@kidgate/schema/webActivity';
+import { iosScreenTimeWithheld } from './controlSupport';
 import { supportsWebFiltering } from './webFilterSupport';
 
 type WebFilterControls = Pick<
@@ -170,6 +171,8 @@ export interface WebFilterCoverageDevice {
     webFilter?: DeviceCapabilities['webFilter'];
     webFilterBlocker?: DeviceCapabilities['webFilterBlocker'];
   } | null;
+  /** Read for an iPhone's Screen Time grant (`iosScreenTimeWithheld`). */
+  protectionStatus?: { screenTime?: string } | null;
 }
 
 export interface WebFilterCoverageRow {
@@ -197,9 +200,12 @@ export function childWebFilterCoverage(
   devices: readonly WebFilterCoverageDevice[],
 ): WebFilterCoverage {
   const rows = devices.map((device): WebFilterCoverageRow => {
-    const state: WebFilterCoverageState = supportsWebFiltering(device)
-      ? 'enforcing'
-      : (device.capabilities?.webFilterBlocker ?? 'unsupported');
+    // An iPhone's filter is Apple's, and waits on the same grant as its lock.
+    const state: WebFilterCoverageState = iosScreenTimeWithheld(device)
+      ? 'awaitingApproval'
+      : supportsWebFiltering(device)
+        ? 'enforcing'
+        : (device.capabilities?.webFilterBlocker ?? 'unsupported');
     return {
       deviceId: device.deviceId,
       name: device.name,

@@ -33,6 +33,8 @@ export const webFilter = {
   safeSearchLabel: 'Принудительный безопасный поиск',
   safeSearchHint:
     'Фиксирует Google SafeSearch, безопасный режим YouTube, Bing и DuckDuckGo на строгой настройке. Android и Chrome.',
+  safeSearchHintIos:
+    'Фиксирует Google SafeSearch, безопасный режим YouTube, Bing и DuckDuckGo на строгой настройке. Кроме iPhone и iPad.',
   safeSearchStrictNote:
     'YouTube работает в самом строгом режиме: комментарии скрыты, а часть обычных видео тоже блокируется. Ребёнок не может отключить это в своём аккаунте.',
   infoTitle: 'Как это работает',

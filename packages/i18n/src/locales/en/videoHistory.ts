@@ -4,12 +4,16 @@ export const videoHistory = {
   toggleLabel: 'Record watched videos',
   toggleHint:
     'YouTube on Android phones and TV, and in Chrome with the KidGate extension.',
+  toggleHintIos:
+    'YouTube on other phones and Google TV, and in Chrome with the KidGate extension.',
   // The header's ⓘ: what the switch's one line leaves out.
   tvShortsInfo:
     'On a TV, Shorts are not listed, because the YouTube TV app does not identify them as Shorts.',
   toggleFailed: 'Unable to update video history. Try again.',
   unsupportedNote:
     'This device cannot report watched videos. It works on Android, Android TV and in Chrome.',
+  unsupportedNoteIos:
+    'This device cannot report watched videos. It works on other phones, Google TV and in Chrome.',
   // An Android TV whose notification-access grant is missing (it publishes
   // `videoHistory: false`). `TV_SETUP_STEPS` has no step that asks for the grant,
   // so no screen on the TV can give it yet (`videoHistoryUnavailableKey`).

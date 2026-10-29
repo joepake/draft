@@ -4,11 +4,15 @@ export const videoHistory = {
   toggleLabel: '시청한 동영상 기록',
   toggleHint:
     'Android 휴대폰과 TV의 YouTube, 그리고 KidGate 확장 프로그램이 있는 Chrome이 대상입니다.',
+  toggleHintIos:
+    '다른 휴대폰과 Google TV의 YouTube, 그리고 KidGate 확장 프로그램이 있는 Chrome이 대상입니다.',
   tvShortsInfo:
     'TV에서는 Shorts가 목록에 표시되지 않습니다. TV용 YouTube 앱이 Shorts로 식별하지 않기 때문입니다.',
   toggleFailed: '동영상 기록을 업데이트하지 못했습니다. 다시 시도하세요.',
   unsupportedNote:
     '이 기기는 시청한 동영상을 보고할 수 없습니다. Android, Android TV, Chrome에서 작동합니다.',
+  unsupportedNoteIos:
+    '이 기기는 시청한 동영상을 보고할 수 없습니다. 다른 휴대폰, Google TV, Chrome에서 작동합니다.',
   unsupportedNoteTv:
     '이 TV는 시청한 동영상을 기록하지 않고 있습니다. KidGate에 이 TV의 알림 접근 권한이 필요하지만, 아직 TV 화면에서는 허용할 수 없습니다.',
 

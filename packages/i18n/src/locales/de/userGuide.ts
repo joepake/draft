@@ -411,7 +411,7 @@ export const userGuide = {
         '3': 'Der Alarm wird gesendet, sobald KidGate den Standort hat, was bis zu einer halben Minute dauern kann; ohne Standort wird er trotzdem gesendet. Auf einem Handy öffnet sich danach die Kamera für ein Foto, das übersprungen werden kann. Wurde das Mikrofon bei der Einrichtung erlaubt, werden ab dem Senden bis zu 15 Sekunden Ton aufgenommen.',
         '4': 'Eltern erhalten eine dringende Mitteilung, auch während der „Ruhezeiten“. Ist KidGate geöffnet, erscheint der Alarm auf dem Bildschirm, mit der „SOS-Sirene“, sofern sie in den Einstellungen nicht ausgeschaltet ist.',
         '5': 'Öffne das Profil deines Kindes (oder das Gerät, falls es keinem Kind zugewiesen ist), dann den Bereich „Benachrichtigungen“, und wähle „SOS“. Jeder Alarm zeigt den Standort („In Karten öffnen“), das Foto und die „Tonaufnahme“, die etwas nach dem Alarm eintreffen kann. Wähle „Ich kümmere mich darum“, um ihn als beantwortet zu markieren.',
-        '6': 'Um auch Personen außerhalb der Familie per E-Mail zu benachrichtigen, öffne „Familie“, dann die Familienkarte, und wähle „Vertrauenskontakte“. Wähle „Kontakt hinzufügen“, um bis zu 5 hinzuzufügen. Bei jedem SOS erhalten sie per E-Mail den Gerätenamen und den letzten bekannten Standort, nie das Foto oder den Ton. Sag ihnen vorher Bescheid.',
+        '6': 'Um auch Personen außerhalb der Familie per E-Mail zu benachrichtigen, öffne „Familie“, dann die Familienkarte, und wähle „Vertrauenskontakte“. Wähle „Kontakt hinzufügen“, um bis zu 5 hinzuzufügen. Bei jedem SOS erhalten sie per E-Mail den Namen des Absenders und den letzten bekannten Standort, nie das Foto oder den Ton. Sag ihnen vorher Bescheid.',
       },
     },
     webFilter: {
@@ -658,6 +658,75 @@ export const userGuide = {
         '3': 'Bestätige, dass du es bist (mit deinem Passwort oder einer erneuten Anmeldung mit Google oder Apple), gib „OK“ ein und wähle „Löschung planen“. Damit wird die Löschung nur geplant: Es wird noch nichts entfernt.',
         '4': 'Das Konto wird nach 14 Tagen gelöscht. Bis dahin kannst du KidGate öffnen und „Löschung abbrechen“ wählen, um alles zu behalten.',
         '5': 'Löscht ein Mitelternteil sein Konto, wird nur dieses Konto entfernt; die Familie bleibt bestehen. Um eine Familie zu verlassen, ohne dein Konto zu löschen, öffne in Familie die Familienkarte und wähle „Familie verlassen“.',
+      },
+    },
+  },
+  ios: {
+    blockedHours: {
+      steps: {
+        '5': 'Bestätige auf dem Kindergerät, dass KidGate weiterhin die Berechtigungen hat, die es bei der Einrichtung angefragt hat, damit die Zeiträume pünktlich beginnen und enden. Bestätige auf einem iPhone oder iPad, dass „Bildschirmzeit“ weiterhin erlaubt ist.',
+      },
+    },
+    lockUnlock: {
+      tip: 'Auf einem iPhone oder iPad hängt die Sperre von der Bildschirmzeit-Autorisierung ab; war KidGate auf dem iPhone geschlossen, erscheint die Sperre, sobald KidGate wieder läuft. Auf anderen Geräten ist die Sperre am stärksten, sobald jede von KidGate angefragte Berechtigung erlaubt ist.',
+      steps: {
+        '6': 'Ein gesperrtes Handy oder ein gesperrter Computer lässt dein Kind weiterhin einen SOS-Alarm senden, und der SOS-Alarm erscheint unter „Aktivitäten“. Auf manchen Kinder-Handys funktionieren Anrufe immer, und SOS öffnet außerdem 5 Minuten lang Karten und Nachrichten, während alles andere gesperrt bleibt.',
+      },
+    },
+    siri: {
+      tip: 'Sprachbefehle funktionieren auf dem iPhone eines Elternteils, für alle Eltern der Familie, in der Sprache, die für Siri eingestellt ist. In manchen Sprachen versteht Siri den gesprochenen Namen KidGate nicht (auf Vietnamesisch nicht): Gib den Befehl stattdessen per Tastatur bei Siri ein oder führe ihn in der App Kurzbefehle aus. Das Web-Dashboard hat keine.',
+    },
+    timeRequests: {
+      tip: 'Anfragen erscheinen nur, wenn das Gerät ein Tageslimit hat. Genehmigte Minuten gelten für heute auf dem Gerät, das gefragt hat, und heben weder eine von dir gesetzte Sperre noch Sperrzeiten auf. Fernseher und die Chrome-Erweiterung können keine Anfragen senden.',
+      steps: {
+        '1': 'Auf dem Kindergerät wählt dein Kind auf dem KidGate-Startbildschirm „Mehr Zeit anfragen“ (auf manchen Handys auch auf dem Sperrbildschirm, wenn das Limit erreicht ist), legt die Minuten fest, fügt optional einen Grund hinzu und sendet die Anfrage.',
+      },
+    },
+    rewardTasks: {
+      tip: 'Bonusminuten zählen nur, wenn das Gerät ein Tageslimit hat. Die Minuten gehen an das Gerät, auf dem dein Kind die Aufgabe als erledigt markiert hat. Bonusaufgaben sind auf einem Fernseher und in der Chrome-Erweiterung nicht verfügbar.',
+    },
+    locationSharing: {
+      steps: {
+        '1': 'Erlaube auf dem Kindergerät den Standort für KidGate, wenn du dazu aufgefordert wirst (oder in den Systemeinstellungen). Wähle auf dem iPhone oder iPad „Immer“ bzw. auf anderen Handys „Immer zulassen“, sonst wird der Standort nur aktualisiert, solange KidGate geöffnet ist.',
+      },
+    },
+    webFilter: {
+      steps: {
+        '2': 'Schalte oben „Ungeeignete Websites filtern“ ein. Die Einstellung gilt sofort, du musst nichts speichern. „SafeSearch erzwingen“ auf demselben Bildschirm sperrt außerdem Google, Bing und DuckDuckGo auf sichere Ergebnisse und YouTube auf den eingeschränkten Modus, auf anderen Handys, Fernsehern und Chrome, nicht auf dem iPhone oder iPad. Auf YouTube blendet der eingeschränkte Modus außerdem Kommentare aus und blockiert auch manche harmlosen Videos, deshalb fragt KidGate vor dem Einschalten nach.',
+        '5': 'Öffne auf dem Kindergerät KidGate und genehmige den Filter einmalig. Auf einem iPhone oder iPad gilt der Jugendschutzfilter von Apple über die Bildschirmzeit, ohne zusätzlichen Schritt. Bestätige auf einem anderen Handy die angezeigte Anfrage und schalte dann in dessen Netzwerkeinstellungen Privates DNS aus, denn Browser können den Filter umgehen, solange Privates DNS aktiv ist. Wähle auf einem Mac bei „Webfilter freigeben“ die Option „Einstellungen öffnen“ und schalte KidGate ein.',
+      },
+    },
+    screenTimeCounting: {
+      steps: {
+        '2': 'Auf einem Computer und auf manchen Handys zählt ein Video in einem kleinen schwebenden Fenster (Bild-im-Bild, PIP) für die App, die es abspielt – auch während eine andere App im Vordergrund ist.',
+      },
+    },
+    widget: {
+      keywords:
+        'startbildschirm, launcher, auf einen blick, restzeit, verbleibende minuten, iphone, ipad',
+      tip: 'Widgets gibt es auf Handys und Tablets, nicht auf Computern oder Fernsehern. Ein Widget zeigt die zuletzt von KidGate empfangenen Zahlen und die Uhrzeit dieser Aktualisierung.',
+      steps: {
+        '1': 'Öffne „Einstellungen“ und wähle „Widget zum Home-Bildschirm hinzufügen“. Auf manchen Handys bestätigst du nur noch, wo es hin soll. Andernfalls zeigt KidGate die Schritte, um es selbst hinzuzufügen.',
+        '2': 'Um es selbst hinzuzufügen, halte eine freie Stelle auf dem Home-Bildschirm gedrückt. Tippe auf dem iPhone auf „Bearb.“ (bei älteren Versionen auf +) und dann auf „Widget hinzufügen“. Suche KidGate und wähle das Widget „Bildschirmzeit“.',
+        '3': 'Jede Zeile zeigt die heutige Bildschirmzeit eines Kindes im Vergleich zu seinem Tageslimit; Kinder, die es erreicht haben, stehen oben. Auf dem iPhone passen bis zu 2 Kinder hinein. Geräte, die keinem Kind zugewiesen sind, werden nicht angezeigt.',
+      },
+    },
+    webHistory: {
+      tip: 'Der Web-Verlauf gehört zu Premium. Er listet Websites auf, keine einzelnen Seiten oder Minuten, und manche Zeilen stammen aus dem Hintergrundverkehr von Apps. Auf einem Fernseher kann er bis zu einer Stunde verzögert sein.',
+    },
+    videoHistory: {
+      tip: '„Videoverlauf“ gehört zu Premium und erfasst nur YouTube. Die Funktion läuft auf anderen Handys und in der Chrome-Erweiterung, nicht auf iPhone oder iPad. Füge auf einem Mac oder PC die Chrome-Erweiterung hinzu. Ein Fernseher erfasst Videos erst, wenn KidGate dort Zugriff auf Benachrichtigungen hat, was sich auf einem Fernseher bisher nicht erteilen lässt; selbst dann werden Shorts nicht aufgeführt.',
+      steps: {
+        '3': 'Auf anderen Handys braucht KidGate außerdem Benachrichtigungszugriff: Öffne auf dem Kindergerät KidGate, dann Einstellungen, wähle „Mit Eltern-PIN entsperren“ und dann „Benachrichtigungszugriff erlauben“ im Bereich Chatwarnungen. Für Shorts sind zusätzlich Bedienungshilfen nötig.',
+      },
+    },
+    messageAlerts: {
+      summary:
+        'Werde gewarnt, wenn ein bedenkliches Wort oder ein bedenklicher Ausdruck in Nachrichten oder Suchanfragen auf dem Handy deines Kindes auftaucht. Du siehst das markierte Wort oder den markierten Ausdruck, nie die Nachricht.',
+      tip: 'Chatwarnungen gehören zu Premium. Nachrichten lassen sich auf iPhone oder iPad nicht prüfen; Suchanfragen werden auch in der Chrome-Erweiterung geprüft. Dich erreichen nur die Kategorie und das markierte Wort oder der markierte Ausdruck. Die KI-Analyse bleibt aus, solange kein Elternteil sie für die Familie einschaltet.',
+      steps: {
+        '1': 'Öffne auf dem Handy deines Kindes KidGate, dann Einstellungen, wähle „Mit Eltern-PIN entsperren“ und dann „Benachrichtigungszugriff erlauben“ im Bereich Chatwarnungen, und schalte KidGate in der Liste ein, die sich öffnet.',
+        '2': 'Öffne auf deinem Gerät das Profil deines Kindes (oder das Gerät, falls es keinem Kind zugewiesen ist), dann Chatwarnungen im Bereich Benachrichtigungen, und tippe oben auf das Einstellungssymbol. Hat dein Kind mehrere Geräte, wähle zuerst sein Handy aus.',
       },
     },
   },
